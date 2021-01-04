@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4030dedfb0d7308bb5a0f7a86bc49ee168e6d0c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2e8d68643b5cc0002467f738dd60343fb2c42dc6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362801"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631273"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>教程：在 Azure AD 权利管理中创建第一个访问包
 
@@ -117,6 +117,7 @@ ms.locfileid: "92362801"
 11. 在“角色”下拉列表中，选择“成员”。  
 
     ![新建访问包 -“资源角色”选项卡](./media/entitlement-management-access-package-first/resource-roles.png)
+
     >[!IMPORTANT]
     >添加到访问包的可分配角色的组将使用“可分配给角色”子类型来指出。 要更详细地了解可分配给 Azure AD 角色的组，请参阅[创建可分配角色的组](../roles/groups-create-eligible.md)。 如果看不到想要添加的可分配角色的组，或者无法添加它，请确保你具有所需的 Azure AD 角色和权利管理角色来执行此操作。 你可能需要请具有必需角色的用户将该资源添加到你的目录中。 有关详细信息，请参阅[将资源添加到目录所需的角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)。
 
@@ -174,7 +175,7 @@ ms.locfileid: "92362801"
 
 ## <a name="step-3-request-access"></a>步骤 3：请求访问权限
 
-在此步骤中，你将**内部请求者**的身份执行步骤，并请求对访问包进行访问。 请求者使用名为“我的访问权限门户”的站点来提交其请求。 在“我的访问权限门户”中，请求者可以提交访问包的请求、查看他们已有权访问的访问包，以及查看其请求历史记录。
+在此步骤中，你将 **内部请求者** 的身份执行步骤，并请求对访问包进行访问。 请求者使用名为“我的访问权限门户”的站点来提交其请求。 在“我的访问权限门户”中，请求者可以提交访问包的请求、查看他们已有权访问的访问包，以及查看其请求历史记录。
 
 **必备角色：** 内部请求者
 

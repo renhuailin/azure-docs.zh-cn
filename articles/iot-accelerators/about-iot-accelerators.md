@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 193ceab0b2df1ab833a86eb748c18271a8e33b71
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 5012383e64a85ee025273f5339b828f5338e1d4f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852908"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629062"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT 解决方案加速器是什么？
 
@@ -29,7 +29,7 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 每个解决方案加速器中的应用程序代码包括一个 Web 应用，用于管理解决方案加速器。
 
 > [!NOTE]
-> 远程监视和预测性维护解决方案已从 [Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators)网站中删除。 若要了解详细信息，请参阅[什么是 Azure IoT 解决方案加速器？（早期版本）](/previous-versions/azure/iot-accelerators/about-iot-accelerators.md)。
+> 远程监视和预测性维护解决方案已从 [Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators)网站中删除。 若要了解详细信息，请参阅[什么是 Azure IoT 解决方案加速器？（早期版本）](/previous-versions/azure/iot-accelerators/about-iot-accelerators)。
 
 ## <a name="supported-iot-scenarios"></a>支持的 IoT 方案
 

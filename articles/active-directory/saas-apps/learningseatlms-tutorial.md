@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a9357f81c3b22f70af2a4a05de2de10e19acfbd9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: edf9df1777c4ab1d204cfc8058ec22c2d4e3f663
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458641"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631680"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>教程：Azure Active Directory 与 Learning Seat LMS 集成
 
@@ -99,7 +99,7 @@ ms.locfileid: "92458641"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
 
-    ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.learningseatlms.com`
 
@@ -112,7 +112,7 @@ ms.locfileid: "92458641"
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.learningseatlms.com`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Learning Seat LMS 客户端支持团队](http://help.learningseatlms.com/help)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Learning Seat LMS 客户端支持团队](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -130,7 +130,7 @@ ms.locfileid: "92458641"
 
 ### <a name="configure-learning-seat-lms-single-sign-on"></a>配置 Learning Seat LMS 单一登录
 
-若要在 Learning Seat LMS 配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Learning Seat LMS 支持团队](http://help.learningseatlms.com/help)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Learning Seat LMS 配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Learning Seat LMS 支持团队](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -185,7 +185,7 @@ ms.locfileid: "92458641"
 
 ### <a name="create-learning-seat-lms-test-user"></a>创建 Learning Seat LMS 测试用户
 
-在本部分中，将在 Learning Seat LMS 中创建名为 Britta Simon 的用户。 请与 [Learning Seat LMS 支持团队](http://help.learningseatlms.com/help)协作，将用户添加到 Learning Seat LMS 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Learning Seat LMS 中创建名为 Britta Simon 的用户。 请与 [Learning Seat LMS 支持团队](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview)协作，将用户添加到 Learning Seat LMS 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

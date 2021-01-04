@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ec2c0089295cdd269b5bb3bccf0baaef3cb14849
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: dde618b28e004e87edc2783bc44c5e7dd9f0ebba
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456116"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670615"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>教程：Azure Active Directory 与 Cisco Umbrella 的集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "92456116"
 
 4. 在搜索框中，键入“Cisco Umbrella”，在结果面板中选择“Cisco Umbrella”，然后单击“添加”按钮以添加该应用程序。   
 
-     ![结果列表中的 Cisco Umbrella](common/search-new-app.png)
+    ![结果列表中的 Cisco Umbrella](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -168,7 +168,7 @@ ms.locfileid: "92456116"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
@@ -219,13 +219,13 @@ ms.locfileid: "92456116"
 
     ![用户](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_createuser.png)
 
-    a. 在“名字”字段中输入名字，例如 **Britta** 。 
+    a. 在“名字”字段中输入名字，例如 **Britta**。 
 
-    b. 在“姓氏”字段中输入姓，例如 **simon** 。 
+    b. 在“姓氏”字段中输入姓，例如 **simon**。 
 
     c. 在“选择委派的管理员角色”中选择角色。 
-  
-    d. 在“电子邮件地址”字段中，输入用户的电子邮件地址（例如 **brittasimon\@contoso.com** ）。 
+
+    d. 在“电子邮件地址”字段中，输入用户的电子邮件地址（例如 **brittasimon\@contoso.com**）。 
 
     e. 在“密码”字段中输入自己的密码。 
 

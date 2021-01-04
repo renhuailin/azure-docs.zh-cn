@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 99ee85c569340d8f1d3cff27112436465238c05f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 753256adddf8b28518bac45011d582bc7a079629
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455861"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670309"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>教程：Azure Active Directory 与 ClickUp Productivity Platform 集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "92455861"
 
 4. 在搜索框中键入“ClickUp Productivity Platform”，在结果面板中选择“ClickUp Productivity Platform”，然后单击“添加”按钮添加该应用程序    。
 
-     ![结果列表中的 ClickUp Productivity Platform](common/search-new-app.png)
+    ![结果列表中的 ClickUp Productivity Platform](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -131,7 +131,7 @@ ms.locfileid: "92455861"
     ![屏幕截图显示“配置 Microsoft 单一登录”页，可在其中复制“实体 ID”并保存“Azure 联合元数据 URL”。](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. 单击“复制”以复制“实体 ID”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符(实体 ID)”文本框中。   
-    
+
     b. 在“Azure 应用联合元数据 URL”  文本框中，粘贴从 Azure 门户复制的应用联合元数据 URL 值，然后单击“保存”  。
 
 5. 若要完成设置，请单击“向 Microsoft 进行身份验证以完成设置”  并使用 microsoft 帐户进行身份验证。
@@ -155,7 +155,7 @@ ms.locfileid: "92455861"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
@@ -194,7 +194,7 @@ ms.locfileid: "92455861"
 1. 在其他 Web 浏览器窗口中，以管理员身份登录到 ClickUp Productivity Platform 租户。
 
 2. 单击“用户配置文件”并选择“人员”。  
-   
+
     ![屏幕截图显示 ClickUp Productivity 租户。](./media/clickup-productivity-platform-tutorial/configure0.png)
 
     ![屏幕截图显示已选择“人员”链接。](./media/clickup-productivity-platform-tutorial/user1.png)

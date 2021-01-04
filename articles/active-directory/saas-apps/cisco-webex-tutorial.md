@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d53cfc874bca6529fdee821ce3173607d5f06b3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7a4e3a4a6049b48fa70e5352680bdc7342676c0b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456048"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670224"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex Meetings 集成
 
@@ -82,7 +82,7 @@ ms.locfileid: "92456048"
 
     b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
 
-    c. 成功完成服务提供程序元数据文件的上传后， **标识符** 和 **回复 URL** 值将自动填充在“基本 SAML 配置”部分中。
+    c. 成功完成服务提供程序元数据文件的上传后，**标识符** 和 **回复 URL** 值将自动填充在“基本 SAML 配置”部分中。
 
     >[!Note]
     >你将从“配置 Cisco Webex Meetings SSO”部分获取服务提供程序元数据文件，本教程稍后将对此进行说明。 
@@ -92,8 +92,8 @@ ms.locfileid: "92456048"
     a. 在“基本 SAML 配置”部分中，单击编辑/笔形图标。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
-    
-    b. 在“登录 URL”文本框中，使用以下模式键入 URL：` https://<customername>.my.webex.com`
+
+    b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<customername>.my.webex.com`
 
 5. Cisco Webex Meetings 应用程序需要特定格式的 SAML 断言，因此，我们需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
@@ -118,7 +118,7 @@ ms.locfileid: "92456048"
 
     e. 在“源属性”列表中，从下拉列表中选择为该行显示的属性值。
 
-    f. 单击“ **保存** ”。
+    f. 单击“ **保存**”。
 
 4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
 
@@ -163,14 +163,14 @@ ms.locfileid: "92456048"
 1. 使用管理凭据转到 `https://<customername>.webex.com/admin` URL。
 
 2. 转到“常用站点设置”并导航到“SSO 配置”。
- 
+
     ![屏幕截图显示已选择“常用站点设置”和“SSO 配置”的 Cisco Webex 管理。](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. 在“Webex 管理”页上，执行以下步骤：
 
     ![屏幕截图显示“Webex 管理”页以及此步骤中所述的信息。](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
-    a. 选择 **SAML 2.0** 作为 **联合身份验证协议** 。
+    a. 选择 **SAML 2.0** 作为 **联合身份验证协议**。
 
     b. 单击“导入 SAML 元数据”链接，以上传从 Azure 门户下载的元数据文件。
 
@@ -183,7 +183,7 @@ ms.locfileid: "92456048"
     >[!NOTE]
     >若要启用 **实时** 用户预配，需要选中“自动创建帐户”。 除此之外，还需要在 SAML 响应中传递 SAML 令牌属性。
 
-    f. 单击“ **保存** ”。
+    f. 单击“ **保存**”。
 
     >[!NOTE]
     >此配置仅适用于使用电子邮件格式的 Webex UserID 的客户。
@@ -202,7 +202,7 @@ ms.locfileid: "92456048"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 - [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
