@@ -7,16 +7,19 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 57e740e6c47d9518c12a49473e103d0abe772618
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1fb5396fae4676d85f67e98bb333cd58324d5a4e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337007"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357563"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>快速入门：使用 GitHub Actions 连接到 Azure MySQL
 
-使用工作流将数据库更新部署到 [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/) 以开始使用 [GitHub Actions](https://docs.github.com/en/actions)。 
+适用范围：:::image type="icon" source="./media/applies-to/yes.png" border="false":::Azure Database for PostgreSQL - 单一服务器:::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL - 灵活服务器
+
+使用工作流将数据库更新部署到 [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/) 以开始使用 [GitHub Actions](https://docs.github.com/en/actions)。
+
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -67,6 +70,11 @@ GitHub Actions 工作流是由存储库中 `/.github/workflows/` 路径中的 YA
 ## <a name="copy-the-mysql-connection-string"></a>复制 MySQL 连接字符串 
 
 在 Azure 门户中，转到 Azure Database for MySQL 服务器并打开“设置” > “连接字符串” 。 复制 **ADO.NET** 连接字符串。 将占位符值替换为 `your_database` 和 `your_password`。 该连接字符串将如下所示。 
+
+> [!IMPORTANT]
+> - 对于单一服务器，请使用 Uid=adminusername@servername。 注意，@servername 是必需的。
+> - 对于灵活服务器，请使用不带 @servername 的 Uid= adminusername。 请注意，MySQL 灵活服务器处于预览阶段。 
+
 
 ```output
    Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;

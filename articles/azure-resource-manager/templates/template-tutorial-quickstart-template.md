@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 445e7ce2d6e609d75bff38bb3d049a87f184be12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46b32ae7aeb971c9391a69e3ca3d01f669774248
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613588"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106897"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>教程：使用 Azure 快速入门模板
 
@@ -35,7 +35,7 @@ ms.locfileid: "91613588"
 
 1. 打开 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)
 1. 在“搜索”中，输入“部署 linux web 应用”。  
-1. 选择标题为“部署基本的 linux web 应用”的项。  如果找不到它，请单击此处的[直接链接](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)。
+1. 选择标题为“部署基本的 linux web 应用”的磁贴。 如果找不到它，请单击此处的[直接链接](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)。
 1. 选择“在 GitHub 上浏览”。 
 1. 选择“azuredeploy.json”。 
 1. 查看模板。 具体说来，请查找 `Microsoft.Web/sites` 资源。
@@ -48,21 +48,21 @@ ms.locfileid: "91613588"
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
-Web 应用名称必须在 Azure 中独一无二。 为了防止出现重复名称，我们已将 **webAppPortalName** 变量从 **"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"** 更新为 **"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"** 。
+Web 应用名称必须在 Azure 中独一无二。 为了防止出现重复名称，我们已将 `webAppPortalName` 变量从 `"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"` 更新为 `"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"` 。
 
 在 `Microsoft.Web/serverfarms` 定义末尾添加一个逗号，以便将资源定义与 `Microsoft.Web/sites` 定义分开。
 
 在这个新资源中，有一些需要注意的重要功能。
 
-你会注意到，它有一个名为 **dependsOn** 的元素，该元素设置为应用服务计划。 此设置是必需的，因为在创建 Web 应用之前，必须存在应用服务计划。 **dependsOn** 元素告知资源管理器如何将用于部署的资源排序。
+你会注意到，它有一个名为 `dependsOn` 的元素，该元素设置为应用服务计划。 此设置是必需的，因为在创建 Web 应用之前，必须存在应用服务计划。 `dependsOn` 元素告知资源管理器如何将用于部署的资源排序。
 
-**serverFarmId** 属性使用 [resourceId](template-functions-resource.md#resourceid) 函数。 此函数获取资源的唯一标识符。 在此示例中，它获取应用服务计划的唯一标识符。 Web 应用与一个特定的应用服务计划相关联。
+`serverFarmId` 属性使用 [resourceId](template-functions-resource.md#resourceid) 函数。 此函数获取资源的唯一标识符。 在此示例中，它获取应用服务计划的唯一标识符。 Web 应用与一个特定的应用服务计划相关联。
 
 ## <a name="deploy-template"></a>部署模板
 
 使用 Azure CLI 或 Azure PowerShell 来部署模板。
 
-如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
+如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据 [第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -91,7 +91,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失败，请使用“详细”开关获取有关正在创建的资源的信息。 使用“调试”开关获取调试的详细信息。
+> 如果部署失败，请使用 `verbose` 开关获取有关正在创建的资源的信息。 使用 `debug` 开关获取调试的详细信息。
 
 ## <a name="clean-up-resources"></a>清理资源
 

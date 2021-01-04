@@ -7,12 +7,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 08/25/2020
 author: ninallam
-ms.openlocfilehash: 9a2abf7e714b75f2551a35a220e30c2465d86a49
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 4caac943df33177728997c74c9ec812105efd62c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332537"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588771"
 ---
 # <a name="tutorial-deploy-nodejs-app-to-azure-web-app-using-devops-starter-for-github-actions"></a>教程：使用适用于 GitHub Actions 的 DevOps Starter 将 Node.js 应用部署到 Azure Web 应用
 
@@ -102,9 +102,9 @@ DevOps Starter 会自动配置用于将代码更改部署到存储库的触发�
 
 DevOps Starter 会在 GitHub 中创建存储库。 若要查看存储库并对应用程序进行代码更改，请执行以下操作：
 
-1. 在 DevOps Starter 仪表板的左侧，选择 master 分库的链接。 此链接会打开新建 GitHub 存储库的视图。
+1. 在 DevOps Starter 仪表板的左侧，选择主分支的链接。 此链接会打开新建 GitHub 存储库的视图。
 
-1. 若要查看存储库克隆 URL，请在浏览器右上角选择“克隆”。 可以在最常用的 IDE 中克隆 Git 存储库。 在后续几个步骤中，可以使用 Web 浏览器直接对 master 分库进行代码更改并提交所做的更改。
+1. 若要查看存储库克隆 URL，请在浏览器右上角选择“克隆”。 可以在最常用的 IDE 中克隆 Git 存储库。 在后续几个步骤中，可以使用 Web 浏览器直接对主分支进行代码更改并提交所做的更改。
 
 1. 在浏览器左侧，转到 /Application/views/index.pug 文件。
 

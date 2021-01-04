@@ -3,12 +3,12 @@ title: 将基于事件的视频录制到云中并从云播放教程 - Azure
 description: 在本教程中，你将了解如何使用 Azure IoT Edge 上的 Azure 实时视频分析将基于事件的视频录制到云中并从云中播放。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 84f6ef813fb1b2cc425e096212010717d0561aef
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498296"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401657"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教程：将基于事件的视频录制到云中并从云中播放
 
@@ -68,13 +68,13 @@ ms.locfileid: "96498296"
 该图以图画形式呈现了[媒体图](media-graph-concept.md)以及用于完成所需方案的其他模块。 共涉及四个 IoT Edge 模块：
 
 * IoT Edge 上的实时视频分析模块。
-* Edge 模块，它在 HTTP 终结点后面运行 AI 模型。 此 AI 模块使用 [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) 模型，该模型能够检测许多类型的对象。
+* Edge 模块，它在 HTTP 终结点后面运行 AI 模型。 此 AI 模块使用 [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) 模型，该模型能够检测许多类型的对象。
 * 一个用于筛选对象并对其进行计数的自定义模块，该模块在图中称为对象计数器。 在本教程中，你将生成一个对象计数器并对其进行部署。
 * [RTSP 模拟器模块](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)用于模拟 RTSP 摄像机。
     
 如图所示，你将使用媒体图中的 [RTSP 源](media-graph-concept.md#rtsp-source)节点捕获模拟的实时视频（高速公路上的交通流视频），并将该视频发送到两条路径：
 
-* 第一条路径的目的地是[帧速率筛选处理器](media-graph-concept.md#frame-rate-filter-processor)节点，该节点以指定（降低的）帧速率输出视频帧。 这些视频帧将发送到 HTTP 扩展节点。 然后，该节点将这些帧作为图像转发到 AI 模块 YOLO v3（一个对象检测器）。 该节点接收结果，这些结果是模型检测到的对象（交通流中的车辆）。 然后，HTTP 扩展节点会通过 IoT 中心消息接收器节点向 IoT Edge 中心发布结果。
+* 第一个路径是 HTTP 扩展节点。 该节点对视频帧进行采样，结果将作为使用 `samplingOptions` 字段设置的值，然后将这些帧作为图像中继到 AI 模块 YOLOv3，这是一个对象检测器。 该节点接收结果，这些结果是模型检测到的对象（交通流中的车辆）。 然后，HTTP 扩展节点会通过 IoT 中心消息接收器节点向 IoT Edge 中心发布结果。
 * 设置了 objectCounter 模块，目的是从 IoT Edge 中心接收消息，其中包括对象检测结果（交通流中的车辆）。 该模块将检查这些消息，并查找通过设置进行配置的特定类型的对象。 当找到此类对象时，此模块将向 IoT Edge 中心发送消息。 然后系统将这些“找到对象”消息路由到媒体图的 IoT 中心源节点。 接收到此类消息后，媒体图中的 IoT 中心源节点会触发[信号入口处理器](media-graph-concept.md#signal-gate-processor)节点。 然后，信号入口处理器节点会在配置的时间内处于开启状态。 在此持续时间内，视频流会经过入口到达资产接收器节点。 然后，实时流的这一部分将通过[资产接收器](media-graph-concept.md#asset-sink)节点被记录到 Azure 媒体服务帐户中的[资产](terminology.md#asset)内。
 
 ## <a name="set-up-your-development-environment"></a>设置开发环境

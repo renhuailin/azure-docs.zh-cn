@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 36c4ce34d6b0c4df119d5531cda725605cfd0bc1
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 256fec97819cde0f6f62d59b34416c92e1edfd20
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523711"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109600"
 ---
 # <a name="synapse-access-control"></a>Synapse 访问控制 
 
@@ -34,14 +34,14 @@ Synapse 角色提供可应用于不同范围的权限集。 这种粒度使得�
 
 ## <a name="access-control-elements"></a>访问控制元素
 
-### <a name="creating-and-managing-synapse-resources"></a>创建和管理 Synapse 资源
+### <a name="creating-and-managing-synapse-compute-resources"></a>创建和管理 Synapse 计算资源
 
 Azure 角色用于控制对以下项的管理： 
 - 专用 SQL 池、 
 - Apache Spark 池和 
 - 集成运行时。 
 
-若要创建这些资源，需要成为资源组的 Azure 所有者或参与者。  若要管理它们，需要成为资源组或单个资源的 Azure 所有者或参与者。 
+若要创建这些资源，需要成为资源组的 Azure 所有者或参与者。  若要在资源创建后对其进行管理，需要成为资源组或单个资源的 Azure 所有者或参与者。 
 
 ### <a name="developing-and-executing-code-in-synapse"></a>在 Synapse 中开发和执行代码 
 
@@ -82,7 +82,7 @@ Synapse 角色可以在工作区范围内或在更精细的范围内分配，以
 
  ### <a name="accessing-system-managed-data-in-storage"></a>访问存储中系统管理的数据
 
-无服务器 SQL 池和 Apache Spark 表将其数据存储在与工作区关联的 ADLS Gen2 容器中。  必须授予用户和工作区 MSI 对此 ADLS Gen2 存储容器的存储 Blob 数据参与者访问权限。  
+无服务器 SQL 池和 Apache Spark 表将其数据存储在与工作区关联的 ADLS Gen2 容器中。用户安装的 Apache Spark 库也在同一存储帐户中进行管理。  若要启用这些用例，必须授予用户和工作区 MSI 对此工作区 ADLS Gen2 存储容器的存储 Blob 数据参与者访问权限。  
 
 ## <a name="using-security-groups-as-a-best-practice"></a>将安全组用作最佳做法
 

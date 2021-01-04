@@ -5,24 +5,28 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: Java
 ms.topic: sample
-ms.date: 07/23/2020
-author: sakash279
-ms.author: akshanka
+ms.date: 12/10/2020
+author: ThomasWeiss
+ms.author: thweiss
 ms.custom: devx-track-java
-ms.openlocfilehash: 1f3f5a35beeac6c683aeb6db16a417b897755666
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a5da5e1717f897d2236fd73f0fff525e157f7a0e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079761"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093683"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>如何通过 Java 使用 Azure 表存储或 Azure Cosmos DB 表 API
+
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-本文介绍如何创建表、存储数据以及对数据执行 CRUD 操作。 选择 Azure 表服务或 Azure Cosmos DB 表 API。 这些示例用 Java 编写并使用[用于 Java 的 Azure 存储 SDK][Azure Storage SDK for Java]。 涉及的方案包括 **创建** 、 **列出** 和 **删除** 表，以及 **插入** 、 **查询** 、 **修改** 和 **删除** 表中的实体。 有关表的详细信息，请参阅[后续步骤](#next-steps)部分。
+本文介绍如何创建表、存储数据以及对数据执行 CRUD 操作。 选择 Azure 表服务或 Azure Cosmos DB 表 API。 这些示例用 Java 编写并使用[用于 Java 的 Azure 存储 SDK v8][Azure Storage SDK for Java]。 涉及的方案包括 **创建**、**列出** 和 **删除** 表，以及 **插入**、**查询**、**修改** 和 **删除** 表中的实体。 有关表的详细信息，请参阅[后续步骤](#next-steps)部分。
+
+> [!IMPORTANT]
+> 支持表存储的 Azure 存储 SDK 的最新版本为 [v8][Azure Storage SDK for Java]。 即将推出新版本的适用于 Java 的表存储 SDK。
 
 > [!NOTE]
 > SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅[用于 Android 的 Azure 存储 SDK][Azure Storage SDK for Android]。
@@ -435,7 +439,7 @@ catch (Exception e)
 
 ## <a name="modify-an-entity"></a>修改实体
 
-要修改实体，请从表服务中检索它，对实体对象进行更改，然后通过替换或合并操作将更改保存回表服务。 以下代码将更改现有客户的电话号码。 此代码将调用 **TableOperation.replace** ，而不是像执行插入时那样调用 **TableOperation.insert** 。 **CloudTable.execute** 方法将调用表服务，并替换该实体，除非在此应用程序检索到该实体之后另一个应用程序对它进行了更改。 如果出现这种情况，则会引发异常，必须再次检索、修改并保存该实体。 此乐观并发重试模式在分布式存储系统中很常见。
+要修改实体，请从表服务中检索它，对实体对象进行更改，然后通过替换或合并操作将更改保存回表服务。 以下代码将更改现有客户的电话号码。 此代码将调用 **TableOperation.replace**，而不是像执行插入时那样调用 **TableOperation.insert**。 **CloudTable.execute** 方法将调用表服务，并替换该实体，除非在此应用程序检索到该实体之后另一个应用程序对它进行了更改。 如果出现这种情况，则会引发异常，必须再次检索、修改并保存该实体。 此乐观并发重试模式在分布式存储系统中很常见。
 
 ```java
 try
@@ -628,7 +632,7 @@ catch (Exception e)
 有关详细信息，请访问[面向 Java 开发人员的 Azure](/java/azure)。
 
 [Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
-[Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
+[Azure Storage SDK for Java]: https://github.com/Azure/azure-storage-java/tree/v8.6.5
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Azure 存储客户端 SDK 参考]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: /rest/api/storageservices/

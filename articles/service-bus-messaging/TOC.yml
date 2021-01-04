@@ -96,6 +96,22 @@
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
     - name: 优化性能
       href: service-bus-performance-improvements.md
+    - name: 联合
+      items:
+        - name: 消息复制和跨区域联合
+          href: service-bus-federation-overview.md
+        - name: 消息复制任务和应用程序
+          href: service-bus-federation-replicator-functions.md
+        - name: 消息复制任务模式
+          href: service-bus-federation-patterns.md
+        - name: 已配置的复制任务
+          href: service-bus-federation-configuration.md
+        - name: 复制服务总线实体之间的事件
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopy'
+        - name: 将消息复制到事件中心
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
+        - name: 从事件中心获取消息
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
     - name: 异地灾难恢复和异地复制
       href: service-bus-geo-dr.md
     - name: 异步消息传送和高可用性

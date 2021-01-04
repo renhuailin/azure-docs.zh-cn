@@ -32,7 +32,7 @@
       href: search-get-started-dotnet.md
     - name: Java
       href: search-get-started-java.md
-    - name: Javascript
+    - name: JavaScript
       href: search-get-started-javascript.md
     - name: REST
       href: search-get-started-rest.md
@@ -372,7 +372,7 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: 通过专用终结点访问
               href: search-indexer-howto-access-private.md
-        - name: 基于标识的访问
+        - name: 文档级安全性
           items:
             - name: 安全筛选器
               href: search-security-trimming-for-azure-search.md
@@ -550,6 +550,8 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: 开发人员课程 (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
+    - name: 合作伙伴解决方案
+      href: resource-partners-knowledge-mining.md
     - name: 常见问题解答
       href: search-faq-frequently-asked-questions.md
     - name: 定价

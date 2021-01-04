@@ -1,25 +1,25 @@
 ---
-title: 快速入门：Azure 队列存储库 v12 - Java
-description: 了解如何使用 Azure 队列 Java v12 库创建队列并向队列中添加消息。 接下来，介绍如何在队列中读取和删除消息。 还将介绍如何删除队列。
+title: 快速入门：Azure 队列存储客户端库 v12 - Java
+description: 介绍如何使用适用于 Java 的 Azure 队列存储客户端库 v12 创建队列并在其中添加消息。 然后介绍如何在队列中读取和删除消息。 还将介绍如何删除队列。
 author: mhopkins-msft
-ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 12/01/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.openlocfilehash: 4c96b84aa53d2a9f4d6e44ac84cf0ce9e0ecac04
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.custom: devx-track-java
+ms.openlocfilehash: 814531adc9dafa524797d0c2674a1e600e407bed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491921"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588209"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入门：适用于 Java 的 Azure 队列存储客户端库 v12
 
-适用于 Java 的 Azure 队列存储客户端库版本 12 入门。 Azure 队列存储服务可存储大量消息供稍后检索和处理。 请按照以下步骤安装程序包并试用基本任务的示例代码。
+适用于 Java 的 Azure 队列存储客户端库 v12 入门。 Azure 队列存储是一项可存储大量消息供以后检索和处理的服务。 请按照以下步骤安装程序包并试用基本任务的示例代码。
 
-使用适用于 Java 的 Azure 队列存储客户端库 v12：
+使用适用于 Java 的 Azure 队列存储客户端库 v12 完成以下操作：
 
 - 创建队列
 - 向队列添加消息
@@ -48,9 +48,9 @@ ms.locfileid: "96491921"
 
 ### <a name="create-the-project"></a>创建项目
 
-创建名为 queues-quickstart-v12 的 Java 应用程序。
+创建名为 blob-quickstart-v12 的 Java 应用程序`queues-quickstart-v12`。
 
-1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 Maven 创建名为 queues-quickstart-v12 的新控制台应用。 键入以下“mvn”命令，创建“Hello World!” Java 项目。
+1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 Maven 创建名为 blob-quickstart-v12 的新控制台应用`queues-quickstart-v12`。 键入以下 `mvn` 命令，创建“hello world”Java 项目。
 
     # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -113,7 +113,7 @@ ms.locfileid: "96491921"
     [INFO] ------------------------------------------------------------------------
     ```
 
-1. 切换到新创建的 queues-quickstart-v12 目录。
+1. 切换到新创建的 `queues-quickstart-v12` 目录。
 
    ```console
    cd queues-quickstart-v12
@@ -121,7 +121,7 @@ ms.locfileid: "96491921"
 
 ### <a name="install-the-package"></a>安装包
 
-在文本编辑器中打开 pom.xml 文件。 将以下依赖项元素添加到依赖项组。
+在文本编辑器中打开 pom.xml 文件`pom.xml`。 将以下依赖项元素添加到依赖项组。
 
 ```xml
 <dependency>
@@ -135,9 +135,9 @@ ms.locfileid: "96491921"
 
 从项目目录中执行以下操作：
 
-1. 导航到 /src/main/java/com/queues/quickstart 目录
-1. 在编辑器中打开 App.java 文件
-1. 删除 `System.out.println("Hello world!");` 语句
+1. 导航到 `/src/main/java/com/queues/quickstart` 目录
+1. 在编辑器中打开 `App.java` 文件
+1. 删除 `System.out.println("Hello, world");` 语句
 1. 添加 `import` 指令
 
 代码如下：
@@ -146,7 +146,7 @@ ms.locfileid: "96491921"
 package com.queues.quickstart;
 
 /**
- * Azure queue storage v12 SDK quickstart
+ * Azure Queue Storage client library v12 quickstart
  */
 import com.azure.storage.queue.*;
 import com.azure.storage.queue.models.*;
@@ -165,7 +165,7 @@ public class App
 
 ## <a name="object-model"></a>对象模型
 
-Azure 队列存储是一个可存储大量消息的服务。 队列消息大小最大可为 64 KB。 一个队列可以包含数百万条消息，直至达到存储帐户的总容量限值。 队列通常用于创建要异步处理的积压工作 (backlog)。 队列存储提供三种类型的资源：
+Azure 队列存储是一项可存储大量消息的服务。 队列消息大小最大可为 64 KB。 一个队列可以包含数百万条消息，直至达到存储帐户的总容量限值。 队列通常用于创建要异步处理的积压工作 (backlog)。 队列存储提供了三种类型的资源：
 
 - 存储帐户
 - 存储帐户中的队列
@@ -177,10 +177,10 @@ Azure 队列存储是一个可存储大量消息的服务。 队列消息大小�
 
 使用以下 Java 类与这些资源进行交互：
 
-- [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder)：`QueueClientBuilder` 类配置并实例化一个 `QueueClient` 对象。
-- [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient)：通过 `QueueServiceClient` 可管理存储帐户中的所有队列。
-- [QueueClient](/java/api/com.azure.storage.queue.queueclient)：通过 `QueueClient` 类可管理和操纵单个队列及其消息。
-- [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem)：`QueueMessageItem` 类表示在队列中调用 [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) 时返回的各个对象。
+- [`QueueClientBuilder`](/java/api/com.azure.storage.queue.queueclientbuilder)：`QueueClientBuilder` 类配置并实例化一个 `QueueClient` 对象。
+- [`QueueServiceClient`](/java/api/com.azure.storage.queue.queueserviceclient)：可以通过 `QueueServiceClient` 管理存储帐户中的所有队列。
+- [`QueueClient`](/java/api/com.azure.storage.queue.queueclient)：可以通过 `QueueClient` 类管理和操作单个队列及其消息。
+- [`QueueMessageItem`](/java/api/com.azure.storage.queue.models.queuemessageitem)：`QueueMessageItem` 类表示在队列上调用 [`ReceiveMessages`](/java/api/com.azure.storage.queue.queueclient.receivemessages) 时返回的单个对象。
 
 ## <a name="code-examples"></a>代码示例
 
@@ -201,7 +201,7 @@ Azure 队列存储是一个可存储大量消息的服务。 队列消息大小�
 在 `main` 方法内添加此代码：
 
 ```java
-System.out.println("Azure Queues storage v12 - Java quickstart sample\n");
+System.out.println("Azure Queue Storage client library v12 - Java quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
@@ -214,12 +214,12 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 
 ### <a name="create-a-queue"></a>创建队列
 
-确定新队列的名称。 以下代码将 GUID 值追加到队列名称，从而确保其是唯一的。
+确定新队列的名称。 以下代码将 GUID 值追加到队列名称，确保其独一无二。
 
 > [!IMPORTANT]
-> 队列名称只能包含小写字母、数字和连字符，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。 名称的长度还必须介于 3 到 63 个字符之间。 有关命名队列的详细信息，请参阅[命名队列和元数据](/rest/api/storageservices/naming-queues-and-metadata)。
+> 队列名称只能包含小写字母、数字和连字符，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。 名称的长度还必须介于 3 到 63 个字符之间。 若要详细了解如何命名队列，请参阅[命名队列和元数据](/rest/api/storageservices/naming-queues-and-metadata)。
 
-创建 [QueueClient](/java/api/com.azure.storage.queue.queueclient) 类的实例。 然后，调用 [create](/java/api/com.azure.storage.queue.queueclient.create) 方法，以便在存储帐户中创建队列。
+创建 [`QueueClient`](/java/api/com.azure.storage.queue.queueclient) 类的实例。 然后，通过调用 [`Create`](/java/api/com.azure.storage.queue.queueclient.create) 方法，在存储帐户中创建队列。
 
 将此代码添加到 `main` 方法的末尾：
 
@@ -242,7 +242,7 @@ queueClient.create();
 
 ### <a name="add-messages-to-a-queue"></a>向队列添加消息
 
-下面的代码片段调用 [sendMessage](/java/api/com.azure.storage.queue.queueclient.sendmessage) 方法将消息添加到队列中。 它还保存从 `sendMessage` 调用返回的 [SendMessageResult](/java/api/com.azure.storage.queue.models.sendmessageresult)。 结果用于稍后在程序中更新消息。
+以下代码片段通过调用 [`sendMessage`](/java/api/com.azure.storage.queue.queueclient.sendmessage) 方法，将消息添加到队列。 它还保存从 `sendMessage` 调用返回的 [`SendMessageResult`](/java/api/com.azure.storage.queue.models.sendmessageresult)。 结果用于稍后在程序中更新消息。
 
 将此代码添加到 `main` 方法的末尾：
 
@@ -259,7 +259,7 @@ SendMessageResult result = queueClient.sendMessage("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>查看队列中的消息
 
-调用 [peekMessages](/java/api/com.azure.storage.queue.queueclient.peekmessages) 方法来查看队列中的消息。 `peelkMessages` 方法从队列的前部检索一条或多条消息，但不会更改消息的可见性。
+通过调用 [`peekMessages`](/java/api/com.azure.storage.queue.queueclient.peekmessages) 方法，查看队列中的消息。 此方法从队列前面检索一条或多条消息，但不更改消息的可见性。
 
 将此代码添加到 `main` 方法的末尾：
 
@@ -273,7 +273,7 @@ queueClient.peekMessages(10, null, null).forEach(
 
 ### <a name="update-a-message-in-a-queue"></a>更新队列中的消息
 
-调用 [updateMessage](/java/api/com.azure.storage.queue.queueclient.updatemessage) 方法来更新消息的内容。 `updateMessage` 方法可以更改消息的可见性超时和内容。 消息内容必须是不超过 64 KB 的 UTF-8 编码字符串。 除消息的新内容外，还要使用 `SendMessageResult` 在代码中传入之前保存的消息 ID 和 pop 收据。 消息 ID 和 pop 收据标识要更新的消息。
+通过调用 [`updateMessage`](/java/api/com.azure.storage.queue.queueclient.updatemessage) 方法来更新消息的内容。 此方法可以更改消息的可见性超时和内容。 消息内容必须是不超过 64 KB 的 UTF-8 编码字符串。 除消息的新内容外，还要使用 `SendMessageResult` 在代码中传入之前保存的消息 ID 和 pop 收据。 消息 ID 和 pop 收据标识要更新的消息。
 
 ```java
 System.out.println("\nUpdating the third message in the queue...");
@@ -288,7 +288,7 @@ queueClient.updateMessage(result.getMessageId(),
 
 ### <a name="receive-and-delete-messages-from-a-queue"></a>接收和删除队列中的消息
 
-调用 [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) 方法来下载以前添加的消息。 接收并处理消息后，此示例代码还会从队列中删除消息。 在本例中，“处理”即在控制台上显示消息。
+通过调用 [`receiveMessages`](/java/api/com.azure.storage.queue.queueclient.receivemessages) 方法，下载以前添加的消息。 接收并处理消息后，此示例代码还会从队列中删除消息。 在本例中，“处理”即在控制台上显示消息。
 
 在接收和删除消息之前，应用会调用 `System.console().readLine();` 以暂停并等待用户输入。 在删除资源之前，请先在 [Azure 门户](https://portal.azure.com)中验证资源已正确创建。 未显式删除的任何消息都将在队列中再次变为可见，以方便再一次进行处理。
 
@@ -313,7 +313,7 @@ queueClient.receiveMessages(10).forEach(
 
 ### <a name="delete-a-queue"></a>删除队列
 
-以下代码使用 [delete](/java/api/com.azure.storage.queue.queueclient.delete) 方法删除队列，从而清除该应用所创建的资源。
+以下代码使用 [`Delete`](/java/api/com.azure.storage.queue.queueclient.delete) 方法来删除队列，以便清除该应用所创建的资源。
 
 将此代码添加到 `main` 方法的末尾：
 
@@ -344,7 +344,7 @@ mvn compile
 mvn package
 ```
 
-运行以下 `mvn` 命令以执行应用。
+使用以下 `mvn` 命令运行应用。
 
 ```console
 mvn exec:java -Dexec.mainClass="com.queues.quickstart.App" -Dexec.cleanupDaemonThreads=false
@@ -353,7 +353,7 @@ mvn exec:java -Dexec.mainClass="com.queues.quickstart.App" -Dexec.cleanupDaemonT
 应用的输出类似于以下示例：
 
 ```output
-Azure Queues storage v12 - Java quickstart sample
+Azure Queue Storage client library v12 - Java quickstart sample
 
 Adding messages to the queue...
 
@@ -378,7 +378,7 @@ Done
 
 当应用在接收到消息之前暂停时，请在 [Azure 门户](https://portal.azure.com)中检查存储帐户。 验证消息是否在队列中。
 
-按“Enter”键接收和删除消息。 出现提示时，请再次按“Enter”键，删除队列并完成演示。
+按 `Enter` 接收和删除消息。 出现提示时，请再次按 `Enter`，删除队列并完成演示。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -389,4 +389,4 @@ Done
 > [!div class="nextstepaction"]
 > [面向 Java 云开发人员的 Azure](/azure/developer/java/)
 
-- 若要查看更多 Azure 队列存储示例应用，请继续阅读 [Azure 队列存储 SDK v12 Java 客户端库示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)。
+- 有关 Azure 队列存储示例应用的详细信息，请参阅[适用于 Java 的 Azure 队列存储客户端库 v12 示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)。

@@ -7,16 +7,17 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 31ad9450c775e5e4e7ae543241b48f8c372ad9ee
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 7713b7596b21e02e941a19f64d3658ab0f5f51f5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749196"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359007"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>教程：使用 Azure Database for MySQL 灵活服务器在 AKS 上部署 WordPress 应用
 
-本快速入门介绍如何使用 Azure CLI 通过 Azure Database for MySQL 灵活服务器（预览版）在 Azure Kubernetes 服务 (AKS) 群集上部署 WordPress 应用程序。 [AKS](../../aks/intro-kubernetes.md) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 [Azure Database for MySQL 灵活服务器（预览版）](overview.md)是一种完全托管的数据库服务，旨在针对数据库管理功能和配置设置提供更精细的控制和更大的灵活性。 当前，灵活服务器处于预览阶段。
+本快速入门介绍如何使用 Azure CLI 通过 Azure Database for MySQL 灵活服务器（预览版）在 Azure Kubernetes 服务 (AKS) 群集上部署 WordPress 应用程序。 
+[AKS](../../aks/intro-kubernetes.md) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 [Azure Database for MySQL 灵活服务器（预览版）](overview.md)是一种完全托管的数据库服务，旨在针对数据库管理功能和配置设置提供更精细的控制和更大的灵活性。 当前，灵活服务器处于预览阶段。
 
 > [!NOTE]
 > - Azure Database for MySQL 灵活服务器当前以公共预览版提供
@@ -115,7 +116,7 @@ az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
 - 由于该命令使用本地上下文，因此它会在资源组```wordpress-project``` 和区域 ```eastus``` 中创建服务器。
 
 
-## <a name="build-your-wordpress-docker-image"></a>生成 WordPress docker 映像
+### <a name="build-your-wordpress-docker-image"></a>生成 WordPress docker 映像
 
 下载[最新 WordPress](https://wordpress.org/download/) 版本。 为项目创建新的目录 ```my-wordpress-app```，并使用这个简单的文件夹结构
 
@@ -173,6 +174,7 @@ define('DB_COLLATE', '');
 define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 ```
 
+### <a name="create-a-dockerfile"></a>创建 Dockerfile
 创建新的 Dockerfile 并复制此代码片段。 此 Dockerfile 使用 PHP 设置 Apache Web 服务器并启用 mysqli 扩展。
 
 ```docker
@@ -182,12 +184,12 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-enable mysqli
 ```
 
-## <a name="build-your-docker-image"></a>生成 Docker 映像
-使用 ```cd``` 命令确保你位于终端的目录 ```my-wordpress-app``` 中。 运行以下命令以生成公告板映像：
+### <a name="build-your-docker-image"></a>生成 Docker 映像
+使用 ```cd``` 命令确保你位于终端的目录 ```my-wordpress-app``` 中。 运行以下命令生成映像：
 
 ``` bash
 
-docker build --tag myblog:latest . 
+docker build --tag myblog:latest .
 
 ```
 
@@ -272,8 +274,6 @@ kubectl apply -f mywordpress.yaml
 
 ```output
 deployment "wordpress-blog" created
-service "php-svc" created
-deployment "azure-vote-front" created
 service "php-svc" created
 ```
 

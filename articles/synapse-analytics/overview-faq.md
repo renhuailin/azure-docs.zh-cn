@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 671ca73cfa898be532521599d1211d2a8081eb4b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576020"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563256"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics 常见问题解答
 
@@ -59,7 +59,7 @@ Synapse RBAC 角色：
 
 答：Synapse 工作区支持用户定义的文件夹。
 
-### <a name="q-can-i-link-more-than-one-power-bi-workspaces-to-a-single-azure-synapse-workspace"></a>问：能否将多个 Power BI 工作区链接到单个 Azure Synapse 工作区？
+### <a name="q-can-i-link-more-than-one-power-bi-workspace-to-a-single-azure-synapse-workspace"></a>问：能否将多个 Power BI 工作区链接到单个 Azure Synapse 工作区？
     
 答：目前，只能将一个 Power BI 工作区链接到一个 Azure Synapse 工作区。 
 
@@ -69,7 +69,7 @@ Synapse RBAC 角色：
 
 ### <a name="q-does-azure-synapse-workspace-support-cicd"></a>问：Azure Synapse 工作区是否支持 CI/CD？ 
 
-答：是的！ 所有管道项目、笔记本、SQL 脚本和 Spark 作业定义都将驻留在 GIT 中。 所有池定义都将作为 ARM 模板存储在 GIT 中。 专用 SQL 池对象（架构、表、视图等）将通过具有 CI/CD 支持的数据库项目进行管理。
+答：是的！ 所有管道工件、笔记本、SQL 脚本和 Spark 作业定义都将驻留在 Git 中。 所有池定义都将作为 ARM 模板存储在 Git 中。 专用 SQL 池对象（架构、表、视图等）将通过具有 CI/CD 支持的数据库项目进行管理。
 
 ## <a name="pipelines"></a>管道
 
@@ -91,7 +91,7 @@ Synapse RBAC 角色：
 
 答：Apache Spark for Synapse 就是 Apache Spark，只是增加了对与（AAD、AzureML 等）其他服务集成的支持，还有更多的库（mssparktuils、Hummingbird）和预优化的性能配置。
 
-目前在 Apache Spark 上运行的任何工作负载都可按原样在 MSFT Spark 上运行。 
+目前在 Apache Spark 上运行的任何工作负载都可按原样在 Apache Spark for Azure Synapse 上运行。 
 
 ### <a name="q-what-versions-of-spark-are-available"></a>问：Spark 有哪些版本可用？
 
@@ -121,13 +121,13 @@ Synapse RBAC 角色：
  
 为满足此场景，应为每个开发人员提供一个无服务器 Spark 池，并将其设置为使用少量 Spark 资源。 由于无服务器 Spark 池在被主动使用之前不会产生任何费用，因此有多个开发人员时可以将成本降到最低。 池共享元数据（Spark 表），因此这些开发人员可以轻松合作。
 
-### <a name="q-how-do-i-include-manage-and-install-libraries"></a>问：如何包括、管理和安装库 
+### <a name="q-how-do-i-include-manage-and-install-libraries"></a>问：如何包括、管理和安装库？
 
 答：可以在从 synapse 工作区或 Azure 门户创建 Spark 池时安装外部包。 请参阅[在 Azure Synapse Analytics 中管理 Apache Spark 库](./spark/apache-spark-azure-portal-add-libraries.md)。
 
 ## <a name="dedicated-sql-pools"></a>专用 SQL 池
 
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-pools"></a>问：专用 SQL 池和无服务器池之间有什么功能差异
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-pools"></a>问：专用 SQL 池和无服务器池之间有什么功能差异？
 
 答：可以在 [Synapse SQL 中的 T-SQL 功能差异](./sql/overview-features.md)中找到差异的完整列表。
 
@@ -140,7 +140,7 @@ Synapse RBAC 角色：
 答：默认情况下，所有新的专用 SQL 池都将部署到工作区；但是如果有需要，仍然可以使用独立的外形规格创建专用 SQL 池（以前称为 SQL DW）。 
 
 
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pool"></a>问：专用 SQL 池和无服务器 SQL 池之间有什么功能差异 
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>问：专用 SQL 池和无服务器 SQL 池之间有什么功能差异？
 
 答：可以在 [Synapse SQL 中的 T-SQL 功能差异](./sql/overview-features.md)中找到差异的完整列表。
 

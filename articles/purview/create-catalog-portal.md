@@ -1,18 +1,18 @@
 ---
 title: 快速入门：在 Azure 门户中创建 Azure Purview 帐户（预览版）
 description: 本快速入门介绍如何创建 Azure Purview 帐户并配置权限以开始使用它。
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: c9e0b155a4cf34373bb6d851241dc62ddd661045
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3119152e4a7d0dc799dfe273722101c95c11c0c9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602340"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400380"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Purview 帐户
 
@@ -30,6 +30,10 @@ ms.locfileid: "96602340"
 * 你的帐户必须有权在订阅中创建资源
 
 * 如果 Azure Policy 阻止所有应用程序创建存储帐户和 EventHub 命名空间，则需要使用标记设置策略例外，这可以在创建 Purview 帐户的过程中输入  。 主要原因是，对于创建的每个 Purview 帐户，它需要创建一个托管资源组，并在此资源组中创建存储帐户和 EventHub 命名空间。
+
+    > [!important]
+    > 如果你没有 Azure Policy 或现有 Azure Policy 未阻止创建存储帐户和 EventHub 命名空间，则无需执行此步骤 。
+
     1. 导航到 Azure 门户并搜索“策略”
     1. 遵循[创建自定义策略定义](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition)，或修改现有策略，以使用 `not` 运算符和 `resourceBypass` 标记添加两个例外：
 
@@ -151,7 +155,7 @@ ms.locfileid: "96602340"
 
 1. 选择“添加角色分配”。
 
-1. 对于 Purview Data Curator 角色或 Purview Data Source Administrator 角色中的角色类型，具体取决于要使用角色的服务主体（有关详细信息，请参阅[目录权限](catalog-permissions.md)） 。
+1. 对于 Purview Data Curator 角色或 Purview Data Source Administrator 角色中的角色类型，具体取决于要使用角色的安全主体（有关详细信息，请参阅[目录权限](catalog-permissions.md)和 [Azure Active Directory 中的应用程序和服务主体对象](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)） 。
 
 1. 对于“访问权限分配对象”，保留默认值，即“用户、组或服务主体” 。
 

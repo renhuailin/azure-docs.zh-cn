@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8979e315f188a5c21cce206c24f195f72096d438
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: b338b8ee93fb24cff54968630d4ff00deca0b64b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516507"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606719"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>用于存储的 Azure Defender 简介
 
@@ -20,7 +20,6 @@ ms.locfileid: "97516507"
 用于存储的 Azure Defender 是 Azure 原生安全智能层，用于检测试图访问或利用你的存储帐户的异常或可能有害的企图。 它利用安全 AI 的高级功能和[ Microsoft 威胁智能](https://go.microsoft.com/fwlink/?linkid=2128684)提供上下文安全警报和建议。
 
 当活动出现异常时，会触发安全警报。 这些警报与 Azure 安全中心集成，还通过电子邮件发送给订阅管理员，其中包含可疑活动的详细信息以及有关如何调查和修正威胁的建议。
-
 
 ## <a name="availability"></a>可用性
 
@@ -31,6 +30,17 @@ ms.locfileid: "97516507"
 |受保护的存储类型：|[Blob 存储](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure 文件](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov|
 |||
+
+
+## <a name="what-are-the-benefits-of-azure-defender-for-storage"></a>适用于存储的 Azure Defender 有哪些优点？
+
+适用于存储的 Azure Defender 提供：
+
+- **Azure 本机安全性** - 单击即可启用适用于存储的 Defender，可保护存储在 Azure Blob、Azure 文件存储和数据湖中的数据。 作为 Azure 本机服务，适用于存储的 Defender 可集中为 Azure 管理的所有数据资产提供安全性，并与 Azure Sentinel 等其他 Azure 安全服务集成。
+- **富检测套件** - 适用于存储的 Defender 中的检测功能由 Microsoft 威胁情报提供支持，可检测最常见的存储威胁风险，例如匿名访问、泄露凭据、社会工程、权限滥用和恶意内容。
+- **大规模响应** - 安全中心的自动化工具使你可以更轻松地阻止和响应已识别的威胁。 有关详细信息，请参阅[自动响应安全中心触发器](workflow-automation.md)。
+
+:::image type="content" source="media/defender-for-storage-introduction/defender-for-storage-high-level-overview.png" alt-text="适用于存储的 Azure Defender 功能的概要性介绍":::
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-storage-provide"></a>用于存储的 Azure Defender 提供哪种类型的警报？

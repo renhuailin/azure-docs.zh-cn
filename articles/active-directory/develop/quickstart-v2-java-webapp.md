@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: e93c0c6bb689980cab1b41e529c491cdf3920260
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e188c00840a4d043e94f94f9db565e2d4e06aaba
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591710"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031056"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -47,25 +47,22 @@ ms.locfileid: "94591710"
 >
 > 若要注册应用程序并将应用的注册信息手动添加到应用程序，请执行以下步骤：
 >
-> 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
->
-> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
-> 1. 选择“新注册”。
-> 1. “注册应用程序”页出现后，请输入应用程序的注册信息：
->    - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `java-webapp`。
->    - 选择“注册”  。
-> 1. 在“概述”页上，找到应用程序的“应用程序(客户端) ID”和“目录(租户) ID”值。 复制这些值，供以后使用。
-> 1. 从菜单选择“身份验证”，然后添加以下信息：
->    - 添加“Web”平台配置。  将这些 `https://localhost:8443/msal4jsample/secure/aad` 和 `https://localhost:8443/msal4jsample/graph/me` 添加为“重定向 URI”。
->    - 选择“保存”。
-> 1. 在菜单中选择“证书和密码”，然后在“客户端密码”部分中单击“新建客户端密码”：  
->
->    - 键入（实例应用密码的）密钥说明。
->    - 选择密钥持续时间“1 年”。
->    - 选择“添加”时，将显示密钥值。
->    - 复制密钥的值供以后使用。 此密钥值将不再显示，也无法通过其他任何方式检索，因此，在 Azure 门户中显示后，请尽快记下此值。
->
+> 1. 登录 [Azure 门户](https://portal.azure.com)。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 在“管理”下，选择“应用注册” > “新建注册”  。
+> 1. 输入应用程序的名称（例如 `java-webapp`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+> 1. 选择“注册”  。
+> 1. 在“概述”页面上，记下“应用程序(客户端) ID”和“目录(租户) ID”，以供稍后使用  。
+> 1. 在“管理”下，选择“身份验证”。 
+> 1. 选择“添加平台” > “Web” 。
+> 1. 从“重定向 URI”部分，选择 `https://localhost:8443/msal4jsample/secure/aad`。
+> 1. 选择“配置” 。
+> 1. 从“Web”部分，添加 `https://localhost:8443/msal4jsample/graph/me` 作为第二个“重定向 URI” 。
+> 1. 在“管理”下，选择“证书和机密” 。 从“客户端机密”部分，选择“新建客户端机密” 。
+> 1. 键入密钥说明（例如应用机密），保留默认的到期日期，然后选择“添加”。
+> 1. 记下“客户端密码”的值以供稍后使用 。
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
 >
@@ -150,9 +147,9 @@ ms.locfileid: "94591710"
 
 ##### <a name="running-from-ide"></a>从 IDE 运行
 
-如果从 IDE 运行 Web 应用程序，请单击“运行”，然后导航到项目的主页。 对于本示例，标准主页 URL 为 https://localhost:8443
+如果从 IDE 运行 Web 应用程序，选择“运行”，然后导航到项目的主页。 对于本示例，标准主页 URL 为 https://localhost:8443 。
 
-1. 在前面的页面上，选择“登录”按钮以重定向到 Azure Active Directory 并提示用户输入其凭据。
+1. 在前面的页面上，选择“登录”  按钮以重定向到 Azure Active Directory 并提示用户输入其凭据。
 
 1. 用户通过身份验证后，会重定向到 https://localhost:8443/msal4jsample/secure/aad。 他们现在已登录，页面将显示有关已登录帐户的信息。 示例 UI 包含以下按钮：
     - *注销*：从应用程序中注销当前用户，并将其重定向到主页。

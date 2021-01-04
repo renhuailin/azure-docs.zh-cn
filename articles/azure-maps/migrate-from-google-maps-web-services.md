@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 813cb567ab3edddd6fb37cee050dc5e38ee4289f
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 444e7c9ad06c6f2ad584c0701fa652b901a4c3e7
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904884"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680778"
 ---
-# <a name="tutorial---migrate-web-service-from-google-maps"></a>教程 - 从 Google Maps 迁移 Web 服务
+# <a name="tutorial-migrate-web-service-from-google-maps"></a>教程：从 Google Maps 迁移 Web 服务
 
 Azure Maps 和 Google Maps 都通过 REST Web 服务提供对空间 API 的访问。 这些平台的 API 接口执行类似的功能。 但是，每个接口使用不同的命名约定和响应对象。
 
@@ -29,7 +29,7 @@ Azure Maps 和 Google Maps 都通过 REST Web 服务提供对空间 API 的访�
 > * 计算距离矩阵
 > * 获取时区详细信息
 
-你还将了解： 
+你还将了解：
 
 > [!div class="checklist"]
 > * 从 Google Maps Web 服务迁移时，使用哪种 Azure Maps REST 服务
@@ -56,8 +56,7 @@ Azure Maps 和 Google Maps 都通过 REST Web 服务提供对空间 API 的访�
 - 地理位置
 - 位置详细信息和照片 - 电话号码和网站 URL 在 Azure Maps 搜索 API 中可用。
 - 地图 URL
-- 最近的道路 - 这可以使用 Web SDK 实现（如[此处](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
-)所示），但目前不作为服务提供。
+- 最近的道路 - 这可以使用 Web SDK 实现（如[此处](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic)所示），但目前不作为服务提供。
 - 静态街道视图
 
 Azure Maps 提供其他几个你可能会感兴趣的 REST Web 服务：
@@ -65,7 +64,7 @@ Azure Maps 提供其他几个你可能会感兴趣的 REST Web 服务：
 - [空间操作](/rest/api/maps/spatial)：将复杂的空间计算和操作（例如地理围栏）负载分散到某个服务。
 - [交通](/rest/api/maps/traffic)：访问实时交通流量和事件数据。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>先决条件
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 2. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -123,17 +122,17 @@ Azure Maps 提供多种反向地理编码方法：
 
 Azure Maps 反向地理编码 API 提供 Google Maps 所不能提供的其他一些功能。 在迁移应用时，这些功能可能对集成应用程序有帮助：
 
-- 检索限速数据
-- 检索道路使用信息：地方道路、干道、限制进入、匝道等
-- 检索坐标所在的街道一侧
+* 检索限速数据
+* 检索道路使用信息：地方道路、干道、限制进入、匝道等
+* 检索坐标所在的街道一侧
 
 ## <a name="search-for-points-of-interest"></a>搜索兴趣点
 
 在 Google Maps 中可以使用地点搜索 API 搜索兴趣点数据。 此 API 提供三种不同的方式来搜索兴趣点：
 
-- **从文本中查找地点：** 基于兴趣点的名称、地址或电话号码搜索该兴趣点。
-- **附近搜索：** 搜索位于某个位置特定距离内的兴趣点。
-- **文本搜索：** 使用包含兴趣点和位置信息的自由格式文本来搜索地点。 例如，“纽约的披萨店”或“主街附近的餐厅”。
+* **从文本中查找地点：** 基于兴趣点的名称、地址或电话号码搜索该兴趣点。
+* **附近搜索：** 搜索位于某个位置特定距离内的兴趣点。
+* **文本搜索：** 使用包含兴趣点和位置信息的自由格式文本来搜索地点。 例如，“纽约的披萨店”或“主街附近的餐厅”。
 
 Azure Maps 提供多个搜索 API 用于搜索兴趣点：
 
@@ -192,9 +191,9 @@ Azure Maps 提供多个搜索 API 用于搜索兴趣点：
 
 使用 Azure Maps 计算路线和方向。 Azure Maps 具有许多与 Google Maps 路线服务相同的功能，例如：
 
-- 抵达和出发时间。
-- 实时和基于预测的交通路线。
-- 不同的交通方式。 例如驾车、步行、自行车。
+* 抵达和出发时间。
+* 实时和基于预测的交通路线。
+* 不同的交通方式。 例如驾车、步行、自行车。
 
 > [!NOTE]
 > Azure Maps 要求以坐标提供中途点。 必须先对地址进行地理编码。
@@ -231,16 +230,16 @@ Azure Maps 路线服务提供以下 API 来计算路线：
 
 Azure Maps 路线 API 提供 Google Maps 所不能提供的其他许多功能。 在迁移应用时，请考虑使用这些功能，你可能会发现它们很有用。
 
-- 路线类型支持：最短、最快、trilling 和最省油。
-- 其他交通方式支持：公共汽车、摩托车、出租车、货车和面包车。
-- 支持 150 个中途点。
-- 计算单个请求中的多个旅行时间；历史交通状况、实时交通状况、无交通状况。
-- 避开其他道路类型：共乘车道、土路、已占用的道路。
-- 指定要避开的自定义区域。
-- 限制路线可以提升到的高度。
-- 基于发动机规格规划路线。 根据发动机规格和剩余燃料或电量计算燃料汽车或电动车的路线。
-- 支持商务车路线参数。 例如车辆尺寸、重量、轴数和货物类型。
-- 指定最大车速。
+* 路线类型支持：最短、最快、trilling 和最省油。
+* 其他交通方式支持：公共汽车、摩托车、出租车、货车和面包车。
+* 支持 150 个中途点。
+* 计算单个请求中的多个旅行时间；历史交通状况、实时交通状况、无交通状况。
+* 避开其他道路类型：共乘车道、土路、已占用的道路。
+* 指定要避开的自定义区域。
+* 限制路线可以提升到的高度。
+* 基于发动机规格规划路线。 根据发动机规格和剩余燃料或电量计算燃料汽车或电动车的路线。
+* 支持商务车路线参数。 例如车辆尺寸、重量、轴数和货物类型。
+* 指定最大车速。
 
 除此之外，Azure Maps 中的路线服务还支持[计算可达范围](/rest/api/maps/route/getrouterange)。 可达范围也称为等时线。 这种计算会生成一个多边形，其中涵盖了在指定的时间内或根据剩余的燃料/电量， 从某个原点朝任意方向可以行进到的区域。
 
@@ -290,7 +289,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 可以通过在 URL 中使用 `markers` 参数来添加标记。 `markers` 参数采用某种样式以及要在地图上呈现的位置列表，其中，样式如下所示：
 
-```
+```text
 &markers=markerStyles|markerLocation1|markerLocation2|...
 ```
 
@@ -300,21 +299,20 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 添加采用 `optionName:value` 格式的标记样式，多个样式以竖线 (\|) 字符分隔，例如 “optionName1:value1\|optionName2:value2”。 请注意，选项名称和值以冒号(:) 分隔。 使用以下样式选项名称来为 Google Maps 中的标记设置样式：
 
-- `color` – 默认标记图标的颜色。 可以是 24 位十六进制颜色 (`0xrrggbb`) 或以下值之一：`black`、`brown`、`green`、`purple`、`yellow`、`blue`、`gray`、`orange`、`red`、`white`。
-- `label` – 要在图标顶部显示的单个大写字母数字字符。
-- `size` - 标记的大小。 可以是 `tiny`、`mid` 或 `small`。
+* `color` – 默认标记图标的颜色。 可以是 24 位十六进制颜色 (`0xrrggbb`) 或以下值之一：`black`、`brown`、`green`、`purple`、`yellow`、`blue`、`gray`、`orange`、`red`、`white`。
+* `label` – 要在图标顶部显示的单个大写字母数字字符。
+* `size` - 标记的大小。 可以是 `tiny`、`mid` 或 `small`。
 
 对 Google Maps 中的自定义图标使用以下样式选项名称：
 
-- `anchor` – 指定如何将图标图像与坐标对齐。 可以是像素 (x,y) 值或以下值之一：`top`、`bottom`、`left`、`right`、`center`、`topleft`、`topright`、`bottomleft` 或 `bottomright`。
-- `icon` - 指向图标图像的 URL。
+* `anchor` – 指定如何将图标图像与坐标对齐。 可以是像素 (x,y) 值或以下值之一：`top`、`bottom`、`left`、`right`、`center`、`topleft`、`topright`、`bottomleft` 或 `bottomright`。
+* `icon` - 指向图标图像的 URL。
 
 例如，让我们将中等大小的红色标记添加到地图中的经度：-110，纬度：45：
 
-```
+```text
 &markers=color:red|size:mid|45,-110
 ```
-
 
 ![Google Maps 标记](media/migrate-google-maps-web-services/google-maps-marker.png)
 
@@ -322,7 +320,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 通过在 URL 中指定 `pins` 参数，将标记添加到静态地图图像。 与 Google Maps 一样，可以在此参数中指定样式和位置列表。 可以指定 `pins` 参数多次，以支持采用不同样式的标记。
 
-```
+```text
 &pins=iconType|pinStyles||pinLocation1|pinLocation2|...
 ```
 
@@ -332,27 +330,27 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 `iconType` 指定要创建的图钉类型。 该选项可具有以下值：
 
-- `default` – 默认的图钉图标。
-- `none` – 不显示图标，只呈现标签。
-- `custom` – 指定要使用的自定义图标。 可将指向图标图像的 URL 添加到图钉位置信息后的 `pins` 参数的末尾。
-- `{udid}` – 存储在 Azure Maps 数据存储平台中的图标的唯一数据 ID (UDID)。
+* `default` – 默认的图钉图标。
+* `none` – 不显示图标，只呈现标签。
+* `custom` – 指定要使用的自定义图标。 可将指向图标图像的 URL 添加到图钉位置信息后的 `pins` 参数的末尾。
+* `{udid}` – 存储在 Azure Maps 数据存储平台中的图标的唯一数据 ID (UDID)。
 
 添加采用 `optionNameValue` 格式的图钉样式。 使用竖线 (\|) 字符分隔多个样式。 例如：`iconType|optionName1Value1|optionName2Value2`。 不用分隔选项名称和值。 使用以下样式选项名称来为标记设置样式：
 
-- `al` – 指定标记的不透明度 (alpha)。 选择 0 到 1 的数字。
-- `an` – 指定图钉定位点。 以“x y”格式指定 X 和 Y 轴值。
-- `co` – 图钉的颜色。 指定 24 位十六进制颜色：`000000` 到 `FFFFFF`。
-- `la` – 指定标签定位点。 以“x y”格式指定 X 和 Y 轴值。
-- `lc` – 标签的颜色。 指定 24 位十六进制颜色：`000000` 到 `FFFFFF`。
-- `ls` – 标签的大小（以像素为单位）。 选择大于 0 的数字。
-- `ro` – 图标的旋转度数值。 选择 -360 到 360 的数字。
-- `sc` – 图钉图标的比例值。 选择大于 0 的数字。
+* `al` – 指定标记的不透明度 (alpha)。 选择 0 到 1 的数字。
+* `an` – 指定图钉定位点。 以“x y”格式指定 X 和 Y 轴值。
+* `co` – 图钉的颜色。 指定 24 位十六进制颜色：`000000` 到 `FFFFFF`。
+* `la` – 指定标签定位点。 以“x y”格式指定 X 和 Y 轴值。
+* `lc` – 标签的颜色。 指定 24 位十六进制颜色：`000000` 到 `FFFFFF`。
+* `ls` – 标签的大小（以像素为单位）。 选择大于 0 的数字。
+* `ro` – 图标的旋转度数值。 选择 -360 到 360 的数字。
+* `sc` – 图钉图标的比例值。 选择大于 0 的数字。
 
 为每个图钉位置指定标签值。 此方法比向位置列表中的所有标记应用单个标签值更加高效。 标签值可以是包含多个字符的字符串。 将字符串括在单引号中，以确保不会错误地将它视为样式或位置值。
 
 让我们添加一个具有标签“Space Needle”、定位在 (15 50) 下的红色 (`FF0000`) 默认图标。 该图标的位置为经度：-122.349300，纬度：47.620180：
 
-```
+```text
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
 ```
 
@@ -360,7 +358,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 添加具有标签值“1”、“2”和“3”的三个图钉：
 
-```
+```text
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
 ```
 
@@ -372,7 +370,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 通过在 URL 中使用 `path` 参数，将线条和多边形添加到静态地图图像。 `path` 参数采用某种样式以及要在地图上呈现的位置列表，如下所示：
 
-```
+```text
 &path=pathStyles|pathLocation1|pathLocation2|...
 ```
 
@@ -382,14 +380,14 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 添加采用 `optionName:value` 格式的路径样式，使用竖线 (\|) 字符分隔多个样式。 使用冒号(:) 分隔选项名称和值。 例如：`optionName1:value1|optionName2:value2`。 可使用以下样式选项名称来为 Google Maps 中的路径设置样式：
 
-- `color` – 路径或多边形轮廓的颜色。 可以是 24 位十六进制颜色 (`0xrrggbb`)、32 位十六进制颜色 (`0xrrggbbbaa`) 或以下值之一：black、brown、green、purple、yellow、blue、gray、orange、red、white。
-- `fillColor` – 用于填充路径区域（多边形）的颜色。 可以是 24 位十六进制颜色 (`0xrrggbb`)、32 位十六进制颜色 (`0xrrggbbbaa`) 或以下值之一：black、brown、green、purple、yellow、blue、gray、orange、red、white。
-- `geodesic` – 指示路径是否应为遵循地球曲率的线条。
-- `weight` – 路径线条的粗细（以像素为单位）。
+* `color` – 路径或多边形轮廓的颜色。 可以是 24 位十六进制颜色 (`0xrrggbb`)、32 位十六进制颜色 (`0xrrggbbbaa`) 或以下值之一：black、brown、green、purple、yellow、blue、gray、orange、red、white。
+* `fillColor` – 用于填充路径区域（多边形）的颜色。 可以是 24 位十六进制颜色 (`0xrrggbb`)、32 位十六进制颜色 (`0xrrggbbbaa`) 或以下值之一：black、brown、green、purple、yellow、blue、gray、orange、red、white。
+* `geodesic` – 指示路径是否应为遵循地球曲率的线条。
+* `weight` – 路径线条的粗细（以像素为单位）。
 
 在 URL 参数中，将红色线条不透明度和像素粗细添加到地图上的坐标之间。 在以下示例中，线条不透明度为 50%，粗细为 4 像素。 坐标为经度：-110，纬度：45）和（经度：-100，纬度：50。
 
-```
+```text
 &path=color:0xFF000088|weight:4|45,-110|50,-100
 ```
 
@@ -399,7 +397,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 通过在 URL 中指定 `path` 参数，将线条和多边形添加到静态地图图像。 与 Google Maps 一样，可以在此参数中指定样式和位置列表。 指定 `path` 参数多次，以呈现采用不同样式的多个圆、线条和多边形。
 
-```
+```text
 &path=pathStyles||pathLocation1|pathLocation2|...
 ```
 
@@ -407,16 +405,16 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 添加采用 `optionNameValue` 格式的路径样式。 使用竖线 (\|) 字符分隔多个样式，例如 `optionName1Value1|optionName2Value2`。 不用分隔选项名称和值。 使用以下样式选项名称来为 Azure Maps 中的路径设置样式：
 
-- `fa` - 呈现多边形时使用的填充颜色不透明度 (alpha)。 选择 0 到 1 的数字。
-- `fc` - 用于呈现多边形区域的填充颜色。
-- `la` – 在呈现多边形的线条和轮廓时使用的线条颜色不透明 (alpha)。 选择 0 到 1 的数字。
-- `lc` – 用于呈现多边形的线条和轮廓的线条颜色。
-- `lw` – 线条的宽度（以像素为单位）。
-- `ra` – 指定圆的半径（以米为单位）。
+* `fa` - 呈现多边形时使用的填充颜色不透明度 (alpha)。 选择 0 到 1 的数字。
+* `fc` - 用于呈现多边形区域的填充颜色。
+* `la` – 在呈现多边形的线条和轮廓时使用的线条颜色不透明 (alpha)。 选择 0 到 1 的数字。
+* `lc` – 用于呈现多边形的线条和轮廓的线条颜色。
+* `lw` – 线条的宽度（以像素为单位）。
+* `ra` – 指定圆的半径（以米为单位）。
 
 在 URL 参数中，将红色线条不透明度和像素粗细添加到坐标之间。 在以下示例中，线条不透明度为 50%，粗细为 4 像素。 坐标值如下：经度：-110，纬度：45）和（经度：-100，纬度：50。
 
-```
+```text
 &path=lcFF0000|la.5|lw4||-110 45|-100 50
 ```
 
@@ -481,11 +479,15 @@ Azure Maps 提供一个 API 用于检索坐标所在的时区。 Azure Maps 时�
 
 Azure Maps 为以下编程语言提供客户端库：
 
-- JavaScript、TypeScript、Node.js – [文档](how-to-use-services-module.md) \| [NPM 包](https://www.npmjs.com/package/azure-maps-rest)
+* JavaScript、TypeScript、Node.js – [文档](how-to-use-services-module.md) \| [NPM 包](https://www.npmjs.com/package/azure-maps-rest)
 
 这些开源客户端库适用于其他编程语言：
 
-- .NET Standard 2.0 – [GitHub 项目](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet 包](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+* .NET Standard 2.0 – [GitHub 项目](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet 包](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+
+## <a name="clean-up-resources"></a>清理资源
+
+没有要清理的资源。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -493,18 +495,3 @@ Azure Maps 为以下编程语言提供客户端库：
 
 > [!div class="nextstepaction"]
 > [有关搜索的最佳做法](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [搜索地址](how-to-search-for-address.md)
-
-> [!div class="nextstepaction"]
-> [路线规划最佳做法](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Azure Maps REST 服务 API 参考文档](/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [代码示例](/samples/browse/?products=azure-maps)
-
-> [!div class="nextstepaction"]
-> [如何使用服务模块 (Web SDK)](how-to-use-best-practices-for-routing.md)

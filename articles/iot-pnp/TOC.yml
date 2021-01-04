@@ -57,8 +57,6 @@
   items:
     - name: 安装和使用 IoT 资源管理器
       href: howto-use-iot-explorer.md
-    - name: 安装和 IoT 即插即用桥接
-      href: howto-use-iot-pnp-bridge.md
     - name: 安装和使用 DTDL 创作工具
       href: howto-use-dtdl-authoring-tools.md
     - name: 使用嵌入的 C
@@ -67,6 +65,10 @@
       href: howto-manage-digital-twin.md
     - name: 认证设备
       href: howto-certify-device.md
+    - name: 安装和 IoT 即插即用桥接
+      href: howto-use-iot-pnp-bridge.md
+    - name: 构建、部署、扩展 IoT 即插即用桥接
+      href: howto-build-deploy-extend-pnp-bridge.md
 - name: 参考
   items:
     - name: 库和 SDK

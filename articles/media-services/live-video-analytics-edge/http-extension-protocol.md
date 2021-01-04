@@ -3,16 +3,18 @@ title: HTTP 扩展协议 - Azure
 description: 在本文中，你将学习如何使用 HTTP 扩展协议在实时视频分析模块与 AI 或 CV 模块之间发送消息。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f1e1fb0e8fe63b3a83c59a4ec48abdac7f22096a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 52c98231780a2776f4ff67992f29b247eccb8bc2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016648"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399139"
 ---
 # <a name="http-extension-protocol"></a>HTTP 扩展协议
 
-在本文中，你将学习如何使用 HTTP 扩展协议在实时视频分析模块与 AI 或 CV 模块之间发送消息。
+使用 IoT Edge 上的实时视频分析，可以通过[图形扩展节点](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/media-graph-extension-concept?branch=release-lva-dec-update)扩展媒体图处理功能。 如果使用 HTTP 扩展处理器作为扩展节点，则实时视频分析模块与 AI 或 CV 模块之间的通信是通过 HTTP 进行的
+
+在本文中，你将学习如何使用 HTTP 扩展协议在实时视频分析模块与 AI 或 CV 模块之间发送消息。 
 
 HTTP 协定在以下两个组件之间定义：
 
@@ -85,19 +87,16 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
 }
 ```
 
-强烈建议使用有效的 JSON 文档按照下面定义的预定义架构返回响应。 这可以更好地确保与其他组件的互操作性，以及与未来可能添加到实时视频分析模块的功能的互操作性。
+强烈建议使用有效的 JSON 文档返回响应，并采用按照[推理元数据架构对象模型](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update)定义的预建立架构。 这可以更好地确保与其他组件的互操作性，以及与未来可能添加到实时视频分析模块的功能的互操作性。
 
 如果你的模块返回的响应的内容类型不是“application/json”，则实时视频分析会将消息编码为 base 64 内容，并将其序列化为不透明的 JSON 有效负载。
 
-如果你的模块返回的响应的内容类型为“application/json”，但 JSON 架构不遵循下面列出的推理元数据架构，则将通过管道转发消息有效负载，但互操作性会降低。
+如果你的模块返回的响应的内容类型为“application/json”，但 JSON 架构不遵循下面列出的推理元数据架构，则将通过管道转发消息有效负载，但互操作性会降低。 有关推理元数据架构的详细信息和最新信息，请参阅[此处](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update)。
 
 > [!NOTE]
 > 如果你的模块未生成任何结果，则它应返回响应正文为空的 HTTP 204 状态代码（无内容）。 实时视频分析会将此内容视为空结果，不会在整个管道中转发该事件。
 
-## <a name="data-contracts---class-hierarchy"></a>数据协定 - 类层次结构
-
-![类层次结构](./media/http-extension-protocol/class-hierarchy.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-[gRPC 数据协定](./grpc-extension-protocol.md)
+[gRPC 扩展协议](./grpc-extension-protocol.md)

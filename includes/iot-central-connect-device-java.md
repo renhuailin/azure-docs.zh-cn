@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 5ad69fb6743676189de409df16c046d5361a5a91
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: ad305202daf09258bbd439e824fc07f1eed1c5af
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96126059"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033816"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "96126059"
 
 `main` 方法：
 
-* 调用 `initializeAndProvisionDevice` 来设置 `dtmi:com:example:Thermostat;1` 模型 ID、使用 DPS 来预配和注册设备、创建 DeviceClient 实例以及连接到 IoT Central 应用程序。
+* 调用 `initializeAndProvisionDevice` 来设置 `dtmi:com:example:Thermostat;1` 模型 ID、使用 DPS 来预配和注册设备、创建 DeviceClient 实例以及连接到 IoT Central 应用程序。 IoT Central 使用模型 ID 识别或生成此设备的设备模板。 若要了解详细信息，请参阅[将设备与设备模板关联](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)。
 * 为 `getMaxMinReport` 命令创建命令处理程序。
 * 为可写 `targetTemperature` 属性创建属性更新处理程序。
 * 启动线程以发送温度遥测数据，每五秒更新一次 `maxTempSinceLastReboot` 属性。
@@ -90,7 +90,7 @@ public static void main(String[] args) throws URISyntaxException, IOException, P
 }
 ```
 
-`initializeAndProvisionDevice` 方法说明设备如何使用 DPS 注册并连接到 IoT Central。 有效负载包括模型 ID：
+`initializeAndProvisionDevice` 方法说明设备如何使用 DPS 注册并连接到 IoT Central。 有效负载包括 IoT Central 用于[将设备与设备模板关联](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)的模型 ID：
 
 ```java
 private static void initializeAndProvisionDevice() throws ProvisioningDeviceClientException, IOException, URISyntaxException, InterruptedException {

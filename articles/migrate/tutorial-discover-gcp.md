@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 9053246ef747236d9efbc9239ced46b0c421f5bb
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 767617833789c71bfc2ecfc2d518166f8bcee6c6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753087"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109515"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>教程：使用服务器评估发现 Google Cloud Platform (GCP) 实例
 
@@ -238,7 +238,15 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 
 现在，从设备连接到要发现的 GCP 服务器，并启动发现。
 
-1. 在 **步骤 1：提供用于发现 Windows 和 Linux 物理服务器或虚拟服务器的凭据** 中，单击“添加凭据”，为凭据指定一个易记名称，并为 Windows 或 Linux 服务器添加“用户名”和“密码”  。 单击“保存” 。
+1. 在 **步骤 1：提供用于发现 Windows 和 Linux 物理服务器或虚拟服务器的凭据，单击“添加凭据”** 。
+1. 对于 Windows 服务器，选择作为 Windows 服务器的源类型，指定凭据的友好名称，添加用户名和密码。单击“保存” 。
+1. 如果将基于密码的身份验证用于 Linux 服务器，请选择“Linux 服务器(基于密码)”作为源类型，为凭据指定易用名称，添加用户名和密码。单击“保存” 。
+1. 如果将基于 SSH 密钥的身份验证用于 Linux 服务器，可选择“Linux 服务器(基于 SSH 密钥)”作为源类型，为凭据指定易用名称，添加用户名，浏览并选择 SSH 私钥文件。 单击“保存” 。
+
+    - Azure Migrate 支持由 ssh-keygen 命令使用 RSA、DSA、ECDSA 和 ed25519 算法生成的 SSH 私钥。
+    - 目前 Azure Migrate 不支持基于密码的 SSH 密钥。 请使用不含密码的 SSH 密钥。
+    - 目前 Azure Migrate 不支持 PuTTY 生成的 SSH 私钥文件。
+
 2. 如果要一次添加多个凭据，请单击“添加更多”，以保存和添加更多凭据。 
 3. 在“步骤 2：提供物理服务器或虚拟服务器详细信息”中，单击“添加发现源”，以指定服务器 IP地址/FQDN 以及为用于连接到服务器的凭据指定易记名称  。
 4. 可以一次“添加单个项目”，也可以一次“添加多个项目” 。 还有一个选项是通过“导入 CSV”提供服务器详细信息。

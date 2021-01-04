@@ -3,22 +3,22 @@ title: 快速入门：使用适用于 .NET 的 Azure 存储 v11 来管理队列
 description: 本快速入门介绍如何使用 .NET 的 Azure 存储客户端库创建队列并在其中添加消息。 接下来，介绍如何在队列中读取和处理消息。
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 07/24/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f7368025993c91490d808ef0ae5f5f66233fe666
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 23703dc507aa909aea4711289a4d7d5c5e6a170e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345612"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588193"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>快速入门：使用适用于 .NET 的 Azure 存储 SDK v11 来管理队列
 
-本快速入门介绍如何使用适用于 .NET 的 Azure 存储客户端库 11 版创建队列并在其中添加消息。 接下来，介绍如何在队列中读取和处理消息。
+本快速入门介绍如何使用 .NET 的 Azure 存储客户端库 v11 创建队列并在其中添加消息。 接下来，介绍如何在队列中读取和处理消息。
 
 > [!NOTE]
 > 此快速启动使用 Azure 队列存储客户端库的旧版本。 若要开始使用最新版本，请参阅[快速入门：适用于 .NET 的 Azure 队列存储客户端库 v12](storage-quickstart-queues-dotnet.md)。
@@ -50,13 +50,13 @@ ms.locfileid: "93345612"
 
 本快速入门中使用的示例应用程序是基本的控制台应用程序。 可以浏览 [GitHub](https://github.com/Azure-Samples/storage-queues-dotnet-quickstart) 上的示例应用程序。
 
-使用 [git](https://git-scm.com/) 可将应用程序的副本下载到开发环境。
+使用 [Git](https://git-scm.com/) 可将应用程序的副本下载到开发环境。
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-此命令会将存储库克隆到本地 git 文件夹。 若要打开 Visual Studio 解决方案，请找到 *storage-queues-dotnet-quickstart* 文件夹并将其打开，然后双击“storage-queues-dotnet-quickstart.sln”。
+此命令会将存储库克隆到本地 Git 文件夹。 若要打开 Visual Studio 解决方案，请查找 `storage-queues-dotnet-quickstart` 文件夹并将其打开，然后双击 `storage-queues-dotnet-quickstart.sln`。
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -98,7 +98,7 @@ export STORAGE_CONNECTION_STRING=<yourconnectionstring>
 
 ### <a name="windows"></a>Windows
 
-如果使用 Visual Studio 作为编辑器，可以按 **F5** 运行应用程序。
+如果使用 Visual Studio 作为编辑器，可以按 `F5` 运行应用程序。
 
 否则，请导航到应用程序目录，并使用 `dotnet run` 命令运行应用程序。
 
@@ -148,7 +148,7 @@ Press any key to delete the sample queue.
 
 ### <a name="try-parsing-the-connection-string"></a>尝试分析连接字符串
 
-该示例首先检查环境变量是否包含一个连接字符串，该字符串在经过分析后可以创建一个指向存储帐户的 [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) 对象。 该示例使用 [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) 方法检查连接字符串是否有效。 如果 **TryParse** 成功，它会初始化 *storageAccount* 变量并返回 **true** 。
+该示例首先检查环境变量是否包含一个连接字符串，该字符串在经过分析后可以创建一个指向存储帐户的 [`CloudStorageAccount`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) 对象。 该示例使用 [`TryParse`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) 方法检查连接字符串是否有效。 如果 `TryParse` 成功，它将初始化 `storageAccount` 变量并返回 `true`。
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -204,7 +204,7 @@ Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToStrin
 Console.WriteLine();
 ```
 
-若要添加未过期的消息，请在对 [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) 的调用中使用 `Timespan.FromSeconds(-1)`。
+若要添加未过期的消息，请在对 [`AddMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) 的调用中使用 `Timespan.FromSeconds(-1)`。
 
 ```csharp
 await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
@@ -262,18 +262,18 @@ if (queue != null)
 
 ## <a name="resources-for-developing-net-applications-with-queues"></a>用于开发包含队列的 .NET 应用程序的资源
 
-请参阅以下附加资源，了解如何开发包含 Azure 队列的 .NET 应用程序：
+请参阅以下附加资源，了解如何开发包含 Azure 队列存储的 .NET 应用程序：
 
 ### <a name="binaries-and-source-code"></a>二进制文件和源代码
 
 - 下载最新版本的[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage)的 NuGet 包
-  - [通用](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+  - [通用](https://www.nuget.org/packages/microsoft.azure.storage.common/)
   - [队列](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - 查看 GitHub 上的 [.NET 客户端库源代码](https://github.com/Azure/azure-storage-net)。
 
-### <a name="client-library-reference-and-samples"></a>客户端库参考和示例
+### <a name="azure-storage-client-library-reference-and-samples"></a>Azure 存储客户端库参考和示例
 
-- 参阅 [.NET API 参考](/dotnet/api/overview/azure/storage)，详细了解 .NET 客户端库。
+- 有关 .NET 客户端库的详细信息，请参阅[适用于 .NET 的 Azure 存储客户端库参考](/dotnet/api/overview/azure/storage)。
 - 浏览使用 .NET 客户端库编写的[队列存储示例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues)。
 
 ## <a name="next-steps"></a>后续步骤

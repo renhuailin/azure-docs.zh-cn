@@ -1,58 +1,60 @@
 ---
-title: 队列存储的性能与可伸缩性查检表 - Azure 存储
+title: 队列存储的性能与可伸缩性清单 - Azure 存储
 description: 开发高性能应用程序时有关队列存储的经证实的做法查检表。
-services: storage
 author: tamram
-ms.service: storage
-ms.topic: overview
-ms.date: 10/10/2019
+services: storage
 ms.author: tamram
+ms.date: 10/10/2019
+ms.topic: overview
+ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e86950581255bd4e3a78b0b4a3f599a24a3cad0
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4040a81d5b509ddbdd355953e28721a7c9fccfb8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345748"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585660"
 ---
+<!-- docutune:casing "Timeout and Server Busy errors" -->
+
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>队列存储的性能与可伸缩性查检表
 
-在开发使用队列存储的高性能应用程序方面，Microsoft 制定了许多经过证实的做法。 此查检表列出了开发人员在优化性能时可以遵循的关键做法。 在设计应用程序时以及在整个流程中，请牢记这些做法。
+在开发高性能队列存储应用程序方面，Microsoft 制定了许多经过证实的做法。 此查检表列出了开发人员在优化性能时可以遵循的关键做法。 在设计应用程序时以及在整个流程中，请牢记这些做法。
 
 Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能目标。 有关 Azure 存储可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)和[队列存储的可伸缩性和性能目标](scalability-targets.md)。
 
 ## <a name="checklist"></a>清单
 
-本文以查检表的形式组织了在开发队列存储应用程序时在性能方面可以遵循的经过证实的做法。
+本文将经过验证的性能做法整理成检查表，你在开发队列存储应用程序时可以遵循该检查表。
 
 | 完成 | 类别 | 设计注意事项 |
-| --- | --- | --- |
-| &nbsp; |可伸缩性目标 |[是否可将应用程序设计为避免使用的存储帐户数超过最大数目？](#maximum-number-of-storage-accounts) |
-| &nbsp; |可伸缩性目标 |[是否要避免接近容量和事务限制？](#capacity-and-transaction-targets) |
-| &nbsp; |网络 |[客户端设备是否具有足够高的带宽和足够低的延迟，以实现所需的性能？](#throughput) |
-| &nbsp; |网络 |[客户端设备是否具有优质网络链接？](#link-quality) |
-| &nbsp; |网络 |[客户端应用程序是否位于存储帐户所在的同一区域？](#location) |
-| &nbsp; |直接客户端访问 |[是否使用共享访问签名 (SAS) 和跨源资源共享 (CORS) 来实现对 Azure 存储的直接访问？](#sas-and-cors) |
-| &nbsp; |.NET 配置 |[是否使用 .NET Core 2.1 或更高版本来实现最佳性能？](#use-net-core) |
-| &nbsp; |.NET 配置 |[是否已将客户端配置为使用足够数量的并发连接？](#increase-default-connection-limit) |
-| &nbsp; |.NET 配置 |[对于 .NET 应用程序，是否已将 .NET 配置为使用足够数量的线程？](#increase-minimum-number-of-threads) |
-| &nbsp; |并行度 |[是否能够确保对并行度进行适当的界定，使客户端功能不会过载或接近可伸缩性目标？](#unbounded-parallelism) |
-| &nbsp; |工具 |[是否使用 Microsoft 提供的最新版客户端库和工具？](#client-libraries-and-tools) |
-| &nbsp; |重试 |[是否对限制错误和超时使用重试策略和指数退避？](#timeout-and-server-busy-errors) |
-| &nbsp; |重试 |[对于不可重试的错误，应用程序是否会避免重试？](#non-retryable-errors) |
-| &nbsp; |配置 |[是否已关闭 Nagle 算法以改进小型请求的性能？](#disable-nagle) |
-| &nbsp; |消息大小 |[消息是否经过压缩，以此来改进队列的性能？](#message-size) |
-| &nbsp; |批量检索 |[是否使用单个 GET 操作检索多个消息？](#batch-retrieval) |
-| &nbsp; |轮询频率 |[是否会进行足够频繁的轮询，以减少感知到的应用程序的延迟？](#queue-polling-interval) |
-| &nbsp; |更新消息 |[是否使用“更新消息”操作来存储消息处理进度，以便在发生错误时不必重新处理整个消息？](#use-update-message) |
-| &nbsp; |体系结构 |[是否会将长时间运行的工作负载置于关键路径之外，以便使用队列来提高整个应用程序的伸缩性，然后再进行独立的伸缩？](#application-architecture) |
+|--|--|--|
+| &nbsp; | 可伸缩性目标 | [是否可将应用程序设计为避免使用的存储帐户数超过最大数目？](#maximum-number-of-storage-accounts) |
+| &nbsp; | 可伸缩性目标 | [是否要避免接近容量和事务限制？](#capacity-and-transaction-targets) |
+| &nbsp; | 网络 | [客户端设备是否具有足够高的带宽和足够低的延迟，以实现所需的性能？](#throughput) |
+| &nbsp; | 网络 | [客户端设备是否具有优质网络链接？](#link-quality) |
+| &nbsp; | 网络 | [客户端应用程序是否位于存储帐户所在的同一区域？](#location) |
+| &nbsp; | 直接客户端访问 | [是否使用共享访问签名 (SAS) 和跨源资源共享 (CORS) 来实现对 Azure 存储的直接访问？](#sas-and-cors) |
+| &nbsp; | .NET 配置 | [是否使用 .NET Core 2.1 或更高版本来实现最佳性能？](#use-net-core) |
+| &nbsp; | .NET 配置 | [是否已将客户端配置为使用足够数量的并发连接？](#increase-default-connection-limit) |
+| &nbsp; | .NET 配置 | [对于 .NET 应用程序，是否已将 .NET 配置为使用足够数量的线程？](#increase-the-minimum-number-of-threads) |
+| &nbsp; | 并行度 | [是否能够确保对并行度进行适当的界定，使客户端功能不会过载或接近可伸缩性目标？](#unbounded-parallelism) |
+| &nbsp; | 工具 | [是否使用 Microsoft 提供的最新版客户端库和工具？](#client-libraries-and-tools) |
+| &nbsp; | 重试 | [是否对限制错误和超时使用重试策略和指数退避？](#timeout-and-server-busy-errors) |
+| &nbsp; | 重试 | [对于不可重试的错误，应用程序是否会避免重试？](#non-retryable-errors) |
+| &nbsp; | 配置 | [是否已关闭 Nagle 的算法以改进小型请求的性能？](#disable-nagles-algorithm) |
+| &nbsp; | 消息大小 | [消息是否经过压缩，以此来改进队列的性能？](#message-size) |
+| &nbsp; | 批量检索 | [是否使用单个 GET 操作检索多条消息？](#batch-retrieval) |
+| &nbsp; | 轮询频率 | [是否会进行足够频繁的轮询，以减少感知到的应用程序的延迟？](#queue-polling-interval) |
+| &nbsp; | 更新消息 | [是否要执行更新消息操作来存储消息处理进度，以便在发生错误时不必重新处理整个消息？](#perform-an-update-message-operation) |
+| &nbsp; | 体系结构 | [是否会将长时间运行的工作负载置于关键路径之外，以便使用队列来提高整个应用程序的伸缩性，然后再进行独立的伸缩？](#application-architecture) |
 
 ## <a name="scalability-targets"></a>可伸缩性目标
 
-如果应用程序接近或超过任何可伸缩性目标，则可能会出现事务处理延迟或限制越来越严重的现象。 当 Azure 存储对应用程序进行限制时，该服务将开始返回 503（服务器繁忙）或 500（操作超时）错误代码。 保持在可伸缩性目标限制范围内，以避免这些错误，是增强应用程序性能的重要组成部分。
+如果应用程序接近或超过任何可伸缩性目标，则可能会出现事务处理延迟或限制越来越严重的现象。 当 Azure 存储对应用程序进行限制时，该服务将开始返回 503 (`Server Busy`) 或 500 (`Operation Timeout`) 错误代码。 保持在可伸缩性目标限制范围内，以避免这些错误，是增强应用程序性能的重要组成部分。
 
-有关队列服务可伸缩性目标的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](./scalability-targets.md#scale-targets-for-queue-storage)。
+有关队列存储可伸缩性目标的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](./scalability-targets.md#scale-targets-for-queue-storage)。
 
 ### <a name="maximum-number-of-storage-accounts"></a>最大存储帐户数
 
@@ -66,7 +68,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 - 重新考虑导致应用程序接近或超过可伸缩性目标的工作负载。 能否对其进行另外的设计，以便使用较少的带宽、容量或处理事务？
 - 如果应用程序肯定会超出伸缩性目标之一，请创建多个存储帐户并将应用程序数据跨多个这样的存储帐户进行分区。 如果使用这种模式，则在设计应用程序时，必须确保能够在以后添加更多的存储帐户，以便进行负载均衡。 存储帐户本身除了用于数据存储、事务处理或数据传输之外，并无其他开销。
 - 如果应用程序接近带宽目标，请考虑压缩客户端的数据，以减少将数据发送到 Azure 存储所需的带宽。 压缩数据虽然可以节省带宽并提高网络性能，但也可能会对性能带来负面影响。 评估客户端数据压缩和解压缩的额外处理要求对性能造成的影响。 请记住，存储压缩数据可能会使故障排除变得更复杂，因为使用标准工具查看这些数据可能会更困难。
-- 如果应用程序接近可伸缩性目标，请确保对重试使用指数退避。 最好是尝试通过实施本文中所述的建议来避免达到可伸缩性目标。 但是，对重试使用指数退避会导致应用程序无法快速重试，从而导致限制问题恶化。 有关详细信息，请参阅标题为[超时和服务器繁忙错误](#timeout-and-server-busy-errors)的部分。
+- 如果应用程序接近可伸缩性目标，请确保对重试使用指数退避。 最好是尝试通过实施本文中所述的建议来避免达到可伸缩性目标。 但是，对重试使用指数退避会导致应用程序无法快速重试，从而导致限制问题恶化。 有关详细信息，请参阅[超时和服务器繁忙错误](#timeout-and-server-busy-errors)部分。
 
 ## <a name="networking"></a>网络
 
@@ -82,7 +84,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 
 #### <a name="link-quality"></a>链接质量
 
-请注意，因错误和数据包丢失而导致的网络状况会降低有效吞吐量，使用任何网络都是这样。 WireShark 或 NetMon 可用于诊断此问题。
+请注意，因错误和数据包丢失而导致的网络状况会降低有效吞吐量，使用任何网络都是这样。 使用 WireShark 或网络监视器有助于诊断此问题。
 
 ### <a name="location"></a>位置
 
@@ -112,8 +114,8 @@ SAS 和 CORS 都有助于避免 Web 应用程序上出现不必要的负载。
 
 有关 .NET Core 的性能改进的详细信息，请参阅以下博客文章：
 
-- [Performance Improvements in .NET Core 3.0](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/)（.NET Core 3.0 的性能改进）
-- [Performance Improvements in .NET Core 2.1](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-2-1/)（.NET Core 2.1 的性能改进）
+- [.NET Core 3.0 的性能改进](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/)
+- [.NET Core 2.1 的性能改进](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-2-1/)
 
 ### <a name="increase-default-connection-limit"></a>提高默认连接限制
 
@@ -129,7 +131,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 有关详细信息，请参阅博客文章 [Web 服务：并发连接](/archive/blogs/darrenj/web-services-concurrent-connections)。
 
-### <a name="increase-minimum-number-of-threads"></a>增大最小线程数
+### <a name="increase-the-minimum-number-of-threads"></a>增大最小线程数
 
 如果结合异步任务使用同步调用，可能需要增大线程池中的线程数：
 
@@ -137,7 +139,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-有关详细信息，请参阅 [ThreadPool.SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) 方法。
+有关详细信息，请参阅 [`ThreadPool.SetMinThreads`](/dotnet/api/system.threading.threadpool.setminthreads) 方法。
 
 ## <a name="unbounded-parallelism"></a>不受限制的并行度
 
@@ -153,19 +155,19 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 ### <a name="timeout-and-server-busy-errors"></a>超时和服务器繁忙错误
 
-如果应用程序即将达到可伸缩性限制，Azure 存储可能会对其进行限制。 在某些情况下，Azure 存储可能会出于某种暂时性的状况而无法处理请求。 对于这两种情况，服务可能返回 503（服务器繁忙）或 500（超时）错误。 如果服务正在对数据分区进行重新均衡以提高吞吐量，则也可能会发生这些错误。 通常，客户端应用程序应重试导致上述某种错误的操作。 但是，如果 Azure 存储因为应用程序即将超出可伸缩性目标而限制应用程序，或者其他某种原因导致服务无法为请求提供服务，则过于频繁的重试可能会使问题变得更糟。 建议使用指数退避重试策略，客户端库默认采用此行为。 例如，应用程序可能会在 2 秒后、4 秒后、10 秒后，以及 30 秒后进行重试，最后彻底放弃重试。 这样，应用程序可明显减少其在服务中施加的负载，而不会使得导致出现限制的行为恶化。
+如果应用程序即将达到可伸缩性限制，Azure 存储可能会对其进行限制。 在某些情况下，Azure 存储可能会出于某种暂时性的状况而无法处理请求。 对于这两种情况，服务可能会返回 503 (`Server Busy`) 或 500 (`Timeout`) 错误。 如果服务正在对数据分区进行重新均衡以提高吞吐量，则也可能会发生这些错误。 通常，客户端应用程序应重试导致上述某种错误的操作。 但是，如果 Azure 存储因为应用程序即将超出可伸缩性目标而限制应用程序，或者其他某种原因导致服务无法为请求提供服务，则过于频繁的重试可能会使问题变得更糟。 建议使用指数退避重试策略，客户端库默认采用此行为。 例如，应用程序可能会在 2 秒后、4 秒后、10 秒后，以及 30 秒后进行重试，最后彻底放弃重试。 这样，应用程序可明显减少其在服务中施加的负载，而不会使得导致出现限制的行为恶化。
 
 连接错误可以立即重试，因为它不是限制造成的，而且应该是暂时性的。
 
 ### <a name="non-retryable-errors"></a>不可重试的错误
 
-客户端库将处理重试，同时能够识别哪些错误可重试，哪些不可重试。 但是，如果直接调用 Azure 存储 REST API，则不应重试某些错误。 例如，400（错误的请求）错误表示客户端应用程序发送了一个无法处理的请求（因为该请求未采用预期的格式）。 每次重新发送此请求都会导致相同的响应，因此没有必要重试。 如果直接调用 Azure 存储 REST API，请注意潜在错误以及是否应重试这些错误。
+客户端库将处理重试，同时能够识别哪些错误可重试，哪些不可重试。 但是，如果直接调用 Azure 存储 REST API，则不应重试某些错误。 例如，400 (`Bad Request`) 错误表示客户端应用程序发送了一个无法处理的请求（因为该请求未采用预期的格式）。 每次重新发送此请求都会导致相同的响应，因此没有必要重试。 如果直接调用 Azure 存储 REST API，请注意潜在错误以及是否应重试这些错误。
 
 有关 Azure 存储错误代码的详细信息，请参阅[状态和错误代码](/rest/api/storageservices/status-and-error-codes2)。
 
-## <a name="disable-nagle"></a>禁用 Nagle
+## <a name="disable-nagles-algorithm"></a>禁用 Nagle 的算法
 
-Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网络性能的方法。 不过，该方法并非适用于所有情况（例如高度交互式的环境）。 Nagle 的算法会对 Azure 表服务请求的性能造成负面影响，因此应尽量将其禁用。
+Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网络性能的方法。 不过，该方法并非适用于所有情况（例如高度交互式的环境）。 Nagle 的算法会对 Azure 表存储请求的性能造成负面影响，因此应尽量禁用。
 
 ## <a name="message-size"></a>消息大小
 
@@ -181,9 +183,9 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 
 如需最新成本信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
-## <a name="use-update-message"></a>使用“更新消息”
+## <a name="perform-an-update-message-operation"></a>执行更新消息操作
 
-可以使用“更新消息”操作来增大不可见性超时或更新消息的状态信息。 与作业每完成一步就将其从一个队列传到下一个队列的工作流相比，使用“更新消息”可能更高效。 应用程序可将作业状态保存到消息，然后可以继续工作，而不必在作业的每一步完成时，为了执行作业的下一步而将消息重新排队。 请注意，每个“更新消息”操作将计入到可伸缩性目标。
+可以执行更新消息操作来增大不可见性超时或更新消息的状态信息。 与作业每完成一步就将其从一个队列传到下一个队列的工作流相比，此方法可能更高效。 应用程序可将作业状态保存到消息，然后可以继续工作，而不必在作业的每一步完成时，为了执行作业的下一步而将消息重新排队。 请注意，每个更新消息操作都将计入到可伸缩性目标。
 
 ## <a name="application-architecture"></a>应用程序体系结构
 

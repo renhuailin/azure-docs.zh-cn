@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 49bc1a77e2e25cb069a89812603ff562b8a4c1cd
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 9e04006a0908832c623230d89caa62b0985f32e4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931446"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587938"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>教程：使用 ARM 模板部署虚拟机扩展
 
@@ -42,7 +42,7 @@ ms.locfileid: "96931446"
 
 ## <a name="prepare-a-powershell-script"></a>准备 PowerShell 脚本
 
-可以使用内联 PowerShell 脚本或脚本文件。  本教程介绍如何使用脚本文件。 从 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) 共享包含以下内容的 PowerShell 脚本：
+可以使用内联 PowerShell 脚本或脚本文件。 本教程介绍如何使用脚本文件。 从 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) 共享包含以下内容的 PowerShell 脚本：
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -105,12 +105,12 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 
 有关此资源定义的详细信息，请查看[扩展参考](/azure/templates/microsoft.compute/virtualmachines/extensions)。 下面是一些重要元素：
 
-* **名称**：由于扩展资源是虚拟机对象的子资源，因此其名称必须有虚拟机名称前缀。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。
-* **dependsOn**：在创建虚拟机以后创建扩展资源。
-* **fileUris**：存储脚本文件的位置。 如果不使用提供的位置，则需更新这些值。
-* **commandToExecute**：此命令调用脚本。
+* `name`：由于扩展资源是虚拟机对象的子资源，因此其名称必须有虚拟机名称前缀。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。
+* `dependsOn`：在创建虚拟机以后创建扩展资源。
+* `fileUris`：存储脚本文件的位置。 如果不使用提供的位置，则需更新这些值。
+* `commandToExecute`：此命令调用脚本。
 
-若要使用内联脚本，请删除“fileUris”并将“commandToExecute”更新为：
+若要使用内联脚本，请删除 `fileUris`，然后将 `commandToExecute` 更新为：
 
 ```powershell
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
@@ -120,7 +120,7 @@ powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools &
 
 还必须打开 HTTP 端口，以便访问 Web 服务器。
 
-1. 在模板中找到 **securityRules**。
+1. 在模板中找到 `securityRules`。
 1. 将以下规则添加到 **default-allow-3389** 旁边。
 
     ```json

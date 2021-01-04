@@ -8,18 +8,18 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.custom: mqtt
-ms.openlocfilehash: 8925b98269b67bfb8a96cb057982ee4e396f17ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41232ba3899d098c019674e4ca4a0a8f2f7d465f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81686230"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97345953"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>IoT Central 互联物流应用程序模板的体系结构
 
 
 
-合作伙伴和客户可以使用应用模板和以下指南来开发端到端**互联物流解决方案**。
+合作伙伴和客户可以使用应用模板和以下指南来开发端到端 **互联物流解决方案**。
 
 > [!div class="mx-imgBorder"]
 > ![互联物流仪表板](./media/concept-connected-logistics-architecture/connected-logistics-architecture.png)
@@ -27,7 +27,7 @@ ms.locfileid: "81686230"
 1. 一组将遥测数据发送到网关设备的 IoT 标记
 2. 将遥测和聚合见解发送到 IoT Central 的网关设备
 3. 数据被路由到所需的 Azure 服务以进行操作
-4. 可以使用 Azure 服务（如 ASA 或 Azure Functions）重新设置数据流的格式，并将其发送到所需的存储帐户 
+4. 可以使用 Azure 服务（如 ASA 或 Azure Functions）重新设置数据流的格式，并将其发送到所需的存储帐户
 5. 最终用户商业应用程序可以支持各种业务工作流
 
 ## <a name="details"></a>详细信息

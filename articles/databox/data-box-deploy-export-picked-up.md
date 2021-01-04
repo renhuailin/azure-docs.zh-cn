@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1035f7fb34ed5b2b11e3ef472ccda7cccc30f652
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142105"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359024"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>教程：退回 Azure Data Box（预览版）
 
@@ -56,9 +56,9 @@ ms.locfileid: "88142105"
 3. 确保发货标签显示在电子墨水显示屏上，并与承运人安排好取件。 如果该标签损坏或丢失，或者未显示在电子墨水显示屏上，请联系 Microsoft 支持部门。 在支持部门建议的情况下，可以在 Azure 门户中转到“概览”>“下载发货标签”。 下载发货标签，将其贴在设备上。 
 4. 如果要寄回设备，请安排 UPS 提货。 安排提货：
 
-    - 给本地 UPS 打电话（特定于国家/地区的免费电话号码）。
-    - 在通话中，引用反向装运跟踪号码，如电子墨水显示屏或打印的标签中所示。
-    - 如果未引用跟踪号码，UPS 将要求你在提货时支付额外费用。
+   - 给本地 UPS 打电话（特定于国家/地区的免费电话号码）。
+   - 在通话中，引用反向装运跟踪号码，如电子墨水显示屏或打印的标签中所示。 如果未引用跟踪号码，UPS 将在取件时要求支付额外费用。
+   - 如果在安排取件时出现任何问题，或者需要支付额外费用，请联系 Azure Data Box 运营人员。 将电子邮件发送到 [adbops@microsoft.com](mailto:adbops@microsoft.com)。
 
     也可以在最近的卸货位置放置 Data Box，而不是安排提货。
 4. 承运人提取 Data Box 并进行扫描后，门户中的订单状态将更新为“已提货”。 此外还会显示一个跟踪 ID。
@@ -194,7 +194,7 @@ ms.locfileid: "88142105"
 ---
 
 ## <a name="erasure-of-data-from-data-box"></a>从 Data Box 中擦除数据
- 
+
 设备到达 Azure 数据中心后，Data Box 将根据 [NIST SP 800-88 修订版 1 准则](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)擦除其磁盘上的数据。
 
 ## <a name="next-steps"></a>后续步骤

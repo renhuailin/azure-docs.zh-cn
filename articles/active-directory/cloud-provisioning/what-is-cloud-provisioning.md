@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9433945ffe1181b62ee193baf1c2dd0b89ec14c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0acef468aa53e456cd6fb416fe45558aee064699
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856800"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355811"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>什么是 Azure AD Connect 云预配？
 Azure AD Connect 云预配是一个新的 Microsoft 代理，旨在满足和实现在 Azure AD 中同步用户、组与联系人的混合标识目标。  它可以与 Azure AD Connect 同步一起使用，并提供以下优势：
@@ -72,6 +72,7 @@ Azure AD Connect 云预配是一个新的 Microsoft 代理，旨在满足和实�
 | Azure AD 域服务支持|● | |
 | [Exchange 混合写回](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
 | 支持对每个 AD 域配置 50,000 个以上的对象 |● | |
+| 跨域引用|● | |
 
 ## <a name="next-steps"></a>后续步骤 
 

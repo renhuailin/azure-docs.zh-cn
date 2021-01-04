@@ -2,18 +2,17 @@
 title: 在 Azure 中的 RHEL 虚拟机上为 SQL Server 配置可用性组 - Linux 虚拟机 | Microsoft Docs
 description: 了解如何在 RHEL 群集环境中设置高可用性和设置 STONITH
 ms.service: virtual-machines-linux
-ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 8e7ccacce732da4a0194af959abe94438451028a
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 533f5c9e38818a8e37482cbbb3a90602366eca6f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559042"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587207"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：在 Azure 中的 RHEL 虚拟机上为 SQL Server 配置可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -946,6 +945,9 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>在 Pacemaker 群集中创建可用性组资源
 
 我们将按照[在 Pacemaker 群集中创建可用性组资源](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only)指南进行操作。
+
+> [!NOTE]
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ### <a name="create-the-ag-cluster-resource"></a>创建 AG 群集资源
 

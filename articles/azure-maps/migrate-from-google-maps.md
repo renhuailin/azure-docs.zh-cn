@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 61b6f4a530ab1861c67b0bd4983167546e268957
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: decf289614179718d5c3424f6d4482a5ce2c43e1
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896321"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680725"
 ---
-# <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>教程 - 从 Google Maps 迁移到 Azure Maps
+# <a name="tutorial-migrate-from-google-maps-to-azure-maps"></a>教程：从 Google Maps 迁移到 Azure Maps
 
 本文介绍如何将基于 Web、移动和服务器的应用程序从 Google Maps 迁移到 Microsoft Azure Maps 平台。 本教程包括有关如何迁移到 Azure Maps 的比较代码示例、迁移建议和最佳做法。 本教程介绍：
 
 > [!div class="checklist"]
-> * Azure Maps 中提供的等效 Google Maps 功能的概要比较
-> * 需要考虑哪些许可差异
-> * 如何规划迁移
+> * Azure Maps 中提供的等效 Google Maps 功能的概要比较。
+> * 需要考虑哪些许可差异。
+> * 如何规划迁移。
 > * 在何处查找技术资源和支持。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>先决条件
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 2. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -70,16 +70,16 @@ Google Maps 提供基本的基于密钥的身份验证。 Azure Maps 提供基�
 
 从 Google 地图迁移到 Azure Maps 时，请考虑有关许可的以下要点。
 
-- Azure Maps 针对交互式地图的使用量（基于所加载地图图块的数量）收费， 而 Google 地图则针对地图控件的加载收费。 在交互式 Azure Maps SDK 中，地图图块会自动进行缓存以降低开发成本。 每加载 15 个地图图块，就会生成一个 Azure Maps 事务。 交互式 Azure Maps SDK 使用 512 像素的图块，平均每个页面视图生成一个或不到一个事务。
-- 通常情况下，将 Google 地图 Web 服务中的静态地图图像替换为 Azure Maps Web SDK 更为经济高效。 Azure Maps Web SDK 使用地图图块。 除非用户平移和缩放地图，否则每次加载地图时，此服务通常只生成事务的一小部分。 Azure Maps Web SDK 提供了根据需要禁用平移和缩放的选项。 此外，Azure Maps Web SDK 提供了比静态地图 Web 服务多得多的可视化选项。
-- Azure Maps 允许其平台中的数据存储在 Azure 中。 根据[使用条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)，还可以在其他位置缓存数据，时间长达六个月。
+* Azure Maps 针对交互式地图的使用量（基于所加载地图图块的数量）收费， 而 Google 地图则针对地图控件的加载收费。 在交互式 Azure Maps SDK 中，地图图块会自动进行缓存以降低开发成本。 每加载 15 个地图图块，就会生成一个 Azure Maps 事务。 交互式 Azure Maps SDK 使用 512 像素的图块，平均每个页面视图生成一个或不到一个事务。
+* 通常情况下，将 Google 地图 Web 服务中的静态地图图像替换为 Azure Maps Web SDK 更为经济高效。 Azure Maps Web SDK 使用地图图块。 除非用户平移和缩放地图，否则每次加载地图时，此服务通常只生成事务的一小部分。 Azure Maps Web SDK 提供了根据需要禁用平移和缩放的选项。 此外，Azure Maps Web SDK 提供了比静态地图 Web 服务多得多的可视化选项。
+* Azure Maps 允许其平台中的数据存储在 Azure 中。 根据[使用条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)，还可以在其他位置缓存数据，时间长达六个月。
 
 下面是 Azure Maps 的一些相关资源：
 
-- [Azure Maps 定价页](https://azure.microsoft.com/pricing/details/azure-maps/)
-- [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
-- [Azure Maps 使用条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)（包括在 Microsoft Online Services 条款中）
-- [在 Azure Maps 中选择适当的定价层](./choose-pricing-tier.md)
+* [Azure Maps 定价页](https://azure.microsoft.com/pricing/details/azure-maps/)
+* [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
+* [Azure Maps 使用条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)（包括在 Microsoft Online Services 条款中）
+* [在 Azure Maps 中选择适当的定价层](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>建议的迁移计划
 
@@ -119,15 +119,13 @@ Google Maps 提供基本的基于密钥的身份验证。 Azure Maps 提供基�
 
 开发人员可通过[论坛](/answers/topics/azure-maps.html)或众多 Azure 支持选项之一寻求迁移支持：[https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
+## <a name="clean-up-resources"></a>清理资源
+
+没有要清理的资源。
+
 ## <a name="next-steps"></a>后续步骤
 
 请参阅以下文章，详细了解如何迁移 Google 地图应用程序：
 
 > [!div class="nextstepaction"]
 > [迁移 Web 应用](migrate-from-google-maps-web-app.md)
-
-> [!div class="nextstepaction"]
-> [迁移 Web 服务](migrate-from-google-maps-web-services.md) 
-
-> [!div class="nextstepaction"]
-> [迁移 Android 应用](migrate-from-google-maps-android-app.md) 

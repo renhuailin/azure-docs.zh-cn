@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f621d11553101c2c0bcfce804b26c218ae58670c
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: f47ee36c0e7806afc10f8f0907825378c2d24410
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576462"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505539"
 ---
 # <a name="calling-client-library-overview"></a>呼叫客户端库概述
 
@@ -69,7 +69,7 @@ ms.locfileid: "96576462"
 
 *请注意，除前两个版本外，还支持最新版本的 Chrome。<br/>
 
-**请注意，支持 Safari 版本 13.1+。 尚不支持 Safari macOS 的传出视频，但它在 iOS 上受支持。 仅桌面 iOS 支持传出屏幕共享。
+**请注意，支持 Safari 版本 13.1+。 尚不支持 Safari macOS 的传出视频，但它在 iOS 上受支持。 仅桌面 iOS 支持传出屏幕共享。 Safari 目前不支持 1:1 通话和群组通话。
 
 ## <a name="calling-client---browser-security-model"></a>调用客户端 - 浏览器安全模型
 
@@ -90,6 +90,15 @@ WebRTC API（如 `getUserMedia`）要求通过 HTTPS 处理调用这些 API 的�
 ```html
 <iframe allow="camera *; microphone *">
 ```
+
+## <a name="calling-client-library-streaming-support"></a>呼叫客户端库流式传输支持
+通信服务呼叫客户端库支持以下流式传输配置：
+
+|           |Web | Android/iOS|
+|-----------|----|------------|
+|# 个可同时发送的传出数据流 |1 个视频 + 1 个屏幕共享 | 1 个视频 + 1 个屏幕共享|
+|# 个可同时呈现的传入数据流 |1 个视频 + 1 个屏幕共享| 6 个视频 + 1 个屏幕共享 |
+
 
 ## <a name="next-steps"></a>后续步骤
 

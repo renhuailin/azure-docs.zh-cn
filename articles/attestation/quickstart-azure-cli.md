@@ -7,20 +7,30 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dee9e7596c0a30301d9e0453ef22a6dfe9541522
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: fb8b0f12844ce1057bd3cfc4716a32ee64ec5586
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96020936"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937213"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>快速入门：使用 Azure CLI 设置 Azure 证明
 
 通过使用 Azure CLI 设置证明，开始使用 Azure 证明。
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
 ## <a name="get-started"></a>入门
+
+1. 使用以下 CLI 命令安装此扩展
+
+   ```azurecli
+   az extension add --name attestation
+   ```
+   
+1. 检查版本
+
+   ```azurecli
+   az extension show --name attestation --query version
+   ```
 
 1. 使用以下命令登录到 Azure：
 
@@ -55,19 +65,16 @@ ms.locfileid: "96020936"
 
 可使用以下命令创建和管理证明提供程序：
 
-1. 运行 [az attestation create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) 命令创建证明提供程序：
+1. 运行 [az attestation create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) 命令创建证明提供程序：
 
    ```azurecli
-   az attestation create --resource-group attestationrg --name attestationProvider --location uksouth \
-      --attestation-policy SgxDisableDebugMode --certs-input-path C:\test\policySignersCertificates.pem
+   az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
    ```
-
-   “--certs-input-path”参数指定一组受信任的签名密钥。 如果为此参数指定一个文件名，只能使用已签名 JWT 格式的策略来配置证明提供程序。 否则，可以以文本或未签名 JWT 格式配置策略。 有关 JWT 的信息，请参阅[基本概念](basic-concepts.md)。 有关证书示例，请参阅[证明策略签名者证书的示例](policy-signer-examples.md)。
-
-1. 运行 [az attestation show](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_show) 命令检索证明提供程序属性（例如 status 和 AttestURI）：
+   
+1. 运行 [az attestation show](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_show) 命令检索证明提供程序属性（例如 status 和 AttestURI）：
 
    ```azurecli
-   az attestation show --resource-group attestationrg --name attestationProvider
+   az attestation show --name "myattestationprovider" --resource-group "MyResourceGroup"
    ```
 
    此命令显示类似于以下输出的值：
@@ -84,34 +91,20 @@ ms.locfileid: "96020936"
    TagsTable:
    ```
 
-可使用 [az attestation delete](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_delete) 命令删除证明提供程序：
+可使用 [az attestation delete](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_delete) 命令删除证明提供程序：
 
 ```azurecli
-az attestation delete --resource-group attestationrg --name attestationProvider
+az attestation delete --name "myattestationprovider" --resource-group "sample-resource-group"
 ```
 
 ## <a name="policy-management"></a>策略管理
 
-为了管理策略，Azure AD 用户需要对 `Actions` 具有以下权限：
+使用此处所述的命令可为证明提供程序（一次一个证明类型）提供策略管理。
 
-- `Microsoft.Attestation/attestationProviders/attestation/read`
-- `Microsoft.Attestation/attestationProviders/attestation/write`
-- `Microsoft.Attestation/attestationProviders/attestation/delete`
-
-可以通过 `Owner`（通配符权限）、`Contributor`（通配符权限）或 `Attestation Contributor`（仅适用于 Azure 证明的特定权限）等角色将这些权限分配给 Azure AD 用户。  
-
-为了读取策略，Azure AD 用户需要对 `Actions` 具有以下权限：
-
-- `Microsoft.Attestation/attestationProviders/attestation/read`
-
-可以通过 `Reader`（通配符权限）或 `Attestation Reader`（仅适用于 Azure 证明的特定权限）等角色将此权限分配给 Azure AD 用户。
-
-使用此处所述的命令可为证明提供程序提供策略管理，一次一个 TEE。
-
-[az attestation policy show](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_show) 命令返回指定 TEE 的当前策略：
+[az attestation policy show](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_show) 命令返回指定 TEE 的当前策略：
 
 ```azurecli
-az attestation policy show --resource-group attestationrg --name attestationProvider --tee SgxEnclave
+az attestation policy show --name "myattestationprovider" --resource-group "MyResourceGroup" --attestation-type SGX-IntelSDK
 ```
 
 > [!NOTE]
@@ -119,48 +112,24 @@ az attestation policy show --resource-group attestationrg --name attestationProv
 
 以下是支持的 TEE 类型：
 
-- `CyResComponent`
-- `OpenEnclave`
-- `SgxEnclave`
-- `VSMEnclave`
+- `SGX-IntelSDK`
+- `SGX-OpenEnclaveSDK`
+- `TPM`
 
-使用 [az attestation policy set](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_set) 命令为指定的 TEE 设置新策略。
+使用 [az attestation policy set](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_set) 命令为指定的证明类型设置新策略。
 
-```azurecli
-az attestation policy set --resource-group attestationrg --name attestationProvider --tee SgxEnclave \
-   --new-attestation-policy newAttestationPolicyname
-```
-
-JWT 格式的证明策略必须包含名为 `AttestationPolicy` 的声明。 必须用与任何现有策略签名者证书相对应的密钥对已签名的策略进行签名。
-
-有关策略示例，请参阅[证明策略的示例](policy-examples.md)。
-
-[az attestation policy reset](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_reset) 命令为指定的 TEE 设置新策略。
+若要使用文件路径以文本格式为给定类型的证明设置策略，请运行以下命令：
 
 ```azurecli
-az attestation policy reset --resource-group attestationrg --name attestationProvider --tee SgxEnclave \
-   --policy-jws "eyJhbGciOiJub25lIn0.."
+az attestation policy set --name testatt1 --resource-group testrg --attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}"
 ```
 
-## <a name="policy-signer-certificates-management"></a>策略签名者证书管理
-
-使用以下命令管理证明提供程序的策略签名者证书：
+若要使用文件路径以 JWT 格式为给定类型的证明设置策略，请运行以下命令：
 
 ```azurecli
-az attestation signer list --resource-group attestationrg --name attestationProvider
-
-az attestation signer add --resource-group attestationrg --name attestationProvider \
-   --signer "eyAiYWxnIjoiUlMyNTYiLCAie..."
-
-az attestation signer remove --resource-group attestationrg --name attestationProvider \
-   --signer "eyAiYWxnIjoiUlMyNTYiLCAie..."
+az attestation policy set --name "myattestationprovider" --resource-group "MyResourceGroup" \
+--attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}" --policy-format JWT
 ```
-
-策略签名者证书是带有名为 `maa-policyCertificate` 的声明的签名 JWT。 声明的值为 JWK，其中包含要添加的受信任签名密钥。 必须用与任何现有策略签名者证书相对应的私钥对 JWT 进行签名。 有关 JWT 和 JWK 的信息，请参阅[基本概念](basic-concepts.md)。
-
-策略签名者证书的所有语义操作都必须在 Azure CLI 之外完成。 就 Azure CLI 而言，它是一个简单的字符串。
-
-有关证书示例，请参阅[证明策略签名者证书的示例](policy-signer-examples.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

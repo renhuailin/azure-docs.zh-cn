@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 8226a1e445c6f7f6360d715d17bbe5229e4172b6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a3b9ae91118f714ce15f56cde0f79faa4fb4d640
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454773"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586561"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>教程：Azure Active Directory 与 direct 集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "92454773"
 
 4. 在搜索框中键入“Direct”，在结果面板中选择“Direct”，然后单击“添加”按钮添加应用程序    。
 
-     ![结果列表中的 Direct](common/search-new-app.png)
+    ![结果列表中的 Direct](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -144,7 +144,7 @@ ms.locfileid: "92454773"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -193,7 +193,7 @@ ms.locfileid: "92454773"
 
     a. 单击访问面板中的 direct 磁贴时，将会重定向到应用程序登录页  。
 
-    b. 在显示的文本框中输入 `subdomain`，然后按“次へ (下一步)”，此时应当会自动登录到 direct 应用程序  。
+    b. 在显示的文本框中输入 `subdomain`，然后选择“下一步”，此时应当会自动登录到 direct 应用程序 。
 
 单击访问面板中的 Direct 磁贴时，应当会自动登录到为其设置了 SSO 的 Direct。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 

@@ -8,19 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/04/2020
+ms.date: 12/10/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 5d0b2df551c73e8c9b24d80280bbc993d9b361b7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: bcb484d62b7c4add7e1ab5562c19417a90cfb7e1
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928460"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587547"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
 Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登录来访问本地应用程序的应用程序代理服务。 本教程将准备与应用程序代理配合使用的环境。 准备好环境后，使用 Azure 门户将一个本地应用程序添加到 Azure AD 租户。
+
+连接器是应用程序代理的关键部分。 有关连接器的详细信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)。
 
 本教程：
 
@@ -74,7 +77,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 若要启用 TLS 1.2，请执行以下操作：
 
 1. 设置以下注册表项：
-    
+
    ```
    Windows Registry Editor Version 5.00
 
@@ -191,7 +194,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 1. 在 [Azure 门户](https://portal.azure.com/)中，以管理员身份登录。
 2. 在左侧导航面板中选择“Azure Active Directory”  。
 3. 依次选择“企业应用程序”、“新建应用程序”   。
-4. 在“创建自己的应用程序”部分中，选择“配置应用程序代理以安全地远程访问本地应用程序” 。
+4. 选择“添加本地应用程序”按钮，该按钮显示在“本地应用程序”部分的中间位置 。 或者，可以在页面顶部选择“创建自己的应用程序”，然后选择“配置应用程序代理以安全地远程访问本地应用程序” 。
 5. 在“添加自己的本地应用程序”部分中，提供有关应用程序的以下信息  ：
 
     | 字段 | 说明 |

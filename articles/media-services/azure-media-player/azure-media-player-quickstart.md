@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
-ms.openlocfilehash: ac81832765f674e58ad6b3213238e9c68e04d2dc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3d8ff1d2f121501152673c8375ef3d26aab10f1a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81727474"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511733"
 ---
 # <a name="azure-media-player-quickstart"></a>Azure Media Player 快速入门
 Azure Media Player 易于设置。 只需几分钟便可实现 Azure 媒体服务帐户中的媒体内容的基本播放。 本部分展示了基本步骤，未提供详细信息。 后面的部分介绍了有关如何安装和配置 Azure Media Player 的具体信息。  只需要将以下包括项添加到文档的 `<head>`：
@@ -63,4 +63,4 @@ Azure Media Player 易于设置。 只需几分钟便可实现 Azure 媒体服�
 
 ## <a name="next-steps"></a>后续步骤 ##
 
-- [Azure Media Player 快速入门](azure-media-player-quickstart.md)
+- [Azure Media Player 完全设置](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup)

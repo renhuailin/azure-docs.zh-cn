@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 775075765c8c8eaa94541c0f094c1f7743fe59d9
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 88ad060c1ba28285051a91bd928a2a7116dff1ce
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886781"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937536"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure 通信服务中的故障排除
 
@@ -165,6 +165,25 @@ callClient = new CallClient({logger: AzureLogger});
    
 
 ---
+
+
+## <a name="calling-client-library-error-codes"></a>呼叫客户端库错误代码
+
+Azure 通信服务呼叫客户端库使用以下错误代码来帮助解决呼叫问题。 呼叫结束后，这些错误代码通过 `call.callEndReason` 属性公开。
+
+| 错误代码 | 说明 | 采取的操作 |
+| -------- | ---------------| ---------------|
+| 403 | 被禁止/身份验证失败。 | 确保通信服务令牌有效且未过期。 |
+| 404 | 找不到呼叫。 | 确保要呼叫的电话（或要加入的电话）存在。 |
+| 408 | 呼叫控制器超时。 | 等待来自用户终结点的协议消息的呼叫控制器超时。 确保客户端已连接且可用。 |
+| 410 | 本地媒体堆栈或媒体基础结构错误。 | 确保在受支持的环境中使用最新的客户端库。 |
+| 430 | 无法将消息传递到客户端应用程序。 | 确保客户端应用程序正在运行且可用。 |
+| 480 | 未注册远程客户端终结点。 | 确保远程终结点可用。 |
+| 481 | 无法处理传入呼叫。 | 通过 Azure 门户提交支持请求。 |
+| 487 | 呼叫被取消、本地被拒绝，由于终结点不匹配问题而结束，或无法生成媒体产品/服务。 | 预期行为。 |
+| 490、491、496、487、498 | 本地终结点网络问题。 | 检查网络。 |
+| 500、503、504 | 通信服务基础结构错误。 | 通过 Azure 门户提交支持请求。 |
+| 603 | 全球呼叫被远程通信服务参与者拒绝 | 预期行为。 |
 
 
 ## <a name="related-information"></a>相关信息

@@ -1,23 +1,23 @@
 ---
-title: 快速入门：Azure 队列存储库 v12 - JavaScript
-description: 了解如何使用 Azure 队列 JavaScript v12 库创建队列并向队列中添加消息。 接下来，介绍如何在队列中读取和删除消息。 还将介绍如何删除队列。
+title: 快速入门：Azure 队列存储客户端库 v12 - JavaScript
+description: 介绍如何使用适用于 JavaScript 的 Azure 队列存储客户端库 v12 创建队列并在其中添加消息。 然后介绍如何在队列中读取和删除消息。 还将介绍如何删除队列。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/13/2019
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 5f50e42bc33adb8f40520f3f98bf1dcfba190a41
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 23c58526ba481a56b371bd077661d8d0bc7d45c7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491904"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586527"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>快速入门：适用于 JavaScript 的 Azure 队列存储客户端库 v12
 
-适用于 JavaScript 的 Azure 队列存储客户端库版本 12 入门。 Azure 队列存储服务可存储大量消息供稍后检索和处理。 请按照以下步骤安装程序包并试用基本任务的示例代码。
+适用于 JavaScript 的 Azure 队列存储客户端库 v12 入门。 Azure 队列存储是一项可存储大量消息供以后检索和处理的服务。 请按照以下步骤安装程序包并试用基本任务的示例代码。
 
 使用适用于 JavaScript 的 Azure 队列存储客户端库 v12 完成以下操作：
 
@@ -33,7 +33,7 @@ ms.locfileid: "96491904"
 
 - [API 参考文档](/javascript/api/@azure/storage-queue/)
 - [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
-- [包(节点包管理器)](https://www.npmjs.com/package/@azure/storage-queue)
+- [包 (npm)](https://www.npmjs.com/package/@azure/storage-queue)
 - [示例](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>先决条件
@@ -48,7 +48,7 @@ ms.locfileid: "96491904"
 
 ### <a name="create-the-project"></a>创建项目
 
-创建名为 queues-quickstart-v12 的 Node.js 应用程序。
+创建名为 `queues-quickstart-v12` 的 Node.js 应用程序
 
 1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为项目创建新目录。
 
@@ -56,13 +56,13 @@ ms.locfileid: "96491904"
     mkdir queues-quickstart-v12
     ```
 
-1. 切换到新创建的 queues-quickstart-v12 目录。
+1. 切换到新创建的 `queues-quickstart-v12` 目录。
 
     ```console
     cd queues-quickstart-v12
     ```
 
-1. 创建名为 package.json 的新文本文件。 此文件定义 Node.js 项目。 将此文件保存到 queues-quickstart-v12 目录中。 下面是文件的内容：
+1. 创建名为 `package.json` 的新文本文件。 此文件定义 Node.js 项目。 将此文件保存在 `queues-quickstart-v12` 目录中。 下面是该文件的内容：
 
     ```json
     {
@@ -87,13 +87,13 @@ ms.locfileid: "96491904"
 
 ### <a name="install-the-package"></a>安装包
 
-当仍在 queues-quickstart-v12 目录中时，使用 `npm install` 命令安装适用于 JavaScript 包的 Azure 队列存储客户端库。
+同样在 `queues-quickstart-v12` 目录中，使用 `npm install` 命令安装适用于 JavaScript 包的 Azure 队列存储客户端库。
 
 ```console
 npm install
 ```
 
- 此命令读取 package.json 文件，并安装适用于 JavaScript 包的 Azure 队列存储客户端库 v12 及其依赖的所有库。
+此命令读取 `package.json` 文件，并安装适用于 JavaScript 包的 Azure 队列存储客户端库 v12 及其依赖的所有库。
 
 ### <a name="set-up-the-app-framework"></a>设置应用框架
 
@@ -110,7 +110,7 @@ npm install
     const uuidv1 = require("uuid/v1");
 
     async function main() {
-        console.log("Azure Queue storage v12 - JavaScript quickstart sample");
+        console.log("Azure Queue Storage client library v12 - JavaScript quickstart sample");
         // Quick start code goes here
     }
 
@@ -118,13 +118,13 @@ npm install
 
     ```
 
-1. 将新文件在 queues-quickstart-v12 目录中另存为 queues-quickstart-v12.js 。
+1. 将新文件另存为 `queues-quickstart-v12` 并保存在 `queues-quickstart-v12.js` 目录中。
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>对象模型
 
-Azure 队列存储是一个可存储大量消息的服务。 队列消息大小最大可为 64 KB。 一个队列可以包含数百万条消息，直至达到存储帐户的总容量限值。 队列通常用于创建要异步处理的积压工作 (backlog)。 队列存储提供三种类型的资源：
+Azure 队列存储是一项可存储大量消息的服务。 队列消息大小最大可为 64 KB。 一个队列可以包含数百万条消息，直至达到存储帐户的总容量限值。 队列通常用于创建要异步处理的积压工作 (backlog)。 队列存储提供了三种类型的资源：
 
 - 存储帐户
 - 存储帐户中的队列
@@ -136,9 +136,9 @@ Azure 队列存储是一个可存储大量消息的服务。 队列消息大小�
 
 使用以下 JavaScript 类与这些资源进行交互：
 
-- [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient)：通过 `QueueServiceClient` 可管理存储帐户中的所有队列。
-- [QueueClient](/javascript/api/@azure/storage-queue/queueclient)：通过 `QueueClient` 类可管理和操纵单个队列及其消息。
-- [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage)：`QueueMessage` 类表示在队列中调用 [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) 时返回的各个对象。
+- [`QueueServiceClient`](/javascript/api/@azure/storage-queue/queueserviceclient)：可以通过 `QueueServiceClient` 管理存储帐户中的所有队列。
+- [`QueueClient`](/javascript/api/@azure/storage-queue/queueclient)：可以通过 `QueueClient` 类管理和操作单个队列及其消息。
+- [`QueueMessage`](/javascript/api/@azure/storage-queue/queuemessage)：`QueueMessage` 类表示在队列上调用 [`ReceiveMessages`](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) 时返回的单个对象。
 
 ## <a name="code-examples"></a>代码示例
 
@@ -171,12 +171,12 @@ const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STR
 
 ### <a name="create-a-queue"></a>创建队列
 
-确定新队列的名称。 以下代码将 UUID 值追加到队列名称，从而确保其是唯一的。
+确定新队列的名称。 以下代码将 UUID 值追加到队列名称，确保其独一无二。
 
 > [!IMPORTANT]
-> 队列名称只能包含小写字母、数字和连字符，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。 名称的长度还必须介于 3 到 63 个字符之间。 有关命名队列的详细信息，请参阅[命名队列和元数据](/rest/api/storageservices/naming-queues-and-metadata)。
+> 队列名称只能包含小写字母、数字和连字符，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。 名称的长度还必须介于 3 到 63 个字符之间。 有关详细信息，请参阅[命名队列和元数据](/rest/api/storageservices/naming-queues-and-metadata)。
 
-创建 [QueueClient](/javascript/api/@azure/storage-queue/queueclient) 类的实例。 然后，调用 [create](/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) 方法，以便在存储帐户中创建队列。
+创建 [`QueueClient`](/javascript/api/@azure/storage-queue/queueclient) 类的实例。 然后，通过调用 [`create`](/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) 方法，在存储帐户中创建队列。
 
 将此代码添加到 `main` 函数的末尾：
 
@@ -197,7 +197,7 @@ console.log("Queue created, requestId:", createQueueResponse.requestId);
 
 ### <a name="add-messages-to-a-queue"></a>向队列添加消息
 
-下面的代码片段调用 [sendMessage](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) 方法将消息添加到队列中。 它还保存从第三次 `sendMessage` 调用返回的 [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage)。 返回的 `sendMessageResponse` 用于稍后在程序中更新消息内容。
+以下代码片段通过调用 [`sendMessage`](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) 方法，将消息添加到队列。 它还保存从第三个 `sendMessage` 调用返回的 [`QueueMessage`](/javascript/api/@azure/storage-queue/queuemessage)。 返回的 `sendMessageResponse` 用于稍后在程序中更新消息内容。
 
 将此代码添加到 `main` 函数的末尾：
 
@@ -214,7 +214,7 @@ console.log("Messages added, requestId:", sendMessageResponse.requestId);
 
 ### <a name="peek-at-messages-in-a-queue"></a>查看队列中的消息
 
-调用 [peekMessages](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) 方法来查看队列中的消息。 `peekMessages` 方法从队列的前部检索一条或多条消息，但不会更改消息的可见性。
+通过调用 [`peekMessages`](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) 方法，查看队列中的消息。 此方法从队列前面检索一条或多条消息，但不更改消息的可见性。
 
 将此代码添加到 `main` 函数的末尾：
 
@@ -232,7 +232,7 @@ for (i = 0; i < peekedMessages.peekedMessageItems.length; i++) {
 
 ### <a name="update-a-message-in-a-queue"></a>更新队列中的消息
 
-调用 [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) 方法来更新消息的内容。 `updateMessage` 方法可以更改消息的可见性超时和内容。 消息内容必须是最大为 64 KB 的 UTF-8 编码字符串。 除新内容外，还要在代码中传入之前保存的响应中的 `messageId` 和 `popReceipt`。 `sendMessageResponse` 属性标识要更新的消息。
+通过调用 [`updateMessage`](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) 方法来更新消息的内容。 此方法可以更改消息的可见性超时和内容。 消息内容必须是最大为 64 KB 的 UTF-8 编码字符串。 除新内容外，还要在代码中传入之前保存的响应中的 `messageId` 和 `popReceipt`。 `sendMessageResponse` 属性标识要更新的消息。
 
 ```javascript
 console.log("\nUpdating the third message in the queue...");
@@ -249,7 +249,7 @@ console.log("Message updated, requestId:", updateMessageResponse.requestId);
 
 ### <a name="receive-messages-from-a-queue"></a>从队列接收消息
 
-调用 [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) 方法来下载以前添加的消息。 在 `numberOfMessages` 字段中，传入要为此调用接收的最大消息数。
+通过调用 [`receiveMessages`](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) 方法，下载以前添加的消息。 在 `numberOfMessages` 字段中，传入要为此调用接收的最大消息数。
 
 将此代码添加到 `main` 函数的末尾：
 
@@ -266,7 +266,7 @@ console.log("Messages received, requestId:", receivedMessagesResponse.requestId)
 
 接收并处理消息后，从队列中删除消息。 在本例中，“处理”即在控制台上显示消息。
 
-调用 [deleteMessage](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) 方法来删除消息。 未显式删除的任何消息都将在队列中再次变为可见，以方便再一次进行处理。
+通过调用 [`deleteMessage`](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) 方法删除消息。 未显式删除的任何消息都将在队列中再次变为可见，以方便再一次进行处理。
 
 将此代码添加到 `main` 函数的末尾：
 
@@ -289,7 +289,7 @@ for (i = 0; i < receivedMessagesResponse.receivedMessageItems.length; i++) {
 
 ### <a name="delete-a-queue"></a>删除队列
 
-以下代码使用 [delete](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) 方法删除队列，从而清除该应用所创建的资源。
+以下代码使用 [`delete`](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) 方法来删除队列，以便清除该应用所创建的资源。
 
 将此代码添加到 `main` 函数的末尾并保存文件：
 
@@ -304,7 +304,7 @@ console.log("Queue deleted, requestId:", deleteQueueResponse.requestId);
 
 此应用创建三条消息并将其添加到 Azure 队列。 此代码列出队列中的消息，然后检索并删除它们，最后删除队列。
 
-在控制台窗口中，导航到包含 queues-quickstart-v12.js 文件的目录，然后执行以下 `node` 命令来运行应用。
+在控制台窗口中，导航到包含 `queues-quickstart-v12.js` 文件的目录，然后执行以下 `node` 命令以运行应用。
 
 ```console
 node queues-quickstart-v12.js
@@ -313,7 +313,7 @@ node queues-quickstart-v12.js
 应用的输出类似于以下示例：
 
 ```output
-Azure Queue storage v12 - JavaScript quickstart sample
+Azure Queue Storage client library v12 - JavaScript quickstart sample
 
 Creating queue...
          quickstartc095d120-1d04-11ea-af30-090ee231305f
@@ -356,5 +356,5 @@ Done
 > [!div class="nextstepaction"]
 > [Azure for JavaScript 文档](/azure/developer/javascript/)
 
-- 若要了解详细信息，请参阅[适用于 JavaScript 的 Azure 存储队列客户端库](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)。
-- 若要查看更多 Azure 队列存储示例应用，请继续阅读 [Azure 队列存储客户端库 v12 JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples)。
+- 若要了解详细信息，请参阅[适用于 JavaScript 的 Azure 队列存储客户端库](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)。
+- 有关 Azure 队列存储示例应用的详细信息，请参阅[适用于 JavaScript 的 Azure 队列存储客户端库 v12 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples)。

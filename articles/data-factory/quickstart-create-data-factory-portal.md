@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 11/09/2020
+ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 9d3c3dc3b9a83973e41bf5d7dd204316508c2cb4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 76a490ed28f940620db7835c4cec145740f48503
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96013388"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509013"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入门：使用 Azure 数据工厂 UI 创建数据工厂 
 
@@ -45,42 +45,42 @@ ms.locfileid: "96013388"
 1. 选择“集成”，然后选择“数据工厂” 。 
    
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
-1. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为 **名称**。 
+1. 在“创建数据工厂”页上的“基本”选项卡下，选择要在其中创建数据工厂的 Azure 订阅  。
+1. 对于“资源组”，请执行以下步骤之一：
+
+    a. 从下拉列表中选择现有资源组。
+
+    b. 选择“新建”，并输入新资源组的名称。
+    
+    若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。 
+
+1. 对于“区域”，选择数据工厂所在的位置。
+
+   该列表仅显示数据工厂支持的位置，以及 Azure 数据工厂元数据要存储到的位置。 数据工厂使用的关联数据存储（如 Azure 存储和 Azure SQL 数据库）和计算（如 Azure HDInsight）可以在其他区域中运行。
  
+1. 对于“名称”，输入“ADFTutorialDataFactory” 。
    Azure 数据工厂的名称必须 *全局唯一*。 如果出现以下错误，请更改数据工厂的名称（例如改为 **&lt;yourname&gt;ADFTutorialDataFactory**），并重新尝试创建。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
   
    ![名称不可用时出错](./media/doc-common-process/name-not-available-error.png)
-1. 对于“订阅”，请选择要在其中创建数据工厂的 Azure 订阅。  
-1. 对于“资源组”，请使用以下步骤之一：
-     
-   - 选择“使用现有”，并从列表中选择现有的资源组。 
-   - 选择“新建”，并输入资源组的名称。   
-         
-   若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-1. 对于“版本”，选择“V2”。  
-1. 对于“位置”，请选择数据工厂所在的位置。 
 
-   该列表仅显示数据工厂支持的位置，以及 Azure 数据工厂元数据要存储到的位置。 数据工厂使用的关联数据存储（如 Azure 存储和 Azure SQL 数据库）和计算（如 Azure HDInsight）可以在其他区域中运行。
+1. 对于“版本”，选择“V2”。 
 
-1. 在完成时选择“下一步: Git 配置”，然后选择“稍后配置 Git”。
+1. 在完成时选择“下一步:Git 配置”，然后选择“稍后配置 Git”复选框。
 
-1. 选择“创建”。 创建完成后，选择“转到资源”导航到“数据工厂”页。  
+1. 选择“查看 + 创建”，然后在通过验证后选择“创建” 。 创建完成后，选择“转到资源”导航到“数据工厂”页。 
 
-1. 选择“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。
+1. 选择“创作和监视”磁贴，在单独的浏览器选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。
    
    ![数据工厂的主页，其中包含“创作和监视”磁贴](./media/doc-common-process/data-factory-home-page.png)
    
    > [!NOTE]
    > 如果你看到 Web 浏览器停留在“正在授权”状态，请清除“阻止第三方 Cookie 和站点数据”复选框。 或者使其保持选中状态，为 **login.microsoftonline.com** 创建一个例外，然后再次尝试打开该应用。
    
-1. 在“入门”页的左侧面板中，切换到“创作”选项卡。  
-
-    ![“入门”页](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-a-linked-service"></a>创建链接服务
 在此过程中，请创建一个链接服务，将 Azure 存储帐户链接到数据工厂。 链接服务包含的连接信息可供数据工厂服务用来在运行时连接到它。
 
-1. 从左窗格打开[“管理”选项卡](./author-management-hub.md)。
+1. 在“Azure 数据工厂 UI”页上，从左侧窗格中打开[“管理”](./author-management-hub.md)选项卡。
 
 1. 在“链接服务”页上，选择“+ 新建”以创建新的链接服务。
 
@@ -109,10 +109,13 @@ ms.locfileid: "96013388"
 输出数据集表示复制到目标的数据。 在输出数据集定义中，请指定要将数据复制到其中的 Blob 容器 (**adftutorial**)、文件夹 (**output**) 和文件。 管道的每次运行都有与之关联的唯一 ID。 可以使用系统变量 **RunId** 来访问该 ID。 输出文件的名称会根据管道的运行 ID 动态进行赋值。   
 
 在链接服务设置中，已指定包含源数据的 Azure 存储帐户。 在源数据集设置中，请指定源数据的具体驻留位置（Blob 容器、文件夹和文件）。 在接收器数据集设置中，请指定将数据复制到其中的位置（Blob 容器、文件夹和文件）。 
- 
+
+1. 从左侧窗格中选择“创作”选项卡。
+
 1. 选择“+ (加)”按钮，然后选择“数据集”。 
 
    ![用于创建数据集的菜单](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
+
 1. 在“新建数据集”页中，选择“Azure Blob 存储”，然后选择“继续”。   
 
 1. 在“选择格式”页上选择数据的格式类型，然后选择“继续”。  在本例中，当按原样复制文件而不分析内容时，请选择“二进制”。
@@ -163,7 +166,7 @@ ms.locfileid: "96013388"
 
 1. 切换到复制活动设置中的“接收器”选项卡，选择 **OutputDataset** 作为 **接收器数据集**。
 
-1. 在画布上面的管道工具栏中单击“验证”，以便验证管道设置。 确认已成功验证管道。 若要关闭验证输出，请选择 **>>** （右箭头）按钮。 
+1. 在画布上面的管道工具栏中单击“验证”，以便验证管道设置。 确认已成功验证管道。 若要关闭验证输出，请选择右上角的“验证”按钮。 
 
    ![验证管道](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
@@ -185,7 +188,7 @@ ms.locfileid: "96013388"
 
     ![全部发布](./media/quickstart-create-data-factory-portal/publish-all.png)
 
-1. 若要手动触发管道，请选择管道工具栏中的“添加触发器”，然后选择“立即触发”。  在“管道运行”页上选择“完成”。 
+1. 若要手动触发管道，请选择管道工具栏中的“添加触发器”，然后选择“立即触发”。  在“管道运行”页上，选择“确定” 。
 
 ## <a name="monitor-the-pipeline"></a>监视管道
 

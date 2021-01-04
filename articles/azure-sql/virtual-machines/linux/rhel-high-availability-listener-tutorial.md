@@ -2,24 +2,23 @@
 title: 为 Azure 中 RHEL 虚拟机上的 SQL Server 配置可用性组侦听器 - Linux 虚拟机 | Microsoft Docs
 description: 了解如何在 Azure 中 RHEL 虚拟机上的 SQL Server 中设置可用性组侦听器
 ms.service: virtual-machines-linux
-ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83fde9e957cb2011ce585603e51d331be171bc08
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485782"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586204"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：为 Azure 中 RHEL 虚拟机上的 SQL Server 配置可用性组侦听器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> 演示的教程为**公共预览版**。 
+> 演示的教程为 **公共预览版**。 
 >
 > 本教程结合使用 SQL Server 2017 和 RHEL 7.6，但也可使用 RHEL 7 或 RHEL 8 中的 SQL Server 2019 来配置高可用性。 用于配置可用性组资源的命令在 RHEL 8 中已更改，查看[创建可用性组资源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) 和 RHEL 8 资源，详细了解正确的命令。
 
@@ -68,7 +67,7 @@ ms.locfileid: "89485782"
    | **位置** |选择 SQL Server 实例所在的 Azure 位置。 |
 
 ### <a name="configure-the-back-end-pool"></a>配置后端池
-Azure 将后端地址池称作*后端池*。 在本例中，后端池是可用性组中三个 SQL Server 实例的地址。 
+Azure 将后端地址池称作 *后端池*。 在本例中，后端池是可用性组中三个 SQL Server 实例的地址。 
 
 1. 在资源组中，单击已创建的负载均衡器。 
 
@@ -136,7 +135,7 @@ Azure 创建探测，并使用它来测试哪个 SQL Server 实例具有可用�
    | **空闲超时(分钟)** |*4* |
    | 浮动 IP (直接服务器返回) |**已启用** |
 
-   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="添加后端池":::
+   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="添加负载均衡规则":::
 
 4. 单击“确定”。 
 5. Azure 将配置负载均衡规则。 负载均衡器现已配置为将流量路由到托管可用性组侦听器的 SQL Server 实例。 
@@ -263,6 +262,10 @@ Azure 创建探测，并使用它来测试哪个 SQL Server 实例具有可用�
     ```
 
 1. 使用命令 `sudo pcs resource` 检查群集资源，应会看到主要实例现已变为 `<VM2>`。
+
+    > [!NOTE]
+    > 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+
 
     ```output
     [<username>@<VM1> ~]$ sudo pcs resource

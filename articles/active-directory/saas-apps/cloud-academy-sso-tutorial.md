@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 12/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 822e28402d0b7829b835ad03a3b3cf7d05c3d343
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 96c4eba31013b868fa7afb41544d5d8cbcc1cdc6
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180993"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607212"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>教程：Azure Active Directory 单一登录与 Cloud Academy - SSO 的集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "96180993"
 * 使用 Azure AD 控制谁可以访问 Cloud Academy - SSO。
 * 让用户使用其 Azure AD 帐户自动登录到 Cloud Academy - SSO。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是单一登录？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,15 +37,14 @@ ms.locfileid: "96180993"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-Cloud Academy - SSO 支持 SP 发起的 SSO。
-
-配置 Cloud Academy - SSO 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+* Cloud Academy - SSO 支持 SP 发起的 SSO
+* Cloud Academy - SSO 支持“实时”用户预配
 
 ## <a name="add-cloud-academy---sso-from-the-gallery"></a>从库中添加 Cloud Academy - SSO
 
 若要配置 Cloud Academy - SSO 与 Azure AD 的集成，需要从库中将 Cloud Academy - SSO 添加到托管的 SaaS 应用列表：
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左窗格中选择“Azure Active Directory”。
 1. 转到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加应用程序，请选择“新建应用程序”。
@@ -72,14 +69,29 @@ Cloud Academy - SSO 支持 SP 发起的 SSO。
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在 Cloud Academy - SSO 应用程序集成页上的“管理”部分选择“单一登录”  。
+1. 在 Azure 门户的“Cloud Academy - SSO”应用程序集成页上的“管理”部分中，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页上，选择“基本 SAML 配置”对应的铅笔按钮以编辑设置： 
 
    ![显示用于编辑基本 SAML 配置的铅笔按钮的屏幕截图。](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分的“登录 URL”框中，输入 `https://cloudacademy.com/login/enterprise/`。
+1. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
+    a. 在“登录 URL”文本框中，键入以下 URL 之一：
+    
+    | 登录 URL |
+    |--------------|
+    | `https://cloudacademy.com/login/enterprise/` |
+    | `https://app.qa.com/login/enterprise/` |
+    |
+    
+    b. 在“回复 URL”文本框中，键入以下 URL 之一： 
+    
+    | 回复 URL |
+    |--------------|
+    | `https://cloudacademy.com/labs/social/complete/saml/` |
+    | `https://app.qa.com/labs/social/complete/saml/` |
+    |
 1. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“复制”按钮，以复制“应用联合元数据 URL”  。 保存 URL。
 
     ![显示应用联合元数据 URL 的“复制”按钮的屏幕截图。](common/copy-metadataurl.png)
@@ -89,12 +101,12 @@ Cloud Academy - SSO 支持 SP 发起的 SSO。
 在本部分中，你将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中选择“Azure Active Directory”。 选择“用户”，然后选择“所有用户” 。
-1. 选择屏幕顶部的“新建用户”。
+1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中，完成以下步骤：
    1. 在“名称”框中，输入 **B.Simon**。  
    1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com`。
    1. 选择“显示密码”，然后记下“密码”框中显示的值。 
-   1. 选择“创建”。
+   1. 选择“创建”  。
 
 ### <a name="grant-access-to-the-test-user"></a>向测试用户授予访问权限
 
@@ -103,16 +115,10 @@ Cloud Academy - SSO 支持 SP 发起的 SSO。
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在“应用程序”列表中选择“Cloud Academy - SSO”。
 1. 在应用概述页上的“管理”部分，选择“用户和组”： 
-
-   ![显示“用户和组”选项的屏幕截图。](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”：  
-
-    ![显示“添加用户”按钮的屏幕截图。](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中的“用户”列表内选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。 单击屏幕底部的“选择”按钮  。
-1. 在“添加分配”对话框中选择“分配”。  
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中选择“分配”。
 
 ## <a name="configure-single-sign-on-for-cloud-academy"></a>为 Cloud Academy 配置单一登录
 
@@ -145,36 +151,19 @@ Cloud Academy - SSO 支持 SP 发起的 SSO。
 
 ### <a name="create-a-cloud-academy-test-user"></a>创建 Cloud Academy 测试用户
 
-1. 登录到 Cloud Academy - SSO。
-
-1. 选择你的公司名称，然后在显示的菜单中选择“成员”：
-
-    ![显示“成员”选项的屏幕截图。](./media/cloud-academy-sso-tutorial/create-user.PNG)
-
-1. 选择“邀请成员”，然后选择“邀请单个成员” ：
-
-    ![显示“邀请单个成员”选项的屏幕截图。](./media/cloud-academy-sso-tutorial/create-user-1.PNG)
-
-1. 在必填字段中输入值，然后选择“邀请”：
-
-    ![显示“邀请成员”对话框的屏幕截图。](./media/cloud-academy-sso-tutorial/create-user-2.PNG)
+在本部分中，我们将在 Cloud Academy - SSO 中创建一个名为 Britta Simon 的用户。 Cloud Academy - SSO 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 Cloud Academy - SSO 中不存在用户，则会在身份验证后创建一个新用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
-现在使用访问面板测试 Azure AD SSO 配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-在访问面板中选择“Cloud Academy - SSO”磁贴时，应会自动登录到设置了 SSO 的 Cloud Academy - SSO 实例。 有关详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
+* 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 Cloud Academy - SSO 登录 URL，可以从那里启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+* 直接转到 Cloud Academy - SSO 登录 URL，并从那里启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程](./tutorial-list.md)
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Cloud Academy - SSO 磁贴时，将会重定向到 Cloud Academy - SSO 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+## <a name="next-steps"></a>后续步骤
 
-- [在 Azure AD 中试用 Cloud Academy - SSO](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
-
-- [如何使用高级可见性和控制保护 Cloud Academy - SSO](/cloud-app-security/proxy-intro-aad)
+配置 Cloud Academy - SSO 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

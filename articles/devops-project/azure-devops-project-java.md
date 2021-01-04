@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 8f74d2b5ab2cc85edbc8b1ea9f7d230f0215f35d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 077730d63d388566bd842a4ba185bd5fd6637043
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854590"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588992"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>使用 Azure DevOps Starter 为 Java 应用设置 CI/CD 管道
 
@@ -66,9 +66,9 @@ DevOps Starter 会自动配置 CI 生成和发布触发器。  现在可以与 J
 
 DevOps 入门版将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 若要查看存储库并对应用程序进行代码更改，请执行以下操作：
 
-1. 在 DevOps Starter 仪表板的左侧，选择 master 分库的链接。 该链接会打开新建 Git 存储库的视图。
+1. 在 DevOps Starter 仪表板的左侧，选择主分支的链接。 该链接会打开新建 Git 存储库的视图。
 
-1. 若要查看存储库克隆 URL，请在浏览器右上角选择“克隆”。 可以在最常用的 IDE 中克隆 Git 存储库。 在后续几个步骤中，可以使用 Web 浏览器直接对 master 分库进行代码更改并提交所做的更改。
+1. 若要查看存储库克隆 URL，请在浏览器右上角选择“克隆”。 可以在最常用的 IDE 中克隆 Git 存储库。 在后续几个步骤中，可以使用 Web 浏览器直接对主分支进行代码更改并提交所做的更改。
 
 1. 在浏览器左侧转到 **src/main/webapp/index.html** 文件。
 
@@ -96,12 +96,12 @@ DevOps 入门版将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 �
 
 1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。  
 
-1. 在生成管道名称下，选择“历史记录”。    
+1. 在生成管道名称下，选择“历史记录”。   
 在“历史记录”窗格中，此时会看到最近针对生成所做的更改的审核线索。   Azure Pipelines 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 
-1. 选择“触发器”。   DevOps Starter 将自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。  可以选择在 CI 过程中包括或排除分库。
+1. 选择“触发器”。  DevOps Starter 将自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。  可以选择在 CI 过程中包括或排除分库。
 
-1. 选择“保留期”。  可以根据方案指定策略，以保留或删除特定数目的生成。
+1. 选择“保留期”。 可以根据方案指定策略，以保留或删除特定数目的生成。
 
 1. 选择“生成和发布”，然后选择“发布”。  
  DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
@@ -118,7 +118,7 @@ DevOps 入门版将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 �
 
 1. 选择某个发布旁边的省略号 (...)，然后选择“打开”。  可以浏览多个菜单，例如“发布摘要”、“关联的工作项”、“测试”。
 
-1. 选择“提交”。  此视图显示与特定部署相关联的代码提交。 
+1. 选择“提交”。 此视图显示与特定部署相关联的代码提交。 
 
 1. 选择“日志”。 日志包含有关部署过程的有用信息。 日志可以在部署过程中以及部署以后查看。
 

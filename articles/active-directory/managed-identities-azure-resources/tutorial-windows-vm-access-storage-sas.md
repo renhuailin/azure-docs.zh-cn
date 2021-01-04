@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa04247aca777612c05a7531dc5b36e7af40e60e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba8c88f040bbd527b0d9f219a81fa090f53c84ed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89255811"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590539"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>教程：使用 Windows VM 系统分配的托管标识通过 SAS 凭据访问 Azure 存储
 
@@ -37,7 +37,11 @@ ms.locfileid: "89255811"
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+- 具备托管标识相关知识。 如果不熟悉 Azure 资源功能的托管标识，请参阅此[概述](overview.md)。 
+- 一个 Azure 帐户，[注册免费 Azure 帐户](https://azure.microsoft.com/free/)。
+- 在相应范围（订阅或资源组）内具有“所有者”权限，以执行所需的资源创建和角色管理步骤。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
+- 还需要启用了系统分配的托管标识的 Windows 虚拟机。
+  - 如需为本教程创建虚拟机，则可以按照标题为[创建启用了系统分配的标识的虚拟机](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)的文章进行操作
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
@@ -48,8 +52,8 @@ ms.locfileid: "89255811"
 1. 单击 Azure 门户左上角的“+/创建新服务”按钮。
 2. 依次单击“存储”、“存储帐户”，并将显示新的“创建存储帐户”面板。
 3. 输入存储帐户的名称，稍后将使用该名称。  
-4. **部署模型**和**帐户类型**应分别设置为“资源管理器”和“通用”。 
-5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。 
+4. “部署模型”和“帐户类型”应分别设置为“资源管理器”和“通用” 。 
+5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。  
 6. 单击“创建”。
 
     ![新建存储帐户](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
@@ -61,7 +65,7 @@ ms.locfileid: "89255811"
 1. 导航回新创建的存储帐户。
 2. 在左侧面板上，单击“Blob 服务”下的“容器”链接。
 3. 单击页面顶部的“+ 容器”，将滑出“新建容器”面板。
-4. 为容器指定名称，选择访问级别，单击“确定”。 在本教程中的后面部分将使用所指定的名称。 
+4. 为容器指定名称，选择访问级别，单击“确定”  。 在本教程中的后面部分将使用所指定的名称。 
 
     ![创建存储容器](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
@@ -70,7 +74,7 @@ ms.locfileid: "89255811"
 Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用托管标识从资源管理器检索存储 SAS，然后使用 SAS 来访问存储。  在此步骤中，将向 VM 的系统分配的托管标识授予对存储帐户 SAS 的访问权限。   
 
 1. 导航回新创建的存储帐户。   
-2. 单击左侧面板中的“访问控制(IAM)”链接。  
+2. 单击左侧面板中的“访问控制(IAM)”  链接。  
 3. 单击页面顶部的“+ 添加角色分配”，为 VM 添加新的角色分配
 4. 在页面左侧，将“角色”设置为“存储帐户参与者”。  
 5. 在下一个下拉列表中，把“将访问权限分配给”设置为资源“虚拟机”。  
@@ -79,16 +83,16 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用托�
 
     ![Alt 图像文本](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 标识获取访问令牌，并使用它调用 Azure 资源管理器 
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 标识获取访问令牌，并使用它调用 Azure 资源管理器 
 
-在本教程的剩余部分中，我们从先前创建的 VM 入手。
+在本教程的剩余部分中，我们将从 VM 入手。
 
 在此部分中，将需要使用 Azure 资源管理器 PowerShell cmdlet。  如果尚未安装，请[下载最新版本](/powershell/azure/)，然后再继续。
 
 1. 在 Azure 门户中，导航到“虚拟机”，转到 Windows 虚拟机，然后在“概述”页中单击顶部的“连接”。
 2. 输入创建 Windows VM 时添加的用户名和密码。 
-3. 现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。 
-4. 使用 Powershell 的 Invoke-WebRequest，向 Azure 资源终结点的本地托管标识发出请求以获取 Azure 资源管理器的访问令牌。
+3. 现在，已经创建了与虚拟机的远程桌面连接。
+4. 在远程会话中打开 PowerShell，并使用 Invoke-WebRequest 从 Azure 资源终结点的本地托管标识获取 Azure 资源管理器令牌。
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}

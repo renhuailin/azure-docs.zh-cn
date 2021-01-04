@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 802b7d2ca5d96bf385c4b8f0ee0cdaa3db181a1c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922562"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559958"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>教程：使用 Azure Purview（预览版）扫描数据
 
@@ -146,10 +146,11 @@ PowerShell 安装所需的模块可能最多需要一分钟时间。
 
    运行该命令时，可能会出现一个弹出窗口，供你使用 Azure Active Directory 凭据登录。
 
-1. 使用以下命令运行该初学者工具包。 替换 `CatalogName`、`TenantID`、`SubscriptionID`、`newresourcegroupname` 和 `CatalogResourceGroupName` 占位符。 对于 `newresourcegroupname`，请为将包含数据资产的资源组使用唯一的名称。
 
-> [!IMPORTANT]
-> “newresourcegroupname”只使用数字和小写字母，并且必须少于 17 个字符。 **不允许使用大写字母和特殊字符。** 此约束来自存储帐户命名规则。
+1. 使用以下命令运行该初学者工具包。 替换 `CatalogName`、`TenantID`、`SubscriptionID`、`NewResourceGroupName` 和 `CatalogResourceGroupName` 占位符。 对于 `NewResourceGroupName`，请为将包含数据资产的资源组使用唯一的名称（仅限小写字母数字字符）。
+
+   > [!IMPORTANT]
+   > “newresourcegroupname”只使用数字和小写字母，并且必须少于 17 个字符。 **不允许使用大写字母和特殊字符。** 此约束来自存储帐户命名规则。
 
    ```powershell
    .\RunStarterKit.ps1 -CatalogName <CatalogName> -TenantId <TenantID>`

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 3182da0d04d61d5bad4ce3e41f213ecc3be7ecaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444449"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503788"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 订阅
 
@@ -30,6 +30,17 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 
 如果取消付费的 Azure 支持计划，则需为剩余的订阅期付费。 有关详细信息，请参阅 [Azure 支持计划](https://azure.microsoft.com/support/plans/)。
 
+## <a name="who-can-cancel-a-subscription"></a>谁可以取消订阅？
+
+下表说明了取消订阅所需的权限。
+
+|订阅类型     |谁可以取消  |
+|---------|---------|
+|通过 Azure 网站注册 Azure 时创建的订阅。 例如，当你注册 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)、[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)或作为 [Visual Studio 订阅者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)时。 |  订阅的帐户管理员和所有者  |
+|[Microsoft 企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)和 [Enterprise 开发/测试](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  订阅的帐户所有者和所有者       |
+|[Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g/)和 [Azure 开发测试计划](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  订阅的所有者      |
+
+
 ## <a name="cancel-subscription-in-the-azure-portal"></a>在 Azure 门户中取消订阅
 
 1. 从 [Azure 门户中的“订阅”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)选择订阅。
@@ -41,15 +52,13 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 > [!NOTE]
 > 如果客户提出请求或发生未付款或欺诈的情况，合作伙伴可以暂停或取消订阅。 有关详细信息，请参阅[暂停或取消订阅](/partner-center/create-a-new-subscription#suspend-or-cancel-a-subscription)。
 
-## <a name="who-can-cancel-a-subscription"></a>谁可以取消订阅？
+## <a name="cancel-a-support-plan"></a>取消支持计划
 
-下表说明了取消订阅所需的权限。
+如果通过 Azure 网站、Azure 门户购买了支持计划，或如果通过 Microsoft 客户协议拥有支持计划，可以取消支持计划。 如果通过 Microsoft 代表或合作伙伴购买了支持计划，可联系他们获得帮助。 
 
-|订阅类型     |谁可以取消  |
-|---------|---------|
-|通过 Azure 网站注册 Azure 时创建的订阅。 例如，当你注册 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)、[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)或作为 [Visual Studio 订阅者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)时。 |  订阅的帐户管理员和所有者  |
-|[Microsoft 企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)和 [Enterprise 开发/测试](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  订阅的帐户所有者和所有者       |
-|[Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g/)和 [Azure 开发测试计划](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  订阅的所有者      |
+1. 在 Azure 门户中，导航到“成本管理 + 计费”。
+1. 在“计费”下，选择“定期费用” 。
+1. 在“支持计划行”项的右侧，选择省略号 (...)，然后选择“关闭自动续订” 。
 
 ## <a name="what-happens-after-subscription-cancellation"></a>取消订阅之后会发生什么情况？
 

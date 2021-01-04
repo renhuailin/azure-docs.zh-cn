@@ -4,12 +4,12 @@ description: 本教程介绍如何配置一个 Azure 容器注册表任务，以
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: fac409e9acc14048068c0f46ffb2b64cc69582ef
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: c8d1179f1c31642b350ab8757a8d4abf71583bfc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029978"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562882"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时在云中运行多步骤容器工作流
 
@@ -126,7 +126,7 @@ az acr task create \
       {
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
-          "branch": "master",
+          "branch": "main",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node.git",
           "sourceControlAuthProperties": null,
           "sourceControlType": "Github"
@@ -220,7 +220,7 @@ cd acr-build-helloworld-node
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
-git push origin master
+git push origin main
 ```
 
 执行 `git push` 命令时可能需要提供 GitHub 凭据。 提供 GitHub 用户名并输入之前为密码创建的个人访问令牌 (PAT)。
@@ -321,7 +321,7 @@ az acr task create \
 
 若要将映像推送到 `regDate` 值标识的注册表，请使用 [az acr task credential add][az-acr-task-credential-add] 命令将该注册表的登录凭据添加到任务。
 
-对于此示例，建议创建一个有权访问该注册表且范围为 *AcrPush* 角色的[服务主体](container-registry-auth-service-principal.md)，以便能够推送映像。 若要创建服务主体，请参阅此 [Azure CLI 脚本](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh)。
+对于此示例，建议创建一个有权访问该注册表且范围为 *AcrPush* 角色的 [服务主体](container-registry-auth-service-principal.md)，以便能够推送映像。 若要创建服务主体，请参阅此 [Azure CLI 脚本](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh)。
 
 在以下 `az acr task credential add` 命令中传递服务主体应用程序 ID 和密码。 请确保用第二个注册表的名称更新登录服务器名称 mycontainerregistrydate：
 

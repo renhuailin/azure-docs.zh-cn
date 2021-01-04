@@ -1,6 +1,6 @@
 ---
-title: 快速入门：通过 Azure 门户在专用 SQL 池（以前称为 SQL DW）中暂停和恢复计算
-description: 使用 Azure 门户暂停 SQL 池的计算以节省成本。 在准备好使用数据仓库时恢复计算。
+title: 快速入门：通过 Azure 门户暂停和恢复专用 SQL 池中的计算
+description: 使用 Azure 门户暂停专用 SQL 池的计算以节省成本。 在准备好使用数据仓库时恢复计算。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 88f6782a0f81b94977b37bd8f87bf26a0d4c8a72
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457692"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109642"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-via-the-azure-portal"></a>快速入门：通过 Azure 门户在专用 SQL 池（以前称为 SQL DW）中暂停和恢复计算
+# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>快速入门：通过 Azure 门户暂停和恢复专用 SQL 池中的计算
 
-可以使用 Azure 门户暂停和恢复专用 SQL 池（以前称为 SQL DW）计算资源。 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+可以使用 Azure 门户暂停和恢复专用 SQL 池计算资源。 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -40,9 +40,8 @@ ms.locfileid: "96457692"
 按照以下步骤暂停专用 SQL 池：
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户的左侧导航页中单击“专用 SQL 池(以前称为 SQL DW)”。
-2. 在“专用 SQL 池(以前称为 SQL DW)”页中选择“mySampleDataWarehouse”以打开 SQL 池 。 
-3. 在“mySampleDataWarehouse”页中，可看到“状态”显示为“联机”  。
+2. 导航到“专用 SQL 池”页，打开 SQL 池。 
+3. 注意“状态”为“联机” 。
 
     ![联机计算](././media/pause-and-resume-compute-portal/compute-online.png)
 
@@ -62,8 +61,7 @@ ms.locfileid: "96457692"
 
 按照以下步骤恢复专用 SQL 池。
 
-1. 在 Azure 门户的左侧页中单击“专用 SQL 池(以前称为 SQL DW)”。
-2. 在“专用 SQL 池(以前称为 SQL DW)”页中选择“mySampleDataWarehouse”以打开“SQL 池”页 。 
+1. 导航到“专用 SQL 池”页，打开 SQL 池。
 3. 在“mySampleDataWarehouse”页中，可看到“状态”显示为“已暂停”  。
 
     ![脱机计算](././media/pause-and-resume-compute-portal/compute-offline.png)

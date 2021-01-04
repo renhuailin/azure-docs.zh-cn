@@ -1,22 +1,22 @@
 ---
 title: Azure Notebooks 预览版概述
-description: 使用免费的 Azure Notebooks 预览版服务在云中运行 Jupyter 笔记本，不需要进行设置或配置。
+description: 使用免费的 Azure Notebooks 预览版服务在云中运行 Jupyter Notebook，不需要进行设置或配置。
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: d59faaf85a1fdbad776e954e974bafa300f93d85
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7e622bdef785085384395bb0c8ac3efba2b2053a
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845129"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400245"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks 预览版概述
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。 [Jupyter](https://jupyter.org/)（以前称为 IPython）是一个开放源代码项目，可让你将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果轻松合并到单个可共享画布，称为笔记本（jupyter.org 提供的图片）：
+Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter Notebook 而无需进行安装。 [Jupyter](https://jupyter.org/)（以前称为 IPython）是一个开放源代码项目，可让你将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果轻松合并到单个可共享画布，称为笔记本（jupyter.org 提供的图片）：
 
-[![Jupyter 笔记本的示例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Jupyter Notebook 的示例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 由于代码、图形和说明性文本的这种组合功能强大，因此 Jupyter 在许多方面已变得很常用，例如数据科学指令、数据清理和转换、数值模拟、统计建模，以及机器学习模型的开发。
 
@@ -49,7 +49,7 @@ Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyte
 
 Azure Notebooks 是一项免费服务，但每个项目有 4GB 内存和 1GB 数据的限制，防止滥用。 超过这些限制的用户会看到 Captcha 质询，回答正确后即可继续运行笔记本。
 
-若要解除所有限制，请通过使用 Azure Active Directory 的某个帐户（例如公司帐户）登录到 Azure Notebooks。 如果该帐户与某个 Azure 订阅相关联，则可连接到该订阅中的任何 Azure Data Science Virtual Machine 实例。 有关详细信息，请参阅[管理和配置项目 - 计算层](configure-manage-azure-notebooks-projects.md#compute-tier)。
+若要解除所有限制，请通过使用 Azure Active Directory 的某个帐户（例如公司帐户）登录到 Azure Notebooks。 如果该帐户与某个 Azure 订阅相关联，则可连接到该订阅中的任何 Azure Data Science Virtual Machine 实例。 
 
 Notebook 服务器保证最多存在 8 小时。 在大多数情况下，你的容器不受此限制的影响并继续运行超过此时间，但偶尔可能会关闭长期会话以确保系统稳定性。
 
@@ -65,7 +65,7 @@ Notebook 服务器保证最多存在 8 小时。 在大多数情况下，你的�
 
 Azure Notebooks 还包括除基础发行版之外的额外包。 例如，Python 内核包括 numpy、pandas、scikit-learn、matplotlib 和 bokeh 库。
 
-也可自定义一个项目，为该项目中的所有笔记本创建一个环境。 有关详细信息，请参阅[快速入门：在自定义环境下创建项目](quickstart-create-jupyter-notebook-project-environment.md)。
+也可自定义一个项目，为该项目中的所有笔记本创建一个环境。
 
 除了基础发行版，Azure Notebooks 还预安装了许多额外的可供数据科学家使用的包。 也可使用每种语言的典型过程来安装你自己的包。
 
@@ -73,8 +73,8 @@ Azure Notebooks 还包括除基础发行版之外的额外包。 例如，Python
 
 Azure Notebooks 预配置了以下 Jupyter 扩展：
 
-- [RISE](https://github.com/damianavila/RISE)：Jupyter 幻灯片扩展（也称 live_reveal）。 有关详细信息，请参阅[运行笔记本幻灯片](present-jupyter-notebooks-slideshow.md)。
-- [JupyterLab](https://github.com/jupyterlab/jupyterlab)：适用于 Jupyter 笔记本的完整计算环境。
+- [RISE](https://github.com/damianavila/RISE)：Jupyter 幻灯片扩展（也称 live_reveal）。
+- [JupyterLab](https://github.com/jupyterlab/jupyterlab)：适用于 Jupyter Notebook 的完整计算环境。
 - [Altair](https://github.com/ellisonbg/altair)：适用于 Python 的声明性统计可视化库。
 - [BQPlot](https://github.com/bloomberg/bqplot)：适用于 Jupyter Notebooks 的交互式绘图框架。
 - [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets)：适用于 Jupyter Notebooks 的交互式 HTML 小组件。
@@ -89,26 +89,7 @@ Azure Notebooks 预配置了以下 Jupyter 扩展：
 
 ## <a name="next-steps"></a>后续步骤  
 
-- [浏览示例笔记本](azure-notebooks-samples.md)
-
 - 快速入门：
 
-  - [创建和共享笔记本](quickstart-create-share-jupyter-notebook.md)
-  - [克隆笔记本](quickstart-clone-jupyter-notebook.md)
-  - [迁移本地 Jupyter 笔记本](quickstart-migrate-local-jupyter-notebook.md)
-  - [使用自定义环境](quickstart-create-jupyter-notebook-project-environment.md)
   - [登录并设置用户 ID](quickstart-sign-in-azure-notebooks.md)
-
-- 教程：
-
-  - [创建和运行笔记本](tutorial-create-run-jupyter-notebook.md  )
-
-- 操作指南文章：
-  
-  - [创建和克隆项目](create-clone-jupyter-notebooks.md)
-  - [配置和管理项目](configure-manage-azure-notebooks-projects.md)
-  - [从笔记本中安装包](install-packages-jupyter-notebook.md)
-  - [演示幻灯片放映](present-jupyter-notebooks-slideshow.md)
-  - [处理数据文件](work-with-project-data-files.md)
-  - [访问数据资源](access-data-resources-jupyter-notebooks.md)
-  - [使用 Azure 机器学习](../machine-learning/samples-notebooks.md)
+  - [导出 Jupyter Notebook](quickstart-export-jupyter-notebook-project.md)

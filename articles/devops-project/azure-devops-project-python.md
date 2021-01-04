@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: b6aa0a1bd14072e6ea4ea42004209f332f46a2d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dec41f1b9de6920338360edeb18b9878a8c86432
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856069"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588924"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>使用 Azure DevOps 入门版创建用于 Python 的 CI/CD 管道
 
@@ -67,9 +67,9 @@ DevOps 入门版在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的
 
 DevOps 入门版将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 若要查看存储库并对应用程序进行代码更改，请执行以下操作： 
 
-1. 在 DevOps 入门版仪表板的左侧，选择 master 分库的链接。 该链接会打开新建 Git 存储库的视图。
+1. 在 DevOps Starter 仪表板的左侧，选择主分支的链接。 该链接会打开新建 Git 存储库的视图。
 
-1. 若要查看存储库克隆 URL，请在浏览器右上角选择“克隆”。 可以在最常用的 IDE 中克隆 Git 存储库。 在后续几个步骤中，可以使用 Web 浏览器直接对 master 分库进行代码更改并提交所做的更改。
+1. 若要查看存储库克隆 URL，请在浏览器右上角选择“克隆”。 可以在最常用的 IDE 中克隆 Git 存储库。 在后续几个步骤中，可以使用 Web 浏览器直接对主分支进行代码更改并提交所做的更改。
 
 1. 在左侧转到 **app/templates/app/index.html** 文件。
 

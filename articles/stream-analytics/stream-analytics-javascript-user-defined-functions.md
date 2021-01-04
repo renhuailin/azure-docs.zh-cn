@@ -7,13 +7,13 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
-ms.date: 06/16/2020
-ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 12/15/2020
+ms.openlocfilehash: 085ac8c2ca7cfafcf0e40152458acf68dd847937
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780835"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605524"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure 流分析中 JavaScript 用户定义的函数
  
@@ -215,6 +215,14 @@ FROM
 Samstag, 28. Dezember 2019
 ```
 
+## <a name="user-logging"></a>用户日志记录
+使用日志记录机制，可以在作业运行时捕获自定义信息。 可以使用日志数据实时调试或评估自定义代码的正确性。 此机制通过 Console.Log() 方法提供。
+
+```javascript
+console.log('my error message');
+```
+
+可以通过[诊断日志](data-errors.md)访问日志消息。
 ## <a name="next-steps"></a>后续步骤
 
 * [机器学习 UDF](./machine-learning-udf.md)

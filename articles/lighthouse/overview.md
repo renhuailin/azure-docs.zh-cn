@@ -1,14 +1,14 @@
 ---
 title: 什么是 Azure Lighthouse？
 description: 借助 Azure Lighthouse，服务提供商可为其客户提供自动化程度更高且更高效的规模级托管服务。
-ms.date: 11/12/2020
+ms.date: 12/10/2020
 ms.topic: overview
-ms.openlocfilehash: a8fd796218804a79c82a5723c0e5851af359cdea
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bef6107878f36e02a896b3c38b8913ebb50169a7
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528816"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356355"
 ---
 # <a name="what-is-azure-lighthouse"></a>什么是 Azure Lighthouse？
 
@@ -45,3 +45,4 @@ Azure Lighthouse 提供了多种方法来协助简化参与和管理：
 - 了解 [Azure 委派资源管理](concepts/azure-delegated-resource-management.md)。
 - 了解[跨租户管理体验](concepts/cross-tenant-management-experience.md)。
 - 了解如何[在企业内使用 Azure Lighthouse](concepts/enterprise.md)。
+- 查看 Azure Lighthouse 的[可用性](https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all)和 [FedRAMP 和 DoD CC SRG 审核范围](../azure-government/compliance/azure-services-in-fedramp-auditscope.md)详细信息。

@@ -13,12 +13,12 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: d732d2fd8b97ca61222accc21c9930ed8c5c5d3a
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 7c0efbae3576a5b57433fe70885fd97aae5e87e3
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993884"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107934"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入门：使用控制台应用的标识获取令牌并调用 Microsoft Graph API
 
@@ -49,17 +49,17 @@ ms.locfileid: "95993884"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
-> 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-> 1. 在 Azure 门户搜索栏中搜索“应用注册”，导航到 Microsoft 标识平台来查看[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页面。
-> 1. 选择“新注册”。
-> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息。
-> 1. 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `Daemon-console`，然后选择“注册”以创建应用程序。
-> 1. 注册以后，选择“证书和机密”菜单。
-> 1. 在“客户端机密”下，选择“+ 新建客户端机密”。  为它提供一个名称，然后选择“添加”。 将机密复制到安全位置。 你需要在代码中使用它，而且它仅在门户中显示一次。
-> 1. 现在请依次选择“API 权限”菜单、“+ 添加权限”按钮、“Microsoft Graph”。  
+> 1. 登录 [Azure 门户](https://portal.azure.com)。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 在“管理”下，选择“应用注册” > “新建注册”  。
+> 1. 输入应用程序的名称（例如 `Daemon-console`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+> 1. 选择“注册”以创建应用程序。
+> 1. 在“管理”下，选择“证书和机密”。  
+> 1. 在“客户端机密”下，选择“新建客户端机密”，输入名称，然后选择“添加”  。 将机密值记录在安全的位置，以供在后面的步骤中使用。
+> 1. 在“管理”下，选择“API 权限” > “添加权限”  。 选择“Microsoft Graph”。
 > 1. 选择“应用程序权限”。
-> 1. 在“用户”节点下选择“User.Read.All”，然后选择“添加权限”。  
+> 1. 在“用户”节点下选择“User.Read.All”，然后选择“添加权限”  。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>下载并配置快速入门应用
@@ -121,7 +121,7 @@ ms.locfileid: "95993884"
 ##### <a name="global-tenant-administrator"></a>全局租户管理员
 
 > [!div renderon="docs"]
-> 如果你是全局租户管理员，请在 Azure 门户中导航到“企业应用程序”，单击“应用注册”，然后从左侧导航窗格的“安全性”部分选择“权限” 。 单击标有“为 {租户名称} 授予管理员同意”的大按钮，其中 {租户名称} 是你的目录的名称。
+> 如果你是全局租户管理员，请在 Azure 门户中导航到“企业应用程序”，选择“应用注册”，然后从左侧导航窗格的“安全性”部分选择“权限” 。 选择标有“为 {租户名称} 授予管理员同意”的大按钮，其中 {租户名称} 是你的目录的名称。
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 如果你是全局管理员，请转到“API 权限”页，选择“为 Enter_the_Tenant_Name_Here 授予管理员许可”

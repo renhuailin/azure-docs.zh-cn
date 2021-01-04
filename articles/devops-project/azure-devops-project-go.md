@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: ad62b59587f5ef7823e601cd8b6b526b75b8fd03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f968bfd0c3d2884c123b82ccf132d77b117ac9a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854607"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589026"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>使用 Azure DevOps Starter 创建适用于 Go 的 CI/CD 管道
 
@@ -40,7 +40,7 @@ DevOps 入门版在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的
 
 1. 选择 **Go** 示例应用，然后选择“下一步”。   
     
-1. **示例 Go 应用**是默认的框架。 选择“**下一页**”。  前面选择的应用框架规定了可用于部署的 Azure 服务部署目标的类型。 
+1. **示例 Go 应用** 是默认的框架。 选择“**下一页**”。  前面选择的应用框架规定了可用于部署的 Azure 服务部署目标的类型。 
     
 1. 保留默认 Azure 服务，然后选择“下一步”。 
 
@@ -62,7 +62,7 @@ DevOps Starter 在 Azure Repos 或 GitHub 中创建 Git 存储库。 若要查�
 
 1. 在 DevOps Starter 的左侧，选择主分支的链接。 该链接会打开新建的 Git 存储库的视图。
 
-1. 若要查看存储库克隆 URL，请在右上角选择“克隆”。  可以在常用的 IDE 中克隆 Git 存储库。 在后续几个步骤中，可以使用 Web 浏览器直接对 master 分库进行代码更改并提交所做的更改。
+1. 若要查看存储库克隆 URL，请在右上角选择“克隆”。  可以在常用的 IDE 中克隆 Git 存储库。 在后续几个步骤中，可以使用 Web 浏览器直接对主分支进行代码更改并提交所做的更改。
 
 1. 在左侧，转到“views/index.html”文件并选择“编辑”。  
 
@@ -98,13 +98,13 @@ DevOps Starter 会自动在 Azure Repos 中配置一个完整的 CI/CD 管道。
 
 1. 选择“生成和发布”，然后选择“发布”。  DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
 
-1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。 发布管道包含一个*管道*，用于定义发布过程。
+1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。 发布管道包含一个 *管道*，用于定义发布过程。
 
 1. 在“项目”下选择“删除” 。 前面检查过的生成管道将生成用于项目的输出。 
 
 1. 在“删除”图标的右侧，选择“持续部署触发器”。  此发布管道有一个已启用的 CD 触发器，每次有新的生成项目可用时，此触发器就会执行部署。 （可选）可以禁用此触发器，这样就需要手动执行部署。 
 
-1. 在左侧，选择“任务”。**** 任务是部署过程执行的活动。 在此示例中，已创建一个用于将项目部署到 Azure 应用服务的任务。
+1. 在左侧，选择“任务”。 任务是部署过程执行的活动。 在此示例中，已创建一个用于将项目部署到 Azure 应用服务的任务。
 
 1. 在右侧选择“查看发布”，以显示发布历史记录。
 

@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.author: banders
-ms.openlocfilehash: 8c3ab3f4f9bc56e9651a98e5c011cad65f21fd9d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ca55773b2deb74ea0647ed33df4040065762f94a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348972"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938471"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>从其他帐户获取 Azure 订阅的计费所有权
 
@@ -22,6 +22,14 @@ ms.locfileid: "96348972"
 本文适用于 Microsoft 客户协议的计费帐户。 [检查你是否有权访问 Microsoft 客户协议](#check-for-access)。
 
 只有 **发票科目所有者** 或 **发票科目参与者** 才能请求计费所有权。 有关详细信息，请参阅[发票科目角色任务](understand-mca-roles.md#invoice-section-roles-and-tasks)。
+
+你向其请求计费所有权的人员须具有以下角色之一：
+
+- 对于企业 Microsoft 客户协议，用户是计费所有者。
+- 对于企业协议，此用户必须是帐户所有者。
+- 对于 Microsoft 联机服务程序计费帐户，用户必须是帐户管理员。
+
+有关详细信息，请参阅[在 Azure 门户中查看计费帐户](view-all-accounts.md)。
 
 ## <a name="request-billing-ownership"></a>请求计费所有权
 
@@ -42,7 +50,7 @@ ms.locfileid: "96348972"
 1. 从列表中选择一个发票科目。 在你接管订阅的所有权后，系统会将其使用情况分配到计费对象信息的发票的此部分。
 1. 选择左下角的“转移请求”，然后选择“添加新请求”。   
     [![显示正在选择转移请求的屏幕截图](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
-1. 输入要从其请求计费所有权的用户的电子邮件地址。 该用户必须是 Microsoft 在线服务计划计费帐户的帐户管理员，或企业协议中的帐户所有者。 有关详细信息，请参阅[在 Azure 门户中查看计费帐户](view-all-accounts.md)。 选择“发送转移请求”。  
+1. 输入要从其请求计费所有权的用户的电子邮件地址。 选择“发送转移请求”。  
     [![显示正在发送转移请求的屏幕截图](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
 1. 用户将收到一封电子邮件，其中包含查看转让请求的说明。  
     ![显示查看转移请求电子邮件的屏幕截图](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
@@ -68,6 +76,7 @@ ms.locfileid: "96348972"
 1. 从列表中选择已发送其转账请求的发票科目。
 1. 选择左下角的“转移请求”。 “转移请求”页将显示以下信息：  
     [![显示转移请求列表的屏幕截图](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png#lightbox)
+
    |列|定义|
    |---------|---------|
    |请求日期|发送转移请求的日期|

@@ -1,16 +1,16 @@
 ---
-title: 使用 Azure Batch 和 Batch Explorer 渲染 Blender 场景
+title: 教程 - 使用 Azure Batch 和 Batch Explorer 渲染 Blender 场景
 description: 教程 - 如何使用 Azure Batch 和 Batch Explorer 客户端应用程序渲染 Blender 场景中的多个帧
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c015e4e83b0505a45690e92c1d732f74b6f6b0e
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964798"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106455"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>教程：使用 Batch Explorer 渲染 Blender 场景
 
@@ -93,6 +93,7 @@ ms.locfileid: "85964798"
 ## <a name="create-a-rendering-job"></a>创建渲染作业
 
 创建渲染作业，以便使用已创建的池渲染一些帧：
+
 * 从左侧的主菜单中，选择“库”菜单项。
 * 从应用程序项列表中选择“Blender”项。
 * 选择用于在 Windows Server 上渲染帧的项。
@@ -137,6 +138,18 @@ ms.locfileid: "85964798"
 * 可以在右键单击后选择“删除”，也可选择池上方的垃圾桶图标
 
 ## <a name="next-steps"></a>后续步骤
-* 通过 Batch Explorer 在“库”部分浏览可用的渲染应用程序。
-* 每个应用程序都有多个可用的模板，这些模板会随时间而扩展。  例如，Blender 的模板可将单个图像拆分成多个图块，这样就可以并行渲染图像的各个部分。
-* 如需渲染功能的全面介绍，请查看[此处](./batch-rendering-service.md)提供的一系列文章。
+
+在本教程中，你了解了如何执行以下操作：
+
+> [!div class="checklist"]
+> * 将 Blender 场景上传到 Azure 存储
+> * 创建包含多个节点的 Batch 池，以便执行渲染操作
+> * 渲染多个帧
+> * 查看并下载渲染的帧文件
+
+通过 Batch Explorer 在“库”部分浏览可用的渲染应用程序以继续。 每个应用程序都有多个可用的模板，这些模板会随时间而扩展。 例如，Blender 的模板可将单个图像拆分成多个图块，这样就可以并行渲染图像的各个部分。
+
+若要详细了解云规模的渲染，请查看 Batch 渲染服务的选项。
+
+> [!div class="nextstepaction"]
+> [Batch Rendering 服务](batch-rendering-service.md)

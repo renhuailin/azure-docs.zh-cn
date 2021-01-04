@@ -290,6 +290,8 @@
         - name: 在部署管理器中使用运行状况检查
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
+    - name: 关于模板的 Microsoft Learn 路径
+      href: /learn/paths/deploy-manage-resource-manager-templates/
 - name: 概念
   items:
     - name: 模板最佳实践
@@ -323,7 +325,7 @@
           href: template-syntax.md
         - name: 编写模板表达式
           href: template-expressions.md
-        - name: parameters
+        - name: 参数
           href: template-parameters.md
         - name: 变量
           href: template-variables.md

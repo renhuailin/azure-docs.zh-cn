@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f0e69e3f62d3b9e4debb5761d877dcdfdd246f60
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 077500e0188d1cc20864d436a2e2fd711b180702
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886016"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560230"
 ---
 # <a name="chat-concepts"></a>聊天概念
 
@@ -46,8 +46,9 @@ Azure 通信服务聊天客户端库可用于向应用程序添加实时文本�
 
 通信服务聊天共享用户生成的消息以及系统生成的消息，称为线程活动。 在更新聊天线程时会生成线程活动。 对聊天线程调用 `List Messages` 或 `Get Messages` 时，结果会包含用户生成的短信以及系统消息（按时间顺序）。 这有助于你确定添加或删除成员的时间或是聊天线程主题的更新时间。 支持的消息类型包括：  
 
- - `Text`：用户在聊天对话过程中撰写和发送的实际消息。 
- - `ThreadActivity/AddMember`：指示一个或多个成员已添加到聊天线程的系统消息。 例如：
+ - `Text`：用户在聊天对话过程中撰写和发送的纯文本消息。 
+ - `RichText/HTML`：格式化文本消息。 请注意，通信服务用户当前无法发送 RichText 消息。 在 Teams Interop 方案中，此消息类型支持将消息从 Teams 用户传递到通信服务用户。
+ - `ThreadActivity/AddMember`：指示一个或多个成员已添加到聊天会话的系统消息。 例如：
 
 ```xml
 
@@ -92,6 +93,30 @@ Azure 通信服务聊天客户端库可用于向应用程序添加实时文本�
 
 ```
 
+- `ThreadActivity/MemberJoined`：来宾用户加入 Teams 会议聊天时生成的系统消息。 通信服务用户可以 Teams 会议聊天来宾的身份加入。 例如：  
+```xml
+{ 
+  "id": "1606351443605", 
+  "type": "ThreadActivity/MemberJoined", 
+  "version": "1606347753409", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606351443080,\"initiator\":\"8:orgid:8a53fd2b5ef150bau8442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665d83-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": " 19:meeting_curGQFTQ8tifs3EK9aTusiszGpkZULzNTTy2dbfI4dCJEaik@thread.v2", 
+  "createdOn": "2020-11-29T00:44:03.6950000Z" 
+} 
+```
+- `ThreadActivity/MemberLeft`：来宾用户离开会议聊天时生成的系统消息。 通信服务用户可以 Teams 会议聊天来宾的身份加入。 例如： 
+```xml
+{ 
+  "id": "1606347703429", 
+  "type": "ThreadActivity/MemberLeft", 
+  "version": "1606340753429", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606340755385,\"initiator\":\"8:orgid:8a53fd2b5u8150ba81442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665753-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": "19:meeting_9u7hBcYiADudn41Djm0n9DTVyAHuMZuh7p0bDsx1rLVGpnMk@thread.v2", 
+  "createdOn": "2020-11-29T23:42:33.4290000Z" 
+} 
+```
 - `ThreadActivity/TopicUpdate`：指示主题已更新的系统消息。 例如：
 
 ```xml

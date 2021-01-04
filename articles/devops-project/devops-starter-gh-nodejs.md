@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 08/24/2020
 ms.author: ninallam
-ms.openlocfilehash: 92fa445cee75b2311cbadf96e24c31a1dbd579b8
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e3c72ce6a15f90f0dbe08bbff10db0ca5f6b5c8f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332687"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588805"
 ---
 # <a name="set-up-cicd-for-a-nodejs-app-with-devops-starter-using-github-actions"></a>使用 GitHub Actions 通过 DevOps Starter 设置适用于 Node.js 应用的 CI/CD
 
@@ -49,7 +49,7 @@ DevOps Starter 使用 GitHub Actions 创建 CI/CD 工作流。 DevOps 入门版�
 
 1. 选择 **Node.js** 示例应用程序。 Node.js 示例包括一个选项，可以从多个应用程序框架中进行选择。
 
-1. 默认的示例框架为 **Express.js** 。 保留默认设置，然后选择“下一步”。   
+1. 默认的示例框架为 **Express.js**。 保留默认设置，然后选择“下一步”。   
 
 2. Windows Web 应用是默认的部署目标。 以前选择的应用程序框架规定了此处提供的 Azure 服务部署目标的类型。 保留默认服务，然后选择“下一步”。
  
@@ -86,9 +86,9 @@ DevOps Starter 使用 GitHub Actions 通过生成和部署作业自动配置 Git
 
 DevOps Starter 会在 GitHub 中创建存储库。 若要查看存储库并对应用程序进行代码更改，请执行以下操作：
 
-1. 在 DevOps Starter 仪表板的左侧，选择 master 分库的链接。 此链接会打开新建 GitHub 存储库的视图。
+1. 在 DevOps Starter 仪表板的左侧，选择主分支的链接。 此链接会打开新建 GitHub 存储库的视图。
 
-1. 若要查看存储库克隆 URL，请在浏览器右上角选择“克隆”。 可以在最常用的 IDE 中克隆 Git 存储库。 在后续几个步骤中，可以使用 Web 浏览器直接对 master 分库进行代码更改并提交所做的更改。
+1. 若要查看存储库克隆 URL，请在浏览器右上角选择“克隆”。 可以在最常用的 IDE 中克隆 Git 存储库。 在后续几个步骤中，可以使用 Web 浏览器直接对主分支进行代码更改并提交所做的更改。
 
 1. 在浏览器左侧，转到 /Application/views/index.pug 文件。
 

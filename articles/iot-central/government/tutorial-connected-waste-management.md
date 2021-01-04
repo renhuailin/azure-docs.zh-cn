@@ -3,39 +3,35 @@ title: 教程：使用 Azure IoT Central 创建连接的废弃物管理应用
 description: 教程：了解如何使用 Azure IoT Central 应用程序模板创建连接的废弃物管理应用程序。
 author: miriambrus
 ms.author: miriamb
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0a7f5ec0231612a2cee2a9435144c886527c228e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5ecfa3e4c46c17a3b381e9743953c7d97309ea3b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014469"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587241"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>教程：在 IoT Central 中创建连接的废弃物管理应用程序
-
-
 
 本教程指导你从 IoT Central 连接的废弃物管理应用程序模板创建 Azure IoT Central 连接的废弃物管理应用程序  。 
 
 在本教程中，您将学习如何执行以下操作： 
 
-> [!div class="checklist"]
-
-> * 使用 Azure IoT Central 连接的废弃物管理模板创建连接的废弃物管理应用程序 
-> * 浏览并自定义操作员仪表板 
-> * 浏览连接的垃圾箱设备模板
-> * 浏览模拟设备
-> * 浏览并配置规则
-> * 配置作业
-> * 使用白色标签自定义应用程序品牌
+* 使用 Azure IoT Central 连接的废弃物管理模板创建连接的废弃物管理应用程序 
+* 浏览并自定义操作员仪表板 
+* 浏览连接的垃圾箱设备模板
+* 浏览模拟设备
+* 浏览并配置规则
+* 配置作业
+* 使用白色标签自定义应用程序品牌
 
 ## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
--  建议使用 Azure 订阅。 可以选择使用 7 天免费试用版。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上创建一个。
+*  建议使用 Azure 订阅。 可以选择使用 7 天免费试用版。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上创建一个。
 
 ## <a name="create-connected-waste-management-app-in-iot-central"></a>在 IoT Central 中创建连接的废弃物管理应用
 
@@ -49,27 +45,27 @@ ms.locfileid: "95014469"
 
     ![输入组织帐户](./media/tutorial-connectedwastemanagement/sign-in.png)
 
-2. 单击左侧窗格中的“生成”，然后选择“政府”选项卡   。“政府”窗格显示了几个政府应用程序模板。
+1. 单击左侧窗格中的“生成”，然后选择“政府”选项卡   。“政府”窗格显示了几个政府应用程序模板。
 
     ![生成政府应用模板](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
 
 1. 选择“连接的废弃物管理”应用程序模板  。 此模板包括示例连接的垃圾箱设备模板、模拟设备、操作员仪表板以及预配置的监视规则。    
 
-2. 单击“创建应用”，将打开“新建应用程序”创建表单，其中包含以下字段   ：
+1. 单击“创建应用”，将打开“新建应用程序”创建表单，其中包含以下字段   ：
     * **应用程序名称**。 默认情况下，应用程序使用“连接的废弃物管理”，后跟 IoT Central 生成的唯一 ID 字符串  。 （可选）选择一个易记的应用程序名称。 稍后也可以更改应用程序名称。
     * **URL** - 你可以选择所需的 URL。 也可以稍后更改 URL。 
     * 如果你有一个 Azure 订阅，请输入目录、Azure 订阅和区域  。 如果你没有订阅，则可以启用 7 天免费试用版并填写所需的联系人信息  。  
 
     有关目录和订阅的详细信息，请参阅[创建应用程序快速入门](../core/quick-deploy-iot-central.md)。
 
-5. 单击页面底部的“创建”按钮  。 
+1. 单击页面底部的“创建”按钮  。 
 
     ![Azure IoT Central 的“创建连接的废弃物应用程序”页](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
     
     ![Azure IoT Central 创建连接的废弃物应用程序 - 计费信息](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
  
-6. 现在，你已使用 Azure IoT Central“连接的废弃物管理模板”创建了连接的废弃物管理应用  。 
+1. 现在，你已使用 Azure IoT Central“连接的废弃物管理模板”创建了连接的废弃物管理应用  。 
 
 祝贺你！ 新创建的应用程序附带预配置的以下项：
 * 示例操作员仪表板
@@ -87,8 +83,8 @@ ms.locfileid: "95014469"
 
 生成人员可在仪表板上创建和自定义视图，以供操作员使用。 但请在尝试自定义之前浏览仪表板。 
 
-> [!NOTE]
-> 仪表板中显示的所有数据均基于模拟设备数据，这将在下节中进行探讨。 
+>>[!NOTE]
+>> 仪表板中显示的所有数据均基于模拟设备数据，这将在下节中进行探讨。 
 
 仪表板包含不同种类的磁贴：
 
@@ -98,7 +94,7 @@ ms.locfileid: "95014469"
 
 填充级别 KPI 磁贴：该磁贴显示垃圾桶中的填充级别传感器报告的值。 可以远程监控垃圾箱中的填充级别和其他传感器（例如“气味测量仪”或“重量”）    。 操作员可以采取行动，比如调度垃圾收集车。 
 
-*  废弃物监视区域地图：该地图使用 Azure Maps，你可以直接在 Azure IoT Central 中对其进行配置*。 地图磁贴显示设备位置。 尝试将鼠标悬停在地图上，然后尝试使用地图上的控件，如放大、缩小或展开。
+* 废弃物监视区域地图：该地图使用 Azure Maps，你可以直接在 Azure IoT Central 中对其进行配置*。 地图磁贴显示设备位置。 尝试将鼠标悬停在地图上，然后尝试使用地图上的控件，如放大、缩小或展开。
 
      ![连接的废弃物管理仪表板地图](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
 
@@ -118,12 +114,11 @@ ms.locfileid: "95014469"
 
     ![编辑仪表板](./media/tutorial-connectedwastemanagement/edit-dashboard.png)
 
-2. 还可以单击“+ 新建”创建新的仪表板并从头开始配置  。 你可能有多个仪表板，可以从仪表板菜单在仪表板之间导航。 
+1. 还可以单击“+ 新建”创建新的仪表板并从头开始配置  。 你可能有多个仪表板，可以从仪表板菜单在仪表板之间导航。 
 
 ## <a name="explore-connected-waste-bin-device-template"></a>浏览连接的垃圾箱设备模板
 
 Azure IoT Central 中的设备模板定义设备的功能，这些功能可以是遥测、属性或命令。 生成人员可以定义表示要连接的设备功能的设备模板。 
- 
 
 “连接的废弃物管理”应用程序附带了一个连接的垃圾箱设备示例模板  。
 
@@ -133,28 +128,27 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
     ![显示应用程序中的设备模板列表的屏幕截图](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
-2. 在“设备模板”列表中，你将看到“连接的垃圾桶”  。 通过单击名称打开。
+1. 在“设备模板”列表中，你将看到“连接的垃圾桶”  。 通过单击名称打开。
 
-3. 熟悉设备模板功能。 你可以看到，它定义了填充级别、气味计、重量、位置等传感器     。
+1. 熟悉设备模板功能。 你可以看到，它定义了填充级别、气味计、重量、位置等传感器     。
 
    ![显示连接的垃圾桶设备模板详细信息的屏幕截图](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
-   
 
 ### <a name="customizing-the-device-template"></a>自定义设备模板
 
 尝试自定义以下内容：
 1. 从设备模板菜单导航到“自定义” 
-2. 找到 `Odor meter` 遥测类型
-3. 将 `Odor meter` 的“显示名称”更新为 `Odor level`
-4. 还可以尝试更新度量单位，或设置最小值和最大值  
-5. 保存任何更改  
+1. 找到 `Odor meter` 遥测类型
+1. 将 `Odor meter` 的“显示名称”更新为 `Odor level`
+1. 还可以尝试更新度量单位，或设置最小值和最大值  
+1. 保存任何更改  
 
 ### <a name="add-a-cloud-property"></a>添加云属性 
 
 1. 从设备模板菜单导航到“云属性” 
-2. 单击“+ 添加云属性”添加新的云属性  。 在 IoT Central 中，可以添加与设备相关但不应由设备发送的属性。 例如，云属性可以是特定于安装区域、资产信息或维护信息等的警报阈值。 
-3. 保存任何更改  
+1. 单击“+ 添加云属性”添加新的云属性  。 在 IoT Central 中，可以添加与设备相关但不应由设备发送的属性。 例如，云属性可以是特定于安装区域、资产信息或维护信息等的警报阈值。 
+1. 保存任何更改  
  
 ### <a name="views"></a>视图 
 * 连接的垃圾箱设备模板带有预定义的视图。 浏览视图，并且可以进行更新。 这些视图定义了操作员查看设备数据及输入云属性的方式。 
@@ -181,15 +175,15 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
    ![设备](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
-2. 选择并单击连接的垃圾箱设备。  
+1. 选择并单击连接的垃圾箱设备。  
 
      ![设备 1](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices-bin1.png)
 
-3. 导航到“云属性”选项卡，尝试将 `Bin full alert threshold` 值从 `95` 更新为 `100` 。 
+1. 导航到“云属性”选项卡，尝试将 `Bin full alert threshold` 值从 `95` 更新为 `100` 。 
 * 浏览“设备属性”选项卡和“设备仪表板”选项卡   。 
 
-> [!NOTE]
-> 请注意，所有选项卡都是从“设备模板视图”配置的  。
+>> [!NOTE]
+>> 所有选项卡都是从“设备模板视图”配置的。
 
 ### <a name="add-new-devices"></a>添加新设备
 
@@ -206,11 +200,11 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
    ![规则](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
-2. 选择“箱满警报” 
+1. 选择“箱满警报” 
 
      ![箱满警报](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
 
- 3. 在满足 **条件** `Fill level is greater than or equal to Bin full alert threshold` 时，检查 `Bin full alert`。
+ 1. 在满足 **条件** `Fill level is greater than or equal to Bin full alert threshold` 时，检查 `Bin full alert`。
 
     `Bin full alert threshold` 是在 `Connected waste bin` 设备模板中定义的“云属性”  。 
 
@@ -219,16 +213,16 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 ### <a name="create-an-email-action"></a>创建电子邮件操作
 若要在规则的操作列表中配置电子邮件操作，请执行以下操作：
 1. 选择“+ 电子邮件”  。 
-2. 输入“高 pH 警报”作为操作的易记显示名称   。
-3. 在“收件人”中输入与 IoT Central 帐户关联的电子邮件地址  。 
-4. （可选）输入要包含在电子邮件文本中的注释。
-5. 选择“完成”  ，完成操作。
-6. 选择“保存”  以保存并激活新规则。 
+1. 输入“高 pH 警报”作为操作的易记显示名称   。
+1. 在“收件人”中输入与 IoT Central 帐户关联的电子邮件地址  。 
+1. （可选）输入要包含在电子邮件文本中的注释。
+1. 选择“完成”  ，完成操作。
+1. 选择“保存”  以保存并激活新规则。 
 
 满足配置条件后，应能收到电子邮件  。
 
-> [!NOTE]
-> 每次满足条件后，应用程序都会发送电子邮件。 “禁用”该规则会停止从自动规则接收电子邮件  。 
+>[!NOTE]
+>每次满足条件后，应用程序都会发送电子邮件。 “禁用”该规则会停止从自动规则接收电子邮件  。 
   
 若要创建新规则： 
 1. 在左窗格的“规则”上选择“+新建”   。
@@ -238,7 +232,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 在 IoT Central 中，作业允许你在多个设备上触发设备或云属性更新。 除了属性外，还可以使用作业在多个设备上触发设备命令。 IoT Central 将自动执行工作流。 
 
 1. 从左窗格转到“作业”。  
-2. 单击“+ 新建”并配置一个或多个作业  。 
+1. 单击“+ 新建”并配置一个或多个作业  。 
 
 
 ## <a name="customize-your-application"></a>自定义应用程序 
@@ -248,14 +242,14 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 ### <a name="to-change-the-application-theme"></a>若要更改应用程序主题：
 
 1. 转到“管理”>“自定义应用程序”  。
-3. 使用“更改”按钮选择要作为应用程序徽标上传的图像   。
-4. 使用“更改”按钮选择将显示在浏览器选项卡上的浏览器图标图像   。
-5. 还可以通过添加 HTML 十六进制颜色代码来替换默认“浏览器颜色”  。
+1. 使用“更改”按钮选择要作为应用程序徽标上传的图像   。
+1. 使用“更改”按钮选择将显示在浏览器选项卡上的浏览器图标图像   。
+1. 还可以通过添加 HTML 十六进制颜色代码来替换默认“浏览器颜色”  。
 
    ![Azure IoT Central 自定义应用程序](./media/tutorial-connectedwastemanagement/connectedwastemanagement-customize-your-application.png)
 
-6. 也可以通过转到“管理”>“应用程序设置”和“选择图像”按钮，选择要作为应用程序图像上传的图像来更改应用程序图像   。
-7. 最后，还可以通过单击应用程序刊头上的“设置”来更改“主题”   。
+1. 也可以通过转到“管理”>“应用程序设置”和“选择图像”按钮，选择要作为应用程序图像上传的图像来更改应用程序图像   。
+1. 最后，还可以通过单击应用程序刊头上的“设置”来更改“主题”   。
 
   
 ## <a name="clean-up-resources"></a>清理资源
@@ -263,7 +257,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 如果不希望继续使用此应用程序，请删除应用程序，步骤如下：
 
 1. 从 IoT Central 应用程序的左侧窗格打开“管理”选项卡。
-2. 选择“应用程序设置”，然后单击页面底部的“删除”按钮。
+1. 选择“应用程序设置”，然后单击页面底部的“删除”按钮。
 
 ## <a name="next-steps"></a>后续步骤
 

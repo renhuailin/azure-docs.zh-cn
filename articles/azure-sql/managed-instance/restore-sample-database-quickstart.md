@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 413786cf8946c1ffbb76bd0e18eae7c7ba16a9c1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b2333e38415a2c0ad50ce36c213ead711c70ab4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790740"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928794"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>快速入门：使用 SSMS 将数据库还原到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,6 +51,9 @@ ms.locfileid: "92790740"
 1. 打开 SSMS 并连接到托管实例。
 2. 在“对象资源管理器”中，右键单击托管实例，并选择“新建查询”以打开新的查询窗口 。
 3. 运行以下 SQL 脚本，该脚本使用预配置的存储帐户和 SAS 密钥在托管实例中[创建凭据](/sql/t-sql/statements/create-credential-transact-sql)。
+ 
+   > [!IMPORTANT]
+   > `CREDENTIAL` 必须与容器路径匹配，以 `https` 开头，结尾不能包含正斜杠。 `IDENTITY` 必须为 `SHARED ACCESS SIGNATURE`。 `SECRET` 必须是共享访问签名令牌，且不能包含前导 `?`。
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]

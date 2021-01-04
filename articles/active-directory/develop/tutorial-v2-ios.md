@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: aff89d49dec9bafedb3c9a5a76abdeb803740a12
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: f04a8aa96b51ac9330e4302c3afcc48f7d305b39
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95746721"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507704"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>教程：从 iOS 或 macOS 应用登录用户并调用 Microsoft Graph
 
@@ -45,7 +45,7 @@ ms.locfileid: "95746721"
 
 本教程中的应用可以将用户登录并代表用户从 Microsoft Graph 获取数据。 将通过一个受保护 API（在本例中为 Microsoft Graph API）访问该数据，该 API 要求授权并且受 Microsoft 标识平台保护。
 
-更具体地说：
+更具体说来：
 
 * 你的应用将通过浏览器或 Microsoft Authenticator 使用户登录。
 * 最终用户将接受应用程序请求的权限。
@@ -71,16 +71,17 @@ ms.locfileid: "95746721"
 
 ## <a name="register-your-application"></a>注册应用程序
 
-1. 转到 [Azure 门户](https://aka.ms/MobileAppReg)
-2. 打开“应用注册”边栏选项卡，选择“+新建注册”。
-3. 输入应用的“名称”，不设置重定向 URI。
-4. 在“支持的帐户类型”下选择“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户和个人 Microsoft 帐户(例如，Skype、Xbox)” 
-5. 选择“注册”
-6. 在显示的窗格的“管理”部分，选择“身份验证”。
-
-7. 选择屏幕顶部附近的“尝试新体验”，以开启新的应用注册体验，然后选择“+新建注册” > “+ 添加平台” > “iOS/macOS”。
-    - 输入项目的捆绑 ID。 如果下载了代码，则为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。此时捆绑标识符会显示在“标识”部分。
-8. 选择 `Configure` 并保存出现在“MSAL 配置”页中的“MSAL 配置” ，以便在稍后配置应用时输入它。 选择“完成”。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+1. 搜索并选择“Azure Active Directory”  。
+1. 在“管理”下，选择“应用注册” > “新建注册”  。
+1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+1. 在“支持的帐户类型”下选择“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户和个人 Microsoft 帐户(例如，Skype、Xbox)” 。
+1. 选择“注册”  。
+1. 在“管理”下，选择“身份验证” > “添加平台” > “iOS/macOS”   。
+1. 输入项目的捆绑 ID。 如果下载了代码，则为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。此时捆绑标识符会显示在“标识”部分。
+1. 选择“配置”并保存出现在“MSAL 配置”页中的“MSAL 配置”，以便在稍后配置应用时输入它  。 
+1. 选择“完成”。
 
 ## <a name="add-msal"></a>添加 MSAL
 
@@ -520,7 +521,7 @@ MSAL 公开了获取令牌的两种主要方法：`acquireTokenSilently()` 和 `
 
 1. 使用作用域创建 `MSALInteractiveTokenParameters`。
 2. 使用创建的参数调用 `acquireToken()`。
-3. 处理错误。 有关更多详细信息，请参阅[适用于 iOS 和 macOS 的 MSAL 错误处理指南](msal-handling-exceptions.md)。
+3. 处理错误。 有关更多详细信息，请参阅[适用于 iOS 和 macOS 的 MSAL 错误处理指南](msal-error-handling-ios.md)。
 4. 处理成功案例。
 
 将以下代码添加到 `ViewController` 类。
@@ -854,7 +855,7 @@ func acquireTokenInteractively() {
 
 ## <a name="next-steps"></a>后续步骤
 
-在我们由多个部分组成的场景系列中，详细了解如何构建可调用受保护的 Web API 的移动应用。
+在我们的多部分场景系列中，详细了解如何构建可调用受保护 Web API 的移动应用。
 
 > [!div class="nextstepaction"]
 > [方案：用于调用 Web API 的移动应用程序](scenario-mobile-overview.md)

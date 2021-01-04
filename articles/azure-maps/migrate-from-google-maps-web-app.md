@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 4dee8de8f42b78ecdab9d9e15bb277d58fa8ba70
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: fcb8090427530271600a6699fafa5c488c426784
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905054"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680879"
 ---
-# <a name="tutorial---migrate-a-web-app-from-google-maps"></a>教程 - 从 Google Maps 迁移 Web 应用
+# <a name="tutorial-migrate-a-web-app-from-google-maps"></a>教程：从 Google Maps 迁移 Web 应用
 
 使用 Google Maps 的大多数 Web 应用都是使用 Google Maps V3 JavaScript SDK。 Azure Maps Web SDK 是适合用于迁移目标的基于 Azure 的 SDK。 Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地图。 你可以在 Web 或移动应用程序中运行自己的应用。 此控件使用 WebGL，因此可以渲染大型数据集，同时保持很高的性能。 使用 JavaScript 或 TypeScript 通过此 SDK 进行开发。 在本教程中，您将学习如何执行以下操作：
 
@@ -31,27 +31,27 @@ ms.locfileid: "96905054"
 > * 显示交通情况数据
 > * 添加地面叠加层
 
-你还将了解： 
+你还将了解：
 
 > [!div class="checklist"]
-> * 如何使用 Azure Maps Web SDK 完成常见映射任务
-> * 改善性能和用户体验的最佳做法
-> * 有关如何使用 Azure Maps 中提供的更多高级功能创建应用程序的提示
+> * 如何使用 Azure Maps Web SDK 完成常见映射任务。
+> * 改善性能和用户体验的最佳做法。
+> * 有关如何使用 Azure Maps 中提供的更多高级功能创建应用程序的提示。
 
 如果迁移现有的 Web 应用程序，请检查该应用程序是否使用开源地图控件库。 开源地图控件库的示例包括：Cesium、Leaflet 和 OpenLayers。 即使应用程序使用开源地图控件库，而你不想要使用 Azure Maps Web SDK，也仍可以迁移该应用程序。 在这种情况下，请将应用程序连接到 Azure Maps 图块服务（[道路图块](/rest/api/maps/render/getmaptile) \| [卫星图块](/rest/api/maps/render/getmapimagerytile)）。 下面指出了有关如何在某些常用开源地图控件库中使用 Azure Maps 的详细信息。
 
-- Cesium - 适用于 Web 的 3D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文档](https://cesiumjs.org/)
-- Leaflet - 适用于 Web 的轻型 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文档](https://leafletjs.com/)
-- OpenLayers - 支持投影的适用于 Web 的 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [文档](https://openlayers.org/)
+* Cesium - 适用于 Web 的 3D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文档](https://cesiumjs.org/)
+* Leaflet - 适用于 Web 的轻型 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文档](https://leafletjs.com/)
+* OpenLayers - 支持投影的适用于 Web 的 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [文档](https://openlayers.org/)
 
 如果使用 JavaScript 框架进行开发，则下述某一开源项目可能很有用：
 
-- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - 围绕 Azure Maps 的 Angular 10 包装器。
-- [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor 组件。
-- [Azure Maps React 组件](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps 控件的 React 包装器。
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue 应用程序的 Azure Maps 组件。
+* [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - 围绕 Azure Maps 的 Angular 10 包装器。
+* [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor 组件。
+* [Azure Maps React 组件](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps 控件的 React 包装器。
+* [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue 应用程序的 Azure Maps 组件。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>先决条件
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 2. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -97,40 +97,40 @@ ms.locfileid: "96905054"
 
 **主题**
 
-- [加载地图](#load-a-map)
-- [本地化地图](#localizing-the-map)
-- [设置地图视图](#setting-the-map-view)
-- [添加标记](#adding-a-marker)
-- [添加自定义标记](#adding-a-custom-marker)
-- [添加折线](#adding-a-polyline)
-- [添加多边形](#adding-a-polygon)
-- [显示信息窗口](#display-an-info-window)
-- [导入 GeoJSON 文件](#import-a-geojson-file)- 
-- [标记聚类](#marker-clustering)
-- [添加热度地图](#add-a-heat-map)
-- [叠加图块层](#overlay-a-tile-layer)
-- [显示交通情况数据](#show-traffic-data)
-- [添加地面叠加层](#add-a-ground-overlay)
-- [将 KML 数据添加到地图](#add-kml-data-to-the-map)
+* [加载地图](#load-a-map)
+* [本地化地图](#localizing-the-map)
+* [设置地图视图](#setting-the-map-view)
+* [添加标记](#adding-a-marker)
+* [添加自定义标记](#adding-a-custom-marker)
+* [添加折线](#adding-a-polyline)
+* [添加多边形](#adding-a-polygon)
+* [显示信息窗口](#display-an-info-window)
+* [导入 GeoJSON 文件](#import-a-geojson-file)* 
+* [标记聚类](#marker-clustering)
+* [添加热度地图](#add-a-heat-map)
+* [叠加图块层](#overlay-a-tile-layer)
+* [显示交通情况数据](#show-traffic-data)
+* [添加地面叠加层](#add-a-ground-overlay)
+* [将 KML 数据添加到地图](#add-kml-data-to-the-map)
 
 ### <a name="load-a-map"></a>加载地图
 
 这两个 SDK 采用相同的步骤来加载地图：
 
-- 添加对 Map SDK 的引用。
-- 将充当地图占位符的 `div` 标记添加到页面的正文。
-- 创建加载页面时要调用的 JavaScript 函数。
-- 创建相应 map 类的实例。
+* 添加对 Map SDK 的引用。
+* 将充当地图占位符的 `div` 标记添加到页面的正文。
+* 创建加载页面时要调用的 JavaScript 函数。
+* 创建相应 map 类的实例。
 
 **一些重要差别**
 
-- Google Maps 要求在 API 的脚本引用中指定帐户密钥。 Azure Maps 的身份验证凭据指定为 map 类的选项。 此凭据可以是订阅密钥或 Azure Active Directory 信息。
-- Google Maps 在 API 的脚本引用中接受一个回调函数，该函数用于调用初始化函数来加载地图。 使用 Azure Maps 时，应使用页面的 onload 事件。
-- 引用要在其中呈现地图的 `div` 元素时，Azure Maps 中的 `Map` 类只需要 `id` 值，而 Google Maps 需要 `HTMLElement` 对象。
-- Azure Maps 中的坐标定义为 Position 对象，可将这些对象指定为采用 `[longitude, latitude]` 格式的简单数字数组。
-- Azure Maps 中的缩放级别比 Google Maps 中的缩放级别要低一级。 之所以存在这种差异，是因为这两个平台之间的图块系统大小有差别。
-- Azure Maps 不会将任何导航控件添加到地图画布。 因此，默认情况下，地图中不提供缩放按钮和地图样式按钮。 但是，有一些控制选项可用于添加地图样式选取器、缩放按钮、罗盘或旋转控件以及俯仰角控件。
-- Azure Maps 中添加了一个事件处理程序用于监视地图实例的 `ready` 事件。 在地图加载完 WebGL 上下文以及所需的所有资源后，将激发此事件。 可将地图完成加载后你要运行的任何代码添加到此事件处理程序。
+* Google Maps 要求在 API 的脚本引用中指定帐户密钥。 Azure Maps 的身份验证凭据指定为 map 类的选项。 此凭据可以是订阅密钥或 Azure Active Directory 信息。
+* Google Maps 在 API 的脚本引用中接受一个回调函数，该函数用于调用初始化函数来加载地图。 使用 Azure Maps 时，应使用页面的 onload 事件。
+* 引用要在其中呈现地图的 `div` 元素时，Azure Maps 中的 `Map` 类只需要 `id` 值，而 Google Maps 需要 `HTMLElement` 对象。
+* Azure Maps 中的坐标定义为 Position 对象，可将这些对象指定为采用 `[longitude, latitude]` 格式的简单数字数组。
+* Azure Maps 中的缩放级别比 Google Maps 中的缩放级别要低一级。 之所以存在这种差异，是因为这两个平台之间的图块系统大小有差别。
+* Azure Maps 不会将任何导航控件添加到地图画布。 因此，默认情况下，地图中不提供缩放按钮和地图样式按钮。 但是，有一些控制选项可用于添加地图样式选取器、缩放按钮、罗盘或旋转控件以及俯仰角控件。
+* Azure Maps 中添加了一个事件处理程序用于监视地图实例的 `ready` 事件。 在地图加载完 WebGL 上下文以及所需的所有资源后，将激发此事件。 可将地图完成加载后你要运行的任何代码添加到此事件处理程序。
 
 以下简单示例使用 Google Maps 加载中心点位于纽约坐标的地图。 经度：-73.985，纬度：40.747，地图缩放级别为 12。
 
@@ -235,7 +235,7 @@ ms.locfileid: "96905054"
 
 **其他资源：**
 
-- Azure Maps 还提供了导航控件，用于按[此文](map-add-controls.md)所述旋转地图视图及调整其俯仰角。
+* Azure Maps 还提供了导航控件，用于按[此文](map-add-controls.md)所述旋转地图视图及调整其俯仰角。
 
 ### <a name="localizing-the-map"></a>本地化地图
 
@@ -255,7 +255,7 @@ ms.locfileid: "96905054"
 
 #### <a name="after-azure-maps"></a>后者：Azure Maps
 
-Azure Maps 提供两种不同的方式来设置地图的语言和区域视图。 第一种做法是将此信息添加到全局 *atlas* 命名空间。 这会导致应用中的所有地图控件实例默认采用这些设置。 以下示例将语言设置为法语（“fr-FR”），将区域视图设置为“auto”：
+Azure Maps 提供两种不同的方式来设置地图的语言和区域视图。 第一种做法是将此信息添加到全局 *atlas* 命名空间。 这会导致应用中的所有地图控件实例默认采用这些设置。 以下示例将语言设置为法语（“fr-FR”），将区域视图设置为“Auto”：
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -277,7 +277,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!NOTE]
-> 使用 Azure Maps 时，可以在同一页面上加载使用不同语言和区域设置的多个地图实例。 还可以在加载地图后在其中更新这些设置。 
+> 使用 Azure Maps 时，可以在同一页面上加载使用不同语言和区域设置的多个地图实例。 还可以在加载地图后在其中更新这些设置。
 
 查找 Azure Maps 中[支持的语言](supported-languages.md)详细列表。
 
@@ -325,16 +325,16 @@ map.setStyle({
 
 **其他资源：**
 
-- [选择地图样式](choose-map-style.md)
-- [支持的地图样式](supported-map-styles.md)
+* [选择地图样式](choose-map-style.md)
+* [支持的地图样式](supported-map-styles.md)
 
 ### <a name="adding-a-marker"></a>添加标记
 
 在 Azure Maps 中，可通过多种方式在地图上呈现点数据：
 
-- **HTML 标记** – 使用传统的 DOM 元素呈现点。 HTML 标记支持拖动。
-- **符号层** – 在 WebGL 上下文中使用图标或文本呈现点。
-- **气泡层** – 在地图上以圆的形式呈现点。 可根据数据中的属性缩放圆的半径。
+* **HTML 标记** – 使用传统的 DOM 元素呈现点。 HTML 标记支持拖动。
+* **符号层** – 在 WebGL 上下文中使用图标或文本呈现点。
+* **气泡层** – 在地图上以圆的形式呈现点。 可根据数据中的属性缩放圆的半径。
 
 在 WebGL 上下文中呈现符号层和气泡层。 这两个层可在地图上呈现较大的点集。 这些层要求将数据存储在数据源中。 激发 `ready` 事件后，应将数据源和呈现层添加到地图中。 HTML 标记在页面中呈现为 DOM 元素，而不使用数据源。 页面中的 DOM 元素越多，页面加载速度越慢。 若要在地图上呈现好几百个点，我们建议改用某个呈现层。
 
@@ -455,7 +455,6 @@ map.markers.add(new atlas.HtmlMarker({
 ![黄色图钉图像](media/migrate-google-maps-web-app/yellow-pushpin.png)<br/>
 yellow-pushpin.png</center>
 
-
 #### <a name="before-google-maps"></a>前者：Google Maps
 
 通过指定 `Icon` 对象来创建自定义标记，该对象包含图像的 `url`。 指定一个 `anchor` 点，该点将图钉图像点与地图上的坐标对齐。 Google Maps 中的定位点值相对于图像的左上角。
@@ -470,7 +469,6 @@ var marker = new google.maps.Marker({
     map: map
 });
 ```
-
 
 ![Google Maps 自定义标记](media/migrate-google-maps-web-app/google-maps-custom-marker.png)
 
@@ -639,6 +637,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
     strokeDashArray: [3, 3]
 }));
 ```
+
 ![Azure Maps 折线](media/migrate-google-maps-web-app/azure-maps-polyline.png)
 
 **其他资源：**
@@ -709,6 +708,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
     strokeWidth: 2
 }));
 ```
+
 ![Azure Maps 多边形](media/migrate-google-maps-web-app/azure-maps-polygon.png)
 
 **其他资源：**
@@ -744,6 +744,7 @@ marker.addListener('click', function () {
     infowindow.open(map, marker);
 });
 ```
+
 ![Google Maps 弹出窗口](media/migrate-google-maps-web-app/google-maps-popup.png)
 
 #### <a name="after-azure-maps"></a>后者：Azure Maps
@@ -772,6 +773,7 @@ map.events.add('click', marker, function () {
     popup.open(map);
 });
 ```
+
 ![Azure Maps 弹出窗口](media/migrate-google-maps-web-app/azure-maps-popup.png)
 
 > [!NOTE]
@@ -940,16 +942,14 @@ GeoJSON 是 Azure Maps 中的基础数据类型。 使用 `datasource.importFrom
 </html>
 ```
 
-
-
 ![Azure Maps GeoJSON](media/migrate-google-maps-web-app/azure-maps-geojson.png)
 
 **其他资源：**
 
-- [添加符号层](map-add-pin.md)
-- [添加气泡层](map-add-bubble-layer.md)
-- [聚类点数据](clustering-point-data-web-sdk.md)
-- [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)
+* [添加符号层](map-add-pin.md)
+* [添加气泡层](map-add-bubble-layer.md)
+* [聚类点数据](clustering-point-data-web-sdk.md)
+* [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)
 
 ### <a name="marker-clustering"></a>标记聚类
 
@@ -1017,18 +1017,16 @@ GeoJSON 是 Azure Maps 中的基础数据类型。 使用 `datasource.importFrom
 </html>
 ```
 
-
-
 ![Google Maps 聚类](media/migrate-google-maps-web-app/google-maps-clustering.png)
 
 #### <a name="after-azure-maps"></a>后者：Azure Maps
 
 在数据源中添加和管理数据。 连接数据源和层，然后呈现数据。 Azure Maps 中的 `DataSource` 类提供多个聚类选项。
 
-- `cluster` – 告知数据源聚类点数据。
-- `clusterRadius` - 要将其中的点聚类到一起的半径（以像素为单位）。
-- `clusterMaxZoom` - 进行聚类的最大缩放级别。 如果放大到此级别以上，将以符号形式呈现所有点。
-- `clusterProperties` - 定义自定义属性，这些属性是使用表达式针对每个聚类中的、已添加到每个聚类点的属性中的所有点计算的。
+* `cluster` – 告知数据源聚类点数据。
+* `clusterRadius` - 要将其中的点聚类到一起的半径（以像素为单位）。
+* `clusterMaxZoom` - 进行聚类的最大缩放级别。 如果放大到此级别以上，将以符号形式呈现所有点。
+* `clusterProperties` - 定义自定义属性，这些属性是使用表达式针对每个聚类中的、已添加到每个聚类点的属性中的所有点计算的。
 
 启用聚类后，数据源会将已聚类和未聚类的数据点发送到层进行呈现。 数据源能够聚类数十万个数据点。 聚类的数据点包含以下属性：
 
@@ -1145,16 +1143,14 @@ GeoJSON 是 Azure Maps 中的基础数据类型。 使用 `datasource.importFrom
 </html>
 ```
 
-
-
 ![Azure Maps 聚类](media/migrate-google-maps-web-app/azure-maps-clustering.png)
 
 **其他资源：**
 
-- [添加符号层](map-add-pin.md)
-- [添加气泡层](map-add-bubble-layer.md)
-- [聚类点数据](clustering-point-data-web-sdk.md)
-- [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)
+* [添加符号层](map-add-pin.md)
+* [添加气泡层](map-add-bubble-layer.md)
+* [聚类点数据](clustering-point-data-web-sdk.md)
+* [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)
 
 ### <a name="add-a-heat-map"></a>添加热度地图
 
@@ -1227,8 +1223,6 @@ GeoJSON 是 Azure Maps 中的基础数据类型。 使用 `datasource.importFrom
 </html>
 ```
 
-
-
 ![Google Maps 热度地图](media/migrate-google-maps-web-app/google-maps-heatmap.png)
 
 #### <a name="after-azure-maps"></a>后者：Azure Maps
@@ -1293,8 +1287,6 @@ GeoJSON 是 Azure Maps 中的基础数据类型。 使用 `datasource.importFrom
 </html>
 ```
 
-
-
 ![Azure Maps 热度地图](media/migrate-google-maps-web-app/azure-maps-heatmap.png)
 
 **其他资源：**
@@ -1324,8 +1316,6 @@ map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType({
 }));
 ```
 
-
-
 ![Google Maps 图块层](media/migrate-google-maps-web-app/google-maps-tile-layer.png)
 
 #### <a name="after-azure-maps"></a>后者：Azure Maps
@@ -1343,8 +1333,6 @@ map.layers.add(new atlas.layer.TileLayer({
     tileSize: 256
 }), 'labels');
 ```
-
-
 
 ![Azure Maps 图块层](media/migrate-google-maps-web-app/azure-maps-tile-layer.png)
 
@@ -1370,8 +1358,6 @@ var trafficLayer = new google.maps.TrafficLayer();
 trafficLayer.setMap(map);
 ```
 
-
-
 ![Google Maps 交通状况](media/migrate-google-maps-web-app/google-maps-traffic.png)
 
 #### <a name="after-azure-maps"></a>后者：Azure Maps
@@ -1387,20 +1373,16 @@ map.setTraffic({
 });
 ```
 
-
-
 ![Azure Maps 交通状况](media/migrate-google-maps-web-app/azure-maps-traffic.png)
 
 如果在 Azure Maps 中单击某个交通状况图标，弹出窗口中会显示更多信息。
-
-
 
 ![Azure Maps 交通事件](media/migrate-google-maps-web-app/azure-maps-traffic-incident.png)
 
 **其他资源：**
 
-- [在地图上显示交通信息](map-show-traffic.md)
-- [交通状况叠加选项](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
+* [在地图上显示交通信息](map-show-traffic.md)
+* [交通状况叠加选项](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
 
 ### <a name="add-a-ground-overlay"></a>添加地面叠加层
 
@@ -1514,8 +1496,6 @@ Azure Maps 和 Google Maps 都支持在地图上叠加地理围栏图像。 平�
 </html>
 ```
 
-
-
 ![Azure Maps 图像叠加](media/migrate-google-maps-web-app/azure-maps-image-overlay.png)
 
 **其他资源：**
@@ -1528,7 +1508,6 @@ Azure Maps 和 Google Maps 都支持在地图上叠加地理围栏图像。 平�
 Azure Maps 和 Google Maps 都可以在地图上导入和呈现 KML、KMZ 与 GeoRSS 数据。 Azure Maps 还支持 GPX、GML、空间 CSV 文件、GeoJSON、已知文本 (WKT)、Web 地图服务 (WMS)、Web 地图图块服务 (WMTS) 和 Web 特征服务 (WFS)。 Azure Maps 在本地将文件读取到内存中，在大多数情况下，可以处理大得多的 KML 文件。 
 
 #### <a name="before-google-maps"></a>前者：Google Maps
-
 
 ```javascript
 <!DOCTYPE html>
@@ -1661,9 +1640,7 @@ Azure Maps 和 Google Maps 都可以在地图上导入和呈现 KML、KMZ 与 Ge
 </html>
 ```
 
-
 ![Azure Maps KML](media/migrate-google-maps-web-app/azure-maps-kml.png)</center>
-
 
 **其他资源：**
 
@@ -1675,18 +1652,18 @@ Azure Maps 和 Google Maps 都可以在地图上导入和呈现 KML、KMZ 与 Ge
 
 下面是一些与 Google Maps 迁移相关的其他代码示例：
 
-- [绘图工具](map-add-drawing-toolbar.md)
-- [将地图限制为两指平移](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Map%20to%20Two%20Finger%20Panning)
-- [限制滚轮缩放](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Scroll%20Wheel%20Zoom)
-- [创建全屏控件](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Create%20a%20Fullscreen%20Control)
+* [绘图工具](map-add-drawing-toolbar.md)
+* [将地图限制为两指平移](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Map%20to%20Two%20Finger%20Panning)
+* [限制滚轮缩放](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Scroll%20Wheel%20Zoom)
+* [创建全屏控件](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Create%20a%20Fullscreen%20Control)
 
 **服务：**
 
-- [使用 Azure Maps 服务模块](how-to-use-services-module.md)
-- [搜索兴趣点](map-search-location.md)
-- [获取坐标中的信息（反向地理编码）](map-get-information-from-coordinate.md)
-- [显示从 A 到 B 的路线](map-route.md)
-- [使用 JQuery UI 搜索自动建议](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
+* [使用 Azure Maps 服务模块](how-to-use-services-module.md)
+* [搜索兴趣点](map-search-location.md)
+* [获取坐标中的信息（反向地理编码）](map-get-information-from-coordinate.md)
+* [显示从 A 到 B 的路线](map-route.md)
+* [使用 JQuery UI 搜索自动建议](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
 
 ## <a name="google-maps-v3-to-azure-maps-web-sdk-class-mapping"></a>Google Maps V3 到 Azure Maps Web SDK 的类映射
 
@@ -1741,18 +1718,13 @@ Azure Maps Web SDK 包含一个可单独加载的服务模块。 此模块使用
 | 几何库      | [atlas.math](/javascript/api/azure-maps-control/atlas.math)   |
 | 可视化库 | [热度地图层](map-add-heat-map-layer.md) |
 
+## <a name="clean-up-resources"></a>清理资源
+
+没有要清理的资源。
+
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure Maps Web SDK：
+详细了解如何迁移到 Azure Maps：
 
 > [!div class="nextstepaction"]
-> [如何使用地图控件](how-to-use-map-control.md)
-
-> [!div class="nextstepaction"]
-> [如何使用绘图工具模块](set-drawing-options.md)
-
-> [!div class="nextstepaction"]
-> [如何使用服务模块](how-to-use-services-module.md)
-
-> [!div class="nextstepaction"]
-> [如何使用空间 IO 模块](how-to-use-spatial-io-module.md)
+> [迁移 Web 服务](migrate-from-google-maps-web-services.md)

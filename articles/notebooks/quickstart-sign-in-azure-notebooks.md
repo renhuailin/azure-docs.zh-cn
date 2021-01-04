@@ -3,12 +3,12 @@ title: 登录到 Azure Notebooks 预览版
 description: 快速登录到 Azure Notebooks 预览版并设置用户 ID，你将能够访问已保存的项目并与他人共享笔记本。
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: 8a2d9836cd005ab11106c569929a6776d605da50
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 168da5d4d36cd4cfadb4ef120ddfabbd261cafaf
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85830411"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109447"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>快速入门：登录 Azure Notebooks 预览版并设置用户 ID
 
@@ -59,4 +59,4 @@ ms.locfileid: "85830411"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [快速入门：创建和共享笔记本](quickstart-create-share-jupyter-notebook.md)
+> [快速入门：导出 Jupyter Notebook 项目](quickstart-export-jupyter-notebook-project.md)

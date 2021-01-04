@@ -3,12 +3,12 @@ title: 通过用于空间分析的计算机视觉分析实时视频 - Azure
 description: 本教程展示了如何结合使用实时视频分析和 Azure 认知服务中的计算机视觉空间分析 AI 功能，分析来自（模拟）IP 相机的实时视频源。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015679"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400500"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>通过用于空间分析的计算机视觉（预览版）分析实时视频
 
@@ -51,7 +51,7 @@ ms.locfileid: "92015679"
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/spatial-analysis-tutorial/overview.png" alt-text="空间分析概述":::
  
-此图显示了本教程中的信号如何流动。 [Edge 模块](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)模拟托管实时流式处理协议 (RTSP) 服务器的 IP 相机。 [RTSP 源](media-graph-concept.md#rtsp-source)节点从该服务器拉取视频源，并将视频帧发送到[帧速率筛选器处理器](media-graph-concept.md#frame-rate-filter-processor)节点。 该处理器会限制到达 MediaGraphCognitiveServicesVisionExtension 处理器节点的视频流的帧速率。
+此图显示了本教程中的信号如何流动。 [Edge 模块](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)模拟托管实时流式处理协议 (RTSP) 服务器的 IP 相机。 [RTSP 源](media-graph-concept.md#rtsp-source)节点从该服务器拉取视频源，并将视频帧发送到 `MediaGraphCognitiveServicesVisionExtension` 处理器节点。
 
 MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视频帧转换为指定的图像类型。 然后，它将图像通过 **共享内存** 中继到另一个 Edge 模块，该模块在 gRPC 终结点后运行 AI 操作。 在此示例中，该 Edge 模块是空间分析模块。 MediaGraphCognitiveServicesVisionExtension 处理器节点执行两项操作：
 

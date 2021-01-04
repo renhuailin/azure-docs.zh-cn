@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5f19b55a955b8e3e1500cf14fa221b46808ac857
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8827171788bd83a202b3607537204c71c34f29e0
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698285"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511835"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建公共负载均衡器，以便对 VM 进行负载均衡
 
@@ -40,6 +40,10 @@ ms.locfileid: "94698285"
 
 >[!NOTE]
 >对于生产型工作负载，建议使用标准 SKU 负载均衡器。  有关 SKU 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram.png" alt-text="在快速入门中创建的标准负载均衡器资源。" border="false":::
+
+图：在快速入门中创建的资源。
 
 在本部分，你将创建一个负载均衡器来对虚拟机进行负载均衡。 
 
@@ -124,7 +128,7 @@ ms.locfileid: "94698285"
 
 1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
 
-2. 在“设置”下，依次选择“负载均衡规则”、“添加”。
+2. 在“设置”下，依次选择“负载均衡规则”、“添加”  。
 
 3. 使用以下值配置负载均衡规则：
     
@@ -140,7 +144,7 @@ ms.locfileid: "94698285"
     | 运行状况探测 | 选择“myHealthProbe”。 |
     | 空闲超时（分钟） | 将滑块移动到 15 分钟。 |
     | TCP 重置 | 选择“启用”。  |
-    | 出站源网络地址转换 (SNAT) | 选择“(建议)使用出站规则为后端池成员提供对 Internet 的访问权限”。 |
+    | 出站源网络地址转换 (SNAT) | 选择“(建议)使用出站规则为后端池成员提供对 Internet 的访问权限。” |
 
 4. 将剩余的字段保留默认设置，然后选择“确定”。
 
@@ -169,7 +173,7 @@ ms.locfileid: "94698285"
     | 名称             | 输入“myVNet”                                    |
     | 区域           | 选择“西欧” |
 
-3. 选择“IP 地址”选项卡，或选择页面底部的“下一步:IP 地址”按钮。
+3. 选择“IP 地址”选项卡  ，或选择页面底部的“下一步:  IP 地址”按钮。
 
 4. 在“IP 地址”  选项卡上，输入以下信息：
 
@@ -213,7 +217,7 @@ ms.locfileid: "94698285"
    
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
 
-    | 设置 | “值”                                          |
+    | 设置 | 值                                          |
     |-----------------------|----------------------------------|
     | **项目详细信息** |  |
     | 订阅 | 选择 Azure 订阅 |
@@ -237,7 +241,7 @@ ms.locfileid: "94698285"
   
 4. 在“网络”选项卡中，选择或输入：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     |-|-|
     | **网络接口** |  |
     | 虚拟网络 | myVNet |
@@ -256,7 +260,7 @@ ms.locfileid: "94698285"
 
 6. 在“管理”选项卡中，选择或输入：
     
-    | 设置 | “值” |
+    | 设置 | 值 |
     |-|-|
     | **Monitoring** |  |
     | 启动诊断 | 选择“关闭” |
@@ -322,6 +326,10 @@ ms.locfileid: "94698285"
 >[!NOTE]
 >对于生产型工作负载，建议使用标准 SKU 负载均衡器。  有关 SKU 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
 
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram-basic.png" alt-text="在快速入门中创建的基本负载均衡器资源。" border="false":::
+
+图：在快速入门中创建的资源。
+
 在本部分，你将创建一个负载均衡器来对虚拟机进行负载均衡。 
 
 创建公共负载均衡器时，还会为该负载均衡器创建一个配置为前端（默认情况下命名为“LoadBalancerFrontend”）的新公共 IP 地址。
@@ -330,7 +338,7 @@ ms.locfileid: "94698285"
 
 2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
-    | 设置                 | “值”                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中键入“CreatePubLBQS-rg” 。|
@@ -375,7 +383,7 @@ ms.locfileid: "94698285"
     | 名称             | 输入“myVNet”                                    |
     | 区域           | 选择“西欧” |
 
-3. 选择“IP 地址”选项卡，或选择页面底部的“下一步:IP 地址”按钮。
+3. 选择“IP 地址”选项卡  ，或选择页面底部的“下一步:  IP 地址”按钮。
 
 4. 在“IP 地址”  选项卡上，输入以下信息：
 
@@ -447,7 +455,7 @@ ms.locfileid: "94698285"
     | 时间间隔 | 输入 **15** 作为两次探测尝试之间的 **时间间隔**（以秒为单位）。 |
     | 不正常阈值 | 选择“2”，作为将 VM 视为不正常所要达到的 **不正常阈值** 或连续探测失败次数。|
 
-3. 选择“确定” 。
+3. 选择“确定”  。
 
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
@@ -500,7 +508,7 @@ ms.locfileid: "94698285"
    
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
 
-    | 设置 | “值”                                          |
+    | 设置 | 值                                          |
     |-----------------------|----------------------------------|
     | **项目详细信息** |  |
     | 订阅 | 选择 Azure 订阅 |
@@ -522,7 +530,7 @@ ms.locfileid: "94698285"
   
 4. 在“网络”选项卡中，选择或输入：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     |-|-|
     | **网络接口** |  |
     | 虚拟网络 | 选择 myVNet |
@@ -537,7 +545,7 @@ ms.locfileid: "94698285"
 
 6. 在“管理”选项卡中，选择或输入：
     
-    | 设置 | “值” |
+    | 设置 | 值 |
     |---|---|
     | **Monitoring** | |
     | 启动诊断 | 选择“关闭” |
@@ -576,7 +584,7 @@ ms.locfileid: "94698285"
 
 ## <a name="install-iis"></a>安装 IIS
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择位于“CreateStdLBQS-rg”资源组中的“myVM1”   。
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择位于“CreatePubLBQS-rg”资源组中的“myVM1”   。
 
 2. 在“概述”页上，选择“连接”，然后选择“Bastion”  。
 

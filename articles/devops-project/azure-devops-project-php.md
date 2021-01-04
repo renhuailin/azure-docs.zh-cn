@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 99c8bc00beb7b189b200e0b02435262ae34835d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5727a08159f750a69920f66f4b743c187aa00885
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856086"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588958"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>使用 Azure DevOps Starter 创建用于 PHP 的 CI/CD 管道
 
@@ -64,9 +64,9 @@ Azure DevOps Starter 提供一种简化的体验，适合在 Azure Pipelines 中
 
  DevOps 入门版将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 若要查看存储库并对应用程序进行代码更改，请执行以下步骤：
 
-1. 在 DevOps Starter 仪表板的左侧，选择 master 分库的链接。 该链接会打开新建 Git 存储库的视图。
+1. 在 DevOps Starter 仪表板的左侧，选择主分支的链接。 该链接会打开新建 Git 存储库的视图。
 
-1. 若要查看存储库克隆 URL，请在浏览器右上角选择“克隆”。 可以在最常用的 IDE 中克隆 Git 存储库。 在后续几个步骤中，请使用 Web 浏览器直接对 master 分库进行代码更改并提交所做的更改。
+1. 若要查看存储库克隆 URL，请在浏览器右上角选择“克隆”。 可以在最常用的 IDE 中克隆 Git 存储库。 在后续几个步骤中，请使用 Web 浏览器直接对主分支进行代码更改并提交所做的更改。
 
 1. 在左侧，转到 **resources/views/welcome.blade.php** 文件。
 
@@ -92,11 +92,11 @@ Azure DevOps Starter 提供一种简化的体验，适合在 Azure Pipelines 中
 
 1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。 
 
-1. 在生成管道名称下，选择“历史记录”。   “历史记录”窗格显示最近针对生成所做的更改的审核线索。**** Azure Pipelines 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
+1. 在生成管道名称下，选择“历史记录”。   “历史记录”窗格显示最近针对生成所做的更改的审核线索。 Azure Pipelines 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 
-1. 选择“触发器”。  DevOps Starter 将自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 可以选择在 CI 过程中包括或排除分库。
+1. 选择“触发器”。 DevOps Starter 将自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 可以选择在 CI 过程中包括或排除分库。
 
-1. 选择“保留期”。  可以根据方案指定策略，以保留或删除特定数目的生成。
+1. 选择“保留期”。 可以根据方案指定策略，以保留或删除特定数目的生成。
 
 1. 选择“生成和发布”，然后选择“发布”。  DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
 
