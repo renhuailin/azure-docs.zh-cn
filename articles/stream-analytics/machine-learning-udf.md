@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 12/21/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 01c85311c9ea49be3543edee405cdd66a0659797
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130674"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732999"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>将 Azure 流分析与 Azure 机器学习集成（预览版）
 
@@ -37,7 +37,7 @@ ms.locfileid: "93130674"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 在 Azure 门户中导航到你的流分析作业，在“作业拓扑”下选择“函数”。  然后，从 " **+ 添加** " 下拉菜单中选择 " **Azure 机器学习服务** "。
+1. 在 Azure 门户中导航到你的流分析作业，在“作业拓扑”下选择“函数”。  然后，从 " **+ 添加**" 下拉菜单中选择 " **Azure 机器学习服务**"。
 
    ![添加 Azure 机器学习 UDF](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
@@ -47,15 +47,17 @@ ms.locfileid: "93130674"
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-1. 在 Visual Studio Code 中打开流分析项目，然后右键单击 " **函数** " 文件夹。 然后，选择 " **添加函数** "。 从下拉列表中选择 " **机器学习 UDF** "。
+1. 在 Visual Studio Code 中打开流分析项目，然后右键单击 " **函数** " 文件夹。 然后，选择 " **添加函数**"。 从下拉列表中选择 " **机器学习 UDF** "。
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="在 VS Code 中添加 UDF":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="在 VS Code 中添加 UDF" **从你的订阅中选择** "，在配置文件中填入设置。
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="在 VS Code 中添加 Azure 机器学习 UDF":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="在 VS Code 中添加 UDF":::
+2. 输入函数名称，并在 CodeLens 中使用 " **从你的订阅中选择** "，在配置文件中填入设置。
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="在 VS Code 中添加 UDF":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="选择 Azure 机器学习 UDF VS Code":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="在 VS Code 中配置 Azure 机器学习 UDF":::
 
 下表描述了流分析中 Azure 机器学习服务函数的每个属性。
 
@@ -81,7 +83,7 @@ INTO output
 FROM input
 ```
 
-流分析仅支持为 Azure 机器学习函数传递一个参数。 在将数据作为输入传递给机器学习 UDF 之前，可能需要准备该数据。
+流分析仅支持为 Azure 机器学习函数传递一个参数。 在将数据作为输入传递给机器学习 UDF 之前，可能需要准备该数据。 必须确保 ML UDF 的输入不为 null，因为 null 输入将导致作业失败。
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>向 UDF 传递多个输入参数
 
@@ -102,11 +104,18 @@ function createArray(vendorid, weekday, pickuphour, passenger, distance) {
 将 JavaScript UDF 添加到作业后，可以使用以下查询调用 Azure 机器学习 UDF：
 
 ```SQL
-SELECT udf.score(
-udf.createArray(vendorid, weekday, pickuphour, passenger, distance)
-)
-INTO output
+WITH 
+ModelInput AS (
+#use JavaScript UDF to construct array that will be used as input to ML UDF
+SELECT udf.createArray(vendorid, weekday, pickuphour, passenger, distance) as inputArray
 FROM input
+)
+
+SELECT udf.score(inputArray)
+INTO output
+FROM ModelInput
+#validate inputArray is not null before passing it to ML UDF to prevent job from failing
+WHERE inputArray is not null
 ```
 
 以下 JSON 是一个示例请求：

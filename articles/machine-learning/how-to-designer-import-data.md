@@ -1,7 +1,7 @@
 ---
 title: 将数据导入设计器中
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习数据集和导入数据模块将数据导入到 Azure 机器学习设计器中。
+description: 了解如何使用 Azure 机器学习数据集和“导入数据”模块将数据导入到 Azure 机器学习设计器中。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a2cc0840b7ba4b26cf9f5b1219fc189230870774
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591982"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739852"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>将数据导入到 Azure 机器学习设计器
 
@@ -47,14 +47,13 @@ ms.locfileid: "94591982"
  - 文件数据集将模块的输出文件夹注册为文件数据集。 输出文件夹包含设计器在内部使用的数据文件和元文件。 如果要继续在设计器中使用已注册的数据集，请选择此选项。 
 
  - 表格数据集仅将模块的输出数据文件注册为表格数据集。 自动机器学习或 Python SDK 等其他工具可轻松使用此格式。 如果计划在设计器之外使用已注册的数据集，请选择此选项。  
-
-
+ 
 
 ### <a name="use-a-dataset"></a>使用数据集
 
 可在模块面板中的“数据集”下找到已注册的数据集。 若要使用某个数据集，请将其拖放到管道画布上。 然后，将该数据集的输出端口连接到画布中的其他模块。 
 
-如果注册文件数据集，则数据集的输出端口类型为 **AnyDirectory** 。 如果注册表格数据集，则为 **DataFrameDirectory** 的输出端口类型。 请注意，如果将数据集的输出端口连接到设计器中的其他模块，则需要对齐数据集和模块的端口类型。
+如果注册文件数据集，则数据集的输出端口类型为“AnyDirectory”。 如果注册表格数据集，则数据集的输出端口类型为“DataFrameDirectory”。 请注意，如果将数据集的输出端口连接到设计器中的其他模块，则需要对齐数据集和模块的端口类型。
 
 ![屏幕截图，其中显示了设计器面板中已保存数据集的位置](media/how-to-designer-import-data/use-datasets-designer.png)
 
@@ -62,6 +61,14 @@ ms.locfileid: "94591982"
 > [!NOTE]
 > 设计器支持[数据集版本控制](how-to-version-track-datasets.md)。 在数据集模块的属性面板中指定数据集版本。
 
+### <a name="limitations"></a>限制 
+
+- 目前只能可视化设计器中的表格数据集。 如果在设计器外注册文件数据集，则无法在设计器画布中对其进行可视化。
+- 数据集存储在虚拟网络 (VNet) 中。 如果要进行可视化，则需要启用数据存储的工作区托管标识。
+    1. 转到相关的数据存储，然后单击“更新凭据”
+    :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="更新凭据":::
+    1. 选择“确定”，启用工作区托管标识。
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="启用工作区托管标识":::
 
 ## <a name="import-data-using-the-import-data-module"></a>使用“导入数据”模块导入数据
 
@@ -94,7 +101,7 @@ ms.locfileid: "94591982"
 * 字符串
 * Integer
 * 小数
-* 布尔
+* Boolean
 * Date
 
 设计器使用一个内部数据类型在模块之间传递数据。 可使用[转换为数据集](algorithm-module-reference/convert-to-dataset.md)模块将数据显式转换为数据表格式。 接受非内部格式的任何模块都将在不提示的情况对数据进行转换，然后再将其传递给下一个模块。

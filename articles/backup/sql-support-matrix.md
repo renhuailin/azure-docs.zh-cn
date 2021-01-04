@@ -4,12 +4,12 @@ description: 提供有关在使用 Azure 备份服务备份 Azure VM 中的 SQL 
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: b189eceb6b5a7f2e508387c0b91b238ff5fcb088
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 78436981c515b95ccda763d8ac916738b4364953
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174064"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734787"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>适用于 Azure VM 中 SQL Server 备份的支持矩阵
 
@@ -22,7 +22,7 @@ ms.locfileid: "92174064"
 **支持的部署** | 支持 SQL 市场 Azure VM 和非市场（手动安装的 SQL Server）VM。
 **支持的区域** | 澳大利亚东南部 (ASE)、东澳大利亚 (AE)、澳大利亚中部 (AC)、澳大利亚中部 2 (AC) <br> 巴西南部 (BRS)<br> 加拿大中部 (CNC)、加拿大东部 (CE)<br> 东南亚 (SEA)、东亚 (EA) <br> 美国东部 (EUS)、美国东部 2 (EUS2)、美国中西部 (WCUS)、美国西部 (WUS)；美国西部 2 (WUS 2) 美国中北部 (NCUS) 美国中部 (CUS) 美国中南部 (SCUS) <br> 印度中部 (INC)、印度南部 (INS)、印度西部 <br> 日本东部 (JPE)、日本西部 (JPW) <br> 韩国中部 (KRC)、韩国南部 (KRS) <br> 北欧 (NE)、西欧 <br> 英国南部 (UKS)、英国西部 (UKW) <br> US Gov 亚利桑那州、US Gov 弗吉尼亚州、US Gov 德克萨斯州、US DoD 中部、US DoD 东部 <br> 德国北部、德国中西部 <br> 瑞士北部、瑞士西部 <br> 法国中部 <br> 中国东部、中国东部 2、中国北部、中国北部 2
 **受支持的操作系统** | Windows Server 2019、Windows Server 2016、Windows Server 2012、Windows Server 2008 R2 SP1 <br/><br/> 目前不支持 Linux。
-**支持的 SQL Server 版本** | SQL Server 2019、SQL Server 2017（详见[“搜索产品生命周期”页](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)）、SQL Server 2016 和 SP（详见[“搜索产品生命周期”页](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)）、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008 <br/><br/> Enterprise、Standard、Web、Developer、Express。<br><br>不支持 Express 本地数据库版本。
+**支持的 SQL Server 版本** | SQL Server 2019、SQL Server 2017（详见[“搜索产品生命周期”页](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)）、SQL Server 2016 和 SP（详见[“搜索产品生命周期”页](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)）、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008 <br/><br/> Enterprise、Standard、Web、Developer、Express。<br><br>不支持 Express Local DB 版本。
 **支持的 .NET 版本** | 安装在 VM 上的 .NET Framework 4.5.2 或更高版本
 
 ## <a name="feature-considerations-and-limitations"></a>功能注意事项和限制
@@ -39,7 +39,7 @@ ms.locfileid: "92174064"
 * SQL Server 备份可配置在 Azure 门户或 PowerShell 中。 不支持 CLI。
 * 此解决方案在 Azure 资源管理器 VM 和经典 VM 这两种[部署](../azure-resource-manager/management/deployment-models.md)上均受支持。
 * 支持所有备份类型（完整/差异/日志）和恢复模式（简单/完整/批量记录）。
-* 只读数据库支持完整备份和仅复制完整备份类型。
+* 对于 **只读** 数据库：仅支持完整备份和仅复制完整备份。
 * 如果用户在备份策略中显式启用了 SQL 本机压缩，则支持该压缩。 Azure 备份会根据用户设置的此控件的值，用 COMPRESSION / NO_COMPRESSION 子句替代实例级别的默认值。
 * 支持启用了 TDE 的数据库备份。 若要将 TDE 加密的数据库还原到另一个 SQL Server，需先[将证书还原到目标服务器](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)。 在 SQL Server 2016 及更高版本中，启用了 TDE 的数据库可以使用备份压缩功能，但传输大小较小（如[此处](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)所述）。
 * 不支持对镜像数据库和数据库快照执行备份和还原操作。

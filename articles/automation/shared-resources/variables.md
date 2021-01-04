@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5be0d45843eed8c7c0d7d9b6dc4655de01e914c3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d064eb0b748c361b76139b1a21d25cec8996e818
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461450"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734770"
 ---
 # <a name="manage-variables-in-azure-automation"></a>在 Azure 自动化中管理变量
 
@@ -26,7 +26,7 @@ ms.locfileid: "96461450"
 
 Azure 自动化会持久保存变量，因此即使 Runbook 或 DSC 配置失败，变量也仍然可用。 此行为允许一个 Runbook 或 DSC 配置设置的值随后由另一个 Runbook 使用，或由同一 Runbook 或 DSC 配置在下次运行时使用。
 
-Azure 自动化会安全存储每个加密的变量。 创建变量时，可以指定将其加密，并由 Azure 自动化将其作为安全资产进行存储。 创建变量后，除非重新创建变量，否则将无法更改其加密状态。 如果你的自动化帐户变量存储尚未加密的敏感数据，则需要将其删除并重新创建为加密变量。 Azure 安全中心建议对所有 Azure 自动化变量进行加密，如[自动化帐户变量应进行加密](../../security-center/recommendations-reference.md#recs-computeapp)中所述。 如果你希望从此安全建议中排除的未加密变量，请参阅 [从建议和安全分数中免除资源](../../security-center/exempt-resource.md) 以创建免除规则。
+Azure 自动化会安全存储每个加密的变量。 创建变量时，可以指定将其加密，并由 Azure 自动化将其作为安全资产进行存储。 创建变量后，除非重新创建变量，否则将无法更改其加密状态。 如果你拥有存储了尚未加密的敏感数据的自动化帐户变量，需要删除这些变量并将其重新创建为加密变量。 Azure 安全中心建议对所有 Azure 自动化变量进行加密，如[自动化帐户变量应进行加密](../../security-center/recommendations-reference.md#recs-computeapp)中所述。 如果你希望从该安全建议中排除未加密的变量，请参阅[从建议和安全分数中排除资源](../../security-center/exempt-resource.md)以创建排除规则。
 
 >[!NOTE]
 >Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥进行加密并存储在 Azure 自动化中。 Azure 自动化将密钥存储在系统管理的 Key Vault 中。 在存储安全资产之前，自动化会从 Key Vault 加载密钥，然后使用该密钥加密资产。
@@ -35,7 +35,7 @@ Azure 自动化会安全存储每个加密的变量。 创建变量时，可以�
 
 使用 Azure 门户创建变量时，必须从下拉列表指定一个数据类型，使门户能够显示用于输入变量值的相应控件。 下面是可在 Azure 自动化中使用的变量类型：
 
-* String
+* 字符串
 * Integer
 * DateTime
 * Boolean
@@ -80,11 +80,11 @@ $mytestencryptvar = Get-AutomationVariable -Name TestVariable
 Write-output "The encrypted value of the variable is: $mytestencryptvar"
 ```
 
-## <a name="python-2-functions-to-access-variables"></a>用于访问变量的 Python 2 函数
+## <a name="python-functions-to-access-variables"></a>用于访问变量的 Python 函数
 
-下表中的函数用于在 Python2 runbook 中访问变量。
+下表中的函数用于访问 Python 2 和 3 runbook 中的变量。 Python 3 runbook 目前处于预览阶段。
 
-|Python 2 函数|说明|
+|Python 函数|说明|
 |:---|:---|
 |`automationassets.get_automation_variable`|检索现有变量的值。 |
 |`automationassets.set_automation_variable`|设置现有变量的值。 |
@@ -135,9 +135,10 @@ $vmValue = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 $vmName = $vmValue.Name
 $vmExtensions = $vmValue.Extensions
 ```
+
 ## <a name="textual-runbook-examples"></a>文本 Runbook 示例
 
-### <a name="retrieve-and-set-a-simple-value-from-a-variable"></a>检索和设置变量中的简单值
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 下面的示例演示如何设置和检索文本 Runbook 中的变量。 此示例假设创建名为 `NumberOfIterations` 和 `NumberOfRunnings` 的整数变量，以及名为 `SampleMessage` 的字符串变量。
 
@@ -154,7 +155,7 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
 Set-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
 ```
 
-### <a name="retrieve-and-set-a-variable-in-a-python-2-runbook"></a>在 Python 2 Runbook 中检索和设置变量
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 以下示例演示如何在 Python2 Runbook 中获取变量、设置变量以及处理关于不存在的变量的异常。
 
@@ -177,6 +178,32 @@ try:
 except AutomationAssetNotFound:
     print "variable not found"
 ```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+下面的示例演示如何获取变量、设置变量并处理 Python 3 runbook (预览) 中不存在的变量的例外情况。
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a variable
+value = automationassets.get_automation_variable("test-variable")
+print value
+
+# set a variable (value can be int/bool/string)
+automationassets.set_automation_variable("test-variable", True)
+automationassets.set_automation_variable("test-variable", 4)
+automationassets.set_automation_variable("test-variable", "test-string")
+
+# handle a non-existent variable exception
+try:
+    value = automationassets.get_automation_variable("nonexisting variable")
+except AutomationAssetNotFound:
+    print ("variable not found")
+```
+
+---
 
 ## <a name="graphical-runbook-examples"></a>图形 Runbook 示例
 

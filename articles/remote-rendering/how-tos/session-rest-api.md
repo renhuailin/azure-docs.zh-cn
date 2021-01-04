@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 0af9d6906e038a4b9285a2c302fc0c98345fdbd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d957c5d6521010c7393e2297be16cd7bef41c35f
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023748"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724062"
 ---
 # <a name="use-the-session-management-rest-api"></a>使用会话管理 REST API
 
 若要使用 Azure 远程呈现功能，需要创建一个 *会话*。 每个会话都对应于要在 Azure 中分配的虚拟机 (VM) 正在等待客户端设备连接。 当设备连接时，VM 将呈现请求的数据，并将结果作为视频流提供。 在会话创建过程中，您选择了要在哪种服务器上运行，这会确定定价。 不再需要会话时，应停止此会话。 如果未手动停止，它将在会话的 *租约时间* 到期时自动关闭。
 
-我们在 "*脚本*" 文件夹（称为*RenderingSession.ps1*）中的 " [ARR 示例" 存储库](https://github.com/Azure/azure-remote-rendering)中提供了一个 PowerShell 脚本，它演示了如何使用我们的服务。 此脚本及其配置如下所述： [PowerShell 脚本示例](../samples/powershell-example-scripts.md)
+我们在 "*脚本*" 文件夹（称为 *RenderingSession.ps1*）中的 " [ARR 示例" 存储库](https://github.com/Azure/azure-remote-rendering)中提供了一个 PowerShell 脚本，它演示了如何使用我们的服务。 此脚本及其配置如下所述： [PowerShell 脚本示例](../samples/powershell-example-scripts.md)
 
 > [!TIP]
 > 此页上列出的 PowerShell 命令旨在互相补充。 如果在同一个 PowerShell 命令提示符中按顺序运行所有脚本，则这些脚本将在彼此之上进行构建。
@@ -35,24 +35,27 @@ $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
 
 ## <a name="accounts"></a>帐户
 
-如果没有远程呈现帐户，请 [创建一个](create-an-account.md)。 每个资源都由 AccountId 标识，该 *accountId*在整个会话 api 中使用。
+如果没有远程呈现帐户，请 [创建一个](create-an-account.md)。 每个资源都由 AccountId 标识，该 *accountId* 在整个会话 api 中使用。
 
-### <a name="example-script-set-accountid-and-accountkey"></a>示例脚本： Set accountId 和 accountKey
+### <a name="example-script-set-accountid-accountkey-and-account-domain"></a>示例脚本：设置 accountId、accountKey 和帐户域
+
+帐户域是远程呈现帐户的位置。 在此示例中，帐户的位置是区域 *eastus*。
 
 ```PowerShell
 $accountId = "********-****-****-****-************"
 $accountKey = "*******************************************="
+$accountDomain = "eastus.mixedreality.azure.com"
 ```
 
 ## <a name="common-request-headers"></a>常见请求标头
 
-* *授权*标头的值必须为 " `Bearer TOKEN` "，其中 " `TOKEN` " 是[安全令牌服务返回](tokens.md)的身份验证令牌。
+* *授权* 标头的值必须为 " `Bearer TOKEN` "，其中 " `TOKEN` " 是 [安全令牌服务返回](tokens.md)的身份验证令牌。
 
 ### <a name="example-script-request-a-token"></a>示例脚本：请求令牌
 
 ```PowerShell
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-$webResponse = Invoke-WebRequest -Uri "https://sts.mixedreality.azure.com/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
+$webResponse = Invoke-WebRequest -Uri "https://sts.$accountDomain/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
 $response = ConvertFrom-Json -InputObject $webResponse.Content
 $token = $response.AccessToken;
 ```
@@ -75,7 +78,7 @@ $token = $response.AccessToken;
 *  (数组) 模型：要预加载的资产容器 Url
 * size (字符串) ：要配置的服务器大小 ([**"标准"**](../reference/vm-sizes.md) 或 [**"高级"**](../reference/vm-sizes.md)) 。 请参阅特定 [大小限制](../reference/limits.md#overall-number-of-polygons)。
 
-**响应**
+**响应：**
 
 | 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
@@ -139,7 +142,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 
 * maxLeaseTime (timespan) ：会话将自动解除授权时的超时值
 
-**响应**
+**响应：**
 
 | 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
@@ -175,7 +178,7 @@ RawContentLength  : 0
 |-----------|:-----------|
 | /v1/accounts/*accountId*/sessions | GET |
 
-**响应**
+**响应：**
 
 | 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
@@ -218,7 +221,7 @@ RawContentLength  : 2
 |-----------|:-----------|
 | /v1/accounts/*accountId*/sessions/*sessionId*/properties | GET |
 
-**响应**
+**响应：**
 
 | 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
@@ -259,9 +262,9 @@ RawContentLength  : 60
 
 | URI | 方法 |
 |-----------|:-----------|
-| /v1/accounts/*accountId*/sessions/*sessionId* | DELETE |
+| /v1/accounts/*accountId*/sessions/*sessionId* | 删除 |
 
-**响应**
+**响应：**
 
 | 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|

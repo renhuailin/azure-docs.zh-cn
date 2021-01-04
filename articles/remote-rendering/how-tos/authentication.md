@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 35fd78a9d55dc684045fdb4b83691c1613801421
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427458"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724863"
 ---
 # <a name="configure-authentication"></a>配置身份验证
 
@@ -19,14 +19,17 @@ Azure 远程渲染使用与 [Azure 空间定位点 (ASA)](../../spatial-anchors/
 * **AccountKey**：可在 Azure 门户上的远程呈现帐户的 "密钥" 选项卡中获取。 帐户密钥仅建议用于开发/原型开发。
     ![帐户 ID](./media/azure-account-primary-key.png)
 
+* **AccountDomain**：可在 Azure 门户上的远程呈现帐户的 "概述" 选项卡中获取。
+    ![帐户域](./media/azure-account-domain.png)
+
 * **AuthenticationToken**：是 Azure AD 标记，可使用 [MSAL 库](../../active-directory/develop/msal-overview.md)获取。 有多个不同的流可用于接受用户凭据并使用这些凭据获取访问令牌。
 
-* **MRAccessToken**：是 MR 令牌，可从 Azure Mixed Reality 安全令牌服务获取 (STS) 。 `https://sts.mixedreality.azure.com`使用 REST 调用（类似于下面的调用）从终结点检索：
+* **MRAccessToken**：是 MR 令牌，可从 Azure Mixed Reality 安全令牌服务获取 (STS) 。 `https://sts.<accountDomain>`使用 REST 调用从终结点检索，如下所示：
 
     ```rest
-    GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
+    GET https://sts.southcentralus.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni<truncated>FL8Hq5aaOqZQnJr1koaQ
-    Host: sts.mixedreality.azure.com
+    Host: sts.southcentralus.mixedreality.azure.com
     Connection: Keep-Alive
 
     HTTP/1.1 200 OK

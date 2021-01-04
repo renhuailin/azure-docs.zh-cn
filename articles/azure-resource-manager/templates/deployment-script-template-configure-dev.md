@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503550"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734175"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>为模板中的部署脚本配置开发环境
 
@@ -155,7 +155,10 @@ $DeploymentScriptOutputs['text'] = $output
 ```
 装载路径的默认值是 **deploymentScript**。  这是容器实例中将它装载到文件共享的路径。
 
-模板中指定的默认容器映像为 **mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3**。  有关受支持的 Azure PowerShell 版本和 Azure CLI 版本的列表，请参阅 [Azure PowerShell 或 Azure CLI](./deployment-script-template.md#prerequisites)。
+模板中指定的默认容器映像为 **mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3**。   查看[支持的 Azure PowerShell 版本](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)的列表。 查看[支持的 Azure CLI 版本](https://mcr.microsoft.com/v2/azure-cli/tags/list)的列表。
+
+  >[!IMPORTANT]
+  > 部署脚本使用 Microsoft 容器注册表 (MCR) 中可用的 CLI 映像。 认证部署脚本的 CLI 映像大约需要一个月的时间。 不要使用 30 天内发布的 CLI 版本。 若要查找映像的发行日期，请参阅 [Azure CLI 发行说明](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)。 如果使用了不受支持的版本，错误消息中会列出受支持的版本。
 
 模板将容器实例暂停 1800 秒。 在容器实例进入终端状态并且会话结束之前，你有 30 分钟的时间。
 
@@ -200,7 +203,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
 1. 依次选择“连接”、“连接” 。 如果无法连接到容器实例，请重启容器组，然后重试。
 1. 在控制台窗格中运行以下命令：
 
-    ```
+    ```console
     cd deploymentScript
     ls
     pwsh ./hello.ps1 "John Dole"
@@ -209,6 +212,14 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
     输出为 **Hello John Dole**。
 
     ![部署脚本容器实例测试](./media/deployment-script-template-configure-dev/deployment-script-container-instance-test.png)
+
+1. 如果使用 AZ CLI 容器映像，请运行以下代码：
+
+   ```console
+   cd /mnt/azscripts/azscriptinput
+   ls
+   ./userscript.sh
+   ```
 
 ## <a name="use-docker"></a>使用 Docker
 

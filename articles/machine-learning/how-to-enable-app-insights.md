@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 5d49a88b89f9e2f4e2c2e6fa8ef18a01c803e3f7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 13b99fe129191b89b5bb2d7f5473e910fa619ce7
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536585"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739835"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>监视机器学习 Web 服务终结点以及从中收集数据
 
@@ -149,7 +149,7 @@ ms.locfileid: "94536585"
 1. 展开“高级”菜单。
 
     ![“部署”窗体](./media/how-to-enable-app-insights/deploy-form.png)
-1. 选择 " **启用 Application Insights 诊断和数据收集** "。
+1. 选择 " **启用 Application Insights 诊断和数据收集**"。
 
     ![启用 App Insights](./media/how-to-enable-app-insights/enable-app-insights.png)
 
@@ -157,14 +157,24 @@ ms.locfileid: "94536585"
 
 ### <a name="query-logs-for-deployed-models"></a>查询部署的模型的日志
 
-可以使用 `get_logs()` 函数从以前部署的 Web 服务检索日志。 日志可以包含有关部署期间发生的任何错误的详细信息。
+实时终结点的日志是客户数据。 可以使用 `get_logs()` 函数从以前部署的 Web 服务检索日志。 日志可以包含有关部署期间发生的任何错误的详细信息。
 
 ```python
+from azureml.core import Workspace
 from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
 
 # load existing web service
 service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
+```
+
+如果有多个租户，则可能需要先添加下面的身份验证代码 `ws = Workspace.from_config()`
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ### <a name="view-logs-in-the-studio"></a>在工作室中查看日志

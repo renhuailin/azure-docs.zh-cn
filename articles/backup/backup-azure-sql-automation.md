@@ -4,12 +4,12 @@ description: 使用 Azure 备份与 PowerShell 备份和还原 Azure VM 中的 S
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 0b3b943a53c1da0f6f1e938b5b234dc82541b46d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a3467ffa3a67ac9ad593748948cea8da59e3e6b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901673"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734532"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>使用 PowerShell 备份和还原 Azure VM 中的 SQL 数据库
 
@@ -80,7 +80,7 @@ ms.locfileid: "92901673"
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-9. 在命令输出中，确认 **RegistrationState** 是否更改为 **Registered** 。 如果不是，请再次运行 **Register-AzResourceProvider** cmdlet。
+9. 在命令输出中，确认 **RegistrationState** 是否更改为 **Registered**。 如果不是，请再次运行 **Register-AzResourceProvider** cmdlet。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -172,7 +172,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 > [!IMPORTANT]
 > 只需以 30 分钟的倍数提供开始时间。 在上面的示例中，开始时间只能是“01:00:00”或“02:30:00”。 开始时间不能为“01:15:00”。
 
-以下示例将计划策略和保留策略存储在变量中。 然后，它使用这些变量作为新策略 ( **NewSQLPolicy** ) 的参数。 **NewSQLPolicy** 创建每日“完整”备份，将备份保留 180 天，并每隔 2 小时创建日志备份
+以下示例将计划策略和保留策略存储在变量中。 然后，它使用这些变量作为新策略 (**NewSQLPolicy**) 的参数。 **NewSQLPolicy** 创建每日“完整”备份，将备份保留 180 天，并每隔 2 小时创建日志备份
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
@@ -268,7 +268,7 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
 * 使用事务日志备份还原到特定的日期或时间（精确到秒）。 Azure 备份可自动确定相应的完整备份、差异备份和日志链备份，这些是根据所选时间进行还原所必需的。
 * 还原特定的完整备份或差异备份，这样就可以还原到特定的恢复点。
 
-在还原 SQL 数据库之前，请查看[此处](restore-sql-database-azure-vm.md#prerequisites)所述的先决条件。
+在还原 SQL 数据库之前，请查看[此处](restore-sql-database-azure-vm.md#restore-prerequisites)所述的先决条件。
 
 首先使用 [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) PowerShell cmdlet 提取相关的已备份 SQL 数据库。
 

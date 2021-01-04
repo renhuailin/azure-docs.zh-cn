@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: f0d0742994b14f692c2aea9130edc73d779cff52
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2ff97dd30d9b993385f52ea531653a89197f8756
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92544760"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734617"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -72,7 +72,7 @@ ms.locfileid: "92544760"
 
 ### <a name="access-control-iam"></a>访问控制 (IAM)
 
-**(IAM) 部分的访问控制** 提供对 azure RBAC) 在 Azure 门户中的基于角色的访问 (控制支持。 此配置有助于组织轻松准确地满足其访问管理要求。 有关详细信息，请参阅 [Azure 门户中的 Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
+“访问控制 (IAM)”部分在 Azure 门户中为 Azure 基于角色的访问控制 (Azure RBAC) 提供支持。 此配置有助于组织轻松准确地满足其访问管理要求。 有关详细信息，请参阅 [Azure 门户中 Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="tags"></a>标记
 
@@ -141,9 +141,9 @@ ms.locfileid: "92544760"
 
 有关 `maxmemory` 策略的详细信息，请参阅 [Eviction policies](https://redis.io/topics/lru-cache#eviction-policies)（逐出策略）。
 
-**Maxmemory-reserved** 设置配置群集中的每个实例的内存量（以 MB 为单位），该内存是为非缓存操作保留的（如在故障转移过程中的复制）。 设置此值能够在负载变化时具有更一致的 Redis 服务器体验。 对于写入密集型工作负荷，应将此值设置为较高。 为此类操作保留内存后，无法存储缓存数据。
+“maxmemory-reserved”设置用于配置群集中保留给非缓存操作（例如故障转移期间的复制）的每个实例的内存量（以 MB 为单位）。 设置此值能够在负载变化时具有更一致的 Redis 服务器体验。 对于写入密集型工作负荷，应将此值设置为较高。 为此类操作保留内存后，无法存储缓存数据。
 
-**Maxfragmentationmemory-reserved 保留** 设置配置群集中的每个实例的内存量（以 MB 为单位），保留这些内存碎片以容纳内存。 设置此值后，即使在缓存已满或接近满的状态并且碎片比率很高时，你也能拥有更加稳定的 Redis 服务器体验。 为此类操作保留内存后，无法存储缓存数据。
+“maxfragmentationmemory-reserve”设置用于配置群集中保留以容纳内存碎片的每个实例的内存量（以 MB 为单位）。 设置此值后，即使在缓存已满或接近满的状态并且碎片比率很高时，你也能拥有更加稳定的 Redis 服务器体验。 为此类操作保留内存后，无法存储缓存数据。
 
 在选择新的内存预留值（maxmemory-reserved  或 maxfragmentationmemory-reserved  ）时，请注意此更改可能会如何影响已在运行的包含大量数据的缓存。 例如，如果你的 53 GB 缓存中已有 49 GB 数据，那么，将预留值更改为 8 GB 后，此更改会将系统的最大可用内存降至 45 GB。 如果你的当前 `used_memory` 或 `used_memory_rss` 值高于 45 GB 的新限制，则系统需要逐出数据，直到 `used_memory` 和 `used_memory_rss` 均低于 45 GB。 逐出可能会增加服务器负载和内存碎片。 有关 `used_memory` 和 `used_memory_rss` 等缓存指标的详细信息，请参阅[可用指标和报告时间间隔](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)。
 
@@ -169,11 +169,11 @@ Redis 密钥空间通知是在“高级设置”  边栏选项卡上配置的。
 ## <a name="azure-cache-for-redis-advisor"></a>Azure Redis 缓存顾问
 “Azure Redis 缓存顾问”  边栏选项卡会显示适用于缓存的建议。 在正常操作期间，不会显示任何建议。
 
-![显示建议显示位置的屏幕截图。](./media/cache-configure/redis-cache-no-recommendations.png)
+![显示建议的显示位置的屏幕截图。](./media/cache-configure/redis-cache-no-recommendations.png)
 
 如果在缓存操作期间发生任何状况（例如，高内存使用率、网络带宽或服务器负载），会在“Azure Redis 缓存”  边栏选项卡中显示警报。
 
-![显示警报在 Azure Cache for Redis 部分显示位置的屏幕截图。](./media/cache-configure/redis-cache-recommendations-alert.png)
+![显示警报在 Azure Cache for Redis 部分的显示位置的屏幕截图。](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 可在“建议”  边栏选项卡上找到进一步的信息。
 
@@ -363,7 +363,7 @@ Redis 密钥空间通知是在“高级设置”  边栏选项卡上配置的。
 “资源运行状况”  会监视资源，并告知资源是否按预期运行。 有关 Azure 资源运行状况服务的详细信息，请参阅 [Azure 资源运行状况概述](../service-health/resource-health-overview.md)。
 
 > [!NOTE]
-> 资源运行状况当前无法报告在虚拟网络中托管的 Azure Redis 缓存实例的运行状况。 有关详细信息，请参阅 [在 VNET 中托管缓存时，是否可以使用所有缓存功能？](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
+> 资源运行状况当前无法报告在虚拟网络中托管的 Azure Redis 缓存实例的运行状况。 有关详细信息，请参阅 [在 VNET 中托管缓存时，是否可以使用所有缓存功能？](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-a-cache-is-hosted-in-a-virtual-network)
 >
 >
 
@@ -382,7 +382,7 @@ Redis 密钥空间通知是在“高级设置”  边栏选项卡上配置的。
 >
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >
-> 任何可配置的值（例如 **max-memory-policy** ）都可以通过 Azure 门户或命令行管理工具（例如 Azure CLI 或 PowerShell）进行配置。
+> 任何可配置的值（例如 **max-memory-policy**）都可以通过 Azure 门户或命令行管理工具（例如 Azure CLI 或 PowerShell）进行配置。
 >
 >
 
@@ -474,11 +474,11 @@ Redis 密钥空间通知是在“高级设置”  边栏选项卡上配置的。
 
 若要访问 Redis 控制台，则从“Azure Redis 缓存”  边栏选项卡单击“控制台”  。
 
-![突出显示控制台按钮的屏幕截图。](./media/cache-configure/redis-console-menu.png)
+![突出显示“控制台”按钮的屏幕截图。](./media/cache-configure/redis-console-menu.png)
 
 若要针对缓存实例发出命令，请将所需命令键入控制台。
 
-![屏幕截图 thas 显示具有输入命令和结果的 Redis 控制台。](./media/cache-configure/redis-console.png)
+![显示带有输入命令和结果的 Redis 控制台的屏幕截图。](./media/cache-configure/redis-console.png)
 
 
 ### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>配合使用 Redis 控制台和高级群集缓存

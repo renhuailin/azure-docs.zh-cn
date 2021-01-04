@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0682115727068c928418d97fbf92ed32897c39d4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0793547c4eafcad256664546240a07c1bcb0e628
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656745"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709004"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>与网络设备注册服务上 Azure AD 应用程序代理集成 (NDES) 服务器
 
@@ -81,7 +81,7 @@ Azure AD 应用程序代理是在 Azure 上构建的。 它为您提供了大量
 
 1. 选择 " **+ 添加** " 以保存应用程序。
 
-1. 测试是否可以通过 Azure AD 应用程序代理访问 NDES 服务器，方法是将在步骤10中复制的链接粘贴到浏览器中。 应会看到默认的 IIS 欢迎页。
+1. 测试是否可以通过 Azure AD 应用程序代理访问 NDES 服务器，方法是将在步骤15中复制的链接粘贴到浏览器中。 应会看到默认的 IIS 欢迎页。
 
 1. 作为最终测试，将 *mscep.dll* 路径添加到在上一步中粘贴的现有 URL：
 

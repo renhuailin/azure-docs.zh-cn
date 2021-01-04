@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 98cc72f85499481ba3841ce82fe307740d5e9fab
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e1b29d901630156471bbb9cb8b939bb4bb29c836
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96842694"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724216"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可以通过两种主要方式部署[Azure 文件](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步在本地缓存 azure 文件共享。你选择哪种部署选项会更改你在规划部署时需要考虑的事项。 
@@ -114,56 +114,6 @@ Azure[文件共享的 Azure 备份](../../backup/azure-file-share-backup-overvie
 
 ## <a name="storage-tiers"></a>存储层
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-### <a name="understanding-provisioning-for-premium-file-shares"></a>了解高级文件共享的预配
-高级文件共享是基于固定的 GiB/IOPS/吞吐量比率预配的。 所有共享大小均提供最小基线/吞吐量并允许突发。 对于每个预配的 GiB，将会向共享颁发最小 IOPS/吞吐量和一个 IOPS 和 0.1 MiB/秒的吞吐量，最大限制为每个共享。 允许的最低预配为 100 GiB，具有最小 IOPS/吞吐量。 
-
-所有高级共享会尽力提供免费突发。 对于每个预配的 GiB，所有共享大小都可以突发为 4000 IOPS 或最多三倍，为共享提供更大的突发 IOPS。 所有共享支持最大持续时间为60分钟的突发高峰限制。 新共享将根据预配的容量以完全突增额度开始。
-
-必须以 1 GiB 为增量预配共享。 最小大小为 100 GiB，下一大小为 101 GiB，依此类推。
-
-> [!TIP]
-> 基线 IOPS = 400 + 1 * 预配的 GiB。 （最大可为 100,000 IOPS）。
->
-> 突发限制 = 最大 (4000，3 * 基准 IOPS) 。  (，其中任何一个限制越大，最大为 100000 IOPS) 。
->
-> 出口速率 = 60 MiB/秒 + 0.06 * 预配的 GiB
->
-> 入口速率 = 40 MiB/秒 + 0.04 * 预配的 GiB
-
-预配的共享大小按共享配额指定。 随时可以提高共享配额，但只能在自上次提高后的 24 小时之后降低配额。 等待 24 小时且不要提高配额，然后，可将共享配额降低任意次数，直到再次提高配额为止。 IOPS/吞吐量规模更改将在大小更改后的数分钟内生效。
-
-可将预配共享的大小减至所用 GiB 以下。 这样做不会丢失数据，但仍会根据所用大小计费，并且性能（基线 IOPS、吞吐量和突发 IOPS）与预配的共享（而不是所用大小）相符。
-
-下表演示了这些预配共享大小公式的几个示例：
-
-|容量 (GiB) | 基线 IOPS | 突发 IOPS | 出口速率（MiB/秒） | 入口速率（MiB/秒） |
-|---------|---------|---------|---------|---------|
-|100         | 500     | 最大 4,000     | 66   | 44   |
-|500         | 900     | 最大 4,000  | 90   | 60   |
-|1,024       | 1424   | 最大 4,000   | 122   | 81   |
-|5,120       | 5520   | 最大 15,360  | 368   | 245   |
-|10,240      | 10640  | 最大 30,720  | 675   | 450   |
-|33,792      | 34192  | 最大 100,000 | 2,088 | 1,392   |
-|51,200      | 51600  | 最大 100,000 | 3,132 | 2,088   |
-|102,400     | 100,000 | 最大 100,000 | 6,204 | 4,136   |
-
-需要注意的是，有效的文件共享性能受到计算机网络限制、可用网络带宽、IO 大小、并行性的限制，还有其他许多因素。 例如，基于具有8个 KiB 读取/写入 IO 大小的内部测试，不启用 SMB 多通道的单个 Windows 虚拟机， *标准 F16s_v2*，通过 smb 连接到高级文件共享可以实现20K 读取 Iops 和15K 写入 iops。 读/写 IO 大小为 512 MiB 时，同一 VM 可以实现 1.1 GiB/秒的出口吞吐量和 370 MiB/秒的入口吞吐量。 \~如果对高级共享启用了 SMB 多通道，则同一客户端的性能最高可达3倍。 若要实现最大性能规模，请 [启用 SMB 多通道](storage-files-enable-smb-multichannel.md) 并将负载分散到多个 vm。 有关一些常见性能问题和解决方法，请参阅 [SMB 多通道性能](storage-files-smb-multichannel-performance.md) 和 [故障排除指南](storage-troubleshooting-files-performance.md) 。
-
-#### <a name="bursting"></a>突发
-如果您的工作负荷需要额外的性能来满足峰值需求，则您的共享可以使用突发信用额度，以提供满足需求所需的共享性能。 高级文件共享可能会将其 IOPS 突发到4000或最高达3倍，两者的值越高。 突发是自动进行的，根据额度系统运行。 突发会尽力工作，并且突发限制并不保证，文件 *共享的最* 大持续时间限制为60分钟。
-
-每当文件共享的流量低于基线 IOPS 时，额度将累积在突发桶中。 例如，100 GiB 共享有500的基线 IOPS。 如果共享上的实际流量为特定1秒间隔的 100 IOPS，则会将400未使用的 IOPS 贷记到突发桶。 同样，一个空闲 1 TiB 共享，以 1424 IOPS 为突发信用额度。 以后在操作超过基线 IOPS 时，将使用这些信用额度。
-
-每当共享超过基线 IOPS 并在突发桶中包含信用额度时，它将以允许的最大峰值脉冲速率突发。 只要剩余信用额度，就可以继续突发共享，最多可达60分钟的持续时间，但这取决于所应计的突发富余点数。 超出基线 IOPS 的每个 IO 都使用一个信用额度，一旦使用了所有信用额度，该共享就会返回到基线 IOPS。
-
-共享额度具有三种状态：
-
-- 应计：文件共享使用的 IOPS 小于基线 IOPS。
-- 如果文件共享使用的基准 IOPS 超过基线 IOPS，则拒绝使用。
-- 常量，h) 文件共享只使用基线 IOPS，没有任何信用额度或信用额度。
-
-新文件共享最初在其突发桶中包含所有额度。 如果由于服务器的限制，导致共享 IOPS 低于基线 IOPS，则不会对突发额度进行应计。
 
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>启用标准文件共享最高可以扩展到 100 TiB
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]

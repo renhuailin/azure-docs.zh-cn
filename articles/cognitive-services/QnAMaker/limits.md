@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b3dca3617e2fb7ccdff870041374e9158498c9d1
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380890"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708934"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
@@ -49,14 +49,14 @@ ms.locfileid: "94380890"
 
 ### <a name="maximum-number-of-files"></a>最大文件数
 
-可以提取的最大文件数和最大文件大小取决于您 QnA Maker 的 **[定价层限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** 。
+可以提取的最大文件数和最大文件大小取决于您 QnA Maker 的 **[定价层限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)**。
 
 > [!NOTE]
 > QnA Maker 托管 (预览版) 是一种免费服务，对可以添加的源数量没有限制。 对于管理 Api 和预测 Api，吞吐量当前上限为10个事务/秒。
 
 ### <a name="maximum-number-of-deep-links-from-url"></a>URL 中的最大深层链接数
 
-可爬网的最大深度链接数为从 URL 页中提取 Qna 的最大数目为 **20** 。
+可爬网的最大深度链接数为从 URL 页中提取 Qna 的最大数目为 **20**。
 
 ## <a name="metadata-limits"></a>元数据限制
 
@@ -64,7 +64,7 @@ ms.locfileid: "94380890"
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>由 Azure 认知搜索定价层
 
-每个知识库的元数据字段的最大数目取决于 **[Azure 认知搜索层限制](../../search/search-limits-quotas-capacity.md)** 。
+每个知识库的元数据字段的最大数目取决于 **[Azure 认知搜索层限制](../../search/search-limits-quotas-capacity.md)**。
 
 |**Azure 认知搜索层** | 免费 | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -82,10 +82,10 @@ ms.locfileid: "94380890"
 
 ## <a name="knowledge-base-content-limits"></a>知识库内容限制
 知识库中内容的总体限制：
-* 答案文本的长度：25,000
-* 问题文本的长度：1,000
-* 元数据密钥文本的长度：100
-* Metadata 值文本的长度：500
+* 应答文本的长度：25000个字符
+* 问题文本的长度：1000个字符
+* 元数据密钥文本的长度：100个字符
+* Metadata 值文本的长度：500个字符
 * 支持的元数据名称字符：字母、数字和 `_`
 * 元数据值支持的字符数：除和之外的所有字符 `:``|`
 * 文件名长度：200

@@ -1,7 +1,7 @@
 ---
 title: 使用 Azure CLI 创建工作区
 titleSuffix: Azure Machine Learning
-description: 了解如何使用机器学习的 Azure CLI 扩展创建新的 Azure 机器学习工作区。
+description: 了解如何使用适用于机器学习的 Azure CLI 扩展创建新的 Azure 机器学习工作区。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 66a9c9d605911a9d3b30a55d47e16026e26e502a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4c457ef2c4957308735c222488ad04dac80235df
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447259"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740379"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习工作区
 
@@ -79,6 +79,8 @@ Azure 机器学习工作区依赖于以下 Azure 服务或实体：
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure 容器注册表** | `--container-registry <service-id>` |
+
+Azure 容器注册表 (ACR) 当前不支持资源组名称中的 unicode 字符。 若要缓解此问题，请使用不包含这些字符的资源组。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -146,7 +148,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 ### <a name="virtual-network-and-private-endpoint"></a>虚拟网络和专用终结点
 
 > [!IMPORTANT]
-> 使用具有专用链接的 Azure 机器学习工作区在 Azure 政府区域或 Azure 中国世纪互联区域中不可用。
+> Azure 政府区域或 Azure 中国世纪互联区域不支持使用具有专用链接的 Azure 机器学习工作区。
 
 如果要将工作区的访问权限限制为虚拟网络，可以使用以下参数：
 
@@ -154,13 +156,13 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 * `--pe-auto-approval`：是否应自动批准与工作区的专用终结点连接。
 * `--pe-resource-group`：要在其中创建专用终结点的资源组。 必须是包含虚拟网络的同一个组。
 * `--pe-vnet-name`：要在其中创建专用终结点的现有虚拟网络。
-* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值为 `default`。
+* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值是 `default`。
 
 有关将专用终结点和虚拟网络与工作区结合使用的详细信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
 
 ### <a name="customer-managed-key-and-high-business-impact-workspace"></a>客户管理的密钥和高业务影响工作区
 
-默认情况下，工作区的元数据存储在 Microsoft 维护的 Azure Cosmos DB 实例中。 此数据使用 Microsoft 托管的密钥进行加密。
+默认情况下，工作区的元数据存储在 Microsoft 维护的 Azure Cosmos DB 实例中。 该数据是使用 Microsoft 管理的密钥加密的。
 
 > [!NOTE]
 > Azure Cosmos DB __不__ 用于存储模型性能、试验记录的信息或模型部署中记录的信息等信息。 有关监视这些项的详细信息，请参阅体系结构和概念一文的 " [监视和日志记录](concept-azure-machine-learning-architecture.md) " 一节。
@@ -169,20 +171,20 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
 使用 `--cmk-keyvault` 和参数之前 `--resource-cmk-uri` ，必须先执行以下操作：
 
-1. 在标识和访问管理) 中为订阅的 "参与者" 权限授权 __机器学习应用__ (。
-1. 按照 [将客户托管的密钥配置](../cosmos-db/how-to-setup-cmk.md) 为：
+1. 授予机器学习应用（在“标识和访问管理”中）对订阅的参与者权限。
+1. 按照[配置客户管理的密钥](../cosmos-db/how-to-setup-cmk.md)中的步骤完成以下操作：
     * 注册 Azure Cosmos DB 提供程序
     * 创建和配置 Azure Key Vault
     * 生成密钥
 
-您无需手动创建 Azure Cosmos DB 实例，而是在创建工作区时为您创建一个实例。 此 Azure Cosmos DB 实例将使用基于此模式的名称在单独的资源组中创建： `<your-resource-group-name>_<GUID>` 。
+你无需手动创建 Azure Cosmos DB 实例，系统会在创建工作区期间为你创建一个实例。 将使用一个基于 `<your-resource-group-name>_<GUID>` 模式的名称在单独的资源组中创建此 Azure Cosmos DB 实例。
 
 [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 若要限制 Microsoft 在你的工作区中收集的数据，请使用 `--hbi-workspace` 参数。 
 
 > [!IMPORTANT]
-> 只有在创建工作区时，才能选择高业务影响。 在创建工作区后，不能更改此设置。
+> 只能在创建工作区时选择高业务影响。 在创建工作区后，不能更改此设置。
 
 有关客户管理的密钥和高业务影响工作区的详细信息，请参阅 [企业安全 Azure 机器学习](concept-data-encryption.md#encryption-at-rest)。
 
@@ -365,7 +367,7 @@ az ml workspace update -w <workspace-name> -g <resource-group-name>
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-有关 Azure 基于角色的访问控制 (Azure RBAC) 与 Azure 机器学习的详细信息，请参阅 [管理用户和角色](how-to-assign-roles.md)。
+如需详细了解 Azure 机器学习的 Azure 基于角色的访问控制 (Azure RBAC)，请参阅[管理用户和角色](how-to-assign-roles.md)。
 
 有关详细信息，请参阅 [az ml workspace share](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) 文档。
 

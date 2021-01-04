@@ -5,14 +5,14 @@ services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 12/2/2020
 ms.author: radwiv
-ms.openlocfilehash: c6aa2b63344ef629d55f5a4efb66e4ee0e55975e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: caa9a0869d7d4bca58b91a0c682177e1408f8300
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94661029"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733784"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>为 VPN 网关配置数据包捕获
 
@@ -31,6 +31,7 @@ VPN 网关数据包捕获可在网关上运行，也可在特定的连接上运�
 - 无法同时运行多个网关范围的数据包捕获。
 - 无法在同一连接上同时运行多个数据包捕获。 可以同时在不同的连接上运行多个数据包捕获。
 - 每个网关最多可以并行运行 5 个数据包捕获。 这些数据包捕获可以是网关范围的数据包捕获和基于连接的数据包捕获的组合。
+- MaxPacketBufferSize 的单位为 bytes，MaxFileSize 为 mb
 
 ### <a name="example-json"></a>示例 JSON
 ```JSON-interactive
@@ -318,7 +319,7 @@ VPN 网关数据包捕获可在网关上运行，也可在特定的连接上运�
 
 ## <a name="set-up-packet-capture-by-using-powershell"></a>通过使用 PowerShell 设置数据包捕获
 
-以下示例显示使用 PowerShell 命令启动和停止数据包捕获。 有关参数选项的详细信息，请参阅 [AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)。
+以下示例显示使用 PowerShell 命令启动和停止数据包捕获。 有关参数选项的详细信息，请参阅 [Start-AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)。
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>启动 VPN 网关的数据包捕获
 
@@ -354,7 +355,7 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 - 建议的最短数据包捕获持续时间为 600 秒。 由于路径上多个组件之间的同步问题，较短的数据包捕获可能无法提供完整的数据。
 - 数据包捕获数据文件以 PCAP 格式生成。 使用 Wireshark 或其他常用应用程序打开 PCAP 文件。
 - 基于策略的网关不支持数据包捕获。
-- 如果 `SASurl` 未正确配置该参数，则跟踪可能会失败，并出现存储错误。 有关如何正确生成参数的示例 `SASurl` ，请参阅 [AzVirtualNetworkGatewayPacketCapture](/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture)。
+- 如果 `SASurl` 参数配置不正确，则跟踪可能会失败，并显示 Azure 存储错误。 有关如何正确生成 `SASurl` 参数的示例，请参阅 [Stop-AzVirtualNetworkGatewayPacketCapture](/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture)。
 
 
 

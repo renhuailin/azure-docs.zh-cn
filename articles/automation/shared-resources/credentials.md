@@ -3,14 +3,14 @@ title: 在 Azure 自动化中管理凭据
 description: 本文介绍如何创建凭据资产并在 Runbook 或 DSC 配置中使用它们。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 12/03/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: caaeb0e40d277ef5e356c0f385a818b831326d6e
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558823"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734821"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>在 Azure 自动化中管理凭据
 
@@ -51,9 +51,9 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 > [!NOTE]
 > 应避免在 `Get-AutomationPSCredential` 的 `Name` 参数中使用变量。 使用变量在设计时可能会导致难以厘清 Runbook 或 DSC 配置与凭据资产之间的依赖关系。
 
-## <a name="python-2-functions-that-access-credentials"></a>用于访问凭据的 Python 2 函数
+## <a name="python-functions-that-access-credentials"></a>访问凭据的 Python 函数
 
-下表中的函数用于在 Python 2 Runbook 中访问凭据。
+下表中的函数用于在 Python 2 和 3 runbook 中访问凭据。 Python 3 runbook 目前处于预览阶段。
 
 | 函数 | 说明 |
 |:---|:---|
@@ -104,6 +104,8 @@ Runbook 或 DSC 配置使用内部 `Get-AutomationPSCredential` cmdlet 检索凭
 
 ### <a name="textual-runbook-example"></a>文本 Runbook 示例
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 下面的示例演示如何在 Runbook 中使用 PowerShell 凭据。 它检索凭据并将其用户名和密码分配给变量。
 
 ```powershell
@@ -126,6 +128,36 @@ $myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$sec
 Connect-AzAccount -Credential $myPsCred
 ```
 
+# <a name="python-2"></a>[Python 2](#tab/python2)
+
+以下示例演示了如何在 Python 2 Runbook 中访问凭据。
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print cred["username"]
+print cred["password"]
+```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+下面的示例演示了在 Python 3 runbook (预览) 中访问凭据的示例。
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print (cred["username"])
+print (cred["password"])
+```
+
+---
+
 ### <a name="graphical-runbook-example"></a>图形 Runbook 示例
 
 可以通过在图形编辑器的“库”窗格中右键单击凭据并选择“添加到画布”，将内部 `Get-AutomationPSCredential` cmdlet 的活动添加到图形 Runbook。
@@ -140,22 +172,8 @@ Connect-AzAccount -Credential $myPsCred
 
 虽然 Azure 自动化中的 DSC 配置可以使用 `Get-AutomationPSCredential` 处理凭据资产，但它们也可以通过参数传递凭据资产。 有关详细信息，请参阅[在 Azure 自动化 DSC 中编译配置](../automation-dsc-compile.md#credential-assets)。
 
-## <a name="use-credentials-in-a-python-2-runbook"></a>在 Python 2 Runbook 中使用凭据
-
-以下示例演示了如何在 Python 2 Runbook 中访问凭据。
-
-```python
-import automationassets
-from automationassets import AutomationAssetNotFound
-
-# get a credential
-cred = automationassets.get_automation_credential("credtest")
-print cred["username"]
-print cred["password"]
-```
-
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解有关用于访问凭据的 cmdlet 的详细信息，请参阅[在 Azure 自动化中管理模块](modules.md)。
 * 有关 Runbook 的常规信息，请参阅[在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)。
-* 有关 DSC 配置的详细信息，请参阅 [Azure 自动化 State Configuration 概述](../automation-dsc-overview.md)。
+* 有关 DSC 配置的详细信息，请参阅 [Azure 自动化状态配置概述](../automation-dsc-overview.md)。

@@ -4,12 +4,12 @@ description: 查找有关使用 Azure 备份在 Azure VM 上备份 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 89316770dc137bff031e6268db5ece156edd4f25
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7518fc49f7d6d728bd8faa0de4cf0edc1c6d5831
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172370"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734107"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
 
@@ -82,13 +82,13 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 如果从自动保护的实例中删除某个数据库，仍会尝试数据库备份。 这意味着，已删除的数据库会开始在“备份项”下面显示为不正常状态，但它仍受保护。
 
-停止保护此数据库的正确方法是针对此数据库执行“停止备份”并**删除数据**。  
+停止保护此数据库的正确方法是针对此数据库执行“停止备份”并 **删除数据**。  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>如果停止受保护数据库的备份操作，将出现怎样的备份行为？
 
-如果**停止备份但保留数据**，则将来的备份不会发生，现有的恢复点将保留不变。 数据库仍被视为受保护，并显示在“备份项”下。
+如果 **停止备份但保留数据**，则将来的备份不会发生，现有的恢复点将保留不变。 数据库仍被视为受保护，并显示在“备份项”下。
 
-如果**停止备份并删除数据**，则将来的备份不会发生，现有的恢复点也会一并删除。 该数据库被视为不受保护，并显示在“配置备份”中的实例下。 但是，与其他可以手动选择或者可以自动保护的受保护数据库不同，此数据库将会灰显，并且不可选择。 重新保护此数据库的唯一方法是对该实例禁用自动保护。 接下来可以选择此数据库并对其配置保护，或者对该实例重新启用自动保护。
+如果 **停止备份并删除数据**，则将来的备份不会发生，现有的恢复点也会一并删除。 该数据库被视为不受保护，并显示在“配置备份”中的实例下。 但是，与其他可以手动选择或者可以自动保护的受保护数据库不同，此数据库将会灰显，并且不可选择。 重新保护此数据库的唯一方法是对该实例禁用自动保护。 接下来可以选择此数据库并对其配置保护，或者对该实例重新启用自动保护。
 
 ## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>如果在保护数据库后更改其名称，会出现怎样的行为？
 
@@ -102,9 +102,14 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
   ![手动发现新添加的数据库](./media/backup-azure-sql-database/view-newly-added-database.png)
   
-## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>能否保护启用了 TDE (透明数据加密) 的数据库，以及数据库是否会在整个备份过程中保持加密状态？
+## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>我可否保护启用了 TDE（透明数据加密）的数据库，且数据库是否在整个备份过程中保持加密状态？
 
-是的，Azure 备份支持 SQL Server 启用了 TDE 的数据库或服务器的备份。 Backup 通过 Azure 管理的密钥或 (BYOK) 的客户托管密钥支持 [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) 。  备份不会执行任何 SQL 加密作为备份过程的一部分，因此，在备份数据库时，数据库将保持加密状态。
+可以，Azure 备份支持备份启用了 TDE 的 SQL Server 数据库或服务器。 Azure 备份支持由 Azure 托管密钥的或由客户托管密钥 (BYOK) 的 [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption)。  备份过程中不会执行任何 SQL 加密，因此数据库经过备份后将保持加密状态。
+
+## <a name="does-azure-backup-perform-a-checksum-operation-on-the-data-stream"></a>Azure 备份是否对数据流执行校验和操作？
+
+对数据流执行校验和操作。 但这并不会与 [SQL 校验和](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)混淆。
+Azure 工作负荷备份计算数据流上的校验和，并在备份操作过程中将其显式存储。 然后，在还原操作过程中，将此校验和流视为引用并交叉验证数据流的校验和，以确保数据保持一致。
 
 ## <a name="next-steps"></a>后续步骤
 

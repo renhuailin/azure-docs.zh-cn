@@ -3,21 +3,21 @@ title: 在 Azure 自动化中管理证书
 description: 本文介绍如何使用可供 runbook 和 DSC 配置访问的证书。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1c79b7c239c41e8d195230423b17fa3c5a7f51a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbf9eb6c97dcceeca5e86e8bef47a39fb685792f
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825808"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734804"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>在 Azure 自动化中管理证书
 
 Azure 自动化使用适用于 Azure 资源管理器资源的 [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) cmdlet 安全地存储可供 runbook 和 DSC 配置访问的证书。 通过安全的证书存储，可以创建使用证书进行身份验证的 runbook 和 DSC 配置，也可以将证书添加到 Azure 或第三方资源。
 
 >[!NOTE]
->Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密，并存储在自动化中。 自动化将密钥存储在系统管理的 Key Vault 服务中。 在存储安全资产之前，自动化会从 Key Vault 加载密钥，然后使用该密钥加密资产。 
+>Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密，并存储在自动化中。 自动化将密钥存储在系统管理的 Key Vault 服务中。 在存储安全资产之前，自动化会从 Key Vault 加载密钥，然后使用该密钥加密资产。
 
 ## <a name="powershell-cmdlets-to-access-certificates"></a>用于访问证书的 PowerShell cmdlet
 
@@ -40,12 +40,12 @@ Azure 自动化使用适用于 Azure 资源管理器资源的 [Get-AzAutomationC
 |:---|:---|
 |`Get-AutomationCertificate`|在 Runbook 或 DSC 配置中获取要使用的证书。 返回一个 [System.Security.Cryptography.X509Certificates.X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) 对象。|
 
-> [!NOTE] 
+> [!NOTE]
 > 应避免在 runbook 或 DSC 配置中 `Get-AutomationCertificate` 的 `Name` 参数中使用变量。 如果使用变量，可能会导致在设计时发现 runbook 或 DSC 配置与自动化变量之间的依赖关系的过程变得复杂。
 
-## <a name="python-2-functions-to-access-certificates"></a>用于访问证书的 Python 2 函数
+## <a name="python-functions-to-access-certificates"></a>用于访问证书的 Python 函数
 
-下表中的函数用于在 Python 2 Runbook 中访问证书。
+使用下表中的函数来访问 Python 2 和 3 runbook 中的证书。 Python 3 runbook 目前处于预览阶段。
 
 | 函数 | 说明 |
 |:---|:---|
@@ -60,8 +60,8 @@ Azure 自动化使用适用于 Azure 资源管理器资源的 [Get-AzAutomationC
 
 ### <a name="create-a-new-certificate-with-the-azure-portal"></a>使用 Azure 门户创建新证书
 
-1. 在自动化帐户中，在左侧窗格中选择 "**共享资源**" 下的 "**证书**"。
-1. 在 " **证书** " 页上，选择 " **添加证书**"。
+1. 在自动化帐户的左侧窗格中，选择“共享资源”下的“证书” 。
+1. 在“证书”页上，选择“添加证书”。 
 1. 在“名称”字段中，键入证书的名称。
 1. 若要查找 .cer 或 .pfx 文件，请选择“上传证书文件”下的“选择文件”   。 如果选择了 .pfx 文件，请指定密码，以及是否允许导出。
 1. 单击“创建”保存新的证书资产。
@@ -126,7 +126,9 @@ New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName $ResourceGroupNam
 
 若要检索证书，请使用内部 `Get-AutomationCertificate` cmdlet。 不能使用 [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) cmdlet，因为它会返回有关证书资产的信息，而不是证书本身的信息。
 
-### <a name="textual-runbook-example"></a>文本 runbook 示例
+### <a name="textual-runbook-examples"></a>文本 Runbook 示例
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 以下示例代码演示了如何将证书添加到 runbook 中的云服务。 在此示例中，已从加密的自动化变量检索了密码。
 
@@ -138,17 +140,7 @@ $certPwd = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 ```
 
-### <a name="graphical-runbook-example"></a>图形 Runbook 示例
-
-通过在“库”窗格中右键单击证书并选择“添加到画布”，可以将内部 `Get-AutomationCertificate` cmdlet 的活动添加到图形 runbook。
-
-![将证书添加到画布的屏幕截图](../media/certificates/automation-certificate-add-to-canvas.png)
-
-下图显示了在图形 Runbook 中使用证书的示例。
-
-![图形创作示例的屏幕截图](../media/certificates/graphical-runbook-add-certificate.png)
-
-### <a name="python-2-example"></a>Python 2 示例
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 以下示例演示了如何在 Python 2 Runbook 中访问证书。
 
@@ -159,6 +151,30 @@ cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
 # returns the binary cert content  
 print cert
 ```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+下面的示例演示如何在 Python 3 runbook (preview) 中访问证书。
+
+```python
+# get a reference to the Azure Automation certificate
+cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
+
+# returns the binary cert content  
+print (cert)
+```
+
+---
+
+### <a name="graphical-runbook-example"></a>图形 Runbook 示例
+
+通过在“库”窗格中右键单击证书并选择“添加到画布”，可以将内部 `Get-AutomationCertificate` cmdlet 的活动添加到图形 runbook。
+
+![将证书添加到画布的屏幕截图](../media/certificates/automation-certificate-add-to-canvas.png)
+
+下图显示了在图形 Runbook 中使用证书的示例。
+
+![图形创作示例的屏幕截图](../media/certificates/graphical-runbook-add-certificate.png)
 
 ## <a name="next-steps"></a>后续步骤
 

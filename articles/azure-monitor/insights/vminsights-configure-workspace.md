@@ -6,24 +6,24 @@ ms.topic: conceptual
 ms.custom: references_regions
 author: bwren
 ms.author: bwren
-ms.date: 07/27/2020
-ms.openlocfilehash: a4380ae7fdb523f8b2f5bc14fefa094b6d96e547
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/22/2020
+ms.openlocfilehash: 2625da3a397c2cdcf7880fb371d13e63caeb9ab1
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95750514"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740566"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>为用于 VM 的 Azure Monitor 配置 Log Analytics 工作区
 用于 VM 的 Azure Monitor 从 Azure Monitor 中的一个或多个 Log Analytics 工作区收集其数据。 在载入代理之前，必须创建和配置工作区。 本文介绍工作区的要求并对其进行配置以实现用于 VM 的 Azure Monitor。
 
 ## <a name="overview"></a>概述
-单个订阅可以根据你的需求使用任意数量的工作区，这只是该工作区的唯一要求是位于受支持的位置，并使用 *VMInsights* 解决方案进行配置。
+单个订阅可以根据你的要求使用任意数量的工作区。 工作区唯一的要求是它位于受支持的位置，并使用 *VMInsights* 解决方案进行配置。
 
-配置工作区后，可以使用任何可用选项在 VM 和 VMSS 上安装所需的代理，并为其指定一个工作区以发送其数据。 用于 VM 的 Azure Monitor 将从其订阅中任何已配置的工作区收集数据。
+配置工作区后，你可以使用任何可用的选项在虚拟机和虚拟机规模集上安装所需的代理，并指定一个工作区来发送其数据。 用于 VM 的 Azure Monitor 将从其订阅中任何已配置的工作区收集数据。
 
 > [!NOTE]
-> 使用 Azure 门户在单个 VM 或 VMSS 上启用用于 VM 的 Azure Monitor 时，可以选择现有的工作区或创建一个新的工作区。 如果尚未安装 *VMInsights* 解决方案，则将其安装在此工作区中。 然后，你可以将此工作区用于其他代理。
+> 使用 Azure 门户在单个虚拟机或虚拟机规模集上启用用于 VM 的 Azure Monitor 时，可以选择现有的工作区或创建一个新的工作区。 如果尚未安装 *VMInsights* 解决方案，则将其安装在此工作区中。 然后，你可以将此工作区用于其他代理。
 
 
 ## <a name="create-log-analytics-workspace"></a>创建 Log Analytics 工作区
@@ -44,29 +44,13 @@ ms.locfileid: "95750514"
 * [Azure 资源管理器](../samples/resource-manager-workspace.md)
 
 ## <a name="supported-regions"></a>支持的区域
+用于 VM 的 Azure Monitor 支持 [Log Analytics 支持](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) 的任何区域中的 Log Analytics 工作区，但以下情况除外：
 
-用于 VM 的 Azure Monitor 支持以下区域中的 Log Analytics 工作区，但你可以监视任何区域中的虚拟机。 虚拟机本身并不限于 Log Analytics 工作区所支持的区域。
+- 德国中西部
+- 韩国中部
 
-- 美国中西部
-- 美国西部
-- 美国西部 2
-- 美国中南部
-- 美国东部
-- 美国东部 2
-- 美国中部
-- 美国中北部
-- US Gov Az
-- US Gov Va
-- 加拿大中部
-- 英国南部
-- 北欧
-- 西欧
-- 东亚
-- 东南亚
-- 印度中部
-- 日本东部
-- 澳大利亚东部
-- 澳大利亚东南部
+>[!NOTE]
+>可以在任何区域监视 Azure Vm。 Vm 本身并不限于 Log Analytics 工作区所支持的区域。
 
 ## <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 若要启用和访问用于 VM 的 Azure Monitor 中的功能，您必须在工作区中具有 " [Log Analytics 参与者" 角色](../platform/manage-access.md#manage-access-using-azure-permissions) 。 若要查看性能、运行状况和映射数据，你必须具有 Azure VM 的 " [监视读取](../platform/roles-permissions-security.md#built-in-monitoring-roles) 者" 角色。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../platform/manage-access.md)。
@@ -78,18 +62,18 @@ ms.locfileid: "95750514"
 > 将 *VMInsights* 解决方案添加到工作区时，所有连接到该工作区的现有虚拟机都将开始向 InsightsMetrics 发送数据。 在将 Dependency Agent 添加到连接到工作区的现有虚拟机之前，不会收集其他数据类型的数据。
 
 ### <a name="azure-portal"></a>Azure 门户
-有三个选项可用于使用 Azure 门户配置现有工作区。 如下所述。
+有三个选项可用于使用 Azure 门户配置现有工作区。 下面描述了每个项目。
 
 若要配置单个工作区，请在 " **Azure Monitor** " 菜单中，选择 "**虚拟机**" 选项，选择 **其他载入选项**，然后 **配置工作区**。 选择订阅和工作区，然后单击 " **配置**"。
 
 [![配置工作区](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 
-若要配置多个工作区，请在 "**监视器**" 菜单的 "**虚拟机**" 菜单中选择 "**工作区配置**" 选项卡 Azure 门户。 设置筛选器值以显示现有工作区的列表。 选择要启用的每个工作区旁边的框，然后单击 " **配置选择** "。
+若要配置多个工作区，请在 "**监视器**" 菜单的 "**虚拟机**" 菜单中选择 "**工作区配置**" 选项卡 Azure 门户。 设置筛选器值以显示现有工作区的列表。 选择要启用的每个工作区旁边的框，然后单击 " **配置选择**"。
 
 [![工作区配置](media/vminsights-enable-at-scale-policy/workspace-configuration.png)](media/vminsights-enable-at-scale-policy/workspace-configuration.png#lightbox)
 
 
-使用 Azure 门户在单个 VM 或 VMSS 上启用用于 VM 的 Azure Monitor 时，可以选择现有的工作区或创建一个新的工作区。 如果尚未安装 *VMInsights* 解决方案，则将其安装在此工作区中。 然后，你可以将此工作区用于其他代理。
+使用 Azure 门户在单个虚拟机或虚拟机规模集上启用用于 VM 的 Azure Monitor 时，可以选择现有的工作区或创建一个新的工作区。 如果尚未安装 *VMInsights* 解决方案，则将其安装在此工作区中。 然后，你可以将此工作区用于其他代理。
 
 [![在门户中启用单个 VM](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png#lightbox)
 

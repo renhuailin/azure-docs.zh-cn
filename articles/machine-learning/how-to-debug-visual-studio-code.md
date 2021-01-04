@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: a9d20732c3ae08718c400faff44137000e98fffd
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: e572f1f6a9452ccab9deddb62a5e219a81df5d47
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629407"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739988"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 进行交互式调试
 
@@ -536,4 +536,10 @@ docker stop debug
 
 现在，你已设置 VS Code Remote，可以将计算实例用作 VS Code 中的远程计算，从而对代码进行交互式调试。 
 
-[教程：训练自己的首个 ML 模型](tutorial-1st-experiment-sdk-train.md)演示如何将计算实例与集成的笔记本配合使用。
+了解有关故障排除的详细信息：
+
+* [本地模型部署](how-to-troubleshoot-deployment-local.md)
+* [远程模型部署](how-to-troubleshoot-deployment.md)
+* [机器学习管道](how-to-debug-pipelines.md)
+* [ParallelRunStep](how-to-debug-parallel-run-step.md)
+

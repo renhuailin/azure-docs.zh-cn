@@ -3,12 +3,12 @@ title: 排查 SQL Server 数据库备份问题
 description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Server 数据库的故障排除信息。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332774"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733907"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>排查使用 Azure 备份进行 SQL Server 数据库备份的问题
 
@@ -24,19 +24,19 @@ ms.locfileid: "91332774"
 
 创建和配置恢复服务保管库后，发现数据库和配置备份的过程分为两步。<br>
 
-![备份目标-Azure VM 中的 SQL Server](./media/backup-azure-sql-database/sql.png)
+![备份目标 - Azure VM 中的 SQL Server](./media/backup-azure-sql-database/sql.png)
 
-在备份配置过程中，如果 SQL VM 及其实例在 **vm 的发现** 数据库中不可见，并 **配置备份** (请参阅上述映像) 确保：
+在备份配置过程中，如果 SQL VM 及其实例在“发现 VM 中的 DB”和“配置备份”（参见上图）中不可见，请确保 ：
 
 ### <a name="step-1-discovery-dbs-in-vms"></a>步骤 1：发现 VM 中的 DB
 
-- 如果 VM 未列在 "已发现的 VM" 列表中，也未在其他保管库中为 SQL 备份注册，请按照 [发现 SQL Server 备份](./backup-sql-server-database-azure-vms.md#discover-sql-server-databases) 步骤操作。
+- 如果 VM 未在已发现的 VM 列表中列出，也未在另一个保管库中注册以进行 SQL 备份，请按照[发现 SQL Server 备份](./backup-sql-server-database-azure-vms.md#discover-sql-server-databases)步骤进行操作。
 
 ### <a name="step-2-configure-backup"></a>步骤 2：配置备份
 
 - 如果在其中注册了 SQL VM 的保管库与用于保护数据库的数据库相同，请按照[配置备份](./backup-sql-server-database-azure-vms.md#configure-backup)步骤进行操作。
 
-如果需要在新保管库中注册 SQL VM，则必须将该 VM 从旧保管库中注销。  从保管库注销 SQL VM 需要停止保护所有受保护的数据源，然后才可以删除已备份的数据。 删除备份的数据是一种破坏性操作。  查看并采取取消注册 SQL VM 的所有预防措施后，请将此同一 VM 注册到新的保管库，然后重试备份操作。
+如果需要在新保管库中注册 SQL VM，则必须将该 VM 从旧保管库中注销。  从保管库注销 SQL VM 需要停止保护所有受保护的数据源，然后才可以删除已备份的数据。 删除备份的数据是一种破坏性操作。  查看并采取注销 SQL VM 的所有预防措施后，请通过新保管库注册此 VM，然后重试备份操作。
 
 ## <a name="troubleshoot-backup-and-recovery-issues"></a>对备份和恢复问题进行故障排除  
 
@@ -56,19 +56,53 @@ ms.locfileid: "91332774"
 
 1. SQL 还提供了一些有关使用防病毒程序的指南。 有关详细信息，请参阅[此文](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server)。
 
+## <a name="faulty-instance-in-a-vm-with-multiple-sql-server-instances"></a>VM 中具有多个 SQL Server 实例的出错实例
+
+仅当在 VM 内运行的所有 SQL 实例都报告为正常时，才能还原到 SQL VM。 如果一个或多个实例 "出错"，则 VM 不会显示为还原目标。 这可能是因为在还原操作期间多实例 VM 可能不会出现在 "服务器" 下拉列表中。
+
+你可以在 " **配置备份**" 下验证 VM 中所有 SQL 实例的 "备份准备情况"：
+
+![验证备份准备情况](./media/backup-sql-server-azure-troubleshoot/backup-readiness.png)
+
+如果要在运行状况良好的 SQL 实例上触发还原操作，请执行以下步骤：
+
+1. 登录到 SQL VM，并浏览到 `C:\Program Files\Azure Workload Backup\bin` 。
+1. 创建一个名为 (的 JSON 文件（ `ExtensionSettingsOverrides.json` 如果它尚不存在) ）。 如果此文件已存在于 VM 上，请继续使用它。
+1. 在 JSON 文件中添加以下内容，并保存该文件：
+
+    ```json
+    {
+                  "<ExistingKey1>":"<ExistingValue1>",
+                    …………………………………………………… ,
+              "whitelistedInstancesForInquiry": "FaultyInstance_1,FaultyInstance_2"
+            }
+            
+            Sample content:        
+            { 
+              "whitelistedInstancesForInquiry": "CRPPA,CRPPB "
+            }
+
+    ```
+
+1. 在受影响的服务器上，从 Azure 门户触发重新 **发现** 数据库操作 (可以) 查看备份准备情况的同一位置。 VM 将作为还原操作的目标出现。
+
+    ![重新发现数据库](./media/backup-sql-server-azure-troubleshoot/rediscover-dbs.png)
+
+1. 还原操作完成后，从 ExtensionSettingsOverrides.js的文件中删除 *whitelistedInstancesForInquiry* 条目。
+
 ## <a name="error-messages"></a>错误消息
 
 ### <a name="backup-type-unsupported"></a>不受支持的备份类型
 
 | severity | 说明 | 可能的原因 | 建议的操作 |
 |---|---|---|---|
-| 警告 | 此数据库的当前设置不支持关联策略中的特定备份类型。 | <li>只能对 master 数据库执行完整数据库备份操作。 不可能进行差异备份和事务日志备份。 </li> <li>简单恢复模式中的任何数据库都不允许备份事务日志。</li> | 修改数据库设置 sp 支持策略中的所有备份类型。 或者，将当前策略更改为仅包括支持的备份类型。 否则，在计划备份期间将跳过不受支持的备份类型，或者按需备份的备份作业将失败。
+| 警告 | 此数据库的当前设置不支持关联策略中的特定备份类型。 | <li>只能对 master 数据库执行完整数据库备份操作。 不可能执行差异备份和事务日志备份。 </li> <li>简单恢复模式中的任何数据库都不允许进行事务日志备份。</li> | 修改数据库设置，以支持策略中的所有备份类型。 或者，将当前策略更改为只包含受支持的备份类型。 否则，在计划备份期间将跳过不受支持的备份类型，或者按需备份的备份作业将失败。
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| 此 SQL 数据库不支持所请求的备份类型。 | 当数据库恢复模式不允许所请求的备份类型时，会发生此错误。 在以下情况下，可能会发生此错误： <br/><ul><li>使用简单恢复模式的数据库不允许日志备份。</li><li>Master 数据库不允许进行差异备份和日志备份。</li></ul>有关详细信息，请参阅 [SQL Server 恢复模式](/sql/relational-databases/backup-restore/recovery-models-sql-server)文档。 | 如果采用简单恢复模式的数据库的日志备份失败，请尝试以下选项之一：<ul><li>如果数据库处于简单恢复模式，请禁用日志备份。</li><li>使用 [SQL Server 文档](/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server)将数据库恢复模式更改为“完整”或“批量日志记录”。 </li><li> 如果不想要更改恢复模式，并使用标准策略来备份无法更改的多个数据库，请忽略此错误。 完整备份和差异备份会按计划进行。 在这种情况下，预期会跳过日志备份。</li></ul>如果它是 master 数据库并且已配置了差异备份或日志备份，请使用以下步骤之一：<ul><li>使用门户将 master 数据库的备份策略计划更改为“完整”。</li><li>如果使用标准策略来备份无法更改的多个数据库，请忽略此错误。 完整备份会按计划进行。 在这种情况下，预期不会发生差异备份或日志备份。</li></ul> |
+| 此 SQL 数据库不支持所请求的备份类型。 | 当数据库恢复模式不允许所请求的备份类型时，会发生此错误。 在以下情况下，可能会发生此错误： <br/><ul><li>使用简单恢复模式的数据库不允许日志备份。</li><li>不允许对 master 数据库执行差异备份和日志备份。</li></ul>有关详细信息，请参阅 [SQL Server 恢复模式](/sql/relational-databases/backup-restore/recovery-models-sql-server)文档。 | 如果采用简单恢复模式的数据库的日志备份失败，请尝试以下选项之一：<ul><li>如果数据库处于简单恢复模式，请禁用日志备份。</li><li>使用 [SQL Server 文档](/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server)将数据库恢复模式更改为“完整”或“批量日志记录”。 </li><li> 如果不想要更改恢复模式，并使用标准策略来备份无法更改的多个数据库，请忽略此错误。 完整备份和差异备份会按计划进行。 在这种情况下，预期会跳过日志备份。</li></ul>如果备份的是 Master 数据库，并且已配置差异备份或日志备份，请使用以下任一步骤：<ul><li>使用门户将 master 数据库的备份策略计划更改为“完整”。</li><li>如果使用标准策略来备份无法更改的多个数据库，请忽略此错误。 完整备份会按计划进行。 在这种情况下，预期不会发生差异备份或日志备份。</li></ul> |
 | 操作将被取消，因为已对同一个数据库运行了某个有冲突的操作。 | 请参阅[有关并行运行备份和还原时存在的限制的博客文章](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/)。| [使用 SQL Server Management Studio (SSMS) 监视备份作业](manage-monitor-sql-database-backup.md)。 有冲突的操作失败后，重启该操作。|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
@@ -117,7 +151,7 @@ ms.locfileid: "91332774"
 
 |错误消息 |可能的原因  |建议的操作  |
 |---------|---------|---------|
-|操作期间出现输入/输出错误。 请检查虚拟机上的常见 IO 错误。   |   访问权限或目标上的空间约束。       |  检查虚拟机上的常见 IO 错误。 确保计算机上的目标驱动器/网络共享： <li> 对计算机上的帐户 NT AUTHORITY\SYSTEM 具有读/写权限。 <li> 具有足够的空间，使操作成功完成。<br> 有关详细信息，请参阅 [还原为文件](restore-sql-database-azure-vm.md#restore-as-files)。
+|在执行此操作期间出现了输入/输出错误。 请检查虚拟机上的常见 IO 错误。   |   目标上的访问权限或空间受限。       |  检查虚拟机上的常见 IO 错误。 确保计算机上的目标驱动器/网络共享满足以下条件： <li> 对计算机上的帐户 NT AUTHORITY\SYSTEM 具有读取/写入权限。 <li> 具有足够的空间，以使操作成功完成。<br> 有关详细信息，请参阅[作为文件还原](restore-sql-database-azure-vm.md#restore-as-files)。
        |
 
 ### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
@@ -136,7 +170,7 @@ ms.locfileid: "91332774"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| 由于可用性组的某些节点未注册，无法满足 SQL Always On 可用性组的备份首选项。 | 执行备份所需的节点未注册或无法访问。 | <ul><li>确保对此数据库执行备份所需的所有节点已注册且正常，然后重试操作。</li><li>更改 SQL Server Always On 可用性组的备份优先顺序。</li></ul> |
+| 由于可用性组的某些节点未注册，无法满足 SQL Always On 可用性组的备份首选项。 | 执行备份所需的节点未注册或不可访问。 | <ul><li>确保对此数据库执行备份所需的所有节点已注册且正常，然后重试操作。</li><li>更改 SQL Server Always On 可用性组的备份优先顺序。</li></ul> |
 
 ### <a name="vmnotinrunningstateusererror"></a>VMNotInRunningStateUserError
 
@@ -148,31 +182,31 @@ ms.locfileid: "91332774"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| Azure 备份服务使用 Azure VM 来宾代理执行备份，但来宾代理在目标服务器上不可用。 | 来宾代理未启用或不正常。 | 手动[安装 VM 来宾代理](../virtual-machines/extensions/agent-windows.md)。 |
+| Azure 备份服务使用 Azure VM 来宾代理执行备份，但来宾代理在目标服务器上不可用。 | 来宾代理未启用或运行不正常。 | 手动[安装 VM 来宾代理](../virtual-machines/extensions/agent-windows.md)。 |
 
 ### <a name="autoprotectioncancelledornotvalid"></a>AutoProtectionCancelledOrNotValid
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| 自动保护意向被删除或不再有效。 | 在 SQL Server 实例上启用自动保护时，将为该实例中的所有数据库运行“配置备份”作业。 如果在作业运行时禁用自动保护，则会使用此错误代码取消**正在进行的**作业。 | 重新启用自动保护可帮助保护所有剩余的数据库。 |
+| 自动保护意向被删除或不再有效。 | 在 SQL Server 实例上启用自动保护时，将为该实例中的所有数据库运行“配置备份”作业。 如果在作业运行时禁用自动保护，则会使用此错误代码取消 **正在进行的** 作业。 | 重新启用自动保护可帮助保护所有剩余的数据库。 |
 
 ### <a name="clouddosabsolutelimitreached"></a>CloudDosAbsoluteLimitReached
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-操作已被阻止，因为你已达到 24 小时内允许的操作数量限制。 | 如果已达到24小时内操作的最大允许限制，则会出现此错误。 <br> 例如：如果你达到了每天可触发的配置备份作业数的限制，并且你尝试在新项上配置备份，你将看到此错误。 | 通常，在 24 小时后重试操作即可解决此问题。 但是，如果问题持续出现，可以联系 Microsoft 支持人员获得帮助。
+操作已被阻止，因为你已达到 24 小时内允许的操作数量限制。 | 达到 24 小时内允许的最大操作数量限制后，会出现此错误。 <br> 例如：如果已达到每日可触发的配置备份作业数限制，而你尝试针对新项配置备份，则将出现此错误。 | 通常，在 24 小时后重试操作即可解决此问题。 但是，如果问题持续出现，可以联系 Microsoft 支持人员获得帮助。
 
 ### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-操作被阻止，因为保管库已达到 24 小时内允许的最大此类操作数量限制。 | 如果已达到24小时内操作的最大允许限制，则会出现此错误。 当存在大规模操作（如修改策略或自动保护）时，通常会出现此错误。 与 CloudDosAbsoluteLimitReached 的情况不同，您没有太多的操作可以解决此状态。 事实上，Azure 备份服务会针对相关的所有项目，在内部重试操作。<br> 例如：如果使用某个策略保护了大量的数据源，而你尝试修改该策略，则会针对每个受保护项触发配置保护作业，因此有时可能会达到每日允许的最大此类操作数量限制。| Azure 备份服务会在 24 小时后自动重试此操作。
+操作被阻止，因为保管库已达到 24 小时内允许的最大此类操作数量限制。 | 达到 24 小时内允许的最大操作数量限制后，会出现此错误。 此错误通常出现在执行大规模操作（例如修改策略或自动保护）时。 与 CloudDosAbsoluteLimitReached 的情况不同，你对于缓解这种状态几乎无能为力。 事实上，Azure 备份服务将针对相关的所有项目，在内部重试操作。<br> 例如：如果使用某个策略保护了大量的数据源，而你尝试修改该策略，则会针对每个受保护项触发配置保护作业，因此有时可能会达到每日允许的最大此类操作数量限制。| Azure 备份服务会在 24 小时后自动重试此操作。
 
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-由于 Internet 连接问题，VM 无法联系 Azure 备份服务。 | VM 需要与 Azure 备份服务、Azure 存储或 Azure Active Directory 服务建立出站连接。| -如果你使用 NSG 来限制连接性，则应使用 *AzureBackup* service 标记允许对 Azure 备份服务的出站访问，同样，对于 Azure AD (*AzureActiveDirectory*) 和 Azure 存储 (*存储*) 服务。 请按照这些[步骤](./backup-sql-server-database-azure-vms.md#nsg-tags)授予访问权限。<br>- 确保 DNS 在解析 Azure 终结点。<br>- 检查 VM 是否在阻止访问 Internet 的负载均衡器后面。 向 VM 分配公共 IP 即可使用发现功能。<br>-验证没有防火墙/防病毒/代理阻止调用上述三个目标服务。
+由于 Internet 连接问题，VM 无法联系 Azure 备份服务。 | VM 需要与 Azure 备份服务、Azure 存储或 Azure Active Directory 服务建立出站连接。| - 如果使用 NSG 来限制连接，则应使用 AzureBackup 服务标记来允许对 Azure 备份服务进行出站访问，同样也允许对 Azure AD (AzureActiveDirectory) 和 Azure 存储（存储）服务进行出站访问  。 请按照这些[步骤](./backup-sql-server-database-azure-vms.md#nsg-tags)授予访问权限。<br>- 确保 DNS 在解析 Azure 终结点。<br>- 检查 VM 是否在阻止访问 Internet 的负载均衡器后面。 向 VM 分配公共 IP 即可使用发现功能。<br>- 验证是否有防火墙/防病毒软件/代理在阻止调用上述三个目标服务。
 
 ## <a name="re-registration-failures"></a>重新注册失败
 
@@ -182,7 +216,7 @@ ms.locfileid: "91332774"
 - 如果备份项的“备份状态”区域显示为“无法访问”，请排除可能导致相同状态的其他所有原因：
 
   - 缺少在 VM 上执行备份相关操作的权限。
-  - 关闭 VM，因此无法进行备份。
+  - VM 已关闭，因此备份无法进行。
   - 网络问题。
 
    ![重新注册 VM](./media/backup-azure-sql-database/re-register-vm.png)

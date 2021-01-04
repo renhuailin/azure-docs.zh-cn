@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: ac2c9cb1710c4b4f67ba2aa06707d08cc45d4907
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: fc333994deaa03ec04405ea032b2ab1956705fe3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459249"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740311"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure 流分析中的 Azure SQL 数据库输出
 
@@ -51,9 +51,5 @@ ms.locfileid: "96459249"
 
 ## <a name="next-steps"></a>后续步骤
 
+* [使用托管标识从 Azure 流分析作业中访问 Azure SQL 数据库或 Azure Synapse Analytics (预览) ](sql-database-output-managed-identity.md)
 * [快速入门：使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)
-* [快速入门：使用 Azure CLI 创建 Azure 流分析作业](quick-create-azure-cli.md)
-* [快速入门：使用 ARM 模板创建 Azure 流分析作业](quick-create-azure-resource-manager.md)
-* [快速入门：使用 Azure PowerShell 创建流分析作业](stream-analytics-quick-create-powershell.md)
-* [快速入门：使用 Visual Studio 创建 Azure 流分析作业](stream-analytics-quick-create-vs.md)
-* [快速入门：在 Visual Studio Code 中创建 Azure 流分析作业](quick-create-visual-studio-code.md)

@@ -1,50 +1,71 @@
 ---
-title: '启用用于 VM 的 Azure Monitor 来宾健康状况 (预览版) '
+title: 启用用于 VM 的 Azure Monitor 来宾运行状况（预览）
 description: 介绍如何在你的订阅中启用用于 VM 的 Azure Monitor 来宾健康状况，以及如何载入 Vm。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: references_regions
+ms.openlocfilehash: 78ce082c6e90cfc9c67ddcfa00926d292b9ed7ea
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444768"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740464"
 ---
-# <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>启用用于 VM 的 Azure Monitor 来宾健康状况 (预览版) 
+# <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>启用用于 VM 的 Azure Monitor 来宾运行状况（预览）
 用于 VM 的 Azure Monitor 来宾健康状况允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何在你的订阅中启用此功能，以及如何为每个虚拟机启用来宾监视。
 
 ## <a name="current-limitations"></a>当前限制
 在公共预览版中，用于 VM 的 Azure Monitor 来宾健康状况有以下限制：
 
 - 目前仅支持 Azure 虚拟机。 当前不支持服务器的 Azure Arc。
-- 虚拟机必须运行以下操作系统之一： 
+
+
+## <a name="supported-operating-systems"></a>支持的操作系统
+虚拟机必须运行以下操作系统之一： 
+
   - Ubuntu 16.04 LTS、Ubuntu 18.04 LTS
   - Windows Server 2012 或更高版本
-- 虚拟机必须位于以下区域之一：
-  - 澳大利亚东部
-  - Australia Southeast
-  - 印度中部
-  - 美国中部
-  - 美国东部
-  - 美国东部 2
-  - 美国东部 2 EUAP
-  - 德国中西部
-  - Japan East
-  - 美国中北部
-  - 北欧
-  - 美国中南部
-  - 东南亚
-  - 英国南部
-  - 西欧
-  - 美国西部
-  - 美国西部 2
-- Log Analytics 工作区必须位于以下区域之一：
-  - 美国东部
-  - 美国东部 2 EUAP
-  - 西欧区域
+
+## <a name="supported-regions"></a>支持的区域
+
+虚拟机必须位于以下区域之一：
+
+- 澳大利亚中部
+- 澳大利亚东部
+- 澳大利亚东南部
+- 印度中部
+- 美国中部
+- 东亚
+- 美国东部
+- 美国东部 2
+- 美国东部 2 EUAP
+- 德国中西部
+- 日本东部
+- 美国中北部
+- 北欧
+- 美国中南部
+- 东南亚
+- 英国南部
+- 美国中西部
+- 西欧
+- 美国西部
+- 美国西部 2
+
+
+Log Analytics 工作区必须位于以下区域之一：
+
+- 美国中部
+- 美国东部
+- 美国东部 2
+- 美国东部 2 EUAP
+- 北欧
+- 东南亚
+- 英国南部
+- 西欧区域
+- 美国西部 2
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,9 +73,8 @@ ms.locfileid: "96444768"
 - 执行载入步骤的用户必须至少具有 "参与者" 级别对虚拟机和数据收集规则所在的订阅的访问权限。
 - 必需的 Azure 资源提供程序必须注册，如以下部分所述。
 
-
 ## <a name="register-required-azure-resource-providers"></a>注册所需的 Azure 资源提供程序
-以下 Azure 资源提供程序需要为你的订阅注册，以启用用于 VM 的 Azure Monitor 来宾健康状况。 
+为你的订阅注册以下 Azure 资源提供程序，以启用用于 VM 的 Azure Monitor 来宾健康状况。 
 
 - Microsoft.WorkloadMonitor
 - Microsoft.Insights

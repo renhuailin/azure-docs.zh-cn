@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: cee6d030a9639a7203a32a3c0957733cecb1f8b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8cf440a517c1a3496b3df438fdd0d2534609908f
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445318"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733088"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>排查 Azure Synapse Analytics Synapse Studio 与存储之间的连接问题
 
@@ -24,7 +24,11 @@ ms.locfileid: "96445318"
 
 详细的错误消息可能会有所不同，但错误消息的一般含义为： "此请求无权执行此操作。"。
 
-![存储连接问题1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.1.png)
+在 "链接存储" 节点中：  
+![存储连接问题1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1.png)
+
+在 "存储容器" 节点中：  
+![存储连接问题1a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1a.png)
 
 **解决方案**：若要将帐户分配到适当的角色，请参阅 [使用 Azure 门户分配用于访问 blob 和队列数据的 Azure 角色](../../storage/common/storage-auth-aad-rbac-portal.md)
 
@@ -33,7 +37,11 @@ ms.locfileid: "96445318"
 
 选择箭头以展开 "数据" 中 "Synapse" > "链接" 的存储结构时，可能会在左侧面板中看到 "REQUEST_SEND_ERROR" 问题。 请参阅下面的问题症状屏幕截图：
 
-![存储连接问题2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.2.png)
+在 "链接存储" 节点中：  
+![存储连接问题2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2.png)
+
+在 "存储容器" 节点中：  
+![存储连接问题2a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2a.png)
 
 此问题可能有几个可能的原因：
 
@@ -51,6 +59,7 @@ ms.locfileid: "96445318"
 
 * 要访问的存储资源是 Azure Data Lake Storage Gen2 的，位于防火墙和 vNet (，同时) 配置了存储专用终结点。
 * 你正在访问的容器资源已删除或不存在。
+* 跨租户：用户登录时所用的工作区租户与存储帐户的租户不相同。 
 
 
 ## <a name="next-steps"></a>后续步骤

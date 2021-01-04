@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 0bbf70016dc9b93120b3158e8954c336095ea211
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0d1cbb8efe0882f48a345d44a650eb711a44d570
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832681"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739179"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>创建 Azure 机器学习计算群集
 
@@ -52,7 +52,7 @@ Azure 机器学习计算群集是一个托管的计算基础结构，可让你�
 
 * Azure 机器学习计算对可以分配的核心数等属性实施默认限制。 有关详细信息，请参阅[管理和请求 Azure 资源的配额](how-to-manage-quotas.md)。
 
-* Azure 允许你对资源进行 _锁定_ ，以便不能删除或只读资源。 __不要将资源锁应用于包含工作区的资源组__。 对包含工作区的资源组应用锁定会阻止 Azure ML 计算群集的缩放操作。 有关锁定资源的详细信息，请参阅 [锁定资源以防止意外更改](../azure-resource-manager/management/lock-resources.md)。
+* Azure 允许你在资源上放置锁，这样这些资源就无法被删除，或者会处于只读状态。 __请勿将资源锁应用于包含工作区的资源组__。 将锁应用于包含工作区的资源组会阻止对 Azure ML 计算群集进行缩放操作。 若要详细了解如何锁定资源，请参阅[锁定资源以防止意外更改](../azure-resource-manager/management/lock-resources.md)。
 
 > [!TIP]
 > 一般情况下，只要所需核心数方面的配额足够，群集就可以扩展到多达 100 个节点。 默认情况下，设置群集时会启用群集节点之间的通信（例如，为了支持 MPI 作业）。 但是，可以将群集扩展到数千个节点，只需[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)并请求将你的订阅、工作区或特定群集加入允许列表以禁用节点间通信即可。 
@@ -211,6 +211,14 @@ az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_N
 ### <a name="managed-identity-usage"></a>托管标识用法
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
+
+## <a name="troubleshooting"></a>疑难解答
+
+在 GA 版本之前，从 Azure 门户创建其 Azure 机器学习工作区的某些用户可能无法在该工作区中创建 AmlCompute。 可对服务提出支持请求，也可通过门户或 SDK 创建新的工作区以立即解除锁定。
+
+如果 Azure 机器学习计算群集在根据节点状态重设大小时卡住 (0 -> 0)，可能是由于 Azure 资源锁定而导致的。
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: f85df2e16554b4830d3e5f1bc82c5c8cdf22e28b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4f4cd8189c9166ee08c1e4ccd800a1202d3b5893
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586624"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724810"
 ---
 # <a name="smb-multichannel-performance"></a>SMB 多通道性能
 
@@ -63,7 +63,7 @@ SMB 多通道仅适用于在客户端 (客户端) 和服务端 (Azure 存储帐�
 1. 以管理员身份打开 PowerShell 并使用以下命令： `Get-SmbMultichannelConnection |fl`
 1. 查找 **MaxChannels** 和 **CurrentChannels** 属性
 
-:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG" alt-text="Smbmultichannelconnection 结果的屏幕截图。" lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG":::
+:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG" alt-text="Get-SMBMultichannelConnection 结果的屏幕截图。" lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG":::
 
 ## <a name="performance-comparison"></a>性能比较
 
@@ -119,7 +119,7 @@ SMB 多通道仅适用于在客户端 (客户端) 和服务端 (Azure 存储帐�
 - 请确保存储帐户和客户端在同一 Azure 区域中被定位，以减少网络延迟。
 - 使用多线程应用程序并将负载分散到多个文件中。
 - SMB 多通道性能优势增加了分布式负载的文件数。
-- 高级共享性能由预配的共享大小（ (IOPS/出口/入口) 和单个文件限制）绑定。 有关详细信息，请参阅 [了解高级文件共享的设置](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)。
+- 高级共享性能由预配的共享大小（ (IOPS/出口/入口) 和单个文件限制）绑定。 有关详细信息，请参阅 [了解高级文件共享的设置](understanding-billing.md#provisioned-billing)。
 - 单个 VM 客户端的最大性能仍绑定到 VM 限制。 例如， [Standard_D32s_v3](../../virtual-machines/dv3-dsv3-series.md) 可以支持 16000 MBps (或 2GBps) 的最大带宽，则从 VM 传出的传出 (写入存储) 会按流量计费， (从存储) 进行读取。 文件共享性能受到计算机网络限制、Cpu、内部存储可用网络带宽、IO 大小、并行性以及其他因素的限制。
 - 初始测试通常是一项预热，放弃其结果并重复测试。
 - 如果性能受单个客户端限制并且工作负荷仍低于预配的共享限制，则可以通过将负载分散到多个客户端来实现更高的性能。

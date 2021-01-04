@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 17fc2db8c51c06601852037c38b9cfc2096c811f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ba64f5972d77637ec830fe6b872af66363d6c1bd
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109749"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740039"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>来自 Azure 流分析的 Blob 存储和 Azure Data Lake Gen2 输出
 
@@ -63,9 +63,5 @@ Azure Blob 存储提供了一种经济高效且可扩展的解决方案，用于
 
 ## <a name="next-steps"></a>后续步骤
 
+* [使用托管身份 (预览) 对 azure 流分析作业进行 Azure Blob 存储的身份验证](blob-output-managed-identity.md)
 * [快速入门：使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)
-* [快速入门：使用 Azure CLI 创建 Azure 流分析作业](quick-create-azure-cli.md)
-* [快速入门：使用 ARM 模板创建 Azure 流分析作业](quick-create-azure-resource-manager.md)
-* [快速入门：使用 Azure PowerShell 创建流分析作业](stream-analytics-quick-create-powershell.md)
-* [快速入门：使用 Visual Studio 创建 Azure 流分析作业](stream-analytics-quick-create-vs.md)
-* [快速入门：在 Visual Studio Code 中创建 Azure 流分析作业](quick-create-visual-studio-code.md)

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: 3eaabc6c1e7d34bb5d9433d742581f39bdfbf98e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 315de18539bf083515658b40fa70f3c214d7c909
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669527"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739733"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -44,24 +44,14 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
   > [!IMPORTANT]
   > 在 ISE 中运行的逻辑应用、内置触发器、内置操作和连接器使用与基于消费的定价计划不同的定价计划。 要了解 ISE 的定价和计费原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
 
-* [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 虚拟网络需要四个 *空* 子网，这些子网是在 ISE 中创建和部署资源所必需的，由这些内部和隐藏组件使用：
+* 一个 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md) ，其中包含四个 *空* 子网，这些子网是在 ISE 中创建和部署资源所必需的，由这些内部和隐藏组件使用：
 
   * 逻辑应用计算
   * 内部应用服务环境 (连接器) 
   * 内部 API 管理 (连接器) 
   * 用于缓存和性能的内部 Redis
   
-  可以提前创建子网，也可以等待，直到创建了 ISE，以便可以同时创建子网。 但是，在创建子网之前，请查看 [子网要求](#create-subnet)。
-
-  > [!IMPORTANT]
-  >
-  > 不要为虚拟网络或子网使用以下 IP 地址空间，因为它们无法通过 Azure 逻辑应用解析：<p>
-  > 
-  > * 0.0.0.0/8
-  > * 100.64.0.0/10
-  > * 127.0.0.0/8
-  > * 168.63.129.16/32
-  > * 169.254.169.254/32
+  你可以提前创建子网，也可以在创建 ISE 时创建子网，以便可以同时创建子网。 但是，在创建子网之前，请确保查看 [子网要求](#create-subnet)。
 
   * 确保你的虚拟网络[为 ISE 启用访问权限](#enable-access)，以便 ISE 能够正常运行并保持可访问性。
 
@@ -170,14 +160,14 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 * 服务终结点
 
-  需要为 Azure SQL、存储、服务总线和事件中心启用服务终结点，因为不能通过防火墙将流量发送到这些服务。
+  需要为 Azure SQL、存储、服务总线、KeyVault 和事件中心启用服务终结点，因为不能通过防火墙将流量发送到这些服务。
 
 *  其他入站和出站依赖项
 
    防火墙 *必须* 允许以下入站和出站依赖项：
    
    * [Azure App Service 依赖关系](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
-   * [Azure 缓存服务依赖项](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-vnets)
+   * [Azure 缓存服务依赖项](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks)
    * [Azure API 管理依赖项](../api-management/api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 <a name="create-environment"></a>
@@ -196,7 +186,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    ![提供环境详细信息](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | properties | 必选 | 值 | 说明 |
+   | properties | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要在其中创建环境的新的或现有的 Azure 资源组 |
@@ -219,7 +209,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    * 使用以字母字符或下划线开头的名称， (不) 数字，并且不使用以下字符： `<` 、 `>` 、、、、 `%` `&` `\\` `?` 、 `/` 。
 
-   * 使用[无类别域际路由 (CIDR) 格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)和 B 类地址空间。
+   * 使用无类 [Inter-Domain 路由 (CIDR) 格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。
    
      > [!IMPORTANT]
      >
