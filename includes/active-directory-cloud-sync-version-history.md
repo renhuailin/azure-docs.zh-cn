@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 3fc2475569765116d46a175629f25d9d49634942
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 77866fcb72515d5167d9f06b7d9ad91c59bc7945
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993937"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97700588"
 ---
 本文列出了已发布 Azure Active Directory Connect 预配代理的版本和功能。 Azure AD 团队定期用新特性和功能更新设置代理。 发布新版本时，会自动更新设置代理。 
 
@@ -28,6 +28,8 @@ Microsoft 为最新的代理版本和之前的版本提供直接支持。
 * 仅支持 PHS 筛选) 最初为范围 (的对象，我们为所有对象同步密码哈希
 * 修复了代理中的内存泄漏问题
 * 改善了预配日志
+* 支持配置 [LDAP 连接超时](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-ldap-connection-timeout) 
+* 支持配置 [引用跟踪](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-referral-chasing) 
 
 
 ## <a name="11960"></a>1.1.96.0

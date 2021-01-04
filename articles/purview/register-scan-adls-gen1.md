@@ -1,18 +1,18 @@
 ---
 title: 注册和扫描 Azure Data Lake Storage (ADLS) Gen1
 description: 本教程介绍如何将数据从 Azure Data Lake Storage Gen1 扫描到 Azure 监控范围。
-author: kchandra
-ms.author: kchandra
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: ee0b9238deb7805113f0cbfa28d0b60a114820a9
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: a831681f892de9f6aae50fa9a2fcf71e883fe6ba
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552259"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693711"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen1"></a>注册和扫描 Azure Data Lake Storage Gen1
 
@@ -34,7 +34,7 @@ Azure Data Lake Storage Gen1 数据源支持以下功能：
 - 在注册数据源之前，请创建一个 Azure 监控范围帐户。 有关创建监控范围帐户的详细信息，请参阅 [快速入门：创建 Azure 监控范围帐户](create-catalog-portal.md)。
 - 你需要成为 Azure 监控范围数据源管理员
 
-## <a name="setting-up-authentication-for-a-scan"></a>设置扫描的身份验证
+## <a name="setting-up-authentication-for-a-scan"></a>为扫描设置身份验证
 
 Azure Data Lake Storage Gen1 支持以下身份验证方法：
 
@@ -69,7 +69,7 @@ Azure Data Lake Storage Gen1 支持以下身份验证方法：
 
 5. 如果密钥保管库尚未连接到监控范围，则需要 [创建新的 key vault 连接](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)。
 
-6. 最后，使用服务主体 [创建新的凭据](manage-credentials.md#create-a-new-credential) 来设置扫描
+6. 最后，使用服务主体[创建新凭据](manage-credentials.md#create-a-new-credential)以设置扫描
 > [!Note]
 > 将目录的 MSI 添加到数据源后，在设置扫描之前，请等待15分钟以传播权限。
 
@@ -81,13 +81,13 @@ Azure Data Lake Storage Gen1 支持以下身份验证方法：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 
-2. 从左侧菜单中选择 " **Azure Active Directory** "。
+2. 从左侧菜单中选择“Azure Active Directory”。
 
 3. 选择 **“应用注册”**。
 
 4. 选择“+ 新建应用程序注册”。
 
-5. 输入 **应用程序** 的名称 (服务主体名称) 。
+5. 为应用程序输入名称（服务主体名称）。
 
 6. 选择“仅此组织目录中的帐户”。
 
@@ -127,15 +127,15 @@ Azure Data Lake Storage Gen1 支持以下身份验证方法：
 
 在 "注册源" (Azure Data Lake Storage Gen1) "屏幕上，执行以下操作：
 
-1. 输入将在目录中列出的数据源的 **名称** 。
+1. 输入数据源将在目录中列出的名称。
 2. 选择订阅以筛选存储帐户
 3. 选择存储帐户
-4. 选择一个集合，或创建一个新的集合 (可选) 
-5. 完成注册数据源。
+4. 选择一个集合或创建新集合（可选）
+5. 选择“完成”以注册数据源。
 
 [!INCLUDE [create and manage scans](includes/manage-scans.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-- [浏览 Azure 监控范围数据目录](how-to-browse-catalog.md)
-- [搜索 Azure 监控范围数据目录](how-to-search-catalog.md)
+- [浏览 Azure Purview 数据目录](how-to-browse-catalog.md)
+- [搜索 Azure Purview 数据目录](how-to-search-catalog.md)

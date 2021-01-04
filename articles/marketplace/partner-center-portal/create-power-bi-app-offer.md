@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131490"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693614"
 ---
 # <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用套餐
 
@@ -97,7 +97,7 @@ ms.locfileid: "93131490"
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
 - 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用** "。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
 请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
@@ -109,9 +109,7 @@ ms.locfileid: "93131490"
 
 #### <a name="terms-and-conditions"></a>条款和条件
 
-若要提供你自己的自定义条款和条件，请在“条款和条件”框中输入最多 10,000 个字符。 如果你的条款和条件需要更长的说明，请输入指向它们所在位置的单个 Web 链接。 它将作为活动链接向客户显示。
-
-客户必须接受这些条款才能试用产品/服务。
+若要提供你自己的自定义条款和条件，请在“条款和条件”框中输入最多 10,000 个字符。 客户必须接受这些条款，才能试用你的产品/服务。
 
 选择“保存草稿”，然后转到下一部分“产品/服务一览”继续操作。
 
@@ -136,14 +134,14 @@ ms.locfileid: "93131490"
 
 1. 徽标
 2. 产品
-3. 类别
+3. Categories
 4. 行业
 5. 支持地址 (链接) 
 6. 使用条款
 7. 隐私策略
 8. 产品名称
-9. 摘要
-10. 描述
+9. 总结
+10. 说明
 11. 屏幕截图/视频
 
 ### <a name="name"></a>名称
@@ -260,4 +258,4 @@ ms.locfileid: "93131490"
 
 若要提交产品/服务进行发布，请选择“发布”。
 
-我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 " **上线** "。
+我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 " **上线**"。

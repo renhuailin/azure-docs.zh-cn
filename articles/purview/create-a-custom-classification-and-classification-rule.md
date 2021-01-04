@@ -1,18 +1,18 @@
 ---
 title: " (预览创建自定义分类和分类规则) "
 description: 本文介绍如何创建自定义分类来定义你的组织独有的数据空间中的数据类型。 还介绍了如何创建自定义分类规则，以便在整个数据空间中查找指定的数据。
-author: chandrakavya
-ms.author: kchandra
+author: animukherjee
+ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/1/2020
-ms.openlocfilehash: 16a714cff506117c5d6f7fd4921fbd5346bfda39
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 53c71eec4c913c606669b7d36ca9a71ac8f3e2f1
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551696"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693458"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure 监控范围中的自定义分类 
 
@@ -95,12 +95,12 @@ Contoso 可以通过创建自定义分类规则将扫描系统配置为查找这
 
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/createclassificationrule.png" alt-text="创建新的分类规则" border="true":::
 
-|字段     |描述  |
+|字段     |说明  |
 |---------|---------|
 |名称   |    必需。 最大值为100个字符。    |
-|描述      |可选。 最大值为256个字符。    |
+|说明      |可选。 最大值为256个字符。    |
 |分类名称    | 必需。 从下拉列表中选择分类的名称，以指示扫描程序在找到匹配项时应用该分类。        |
-|状态   |  必需。 启用或禁用这些选项。 默认值为 "已启用"。    |
+|州省/自治区/直辖市   |  必需。 启用或禁用这些选项。 默认值为 "已启用"。    |
 |数据模式    |可选。 表示存储在数据字段中的数据的正则表达式。 此限制非常大。 在上面的示例中，数据模式测试了原义词的雇员 ID `Employee{GUID}` 。  |
 |列模式    |可选。 表示要匹配的列名称的正则表达式。 此限制非常大。          |
 

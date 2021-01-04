@@ -1,18 +1,18 @@
 ---
 title: 部署最佳做法
-description: 本文提供了有关部署 Azure 监控范围的最佳实践。 Azure 监控范围允许任何用户注册、发现、了解和使用数据源。
-author: hophanms
-ms.author: hophan
+description: 本文提供了有关部署 Azure 监控范围的最佳实践。 使用 Azure Purview，任何用户均可注册、发现、了解和使用数据源。
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: 1b2841f69ebe91dac748a4b2e24dc0c33756b1da
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 48966e481f9cf8796c866b5c15a4e2a8616eade7
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400686"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695861"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Azure 监控范围部署最佳实践
 
@@ -110,7 +110,7 @@ ms.locfileid: "97400686"
 
 这些方案必须是特定的、可操作和可执行的，并具有可度量的结果。 可以使用的一些示例方案：
 
-|方案|详细信息|增添|
+|方案|详情|增添|
 |---------|---------|---------|
 |为业务关键型资产分类|我需要了解每个数据集的相关信息，以便充分了解它是什么。 此方案包括有关目录中的数据集的业务和技术元数据数据。 数据源包括 Azure Data Lake Storage Gen2、Azure Synapse DW 和/或 Power BI。 此方案还包括本地资源，如 SQL Server。|业务分析师、数据科学家、数据工程师|
 |发现业务关键资产|我需要有一个搜索引擎，可以搜索目录中的所有元数据。 我应该能够使用 "技术术语"、"使用通配符的简单或复杂搜索" 进行搜索。|业务分析师、数据科学家、数据工程师、数据管理|
