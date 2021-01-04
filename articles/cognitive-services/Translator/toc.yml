@@ -56,30 +56,20 @@
       items:
         - name: v3 翻译器参考
           href: reference/v3-0-reference.md
-          items:
-            - name: Languages
-              href: reference/v3-0-languages.md
-            - name: Translate
-              href: reference/v3-0-translate.md
-            - name: Transliterate
-              href: reference/v3-0-transliterate.md
-            - name: Detect
-              href: reference/v3-0-detect.md
-            - name: BreakSentence
-              href: reference/v3-0-break-sentence.md
-            - name: 字典查找
-              href: reference/v3-0-dictionary-lookup.md
-            - name: 字典示例
-              href: reference/v3-0-dictionary-examples.md
-        - name: v2 翻译器参考（已弃用）
-          href: reference/v2-0-reference.md
-          items:
-            - name: 转换文本
-              href: transform-text.md
-            - name: 如何使用协作性翻译框架 (CTF) 报告
-              href: ctf-reporting.md
-            - name: 返回 N 个最佳翻译
-              href: return-n-best-translations.md
+        - name: Languages
+          href: reference/v3-0-languages.md
+        - name: Translate
+          href: reference/v3-0-translate.md
+        - name: Transliterate
+          href: reference/v3-0-transliterate.md
+        - name: Detect
+          href: reference/v3-0-detect.md
+        - name: BreakSentence
+          href: reference/v3-0-break-sentence.md
+        - name: 字典查找
+          href: reference/v3-0-dictionary-lookup.md
+        - name: 字典示例
+          href: reference/v3-0-dictionary-examples.md
         - name: 请求限制
           href: request-limits.md
     - name: 资源

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: ffbf3fa3e2d404b7bc5888ef01707cbd816600b3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ab056e0685264b03d35ee6b95afad7c6362f9db6
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182846"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695794"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>适用于虚拟机的 Azure Automanage
 
@@ -52,7 +52,7 @@ Azure Automanage 还自动监视是否有偏移，并在检测到它时纠正。
 > [!NOTE]
 > 如果要在连接到不同订阅中的工作区的 VM 上使用 Automanage，则必须具有上述每个订阅的权限。
 
-另外，请务必注意，Automanage 仅支持位于以下区域的 Windows Vm：西欧、美国东部、美国西部2、加拿大中部、美国西部。
+另外，请务必注意，Automanage 仅支持位于以下区域的 Windows Vm：西欧、美国东部、美国西部2、加拿大中部、美国西部、美国东部、日本东部。
 
 ## <a name="participating-services"></a>参与服务
 

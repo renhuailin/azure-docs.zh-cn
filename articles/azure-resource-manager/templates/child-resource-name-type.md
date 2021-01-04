@@ -2,19 +2,21 @@
 title: 模板中的子资源
 description: 介绍如何在 Azure 资源管理器模板中设置子资源的名称和类型。
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/21/2020
+ms.openlocfilehash: c594096fd95f663db2120b29c575b341924dcc36
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80743835"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97721937"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>设置子资源的名称和类型
 
-子资源是只存在于另一资源的上下文内的资源。 例如，如果没有[虚拟机](/azure/templates/microsoft.compute/2019-03-01/virtualmachines)，则[虚拟机扩展](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions)不能存在。 扩展资源是虚拟机的子项。
+子资源是只存在于另一资源的上下文内的资源。 例如，如果没有[虚拟机](/azure/templates/microsoft.compute/virtualmachines)，则[虚拟机扩展](/azure/templates/microsoft.compute/virtualmachines/extensions)不能存在。 扩展资源是虚拟机的子项。
 
-在资源管理器模板中，可以在父资源内部或外部指定子资源。 以下示例显示子资源包括在父资源的资源属性中。
+每个父资源仅接受特定的资源类型作为子资源。 子资源的资源类型包括父资源的资源类型。 例如，system.web/sites **/config** 和 microsoft/sites **/Extensions** 都是 **microsoft** 的子资源。 可接受的资源类型在父资源的 [模板架构](https://github.com/Azure/azure-resource-manager-schemas) 中指定。
+
+在 Azure 资源管理器模板 (ARM 模板) ，可以在父资源内或父资源之外指定子资源。 以下示例显示子资源包括在父资源的资源属性中。
 
 ```json
 "resources": [
@@ -26,6 +28,8 @@ ms.locfileid: "80743835"
   }
 ]
 ```
+
+子资源总共只能定义五级。
 
 下一示例显示子资源位于父资源外部。 如果父资源未部署在同一模板中，或者想要使用 [copy](copy-resources.md) 创建多个子资源，可以使用此方法。
 
@@ -132,6 +136,6 @@ ms.locfileid: "80743835"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关创建 Azure Resource Manager模板的信息，请参阅[创作模板](template-syntax.md)。
+* 若要了解如何创建 ARM 模板，请参阅 [创作模板](template-syntax.md)。
 
 * 若要了解引用资源时的资源名称格式，请参阅[引用函数](template-functions-resource.md#reference)。

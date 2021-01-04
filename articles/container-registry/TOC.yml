@@ -57,6 +57,9 @@
           href: container-registry-image-tag-version.md
         - name: 异地复制
           href: container-registry-geo-replication.md
+        - name: 区域冗余
+          displayName: availability zone
+          href: zone-redundancy.md
         - name: 注册最佳做法
           href: container-registry-best-practices.md
         - name: 管理公共映像

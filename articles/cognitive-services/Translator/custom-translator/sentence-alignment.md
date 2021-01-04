@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 7ed7c3a586f5671191e3c517b5925cab888caefb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347789"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724300"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>并行文档中的句子配对和对齐
 
@@ -22,7 +22,7 @@ ms.locfileid: "97347789"
 
 ## <a name="pairing-and-alignment-process"></a>配对和对齐过程
 
-自定义翻译每次学习一个句子的翻译。 它从源中读取某个句子，然后从目标中读取此句子的翻译。 然后，它将这两个句子中的单词和短语相互对齐。 此过程可让自定义翻译将一个句子中的单词和短语映射到此句子的翻译中的对应单词和短语。 对齐的目的是尽量确保基于相互翻译的句子训练系统。
+自定义翻译每次学习一个句子的翻译。 它从源文本读取一个句子，然后从目标文本中读取此句子的翻译。 然后，它将这两个句子中的单词和短语相互对齐。 通过此过程，它可以在句子的翻译中创建单词和短语的地图，并将其转换为等效的单词和短语。 对齐的目的是尽量确保基于相互翻译的句子训练系统。
 
 ## <a name="pre-aligned-documents"></a>预先对齐的文档
 

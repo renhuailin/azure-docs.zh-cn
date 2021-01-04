@@ -9,23 +9,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 30e5d1802b93553be1b9437bea9aa0952b026f85
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 903c36bc228faaac4cbf13fd00ca1b398e2f8add
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997184"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704824"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>在 Azure CLI 中创建 Azure 容器实例资源
 
-下面的 YAML 定义Azure 容器实例资源。 将内容复制并粘贴到名为 `my-aci.yaml` 的新文件中，并将注释的值替换为自己的值。 请参阅[模板格式][template-format]以获取有效的 YAML。 请参阅[容器存储库和映像][repositories-and-images]，获取可用的映像名称及其相应的存储库。 有关容器实例的 YAML 引用的详细信息，请参阅 [YAML reference： Azure 容器实例][aci-yaml-ref]。
+下面的 YAML 定义Azure 容器实例资源。 将内容复制并粘贴到名为 `my-aci.yaml` 的新文件中，并将注释的值替换为自己的值。 请参阅[模板格式][template-format]以获取有效的 YAML。 请参阅[容器存储库和映像][repositories-and-images]，获取可用的映像名称及其相应的存储库。 有关容器实例的 YAML 引用的详细信息，请参阅 [YAML 参考：Azure 容器实例][aci-yaml-ref]。
 
 ```YAML
 apiVersion: 2018-10-01
 location: # < Valid location >
 name: # < Container Group name >
 properties:
-  imageRegistryCredentials: # This is only required if you are pulling a non-public image that requires authentication to access.
+  imageRegistryCredentials: # This is only required if you are pulling a non-public image that requires authentication to access. For example Text Analytics for health.
   - server: containerpreview.azurecr.io
     username: # < The username for the preview container registry >
     password: # < The password for the preview container registry >
@@ -64,9 +64,9 @@ type: Microsoft.ContainerInstance/containerGroups
 ```
 
 > [!NOTE]
-> 并非所有位置都具有相同的 CPU 和内存可用性。 有关每个位置和 OS 的容器可用资源列表，请参阅 " [位置和资源][location-to-resource] " 表。
+> 并非所有位置都具有相同的 CPU 和内存可用性。 请参阅[位置和资源][location-to-resource]表，以获取每个位置和 OS 的容器的可用资源列表。
 
-我们将依赖于为命令创建的 YAML 文件 [`az container create`][azure-container-create] 。 在 Azure CLI 中，执行命令，将 `az container create` 替换为 `<resource-group>` 你自己的。 此外，为了保护 YAML 部署中的值，请参阅 [安全值][secure-values]。
+我们将依赖于我们为 [`az container create`][azure-container-create] 命令创建的 YAML 文件。 在 Azure CLI 中执行 `az container create` 命令，将 `<resource-group>` 替换为你自己的值。 另外，若要在 YAML 部署中保护值，请参考[安全值][secure-values]。
 
 ```azurecli
 az container create -g <resource-group> -f my-aci.yaml
@@ -77,7 +77,7 @@ az container create -g <resource-group> -f my-aci.yaml
 > [!TIP]
 > 请密切注意公共预览版 Azure 认知服务产品的位置，因为需要根据位置来相应地调整 YAML。
 
-[azure-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
+[azure-container-create]: /cli/azure/container#az-container-create
 [template-format]: /azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format
 [aci-yaml-ref]: ../../../container-instances/container-instances-reference-yaml.md
 [repositories-and-images]: ../../cognitive-services-container-support.md#container-repositories-and-images

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 4436289d544de057acef132117346ac53c20b5a7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 76218003a40c02def3dc62ea8480022d9647938d
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576482"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723331"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 流分析中的数据保护 
 
@@ -60,7 +60,7 @@ Azure 流分析存储上述客户数据和其他元数据。 默认情况下，�
 
 1. 在 Azure 门户的左上角选择“创建资源”。 
 
-1.  **Analytics**   > 从 "结果" 列表中选择 "分析 **流分析作业**   "。 
+1.  ****   > 从 "结果" 列表中选择 "分析 **流分析作业**   "。 
 
 1. 在 "流分析作业" 页中填写必要的详细信息，如名称、区域和缩放。 
 
@@ -72,7 +72,7 @@ Azure 流分析存储上述客户数据和其他元数据。 默认情况下，�
 
    ![专用数据存储帐户设置](./media/data-protection/storage-account-create.png)
 
-1. 若要通过托管标识 (预览) 进行身份验证，请从 "身份验证模式" 下拉菜单中选择 " **托管标识** "。 如果选择托管标识，则需要将流分析作业添加到存储帐户的访问控制列表。 如果你没有为你的作业授予访问权限，则作业将无法执行任何操作。 有关如何授予访问权限的详细信息，请参阅 [使用 AZURE RBAC 向另一资源分配托管标识访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource)。
+1. 若要通过托管标识 (预览) 进行身份验证，请从 "身份验证模式" 下拉菜单中选择 " **托管标识** "。 如果选择 "托管标识"，则需要将流分析作业添加到存储帐户的访问控制列表中，并具有 " *存储 Blob 数据参与者* " 角色。 如果你没有为你的作业授予访问权限，则作业将无法执行任何操作。 有关如何授予访问权限的详细信息，请参阅 [使用 AZURE RBAC 向另一资源分配托管标识访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource)。
 
    :::image type="content" source="media/data-protection/storage-account-create-msi.png" alt-text="具有托管标识身份验证的专用数据存储帐户设置":::
 

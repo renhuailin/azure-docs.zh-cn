@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 12/18/2020
 ms.locfileid: "92459673"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教程：Azure Active Directory 与 ITRP 集成
@@ -86,7 +86,7 @@ ms.locfileid: "92459673"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的“ITRP”应用程序集成页上，选择“单一登录”： 
 
-    ![选择“单一登录”](common/select-sso.png)
+    ![选择单一登录](common/select-sso.png)
 
 2. 在“选择单一登录方法”对话框中，选择“SAML/WS-Fed”模式以启用单一登录：  
 
@@ -135,7 +135,7 @@ ms.locfileid: "92459673"
 
 1. 在窗口顶部，选择“设置”图标： 
 
-    ![设置”图标](./media/itrp-tutorial/ic775570.png "“设置”图标")
+    ![设置”图标](./media/itrp-tutorial/ic775570.png "设置图标")
 
 1. 在左窗格中，选择“单一登录”  ：
 

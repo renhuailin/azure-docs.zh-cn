@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 50abfec19295f80fa79864fedb31eadd31dd4d69
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 34a947a2a0f6d8c87c0580f273130b671b4f17fc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203664"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722226"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -23,7 +23,7 @@ ms.locfileid: "92203664"
 
 ## <a name="client-cant-connect-to-server"></a>客户端无法连接到服务器
 
-请确保你的防火墙 (在设备上、在路由器内部，等等 ) 不会阻止 [系统要求](../overview/system-requirements.md#network-ports)中提到的端口。
+请确保你的防火墙 (在设备上、在路由器内部，等等 ) 不会阻止 [系统要求](../overview/system-requirements.md#network-firewall)中提到的端口。
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>错误 " `Disconnected: VideoFormatNotAvailable` "
 
@@ -179,7 +179,7 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
     
 ### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>由于缺少 AudioPluginMsHRTF.dll，Unity 项目的 Arm64 生成失败
 
-`AudioPluginMsHRTF.dll`已将 Arm64 的添加到*Windows Mixed Reality* (包 *) *版本3.0.1 中的 windowsmr。 确保已通过 Unity 包管理器安装了版本3.0.1 或更高版本。 从 Unity 菜单栏中，导航到 " *窗口 >" 包管理器* "，并查找" *Windows Mixed Reality* "包。
+`AudioPluginMsHRTF.dll`已将 Arm64 的添加到 *Windows Mixed Reality* (包 *)* 版本3.0.1 中的 windowsmr。 确保已通过 Unity 包管理器安装了版本3.0.1 或更高版本。 从 Unity 菜单栏中，导航到 " *窗口 >" 包管理器* "，并查找" *Windows Mixed Reality* "包。
 
 ## <a name="native-c-based-application-does-not-compile"></a>基于本机 c + + 的应用程序不编译
 

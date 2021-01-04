@@ -3,17 +3,17 @@ title: 索引器错误和警告
 titleSuffix: Azure Cognitive Search
 description: 本文提供有关在 Azure 认知搜索中进行 AI 扩充期间可能会遇到的常见错误和警告的信息及其解决方法。
 manager: nitinme
-author: amotley
-ms.author: abmotley
+author: nitinme
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: dcdc05ae696a207546eb62160fe89ea38d307058
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c65c9265d8eb4a06ea354c6d753cc6ed847eb6db
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492261"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724283"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的常见索引器错误和警告
 
@@ -350,6 +350,6 @@ ms.locfileid: "96492261"
 
 无法以一致的方式查询采用[延迟](../cosmos-db/index-policy.md#indexing-mode)索引策略的集合，从而导致索引器缺少数据。 若要解决此警告，请将索引策略更改为“一致”。
 
-## <a name="warning-the-document-contains-very-long-words-longer-than-64-characters-these-words-may-result-in-truncated-andor-unreliable-model-predictions"></a>警告：文档包含非常长的单词 (超过64个字符) 。 这些词可能会导致截断和/或不可靠的模型预测。
+## <a name="warning-the-document-contains-very-long-words-longer-than-64-characters-these-words-may-result-in-truncated-andor-unreliable-model-predictions"></a>警告：文档包含非常长的字词（超过 64 个字符）。 这些字词可能会导致模型预测被截断和/或不可靠。
 
-此警告是从文本分析服务传递的。  在某些情况下，可以安全地忽略此警告，例如，当文档包含长 URL (可能不是关键短语或驾驶情绪等 ) 。  请注意，当 word 长度超过64个字符时，它将被截断为64个字符，这可能会影响模型预测。
+此警告自文本分析服务发出。  在某些情况下，可以忽略此警告，例如文档包含较长的 URL（它很可能不是关键短语或驱动性情绪等）时。  请注意，字词超过 64 个字符时将被截断为 64 个字符，这会影响模型预测。
