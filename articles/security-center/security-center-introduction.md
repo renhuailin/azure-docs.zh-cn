@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0a1cac0fe61ea13a18224ea5992b5c7c1ba69d8a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b52fbd820c4b4603481f585ea0b0983720cabb22
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510329"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709073"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
+
+[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Azure 安全中心是一个统一的基础结构安全管理系统，可以增强数据中心的安全态势，以及为云中（无论是否在 Azure 中）和本地的混合工作负荷提供高级威胁防护。
 

@@ -3,12 +3,12 @@ title: 如何停止监视 Azure Red Hat OpenShift v3 群集 |Microsoft Docs
 description: 本文介绍如何通过 Azure Monitor 容器来停止监视 Azure Red Hat OpenShift 群集。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6c21b17fd9faed7b133cd8ecad767ae7bd4aa868
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 7e6ab46940ed29a98b3988c00c92d6c691d6e0f0
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216517"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695617"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>如何停止监视 Azure Red Hat OpenShift v3 群集
 
@@ -23,7 +23,7 @@ ms.locfileid: "92216517"
 
 启用 Azure Red Hat OpenShift 版本3.x 群集的监视后，如果你决定不再想要对其进行监视，则可以使用容器 Azure Monitor 停止监视群集。 本文介绍如何使用提供的 Azure 资源管理器模板来完成此操作。  
 
-## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
+## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
 下面提供了两个 Azure 资源管理器模板，以支持在资源组中一致且重复地删除解决方案资源。 一个是 JSON 模板，它指定要停止监视的配置，另一个包含配置为指定群集所部署到的 OpenShift 群集资源 ID 和 Azure 区域的参数值。
 
@@ -35,7 +35,7 @@ ms.locfileid: "92216517"
 
 ### <a name="create-template"></a>创建模板
 
-1. 将以下 JSON 语法复制并粘贴到该文件中：
+1. 将以下 JSON 语法复制并粘贴到文件中：
 
     ```json
     {
@@ -74,7 +74,7 @@ ms.locfileid: "92216517"
     }
     ```
 
-2. 将此文件以“OptOutTemplate.json”文件名保存到本地文件夹****。
+2. 将此文件以“OptOutTemplate.json”文件名保存到本地文件夹  。
 
 3. 将以下 JSON 语法粘贴到文件中：
 
@@ -97,7 +97,7 @@ ms.locfileid: "92216517"
 
     ![容器属性页面](media/container-insights-optout-openshift/cluster-properties-page.png)
 
-5. 将此文件以“OptOutParam.json”文件名保存到本地文件夹****。
+5. 将此文件以“OptOutParam.json”文件名保存到本地文件夹  。
 
 6. 已做好部署此模板的准备。
 
@@ -108,7 +108,7 @@ ms.locfileid: "92216517"
 ```azurecli
 az login   
 az account set --subscription "Subscription Name"
-az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
+az deployment group create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
 配置更改可能需要几分钟才能完成。 完成后，系统会返回包含结果的消息，如下所示：

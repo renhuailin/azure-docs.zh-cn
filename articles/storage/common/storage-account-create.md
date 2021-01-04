@@ -10,12 +10,12 @@ ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c8d07e53e259fff28e662f0c1ca3934eabf015e8
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d05c95c22d75e4287283318095c4d053763f349e
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357443"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702369"
 ---
 # <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -74,7 +74,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -215,7 +215,7 @@ read resourceGroupName &&
 echo "Enter the location (i.e. centralus):" &&
 read location &&
 az group create --name $resourceGroupName --location "$location" &&
-az group deployment create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+az deployment group create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
 > [!NOTE]

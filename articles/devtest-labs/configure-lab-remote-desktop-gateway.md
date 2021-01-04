@@ -3,12 +3,12 @@ title: 在 Azure 开发测试实验室中配置实验室以使用远程桌面网
 description: 了解如何使用远程桌面网关在 Azure 开发测试实验室中配置实验室，以确保安全访问实验室 Vm，而无需公开 RDP 端口。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b48a0709deb21ca0f8a27d1cf953c7d8d4ba2cc8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: dcf5191dea64c3d7bf28b9ce1c616d3d2defb73e
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144702"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695691"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>将 Azure 开发测试实验室中的实验室配置为使用远程桌面网关
 在 Azure 开发测试实验室中，可以为实验室配置远程桌面网关，以确保 (Vm) 安全访问实验室虚拟机，而无需公开 RDP 端口。 实验室为实验室用户提供了一个中心位置，用于查看并连接到他们有权访问的所有虚拟机。 "**虚拟机**" 页上的 "**连接**" 按钮创建计算机特定的 RDP 文件，您可以打开该文件以连接到计算机。 可以通过将实验室连接到远程桌面网关，进一步自定义和保护 RDP 连接。 
@@ -66,7 +66,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 使用以下步骤将实验室配置为使用令牌身份验证：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
+1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 1. 从实验室列表中，选择 **实验室**。
 1. 在实验室页面上，选择 " **配置和策略**"。
 1. 在左侧菜单的 " **设置** " 部分中，选择 " **实验室设置**"。
@@ -82,7 +82,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
     > 单击 " **保存**" 即表示你同意 [远程桌面网关的许可条款](https://www.microsoft.com/licensing/product-licensing/products)。 有关远程网关的详细信息，请参阅 [欢迎使用远程桌面服务](/windows-server/remote/remote-desktop-services/Welcome-to-rds) 和 [部署远程桌面环境](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)。
 
 
-如果首选通过自动化配置实验室，请参阅 [Set-DevTestLabGateway.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) 的示例 PowerShell 脚本设置 **网关主机名** 和 **网关令牌机密** 设置。 [Azure 开发测试实验室 GitHub 存储库](https://github.com/Azure/azure-devtestlab)还提供 azure 资源管理器模板，该模板使用**网关主机名**和**网关令牌机密**设置创建或更新实验室。
+如果首选通过自动化配置实验室，请参阅 [Set-DevTestLabGateway.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) 的示例 PowerShell 脚本设置 **网关主机名** 和 **网关令牌机密** 设置。 [Azure 开发测试实验室 GitHub 存储库](https://github.com/Azure/azure-devtestlab)还提供 azure 资源管理器模板，该模板使用 **网关主机名** 和 **网关令牌机密** 设置创建或更新实验室。
 
 ## <a name="configure-network-security-group"></a>配置网络安全组
 为了进一步保护实验室，可以将 (NSG) 的网络安全组添加到实验室虚拟机使用的虚拟网络中。 有关如何设置 NSG 的说明，请参阅 [创建、更改或删除网络安全组](../virtual-network/manage-network-security-group.md)。
@@ -117,7 +117,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 3. 下载文件 [https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway) 。
 
     该模板需要访问同一基本 URI 上的一些其他资源管理器模板和相关资源。 将所有文件从 [https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway) 和 RDGatewayFedAuth.msi 复制到存储帐户中的 blob 容器。  
-4. 从 ** 上** 的部署azuredeploy.js[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway) 。 模板采用以下参数：
+4. 从 **上** 的部署azuredeploy.js [https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway) 。 模板采用以下参数：
     - adminUsername –必需。  网关计算机的管理员用户名。
     - adminPassword –必需。 网关计算机的管理员帐户的密码。
     - instanceCount-要创建的网关计算机数。  
@@ -135,7 +135,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
     可以使用以下命令通过 Azure CLI 来部署模板：
 
     ```azurecli
-    az group deployment create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
+    az deployment group create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
     ```
 
     以下是参数的说明：
@@ -150,7 +150,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
     记录模板部署输出中的 gatewayFQDN 和 gatewayIP 的值。 还需要保存新创建函数的 "函数密钥" 的值，该函数可在 " [函数应用设置](../azure-functions/functions-how-to-use-azure-function-app-settings.md) " 选项卡中找到。
 5. 配置 DNS，以便 TLS/SSL 证书的 FQDN 定向到上一步骤中 gatewayIP 的 IP 地址。
 
-    创建远程桌面网关场并进行相应的 DNS 更新后，开发测试实验室中的实验室便可使用它。 **网关主机名**和**网关令牌机密**设置必须配置为使用部署) 的网关计算机 (。 
+    创建远程桌面网关场并进行相应的 DNS 更新后，开发测试实验室中的实验室便可使用它。 **网关主机名** 和 **网关令牌机密** 设置必须配置为使用部署) 的网关计算机 (。 
 
     > [!NOTE]
     > 如果实验室计算机使用专用 Ip，则必须从网关计算机到实验室计算机的网络路径，方法是共享同一虚拟网络或使用对等互连虚拟网络。
