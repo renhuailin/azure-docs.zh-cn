@@ -5,17 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 12/14/2020
+ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60bfac3b80e772e7b359b1e926d5fb84e447a8fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: d6d5ab13c8997dffee42a053ba498376ccbcb6d8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89270679"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585252"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>向 Azure Active Directory B2C 中的用户流添加条件访问
 
@@ -35,10 +37,26 @@ ms.locfileid: "89270679"
 
 详细了解 Azure AD B2C 中的[标识保护和条件访问](conditional-access-identity-protection-overview.md)或了解[如何进行相关设置](conditional-access-identity-protection-setup.md)。
 
+## <a name="prerequisites"></a>先决条件
+
+- 创建风险登录策略需要 Azure AD B2C Premium 2。 Premium P1 租户可创建位置、应用或基于组的策略。
+- 出于测试目的，可[注册测试 Web 应用程序](tutorial-register-applications.md) `https://jwt.ms`，这是 Microsoft 拥有的 Web 应用，用于显示令牌的已解码内容（令牌的内容绝不会离开浏览器）。 
+- 若要模拟风险登录，请下载 TOR 浏览器并尝试登录到用户流终结点。
+- 使用以下设置[创建条件访问策略](conditional-access-identity-protection-setup.md)：
+   
+  - 对于“用户和组”，请选择测试用户（不要选择“所有用户”，否则将无法登录） 。
+  - 对于“云应用或操作”，选择“选择应用”，然后选择依赖方应用程序 。
+  - 对于“条件”，选择“登录风险”以及“高”、“中”和“低”风险级别   。
+  - 对于“授权”，选择“阻止访问” 。
+
+      ![风险检测](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
+
+::: zone pivot="b2c-user-flow"
+
 ## <a name="add-conditional-access-to-a-new-user-flow"></a>向新用户流添加条件访问
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在“策略”下，依次选择“用户流”、“新建用户流”。
 1. 在“创建用户流”页上，选择用户流类型。
@@ -46,7 +64,7 @@ ms.locfileid: "89270679"
 
     ![在 Azure 门户中创建用户流页面（其中，属性突出显示）](./media/tutorial-create-user-flows/select-version.png)
 
-1. 输入该用户流的**名称**。 例如 *signupsignin1*。
+1. 输入该用户流的 **名称**。 例如 *signupsignin1*。
 1. 在“标识提供者”部分中，选择要允许此用户流使用的标识提供者。
 2. 在“多重身份验证”部分中，选择所需的“MFA 方法”，然后在“MFA 强制执行”下选择“条件(推荐)”   。
  
@@ -69,7 +87,7 @@ ms.locfileid: "89270679"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 
@@ -89,19 +107,6 @@ ms.locfileid: "89270679"
 
 若要在用户流中测试条件访问，请[创建条件访问策略](conditional-access-identity-protection-setup.md)，并在用户流中启用条件访问，如上所述。 
 
-### <a name="prerequisites"></a>先决条件
-
-- 创建风险登录策略需要 Azure AD B2C Premium 2。 Premium P1 租户可创建位置、应用或基于组的策略。
-- 出于测试目的，可[注册测试 Web 应用程序](tutorial-register-applications.md) `https://jwt.ms`，这是 Microsoft 拥有的 Web 应用，用于显示令牌的已解码内容（令牌的内容绝不会离开浏览器）。 
-- 若要模拟风险登录，请下载 TOR 浏览器并尝试登录到用户流终结点。
-- 使用以下设置[创建条件访问策略](conditional-access-identity-protection-setup.md)：
-   
-   - 对于“用户和组”，请选择测试用户（不要选择“所有用户”，否则将无法登录） 。
-   - 对于“云应用或操作”，选择“选择应用”，然后选择依赖方应用程序 。
-   - 对于“条件”，选择“登录风险”以及“高”、“中”和“低”风险级别   。
-   - 对于“授权”，选择“阻止访问” 。
-
-      ![风险检测](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
 ### <a name="run-the-user-flow"></a>运行用户流
 
@@ -117,6 +122,16 @@ ms.locfileid: "89270679"
 
    ![测试阻止的登录](media/conditional-access-identity-protection-setup/test-blocked-sign-in.png)
 
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="add-conditional-access-to-your-policy"></a>向策略添加条件访问
+
+可以在 [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access) 上找到条件访问策略的示例。
+
+::: zone-end
+
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure AD B2C 用户流中自定义用户界面](customize-ui-overview.md)
+[在 Azure AD B2C 用户流中自定义用户界面](customize-ui-with-html.md)

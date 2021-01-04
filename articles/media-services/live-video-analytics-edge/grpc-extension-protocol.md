@@ -3,25 +3,29 @@ title: gRPC 扩展协议 - Azure
 description: 在本文中，你将学习如何使用 gRPC 扩展协议在实时视频分析模块与 AI 或 CV 自定义扩展之间发送消息。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 288dcd1a11c7c42d8796d3b17f2bfd56f562aaf1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7f21ff358b8dd5ac540de8c39c37c52e98977e59
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89448039"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401621"
 ---
 # <a name="grpc-extension-protocol"></a>gRPC 扩展协议
 
+使用 IoT Edge 上的实时视频分析，可以通过[图形扩展节点](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/media-graph-extension-concept?branch=release-lva-dec-update)扩展媒体图处理功能。 如果使用 gRPC 扩展处理器作为扩展节点，则实时视频分析模块与 AI 或 CV 模块之间的通信是通过基于 gRPC 的高性能结构化协议进行的。
+
 在本文中，你将学习如何使用 gRPC 扩展协议在实时视频分析模块与 AI 或 CV 自定义扩展之间发送消息。
 
-gRPC 是一种新式的高性能开源 RPC 框架，可在任何环境中运行。 gRPC 传输服务在以下两者之间使用 HTTP/2 双向流式传输：
+gRPC 是一种新式的开放源代码高性能 RPC 框架，可在任何环境中运行且支持跨平台和跨语言的通信。 gRPC 传输服务在以下两者之间使用 HTTP/2 双向流式传输：
 
 * gRPC 客户端（IoT Edge 上的实时视频分析模块）与 
 * gRPC 服务器（自定义扩展）。
 
 gRPC 会话是通过 TCP/TLS 端口从 gRPC 客户端到 gRPC 服务器的单一连接。 
 
-在单个会话中：客户端通过 gRPC 流会话将媒体流描述符（后跟视频帧）作为 [protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) 消息发送到服务器。 服务器验证流描述符、分析视频帧，并将推理结果作为 protobuf 消息返回。
+在单个会话中：客户端通过 gRPC 流会话将媒体流描述符（后跟视频帧）作为 [protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) 消息发送到服务器。 服务器验证流描述符、分析视频帧，并将推理结果作为 protobuf 消息返回。 
+
+强烈建议使用有效的 JSON 文档返回响应，并采用按照[推理元数据架构对象模型](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update)定义的预建立架构。 这可以更好地确保与其他组件的互操作性，以及与未来可能添加到实时视频分析模块的功能的互操作性。
 
 ![gRPC 扩展协定](./media/grpc-extension-protocol/grpc.png)
 
@@ -32,9 +36,10 @@ gRPC 会话是通过 TCP/TLS 端口从 gRPC 客户端到 gRPC 服务器的单一
 自定义扩展插件必须实现以下 gRPC 服务：
 
 ```
-service MediaGraphExtension {
-  rpc ProcessMediaStream(stream MediaStreamMessage) returns (stream MediaStreamMessage);
-}
+service MediaGraphExtension
+    {
+        rpc ProcessMediaStream(stream MediaStreamMessage) returns (stream MediaStreamMessage);
+    }
 ```
 
 调用时，将打开双向流，以便消息在 gRPC 扩展和实时视频分析图之间流动。 每个参与方在此流中发送的第一条消息都将包含一个 MediaStreamDescriptor，它定义将在后面的 MediaSample 中发送的具体信息。
@@ -45,18 +50,23 @@ service MediaGraphExtension {
  {
     "sequence_number": 1,
     "ack_sequence_number": 0,
-    "media_stream_descriptor": {
-        "graph_identifier": {
+    "media_stream_descriptor": 
+    {
+        "graph_identifier": 
+        {
             "media_services_arm_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/microsoft.media/mediaservices/mediaAccountName",
             "graph_instance_name": "mediaGraphName",
             "graph_node_name": "grpcExtension"
         },
-        "media_descriptor": {
+        "media_descriptor": 
+        {
             "timescale": 90000,
-            "video_frame_sample_format": {
+            "video_frame_sample_format": 
+            {
                 "encoding": "RAW",
                 "pixel_format": "RGB24",
-                "dimensions": {
+                "dimensions": 
+                {
                     "width": 416,
                     "height": 416
                 },
@@ -73,13 +83,17 @@ service MediaGraphExtension {
 {
     "sequence_number": 1,
     "ack_sequence_number": 1,
-    "media_stream_descriptor": {
-        "extension_identifier": "customExtensionName"    }
+    "media_stream_descriptor": 
+    {
+        "extension_identifier": "customExtensionName"    
+    }
 }
 ```
 
 现在双方已交换媒体描述符，接下来实时视频分析将开始将帧传输到该扩展。
 
+> [!NOTE]
+> 可以使用所选的编程语言来实现 gRPC 服务器端。
 ### <a name="sequence-numbers"></a>序列号
 
 gRPC 扩展节点和自定义扩展都将保留一组各自分配给其消息的序列号。 这些序列号应从 1 开始单调递增。 如果未确认任何消息，则可忽略 `ack_sequence_number`，发送第一条消息时可能会发生此情况。
@@ -106,7 +120,8 @@ gRPC 扩展节点和自定义扩展都将保留一组各自分配给其消息的
 ```
 {
     "timestamp": 143598615750000,
-    "content_reference": {
+    "content_reference": 
+    {
         "address_offset": 519168,
         "length_bytes": 173056
     }
@@ -123,25 +138,27 @@ gRPC 扩展节点和自定义扩展都将保留一组各自分配给其消息的
 下面是使用上述第一个选项时，设备孪生中可能呈现的内容。
 
 ```
-"liveVideoAnalytics": {
+"liveVideoAnalytics": 
+{
   "version": "1.0",
   "type": "docker",
   "status": "running",
   "restartPolicy": "always",
-  "settings": {
+  "settings": 
+  {
     "image": "mcr.microsoft.com/media/live-video-analytics:1",
     "createOptions": 
-      "HostConfig": {
+      "HostConfig": 
+      {
         "IpcMode": "host"
       }
-    }
   }
 }
 ```
 
 有关 IPC 模式的详细信息，请参阅 https://docs.docker.com/engine/reference/run/#ipc-settings---ipc 。
 
-## <a name="media-graph-grpc-extension-contract-definitions"></a>媒体图 gRPC 扩展协定定义
+## <a name="mediagraph-grpc-extension-contract-definitions"></a>媒体图 gRPC 扩展协定定义
 
 本部分定义可定义数据流的 gRPC 协定。
 
@@ -159,10 +176,12 @@ gRPC 扩展节点和自定义扩展都将保留一组各自分配给其消息的
 {
   "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
   "name": "{moduleIdentifier}",
-  "endpoint": {
+  "endpoint": 
+  {
     "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
     "url": "tcp://customExtension:8081",
-    "credentials": {
+    "credentials": 
+    {
       "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
       "username": "username",
       "password": "password"
@@ -175,6 +194,35 @@ gRPC 扩展节点和自定义扩展都将保留一组各自分配给其消息的
 发送 gRPC 请求时，以下标头将包含在请求元数据中，模仿 HTTP 基本身份验证。
 
 `x-ms-authentication: Basic (Base64 Encoded username:password)`
+
+
+## <a name="configuring-inference-server-for-each-mediagraph-over-grpc-extension"></a>通过 gRPC 扩展为每个媒体图配置推理服务器
+配置推理服务器时，无需为推理服务器中打包的每个 AI 模型公开节点。 相反，对于图实例，可以使用 `MediaGraphGrpcExtension` 节点的 `extensionConfiguration` 属性并定义如何选择 AI 模型。 在执行期间，LVA 会将这个字符串传递给推理服务器，推理服务器可以使用它来调用所需的 AI 模型。 此 `extensionConfiguration` 属性是可选属性，并且特定于服务器。 该属性的用法如下：
+```
+{
+  "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
+  "name": "{moduleIdentifier}",
+  "endpoint": 
+  {
+    "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+    "url": "${grpcExtensionAddress}",
+    "credentials": 
+    {
+      "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+      "username": "${grpcExtensionUserName}",
+      "password": "${grpcExtensionPassword}"
+    }
+  },
+    // Optional server configuration string. This is server specific 
+  "extensionConfiguration": "{Optional extension specific string}",
+  "dataTransfer": 
+  {
+    "mode": "sharedMemory",
+    "SharedMemorySizeMiB": "5"
+  }
+    //Other fields omitted
+}
+```
 
 ## <a name="using-grpc-over-tls"></a>通过 TLS 使用 gRPC
 

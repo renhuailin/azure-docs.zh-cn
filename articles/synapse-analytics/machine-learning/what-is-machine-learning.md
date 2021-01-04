@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 20f095a058434c36373c30ed2a633db12643814d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 906d3d28aabf8f6ecd6e04c38b4519937fa95c2b
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448270"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092153"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的机器学习功能
 
@@ -62,9 +62,9 @@ Azure Synapse Analytics 提供了各种机器学习功能。 本文概述了如�
 
 除了 MLlib 之外，还可以使用 [Scikit Learn](https://scikit-learn.org/stable/) 等常用库来开发模型。 请参阅[在 Azure Synapse Analytics 中管理 Apache Spark 的库](../spark/apache-spark-azure-portal-add-libraries.md)，详细了解如何在 Synapse Spark 池中安装库。
 
-#### <a name="train-models-with-azure-machine-learning-automl"></a>使用 Azure 机器学习 AutoML 来训练模型
+#### <a name="train-models-with-azure-machine-learning-automated-ml"></a>使用 Azure 机器学习自动化 ML 来训练模型
 
-训练机器学习模型的另一种方法是使用 AutoML，这不需要花太多时间事先熟悉机器学习。 [AutoML](/azure/machine-learning/concept-automated-ml) 是一项可自动训练一组机器学习模型的功能，允许用户根据特定指标选择最佳模型。 借助从 Azure Synapse Notebooks 与 Azure 机器学习进行的无缝集成，用户可以轻松地在 Synapse 中通过直通 Azure Active Directory 身份验证来利用 AutoML。  这意味着你只需指向 Azure 机器学习工作区，无需输入任何凭据。 这是一个 [AutoML 教程](../spark/apache-spark-azure-machine-learning-tutorial.md)，介绍了如何在 Synapse Spark 池中使用 Azure 机器学习 AutoML 来训练模型。
+训练机器学习模型的另一种方法是使用自动化 ML，这不需要花太多时间事先熟悉机器学习。 [自动化 ML](/azure/machine-learning/concept-automated-ml) 是一项可自动训练一组机器学习模型的功能，允许用户根据特定指标选择最佳模型。 借助从 Azure Synapse Notebooks 与 Azure 机器学习进行的无缝集成，用户可以轻松地在 Synapse 中通过 Azure Active Directory 传递身份验证来利用自动化 ML。  这意味着你只需指向 Azure 机器学习工作区，无需输入任何凭据。 这是一个[自动化 ML 教程](../spark/apache-spark-azure-machine-learning-tutorial.md)，介绍了如何在 Synapse Spark 池中使用 Azure 机器学习自动化 ML 来训练模型。
 
 ### <a name="model-deployment-and-scoring"></a>模型部署和评分
 

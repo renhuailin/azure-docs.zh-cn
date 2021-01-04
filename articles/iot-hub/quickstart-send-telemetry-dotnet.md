@@ -14,18 +14,18 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: 21410f7137a76b43f57ca7a1e037908410eae365
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e4c87d8579b06cdfb37c1635a25db5ce67aa3545
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844516"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094788"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序 (.NET) 读取该数据
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用服务应用程序 (.NET) 读取该数据
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引入云中进行存储或处理。 本快速入门会将模拟设备应用程序的遥测数据通过 IoT 中心发送到后端应用程序进行处理。
+IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引入云中进行存储或处理。 本快速入门会将模拟设备应用程序的遥测数据通过 IoT 中心发送到服务应用程序进行处理。
 
 本快速入门使用两个预先编写的 C# 应用程序，一个用于发送遥测数据，一个用于从中心读取遥测数据。 运行这两个应用程序前，请先创建 IoT 中心并在中心注册设备。
 
@@ -33,7 +33,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 本快速入门中运行的两个示例应用程序是使用 C# 编写的。 开发计算机上需要有 .NET Core SDK 3.0 或更高版本。
+* 本快速入门中运行的两个示例应用程序是使用 C# 编写的。 开发计算机上需要有 .NET Core SDK 3.1 或更高版本。
 
     可以从 [.NET](https://www.microsoft.com/net/download/all) 为多个平台下载 .NET Core SDK。
 
@@ -44,7 +44,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
     ```
 
     > [!NOTE]
-    > 在此快速入门中，建议使用 .NET Core SDK 3.0 或更高版本来编译用于读取遥测的事件中心服务代码。 如果你按照[从中心读取遥测](#read-the-telemetry-from-your-hub)一节中所述，将服务代码的语言版本设置为预览，则可使用 .NET Core SDK 2.1。
+    > 在此快速入门中，建议使用 .NET Core SDK 3.1 或更高版本来编译用于读取遥测的事件中心服务代码。
 
 
 * 从 [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) 下载 Azure IoT C# 示例，并提取 ZIP 存档。
@@ -87,7 +87,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
     稍后会在快速入门中用到此值。
 
-3. 还需要使用与事件中心兼容的终结点、与事件中心兼容的路径和 IoT 中心的服务主密钥，确保后端应用程序能连接到 IoT 中心并检索消息  。 以下命令可检索 IoT 中心的这些值：
+3. 还需要使用来自 IoT 中心的与事件中心兼容的终结点、与事件中心兼容的路径和服务主密钥，确保服务应用程序能连接到 IoT 中心并检索消息  。 以下命令可检索 IoT 中心的这些值：
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
@@ -105,22 +105,18 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 模拟设备应用程序会连接到 IoT 中心上特定于设备的终结点，并发送模拟的温度和湿度遥测数据。
 
-1. 在本地终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device** 文件夹。
+1. 在本地终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\SimulatedDevice 文件夹。
 
-2. 在所选文本编辑器中打开 SimulatedDevice.cs 文件。
-
-    将 `s_connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 **SimulatedDevice.cs**。
-
-3. 在本地终端窗口中，运行以下命令以安装模拟设备应用程序所需的包：
+2. 在本地终端窗口中，运行以下命令以安装模拟设备应用程序所需的包：
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. 在本地终端窗口中，运行以下命令，生成并运行模拟设备应用程序：
+3. 在本地终端窗口中，运行以下命令，使用之前记录的设备连接字符串生成并运行模拟设备应用程序：
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {DeviceConnectionString}
     ```
 
     以下屏幕截图显示了模拟设备应用程序将遥测数据发送到 IoT 中心后的输出：
@@ -129,36 +125,37 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-后端应用程序会连接到 IoT 中心上的服务端“事件”终结点。 应用程序会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
+服务应用程序会连接到 IoT 中心上的服务端“事件”终结点。 应用程序会接收模拟设备发送的设备到云的消息。 IoT 中心服务应用程序通常在云中运行，接收和处理设备到云的消息。
 
-1. 在另一本地终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\read-d2c-messages 文件夹。
+1. 在另一本地终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\ReadD2cMessages 文件夹。
 
-2. 在所选文本编辑器中打开 ReadDeviceToCloudMessages.cs 文件。 更新以下变量并保存对文件所做的更改。
-
-    | 变量 | 值 |
-    | -------- | ----------- |
-    | `EventHubsCompatibleEndpoint` | 将变量的值替换为之前记下的与事件中心兼容的终结点。 |
-    | `EventHubName`                | 将变量的值替换为之前记下的与事件中心兼容的路径。 |
-    | `IotHubSasKey`                | 将变量的值替换为之前记下的服务主密钥。 |
-
-    > [!NOTE]
-    > 如果你使用 .NET Core SDK 2.1，则必须将语言版本设置为预览以编译代码。 为此，请打开 read-d2c-messages.csproj 文件，并将 `<LangVersion>` 元素的值设置为 `preview`。
-
-3. 在本地终端窗口中，运行以下命令，安装后端应用程序所需的库：
+2. 在本地终端窗口中，运行以下命令，安装服务应用程序所需的库：
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. 在本地终端窗口中，运行以下命令，生成并运行后端应用程序：
+3. 在本地终端窗口中，运行以下命令，查看参数选项。
 
     ```cmd/sh
     dotnet run
     ```
 
-    以下屏幕截图显示了后端应用程序接收模拟设备发送到 IoT 中心的遥测数据后的输出：
+4. 在本地终端窗口中，运行以下命令之一，使用以下内容生成并运行应用程序：
 
-    ![运行后端应用程序](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
+    ```cmd/sh
+    dotnet run -- -c {EventHubConnectionString}
+    ```
+
+    或
+
+    ```cmd/sh
+    dotnet run -- -e {EventHubCompatibleEndpoint} -n {EventHubName} -s {SharedAccessKey}
+    ```
+
+    以下屏幕截图显示了服务应用程序接收模拟设备发送到 IoT 中心的遥测数据后的输出：
+
+    ![运行服务应用程序](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -166,9 +163,9 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门设置了 IoT 中心、注册了设备、使用 C# 应用程序发送了模拟遥测数据到中心，并使用简单的后端应用程序读取中心的遥测数据。
+在本快速入门中，你设置了 IoT 中心、注册了设备、使用 C# 应用程序发送了模拟遥测数据到中心，并使用简单的服务应用程序读取中心的遥测数据。
 
-若要了解如何从后端应用程序控制模拟设备，请继续阅读下一快速入门教程。
+若要了解如何从服务应用程序控制模拟设备，请继续阅读下一快速入门教程。
 
 > [!div class="nextstepaction"]
 > [快速入门：控制连接到 IoT 中心的设备](quickstart-control-device-dotnet.md)

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 031ee9a6d945d923279fd3025c32212c3ead98ed
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: c1d448fe9da72654ac1600009e66c88c5e7b93b4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95406593"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509421"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教程：生成使用 Microsoft 标识平台的多租户守护程序
 
@@ -65,7 +65,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 本示例包含一个项目。 若要向 Azure AD 租户注册应用程序，可以：
 
-- 遵循[将示例注册到 Azure Active Directory 租户](#register-your-application)和[将示例配置为使用 Azure AD 租户](#choose-the-azure-ad-tenant)中的步骤。
+- 遵循[将示例注册到 Azure Active Directory 租户](#register-the-client-app-dotnet-web-daemon-v2)和[将示例配置为使用 Azure AD 租户](#choose-the-azure-ad-tenant)中的步骤。
 - 使用可执行以下操作的 PowerShell 脚本：
   - 自动创建 Azure AD 应用程序和相关对象（密码、权限、依赖项）。
   - 修改 Visual Studio 项目的配置文件。
@@ -93,40 +93,34 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="choose-the-azure-ad-tenant"></a>选择 Azure AD 租户
 
-1. 使用工作或学校帐户或者个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 如果帐户位于多个 Azure AD 租户中，请在页面顶部的菜单中选择你的个人资料，然后选择“切换目录”。
-1. 将门户会话更改为所需的 Azure AD 租户。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+
 
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>注册客户端应用 (dotnet-web-daemon-v2)
 
-1. 转到面向开发人员的 Microsoft 标识平台中的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
-1. 选择“新注册”。
-1. “注册应用程序”页出现后，请输入应用程序的注册信息：
-   - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称。 例如，输入 **dotnet-web-daemon-v2**。
-   - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。 
-   - 在“重定向 URI (可选)”部分的组合框中选择“Web”，然后输入以下重定向 URI： 
-       - **https://localhost:44316/**
-       - **https://localhost:44316/Account/GrantPermissions**
+1. 搜索并选择“Azure Active Directory”  。
+1. 在“管理”下，选择“应用注册” > “新建注册”  。
+1. 输入应用程序的名称（例如 `dotnet-web-daemon-v2`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+1. 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。 
+1. 在“重定向 URI (可选)”部分的组合框中选择“Web”，然后输入以下重定向 URI：`https://localhost:44316/` 和 `https://localhost:44316/Account/GrantPermissions` 。
 
-     如果有两个以上的重定向 URI，则需要在成功创建应用后，从“身份验证”选项卡中添加这些 URI。
+    如果有两个以上的重定向 URI，则需要在成功创建应用后，从“身份验证”选项卡中添加这些 URI。
 1. 选择“注册”以创建应用程序。
-1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值供稍后使用。  稍后需要使用它为此项目配置 Visual Studio 配置文件。
-1. 在应用的页面列表中，选择“身份验证”。 然后：
-   - 在“高级设置”部分，将“注销 URL”设置为 **https://localhost:44316/Account/EndSession** 。 
-   - 在“高级设置” > “隐式授权”部分，选择“访问令牌”和“ID 令牌”。    本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)，使用户能够登录并调用 API。
+1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用 。 稍后需要使用它为此项目配置 Visual Studio 配置文件。
+1. 在“管理”下，选择“身份验证”。 
+1. 将“注销 URL”设置为 `https://localhost:44316/Account/EndSession`。
+1. 在“隐式授权”部分中，选择“访问令牌”和“ID 令牌”  。 本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)，使用户能够登录并调用 API。
 1. 选择“保存”。
-1. 在“证书和机密”页上的“客户端机密”部分选择“新建客户端机密”。   然后：
-
-   1. 输入密钥说明（例如“应用机密”）。
-   1. 选择密钥持续时间（“1 年”、“2 年”或“永不过期”）  。
-   1. 选择“添加”按钮。
-   1. 显示密钥值后，请将其复制并保存到安全位置。 稍后将需要此密钥来配置 Visual Studio 中的项目。 此密钥以后不再显示，也无法通过任何其他方式检索它。
-1. 在应用的页面列表中，选择“API 权限”。 然后：
-   1. 选择“添加权限”按钮。
-   1. 确保已选择“Microsoft API”选项卡。
-   1. 在“常用 Microsoft API”部分，选择“Microsoft Graph”。 
-   1. 在“应用程序权限”部分，确保已选择适当的权限： **User.Read.All**。
-   1. 选择“添加权限”按钮。
+1. 在“管理”下，选择“证书和机密”。  
+1. 在“客户端密码”部分中，选择“新建客户端密码” 。 
+1. 输入密钥说明（例如“应用机密”）。
+1. 选择密钥持续时间（“1 年”、“2 年”或“永不过期”）  。
+1. 选择 **添加** 。 将密钥值记录在安全的位置。 稍后将需要此密钥来配置 Visual Studio 中的项目。
+1. 在“管理”下，选择“API 权限” > “添加权限”  。
+1. 在“常用 Microsoft API”部分，选择“Microsoft Graph”。 
+1. 在“应用程序权限”部分，确保已选择适当的权限： **User.Read.All**。
+1. 选择“添加权限”。
 
 ## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>将示例配置为使用 Azure AD 租户
 
@@ -222,7 +216,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
    1. 在解决方案资源管理器中右键单击该项目，然后选择“发布”。
    1. 在底部栏上选择“导入配置文件”，然后导入先前下载的发布配置文件。
 1. 选择“配置” 。
-1. 在“连接”选项卡上更新目标 URL，使其使用“https”。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。 选择“**下一步**”。
+1. 在“连接”选项卡上更新目标 URL，使其使用“https”。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。 选择“**下一页**”。
 1. 在“设置”选项卡上，确保已清除“启用组织身份验证”。 
 1. 选择“保存”。 在主屏幕上选择“发布”。
 

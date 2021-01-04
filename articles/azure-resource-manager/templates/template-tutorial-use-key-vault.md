@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ae2361d12dfe18cadd80dd3b84405b2b17751e59
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929310"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584079"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>教程：在 ARM 模板部署中集成 Azure Key Vault
 
@@ -43,6 +43,7 @@ ms.locfileid: "96929310"
     ```console
     openssl rand -base64 32
     ```
+
     验证生成的密码是否符合 VM 密码要求。 每个 Azure 服务具有特定的密码要求。 有关 VM 密码要求，请参阅[创建 VM 时，密码有什么要求？](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
 
 ## <a name="prepare-a-key-vault"></a>准备 Key Vault
@@ -53,7 +54,7 @@ ms.locfileid: "96929310"
 * 将密钥添加到密钥保管库。 该密钥存储 VM 管理员密码。
 
 > [!NOTE]
-> 如果你（作为要部署虚拟机模板的用户）不是密钥保管库的所有者或参与者，则密钥保管库的所有者或参与者必须向你授予对密钥保管库的 Microsoft.KeyVault/vaults/deploy/action 的访问权限。 有关详细信息，请参阅[在部署过程中使用 Azure 密钥保管库传递安全参数值](./key-vault-parameter.md)。
+> 如果你（作为要部署虚拟机模板的用户）不是密钥保管库的所有者或参与者，则密钥保管库的所有者或参与者必须向你授予对密钥保管库的 `Microsoft.KeyVault/vaults/deploy/action` 的访问权限。 有关详细信息，请参阅[在部署过程中使用 Azure 密钥保管库传递安全参数值](./key-vault-parameter.md)。
 
 若要运行以下 Azure PowerShell 脚本，请选择“试用”以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell 窗格，然后选择“粘贴”。
 
@@ -79,7 +80,7 @@ Write-Host "Press [ENTER] to continue ..."
 > * 密钥的默认名称为 vmAdminPassword。 该名称已在模板中硬编码。
 > * 要使模板能够检索机密，必须为密钥保管库启用名为“启用对 Azure 资源管理器的访问以部署模板”的访问策略。 在模板中启用此策略。 有关此访问策略的详细信息，请参阅[部署密钥保管库和机密](./key-vault-parameter.md#deploy-key-vaults-and-secrets)。
 
-模板有一个名为 keyVaultId 的输出值。 在本教程中稍后将使用此 ID 和机密名称来检索机密值。 资源 ID 格式为：
+模板有一个名为 `keyVaultId` 的输出值。 在本教程中稍后将使用此 ID 和机密名称来检索机密值。 资源 ID 格式为：
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -87,7 +88,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 复制并粘贴 ID 时，此 ID 可能会拆分成多个行。 合并这些行并裁剪掉额外的空格。
 
-若要对部署进行验证，请在同一 shell 窗格中运行以下 PowerShell 命令，以明文形式检索机密。 此命令只能在同一 shell 会话中使用，因为它使用在先前 PowerShell 脚本中定义的变量 $keyVaultName。
+若要对部署进行验证，请在同一 shell 窗格中运行以下 PowerShell 命令，以明文形式检索机密。 此命令只能在同一 shell 会话中使用，因为它使用在先前 PowerShell 脚本中定义的变量 `$keyVaultName`。
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
@@ -146,14 +147,14 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
     ```
 
     > [!IMPORTANT]
-    > 将“id”值替换为你在上一过程中创建的密钥保管库的资源 ID。 secretName 将硬编码为“vmAdminPassword”。  请参阅[准备密钥保管库](#prepare-a-key-vault)。
+    > 将 `id` 值替换为你在上一过程中创建的密钥保管库的资源 ID。 `secretName` 将硬编码为“vmAdminPassword”。  请参阅[准备密钥保管库](#prepare-a-key-vault)。
 
     ![集成密钥保管库和资源管理器模板虚拟机部署参数文件](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
 1. 请更新以下值：
 
-    * adminUsername：虚拟机管理员帐户的名称。
-    * dnsLabelPrefix：为 dnsLabelPrefix 值命名。
+    * `adminUsername`：虚拟机管理员帐户的名称。
+    * `dnsLabelPrefix`：命名 `dnsLabelPrefix` 值。
 
     有关名称的示例，请参阅前面的图像。
 
@@ -167,7 +168,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 
     ![Azure 门户 - Cloud Shell - 上传文件](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. 依次选择“上传/下载文件”、“上传”。  将 azuredeploy.json 和 azuredeploy.parameters.json 都上传到 Cloud Shell。 上传文件后，可以使用 ls 命令和 cat 命令验证文件是否已成功上传。
+1. 依次选择“上传/下载文件”、“上传”。  将 azuredeploy.json 和 azuredeploy.parameters.json 都上传到 Cloud Shell。 上传文件后，可以使用 `ls` 命令和 `cat` 命令验证文件是否已成功上传。
 
 1. 运行以下 PowerShell 脚本以部署该模板。
 

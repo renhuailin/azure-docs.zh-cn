@@ -3,15 +3,15 @@ title: Windows 虚拟桌面主机池服务更新 - Azure
 description: 如何创建验证主机池以在将更新推广到生产之前监视服务更新。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 03/13/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8eb8378480b8784939e3ab63327e73e3705c74a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead4c0aa7d8d71642fd8a4635edbabcafee5b6c2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526504"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563239"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教程：创建主机池以验证服务更新
 
@@ -66,6 +66,20 @@ cmdlet 的结果应类似于以下输出：
     LoadBalancerType    : BreadthFirst
     ValidationEnvironment : True
 ```
+
+## <a name="enable-your-validation-environment-with-the-azure-portal"></a>使用 Azure 门户启用验证环境
+
+还可以使用 Azure 门户来启用验证环境。
+
+使用 Azure 门户配置验证主机池：
+
+1. 通过 <https://portal.azure.com> 登录到 Azure 门户。
+2. 搜索并选择“Windows 虚拟桌面”  。
+3. 在“Windows 虚拟桌面”页中，选择“主机池”。
+4. 选择要编辑的主机池的名称。
+5. 选择“属性”。
+6. 在“验证环境”字段中，选择“是”，启用验证环境。
+7. 选择“保存”。 这将应用新设置。
 
 ## <a name="update-schedule"></a>更新计划
 

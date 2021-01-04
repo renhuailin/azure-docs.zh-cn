@@ -72,6 +72,8 @@
       items:
         - name: 通过 Azure 门户控制 Azure HANA 大型实例
           href: hana-li-portal.md
+        - name: 通过 Azure 门户管理 BareMetal 实例
+          href: baremetal-infrastructure-portal.md
         - name: 使用 STONITH 进行 HA 设置
           href: ha-setup-with-stonith.md
         - name: 类型 II SKU 的 OS 备份

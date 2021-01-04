@@ -1,24 +1,24 @@
 ---
-title: 了解 Azure 中企业的管理员角色
+title: 了解 Azure 中企业协议 (EA) 的管理员角色
 description: 了解 Azure 中的企业管理员角色。 可以分配五个不同的管理角色。
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/10/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: e712b44f22a8080b14a2cc2532cadf2dd4738b76
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: e8420f68fba40ddb61d06770f9f5bc2fafe5616a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409190"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560519"
 ---
-# <a name="managing-azure-enterprise-roles"></a>管理 Azure 企业角色
+# <a name="managing-azure-enterprise-agreement-roles"></a>管理 Azure 企业协议角色
 
-签署了企业协议 (EA) 的 Azure 客户可以分配五个不同的管理角色，协助管理组织的使用情况和开支：
+签署了企业协议的 Azure 客户可以分配五个不同的管理角色，协助管理组织的使用情况和开支：
 
 - 企业管理员
 - 企业管理员（只读）<sup>1</sup>
@@ -82,6 +82,8 @@ Azure Enterprise 门户的层次结构包括：
 - 管理通知联系人。
 - 查看所有帐户的使用情况。
 - 查看所有帐户的未开单费用。
+- 查看并管理企业协议适用的所有预留订单和预留。
+  - 企业管理员（只读）可以查看预留订单和预留。 他们不能对其进行管理。
 
 可以在一个企业注册中分配多个企业管理员。 可以向企业管理员授予只读访问权限。 这些管理员全部继承部门管理员角色。
 

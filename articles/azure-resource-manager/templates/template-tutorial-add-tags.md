@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 4084508202fc7db5280d34c157552fe723b1dfba
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 625a88c0ee946b1ca67737d9cc67b638699d12f0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930936"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106996"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>教程：在 ARM 模板中添加标记
 
@@ -43,7 +43,7 @@ ms.locfileid: "96930936"
 
 可以部署模板并查看结果了。
 
-如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据 [第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
+如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 `templateFile` 变量设置为模板文件的路径。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -72,7 +72,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失败，请使用“详细”开关获取有关正在创建的资源的信息。 使用“调试”开关获取调试的详细信息。
+> 如果部署失败，请使用 `verbose` 开关获取有关正在创建的资源的信息。 使用 `debug` 开关获取调试的详细信息。
 
 ## <a name="verify-deployment"></a>验证部署
 

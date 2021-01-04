@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 73f5968f02e0f348c82d83b5b82d67748b4c3586
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b0cdfd76ed5e7ae20800b52e6074809de12a8b5f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455334"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031464"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Confluence SAML SSO by Microsoft 集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "92455334"
 
 - Confluence：5.0 到 5.10
 - Confluence：6.0.1 到 6.15.9
-- Confluence：7.0.1 到 7.7.2
+- Confluence：7.0.1 到 7.9.3
 
 > [!NOTE]
 > 请注意，Confluence 插件还适用于 Ubuntu 版本 16.04
@@ -176,7 +176,7 @@ ms.locfileid: "92455334"
 
     ![显示“server.xml”文件的屏幕截图，其中属性已添加到“连接器”端口。](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
 
-    b. 根据代理/负载均衡器，在 **系统设置** 中更改 **基本 URL** 。
+    b. 根据代理/负载均衡器，在 **系统设置** 中更改 **基本 URL**。
 
     ![显示“管理 -设置”页的屏幕截图，其中突出显示了“基本 URL”。](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
 

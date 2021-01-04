@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 256685e035659cd0fac7fa5577d99f43f4761ea2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ef057b64fa04387d0ebec5a6e5c38f0e06c55a7d
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180572"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368964"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Alibaba Cloud Service (Role-based SSO) 的集成
 
@@ -72,8 +72,8 @@ ms.locfileid: "96180572"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Alibaba Cloud Service (Role-based SSO)”应用程序集成页上，找到“管理”部分，选择“单一登录”。   
-1. 在“选择单一登录方法”页上选择“SAML”   。
+1. 在 Azure 门户中的“阿里云(基于角色的 SSO)”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
@@ -94,7 +94,7 @@ ms.locfileid: "96180572"
     > [!Note]
     > 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。  
 
-1. Alibaba Cloud Service (Role-based SSO) 要求在 Azure AD 中配置角色。 角色声明已预先配置，因此不需配置它，但仍需按照此[文章](../develop/active-directory-enterprise-app-role-management.md)的说明在 Azure AD 中创建它。
+1. Alibaba Cloud Service (Role-based SSO) 要求在 Azure AD 中配置角色。 角色声明已预先配置，因此不需配置它，但仍需按照此[文章](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)的说明在 Azure AD 中创建它。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 

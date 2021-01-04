@@ -1,15 +1,15 @@
 ---
-title: 在云中渲染场景
+title: 教程 - 在云中渲染场景
 description: 教程 - 如何使用 Batch 渲染服务和 Azure 命令行界面通过 Arnold 来渲染 Autodesk 3ds Max 场景
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 579a5446cb199bb73f98e2e1cbb0948f062470a8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e0858e838ba73862ef7f15040915c5f5cd3c751b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542382"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106336"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>教程：使用 Azure Batch 渲染场景 
 
@@ -346,7 +346,7 @@ az group delete --name myResourceGroup
 > * 缩放池并渲染多帧场景
 > * 下载渲染的输出
 
-若要详细了解云规模的渲染，请查看 Batch 渲染服务的选项。 
+若要详细了解云规模的渲染，请参阅批量渲染文档。
 
 > [!div class="nextstepaction"]
 > [Batch Rendering 服务](batch-rendering-service.md)

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8afa769c90c5cf9450343cda1a65809062468fb
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c4c9808813de80beea55e083c5bd80667ae2861f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888685"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033113"
 ---
 # <a name="communication-services-logs"></a>通信服务日志
 
@@ -39,6 +39,7 @@ Azure 通信服务提供的日志记录功能可用于监视和调试通信服�
 * **使用情况日志** - 提供与每个计费服务产品相关联的使用情况数据
 * **聊天操作日志** - 提供与聊天服务相关的基本信息
 * **短信操作日志** - 提供与短信服务相关的基本信息
+* **身份验证操作日志** - 提供与身份验证服务相关的基本信息
 
 ### <a name="usage-logs-schema"></a>使用情况日志架构
 
@@ -100,3 +101,23 @@ Azure 通信服务提供的日志记录功能可用于监视和调试通信服�
 | SdkType | 请求中使用的 SDK 类型。 |
 | PlatformType | 请求中使用的平台类型。 |
 | 方法 | 请求中使用的方法。 |
+
+### <a name="authentication-operational-logs"></a>身份验证操作日志
+
+| properties | 说明 |
+| -------- | ---------------|
+| TimeGenerated | 生成日志的时间戳 (UTC)。 |
+| OperationName | 与日志记录相关联的操作。 |
+| CorrelationID | 关联事件的 ID。 可用于标识多个表之间的关联事件。 |
+| OperationVersion | 如果使用 API 执行 `operationName`，则 `api-version` 与该操作关联。 如果没有与此操作相对应的 API，则该版本表示该操作的版本，以防与操作相关联的属性在将来发生更改。 |
+| 类别 | 事件的日志类别。 类别是可以在特定资源上启用或禁用日志的粒度。 在事件的属性 blob 内显示的属性在特定日志类别和资源类型中相同。 |
+| ResultType | 操作的状态。 |
+| ResultSignature | 操作的子状态。 如果该操作对应于 REST API 调用，则此字段为相应 REST 调用的 HTTP 状态代码。 |
+| DurationMs | 操作持续时间，以毫秒为单位。 |
+| CallerIpAddress | 调用方 IP 地址，前提是该操作对应于来自某个具有公开可用 IP 地址的实体的 API 调用。 |
+| Level | 事件的严重级别。 |
+| URI | 请求的 URI。 |
+| SdkType | 请求中使用的 SDK 类型。 |
+| PlatformType | 请求中使用的平台类型。 |
+| 标识 | 与操作相关的通信服务标识。 |
+| 作用域 | 访问令牌中显示的通信服务范围。 |

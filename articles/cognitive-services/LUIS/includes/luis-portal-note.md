@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: include
 ms.date: 10/16/2020
-ms.openlocfilehash: 5f35547162d5a2fe49320f27e61ad48f3e19d94a
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
-ms.translationtype: MT
+ms.openlocfilehash: 8463b0cd76bec683acb4942d01034616e312cd7b
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368167"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616365"
 ---
 > [!NOTE]
-> 从1月4日开始，将 luis.au 和 luis.eu 门户合并为单个门户和 URL。 如果你使用这些门户之一，你将自动重定向到 [luis.ai](https://luis.ai/)。 你将继续使用你创建的相同区域资源，你的应用程序将继续在你最初选择的同一区域中进行创作。
+> 从 1 月 4 日开始，区域门户（au.luis.ai 和 eu.luis.ai）将合并为一个门户和 URL。 如果你使用的是这些门户之一，则将自动重定向到 [luis.ai](https://luis.ai/)。 你将继续使用你创建的相同区域资源，并且数据将继续在资源所在的区域内保存和处理。

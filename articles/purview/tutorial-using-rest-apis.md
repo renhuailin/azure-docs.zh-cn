@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 7a2e029fbcc1a26da9c8c8cbff5ee3b9bbb849e0
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 06f738ea88093ea8de45efebea983fd7fa13216e
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928267"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387813"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>教程：使用 REST API
 
@@ -113,7 +113,7 @@ ms.locfileid: "96928267"
   * 在左窗格的“管理”部分，选择“属性”，找到“租户 ID”，然后选择“复制到剪贴板”图标以保存其值   。
 * Atlas 终结点：
   * 从 Azure 门户的 [Azure Purview 帐户页面](https://aka.ms/purviewportal)，在列表中找到并选择你的 Azure Purview 帐户。
-  * 选择“概述”，找到“Atlas 终结点”，然后选择“复制到剪贴板”图标以保存其值  。 以后使用该字符串时，请删除其中的 https:// 部分。
+  * 选择“属性”，找到“Atlas 终结点”，然后选择“复制到剪贴板”图标以保存其值  。 以后使用该字符串时，请删除其中的 https:// 部分。
 * 帐户名：
   * 从 Atlas 终结点字符串中提取目录的名称。 例如，如果 Atlas 终结点是 `https://ThisIsMyCatalog.catalog.purview.azure.com`，则帐户名是 `ThisIsMyCatalog`。
 
@@ -199,6 +199,7 @@ namespace PurviewCatalogSdkTest
         {
             Console.WriteLine("Azure Purview client");
 
+            // You need to change the api path below (e.g. /api) based on what you're trying to call
             string baseUri = string.Format("https://{0}.catalog.purview.azure.com/api", accountName);
 
             // Get token and set auth

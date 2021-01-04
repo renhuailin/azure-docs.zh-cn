@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 3ea3c3990a9319a81c841de8a7109850fcab5179
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: d1a3965fef6966f70a829cd66d6ce10a01d7af98
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993901"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030886"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -55,16 +55,17 @@ ms.locfileid: "95993901"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
-> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://aka.ms/MobileAppReg)页。
-> 1. 选择“新注册”。
-> 1. “注册应用程序”页出现后，请输入应用程序的注册信息：
->      - 在“名称”部分输入一个当应用用户登录应用或进行应用许可时会显示给应用用户的有意义的应用程序名称。
->      - 跳过此页上的其他配置。
->      - 选择 `Register`。
-> 1. 在“管理”部分选择 `Authentication` > `Add Platform` > `iOS`。
->      - 输入应用程序的“捆绑标识符”。 捆绑标识符只是一个用于唯一标识应用程序的唯一字符串，例如 `com.<yourname>.identitysample.MSALMacOS`。 记下所用的值。
->      - 请注意，iOS 配置也适用于 macOS 应用程序。
-> 1. 选择 `Configure` 并保存“MSAL 配置”详细信息，供稍后在本快速入门中使用。
+> 1. 登录 [Azure 门户](https://portal.azure.com)。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+> 1. 搜索并选择“Azure Active Directory”  。    
+> 1. 在“管理”下，选择“应用注册” > “新建注册”  。
+> 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+> 1. 选择“注册”  。
+> 1. 在“管理”下，选择“身份验证” > “添加平台” > “iOS”   。
+> 1. 输入应用程序的捆绑包标识符。 捆绑标识符是用于唯一标识应用程序的唯一字符串，例如 `com.<yourname>.identitysample.MSALMacOS`。 记下所用的值。 请注意，iOS 配置也适用于 macOS 应用程序。
+> 1. 选择“配置”并保存“MSAL 配置”详细信息，供稍后在本快速入门中使用 。
+> 1. 选择“完成”。
+
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>步骤 1：配置应用程序
@@ -101,7 +102,7 @@ ms.locfileid: "95993901"
 >#### <a name="step-4-configure-your-project"></a>步骤 4：配置项目
 > 如果选择了上面的“选项 1”，则可跳过这些步骤。
 > 1. 解压缩 zip 文件并在 XCode 中打开该项目。
-> 1. 编辑“ViewController.swift”并将以“let kClientID”开头的行替换为以下代码片段。 记住将 `kClientID` 的值更新为客户端 ID，该 ID 是你在本快速入门的前面部分通过门户注册应用时保存的：
+> 1. 编辑 **ViewController.swift** 并将以“let kClientID”开头的行替换为以下代码片段。 记住将 `kClientID` 的值更新为客户端 ID，该 ID 是你在本快速入门的前面部分通过门户注册应用时保存的：
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```

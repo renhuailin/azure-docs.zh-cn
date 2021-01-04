@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: aa0a001f9c35202939eeb4a7752803b998a3acf7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e85e433e1b1b31470fc8d7dee24353fd719b64e2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562009"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031175"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>快速入门：使用 Microsoft 标识平台保护 ASP.NET Core Web API
 
@@ -38,12 +38,10 @@ ms.locfileid: "94562009"
 > 1. 登录 [Azure 门户](https://portal.azure.com)。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。
-> 1. 在“管理”下，选择“应用注册”，然后选择“新建注册”  。
+> 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的名称（例如 `AspNetCoreWebApi-Quickstart`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 选择“注册”  。
-> 1. 在“管理”下，选择“公开 API” 
-> 1. 选择“添加范围”，并选择“保存并继续”以接受默认的“应用程序 ID URI”  。
-> 1. 在“添加范围”窗格中，输入以下值：
+> 1. 在“管理”下，选择“公开 API” > “添加范围”  。 通过选择“保存并继续”来接受默认的应用程序 ID URI，然后输入以下信息 ：
 >    - **范围名称**：`access_as_user`
 >    - **谁能同意？** ：管理员和用户
 >    - **管理员许可显示名称**：`Access AspNetCoreWebApi-Quickstart`

@@ -1,21 +1,29 @@
 ---
-title: 使用 Azure Functions 触发批处理作业
+title: 教程 - 使用 Azure Functions 触发批处理作业
 description: 教程 - 在扫描文档添加到存储 Blob 时将 OCR 应用于这些文档
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6e481219c6be68f9e9da06d92b6c28998cc7a6e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b441b4c4fcbeb089cef24c3a84fa33021e7840de
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930088"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106376"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>教程：使用 Azure Functions 触发批处理作业
 
-在本教程中，将学习如何使用 Azure Functions 触发批处理作业。 我们将通过一个示例说明如何利用 Azure Batch 向添加到 Azure 存储 Blob 容器的文档应用光学字符识别 (OCR)。 若要简化 OCR 处理，我们可以配置一个 Azure 函数，该函数在每次将文件添加到 Blob 容器时运行批处理 OCR 作业。
+在本教程中，将学习如何使用 [Azure Functions](../azure-functions/functions-overview.md) 触发批处理作业。 我们将通过一个示例说明如何利用 Azure Batch 向添加到 Azure 存储 Blob 容器的文档应用光学字符识别 (OCR)。 若要简化 OCR 处理，我们可以配置一个 Azure 函数，该函数在每次将文件添加到 Blob 容器时运行批处理 OCR 作业。 你将学习如何执行以下操作：
+
+> [!div class="checklist"]
+> * 使用 Batch Explorer 创建池和作业
+> * 使用存储资源管理器创建 Blob 容器和共享访问签名 (SAS)
+> * 创建 Blob 触发的 Azure 函数
+> * 将输入文件上传到存储
+> * 监视任务执行情况
+> * 检索输出文件
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -97,9 +105,13 @@ ms.locfileid: "88930088"
 > [!TIP]
 > 如果在 PDF 阅读器中打开下载的文件，则可以对其进行搜索。
 
+## <a name="clean-up-resources"></a>清理资源
+
+只要有节点在运行，就会对池收费，即使没有计划作业。 不再需要池时，请将其删除。 在帐户视图中，选择“池”和池的名称。 然后选择“删除”。 删除池时会删除节点上的所有任务输出。 但是，输出文件保留在存储帐户中。 当不再需要时，还可以删除 Batch 帐户和存储帐户。
+
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何： 
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Batch Explorer 创建池和作业
@@ -109,6 +121,10 @@ ms.locfileid: "88930088"
 > * 监视任务执行情况
 > * 检索输出文件
 
-* 如需更多示例，以便了解如何使用 .NET API 来计划和处理 Batch 工作负荷，请参阅 [GitHub 上的示例](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)。 
 
-* 若要查看更多可用于运行批处理工作负载的 Azure Functions 触发器，请参阅 [Azure Functions 文档](../azure-functions/functions-triggers-bindings.md)。
+通过 Batch Explorer 在“库”部分浏览可用的渲染应用程序以继续。 每个应用程序都有多个可用的模板，这些模板会随时间而扩展。 例如，Blender 的模板可将单个图像拆分成多个图块，这样就可以并行渲染图像的各个部分。
+
+如需更多示例，以便了解如何使用 .NET API 来计划和处理 Batch 工作负荷，请参阅 GitHub 上的示例。
+
+> [!div class="nextstepaction"]
+> [Batch C# 示例](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)

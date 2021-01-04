@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 86ef610af605c657868824eefe2e6e706f6963ac
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484636"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360165"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>快速入门：使用 Synapse SQL 进行大容量加载
 
@@ -39,26 +39,25 @@ ms.locfileid: "96484636"
 
 ### <a name="steps"></a>步骤
 
-1. 在“源存储位置”面板上选择要从其加载数据的存储帐户以及文件或文件夹。 向导将自动尝试检测 Parquet 文件。 如果无法确认 Parquet 文件类型，则默认情况下将使用带分隔符的文本 (CSV)。
+1. 在“源存储位置”面板上选择要从其加载数据的存储帐户以及文件或文件夹。 向导将自动尝试检测 Parquet 文件以及带分隔符的文本 (CSV) 文件，包括将源字段从文件映射到相应的目标 SQL 数据类型。 
 
    ![选择源位置](./sql/media/bulk-load/bulk-load-source-location.png)
 
-2. 选择文件格式设置，包括要在其中写入被拒绝行（错误文件）的存储帐户。 目前仅支持 CSV 和 Parquet 文件。
+2. 当大容量加载过程中存在拒绝的行时，请选择文件格式设置（包括错误设置）。 也可以选择“预览数据”来了解 COPY 语句如何分析文件，以便帮助你配置文件格式设置。 每次更改文件格式设置时选择“预览数据”，以了解 COPY 语句将如何使用更新的设置来分析文件：
 
-    ![选择文件格式设置](./sql/media/bulk-load/bulk-load-file-format-settings.png)
-
-3. 可以选择“预览数据”来了解 COPY 语句如何分析文件，以便帮助你配置文件格式设置。 每次更改文件格式设置时选择“预览数据”，以了解 COPY 语句将如何使用更新的设置来分析文件：![预览数据](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
+   ![预览数据](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
 > [!NOTE]  
 >
 > - 大容量加载向导中不支持预览带有多字符字段终止符的字段。 指定多字符字段终止符时，大容量加载向导将预览单个列中的数据。 
+> - 选择“推断列名”时，大容量加载向导将分析“第一行”字段指定的第一行中的列名。 大容量加载向导将自动将 COPY 语句中的 FIRSTROW 值加 1，以忽略此标头行。 
 > - COPY 语句支持指定多字符行终止符；但大容量加载向导中不支持此操作，这会引发错误。
 
-4. 选择要用于加载的专用 SQL 池，包括选择该加载是针对现有表还是针对新表：![选择目标位置](./sql/media/bulk-load/bulk-load-target-location.png)
+3. 选择要用于加载的专用 SQL 池，包括选择该加载是针对现有表还是针对新表：![选择目标位置](./sql/media/bulk-load/bulk-load-target-location.png)
+4. 选择“配置列映射”，以确保具有适当的列映射。 请注意，如果启用了“推断列名称”，将自动检测列名称。 就新表来说，配置列映射对于更新目标列数据类型至关重要：
 
-5. 选择“配置列映射”，以确保具有适当的列映射。 请注意，如果启用了“推断列名称”，将自动检测列名称。 就新表来说，配置列映射对于更新目标列数据类型至关重要：![配置列映射](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
-
-6. 选择“打开脚本”，此时会生成一个 T-SQL 脚本，其中包含用于从数据湖加载数据的 COPY 语句：![打开 SQL 脚本](./sql/media/bulk-load/bulk-load-target-final-script.png)
+   ![配置列映射](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. 选择“打开脚本”，此时会生成一个 T-SQL 脚本，其中包含用于从数据湖加载数据的 COPY 语句：![打开 SQL 脚本](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
 ## <a name="next-steps"></a>后续步骤
 

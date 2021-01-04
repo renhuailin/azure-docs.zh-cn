@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.openlocfilehash: fcaaea387cab24772b9e6f31f4e7d93ff643b983
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 59c01d5d8589b61ff0aaacb81d12fed8fba4f842
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515587"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505505"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Paylocity 集成
 
@@ -83,7 +83,7 @@ ms.locfileid: "92515587"
 
     在“登录 URL”文本框中，键入 URL：`https://access.paylocity.com/`
 
-1. 单击“ **保存** ”。
+1. 单击“ **保存**”。
 
 1. Paylocity 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -148,7 +148,15 @@ ms.locfileid: "92515587"
 
 ## <a name="configure-paylocity-sso"></a>配置 Paylocity SSO
 
-若要在 Paylocity 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给[支持团队](mailto:service@paylocity.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Paylocity 端配置单一登录，
+
+1. 请下载“联合元数据 XML”。
+1. 在 Paylocity 中，导航到“HR 与薪资” > “用户访问权限” > “SSO 配置”  。
+1. 选择“SSO 集成”下的“添加 SSO 集成” 。 此时将打开新的拖放工具。
+1. 从下拉列表中选择“Microsoft Azure”作为 SSO 提供程序。
+1. 从下拉列表中选择“状态”。
+1. 将元数据文件拖放到拖放区域中。 Paylocity 尝试分析“颁发者”、“发布重定向和绑定 URL”以及“安全证书”。
+1. 选择“保存”以确认更改。 集成应显示在“SSO 集成”下方。
 
 ### <a name="create-paylocity-test-user"></a>创建 Paylocity 测试用户
 

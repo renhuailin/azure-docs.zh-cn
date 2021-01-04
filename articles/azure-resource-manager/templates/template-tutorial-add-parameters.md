@@ -6,12 +6,12 @@ ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7d0743d316b9d879017f3b0fbe08ee4dc2b3e1c2
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e983f8499cbeaf400a8da6f48d7f6c8b75c4795a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931055"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107056"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>教程：将参数添加到 ARM 模板
 
@@ -33,7 +33,7 @@ ms.locfileid: "96931055"
 
 ## <a name="make-template-reusable"></a>使模板可重复使用
 
-为了使模板可重复使用，让我们添加一个可用于传入存储帐户名称的参数。 以下示例中突出显示的 JSON 演示了模板中发生的更改。 **storageName** 参数已标识为字符串。 最大长度设置为 24 个字符，以防止名称过长。
+为了使模板可重复使用，让我们添加一个可用于传入存储帐户名称的参数。 以下示例中突出显示的 JSON 演示了模板中发生的更改。 `storageName` 参数已标识为字符串。 最大长度设置为 24 个字符，以防止名称过长。
 
 复制整个文件，将模板替换为该文件的内容。
 
@@ -43,7 +43,7 @@ ms.locfileid: "96931055"
 
 让我们部署该模板。 以下示例使用 Azure CLI 或 PowerShell 来部署模板。 请注意，需要为部署命令中的某个值提供存储帐户名称。 对于存储帐户名称，请提供前一篇教程中所用的相同名称。
 
-如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据 [第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
+如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 `templateFile` 变量设置为模板文件的路径。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -85,7 +85,7 @@ az deployment group create \
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
-**storageSKU** 参数有默认值。 如果在部署过程中未指定值，将使用此默认值。 它还有允许值列表。 这些值与创建存储帐户所需的值相匹配。 你不希望模板用户传入没有作用的 SKU。
+`storageSKU` 参数有默认值。 如果在部署过程中未指定值，将使用此默认值。 它还有允许值列表。 这些值与创建存储帐户所需的值相匹配。 你不希望模板用户传入没有作用的 SKU。
 
 ## <a name="redeploy-template"></a>重新部署模板
 
@@ -114,7 +114,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失败，请使用“详细”开关获取有关正在创建的资源的信息。 使用“调试”开关获取调试的详细信息。
+> 如果部署失败，请使用 `verbose` 开关获取有关正在创建的资源的信息。 使用 `debug` 开关获取调试的详细信息。
 
 若要查看模板的灵活性，请重新部署。 这一次，请将 SKU 参数设置为 **Standard_GRS**。 可以传入新名称来创建不同的存储帐户，或者使用同一个名称来更新现有的存储帐户。 这两个选项都是有效的。
 

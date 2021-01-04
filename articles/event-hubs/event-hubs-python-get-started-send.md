@@ -1,17 +1,17 @@
 ---
 title: 使用 Python 向/从 Azure 事件中心发送/接收事件（最新版）
-description: 本文演练如何创建一个可使用最新 azure/event-hubs 版本 5 包向/从 Azure 事件中心发送/接收事件的 Python 应用程序。
+description: 本文演练如何创建一个可使用最新 azure/event-hubs 包向/从 Azure 事件中心发送/接收事件的 Python 应用程序。
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.openlocfilehash: bdcd85786afdf307fdc7043db7ed7651d41820a4
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 4850dc9119f6ef43e687f476f66928f13713f051
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91729077"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97105945"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>使用 Python（azure-eventhub 版本 5）向/从事件中心发送/接收事件
-本快速入门介绍如何使用 **azure-eventhub 版本 5** Python 包向事件中心发送事件以及从事件中心接收事件。
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub"></a>使用 Python (azure-eventhub) 向/从事件中心发送/接收事件
+本快速入门介绍如何使用 azure-eventhub Python 包向事件中心发送事件以及从事件中心接收事件。
 
 ## <a name="prerequisites"></a>先决条件
 如果不熟悉 Azure 事件中心，请在阅读本快速入门之前参阅[事件中心概述](event-hubs-about.md)。 

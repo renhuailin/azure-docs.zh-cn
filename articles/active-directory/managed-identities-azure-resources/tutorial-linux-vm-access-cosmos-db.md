@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/09/2018
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b57fcc26a64ee766d2fd70ebaad36edb133566e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1ece1fbd75c975f549cb9096149c2a2d562dec6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968811"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107560"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB 
 
@@ -38,8 +38,9 @@ ms.locfileid: "90968811"
 
 ## <a name="prerequisites"></a>必备条件
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
+- 如果不熟悉 Azure 资源功能的托管标识，请参阅此[概述](overview.md)。 
+- 如果没有 Azure 帐户，请在继续操作前[注册免费帐户](https://azure.microsoft.com/free/)。
+- 要执行所需的资源创建和角色管理，帐户在相应的范围（订阅或资源组）需要“所有者”权限。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
 - 若要运行示例脚本，有两个选项：
     - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，你可使用代码块右上角的“试用”按钮打开它。
     - 通过安装最新版的 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行脚本，然后使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure。 使用与要在其中创建资源的 Azure 订阅关联的帐户。
@@ -48,22 +49,22 @@ ms.locfileid: "90968811"
 
 如果还没有 Cosmos DB 帐户，请创建一个。 可以跳过此步骤，使用现有的 Cosmos DB 帐户。 
 
-1. 单击 Azure 门户左上角的“+/创建新服务”按钮。
-2. 单击“数据库”，然后单击“Azure Cosmos DB”，新的“新建帐户”面板便会显示。********
+1. 单击 Azure 门户左上角的“+ 创建资源”按钮。
+2. 单击“数据库”，然后单击“Azure Cosmos DB”，新的“新建帐户”面板便会显示。  
 3. 输入 Cosmos DB 帐户的 **ID**，供以后使用。  
 4. **API** 应设置为“SQL”。 本教程中介绍的方法可以与其他可用的 API 类型配合使用，但本教程中的步骤是针对 SQL API 的。
-5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。   选择提供 Cosmos DB 的“位置”。****
+5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。    选择提供 Cosmos DB 的“位置”。 
 6. 单击“创建”。 
 
-## <a name="create-a-collection-in-the-cosmos-db-account"></a>在 Cosmos DB 帐户中创建集合
+### <a name="create-a-collection-in-the-cosmos-db-account"></a>在 Cosmos DB 帐户中创建集合
 
 接下来，在 Cosmos DB 帐户中添加数据集合，以便在后续步骤中进行查询。
 
 1. 导航到新创建的 Cosmos DB 帐户。
-2. 在“概览”选项卡中单击“+/添加集合”按钮，此时“添加集合”面板就会滑出。********
-3. 为集合提供数据库 ID、集合 ID，选择存储容量，输入分区键，输入吞吐量值，然后单击“确定”。****  就本教程来说，使用“测试”作为数据库 ID 和集合 ID，选择固定的存储容量和最低吞吐量（400 RU/秒）就可以了。  
+2. 在“概览”选项卡中单击“+/添加集合”按钮，此时“添加集合”面板就会滑出。  
+3. 为集合提供数据库 ID、集合 ID，选择存储容量，输入分区键，输入吞吐量值，然后单击“确定”。   就本教程来说，使用“测试”作为数据库 ID 和集合 ID，选择固定的存储容量和最低吞吐量（400 RU/秒）就可以了。  
 
-## <a name="retrieve-the-principalid-of-the-linux-vms-system-assigned-managed-identity"></a>检索 Linux VM 的系统分配托管标识的 `principalID`
+## <a name="grant-access"></a>授予访问权限
 
 若要在下一节中从资源管理器获得对 Cosmos DB 帐户访问密钥的访问，需要检索 Linux VM 的系统分配托管标识的 `principalID`。  请务必将 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`（VM 所在的资源组）和 `<VM NAME>` 参数值替换为你自己的值。
 
@@ -82,7 +83,7 @@ az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE 
  }
 ```
 
-## <a name="grant-your-linux-vms-system-assigned-identity-access-to-the-cosmos-db-account-access-keys"></a>向 Linux VM 的系统分配托管标识授予对 Cosmos DB 帐户访问密钥的访问权限
+### <a name="grant-your-linux-vms-system-assigned-identity-access-to-the-cosmos-db-account-access-keys"></a>向 Linux VM 的系统分配托管标识授予对 Cosmos DB 帐户访问密钥的访问权限
 
 Cosmos DB 原本不支持 Azure AD 身份验证。 但是，可以使用托管标识从资源管理器检索 Cosmos DB 访问密钥，然后使用该密钥访问 Cosmos DB。 在此步骤中，将向系统分配托管标识授予对 Cosmos DB 帐户密钥的访问权限。
 
@@ -108,15 +109,15 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
 }
 ```
 
-## <a name="get-an-access-token-using-the-linux-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>使用 Linux VM 的系统分配托管标识获取访问令牌并使用它来调用 Azure 资源管理器
+## <a name="access-data"></a>访问数据
 
-至于本教程的剩余部分，请从先前创建的 VM 入手。
+至于本教程的剩余部分，请从虚拟机入手。
 
 若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](/windows/wsl/install-win10)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 1. 在 Azure 门户中，导航到“虚拟机”  ，转到 Linux 虚拟机，然后在“概述”  页中单击顶部的“连接”  。 复制用于连接到 VM 的字符串。 
 2. 使用 SSH 客户端连接到 VM。  
-3. 接下来，系统会提示你输入创建“Linux VM”**** 时添加的“密码”****。 然后应可以成功登录。  
+3. 接下来，系统会提示你输入创建“Linux VM”时添加的“密码”。 然后应可以成功登录。  
 4. 使用 CURL 获取 Azure 资源管理器的访问令牌： 
      
     ```bash
@@ -137,7 +138,7 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
      "client_id":"1ef89848-e14b-465f-8780-bf541d325cd5"}
      ```
     
-## <a name="get-access-keys-from-azure-resource-manager-to-make-cosmos-db-calls"></a>从 Azure 资源管理器中获取访问密钥，以便进行 Cosmos DB 调用  
+### <a name="get-access-keys-from-azure-resource-manager-to-make-cosmos-db-calls"></a>从 Azure 资源管理器中获取访问密钥，以便进行 Cosmos DB 调用  
 
 现在，使用在上一部分中检索到的访问令牌并使用 CURL 来调用资源管理器，以便检索 Cosmos DB 帐户访问密钥。 有了访问密钥以后，即可查询 Cosmos DB。 请务必将 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` 和 `<COSMOS DB ACCOUNT NAME>` 参数值替换为你自己的值。 将 `<ACCESS TOKEN>` 值替换为前面检索到的访问令牌。  若要检索读/写密钥，请使用密钥操作类型 `listKeys`。  若要检索只读密钥，请使用密钥操作类型 `readonlykeys`：
 
@@ -146,7 +147,7 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 ```
 
 > [!NOTE]
-> 上述 URL 中的文本区分大小写，因此如果对资源组使用了大小写格式，请务必在 URL 中相应地体现出来。 另外，请注意，这是 POST 请求而不是 GET 请求，请务必使用 -d 来传递一个值，以捕获长度限制，此值可以为 NULL。  
+> 上个 URL 中的文本区分大小写，因此，请使用资源组名称中使用的大小写形式。 另外，请注意，这是 POST 请求而不是 GET 请求，请务必使用 -d 来传递一个值，以捕获长度限制，此值可以为 NULL。  
 
 CURL 响应提供一个密钥列表。  例如，如果获取只读密钥：  
 
@@ -155,7 +156,7 @@ CURL 响应提供一个密钥列表。  例如，如果获取只读密钥：
 "secondaryReadonlyMasterKey":"38v5ns...7bA=="}
 ```
 
-有了 Cosmos DB 帐户的访问密钥以后，即可将其传递给 Cosmos DB SDK 并通过调用来访问该帐户。  如需快速示例，可将该访问密钥传递给 Azure CLI。  在 Azure 门户中，可以从 Cosmos DB 帐户边栏选项卡上的“概览”选项卡获取 `<COSMOS DB CONNECTION URL>`。****  将 `<ACCESS KEY>` 替换为在上面获取的值：
+有了 Cosmos DB 帐户的访问密钥以后，即可将其传递给 Cosmos DB SDK 并通过调用来访问该帐户。  如需快速示例，可将该访问密钥传递给 Azure CLI。  在 Azure 门户中，可以从 Cosmos DB 帐户边栏选项卡上的“概览”选项卡获取 `<COSMOS DB CONNECTION URL>`。  将 `<ACCESS KEY>` 替换为在上面获取的值：
 
 ```azurecli-interactive
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>

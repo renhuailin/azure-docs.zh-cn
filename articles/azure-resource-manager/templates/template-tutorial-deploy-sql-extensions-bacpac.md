@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2d50903f464c03157ee393787af6ddfdad975aed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931395"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588016"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教程：使用 ARM 模板导入 SQL BACPAC 文件
 
-了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器模板（ARM 模板）导入 BACPAC 文件。 部署项目包括主模板文件以及完成部署所需的任何文件。 BACPAC 文件是一个项目。
+了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器模板（ARM 模板）导入 [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) 文件。 部署项目包括主模板文件以及完成部署所需的任何文件。 BACPAC 文件是一个项目。
 
 在本教程中，你将创建一个模板来部署[逻辑 SQL Server](../../azure-sql/database/logical-servers.md)、单个数据库并导入 BACPAC 文件。 要了解如何使用 ARM 模板来部署 Azure 虚拟机扩展，请参阅[教程：使用 ARM 模板部署虚拟机扩展](./template-tutorial-deploy-vm-extensions.md)。
 
@@ -55,7 +55,7 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 * 将 BACPAC 文件上传到该容器。
 * 显示存储帐户密钥和 blob URL。
 
-1. 选择“试用”以打开 Cloud Shell。 然后，将以下 PowerShell 脚本粘贴到 Shell 窗口中。
+1. 选择“试用”以打开 Shell。 然后，将以下 PowerShell 脚本粘贴到 Shell 窗口中。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -120,7 +120,7 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 
 ## <a name="edit-the-template"></a>编辑模板
 
-1. 在“parameters”节的末尾再添加两个参数，以设置存储帐户密钥和 BACPAC URL。
+1. 在 `parameters` 部分的末尾再添加两个参数，以设置存储帐户密钥和 BACPAC URL。
 
     ```json
         "storageAccountKey": {
@@ -137,7 +137,7 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
         }
     ```
 
-    在“adminPassword”后面添加一个逗号。 若要从 Visual Studio Code 设置 JSON 文件的格式，请选择 Shift+Alt+F。
+    在 `adminPassword` 属性的右大括号 (`}`) 后面添加一个逗号。 若要从 Visual Studio Code 设置 JSON 文件的格式，请选择 Shift+Alt+F。
 
     若要获取这两个值，请参阅[准备 BACPAC 文件](#prepare-a-bacpac-file)。
 
@@ -196,11 +196,11 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 
         若要了解资源定义，请参阅 [SQL 数据库扩展参考](/azure/templates/microsoft.sql/servers/databases/extensions)。 下面是一些重要元素：
 
-        * **dependsOn**：必须在创建数据库以后才能创建扩展资源。
-        * **storageKeyType**：指定要使用的存储密钥的类型。 值可以是 `StorageAccessKey` 或 `SharedAccessKey`。 在本教程中使用 `StorageAccessKey`。
-        * **storageKey**：指定存储 BACPAC 文件的存储帐户的密钥。 如果存储密钥类型为 `SharedAccessKey`，则它前面必须是“?”。
-        * **storageUri**：指定存储帐户中存储的 BACPAC 文件的 URL。
-        * **administratorLoginPassword**：SQL 管理员的密码。 使用生成的密码。 请参阅[先决条件](#prerequisites)。
+        * `dependsOn`：必须在创建数据库以后才能创建扩展资源。
+        * `storageKeyType`：指定要使用的存储密钥的类型。 值可以是 `StorageAccessKey` 或 `SharedAccessKey`。 在本教程中使用 `StorageAccessKey`。
+        * `storageKey`：指定存储 BACPAC 文件的存储帐户的密钥。 如果存储密钥类型为 `SharedAccessKey`，则它前面必须是“?”。
+        * `storageUri`：指定存储帐户中存储的 BACPAC 文件的 URL。
+        * `administratorLoginPassword`：SQL 管理员的密码。 使用生成的密码。 请参阅[先决条件](#prerequisites)。
 
 已完成的模板如下所示：
 

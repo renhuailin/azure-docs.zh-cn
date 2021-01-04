@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 11/18/2020
+ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: 0ef3f833d1bac4f26f49ace2b366cdfcf5ef3e35
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b79bde204d82b069b3314855a45a680b863c3f69
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352977"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560485"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -58,13 +58,14 @@ Azure 预留项通过承诺多种产品的一年期或三年期计划，帮助�
 
 预留通过与订阅绑定的付款方式付款。 预留成本将从货币承诺余额中扣除（如果可用）。 如果货币承诺余额不足以支付虚拟机预留实例的费用，则还会向你收取所欠费用。 如果你的订阅来自采用即用即付费率的单个计划，将立即从你帐户中的信用卡提前扣取购买费。 每月付款额将显示在发票上，并且每月将从你的信用卡扣费。 如果采用按发票计费的方式，则费用将显示在下一份发票上。 
 
-## <a name="permissions-to-view-and-manage-reservations"></a>预留项的查看和管理权限 
+## <a name="who-can-manage-a-reservation-by-default"></a>默认情况下谁可以管理预留
 
-购买预留项的用户，以及用于计收预留项费用的订阅的帐户管理员，将获得预留订单和预留项的“所有者”角色。
+默认情况下，以下用户可以查看和管理预留：
 
-可以通过将用户添加到预留订单或预留的角色来委托预留管理。 可以在 Azure 门户中或使用 API 和 PowerShell 分配角色。 
+- 预留订单中将添加购买预留的人员和用于购买预留的计费订阅的帐户管理员。
+- 企业协议和 Microsoft 客户协议计费管理员。
 
-有关详细信息，请参阅 [添加或更改可以管理预留项的用户](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。 
+若要允许其他人管理预留，请参阅[管理 Azure 资源的预留](manage-reserved-vm-instance.md)。
 
 ## <a name="get-reservation-details-and-utilization-after-purchase"></a>购买后获取预留项详细信息和利用率
 

@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 08ee000d8f801559fcf572b8ab489161fd090b77
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 7ba15e66cca7baefdf8cca5cabd5e5d5b1e2c7f7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95996196"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507806"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>教程：从 Android 应用程序登录用户并调用 Microsoft Graph API
 
@@ -75,24 +75,28 @@ MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录
 
 ### <a name="register-your-application"></a>注册应用程序
 
-1. 转到 [Azure 门户](https://aka.ms/MobileAppReg)。
-2. 打开[“应用注册”边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)，单击“+新建注册”。 
-3. 输入应用的“名称”，然后在不设置重定向 URI 的情况下单击“注册”    。
-4. 在显示的窗格的“管理”部分，  选择“身份验证”   > “+ 添加平台”   >   “Android”。 （可能必须选择边栏选项卡顶部附近的“切换到新体验”才能看到此部分）
-5. 输入项目的包名称。 如果下载了代码，则该值为 `com.azuresamples.msalandroidapp`。
-6. 在“配置 Android 应用”页的“签名哈希”部分，单击“生成开发签名哈希”。    然后复制用于平台的 KeyTool 命令。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+1. 搜索并选择“Azure Active Directory”  。
+1. 在“管理”下，选择“应用注册” > “新建注册”  。
+1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+1. 选择“注册”  。
+1. 在“管理”下，选择“身份验证” > “添加平台” > “Android”   。
+1. 输入项目的包名称。 如果下载了代码，则该值为 `com.azuresamples.msalandroidapp`。
+1. 在“配置 Android 应用”页的“签名哈希”部分，选择“生成开发签名哈希”。   然后复制用于平台的 KeyTool 命令。
 
    > [!Note]
    > 安装 KeyTool.exe，使其作为 Java 开发工具包 (JDK) 的一部分。 还必须安装 OpenSSL 工具才能执行 KeyTool 命令。 有关详细信息，请参阅[有关如何生成密钥的 Android 文档](https://developer.android.com/studio/publish/app-signing#generate-key)。
 
-7. 生成由 KeyTool 生成的 **签名哈希**。
-8. 单击 `Configure` 并保存出现在“Android 配置”页中的“MSAL 配置”   ，以便在稍后配置应用时输入它。  单击“完成”  。
+1. 生成由 KeyTool 生成的 **签名哈希**。
+1. 选择“配置”并保存出现在“Android 配置”页中的“MSAL 配置”，以便在稍后配置应用时输入它  。  
+1. 选择“完成”。
 
 ### <a name="configure-your-application"></a>配置应用程序
 
 1. 在 Android Studio 的项目窗格中，导航到 **app\src\main\res**。
-2. 右键单击“res”  ，选择“新建”   >   “目录”。 输入 `raw` 作为新目录名称，然后单击“确定”。 
-3. 在 **app** > **src** > **main** > **res** > **raw** 中，新建名为 `auth_config_single_account.json` 的 JSON 文件，然后粘贴以前保存的 MSAL 配置。
+1. 右键单击“res”  ，选择“新建”   >   “目录”。 输入 `raw` 作为新目录名称，然后单击“确定”。 
+1. 在 **app** > **src** > **main** > **res** > **raw** 中，新建名为 `auth_config_single_account.json` 的 JSON 文件，然后粘贴以前保存的 MSAL 配置。
 
     在“重定向 URI”下方，粘贴：
     ```json

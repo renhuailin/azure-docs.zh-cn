@@ -1,22 +1,22 @@
 ---
 title: 教程 - 部署本地 Azure 资源管理器模板
-description: 了解如何从本地计算机部署 Azure 资源管理器模板
+description: 了解如何从本地计算机部署 Azure 资源管理器模板（ARM 模板）
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: fe13376ced428713703f2bd5cf33941129dec1d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 640d314711e34119dac5e1c5bf9fa245685b6f38
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611616"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368129"
 ---
-# <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>教程：部署本地 Azure 资源管理器模板
+# <a name="tutorial-deploy-a-local-arm-template"></a>教程：部署本地 ARM 模板
 
-了解如何从本地计算机部署 Azure 资源管理器模板。 完成本教程大约需要 **8 分钟**。
+了解如何从本地计算机部署 Azure 资源管理器模板（ARM 模板）。 完成本教程大约需要 **8 分钟**。
 
-本文是相关教学系列的第一篇教程。 在学习该系列时，你将通过创建链接模板来将模板模块化，将链接模板存储在存储帐户中，使用 SAS 令牌保护链接模板，并了解如何创建 DevOp 管道来部署模板。 该系列重点介绍模板部署。  如果希望了解模板开发，请参阅[初学者教程](./template-tutorial-create-first-template.md)。
+本文是相关教学系列的第一篇教程。 在学习该系列时，你将通过创建链接模板来将模板模块化，将链接模板存储在存储帐户中，使用 SAS 令牌保护链接模板，并了解如何创建 DevOps 管道来部署模板。 该系列重点介绍模板部署。 如果希望了解模板开发，请参阅[初学者教程](./template-tutorial-create-first-template.md)。
 
 ## <a name="get-tools"></a>获取工具
 
@@ -29,12 +29,13 @@ ms.locfileid: "91611616"
 - [安装 Azure PowerShell](/powershell/azure/install-az-ps)
 - [在 Windows 上安装 Azure CLI](/cli/azure/install-azure-cli-windows)
 - [在 Linux 上安装 Azure CLI](/cli/azure/install-azure-cli-linux)
+- [在 macOS 上安装 Azure CLI](/cli/azure/install-azure-cli-macos)
 
 安装 Azure PowerShell 或 Azure CLI 后，请务必完成首次登录。 有关帮助，请参阅[登录 - PowerShell](/powershell/azure/install-az-ps#sign-in) 或[登录 - Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in)。
 
 ### <a name="editor-optional"></a>编辑器（可选）
 
-模板是一些 JSON 文件。 若要查看/编辑模板，需要一个好用的 JSON 编辑器。 我们建议使用带有资源管理器工具扩展的 Visual Studio Code。 如果需要安装这些工具，请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](quickstart-create-templates-use-visual-studio-code.md)。
+模板是一些 JSON 文件。 若要查看/编辑模板，需要一个好用的 JSON 编辑器。 我们建议使用带有资源管理器工具扩展的 Visual Studio Code。 如果需要安装这些工具，请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="review-template"></a>审阅模板
 
@@ -45,7 +46,7 @@ ms.locfileid: "91611616"
 > [!IMPORTANT]
 > 存储帐户名称长度必须为 3 到 24 个字符，并且只能使用数字和小写字母。 该名称必须是唯一的。 在模板中，存储帐户名称是追加了“store”的项目名称，项目名称的长度必须介于 3 到 11 个字符之间。 因此，项目名称必须符合存储帐户名称要求，且短于 11 个字符。
 
-以 .json 为扩展名将模板的副本保存到本地计算机，例如 azuredeploy.json。 稍后在本教程中将部署此模板。
+以 .json 为扩展名将模板的副本保存到本地计算机，例如 azuredeploy.json 。 稍后在本教程中将部署此模板。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -65,7 +66,7 @@ az login
 
 ---
 
-如果你有多个 Azure 订阅，请选择要使用的订阅：
+如果你有多个 Azure 订阅，请选择要使用的订阅。 将 `[SubscriptionID/SubscriptionName]` 和方括号 `[]` 替换为你的订阅信息：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -129,7 +130,7 @@ New-AzResourceGroupDeployment `
   -verbose
 ```
 
-有关使用 Azure PowerShell 来部署模板的详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 来部署资源](./deploy-powershell.md)。
+若要详细了解如何使用 Azure PowerShell 部署模板，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](./deploy-powershell.md)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -148,7 +149,7 @@ az deployment group create \
   --verbose
 ```
 
-若要详细了解如何使用 Azure CLI 来部署模板，请参阅[使用资源管理器模板和 Azure CLI 来部署资源](./deploy-cli.md)。
+若要详细了解如何使用 Azure CLI 部署模板，请参阅[使用 ARM 模板和 Azure CLI 部署资源](./deploy-cli.md)。
 
 ---
 

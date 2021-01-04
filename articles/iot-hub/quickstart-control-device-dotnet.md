@@ -1,6 +1,6 @@
 ---
 title: 从 Azure IoT 中心控制设备快速入门 (.NET) | Microsoft Docs
-description: 在本快速入门中，会运行两个示例 C# 应用程序。 一个为后端应用程序，可远程控制连接到中心的设备。 另一个应用程序可模拟连接到中心的可受远程控制的设备。
+description: 在本快速入门中，会运行两个示例 C# 应用程序。 一个应用程序为服务应用程序，可远程控制连接到中心的设备。 另一个应用程序可模拟连接到中心的可受远程控制的设备。
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: aac03cad9dc6b83e7831b35ac2873ddaae6eda75
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 39cfa64b756ef6bf20f8cbf3d6e8f8a25e81c674
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843105"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092867"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>快速入门：控制连接到 IoT 中心的设备 (.NET)
 
@@ -29,15 +29,15 @@ IoT 中心是一项 Azure 服务，使你可以从云管理 IoT 设备，并将�
 
 本快速入门使用两个预先编写的 .NET 应用程序：
 
-* 从后端应用程序调用的可响应直接方法的模拟设备应用程序。 为了接收直接方法调用，此应用程序会连接到 IoT 中心上特定于设备的终结点。
+* 模拟设备应用程序，可响应从服务应用程序调用的直接方法。 为了接收直接方法调用，此应用程序会连接到 IoT 中心上特定于设备的终结点。
 
-* 后端应用程序，可在模拟设备上调用直接方法。 为了在设备上调用直接方法，此应用程序会连接到 IoT 中心上的服务端终结点。
+* 服务应用程序，可在模拟设备上调用直接方法。 为了在设备上调用直接方法，此应用程序会连接到 IoT 中心上的服务端终结点。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-* 本快速入门中运行的两个示例应用程序是使用 C# 编写的。 开发计算机上需要有 .NET Core SDK 2.1.0 或更高版本。
+* 本快速入门中运行的两个示例应用程序是使用 C# 编写的。 开发计算机上需要有 .NET Core SDK 3.1 或更高版本。
 
     可以从 [.NET](https://www.microsoft.com/net/download/all) 为多个平台下载 .NET Core SDK。
 
@@ -96,7 +96,7 @@ IoT 中心是一项 Azure 服务，使你可以从云管理 IoT 设备，并将�
 
 ## <a name="retrieve-the-service-connection-string"></a>检索服务连接字符串
 
-还需一个 IoT 中心服务连接字符串，以便后端应用程序能够连接到中心并检索消息  。 以下命令检索 IoT 中心的服务连接字符串：
+还需一个 IoT 中心服务连接字符串，以便服务应用程序能够连接到中心并检索消息。 以下命令检索 IoT 中心的服务连接字符串：
 
 ```azurecli-interactive
 az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -112,22 +112,18 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 
 模拟设备应用程序会连接到 IoT 中心上特定于设备的终结点，发送模拟遥测数据，并侦听中心的直接方法调用。 在本快速入门中，中心的直接方法调用告知设备对其发送遥测的间隔进行更改。 执行直接方法后，模拟设备会将确认发送回中心。
 
-1. 在本地终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device-2** 文件夹。
+1. 在本地终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\SimulatedDeviceWithCommand 文件夹。
 
-2. 在所选文本编辑器中打开 SimulatedDevice.cs 文件  。
-
-    将 `s_connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 **SimulatedDevice.cs**。
-
-3. 在本地终端窗口中，运行以下命令以安装模拟设备应用程序所需的包：
+2. 在本地终端窗口中，运行以下命令以安装模拟设备应用程序所需的包：
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. 在本地终端窗口中，运行以下命令，生成并运行模拟设备应用程序：
+3. 在本地终端窗口中，运行以下命令，生成并运行模拟设备应用程序，将 `{DeviceConnectionString}` 替换为先前记录的设备连接字符串：
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {DeviceConnectionString}
     ```
 
     以下屏幕截图显示了模拟设备应用程序将遥测数据发送到 IoT 中心后的输出：
@@ -136,31 +132,27 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 
 ## <a name="call-the-direct-method"></a>调用直接方法
 
-后端应用程序会连接到 IoT 中心上的服务端终结点。 应用程序通过 IoT 中心对设备进行直接方法调用，并侦听确认。 IoT 中心后端应用程序通常在云中运行。
+服务应用程序会连接到 IoT 中心的服务端终结点。 应用程序通过 IoT 中心对设备进行直接方法调用，并侦听确认。 IoT 中心服务应用程序通常在云中运行。
 
-1. 在另一本地终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\back-end-application 文件夹  。
+1. 在另一本地终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\InvokeDeviceMethod 文件夹。
 
-2. 在所选文本编辑器中打开 BackEndApplication.cs 文件  。
-
-    将 `s_connectionString` 变量的值替换为以前记下的服务连接字符串。 然后将更改保存到 **BackEndApplication.cs**。
-
-3. 在本地终端窗口中，运行以下命令，安装后端应用程序所需的库：
+2. 在本地终端窗口中，运行以下命令，安装服务应用程序所需的库：
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. 在本地终端窗口中，运行以下命令，生成并运行后端应用程序：
+3. 在本地终端窗口中，运行以下命令，生成并运行服务应用程序，将 `{ServiceConnectionString}` 替换为先前记录的服务连接字符串：
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {ServiceConnectionString}
     ```
 
     以下屏幕截图显示了应用程序对设备进行直接方法调用并接收确认后的输出：
 
-    ![运行后端应用程序](./media/quickstart-control-device-dotnet/BackEndApplication.png)
+    ![运行服务应用程序](./media/quickstart-control-device-dotnet/BackEndApplication.png)
 
-    运行后端应用程序后，在运行模拟设备的控制台窗口中会出现一条消息，且其发送消息的速率也会发生变化：
+    运行服务应用程序后，在运行模拟设备的控制台窗口中会出现一条消息，且其发送消息的速率也会发生变化：
 
     ![模拟客户端的变化](./media/quickstart-control-device-dotnet/SimulatedDevice-2.png)
 
@@ -170,7 +162,7 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，已从后端应用程序调用了设备上的直接方法，并在模拟设备应用程序中响应了直接方法调用。
+在本快速入门中，你已从服务应用程序调用了设备上的直接方法，并在模拟设备应用程序中响应了直接方法调用。
 
 若要了解如何将设备到云的消息路由到云中的不同目标，请继续学习下一教程。
 

@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 67c88e98d966a21163aafefcad8363086d5b3bf4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 52b5bd0650b3a069adc3ef7f101c48a4674deaab
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931038"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107101"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>教程：将模板函数添加到 ARM 模板
 
@@ -37,7 +37,7 @@ ms.locfileid: "96931038"
 
 函数可以在部署过程中动态获取值，为模板增加了灵活性。 在本教程中，我们使用函数来获取用于部署的资源组的位置。
 
-以下示例重点介绍添加名为 **location** 的参数需要做的更改。  参数默认值调用 [resourceGroup](template-functions-resource.md#resourcegroup) 函数。 此函数返回的对象描述用于部署的资源组。 对象上的一个属性是位置属性。 使用默认值时，存储帐户位置与资源组位置相同。 资源组中的资源不需共享同一位置。 也可根据需要提供不同的位置。
+以下示例重点介绍添加名为 `location` 的参数需要做的更改。 参数默认值调用 [resourceGroup](template-functions-resource.md#resourcegroup) 函数。 此函数返回的对象描述用于部署的资源组。 对象上的一个属性是位置属性。 使用默认值时，存储帐户位置与资源组位置相同。 资源组中的资源不需共享同一位置。 也可根据需要提供不同的位置。
 
 复制整个文件，将模板替换为该文件的内容。
 
@@ -47,7 +47,7 @@ ms.locfileid: "96931038"
 
 在前面的教程中，你创建的存储帐户位于“美国东部”，但资源组创建于“美国中部”。 在本教程中，存储帐户与资源组在同一区域创建。 请使用位置的默认值，这样就不需提供该参数值。 必须为存储帐户提供新名称，因为是在另一位置创建存储帐户。 例如，使用 **store2** 而不是 **store1** 作为前缀。
 
-如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据 [第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
+如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 `templateFile` 变量设置为模板文件的路径。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -74,7 +74,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失败，请使用“详细”开关获取有关正在创建的资源的信息。 使用“调试”开关获取调试的详细信息。
+> 如果部署失败，请使用 `verbose` 开关获取有关正在创建的资源的信息。 使用 `debug` 开关获取调试的详细信息。
 
 ## <a name="verify-deployment"></a>验证部署
 

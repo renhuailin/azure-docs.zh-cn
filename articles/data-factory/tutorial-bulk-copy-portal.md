@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 8594250d72754e6b7d2a6d8c27d3d5bcd0e9c8e4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 16b924f486215d972477e93c4e199e7076a0a531
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920869"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508877"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 门户中使用 Azure 数据工厂批量复制多个表
 
@@ -25,7 +25,7 @@ ms.locfileid: "96920869"
 本教程演示如何 **将 Azure SQL 数据库中的多个表复制到 Azure Synapse Analytics**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/Azure Synapse Analytics/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
 
 > [!NOTE]
-> - 如果你对 Azure 数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。
+> 如果你对 Azure 数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。
 
 从较高层面讲，本教程涉及以下步骤：
 
@@ -99,9 +99,7 @@ ms.locfileid: "96920869"
 1. 创建完成后，选择“转到资源”导航到“数据工厂”页。 
    
 1. 单击“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 应用程序。
-1. 在“让我们开始吧”页上，切换到左侧面板中的“创作”选项卡，如下图所示：
 
-     ![“入门”页](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-linked-services"></a>创建链接服务
 创建链接服务，将数据存储和计算链接到数据工厂。 链接服务包含的连接信息可供数据工厂服务用来在运行时连接到数据存储。 
@@ -152,7 +150,7 @@ ms.locfileid: "96920869"
      
     f. 若要使用指定的信息测试到数据库的连接，请单击“测试连接”。
      
-    g. 单击 **创建**。
+    g. 单击“创建”。
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>创建过渡 Azure 存储链接服务
 本教程使用 Azure Blob 存储作为临时过渡区域，以利用 PolyBase 来实现更好的复制性能。
@@ -164,7 +162,7 @@ ms.locfileid: "96920869"
     a. 输入 **AzureStorageLinkedService** 作为 **名称**。                                                 
     b. 对于“存储帐户名称”，请选择 **Azure 存储帐户**。
     
-    c. 单击 **创建**。
+    c. 单击“创建”。
 
 ## <a name="create-datasets"></a>创建数据集
 在本教程中创建源和接收器数据集，用于指定数据的存储位置。 
@@ -177,7 +175,9 @@ ms.locfileid: "96920869"
 
 ### <a name="create-a-dataset-for-source-sql-database"></a>为源 SQL 数据库创建数据集
 
-1. 单击左窗格中的“+ (加号)”，然后单击“数据集”。 
+1. 从左侧窗格中选择“创作”选项卡。
+
+1. 在左窗格中选择“+”（加号），然后选择“数据集” 。 
 
     ![“新建数据集”菜单](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
 1. 在“新建数据集”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。 
@@ -236,7 +236,7 @@ ms.locfileid: "96920869"
 
     b. 切换到“设置”选项卡，单击“项”的输入框，然后单击下面的“添加动态内容”链接。 
 
-    c. 在“添加动态内容”页面中，折叠“系统变量”和“函数”部分，单击“参数”下的 **tableList**，这会将顶部的表达式文本框自动填充为 `@pipeline().parameter.tableList`。 然后单击“完成” 。 
+    c. 在“添加动态内容”页面中，折叠“系统变量”和“函数”部分，单击“参数”下的 **tableList**，这会将顶部的表达式文本框自动填充为 `@pipeline().parameter.tableList`。 然后单击“完成”。 
 
     ![Foreach 参数生成器](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
@@ -277,7 +277,7 @@ ms.locfileid: "96920869"
     1. 选中“启用暂存”对应的复选框。
     1. 选择 **AzureStorageLinkedService** 作为 **存储帐户链接服务**。
 
-1. 若要验证管道设置，请单击管道工具栏上的“验证”。 确保没有任何验证错误。 若要关闭“管道验证报告”，请单击 **>>** 。
+1. 若要验证管道设置，请单击管道工具栏上的“验证”。 确保没有任何验证错误。 若要关闭“管道验证报告”，请单击双尖括号 >> 。
 
 ### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>创建管道 GetTableListAndTriggerCopyData
 
@@ -285,6 +285,8 @@ ms.locfileid: "96920869"
 
 * 查找 Azure SQL 数据库系统表，以获取要复制的表列表。
 * 触发管道“IterateAndCopySQLTables”来执行实际数据复制。
+
+以下是创建管道的步骤：
 
 1. 在左窗格中单击“+ (加)”，然后单击“管道”。
 1. 在“常规”面板的“属性”下，将管道的名称更改为 GetTableListAndTriggerCopyData 。 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c476fe2af1fb4bddff4799609b164aab14f57b00
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187386"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612606"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure 虚拟 WAN 是否已正式发布 (GA)？
 
@@ -254,7 +254,7 @@ ER 到 ER 之间的传输始终通过 Global Reach 进行。 虚拟中心网关�
 对于 VNet 到 VNet 连接，当前行为优先选择 ExpressRoute 线路路径而非中心到中心。 但是，不建议在虚拟 WAN 设置中进行此选择。 虚拟 WAN 团队正在研究修补程序，以支持优先选择中心到中心而非 ExpressRoute 路径。 对于区域间流量流，建议将多个 ExpressRoute 线路（不同提供商）连接到一个中心，并使用虚拟 WAN 提供的中心到中心连接。
 
 ### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>是否可以在虚拟 WAN 的不同资源组中创建中心？
-是的。 目前只能通过 powershell 使用此选项。 虚拟 WAN 门户要求中心与虚拟 WAN 资源本身位于同一资源组中。
+是的。 目前只能通过 PowerShell 使用此选项。 虚拟 WAN 门户要求中心与虚拟 WAN 资源本身位于同一资源组中。
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>虚拟 WAN 是否支持 IPv6？
 
@@ -277,3 +277,7 @@ ER 到 ER 之间的传输始终通过 Global Reach 进行。 虚拟中心网关�
 ### <a name="does-virtual-wan-store-customer-data"></a>虚拟 WAN 是否会存储客户数据？ 
 
 不是。 虚拟 WAN 不存储任何客户数据。
+
+### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>是否有托管服务提供程序可为用户管理虚拟 WAN 并作为一项服务进行管理？ 
+
+是。 有关通过 Azure 市场启用的托管服务提供程序 (MSP) 解决方案的列表，请参阅 [Azure 网络 MSP 合作伙伴提供的 Azure 市场产品/服务](../articles/networking/networking-partners-msp.md#msp)。

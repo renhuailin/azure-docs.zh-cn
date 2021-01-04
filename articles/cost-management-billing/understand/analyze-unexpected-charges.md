@@ -8,13 +8,13 @@ ms.subservice: cost-management
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: b2340e5b220936c1333cf842251b669b3e034042
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f6df8c6ff0db74798b71d57feae91e5245f2a6c2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151207"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028712"
 ---
 # <a name="analyze-unexpected-charges"></a>分析意外费用
 
@@ -80,7 +80,7 @@ Azure 帐单按计量器聚合了每月的费用。  计量器用于跟踪某个
 
 ### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>分析用户在资源父范围的权限
 
-对订阅或资源组拥有写入权限的人员通常会获得有关创建了资源的信息。 他们应该能够解释资源的用途，或者将你引领到知情的人。 若要识别在订阅范围拥有权限的人员，请参阅[查看角色分配](../../role-based-access-control/check-access.md#view-role-assignments)。 对于资源组，可以使用类似的过程。
+对订阅或资源组拥有写入权限的人员通常会获得有关创建了资源的信息。 他们应该能够解释资源的用途，或者将你引领到知情的人。 若要识别在订阅范围拥有权限的人员，请参阅[查看用户对 Azure 资源的访问权限](../../role-based-access-control/check-access.md)。 对于资源组，可以使用类似的过程。
 
 ## <a name="get-help-to-identify-charges"></a>获得识别费用方面的帮助
 

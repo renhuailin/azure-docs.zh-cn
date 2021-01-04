@@ -6,12 +6,12 @@ ms.author: rahugup
 manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
-ms.openlocfilehash: 187e17bcf385ba6b3c17566fc00e5ee77cf009fe
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: ce712736c25c0757f5b654e4442a4f08acdf15e2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752475"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029781"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>将 VMware VM 迁移到 Azure（使用无代理方法）- PowerShell
 
@@ -464,7 +464,7 @@ while (($StopReplicationJob.State -eq "InProgress") -or ($StopReplicationJob.Sta
 Write-Output $StopReplicationJob.State
 ```
 
-2. 在已迁移的计算机上安装 Azure VM [Windows](../virtual-machines/extensions/agent-windows.md) 或 [Linux](../virtual-machines/extensions/agent-linux.md) 代理。
+2. 如果计算机具有 Linux OS，请在迁移的计算机上安装 [Linux](../virtual-machines/extensions/agent-linux.md) 代理。 在迁移期间，我们会自动为 Windows VM 安装 VM 代理。
 3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
 4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
 5. 将流量交接到已迁移的 Azure VM 实例。

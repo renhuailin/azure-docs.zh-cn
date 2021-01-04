@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心提供的支持功能 | Microsoft Docs
-description: 此文档提供了 Azure 安全中心支持的服务的列表。
+title: 关于 OS、计算机类型和云的 Azure 安全中心的功能
+description: 了解根据其 OS、类型和云部署可以使用哪些 Azure 安全中心功能。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2020
+ms.date: 12/17/2020
 ms.author: memildin
-ms.openlocfilehash: 40d70c7bd740d8c72ddb72047a3bae3586e1aa1f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: b3671a57b8371c47b1690b4bf6be008d695d1ca0
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445245"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654738"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -99,10 +99,45 @@ ms.locfileid: "94445245"
 | McAfee v10+ | Linux 服务器系列  | 否 | 是 * *\** _ |
 | Sophos V9+| Linux 服务器系列  | 否 | 是 _*\**_  |
 
- _ *\** * 覆盖率状态和支持数据目前仅在与受保护订阅关联的 Log Analytics 工作区中可用。 这些数据不会在 Azure 安全中心门户中反映。
+ _*\**_ 覆盖率状态和支持数据目前仅在与受保护订阅关联的 Log Analytics 工作区中可用。 这些数据不会在 Azure 安全中心门户中反映。
 
 > [!NOTE]
 > 在 Windows Server 2008 R2 虚拟机上检测 System Center Endpoint Protection (SCEP) 需要在 PowerShell（v3.0 或更高版本）之后安装 SCEP。
+
+
+
+## <a name="feature-support-in-government-clouds"></a>政府云中的功能支持
+
+| 服务/功能 | US Gov | China Gov |
+|------|:----:|:----:|
+|[实时 VM 访问](security-center-just-in-time.md) (1)|✔|✔|
+|[文件完整性监视](security-center-file-integrity-monitoring.md) (1)|✔|-|
+|[自适应应用程序控制](security-center-adaptive-application.md) (1)|✔|✔|
+|[自适应网络强化](security-center-adaptive-network-hardening.md) (1)|-|-|
+|[Docker 主机强化](harden-docker-hosts.md) (1)|✔|✔|
+|[的集成漏洞评估](deploy-vulnerability-assessment-vm.md) (1)|-|-|
+|[用于终结点的 Microsoft Defender](harden-docker-hosts.md) (1)|✔|-|
+|[连接 AWS 帐户](quickstart-onboard-aws.md) (1)|-|-|
+|[连接 GCP 帐户](quickstart-onboard-gcp.md) (1)|-|-|
+|[连续导出](continuous-export.md)|✔|✔|
+|[工作流自动化](workflow-automation.md)|✔|✔|
+|[建议例外规则](exempt-resource.md)|-|-|
+|[警报抑制规则](alerts-suppression-rules.md)|✔|✔|
+|[安全警报的电子邮件通知](security-center-provide-security-contact-details.md)|✔|✔|
+|[资产清单](asset-inventory.md)|-|-|
+|[适用于应用服务的 Azure Defender](defender-for-app-service-introduction.md)|-|-|
+|[适用于存储的 Azure Defender](defender-for-storage-introduction.md)|✔|-|
+|[Azure Defender for SQL](defender-for-sql-introduction.md)|✔|✔ (2)|
+|[适用于 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)|-|-|
+|[适用于资源管理器的 Azure Defender](defender-for-resource-manager-introduction.md)|-|-|
+|[适用于 DNS 的 Azure Defender](defender-for-dns-introduction.md)|-|-|
+|[适用于 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)|✔|✔|
+|[适用于容器注册表的 Azure Defender](defender-for-container-registries-introduction.md)|✔ (2)|-|
+|||
+
+(1) 需要用于服务器的 Azure Defender*
+
+(2) 部分完成
 
 
 ## <a name="next-steps"></a>后续步骤

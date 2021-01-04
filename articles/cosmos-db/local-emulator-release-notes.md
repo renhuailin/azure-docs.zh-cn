@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 5d105ad4c2aff03dae52b340037e4c193bf82ca1
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 92fdef48556a3306ee5e3f10e07ff609a8fc4be4
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608429"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656217"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB 模拟器 - 发行说明和下载信息
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "96608429"
 | | |
 |---------|---------|
 |**MSI 下载**|[Microsoft 下载中心](https://aka.ms/cosmosdb-emulator)|
-|**入门**|[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)|
+|**入门**|[使用 Azure Cosmos DB 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
 
@@ -83,7 +83,7 @@ ms.locfileid: "96608429"
 
 ### <a name="246"></a>2.4.6
 
-- 除了[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)中所述的例外情况，此版本提供了到 2019 年 7 月为止的 Azure Cosmos 服务中的同等功能。 它还修复了与通过命令行调用时模拟器关闭相关的几个 bug，以及使用直接模式连接的 SDK 客户端的内部 IP 地址覆盖。
+- 除了[使用 Azure Cosmos DB 模拟器在本地开发](local-emulator.md)中所述的例外情况，此版本提供了到 2019 年 7 月为止的 Azure Cosmos 服务中的同等功能。 它还修复了与通过命令行调用时模拟器关闭相关的几个 bug，以及使用直接模式连接的 SDK 客户端的内部 IP 地址覆盖。
 
 ### <a name="243"></a>2.4.3
 

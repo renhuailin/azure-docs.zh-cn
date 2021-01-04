@@ -1,18 +1,18 @@
 ---
 title: 使用 JavaScript 向/从 Azure 事件中心发送/接收事件（最新版）
-description: 本文演练如何创建一个可使用最新 azure/event-hubs 版本 5 包向/从 Azure 事件中心发送/接收事件的 JavaScript 应用程序。
+description: 本文演练如何创建一个可使用最新 azure/event-hubs 包向/从 Azure 事件中心发送/接收事件的 JavaScript 应用程序。
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 01516f29e727b5be2a81d3d8dd473808b6ea60f7
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 2e5f297d5edb9a271843db060f948209dd076074
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728941"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106081"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>使用 JavaScript（azure/event-hubs 版本 5）向/从事件中心发送/接收事件
-本快速入门介绍如何使用 **azure/event-hubs 版本 5** JavaScript 包向事件中心发送事件以及从事件中心接收事件。 
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs"></a>使用 JavaScript (azure/event-hubs) 向/从事件中心发送/接收事件
+本快速入门介绍如何使用 azure/event-hubs JavaScript 包向事件中心发送事件以及从事件中心接收事件。 
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -32,7 +32,7 @@ ms.locfileid: "91728941"
 - **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取事件中心命名空间的连接字符串：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 稍后将在本快速入门中使用连接字符串。
 
 ### <a name="install-the-npm-package"></a>安装 npm 包
-若要安装[适用于事件中心的 Node 包管理器 (npm) 包](https://www.npmjs.com/package/@azure/event-hubs)，请打开路径中包含 *npm* 的命令提示符，将目录切换到用于保存示例的文件夹，然后运行以下命令：
+若要安装 [适用于事件中心的 Node 包管理器 (npm) 包](https://www.npmjs.com/package/@azure/event-hubs)，请打开路径中包含 *npm* 的命令提示符，将目录切换到用于保存示例的文件夹，然后运行以下命令：
 
 ```shell
 npm install @azure/event-hubs

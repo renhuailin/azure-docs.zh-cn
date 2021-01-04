@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 25c7016f6639df46a9279ef9a9aab2736efd4f95
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 460cca051d743102e734971cf45069362e24c147
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888651"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97105997"
 ---
 # <a name="metrics-overview"></a>指标概述
 
@@ -76,6 +76,17 @@ Azure 通信服务中的聊天和短信服务发出 API 请求的指标。 可�
 
 
 :::image type="content" source="./media/sms-metric.png" alt-text="短信 API 请求指标。":::
+
+### <a name="authentication-api-requests"></a>身份验证 API 请求
+
+以下操作适用于身份验证 API 请求指标：
+
+| 操作/路由    | 说明                                                                                    |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| CreateIdentity       | 创建表示单个用户的标识。 |
+| DeleteIdentity       | 删除标识。 |
+| CreateToken          | 创建访问令牌。 |
+| RevokeToken          | 撤消在指定时间之前为标识创建的所有访问令牌。 |
 
 ## <a name="next-steps"></a>后续步骤
 

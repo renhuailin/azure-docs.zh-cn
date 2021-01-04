@@ -74,7 +74,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: /java/api/com.microsoft.cognitiveservices.speech
-        - name: Javascript
+        - name: JavaScript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
@@ -153,7 +153,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: /java/api/com.microsoft.cognitiveservices.speech
-        - name: Javascript
+        - name: JavaScript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
@@ -203,7 +203,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: /java/api/com.microsoft.cognitiveservices.speech
-        - name: Javascript
+        - name: JavaScript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
@@ -248,7 +248,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: /java/api/com.microsoft.cognitiveservices.speech
-            - name: Javascript
+            - name: JavaScript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
             - name: Objective-C
@@ -319,7 +319,7 @@
                     - name: Java
                       displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
                       href: /java/api/com.microsoft.cognitiveservices.speech
-                    - name: Javascript
+                    - name: JavaScript
                       displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
                       href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
                     - name: Objective-C
@@ -363,25 +363,13 @@
               href: custom-commands.md
             - name: 快速入门
               items:
-                - name: 构建自定义命令应用
+                - name: 创建自定义命令应用
                   href: quickstart-custom-commands-application.md
             - name: 操作指南
               items:
-                - name: 开发
-                  items:
-                    - name: 通过简单的命令创建应用程序
-                      href: how-to-custom-commands-create-application-with-simple-commands.md
-                    - name: 向命令添加参数
-                      href: how-to-custom-commands-add-parameters-to-commands.md
-                    - name: 向命令参数添加配置
-                      href: how-to-custom-commands-add-parameter-configuration.md
-                    - name: 添加交互规则
-                      href: how-to-custom-commands-add-interaction-rules.md
-                    - name: 为语音响应添加语言生成模板
-                      href: how-to-custom-commands-add-language-generation-templates.md
-                    - name: 使用自定义语音
-                      href: how-to-custom-commands-use-custom-voice.md
-                - name: 集成
+                - name: 开发和自定义自定义命令应用
+                  href: how-to-develop-custom-commands-application.md
+                - name: 与客户端应用程序集成
                   items:
                     - name: 使用语音 SDK 与客户端应用集成
                       href: how-to-custom-commands-setup-speech-sdk.md
@@ -395,26 +383,18 @@
                       href: how-to-custom-commands-update-command-from-client.md
                     - name: 从 web 终结点更新命令
                       href: how-to-custom-commands-update-command-from-web-endpoint.md
-                - name: 部署
-                  items:
-                    - name: 使用 Azure DevOps 持续部署
-                      href: how-to-custom-commands-deploy-cicd.md
-                - name: 测试
-                  items:
-                    - name: 测试自定义命令应用
-                      href: how-to-custom-commands-developer-flow-test.md
-                - name: 调试
-                  items:
-                    - name: 调试创作应用时出现的错误
-                      href: how-to-custom-commands-debug-build-time.md
-                    - name: 调试运行应用时出现的错误
-                      href: how-to-custom-commands-debug-runtime.md
-                - name: 参考
-                  items:
-                    - name: 自定义命令概念
-                      href: custom-commands-references.md
+                - name: 使用 Azure DevOps 持续部署
+                  href: how-to-custom-commands-deploy-cicd.md
+                - name: 测试自定义命令应用程序
+                  href: how-to-custom-commands-developer-flow-test.md
+                - name: 调试创作应用时出现的错误
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: 调试运行应用时出现的错误
+                  href: how-to-custom-commands-debug-runtime.md
             - name: 资源
               items:
+                - name: 自定义命令概念
+                  href: custom-commands-references.md
                 - name: 自定义命令示例 (GitHub)
                   href: 'https://aka.ms/speech/cc-samples'
                 - name: 语音助手示例 (GitHub)
@@ -475,7 +455,7 @@
               href: /dotnet/api/microsoft.cognitiveservices.speech
             - name: Java
               href: /java/api/com.microsoft.cognitiveservices.speech
-            - name: Javascript
+            - name: JavaScript
               href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
             - name: Objective-C
               href: /objectivec/cognitive-services/speech/

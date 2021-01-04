@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/20/2020
+ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f6f56958fb63e73e254a45e7cf8ad457be8269ef
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602013"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607637"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Software AG Cloud 集成
 
@@ -77,12 +77,16 @@ ms.locfileid: "96602013"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
+    1. 在“登录 URL”文本框中，使用以下模式键入 URL：
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://*.softwareag.cloud/auth/realms/TENANT-NAME`
+        `https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
 
-    > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Software AG Cloud 客户端支持团队](mailto:support@softwareag.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    1. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+
+        `https://*.softwareag.cloud/auth/realms/TENANT-NAME`
+
+        > [!NOTE]
+        > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Software AG Cloud 客户端支持团队](mailto:support@softwareag.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -147,13 +151,10 @@ ms.locfileid: "96602013"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-* 假设已将 Microsoft Azure 配置为 Software AG Cloud 中的提供者，请导航至 `www.softwareag.cloud` 并单击“登录”按钮，然后输入环境名称。 在下一个屏幕中，单击“使用 <IDP NAME> 登录”链接并输入凭据。 经过身份验证后，你将登录并转到 Software AG Cloud 主页。
-
-* 直接转到 Software AG Cloud 登录 URL，并从那里启动登录流。
-
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Software AG Cloud 磁贴时，将会重定向到 Software AG Cloud 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
-
+假设已将 Microsoft Azure 配置为 Software AG Cloud 中的提供者，请导航至 `www.softwareag.cloud` 并单击“登录”按钮，然后输入环境名称。 在下一个屏幕中，单击“使用 <IDP NAME> 登录”链接并输入凭据。 经过身份验证后，你将登录并转到 Software AG Cloud 主页。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Software AG Cloud 后，可以强制实施会话控制，以实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置 Software AG Cloud 后，可以强制实施会话控制，以实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+
+

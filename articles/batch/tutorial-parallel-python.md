@@ -1,16 +1,16 @@
 ---
-title: 使用 Python API 运行并行工作负荷
+title: 教程 - 使用 Python API 运行并行工作负载
 description: 教程 - 在 Azure Batch 中使用 Batch Python 客户端库通过 ffmpeg 并行处理媒体文件
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 34cea5e0b60c0a7ee8c3d31dd02a6f7e975de738
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7013ef1e9b6dda4554b665fa8199edb86a8a9adb
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87853324"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106506"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>教程：使用 Python API 通过 Azure Batch 运行并行工作负荷
 
@@ -268,7 +268,7 @@ while datetime.datetime.now() < timeout_expiration:
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 通过 Batch 和存储帐户进行身份验证

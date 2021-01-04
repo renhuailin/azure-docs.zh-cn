@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 9081ba0aae14c39d70e62818dc13aa4d92c91986
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e1da9237f7dd4b4b0b5ae3b0cb3a2990ece76f55
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445953"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562015"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建公共负载均衡器以对 VM 进行负载均衡
 
@@ -50,6 +50,8 @@ New-AzResourceGroup -Name 'CreatePubLBQS-rg' -Location 'eastus'
 
 >[!NOTE]
 >对于生产型工作负载，建议使用标准 SKU 负载均衡器。 有关 sku 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram.png" alt-text="在快速入门中创建的标准负载均衡器资源。" border="false":::
 
 ## <a name="create-a-public-ip-address---standard"></a>创建公共 IP 地址 - 标准
 
@@ -445,6 +447,8 @@ $nicvm | Set-AzNetworkInterfaceIpConfig @be | Set-AzNetworkInterface
 
 >[!NOTE]
 >对于生产型工作负载，建议使用标准 SKU 负载均衡器。 有关 sku 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram-basic.png" alt-text="在快速入门中创建的基本负载均衡器资源。" border="false":::
 
 ## <a name="create-a-public-ip-address---basic"></a>创建公共 IP 地址 - 基本
 
