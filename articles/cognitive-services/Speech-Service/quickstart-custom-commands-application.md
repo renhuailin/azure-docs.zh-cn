@@ -10,16 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: d89f9330947d1c5d0146b8531f265d86d0fd5160
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.custom: references_regions
+ms.openlocfilehash: c5f8be87e7ee95e1deff12cce09204b5fe8a0bb7
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329145"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694188"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>使用自定义命令创建语音助手
 
-本快速入门介绍如何使用 Speech Studio 创建和测试基本的自定义命令应用程序。 你还可以从 Windows 客户端应用程序访问此应用程序。 通过**自定义命令**，可以轻松地构建经过优化的丰富语音命令应用程序，以实现语音首次交互体验。 它提供统一的创作体验、自动托管模型和相对较低的复杂性，从而帮助你集中精力为语音命令方案构建最佳解决方案。
+本快速入门介绍如何使用 Speech Studio 创建和测试基本的自定义命令应用程序。 你还可以从 Windows 客户端应用程序访问此应用程序。 通过 **自定义命令**，可以轻松地构建经过优化的丰富语音命令应用程序，以实现语音首次交互体验。 它提供统一的创作体验、自动托管模型和相对较低的复杂性，从而帮助你集中精力为语音命令方案构建最佳解决方案。
 
 ## <a name="region-availability"></a>区域可用性
 目前，自定义命令支持在以下区域创建的语音订阅：
@@ -27,12 +28,12 @@ ms.locfileid: "92329145"
 * 美国西部 2
 * 美国东部
 * 美国东部 2
+* 美国中西部
 * 北欧
 * 西欧
-* 美国中西部
-* 印度中部
 * 东亚
 * 东南亚
+* 印度中部
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,7 +61,7 @@ ms.locfileid: "92329145"
 1. 选择 " **新建项目** " 以创建项目。
 
 1. 在 " **名称** " 框中，输入 "项目名称" 作为 `Smart-Room-Lite` (或您选择的其他内容) 。
-1. 在 " **语言** " 列表中，选择 " **英语 (美国) **"。
+1. 在 " **语言** " 列表中，选择 " **英语 (美国)**"。
 1. 选择 " **浏览文件** "，然后在 "浏览" 窗口中选择 " **SmartRoomLite.js** 文件。
 
     > [!div class="mx-imgBorder"]
@@ -115,13 +116,13 @@ ms.locfileid: "92329145"
 
 选择右窗格顶部的 "  **发布** "。 发布完成后，将显示一个新窗口。 记下 " **应用程序 ID** " 和 " **语音资源密钥** " 的值。 需要这两个值才能从 Speech Studio 外部访问该应用程序。
 
-此外，也可以通过选择 "设置" " **Settings**  >  **常规**" 部分获取这些值。
+此外，也可以通过选择 "设置" "   >  **常规**" 部分获取这些值。
 
 ### <a name="access-application-from-client"></a>从客户端访问应用程序
 
 在本文的范围内，我们将使用作为必备组件的一部分下载的 Windows 语音助手客户端。 解压缩文件夹。
 1. 启动 **VoiceAssistantClient.exe**。
-1. 创建新的发布配置文件，并输入 **连接配置文件**的值。 在 " **常规设置** " 部分中，输入 "值" " **订阅密钥** " (这与在发布应用程序时保存的 **语音资源密钥** 值相同) 、 **订阅密钥区域** 和 **自定义命令应用 ID**。
+1. 创建新的发布配置文件，并输入 **连接配置文件** 的值。 在 " **常规设置** " 部分中，输入 "值" " **订阅密钥** " (这与在发布应用程序时保存的 **语音资源密钥** 值相同) 、 **订阅密钥区域** 和 **自定义命令应用 ID**。
     > [!div class="mx-imgBorder"]
     > ![突出显示用于创建 WVAC 配置文件的 "常规设置" 部分的屏幕截图。](media/custom-commands/create-profile.png)
 1. 选择 " **保存并应用配置文件**"。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 54d1d8a29c87f8d129c0ea5b29973c4fef0e6f7a
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 2d9d511098613ddc5bf3579a42b7abe91f51e1a4
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888991"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694311"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>使用 Azure CLI 2.0 创建 Log Analytics 工作区
 
@@ -32,10 +32,10 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- 本文要求 Azure CLI 版本2.0.30 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
+- 本文需要 Azure CLI 版本 2.0.30 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-workspace"></a>创建工作区
-使用 [az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) 创建工作区。 以下示例使用本地计算机上的资源管理器模板在 eastus 位置中创建工作区。 JSON 模板在经过配置后，只提示你输入工作区的名称，并为其他参数指定默认值，这些参数将会用作环境中的标准配置。 也可以将模板存储在 Azure 存储帐户中，以便在组织中共享访问。 有关使用模板的更多信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
+使用 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create)创建工作区。 以下示例使用本地计算机上的资源管理器模板在 eastus 位置中创建工作区。 JSON 模板在经过配置后，只提示你输入工作区的名称，并为其他参数指定默认值，这些参数将会用作环境中的标准配置。 也可以将模板存储在 Azure 存储帐户中，以便在组织中共享访问。 有关使用模板的更多信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
 有关支持的区域的信息，请参阅[可在哪些区域使用 Log Analytics](https://azure.microsoft.com/regions/services/)，并在“搜索产品”字段中搜索 Azure Monitor。
 
@@ -50,7 +50,7 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 
 ### <a name="create-and-deploy-template"></a>创建和部署模板
 
-1. 将以下 JSON 语法复制并粘贴到该文件中：
+1. 将以下 JSON 语法复制并粘贴到文件中：
 
     ```json
     {
@@ -111,7 +111,7 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 4. 已做好部署此模板的准备。 在包含模板的文件夹中使用以下命令。 当系统提示输入工作区名称时，提供一个在所有 Azure 订阅中全局唯一的名称。
 
     ```azurecli
-    az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
+    az deployment group create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
     ```
 
 部署可能需要几分钟才能完成。 完成后，会看到一条包含结果的消息，如下所示：

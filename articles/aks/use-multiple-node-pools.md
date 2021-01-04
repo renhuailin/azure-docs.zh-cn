@@ -4,12 +4,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 39c2fe177d0a6d913d7bf2b2baf44af3c69c0868
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: db153123622a59bbdde71afca4ea30e03a6fbf98
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006927"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694249"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -456,7 +456,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 有关如何使用 Kubernetes 高级计划功能的详细信息，请参阅[有关 AKS 中的高级计划程序功能的最佳做法][taints-tolerations]
 
-在上一步骤中，创建节点池时，应用了 *sku = gpu： NoSchedule* 破坏。 下面的基本示例 YAML 清单使用 toleration，以允许 Kubernetes 计划程序在该节点池中的节点上运行 NGINX pod。
+在上一步中，你在创建节点池时应用了 *sku=gpu:NoSchedule* 排斥。 以下基本示例 YAML 清单使用容许来允许 Kubernetes 计划程序在该节点池中的节点上运行 NGINX Pod。
 
 创建名为 `nginx-toleration.yaml` 的文件，并将其复制到以下示例 YAML 中：
 
@@ -489,7 +489,7 @@ spec:
 kubectl apply -f nginx-toleration.yaml
 ```
 
-只需花费几秒钟时间即可计划 pod 并提取 NGINX 映像。 使用 [kubectl describe pod][kubectl-describe] 命令查看 pod 状态。 以下精简示例输出显示已应用 *sku=gpu:NoSchedule* 容许。 在 "事件" 部分中，计划程序已将 pod 分配到 *aks-28993262 taintnp-vmss000000* 节点：
+只需花费几秒钟时间即可计划 pod 并提取 NGINX 映像。 使用 [kubectl describe pod][kubectl-describe] 命令查看 pod 状态。 以下精简示例输出显示已应用 *sku=gpu:NoSchedule* 容许。 在 events 节中，计划程序已将 Pod 分配到 aks-taintnp-28993262-vmss000000 节点：
 
 ```console
 kubectl describe pod mypod
@@ -510,7 +510,7 @@ Events:
   Normal  Started    4m40s  kubelet             Started container
 ```
 
-只能在 *taintnp* 中的节点上计划已应用此 toleration 的箱。 任何其他 pod 将在 *nodepool1* 节点池中计划。 如果创建额外的节点池，可以使用额外的排斥和容许来限制可在这些节点资源上计划的 pod。
+只能在 taintnp 中的节点上计划已应用此容许的 Pod。 任何其他 pod 将在 *nodepool1* 节点池中计划。 如果创建额外的节点池，可以使用额外的排斥和容许来限制可在这些节点资源上计划的 pod。
 
 ### <a name="setting-nodepool-labels"></a>设置节点池标签
 
@@ -685,10 +685,10 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 }
 ```
 
-如以下示例中所示，使用 [az group deployment create][az-group-deployment-create] 命令部署此模板。 系统将提示输入现有的 AKS 群集名称和位置：
+使用 [az deployment group create][az-deployment-group-create] 命令部署此模板，如以下示例中所示。 系统将提示输入现有的 AKS 群集名称和位置：
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
     --resource-group myResourceGroup \
     --template-file aks-agentpools.json
 ```
@@ -829,7 +829,7 @@ az group delete --name myResourceGroup2 --yes --no-wait
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
 [gpu-cluster]: gpu-cluster.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md

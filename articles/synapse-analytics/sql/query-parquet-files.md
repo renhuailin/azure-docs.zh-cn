@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20bfbaeea48711a680877e4d5d8f618e84eb12d7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462567"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694681"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的无服务器 SQL 池查询 Parquet 文件
 
@@ -38,9 +38,9 @@ from openrowset(
 请确保可以访问此文件。 如果文件受 SAS 密钥或自定义 Azure 标识保护，则需要为 [sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
 
 > [!IMPORTANT]
-> 请确保使用 UTF-8 数据库排序规则 (例如 `Latin1_General_100_CI_AS_SC_UTF8`) ，因为 PARQUET 文件中的字符串值使用 utf-8 编码进行编码。
+> 请确保使用 UTF-8 数据库排序规则 (例如 `Latin1_General_100_BIN2_UTF8`) ，因为 PARQUET 文件中的字符串值使用 utf-8 编码进行编码。
 > PARQUET 文件中的文本编码与排序规则不匹配可能会导致意外的转换错误。
-> 您可以使用以下 T-sql 语句轻松更改当前数据库的默认排序规则： `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> 您可以使用以下 T-sql 语句轻松更改当前数据库的默认排序规则： `alter database current collate Latin1_General_100_BIN2_UTF8`
 
 ### <a name="data-source-usage"></a>数据源使用情况
 
@@ -74,10 +74,10 @@ from openrowset(
 ```
 
 > [!IMPORTANT]
-> 请确保 explicilty 指定某些 UTF-8 排序规则 (例如， `Latin1_General_100_CI_AS_SC_UTF8`) 对于子句中的所有字符串列， `WITH` 或者在数据库级别设置某些 utf-8 排序规则。
+> 请确保 explicilty 指定某些 UTF-8 排序规则 (例如， `Latin1_General_100_BIN2_UTF8`) 对于子句中的所有字符串列， `WITH` 或者在数据库级别设置某些 utf-8 排序规则。
 > 文件中的文本编码与字符串列排序规则中的文本编码不匹配可能会导致意外的转换错误。
-> 您可以使用以下 T-sql 语句轻松更改当前数据库的默认排序规则： `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
-> 可以使用以下定义轻松地对双列类型设置排序规则： `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8`
+> 您可以使用以下 T-sql 语句轻松更改当前数据库的默认排序规则： `alter database current collate Latin1_General_100_BIN2_UTF8`
+> 可以使用以下定义轻松地对双列类型设置排序规则： `geo_id varchar(6) collate Latin1_General_100_BIN2_UTF8`
 
 在以下部分中，可以了解如何查询各种类型的 PARQUET 文件。
 

@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中缩放资源：Web 应用、云服务、�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: bf0194e82acde0406cfeb57af027831f92a90c92
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: ee36db3f657365036bb68f641be53fd434f1b64b
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938301"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694915"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
@@ -121,7 +121,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 ### <a name="health-check-path"></a>运行状况检查路径
 
-路径必须在一分钟内响应，且状态码介于 200 到 299（含）之间。 如果路径未在一分钟内响应，或返回范围之外的状态代码，则将该实例视为“运行不正常”。 应用服务未遵循关于运行状况检查路径的 302 重定向。 运行状况检查集成了应用服务的身份验证和授权功能，即使启用了这些安全功能，系统也会到达终结点。 如果使用自己的身份验证系统，则必须允许匿名访问运行状况检查路径。 如果站点启用了“仅限 HTTPS”，则将通过 HTTPS 发送运行状况检查请求 。
+路径必须在一分钟内响应，且状态码介于 200 到 299（含）之间。 如果路径未在一分钟内响应，或返回范围之外的状态代码，则将该实例视为“运行不正常”。 在运行状况检查路径 ) 重定向时，应用服务不遵循 30 (301、302、307 **等。** 运行状况检查集成了应用服务的身份验证和授权功能，即使启用了这些安全功能，系统也会到达终结点。 如果使用自己的身份验证系统，则必须允许匿名访问运行状况检查路径。 如果站点启用了“仅限 HTTPS”，则将通过 HTTPS 发送运行状况检查请求 。
 
 运行状况检查路径应检查应用程序的关键组件。 例如，如果应用程序依赖于数据库和消息传递系统，则运行状况检查终结点应连接到这些组件。 如果应用程序无法连接到关键组件，则路径应返回介于 500 级别的响应代码，以指示应用运行不正常。
 
@@ -131,10 +131,10 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 ### <a name="behavior"></a>行为
 
-提供运行状况检查路径后，应用服务将在所有实例上 ping 通该路径。 如果进行 5 次 ping 后未收到表示成功的响应代码，则将该实例视为“运行不正常”。 如果扩展到2个或多个实例并使用 [基本层](../../app-service/overview-hosting-plans.md) 或更高级别，则不能从负载均衡器轮换中排除不正常的实例 () 。 可以通过应用设置配置所需的失败 ping 操作数 `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` 。 此应用设置可设置为2到10之间的任意整数。 例如，如果此设置为，则在出现 `2` 两个失败 ping 后，将从负载均衡器中删除实例。 此外，在纵向扩展或横向扩展时，应用服务将对运行状况检查路径进行 ping 操作，以确保在将新实例添加到负载均衡器之前已准备好请求。
+提供运行状况检查路径后，应用服务将在所有实例上 ping 通该路径。 如果进行 5 次 ping 后未收到表示成功的响应代码，则将该实例视为“运行不正常”。 如果扩展到2个或多个实例并使用 [基本层](../../app-service/overview-hosting-plans.md) 或更高级别，则不能从负载均衡器轮换中排除不正常的实例 () 。 可以通过 `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` 应用设置来配置所需的 ping 失败次数。 该应用设置可以设置为 2 到 10 之间的任何整数。 例如，如果设置为 `2`，则在两次失败的 ping 操作后，将从负载均衡器中删除实例。 此外，纵向扩展或横向扩展时，应用服务会在将新实例添加到负载均衡器之前，对运行状况检查路径执行 ping 操作，确保新实例可用于请求。
 
 > [!NOTE]
-> 请记住，你的应用服务计划必须扩展到2个或更多个实例，并且必须是 **基本层或更高级别** ，才能排除负载均衡器。 如果只有1个实例，则它不会从负载均衡器中删除，即使它不正常。 
+> 请记住，你的应用服务计划必须扩展到2个或更多个实例，并且必须是 **基本层或更高级别** ，才能排除负载均衡器。 如果只有 1 个实例，那么即使它不正常，也不会从负载均衡器中删除。 
 
 此外，在添加或重新启动实例时，会对运行状况检查路径进行 ping 操作，例如在 scale out 操作期间，手动重新启动，或通过 SCM 站点部署代码。 如果在执行这些操作期间运行状况检查失败，则不会将失败的实例添加到负载均衡器。 这可以防止这些操作对应用程序的可用性产生负面影响。
 
@@ -146,19 +146,19 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 提供应用程序的运行状况检查路径后，可以使用 Azure Monitor 监视站点的运行状况。 在门户的“运行状况检查”边栏选项卡中，单击顶部工具栏中的“指标” 。 此操作将打开新的边栏选项卡，可以在其中查看站点的历史运行状况以及新建预警规则。 有关监视站点的更多信息，请[参阅 Azure Monitor 指南](../../app-service/web-sites-monitor.md)。
 
-## <a name="moving-autoscale-to-a-different-region"></a>将自动缩放移动到不同的区域
-本部分介绍如何在同一订阅和资源组下将 Azure 自动缩放移到另一个区域。 可以使用 REST API 来移动自动缩放设置。
+## <a name="moving-autoscale-to-a-different-region"></a>将自动缩放移动到其他区域
+本部分介绍如何将 Azure 自动缩放移动到同一订阅和资源组下的另一个区域。 可以使用 REST API 来移动自动缩放设置。
 ### <a name="prerequisite"></a>先决条件
-1. 确保订阅和资源组可用，并且源区域和目标区域中的详细信息是相同的。
-1. 确保 Azure [区域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)中的 azure 自动缩放功能可用。
+1. 确保订阅和资源组可用，并且源区域和目标区域中的详细信息完全相同。
+1. 确保[要移动到的 Azure 区域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)支持 Azure 自动缩放。
 
 ### <a name="move"></a>移动
-使用 [REST API](/rest/api/monitor/autoscalesettings/createorupdate) 在新环境中创建自动缩放设置。 在目标区域中创建的自动缩放设置将是源区域中的自动缩放设置的副本。
+使用 [REST API](/rest/api/monitor/autoscalesettings/createorupdate) 在新环境中创建自动缩放设置。 在目标区域中创建的自动缩放设置是源区域中的自动缩放设置的副本。
 
-无法移动在源区域中与自动缩放设置关联的中创建的[诊断设置](./diagnostic-settings.md)。 完成创建 autosale 设置后，你将需要在目标区域中重新创建诊断设置。 
+无法移动所创建的与源区域中的自动缩放设置关联的[诊断设置](./diagnostic-settings.md)。 自动缩放设置创建完毕后，你需要在目标区域中重新创建诊断设置。 
 
-### <a name="learn-more-about-moving-resources-across-azure-regions"></a>详细了解如何在 Azure 区域之间移动资源
-若要详细了解如何在 Azure 中的区域和灾难恢复之间移动资源，请参阅 [将资源移到新的资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+### <a name="learn-more-about-moving-resources-across-azure-regions"></a>详细了解如何在 Azure 区域间移动资源
+要详细了解如何在区域之间移动资源，以及如何在 Azure 中进行灾难恢复，请参阅[将资源移动到新资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
 
 ## <a name="next-steps"></a>后续步骤
 - [创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

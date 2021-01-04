@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse 和 Azure 托管应用程序
-description: 了解 Azure Lighthouse 和 Azure 托管应用程序如何帮助实现不同的方案，以及如何将它们一起使用。
-ms.date: 08/12/2020
+description: 了解如何结合使用 Azure Lighthouse 和 Azure 托管应用程序。
+ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3d6c83a50f1da006f2618f7f4ff59759dac2555
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5c30c3234a57e25ceaa521ad485f58d4d663ebe9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436515"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693965"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse 和 Azure 托管应用程序
 
@@ -18,6 +18,16 @@ Azure 托管应用程序和 Azure Lighthouse 通过使服务提供商能够访�
 > 尽管我们指的是本主题中的服务提供商和客户，但 [管理多个租户的企业](enterprise.md) 可以使用相同的过程和工具。
 
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>比较 Azure Lighthouse 和 Azure 托管应用程序
+
+此表说明了可能会影响你是否可以选择使用 Azure Lighthouse 或 Azure 托管应用程序的一些高级差别。 如下所述，你还可以设计一种一起使用的解决方案。
+
+|注意事项  |Azure Lighthouse  |Azure 托管应用程序  |
+|---------|---------|---------|
+|典型用户     |管理多个租户的服务提供商或企业         |独立软件供应商 (Isv)          |
+|跨租户访问的范围     |订阅 () 或资源组 ()          |作用域为单个应用程序的资源组 ()          |
+|Azure Marketplace 中的可购买     |不能将任何 (产品/服务发布到 Azure Marketplace，但客户将单独计费)         |是         |
+|IP 保护     |是 (IP 可以保留在服务提供商的租户中)         |是 (按设计，资源组已锁定到客户)          |
+|拒绝分配     |否         |是        |
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
@@ -51,3 +61,4 @@ Azure 托管应用程序通常用于特定客户需求，可通过完全由服�
 
 - 了解 [Azure 托管应用程序](../../azure-resource-manager/managed-applications/overview.md)。
 - 了解如何 [在 Azure Lighthouse](../how-to/onboard-customer.md)中加入订阅。
+- 了解 [Azure Lighthouse 的 ISV 方案](isv-scenarios.md)。

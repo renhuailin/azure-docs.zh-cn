@@ -4,18 +4,18 @@ description: 了解如何控制群集管理员和群集用户对 Kubernetes 配�
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 371628b02ebecee23697e996ee0d484688167875
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 77b9988557106ef460d3b222ef85eb29e08f31c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684808"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693991"
 ---
 # <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 基于角色的访问控制定义对 Azure Kubernetes 服务 (AKS) 中的 Kubernetes 配置文件的访问
 
 可以使用 `kubectl` 工具来与 Kubernetes 群集交互。 在 Azure CLI 中，可以轻松获取所需的访问凭据和配置信息，以使用 `kubectl` 连接到 AKS 群集。 若要限制谁可以获取该 Kubernetes 配置 (kubeconfig) 信息及限制其拥有的权限，可以使用 Azure 基于角色的访问控制 (Azure RBAC)。
 
-本文介绍如何分配 Azure 角色，以限制可获取 AKS 群集的配置信息的人员。
+本文介绍如何分配用于限制谁可以获取 AKS 群集配置信息的 Azure 角色。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -38,7 +38,7 @@ ms.locfileid: "94684808"
   * 允许访问 *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action* API 调用。 此 API 调用[列出群集用户凭据][api-cluster-user]。
   * 下载 *clusterUser* 角色的 *kubeconfig*。
 
-这些 Azure 角色可应用于 Azure Active Directory (AD) 用户或组。
+这些 Azure 角色可以应用到 Azure Active Directory (AD) 用户或组。
 
 > [!NOTE]
 > 在使用 Azure AD 的群集上，具有 clusterUser 角色的用户有一个提示登录的空 kubeconfig 文件。 登录后，用户可以根据其 Azure AD 用户或组设置进行访问。 具有 clusterAdmin 角色的用户拥有管理员访问权限。
@@ -70,6 +70,22 @@ az role assignment create \
     --role "Azure Kubernetes Service Cluster Admin Role"
 ```
 
+> [!IMPORTANT]
+> 在某些情况下，帐户中的 *user.name* 与 *userPrincipalName* 不同，例如 Azure AD guest 用户：
+>
+> ```output
+> $ az account show --query user.name -o tsv
+> user@contoso.com
+> $ az ad user list --query "[?contains(otherMails,'user@contoso.com')].{UPN:userPrincipalName}" -o tsv
+> user_contoso.com#EXT#@contoso.onmicrosoft.com
+> ```
+>
+> 在这种情况下，请将 *ACCOUNT_UPN* 的值设置为 Azure AD 用户的 *userPrincipalName* 。 例如，如果帐户 *user.name* 是 *用户 \@ contoso.com*：
+> 
+> ```azurecli-interactive
+> ACCOUNT_UPN=$(az ad user list --query "[?contains(otherMails,'user@contoso.com')].{UPN:userPrincipalName}" -o tsv)
+> ```
+
 > [!TIP]
 > 若要将权限分配给 Azure AD 组，请使用组而不是用户的对象 ID 更新在上一示例中显示的 `--assignee` 参数。  若要获取组的对象 ID，请使用 [az ad group show][az-ad-group-show] 命令。 以下示例获取名为 *appdev* 的 Azure AD 组的对象 ID：`az ad group show --group appdev --query objectId -o tsv`
 
@@ -92,7 +108,7 @@ az role assignment create \
 
 ## <a name="get-and-verify-the-configuration-information"></a>获取并验证配置信息
 
-分配 Azure 角色后，使用 [az aks get 凭据][az-aks-get-credentials] 命令获取 aks 群集的 *kubeconfig* 定义。 以下示例获取 *--admin* 凭据，如果为用户分配了“群集管理员角色”，则这些凭据可正常运行：
+分配 Azure 角色后，请使用 [az aks get-credentials][az-aks-get-credentials] 命令获取 AKS 群集的 kubeconfig 定义。 以下示例获取 *--admin* 凭据，如果为用户分配了“群集管理员角色”，则这些凭据可正常运行：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin

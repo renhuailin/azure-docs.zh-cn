@@ -1,18 +1,21 @@
 ---
 title: 最佳做法
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
-ms.date: 11/18/2020
+ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0f19fceca0212bd0a05d7caa311403b173c19de5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 5c3521a3b5fe0dd9c2d1534f6e2a6864647f5da3
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563171"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694172"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
 本文介绍了有效使用 Azure Batch 服务的最佳做法和有用技巧集合，这些做法基于使用 Batch 的实际体验。 这些技巧有助于增强性能，并避免 Azure Batch 解决方案中出现设计缺陷。
+
+> [!TIP]
+> 有关 Azure Batch 中的安全性的指南，请参阅 [Batch security and 相容性最佳实践](security-best-practices.md)。
 
 ## <a name="pools"></a>池
 

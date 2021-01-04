@@ -15,12 +15,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3bd938355d138e660958e34d046d7af03e75c7
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: edb602e3d55ae07f49d5448283ae0d2b6da4b0cb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97371078"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694135"
 ---
 # <a name="manage-agent-registry-options"></a>管理代理注册表选项
 
@@ -63,6 +63,30 @@ System.DirectoryServices.Protocols.LdapException: The operation was aborted beca
     > ![检索跟踪](media/how-to-manage-registry-options/referral-chasing.png)
 1. 从 " *服务* " 控制台重新启动 Azure AD Connect 预配服务。
 1. 如果已部署了多个设置代理，请将此注册表更改应用到所有代理以实现一致性。
+
+## <a name="skip-gmsa-configuration"></a>跳过 GMSA 配置
+对于代理版本 1.1.281.0 +，默认情况下，当你运行代理配置向导时，系统将提示你设置 [组托管服务帐户 (GMSA) ](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)。 向导设置的 GMSA 在运行时用于所有同步和预配操作。 
+
+如果要从以前版本的代理升级，并使用特定于 Active Directory 拓扑的委托 OU 级别权限设置自定义服务帐户，则可能需要跳过/延迟 GMSA 配置并规划此更改。 
+
+> [!NOTE]
+> 本指南专门适用于已配置 HR (Workday/SuccessFactors) 入站预配与1.1.281.0 之前的代理版本的客户，并为代理操作设置了自定义服务帐户。 在长时间运行中，建议切换到 GMSA 作为最佳实践。  
+
+在这种情况下，你仍可以升级代理二进制文件，并使用以下步骤跳过 GMSA 配置： 
+
+1. 在运行 Azure AD Connect 设置代理的 Windows server 上以管理员身份登录。
+1. 运行代理安装程序以安装新的代理二进制文件。 关闭安装成功后自动打开的代理配置向导。 
+1. 使用 " *运行* " 菜单项打开注册表编辑器 ( # A0)  
+1. 找到密钥文件夹 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure AD Connect Agents\Azure AD Connect Provisioning Agent**
+1. 右键单击并选择 "New-> DWORD 值"
+1. 提供名称： `UseCredentials`
+1. 双击 **值名称** ，并输入值 "数据为" `1` 。  
+    > [!div class="mx-imgBorder"]
+    > ![使用凭据](media/how-to-manage-registry-options/use-credentials.png)
+1. 从 " *服务* " 控制台重新启动 Azure AD Connect 预配服务。
+1. 如果已部署了多个设置代理，请将此注册表更改应用到所有代理以实现一致性。
+1. 在桌面简短剪切中，运行代理配置向导。 向导将跳过 GMSA 配置。 
+
 
 > [!NOTE]
 > 你可以通过启用 [详细日志记录](how-to-troubleshoot.md#log-files)来确认已设置注册表选项。 在代理启动过程中发出的日志将显示从注册表中选取的配置值。 

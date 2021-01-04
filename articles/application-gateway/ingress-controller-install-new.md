@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 5e3473a9afefe73fe7b07d3efda1f53675264fc8
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 9f69f89f565b2d98e408b06e300ff781c13680ef
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874621"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693669"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何安装使用新应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -40,7 +40,7 @@ ms.locfileid: "94874621"
 
 遵循以下步骤创建 Azure Active Directory (AAD) [服务主体对象](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 请记下 `appId`、`password` 和 `objectId` 值 - 在后续步骤中需要用到。
 
-1. 创建 AD 服务主体 ([详细了解 AZURE RBAC](../role-based-access-control/overview.md)) ：
+1. 创建 AD 服务主体（[详细了解 Azure RBAC](../role-based-access-control/overview.md)）：
     ```azurecli
     az ad sp create-for-rbac --skip-assignment -o json > auth.json
     appId=$(jq -r ".appId" auth.json)
@@ -66,7 +66,7 @@ ms.locfileid: "94874621"
     }
     EOF
     ```
-    若要部署启用了 **KUBERNETES RBAC** 的群集，请将 `aksEnableRBAC` 字段设置为 `true`
+    若要部署启用了“Kubernetes RBAC”的群集，请将 `aksEnableRBAC` 字段设置为 `true`
 
 ## <a name="deploy-components"></a>部署组件
 此步骤将以下组件添加到订阅：
@@ -92,7 +92,7 @@ ms.locfileid: "94874621"
     az group create -n $resourceGroupName -l $location
 
     # modify the template as needed
-    az group deployment create \
+    az deployment group create \
             -g $resourceGroupName \
             -n $deploymentName \
             --template-file template.json \
@@ -101,7 +101,7 @@ ms.locfileid: "94874621"
 
 1. 部署完成后，将部署输出下载到名为 `deployment-outputs.json` 的文件中。
     ```azurecli
-    az group deployment show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
+    az deployment group show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
     ```
 
 ## <a name="set-up-application-gateway-ingress-controller"></a>设置应用程序网关入口控制器
@@ -131,13 +131,13 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
 将 AAD Pod Identity 安装到群集：
 
-   - *已启用 KUBERNETES RBAC* AKS 群集
+   - 已启用 Kubernetes RBAC 的 AKS 群集
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
      ```
 
-   - *已禁用 KUBERNETES RBAC* AKS 群集
+   - 已禁用 Kubernetes RBAC 的 AKS 群集
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
@@ -148,7 +148,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
 1. 安装 [Helm](../aks/kubernetes-helm.md) 并运行以下命令来添加 `application-gateway-kubernetes-ingress` Helm 包：
 
-    - *已启用 KUBERNETES RBAC* AKS 群集
+    - 已启用 Kubernetes RBAC 的 AKS 群集
 
         ```bash
         kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -156,7 +156,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
         helm init --tiller-namespace kube-system --service-account tiller-sa
         ```
 
-    - *已禁用 KUBERNETES RBAC* AKS 群集
+    - 已禁用 Kubernetes RBAC 的 AKS 群集
 
         ```bash
         helm init

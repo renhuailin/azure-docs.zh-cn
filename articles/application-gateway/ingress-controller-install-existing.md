@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2f585dd80219afac7c67eebabd72cb41dce0b673
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2d64766c754c0ea104ae83fde799a514e9da6d68
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018692"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693730"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>安装使用现有应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -46,7 +46,7 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
 
 1. 安装 [Helm](../aks/kubernetes-helm.md) 并运行以下命令来添加 `application-gateway-kubernetes-ingress` Helm 包：
 
-    - *已启用 KUBERNETES RBAC* AKS 群集
+    - 已启用 Kubernetes RBAC 的 AKS 群集
 
     ```bash
     kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -54,7 +54,7 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
     helm init --tiller-namespace kube-system --service-account tiller-sa
     ```
 
-    - *已禁用 KUBERNETES RBAC* AKS 群集
+    - 已禁用 Kubernetes RBAC 的 AKS 群集
 
     ```bash
     helm init
@@ -296,7 +296,7 @@ appgw:
 kubectl get AzureIngressProhibitedTargets prohibit-all-targets -o yaml
 ```
 
-顾名思义，`prohibit-all-targets` 对象将禁止 AGIC 更改任何主机和路径的配置。
+顾名思义，`prohibit-all-targets` 对象将禁止 AGIC 更改任何主机和路径的配置。 
 使用 `appgw.shared=true` 的 Helm 安装将部署 AGIC，但不会对应用程序网关进行任何更改。
 
 
@@ -323,7 +323,7 @@ kubectl get AzureIngressProhibitedTargets prohibit-all-targets -o yaml
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>为现有的 AGIC 安装启用
-假设我们的群集中已有一个正常运行的 AKS、应用程序网关且已配置 AGIC。 我们有 `prod.contosor.com` 的入口，并且能够成功地从 AKS 为它提供流量。 我们想要将 `staging.contoso.com` 添加到现有的应用程序网关，但需要将此网关托管在 [VM](https://azure.microsoft.com/services/virtual-machines/) 上。 我们将重复使用现有的应用程序网关，并为 `staging.contoso.com` 手动配置侦听器和后端池。 但是，手动调整应用程序网关配置（通过[门户](https://portal.azure.com)、[ARM API](/rest/api/resources/) 或 [Terraform](https://www.terraform.io/)）将与 AGIC 拥有完全所有权的事实相冲突。 应用更改后不久，AGIC 将会覆盖或删除这些更改。
+假设我们的群集中已有一个正常运行的 AKS、应用程序网关且已配置 AGIC。 我们有 `prod.contoso.com` 的入口，并且能够成功地从 AKS 为它提供流量。 我们想要将 `staging.contoso.com` 添加到现有的应用程序网关，但需要将此网关托管在 [VM](https://azure.microsoft.com/services/virtual-machines/) 上。 我们将重复使用现有的应用程序网关，并为 `staging.contoso.com` 手动配置侦听器和后端池。 但是，手动调整应用程序网关配置（通过[门户](https://portal.azure.com)、[ARM API](/rest/api/resources/) 或 [Terraform](https://www.terraform.io/)）将与 AGIC 拥有完全所有权的事实相冲突。 应用更改后不久，AGIC 将会覆盖或删除这些更改。
 
 我们可以禁止 AGIC 对一部分配置进行更改。
 
@@ -344,4 +344,4 @@ kubectl get AzureIngressProhibitedTargets prohibit-all-targets -o yaml
     kubectl get AzureIngressProhibitedTargets
     ```
 
-3. 通过门户修改应用程序网关配置-添加侦听器、路由规则、后端等。我们创建 () 的新对象 `manually-configured-staging-environment` 将禁止 AGIC 覆盖与相关的应用程序网关配置 `staging.contoso.com` 。
+3. 通过门户修改应用程序网关配置 - 添加侦听器、路由规则、后端等。创建的新对象 (`manually-configured-staging-environment`) 将禁止 AGIC 覆盖与 `staging.contoso.com` 相关的应用程序网关配置。

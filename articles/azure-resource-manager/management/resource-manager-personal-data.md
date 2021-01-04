@@ -3,12 +3,12 @@ title: 个人数据
 description: 了解如何管理与 Azure 资源管理器操作相关联的个人数据。
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 22cfc1b6096980f3d10db404a1c4e02f2de355d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e531f7cd9992536bcc191637111761c5bbdefa2
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75485255"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693692"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>管理与 Azure 资源管理器相关联的个人数据
 
@@ -22,29 +22,29 @@ ms.locfileid: "75485255"
 
 进行部署时，资源管理器会在部署历史记录中保留参数值和状态消息。 这些值会一直保留到你从历史记录中删除部署。 若要查看你是否在这些值中提供了个人数据，请列出部署。 如果找到个人数据，请从历史记录中删除部署。
 
-若要在历史记录中列出**部署**，请使用：
+若要在历史记录中列出 **部署**，请使用：
 
 * [按资源组列表](/rest/api/resources/deployments/listbyresourcegroup)
 * [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment)
-* [az group deployment list](/cli/azure/group/deployment#az-group-deployment-list)
+* [az deployment group list](/cli/azure/deployment/group#az_deployment_group_list)
 
-若要从历史记录中删除**部署**，请使用：
+若要从历史记录中删除 **部署**，请使用：
 
 * [删除](/rest/api/resources/deployments/delete)
 * [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
-* [az group deployment delete](/cli/azure/group/deployment#az-group-deployment-delete)
+* [az 部署组删除](/cli/azure/deployment/group#az_deployment_group_delete)
 
 ## <a name="delete-personal-data-in-resource-group-names"></a>在资源组名称中删除个人数据
 
 资源组的名称会一直保留到你删除该资源组。 若要查看你是否在名称中提供了个人数据，请列出资源组。 如果找到个人数据，请[移动资源](move-resource-group-and-subscription.md)至新的资源组，然后删除名称中包含个人数据的资源组。
 
-若要列出**资源组**，请使用：
+若要列出 **资源组**，请使用：
 
 * [列表](/rest/api/resources/resourcegroups/list)
 * [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)
 * [az group list](/cli/azure/group#az-group-list)
 
-若要删除**资源组**，请使用：
+若要删除 **资源组**，请使用：
 
 * [删除](/rest/api/resources/resourcegroups/delete)
 * [Remove-AzResourceGroup](/powershell/module/az.resources/Remove-AzResourceGroup)
@@ -54,13 +54,13 @@ ms.locfileid: "75485255"
 
 标记名称和值会一直保留到你删除或修改该标记。 若要查看你是否在标记中提供了个人数据，请列出标记。 如果找到个人数据，请删除这些标记。
 
-若要列出**标记**，请使用：
+若要列出 **标记**，请使用：
 
 * [列表](/rest/api/resources/tags/list)
 * [Get-AzTag](/powershell/module/az.resources/Get-AzTag)
 * [az tag list](/cli/azure/tag#az-tag-list)
 
-若要删除**标记**，请使用：
+若要删除 **标记**，请使用：
 
 * [删除](/rest/api/resources/tags/delete)
 * [Remove-AzTag](/powershell/module/az.resources/Remove-AzTag)
