@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 29163bf30807b6deac397217475d76e29695f1eb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b73131285c7436e2108a64a136f241724a29b5c6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456885"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672431"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>教程：Azure Active Directory 与 BorrowBox 集成
 
@@ -64,7 +64,7 @@ ms.locfileid: "92456885"
 
 4. 在搜索框中，键入“BorrowBox”，在结果面板中选择“BorrowBox”，然后单击“添加”按钮添加该应用程序。   
 
-     ![结果列表中的 BorrowBox](common/search-new-app.png)
+    ![结果列表中的 BorrowBox](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -150,7 +150,7 @@ ms.locfileid: "92456885"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 

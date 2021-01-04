@@ -9,16 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904952"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679078"
 ---
-# <a name="tutorial---migrate-web-service-from-bing-maps"></a>教程 - 从必应地图迁移 Web 服务
+# <a name="tutorial-migrate-web-service-from-bing-maps"></a>教程：从必应地图迁移 Web 服务
 
-Azure Maps 和必应地图都通过 REST Web 服务提供对空间 API 的访问。 这些平台的 API 接口执行类似的功能，但使用不同的命名约定和响应对象。
+Azure Maps 和必应地图都通过 REST Web 服务提供对空间 API 的访问。 这些平台的 API 接口执行类似的功能，但使用不同的命名约定和响应对象。 在本教程中，您将学习如何执行以下操作：
+
+> * 正向/反向地理编码
+> * 搜索兴趣点
+> * 计算路线和方向
+> * 检索地图图像
+> * 计算距离矩阵
+> * 获取时区详细信息
 
 下表提供了功能与所列必应地图服务 API 类似的 Azure Maps 服务 API。
 
@@ -59,6 +66,12 @@ Azure Maps 提供其他几个你可能会感兴趣的 REST Web 服务；
 -   [有关搜索的最佳做法](./how-to-use-best-practices-for-search.md)
 -   [路线规划最佳做法](./how-to-use-best-practices-for-routing.md)
 
+## <a name="prerequisites"></a>先决条件
+
+1. 登录 [Azure 门户](https://portal.azure.com)。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+2. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
+
 ## <a name="geocoding-addresses"></a>地理编码地址
 
 地理编码是将地址（例如 `"1 Microsoft way, Redmond, WA"`）转换为坐标（例如经度：-122.1298，纬度：47.64005）的过程。 坐标通常用于在地图上定位某个图钉，或者设置地图的中心点。
@@ -91,9 +104,9 @@ Azure Maps 提供多种方法用于对地址进行地理编码；
 
 Azure Maps 也支持；
 
--   `countrySecondarySubdivision` - 县、地区
--   `countryTertiarySubdivision` - 已命名的区域；自治市镇、行政区、公社
--   `ofs` - 包含结果和 `maxResults` 参数的页面。
+* `countrySecondarySubdivision` - 县、地区
+* `countryTertiarySubdivision` - 已命名的区域；自治市镇、行政区、公社
+* `ofs` - 包含结果和 `maxResults` 参数的页面。
 
 按查询划分的位置（自由格式的地址字符串）
 
@@ -109,10 +122,10 @@ Azure Maps 也支持；
 
 Azure Maps 也支持；
 
--   `typeahead` - 如果查询将解释为部分输入，并且搜索将进入预测模式（自动建议/自动完成），则会指定。
--   `countrySet` - 用于搜索限制的 ISO2 国家/地区代码的逗号分隔列表。
--   `lat`/`lon`、`topLeft`/`btmRight`、`radius` - 指定用户位置和区域，以提高结果的本地相关性。
--   `ofs` - 包含结果和 `maxResults` 参数的页面。
+* `typeahead` - 如果查询将解释为部分输入，并且搜索将进入预测模式（自动建议/自动完成），则会指定。
+* `countrySet` - 用于搜索限制的 ISO2 国家/地区代码的逗号分隔列表。
+* `lat`/`lon`、`topLeft`/`btmRight`、`radius` - 指定用户位置和区域，以提高结果的本地相关性。
+* `ofs` - 包含结果和 `maxResults` 参数的页面。
 
 [此处](./how-to-search-for-address.md)提供了演示如何使用搜索服务的示例。 请务必查看[搜索最佳做法](./how-to-use-best-practices-for-search.md)文档。
 
@@ -142,9 +155,9 @@ Azure Maps 提供多种反向地理编码方法；
 
 Azure Maps 反向地理编码 API 提供必应地图所不能提供的其他一些功能，在迁移应用时，集成这些功能可能会有所帮助：
 
--   检索限速数据。
--   检索道路使用信息；地方道路、干道、限制进入、匝道等。
--   坐标所在的街道一侧。
+* 检索限速数据。
+* 检索道路使用信息；地方道路、干道、限制进入、匝道等。
+* 坐标所在的街道一侧。
 
 实体类型比较表
 
@@ -174,10 +187,10 @@ Azure Maps 反向地理编码 API 提供必应地图所不能提供的其他一�
 
 Azure Maps 可用于计算路线和方向。 Azure Maps 具有许多与必应地图路线服务相同的功能，例如；
 
--   抵达和出发时间
--   实时和基于预测的交通路线
--   不同的交通方式；驾车、步行、卡车
--   航点顺序优化（旅行销售员）
+* 抵达和出发时间
+* 实时和基于预测的交通路线
+* 不同的交通方式；驾车、步行、卡车
+* 航点顺序优化（旅行销售员）
 
 > [!NOTE]
 > Azure Maps 要求以坐标提供中途点。 首先需要对地址进行地理编码。
@@ -237,21 +250,21 @@ Azure Maps 路线 API 还支持同一 API 中的卡车路线。 下表对其他�
 
 Azure Maps 路线 API 提供必应地图所不能提供的其他许多功能，在迁移应用时，集成这些功能可能会有所帮助：
 
--   路线类型支持：最短、最快、trilling 和最省油。
--   其他交通方式支持：自行车、公共汽车、摩托车、出租车、货车和面包车。
--   支持 150 个中途点。
--   计算单个请求中的多个旅行时间；历史交通状况、实时交通状况、无交通状况。
--   避开其他道路类型：共乘车道、土路、已占用的道路。
--   基于引擎规格规划路线。 根据剩余燃料/电量和引擎规格计算燃料汽车或电动车的路线。
--   指定最大车速。
+* 路线类型支持：最短、最快、trilling 和最省油。
+* 其他交通方式支持：自行车、公共汽车、摩托车、出租车、货车和面包车。
+* 支持 150 个中途点。
+* 计算单个请求中的多个旅行时间；历史交通状况、实时交通状况、无交通状况。
+* 避开其他道路类型：共乘车道、土路、已占用的道路。
+* 基于引擎规格规划路线。 根据剩余燃料/电量和引擎规格计算燃料汽车或电动车的路线。
+* 指定最大车速。
 
 ## <a name="snap-coordinates-to-road"></a>将坐标与道路对齐
 
 在 Azure Maps 中，有几种方法可以将坐标与道路对齐。
 
--   使用路线方向 API 以沿道路网络将坐标对齐到逻辑路线。
--   使用 Azure Maps Web SDK 将各坐标与矢量图块中最近的道路对齐。
--   直接使用 Azure Maps 矢量图块对齐各个坐标。
+* 使用路线方向 API 以沿道路网络将坐标对齐到逻辑路线。
+* 使用 Azure Maps Web SDK 将各坐标与矢量图块中最近的道路对齐。
+* 直接使用 Azure Maps 矢量图块对齐各个坐标。
 
 使用路线方向 API 对齐坐标
 
@@ -259,8 +272,8 @@ Azure Maps 可以通过使用[路线方向](/rest/api/maps/route/postroutedirect
 
 可以通过两种不同的方法使用路线方向 API 将坐标与道路对齐。
 
--   如果坐标为 150 个或更少，则可以作为 GET 路线方向 API 中的航点传递。 使用这种方法可以检索两种不同类型的对齐数据；路径指令将包含各个对齐的航点，而路线路径将具有一组用于填充坐标之间的完整路径的内插坐标。
--   如果坐标超过 150 个，可以使用 POST 路线方向 API。 开始坐标和结束坐标必须传递到查询参数中，但所有坐标都可以传递到 POST 请求正文中的 `supportingPoints` 参数，并格式化为点的 GeoJSON 几何集合。 使用此方法的唯一可用的对齐数据将是路线路径，该路径是一组用于填充坐标之间的完整路径的内插坐标。 下面是使用 Azure Maps Web SDK 中的服务模块的此方法的[示例](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path)。
+* 如果坐标为 150 个或更少，则可以作为 GET 路线方向 API 中的航点传递。 使用这种方法可以检索两种不同类型的对齐数据；路径指令将包含各个对齐的航点，而路线路径将具有一组用于填充坐标之间的完整路径的内插坐标。
+* 如果坐标超过 150 个，可以使用 POST 路线方向 API。 开始坐标和结束坐标必须传递到查询参数中，但所有坐标都可以传递到 POST 请求正文中的 `supportingPoints` 参数，并格式化为点的 GeoJSON 几何集合。 使用此方法的唯一可用的对齐数据将是路线路径，该路径是一组用于填充坐标之间的完整路径的内插坐标。 下面是使用 Azure Maps Web SDK 中的服务模块的此方法的[示例](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path)。
 
 下表对必应地图 API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
 
@@ -268,8 +281,8 @@ Azure Maps 可以通过使用[路线方向](/rest/api/maps/route/postroutedirect
 |----------------------------|---------------------------------------------------------------------|
 | `points`                   | `supportingPoints` - 将这些点传递到 post 请求的正文中  |
 | `interpolate`              | 空值                                                                 |
-| `includeSpeedLimit`        | 空值                                                                 |
-| `includeTruckSpeedLimit`   | 空值                                                                 |
+| `includeSpeedLimit`        | 不适用                                                                 |
+| `includeTruckSpeedLimit`   | 不适用                                                                 |
 | `speedUnit`                | 空值                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
@@ -330,7 +343,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 | `mapLayer` (`ml`)        | 空值                                            |
 | `mapSize` (`ms`)         | `width` 和 `height` – 最大大小可为 8192x8192。 |
 | `declutterPins` (`dcl`)  | 空值                                            |
-| `dpi`                    | 空值                                            |
+| `dpi`                    | 不适用                                            |
 | `drawCurve`              | `path`                                         |
 | `mapMetadata`            | 空值                                            |
 | `pitch`                  | N/A - 不支持街景。                |
@@ -368,9 +381,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 > `&pushpin=45,-110;7;AB`
 
-<center>
-
-![必应地图静态地图图钉](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)</center>
+![必应地图静态地图图钉](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)
 
 **后者：Azure Maps**
 
@@ -384,21 +395,21 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 `iconType` 值指定要创建的图钉类型，可使用以下值：
 
--   `default` – 默认的图钉图标。
--   `none` – 不显示图标，只呈现标签。
--   `custom` – 指定要使用的自定义图标。 可将指向图标图像的 URL 添加到图钉位置信息后的 `pins` 参数的末尾。
--   `{udid}` - 存储在 Azure Maps 数据存储平台中的图标的唯一数据 ID (UDID)。
+* `default` – 默认的图钉图标。
+* `none` – 不显示图标，只呈现标签。
+* `custom` – 指定要使用的自定义图标。 可将指向图标图像的 URL 添加到图钉位置信息后的 `pins` 参数的末尾。
+* `{udid}` - 存储在 Azure Maps 数据存储平台中的图标的唯一数据 ID (UDID)。
 
 Azure Maps 中添加的图钉样式采用 `optionNameValue` 格式，多个样式以竖线 (`|`) 字符分隔，例如 `iconType|optionName1Value1|optionName2Value2`。 请注意，不用分隔选项名称和值。 可使用以下样式选项名称来为 Azure Maps 中的图钉设置样式：
 
--   `al` - 指定图钉的不透明度 (alpha)。 可以是 0 到 1 的数字。
--   `an` – 指定图钉定位点。 x 和 y 像素值以 `x y` 格式指定。
--   `co` – 图钉的颜色。 必须是 24 位十六进制颜色：`000000` 到 `FFFFFF`。
--   `la` – 指定标签定位点。 x 和 y 像素值以 `x y` 格式指定。
--   `lc` – 标签的颜色。 必须是 24 位十六进制颜色：`000000` 到 `FFFFFF`。
--   `ls` – 标签的大小（以像素为单位）。 可以是大于 0 的数字。
--   `ro` – 图标的旋转度数值。 可以是 -360 到 360 的数字。
--   `sc` – 图钉图标的比例值。 可以是大于 0 的数字。
+* `al` - 指定图钉的不透明度 (alpha)。 可以是 0 到 1 的数字。
+* `an` – 指定图钉定位点。 x 和 y 像素值以 `x y` 格式指定。
+* `co` – 图钉的颜色。 必须是 24 位十六进制颜色：`000000` 到 `FFFFFF`。
+* `la` – 指定标签定位点。 x 和 y 像素值以 `x y` 格式指定。
+* `lc` – 标签的颜色。 必须是 24 位十六进制颜色：`000000` 到 `FFFFFF`。
+* `ls` – 标签的大小（以像素为单位）。 可以是大于 0 的数字。
+* `ro` – 图标的旋转度数值。 可以是 -360 到 360 的数字。
+* `sc` – 图钉图标的比例值。 可以是大于 0 的数字。
 
 需为每个图钉位置指定标签值，而不是使用应用于位置列表中所有图钉的单个标签值。 标签值可以是包含多个字符的字符串，并括在单引号中，以确保不会错误地将它视为样式或位置值。
 
@@ -406,17 +417,13 @@ Azure Maps 中添加的图钉样式采用 `optionNameValue` 格式，多个样�
 
 > `&pins=default|coFF0000|la15 50||'Space Needle'-122.349300 47.620180`
 
-<center>
-
-![Azure Maps 静态地图图钉](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)</center>
+![Azure Maps 静态地图图钉](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)
 
 以下示例添加具有标签值“1”、“2”和“3”的三个图钉：
 
 > `&pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12`
 
-<center>
-
-![Azure Maps 静态地图多个图钉](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)</center>
+![Azure Maps 静态地图多个图钉](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)
 
 ### <a name="draw-curve-url-parameter-format-comparison"></a>绘制曲线 URL 参数格式比较
 
@@ -436,9 +443,7 @@ Azure Maps 中添加的图钉样式采用 `optionNameValue` 格式，多个样�
 
 `&drawCurve=l,FF000088,4;45,-110_50,-100`
 
-<center>
-
-![必应地图静态地图线条](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)</center>
+![必应地图静态地图线条](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)
 
 **后者：Azure Maps**
 
@@ -450,20 +455,18 @@ Azure Maps 中添加的图钉样式采用 `optionNameValue` 格式，多个样�
 
 Azure Maps 中添加的路径样式采用 `optionNameValue` 格式，多个样式以竖线 (`|`) 字符分隔，例如 `optionName1Value1|optionName2Value2`。 请注意，不用分隔选项名称和值。 可使用以下样式选项名称来为 Azure Maps 中的路径设置样式：
 
--   `fa` - 呈现多边形时使用的填充颜色不透明度 (alpha)。 可以是 0 到 1 的数字。
--   `fc` - 用于呈现多边形区域的填充颜色。
--   `la` – 在呈现多边形的线条和轮廓时使用的线条颜色不透明 (alpha)。 可以是 0 到 1 的数字。
--   `lc` – 用于呈现多边形的线条和轮廓的线条颜色。
--   `lw` – 线条的宽度（以像素为单位）。
--   `ra` – 指定圆的半径（以米为单位）。
+* `fa` - 呈现多边形时使用的填充颜色不透明度 (alpha)。 可以是 0 到 1 的数字。
+* `fc` - 用于呈现多边形区域的填充颜色。
+* `la` – 在呈现多边形的线条和轮廓时使用的线条颜色不透明 (alpha)。 可以是 0 到 1 的数字。
+* `lc` – 用于呈现多边形的线条和轮廓的线条颜色。
+* `lw` – 线条的宽度（以像素为单位）。
+* `ra` – 指定圆的半径（以米为单位）。
 
 例如，在 Azure Maps 中，可以使用以下 URL 参数，将不透明度为 50%、粗细为 4 像素的蓝色线条添加到地图上的坐标（经度：-110，纬度：45）和（经度：-100，纬度：50）之间：
 
 > `&path=lc0000FF|la.5|lw4||-110 45|-100 50`
 
-<center>
-
-![Azure Maps 静态地图线条](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)</center>
+![Azure Maps 静态地图线条](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)
 
 ## <a name="calculate-a-distance-matrix"></a>计算距离矩阵
 
@@ -547,8 +550,8 @@ Azure Maps 提供多个搜索 API 用于搜索兴趣点：
 
 Azure Maps 提供了几个用于检索交通数据的 API。 可以使用两种类型的交通数据；
 
--   流量数据 - 提供有关道路各部分交通流量的指标。 这通常用于对道路设置颜色编码。 该数据每 2 分钟更新一次。
--   事件数据 - 提供有关施工、道路封闭、事故和其他可能影响交通的事件的数据。 该数据每分钟更新一次。
+* 流量数据 - 提供有关道路各部分交通流量的指标。 这通常用于对道路设置颜色编码。 该数据每 2 分钟更新一次。
+* 事件数据 - 提供有关施工、道路封闭、事故和其他可能影响交通的事件的数据。 该数据每分钟更新一次。
 
 必应地图在其交互式地图控件中提供交通流量和事件数据，并将事件数据作为服务提供。
 
@@ -602,9 +605,9 @@ Azure Maps 提供一个 API 用于检索坐标所在的时区。 Azure Maps 时�
 
 必应地图中的空间数据服务提供三个关键功能：
 
--   批处理地理编码 - 使用单个请求处理大量地址地理编码。
--   检索管理边界数据 - 使用坐标并获取指定实体类型的相交边界。
--   托管和查询空间业务数据 - 上传一个简单的 2D 数据表，并使用一些简单的空间查询访问它。
+* 批处理地理编码 - 使用单个请求处理大量地址地理编码。
+* 检索管理边界数据 - 使用坐标并获取指定实体类型的相交边界。
+* 托管和查询空间业务数据 - 上传一个简单的 2D 数据表，并使用一些简单的空间查询访问它。
 
 ### <a name="batch-geocode-data"></a>批处理地理编码数据
 
@@ -660,7 +663,11 @@ Azure Maps 为以下编程语言提供客户端库；
 
 其他编程语言的开源客户端库；
 
--   .NET Standard 2.0 – [GitHub 项目](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet 包](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+* .NET Standard 2.0 – [GitHub 项目](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet 包](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+
+## <a name="clean-up-resources"></a>清理资源
+
+没有要清理的资源。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -668,15 +675,3 @@ Azure Maps 为以下编程语言提供客户端库；
 
 > [!div class="nextstepaction"]
 > [有关使用搜索服务的最佳做法](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [有关使用路由服务的最佳做法](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [如何使用服务模块 (Web SDK)](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Azure Maps REST 服务 API 参考文档](/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [代码示例](/samples/browse/?products=azure-maps)

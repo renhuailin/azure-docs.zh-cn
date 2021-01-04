@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b6bf0736c2887ee19551e2719ec2418bbacdbd1d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: bf1b46a42b0b8b68e1ab95a3345bb3b5435a576b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313666"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>教程：Azure Active Directory 与 Acadia 集成
 
@@ -42,7 +42,7 @@ ms.locfileid: "92313666"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Acadia 支持 **SP 和 IDP** 发起的 SSO
-* Acadia 支持**恰时**用户预配
+* Acadia 支持 **恰时** 用户预配
 
 ## <a name="adding-acadia-from-the-gallery"></a>从库中添加 Acadia
 
@@ -64,7 +64,7 @@ ms.locfileid: "92313666"
 
 4. 在搜索框中，键入“Acadia”，在结果面板中选择“Acadia”，然后单击“添加”按钮添加该应用程序    。
 
-     ![结果列表中的 Acadia](common/search-new-app.png)
+    ![结果列表中的 Acadia](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -90,7 +90,7 @@ ms.locfileid: "92313666"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "92313666"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 

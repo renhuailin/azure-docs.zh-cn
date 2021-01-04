@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1e4a0199e8d9a04b07b52f90d9c1823f69e07c7d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 38b2ff6909dae15ff0f836316d5d12140ecc331a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455980"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672922"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>教程：Azure Active Directory 与 Clarizen 集成
 
@@ -61,9 +61,9 @@ ms.locfileid: "92455980"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Clarizen** ，在结果面板中选择“Clarizen”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Clarizen**，在结果面板中选择“Clarizen”，然后单击“添加”按钮添加该应用程序。  
 
-     ![结果列表中的“Clarizen”](common/search-new-app.png)
+    ![结果列表中的“Clarizen”](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -148,7 +148,7 @@ ms.locfileid: "92455980"
 
     e. 选择“使用 POST”。 
 
-    f. 单击“ **保存** ”。
+    f. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -167,7 +167,7 @@ ms.locfileid: "92455980"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 

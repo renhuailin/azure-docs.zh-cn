@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: ffd93016a2cbde3aa2a5844cfdb72e4c0cc8b623
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5e0b1d8d2cb80886131a88c01a6c24102ad7c77c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457106"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673532"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Bitbucket by resolution GmbH 的集成
 
@@ -63,9 +63,9 @@ ms.locfileid: "92457106"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入 **SAML SSO for Bitbucket by resolution GmbH** ，在结果面板中选择“SAML SSO for Bitbucket by resolution GmbH”，然后单击“添加”按钮以添加该应用程序。  
+4. 在搜索框中，键入 **SAML SSO for Bitbucket by resolution GmbH**，在结果面板中选择“SAML SSO for Bitbucket by resolution GmbH”，然后单击“添加”按钮以添加该应用程序。  
 
-     ![结果列表中的 SAML SSO for Bitbucket by resolution GmbH](common/search-new-app.png)
+    ![结果列表中的 SAML SSO for Bitbucket by resolution GmbH](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -109,7 +109,7 @@ ms.locfileid: "92457106"
 
     c. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
 
@@ -153,7 +153,7 @@ ms.locfileid: "92457106"
 7.  在“导入 SAML Idp 元数据”页上，单击“加载文件”以上传从 Azure 门户下载的“元数据 XML”文件    。
 
     ![Idpmetadata](./media/bitbucket-tutorial/tutorial_bitbucket_idpmetadata.png)
-    
+
 8. 单击“下一步”。 
 
 9. 单击“保存设置”。 
@@ -177,7 +177,7 @@ ms.locfileid: "92457106"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 

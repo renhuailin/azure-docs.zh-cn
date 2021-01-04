@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 835ee5f1c9da081618ed314c694f578a6e9f4aee
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8181718d6524c78e036f6953ebff73217acab890
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455385"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672723"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-condeco"></a>教程：Azure Active Directory 与 Condeco 的集成
 
@@ -65,7 +65,7 @@ ms.locfileid: "92455385"
 
 4. 在搜索框中，键入“Condeco”，在结果面板中选择“Condeco”，然后单击“添加”按钮添加该应用程序。   
 
-     ![结果列表中的 Condeco](common/search-new-app.png)
+    ![结果列表中的 Condeco](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -143,7 +143,7 @@ ms.locfileid: "92455385"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
@@ -179,7 +179,7 @@ ms.locfileid: "92455385"
 
 ### <a name="create-condeco-test-user"></a>创建 Condeco 测试用户
 
-本部分的目的是在 Condeco 中创建名为 Britta Simon 的用户。 Condeco 支持在默认情况下启用的 **恰时预配** 。
+本部分的目的是在 Condeco 中创建名为 Britta Simon 的用户。 Condeco 支持在默认情况下启用的 **恰时预配**。
 
 此部分不存在任何操作项。 如果尚不存在用户，则在尝试访问 Condeco 期间创建一个新用户。
 

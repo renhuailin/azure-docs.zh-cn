@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: d82fa5b44d4797d4254a91b4caa72b7c6b5e02ab
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9a98a77b9cc89b7a1a05e676048775aa38c83733
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309243"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671941"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>教程：Azure Active Directory 与 Adobe Experience Manager 的集成
 
@@ -43,7 +43,7 @@ ms.locfileid: "92309243"
 
 * Adobe Experience Manager 支持 **SP 和 IDP** 发起的 SSO
 
-* Adobe Experience Manager 支持**实时**用户预配
+* Adobe Experience Manager 支持 **实时** 用户预配
 
 ## <a name="adding-adobe-experience-manager-from-the-gallery"></a>从库中添加 Adobe Experience Manager
 
@@ -65,7 +65,7 @@ ms.locfileid: "92309243"
 
 4. 在搜索框中，键入 **Adobe Experience Manager**，在结果面板中选择“Adobe Experience Manager”，然后单击“添加”按钮添加该应用程序   。
 
-     ![结果列表中的 Adobe Experience Manager](common/search-new-app.png)
+    ![结果列表中的 Adobe Experience Manager](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -91,7 +91,7 @@ ms.locfileid: "92309243"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "92309243"
 
     在“登录 URL”文本框中，键入 Adobe Experience Manager 服务器 URL  。
 
-6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -215,7 +215,7 @@ ms.locfileid: "92309243"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
@@ -253,7 +253,7 @@ ms.locfileid: "92309243"
 
 本部分的步骤在 Adobe Experience Manager 中创建名为 Britta Simon 的用户。 如果已选择“自动创建 CRX 用户”选项，则在成功完成身份验证后，会自动创建这些用户  。
 
-若要手动创建用户，请与 [Adobe Experience Manager 支持团队](https://helpx.adobe.com/support/experience-manager.html) 配合，在 Adobe Experience Manager 平台中添加用户。
+若要手动创建用户，请与 [Adobe Experience Manager 支持团队](https://helpx.adobe.com/support/experience-manager.html)配合，在 Adobe Experience Manager 平台中添加用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

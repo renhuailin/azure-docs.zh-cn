@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 8a23cff3f7bfe6d88e6a818117e62762abb6d226
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f5db7efffa685291584bd402e9898d365f615773
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455363"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672600"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Concur 集成
 
@@ -82,7 +82,7 @@ ms.locfileid: "92455363"
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.concursolutions.com/UI/SSO/<OrganizationId>` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<customer-domain>.concursolutions.com` 
-    
+
     c. 对于“回复 URL”，请输入以下任一 URL 模式：
 
     | 回复 URL|
@@ -91,7 +91,7 @@ ms.locfileid: "92455363"
     | `https://<customer-domain>.concursolutions.com/<OrganizationId>` |
     | `https://<customer-domain>.concur.com` |
     | `https://<customer-domain>.concursolutions.com` | 
-    
+
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Concur 客户端支持团队](https://www.concur.co.in/contact)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
@@ -154,7 +154,7 @@ ms.locfileid: "92455363"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 - [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 

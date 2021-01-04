@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 781ce1fbc8bca0fb816a57d87903d253341414e6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 014a394e72b09abf7adcd881e874a965daa6ecb0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455504"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672910"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-competencyiq"></a>教程：Azure Active Directory 与 CompetencyIQ 的集成
 
@@ -61,9 +61,9 @@ ms.locfileid: "92455504"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **CompetencyIQ** ，在结果面板中选择“CompetencyIQ”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **CompetencyIQ**，在结果面板中选择“CompetencyIQ”，然后单击“添加”按钮添加该应用程序。  
 
-     ![结果列表中的“CompetencyIQ”](common/search-new-app.png)
+    ![结果列表中的“CompetencyIQ”](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -143,7 +143,7 @@ ms.locfileid: "92455504"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 

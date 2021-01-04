@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a618cae375b9d67976fa618ed5804da7ce73c784
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c6d102f4d9a67f58469242cb44d2c6466782f006
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455147"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674168"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>教程：Azure Active Directory 与 Coupa 的集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "92455147"
 
 4. 在搜索框中，键入“Coupa”，在结果面板中选择“Coupa”，然后单击“添加”按钮添加该应用程序。   
 
-     ![结果列表中的 Coupa](common/search-new-app.png)
+    ![结果列表中的 Coupa](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -171,7 +171,7 @@ ms.locfileid: "92455147"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
@@ -227,7 +227,7 @@ ms.locfileid: "92455147"
 
     ![用户详细信息](./media/coupa-tutorial/ic791910.png "用户详细信息")
 
-    a. 将要预配的有效 Azure Active Directory 帐户的 **登录名** 、 **名字** 、 **姓氏** 、 **单一登录 ID** 、 **电子邮件** 属性键入到相关文本框中。
+    a. 将要预配的有效 Azure Active Directory 帐户的 **登录名**、**名字**、**姓氏**、**单一登录 ID**、**电子邮件** 属性键入到相关文本框中。
 
     b. 单击“创建”。 
 

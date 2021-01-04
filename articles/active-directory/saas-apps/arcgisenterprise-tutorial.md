@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 61920b7c5356b6e1fa5683ac0553060c85e256d3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f7578972b054747c75cdbbc2371fc0bf35c6039a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457803"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672553"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>教程：Azure Active Directory 与 ArcGIS Enterprise 的集成
 
@@ -66,9 +66,9 @@ ms.locfileid: "92457803"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“ArcGIS Enterprise”  ，从结果面板中选择“ArcGIS Enterprise”  ，再单击“添加”  按钮以添加此应用程序。
+4. 在搜索框中，键入“ArcGIS Enterprise”，从结果面板中选择“ArcGIS Enterprise”，再单击“添加”按钮以添加此应用程序。
 
-     ![结果列表中的 ArcGIS Enterprise](common/search-new-app.png)
+    ![结果列表中的 ArcGIS Enterprise](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -90,7 +90,7 @@ ms.locfileid: "92457803"
 
 若要配置 [应用程序名称] 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 **ArcGIS Enterprise** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -112,12 +112,12 @@ ms.locfileid: "92457803"
 
     c. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [ArcGIS Enterprise 客户端支持团队](mailto:support@esri.com)获取这些值。 将从“设置标识提供者”部分获取“标识符”值，本教程稍后会提供相关说明。 
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [ArcGIS Enterprise 客户端支持团队](mailto:support@esri.com)获取这些值。 将从“设置标识提供者”部分获取“标识符”值，本教程稍后会提供相关说明。
 
 5. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
@@ -136,31 +136,31 @@ ms.locfileid: "92457803"
 1. 如果想要手动设置 ArcGIS Enterprise，请以管理员身份登录到 ArcGIS Enterprise 公司网站。
 
 
-1. 选择“组织”>“编辑设置”。 
+1. 选择“组织”>“编辑设置”。
 
     ![屏幕截图显示 ArcGIS Enterprise 组织选项卡，其中标注了“编辑设置”。](./media/arcgisenterprise-tutorial/configure1.png)
 
-1. 选择“安全性”选项卡。 
+1. 选择“安全性”选项卡。
 
     ![屏幕截图显示处于选中状态的“安全”选项卡。](./media/arcgisenterprise-tutorial/configure2.png)
 
-1. 向下滚动到“通过 SAML 进行企业登录”部分，并选择“设置企业登录名”。 
+1. 向下滚动到“通过 SAML 进行企业登录”部分，并选择“设置企业登录名”。
 
     ![屏幕截图显示“通过 SAML 进行企业登录”，可在其中选择“设置企业登录名”。](./media/arcgisenterprise-tutorial/configure3.png)
 
-1. 在“设置标识提供者”  部分执行以下步骤：
+1. 在“设置标识提供者”部分执行以下步骤：
 
     ![屏幕截图显示“设置标识提供者”，可在其中执行此处所述步骤。](./media/arcgisenterprise-tutorial/configure4.png)
 
-    a. 在“名称”文本框中提供一个名称，例如 
+    a. 在“名称”文本框中提供一个名称，例如 **Azure Active Directory Test**。
 
-    b. 在“URL”文本框中，粘贴从 Azure 门户复制的“应用联合元数据 URL”值。 
+    b. 在“URL”文本框中，粘贴从 Azure 门户复制的“应用联合元数据 URL”值。
 
-    c. 单击“显示高级设置”，复制“实体 ID”值，并将其粘贴到 Azure 门户中“ArcGIS Enterprise 域和 URL”部分的“标识符”文本框中。 
-    
+    c. 单击“显示高级设置”，复制“实体 ID”值，并将其粘贴到 Azure 门户中“ArcGIS Enterprise 域和 URL”部分的“标识符”文本框中。
+
     ![屏幕截图显示获取“实体 ID”和“更新标识提供者”的位置。](./media/arcgisenterprise-tutorial/configure5.png)
 
-    d. 单击“更新标识提供者”。 
+    d. 单击“更新标识提供者”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -179,7 +179,7 @@ ms.locfileid: "92457803"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”字段中，输入 BrittaSimon。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
@@ -191,11 +191,11 @@ ms.locfileid: "92457803"
 
 在本部分，我们通过授予 Britta Simon 访问 ArcGIS Enterprise 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“ArcGIS Enterprise”  。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“ArcGIS Enterprise”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，键入并选择“ArcGIS Enterprise”  。
+2. 在应用程序列表中，键入并选择“ArcGIS Enterprise”。
 
     ![应用程序列表中的 ArcGIS Enterprise 链接](common/all-applications.png)
 

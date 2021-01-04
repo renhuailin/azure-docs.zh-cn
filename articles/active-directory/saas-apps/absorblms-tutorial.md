@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 31b0a4fd8d97371eb4e127a2a473893a0487f220
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3d90d35e113b5f9757faf59681bb2532b66f2b09
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319078"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673857"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>教程：Azure Active Directory 与 Absorb LMS 的集成
 
@@ -44,7 +44,7 @@ ms.locfileid: "92319078"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Absorb LMS 支持 IDP 发起的 SSO****
+* Absorb LMS 支持 IDP 发起的 SSO
 
 ## <a name="adding-absorb-lms-from-the-gallery"></a>从库中添加 Absorb LMS
 
@@ -64,9 +64,9 @@ ms.locfileid: "92319078"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Absorb LMS”，在结果面板中选择“Absorb LMS”，然后单击“添加”按钮添加该应用程序************。
+4. 在搜索框中，键入“Absorb LMS”，在结果面板中选择“Absorb LMS”，然后单击“添加”按钮添加该应用程序。
 
-     ![结果列表中的 Absorb LMS](common/search-new-app.png)
+    ![结果列表中的 Absorb LMS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -88,11 +88,11 @@ ms.locfileid: "92319078"
 
 若要配置 Absorb LMS 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 Absorb LMS 应用程序集成页上，选择“单一登录”********。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 Absorb LMS 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,13 +104,13 @@ ms.locfileid: "92319078"
 
     ![Absorb LMS 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    如果使用的是 Absorb 5 - UI，请使用以下配置****：
+    如果使用的是 Absorb 5 - UI，请使用以下配置：
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：`https://company.myabsorb.com/account/saml`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://company.myabsorb.com/account/saml`
 
-    如果使用的是 Absorb 5 - New Learner Experience，请使用以下配置****：
+    如果使用的是 Absorb 5 - New Learner Experience，请使用以下配置：
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：`https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
@@ -127,7 +127,7 @@ ms.locfileid: "92319078"
 
     ![证书下载链接](common/metadataxml.png)
 
-7. 在“设置 Absorb LMS”部分，根据要求复制相应的 URL****。
+7. 在“设置 Absorb LMS”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -141,39 +141,39 @@ ms.locfileid: "92319078"
 
 1. 在新的 Web 浏览器窗口中，以管理员身份登录 Absorb LMS 公司站点。
 
-2. 选择右上角的“帐户”**** 按钮。
+2. 选择右上角的“帐户”按钮。
 
     ![“帐户”按钮](./media/absorblms-tutorial/1.png)
 
-3. 在“帐户”窗格中，选择“门户设置”****。
+3. 在“帐户”窗格中，选择“门户设置”。
 
     ![“门户设置”链接](./media/absorblms-tutorial/2.png)
 
-4. 选择“管理 SSO 设置”选项卡****。
+4. 选择“管理 SSO 设置”选项卡。
 
     ![“用户”选项卡](./media/absorblms-tutorial/managesso.png)
 
-5. 在“管理单一登录设置”页上，执行以下操作****：
+5. 在“管理单一登录设置”页上，执行以下操作：
 
     ![“单一登录”配置页](./media/absorblms-tutorial/settings.png)
 
-    a. 在“名称”文本框中输入名称，例如“Azure AD 市场 SSO”****。
+    a. 在“名称”文本框中输入名称，例如“Azure AD 市场 SSO”。
 
-    b. 选择“SAML”作为“方法”********。
+    b. 选择“SAML”作为“方法”。
 
-    c. 在记事本中，打开从 Azure 门户下载的证书。 删除 ---BEGIN CERTIFICATE---**** 和 ---END CERTIFICATE---**** 标记。 然后，在“密钥”**** 框中，粘贴其余内容。
+    c. 在记事本中，打开从 Azure 门户下载的证书。 删除 ---BEGIN CERTIFICATE--- 和 ---END CERTIFICATE--- 标记。 然后，在“密钥”框中，粘贴其余内容。
 
-    d. 在“模式”**** 框中，选择“发起的标识提供者”****。
+    d. 在“模式”框中，选择“发起的标识提供者”。
 
-    e. 在“ID 属性”**** 框中，选择在 Azure AD 中配置为用户标识符的属性。 例如，如果在已 Azure AD 中选择“nameidentifier”，请选择“用户名”******。
+    e. 在“ID 属性”框中，选择在 Azure AD 中配置为用户标识符的属性。 例如，如果在已 Azure AD 中选择“nameidentifier”，请选择“用户名”。
 
-    f. 选择“Sha256”作为“签名类型”********。
+    f. 选择“Sha256”作为“签名类型”。
 
-    g. 在“登录 URL”**** 框中，粘贴 Azure 门户应用程序的“属性”**** 页中的“用户访问 URL”****。
+    g. 在“登录 URL”框中，粘贴 Azure 门户应用程序的“属性”页中的“用户访问 URL”。
 
-    h. 在“注销 URL”中，粘贴从 Azure 门户的“配置登录”窗口中复制的“注销 URL”值。************
+    h. 在“注销 URL”中，粘贴从 Azure 门户的“配置登录”窗口中复制的“注销 URL”值。
 
-    i. 将“自动重定向”切换为“开启”********。
+    i. 将“自动重定向”切换为“开启”。
 
 6. 选择“保存”。
 
@@ -196,7 +196,7 @@ ms.locfileid: "92319078"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”字段中，输入 BrittaSimon。
-  
+
     b. 在“用户名”字段中，键入 `brittasimon\@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
@@ -208,11 +208,11 @@ ms.locfileid: "92319078"
 
 在本部分中，通过授予 Britta Simon 访问 Absorb LMS 的权限，允许该用户使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Absorb LMS”************。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Absorb LMS”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，键入并选择“Absorb LMS”****。
+2. 在应用程序列表中，键入并选择“Absorb LMS”。
 
     ![应用程序列表中的 Absorb LMS 链接](common/all-applications.png)
 
@@ -238,36 +238,36 @@ ms.locfileid: "92319078"
 
 1. 以管理员身份登录 Absorb LMS 公司站点。
 
-2. 在“用户”窗格中，选择“用户”********。
+2. 在“用户”窗格中，选择“用户”。
 
     ![“用户”链接](./media/absorblms-tutorial/absorblms_userssub.png)
 
-3. 选择“用户”选项卡****。
+3. 选择“用户”选项卡。
 
     ![“新增”下拉列表](./media/absorblms-tutorial/absorblms_createuser.png)
 
-4. 在“添加用户”页上执行以下操作：****
+4. 在“添加用户”页上执行以下操作：
 
     ![“添加用户”页](./media/absorblms-tutorial/user.png)
 
-    a. 在“名字”框中键入名字，例如 Britta。********
+    a. 在“名字”框中键入名字，例如 Britta。
 
-    b. 在“姓氏”框中键入姓氏，例如 Simon。********
+    b. 在“姓氏”框中键入姓氏，例如 Simon。
 
-    c. 在“用户名”框中键入全名，例如 Britta Simon。********
+    c. 在“用户名”框中键入全名，例如 Britta Simon。
 
-    d. 在“密码”框中，键入用户密码****。
+    d. 在“密码”框中，键入用户密码。
 
-    e. 在“确认密码”**** 框中，重新键入该密码。
+    e. 在“确认密码”框中，重新键入该密码。
 
-    f. 将“是否活动”**** 设置切换为“活动”****。
+    f. 将“是否活动”设置切换为“活动”。
 
 5. 选择“保存”。
 
     ![“仅允许 SSO 登录”切换](./media/absorblms-tutorial/save.png)
 
     > [!NOTE]
-    > 默认情况下，SSO 中未启用“用户预配”。 如果客户想启用此功能，需要按[此](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning)文档所述进行设置。 另请注意，只有采用 ACS URL-`https://company.myabsorb.com/api/rest/v2/authentication/saml` 的 Absorb 5 - New Learner Experience 才能使用“用户预配”功能****
+    > 默认情况下，SSO 中未启用“用户预配”。 如果客户想启用此功能，需要按[此](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning)文档所述进行设置。 另请注意，只有采用 ACS URL-`https://company.myabsorb.com/api/rest/v2/authentication/saml` 的 Absorb 5 - New Learner Experience 才能使用“用户预配”功能
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

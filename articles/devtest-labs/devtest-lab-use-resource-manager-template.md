@@ -3,12 +3,12 @@ title: 查看并使用虚拟机的 Azure 资源管理器模板
 description: 了解如何使用虚拟机的 Azure 资源管理器模板创建其他 VM
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7f969abe1ca903a226e73c5c70781dce512c2926
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb7cb38dfb2c1664017f0e342fefecdd464df45f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282487"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696009"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建虚拟机 
 
@@ -25,7 +25,7 @@ ms.locfileid: "91282487"
 
    ![在开发测试实验室虚拟机列表中显示虚拟机列表作为单个项的屏幕截图。](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   此类型的资源管理器模板可以通过 Azure PowerShell **AzResourceGroupDeployment** 命令进行预配，也可以通过 Azure CLI 命令 **az group deployment create**进行设置。 此操作需要管理员权限，因此已分配开发测试实验室用户角色的用户无法执行该部署。 
+   此类型的资源管理器模板可以通过 Azure PowerShell 命令 **AzResourceGroupDeployment** 进行预配，也可以通过 Azure CLI 命令 **az 部署组创建** 进行设置。 此操作需要管理员权限，因此已分配开发测试实验室用户角色的用户无法执行该部署。 
 
 - 使用 Microsoft.Compute / virtualmachines 资源类型的 Resource Manager 模板可以将多个 VM 预配为开发测试实验室虚拟机列表中的单个环境：
 
@@ -41,7 +41,7 @@ ms.locfileid: "91282487"
 1. 请遵循[在实验室中创建你的第一个 VM](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)中的步骤，开始创建虚拟机。
 1. 输入虚拟机所需的信息并添加要用于此 VM 的任何项目。
 1. 切换到 " **高级设置** " 选项卡。 
-1. 在配置设置窗口的底部，选择“查看 ARM 模板”****。
+1. 在配置设置窗口的底部，选择“查看 ARM 模板”。
 1. 复制并保存 Resource Manager 模板，以便稍后用于创建另一个虚拟机。
 
    ![保存以供将来使用的资源管理器模板](./media/devtest-lab-use-arm-template/devtestlab-lab-copy-rm-template.png)

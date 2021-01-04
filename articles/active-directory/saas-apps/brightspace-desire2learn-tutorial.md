@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 91d48e42dc1c92e05e963b4c8b53e44daa403378
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f999818ab791cabac6b0877b7735fa730dab89e2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456682"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673378"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>教程：Azure Active Directory 与 Brightspace by Desire2Learn 集成
 
@@ -66,7 +66,7 @@ ms.locfileid: "92456682"
 
 4. 在搜索框中，键入“Brightspace by Desire2Learn”，在结果面板中选择“Brightspace by Desire2Learn”，然后单击“添加”按钮添加该应用程序  。
 
-     ![结果列表中的 Brightspace by Desire2Learn](common/search-new-app.png)
+    ![结果列表中的 Brightspace by Desire2Learn](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -105,7 +105,7 @@ ms.locfileid: "92456682"
     ![Brightspace by Desire2Learn 域和 URL 单一登录信息](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：
-    
+
     ```http
     https://<companyname>.tenants.brightspace.com/samlLogin
     https://<companyname>.desire2learn.com/shibboleth-sp
@@ -151,7 +151,7 @@ ms.locfileid: "92456682"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”字段中，输入 BrittaSimon。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 

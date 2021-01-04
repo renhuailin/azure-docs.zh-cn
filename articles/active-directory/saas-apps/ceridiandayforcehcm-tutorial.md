@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bd7213f31eb737bedd64d627141c2576fdadb79a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b2241ff6841a5b3f536419336dc4f4fd888663d9
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456366"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>教程：Azure Active Directory 与 Ceridian Dayforce HCM 集成
 
@@ -61,9 +61,9 @@ ms.locfileid: "92456366"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入 **Ceridian Dayforce HCM** ，从结果面板中选择“Ceridian Dayforce HCM”  ，然后单击“添加”  按钮添加该应用程序。
+4. 在搜索框中，键入 **Ceridian Dayforce HCM**，从结果面板中选择“Ceridian Dayforce HCM”  ，然后单击“添加”  按钮添加该应用程序。
 
-     ![结果列表中的 Ceridian Dayforce HCM](common/search-new-app.png)
+    ![结果列表中的 Ceridian Dayforce HCM](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -130,7 +130,7 @@ ms.locfileid: "92456366"
     ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
 6. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
-    
+
     | 名称 | 源属性|
     | ---------| --------- |
     | name  | user.extensionattribute2 |
@@ -151,7 +151,7 @@ ms.locfileid: "92456366"
 
     f. 单击“确定” 
 
-    g. 单击“ **保存** ”。
+    g. 单击“ **保存**”。
 
 7. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分，单击“下载”  以根据要求下载从给定选项提供的元数据 XML 并将其保存在计算机上。 
 
@@ -188,7 +188,7 @@ ms.locfileid: "92456366"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 

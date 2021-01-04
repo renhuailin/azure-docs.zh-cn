@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: a7e71f1c146b0e99ffa20cc74546e35e3ff8a5a6
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: bd7d05225ef0583c8d56804fb2164cfc73ad4a6a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309108"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673267"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>教程：Azure Active Directory 与 Adobe Sign 集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "92309108"
 
 4. 在搜索框中，键入“Adobe Sign”，在结果面板中选择“Adobe Sign”，然后单击“添加”按钮添加该应用程序。   
 
-     ![结果列表中的 Adobe Sign](common/search-new-app.png)
+    ![结果列表中的 Adobe Sign](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -89,7 +89,7 @@ ms.locfileid: "92309108"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "92309108"
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-4. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+4. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -129,12 +129,12 @@ ms.locfileid: "92309108"
     a. [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)会向你发送随机生成的令牌。 对于域，令牌将如下所示：**adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
 
     b. 在 DNS 文本记录中发布该验证令牌并通知 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)。
-    
+
     > [!NOTE]
     > 这可能需要几天或更长时间。 请注意，DNS 传播延迟意味着 DNS 中发布的值可能在一小时或更长时间内不可见。 IT 管理员应具备有关如何在 DNS 文本记录中发布此令牌的丰富知识。
-    
+
     c. 发布令牌并通过支持票证通知[Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)后，他们会验证该域并将其添加到你的帐户。
-    
+
     d. 一般而言，在 DNS 记录中发布令牌的方法如下：
 
     * 登录到域帐户
@@ -146,25 +146,25 @@ ms.locfileid: "92309108"
 1. 在其他 Web 浏览器窗口中，以管理员身份登录到 Adobe Sign 公司站点。
 
 1. 在 SAML 菜单中，选择“帐户设置”   >   “SAML 设置”。
-   
+
     ![Adobe Sign SAML 设置页的屏幕截图](./media/adobe-echosign-tutorial/ic789520.png "帐户")
 
 1. 在“SAML 设置”部分执行以下步骤  ：
-  
-   ![突出显示“SAML 设置”（包括“SAML 强制”）的屏幕截图。](./media/adobe-echosign-tutorial/ic789521.png "SAML 设置")
-   
+
+    ![突出显示“SAML 设置”（包括“SAML 强制”）的屏幕截图。](./media/adobe-echosign-tutorial/ic789521.png "SAML 设置")
+
    ![SAML 设置的屏幕截图](./media/adobe-echosign-tutorial/ic789522.png "SAML 设置")
 
    a. 在“SAML 模式”下  ，选择“SAML 强制”  。
-   
+
    b. 选择“允许 Echosign 帐户管理员使用 Echosign 凭据登录”  。
-   
+
    c. 在“用户创建”下  ，选择“自动添加通过 SAML 验证了身份的用户”  。
 
    d. 将从 Azure 门户复制的“Azure AD 标识符”粘贴到“Idp 实体 ID”文本框   。
-    
+
    e. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“Idp 登录 URL”   。
-   
+
    f. 在“Idp 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”   。
 
    g. 在记事本中打开已下载的 **Certificate(Base64)** 文件。 将其内容复制到剪贴板，然后将其粘贴到“IdP 证书”  文本框。
@@ -188,7 +188,7 @@ ms.locfileid: "92309108"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
@@ -232,15 +232,15 @@ ms.locfileid: "92309108"
 1. 以管理员身份登录到 **Adobe Sign** 公司站点。
 
 2. 在顶部菜单中，选择“帐户”。  然后，在左窗格中选择“用户和组” > “创建新用户”。
-   
+
     ![Adobe Sign 公司站点的屏幕截图，其中突出显示了“帐户”、“用户和组”和“创建新用户”](./media/adobe-echosign-tutorial/ic789524.png "帐户")
-   
+
 3. 在“创建新用户”  部分中，执行以下步骤：
-   
+
     ![“创建新用户”部分的屏幕截图](./media/adobe-echosign-tutorial/ic789525.png "创建用户")
-   
+
     a. 键入希望在相关文本框中预配的有效 Azure AD 帐户的“电子邮件地址”  、“名字”  和“姓氏”  。
-   
+
     b. 选择“创建用户”  。
 
 >[!NOTE]

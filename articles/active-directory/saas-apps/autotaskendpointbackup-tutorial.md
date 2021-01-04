@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 0264baf6a8ff107c4a3aa811b9e8639352dca782
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 349a77d2f2cd5e1c492de63919d84efb436a51a3
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301808"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673675"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>教程：Azure Active Directory 与 Autotask Endpoint Backup 的集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "96301808"
 
 4. 在搜索框中键入“Autotask Endpoint Backup”，在结果面板中选择“Autotask Endpoint Backup”，然后单击“添加”按钮添加该应用程序    。
 
-     ![在结果列表中的 Autotask Endpoint Backup](common/search-new-app.png)
+    ![在结果列表中的 Autotask Endpoint Backup](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 

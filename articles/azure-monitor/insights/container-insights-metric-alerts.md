@@ -3,12 +3,12 @@ title: 容器 Azure Monitor 的指标警报
 description: 本文介绍了公共预览版中适用于容器 Azure Monitor 建议的指标警报。
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 16995246578dc8d3c009253d8384c6d7ff3911d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a81dfb3fab57b378a56bfa8ac8102d723a50dbbc
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186875"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695957"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a> (预览从容器 Azure Monitor 预览) 推荐的指标警报
 
@@ -110,7 +110,7 @@ ms.locfileid: "96186875"
 
 本部分逐步讲解如何启用 Azure 门户中的容器指标警报 (预览版) Azure Monitor。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 通过从 Azure 门户中的左窗格中选择 " **见解** "，可以直接从 AKS 群集访问 Azure Monitor for 容器指标警报 (预览版) 功能。
 
@@ -186,7 +186,7 @@ ms.locfileid: "96186875"
     ```azurecli
     az login
 
-    az group deployment create \
+    az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file templateFileName.json \
@@ -240,7 +240,7 @@ ms.locfileid: "96186875"
          pv_usage_threshold_percentage = 80.0
      ```
 
-2. 运行以下 kubectl 命令： `kubectl apply -f <configmap_yaml_file.yaml>` 。
+2. 运行以下 kubectl 命令：`kubectl apply -f <configmap_yaml_file.yaml>`。
 
     示例：`kubectl apply -f container-azm-ms-agentconfig.yaml`。
 

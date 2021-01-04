@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 659118039464a4f99e4f8df211318a7f639dbde9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9967f349011b52a2218681956885c33456ba1d46
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456715"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672752"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>教程：Azure Active Directory 与 Brightidea 的集成
 
@@ -64,9 +64,9 @@ ms.locfileid: "92456715"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Brightidea** ，在结果面板中选择“Brightidea”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Brightidea**，在结果面板中选择“Brightidea”，然后单击“添加”按钮添加该应用程序。  
 
-     ![结果列表中的“Brightidea”](common/search-new-app.png)
+    ![结果列表中的“Brightidea”](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -119,7 +119,7 @@ ms.locfileid: "92456715"
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.brightidea.com`
 
@@ -156,20 +156,20 @@ ms.locfileid: "92456715"
     a. 单击“下载元数据”，然后在 Azure 门户中的“基本 SAML 配置”部分上传。  
 
     b. 单击“标识提供者设置”下的“新增”按钮并执行以下步骤：  
-    
+
     ![屏幕截图显示 Brightidea“标识提供者设置”，可在其中输入信息。](./media/brightidea-tutorial/configure4.png)
-    
+
    * 输入“SAML 配置文件名称”，例如 `Azure Ad SSO` 
-    
+
    * 对于“上传元数据”，请单击“选择文件”，然后上传从 Azure 门户下载的元数据文件。 
 
      > [!NOTE]
      > 上传元数据文件后，剩余的字段“单一登录服务”、“标识提供者颁发者”和“上传公钥”将自动填充。 
 
    * 在“电子邮件”文本框中，输入 `mail` 作为值。 
-     
+
    * 在“屏幕名称”文本框中，输入 `givenName` 作为值。 
-     
+
    * 单击 **“保存更改”** 。  
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
@@ -189,7 +189,7 @@ ms.locfileid: "92456715"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 

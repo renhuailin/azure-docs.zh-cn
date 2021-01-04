@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 89f59bba856d662aea0c3ed249d5a1462297ec60
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 63bbec6de8f122178289cc313e5d938e3b926af2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309045"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673214"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>教程：Azure Active Directory 与 Adobe Captivate Prime 集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "92309045"
 
 4. 在搜索框中，键入“Adobe Captivate Prime”，在结果面板中选择“Adobe Captivate Prime”，然后单击“添加”按钮添加该应用程序    。
 
-     ![结果列表中的 Adobe Captivate Prime](common/search-new-app.png)
+    ![结果列表中的 Adobe Captivate Prime](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -89,7 +89,7 @@ ms.locfileid: "92309045"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -144,7 +144,7 @@ ms.locfileid: "92309045"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
@@ -180,7 +180,7 @@ ms.locfileid: "92309045"
 
 ### <a name="create-adobe-captivate-prime-test-user"></a>创建 Adobe Captivate Prime 测试用户
 
-在本部分中，在 Adobe Captivate Prime 中创建一个名为 Britta Simon 的用户。 与  [Adobe Captivate Prime 支持团队](mailto:captivateprimesupport@adobe.com)协作，将用户添加到 Adobe Captivate Prime 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，在 Adobe Captivate Prime 中创建一个名为 Britta Simon 的用户。 与 [Adobe Captivate Prime 支持团队](mailto:captivateprimesupport@adobe.com)协作，将用户添加到 Adobe Captivate Prime 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

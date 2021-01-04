@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 6c2d89c20294446da63889e53e807db7919eb2e1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 48d09a5ef43e267550dd584a9f6356493887d6d7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455521"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673777"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>教程：Azure Active Directory 与 Communifire 集成
 
@@ -65,7 +65,7 @@ ms.locfileid: "92455521"
 
 4. 在搜索框中，键入“Communifire”，在结果面板中选择“Communifire”，然后单击“添加”按钮添加该应用程序    。
 
-     ![结果列表中的 Communifire](common/search-new-app.png)
+    ![结果列表中的 Communifire](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -125,11 +125,11 @@ ms.locfileid: "92455521"
     ![编辑 SAML 签名证书](common/edit-certificate.png)
 
     a. 从“签名选项”中选择“为 SAML 响应和断言签名”   。
-    
+
     b. 单击“保存” 
 
     ![Communifire 签名选项](./media/communifire-tutorial/tutorial-communifire-signing-option.png)
- 
+
 8. 在“设置 Communifire”  部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
@@ -161,7 +161,7 @@ ms.locfileid: "92455521"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
@@ -197,7 +197,7 @@ ms.locfileid: "92455521"
 
 ### <a name="create-communifire-test-user"></a>创建 Communifire 测试用户
 
-本部分的目的是在 Communifire 中创建名为 Britta Simon 的用户。 Communifire 支持默认启用的 **恰时预配** 。 保存配置文件详细信息后，尝试访问 Communifire 期间会创建新用户（如果不存在）。
+本部分的目的是在 Communifire 中创建名为 Britta Simon 的用户。 Communifire 支持默认启用的 **恰时预配**。 保存配置文件详细信息后，尝试访问 Communifire 期间会创建新用户（如果不存在）。
 
 >[!Note]
 >如果需要手动创建用户，请联系 [Communifire 支持团队](mailto:support@axerosolutions.com)。

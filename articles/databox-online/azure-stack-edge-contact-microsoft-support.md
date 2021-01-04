@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/11/2019
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: dbdd4c7d23f56618c0e76649abe4faad86c5804c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a457c2816d4075190a2174339f7e52a2ea41730a
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743295"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696032"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>为 Azure Stack Edge Pro 和 Azure Data Box Gateway 开支持票证
 
@@ -24,7 +24,7 @@ ms.locfileid: "91743295"
 
 ## <a name="create-a-support-request"></a>创建支持请求
 
-可以执行以下步骤来创建支持请求：
+执行以下步骤以创建支持请求：
 
 1. 请按照 Azure Stack Edge Pro 或 Data Box Gateway 顺序进行。 导航到“支持 + 故障排除”部分，然后选择“新建支持请求” 。
 
@@ -34,7 +34,7 @@ ms.locfileid: "91743295"
     2. 选择“订阅”。
     3. 在“服务”下，检查“我的服务”。  从下拉列表中，选择 " **Azure Stack Edge Pro" 和 "Data Box Gateway**"。
     4. 选择你的“资源”。 这对应于订单的名称。
-    5. 提供所遇到的问题的简单“摘要”。 
+    5. 简要概述你 **遇到的问题** 。 
     6. 选择“问题类型”。
     7. 根据所选问题类型，选择相应“问题子类型”。
     8. 在完成时选择“下一步:**解决方案 >>”** 。
@@ -51,7 +51,7 @@ ms.locfileid: "91743295"
     6. 从下拉列表中选择“严重性”。
     7. 指定“首选联系方法”。
     8. 系统会根据订阅计划自动选择“响应时间”。
-    9. 提供希望获得支持的语言。
+    9. 提供支持的所需语言。
     10. 在“联系人信息”中提供姓名、电子邮件、电话号码、可选联系人和国家/地区。 Microsoft 支持将使用此信息与你联系，以获得进一步信息、诊断和解决方法。 
     11. 在完成时选择“下一步:**查看 + 创建 >>”** 。
 
@@ -61,7 +61,7 @@ ms.locfileid: "91743295"
 
     ![问题2](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 
-    创建支持票证后，支持工程师会尽早与你联系，以便处理请求。
+    创建支持票证后，支持工程师将尽快与你联系以继续执行请求。
 
 ## <a name="get-hardware-support"></a>获取硬件支持
 
@@ -73,12 +73,12 @@ ms.locfileid: "91743295"
 
     创建支持票证后，支持工程师会尽早与你联系，以便处理请求。
 
-2. 如果 Microsoft 支持部门确定这是硬件问题，则会采取以下操作之一：
+2. 如果 Microsoft 支持部门确定这是硬件问题，则会执行以下操作之一：
 
-    * 发送故障硬件部件的现场更换单元 (FRU)。 目前，电源设备和硬盘驱动器是唯二受支持的 FRU。
+    * 发送故障硬件部件的现场更换单元 (FRU)。 目前，电源单元和固态驱动器是唯一受支持的 Fru。
     * 仅在下一工作日内更换 FRU，其他所有部件都需要发送完全系统更换 (FSR)。
 
-3. 如果在当地时间下午 4:30（星期一至星期五）之前提交支持票证，则会在下一工作日派遣现场技术人员到你的位置执行 FRU 或完全设备更换。
+3. 如果在 4:30 pm 本地 (星期一到星期五) 之前引发支持票证，则会在下一工作日向现场技术人员派单，以执行 FRU 更换。 完全系统更换通常需要更长的时间，因为部件是从工厂发货的，可能会受到运输和海关延迟的限制。
 
 ## <a name="manage-a-support-request"></a>管理支持请求
 

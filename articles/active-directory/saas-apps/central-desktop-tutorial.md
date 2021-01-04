@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 321c6bf52f4dac636f6bebb3a79d3a206c2ea11b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 36ba61c86082e191831c2c890de4466181f1a4db
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456426"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>教程：Azure Active Directory 与 Central Desktop 集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "92456426"
 
 4. 在搜索框中，键入“Central Desktop”，在结果面板中选择“Central Desktop”，然后单击“添加”按钮添加该应用程序    。
 
-     ![结果列表中的 Central Desktop](common/search-new-app.png)
+    ![结果列表中的 Central Desktop](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -104,7 +104,7 @@ ms.locfileid: "92456426"
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<companyname>.centraldesktop.com`。
 
     b. 在“标识符”框中，使用以下模式键入 URL： 
-    
+
     ```http
     https://<companyname>.centraldesktop.com/saml2-metadata.php
     https://<companyname>.imeetcentral.com/saml2-metadata.php
@@ -152,7 +152,7 @@ ms.locfileid: "92456426"
 4. 在“消息签名验证方法”部分执行以下步骤  ：
 
     ![消息签名验证方法](./media/central-desktop-tutorial/ic769565.png "消息签名验证方法")
-    
+
     a. 选择“证书”。 
 
     b. 从“SSO 证书”列表中，选择“RSH SHA256”。
@@ -180,7 +180,7 @@ ms.locfileid: "92456426"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
@@ -236,7 +236,7 @@ ms.locfileid: "92456426"
 4. 选择“添加内部成员”  。
 
     ![添加内部成员](./media/central-desktop-tutorial/ic781053.png "添加内部成员")
-  
+
    > [!NOTE]
    > 所添加的用户会收到一封电子邮件，其中包含用于激活其帐户的确认链接。
 

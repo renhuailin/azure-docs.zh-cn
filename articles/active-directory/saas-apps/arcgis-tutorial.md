@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 08644c8b3c7967a2ba604cbddb58df2b29c6fc3e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b004394d3f0cc1c4d285c9eba9952a43e8cf65f2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457769"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674002"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>教程：Azure Active Directory 与 ArcGIS Online 集成
 
@@ -66,7 +66,7 @@ ms.locfileid: "92457769"
 
 4. 在搜索框中，键入“ArcGIS Online”，从结果面板中选择“ArcGIS Online”，再单击“添加”按钮，添加此应用程序。
 
-     ![结果列表中的 ArcGIS Online](common/search-new-app.png)
+    ![结果列表中的 ArcGIS Online](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -166,7 +166,7 @@ ms.locfileid: "92457769"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”字段中，输入 BrittaSimon。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
@@ -210,24 +210,24 @@ ms.locfileid: "92457769"
 1. 登录“ArcGIS”租户。
 
 2. 单击“邀请成员”。
-   
+
     ![邀请成员](./media/arcgis-tutorial/ic784747.png "邀请成员")
 
 3. 选择“自动添加成员且无需发送电子邮件”，然后单击“下一步”。
-   
+
     ![自动添加成员](./media/arcgis-tutorial/ic784748.png "自动添加成员")
 
 4. 在“成员”对话框页上，执行以下步骤：
-   
-     ![添加和查看](./media/arcgis-tutorial/ic784749.png "添加和查看")
-    
+
+    ![添加和查看](./media/arcgis-tutorial/ic784749.png "添加和查看")
+
      a. 输入想要预配的有效 Azure AD 帐户的“电子邮件”、“名字”和“姓氏”  。
-  
+
      b. 单击“添加和查看”。
 5. 查看输入的数据，然后单击“添加成员”。
-   
+
     ![添加成员](./media/arcgis-tutorial/ic784750.png "添加成员")
-        
+
     > [!NOTE]
     > Azure Active Directory 帐户持有者将收到一封电子邮件，并且将单击其中的链接以在激活帐户前确认帐户。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 0e5b9b9ba71412244d42204f6cad712b939d7c15
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 82f3a2dc7f43bd484d6a81efaa8d07f13b746d9e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318996"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671057"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>教程：将 Aha! 与 Azure Active Directory 集成
 
@@ -43,7 +43,7 @@ ms.locfileid: "92318996"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Aha! 支持 **SP** 发起的 SSO
-* Aha! 支持**实时**用户预配
+* Aha! 支持 **实时** 用户预配
 
 ## <a name="adding-aha-from-the-gallery"></a>从库中 添加 Aha!
 
@@ -77,7 +77,7 @@ ms.locfileid: "92318996"
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
-   ![编辑基本 SAML 配置](common/edit-urls.png)
+    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
@@ -143,7 +143,7 @@ ms.locfileid: "92318996"
     ![设置](./media/aha-tutorial/IC798950.png "设置")
 
 5. 单击“帐户”。
-  
+
     ![配置文件](./media/aha-tutorial/IC798951.png "配置文件")
 
 6. 单击“安全性和单一登录”。
@@ -180,6 +180,6 @@ ms.locfileid: "92318996"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 - [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

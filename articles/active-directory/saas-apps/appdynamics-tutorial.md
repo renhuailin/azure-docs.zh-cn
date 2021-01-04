@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ba4d245329c8edad411fcca0398fc3810b833178
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ac85fc0478f4e775b92de21cf931358d63aa95b4
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458002"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672570"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>教程：Azure Active Directory 与 AppDynamics 集成
 
@@ -65,7 +65,7 @@ ms.locfileid: "92458002"
 
 4. 在搜索框中，键入“AppDynamics”，在结果面板中选择“AppDynamics”，然后单击“添加”按钮添加该应用程序    。
 
-     ![结果列表中的 AppDynamics](common/search-new-app.png)
+    ![结果列表中的 AppDynamics](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -138,7 +138,7 @@ ms.locfileid: "92458002"
 
 1. 在“身份验证提供程序”  部分中，执行以下步骤：
 
-   ![SAML 配置](./media/appdynamics-tutorial/ic790225.png "SAML 配置")
+    ![SAML 配置](./media/appdynamics-tutorial/ic790225.png "SAML 配置")
 
    a. 对于“身份验证提供程序”  ，选择“SAML”  。
 
@@ -148,7 +148,7 @@ ms.locfileid: "92458002"
 
    d. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“证书”  文本框中
 
-   e. 单击“ **保存** ”。
+   e. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -167,7 +167,7 @@ ms.locfileid: "92458002"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 

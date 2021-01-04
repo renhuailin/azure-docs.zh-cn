@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 42da33fe874b6dea43bc16009dd27b70e6c3f535
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1424669af9fe28257e66c8c5438f6e1d171954e0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589886"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672893"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>教程：将 Amazon Business 与 Azure Active Directory 集成
 
@@ -74,12 +74,12 @@ ms.locfileid: "97589886"
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
-   ![编辑基本 SAML 配置](common/edit-urls.png)
+    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 若要在“IDP”发起模式下进行配置，请在“基本 SAML 配置”部分执行以下步骤： 
 
     1. 在“标识符(实体 ID)”文本框中，使用以下模式之一键入 URL：
-    
+
        | 代码 | 区域 |
        |-|-|
        | `https://www.amazon.com`| 北美 |
@@ -87,7 +87,7 @@ ms.locfileid: "97589886"
        | `https://www.amazon.de`| 欧洲 |
 
     1. 在“回复 URL”文本框中，使用以下模式之一键入 URL：
-    
+
        | 代码 | 区域 |
        |-|-|
        | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| 北美 |
@@ -146,7 +146,7 @@ ms.locfileid: "97589886"
 1. 在“设置 SSO”向导中，根据组织的要求选择提供程序，然后单击“下一步”。 
 
     ![屏幕截图显示“设置 SSO”，其中“Microsoft Azure AD”和“下一步”处于选中状态。](media/amazon-business-tutorial/default-group1.png)
-    
+
     > [!NOTE]
     > 虽然 Microsoft ADFS 是列出的选项，但它不适用于 Azure AD SSO。
 
@@ -193,12 +193,12 @@ ms.locfileid: "97589886"
 1. 最后，在“SSO 连接详细信息”部分，“状态”将显示为“活动”。  
 
     ![屏幕截图显示状态为“活动”的“SSO 连接详细信息”。](media/amazon-business-tutorial/sso-connection5.png)
-    
+
     > [!NOTE]
     > 如果要在 SP 发起的模式下配置应用程序，请完成以下步骤，将上方屏幕截图中的登录 URL 粘贴到 Azure 门户中“设置其他 URL”部分的“登录 URL”文本框  。 使用以下格式：
     >
     > `https://www.amazon.<TLD>/bb/feature/sso/action/start?domain_hint=<uniqueid>`
-    
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -236,7 +236,7 @@ ms.locfileid: "97589886"
 1. 在“应用程序”列表中选择“Amazon Business”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
-   ![“用户和组”链接](common/users-groups-blade.png)
+    ![“用户和组”链接](common/users-groups-blade.png)
 
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
 
@@ -290,6 +290,6 @@ ms.locfileid: "97589886"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 - [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e760ffa0dfc3bf080852da2fc401abd83fe4101
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cd8faece0d737e97f1c5809f27840f1d9192548
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457735"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673394"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ares-for-enterprise"></a>教程：Azure Active Directory 与 ARES for Enterprise 集成
 
@@ -65,7 +65,7 @@ ms.locfileid: "92457735"
 
 4. 在搜索框中，键入“ARES for Enterprise”  ，从结果面板中选择“ARES for Enterprise”  ，再单击“添加”  按钮以添加此应用程序。
 
-     ![结果列表中的 ARES for Enterprise](common/search-new-app.png)
+    ![结果列表中的 ARES for Enterprise](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -130,7 +130,7 @@ ms.locfileid: "92457735"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
@@ -166,7 +166,7 @@ ms.locfileid: "92457735"
 
 ### <a name="create-ares-for-enterprise-test-user"></a>创建 ARES for Enterprise 测试用户
 
-在本部分，我们会在 ARES for Enterprise 中创建一个名为 Britta Simon 的用户。 ARES for Enterprise 支持默认启用的 **恰时用户预配** 。 此部分不存在任何操作项。 尝试访问 ARES for Enterprise 时，如果 ARES for Enterprise 中尚不存在用户，系统会创建一个新用户。
+在本部分，我们会在 ARES for Enterprise 中创建一个名为 Britta Simon 的用户。 ARES for Enterprise 支持默认启用的 **恰时用户预配**。 此部分不存在任何操作项。 尝试访问 ARES for Enterprise 时，如果 ARES for Enterprise 中尚不存在用户，系统会创建一个新用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

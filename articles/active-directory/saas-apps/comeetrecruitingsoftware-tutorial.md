@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 7f992969cf50bb03df7091e0015c936a794946a6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d458d94a4bee4fce523819af2fd3e555db6e70df
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455572"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671989"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>教程：Azure Active Directory 与 Comeet Recruiting Software 的集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "92455572"
 
 4. 在搜索框中，键入“Comeet Recruiting Software”  ，在结果面板中选择“Comeet Recruiting Software”  ，然后单击“添加”  按钮添加该应用程序。
 
-     ![结果列表中的 Comeet Recruiting Software](common/search-new-app.png)
+    ![结果列表中的 Comeet Recruiting Software](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -141,7 +141,7 @@ ms.locfileid: "92455572"
 
     f. 单击“确定” 
 
-    g. 单击“ **保存** ”。
+    g. 单击“ **保存**”。
 
 4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -178,7 +178,7 @@ ms.locfileid: "92455572"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 

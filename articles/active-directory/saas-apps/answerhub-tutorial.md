@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ef09ef7d2ca6dd68def732831f9341dcd3aa6d62
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 284ec65955de60f41d7bb0f97bf608faba3d4b79
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458024"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672575"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>教程：Azure Active Directory 与 AnswerHub 集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "92458024"
 
 4. 在搜索框中输入 AnswerHub  。 在结果列表中选择“AnswerHub”，然后选择“添加”   。
 
-     ![结果列表中的“AnswerHub”](common/search-new-app.png)
+    ![结果列表中的“AnswerHub”](common/search-new-app.png)
 
 ## <a name="set-up-and-test-azure-ad-single-sign-on"></a>设置和测试 Azure AD 单一登录
 
@@ -141,13 +141,13 @@ ms.locfileid: "92458024"
 4. 在“IDP 配置”选项卡上，完成以下步骤  ：
 
     ![屏幕截图显示 AnswerHub 页，其中“用户和组”选项卡处于选中状态。](./media/answerhub-tutorial/ic785172.png "SAML 设置")  
-  
+
     a. 在“IDP 登录 URL”框中，粘贴从 Azure 门户复制的“登录 URL”   。
-  
+
     b. 在“IDP 注销 URL”框中，粘贴从 Azure 门户复制的“注销 URL”   。
 
     c. 在“IDP 名称标识符格式”框中，输入在 Azure 门户的“用户属性”部分中选定的“标识符”值    。
-  
+
     d. 选择“密钥和证书”  。
 
 5. 在“密钥和证书”部分中，完成以下步骤  ：
@@ -155,7 +155,7 @@ ms.locfileid: "92458024"
     ![密钥和证书部分](./media/answerhub-tutorial/ic785173.png "密钥和证书")  
 
     a. 在记事本中打开从 Azure 门户下载的 Base64 编码证书，复制其内容，然后粘贴到“IDP 公钥(x509 格式)”框中  。
-  
+
     b. 选择“保存”。 
 
 6. 在“IDP 配置”选项卡中，再次选择“保存”   。
@@ -178,8 +178,8 @@ ms.locfileid: "92458024"
 
     ![用户属性](common/user-properties.png)
 
-    a. 在“姓名”  框中，输入 **BrittaSimon** 。
-  
+    a. 在“姓名”  框中，输入 **BrittaSimon**。
+
     b. 在“用户名”框中，输入“brittasimon\@<yourcompanydomain.extension>”。  
     例如，BrittaSimon@contoso.com 。
 
@@ -231,7 +231,7 @@ ms.locfileid: "92458024"
 
 4. 在左侧窗格的“管理用户”部分中，选择“创建或导入用户”，然后选择“用户和组”    。
 
-   ![屏幕截图显示 AnswerHub 页，其中“用户和组”选项卡处于选中状态，并标注了“创建或导入用户”链接。](./media/answerhub-tutorial/ic785175.png "用户和组")
+    ![屏幕截图显示 AnswerHub 页，其中“用户和组”选项卡处于选中状态，并标注了“创建或导入用户”链接。](./media/answerhub-tutorial/ic785175.png "用户和组")
 
 5. 在相应的框中，输入要添加的有效 Azure AD 帐户的“电子邮件地址”、“用户名”和“密码”，然后选择“保存”     。
 

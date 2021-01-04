@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: c184d4758d6435659d737c11904357711f4f0a36
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3337d66934c1fe317296cffaa9a663e212cce12d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455864"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>教程：Azure Active Directory 与 ClickTime 的集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "92455864"
 
 4. 在搜索框中，键入“ClickTime”，在结果面板中选择“ClickTime”，然后单击“添加”按钮添加该应用程序    。
 
-     ![结果列表中的 ClickTime](common/search-new-app.png)
+    ![结果列表中的 ClickTime](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -104,7 +104,7 @@ ms.locfileid: "92455864"
     a. 在“标识符”文本框中键入 URL：`https://app.clicktime.com/sp/`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
-    
+
     ```http
     https://app.clicktime.com/Login/
     https://app.clicktime.com/App/Login/Consume.aspx
@@ -131,15 +131,15 @@ ms.locfileid: "92455864"
 1. 在顶部工具栏中，单击“首选项”，并单击“安全设置”。  
 
 1. 在“单一登录首选项”  配置部分中，执行以下步骤：
-   
+
     ![安全设置](./media/clicktime-tutorial/tic777280.png "安全设置")
-   
+
     a.  选择“允许”通过“Azure AD”使用单一登录 (SSO) 进行登录。  
-   
-    b. 在“标识提供者终结点”  文本框中，粘贴从 Azure 门户复制的 **登录 URL** 。
-   
+
+    b. 在“标识提供者终结点”  文本框中，粘贴从 Azure 门户复制的 **登录 URL**。
+
     c.  在记事本中打开从 Azure 门户下载的 base-64 编码证书，复制内容，然后将其粘贴到“X.509 证书”文本框中    。
-   
+
     d.  单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
@@ -159,7 +159,7 @@ ms.locfileid: "92455864"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
@@ -206,24 +206,24 @@ ms.locfileid: "92455864"
 1. 登录到 **ClickTime** 租户。
 
 1. 在顶部工具栏中，单击“公司”，并单击“人员”。  
-   
+
     ![屏幕截图显示已选择“公司”和“人员”的 ClickTime 租户。](./media/clicktime-tutorial/tic777282.png "人员")
 
 1. 单击“添加用户”  。
-   
+
     ![添加人员](./media/clicktime-tutorial/tic777283.png "添加人员")
 
 1. 在“新建人员”部分中，执行以下步骤：
-   
+
     ![屏幕截图显示“添加人员”部分，可在其中添加此步骤中的信息。](./media/clicktime-tutorial/tic777284.png "人员")
-   
+
     a.  在“全名”文本框中，键入用户的全名，例如 Britta Simon   。 
-  
+
     b.  在“电子邮件地址”文本框中，键入用户的电子邮件，例如 brittasimon\@contoso.com。
-       
+
     > [!NOTE]
     > 如果需要，可以设置新人员对象的其他属性。
-   
+
     c.  单击“保存”  。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
