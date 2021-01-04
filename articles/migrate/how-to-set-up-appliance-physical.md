@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/15/2020
-ms.openlocfilehash: 21d40b1962a3e4000876686659b76d019991785d
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 73c3d529978c91946632ed599f02b8938830621e
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751676"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705313"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>为物理服务器设置设备
 
@@ -119,11 +119,16 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 ### <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
 1. 粘贴从门户复制的 Azure Migrate 项目密钥。 如果没有密钥，请转到“服务器评估”>“发现”>“管理现有设备”，选择在生成密钥时提供的设备名称，然后复制相应的密钥。
-1. 单击“登录”。 这将在新的浏览器选项卡中打开 Azure 登录提示。如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
-1. 在新选项卡上，使用 Azure 用户名和密码登录。
+1. 需要使用设备代码对 Azure 进行身份验证。 单击 " **登录** " 将打开具有设备代码的模式，如下所示。
+
+    ![显示设备代码的模式](./media/tutorial-discover-vmware/device-code.png)
+
+1. 单击 " **复制代码" & "登录** " 以复制设备代码，并在新的浏览器选项卡中打开 Azure 登录提示。如果未显示，请确保在浏览器中禁用了弹出窗口阻止程序。
+1. 在 "新建" 选项卡上，粘贴设备代码，并使用 Azure 用户名和密码进行登录。
    
    不支持使用 PIN 登录。
-3. 成功登录后，返回到 Web 应用。 
+3. 如果意外关闭了 "登录" 选项卡而没有登录，则需要刷新设备配置管理器的 "浏览器" 选项卡以再次启用 "登录" 按钮。
+1. 成功登录后，返回到 "设备配置管理器" 的上一个选项卡。
 4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限](./tutorial-discover-physical.md)，会启动设备注册。
 1. 成功注册设备后，可以通过单击“查看详细信息”来查看注册详细信息。
 
@@ -132,7 +137,17 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 
 现在，从设备连接到要发现的物理服务器，并启动发现。
 
-1. 在 **步骤 1：提供用于发现 Windows 和 Linux 物理服务器或虚拟服务器的凭据** 中，单击“添加凭据”，为凭据指定一个易记名称，并为 Windows 或 Linux 服务器添加“用户名”和“密码”  。 单击“保存” 。
+1. 在 **步骤 1：提供用于发现 Windows 和 Linux 物理服务器或虚拟服务器的凭据，单击“添加凭据”** 。
+1. 对于 Windows 服务器，选择作为 Windows 服务器的源类型，指定凭据的友好名称，添加用户名和密码。单击“保存” 。
+1. 如果将基于密码的身份验证用于 Linux 服务器，请选择“Linux 服务器(基于密码)”作为源类型，为凭据指定易用名称，添加用户名和密码。单击“保存” 。
+1. 如果将基于 SSH 密钥的身份验证用于 Linux 服务器，可选择“Linux 服务器(基于 SSH 密钥)”作为源类型，为凭据指定易用名称，添加用户名，浏览并选择 SSH 私钥文件。 单击“保存” 。
+
+    - Azure Migrate 支持由 ssh-keygen 命令使用 RSA、DSA、ECDSA 和 ed25519 算法生成的 SSH 私钥。
+    - 目前 Azure Migrate 不支持基于密码的 SSH 密钥。 请使用不含密码的 SSH 密钥。
+    - 目前 Azure Migrate 不支持 PuTTY 生成的 SSH 私钥文件。
+    - Azure Migrate 支持 SSH 私钥文件的 OpenSSH 格式，如下所示：
+    
+    ![支持 SSH 私钥格式](./media/tutorial-discover-physical/key-format.png)
 1. 如果要一次添加多个凭据，请单击“添加更多”，以保存和添加更多凭据。 物理服务器发现支持多个凭据。
 1. 在“步骤 2：提供物理服务器或虚拟服务器详细信息”中，单击“添加发现源”，以指定服务器 IP地址/FQDN 以及为用于连接到服务器的凭据指定易记名称  。
 1. 可以一次“添加单个项目”，也可以一次“添加多个项目” 。 还有一个选项是通过“导入 CSV”提供服务器详细信息。

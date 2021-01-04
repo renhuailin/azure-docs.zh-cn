@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c321eae9451715077aa50d163b62b51ec88ce1a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ce79fe88b33659241a226af7bbb7a966ede41abb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95496879"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696156"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>定位关系和在 Azure 空间锚中查找的方式
 
@@ -64,7 +64,7 @@ ms.locfileid: "95496879"
 
 若要连接多个会话的定位点：
 
-1. 应用程序在一个 CloudSpatialAnchorSession 中创建了一些定位点。
+1. 应用程序在一个 CloudSpatialAnchorSession 中创建了一些定位点 (和 B) 。
 2. 在其他时间，应用程序将查找其中一个定位点 (例如，使用新 CloudSpatialAnchorSession 定位) 。
 3. 转到新位置。 底层混合现实或扩充现实平台跟踪移动。
 4. 使用相同的 CloudSpatialAnchorSession 创建定位点 C。 当前已连接锚点 A、B 和 C。 空间锚定服务维护此关系。

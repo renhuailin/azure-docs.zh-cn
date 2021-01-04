@@ -9,12 +9,12 @@ ms.subservice: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: d040215968b0ebb433edba03e4839ffe7add0e5c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 52e0e50d3c0c68b57181645c3eb695308fdac65a
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745859"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703817"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>快速入门：使用 ARM 模板创建 Linux 虚拟机规模集
 
@@ -77,7 +77,7 @@ ARM 模板允许部署相关资源的组。 在单个模板中，可以创建虚
 
 模板使用自定义脚本扩展来安装 [Bottle](https://bottlepy.org/docs/dev/)（Python Web 框架）和简单的 HTTP 服务器。
 
-两个脚本在 **fileUris** - （ *installserver.sh* 和 *workserver.py* ）中定义。 从 GitHub 下载这些文件以后， *commandToExecute* 就可以运行 `bash installserver.sh` 来安装和配置应用。
+两个脚本在 **fileUris** - （*installserver.sh* 和 *workserver.py*）中定义。 从 GitHub 下载这些文件以后，*commandToExecute* 就可以运行 `bash installserver.sh` 来安装和配置应用。
 
 ## <a name="deploy-the-template"></a>部署模板
 
@@ -92,7 +92,7 @@ ARM 模板允许部署相关资源的组。 在单个模板中，可以创建虚
 az group create --name myResourceGroup --location EastUS
 
 # Deploy template into resource group
-az group deployment create \
+az deployment group create \
     --resource-group myResourceGroup \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/azuredeploy.json
 ```

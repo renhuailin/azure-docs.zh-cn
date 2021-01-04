@@ -1,18 +1,18 @@
 ---
 title: '注册并扫描 Power BI 租户 (预览版) '
 description: 了解如何使用 Azure 监控范围门户注册和扫描 Power BI 租户。
-author: viseshag
-ms.author: viseshag
+author: chanuengg
+ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3813d58d894d87051b1bcf8b512c848d527a52bb
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 3d8107e980b9cad9bc55cb51cc78b63985986ba5
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615842"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696227"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>注册并扫描 Power BI 租户 (预览版) 
 
@@ -72,8 +72,6 @@ ms.locfileid: "97615842"
 
 首先，将一个特殊的功能标志添加到监控范围 URL 
 
-1. 将以下字符串添加到监控范围实例的 uri 的末尾： `?feature.ext.catalog={"pbi":"true"}` 。 这会在目录中启用 Power BI 注册选项。
-
 1. 选择 " **管理中心** " 图标。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="管理中心图标。":::
@@ -112,6 +110,5 @@ ms.locfileid: "97615842"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何使用 PowerShell cmdlet 注册和扫描 Power BI 租户，请参阅：
-  
-- [使用 PowerShell 注册和扫描 Power BI](powershell-register-scan-power-bi.md)
+- [浏览 Azure Purview 数据目录](how-to-browse-catalog.md)
+- [搜索 Azure Purview 数据目录](how-to-search-catalog.md)

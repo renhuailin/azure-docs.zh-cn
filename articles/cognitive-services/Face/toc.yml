@@ -48,7 +48,8 @@
         - name: 配置容器
           href: face-resource-container-config.md
         - name: 使用容器实例
-          href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
         - name: 认知服务容器文档
           href: ../containers/index.yml
 - name: 场景深入介绍

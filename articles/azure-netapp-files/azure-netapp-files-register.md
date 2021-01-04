@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: e2838b759a611cb55b9fd3fadf834c84eb74210d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a61d6ba1f908a7dae56db066bfae329fc26f1c5c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533632"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696128"
 ---
 # <a name="register-for-azure-netapp-files"></a>注册 Azure NetApp 文件
 
@@ -30,7 +30,8 @@ ms.locfileid: "91533632"
 
 ## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>提交用于访问服务的候补请求
 
-1. 提交候补请求，通过 [Azure Netapp 文件候补提交页](https://aka.ms/azurenetappfiles)访问 Azure netapp 文件服务。 
+1. 请访问以下页面并提交候补请求以访问 Azure NetApp 文件服务：  
+    [**Azure NetApp 文件候补提交页**](https://aka.ms/azurenetappfiles) 
 
     候补注册不保证立即访问服务。 
 
@@ -99,9 +100,9 @@ ms.locfileid: "91533632"
 
    `<SubID>` 是你的订阅 ID。  `state` 参数值表示 `Registered`。
 
-6. 从 Azure 门户中，单击“订阅”边栏选项卡。****
+6. 从 Azure 门户中，单击“订阅”边栏选项卡。
 7. 在“订阅”边栏选项卡中，单击你的订阅 ID。 
-8. 在订阅设置中，单击“资源提供程序”**** 来验证 Microsoft.NetApp 提供程序是否指示了“已注册”状态： 
+8. 在订阅设置中，单击“资源提供程序”来验证 Microsoft.NetApp 提供程序是否指示了“已注册”状态： 
 
       ![已注册的 Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 

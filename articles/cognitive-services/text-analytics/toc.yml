@@ -80,7 +80,8 @@
         - name: 配置容器
           href: text-analytics-resource-container-config.md
         - name: 使用容器实例
-          href: how-tos/text-analytics-how-to-use-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
         - name: 使用 Kubernetes 服务 (AKS)
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
         - name: 认知服务容器文档

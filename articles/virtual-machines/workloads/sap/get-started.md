@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/12/2020
+ms.date: 12/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75ea3eec50516c9ba08504dd149d4bd08f8abbb6
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 9e842e4d2a4dbd118840498587696df085b07700
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371928"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722889"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -48,7 +48,8 @@ Azure for SAP HANA 的独特之处在于，它是一款能让 Azure 脱颖而出
 - 第三方 HA 帧是否适用于 Windows 和 Pacemaker 以外的支持？ 查看[SAP 支持说明](https://launchpad.support.sap.com/#/notes/1928533)的底部部分 #1928533
 - 哪种 Azure 存储最适合我的方案？ 读取 [SAP 工作负荷的 Azure 存储类型](./planning-guide-storage.md)
 - SAP 支持的 Oracle Enterprise Linux 中的 Red Hat 内核？ 阅读 SAP [sap 支持说明 #1565179](https://launchpad.support.sap.com/#/notes/1565179)
-- 为什么 Azure [Da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [Ea (s) ](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) VM 家族未经过 SAP HANA 认证？ Azure Das/Eas VM 系列基于 AMD 处理器驱动的硬件。 SAP HANA 不支持 AMD 处理器，甚至不支持虚拟化方案。
+- 为什么 Azure [Da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [Ea (s) ](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) VM 家族未经过 SAP HANA 认证？ Azure Das/Eas VM 系列基于 AMD 处理器驱动的硬件。 SAP HANA 不支持 AMD 处理器，甚至不适用于虚拟化方案
+- 为什么仍然会收到消息： "未设置 RDTSCP 指令的 cpu 标志或 constant_tsc 或 nonstop_tsc 的 cpu 标志，current_clocksource 或者未使用 SAP HANA 对其进行正确配置，并且未使用正确配置 available_clocksource，尽管我运行的是最新的 Linux 内核。 有关答案，请查看 [SAP 支持说明 #2791572](https://launchpad.support.sap.com/#/notes/2791572) 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）
@@ -82,6 +83,7 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 
 ## <a name="change-log"></a>更改日志
 
+- 12/21/2020：将新证书添加到[可用 sku](./hana-available-skus.md)中的 HANA 大型实例的 sku
 - 12/12/2020：添加了指向 SAP 的指针备注阐明 SAP 的 Oracle Enterprise Linux 支持的详细信息 [Azure 部署支持的 sap 软件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support)
 - 11/26/2020：将[SAP 工作负荷的](./planning-guide-storage.md) [azure 虚拟机存储配置](./hana-vm-operations-storage.md)和 azure 存储类型 SAP HANA 改编为更改了单一[VM sla](https://azure.microsoft.com/support/legal/sla/virtual-machines)
 - 11/05/2020：更改[Azure 虚拟机存储配置](./hana-vm-operations-storage.md)中有关 HANA 支持的文件系统类型的新 SAP 说明 SAP HANA 的更改链接 
@@ -179,9 +181,3 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 - 2020年1月10日：在 SLES 上， [Azure vm 上的 Sap NetWeaver 的高可用性更改与 sap 应用程序的 Azure Netapp 文件](./high-availability-guide-suse-netapp-files.md) 以及 [azure 虚拟机中 sap NetWeaver 的高可用性，适用于 sap 应用程序的 azure netapp 文件](./high-availability-guide-rhel-netapp-files.md) ，用于添加有关如何装载 azure netapp 文件 NFSv4 卷的说明。
 - 2019 年 12 月 23 日：发布 [SLES 上 Azure VM 中的 SAP NetWeaver 的高可用性多 SID 指南](./high-availability-guide-suse-multi-sid.md)
 - 2019 年 12 月 18 日：发布[在 RHEL 上的 Azure VM 中通过 Azure NetApp 文件使用备用节点横向扩展 SAP HANA](./sap-hana-scale-out-standby-netapp-files-rhel.md)
-- 2019 年 11 月 21 日：更改[在 SUSE Linux Enterprise Server 上的 Azure VM 中通过 Azure NetApp 文件使用备用节点横向扩展 SAP HANA](./sap-hana-scale-out-standby-netapp-files-suse.md) 中的内容，以简化 NFS ID 映射的配置，并更改建议的主网络接口以简化路由。
-- 2019 年 11 月 15 日：对[在 SUSE Linux Enterprise Server for SAP Applications 上通过 Azure NetApp 文件实现 SAP NetWeaver 的高可用性](high-availability-guide-suse-netapp-files.md)和[在 Red Hat Enterprise Linux for SAP Applications 上通过 Azure NetApp 文件实现 SAP NetWeaver 的高可用性](high-availability-guide-rhel-netapp-files.md)中的内容进行一些小改动，以阐明容量池大小限制并删除仅支持 NFSv3 版本的声明。
-- 2019 年 11 月 12 日：发布[在 Windows 上通过 Azure NetApp 文件 (SMB) 实现 SAP NetWeaver 的高可用性](high-availability-guide-windows-netapp-files-smb.md)
-- 2019 年 11 月 8 日：更改 [SUSE Linux Enterprise Server 上 Azure VM 中的 SAP HANA 的高可用性](sap-hana-high-availability.md)、[在 Azure 虚拟机 (VM) 上设置 SAP HANA 系统复制](sap-hana-high-availability-rhel.md)、[SUSE Linux Enterprise Server for SAP Applications 上 Azure 虚拟机中的 SAP NetWeaver 的高可用性](high-availability-guide-suse.md)、[在 SUSE Linux Enterprise Server 上的 Azure 虚拟机中通过 Azure NetApp 文件实现 SAP NetWeaver 的高可用性](high-availability-guide-suse-netapp-files.md)、[Red Hat Enterprise Linux 上 Azure 虚拟机中的 SAP NetWeaver 的高可用性](high-availability-guide-rhel.md)、[在 Red Hat Enterprise Linux 上的 Azure 虚拟机中通过 Azure NetApp 文件实现 SAP NetWeaver 的高可用性](high-availability-guide-rhel-netapp-files.md)、[SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](high-availability-guide-suse-nfs.md)和[适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 中的 GlusterFS](high-availability-guide-rhel-glusterfs.md) 中的内容，以推荐 Azure 标准负载均衡器  
-- 2019 年 11 月 8 日：更改 [SAP 工作负荷规划和部署清单](sap-deployment-checklist.md)中的内容，以阐明加密建议  
-- 2019 年 11 月 4 日：更改[在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](high-availability-guide-suse-pacemaker.md) 中的内容，以直接使用单播配置创建群集

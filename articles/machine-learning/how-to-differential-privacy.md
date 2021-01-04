@@ -1,7 +1,7 @@
 ---
-title: '如何使用 WhiteNoise 包 (预览保留数据隐私) '
+title: '如何使用 SmartNoise 包 (预览保留数据隐私) '
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 WhiteNoise 包将有关差分隐私的最佳做法应用于 Azure 机器学习模型。
+description: 了解如何使用 SmartNoise 包将差异隐私最佳做法应用于 Azure 机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,31 +10,27 @@ ms.custom: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 07/09/2020
-ms.openlocfilehash: 355d96fe5a617effab89fbd038f7f1785215f88f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/21/2020
+ms.openlocfilehash: f004f0f052e466441999c1bfd511823edd6b907e
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897682"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722430"
 ---
-# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure 机器学习 (预览版中使用差异隐私) 
+# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure 机器学习（预览版）中使用差分隐私
 
-
-
-了解如何使用 WhiteNoise Python 包将有关差分隐私的最佳做法应用于 Azure 机器学习模型。
+了解如何使用 SmartNoise Python 包将差异隐私最佳做法应用于 Azure 机器学习模型。
 
 差分隐私是隐私的最高标准定义。 遵守此隐私定义的系统可针对各种数据重建和重新识别攻击（包括拥有辅助信息的攻击者发起的攻击）提供强大的防护保障。 详细了解[差分隐私的工作原理](./concept-differential-privacy.md)。
 
-> [!NOTE]
-> 请注意，我们正在重命名该工具包，并将在未来几周内引入新名称。 
 
 ## <a name="prerequisites"></a>先决条件
 
 - 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 - [Python 3](https://www.python.org/downloads/)
 
-## <a name="install-whitenoise-packages"></a>安装 WhiteNoise 包
+## <a name="install-smartnoise-packages"></a>安装 SmartNoise 包
 
 ### <a name="standalone-installation"></a>独立安装
 
@@ -42,45 +38,45 @@ ms.locfileid: "90897682"
 
 以下说明假设已将 `python` 和 `pip` 命令映射到 `python3` 和 `pip3`。
 
-使用 pip 安装 [WhiteNoise Python 包](https://pypi.org/project/opendp-whitenoise/)。
+使用 pip 安装 [SmartNoise Python 包](https://pypi.org/project/opendp-smartnoise/)。
 
-`pip install opendp-whitenoise`
+`pip install opendp-smartnoise`
 
 若要验证是否安装了这些包，请启动 Python 提示并键入：
 
 ```python
-import opendp.whitenoise.core
-import opendp.whitenoise.sql
+import opendp.smartnoise.core
+import opendp.smartnoise.sql
 ```
 
 如果导入成功，则表示这些库已安装且可供使用。
 
 ### <a name="docker-image"></a>Docker 映像
 
-还可以将 WhiteNoise 包与 Docker 配合使用。
+你还可以将 SmartNoise 包与 Docker 配合使用。
 
-拉取 `opendp/whitenoise` 映像，以在包含 Spark、Jupyter 和示例代码的 Docker 容器中使用这些库。
+拉取 `opendp/smartnoise` 映像，以在包含 Spark、Jupyter 和示例代码的 Docker 容器中使用这些库。
 
 ```sh
-docker pull opendp/whitenoise:privacy
+docker pull opendp/smartnoise:privacy
 ```
 
 拉取映像后，启动 Jupyter 服务器：
 
 ```sh
-docker run --rm -p 8989:8989 --name whitenoise-run opendp/whitenoise:privacy
+docker run --rm -p 8989:8989 --name smartnoise-run opendp/smartnoise:privacy
 ```
 
-这会在 `localhost` 中的端口 `8989` 上使用密码 `pass@word99` 启动 Jupyter 服务器。 假设你已使用上述命令行启动了名为 `whitenoise-privacy` 的容器，现在可以运行以下命令，在 Jupyter 服务器中打开 bash 终端：
+这会在 `localhost` 中的端口 `8989` 上使用密码 `pass@word99` 启动 Jupyter 服务器。 假设你已使用上述命令行启动了名为 `smartnoise-privacy` 的容器，现在可以运行以下命令，在 Jupyter 服务器中打开 bash 终端：
 
 ```sh
-docker exec -it whitenoise-run bash
+docker exec -it smartnoise-run bash
 ```
 
 Docker 实例在关闭时会清除所有状态，因此，在运行中的实例上创建的所有笔记本都会丢失。 若要补救此问题，可以在启动容器时将一个本地文件夹装载到该容器：
 
 ```sh
-docker run --rm -p 8989:8989 --name whitenoise-run --mount type=bind,source=/Users/your_name/my-notebooks,target=/home/privacy/my-notebooks opendp/whitenoise:privacy
+docker run --rm -p 8989:8989 --name smartnoise-run --mount type=bind,source=/Users/your_name/my-notebooks,target=/home/privacy/my-notebooks opendp/smartnoise:privacy
 ```
 
 在 *my-notebooks* 文件夹下创建的任何笔记本都将存储在本地文件系统中。
@@ -95,7 +91,7 @@ docker run --rm -p 8989:8989 --name whitenoise-run --mount type=bind,source=/Use
 import os
 import sys
 import numpy as np
-import opendp.whitenoise.core as wn
+import opendp.smartnoise.core as sn
 
 data_path = os.path.join('.', 'data', 'PUMS_california_demographics_1000', 'data.csv')
 var_names = ["age", "sex", "educ", "race", "income", "married", "pid"]
@@ -104,19 +100,19 @@ var_names = ["age", "sex", "educ", "race", "income", "married", "pid"]
 在此示例中，我们将计算年龄的平均值和方差。  我们使用 `epsilon` 总数 1.0（epsilon 是隐私参数，将隐私预算分散在我们要计算的两个数量之间）。 详细了解[隐私指标](concept-differential-privacy.md#differential-privacy-metrics)。
 
 ```python
-with wn.Analysis() as analysis:
+with sn.Analysis() as analysis:
     # load data
-    data = wn.Dataset(path = data_path, column_names = var_names)
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
     # get mean of age
-    age_mean = wn.dp_mean(data = wn.cast(data['age'], type="FLOAT"),
+    age_mean = sn.dp_mean(data = sn.cast(data['age'], type="FLOAT"),
                           privacy_usage = {'epsilon': .65},
                           data_lower = 0.,
                           data_upper = 100.,
                           data_n = 1000
                          )
     # get variance of age
-    age_var = wn.dp_variance(data = wn.cast(data['age'], type="FLOAT"),
+    age_var = sn.dp_variance(data = sn.cast(data['age'], type="FLOAT"),
                              privacy_usage = {'epsilon': .35},
                              data_lower = 0.,
                              data_upper = 100.,
@@ -156,19 +152,19 @@ Privacy usage: approximate {
 | Sum           |            | 插补 |
 | 方差/协方差 |      | 转换  |
 
-有关更多详细信息，请参阅 [数据分析笔记本](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) 。
+有关更多详细信息，请参阅[数据分析笔记本](https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/basic_data_analysis.ipynb)。
 
 ## <a name="approximate-utility-of-differentially-private-releases"></a>差分隐私版本的大致效用
 
 由于差分隐私是通过校准干扰数据运行的，因此版本的效用因隐私风险而异。  一般情况下，随着样本大小不断增大，为保护每个个体而需要的干扰数据会变得可忽略不计，但样本大小增大也会显著影响针对单个个体的版本结果准确度。  分析师可以查看版本的准确度信息，以确定该版本的作用如何：
 
 ```python
-with wn.Analysis() as analysis:
+with sn.Analysis() as analysis:
     # load data
-    data = wn.Dataset(path = data_path, column_names = var_names)
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
     # get mean of age
-    age_mean = wn.dp_mean(data = wn.cast(data['age'], type="FLOAT"),
+    age_mean = sn.dp_mean(data = sn.cast(data['age'], type="FLOAT"),
                           privacy_usage = {'epsilon': .65},
                           data_lower = 0.,
                           data_upper = 100.,
@@ -202,11 +198,11 @@ Age accuracy is: 0.2995732273553991
 ```python
 income_edges = list(range(0, 100000, 10000))
 
-with wn.Analysis() as analysis:
-    data = wn.Dataset(path = data_path, column_names = var_names)
+with sn.Analysis() as analysis:
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
-    income_histogram = wn.dp_histogram(
-            wn.cast(data['income'], type='int', lower=0, upper=100),
+    income_histogram = sn.dp_histogram(
+            sn.cast(data['income'], type='int', lower=0, upper=100),
             edges = income_edges,
             upper = 1000,
             null_value = 150,
@@ -216,11 +212,11 @@ with wn.Analysis() as analysis:
 
 由于个体在直方图箱之间以不相交的方式分区，因此，每个直方图只会产生隐私成本一次，即使直方图包含许多的箱，也是如此。
 
-有关直方图的详细信息，请参阅[直方图笔记本](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/histograms.ipynb)。
+有关直方图的详细信息，请参阅[直方图笔记本](https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/histograms.ipynb)。
 
 ## <a name="generate-a-covariance-matrix"></a>生成协方差矩阵
 
-WhiteNoise 通过其 `dp_covariance` 函数提供三种不同的功能：
+SmartNoise 提供了三种不同的功能及其 `dp_covariance` 功能：
 
 - 两个向量之间的协方差
 - 矩阵的协方差矩阵
@@ -229,13 +225,13 @@ WhiteNoise 通过其 `dp_covariance` 函数提供三种不同的功能：
 下面是计算标量协方差的示例：
 
 ```python
-with wn.Analysis() as analysis:
-    wn_data = wn.Dataset(path = data_path, column_names = var_names)
+with sn.Analysis() as analysis:
+    wn_data = sn.Dataset(path = data_path, column_names = var_names)
 
-    age_income_cov_scalar = wn.dp_covariance(
-      left = wn.cast(wn_data['age'], 
+    age_income_cov_scalar = sn.dp_covariance(
+      left = sn.cast(wn_data['age'], 
       type = "FLOAT"), 
-      right = wn.cast(wn_data['income'], 
+      right = sn.cast(wn_data['income'], 
       type = "FLOAT"), 
       privacy_usage = {'epsilon': 1.0},
       left_lower = 0., 
@@ -247,8 +243,8 @@ with wn.Analysis() as analysis:
 ```
 
 有关详细信息，请参阅[协方差笔记本](
-https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/covariance.ipynb)
+https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/covariance.ipynb)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 浏览 [WhiteNoise 示例笔记本](https://github.com/opendifferentialprivacy/whitenoise-samples/tree/master/analysis)。
+- 探索 [SmartNoise 示例笔记本](https://github.com/opendifferentialprivacy/smartnoise-samples/tree/master/analysis)。

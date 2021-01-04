@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: f79b03884109ffbd856ff4f60909565daeb0e792
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 08f033cbe121135e281379a013e11a33ae962dfb
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549101"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703800"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中心支持具有专用链接和托管标识的虚拟网络
 
@@ -89,9 +89,15 @@ IoT 中心可以通过（后述资源的）公共终结点连接到 Azure blob �
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="屏幕截图显示如何为 IoT 中心启用托管标识":::
 
+使用 Azure CLI 打开托管标识：
+
+```azurecli-interactive
+az iot hub update --name <iot-hub-resource-name> --set identity.type="SystemAssigned"
+```
+
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>使用 ARM 模板在创建时将托管标识分配给 IoT 中心
 
-若要在资源预配时将托管标识分配到 IoT 中心，请使用以下 ARM 模板：
+若要在资源预配时将托管标识分配到 IoT 中心，请使用下面的 ARM 模板。 此 ARM 模板具有两个所需的资源，并且两者都需要在创建其他资源之前进行部署，如 `Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups` 。 
 
 ```json
 {
@@ -115,9 +121,9 @@ IoT 中心可以通过（后述资源的）公共终结点连接到 Azure blob �
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-02-01",
-      "name": "updateIotHubWithKeyEncryptionKey",
+      "name": "createIotHub",
       "dependsOn": [
-        "<provide-a-valid-resource-name>"
+        "[resourceId('Microsoft.Devices/IotHubs', '<provide-a-valid-resource-name>')]"
       ],
       "properties": {
         "mode": "Incremental",

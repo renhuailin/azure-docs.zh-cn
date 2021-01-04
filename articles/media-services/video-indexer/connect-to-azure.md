@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 282e1ef98a3c0d6e152b56a180a639c86d004af9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493094"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702597"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
@@ -107,9 +107,14 @@ ms.locfileid: "96493094"
 
 1. 使用 [Azure](https://portal.azure.com/) 门户创建 Azure 媒体服务帐户，如[创建帐户](../previous/media-services-portal-create-account.md)中所述。
 
+     请确保已通过经典 Api 创建媒体服务帐户。 
+ 
+    ![媒体服务经典 API](./media/create-account/enable-classic-api.png)
+
+
     为媒体服务帐户创建存储帐户时，请选择 " **StorageV2** " 作为 "帐户类型" 和 " **异地冗余** " (GRS) 用于复制字段。
 
-    ![新 AMS 帐户](./media/create-account/create-ams-account1.png)
+    ![新 AMS 帐户](./media/create-account/create-new-ams-account.png)
 
     > [!NOTE]
     > 请务必记下媒体服务资源和帐户名。 下一节中的步骤需要用到它们。
@@ -120,7 +125,7 @@ ms.locfileid: "96493094"
 
     在新的媒体服务帐户中，选择 " **流式处理终结点**"。 然后选择流式处理终结点，并按 "启动"。
 
-    ![流式处理终结点](./media/create-account/create-ams-account2.png)
+    ![流式处理终结点](./media/create-account/create-ams-account-se.png)
 4. 要使视频索引器使用媒体服务 API 进行身份验证，需要创建 AD 应用。 以下步骤引导你完成[通过 Azure 门户开始使用 Azure AD 身份验证](../previous/media-services-portal-get-started-with-aad.md)中所述的 Azure AD 身份验证过程：
 
     1. 在新的媒体服务帐户中，选择“API 访问”。
@@ -171,7 +176,9 @@ ms.locfileid: "96493094"
 
 请注意以下 Azure 媒体服务相关的事项：
 
-* 如果你自动连接，你将在 Azure 订阅中看到一个新的资源组、媒体服务帐户和一个存储帐户。
+* 如果打算连接到现有的媒体服务帐户，请确保已使用经典 Api 创建媒体服务帐户。 
+ 
+    ![媒体服务经典 API](./media/create-account/enable-classic-api.png)
 * 如果连接到现有的媒体服务帐户，则视频索引器不会更改现有的媒体 **保留单位** 配置。
 
    你可能需要根据计划的负载调整媒体保留单位的类型和数量。 请记住，如果负载较高，并且没有足够的单位或速度，则视频处理可能导致超时失败。

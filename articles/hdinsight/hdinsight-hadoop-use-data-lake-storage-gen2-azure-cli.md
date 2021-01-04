@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 09/17/2020
-ms.openlocfilehash: f88c242ab6f7ddabe17c9363aa1e6bb7f617c800
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4ffe5acce831435d3771a2eb48a90b16f584c92a
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845096"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704004"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-azure-cli"></a>通过 Azure CLI 创建使用 Data Lake Storage Gen2 的群集
 
@@ -77,7 +77,7 @@ az storage account create --name <STORAGEACCOUNTNAME> \
  > 请确保你的存储帐户具有用户分配的具有“存储 Blob 数据参与者”角色权限的标识，否则群集创建将失败。
 
 ```azurecli
-az group deployment create --name HDInsightADLSGen2Deployment \
+az deployment group create --name HDInsightADLSGen2Deployment \
     --resource-group <RESOURCEGROUPNAME> \
     --template-file hdinsight-adls-gen2-template.json \
     --parameters parameters.json

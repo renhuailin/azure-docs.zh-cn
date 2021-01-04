@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 性能优化-PowerShell
 description: 有关在将 Azure PowerShell 用于 Azure Data Lake Storage Gen1 时如何提高性能的提示。
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/09/2018
-ms.author: stewu
-ms.openlocfilehash: f5e6f6601a563a387476e4e2eaf353c8bef384ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: twooley
+ms.openlocfilehash: 4ac2bbb21fd1a987d544a536d0f52628824e0bf4
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85504689"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723773"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>将 PowerShell 与 Azure Data Lake Store Gen1 配合使用的性能优化指南
 
@@ -74,7 +74,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
     `96 = 40 * ConcurrentFileCount`
 
-    ConcurrentFileCount 为 2.4，舍入为 2************。
+    ConcurrentFileCount 为 2.4，舍入为 2。
 
 ## <a name="further-tuning"></a>进一步调整
 
@@ -82,13 +82,13 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
 `PerFileThreadCount = 10 + ((5 GB - 2.5 GB) / 256 MB) = 20`
 
-所以 ConcurrentFileCount 是 96/20，即 4.8，舍入为 4********。
+所以 ConcurrentFileCount 是 96/20，即 4.8，舍入为 4。
 
-可以根据文件大小的分布，通过调大或调小 PerFileThreadCount 来继续调整这些设置****。
+可以根据文件大小的分布，通过调大或调小 PerFileThreadCount 来继续调整这些设置。
 
 ### <a name="limitation"></a>限制
 
-* **文件数小于 ConcurrentFileCount**：如果要上传的文件数小于计算得出的 ConcurrentFileCount，应减小 ConcurrentFileCount，使其等于文件数********。 可以使用所有剩余线程来增大 PerFileThreadCount****。
+* **文件数小于 ConcurrentFileCount**：如果要上传的文件数小于计算得出的 ConcurrentFileCount，应减小 ConcurrentFileCount，使其等于文件数。 可以使用所有剩余线程来增大 PerFileThreadCount。
 
 * **线程过多**：如果在不增加群集大小的情况下大幅增加线程计数，会面临性能下降的风险。 在 CPU 上执行上下文切换时，可能会出现资源争用的问题。
 

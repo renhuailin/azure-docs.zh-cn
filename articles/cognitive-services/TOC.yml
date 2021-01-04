@@ -15,6 +15,8 @@
       href: cognitive-services-custom-subdomains.md
     - name: 语言支持
       href: language-support.md
+    - name: 计划和管理成本
+      href: plan-manage-costs.md
 - name: 快速入门
   items:
     - name: 使用 Azure 门户创建新资源

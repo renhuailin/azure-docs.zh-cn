@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: 16002d7acf97832f743410a203e2f76e99646c0c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 7122c960dc7921e833329d528f96f0efe0347bda
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673352"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707463"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -412,7 +412,9 @@ Azure 逻辑应用用于入站和出站调用的 IP 地址取决于逻辑应用�
 
 > [!TIP]
 > 为帮助你更简单地创建安全规则，可选择性地使用[服务标记](../virtual-network/service-tags-overview.md) LogicAppsManagement，而不是为每个区域指定入站逻辑应用 IP 地址前缀。
-> 此标记可使用逻辑应用服务的区域。
+> 对于托管连接器，可以选择使用 **AzureConnectors** 服务标记，而不是为每个区域指定入站托管连接器 IP 地址前缀。
+> 这些标记适用于可使用逻辑应用服务的区域。
+
 
 <a name="multi-tenant-inbound"></a>
 
@@ -476,7 +478,7 @@ Azure 逻辑应用用于入站和出站调用的 IP 地址取决于逻辑应用�
 
 > [!TIP]
 > 为帮助你更简单地创建安全规则，可选择性地使用[服务标记](../virtual-network/service-tags-overview.md) LogicApps，而不是为每个区域指定出站逻辑应用 IP 地址前缀。
-> 对于托管连接器，可以选择使用 **AzureConnectors** 服务标记，而不是为每个区域指定出站托管连接器 IP 地址前缀。 这些标记适用于可使用逻辑应用服务的区域。 
+> 此标记可使用逻辑应用服务的区域。 
 
 <a name="multi-tenant-outbound"></a>
 

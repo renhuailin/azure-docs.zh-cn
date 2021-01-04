@@ -3,25 +3,37 @@ title: Azure Key Vault 恢复概述 | Microsoft Docs
 description: Key Vault 恢复功能旨在防止意外删除或恶意删除密钥保管库以及其中存储的机密、密钥和证书。
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
-author: ShaneBala-keyvault
-ms.author: sudbalas
-manager: ravijan
-ms.date: 12/15/2020
-ms.openlocfilehash: 485da2230de80150c9a5d13b262d1857c8c172fc
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.topic: how-to
+ms.author: mbaldwin
+author: msmbaldwin
+manager: rkarlin
+ms.date: 09/30/2020
+ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587105"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704208"
 ---
-# <a name="how-to-enable-soft-delete-and-purge-protection"></a>如何启用软删除和清除保护
+# <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>通过软删除和清除保护 Azure Key Vault 恢复管理
 
 本文介绍了 Azure Key Vault 的两项恢复功能：软删除和清除保护。 本文档概述了这两项功能，并演示了如何通过 Azure 门户、Azure CLI 和 Azure PowerShell 对其进行管理。
 
+有关 Key Vault 的详细信息，请参阅
+- [Key Vault 概述](overview.md)
+- [Azure Key Vault 密钥、机密和证书概述](about-keys-secrets-certificates.md)
+
+## <a name="prerequisites"></a>先决条件
+
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/dotnet)
+* [PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+* [Azure CLI](/cli/azure/install-azure-cli)
+* Key Vault - 可以使用 [Azure 门户](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md) 或 [Azure PowerShell](../general/quick-create-powershell.md) 进行创建
+
 ## <a name="what-are-soft-delete-and-purge-protection"></a>什么是软删除和清除保护
 
-软删除和清除保护是两项不同的密钥保管库恢复功能。
+[软删除](soft-delete-overview.md) 和清除保护是两种不同的密钥保管库恢复功能。
+
 > [!IMPORTANT]
 > 启用软删除对于确保密钥保管库和凭据不被意外删除是至关重要的。 但是，启用软删除会被视为一项重大更改，因为它可能要求你更改应用程序逻辑或提供对服务主体的其他权限。 使用以下说明打开软删除之前，请确保你的应用程序与此文档的更改兼容[ 。](soft-delete-change.md)
 
@@ -33,6 +45,8 @@ ms.locfileid: "97587105"
 
 > [!NOTE]
 > “清除保护”旨在使管理员角色或权限不能重写、禁用或绕过清除保护。 一旦启用清除保护，任何人（包括 Microsoft）都不能禁用或重写它。 这意味着，在重复使用密钥保管库名称之前，必须恢复已删除的密钥保管库或等待保持期结束。
+
+有关软删除的详细信息，请参阅 [Azure Key Vault 软删除概述](soft-delete-overview.md)
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/azure-portal)
 
@@ -66,7 +80,7 @@ ms.locfileid: "97587105"
 1. 在屏幕顶部，单击“管理已删除的保管库”选项
 1. 此时会在屏幕右侧打开一个上下文窗格。
 1. 选择订阅。
-1. 如果已将密钥保管库软删除，它会显示在右侧的上下文窗格中。
+1. 如果已软删除 key vault，它将显示在右侧的上下文窗格中。
 1. 如果保管库过多，可以单击上下文窗格底部的“加载更多”，也可以使用 CLI 或 PowerShell 来获取结果。
 1. 找到要恢复或清除的保管库后，选中其旁边的复选框。
 1. 如果要恢复密钥保管库，请选择上下文窗格底部的“恢复”选项。
@@ -370,3 +384,14 @@ ms.locfileid: "97587105"
   ```powershell
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
+---
+
+## <a name="next-steps"></a>后续步骤
+
+- [Azure Key Vault PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.keyvault)
+- [Key Vault Azure CLI 命令](https://docs.microsoft.com/cli/azure/keyvault)
+- [Azure Key Vault 备份](backup.md)
+- [如何启用 Key Vault 日志记录](howto-logging.md)
+- [保护对密钥保管库的访问](secure-your-key-vault.md)
+- [Azure Key Vault 开发人员指南](developers-guide.md)
+- [使用密钥保管库的最佳实践](best-practices.md)

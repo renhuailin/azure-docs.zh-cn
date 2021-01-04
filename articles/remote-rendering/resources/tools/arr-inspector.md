@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
-ms.openlocfilehash: 5ee9d39db130c76f683ca1f4d1ff64f9ed86d97e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 300e0ff26d643ae0263d21e604cb26da37a18841
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204735"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723819"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>ArrInspector 检测工具
 
@@ -25,7 +25,7 @@ ArrInspector 是一种基于 web 的工具，用于检查正在运行的 Azure �
 如果调用的应用 `ConnectToArrInspectorAsync` 已在电脑上运行：
 
 * 如果你使用的是 Unity 集成，它可能会自动启动。
-* 否则，你会在 *用户文件夹 \\ LocalAppData \\ [your_app] \\ AC \\ Temp*中找到该文件。
+* 否则，你会在 *用户文件夹 \\ LocalAppData \\ [your_app] \\ AC \\ Temp* 中找到该文件。
 
 如果应用在 HoloLens 上运行：
 
@@ -41,7 +41,7 @@ ArrInspector 是一种基于 web 的工具，用于检查正在运行的 Azure �
 
 此面板显示服务器公开的所有每帧性能值的关系图。 这些值当前包括帧时间、FPS、CPU 和内存使用情况、内存统计信息（如总体 RAM 使用量、对象计数等）。
 
-若要可视化其中一个参数，请单击 " **添加新** 项" 按钮，然后选择对话框中显示的可用值之一。 此操作会向面板中添加一个新的滚动图表，并实时跟踪这些值。 在其右侧，可以看到 *最小*值、 *最大* 值和 *当前* 值。
+若要可视化其中一个参数，请单击 " **添加新** 项" 按钮，然后选择对话框中显示的可用值之一。 此操作会向面板中添加一个新的滚动图表，并实时跟踪这些值。 在其右侧，可以看到 *最小* 值、 *最大* 值和 *当前* 值。
 
 您可以通过使用鼠标拖动图形的内容来平移图形，但是，仅当 ArrInspector 处于暂停状态时，才可以水平平移。
 
@@ -108,17 +108,3 @@ ArrInspector 是一种基于 web 的工具，用于检查正在运行的 Azure �
 ![暂停模式](./media/pause-mode.png)
 
 重新启用实时更新时，将重置所有面板。
-
-## <a name="host-configuration"></a>主机配置
-
-默认情况下，该工具连接到在为 ArrInspector 提供服务的同一主机上运行的 ARR 服务器。 但是，你可以将其配置为检查其他服务器，假定它在打开工具端口的情况下运行 ARR 实例。
-
-为此，请访问标题栏左侧的主菜单，并选择 " *主机配置*"。 单击 " **添加新主机**"，然后输入名称和主机名。 对于 *主机名* ，请使用以结尾的主机名 `.mixedreality.azure.com` ，不要包含 `http://` 或端口。
-
-![主机配置](./media/host-configuration.png)
-
-若要从一台主机快速切换到另一台主机，请使用右上角的下拉箭头。
-
-![主机组合框](./media/host-switch-combo.png)
-
-主机列表存储在浏览器的本地存储中，因此重新打开相同的浏览器时将保留该列表。

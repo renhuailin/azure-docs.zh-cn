@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: cc479f8e4dc87155721b25fab2ba522880b0ac4f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 749dd17c6f9b09db1841459da951b44470d8bb92
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751051"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704701"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>为 VMware Vm 设置设备
 
@@ -115,11 +115,16 @@ ms.locfileid: "96751051"
 ### <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
 1. 粘贴从门户复制的 Azure Migrate 项目密钥。 如果没有密钥，请转到“服务器评估”>“发现”>“管理现有设备”，选择在生成密钥时提供的设备名称，然后复制相应的密钥。
-1. 单击“登录”。 这将在新的浏览器选项卡中打开 Azure 登录提示。如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
-1. 在新选项卡上，使用 Azure 用户名和密码登录。
+1. 需要使用设备代码对 Azure 进行身份验证。 单击 " **登录** " 将打开具有设备代码的模式，如下所示。
+
+    ![显示设备代码的模式](./media/tutorial-discover-vmware/device-code.png)
+
+1. 单击 " **复制代码" & "登录** " 以复制设备代码，并在新的浏览器选项卡中打开 Azure 登录提示。如果未显示，请确保在浏览器中禁用了弹出窗口阻止程序。
+1. 在 "新建" 选项卡上，粘贴设备代码，并使用 Azure 用户名和密码进行登录。
    
    不支持使用 PIN 登录。
-3. 成功登录后，返回到 Web 应用。 
+3. 如果意外关闭了 "登录" 选项卡而没有登录，则需要刷新设备配置管理器的 "浏览器" 选项卡以再次启用 "登录" 按钮。
+1. 成功登录后，返回到 "设备配置管理器" 的上一个选项卡。
 4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限](./tutorial-discover-vmware.md#prepare-an-azure-user-account)，会启动设备注册。
 1. 成功注册设备后，可以通过单击“查看详细信息”来查看注册详细信息。
 

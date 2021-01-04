@@ -1,29 +1,26 @@
 ---
-title: " (预览版中的 WhiteNoise 包实现差异保密) "
+title: " (预览版中的 SmartNoise 包实现差异保密) "
 titleSuffix: Azure Machine Learning
-description: 了解什么是差异隐私，以及 WhiteNoise 包如何帮助你实现保留数据隐私的差异隐私系统。
+description: 了解什么是差异隐私，以及 SmartNoise 包如何帮助您实现可保持数据隐私的差异专用系统。
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/09/2020
+ms.date: 12/21/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 307786c0df744751122487b8c931d0e9572d5f22
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86199800"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723484"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>使用差异隐私和 WhiteNoise 包 (预览来保留数据隐私) 
+# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-smartnoise-package-preview"></a>使用差异隐私和 SmartNoise 包 (预览来保留数据隐私) 
 
-了解什么是差异隐私，以及 WhiteNoise 包如何帮助你实现差异隐私系统。
+了解什么是差异隐私，以及 SmartNoise 包如何帮助实现差异专用系统。
 
 随着组织收集并用于分析的数据量的增加，隐私和安全问题也逐渐增多。 分析需要数据。 通常，用于训练模型的数据越多，模型就越精确。 当个人信息用于这些分析时，在整个使用过程中数据保密尤为重要。
-
-> [!NOTE]
-> 请注意，我们正在重命名该工具包，并将在未来几周内引入新名称。 
 
 ## <a name="how-differential-privacy-works"></a>差异隐私的工作原理
 
@@ -54,10 +51,10 @@ epsilon 值为非负数。 小于 1 的值提供了完全合理的可否认性�
 
 ## <a name="implementing-differentially-private-systems"></a>实现差异隐私系统
 
-实现差异隐私系统较为棘手。 WhiteNoise 是一个开源项目，其中包含用于构建全局差异隐私系统的不同组件。 WhiteNoise 由以下顶级组件组成：
+实现差异隐私系统较为棘手。 SmartNoise 是一个开源项目，其中包含用于构建全局差异专用系统的不同组件。 SmartNoise 由以下顶级组件组成：
 
 - 核心
-- 系统
+- SDK 中 IsInRole 中的声明
 
 ### <a name="core"></a>核心
 
@@ -68,9 +65,9 @@ epsilon 值为非负数。 小于 1 的值提供了完全合理的可否认性�
 |分析     | 任意计算的图形说明。 |
 |验证程序     | 一个包含一组工具的 Rust 库，这些工具用于检查和派生使分析具有差异隐私性的必要条件。          |
 |运行时     | 要执行分析的介质。 引用运行时是用 Rust 编写的，但运行时可以使用任何计算框架（如 SQL 和 Spark）编写，这取决于你的数据需求。        |
-|绑定     | 用于生成分析的语言绑定和帮助程序库。 目前 WhiteNoise 提供 Python 绑定。 |
+|绑定     | 用于生成分析的语言绑定和帮助程序库。 目前 SmartNoise 提供 Python 绑定。 |
 
-### <a name="system"></a>系统
+### <a name="sdk"></a>SDK 中 IsInRole 中的声明
 
 系统库提供了以下工具和服务，用于处理表格数据和关系数据：
 
@@ -84,4 +81,4 @@ epsilon 值为非负数。 小于 1 的值提供了完全合理的可否认性�
 
 在 Azure 机器学习中[保留数据隐私](how-to-differential-privacy.md)。
 
-若要了解有关 WhiteNoise 组件的详细信息，请查看 GitHub 存储库中的 [WhiteNoise 核心包](https://github.com/opendifferentialprivacy/whitenoise-core)、[WhiteNoise 系统包](https://github.com/opendifferentialprivacy/whitenoise-system)和 [WhiteNoise 示例](https://github.com/opendifferentialprivacy/whitenoise-samples)。
+若要了解有关 SmartNoise 的组件的详细信息，请查看 GitHub 存储库中的 [SmartNoise Core 包](https://github.com/opendifferentialprivacy/smartnoise-core)、 [SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)和 [SmartNoise 示例](https://github.com/opendifferentialprivacy/smartnoise-samples)。

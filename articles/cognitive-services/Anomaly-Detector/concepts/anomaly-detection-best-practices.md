@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: b02ccea396fc65f9ecfe1d59e953da7440e87951
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363637"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705143"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>使用异常探测器 API 的最佳实践
 
@@ -104,4 +104,4 @@ ms.locfileid: "94363637"
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是异常检测器 API？](../overview.md)
-* [快速入门：使用异常检测器 REST API 检测时序数据的异常](../quickstarts/detect-data-anomalies-csharp.md)
+* [快速入门：使用异常探测器检测时序数据中的异常](../quickstarts/client-libraries.md)

@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/2/2020
-ms.openlocfilehash: 2cfd391daa13a100a56bb10b79b27eda80902374
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.date: 12/18/2020
+ms.openlocfilehash: e7f5b3ae0a4dc7faa67a361b210b1d014e1f1b93
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533599"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722124"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
 
@@ -137,6 +137,18 @@ INTO    output
 FROM    Step1
 JOIN    refData2 ON refData2.Desc = Step1.Desc 
 ``` 
+
+## <a name="iot-edge-jobs"></a>IoT Edge 作业
+
+流分析边缘作业仅支持本地引用数据。 将作业部署到 IoT Edge 设备时，它将从用户定义的文件路径中加载参考数据。 在设备上将参考数据文件准备就绪。 对于 Windows 容器，请将参考数据文件放置在本地驱动器上并通过 Docker 容器共享本地驱动器。 对于 Linux 容器，请创建一个 Docker 卷并将该数据文件填充到该卷。
+
+IoT Edge 更新的引用数据由部署触发。 触发后，流分析模块将选取更新的数据，而不会停止正在运行的作业。
+
+有两种方式可用来更新参考数据：
+
+* 更新 Azure 门户中的流分析作业的引用数据路径。
+
+* 更新 IoT Edge 部署。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

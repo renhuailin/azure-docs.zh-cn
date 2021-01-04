@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: ac210adbc29075f27739b08dcf83eeedbeea3ed5
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: ba1542d1bb10933edb34b697f1c81cc5e3e7f1c9
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630356"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705364"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>用于 Azure HDInsight 的传输中 IPSec 加密
 
@@ -24,7 +24,7 @@ Azure HDInsight 提供了多种不同的安全功能来保护企业数据。 这
 
 Azure 存储帐户上的服务器端加密以及作为 HDInsight 群集一部分的 Azure VM 上的磁盘加密都包括静态加密。
 
-在 HDInsight 上为传输中的数据加密是通过[传输层安全性 (TLS)](../transport-layer-security.md)（用于访问群集网关）和群集节点间的 [Internet 协议安全性 (IPSec)](https://wikipedia.org/wiki/IPsec) 来实现的。 可选择在所有头节点、工作器节点、边缘节点和 zookeeper 节点之间启用 IPSec。 不会为在基于 Windows 的 Vm 和群集中的其他基于 linux 的节点的网关或 [id 代理](./identity-broker.md) 节点之间的流量启用此功能。
+在 HDInsight 上为传输中的数据加密是通过[传输层安全性 (TLS)](../transport-layer-security.md)（用于访问群集网关）和群集节点间的 [Internet 协议安全性 (IPSec)](https://wikipedia.org/wiki/IPsec) 来实现的。 可选择在所有头节点、工作器节点、边缘节点和 zookeeper 节点之间启用 IPSec。 群集中的网关或 [ID 代理](./identity-broker.md)节点（基于 Windows 的 VM）和其他基于 Linux 的节点之间的流量未启用 IPSec。
 
 ## <a name="enable-encryption-in-transit"></a>启用传输中加密
 
@@ -37,7 +37,7 @@ Azure 存储帐户上的服务器端加密以及作为 HDInsight 群集一部分
 
     :::image type="content" source="media/encryption-in-transit/create-cluster-security-networking-tab.png" alt-text="创建群集 -“安全性和网络”选项卡。":::
 
-1. 在 " **安全 + 网络** " 选项卡上，选中 " **在传输中启用加密** " 复选框。
+1. 在“安全性 + 网络”选项卡上，选中“启用传输中加密”复选框 。
 
     :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="创建群集 - 启用传输中加密。":::
 
@@ -51,7 +51,7 @@ Azure 存储帐户上的服务器端加密以及作为 HDInsight 群集一部分
 |---|---|
 | `<SUBSCRIPTION_ID>` | Azure 订阅的 ID |
 | `<RESOURCE_GROUP>` | 要在其中创建新群集和存储帐户的资源组。 |
-| `<STORAGEACCOUNTNAME>` | 应该与群集一起使用的现有存储帐户。 名称应采用 `ACCOUNTNAME.blob.core.windows.net` 的形式 |
+| `<STORAGEACCOUNTNAME>` | 应与群集配合使用的现有存储帐户。 名称应采用 `ACCOUNTNAME.blob.core.windows.net` 的形式 |
 | `<CLUSTERNAME>` | 你的 HDInsight 群集的名称。 |
 | `<PASSWORD>` | 你选择的使用 SSH 及 Ambari 仪表板登录群集的密码。 |
 | `<VNET_NAME>` | 将要部署群集的虚拟网络。 |
@@ -70,7 +70,7 @@ az account set --subscription <SUBSCRIPTION_ID>
 # Create resource group
 az group create --name <RESOURCEGROUPNAME> --location eastus2
 
-az group deployment create --name HDInsightEnterpriseSecDeployment \
+az deployment group create --name HDInsightEnterpriseSecDeployment \
     --resource-group <RESOURCEGROUPNAME> \
     --template-file hdinsight-enterprise-security.json \
     --parameters parameters.json

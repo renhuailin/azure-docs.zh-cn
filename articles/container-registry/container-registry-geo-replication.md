@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810048"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705160"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -18,9 +18,9 @@ ms.locfileid: "95810048"
 
 异地复制注册表有以下优点：
 
-* 单个注册表、图像和标记名称可跨多个区域使用
-* 使用网络关闭注册表访问提高区域部署的性能和可靠性
-* 通过从与容器主机相同或邻近的区域中的本地复制注册表中提取映像层，减少数据传输成本
+* 单个注册表、映像和标记的名称可跨多个区域使用
+* 通过近网络注册表访问提高区域部署的性能和可靠性
+* 通过从容器主机所在区域或邻近区域的本地复制注册表中拉取映像层来降低数据传输成本
 * 跨多个区域对注册表进行单一管理
 
 > [!NOTE]
@@ -56,9 +56,11 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 使用 Azure 容器注册表的异地复制功能，将实现以下优点：
 
 * 跨所有区域管理单个注册表：`contoso.azurecr.io`
-* 管理映像部署的单个配置，因为所有区域都使用同一映像 URL： `contoso.azurecr.io/public/products/web:1.2`
-* 推送到单个注册表，而 ACR 管理异地复制。 ACR 仅复制唯一层，减少跨区域的数据传输。 
-* 配置区域 [webhook](container-registry-webhook.md) 以通知你特定副本中的事件。
+* 管理多个映像部署的单个配置，因为所有区域使用同一个映像 URL：`contoso.azurecr.io/public/products/web:1.2`
+* 推送到单个注册表，而 ACR 管理异地复制。 ACR 仅复制独一无二的层，从而减少跨区域的数据传输。 
+* 配置区域性 [Webhook](container-registry-webhook.md) 来通知你特定副本中的事件。
+
+Azure 容器注册表还支持 [可用性区域](zone-redundancy.md) ，以便在 azure 区域中创建具有弹性和高可用性的 azure 容器注册表。 在某个区域内冗余的可用性区域和跨多个区域的异地复制的组合，增强了注册表的可靠性和性能。
 
 ## <a name="configure-geo-replication"></a>配置异地复制
 

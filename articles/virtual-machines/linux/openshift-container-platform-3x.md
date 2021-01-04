@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 0c60fdfda0c18f5a8feb11c3d9c5a386025670cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fab8f88a39730411503af273902a53f169e3fe57
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368143"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703729"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台3.11
 
@@ -32,13 +32,13 @@ ms.locfileid: "87368143"
 
 ### <a name="private-clusters"></a>专用群集
 
-部署私有 OpenShift 群集只需使用与主负载均衡器关联的公共 IP)  (web 控制台或基础负载均衡器 (路由器) 。  专用群集通常使用自定义 DNS 服务器 (默认 Azure DNS) 、自定义域名 (如 contoso.com) 和预定义虚拟网络 () 。  对于专用群集，需要事先为虚拟网络配置所有适当的子网和 DNS 服务器设置。  然后，使用 **existingMasterSubnetReference**、 **existingInfraSubnetReference**、 **existingCnsSubnetReference**和 **existingNodeSubnetReference** 指定群集使用的现有子网。
+部署私有 OpenShift 群集只需使用与主负载均衡器关联的公共 IP)  (web 控制台或基础负载均衡器 (路由器) 。  专用群集通常使用自定义 DNS 服务器 (默认 Azure DNS) 、自定义域名 (如 contoso.com) 和预定义虚拟网络 () 。  对于专用群集，需要事先为虚拟网络配置所有适当的子网和 DNS 服务器设置。  然后，使用 **existingMasterSubnetReference**、 **existingInfraSubnetReference**、 **existingCnsSubnetReference** 和 **existingNodeSubnetReference** 指定群集使用的现有子网。
 
-如果选择了 "私有主机" (**masterClusterType**= private) ，则需要为 **masterPrivateClusterIp**指定静态专用 IP。  此 IP 将分配给主负载均衡器的前端。  IP 必须在子网的 CIDR 内且不在使用中。  必须将**masterClusterDnsType**设置为 "custom"，并且必须为**MASTERCLUSTERDNS**提供主 DNS 名称。  DNS 名称必须映射到静态专用 IP，并将用于访问主节点上的控制台。
+如果选择了 "私有主机" (**masterClusterType**= private) ，则需要为 **masterPrivateClusterIp** 指定静态专用 IP。  此 IP 将分配给主负载均衡器的前端。  IP 必须在子网的 CIDR 内且不在使用中。  必须将 **masterClusterDnsType** 设置为 "custom"，并且必须为 **MASTERCLUSTERDNS** 提供主 DNS 名称。  DNS 名称必须映射到静态专用 IP，并将用于访问主节点上的控制台。
 
-如果选择了 "专用路由器" (**routerClusterType**= private) ，则需要为 **routerPrivateClusterIp**指定静态专用 IP。  此 IP 将分配给基础负载均衡器的前端。  IP 必须在子网的 CIDR 内且不在使用中。  必须将**routingSubDomainType**设置为 "custom"，并且必须为**routingSubDomain**提供用于路由的通配符 DNS 名称。  
+如果选择了 "专用路由器" (**routerClusterType**= private) ，则需要为 **routerPrivateClusterIp** 指定静态专用 IP。  此 IP 将分配给基础负载均衡器的前端。  IP 必须在子网的 CIDR 内且不在使用中。  必须将 **routingSubDomainType** 设置为 "custom"，并且必须为 **routingSubDomain** 提供用于路由的通配符 DNS 名称。  
 
-如果选择了 "专用主机" 和 "专用路由器"，则还必须为**domainName**输入自定义域名
+如果选择了 "专用主机" 和 "专用路由器"，则还必须为 **domainName** 输入自定义域名
 
 成功部署后，堡垒节点是具有可通过 ssh 连接到的公共 IP 的唯一节点。  即使主节点配置为公共访问权限，它们也不会公开用于 ssh 访问。
 
@@ -276,7 +276,7 @@ ms.locfileid: "87368143"
 | `keyVaultName` | 创建的 Key Vault 的名称 |  |  |
 | `enableAzure` | 启用 Azure 云提供程序 | true <br> false | true |
 | `aadClientId` | Azure Active Directory 客户端 ID 也称为服务主体的应用程序 ID |  |  |
-| `domainName` | 要在适用)  (使用的自定义域名的名称。 如果不部署完全专用群集，则设置为 "无" |  | 无 |
+| `domainName` | 要在适用)  (使用的自定义域名的名称。 如果不部署完全专用群集，则设置为 "无" |  | none |
 | `masterClusterDnsType` | OpenShift web 控制台的域类型。 "默认" 将使用主基础公共 IP 的 DNS 标签。 "自定义" 允许您定义自己的名称 | default <br> 自定义 | default |
 | `masterClusterDns` | 如果选择了 "自定义"，则用于访问 OpenShift web 控制台的自定义 DNS 名称 `masterClusterDnsType` |  | console.contoso.com |
 | `routingSubDomainType` | 如果设置为 "nipio"， `routingSubDomain` 将使用 nip.io。  如果你有要用于路由的自己的域，请使用 "自定义" | nipio <br> 自定义 | nipio |
@@ -312,7 +312,7 @@ ms.locfileid: "87368143"
 以下示例使用名为 myOpenShiftCluster 的部署将 OpenShift 群集和所有相关资源部署到名为 openshiftrg 的资源组中。 它直接从 GitHub 存储库引用模板并使用名为 azuredeploy.parameters.json 的本地参数文件。
 
 ```azurecli 
-az group deployment create -g openshiftrg --name myOpenShiftCluster \
+az deployment group create -g openshiftrg --name myOpenShiftCluster \
       --template-uri https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master/azuredeploy.json \
       --parameters @./azuredeploy.parameters.json
 ```

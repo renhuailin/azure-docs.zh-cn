@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/3/2019
+ms.date: 12/18/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7de97fd775853f64803ab62ac397e754d065e4df
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 353c349ebe348addac60c5f9f7b1bf0fbb1fc425
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509319"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703307"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft 标识平台中的管理员同意
 
@@ -48,12 +48,11 @@ https://graph.microsoft.com/mail.send
 | ---: | ---: | :---: |
 | `tenant` | 必须 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用 `organizations` 以一般方式引用，如示例所示。 不要使用 "公用"，因为个人帐户不能提供管理员同意，但在租户的上下文中除外。 若要确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
 | `client_id` | 必须 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
-| `redirect_uri` | 必须 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
+| `redirect_uri` | 必需 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 使用该状态可在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
-|`scope` | 必须 | 定义应用程序请求的权限集。 这可以是静态范围（使用 /.default）或动态范围。 这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 |
+|`scope` | 必需 | 定义应用程序请求的权限集。 这可以是静态范围（使用 `/.default`）或动态范围。 这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 |
 
-
-此时，Azure AD 要求租户管理员登录，以完成请求。 系统要求管理员批准你在 `scope` 参数中请求的所有权限。  如果你使用了静态 (`/.default`) 值，则其功能将类似于 v1.0 管理员许可终结点，并请求对应用所需权限中找到的所有范围的许可。
+此时，Azure AD 要求租户管理员登录，以完成请求。 系统要求管理员批准你在 `scope` 参数中请求的所有权限。  如果使用了静态 (`/.default`) 值，则它的作用类似于1.0 版管理员同意终结点，并请求在用户和应用)  (所需权限中找到的所有范围。 若要请求应用权限，必须使用 `/.default` 值。 如果你不希望管理员在使用时始终在管理员许可屏幕上看到给定的权限 `/.default` ，则最佳做法是不在 "所需权限" 部分中加入权限。 相反，你可以在运行时使用动态同意将你想要的权限添加到同意屏幕，而不是使用 `/.default` 。
 
 ### <a name="successful-response"></a>成功的响应
 

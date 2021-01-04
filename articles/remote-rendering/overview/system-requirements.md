@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 536f5e7d2fa12d1f9a9f09a31b463d2096dcad37
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: references_regions
+ms.openlocfilehash: 4380f14610fb0775c82aa79ec7cda9dc70cf0715
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207404"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722685"
 ---
 # <a name="system-requirements"></a>系统要求
 
@@ -37,7 +38,7 @@ ms.locfileid: "92207404"
 
 | GPU 制造商 | 支持的模型 |
 |-----------|:-----------|
-| NVIDIA | 请查看本页[底部](https://developer.nvidia.com/video-encode-decode-gpu-support-matrix)的**NVDEC 支持矩阵**。 你的 GPU 在 **4:2:0 8 位** 的列中需要 YES。 |
+| NVIDIA | 请查看本页 [底部](https://developer.nvidia.com/video-encode-decode-gpu-support-matrix)的 **NVDEC 支持矩阵**。 你的 GPU 在 **4:2:0 8 位** 的列中需要 YES。 |
 | AMD | 具有最低版本6的 AMD [统一视频解码器](https://en.wikipedia.org/wiki/Unified_Video_Decoder#UVD_6)的 gpu。 |
 | Intel | Skylake 和更高版本的 Cpu |
 
@@ -64,11 +65,36 @@ Azure 远程呈现目前仅支持将 **HoloLens 2** 和 Windows 桌面作为目�
 
 有关网络问题的疑难解答，请参阅 [故障排除指南](../resources/troubleshoot.md#unstable-holograms)。
 
-### <a name="network-ports"></a>网络端口
+### <a name="network-firewall"></a>网络防火墙
+
+### <a name="sdk-version--0176"></a>SDK 版本 >= 0.1.76
+
+远程渲染虚拟机使用以下 IP 范围中的共享 IP 地址：
+
+| 名称             | 区域         | IP 前缀         |
+|------------------|:---------------|:------------------|
+| 澳大利亚东部   | australiaeast  | 20.53.44.240/28   |
+| 美国东部          | eastus         | 20.62.129.224/28  |
+| 美国东部 2        | eastus2        | 20.49.103.240/28  |
+| Japan East       | japaneast      | 20.191.165.112/28 |
+| 北欧     | northeurope    | 52.146.133.64/28  |
+| 美国中南部 | southcentralus | 20.65.132.80/28   |
+| Southeast Asia   | southeastasia  | 20.195.64.224/28  |
+| 英国南部         | uksouth        | 51.143.209.144/28 |
+| 西欧      | westeurope     | 20.61.99.112/28   |
+| 美国西部 2        | westus2        | 20.51.9.64/28     |
+
+请确保你的防火墙 (设备、路由器内部等 ) 不会阻止这些 IP 范围和以下端口范围：
+
+| 端口              | 协议  | Allow    |
+|-------------------|---------- |----------|
+| 49152-65534       | TCP/UDP | 传出 |
+
+#### <a name="sdk-version--0176"></a>SDK 版本 < 0.1.76
 
 确保防火墙（在设备上、路由器内部等）未阻止以下端口：
 
-| 端口              | 协议 | 允许    | 说明 |
+| 端口              | 协议 | Allow    | 说明 |
 |-------------------|----------|----------|-------------|
 | 50051             | TCP      | 传出 | 初始连接 (HTTP 握手)  |
 | 8266              | UDP      | 传出 | 数据传输 |
@@ -79,13 +105,13 @@ Azure 远程呈现目前仅支持将 **HoloLens 2** 和 Windows 桌面作为目�
 
 必须安装以下软件：
 
-* 最新版本的 **Visual Studio 2019** [ (下载) ](https://visualstudio.microsoft.com/vs/older-downloads/)
+* 最新版本的 **Visual Studio 2019** [ (下载)](https://visualstudio.microsoft.com/vs/older-downloads/)
 * [适用于混合现实的 Visual Studio tools](/windows/mixed-reality/install-the-tools)。 具体来说，必须安装以下工作负载：
   * **使用 C++ 的桌面开发**
   * **通用 Windows 平台 (UWP) 开发**
-* **Windows SDK 10.0.18362.0** [ (下载) ](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* **GIT** [ (下载) ](https://git-scm.com/downloads)
-* 可选：若要在台式计算机上查看服务器中的视频流，需要 **HEVC 视频扩展** [ (Microsoft Store 链接) ](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)。 确保通过检查存储中的更新来安装最新版本。
+* **Windows SDK 10.0.18362.0** [ (下载)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
+* **GIT** [ (下载)](https://git-scm.com/downloads)
+* 可选：若要在台式计算机上查看服务器中的视频流，需要 **HEVC 视频扩展** [ (Microsoft Store 链接)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)。 确保通过检查存储中的更新来安装最新版本。
 
 ## <a name="unity"></a>Unity
 

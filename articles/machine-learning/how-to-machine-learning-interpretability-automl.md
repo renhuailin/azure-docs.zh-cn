@@ -10,18 +10,18 @@ ms.custom: how-to, automl
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: cf1eb1c72cc93fcb72862b15f3884969915c24dd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ce13e0431827bb2c72a03ca33a1ecaefc53d4970
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360643"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702509"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>可解释性：自动化机器学习（预览版）中的模型说明
 
 
 
-本文介绍如何在 Azure 机器学习中获取自动机器学习 (ML) 的说明。 自动化 ML 可帮助你了解工程特征重要性。 
+本文介绍如何在 Azure 机器学习中获取自动机器学习 (AutoML) 的说明。 AutoML 可帮助你了解生成的模型的功能重要性。 
 
 默认情况下，1.0.85 之后的所有 SDK 版本设置 `model_explainability=True`。 在 SDK 版本 1.0.85 及更早版本中，用户需要在 `AutoMLConfig` 对象中设置 `model_explainability=True`，才能使用模型可解释性。 
 
@@ -34,15 +34,18 @@ ms.locfileid: "93360643"
 ## <a name="prerequisites"></a>先决条件
 
 - 可解释性特征。 运行 `pip install azureml-interpret` 以获取所需的包。
-- 生成自动化 ML 试验的知识。 有关如何使用 Azure 机器学习 SDK 的详细信息，请完成此[回归模型教程](tutorial-auto-train-models.md)，或参阅如何[配置自动化 ML 试验](how-to-configure-auto-train.md)。
+- 构建 AutoML 试验的知识。 有关如何使用 Azure 机器学习 SDK 的详细信息，请完成此 [回归模型教程](tutorial-auto-train-models.md) ，或参阅如何 [配置 AutoML 试验](how-to-configure-auto-train.md)。
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>训练最佳模型过程中的可解释性
 
-从 `best_run` 中检索解释，其中包括工程特征的解释。
+从检索说明 `best_run` ，其中包括有关原始和工程功能的说明。
 
 > [!Warning]
 > 可解释性（最佳模型解释）不适用于将以下算法推荐为最佳模型的自动化 ML 预测试验： 
-> * ForecastTCN
+> * TCNForecaster
+> * AutoArima
+> * ExponentialSmoothing
+> * Prophet
 > * 平均值 
 > * Naive
 > * Seasonal Average 
@@ -62,7 +65,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-training-for-any-model"></a>训练任意模型过程中的可解释性 
 
-计算模型解释并将其可视化时，并不局限于自动化 ML 模型的现有模型解释。 还可以获取使用不同测试数据的模型的解释。 本部分中的步骤说明如何根据测试数据计算工程特征重要性并将其可视化。
+计算模型说明并对其进行可视化时，并不限于 AutoML 模型的现有模型说明。 还可以获取使用不同测试数据的模型的解释。 本部分中的步骤说明如何根据测试数据计算工程特征重要性并将其可视化。
 
 ### <a name="retrieve-any-other-automl-model-from-training"></a>从训练中检索任何其他自动化 ML 模型
 
@@ -94,7 +97,7 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 
 - 解释器设置对象
 - 工作区
-- 用于解释 `fitted_model` 自动化 ML 模型的代理项模型
+- 用于解释 AutoML 模型的代理项模型 `fitted_model`
 
 MimicWrapper 还获取 `automl_run` 对象，工程解释将上传到该对象。
 
@@ -113,7 +116,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>使用 MimicExplainer 来计算并可视化特征重要性
 
-可以结合转换的测试样本在 MimicWrapper 中调用 `explain()` 方法，以获取生成的工程特征的特征重要性。 还可以使用 `ExplanationDashboard` 通过自动化 ML 特征化器来查看生成的工程特征的特征重要性值仪表板可视化效果。
+可以结合转换的测试样本在 MimicWrapper 中调用 `explain()` 方法，以获取生成的工程特征的特征重要性。 你还可以使用 `ExplanationDashboard` 查看通过 AutoML featurizers 生成的工程功能的特征重要性值的仪表板可视化。
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
@@ -122,7 +125,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-inference"></a>推理过程中的可解释性
 
-本部分介绍如何使用解释器（在上一部分用于计算解释）将自动化 ML 模型操作化。
+在本部分中，将了解如何使用用于计算上一部分说明的说明操作 AutoML 模型。
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>注册模型和评分解释器
 
@@ -200,7 +203,7 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>使用测试数据执行推理
 
-使用一些测试数据执行推理，以查看自动化 ML 模型提供的预测值。 查看预测值的工程特征重要性。
+用一些测试数据的推理来查看 AutoML 模型中的预测值，当前仅在 Azure 机器学习 SDK 中受支持。 查看参与预测值的 importances 功能。 
 
 ```python
 if service.state == 'Healthy':
@@ -217,9 +220,11 @@ if service.state == 'Healthy':
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>在训练时进行可视化以发现数据和解释中的模式
 
-可以在 [Azure 机器学习工作室](https://ml.azure.com)中的工作区内可视化特征重要性图表。 自动化 ML 运行完成后，选择“查看模型详细信息”以查看特定的运行。 选择“解释”选项卡以查看解释可视化仪表板。
+可以在 [Azure 机器学习工作室](https://ml.azure.com)中的工作区内可视化特征重要性图表。 AutoML 运行完成后，请选择 " **查看模型详细信息** " 以查看特定运行。 选择“解释”选项卡以查看解释可视化仪表板。
 
-[![机器学习可解释性体系结构](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
+[![机器学习可解释性体系结构](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png)](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png#lightbox)
+
+有关说明仪表板可视化效果和特定图形的详细信息，请参阅 [interpretability 上的操作方法文档](how-to-machine-learning-interpretability-aml.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

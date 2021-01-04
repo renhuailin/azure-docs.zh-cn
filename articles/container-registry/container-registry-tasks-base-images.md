@@ -3,12 +3,12 @@ title: 基础映像更新 - 任务
 description: 了解应用程序容器映像的基础映像，并了解基础映像更新如何触发 Azure 容器注册表任务。
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 74e5fb81e3ef6f75b5ee2872ee44b99aae096fd8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df33096830cd7b34a288c38c105aff3610315337
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009817"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707480"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>关于 ACR 任务的基础映像更新
 
@@ -22,13 +22,13 @@ ms.locfileid: "96009817"
 
 在某些情况下（例如当有专用开发团队时），基础映像可能不止指定 OS 或框架。 例如，基础映像可以是需要跟踪的共享服务组件映像。 团队成员可能需要跟踪此基础映像以进行测试，或者在开发应用程序映像时需要定期更新该映像。
 
-## <a name="maintain-copies-of-base-images"></a>维护基本映像的副本
+## <a name="maintain-copies-of-base-images"></a>维护基础映像的副本
 
-对于注册表中的任何内容（这些内容依赖于公共注册表中维护的基本内容，例如 Docker 中心），我们建议你将内容复制到 Azure 容器注册表或其他专用注册表。 然后，确保通过引用专用基础映像来生成应用程序映像。 Azure 容器注册表提供 [图像导入](container-registry-import-images.md) 功能，可轻松地从公共注册表或其他 Azure 容器注册表复制内容。 下一节介绍了如何使用 ACR 任务在生成应用程序更新时跟踪基本映像更新。 可以在自己的 Azure 容器注册表中跟踪基本映像更新，还可以选择在上游公共注册表中进行跟踪。
+对于注册表中依赖于公共注册表（例如 Docker Hub）中维护的基本内容的任何内容，建议你将内容复制到 Azure 容器注册表或另一个专用注册表中。 然后，请确保通过引用专用基础映像来生成应用程序映像。 Azure 容器注册表提供了[映像导入](container-registry-import-images.md)功能，可以轻松地从公共注册表或其他 Azure 容器注册表复制内容。 下一部分介绍如何使用 ACR 任务在生成应用程序更新时跟踪基础映像更新。 可以在自己的 Azure 容器注册表中跟踪基础映像更新，也可以选择在上游公共注册表中进行跟踪。
 
 ## <a name="track-base-image-updates"></a>跟踪基础映像更新
 
-更新容器的基础映像时，ACR 任务能够自动生成映像。 你可以使用此功能来维护和更新 Azure 容器注册表中的公共基本映像的副本，然后重新生成依赖于基本映像的应用程序映像。
+更新容器的基础映像时，ACR 任务能够自动生成映像。 你可以使用此功能来维护和更新 Azure 容器注册表中公共基础映像的副本，然后重新生成依赖于基础映像的应用程序映像。
 
 在生成容器映像时，ACR 任务会动态发现基础映像依赖项。 因此，它可以检测应用程序映像的基础映像何时更新。 使用一个预配置的生成任务，ACR 任务可以自动重新生成引用基础映像的每个应用程序映像。 通过这种自动检测和重新生成，ACR 任务能够节省在正常情况下手动跟踪和更新引用已更新基础映像的每个应用程序映像所需的时间和精力。
 
@@ -57,7 +57,7 @@ ms.locfileid: "96009817"
 * **默认启用** - 使用 [az acr task create][az-acr-task-create] 命令创建某个 ACR 任务时，会默认启用该任务，以便在更新基础映像时触发。 即，`base-image-trigger-enabled` 属性设置为 True。 若要在任务中禁用此行为，请将该属性更新为 False。 例如，运行以下 [az acr task update][az-acr-task-update] 命令：
 
   ```azurecli
-  az acr task update --myregistry --name mytask --base-image-trigger-enabled False
+  az acr task update --registry myregistry --name mytask --base-image-trigger-enabled False
   ```
 
 * **触发依赖项跟踪** - 若要启用某个 ACR 任务来确定并跟踪容器映像的依赖项（包括其基础映像），必须先将该任务触发 **至少一次**。 例如，使用 [az acr task run][az-acr-task-run] 命令手动触发该任务。

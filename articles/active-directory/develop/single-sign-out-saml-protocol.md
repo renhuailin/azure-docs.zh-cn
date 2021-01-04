@@ -12,16 +12,18 @@ ms.date: 07/19/2017
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2064ab7e759798d8934facb8d293e8ac60ec6c82
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88118257"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703409"
 ---
 # <a name="single-sign-out-saml-protocol"></a>单一注销 SAML 协议
 
 Azure Active Directory (Azure AD) 支持 SAML 2.0 Web 浏览器单一注销配置文件。 要使单一注销正常工作，必须在应用程序注册期间向 Azure AD 显式注册应用程序的 **LogoutURL**。 Azure AD 使用 LogoutURL 在用户注销后将用户重定向。
+
+Azure AD 支持重定向绑定 (HTTP GET) ，而非 HTTP POST 绑定。
 
 下图显示了 Azure AD 单一注销过程的工作流。
 
@@ -45,7 +47,7 @@ Azure Active Directory (Azure AD) 支持 SAML 2.0 Web 浏览器单一注销配�
 * `IssueInstant` - 这是一个 `DateTime` 字符串，它包含协调世界时 (UTC) 值并采用[往返格式 ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)。 Azure AD 需要此类型的值，但不强制要求。
 
 ### <a name="issuer"></a>颁发者
-`LogoutRequest` 中的 `Issuer` 元素必须与 Azure AD 中云服务的 **ServicePrincipalNames** 之一完全匹配。 通常，此参数设置为应用程序注册期间指定的**应用 ID URI**。
+`LogoutRequest` 中的 `Issuer` 元素必须与 Azure AD 中云服务的 **ServicePrincipalNames** 之一完全匹配。 通常，此参数设置为应用程序注册期间指定的 **应用 ID URI**。
 
 ### <a name="nameid"></a>NameID
 `NameID` 元素的值必须与所要注销的用户的 `NameID` 完全匹配。
@@ -68,7 +70,7 @@ Azure AD 将设置 `LogoutResponse` 元素中的 `ID`、`Version` 和 `IssueInst
 ### <a name="issuer"></a>颁发者
 Azure AD 将此值设为 `https://login.microsoftonline.com/<TenantIdGUID>/`，其中，\<TenantIdGUID> 是 Azure AD 租户的租户 ID。
 
-若要评估 `Issuer` 元素的值，请使用应用程序注册期间提供的**应用 ID URI** 值。
+若要评估 `Issuer` 元素的值，请使用应用程序注册期间提供的 **应用 ID URI** 值。
 
 ### <a name="status"></a>状态
 Azure AD 使用 `StatusCode` 元素中的元素 `Status` 指示注销的成功或失败。当注销尝试失败时， `StatusCode` 元素还可以包含自定义错误消息。

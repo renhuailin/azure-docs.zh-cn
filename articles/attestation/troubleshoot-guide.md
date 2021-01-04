@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182829"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704310"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure 认证故障排除指南
 
@@ -45,7 +45,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.SetAzureAttestationPolicy
   ```
 
-**疑难解答步骤**
+**故障排除步骤**
 
 若要查看证明策略/策略签名者，Azure AD 用户需要 "操作" 权限：
 - Microsoft.Attestation/attestationProviders/attestation/read
@@ -134,7 +134,7 @@ G:\Az\security\Attestation\src\AttestationServices\Instance\Enclave\api.cpp(840)
 - 指定的引号无效，因为在其上生成报价单的设备不满足 Azure 基线要求
 - 指定的引号无效，因为 PCK 缓存服务提供的 TCBInfo 或 QEID 无效
 
-**疑难解答步骤**
+**故障排除步骤**
 
 Microsoft Azure 证明支持通过 Intel SDK 和 Open Enclave SDK 生成的 SGX 报价的证明。
 
@@ -280,7 +280,7 @@ PowerShell 库已弃用 (TLS) 版本1.0 和1.1 的传输层安全性。
 用户分配了适当的角色。 但在通过 PowerShell 管理证明策略时，面临的授权问题。
 
 ### <a name="error"></a>错误
-具有对象 id 的客户端无权对 <object Id>  作用域 "开放式/resourcegroups/secure_enclave_poc/providers/microsoft.authorization/roleassignments/" 执行操作/roleassignments/写入， <subscriptionId> <role assignmentId> 或者范围无效。 如果最近授予了访问权限，请刷新凭据
+具有对象 id 对象 Id 的客户端无权对 &lt; &gt;  作用域 "开放式/ &lt; subscriptionId &gt; resourcegroups/secure_enclave_poc/providers/microsoft.authorization/roleassignments/role AssignmentId" 执行操作 Microsoft. authorization/roleassignments/write， &lt; &gt; 或范围无效。 如果最近授予了访问权限，请刷新凭据
 
 ### <a name="troubleshooting-steps"></a>疑难解答步骤
 

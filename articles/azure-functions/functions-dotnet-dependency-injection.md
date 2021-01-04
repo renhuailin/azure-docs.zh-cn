@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: b2bf406dcab626b3ac08caf1a21ffea9332d3ca2
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 70ec9248db002823e969fa5f4fba8bf1074a9af7
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672638"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706926"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -30,7 +30,7 @@ Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是一种在�
 
 - [Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) 包版本 1.0.28 或更高版本
 
-- [Extenstions. DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) (当前仅支持版本4.x 和更早版本) 
+- [DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) (当前仅支持版本4.x 和更早版本) 
 
 ## <a name="register-services"></a>注册服务
 

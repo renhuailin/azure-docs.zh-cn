@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/18/2020
 ms.author: mimart
 author: msmimart
-manager: celestedg
+manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9bc7d94cff46b54b81615cf064ed63927b3ec60
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: b1aebfaa176992b7e20824518bc214a6688ae493
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929287"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703579"
 ---
-# <a name="email-one-time-passcode-authentication-preview"></a>电子邮件一次性密码身份验证 (预览) 
+# <a name="email-one-time-passcode-authentication"></a>电子邮件一次性密码身份验证
 
 本文介绍如何为 B2B 来宾用户启用电子邮件一次性密码身份验证。 电子邮件一次性密码功能在无法通过其他方式（例如 Azure AD、Microsoft 帐户 (MSA) 或 Google federation）进行身份验证时对 B2B 来宾用户进行身份验证。 使用一次性密码身份验证时，无需创建 Microsoft 帐户。 当来宾用户兑换邀请或访问共享资源时，他们可以请求临时代码，该代码会发送到他们的电子邮件地址。 他们输入此代码后，可以继续登录。
 

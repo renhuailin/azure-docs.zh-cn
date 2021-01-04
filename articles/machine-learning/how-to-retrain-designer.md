@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure 机器学习设计器重新定型模型
+title: 使用管道参数在设计器中重新定型模型
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习设计器中通过已发布的管道重新训练机器学习模型。
+description: 在 Azure 机器学习设计器中具有已发布管道和管道参数的重新定型模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d754674fe3aa65fa9fd8540b05083979ce96aff8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437110"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708460"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器重新训练模型
+# <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>使用管道参数在设计器中重新定型模型
 
 
-本操作说明文章介绍了如何使用 Azure 机器学习设计器重新训练机器学习模型。 你将使用已发布的管道自动执行工作流，并设置参数以使用新数据训练模型。 
+本操作指南文章介绍了如何使用 Azure 机器学习设计器通过管道参数重新训练机器学习模型。 你将使用已发布的管道自动执行工作流，并设置参数以使用新数据训练模型。 管道参数使你可以为不同的作业重复使用现有管道。  
 
 在本文中，学习如何：
 

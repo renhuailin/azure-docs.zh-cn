@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: daa7c657a47414b01197bed3644caefeda98af1c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512165"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723972"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 和8600迁移到 Azure 文件同步
 
@@ -160,7 +160,7 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 
 仍不确定？
 
-* 如果需要 [高级 Azure 文件共享的性能](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)，请选择 "高级存储"。
+* 如果需要 [高级 Azure 文件共享的性能](understanding-billing.md#provisioned-billing)，请选择 "高级存储"。
 * 为常规用途文件服务器工作负荷（包括热数据和存档数据）选择 "标准存储"。 如果在云中共享中的唯一工作负荷将 Azure 文件同步，请选择 "标准存储"。
 
 #### <a name="account-kind"></a>帐户类型
@@ -244,7 +244,7 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
         ![StorSimple 8000 系列迁移作业。](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "数据转换服务作业的新作业创建窗体的屏幕截图。")
     :::column-end:::
     :::column:::
-        **作业定义名称**</br>此名称应指示你要移动的文件集。 为其提供类似于 Azure 文件共享的名称是一种很好的做法。 </br></br>**作业运行的位置**</br>选择区域时，必须选择与 StorSimple 存储帐户相同的区域，如果该帐户不可用，则必须选择该区域。 </br></br><h3>源</h3>**源订阅**</br>选择要在其中存储 StorSimple 设备管理器资源的订阅。 </br></br>**StorSimple 资源**</br>选择你的 StorSimple 设备管理器你的设备已注册到。 </br></br>**服务数据加密密钥**</br>请查看 [本文前面的部分](#storsimple-service-data-encryption-key) ，以防找不到记录中的密钥。 </br></br>**设备**</br>选择包含要迁移的卷的 StorSimple 设备。 </br></br>**数据量(Volume)**</br>选择源卷。 稍后你将决定是否要将整个卷或子目录迁移到目标 Azure 文件共享中。 </br></br><h3>目标</h3>选择 "订阅"、"存储帐户" 和 "Azure 文件共享" 作为此迁移作业的目标。
+        **作业定义名称**</br>此名称应指示你要移动的文件集。 为其提供类似于 Azure 文件共享的名称是一种很好的做法。 </br></br>**作业运行的位置**</br>选择区域时，必须选择与 StorSimple 存储帐户相同的区域，如果该帐户不可用，则必须选择该区域。 </br></br><h3>源</h3>**源订阅**</br>选择要在其中存储 StorSimple 设备管理器资源的订阅。 </br></br>**StorSimple 资源**</br>选择你的 StorSimple 设备管理器你的设备已注册到。 </br></br>**服务数据加密密钥**</br>请查看 [本文前面的部分](#storsimple-service-data-encryption-key) ，以防找不到记录中的密钥。 </br></br>**设备**</br>选择包含要迁移的卷的 StorSimple 设备。 </br></br>**Volume**</br>选择源卷。 稍后你将决定是否要将整个卷或子目录迁移到目标 Azure 文件共享中。 </br></br><h3>目标</h3>选择 "订阅"、"存储帐户" 和 "Azure 文件共享" 作为此迁移作业的目标。
     :::column-end:::
 :::row-end:::
 
@@ -430,7 +430,7 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 1. 查找与已完成的同步会话对应的最近 **事件 9102**。
 1. 选择 " **详细信息**"，并确认正在查看 **SyncDirection** 值为 "正在 **下载**" 的事件。
 1. 对于命名空间已完成下载到服务器的时间，将会出现单个事件，其中包含 **方案**、值 **FullGhostedSync** 和 **HResult**  =  **0**。
-1. 如果错过了该事件，还可以通过 **SyncDirection** **9102 events**  =  **下载** 和 **方案**  =  **"RegularSync"** 查找其他9102事件。 查找这些事件中的一个还表明命名空间已完成下载并同步到定期同步会话，无论是否有任何同步操作。
+1. 如果错过了该事件，还可以通过 **SyncDirection**   =  **下载** 和 **方案**  =  **"RegularSync"** 查找其他9102事件。 查找这些事件中的一个还表明命名空间已完成下载并同步到定期同步会话，无论是否有任何同步操作。
 
 ### <a name="a-final-robocopy"></a>最终 RoboCopy
 

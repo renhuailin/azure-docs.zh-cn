@@ -4,12 +4,12 @@ description: 本教程介绍如何横向扩展和缩小 Azure 中的 Service Fab
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7f92ca28afd9d1894867aaa2c18df3a02ee0bd79
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 063c83818ec2e98491f9062e936b9a1e7b2c4356
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842679"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702168"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：缩放 Azure 中的 Service Fabric 群集
 
@@ -94,7 +94,7 @@ New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -Templat
 ```
 或者运行以下 Azure CLI 命令：
 ```azurecli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="add-a-node-type-to-the-cluster"></a>向群集添加节点类型
@@ -800,7 +800,7 @@ New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -Templat
 ```
 或者运行以下 Azure CLI 命令：
 ```azurecli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="remove-a-node-type-from-the-cluster"></a>从群集中删除节点类型
@@ -856,7 +856,7 @@ New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -Templat
 ```
 或者运行以下 Azure CLI 命令：
 ```azurecli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="next-steps"></a>后续步骤

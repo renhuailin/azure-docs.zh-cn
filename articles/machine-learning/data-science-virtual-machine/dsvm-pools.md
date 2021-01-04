@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 789c6c36def21bfe1c2acc8797c1847455a5c86c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eb1242189f4c5a38421a7f44e8f5e738c44970b6
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324389"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705517"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>创建数据科学虚拟机共享池
 
 本文将介绍如何为团队创建 Data Science Virtual Machine (DSVM) 共享池。 使用共享池的好处包括：提高资源利用率、方便共享和协作以及提高管理 DSVM 资源的效率。
 
-可以使用许多方法和技术创建 DSVM 池。 本文重点介绍交互式虚拟机 (VM) 池。 另一个可选的托管计算基础结构是 Azure 机器学习计算。 有关详细信息，请参阅 [创建计算群集](../how-to-create-attach-compute-cluster.md)。
+可以使用许多方法和技术创建 DSVM 池。 本文重点介绍交互式虚拟机 (VM) 池。 另一个可选的托管计算基础结构是 Azure 机器学习计算。 有关详细信息，请参阅[创建计算群集](../how-to-create-attach-compute-cluster.md)。
 
 ## <a name="interactive-vm-pool"></a>交互式 VM 池
 
@@ -37,7 +37,7 @@ ms.locfileid: "93324389"
 
 ```azurecli-interactive
 az group create --name [[NAME OF RESOURCE GROUP]] --location [[ Data center. For eg: "West US 2"]
-az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  --template-uri https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json --parameters @[[PARAMETER JSON FILE]]
+az deployment group create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  --template-uri https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json --parameters @[[PARAMETER JSON FILE]]
 ```
 
 前面的命令假定你有：

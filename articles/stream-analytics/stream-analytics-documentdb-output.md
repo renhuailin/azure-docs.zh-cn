@@ -8,15 +8,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: e8b8c89b94b2fbb191eee0ea57e957802a54204e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 35231eda43e766b5febd8ba90c4d92a44537e0ef
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126968"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703749"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 流分析输出  
-Azure 流分析可以针对 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档包括用于实现此配置的一些最佳做法。 建议在使用 Azure Cosmos DB 作为输出时，将作业设置为兼容性级别1.2。
+Azure 流分析可以针对 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档包括用于实现此配置的一些最佳做法。 使用 Azure Cosmos DB 作为输出时，建议你将作业设置为兼容级别 1.2。
 
 如果不熟悉 Azure Cosmos DB，请参阅 [Azure Cosmos DB 文档](../cosmos-db/index.yml)了解入门知识。 
 
@@ -72,9 +72,9 @@ Azure Cosmos DB 会根据工作负载自动缩放分区。 因此，建议使用
 
 请务必选择包含许多不同值的分区键属性，并跨这些值均匀分配工作负载。 作为分区的自然项目，涉及同一分区键的请求受到单个分区的最大吞吐量的限制。 
 
-属于同一分区键值的文档的存储大小限制为 20 GB ([物理分区大小限制](../cosmos-db/partitioning-overview.md) 为 50 gb) 。 [理想的分区键](../cosmos-db/partitioning-overview.md#choose-partitionkey)是指经常作为查询中的筛选器，并且具有足够的基数以确保解决方案是可缩放的。
+属于同一分区键值的文档的存储大小上限为 20 GB（[物理分区大小上限](../cosmos-db/partitioning-overview.md)为 50 GB）。 [理想的分区键](../cosmos-db/partitioning-overview.md#choose-partitionkey)可以作为筛选器频繁出现在查询中，并具有足够的基数，以确保解决方案可缩放。
 
-用于流分析查询和 Cosmos DB 的分区键不需要完全相同。 完全并行拓扑建议使用 *输入分区键* ， `PartitionId` 作为流分析查询的分区键，但这可能不是 Cosmos DB 容器的分区键的建议选项。
+用于流分析查询和 Cosmos DB 的分区键不需要完全相同。 完全并行拓扑建议使用输入分区键 `PartitionId` 作为流分析查询的分区键，但是对于 Cosmos DB 容器的分区键，这可能不是建议的选择。
 
 分区键也是 Cosmos DB 的存储过程和触发器中的事务处理的边界。 选择分区键时，应确保在事务中同时出现的文档使用相同的分区键值。 如需详细了解如何选择分区键，请参阅 [Azure Cosmos DB 中的分区](../cosmos-db/partitioning-overview.md)一文。
 
@@ -97,7 +97,7 @@ Azure Cosmos DB 会根据工作负载自动缩放分区。 因此，建议使用
 
 ![Azure Cosmos DB 指标比较](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
-使用版本 1.2 时，流分析可以更智能地利用 Azure Cosmos DB 中 100% 的可用吞吐量，并且在发生节流限制或速率限制的情况下，只需重新提交极少的次数。 对于其他工作负载（例如，同时在容器上运行的查询），这可以提供更好的体验。 如需了解 Azure Cosmos DB 作为接收器（每秒接收 1000 到 10000 条消息）如何横向扩展流分析，请尝试[此 Azure 示例项目](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)。
+使用版本 1.2 时，流分析可以更智能地利用 Azure Cosmos DB 中 100% 的可用吞吐量，并且在发生节流限制或速率限制的情况下，只需重新提交极少的次数。 对于其他工作负载（例如，同时在容器上运行的查询），这可以提供更好的体验。 如需了解 Azure Cosmos DB 作为接收器（每秒接收 1000 到 10000 条消息）如何横向扩展流分析，请尝试[此 Azure 示例项目](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-cosmosdb)。
 
 1\.0 和 1.1 级别的 Azure Cosmos DB 输出具有相同的吞吐量。 强烈建议对 Azure Cosmos DB 的流分析使用兼容性级别 1.2。
 
@@ -140,11 +140,11 @@ Azure Cosmos DB 会根据工作负载自动缩放分区。 因此，建议使用
 
 ## <a name="common-issues"></a>常见问题
 
-1. 将唯一索引约束添加到集合，流分析中的输出数据将违反此约束。 确保流分析的输出数据不违反唯一约束或删除约束。 有关详细信息，请参阅 [Azure Cosmos DB 中的唯一键约束](../cosmos-db/unique-keys.md)。
+1. 将向集合添加唯一索引约束，流分析的输出数据违反此约束。 请确保流分析的输出数据不违反唯一约束，或将约束删除。 有关详细信息，请参阅 [Azure Cosmos DB 中的唯一键约束](../cosmos-db/unique-keys.md)。
 
-2. `PartitionKey`列不存在。
+2. `PartitionKey` 列不存在。
 
-3. `Id`列不存在。
+3. `Id` 列不存在。
 
 ## <a name="next-steps"></a>后续步骤
 

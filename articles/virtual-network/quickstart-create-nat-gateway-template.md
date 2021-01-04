@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: allensu
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 95856db9288e5860dfab47dce506d1e7d6de1ffc
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 68e08b0f029e6297beee85135b4af1e4575d5470
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913324"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703783"
 ---
 # <a name="quickstart-create-a-nat-gateway---arm-template"></a>快速入门：创建 NAT 网关 - ARM 模板
 
@@ -76,7 +76,7 @@ az group create \
 --name $resourceGroupName \
 --location $location
 
-az group deployment create \
+az deployment group create \
 --resource-group $resourceGroupName \
 --template-uri  $templateUri
 ```
@@ -130,7 +130,7 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 
 **Azure 门户**
 
-如果不再需要上述资源组、NAT 网关和所有相关资源，请将其删除。 选择包含 NAT 网关的资源组 **myResourceGroupNAT** ，然后选择“删除”。
+如果不再需要上述资源组、NAT 网关和所有相关资源，请将其删除。 选择包含 NAT 网关的资源组 **myResourceGroupNAT**，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

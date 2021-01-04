@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 4babd015b05527cb03d2747b1c9b9a34941634ab
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d620df0b55b024cd5d7c25ea17d9b09c5c5da8ff
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656999"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722872"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自动化脚本创建 Service Manager Web 应用
 
-使用以下脚本创建用于 Service Manager 实例的 Web 应用。 此处提供了有关 Service Manager 连接的详细信息：[Service Manager Web 应用](./itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+使用以下脚本创建用于 Service Manager 实例的 Web 应用。 此处提供了有关 Service Manager 连接的详细信息：[Service Manager Web 应用](./itsmc-connections-scsm.md)
 
 通过提供以下所需详细信息来运行脚本：
 
@@ -29,9 +29,6 @@ ms.locfileid: "97656999"
 该脚本将使用指定的名称（以及使该名称保持唯一的其他几个字符串）创建 Web 应用。 它将生成 **Web 应用 URL**、 **客户端 ID** 和 **客户端密码**。
 
 请保存这些值，因为在使用 IT 服务管理连接器创建连接时将需要这些值。
-
-> [!NOTE]
-> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -321,5 +318,5 @@ if(!$err)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-[配置混合连接](./itsmc-connections.md#configure-the-hybrid-connection)。
+[配置混合连接](./itsmc-connections-scsm.md#configure-the-hybrid-connection)。
 

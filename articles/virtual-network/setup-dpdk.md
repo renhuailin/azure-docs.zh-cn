@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 622b7e629a7f5fea77afc18ec5121fe3466716ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba7c2a37d58f20ac4ff1f49a46a406d1b1f70106
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387551"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704412"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>在 Linux 虚拟机中设置 DPDK
 
@@ -44,13 +44,13 @@ DPDK 可以在支持多个操作系统分发版的 Azure 虚拟机中运行。 D
 |--------------|---------------------------   |
 | Ubuntu 16.04 | 4.15.0-1014-azure+           | 
 | Ubuntu 18.04 | 4.15.0-1014-azure+           |
-| SLES 15 SP1  | 4.12.14-8.19-azure +          | 
+| SLES 15 SP1  | 4.12.14-8.19-azure+          | 
 | RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
 | CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
 
 **自定义内核支持**
 
-对于未列出的任何 Linux 内核版本，请参阅[用于生成 Azure 优化 Linux 内核的修补程序](https://github.com/microsoft/azure-linux-kernel)。 有关详细信息，还可以联系 [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com)。 
+对于未列出的任何 Linux 内核版本，请参阅[用于生成 Azure 优化 Linux 内核的修补程序](https://github.com/microsoft/azure-linux-kernel)。 有关详细信息，还可以联系 [aznetdpdk@microsoft.com](mailto:aznetdpdk@microsoft.com)。 
 
 ## <a name="region-support"></a>区域支持
 

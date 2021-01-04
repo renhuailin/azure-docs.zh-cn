@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 5c5fdd1423d806bcc4d2f124310112a3e407e416
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 3a7486ce94b335f835a88b7f357c9c719f86d667
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751115"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704752"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>为 Hyper-v Vm 设置设备
 
@@ -79,9 +79,9 @@ ms.locfileid: "96751115"
 2. 在“导入虚拟机向导”>“开始之前”中，单击“下一步”。 
 3. 在“查找文件夹”中，指定包含已解压缩的 VHD 的文件夹。 然后单击“下一步”。
 1. 在“选择虚拟机”中，单击“下一步”。 
-2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”  。
-3. 在“选择目标”中保留默认设置。 单击“下一步”。
-4. 在“存储文件夹”中保留默认设置。 单击“下一步”。
+2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”。
+3. 在“选择目标”中保留默认设置。 单击“下一步”。 
+4. 在“存储文件夹”中保留默认设置。 单击“下一步”。 
 5. 在“选择网络”中，指定 VM 要使用的虚拟交换机。 该交换机需要与 Internet 建立连接才能向 Azure 发送数据。
 6. 在“摘要”中检查设置。 然后单击“完成”。
 7. 在“Hyper-V 管理器”>“虚拟机”中启动 VM。
@@ -116,11 +116,16 @@ ms.locfileid: "96751115"
 ### <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
 1. 粘贴从门户复制的 Azure Migrate 项目密钥。 如果没有密钥，请转到“服务器评估”>“发现”>“管理现有设备”，选择在生成密钥时提供的设备名称，然后复制相应的密钥。
-1. 单击“登录”。 这将在新的浏览器选项卡中打开 Azure 登录提示。如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
-1. 在新选项卡上，使用 Azure 用户名和密码登录。
+1. 需要使用设备代码对 Azure 进行身份验证。 单击 " **登录** " 将打开具有设备代码的模式，如下所示。
+
+    ![显示设备代码的模式](./media/tutorial-discover-vmware/device-code.png)
+
+1. 单击 " **复制代码" & "登录** " 以复制设备代码，并在新的浏览器选项卡中打开 Azure 登录提示。如果未显示，请确保在浏览器中禁用了弹出窗口阻止程序。
+1. 在 "新建" 选项卡上，粘贴设备代码，并使用 Azure 用户名和密码进行登录。
    
    不支持使用 PIN 登录。
-3. 成功登录后，返回到 Web 应用。 
+3. 如果意外关闭了 "登录" 选项卡而没有登录，则需要刷新设备配置管理器的 "浏览器" 选项卡以再次启用 "登录" 按钮。
+1. 成功登录后，返回到 "设备配置管理器" 的上一个选项卡。
 4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account)，会启动设备注册。
 1. 成功注册设备后，可以通过单击“查看详细信息”来查看注册详细信息。
 
