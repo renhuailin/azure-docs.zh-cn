@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e13dc868512dba15c5b335c1774aaa540eef8157
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515867"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861414"
 ---
 # <a name="azure-for-network-engineers"></a>面向网络工程师的 Azure
 作为传统网络工程师，你之前负责通过物理资产（例如路由器、交换机、电缆、防火墙）来构建基础设施。 在逻辑层上，你曾经配置过虚拟 LAN (VLAN)、跨树协议 (STP)、路由协议（RIP、OSPF、BGP）。 你曾经使用管理工具和 CLI 来管理你的网络。 云中的网络有所不同，其中的网络终结点是逻辑终结点，很少使用路由协议。 你将使用 Azure 资源管理器 API、Azure CLI 和 PowerShell 来配置和管理 Azure 中的资产。 你将首先了解 Azure 网络的基本租户，从而开始你在云中的网络探索旅程。 
@@ -67,7 +67,7 @@ ms.locfileid: "85515867"
 
 ## <a name="security"></a>安全性
 
-可使用网络安全组来筛选虚拟网络中到达或来自资源的网络流量。 还可以使用网络虚拟设备 (NVA)，例如 Azure 防火墙或其他供应商提供的防火墙。 可控制 Azure 如何路由来自子网的流量。 还可限制组织中的人员使用虚拟网络中的资源。
+可使用网络安全组来筛选虚拟网络中到达或来自资源的网络流量。 你还可以使用 (NVA) 的网络虚拟设备，例如 Azure 防火墙或其他供应商提供的防火墙。 可控制 Azure 如何路由来自子网的流量。 还可限制组织中的人员使用虚拟网络中的资源。
 
 网络安全组 (NSG) 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝流向子网和/或 NIC 的网络流量。 NSG 可与子网或者已连接到子网的各个 NIC 相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM。 另外，可以通过将 NSG 直接关联到 NIC，对流向单个 NIC 的流量进行限制。
 

@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: a913bc0ae01507cb26c1650d63918a8319eeacf4
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317548"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857420"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
 
@@ -121,6 +121,8 @@ requests
 
 通过将警报分组为唯一的组合，按数字或字符串列将警报拆分为单独的警报。 当大规模（在订阅或资源组范围内）创建以资源为中心的警报时，可以按 Azure 资源 ID 列进行拆分。 按 Azure 资源 ID 列进行拆分会将警报的目标更改为指定的资源。
 
+如果要在多个 Azure 资源上监视相同的条件，建议使用 "按 Azure 资源 ID 进行拆分" 列。 例如，监视超过80% 的 CPU 使用率的所有虚拟机。 如果要在范围中使用多个资源的条件，则可以决定不进行拆分，如监视资源组范围中至少有5台计算机的 CPU 使用率超过80%。
+
 在工作区和 Application Insights 中，它仅在“指标度量”度量值类型中受支持。 此字段称为“聚合依据”。 它限制为三个列。 查询中的分组依据列超过三个可能会导致意外的结果。 在所有其他资源类型中，它是在条件的“拆分依据维度”部分中配置的（限制为六个拆分）。
 
 #### <a name="example-of-splitting-by-alert-dimensions"></a>按警报维度拆分的示例
@@ -176,7 +178,7 @@ requests
 
 ## <a name="state-and-resolving-alerts"></a>状态和解决警报
 
-日志警报是无状态的。 每次满足条件时，都会触发警报，即使之前已触发过。 触发的警报不会解决。 你可以 [将警报标记为已关闭](alerts-managing-alert-states.md)。 你还可以对操作进行“静音”，以防它们在警报规则触发后的一段时间内触发。
+日志警报是无状态的。 每次满足条件时，都会触发警报，即使之前已触发过。 触发的警报不会解决。 你可以[将警报标记为关闭](alerts-managing-alert-states.md)。 你还可以对操作进行“静音”，以防它们在警报规则触发后的一段时间内触发。
 
 在工作区和 Application Insights 中，它称为“抑制警报”。 在所有其他资源类型中，它称为“将操作‘静音’”。 
 

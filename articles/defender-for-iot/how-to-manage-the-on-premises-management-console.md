@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 34efef4a01b58cc26fd1567336184837a703ade2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7bbac0d8593d47c3162a8ea43e928343a88f2de4
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838181"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861438"
 ---
 # <a name="manage-the-on-premises-management-console"></a>管理本地管理控制台
 
@@ -298,6 +298,26 @@ VLAN 名称在传感器和管理控制台之间不同步。 应在组件上定�
 
 > [!NOTE]
 > 该传感器链接到它最初连接到的订阅。 只能使用其附加到的订阅来恢复密码。
+
+## <a name="update-the-software-version"></a>更新软件版本
+
+以下过程描述了如何更新本地管理控制台软件版本。 更新过程大约需30分钟。
+
+1. 转到 [Azure 门户](https://portal.azure.com/)。
+
+1. 中转到用于 IoT 的 Defender。
+
+1. 请参阅 " **更新** " 页面。
+
+1. 从本地管理控制台部分中选择一个版本。
+
+1. 选择“下载”并保存文件。
+
+1. 登录到本地管理控制台，并从侧菜单中选择 " **系统设置** "。
+
+1. 在 " **版本更新** " 窗格中，选择 " **更新**"。
+
+1. 选择从 "用于 IoT **更新** 的 Defender" 页面下载的文件。
 
 ## <a name="see-also"></a>另请参阅
 

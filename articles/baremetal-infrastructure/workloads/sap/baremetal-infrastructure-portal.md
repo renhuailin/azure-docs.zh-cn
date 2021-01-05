@@ -2,20 +2,22 @@
 title: Azure 中的 BareMetal 实例单元
 description: 了解如何通过 Azure 门户确定 BareMetal 实例单位并与其交互。
 ms.topic: how-to
-ms.date: 12/31/2020
-ms.openlocfilehash: 927baa79519781ef74920b17bc9fcd858f0f6c6f
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 1/4/2021
+ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829112"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861040"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>通过 Azure 门户管理 BareMetal 实例
  
 本文说明 [Azure 门户](https://portal.azure.com/) 如何显示 [BareMetal 实例](baremetal-overview-architecture.md)。 本文还介绍了可以在 Azure 门户中通过已部署的 BareMetal 实例单元执行的活动。 
  
 ## <a name="register-the-resource-provider"></a>注册资源提供程序
-用于 BareMetal 实例的 Azure 资源提供程序提供了 Azure 门户中的实例的可见性，当前为公共预览版。 默认情况下，用于 BareMetal 实例部署的 Azure 订阅将注册 *BareMetalInfrastructure* 资源提供程序。 如果看不到部署的 BareMetal 实例单位，则必须将资源提供程序注册到订阅。 注册 BareMetal 实例资源提供程序有两种方法：
+用于 BareMetal 实例的 Azure 资源提供程序提供了 Azure 门户中的实例的可见性，当前为公共预览版。 默认情况下，用于 BareMetal 实例部署的 Azure 订阅将注册 *BareMetalInfrastructure* 资源提供程序。 如果看不到部署的 BareMetal 实例单位，则必须将资源提供程序注册到订阅。 
+
+注册 BareMetal 实例资源提供程序有两种方法：
  
 * [Azure CLI](#azure-cli)
  
@@ -37,7 +39,7 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
  
 你需要在 Azure 门户中列出你的订阅，然后双击用于部署 BareMetal 实例单位的订阅。
  
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户菜单上，选择“所有服务”。
 
@@ -85,15 +87,15 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
 在右侧，可以看到设备的名称、操作系统 (OS) 、IP 地址和显示 CPU 线程数和内存的 SKU。 还会看到 BareMetal 实例标记) 的电源状态和硬件版本 (修订版本。 电源状态指示硬件设备是开机还是关机。 但操作系统详细信息并不指明它是否已启动并正在运行。
  
 可能的硬件修订包括：
+
+* 修订版 3 (Rev 3) 
+
+* 修订版 4 (Rev 4) 
  
-* 修订版3
- 
-* 修订版4
- 
-* 修订版4。2
+* 修订版 4.2 (Rev 4.2) 
  
 >[!NOTE]
->修订版4.2 是使用修订版4体系结构的最新更名 BareMetal 基础结构。 在修订版4戳记或 rows 中部署的 Azure Vm 和 BareMetal 实例单元之间，网络延迟的重大改进。 有关不同修订版本的详细信息，请参阅 [Azure 上的 BareMetal 基础结构](baremetal-overview-architecture.md)。
+>修订版4.2 是使用现有 Rev 4 体系结构的最新更名 BareMetal 基础结构。 修订版4更接近于 Azure 虚拟机 (VM) 主机。 它显著改进了在修订版4戳记或 rows 中部署的 Azure Vm 和 BareMetal 实例单位之间的网络延迟。 可以通过 Azure 门户访问和管理 BareMetal 实例。 有关详细信息，请参阅 [Azure 上的 BareMetal 基础结构](baremetal-overview-architecture.md)。
  
 此外，在右侧，你会发现 [Azure 邻近性放置组的](../../../virtual-machines/linux/co-location.md) 名称，该名称是自动为每个已部署的 BareMetal 实例单元创建的。 部署承载应用程序层的 Azure Vm 时，引用邻近位置组。 使用与 BareMetal 实例单元关联的邻近性放置组时，请确保将 Azure Vm 部署到靠近 BareMetal 实例单元的位置。
  

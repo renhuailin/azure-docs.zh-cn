@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 513d98ae274c668197b066c742119055248f37f9
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 661b0bbf1aa389dc76567d95ad917548255a1b35
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911709"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845596"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>为自定义模型构建定型数据集
 
@@ -72,11 +72,8 @@ ms.locfileid: "92911709"
 
 现在，您已经了解了如何构建定型数据集，接下来请学习快速入门教程来训练自定义窗体识别器模型，并在窗体上开始使用它。
 
-* [使用客户端库为模型定型和提取窗体数据](./quickstarts/client-library.md)
-* [使用曲线对模型进行定型和提取窗体数据](./quickstarts/curl-train-extract.md)
-* [使用 REST API 和 Python 为模型定型和提取窗体数据](./quickstarts/python-train-extract.md)
+* [使用客户端库或 REST API 为模型定型和提取窗体数据](./quickstarts/client-library.md)
 * [使用示例标签工具训练标签](./quickstarts/label-tool.md)
-* [使用 REST API 和 Python 通过标签进行训练](./quickstarts/python-labeled-data.md)
 
 ## <a name="see-also"></a>请参阅
 

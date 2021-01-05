@@ -4,16 +4,16 @@ description: 了解如何通过 Azure Active Directory 域服务，通过服务�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: deed7c3dce2d7da1940a8a4871efac7453e2cf60
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 340455450cd6a18adfd8d0843fee423f82f10a45
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033674"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858393"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>启用 Azure 文件上 Azure Active Directory 域服务身份验证
 
@@ -22,8 +22,7 @@ ms.locfileid: "97033674"
 如果你不熟悉 Azure 文件共享，我们建议在阅读以下文章之前阅读我们的 [规划指南](storage-files-planning.md) 。
 
 > [!NOTE]
-> Azure 文件支持通过具有 RC4-HMAC 加密 Azure AD DS 进行 Kerberos 身份验证。 目前尚不支持 AES Kerberos 加密。
-> Azure 文件支持对 Azure AD DS 进行身份验证，与 Azure AD 完全同步。 如果已在 Azure AD DS 中启用范围内同步，仅同步 Azure AD 的有限标识，则不支持身份验证和授权。
+> Azure 文件支持通过 RC4-HMAC 和 AES 256 加密 Azure AD DS 进行 Kerberos 身份验证。 Azure 文件支持对 Azure AD DS 进行身份验证，与 Azure AD 完全同步。 如果已在 Azure AD DS 中启用范围内同步，仅同步 Azure AD 的有限标识，则不支持身份验证和授权。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -59,7 +58,7 @@ ms.locfileid: "97033674"
 
 ## <a name="regional-availability"></a>区域可用性
 
-在 [所有 Azure 公共区域和 Gov 区域](https://azure.microsoft.com/global-infrastructure/locations/)中都提供了 Azure AD DS 的 azure 文件身份验证。
+使用 Azure AD DS 的 azure 文件身份验证在 [所有 Azure 公共、Gov 和中国地区](https://azure.microsoft.com/global-infrastructure/locations/)都可用。
 
 ## <a name="overview-of-the-workflow"></a>工作流概述
 
@@ -82,7 +81,7 @@ ms.locfileid: "97033674"
 
 请记住，仅当已成功将 Azure AD DS 部署到 Azure AD 租户之后，才能通过 SMB 启用 Azure AD DS 身份验证。 有关详细信息，请参阅 [先决条件](#prerequisites)。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要通过 [Azure 门户](https://portal.azure.com)启用 SMB Azure AD DS 身份验证，请执行以下步骤：
 

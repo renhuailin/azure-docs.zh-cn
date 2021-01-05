@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: a153f832fdfc075cdde03241f7dae19faa2334ce
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ba7081c877f3c3adae6e678280592c9445a95d1b
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631343"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858801"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>如何将 Azure 混合权益适用于 Linux 虚拟机
 
@@ -172,7 +172,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="suse"></a>SUSE
 
-若要将 Azure 混合权益用于 SLES Vm，必须先向 [SUSE 公有云计划](https://www.suse.com/media/guide/suse_public_cloud_service_provider_program_overview.pdf)注册。 购买 SUSE 订阅后，必须将使用这些订阅的 Vm 注册到自己的更新源。 使用 SUSE 客户中心、订阅管理工具服务器或 SUSE 管理器进行此注册。
+若要为 SLES Vm 使用 Azure 混合权益，以及从 SLES PAYG 迁移到 BYOS 或从 SLES BYOS 迁移到 PAYG 的信息，请参阅 [SUSE Linux Enterprise and Azure 混合权益](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/)。 
 
 ## <a name="frequently-asked-questions"></a>常见问题
 *问：我能否将许可证类型用于 `RHEL_BYOS` SLES 映像，反之亦然？*
@@ -210,6 +210,10 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 *问：是否可以在部署用于 SQL Server RHEL 映像的虚拟机上使用 Azure 混合权益？*
 
 答：不可以。 没有用于支持这些虚拟机的计划。
+
+*问：我是否能在我的 RHEL Virtual Data Center 订阅上使用 Azure 混合权益？*
+
+答：不可以。 Azure 根本不支持 VDC，包括 AHB。  
  
 
 ## <a name="common-problems"></a>常见问题

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: be01309fee3454fbd4be78130f9826b493e7bf7a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 51f9ad4fea1c139cee5974ecd81645c9a904feb4
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033759"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854887"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音识别？
 
@@ -43,6 +43,23 @@ ms.locfileid: "97033759"
 ## <a name="set-up-your-azure-account"></a>设置 Azure 帐户
 
 你需要具有 Azure 帐户和语音服务订阅才能使用 [自定义语音门户](https://speech.microsoft.com/customspeech) 来创建自定义模型。 如果你没有帐户和订阅，[可以免费试用语音服务](overview.md#try-the-speech-service-for-free)。
+
+如果打算使用音频数据训练自定义模型，请选择以下区域之一，其中有专用硬件可用于培训。 这将减少训练模型所用的时间。
+
+* 澳大利亚东部
+* 加拿大中部
+* 印度中部
+* 美国东部
+* 美国东部 2
+* 美国中北部
+* 北欧
+* 美国中南部
+* 东南亚
+* 英国南部
+* US Gov 亚利桑那州
+* US Gov 弗吉尼亚州
+* 西欧
+* 美国西部 2
 
 > [!NOTE]
 > 请确保创建标准 (S0) 订阅。 不支持免费 (F0) 订阅。
@@ -76,7 +93,7 @@ ms.locfileid: "97033759"
 
 ### <a name="expiration-timeline"></a>过期时间线
 
-由于新的模型和新功能变得可用，更旧的模型将被停用，请参阅模型和终结点过期的以下时间线：
+随着新模型和新功能的推出，旧的、不太准确的模型会停用，请查看以下模型和终结点到期的时间线：
 
 基础模型 
 
@@ -96,9 +113,9 @@ ms.locfileid: "97033759"
 * 部署摘要
 * 部署详细信息
 
-还可以通过 [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) JSON 响应中的属性下的和自定义语音 api 检查到期日期 `deprecationDates` 。
+还可以通过 [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) 和 [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) 自定义语音 API 在 JSON 响应中的 `deprecationDates` 属性下检查到期日期。
 
-请注意，可以通过在自定义语音门户的 "部署" 部分中更改终结点使用的模型，或通过自定义语音 API，在不停机的情况下升级自定义语音终结点上的模型。
+请注意，可以通过自定义语音识别门户的“部署”部分或通过自定义语音识别 API 更改终结点使用的模型，在不停机的情况下升级自定义语音识别终结点上的模型。
 
 ## <a name="next-steps"></a>后续步骤
 

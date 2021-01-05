@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 9a3a6bd6489baea90ed4143b42a09e7d697bbc50
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7acfa9c2ffdd4cdd62e965041cdc42dc44d469c5
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602438"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845577"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>窗体识别器预生成发票型号
 
@@ -34,7 +34,7 @@ Azure 窗体识别器可以使用其预生成的发票模型分析和提取销�
 > [!div class="nextstepaction"]
 > [试用预生成模型](https://fott-preview.azurewebsites.net/)
 
-需要一个 Azure 订阅 (免费) [创建一个](https://azure.microsoft.com/free/cognitive-services) ，并使用 [窗体 Recognzier 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) 终结点和密钥来试用表单识别器发票服务。 
+需要一个 Azure 订阅 (免费) [创建一个](https://azure.microsoft.com/free/cognitive-services) ，并使用 [窗体识别器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) 终结点和密钥来试用表单识别器发票服务。 
 
 ![已分析发票示例](./media/analyze-invoice.png)
 
@@ -79,9 +79,9 @@ JSON 输出包含三个部分：
 | CustomerName | 字符串 | 正在开票的客户 | Microsoft Corp |  |
 | CustomerId | 字符串 | 客户的引用 ID | CID-12345 |  |
 | PurchaseOrder | 字符串 | 采购订单参考编号 | PO-3333 | |  |
-| InvoiceId | 字符串 | 此特定发票的 Id (通常为 "发票编号" )  | INV-100 | |  |
-| InvoiceDate | 日期 | 发出发票的日期 | 2019 年 11 月 15 日 | 
-| DueDate | 日期 | 此发票的日期支付截止日期 | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceId | 字符串 | 此特定发票的 ID (通常为 "发票编号" )  | INV-100 | |  |
+| InvoiceDate | date | 发出发票的日期 | 2019 年 11 月 15 日 | 
+| DueDate | date | 此发票的日期支付截止日期 | 12/15/2019 | 2019-12-15 | 2019-11-15 |
 | VendorName | 字符串 | 已创建此发票的供应商 | CONTOSO 有限公司。 | |
 | VendorAddress | 字符串 | 供应商的邮件地址 | 123 456th 圣纽约，纽约州，10001 | |
 | VendorAddressRecipient | 字符串 | 与 VendorAddress 关联的名称 | Contoso 总部 | |
@@ -91,24 +91,24 @@ JSON 输出包含三个部分：
 | BillingAddressRecipient | 字符串 | 与 BillingAddress 关联的名称 | Microsoft 服务 | |
 | ShippingAddress | 字符串 | 客户的显式寄送地址 | 123发货 St，Redmond WA，98052 | |
 | ShippingAddressRecipient | 字符串 | 与 ShippingAddress 关联的名称 | Microsoft 交付 | |
-| SubTotal | number | 此发票上标识的小计字段 | $100.00 | 100 | 
-| TotalTax | number | 此发票上标识的总税款字段 | $10.00 | 10 |
-| InvoiceTotal | number | 与此发票关联的新费用总计 | $110.00 | 110 |
-| AmountDue |  number | 供应商导致的总金额 | $610.00 | 610 |
+| SubTotal | 数字 | 此发票上标识的小计字段 | $100.00 | 100 | 
+| TotalTax | 数字 | 此发票上标识的总税款字段 | $10.00 | 10 |
+| InvoiceTotal | 数字 | 与此发票关联的新费用总计 | $110.00 | 110 |
+| AmountDue |  数字 | 供应商导致的总金额 | $610.00 | 610 |
 | Serviceaddress.uri | 字符串 | 客户的显式服务地址或属性地址 | 123服务 St，Redmond WA，98052 | |
 | ServiceAddressRecipient | 字符串 | 与 Serviceaddress.uri 关联的名称 | Microsoft 服务 | |
 | RemittanceAddress | 字符串 | 客户的显式汇款或付款地址 | 123汇款圣纽约，纽约州，10001 |  |
 | RemittanceAddressRecipient | 字符串 | 与 RemittanceAddress 关联的名称 | Contoso 计费 |  |
-| ServiceStartDate | 日期 | 服务期间的第一个日期 (例如，公用事业帐单服务期间)  | 2019/10/14 | 2019-10-14 |
-| ServiceEndDate | 日期 | 服务时段的结束日期 (例如，公用事业帐单服务期间)  | 11/14/2019 | 2019-11-14 |
-| PreviousUnpaidBalance | number | 明确的以前未付余额 | $500.00 | 500 |
+| ServiceStartDate | date | 服务期间的第一个日期 (例如，公用事业帐单服务期间)  | 2019/10/14 | 2019-10-14 |
+| ServiceEndDate | date | 服务时段的结束日期 (例如，公用事业帐单服务期间)  | 11/14/2019 | 2019-11-14 |
+| PreviousUnpaidBalance | 数字 | 明确的以前未付余额 | $500.00 | 500 |
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - 在 [窗体识别器示例 UI](https://fott-preview.azurewebsites.net/)中尝试自己的发票和示例。
-- 完成 [表单识别器客户端库快速入门](quickstarts/client-library.md) ，开始使用所选语言的窗体识别器编写发票处理应用。
-- 或者，按照 [提取发票数据](./quickstarts/python-invoices.md) 快速入门，使用 Python 和 REST API 来实现发票数据提取。
+- 完成 [表单识别器快速入门](quickstarts/client-library.md) ，开始使用所选语言的窗体识别器编写发票处理应用。
+
 ## <a name="see-also"></a>请参阅
 
 * [什么是表单识别器？](./overview.md)

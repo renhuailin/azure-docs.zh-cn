@@ -4,14 +4,14 @@ description: Azure Monitor 指标警报的常见问题和可能的解决方案�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 11/25/2020
+ms.date: 01/03/2021
 ms.subservice: alerts
-ms.openlocfilehash: fc54d2ba3ca4e7a150a1602c671b99f58197bc44
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657288"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857335"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -242,7 +242,7 @@ ms.locfileid: "97657288"
 - 指标预警规则名称不能以空格或句点结尾
 
 > [!NOTE] 
-> 如果警报规则名称包含的字符不是字母或数字 (例如：空格、标点符号或符号) ，则在某些客户端检索这些字符时，这些字符可能会进行 URL 编码。
+> 如果警报规则名称包含不是字母或数字的字符（例如：空格、标点符号或符号），则在某些客户端检索这些字符时，可能会对这些字符进行 URL 编码。
 
 ## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>在具有多个条件的指标警报规则中使用维度时的限制
 
@@ -265,6 +265,23 @@ ms.locfileid: "97657288"
 -   监视多个维度的指标警报规则–添加新维度值组合时
 -   监视多个资源的指标警报规则-将新资源添加到作用域时
 -   用于监视不连续 (稀疏指标) 的指标的指标警报规则–在超过24小时的时间段内发出指标时，未发出此指标
+
+## <a name="the-dynamic-thresholds-borders-dont-seem-to-fit-the-data"></a>动态阈值边框似乎不适用于数据
+
+如果最近更改了某个指标的行为，则所做的更改不一定会立即反映在 (上限和下限) 的动态阈值边界内，因为这些更改基于过去10天的指标数据进行计算。 查看给定指标的动态阈值边界时，请确保查看上一周的指标趋势，而不仅是最近的小时数或天数。
+
+## <a name="why-is-weekly-seasonality-not-detected-by-dynamic-thresholds"></a>为什么动态阈值未检测到每周季节性？
+
+为了识别每周季节性，动态阈值模型至少需要三周的历史数据。 当有足够的历史数据可用时，将标识度量数据中存在的每周季节性，并相应地调整模型。 
+
+## <a name="dynamic-thresholds-shows-a-negative-lower-bound-for-a-metric-even-though-the-metric-always-has-positive-values"></a>即使度量值始终为正值，动态阈值也会显示指标的负下限
+
+当指标出现较大的波动时，动态阈值将围绕指标值生成更大的模型，这可能会导致下面的边框小于零。 具体而言，在以下情况下可能会发生这种情况：
+1. 敏感度设置为 low 
+2. 中间值接近零
+3. 此指标展示了具有高方差的不规则行为 (数据中存在峰值或 dip) 
+
+当下限为负值时，这意味着在给定指标的不规则行为的情况下，它将变得合理，以到达零值。 您可以考虑选择更高的敏感度或更大的 *聚合粒度 (Period)* 使模型不太敏感，或使用 " *在此之前忽略数据* " 选项从用于生成模型的历史数据中排除最近的 irregulaity。
 
 ## <a name="next-steps"></a>后续步骤
 

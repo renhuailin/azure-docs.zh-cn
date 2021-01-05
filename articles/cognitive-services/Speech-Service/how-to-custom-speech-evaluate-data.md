@@ -1,7 +1,7 @@
 ---
-title: 评估和改善自定义语音准确性-语音服务
+title: 评估并提高自定义语音识别准确度 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 在本文档中，你将学习如何而言度量和提高语音到文本模型或自定义模型的质量。 需要使用音频 + 人为标记的听录数据来测试准确度，并应提供 30 分钟到 5 小时的代表性音频。
+description: 本文档介绍如何以定量方式度量和提高我们的语音转文本模型或你的自定义模型的质量。 需要使用音频 + 人为标记的听录数据来测试准确度，并应提供 30 分钟到 5 小时的代表性音频。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: b8b3a0aa6d9790dbb5900eac2d79074f44a749d2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 54a54dccd82e4f6cfd72a1cc8a71b51f9fd4ed95
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025644"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857352"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>评估并提升自定义语音识别准确度
 
-本文介绍如何而言度量和提高 Microsoft 语音到文本模型或你自己的自定义模型的准确性。 需要使用音频 + 人为标记的听录数据来测试准确度，并应提供 30 分钟到 5 小时的代表性音频。
+本文档介绍如何以定量方式度量和提高 Microsoft 的语音转文本模型或你自己的自定义模型的准确度。 需要使用音频 + 人为标记的听录数据来测试准确度，并应提供 30 分钟到 5 小时的代表性音频。
 
 ## <a name="evaluate-custom-speech-accuracy"></a>评估自定义语音识别准确度
 
@@ -36,6 +36,8 @@ ms.locfileid: "95025644"
 下面是一个示例：
 
 ![错误标识的单词的示例](./media/custom-speech/custom-speech-dis-words.png)
+
+如果要在本地复制 WER 度量，可以使用 [SCTK](https://github.com/usnistgov/SCTK)中的 sclite。
 
 ## <a name="resolve-errors-and-improve-wer"></a>解决错误并降低 WER
 
@@ -96,7 +98,7 @@ ms.locfileid: "95025644"
 
 ### <a name="add-related-text-sentences"></a>添加相关的文本句子
 
-其他相关文本句子通常可以通过在上下文中显示与错误识别常见字词和特定领域的字词相关的替换错误来减少它们。 特定领域的字词可能不太常见或者属于杜撰的字词，但其发音必须易于识别。
+训练新的自定义模型时，首先添加相关的文本，以改善域特定词和短语的识别。 相关的文本句子可以通过在上下文中显示来减少与常见词和域特定单词的 misrecognition 相关的替换错误。 特定领域的字词可能不太常见或者属于杜撰的字词，但其发音必须易于识别。
 
 > [!NOTE]
 > 避免相关的文本句子包含无法识别的字符或字词等干扰因素。
@@ -111,6 +113,12 @@ ms.locfileid: "95025644"
 * 避免使用包含脚本错误的示例，但使用包含各种音频质量的示例。
 * 避免使用与问题领域无关的句子。 不相关的句子可能损坏模型。
 * 当脚本质量参差不齐时，可以复制非常好的句子（例如包含关键短语的优秀脚本）以增加其权重。
+* 语音服务将自动使用这些脚本来改善域特定词和短语的识别，就好像它们是作为相关文本添加的。
+* 如果音频也难以理解，则通过音频进行培训将获得最大优势。 在大多数情况下，只需使用相关文本即可开始培训。
+* 完成训练操作可能需要几天。 若要改善培训速度，请确保在 [具有专用硬件](custom-speech-overview.md#set-up-your-azure-account) 培训的区域中创建语音服务订阅。
+
+> [!NOTE]
+> 并非所有基本模型都支持带有音频的培训。 如果基本模型不支持该模型，则语音服务将只使用脚本中的文本并忽略音频。
 
 ### <a name="add-new-words-with-pronunciation"></a>添加具有发音的新字词
 

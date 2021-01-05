@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 130cd643856b38471eac6d6869cdc1ed8b0bcd2e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5a912790b4a7a86c44576b98ce7e95f44b810c9e
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499146"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857369"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>训练和部署自定义语音识别模型
 
@@ -67,7 +67,7 @@ ms.locfileid: "96499146"
 
 ## <a name="view-logging-data"></a>查看日志记录数据
 
-在 "**终结点**  >  **详细信息**" 下可下载日志记录数据。
+如果在 " **部署**" 下访问终结点的页，则可以导出日志记录数据。
 > [!NOTE]
 >在 Microsoft 拥有的存储上，可以使用30天的日志记录数据。 以后会将其删除。 如果客户拥有的存储帐户已链接到认知服务订阅，则不会自动删除日志记录数据。
 

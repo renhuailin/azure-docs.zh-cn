@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 12/02/2020
+ms.date: 01/04/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 042139a39c28ee4944a7f3f766fc61b163629843
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 57e3a059a5dd846250ba162513ef118e084c4b87
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574388"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861599"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>在 Azure Active Directory 门户中下载用户列表
 
@@ -60,7 +60,6 @@ Azure Active Directory (Azure AD) 支持批量用户导入（创建）操作。
    - postalCode
    - telephoneNumber
    - mobile
-   - authenticationPhoneNumber
    - authenticationAlternativePhoneNumber
    - authenticationEmail
    - alternateEmailAddress

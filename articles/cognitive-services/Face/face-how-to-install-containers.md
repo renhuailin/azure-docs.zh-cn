@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
 keywords: 本地, Docker, 容器, 标识
-ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 64169069bc0a1ccd126d1b79ee89a5666e1caeb1
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000534"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861043"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安装和运行人脸容器（预览版）
 
@@ -137,10 +137,6 @@ ApiKey={API_KEY}
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](./face-resource-container-config.md)。
-
-<!--blogs/samples/video coures -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>摘要
 

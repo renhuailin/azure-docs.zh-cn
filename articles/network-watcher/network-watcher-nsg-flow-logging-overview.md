@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 79f442c5ab7db92e69f5396f3f9205212bdf4d4d
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d6b916ce03c6850f78217f1aac0b63048a6aff3b
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399241"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858495"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -353,6 +353,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **存储帐户注意事项**： 
 
 - 位置：所用的存储帐户必须与 NSG 位于同一区域中。
+- 性能层：目前仅支持标准层存储帐户。
 - 自行管理密钥轮换：如果你更改/轮换存储帐户的访问密钥，则 NSG 流日志将停止工作。 若要解决此问题，必须禁用并重新启用 NSG 流日志。
 
 **流日志记录成本**：NSG 流日志记录按生成的日志量计费。 流量较高时，流日志的量和相关成本可能会增大。 NSG 流日志定价不包括基本的存储成本。 将保留策略功能与 NSG 流日志记录配合使用意味着在较长时间内会产生单独的存储成本。 如果不需要使用保留策略功能，我们建议将此值设置为 0。 有关详细信息，请参阅[网络观察程序定价](https://azure.microsoft.com/pricing/details/network-watcher/)和 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
@@ -374,7 +375,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **在附加到资源的所有 NSG 上启用 NSG 流日志记录**：Azure 中的流日志记录是在 NSG 资源上配置的。 一个流只与一个 NSG 规则相关联。 在使用多个 Nsg 的情况下，我们建议在资源的子网或网络接口上应用的所有 Nsg 上启用 NSG 流日志，以确保记录所有流量。 有关详细信息，请参阅网络安全组中的[流量评估方式](../virtual-network/network-security-group-how-it-works.md)。 
 
 常见方案如下：
-1. **Nic 上的多个 NSG**：若要将多个 nsg 附加到 nic，必须在所有这些上启用流日志记录
+1. **VM 中的多个 nic**：如果有多个 nic 连接到一个虚拟机，则必须在所有这些计算机上启用流日志记录
 1. 同时 **在 nic 和子网级别具有 NSG**：如果 NSG 是在 Nic 和子网级别配置的，则必须在 nsg 同时启用 flow 日志记录。 
 
 **存储预配**：应该根据预期的流日志量预配存储。

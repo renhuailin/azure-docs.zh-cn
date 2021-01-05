@@ -3,18 +3,27 @@ title: 异地灾难恢复 - Azure 事件中心| Microsoft Docs
 description: 如何使用地理区域进行故障转移并在 Azure 事件中心执行灾难恢复
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6dd2385a6f6e61136a1284171532aedd70a9cc96
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e10ac5847a38190c8feaae5e51f9b55bee4c4fbc
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608344"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861472"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中心 - 异地灾难恢复 
-当整个 Azure 区域或数据中心（如果未使用[可用性区域](../availability-zones/az-overview.md)）遭遇停机时，在不同区域或数据中心中继续进行数据处理就显得至关重要。 在这种情况下，异地灾难恢复和异地复制对于任何企业而言都是至关重要的功能。 Azure 事件中心支持命名空间级别的异地灾难恢复和异地复制。 
 
-> [!NOTE]
-> 异地灾难恢复功能仅适用于[标准和专用 SKU](https://azure.microsoft.com/pricing/details/event-hubs/)。  
+对于许多企业来说，甚至在某些情况下，在某些情况下，对数据处理资源灾难性中断的复原能力是必需的。 
+
+Azure 事件中心已经分散了单个计算机的灾难性故障的风险，甚至跨跨数据中心的多个故障域的群集产生了灾难性故障，而且还实现了透明的故障检测和故障转移机制，使服务能够继续在有保证的服务级别内操作，并且通常在发生此类故障时不会发生明显的中断。 如果已使用 [可用性区域](../availability-zones/az-overview.md)的 "已启用" 选项创建了事件中心命名空间，则风险会进一步分散到三个物理上分离的设备，并且服务有足够的容量预留，可立即应对整个设施的全部灾难性损失。 
+
+具有可用性区域支持的所有活动 Azure 事件中心群集模型提供针对抑音符硬件故障的复原能力，甚至是整个数据中心设施的灾难性损失。 尽管如此，还可能出现一些大的物理析构，甚至这些度量值无法充分防范。 
+
+事件中心异地灾难恢复功能旨在让你更轻松地从灾难中恢复，并放弃发生故障的 Azure 区域，而无需更改应用程序配置。 放弃 Azure 区域通常会涉及到几项服务，此功能主要旨在帮助保持复合应用程序配置的完整性。  
+
+"Geo-Disaster 恢复" 功能可确保对命名空间 (事件中心、使用者组和) 设置的整个配置在配对后会持续从主命名空间复制到辅助命名空间，并允许你随时启动从主命名空间到辅助命名空间的一次故障转移。 故障转移移动会将命名空间的所选别名重新指向辅助命名空间，然后中断配对。 故障转移几乎是启动后立即发生的。 
+
+> [!IMPORTANT]
+> 此功能可以实现具有相同配置的操作的即时连续性，但不 **会复制事件数据**。 除非灾难导致丢失了所有区域，否则在故障转移后，事件数据将保留在主事件中心中，并且在还原访问权限后，可以从此处获取历史事件。 若要在主动/主动配置中复制事件数据和操作相应的命名空间以应对中断和灾难，请不要对此地域灾难恢复功能集进行进一步的了解，但请按照 [复制指南](event-hubs-federation-overview.md)进行操作。  
 
 ## <a name="outages-and-disasters"></a>中断和灾难
 

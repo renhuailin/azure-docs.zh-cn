@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: aef332e54fa650e1abbebe671560238d7eb318de
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f2d55d1fcc92abdc629581d6e4d277ec0294dce0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492040"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858682"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>在 Windows 中排查 Azure 文件存储问题 (SMB)
 
@@ -406,6 +406,8 @@ Cmdlet 按顺序执行以下检查，并为故障提供指导：
 5. CheckSidHasAadUser：检查登录 AD 用户是否已同步到 Azure AD。 如果要查找特定 AD 用户是否已同步到 Azure AD，可以在输入参数中指定-UserName 和-Domain。 
 6. CheckGetKerberosTicket：尝试获取用于连接到存储帐户的 Kerberos 票证。 如果没有有效的 Kerberos 令牌，请运行 klist get cifs/cmdlet，并检查错误代码，使其根本原因导致票证检索失败。
 7. CheckStorageAccountDomainJoined：检查是否已启用 AD 身份验证，并填充该帐户的 AD 属性。 否则，请参阅 [此处](./storage-files-identity-ad-ds-enable.md) 的说明，在 Azure 文件上启用 AD DS 身份验证。 
+8. CheckUserRbacAssignment：检查 AD 用户是否具有适当的 RBAC 角色分配，以提供访问 Azure 文件的共享级别权限。 否则，请参阅 [此处](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions) 的说明，配置共享级别权限。 AzFilesHybrid v 0.2.3 + version) 支持 (
+9. CheckUserFileAccess：检查 AD 用户是否具有正确的目录/文件权限 (Windows Acl) 访问 Azure 文件。 否则，请参阅 [此处](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions) 的说明，配置目录/文件级权限。 AzFilesHybrid v 0.2.3 + version) 支持 (
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>无法在 windows 文件资源管理器) 配置目录/文件级别权限 (
 

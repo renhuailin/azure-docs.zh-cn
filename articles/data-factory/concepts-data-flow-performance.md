@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: cc06f12317f5e30721452e07bd4dc5f50dfdb7ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/18/2020
+ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022354"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858564"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -115,7 +115,7 @@ Azure 数据工厂生成列哈希，以生成统一分区，使具有相似值�
 
 默认群集大小为四个驱动程序节点和四个辅助角色节点。  处理更多数据时，建议使用较大的群集。 下面是可能的大小调整选项：
 
-| 辅助角色核心 | 驱动程序核心 | 核心总数 | 备注 |
+| 辅助角色核心 | 驱动程序核心 | 核心总数 | 说明 |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | 不可用于计算优化 |
 | 8 | 8 | 16 | |
@@ -169,7 +169,7 @@ Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提�
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure Synapse Analytics 源
 
-使用 Azure Synapse Analytics 时，源选项中存在称为 " **启用过渡** " 的设置。 这允许 ADF 使用从 Synapse 读取 ```Polybase``` ，从而大大提高读取性能。 启用 ```Polybase``` 需要在数据流活动设置中指定一个 Azure Blob 存储或 Azure Data Lake Storage gen2 暂存位置。
+使用 Azure Synapse Analytics 时，源选项中存在称为 " **启用过渡** " 的设置。 这允许 ADF 使用从 Synapse 读取 ```Staging``` ，从而大大提高读取性能。 启用 ```Staging``` 需要在数据流活动设置中指定一个 Azure Blob 存储或 Azure Data Lake Storage gen2 暂存位置。
 
 ![启用暂存](media/data-flow/enable-staging.png "启用暂存")
 
@@ -216,9 +216,9 @@ Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提�
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure Synapse 分析接收器
 
-写入 Azure Synapse Analytics 时，请确保将 " **启用过渡** " 设置为 "true"。 这使得 ADF 可以使用 [PolyBase](/sql/relational-databases/polybase/polybase-guide) 进行编写，这会有效地批量加载数据。 使用 PolyBase 时，需要引用 Azure Data Lake Storage gen2 或 Azure Blob 存储帐户来暂存数据。
+写入 Azure Synapse Analytics 时，请确保将 " **启用过渡** " 设置为 "true"。 这使得 ADF 可以使用可有效地批量加载数据的 [SQL Copy 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) 进行写入。 使用暂存时，需要引用 Azure Data Lake Storage gen2 或 Azure Blob 存储帐户来暂存数据。
 
-除 PolyBase 以外，相同的最佳做法也适用于 azure SQL 数据库的 Azure Synapse 分析。
+除了过渡外，相同的最佳做法也适用于 azure SQL 数据库的 Azure Synapse 分析。
 
 ### <a name="file-based-sinks"></a>基于文件的接收器 
 
@@ -309,6 +309,14 @@ Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提�
 ### <a name="overloading-a-single-data-flow"></a>重载单一数据流
 
 如果将所有逻辑都置于单个数据流中，则 ADF 会对单个 Spark 实例执行整个作业。 虽然这看起来可能会降低成本，但它会将不同的逻辑流组合在一起，并且很难监视和调试。 如果一个组件发生故障，则该作业的所有其他部分也会失败。 Azure 数据工厂团队建议通过独立的业务逻辑流来组织数据流。 如果数据流太大，则将其拆分为多个分隔组件会使监视和调试变得更加容易。 虽然数据流中的转换数没有硬性限制，但如果有太多的限制，则会使该工作复杂化。
+
+### <a name="execute-sinks-in-parallel"></a>并行执行接收器
+
+数据流接收器的默认行为是按顺序执行每个接收器，并以串行方式执行该操作，并在接收器中遇到错误时使数据流失败。 此外，所有接收器都默认为同一组，除非你进入数据流属性并为接收器设置不同的优先级。
+
+数据流允许您通过 UI 设计器中的 "数据流属性" 选项卡将接收器组合到组中。 您既可以使用相同的组号来设置接收器的执行顺序，也可以将接收器组合在一起。 为了帮助管理组，你可以要求 ADF 在同一组中运行接收器以并行运行。
+
+在 "接收器属性" 部分下的 "管道执行数据流" 活动中，可以选择启用并行接收器加载。 启用 "并行运行" 时，将指示数据流以相同的时间（而不是以顺序方式）将数据流写入连接的接收器。 为了利用 parallel 选项，接收器必须组合在一起，并通过新的分支或有条件拆分方式连接到同一个流。
 
 ## <a name="next-steps"></a>后续步骤
 

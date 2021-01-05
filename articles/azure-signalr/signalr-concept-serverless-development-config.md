@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: acb85a04b8a1ca491058702510079a36b93fc657
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3d69b72012819e3d9099e447b9048fe07aea86d3
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151043"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858699"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>使用 Azure SignalR 服务进行 Azure Functions 开发和配置
 
@@ -49,11 +49,11 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 
 ### <a name="handle-messages-sent-from-signalr-service"></a>处理从 SignalR 服务发送的消息
 
-使用 SignalR 触发器绑定来处理从 SignalR 服务发送的消息。 可在客户端发送消息或客户端连接或断开连接时通过触发功能收到通知。
+使用 SignalR 触发器绑定来处理从 SignalR 服务发送的消息。 当客户端发送消息或客户端连接或断开连接时，你可以获得通知。
 
 有关详细信息，请参阅 [SignalR 触发器绑定参考](../azure-functions/functions-bindings-signalr-service-trigger.md)。
 
-还需要将函数终结点配置为上游，让服务在收到来自客户端的消息时触发函数。 有关如何配置上游的详细信息，请参阅此[文档](concept-upstream.md)。
+还需要将函数终结点配置为上游，以便在有来自客户端的消息时，服务将触发该函数。 有关如何配置上游的详细信息，请参阅此[文档](concept-upstream.md)。
 
 ### <a name="sending-messages-and-managing-group-membership"></a>发送消息和管理组成员身份
 

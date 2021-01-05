@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 764e0262c8a26511c55740aa1797b5ec9b59cc8e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cbae833c1b207669e35b467707f946e9bafe31d2
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999416"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854938"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络集成
 
@@ -152,6 +152,7 @@ Azure App Service 在 VNet 集成功能上有两种变化形式：
 
 > [!NOTE]
 > 应用服务中的 Docker Compose 方案不支持 VNET 集成。
+> 如果存在私有终结点，则将忽略 Azure Functions 访问限制。
 >
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]

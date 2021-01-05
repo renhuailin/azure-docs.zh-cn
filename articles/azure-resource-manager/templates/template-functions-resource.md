@@ -2,13 +2,13 @@
 title: 模板函数 - 资源
 description: 描述要在 Azure 资源管理器模板中使用的函数 (ARM 模板) 检索有关资源的值。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: 166e9104a9d791ac6d82ed0e8e2d3659efd2ae0d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/04/2021
+ms.openlocfilehash: f16e8e06bf5deb2b66af7758f2944fe256cfa268
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919992"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861429"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
@@ -37,7 +37,7 @@ ms.locfileid: "96919992"
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | ResourceId |是 |字符串 |扩展资源应用到的资源的资源 ID。 |
 | resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
@@ -175,15 +175,15 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-此函数的语法因列表操作的名称而异。 每个实现都为支持列表操作的资源类型返回值。 操作名称必须以 `list` 开头。 一些常见用法是 `listKeys`、`listKeyValue` 和 `listSecrets`。
+此函数的语法因列表操作的名称而异。 每个实现都为支持列表操作的资源类型返回值。 操作名称必须以开头 `list` ，并且可能具有后缀。 一些常见用途包括 `list` 、 `listKeys` 、 `listKeyValue` 和 `listSecrets` 。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字符串 |资源的唯一标识符。 |
 | apiVersion |是 |字符串 |资源运行时状态的 API 版本。 通常采用 **yyyy-mm-dd** 格式。 |
-| functionValues |否 |对象 (object) | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
+| functionValues |否 |object | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
 
 ### <a name="valid-uses"></a>有效使用
 
@@ -438,7 +438,7 @@ sasToken: listAccountSas(storagename, '2018-02-01', accountSasProperties).accoun
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | 是 | 字符串 | 用于检查区域支持的资源类型的资源提供程序命名空间。 |
 | resourceType | 是 | 字符串 | 要检查区域支持的资源类型。 |
@@ -518,9 +518,9 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| 受支持 | 数组 | ["1"] |
-| notSupportedRegion | 数组 | [] |
-| notSupportedType | 数组 | [] |
+| 受支持 | array | ["1"] |
+| notSupportedRegion | array | [] |
+| notSupportedType | array | [] |
 
 你可以使用 pickZones 的响应来确定是否为区域提供 null，或将虚拟机分配给不同的区域。 下面的示例基于区域的可用性为区域设置一个值。
 
@@ -547,7 +547,7 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |是 |字符串 |提供程序的命名空间 |
 | resourceType |否 |字符串 |指定的命名空间中的资源类型。 |
@@ -635,7 +635,7 @@ output providerOutput array = providers(providerNamespace, resourceType)
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
 | apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。 通常情况下，格式为 **yyyy-mm-dd**。 如需查看适用于你的资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
@@ -1107,7 +1107,7 @@ output resourceGroupOutput object = resourceGroup()
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 仅在资源组或订阅的范围内部署时才提供此值。 |
 | resourceGroupName |否 |字符串 |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组的范围内部署时才提供此值。 |
@@ -1410,7 +1410,7 @@ output subscriptionOutput object = subscription()
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
 | resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
@@ -1542,7 +1542,7 @@ resource myRoleAssignment 'Microsoft.Authorization/roleAssignments@2018-09-01-pr
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
 | resourceName1 |是 |字符串 |资源的名称。 |

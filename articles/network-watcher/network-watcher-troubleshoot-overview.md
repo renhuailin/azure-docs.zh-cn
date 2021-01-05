@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: f27cb217b60c23f3cf89f48effb933837269000e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5342c4505bd300d1287acba246ca59610f2697bd
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960319"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858631"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
@@ -207,6 +207,9 @@ Elapsed Time            330 sec
 |         6    ikeext               ike_sa_management_c3162  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 |        12    ikeext               ike_sa_management_c3307  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 ```
+
+## <a name="considerations"></a>注意事项 
+* CLI Bug：如果使用 Azure CLI 运行命令，则 VPN 网关和存储帐户必须位于同一资源组中。 具有不同资源组中的资源的客户可以改为使用 PowerShell 或 Azure 门户。  
 
 ## <a name="next-steps"></a>后续步骤
 

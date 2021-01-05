@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 11/24/2020
-ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 01/03/2021
+ms.openlocfilehash: 3eff23a42a6ac5f5360bdebfcc692e13acb3e8b0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095077"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858768"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure 数据工厂中的数据流活动
 
@@ -38,6 +38,8 @@ ms.locfileid: "97095077"
          "computeType": "General"
       },
       "traceLevel": "Fine",
+      "runConcurrently": true,
+      "continueOnError": true,      
       "staging": {
           "linkedService": {
               "referenceName": "MyStagingLinkedService",
@@ -55,7 +57,7 @@ ms.locfileid: "97095077"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
 数据流 | 对正在执行的数据流的引用 | DataFlowReference | 是
 integrationRuntime | 运行数据流的计算环境。 如果未指定，将使用自动解析 Azure 集成运行时。 | IntegrationRuntimeReference | 否
@@ -96,13 +98,21 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗、�
 
 ![日志记录级别](media/data-flow/logging.png "设置日志记录级别")
 
+## <a name="sink-properties"></a>接收器属性
+
+使用数据流中的分组功能，您可以使用相同的组号来设置接收器的执行顺序以及将接收器组合在一起。 为了帮助管理组，你可以要求 ADF 以并行方式在同一组中运行接收器。 你还可以将接收器组设置为即使在某个接收器遇到错误后仍继续。
+
+数据流接收器的默认行为是按顺序执行每个接收器，并以串行方式执行该操作，并在接收器中遇到错误时使数据流失败。 此外，所有接收器都默认为同一组，除非你进入数据流属性并为接收器设置不同的优先级。
+
+![接收器属性](media/data-flow/sink-properties.png "设置接收器属性")
+
 ## <a name="parameterizing-data-flows"></a>参数化数据流
 
 ### <a name="parameterized-datasets"></a>参数化数据集
 
 如果数据流使用参数化数据集，则在 " **设置** " 选项卡中设置参数值。
 
-![执行数据流参数](media/data-flow/params.png "parameters")
+![执行数据流参数](media/data-flow/params.png "参数")
 
 ### <a name="parameterized-data-flows"></a>参数化数据流
 

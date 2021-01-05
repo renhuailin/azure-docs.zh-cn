@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 769dea079339af2c6307d9230e047a654dc3d5dd
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492204"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845471"
 ---
 # <a name="receipt-concepts"></a>回执概念
 
@@ -62,7 +62,7 @@ Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接�
 若要试用窗体识别器回执服务，请访问联机示例 UI 工具：
 
 > [!div class="nextstepaction"]
-> [尝试预生成模型](https://fott-preview.azurewebsites.net/)
+> [试用预生成模型](https://fott-preview.azurewebsites.net/)
 
 ## <a name="input-requirements"></a>输入要求
 
@@ -97,7 +97,7 @@ Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|status | string | notStarted：分析操作尚未开始。 |
+|status | 字符串 | notStarted：分析操作尚未开始。 |
 | |  | 正在运行：分析操作正在进行。 |
 | |  | 失败：分析操作失败。 |
 | |  | succeeded：分析操作成功。 |
@@ -456,12 +456,11 @@ Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接�
 
 回执包含有用的数据，可用于分析消费者行为和购物趋势。
 
-回执 API 还支持 [AIBuilder 回执处理功能](/ai-builder/prebuilt-receipt-processing)。
+接收 API 还可以为 [AI 生成器回执处理功能](/ai-builder/prebuilt-receipt-processing)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 完成 [表单识别器客户端库快速入门](quickstarts/client-library.md) ，开始使用所选语言的窗体识别器编写收据处理应用。
-- 或者，按照 [收条 API Python 快速入门](./quickstarts/python-receipts.md) ，使用 REST API 来识别收入。
+- 完成 [表单识别器快速入门](quickstarts/client-library.md) ，开始使用所选语言的窗体识别器编写收据处理应用。
 
 ## <a name="see-also"></a>请参阅
 

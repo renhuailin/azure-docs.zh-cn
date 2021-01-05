@@ -3,12 +3,12 @@ title: 事件复制任务模式-Azure 事件中心 |Microsoft Docs
 description: 本文提供了有关实现特定事件复制任务模式的详细指南
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 7702b1987faabfce8d97e7b5c9b18766df72caad
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 494de442b636d535fa1ed6fdeeeda28db9783952
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803980"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861365"
 ---
 # <a name="event-replication-tasks-patterns"></a>事件复制任务模式
 
@@ -20,7 +20,7 @@ ms.locfileid: "97803980"
 
 复制模式将事件从一个事件中心复制到下一个事件中心，或从事件中心复制到其他目标（如服务总线队列）。 转发事件，而不会对事件负载进行任何修改。
 
-事件中心与事件中心之间的事件复制和[服务总线](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus)示例之间的事件[复制](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy)涵盖了此模式的实现。
+事件 [中心之间](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy) 的事件复制涵盖了此模式的实现，事件中心 [与服务总线示例之间](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus) 的事件复制以及 [使用事件中心的 Apache Kafka MirrorMaker](event-hubs-kafka-mirror-maker-tutorial.md) 教程适用于将数据从 Apache Kafka broker 复制到事件中心的特定情况。
 
 ### <a name="streams-and-order-preservation"></a>流和顺序保存
 

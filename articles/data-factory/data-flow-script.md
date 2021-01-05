@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/03/2020
-ms.openlocfilehash: 69b2713e928707479945df0bb242ac2fbc001c32
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.date: 12/23/2020
+ms.openlocfilehash: 3f5a6171ba81b858d649f381ed316be0637a2571
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600653"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858648"
 ---
 # <a name="data-flow-script-dfs"></a> (DFS) 的数据流脚本
 
@@ -245,6 +245,18 @@ derive(each(match(type=='string'), $$ = 'string'),
     each(match(type=='timestamp'), $$ = 'timestamp'),
     each(match(type=='boolean'), $$ = 'boolean'),
     each(match(type=='double'), $$ = 'double')) ~> DerivedColumn1
+```
+
+### <a name="fill-down"></a>向下填充
+当您希望将 NULL 值替换为序列中前一个非 NULL 值的值时，如何实现数据集的常见 "向下填充" 问题。 请注意，此操作可能会对性能造成负面影响，因为必须使用 "虚拟" 类别值跨整个数据集创建综合窗口。 此外，必须按值进行排序才能创建适当的数据序列以查找以前的非 NULL 值。 下面的代码段创建 "虚拟" 合成类别，并按代理键进行排序。 您可以删除代理键，并使用自己的数据特定的排序关键字。 此代码段假定已添加名为的源转换 ```source1```
+
+```
+source1 derive(dummy = 1) ~> DerivedColumn
+DerivedColumn keyGenerate(output(sk as long),
+    startAt: 1L) ~> SurrogateKey
+SurrogateKey window(over(dummy),
+    asc(sk, true),
+    Rating2 = coalesce(Rating, last(Rating, true()))) ~> Window1
 ```
 
 ## <a name="next-steps"></a>后续步骤

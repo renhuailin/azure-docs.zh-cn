@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 1f31cc982e5e7f92cfe7e8adf588dd96628f2c6f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: fd36d365eb02819352bc14caf9d8e258a8663c70
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95744035"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861384"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) 扩展生命周期支持
 本文提供针对 Red Hat Enterprise 映像的扩展生命周期支持的信息：
@@ -38,6 +38,12 @@ ms.locfileid: "95744035"
 
 #### <a name="what-is-the-additional-charge-for-using-red-hat-enterprise-linux-extended-life-cycle-support-els-add-on"></a>使用 (ELS) 外接程序支持 Red Hat Enterprise Linux 扩展生命周期的额外费用是什么？
 可以通过[ELS 窗体](https://aka.ms/els-form)找到与扩展生命周期支持相关的成本
+
+#### <a name="ive-deployed-a-vm-by-using-custom-image-how-can-i-add-extended-lifecycle-support-to-this-vm"></a>我已使用自定义映像部署了 VM。 如何向此 VM 添加扩展生命周期支持？
+你需要直接联系 Red Hat 并直接获得支持。
+
+#### <a name="ive-deployed-a-vm-by-using-custom-image-can-i-convert-this-vm-to-a-payg-vm"></a>我已使用自定义映像部署了 VM。 是否可以将此 VM 转换为 PAYG VM？
+否，不能。 目前在 Azure 上不支持此转换。
 
 
 ## <a name="next-steps"></a>后续步骤

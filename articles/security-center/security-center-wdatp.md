@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 5645a2e0449a1929421f9444bf645f08ad0525e9
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 10fa47a8f613218b1331259040be77df867ade95
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296805"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854836"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>利用安全中心的集成 EDR 解决方案保护终结点： Microsoft Defender for Endpoint
 
@@ -42,10 +42,10 @@ Microsoft Defender for Endpoint 是提供的一个全面的云终结点安全解
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 发布状态：                  | 正式发布 (GA)                                                                                                                                                                                                                                                                                      |
 | 定价：                        | 需要[用于服务器的 Azure Defender](security-center-pricing.md)                                                                                                                                                                                                                                             |
-| 支持的平台：            | ![是](./media/icons/yes-icon.png) 运行 Windows 的 Azure 计算机<br>![是](./media/icons/yes-icon.png) 运行 Windows 的 Azure Arc 计算机|
-| 受支持的 Windows 版本：  | Defender for Endpoint 内置于 Windows 10 1703 (和更高版本的) 和 Windows Server 2019。<br>安全中心支持在 Windows Server 2016、2012 R2 和 2008 R2 SP1 上检测。<br>已为 Office 365 GCC 客户禁用使用此集成的服务器终结点监视。 |
-| 所需角色和权限： | 启用/禁用集成： **安全管理员** 或 **所有者**<br>在安全中心内查看 MDATP 警报： **安全读者**、 **读者**、 **资源组参与者**、 **资源组所有者**、 **安全管理员**、 **订阅所有者** 或 **订阅参与者**                         |
-| 云：                         | ![是](./media/icons/yes-icon.png) 商业云。<br>![否](./media/icons/no-icon.png) 在全球 Azure 云中运行工作负荷的 GCC 客户<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov                                                        |
+| 支持的平台：            | 运行 Windows 的 Azure 计算机<br>运行 Windows 的 Azure Arc 计算机|
+| 受支持的 Windows 版本：  |  •安全中心支持在 Windows Server 2016、2012 R2 和 2008 R2 SP1 上检测<br> •使用此集成的服务器终结点监视已为 Office 365 GCC 客户禁用<br> •不支持 Windows Server 2019、Windows 10 1703 (和更高版本) 或 Linux|
+| 所需角色和权限： | 启用/禁用集成： **安全管理员** 或 **所有者**<br>在安全中心内查看 MDATP 警报： **安全读者**、 **读者**、 **资源组参与者**、 **资源组所有者**、 **安全管理员**、 **订阅所有者** 或 **订阅参与者**|
+| 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov<br>![否](./media/icons/no-icon.png) 在全球 Azure 云中运行工作负荷的 GCC 客户                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 

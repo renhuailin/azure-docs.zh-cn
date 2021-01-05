@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 7d07dda7741aa075b8d853a8d06d3d3218ca901a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: fafa4c1e8c12ce26a90cfdf9df940823abf5ff25
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563811"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857437"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -110,7 +110,7 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 * [创建计算实例](#create)。 
 * 刷新“计算实例”选项卡。
-* 启动、停止和重启计算实例。  只要实例在运行，你就需要为其付费。 不使用计算实例时，请将其停止，以便降低成本。 停止计算实例会将其解除分配。 然后在需要时重启。 请注意，停止计算实例将停止计算小时数的计费，但仍会对磁盘、公共 IP 和标准负载均衡器进行计费。
+* 启动、停止和重启计算实例。  只要实例在运行，你就需要为其付费。 不使用计算实例时，请将其停止，以便降低成本。 停止计算实例会将其解除分配。 然后在需要时重启。 请注意，停止计算实例将停止计算小时的计费，但仍会对磁盘、公共 IP 和标准负载均衡器进行计费。
 * 删除计算实例。
 * 筛选计算实例列表，以仅显示已创建的实例。
 
@@ -120,15 +120,20 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 * 通过 SSH 连接到计算实例。 默认已禁用 SSH 访问，但可以在创建计算实例时启用。 SSH 访问是通过公钥/私钥机制实现的。 选项卡中将提供 IP 地址、用户名和端口号等 SSH 连接详细信息。
 * 获取有关特定计算实例的详细信息，例如 IP 地址和区域。
 
-使用[AZURE RBAC](../role-based-access-control/overview.md) ，可以控制工作区中的哪些用户可以创建、删除、启动、停止和重启计算实例。 充当工作区参与者和所有者角色的所有用户可以在整个工作区中创建、删除、启动、停止和重启计算实例。 但是，只有特定计算实例的创建者或分配的用户（如果该计算实例是以其名义创建的）可在该计算实例上访问 Jupyter、JupyterLab 和 RStudio。 计算实例专用于具有 root 用户访问权限的单个用户，并且可通过 Jupyter/JupyterLab/RStudio 进行终端访问。 计算实例将具有单用户登录，并且所有操作都将使用该用户在 Azure RBAC 中的标识和试验运行的归属。 SSH 访问是通过公钥/私钥机制控制的。
+使用 [Azure RBAC](../role-based-access-control/overview.md) 可以对工作区中的哪些用户能够创建、删除、启动、停止、重启计算实例进行控制。 充当工作区参与者和所有者角色的所有用户可以在整个工作区中创建、删除、启动、停止和重启计算实例。 但是，只有特定计算实例的创建者或分配的用户（如果该计算实例是以其名义创建的）可在该计算实例上访问 Jupyter、JupyterLab 和 RStudio。 计算实例专用于具有 root 用户访问权限的单个用户，并且可通过 Jupyter/JupyterLab/RStudio 进行终端访问。 计算实例将具有单用户登录名，所有操作都将使用该用户的标识进行试验运行的 Azure RBAC 控制和权限划分。 SSH 访问是通过公钥/私钥机制控制的。
 
-Azure RBAC 可控制以下操作：
+可以通过 Azure RBAC 来控制这些操作：
 * *Microsoft.MachineLearningServices/workspaces/computes/read*
 * *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft.MachineLearningServices/workspaces/computes/delete*
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
+
+请注意，若要创建计算实例，用户需要具有以下操作的权限：
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
+* *MachineLearningServices/工作区/checkComputeNameAvailability/action*
+
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>创建计算实例
 
@@ -150,7 +155,7 @@ Azure RBAC 可控制以下操作：
 * [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。  若要详细了解如何查找此模板中所需的 TenantID 和 ObjectID，请参阅[查找身份验证配置的标识对象 ID](../healthcare-apis/find-identity-object-ids.md)。  也可在 Azure Active Directory 门户中找到这些值。
 * REST API
 
-你为其创建计算实例的数据科研人员需要以下 Azure RBAC 权限： 
+你为其创建计算实例的数据科学家需要以下 Azure RBAC 权限： 
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*

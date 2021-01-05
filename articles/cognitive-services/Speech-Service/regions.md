@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 7b872340c50c800ebe4d4d6c7ca56b3b327bf162
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: seodec18,references_regions
+ms.openlocfilehash: f11ccafd58cc64e6186ef590bbbccbfab3335ea4
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972635"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854853"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -44,6 +44,8 @@ ms.locfileid: "95972635"
 
 如果使用 [语音 SDK](speech-sdk.md)，则区域由 **区域标识符** 指定（例如，作为 `SpeechConfig.FromSubscription` 的参数）。 请确保该区域与订阅的区域匹配。
 
+如果打算使用音频数据训练自定义模型，请使用 [具有专用硬件](custom-speech-overview.md#set-up-your-azure-account) 的其中一个区域，以实现更快的培训。 您可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) 将经过完全训练的模型复制到其他区域。
+
 ### <a name="intent-recognition"></a>意向识别
 
 通过语音 SDK 实现 **意向识别** 的可用区域如下：
@@ -61,23 +63,27 @@ ms.locfileid: "95972635"
 | 北美 | 美国中西部  | `westcentralus`      |
 | 北美 | 美国西部          | `westus`             |
 | 北美 | 美国西部 2        | `westus2`            |
-| 南美洲 | Brazil South     | `brazilsouth`        |
+| 南美洲 | 巴西南部     | `brazilsouth`        |
 
 这是[语言理解服务 (LUIS)](../luis/luis-reference-regions.md) 支持的发布区域的子集。
 
 ### <a name="voice-assistants"></a>语音助手
 
-[语音 SDK](speech-sdk.md)支持以下区域中的 **语音助手** 功能：
+[语音 SDK](speech-sdk.md)通过以下区域中的 [直接线路语音](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech)支持 **语音助手** 功能：
 
-| 区域         | 区域标识符 |
-| -------------- | -------------------- |
-| 美国西部        | `westus`             |
-| 美国西部 2      | `westus2`            |
-| 美国东部        | `eastus`             |
-| 美国东部 2      | `eastus2`            |
-| 西欧    | `westeurope`         |
-| 北欧   | `northeurope`        |
-| 东南亚 | `southeastasia`      |
+| 全球区域 | 区域           | 区域标识符    |
+| ------------- | ---------------- | -------------------- |
+| 北美 | 美国西部          | `westus`             |
+| 北美 | 美国西部 2        | `westus2`            |
+| 北美 | 美国东部          | `eastus`             |
+| 北美 | 美国东部 2        | `eastus2`            |
+| 北美 | 美国中西部  | `westcentralus`      |
+| 北美 | 美国中南部 | `southcentralus`     |
+| 欧洲        | 西欧      | `westeurope`         |
+| 欧洲        | 北欧     | `northeurope`        |
+| 亚洲          | 东亚        | `eastasia`           |
+| 亚洲          | 东南亚   | `southeastasia`      |
+| 印度         | 印度中部    | `centralindia`       |
 
 ### <a name="speaker-recognition"></a>说话人识别
 
