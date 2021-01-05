@@ -4,12 +4,12 @@ description: 在本文中，学习如何排查在备份和还原 Azure 虚拟机
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: cb25d9263648fbd92bc075751c1a8e627d03bd44
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325207"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831544"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -73,6 +73,16 @@ ms.locfileid: "96325207"
 * 使用 umount 命令卸载未清除文件系统状态的设备。
 * 使用 **fsck** 命令在这些设备上运行文件系统一致性检查。
 * 再次装载设备，并重试备份操作。</ol>
+
+如果无法卸载设备，则可以更新 VM 备份配置以忽略某些装入点。 例如，如果 "/mnt/resource" 装入点无法卸载并导致 VM 备份失败，则可按如下所示用属性更新 VM 备份配置文件 ```MountsToSkip``` 。
+
+```bash
+cat /var/lib/waagent/Microsoft.Azure.RecoveryServices.VMSnapshotLinux-1.0.9170.0/main/tempPlugin/vmbackup.conf[SnapshotThread]
+fsfreeze: True
+MountsToSkip = /mnt/resource
+SafeFreezeWaitInSeconds=600
+```
+
 
 ### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC - COM+ 错误导致扩展安装/操作失败
 
@@ -157,7 +167,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 发生此错误是因为在还原操作过程中选择的 VM 大小不受支持。 <br>
 
-若要解决此问题，请在还原操作过程中使用[还原磁盘](./backup-azure-arm-restore-vms.md#restore-disks)选项。 使用[PowerShell cmdlet](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks)从[可用的支持 vm 大小](./backup-support-matrix-iaas.md#vm-compute-support)列表中使用这些磁盘创建 vm。
+若要解决此问题，请在还原操作过程中使用[还原磁盘](./backup-azure-arm-restore-vms.md#restore-disks)选项。 使用这些磁盘通过 [PowerShell cmdlet](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks) 根据[可用的受支持 VM 大小](./backup-support-matrix-iaas.md#vm-compute-support)列表创建 VM。
 
 ### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported - 由于没有市场购买请求，创建 VM 失败
 
@@ -244,7 +254,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 这将确保通过主机而不是来宾来拍摄快照。 请重试备份操作。
 
-**步骤 2**：尝试将备份计划更改为 VM 低于负载 (的时间，例如更少的 CPU 或 IOPS) 
+**步骤 2**：尝试将备份计划更改到 VM 的负载较小（如 CPU 或 IOPS 较小）的某个时间
 
 **步骤 3**：尝试 [增大 VM 的大小](../virtual-machines/windows/resize-vm.md)并重试操作
 

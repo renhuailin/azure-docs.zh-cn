@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2f39dbd22372342786eacbccd31a10fc927c0892
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bc0caaf30db0384da3fa9c5abea6360206a3fb8e
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352620"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831969"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>快速入门：使用用于 C# 的必应拼写检查 SDK 进行拼写检查
 
@@ -110,4 +110,4 @@ ms.locfileid: "96352620"
 > [创建单页 Web 应用](tutorials/spellcheck.md)
 
 - [什么是必应拼写检查 API？](overview.md)
-- [必应拼写检查 C# SDK 参考指南](/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)
+- [必应拼写检查 C# SDK 参考指南](/dotnet/api/overview/azure/cognitiveservices/bing-spell-check-readme?view=azure-dotnet)

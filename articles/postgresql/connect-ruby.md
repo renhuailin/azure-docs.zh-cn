@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: bb2ff066089e3348c40f5a22bd73ea376ecef6de
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 20e45454284af230da74896d5b3f5e9da676dbb4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341393"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831697"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 Ruby 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
 
@@ -43,7 +43,7 @@ ms.locfileid: "93341393"
 ## <a name="connect-and-create-a-table"></a>进行连接并创建表
 使用以下代码进行连接，使用 **CREATE TABLE** SQL 语句创建表，然后使用 **INSERT INTO** SQL 语句将行添加到表中。
 
-该代码使用 ```PG::Connection``` 对象和构造函数 ```new``` 来连接到 Azure Database for PostgreSQL。 然后调用 ```exec()``` 方法，以便运行 DROP、CREATE TABLE 和 INSERT INTO 命令。 代码使用 ```PG::Error``` 类来检查是否存在错误。 然后，它会调用方法 ```close()```，在终止之前关闭连接。 有关这些类和方法的详细信息，请参阅 [Ruby Pg 参考文档](https://www.rubydoc.info/gems/pg/PG)。
+该代码使用 ```PG::Connection``` 对象和构造函数 ```new``` 来连接到 Azure Database for PostgreSQL。 然后调用 ```exec()``` 方法，以便运行 DROP、CREATE TABLE 和 INSERT INTO 命令。 代码使用 ```PG::Error``` 类来检查是否存在错误。 然后，它会调用方法 ```close()```，在终止之前关闭连接。 有关这些类和方法的详细信息，请参阅 Ruby Pg 参考文档。
 
 将 `host`、`database`、`user` 和 `password` 字符串替换为你自己的值。
 
@@ -87,7 +87,7 @@ end
 ## <a name="read-data"></a>读取数据
 使用以下代码进行连接，并使用 **SELECT** SQL 语句来读取数据。
 
-该代码使用 ```PG::Connection``` 对象和构造函数 ```new``` 来连接到 Azure Database for PostgreSQL。 然后，它会调用方法 ```exec()``` 来运行 SELECT 命令，将结果保存在结果集中。 结果集集合使用 `resultSet.each do` 循环进行循环访问，将最新的行值保存在 `row` 变量中。 代码使用 ```PG::Error``` 类来检查是否存在错误。 然后，它会调用方法 ```close()```，在终止之前关闭连接。 有关这些类和方法的详细信息，请参阅 [Ruby Pg 参考文档](https://www.rubydoc.info/gems/pg/PG)。
+该代码使用 ```PG::Connection``` 对象和构造函数 ```new``` 来连接到 Azure Database for PostgreSQL。 然后，它会调用方法 ```exec()``` 来运行 SELECT 命令，将结果保存在结果集中。 结果集集合使用 `resultSet.each do` 循环进行循环访问，将最新的行值保存在 `row` 变量中。 代码使用 ```PG::Error``` 类来检查是否存在错误。 然后，它会调用方法 ```close()```，在终止之前关闭连接。 有关这些类和方法的详细信息，请参阅 Ruby Pg 参考文档。
 
 将 `host`、`database`、`user` 和 `password` 字符串替换为你自己的值。
 
@@ -121,7 +121,7 @@ end
 ## <a name="update-data"></a>更新数据
 使用以下代码进行连接，并使用 **UPDATE** SQL 语句更新数据。
 
-该代码使用 ```PG::Connection``` 对象和构造函数 ```new``` 来连接到 Azure Database for PostgreSQL。 然后，它会调用方法 ```exec()``` 来运行 UPDATE 命令。 代码使用 ```PG::Error``` 类来检查是否存在错误。 然后，它会调用方法 ```close()```，在终止之前关闭连接。 有关这些类和方法的详细信息，请参阅 [Ruby Pg 参考文档](https://www.rubydoc.info/gems/pg/PG)。
+该代码使用 ```PG::Connection``` 对象和构造函数 ```new``` 来连接到 Azure Database for PostgreSQL。 然后，它会调用方法 ```exec()``` 来运行 UPDATE 命令。 代码使用 ```PG::Error``` 类来检查是否存在错误。 然后，它会调用方法 ```close()```，在终止之前关闭连接。 有关这些类和方法的详细信息，请参阅 [Ruby Pg 参考文档](https://rubygems.org/gems/pg)。
 
 将 `host`、`database`、`user` 和 `password` 字符串替换为你自己的值。
 
@@ -200,4 +200,4 @@ az group delete \
 > [!div class="nextstepaction"]
 > [使用导出和导入功能迁移数据库](./howto-migrate-using-export-and-import.md) <br/>
 > [!div class="nextstepaction"]
-> [Ruby Pg 参考文档](https://www.rubydoc.info/gems/pg/PG)
+> [Ruby Pg 参考文档](https://rubygems.org/gems/pg)

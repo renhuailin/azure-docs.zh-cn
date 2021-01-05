@@ -3,12 +3,12 @@ title: 使用 Azure 备份将 SAP HANA 数据库备份到 Azure
 description: 本文介绍如何使用 Azure 备份服务将 SAP HANA 数据库备份到 Azure 虚拟机。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: f7957670b3ba98c640ebc53c6427273ca75a4e6d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 87111660983e2626d8f61ddc65fdc13394509a4f
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682837"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831629"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>备份 Azure VM 中的 SAP HANA 数据库
 
@@ -29,7 +29,7 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 
 >[!NOTE]
 >**针对 Azure VM 中 SQL 服务器的软删除以及针对 Azure VM 工作负荷中 SAP HANA 的软删除** 现已推出预览版。<br>
->若要注册预览版，请向我们写信 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
+>若要注册预览版，请向 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 发送邮件。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -63,7 +63,7 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 
 1. 在“设置”下选择“出站安全规则”。
 
-1. 选择“添加”  。 根据[安全规则设置](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
+1. 选择 **添加** 。 根据[安全规则设置](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
 
 1. 选择“添加”，保存新创建的出站安全规则。
 
@@ -90,6 +90,9 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>使用 HTTP 代理服务器路由流量
 
 备份在 Azure VM 上运行的 SAP HANA 数据库时，该 VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 使用上面提到的 IP 和 FQDN 列表，以允许访问所需的服务。 不支持已经过身份验证的代理服务器。
+
+> [!NOTE]
+> 没有服务级别代理支持。 也就是说，不支持通过代理从仅限少数或所选服务 (Azure 备份服务) 的流量。 整个数据或流量可以通过代理进行路由。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -169,10 +172,10 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
     ![差异备份策略](./media/backup-azure-sap-hana-database/differential-backup-policy.png)
 
     > [!NOTE]
-    > 公共预览版现在支持增量备份。 您可以选择差异或增量作为每日备份，但不能同时选择两者。
-1. 在 " **增量备份策略**" 中，选择 " **启用** " 以打开频率和保持控制。
-    * 每日最多可以触发一个增量备份。
-    * 增量备份最多可保留180天。 如果需要保留更长时间，必须使用完整备份。
+    > 公共预览版现在支持增量备份。 可以选择差异备份或增量备份作为每日备份，但不能同时选择两者。
+1. 在“增量备份策略”中，选择“启用”以打开频率和保留控件 。
+    * 每天最多可以触发一次增量备份。
+    * 增量备份最多可以保留 180 天。 如果需要保留更长时间，必须使用完整备份。
 
     ![增量备份策略](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
 

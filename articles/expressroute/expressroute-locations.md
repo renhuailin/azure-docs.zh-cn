@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/10/2020
 ms.author: duau
-ms.openlocfilehash: cc844059d14a182db11e18f95e676b38762f6a0d
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: dab480012ced3a8fc50fd5f4295272c0eccc4307
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561641"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831850"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 连接合作伙伴和对等互连位置
 
@@ -134,7 +134,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |阿姆斯特丹、亚特兰大、奥克兰芝加哥、达拉斯、丹佛、Dubai2、都柏林、法兰克福、Geneva、香港特别行政区、拉斯维加斯、伦敦、London2、洛杉矶、墨尔本、迈阿密、蒙特利尔、纽约、Oslo、、魁北克市、圣马力诺、Antonio、新加坡2、内华达州、加拿大、Stavanger、东京、内华达州、加拿大 |
 | **[MTN](https://www.mtnbusiness.co.za/en/Cloud-Solutions/Pages/microsoft-express-route.aspx)** |支持 |支持 |London |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |支持 |支持 |达拉斯、洛杉矶、迈阿密、圣保罗、华盛顿特区 |
-| **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |支持 |支持 |Newport(Wales) |
+| **[Next Generation Data](https://vantage-dc-cardiff.co.uk/)** |支持 |支持 |Newport(Wales) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |支持 |支持 |墨尔本、珀斯、悉尼、悉尼 2 |
 | **[称](https://www.nos.pt/empresas/corporate/cloud/cloud/Pages/nos-cloud-connect.aspx)** |支持 |支持 |阿姆斯特丹 2 |
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |支持 |支持 |阿姆斯特丹、香港特别行政区、伦敦、洛杉矶、大阪、新加坡、悉尼、东京、华盛顿特区 |
@@ -147,7 +147,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Orixcom](https://www.orixcom.com/cloud-solutions/)** | 支持 | 支持 | 迪拜 2 |
 | **[PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |支持 |支持 |芝加哥，拉斯维加斯，硅谷，华盛顿特区 |
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |支持 |支持 |芝加哥、香港特别行政区、香港 2、伦敦、新加坡 2 |
-| **[Retelit](https://www.retelit.it/en/services/enterprises-and-public-sector/data-center-e-cloud/cloud-services/direct-cloud-4-azure-expressroute.aspx)** | 支持 | 支持 | Milan | 
+| **[Retelit](https://www.retelit.it/EN/Home.aspx)** | 支持 | 支持 | Milan | 
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |支持 |支持 |首尔 |
 | **[SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | 支持 |支持 | London2，华盛顿特区 |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |支持 |支持 |金奈、孟买 2 |

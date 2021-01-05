@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 672175d5bb92c8ab6dc347ece5ad6b14d8232ef4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b9fe978da9accd28ea0e538f458325f10c9c5d8d
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024072"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831884"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC 系列虚拟机概述
 
@@ -58,6 +58,6 @@ Intel （r）白金、黄金和银 Cpu 还引入了一个片上的2D 网格网�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关 [Intel 强 SP 体系结构](https://bit.ly/2RCYkiE)的详细信息。
+- 了解有关 [Intel 强 SP 体系结构](https://software.intel.com/content/www/us/en/develop/articles/intel-xeon-processor-scalable-family-technical-overview.html)的详细信息。
 - 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告以及一些 HPC 示例和结果。
 - 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4d34fc48e5d16275d0225a1cef4b5fa63f0b66d6
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b4bd64fb00c2f341e474ecb96738fab47d717474
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511648"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831663"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -21,11 +21,11 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 > 不支持从加密的 VM 备份恢复文件。
 >
 
-![文件文件夹恢复工作流](./media/backup-azure-restore-files-from-vm/file-recovery-1.png)
+![文件和文件夹恢复工作流](./media/backup-azure-restore-files-from-vm/file-recovery-1.png)
 
-## <a name="step-1-generate-and-download-script-to-browse-and-recover-files"></a>步骤1：生成和下载脚本以浏览和恢复文件
+## <a name="step-1-generate-and-download-script-to-browse-and-recover-files"></a>步骤 1：生成并下载脚本以浏览和恢复文件
 
-若要从恢复点还原文件或文件夹，请在虚拟机上执行以下步骤：
+要从恢复点还原文件或文件夹，请转到虚拟机并执行以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.Azure.com)，在左侧窗格中选择“虚拟机”。 从虚拟机列表中，选择虚拟机以打开其仪表板。
 
@@ -58,28 +58,28 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
     ![生成的密码](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
 
-## <a name="step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script"></a>步骤2：在执行脚本之前确保计算机满足要求
+## <a name="step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script"></a>步骤 2：执行脚本之前，请确保计算机满足要求
 
-成功下载该脚本后，请确保具有正确的计算机来执行此脚本。 你计划在其中执行脚本的 VM 不应具有以下任何不支持的配置。 如果是这样，则从满足要求的同一区域中选择一个最好的计算机。  
+成功下载脚本后，请确保使用满足要求的计算机来执行该脚本。 你计划在其中执行脚本的 VM 不应具有以下任何不受支持的配置。 如果是这样，则最好从同一区域中选择一个符合要求的备用计算机。  
 
 ### <a name="dynamic-disks"></a>动态磁盘
 
-无法在具有以下任何特征的 VM 上运行可执行脚本：
+无法在具有以下任意特征的 VM 上运行可执行脚本：
 
-- 跨多个磁盘 (跨区卷和带区卷) 的卷。
-- 容错卷 (镜像卷和 RAID-5 卷) 在动态磁盘上。
+- 跨多个磁盘的卷（跨区卷和带区卷）。
+- 动态磁盘上的容错卷（镜像卷和 RAID-5 卷）。
 
 ### <a name="windows-storage-spaces"></a>Windows 存储空间
 
 无法在为 Windows 存储空间配置的 VM 上运行下载的可执行文件。
 
-### <a name="virtual-machine-backups-having-large-disks"></a>具有大型磁盘的虚拟机备份
+### <a name="virtual-machine-backups-having-large-disks"></a>具有大磁盘的虚拟机备份
 
-如果备份的计算机上有大量磁盘 ( # B0 16) 或大磁盘 ( # A1 4 TB 每个) ，不建议在同一台计算机上执行该脚本以进行还原，因为这会对 VM 产生重大影响。 但建议仅为 Azure VM D2v3 Vm)  (的文件恢复使用单独的 VM，并在不需要时将其关闭。 
+如果备份的计算机上有大量磁盘（> 16 个）或大磁盘（每个磁盘 > 4 TB），则建议不要在同一台计算机上执行该脚本以进行还原，因为这会对 VM 产生重大影响。 取而代之的是，建议仅为文件恢复使用单独的 VM (Azure VM D2v3 VM)，并在不需要时将其关闭。 
 
-## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>步骤3：成功运行脚本的操作系统要求
+## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>步骤 3：成功运行脚本的 OS 要求
 
-要在其上运行下载的脚本的 VM 必须满足以下要求。
+要在其上运行所下载脚本的 VM 必须满足以下要求。
 
 ### <a name="for-windows-os"></a>对于 Windows OS
 
@@ -105,7 +105,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 | Debian | 7 及更高版本 |
 | Oracle Linux | 6.4 及更高版本 |
 | SLES | 12 及更高版本 |
-| OpenSUSE | 42.2 及更高版本 |
+| openSUSE | 42.2 及更高版本 |
 
 > [!NOTE]
 > 我们发现，在使用 SLES 12 SP4 OS 的计算机上运行文件恢复脚本时会出现一些问题，我们正在与 SLES 团队一起调查这些问题。
@@ -118,9 +118,10 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 | --------------- | ---- |
 | bash | 4 及更高版本 |
 | Python | 2.6.6 及更高版本  |
+| .NET | 4.6.2 及更高版本 |
 | TLS | 应支持 1.2  |
 
-## <a name="step-4-access-requirements-to-successfully-run-the-script"></a>步骤4：访问要求以成功运行脚本
+## <a name="step-4-access-requirements-to-successfully-run-the-script"></a>步骤 4：成功运行脚本的访问要求
 
 如果在访问受限的计算机上运行该脚本，请确保能够访问：
 
@@ -134,7 +135,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 > [!NOTE]
 >
-> 在 [上面](#step-1-generate-and-download-script-to-browse-and-recover-files) 的步骤1中下载的脚本文件将在该文件的名称中包含 **地理名称** 。 使用该地区名称填写 URL。 下载的脚本名称将以如下开头：\'VMname\'\_\'geoname\'_\'GUID\'。<br><br>
+> 在[上文](#step-1-generate-and-download-script-to-browse-and-recover-files)步骤 1 中下载的脚本文件的名称中将包含地区名称。 使用该地区名称填写 URL。 下载的脚本名称将以如下开头：\'VMname\'\_\'geoname\'_\'GUID\'。<br><br>
 > 例如，如果脚本文件名为 " *ContosoVM_wcus_12345678*"，则 wcus **为，** URL 将为：<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
 >
 
@@ -143,11 +144,11 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 需要访问 `download.microsoft.com`，才能下载用于在运行脚本的计算机与恢复点中的数据之间构建安全通道的组件。
 
 
-## <a name="step-5-running-the-script-and-identifying-volumes"></a>步骤5：运行脚本并标识卷
+## <a name="step-5-running-the-script-and-identifying-volumes"></a>步骤 5：运行脚本并标识卷
 
 ### <a name="for-windows"></a>对于 Windows
 
-满足步骤2、步骤3和步骤4中列出的所有要求后，请从下载位置复制脚本 (通常) 下载文件夹，右键单击该可执行文件或脚本，然后用管理员凭据运行该脚本。 出现提示时，键入密码或粘贴内存中的密码，然后按 Enter。 输入有效的密码后，脚本将连接到恢复点。
+满足步骤 2、步骤 3 和步骤 4 中列出的所有要求后，从下载位置（通常是“下载”文件夹）复制脚本，右键单击可执行文件或脚本，然后用管理员凭据运行。 出现提示时，键入密码或粘贴内存中的密码，然后按 Enter。 输入有效的密码后，脚本将连接到恢复点。
 
   ![可执行文件输出](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
@@ -156,9 +157,9 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
    ![已附加恢复卷](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-#### <a name="for-backed-up-vms-with-large-disks-windows"></a>对于具有大型磁盘的已备份 Vm (Windows) 
+#### <a name="for-backed-up-vms-with-large-disks-windows"></a>对于包含大磁盘的备份 VM (Windows)
 
-如果文件恢复过程在运行文件还原脚本后挂起 (例如，如果从未装载磁盘，或装载了卷但) 不显示卷，请执行以下步骤：
+如果文件恢复进程在运行文件还原脚本后挂起（例如，如果磁盘从未装载或装载后未显示卷），请执行以下步骤：
   
 1. 确保 OS 为 WS 2012 或更高版本。
 2. 确保在还原服务器中按以下建议设置注册表项，并确保重新启动服务器。 GUID 旁边的数字的范围为 0001 - 0005。 下面的示例中采用的是 0004。 浏览注册表项路径，直到参数部分。
@@ -174,7 +175,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 ### <a name="for-linux"></a>对于 Linux
 
-对于 Linux 计算机，将生成一个 Python 脚本。 下载该脚本并将其复制到相关兼容的 Linux 服务器。 你可能必须修改权限才能使用 ```chmod +x <python file name>``` 执行该脚本。 然后使用 ```./<python file name>``` 运行 Python 文件。
+对于 Linux 计算机，将生成一个 Python 脚本。 下载该脚本并将其复制到相关/兼容的 Linux 服务器。 你可能必须修改权限才能使用 ```chmod +x <python file name>``` 执行该脚本。 然后使用 ```./<python file name>``` 运行 Python 文件。
 
 
 在 Linux 中，恢复点的卷会装载到运行脚本的文件夹。 将相应地显示附加的磁盘、卷和对应装载路径。 这些装载路径对于具有根级别访问权限的用户可见。 浏览脚本输出中涉及的卷。
@@ -184,15 +185,15 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 #### <a name="for-backed-up-vms-with-large-disks-linux"></a>对于具有大型磁盘的已备份 Vm (Linux) * *
 
-如果文件恢复过程在运行文件还原脚本后挂起 (例如，如果从未装载磁盘，或装载了卷但) 不显示卷，请执行以下步骤：
+如果文件恢复进程在运行文件还原脚本后挂起（例如，如果磁盘从未装载或装载后未显示卷），请执行以下步骤：
 
 1. 在文件 /etc/iscsi/iscsid.conf 中，将设置从
     - `node.conn[0].timeo.noop_out_timeout = 5` 更改为 `node.conn[0].timeo.noop_out_timeout = 30`
-2. 进行上述更改后，重新运行脚本。 如果发生暂时性故障，请确保重新运行之间存在20到30分钟的间隔，以避免连续突发的请求影响目标准备。 重新运行之间的间隔将确保目标已准备好从脚本进行连接。
+2. 进行上述更改之后，重新运行脚本。 如果发生暂时性故障，请确保等待 20 到 30 分钟再重新运行，以避免连续突发的请求影响目标准备。 重新运行之间的间隔时间可确保目标已准备好从脚本进行连接。
 3. 在执行文件恢复后，请务必返回门户并为无法装载卷的恢复点选择“卸载磁盘”。 从本质上来说，此步骤将清理所有现有进程/会话并提高恢复的可能性。
 
 
-#### <a name="lvmraid-arrays-for-linux-vms"></a>适用于 Linux Vm) 的 LVM/RAID 阵列 (
+#### <a name="lvmraid-arrays-for-linux-vms"></a>LVM/RAID 阵列（对于 Linux VM）
 
 在 Linux 中，逻辑卷管理器 (LVM) 和/或软件 RAID 阵列用于管理多个磁盘上的逻辑卷。 如果受保护的 Linux VM 使用 LVM 和/或 RAID 阵列，则不能在同一 VM 上运行该脚本。<br>
 而应在具有兼容 OS 且支持受保护 VM 的文件系统的任何其他计算机上运行该脚本。<br>
@@ -325,13 +326,13 @@ mount [RAID Disk Path] [/mountpath]
 
 如果 RAID 磁盘中配置了另一 LVM，请使用前述 LVM 分区相关过程，但使用卷名称代替 RAID 磁盘名称。
 
-## <a name="step-6-closing-the-connection"></a>步骤6：关闭连接
+## <a name="step-6-closing-the-connection"></a>步骤 6：关闭连接
 
 识别文件并将其复制到本地存储位置后，请删除（或卸载）其他驱动器。 若要卸载驱动器，请在 Azure 门户中的“文件恢复”菜单上，选择“卸载磁盘”。 
 
 ![卸载磁盘](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
-卸载磁盘后，将收到一条消息。 连接可能在几分钟时间后才会刷新，以便能够删除磁盘。
+卸载磁盘后，会显示一条消息。 连接可能在几分钟时间后才会刷新，以便能够删除磁盘。
 
 在 Linux 中，断开与恢复点的连接后，OS 不会自动删除相应装载路径。 装载路径作为“孤立”的卷存在并且可见，但访问/写入文件时会引发错误。 这些卷可以手动删除。 该脚本运行时会标识以前的任何恢复点存在的任何此类卷，并在获得许可后将其清除。
 

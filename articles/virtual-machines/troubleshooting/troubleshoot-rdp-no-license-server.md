@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 276be92ea4c03b9ebeb3e13df69ce1b10328dcaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b5864d40d2a4d8f8d6cf404df29f909a73f04e2
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526463"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832037"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>连接到 Azure VM 时，远程桌面许可证服务器不可用
 
@@ -62,7 +62,7 @@ mstsc /v:<Server>[:<Port>] /admin
 
     如果无法使用管理会话连接到 VM，可以使用 [Azure 上的虚拟机串行控制台](serial-console-windows.md)访问 VM，如下所述：
 
-    1. 选择“支持和故障排除”“串行控制台(预览版)”访问 串行控制台 >  。******** 如果在 VM 上启用了该功能，则可以成功连接 VM。
+    1. 选择“支持和故障排除”“串行控制台(预览版)”访问 串行控制台 >  。 如果在 VM 上启用了该功能，则可以成功连接 VM。
 
     2. 为 CMD 实例创建新通道。 输入 **CMD** 启动通道，并获取通道名称。
 
@@ -87,7 +87,9 @@ mstsc /v:<Server>[:<Port>] /admin
     2. 使用以下命令检查策略，并根据需要重新进行配置：
 
        ```
-        reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\Licensing Core" /v LicensingMode reg query "HKLM\SYSTEM\CurrentControlSet\Services\TermService\Parameters" /v SpecifiedLicenseServers
+        reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\Licensing Core" /v LicensingMode
+
+        reg query "HKLM\SYSTEM\CurrentControlSet\Services\TermService\Parameters" /v SpecifiedLicenseServers
        ```
 
         如果 **LicensingMode** 值设置为除 4 以外的其他任何值（按用户），请将它设置为 4：

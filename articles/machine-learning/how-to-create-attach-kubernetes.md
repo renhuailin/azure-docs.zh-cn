@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: e773c2db9c7849dd9680f8ae0c600405f422d7e1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6400d3f3c721619551ba3989a2e5799b72ff9f38
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463189"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831918"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
@@ -34,7 +34,7 @@ Azure 机器学习可以将经过训练的机器学习模型部署到 Azure Kube
 
 - 如果群集中需要部署的是标准负载均衡器 (SLB)，而不是基本负载均衡器 (BLB)，请在 AKS 门户/CLI/SDK 中创建群集，然后将该群集附加到 AML 工作区 。
 
-- 如果你的 Azure Policy 限制创建公共 IP 地址，则无法创建 AKS 群集。 AKS 需要一个公共 IP 用于[出口流量](../aks/limit-egress-traffic.md)。 出口流量一文还提供了通过公共 IP 锁定群集传出流量的指导，但少数完全限定的域名除外。 启用公共 IP 有两种方法：
+- 如果你的 Azure Policy 限制创建公共 IP 地址，则无法创建 AKS 群集。 AKS 需要一个公共 IP 用于[出口流量](../aks/limit-egress-traffic.md)。 出口流量一文还指导如何通过公共 IP（几个完全限定的域名的 IP 除外）锁定来自群集的出口流量。 启用公共 IP 有两种方法：
     - 群集可以使用在默认情况下与 BLB 或 SLB 一起创建的公共 IP，或者
     - 可以在没有公共 IP 的情况下创建群集，然后为公共 IP 配置一个带有用户定义路由的防火墙。 有关详细信息，请参阅[使用用户定义的路由自定义群集出口](../aks/egress-outboundtype.md)。
     
@@ -44,7 +44,7 @@ Azure 机器学习可以将经过训练的机器学习模型部署到 Azure Kube
 
     授权 IP 范围仅适用于标准负载均衡器。
 
-- **附加** AKS 群集时，它必须与 Azure 机器学习工作区位于同一 Azure 订阅中。
+- 附加 AKS 群集时，它必须与 Azure 机器学习工作区位于同一 Azure 订阅中。
 
 - 如果要使用专用 AKS 群集（使用 Azure 专用链接），则必须先创建群集，然后再将其附加到工作区。 有关详细信息，请参阅[创建专用 Azure Kubernetes 服务群集](../aks/private-clusters.md)。
 
@@ -281,6 +281,78 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 ---
 
+## <a name="create-or-attach-an-aks-cluster-with-tls-termination"></a>使用 TLS 终止创建或附加 AKS 群集
+[创建或附加 AKS 群集](how-to-create-attach-kubernetes.md)时，可以使用 **[AksCompute.provisioning_configuration ( # B1](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 和 **[AksCompute.attach_configuration ( # B3](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 配置对象来启用 TLS 终止。 这两种方法都返回具有 **enable_ssl** 方法的配置对象，您可以使用 **enable_ssl** 方法来启用 TLS。
+
+以下示例演示了如何通过在后台使用 Microsoft 证书，使用自动 TLS 证书生成和配置来启用 TLS 终止。
+```python
+   from azureml.core.compute import AksCompute, ComputeTarget
+   
+   # Enable TLS termination when you create an AKS cluster by using provisioning_config object enable_ssl method
+
+   # Leaf domain label generates a name using the formula
+   # "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+   # where "######" is a random series of characters
+   provisioning_config.enable_ssl(leaf_domain_label = "contoso")
+   
+   # Enable TLS termination when you attach an AKS cluster by using attach_config object enable_ssl method
+
+   # Leaf domain label generates a name using the formula
+   # "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+   # where "######" is a random series of characters
+   attach_config.enable_ssl(leaf_domain_label = "contoso")
+
+
+```
+以下示例演示如何使用自定义证书和自定义域名启用 TLS 终止。 对于自定义域和证书，你必须更新你的 DNS 记录，使其指向计分终结点的 IP 地址，请参阅 [更新你的 dns](how-to-secure-web-service.md#update-your-dns)
+
+```python
+   from azureml.core.compute import AksCompute, ComputeTarget
+
+   # Enable TLS termination with custom certificate and custom domain when creating an AKS cluster
+   
+   provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+    
+   # Enable TLS termination with custom certificate and custom domain when attaching an AKS cluster
+
+   attach_config.enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+
+
+```
+>[!NOTE]
+> 有关如何在 AKS 群集上保护模型部署的详细信息，请参阅 [使用 TLS 通过 Azure 机器学习保护 web 服务](how-to-secure-web-service.md)
+
+## <a name="create-or-attach-an-aks-cluster-to-use-internal-load-balancer-with-private-ip"></a>创建或附加 AKS 群集以使用带有专用 IP 的内部负载均衡器
+创建或附加 AKS 群集时，可以将群集配置为使用内部负载均衡器。 使用内部负载均衡器时，将部署到 AKS 的评分终结点将在虚拟网络中使用专用 IP。 以下代码片段演示了如何为 AKS 群集配置内部负载均衡器。
+```python
+   
+   from azureml.core.compute.aks import AksUpdateConfiguration
+   from azureml.core.compute import AksCompute, ComputeTarget
+   
+   # When you create an AKS cluster, you can specify Internal Load Balancer to be created with provisioning_config object
+   provisioning_config = AksCompute.provisioning_configuration(load_balancer_type = 'InternalLoadBalancer')
+
+   # when you attach an AKS cluster, you can update the cluster to use internal load balancer after attach
+   aks_target = AksCompute(ws,"myaks")
+
+   # Change to the name of the subnet that contains AKS
+   subnet_name = "default"
+   # Update AKS configuration to use an internal load balancer
+   update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
+   aks_target.update(update_config)
+   # Wait for the operation to complete
+   aks_target.wait_for_completion(show_output = True)
+   
+   
+```
+>[!IMPORTANT]
+> Azure 机器学习不支持对内部负载均衡器进行 TLS 终止。 内部负载均衡器有一个专用 IP，并且该专用 IP 可以在另一个网络上，并且可以 recused 证书。 
+
+>[!NOTE]
+> 有关如何保护推断环境的详细信息，请参阅 [secure a Azure 机器学习推断环境](how-to-secure-inferencing-vnet.md)
+
 ## <a name="detach-an-aks-cluster"></a>拆离 AKS 群集
 
 若要从工作区拆离群集，请使用以下方法之一：
@@ -305,6 +377,52 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在 Azure 机器学习工作室中，选择“计算”、“推理群集”以及要删除的群集。 使用“拆离”链接拆离群集。
+
+---
+
+## <a name="troubleshooting"></a>疑难解答
+
+### <a name="update-the-cluster"></a>更新群集
+
+必须手动应用对 Azure Kubernetes 服务群集中安装的 Azure 机器学习组件的更新。 
+
+可以通过从 Azure 机器学习工作区分离群集，然后将群集重新附加到工作区，来应用这些更新。 如果在群集中启用了 TLS，则重新附加群集时需要提供 TLS/SSL 证书和私钥。 
+
+```python
+compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
+compute_target.detach()
+compute_target.wait_for_completion(show_output=True)
+
+attach_config = AksCompute.attach_configuration(resource_group=resourceGroup, cluster_name=kubernetesClusterName)
+
+## If SSL is enabled.
+attach_config.enable_ssl(
+    ssl_cert_pem_file="cert.pem",
+    ssl_key_pem_file="key.pem",
+    ssl_cname=sslCname)
+
+attach_config.validate_configuration()
+
+compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceName, attach_configuration=attach_config)
+compute_target.wait_for_completion(show_output=True)
+```
+
+如果不再具有 TLS/SSL 证书和私钥，或者使用 Azure 机器学习生成的证书，则可以在分离群集之前，使用 `kubectl` 连接到群集并检索机密 `azuremlfessl` 来检索文件。
+
+```bash
+kubectl get secret/azuremlfessl -o yaml
+```
+
+>[!Note]
+>Kubernetes 存储的机密采用 base-64 编码格式。 在将机密提供给 `attach_config.enable_ssl` 之前，需要对机密的 `cert.pem` 和 `key.pem` 组成部分进行 base-64 解码。 
+
+### <a name="webservice-failures"></a>Webservice 故障
+
+使用连接到群集时，AKS 中的许多 webservice 故障都可以进行调试 `kubectl` 。 可以 `kubeconfig.json` 通过运行来获取 AKS 群集的
+
+```azurecli-interactive
+az aks get-credentials -g <rg> -n <aks cluster name>
+```
 
 ## <a name="next-steps"></a>后续步骤
 
