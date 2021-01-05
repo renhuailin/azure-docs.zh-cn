@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: fafa4c1e8c12ce26a90cfdf9df940823abf5ff25
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 54da62ce961156b64c917b448557c17e7516e222
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857437"
+ms.locfileid: "97862135"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -130,7 +130,7 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
 
-请注意，若要创建计算实例，用户需要具有以下操作的权限：
+若要创建计算实例，需要具有以下操作的权限：
 * *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *MachineLearningServices/工作区/checkComputeNameAvailability/action*
 

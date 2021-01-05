@@ -1,14 +1,14 @@
 ---
 title: 了解如何审核虚拟机的内容
-description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机内部的设置。
+description: 了解 Azure 策略如何使用来宾配置客户端审核虚拟机内的设置。
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7d7aa14038c834747240d17441c61d000ac6bb74
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 58fe1c630de4abfb2fe04ddedb45b360cfebd423
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347874"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862324"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -47,7 +47,7 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 
 下表列出了每个受支持的操作系统上使用的本地工具。 对于内置内容，来宾配置会自动处理这些工具的加载。
 
-|操作系统|验证工具|注释|
+|操作系统|验证工具|说明|
 |-|-|-|
 |Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| 侧加载到仅由 Azure Policy 使用的文件夹。 不会与 Windows PowerShell DSC 冲突。 PowerShell Core 不会添加到系统路径。|
 |Linux|[Chef InSpec](https://www.chef.io/inspec/)| 在默认位置安装 Chef InSpec 版本 2.2.61，并将其添加到系统路径。 还会安装 InSpec 包的依赖项，包括 Ruby 和 Python。 |
@@ -58,7 +58,7 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 
 ## <a name="supported-client-types"></a>支持的客户端类型
 
-来宾配置策略定义包含新版本。 如果来宾配置代理不兼容，则会排除 Azure 市场中提供的旧版操作系统。 下表显示了 Azure 映像上支持的操作系统列表：
+来宾配置策略定义包含新版本。 如果来宾配置客户端不兼容，则会排除 Azure Marketplace 中提供的较旧版本的操作系统。 下表显示了 Azure 映像上支持的操作系统列表：
 
 |发布者|名称|版本|
 |-|-|-|

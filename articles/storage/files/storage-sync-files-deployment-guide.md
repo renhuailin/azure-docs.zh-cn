@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d39f26d86792214c1ef0300bc39404bf6581826f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 2af8db1a6e8c774f1004b380c8aaaa06ba61d8c3
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629472"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862334"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -41,7 +41,7 @@ ms.locfileid: "94629472"
     $PSVersionTable.PSVersion
     ```
 
-    如果 **PSVersion** 值小于5.1， \* 则与大多数全新安装的 Windows Server 2012 R2 一样，你可以通过下载并安装 [WINDOWS Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616)来轻松升级。 为 Windows Server 2012 R2 下载和安装的合适包是 **win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64** 。 
+    如果 **PSVersion** 值小于5.1， \* 则与大多数全新安装的 Windows Server 2012 R2 一样，你可以通过下载并安装 [WINDOWS Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616)来轻松升级。 为 Windows Server 2012 R2 下载和安装的合适包是 **win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64**。 
 
     PowerShell 6 + 可用于任何受支持的系统，并且可以通过其 [GitHub 页面](https://github.com/PowerShell/PowerShell#get-powershell)下载。 
 
@@ -114,7 +114,7 @@ ms.locfileid: "94629472"
     ![服务器管理器 UI 左侧的“本地服务器”](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. 在“属性”子窗格上，选择“IE 增强的安全性配置”的链接。  
     ![服务器管理器 UI 中的“IE 增强的安全性配置”窗格](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-2.PNG)
-4. 在 " **Internet Explorer 增强的安全配置** " 对话框中，为 " **管理员** " 和 " **用户** " 选择 " **关闭** "：  
+4. 在 " **Internet Explorer 增强的安全配置**" 对话框中，为 "**管理员**" 和 "**用户**" 选择 "**关闭**"：  
     ![选定“关”的“Internet Explorer 增强的安全性配置”弹出窗口](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -153,14 +153,14 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 > 存储同步服务将从它已部署到的订阅和资源组继承访问权限。 我们建议仔细检查谁有权访问该服务。 具有写访问权限的实体可以开始从已注册到此存储同步服务的服务器同步新的文件集，使数据流向这些实体可以访问的 Azure 存储。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-若要部署存储同步服务，请单击 " [Azure 门户](https://portal.azure.com/)"，再单击 " *创建资源* "，然后搜索 Azure 文件同步。在搜索结果中，选择 " **Azure 文件同步** "，然后选择 " **创建** " 以打开 " **部署存储同步** " 选项卡。
+若要部署存储同步服务，请单击 " [Azure 门户](https://portal.azure.com/)"，再单击 " *创建资源* "，然后搜索 Azure 文件同步。在搜索结果中，选择 " **Azure 文件同步**"，然后选择 " **创建** " 以打开 " **部署存储同步** " 选项卡。
 
 在打开的窗格中，输入以下信息：
 
-- **名称** ：存储同步服务每个区域)  (唯一名称。
+- **名称**：存储同步服务每个区域)  (唯一名称。
 - 订阅：需要在其中创建存储同步服务的订阅。 根据组织的配置策略，可能有权访问一个或多个订阅。 Azure 订阅是对每项云服务（如 Azure 文件）计费的最基本容器。
-- **资源组** ：资源组是 Azure 资源（如存储帐户或存储同步服务）的逻辑组。 你可以创建新的资源组或使用现有资源组进行 Azure 文件同步。 (建议使用资源组作为容器以逻辑方式将资源隔离到你的组织，例如对 HR 资源或特定项目的资源进行分组。 ) 
-- **位置** ：要在其中部署 Azure 文件同步的区域。此列表中仅提供受支持的区域。
+- **资源组**：资源组是 Azure 资源（如存储帐户或存储同步服务）的逻辑组。 你可以创建新的资源组或使用现有资源组进行 Azure 文件同步。 (建议使用资源组作为容器以逻辑方式将资源隔离到你的组织，例如对 HR 资源或特定项目的资源进行分组。 ) 
+- **位置**：要在其中部署 Azure 文件同步的区域。此列表中仅提供受支持的区域。
 
 完成后，选择“创建”部署存储同步服务。
 
@@ -322,16 +322,16 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 创建云终结点的管理员必须是包含云终结点指向的 Azure 文件共享的存储帐户的管理角色 **所有者** 的成员。 这可以在 " **访问控制" (IAM)** 在存储帐户的 Azure 门户中进行配置。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-若要创建同步组，请在 [Azure 门户](https://portal.azure.com/)中，请前往你的存储同步服务，然后选择 " **+ 同步组** "：
+若要创建同步组，请在 [Azure 门户](https://portal.azure.com/)中，请前往你的存储同步服务，然后选择 " **+ 同步组**"：
 
 ![在 Azure 门户中创建新的同步组](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
 
 在打开的窗格中输入以下信息，创建具有云终结点的同步组：
 
-- **同步组名称** ：要创建的同步组的名称。 此名称在存储同步服务内必须是唯一的，但可以是符合逻辑的任何名称。
+- **同步组名称**：要创建的同步组的名称。 此名称在存储同步服务内必须是唯一的，但可以是符合逻辑的任何名称。
 - 订阅：在[部署存储同步服务](#deploy-the-storage-sync-service)中用于部署存储同步服务的订阅。
 - 存储帐户：如果选择“选择存储账户”，另一个窗格随即出现，可在其中选择包含要同步的 Azure 文件共享的存储帐户。
-- **Azure 文件共享** ：要与其同步的 Azure 文件共享的名称。
+- **Azure 文件共享**：要与其同步的 Azure 文件共享的名称。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 若要创建同步组，请执行以下 PowerShell。 请记得将 `<my-sync-group>` 替换为同步组的所需名称。
@@ -408,19 +408,19 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 > 不支持在卷上创建服务器终结点后更改路径或驱动器号。 请确保在已注册的服务器上使用最终路径。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-若要添加服务器终结点，请前往新创建的同步组，然后选择 " **添加服务器终结点** "。
+若要添加服务器终结点，请前往新创建的同步组，然后选择 " **添加服务器终结点**"。
 
 ![在“同步组”窗格中添加一个新的服务器终结点](media/storage-sync-files-deployment-guide/create-sync-group-2.png)
 
 在 " **添加服务器终结点** " 窗格中，输入以下信息以创建服务器终结点：
 
-- **已注册服务器** ：要在其中创建服务器终结点的服务器或群集的名称。
-- **路径** ：要作为同步组的一部分进行同步的 Windows Server 路径。
+- **已注册服务器**：要在其中创建服务器终结点的服务器或群集的名称。
+- **路径**：要作为同步组的一部分进行同步的 Windows Server 路径。
 - 云分层：启用或禁用云分层的开关。 通过云分层可以将不常使用或访问的文件分层到 Azure 文件。
 - **卷可用** 空间：要在服务器终结点所在的卷上保留的可用空间量。 例如，如果有一个服务器终结点的卷上的卷可用空间设置为 50%，则约有一半数据会分层为 Azure 文件。 不管是否启用云分层，Azure 文件共享在同步组中始终具有完整的数据副本。
-- **初始下载模式** ：这是可选选择，从代理版本11开始，在 Azure 文件共享中存在文件但服务器上没有文件时，这会很有用。 例如，如果您创建一个服务器终结点来向同步组添加另一个分支机构服务器，或者在灾难恢复失败的服务器时，则可能存在这种情况。 如果启用了云分层，则默认情况下将仅重新调用命名空间，最初不会有任何文件内容。 如果你认为用户访问请求应决定将哪些文件内容撤回到服务器，这会很有用。 如果已禁用云分层，则默认情况下将先下载命名空间，然后将根据上次修改的时间戳撤回文件，直到达到本地容量。 但是，可以将初始下载模式改为仅命名空间。 如果为此服务器终结点禁用了云分层，则只能使用第三种模式。 此模式避免首先撤回命名空间。 如果文件有机会完全下载，则文件将仅出现在本地服务器上。 此模式在以下情况下非常有用：应用程序要求存在完整文件，并且无法容忍其命名空间中的分层文件。
+- **初始下载模式**：这是可选选择，从代理版本11开始，在 Azure 文件共享中存在文件但服务器上没有文件时，这会很有用。 例如，如果您创建一个服务器终结点来向同步组添加另一个分支机构服务器，或者在灾难恢复失败的服务器时，则可能存在这种情况。 如果启用了云分层，则默认情况下将仅重新调用命名空间，最初不会有任何文件内容。 如果你认为用户访问请求应决定将哪些文件内容撤回到服务器，这会很有用。 如果已禁用云分层，则默认情况下将先下载命名空间，然后将根据上次修改的时间戳撤回文件，直到达到本地容量。 但是，可以将初始下载模式改为仅命名空间。 如果为此服务器终结点禁用了云分层，则只能使用第三种模式。 此模式避免首先撤回命名空间。 如果文件有机会完全下载，则文件将仅出现在本地服务器上。 此模式在以下情况下非常有用：应用程序要求存在完整文件，并且无法容忍其命名空间中的分层文件。
 
-若要添加服务器终结点，请选择 " **创建** "。 现在，文件在 Azure 文件共享和 Windows Server 之间保持保存。 
+若要添加服务器终结点，请选择 " **创建**"。 现在，文件在 Azure 文件共享和 Windows Server 之间保持保存。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 执行以下 PowerShell 命令来创建服务器终结点，并确保将和替换为 `<your-server-endpoint-path>` `<your-volume-free-space>` 所需的值，并检查可选的可选设置以获取可选的初始下载策略。
@@ -498,7 +498,7 @@ az storagesync sync-group server-endpoint create --resource-group myResourceGrou
 
 1. 在 Azure 门户中，导航到要保护的存储帐户。
 1. 选择左侧菜单中的 " **防火墙和虚拟网络** " 按钮。
-1. 在 " **允许访问** " 下选择 **所选网络** 。
+1. 在 "**允许访问**" 下选择 **所选网络**。
 1. 确保你的服务器 IP 或虚拟网络列在相应的部分下。
 1. 请确保选中 " **允许受信任的 Microsoft 服务访问此存储帐户** "。
 1. 选择“保存”以保存设置。

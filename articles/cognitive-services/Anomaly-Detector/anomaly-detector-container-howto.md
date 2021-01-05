@@ -12,12 +12,12 @@ ms.date: 09/28/2020
 ms.author: mbullwin
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地、Docker、容器、流式处理、算法
-ms.openlocfilehash: 911eb993ea5bb3dcce63057efc2d56d91d5a136b
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 70e5950f6577ce2cca2f28be070f3ba372d46a7e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364371"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862315"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>为异常探测器 API 安装并运行 Docker 容器 
 
@@ -59,7 +59,7 @@ ms.locfileid: "94364371"
 
 下表描述了为异常探测器容器分配的最低和推荐的 CPU 内核和内存。
 
-| 每秒的 QPS (查询)  | 最低配置 | 建议 |
+| 每秒的 QPS (查询)  | 最小值 | 建议 |
 |-----------|---------|-------------|
 | 10 QPS | 4核，1 GB 内存 | 8核 2 GB 内存 |
 | 20 QPS | 8核，2 GB 内存 | 16核 4 GB 内存 |
@@ -174,10 +174,6 @@ ApiKey={API_KEY}
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](anomaly-detector-container-configuration.md)。
-
-<!--blogs/samples/video coures -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>摘要
 

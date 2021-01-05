@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9e1ae369560fcf8357e6016e1f7e2e438edd8c9
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: e90adcb5312df6e1dfe6d4b58407edeb924a8809
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803215"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862441"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -141,7 +141,7 @@ Azure AD 预配服务当前以循环方式进行操作。 此服务每40分钟�
 **服务类别：** 其他  
 **产品功能：** 权利管理
  
-新的委托权限 EntitlementManagement。现在，可以在 Microsoft Graph beta 版中与授权管理 API 一起使用。 若要了解有关可用 Api 的详细信息，请参阅使用 [Azure AD 的权利管理 API](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)。
+新的委托权限 EntitlementManagement。现在，可以在 Microsoft Graph beta 版中与授权管理 API 一起使用。 若要了解有关可用 Api 的详细信息，请参阅使用 [Azure AD 的权利管理 API](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta&preserve-view=true)。
 
 ---
 
@@ -339,7 +339,7 @@ IT 管理员可以开始使用新的 "混合管理员" 角色作为设置 Azure 
 **服务类别：** 条件访问  
 **产品功能：** 标识安全和保护
 
-[Azure AD 条件性访问的报表模式](../conditional-access/concept-conditional-access-report-only.md) 允许您在不强制实施访问控制的情况下评估策略的结果。 你可以在组织范围内测试仅限报告的策略并了解其影响，使部署更安全且更容易。 在过去的几个月里，我们已了解到仅限报表模式-通过26M 用户已在仅限报告的策略范围内使用。 现在，通过公告，默认情况下，将在仅报告模式下创建新的 Azure AD 条件访问策略。 这意味着你可以监视策略在创建后的影响。 对于使用 MS Graph Api 的用户来说，你也可以 [通过编程方式管理仅报告策略](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta) 。 
+[Azure AD 条件性访问的报表模式](../conditional-access/concept-conditional-access-report-only.md) 允许您在不强制实施访问控制的情况下评估策略的结果。 你可以在组织范围内测试仅限报告的策略并了解其影响，使部署更安全且更容易。 在过去的几个月里，我们已了解到仅限报表模式-通过26M 用户已在仅限报告的策略范围内使用。 现在，通过公告，默认情况下，将在仅报告模式下创建新的 Azure AD 条件访问策略。 这意味着你可以监视策略在创建后的影响。 对于使用 MS Graph Api 的用户来说，你也可以 [通过编程方式管理仅报告策略](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta&preserve-view=true) 。 
 
 ---
 
@@ -406,7 +406,7 @@ IT 管理员可以开始使用新的 "混合管理员" 角色作为设置 Azure 
 * [Juno Journey](../saas-apps/juno-journey-provisioning-tutorial.md)
 * [MediusFlow](../saas-apps/mediusflow-provisioning-tutorial.md)
 * [New Relic（按组织）](../saas-apps/new-relic-by-organization-provisioning-tutorial.md)
-* [Oracle Cloud Infrastructure Console](../saas-apps/oracle-cloud-infratstructure-console-provisioning-tutorial.md)
+* [Oracle Cloud Infrastructure Console](../saas-apps/oracle-cloud-infrastructure-console-provisioning-tutorial.md)
 
 有关如何使用自动化用户帐户预配更好地保护组织的详细信息，请参阅[使用 Azure AD 自动将用户预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
@@ -546,7 +546,7 @@ Office 正在启动一系列适用于非传统组织的移动优先业务应用�
 
 **产品功能：** 标识安全和保护
 
-[Azure AD 条件性访问的报表模式](../conditional-access/concept-conditional-access-report-only.md) 允许您在不强制实施访问控制的情况下评估策略的结果。 你可以在组织范围内测试仅限报告的策略并了解其影响，使部署更安全且更容易。 在过去的几个月里，我们已了解到仅限报表模式，26M 用户已在仅限报告的策略范围内。 此次公告中，默认情况下，将在 "仅报告" 模式下创建新的 Azure AD 条件访问策略。 这意味着你可以监视策略在创建后的影响。 对于使用 MS Graph Api 的用户，你还可以 [通过编程方式管理仅报告策略](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta)。 
+[Azure AD 条件性访问的报表模式](../conditional-access/concept-conditional-access-report-only.md) 允许您在不强制实施访问控制的情况下评估策略的结果。 你可以在组织范围内测试仅限报告的策略并了解其影响，使部署更安全且更容易。 在过去的几个月里，我们已了解到仅限报表模式，26M 用户已在仅限报告的策略范围内。 此次公告中，默认情况下，将在 "仅报告" 模式下创建新的 Azure AD 条件访问策略。 这意味着你可以监视策略在创建后的影响。 对于使用 MS Graph Api 的用户，你还可以 [通过编程方式管理仅报告策略](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta&preserve-view=true)。 
 
 ---
 
@@ -598,7 +598,7 @@ Office 正在启动一系列适用于非传统组织的移动优先业务应用�
 
 **产品功能：** 开发人员体验
 
-OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以跟踪更改，而不必持续轮询 Microsoft Graph。 [了解详细信息。](/graph/api/oAuth2PermissionGrant-delta?tabs=http&view=graph-rest-beta)
+OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以跟踪更改，而不必持续轮询 Microsoft Graph。 [了解详细信息。](/graph/api/oAuth2PermissionGrant-delta?tabs=http&view=graph-rest-beta&preserve-view=true)
 
 ---
 
@@ -632,7 +632,7 @@ OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以
 
 **服务类别：** MS Graph
 
-**产品功能：** 管理单元的开发人员体验增量查询可用于公共预览版！ 你现在可以跟踪更改，而不必持续轮询 Microsoft Graph。 [了解详细信息。](/graph/api/administrativeunit-delta?tabs=http&view=graph-rest-beta)
+**产品功能：** 管理单元的开发人员体验增量查询可用于公共预览版！ 你现在可以跟踪更改，而不必持续轮询 Microsoft Graph。 [了解详细信息。](/graph/api/administrativeunit-delta?tabs=http&view=graph-rest-beta&preserve-view=true)
 
 ---
 
@@ -650,7 +650,7 @@ OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以
 - 重置用户的密码
 - 打开和关闭 SMS-登录
 
-有关详细信息，请参阅 [Azure AD authentication 方法 API 概述](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)。
+有关详细信息，请参阅 [Azure AD authentication 方法 API 概述](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true)。
 
 ---
 
@@ -1424,7 +1424,7 @@ Azure AD 授权管理是一项新的标识调控功能，可帮助组织大规�
 
 **类型：** 更改计划 **服务类别：** 标识保护 **产品功能：** 标识安全性和保护
 
-为了响应开发人员的反馈，Azure AD Premium P2 订阅者现在可以使用用于 Microsoft Graph 的新 riskDetection API 来对 Azure AD 标识保护的风险检测数据执行复杂的查询。 现有的 [identityRiskEvent](/graph/api/resources/identityriskevent?view=graph-rest-beta) API beta 版本将于 2020 年 1 月 10 日左右停止返回数据。 如果你的组织使用的是 identityRiskEvent API，你应将其转换到新的 riskDetection API。
+为了响应开发人员的反馈，Azure AD Premium P2 订阅者现在可以使用用于 Microsoft Graph 的新 riskDetection API 来对 Azure AD 标识保护的风险检测数据执行复杂的查询。 现有的 [identityRiskEvent](/graph/api/resources/identityriskevent?view=graph-rest-beta&preserve-view=true) API beta 版本将于 2020 年 1 月 10 日左右停止返回数据。 如果你的组织使用的是 identityRiskEvent API，你应将其转换到新的 riskDetection API。
 
 有关新 riskDetection API 的详细信息，请参阅[风险检测 API 参考文档](/graph/api/resources/riskdetection)。
 
@@ -2144,7 +2144,7 @@ Azure AD 客户现在可以设置策略来管理其组织的用户和组的 FIDO
 
 我们很高兴地宣布，用于 Microsoft Graph 的新 riskDetections API 现提供公共预览版。 可以使用此新 API 查看与组织的标识保护相关的用户和登录风险检测的列表。 还可以使用此 API 更有效地查询风险检测，包括有关检测类型、状态、级别等的详细信息。
 
-有关详细信息，请参阅[风险检测 API 参考文档](/graph/api/resources/riskdetection?view=graph-rest-beta)。
+有关详细信息，请参阅[风险检测 API 参考文档](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)。
 
 ---
 
@@ -2292,7 +2292,7 @@ Azure AD 客户现在可以设置策略来管理其组织的用户和组的 FIDO
 
 我们很高兴地宣布，你现在可以使用“风险用户 API”来检索用户的风险历史记录、解除风险用户，并确认用户是否遭到攻击。 此更改可帮助你更高效地更新用户的风险状态以及了解他们的风险历史记录。
 
-有关详细信息，请参阅[风险用户 API 参考文档](/graph/api/resources/riskyuser?view=graph-rest-beta)。
+有关详细信息，请参阅[风险用户 API 参考文档](/graph/api/resources/riskyuser?view=graph-rest-beta&preserve-view=true)。
 
 ---
 

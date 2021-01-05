@@ -4,13 +4,13 @@ description: 使用基于机器学习的动态阈值创建警报
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 02/16/2020
-ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/04/2021
+ms.openlocfilehash: 92fafc9357ca08cd31c9ba7badbf7f6433f44f86
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012333"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862578"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Monitor 中具有动态阈值的指标警报
 
@@ -39,7 +39,7 @@ ms.locfileid: "96012333"
 如果与选择的阈值之间有偏差，则表示指标行为存在异常。
 
 > [!NOTE]
-> 季节性模式检测设置为一小时、一天或一周的间隔。 这意味着其他模式（如两小时模式或半周模式）可能不会检测到。
+> 动态阈值可检测每小时、每天或每周模式的季节性。 可能无法检测到其他模式，如 "每小时" 或 "半周季节性"。 若要检测每周的季节性，需要至少三周的历史数据。 
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>动态阈值中的“敏感度”设置是指什么？
 
