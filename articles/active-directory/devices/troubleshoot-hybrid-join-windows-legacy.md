@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a4e8ec75d6610e19f241d2047518c3a43132a6e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 057ff064264485a9aea6fc2b31fe57ce37c805ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079013"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895608"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>排查已加入混合 Azure Active Directory 的下层设备问题 
 
@@ -44,6 +44,7 @@ ms.locfileid: "93079013"
 - 由于操作系统的重新安装或手动重新注册，在用户信息选项卡上也可能会出现同一设备的多个条目。
 - 设备的初始注册/加入配置为在登录或锁定/解锁时执行尝试。 可能会有 5 分钟的延迟，由任务计划程序任务触发。 
 - 对于 Windows 7 SP1 或 Windows Server 2008 R2 SP1，请确保安装 [KB4284842](https://support.microsoft.com/help/4284842)。 此更新可防止将来因客户更改密码后无法访问受保护密钥而导致身份验证失败。
+- 更改用户的 UPN 后，混合 Azure AD 联接可能会失败，从而破坏无缝 SSO 身份验证过程。 在联接过程中，你可能会发现它仍将旧的 UPN 发送到 Azure AD，除非清除了浏览器会话 cookie 或用户显式注销并删除了旧的 UPN。
 
 ## <a name="step-1-retrieve-the-registration-status"></a>步骤 1：检索注册状态 
 
@@ -97,7 +98,7 @@ ms.locfileid: "93079013"
 - 计算机既没有连接到组织的内部网络，也没有连接到与本地 AD 域控制器建立连接的 VPN。
 - 使用本地计算机帐户登录到了计算机。 
 - 服务配置问题： 
-   - AD FS 服务器未配置为支持 **WIAORMULTIAUTHN** 。 
+   - AD FS 服务器未配置为支持 **WIAORMULTIAUTHN**。 
    - 在 Azure AD 中，计算机的林内没有指向已验证域名的“服务连接点”对象 
    - 或者，如果你的域是托管的，则无缝 SSO 未配置或未在工作。
    - 用户已达到设备限制。 

@@ -1,19 +1,19 @@
 ---
 title: FAQ-Azure VMware 解决方案（按 CloudSimple）
 description: 这些常见问题适用于 Azure VMware 解决方案，CloudSimple 包括连接性、网络、安全性、存储、Azure 集成等。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0db8c13a7467ed864c0845319b37f958f60fa4d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3551327f9aa07fe218d3b05f73057e36f92abcad
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140881"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895557"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>CloudSimple 有关 VMware 解决方案的常见问题
 
@@ -50,7 +50,7 @@ CloudSimple 在计划的维护间隔之前的几天提供通知。  维护是以
 * **CloudSimple 基础结构**。  CloudSimple 基础结构设计为具有高可用性。  在此类型的维护间隔期间，每次更新一个冗余组件以避免任何服务中断。 你可以保持对私有云 vCenter、所有虚拟机、从私有云的 internet 连接以及连接到本地或 Azure 的访问权限。
 * **CloudSimple 门户**。 在此类型的维护间隔期间，CloudSimple 门户中的某些功能可能已禁用或不可访问。  维护间隔之前的通知包括进行维护时的功能限制的详细信息。
 
-## <a name="connectivity"></a>连接性
+## <a name="connectivity"></a>连接
 
 **CloudSimple 区域网络的连接选项有哪些？**
 
@@ -90,7 +90,7 @@ Azure ExpressRoute 线路是一种高速、低延迟、安全的连接。  Cloud
 
 在 CloudSimple 门户中，可以分配新的公共 IP 地址，并将其与虚拟机或设备的专用 IP 地址相关联。  你还可以创建新的防火墙规则或应用现有防火墙规则，以允许来自门户中特定端口和 IP 地址的流量。 有关详细信息，请参阅为 [私有云环境分配公共 IP 地址](public-ips.md)。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 **我在 CloudSimple 上有哪些安全选项？**
 
@@ -153,9 +153,9 @@ CloudSimple 不会对安装在私有云上的应用程序进行升级或更新�
 CloudSimple 提供与 Azure 上的订阅的 Azure ExpressRoute 连接。  订阅中运行的所有服务都可以连接到私有云。  示例包括：
 
 * **Azure Active Directory** 作为 CloudSimple vCenter 的标识源。
-* 用于存储私有云中的备份、映像和其他数据的**Azure 存储**。
-* 具有跨公有云和私有云的应用程序体系结构的**混合应用程序**。  例如，可以在 Azure 中创建 webservers，用于访问私有云上的应用程序和数据库服务器。
-* 适用于 VMware 上运行的工作负荷的**azure monitor**和**azure 安全中心**支持日志记录、性能指标和安全管理。
+* 用于存储私有云中的备份、映像和其他数据的 **Azure 存储**。
+* 具有跨公有云和私有云的应用程序体系结构的 **混合应用程序**。  例如，可以在 Azure 中创建 webservers，用于访问私有云上的应用程序和数据库服务器。
+* 适用于 VMware 上运行的工作负荷的 **azure monitor** 和 **azure 安全中心** 支持日志记录、性能指标和安全管理。
 
 **如何实现将 VMware 租户映射到 Azure？**
 

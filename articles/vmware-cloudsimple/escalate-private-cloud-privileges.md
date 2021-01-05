@@ -2,19 +2,19 @@
 title: 提升私有云权限
 titleSuffix: Azure VMware Solution by CloudSimple
 description: 描述如何在 vCenter 中升级私有云上的管理功能的权限
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/05/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 628824a3d303184e199452b0974c7f99d99a4933
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2215bd9a60fdcf76077c3a1f2a91631dc0dbe88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86998946"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895816"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>从 CloudSimple 门户升级私有云 vCenter 权限
 
@@ -47,9 +47,9 @@ ms.locfileid: "86998946"
 
     ![提升权限对话框](media/escalate-private-cloud-privilege-dialog.png)
 
-7. 单击 **“确定”** 。
+7. 单击“确定”。
 
-8. 升级过程可能需要几分钟的时间。 完成后，请单击“确定”****。
+8. 升级过程可能需要几分钟的时间。 完成后，请单击“确定”。
 
 权限提升开始，并一直持续到所选间隔结束。  你可以登录到私有云 vCenter 来执行管理任务。
 
@@ -57,13 +57,13 @@ ms.locfileid: "86998946"
 > 只有一个用户可以具有提升的权限。  必须先取消升级用户的权限，然后才能升级其他用户的权限。
 
 > [!CAUTION]
-> 新用户必须仅添加到 *云所有者组*、 *云全局-群集管理组*、云全局 *存储管理*组、云全局 *网络管理* 组或 *云-全局-VM 管理*组的用户组。  添加到 *管理员* 组的用户将被自动删除。  只有服务帐户必须添加到 *Administrators* 组，并且服务帐户不得用于登录 VSPHERE web UI。
+> 新用户必须仅添加到 *云所有者组*、 *云全局-群集管理组*、云全局 *存储管理* 组、云全局 *网络管理* 组或 *云-全局-VM 管理* 组的用户组。  添加到 *管理员* 组的用户将被自动删除。  只有服务帐户必须添加到 *Administrators* 组，并且服务帐户不得用于登录 VSPHERE web UI。
 
 ## <a name="extend-privilege-escalation"></a>扩展权限提升
 
 如果需要额外的时间来完成任务，则可以扩展权限提升期限。  选择允许你完成管理任务的其他升级时间间隔。
 
-1. 在 CloudSimple 门户中的 "**资源**"  >  **私有云**上，选择要为其扩展权限升级的私有云。
+1. 在 CloudSimple 门户中的 "**资源**"  >  **私有云** 上，选择要为其扩展权限升级的私有云。
 
 2. 在 "摘要" 选项卡的底部附近，单击 " **扩展权限提升**"。
 
@@ -77,11 +77,11 @@ ms.locfileid: "86998946"
 
 完成管理任务后，应取消对权限的升级。  
 
-1. 在 CloudSimple 门户中的 "**资源**"  >  **私有云**上，选择要为其解除升级权限的私有云。
+1. 在 CloudSimple 门户中的 "**资源**"  >  **私有云** 上，选择要为其解除升级权限的私有云。
 
 2. 单击 " **取消升级**"。
 
-3. 单击 **“确定”** 。
+3. 单击“确定”。
 
 > [!IMPORTANT]
 > 若要避免任何错误，请注销 vCenter，并在解除升级的权限后再次登录。

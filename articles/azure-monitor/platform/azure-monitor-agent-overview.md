@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 57b350c7772d42e5dbd89c1d03c89f905a26398b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315577"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895523"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a> (预览版 Azure Monitor 代理概述) 
 Azure Monitor 代理 (AMA) 从虚拟机的来宾操作系统收集监视数据，并将其传送到 Azure Monitor。 本文概述了 Azure Monitor 代理，包括如何安装它以及如何配置数据收集。
@@ -54,7 +54,7 @@ Azure Monitor 代理使用 Azure Monitor 的 [通用代理进行](agents-overvie
 
 - Azure Monitor 代理不支持用于 VM 的 Azure Monitor 和 Azure 安全中心等解决方案和见解。 当前支持的唯一方案是使用你配置的数据收集规则收集数据。 
 - 数据收集规则必须与用作目标的任何 Log Analytics 工作区在同一区域中创建。
-- 目前支持 azure 虚拟机和启用了 Azure Arc 的服务器。当前不支持虚拟机规模集、Azure Kubernetes 服务和其他计算资源类型。
+- 目前支持 azure 虚拟机、虚拟机规模集和启用了 Azure Arc 的服务器。 当前不支持 Azure Kubernetes 服务和其他计算资源类型。
 - 虚拟机必须具有以下 HTTPS 终结点的访问权限：
   - *.ods.opinsights.azure.com
   - *. ingest.monitor.azure.com

@@ -1,19 +1,19 @@
 ---
 title: 帐户管理-Azure VMware 解决方案（按 CloudSimple）门户
 description: 介绍如何通过 CloudSimple 门户管理 Azure VMware 解决方案上的帐户
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c26d5accce77ce6fd8c9b6c2b519b93f95013ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025361"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895166"
 ---
 # <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>通过 CloudSimple 门户管理 Azure VMware 解决方案上的帐户
 
@@ -35,6 +35,6 @@ ms.locfileid: "77025361"
 
 ## <a name="cloudsimple-operator-access"></a>CloudSimple 运算符访问
 
-操作员访问设置允许支持工程师登录到 CloudSimple 门户，从而帮助你进行故障排除。  默认情况下，此设置处于启用状态。 支持工程师在登录到你的客户帐户后执行的所有操作都将记录下来，可供你在**活动**  >  **审核**页上查看。
+操作员访问设置允许支持工程师登录到 CloudSimple 门户，从而帮助你进行故障排除。  默认情况下，此设置处于启用状态。 支持工程师在登录到你的客户帐户后执行的所有操作都将记录下来，可供你在 **活动**  >  **审核** 页上查看。
 
 单击 " **CloudSimple 操作员访问已启用** " 切换，打开或关闭访问权限。

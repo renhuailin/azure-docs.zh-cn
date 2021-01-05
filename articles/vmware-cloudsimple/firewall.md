@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解决方案（按 CloudSimple）-设置防火墙表和规则
 description: 描述如何设置私有云防火墙表和规则，以限制子网和 Vlan 上的流量。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32dcfb0c6cd26b5f34afad328db8f383fa1c2a6f
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85846879"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895625"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>为私有云设置防火墙表和规则
 
@@ -49,7 +49,7 @@ ms.locfileid: "85846879"
     * 创建防火墙表时，单击 " **添加规则** "。
     * 在 " **网络 > 防火墙表** " 页上选择特定的防火墙表，然后单击 "新建 **防火墙规则**"。
 2. 按如下所示设置规则：
-    * **Name**。 为规则指定名称。
+    * **名称**。 为规则指定名称。
     * **优先级**。 为规则分配优先级。 首先执行具有较小数字的规则。
     * **流量类型**。 选择规则是用于私有云、Internet 还是 VPN 流量 (无状态) 或公共 IP 地址 (有状态) 。
     * **协议**。 选择规则所涵盖的协议 (TCP、UDP 或任意协议) 。
@@ -76,4 +76,4 @@ ms.locfileid: "85846879"
 2. 打开 " **附加的 vlan/子网** " 选项卡。
 3. 单击 " **附加到 VLAN/子网**"。
 4. 选择私有云和 VLAN。 显示关联的子网名称和 CIDR 块。
-5. 单击“提交” 。
+5. 单击“提交”  。

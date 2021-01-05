@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 97b52159684eca9be59ccc711f6d2f19b5eb8d49
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: b61ce696c28a2c72a2cd3d0eb2d2fde0022dbb01
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906108"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897733"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用网络文件系统 (NFS) 3.0 协议 (预览中装载 Blob 存储) 
 
@@ -83,8 +83,8 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
 |设置 | 高级性能层 | 标准性能  
 |----|---|---|
 |位置|所有可用区域 |以下区域之一：澳大利亚东部、韩国中部和美国中南部   
-|性能|高级| 标准
-|帐户类型|BlockBlobStorage| 常规用途 V2
+|性能|Premium| 标准
+|帐户种类|BlockBlobStorage| 常规用途 V2
 |复制|本地冗余存储 (LRS)| 本地冗余存储 (LRS)
 |连接方法|公共终结点 (所选网络) 或专用终结点 |公共终结点 (所选网络) 或专用终结点
 |需要安全传输|已禁用|已禁用
@@ -128,13 +128,13 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
    - 将 `<container-name>` 占位符替换为你的容器的名称。
 
 
-### <a name="windows"></a>[Windows](#tab/windows)
+### <a name="windows"></a>Windows
 
 1. 打开 " **Windows 功能** " 对话框，并打开 " **NFS 客户端** " 功能。 
 
    ![网络文件系统客户端功能](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
 
-2. 使用 [mount](/windows-server/administration/windows-commands/mount) 命令装载容器。
+2.  ( # A0) 打开 **命令提示符** 窗口。 然后，使用 [mount](/windows-server/administration/windows-commands/mount) 命令装载容器。
 
    ```
    mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *

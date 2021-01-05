@@ -1,19 +1,19 @@
 ---
 title: 在 Azure 中的 VMware 上运行时确保应用程序的高可用性
 description: 介绍 CloudSimple 的高可用性功能，以解决 CloudSimple 私有云中运行的应用程序的常见应用程序故障方案
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bb1f8bb2aaeab88e5a9ea19534c8983af8c1626
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025344"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895744"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>在 Azure 中的 VMware 上运行时确保应用程序的高可用性
 
@@ -21,19 +21,19 @@ CloudSimple 解决方案为在 Azure 环境中运行的应用程序提供高可�
 
 | 故障方案 | 受保护的应用程序？ | 平台 HA 功能 | VMware HA 功能 | Azure HA 功能 |
 ------------ | ------------- | ------------ | ------------ | ------------- |
-| 磁盘故障 | YES | 快速替换失败的节点 | [关于 vSAN 默认存储策略](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
-| 风扇故障 | YES | 冗余风扇，快速更换故障节点 |  |  |
-| NIC 故障 | YES | 冗余 NIC，快速替换失败的节点
-| 主机电源故障 | YES | 冗余电源 |  |  |
-| ESXi 主机故障 | YES | 快速替换失败的节点 | [VMware vSphere 高可用性](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
-| VM 故障 | YES | [负载均衡器](load-balancers.md)  | [VMware vSphere 高可用性](https://www.vmware.com/products/vsphere/high-availability.html) | 无状态 VMware Vm 的 Azure 负载均衡器 |
-| 叶交换机端口故障 | YES | 冗余 NIC |  |  |
-| 叶交换机故障 | YES | 冗余叶交换机 |  |  |
-| 机架故障 | YES | 放置组 |  |  |
-| 到本地 DC 的网络连接 | YES  | 冗余网络服务 |  | 冗余的 ER 线路 |
-| 与 Azure 的网络连接 | YES | |  | 冗余的 ER 线路 |
-| 数据中心故障 | YES |  |  | 可用性区域 |
-| 区域故障 | YES  |  |  | Azure 区域 |
+| 磁盘故障 | 是 | 快速替换失败的节点 | [关于 vSAN 默认存储策略](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
+| 风扇故障 | 是 | 冗余风扇，快速更换故障节点 |  |  |
+| NIC 故障 | 是 | 冗余 NIC，快速替换失败的节点
+| 主机电源故障 | 是 | 冗余电源 |  |  |
+| ESXi 主机故障 | 是 | 快速替换失败的节点 | [VMware vSphere 高可用性](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
+| VM 故障 | 是 | [负载均衡器](load-balancers.md)  | [VMware vSphere 高可用性](https://www.vmware.com/products/vsphere/high-availability.html) | 无状态 VMware Vm 的 Azure 负载均衡器 |
+| 叶交换机端口故障 | 是 | 冗余 NIC |  |  |
+| 叶交换机故障 | 是 | 冗余叶交换机 |  |  |
+| 机架故障 | 是 | 放置组 |  |  |
+| 到本地 DC 的网络连接 | 是  | 冗余网络服务 |  | 冗余的 ER 线路 |
+| 与 Azure 的网络连接 | 是 | |  | 冗余的 ER 线路 |
+| 数据中心故障 | 是 |  |  | 可用性区域 |
+| 区域故障 | 是  |  |  | Azure 区域 |
 
 Azure VMware 解决方案 by CloudSimple 提供以下高可用性功能。
 

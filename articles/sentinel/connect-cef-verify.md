@@ -9,17 +9,17 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 974418a1b3c1e7fe93b2f6839c16169e5bd5abc5
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 557f53e39781406674b9903dcf0bb3cb536cd804
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696993"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897478"
 ---
 # <a name="step-3-validate-connectivity"></a>步骤3：验证连接性
 
@@ -44,7 +44,7 @@ ms.locfileid: "94696993"
 1. 在日志转发器上运行以下脚本， (应用工作区 ID 代替占位符) 检查安全解决方案、日志转发器和 Azure Sentinel 之间的连接。 此脚本将检查守护程序是否正在侦听正确的端口，是否已正确配置转发，以及守护程序与 Log Analytics 代理之间是否阻止通信。 它还会发送模拟消息 "TestCommonEventFormat" 来检查端到端连接。 <br>
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]
     ```
 
    - 你可能会收到一条消息，指导你运行命令来更正 " ***计算机*" 字段映射** 的问题。 有关详细信息，请参阅 [验证脚本中的说明](#mapping-command) 。
@@ -207,8 +207,7 @@ ms.locfileid: "94696993"
     - 配置文件： `/etc/syslog-ng/conf.d/security-config-omsagent.conf`
 
         ```bash
-        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};destination oms_destination {tcp(\"127.0.0.1\" port(25226));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 

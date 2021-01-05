@@ -1,25 +1,25 @@
 ---
 title: 通过 CloudSimple 私有云删除 Azure VMware 解决方案
 description: 了解如何删除 CloudSimple 私有云。 删除私有云时，所有群集都将被删除。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 11fda35f5b236a4930b3d90eb7e3a62ea60207cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7db967955dc86db39db4dcb2b3a2baf8906efb20
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142224"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896254"
 ---
 # <a name="delete-a-cloudsimple-private-cloud"></a>删除 CloudSimple 私有云
 
 CloudSimple 提供了删除私有云的灵活性。  私有云由一个或多个 vSphere 群集组成。 每个群集可以有3到16个节点。 删除私有云时，所有群集都将被删除。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 删除私有云会删除整个私有云。  私有云的所有组件都将被删除。  如果要保留任何数据，请确保已将数据备份到本地存储或 Azure 存储。
 

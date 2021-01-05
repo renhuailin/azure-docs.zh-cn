@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解决方案（按 CloudSimple）-配置从本地到 CloudSimple VPN 网关的高可用性
 description: 介绍如何配置从本地环境到启用了高可用性的 CloudSimple VPN 网关的高可用性连接
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80805aaa172518c40c7ad123ca24361ee0f15e69
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025259"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895693"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>配置从本地到 CloudSimple 的 VPN 网关的高可用性连接
 
@@ -21,7 +21,7 @@ ms.locfileid: "77025259"
 
 本指南介绍为 IPsec 站点到站点 VPN 高可用性连接配置本地防火墙的步骤。 详细步骤特定于本地防火墙的类型。 作为示例，本指南提供了两种类型的防火墙的步骤： Cisco ASA 和 Palo Alto 网络。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 在配置本地防火墙之前，请完成以下任务。
 
@@ -147,7 +147,7 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 ### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. 创建主要和辅助隧道接口
 
-登录到 Palo Alto 防火墙，选择 "**网络**接口" "隧道" "  >  **Interfaces**  >  **Tunnel**  >  **添加**"，配置以下字段，然后单击 **"确定"**。
+登录到 Palo Alto 防火墙，选择 "**网络** 接口" "隧道" "  >    >    >  **添加**"，配置以下字段，然后单击 **"确定"**。
 
 * 接口名称。 第一个字段为会自动填充，关键字为 "隧道"。 在相邻字段中输入介于1到9999之间的任意数字。 此接口将用作主隧道接口，用于在本地数据中心和私有云之间传输站点到站点通信。
 * 备注。 输入注释以方便识别隧道的用途
@@ -180,7 +180,7 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 定义一个加密配置文件，该配置文件指定用于在 IKEv1 阶段1中设置 VPN 隧道的标识、身份验证和加密的协议和算法。
 
-选择**网络**  >  **展开 "网络配置文件**  >  " "**IKE 加密**  >  " "**添加**"，配置以下字段，然后单击 **"确定"**。
+选择 **网络**  >  **展开 "网络配置文件**  >  " "**IKE 加密**  >  " "**添加**"，配置以下字段，然后单击 **"确定"**。
 
 * 名称： 输入任何 IKE 加密配置文件的名称。
 * DH 组。 单击 " **添加** "，然后选择相应的 DH 组。
@@ -193,7 +193,7 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 定义 IKE 网关，以在每个 VPN 隧道端之间建立对等节点之间的通信。
 
-选择 "**网络**  >  **展开网络配置文件**  >  **IKE Gateways**  >  " "**添加**"，配置以下字段，然后单击 **"确定"**。
+选择 "**网络**  >  **展开网络配置文件**  >    >  " "**添加**"，配置以下字段，然后单击 **"确定"**。
 
 常规选项卡：
 
@@ -224,7 +224,7 @@ IKEv1
 
 ### <a name="5-define-ipsec-crypto-profiles"></a>5. 定义 IPSEC 加密配置文件
 
-选择**网络**  >  **展开 "网络配置文件**  >  " "**IPSEC 加密**  >  **添加**"，配置以下字段，然后单击 **"确定"**。
+选择 **网络**  >  **展开 "网络配置文件**  >  " "**IPSEC 加密**  >  **添加**"，配置以下字段，然后单击 **"确定"**。
 
 * 名称： 输入 IPsec 加密配置文件的名称。
 * IPsec 协议。 选择 " **ESP**"。
@@ -238,7 +238,7 @@ IKEv1
 
 ### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. 为隧道监视定义监视器配置文件
 
-选择**网络**  >  **展开网络配置文件**  >  **监视器**  >  **添加**，配置以下字段，然后单击**确定**。
+选择 **网络**  >  **展开网络配置文件**  >  **监视器**  >  **添加**，配置以下字段，然后单击 **确定**。
 
 * 名称： 输入要用于隧道监视的监视配置文件的任何名称，以主动反应故障。
 * 采取. 选择 " **故障转移**"。

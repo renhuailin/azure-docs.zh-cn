@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: 9f7bf41bd864f6780eee00938f35bb34d2336eb5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7ce0807fa4cd068cfdd09ac9f78c5415da7e6437
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145746"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895336"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -29,6 +29,12 @@ ms.locfileid: "93145746"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
+
+##  <a name="december-2020"></a>2020年12月？ 
+
+### <a name="video-indexer-deployed-in-the-switzerland-west-and-switzerland-north"></a>瑞士西部和瑞士北部中部署的视频索引器
+
+你现在可以在瑞士西部和瑞士北部区域中创建视频索引器付费帐户。
 
 ## <a name="october-2020"></a>2020 年 10 月
 
@@ -138,7 +144,7 @@ ms.locfileid: "93145746"
     * 将 URL 替换为指向视频索引器小组件 Api 的 URL (例如， [insights 小组件](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)) 
     * 使用视频索引器网站生成新的嵌入 URL：
          
-         按 " **播放** " 转到视频页面-> 单击 " **&lt; / &gt; 嵌入** " 按钮-> 将 URL 复制到应用程序中：
+         按 "**播放**" 转到视频页面-> 单击 " **&lt; / &gt; 嵌入**" 按钮-> 将 URL 复制到应用程序中：
    
     区域 Url 不受支持，将在未来几周内被阻止。
 

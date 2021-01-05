@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 11/30/2020
-ms.openlocfilehash: c65833e5bf581c6326bf9362c7e5fc00a985d301
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 01/04/2021
+ms.openlocfilehash: ca27df7188c5edd1da94fc41707f6c25eb4034bf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354950"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895132"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>使用托管标识从 Azure 流分析作业 (预览访问事件中心) 
 
@@ -21,13 +21,16 @@ Azure 流分析支持 Azure 事件中心输入和输出的托管标识身份验�
 
 本文介绍如何通过 Azure 门户为事件中心输入或流分析作业的输出启用托管标识。启用托管标识之前，必须先拥有流分析作业和事件中心资源。
 
+### <a name="limitation"></a>限制
+在预览期间，在使用托管标识身份验证模式时，Azure 门户上的事件中心的采样输入将不起作用。
+
 ## <a name="create-a-managedidentity"></a>创建托管标识  
 
 首先，创建 Azure 流分析作业的托管标识。  
 
 1. 在 Azure 门户中，打开 Azure 流分析作业。  
 
-1. 从左侧导航菜单中，选择 **Managed Identity**   " *配置*" 下的 "托管标识"。 然后，选中 " **使用系统分配的托管标识**" 旁边的框，   然后选择 " **保存**"。
+1. 从左侧导航菜单中，选择 ****   " *配置*" 下的 "托管标识"。 然后，选中 " **使用系统分配的托管标识**" 旁边的框，   然后选择 " **保存**"。
 
    :::image type="content" source="media/event-hubs-managed-identity/system-assigned-managed-identity.png" alt-text="系统分配的托管标识":::  
 

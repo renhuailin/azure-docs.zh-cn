@@ -1,19 +1,19 @@
 ---
 title: 通过 CloudSimple 私有云展开 Azure VMware 解决方案
 description: 介绍如何扩展现有的 CloudSimple 私有云，以在现有群集或新群集中添加容量
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a82ba1b433e62ed1c4b72b8e942d4ade29f26c4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c469ea3f104e71eb80010d4a5cd421eab6184fcf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025293"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895849"
 ---
 # <a name="expand-a-cloudsimple-private-cloud"></a>扩展 CloudSimple 私有云
 
@@ -27,7 +27,7 @@ CloudSimple 提供动态扩展私有云的灵活性。 你可以从较小的配�
 
 私有云可以扩展多次。 只有在整个节点限制范围内时，才可以进行扩展。 每次展开要添加到现有群集的私有云时，或创建一个新的群集。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 必须先设置节点，然后才能扩展私有云。  有关预配节点的详细信息，请参阅 [通过 CloudSimple 为 VMware 解决方案预配节点-Azure 一](create-nodes.md) 文。  若要创建新群集，必须有至少三个相同 SKU 的可用节点。
 

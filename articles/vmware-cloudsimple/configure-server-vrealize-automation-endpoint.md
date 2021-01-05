@@ -1,25 +1,25 @@
 ---
 title: Azure VMware 解决方案（按 CloudSimple）-设置私有云上的 vCenter 以实现 vRealize 自动化
 description: 介绍如何在 CloudSimple 私有云上将 VMware vCenter 服务器设置为 VMware vRealize 自动化的终结点
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b6c6a320e6299808a91214476c8c0460f9f53d9
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77024834"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895047"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>在私有云上为 VMware vRealize Automation 设置 vCenter
 
 可以将 CloudSimple 私有云上的 VMware vCenter 服务器设置为 VMware vRealize 自动化的终结点。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 在配置 vCenter 服务器之前完成以下任务：
 
@@ -31,8 +31,8 @@ ms.locfileid: "77024834"
 ------------ | ------------- |  
 | 数据存储 |  分配空间 <br> 浏览数据存储 |
 | 数据存储群集 | 配置数据存储群集 |
-| 文件夹 | 创建文件夹 <br>删除文件夹 |
-| Global |  管理自定义属性<br>设置自定义属性 |
+| Folder | 创建文件夹 <br>删除文件夹 |
+| 全球 |  管理自定义属性<br>设置自定义属性 |
 | 网络 | 分配网络 |
 | 权限 | 修改权限 |
 | 资源 | 将 VM 分配到资源池<br>迁移关闭的虚拟机<br>迁移已启动的虚拟机 |
@@ -48,7 +48,7 @@ ms.locfileid: "77024834"
 2. 为 vRealize 自动化终结点部署 vSphere 代理。
     1. 中转到 https://*vra-url*： 5480/installer，其中 *vra* 是用于访问 vRealize 自动化管理 UI 的 url。
     2. 单击 **IaaS 安装** 程序以下载安装程序。<br>
-    安装程序文件的命名约定为 setup_*vra-url* @5480.exe 。
+    安装程序文件的命名约定为 setup_ *vra-url* @5480.exe 。
     3. 运行安装程序。 在欢迎屏幕上，单击 " **下一步**"。
     4. 接受 EULA，并单击 " **下一步**"。
     5. 提供登录信息，单击 " **接受证书**"，然后单击 " **下一步**"。
@@ -63,13 +63,13 @@ ms.locfileid: "77024834"
 
         ![vRA 安装代理](media/configure-vra-endpoint-proxy.png)
 
-    11. 单击“下一步”。
-    12. 单击“安装” 。
+    11. 单击“下一步” 。
+    12. 单击“安装”  。
 
 ## <a name="configure-the-vsphere-agent"></a>配置 vSphere 代理
 
-1. 请参阅 https://*vra-url*/vcac 并以 **ConfigurationAdmin**身份登录。
-2. 选择**基础结构**  >  **终结**  >  **点**。
+1. 请参阅 https://*vra-url*/vcac 并以 **ConfigurationAdmin** 身份登录。
+2. 选择 **基础结构**  >  **终结**  >  **点**。
 3. 选择 "**新建**  >  **虚拟**  >  **vSphere**"。
 4. 输入在前面的过程中指定的 vSphere 终结点名称。
 5. 对于 " **地址**"，以 https://*vcenter-fqdn*/Sdk 格式输入私有云 vCenter Server URL，其中 *vcenter-fqdn* 是 vcenter 服务器的名称。

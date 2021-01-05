@@ -1,19 +1,19 @@
 ---
 title: 管理 Azure VMware Solution by CloudSimple 私有云
 description: 介绍可用于管理 CloudSimple 私有云资源和活动的功能
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/10/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b0aff8298ac2335e5216252eb2cbd5a393cc37d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f2f66c2e1e2e8aa596393d4c69a757138ab5a91
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86524990"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895200"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>管理私有云资源和活动
 

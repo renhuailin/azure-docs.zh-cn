@@ -1,19 +1,19 @@
 ---
 title: 创建 Vlan/子网-Azure VMware 解决方案（按 CloudSimple）
 description: Azure VMware 解决方案（按 CloudSimple）-介绍如何创建和管理私有云的 Vlan/子网，然后应用防火墙规则。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c0160513eb9abca54adbc3819b982348dc202c90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06bebcb7369f6604fc79c1d3d0a4a6afa8b0a1da
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77565989"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896305"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>创建和管理私有云的 Vlan/子网
 
@@ -31,7 +31,7 @@ ms.locfileid: "77565989"
 5. 输入 VLAN ID。
 6. 输入子网名称。
 7. 若要启用 VLAN (子网) 上的路由，请指定子网 CIDR 范围。 请确保 CIDR 范围不与任何本地子网、Azure 子网或网关子网重叠。
-8. 单击“提交” 。
+8. 单击“提交”  。
 
     ![创建 VLAN/子网](media/create-new-vlan-subnet-details.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "77565989"
 
 ## <a name="select-a-firewall-table"></a>选择防火墙表
 
-防火墙表和关联规则在 " **网络 > 防火墙表** " 页上定义。 若要选择要应用于私有云的 VLAN/子网的防火墙表，请在 " **vlan/子网**" 页上选择 "vlan/子网" 单击**防火墙表附件**。 有关设置防火墙表和定义规则的说明，请参阅 [防火墙表](firewall.md) 。
+防火墙表和关联规则在 " **网络 > 防火墙表** " 页上定义。 若要选择要应用于私有云的 VLAN/子网的防火墙表，请在 " **vlan/子网**" 页上选择 "vlan/子网" 单击 **防火墙表附件**。 有关设置防火墙表和定义规则的说明，请参阅 [防火墙表](firewall.md) 。
 
 ![防火墙表链接](media/vlan-subnet-firewall-link.png)
 
@@ -60,4 +60,4 @@ ms.locfileid: "77565989"
 
 ## <a name="delete-a-vlansubnet"></a>删除 VLAN/子网
 
-若要删除 VLAN/子网，请在 " **vlan/子网** " 页上选择它，然后单击 " **删除** " 图标。 单击 " **删除** " 进行确认。
+若要删除 VLAN/子网，请在 " **vlan/子网** " 页上选择它，然后单击 " **删除** " 图标。 单击“删除”进行确认。

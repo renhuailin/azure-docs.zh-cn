@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解决方案（按 CloudSimple）-创建 CloudSimple 私有云
 description: 介绍如何创建 CloudSimple 私有云，以将 VMware 工作负荷扩展到云，从而提高操作灵活性和连续性
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f4af4a36e719cbf15b3f0af77db81a32f2f2e42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77024783"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896271"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>创建 CloudSimple 私有云
 
@@ -27,11 +27,11 @@ ms.locfileid: "77024783"
 
 * **增强的保护**。 使用三个或更多节点的私有云，可以获得自动冗余和高可用性保护。
 
-* 长期**基础结构需求**。 如果你的数据中心处于容量上，或者你希望重新构建以降低成本，则私有云使你可以停用数据中心并迁移到基于云的解决方案，同时保持与企业运营的兼容。
+* 长期 **基础结构需求**。 如果你的数据中心处于容量上，或者你希望重新构建以降低成本，则私有云使你可以停用数据中心并迁移到基于云的解决方案，同时保持与企业运营的兼容。
 
 在创建私有云时，你将获得单个 vSphere 群集和在该群集中创建的所有管理 Vm。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 必须先设置节点，然后才能创建私有云。 有关预配节点的详细信息，请参阅 [通过 CloudSimple 预配 Azure VMware 解决方案的节点](create-nodes.md)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "77024783"
 
 ## <a name="create-a-new-private-cloud"></a>创建新的私有云
 
-1. 选择“所有服务”。
+1. 选择“所有服务”  。
 2. 搜索 " **CloudSimple Services**"。
 3. 选择要在其上创建私有云的 CloudSimple 服务。
 4. 从 " **概述**" 中，单击 " **创建私有云** " 以打开 CloudSimple 门户的新浏览器选项卡。 如果系统提示，请用 Azure 登录凭据登录。

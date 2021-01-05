@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 413a93a145ae063a3aab4066ed62365e154d744a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b1ff10290e0059295f14b55e90ed05e9690c9f5c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454105"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896576"
 ---
 # <a name="use-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>使用 Azure 门户管理 Azure Stack Edge Pro 上的共享
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文介绍如何在 Azure Stack Edge Pro 上管理共享。 可以通过 Azure 门户或通过本地 web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户可以添加、删除和刷新共享，或者同步与共享相关联的存储帐户的存储密钥。
+本文介绍如何在 Azure Stack Edge Pro 上管理共享。 可以通过 Azure 门户或通过本地 web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户可以添加、删除和刷新共享，或者同步与共享相关联的存储帐户的存储密钥。 本文适用于 Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack 边缘迷你 R 设备。
 
 ## <a name="about-shares"></a>关于共享
 
@@ -33,7 +33,7 @@ ms.locfileid: "96454105"
 
 在 Azure 门户中执行以下步骤，以创建共享。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。 在命令栏上选择“+ 添加共享”。
+1. 在 Azure 门户中转到 Azure Stack Edge 资源，然后在 " **云存储网关 > 共享**"。 在命令栏上选择“+ 添加共享”。
 
     ![选择“添加共享”](media/azure-stack-edge-j-series-manage-shares/add-share-1.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "96454105"
 
 ## <a name="add-a-local-share"></a>添加本地共享
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。 在命令栏上选择“+ 添加共享”。
+1. 在 Azure 门户中转到 Azure Stack Edge 资源，然后在 " **云存储网关 > 共享**"。 在命令栏上选择“+ 添加共享”。
 
     ![选择添加共享2](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "96454105"
 
 6. 在“所有特权本地用户”字段中，选择“新建”或“使用现有项”。
 
-7. 选择“创建”。 
+7. 选择“创建”  。 
 
     ![创建本地共享](media/azure-stack-edge-j-series-manage-shares/add-local-share-2.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "96454105"
 如果在 Azure Stack Edge Pro 设备上配置计算之前创建了共享，则需要安装该共享。 通过以下步骤装载共享。
 
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。 从共享列表中选择要装载的共享。 “用于计算”列会将所选共享的状态显示为“已禁用”。
+1. 在 Azure 门户中转到 Azure Stack Edge 资源，然后在 " **云存储网关 > 共享**"。 从共享列表中选择要装载的共享。 “用于计算”列会将所选共享的状态显示为“已禁用”。
 
     ![选择共享](media/azure-stack-edge-j-series-manage-shares/mount-share-1.png)
 
@@ -123,11 +123,11 @@ ms.locfileid: "96454105"
 
 在 Azure 门户中执行以下步骤，以卸载共享。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。
+1. 在 Azure 门户中转到 Azure Stack Edge 资源，然后在 " **云存储网关 > 共享**"。 从共享列表中选择要卸载的共享。 需确保卸载的共享不被任何模块使用。 如果共享被某个模块使用，则相应模块会出问题。
 
     ![选择共享2](media/azure-stack-edge-j-series-manage-shares/unmount-share-1.png)
 
-2. 从共享列表中选择要卸载的共享。 需确保卸载的共享不被任何模块使用。 如果共享被某个模块使用，则相应模块会出问题。 选择 " **卸载**"。
+2.  选择 " **卸载**"。
 
     ![选择卸载](media/azure-stack-edge-j-series-manage-shares/unmount-share-2.png)
 

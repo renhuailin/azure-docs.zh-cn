@@ -9,17 +9,17 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: ead878daaab977c77b3ab36f42ccfe4d01d7bc03
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 617599e3eb6dcca74324a7bdfd51e604904a2fa1
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548624"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897495"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>步骤1：部署日志转发器
 
@@ -51,13 +51,13 @@ ms.locfileid: "96548624"
 1. **1.2 在 Linux 计算机上安装 CEF 收集器** 后，复制 "**运行以下脚本以安装和应用 CEF 收集器**" 下提供的链接，或从下面的文本中 (应用工作区 ID 和主密钥来替换占位符) ：
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
     ```
 
 1. 脚本运行时，请检查以确保没有收到任何错误或警告消息。
     - 你可能会收到一条消息，指导你运行命令来更正 " *计算机* " 字段映射的问题。 有关详细信息，请参阅 [部署脚本中的说明](#mapping-command) 。
 
-1. 继续执行 [步骤2：配置安全解决方案以转发 CEF 消息](connect-cef-solution-config.md) 。
+1. 继续执行 [步骤2：配置安全解决方案以转发 CEF 消息](connect-cef-solution-config.md)。
 
 
 > [!NOTE]
@@ -189,8 +189,7 @@ ms.locfileid: "96548624"
         文件的内容 `security-config-omsagent.conf` ：
 
         ```bash
-        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};destination oms_destination {tcp(\"127.0.0.1\" port(25226));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 

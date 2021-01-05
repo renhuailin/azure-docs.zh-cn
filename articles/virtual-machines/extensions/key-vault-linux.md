@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c9b624a1efc72bebec8547e8ecf9f3bf9fc99863
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 0558513d88eb5ffb03484e9d3bd8e37b2c9a0dcf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680650"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895013"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展
 
@@ -38,6 +38,21 @@ Key Vault VM 扩展支持以下 Linux 发行版：
   - 具有证书的 Key Vault 实例。 请参阅[创建 Key Vault](../../key-vault/general/quick-create-portal.md)
   - VM/VMSS 必须已分配[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)
   - 必须使用机密 `get` 和 `list` 权限为 VM/VMSS 托管标识设置 Key Vault 访问策略，以检索证书的机密部分。 请参阅[如何向 Key Vault 进行身份验证](../../key-vault/general/authentication.md)和[分配 Key Vault 访问策略](../../key-vault/general/assign-access-policy-cli.md)。
+  -  VMSS 应具有以下标识设置： ` 
+  "identity": {
+  "type": "UserAssigned",
+  "userAssignedIdentities": {
+  "[parameters('userAssignedIdentityResourceId')]": {}
+  }
+  }
+  `
+  
+ - AKV 扩展应具有此设置： `
+                 "authenticationSettings": {
+                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+                  }
+   `
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -89,10 +104,10 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | string |
-| type | KeyVaultForLinux | string |
+| publisher | Microsoft.Azure.KeyVault | 字符串 |
+| type | KeyVaultForLinux | 字符串 |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | string |
+| pollingIntervalInS | 3600 | 字符串 |
 | certificateStoreName | 它在 Linux 上被忽略 | string |
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | string |
@@ -138,6 +153,17 @@ Key Vault VM 扩展支持以下 Linux 发行版：
     }
 ```
 
+### <a name="extension-dependency-ordering"></a>扩展依赖项排序
+如果已配置，Key Vault VM 扩展支持扩展排序。 默认情况下，扩展会在它开始轮询后立即报告已成功启动。 但是，可以将其配置为等待，直到成功下载证书的完整列表，然后再报告成功的启动。 如果其他扩展依赖于在开始之前安装整套证书，则启用此设置将允许这些扩展声明对 Key Vault 扩展的依赖项。 这会阻止这些扩展开始，直到安装了它们所依赖的所有证书。 扩展会无限期地重试初始下载并保持 `Transitioning` 状态。
+
+若要启用此设置，请执行以下操作：
+```
+"secretsManagementSettings": {
+    "requireInitialSync": true,
+    ...
+}
+```
+> 纪录使用此功能与创建系统分配的标识并使用该标识更新 Key Vault 访问策略的 ARM 模板不兼容。 这样做会导致死锁，因为在所有扩展开始之前都无法更新保管库访问策略。 应改为使用 *单个用户分配的 MSI 标识* ，并在部署之前使用该标识预 ACL 保管库。
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell 部署
 > [!WARNING]

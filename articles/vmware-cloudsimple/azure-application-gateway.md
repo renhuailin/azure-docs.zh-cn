@@ -1,19 +1,19 @@
 ---
 title: 将 Azure 应用程序网关与 VMware 虚拟机配合使用
 description: 介绍如何使用 Azure 应用程序网关来管理在 VMware 虚拟机中运行的 web 服务器的传入 web 流量 win the CloudSimple 私有云环境
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d14fdc4e2b2b1dfca8194077acc0453808611946
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82185687"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897937"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>在 CloudSimple 私有云环境中将 Azure 应用程序网关与 VMware 虚拟机配合使用
 
@@ -71,7 +71,7 @@ ms.locfileid: "82185687"
 
 1. 在订阅和资源组中创建虚拟网络。
 2. 在虚拟网络中创建要用作专用子网) 的子网 (。
-3. 创建标准应用程序网关 (根据需要启用 WAF) ：从 Azure 门户主页，单击页面左上角的 "**资源**" "网络" "  >  **Networking**  >  **应用程序网关**"。 选择标准 SKU 和大小，并提供 Azure 订阅、资源组和位置信息。 如果需要，请为此应用程序网关创建新的公共 IP，并提供有关该应用程序网关的虚拟网络和专用子网的详细信息。
+3. 创建标准应用程序网关 (根据需要启用 WAF) ：从 Azure 门户主页，单击页面左上角的 "**资源**" "网络" "  >    >  **应用程序网关**"。 选择标准 SKU 和大小，并提供 Azure 订阅、资源组和位置信息。 如果需要，请为此应用程序网关创建新的公共 IP，并提供有关该应用程序网关的虚拟网络和专用子网的详细信息。
 4. 添加包含虚拟机的后端池，并将其添加到应用程序网关。
 
 ## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. 在私有云中创建和配置 web 服务器 VM 池

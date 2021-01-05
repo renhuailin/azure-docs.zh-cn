@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解决方案（按 CloudSimple）-升级 CloudSimple 特权
 description: 描述如何升级 CloudSimple 权限以在私有云 vCenter 中执行管理功能
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 36c6969ed89d0bb9222f52aa81de0d4128b9e533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d481717a79856583d23f61107678d2ecd1af68d6
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025327"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895721"
 ---
 # <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>升级 CloudSimple 权限以在私有云 vCenter 中执行管理功能
 
@@ -35,6 +35,6 @@ CloudSimple 特权方法旨在为 vCenter 用户授予执行正常操作所需�
 必须将来自其他标识源的用户添加为 CloudOwner 组的成员。
 
 > [!CAUTION]
-> 新用户必须仅添加到 *云所有者组*、 *云全局-群集管理组*、云全局 *存储管理*组、云全局 *网络管理* 组或 *云-全局-VM 管理*组的用户组。  添加到 *管理员* 组的用户将被自动删除。  只有服务帐户必须添加到 *Administrators* 组，并且服务帐户不得用于登录 VSPHERE web UI。
+> 新用户必须仅添加到 *云所有者组*、 *云全局-群集管理组*、云全局 *存储管理* 组、云全局 *网络管理* 组或 *云-全局-VM 管理* 组的用户组。  添加到 *管理员* 组的用户将被自动删除。  只有服务帐户必须添加到 *Administrators* 组，并且服务帐户不得用于登录 VSPHERE web UI。
 
 在升级期间，CloudSimple 将自动监视与关联的警报通知结合使用，以识别对环境进行的任何意外更改。

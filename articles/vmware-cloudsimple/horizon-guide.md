@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解决方案（按 CloudSimple）-使用私有云网站使用 VMware 横向托管虚拟桌面基础结构
 description: 介绍如何使用 CloudSimple 私有云网站来托管使用 VMware 范围的虚拟桌面基础结构
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 723821a78ecae308443c93567402e3b232c036f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 513af1ba2e354412278fb88af4ee6527c236fae3
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025242"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895591"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>使用 CloudSimple 私有云网站使用 VMware 范围托管虚拟桌面基础结构
 
@@ -40,7 +40,7 @@ CloudSimple 解决方案要求你执行以下操作：
 ### <a name="verify-that-vmware-product-versions-are-compatible"></a>验证 VMware 产品版本是否兼容
 
 * 验证你当前和计划内版本的水平、应用卷、统一访问网关和用户环境管理器是否相互兼容，以及私有云中的 vCenter 和 PSC。 有关兼容性信息，请参阅 [适用于地平线7.5 的 VMware 兼容性矩阵](https://www.vmware.com/resources/compatibility/sim/interop_matrix.php#interop&260=2877&0=)。
-* 若要在私有云中了解 vCenter 和 PSC 的当前版本，请在[CloudSimple 门户](access-cloudsimple-portal.md)中，选择 "**资源**"，选择私有云，然后单击 " **vSphere 管理网络**" 选项卡。
+* 若要在私有云中了解 vCenter 和 PSC 的当前版本，请在 [CloudSimple 门户](access-cloudsimple-portal.md)中，选择 "**资源**"，选择私有云，然后单击 " **vSphere 管理网络**" 选项卡。
 
 ![vCenter 和 PSC 版本](media/private-cloud-vsphere-versions.png)
 
