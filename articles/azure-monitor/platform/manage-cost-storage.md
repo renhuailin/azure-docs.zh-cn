@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 12/24/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a3a4c7a51f0d75b67465a83a2fbbf3ae8a141c4c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 45f02850797582f97220e91d1582b04b3be711c0
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97671159"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882477"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本    
 
@@ -132,9 +132,9 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 
 ## <a name="change-the-data-retention-period"></a>更改数据保留期
 
-以下步骤说明如何配置日志数据在工作区中的保留期限。 对于所有工作区，数据保留期均可以配置为 30 到 730 天（2 年），除非它们使用旧版免费定价层。[详细了解](https://azure.microsoft.com/pricing/details/monitor/)更长数据保留期的定价。 
+以下步骤说明如何配置日志数据在工作区中的保留期限。 工作区级别的数据保留期可以配置为30到730天 (2 年内所有工作区) ，除非他们使用旧版免费定价层。[详细了解更](https://azure.microsoft.com/pricing/details/monitor/) 长的数据保留期。 单个数据类型的保留期最小可设置为4天。 
 
-### <a name="default-retention"></a>默认保留期
+### <a name="workspace-level-default-retention"></a>工作区级别默认保持期
 
 若要设置工作区的默认保留期，请执行以下操作： 
  
@@ -158,7 +158,7 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 
 ### <a name="retention-by-data-type"></a>按数据类型保留
 
-还可以为各个数据类型指定从 30 到 730 天的不同保留期设置（旧版免费定价层中的工作区除外）。 每个数据类型都是工作区的子资源。 例如，可以在 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)中对 SecurityEvent 表进行寻址，如下所示：
+还可以为每个数据类型指定不同的保留设置，该数据类型为4到730天 (除了旧的免费定价层中的工作区) ，替代工作区级默认保留期。 每个数据类型都是工作区的子资源。 例如，可以在 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)中对 SecurityEvent 表进行寻址，如下所示：
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -210,10 +210,10 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 每个工作区在一天的不同小时均应用其每日上限。 重置时间显示在“每日上限”页中（见下文）。 无法配置此重置时间。 
 
-达到每日限制后，在当天的剩余时间会停止收集应计费数据类型。 应用每日上限时的固有延迟意味着应用上限不会精确到指定的每日上限级别。 选定 Log Analytics 工作区的页面顶部会显示警告横幅，同时会将一个操作事件发送到“LogManagement”类别下的“操作”表。 在“每日限制设置时间”定义的重置时间过后，数据收集将会恢复。 建议基于此操作事件定义警报规则，配置为在达到每日数据限制时发出通知 (参见 [下面](#alert-when-daily-cap-reached)) 。 
+达到每日限制后，在当天的剩余时间会停止收集应计费数据类型。 应用每日上限时的固有延迟意味着应用上限不会精确到指定的每日上限级别。 选定 Log Analytics 工作区的页面顶部会显示警告横幅，同时会将一个操作事件发送到“LogManagement”类别下的“操作”表。 在“每日限制设置时间”定义的重置时间过后，数据收集将会恢复。 我们建议基于此操作事件定义一个预警规则，并将其配置为在达到每日数据限制时发出通知（请参阅[下文](#alert-when-daily-cap-reached)）。 
 
 > [!NOTE]
-> 每日上限无法以精确到指定的每日上限的级别停止数据收集，且可能出现某些多余的数据，尤其是在工作区接收大量数据的情况下。 请参阅 [下面](#view-the-effect-of-the-daily-cap) 的查询，该查询有助于研究每日上限行为。 
+> 每日上限无法以精确到指定的每日上限的级别停止数据收集，且可能出现某些多余的数据，尤其是在工作区接收大量数据的情况下。 请参阅[下文](#view-the-effect-of-the-daily-cap)，了解有助于研究每日上限行为的查询。 
 
 > [!WARNING]
 > 每日上限不会停止 [Azure 安全中心每日每个 (节点](#log-analytics-and-security-center) 的 WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、Windows 防火墙、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus、Update 和 UpdateSummary) 包含在 Azure 安全中心中的数据类型集合，但在2017年6月19日之前安装了 Azure 安全中心的工作区除外。 
@@ -236,7 +236,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ### <a name="view-the-effect-of-the-daily-cap"></a>查看每日上限的效果
 
-若要查看每日上限的影响，请务必考虑每日上限中未包含的安全数据类型，以及工作区的重置时间。 每日 cap 重置时间在 **每日上限** 页中可见。  以下查询可用于跟踪每日上限重置之间每日上限的数据量。 在此示例中，工作区的重置小时为14:00。  需要为工作区更新此。
+要查看每日上限的效果，请务必考虑每日上限中未包含的安全数据类型，以及工作区的重置时间。 每日上限重置时间在“每日上限”页上可见。  可使用以下查询跟踪在每日上限重置之间受每日上限限制的数据量。 在此示例中，工作区的重置时间为 14:00。  需要为工作区更新此时间。
 
 ```kusto
 let DailyCapResetHour=14;
@@ -350,7 +350,8 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution 
+| render columnchart
 ```
 
 带有 `TimeGenerated` 的子句仅用于确保 Azure 门户中的查询体验将回溯到超出默认的 24 小时。 使用“使用情况”数据类型时，`StartTime` 和 `EndTime` 表示显示结果的时间存储桶。 
@@ -364,7 +365,8 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType 
+| render columnchart
 ```
 
 或者按解决方案和类型查看上个月的表，
@@ -415,7 +417,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by BillableDataBytes nulls last
 ```
 
-对于在 Azure 中托管的节点的数据，可以获取 __每个 azure 订阅__ 的引入数据的 **大小**， `_SubscriptionId` 并使用属性，如下所示：
+对于 Azure 中托管的节点的数据，可以按 Azure 订阅获取引入的数据的大小，请按如下所示来使用 `_SubscriptionId` 属性：
 
 ```kusto
 find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
@@ -424,7 +426,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | summarize BillableDataBytes = sum(BillableDataBytes) by _SubscriptionId | sort by BillableDataBytes nulls last
 ```
 
-若要按资源组获取数据量，可以分析 `_ResourceId` ：
+若要按资源组获取数据量，可以分析 `_ResourceId`：
 
 ```kusto
 find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
@@ -476,12 +478,12 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 
 | 高数据量来源 | 如何减少数据量 |
 | -------------------------- | ------------------------- |
-| 容器见解         | [将 Container Insights 配置](../insights/container-insights-cost.md#controlling-ingestion-to-reduce-cost) 为仅收集你需要的数据。 |
+| 容器见解         | [配置容器见解](../insights/container-insights-cost.md#controlling-ingestion-to-reduce-cost)，仅收集你需要的数据。 |
 | 安全性事件            | 选择[通用或最低安全性事件](../../security-center/security-center-enable-data-collection.md#data-collection-tier) <br> 更改安全审核策略，只收集所需事件。 具体而言，请查看是否需要收集以下对象的事件： <br> - [审核筛选平台](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [审核注册表](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [审核文件系统](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [审核内核对象](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [审核句柄操作](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - 审核可移动存储 |
 | 性能计数器       | 更改[性能计数器配置](data-sources-performance-counters.md)如下： <br> - 降低收集频率 <br> - 减少性能计数器数 |
 | 事件日志                 | 更改[事件日志配置](data-sources-windows-events.md)如下： <br> - 减少收集的事件日志数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”级别事件 |
 | Syslog                     | 更改 [syslog 配置](data-sources-syslog.md)如下： <br> - 减少收集的设施数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”和“调试”级别事件  |
-| AzureDiagnostics           | 将 [资源日志集合](./diagnostic-settings.md#create-in-azure-portal) 更改为： <br> - 减少向 Log Analytics 发送日志的资源数目 <br> - 仅收集必需的日志 |
+| AzureDiagnostics           | 更改[资源日志集合](./diagnostic-settings.md#create-in-azure-portal)，以便： <br> - 减少向 Log Analytics 发送日志的资源数目 <br> - 仅收集必需的日志 |
 | 不需解决方案的计算机中的解决方案数据 | 使用[解决方案目标](../insights/solution-targeting.md)，只从必需的计算机组收集数据。 |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>获取按节点定价层中的计费节点
@@ -661,4 +663,5 @@ Operation | where OperationCategory == 'Data Collection Status'
 - 若要配置有效的事件收集策略，请参阅 [Azure 安全中心筛选策略](../../security-center/security-center-enable-data-collection.md)。
 - 更改[性能计数器配置](data-sources-performance-counters.md)。
 - 若要修改事件收集设置，请参阅[事件日志配置](data-sources-windows-events.md)。
+- 若要修改 syslog 收集设置，请参阅 [syslog 配置](data-sources-syslog.md)。
 - 若要修改 syslog 收集设置，请参阅 [syslog 配置](data-sources-syslog.md)。

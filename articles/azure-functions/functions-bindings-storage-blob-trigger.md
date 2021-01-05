@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: fd33ca4c5d637e31230d8c124fdb9ec7c71d2ba7
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3213df378bc3b8403ebd11f899d722106de67a65
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094839"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882018"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure Blob 存储触发器
 
@@ -114,6 +114,24 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+在 `myblob` 容器中添加或更新 Blob 时，该函数会写入一条日志。
+
+```java
+@FunctionName("blobprocessor")
+public void run(
+  @BlobTrigger(name = "file",
+               dataType = "binary",
+               path = "myblob/{name}",
+               connection = "MyStorageAccountAppSetting") byte[] content,
+  @BindingName("name") String filename,
+  final ExecutionContext context
+) {
+  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
+}
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [JavaScript 代码](functions-reference-node.md)。 在 `samples-workitems` 容器中添加或更新 Blob 时，该函数会写入日志。
@@ -146,6 +164,34 @@ module.exports = function(context) {
     context.log('Node.js Blob trigger function processed', context.bindings.myBlob);
     context.done();
 };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下面的示例演示如何创建在将文件添加到 blob 存储容器时运行的函数 `source` 。
+
+) 上的函数配置文件 (_function.js_ 包含的绑定， `type` `blobTrigger` 并 `direction` 将设置为 `in` 。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "source/{name}",
+      "connection": "MyStorageAccountConnectionString"
+    }
+  ]
+}
+```
+
+下面是 _run.ps1_ 文件的关联代码。
+
+```powershell
+param([byte[]] $InputBlob, $TriggerMetadata)
+
+Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($InputBlob.Length) bytes"
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -183,24 +229,6 @@ import azure.functions as func
 
 def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-在 `myblob` 容器中添加或更新 Blob 时，该函数会写入一条日志。
-
-```java
-@FunctionName("blobprocessor")
-public void run(
-  @BlobTrigger(name = "file",
-               dataType = "binary",
-               path = "myblob/{name}",
-               connection = "MyStorageAccountAppSetting") byte[] content,
-  @BindingName("name") String filename,
-  final ExecutionContext context
-) {
-  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
-}
 ```
 
 ---
@@ -267,17 +295,21 @@ public void run(
 
 C# 脚本不支持特性。
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobTrigger` 特性用于授予对触发函数的 blob 的访问权限。 有关详细信息，请参阅[触发器示例](#example)。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支持特性。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支持特性。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python 不支持特性。
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobTrigger` 特性用于授予对触发函数的 blob 的访问权限。 有关详细信息，请参阅[触发器示例](#example)。
 
 ---
 
@@ -305,17 +337,21 @@ Python 不支持特性。
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobTrigger` 特性用于授予对触发函数的 blob 的访问权限。 有关详细信息，请参阅[触发器示例](#example)。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用 `context.bindings.<NAME>` 访问 blob 数据，其中 `<NAME>` 与 function.json 中定义的值匹配。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+通过与 _function.js文件上_ 的绑定的 name 参数指定的名称相匹配的参数访问 blob 数据。
+
 # <a name="python"></a>[Python](#tab/python)
 
-通过类型为 [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的参数访问 blob 数据。 有关详细信息，请参阅[触发器示例](#example)。
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobTrigger` 特性用于授予对触发函数的 blob 的访问权限。 有关详细信息，请参阅[触发器示例](#example)。
+通过类型为 [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true)的参数访问 blob 数据。 有关详细信息，请参阅[触发器示例](#example)。
 
 ---
 
@@ -374,6 +410,10 @@ Python 不支持特性。
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+元数据在 Java 中不可用。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
@@ -383,13 +423,13 @@ module.exports = function (context, myBlob) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+元数据可通过 `$TriggerMetadata` 参数获得。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python 中的元数据不可用。
-
-# <a name="java"></a>[Java](#tab/java)
-
-元数据在 Java 中不可用。
 
 ---
 
@@ -399,11 +439,11 @@ Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次�
 
 Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名为 azure-webjobs-hosts 的容器中（由 `AzureWebJobsStorage` 应用设置定义）。 Blob 回执包含以下信息：
 
-* 触发的函数（"&lt;function app name>.Functions.&lt;function name> "，例如："MyFunctionApp.Functions.CopyBlob"）
+* 触发的函数 (`<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>` ，例如： `MyFunctionApp.Functions.CopyBlob`) 
 * 容器名称
-* Blob 类型（"BlockBlob" 或 "PageBlob"）
+* Blob 类型 (`BlockBlob` 或 `PageBlob`) 
 * Blob 名称
-* ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
+* ETag (blob 版本标识符，例如： `0x8D1DC6E70A277EF`) 
 
 若要强制重新处理某个 blob，可从 azure-webjobs-hosts 容器中手动删除该 blob 的 blob 回执。 虽然重新处理可能不会立即发生，但它肯定会在稍后的时间点发生。 若要立即重新处理，可以更新 azure-webjobs-hosts/blobscaninfo 中的 scaninfo Blob 。 将再次扫描 `LatestScan` 属性后具有上次修改时间戳的任何 Blob。
 
@@ -413,11 +453,11 @@ Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名
 
 如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison 的存储队列。 最大尝试次数可配置。 使用相同的 MaxDequeueCount 设置处理有害 Blob 和有害队列消息。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
-* FunctionId（格式为 &lt;function app name>.Functions.&lt;function name> ）
-* BlobType（"BlockBlob" 或 "PageBlob"）
+* 格式 (的 FunctionId `<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>`) 
+* BlobType (`BlockBlob` 或 `PageBlob`) 
 * ContainerName
 * BlobName
-* ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
+* ETag (blob 版本标识符，例如： `0x8D1DC6E70A277EF`) 
 
 ## <a name="concurrency-and-memory-usage"></a>并发和内存使用情况
 

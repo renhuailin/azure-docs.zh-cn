@@ -3,24 +3,24 @@ title: 在 IoT Edge 设备上部署实时视频分析 - Azure
 description: 本文列出了将帮助你在 IoT Edge 设备上部署实时视频分析的步骤。 你可能会在以下情况下执行此操作，例如：如果你有权访问本地 Linux 计算机并且/或之前创建了 Azure 媒体服务帐户。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 4fa4a9643976ba513b025706cacec26b2a50afb5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 38d138b43441016e06fca5003bc09c940cb23efe
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498313"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883310"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 设备上部署实时视频分析
 
 本文列出了将帮助你在 IoT Edge 设备上部署实时视频分析的步骤。 你可能会在以下情况下执行此操作，例如：如果你有权访问本地 Linux 计算机并且/或之前创建了 Azure 媒体服务帐户。
 
 > [!NOTE]
-> IoT Edge 版本和更新版本的实时视频分析中提供了对 ARM64 设备的支持 `1.0.4` 。
+> IoT Edge 版本 `1.0.4` 及更高版本的实时视频分析中提供了对 ARM64 设备的支持。
 > 支持在 ARM64 设备上运行 Azure IoT Edge 运行时，该支持为[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 运行[受支持的 Linux 操作系统](../../iot-edge/support.md#operating-systems)之一的 x86 64 或 ARM64 设备
+* 运行[支持的 Linux 操作系统](../../iot-edge/support.md#operating-systems)之一的 x86-64 或 ARM64 设备
 * 你拥有[所有者权限](../../role-based-access-control/built-in-roles.md#owner)的 Azure 订阅
 * [创建和设置 IoT 中心](../../iot-hub/iot-hub-create-through-portal.md)
 * [注册 IoT Edge 设备](../../iot-edge/how-to-manual-provision-symmetric-key.md)
@@ -108,7 +108,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
     示例:
     
     * **IoT Edge 模块名称**：lvaEdge
-    * **映像 URI**：mcr.microsoft.com/media/live-video-analytics:1.0    
+    * **映像 URI**： mcr.microsoft.com/media/live-video-analytics:2。0    
     
     ![屏幕截图显示 "模块设置" 选项卡。](./media/deploy-iot-edge-device/add.png)
     
@@ -220,7 +220,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 可能需要等待一段时间，该模块才会在设备上启动并向 IoT 中心发回报告。 刷新页面以查看更新的状态。
 状态代码：200 -OK 表示 [IoT Edge 运行时](../../iot-edge/iot-edge-runtime.md)状况良好并且运行正常。
 
-![屏幕截图显示 IoT Edge 运行时的状态值。](./media/deploy-iot-edge-device/status.png)
+![屏幕截图显示了 IoT Edge 运行时的状态值。](./media/deploy-iot-edge-device/status.png)
 
 #### <a name="invoke-a-direct-method"></a>调用直接方法
 
@@ -228,7 +228,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 
 1. 单击创建的边缘模块，此操作会将你转到其配置页面。  
 
-    ![屏幕截图显示 edge 模块的配置页。](./media/deploy-iot-edge-device/modules.png)
+    ![屏幕截图显示了边缘模块的配置页面。](./media/deploy-iot-edge-device/modules.png)
 1. 单击“直接方法”菜单选项。
 
     > [!NOTE] 
@@ -255,4 +255,4 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 试用[快速入门：入门 - IoT Edge 上的实时视频分析](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]
-> 如果继续执行上述快速入门，请在使用 Visual Studio Code 调用直接方法时，将使用通过本文添加到 IoT 中心的设备，而不是使用默认值 `lva-sample-device` 。
+> 如果继续学习上述快速入门，当使用 Visual Studio Code 调用直接方法时，将使用根据本文说明添加到 IoT 中心的设备，而不是默认的 `lva-sample-device`。

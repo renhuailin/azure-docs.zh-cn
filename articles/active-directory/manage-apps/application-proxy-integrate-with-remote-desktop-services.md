@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 666b3c609224c1665c150718b2b89c4bac72577e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488062"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882222"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -42,18 +42,13 @@ ms.locfileid: "96488062"
 ## <a name="requirements"></a>要求
 
 - RD Web 和 RD 网关终结点必须位于同一台计算机上，并且有一个共用的根。 RD Web 和 RD 网关将作为具有应用程序代理的单个应用程序发布，因此，可以在两个应用程序之间体验单一登录。
-
-- 应该[已部署 RDS](/windows-server/remote/remote-desktop-services/rds-in-azure) 并[已启用应用程序代理](application-proxy-add-on-premises-application.md)。
-
+- 应该[已部署 RDS](/windows-server/remote/remote-desktop-services/rds-in-azure) 并[已启用应用程序代理](application-proxy-add-on-premises-application.md)。 确保已满足启用应用程序代理的先决条件，如安装连接器、打开所需的端口和 URL，以及在服务器上启用 TLS 1.2。
 - 最终用户必须使用兼容的浏览器连接到 RD Web 或 RD Web 客户端。 有关更多详细信息，请参阅 [客户端配置支持](#support-for-other-client-configurations)。
-
 - 发布 RD Web 时，建议使用相同的内部和外部 FQDN。 如果内部和外部 FQDN 不同，应禁用请求头转换，以免客户端收到无效链接。
-
 - 如果在 Internet Explorer 上使用 RD Web，则需要启用 RDS ActiveX 外接程序。
-
 - 如果使用的是 RD Web 客户端，则需要使用应用程序代理 [连接器版本1.5.1975 或更高版本](./application-proxy-release-version-history.md)。
-
 - 对于 Azure AD 预身份验证流，用户只能在 " **RemoteApp 和桌面** " 窗格中连接到发布的资源。 用户无法使用 " **连接到远程电脑** " 窗格连接到桌面。
+- 如果使用的是 Windows Server 2019，可能需要禁用 HTTP2 协议。 有关详细信息，请参阅 [教程：在 Azure Active Directory 中通过应用程序代理添加用于远程访问的本地应用程序](application-proxy-add-on-premises-application.md)。
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>部署 RDS 和应用程序代理联合方案
 

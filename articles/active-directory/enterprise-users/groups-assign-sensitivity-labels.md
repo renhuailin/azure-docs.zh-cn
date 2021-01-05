@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b40171d87ccffa7c5c4fb72d2e79af015b1d16f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a78cf9b7d78078030ac0db8bd2f0fddb93a8dda4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859957"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881390"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>向 Azure Active Directory 中的 Microsoft 365 组分配敏感度标签
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
     ```
 
     > [!NOTE]
-    > 如果没有为此 Azure AD 组织创建组设置，则必须先创建设置。 按照 Azure Active Directory cmdlet 中的步骤 [配置组设置](../enterprise-users/groups-settings-cmdlets.md) ，为此 Azure AD 组织创建组设置。
+    > 如果没有为此 Azure AD 组织创建组设置，则会在上面的 cmdlet 中收到一个错误，指出 "无法将参数绑定到参数 ' Id '，因为该参数为 null"。 在这种情况下，必须首先创建设置。 按照 Azure Active Directory cmdlet 中的步骤 [配置组设置](../enterprise-users/groups-settings-cmdlets.md) ，为此 Azure AD 组织创建组设置。
 
 1. 接下来，显示当前组设置。
 
@@ -91,7 +91,7 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
 
    ![在组的 "概述" 页上分配敏感度标签](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
 
-1. 选择“保存”以保存更改。
+1. 选择“保存”  以保存更改。
 
 ## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>从 Azure 门户中的现有组中删除标签
 
@@ -136,7 +136,7 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
 1. 选择“组”。
 1. 从 " **所有组** " 页中，选择要标记的组。
 1. 在选定组的页上，选择 " **属性** "，然后从列表中选择一个新的敏感度标签。
-1. 选择“保存”。
+1. 选择“保存”。 
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>组设置对已发布标签所做的更改不会在组中更新
 

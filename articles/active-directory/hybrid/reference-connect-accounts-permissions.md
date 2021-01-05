@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 01/04/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c075e19422341ad7ccfd3ad951517876ab26a495
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 1b0771687aa7ccf9b749c107a6b1c507cb3ba08d
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858410"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881933"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
@@ -44,7 +44,7 @@ Azure AD Connect 使用 3 个帐户，将信息从本地或 Windows Server Activ
 
 - **AD DS 企业管理员帐户**：可以选择使用此帐户创建上面的“AD DS 连接器帐户”。
 
-- Azure AD 全局管理员帐户：用于创建 Azure AD 连接器帐户和配置 Azure AD。
+- Azure AD 全局管理员帐户：用于创建 Azure AD 连接器帐户和配置 Azure AD。  可以在 azure 门户中查看全局管理员帐户。  请参阅 [查看角色](../../active-directory/roles/manage-roles-portal.md#view-all-roles)。
 
 - SQL SA 帐户（可选）：用于使用完整版 SQL Server 时创建 ADSync 数据库。  此 SQL Server 对 Azure AD Connect 安装而言可能是本地或远程的。  此帐户可能是企业管理员的帐户。  现在，可以由 SQL 管理员在带外进行数据库预配，然后由具有数据库所有者权限的 Azure AD Connect 管理员完成安装。  有关详细信息，请参阅[使用 SQL 委派的管理员权限安装 Azure AD Connect](how-to-connect-install-sql-delegation.md)
 

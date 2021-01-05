@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/21/2020
+ms.date: 1/4/2021
 ms.author: yohaddad
-ms.openlocfilehash: 5e61dcb5a329916ed2c95646282bbdccad3b5767
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 429e343a61e61b01fa07c37a6c2b702f6ef633d1
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708494"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882341"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
 提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。 此信息可帮助在禁用来宾 OS 之前规划升级路径。 如果根据 [Azure 来宾 OS 更新设置][Azure Guest OS Update Settings]中所述将角色配置为使用 *自动* 进行来宾 OS 更新，则不一定要阅读本页面。
@@ -187,7 +187,7 @@ ms.locfileid: "97708494"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
-|  WA-5.49 _202011-02  |  2020年12月19日  |  Post 5.51  | 
+|  WA-5.49 _202011-01  |  2020年12月19日  |  Post 5.51  | 
 |  WA-GUEST-OS-5.48_202010-02  |  2020 年 11 月 17 日  |  5\.50 版发布后  | 
 |~~WA-GUEST-OS-5.47_202009-01~~|  2020 年 10 月 10 日  |  2020年12月19日  | 
 |~~WA-GUEST-OS-5.46_202008-02~~|  2020 年 9 月 5 日  |  2020 年 11 月 17 日  |  

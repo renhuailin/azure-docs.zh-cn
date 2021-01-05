@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14a65b83195bff48934668ff029f925e13884bad
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8789015c239aae58ec25f0f644d4c497da477c2b
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743691"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881236"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>优化重新验证的提示并了解 Azure AD 多重身份验证的会话生存期
 
@@ -108,7 +108,7 @@ Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要�
 1. 选择 " **公司品牌**"，然后对每个区域设置选择 " **显示" 选项以保持登录**。
 1. 选择 *"是*"，然后选择 " **保存**"。
 
-若要记住多重身份验证设置，请完成以下步骤：
+若要在受信任的设备上记住多重身份验证设置，请完成以下步骤：
 
 1. 在 Azure AD 门户中，搜索并选择 " *Azure Active Directory*"。
 1. 选择 " **安全性**"，然后选择 " **MFA**"。

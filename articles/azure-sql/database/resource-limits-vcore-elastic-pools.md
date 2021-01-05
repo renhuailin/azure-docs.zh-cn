@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 10/15/2020
-ms.openlocfilehash: fb4746972f78dc40a3ec264d2e1964e8d4e99b3d
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: e706f64a7caab6873a3eec86505eaee11374ae2c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097586"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882274"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>使用 vCore 购买模型的弹性池的资源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -126,7 +126,7 @@ ms.locfileid: "92097586"
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |每个数据库的最小/最大弹性池 vCore 选项|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
 |副本数|1|1|1|1|1|1|1|
-|Multi-AZ|空值|空值|空值|空值|空值|空值|空值|
+|Multi-AZ|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |读取横向扩展|空值|空值|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
@@ -158,7 +158,7 @@ ms.locfileid: "92097586"
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |每个数据库的最小/最大弹性池 vCore 选项|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...16, 24, 32, 40|0, 0.25, 0.5, 1...16, 24, 32, 40, 80|
 |副本数|1|1|1|1|1|1|1|
-|Multi-AZ|空值|空值|空值|空值|空值|空值|空值|
+|Multi-AZ|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[在预览版中提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |读取横向扩展|空值|空值|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 

@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 25e6854491f35dd0aa46b5de218d312f57854760
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018913"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882205"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上 Service Fabric 群集的概述
 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 群集中的计算机或 VM 称为群集节点。 群集可以扩展到数千个节点。 如果向群集添加新节点，Service Fabric 会在新增加的节点间重新平衡服务分区副本和实例。 应用程序总体性能提高，访问内存的争用减少。 如果没有高效使用群集中的节点，可以减少群集中节点的数量。 Service Fabric 会再次在减少的节点间重新平衡分区副本和实例以更加充分利用每个节点上的硬件。
@@ -69,7 +69,7 @@ Service Fabric 群集是你拥有的资源。  你应保护群集，防止未经
 有关详细信息，请阅读[客户端到节点安全性](service-fabric-cluster-security.md#client-to-node-security)
 
 ### <a name="role-based-access-control"></a>基于角色的访问控制
-使用 azure RBAC)  (azure 基于角色的访问控制，可以分配对 Azure 资源的精细访问控制。  你可以为订阅、资源组和资源分配不同的访问规则。  除非在较低级别重写，否则 Azure RBAC 规则将沿着资源层次结构继承。  可以将 AAD 上的任何用户或用户组分配为 Azure RBAC 规则，以便指定的用户和组可以修改群集。  有关详细信息，请阅读 [Azure RBAC 概述](../role-based-access-control/overview.md)。
+Azure 基于角色的访问控制 (Azure RBAC) 允许对 Azure 资源分配精细的访问控制。  你可以为订阅、资源组和资源分配不同的访问规则。  除非在较低级别被覆盖，否则将按资源层次结构继承 Azure RBAC 规则。  可以使用 Azure RBAC 规则在 AAD 上分配任何用户或用户组，以便指定的用户和组可以修改你的群集。  有关详细信息，请阅读 [Azure RBAC 概述](../role-based-access-control/overview.md)。
 
 Service Fabric 还支持使用访问控制限制对不同用户组的某些群集操作的访问。 这就使得群集更加安全。 连接到群集的客户端支持两种访问控制类型：管理员角色和用户角色。  
 
@@ -94,16 +94,17 @@ Azure Service Fabric 群集是你拥有的，但部分由 Microsoft 管理的资
 ## <a name="supported-operating-systems"></a>支持的操作系统
 可以在运行以下操作系统的虚拟机上创建群集：
 
-| 操作系统 | 支持的最低 Service Fabric 版本 |
-| --- | --- |
-| Windows Server 2012 R2 | 所有版本 |
-| Windows Server 2016 | 所有版本 |
-| Windows Server 1709 | 6.0 |
-| Windows Server 1803 | 6.4 |
-| Windows Server 1809 | 6.4.654.9590 |
-| Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16.04 | 6.0 |
-| Linux Ubuntu 18.04 | 7.1 |
+| 操作系统 | 支持的最低 Service Fabric 版本 | 上次支持的 Service Fabric 版本 |
+| --- | --- | --- | 
+| Windows Server 2019 | 6.4.654.9590 | 空值 |
+| Windows Server 2016 | 所有版本 | 空值 |
+| Windows Server 20H2 | 7.2.445.9590 | 空值 |
+| Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
+| Windows Server 1803 | 6.4 | 7.2.445.9590 |
+| Windows Server 1709 | 6.0 | 7.2.445.9590 |
+| Windows Server 2012 | 所有版本 | 空值 | 
+| Linux Ubuntu 16.04 | 6.0 | 空值 |
+| Linux Ubuntu 18.04 | 7.1 | 空值 |
 
 有关其他信息，请参阅 [Azure 中支持的群集版本](./service-fabric-versions.md#supported-operating-systems)
 

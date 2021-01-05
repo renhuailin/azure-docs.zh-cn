@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 895b4529a8b99ecc66e3566b4696a0e61c337153
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483621"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881899"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -38,16 +38,23 @@ ms.locfileid: "96483621"
 >
 > 有关详细信息，请参阅：[媒体服务 v3的 Azure 门户限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
 
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="regional-availability"></a>区域可用性
+
+Azure 媒体服务现已在 Azure 门户的挪威东部区域提供。  此区域中不存在 restV2。
+
 ## <a name="october-2020"></a>2020 年 10 月
 
 ### <a name="basic-audio-analysis"></a>基本音频分析
-音频分析预设现在包含基本模式定价层。 新的基本音频分析器模式提供了一种低成本的选项，可以提取语音脚本并设置输出字幕和副标题的格式。 此模式执行语音到文本脚本和生成 VTT 副标题/标题文件。 此模式的输出包含一个 Insights JSON 文件，其中只包括关键字、脚本和计时信息。 此模式下不包含自动语言检测和发言人 diarization。 请参阅支持的 [语言列表。](analyzing-video-audio-files-concept.md#built-in-presets)
+
+音频分析预设现在包含基本模式定价层。 新的基本音频分析器模式提供了一种低成本的选项，可以提取语音脚本并设置输出字幕和副标题的格式。 此模式执行语音转文本听录并生成 VTT 字幕文件。 此模式的输出包括一个见解 JSON 文件，该文件仅包含关键字、听录和计时信息。 此模式不包括自动语言检测和说话人分割聚类。 请参阅支持的 [语言列表。](analyzing-video-audio-files-concept.md#built-in-presets)
 
 使用索引器 v1 和索引器 v2 的客户应该迁移到基本的音频分析预设。
 
 有关基本音频分析器模式的详细信息，请参阅 [分析视频和音频文件](analyzing-video-audio-files-concept.md)。  若要了解如何使用 REST API 的基本音频分析器模式，请参阅 [如何创建基本音频转换](how-to-create-basic-audio-transform.md)。
 
-## <a name="live-events"></a>直播活动
+### <a name="live-events"></a>直播活动
 
 当实时事件停止时，现在允许更新大多数属性。 此外，还允许用户为实时事件的输入和预览 Url 指定静态主机名的前缀。 现在调用 VanityUrl `useStaticHostName` ，以更好地反映属性的意图。
 
@@ -57,7 +64,7 @@ ms.locfileid: "96483621"
 
 实时编码现在添加了将固定关键帧间隔碎片输出到0.5 到20秒的功能。
 
-## <a name="accounts"></a>帐户
+### <a name="accounts"></a>帐户
 
 > [!WARNING]
 > 如果使用 2020-05-01 API 版本创建媒体服务帐户，则该帐户将不能用于 RESTv2 
@@ -158,8 +165,8 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 ### <a name="file-encoding-enhancements"></a>文件编码增强功能
 
 - 现在可以使用新的内容感知编码预设。 它使用内容感知编码生成一组符合 GOP 标准的 MP4。 不管输入内容是什么，该服务都会对输入内容执行初始的轻型分析。 它使用这些结果来确定最佳层数，以及适当的比特率和分辨率设置，方便通过自适应流式处理进行传递。 此预设特别适用于低复杂性和中复杂性的视频，其中的输出文件比特率较低，但其质量仍会为观众提供良好的体验。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[开放式 API 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
-- 改善了标准编码器中调整调整程序的性能和多线程处理。 在特定条件下，客户应看到 5-40% 的 VOD 编码获得性能提升。 编码成多比特率的低复杂性内容会显示最高的性能提升。 
-- 现在，在使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间针对可变帧速率 (VFR) 内容维持常规 GOP 节奏。  例如，在 15-30 fps 之间发生变化的客户提交混合帧速率内容现在应查看在输出到自适应比特率流式处理的文件时计算的常规 GOP 距离。 这会提高通过 HLS 或 DASH 进行交付时在跟踪之间无缝切换的功能。 
+- 改善了标准编码器中大小重设器的性能和多线程处理。 在特定条件下，客户应看到 5-40% 的 VOD 编码获得性能提升。 编码成多比特率的低复杂性内容会显示最高的性能提升。 
+- 现在，在使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间针对可变帧速率 (VFR) 内容维持常规 GOP 节奏。  这意味着，如果提交的混合帧速率内容存在差异（例如 15-30 fps），客户现在会看到常规的 GOP 距离，此类距离根据自适应比特率流式处理 MP4 文件的输出进行计算。 这会提高通过 HLS 或 DASH 进行交付时在跟踪之间无缝切换的功能。 
 -  改进了可变帧速率 (VFR) 源内容的 AV 同步
 
 ### <a name="video-indexer-video-analytics"></a>视频索引器，视频分析
@@ -196,7 +203,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 #### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布弃用 Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器，这两个处理器将停用。 有关停用日期，请参阅此 [旧组件](../previous/legacy-components.md) 一文。
+我们宣布弃用 Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器，这两个处理器将停用。 有关停用日期，请参阅此[旧组件](../previous/legacy-components.md)文章。
 
 有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](../previous/migrate-windows-azure-media-encoder.md) 和[将 AME 迁移到 Media Encoder Standard](../previous/migrate-azure-media-encoder.md)。
  
@@ -246,7 +253,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 添加了包括媒体服务性能改进的更新。
 
-* 更新了支持处理的最大文件大小。 请参阅、 [配额和限制](limits-quotas-constraints.md)。
+* 更新了支持处理的最大文件大小。 请参阅[配额和限制](limits-quotas-constraints.md)。
 * [编码速度改进](concept-media-reserved-units.md)。
 
 ## <a name="april-2019"></a>2019 年 4 月
@@ -361,7 +368,7 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](/cli/azure/ams?v
 
 #### <a name="azure-active-directory-authentication-and-azure-rbac"></a>Azure Active Directory 身份验证和 Azure RBAC
 
-Azure AD 身份验证和 Azure 基于角色的访问控制 (Azure RBAC) 按角色或用户在 Azure AD 中启用安全转换、LiveEvents、内容密钥策略或资产。
+Azure AD 身份验证和 Azure 基于角色的访问控制 (Azure RBAC) 通过 Azure AD 中的角色或用户启用安全转换、实时事件、内容密钥策略或资产。
 
 #### <a name="client-sdks"></a>客户端 SDK  
 

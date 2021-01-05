@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 82b786f3c90a7ef482ccbcd6e66fb9abfc4eea5f
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4e974d93b5b7550081abcd7e251c7eda265a2397
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561930"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882953"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 上启用启用了 Arc 的 Kubernetes 群集的 PHP 留言簿无状态应用程序
 
@@ -27,13 +27,15 @@ ms.locfileid: "97561930"
 
 此过程适用于已 [在 Azure Stack Edge Pro 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ](../azure-arc/kubernetes/overview.md)的概念。
 
+> [!NOTE]
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ## <a name="prerequisites"></a>先决条件
 
 在部署无状态应用程序之前，请确保已在设备和将用于访问该设备的客户端上完成以下先决条件：
 
 > [!NOTE]
-> 本文包含对字词从属的引用，这是 Microsoft 不再使用的术语。 从软件中删除该字词后，我们会将其从本文中删除。
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ### <a name="for-device"></a>对于设备
 
@@ -108,7 +110,6 @@ ms.locfileid: "97561930"
 1. 部署需花费几分钟时间。 部署完成后， **操作员状态** 显示为 " **已安装**"。
 
     ![屏幕截图显示处于已安装状态的已启用 Azure Arc Kubernetes 群集。](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
-
 
 ## <a name="verify-deployment"></a>验证部署
 

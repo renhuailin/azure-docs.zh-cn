@@ -3,16 +3,16 @@ title: 浏览 Azure 资源
 description: 了解如何使用 Resource Graph 查询语言浏览资源并发现资源的连接方式。
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2b0ef3935d865618a9d4dda2825f7d4383baf772
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 01f9c0c574d8a8d6d4b5f06fc1398313649cfb8d
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056236"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882902"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 浏览 Azure 资源
 
-Azure Resource Graph 提供快速、大规模浏览和发现 Azure 资源的功能。 设计用于快速响应，这是了解环境以及 Azure 资源上存在的属性的好办法。
+Azure Resource Graph 提供快速、大规模浏览和发现 Azure 资源的功能。 它专为快速响应而设计，是了解你的环境以及 Azure 资源中的属性的好方法。
 
 ## <a name="explore-virtual-machines"></a>浏览虚拟机
 
@@ -104,11 +104,11 @@ JSON 结果的结构类似于下面的示例：
 ]
 ```
 
-属性告诉我们有关虚拟机资源本身的其他信息。 这些属性包括：操作系统、磁盘、标记以及其所属的资源组和订阅。
+这些属性可告知有关虚拟机资源本身的其他信息。 这些属性包括：操作系统、磁盘、标签、资源组及其所属订阅。
 
 ### <a name="virtual-machines-by-location"></a>按位置列出的虚拟机
 
-根据我们对虚拟机资源的了解，我们使用“位置”**** 属性按位置计算所有虚拟机。 要更新查询，我们将删除限制并汇总位置值的计数。
+根据我们对虚拟机资源的了解，我们使用“位置”属性按位置计算所有虚拟机。 要更新查询，我们将删除限制并汇总位置值的计数。
 
 ```kusto
 Resources
@@ -147,7 +147,7 @@ JSON 结果的结构类似于下面的示例：
 
 ### <a name="virtual-machines-by-sku"></a>按 SKU 列出的虚拟机
 
-回到原始虚拟机属性，尝试查找 SKU 大小为“Standard_B2s”**** 的所有虚拟机。 查看返回的 JSON，我们看到它存储在 properties.hardwareprofile.vmsize**** 中。 我们将更新查询以查找与此大小匹配的所有 VM，并仅返回 VM 和区域的名称。
+回到原始虚拟机属性，尝试查找 SKU 大小为“Standard_B2s”的所有虚拟机。 查看返回的 JSON，我们看到它存储在 properties.hardwareprofile.vmsize中。 我们将更新查询以查找与此大小匹配的所有 VM，并仅返回 VM 和区域的名称。
 
 ```kusto
 Resources
@@ -165,7 +165,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>连接到高级托管磁盘的虚拟机
 
-若要获取连接到这些 **Standard_B2s** 虚拟机的高级托管磁盘的详细信息，请展开查询以返回这些托管磁盘的资源 ID。
+如果要获取附加到这些 Standard_B2s 虚拟机的高级托管磁盘的详细信息，可以扩展查询以返回这些托管磁盘的资源 ID。
 
 ```kusto
 Resources
@@ -174,9 +174,6 @@ Resources
 | where disk.storageAccountType == 'Premium_LRS'
 | project disk.id
 ```
-
-> [!NOTE]
-> 获得 SKU 的另一种方法是使用 aliases**** 属性 Microsoft.Compute/virtualMachines/sku.name****。 请参阅[显示别名](../samples/starter.md#show-aliases)和[显示不同的别名值](../samples/starter.md#distinct-alias-values)示例。
 
 ```azurecli-interactive
 az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
@@ -207,8 +204,8 @@ Resources
 | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-在运行查询之前，如何知道“类型”**** 现在是 Microsoft.Compute/disks****？ 如果查看完整 ID，会看到作为字符串一部分的 /providers/Microsoft.Compute/disks/****。
-此字符串片段为你提供了要搜索的类型的提示。 另一种方法是按类型删除限制，而只搜索 ID 字段。 由于 ID 是唯一的，因此只返回一条记录，并且 ID 的 type**** 属性提供该详细信息。
+在运行查询之前，如何知道“类型”现在是 Microsoft.Compute/disks？ 如果查看完整 ID，会看到作为字符串一部分的 /providers/Microsoft.Compute/disks/。
+此字符串片段为你提供了要搜索的类型的提示。 另一种方法是按类型删除限制，而只搜索 ID 字段。 由于 ID 是唯一的，因此只返回一条记录，并且 ID 的 type 属性提供该详细信息。
 
 > [!NOTE]
 > 要使此示例起作用，必须使用自己的环境中的结果替换 ID 字段。

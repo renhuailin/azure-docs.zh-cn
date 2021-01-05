@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 36e73ceddaa5e3f9cbbf4a41f76a4ba6d70eed0f
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 50e199d2d56016086bb409f8690e9828f1d19984
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979957"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881503"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>使用 Azure Monitor 中的应用程序更改分析（预览版）
 
@@ -183,7 +183,6 @@ foreach ($webapp in $webapp_list)
     ```
 
 - **注册 ChangeAnalysis 资源提供程序失败**。 此消息意味着 UI 发送请求以注册资源提供程序时，会立即失败，这与权限问题无关。 可能是暂时性的 internet 连接问题。 请尝试刷新页面并检查你的 internet 连接。 如果错误仍然存在，请联系 changeanalysishelp@microsoft.com
-- **无法查询 ChangeAnalysis 资源提供程序** *，因为不支持消息 Azure lighthouse 订阅，只能在订阅的 home 租户中使用这些更改*。 现在，对于不在 home 租户中的用户，将通过 Azure Lighthouse 订阅注册更改分析资源提供程序存在限制。 在不久的将来，我们预计会解决此限制。 如果这是你的阻塞问题，则有一种解决方法，涉及到创建服务主体，并显式分配角色以允许访问。  请联系 changeanalysishelp@microsoft.com 以了解更多相关信息。
 
 - **此时间比预期时间长**。 此消息表示注册花费的时间超过2分钟。 这种情况很罕见，但并不一定表示出现了问题。 可以中转到 " **订阅" |** 用于检查 **ChangeAnalysis** 资源提供程序注册状态的资源提供程序。 可以尝试使用 UI 注销、重新注册或刷新，以查看是否有帮助。 如果问题仍然存在，请联系 changeanalysishelp@microsoft.com 以获得支持。
     ![排除 RP 注册花费的时间过长](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
@@ -191,6 +190,10 @@ foreach ($webapp in $webapp_list)
 ![选择了疑难解答工具的虚拟机的 "诊断和解决问题" 工具的屏幕截图。](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
 
 ![用于分析虚拟机的最新更改故障排除工具的磁贴的屏幕截图。](./media/change-analysis/analyze-recent-changes.png)
+
+### <a name="azure-lighthouse-subscription-is-not-supported"></a>不支持 Azure Lighthouse 订阅
+
+- **无法查询 ChangeAnalysis 资源提供程序** *，因为不支持消息 Azure lighthouse 订阅，只能在订阅的 home 租户中使用这些更改*。 现在，对于不在 home 租户中的用户，将通过 Azure Lighthouse 订阅注册更改分析资源提供程序存在限制。 在不久的将来，我们预计会解决此限制。 如果这是你的阻塞问题，则有一种解决方法，涉及到创建服务主体，并显式分配角色以允许访问。  请联系 changeanalysishelp@microsoft.com 以了解更多相关信息。
 
 ## <a name="next-steps"></a>后续步骤
 

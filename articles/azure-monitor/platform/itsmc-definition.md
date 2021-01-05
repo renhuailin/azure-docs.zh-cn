@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 1f7a493c071e86114afd7d4a9e08e204bbab509d
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 20c59e5ecc24dfe5c9eadb05899bf37d39ce09e7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809473"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882277"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -129,7 +129,22 @@ ms.locfileid: "97809473"
 
 9. 如果 **为每个配置项目选择 "创建单独的工作项**"，则每个配置项都将有自己的工作项。 这意味着每个配置项目都有一个工作项。
 
-    * 在工作项下拉列表中选择 "事件" 或 "警报"：如果清除了 " **为每个配置项目创建单独的工作项** " 复选框，则每个警报都将创建一个新的工作项。 每个配置项目可能有多个警报。
+    * 在工作项下拉列表中选择 "事件" 或 "警报"： 
+        * 如果选中 " **为每个配置项目创建单独的工作项** " 复选框，则每个警报都将创建一个新的工作项。 在 ITSM 系统中，每个配置项目可以有多个工作项。
+
+            例如：
+            1) 包含3个配置项目的警报1： A，B，C 将创建3个工作项。
+            2) 带有1个配置项目的警报2： D 将创建1个工作项。
+
+                **在此流结束时，将出现4个警报**
+        * 如果清除了 " **为每个配置项目创建单独的工作项** " 复选框，则会出现不会创建新工作项的警报。 将根据警报规则合并工作项。
+
+            例如：
+            1) 包含3个配置项目的警报1： A，B，C 将创建1个工作项。
+            2) 与第1阶段中具有1个配置项目： D 的相同警报规则的警报2将合并到阶段1中的工作项。
+            3) 警报3对于具有1个配置项目的不同警报规则： E 将创建1个工作项。
+
+                **在此流结束时，将出现2个警报**
 
        ![显示 ITSM 事件窗口的屏幕截图。](media/itsmc-overview/itsm-action-configuration.png)
 

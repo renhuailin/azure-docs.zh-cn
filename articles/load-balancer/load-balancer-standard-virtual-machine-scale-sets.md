@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: irenehua
-ms.openlocfilehash: fdca40d5113f06d185255be2e237cb52b47e9793
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 7e1df754a4a4ca5878d93d53282fd39191313b54
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697435"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883157"
 ---
 # <a name="azure-load-balancer-with-azure-virtual-machine-scale-sets"></a>Azure 负载均衡器和 Azure 虚拟机规模集
 
@@ -27,26 +27,14 @@ ms.locfileid: "94697435"
 ## <a name="port-forwarding-and-inbound-nat-rules"></a>端口转发和入站 NAT 规则：
   * 创建规模集后，无法为负载均衡器的运行状况探测所用的负载均衡规则修改后端端口。 为了更改端口，可以通过更新 Azure 虚拟机规模集来删除运行状况探测，更新端口，然后重新配置运行状况探测。
   * 在负载均衡器的后端池中使用虚拟机规模集时，会自动创建默认的入站 NAT 规则。
+  
 ## <a name="inbound-nat-pool"></a>入站 NAT 池：
   * 每个虚拟机规模集必须有至少一个入站 NAT 池。 
   * 入站 NAT 池是入站 NAT 规则的集合。 一个入站 NAT 池不能支持多个虚拟机规模集。
-  * 若要从现有虚拟机规模集中删除 NAT 池，需要先从规模集中删除 NAT 池。 下面显示了一个使用 CLI 的完整示例：
-```azurecli-interactive
-  az vmss update
-     --resource-group MyResourceGroup
-     --name MyVMSS
-     --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools
-  az vmss update-instances
-     -–instance-ids *
-     --resource-group MyResourceGroup
-     --name MyVMSS
-  az network lb inbound-nat-pool delete
-     --resource-group MyResourceGroup
-     -–lb-name MyLoadBalancer
-     --name MyNatPool
-```
+
 ## <a name="load-balancing-rules"></a>负载均衡规则：
   * 在负载均衡器的后端池中使用虚拟机规模集时，会自动创建默认的负载均衡规则。
+  
 ## <a name="outbound-rules"></a>出站规则：
   *  若要为已被负载均衡规则引用的后端池创建出站规则，需要先在创建入站负载均衡规则时在门户中将“创建隐式出站规则”标记为“否”。 
 
@@ -57,3 +45,4 @@ ms.locfileid: "94697435"
 * [使用 Azure 门户配置包含现有 Azure 负载均衡器的虚拟机规模集](./configure-vm-scale-set-portal.md)。
 * [使用 Azure PowerShell 配置包含现有 Azure 负载均衡器的虚拟机规模集](./configure-vm-scale-set-powershell.md)。
 * [使用 Azure CLI 配置包含现有 Azure 负载均衡器的虚拟机规模集](./configure-vm-scale-set-cli.md)。
+* [更新或删除虚拟机规模集使用的现有 Azure 负载均衡器](./update-load-balancer-with-vm-scale-set.md)

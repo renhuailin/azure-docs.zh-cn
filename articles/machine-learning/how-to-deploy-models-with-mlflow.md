@@ -11,27 +11,27 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1159a6cfda6b877f04573c85fa437ce3bff81af1
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: b905b050752e2a6b7acd11e82420c0b0203dfcd1
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97761656"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882188"
 ---
 # <a name="deploy-mlflow-models-with-azure-machine-learning-preview"></a>利用 Azure 机器学习 (预览版部署 MLflow 模型) 
 
-在本文中，了解如何将 MLflow 模型部署为 Azure 机器学习 web 服务，以便你可以利用 Azure 机器学习的模型管理和数据偏差检测功能到生产模型。
+在本文中，了解如何将 [MLflow](https://www.mlflow.org) 模型部署为 Azure 机器学习 web 服务，以便你可以利用 Azure 机器学习的模型管理和数据偏差检测功能到生产模型。
 
 Azure 机器学习提供的部署配置：
 * Azure 容器实例 (ACI) 这是一种适用于快速开发测试部署的合适选择。
 * Azure Kubernetes Service (AKS) 建议用于可缩放的生产部署。
 
-[MLflow](https://www.mlflow.org) 是一个开放源代码库，用于管理机器学习试验的生命周期。 它与 Azure 机器学习的集成使你可以将此管理扩展到模型训练阶段之外，将其扩展到生产模型的部署阶段。
+MLflow 是一个开放源代码库，用于管理机器学习试验的生命周期。 它与 Azure 机器学习的集成使你可以将此管理范围从模型定型阶段扩展到生产模型的部署阶段。
 
 >[!NOTE]
 > 作为开放源代码库，MLflow 会经常更改。 因此，通过 Azure 机器学习和 MLflow 集成提供的功能应视为预览版，Microsoft 并不完全支持它。
 
-下图演示了使用 MLflow 部署 API，你可以将现有的 MLflow 模型部署为 Azure 机器学习 web 服务，尽管它们的框架有： PyTorch、Tensorflow、scikit-learn、ONNX 等，并管理你的工作区中的生产模型。
+下图演示了通过 MLflow 部署 API 和 Azure 机器学习，你可以部署用常用框架（如 PyTorch、Tensorflow、scikit-learn 等）创建的模型，如 Azure 机器学习 web 服务和在你的工作区中管理它们。 
 
 ![ 使用 Azure 机器学习部署 mlflow 模型](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
@@ -40,9 +40,11 @@ Azure 机器学习提供的部署配置：
 
 ## <a name="prerequisites"></a>先决条件
 
-* [设置 MLflow 跟踪 URI 以连接 Azure 机器学习](how-to-use-mlflow.md)。
+* 机器学习模型。 如果没有训练的模型，请在 [此](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) 存储库中找到最适合计算方案的笔记本示例，并按照说明进行操作。 
+* [设置 MLflow 跟踪 URI 以连接 Azure 机器学习](how-to-use-mlflow.md#track-local-runs)。
 * 安装 `azureml-mlflow` 包。 
     * 此包会自动引入 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) 的 `azureml-core`，它为 MLflow 访问工作区提供了连接。
+* 查看 [在工作区中执行 MLflow 操作所需的访问权限](how-to-assign-roles.md#mlflow-operations)。 
 
 ## <a name="deploy-to-aci"></a>部署到 ACI
 
@@ -140,7 +142,7 @@ webservice.wait_for_deployment()
 
 ## <a name="example-notebooks"></a>示例笔记本
 
-[将 MLflow 与 Azure ML 笔记本配合使用](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow)演示了本文中所述的概念，并在这些概念的基础上有所延伸。
+[将 MLflow 与 Azure 机器学习笔记本配合使用](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow)演示了本文中所述的概念，并在这些概念的基础上有所延伸。
 
 > [!NOTE]
 > 可在 https://github.com/Azure/azureml-examples 找到使用 mlflow 的社区主导的示例存储库。
@@ -150,3 +152,4 @@ webservice.wait_for_deployment()
 * [管理模型](concept-model-management-and-deployment.md)。
 * 监视生产模型中的[数据偏移](./how-to-enable-data-collection.md)。
 * [使用 MLflow 跟踪 Azure Databricks 运行](how-to-use-mlflow-azure-databricks.md)。
+

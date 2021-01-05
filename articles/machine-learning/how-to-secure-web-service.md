@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 11/18/2020
+ms.date: 01/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 86cd5a5cbbb17dc3d3e4d56e4267be2718f6081d
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 14e4fda6ef36dd8fc57529046473d8afa916ef2c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830864"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880964"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 保护通过 Azure 机器学习部署的 Web 服务
 
@@ -168,7 +168,7 @@ TLS/SSL 证书已过期，必须续订。 通常每年都会发生这种情况�
 
 ### <a name="update-a-microsoft-generated-certificate"></a>更新 Microsoft 生成的证书
 
-如果证书最初由 Microsoft 生成（使用 leaf_domain_label 创建服务），请使用以下某个示例更新证书：
+如果证书最初是由 Microsoft (生成的，则在使用 *leaf_domain_label* 创建服务) 时，该证书将在需要时 **自动续订** 。 如果要手动续订该证书，请使用以下示例之一更新证书：
 
 > [!IMPORTANT]
 > * 如果现有证书仍然有效，请使用 `renew=True` (SDK) 或 `--ssl-renew` (CLI) 强制执行配置以续订该证书。 例如，如果现有证书在 10 天内仍然有效，并且你不使用 `renew=True`，则可能不会续订该证书。

@@ -3,12 +3,12 @@ title: 使用虚拟网络的方案
 description: 将容器组部署到 Azure 虚拟网络的方案、资源和限制。
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5e9c1d1606a9ad491ba7a7e623f1606717aa5b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569163"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882426"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>虚拟网络方案和资源
 
@@ -41,6 +41,7 @@ ms.locfileid: "89569163"
 * 不能在部署到虚拟网络的容器组中使用[托管标识](container-instances-managed-identity.md)。
 * 不能在部署到虚拟网络的容器组中启用[运行情况探测](container-instances-liveness-probe.md)或[就绪情况探测](container-instances-readiness-probe.md)。
 * 由于涉及到其他网络资源，部署到虚拟网络通常比部署标准容器实例要慢。
+* 如果要将容器组连接到 Azure 存储帐户，则必须将 [服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md) 添加到该资源。
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
@@ -79,7 +80,7 @@ ms.locfileid: "89569163"
 * 有关使用 Azure CLI 的部署示例，请参阅[将容器实例部署到 Azure 虚拟网络](container-instances-vnet.md)。
 * 若要使用资源管理器模板部署新的虚拟网络、子网、网络配置文件和容器组，请参阅 [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 )（使用 VNet 创建 Azure 容器组）。
-* 使用 [Azure 门户](container-instances-quickstart-portal.md) 创建容器实例时，还可以在 " **网络** " 选项卡上为新的或 exsting 的虚拟网络提供设置。
+* 使用 [Azure 门户](container-instances-quickstart-portal.md)创建容器实例时，还可以在“网络”选项卡上为新的或现有的虚拟网络提供设置。
 
 
 <!-- IMAGES -->

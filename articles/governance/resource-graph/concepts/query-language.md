@@ -3,12 +3,12 @@ title: 理解查询语言
 description: 介绍 Resource Graph 表以及可用于 Azure Resource Graph 的 Kusto 数据类型、运算符和函数。
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 34aaaa60ed9d757cc1a63ffaebb2225900cff61f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3023991c76d94dc8aa87cfe950c18ab5d6a07ba9
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966677"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883055"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -24,9 +24,9 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每个运算�
 
 ## <a name="resource-graph-tables"></a>Resource Graph 表
 
-Resource Graph 为其存储的有关 Azure 资源管理器资源类型及其属性的数据提供多个表。 某些表可以与 `join` or 运算符一起使用 `union` ，以从相关资源类型中获取属性。 下面是 Resource Graph 中可用表的列表：
+Resource Graph 为其存储的有关 Azure 资源管理器资源类型及其属性的数据提供多个表。 一些表可以与 `join` 或 `union` 运算符配合使用，以便从相关资源类型获取属性。 下面是 Resource Graph 中可用表的列表：
 
-|资源图表表 |可以 `join` ？ |说明 |
+|Resource Graph 表 |可以 `join`？ |说明 |
 |---|---|
 |资源 |是 |如果未在查询中定义，则为默认表。 此处显示了大多数资源管理器资源类型和属性。 |
 |ResourceContainers |是 |包括订阅（预览版 -- `Microsoft.Resources/subscriptions`）和资源组 (`Microsoft.Resources/subscriptions/resourcegroups`) 资源类型和数据。 |
@@ -123,7 +123,7 @@ Resource Graph 支持部分 KQL [数据类型](/azure/kusto/query/scalar-data-ty
 |KQL |Resource Graph 示例查询 |说明 |
 |---|---|---|
 |[计数](/azure/kusto/query/countoperator) |[对密钥保管库进行计数](../samples/starter.md#count-keyvaults) | |
-|[distinct](/azure/kusto/query/distinctoperator) |[显示特定别名的非重复值](../samples/starter.md#distinct-alias-values) | |
+|[distinct](/azure/kusto/query/distinctoperator) |[显示包含存储的资源](../samples/starter.md#show-storage) | |
 |[extend](/azure/kusto/query/extendoperator) |[按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os) | |
 |[join](/azure/kusto/query/joinoperator) |[具有订阅名称的密钥保管库](../samples/advanced.md#join) |支持的联接类型：[innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/kusto/query/joinoperator#inner-join)、[leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 单个查询中的 `join` 限制为 3。 不允许使用自定义联接策略，如广播联接。 对于可使用的表 `join` ，请参阅 [资源关系图表](#resource-graph-tables)。 |
 |[limit](/azure/kusto/query/limitoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |的同义词 `take` 。 不适用于 [Skip](./work-with-data.md#skipping-records)。 |

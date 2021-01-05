@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/21/2020
+ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e842e4d2a4dbd118840498587696df085b07700
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: d56ed0cdae9046cb7d76f7d74545309ee6292ecd
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722889"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883089"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -83,6 +83,8 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 
 ## <a name="change-log"></a>更改日志
 
+- 01/04/2021：将 SAP HANA 的新 Azure 区域添加到 [azure 上的 azure (大型实例上) ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- 12/29/2020：[通过 Azure 可用性区域为 SAP 工作负荷配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)中的特定 Azure 区域添加体系结构建议
 - 12/21/2020：将新证书添加到[可用 sku](./hana-available-skus.md)中的 HANA 大型实例的 sku
 - 12/12/2020：添加了指向 SAP 的指针备注阐明 SAP 的 Oracle Enterprise Linux 支持的详细信息 [Azure 部署支持的 sap 软件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support)
 - 11/26/2020：将[SAP 工作负荷的](./planning-guide-storage.md) [azure 虚拟机存储配置](./hana-vm-operations-storage.md)和 azure 存储类型 SAP HANA 改编为更改了单一[VM sla](https://azure.microsoft.com/support/legal/sla/virtual-machines)

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 10/08/2020
 ms.author: alkohli
-ms.openlocfilehash: e93a7fd7aec5463a3d77bd9d6bb17d7072097870
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5e6f411fef5d3e27b6ad61b720f1c64fb6f8c9a0
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447635"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883327"
 ---
 # <a name="troubleshoot-activation-issues-on-your-azure-stack-edge-pro-gpu-device"></a>排查 Azure Stack Edge Pro GPU 设备上的激活问题 
 
@@ -31,7 +31,7 @@ ms.locfileid: "96447635"
 | 如果在使用激活密钥激活设备前删除了用于激活的 Azure Key Vault，则会收到此错误。 <br> ![密钥保管库错误1](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-1.png)  | 如果已删除密钥保管库，则可以在保管库处于清除保护期间时恢复密钥保管库。 按照 [恢复密钥保管库](../key-vault/general/key-vault-recovery.md#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates)中的步骤操作。 <br>如果清除保护持续时间已过，则无法恢复密钥保管库。 联系 Microsoft 支持部门了解后续步骤。 |
 | 如果在激活设备后删除了 Azure Key Vault，然后尝试执行涉及加密的任何操作，例如： **添加用户**、 **添加共享**、 **配置计算**，则会收到此错误。 <br> ![密钥保管库错误2](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-2.png)    | 如果已删除密钥保管库，则可以在保管库处于清除保护期间时恢复密钥保管库。 按照恢复密钥保管库中的步骤操作。 <br>如果清除保护持续时间已过，则无法恢复密钥保管库。 联系 Microsoft 支持部门了解后续步骤。 |
 | 如果删除了 Azure Key Vault 中的通道完整性密钥，然后尝试执行涉及加密的任何操作，例如： **添加用户**、 **添加共享**、 **配置计算** ，则会收到此错误。 <br> ![密钥保管库错误3](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-3.png) | 如果密钥保管库中的通道完整性密钥被删除，但仍处于清除持续时间内，请按照 [撤消密钥保管库密钥删除](/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval)中的步骤进行操作。 <br>如果清除保护持续时间已过，并且备份了密钥，则可以从备份还原，否则无法恢复密钥。 联系 Microsoft 支持部门了解后续步骤。 |
-| 如果因任何错误而导致激活密钥生成失败，则会收到此错误。 通知中提供了更多详细信息。 <br> ![密钥保管库错误4](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-4.png)   | 请等待几分钟，然后重试该操作。 如果问题持续出现，请联系 Microsoft 支持。 |
+| 如果因任何错误而导致激活密钥生成失败，则会收到此错误。 通知中提供了更多详细信息。 <br> ![密钥保管库错误4](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-4.png)   | 请确保防火墙 [后面的 access Azure Key Vault](../key-vault/general/access-behind-firewall.md) 中指定的端口和 url 在防火墙上打开，以便访问 Key Vault。 请等待几分钟，然后重试该操作。 如果问题持续出现，请联系 Microsoft 支持。 |
 | 如果用户具有只读权限，则不允许用户生成激活密钥并显示此错误。 <br> ![Key vault 错误5](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-5.png) | 这可能是因为你没有正确的访问权限，或者  *KeyVault* 未注册。<li>请确保在用于 Azure Stack Edge 资源的资源组级别拥有 "所有者" 或 "参与者" 访问权限。</li><li>请确保已注册 KeyVault 资源提供程序。 若要注册资源提供程序，请访问用于 Azure Stack Edge 资源的订阅。 请参阅 **资源提供程序**，搜索 *KeyVault* 并选择并 **注册**。</li> |
 
 ## <a name="next-steps"></a>后续步骤

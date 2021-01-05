@@ -3,12 +3,12 @@ title: 通过 Azure 资源运行状况支持的资源类型 | Microsoft Docs
 description: 通过 Azure 资源运行状况支持的资源类型
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 79f979b55366d29ca8cf22a1e65ebdcc557ef594
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1b0958732a96786b2fb86b2b145f5cb8d36c0c5a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899485"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883361"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
@@ -119,7 +119,7 @@ ms.locfileid: "92899485"
 |---|
 |<ul><li>IoT 中心在正常运行吗？</li></ul>|
 
-## <a name="microsoftdigitaltwinsdigitaltwinsinstances"></a>DigitalTwins/DigitalTwinsInstances
+## <a name="microsoftdigitaltwinsdigitaltwinsinstances"></a>Microsoft.DigitalTwins/DigitalTwinsInstances
 |执行的检查|
 |---|
 |<ul><li>Azure 数字孪生实例是否已启动并正在运行？</li></ul>|
@@ -168,6 +168,11 @@ ms.locfileid: "92899485"
 |执行的检查|
 |---|
 |<ul><li>应用程序网关的性能是否下降了？</li><li>应用程序网关是否可用？</li></ul>|
+
+## <a name="microsoftnetworkbastionhosts"></a>Bastionhosts/网络
+|执行的检查|
+|---|
+|<ul><li>堡垒主机是否已启动并正在运行？</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |执行的检查|

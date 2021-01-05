@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 01/04/2020
 ms.author: b-juche
-ms.openlocfilehash: ceaf0209dd14c8d97088d7f8e8e6990429607089
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e74b729f837c8e6ebe86514a01b6c8bdddc616e4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591816"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881083"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建双重协议 (NFSv3 和 SMB) 卷
 
 Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议创建卷。 本文介绍如何创建使用 NFSv3 和 SMB 的双重协议的卷，并支持 LDAP 用户映射。  
 
 
-## <a name="before-you-begin"></a>在开始之前 
+## <a name="before-you-begin"></a>开始之前 
 
 * 你必须已创建容量池。  
     请参阅 [设置容量池](azure-netapp-files-set-up-capacity-pool.md)。   
@@ -39,7 +39,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议
 * 在 DNS 服务器上创建反向查找区域，然后在该反向查找区域中的 AD 主机计算机 (PTR) 记录中添加一个指针。 否则，双协议卷创建将会失败。
 * 确保 NFS 客户端是最新的，并且正在运行操作系统的最新更新。
 * 确保 Active Directory (AD) LDAP 服务器已在 AD 上启动并运行。 为此，可以在 AD 计算机上安装和配置 [Active Directory 轻型目录服务 (AD LDS) ](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) 角色。
-* 确保使用 [Active Directory 证书服务 (AD CS) ](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 角色在 ad 上创建证书颁发机构 (ca) ，以生成和导出自签名根 CA 证书。   
+* 确保使用 [Active Directory 证书服务 (AD CS) ](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 角色为 ad 创建证书颁发机构 (CA) ，以生成和导出自签名根 CA 证书。   
 * 双协议卷当前不支持 Azure Active Directory 域服务 (AADDS) 。  
 * 双协议卷使用的 NFS 版本为 NFSv3。 因此，请注意以下事项：
     * 双重协议不支持 `set/get` 来自 NFS 客户端的 WINDOWS acl 扩展属性。
@@ -132,7 +132,8 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议
     * 已加入域并已安装根证书的基于 Windows 的客户端 
     * 包含根证书的域中的另一台计算机  
 
-3. 导出根证书。  
+3. 导出根 CA 证书。  
+    可以从 "个人" 或 "受信任的根证书颁发机构" 导出根 CA 证书。   
     确保将证书导出为64编码的 x.509 (。CER) 格式： 
 
     ![证书导出向导](../media/azure-netapp-files/certificate-export-wizard.png)

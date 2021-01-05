@@ -3,12 +3,12 @@ title: 排查常见错误
 description: 了解如何排查为 Kubernetes 创建策略定义、各种 SDK 和加载项时遇到的问题。
 ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b88d00575adb571c59b562d25067c4a1716fb50f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510992"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882970"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>排查使用 Azure Policy 时出现的错误
 
@@ -36,7 +36,7 @@ Azure Policy 使用[别名](../concepts/definition-structure.md#aliases)映射�
 
 #### <a name="resolution"></a>解决方法
 
-首先，验证资源管理器属性是否有别名。 使用 [Visual Studio Code 的 Azure Policy 扩展](../how-to/extension-for-vscode.md)、[Azure Resource Graph](../../resource-graph/samples/starter.md#distinct-alias-values) 或 SDK 来查找可用别名。 如果资源管理器属性没有别名，请创建支持票证。
+首先，验证资源管理器属性是否有别名。 使用 [Azure Policy extension Visual Studio Code](../how-to/extension-for-vscode.md) 或 SDK 查找可用别名。 如果资源管理器属性没有别名，请创建支持票证。
 
 ### <a name="scenario-evaluation-details-not-up-to-date"></a>方案：评估详细信息不是最新的
 

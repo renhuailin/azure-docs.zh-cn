@@ -4,15 +4,15 @@ description: 可在 Azure 监视器中为每种资源类型使用的指标的列
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 12/09/2020
+ms.date: 01/04/2021
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 04f6cdae8a7601f94251516cf5c3c1fab07994a6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 54ef00d32cea26a41581fc0bbd89d2be34919c02
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929100"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883021"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
 
@@ -618,8 +618,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 |指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
-|已用 CPU 信用额度|是|已用 CPU 信用额度|计数|平均值|虚拟机使用的总信用点数|无维度|
-|剩余 CPU 信用额度|是|剩余 CPU 信用额度|计数|平均值|可用来集中使用的总信用点数|无维度|
+|已用 CPU 信用额度|是|已用 CPU 信用额度|计数|平均值|虚拟机使用的总信用额度。 仅适用于 [B 系列可突增 vm](../../virtual-machines/sizes-b-series-burstable.md)。 请参阅 |无维度|
+|剩余 CPU 信用额度|是|剩余 CPU 信用额度|计数|平均值|可用于突发的总点数。 仅适用于 [B 系列可突增 vm](../../virtual-machines/sizes-b-series-burstable.md)。|无维度|
 |数据磁盘带宽消耗百分比|是|数据磁盘带宽消耗百分比|百分比|平均值|每分钟使用的数据磁盘带宽百分比|LUN|
 |已使用的数据磁盘 IOPS 的百分比|是|已使用的数据磁盘 IOPS 的百分比|百分比|平均值|每分钟使用的数据磁盘 i/o 百分比|LUN|
 |数据磁盘队列深度|是|数据磁盘队列深度（预览版）|计数|平均值|数据磁盘队列深度(或队列长度)|LUN|
@@ -671,8 +671,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 |指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
-|已用 CPU 信用额度|是|已用 CPU 信用额度|计数|平均值|虚拟机使用的总信用点数|无维度|
-|剩余 CPU 信用额度|是|剩余 CPU 信用额度|计数|平均值|可用来集中使用的总信用点数|无维度|
+|已用 CPU 信用额度|是|已用 CPU 信用额度|计数|平均值|虚拟机使用的总信用额度。 仅适用于 [B 系列可突增 vm](../../virtual-machines/sizes-b-series-burstable.md)。|无维度|
+|剩余 CPU 信用额度|是|剩余 CPU 信用额度|计数|平均值|可用于突发的总点数。 仅适用于 [B 系列可突增 vm](../../virtual-machines/sizes-b-series-burstable.md)。|无维度|
 |数据磁盘队列深度|是|数据磁盘队列深度（预览版）|计数|平均值|数据磁盘队列深度(或队列长度)|LUN、VMName|
 |数据磁盘读取字节数/秒|是|数据磁盘读取字节数/秒（预览版）|每秒计数|平均值|监视期间每秒从单个磁盘读取的字节数|LUN、VMName|
 |数据磁盘读取操作数/秒|是|数据磁盘读取操作数/秒（预览版）|每秒计数|平均值|监视期间从单个磁盘执行的读取 IOPS|LUN、VMName|
@@ -1545,7 +1545,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |AverageReadLatency|是|平均读取延迟|毫秒|平均值|每个操作的平均读取延迟（毫秒）|无维度|
 |AverageWriteLatency|是|平均写入延迟|毫秒|平均值|每个操作的平均写入延迟（毫秒）|无维度|
 |CbsVolumeBackupActive|是|Volume backup active state|计数|平均值|当前卷的备份是否处于挂起状态。|无维度|
-|CbsVolumeLogicalBackupBytes|是|Logical bytes backed up|字节|平均值|为此卷备份的未压缩或未加密的字节总数。|无维度|
+|CbsVolumeLogicalBackupBytes|是|Logical bytes backed up|字节|平均值|为此卷备份的所有未压缩/未加密字节。|无维度|
 |CbsVolumeOperationComplete|是|Operation state|计数|平均值|上次备份/还原操作是否成功。|无维度|
 |CbsVolumeOperationTransferredBytes|是|Bytes transferred for operation|字节|平均值|上次备份/还原操作传输的总字节数。|无维度|
 |CbsVolumeProtected|是|Volume protected state|计数|平均值|卷是否受云备份服务保护。|无维度|

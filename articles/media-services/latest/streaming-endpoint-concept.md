@@ -12,21 +12,21 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7307b95912a982bb36efbf2ce18668bd88e1195
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297189"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882868"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（来源）
 
 在 Microsoft Azure 媒体服务中， [流式处理终结点](/rest/api/media/streamingendpoints) 代表一种动态 (实时) 打包和源服务，它可以使用一种常见的流式媒体协议 (HLS 或破折号) 将实时内容和点播内容直接传送到客户端播放器应用。 此外，流式处理终结点  还为行业领先的 DRM 提供动态（实时）加密。 
 
-用户创建媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认  流式处理终结点。 无法删除**默认**流式处理终结点。 可以在帐户下创建更多的流式处理终结点（请参阅[配额和限制](limits-quotas-constraints.md)）。
+用户创建媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认  流式处理终结点。 可以在帐户下创建更多的流式处理终结点（请参阅[配额和限制](limits-quotas-constraints.md)）。
 
 > [!NOTE]
-> 若要开始流式处理视频，需启动要从中流式处理视频的**流式处理终结点**。
+> 若要开始流式处理视频，需启动要从中流式处理视频的 **流式处理终结点**。
 >
 > 仅当流式处理终结点处于运行状态时才进行计费。
 
@@ -45,7 +45,7 @@ ms.locfileid: "89297189"
 
 ## <a name="types"></a>类型
 
-有两种类型的**流式处理终结点**：**标准**（预览版）和**高级**。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。
+有两种类型的 **流式处理终结点**：**标准**（预览版）和 **高级**。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。
 
 最大流单元限制通常为 10。 请 [在此处](https://azure.microsoft.com/support/create-ticket/) 与我们联系，为你的帐户增加限制。
 
@@ -156,7 +156,7 @@ IP 筛选/G20/自定义主机 <sup>1</sup>|是|是
     
 ## <a name="scaling-streaming-with-cdn"></a>使用 CDN 缩放流式处理
 
-请参阅下列文章：
+请参阅以下文章：
 
 - [CDN 概述](../../cdn/cdn-overview.md)
 - [使用 CDN 缩放流式处理](scale-streaming-cdn.md)

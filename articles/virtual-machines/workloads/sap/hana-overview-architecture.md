@@ -11,15 +11,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
+ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0144c57549e374404d3dde0fe997ba41adc8606b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c06988bf9c3558f5ef82862bdbcd821dc42ca28a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967578"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880981"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>什么是 Azure 上的 SAP HANA（大型实例）？
 
@@ -35,12 +35,14 @@ Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方�
 
 仅支持这些裸机服务器单元运行 SAP HANA。 SAP 应用层或工作负荷中间软件层在虚拟机中运行。 运行 Azure 上的 SAP HANA（大型实例）单元的基础结构模具连接到 Azure 网络服务骨干网。 因此可提供 Azure 上的 SAP HANA（大型实例）单元与 Azure 虚拟机之间的那种低延迟连接。
 
-截止2019年7月，我们将不同的 HANA 大型实例标记和部署位置的两个不同版本区分开来：
+从2021年1月起，我们区分 HANA 大型实例标记和部署位置的两个不同版本：
 
 - "修订版 3" (Rev 3) ：是可供客户在2019年7月之前部署的 stamp
 - 修订版 4)  (Rev 4：在接近 Azure VM 主机的情况附近部署的新的戳记设计，到目前为止，在 Azure 区域中发布这些设计：
     -  美国西部 2 
-    -  美国东部 
+    -  美国东部
+    -  东2跨两个可用性区域 () 
+    -  跨两个可用性区域的美国中南部 () 
     -  西欧
     -  北欧
 
@@ -59,5 +61,5 @@ HANA 大型实例指南的不同文档涵盖以下几个方面：
 - [修订版3中的 II 类 Sku 的操作系统备份和还原](./os-backup-type-ii-skus.md)
 - [使用 Azure 预留节省 SAP HANA 大型实例](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
 
-后续步骤
+**后续步骤**
 - 请参阅[了解术语](hana-know-terms.md)

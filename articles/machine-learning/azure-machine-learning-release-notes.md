@@ -9,17 +9,29 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: b11b0b46e57247d09e576795079e20c679e519d5
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 695702c04e2eeb74ee27b7d4276a3be94d9d1cf7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760106"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881814"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 参考页。
 
+## <a name="2020-12-31"></a>2020-12-31
+### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure 机器学习 Studio 笔记本体验 (12 月更新版) 
++ **新功能**
+  + 用户文件名搜索。 用户现在可以搜索工作区中保存的所有文件。
+  + 每个笔记本单元的 Markdown 并行支持。 在笔记本单元中，用户现在可以选择并排查看呈现的 markdown 和 markdown 语法。
+  + 单元格状态栏。 状态栏指示代码单元中的状态、单元格运行是否成功以及运行所花的时间。 
+   
++ **Bug 修复与改进**
+  + 改善了页面加载时间
+  + 提高了性能 
+  + 提高速度和内核可靠性
+  
 ## <a name="2020-12-07"></a>2020-12-07
 
 ### <a name="azure-machine-learning-sdk-for-python-v1190"></a>用于 Python 的 Azure 机器学习 SDK 1.19。0
@@ -83,7 +95,19 @@ ms.locfileid: "97760106"
     + 不推荐使用 Nccl 和 Gloo 作为估计器类的有效输入类型，以便于将 PyTorchConfiguration 与 ScriptRunConfig 结合使用。 
     + 不推荐使用 Mpi 作为估计器类的有效输入类型，以便使用 MpiConfiguration 和 ScriptRunConfig。
 
+## <a name="2020-11-30"></a>2020-11-30
+### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure 机器学习 Studio 笔记本体验 (11 月更新版) 
++ **新功能**
+   + 本机终端。 用户现在可以通过[集成终端](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)访问集成终端以及 Git 操作。
+  + 复制文件夹 
+  + 计算下拉下拉的成本 
+  + 脱机计算 Pylance 
 
++ **Bug 修复与改进**
+  + 改善了页面加载时间
+  + 提高了性能 
+  + 提高速度和内核可靠性
+  + 大型文件上传。 你现在可以将文件上传 >95mb
 
 ## <a name="2020-11-09"></a>2020-11-09
 

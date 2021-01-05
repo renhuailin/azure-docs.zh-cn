@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6978afc802bddd536c56fcb4e06a40ccc58867fe
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 12b9639342e2e35b9229aa15bb9cfb4695427606
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172659"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881185"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义一次性密码技术配置文件
 
@@ -45,7 +45,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 ## <a name="generate-code"></a>生成代码
 
-此技术配置文件的第一种模式是生成代码。 下面是可以为此模式配置的选项。
+此技术配置文件的第一种模式是生成代码。 下面是可以为此模式配置的选项。 在会话中跟踪生成和尝试的代码。 
 
 ### <a name="input-claims"></a>输入声明
 
@@ -73,13 +73,13 @@ OutputClaims 元素包含由一次性密码协议提供程序生成的声明列�
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | 否 | 代码过期之前的时间（秒）。 最小值：`60`；大值：`1200`；默认值：`600` 每次使用 (相同的代码提供代码时 `ReuseSameCode` ，或) 新的代码，就会扩展代码的过期时间。  |
+| CodeExpirationInSeconds | 否 | 代码过期之前的时间（秒）。 最小值：`60`；大值：`1200`；默认值：`600` 每次提供代码（使用 `ReuseSameCode` 的相同代码或新代码）时，代码过期时间都会延长。 此时间还用于设置重试超时 (在达到最大尝试次数后，用户将被锁定，尝试获取新代码，直到此时间到期)  |
 | CodeLength | 否 | 代码的长度。 默认值为 `6`。 |
 | CharacterSet | 否 | 代码的字符集，其格式设置为可在正则表达式中使用。 例如，`a-z0-9A-Z`。 默认值为 `0-9`。 字符集必须在指定的集中至少包含 10 个不同的字符。 |
 | NumRetryAttempts | 否 | 代码被视为无效之前的验证尝试次数。 默认值为 `5`。 |
 | NumCodeGenerationAttempts | 否 | 每个标识符的最大代码生成尝试次数。 如果未指定，则默认值为 10。 |
 | 操作 | 是 | 要执行的操作。 可能的值：`GenerateCode`。 |
-| ReuseSameCode | 否 | 当给定代码未过期且仍然有效时，是否应提供相同的代码，而不是生成新代码。 默认值为 `false`。  |
+| ReuseSameCode | 否 | 当给定代码尚未过期且仍然有效时，是否应给出相同的代码而不是生成新代码。 默认值为 `false`。  |
 
 
 
@@ -136,7 +136,7 @@ InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素�
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| 操作 | 是 | 要执行的操作。 可能的值：`VerifyCode`。 |
+| Operation | 是 | 要执行的操作。 可能的值：`VerifyCode`。 |
 
 
 ### <a name="ui-elements"></a>UI 元素

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 72079cc399eea249bce4d285e2c3c4fbf9304708
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 776db820ffb1a216c3f6f7e9c6d6b8d90913a063
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760599"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881457"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure 机器学习跟踪 Azure Databricks ML 试验（预览版）
 
@@ -38,6 +38,7 @@ ms.locfileid: "97760599"
     * 此包会自动引入 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) 的 `azureml-core`，它为 MLflow 访问工作区提供了连接。
 * [Azure Databricks 工作区和群集](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)。
 * [创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
+    * 查看 [在工作区中执行 MLflow 操作所需的访问权限](how-to-assign-roles.md#mlflow-operations)。
 
 ## <a name="track-azure-databricks-runs"></a>跟踪 Azure Databricks 运行
 

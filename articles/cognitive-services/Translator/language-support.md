@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: c7e859b05450b95cf9c75421599dd9c54a639cdc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 6163f059581c2699d0b2780545c3ad5ec80f2907
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606837"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882409"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文本和语音翻译的语言和区域支持
 
@@ -155,7 +155,7 @@ ms.locfileid: "97606837"
 | 意大利语 | `it` |
 | 日语 | `ja` |
 | 克林贡语 | `tlh-Latn` |
-| 韩语 | `ko` |
+| 朝鲜语 | `ko` |
 | 库尔德语(中部) | `ku-Arab` |
 | 拉脱维亚语 | `lv` |
 | 立陶宛语 | `lt` |
@@ -256,7 +256,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 挪威语      | `nb`          |
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
-| 葡萄牙语(巴西)     | `pt-br`          |
+| 葡萄牙语(巴西)     | `pt`          |
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
 | 塞尔维亚语（拉丁）      | `sr-Latn`          |
@@ -326,7 +326,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 挪威语      | `nb`          |
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
-| 葡萄牙语(巴西) | `pt-br` |
+| 葡萄牙语（巴西） | `pt-br` |
 | 旁遮普语|`pa`|
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |

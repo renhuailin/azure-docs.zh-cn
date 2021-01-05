@@ -8,12 +8,12 @@ ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 340455450cd6a18adfd8d0843fee423f82f10a45
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 153ffd699b22a6379758bf66b896a2b37a19fdf3
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858393"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883276"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>启用 Azure 文件上 Azure Active Directory 域服务身份验证
 
@@ -22,7 +22,8 @@ ms.locfileid: "97858393"
 如果你不熟悉 Azure 文件共享，我们建议在阅读以下文章之前阅读我们的 [规划指南](storage-files-planning.md) 。
 
 > [!NOTE]
-> Azure 文件支持通过 RC4-HMAC 和 AES 256 加密 Azure AD DS 进行 Kerberos 身份验证。 Azure 文件支持对 Azure AD DS 进行身份验证，与 Azure AD 完全同步。 如果已在 Azure AD DS 中启用范围内同步，仅同步 Azure AD 的有限标识，则不支持身份验证和授权。
+> Azure 文件仅支持具有仅限 RC4-HMAC Azure AD DS 的 Kerberos 身份验证。 目前尚不支持 AES Kerberos 加密。
+> Azure 文件支持对 Azure AD DS 进行身份验证，与 Azure AD 完全同步。 如果已在 Azure AD DS 中启用范围内同步，仅同步 Azure AD 的有限标识，则不支持身份验证和授权。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -88,7 +89,7 @@ ms.locfileid: "97858393"
 1. 在 Azure 门户中，请前往现有的存储帐户，或者 [创建一个存储帐户](../common/storage-account-create.md)。
 1. 在“设置”部分选择“配置”。
 1. 在 " **文件共享基于标识的访问** " 下，将 **Azure Active Directory 域服务)  (** 的切换切换到 " **已启用**"。
-1. 选择“保存”。
+1. 选择“保存”。 
 
 下图显示了如何为存储帐户启用通过 SMB 进行的 Azure AD DS 身份验证。
 

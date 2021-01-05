@@ -2,13 +2,13 @@
 title: 常见问题
 description: 提供有关 Azure VMware 解决方案的一些常见问题的解答。
 ms.topic: conceptual
-ms.date: 12/22/2020
-ms.openlocfilehash: 941708003558dda601aa43459bc83133788687fd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/4/2020
+ms.openlocfilehash: d0228739a6ee4eac20d2fa04e47cf86b6fddb84e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835187"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881219"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>有关 Azure VMware 解决方案的常见问题
 
@@ -201,7 +201,7 @@ Azure 虚拟 WAN 不提供两个已连接的 ExpressRoute 线路和非虚拟 WAN
 
 #### <a name="could-i-use-hcx-through-public-internet-communications-as-a-workaround-for-the-non-supportability-of-hcx-when-using-vpn-s2s-with-vwan-for-on-premises-communications"></a>在将 VPN S2S 与 vWAN 用于本地通信时，是否可以通过公共 Internet 通信使用 HCX 作为 HCX 的不可支持性的解决方法？
 
-目前，HCX 支持的唯一方法是通过 ExpressRoute。
+目前，VMware HCX 支持的唯一方法是通过 ExpressRoute。
 
 ## <a name="accounts-and-privileges"></a>帐户和特权
 

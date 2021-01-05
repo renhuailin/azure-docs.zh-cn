@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/20/2018
+ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: 0a69df8a20c4e1502de151c38c60b54667c2d4dc
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e1e7e78cab1f3a240737b5e25e0dff28c420add8
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814476"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883106"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>排查 Azure 中的出站 SMTP 连接问题
 
@@ -76,10 +76,6 @@ ms.locfileid: "97814476"
 如果你希望能够直接从 Azure vm 向外部电子邮件提供商发送电子邮件 (无需使用经过身份验证的 SMTP 中继) ，你可以通过使用以下问题类型打开支持案例来发出请求：**技术**  >  **虚拟网络**  >  **连接**  >  **无法发送电子邮件 (SMTP/端口 25)**。 请确保添加有关部署为何必须将邮件直接发送到邮件提供商，而不是使用经过身份验证的中继的详细信息。 请求将由 Microsoft 自行批准和批准。 只有在完成附加的 antifraud 检查后，才会授予请求。 
 
 在免除了某个订阅并在 Azure 门户中停止并重新启动了 Vm 后，将免除该订阅中的所有 Vm。 豁免仅适用于请求的订阅，并且仅适用于直接路由到 internet 的 VM 通信。
-
-## <a name="restrictions-and-limitations"></a>限制和约束
-
-[不支持通过 Azure PaaS](https://azure.microsoft.com/services/azure-firewall/)等 azure PaaS 服务路由端口25的流量。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

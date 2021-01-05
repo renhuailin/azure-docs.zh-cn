@@ -4,12 +4,12 @@ description: 了解如何装载 Azure 文件卷以保持 Azure 容器实例的�
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 5ca619ac3ae93ee238d019b64ecccc975b7c8e3b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: afebdcdc9d9c5852d7fe66ed06ac457c1dbb0afb
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746872"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881797"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>在 Azure 容器实例中装载 Azure 文件共享
 
@@ -20,6 +20,9 @@ ms.locfileid: "92746872"
 >
 > 将 Azure 文件共享装载到容器实例类似于 Docker [绑定装载](https://docs.docker.com/storage/bind-mounts/)。 请注意，如果将共享装载到其中存在文件或目录的容器目录中，则这些文件或目录会被装载遮盖，在容器运行时将无法访问。
 >
+
+> [!IMPORTANT]
+> 如果要将容器组部署到 Azure 虚拟网络，则必须将 [服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md) 添加到 Azure 存储帐户。
 
 ## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 
@@ -45,7 +48,7 @@ az storage share create \
   --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
-## <a name="get-storage-credentials"></a>获取存储凭据
+## <a name="get-storage-credentials"></a>获取存储凭证
 
 若要在 Azure 容器实例中将 Azure 文件共享装载为卷，需要 3 个值：存储帐户名、共享名和存储访问密钥。
 
@@ -81,7 +84,7 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-`--dns-name-label` 值在创建容器实例的 Azure 区域中必须是唯一的。 如果在执行命令时收到 DNS 名称标签错误消息，请更新前一命令中的值  。
+`--dns-name-label` 值在创建容器实例的 Azure 区域中必须是唯一的。 如果在执行命令时收到 DNS 名称标签错误消息，请更新前一命令中的值。
 
 ## <a name="manage-files-in-mounted-volume"></a>管理已装载卷中的文件
 
@@ -235,7 +238,7 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 
 若要在容器实例中装载多个卷，必须使用 [Azure 资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)、YAML 文件或其他编程方法进行部署。 若要使用模板或 YAML 文件，请提供共享详细信息，并通过在文件的 `properties` 部分填充 `volumes` 数组来定义卷。 
 
-例如，如果已在存储帐户 *myStorageAccount* 中创建两个 Azure 文件存储（名为 *share1* 和 *share2* ），资源管理器模板中的 `volumes` 数组将类似于以下内容：
+例如，如果已在存储帐户 *myStorageAccount* 中创建两个 Azure 文件存储（名为 *share1* 和 *share2*），资源管理器模板中的 `volumes` 数组将类似于以下内容：
 
 ```JSON
 "volumes": [{
@@ -256,7 +259,7 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 }]
 ```
 
-接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `properties` 部分填充 `volumeMounts` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：  
+接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `properties` 部分填充 `volumeMounts` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：
 
 ```JSON
 "volumeMounts": [{
