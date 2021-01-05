@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1c1a5a96742d380ce42c0aea8c77a199083df47f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cbc22f9b55f8d20880b43516a2a5bc8f55d389f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492244"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814493"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure DDoS 保护标准的 azure 安全基线
 
@@ -38,7 +38,7 @@ ms.locfileid: "96492244"
 
 启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区、Azure 事件中心或 Azure 存储帐户以进行存档。 活动日志可让你深入了解在 Azure Cache for Redis 实例在控制平面级别上执行的操作。 使用 Azure 活动日志数据，可以确定任何写入操作的 "内容、人员和时间"，)  (在 Azure DDoS 保护实例的控制平面级别执行任何写入操作。
 
-- [如何配置针对 DDoS 保护指标的警报](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [查看和配置 DDoS 诊断日志记录](../../ddos-protection/diagnostic-logging.md)
 
 - [如何启用 Azure 活动日志的诊断设置](../../azure-monitor/platform/activity-log.md)
 
@@ -60,7 +60,7 @@ ms.locfileid: "96492244"
 
 **指导**：启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区。 在 Log Analytics 中执行查询，以搜索术语，确定趋势，分析模式，并根据可能已为恢复服务保管库收集的活动日志数据提供许多其他见解。
 
-- [有关如何访问针对 DDoS 保护标准服务的遥测、日志和攻击分析的信息](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [有关如何访问针对 DDoS 保护标准服务的遥测、日志和攻击分析的信息](../../ddos-protection/telemetry.md)
 
 - [如何启用 Azure 活动日志的诊断设置](../../azure-monitor/platform/activity-log.md)
 
@@ -76,7 +76,7 @@ ms.locfileid: "96492244"
 
 将 Log Analytics 工作区载入 Azure Sentinel，因为它提供了一个安全业务流程自动响应 (之忠诚度) 解决方案。 这样便可以创建 playbook（自动化解决方案）并将其用于修正安全问题。 此外，还可以使用 Azure Monitor 在 Log Analytics 工作区中创建自定义日志警报。
 
-- [如何为 DDoS 指标配置警报](https://azure.microsoft.com/blog/holiday-season-is-ddos-season/)
+- [如何为 DDoS 指标配置警报](../../ddos-protection/alerts.md)
 
 - [如何加入 Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
@@ -142,7 +142,7 @@ ms.locfileid: "96492244"
 
 - [如何将客户端应用程序（服务主体）注册到 Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-- [Azure DDos 保护 API 信息](/rest/api/virtual-network/)
+- [Azure DDoS 保护 API 信息](/rest/api/virtual-network/)
 
 **Azure 安全中心监视**：不适用
 
@@ -176,7 +176,7 @@ ms.locfileid: "96492244"
 
 **指导**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 生成日志和警报。
 
-此外，使用 Azure AD 风险检测来查看警报和报告有风险的用户行为。
+此外，还可使用 Azure AD 风险检测来查看有关风险用户行为的警报和报告。
 
 - [如何部署 Privileged Identity Management](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
@@ -384,7 +384,7 @@ ms.locfileid: "96492244"
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
-**指南**：定义和实现 Azure DDos 保护与 azure 策略的标准安全配置。 在“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施恢复服务保管库的配置。
+**指南**：定义和实现 Azure DDoS 保护与 azure 策略的标准安全配置。 在“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施恢复服务保管库的配置。
 
 - [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -468,7 +468,7 @@ ms.locfileid: "96492244"
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 - [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -482,9 +482,9 @@ ms.locfileid: "96492244"
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [Azure 安全中心中的安全警报](../../security-center/security-center-alerts-overview.md)
 
@@ -524,7 +524,7 @@ ms.locfileid: "96492244"
 
 选择任何可用的 DDoS 保护指标以在攻击期间使用 Azure Monitor 警报配置来向你发出警报。 满足条件时，指定的地址会收到警报电子邮件
 
-- [配置针对 DDoS 防护指标的警报](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [配置针对 DDoS 防护指标的警报](../../ddos-protection/alerts.md)
 
 - [如何配置连续导出](../../security-center/continuous-export.md)
 

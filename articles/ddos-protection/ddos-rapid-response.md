@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 3655b117b641a6179bd6539aaf3f75af07f21a1a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 8de95a56f3da928997a97ff216b13d522c82afca
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992363"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814187"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS 快速响应
 
-在主动访问期间，Azure DDoS 保护标准客户有权访问 DDoS 快速响应 (DRR) 团队，他们可以在攻击期间和攻击后进行攻击调查。
+在主动访问期间，Azure DDoS 保护标准客户有权访问 DDoS 快速响应 (DRR) 团队，他们可以在攻击和攻击后分析期间帮助进行攻击调查。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +39,7 @@ ms.locfileid: "94992363"
 
 1. 在创建新的支持请求时从 Azure 门户中，选择 " **问题类型** " 作为 "技术"。
 2. 选择 **服务** 作为 **DDOS 防护**。
-3. 在资源下拉菜单中选择一个资源。 _你必须选择链接到受 DDoS 防护标准保护的虚拟网络的 DDoS 计划，以 DRR。_
+3. 在 "资源" 下拉菜单中选择一个资源。 _你必须选择链接到受 DDoS 防护标准保护的虚拟网络的 DDoS 计划，以 DRR。_
 
     ![选择资源](./media/ddos-rapid-response/choose-resource.png)
 
@@ -56,5 +56,5 @@ DRR 遵循 Azure Rapid Response 支持模型。 有关快速响应的详细信�
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何 [通过模拟进行测试](test-through-simulations.md)。
-- 了解如何 [查看和配置 DDoS 保护遥测](telemetry-monitoring-alerting.md)。
-- 了解如何 [配置 DDoS 攻击缓解报告和流日志](reports-and-flow-logs.md)。
+- 了解如何 [查看和配置 DDoS 保护遥测](telemetry.md)。
+- 了解如何 [查看和配置 DDoS 诊断日志记录](diagnostic-logging.md)。

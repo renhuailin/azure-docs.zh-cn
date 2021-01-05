@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 76695d4d8dbc3e3a6b04b89b8f34e41b83a92963
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 88af554faab9479a402dd393b0a7eed0835ce59e
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965181"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814340"
 ---
-# <a name="working-with-security-policies"></a>使用安全策略
+# <a name="manage-security-policies"></a>管理安全策略
 
 本文介绍如何配置安全策略，以及如何在安全中心查看这些策略。 
 
@@ -33,7 +33,7 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 
 安全中心提供以下选项来让用户使用安全策略：
 
-* **查看和编辑内置默认策略** -启用安全中心时，会自动将名为 "ASC 默认值" 的内置计划分配给所有安全中心注册的订阅。 若要自定义此计划，可在其中启用或禁用单个策略。 要了解现成可用的选项，请参阅[内置安全策略](./policy-reference.md)列表。
+* **查看和编辑内置默认策略** - 启用安全中心时，会将一个名为“ASC default”的内置计划自动分配到所有已在安全中心注册的订阅。 若要自定义此计划，可在其中启用或禁用单个策略。 要了解现成可用的选项，请参阅[内置安全策略](./policy-reference.md)列表。
 
 * **添加自己的自定义策略** - 如果希望自定义要应用到自己的订阅的安全计划，可以在安全中心执行此操作。 如果计算机不遵循创建的策略，则你会收到建议。 有关生成和分配自定义策略的说明，请参阅[使用自定义安全策略](custom-security-policies.md)。
 
@@ -46,7 +46,7 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 
 1. 在“安全中心”仪表板中，选择“安全策略” 。
 
-    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="&quot;策略管理&quot; 页":::
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="策略管理页面":::
 
    在“策略管理”屏幕中，可以看到管理组数、订阅数、工作区数以及管理组结构。
 
@@ -86,7 +86,7 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 
 你可以在 Azure Policy 门户中通过 REST API 或 Windows PowerShell 编辑安全策略。
 
-安全中心使用 Azure RBAC)  (Azure 基于角色的访问控制，它提供了可分配给 Azure 用户、组和服务的内置角色。 用户打开安全中心时，只能看到与他们可访问的资源相关的信息。 这意味着，已为用户分配了资源订阅的所有者、参与者或读取者角色。   还有两个特定的安全中心角色：
+安全中心使用 Azure 基于角色的访问控制 (Azure RBAC)，后者提供可分配到 Azure 用户、组和服务的内置角色。 用户打开安全中心时，只能看到与他们可访问的资源相关的信息。 这意味着，已为用户分配了资源订阅的所有者、参与者或读取者角色。   还有两个特定的安全中心角色：
 
 - **安全读取者**：有权查看安全中心项，例如建议、警报、策略和运行状况。 无法执行更改。
 - **安全管理员**：与安全读取者具有相同的查看权限。 还可以更新安全策略并消除警报。
@@ -132,6 +132,6 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 本文介绍了安全策略。 有关更多信息，请参阅以下文章：
 
 - [了解如何使用 PowerShell 设置策略](../governance/policy/assign-policy-powershell.md) - 
-- [了解如何在 Azure 策略中编辑安全策略](../governance/policy/tutorials/create-and-manage.md) - 
-- [了解如何使用 Azure 策略跨订阅或管理组设置策略](../governance/policy/overview.md)。
-- [了解如何在管理组中的所有订阅上启用安全中心](onboard-management-group.md)
+- [了解如何在 Azure Policy 中编辑安全策略](../governance/policy/tutorials/create-and-manage.md) - 
+- [了解如何使用 Azure Policy 跨订阅或在管理组上设置策略](../governance/policy/overview.md)。
+- [了解如何对管理组中的所有订阅启用安全中心](onboard-management-group.md)

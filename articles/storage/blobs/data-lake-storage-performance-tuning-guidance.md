@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 834672274ade1f8551e86e7c636c4625368d997c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f0f64d910d03e42008c5fe6fef28a5b9c0917abd
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652188"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814459"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>优化 Azure Data Lake Storage Gen2 性能
 
@@ -21,11 +21,11 @@ Azure Data Lake Storage Gen2 支持使用高吞吐量进行 I/O 密集型分析�
 
 ![Data Lake Storage Gen2 性能](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage Gen2 可进行缩放，以便为所有分析方案提供必要的吞吐量。 默认情况下，Data Lake Storage Gen2 帐户自动提供足够的吞吐量来满足广泛用例的需求。 对于客户达到默认限制的情况，可联系 [Azure 支持部门](https://azure.microsoft.com/support/faq/)配置 Data Lake Storage Gen2 帐户，以获得更多吞吐量。
+Data Lake Storage Gen2 可以进行缩放，为所有分析方案提供必要的吞吐量。 默认情况下，Data Lake Storage Gen2 帐户在其默认配置中提供了足够的吞吐量，以满足各种用例的需求。 对于客户达到默认限制的情况，可联系 [Azure 支持部门](https://azure.microsoft.com/support/faq/)配置 Data Lake Storage Gen2 帐户，以获得更多吞吐量。
 
 ## <a name="data-ingestion"></a>数据引入
 
-将数据从源系统引入 Data Lake Storage Gen2 时，源硬件、源网络硬件以及与 Data Lake Storage Gen2 的网络连接可能成为瓶颈，请务必考虑到这一点。  
+将源系统中的数据引入到 Data Lake Storage Gen2 时，必须考虑源硬件、源网络硬件或到 Data Lake Storage Gen2 的网络连接，这一点很重要。  
 
 ![此图显示了将源系统中的数据引入到 Data Lake Storage Gen2 时要考虑的因素。](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
@@ -37,7 +37,7 @@ Data Lake Storage Gen2 可进行缩放，以便为所有分析方案提供必要
 
 ### <a name="network-connectivity-to-data-lake-storage-gen2"></a>到 Data Lake Storage Gen2 的网络连接
 
-源数据和 Data Lake Storage Gen2 之间的网络连接有时可能成为瓶颈。 如果源数据位于本地，请考虑使用 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 的专用链接。 如果源数据在 Azure 中，当数据与 Data Lake Storage Gen2 帐户位于同一 Azure 区域时，可获得最佳性能。
+源数据和 Data Lake Storage Gen2 之间的网络连接有时可能成为瓶颈。 如果源数据位于本地，请考虑使用 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/)的专用链接。 如果源数据在 Azure 中，当数据与 Data Lake Storage Gen2 帐户位于同一 Azure 区域时，可获得最佳性能。
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>配置数据引入工具，实现最大并行化
 
@@ -57,7 +57,7 @@ Data Lake Storage Gen2 可进行缩放，以便为所有分析方案提供必要
 
 通常，HDInsight 和 Azure Data Lake Analytics 等分析引擎的每个文件都存在开销。 如果将数据存储为多个小文件，这可能会对性能产生负面影响。 通常可将数据组织到较大文件中，以获得更佳性能（大小为 256MB 到 100GB）。 某些引擎和应用程序可能会在高效处理大于 100GB 的文件方面遇到问题。
 
-有时，数据管道对原始数据（含有多个小文件）的控制有限。 一般情况下，我们建议您的系统有一些过程将小文件聚合为较大的文件，供下游应用程序使用。
+有时，数据管道对原始数据（含有多个小文件）的控制有限。 通常，建议系统采用某种进程，将小文件聚合为较大的文件，以供下游应用程序使用。
 
 ### <a name="organizing-time-series-data-in-folders"></a>将时序数据组织到文件夹中
 

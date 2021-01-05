@@ -2,16 +2,16 @@
 title: JavaScript 应用程序的源映射支持 - Azure Monitor Application Insights
 description: 了解如何使用 Application Insights 将源映射上传到自己的存储帐户 Blob 容器。
 ms.topic: conceptual
-author: markwolff
-ms.author: marwolff
+author: DavidCBerry13
+ms.author: daberry
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6403ecd534d17298a10ffcf8f089a2b010fa3a51
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9326531d9071305ad804e9c60f8ac90bcb5eaee6
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536449"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809626"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript 应用程序的源映射支持
 
@@ -67,7 +67,7 @@ Application Insights 支持将源映射上传到你自己的存储帐户 Blob �
 
 ## <a name="troubleshooting"></a>故障排除
 
-### <a name="required-azure-role-based-access-control-azure-rbac-settings-on-your-blob-container"></a>所需的 Azure 基于角色的访问控制 (Azure RBAC) Blob 容器上的设置
+### <a name="required-azure-role-based-access-control-azure-rbac-settings-on-your-blob-container"></a>Blob 容器中所需的 Azure 基于角色的访问控制 (Azure RBAC) 设置
 
 门户上使用此功能的任何用户都必须至少作为[存储 Blob 数据读取者][storage blob data reader]分配给 Blob 容器。 你必须将此角色分配给要通过此功能使用源映射的任何其他人。
 

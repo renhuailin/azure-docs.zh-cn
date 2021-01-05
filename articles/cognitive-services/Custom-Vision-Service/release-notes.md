@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
-ms.openlocfilehash: ccf742e5ff612816cae1056ef7bf0e64fc9dbb5b
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 3724a7d515197c1f969bb051fc201b82bee64c42
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616461"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813490"
 ---
 # <a name="custom-vision-service-release-notes"></a>自定义影像服务发行说明
 
@@ -32,7 +32,7 @@ ms.locfileid: "94616461"
 - 为远景 AI 开发工具包添加了对象检测导出。
 - UI 调整，包括项目搜索。
 
-## <a name="april-3-2019"></a>2019年4月3日
+## <a name="april-3-2019"></a>2019 年 4 月 3 日
 
 - 增加了每个图像的边界框数到200的限制。 
 - Bug 修复，包括导出到 TensorFlow 的模型的重大性能更新。 
@@ -41,7 +41,7 @@ ms.locfileid: "94616461"
 
 - 自定义影像服务在 Azure 上输入了正式上市！
 - 添加了新的机器学习后端高级培训功能以提高性能，尤其是在有挑战性的数据集和精细分类的情况下。 使用高级培训，你可以指定定型的计算时间预算，自定义视觉将 experimentally 确定最佳训练和扩大设置。 对于快速迭代，您可以继续使用现有的快速训练。
-- 引入了 3.0 Api。 在2019年10月1日宣布弃用了3.0 之前的 Api。 有关如何开始操作的示例，请参阅 [.net](./quickstarts/image-classification.md)、 [Python](./quickstarts/image-classification.md)、 [Node](./quickstarts/image-classification.md)、 [Java](./quickstarts/image-classification.md)或 [中转](./quickstarts/image-classification.md) 的文档快速入门。
+- 引入了 3.0 Api。 在2019年10月1日宣布弃用了3.0 之前的 Api。 有关如何开始操作的示例，请参阅文档 [快速入门](./quickstarts/image-classification.md) 。
 - 已在 3.0 Api 中将 "默认迭代" 替换为发布/取消发布。
 - 添加了新的模型导出目标。 Dockerfile 导出已升级到支持 ARM for Raspberry Pi 3。 已将导出支持添加到了[远景 AI 开发工具包。](https://visionaidevkit.com/)
 - 对于 S0 层，每个项目的标记数增加到500。 对于 S0 层，每个项目的映像数限制增加到100000。

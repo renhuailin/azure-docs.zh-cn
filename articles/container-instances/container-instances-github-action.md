@@ -4,12 +4,12 @@ description: 配置一个 GitHub 操作，用于自动执行生成容器映像�
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 7dfa2a66851db760049e7c3dc3446223c7dffad1
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: c6c030e05953dc98c82c573704018c3b482d2fea
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609150"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814272"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>配置 GitHub 操作以创建容器实例
 
@@ -56,7 +56,7 @@ ms.locfileid: "97609150"
 首先获取你的资源组的资源 ID。 请将以下 [az group show][az-group-show] 命令中的占位符替换为你的组名称：
 
 ```azurecli
-$groupId=$(az group show \
+groupId=$(az group show \
   --name <resource-group-name> \
   --query id --output tsv)
 ```

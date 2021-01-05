@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: fc60ca462a2891cc022847e056e32239f2675f70
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fd154ec40ed4d1650e44a67fd5d362a2bc0c519d
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094568"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813932"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>快速入门：创建和配置 Azure DDoS 保护标准
 
@@ -38,30 +38,30 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 ## <a name="create-a-ddos-protection-plan"></a>创建 DDoS 防护计划
 
 1. 在 Azure 门户的左上角选择 " **创建资源** "。
-2. 搜索术语 " *DDoS* "。 当 " **DDoS 防护计划** " 出现在搜索结果中时，请选择它。
-3. 选择“创建”。
-4. 输入或选择以下值，然后选择 " **创建** "：
+2. 搜索术语 " *DDoS*"。 当 " **DDoS 防护计划** " 出现在搜索结果中时，请选择它。
+3. 选择“创建”  。
+4. 输入或选择以下值，然后选择 " **创建**"：
 
     |设置        |值                                              |
     |---------      |---------                                          |
-    |名称           | 输入 _MyDdosProtectionPlan_ 。                     |
+    |名称           | 输入 _MyDdosProtectionPlan_。                     |
     |订阅   | 选择订阅。                         |
-    |资源组 | 选择 " **新建** "，然后输入 _MyResourceGroup_ 。|
-    |位置       | 输入 " _美国东部_ "。                                  |
+    |资源组 | 选择 " **新建** "，然后输入 _MyResourceGroup_。|
+    |位置       | 输入 " _美国东部_"。                                  |
 
 ## <a name="enable-ddos-protection-for-a-virtual-network"></a>为虚拟网络启用 DDoS 保护
 
 ### <a name="enable-ddos-protection-for-a-new-virtual-network"></a>为新的虚拟网络启用 DDoS 保护
 
 1. 在 Azure 门户的左上角选择 " **创建资源** "。
-2. 选择“网络”，然后选择“虚拟网络” 。
-3. 输入或选择以下值，接受其余默认值，然后选择 " **创建** "：
+2. 选择“网络”，然后选择“虚拟网络”   。
+3. 输入或选择以下值，接受其余默认值，然后选择 " **创建**"：
 
     | 设置         | 值                                           |
     | ---------       | ---------                                       |
-    | 名称            | 输入 _MyVnet_ 。                                 |
+    | 名称            | 输入 _MyVnet_。                                 |
     | 订阅    | 选择订阅。                                    |
-    | 资源组  | 选择 " **使用现有** "，然后选择 **MyResourceGroup** |
+    | 资源组  | 选择 " **使用现有**"，然后选择 **MyResourceGroup** |
     | 位置        | 输入 _美国东部_                                                    |
     | 标准 DDoS 防护 | 选择“启用”。 所选计划可位于与虚拟网络相同或不同的订阅中，但这两个订阅必须与同一 Azure Active Directory 租户相关联。|
 
@@ -71,16 +71,20 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 1. 如果没有现有的 DDoS 防护计划，通过完成[创建 DDoS 防护计划](#create-a-ddos-protection-plan)中的步骤创建一个 DDoS 防护计划。
 2. 在 Azure 门户的左上角选择 " **创建资源** "。
-3. 输入想要在门户顶部的“搜索资源、服务和文档”框中为其启用 DDoS 防护标准的虚拟网络的名称  。 当虚拟网络名称出现在搜索结果中时，将其选中。
-4. 选择“设置”下的“DDoS 防护”  。
-5. 选择“标准”。 选择“DDoS 防护计划”下的现有 DDoS 防护计划，或在步骤 1 中创建的计划，然后选择“保存”  。 所选计划可位于与虚拟网络相同或不同的订阅中，但这两个订阅必须与同一 Azure Active Directory 租户相关联。
+3. 输入想要在门户顶部的“搜索资源、服务和文档”框中为其启用 DDoS 防护标准的虚拟网络的名称。 当虚拟网络名称出现在搜索结果中时，将其选中。
+4. 选择“设置”下的“DDoS 防护”。
+5. 选择“标准”。 选择“DDoS 防护计划”下的现有 DDoS 防护计划，或在步骤 1 中创建的计划，然后选择“保存”。 所选计划可位于与虚拟网络相同或不同的订阅中，但这两个订阅必须与同一 Azure Active Directory 租户相关联。
+
+### <a name="enable-ddos-protection-for-all-virtual-networks"></a>为所有虚拟网络启用 DDoS 保护
+
+此 [策略](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Policy%20-%20Virtual%20Networks%20should%20be%20associated%20with%20an%20Azure%20DDoS%20Protection%20Standard%20plan) 将检测定义的作用域中未启用 DDoS 保护标准的任何虚拟网络，然后可以选择创建一个将创建关联的修正任务来保护 VNet。 有关如何部署此策略的详细分步说明，请参阅 https://aka.ms/ddosvnetpolicy-techcommunity 。
 
 ## <a name="validate-and-test"></a>验证和测试
 
 首先，请查看 DDoS 保护计划的详细信息：
 
-1. 在门户左上角选择“所有服务”  。
-2. 在“筛选器”框中输入 DDoS  。 当“DDoS 防护计划”出现在结果中时，将其选中  。
+1. 在门户左上角选择“所有服务”。
+2. 在“筛选器”框中输入 DDoS。 当“DDoS 防护计划”出现在结果中时，将其选中。
 3. 从列表中选择 DDoS 保护计划。
 
 应列出 _MyVnet_ 虚拟网络。 
@@ -102,8 +106,8 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 为虚拟网络禁用 DDoS 保护： 
 
-1. 输入想要在门户顶部的“搜索资源、服务和文档”框中为其禁用 DDoS 防护标准的虚拟网络的名称  。 当虚拟网络名称出现在搜索结果中时，将其选中。
-2. **在 "DDoS 保护标准" 下** 选择 " **禁用** "。
+1. 输入想要在门户顶部的“搜索资源、服务和文档”框中为其禁用 DDoS 防护标准的虚拟网络的名称。 当虚拟网络名称出现在搜索结果中时，将其选中。
+2. **在 "DDoS 保护标准" 下** 选择 "**禁用**"。
 
 如果要删除 DDoS 保护计划，必须先取消关联所有虚拟网络的关联。 
 
@@ -112,4 +116,4 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 若要了解如何查看和配置 DDoS 防护计划的遥测，请继续阅读教程。
 
 > [!div class="nextstepaction"]
-> [查看和配置 DDoS 防护遥测](telemetry-monitoring-alerting.md)
+> [查看和配置 DDoS 防护遥测](telemetry.md)

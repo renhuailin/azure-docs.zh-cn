@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 0a80f03ee82e8d1216353482dc867402adcf7d09
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 2b31a8aa8b126c228ac7e9c3ca182300c710b098
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992227"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814051"
 ---
 # <a name="components-of-a-ddos-response-strategy"></a>DDoS 响应策略的组件
 
@@ -56,7 +56,7 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 ## <a name="alerts-during-an-attack"></a>攻击期间的警报
 
-标准 Azure DDoS 防护将识别并缓解 DDoS 攻击，而无需任何用户干预。 若要在受保护公共 IP 受到的攻击被主动缓解时收到通知，可以针对“是否受 DDoS 攻击”指标[配置警报](telemetry-monitoring-alerting.md)。 可以选择针对其他 DDoS 指标创建警报，以了解攻击规模、丢弃的流量和其他详细信息。
+标准 Azure DDoS 防护将识别并缓解 DDoS 攻击，而无需任何用户干预。 若要在受保护的公共 IP 存在活动缓解时获得通知，你可以 [配置警报](alerts.md)。
 
 ### <a name="when-to-contact-microsoft-support"></a>何时与 Microsoft 支持部门联系
 

@@ -4,12 +4,12 @@ description: 了解 Azure 资源日志支持的服务和事件架构。
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: c1c5ed715527add4218378c05602ed3352e55461
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f5ea6d3f28fe85cf1453f3cf2b9eb0132bda0013
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586935"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808294"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure 资源日志的通用架构和特定于服务的架构
 
@@ -28,7 +28,7 @@ ms.locfileid: "97586935"
 | time | 必须 | 事件时间戳 (UTC)。 |
 | ResourceId | 必须 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
 | tenantId | 对于租户日志而言是必需的 | 此事件关联到的 Active Directory 租户的租户 ID。 此属性仅用于租户级日志，它不会出现在资源级日志中。 |
-| operationName | 必须 | 此事件表示的操作的名称。 如果事件代表 Azure RBAC 操作，则这是 Azure RBAC 操作名称 (例如，storageAccounts//blobServices/blob/Read) 。 通常以资源管理器操作的形式建模，即使它们不是实际记录的资源管理器操作 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
+| operationName | 必须 | 此事件表示的操作的名称。 如果事件表示 Azure RBAC 操作，则这是 Azure RBAC 操作名称（例如，Microsoft.Storage/storageAccounts/blobServices/blobs/Read）。 通常以资源管理器操作的形式建模，即使它们不是实际记录的资源管理器操作 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | 可选 | 如果 operationName 是使用 API（例如 `http://myservice.windowsazure.net/object?api-version=2016-06-01`）执行的，则为与该操作关联的 api-version。 如果没有与此操作相对应的 API，则该版本表示该操作的版本，以防与操作相关联的属性在将来发生更改。 |
 | category | 必须 | 事件的日志类别。 类别是可以在特定资源上启用或禁用日志的粒度。 在事件的属性 blob 内显示的属性在特定日志类别和资源类型中相同。 典型的日志类别是“Audit”、“Operational”、“Execution”和“Request”。 |
 | resultType | 可选 | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
@@ -77,7 +77,7 @@ ms.locfileid: "97586935"
 | 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
 | 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDOS 保护 | [管理 Azure DDoS 防护标准](../../ddos-protection/reports-and-flow-logs.md#sample-log-outputs) |
+| DDOS 保护 | [管理 Azure DDoS 防护标准](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Power BI 专用 | [Azure 中 Power BI Embedded 的日志记录](/power-bi/developer/azure-pbie-diag-logs) |
 | 恢复服务 | [Azure 备份的数据模型](../../backup/backup-azure-reports-data-model.md)|
 | 搜索 |[允许并使用搜索流量分析](../../search/search-traffic-analytics.md) |

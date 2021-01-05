@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 015b8e400e9d386fff8f35756a77139e61bbaff1
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74666369"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809286"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架构和数据聚合
 
@@ -39,11 +39,11 @@ ms.locfileid: "74666369"
 5. FlowStartTime_t 字段指示流日志处理间隔中出现在“FlowIntervalStartTime_t”与“FlowIntervalEndTime_t”之间的第一个此类聚合流（相同的四元组）。
 6. 对于 TA 中的任何资源，UI 中指示的流是 NSG 看到的总流数，但在 Log Analytics 中，用户只会看到一条简化的记录。 若要查看所有流，请使用可从存储引用的 blob_id 字段。 该记录的总流数将与 Blob 中出现的各个流相匹配。
 
-以下查询可帮助你查看过去 30 天内来自本地的所有流日志。
+下面的查询可帮助查看在过去30天内与非 Azure 公共 Ip 交互的所有子网。
 ```
 AzureNetworkAnalytics_CL
 | where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
-| project Subnet_s  
+| project Subnet1_s, Subnet2_s  
 ```
 若要查看上述查询中的流的 Blob 路径，请使用以下查询：
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: dec2c845780b62e9a595c73504037142c511c0e6
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 08ab78171376f702aecb1f49571dda583eae5d82
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989405"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813864"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>管理 DDoS 保护计划：权限和限制
 
@@ -51,4 +51,4 @@ DDoS 防护计划跨区域和订阅工作。 同一计划可从不同区域中�
 若要了解如何查看和配置 DDoS 防护计划的遥测，请继续阅读教程。
 
 > [!div class="nextstepaction"]
-> [查看和配置 DDoS 防护遥测](telemetry-monitoring-alerting.md)
+> [查看和配置 DDoS 防护遥测](telemetry.md)

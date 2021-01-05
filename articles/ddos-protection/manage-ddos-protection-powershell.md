@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 49fa0c849a6b2eab0647922a711c50b4fe762584
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 69f9b5a74566879ecf8f15f23e689ebb731da45a
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095639"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814136"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建和配置 Azure DDoS 保护标准
 
@@ -55,7 +55,7 @@ New-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtecti
 
 ### <a name="enable-ddos-for-a-new-virtual-network"></a>为新的虚拟网络启用 DDoS
 
-创建虚拟网络时，可以启用 DDoS 保护。 在此示例中，我们将命名为虚拟网络 _MyVnet_ ： 
+创建虚拟网络时，可以启用 DDoS 保护。 在此示例中，我们将命名为虚拟网络 _MyVnet_： 
 
 ```azurepowershell-interactive
 New-AzVirtualNetwork -Name MyVnet -ResourceGroupName MyResourceGroup -Location "East US" -AddressPrefix 10.0.0.0/16
@@ -114,4 +114,4 @@ $vnet | Set-AzVirtualNetwork
 若要了解如何查看和配置 DDoS 防护计划的遥测，请继续阅读教程。
 
 > [!div class="nextstepaction"]
-> [查看和配置 DDoS 防护遥测](telemetry-monitoring-alerting.md)
+> [查看和配置 DDoS 防护遥测](telemetry.md)

@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: aeee13152364c31d82f674df784a27114035a041
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028540"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814425"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure 使用承诺权益
 
@@ -31,7 +31,7 @@ ms.locfileid: "97028540"
 
 ## <a name="determine-if-your-organization-has-an-azure-consumption-commitment-maccctc"></a>确定你的组织是否具有 Azure 消耗承诺 (MACC/.Ctc) 
 
-如果你不确定你的组织是否具有符合条件的协议，请登录到与你的组织关联的租户中 [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) 的 Marketplace 体验。 如果在定价筛选器中看到 " **azure 权益合格** " 选项，则可以获得合格的 azure 使用承诺。 如果直接通过 Azure Marketplace 购买，则合格 Azure Marketplace 购买将有助于组织的 Azure 使用承诺。
+如果你不确定你的组织是否具有符合条件的协议，请登录到与你的组织关联的租户中 [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) 的 Marketplace 体验。 如果你看到选择仅有资格使用的 **azure 权益** 作为筛选器选项的选项，则你有资格享受 azure 消耗承诺。 如果直接通过 Azure Marketplace 购买，则合格 Azure Marketplace 购买将有助于组织的 Azure 使用承诺。
 
 [![Azure 权益适用的菜单选项。](media/azure-benefit/azure-benefit-eligible.png)](media/azure-benefit/azure-benefit-eligible.png#lightbox)
 

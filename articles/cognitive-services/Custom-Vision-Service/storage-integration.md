@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: f4d9cc4c02ab062c73e9dbd977d9ea9e6ccdb60d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cd03e8f4a66d18adc33c943481002ff7b326d3
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532624"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813201"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>集成 Azure 存储以提供通知和备份
 
@@ -23,9 +23,9 @@ ms.locfileid: "90532624"
 本指南演示如何通过卷使用这些 REST Api。 你还可以使用 HTTP 请求服务（如 Postman）发出请求。
 
 > [!NOTE]
-> 推送通知依赖于**CreateProject** API 中的可选_notificationQueueUri_参数，而模型备份则需要使用可选的_exportModelContainerUri_参数。 本指南将同时使用这两个功能。
+> 推送通知依赖于 **CreateProject** API 中的可选 _notificationQueueUri_ 参数，而模型备份则需要使用可选的 _exportModelContainerUri_ 参数。 本指南将同时使用这两个功能。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 中的自定义视觉资源。 如果没有，请参阅 "Azure 门户"，并 [创建新自定义视觉资源](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true)。 此功能当前不支持认知服务资源 (都) 。
 - 具有 blob 容器的 Azure 存储帐户。 如果需要此步骤的帮助，请遵循 [Azure 存储实验室的练习 1](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) 。
@@ -34,7 +34,7 @@ ms.locfileid: "90532624"
 
 前往 Azure 门户上的自定义视觉培训资源，选择 " **标识** " 页，并启用系统分配的托管标识。
 
-接下来，请在 Azure 门户中找到存储资源。 请 **访问 (IAM) ** 页上的访问控制，并为每个集成功能添加角色分配：
+接下来，请在 Azure 门户中找到存储资源。 请 **访问 (IAM)** 页上的访问控制，并为每个集成功能添加角色分配：
 * 如果计划使用模型备份功能，请选择自定义视觉定型资源并分配 **存储 Blob 数据参与者** 角色。 
 * 如果计划使用通知队列功能，请选择自定义视觉定型资源并分配 **存储队列数据参与者** 。
 
@@ -110,7 +110,7 @@ curl -v -X PATCH "{endpoint}/customvision/v3.3/Training/projects/{projectId}"
 --data-ascii "{body}" 
 ```
 
-将请求正文 (`body`) 设置为以下 JSON 格式，并填充 _ExportModelContainerUri_ 和 _notificationQueueUri_的适当值：
+将请求正文 (`body`) 设置为以下 JSON 格式，并填充 _ExportModelContainerUri_ 和 _notificationQueueUri_ 的适当值：
 
 ```json
 {
@@ -206,4 +206,5 @@ curl -v -X PATCH "{endpoint}/customvision/v3.3/Training/projects/{projectId}"
 ## <a name="next-steps"></a>后续步骤
 
 在本指南中，您学习了如何在自定义视觉资源之间复制和移动项目。 接下来，浏览 API 参考文档，以了解可以对自定义视觉执行的其他操作。
-* [REST API 参考文档](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [ (培训 REST API 参考文档) ](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [REST API 参考文档 (预测) ](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.1/operations/5eb37d24548b571998fde5f3)

@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a08fc25083ecd6917f658f27cb954391228adf7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 063ef6b76e031277d93297512e16d30a86aae45c
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188694"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808515"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
 
@@ -92,10 +92,10 @@ Azure IoT Edge 在大多数可以运行容器的操作系统上运行；但是�
 | Raspberry Pi OS Buster <sup>1</sup> |  | ![Raspberry Pi OS Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspberry Pi OS Buster + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Ubuntu 20.04 <sup>2</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20.04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20.04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20.04 + ARM64](./media/tutorial-c-module/green-check.png) |
 
-<sup>1</sup> Debian 10 个系统，包括 RASPBERRY Pi OS Buster，请使用 IoT Edge 不支持的 OpenSSL 版本。 在安装 IoT Edge 之前，请使用以下命令安装较低版本：
+<sup>1</sup> Debian 10 系统（包括 Raspberry Pi OS Buster）使用了 IoT Edge 不支持的 OpenSSL 版本。 在安装 IoT Edge 之前，请使用以下命令安装较低版本：
 
 ```bash
-sudo apt-get install libssl1.0.2
+sudo apt-get install libssl1.1
 ```
 
 <sup>2</sup> [Azure IoT Edge 版本存储库](https://github.com/Azure/azure-iotedge/releases)中的 Debian 9 包应该可以直接与 Ubuntu 20.04 配合使用。

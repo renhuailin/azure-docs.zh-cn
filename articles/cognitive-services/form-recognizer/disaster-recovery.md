@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 747ceb0106f437f9e2442c2b8c68c0b73a9107a6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359806"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808244"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>备份和恢复窗体识别器模型
 
-在 Azure 门户中创建窗体识别器资源时，请指定一个区域。 从那开始，你的资源及其所有操作与该特定的 Azure 服务器区域保持关联。 这种情况很少出现，但并不是不可能遇到的网络问题。 如果你的解决方案需要始终可用，则应将其设计为故障转移到另一个区域，或在两个或多个区域之间拆分工作负荷。 这两种方法在不同区域中至少需要两个窗体识别器资源，并且能够跨区域同步 [自定义模型](./quickstarts/curl-train-extract.md) 。
+在 Azure 门户中创建窗体识别器资源时，请指定一个区域。 从那开始，你的资源及其所有操作与该特定的 Azure 服务器区域保持关联。 这种情况很少出现，但并不是不可能遇到的网络问题。 如果你的解决方案需要始终可用，则应将其设计为故障转移到另一个区域，或在两个或多个区域之间拆分工作负荷。 这两种方法在不同区域中至少需要两个窗体识别器资源，并且能够跨区域同步自定义模型。
 
 复制 API 允许您将自定义模型从一个窗体识别器帐户或其他人（可以存在于任何受支持的地理区域）复制到其他模型，从而实现了这种方案。 本指南说明如何将复制 REST API 与卷曲一起使用。 你还可以使用 HTTP 请求服务（如 Postman）发出请求。
 

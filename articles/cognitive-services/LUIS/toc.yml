@@ -36,8 +36,6 @@
       items:
         - name: 修复不确定的预测
           href: luis-tutorial-review-endpoint-utterances.md
-        - name: 成批测试数据集
-          href: luis-tutorial-batch-testing.md
         - name: 添加模式来改进预测
           href: luis-tutorial-pattern.md
     - name: 用于机器人
@@ -93,8 +91,6 @@
       items:
         - name: 交互式测试
           href: luis-concept-test.md
-        - name: 批处理测试
-          href: luis-concept-batch-test.md
     - name: 数据管理
       items:
         - name: 更改数据
@@ -229,7 +225,7 @@
         - name: 配置容器
           href: luis-container-configuration.md
         - name: 使用容器实例
-          href: deploy-luis-on-container-instances.md
+          href: ../containers/azure-container-instance-recipe.md
         - name: 容器限制
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
