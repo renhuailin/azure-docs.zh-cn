@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/23/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: a2d26689a3036f05d7c8e7f417fbbb447402aedc
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: f140384ee2c78b38982c99dab5912bc451584a42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762854"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898141"
 ---
 # <a name="connect-stream-analytics-jobs-to-resources-in-an-azure-virtual-network-vnet"></a>将流分析作业连接到 Azure 虚拟网络中的资源 (VNet) 
 
@@ -41,7 +41,7 @@ ms.locfileid: "97762854"
 1. [Blob 存储或 Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/stream-analytics/blob-output-managed-identity) -可以是作业的存储帐户、流式输入或输出。
 2. [Azure 事件中心](https://docs.microsoft.com/azure/stream-analytics/event-hubs-managed-identity) -可以是作业的流式处理输入或输出。
 
-如果作业需要连接到其他输入或输出类型，则唯一的选择是使用流分析群集中的专用终结点。
+如果你的作业需要连接到其他输入或输出类型，则可以使用 Azure Functions 从流分析首次写入到事件中心输出，然后写入到你选择的任何目标。 如果要从流分析直接写入 VNet 或防火墙中保护的其他输出类型，则唯一的选择是使用流分析群集中的专用终结点。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 01/03/2021
 ms.author: guybo
-ms.openlocfilehash: b27b7344d84ce1361d8294fa4f3490c50afbb4c3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 9d278582840404702bfef3e5fc9af395f659d844
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489652"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898073"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 认可的 Linux 分发版
 
@@ -36,8 +36,8 @@ Azure Linux 代理已预安装在 Azure 市场映像中，通常可从分发的�
 | --- | --- | --- | --- |
 | 由 Rogue Wave 软件提供的 CentOS |CentOS 6.x、7.x、8.x |CentOS 6.3：[LIS 下载](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+：在内核中 |包：在“WALinuxAgent”下的[存储库](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> 从 2020 年 5 月 26 日开始，CoreOS 已处于[生命周期终止](https://coreos.com/os/eol/)状态。 |不再可用 | | |
-| 由 Credativ 提供的 Debian |8.x、9.x |在内核中 |包：在“waagent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
-|由 Kinvolk 提供的 Flatcar Container Linux| Pro、稳定、Beta| 在内核中 | wa-linux-已在/usr/share/oem/bin/waagent 中安装代理 |
+| 由 Credativ 提供的 Debian |8mb、1.x、2。x |在内核中 |包：在“waagent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
+|由 Kinvolk 提供的 Flatcar Container Linux| Pro、Stable、Beta 版本| 在内核中 | /usr/share/oem/bin/waagent 中已安装 wa-linux-agent |
 | Oracle Oracle Linux |6.x、7.x、8.x |在内核中 |包：在“WALinuxAgent”下的存储库中 <br/>源代码：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | [用 Red Hat Red Hat Enterprise Linux](../workloads/redhat/overview.md) |6.x、7.x、8.x |在内核中 |包：在“WALinuxAgent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | 由 SUSE 提供的 SUSE Linux Enterprise |SLES/SLES for SAP 11.x、12.x、15.x <br/> [SUSE 公有云映像生命周期](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |在内核中 |包：<p> 对于 11，在 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 存储库中<br>对于 12，包含在“公有云”模块中的“python-azure-agent”下<br/>源代码：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
@@ -74,7 +74,7 @@ Microsoft 为 CoreOS 用户提供了两 (2) 个迁移通道。
 
 [https://www.credativ.de/en/portfolio/support/open-source-support-center/](https://www.credativ.de/en/portfolio/support/open-source-support-center/)
 
-credativ 是一家独立的咨询和服务公司，致力于通过使用免费软件开发和实施专业解决方案。 作为领先的开源专家，credativ 对许多 IT 部门进行了国际识别，使用其支持。 与 Microsoft 一起，credativ 正在准备 Debian 映像。 映像专门设计用于在 Azure 上运行，并可通过平台轻松进行管理。 credativ 还会通过其开源支持中心支持长期维护和更新 Azure 的 Debian 映像。
+credativ 是一家独立的咨询和服务公司，致力于通过免费软件开发和实施专业解决方案。 credativ 是获得国际认可的开源领域专业先行者，为许多公司的 IT 部门提供支持。 与 Microsoft 一起，credativ 正在准备 Debian 映像。 这些映像经过专门的设计，可以在 Azure 上运行并可通过该平台轻松进行管理。 credativ 还会通过其开源支持中心为 Azure 的 Debian 映像的维护和更新提供长期支持。
 
 ### <a name="kinvolk"></a>Kinvolk
 [https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)

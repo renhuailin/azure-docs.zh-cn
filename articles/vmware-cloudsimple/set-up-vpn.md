@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解决方案（按 CloudSimple）-在本地与私有云之间配置 VPN
 description: 介绍如何配置本地网络与 CloudSimple 私有云之间的站点到站点或点到站点 VPN 连接
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5cd08ce938a25e3311358892c9afa9eefd6c6dbf
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b7a119b538ee07b961011bfa98d748f92cc76f0e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424673"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899212"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>配置到 CloudSimple 私有云的 VPN 连接
 
@@ -22,7 +22,7 @@ ms.locfileid: "92424673"
 ## <a name="vpn-gateway-types"></a>VPN 网关类型
 
 * **点到站点 VPN** 连接是从计算机连接到私有云的最简单方法。 使用点到站点 VPN 连接来远程连接到私有云。
-* 使用**站点到站点 VPN**连接，可以设置私有云工作负荷以访问本地服务。 你还可以使用本地 Active Directory 作为标识源，以便向你的私有云 vCenter 进行身份验证。  目前支持 **基于策略的 VPN** 类型。
+* 使用 **站点到站点 VPN** 连接，可以设置私有云工作负荷以访问本地服务。 你还可以使用本地 Active Directory 作为标识源，以便向你的私有云 vCenter 进行身份验证。  目前支持 **基于策略的 VPN** 类型。
 
 在某个区域中，可以创建一个站点到站点 VPN 网关和一个点到站点 VPN 网关。
 
@@ -49,7 +49,7 @@ ms.locfileid: "92424673"
 
 7. 连接到 CloudSimple VPN 网关。
 
-下面的示例演示如何使用 **Viscosity 客户端**导入连接。
+下面的示例演示如何使用 **Viscosity 客户端** 导入连接。
 
 #### <a name="import-connection-on-viscosity-client"></a>在 Viscosity 客户端上导入连接
 
@@ -57,7 +57,7 @@ ms.locfileid: "92424673"
 
 2. 在计算机上打开 Viscosity。
 
-3. 单击该 **+** 图标，然后选择 "从文件**导入连接**"  >  **From File**。
+3. 单击该 **+** 图标，然后选择 "从文件 **导入连接**"  >  。
 
     ![从文件导入 VPN 配置](media/import-p2s-vpn-config.png)
 

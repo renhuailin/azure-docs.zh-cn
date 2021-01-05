@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解决方案-从私有云到本地的 DNS 转发
 description: 描述如何启用 CloudSimple 私有云 DNS 服务器来向前查找本地资源
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 02/29/2020
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3571455db6ecc600bf0948087b40c281d72512ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3481e21a93fbf5f658c5ca00513ea179c8f95400
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091243"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899195"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>启用 CloudSimple 私有云 DNS 服务器以将本地资源的 DNS 查找转发到 DNS 服务器
 
@@ -27,7 +27,7 @@ ms.locfileid: "87091243"
 * 使用本地 Active Directory 作为私有云的标识源 vSphere
 * 使用 HCX 将虚拟机从本地迁移到私有云
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 必须将私有云网络中的网络连接提供给本地网络，才能进行 DNS 转发。  你可以使用以下内容设置网络连接：
 

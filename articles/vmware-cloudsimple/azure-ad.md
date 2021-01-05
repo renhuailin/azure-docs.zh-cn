@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解决方案（按 CloudSimple）-在私有云上使用 Azure AD 作为标识源
 description: 介绍如何将 Azure AD 作为标识提供程序添加到 CloudSimple 私有云上，以便对从 Azure 访问 CloudSimple 的用户进行身份验证
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f55a0f52f5e028f9cbf7a9fabbb3c24ad43c3800
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532522"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898600"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>使用 Azure AD 作为 CloudSimple 私有云上的 vCenter 的标识提供者
 
@@ -32,7 +32,7 @@ ms.locfileid: "90532522"
 
 Azure AD 是 Microsoft 多租户、基于云的目录和标识管理服务。  Azure AD 提供了一个可缩放、一致和可靠的身份验证机制，使用户能够在 Azure 上进行身份验证和访问不同的服务。  它还为任何第三方服务提供安全 LDAP 服务，以将 Azure AD 用作身份验证/标识源。  Azure AD 结合了核心目录服务、高级标识监管和应用程序访问管理，可用于为管理私有云的用户提供对私有云的访问权限。
 
-若要将 Azure AD 用作包含 vCenter 的标识源，必须设置 Azure AD 和 Azure AD 的域服务。 按照以下说明操作：
+若要将 Azure AD 用作包含 vCenter 的标识源，必须设置 Azure AD 和 Azure AD 的域服务。 请按照以下说明执行操作：
 
 1. [如何设置 Azure AD 和 Azure AD 域服务](#set-up-azure-ad-and-azure-ad-domain-services)
 2. [如何在私有云 vCenter 上设置标识源](#set-up-an-identity-source-on-your-private-cloud-vcenter)
@@ -88,11 +88,11 @@ Azure AD 是 Microsoft 多租户、基于云的目录和标识管理服务。  A
     | **Name** | 标识源的名称。 |
     | **用户的基本 DN** | 用户的基本可分辨名称。  对于 Azure AD，请使用： `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`  示例： `OU=AADDC Users,DC=cloudsimplecustomer,DC=com` 。|
     | **域名** | 域的 FQDN，例如，example.com。 不要在此文本框中提供 IP 地址。 |
-    | **域别名** | * (可选) * 域 NetBIOS 名称。 如果使用的是 SSPI 身份验证，请将 Active Directory 域的 NetBIOS 名称添加为标识源的别名。 |
+    | **域别名** | *(可选)* 域 NetBIOS 名称。 如果使用的是 SSPI 身份验证，请将 Active Directory 域的 NetBIOS 名称添加为标识源的别名。 |
     | **组的基本 DN** | 组的基本可分辨名称。 对于 Azure AD，请使用： `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`  示例： `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **主服务器 URL** | 域的主域控制器 LDAP 服务器。<br><br>使用格式 `ldaps://hostname:port`。 对于 LDAPS 连接，此端口通常为636。 <br><br> `ldaps://`   在主或辅助 LDAP URL 中使用时，需要为 Active Directory 服务器的 LDAPS 终结点建立信任的证书。 |
+    | **主服务器 URL** | 域的主域控制器 LDAP 服务器。<br><br>使用格式 `ldaps://hostname:port`。 对于 LDAPS 连接，此端口通常为636。 <br><br>`ldaps://`在主或辅助 LDAP URL 中使用时，需要为 Active Directory 服务器的 LDAPS 终结点建立信任的证书。 |
     | **辅助服务器 URL** | 用于故障转移的辅助域控制器 LDAP 服务器的地址。 |
-    | **选择证书** | 如果要将 LDAPS 用于 Active Directory LDAP 服务器或 OpenLDAP 服务器标识源，请  `ldaps://`   在 "URL" 文本框中键入后显示 "选择证书" 按钮。 不需要辅助 URL。 |
+    | **选择证书** | 如果要将 LDAPS 用于 Active Directory LDAP 服务器或 OpenLDAP 服务器标识源，请 `ldaps://` 在 "URL" 文本框中键入后显示 "选择证书" 按钮。 不需要辅助 URL。 |
     | **用户名** | 域中用户的 ID，这些用户和组的基本 DN 至少具有只读访问权限。 |
     | **密码** | Username 指定的用户的密码。 |
 
@@ -101,7 +101,7 @@ Azure AD 是 Microsoft 多租户、基于云的目录和标识管理服务。  A
 5. 按照 VMware 主题 [将成员添加到 Vcenter Single Sign-On 组](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)中所述，将 Azure AD 中的用户/组添加到 vcenter 组。
 
 > [!CAUTION]
-> 新用户必须仅添加到 *云所有者组*、 *云全局-群集管理组*、云全局 *存储管理*组、云全局 *网络管理* 组或 *云-全局-VM 管理*组的用户组。  添加到 *管理员* 组的用户将被自动删除。  只有服务帐户才能添加到 *Administrators* 组。
+> 新用户必须仅添加到 *云所有者组*、 *云全局-群集管理组*、云全局 *存储管理* 组、云全局 *网络管理* 组或 *云-全局-VM 管理* 组的用户组。  添加到 *管理员* 组的用户将被自动删除。  只有服务帐户才能添加到 *Administrators* 组。
 
 ## <a name="next-steps"></a>后续步骤
 

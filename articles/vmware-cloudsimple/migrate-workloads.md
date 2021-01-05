@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解决方案（通过 CloudSimple）-将工作负荷 Vm 迁移到私有云
 description: 介绍如何将虚拟机从本地 vCenter 迁移到 CloudSimple 私有云 vCenter
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 87b8a112a319519dbde977ee30136a884137212d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 851305775d14ed371440434b2fbe9334ec0a21b9
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77019989"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899314"
 ---
 # <a name="migrate-workload-vms-from-on-premises-vcenter-to-private-cloud-vcenter-environment"></a>将工作负荷 Vm 从本地 vCenter 迁移到私有云 vCenter 环境
 

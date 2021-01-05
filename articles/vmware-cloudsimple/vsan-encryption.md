@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解决方案（按 CloudSimple）-配置适用于私有云的 vSAN 加密
 description: 介绍如何配置 vSAN 软件加密功能，以便你的 CloudSimple 私有云可以使用 Azure 虚拟网络中运行的密钥管理服务器。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5da05c7f3c6878b0804799360e512676b9002d3
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77020635"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899042"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>为 CloudSimple 私有云配置 vSAN 加密
 
@@ -83,7 +83,7 @@ KMS 服务器群集在 Azure 虚拟网络中运行，可通过配置的 Azure Ex
 
 ### <a name="hytrust-webui-configure-the-kmip-server"></a>HyTrust WebUI：配置 KMIP 服务器
 
-中转到 https://*公共*ip，其中 *公共 ip* 是 KeyControl 节点 VM 的公共 ip 地址。 请按照 [HyTrust 文档](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)中的步骤进行操作。
+中转到 https://*公共* ip，其中 *公共 ip* 是 KeyControl 节点 VM 的公共 ip 地址。 请按照 [HyTrust 文档](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)中的步骤进行操作。
 
 1. [配置 KMIP 服务器](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/configuring-kmip-server.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____2)
 2. [为 VMware 加密创建证书捆绑](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3)

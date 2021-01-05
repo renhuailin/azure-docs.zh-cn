@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2b71bee620ab7d5b1ef98b60013d1978f49d127f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3d7292999fc4b53fed06822461857185127dc793
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505880"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898719"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -46,7 +46,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 默认情况下，[Functions 代理](functions-proxies.md)使用快捷方式从代理直接将 API 调用发送到同一函数应用中的函数。 使用此快捷方式取代创建新的 HTTP 请求。 此设置让你能够禁用该快捷方式行为。
 
-|键|“值”|说明|
+|键|值|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|是|具有指向本地函数应用中函数的后端 URL 的调用不会直接发送到函数， 相反，请求会定向回函数应用的 HTTP 前端。|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|具有指向本地函数应用中函数的后端 URL 的调用会直接转发到函数。 这是默认值。 |
@@ -55,7 +55,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 此设置控制字符 `%2F` 在路由参数插入后端 URL 时是否在路由参数中解码为斜杠。 
 
-|键|“值”|说明|
+|键|值|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|是|包含编码斜杠的路由参数已解码。 |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|所有路由参数均原样传递，这是默认行为。 |
@@ -135,7 +135,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Azure Functions 运行时使用此存储帐户连接字符串执行正常操作。 此存储帐户的某些用途包括密钥管理、计时器触发器管理和事件中心检查点。 存储帐户必须是支持 Blob、队列和表的通用帐户。 请参阅[存储帐户](functions-infrastructure-as-code.md#storage-account)和[存储帐户要求](storage-considerations.md#storage-account-requirements)。
+Azure Functions 运行时使用此存储帐户连接字符串执行常规操作。 此存储帐户的一些用途包括密钥管理、计时器触发器管理和事件中心检查点。 存储帐户必须是支持 Blob、队列和表的通用帐户。 请参阅[存储帐户](functions-infrastructure-as-code.md#storage-account)和[存储帐户要求](storage-considerations.md#storage-account-requirements)。
 
 |键|示例值|
 |---|------------|
@@ -186,6 +186,14 @@ Azure Functions 运行时使用此存储帐户连接字符串执行正常操作�
 |---|------------|
 |FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
 
+## <a name="python_threadpool_thread_count"></a>PYTHON \_ THREADPOOL \_ 线程 \_ 计数
+
+指定 Python 语言辅助角色将用于执行函数调用的最大线程数，其默认值 `1` 为 Python 版本及更高版本 `3.8` 。 对于 Python 版本 `3.9` 及更高版本，该值设置为 `None` 。 请注意，此设置不能保证在执行过程中设置的线程数。 此设置允许 Python 将线程数扩展到指定的值。 此设置仅适用于 Python 函数应用。 此外，此设置还适用于同步函数调用，不适用于协同程序。
+
+|键|示例值|最大值|
+|---|------------|---------|
+|PYTHON \_ THREADPOOL \_ 线程 \_ 计数|2|32|
+
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
@@ -227,9 +235,9 @@ _此设置当前处于预览状态。_
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
-## <a name="website_contentovervnet"></a>网站 \_ CONTENTOVERVNET
+## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
-仅适用于高级计划。 `1`如果将存储帐户限制在虚拟网络中，则值为可使函数应用进行缩放。 在将存储帐户限制到虚拟网络时，应该启用此设置。 若要了解详细信息，请参阅将 [存储帐户限制为虚拟网络](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network-preview)。 
+仅用于高级计划。 将存储帐户限制在虚拟网络中时，值 `1` 允许函数应用进行缩放。 将存储帐户限制于一个虚拟网络时，应启用此设置。 若要了解详细信息，请参阅[将存储帐户限制在虚拟网络中](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network-preview)。 
 
 |键|示例值|
 |---|------------|
@@ -256,7 +264,7 @@ _此设置当前处于预览状态。_
 
 ## <a name="website_node_default_version"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
-_仅限 Windows_ 。  
+_仅限 Windows_。  
 设置在 Windows 上运行函数应用时要使用的 Node.js 版本。 应使用波形符 (~) 让运行时使用目标主版本的最新可用版本。 例如，当设置为 `~10` 时，将使用最新版本 Node.js 10。 当目标主版本带有波形符时，无需手动更新次版本。 
 
 |键|示例值|

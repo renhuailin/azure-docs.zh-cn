@@ -1,25 +1,25 @@
 ---
 title: Azure VMware 解决方案（按 CloudSimple）-访问 vSphere 客户端
 description: 描述如何访问私有云的 vCenter。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/30/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 18d9463bc512257034860e1188372879524924f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e62042a84f7ac2615762e3d9b036e4340bd8c73
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77022658"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899110"
 ---
 # <a name="access-your-private-cloud-vcenter-portal"></a>访问私有云 vCenter 门户
 
 可以从 Azure 门户或 CloudSimple 门户启动私有云 vCenter 门户。  通过 vCenter 门户，你可以管理私有云上的 VMware 基础结构。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 必须建立网络连接，并且必须启用 DNS 名称解析才能访问 vCenter 门户。  可以使用以下任一选项建立与私有云的网络连接。
 
@@ -36,7 +36,7 @@ ms.locfileid: "77022658"
 
 可以从 Azure 门户启动私有云的 vCenter 门户。
 
-1. 选择“所有服务”。
+1. 选择“所有服务”  。
 
 2. 搜索 " **CloudSimple Services**"。
 

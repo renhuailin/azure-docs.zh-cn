@@ -1,19 +1,19 @@
 ---
 title: CloudSimple-设置 VPN 网关的 Azure VMware 解决方案
 description: 介绍如何设置点到站点 VPN 网关和站点到站点 VPN 网关，以及如何在本地网络与 CloudSimple 私有云之间创建连接
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78f78bfbf885cbae7708a75cb54ce2d41e7b526c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871994"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899093"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>在 CloudSimple 网络上设置 VPN 网关
 
@@ -21,7 +21,7 @@ ms.locfileid: "91871994"
 
 ## <a name="vpn-gateway-types"></a>VPN 网关类型
 
-* 使用**站点到站点 VPN**连接，可以设置私有云工作负荷以访问本地服务。 你还可以使用本地 Active Directory 作为标识源，以便向你的私有云 vCenter 进行身份验证。  目前仅支持 **基于策略的 VPN** 类型。
+* 使用 **站点到站点 VPN** 连接，可以设置私有云工作负荷以访问本地服务。 你还可以使用本地 Active Directory 作为标识源，以便向你的私有云 vCenter 进行身份验证。  目前仅支持 **基于策略的 VPN** 类型。
 * **点到站点 VPN** 连接是从计算机连接到私有云的最简单方法。 使用点到站点 VPN 连接远程连接到私有云。 有关为点到站点 VPN 连接安装客户端的信息，请参阅 [配置到私有云的 VPN 连接](set-up-vpn.md)。
 
 在某个区域中，你可以创建一个点到站点 VPN 网关和一个站点到站点 VPN 网关。
@@ -101,7 +101,7 @@ CloudSimple VPN 网关提供向 VPN 网关添加 VLAN/子网的策略。  策略
 
 6. 通过 "Vlan/子网" 部分，可以为网关和连接指定管理和用户 Vlan/子网。
 
-    * **自动添加**选项设置网关的全局策略。 这些设置将应用于当前的网关。 这些设置可在 " **选择** " 区域中被覆盖。
+    * **自动添加** 选项设置网关的全局策略。 这些设置将应用于当前的网关。 这些设置可在 " **选择** " 区域中被覆盖。
     * 选择 " **添加私有云的管理 vlan/子网**"。 
     * 若要添加所有用户定义的 Vlan/子网，请单击 "  **添加用户定义的 vlan/子网**"。
     * " **选择** 设置" 在 " **自动添加**" 下覆盖全局设置。

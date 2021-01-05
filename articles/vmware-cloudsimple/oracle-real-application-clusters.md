@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解决方案（通过 CloudSimple）-为 Oracle RAC 优化 CloudSimple 私有云
 description: 介绍如何部署新群集并为 Oracle 真实应用程序群集优化 VM) 安装和配置 (RAC
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 980ba86a9916e13dd2ac7639bd06d3ab8546d2f1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 3959aae5f490af10c6747cfa67d9960e0c4a203f
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424698"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899263"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>优化 CloudSimple 私有云以安装 Oracle RAC
 

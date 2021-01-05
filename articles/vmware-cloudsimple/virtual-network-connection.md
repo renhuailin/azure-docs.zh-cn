@@ -1,19 +1,19 @@
 ---
 title: 使用 ExpressRoute 将 Azure 虚拟网络连接到 CloudSimple-Azure VMware 解决方案（按 CloudSimple）
 description: 描述如何获取 Azure 虚拟网络与 CloudSimple 环境之间的连接的对等互连信息
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6b20ee4e04a4443529ecceca8c6fc2206f7df39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fedfbe55fd8ea3d2b4cc910df631e40bc74e210
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77563994"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899059"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>使用 ExpressRoute 将 Azure 虚拟网络连接到 CloudSimple
 
@@ -39,7 +39,7 @@ ms.locfileid: "77563994"
 1. 单击 " **复制** " 以复制该 URI。 将其粘贴到可在其中添加到 Azure 门户的文件中。  
 2. 单击 " **复制** " 以复制授权密钥，并将其粘贴到该文件中。
 
-复制 " **可用** 状态" 的 "授权密钥" 和 "对等线路 URI"。  已**使用**状态指示密钥已用于创建虚拟网络连接。
+复制 " **可用** 状态" 的 "授权密钥" 和 "对等线路 URI"。  已 **使用** 状态指示密钥已用于创建虚拟网络连接。
 
 ![虚拟网络连接页](media/virtual-network-connection.png)
 

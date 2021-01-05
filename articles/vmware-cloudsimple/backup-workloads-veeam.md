@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解决方案（通过 CloudSimple）-使用 Veeam 在私有云上备份工作负荷虚拟机
 description: 介绍如何使用 Veeam B&R 9.5 备份在基于 Azure 的 CloudSimple 私有云中运行的虚拟机
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cb883b70d1ae9f2894c7679633a586586922aa18
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7be606b3e23a594e67acf3f169d88353403d8577
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92419945"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899331"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>使用 Veeam B&R 在 CloudSimple 私有云上备份工作负荷 Vm
 
@@ -98,7 +98,7 @@ Veeam 解决方案要求你执行以下操作：
 8. [Veeam 控制台：配置 Veeam Backup & 恢复软件](#veeam-console-install-veeam-backup-and-recovery-software)
 9. [CloudSimple 门户：设置 Veeam 访问权限和取消提升权限](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
 
-### <a name="before-you-begin"></a>准备工作
+### <a name="before-you-begin"></a>开始之前
 
 在开始 Veeam 部署之前，需要满足以下要求：
 
@@ -136,7 +136,7 @@ Veeam 解决方案要求你执行以下操作：
 
 下表提供了端口列表。
 
-| 图标 | 描述 | 图标 | 说明 |
+| 图标 | 说明 | 图标 | 说明 |
 | ------------ | ------------- | ------------ | ------------- |
 | 备份服务器  | vCenter  | HTTPS/TCP  | 443 |
 | 备份服务器 <br> *部署 Veeam 备份 & 复制组件所必需的* | 备份代理  | TCP/UDP  | 135、137到139和445 |
@@ -240,18 +240,18 @@ Veeam 解决方案要求你执行以下操作：
     * 将安装服务器位置设置为备份服务器。
     * 将 Veeam 服务器的配置备份位置更改为远程存储库。
 
-3. 使用 **Home> 配置备份设置**启用配置备份的加密。
+3. 使用 **Home> 配置备份设置** 启用配置备份的加密。
 
 4. 添加 Windows server VM 作为 VMware 环境的代理服务器。 使用代理的 "流量规则"，通过网络加密备份数据。
 
 5. 配置备份作业。
     * 若要配置备份作业，请按照 [创建备份作业](https://www.youtube.com/watch?v=YHxcUFEss4M)中的说明进行操作。
-    * 启用 " **高级设置" > 存储**中的备份文件的加密。
+    * 启用 " **高级设置" > 存储** 中的备份文件的加密。
 
 6. 配置备份复制作业。
 
     * 若要配置备份复制作业，请按照视频 [创建备份复制作业](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s)中的说明进行操作。
-    * 启用 " **高级设置" > 存储**中的备份文件的加密。
+    * 启用 " **高级设置" > 存储** 中的备份文件的加密。
 
 ### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>CloudSimple 门户：设置 Veeam 访问权限和取消提升权限
 为 Veeam 备份和恢复服务器创建公共 IP 地址。 有关说明，请参阅 [分配公共 IP 地址](public-ips.md)。

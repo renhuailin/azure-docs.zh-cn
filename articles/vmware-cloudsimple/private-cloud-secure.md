@@ -1,19 +1,19 @@
 ---
 title: CloudSimple-安全私有云的 Azure VMware 解决方案
 description: 介绍如何通过 CloudSimple 私有云保护 Azure VMware 解决方案
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 000e43a7861bd155ebbd7175db96dd323731464b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5e70745cd6e2f6a2a13581052f65e014bd0d0481
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518205"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899161"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>如何保护私有云环境
 
@@ -29,7 +29,7 @@ ms.locfileid: "92518205"
 
 只有对资源组拥有 " **所有者** " 或 " **参与者** " 权限的用户才会看到 CloudSimple 服务并启动 CloudSimple 门户。
 
-有关详细信息，请参阅 [什么是 AZURE RBAC) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)。
+有关详细信息，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)。
 
 ## <a name="rbac-for-private-cloud-vcenter"></a>私有云 vCenter 的 RBAC
 
@@ -38,7 +38,7 @@ ms.locfileid: "92518205"
 ### <a name="add-new-users-to-vcenter"></a>将新用户添加到 vCenter
 
 1. [提升](escalate-private-cloud-privileges.md) 私有云上 **CloudOwner \@ cloudsimple 本地** 用户的权限。
-2. 使用**CloudOwner \@ cloudsimple**登录到 vCenter
+2. 使用 **CloudOwner \@ cloudsimple** 登录到 vCenter
 3. [添加 VCenter Single Sign-On 用户](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html)。
 4. 将用户添加到 [vCenter 单一登录组](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "92518205"
 * 在私有云 vCenter 上[使用 Azure AD 作为标识提供者](azure-ad.md)
 
 1. [提升](escalate-private-cloud-privileges.md) 私有云上 **CloudOwner \@ cloudsimple 本地** 用户的权限。
-2. 使用**CloudOwner \@ cloudsimple**登录到 vCenter
+2. 使用 **CloudOwner \@ cloudsimple** 登录到 vCenter
 3. 将标识提供程序中的用户添加到 [vCenter 单一登录组](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)。
 
 ## <a name="secure-network-on-your-private-cloud-environment"></a>在私有云环境中保护网络

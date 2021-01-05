@@ -1,27 +1,27 @@
 ---
-title: Azure Stack Edge Pro 共享管理 |Microsoft Docs
-description: 描述如何使用 Azure 门户管理 Azure Stack Edge Pro 上的共享。
+title: Azure Stack Edge FPGA 共享管理 |Microsoft Docs
+description: 介绍如何使用 Azure 门户管理 Azure Stack Edge FPGA 上的共享。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/25/2019
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d43b70c8f958ad37b6ac2d0ee043d5f07d11da9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7fbb5ca43d2877e2e14914b71df7cc1bcdf27f88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444591"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898182"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>使用 Azure 门户管理 Azure Stack Edge Pro 上的共享
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro-fpga"></a>使用 Azure 门户管理 Azure Stack Edge Pro FPGA 上的共享 
 
-本文介绍如何在 Azure Stack Edge Pro 上管理共享。 可以通过 Azure 门户或通过本地 web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户可以添加、删除和刷新共享，或者同步与共享相关联的存储帐户的存储密钥。
+本文介绍如何在 Azure Stack Edge Pro FPGA 设备上管理共享。 可以通过 Azure 门户或通过本地 web UI 管理 Azure Stack Edge Pro FPGA 设备。 使用 Azure 门户可以添加、删除和刷新共享，或者同步与共享相关联的存储帐户的存储密钥。
 
 ## <a name="about-shares"></a>关于共享
 
-若要将数据传输到 Azure，需要在 Azure Stack Edge Pro 上创建共享。 在 Azure Stack Edge Pro 设备上添加的共享可以是将数据推送到云的本地共享或共享。
+若要将数据传输到 Azure，需要在 Azure Stack Edge Pro FPGA 上创建共享。 在 Azure Stack Edge Pro 设备上添加的共享可以是将数据推送到云的本地共享或共享。
 
  - **本地共享**：如果想要在设备上本地处理数据，请使用这些共享。
  - **共享**：如果想要将设备数据自动推送到云中的存储帐户，请使用这些共享。 所有云功能（如 **刷新** 和 **同步存储密钥** ）都适用于共享。
@@ -39,7 +39,7 @@ ms.locfileid: "96444591"
 
 在 Azure 门户中执行以下步骤，以创建共享。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。 在命令栏上选择“+ 添加共享”。
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后跳到 " **云存储网关**"。 中转到 " **共享** "，然后在命令栏上选择 " **+ 添加共享** "。
 
     ![选择“添加共享”](media/azure-stack-edge-manage-shares/add-share-1.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "96444591"
 
 ## <a name="add-a-local-share"></a>添加本地共享
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。 在命令栏上选择“+ 添加共享”。
+1. 在 Azure 门户中转到 Azure Stack Edge 资源，然后在 " **云存储网关 > 共享**"。 在命令栏上选择“+ 添加共享”。
 
    ![选择添加共享2](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "96444591"
 
 6. 在“所有特权本地用户”字段中，选择“新建”或“使用现有项”。
 
-7. 选择“创建”。 
+7. 选择“创建”  。 
 
    ![创建本地共享](media/azure-stack-edge-manage-shares/add-local-share-2.png)
 
@@ -96,15 +96,13 @@ ms.locfileid: "96444591"
 
    ![查看更新的“共享”边栏选项卡](media/azure-stack-edge-manage-shares/add-local-share-3.png)
     
-    选择该共享，以查看其 Edge 计算模块的本地装入点。
 
-   ![查看本地共享详细信息](media/azure-stack-edge-manage-shares/add-local-share-4.png)
 
 ## <a name="mount-a-share"></a>装载共享
 
 如果在 Azure Stack Edge Pro 设备上配置计算之前创建了共享，则需要安装该共享。 通过以下步骤装载共享。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。 从共享列表中选择要装载的共享。 “用于计算”列会将所选共享的状态显示为“已禁用”。
+1. 在 Azure 门户中转到 Azure Stack Edge 资源，然后在 " **云存储网关 > 共享**"。 从共享列表中选择要装载的共享。 “用于计算”列会将所选共享的状态显示为“已禁用”。
 
    ![选择共享3](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
@@ -122,13 +120,13 @@ ms.locfileid: "96444591"
 
 5. 再次选择共享，查看该共享的本地装入点。 Edge 计算模块使用共享的这个本地装入点。
 
-   ![共享的本地装入点](media/azure-stack-edge-manage-shares/share-mountpoint.png)
+   ![共享的本地装入点](media/azure-stack-edge-manage-shares/share-mountpoint.png) 
 
 ## <a name="unmount-a-share"></a>卸载共享
 
 在 Azure 门户中执行以下步骤，以卸载共享。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。
+1. 在 Azure 门户中转到 Azure Stack Edge 资源，然后在 " **云存储网关 > 共享**"。
 
    ![选择共享4](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
@@ -148,13 +146,13 @@ ms.locfileid: "96444591"
 
 在 Azure 门户中执行以下步骤，以删除共享。
 
-1. 在共享列表中，选择并单击要删除的共享。
+1. 在 Azure 门户中转到 Azure Stack Edge 资源，然后在 " **云存储网关 > 共享**"。 在共享列表中，选择并单击要删除的共享。
 
    ![选择共享5](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
-2. 单击 **“删除”** 。
+2. 选择“删除”  。
 
-   ![单击“删除”](media/azure-stack-edge-manage-shares/delete-share-2.png)
+   ![选择“删除”](media/azure-stack-edge-manage-shares/delete-share-2.png)
 
 3. 当系统提示你进行确认时，单击 **“是”**。
 
@@ -173,15 +171,15 @@ ms.locfileid: "96444591"
 
 在 Azure 门户中执行以下步骤，以刷新共享。
 
-1. 在 Azure 门户中转到“共享”。 选择并单击要刷新的共享。
+1. 在 Azure 门户中转到 Azure Stack Edge 资源，然后在 " **云存储网关 > 共享**"。 选择并单击要刷新的共享。
 
    ![选择共享6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
-2. 单击“刷新”。
+2. 选择 " **刷新数据**"。
 
-   ![单击“刷新”](media/azure-stack-edge-manage-shares/refresh-share-2.png)
+   ![选择刷新](media/azure-stack-edge-manage-shares/refresh-share-2.png)
  
-3. 当系统提示你进行确认时，单击 **“是”**。 此时会启动一个作业来刷新本地共享的内容。
+3. 出现确认提示时，选择“是”。 此时会启动一个作业来刷新本地共享的内容。
 
    ![确认刷新](media/azure-stack-edge-manage-shares/refresh-share-3.png)
 
@@ -199,7 +197,7 @@ ms.locfileid: "96444591"
 
 在 Azure 门户中执行以下步骤，以同步存储访问密钥。
 
-1. 在资源中转到“概述”。 在共享列表中，选择并单击与需要同步的存储帐户相关联的共享。
+1. 在 Azure 门户中转到 Azure Stack Edge 资源，然后在 " **云存储网关 > 共享**"。 在共享列表中，选择并单击与需要同步的存储帐户相关联的共享。
 
     ![选择包含相关存储帐户的共享](media/azure-stack-edge-manage-shares/sync-storage-key-1.png)
 

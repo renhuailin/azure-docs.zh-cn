@@ -1,19 +1,19 @@
 ---
 title: 查看 Azure VMware CloudSimple portal 用户-Azure VMware 解决方案（按 CloudSimple）
 description: 介绍如何通过 Azure 门户查看有权访问 CloudSimple 门户的用户的列表
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f9043fbbb77059eb4e4ed42dbef8a42e5790d565
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20c42f41b168cafa510f7fac80cfcedcc260f4db
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77564000"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899076"
 ---
 # <a name="view-the-list-of-cloudsimple-portal-users"></a>查看 CloudSimple portal 用户的列表
 

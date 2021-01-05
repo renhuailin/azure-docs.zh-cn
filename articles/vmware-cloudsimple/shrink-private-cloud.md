@@ -1,25 +1,25 @@
 ---
 title: 通过 CloudSimple 私有云缩小 Azure VMware 解决方案
 description: 了解如何通过删除现有 vSphere 群集中的节点或删除整个群集，在 CloudSimple 中动态收缩私有云。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 07/01/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2759b35c9ba521a63eaf54c4c696598d545120b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a99b9b56f17b78a98f37d47dcefab26dd9c859de
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141731"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899127"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>缩小 CloudSimple 私有云
 
 CloudSimple 提供动态收缩私有云的灵活性。  私有云由一个或多个 vSphere 群集组成。 每个群集可以有3到16个节点。 收缩私有云时，从现有群集中删除节点或删除整个群集。 
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 若要压缩私有云，必须满足以下条件。  不能删除在创建私有云时创建的 (第一个群集) 的管理群集。
 

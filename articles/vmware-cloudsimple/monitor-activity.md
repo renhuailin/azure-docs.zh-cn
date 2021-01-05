@@ -2,19 +2,19 @@
 title: 监视私有云活动
 titleSuffix: Azure VMware Solution by CloudSimple
 description: 介绍 Azure VMware 解决方案中通过 CloudSimple 环境在活动中提供的信息，包括警报、事件、任务和审核。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/13/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77019666"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899297"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>按 CloudSimple 活动监视 VMware 解决方案
 
@@ -50,7 +50,7 @@ CloudSimple 活动日志提供对 CloudSimple 门户上完成的操作的见解�
 ------------ | ------------- |
 | 警报类型 | 警报的类别。|
 | 时间 | 警报发生的时间。 |
-| severity | 警报的重要性。|
+| 严重性 | 警报的重要性。|
 | 资源名称 | 分配给资源的名称，如私有云名称。 |
 | 资源类型 | 资源类别：私有云、云架。 |
 | 资源 ID | 资源的标识符。 |
@@ -67,7 +67,7 @@ CloudSimple 活动日志提供对 CloudSimple 门户上完成的操作的见解�
 ------------ | ------------- |
 | 时间 | 事件发生的日期和时间。 |
 | 事件类型 | 标识事件的数值代码。 |
-| severity | 事件严重性。|
+| 严重性 | 事件严重性。|
 | 资源名称 | 分配给资源的名称，如私有云名称。 |
 | 资源类型 | 资源类别：私有云、云架。 |
 | 说明 | 触发警报的说明。 |
@@ -81,8 +81,8 @@ CloudSimple 活动日志提供对 CloudSimple 门户上完成的操作的见解�
 | 列 | 说明 |
 ------------ | ------------- |
 | 任务 ID | 任务的唯一标识符。 |
-| 操作 | 任务执行的操作。 |
-| User | 用户已分配完成任务。 |
+| Operation | 任务执行的操作。 |
+| 用户 | 用户已分配完成任务。 |
 | 资源名称 | 分配给资源的名称。 |
 | 资源类型 | 资源类别：私有云、云架。 |
 | 资源 ID | 资源的标识符。 |
@@ -101,8 +101,8 @@ CloudSimple 活动日志提供对 CloudSimple 门户上完成的操作的见解�
 | 列 | 说明 |
 ------------ | ------------- |
 | 时间 | 审核条目的时间。 |
-| 操作 | 任务执行的操作。 |
-| User | 分配给任务的用户。 |
+| Operation | 任务执行的操作。 |
+| 用户 | 分配给任务的用户。 |
 | 资源名称 | 分配给资源的名称。 |
 | 资源类型 | 资源类别：私有云、云架。 |
 | 资源 ID | 资源的标识符。 |
