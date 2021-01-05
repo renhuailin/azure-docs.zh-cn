@@ -1,69 +1,87 @@
 ---
-title: 对专用终结点使用语音服务
+title: 如何将专用终结点用于语音服务
 titleSuffix: Azure Cognitive Services
-description: 如何：将语音服务用于 Azure 专用链接提供的专用终结点
+description: 了解如何通过 Azure 专用链接提供的专用终结点使用语音服务
 services: cognitive-services
 author: alexeyo26
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: 01a0171ed2b660fbabebf4276a74f8a3ea631bde
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: f905582615b16780fae179ba6a21bd4343bd47f3
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516530"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755797"
 ---
-# <a name="using-speech-services-with-private-endpoints-provided-by-azure-private-link"></a>将语音服务用于 Azure 专用链接提供的专用终结点
+# <a name="use-speech-service-through-a-private-endpoint"></a>通过专用终结点使用语音服务
 
-[Azure 专用链接](../../private-link/private-link-overview.md) 允许通过 [专用终结点](../../private-link/private-endpoint-overview.md)连接到 Azure 中的各种 PaaS 服务。 专用终结点是特定 [虚拟网络](../../virtual-network/virtual-networks-overview.md) 和子网中的专用 IP 地址。
+使用[Azure Private Link](../../private-link/private-link-overview.md) ，可以通过[专用终结点](../../private-link/private-endpoint-overview.md)连接到 Azure 中的服务。
+专用终结点是专用 IP 地址，只能在特定 [虚拟网络](../../virtual-network/virtual-networks-overview.md) 和子网内访问。
 
-本文介绍如何在 Azure 认知语音服务中设置和使用专用链接和专用终结点。 
+本文介绍如何在 Azure 认知语音服务中设置和使用专用链接和专用终结点。
 
 > [!NOTE]
-> 本文介绍了如何设置和使用与 Azure 认知语音服务的专用链接。 在继续下一步之前，请熟悉有关将 [虚拟网络用于认知服务](../cognitive-services-virtual-networks.md)的一般文章。
+> 本文介绍了如何设置和使用与 Azure 认知语音服务的专用链接。 继续之前，请查看如何 [将虚拟网络与认知服务配合使用](../cognitive-services-virtual-networks.md)。
 
-为私有终结点方案启用语音资源需要执行以下任务：
-- [创建语音资源自定义域名](#create-custom-domain-name)
-- [创建和配置专用终结点 (s) ](#enabling-private-endpoints)
-- [调整现有应用程序和解决方案](#using-speech-resource-with-custom-domain-name-and-private-endpoint-enabled)
+执行以下任务，通过专用终结点使用语音服务：
 
-如果以后决定删除所有专用终结点，但继续使用该资源，则 [本节](#using-speech-resource-with-custom-domain-name-without-private-endpoints)将介绍必要的操作。
+1. [创建语音资源自定义域名](#create-a-custom-domain-name)
+2. [创建和配置专用终结点 (s) ](#enable-private-endpoints)
+3. [调整现有应用程序和解决方案](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled)
 
-## <a name="create-custom-domain-name"></a>创建自定义域名
+若要在以后删除专用终结点，但仍使用语音资源，你将执行 [本部分](#use-speech-resource-with-custom-domain-name-without-private-endpoints)中的任务。
 
-专用终结点需要使用 [认知服务自定义子域名称](../cognitive-services-custom-subdomains.md)。 使用下面的说明为语音资源创建一个。
+## <a name="create-a-custom-domain-name"></a>创建自定义域名
 
-> [!WARNING]
-> 启用了自定义域名的语音资源使用不同的方法与语音服务交互。 大多数情况下，你必须在启用 [专用终结点](#using-speech-resource-with-custom-domain-name-and-private-endpoint-enabled) 的情况下调整应用程序代码，而 [**不** 是启用专用终结点](#using-speech-resource-with-custom-domain-name-without-private-endpoints) 的方案。
+专用终结点需要 [认知服务自定义子域名称](../cognitive-services-custom-subdomains.md)。 按照以下说明为你的语音资源创建一个。
+
+> [!CAUTION]
+> 启用了自定义域名的语音资源使用不同的方法与语音服务交互。
+> 你可能必须调整 [启用专用终结点](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled) 的应用程序代码，而 [**不** 是启用专用终结点](#use-speech-resource-with-custom-domain-name-without-private-endpoints) 的方案。
 >
-> 启用自定义域名的操作是 [**不可逆**](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name)的。 返回到 [区域名称](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) 的唯一方法是创建新的语音资源。 
+> 启用自定义域名时，操作是 [**不可逆**](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name)的。 返回到 [区域名称](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) 的唯一方法是创建新的语音资源。
 >
-> 特别是，如果您的语音资源包含大量关联的自定义模型和通过 [Speech Studio](https://speech.microsoft.com/) 创建的项目，我们 **强烈** 建议使用测试资源尝试配置，然后仅修改在生产中使用的资源。
+> 如果语音资源包含大量关联的自定义模型和通过 [Speech Studio](https://speech.microsoft.com/) 创建的项目，我们 **强烈** 建议在修改生产中使用的资源之前，先使用测试资源尝试配置。
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-- 中转到 [Azure 门户](https://portal.azure.com/) 并登录到你的 Azure 帐户
-- 选择所需的语音资源
-- 选择 *网络* (*资源管理* 组)  
-- 在 " *防火墙和虚拟网络* " 选项卡中 (默认) 单击 " **生成自定义域名** " 按钮
-- 将显示一个新面板，其中包含为资源创建唯一自定义子域的说明
-> [!WARNING]
-> 创建自定义域名后，将 **无法** 更改该域名。 请参阅上述警告中的详细信息。
-- 操作完成后，你可能需要选择 " *密钥和终结点* " (*资源管理* 组 ") 并验证资源的新终结点名称，格式为 <p />`{your custom name}.cognitiveservices.azure.com`
+若要使用 Azure 门户创建自定义域名，请执行以下步骤：
+
+1. 请参阅 [Azure 门户](https://portal.azure.com/) ，并登录到 Azure 帐户。
+1. 选择所需的语音资源。
+1. 在左侧导航窗格的 " **资源管理** " 组中，单击 " **网络**"。
+1. 在 " **防火墙和虚拟网络** " 选项卡中，单击 " **生成自定义域名**"。 此时将显示一个新的右侧面板，其中包含为资源创建唯一自定义子域的说明。
+1. 在 "生成自定义域名" 面板中，输入自定义域名部分。 你的完整自定义域将如下所示： `https://{your custom name}.cognitiveservices.azure.com` 。 
+    **创建自定义域名后， _不能_ 对其进行更改！重新阅读上述警告警报。** 输入自定义域名后，单击 " **保存**"。
+1. 操作完成后，在 " **资源管理** " 组中，单击 " **密钥和终结点**"。 确认资源的新终结点名称是以这种方式开始的：
+
+    `https://{your custom name}.cognitiveservices.azure.com`
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-本部分需要本地运行 PowerShell 版本 7. x 或更高版本的 Azure PowerShell 模块版本5.1.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
+若要使用 PowerShell 创建自定义域名，请确认您的计算机具有 PowerShell 版本7、windows 或更高版本的 Azure PowerShell 模块版本5.1.0 或更高版本。 若要查看这些工具的版本，请执行以下步骤：
 
-继续运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+1. 在 PowerShell 窗口中，键入：
 
-## <a name="verify-custom-domain-name-availability"></a>验证自定义域名可用性
+    `$PSVersionTable`
 
-需要检查您要使用的自定义域是否免费。 我们将使用 REST API 的认知服务中的 " [检查域可用性](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) " 方法。 请参阅下面代码块中的注释，其中说明了这些步骤。
+    确认 PSVersion 值大于 7. x。 若要升级 PowerShell，请按照 [安装各种版本的 PowerShell 中的](/powershell/scripting/install/installing-powershell) 说明进行升级。
+
+1. 在 PowerShell 窗口中，键入：
+
+    `Get-Module -ListAvailable Az`
+
+    如果未显示任何内容，或者 Azure PowerShell 模块版本低于5.1.0，请按照 [安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps) 上的说明进行升级。
+
+在继续下一步之前，请运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+
+## <a name="verify-custom-domain-name-is-available"></a>验证自定义域名是否可用
+
+需要检查是否有要使用的自定义域。 请按照以下步骤使用认知服务 REST API 中的 " [检查域可用性](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) " 操作来确认域是否可用。
 
 > [!TIP]
 > 下面的代码在 Azure Cloud Shell 中将 **不** 起作用。
@@ -72,18 +90,16 @@ ms.locfileid: "97516530"
 $subId = "Your Azure subscription Id"
 $subdomainName = "custom domain name"
 
-# Select the Azure subscription containing Speech resource
-# If your Azure account has only one active subscription
-# you can skip this step
+# Select the Azure subscription that contains Speech resource.
+# You can skip this step if your Azure account has only one active subscription.
 Set-AzContext -SubscriptionId $subId
 
-# Preparing OAuth token which is used in request
-# to Cognitive Services REST API
+# Prepare OAuth token to use in request to Cognitive Services REST API.
 $Context = Get-AzContext
 $AccessToken = (Get-AzAccessToken -TenantId $Context.Tenant.Id).Token
 $token = ConvertTo-SecureString -String $AccessToken -AsPlainText -Force
 
-# Preparing and executing the request to Cognitive Services REST API
+# Prepare and send the request to Cognitive Services REST API.
 $uri = "https://management.azure.com/subscriptions/" + $subId + `
     "/providers/Microsoft.CognitiveServices/checkDomainAvailability?api-version=2017-04-18"
 $body = @{
@@ -94,40 +110,40 @@ $jsonBody = $body | ConvertTo-Json
 Invoke-RestMethod -Method Post -Uri $uri -ContentType "application/json" -Authentication Bearer `
     -Token $token -Body $jsonBody | Format-List
 ```
-如果需要可用的名称，你将获得如下所示的响应：
+如果需要可用的名称，你将看到如下所示的响应：
 ```azurepowershell
 isSubdomainAvailable : True
 reason               :
 type                 :
 subdomainName        : my-custom-name
 ```
-如果名称已被占用，你将获得以下响应：
+如果名称已被占用，则会看到以下响应：
 ```azurepowershell
 isSubdomainAvailable : False
 reason               : Sub domain name 'my-custom-name' is already used. Please pick a different name.
 type                 :
 subdomainName        : my-custom-name
 ```
-## <a name="enabling-custom-domain-name"></a>启用自定义域名
+## <a name="create-your-custom-domain-name"></a>创建自定义域名
 
-若要为选定的语音资源启用自定义域名，请使用 [AzCognitiveServicesAccount](/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount) cmdlet。 请参阅下面代码块中的注释，其中说明了这些步骤。
+若要为选定的语音资源启用自定义域名，请使用 [AzCognitiveServicesAccount](/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount) cmdlet。
 
-> [!WARNING]
-> 成功执行下面的代码后，将为语音资源创建自定义域名。 **不能** 更改此名称。 请参阅上述警告中的详细信息。
+> [!CAUTION]
+> 下面的代码成功运行后，你将为语音资源创建自定义域名。
+> **不能** 更改此名称。 请参阅上面的 **警告** 警报中的详细信息。
 
 ```azurepowershell
 $resourceGroup = "Resource group name where Speech resource is located"
 $speechResourceName = "Your Speech resource name"
 $subdomainName = "custom domain name"
 
-# Select the Azure subscription containing Speech resource
-# If your Azure account has only one active subscription
-# you can skip this step
+# Select the Azure subscription that contains Speech resource.
+# You can skip this step if your Azure account has only one active subscription.
 $subId = "Your Azure subscription Id"
 Set-AzContext -SubscriptionId $subId
 
-# Set the custom domain name to the selected resource
-# WARNING! THIS IS NOT REVERSIBLE!
+# Set the custom domain name to the selected resource.
+# CAUTION: THIS CANNOT BE CHANGED OR UNDONE!
 Set-AzCognitiveServicesAccount -ResourceGroupName $resourceGroup `
     -Name $speechResourceName -CustomSubdomainName $subdomainName
 ```
@@ -138,11 +154,11 @@ Set-AzCognitiveServicesAccount -ResourceGroupName $resourceGroup `
 
 - 本部分需要 Azure CLI 的最新版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
-## <a name="verify-custom-domain-name-availability"></a>验证自定义域名可用性
+## <a name="verify-the-custom-domain-name-is-available"></a>验证自定义域名是否可用
 
-需要检查您要使用的自定义域是否免费。 我们将使用 REST API 的认知服务中的 " [检查域可用性](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) " 方法。 
+需要检查您要使用的自定义域是否免费。 我们将使用 REST API 的认知服务中的 " [检查域可用性](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) " 方法。
 
-复制以下代码块，插入自定义域名并将其保存到文件 `subdomain.json` 。
+复制以下代码块，插入你的首选自定义域名，并将其保存到文件 `subdomain.json` 。
 
 ```json
 {
@@ -151,12 +167,12 @@ Set-AzCognitiveServicesAccount -ResourceGroupName $resourceGroup `
 }
 ```
 
-将该文件复制到当前文件夹，或将其上载到 Azure Cloud Shell 并执行以下命令。  (替换 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 为你的 Azure 订阅 ID) 。
+将该文件复制到当前文件夹，或将其上传到 Azure Cloud Shell，并运行以下命令。  (替换 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 为你的 Azure 订阅 ID) 。
 
 ```azurecli-interactive
 az rest --method post --url "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.CognitiveServices/checkDomainAvailability?api-version=2017-04-18" --body @subdomain.json
 ```
-如果需要可用的名称，你将获得如下所示的响应：
+如果需要可用的名称，你将看到如下所示的响应：
 ```azurecli
 {
   "isSubdomainAvailable": true,
@@ -166,7 +182,7 @@ az rest --method post --url "https://management.azure.com/subscriptions/xxxxxxxx
 }
 ```
 
-如果名称已被占用，你将获得以下响应：
+如果名称已被占用，则会看到以下响应：
 ```azurecli
 {
   "isSubdomainAvailable": false,
@@ -175,7 +191,7 @@ az rest --method post --url "https://management.azure.com/subscriptions/xxxxxxxx
   "type": null
 }
 ```
-## <a name="enabling-custom-domain-name"></a>启用自定义域名
+## <a name="enable-custom-domain-name"></a>启用自定义域名
 
 若要启用所选语音资源的自定义域名，请使用 [az cognitiveservices account account update](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_update) 命令。
 
@@ -183,16 +199,18 @@ az rest --method post --url "https://management.azure.com/subscriptions/xxxxxxxx
 ```azurecli-interactive
 az account set --subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
-将自定义域名设置为所选资源。 将示例参数值替换为实际的参数值，并执行以下命令。
-> [!WARNING]
-> 成功执行以下命令后，你将为语音资源创建自定义域名。 **不能** 更改此名称。 请参阅上述警告中的详细信息。
+将自定义域名设置为所选资源。 将示例参数值替换为实际的参数值，并运行以下命令。
+
+> [!CAUTION]
+> 成功执行以下命令后，你将为语音资源创建自定义域名。 **不能** 更改此名称。 请参阅上面的警告警报中的详细信息。
+
 ```azurecli
 az cognitiveservices account update --name my-speech-resource-name --resource-group my-resource-group-name --custom-domain my-custom-name
 ```
 
 **_
 
-## <a name="enabling-private-endpoints"></a>启用专用终结点
+## <a name="enable-private-endpoints"></a>启用专用终结点
 
 使用 Azure 门户、Azure PowerShell 或 Azure CLI 启用专用终结点。
 
@@ -202,7 +220,7 @@ az cognitiveservices account update --name my-speech-resource-name --resource-gr
 
 | 设置             | 值                                    |
 |---------------------|------------------------------------------|
-| 资源类型       | **Cognitiveservices account/帐户** |
+| 资源类型       | **Microsoft.CognitiveServices/accounts** |
 | 资源            | **\<your-speech-resource-name>**         |
 | 目标子资源 | **帐户**                              |
 
@@ -218,7 +236,7 @@ az cognitiveservices account update --name my-speech-resource-name --resource-gr
 
 我们将使用 `my-private-link-speech.cognitiveservices.azure.com` 此部分的示例语音资源 DNS 名称。
 
-登录到已附加到专用终结点的虚拟网络中的虚拟机。 打开 Windows 命令提示符或 Bash shell，执行 "nslookup" 命令并确保它成功解析资源自定义域名：
+登录到已附加到专用终结点的虚拟网络中的虚拟机。 打开 Windows 命令提示符或 Bash shell，运行 `nslookup` 并确认它已成功解析资源自定义域名：
 ```dos
 C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
 Server:  UnKnown
@@ -233,11 +251,11 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 
 #### <a name="optional-check-dns-resolution-from-other-networks"></a> (可选检查) 。 来自其他网络的 DNS 解析
 
-如果你计划在 "混合" 模式下使用启用了专用终结点的语音资源，则必须执行此项检查，即已在资源的 "*网络*" 部分中启用了 "*所有网络*" 或 "已 *选择网络" 和 "专用终结点* 访问" 选项。 如果计划使用专用终结点访问资源，则可以跳过此部分。
+如果你计划在 "混合" 模式下使用启用专用终结点的语音资源，则需要进行此项检查，在此模式下，你已在资源的 "*网络*" 部分中启用了 "*所有网络*" 或 "*所选网络和专用终结点* 访问" 选项。 如果你计划仅使用专用终结点访问资源，则可以跳过此部分。
 
-我们将使用 `my-private-link-speech.cognitiveservices.azure.com` 此部分的示例语音资源 DNS 名称。
+`my-private-link-speech.cognitiveservices.azure.com`本部分使用作为语音资源 DNS 名称的示例。
 
-在连接到你允许其访问资源的网络的任何计算机上，打开 Windows 命令提示符或 Bash shell，执行 "nslookup" 命令并确保它成功解析资源自定义域名：
+在连接到允许访问资源的网络的任何计算机上，打开 Windows 命令提示符或 Bash shell，运行 `nslookup` 命令并确认它已成功解析资源自定义域名：
 ```dos
 C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
 Server:  UnKnown
@@ -251,18 +269,18 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
           westeurope.prod.vnet.cog.trafficmanager.net
 ```
 
-请注意，IP 地址已解析到 VNet 代理终结点，该终结点用于将网络流量分派给启用了专用终结点的认知服务资源。 对于启用了自定义域名的资源，此行为将有所不同，但 *不* 会配置专用终结点。 请参阅 [此部分](#dns-configuration)。
+请注意，解析的 IP 地址指向虚拟网络代理终结点，该终结点将网络流量调度到认知服务资源的专用终结点。 对于具有自定义域名但 *没有* 专用终结点的资源，该行为将有所不同。 有关详细信息，请参阅 [此部分](#dns-configuration) 。
 
-## <a name="adjusting-existing-applications-and-solutions"></a>调整现有应用程序和解决方案 
+## <a name="adjust-existing-applications-and-solutions"></a>调整现有应用程序和解决方案
 
-启用了自定义域的语音资源使用不同的方法与语音服务交互。 这适用于已启用自定义域且[无需](#using-speech-resource-with-custom-domain-name-without-private-endpoints)专用终结[点的语音](#using-speech-resource-with-custom-domain-name-and-private-endpoint-enabled)资源。 当前部分提供了这两种情况所需的信息。
+启用了自定义域的语音资源使用不同的方法与语音服务交互。 这适用于已启用自定义域且[无需](#use-speech-resource-with-custom-domain-name-without-private-endpoints)专用终结[点的语音](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled)资源。 当前部分提供了这两种情况所需的信息。
 
-### <a name="using-speech-resource-with-custom-domain-name-and-private-endpoint-enabled"></a>使用启用了自定义域名和专用终结点的语音资源
+### <a name="use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled"></a>使用启用了自定义域名和专用终结点的语音资源
 
 启用了自定义域名和专用终结点的语音资源使用不同的方法与语音服务交互。 本部分介绍如何将此类资源与语音服务 REST API 和 [语音 SDK](speech-sdk.md)结合使用。
 
 > [!NOTE]
-> 请注意，没有专用终结点但启用了 **自定义域名** 的语音资源也有一种特殊的方式来与语音服务交互，但这种方式不同于启用了专用终结点的语音资源的情况。 如果你有这样的资源 (说，你有一个具有专用终结点的资源，但随后决定删除它们) 确保熟悉 [通信部分](#using-speech-resource-with-custom-domain-name-without-private-endpoints)。
+> 请注意，没有专用终结点但启用了 **自定义域名** 的语音资源也有一种特殊的方式来与语音服务交互，但这种方式不同于启用了专用终结点的语音资源的情况。 如果你有这样的资源 (说，你有一个具有专用终结点的资源，但随后决定删除它们) 确保熟悉 [通信部分](#use-speech-resource-with-custom-domain-name-without-private-endpoints)。
 
 #### <a name="speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-rest-api"></a>具有自定义域名和专用终结点的语音资源。 使用 REST API
 
@@ -330,11 +348,11 @@ https://my-private-link-speech.cognitiveservices.azure.com/speechtotext/v3.0/tra
 
 若要获取区域中支持的语音列表，需要执行以下两项操作：
 
-- 通过获取授权令牌
+- 获取身份验证令牌：
 ```http
 https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issuetoken
 ```
-- 使用获取的令牌通过获取语音列表
+- 使用令牌获取语音列表：
 ```http
 https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list
 ```
@@ -413,7 +431,7 @@ https://my-private-link-speech.cognitiveservices.azure.com/voice/cognitiveservic
 - 确定应用程序正在使用的终结点 URL
 - 按上一部分所述修改终结点 URL，并 `SpeechConfig` 使用此修改后的 URL 显式创建类实例
 
-###### <a name="determining-application-endpoint-url"></a>确定应用程序终结点 URL
+###### <a name="determine-application-endpoint-url"></a>确定应用程序终结点 URL
 
 - [为应用程序启用日志记录](how-to-use-logging.md) ，并运行它以生成日志
 - 在日志文件中搜索 `SPEECH-ConnectionUrl` 。 此字符串将包含 `value` 参数，该参数又将包含应用程序所使用的完整 URL
@@ -426,7 +444,7 @@ https://my-private-link-speech.cognitiveservices.azure.com/voice/cognitiveservic
 ```
 wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 ```
-###### <a name="creating-speechconfig-instance-using-full-endpoint-url"></a>`SpeechConfig`使用完整终结点 URL 创建实例
+###### <a name="create-speechconfig-instance-using-full-endpoint-url"></a>`SpeechConfig`使用完整终结点 URL 创建实例
 
 按照上述 [一般原则](#general-principle) 中所述，修改上一部分中确定的终结点。
 
@@ -464,7 +482,7 @@ SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithE
 
 修改后，应用程序应使用启用了专用的语音资源。 我们正在致力于对专用终结点方案进行更多的无缝支持。
 
-### <a name="using-speech-resource-with-custom-domain-name-without-private-endpoints"></a>将语音资源与自定义域名结合使用（无需专用终结点）
+### <a name="use-speech-resource-with-custom-domain-name-without-private-endpoints"></a>使用带有自定义域名的语音资源，无需专用终结点
 
 在本文中，我们多次指出，为语音资源启用自定义域是不 **可逆** 的，因此，此类资源将使用不同的方式与使用 [区域终结点名称](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)) 的 "常用" (方式进行通信。
 
@@ -529,7 +547,7 @@ var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
 - 通过认知服务 REST API 请求授权令牌
 - `SpeechConfig`使用 "从授权令牌"/"使用授权令牌" 方法实例化类 
 
-###### <a name="requesting-authorization-token"></a>正在请求授权令牌
+###### <a name="request-authorization-token"></a>请求授权令牌
 
 请参阅 [此文](../authentication.md#authenticate-with-an-authentication-token) ，了解如何通过认知服务 REST API 获取令牌。 
 
@@ -540,7 +558,7 @@ https://my-private-link-speech.cognitiveservices.azure.com/sts/v1.0/issueToken
 > [!TIP]
 > 你可能会在 Azure 门户的语音资源的 *密钥和终结点* (*资源管理* 组) 部分中找到此 URL。
 
-###### <a name="creating-speechconfig-instance-using-authorization-token"></a>`SpeechConfig`使用授权令牌创建实例
+###### <a name="create-speechconfig-instance-using-authorization-token"></a>`SpeechConfig`使用授权令牌创建实例
 
 需要 `SpeechConfig` 使用在上一部分中获得的授权令牌来实例化类。 假设我们定义了以下变量：
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 9b2ab664f319de07fd70bd1a22b1ba6d64ac208f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05dadfe88ed64aea8066b02298ba158a44a03c6f
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320249"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760160"
 ---
 # <a name="metric-chart-examples"></a>指标图表示例 
 
@@ -24,7 +24,7 @@ Azure 平台提供了[一千多个指标](./metrics-supported.md)，其中许多
 
 此图表显示应用服务的 CPU 是否在可接受范围内，并按实例对其进行分解，以确定负载是否得到正确分发。 可以从图表上看到，在上午 6 点之前，应用在单个服务器实例上运行，然后通过添加另一个实例进行纵向扩展。
 
-![按服务器实例划分的平均 CPU 百分比折线图](./media/metric-chart-samples/cpu-by-instance.png)
+![按服务器实例划分的平均 CPU 百分比折线图](./media/metrics-charts/cpu-by-instance.png)
 
 ### <a name="how-to-configure-this-chart"></a>如何配置此图表？
 
@@ -34,17 +34,17 @@ Azure 平台提供了[一千多个指标](./metrics-supported.md)，其中许多
 
 查看各个区域的应用程序可用性，以确定哪些地理位置遇到问题。 此图表显示 Application Insights 可用性指标。 可以看到，受监视的应用程序没有遇到来自美国东部数据中心的可用性问题，但它正在经历来自美国西部和东亚的部分可用性问题。
 
-![各个位置的平均可用性图表](./media/metric-chart-samples/availability-run-location.png)
+![各个位置的平均可用性图表](./media/metrics-charts/availability-by-location.png)
 
 ### <a name="how-to-configure-this-chart"></a>如何配置此图表？
 
 首先需要启用网站的 [Application Insights 可用性](../app/monitor-web-app-availability.md)监视。 在此之后，选择 Application Insights 资源并选择可用性指标。 在“运行位置”  维度上应用拆分。
 
-## <a name="volume-of-storage-account-transactions-by-api-name"></a>按 API 名称划分的存储帐户事务量
+## <a name="volume-of-failed-storage-account-transactions-by-api-name"></a>按 API 名称的失败存储帐户事务量
 
-存储帐户资源遇到了过多事务量。 可以使用事务指标来确定哪个 API 负责过多负载。 请注意，下面的图表在筛选和拆分中配置了相同维度（API 名称），以将视图缩小到只包含感兴趣的 API 调用：
+存储帐户资源遇到大量失败的事务。 您可以使用事务指标来识别哪个 API 负责额外的故障。 请注意，下面的图表是使用相同的维度配置的 (API 名称) 在 "按失败的响应类型拆分并筛选" 中：
 
-![API 事务条形图](./media/metric-chart-samples/transactions-by-api.png)
+![API 事务条形图](./media/metrics-charts/split-and-filter-example.png)
 
 ### <a name="how-to-configure-this-chart"></a>如何配置此图表？
 

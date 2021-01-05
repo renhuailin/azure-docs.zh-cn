@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c12935a4b0b9cbbf088ba7b9c5ea804be0ce85a1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8ea0c27fdd64bae1e6fe9443df76c86e0eb89a75
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447365"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762906"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>使用 Azure CLI 和 Python 在 Azure Stack Edge Pro GPU 设备上部署 VM
 
@@ -27,7 +27,7 @@ ms.locfileid: "96447365"
 
 下图演示了此部署工作流。
 
-![VM 部署工作流](media/azure-stack-edge-j-series-deploy-virtual-machine-powershell/vm-workflow_r.svg)
+![VM 部署工作流](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
 下面是此部署工作流的基本摘要信息：
 
@@ -43,7 +43,7 @@ ms.locfileid: "96447365"
 10. 创建 VNet
 11. 使用 VNet 子网 ID 创建 VNIC
 
-有关工作流图表的详细说明，请参阅[使用 Azure PowerShell 在 Azure Stack Edge Pro 设备上部署 VM](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。 有关如何连接到 Azure 资源管理器的信息，请参阅[使用 Azure PowerShell 连接到 Azure 资源管理器](azure-stack-edge-j-series-connect-resource-manager.md)。
+有关工作流图表的详细说明，请参阅[使用 Azure PowerShell 在 Azure Stack Edge Pro 设备上部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)。 有关如何连接到 Azure 资源管理器的信息，请参阅[使用 Azure PowerShell 连接到 Azure 资源管理器](azure-stack-edge-j-series-connect-resource-manager.md)。
 
 ## <a name="prerequisites"></a>必备条件
 

@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: a38015d9f7560930d77d5d50ac70dca5bcdde6a6
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 2a480f25821f5022295b18ca24abfd2c0fb8a50c
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672502"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746518"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Functions 概述的 RabbitMQ 绑定
 
 > [!NOTE]
-> 只有 **Windows 高级版和专用** 计划才完全支持 RabbitMQ 绑定。 当前不支持使用和 Linux。
+> 仅对 **高级和专用** 计划完全支持 RabbitMQ 绑定。 不支持使用。
 
 Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与[RabbitMQ](https://www.rabbitmq.com/)集成。 Azure Functions RabbitMQ extension 允许使用 RabbitMQ API 和函数来发送和接收消息。
 
@@ -34,7 +34,7 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与[
 
 使用触发器和绑定需要引用相应的包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
 
-| 语言                                        | 添加方式...                                   | 备注 
+| 语言                                        | 添加方式...                                   | 备注
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安装 [NuGet 包]版本 4.x | |
 | C # 脚本，Java，JavaScript，Python，PowerShell | 注册[扩展捆绑包]          | 建议将 [Azure Tools 扩展]用于 Visual Studio Code。 |

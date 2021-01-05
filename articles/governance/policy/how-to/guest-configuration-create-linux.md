@@ -4,12 +4,12 @@ description: 了解如何创建适用于 Linux 的 Azure Policy 来宾配置策�
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1f6308250717d35dc725b097575bf3921646c6a0
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 705c12cff5f4377249674ef9db155d1ed321ce42
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302714"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755865"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何创建适用于 Linux 的来宾配置策略
 
@@ -28,7 +28,7 @@ ms.locfileid: "96302714"
 >
 > 必须有来宾配置扩展，才能在 Azure 虚拟机中执行审核。 若要在所有 Linux 计算机上大规模部署扩展，请分配以下策略定义：`Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
 > 
-> 不要在自定义内容包中使用机密或机密信息。
+> 不要在自定义内容包中使用机密或保密信息。
 
 ## <a name="install-the-powershell-module"></a>安装 PowerShell 模块
 
@@ -53,9 +53,9 @@ ms.locfileid: "96302714"
 - Windows
 
 > [!NOTE]
-> Cmdlet `Test-GuestConfigurationPackage` 需要 OpenSSL 版本1.0，因为依赖于 OMI。 这会导致使用 OpenSSL 1.1 或更高版本的任何环境出现错误。
+> 由于 cmdlet `Test-GuestConfigurationPackage` 依赖于 OMI，因此它需要 OpenSSL 版本 1.0。 这会导致使用 OpenSSL 1.1 或更高版本的任何环境出现错误。
 >
-> `Test-GuestConfigurationPackage`仅支持在适用于来宾配置模块版本2.1.0 的 Windows 上运行此 cmdlet。
+> 仅 Windows 上的来宾配置模块版本 2.1.0 支持运行 cmdlet `Test-GuestConfigurationPackage`。
 
 来宾配置资源模块需要以下软件：
 
@@ -92,7 +92,7 @@ DSC 充当 InSpec 的包装器，用于标准化它的执行方式、参数提�
 
 PowerShell cmdlet 可帮助创建包。
 不需要根级别文件夹或版本文件夹。
-包格式必须为 .zip 文件。 未压缩时，和的总大小不能超过 100 MB。
+包格式必须为 .zip 文件。 且未压缩时总大小不能超过 100MB。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux 上的自定义来宾配置
 
@@ -170,7 +170,7 @@ AuditFilePathExists -out ./Config
 - **Name**：来宾配置包名称。
 - **配置**：已编译的配置文档完整路径。
 - **路径**：输出文件夹路径。 此参数是可选的。 如果未指定，则在当前目录中创建包。
-- **ChefInspecProfilePath**： InSpec 配置文件的完整路径。 仅当创建内容来审核 Linux 时，才支持此参数。
+- **ChefInspecProfilePath**：InSpec 配置文件的完整路径。 仅当创建内容来审核 Linux 时，才支持此参数。
 
 运行下面的命令，以使用上一步中给出的配置来创建包：
 
@@ -329,13 +329,18 @@ Configuration AuditFilePathExists
 
 ## <a name="policy-lifecycle"></a>策略生命周期
 
-若要发布策略定义的更新，需要注意三个字段。
+如果要释放对策略的更新，请对来宾配置包和 Azure 策略定义详细信息进行更改。
 
 > [!NOTE]
-> `version`来宾配置分配的属性仅影响由 Microsoft 托管的包。 自定义内容的版本控制的最佳做法是在文件名中包含版本。
+> 来宾配置分配的 `version` 属性仅影响 Microsoft 托管的包。 对自定义内容进行版本控制的最佳做法是在文件名中包含版本。
+
+首先，在运行时 `New-GuestConfigurationPackage` ，请为包指定一个名称，该名称使其在以前的版本中是唯一的。 可以在名称中包含版本号，例如 `PackageName_1.0.0` 。
+本示例中的数字仅用于使包唯一，而不是指定应将包视为比其他包更高或更早。
+
+其次， `New-GuestConfigurationPolicy` 按下面的每个说明更新与 cmdlet 一起使用的参数。
 
 - **版本**：运行 `New-GuestConfigurationPolicy` cmdlet 时，必须指定高于当前发布版本的版本号。
-- **contentUri**：运行 `New-GuestConfigurationPolicy` cmdlet 时，必须指定包位置的 URI。 在文件名中包含包版本将确保每个版本中此属性的值发生更改。
+- **contentUri**：运行 `New-GuestConfigurationPolicy` cmdlet 时，必须为包的位置指定一个 URI。 在文件名中包含包版本将确保此属性的值在每个版本中都会更改。
 - contentHash：此属性由 `New-GuestConfigurationPolicy` cmdlet 自动更新。 它是 `New-GuestConfigurationPackage` 创建的包的哈希值。 对于你发布的 `.zip` 文件，此属性必须是正确的。 如果只更新了 contentUri 属性，扩展就不会接受内容包。
 
 发布更新后的包的最简单方法是，重复本文中描述的过程，并提供更新后的版本号。 此过程保证所有属性都已正确更新。

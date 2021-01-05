@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 1b73b018432e5fb9a8af90fc141d009d1bb7b799
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: d0cb9dc3c54f409c3bdd71fbb57c823e15abc22d
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617045"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762956"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -138,6 +138,11 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 使用神经语音可使得与聊天机器人和语音助手的交互更加自然且富有吸引力、将数字文本（如电子书）转换为有声读物以及增强车载导航系统。 随着类人的自然韵律和字词的清晰发音，用户在与 AI 系统交互时，神经语音显著减轻了听力疲劳。
 
+> [!NOTE]
+> 从使用 24 khz 采样速率的样本创建神经声音。
+> 综合时，所有语音都可以 upsample 或缩减为其他采样速率。
+
+
 | 语言 | Locale | 性别 | 语音名称 | 风格支持 |
 |---|---|---|---|---|
 | 阿拉伯语（埃及） | `ar-EG` | Female | `ar-EG-SalmaNeural` | 常规 |
@@ -152,46 +157,46 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 中文（粤语，繁体） | `zh-HK` | Female | `zh-HK-HiuGaaiNeural` | 常规 |
 | 中文（粤语，繁体） | `zh-HK` | Female | `zh-HK-HiuMaanNeural` <sup>新建</sup> | 常规 |
 | 中文(粤语，繁体) | `zh-HK` | 男 | `zh-HK-WanLungNeural` <sup>新建</sup> | 常规 |
-| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | 常规，[使用 SSML 可以使用](speech-synthesis-markup.md#adjust-speaking-styles)多种语音样式  |
+| 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-XiaoxiaoNeural` | 常规，[使用 SSML 可以使用](speech-synthesis-markup.md#adjust-speaking-styles)多种语音样式  |
 | 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-XiaoyouNeural` | 儿童语音，针对讲故事进行了优化 |
 | 中文（普通话，简体） | `zh-CN` | 男 | `zh-CN-YunyangNeural` | 针对新闻阅读进行了优化，<br /> [使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles)提供多种语音样式 |
 | 中文（普通话，简体） | `zh-CN` | 男 | `zh-CN-YunyeNeural` | 针对讲故事进行了优化  |
 | 中文(台湾普通话) | `zh-TW` | Female | `zh-TW-HsiaoChenNeural` <sup>新建</sup> | 常规 |
 | 中文(台湾普通话) | `zh-TW` | Female | `zh-TW-HsiaoYuNeural` | 常规 |
 | 中文(台湾普通话) | `zh-TW` | 男 | `zh-TW-YunJheNeural` <sup>新建</sup> | 常规 |
-| 克罗地亚语（克罗地亚） | `hr-HR` | Female | `hr-HR-GabrijelaNeural` | 常规 |
+| 克罗地亚语（克罗地亚） | `hr-HR` | 女 | `hr-HR-GabrijelaNeural` | 常规 |
 | 克罗地亚语（克罗地亚） | `hr-HR` | 男 | `hr-HR-SreckoNeural` <sup>新建</sup> | 常规 |
-| 捷克语（捷克） | `cs-CZ` | Female | `cs-CZ-VlastaNeural` | 常规 |
+| 捷克语（捷克） | `cs-CZ` | 女 | `cs-CZ-VlastaNeural` | 常规 |
 | 捷克语（捷克） | `cs-CZ` | 男 | `cs-CZ-AntoninNeural` <sup>新建</sup> | 常规 |
 | 丹麦语（丹麦） | `da-DK` | Female | `da-DK-ChristelNeural` | 常规 |
 | 丹麦语（丹麦） | `da-DK` | 男 | `da-DK-JeppeNeural` <sup>新建</sup> | 常规 |
 | 荷兰语（荷兰） | `nl-NL` | Female | `nl-NL-ColetteNeural` | 常规 |
-| 荷兰语（荷兰） | `nl-NL` | 女 | `nl-NL-FennaNeural` <sup>新建</sup> | 常规 |
+| 荷兰语（荷兰） | `nl-NL` | Female | `nl-NL-FennaNeural` <sup>新建</sup> | 常规 |
 | 荷兰语（荷兰） | `nl-NL` | 男 | `nl-NL-MaartenNeural` <sup>新建</sup> | 常规 |
-| 英语（澳大利亚） | `en-AU` | 女 | `en-AU-NatashaNeural` | 常规 |
+| 英语（澳大利亚） | `en-AU` | Female | `en-AU-NatashaNeural` | 常规 |
 | 英语（澳大利亚） | `en-AU` | 男 | `en-AU-WilliamNeural` | 常规 |
-| 英语（加拿大） | `en-CA` | Female | `en-CA-ClaraNeural` | 常规 |
+| 英语（加拿大） | `en-CA` | 女 | `en-CA-ClaraNeural` | 常规 |
 | 英语（加拿大） | `en-CA` | 男 | `en-CA-LiamNeural` <sup>新建</sup> | 常规 |
 | 英语（印度） | `en-IN` | Female | `en-IN-NeerjaNeural` | 常规 |
 | 英语（印度） | `en-IN` | 男 | `en-IN-PrabhatNeural` <sup>新建</sup> | 常规 |
-| 英语（爱尔兰） | `en-IE` | 女 | `en-IE-EmilyNeural` | 常规 |
+| 英语（爱尔兰） | `en-IE` | Female | `en-IE-EmilyNeural` | 常规 |
 | 英语（爱尔兰） | `en-IE` | 男 | `en-IE-ConnorNeural` <sup>新建</sup> | 常规 |
 | 英语(英国) | `en-GB` | Female | `en-GB-LibbyNeural` | 常规 |
-| 英语(英国) | `en-GB` | Female | `en-GB-MiaNeural` | 常规 |
+| 英语(英国) | `en-GB` | 女 | `en-GB-MiaNeural` | 常规 |
 | 英语（英国） | `en-GB` | 男 | `en-GB-RyanNeural` | 常规 |
-| 英语（美国） | `en-US` | 女 | `en-US-AriaNeural` | 常规，[使用 SSML 可以使用](speech-synthesis-markup.md#adjust-speaking-styles)多种语音样式  |
+| 英语（美国） | `en-US` | Female | `en-US-AriaNeural` | 常规，[使用 SSML 可以使用](speech-synthesis-markup.md#adjust-speaking-styles)多种语音样式  |
 | 英语（美国） | `en-US` | Female | `en-US-JennyNeural` | 常规 |
 | 英语（美国） | `en-US` | 男 | `en-US-GuyNeural` | 常规 |
 | 芬兰语（芬兰） | `fi-FI` | Female | `fi-FI-NooraNeural` | 常规 |
-| 芬兰语（芬兰） | `fi-FI` | 女 | `fi-FI-SelmaNeural` <sup>新建</sup> | 常规 |
+| 芬兰语（芬兰） | `fi-FI` | Female | `fi-FI-SelmaNeural` <sup>新建</sup> | 常规 |
 | 芬兰语（芬兰） | `fi-FI` | 男 | `fi-FI-HarriNeural` <sup>新建</sup> | 常规 |
-| 法语（加拿大） | `fr-CA` | 女 | `fr-CA-SylvieNeural` | 常规 |
+| 法语（加拿大） | `fr-CA` | Female | `fr-CA-SylvieNeural` | 常规 |
 | 法语（加拿大） | `fr-CA` | 男 | `fr-CA-JeanNeural` | 常规 |
-| 法语（法国） | `fr-FR` | Female | `fr-FR-DeniseNeural` | 常规 |
+| 法语（法国） | `fr-FR` | 女 | `fr-FR-DeniseNeural` | 常规 |
 | 法语（法国） | `fr-FR` | 男 | `fr-FR-HenriNeural` | 常规 |
 | 法语（瑞士） | `fr-CH` | Female | `fr-CH-ArianeNeural` | 常规 |
 | 法语（瑞士） | `fr-CH` | 男 | `fr-CH-FabriceNeural` <sup>新建</sup> | 常规 |
-| 德语（奥地利） | `de-AT` | Female | `de-AT-IngridNeural` | 常规 |
+| 德语（奥地利） | `de-AT` | 女 | `de-AT-IngridNeural` | 常规 |
 | 德语（奥地利） | `de-AT` | 男 | `de-AT-JonasNeural` <sup>新建</sup> | 常规 |
 | 德语（德国） | `de-DE` | Female | `de-DE-KatjaNeural` | 常规 |
 | 德语（德国） | `de-DE` | 男 | `de-DE-ConradNeural` | 常规 |
@@ -203,7 +208,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 希伯来语（以色列） | `he-IL` | 男 | `he-IL-AvriNeural` <sup>新建</sup> | 常规 |
 | 印地语（印度） | `hi-IN` | Female | `hi-IN-SwaraNeural` | 常规 |
 | 印地语（印度） | `hi-IN` | 男 | `hi-IN-MadhurNeural` <sup>新建</sup> | 常规 |
-| 匈牙利语(匈牙利) | `hu-HU` | Female | `hu-HU-NoemiNeural` | 常规 |
+| 匈牙利语(匈牙利) | `hu-HU` | 女 | `hu-HU-NoemiNeural` | 常规 |
 | 匈牙利语(匈牙利) | `hu-HU` | 男 | `hu-HU-TamasNeural` <sup>新建</sup> | 常规 |
 | 印度尼西亚语(印度尼西亚) | `id-ID` | Female | `id-ID-GadisNeural` <sup>新建</sup> | 常规 |
 | 印度尼西亚语(印度尼西亚) | `id-ID` | 男 | `id-ID-ArdiNeural` | 常规 |
@@ -250,7 +255,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 泰语（泰国） | `th-TH` | Female | `th-TH-AcharaNeural` | 常规 |
 | 泰语（泰国） | `th-TH` | Female | `th-TH-PremwadeeNeural` | 常规 |
 | 泰语（泰国） | `th-TH` | 男 | `th-TH-NiwatNeural` <sup>新建</sup> | 常规 |
-| 土耳其语（土耳其） | `tr-TR` | 女 | `tr-TR-EmelNeural` | 常规 |
+| 土耳其语（土耳其） | `tr-TR` | Female | `tr-TR-EmelNeural` | 常规 |
 | 土耳其语（土耳其） | `tr-TR` | 男 | `tr-TR-AhmetNeural` <sup>新建</sup> | 常规 |
 | 越南语(越南) | `vi-VN` | Female | `vi-VN-HoaiMyNeural` | 常规 |
 | 越南语(越南) | `vi-VN` | 男 | `vi-VN-NamMinhNeural` <sup>新建</sup> | 常规 |
@@ -262,7 +267,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 语言                         | Locale  | 性别 | 语音名称                             | 风格支持 |
 |----------------------------------|---------|--------|----------------------------------------|---------------|
 | 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaohanNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles)提供多种样式 |
-| 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-XiaomoNeural` | 一般，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles)提供多种角色扮演和样式 |
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaomoNeural` | 一般，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles)提供多种角色扮演和样式 |
 | 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaoruiNeural` | 高级语音，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles)提供多种样式 |
 | 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` | 一般，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles)提供多种角色扮演和样式 |
 | 中文（普通话，简体） | `zh-CN` | 男   | `zh-CN-YunxiNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles)提供多种样式 |
@@ -272,7 +277,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 爱尔兰语（爱尔兰） | `ga-IE` | 男 | `ga-IE-ColmNeural` <sup>新建</sup> | 常规 |
 | 拉脱维亚语(拉脱维亚) | `lv-LV` | Female | `lv-LV-EveritaNeural` | 常规 |
 | 拉脱维亚语(拉脱维亚) | `lv-LV` | 男 | `lv-LV-NilsNeural` <sup>新建</sup> | 常规 |
-| 立陶宛语(立陶宛) | `lt-LT` | 女 | `lt-LT-OnaNeural` | 常规 |
+| 立陶宛语(立陶宛) | `lt-LT` | Female | `lt-LT-OnaNeural` | 常规 |
 | 立陶宛语(立陶宛) | `lt-LT` | 男 | `lt-LT-LeonasNeural` <sup>新建</sup> | 常规 |
 | 马耳他语（马耳他） | `mt-MT` | Female | `mt-MT-GraceNeural` | 常规 |
 | 马耳他语（马耳他） | `mt-MT` | 男 | `mt-MT-JosephNeural` <sup>新建</sup> | 常规 |
@@ -293,6 +298,11 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 ### <a name="standard-voices"></a>标准语音
 
 提供超过 75 种标准语音，涉及超过 45 种语言和区域设置，允许用户将文本转换为合成语音。 有关区域可用性的详细信息，请参阅[区域](regions.md#standard-and-neural-voices)。
+
+> [!NOTE]
+> 如果有两个例外，则将从使用 16 khz 采样率的示例中创建标准声音。
+> **"En-us-AriaRUS"** 和 " **En-us-GuyRUS** " 声音也是从使用 24 khz 采样率的示例创建的。
+> 综合时，所有语音都可以 upsample 或缩减为其他采样速率。
 
 | 语言 | 区域设置 (BCP-47) | 性别 | 语音名称 |
 |--|--|--|--|
@@ -325,7 +335,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 英语（英国） | `en-GB` | Female | `en-GB-Susan`|
 | 英语（美国） | `en-US` | 男 | `en-US-BenjaminRUS`|
 | 英语（美国） | `en-US` | 男 | `en-US-GuyRUS`|
-| 英语（美国） | `en-US` | Female | `en-US-JessaRUS`|
+| 英语（美国） | `en-US` | Female | `en-US-AriaRUS`|
 | 英语（美国） | `en-US` | Female | `en-US-ZiraRUS`|
 | 芬兰语（芬兰） | `fi-FI` | Female | `fi-FI-HeidiRUS`|
 | 法语（加拿大） | `fr-CA` | Female | `fr-CA-Caroline`|
@@ -489,5 +499,5 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建免费的 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
+* [创建免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
 * [了解如何在 C# 中识别语音](./get-started-speech-to-text.md?pivots=programming-language-chsarp)

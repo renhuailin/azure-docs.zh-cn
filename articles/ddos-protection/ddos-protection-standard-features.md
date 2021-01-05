@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 104c9dcd3b7fd931e4f54841c9de9d17cfd72353
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 602bb98f2cdc8a96874eba8dadfa33f3267d19ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937315"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746552"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Azure DDoS 防护标准功能
 
@@ -24,23 +24,23 @@ ms.locfileid: "96937315"
 
 ## <a name="always-on-traffic-monitoring"></a>Always on 流量监视
 
-DDoS 保护标准监控实际流量利用率，并不断将其与 DDoS 策略中定义的阈值进行比较。 当超过流量阈值时，将自动启动 DDoS 缓解。 当流量回到阈值以下时，缓解将移除。
+DDoS 保护标准监控实际流量利用率，并不断将其与 DDoS 策略中定义的阈值进行比较。 当超过流量阈值时，将自动启动 DDoS 缓解。 当流量低于阈值时，缓解将停止。
 
 ![Azure DDoS 保护标准缓解措施](./media/ddos-protection-overview/mitigation.png)
 
-在风险缓解期间，DDoS 保护服务重定向发送到受保护资源的流量，并执行多个检查，如以下检查：
+在缓解期间，DDoS 保护服务会重定向发送到受保护资源的流量，并执行几个检查，例如：
 
 - 确保数据包符合 Internet 规范且格式正确。
 - 与客户端交互，确定该流量是否可能是欺骗性数据包（例如：SYN Auth 或 SYN Cookie，或者通过丢弃数据包，让源重新传输它）。
 - 如果没有其他可以执行的强制方法，将对数据包进行速率限制。
 
-DDoS 保护会阻止攻击流量并将剩余流量转发至其预期目的地。 在检测到攻击的几分钟内，会使用 Azure Monitor 指标通知你。 通过在 DDoS 保护标准遥测上配置日志记录，可将日志写入可用选项以供将来分析。 Azure Monitor 中 DDoS 保护标准的指标数据会保留 30 天。
+DDoS 防护会丢弃攻击流量并将剩余流量转发到其预期目标。 在检测到攻击的几分钟内，系统会使用 Azure Monitor 指标通知你。 通过在 DDoS 保护标准遥测上配置日志记录，可将日志写入可用选项以供将来分析。 Azure Monitor 中 DDoS 保护标准的指标数据会保留 30 天。
 
 ## <a name="adaptive-real-time-tuning"></a>自适应实时优化
 
-Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户。 例如，如果为典型的合法传入流量预配了某个服务，并且该流量小于基础结构范围 DDoS 防护策略的触发率，那么，针对该客户资源的 DDoS 攻击可能会被忽略。 一般来说，最近攻击（例如多向量 DDoS）的复杂性，以及租户的应用程序特定行为，要求按客户采用自定义的保护策略。 该服务使用两项见解来实现这种自定义：
+Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户。 例如，如果为典型的合法传入流量预配了某个服务，并且该流量小于基础结构范围 DDoS 防护策略的触发率，那么，针对该客户资源的 DDoS 攻击可能会被忽略。 一般来说，最新攻击的复杂性 (例如，多矢量 DDoS) ，以及针对每个客户的租户调用的特定于应用程序的行为，并定制了保护策略。 此服务通过使用两个见解来完成此操作：
 
-- 自动学习每个客户（每个 IP）的第 3 层和第 4 层流量模式。
+- 自动了解第3层和第4层的每个客户 (每公共 IP) 流量模式。
 
 - 尽量减少误报，因为 Azure 的规模可让它吸收大量的流量。
 
@@ -48,7 +48,7 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS 防护遥测、监视和警报
 
-标准 DDoS 防护在 DDoS 攻击持续期间通过 [Azure Monitor](../azure-monitor/overview.md) 公开丰富的遥测数据。 可以针对 DDoS 防护使用的任何 Azure Monitor 指标配置警报。 可以通过 Azure Monitor 诊断界面将日志记录与 Splunk (Azure 事件中心) 、Azure Monitor 日志和 Azure 存储集成，以便进行高级分析。
+DDoS 保护标准通过 [Azure Monitor](../azure-monitor/overview.md)公开丰富的遥测。 可以针对 DDoS 防护使用的任何 Azure Monitor 指标配置警报。 可以通过 Azure Monitor 诊断界面将日志记录与 Splunk (Azure 事件中心) 、Azure Monitor 日志和 Azure 存储集成，以便进行高级分析。
 
 ### <a name="ddos-mitigation-policies"></a>DDoS 缓解策略
 

@@ -5,14 +5,14 @@ author: mayanknayar
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 12/23/2020
 ms.author: manayar
-ms.openlocfilehash: 8c7574daced9cec078b6e98e378212ce30d6f4f6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e22e8b81382614c2930c72a8150606f859be501d
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744729"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762973"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>预览：Azure 中 Windows VM 的自动 VM 来宾修补
 
@@ -34,11 +34,11 @@ ms.locfileid: "92744729"
 
 如果在 VM 上启用了自动 VM 来宾修补，则可在 VM 上自动下载并应用可用的 *关键* 修补程序和 *安全* 修补程序。 如果通过 Windows 更新发布新的修补程序，则此过程将每月自动启动一次。 修补程序评估和安装是自动的，该过程包括根据需要重新启动 VM。
 
-定期评估 VM，确定适用于该 VM 的修补程序。 在 vm 的非高峰时段，可以在 VM 上安装任何一天的修补程序。 这种自动评估可确保以尽可能早的机会发现任何缺失的修补程序。
+VM 每隔几天定期进行评估，并在30天内进行多次评估，以确定适用于该 VM 的修补程序。 在 vm 的非高峰时段，可以在 VM 上安装任何一天的修补程序。 这种自动评估可确保以尽可能早的机会发现任何缺失的修补程序。
 
-修补程序将在每月 Windows 更新版本的每月30天内安装，遵循下面所述的可用性优先的业务流程。 仅在非高峰时间为 VM 安装修补程序，具体取决于 VM 的时区。 VM 必须在非高峰时段运行，才能自动安装修补程序。 如果 VM 在定期评估期间关闭，将自动评估 VM，并在下一次定期评估期间自动安装适用的修补程序。
+修补程序将在每月 Windows 更新版本的每月30天内安装，遵循下面所述的可用性优先的业务流程。 仅在非高峰时间为 VM 安装修补程序，具体取决于 VM 的时区。 VM 必须在非高峰时段运行，才能自动安装修补程序。 如果 VM 在定期评估期间关闭，将自动评估 VM，并在下一次定期评估期间自动安装适用的修补程序 (通常在启动 VM 时) 几天内。
 
-若要在自己的自定义维护时段内安装包含其他修补程序分类或计划修补程序安装的修补程序，可以使用 [更新管理](tutorial-config-management.md#manage-windows-updates)。
+不会通过自动 VM 来宾修补来安装未分类为 *关键* 或 *安全* 的定义更新和其他修补程序。 若要在自己的自定义维护时段内安装包含其他修补程序分类或计划修补程序安装的修补程序，可以使用 [更新管理](tutorial-config-management.md#manage-windows-updates)。
 
 ### <a name="availability-first-patching"></a>可用性优先修补
 
@@ -69,11 +69,11 @@ Azure 为启用了自动 VM 来宾修补功能的所有 Vm 全局安排修补程
 
 | 发布者               | OS 产品/服务      |  SKU               |
 |-------------------------|---------------|--------------------|
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter    |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter-Server-Core |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter-Server-核心 |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-Server-Core |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Core |
 
 ## <a name="patch-orchestration-modes"></a>修补业务流程模式
 Azure 上的 Windows Vm 现在支持以下修补业务流程模式：
@@ -83,7 +83,7 @@ Azure 上的 Windows Vm 现在支持以下修补业务流程模式：
 - 此模式对可用性优先修补是必需的。
 - 设置此模式也会在 Windows 虚拟机上禁用本机自动更新以避免重复。
 - 只有使用上述受支持的操作系统平台映像创建的 Vm 才支持此模式。
-- 若要使用此模式，请设置属性 `osProfile.windowsConfiguration.enableAutomaticUpdates=true` ，并  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatfom` 在 VM 模板中设置属性。
+- 若要使用此模式，请设置属性 `osProfile.windowsConfiguration.enableAutomaticUpdates=true` ，并  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform` 在 VM 模板中设置属性。
 
 **AutomaticByOS:**
 - 此模式在 Windows 虚拟机上启用自动更新，并通过自动更新在 VM 上安装修补程序。
@@ -107,7 +107,7 @@ Azure 上的 Windows Vm 现在支持以下修补业务流程模式：
 - 虚拟机必须能够访问 Windows 更新终结点。 如果你的虚拟机已配置为使用 Windows Server Update Services (WSUS) ，则相关 WSUS 服务器终结点必须是可访问的。
 - 使用计算 API 版本2020-06-01 或更高版本。
 
-若要启用预览功能，只需为每个订阅 *InGuestAutoPatchVMPreview* 功能一次，如下所述。
+若要启用预览功能，只需为每个订阅 **InGuestAutoPatchVMPreview** 功能一次，如下所述。
 
 ### <a name="rest-api"></a>REST API
 下面的示例说明如何为订阅启用预览：
@@ -254,10 +254,10 @@ az vm get-instance-view --resource-group myResourceGroup --name myVM
 ## <a name="on-demand-patch-assessment"></a>按需修补程序评估
 如果已为 VM 启用自动 VM 来宾修补，则在 VM 的非高峰时段内会定期执行修补程序评估。 此过程是自动完成的，并且可以通过 VM 的实例视图查看最新评估的结果，如本文档前面所述。 你还可以随时为 VM 触发按需修补程序评估。 修补程序评估可能需要几分钟才能完成，最新评估的状态会在 VM 的实例视图上更新。
 
-若要启用预览功能，每个订阅都需要一次性选择 *InGuestPatchVMPreview* 功能。 可按照前面介绍的用于自动 VM 来宾修补的 [预览启用过程](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) 来启用按需修补程序评估功能预览。
+若要启用预览功能，每个订阅都需要一次性选择 **InGuestPatchVMPreview** 功能。 此功能预览版不同于先前为 **InGuestAutoPatchVMPreview** 完成的自动 VM 来宾修补功能注册。 启用 "附加功能预览" 是一种单独的附加要求。 可按照前面介绍的用于自动 VM 来宾修补的 [预览启用过程](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) 来启用按需修补程序评估功能预览。
 
 > [!NOTE]
->按需修补程序评估不会自动触发修补程序安装。 按照本文档前面所述的可用性优先修补过程操作，VM 的评估和适用的修补程序将仅在 VM 的非高峰时间安装。
+>按需修补程序评估不会自动触发修补程序安装。 如果已启用自动 VM 来宾修补，则在 VM 的非高峰期内，将按照本文档前面所述的可用性优先修补过程来安装 vm 的已评估和适用的修补程序。
 
 ### <a name="rest-api"></a>REST API
 ```

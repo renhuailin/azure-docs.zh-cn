@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4ff270977449bb80f97073342dc0c726a3f2316
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb84eae2db01180865db54250598f45c7b2ddca0
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80128527"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746229"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Azure AD 权利管理中的请求过程和电子邮件通知
 
@@ -40,7 +40,7 @@ ms.locfileid: "80128527"
 | Expired | 如果在审批请求超时期限内没有任何审批者审批请求，该请求将会过期。 若要重试，用户必须重新提交请求。 |
 | 拒绝 | 审批者拒绝了请求。 |
 | 已批准 | 审批者批准了请求。 |
-| 传送 | **尚未**为用户分配对访问包中所有资源的访问权限。 如果这是外部用户，则用户可能尚未访问资源目录。 并且他们可能尚未接受同意提示。 |
+| 传送 | **尚未** 为用户分配对访问包中所有资源的访问权限。 如果这是外部用户，则用户可能尚未访问资源目录。 并且他们可能尚未接受同意提示。 |
 | 已交货 | 已经为用户分配了对访问包中所有资源的访问权限。 |
 | 访问权限已延期 | 如果策略中允许延期，则表示用户已延期分配。 |
 | 访问权限已过期 | 用户对访问包的访问权限已过期。 若要重新获得访问权限，用户必须提交请求。 |

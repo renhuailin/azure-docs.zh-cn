@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 4979902853602073e6230ef7387d6c6596fe77da
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: d08cb2761a8d8010c455ff959d6c247e8b64ef20
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325906"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746569"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>迁移概述：在 Azure Vm 上 SQL Server SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +46,7 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 
 ## <a name="migration-strategies"></a>迁移策略
 
-有两种迁移策略可将用户数据库迁移到 Azure Vm 上的 SQL Server 实例：**迁移和升级**。 **lift and shift** 
+有两种迁移策略可将用户数据库迁移到 Azure Vm 上的 SQL Server 实例：**迁移和升级**。  
 
 适用于你的业务的适当方法通常取决于以下因素： 
 
@@ -73,7 +73,7 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 下表详细介绍了 " **提升" 和** "迁移" 迁移策略的可用方法，以将 SQL Server 数据库迁移到 Azure vm SQL Server：
 <br />
 
-|**方法** | **最小源版本** | **最低目标版本** | **源备份大小约束** |  **说明** |
+|**方法** | **最小源版本** | **最低目标版本** | **源备份大小约束** |  **备注** |
 | --- | --- | --- | --- | --- |
 | [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM 存储限制](../../../index.yml) |  要在 Azure VM 上按原样移动到 SQL Server 实例的现有 SQL Server。 可扩展多达 35000 Vm 的迁移工作负荷。 <br /><br /> 源服务器 () 在同步服务器数据期间保持联机和处理请求，从而最大程度地减少停机时间。 <br /><br /> **自动化 & 脚本**： [Azure Site Recovery 脚本](../../../migrate/how-to-migrate-at-scale.md) 和 [Azure 的缩放迁移和计划示例](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
@@ -86,7 +86,7 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 下表详细说明了在 Azure Vm 上将 SQL Server 数据库迁移到 SQL Server 的所有可用方法：
 <br />
 
-|**方法** | **最小源版本** | **最低目标版本** | **源备份大小约束** | **说明** |
+|**方法** | **最小源版本** | **最低目标版本** | **源备份大小约束** | **备注** |
 | --- | --- | --- | --- | --- |
 | **[备份到文件](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 | SQL Server 2008 SP4| [Azure VM 存储限制](../../../index.yml) |  这是一种简单且经过测试的技术，用于跨计算机移动数据库。 使用压缩来最大程度地减少传输的备份大小。 <br /><br /> **自动化 & 脚本**： [transact-sql (T-sql)](/sql/t-sql/statements/backup-transact-sql) 和 [AzCopy 到 Blob 存储](../../../storage/common/storage-use-azcopy-v10.md)  |
 | **[备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)** | SQL Server 2012 SP1 CU2 | SQL Server 2012 SP1 CU2| SQL Server 2016 为 12.8 TB，否则为 1 TB | 使用 Azure 存储将备份文件移动到 VM 的替代方法。 使用压缩来最大程度地减少传输的备份大小。 <br /><br /> **自动化 & 脚本**：  [t-sql 或维护计划](/sql/relational-databases/backup-restore/sql-server-backup-to-url) |
@@ -119,7 +119,7 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 
 这些服务包括：
 
-- [**SQL Server 集成服务 (SSIS)**](/sql/integration-services/install-windows/upgrade-integration-services)
+- [**SQL Server Integration Services (SSIS)**](/sql/integration-services/install-windows/upgrade-integration-services)
 - [**SQL Server Reporting Services (SSRS)**](/sql/reporting-services/install-windows/upgrade-and-migrate-reporting-services)
 - [**SQL Server Analysis Services (SSAS)**](/sql/database-engine/install-windows/upgrade-analysis-services)
 
@@ -127,6 +127,20 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 
 准备将 SQL Server 数据库迁移到 Azure Vm 上的 SQL Server 时，请确保考虑支持的 SQL Server 版本。 有关 Azure Vm 上受支持的当前受支持 SQL Server 版本的列表，请参阅 [Azure vm](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms)上的 SQL Server。
 
+## <a name="migration-assets"></a>迁移资产 
+
+有关更多帮助，请参阅为实际迁移项目开发的以下资源。
+
+|资产  |说明  |
+|---------|---------|
+|[数据工作负荷评估模型和工具](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
+|[使用 Logman 的 Perfmon 数据收集自动化](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|一种工具，用于收集执行数据以了解有助于迁移目标建议的基线性能。 此工具使用 logman.exe 创建命令，该命令将创建、启动、停止和删除在远程 SQL Server 上设置的性能计数器。|
+|[在 Azure 中 SQL Server 部署](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/SQL%20Server%20Deployment%20in%20Azure%20.pdf)|本指南白皮书有助于查看将 SQL Server 工作负荷迁移到 Azure 的各种选项，包括功能比较、高可用性和备份/存储注意事项。 |
+|[Azure 虚拟机的本地 SQL Server](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/OnPremise%20SQL%20Server%20to%20Azure%20VM.pdf)|本白皮书概述了使用示例脚本在 Azure 虚拟机上备份和还原数据库 SQL Server 到 SQL Server 的步骤。|
+|[多 SQL-ILB](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/ARM%20Templates/Multiple-SQL-VM-VNet-ILB)|本白皮书概述了在 SQL Server Always On 可用性组配置中设置多个 Azure 虚拟机的步骤。|
+|[支持每个区域超级 SSD 的 Azure 虚拟机](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Find%20Azure%20VMs%20supporting%20Ultra%20SSD)|这些 PowerShell 脚本提供了一个编程选项，可用于检索支持超 Ssd 的 Azure 虚拟机的区域列表。|
+
+这些资源是作为 Data SQL Ninja 计划的一部分开发的，该计划由 Azure 数据组工程团队提供赞助。 Data SQL Ninja 计划的核心宗旨是解锁和加速复杂的现代化进程，并争取数据平台向 Microsoft Azure 数据平台迁移的机会。 如果你认为贵组织有意参与 Data SQL Ninja 计划，请联系帐户团队并让他们提交提名。
 
 ## <a name="next-steps"></a>后续步骤
 

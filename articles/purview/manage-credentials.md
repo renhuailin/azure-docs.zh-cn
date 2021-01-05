@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 30004306d9ff44df04a26640a2bd7a09256fce25
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 4c964f3661e120026189a75d331e6db975b41c70
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516681"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756069"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>用于 Azure 监控范围中的源身份验证的凭据
 
@@ -73,7 +73,7 @@ ms.locfileid: "97516681"
 * SQL 身份验证：你将在密钥保管库中将 **密码** 添加为机密
 * 帐户密钥：将 **帐户密钥** 作为机密添加到密钥保管库中
 
-下面是有关如何将机密添加到密钥保管库的详细信息： (插入密钥保管库 "一文) 
+有关详细信息，请参阅 [将机密添加到 Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)。
 
 在密钥保管库中存储机密后，通过从凭据命令栏中选择 "+ 新建" 来创建新凭据。 提供所需的信息，包括选择要从中从中选择密码的身份验证方法和 Key Vault 实例。 填写所有详细信息后，单击 "创建"。
 

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5cd7a5737b2d13e63eabbbddd076cfc7aff83ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265675"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746790"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中评审对组和应用程序的访问权限
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 
 1. 查找要求你执行访问评审的 Microsoft 电子邮件。 以下示例电子邮件要求评审对某个组的访问权限。
 
-    ![显示 Microsoft 的示例电子邮件以查看对组的访问权限的屏幕截图。](./media/perform-access-review/access-review-email.png)
+    ![显示要求评审对某个组的访问权限的 Microsoft 示例电子邮件的屏幕截图。](./media/perform-access-review/access-review-email.png)
 
 1. 单击“开始评审”链接打开访问评审。
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
         > [!NOTE]
         > 如果“访问评审”磁贴不可见，则表明该组织没有要执行的访问评审，此时不需要执行任何操作。
 
-        ![显示应用和组的挂起访问评审列表的屏幕截图。](./media/perform-access-review/access-reviews-list.png)
+        ![显示应用和组的待处理访问评审列表的屏幕截图。](./media/perform-access-review/access-reviews-list.png)
 
     1. 单击你要执行的访问评审对应的“开始评审”链接。
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 
 1. 在页面底部的蓝色栏中，单击“接受建议”。
 
-    ![显示 "打开访问评审" 列表并选择 "接受建议" 按钮的屏幕截图。](./media/perform-access-review/accept-recommendations.png)
+    ![显示带有已选中“接受建议”按钮的打开访问评审列表的屏幕截图。](./media/perform-access-review/accept-recommendations.png)
 
     你将看到建议操作的摘要。
 
@@ -181,7 +181,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 
 4. 访问评审的管理员可能会要求你在“原因”框中提供做出决定的理由。 即使不需要提供理由， 你仍可以为你的决策提供原因，而你包含的信息将可供其他审批者查看。
 
-5. 单击“提交” 。
+5. 单击“提交”  。
     - 在访问评审结束之前，随时可以更改响应。 若要更改响应，请选择相应的行并更新响应。 例如，可以批准以前已拒绝的用户，或者拒绝以前已批准的用户。
 
  >[!IMPORTANT]

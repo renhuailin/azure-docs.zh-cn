@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c715804693571bc421951de1288fc884d2eae8d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906288"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746178"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 中的高级多阶段攻击检测
 
 
 > [!IMPORTANT]
-> Azure Sentinel 中的某些合成功能当前以 **公共预览版**提供。
+> Azure Sentinel 中的某些合成功能当前以 **公共预览版** 提供。
 > 提供这些功能没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 通过基于机器学习使用合成技术，Azure Sentinel 可以通过标识在终止链的各个阶段观察到的异常行为和可疑活动的组合来自动检测多阶段攻击。 根据这些发现，Azure Sentinel 会生成事件，否则可能难以捕获。 这些事件包含两个或多个警报或活动。 按照设计，这些事件是低容量、高保真和高严重性。
@@ -34,28 +34,28 @@ ms.locfileid: "90906288"
 
 默认情况下，Azure Sentinel 中启用此检测。 若要检查状态，或在使用替代解决方案来创建基于多个警报的事件时禁用状态，请使用以下说明：
 
-1. 如果尚未这样做，请登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)（如果未登录）。
 
-1. 导航到**Azure Sentinel**  >  **配置**  >  **分析**
+1. 导航到 **Azure Sentinel**  >  **配置**  >  **分析**
 
-1. 选择 "**活动规则**"，然后通过筛选**合成**规则类型的列表，在 "**名称**" 列中找到 "**高级多阶段攻击检测**"。 检查 " **状态** " 列以确认是否已启用或禁用此检测。
+1. 选择 "**活动规则**"，然后通过筛选 **合成** 规则类型的列表，在 "**名称**" 列中找到 "**高级多阶段攻击检测**"。 检查 " **状态** " 列以确认是否已启用或禁用此检测。
 
-    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{alt-text}&quot;:::
+    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{alt-text}":::
 
-1. 若要更改状态，请选择此项，然后在 &quot; **高级多阶段攻击检测** &quot; 边栏选项卡上，选择 &quot; **编辑**&quot;。
+1. 若要更改状态，请选择此项，然后在 " **高级多阶段攻击检测** " 边栏选项卡上，选择 " **编辑**"。
 
-1. 在 **规则创建向导** 边栏选项卡上，会自动选择状态更改，因此请选择 &quot; **下一步：查看**&quot;，然后单击 &quot; **保存**&quot;。 
+1. 在 **规则创建向导** 边栏选项卡上，会自动选择状态更改，因此请选择 " **下一步：查看**"，然后单击 " **保存**"。 
 
  由于 **合成** 规则类型仅包含一个不能修改的规则，因此规则模板不适用于此规则类型。
 
 > [!NOTE]
-> Azure Sentinel 目前使用30天的历史数据来训练机器学习系统。 此数据将在通过机器学习管道传递时使用 Microsoft 密钥进行加密。 但是，如果在 Azure Sentinel 工作区中启用了 CMK，则不会使用 [客户托管密钥 (CMK) ](customer-managed-keys.md) 来加密定型数据。 若要选择退出，请导航到**Azure Sentinel**   \>  **配置**   \>  **分析 \> 活动规则 \> 高级多阶段攻击检测**，然后在 **&quot;状态**" 列中，选择 "**禁用"。**
+> Azure Sentinel 目前使用30天的历史数据来训练机器学习系统。 此数据将在通过机器学习管道传递时使用 Microsoft 密钥进行加密。 但是，如果在 Azure Sentinel 工作区中启用了 CMK，则不会使用 [客户托管密钥 (CMK) ](customer-managed-keys.md) 来加密定型数据。 若要选择退出，请导航到 **Azure Sentinel** \> **配置** \> **分析 \> 活动规则 \> 高级多阶段攻击检测** ，然后在 " **状态** " 列中，选择 " **禁用"。**
 
 ## <a name="attack-detection-scenarios"></a>攻击检测方案
 
 以下部分列出了 Azure Sentinel 使用合成技术查找的相关方案的类型（按威胁分类分组）。
 
-如上所述，由于合成关联各种产品的多个安全警报来检测高级多阶段攻击，因此成功的合成检测作为**合成事件**显示在 Azure Sentinel**事件**页上，而不是作为**日志**中**安全警报**表中的**警报**。
+如上所述，由于合成关联各种产品的多个安全警报来检测高级多阶段攻击，因此成功的合成检测作为 **合成事件** 显示在 Azure Sentinel **事件** 页上，而不是作为 **日志** 中 **安全警报** 表中的 **警报**。
 
 若要启用这些合成驱动的攻击检测方案，所列出的任何数据源都必须使用关联的 Azure Sentinel 数据连接器进行引入。
 
@@ -84,6 +84,70 @@ ms.locfileid: "90906288"
 - **从一个匿名 IP 地址登录到多个 VM 创建活动的登录事件**
 
 - **用户的登录事件，其凭据已泄露，导致了多个 VM 创建活动**
+
+## <a name="credential-harvesting-new-threat-classification"></a>凭据收集 (新的威胁分类) 
+
+### <a name="malicious-credential-theft-tool-execution-following-suspicious-sign-in"></a>恶意凭据盗窃工具在可疑登录后执行
+
+**MITRE ATT&CK 战术：** 初始访问，凭据访问
+
+**MITRE ATT&CK 技术：** 有效帐户 (T1078) ，OS 凭据转储 (T1003) 
+
+**数据连接器源：** Azure Active Directory Identity Protection，Microsoft Defender for Endpoint
+
+**说明：** 此类型的合成事件表明在可疑 Azure AD 登录后执行了已知的凭据盗用工具。 这提供了一个很高的置信度，指出警报描述中所述的用户帐户已泄露，并且可能已成功使用 **Mimikatz** 等工具从系统中获取密钥、明文密码和/或密码哈希等凭据。 使用搜集凭据，攻击者可以访问敏感数据、提升权限和/或跨网络移动。 与恶意凭据盗窃工具警报发生的可疑 Azure AD 登录警报的排列方式如下：
+
+- **不可能前往异常位置，导致恶意凭据盗窃工具执行**
+
+- **从不熟悉的位置登录事件，导致恶意凭据盗窃工具执行**
+
+- **来自受感染设备的登录事件导致恶意凭据盗窃工具执行**
+
+- **来自匿名 IP 地址的登录事件，导致恶意凭据盗窃工具执行**
+
+- **用户的登录事件，其中包含泄露的凭据，导致恶意凭据盗窃工具执行**
+
+### <a name="suspected-credential-theft-activity-following-suspicious-sign-in"></a>可疑登录后发生可疑的凭据被盗活动
+
+**MITRE ATT&CK 战术：** 初始访问，凭据访问
+
+**MITRE ATT&CK 技术：** 有效帐户 (T1078) ，来自密码存储的凭据 (T1555) ，OS 凭据转储 (T1003) 
+
+**数据连接器源：** Azure Active Directory Identity Protection，Microsoft Defender for Endpoint
+
+**说明：** 此类型的合成事件指示在可疑 Azure AD 登录后，与凭据被盗模式关联的活动。 这提供了一个很高的置信度，指出警报描述中注明的用户帐户已泄露，并用于窃取凭据，如密钥、纯文本密码、密码哈希等。 被盗的凭据可能会允许攻击者访问敏感数据、提升权限和/或跨网络移动。 与凭据盗窃活动警报发生的可疑 Azure AD 登录警报的排列方式如下：
+
+- **不可能前往异常位置，导致 "可疑凭据被盗" 活动**
+
+- **从不熟悉的位置登录事件，导致 "可疑凭据被盗" 活动**
+
+- **来自受感染设备的登录事件，导致 "可疑凭据被盗" 活动**
+
+- **来自匿名 IP 地址的登录事件，导致 "可疑凭据被盗" 活动**
+
+- **用户的登录事件，该用户的凭据已泄露，导致证书被盗活动**
+
+## <a name="crypto-mining-new-threat-classification"></a>加密挖掘 (新的威胁分类) 
+
+### <a name="crypto-mining-activity-following-suspicious-sign-in"></a>在可疑登录后执行加密挖掘活动
+
+**MITRE ATT&CK 战术：** 初始访问，凭据访问
+
+**MITRE ATT&CK 技术：** 有效帐户 (T1078) ，资源劫持 (T1496) 
+
+**数据连接器源：** Azure Active Directory Identity Protection，Azure Defender (Azure 安全中心) 
+
+**说明：** 此类型的合成事件指示与 Azure AD 帐户的可疑登录关联的加密挖掘活动。 这提供了一个很高的置信度，指出警报描述中所述的用户帐户已泄露，并用于劫持环境中的资源来使用加密货币。 这可能会使计算能力和/或枯竭的云用量帐单大幅提高。 具有 "加密挖掘活动" 警报的可疑 Azure AD 登录警报的排列方式如下：  
+
+- **不可能传播到导致加密挖掘活动的异常位置**
+
+- **来自不熟悉的位置的登录事件，导致加密挖掘活动**
+
+- **来自受感染设备的登录事件，导致加密挖掘活动**
+
+- **从通向加密挖掘活动的匿名 IP 地址登录事件**
+
+- **用户的登录事件，其凭据已泄露，并导致加密挖掘活动**
 
 ## <a name="data-exfiltration"></a>数据外泄
 
@@ -368,6 +432,26 @@ ms.locfileid: "90906288"
 **数据连接器源：** Microsoft Defender for Endpoint (以前的 MDATP) ，Palo Alto 网络 
 
 **说明：** 此类型的合成事件表明 (WMI) 命令在系统上远程执行的 Windows 管理接口，并遵循这种情况，Palo Alto 网络防火墙检测到可疑的入站活动。 这表明攻击者可能已获得对你网络的访问权限，并且正在尝试移动、提升权限和/或执行恶意负载。 与所有 "居住于土地" 的攻击一样，此活动可能是对 WMI 的合法使用。 但是，在执行远程 WMI 命令后，恶意的入站防火墙活动会提高 WMI 以恶意方式使用的可靠性，并且应该进一步进行调查。 在 Palo Alto 日志中，Azure Sentinel 侧重于 [威胁日志](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)，如果允许威胁 (可疑数据、文件、洪水、数据包、扫描、间谍软件、url、病毒、漏洞、分秒必争、wildfires) ，则会将流量视为可疑。 另请参阅有关其他警报详细信息的合成事件描述中列出的 [威胁/内容类型](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) 的 Palo Alto 威胁日志。
+
+### <a name="suspicious-powershell-command-line-following-suspicious-sign-in"></a>可疑登录后发生可疑的 PowerShell 命令行
+
+**MITRE ATT&CK 战术：** 初始访问，执行
+
+**MITRE ATT&CK 技术：** 有效帐户 (T1078) 、命令和脚本解释器 (T1059) 
+
+**数据连接器源：** Azure Active Directory Identity Protection，Microsoft Defender for Endpoint (以前的 MDATP) 
+
+**说明：** 此类型的合成事件表明，用户在可疑登录到 Azure AD 帐户后执行潜在的恶意 PowerShell 命令。 这提供了一个很高的置信度，指出警报描述中所述的帐户已泄露，并采取了进一步的恶意操作。 攻击者经常利用 PowerShell 在内存中执行恶意负载，而无需将项目保留在磁盘上，以避免通过基于磁盘的安全机制（如病毒扫描程序）进行检测。 可疑的 Azure AD 登录警报与可疑的 PowerShell 命令警报的排列方式如下：
+
+- **不可能前往导致可疑 PowerShell 命令行的异常位置**
+
+- **从不熟悉的位置登录事件，导致可疑的 PowerShell 命令行**
+
+- **来自受感染设备的登录事件，导致可疑的 PowerShell 命令行**
+
+- **来自匿名 IP 地址的登录事件，导致了可疑的 PowerShell 命令行**
+
+- **用户的登录事件，该用户的凭据已泄露，导致可疑的 PowerShell 命令行**
 
 ## <a name="malware-c2-or-download"></a>恶意软件 C2 或下载
 

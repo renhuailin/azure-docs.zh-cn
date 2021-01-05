@@ -4,14 +4,14 @@ description: 如何通过 Azure HPC 缓存为后端存储创建面向客户端�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 12/22/2020
 ms.author: v-erkel
-ms.openlocfilehash: e525fc0705dffcd4765e6a1f6c5235bdef260fcd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5549670dbd1f302bdb17b8b94cbd1fb5c4c1a1d9
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339670"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760517"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>设置聚合命名空间
 
@@ -21,13 +21,13 @@ ms.locfileid: "96339670"
 
 Azure 门户中的 " **命名空间** " 页显示客户端用于通过缓存访问数据的路径。 使用此页可以创建、删除或更改命名空间路径。 你还可以使用 Azure CLI 配置命名空间路径。
 
-所有面向客户端的现有路径都列在 " **命名空间** " 页上。 如果存储目标没有任何路径，则它不会显示在表中。
+已为此缓存定义的所有面向客户端的路径都列在 " **命名空间** " 页上。 表中未定义任何命名空间路径的存储目标。
 
-通过单击箭头并更好地了解缓存的聚合命名空间，可以对表列进行排序。
+您可以对表中的列进行排序，以便更好地了解缓存的聚合命名空间。 单击列标题中的箭头以对路径进行排序。
 
-![表中包含两个路径的门户命名空间页的屏幕截图。 列标题：命名空间路径、存储目标、导出路径和导出子目录。 第一列中的项是可单击的链接。 顶部按钮：添加命名空间路径，刷新，删除](media/namespace-page.png)
+[![表中包含两个路径的门户命名空间页的屏幕截图。列标题：命名空间路径、存储目标、导出路径和导出子目录，以及客户端访问策略。第一列中的路径名称是可单击的链接。顶部按钮：添加命名空间路径，刷新，删除 ](media/namespace-page.png)](media/namespace-page.png#lightbox)
 
-## <a name="add-or-edit-client-facing-namespace-paths"></a>添加或编辑面向客户端的命名空间路径
+## <a name="add-or-edit-namespace-paths"></a>添加或编辑命名空间路径
 
 你必须至少创建一个命名空间路径，然后客户端才能访问存储目标。 有关客户端访问的详细信息，请参阅 [安装 AZURE HPC 缓存](hpc-cache-mount.md) (。 ) 
 
@@ -37,21 +37,23 @@ Azure Blob 存储目标只能有一个命名空间路径。
 
 按照以下说明设置或更改 Azure 门户或 Azure CLI 的路径。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在 Azure 门户中，加载 " **命名空间** 设置" 页。 您可以在此页中添加、更改或删除命名空间路径。
 
 * **添加新路径：** 单击顶部的 " **+ 添加** " 按钮，并在 "编辑" 面板中填写信息。
 
-  * 从下拉列表中选择存储目标。 在此屏幕截图中 (，无法选择 blob 存储目标，因为它已具有命名空间路径。 ) 
+  ![选择了 blob 存储目标的添加命名空间编辑字段的屏幕截图。 导出和子目录路径设置为/且不可编辑。](media/namespace-add-blob.png)
 
-    ![公开了存储目标选择器的新命名空间编辑字段的屏幕截图](media/namespace-select-storage-target.png)
+  * 输入客户端将用于访问此存储目标的路径。
+
+  * 选择要用于此路径的访问策略。 若要详细了解如何在中自定义客户端访问， [请使用客户端访问策略](access-policies.md)。
+
+  * 从下拉列表中选择存储目标。 如果 blob 存储目标已有命名空间路径，则无法选择它。
 
   * 对于 Azure Blob 存储目标，导出和子目录路径会自动设置为 ``/`` 。
 
-* **更改现有路径：** 单击命名空间路径。 此时将打开 "编辑" 面板，您可以修改路径。
-
-  !["命名空间" 页的屏幕截图单击 Blob 命名空间路径后，编辑字段会显示在右侧的窗格中](media/edit-namespace-blob.png)
+* **更改现有路径：** 单击命名空间路径。 此时将打开 "编辑" 面板。 您可以修改路径和访问策略，但不能更改为其他存储目标。
 
 * **删除命名空间路径：** 选中该路径左侧的复选框，然后单击 " **删除** " 按钮。
 
@@ -81,7 +83,7 @@ NFS 存储系统的所有命名空间路径都是在一个存储目标上创建�
 
   * 3 TB 缓存-10 个命名空间路径
   * 6 TB 缓存-10 个命名空间路径
-  * 23 TB 缓存-20 个命名空间路径
+  * 12 TB 缓存-20 个命名空间路径
 
 * 最大 4 GB/秒的吞吐量：
 
@@ -97,7 +99,7 @@ NFS 存储系统的所有命名空间路径都是在一个存储目标上创建�
 
 对于每个 NFS 命名空间路径，提供面向客户端的路径和存储系统导出，还可以选择导出子目录。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在 Azure 门户中，加载 " **命名空间** 设置" 页。 您可以在此页中添加、编辑或删除命名空间路径。
 
@@ -109,13 +111,15 @@ NFS 存储系统的所有命名空间路径都是在一个存储目标上创建�
 
 * **命名空间路径** -面向客户端的文件路径。
 
+* **客户端访问策略** -选择要用于此路径的访问策略。 若要详细了解如何在中自定义客户端访问， [请使用客户端访问策略](access-policies.md)。
+
 * **存储目标** -如果要创建新的命名空间路径，请从下拉菜单中选择存储目标。
 
 * **导出路径** -输入 NFS 导出的路径。 请确保正确键入导出名称-门户将验证此字段的语法，但不会检查导出，直到提交更改。
 
 * **导出子目录** -如果希望此路径装入导出的特定子目录，请在此处输入。 否则，请将此字段留空。
 
-!["门户命名空间" 页的屏幕截图，其中打开了 "更新" 页](media/update-namespace-nfs.png)
+!["门户命名空间" 页的屏幕截图，其中打开了 "编辑" 页。 编辑窗体显示 nfs 存储目标命名空间路径的设置](media/namespace-edit-nfs.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

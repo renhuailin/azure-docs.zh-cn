@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6eb44c1efd683b6febe9a355ef72c80cc6f2e40d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85078137"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746620"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中查看报表和日志
 
@@ -43,7 +43,7 @@ Azure AD 权利管理报表和 Azure AD 审核日志提供有关用户对哪些�
 
 1. 单击“用户的访问包”。
 
-1. 单击“选择用户”，打开“选择用户”窗格****。
+1. 单击“选择用户”，打开“选择用户”窗格。
 
 1. 在列表中查找该用户，然后单击“选择”。
 
@@ -67,7 +67,7 @@ Azure AD 权利管理报表和 Azure AD 审核日志提供有关用户对哪些�
 
 1. 单击“用户的资源分配”。
 
-1. 单击“选择用户”，打开“选择用户”窗格****。
+1. 单击“选择用户”，打开“选择用户”窗格。
 
 1. 在列表中查找该用户，然后单击“选择”。
 
@@ -81,15 +81,15 @@ Azure AD 权利管理报表和 Azure AD 审核日志提供有关用户对哪些�
 
 若要更详细地了解用户如何请求访问某个访问包，以及如何接受对该包的访问，可以使用 Azure AD 审核日志。 具体说来，可以使用`EntitlementManagement` 和 `UserManagement` 类别中的日志记录来更详细地了解每个请求的处理步骤。  
 
-1. 单击“Azure Active Directory”，然后单击“审核日志”。********
+1. 单击“Azure Active Directory”，然后单击“审核日志”。
 
-1. 在顶部将“类别”更改为****`EntitlementManagement` 或 `UserManagement`，具体取决于要查找的审核记录。  
+1. 在顶部将“类别”更改为`EntitlementManagement` 或 `UserManagement`，具体取决于要查找的审核记录。  
 
 1. 单击“应用” 。
 
-1. 若要下载日志，请单击“下载”。****
+1. 若要下载日志，请单击“下载”。
 
-Azure AD 在收到新请求时会写入一条审核记录，其中的“类别”为****`EntitlementManagement`，“活动”通常为****`User requests access package assignment`。  如果是在 Azure 门户中创建的直接分配，则审核记录的“活动”字段**** 为 `Administrator directly assigns user to access package`，执行分配的用户通过 **ActorUserPrincipalName** 来标识。
+Azure AD 在收到新请求时会写入一条审核记录，其中的“类别”为`EntitlementManagement`，“活动”通常为`User requests access package assignment`。  如果是在 Azure 门户中创建的直接分配，则审核记录的“活动”字段为 `Administrator directly assigns user to access package`，执行分配的用户通过 **ActorUserPrincipalName** 来标识。
 
 Azure AD 会在请求正在进行时写入更多的审核记录，包括：
 
@@ -101,11 +101,11 @@ Azure AD 会在请求正在进行时写入更多的审核记录，包括：
 | `EntitlementManagement` | `Approve access package assignment request` | 已批准请求 |
 | `EntitlementManagement` | `Ready to fulfill access package assignment request` |请求已获得批准，或者不需要审批 |
 
-为用户分配访问权限以后，Azure AD 会写入一条审核记录，其类别为 `EntitlementManagement`，其“活动”为**** `Fulfill access package assignment`。  收到访问权限的用户按 **ActorUserPrincipalName** 字段进行标识。
+为用户分配访问权限以后，Azure AD 会写入一条审核记录，其类别为 `EntitlementManagement`，其“活动”为 `Fulfill access package assignment`。  收到访问权限的用户按 **ActorUserPrincipalName** 字段进行标识。
 
-如果未分配访问权限，则 Azure AD 会写入一条审核记录，其类别为 `EntitlementManagement`，其“活动”为****`Deny access package assignment request`（如果请求被审批者拒绝）或 `Access package assignment request timed out (no approver action taken)`（如果请求已在审批者进行审批之前超时）。
+如果未分配访问权限，则 Azure AD 会写入一条审核记录，其类别为 `EntitlementManagement`，其“活动”为`Deny access package assignment request`（如果请求被审批者拒绝）或 `Access package assignment request timed out (no approver action taken)`（如果请求已在审批者进行审批之前超时）。
 
-如果用户的访问包分配过期、被用户取消，或者被管理员删除，则 Azure AD 会写入一条审核记录，其类别为 `EntitlementManagement`，其“活动”为****`Remove access package assignment`。
+如果用户的访问包分配过期、被用户取消，或者被管理员删除，则 Azure AD 会写入一条审核记录，其类别为 `EntitlementManagement`，其“活动”为`Remove access package assignment`。
 
 ## <a name="next-steps"></a>后续步骤
 

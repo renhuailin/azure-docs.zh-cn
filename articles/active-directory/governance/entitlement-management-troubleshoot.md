@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bca78195d4fb7bb265c4a7fd8d78ea49a35335b6
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446996"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746705"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>排查 Azure AD 权利管理的问题
 
@@ -35,7 +35,7 @@ ms.locfileid: "91446996"
 
 ## <a name="resources"></a>资源
 
-* 应用程序的角色由应用程序自身定义，并在 Azure AD 中进行管理。 如果某个应用程序没有任何资源角色，则权利管理会将用户分配到一个**默认访问**角色。
+* 应用程序的角色由应用程序自身定义，并在 Azure AD 中进行管理。 如果某个应用程序没有任何资源角色，则权利管理会将用户分配到一个 **默认访问** 角色。
 
     请注意，Azure 门户可能还会显示不能选作应用程序的服务的服务主体。  具体而言，**Exchange Online** 和 **SharePoint Online** 是服务，而不是在目录中具有资源角色的应用程序，因此，不能将它们包含在访问包中。  相反，使用基于组的许可为需要访问这些服务的用户建立适当的许可。
 
@@ -75,13 +75,13 @@ ms.locfileid: "91446996"
 
 ### <a name="view-a-requests-delivery-errors"></a>查看请求的传递错误
 
-**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理器或访问包分配管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理员或访问包分配管理员
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 单击“请求”。****
+1. 单击“请求”。
 
 1. 选择要查看的请求。
 
@@ -103,13 +103,13 @@ ms.locfileid: "91446996"
 
 - 如果在试用时段内未修复错误，则请求状态可能为“传递失败”或“已部分传递”。 然后，你可以使用“重新处理”按钮。 你将有 7 天时间来重新处理请求。
 
-**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理器或访问包分配管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理员或访问包分配管理员
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 单击“请求”。****
+1. 单击“请求”。
 
 1. 单击要重新处理的请求。
 
@@ -121,17 +121,17 @@ ms.locfileid: "91446996"
 
 你只能取消尚未传递或传递已失败的挂起请求。否则，“取消”按钮将灰显。
 
-**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理器或访问包分配管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理员或访问包分配管理员
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 单击“请求”。****
+1. 单击“请求”。
 
 1. 单击要取消的请求。
 
-1. 在请求详细信息窗格中，单击“取消请求”。****
+1. 在请求详细信息窗格中，单击“取消请求”。
 
 ## <a name="multiple-policies"></a>多个策略
 

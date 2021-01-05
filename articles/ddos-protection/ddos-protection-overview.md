@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: c3931cafb6c755c6119bf8deb4ecc6b58ea7bc51
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 5e633b5e4b2ff2ce884bfaf99e3730968150cbed
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938437"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746365"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS 保护标准概述
 
@@ -33,8 +33,8 @@ Azure DDoS 保护不存储客户数据。
 ## <a name="features"></a>功能
 
 - **本机平台集成：** 本机集成到 Azure 中。 包括通过 Azure 门户进行配置。 DDoS 保护标准了解你的资源和资源配置。
-- **全包式保护：** 启用 DDoS 保护标准后，简化的配置会立即保护虚拟网络上的所有资源。 要求没有干预或用户定义。 一旦检测到攻击，标准 DDoS 保护会立即自动减轻攻击。
-- **Always on 流量监视：** 每周7天，你的应用程序流量模式每周监视24小时，寻找 DDoS 攻击的迹象。 将在超出保护策略范围时执行缓解措施。
+- **全包式保护：** 启用 DDoS 保护标准后，简化的配置会立即保护虚拟网络上的所有资源。 要求没有干预或用户定义。 
+- **Always on 流量监视：** 每周7天，你的应用程序流量模式每周监视24小时，寻找 DDoS 攻击的迹象。 一旦检测到攻击，标准 DDoS 保护会立即自动减轻攻击。
 - **自适应优化：** 智能流量分析了解应用程序在一段时间内的流量，并选择和更新最适合服务的配置文件。 当流量随时间变化时，配置文件将进行调整。
 - **多层保护：** 在与 web 应用程序防火墙一起使用时，提供完整的堆栈 DDoS 保护，同时在由 Azure DDoS 保护标准) 提供的网络 (层和 WAF) 提供的应用程序层 (第7层获取保护。 WAF 产品/服务包括 Azure [应用程序网关 WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 以及 [azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)中提供的第三方 web 应用程序防火墙产品。
 - **广泛的缓解规模：** 可以使用全球容量缓解超过 60 种不同攻击类型，从而防止最大的已知 DDoS 攻击。
@@ -42,7 +42,7 @@ Azure DDoS 保护不存储客户数据。
 - **攻击指标：** 可以通过 Azure Monitor 访问每个攻击的汇总指标。
 - **攻击警报：** 可以使用内置攻击指标在攻击开始和停止时以及攻击持续期间配置警报。 警报集成到操作软件，如 Microsoft Azure 监视日志、Splunk、Azure 存储、电子邮件和 Azure 门户。
 - **Ddos 快速响应**：将 Ddos 防护快速响应 (DRR) 团队，以帮助进行攻击调查和分析。 若要了解详细信息，请参阅 [DDoS 快速响应](ddos-rapid-response.md)。
-- **成本保证：** 针对所述 DDoS 攻击的数据传输和应用程序扩展服务信用额度。
+- **成本保证：** 接收因 DDoS 攻击所产生的资源成本的数据传输和应用程序扩展服务信用额度。
 
 ## <a name="pricing"></a>定价
 

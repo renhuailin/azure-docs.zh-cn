@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 12/23/2020
 ms.author: memildin
-ms.openlocfilehash: 07a94685fb3655aa5aa21a8658b9d975c764daff
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 3899b00038f3c12add4dbf49a7f05e07141d8606
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512271"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755848"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>计算机上适用于 SQL server 的 Azure Defender 
 
@@ -93,7 +93,7 @@ ms.locfileid: "96512271"
 
 1. 在 "安全中心" 边栏中，打开 " **建议** " 页，然后选择 " **计算机上的 SQL server** 上的建议漏洞" (预览 ") 。 有关详细信息，请参阅[安全中心建议](security-center-recommendations.md)。 
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="计算机上的 SQL server 上的漏洞评估结果应 (预览版进行修正) ":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="应修正关于计算机上的 SQL 服务器的漏洞评估结果（预览版）":::
 
     此时显示此建议的详细视图。
 
@@ -108,7 +108,7 @@ ms.locfileid: "96512271"
     在每个视图中，安全检查按照严重性排序。 单击特定安全检查即可查看详细信息窗格，其中包含说明、修正方法以及影响或基准等其他相关信息   。
 
 ## <a name="azure-defender-for-sql-alerts"></a>Azure Defender for SQL 警报
-警报由异常和可能有害的访问或利用 SQL 计算机的尝试生成。 这些事件可触发警报 [引用页的 SQL 数据库和 Azure Synapse Analytics 警报部分](alerts-reference.md#alerts-sql-db-and-warehouse)中显示的警报。
+警报由异常和可能有害的访问或利用 SQL 计算机的尝试生成。 这些事件可触发 [警报引用页面](alerts-reference.md#alerts-sql-db-and-warehouse)中显示的警报。
 
 ## <a name="explore-and-investigate-security-alerts"></a>浏览并调查安全警报
 
@@ -126,9 +126,8 @@ ms.locfileid: "96512271"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关相关材料，请参阅以下文章：
+如需相关材料，请参阅以下文章：
 
 - [针对 SQL 数据库和 Azure Synapse Analytics 的安全警报](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [设置安全警报的电子邮件通知](security-center-provide-security-contact-details.md)
 - [了解有关 Azure Sentinel 的详细信息](../sentinel/index.yml)
-- [Azure 安全中心的数据安全包](../azure-sql/database/azure-defender-for-sql.md)

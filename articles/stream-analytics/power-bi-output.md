@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 29bd4dc5cabe8b29efe7b89395c5e7d36bd0347a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: cc48d26c217f52dfa52ac6cd3d7f18a806c93927
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129773"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740974"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>从 Azure 流分析 Power BI 输出
 
@@ -71,7 +71,7 @@ FLOAT | Double
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | 字符串 | 字符串 | Double
 Double | Double | 字符串 | 字符串 | Double
-字符串 | String | String | String | 字符串 
+字符串 | 字符串 | 字符串 | 字符串 | 字符串 
 Datetime | 字符串 | 字符串 |  Datetime | 字符串
 
 ## <a name="output-batch-size"></a>输出批大小
@@ -80,9 +80,5 @@ Datetime | 字符串 | 字符串 |  Datetime | 字符串
 
 ## <a name="next-steps"></a>后续步骤
 
+* [使用托管标识对 Azure 流分析作业进行身份验证，以 Power BI (预览版) ](powerbi-output-managed-identity.md)
 * [快速入门：使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)
-* [快速入门：使用 Azure CLI 创建 Azure 流分析作业](quick-create-azure-cli.md)
-* [快速入门：使用 ARM 模板创建 Azure 流分析作业](quick-create-azure-resource-manager.md)
-* [快速入门：使用 Azure PowerShell 创建流分析作业](stream-analytics-quick-create-powershell.md)
-* [快速入门：使用 Visual Studio 创建 Azure 流分析作业](stream-analytics-quick-create-vs.md)
-* [快速入门：在 Visual Studio Code 中创建 Azure 流分析作业](quick-create-visual-studio-code.md)

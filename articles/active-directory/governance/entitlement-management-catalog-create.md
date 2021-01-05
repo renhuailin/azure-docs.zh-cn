@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf6e02ebad2ac5150be4775ad0ff6069fe3db89f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b87fdd7c73d089c46d456491c02d49cb6f8883d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980046"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745957"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中创建和管理资源目录
 
@@ -33,23 +33,23 @@ ms.locfileid: "90980046"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中，单击“目录”****。
+1. 在左侧菜单中，单击“目录”。
 
     ![Azure 门户中的权利管理目录](./media/entitlement-management-catalog-create/catalogs.png)
 
-1. 单击“新建目录”。****
+1. 单击“新建目录”。
 
 1. 输入目录的唯一名称，并提供说明。
 
     用户将在访问包的详细信息中看到此信息。
 
-1. 如果你希望在创建此目录中的访问包后，用户可立即请求这些访问包，请将“启用”设置为“是”。********
+1. 如果你希望在创建此目录中的访问包后，用户可立即请求这些访问包，请将“启用”设置为“是”。
 
-1. 如果希望允许选定外部目录中的用户请求此目录中的访问包，请将“为外部用户启用”设置为“是”。********
+1. 如果希望允许选定外部目录中的用户请求此目录中的访问包，请将“为外部用户启用”设置为“是”。
 
     ![“新建目录”窗格](./media/entitlement-management-shared/new-catalog.png)
 
-1. 单击“创建”以创建该目录。****
+1. 单击“创建”以创建该目录。
 
 ### <a name="creating-a-catalog-programmatically"></a>以编程方式创建目录
 
@@ -59,15 +59,15 @@ ms.locfileid: "90980046"
 
 若要在访问包中包含资源，这些资源必须存在于目录中。 可添加的资源类型包括组、应用程序和 SharePoint Online 站点。 组可以是云创建的 Microsoft 365 组，或者云创建的 Azure AD 安全组。 应用程序可以是 Azure AD 企业应用程序，包括 SaaS 应用程序，以及你自己的已联合到 Azure AD 的应用程序。 站点可以是 SharePoint Online 站点或 SharePoint Online 站点集合。
 
-**必备角色：** 请参阅[将资源添加到目录所需的角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
+**必备角色：** 请参阅 [将资源添加到目录所需的角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“目录”，然后打开要将资源添加到的目录。****
+1. 在左侧菜单中单击“目录”，然后打开要将资源添加到的目录。
 
-1. 在左侧菜单中单击“资源”。****
+1. 在左侧菜单中单击“资源”。
 
-1. 单击“添加资源”。****
+1. 单击“添加资源”。
 
 1. 单击某个资源类型：“组和团队”、“应用程序”或“SharePoint 站点”。  
 
@@ -77,7 +77,7 @@ ms.locfileid: "90980046"
 
     ![将资源添加到目录](./media/entitlement-management-catalog-create/catalog-add-resources.png)
 
-1. 完成后，单击“添加”。****
+1. 完成后，单击“添加”。
 
     现在，可将这些资源包含在目录中的访问包内。
 
@@ -89,17 +89,17 @@ ms.locfileid: "90980046"
 
 可以从目录中删除资源。 如果资源未在目录的任何访问包中使用时，才能从该目录中删除该资源。
 
-**必备角色：** 请参阅[将资源添加到目录所需的角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
+**必备角色：** 请参阅 [将资源添加到目录所需的角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“目录”，然后打开要从中删除资源的目录。****
+1. 在左侧菜单中单击“目录”，然后打开要从中删除资源的目录。
 
-1. 在左侧菜单中单击“资源”。****
+1. 在左侧菜单中单击“资源”。
 
 1. 选择要删除的资源。
 
-1. 单击“删除”（或单击省略号 (**...**)，然后单击“删除资源”）。********
+1. 单击“删除”（或单击省略号 (**...**)，然后单击“删除资源”）。
 
 
 ## <a name="add-additional-catalog-owners"></a>添加其他目录所有者
@@ -112,15 +112,15 @@ ms.locfileid: "90980046"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“目录”，然后打开要将管理员添加到的目录。****
+1. 在左侧菜单中单击“目录”，然后打开要将管理员添加到的目录。
 
-1. 在左侧菜单中，单击“角色和管理员”。****
+1. 在左侧菜单中，单击“角色和管理员”。
 
     ![目录角色和管理员](./media/entitlement-management-shared/catalog-roles-administrators.png)
 
 1. 单击“添加所有者者”，以选择这些角色的成员。
 
-1. 单击“选择”以添加这些成员。****
+1. 单击“选择”以添加这些成员。
 
 ## <a name="edit-a-catalog"></a>编辑目录
 
@@ -130,9 +130,9 @@ ms.locfileid: "90980046"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“目录”，然后打开要编辑的目录。****
+1. 在左侧菜单中单击“目录”，然后打开要编辑的目录。
 
-1. 在该目录的“概述”页上单击“编辑”。********
+1. 在该目录的“概述”页上单击“编辑”。
 
 1. 编辑目录的名称、说明或启用的设置。
 
@@ -148,9 +148,9 @@ ms.locfileid: "90980046"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“目录”，然后打开要删除的目录。****
+1. 在左侧菜单中单击“目录”，然后打开要删除的目录。
 
-1. 在该目录的“概述”中单击“删除”。********
+1. 在该目录的“概述”中单击“删除”。
 
 1. 在出现的消息框中单击“是”。
 

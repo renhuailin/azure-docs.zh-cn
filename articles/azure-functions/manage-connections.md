@@ -4,12 +4,12 @@ description: 了解如何通过使用静态连接客户端来避免 Azure Functi
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 6a426aff1721ac3565b53cf2eef7c5aa094dd7e2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 53848e6273cf59439d44b431652981b18bdd5ba6
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168301"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755950"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
 
@@ -30,7 +30,7 @@ ms.locfileid: "92168301"
 在 Azure Functions 应用程序中使用特定于服务的客户端时，请遵循以下准则：
 
 - 不要在每次调用函数时创建新的客户端。
-- ** 应创建一个可在每次调用函数时使用的静态客户端。
+- 应创建一个可在每次调用函数时使用的静态客户端。
 - 如果不同的函数使用相同的服务，请考虑在共享帮助程序类中创建单个静态客户端。
 
 ## <a name="client-code-examples"></a>客户端代码示例
@@ -103,12 +103,12 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
-如果使用的是函数 v3. x，则需要参考 Microsoft.Azure.DocumentDB。 在代码中添加引用：
+如果使用的是函数 v3. x，则需要对 Microsoft.Azure.DocumentDB 的引用。 在代码中添加引用：
 
 ```cs
 #r "Microsoft.Azure.DocumentDB.Core"
 ```
-同时，为触发器创建一个名为 "function" 的文件，并添加以下内容：
+同时，为触发器创建一个名为“function.proj”的文件，并添加以下内容：
 
 ```cs
 
@@ -146,7 +146,7 @@ module.exports = async function (context) {
 函数代码可使用 SQL Server 的 .NET Framework 数据提供程序 ([SqlClient](/dotnet/api/system.data.sqlclient)) 连接到 SQL 关系数据库。 这也是依赖于 ADO.NET 的数据框架（例如[实体框架](/ef/ef6/)）的基础提供程序。 与 [HttpClient](/dotnet/api/system.net.http.httpclient) 和 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) 连接不同，ADO.NET 默认实现连接池。 但是，由于连接仍可能耗尽，因此应优化数据库连接。 有关详细信息，请参阅 [SQL Server 连接池 (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)。
 
 > [!TIP]
-> 某些数据框架（例如实体框架）通常从配置文件的 **ConnectionStrings** 节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中****。 如果要在函数代码中创建 [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中****。
+> 某些数据框架（例如实体框架）通常从配置文件的 **ConnectionStrings** 节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中。 如果要在函数代码中创建 [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中。
 
 ## <a name="next-steps"></a>后续步骤
 

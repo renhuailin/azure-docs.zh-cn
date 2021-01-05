@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0dd5f6a48175bad35b37155c8ff881e352922ca7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: ea96e1056e6157cfddbdc2f0b6451ed55a74d1de
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674458"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756052"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>监视和查看 ML 运行日志与指标
 
@@ -121,7 +121,7 @@ RunDetails(run).show()
 下表显示了你将在此部分中看到的文件夹中的日志文件的内容。
 
 > [!NOTE]
-> 即使 skimmingYou 不一定会看到每次运行的每个文件，用户也应注意的信息。 例如，仅当生成新映像时才会显示 20_image_build_log * .txt (例如，当你更改环境) 时。
+> 每次运行时，不一定会显示每个文件。 例如，仅当生成新映像时才会显示 20_image_build_log * .txt (例如，当你更改环境) 时。
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` 文件夹
 

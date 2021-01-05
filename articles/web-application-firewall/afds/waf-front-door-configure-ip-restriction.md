@@ -5,20 +5,20 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 12/22/2020
 ms.author: tyao
-ms.openlocfilehash: f260bfc7b097931cc1a978e790c1d9dd966703ac
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 60a4ef47bc30955c918983d54f613cbdb5cbed73
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563505"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746756"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>使用 Azure 前门的 Web 应用程序防火墙配置 IP 限制规则
 
 本文介绍如何使用 Azure 门户、Azure CLI、Azure PowerShell 或 Azure 资源管理器模板在 Web 应用程序防火墙中配置 IP 限制规则 (WAF) 用于 Azure 前门。
 
-基于 IP 地址的访问控制规则是一个自定义的 WAF 规则，可用于控制对 web 应用程序的访问。 它通过在无类别 Inter-Domain 路由 (CIDR) 格式中指定 IP 地址或 IP 地址范围的列表来实现此功能。
+基于 IP 地址的访问控制规则是一个自定义的 WAF 规则，可用于控制对 web 应用程序的访问。 它通过在无类别 Inter-Domain 路由 (CIDR) 格式中指定 IP 地址或 IP 地址范围的列表来实现此功能。 IP 地址匹配、 **RemoteAddr** 和 **SocketAddr** 中有两种类型的匹配变量。 RemoteAddr 是通常通过 X 转发的请求标头发送的原始客户端 IP。 SocketAddr 是源 IP 地址 WAF 所见。 如果用户位于代理后面，则 SocketAddr 通常是代理服务器地址。
 
 默认情况下，可从 Internet 访问你的 web 应用程序。 如果你想要从已知 IP 地址或 IP 地址范围的列表限制对客户端的访问，则可以创建一个 IP 匹配规则，其中包含作为匹配值的 IP 地址列表，并将 operator 设置为 "Not" (求反) 和要 **阻止** 的操作。 应用 IP 限制规则后，源自此允许列表外部地址的请求将收到403禁止的响应。
 
@@ -30,8 +30,8 @@ ms.locfileid: "94563505"
 
 ### <a name="create-a-waf-policy"></a>创建 WAF 策略
 
-1. 在 Azure 门户上，选择 " **创建资源** "，在搜索框中键入 "  **web 应用程序防火墙** "，然后选择 " **WEB 应用程序防火墙 (WAF)** "。
-2. 选择“创建”。
+1. 在 Azure 门户上，选择 " **创建资源**"，在搜索框中键入 "  **web 应用程序防火墙** "，然后选择 " **WEB 应用程序防火墙 (WAF)**"。
+2. 选择“创建”  。
 3. 在 " **创建 WAF 策略** " 页上，使用以下值完成 " **基本** 信息" 选项卡：
    
    |设置  |值  |
@@ -40,36 +40,36 @@ ms.locfileid: "94563505"
    |订阅     |选择订阅|
    |资源组     |选择前门所在的资源组。|
    |策略名称     |键入策略的名称|
-   |策略状态     |Enabled|
+   |策略状态     |已启用|
 
    选择 **下一步：策略设置**
 
-1. 在 " **策略设置** " 选项卡上，选择 " **阻止** "。 对于 " **阻止响应正文** "，请键入 *已被阻止！* 您可以看到您的自定义规则已生效。
-2. 选择 " **下一步：托管规则** "。
-3. 选择 " **下一步：自定义规则** "。
-4. 选择 " **添加自定义规则** "。
+1. 在 " **策略设置** " 选项卡上，选择 " **阻止**"。 对于 " **阻止响应正文**"，请键入 *已被阻止！* 您可以看到您的自定义规则已生效。
+2. 选择 " **下一步：托管规则**"。
+3. 选择 " **下一步：自定义规则**"。
+4. 选择 " **添加自定义规则**"。
 5. 在 " **添加自定义规则** " 页上，使用以下测试值创建自定义规则：
 
    |设置  |值  |
    |---------|---------|
    |自定义规则名称     |FdWafCustRule|
-   |状态     |Enabled|
+   |状态     |已启用|
    |规则类型     |匹配|
    |优先级    |100|
    |匹配类型     |IP 地址|
    |Match 变量|RemoteAddr|
-   |操作|不包含|
+   |Operation|不包含|
    |IP 地址或范围|10.10.10.0/24|
    |Then|拒绝流量|
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="自定义规则":::
 
    选择 **添加** 。
-6. 选择 **下一步：关联** 。
-7. 选择 " **添加前端主机** "。
-8. 对于 " **前端主机** "，请选择前端主机，然后选择 " **添加** "。
+6. 选择 **下一步：关联**。
+7. 选择 " **添加前端主机**"。
+8. 对于 " **前端主机**"，请选择前端主机，然后选择 " **添加**"。
 9. 选择“查看 + 创建”。
-10. 策略验证通过后，选择 " **创建** "。
+10. 策略验证通过后，选择 " **创建**"。
 
 ### <a name="test-your-waf-policy"></a>测试 WAF 策略
 
@@ -156,7 +156,7 @@ az network front-door waf-policy rule match-condition add \
      --name <frontdoor-name>
      --resource-group <resource-group-name>
    ```
-在此示例中，WAF 策略将应用于 **FrontendEndpoints [0]** 。 可以将 WAF 策略链接到任何前端。
+在此示例中，WAF 策略将应用于 **FrontendEndpoints [0]**。 可以将 WAF 策略链接到任何前端。
 > [!Note]
 > 只需将 **WebApplicationFirewallPolicyLink** 属性设置一次，即可将 WAF 策略链接到 Azure 前门前端。 后续策略更新会自动应用到前端。
 
@@ -236,7 +236,7 @@ $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
 ```
 
 > [!NOTE]
-> 在此示例中，WAF 策略将应用于 **FrontendEndpoints [0]** 。 可以将 WAF 策略链接到任何前端。 只需将 **WebApplicationFirewallPolicyLink** 属性设置一次，即可将 WAF 策略链接到 Azure 前门前端。 后续策略更新会自动应用到前端。
+> 在此示例中，WAF 策略将应用于 **FrontendEndpoints [0]**。 可以将 WAF 策略链接到任何前端。 只需将 **WebApplicationFirewallPolicyLink** 属性设置一次，即可将 WAF 策略链接到 Azure 前门前端。 后续策略更新会自动应用到前端。
 
 
 ## <a name="configure-a-waf-policy-with-a-resource-manager-template"></a>使用资源管理器模板配置 WAF 策略

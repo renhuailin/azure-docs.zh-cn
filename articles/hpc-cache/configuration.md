@@ -4,14 +4,14 @@ description: 说明如何为缓存配置其他设置，如 MTU 和无 squash，�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 12/21/2020
 ms.author: v-erkel
-ms.openlocfilehash: b01c4d896d5ec600e0fe22e3ca7b7816141776a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02bf862cdc3b20ef3e5fdb024f474267efa0c70d
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497193"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760497"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>配置其他 Azure HPC 缓存设置
 
@@ -43,9 +43,9 @@ Azure 门户中的 " **配置** " 页具有自定义多个设置的选项。 大
 若要详细了解 Azure 虚拟网络中的 MTU 设置，请阅读 [Azure vm 的 tcp/ip 性能优化](../virtual-network/virtual-network-tcpip-performance-tuning.md)。
 
 ## <a name="configure-root-squash"></a>配置根 squash
-<!-- linked from troubleshoot -->
+<!-- linked from troubleshoot and from access policies -->
 
-**Enable root squash**设置控制 Azure HPC 缓存如何处理来自客户端计算机上的根用户的请求。
+**Enable root squash** 设置控制 Azure HPC 缓存如何处理来自客户端计算机上的根用户的请求。
 
 启用根 squash 后，当客户端通过 Azure HPC 缓存发送请求时，会自动将客户端的根用户映射到用户 "无人"。 它还会阻止客户端请求使用设置 UID 权限位。
 
@@ -54,6 +54,9 @@ Azure 门户中的 " **配置** " 页具有自定义多个设置的选项。 大
 在缓存上设置根 squash 有助于补偿 ``no_root_squash`` 用作存储目标的 NAS 系统上所需的设置。  (阅读有关 [NFS 存储目标先决条件](hpc-cache-prerequisites.md#nfs-storage-requirements)的详细信息。 ) 在与 Azure Blob 存储目标一起使用时，它还可以提高安全性。
 
 默认设置为“是”。 2020年4月之前创建的 (缓存可能具有默认设置 **No**。 ) 
+
+> [!TIP]
+> 还可以通过自定义 [客户端访问策略](access-policies.md#root-squash)为特定的存储导出设置根 squash。
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>查看 blob 存储目标的快照
 

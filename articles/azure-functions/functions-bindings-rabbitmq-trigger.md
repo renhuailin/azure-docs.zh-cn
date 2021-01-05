@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 5930219486de8704c777496bcaf293411c5fb7b1
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4ba19fdf700790d89fe04867985fb803c3b0a2fc
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673981"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760395"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Functions 概述的 RabbitMQ 触发器
 
 > [!NOTE]
-> 只有 **Windows 高级版和专用** 计划才完全支持 RabbitMQ 绑定。 当前不支持使用和 Linux。
+> 仅对 **高级和专用** 计划完全支持 RabbitMQ 绑定。 不支持使用。
 
 使用 RabbitMQ 触发器来响应来自 RabbitMQ 队列的消息。
 
@@ -43,18 +43,23 @@ public static void RabbitMQTrigger_BasicDeliverEventArgs(
 下面的示例演示如何以 POCO 身份读取消息。
 
 ```cs
-public class TestClass
+namespace Company.Function
 {
-    public string x { get; set; }
-}
+    public class TestClass
+    {
+        public string x { get; set; }
+    }
 
-[FunctionName("RabbitMQTriggerCSharp")]
-public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
-    ILogger logger
-    )
-{
-    logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {Encoding.UTF8.GetString(pocObj)}");
+    public class RabbitMQTriggerCSharp{
+        [FunctionName("RabbitMQTriggerCSharp")]
+        public static void RabbitMQTrigger_BasicDeliverEventArgs(
+            [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
+            ILogger logger
+            )
+        {
+            logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {pocObj}");
+        }
+    }
 }
 ```
 
@@ -82,7 +87,7 @@ public static void RabbitMQTrigger_BasicDeliverEventArgs(
 
 C# 脚本代码如下所示：
 
-```csx
+```C#
 using System;
 
 public static void Run(string myQueueItem, ILogger log)
@@ -208,15 +213,15 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 "RabbitMQTrigger"。|
+|type | 不适用 | 必须设置为 "RabbitMQTrigger"。|
 |**direction** | 不适用 | 必须设置为“in”。|
-|**name** | 不适用 | 表示函数代码中的队列的变量的名称。 |
+|name | 不适用 | 表示函数代码中的队列的变量的名称。 |
 |**queueName**|**QueueName**| 要从中接收消息的队列的名称。 |
 |**段**|**HostName**|如果使用 ConnectStringSetting，则 (忽略)  <br>队列的主机名 (Ex： 10.26.45.210) |
 |**userNameSetting**|**UserNameSetting**|如果使用 ConnectionStringSetting，则 (忽略)  <br>应用设置的名称，该设置包含用于访问队列的用户名。 例如： UserNameSetting： "% < UserNameFromSettings >%"|
 |**passwordSetting**|**PasswordSetting**|如果使用 ConnectionStringSetting，则 (忽略)  <br>应用设置的名称，该设置包含用于访问队列的密码。 例如： PasswordSetting： "% < PasswordFromSettings >%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|包含 RabbitMQ 消息队列连接字符串的应用设置的名称。 请注意，如果直接指定连接字符串而不是通过 local.settings.json 中的应用设置，则触发器将不起作用。  (Ex： In *function.json*： connectionStringSetting： "rabbitMQConnection" <br> 在 *local.settings.js*： "rabbitMQConnection"： "< ActualConnectionstring >" ) |
-|**port**|**端口**|如果使用 ConnectionStringSetting，则 (忽略) 获取或设置所使用的端口。 默认值为 0。|
+|**port**|端口 |如果使用 ConnectionStringSetting，则 (忽略) 获取或设置所使用的端口。 默认值为0，它指向 rabbitmq 客户端的默认端口设置：5672。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -275,12 +280,12 @@ Python 不支持特性。
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
 |prefetchCount|30|获取或设置消息接收方可以同时请求并缓存的消息数。|
 |queueName|不适用| 要从中接收消息的队列的名称。|
 |connectionString|不适用|RabbitMQ 消息队列连接字符串。 请注意，在此处直接指定连接字符串，而不通过应用设置。|
-|port|0|如果使用 ConnectionStringSetting，则 (忽略) 获取或设置所使用的端口。 默认值为 0。|
+|port|0|如果使用 connectionString) 获取或设置所使用的端口，则 (被忽略。 默认值为0，它指向 rabbitmq 客户端的默认端口设置：5672。|
 
 ## <a name="local-testing"></a>本地测试
 
@@ -303,11 +308,26 @@ Python 不支持特性。
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
-|hostName|不适用|如果使用 ConnectStringSetting，则 (忽略)  <br>队列的主机名 (Ex： 10.26.45.210) |
-|userName|不适用|如果使用 ConnectionStringSetting，则 (忽略)  <br>用于访问队列的名称 |
-|password|不适用|如果使用 ConnectionStringSetting，则 (忽略)  <br>用于访问队列的密码|
+|hostName|不适用|如果使用 connectionString) ，则 (忽略 <br>队列的主机名 (Ex： 10.26.45.210) |
+|userName|不适用|如果使用 connectionString) ，则 (忽略 <br>用于访问队列的名称 |
+|password|不适用|如果使用 connectionString) ，则 (忽略 <br>用于访问队列的密码|
+
+
+## <a name="enable-runtime-scaling"></a>启用运行时缩放
+
+为了使 RabbitMQ 触发器扩大到多个实例，必须启用 **运行时缩放监视** 设置。 
+
+在门户中，可以在  >  function app 的配置 **函数运行时设置** 下找到此设置。
+
+:::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
+
+在 CLI 中，可以使用以下命令启用 **运行时缩放监视** ：
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
+```
 
 ## <a name="monitoring-rabbitmq-endpoint"></a>监视 RabbitMQ 终结点
 监视特定 RabbitMQ 终结点的队列和交换的步骤：

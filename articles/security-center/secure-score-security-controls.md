@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2020
 ms.author: memildin
-ms.openlocfilehash: 3cd536d051f3e227ba86429ae3f1633bf6c2e82f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 283dbf152778b5ef58e298444058f619356ef241
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490527"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756103"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 安全中心的安全评分
 
@@ -220,11 +220,11 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">加密传输中的数据（最高 4 分）</p></strong>在各组件、位置或程序间传输数据时，数据处于“传输中”状态。 无法保护传输中的数据的组织更容易遭受中间人攻击、窃听和会话劫持。 应使用 SSL/TLS 协议交换数据，并建议使用 VPN。 通过 Internet 在 Azure 虚拟机和本地位置之间发送加密数据时，可以使用虚拟网络网关（例如 <a href="/azure/vpn-gateway/vpn-gateway-about-vpngateways">Azure VPN 网关</a>）发送加密流量。</td>
-    <td class="tg-lboi"; width=55%>- 只能通过 HTTPS 访问 API 应用<br>- 只能通过 HTTPS 访问函数应用<br>- 应仅启用与 Redis 缓存的安全连接<br>- 应启用到存储帐户的安全传输<br>- 只能通过 HTTPS 访问 Web 应用程序<br>- 应为 PostgreSQL 服务器启用专用终结点<br>- 应为 PostgreSQL 数据库服务器启用强制 SSL 连接<br>- 应为 MySQL 数据库服务器启用强制 SSL 连接<br>- TLS 应更新为 API 应用的最新版本<br>- TLS 应该更新到函数应用的最新版本<br>- TLS 应该更新到 web 应用的最新版本<br>- API 应用中应该需要 FTPS<br>- 函数应用中应该需要 FTPS<br>- Web 应用中应该需要 FTPS</td>
+    <td class="tg-lboi"; width=55%>- 只能通过 HTTPS 访问 API 应用<br>- 只能通过 HTTPS 访问函数应用<br>- 应仅启用与 Redis 缓存的安全连接<br>- 应启用到存储帐户的安全传输<br>- 只能通过 HTTPS 访问 Web 应用程序<br>- 应为 PostgreSQL 服务器启用专用终结点<br>- 应为 PostgreSQL 数据库服务器启用“强制 SSL 连接”<br>- 应为 MySQL 数据库服务器启用“强制 SSL 连接”<br>- 应将 TLS 更新为 API 应用的最新版本<br>- 应将 TLS 更新为函数应用的最新版本<br>- 应将 TLS 更新为 Web 应用的最新版本<br>- 应仅在 API 应用中要求使用 FTPS<br>- 应仅在函数应用中要求使用 FTPS<br>- 应仅在 Web 应用中要求使用 FTPS</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">管理访问和权限（最高 4 分）</p></strong>安全程序的核心是确保用户具有完成其工作（但仅限于此）所需的访问权限：<a href="/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">最小特权访问模型</a>。<br>通过使用 <a href="/azure/role-based-access-control/overview">AZURE RBAC)  (azure 基于角色的访问控制 </a>创建角色分配来控制对资源的访问权限。 角色分配由三个元素组成：<br>- <strong>安全主体</strong>：用户请求访问的对象<br>- <strong>角色定义</strong>：他们的权限<br>- <strong>作用域</strong>：权限适用于的资源集</td>
-    <td class="tg-lboi"; width=55%>- 应从订阅中删除弃用帐户(预览版)<br>- 应从订阅中删除拥有所有者权限的弃用帐户(预览版)<br>- 应从订阅中删除拥有所有者权限的外部帐户(预览版)<br>- 应从订阅中删除拥有写入权限的外部帐户(预览版)<br>- 应向订阅分配多个所有者<br>- 应在 Kubernetes Services (预览版上使用 azure RBAC)  (azure 基于角色的访问控制) <br>- Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证<br>- 应使用服务主体（而不是管理证书）来保护你的订阅<br>- 应该对容器强制执行最低特权的 Linux 功能（预览）<br>- 应该对容器强制执行不可变（只读）根文件系统（预览）<br>- 应避免特权升级的容器（预览）<br>- 应避免以根用户身份运行容器（预览）<br>- 应避免共享敏感主机命名空间的容器（预览）<br>- Pod HostPath 卷挂载的使用应限制在已知列表中（预览）<br>- 应避免使用特权容器（预览）<br>- 应在群集上安装并启用适用于 Kubernetes 的 Azure Policy 加载项（预览）<br>- Web apps 应为所有传入请求请求一个 SSL 证书<br>- 应在 API 应用中使用托管标识<br>- 托管标识应在函数应用中使用<br>- 应在 web 应用中使用托管标识</td>
+    <td class="tg-lboi"; width=55%>- 应从订阅中删除弃用帐户(预览版)<br>- 应从订阅中删除拥有所有者权限的弃用帐户(预览版)<br>- 应从订阅中删除拥有所有者权限的外部帐户(预览版)<br>- 应从订阅中删除拥有写入权限的外部帐户(预览版)<br>- 应向订阅分配多个所有者<br>- 应在 Kubernetes 服务（预览版）上使用 Azure 基于角色的访问控制 (Azure RBAC)<br>- Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证<br>- 应使用服务主体（而不是管理证书）来保护你的订阅<br>- 应该对容器强制执行最低特权的 Linux 功能（预览）<br>- 应该对容器强制执行不可变（只读）根文件系统（预览）<br>- 应避免特权升级的容器（预览）<br>- 应避免以根用户身份运行容器（预览）<br>- 应避免共享敏感主机命名空间的容器（预览）<br>- Pod HostPath 卷挂载的使用应限制在已知列表中（预览）<br>- 应避免使用特权容器（预览）<br>- 应在群集上安装并启用适用于 Kubernetes 的 Azure Policy 加载项（预览）<br>- 应在 API 应用中使用托管标识<br>- 应在函数应用中使用托管标识<br>- 应在 Web 应用中使用托管标识</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">修正安全配置（最高 4 分）</p></strong>配置错误的 IT 资产受到攻击的风险更高。 当部署资产并且必须在截止日期之前完成时，通常会忘记基本的强化措施。 错误的安全配置可能出现在基础结构中的任何级别：从操作系统和网络设备到云资源。<br>Azure 安全中心会不断将资源的配置与行业标准、法规和基准中的要求进行比较。 配置了对组织而言很重要的相关“合规性包”（标准和基线）后，任何差距都会产生安全建议，其中包括 CCEID 以及对潜在安全影响的说明。<br>常用包为 <a href="/azure/security/benchmarks/introduction">Azure 安全基准</a>和 <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure 基础基准版本 1.1.0</a></td>
@@ -232,7 +232,7 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">限制未经授权的网络访问（最高 4 分）</p></strong>组织内的终结点提供从虚拟网络到受支持的 Azure 服务的直接连接。 子网中的虚拟机可以与所有资源通信。 若要限制与子网内资源的通信，请创建一个网络安全组并将其关联到子网。 组织可以通过创建入站和出站规则来限制和防范未经授权的流量。</td>
-    <td class="tg-lboi"; width=55%>- 应禁用虚拟机上的 IP 转发<br>- 应在 Kubernetes 服务上定义已授权 IP 范围(预览版)<br>- (已弃用)应限制对应用服务的访问(预览版)<br>- (已弃用)应加强 IaaS NSG 上 Web 应用程序的规则<br>- 虚拟机应与网络安全组关联<br>- CORS 不应允许所有资源都能访问 API 应用<br>- CORS 不应允许所有资源都能访问函数应用<br>- CORS 不应允许所有资源都能访问 Web 应用程序<br>- 应为 API 应用禁用远程调试<br>- 应为函数应用禁用远程调试<br>- 应为 Web 应用程序禁用远程调试<br>- 应限制许可网络安全组(包含面向 Internet 的 VM)的访问<br>- 应强化面向 Internet 的虚拟机的网络安全组规则<br>- 应在群集上安装并启用适用于 Kubernetes 的 Azure Policy 加载项（预览）<br>- 容器应只侦听允许的端口（预览）<br>- 服务应只侦听允许的端口（预览）<br>- 应限制对主机网络和端口的使用（预览）<br>- 虚拟网络应受 Azure 防火墙保护（预览）<br>- 应为 MariaDB 服务器启用专用终结点<br>- 应为 MySQL 服务器启用专用终结点<br>- 应为 PostgreSQL 服务器启用专用终结点</td>
+    <td class="tg-lboi"; width=55%>- 应禁用虚拟机上的 IP 转发<br>- 应在 Kubernetes 服务上定义已授权 IP 范围(预览版)<br>- (已弃用)应限制对应用服务的访问(预览版)<br>- (已弃用)应加强 IaaS NSG 上 Web 应用程序的规则<br>- 虚拟机应与网络安全组关联<br>- CORS 不应允许所有资源都能访问 API 应用<br>- CORS 不应允许所有资源都能访问函数应用<br>- CORS 不应允许所有资源都能访问 Web 应用程序<br>- 应为 API 应用禁用远程调试<br>- 应为函数应用禁用远程调试<br>- 应为 Web 应用程序禁用远程调试<br>- 应限制许可网络安全组(包含面向 Internet 的 VM)的访问<br>- 应在面向 internet 的虚拟机上应用自适应网络强化建议<br>- 应在群集上安装并启用适用于 Kubernetes 的 Azure Policy 加载项（预览）<br>- 容器应只侦听允许的端口（预览）<br>- 服务应只侦听允许的端口（预览）<br>- 应限制对主机网络和端口的使用（预览）<br>- 虚拟网络应受 Azure 防火墙保护（预览）<br>- 应为 MariaDB 服务器启用专用终结点<br>- 应为 MySQL 服务器启用专用终结点<br>- 应为 PostgreSQL 服务器启用专用终结点</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">应用自适应应用程序控制（最高 3 分）</p></strong>自适应应用程序控制 (AAC) 是一种智能的、自动化的端到端解决方案，可用于控制哪些应用程序可以在 Azure 计算机和非 Azure 计算机上运行。 它还有助于强化计算机免受恶意软件的侵害。<br>安全中心使用机器学习为一组计算机创建一个已知安全应用程序列表。<br>这种将已批准的应用程序列入列表的创新方法在不增加管理复杂性的情况下提供了安全优势。<br>AAC 尤其适用于需要运行一组特定应用程序的专用服务器。</td>
@@ -260,7 +260,7 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">实施安全最佳做法（最高 0 分）</p></strong>新式安全做法“假定突破”网络边界。 因此，此控制中的许多最佳做法都集中在标识管理上。<br>丢失密钥和凭据是一个常见问题。 <a href="/azure/key-vault/key-vault-overview">Azure 密钥保管库</a>通过加密密钥、.pfx 文件和密码来保护密钥和机密。<br>虚拟专用网 (VPN) 是访问虚拟机的一种安全方法。 如果 Vpn 不可用，则使用复杂的密码和双因素身份验证，例如 <a href="/azure/active-directory/authentication/concept-mfa-howitworks">Azure AD 多重身份验证</a>。 双重身份验证避开了固有的仅依赖用户名和密码的弱点。<br>使用强身份验证和授权平台是另一种最佳做法。 组织可以使用联合标识来委派授权标识的管理。 当员工离职，需要撤销其访问权限时，这一点也很重要。</td>
-    <td class="tg-lboi"; width=55%>- 最多只能为订阅指定 3 个所有者<br>- 应从订阅中删除拥有读取权限的外部帐户<br>- 应在对订阅拥有读取权限的帐户上启用 MFA<br>- 应限制对具有防火墙和虚拟网络配置的存储帐户的访问<br>- 应从事件中心命名空间中删除 RootManageSharedAccessKey 以外的所有授权规则<br>- 应为 SQL Server 预配 Azure Active Directory 管理员<br>- 应对托管实例启用高级数据安全<br>- 应定义事件中心实例上的授权规则<br>- 应将存储帐户迁移到新的 Azure 资源管理器资源<br>- 应将虚拟机迁移到新的 Azure 资源管理器资源<br>- 子网应与网络安全组关联<br>- [预览版]应启用 Windows 攻击防护 <br>- [预览版]应安装来宾配置代理<br>- 应使用网络安全组来保护非面向 Internet 的虚拟机<br>- 应为虚拟机启用 Azure 备份<br>- 应为 Azure Database for MariaDB 启用异地冗余备份<br>- 应为 Azure Database for MySQL 启用异地冗余备份<br>- 应为 Azure Database for PostgreSQL 启用异地冗余备份<br>- PHP 应更新为 API 应用的最新版本<br>- PHP 应更新到 web 应用的最新版本<br>- Java 应更新为 API 应用的最新版本<br>- Java 应更新为 function app 的最新版本<br>- Java 应更新到 web 应用的最新版本<br>- Python 应更新为 API 应用的最新版本<br>- Python 应更新为函数应用的最新版本<br>- Python 应更新到 web 应用的最新版本<br>- 应将 SQL server 的审核保留至少设置为90天</td>
+    <td class="tg-lboi"; width=55%>- 最多只能为订阅指定 3 个所有者<br>- 应从订阅中删除拥有读取权限的外部帐户<br>- 应在对订阅拥有读取权限的帐户上启用 MFA<br>- 应限制对具有防火墙和虚拟网络配置的存储帐户的访问<br>- 应从事件中心命名空间中删除 RootManageSharedAccessKey 以外的所有授权规则<br>- 应为 SQL Server 预配 Azure Active Directory 管理员<br>- 应对托管实例启用高级数据安全<br>- 应定义事件中心实例上的授权规则<br>- 应将存储帐户迁移到新的 Azure 资源管理器资源<br>- 应将虚拟机迁移到新的 Azure 资源管理器资源<br>- 子网应与网络安全组关联<br>- [预览版]应启用 Windows 攻击防护 <br>- [预览版]应安装来宾配置代理<br>- 应使用网络安全组来保护非面向 Internet 的虚拟机<br>- 应为虚拟机启用 Azure 备份<br>- 应为 Azure Database for MariaDB 启用异地冗余备份<br>- 应为 Azure Database for MySQL 启用异地冗余备份<br>- 应为 Azure Database for PostgreSQL 启用异地冗余备份<br>- 应将 PHP 更新为 API 应用的最新版本<br>- 应将 PHP 更新为 Web 应用的最新版本<br>- 应将 Java 更新为 API 应用的最新版本<br>- 应将 Java 更新为函数应用的最新版本<br>- 应将 Java 更新为 Web 应用的最新版本<br>- 应将 Python 更新为 API 应用的最新版本<br>- 应将 Python 更新为函数应用的最新版本<br>- 应将 Python 更新为 Web 应用的最新版本<br>- 应将 SQL Server 的审核保留设置为至少 90 天<br>- Web 应用应该请求一个用于所有传入请求的 SSL 证书</td>
   </tr>
 </tbody>
 </table>

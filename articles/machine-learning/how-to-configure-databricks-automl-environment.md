@@ -1,7 +1,7 @@
 ---
-title: 用 autoML & 进行开发 Azure Databricks
+title: 用 AutoML & 进行开发 Azure Databricks
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习和 Azure Databricks 中设置开发环境。 使用适用于 Databricks 的 Azure ML Sdk 和 autoML 的 Databricks。
+description: 了解如何在 Azure 机器学习和 Azure Databricks 中设置开发环境。 使用适用于 Databricks 的 Azure ML Sdk 和 AutoML 的 Databricks。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,14 +11,14 @@ ms.reviewer: larryfr
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ef8ee7718aabb443fda6cd7b276ee53472261913
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 878e6f11645a6478c0d536e9d6d6dac4518c5349
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423980"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740957"
 ---
-# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>使用 Azure 机器学习 Azure Databricks 和 autoML 设置开发环境 
+# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>使用 Azure 机器学习 Azure Databricks 和 AutoML 设置开发环境 
 
 了解如何在使用 Azure Databricks 和自动 ML 的 Azure 机器学习中配置开发环境。
 
@@ -32,9 +32,9 @@ Azure Databricks 非常适合在 Azure 云中的可缩放 Apache Spark 平台上
 Azure 机器学习工作区。 如果没有，可以通过 [Azure 门户](how-to-manage-workspace.md)、 [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)和 [Azure 资源管理器模板](how-to-create-workspace-template.md)创建 Azure 机器学习工作区。
 
 
-## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>Azure Databricks 与 Azure 机器学习和 autoML
+## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>Azure Databricks 与 Azure 机器学习和 AutoML
 
-Azure Databricks 与 Azure 机器学习及其 autoML 功能集成。 
+Azure Databricks 与 Azure 机器学习及其 AutoML 功能集成。 
 
 您可以使用 Azure Databricks：
 
@@ -97,7 +97,7 @@ Azure Databricks 与 Azure 机器学习及其 autoML 功能集成。
   ![适用于 Databricks 的 Azure 机器学习 SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg) 
 
 ## <a name="add-the-azure-ml-sdk-with-automl-to-databricks"></a>将包含 AutoML 的 Azure ML SDK 添加到 Databricks
-如果创建群集时所用的 Databricks Runtime 7.1 或更高 ( *不* 是 ML) ，请在笔记本的第一个单元格中运行以下命令，以安装 AML SDK。
+如果创建群集时所用的 Databricks Runtime 7.1 或更高 (*不* 是 ML) ，请在笔记本的第一个单元格中运行以下命令，以安装 AML SDK。
 
 ```
 %pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt
@@ -121,7 +121,45 @@ Azure Databricks 与 Azure 机器学习及其 autoML 功能集成。
 
 + 了解如何[创建包含 Databricks 的管道用作训练计算](how-to-create-your-first-pipeline.md)。
 
+## <a name="troubleshooting"></a>疑难解答
+
+* **安装包时失败**
+
+    安装更多包时，Azure Databricks 上的 Azure 机器学习 SDK 安装失败。 某些包（如 `psutil`）可能会导致冲突。 为了避免安装错误，请通过冻结库版本来安装包。 此问题与 Databricks 相关，而与 Azure 机器学习 SDK 无关。 使用其他库时也可能会遇到此问题。 示例：
+    
+    ```python
+    psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+    ```
+
+    或者，如果一直面临 Python 库的安装问题，可以使用初始化脚本。 此方法并不正式受到支持。 有关详细信息，请参阅[群集范围的初始化脚本](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)。
+
+* **导入错误：无法导 `Timedelta` 入 `pandas._libs.tslibs` 名称**：如果你在使用自动机器学习时看到此错误，请在笔记本中运行以下两行：
+    ```
+    %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
+    %sh /databricks/python/bin/pip install pandas==0.23.4
+    ```
+
+* **导入错误：不存在名为 "pandas" 的模块**：如果你在使用自动机器学习时看到此错误：
+
+    1. 请运行以下命令，在 Azure Databricks 群集中安装两个包：
+    
+       ```bash
+       scikit-learn==0.19.1
+       pandas==0.22.0
+       ```
+    
+    1. 分离群集，然后将其重新附加到笔记本。
+    
+    如果这些步骤无法解决问题，请尝试重启群集。
+
+* **FailToSendFeather**：如果在 `FailToSendFeather` Azure Databricks 群集上读取数据时出现错误，请参阅以下解决方案：
+    
+    * 将 `azureml-sdk[automl]` 包升级到最新版本。
+    * 添加 `azureml-dataprep` 版本 1.1.8 或更高版本。
+    * 添加 `pyarrow` 版本 0.11 或更高版本。
+  
+
 ## <a name="next-steps"></a>后续步骤
 
-- 使用 MNIST 数据集对 Azure 机器学习上的[模型定型](tutorial-train-models-with-aml.md)。
-- 请参阅 [用于 Python 参考的 AZURE 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
+- 在 Azure 机器学习中使用 MNIST 数据集来[训练模型](tutorial-train-models-with-aml.md)。
+- 请参阅[适用于 Python 的 Azure 机器学习 SDK 参考](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
