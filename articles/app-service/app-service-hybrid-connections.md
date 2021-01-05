@@ -6,13 +6,13 @@ ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.custom: seodec18, fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: c7900341cfcda52dafcb269b833f5ad8dd0f55b7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: 16f6a0660fa9aa20f636ee412f3f337bd5dea9b5
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739761"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825972"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure 应用服务混合连接
 

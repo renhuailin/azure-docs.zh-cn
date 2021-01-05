@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 3e93b5c4fd2a169da5cdcc42aaabdd29a2c22bb7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 2a7d191af78da417d0ee2ade12b1576912643b6c
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522451"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827438"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>教程：Azure Active Directory 与 New Relic by Account 的单一登录 (SSO) 集成
 
@@ -80,7 +80,7 @@ ms.locfileid: "92522451"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL  ：
 
-    `https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` - 务必将 `acc_id` 替换为你自己的 New Relic by Account 帐户 ID。
+    `https://rpm.newrelic.com:443/accounts/{acc_id}/sso/saml/finalize` - 务必将 `acc_id` 替换为你自己的 New Relic by Account 帐户 ID。
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL：`rpm.newrelic.com`
 

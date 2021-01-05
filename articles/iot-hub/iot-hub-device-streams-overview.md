@@ -11,13 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-- devx-track-azurecli
-ms.openlocfilehash: bdd9d5fd878094326331e60fc1a639eef08b7ea3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9487fc562fa099d2650aabc8d15fc1449c7fcb5c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792457"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825174"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中心设备流（预览版）
 
@@ -57,7 +56,7 @@ IoT 中心设备流具有以下优点：
 
 1. 设备应用程序会预先注册回叫，以便在向设备发起新设备流时收到通知。 此步骤通常在设备启动并连接到 IoT 中心时发生。
 
-2. 服务端程序在需要时通过提供设备 ID（ _而不是_ IP 地址）来发起设备流。
+2. 服务端程序在需要时通过提供设备 ID（_而不是_ IP 地址）来发起设备流。
 
 3. IoT 中心通过调用步骤 1 中注册的回叫来通知设备端程序。 设备可以接受或拒绝流启动请求。 此逻辑可以特定于应用程序方案。 如果设备拒绝了流请求，则 IoT 中心会相应地通知服务；否则，请执行以下步骤。
 
@@ -129,13 +128,13 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 按照以下步骤创建诊断设置，以便将 IoT 中心的设备流日志发送到 Azure Monitor 日志：
 
-1. 在 Azure 门户中，导航到 IoT 中心。 在左窗格中的 " **监视** " 下，选择 " **诊断设置** "。 然后选择 " **添加诊断设置** "。
+1. 在 Azure 门户中，导航到 IoT 中心。 在左窗格中的 " **监视**" 下，选择 " **诊断设置**"。 然后选择“添加诊断设置”。
 
-2. 提供诊断设置的名称，并从日志列表中选择 " **DeviceStreams** "。 然后选择 " **发送到 Log Analytics** "。 你将指导你选择现有 Log Analytics 工作区或创建一个新工作区。
+2. 提供诊断设置的名称，并从日志列表中选择 " **DeviceStreams** "。 然后选择 " **发送到 Log Analytics**"。 你将指导你选择现有 Log Analytics 工作区或创建一个新工作区。
 
-    :::image type="content" source="media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png" alt-text="启用设备流日志&quot;:::
+    :::image type="content" source="media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png" alt-text="启用设备流日志":::
 
-3. 创建诊断设置以将设备流日志发送到 Log Analytics 工作区后，可以通过在 Azure 门户的 IoT 中心的左窗格 **中选择 &quot;监视&quot; 下** 的 " **监视** "，来访问日志。 设备流日志会显示在 `AzureDiagnostics` 表中，并具有 `Category=DeviceStreams` 。 请注意，可能需要几分钟时间后，日志才会出现在表中。
+3. 创建诊断设置以将设备流日志发送到 Log Analytics 工作区后，可以通过在 Azure 门户的 IoT 中心的左窗格 **中选择 "监视" 下** 的 " **监视** "，来访问日志。 设备流日志会显示在 `AzureDiagnostics` 表中，并具有 `Category=DeviceStreams` 。 请注意，可能需要几分钟时间后，日志才会出现在表中。
 
    如下所示，日志中还提供目标设备的标识和操作的结果。
 
@@ -161,7 +160,7 @@ IoT 中心页上提供两个[快速入门示例](./index.yml)。 这些示例演
 
 * *echo* 示例演示如何以编程方式使用设备流（通过直接调用 SDK API）。
 
-*  本地代理示例演示如何通过设备流以隧道方式连接现成的客户端/服务器应用程序流（例如 SSH、RDP 或 Web）。
+* 本地代理示例演示如何通过设备流以隧道方式连接现成的客户端/服务器应用程序流（例如 SSH、RDP 或 Web）。
 
 这些示例在下面进行更详细的介绍。
 
@@ -183,7 +182,7 @@ IoT 中心页上提供两个[快速入门示例](./index.yml)。 这些示例演
 
 本部分介绍如何使用设备流，以便用户使用 SSH 通过设备流来连接到设备（RDP 或其他客户端/服务器应用程序的情况类似，方法是使用协议的相应端口）。
 
-该设置利用下图所示的两个 *本地代理* 程序，即 *设备本地代理* 和 *服务本地代理* 。 本地代理程序负责使用 IoT 中心执行[设备流启动握手](#device-stream-creation-flow)，并使用常规客户端/服务器套接字与 SSH 客户端和 SSH 守护进程交互。
+该设置利用下图所示的两个 *本地代理* 程序，即 *设备本地代理* 和 *服务本地代理*。 本地代理程序负责使用 IoT 中心执行[设备流启动握手](#device-stream-creation-flow)，并使用常规客户端/服务器套接字与 SSH 客户端和 SSH 守护进程交互。
 
 ![“SSH/RDP 的设备流代理设置”](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 

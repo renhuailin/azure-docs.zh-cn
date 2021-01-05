@@ -4,12 +4,12 @@ description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: d157dd6b3347c8fbfd8712fa20d52cedb425f47f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 02ff1581bafe62a092be87d16df51c7ca8c020b4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751472"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830932"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -81,9 +81,9 @@ AKS 具有 HA 控制平面，可以根据内核数进行垂直缩放，以确保
 
 这些超时可能与被阻止节点之间的内部流量有关。 验证此流量是否未被阻止，例如通过群集节点子网上的[网络安全组](concepts-security.md#azure-network-security-groups)来这样做。
 
-## <a name="im-trying-to-enable-kubernetes-role-based-access-control-kubernetes-rbac-on-an-existing-cluster-how-can-i-do-that"></a>我尝试启用现有群集上的 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 。 该如何操作？
+## <a name="im-trying-to-enable-kubernetes-role-based-access-control-kubernetes-rbac-on-an-existing-cluster-how-can-i-do-that"></a>我想尝试在现有群集上启用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC)。 该如何操作？
 
-此时，启用 Kubernetes 基于角色的访问控制 (不支持现有群集上的 Kubernetes RBAC) ，因此在创建新群集时必须设置此项。 默认情况下，在使用 CLI、门户或 API 版本时，将默认启用 Kubernetes RBAC `2020-03-01` 。
+目前不支持在现有群集上启用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC)，必须在创建新群集时对其进行设置。 在使用 CLI、门户或 `2020-03-01` 之后的 API 版本时，默认会启用 Kubernetes RBAC。
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>无法使用 Kubectl 日志获取日志或无法连接到 API 服务器。 我收到“来自服务器的错误：拨号后端时出错: 拨打 tcp...”。 我该怎么办？
 
@@ -179,7 +179,7 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 
 若要解决此问题，请确保 `--api-server-authorized-ip-ranges` 包含要使用的自动化/开发/工具系统) 的 ip (s) 或 ip 范围 (。 请参阅[使用经授权的 IP 地址范围保护对 API 服务器的访问](api-server-authorized-ip-ranges.md)中的“如何查找我的 IP”部分。
 
-## <a name="im-unable-to-view-resources-in-kubernetes-resource-viewer-in-azure-portal-for-my-cluster-configured-with-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>我无法在 Azure 门户中查看群集的资源查看器中配置有 API 服务器授权 IP 范围的资源。 如何修复此问题？
+## <a name="im-unable-to-view-resources-in-kubernetes-resource-viewer-in-azure-portal-for-my-cluster-configured-with-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>我无法在 Azure 门户的 Kubernetes 资源查看器中查看配置了 API 服务器授权 IP 范围的群集的资源。 如何修复此问题？
 
 [Kubernetes 资源查看器](kubernetes-portal.md)需要 `--api-server-authorized-ip-ranges` 包含对要从中浏览门户) 的本地客户端计算机或 IP 地址范围 (的访问。 请参阅[使用经授权的 IP 地址范围保护对 API 服务器的访问](api-server-authorized-ip-ranges.md)中的“如何查找我的 IP”部分。
 
@@ -205,11 +205,11 @@ AKS 工程团队的建议是确保至少运行1.18 版，其中包含很多改�
 - 有第三方应用程序发出 GET 请求 (例如，监视应用程序等) 。 建议降低这些调用的频率。
 - 使用虚拟机规模集时有许多 AKS 群集/节点池。 尝试将多个分类拆分为不同的订阅，尤其是在预期它们处于非常活跃 (例如，活动群集自动缩放程序) 或具有多个客户端 (例如，rancher、terraform) ，等等。
 
-## <a name="my-clusters-provisioning-status-changed-from-ready-to-failed-with-or-without-me-performing-an-operation-what-should-i-do"></a>在执行操作时，群集的预配状态从 "已成功" 更改为 "已失败"。 应采取何种操作？
+## <a name="my-clusters-provisioning-status-changed-from-ready-to-failed-with-or-without-me-performing-an-operation-what-should-i-do"></a>无论我是否执行操作，群集的预配状态都会从“就绪”变为“失败”。 应采取何种操作？
 
-如果群集的预配状态从 "已 *就绪* " 更改为 "已 *失败* " 或 "不执行任何操作"，但群集上的应用程序将继续运行，则该服务可能会自动解决此问题，并且你的应用程序不会受到影响。
+如果无论你是否执行操作，群集的预配状态都从“就绪”变为“失败”，而群集上的应用程序仍在继续运行，则此问题可以由服务自动解决，应用程序应该不会受到影响。
 
-如果群集的预配状态为 " *失败* " 或者群集上的应用程序停止工作，请 [提交支持请求](https://azure.microsoft.com/support/options/#submit)。
+如果群集的预配状态仍为“失败”或者群集上的应用程序停止工作，请[提交支持请求](https://azure.microsoft.com/support/options/#submit)。
 
 ## <a name="my-watch-is-stale-or-azure-ad-pod-identity-nmi-is-returning-status-500"></a>我的手表已过时或 Azure AD Pod 标识 NMI 返回状态500
 
@@ -439,7 +439,7 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>为什么使用带有 kubernetes.io 前缀的节点标签时升级到 Kubernetes 1.16 失败
 
-从 Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) [开始，kubelet 只能将已定义的带有 kubernetes.io 前缀的标签子集](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal)应用于节点。 未经许可，AKS 无法代表你删除活动标签，因为这可能导致受影响的工作负载发生故障。
+从 Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) [开始，kubelet 只能将已定义的带有 kubernetes.io 前缀的标签子集](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/)应用于节点。 未经许可，AKS 无法代表你删除活动标签，因为这可能导致受影响的工作负载发生故障。
 
 因此，若要缓解此问题，可以：
 

@@ -3,12 +3,12 @@ title: 概念-私有云和群集
 description: 了解 Azure VMware 解决方案软件定义的数据中心和 vSphere 群集的主要功能。
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7f8508abed3446c58a683454bc49ec7dbb49d051
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967374"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825075"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware 解决方案私有云和群集概念
 
@@ -48,18 +48,8 @@ Azure VMware 解决方案私有云群集使用超聚合、裸机基础结构主�
 
 ## <a name="vmware-software-versions"></a>VMware 软件版本
 
-Azure VMware 解决方案私有云群集中使用的 VMware 软件的当前软件版本包括：
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
 
-| 软件              |    版本   |
-| :---                  |     :---:    |
-| VCSA/vSphere/ESXi |    6.7 U3    | 
-| ESXi                  |    6.7 U3    | 
-| vSAN                  |    6.7 U3    |
-| NSX-T                 |      2.5     |
-
-对于私有云中的任何新群集，软件版本均与当前运行的版本匹配。 对于订阅中的任何新私有云，将安装软件堆栈的最新版本。
-
-你可以找到 [私有云更新和升级](concepts-upgrades.md)中所述的 Azure VMware 解决方案平台软件的常规升级策略和过程。
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>主机维护和生命周期管理
 

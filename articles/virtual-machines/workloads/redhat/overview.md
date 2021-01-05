@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 3e4a770a33f5cdb3c3b2de09cbcb8431b2fc3fbb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 09612ff3d86c669801f9e824d367a2b9a5bb10ac
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968649"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830643"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 上的 Red Hat 工作负荷
 
@@ -36,7 +36,7 @@ Azure 提供了各种 RHEL 即用即付映像。 这些映像适用于 RHEL，�
 ### <a name="red-hat-gold-images"></a>Red Hat 黄金映像
 
 Azure 还提供 Red Hat 黄金映像 (`rhel-byos`)。 对于有现有的 Red Hat 订阅并想要在 Azure 中使用这些订阅的客户，这些映像可能会很有用。 必须先为现有 Red Hat 订阅启用 Red Hat 云访问，然后才能在 Azure 中使用它们。 当 Red Hat 订阅启用了云访问并且满足资格要求时，将自动授予对这些映像的访问权限。 使用这些映像，客户可以避免由于使用即用即付映像而导致的双重计费。
-* 了解如何[使用 Azure 为 Red Hat 订阅启用云访问](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs)。
+* 了解如何[使用 Azure 为 Red Hat 订阅启用云访问](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access)。
 * 了解如何[在 Azure 门户、Azure CLI 或 PowerShell cmdlet 中查找 Red Hat 黄金映像](./byos.md)。
 
 > [!NOTE]

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive, devx-track-azurecli
+ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 66b14e435b777595e23fcf5a98d4820f36d21a1a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0722119b35ecebf3ed1e7a377707de02a6c127bf
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742038"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825200"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
 
@@ -125,7 +125,7 @@ ms.locfileid: "92742038"
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|同上。|
     |空值|`consumer.max.poll.records=10`|添加到文件末尾。 此项更改会将接收器连接器限制为每次处理 10 条记录，防止该连接器发生超时。 有关详细信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。|
 
-1. 要保存文件，请使用 __Ctrl + X__ 、 __Y__ ，并按 __Enter__ 。
+1. 要保存文件，请使用 __Ctrl + X__、__Y__，并按 __Enter__。
 
 1. 若要创建连接器使用的主题，请使用以下命令：
 
@@ -176,7 +176,7 @@ ms.locfileid: "92742038"
        "Partitions": 2
        ```
 
-2. 获取 __共享访问策略__ 和 __密钥__ 。 本示例使用 __服务__ 密钥。 若要获取此信息，请使用以下方法之一：
+2. 获取 __共享访问策略__ 和 __密钥__。 本示例使用 __服务__ 密钥。 若要获取此信息，请使用以下方法之一：
 
     * __在 [Azure 门户](https://portal.azure.com/)中__ 使用以下步骤：
 
@@ -233,7 +233,7 @@ ms.locfileid: "92742038"
 
     有关示例配置，请参阅 [Azure IoT 中心的 Kafka 连接源连接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)。
 
-1. 若要保存更改，请依次按 __Ctrl + X__ 、 __Y__ 、 __Enter__ 。
+1. 若要保存更改，请依次按 __Ctrl + X__、__Y__、__Enter__。
 
 有关配置连接器源的详细信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)。
 
@@ -260,9 +260,9 @@ ms.locfileid: "92742038"
     |`topics=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 `iotout`。 写入 `iotout` 主题的消息将转发到 IoT 中心。|
     |`IotHub.ConnectionString=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 `service` 策略的连接字符串。|
 
-    有关示例配置，请参阅适用 [于 Azure IoT 中心的 Kafka 连接接收器连接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
+    有关示例配置，请参阅[用于 Azure IoT 中心的 Kafka Connect 接收器连接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
 
-1. 若要保存更改，请依次按 __Ctrl + X__ 、 __Y__ 、 __Enter__ 。
+1. 若要保存更改，请依次按 __Ctrl + X__、__Y__、__Enter__。
 
 有关配置连接器接收器的详细信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
 

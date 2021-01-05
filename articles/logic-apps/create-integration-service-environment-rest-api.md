@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/05/2020
-ms.openlocfilehash: 783431c4888a68e24cf3d2603c541c4797ea65d8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 12/29/2020
+ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741093"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827472"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>使用逻辑应用 REST API 创建集成服务环境 (ISE)
 
@@ -55,7 +55,7 @@ ms.locfileid: "96741093"
 > 删除虚拟网络时，请确保没有资源仍处于连接状态。 
 > 请参阅[删除虚拟网络](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)。
 
-## <a name="request-header"></a>请求头
+## <a name="request-header"></a>请求标头
 
 在请求标头中，包括以下属性：
 
@@ -69,9 +69,7 @@ ms.locfileid: "96741093"
 
 在请求正文中，提供用于创建 ISE 的资源定义，其中包括要在 ISE 上启用的其他功能的信息，例如：
 
-* 如本文后面所述，若要创建允许使用在该位置安装的自签名证书的 ISE，请在 `TrustedRoot` `certificates` ise 定义的部分中包括该对象 `properties` 。
-
-  若要对现有 ISE 启用此功能，可以仅为对象发送修补请求 `certificates` 。 有关使用自签名证书的详细信息，请参阅 [对其他服务和系统的出站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)。
+* 如本文后面所述，若要创建允许使用自签名证书和由安装在该位置的企业证书颁发机构颁发的证书的 ISE，请在 `TrustedRoot` `certificates` ise 定义的部分中包括该对象 `properties` 。
 
 * 若要创建使用系统分配的托管标识或用户分配的托管标识的 ISE，请在 `identity` ise 定义中包含具有托管标识类型和其他所需信息的对象，如本文后面所述。
 
@@ -123,7 +121,7 @@ ms.locfileid: "96741093"
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certificate support
+      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -183,6 +181,45 @@ ms.locfileid: "96741093"
             "publicCertificate": "LS0tLS1CRUdJTiBDRV...",
             "kind": "TrustedRoot"
          }
+      }
+   }
+}
+```
+## <a name="add-custom-root-certificates"></a>添加自定义根证书
+
+通常使用 ISE 连接到虚拟网络或本地上的自定义服务。 这些自定义服务通常由自定义根证书颁发机构颁发的证书（例如企业证书颁发机构或自签名证书）所保护。 有关使用自签名证书的详细信息，请参阅 [对其他服务和系统的出站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)。 为了使 ISE 通过传输层安全性 (TLS) 成功连接到这些服务，ISE 需要访问这些根证书。 若要使用自定义受信任的根证书更新 ISE，请发出以下 HTTPS `PATCH` 请求：
+
+`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+
+在执行此操作之前，请查看以下注意事项：
+
+* 请确保上载根证书 *和* 所有中间证书。 最大证书数为20。
+
+* 上传根证书是一项替换操作，其中最新的上传将覆盖以前的上传。 例如，如果发送一个请求，该请求上传一个证书，然后再发送另一个请求来上传另一个证书，则 ISE 只使用第二个证书。 如果需要使用这两个证书，请将它们一起添加到同一个请求中。  
+
+* 上传根证书是一种可能需要一些时间的异步操作。 若要检查状态或结果，可以 `GET` 使用同一 URI 发送请求。 `provisioningState` `InProgress` 当上传操作仍在运行时，响应消息具有返回值的字段。 当 `provisioningState` value 为时 `Succeeded` ，上传操作完成。
+
+#### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>用于添加自定义根证书的请求正文语法
+
+下面是请求正文语法，描述在添加根证书时要使用的属性：
+
+```json
+{
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "name": "{ISE-name}",
+   "type": "Microsoft.Logic/integrationServiceEnvironments",
+   "location": "{Azure-region}",
+   "properties": {
+      "certificates": {
+         "testCertificate1": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         },
+         "testCertificate2": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         }
+      }
    }
 }
 ```

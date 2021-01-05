@@ -5,13 +5,13 @@ description: 了解如何使用 Azure 门户快速创建 Kubernetes 群集、部
 services: container-service
 ms.topic: quickstart
 ms.date: 10/06/2020
-ms.custom: mvc, seo-javascript-october2019, devx-track-azurecli
-ms.openlocfilehash: 606de7c07f2760ca678563ccf1900fc1bb915c1a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: mvc, seo-javascript-october2019
+ms.openlocfilehash: f4cbfb78ec0900e757683fff35403dfcbd38b391
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003712"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824676"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -31,7 +31,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 若要创建 AKS 群集，请完成以下步骤：
 
-1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。
+1. 在 Azure 门户菜单上或在“主页”中，选择“创建资源”。
 
 2. 选择“容器” >  “Kubernetes 服务”。
 

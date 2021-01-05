@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7e8e2f3f9dd49693faa26eaaab309fcad58f6f9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9721685fc3ccd2c1c80b55e9118d6d347cc97a9c
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076151"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830694"
 ---
 # <a name="get-service-access-tokens"></a>获取服务访问令牌
 
@@ -19,13 +19,13 @@ ms.locfileid: "89076151"
 
 本文介绍如何创建此类访问令牌。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果还没有[ARR 帐户](create-an-account.md)，请创建一个。
 
 ## <a name="token-service-rest-api"></a>令牌服务 REST API
 
-为创建访问令牌， *安全令牌服务* 提供单个 REST API。 ARR STS 服务的 URL 是 https： \/ /sts.mixedreality.azure.com。
+为创建访问令牌， *安全令牌服务* 提供单个 REST API。 STS 服务的 URL 依赖于远程呈现帐户的帐户域。 其形式为 https://sts 。 [帐户域]，例如 `https://sts.southcentralus.mixedreality.azure.com`
 
 ### <a name="get-token-request"></a>"获取令牌" 请求
 
@@ -45,7 +45,7 @@ ms.locfileid: "89076151"
 |-----------|:-----------|:-----------|
 | 200 | AccessToken：字符串 | 成功 |
 
-| Header | 目的 |
+| 标头 | 目的 |
 |--------|:------|
 | MS-CV | 此值可用于跟踪服务中的调用 |
 
@@ -56,9 +56,10 @@ ms.locfileid: "89076151"
 ```PowerShell
 $accountId = "<account_id_from_portal>"
 $accountKey = "<account_key_from_portal>"
+$accountDomain = "<account_domain_from_portal>
 
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
-$webResponse = Invoke-WebRequest -Uri "https://sts.mixedreality.azure.com/accounts/$accountId/token" -Method Get -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
+$webResponse = Invoke-WebRequest -Uri "https://sts.$accountDomain/accounts/$accountId/token" -Method Get -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
 $response = ConvertFrom-Json -InputObject $webResponse.Content
 
 Write-Output "Token: $($response.AccessToken)"

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1627db2f1f19c393d4f40892ca65141f26424ac9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c9f9cc53c62ed19fa5fbd1e78c840a8a34b6fb84
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656931"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824644"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure 数字孪生 API 和 SDK
 
@@ -81,15 +81,9 @@ Azure 数字孪生 .NET (c # ) SDK 是用于 .NET 的 Azure SDK 的一部分。 
 > [!NOTE]
 > 有关 SDK 设计的详细信息，请参阅 [Azure sdk 的常规设计原则](https://azure.github.io/azure-sdk/general_introduction.html) 和特定 [.net 设计准则](https://azure.github.io/azure-sdk/dotnet_introduction.html)。
 
-若要使用 SDK，请在项目中包括 NuGet 包 **DigitalTwins** 。 还需要最新版本的 **Azure. Identity** 包。
-
-* 在 Visual Studio 中，可以使用 NuGet 包管理器添加包， (通过 *> Nuget 包管理器 > 管理解决方案) 的 Nuget 包* 。 
-* 使用 .NET 命令行工具，你可以运行：
-
-    ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity
-    ```
+若要使用 SDK，请在项目中包括 NuGet 包 **DigitalTwins** 。 还需要最新版本的 **Azure. Identity** 包。 在 Visual Studio 中，你可以使用 NuGet 包管理器添加这些包， (通过 *> Nuget 包管理器的工具访问 > 管理解决方案) 的 NuGet 包* 。 或者，你可以将 .NET 命令行工具与下面的 NuGet 包链接中的命令一起使用，以将它们添加到你的项目：
+* [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 这是用于[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的包。 
+* [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). 该库提供可帮助进行 Azure 身份验证的工具。
 
 有关如何在实践中使用 Api 的详细演练，请参阅 [*教程：编写客户端应用代码*](tutorial-code.md)。 
 

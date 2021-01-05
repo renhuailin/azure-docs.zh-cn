@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 67b2dacb9debae1990d51be8ca47c76b7342cf67
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: f464664737ab56b43ca0c0a159837487494a1eaa
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660111"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826045"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建和使用软件环境
 
@@ -114,7 +114,7 @@ myenv.docker.enabled = True
 
 #### <a name="use-a-prebuilt-docker-image"></a>使用预生成的 Docker 映像
 
-默认情况下，服务会自动使用一个基于 Ubuntu Linux 的[基础映像](https://github.com/Azure/AzureML-Containers)，具体来说就是 `azureml.core.environment.DEFAULT_CPU_IMAGE` 定义的映像。 然后，它将安装由提供的 Azure ML 环境定义的任何指定的 Python 包。 容器 [存储库](https://github.com/Azure/AzureML-Containers)中提供了其他 AZURE ML CPU 和 GPU 基本映像。 还可以使用[自定义 Docker 基础映像](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image)。
+默认情况下，服务会自动使用一个基于 Ubuntu Linux 的[基础映像](https://github.com/Azure/AzureML-Containers)，具体来说就是 `azureml.core.environment.DEFAULT_CPU_IMAGE` 定义的映像。 然后，它将安装由提供的 Azure ML 环境定义的任何指定的 Python 包。 其他 Azure ML CPU 和 GPU 基础映像可在容器[存储库](https://github.com/Azure/AzureML-Containers)中找到。 还可以使用[自定义 Docker 基础映像](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image)。
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults

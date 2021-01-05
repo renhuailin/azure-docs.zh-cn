@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/29/2020
+ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aae822665702300064e82e80d74b5c2256423ea1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1e6aaf1b37073bf93e0aca8237161bf11af3a872
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957276"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827217"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>适用于 SAP 应用程序的最佳网络延迟的 Azure 邻近性放置组
 基于 SAP NetWeaver 或 SAP S/4HANA 体系结构的 SAP 应用程序对于 SAP 应用程序层和 SAP 数据库层之间的网络延迟很敏感。 此敏感度是指在应用程序层中运行的大多数业务逻辑的结果。 因为 SAP 应用程序层运行业务逻辑，所以它将以较高的频率向数据库层发出查询，每秒的速率为上千或数万。 在大多数情况下，这些查询的性质很简单。 它们通常可以在500微秒内或更短的时间内在数据库层上运行。
@@ -42,6 +42,8 @@ ms.locfileid: "94957276"
 > - 仅在必要时
 > - 仅限单个 SAP 系统的粒度，不适用于整个系统布局或完整的 SAP 环境
 > - 通过一种方法，可将不同的 VM 类型和邻近位置组中的 Vm 数量保存到最小
+
+假设你通过指定可用性区域并选择相同的可用性区域来部署 Vm，则这些 Vm 之间的网络延迟应该足以操作 SAP NetWeaver 和 S/4HANA 系统，并满足性能和吞吐量。 这一假设是独立于一个数据中心还是多个数据中心来构建某个特定区域，这种假设。 在区域性部署中使用邻近位置组的唯一原因是要将 Azure 可用性集部署的 Vm 与区域性部署的 Vm 一起分配。
 
 
 ## <a name="what-are-proximity-placement-groups"></a>什么是邻近性放置组？ 

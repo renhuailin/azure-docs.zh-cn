@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a657f43ef2d889cad1608d34e9235b1d5e7cb576
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 85534d1f64b273e42a2ea063e67286ee7bb4a90a
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894144"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827149"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>语音服务容器常见问题 (常见问题) 
 
@@ -169,7 +169,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**答案2：** 需要在请求中提供正确的语音名称，这区分大小写。 请参阅完整的服务名称映射。 你必须使用 `en-US-JessaRUS` ，因为 `en-US-JessaNeural` 在文本到语音转换的容器版本中目前不可用。
+**答案2：** 需要在请求中提供正确的语音名称，这区分大小写。 请参阅完整的服务名称映射。
 
 **错误3：**
 
@@ -290,7 +290,7 @@ WebSocket
 
 你是否能帮助填充以下测试指标，包括要测试的函数，以及如何测试 SDK 和 REST Api？ 特别是 "交互式" 和 "对话" 中的差异，我在现有的文档/示例中看不到这些差异。
 
-| 终结点                                                | 功能测试                                                   | SDK | REST API |
+| 终结点                                                | 功能测试                                                   | SDK 中 IsInRole 中的声明 | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
 | `/speech/synthesize/cognitiveservices/v1`               | 文本 (文本到语音转换的合成)                                   |     | 是      |
 | `/speech/recognition/dictation/cognitiveservices/v1`    | 认知服务本地听写 v1 websocket 终结点        | 是 | 否       |
@@ -309,6 +309,8 @@ WebSocket
 对于你的代码，请将终结点设置为 `host:port` /speech/recognition/interactive/cognitiveservices/v1
 
 有关各种模式，请参阅语音模式-请参阅以下内容：
+
+## <a name="speech-modes---interactive-conversation-dictation"></a>语音模式-交互、对话、听写
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
@@ -367,7 +369,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 Doc 指出要公开其他端口，但 LUIS 容器仍在侦听端口5000？
 
-**答案：** 尝试 `-p <outside_unique_port>:5000` 。 例如 `-p 5001:5000`。
+**答案：** 尝试 `-p <outside_unique_port>:5000` 。 例如，`-p 5001:5000`。
 
 
 <br>
@@ -559,6 +561,8 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 
 **答案：** 语音容器上有三个终结点用于不同的用法，它们被定义为语音模式-请参阅以下内容：
 
+## <a name="speech-modes"></a>语音模式
+
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
 它们用于不同的目的，并且使用方式不同。
@@ -571,7 +575,7 @@ Python [示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/b
 在 c # 中，若要启用听写，请调用 `SpeechConfig.EnableDictation()` 函数。
 
 ### <a name="fromendpoint-apis"></a>`FromEndpoint` Api
-| Language | API 详细信息 |
+| 语言 | API 详细信息 |
 |----------|:------------|
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint?view=azure-dotnet" target="_blank">`SpeechConfig.FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
@@ -592,7 +596,7 @@ Python [示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/b
 
 ### <a name="fromhost-apis"></a>`FromHost` Api
 
-| Language | API 详细信息 |
+| 语言 | API 详细信息 |
 |--|:-|
 | C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet" target="_blank">`SpeechConfig.FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromhost" target="_blank">`SpeechConfig::FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |

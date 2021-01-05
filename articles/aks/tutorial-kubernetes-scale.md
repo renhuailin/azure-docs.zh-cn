@@ -4,13 +4,13 @@ description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何缩放 Kubernet
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e700934a965f836456458cb33dc46125bef4ab72
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: mvc
+ms.openlocfilehash: 7f16ba3ffe6b6f96f17df540eb67e9cec0bfea8c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746999"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825679"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
@@ -45,7 +45,7 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-若要手动更改 *azure-vote-front* 部署中的 Pod 数，请使用 [kubectl scale][kubectl-scale] 命令。 以下示例将前端 Pod 数增加到 *5* ：
+若要手动更改 *azure-vote-front* 部署中的 Pod 数，请使用 [kubectl scale][kubectl-scale] 命令。 以下示例将前端 Pod 数增加到 *5*：
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
@@ -74,7 +74,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query kuberne
 ```
 
 > [!NOTE]
-> 如果 AKS 群集小于 *1.10* ，则不会自动安装指标服务器。 指标服务器安装清单在指标服务器发行版中以 `components.yaml` 资产的形式提供，这意味着你可以通过 URL 安装这些清单。 若要详细了解这些 YAML 定义，请参阅自述文件的[部署][metrics-server-github]部分。
+> 如果 AKS 群集小于 *1.10*，则不会自动安装指标服务器。 指标服务器安装清单在指标服务器发行版中以 `components.yaml` 资产的形式提供，这意味着你可以通过 URL 安装这些清单。 若要详细了解这些 YAML 定义，请参阅自述文件的[部署][metrics-server-github]部分。
 > 
 > 示例安装：
 > ```console
@@ -91,7 +91,7 @@ resources:
      cpu: 500m
 ```
 
-下面的示例使用 [kubectl autoscale][kubectl-autoscale] 命令自动缩放 *azure-vote-front* 部署中的 Pod 数。 如果所有 Pod 的平均 CPU 利用率超过其请求使用率的 50%，则自动缩放程序会将 Pod 增加到最多 *10* 个实例。 为部署定义的最小实例数为 *3* ：
+下面的示例使用 [kubectl autoscale][kubectl-autoscale] 命令自动缩放 *azure-vote-front* 部署中的 Pod 数。 如果所有 Pod 的平均 CPU 利用率超过其请求使用率的 50%，则自动缩放程序会将 Pod 增加到最多 *10* 个实例。 为部署定义的最小实例数为 *3*：
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10

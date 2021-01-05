@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 10/19/2020
-ms.openlocfilehash: ead367568762d4b76de7164feb56b7a31cd53e0d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e28942a77a1d695a17f3231901f337695e602c64
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129110"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825559"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>如何为 VM 映像生成 SAS URI
 
@@ -34,12 +34,12 @@ ms.locfileid: "93129110"
 
 ### <a name="using-tool-1-azure-storage-explorer"></a>使用工具1： Azure 存储资源管理器
 
-1. 中转到你的 **存储帐户** 。
+1. 中转到你的 **存储帐户**。
 1. 打开存储资源管理器。
 
     :::image type="content" source="media/create-vm/storge-account-explorer.png" alt-text="存储帐户 &quot;窗口。":::
 
-3. 在 **容器** 中，右键单击 VHD 文件，然后选择 " **获取共享访问签名** "。
+3. 在 **容器** 中，右键单击 VHD 文件，然后选择 " **获取共享访问签名**"。
 4. 在 " **共享访问签名** " 对话框中，填写以下字段：
 
     1. 开始时间 – VHD 访问权限的开始日期。 请提供当前日期的前一天的日期。
@@ -62,7 +62,7 @@ ms.locfileid: "93129110"
 1. 下载并安装 [MICROSOFT AZURE CL](/cli/azure/install-azure-cli)I。 版本适用于 Windows、macOS，以及 Linux 的各种分发版。
 2. 创建一个 PowerShell 文件（扩展名为 .ps1），在其中复制以下代码，然后在本地保存该文件。
 
-    ```JSON
+    ```azurecli-interactive
     az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net’ --name <vhd-name> --permissions rl --start ‘<start-date>’ --expiry ‘<expiry-date>’
     ```
 
@@ -70,13 +70,14 @@ ms.locfileid: "93129110"
 
     - 帐户-名称–你的 Azure 存储帐户名称。
     - 帐户密钥–你的 Azure 存储帐户密钥。
-    - vhd-名称–你的 VHD 名称。
     - 开始日期– VHD 访问权限的开始日期。 请提供当前日期的前一天的日期。
     - 过期-日期-用于 VHD 访问的权限到期日期。 请提供自当前日期开始算起的至少三周后的日期。
 
     下面是编写) 时 (的正确参数值的示例：
 
-    `az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net’ --name vhds -- permissions rl --start ‘2020-04-01T00:00:00Z’ --expiry ‘2021-04-01T00:00:00Z’`
+    ```azurecli-interactive
+    az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net’ --name vhds -- permissions rl --start ‘2020-04-01T00:00:00Z’ --expiry ‘2021-04-01T00:00:00Z’
+    ```
 
 1. 保存更改。
 2. 使用以下方法之一，通过管理特权运行此脚本，以创建容器级访问权限的 SAS 连接字符串：
@@ -88,7 +89,7 @@ ms.locfileid: "93129110"
 
 6. 复制 SAS 连接字符串，并将其保存到位于安全位置的某个文本文件。 编辑此字符串，以添加 VHD 位置信息来创建最终 SAS URI。
 7. 在 Azure 门户中，转到包含与新 URI 关联的 VHD 的 Blob 存储。
-8. 复制 thebBlob 服务终结点的 URL：
+8. 复制 blob 服务终结点的 URL：
 
     ![复制 blob 服务终结点的 URL。](media/vm/create-sas-uri-blob-endpoint.png)
 

@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: 6c7536e38a0d2cf7d4e906947aff645c74e459c0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: addc18a0ebf9e49d3474d3f40cb1e2a6e0f0b272
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027427"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826571"
 ---
 ## <a name="generalize-the-image"></a>通用化映像
 
@@ -40,7 +40,7 @@ Windows OS 磁盘是利用 [sysprep](/windows-hardware/manufacture/desktop/syspr
 
 ### <a name="take-a-snapshot-of-the-vm-disk"></a>拍摄 VM 磁盘的快照
 
-1. 登录 [Azure 门户](https://ms.portal.azure.com/)。
+1. 登录到 [Azure 门户](https://ms.portal.azure.com/)。
 2. 从左上角选择 " **创建资源**"，搜索并选择 " **快照**"。
 3. 在 "快照" 边栏选项卡中，选择 "  **创建**"。
 4. 输入快照的 **名称** 。
@@ -53,31 +53,31 @@ Windows OS 磁盘是利用 [sysprep](/windows-hardware/manufacture/desktop/syspr
 
 使用以下脚本将快照导出到存储帐户中的 VHD。
 
-```JSON
+```azurecli-interactive
 #Provide the subscription Id where the snapshot is created
-subscriptionId=yourSubscriptionId
+$subscriptionId=yourSubscriptionId
 
 #Provide the name of your resource group where the snapshot is created
-resourceGroupName=myResourceGroupName
+$resourceGroupName=myResourceGroupName
 
 #Provide the snapshot name
-snapshotName=mySnapshot
+$snapshotName=mySnapshot
 
 #Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
 #Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
-sasExpiryDuration=3600
+$sasExpiryDuration=3600
 
 #Provide storage account name where you want to copy the underlying VHD file. 
-storageAccountName=mystorageaccountname
+$storageAccountName=mystorageaccountname
 
 #Name of the storage container where the downloaded VHD will be stored.
-storageContainerName=mystoragecontainername
+$storageContainerName=mystoragecontainername
 
 #Provide the key of the storage account where you want to copy the VHD 
-storageAccountKey=mystorageaccountkey
+$storageAccountKey=mystorageaccountkey
 
 #Give a name to the destination VHD file to which the VHD will be copied.
-destinationVHDFileName=myvhdfilename.vhd
+$destinationVHDFileName=myvhdfilename.vhd
 
 az account set --subscription $subscriptionId
 
@@ -90,7 +90,7 @@ az storage blob copy start --destination-blob $destinationVHDFileName --destinat
 
 此脚本使用以下命令生成快照的 SAS URI，并使用 SAS URI 将基础 VHD 复制到存储帐户。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 | --- | --- |
 | az disk grant-access | 生成只读 SAS，使用该 SAS 可以将基础 VHD 文件复制到存储帐户或将其下载到本地
 | az storage blob copy start | 以异步方式将 blob 从一个存储帐户复制到另一个存储帐户。 使用 `az storage blob show` 检查新 blob 的状态。 |

@@ -10,13 +10,13 @@ ms.author: aashishb
 author: aashishb
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 872958f87e7d75427d5939aed73314920cfaf3ea
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.custom: how-to
+ms.openlocfilehash: 86cd5a5cbbb17dc3d3e4d56e4267be2718f6081d
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631085"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830864"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 保护通过 Azure 机器学习部署的 Web 服务
 
@@ -73,14 +73,17 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证。 有关�
 
 ## <a name="enable-tls-and-deploy"></a><a id="enable"></a> 启用 TLS 并进行部署
 
-若要部署（或重新部署）启用了 TLS 的服务，请在适当的位置将 ssl_enabled 参数设置为“True”。 将 ssl_certificate 参数设置为证书文件的值 。 将 ssl_key 设置为密钥文件的值 。
+**对于 AKS 部署**，可以在 AML 工作区中 [创建或附加 AKS 群集](how-to-create-attach-kubernetes.md) 时启用 TLS 终止。 在 AKS 模型部署时，你可以使用部署配置对象禁用 TLS 终止，否则，默认情况下，所有 AKS 模型部署都将在 AKS 群集创建或附加时间启用 TLS 终止。
+
+对于 ACI 部署，可以通过部署配置对象在模型部署时启用 TLS 终止。
+
 
 ### <a name="deploy-on-azure-kubernetes-service"></a>在 Azure Kubernetes Service 上部署
 
   > [!NOTE]
   > 为设计器部署安全的 Web 服务时，此部分中的信息也适用。 如果不熟悉如何使用 Python SDK，请参阅[什么是适用于 Python 的 Azure 机器学习 SDK？](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
 
-**[AksCompute.provisioning_configuration ( # B1](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 和 **[AksCompute.attach_configuration ( # B3](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 返回配置对象，该对象具有 **enable_ssl** 方法，你可以使用 **enable_ssl** 方法启用 TLS。
+在 AML 工作区中 [创建或附加 AKS 群集](how-to-create-attach-kubernetes.md) 时，可以使用 **[AksCompute.provisioning_configuration ( # B1](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 和 **[AksCompute.attach_configuration ( # B3](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 配置对象来启用 TLS 终止。 这两种方法都返回具有 **enable_ssl** 方法的配置对象，您可以使用 **enable_ssl** 方法来启用 TLS。
 
 你可以使用 Microsoft 证书或从 CA 购买的自定义证书来启用 TLS。 
 

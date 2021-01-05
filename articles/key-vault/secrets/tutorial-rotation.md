@@ -10,13 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 0da0a56a64aa9b4500d36da2f6c86fc4c07f4c0f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5e61510965693e123c724d7b40d2fa6071fdd94c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786048"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824801"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>自动轮换使用一组身份验证凭据的资源的机密
 
@@ -24,7 +24,8 @@ ms.locfileid: "92786048"
 
 本教程介绍如何定期自动轮换使用一组身份验证凭据的数据库和服务的机密。 具体而言，本教程将使用 Azure 事件网格通知触发的函数来轮换 Azure Key Vault 中存储的 SQL Server 密码：
 
-![轮换解决方案示意图](../media/rotate-1.png)
+
+:::image type="content" source="../media/rotate-1.png" alt-text="轮换解决方案示意图":::
 
 1. 在机密过期之前的 30 天，Key Vault 会向事件网格发布“即将过期”事件。
 1. 事件网格会检查事件订阅，并使用 HTTP POST 调用已订阅该事件的函数应用终结点。
@@ -42,19 +43,19 @@ ms.locfileid: "92786048"
 
 如果没有现成的 Key Vault 和 SQL Server，可以使用以下部署链接：
 
-[![图像显示标记为“部署到 Azure”的按钮。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
+[![图像显示标记为“部署到 Azure”的按钮。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmain%2FARM-Templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. 在“资源组”下，选择“新建”。 将组命名为“akvrotation”。
 1. 在“Sql 管理员登录名”下，键入 Sql 管理员登录名。 
 1. 选择“查看 + 创建”。
 1. 选择“创建”
 
-    ![创建资源组](../media/rotate-2.png)
+:::image type="content" source="../media/rotate-2.png" alt-text="创建资源组":::
 
 现在，你已拥有一个 Key Vault 和一个 SQL Server 实例。 可以在 Azure CLI 中运行以下命令来验证此设置：
 
 ```azurecli
-az resource list -o table
+az resource list -o table -g akvrotation
 ```
 
 结果类似于以下输出：
@@ -62,9 +63,11 @@ az resource list -o table
 ```console
 Name                     ResourceGroup         Location    Type                               Status
 -----------------------  --------------------  ----------  ---------------------------------  --------
-akvrotation-kv          akvrotation      eastus      Microsoft.KeyVault/vaults
-akvrotation-sql         akvrotation      eastus      Microsoft.Sql/servers
-akvrotation-sql/master  akvrotation      eastus      Microsoft.Sql/servers/databases
+akvrotation-kv           akvrotation      eastus      Microsoft.KeyVault/vaults
+akvrotation-sql          akvrotation      eastus      Microsoft.Sql/servers
+akvrotation-sql/master   akvrotation      eastus      Microsoft.Sql/servers/databases
+akvrotation-sql2         akvrotation      eastus      Microsoft.Sql/servers
+akvrotation-sql2/master  akvrotation      eastus      Microsoft.Sql/servers/databases
 ```
 
 ## <a name="create-and-deploy-sql-server-password-rotation-function"></a>创建和部署 sql server 密码轮替函数
@@ -82,23 +85,24 @@ akvrotation-sql/master  akvrotation      eastus      Microsoft.Sql/servers/datab
 
 1. 选择 Azure 模板部署链接： 
 
-   [![图像显示标记为“部署到 Azure”的按钮。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
+   [![图像显示标记为“部署到 Azure”的按钮。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmain%2FARM-Templates%2FFunction%2Fazuredeploy.json)
 
 1. 在“资源组”列表中选择“akvrotation” 。
 1. 在“Sql Server 名称”中，键入密码需进行轮替的 Sql Server 名称
 1. 在“密钥保管库名称”中，键入密钥保管库名称
 1. 在“函数应用名称”中，键入函数应用名称
 1. 在“机密名称”中，键入将在其中存储密码的机密名称
-1. 在“存储库 Url”中，键入函数代码 GitHub 位置 (https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp.git ) 
+1. 在“存储库 Url”中，键入函数代码 GitHub 位置 (https://github.com/Azure-Samples/KeyVault-Rotation-SQLPassword-Csharp.git ) 
 1. 选择“查看 + 创建”。
 1. 选择“创建”。
 
-   ![选择“查看 + 创建”](../media/rotate-3.png)
+:::image type="content" source="../media/rotate-3.png" alt-text="选择“查看 + 创建”":::
+  
 
 完成上述步骤后，你将获得一个存储帐户、一个服务器场和一个函数应用。 可以在 Azure CLI 中运行以下命令来验证此设置：
 
 ```azurecli
-az resource list -o table
+az resource list -o table -g akvrotation
 ```
 
 结果类似于以下输出：
@@ -187,7 +191,7 @@ public static class SimpleRotationEventHandler
         }
 }
 ```
-可以在 [GitHub](https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp) 上找到完整代码。
+可以在 [GitHub](https://github.com/Azure-Samples/KeyVault-Rotation-SQLPassword-Csharp) 上找到完整代码。
 
 ## <a name="add-the-secret-to-key-vault"></a>将机密添加到 Key Vault
 设置访问策略，以向用户授予“管理机密”权限：
@@ -209,11 +213,11 @@ az keyvault secret set --name sqlPassword --vault-name akvrotation-kv --value "S
 
 若要验证该机密是否已轮换，请转到“Key Vault” > “机密”：
 
-![转到“机密”](../media/rotate-8.png)
+:::image type="content" source="../media/rotate-8.png" alt-text="转到“机密”":::
 
 打开“sqlPassword”机密并查看原始版本和轮换后的版本：
 
-![打开 sqluser 机密](../media/rotate-9.png)
+:::image type="content" source="../media/rotate-9.png" alt-text="转到“机密”":::
 
 ### <a name="create-a-web-app"></a>创建 Web 应用
 
@@ -225,13 +229,13 @@ az keyvault secret set --name sqlPassword --vault-name akvrotation-kv --value "S
 
 1. 选择 Azure 模板部署链接： 
 
-   [![图像显示标记为“部署到 Azure”的按钮。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmaster%2Farm-templates%2FWeb-App%2Fazuredeploy.json)
+   [![图像显示标记为“部署到 Azure”的按钮。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmain%2FARM-Templates%2FWeb-App%2Fazuredeploy.json)
 
 1. 选择“akvrotation”资源组。
 1. 在“Sql Server 名称”中，键入密码需进行轮替的 Sql Server 名称
 1. 在“密钥保管库名称”中，键入密钥保管库名称
 1. 在“机密名称”中，键入将在其中存储密码的机密名称
-1. 在“存储库 Url”中，键入 Web 应用代码 GitHub 位置 (https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp-WebApp.git ) 
+1. 在“存储库 Url”中，键入 Web 应用代码 GitHub 位置 (https://github.com/Azure-Samples/KeyVault-Rotation-SQLPassword-Csharp-WebApp.git ) 
 1. 选择“查看 + 创建”。
 1. 选择“创建”。
 

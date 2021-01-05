@@ -10,13 +10,13 @@ author: gvashishtha
 ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
-ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: b47b8f9d9429f38fb8b5da6d8f9083736f230fcb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: deploy
+ms.openlocfilehash: c5db04a673c1cdc0c0f24e128f340f4ae55fea81
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458271"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825520"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>利用 Triton 推理服务器实现的高性能服务（预览） 
 
@@ -51,15 +51,15 @@ Triton 是针对推理进行了优化的框架。 它提供更好的 GPU 利用�
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="正常的非 triton 部署体系结构图":::
 
-### <a name="setting-the-number-of-workers"></a>设置辅助角色数量
+### <a name="setting-the-number-of-workers"></a>设置辅助角色数
 
-若要在部署中设置辅助角色的数目，请设置环境变量 `WORKER_COUNT` 。 假设你有一个名为的 [环境](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) 对象 `env` ，则可以执行以下操作：
+若要在部署中设置辅助角色数，请设置环境变量 `WORKER_COUNT`。 假设有一个名为 `env` 的 [Environment](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) 对象，可以执行以下操作：
 
 ```{py}
 env.environment_variables["WORKER_COUNT"] = "1"
 ```
 
-这会告知 Azure ML 要增加指定的工作线程数。
+这会告知 Azure ML 启动指定数目的辅助角色。
 
 
 **使用 Triton 的推理配置部署**
@@ -77,9 +77,9 @@ env.environment_variables["WORKER_COUNT"] = "1"
 1. 验证是否可以将请求发送到部署了 Triton 的模型。
 1. 将特定于 Triton 的代码合并到 AML 部署中。
 
-## <a name="verify-that-triton-can-serve-your-model"></a>验证 Triton 能否为你的模型提供服务
+## <a name="verify-that-triton-can-serve-your-model"></a>验证 Triton 是否可以为模型提供服务
 
-首先，请按照以下步骤验证 Triton 推理服务器能否为你的模型提供服务。
+首先，请按照以下步骤验证 Triton 推理服务器是否可以为模型提供服务。
 
 ### <a name="optional-define-a-model-config-file"></a>（可选）定义模型配置文件
 
@@ -191,9 +191,9 @@ az ml model register --model-path='triton' \
 
 <a id="processing"></a>
 
-## <a name="verify-you-can-call-into-your-model"></a>验证是否可以调入模型
+## <a name="verify-you-can-call-into-your-model"></a>验证是否可以调用模型
 
-验证 Triton 能否为你的模型提供服务后，你可以通过定义 _条目脚本_ 来添加预处理代码和后处理代码。 此文件的名称为 `score.py`。 有关入口脚本的详细信息，请参阅[定义入口脚本](how-to-deploy-and-where.md#define-an-entry-script)。
+验证 Triton 能够为模型提供服务之后，可以通过定义入口脚本来添加预处理和后处理代码。 此文件的名称为 `score.py`。 有关入口脚本的详细信息，请参阅[定义入口脚本](how-to-deploy-and-where.md#define-an-entry-script)。
 
 这两个主要步骤旨在初始化 `init()` 方法中的 Triton HTTP 客户端，并在 `run()` 函数中调用该客户端。
 

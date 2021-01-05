@@ -10,13 +10,13 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: fa1b19ef4ece3011c97c3158d54edd1d39efc09d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: how-to, devx-track-python, devx-track-csharp
+ms.openlocfilehash: dddecb3dba6d707e16241731a25df3b3749be103
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832630"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825415"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
@@ -119,7 +119,7 @@ Azure 机器学习提供了两种方法来控制对 Web 服务的访问。
 
 将请求发送到由密钥或令牌保护的服务时，请使用 __Authorization__ 标头来传递密钥或令牌。 密钥或令牌的格式必须为 `Bearer <key-or-token>`，其中 `<key-or-token>` 为密钥或令牌值。
 
-密钥和令牌的主要区别在于，密钥是静态的且能手动重新生成，而令牌需要在到期时刷新 。 Azure 容器实例和 Azure Kubernetes 服务部署的 Web 服务支持基于密钥的身份验证，而基于令牌的身份验证仅能用于 Azure Kubernetes 服务部署。 有关配置身份验证的详细信息，请参阅为 [部署为 web 服务的模型配置身份验证](how-to-authenticate-web-service.md)。
+密钥和令牌的主要区别在于，密钥是静态的且能手动重新生成，而令牌需要在到期时刷新 。 Azure 容器实例和 Azure Kubernetes 服务部署的 Web 服务支持基于密钥的身份验证，而基于令牌的身份验证仅能用于 Azure Kubernetes 服务部署。 有关配置身份验证的详细信息，请参阅[针对部署为 Web 服务的模型配置身份验证](how-to-authenticate-web-service.md)。
 
 
 #### <a name="authentication-with-keys"></a>使用密钥进行身份验证
