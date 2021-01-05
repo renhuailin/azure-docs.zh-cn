@@ -7,45 +7,13 @@
       href: overview.md
     - name: 新增功能
       href: whats-new.md
-- name: 快速入门
+- name: 表单识别器入门
   expaned: true
   items:
-    - name: 使用客户端库
+    - name: 使用客户端库或 REST API
       href: quickstarts/client-library.md
     - name: 使用示例标记工具
-      items:
-        - name: 使用标签训练自定义模型
-          href: quickstarts/label-tool.md
-    - name: 使用 REST API
-      items:
-        - name: 在没有标签的情况下训练和使用自定义模型
-          items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
-            - name: Python
-              href: quickstarts/python-train-extract.md
-        - name: 在有标签的情况下训练和使用自定义模型
-          items:
-            - name: Python
-              href: quickstarts/python-labeled-data.md
-        - name: 使用预生成的回执模型
-          items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
-            - name: Python
-              href: quickstarts/python-receipts.md
-        - name: 使用预构建的名片模型
-          items:
-            - name: Python
-              href: quickstarts/python-business-cards.md
-        - name: 使用预生成的发票模型
-          items:
-            - name: Python
-              href: quickstarts/python-invoices.md
-        - name: 获取文本布局信息
-          items:
-            - name: Python
-              href: quickstarts/python-layout.md
+      href: quickstarts/label-tool.md
 - name: 教程
   items:
     - name: 将表单识别器与认知搜索搭配使用
@@ -77,7 +45,8 @@
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: 使用容器实例
-          href: deploy-form-recognizer-on-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
         - name: 认知服务容器文档
           href: ../containers/index.yml
     - name: 备份和恢复模型

@@ -13,7 +13,7 @@
       items:
         - name: 使用 Web 门户
           href: getting-started-build-a-classifier.md
-        - name: 使用自定义视觉 SDK
+        - name: 使用自定义视觉 SDK 或 REST API
           href: quickstarts/image-classification.md
     - name: 生成对象检测器
       items:
