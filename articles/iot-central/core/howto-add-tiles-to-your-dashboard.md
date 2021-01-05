@@ -3,15 +3,15 @@ title: 配置 Azure IoT Central 仪表板 |Microsoft Docs
 description: 作为生成器，了解如何使用磁贴配置默认的 Azure IoT Central 应用程序仪表板。
 author: TheJasonAndrew
 ms.author: v-anjaso
-ms.date: 11/06/2020
+ms.date: 12/19/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 2ea2dd18cd5816c7c1406ac201421a2983e431a3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 73c78f514f974b97eb178177f12dc4ceff7ede63
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491970"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797003"
 ---
 # <a name="configure-the-application-dashboard"></a>配置应用程序仪表板
 
@@ -22,15 +22,15 @@ ms.locfileid: "94491970"
 
 ## <a name="add-tiles"></a>添加磁贴
 
-以下屏幕截图显示了从 **自定义应用程序** 模板创建的应用程序中的仪表板。 若要自定义当前仪表板，请选择 " **编辑** "，添加自定义个人或共享仪表板，选择 " **新建** "：
+以下屏幕截图显示了从 **自定义应用程序** 模板创建的应用程序中的仪表板。 若要自定义当前仪表板，请选择 " **编辑**"，添加自定义个人或共享仪表板，选择 " **新建**"：
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png" alt-text="基于自定义应用程序模板的应用程序的面板":::
 
-选择 " **编辑** " 或 " **新建** " 后，仪表板处于 *编辑* 模式。 你可以使用 " **编辑仪表板** " 面板中的工具将磁贴添加到仪表板，并在仪表板上自定义和删除磁贴。 例如，若要添加 **遥测** 磁贴以显示由一个或多个设备报告的当前温度：
+选择 " **编辑** " 或 " **新建**" 后，仪表板处于 *编辑* 模式。 你可以使用 " **编辑仪表板** " 面板中的工具将磁贴添加到仪表板，并在仪表板上自定义和删除磁贴。 例如，若要添加 **遥测** 磁贴以显示由一个或多个设备报告的当前温度：
 
 1. 选择 **设备组** ，然后在 " **设备** " 下拉列表中选择你的设备以在磁贴上显示。 现在，你可以看到设备中的可用遥测、属性和命令。
 
-1. 如果需要，可以使用下拉列表选择要在磁贴上显示的遥测值。 您可以通过选择 **+ 遥测** 、 **+ 属性** 或 **+ 云属性** 向磁贴添加更多项。
+1. 如果需要，可以使用下拉列表选择要在磁贴上显示的遥测值。 您可以通过选择 **+ 遥测**、 **+ 属性** 或 **+ 云属性** 向磁贴添加更多项。
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="将温度遥测磁贴添加到仪表板":::
 
@@ -67,7 +67,7 @@ ms.locfileid: "94491970"
 | 热度地图         | 热度地图磁贴显示有关一个或多个设备的信息，表示为颜色。|
 | 上一个已知值 | "最后一个已知值" 磁贴显示一个或多个设备的最新遥测值。 例如，你可以使用此磁贴显示一个或多个设备的最新温度、压力和湿度值。 |
 | 事件历史记录    | “事件历史记录”磁贴显示设备在一段时间内的事件。 例如，你可以使用它来显示最近一小时内一个或多个设备的所有阀打开和关闭事件。|
-| properties         |  属性磁贴显示一个或多个设备的属性和云属性的当前值。 例如，你可以使用此磁贴来显示设备的属性，例如设备的制造商或固件版本。 |
+| 属性         |  属性磁贴显示一个或多个设备的属性和云属性的当前值。 例如，你可以使用此磁贴来显示设备的属性，例如设备的制造商或固件版本。 |
 
 目前，最多可以向支持多个设备的磁贴添加10个设备。
 
@@ -87,7 +87,7 @@ ms.locfileid: "94491970"
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="更改字符串在磁贴上的显示方式":::
 
-对于数值 **KPI** 、 **上一个已知值** 和 **属性** 磁贴，你可以使用条件格式基于其当前值自定义磁贴的颜色。 若要添加条件格式，请在磁贴上选择 " **配置** "，然后选择要自定义的值旁边的 **条件格式** 图标：
+对于数值 **KPI**、 **上一个已知值** 和 **属性** 磁贴，你可以使用条件格式基于其当前值自定义磁贴的颜色。 若要添加条件格式，请在磁贴上选择 " **配置** "，然后选择要自定义的值旁边的 **条件格式** 图标：
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="显示如何查找磁贴的 &quot;配置&quot; 选项，然后选择 &quot;条件格式&quot; 图标的屏幕截图":::
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 119f1eaa838b404a3dbdc22f692f559816810dde
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 55221fa529688fbae1698a094ea31f6a3f765100
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578682"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796238"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教程：通过 CLI 训练和部署模型
 
@@ -307,10 +307,10 @@ runconfig 文件还包含用于配置训练运行所使用的环境的信息。 
 若要在 `cpu-cluster` 计算目标上开始训练运行，请使用以下命令：
 
 ```azurecli-interactive
-az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
+az ml run submit-script -c mnist -e tutorial-cli --source-directory scripts -t runoutput.json
 ```
 
-此命令会指定试验的名称 (`myexperiment`)。 实验将此运行的相关信息存储在工作区中。
+此命令会指定试验的名称 (`tutorial-cli`)。 实验将此运行的相关信息存储在工作区中。
 
 `-c mnist` 参数指定 `.azureml/mnist.runconfig` 文件。
 
@@ -327,7 +327,7 @@ Accuracy is 0.9185
 
 如果检查训练脚本，你会注意到它在将训练模型存储到 `outputs/sklearn_mnist_model.pkl` 时也使用 Alpha 值。
 
-模型已保存到计算目标上训练它的 `./outputs` 目录中， 在本例中为 Azure 云中的 Azure 机器学习计算实例。 训练过程会将 `./outputs` 目录的内容从进行训练的计算目标自动上传到 Azure 机器学习工作区。 它存储为试验的一部分（在本例中为 `myexperiment`）。
+模型已保存到计算目标上训练它的 `./outputs` 目录中， 在本例中为 Azure 云中的 Azure 机器学习计算实例。 训练过程会将 `./outputs` 目录的内容从进行训练的计算目标自动上传到 Azure 机器学习工作区。 它存储为试验的一部分（在本例中为 `tutorial-cli`）。
 
 ## <a name="register-the-model"></a>注册模型
 
@@ -345,13 +345,13 @@ az ml model register -n mymodel -f runoutput.json --asset-path "outputs/sklearn_
 {
   "createdTime": "2019-09-19T15:25:32.411572+00:00",
   "description": "",
-  "experimentName": "myexperiment",
+  "experimentName": "tutorial-cli",
   "framework": "Custom",
   "frameworkVersion": null,
   "id": "mymodel:1",
   "name": "mymodel",
   "properties": "",
-  "runId": "myexperiment_1568906070_5874522d",
+  "runId": "tutorial-cli_1568906070_5874522d",
   "tags": "",
   "version": 1
 }

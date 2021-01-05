@@ -3,17 +3,17 @@ title: 在 Azure IoT Central 中配置规则和操作 | Microsoft Docs
 description: 本操作指南文章演示，作为构建者，如何在 Azure IoT Central 应用程序中配置基于遥测的规则和操作。
 author: vavilla
 ms.author: vavilla
-ms.date: 11/27/2019
+ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8391202e991c240b03bd79b947c1c3c6dcc9afd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 378a1dbcfbc89cdf9b24dc2490db583f1135b9a2
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362531"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796782"
 ---
 # <a name="configure-rules"></a>配置规则
 

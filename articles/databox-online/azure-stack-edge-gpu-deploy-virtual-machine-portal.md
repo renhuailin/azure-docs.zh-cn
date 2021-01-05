@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 89ef196cb5a124b8b1100871c408400f3fceef5c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 04ba9777fe9e8470e6f02c83f3996d098023e05e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466075"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763449"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>通过 Azure 门户在 Azure Stack Edge Pro GPU 设备上部署 Vm
 
@@ -122,8 +122,8 @@ ms.locfileid: "96466075"
     |参数 |说明  |
     |---------|---------|
     |虚拟机名称     |         |
-    |映像     | 从设备上提供的 VM 映像中进行选择。        |
-    |大小     | 从支持的 [VM 大小](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#supported-vm-sizes)中进行选择。        |
+    |图像     | 从设备上提供的 VM 映像中进行选择。        |
+    |大小     | 从支持的 [VM 大小](azure-stack-edge-gpu-virtual-machine-sizes.md)中进行选择。        |
     |用户名     | 使用默认的用户名 *azureuser*。        |
     |身份验证类型    | 从 SSH 公钥或用户定义的密码中进行选择。       |
     |密码     | 输入用于登录到虚拟机的密码。 密码长度必须至少为12个字符，并且满足定义的 [复杂性要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。        |
@@ -148,7 +148,7 @@ ms.locfileid: "96466075"
 
         ![添加 VM 5](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-3.png)
 
-        在完成时选择“下一步:网络”。
+        选择“下一页:网络”。
 
 1. 在 " **网络** " 选项卡中，你将为 VM 配置网络连接。
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 048f2585d8e9ac1b10293083bda0900e7ce468bb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6bf0da8716233178889d47ec3d57e9b29bc2658f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447591"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763211"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>连接到 Azure Stack Edge Pro 设备上的 Azure 资源管理器
 
@@ -36,7 +36,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
 | # | 终结点 | 支持的协议 | 使用的端口 | 用途 |
 | --- | --- | --- | --- | --- |
-| 1. | Azure 资源管理器 | https | 443 | 连接到 Azure 资源管理器以实现自动化 |
+| 1. | Azure Resource Manager | https | 443 | 连接到 Azure 资源管理器以实现自动化 |
 | 2. | 安全令牌服务 | https | 443 | 通过访问和刷新令牌进行身份验证 |
 | 3. | Blob | https | 443 | 通过 REST 连接到 Blob 存储 |
 
@@ -101,7 +101,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
     |类型 |使用者名称 (SN)   |使用者可选名称 (SAN)   |使用者名称示例 |
     |---------|---------|---------|---------|
-    |Azure 资源管理器|`management.<Device name>.<Dns Domain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`|`management.mydevice1.microsoftdatabox.com` |
+    |Azure Resource Manager|`management.<Device name>.<Dns Domain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`|`management.mydevice1.microsoftdatabox.com` |
     |Blob 存储|`*.blob.<Device name>.<Dns Domain>`|`*.blob.< Device name>.<Dns Domain>`|`*.blob.mydevice1.microsoftdatabox.com` |
     |两个终结点的多 SAN 单一证书|`<Device name>.<dnsdomain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`<br>`*.blob.<Device name>.<Dns Domain>`|`mydevice1.microsoftdatabox.com` |
 
@@ -460,4 +460,4 @@ ExtendedProperties : {}
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure Stack Edge Pro 设备上部署 VM](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。
+[在 Azure Stack Edge Pro 设备上部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)。

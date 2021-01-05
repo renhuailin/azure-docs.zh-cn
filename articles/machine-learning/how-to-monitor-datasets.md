@@ -10,20 +10,15 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
-ms.custom: how-to, data4ml
-ms.openlocfilehash: 1622f8ce988c5592ac96cec798617ca6ac37aa8d
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.custom: how-to, data4ml, contperf-fy21q2
+ms.openlocfilehash: 1bf7856e807b04e35d28a3e262ae89ea9c298f3c
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617164"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763585"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集中的数据偏移（预览版）
-
-
-> [!IMPORTANT]
-> 数据集的数据偏移检测目前以公共预览版提供。
-> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 了解如何监视数据偏移并设置偏移幅度很大时的警报。  
 
@@ -33,16 +28,21 @@ Azure 机器学习数据集监视器（预览版）具有以下功能：
 * **监视新数据**，以了解任何基线与目标数据集之间的差异。
 * **分析数据中的特征**，以跟踪统计属性在一段时间内的变化。
 * **针对数据偏移设置警报**，以便针对潜在问题提前发出警告。 
+* **[创建新的数据集版本]** 偏移确定数据的过大时，可以 (操作方法。
 
 使用 [Azure 机器学习数据集](how-to-create-register-datasets.md)来创建监视器。 此数据集必须包含一个时间戳列。
 
 可以在 Python SDK 或 Azure 机器学习工作室中查看数据偏移指标。  可以通过与 Azure 机器学习工作区关联的 [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) 资源获取其他指标和见解。
 
+> [!IMPORTANT]
+> 数据集的数据偏移检测目前以公共预览版提供。
+> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 ## <a name="prerequisites"></a>先决条件
 
 若要创建和使用数据集监视器，需要：
 * Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
-* 一个 [Azure 机器学习工作区](how-to-manage-workspace.md)。
+* [Azure 机器学习工作区](how-to-manage-workspace.md)。
 * [已安装适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)，其中包含 azureml-datasets 包。
 * 在数据中的文件路径、文件名或列中指定了带时间戳的结构化（表格）数据。
 
@@ -92,15 +92,20 @@ Azure 机器学习通过计算单个指标来简化偏移检测，该指标将�
 | *Application insights*| 偏移会向属于机器学习工作区的 Application Insights 发出指标。
 | *Azure blob 存储*| 偏移会向 Azure Blob 存储发出 JSON 格式的指标。
 
-## <a name="how-dataset-monitors-data"></a>数据集如何监视数据
+### <a name="baseline-and-target-datasets"></a>基线和目标数据集 
 
-可以使用机器学习数据集监视数据偏移。 请指定一个基线数据集（通常为模型的训练数据集）。 将一段时间内的目标数据集（通常是模型输入数据）与基线数据集进行比较。 这种比较意味着必须为目标数据集指定一个时间戳列。
+监视 [Azure 机器学习数据集](how-to-create-register-datasets.md) 的数据偏移。 创建数据集监视器时，会引用：
+* 基线数据集-通常是模型的定型数据集。
+* 目标数据集-通常是模型输入数据-随着时间的推移与基准数据集进行比较。 这种比较意味着必须为目标数据集指定一个时间戳列。
+
+该监视器将比较基线和目标数据集。
 
 ## <a name="create-target-dataset"></a>创建目标数据集
 
 需要通过数据中的某个列或者派生自文件路径模式的某个虚拟列指定一个时间戳列，为目标数据集设置 `timeseries` 特征。 可通过 [Python SDK](#sdk-dataset) 或 [Azure 机器学习工作室](#studio-dataset)创建带时间戳的数据集。 必须指定表示“时间戳”的列，才能向数据集添加 `timeseries` 特征。 如果数据已分区成包含时间信息的文件夹结构（例如“{yyyy/MM/dd}”），请通过路径模式设置来创建虚拟列，并将其设置为“分区时间戳”，以提高时序功能的重要性。
 
-### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python SDK
+# <a name="python"></a>[Python](#tab/python)
+<a name="sdk-dataset"></a>
 
 [`Dataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) 类的 [`with_timestamp_columns()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) 方法定义数据集的时间戳列。
 
@@ -129,9 +134,12 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-有关使用数据集的 `timeseries` 特征的完整示例，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)或[数据集 SDK 文档](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)。
+> [!TIP]
+> 有关使用数据集的 `timeseries` 特征的完整示例，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)或[数据集 SDK 文档](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)。
 
-### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure 机器学习工作室
+# <a name="studio"></a>[工作室](#tab/azure-studio)
+
+<a name="studio-dataset"></a>
 
 如果使用 Azure 机器学习工作室创建数据集，请确保数据的路径包含时间戳信息（其中包括包含数据的所有子文件夹），并设置分区格式。
 
@@ -147,14 +155,14 @@ dset = dset.register(ws, 'target')
 
 :::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="分区时间戳":::
 
+---
 
-## <a name="create-dataset-monitors"></a>创建数据集监视器
+## <a name="create-dataset-monitor"></a>创建数据集监视器
 
-创建数据集监视器，以检测新数据集中的数据偏移并发出警报。  使用 [Python SDK](#sdk-monitor) 或 [Azure 机器学习工作室](#studio-monitor)。
+创建数据集监视器以检测新数据集上的数据偏移并向其发出警报。  使用 [Python SDK](#sdk-monitor) 或 [Azure 机器学习工作室](#studio-monitor)。
 
-### <a name="python-sdk"></a><a name="sdk-monitor"></a>Python SDK
-
-有关完整详细信息，请参阅[有关数据偏移的 Python SDK 参考文档](/python/api/azureml-datadrift/azureml.datadrift)。 
+# <a name="python"></a>[Python](#tab/python)
+<a name="sdk-monitor"></a> 有关完整详细信息，请参阅 [PYTHON SDK 参考文档有关数据偏移](/python/api/azureml-datadrift/azureml.datadrift) 。 
 
 以下示例演示如何使用 Python SDK 创建数据集监视器
 
@@ -202,9 +210,12 @@ monitor = monitor.disable_schedule()
 monitor = monitor.enable_schedule()
 ```
 
-有关设置 `timeseries` 数据集和数据偏移检测器的完整示例，请参阅我们的[示例笔记本](https://aka.ms/datadrift-notebook)。
+> [!TIP]
+> 有关设置 `timeseries` 数据集和数据偏移检测器的完整示例，请参阅我们的[示例笔记本](https://aka.ms/datadrift-notebook)。
 
-### <a name="azure-machine-learning-studio"></a><a name="studio-monitor"></a> Azure 机器学习工作室
+
+# <a name="studio"></a>[工作室](#tab/azure-studio)
+<a name="studio-monitor"></a>
 
 1. 导航到[工作室的主页](https://ml.azure.com)。
 1. 选择左侧的“数据集”选项卡。 
@@ -233,6 +244,8 @@ monitor = monitor.enable_schedule()
     | 阈值 | 发出电子邮件警报之前所要达到的数据偏移百分比阈值。 | 可以在工作区关联的 Application Insights 资源中针对其他许多指标设置警报和事件。 | 是 |
 
 完成向导后，生成的数据集监视器会显示在列表中。 选择该监视器转到其详细信息页。
+
+---
 
 ## <a name="understand-data-drift-results"></a>了解数据偏移结果
 
@@ -286,7 +299,7 @@ monitor = monitor.enable_schedule()
 
 * 分类特征
     
-    | 指标 | 描述 |  
+    | 指标 | 说明 |  
     | ------ | ----------- |  
     | Euclidian 距离     |  针对分类列进行的计算。  欧氏距离基于两个矢量进行计算，这两个矢量是根据两个数据集中同一分类列的经验分布生成的。  0 表示经验分布没有差别。    与 0 的偏差越大，该列的偏移程度越大。  对此指标进行时序绘图即可观察相关趋势，并可利用这些趋势来发现偏移特征。  |
     | 唯一值 | 特征的唯一值（基数）数目。 |
@@ -319,9 +332,50 @@ monitor = monitor.enable_schedule()
 
 ![新建操作组](./media/how-to-monitor-datasets/action-group.png)
 
+
+## <a name="troubleshooting"></a>故障排除
+
+数据偏移监视器的限制和已知问题：
+
+* 分析历史数据时的时间范围限制为监视器频率设置的 31 个间隔。 
+* 除非未指定特征列表（使用所有特征），否则特征限制为 200 个。
+* 计算大小必须足够大才能处理数据。
+* 确保数据集包含处于给定监视器运行的开始和结束日期范围内的数据。
+* 数据集监视器仅适用于包含 50 行或更多行的数据集。
+* 数据集中的列或特征根据下表中的条件划分为分类值或数字值。 如果特征不满足这些条件 - 例如，某个字符串类型的列包含 100 个以上的唯一值 - 则会从数据偏移算法中删除该特征，但仍会对其进行分析。 
+
+    | 特征类型 | 数据类型 | 条件 | 限制 | 
+    | ------------ | --------- | --------- | ----------- |
+    | 分类 | string、bool、int、float | 特征中的唯一值数小于 100，并小于行数的 5%。 | Null 被视为其自身的类别。 | 
+    | 数值 | int、float | 特征中的值为数字数据类型，且不符合分类特征的条件。 | 如果 15% 以上的值为 null，则会删除特征。 | 
+
+* 如果已创建数据偏移监视器，但在 Azure 机器学习 studio 中看不到数据 **集监视器** 页上的数据，请尝试以下。
+
+    1. 检查是否已在页面顶部选择了正确的日期范围。  
+    1. 在“数据集监视器”选项卡上，选择试验链接以检查运行状态。  此链接位于表的最右侧。
+    1. 如果运行已成功完成，请检查驱动程序日志，以便查看已生成的指标数，或者查看是否有任何警告消息。  单击试验后，在“输出 + 日志”选项卡中查找驱动程序日志。
+
+* 如果 SDK `backfill()` 函数未生成预期的输出，则可能是由于身份验证问题。  创建要传入到此函数中的计算时，请勿使用 `Run.get_context().experiment.workspace.compute_targets`，  而应使用 [ServicePrincipalAuthentication](/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?preserve-view=true&view=azure-ml-py)（例如以下代码）来创建要传入到该 `backfill()` 函数中的计算： 
+
+  ```python
+   auth = ServicePrincipalAuthentication(
+          tenant_id=tenant_id,
+          service_principal_id=app_id,
+          service_principal_password=client_secret
+          )
+   ws = Workspace.get("xxx", auth=auth, subscription_id="xxx", resource_group"xxx")
+   compute = ws.compute_targets.get("xxx")
+   ```
+
+* 在模型数据收集器中，数据到达 blob 存储帐户最多需要（但通常不到）10 分钟。 在脚本或笔记本中，等待10分钟，确保运行以下单元格。
+
+    ```python
+    import time
+    time.sleep(600)
+    ```
+
 ## <a name="next-steps"></a>后续步骤
 
 * 转到 [Azure 机器学习工作室](https://ml.azure.com)或 [Python 笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb)来设置数据集监视器。
 * 了解如何在[部署到 Azure Kubernetes 服务的模型](./how-to-enable-data-collection.md)中设置数据偏移。
-* 使用[事件网格](how-to-use-event-grid.md)设置数据集偏移监视器。 
-* 如果遇到问题，请参阅这些常见的[故障排除提示](resource-known-issues.md#data-drift)。
+* 使用[事件网格](how-to-use-event-grid.md)设置数据集偏移监视器。

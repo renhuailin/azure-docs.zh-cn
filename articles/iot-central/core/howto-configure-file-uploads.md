@@ -4,15 +4,15 @@ description: 如何配置从设备到云的文件上传。 配置文件上传后
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/06/2020
+ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: d6fbf84ec3822195f62970dbf08115059ffb7e4a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ed2eff4d6ccbb9f85dfaf7049fa3cc18711bae0f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122596"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796898"
 ---
 # <a name="upload-files-from-your-devices-to-the-cloud"></a>将文件从设备上传到云
 
@@ -20,7 +20,7 @@ ms.locfileid: "92122596"
 
 IoT Central 允许你将媒体和其他文件从连接的设备上传到云存储。 在 IoT Central 应用程序中配置文件上传功能，然后在设备代码中实现文件上传。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 你必须是 IoT Central 应用程序中的管理员才能配置文件上传。
 
@@ -50,7 +50,7 @@ IoT Central 允许你将媒体和其他文件从连接的设备上传到云存�
 
 1. 选择 " **设备文件上传**"。
 
-1. 选择“删除”。
+1. 选择“删除”  。
 
 ## <a name="upload-a-file-from-a-device"></a>从设备上传文件
 

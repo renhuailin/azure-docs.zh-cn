@@ -3,17 +3,17 @@ title: 在 IoT Central 中管理个人首选项 | Microsoft Docs
 description: 如何管理个人应用程序首选项，例如，更改 IoT Central 应用程序中的语言和主题。
 author: lmasieri
 ms.author: lmasieri
-ms.date: 07/10/2019
+ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e2b0dbe8b7738a8c4c551eccca72897bbf1594b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83d8c04765bf9aecc9029cdc8d12461231d191f2
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80157885"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795949"
 ---
 # <a name="manage-your-personal-application-preferences"></a>管理个人应用程序首选项
 
@@ -23,7 +23,7 @@ ms.locfileid: "80157885"
 
 ## <a name="changing-language"></a>更改语言
 
-IoT Central 支持多种语言。 可以使用顶部导航栏上“设置”图标上的**语言选取器**来切换首选语言。 更改语言后，IoT Central 会记住你的选择，并将其应用于所有应用程序。 应用程序中的自定义项（例如仪表板图像）未本地化。
+IoT Central 支持多种语言。 可以使用顶部导航栏上“设置”图标上的 **语言选取器** 来切换首选语言。 更改语言后，IoT Central 会记住你的选择，并将其应用于所有应用程序。 应用程序中的自定义项（例如仪表板图像）未本地化。
 
 ## <a name="changing-theme"></a>更改主题
 

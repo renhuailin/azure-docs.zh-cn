@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: eec53570c542ceb60c937072135fcb70b59e80a6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: e3bf77406df302c4ba83cb7a8f1a30fba9f6339e
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631034"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795931"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 PyTorch 模型
 
@@ -206,7 +206,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 [运行对象](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)在作业运行时和运行后提供运行历史记录的接口。
 
 ```Python
-run = Experiment(ws, name='pytorch-birds').submit(src)
+run = Experiment(ws, name='Tutorial-pytorch-birds').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
@@ -314,6 +314,10 @@ src = ScriptRunConfig(source_directory=project_folder,
 如果要改用 Gloo 后端来进行分布式训练，请改为指定 `communication_backend='Gloo'`。 对于分布式 CPU 训练，建议使用 Gloo 后端。
 
 有关如何在 Azure ML 上运行分布式 PyTorch 的完整教程，请参阅[使用 DistributedDataParallel 的分布式 PyTorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-nccl-gloo)。
+
+### <a name="troubleshooting"></a>疑难解答
+
+* **Horovod 已** 关闭：在大多数情况下，如果遇到 "AbortedError： Horovod 已关闭"，则导致 Horovod 关闭的某个进程中存在基础异常。 MPI 作业中的每个排名都会在 Azure ML 中生成专属的日志文件。 这些日志名为 `70_driver_logs`。 对于分布式训练，日志名称带有 `_rank` 后缀，以方便区分日志。 若要查找导致 Horovod 关闭的确切错误，请浏览所有日志文件，并查看 driver_log 文件末尾的 `Traceback`。 其中的某个文件会指出实际的根本性异常。 
 
 ## <a name="export-to-onnx"></a>导出到 ONNX
 

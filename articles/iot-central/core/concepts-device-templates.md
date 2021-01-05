@@ -3,17 +3,17 @@ title: 什么是 Azure 中的设备模板 IoT Central |Microsoft Docs
 description: Azure IoT Central 设备模板使你能够指定连接到应用程序的设备的行为。 设备模板指定设备必须实现的遥测、属性和命令。 设备模板还在 IoT Central （例如，操作员使用的窗体和仪表板）中定义设备的 UI。
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/05/2020
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 1a352849cb5bb8563a7e09500f081139a24e97ea
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 04c2330ffee396f5fc30b85640e992df77c08263
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750690"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795422"
 ---
 # <a name="what-are-device-templates"></a>什么是设备模板？
 
@@ -119,7 +119,7 @@ Azure IoT Central 中的设备模板是一个蓝图，用于定义连接到应�
 - `name`：接口的编程名称。
 - `schema`：功能模型实现的接口。
 
-## <a name="interfaces"></a>接口
+## <a name="interfaces"></a>界面
 
 DTDL 可让你描述设备的功能。 相关功能分组为接口。 接口描述设备的一部分实现的属性、遥测和命令：
 
@@ -241,7 +241,7 @@ DTDL 可让你描述设备的功能。 相关功能分组为接口。 接口描�
 
 对于可写属性，设备应用程序会返回所需状态状态代码、版本和说明，以指示是否已收到并应用属性值。
 
-## <a name="telemetry"></a>遥测
+## <a name="telemetry"></a>遥测技术
 
 IoT Central 允许你查看仪表板和图表上的遥测，并使用规则在达到阈值时触发操作。 IoT Central 使用设备模型中的信息（如数据类型、单位和显示名称）来确定如何显示遥测值。
 

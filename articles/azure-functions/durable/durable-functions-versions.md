@@ -3,14 +3,14 @@ title: Durable Functions 版本概述 - Azure Functions
 description: 了解 Durable Functions 版本。
 author: cgillum
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/23/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4d10bab06428295bbc8c5319bd47787d7b1fb34
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88719404"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763364"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions 版本概述
 
@@ -50,6 +50,8 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure Web
 
 Durable Functions 2.x 在 [Azure Functions 扩展包](../functions-bindings-register.md#extension-bundles)的版本 2.x 中可用。
 
+Durable Functions 中的 Python 支持需要 Durable Functions 1.x。
+
 若要更新项目中的扩展包版本，请打开 host.json 并更新 `extensionBundle` 部分以使用版本 2.x (`[2.*, 3.0.0)`)。
 
 ```json
@@ -61,6 +63,9 @@ Durable Functions 2.x 在 [Azure Functions 扩展包](../functions-bindings-regi
     }
 }
 ```
+
+> [!NOTE]
+> 如果在更改扩展捆绑版本后 Visual Studio Code 未显示正确的模板，请通过运行 " *开发人员：重新加载* 窗口" 命令 (在 Windows 和 Linux 上的 <kbd>Ctrl + r</kbd> 上重新加载窗口，在 macOS) 上 <kbd>命令 + r</kbd> 。
 
 #### <a name="net"></a>.NET
 

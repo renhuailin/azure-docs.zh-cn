@@ -6,16 +6,18 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2482a26987ec142880acc51bf470d844655b6e3f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212587"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763501"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务触发器绑定
 
 使用 SignalR 触发器绑定来响应从 Azure SignalR 服务发送的消息。 触发函数时，传递给函数的消息分析为 json 对象。
+
+在 SignalR Service 无服务器模式下，SignalR 服务使用 [上游](../azure-signalr/concept-upstream.md) 功能从客户端向 Function App 发送消息。 和 Function App 使用 SignalR 服务触发器绑定来处理这些消息。 一般的体系结构如下所示： :::image type="content" source="media/functions-bindings-signalr-service/signalr-trigger.png" alt-text="SignalR 触发器体系结构":::
 
 有关设置和配置详细信息，请参阅[概述](functions-bindings-signalr-service.md)。
 
@@ -171,7 +173,7 @@ def main(invocation) -> None:
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**| 不适用 | 必须设置为 `SignalRTrigger`。|
+|type| 不适用 | 必须设置为 `SignalRTrigger`。|
 |**direction**| 不适用 | 必须设置为 `in`。|
 |**name**| 不适用 | 在函数代码中用于“触发器调用上下文”对象的变量名称。 |
 |**hubName**|**HubName**| 此值必须设置为要触发的函数的 SignalR 中心的名称。|
@@ -203,15 +205,22 @@ InvocationContext 包含 SignalR 服务发送的消息中的所有内容。
 
 ## <a name="using-parameternames"></a>使用 `ParameterNames`
 
-通过 `SignalRTrigger` 中的属性 `ParameterNames`，可将调用消息的参数绑定到函数的参数。 这为你提供了更方便的方法来访问 `InvocationContext` 的参数。
+通过 `SignalRTrigger` 中的属性 `ParameterNames`，可将调用消息的参数绑定到函数的参数。 你定义的名称可用作其他绑定中的 [绑定表达式](../azure-functions/functions-bindings-expressions-patterns.md) 的一部分，或者用作代码中的参数。 这为你提供了更方便的方法来访问 `InvocationContext` 的参数。
 
-假设你有 JavaScript SignalR 客户端尝试调用 Azure Function 中带有两个参数的方法 `broadcast`。
+假设你有一个 JavaScript SignalR 客户端尝试 `broadcast` 在 Azure 函数中使用两个参数调用方法 `message1` `message2` 。
 
 ```javascript
 await connection.invoke("broadcast", message1, message2);
 ```
 
-你可以通过参数来访问这两个参数，也可使用 `ParameterNames` 为它们分配参数类型。
+设置后 `parameterNames` ，您定义的名称将分别对应于客户端发送的参数。 
+
+```cs
+[SignalRTrigger(parameterNames: new string[] {"arg1, arg2"})]
+```
+
+然后， `arg1` 将包含的内容 `message1` ，并且 `arg2` 将包含的内容 `message2` 。
+
 
 ### <a name="remarks"></a>备注
 
@@ -219,20 +228,28 @@ await connection.invoke("broadcast", message1, message2);
 
 `ParameterNames` 和特性 `[SignalRParameter]` 不能同时使用，否则将出现异常。
 
-## <a name="send-messages-to-signalr-service-trigger-binding"></a>将消息发送到 SignalR 服务触发器绑定
+## <a name="signalr-service-integration"></a>SignalR 服务集成
 
-Azure Function 为 SignalR 服务触发器绑定生成 URL，其格式如下：
+使用 SignalR 服务触发器绑定时，SignalR 服务需要 URL 来访问 Function App。 URL 应在 SignalR 服务端的 **上游设置** 中进行配置。 
+
+:::image type="content" source="../azure-signalr/media/concept-upstream/upstream-portal.png" alt-text="上游门户":::
+
+使用 SignalR 服务触发器时，URL 可以简单和格式化，如下所示：
 
 ```http
-https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+<Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>
 ```
 
-`API_KEY` 由 Azure Function 生成。 使用 SignalR 服务触发器绑定时，可以从 Azure 门户中获取 `API_KEY`。
+`Function_App_URL`可在 Function App 的 "概述" 页上找到， `API_KEY` 由 Azure Function 生成。 可以 `API_KEY` `signalr_extension` 在 Function App 的 " **应用程序密钥** " 边栏选项卡中获取。
 :::image type="content" source="media/functions-bindings-signalr-service/signalr-keys.png" alt-text="API 密钥":::
 
-应在 SignalR 服务的“上游设置”的 `UrlTemplate` 中设置此 URL。
+如果要将多个 Function App 与一个 SignalR 服务一起使用，上游还可以支持复杂路由规则。 在 [上游设置](../azure-signalr/concept-upstream.md)中查找更多详细信息。
+
+## <a name="step-by-step-sample"></a>分步示例
+
+可以按照 GitHub 中的示例使用 SignalR 服务触发器绑定和上游功能在 Function App 上部署聊天室： [双向聊天室示例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)
 
 ## <a name="next-steps"></a>后续步骤
 
 * [通过 Azure SignalR 服务进行的 Azure Functions 开发和配置](../azure-signalr/signalr-concept-serverless-development-config.md)
-* [SignalR 服务触发器绑定示例](https://github.com/Azure/azure-functions-signalrservice-extension/tree/dev/samples/bidirectional-chat)
+* [SignalR 服务触发器绑定示例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)

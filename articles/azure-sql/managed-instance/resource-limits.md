@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9a96da607ceea5a6d5cb6ef02df5a9a4db24562e
+ms.sourcegitcommit: e8bd58dbcfe0eae45979d86e071778b9aec40b6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400567"
+ms.lasthandoff: 12/25/2020
+ms.locfileid: "97770955"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 托管实例资源限制概述
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -84,7 +84,7 @@ SQL 托管实例有两个服务层级：[常规用途](../database/service-tier-
 | 最大会话数 | 30000 | 30000 |
 | 最大并发工作线程数（请求数） | Gen4：210 * vCore 数目 + 800<br>Gen5：105 * vCore 数目 + 800 | Gen4：210 * vCore 计数 + 800<br>Gen5：105 * vCore 计数 + 800 |
 | [只读副本](../database/read-scale-out.md) | 0 | 1（包括在价格中） |
-| 计算隔离 | Gen5：<br/>-支持 80 个 vCore<br/>-不支持其他大小<br/><br/>由于弃用，不支持 Gen4|Gen5：<br/>-支持60、64、80 Vcore<br/>-不支持其他大小<br/><br/>由于弃用，不支持 Gen4|
+| 计算隔离 | 不支持 Gen5，因为常规用途实例可能与其他实例共享物理硬件<br/>由于弃用，不支持 Gen4|Gen5：<br/>-支持40、64、80 Vcore<br/>-不支持其他大小<br/><br/>由于弃用，不支持 Gen4|
 
 
 一些其他注意事项： 
@@ -150,7 +150,7 @@ SQL 托管实例当前仅支持以下类型的订阅上的部署：
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional 和 MSDN 平台|2|32|
 
-\* 在规划部署时，请考虑业务关键 (BC) 服务层需要四 (4) 倍于常规用途 (GP) 服务层的容量。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 单位。 若要简化对默认限制的消耗分析，请汇总部署了 SQL 托管实例的区域中所有子网的 vCore 单位，并将结果与订阅类型的实例单位限制进行比较。 **VCore 单位限制的最大数量** 适用于区域中的每个订阅。 每个子网没有任何限制，只不过跨多个子网部署的所有 Vcore 的总和必须小于或等于 **vCore 单元的最大数目**。
+\* 在规划部署时，请考虑业务关键 (BC) 服务层需要四 (4) 倍于常规用途 (GP) 服务层的容量。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore。 若要简化对默认限制的消耗分析，请汇总部署了 SQL 托管实例的区域中所有子网的 vCore 单位，并将结果与订阅类型的实例单位限制进行比较。 **VCore 单位限制的最大数量** 适用于区域中的每个订阅。 每个子网没有任何限制，只不过跨多个子网部署的所有 Vcore 的总和必须小于或等于 **vCore 单元的最大数目**。
 
 \*\* 以下区域提供了更大的子网和 vCore 限制：澳大利亚东部、美国东部、美国东部2、北欧、美国中南部、东南亚、英国南部、西欧、美国西部2。
 

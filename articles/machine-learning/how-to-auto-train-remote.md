@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to, automl
 ms.date: 03/09/2020
-ms.openlocfilehash: 65ce11581972c83b0294c0afcbe95e5a35ef2471
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: d6d21acc685ba840b585ada43e59230fdd73787f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920570"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796374"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>在云中使用自动化机器学习对模型进行训练
 
@@ -159,7 +159,7 @@ automl_config = AutoMLConfig(task='classification',
 
 ```python
 from azureml.core.experiment import Experiment
-experiment = Experiment(ws, 'automl_remote')
+experiment = Experiment(ws, 'Tutorial-automl-remote')
 remote_run = experiment.submit(automl_config, show_output=True)
 ```
 
@@ -220,7 +220,7 @@ RunDetails(remote_run).show()
 remote_run.get_portal_url()
 ```
 
-工作区中提供了相同的信息。  若要了解有关这些结果的详细信息，请参阅 [评估自动机器学习结果](how-to-understand-automated-ml.md)。
+工作区中提供了相同的信息。  要详细了解这些结果，请参阅[自动化机器学习结果](how-to-understand-automated-ml.md)。
 
 ## <a name="example"></a>示例
 

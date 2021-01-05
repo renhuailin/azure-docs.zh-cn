@@ -3,12 +3,12 @@ title: 使用 PowerShell 备份和恢复 Azure VM
 description: 介绍如何使用 Azure 备份与 PowerShell 来备份和恢复 Azure VM
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 610049ec14243abb296aef431eb37533c6169817
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978346"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797054"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -259,6 +259,8 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > 如果你使用的是 Azure 政府云，请使用 `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 中的参数 **ServicePrincipalName** 的值。
 >
 
+如果要有选择地备份少量磁盘，并按 [这些方案](selective-disk-backup-restore.md#scenarios)中所述排除其他磁盘，则只能配置保护和备份 [此处](selective-disk-backup-restore.md#enable-backup-with-powershell)所述的相关磁盘。
+
 ## <a name="monitoring-a-backup-job"></a>监视备份作业
 
 可以在不使用 Azure 门户的情况下监视长时间运行的操作，例如备份作业。 若要获取正在进行的作业的状态，请使用 [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet。 此 cmdlet 获取特定保管库的备份作业，并且该保管库是在保管库上下文中指定的。 以下示例将正在进行的作业的状态获取为数组，并将状态存储在 $joblist 变量中。
@@ -338,6 +340,10 @@ $bkpPol.AzureBackupRGName="Contosto_"
 $bkpPol.AzureBackupRGNameSuffix="ForVMs"
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
+
+### <a name="exclude-disks-for-a-protected-vm"></a>排除受保护的 VM 的磁盘
+
+Azure VM 备份提供一项功能，可选择性地排除或包括在 [这些情况下](selective-disk-backup-restore.md#scenarios)非常有用的磁盘。 如果虚拟机已受到 Azure VM 备份的保护，并且所有磁盘都已备份，则可以修改保护，以便有选择地包括或排除磁盘，如 [此处](selective-disk-backup-restore.md#modify-protection-for-already-backed-up-vms-with-powershell)所述。
 
 ### <a name="trigger-a-backup"></a>触发备份
 
@@ -511,6 +517,13 @@ Wait-AzRecoveryServicesBackupJob -Job $restorejob -Timeout 43200
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
 $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $targetVault.ID
 ```
+
+#### <a name="restore-selective-disks"></a>还原选择性磁盘
+
+用户可以有选择地还原几个磁盘，而不是整个备份集。 提供所需的磁盘 Lun 作为参数，以便仅还原它们，而不是还原整个集，如 [此处](selective-disk-backup-restore.md#restore-selective-disks-with-powershell)所述。
+
+> [!IMPORTANT]
+> 一种是有选择性地备份磁盘以有选择地还原磁盘。 [此处](selective-disk-backup-restore.md#selective-disk-restore)提供了详细信息。
 
 还原磁盘以后，转到下一部分来了解如何创建 VM。
 

@@ -3,17 +3,17 @@ title: 更改 Azure IoT Central 应用程序设置 | Microsoft Docs
 description: 本文介绍管理员如何通过更改应用程序名称和 URL 来管理 Azure IoT Central 应用程序，以及如何上传映像和删除应用程序
 author: viv-liu
 ms.author: viviali
-ms.date: 11/27/2019
+ms.date: 12/19/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 2ed2756bc11a159bf860c5001af1ecaa942e7e1c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ece77c2091e7c7c2aa09516bd4d3022bb6fcdfcc
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122630"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796952"
 ---
 # <a name="change-iot-central-application-settings"></a>更改 IoT Central 应用程序设置
 

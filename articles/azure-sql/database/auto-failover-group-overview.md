@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 11/16/2020
-ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/26/2020
+ms.openlocfilehash: 91375f4460b55617ace0b18b60d59d961a762f4c
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988538"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792494"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -229,7 +229,7 @@ ms.locfileid: "94988538"
 
 ### <a name="creating-the-secondary-instance"></a>创建辅助实例
 
-若要确保故障转移后与主要 SQL 托管实例的连接不中断，主要实例和辅助实例必须位于同一 DNS 区域。 将会保证同一个多域 (SAN) 证书可用于对与故障转移组中的两个实例之一建立的客户端连接进行身份验证。 准备好将应用程序部署到生产环境后，在不同的区域中创建一个辅助 SQL 托管实例，并确保它与主要 SQL 托管实例共享 DNS 区域。 为此，可以使用 Azure 门户、PowerShell 或 REST API 指定可选 `DNS Zone Partner` 参数。
+若要确保故障转移后与主要 SQL 托管实例的连接不中断，主要实例和辅助实例必须位于同一 DNS 区域。 将会保证同一个多域 (SAN) 证书可用于对与故障转移组中的两个实例之一建立的客户端连接进行身份验证。 准备好将应用程序部署到生产环境后，在不同的区域中创建一个辅助 SQL 托管实例，并确保它与主要 SQL 托管实例共享 DNS 区域。 可以通过在创建过程中指定可选参数来执行此操作。 如果你使用的是 PowerShell 或 REST API，则可选参数的名称为 `DNS Zone Partner` ，并且 Azure 门户中对应的可选字段的名称为 "主要托管实例"。
 
 > [!IMPORTANT]
 > 在子网中创建的第一个托管实例确定同一子网中所有后续实例的 DNS 区域。 这意味着，同一子网中的两个实例不能属于不同的 DNS 区域。

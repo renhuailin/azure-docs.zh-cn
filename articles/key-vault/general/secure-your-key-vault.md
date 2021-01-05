@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 5e1f8a099256040e14db1cdab288551a228512cd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ee1c59c71834ab9d80f1ed66a002e211bdcacbbf
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655367"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796493"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -94,7 +94,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 可在此处查看保管库和机密操作的完整列表：[Key Vault 操作参考](/rest/api/keyvault/#vault-operations)
 
-<a id="key-vault-access-policies"></a> 密钥保管库访问策略单独授予对密钥、机密和证书的权限。  密钥、机密或证书的访问权限是保管库级别的。 
+<a id="key-vault-access-policies"></a> Key Vault 访问策略分别向密钥、机密和证书授予权限。  密钥、机密或证书的访问权限是保管库级别的。 
 
 若要详细了解如何使用密钥保管库访问策略，请参阅[分配 Key Vault 访问策略](assign-access-policy-portal.md)
 
@@ -130,7 +130,7 @@ Azure 基于角色的访问控制是另一种用于控制对 Azure Key Vault 数
 
 ## <a name="private-endpoint-connection"></a>专用终结点连接
 
-如果需要完全阻止公开 Key Vault 公开，则可以使用 [Azure 私有终结点](../../private-link/private-endpoint-overview.md) 。 Azure 专用终结点是一个网络接口，可以通过私密且安全的方式将你连接到 Azure 专用链接支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
+如果需要完全阻止公开 Key Vault 公开，则可以使用 [Azure 专用终结点](../../private-link/private-endpoint-overview.md) 。 Azure 专用终结点是一个网络接口，可以通过私密且安全的方式将你连接到 Azure 专用链接支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
 
 使用 Azure 服务的专用链接的常见方案：
 

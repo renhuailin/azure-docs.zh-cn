@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: 8bb07e650c99f18cfecbc7b7674e0ca0e5a01dae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 159df4c228f74bb605c745e899d99bfff2aa511b
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998900"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763279"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务输出绑定
 
@@ -156,7 +156,7 @@ public SignalRMessage sendMessage(
 
 ## <a name="send-to-a-user"></a>发送给用户
 
-可以设置 SignalR 消息的用户 ID，以便将消息只发送给已针对某个用户进行身份验证的连接。
+可以设置 SignalR 消息的用户 ID，以便将消息只发送给已针对某个用户进行身份验证的连接  。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -291,7 +291,7 @@ public SignalRMessage sendMessage(
 
 ## <a name="send-to-a-group"></a>发送给组
 
-可以设置 SignalR 消息的组名称，以便将消息只发送给已添加到某个组的连接。
+可以设置 SignalR 消息的组名称，以便将消息只发送给已添加到某个组的连接  。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -485,7 +485,7 @@ public static Task RemoveFromGroup(
 
 以下示例将用户添加到组。
 
-示例 *function.js*
+示例 function.json 
 
 ```json
 {
@@ -497,7 +497,7 @@ public static Task RemoveFromGroup(
 }
 ```
 
-*运行 run.csx*
+Run.csx 
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -523,7 +523,7 @@ public static Task Run(
 
 以下示例从组中删除用户。
 
-示例 *function.js*
+示例 function.json 
 
 ```json
 {
@@ -535,7 +535,7 @@ public static Task Run(
 }
 ```
 
-*运行 run.csx*
+Run.csx 
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -566,7 +566,7 @@ public static Task Run(
 
 以下示例将用户添加到组。
 
-示例 *function.js*
+示例 function.json 
 
 ```json
 {
@@ -594,7 +594,7 @@ module.exports = async function (context, req) {
 
 以下示例从组中删除用户。
 
-示例 *function.js*
+示例 function.json 
 
 ```json
 {
@@ -624,7 +624,7 @@ module.exports = async function (context, req) {
 
 以下示例将用户添加到组。
 
-示例 *function.js*
+示例 function.json 
 
 ```json
 {
@@ -651,7 +651,7 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 
 以下示例从组中删除用户。
 
-示例 *function.js*
+示例 function.json 
 
 ```json
 {
@@ -730,7 +730,7 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**| 不适用 | 必须设置为 `signalRConnectionInfo`。|
+|type| 不适用 | 必须设置为 `signalRConnectionInfo`。|
 |**direction**| 不适用 | 必须设置为 `in`。|
 |**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
@@ -743,7 +743,7 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**| 不适用 | 必须设置为 `signalR`。|
+|type| 不适用 | 必须设置为 `signalR`。|
 |**direction**| 不适用 | 必须设置为 `out`。|
 |**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
@@ -753,4 +753,5 @@ public SignalRGroupAction removeFromGroup(
 
 ## <a name="next-steps"></a>后续步骤
 
-- [返回服务终结点 URL 并 (输入绑定中的访问令牌) ](./functions-bindings-signalr-service-input.md)
+- [处理来自 SignalR 服务的消息 (触发器绑定) ](./functions-bindings-signalr-service-trigger.md)
+- [返回服务终结点 URL 和访问令牌（输入绑定）](./functions-bindings-signalr-service-input.md)

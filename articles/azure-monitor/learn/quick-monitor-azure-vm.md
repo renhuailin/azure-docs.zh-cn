@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: ef0e3a451a5687278acaf1e857012027a5e657a3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: bf38291e26c46d26bbf8cb110d18e9526fb3f777
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186756"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797173"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 虚拟机。
 创建 Azure 虚拟机后，[Azure Monitor](../overview.md) 会立即开始从这些虚拟机收集数据。 本快速入门简要说明自动收集的 Azure VM 数据，以及如何在 Azure 门户中查看这些数据。 然后，为 VM 启用[用于 VM 的 Azure Monitor](../insights/vminsights-overview.md)，使 VM 上的代理能够从来宾操作系统（包括进程及其依赖项）收集数据并对其进行分析。
@@ -73,7 +73,7 @@ ms.locfileid: "96186756"
 
 ### <a name="data-collection-from-linux-vm"></a>Linux VM 中的数据收集
 
-1. 选择“Syslog”。  
+1. 选择“数据”，然后选择 **Syslog**。
 
 2. 键入日志名称来添加事件日志。  键入“Syslog”，然后选择加号 (**+**)。  
 

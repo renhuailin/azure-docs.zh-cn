@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 9a5cb1e589481bb424507d08879da8cc1b14ff1c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0dd66e246e5e172ad359f5e6e953b360e6e74ebd
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92448174"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796969"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Google Cloud (G Suite) Connector 的集成
 
@@ -82,7 +82,7 @@ ms.locfileid: "92448174"
 
 * Google Cloud (G Suite) Connector 支持 **SP** 发起的 SSO
 
-* Google Cloud (G Suite) Connector 支持 [**自动** 用户预配](./google-apps-provisioning-tutorial.md)
+* Google Cloud (G Suite) Connector 支持 [**自动** 用户预配](g-suite-provisioning-tutorial.md)
 * 配置 Google Cloud (G Suite) Connector 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>从库中添加 Google Cloud (G Suite) Connector
@@ -93,7 +93,7 @@ ms.locfileid: "92448174"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Google Cloud (G Suite) Connector** 。 
+1. 在“从库中添加”部分的搜索框中，键入 **Google Cloud (G Suite) Connector**。 
 1. 在结果面板中选择“Google Cloud (G Suite) Connector”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-google-cloud-g-suite-connector"></a>配置并测试 Google Cloud (G Suite) Connector 的 Azure AD 单一登录
@@ -236,13 +236,13 @@ ms.locfileid: "92448174"
 
     f. 在 Google Cloud (G Suite) Connector 中的“更改密码 URL”字段内，粘贴从 Azure 门户复制的“更改密码 URL”值。 
 
-    g. 单击“ **保存** ”。
+    g. 单击“ **保存**”。
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>创建 Google Cloud (G Suite) Connector 测试用户
 
 本部分的目标是[在 Google Cloud (G Suite) Connector 中创建名为 B.Simon 的用户](https://support.google.com/a/answer/33310?hl=en)。 在 Google Cloud (G Suite) Connector 中手动创建用户后，该用户现在可以使用其 Microsoft 365 登录凭据登录。
 
-Google Cloud (G Suite) Connector 还支持自动用户预配。 若要配置自动用户预配，必须先[为自动用户预配配置 Google Cloud (G Suite) Connector](./google-apps-provisioning-tutorial.md)。
+Google Cloud (G Suite) Connector 还支持自动用户预配。 若要配置自动用户预配，必须先[为自动用户预配配置 Google Cloud (G Suite) Connector](g-suite-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 如果在测试单一登录之前尚未在 Azure AD 中启用预配，请确保 Google Cloud (G Suite) Connector 中已存在用户。
@@ -264,7 +264,7 @@ Google Cloud (G Suite) Connector 还支持自动用户预配。 若要配置自�
 
 - [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
 
-- [配置用户预配](./google-apps-provisioning-tutorial.md)
+- [配置用户预配](g-suite-provisioning-tutorial.md)
 
 - [在 Azure AD 中试用 Google Cloud (G Suite) Connector](https://aad.portal.azure.com/)
 
