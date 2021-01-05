@@ -6,24 +6,25 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: bdca5a753a49c26587db27892b54c2cb88910c83
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 823992ba6d3b175c8d20a001f8298a5c4af9a1ae
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862456"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832703"
 ---
 # <a name="continuously-export-security-center-data"></a>连续导出安全中心数据
 
-Azure 安全中心会生成详细的安全警报和建议。 可以通过门户或编程工具查看它们。 你可能还需要导出部分或全部信息，以便与环境中的其他监视工具进行跟踪。 
+Azure 安全中心会生成详细的安全警报和建议。 可以通过门户或编程工具查看它们。 你可能还需要部分或全部导出此信息，以使用环境中的其他监视工具进行跟踪。 
 
 “连续导出”使你可以完全自定义将要导出的内容，以及要导出到的位置 。 例如，可以对其进行配置，以便：
 
 - 将所有高严重性警报发送到 Azure 事件中心
 - 将 SQL 服务器的漏洞评估扫描中的所有中等或较高严重性结果发送到特定的 Log Analytics 工作区
 - 将生成的特定建议即时传递到事件中心或 Log Analytics 工作区 
+- 每当控件的分数更改0.01 或更多时，订阅的安全分数就会发送到 Log Analytics 工作区 
 
 本文介绍如何配置到 Log Analytics 工作区或 Azure 事件中心的连续导出。
 
@@ -41,12 +42,22 @@ Azure 安全中心会生成详细的安全警报和建议。 可以通过门户�
 |发布状态：|正式发布 (GA)|
 |定价：|免费|
 |所需角色和权限：|<ul><li>资源组的安全管理员或所有者 </li><li>对目标资源的写入权限</li><li>如果使用的是下面所述的 Azure Policy“DeployIfNotExist”策略，则还需要分配策略的权限</li></ul>|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov，其他 Gov<br>![是](./media/icons/yes-icon.png) 中国 Gov (到事件中心) |
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov，其他政府<br>![是](./media/icons/yes-icon.png) 中国 Gov (到事件中心) |
 |||
 
 
+## <a name="what-data-types-can-be-exported"></a>可以导出哪些数据类型？
 
+连续导出可在每次更改时导出以下数据类型：
 
+- 安全警报
+- 安全建议 
+- 安全发现，可被视为 "sub" 建议，如漏洞评估扫描程序或特定系统更新的发现。 你可以选择将其包含在 "父" 建议中，如 "应在计算机上安装系统更新"。
+- 每个订阅或每个控件 (安全分数) 
+- 法规符合性数据
+
+> [!NOTE]
+> 安全分数和法规遵从性数据的导出是一项预览功能，在政府云上不可用。 
 
 ## <a name="set-up-a-continuous-export"></a>设置连续导出 
 
@@ -62,12 +73,12 @@ Azure 安全中心会生成详细的安全警报和建议。 可以通过门户�
 1. 选择要为其配置数据导出的特定订阅。
 1. 从该订阅的设置页的侧栏中，选择“连续导出”。
 
-    :::image type="content" source="./media/continuous-export/continuous-export-options-page.png" alt-text="Azure 安全中心的导出选项":::
+    :::image type="content" source="./media/continuous-export/continuous-export-options-page.png" alt-text="Azure 安全中心内的导出选项":::
 
-    此时会显示导出选项。 每个可用的导出目标有一个选项卡。 
+    可以在这里看到导出选项。 每个可用的导出目标有一个选项卡。 
 
 1. 选择要导出的数据类型，并从每种类型的筛选器中进行选择（例如，仅导出严重程度高的警报）。
-1. （可选）如果你的选择包含以下四个建议中的一个，你可以将漏洞评估结果与它们包括在一起：
+1. （可选）如果你的选择包含其中一项建议，你可以将漏洞评估发现与它们一起包括：
     - 应修正关于 SQL 数据库的漏洞评估结果
     - 应修正关于计算机上的 SQL 服务器的漏洞评估结果（预览版）
     - 应修正 Azure 容器注册表映像中的漏洞（由 Qualys 提供技术支持）
@@ -168,7 +179,7 @@ API 提供了 Azure 门户中没有的其他功能，例如：
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>在 Azure Monitor 中查看导出的警报和建议
 
-你还可以选择在 [Azure Monitor](../azure-monitor/platform/alerts-overview.md)中查看导出的安全警报和/或建议。 
+还可以选择在 [Azure Monitor](../azure-monitor/platform/alerts-overview.md) 中查看导出的安全警报和/或建议。 
 
 Azure Monitor 为各种 Azure 警报（包括诊断日志、指标警报以及基于 Log Analytics 工作区查询的自定义警报）提供统一的警报体验。
 
@@ -216,6 +227,9 @@ Azure Monitor 为各种 Azure 警报（包括诊断日志、指标警报以及�
 
 - 不会导出在启用导出之前收到的警报。
 - 当资源的合规性状态发生更改时就会发送建议。 例如，当某个资源的状态从正常变为不正常时。 因此，与警报一样，将不会导出针对自启用导出以来未更改状态的资源的建议。
+- 安全 **分数 (预览)** 每个安全控制或订阅在安全控制的分数更改0.01 或更大时发送。 
+- 当资源的符合性状态发生更改时，将发送 " **(预览") 的法规符合性状态**。
+
 
 
 ### <a name="why-are-recommendations-sent-at-different-intervals"></a>为什么建议以不同的时间间隔发送？

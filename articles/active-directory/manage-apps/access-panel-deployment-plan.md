@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 209760b51e0f3ab931fa43ef88406f15c75ac079
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835656"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832533"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>规划应用程序部署 Azure Active Directory
 
@@ -72,10 +72,10 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 
 下表概述了 "我的应用" 部署的主要用例：
 
-| 领域| 说明 |
+| 区域| 说明 |
 | - | - |
 | Access| "我的应用" 门户可从企业网络中的公司和个人设备进行访问。 |
-|Access | 可以从企业网络外部的企业设备访问 "我的应用" 门户。 |
+|访问 | 可以从企业网络外部的企业设备访问 "我的应用" 门户。 |
 | 审核| 使用情况数据至少每29天下载到企业系统。 |
 | 调控| 定义和监视 Azure AD 连接的应用程序和组的用户分配的生命周期。 |
 | 安全性| 可以通过用户和组分配来控制对资源的访问权限。 只有经过授权的用户可以管理资源访问权限。 |
@@ -145,7 +145,7 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 
 ### <a name="plan-communications"></a>规划沟通
 
-沟通对于任何新服务的成功都至关重要。 主动向用户通知其体验将发生更改的方式和时间，以及如何在需要时获得支持。
+通信对于任何新服务的成功至关重要。 主动向用户通知其体验将发生更改的方式和时间，以及如何在需要时获得支持。
 
 尽管我的应用程序通常不会创建用户问题，但必须做好准备。 开始之前，请为支持人员创建指南和所有资源的列表。
 

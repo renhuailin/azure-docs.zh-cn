@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 74e0e8daa662f4dd49f1886972236b5b0a3b100a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3e48ed870bf405a82441678b5e8c01d199e7ebff
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348851"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835000"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>快速入门：创建 azureiotsecurity 模块孪生
 
@@ -65,10 +65,10 @@ ms.locfileid: "96348851"
 
 1. 在 Azure IoT 中心，从“资源管理器”菜单中选择“IoT 设备”。  
 1. 输入设备 ID，或者在“查询设备字段”中选择一个选项，然后单击“查询设备”。  
-    ![查询设备](./media/quickstart/verify-security-module-twin.png)
+    :::image type="content" source="./media/quickstart/verify-security-module-twin.png" alt-text="查询设备":::
 1. 选择该设备或双击它，以打开“设备详细信息”页。
 1. 选择“模块标识”菜单，在与设备关联的模块标识列表中，确认是否存在 **azureiotsecurity** 模块。 
-    ![与设备关联的模块](./media/quickstart/verify-security-module-twin-3.png)
+    :::image type="content" source="./media/quickstart/verify-security-module-twin-3.png" alt-text="与设备关联的模块":::
 
 若要详细了解如何自定义适用于 IoT 的 Defender 模块孪生的属性，请参阅[代理配置](how-to-agent-configuration.md)。
 
