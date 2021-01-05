@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 817b8976f5d014d990945816c2df1c7e8ed729fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 366c77ff94773163b71845b1ccbc6072c503734a
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084879"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822295"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>调试 Azure HDInsight 中运行的 Apache Spark 作业
 
@@ -36,11 +36,11 @@ ms.locfileid: "86084879"
    > [!TIP]  
    > 或者，也可以从 Ambari UI 启动 YARN UI。 若要启动 Ambari UI，请在“群集仪表板”下选择“Ambari 主页” 。 在 Ambari UI 中，导航到“YARN” > “快速链接”>“活动资源管理器”>“资源管理器 UI”。
 
-2. 由于 Spark 作业是使用 Jupyter 笔记本启动的，因此应用程序的名称为“remotesparkmagics”（从笔记本启动的所有应用程序的名称）。 根据应用程序名称选择应用程序 ID，以获取有关该作业的详细信息。 此操作会启动应用程序视图。
+2. 由于已使用 Jupyter 笔记本启动 Spark 作业，因此应用程序的名称为 " **为 remotesparkmagics** " (从 "笔记本") 中启动的所有应用程序的名称。 根据应用程序名称选择应用程序 ID，以获取有关该作业的详细信息。 此操作会启动应用程序视图。
 
     ![Spark History Server - 查找 Spark 应用程序 ID](./media/apache-spark-job-debugging/find-application-id1.png)
 
-    对于从 Jupyter Notebook 启动的应用程序，在退出 Notebook 之前，其状态始终是“正在运行”。
+    对于从 Jupyter 笔记本启动的此类应用程序，状态始终为 " **正在运行** "，直到你退出笔记本。
 
 3. 从应用程序视图中，可以进一步深入以找到与应用程序和日志 (stdout/stderr) 关联的容器。 也可以通过单击“跟踪 URL”对应的链接来启动 Spark UI，如下所示。
 
@@ -50,7 +50,7 @@ ms.locfileid: "86084879"
 
 在 Spark UI 中，可以深入到前面启动的应用程序所产生的 Spark 作业。
 
-1. 若要启动 Spark UI，请在应用程序视图中选择针对“跟踪 URL”的链接，如上面的屏幕截图所示。 可以看到，应用程序启动的所有 Spark 作业正在 Jupyter Notebook 中运行。
+1. 若要启动 Spark UI，请在应用程序视图中选择针对“跟踪 URL”的链接，如上面的屏幕截图所示。 你可以查看 Jupyter Notebook 中运行的应用程序启动的所有 Spark 作业。
 
     ![Spark History Server 的“作业”选项卡](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a692f4dd86d110f7f0a91a862a7b16ac28345de5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00b9568d03260a9d1ac0b6916e09f3d9ef4da34d
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084522"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822159"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本
 
@@ -26,7 +26,7 @@ HDInsight Spark 群集包括 [Apache Zeppelin](https://zeppelin.apache.org/) 笔
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>启动 Apache Zeppelin 笔记本
 
-1. 在 Spark 群集的“概述”中，从**群集仪表板**选择“Zeppelin 笔记本”。  输入群集的管理员凭据。  
+1. 在 Spark 群集的“概述”中，从 **群集仪表板** 选择“Zeppelin 笔记本”。  输入群集的管理员凭据。  
 
    > [!NOTE]  
    > 也可以在浏览器中打开以下 URL 来访问群集的 Zeppelin 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
@@ -115,7 +115,7 @@ HDInsight Spark 群集包括 [Apache Zeppelin](https://zeppelin.apache.org/) 笔
 
 HDInsight 上 Apache Spark 群集中的 Zeppelin 笔记本可以使用群集中未包含的、社区提供的外部包。 在 [Maven 存储库](https://search.maven.org/)中搜索可用包的完整列表。 也可以从其他源获取可用包的列表。 例如， [Spark 包](https://spark-packages.org/)中提供了社区贡献包的完整列表。
 
-本文将介绍如何在 Jupyter 笔记本中使用 [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 包。
+在本文中，你将了解如何将 [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 包与 Jupyter Notebook 一起使用。
 
 1. 打开解释器设置。 选择右上角的登录用户名，然后选择“解释器”。
 
@@ -137,7 +137,7 @@ HDInsight 上 Apache Spark 群集中的 Zeppelin 笔记本可以使用群集中�
 
     b. 从存储库中收集 **GroupId**、**ArtifactId** 和 **Version** 的值。
 
-    ![将外部包与 Jupyter 笔记本配合使用](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "将外部包与 Jupyter 笔记本配合使用")
+    ![在 Jupyter Notebook 中使用外部包](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "在 Jupyter Notebook 中使用外部包")
 
     c. 串连这三个值并以冒号分隔 ( **:** )。
 
@@ -227,5 +227,5 @@ Zeppelin 笔记本中的第一个代码段会在群集中创建一个新的 Livy
 ## <a name="next-steps"></a>后续步骤
 
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
-* [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
+* [适用于 HDInsight 的 Apache Spark 群集中的 Jupyter Notebook 可用的内核](apache-spark-jupyter-notebook-kernels.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)

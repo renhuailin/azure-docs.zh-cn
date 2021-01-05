@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: c2e2daf6d8c9afa6ffef03b088ec9a7dc144cf47
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: f74307cc7f074788ac12712b3722dc0ad7fa71b6
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504927"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821139"
 ---
 # <a name="configure-apache-spark-settings"></a>配置 Apache Spark 设置
 
@@ -130,7 +130,7 @@ HDInsight 中的 Spark 群集默认包含许多组件。 其中每个组件包�
 |Spark Core|Spark Core、Spark SQL、Spark 流式处理 API、GraphX 和 Apache Spark MLlib。|
 |Anaconda|Python 包管理器。|
 |Apache Livy|Apache Spark REST API，用于将远程作业提交到 HDInsight Spark 群集。|
-|Jupyter 和 Apache Zeppelin 笔记本|用来与 Spark 群集交互的基于浏览器的交互式 UI。|
+|Jupyter 笔记本和 Apache Zeppelin 笔记本|用来与 Spark 群集交互的基于浏览器的交互式 UI。|
 |ODBC 驱动程序|将 HDInsight 中的 Spark 群集连接到 Microsoft Power BI 和 Tableau 等商业智能 (BI) 工具。|
 
 对于在 Jupyter Notebook 中运行的应用程序，请使用 `%%configure` 命令从笔记本自身中进行配置更改。 这些配置更改将应用到从 Notebook 实例运行的 Spark 作业。 先在应用程序的开头进行此类更改，然后再运行第一个代码单元。 创建 Livy 会话时，会将更改的配置应用到该会话。

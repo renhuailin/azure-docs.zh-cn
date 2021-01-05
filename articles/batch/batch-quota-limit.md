@@ -2,14 +2,14 @@
 title: 服务配额和限制
 description: 了解默认的 Azure Batch 配额、限制和约束，以及如何请求提高配额
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 12/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9f529d388cb883f635b6225801af5ce41b8c997a
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 11c9ad1e916ad7e64b59cc13c0967d2b9daed4aa
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614502"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814629"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -33,7 +33,7 @@ ms.locfileid: "97614502"
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Batch 服务模式下的核心配额
 
-正在改进专用核心配额的实施，并在2020年12月结束后，所有批处理帐户的更改都将按阶段提供。
+在2021年1月结束时，将会改进实施专用核心配额，并为所有批处理帐户完成更改。
 
 VM 支持的每个 VM 序列都存在核心配额，它们显示在门户的 " **配额** " 页上。 可以使用支持请求更新 VM 序列配额限制，如下所述。
 
@@ -70,7 +70,7 @@ VM 支持的每个 VM 序列都存在核心配额，它们显示在门户的 " *
 
 ## <a name="other-limits"></a>其他限制
 
-Batch 服务设置的其他限制。 与[资源配额](#resource-quotas)不同，这些值无法更改。
+这些附加限制由 Batch 服务设置。 与[资源配额](#resource-quotas)不同，这些值无法更改。
 
 | **资源** | **最大限制** |
 | --- | --- |
@@ -80,6 +80,7 @@ Batch 服务设置的其他限制。 与[资源配额](#resource-quotas)不同�
 | 每个池的应用程序包数 | 10 |
 | 最长任务生存期 | 180 天<sup>1</sup> |
 | 每个计算节点的[装载](virtual-file-mount.md)数 | 10 |
+| 每个池的证书 | 12 |
 
 <sup>1</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 180 天。 已完成的任务保存七天；最长生存期内未完成的任务的数据不可访问。
 
@@ -91,7 +92,7 @@ Batch 服务设置的其他限制。 与[资源配额](#resource-quotas)不同�
 1. 在 Batch 帐户的菜单上选择“配额”。
 1. 查看当前应用于 Batch 帐户的配额。
 
-:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Batch 帐户配额":::
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="显示 Azure 门户中的 Batch 帐户配额的屏幕截图。":::
 
 ## <a name="increase-a-quota"></a>提高配额
 
@@ -100,26 +101,26 @@ Batch 服务设置的其他限制。 与[资源配额](#resource-quotas)不同�
 1. 在门户仪表板上选择“帮助 + 支持”磁贴，或单击门户右上角的问号 ( **?** )。
 1. 选择“新建支持请求” > “基本”。
 1. 在“基本信息”中：
-   
+
     1. “问题类型” > “服务和订阅限制(配额)”
-   
+
     1. 选择订阅。
-   
+
     1. “配额类型” > “Batch”
-      
+
        选择“**下一页**”。
-    
+
 1. 在“详细信息”中：
-      
+
     1. 在“提供详细信息”中，指定位置、配额类型和 Batch 帐户。
-    
-       ![Batch 配额增加][quota_increase]
+
+       :::image type="content" source="media/batch-quota-limit/quota-increase.png" alt-text="请求增加配额时，配额详细信息屏幕的屏幕截图。":::
 
        配额类型包括：
 
        * 每个 Batch 帐户  
          特定于单个 Batch 帐户的值，包括专用和低优先级核心以及作业和池的数量。
-        
+
        * 每个区域  
          应用于区域中所有 Batch 帐户的值，包括每个订阅的每个区域的 Batch 帐户数。
 
@@ -130,11 +131,11 @@ Batch 服务设置的其他限制。 与[资源配额](#resource-quotas)不同�
        选择“**下一页**”。
 
 1. 在“联系人信息”中：
-   
+
     1. 选择“首选联系方法”。
-   
+
     1. 输入并确认所需的联系人详细信息。
-   
+
        选择“创建”以提交支持请求。
 
 提交支持请求后，Azure 支持人员将与你取得联系。 配额请求可以在几分钟内完成，或在最多两个工作日内完成。

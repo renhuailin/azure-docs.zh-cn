@@ -5,17 +5,18 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/16/2020
+ms.date: 12/30/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: c9dd39ffa68d8261f5c5d301d4c351c52b3f27c1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654586"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822278"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文探讨 Azure 数据工厂中的外部控制活动的常用故障排除方法。
@@ -128,9 +129,9 @@ ms.locfileid: "94654586"
 
 - **消息**：`An error occurred while sending the request.`
 
-- **原因**：与 Databricks 服务的网络连接已中断。
+- **原因：** 与 Databricks 服务的网络连接已中断。
 
-- **建议**：如果你使用的是自承载集成运行时，请确保网络连接从 integration runtime 节点中可靠。 如果你使用的是 Azure 集成运行时，则重试通常会起作用。
+- **建议**：如果使用的是自承载集成运行时，请确保来自集成运行时节点的网络连接是可靠的。 如果使用的是 Azure 集成运行时，则重试通常有效。
  
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
@@ -498,7 +499,7 @@ ms.locfileid: "94654586"
 
 - **消息**：`There are duplicate files in the resource folder.`
 
-- **原因：** folderPath 的不同子文件夹中存在多个同名的文件。
+- **原因**：具有相同名称的多个文件位于 folderPath 的不同子文件夹中。
 
 - **建议**：自定义活动在 folderPath 下平展文件夹结构。 如果需要保留文件夹结构，请压缩文件，并使用一个解压缩命令将其解压缩到 Azure Batch 中。
    
@@ -545,7 +546,6 @@ ms.locfileid: "94654586"
 - **原因：** 尝试读取服务主体或实例化 MSI 身份验证时出现内部错误。
 
 - **建议**：请考虑提供一个有权在所提供订阅中创建 HDInsight 群集的服务主体，然后重试。 验证是否[正确设置了托管标识](../hdinsight/hdinsight-managed-identities.md)。
-
 
 ### <a name="error-code-2300"></a>错误代码：2300
 
@@ -952,6 +952,16 @@ ms.locfileid: "94654586"
 
 - **建议**：提供 Azure Blob 存储帐户作为 HDInsight 按需链接服务的附加存储。
 
+### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>使用 HDInsight ESP 群集的 ADF 链接服务时出现 SSL 错误
+
+- 消息：`Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
+
+- **原因**：问题最可能与系统信任存储区相关。
+
+- **解决方法**：可以导航到 **Microsoft Integration RUNTIME\4.0\SHARED\ODBC Drivers\Microsoft Hive ODBC Driver\lib** 路径，并打开 DriverConfiguration64.exe 更改设置。
+
+    ![取消选中 "使用系统信任存储区"](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+
 ## <a name="web-activity"></a>Web 活动
 
 ### <a name="error-code-2128"></a>错误代码：2128
@@ -1009,15 +1019,15 @@ ms.locfileid: "94654586"
 
 ### <a name="activity-stuck-issue"></a>活动停滞问题
 
-如果观察到活动运行的时间比正常运行的时间长得多，几乎没有任何进展，则可能会停滞。 您可以尝试取消它，然后重试查看是否有帮助。 如果是复制活动，您可以了解有关如何 [排查复制活动性能](copy-activity-performance-troubleshooting.md)问题的性能监视和故障排除问题;如果是数据流，请参阅 [映射数据流性能](concepts-data-flow-performance.md) 和优化指南。
+如果观察到活动运行的时间比正常运行的时间长得多，并且几乎没有任何进展，则可能是停滞。 你可以尝试取消它，然后重试，看是否有帮助。 如果是复制活动，您可以了解有关如何 [排查复制活动性能](copy-activity-performance-troubleshooting.md)问题的性能监视和故障排除问题;如果是数据流，请参阅 [映射数据流性能](concepts-data-flow-performance.md) 和优化指南。
 
 ### <a name="payload-is-too-large"></a>有效负载太大
 
-**错误消息：**`The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
+**错误消息：** `The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
 
-**原因：** 每个活动运行的有效负载包括活动配置、关联的数据集 (s) 和链接服务 (s) 配置（如果有），以及根据活动类型生成的一小部分系统属性。 此类负载大小限制为896KB，如 [数据工厂限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) 部分中所述。
+**原因：** 每个活动运行的有效负载包括活动配置、关联的数据集 (s) 以及链接服务 (s) 配置（如果有），以及根据活动类型生成的一小部分系统属性。 此类负载大小的限制为 896 KB，如 " [数据工厂限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) " 部分中所述。
 
-**建议：** 达到此限制可能是因为您从上游活动输出或外部传入一个或多个大参数值，尤其是在控制流中跨活动传递实际数据时。 请检查是否可以减小大参数值的大小，或调整管道逻辑，以避免跨活动传递此类值并改为在活动中处理此类值。
+**建议：** 达到此限制，很可能是因为从上游活动输出或外部传入了一个或多个大参数值，尤其是在控制流中跨活动传递实际数据时。 检查是否可以减小大参数值的大小，或调整管道逻辑以避免跨活动传递此类值，而应在活动中处理此类值。
 
 ## <a name="next-steps"></a>后续步骤
 

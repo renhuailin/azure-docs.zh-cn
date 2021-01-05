@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 中 Spark 群集上的 Jupyter 笔记本的内核
-description: 了解 Azure HDInsight 上的 Spark 群集所提供的 Jupyter Notebook 的 PySpark、PySpark3 和 Spark 内核。
+title: Azure HDInsight 中 Spark 群集上的 Jupyter Notebook 内核
+description: 了解 Azure HDInsight 上的 Spark 群集所提供的用于 Jupyter Notebook 的 PySpark、PySpark3 和 Spark 内核。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1139ce2358d5e5b3b52376892524e7ee0dd5611
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084709"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822227"
 ---
-# <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 群集上的 Jupyter notebook 的内核
+# <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 群集上 Jupyter Notebook 的内核
 
-HDInsight Spark 群集提供可在 [Apache Spark](./apache-spark-overview.md) 上的 Jupyter notebook 中用于测试应用程序的内核。 内核是可以运行和解释代码的程序。 三个内核如下：
+HDInsight Spark 群集提供了可用于测试应用程序 [Apache Spark](./apache-spark-overview.md) 上的 Jupyter Notebook 的内核。 内核是可以运行和解释代码的程序。 三个内核如下：
 
 - **PySpark** -适用于以 Python2 编写的应用程序。
 - **PySpark3** -适用于以 Python3 编写的应用程序。
@@ -33,26 +33,26 @@ HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Spark 群集。  有关说明，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。 此时将打开“概述”视图。
 
-2. 在“概述”视图的“群集仪表板”框中，选择 **Jupyter Notebook**。 出现提示时，请输入群集的管理员凭据。
+2. 从 " **概述** " 视图的 " **群集仪表板** " 框中，选择 **Jupyter Notebook**。 出现提示时，请输入群集的管理员凭据。
 
-    ![Apache Spark 上的 Jupyter 笔记本](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark 上的 Jupyter Notebook")
+    ![Apache Spark 上的 Jupyter Notebook](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark 上的 Jupyter Notebook")
   
    > [!NOTE]  
-   > 也可以在浏览器中打开以下 URL 来访问 Spark 群集中的 Jupyter Notebook。 将 **CLUSTERNAME** 替换为群集的名称：
+   > 还可以通过在浏览器中打开以下 URL 来访问 Spark 群集上的 Jupyter Notebook。 将 **CLUSTERNAME** 替换为群集的名称：
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
 3. 选择“新建”，然后选择“Pyspark”、“PySpark3”或“Spark”创建 Notebook。    使用适用于 Scala 应用程序的 Spark 内核、适用于 Python2 应用程序的 PySpark 内核，以及适用于 Python3 应用程序的 PySpark3 内核。
 
-    ![Spark 上适用于 Jupyter Notebook 的内核](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 上适用于 Jupyter Notebook 的内核")
+    ![Spark 上用于 Jupyter Notebook 的内核](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 上用于 Jupyter Notebook 的内核")
 
 4. 此时会打开使用所选内核的 Notebook。
 
 ## <a name="benefits-of-using-the-kernels"></a>使用这些内核的好处
 
-以下是在 Spark HDInsight 群集中的 Jupyter Notebook 上使用新内核的几个好处。
+以下是在 Spark HDInsight 群集上将新内核与 Jupyter Notebook 结合使用的几个优点。
 
-- **预设上下文**。 使用  **PySpark**、 **PySpark3**或 **Spark** 内核时，无需显式设置 Spark 或 Hive 上下文，即可开始使用应用程序。 默认情况下，这些上下文是可用的。 这些上下文包括：
+- **预设上下文**。 使用  **PySpark**、 **PySpark3** 或 **Spark** 内核时，无需显式设置 Spark 或 Hive 上下文，即可开始使用应用程序。 默认情况下，这些上下文是可用的。 这些上下文包括：
 
   - **sc** - 表示 Spark 上下文
   - **sqlContext** - 表示 Hive 上下文
@@ -107,10 +107,10 @@ SELECT * FROM hivesampletable
 
 上述语句执行以下操作：
 
-- 从 **hivesampletable**中选择所有记录。
+- 从 **hivesampletable** 中选择所有记录。
 - 由于使用了 -q，因此将关闭自动可视化。
 - 由于我们使用 `-m sample -r 0.1 -n 500` ，因此它会在 hivesampletable 中随机采样10% 的行，并将结果集的大小限制为500行。
-- 最后，由于使用了 `-o query2` ，因此将输出保存到名为 **query2**的数据帧中。
+- 最后，由于使用了 `-o query2` ，因此将输出保存到名为 **query2** 的数据帧中。
 
 ## <a name="considerations-while-using-the-new-kernels"></a>使用新内核时的注意事项
 
@@ -118,7 +118,7 @@ SELECT * FROM hivesampletable
 
 ## <a name="where-are-the-notebooks-stored"></a>Notebook 存储在何处？
 
-如果群集使用 Azure 存储作为默认存储帐户，Jupyter notebook 将保存到 **/HdiNotebooks** 文件夹下的存储帐户。  可以从存储帐户访问在 Jupyter 内部创建的 Notebook、文本文件和文件夹。  例如，如果你使用 Jupyter 创建文件夹 **`myfolder`** 和笔记本 **myfolder/mynotebook**，则可以在 `/HdiNotebooks/myfolder/mynotebook.ipynb` 存储帐户中访问该笔记本。  反之亦然，如果直接将 Notebook 上传到 `/HdiNotebooks/mynotebook1.ipynb`中的存储帐户，则可以从 Jupyter 查看该 Notebook。  即使删除了群集，Notebook 也仍会保留在存储帐户中。
+如果群集使用 Azure 存储作为默认存储帐户，则 Jupyter 笔记本将保存到 **/HdiNotebooks** 文件夹下的存储帐户中。  可以从存储帐户访问在 Jupyter 内部创建的 Notebook、文本文件和文件夹。  例如，如果你使用 Jupyter 创建文件夹 **`myfolder`** 和笔记本 **myfolder/mynotebook**，则可以在 `/HdiNotebooks/myfolder/mynotebook.ipynb` 存储帐户中访问该笔记本。  反之亦然，如果直接将 Notebook 上传到 `/HdiNotebooks/mynotebook1.ipynb`中的存储帐户，则可以从 Jupyter 查看该 Notebook。  即使删除了群集，Notebook 也仍会保留在存储帐户中。
 
 > [!NOTE]  
 > 将 Azure Data Lake Storage 作为默认存储的 HDInsight 群集不在关联的存储中存储笔记本。
@@ -135,7 +135,7 @@ SELECT * FROM hivesampletable
 
 ## <a name="supported-browser"></a>支持的浏览器
 
-Google Chrome 仅支持 Spark HDInsight 群集中的 Jupyter Notebook。
+仅 Google Chrome 支持 Spark HDInsight 群集上的 Jupyter 笔记本。
 
 ## <a name="suggestions"></a>建议
 
@@ -145,5 +145,5 @@ Google Chrome 仅支持 Spark HDInsight 群集中的 Jupyter Notebook。
 
 - [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 - [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
-- [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](apache-spark-jupyter-notebook-use-external-packages.md)
+- [将外部包与 Jupyter 笔记本配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
 - [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)

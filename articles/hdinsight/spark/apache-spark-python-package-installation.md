@@ -1,6 +1,6 @@
 ---
 title: 用于 Azure HDInsight 上包含 Jupyter 的 Python 包的脚本操作
-description: 逐步说明如何使用脚本操作配置 HDInsight Spark 群集随附的 Jupyter notebook，以使用外部 python 包。
+description: 逐步说明如何使用脚本操作来配置 HDInsight Spark 群集可使用的 Jupyter 笔记本，以使用外部 python 包。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 5a0f9f9f972ec42987d6152c16e4377e399cdba5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 21423f7200d25c9a5b3b63d2371e56977cd9d227
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896406"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821369"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
 
-HDInsight 在 Spark 群集中有两个内置 Python 安装，即 Anaconda Python 2.7 和 Python 3.5。 客户可能需要自定义 Python 环境，如安装外部 Python 包。 本文介绍的最佳做法涉及如何安全地管理 HDInsight 上 Apache Spark 群集的 Python 环境。
+HDInsight 在 Spark 群集中有两个内置 Python 安装，即 Anaconda Python 2.7 和 Python 3.5。 客户可能需要自定义 Python 环境，例如安装外部 Python 包。 本文介绍的最佳做法涉及如何安全地管理 HDInsight 上 Apache Spark 群集的 Python 环境。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,8 +46,8 @@ HDInsight Spark 群集是通过 Anaconda 安装创建的。 群集中有两个 P
 |设置 |Python 2.7|Python 3.5|
 |----|----|----|
 |路径|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark 版本|默认设置为 2.7|可以将配置更改为3。5|
-|Livy 版本|默认设置为 2.7|可以将配置更改为3。5|
+|Spark 版本|默认设置为 2.7|可以将配置更改为 3.5|
+|Livy 版本|默认设置为 2.7|可以将配置更改为 3.5|
 |Jupyter|PySpark 内核|PySpark3 内核|
 
 ## <a name="safely-install-external-python-packages"></a>安全安装外部 Python 包
@@ -130,9 +130,9 @@ HDInsight 群集依赖于内置 Python 环境（Python 2.7 和 Python 3.5）。 
 
         ![重新启动服务](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
-    5. 将两个属性设置到 Spark 会话，以确保作业指向更新的 Spark 配置： `spark.yarn.appMasterEnv.PYSPARK_PYTHON` 和 `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON` 。 
+    5. 为 Spark 会话设置两个属性，以确保作业指向更新的 spark 配置：`spark.yarn.appMasterEnv.PYSPARK_PYTHON` 和 `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON`。 
 
-        使用终端或笔记本，使用 `spark.conf.set` 函数。
+        使用终端或笔记本时，使用 `spark.conf.set` 函数。
 
         ```spark
         spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
@@ -167,5 +167,5 @@ Anaconda 版本 `4.7.11`、`4.7.12`、`4.8.0` 有一个已知的 bug。 如果�
 ## <a name="next-steps"></a>后续步骤
 
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
-* [在 Apache Spark 中将外部包与 Jupyter 笔记本配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Apache Spark 中包含 Jupyter 笔记本的外部包](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](apache-spark-job-debugging.md)

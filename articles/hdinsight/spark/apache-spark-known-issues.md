@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1dbf6478a62675c8b514298007a7663239d8f7cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65163225853037ac4cb97a02c0bdaf554b509fb1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084636"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822193"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 群集的已知问题
 
@@ -75,7 +75,7 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 
 必须改用 Spark-HBase 连接器。 相关说明请参阅[如何使用 Spark-HBase 连接器](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)。
 
-## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter 笔记本的相关问题
+## <a name="issues-related-to-jupyter-notebooks"></a>与 Jupyter 笔记本相关的问题
 
 下面是与 Jupyter 笔记本相关的一些已知问题。
 
@@ -100,15 +100,15 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>笔记本初次启动花费的时间比预期要长
 
-在使用 Spark magic 的 Jupyter 笔记本中，第一个代码语句可能需要花费一分钟以上。  
+使用 Spark 幻数 Jupyter Notebook 中的第一个代码语句可能需要超过一分钟。  
 
 **解释：**
 
 这发生在运行第一个代码单元时。 它在后台启动设置会话配置，以及设置 SQL、Spark 和 Hive 上下文。 设置这些上下文后，第一个语句才运行，因此让人觉得完成语句需要花费很长时间。
 
-### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>创建会话时 Jupyter 笔记本超时
+### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>创建会话时 Jupyter Notebook 超时
 
-如果 Spark 群集的资源不足，Jupyter 笔记本中的 Spark 和 PySpark 内核在尝试创建会话时会超时。
+当 Spark 群集资源不足时，Jupyter Notebook 中的 Spark 和 PySpark 内核将无法尝试创建会话。
 
 **缓解措施：**
 
@@ -140,8 +140,8 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](apache-spark-intellij-tool-plugin.md)
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
-* [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
-* [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](apache-spark-jupyter-notebook-use-external-packages.md)
+* [适用于 HDInsight 的 Apache Spark 群集中的 Jupyter Notebook 可用的内核](apache-spark-jupyter-notebook-kernels.md)
+* [将外部包与 Jupyter 笔记本配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>管理资源

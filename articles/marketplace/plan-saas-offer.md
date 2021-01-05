@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5f7278a688147842b7dbfab79a20afea2b4a9288
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5b39ccc365575853a4a74a471023989f34ebc577
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621597"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821479"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何为商业市场规划 SaaS 产品/服务
 
@@ -143,14 +143,14 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
 **拨出说明**
 
 1. 徽标
-2. 类别
+2. Categories
 3. 行业
 4. 支持地址 (链接) 
 5. 使用条款
 6. 隐私策略
 7. 产品名称
 8. 总结
-9. 描述
+9. 说明
 10. 屏幕截图/视频
 11. 文档
 
@@ -160,8 +160,8 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
 
 **调出说明**
 
-1. Title
-1. 描述
+1. 标题
+1. 说明
 1. 有用链接
 1. 屏幕截图
 
@@ -202,7 +202,7 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
   - .png 文件
   - 必须包含标题
 - **媒体-视频** (可选) ：最多可以添加四个具有以下要求的视频，其中演示了产品/服务：
-  - “属性”
+  - 名称
   - URL：必须仅托管在 YouTube 或 Vimeo 上。
   - 缩略图： 1280 x 720 .png 文件
 
@@ -250,7 +250,7 @@ SaaS 应用程序产品/服务通过 Microsoft 支持每月或每年使用计费
 | Microsoft 将许可证费用的 80% 支付给你<br>`*` 对于合格的 SaaS 应用，Microsoft 将支付90% 的许可证成本| 80.00 美元/月<br>``*`` 90.00 美元/月 |
 |||
 
-**`*` 降低 Marketplace 服务费用**–对于在商业市场上发布的特定 SaaS 产品/服务，microsoft 将从 20% (降低其 marketplace 服务费用，如 microsoft Publisher 协议) 到10% 中所述。 为了使你的产品/服务 () 合格，你的产品/服务 () 必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 至少必须在每个日历月结束之前至少满足5个 (5) 的工作日内才能接收该月的降低 Marketplace 服务费用。 有关 IP 共同销售资格的详细信息，请参阅 [共同销售状态的要求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 减少的 Marketplace 服务费用还适用于 Azure IP 共同销售 incentivized Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
+**`*` 降低 Marketplace 服务费用**–对于在商业市场上发布的特定 SaaS 产品/服务，microsoft 将从 20% (降低其 marketplace 服务费用，如 microsoft Publisher 协议) 到10% 中所述。 为了使你的产品/服务 () 合格，你的产品/服务 () 必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 至少必须在每个日历月结束之前至少满足5个 (5) 工作日内才能获得降低的 Marketplace 服务费用。 一旦满足了资格，就会向下个月的第一天生效的所有事务授予降低的服务费用，并将继续应用，直到 Azure IP 共同销售 incentivized 状态丢失。 有关 IP 共同销售资格的详细信息，请参阅 [共同销售状态的要求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 减少的 Marketplace 服务费用还适用于 Azure IP 共同销售 incentivized Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
 
 ## <a name="additional-sales-opportunities"></a>其他销售商机
 

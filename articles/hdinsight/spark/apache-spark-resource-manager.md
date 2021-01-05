@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f7cac8ef41ff49f2d623e2b86dff271adcd71ff1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017026"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821411"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上 Apache Spark 群集的资源
 
@@ -56,9 +56,9 @@ Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI
 
     ![重新启动服务](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
-### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>更改 Jupyter 笔记本中运行的应用程序的参数
+### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>更改中运行的应用程序的参数 Jupyter Notebook
 
-对于在 Jupyter 笔记本中运行的应用程序，可以使用 `%%configure` magic 进行配置更改。 理想情况下，必须先在应用程序开头进行此类更改，再运行第一个代码单元。 这可以确保在创建 Livy 会话时会配置应用到该会话。 如果想要更改处于应用程序中后面某个阶段的配置，必须使用 `-f` 参数。 但是，这样做会使应用程序中的所有进度丢失。
+对于在 Jupyter Notebook 中运行的应用程序，可以使用 " `%%configure` 神奇" 进行配置更改。 理想情况下，必须先在应用程序开头进行此类更改，再运行第一个代码单元。 这可以确保在创建 Livy 会话时会配置应用到该会话。 如果想要更改处于应用程序中后面某个阶段的配置，必须使用 `-f` 参数。 但是，这样做会使应用程序中的所有进度丢失。
 
 以下代码片段演示如何更改 Jupyter 中运行的应用程序的配置。
 
@@ -164,6 +164,6 @@ Spark Thrift 服务器驱动程序内存配置为头节点 RAM 大小的 25%，�
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](apache-spark-intellij-tool-plugin.md)
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
-* [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
-* [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](apache-spark-jupyter-notebook-use-external-packages.md)
+* [适用于 HDInsight 的 Apache Spark 群集中的 Jupyter Notebook 可用的内核](apache-spark-jupyter-notebook-kernels.md)
+* [将外部包与 Jupyter 笔记本配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)

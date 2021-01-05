@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 6abdb3cc6981a4fbdd52b88a75457c37709597f5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 42b9958678c76c1d0eed67cc9d97361c84f1dea9
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020783"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821156"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>使用 HDInsight Spark 群集分析 Data Lake Storage Gen1 中的数据
 
@@ -73,7 +73,7 @@ ms.locfileid: "96020783"
 
 3. 创建新的笔记本。 单击“新建”，并单击“PySpark”。
 
-    ![创建新的 Jupyter 笔记本](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "创建新的 Jupyter 笔记本")
+    ![创建新 Jupyter Notebook](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "创建新 Jupyter Notebook")
 
 4. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 为此，请将以下代码片段粘贴到某个单元中，然后按 **SHIFT + ENTER**。
 
@@ -83,7 +83,7 @@ ms.locfileid: "96020783"
 
     每次在 Jupyter 中运行作业时，Web 浏览器窗口标题中都会显示“(繁忙)”状态和笔记本标题。 右上角“PySpark”文本的旁边还会出现一个实心圆。 作业完成后，实心圆将变成空心圆。
 
-     ![Jupyter 笔记本作业的状态](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter 笔记本作业的状态")
+     ![Jupyter Notebook 作业的状态](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter Notebook 作业的状态")
 
 5. 使用已复制到 Data Lake Storage Gen1 帐户的 **HVAC.csv** 文件将示例数据加载到临时表。 可使用以下 URL 模式访问 Data Lake Storage 帐户中的数据。
 
@@ -124,7 +124,7 @@ ms.locfileid: "96020783"
       hvacdf.registerTempTable("hvac")
       ```
 
-6. 由于使用的是 PySpark 内核，因此现在可直接在刚才使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Apache Spark HDInsight clusters](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)（包含 Apache Spark HDInsight 群集的 Jupyter notebook 上可用的内核）。
+6. 由于使用的是 PySpark 内核，因此现在可直接在刚才使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。 有关神奇的详细信息以及 `%%sql` 可用于 PySpark 内核的其他 magic，请参阅 [Jupyter 笔记本上提供的具有 Apache Spark HDInsight 群集的内核](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
 
     ```sql
     %%sql

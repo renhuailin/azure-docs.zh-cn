@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: ffc8fcf734877f55210507310849a5746a280c3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13dd960cc7c900882acbcb9b17a5b8a1f32f956c
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504343"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821496"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探讨 - 高级分析
 
@@ -79,7 +79,7 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark 和深度学习
 
-[深度学习](https://www.microsoft.com/research/group/dltc/)是机器学习的一个分支，使用以人类大脑的生物学流程为灵感的*深度神经网络* (DNN)。 许多研究人员将深度学习视为有前景的人工智能方法。 深度学习的例子包括口译工具、图像识别系统和计算机推理。 为了帮助推进自身在深度学习方面的工作，Microsoft 开发了免费、易用的开源 [Microsoft 认知工具包](https://www.microsoft.com/en-us/cognitive-toolkit/)。 各种 Microsoft 产品、世界各地需要大规模部署深度学习的公司，以及对最新算法和技术感兴趣的学生都在广泛使用该工具包。
+[深度学习](https://www.microsoft.com/research/group/dltc/)是机器学习的一个分支，使用以人类大脑的生物学流程为灵感的 *深度神经网络* (DNN)。 许多研究人员将深度学习视为有前景的人工智能方法。 深度学习的例子包括口译工具、图像识别系统和计算机推理。 为了帮助推进自身在深度学习方面的工作，Microsoft 开发了免费、易用的开源 [Microsoft 认知工具包](https://www.microsoft.com/en-us/cognitive-toolkit/)。 各种 Microsoft 产品、世界各地需要大规模部署深度学习的公司，以及对最新算法和技术感兴趣的学生都在广泛使用该工具包。
 
 ## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>方案 - 为图像评分以识别城市发展模式
 
@@ -91,7 +91,7 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 1. 使用 Apache Spark 2.1.0 分发版创建 Azure HDInsight Hadoop 群集。
 2. 运行自定义脚本，在 Azure HDInsight Spark 群集的所有节点上安装 Microsoft 认知工具包。
-3. 将预先构建的 Jupyter Notebook 上传到 HDInsight Spark 群集，以使用 Spark Python API (PySpark) 将定型的 Microsoft 认知工具包深入学习模型应用到 Azure Blob 存储帐户中的文件。
+3. 将预建 Jupyter Notebook 上传到 HDInsight Spark 群集，以使用 Spark Python API (PySpark) 将训练有素的 Microsoft Cognitive Toolkit 深度学习模型应用于 Azure Blob 存储帐户中的文件。
 
 此示例使用 Alex Krizhevsky、Vinod Nair 及 Geoffrey Hinton 编译和分发的 CIFAR-10 图像集。 CIFAR-10 数据集包含 60,000 个分属 10 个互斥类的 32×32 彩色图像：
 

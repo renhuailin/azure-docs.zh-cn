@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e3e2ca2eca0d258a14365edc97b98d0c827b0b6f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d0d990bc273c33e94b82b597753b29361b1665e1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546052"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821853"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上的 Apache Hadoop 服务所使用的端口
 
@@ -166,7 +166,7 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中。 不能从 I
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift 服务器 |头节点 |10002 |Thrift | &nbsp; | 用于连接到 Spark SQL 的服务 (Thrift/JDBC) |
 | Livy 服务器 | 头节点 | 8998 | HTTP | &nbsp; | 用于运行语句、作业和应用程序的服务 |
-| Jupyter 笔记本 | 头节点 | 8001 | HTTP | &nbsp; | Jupyter notebook 网站 |
+| Jupyter 笔记本 | 头节点 | 8001 | HTTP | &nbsp; | Jupyter Notebook 网站 |
 
 示例:
 

@@ -1,6 +1,6 @@
 ---
 title: Apache Spark 流式处理与 Apache Kafka - Azure HDInsight
-description: 了解如何使用 Apache Spark 通过 DStreams 将数据流式传入或流式传出 Apache Kafka。 本示例使用 Spark on HDInsight 中的 Jupyter 笔记本流式传输数据。
+description: 了解如何使用 Apache Spark 通过 DStreams 将数据流式传入或流式传出 Apache Kafka。 在此示例中，将使用 HDInsight 上的 Spark 中的 Jupyter Notebook 流式传输数据。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: e2f4bbe6157e1affa4975f6dcee2ad0f1d98a71b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88a62b2d1ebee3bf933729ab82bc9e37a3db066b
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086086"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821173"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight 的 Apache Spark 流式处理 (DStream) 示例
 
-了解如何[Apache Spark](https://spark.apache.org/)使用 DStreams 在 HDInsight 上使用[DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html)将数据流入或流出[Apache Kafka](https://kafka.apache.org/) 。 本示例使用在 Spark 群集上运行的 [Jupyter Notebook](https://jupyter.org/)。
+了解如何[Apache Spark](https://spark.apache.org/)使用 DStreams 在 HDInsight 上使用[](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html)将数据流入或流出[Apache Kafka](https://kafka.apache.org/) 。 本示例使用在 Spark 群集上运行的 [Jupyter Notebook](https://jupyter.org/)。
 
 > [!NOTE]  
 > 本文档中的步骤创建了一个包含 Spark on HDInsight 和 Kafka on HDInsight 群集的 Azure 资源组。 这些群集都位于一个 Azure 虚拟网络中，这样 Spark 群集便可与 Kafka 群集直接通信。
@@ -49,9 +49,9 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     此模板为 Kafka 和 Spark 创建 HDInsight 3.6 群集。
 
-1. 使用以下信息填充“自定义部署”部分中的条目****：
+1. 使用以下信息填充“自定义部署”部分中的条目：
 
-    |属性 |Value |
+    |属性 |值 |
     |---|---|
     |资源组|创建一个组或选择有个现有的组。|
     |位置|选择在地理上邻近的位置。|
@@ -65,7 +65,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 1. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
 
-1. 最后，选择“购买”****。 创建群集大约需要 20 分钟时间。
+1. 最后，选择“购买”。 创建群集大约需要 20 分钟时间。
 
 创建资源后，会显示摘要页面。
 

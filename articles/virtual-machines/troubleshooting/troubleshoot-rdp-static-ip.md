@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: 49f3f44c7de8c700d0093c5eb6f166a1dffb34a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf19a6f77a87f2424f9e7b889e48119d57d1e2e5
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087242"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820976"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>由于静态 IP 而无法通过远程桌面连接到 Azure 虚拟机
 
@@ -63,13 +63,13 @@ VM 具有一个在 Windows 中的网络接口上定义的静态 IP 地址。 此
 3. 如果禁用了 DHCP，请将你的网络接口的配置恢复为使用 DHCP：
 
     ```console
-    netsh interface ip set address name="<NIC Name>" source=dhc
+    netsh interface ip set address name="<NIC Name>" source=dhcp
     ```
 
     例如，如果网络接口名为“Ethernet 2”，请运行以下命令：
 
     ```console
-    netsh interface ip set address name="Ethernet 2" source=dhc
+    netsh interface ip set address name="Ethernet 2" source=dhcp
     ```
 
 4. 再次查询 IP 配置以确保网络接口现在已正确设置。 新 IP 地址应当与 Azure 提供的地址相同。

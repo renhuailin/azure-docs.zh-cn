@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: bd61c6812d794d30e28f087dabf58db51e9c3296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6407f7c3b1e8570cdc6b36dceec79fba58689c7
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230409"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822176"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Apache Spark MLlib 生成机器学习应用程序并分析数据集
 
@@ -121,7 +121,7 @@ MLlib 是一个核心 Spark 库，它为以下机器学习任务提供了许多�
     df.registerTempTable('CountResults')
     ```
 
-    数据帧中的四个相关列是 **ID**、 **名称**、 **结果**和 **冲突**。
+    数据帧中的四个相关列是 **ID**、 **名称**、 **结果** 和 **冲突**。
 
 4. 运行以下代码获取数据小样本：
 
@@ -174,7 +174,7 @@ MLlib 是一个核心 Spark 库，它为以下机器学习任务提供了许多�
     SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
-    后接 `-o countResultsdf` 的 `%%sql` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头节点）。 输出将保存为具有指定名称 [countResultsdf](https://pandas.pydata.org/) 的 **Pandas**数据帧。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅[包含 Apache Spark HDInsight 群集的 Jupyter Notebook 上可用的内核](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
+    后接 `-o countResultsdf` 的 `%%sql` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头节点）。 输出将保存为具有指定名称 [countResultsdf](https://pandas.pydata.org/) 的 **Pandas** 数据帧。 有关神奇的详细信息 `%%sql` 以及 PySpark 内核提供的其他 magic 的详细信息，请参阅 [具有 Apache Spark HDInsight 群集的 Jupyter 笔记本上可用的内核](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
 
     输出为：
 
@@ -335,7 +335,7 @@ model = pipeline.fit(labeledData)
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
     ```
 
-1. 最后，使用以下代码段通过 **Matplotlib**生成绘图。
+1. 最后，使用以下代码段通过 **Matplotlib** 生成绘图。
 
     ```PySpark
     %%local

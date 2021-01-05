@@ -12,21 +12,21 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: ace584b51f0aa457e30d8e48d97834aa735a1a57
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 410c0942b9040a6707a51e4ff9f375b9d4728668
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026567"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821564"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
 
 语音服务 SDK 压缩音频输入流 API 提供了一种使用 `PullStream` 或 `PushStream` 将压缩音频流式传输到语音服务的方法。
 
-平台 | 语言 | 支持的适用 gstreamer 版本
+平台 | 语言 | 支持的 GStreamer 版本
 | :--- | ---: | :---:
-Windows (排除 UWP)   | C + +、c #、Java、Python | [busybox-1.15.1-20.el6.x86](https://gstreamer.freedesktop.org/data/pkg/windows/1.15.1/)
-Linux  | C + +、c #、Java、Python | [支持的 Linux 分发和目标体系结构](~/articles/cognitive-services/speech-service/speech-sdk.md)
+Windows（不包括 UWP）  | C++、C#、Java、Python | [1.15.1](https://gstreamer.freedesktop.org/releases/gstreamer/1.5.1.html)
+Linux  | C++、C#、Java、Python | [受支持的 Linux 发行版和目标体系结构](~/articles/cognitive-services/speech-service/speech-sdk.md)
 Android  | Java | [1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/)
 
 ## <a name="speech-sdk-version-required-for-compressed-audio-input"></a>压缩的音频输入所需的语音 SDK 版本
@@ -35,7 +35,7 @@ Android  | Java | [1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="gstreamer-required-to-handle-compressed-audio"></a>处理压缩音频所需的适用 gstreamer
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/csharp/prerequisites.md)]

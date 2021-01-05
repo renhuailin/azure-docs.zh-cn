@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
-ms.openlocfilehash: 6e472c65897fa57cdb1e0b09d94c62913e268040
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3397c57f793c6994847786ff8247e5ccfa453ec0
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087463"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821241"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>在 HDInsight 中的 Apache Spark 上使用自动化机器学习运行 Azure 机器学习工作负载
 
@@ -35,7 +35,7 @@ Azure 机器学习可简化和加速机器学习模型的生成、训练和部�
 
 创建工作区和提交试验需要使用身份验证令牌。 可以使用 [Azure AD 应用程序](../../active-directory/develop/app-objects-and-service-principals.md)生成此令牌。 如果未在帐户中启用多重身份验证，则还可以使用 [Azure AD 用户](/azure/python/python-sdk-azure-authenticate)来生成所需的身份验证令牌。  
 
-以下代码片段使用 **Azure AD 应用程序**创建身份验证令牌。
+以下代码片段使用 **Azure AD 应用程序** 创建身份验证令牌。
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -46,7 +46,7 @@ auth_sp = ServicePrincipalAuthentication(
 )
 ```
 
-以下代码片段使用 **Azure AD 用户**创建身份验证令牌。
+以下代码片段使用 **Azure AD 用户** 创建身份验证令牌。
 
 ```python
 from azure.common.credentials import UserPassCredentials
@@ -55,7 +55,7 @@ credentials = UserPassCredentials('user@domain.com', 'my_smart_password')
 
 ## <a name="loading-dataset"></a>加载数据集
 
-Spark 上的自动化机器学习使用**数据流** - 针对数据执行的松散评估且不可变的操作。  数据流使用公共读取访问权限从 Blob 加载数据集，或使用 SAS 令牌从 Blob URL 加载数据集。
+Spark 上的自动化机器学习使用 **数据流** - 针对数据执行的松散评估且不可变的操作。  数据流使用公共读取访问权限从 Blob 加载数据集，或使用 SAS 令牌从 Blob URL 加载数据集。
 
 ```python
 import azureml.dataprep as dprep

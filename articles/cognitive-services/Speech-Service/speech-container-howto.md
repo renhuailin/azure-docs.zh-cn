@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地, Docker, 容器
-ms.openlocfilehash: 9ca5229200b39f0a3c68da152f4d89f842d021ca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2123098aafb414495f55d557ac1546819c25fdad
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95996375"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822057"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 Api 安装并运行 Docker 容器 
 
@@ -28,9 +28,9 @@ ms.locfileid: "95996375"
 
 > [!IMPORTANT]
 > 以下语音容器现已正式发布：
-> * 标准语音到文本
+> * 标准语音转文本
 > * 自定义语音转文本
-> * 标准文本到语音转换
+> * 标准文本转语音
 > * 神经文本转语音
 >
 > 以下语音容器处于封闭预览。
@@ -312,6 +312,10 @@ ApiKey={API_KEY}
 * 分配4个 CPU 核心和 4 gb (GB) 内存。
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
+
+> [!NOTE]
+> 容器使用适用 gstreamer 支持语音 SDK 的压缩音频输入。
+> 若要在容器中安装适用 gstreamer，请遵循适用于适用 gstreamer 的 Linux 说明， [将编解码器压缩的音频输入与语音 SDK 配合使用](how-to-use-codec-compressed-audio-input-streams.md)。
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>分析语音到文本输出的情绪 
