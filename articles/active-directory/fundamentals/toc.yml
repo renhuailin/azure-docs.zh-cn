@@ -25,6 +25,28 @@
   items:
     - name: 安全性
       items:
+        - name: 安全的资源外部访问
+          items:
+            - name: 安全外部访问概述
+              href: secure-external-access-resources.md
+            - name: 1 确定要达到的安全状态
+              href: 1-secure-access-posture.md
+            - name: 2 确定当前状况
+              href: 2-secure-access-current-state.md
+            - name: 3 创建安全计划
+              href: 3-secure-access-plan.md
+            - name: 4 通过群组实现安全访问
+              href: 4-secure-access-groups.md
+            - name: 5 通过 B2B 协作实现安全访问
+              href: 5-secure-access-b2b.md
+            - name: 6 通过权利管理实现安全访问
+              href: 6-secure-access-entitlement-managment.md
+            - name: 7 通过条件访问实现安全访问
+              href: 7-secure-access-conditional-access.md
+            - name: 8 通过敏感度标签实现安全访问
+              href: 8-secure-access-sensitivity-labels.md
+            - name: 9 安全访问 Teams、SharePoint 和 OneDrive
+              href: 9-secure-access-teams-sharepoint.md
         - name: 启用 MFA
           href: concept-fundamentals-mfa-get-started.md
         - name: 安全默认值

@@ -24,12 +24,15 @@
     - name: Azure 市场中的托管服务产品
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
-    - name: 云解决方案提供商计划注意事项
+    - name: 云解决方案提供商计划
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
-    - name: 企业应用场景中的 Azure Lighthouse
+    - name: 企业应用场景
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
+    - name: ISV 方案
+      displayName: 'independent, software, vendor, saas'
+      href: ./concepts/isv-scenarios.md
     - name: Azure Lighthouse 和 Azure 托管应用程序
       displayName: 'managed apps, ama'
       href: ./concepts/managed-applications.md

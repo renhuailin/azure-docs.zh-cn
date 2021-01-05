@@ -153,6 +153,8 @@
       href: ../../azure-signalr/security-baseline.md
     - name: Azure SQL 数据库安全基线
       href: ../../azure-sql/database/security-baseline.md
+    - name: Azure Stack Edge 安全基线
+      href: ../../databox-online/security-baseline.md
     - name: Azure 存储安全基线
       href: ../../storage/common/security-baseline.md
     - name: Azure Web 应用程序防火墙安全基线

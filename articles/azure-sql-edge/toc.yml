@@ -28,14 +28,6 @@
       href: tutorial-sync-data-factory.md
     - name: 使用 SQL 数据同步来同步数据
       href: tutorial-sync-data-sync.md
-    - name: 使用 SQL Edge 构建端到端 IoT 解决方案
-      items:
-        - name: 设置 Azure 资源
-          href: tutorial-deploy-azure-resources.md
-        - name: 设置 IoT Edge 模块
-          href: tutorial-set-up-iot-edge-modules.md
-        - name: 将模型部署到 SQL Edge
-          href: tutorial-run-ml-model-on-sql-edge.md
 - name: 概念
   items:
     - name: 部署
@@ -138,6 +130,18 @@
       href: create-stream-analytics-job.md
     - name: 排查部署问题
       href: troubleshoot.md
+- name: 示例
+  items:
+    - name: 铁矿石硅土预测
+      items:
+        - name: 设置 Azure 资源
+          href: tutorial-deploy-azure-resources.md
+        - name: 设置 IoT Edge 模块
+          href: tutorial-set-up-iot-edge-modules.md
+        - name: 将模型部署到 SQL Edge
+          href: tutorial-run-ml-model-on-sql-edge.md
+    - name: 可再生能源 - 风力涡轮机分析
+      href: tutorial-renewable-energy-demo.md
 - name: 参考
   items:
     - name: Transact-SQL (T-SQL) 参考

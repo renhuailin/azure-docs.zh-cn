@@ -544,18 +544,40 @@
           href: platform/alerts-resource-move.md
         - name: IT 服务管理
           items:
-            - name: IT Service Management Connector
+            - name: IT 服务管理连接器概述
               href: platform/itsmc-overview.md
-            - name: IT 服务管理连接
-              href: platform/itsmc-connections.md
-            - name: IT 服务管理连接器定义
+            - name: IT 服务管理连接器合作伙伴设置
+              items:
+                - name: 概述
+                  href: platform/itsmc-connections.md
+                - name: ServiceNow
+                  href: platform/itsmc-connections-servicenow.md
+                - name: System Center Service Manager
+                  items:
+                    - name: 设置
+                      href: platform/itsmc-connections-scsm.md
+                    - name: 创建 Service Manager Web 应用
+                      href: platform/itsmc-service-manager-script.md
+                - name: Cherwell
+                  href: platform/itsmc-connections-cherwell.md
+                - name: Provance
+                  href: platform/itsmc-connections-provance.md
+            - name: IT 服务管理连接器 Azure 配置
               href: platform/itsmc-definition.md
-            - name: 创建 Service Manager Web 应用
-              href: platform/itsmc-service-manager-script.md
+            - name: 从 IT 服务管理产品同步的数据
+              href: platform/itsmc-synced-data.md
             - name: 排查 ITSM 连接器中的问题
               href: platform/itsmc-resync-servicenow.md
             - name: 与安全导出集成
-              href: platform/it-service-management-connector-secure-webhook-connections.md
+              items:
+                - name: 概述
+                  href: platform/it-service-management-connector-secure-webhook-connections.md
+                - name: 安全导出 Azure 配置
+                  href: platform/itsm-connector-secure-webhook-connections-azure-configuration.md
+                - name: BMC
+                  href: platform/itsmc-secure-webhook-connections-bmc.md
+                - name: ServiceNow
+                  href: platform/itsmc-secure-webhook-connections-servicenow.md
         - name: 迁移经典警报规则
           items:
             - name: 关于经典警报
@@ -790,6 +812,8 @@
               href: app/snapshot-debugger.md
             - name: 为应用服务启用 Snapshot Debugger
               href: app/snapshot-debugger-appservice.md
+            - name: 为函数应用启用 Snapshot Debugger
+              href: app/snapshot-debugger-function-app.md
             - name: 为其他环境启用 Snapshot Debugger
               href: app/snapshot-debugger-vm.md
             - name: 升级 Snapshot Debugger

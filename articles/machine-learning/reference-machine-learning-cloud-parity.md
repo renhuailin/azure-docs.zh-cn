@@ -1,7 +1,7 @@
 ---
 title: 公共区域与主权区域之间的平等性
 titleSuffix: Azure Machine Learning
-description: 本文列出了公有云与 Azure 政府、Azure 德国和 Azure 中国世纪互联区域之间的功能奇偶校验。
+description: 本文列出了公有云与 Azure 政府、Azure 德国和 Azure 中国世纪互联区域之间的功能平等性。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 08/24/2020
+ms.date: 12/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0300dab1fa7d0ef0d20c4236cc452135b3ade20e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 88240f9b46997d11f1e7c2d93fa880b004615a11
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305748"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725014"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure 机器学习主权云平等性
 
@@ -24,8 +24,8 @@ ms.locfileid: "93305748"
 
 在全球 Azure 区域列表中，有多个为特定市场提供服务的“主权”区域。 例如，Azure 政府和 Azure 中国世纪互联区域。 目前，Azure 机器学习部署到以下主权云区域中：
 
-* Azure 政府区域 **美国-亚利桑那** 和 **美国-弗吉尼亚** 。
-* Azure 中国世纪互联区域 **中国东部 2** 。
+* Azure 政府区域 **美国-亚利桑那** 和 **美国-弗吉尼亚**。
+* Azure 中国世纪互联区域 **中国东部 2**。
 
 > [!TIP]
 > 为了区分主权和非主权区域，本文将使用术语“公有云”来指代非主权区域。
@@ -92,7 +92,7 @@ ms.locfileid: "93305748"
 | ML 辅助标记（图像分类和对象检测）           | 公共预览版       | YES                | YES         |
 | **负责的 ML** |   | | |
 | UI 的可说明性                                                       | 公共预览版       | 是                 | 是          |
-| 差异隐私 WhiteNoise 工具包                                    | OSS                  | 是                 | 是          |
+| 差分隐私 SmartNoise 工具包                                    | OSS                  | 是                 | 是          |
 | Azure 机器学习中用于实现数据表的自定义标记              | GA                   | 是                 | 是          |
 | 公平 AzureML 集成                                               | 公共预览版       | 是                 | 是          |
 | 可解释性 SDK                                                      | GA                   | YES                | YES         |
@@ -122,7 +122,7 @@ ms.locfileid: "93305748"
 | 对计算资源的 Root 和 SSH 访问。                                          | YES | YES |  |
 | 维护已部署系统（实例、终结点等）的安全性，包括终结点保护、修补和日志记录 |  PARTIAL|  PARTIAL |VNet 后的 ACI 和专用终结点当前不可用 |                                  
 | 控制（禁用/限制/约束）ACI/AKS 集成的使用                    | PARTIAL| PARTIAL |VNet 后的 ACI 和专用终结点当前不可用|
-| Azure RBAC) -自定义角色创建 (azure 基于角色的访问控制                           | YES | YES |  |
+| Azure 基于角色的访问控制 (Azure RBAC) - 自定义角色创建                           | YES | YES |  |
 | 控制对 ML 服务使用的 ACR 映像的访问（Azure 提供/维护的与自定义的）  |PARTIAL|  PARTIAL | Azure 政府版不支持专用终结点和 VNet 后的 ACR |
 | **机器学习服务常规使用情况** |  | | |
 | 能够使用开发环境构建模型、训练该模型、将其作为终结点托管并通过 WebApp 使用它     | YES | YES |  |
@@ -205,7 +205,7 @@ ms.locfileid: "93305748"
 | ML 辅助标记（图像分类和对象检测）           | 公共预览版   | YES       | 空值        |
 | **负责的 ML** |    | | |
 | UI 的可说明性                                                       | 公共预览版   | 是        | 空值        |
-| 差异隐私 WhiteNoise 工具包                                    | OSS              | 是        | 空值        |
+| 差分隐私 SmartNoise 工具包                                    | OSS              | 是        | 空值        |
 | Azure 机器学习中用于实现数据表的自定义标记              | GA               | 是        | 空值        |
 | 公平 AzureML 集成                                               | 公共预览版   | 是        | 空值        |
 | 可解释性 SDK                                                      | GA               | YES       | 空值        |

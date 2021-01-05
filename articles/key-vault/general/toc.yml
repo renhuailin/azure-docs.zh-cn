@@ -25,7 +25,7 @@
           href: tutorial-python-virtual-machine.md
     - name: Azure 应用服务
       items:
-        - name: 将 Azure Key Vault 与 .NET Web 应用配合使用
+        - name: 在 .NET 中将 Azure Key Vault 与 Web 应用配合使用
           href: tutorial-net-create-vault-azure-web-app.md
     - name: Azure Kubernetes 服务
       items:
@@ -86,7 +86,7 @@
       href: overview-vnet-service-endpoints.md
 - name: 操作指南
   items:
-    - name: Authenticate
+    - name: 身份验证和授权
       items:
         - name: 对 Key Vault 进行身份验证
           href: authentication.md
@@ -104,10 +104,6 @@
           href: rbac-migration.md
         - name: 排查访问问题
           href: troubleshooting-access-issues.md
-    - name: 启用软删除和清除保护
-      href: key-vault-recovery.md
-    - name: 启用日志记录
-      href: howto-logging.md
     - name: 开发
       items:
         - name: Azure 密钥保管库开发人员指南
@@ -118,21 +114,31 @@
           href: vs-key-vault-add-connected-service.md
     - name: 监视和监管
       items:
-        - name: 为 Azure Key Vault 配置监视和警报
+        - name: 事件网格通知
+          items:
+            - name: 通过逻辑应用接收通知
+              href: event-grid-logicapps.md
+            - name: 通过 Azure 自动化接收通知
+              href: event-grid-tutorial.md
+        - name: 启用日志记录
+          href: howto-logging.md
+        - name: 使用 Azure Monitor 为 Azure Key Vault 配置监视和警报
           href: alert.md
+        - name: 通过软删除和清除保护实现恢复管理
+          href: key-vault-recovery.md
         - name: 将 Azure Key Vault 与 Azure Policy 集成
           href: azure-policy.md
-        - name: 通过 Azure 事件网格和逻辑应用接收通知
-          href: event-grid-logicapps.md
-        - name: 通过 Azure 事件网格和 Azure 自动化接收通知
-          href: event-grid-tutorial.md
         - name: 备份单个密钥保管库对象
           href: backup.md
     - name: 安全
       items:
-        - name: 与 Azure 专用链接服务集成
-          href: private-link-service.md
-        - name: 访问防火墙后的 Key Vault - Azure Key Vault
+        - name: Azure 专用链接
+          items:
+            - name: 与 Azure 专用链接服务集成
+              href: private-link-service.md
+            - name: 诊断专用链接配置问题
+              href: private-link-diagnostics.md
+        - name: 访问防火墙后面的 Key Vault
           href: access-behind-firewall.md
     - name: 移动 Key Vault
       items:
@@ -142,10 +148,6 @@
           href: move-subscription.md
         - name: 将 Key Vault 移到另一个区域
           href: move-region.md
-    - name: 网络
-      items:
-        - name: 诊断专用链接配置问题
-          href: private-link-diagnostics.md
 - name: 参考
   items:
     - name: 新增功能

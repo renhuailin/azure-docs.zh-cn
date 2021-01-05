@@ -27,6 +27,8 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: 创建 Python Runbook
       href: learn/automation-tutorial-runbook-textual-python2.md
+    - name: 创建 Python 3 Runbook
+      href: learn/automation-tutorial-runbook-textual-python-3.md
 - name: 概念
   items:
     - name: 自动化帐户身份验证概述
@@ -96,6 +98,8 @@
           href: shared-resources/variables.md
         - name: 管理 Python 2 程序包
           href: python-packages.md
+        - name: 管理 Python 3 包
+          href: python-3-packages.md
         - name: 排查共享资源问题
           href: troubleshoot/shared-resources.md
     - name: 流程自动化

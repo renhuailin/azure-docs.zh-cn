@@ -42,8 +42,14 @@
       href: hpc-cache-mount.md
     - name: 管理缓存
       href: hpc-cache-manage.md
-    - name: 配置可选设置
-      href: configuration.md
+    - name: 使用可选设置
+      items:
+        - name: 配置可选设置
+          href: configuration.md
+        - name: 访问策略自定义
+          href: access-policies.md
+        - name: 设置目录服务
+          href: directory-services.md
 - name: 参考
   items:
     - name: Azure CLI

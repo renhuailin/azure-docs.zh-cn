@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: bonova, sstein
-ms.date: 11/10/2020
-ms.openlocfilehash: c30cecf0b480a1765f04ee48a0fd66f4ddd52708
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.reviewer: bonova, sstein, danil
+ms.date: 12/25/2020
+ms.openlocfilehash: 7bdde57c1d33118fd7d3c8e04a2507d8997c36d0
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630320"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809507"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>功能比较：Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -51,7 +51,7 @@ Azure 管理数据库并保证其高可用性。 可能影响高可用性或无�
 | [排序规则 - 服务器/实例](/sql/relational-databases/collations/set-or-change-the-server-collation) | 否，始终使用默认的服务器排序规则 `SQL_Latin1_General_CP1_CI_AS`。 | 是，可以在[创建实例](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md)时设置，以后不可更新。 |
 | [列存储索引](/sql/relational-databases/indexes/columnstore-indexes-overview) | 是 - [高级层、标准层 - S3 及以上层、常规用途层、业务关键层和超大规模层](/sql/relational-databases/indexes/columnstore-indexes-overview) |是 |
 | [公共语言运行时 - CLR](/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | 否 | 是，但无权在 `CREATE ASSEMBLY` 语句中访问文件系统 - 请参阅 [CLR 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#clr) |
-| [凭据](/sql/relational-databases/security/authentication-access/credentials-database-engine) | 是，但是仅限[数据库范围的凭据](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)。 | 是，但仅支持 **Azure Key Vault** 和 `SHARED ACCESS SIGNATURE`，请参阅 [详细信息](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential) |
+| [凭据](/sql/relational-databases/security/authentication-access/credentials-database-engine) | 是，但是仅限[数据库范围的凭据](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)。 | 是，但仅支持 **Azure Key Vault** 和， `SHARED ACCESS SIGNATURE` 请参阅 [详细信息](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential) |
 | [跨数据库/三部分名称查询](/sql/relational-databases/linked-servers/linked-servers-database-engine) | 否 - 请参阅[弹性查询](elastic-query-overview.md) | 是，外加[弹性查询](elastic-query-overview.md) |
 | [跨数据库事务](/sql/relational-databases/linked-servers/linked-servers-database-engine) | 否 | 是，在实例中。 对于跨实例查询，请参阅[链接服务器的差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers)。 |
 | [数据库邮件 - DbMail](/sql/relational-databases/database-mail/database-mail) | 否 | 是 |
@@ -86,7 +86,7 @@ Azure 管理数据库并保证其高可用性。 可能影响高可用性或无�
 | [OPENQUERY](/sql/t-sql/functions/openquery-transact-sql)|否|是，仅适用于 SQL 数据库、SQL 托管实例和 SQL Server。 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
 | [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)|是，只是为了从 Azure Blob 存储导入。 |是，仅适用于 SQL 数据库、SQL 托管实例和 SQL Server，以及从 Azure Blob 存储进行导入的操作。 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
 | [运算符](/sql/t-sql/language-elements/operators-transact-sql) | 大多数 - 请参阅单个运算符 |是 - 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
-| [Polybase](/sql/relational-databases/polybase/polybase-guide) | 否。 你可以使用函数查询放置在 Azure Blob 存储上的文件中的数据， `OPENROWSET` 或使用 [引用 Synapse Analytics 中的无服务器 SQL 池的外部表](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)。 | 不能。 您可以使用 `OPENROWSET` 函数、 [引用 Synapse analytics 中的无服务器 sql 池的链接服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)或在 Synapse analytics 或 SQL Server 中引用 [无服务器 sql 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 的外部表 (在公共) 预览版中放置在 Azure Blob 存储中的文件中的数据。 |
+| [Polybase](/sql/relational-databases/polybase/polybase-guide) | 否。 你可以使用函数查询放置在 Azure Blob 存储上的文件中的数据， `OPENROWSET` 或使用 [引用 Synapse Analytics 中的无服务器 SQL 池的外部表](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)。 | 不是。 您可以使用 `OPENROWSET` 函数、 [引用 Synapse analytics 中的无服务器 sql 池的链接服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)或在 Synapse analytics 或 SQL Server 中引用 [无服务器 sql 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 的外部表 (在公共) 预览版中放置在 Azure Blob 存储中的文件中的数据。 |
 | [查询通知](/sql/relational-databases/native-client/features/working-with-query-notifications) | 否 | 是 |
 | [机器学习服务](/sql/advanced-analytics/what-is-sql-server-machine-learning) (_以前的 R Services_) | 是，在[公共预览版](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)中  | 否 |
 | [恢复模型](/sql/relational-databases/backup-restore/recovery-models-sql-server) | 仅支持保证高可用性的完整恢复。 “简单”和“批量日志记录”恢复模式不可用。 | 仅支持保证高可用性的完整恢复。 “简单”和“批量日志记录”恢复模式不可用。 |
@@ -128,6 +128,7 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 | [Azure 资源运行状况](../../service-health/resource-health-overview.md) | 是 | 否 |
 | 备份保留 | 是的。 默认为 7 天，最长 35 天。 | 是的。 默认为 7 天，最长 35 天。 |
 | [数据迁移服务 (DMS)](/sql/dma/dma-overview) | 是 | 是 |
+| [弹性作业](elastic-jobs-overview.md) | 是-请参阅 [弹性作业 (预览) ](elastic-jobs-overview.md) | 不能) 使用 ([SQL 代理](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent) 。 |
 | 文件系统访问 | 否。 使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) 作为替代方法来访问和加载 Azure Blob 存储中的数据。 | 否。 使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) 作为替代方法来访问和加载 Azure Blob 存储中的数据。 |
 | [异地还原](recovery-using-backups.md#geo-restore) | 是 | 是 |
 | [超大规模体系结构](service-tier-hyperscale.md) | 是 | 否 |
@@ -147,7 +148,7 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 | [Query Performance Insights (QPI)](query-performance-insight-use.md) | 是 | 否。 使用 SQL Server Management Studio 和 Azure Data Studio 中的内置报告。 |
 | [VNet](../../virtual-network/virtual-networks-overview.md) | 部分支持，可以使用 [VNet 终结点](vnet-service-endpoint-rule-overview.md)进行受限访问 | 是，SQL 托管实例注入到客户的 VNet 中。 请参阅[子网](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet)和 [VNet](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
 | VNet 服务终结点 | [是](vnet-service-endpoint-rule-overview.md) | 否 |
-| VNet 全球对等互连 | 是，使用[专用 IP 和服务终结点](vnet-service-endpoint-rule-overview.md) | 否，由于 [VNet 全球对等互连中的负载均衡器约束](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)，[不支持 SQL 托管实例](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
+| VNet 全球对等互连 | 是，使用[专用 IP 和服务终结点](vnet-service-endpoint-rule-overview.md) | 是，使用 [虚拟网络对等互连](https://techcommunity.microsoft.com/t5/azure-sql/new-feature-global-vnet-peering-support-for-azure-sql-managed/ba-p/1746913)。 |
 
 ## <a name="tools"></a>工具
 

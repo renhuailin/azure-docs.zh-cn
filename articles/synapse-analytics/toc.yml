@@ -502,7 +502,7 @@
               items:
                 - name: 添加 Azure 流分析作业
                   href: ./sql-data-warehouse/sql-data-warehouse-integrate-azure-stream-analytics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: 用于连接到 Synapse 工作区的工具
+        - name: 与工具和应用程序连接
           items:
             - name: 概述
               href: sql/connect-overview.md
@@ -510,14 +510,20 @@
               href: sql/get-started-azure-data-studio.md
             - name: 连接字符串
               href: sql/connection-strings.md
-            - name: 使用 sqlcmd 进行查询
-              href: sql/get-started-connect-sqlcmd.md
             - name: 使用 SSMS 进行查询
               href: sql/get-started-ssms.md
-            - name: 使用 Visual Studio 进行查询
-              href: sql/get-started-visual-studio.md
             - name: 连接到 Power BI Desktop
               href: sql/get-started-power-bi-professional.md
+            - name: 使用 Visual Studio SSDT 进行查询
+              href: sql/get-started-visual-studio.md
+            - name: 使用 .NET Core 进行查询
+              href: ../azure-sql/database/connect-query-dotnet-core.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 使用 Visual Studio .NET 进行查询
+              href: ../azure-sql/database/connect-query-dotnet-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 使用 Python 进行查询
+              href: ../azure-sql/database/connect-query-python.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 使用 sqlcmd 进行查询
+              href: sql/get-started-connect-sqlcmd.md
 - name: Apache Spark
   items:
     - name: 概述
@@ -724,7 +730,7 @@
               href: ../data-factory/connector-azure-databricks-delta-lake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure 文件存储
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure SQL Database
+            - name: Azure SQL 数据库
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL 托管实例
               href: ../data-factory/connector-azure-sql-database-managed-instance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -1107,6 +1113,10 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: 为 Azure Synapse 配置认知服务
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: 操作说明
+  items:
+    - name: 计划和管理成本
+      href: plan-manage-costs.md
 - name: 参考
   items:
     - name: Azure CLI

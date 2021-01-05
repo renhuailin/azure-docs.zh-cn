@@ -85,6 +85,8 @@
       href: ./how-to-ingest-data-event-hub.md
     - name: 连接到 IoT 中心
       href: ./how-to-ingest-data-iot-hub.md
+    - name: 监视 Azure 时序见解
+      href: ./how-to-monitor-tsi.md
     - name: 使用模板管理资源
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
     - name: Azure 时序见解第 2 代
@@ -171,6 +173,8 @@
       items:
         - name: JavaScript 客户端 SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
+    - name: 监视数据参考
+      href: how-to-monitor-tsi-reference.md
     - name: Azure CLI
       href: /cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest
 - name: 资源

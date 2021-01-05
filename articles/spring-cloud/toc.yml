@@ -95,6 +95,10 @@
           href: diagnostic-services.md
         - name: 实时流式传输日志
           href: spring-cloud-howto-log-streaming.md
+        - name: 使用 Java 进程内代理的 Application Insights
+          href: spring-cloud-howto-application-insights.md
+        - name: Resilience4J 断路器指标
+          href: spring-cloud-howto-circuit-breaker-metrics.md
     - name: 安全
       items:
         - name: 启用系统分配的托管标识

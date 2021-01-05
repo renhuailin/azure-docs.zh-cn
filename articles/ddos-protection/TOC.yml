@@ -15,9 +15,11 @@
 - name: 教程
   items:
     - name: 查看和配置 DDoS 防护遥测
-      href: telemetry-monitoring-alerting.md
-    - name: 配置 DDoS 攻击缓解报表和流日志
-      href: reports-and-flow-logs.md
+      href: telemetry.md
+    - name: 查看和配置 DDoS 诊断日志记录
+      href: diagnostic-logging.md
+    - name: 查看和配置 DDoS 防护警报
+      href: alerts.md
 - name: 概念
   items:
     - name: 攻击类型
@@ -58,7 +60,7 @@
       href: 'https://azure.microsoft.com/develop/python/'
     - name: REST
       href: /rest/api/virtualnetwork/ddosprotectionplans
-    - name: Azure 资源管理器
+    - name: Azure Resource Manager
       href: ../azure-resource-manager/management/overview.md
 - name: 资源
   items:

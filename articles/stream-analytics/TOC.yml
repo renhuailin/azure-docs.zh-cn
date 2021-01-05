@@ -30,16 +30,17 @@
           href: create-cluster.md
 - name: 教程
   items:
-    - name: 1 - 创建/管理作业
-      href: stream-analytics-manage-job.md
-    - name: 2 - 运行 Azure Functions
+    - name: 直观显示 Power BI 中的欺诈性呼叫
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: 运行 Azure Functions
       href: stream-analytics-with-azure-functions.md
-    - name: 3 - 在 Azure Pipelines 中通过 CI/CD 进行部署
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: 4 - 运行 C# UDF
+    - name: 运行 C# UDF
       href: stream-analytics-edge-csharp-udf.md
-    - name: 5 - 创建自定义 .NET 反序列化程序
+    - name: 创建自定义 .NET 反序列化程序
       href: custom-deserializer.md
+    - name: 创建 IoT Edge 作业
+      href: /azure/iot-edge/tutorial-deploy-stream-analytics?view=iotedge-2018-06
+      maintainContext: true
 - name: 示例
   items:
     - name: 代码示例
@@ -56,6 +57,8 @@
       href: develop-locally.md
     - name: 安全性
       items:
+        - name: 将作业连接到 Azure 虚拟网络 (VNet)
+          href: connect-job-to-vnet.md
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -129,6 +132,8 @@
           href: repartition.md
         - name: 提高作业的吞吐量
           href: stream-analytics-scale-jobs.md
+    - name: IoT Edge
+      href: stream-analytics-edge.md
     - name: 作业的状态
       href: job-states.md
     - name: 开窗函数
@@ -181,35 +186,31 @@
           href: stream-analytics-job-reliability.md
         - name: 使用 SQL 参考数据
           href: sql-reference-data.md
-        - name: 使用托管标识进行身份验证
-          items:
-            - name: ADLS Gen 1
-              href: stream-analytics-managed-identities-adls.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Blob 存储
-              href: blob-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: 事件中心
-              href: event-hubs-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Power BI
-              href: powerbi-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Azure SQL 和 Azure Synapse
-              href: sql-database-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
         - name: 加密数据
           href: data-protection.md
         - name: 异地冗余
           href: geo-redundancy.md
+    - name: 使用托管标识进行身份验证
+      items:
+        - name: ADLS Gen 1
+          href: stream-analytics-managed-identities-adls.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Blob 存储
+          href: blob-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: 事件中心
+          href: event-hubs-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Power BI
+          href: powerbi-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Azure SQL 和 Azure Synapse
+          href: sql-database-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
     - name: 构建解决方案
       items:
         - name: Twitter 情绪分析
           href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: 实时欺诈检测
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: 在 IoT Edge 上运行作业
-          href: stream-analytics-edge.md
         - name: 在 Azure Stack 上运行作业
           href: on-azure-stack.md
         - name: 收费站传感器数据分析
@@ -287,6 +288,8 @@
           href: debug-locally-using-job-diagram-vs-code.md
         - name: 探索作业
           href: visual-studio-code-explore-jobs.md
+        - name: 创建和调试 .NET 自定义反序列化程序
+          href: visual-studio-code-custom-deserializer.md
         - name: JobConfig.json 字段
           href: job-config-json.md
     - name: 疑难解答
@@ -340,7 +343,7 @@
             - name: 聚合函数概述
               href: /stream-analytics-query/aggregate-functions-azure-stream-analytics
               maintainContext: true
-            - name: AVG
+            - name: 平均值
               href: /stream-analytics-query/avg-azure-stream-analytics
               maintainContext: true
             - name: COUNT
@@ -355,7 +358,7 @@
             - name: MAX
               href: /stream-analytics-query/max-azure-stream-analytics
               maintainContext: true
-            - name: MIN
+            - name: 最小值
               href: /stream-analytics-query/min-azure-stream-analytics
               maintainContext: true
             - name: Percentile_Cont

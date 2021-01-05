@@ -10,15 +10,15 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 10/15/2020
-ms.openlocfilehash: c532758ce29646ba32530269233759551117968b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.date: 12/18/2020
+ms.openlocfilehash: d24eea36d45e49f19625c260f2518fb5ae0369e0
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901637"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695077"
 ---
-# <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换 Azure SQL 托管实例中的数据
+# <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 托管实例中复制和转换数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "92901637"
 
 若要访问 SQL 托管实例[公共终结点](../azure-sql/managed-instance/public-endpoint-overview.md)，可以使用 Azure 数据工厂管理的 Azure Integration Runtime。 确保启用公共终结点，并在网络安全组中允许公共终结点流量，使 Azure 数据工厂能够连接到你的数据库。 有关详细信息，请参阅[此指南](../azure-sql/managed-instance/public-endpoint-configure.md)。
 
-若要访问 SQL 托管实例专用终结点，请设置可访问数据库的 [自承载集成运行时](create-self-hosted-integration-runtime.md) 。 如果预配托管实例所在的虚拟网络中的自承载集成运行时，请确保集成运行时计算机与托管实例位于不同的子网中。 如果预配的自承载集成运行时与托管实例位于不同的虚拟网络中，则可使用虚拟网络对等互连或虚拟网络间的连接。 有关详细信息，请参阅[将应用程序连接到 SQL 托管实例](../azure-sql/managed-instance/connect-application-instance.md)。
+若要访问 SQL 托管实例专用终结点，请设置一个能够访问数据库的[自承载集成运行时](create-self-hosted-integration-runtime.md)。 如果预配托管实例所在的虚拟网络中的自承载集成运行时，请确保集成运行时计算机与托管实例位于不同的子网中。 如果预配的自承载集成运行时与托管实例位于不同的虚拟网络中，则可使用虚拟网络对等互连或虚拟网络间的连接。 有关详细信息，请参阅[将应用程序连接到 SQL 托管实例](../azure-sql/managed-instance/connect-application-instance.md)。
 
 ## <a name="get-started"></a>入门
 
@@ -58,14 +58,14 @@ ms.locfileid: "92901637"
 
 SQL 托管实例链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 **AzureSqlMI** 。 | 是 |
+| type | type 属性必须设置为 **AzureSqlMI**。 | 是 |
 | connectionString |此属性指定通过 SQL 身份验证连接到 SQL 托管实例时所需的 **connectionString** 信息。 有关详细信息，请参阅以下示例。 <br/>默认端口为 1433。 如果将 SQL 托管实例与公共终结点配合使用，请显式指定端口 3342。<br> 还可以在 Azure Key Vault 中输入密码。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
-| servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 **SecureString** ，以安全地将其存储在 Azure 数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
+| servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 **SecureString**，以安全地将其存储在 Azure 数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
 | tenant | 指定应用程序所在的租户的信息（例如域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
-| azureCloudType | 对于服务主体身份验证，请指定 Azure AD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认使用数据工厂的云环境。 | 否 |
+| azureCloudType | 对于服务主体身份验证，请指定 Azure AD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下使用数据工厂的云环境。 | 否 |
 | connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 如果托管实例有公共终结点且允许 Azure 数据工厂进行访问，则可使用自承载集成运行时或 Azure Integration Runtime。 如果未指定，则使用默认 Azure Integration Runtime。 |是 |
 
 有关各种身份验证类型，请参阅关于先决条件和 JSON 示例的以下各部分：
@@ -228,10 +228,10 @@ SQL 托管实例链接服务支持以下属性：
 
 若要从/向 SQL 托管实例复制数据，以下属性需受支持：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureSqlMITable。 | 是 |
-| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -267,24 +267,24 @@ SQL 托管实例链接服务支持以下属性：
 
 若要从 SQL 托管实例复制数据，复制活动的 source 节需要支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为 **SqlMISource** 。 | 是 |
+| type | 复制活动源的 type 属性必须设置为 **SqlMISource**。 | 是 |
 | sqlReaderQuery |此属性使用自定义 SQL 查询来读取数据。 例如 `select * from MyTable`。 |否 |
 | sqlReaderStoredProcedureName |此属性是从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |否 |
 | storedProcedureParameters |这些参数用于存储过程。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 | isolationLevel | 指定 SQL 源的事务锁定行为。 允许的值为：ReadCommitted、ReadUncommitted、RepeatableRead、Serializable、Snapshot    。 如果未指定，则使用数据库的默认隔离级别。 请参阅[此文档](/dotnet/api/system.data.isolationlevel)了解更多详细信息。 | 否 |
 | partitionOptions | 指定用于从 SQL MI 加载数据的数据分区选项。 <br>允许值包括：None（默认值）、PhysicalPartitionsOfTable 和 DynamicRange  。<br>启用分区选项（即该选项不为 `None`）时，用于从 SQL MI 并行加载数据的并行度由复制活动上的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制。 | 否 |
 | partitionSettings | 指定数据分区的设置组。 <br>当分区选项不是 `None` 时适用。 | 否 |
-| **_在 `partitionSettings` ： _ 下_* | | |
-| partitionColumnName | 指定 *以整数或日期/datetime 类型* * (、、、、、、或) 的源列 _ 的名称， `int` 这些名称 `smallint` `bigint` `date` `smalldatetime` `datetime` `datetime2` `datetimeoffset` 将由范围分区用于并行复制。 如果未指定，系统会自动检测表的索引或主键并将其用作分区列。<br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfDynamicRangePartitionCondition `。 有关示例，请参阅[从 SQL 数据库进行并行复制](#parallel-copy-from-sql-mi)部分。 | 否 |
+| _在 `partitionSettings` 下：_ _* | | |
+| partitionColumnName | 以整数类型、日期类型或日期/时间类型（`int`、`smallint`、`bigint`、`date`、`smalldatetime`、`datetime`、`datetime2` 或 `datetimeoffset`）指定源列的名称，范围分区将使用它进行并行复制。 如果未指定，系统会自动检测表的索引或主键并将其用作分区列。<br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfDynamicRangePartitionCondition `。 有关示例，请参阅[从 SQL 数据库进行并行复制](#parallel-copy-from-sql-mi)部分。 | 否 |
 | partitionUpperBound | 分区范围拆分的分区列的最大值。 此值用于决定分区步幅，不用于筛选表中的行。 将对表或查询结果中的所有行进行分区和复制。 如果未指定，复制活动会自动检测该值。  <br>当分区选项是 `DynamicRange` 时适用。 有关示例，请参阅[从 SQL 数据库进行并行复制](#parallel-copy-from-sql-mi)部分。 | 否 |
 | partitionLowerBound | 分区范围拆分的分区列的最小值。 此值用于决定分区步幅，不用于筛选表中的行。 将对表或查询结果中的所有行进行分区和复制。 如果未指定，复制活动会自动检测该值。<br>当分区选项是 `DynamicRange` 时适用。 有关示例，请参阅[从 SQL 数据库进行并行复制](#parallel-copy-from-sql-mi)部分。 | 否 |
 
 **请注意以下几点：**
 
 - 如果为 **SqlMISource** 指定 sqlReaderQuery，则复制活动会针对 SQL 托管实例源运行此查询以获取数据。 也可通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程，前提是存储过程使用参数 。
-- 如果不指定 **sqlReaderQuery** 或 **sqlReaderStoredProcedureName** 属性，则数据集 JSON 的“structure”节中定义的列用于构建查询。 查询 `select column1, column2 from mytable` 针对 SQL 托管实例运行。 如果数据集定义没有“structure”，则会从表中选择所有列。
+- 当在源中使用存储过程检索数据时，请注意，如果存储过程设计为在传入不同参数值时返回不同的架构，则在从 UI 导入架构或使用自动表创建将数据复制到 SQL 数据库时，你可能会遇到失败或看到意外的结果。
 
 **示例：使用 SQL 查询**
 
@@ -380,9 +380,9 @@ GO
 
 若要将数据复制到 SQL 托管实例，复制活动的 sink 节需要支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的 type 属性必须设置为 **SqlMISink** 。 | 是 |
+| type | 复制活动接收器的 type 属性必须设置为 **SqlMISink**。 | 是 |
 | preCopyScript |此属性指定将数据写入到 SQL 托管实例之前要由复制活动运行的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |否 |
 | tableOption | 指定是否根据源架构[自动创建接收器表](copy-activity-overview.md#auto-create-sink-tables)（如果不存在）。 接收器指定存储过程时不支持自动创建表。 允许的值为：`none`（默认值）、`autoCreate`。 |否 |
 | sqlWriterStoredProcedureName | 定义如何将源数据应用于目标表的存储过程的名称。 <br/>此存储过程由每个批处理调用。 若要执行仅运行一次且与源数据无关的操作（例如删除或截断），请使用 `preCopyScript` 属性。<br>请参阅[调用 SQL 接收器的存储过程](#invoke-a-stored-procedure-from-a-sql-sink)中的示例。 | 否 |
@@ -390,7 +390,7 @@ GO
 | sqlWriterTableType |要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |否 |
 | storedProcedureParameters |存储过程的参数。<br/>允许的值为名称和值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否 |
 | writeBatchSize |每批要插入到 SQL 表中的行数。<br/>允许的值为表示行数的整数。 默认情况下，Azure 数据工厂会根据行大小动态确定适当的批大小。  |否 |
-| writeBatchTimeout |此属性指定超时前等待批插入操作完成的时间。<br/>允许的值是指时间跨度。 例如，"00:30:00" 是30分钟。 |否 |
+| writeBatchTimeout |此属性指定超时前等待批插入操作完成的时间。<br/>允许的值是指时间跨度。 例如，“00:30:00”表示 30 分钟。 |否 |
 
 **示例 1：追加数据**
 
@@ -477,9 +477,9 @@ GO
 
 | 方案                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 从包含物理分区的大型表进行完整加载。        | **分区选项** ：表的物理分区。 <br><br/>在执行期间，数据工厂将自动检测物理分区并按分区复制数据。 <br><br/>若要检查表是否有物理分区，可参考[此查询](#sample-query-to-check-physical-partition)。 |
-| 从不包含物理分区但包含用于数据分区的整数或日期时间列的大型表进行完整加载。 | **分区选项** ：动态范围分区。<br>分区列（可选）：指定用于对数据进行分区的列。 如果未指定，将使用索引或主键列。<br/>分区上限和分区下限（可选） ：指定是否要确定分区步幅。 这不适用于筛选表中的行，表中的所有行都将进行分区和复制。 如果未指定，复制活动会自动检测这些值。<br><br>例如，如果分区列“ID”的值范围为 1 至 100，其下限设置为 20、上限设置为 80，并行复制设置为 4，则数据工厂会按 4 个分区检索数据，ID 范围分别为 <=20、[21, 50]、[51, 80] 和 >=81。 |
-| 使用自定义查询从不包含物理分区但包含用于数据分区的整数或日期/日期时间列的表加载大量数据。 | **分区选项** ：动态范围分区。<br>**查询** ：`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`。<br>**分区列** ：指定用于对数据进行分区的列。<br>分区上限和分区下限（可选） ：指定是否要确定分区步幅。 这不适用于筛选表中的行，查询结果中的所有行都将进行分区和复制。 如果未指定，复制活动会自动检测该值。<br><br>在执行期间，数据工厂会将 `?AdfRangePartitionColumnName` 替换为每个分区的实际列名和值范围，并将其发送到 SQL MI。 <br>例如，如果分区列“ID”的值范围为 1 至 100，其下限设置为 20、上限设置为 80，并行复制设置为 4，则数据工厂会按 4 个分区检索数据，ID 范围分别为 <=20、[21, 50]、[51, 80] 和 >=81。 <br><br>下面是针对不同场景的更多示例查询：<br> 1.查询整个表： <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2.使用列选择和附加的 where 子句筛选器从表中查询： <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3.使用子查询进行查询： <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4.在子查询中使用分区查询： <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
+| 从包含物理分区的大型表进行完整加载。        | **分区选项**：表的物理分区。 <br><br/>在执行期间，数据工厂将自动检测物理分区并按分区复制数据。 <br><br/>若要检查表是否有物理分区，可参考[此查询](#sample-query-to-check-physical-partition)。 |
+| 从不包含物理分区但包含用于数据分区的整数或日期时间列的大型表进行完整加载。 | **分区选项**：动态范围分区。<br>**分区列**（可选）：指定用于对数据进行分区的列。 如果未指定，将使用索引或主键列。<br/>分区上限和分区下限（可选） ：指定是否要确定分区步幅。 这不适用于筛选表中的行，表中的所有行都将进行分区和复制。 如果未指定，复制活动会自动检测这些值。<br><br>例如，如果分区列“ID”的值范围为 1 至 100，其下限设置为 20、上限设置为 80，并行复制设置为 4，则数据工厂会按 4 个分区检索数据，ID 范围分别为 <=20、[21, 50]、[51, 80] 和 >=81。 |
+| 使用自定义查询从不包含物理分区但包含用于数据分区的整数或日期/日期时间列的表加载大量数据。 | **分区选项**：动态范围分区。<br>**查询**：`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`。<br>**分区列**：指定用于对数据进行分区的列。<br>分区上限和分区下限（可选） ：指定是否要确定分区步幅。 这不适用于筛选表中的行，查询结果中的所有行都将进行分区和复制。 如果未指定，复制活动会自动检测该值。<br><br>在执行期间，数据工厂会将 `?AdfRangePartitionColumnName` 替换为每个分区的实际列名和值范围，并将其发送到 SQL MI。 <br>例如，如果分区列“ID”的值范围为 1 至 100，其下限设置为 20、上限设置为 80，并行复制设置为 4，则数据工厂会按 4 个分区检索数据，ID 范围分别为 <=20、[21, 50]、[51, 80] 和 >=81。 <br><br>下面是针对不同场景的更多示例查询：<br> 1.查询整个表： <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2.使用列选择和附加的 where 子句筛选器从表中查询： <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3.使用子查询进行查询： <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4.在子查询中使用分区查询： <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
 |
 
 使用分区选项加载数据的最佳做法：
@@ -489,7 +489,7 @@ GO
 3. 如果使用 Azure Integration Runtime 复制数据，则可设置较大的“[数据集成单元 (DIU)](copy-activity-performance-features.md#data-integration-units)”(>4) 以利用更多计算资源。 检查此处适用的方案。
 4. “[复制并行度](copy-activity-performance-features.md#parallel-copy)”可控制分区数量，将此数字设置得太大有时会损害性能，建议将此数字设置按以下公式计算的值：（DIU 或自承载 IR 节点数）*（2 到 4）。
 
-**示例：从包含物理分区的大型表进行完整加载**
+示例：从包含物理分区的大型表进行完整加载
 
 ```json
 "source": {
@@ -557,7 +557,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 
 ![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
-在数据库中使用 MERGE 逻辑定义一个存储过程（如以下示例所示），以便从上述存储过程活动指向该过程。 假设目标是包含三个列的 **Marketing** 表： **ProfileID** 、 **State** 和 **Category** 。 根据 **ProfileID** 列执行更新插入。
+在数据库中使用 MERGE 逻辑定义一个存储过程（如以下示例所示），以便从上述存储过程活动指向该过程。 假设目标是包含三个列的 **Marketing** 表：**ProfileID**、**State** 和 **Category**。 根据 **ProfileID** 列执行更新插入。
 
 ```sql
 CREATE PROCEDURE [dbo].[spMergeData]
@@ -592,7 +592,7 @@ END
 
 当内置复制机制无法使用时，还可使用存储过程。 例如，在将源数据最终插入目标表之前应用额外的处理。 额外处理的示例包括合并列、查找其他值以及将数据插入多个表。
 
-以下示例演示如何使用存储过程，在 SQL Server 数据库中的表内执行 upsert。 假设输入数据和接收器 **Marketing** 表各有三列： **ProfileID** 、 **State** 和 **Category** 。 基于 ProfileID 列执行更新插入，并仅将其应用于名为“ProductA”的特定类别。
+以下示例演示如何使用存储过程，在 SQL Server 数据库中的表内执行 upsert。 假设输入数据和接收器 **Marketing** 表各有三列：**ProfileID**、**State** 和 **Category**。 基于 ProfileID 列执行更新插入，并仅将其应用于名为“ProductA”的特定类别。
 
 1. 在数据库中，使用与 **sqlWriterTableType** 相同的名称定义表类型。 表类型的架构与输入数据返回的架构相同。
 
@@ -648,10 +648,10 @@ END
 
 下表列出了 Azure SQL 托管实例源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 表 | 如果选择 "表" 作为输入，数据流将从数据集中指定的表中获取所有数据。 | 否 | - |- |
-| 查询 | 如果选择 "查询作为输入"，请指定一个 SQL 查询，以便从源中提取数据，这将覆盖在 dataset 中指定的任何表。 使用查询是减少测试或查找行的好办法。<br><br>不支持 **Order by** 子句，但可以设置完整的 SELECT FROM 语句。 还可以使用用户定义的表函数。 **select * From udfGetData ( # B1** 是 SQL 中的一个 UDF，它返回可以在数据流中使用的表。<br>查询示例： `Select * from MyTable where customerId > 1000 and customerId < 2000`| 否 | 字符串 | query |
+| 查询 | 如果选择 "查询作为输入"，请指定一个 SQL 查询，以便从源中提取数据，这将覆盖在 dataset 中指定的任何表。 使用查询是减少测试或查找行的好办法。<br><br>不支持 **Order by** 子句，但可以设置完整的 SELECT FROM 语句。 还可以使用用户定义的表函数。 **select * From udfGetData ( # B1** 是 SQL 中的一个 UDF，它返回可以在数据流中使用的表。<br>查询示例： `Select * from MyTable where customerId > 1000 and customerId < 2000`| 否 | String | 查询 |
 | 批大小 | 指定批大小以将大型数据拆分为读取。 | 否 | Integer | batchSize |
 | 隔离级别 | 选择以下隔离级别之一：<br>-已提交读<br>-未提交 (默认) <br>-可重复读<br>-可序列化<br>-None (忽略隔离级别)  | 否 | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALIZABLE<br/>内容</small> |isolationLevel |
 
@@ -671,14 +671,14 @@ source(allowSchemaDrift: true,
 
 下表列出了 Azure SQL 托管实例接收器支持的属性。 可以在 " **接收器选项** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Update 方法 | 指定对数据库目标允许哪些操作。 默认设置为仅允许插入。<br>若要更新、upsert 或删除行，需要 [更改行转换](data-flow-alter-row.md) 以标记这些操作的行。 | 是 | `true` 或 `false` | 删除 <br/>可插入 <br/>更新 <br/>upsertable |
 | 键列 | 对于更新，upsert 和 delete，键列 (s) 必须设置为确定要更改的行。<br>选取为密钥的列名称将用作后续更新 upsert （删除）的一部分。 因此，你必须选择存在于接收器映射中的列。 | 否 | Array | 密钥 |
 | 跳过写入键列 | 如果您不希望将该值写入键列，请选择 "跳过写入键列"。 | 否 | `true` 或 `false` | skipKeyWrites |
-| 表操作 |确定在写入之前是否在目标表中重新创建或删除所有行。<br>- **None** ：不会对表执行任何操作。<br>- **重新创建** ：该表将被删除并重新创建。 如果以动态方式创建表，则是必需的。<br>- **截断** ：目标表中的所有行都将被删除。 | 否 | `true` 或 `false` | 重新创建<br/>truncate |
+| 表操作 |确定在写入之前是否在目标表中重新创建或删除所有行。<br>- **None**：不会对表执行任何操作。<br>- **重新创建**：该表将被删除并重新创建。 如果以动态方式创建表，则是必需的。<br>- **截断**：目标表中的所有行都将被删除。 | 否 | `true` 或 `false` | 重新创建<br/>truncate |
 | 批大小 | 指定每个批次中写入的行数。 较大的批大小可提高压缩比并改进内存优化，但在缓存数据时可能会导致内存不足异常。 | 否 | Integer | batchSize |
-| Pre 和 Post SQL 脚本 | 指定将在 (预处理) 之前和 (在将后处理) 数据写入接收器数据库之前执行的多行 SQL 脚本。 | 否 | 字符串 | preSQLs<br>postSQLs |
+| Pre 和 Post SQL 脚本 | 指定将在 (预处理) 之前和 (在将后处理) 数据写入接收器数据库之前执行的多行 SQL 脚本。 | 否 | String | preSQLs<br>postSQLs |
 
 #### <a name="azure-sql-managed-instance-sink-script-example"></a>Azure SQL 托管实例接收器脚本示例
 
@@ -707,13 +707,13 @@ IncomingStream sink(allowSchemaDrift: true,
 
 ## <a name="data-type-mapping-for-sql-managed-instance"></a>SQL 托管实例的数据类型映射
 
-使用复制活动将数据复制到 SQL 托管实例或从 SQL 复制到 Azure 数据工厂临时数据类型时，将从 SQL 托管实例数据类型使用以下映射。 若要了解复制活动如何从源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+使用复制活动向/从 SQL 托管实例复制数据时，会使用以下从 SQL 托管实例数据类型到 Azure 数据工厂临时数据类型的映射。 若要了解复制活动如何从源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
 | SQL 托管实例数据类型 | Azure 数据工厂临时数据类型 |
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |布尔 |
+| bit |Boolean |
 | char |String, Char[] |
 | date |DateTime |
 | datetime |DateTime |
@@ -722,7 +722,7 @@ IncomingStream sink(allowSchemaDrift: true,
 | 小数 |小数 |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| image |Byte[] |
+| 图像 |Byte[] |
 | int |Int32 |
 | money |小数 |
 | nchar |String, Char[] |

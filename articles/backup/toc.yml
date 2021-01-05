@@ -94,6 +94,8 @@
       href: backup-architecture.md
     - name: 指南和最佳做法
       href: guidance-best-practices.md
+    - name: 术语词汇表
+      href: azure-backup-glossary.md
 - name: 操作方法指南
   items:
     - name: 保管库
@@ -164,6 +166,8 @@
               href: backup-azure-manage-vms.md
             - name: 管理恢复点
               href: manage-recovery-points.md
+            - name: 用 Azure CLI 修改备份策略
+              href: modify-vm-policy-cli.md
     - name: 备份 Azure VM 上的 SQL Server 数据库
       items:
         - name: 概述
