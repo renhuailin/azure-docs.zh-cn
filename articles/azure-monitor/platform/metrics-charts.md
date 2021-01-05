@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: be3d3f11e90c17bd8c4792418500da651039e480
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a80eaecc02fa3c8c6618341c02e22241f0dc7faf
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562797"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845071"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
 
@@ -22,6 +22,35 @@ ms.locfileid: "97562797"
 ## <a name="metrics-in-azure"></a>Azure 中的指标
 
 [Azure Monitor 中的指标](data-platform-metrics.md)是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而自定义指标是由应用程序通过[用于自定义事件和指标的 Application Insights API](../app/api-custom-events-metrics.md)、[Windows Azure 诊断 (WAD) 扩展](./diagnostics-extension-overview.md)或 [Azure Monitor REST API](./metrics-store-custom-rest-api.md) 发送给 Azure 的。
+
+## <a name="resource-scope-picker"></a>资源作用域选取器
+资源作用域选取器允许你查看单个和多个资源的指标。 下面是有关如何使用资源范围选取器的说明。 
+
+### <a name="selecting-a-single-resource"></a>选择单个资源
+从 Azure Monitor 菜单或从资源的菜单的“监视”部分选择“指标”    。 单击 "选择作用域" 按钮，打开 "作用域选取器"，这将允许你选择要查看其指标的资源 () 。 如果从资源菜单中打开指标资源管理器，应已填充此值。 
+
+![资源范围选取器的屏幕截图](./media/metrics-charts/scope-picker.png)
+
+对于某些资源，一次只能查看一个资源的度量值。 这些资源位于 "资源类型" 下拉列表中的 "所有资源类型" 部分下。
+
+![单个资源的屏幕截图](./media/metrics-charts/single-resource-scope.png)
+
+单击所需的资源后，会看到包含该资源的所有订阅和资源组。
+
+![可用资源的屏幕截图](./media/metrics-charts/available-single-resource.png)
+
+> [!TIP]
+> 如果要同时查看多个资源的度量值或整个订阅或资源组中的度量值，请单击 "投票赞成" 按钮。
+
+选择 "应用" 后，请单击 "应用"。
+
+### <a name="viewing-metrics-across-multiple-resources"></a>跨多个资源查看指标
+某些资源类型允许通过多个资源查询度量值，前提是它们在相同的订阅和位置中。 可以在 "资源类型" 下拉列表的顶部找到这些资源类型。 若要获取有关如何跨多个资源查看指标的详细信息，请查看 [此文档](metrics-dynamic-scope.md#selecting-multiple-resources)。
+
+![跨资源类型的屏幕截图](./media/metrics-charts/multi-resource-scope.png)
+
+对于多资源兼容类型，您还可以在一个或多个资源组中查询度量值。 若要了解如何执行此操作，请查看 [此文](metrics-dynamic-scope.md#selecting-a-resource-group-or-subscription)
+
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>使用多个指标和图表创建视图
 
@@ -61,11 +90,25 @@ ms.locfileid: "97562797"
 
 指标资源管理器中提供了五种基本的统计信息聚合类型：Sum、Count、Min、Max 和 Average    。 “Sum”聚合有时称为“Total”聚合 。 对于许多指标，指标资源管理器将隐藏完全不相关且无法使用的聚合。
 
-- **Sum** –聚合间隔内捕获的所有值的总和
-- **Count** –通过聚合间隔捕获的度量值的数量。 请注意，在捕获的指标值始终为 1 的情况下，“Count”将等于“Sum” 。 当指标跟踪不同事件的计数，并且每个度量表示一个事件时（即每次新请求传入时，代码都会触发指标记录），这种情况很常见
-- **Average** –通过聚合间隔捕获的指标值的平均值
-- **Min** –聚合间隔内捕获的最小值
-- **Max** –聚合间隔内捕获的最大值
+**Sum** –聚合间隔内捕获的所有值的总和
+
+![请求总数的屏幕截图](./media/metrics-charts/request-sum.png)
+
+**Count** –通过聚合间隔捕获的度量值的数量。 请注意，在捕获的指标值始终为 1 的情况下，“Count”将等于“Sum” 。 当指标跟踪不同事件的计数，并且每个度量表示一个事件时（即每次新请求传入时，代码都会触发指标记录），这种情况很常见
+
+![请求计数的屏幕截图](./media/metrics-charts/request-count.png)
+
+**Average** –通过聚合间隔捕获的指标值的平均值
+
+![平均请求的屏幕截图](./media/metrics-charts/request-avg.png)
+
+**Min** –聚合间隔内捕获的最小值
+
+![最小请求的屏幕截图](./media/metrics-charts/request-min.png)
+
+**Max** –聚合间隔内捕获的最大值
+
+![Max 请求的屏幕截图](./media/metrics-charts/request-max.png)
 
 ## <a name="apply-filters-to-charts"></a>向图表应用筛选器
 

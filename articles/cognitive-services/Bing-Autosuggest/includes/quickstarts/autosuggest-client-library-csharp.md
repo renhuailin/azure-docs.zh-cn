@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 9d6d65ea7255528146b144c4bfa35e98b10b4055
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 5bfe28a8111128ba7d8072c27d8647e6137620cd
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371943"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97844732"
 ---
 开始使用适用于 .NET 的必应自动建议客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。
 
 使用适用于 .NET 的必应自动建议客户端库，以便基于部分查询字符串获取搜索建议。
 
-[参考文档](/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/) | [示例代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
+[参考文档](/dotnet/api/overview/azure/cognitiveservices/bing-autosuggest-readme?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/) | [示例代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -74,7 +74,7 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 在首选编辑器或 IDE 中创建新的 .NET Core 应用程序。
 
-在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `bing-autosuggest-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目： *program.cs* 。
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `bing-autosuggest-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*program.cs*。
 
 ```console
 dotnet new console -n bing-autosuggest-quickstart
@@ -216,4 +216,4 @@ dotnet run
 ## <a name="see-also"></a>另请参阅
 
 - [什么是必应自动建议？](../../get-suggested-search-terms.md)
-- [必应自动建议 dotnet 参考](/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet)
+- [必应自动建议 dotnet 参考](/dotnet/api/overview/azure/cognitiveservices/bing-autosuggest-readme?view=azure-dotnet)

@@ -3,14 +3,14 @@
 - name: 概述
   expanded: true
   items:
-    - name: 关于安全中心
+    - name: 什么是 Azure 安全中心？
+      href: security-center-introduction.md
+    - name: 可用性
       items:
-        - name: 什么是 Azure 安全中心？
-          href: security-center-introduction.md
-        - name: 受支持的平台
+        - name: 支持的平台
           displayName: coverage
           href: security-center-os-coverage.md
-        - name: 适用于 VM 的功能覆盖范围
+        - name: 按 OS、计算机类型和云划分的覆盖范围
           href: security-center-services.md
         - name: 适用于 Azure PaaS 资源的功能覆盖范围
           href: features-paas.md
@@ -110,6 +110,8 @@
       href: tutorial-security-incident.md
     - name: 提高合规性
       href: security-center-compliance-dashboard.md
+    - name: 管理安全策略
+      href: tutorial-security-policy.md
 - name: 概念
   items:
     - name: 云安全状态管理
@@ -120,11 +122,6 @@
           href: secure-score-security-controls.md
         - name: 安全性建议的概述
           href: security-center-recommendations.md
-        - name: 安全策略概述
-          href: tutorial-security-policy.md
-        - name: 内置安全策略
-          displayName: 'samples, policy'
-          href: ./policy-reference.md
         - name: 使用建议增强安全性
           href: security-center-using-recommendations.md
         - name: 安全基线
@@ -224,14 +221,9 @@
         - name: 强化 Docker 主机
           displayName: containers
           href: harden-docker-hosts.md
-    - name: 使用适用于 SQL 的 Azure Defender
-      items:
-        - name: 在 Azure VM 上配置适用于 SQL 的 Azure Defender
+        - name: 使用适用于 SQL 的 Azure Defender
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc'
-        - name: 自定义 SQL 信息保护策略
-          displayName: 'sql, database, data discovery'
-          href: security-center-info-protection-policy.md
     - name: 使用适用于容器注册表的 Azure Defender
       items:
         - name: 扫描注册表映像是否存在漏洞
@@ -281,6 +273,9 @@
       href: security-center-investigation-user-data.md
     - name: 获取租户范围内的可见性
       href: security-center-management-groups.md
+    - name: 自定义 SQL 信息保护策略
+      displayName: 'sql, database, data discovery'
+      href: security-center-info-protection-policy.md
 - name: 参考
   items:
     - name: REST API
@@ -297,6 +292,9 @@
           href: faq-vms.md
         - name: Azure Log Analytics 的现有用户
           href: faq-azure-monitor-logs.md
+    - name: 内置安全策略
+      displayName: 'samples, policy'
+      href: policy-reference.md
     - name: Azure 路线图博客
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 终结点保护评估和建议

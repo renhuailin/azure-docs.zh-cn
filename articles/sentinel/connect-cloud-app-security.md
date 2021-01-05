@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 9827e93f793ef47a835aa0a5fb2005e2830a0824
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3312eed71865508e5e83d37c7ced8cf220f13ca9
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655708"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835102"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>连接 Microsoft Cloud App Security 的数据 
 
@@ -33,7 +33,7 @@ ms.locfileid: "94655708"
 
 > [!IMPORTANT]
 > 引入 Cloud Discovery 日志当前为公共预览版。
-> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。
+> 此功能不附带服务级别协议，不建议将其用于生产工作负载。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
  
 ## <a name="connect-to-cloud-app-security"></a>连接到 Cloud App Security
@@ -48,7 +48,7 @@ ms.locfileid: "94655708"
 
 1. 单击“应用更改”。
 
-1. 你可以选择是否希望 azure 安全中心的 Azure Defender 警报在 Azure Sentinel 中自动生成事件。 在 " **创建事件**" 下，选择 " **启用** " 以启用自动根据警报创建事件的默认分析规则。 然后，你可以在 " **分析**" 下的 "  **活动规则** " 选项卡中编辑此规则。
+1. 你可以选择是否希望 Cloud App Security 中的警报在 Azure Sentinel 中自动生成事件。 在 " **创建事件-建议**" 下，选择 " **启用** " 以启用自动从警报创建事件的默认分析规则。 然后，你可以在 " **分析**" 下的 "  **活动规则** " 选项卡中编辑此规则。
 
 1. 若要使用 Log Analytics 中的相关架构 Cloud App Security 警报，请 `SecurityAlert` 在 "查询" 窗口中键入。 对于 Cloud Discovery 日志架构，请键入 `McasShadowItReporting` 。
 
