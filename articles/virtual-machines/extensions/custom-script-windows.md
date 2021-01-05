@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 8d11ff6eaab8ed6a13c3c2aa1b712cc57e7825ea
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: aa95d6792f2f5754a237c7bf5e90a11e2e011ede
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960965"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861788"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -61,7 +61,7 @@ ms.locfileid: "94960965"
 * 脚本可以运行 90 分钟，若运行时间超过 90 分钟，将导致扩展的预配失败。
 * 不要重启置于脚本内，此操作会导致所安装的其他扩展出现问题。 扩展不会在重启之后继续。
 * 如果你有可导致重启的脚本，则安装应用程序并运行该脚本，可使用 Windows 计划任务或 DSC、Chef 或 Puppet 扩展等工具来计划重启。
-* 建议不要运行会导致 VM 代理停止或更新的脚本。 这会使扩展处于“正在转换”状态，从而导致超时。
+* 建议不要运行会导致 VM 代理停止或更新的脚本。 这可以使扩展处于转换状态，从而导致超时。
 * 扩展将只运行脚本一次，如果想要在每次启动时运行脚本，则需要使用扩展创建 Windows 计划任务。
 * 如果想要计划脚本何时运行，应使用扩展创建 Windows 计划任务。
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
@@ -180,7 +180,7 @@ CustomScript（版本 1.10 及更高版本）支持用于通过“fileUris”设
 
 若要在目标 VM/VMSS 上使用用户分配的标识，请将“managedidentity”字段配置为托管标识的客户端 ID 或对象 ID。
 
-> 示例：
+> 示例:
 >
 > ```json
 > {

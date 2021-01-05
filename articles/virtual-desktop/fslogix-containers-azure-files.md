@@ -3,15 +3,15 @@ title: Windows 虚拟桌面 FSLogix 配置文件容器文件-Azure
 description: 本文介绍 Windows 虚拟桌面和 Azure 文件中的 FSLogix 配置文件容器。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 01/04/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef7f19d835f4fef1a911da01015321b2dda67682
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002390"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861879"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
@@ -45,11 +45,11 @@ UPD 和 RUP 是远程桌面会话主机 (RDSH) 和虚拟硬盘 (VHD) 环境中�
 
 下表显示了以前的用户配置文件技术的优点和局限性。
 
-| 技术 | 新式设置 | Win32 设置 | OS 设置 | 用户数据 | 在服务器 SKU 上受支持 | Azure 上的后端存储 | 本地后端存储 | 版本支持 | 后续登录时间 |注意|
+| 技术 | 新式设置 | Win32 设置 | OS 设置 | 用户数据 | 在服务器 SKU 上受支持 | Azure 上的后端存储 | 本地后端存储 | 版本支持 | 后续登录时间 |说明|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| ** (UPD 的用户配置文件磁盘) ** | 是 | 是 | 是 | 是 | 是 | 否 | 是 | Win 7 + | 是 | |
+| **(UPD 的用户配置文件磁盘)** | 是 | 是 | 是 | 是 | 是 | 否 | 是 | Win 7 + | 是 | |
 | **漫游用户配置文件 (RUP) ，维护模式** | 否 | 是 | 是 | 是 | 是| 否 | 是 | Win 7 + | 否 | |
-| **企业状态漫游 (ESR) ** | 是 | 否 | 是 | 否 | 请参阅说明 | 是 | 否 | Win 10 | 否 | 服务器 SKU 上的函数，但不支持用户界面 |
+| **企业状态漫游 (ESR)** | 是 | 否 | 是 | 否 | 请参阅说明 | 是 | 否 | Win 10 | 否 | 服务器 SKU 上的函数，但不支持用户界面 |
 | **用户体验虚拟化 (UE-V)** | 是 | 是 | 是 | 否 | 是 | 否 | 是 | Win 7 + | 否 |  |
 | **OneDrive 云文件** | 否 | 否 | 否 | 是 | 请参阅说明 | 请参阅说明  | 查看注释 | Win 10 RS3 | 否 | 未在服务器 SKU 上测试。 Azure 上的后端存储依赖于同步客户端。 本地上的后端存储需要同步客户端。 |
 
@@ -57,7 +57,7 @@ UPD 和 RUP 是远程桌面会话主机 (RDSH) 和虚拟硬盘 (VHD) 环境中�
 
 UPD 要求 [ (S2D) 存储空间直通 ](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) ，以满足性能要求。 UPD 使用服务器消息块 (SMB) 协议。 它将配置文件复制到记录用户的 VM。 UPD with S2D 是我们建议用于 Windows 虚拟桌面的解决方案。
 
-#### <a name="cost"></a>成本
+#### <a name="cost"></a>节约成本
 
 虽然 S2D 群集实现了所需的性能，但企业客户的成本成本非常高，但对于中小型企业 (SMB) 客户，开销特别高。 对于此解决方案，企业需要支付存储空间，以及使用磁盘作为共享的 Vm 的成本。
 
@@ -70,7 +70,7 @@ S2D 群集要求在安全状态下对操作系统进行修补、更新和维护�
 2018年11月19日， [Microsoft 获取了 FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/)。 FSLogix 解决了许多配置文件容器挑战。 其中的关键是：
 
 - **性能：**[FSLogix 配置文件容器](/fslogix/configure-profile-container-tutorial/)具有高性能，并解决过去已阻止缓存 exchange 模式的性能问题。
-- **OneDrive：** 如果没有 FSLogix 配置文件容器，则在非持久性 RDSH 或 VDI 环境中不支持 OneDrive for Business。 [OneDrive for business 和 FSLogix 最佳实践](/fslogix/overview/) 介绍了它们如何交互。 有关详细信息，请参阅 [使用虚拟机上的同步客户端](/deployoffice/rds-onedrive-business-vdi/)。
+- **OneDrive：** 如果没有 FSLogix 配置文件容器，则在非持久性 RDSH 或 VDI 环境中不支持 OneDrive for Business。 " [ONEDRIVE VDI 支持" 页面](/onedrive/sync-vdi-support) 将会告诉你它们之间的交互方式。 有关详细信息，请参阅 [使用虚拟机上的同步客户端](/deployoffice/rds-onedrive-business-vdi/)。
 - **其他文件夹：** FSLogix 提供扩展用户配置文件以包括更多文件夹的功能。
 
 由于收购，Microsoft 开始将现有用户配置文件解决方案（例如 UPD）替换为 FSLogix 配置文件容器。
@@ -87,7 +87,7 @@ Windows 虚拟桌面提供对客户所使用的 Vm 大小、类型和计数的�
 
 - Azure 文件存储帐户必须位于与会话主机 Vm 相同的区域中。
 - Azure 文件权限应与 [要求-配置文件容器](/fslogix/fslogix-storage-config-ht)中所述的权限匹配。
-- 每个主机池都必须基于相同的主映像生成相同的类型和大小的 VM。
+- 每个主机池 VM 必须基于相同的主映像生成相同的类型和大小的 VM。
 - 每个主机池 VM 必须位于同一个资源组中，以帮助管理、缩放和更新。
 - 为了获得最佳性能，存储解决方案和 FSLogix 配置文件容器应位于相同的数据中心位置。
 - 包含主映像的存储帐户必须位于要预配 Vm 的同一区域和订阅中。

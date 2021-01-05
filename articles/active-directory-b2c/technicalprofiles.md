@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 99ed7d3ad81202ab6fe67bf52888bbdbf0b28d2a
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: b7bd04790c7ac124afe3e9b503803f27118ae959
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387082"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861865"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -52,7 +52,7 @@ ms.locfileid: "97387082"
 ![说明技术配置文件流的示意图](./media/technical-profiles/technical-profile-flow.png)
 
 1. **单一登录 (SSO) 会话管理**-使用 [SSO 会话管理](custom-policy-reference-sso.md)还原技术配置文件的会话状态。
-1. **输入声明转换** -技术配置文件开始之前，Azure AD B2C 运行输入 [声明转换]。 (claimstransformations.md) 。
+1. **输入声明转换** -技术配置文件开始之前，Azure AD B2C 运行输入 [声明转换](claimstransformations.md)。
 1. **输入声明** -从用于技术配置文件的声明袋中提取声明。
 1. 技术配置文件执行 - 技术配置文件与已配置的参与方交换声明。 例如：
     - 将用户重定向到标识提供者以完成登录。 成功登录后，用户返回并继续执行技术配置文件。
@@ -84,7 +84,7 @@ ms.locfileid: "97387082"
 
 **TechnicalProfile** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 |---------|---------|---------|
 | ID | 是 | 技术配置文件的唯一标识符。 可以使用此标识符从策略文件中的其他元素引用技术配置文件。 例如，**OrchestrationSteps** 和 **ValidationTechnicalProfile**。 |
 
@@ -118,7 +118,7 @@ ms.locfileid: "97387082"
 
 **协议** 指定与另一方的通信所使用的协议。 Protocol  元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary` 或 `None`。 |
 | Handler | 否 | 当协议名称设置为 `Proprietary` 时，指定 Azure AD B2C 用来确定协议处理程序的程序集的完全限定名称。 |
@@ -129,13 +129,13 @@ ms.locfileid: "97387082"
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| 项目 | 0:n | 与技术配置文件相关的元数据。 每种类型的技术配置文件具有一组不同的元数据项。 有关详细信息，请参阅“技术配置文件类型”部分。 |
+| Item | 0:n | 与技术配置文件相关的元数据。 每种类型的技术配置文件具有一组不同的元数据项。 有关详细信息，请参阅“技术配置文件类型”部分。 |
 
 ### <a name="item"></a>Item
 
 **Metadata** 元素的 **Item** 元素包含以下特性：
 
-| Attribute | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | 密钥 | 是 | 元数据密钥。 有关元数据项列表，请参阅每个 [技术配置文件类型](#type-of-technical-profiles)。 |
 
@@ -189,7 +189,7 @@ Azure AD B2C 以 [策略密钥](policy-keys-overview.md) 的形式存储机密�
 
 **Key** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 否 | 从策略文件中的其他元素引用的特定密钥对的唯一标识符。 |
 | StorageReferenceId | 是 | 从策略文件中的其他元素引用的存储密钥容器的标识符。 |
@@ -210,7 +210,7 @@ Azure AD B2C 以 [策略密钥](policy-keys-overview.md) 的形式存储机密�
 
 **InputClaimsTransformation** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的声明转换的标识符。 |
 
@@ -249,7 +249,7 @@ InputClaims  元素包含以下元素：
 
 InputClaim  元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 | DefaultValue | 否 | 当 ClaimTypeReferenceId 指示的声明不存在时用来创建声明的默认值。技术配置文件可将生成的声明用作 InputClaim。 |
@@ -277,7 +277,7 @@ DisplayClaims  元素包含以下元素：
 
 DisplayClaim  元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 否 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 | DisplayControlReferenceId | 否 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的[显示控件](display-controls.md)的标识符。 |
@@ -323,7 +323,7 @@ DisplayClaim  元素包含以下属性：
 
 **PersistedClaim** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 | DefaultValue | 否 | 当 ClaimTypeReferenceId 指示的声明不存在时用来创建声明的默认值。技术配置文件可将生成的声明用作 InputClaim。 |
@@ -354,7 +354,7 @@ DisplayClaim  元素包含以下属性：
 
 OutputClaim  元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 | DefaultValue | 否 | 当 ClaimTypeReferenceId 指示的声明不存在时用来创建声明的默认值。技术配置文件可将生成的声明用作 InputClaim。 |
@@ -377,7 +377,7 @@ OutputClaim  元素包含以下属性：
 
 **OutputClaimsTransformation** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的声明转换的标识符。 |
 
@@ -420,7 +420,7 @@ OutputClaim  元素包含以下属性：
 
 **ValidationTechnicalProfile** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的技术配置文件的标识符。 |
 
@@ -428,7 +428,7 @@ OutputClaim  元素包含以下属性：
 
 **SubjectNamingInfo** 定义 [信赖方策略](relyingparty.md#subjectnaminginfo)中的令牌使用的使用者名称。 **SubjectNamingInfo** 包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 已在策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 
@@ -438,7 +438,7 @@ OutputClaim  元素包含以下属性：
 
 **IncludeTechnicalProfile** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的技术配置文件的标识符。 |
 
@@ -547,7 +547,7 @@ AAD-UserReadUsingAlternativeSecurityId 包括 `AAD-Common` 技术配置文件。
 
 对 [单一登录会话技术配置文件](custom-policy-reference-sso.md)的 **UseTechnicalProfileForSessionManagement** 元素引用。 **UseTechnicalProfileForSessionManagement** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的技术配置文件的标识符。 |
 
