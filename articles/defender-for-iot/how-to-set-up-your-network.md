@@ -4,15 +4,15 @@ description: 了解需要确保成功将网络设置为使用适用于 IoT 设�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 01/03/2021
+ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b5cb7d0e421657b84c365d8dca536191cafd4e72
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 3e9380f067b091c4473b8c29bda3d31bb93cbc6d
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861964"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97838419"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>关于用于 IoT 的 Azure Defender 网络设置
 
@@ -54,7 +54,7 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 
 - 配置工作站。
 
-- SSL 证书 (可选的，但建议) 。
+- SSL 证书 (可选) 。
 
 - SMTP 身份验证 (可选) 。 若要将 SMTP 服务器用于身份验证，请准备服务器所需的凭据。
 
@@ -103,7 +103,7 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 | **如果相关) ，则传感器连接到外部 NTP 服务器 (** | NTP | UDP | 入或出| 123 | 时间同步 |
 | **用于 IoT 平台和管理平台的 Defender 与邮件服务器之间的连接 (如果相关)** | SMTP | TCP | 传感器管理 | 25 | 电子邮件 |
 | **从本地管理控制台发送到 Syslog 服务器的日志 (如果相关)** | Syslog | UDP | 传感器管理| 514 | LEEF |
-| **(相关的 DNS 服务器端口)** | DNS | 空值 | 入或出| 53 | DNS |
+| **(相关的 DNS 服务器端口)** | DNS | 不适用 | 入或出| 53 | DNS |
 | **用于 IoT 平台和本地管理控制台的 Defender 之间的连接，用于 Active Directory (相关)** | LDAPS | TCP | 入或出 | 636 <br />389 | Active Directory |
 | **远程 SNMP 收集器 (相关)** | SNMP | UDP | 传感器管理| 161 | 监视 |
 | **Windows 终结点监视 (相关)** | WMI | UDP | 传感器管理| 135 | 监视 |
@@ -569,7 +569,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
     > [!NOTE]
     > IoT 设备的 Defender 应连接到一个较低级别的交换机，该交换机查看交换机上端口间的流量。  
 
-2. 提供要监视的网络设备的近似数目。 在将订阅加入 Azure Defender for IoT 门户时，你将需要此信息。 在载入过程中，系统会提示输入设备数量，以1000为增量。
+2. 提供网络中设备的近似数目 (可选) 。
 
 3. 为生产网络提供子网列表，并提供 (可选) 的说明。 
 
