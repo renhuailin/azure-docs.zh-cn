@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fadcf3f5aefa76ab03d6313643fc18df71f6c3b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004647"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708477"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure AD 角色设置
 
@@ -43,7 +43,7 @@ ms.locfileid: "96004647"
 遵循以下步骤打开 Azure AD 角色的设置。
 
 1. 使用具有[特权角色管理员](../roles/permissions-reference.md#privileged-role-administrator)角色的用户登录到 [Azure 门户](https://portal.azure.com/)。
-gt
+
 1. 打开“Azure AD Privileged Identity Management”&gt;“Azure AD 角色”&gt;“角色设置”。
 
     ![列出 Azure AD 角色的“角色设置”页](./media/pim-how-to-change-default-settings/role-settings.png)
@@ -62,7 +62,7 @@ gt
 
 配置角色的设置时，可以从用于每种分配类型（合格和活动）的两个分配持续时间选项中进行选择·。 在 Privileged Identity Management 中将用户分配到角色时，这些选项将成为默认的最大持续时间。
 
-可以选择其中一个合格的分配持续时间选项：
+可以选择其中一个合格的  分配持续时间选项：
 
 | | |
 | --- | --- |
@@ -81,7 +81,7 @@ gt
 
 ## <a name="require-multi-factor-authentication"></a>需要多重身份验证
 
-Privileged Identity Management 为两个不同方案提供了 Azure AD 多重身份验证的可选强制。
+Privileged Identity Management 提供了两种不同的可选 Azure AD 多重身份验证强制执行方案。
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>要求在活动分配时进行多重身份验证
 
@@ -91,7 +91,7 @@ Privileged Identity Management 为两个不同方案提供了 Azure AD 多重身
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>要求在激活时进行多重身份验证
 
-你可以要求具有角色的用户证明他们使用的用户 Azure AD 多重身份验证才能激活。 多重身份验证能够以合理的确定性确保用户是其本人。 强制执行此选项可以在用户帐户可能已遭入侵的情况下保护关键资源。
+可以要求符合角色条件的用户通过 Azure AD 多重身份验证来证明其身份，然后才允许其激活。 多重身份验证能够以合理的确定性确保用户是其本人。 强制执行此选项可以在用户帐户可能已遭入侵的情况下保护关键资源。
 
 若要在激活前要求进行多重身份验证，请在“编辑角色设置”的“分配”选项卡中选中“在激活时要求进行多重身份验证”框。
 
@@ -99,11 +99,11 @@ Privileged Identity Management 为两个不同方案提供了 Azure AD 多重身
 
 ## <a name="activation-maximum-duration"></a>最长激活持续时间
 
-使用“最长激活持续时间”滑块是角色在过期前保持活动状态的最大时间（以小时为单位）。 此值可以是 1 到 24 个小时。
+使用“最长激活持续时间”  滑块是角色在过期前保持活动状态的最大时间（以小时为单位）。 此值可以是 1 到 24 个小时。
 
 ## <a name="require-justification"></a>需要理由
 
-你可以要求用户在激活时输入业务理由。 若需要理由，请选中“在活动分配时需要理由”框或“在激活时需要理由”框。
+你可以要求用户在激活时输入业务理由。 若需要理由，请选中“在活动分配时需要理由”  框或“在激活时需要理由”  框。
 
 ## <a name="require-approval-to-activate"></a>需要批准才能激活
 
@@ -167,8 +167,8 @@ Privileged Identity Management 为两个不同方案提供了 Azure AD 多重身
 
 使用“多重身份验证”开关指定是否要求用户在激活其角色之前，先使用 MFA 验证其身份。 他们只需在每个会话中验证其身份一次，而无需在每次激活角色时都执行身份验证。 启用 MFA 时，请记住两点提示：
 
-- 如果用户的电子邮件地址 (通常是 @outlook.com ，但并非始终) ，则无法注册 Azure AD 多重身份验证。 如果想要将角色分配给使用 Microsoft 帐户的用户，应将其设置为永久管理员，或者为该角色禁用多重身份验证。
-- 对于 Azure AD 和 Microsoft 365，不能禁用高特权角色 Azure AD 多重身份验证。 此安全功能有助于保护以下角色：  
+- 使用 Microsoft 帐户作为电子邮件地址（通常是 @outlook.com，但不一定）的用户无法注册 Azure AD 多重身份验证。 如果想要将角色分配给使用 Microsoft 帐户的用户，应将其设置为永久管理员，或者为该角色禁用多重身份验证。
+- 无法对 Azure AD 和 Microsoft 365 的高特权角色禁用 Azure AD 多重身份验证。 此安全功能有助于保护以下角色：  
   
   - Azure 信息保护管理员
   - 计费管理员

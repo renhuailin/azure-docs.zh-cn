@@ -2,13 +2,13 @@
 title: 部署资源的多个实例
 description: 使用 Azure 资源管理器模板中的复制操作和数组 (ARM 模板) 部署资源类型多次。
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 7a894ee6a31a43dd8da3d84d88276824c6bbc9f7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.date: 12/21/2020
+ms.openlocfilehash: c9bcb22ec53129520fd9574d0eb58b1e5777531e
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672825"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724487"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 模板中的资源迭代
 
@@ -97,7 +97,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 * storage1
 * storage2。
 
-若要偏移索引值，可以在函数中传递值 `copyIndex()` 。 迭代数仍在 copy 元素中指定，但的值以 `copyIndex` 指定的值为偏移。 因此，以下示例：
+若要偏移索引值，可以在 `copyIndex()` 函数中传递一个值。 迭代数仍在 copy 元素中指定，但的值以 `copyIndex` 指定的值为偏移。 因此，以下示例：
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -189,43 +189,6 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 `mode`属性还接受 **parallel**，这是默认值。
 
-## <a name="depend-on-resources-in-a-loop"></a>依赖于循环中的资源
-
-可以使用 `dependsOn` 元素指定一个资源在另一个资源之后部署。 若要部署的资源依赖于循环中的资源集合，请在 dependsOn 元素中提供 copy 循环的名称。 以下示例演示了如何在部署虚拟机之前部署三个存储帐户。 此处并未显示完整的虚拟机定义。 请注意，copy 元素的名称设置为 `storagecopy`，而虚拟机的 dependsOn 元素也设置为 `storagecopy`。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
-      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "copy": {
-        "name": "storagecopy",
-        "count": 3
-      },
-      "properties": {}
-    },
-    {
-      "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2015-06-15",
-      "name": "[concat('VM', uniqueString(resourceGroup().id))]",
-      "dependsOn": ["storagecopy"],
-      ...
-    }
-  ],
-  "outputs": {}
-}
-```
-
 ## <a name="iteration-for-a-child-resource"></a>子资源的迭代
 
 不能对子资源使用 copy 循环。 要创建通常定义为嵌套在另一个资源中的资源的多个实例，必须将该资源创建为顶级资源。 可以通过 type 和 name 属性定义与父资源的关系。
@@ -286,11 +249,10 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 |[复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |部署名称中带索引号的多个存储帐户。 |
 |[串行复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |一次部署多个存储帐户。 名称包含索引号。 |
 |[使用数组的复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |部署多个存储帐户。 名称包含数组中的值。 |
-|[数据磁盘数可变的 VM 部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |通过虚拟机部署多个数据磁盘。 |
-|[多项安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |将多个安全规则部署到网络安全组。 它从参数构造安全规则。 有关参数，请参阅[多个 NSG 参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)。 |
 
 ## <a name="next-steps"></a>后续步骤
 
+* 若要设置在复制循环中创建的资源的依赖项，请参阅 [定义在 ARM 模板中部署资源的顺序](define-resource-dependency.md)。
 * 若要学习教程，请参阅 [教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
 * 有关涵盖资源复制的 Microsoft Learn 模块，请参阅 [使用高级 ARM 模板功能管理复杂的云部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
 * 有关 copy 元素的其他用法，请参阅：

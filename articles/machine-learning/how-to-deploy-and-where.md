@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: f273902aee47a22bcf29bdf507f617efe242f5a4
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: dd7a336df5ff187b874876db32abb45915e00f3b
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505131"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739376"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 
@@ -349,7 +349,6 @@ Azure 机器学习计算目标由 Azure 机器学习创建和管理。 它们可
 有关详细信息，请参阅关于 [WebService.delete()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) 和 [Model.delete()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) 的文档。
 
 ---
-
 
 ## <a name="next-steps"></a>后续步骤
 

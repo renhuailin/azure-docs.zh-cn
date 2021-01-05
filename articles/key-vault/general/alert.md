@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018114"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724691"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault 的监视和警报
 
@@ -40,7 +40,7 @@ ms.locfileid: "96018114"
 
 **保管库饱和** 密钥保管库每秒可服务的请求数取决于正在执行的操作类型。 某些保管库操作具有较低的每秒请求数阈值。 此指标聚合了跨所有操作类型密钥保管库的总使用量，得出一个百分比值，用来指示当前密钥保管库的使用情况。 有关密钥保管库服务限制的完整列表，请参阅以下文档。 [Azure Key Vault 服务限制](service-limits.md)
 
-**服务 API 延迟** - 此指标显示调用密钥保管库的平均延迟。 尽管密钥保管库可能未超过服务限制，但其高利用率可能会因下游的应用程序出现故障而导致延迟。 
+**服务 API 滞后时间** -此指标显示对 key vault 的调用的平均延迟，以服务为衡量。 它不包括客户端或客户端和服务之间的网络使用的时间。
 
 **API 命中总计** 此指标显示对密钥保管库进行的所有调用。 这将帮助你识别哪些应用程序正在调用密钥保管库。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "96018114"
 3. 在“监视”下选择“指标”  
 
 > [!div class="mx-imgBorder"]
-> ![突出显示 "监视" 部分下的 "指标" 选项的屏幕截图。](../media/alert-1.png)
+> ![屏幕截图，突出显示了“监视”部分下的“指标”选项。](../media/alert-1.png)
 
 4. 将图表的标题更新为想在仪表板上看到的内容。 
 5. 选择“作用域”。 在此示例中，我们将选择单个密钥保管库。 
@@ -61,7 +61,7 @@ ms.locfileid: "96018114"
 7. 更新时间范围为最近 24 小时，更新时间粒度为 1 分钟。 
 
 > [!div class="mx-imgBorder"]
-> ![显示总体保管库可用性指标的屏幕截图。](../media/alert-2.png)
+> ![显示“保管库总体可用性”指标的屏幕截图。](../media/alert-2.png)
 
 8. 为保管库饱和度和服务 API 延迟指标重复上述步骤。 选择“固定到仪表板”，将指标保存到仪表板中。 
 
@@ -71,12 +71,12 @@ ms.locfileid: "96018114"
 9. 若要监视密钥保管库上所有类型的操作，请使用“服务 API 命中总计”指标，然后选择“按活动类型应用拆分”  
 
 > [!div class="mx-imgBorder"]
-> ![显示 "应用拆分" 按钮的屏幕截图。](../media/alert-3.png)
+> ![显示“应用拆分”按钮的屏幕截图。](../media/alert-3.png)
 
 10. 若要监视密钥保管库上的错误代码，请使用“服务 API 结果总计”指标，然后选择“按活动类型应用拆分”  
 
 > [!div class="mx-imgBorder"]
-> ![显示选定的服务 API 结果度量值的屏幕截图。](../media/alert-4.png)
+> ![屏幕截图，显示了选定的“服务 API 结果总计”指标。](../media/alert-4.png)
 
 现在，你将看到一个类似下图的仪表板。 可以单击每个磁贴右上方的 3 个点，并根据需要重新排列和调整磁贴大小。 
 
@@ -101,20 +101,20 @@ ms.locfileid: "96018114"
 3. 选择“管理操作”
 
 > [!div class="mx-imgBorder"]
-> ![突出显示 "管理操作" 按钮的屏幕截图。](../media/alert-6.png)
+> ![突出显示“管理操作”按钮的屏幕截图。](../media/alert-6.png)
 
 4. 选择“+ 添加操作组”
 
 > [!div class="mx-imgBorder"]
-> ![突出显示 "+ 添加操作组" 按钮的屏幕截图。](../media/alert-7.png)
+> ![突出显示“+ 添加操作组”按钮的屏幕截图。](../media/alert-7.png)
 
 5. 为操作组选择“操作类型”。 本示例中，将创建电子邮件警报。
 
 > [!div class="mx-imgBorder"]
-> ![突出显示添加操作组所需字段的屏幕截图。](../media/alert-8.png)
+> ![屏幕截图，突出显示了添加操作组所需的字段。](../media/alert-8.png)
 
 > [!div class="mx-imgBorder"]
-> ![显示添加电子邮件或短信警报所需内容的屏幕截图。](../media/alert-9.png)
+> ![屏幕截图，显示了添加电子邮件或短信警报所需的内容。](../media/alert-9.png)
 
 6. 单击页面底部的“确定”。 已成功创建操作组。 
 
@@ -125,12 +125,12 @@ ms.locfileid: "96018114"
 1. 在 Azure 门户中选择密钥保管库资源，然后选择“监视”下的“警报” 
 
 > [!div class="mx-imgBorder"]
-> ![显示 "监视" 部分下的 "警报" 菜单选项的屏幕截图。](../media/alert-10.png)
+> ![屏幕截图，显示了“监视”部分下的“警报”菜单选项。](../media/alert-10.png)
 
 2. 选择“新建警报规则”
 
 > [!div class="mx-imgBorder"]
-> ![显示 "+ 新建警报规则" 按钮的屏幕截图。](../media/alert-11.png)
+> ![显示“+ 新建警报规则”按钮的屏幕截图。](../media/alert-11.png)
 
 3. 选择警报规则的作用域。 可以选择一个或多个保管库。 
 
@@ -138,7 +138,7 @@ ms.locfileid: "96018114"
 > 请注意，如果选择多个保管库作为警报作用域，则所有选定的保管库必须位于同一区域中。 不同区域中的保管库需要配置单独的警报规则。 
 
 > [!div class="mx-imgBorder"]
-> ![屏幕截图显示了如何选择保管库。](../media/alert-12.png)
+> ![此屏幕截图显示了如何选择保管库。](../media/alert-12.png)
 
 4. 为警报选择条件。 可以选择以下任何信号，并为警报定义逻辑。 Key Vault 团队建议配置以下警报阈值。 
 
@@ -149,13 +149,13 @@ ms.locfileid: "96018114"
     + 错误代码总计高于平均值（动态阈值） 
 
 > [!div class="mx-imgBorder"]
-> ![屏幕截图，显示你为警报选择条件的位置。](../media/alert-13.png)
+> ![此屏幕截图显示了选择警报条件的位置。](../media/alert-13.png)
 
 ### <a name="example-1-configuring-a-static-alert-threshold-for-latency"></a>示例 1：为延迟配置静态警报阈值
 
 选择“整体服务 API 延迟”作为信号名称
 > [!div class="mx-imgBorder"]
-> ![显示总体服务 API 延迟信号名称的屏幕截图。](../media/alert-14.png)
+> ![显示“整体服务 API 延迟”信号名称的屏幕截图。](../media/alert-14.png)
 
 请查看以下配置参数。
 
@@ -175,7 +175,7 @@ ms.locfileid: "96018114"
 使用动态警报时，可以看到所选密钥保管库的历史数据。 蓝色区域表示密钥保管库的平均使用情况。 红色区域显示可能触发警报的高峰，前提是满足警报配置中的其他条件。 红点显示在聚合时间范围内满足警报条件的冲突实例。 可以设置在一定时间内发生一定次数的冲突后触发警报。 如果不想包含过去的数据，如下所示在高级设置中有一个选项可以排除旧数据。 
 
 > [!div class="mx-imgBorder"]
-> ![显示总体保管库饱和图的屏幕截图。](../media/alert-16.png)
+> ![显示保管库总体饱和度图的屏幕截图。](../media/alert-16.png)
 
 请查看以下配置参数。
 
@@ -194,12 +194,12 @@ ms.locfileid: "96018114"
 5. 添加已配置的操作组
 
 > [!div class="mx-imgBorder"]
-> ![显示如何添加操作组的屏幕截图。](../media/alert-18.png)
+> ![屏幕截图，显示如何添加操作组。](../media/alert-18.png)
 
 6. 启用警报并分配严重性
 
 > [!div class="mx-imgBorder"]
-> ![显示在何处启用警报并分配严重性的屏幕截图。](../media/alert-19.png)
+> ![屏幕截图，显示在何处启用警报并分配严重性。](../media/alert-19.png)
 
 7. 创建警报 
 
@@ -211,4 +211,4 @@ ms.locfileid: "96018114"
 ### <a name="example-email-alert"></a>示例电子邮件警报 
 
 > [!div class="mx-imgBorder"]
-> ![一些屏幕截图，其中突出显示了配置电子邮件警报所需的信息。](../media/alert-20.png)
+> ![此屏幕截图突出显示了配置电子邮件警报所需的信息。](../media/alert-20.png)

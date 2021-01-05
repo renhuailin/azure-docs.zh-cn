@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0a2439f0ed18cf93691a1d0389e049b1b7993d93
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095298"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732048"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>在 Azure Monitor 中使用客户托管的存储帐户 Log Analytics
 
@@ -32,11 +32,11 @@ Azure 诊断扩展代理 (也分别称为 Windows 和 Linux 代理的 WAD 和 LA
 * IIS 日志
 
 ## <a name="using-private-links"></a>使用专用链接
-在某些用例中，当使用专用链接连接到 Azure Monitor 资源时，需要客户托管的存储帐户。 其中一种情况是引入自定义日志或 IIS 日志。 这些数据类型首先作为 blob 上传到中介 Azure 存储帐户，然后引入到工作区。 同样，某些 Azure Monitor 解决方案可能会使用存储帐户来存储 Azure 安全中心解决方案使用的大型文件，如 Watson 转储文件。 
+在某些用例中，当使用专用链接连接到 Azure Monitor 资源时，需要客户托管的存储帐户。 其中一种情况是引入自定义日志或 IIS 日志。 这些数据类型首先作为 blob 上传到中介 Azure 存储帐户，然后引入到工作区。 同样，某些 Azure Monitor 解决方案可能会使用存储帐户来存储较大的文件，例如 Azure 安全中心 (ASC) 这可能需要上传文件。 
 
 ##### <a name="private-link-scenarios-that-require-a-customer-managed-storage"></a>需要客户管理的存储的专用链接方案
 * 引入自定义日志和 IIS 日志
-* 允许 ASC 解决方案收集 Watson 转储文件
+* 允许 ASC 解决方案上传文件
 
 ### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>如何通过专用链接使用客户管理的存储帐户
 ##### <a name="workspace-requirements"></a>工作区要求
@@ -45,13 +45,14 @@ Azure 诊断扩展代理 (也分别称为 Windows 和 Linux 代理的 WAD 和 LA
 要使存储帐户成功连接到专用链接，必须执行以下操作：
 * 位于 VNet 或对等互连网络上，并通过专用链接连接到 VNet。 这允许 VNet 上的代理将日志发送到存储帐户。
 * 与它所链接到的工作区位于同一区域。
-* 允许 Azure Monitor 访问存储帐户。 如果选择仅允许选择网络访问存储帐户，则还应允许此例外： "允许受信任的 Microsoft 服务访问此存储帐户"。 这允许 Log Analytics 读取引入到此存储帐户的日志。
+* 允许 Azure Monitor 访问存储帐户。 如果选择仅允许选择网络访问存储帐户，则应选择例外： "允许受信任的 Microsoft 服务访问此存储帐户"。
+![存储帐户信任 MS 服务映像](./media/private-storage/storage-trust.png)
 * 如果工作区也处理来自其他网络的流量，则应将存储帐户配置为允许来自相关网络/internet 的传入流量。
 
 ##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>将你的存储帐户链接到 Log Analytics 工作区
 可以通过 [Azure CLI](/cli/azure/monitor/log-analytics/workspace/linked-storage) 或 [REST API](/rest/api/loganalytics/linkedstorageaccounts)将存储帐户链接到工作区。 适用的 dataSourceType 值：
 * CustomLogs –在引入过程中将存储用于自定义日志和 IIS 日志。
-* AzureWatson –使用 ASC (Azure 安全中心上传的 Watson 转储文件) 解决方案。 有关管理保留、替换链接的存储帐户和监视存储帐户活动的详细信息，请参阅 [管理链接存储帐户](#managing-linked-storage-accounts)。 
+* AzureWatson –使用 ASC (Azure 安全中心上传的文件的存储) 解决方案。 有关管理保留、替换链接的存储帐户和监视存储帐户活动的详细信息，请参阅 [管理链接存储帐户](#managing-linked-storage-accounts)。 
 
 ## <a name="encrypting-data-with-cmk"></a>用 CMK 加密数据
 Azure 存储会对存储帐户中的所有静态数据进行加密。 默认情况下，它使用 Microsoft 托管的密钥对数据进行加密 (MMK) 。 但是，Azure 存储将允许使用 Azure 密钥保管库中客户托管的密钥 (CMK) 来加密存储数据。 你可以将自己的密钥导入 Azure Key Vault 中，也可以使用 Azure Key Vault Api 来生成密钥。

@@ -1,7 +1,7 @@
 ---
-title: 在本地排查 Web 服务部署问题
+title: 本地模型部署故障排除
 titleSuffix: Azure Machine Learning
-description: 了解如何在本地规避、解决和排查常见的 Azure 机器学习 Docker 部署错误。
+description: 尝试本地模型部署，作为排查模型部署错误的第一步。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 01a5f600acf9542c5adabcdf2523a42ca44233af
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: a879a81ae2bcb4e659c69a801f7c299c10ab3d77
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680493"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740634"
 ---
-# <a name="troubleshoot-model-deployment-locally"></a>在本地排查模型部署问题
+# <a name="troubleshooting-with-a-local-model-deployment"></a>使用本地模型部署进行故障排除
 
-了解如何在本地排查和解决或规避常见的 Azure 机器学习 Docker Web 服务部署错误。
+尝试使用本地模型部署，作为排查 (ACI) 或 Azure Kubernetes Service (AKS) 的 Azure 容器实例的部署问题的第一步。  使用本地 web 服务，可以更轻松地发现和修复常见的 Azure 机器学习 Docker web 服务部署错误。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,8 +33,6 @@ ms.locfileid: "97680493"
     若要验证 Docker 安装，请使用终端或命令提示符中的命令 `docker run hello-world`。 有关安装 Docker 或排除 Dcoker 错误的详细信息，请参阅 [Docker 文档](https://docs.docker.com/)。
 
 ## <a name="debug-locally"></a>本地调试
-
-如果将模型部署到 ACI 或 AKS 时遇到问题，请将其部署为本地 Web 服务。 使用本地 Web 服务可简化解决问题的过程。
 
 可以在 [MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) 存储库中找到示例[本地部署笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb)，以探索可运行的示例。
 

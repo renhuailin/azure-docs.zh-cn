@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: how-to
-ms.openlocfilehash: 0122e67714efb201584a52f1cb763528dbb0b925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbd83fb3ef3225fc19c48bb4c5962d6559cf32f8
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903791"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708443"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>使用 Visual Studio Code 通过示例数据在本地测试流分析查询
 
@@ -45,11 +45,11 @@ ms.locfileid: "90903791"
 
 2. 选择“本地输入”  。
 
-    ![在 Visual Studio code 中添加 ASA 本地输入](./media/vscode-local-run/add-local-input.png)
+    ![在 Visual Studio Code 中添加 ASA 本地输入](./media/vscode-local-run/add-local-input.png)
 
 3. 选择“+ 新建本地输入”  。
 
-    ![在 Visual Studio code 中添加新的 ASA 本地输入](./media/vscode-local-run/add-new-local-input.png)
+    ![在 Visual Studio Code 中添加新的 ASA 本地输入](./media/vscode-local-run/add-new-local-input.png)
 
 4. 输入在查询中使用的相同输入别名。
 

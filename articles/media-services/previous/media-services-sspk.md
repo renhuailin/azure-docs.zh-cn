@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: c82fb9764b29119092bf313b2c10f00c983e8c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdb575d7b3884370e1a53f79f1184d40cd15d270
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710764"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732387"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授权 Microsoft&reg; 平滑流式处理客户端移植工具包
 
@@ -54,8 +54,8 @@ Microsoft 平滑流式处理客户端移植工具包（简称 **SSPK**）是经�
 ## <a name="licensing-options"></a>许可选项
 Microsoft 平滑流式处理客户端移植工具包根据两份不同的许可协议提供给受证人：一份用于开发平滑流式处理客户端中期产品，另一份用于将平滑流式处理客户端最终产品分发给最终用户。
 
-* 需要使用源代码移植工具包开发中期产品的芯片组制造商、系统集成商或独立软件供应商 (ISV)，应该执行 Microsoft 平滑流式处理客户端移植工具包**中期产品许可证**。
-* 需要拥有对最终用户分发平滑流式处理客户端最终产品的权限的设备制造商或 ISV 应该执行 Microsoft 平滑流式处理客户端移植工具包**最终产品许可证**。
+* 需要使用源代码移植工具包开发中期产品的芯片组制造商、系统集成商或独立软件供应商 (ISV)，应该执行 Microsoft 平滑流式处理客户端移植工具包 **中期产品许可证**。
+* 需要拥有对最终用户分发平滑流式处理客户端最终产品的权限的设备制造商或 ISV 应该执行 Microsoft 平滑流式处理客户端移植工具包 **最终产品许可证**。
 
 ### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Microsoft 平滑流式处理客户端移植工具包中期产品许可证
 Microsoft 根据此许可证提供平滑流式处理客户端移植工具包和所需的知识产权，使客户能够开发平滑流式处理客户端中期产品并分发给其他可分发平滑流式处理客户端最终产品的平滑流式处理客户端移植工具包设备受证者。
@@ -116,7 +116,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft 平滑流式处理客户端最终产品协议受证人
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
-* AmTRAN 技术有限公司 
+* AmTRAN Technology Co., Ltd 
 * Arcadyan Technology Corporation
 * Arcelik A.S
 * Compal Electronics, Inc.
@@ -133,6 +133,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * KDDI Corporation
 * Mega Fame Electronics Co. Limited
 * MIRC Electronics Limited
+* MOKA 国际有限
 * Nintendo Co., Ltd.
 * ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
 * Panasonic Corporation
@@ -153,6 +154,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * Technicolor Delivery Technologies, SAS
 * Top Victory Investments, Ltd.
 * UMC Poland sp. z .o.o.
+* Vizio，Inc。
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

@@ -1,17 +1,17 @@
 ---
 title: 性能优化-带有 Azure Data Lake Storage Gen1 的风暴
 description: 了解在优化 Azure 风暴拓扑的性能时应考虑的因素，包括排查常见问题。
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 68f30079d85e2064b92718c65b38dbb5069d810b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.author: twooley
+ms.openlocfilehash: 95619c75d332ec1bf68af97fc3dddbc67b6706ed
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101641"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725031"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Storm on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
@@ -19,9 +19,9 @@ ms.locfileid: "92101641"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
-* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
+* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 Data Lake Storage Gen1 中运行 Storm 群集**。 有关详细信息，请参阅 [Storm on HDInsight](../hdinsight/storm/apache-storm-overview.md)。
 * **Data Lake Storage Gen1 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](./data-lake-store-performance-tuning-guidance.md)。  
 
@@ -126,7 +126,7 @@ ms.locfileid: "92101641"
 
 若要查看是否受到限制，请在客户端上启用调试日志记录：
 
-1. 在**Ambari**  >  **风暴**  >  **Config**  >  **Advanced 风暴-log4j**中，将** &lt; root level = "info" &gt; **改为** &lt; root level = "debug" &gt; **。 重新启动所有节点/服务使配置生效。
+1. 在 **Ambari**  >  **风暴**  >  **Config**  >  **Advanced 风暴-log4j** 中，将 **&lt; root level = "info" &gt;** 改为 **&lt; root level = "debug" &gt;**。 重新启动所有节点/服务使配置生效。
 2. 监视工作器节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Storage Gen1 限制异常。
 
 ## <a name="next-steps"></a>后续步骤

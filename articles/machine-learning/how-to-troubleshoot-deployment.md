@@ -1,7 +1,7 @@
 ---
-title: 远程 Web 服务部署故障排除
+title: 远程模型部署故障排除
 titleSuffix: Azure Machine Learning
-description: 了解如何规避、解决及排查 Azure Kubernetes 服务和 Azure 容器实例的常见 Docker 部署错误。
+description: 了解如何使用 Azure Kubernetes 服务和 Azure 容器实例解决、解决和排查一些常见的 Docker 部署错误。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: jmartens
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 92cd70e864ae0490ce3f9e7435d9518241f93c8e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4224e301d6410fc97da1f98cd0dd9577c6341cd3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031498"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740617"
 ---
-# <a name="troubleshoot-model-deployment"></a>排查模型部署问题
+# <a name="troubleshooting-remote-model-deployment"></a>远程模型部署故障排除 
 
-了解如何使用 Azure 机器学习通过 Azure 容器实例（ (ACI) 和 Azure Kubernetes Service (AKS) ）排查和解决常见的远程 Docker 部署错误。
+了解如何使用 Azure 机器学习在将模型部署到 Azure 容器实例时可能会遇到的常见错误以及如何解决这些错误，如使用 (ACI) 和 Azure Kubernetes Service (AKS) 。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,9 +34,9 @@ ms.locfileid: "97031498"
 在 Azure 机器学习中将模型部署到非本地计算时，会发生以下情况：
 
 1. 你在 InferenceConfig 的 Environments 对象中指定的 Dockerfile 将与源目录的内容一起发送到云
-1. 如果以前生成的映像在容器注册表中不可用，则云中会生成新的 Docker 映像，该映像会存储在工作区的默认容器注册表中。
+1. 如果容器注册表中不存在以前生成的映像，则会在云中生成新的 Docker 映像，并将其存储在工作区的默认容器注册表中。
 1. 容器注册表中的 Docker 映像将下载到计算目标。
-1. 工作区的默认 Blob 存储会装载到计算目标，使你可以访问已注册的模型
+1. 你的工作区的默认 Blob 存储区将装载到你的计算目标，从而使你可以访问已注册的模型
 1. Web 服务器通过运行入口脚本的 `init()` 函数进行初始化
 1. 已部署的模型收到请求时，`run()` 函数会处理该请求
 
@@ -76,7 +76,7 @@ print(service.get_logs())
 
 ## <a name="debug-locally"></a>本地调试
 
-如果将模型部署到 ACI 或 AKS 时遇到问题，请将其部署为本地 Web 服务。 使用本地 Web 服务可简化解决问题的过程。 若要在本地对部署进行故障排除，请参阅 [本地疑难解答文章](./how-to-troubleshoot-deployment-local.md)。
+如果将模型部署到 ACI 或 AKS 时遇到问题，请将其部署为本地 Web 服务。 使用本地 Web 服务可简化解决问题的过程。 若要在本地对部署进行故障排除，请参阅[本地故障排除文章](./how-to-troubleshoot-deployment-local.md)。
 
 ## <a name="container-cannot-be-scheduled"></a>无法计划容器
 
@@ -88,7 +88,7 @@ print(service.get_logs())
 
 成功生成映像后，系统会尝试使用部署配置启动容器。 作为容器启动过程的一部分，评分脚本中的 `init()` 函数由系统调用。 如果 `init()` 函数中存在未捕获的异常，则可能在错误消息中看到 CrashLoopBackOff 错误。
 
-使用 [检查 Docker 日志](how-to-troubleshoot-deployment-local.md#dockerlog) 一文中的信息。
+利用[检查 Docker 日志](how-to-troubleshoot-deployment-local.md#dockerlog)文章中的信息。
 
 ## <a name="function-fails-get_model_path"></a>函数故障：get_model_path()
 
@@ -177,6 +177,16 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
 504 状态代码指示请求已超时。默认超时值为 1 分钟。
 
 可以通过修改 score.py 删除不必要的调用来增加超时值或尝试加快服务速度。 如果这些操作不能解决问题，请使用本文中的信息调试 score.py 文件。 代码可能处于无响应状态或无限循环。
+
+## <a name="other-error-messages"></a>其他错误消息
+
+对以下错误采取以下操作：
+
+|错误  | 解决方法  |
+|---------|---------|
+|部署 Web 服务时映像生成失败     |  将“pynacl==1.2.1”作为 pip 依赖项添加到 Conda 文件以进行映像配置       |
+|`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   请将部署中使用的 VM 的 SKU 更改为具有更多内存的 SKU。 |
+|FPGA 失败     |  你将无法在 FPGA 上部署模型，直到已请求并获得 FPGA 配额批准为止。 若要请求访问权限，请填写配额请求表单： https://aka.ms/aml-real-time-ai       |
 
 ## <a name="advanced-debugging"></a>高级调试
 

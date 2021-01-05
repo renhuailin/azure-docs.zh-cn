@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 14ecb30af11bf750c90e45c3fb6b443d861a1445
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13535a82f8aca741a1e25755e5a2d971ce45514e
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400749"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739291"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure 存储的虚拟网络服务终结点策略
 
@@ -122,7 +122,7 @@ ms.locfileid: "89400749"
 - 虚拟网络必须与服务终结点策略位于同一区域。
 - 如果为策略中列出的 Azure 服务配置了服务终结点，则只能在子网上应用服务终结点策略。
 - 不能对从本地网络发往 Azure 服务的流量使用服务终结点策略。
-- Azure 托管服务目前不支持终结点策略。 这包括部署到共享子网中的托管服务 (例如， *Azure HDInsight、Azure Batch、AZURE 添加、Azure 应用程序网关、AZURE VPN 网关、Azure 防火墙*) 或到专用子网 (例如 *Azure 应用服务环境、azure Redis 缓存、azure API 管理、azure SQL MI、经典托管服务*) 。
+- Azure 托管服务目前不支持终结点策略。 这包括部署到共享子网中的托管服务 (例如 *Azure Batch、AZURE 添加、Azure 应用程序网关、AZURE VPN 网关、Azure 防火墙*) 或到专用子网 (例如 *Azure 应用服务环境、azure Redis 缓存、azure API 管理、azure SQL MI、经典托管服务*) 。
 
  > [!WARNING]
  > 部署到虚拟网络中的 Azure 服务（例如 Azure HDInsight）出于基础结构要求的访问其他 Azure 服务（例如 Azure 存储）。 将终结点策略限制为特定的资源可能会中断虚拟网络中部署的 Azure 服务对这些基础结构资源的访问。

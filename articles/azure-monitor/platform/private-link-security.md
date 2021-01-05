@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: a85619b4947808ba1c13df3c1543102eea7273fd
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: e8d0dcae81944d5799841c22093585b942934b79
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853913"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732098"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 专用链接将网络安全地连接到 Azure Monitor
 
@@ -215,9 +215,9 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 
 ## <a name="use-apis-and-command-line"></a>使用 API 和命令行
 
-可使用 Azure 资源管理器模板和命令行接口将前面描述的过程自动化。
+可以使用 Azure 资源管理器模板、REST 和命令行接口来自动执行前面所述的过程。
 
-若要创建和管理专用链接范围，请使用 [az monitor private-link-scope](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。 通过该命令可创建范围、关联 Log Analytics 工作区和 Application Insights 组件，还可添加/删除/批准专用终结点。
+若要创建和管理专用链接范围，请使用 [REST API](https://docs.microsoft.com/rest/api/monitor/private%20link%20scopes%20(preview)) 或 [Azure CLI (az 监视器专用链接范围) ](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。
 
 要管理网络访问，请在 [Log Analytics 工作区](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest)或 [Application Insights 组件](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 标志。
 

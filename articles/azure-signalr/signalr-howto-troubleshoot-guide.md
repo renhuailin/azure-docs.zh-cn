@@ -1,17 +1,17 @@
 ---
 title: Azure SignalR 服务故障排除指南
 description: 了解如何排查常见问题
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 55ad9c90129a5d732f377ac1b6c905c14de319dc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 505176758e1dbba1d6bf262554568edd8a197a4d
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607417"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707667"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR 服务常见问题故障排除指南
 
@@ -63,6 +63,8 @@ services.MapAzureSignalR(GetType().FullName, options =>
             });
 ```
 
+[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="tls-12-required"></a>需要 TLS 1.2
 
 ### <a name="possible-errors"></a>可能的错误：
@@ -104,11 +106,15 @@ GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
+[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="400-bad-request-returned-for-client-requests"></a>针对客户端请求返回了“400 错误请求”
 
 ### <a name="root-cause"></a>根本原因
 
 检查客户端请求是否有多个 `hub` 查询字符串。 `hub` 是保留的查询参数。如果服务检测到查询中有多个 `hub`，则会引发 400 错误。
+
+[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="401-unauthorized-returned-for-client-requests"></a>针对客户端请求返回“401 未授权”
 
@@ -128,6 +134,8 @@ JWT 令牌生存期的默认值目前为 1 小时。
 
 请查看[此文](#restart_connection)，了解如何重启客户端连接。
 
+[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="404-returned-for-client-requests"></a>针对客户端请求返回 404
 
 对于 SignalR 持久性连接，它首先与 Azure SignalR 服务执行 `/negotiate`，然后建立与 Azure SignalR 服务的实际连接。
@@ -138,9 +146,13 @@ JWT 令牌生存期的默认值目前为 1 小时。
 * 出现 404 时，请检查请求的 URL。 如果 URL 是针对你的 Web 应用，并且类似于 `{your_web_app}/hubs/{hubName}`，则请检查客户端 `SkipNegotiation` 是否为 `true`。 使用 Azure SignalR 时，客户端会在首次与应用服务器协商时接收重定向 URL。 使用 Azure SignalR 时，客户端不应跳过协商。
 * 如果在调用 `/negotiate` 后过了 5 秒以上才处理连接请求，则可能会发生另一 404 错误。 如果对服务请求的响应较慢，请检查客户端请求的时间戳，并向我们提出问题。
 
+[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="404-returned-for-aspnet-signalrs-reconnect-request"></a>针对 ASP.NET SignalR 的重新连接请求返回了 404
 
 对于 ASP.NET SignalR，当[客户端连接断开](#client_connection_drop)时，它会使用相同的 `connectionId` 重新连接三次，然后才停止连接。 如果连接断开是由于网络间歇性问题，则可以使用 `/reconnect`。`/reconnect` 可以成功地重新建立持久性连接。 在其他情况下，例如，在客户端连接断开是因为路由的服务器连接断开的情况下，或者在 SignalR 服务有一些内部错误（如实例重启/故障转移/部署错误）的情况下，连接不再存在，因此 `/reconnect` 会返回 `404`。 它是 `/reconnect` 的预期行为，三次重试后连接会停止。 建议在连接停止时使用[连接重启](#restart_connection)逻辑。
+
+[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="429-too-many-requests-returned-for-client-requests"></a>针对客户端请求返回“429 (请求过多)”
 
@@ -155,6 +167,8 @@ JWT 令牌生存期的默认值目前为 1 小时。
 ### <a name="too-many-negotiate-requests-at-the-same-time"></a>同一时间协商请求太多。
 
 建议在重新连接之前有一个随机延迟，请 [在此处](#restart_connection) 查看重试示例。
+
+[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>协商时出现 500 错误：Azure SignalR 服务尚未连接，请稍后再试。
 
@@ -215,6 +229,8 @@ Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 �
 
 <a name="client_connection_drop"></a>
 
+[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="client-connection-drops"></a>客户端连接断开
 
 当客户端连接到 Azure SignalR 时，客户端与 Azure SignalR 之间的持久性连接有时可能会因不同的原因而断开。 此部分介绍导致此类连接断开的几种可能性，并提供一些有关如何确定根本原因的指导。
@@ -240,6 +256,7 @@ Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 �
 2. 检查应用服务器端事件日志以查看应用服务器是否已重启
 3. 创建一个将提交给我们的问题，提供时间范围，并通过电子邮件向我们发送资源名称
 
+[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="client-connection-increases-constantly"></a>客户端连接计数不断增加
 
@@ -295,6 +312,8 @@ finally
 
 <a name="server_connection_drop"></a>
 
+[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="server-connection-drops"></a>服务器连接断开
 
 当应用服务器在后台启动时，Azure SDK 就会开始启动到远程 Azure SignalR 的服务器连接。 如 [Azure SignalR 服务内部情况](https://github.com/Azure/azure-signalr/blob/dev/docs/internal.md)所述，Azure SignalR 会将传入客户端流量路由到这些服务器连接。 断开服务器连接后，它所处理的所有客户端连接也会关闭。
@@ -320,6 +339,8 @@ finally
 1. 打开应用服务器端日志以查看是否发生了异常
 2. 检查应用服务器端事件日志以查看应用服务器是否已重启
 3. 创建一个将提交给我们的问题，提供时间范围，并通过电子邮件向我们发送资源名称
+
+[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="tips"></a>提示
 
@@ -352,6 +373,8 @@ finally
     * [ASP.NET C# 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 
     * [ASP.NET JavaScript 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
+
+[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>后续步骤
 

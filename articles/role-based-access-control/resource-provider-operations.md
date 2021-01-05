@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 12/16/2020
 ms.custom: generated
-ms.openlocfilehash: c9638ce3509ba181e9f716b3bb427128e50c80ac
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9318ea9d811f2fd490ed6e796b9719c5c482d513
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652885"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707633"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 资源提供程序操作
 
@@ -4651,13 +4651,13 @@ Azure 服务：[Power BI Embedded](/azure/power-bi-embedded/)
 > | 操作 | 说明 |
 > | --- | --- |
 > | Microsoft.PowerBIDedicated/register/action | 注册 Power BI 专用资源提供程序。 |
-> | Microsoft.PowerBIDedicated/capacities/read | 检索指定 Power BI 专用容量的信息。 |
-> | Microsoft.PowerBIDedicated/capacities/write | 创建或更新指定的 Power BI 专用容量。 |
-> | Microsoft.PowerBIDedicated/capacities/delete | 删除 Power BI 专用容量。 |
+> | Microsoft.PowerBIDedicated/capacities/read | 检索指定 Power BI 容量的信息。 |
+> | Microsoft.PowerBIDedicated/capacities/write | 创建或更新指定 Power BI 容量。 |
+> | Microsoft.PowerBIDedicated/capacities/delete | 删除 Power BI 容量。 |
 > | Microsoft.PowerBIDedicated/capacities/suspend/action | 暂停容量。 |
 > | Microsoft.PowerBIDedicated/capacities/resume/action | 恢复容量。 |
 > | Microsoft.PowerBIDedicated/capacities/skus/read | 检索容量的可用 SKU 信息 |
-> | Microsoft.PowerBIDedicated/locations/checkNameAvailability/action | 检查给定的 Power BI 专用容量名称是否有效且未被使用。 |
+> | Microsoft.PowerBIDedicated/locations/checkNameAvailability/action | 检查给定 Power BI 容量名称是否有效且未被使用。 |
 > | Microsoft.PowerBIDedicated/locations/operationresults/read | 检索指定操作结果的信息。 |
 > | Microsoft.PowerBIDedicated/locations/operationstatuses/read | 检索指定操作状态的信息。 |
 > | Microsoft.PowerBIDedicated/operations/read | 检索操作的信息 |
