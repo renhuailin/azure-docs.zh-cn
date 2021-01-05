@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 门户更改新的和现有托管磁盘的
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 11/19/2020
+ms.date: 01/05/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a868d5d236cf4c5a8d29f15490909c2f1a53546f
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 625fb1e3dd0b433da6b60f995aa6b380c23ec9ce
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96016556"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901007"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>使用 Azure 门户更改性能层
 
@@ -47,7 +47,7 @@ ms.locfileid: "96016556"
 1. 解除分配 VM 或分离磁盘。
 1. 选择磁盘
 1. 选择 " **大小 + 性能**"。
-1. 在 " **性能层** " 下拉列表中，选择与磁盘的当前基线不同的层。
+1. 在 " **性能层** " 下拉列表中，选择磁盘当前性能层以外的其他层。
 1. 选择“调整大小”。
 
 :::image type="content" source="media/disks-performance-tiers-portal/change-tier-existing-disk.png" alt-text="&quot;大小 + 性能&quot; 边栏选项卡的屏幕截图，其中突出显示了 &quot;性能层&quot;。" lightbox="media/disks-performance-tiers-portal/performance-tier-settings.png":::

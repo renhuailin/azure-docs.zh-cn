@@ -3,12 +3,12 @@ title: Service Fabric 群集中基于 X.509 证书的身份验证
 description: 了解 Service Fabric 群集中基于证书的身份验证，以及如何检测、缓解和修复与证书相关的问题。
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 4d81cb9d224bdc2e3002c621c86729df235e0d81
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8af0246e0e576f9877c4c5e3b1f1a4314ae29827
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574762"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901243"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Service Fabric 群集中基于 X.509 证书的身份验证
 
@@ -170,7 +170,10 @@ Service Fabric 群集的安全性设置大致描述以下方面：
   </NodeTypes>
 ```
 
-对于任一类型的声明，Service Fabric 节点会在启动时读取配置，查找并加载指定的证书，并按证书的 NotAfter 属性以降序方式将证书排序；忽略已过期的证书，列表的第一个元素将选作此节点尝试建立的任何 Service Fabric 连接的客户端凭据。 （实际上，Service Fabric 会优先使用最后面的即将过期的证书。）
+对于这两种类型的声明，Service Fabric 节点将在启动时读取配置，查找并加载指定的证书，并按 NotBefore 属性的降序对它们进行排序;将忽略过期证书，并将列表中的第一个元素选择为此节点尝试的任何 Service Fabric 连接的客户端凭据。  (实际上，Service Fabric 倾向于最近颁发的证书。 ) 
+
+> [!NOTE]
+> 在版本 7.2.445 (7.2 CU4) 之前，Service Fabric 选择最早过期证书 (最远的 "NotAfter" 属性的证书) 
 
 请注意，对于基于公用名的出示声明，如果在进行区分大小写的精确字符串比较的情况下，某个证书的使用者公用名等于声明的 X509FindValue（或 X509FindValueSecondary）字段，则将该证书视为匹配。 这与验证规则相反。验证规则支持通配符匹配，以及不区分大小写的字符串比较。  
 

@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 76aa18c9724d85b1dd3fb8de3d7d033d40ff95ce
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: ab83a3b11aebdc9fed450410aa1f9bee2d25c4bb
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400227"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900665"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>调整具有 GPT 分区的 OS 磁盘的大小
 
@@ -400,6 +400,8 @@ user@myvm:~#
 > 若要使用相同的过程来调整任何其他逻辑卷的大小，请更改步骤 12 中的 LV 名称。
 
 ### <a name="rhel-raw"></a>RHEL RAW
+>[!NOTE] 
+>增加 OS 磁盘大小前，请始终拍摄 VM 的快照。
 
 在 RHEL RAW 中增加 OS 磁盘的大小：
 
@@ -407,114 +409,120 @@ user@myvm:~#
 1. 从门户增加 OS 磁盘的大小。
 1. 启动 VM。
 
-重启 VM 后，完成以下步骤：
+重新启动 VM 后，请执行以下步骤：
 
 1. 通过使用以下命令，以根用户身份访问 VM：
-
-   ```bash
-   [root@dd-rhel7vm ~]# sudo -i
+ 
+   ```
+   sudo su
    ```
 
-1. VM 重新启动后，请完成以下步骤：
+1. 安装 gptfdisk 包，增加 OS 磁盘大小需要此包。
 
-   - 安装 **utils-growpart** 包以提供 **growpart** 命令，该命令是增加 OS 磁盘大小和 GPT 磁盘布局的 gdisk 处理程序所必需的。 此程序包预装在大多数 marketplace 映像上。
-
-   ```bash
-   [root@dd-rhel7vm ~]# yum install cloud-utils-growpart gdisk
+   ```
+   yum install gdisk -y
    ```
 
-1. 使用 **lsblk-f** 命令验证保存根 () 分区的分区和文件系统类型 **/** ：
+1.  若要查看磁盘上的所有可用扇区，请运行以下命令：
+    ```
+    gdisk -l /dev/sda
+    ```
 
-   ```bash
-   [root@vm-dd-cent7 ~]# lsblk -f
-   NAME    FSTYPE LABEL UUID                                 MOUNTPOINT
-   sda
-   ├─sda1  xfs          2a7bb59d-6a71-4841-a3c6-cba23413a5d2 /boot
-   ├─sda2  xfs          148be922-e3ec-43b5-8705-69786b522b05 /
-   ├─sda14
-   └─sda15 vfat         788D-DC65                            /boot/efi
-   sdb
-   └─sdb1  ext4         923f51ff-acbd-4b91-b01b-c56140920098 /mnt/resource
+1. 你将看到通知分区类型的详细信息。 确保它是 GPT。 标识根分区。 请勿更改或删除启动分区 (BIOS 启动分区) 和系统分区 ( "EFI 系统分区" ) 
+
+1. 使用以下命令首次启动分区。 
+    ```
+    gdisk /dev/sda
+    ```
+
+1. 现在，你将看到一条消息，要求下一个命令 ( "命令：？ 获取帮助 ") 。 
+
+   ```
+   w
    ```
 
-1. 若要进行验证，请首先列出包含 **gdisk** 的 sda 磁盘的分区表。 在此示例中，我们看到一个 48 GB 磁盘，分区2位于 29.0 GiB。 在 Azure 门户中，磁盘已从 30 GB 扩展到 48 GB。
+1. 您将收到一条警告，指出 "Warning！ 磁盘上的辅助标头太早放置了！ 是否要更正此问题？  (Y/N) ： "。 必须按 "Y"
 
-   ```bash
-   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
-   GPT fdisk (gdisk) version 0.8.10
-
-   Partition table scan:
-   MBR: protective
-   BSD: not present
-   APM: not present
-   GPT: present
-
-   Found valid GPT with protective MBR; using GPT.
-   Disk /dev/sda: 100663296 sectors, 48.0 GiB
-   Logical sector size: 512 bytes
-   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
-   Partition table holds up to 128 entries
-   First usable sector is 34, last usable sector is 62914526
-   Partitions will be aligned on 2048-sector boundaries
-   Total free space is 6076 sectors (3.0 MiB)
-
-   Number  Start (sector)    End (sector)  Size       Code  Name
-      1         1026048         2050047   500.0 MiB   0700
-      2         2050048        62912511   29.0 GiB    0700
-   14            2048           10239   4.0 MiB     EF02
-   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
+   ```
+   Y
    ```
 
-1. 展开根分区（在本例中为 sda2），方法是使用 **growpart** 命令。 使用此命令展开分区以使用磁盘上的所有连续空间。
+1. 应该会看到一条消息，通知最终检查已完成并要求确认。 按 "Y"
 
-   ```bash
-   [root@vm-dd-cent7 ~]# growpart /dev/sda 2
-   CHANGED: partition=2 start=2050048 old: size=60862464 end=62912512 new: size=98613214 end=100663262
+   ```
+   Y
    ```
 
-1. 现在，再次打印具有 **gdisk** 的新分区表。  请注意，分区2已扩展为 47.0 GiB：
+1. 使用 partprobe 命令检查是否一切正常
 
-   ```bash
-   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
-   GPT fdisk (gdisk) version 0.8.10
-
-   Partition table scan:
-   MBR: protective
-   BSD: not present
-   APM: not present
-   GPT: present
-
-   Found valid GPT with protective MBR; using GPT.
-   Disk /dev/sda: 100663296 sectors, 48.0 GiB
-   Logical sector size: 512 bytes
-   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
-   Partition table holds up to 128 entries
-   First usable sector is 34, last usable sector is 100663262
-   Partitions will be aligned on 2048-sector boundaries
-   Total free space is 4062 sectors (2.0 MiB)
-
-   Number  Start (sector)    End (sector)  Size       Code  Name
-      1         1026048         2050047   500.0 MiB   0700
-      2         2050048       100663261   47.0 GiB    0700
-   14            2048           10239   4.0 MiB     EF02
-   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
+   ```
+   partprobe
    ```
 
-1. 使用 **xfs_growfs** 扩展分区上的 filesystem，这适用于标准 marketplace 生成的 RedHat 系统：
+1. 上述步骤确保将辅助 GPT 标头置于结尾。 下一步是再次使用 gdisk 工具开始调整大小的过程。 使用以下命令。
 
-   ```bash
-   [root@vm-dd-cent7 ~]# xfs_growfs /
-   meta-data=/dev/sda2              isize=512    agcount=4, agsize=1901952 blks
-            =                       sectsz=4096  attr=2, projid32bit=1
-            =                       crc=1        finobt=0 spinodes=0
-   data     =                       bsize=4096   blocks=7607808, imaxpct=25
-            =                       sunit=0      swidth=0 blks
-   naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
-   log      =internal               bsize=4096   blocks=3714, version=2
-            =                       sectsz=4096  sunit=1 blks, lazy-count=1
-   realtime =none                   extsz=4096   blocks=0, rtextents=0
-   data blocks changed from 7607808 to 12326651
    ```
+   gdisk /dev/sda
+   ```
+1. 在 "命令" 菜单中，按 "p" 查看分区列表。  (在步骤中标识根分区，将 sda2 视为根分区) 并且步骤中 (启动分区，sda3 被视为启动分区)  
+
+   ```
+   p
+   ```
+    ![根分区和启动分区](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+
+1. 按 "d" 删除分区，并选择分配给 boot (的分区号，在本示例中为 "3" ) 
+   ```
+   d
+   3
+   ```
+1. 按 "d" 删除分区，并选择分配给 boot (的分区号，在本示例中为 "2" ) 
+   ```
+   d
+   2
+   ```
+    ![删除根分区和启动分区](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+
+1. 若要重新创建大小增加的根分区，请按 "n"，输入以前为此) 示例的根 ( "2" 删除的分区号，并选择第一个扇区为 "默认值"，最后一个扇区作为 "最后一个扇区值-启动大小扇区" ( "4096"，这种情况下，对应于 2MB boot) ，16个8300代码
+   ```
+   n
+   2
+   (Enter default)
+   (Calculateed value of Last sector value - 4096)
+   8300
+   ```
+1. 若要重新创建启动分区，请按 "n"，为此示例输入先前为启动 ( "3" 删除的分区号) 并选择第一个扇区作为 "默认值"，将最后一个扇区作为 "默认值"，将十六进制代码选为 "EF02"
+   ```
+   n
+   3
+   (Enter default)
+   (Enter default)
+   EF02
+   ```
+
+1. 用 "w" 命令编写更改，然后按 "Y" 确认
+   ```
+   w
+   Y
+   ```
+1. 运行命令 ' partprobe ' 检查磁盘稳定性
+   ```
+   partprobe
+   ```
+1. 重新启动 VM，根分区大小会增加
+   ```
+   reboot
+   ```
+
+   ![新建根分区和启动分区](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+
+1. 在分区上运行 xfs_growfs 命令以调整其大小
+   ```
+   xfs_growfs /dev/sda2
+   ```
+
+   ![XFS 增长 FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
+
 
 1. 验证是否使用 **df** 命令反映了新大小：
 

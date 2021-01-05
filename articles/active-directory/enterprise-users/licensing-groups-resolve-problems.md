@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc3dce8bb51299eb78bd2958eebf7a69594318a4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3bba64f8c07545107d57f79ae94dab96e517815f
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546465"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900699"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -68,7 +68,6 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 请考虑以下示例。 为某个用户直接分配了 Office 365 企业版 *E1* 许可证并启用了所有计划。 该用户已添加到分配有 Office 365 企业版 *E3* 产品的组。 E3 产品包含的服务计划不能与 E1 中包含的计划重叠，因此，组许可证分配会失败并显示“冲突的服务计划”错误。 在此示例中，冲突的服务计划为：
 
-- SharePoint Online（计划 2）与 SharePoint Online（计划 1）冲突。
 - Exchange Online（计划 2）与 Exchange Online（计划 1）冲突。
 
 若要解决此冲突，需要禁用两个计划。 可以禁用直接分配给用户的 E1 许可证。 或者，需要修改整个组许可证分配并在 E3 许可证中禁用计划。 或者，你可能会决定删除用户的 E1 许可证（如果 E1 许可证在 E3 许可证的上下文中是多余的）。

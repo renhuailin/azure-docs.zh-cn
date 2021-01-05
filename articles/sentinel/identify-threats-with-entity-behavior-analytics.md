@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95494771"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900886"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中通过用户和实体行为分析来识别高级威胁 (UEBA) 
 
@@ -92,7 +92,7 @@ Azure Sentinel 提供的项目可帮助您的安全分析人员清楚地了解�
 - Ip 地址 (IP) 
 - 恶意软件
 - 文件
-- 过程
+- 进程
 - 云应用程序 (CloudApplication) 
 - 域名 (DNS) 
 - Azure 资源
@@ -163,7 +163,7 @@ Azure Sentinel 提供的项目可帮助您的安全分析人员清楚地了解�
 | TimeProcessed             | EBA 引擎处理活动的时间戳            |
 | ActivityType              | 活动的高级类别                                 |
 | ActionType                | 活动的规范化名称                                     |
-| UserName                  | 发起活动的用户的用户名                    |
+| 用户名                  | 发起活动的用户的用户名                    |
 | UserPrincipalName         | 启动活动的用户的完整用户名               |
 | EventSource               | 提供原始事件的数据源                        |
 | SourceIPAddress           | 从中启动活动的 IP 地址                        |
@@ -177,6 +177,8 @@ Azure Sentinel 提供的项目可帮助您的安全分析人员清楚地了解�
 | **ActivityInsights**      | 基于分析的活动的上下文分析              |
 | **InvestigationPriority** | 异常分数，介于 0-10 (0 = 良性之间，10 = 非常异常)          |
 |
+
+可以在 [UEBA 根据 reference 文档](ueba-enrichments.md)中查看 **UsersInsights**、 **DevicesInsights** 和 **ActivityInsights** 中引用的所有上下文根据。
 
 ### <a name="querying-behavior-analytics-data"></a>查询行为分析数据
 

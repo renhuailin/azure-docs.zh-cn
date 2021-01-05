@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 2e5edb0ccf20ab0dba14864487f2b2ddef7d57e7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c074c29b7a37f49d5a4c7a5fab00b9a3e41c6893
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544201"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901532"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure 专用链接常见问题解答 (FAQ)
 
@@ -41,10 +41,10 @@ ms.locfileid: "95544201"
 是。 可以在同一 VNet 或子网中创建多个专用终结点。 它们可以连接到不同的服务。  
  
 ### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>专用终结点是否需要专用子网？ 
-不能。 专用终结点不需要专用子网。 可以从部署了你的服务的 VNet 的任何子网中选择专用终结点 IP。  
+不是。 专用终结点不需要专用子网。 可以从部署了你的服务的 VNet 的任何子网中选择专用终结点 IP。  
  
-### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>专用终结点是否可以跨 Azure Active Directory 租户连接到专用链接服务？ 
-是的。 专用终结点可以跨 AD 租户连接到专用链接服务或 Azure PaaS。  
+### <a name="can-a-private-endpoint-connect-to-private-link-services-across-azure-active-directory-tenants"></a>专用终结点是否可以跨 Azure Active Directory 租户连接到专用链接服务？ 
+是的。 专用终结点可跨 Azure Active Directory 租户连接到专用链接服务或 Azure PaaS。 跨租户连接的专用终结点需要手动请求批准。 
  
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>专用终结点是否可以跨 Azure 区域连接到 Azure PaaS 资源？
 是。 专用终结点可以跨 Azure 区域连接到 Azure PaaS 资源。
@@ -74,13 +74,13 @@ ms.locfileid: "95544201"
 - **全部** - 所有人都可以找到服务。 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>是否可以使用基本负载均衡器创建专用链接服务？ 
-不能。 不支持通过基本负载均衡器的专用链接服务。
+不是。 不支持通过基本负载均衡器的专用链接服务。
  
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>专用链接服务是否需要专用子网？ 
-不能。 专用链接服务不需要专用子网。 可以选择部署了你的服务的 VNet 中的任何子网。   
+不是。 专用链接服务不需要专用子网。 可以选择部署了你的服务的 VNet 中的任何子网。   
 
 ### <a name="im-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>我是使用 Azure 专用链接的服务提供商。 我是否需要确保所有客户都具有唯一的 IP 空间，而不会与我的 IP 空间重叠？ 
-不能。 Azure 专用链接会为你提供此功能。 你不需要具有与客户的地址空间不重叠的地址空间。 
+不是。 Azure 专用链接会为你提供此功能。 你不需要具有与客户的地址空间不重叠的地址空间。 
 
 ##  <a name="next-steps"></a>后续步骤
 

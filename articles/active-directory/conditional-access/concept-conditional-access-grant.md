@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34f82fc060586e2df5acefa6b0836171e558aa4a
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 536a9641b68ccd2510a7891b46483a322fb6ecb7
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615761"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900920"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -34,9 +34,9 @@ ms.locfileid: "97615761"
 
 在授予访问权限时，管理员可以选择强制实施一项或多项控制。 这些控制包括以下选项： 
 
-- [需要多重身份验证 (Azure AD 多重身份验证) ](../authentication/concept-mfa-howitworks.md)
+- [需要多重身份验证（Azure AD 多重身份验证）](../authentication/concept-mfa-howitworks.md)
 - [要求设备标记为符合 (Microsoft Intune) ](/intune/protect/device-compliance-get-started)
-- [需要混合 Azure AD 联接设备](../devices/concept-azure-ad-join-hybrid.md)
+- [要求使用已建立混合 Azure AD 联接的设备](../devices/concept-azure-ad-join-hybrid.md)
 - [“需要已批准的客户端应用”](app-based-conditional-access.md)
 - [需要应用保护策略](app-protection-based-conditional-access.md)
 - [要求更改密码](#require-password-change)
@@ -50,7 +50,7 @@ ms.locfileid: "97615761"
 
 ### <a name="require-multi-factor-authentication"></a>需要多重身份验证
 
-选中此复选框将要求用户执行 Azure AD 多重身份验证。 有关部署 Azure AD 多重身份验证的详细信息，请参阅 [规划基于云的 Azure AD 多重身份验证部署](../authentication/howto-mfa-getstarted.md)一文。
+选中此复选框会要求用户执行 Azure AD 多重身份验证。 在[规划基于云的 Azure AD 多重身份验证部署](../authentication/howto-mfa-getstarted.md)一文中可以找到有关部署 Azure AD 多重身份验证的详细信息。
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>要求将设备标记为合规
 
@@ -70,7 +70,7 @@ ms.locfileid: "97615761"
 
 组织可以要求只能尝试从已批准的客户端应用访问选定的云应用。 这些已批准的客户端应用支持 [Intune 应用保护策略](/intune/app-protection-policy)，而不受任何移动设备管理 (MDM) 解决方案影响。
 
-为了利用此授权控制，条件访问要求在 Azure Active Directory 中注册设备，这需要使用代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是 Microsoft Authenticator 或适用于 Android 设备的 Microsoft 公司门户。 如果用户尝试进行身份验证时设备上未安装 broker 应用，则会将用户重定向到相应的应用商店，以安装所需的代理应用。
+为了利用此授权控制，条件访问要求在 Azure Active Directory 中注册设备，这需要使用代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是 Microsoft Authenticator 或适用于 Android 设备的 Microsoft 公司门户。 如果用户尝试进行身份验证时设备上未安装代理应用，则会将用户重定向到相应的应用商店来安装所需的代理应用。
 
 此设置适用于以下 iOS 和 Android 应用：
 
@@ -102,6 +102,7 @@ ms.locfileid: "97615761"
 - Microsoft Word
 - Microsoft Yammer
 - Microsoft Whiteboard
+- Microsoft 365 管理员
 
 **备注**
 

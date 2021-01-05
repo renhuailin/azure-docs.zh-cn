@@ -4,12 +4,12 @@ description: 了解有关活动日志警报激活时发布到 webhook URL 的 JS
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: 026613c3f5710137fb110153b34f9ed74bbf8a7b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a73ab12d1729acba132aeffd4104ca7846ecb9e8
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522781"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901430"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
@@ -27,6 +27,19 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 
 ## <a name="payload-schema"></a>负载架构
 根据有效负载的 data.context.activityLog.eventSource 字段，POST 操作中包含的 JSON 有效负载会有所不同。
+
+> [!NOTE]
+> 目前，作为活动日志事件一部分的描述将被复制到激发的 **"警报描述"** 属性。
+>
+> 为了使活动日志有效负载与其他警报类型（从2021年4月1日开始）对齐，激发的警报属性 **"描述"** 将包含警报规则说明。
+>
+> 为准备此更改，我们为活动日志触发的警报创建了一个新属性 **"活动日志事件描述"** 。 此新属性将使用已可供使用的 **"说明"** 属性进行填充。 这意味着新字段 **"活动日志事件描述"** 将包含属于活动日志事件的描述。
+>
+> 请查看你的警报规则、操作规则、webhook、逻辑应用或任何其他配置，其中你可能会在触发的警报中使用 **"说明"** 属性，并将其替换为 **"活动日志事件描述"** 属性。
+>
+> 如果 (操作规则、webhook、逻辑应用或其他任何配置) 当前基于活动日志警报的 **"说明"** 属性，则可能需要将其改为基于 **"活动日志事件描述"** 属性。
+>
+> 为了填充新的 **"说明"** 属性，您可以在警报规则定义中添加描述。
 
 ### <a name="common"></a>通用
 

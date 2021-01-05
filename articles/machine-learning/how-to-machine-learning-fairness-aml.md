@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 17b0564b4b73f5a5032343dcb78669cbf4cabd5a
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 057f965c67c25d486771a4c037e13153a7f2cf66
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516148"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901141"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>将 Azure 机器学习与 Fairlearn 开源程序包配合使用来评估机器学习模型的公平性（预览版）
 
@@ -46,7 +46,7 @@ pip install fairlearn==0.4.6
 
 下面的示例演示如何使用公平包。 我们会将模型公平见解上载到 Azure 机器学习，并在 Azure 机器学习 studio 中查看公平评估仪表板。
 
-1. 在 Jupyter 笔记本中训练示例模型。 
+1. 在 Jupyter Notebook 中训练示例模型。 
 
     对于数据集，我们使用众所周知的成人人口统计数据集，我们将从 OpenML 中提取这些数据集。 我们假设我们有一个贷款决策问题，该标签指示个体是否偿还上一个贷款。 我们将定型一个模型，以预测之前不可见的个人是否会报答贷款。 这种模型可用于做出贷款决定。
 

@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b680c275b92340cc7efba187769cb17602b08b45
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 365c9a990f16e9077450ae15f6677ab716fc45ba
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973280"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900444"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 
@@ -284,6 +284,17 @@ ms.locfileid: "95973280"
 
 ```
 
+> [!NOTE]
+> 若要针对主权云进行注册，请使用以下命令行：
+>
+> ```powershell
+> Register-AzureADConnectHealthADFSAgent -UserPrincipalName upn-of-the-user
+> Register-AzureADConnectHealthADDSAgent -UserPrincipalName upn-of-the-user
+> Register-AzureADConnectHealthSyncAgent -UserPrincipalName upn-of-the-user
+> ```
+>
+
+
 这些命令接受 `Credential` 作为参数来完成注册 noninteractively，或在运行 Server Core 的计算机上完成注册。 请记住：
 * 可以 `Credential` 在作为参数传递的 PowerShell 变量中捕获。
 * 你可以提供有权注册代理但 *未* 启用多重身份验证的任何 Azure AD 标识。
@@ -314,7 +325,7 @@ ms.locfileid: "95973280"
 * 清除现有的代理配置。
 
 > [!NOTE]
-> 若要更新代理设置，必须重新启动所有 Azure AD Connect Health 代理服务。 运行下面的命令：
+> 若要更新代理设置，必须重新启动所有 Azure AD Connect Health 代理服务。 运行以下命令：
 >
 > `Restart-Service AzureADConnectHealth*`
 
@@ -340,7 +351,7 @@ Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
 Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 ```
 
-下面是一个示例： 
+下面的示例说明： 
 
 `Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443`
 

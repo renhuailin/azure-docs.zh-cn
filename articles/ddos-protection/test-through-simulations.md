@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 55692122461ef1b22b43b0def43e826ac7aeae30
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e3a665e3615c9ff3a68cf13eeaef5e8f41632f6a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813779"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900354"
 ---
 # <a name="test-through-simulations"></a>通过模拟进行测试
 
@@ -42,9 +42,9 @@ ms.locfileid: "97813779"
     |---------      |---------                                          |
     |目标 IP 地址           | 输入要测试的公共 IP 地址之一。                     |
     |端口号   | 输入 _443_。                       |
-    |DDoS 配置文件 | 选择 **TCP SYN 洪水**。|
-    |测试大小       | 选择 **功能 pps、100 Mbps 和8个源 ip。**                                  |
-    |测试持续时间 | 选择 " **10 分钟**"。|
+    |DDoS 配置文件 | 可能的值 **包括 DNS 洪水**、 **NTPv2 洪水**、 **SSDP 洪水**、 **TCP SYN 洪水**、 **Udp 64B 洪水**、 **udp 128B 洪水**、udp **256B 洪水**、 **Udp 512B 淹没**、 **udp 1024B 洪水**、 **udp 1514B 淹没**、 **udp 碎片** **udp Memcached**。|
+    |测试大小       | 可能的值包括 **100k pps、50 mbps 和4源 ip**、 **功能 Pps、100 Mbps 和8源 ip**、 **400K pps、200Mbps 和16源 ips**、 **800K Pps、400 Mbps 和32源 ip**。                                  |
+    |测试持续时间 | 可能的值包括 **10 分钟**、 **15 分钟**、 **20 分钟**、 **25** 分钟、 **30 分钟**。|
 
 它现在应如下所示：
 

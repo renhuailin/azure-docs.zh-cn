@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 11/25/2020
 ms.author: rolyon
-ms.openlocfilehash: c4082f7fc535807ec996034ba695549a51969a99
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6eadba7d778a632896529f3c7c53886619d96444
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182404"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901464"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 添加或删除 Azure 角色分配
 
@@ -28,6 +28,7 @@ ms.locfileid: "96182404"
 
 - `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](built-in-roles.md#user-access-administrator)或[所有者](built-in-roles.md#owner)
 - Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [中的 PowerShell](../cloud-shell/overview.md)
+- 用于运行 PowerShell 命令的帐户必须具有 Microsoft Graph `Directory.Read.All` 权限。
 
 ## <a name="steps-to-add-a-role-assignment"></a>角色分配的添加步骤
 
@@ -39,7 +40,7 @@ ms.locfileid: "96182404"
 
 **User**
 
-对于 Azure AD 用户，请获取用户主体名称（例如 *patlong\@contoso.com*）或用户对象 ID。 若要获取对象 ID，可以使用 [AzADUser](/powershell/module/az.resources/get-azaduser)。
+对于 Azure AD 用户，请获取用户主体名称（例如 *patlong\@contoso.com*）或用户对象 ID。 若要获取该对象 ID，可以使用 [Get-AzADUser](/powershell/module/az.resources/get-azaduser)。
 
 ```azurepowershell
 Get-AzADUser -StartsWith <userName>
@@ -48,7 +49,7 @@ Get-AzADUser -StartsWith <userName>
 
 **组**
 
-对于 Azure AD 组，你需要组对象 ID。 若要获取对象 ID，可以使用 [AzADGroup](/powershell/module/az.resources/get-azadgroup)。
+对于 Azure AD 组，你需要组对象 ID。 若要获取该对象 ID，可以使用 [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup)。
 
 ```azurepowershell
 Get-AzADGroup -SearchString <groupName>
@@ -57,7 +58,7 @@ Get-AzADGroup -SearchString <groupName>
 
 **服务主体**
 
-对于 Azure AD 服务主体（应用程序使用的标识），你需要服务主体对象 ID。 若要获取对象 ID，可以使用 [AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)。 对于服务主体，使用对象 ID，而不是应用程序 ID。
+对于 Azure AD 服务主体（应用程序使用的标识），你需要服务主体对象 ID。 若要获取该对象 ID，可以使用 [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)。 对于服务主体，使用对象 ID，而不是应用程序 ID。
 
 ```azurepowershell
 Get-AzADServicePrincipal -SearchString <principalName>
@@ -66,7 +67,7 @@ Get-AzADServicePrincipal -SearchString <principalName>
 
 **托管的标识**
 
-对于系统分配的或用户分配的托管标识，你需要对象 ID。 若要获取对象 ID，可以使用 [AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)。
+对于系统分配的或用户分配的托管标识，你需要对象 ID。 若要获取该对象 ID，可以使用 [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)。
 
 ```azurepowershell
 Get-AzADServicePrincipal -SearchString <principalName>
@@ -77,7 +78,7 @@ Get-AzADServicePrincipal -SearchString <principalName>
 
 权限组合成角色。 可以从包含多个 [Azure 内置角色](built-in-roles.md)的列表中选择，也可以使用自己的自定义角色。 最佳做法是以所需的最少权限授予访问权限，因此避免分配范围更广泛的角色。
 
-若要列出角色并获取唯一角色 ID，可以使用 [AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)。
+若要列出角色并获取唯一的角色 ID，可以使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)。
 
 ```azurepowershell
 Get-AzRoleDefinition | FT Name, IsCustom, Id
@@ -105,7 +106,7 @@ Azure 提供四个级别的范围：资源、[资源组](../azure-resource-manag
 
 **资源组范围**
 
-对于资源组范围，你需要资源组的名称。 可以在 Azure 门户的 " **资源组** " 页上找到该名称，也可以使用 [AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup)。
+对于资源组范围，你需要资源组的名称。 可以在 Azure 门户的“资源组”页上找到此名称，也可以使用 [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup)。
 
 ```azurepowershell
 Get-AzResourceGroup
@@ -113,7 +114,7 @@ Get-AzResourceGroup
 
 **订阅范围** 
 
-对于订阅范围，你需要订阅 ID。 可以在 " **订阅** " 页上的 "Azure 门户" 中找到 ID，也可以使用 [AzSubscription](/powershell/module/az.accounts/get-azsubscription)。
+对于订阅范围，你需要订阅 ID。 可以在 Azure 门户的“订阅”页上找到此 ID，也可以使用 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)。
 
 ```azurepowershell
 Get-AzSubscription
@@ -121,7 +122,7 @@ Get-AzSubscription
 
 **管理组范围** 
 
-对于管理组范围，你需要管理组名称。 可以在 Azure 门户的 " **管理组** " 页上找到该名称，也可以使用 [AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup)。
+对于管理组范围，你需要管理组名称。 可以在 Azure 门户的“管理组”页上找到此名称，也可以使用 [Get-AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup)。
 
 ```azurepowershell
 Get-AzManagementGroup
@@ -129,7 +130,7 @@ Get-AzManagementGroup
     
 ### <a name="step-4-add-role-assignment"></a>步骤 4：添加角色分配
 
-若要添加角色分配，请使用 [AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 命令。 根据范围，命令通常采用以下格式之一。
+若要添加角色分配，请使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 命令。 根据范围，命令通常采用以下格式之一。
 
 **资源范围**
 
@@ -234,7 +235,7 @@ CanDelegate        : False
 
 #### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>为特定虚拟网络资源范围内的某个组添加角色分配
 
-将 [虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配 *给名为* 医药的虚拟网络的资源范围内 ID 为 Aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa 的 "*销售管理员*" 组。
+将[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配给名为 pharma-sales-project-network 的虚拟网络的资源范围内 ID 为“aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa”的“医药销售管理员”组。
 
 ```azurepowershell
 PS C:\> New-AzRoleAssignment -ObjectId aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa `
@@ -257,7 +258,7 @@ ObjectType         : Group
 CanDelegate        : False
 ```
 
-#### <a name="add-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>为资源组范围内的用户添加角色分配
+#### <a name="add-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>在资源组范围内为某个用户添加角色分配
 
 在 *pharma-sales* 资源组范围内将 [虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配给 *patlong\@contoso.com* 用户。
 
@@ -325,7 +326,7 @@ CanDelegate        : False
 
 #### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>在资源组范围内为应用程序添加角色分配
 
-在 *医药* 资源组范围内，将 [虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配给服务主体对象 ID 为77777777-7777-7777-7777-777777777777 的应用程序。
+在 pharma-sales 资源组范围内将[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配给服务主体对象 ID 为“77777777-7777-7777-7777-777777777777”的应用程序。
 
 ```azurepowershell
 PS C:\> New-AzRoleAssignment -ObjectId 77777777-7777-7777-7777-777777777777 `

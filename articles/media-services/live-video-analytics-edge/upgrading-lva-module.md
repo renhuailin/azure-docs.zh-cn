@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: 7904269a8ca87d3d801c7ff78def1b60f242b9ab
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9621f0a933c6102309286505f2c551c5256c5506
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425740"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901549"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>将 IoT Edge 上的实时视频分析升级到1.0 到2。0
 
@@ -60,7 +60,7 @@ ms.locfileid: "97425740"
 * 在 `MediaGraphHttpExtension` 和 `MediaGraphGrpcExtension` 处理器中，请注意以下更改：  
     * **映像属性**
         * `MediaGraphImageFormatEncoded` 不再受支持。 
-        * 请改用 **`MediaGraphImageFormatBmp`** 或 **`MediaGraphImageFormatJpeg`** **`MediaGraphImageFormatPng`** 。 例如，应用于对象的
+        * 请改用 **`MediaGraphImageFormatBmp`** 或 **`MediaGraphImageFormatJpeg`** **`MediaGraphImageFormatPng`** 。 例如，
         ```
         "image": {
                 "scale": 
@@ -169,7 +169,7 @@ ms.locfileid: "97425740"
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/telemetry-schema/telegraf.png" alt-text="事件的分类":::
 
-可以使用 docker 轻松生成带有自定义配置的 Telegraf 映像。 有关详细信息，请参阅 [监视和日志记录](monitoring-logging.md#azure-monitor-collection-using-telegraf) 页。
+可以使用 docker 轻松生成带有自定义配置的 Telegraf 映像。 有关详细信息，请参阅 [监视和日志记录](monitoring-logging.md#azure-monitor-collection-via-telegraf) 页。
 
 ## <a name="next-steps"></a>后续步骤
 

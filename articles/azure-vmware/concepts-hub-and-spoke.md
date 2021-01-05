@@ -3,12 +3,12 @@ title: 概念-在中心辐射型体系结构中集成 Azure VMware 解决方案�
 description: 了解如何在 Azure 上的中心和辐射型体系结构中集成 Azure VMware 解决方案部署。
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 788ef9886e0d102a549e84cd01c658e9e4131c63
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967442"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901379"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>在中心和辐射型体系结构中集成 Azure VMware 解决方案
 
@@ -128,7 +128,7 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
 
 对于 Azure DNS 解析，有两个可用的选项：
 
--   使用 Azure Active Directory (Azure AD 在中心部署的) 域控制器 (作为名称服务器 [) 中所](#identity-considerations) 述。
+-   使用在 " [标识注意事项](#identity-considerations)) 为名称服务器" 中所述的 (集线器上部署的域控制器。
 
 -   部署和配置 Azure DNS 专用区域。
 
@@ -136,7 +136,7 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
 
 作为一般的设计建议，在这种情况下，请使用现有的 Azure DNS 基础结构 (，将 Active Directory 集成的) DNS 部署到至少部署在中心虚拟网络中的两个 Azure Vm，并在辐射虚拟网络中进行配置，以在 DNS 设置中使用这些 Azure DNS 服务器。
 
-可以使用 Azure 专用 DNS，其中 Azure 专用 DNS 区域链接到虚拟网络。  DNS 服务器用作混合解析程序，并将条件转发到本地或 Azure VMware 解决方案，运行 DNS 并利用客户 Azure 专用 DNS 基础结构。 
+可以使用 Azure 专用 DNS，其中 Azure 专用 DNS 区域链接到虚拟网络。  DNS 服务器使用客户 Azure 专用 DNS 基础结构通过条件转发到本地或 Azure VMware 解决方案，将 DNS 服务器用作混合解析器。 
 
 若要为在辐射虚拟网络中部署的 Vm 自动管理 DNS 记录的生命周期，请启用自动注册。 启用后，最大专用 DNS 区域数仅为1。 如果禁用，则最大数目为1000。
 
@@ -144,7 +144,7 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
 
 ## <a name="identity-considerations"></a>标识注意事项
 
-出于标识目的，最佳方法是在中心部署至少一个 AD 域控制器。 使用区域分布式方式或 VM 可用性集的两个共享服务子网。 请参阅 [Azure 体系结构中心](/azure/architecture/reference-architectures/identity/adds-extend-domain) 将本地 AD 域扩展到 Azure。
+出于标识目的，最佳方法是在中心部署至少一个域控制器。 使用区域分布式方式或 VM 可用性集的两个共享服务子网。 有关将本地 Active Directory (AD) 域扩展到 Azure 的详细信息，请参阅 [Azure 体系结构中心](/azure/architecture/reference-architectures/identity/adds-extend-domain)。
 
 此外，在 Azure VMware 解决方案端部署另一个域控制器，在 vSphere 环境中充当标识和 DNS 源。
 

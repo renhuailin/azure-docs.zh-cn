@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 5cac21046b6b4afdefc4213f6a1fab438d62cca3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dbff136ac5787ef9549cca9dc8f946c56a138986
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957531"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900495"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映像的概述
 
@@ -22,7 +22,7 @@ ms.locfileid: "94957531"
 有关适用于所有版本 RHEL 的 Red Hat 支持策略的信息，请参阅 [Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)。 有关定价的详细信息，请参阅 [Azure 定价计算器](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。
 
 >[!IMPORTANT]
-> 当前在 Azure Marketplace 中提供的 RHEL 映像支持自带订阅 (BYOS ") 或" 即用即付 "许可模式。 不支持在 BYOS 与即用即付许可之间进行 [Azure 混合使用权益](../../windows/hybrid-use-benefit-licensing.md) 和动态切换。 若要切换授权模式，你必须从相应的映像重新部署 VM。
+> 当前在 Azure Marketplace 中提供的 RHEL 映像支持自带订阅 (BYOS ") 或" 即用即付 "许可模式。 可以通过 [Azure 混合使用权益](../../linux/azure-hybrid-benefit-linux.md)在 BYOS 与即用即付许可之间进行动态切换。
 
 >[!NOTE]
 > 对于 Azure Marketplace 中的 RHEL 映像相关的任何问题，请向 Microsoft 提交支持票证。
@@ -146,7 +146,7 @@ RedHat:RHEL:7.6:7.6.2019102813
 RHEL 7.4      |RedHat： RHEL：7.4：7.4.2019041718 | 默认情况下，EUS 2019 及更高版本发布的映像。|
 RHEL 7.5      |RedHat： RHEL：7.5：7.5.2019060305 | 默认情况下，EUS 2019 及更高版本发布的映像。 |
 RHEL 7.6      |RedHat： RHEL：7.6：7.6.2019052206 | 默认情况下，发布的映像可能为2019和更高版本 EUS。 |
-RHEL 8。0      |空值                            | Red Hat 中没有可用的 EUS。                               |
+RHEL 8。0      |不适用                            | Red Hat 中没有可用的 EUS。                               |
 
 ### <a name="update-services-for-sap"></a>更新 SAP 服务
 
@@ -161,7 +161,7 @@ RHEL 8。0      |空值                            | Red Hat 中没有可用的 
 
 ## <a name="other-available-offers-and-skus"></a>其他可用产品和 Sku
 
-可用产品/服务和 Sku 的完整列表可能包括上表中列出的其他映像。 例如 `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`。 这些产品/服务可用于为特定 marketplace 解决方案提供支持。 也可以将其发布以供预览和测试之用。 它们可能会随时更改或删除，而不会出现警告。 除非 Microsoft 或 Red Hat 公开记录了这些文件，否则不要使用它们。
+可用产品/服务和 Sku 的完整列表可能包括上表中列出的其他映像。 示例为 `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`。 这些产品/服务可用于为特定 marketplace 解决方案提供支持。 也可以将其发布以供预览和测试之用。 它们可能会随时更改或删除，而不会出现警告。 除非 Microsoft 或 Red Hat 公开记录了这些文件，否则不要使用它们。
 
 ## <a name="publishing-policy"></a>发布策略
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 3518935991409d87917582558a34ad7c54841e23
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5e6188ca2e8e0972e86bed578144a29a96570876
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173671"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901192"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure 静态 Web 应用的 GitHub Actions 工作流预览版
 
@@ -63,7 +63,7 @@ jobs:
         ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
         app_location: '/' # App source code path
         api_location: 'api' # Api source code path - optional
-        app_artifact_location: 'dist' # Built app content directory - optional
+        output_location: 'dist' # Built app content directory - optional
         ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
@@ -132,7 +132,7 @@ with:
     ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
     app_location: '/' # App source code path
     api_location: 'api' # Api source code path - optional
-    app_artifact_location: 'dist' # Built app content directory - optional
+    output_location: 'dist' # Built app content directory - optional
     ###### End of Repository/Build Configurations ######
 ```
 
@@ -140,7 +140,7 @@ with:
 |---|---|---|
 | `app_location` | 应用程序代码的位置。<br><br>例如，如果应用程序源代码位于存储库的根目录中，输入 `/`；如果应用程序代码位于名为 `app` 的目录中，则输入 `/app`。 | 是 |
 | `api_location` | Azure Functions 代码的位置。<br><br>例如，如果应用代码位于名为 `api` 的文件夹中，输入 `/api`。 如果未在文件夹中检测到 Azure Functions 应用，生成不会失败，工作流将假定你不需要 API。 | 否 |
-| `app_artifact_location` | 与 `app_location` 相对应的生成输出目录的位置。<br><br>例如，如果应用程序源代码位于 `/app` 中，并且生成脚本将文件输出到 `/app/build` 文件夹，则将 `build` 设置为 `app_artifact_location` 值。 | 否 |
+| `output_location` | 与 `app_location` 相对应的生成输出目录的位置。<br><br>例如，如果应用程序源代码位于 `/app` 中，并且生成脚本将文件输出到 `/app/build` 文件夹，则将 `build` 设置为 `output_location` 值。 | 否 |
 
 Azure 静态 Web 应用为你设置的 `repo_token`、`action` 和 `azure_static_web_apps_api_token` 值不应手动更改。
 
@@ -163,7 +163,7 @@ Azure 静态 Web 应用为你设置的 `repo_token`、`action` 和 `azure_static
 |---------------------|-------------|
 | `routes_location` | 定义找到 routes.json 文件的目录位置。 此位置相对于存储库的根目录。 |
 
- 如果你的前端框架生成步骤不会在默认情况下将此文件移到 `app_artifact_location`，则显式了解 routes.json 文件的位置尤为重要。
+ 如果你的前端框架生成步骤不会在默认情况下将此文件移到 `output_location`，则显式了解 routes.json 文件的位置尤为重要。
 
 ## <a name="environment-variables"></a>环境变量
 
@@ -189,7 +189,7 @@ jobs:
           ###### Repository/Build Configurations
           app_location: "/"
           api_location: "api"
-          app_artifact_location: "public"
+          output_location: "public"
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0
