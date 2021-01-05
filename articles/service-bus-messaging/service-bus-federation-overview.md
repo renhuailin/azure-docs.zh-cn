@@ -3,12 +3,12 @@ title: 消息复制和跨区域联合-Azure 服务总线 |Microsoft Docs
 description: 本文概述了与 Azure 服务总线之间的事件复制和跨区域联合。
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 32d8c9112eeb2f71e7f2c8dcd6f8f73da2dc1ca9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d5153820feab8b7901356838ec435d992aa82116
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657370"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803266"
 ---
 # <a name="message-replication-and-cross-region-federation"></a>消息复制和跨区域联合
 
@@ -150,7 +150,7 @@ Azure Functions 可以在 [Azure 托管标识](../active-directory/managed-ident
 
 Azure Functions 还允许复制任务直接与 Azure 虚拟网络和 [服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md) 集成，以实现所有 azure 消息传递服务，并与 [Azure Monitor](../azure-monitor/overview.md)轻松集成。
 
-最重要的是，Azure Functions 为 [Azure 事件中心](../azure-functions/functions-bindings-service-bus.md)、 [azure IoT 中心](../azure-functions/functions-bindings-event-iot.md)、 [Azure 服务总线](../azure-functions/functions-bindings-service-bus.md)、 [azure 事件网格](../azure-functions/functions-bindings-event-grid.md)、 [azure 队列存储](/azure-functions/functions-bindings-storage-queue.md)、 [RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension)的自定义扩展和 [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)预构建、可缩放的触发器和输出绑定。 大多数触发器会根据所记录的指标，根据所记录的指标，根据所记录的指标，增加和减少并发执行实例的数量，从而动态调整吞吐量需求 
+最重要的是，Azure Functions 为 [Azure 事件中心](../azure-functions/functions-bindings-service-bus.md)、 [azure IoT 中心](../azure-functions/functions-bindings-event-iot.md)、 [Azure 服务总线](../azure-functions/functions-bindings-service-bus.md)、 [azure 事件网格](../azure-functions/functions-bindings-event-grid.md)、 [azure 队列存储](/azure/azure-functions/functions-bindings-storage-queue)、 [RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension)的自定义扩展和 [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)预构建、可缩放的触发器和输出绑定。 大多数触发器会根据所记录的指标，根据所记录的指标，根据所记录的指标，增加和减少并发执行实例的数量，从而动态调整吞吐量需求 
 
 使用 Azure Functions 消耗计划，预先生成的触发器甚至可以向下扩展到零，而不会有可用于复制的消息，这意味着，将配置准备好进行扩展，不会产生任何费用。 使用消耗计划的关键不足之处在于，与此状态的复制任务 "正在唤醒" 的延迟明显高于使用基础结构保持运行的主机计划。  
 
@@ -165,6 +165,6 @@ Azure Functions 还允许复制任务直接与 Azure 虚拟网络和 [服务终�
 - [Azure Functions 中的复制应用程序](service-bus-federation-replicator-functions.md)
 - [在服务总线实体之间复制事件](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopy)
 - [将事件路由到 Azure 事件中心](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub)
-- [从 Azure 事件中心获取事件](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubsCopyToServiceBus)
+- [从 Azure 事件中心获取事件](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus)
 
 [1]: ./media/service-bus-auto-forwarding/IC628632.gif 

@@ -10,12 +10,13 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aa3329c3d9e241fb8224ecc69199779d53027474
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+adobe-target: true
+ms.openlocfilehash: 0334e259f75440cae25f1e165c0621c85f7c7705
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183135"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803997"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Java 应用
 
@@ -25,7 +26,7 @@ Azure 应用服务可让 Java 开发人员在完全托管服务中快速生成�
 
 ## <a name="deploying-your-app"></a>部署应用
 
-可以使用[适用于 Maven 的 Azure Web 应用插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)来部署 .war 或 .jar 文件。 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) 或 [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse) 还支持通过流行的 IDE 进行部署。
+可以使用[适用于 Maven 的 Azure Web 应用插件](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)来部署 .war 或 .jar 文件。 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) 或 [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse) 还支持通过流行的 IDE 进行部署。
 
 否则，则部署方法将取决于存档类型：
 
@@ -694,7 +695,7 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /
 
 ## <a name="jboss-eap-hardware-options"></a>JBoss EAP 硬件选项
 
-JBoss EAP 仅适用于高级和独立硬件选项。 在公共预览版期间，在 "免费"、"共享"、"基本" 或 "标准" 层上创建了 JBoss
+JBoss EAP 仅适用于高级和独立硬件选项。 在公共预览期间在免费层、共享层、基本层或标准层上创建了 JBoss EAP 站点的客户应纵向扩展到“高级”或“独立”硬件层，以避免出现意外行为。
 
 ## <a name="java-runtime-statement-of-support"></a>Java 运行时支持声明
 

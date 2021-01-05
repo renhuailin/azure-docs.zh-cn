@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bd85c60025475e8208847a12ccc2729743a975a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895717"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803912"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>对块 blob 数据执行时间点还原
 
@@ -23,7 +23,7 @@ ms.locfileid: "95895717"
 若要了解有关时间点还原的详细信息，请参阅 [块 blob 的时间点还原](point-in-time-restore-overview.md)。
 
 > [!CAUTION]
-> 时间点还原仅支持对块 blob 执行还原操作。 无法还原对容器的操作。 如果通过调用 [删除容器](/rest/api/storageservices/delete-container) 操作从存储帐户中删除容器，则无法使用还原操作来还原该容器。 如果你可能希望还原各个 blob，则不会删除容器。
+> 时间点还原仅支持对块 blob 执行还原操作。 无法还原对容器的操作。 如果通过调用 [删除容器](/rest/api/storageservices/delete-container) 操作从存储帐户中删除容器，则无法使用还原操作来还原该容器。 如果要在以后还原它们，请删除单个 blob，而不是删除整个容器。
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>启用和配置时间点还原
 
@@ -107,6 +107,8 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 > 执行还原操作时，Azure 存储会阻止在操作期间还原的范围内的 blob 上的数据操作。 读取、写入和删除操作在主位置中被阻止。 出于此原因，在执行还原操作时，Azure 门户中的操作（如列出容器）可能不会按预期执行。
 >
 > 如果存储帐户是异地复制的，则在还原操作期间，从辅助位置读取操作可能会继续。
+>
+> 还原一组数据所用的时间取决于在还原期间执行的写入和删除操作的次数。 例如，每日添加了1000000对象的帐户和每天删除3000的1000对象将需要大约两个小时才能还原到过去30天的点。 对于具有此更改率的帐户，不建议在过去保留时间和还原超过90天。
 
 ### <a name="restore-all-containers-in-the-account"></a>还原帐户中的所有容器
 

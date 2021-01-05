@@ -3,12 +3,12 @@ title: 用于实现高可用性的区域冗余注册表
 description: 了解如何通过在 Azure 可用性区域中创建容器注册表或复制来启用 Azure 容器注册表中的区域冗余。 区域冗余是高级服务层的一项功能。
 ms.topic: article
 ms.date: 12/11/2020
-ms.openlocfilehash: f94d5a8d61c42e8833e21f035303be173c81764d
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 1553beef47a3d493f066e47cd39751093d83fc24
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681513"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803504"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>启用 Azure 容器注册表中的区域冗余以实现复原和高可用性
 
@@ -25,7 +25,6 @@ ms.locfileid: "97681513"
 * 无法在区域中禁用区域冗余。
 * [ACR 任务](container-registry-tasks-overview.md) 尚不支持可用性区域。
 * 目前通过 Azure 资源管理器模板或 Azure 门户支持。 未来版本中将启用 Azure CLI 支持。
-* 目前，将区域冗余的容器注册表移到另一个资源组时，区域冗余设置显示为 `Disabled` 。
 
 ## <a name="about-zone-redundancy"></a>关于区域冗余
 
@@ -58,7 +57,7 @@ Azure 容器注册表还支持 [异地复制](container-registry-geo-replication
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-如果需要，请运行 [az group create](/cli/az/group#az_group_create)命令，以在支持 Azure 容器注册表（如 *eastus*）的 [可用性区域](../availability-zones/az-region.md)的区域中为注册表创建资源组。
+如果需要，请运行 [az group create](/cli/azure/group)命令，以在支持 Azure 容器注册表（如 *eastus*）的 [可用性区域](../availability-zones/az-region.md)的区域中为注册表创建资源组。
 
 ```azurecli
 az group create --name <resource-group-name> --location <location>
@@ -164,7 +163,7 @@ az group create --name <resource-group-name> --location <location>
   }
 ```
 
-运行以下 [az deployment group create](/cli/az/deployment#az_group_deployment_create) 命令，以使用前面的模板文件创建注册表。 如果指示，请提供：
+运行以下 [az deployment group create](/cli/azure/deployment?view=azure-cli-latest) 命令，以使用前面的模板文件创建注册表。 如果指示，请提供：
 
 * 唯一的注册表名称，或者不使用参数部署模板，它将为你创建一个唯一的名称
 * 支持可用性区域的副本的位置，例如 *westus2*

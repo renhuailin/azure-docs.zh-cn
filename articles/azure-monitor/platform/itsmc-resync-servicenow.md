@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 3e836873219bde3836f2863e328b0b6f5b89addc
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 01e492072bd75af9f80656b71d2cc1c473d64263
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507279"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803793"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>排查 ITSM 连接器中的问题
 
@@ -23,7 +23,7 @@ ITSM 提供将警报发送到外部票证系统（如 ServiceNow）的选项。
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>可视化和分析事件与更改请求数据
 
-根据设置连接时的配置，ITSMC 可以同步最多120天的事件和更改请求数据。 本文的 " [其他信息" 部分](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#additional-information) 提供了此数据的日志记录架构。
+根据设置连接时的配置，ITSMC 可以同步最多120天的事件和更改请求数据。 本文的 " [其他信息" 部分](./itsmc-overview.md) 提供了此数据的日志记录架构。
 
 可以使用 ITSMC 仪表板可视化事件和更改请求数据：
 
@@ -39,7 +39,27 @@ ITSM 提供将警报发送到外部票证系统（如 ServiceNow）的选项。
 
 ![显示 Log Analytics 屏幕的屏幕截图。](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="how-to-manually-fix-servicenow-sync-problems"></a>如何手动修复 ServiceNow 同步问题
+## <a name="troubleshoot-itsm-connections"></a>排查 ITSM 连接问题
+
+- 如果连接未能连接到 ITSM 系统，但 **在保存连接消息时出现错误** ，请执行以下步骤：
+   - 对于 ServiceNow、Cherwell 和 Provance 连接：  
+     - 确保为每个连接正确输入了用户名、密码、客户端 ID 和客户端密码。  
+     - 确保在相应的 ITSM 产品中具有足够的权限来建立连接。  
+   - 对于 Service Manager 连接：  
+     - 确保已成功部署 web 应用并创建了混合连接。 若要验证是否已成功与本地 Service Manager 计算机建立连接，请按照建立 [混合连接](./itsmc-connections-scsm.md#configure-the-hybrid-connection)的文档中所述，参阅 WEB 应用 URL。  
+
+- 如果 ServiceNow 中的数据未同步到 Log Analytics，请确保 ServiceNow 实例未处于睡眠状态。 当 ServiceNow 开发实例长时间处于空闲状态时，有时会进入睡眠状态。 如果不是这样，请报告问题。
+- 如果 Log Analytics 警报触发但未在 ITSM 产品中创建工作项，如果不创建或链接到工作项的配置项目或其他信息，请参阅以下资源：
+   -  ITSMC：此解决方案显示连接、工作项和计算机等的摘要。 选择具有 **连接器状态** 标签的磁贴。 这样做会使您使用相关查询来 **记录搜索** 。 `LogType_S`有关详细信息，请查看的日志记录 `ERROR` 。
+   - **日志搜索** 页：使用查询直接查看错误和相关信息 `*ServiceDeskLog_CL*` 。
+
+### <a name="troubleshoot-service-manager-web-app-deployment"></a>Web 应用部署 Service Manager 疑难解答
+
+-   如果你在使用 web 应用部署时遇到问题，请确保你有权在订阅中创建/部署资源。
+-   如果在运行 [脚本](itsmc-service-manager-script.md)时，**未将对象引用设置为对象** 错误的实例，请确保在 "**用户配置**" 部分中输入了有效值。
+-   如果无法创建服务总线中继命名空间，请确保在订阅中注册所需的资源提供程序。 如果未注册，请从 Azure 门户中手动创建 service bus 中继命名空间。 在 Azure 门户中 [创建混合连接](./itsmc-connections-scsm.md#configure-the-hybrid-connection) 时，还可以创建它。
+
+### <a name="how-to-manually-fix-sync-problems"></a>如何手动修复同步问题
 
 Azure Monitor 可以 (ITSM) 提供程序连接到第三方 IT 服务管理。 ServiceNow 是这些提供商之一。
 
@@ -74,28 +94,4 @@ Azure Monitor 可以 (ITSM) 提供程序连接到第三方 IT 服务管理。 Se
 
         ![新建连接](media/itsmc-resync-servicenow/save-8bit.png)
 
-f.    查看通知，查看过程是否成功完成
-
-## <a name="troubleshoot-itsm-connections"></a>排查 ITSM 连接问题
-
-- 如果连接源的 UI 连接失败，并且在 **保存连接消息时出现错误** ，请执行以下步骤：
-   - 对于 ServiceNow、Cherwell 和 Provance 连接：  
-     - 确保为每个连接正确输入了用户名、密码、客户端 ID 和客户端密码。  
-     - 确保在相应的 ITSM 产品中具有足够的权限来建立连接。  
-   - 对于 Service Manager 连接：  
-     - 确保已成功部署 web 应用并创建了混合连接。 若要验证是否已成功与本地 Service Manager 计算机建立连接，请按照建立 [混合连接](./itsmc-connections.md#configure-the-hybrid-connection)的文档中所述，参阅 WEB 应用 URL。  
-
-- 如果 ServiceNow 中的数据未同步到 Log Analytics，请确保 ServiceNow 实例未处于睡眠状态。 当 ServiceNow 开发实例长时间处于空闲状态时，有时会进入睡眠状态。 如果不是这样，请报告问题。
-- 如果 Log Analytics 警报触发但未在 ITSM 产品中创建工作项，如果不创建或链接到工作项的配置项目或其他信息，请参阅以下资源：
-   -  ITSMC：此解决方案显示连接、工作项和计算机等的摘要。 选择具有 **连接器状态** 标签的磁贴。 这样做会使您使用相关查询来 **记录搜索** 。 `LogType_S`有关详细信息，请查看的日志记录 `ERROR` 。
-   - **日志搜索** 页：使用查询直接查看错误和相关信息 `*ServiceDeskLog_CL*` 。
-
-## <a name="troubleshoot-service-manager-web-app-deployment"></a>Web 应用部署 Service Manager 疑难解答
-
--   如果你在使用 web 应用部署时遇到问题，请确保你有权在订阅中创建/部署资源。
--   如果在运行 [脚本](itsmc-service-manager-script.md)时，**未将对象引用设置为对象** 错误的实例，请确保在 "**用户配置**" 部分中输入了有效值。
--   如果无法创建服务总线中继命名空间，请确保在订阅中注册所需的资源提供程序。 如果未注册，请从 Azure 门户中手动创建 service bus 中继命名空间。 在 Azure 门户中 [创建混合连接](./itsmc-connections.md#configure-the-hybrid-connection) 时，还可以创建它。
-
-## <a name="next-steps"></a>后续步骤
-
-了解有关[IT 服务管理连接](itsmc-connections.md)的详细信息
+f.    查看通知以查看进程是否已启动。

@@ -3,12 +3,12 @@ title: 事件复制任务模式-Azure 事件中心 |Microsoft Docs
 description: 本文提供了有关实现特定事件复制任务模式的详细指南
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 370c0f2d5c5c591668aa2dadf0512760a4a9b2f5
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7702b1987faabfce8d97e7b5c9b18766df72caad
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663583"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803980"
 ---
 # <a name="event-replication-tasks-patterns"></a>事件复制任务模式
 
@@ -136,7 +136,7 @@ static string GetEventHubName(string aliasName)
 
 前两种模式变化很简单，并且与普通复制任务不同。
 
-最后一个方案要求不再复制已复制的事件。 此方法在 [EventHubToEventHubMerge](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/main/code/EventHubToEventHubMerge) 示例中进行了演示和说明。
+最后一个方案要求不再复制已复制的事件。 此方法在 [EventHubToEventHubMerge](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/code/EventHubMerge) 示例中进行了演示和说明。
 
 ## <a name="editor"></a>编辑器
 

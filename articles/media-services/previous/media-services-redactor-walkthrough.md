@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 1a106874277f64a006584f9deb98fb9729263b1b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 048635a33c3d84416dae00b731b386572aa3f89d
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040705"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802569"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒体分析进行面部修订演练
 
@@ -47,7 +47,7 @@ ms.locfileid: "93040705"
 
     若要获取帐户名称和密钥信息，请转到 [Azure 门户](https://portal.azure.com/)并选择 AMS 帐户。 然后，选择“设置”>“密钥”。 “管理密钥”窗口显示帐户名称、主密钥和辅助密钥。 复制帐户名称和主密钥的值。
 
-![屏幕截图显示 Microsoft Azure 媒体服务你可以在其中输入你的帐户名和密钥。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
+![屏幕截图显示 Microsoft Azure 媒体服务，你可在其中输入帐户名和密钥。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
 
 ### <a name="first-pass--analyze-mode"></a>第一步 – 分析模式
 
@@ -55,32 +55,32 @@ ms.locfileid: "93040705"
 1. 右键单击，并使用“媒体分析”–>“Azure Media Redactor”–>“分析模式”处理媒体文件。 
 
 
-![屏幕截图显示一个菜单，其中包含与 Azure Media 编修器) 的过程资产 (。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
+![屏幕截图显示一个菜单，其中包含 Azure 媒体编修器的过程资产。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
 
-![屏幕截图显示了 Azure Media 编修器 with First Pass：已选择分析模式。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
+![屏幕截图显示 Azure 媒体编修器，其中已选择“第一步 - 分析模式”。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
 
 输出包括带有面部位置数据的批注 json 文件以及检测到的每张脸的 jpg。 
 
-![屏幕截图显示分析的输出。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
+![屏幕截图显示了分析的输出。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
 
 ### <a name="second-pass--redact-mode"></a>第二步 – 修正模式
 
 1. 将原始视频资产上传到第一步中的输出，并设置为主要资产。 
 
-    ![屏幕截图显示 "上传" 和 "设为主按钮"。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
+    ![屏幕截图显示“上传”和“设置为主要”按钮。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
 2. （可选）上传“Dance_idlist.txt”文件，它包含要修订的 ID 的换行符分隔列表。 
 
-    ![屏幕截图显示了上载文本文件的选项。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
+    ![屏幕截图显示上传文本文件的选项。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. （可选）编辑 annotations.json 文件，例如增加边界框边界。 
 4. 右键单击第一步中的输出资产，选择“Redactor”，在“修正”  模式下运行。 
 
-    ![屏幕截图显示了 Azure Media 编修器，并显示第二阶段：选中 "标记密文" 模式。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
+    ![屏幕截图显示 Azure 媒体编修器，其中已选择“第二步 - 修正模式”。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
 5. 下载或共享最终修正的输出资产。 
 
-    ![屏幕截图显示 "下载" 按钮。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
+    ![屏幕截图显示“下载”按钮。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
 ## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure Media Redactor Visualizer 开源工具
 
@@ -94,12 +94,12 @@ ms.locfileid: "93040705"
 
 1.  下载并生成整个解决方案。 
 
-    ![屏幕截图显示从菜单中选择的生成解决方案。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
+    ![屏幕截图显示从菜单中选择了“生成解决方案”。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
 2.  从[此处](https://ffmpeg.org/download.html)下载 FFMPEG。 此项目最初使用具有静态链接的版本 be1d324 (2016-10-04) 开发。 
 3.  将 ffmpeg.exe 和 ffprobe.exe 复制到与 AzureMediaRedactor.exe 相同的输出文件夹。 
 
-    ![屏幕截图显示文件夹的内容，包括 ffmpeg 和 ffprobe.exe。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
+    ![屏幕截图显示文件夹的内容，其中包括 ffmpeg 和 ffprobe。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
 4. 运行 AzureMediaRedactor.exe。 
 
@@ -109,11 +109,11 @@ ms.locfileid: "93040705"
 2. 下载原始视频文件和“修正 - 分析”作业的输出。 
 3. 运行可视化工具应用程序并选择上述文件。 
 
-    ![屏幕截图显示 Azure Media 编修器上传文件。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
+    ![屏幕截图显示 Azure 媒体编修器正在上传文件。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
 
 4. 预览文件。 通过右侧边栏选择要进行模糊处理的人脸。 
     
-    ![屏幕截图显示 Azure Media 编修器，可在其中预览并选择要进行模糊的面部。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
+    ![屏幕截图显示 Azure 媒体编修器，可在其中预览并选择要进行模糊处理的人脸。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
 5.  将更新底部文本字段，使其带有面部 ID。 创建名为“idlist.txt”的文件，将这些 ID 作为换行符分隔列表。 
 
@@ -133,6 +133,6 @@ ms.locfileid: "93040705"
 ## <a name="related-links"></a>相关链接
 [Azure 媒体服务分析概述](./legacy-components.md)
 
-[Azure 媒体分析演示](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure 媒体分析演示](http://amslabs.azurewebsites.net/demos/Analytics.html)
 
 [宣布推出 Azure 媒体分析的面部修订](https://azure.microsoft.com/blog/azure-media-redactor/)

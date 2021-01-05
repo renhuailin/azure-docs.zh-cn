@@ -13,12 +13,12 @@ ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
-ms.openlocfilehash: 1d6a51e2e9c052be0c59435b287c5fdde459f55d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334185"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802518"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 
@@ -97,7 +97,7 @@ ms.locfileid: "91334185"
 
 1. 下载 Raspbian。
 
-   a. [Raspbian Buster with desktop](https://www.raspberrypi.org/downloads/raspbian/)（.zip 文件）。
+   a. [Raspbian Buster with desktop](https://www.raspberrypi.org/software/)（.zip 文件）。
 
    b. 将 Raspbian 映像解压缩到计算机的某个文件夹中。
 
@@ -230,7 +230,7 @@ BME280 传感器可以收集温度和湿度数据。 当设备向云发送消息
 
    此文件中有两个可以配置的项。 第一个是 `interval`，它定义发送到云的消息之间的时间间隔（以毫秒为单位）。 第二个是 `simulatedData`，它是一个布尔值，指示是否使用模拟的传感器数据。
 
-   如果**没有传感器**，请将 `simulatedData` 值设置为 `true`，使示例应用程序创建和使用模拟的传感器数据。
+   如果 **没有传感器**，请将 `simulatedData` 值设置为 `true`，使示例应用程序创建和使用模拟的传感器数据。
 
    注意：*默认情况下，本教程中使用的 i2c 地址为 0x77。根据配置，它也可能是 0x76：如果遇到 i2c 错误，请尝试将该值更改为 118，然后看看效果是否更好。若要查看传感器使用的地址，请在 raspberry pi 上的 shell 中运行 `sudo i2cdetect -y 1`*
 

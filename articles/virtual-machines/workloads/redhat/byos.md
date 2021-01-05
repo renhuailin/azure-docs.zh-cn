@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 6f2c15518a12a99ca1390284165ad2d48156e06a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9a53eb1004d68045781903b71d02c3416f494be2
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968666"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803810"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>在 Azure 中 Red Hat Enterprise Linux 自带订阅金牌映像
 
@@ -46,7 +46,7 @@ Red Hat Enterprise Linux (RHEL) 映像在 Azure 中通过 "即用即付" 或 "�
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-portal"></a>使用 Azure 门户中的 Red Hat 黄金映像
 
-1. Azure 订阅收到对 Red Hat 黄金映像的访问权限后，可以在 [Azure 门户](https://portal.azure.com)中找到它们。 请参阅 **创建资源**  >  **See all**。
+1. Azure 订阅收到对 Red Hat 黄金映像的访问权限后，可以在 [Azure 门户](https://portal.azure.com)中找到它们。 请参阅 **创建资源**  >  。
 
 1. 在页面顶部，你会看到你拥有专用产品/服务。
 
@@ -216,4 +216,4 @@ Red Hat Enterprise Linux (RHEL) 映像在 Azure 中通过 "即用即付" 或 "�
 - 若要了解有关 Red Hat 更新基础结构的详细信息，请参阅 [Azure Red Hat 更新基础结构](./redhat-rhui.md)。
 - 若要了解有关 Azure 中所有 Red Hat 映像的详细信息，请参阅 [文档页](./redhat-images.md)。
 - 有关适用于所有 RHEL 版本的 Red Hat 支持策略的信息，请参阅 [Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata) "页。
-- 有关 RHEL 黄金映像的其他文档，请参阅 [Red Hat 文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)。
+- 有关 RHEL 黄金映像的其他文档，请参阅 [Red Hat 文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access)。

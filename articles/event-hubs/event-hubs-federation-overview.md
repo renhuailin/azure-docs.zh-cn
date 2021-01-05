@@ -4,12 +4,12 @@ description: 本文概述了 Azure 事件中心的多站点和多区域联合。
 ms.topic: article
 ms.date: 12/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 02057d505308902d780e20e095bc248d1eaa1a74
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7deb6fe04241225f1f97a204cc62b4aefad9f440
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657338"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804031"
 ---
 # <a name="multi-site-and-multi-region-federation"></a>多站点和多区域联合
 
@@ -148,9 +148,9 @@ Azure 事件中心偶尔用于 "发布-订阅" 样式方案，其中传入 torre
 
 对于需要考虑事件间关系、创建组合事件、丰富事件或减少事件、创建数据聚合和转换事件负载的有状态复制应用程序， [Azure 流分析](../stream-analytics/stream-analytics-introduction.md) 是最佳的实现选项。
 
-在 Azure 流分析中，你将创建用于集成[输入](../stream-analytics/stream-analytics-add-inputs.md)和[输出](../stream-analytics/stream-analytics-define-outputs.md)的[作业](../stream-analytics/stream-analytics-quick-create-portal.md)，并通过[查询](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference.md)来集成输入中的数据，从而使输出上提供结果。
+在 Azure 流分析中，你将创建用于集成[输入](../stream-analytics/stream-analytics-add-inputs.md)和[输出](../stream-analytics/stream-analytics-define-outputs.md)的[作业](../stream-analytics/stream-analytics-quick-create-portal.md)，并通过[查询](/stream-analytics-query/stream-analytics-query-language-reference)来集成输入中的数据，从而使输出上提供结果。
 
-查询基于 [SQL 查询语言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference.md) ，可用于在一段时间内轻松地对流式处理数据进行筛选、排序、聚合和联接。 还可以通过 [JavaScript](../stream-analytics/stream-analytics-javascript-user-defined-functions.md) 和 [c # 用户定义函数 (udf) ](../stream-analytics/stream-analytics-edge-csharp-udf-methods.md)来扩展此 SQL 语言。 通过简单的语言构造和/或配置执行聚合操作时，可以轻松地调整事件排序选项和时段的持续时间。
+查询基于 [SQL 查询语言](/stream-analytics-query/stream-analytics-query-language-reference) ，可用于在一段时间内轻松地对流式处理数据进行筛选、排序、聚合和联接。 还可以通过 [JavaScript](../stream-analytics/stream-analytics-javascript-user-defined-functions.md) 和 [c # 用户定义函数 (udf) ](../stream-analytics/stream-analytics-edge-csharp-udf-methods.md)来扩展此 SQL 语言。 通过简单的语言构造和/或配置执行聚合操作时，可以轻松地调整事件排序选项和时段的持续时间。
 
 每个作业都有一个或多个转换后数据的输出，你可以针对所要分析的信息控制过程。 例如，你能够：
 

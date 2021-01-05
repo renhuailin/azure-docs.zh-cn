@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 34064fe3fe88a34b0dd2430d7adec3ebcb17ebcc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 79224c14fc5182df7a699864af3d78c9be36259f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528221"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797261"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>跨区域 (资源组中移动资源) 
 
@@ -22,7 +22,7 @@ ms.locfileid: "95528221"
 > Azure 资源转移器目前提供公共预览版。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 需要对要移动的资源所在的订阅 *拥有所有者* 访问权限。
     - 第一次在 Azure 订阅中添加特定源和目标映射的资源时，资源移动器会创建一个 [系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) ， (以前称为托管服务标识订阅所信任的 (MSI) # A3。
@@ -57,6 +57,9 @@ ms.locfileid: "95528221"
 ## <a name="select-resources-to-move"></a>选择要移动的资源
 
 选择要移动的资源。 将资源移动到源区域订阅中的目标区域。 如果要更改订阅，可以在移动资源后进行更改。
+
+> [!NOTE]
+>  请勿选择关联的磁盘，否则操作将失败。 关联的磁盘自动包含在 VM 移动中。
 
 1. 在 Azure 门户中，打开相关的资源组。
 2. 在 "资源组" 页中，选择要移动的资源。

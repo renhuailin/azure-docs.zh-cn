@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: abhishgu
 ms.reviewer: abhishgu
-ms.openlocfilehash: a233845e8f19cc44cd9d00a0392b1341db297fd6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 25972ba2bb30c39838c4822a42af292e8d8b1dba
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632638"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803623"
 ---
 # <a name="ingest-data-from-apache-kafka-into-azure-cosmos-db-cassandra-api-using-kafka-connect"></a>使用 Kafka Connect 将数据从 Apache Kafka 引入 Azure Cosmos DB Cassandra API
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "97632638"
 
 Apache Kafka 中的数据 (主题) 仅在由其他应用程序使用或引入到其他系统时才有用。 使用所[选的语言和客户端 SDK](https://cwiki.apache.org/confluence/display/KAFKA/Clients)，可以使用[Kafka 生成者/使用者](https://kafka.apache.org/documentation/#api)api 构建解决方案。 Kafka Connect 提供了一个替代解决方案。 它是一个平台，用于以可缩放且可靠的方式在 Apache Kafka 和其他系统之间流式传输数据。 由于 Kafka Connect 支持包括 Cassandra 的货位连接器，因此你无需编写自定义代码来将 Kafka 与 Azure Cosmos DB Cassandra API 集成。 
 
-在本文中，我们将使用开源 [DataStax Apache Kafka 连接器](https://docs.datastax.com/kafka/doc/kafka/kafkaIntro.html)，该连接器可在 Kafka Connect framework 的顶层使用，以将 Kafka 主题中的记录引入一个或多个 Cassandra 表的行中。 该示例提供了一个可重用的安装程序，它使用 Docker Compose。 这非常方便，因为它允许您使用单个命令在本地启动所有所需的组件。 这些组件包括 Kafka、Zookeeper、Kafka 连接辅助角色和示例数据生成器应用程序。
+在本文中，我们将使用开源 [DataStax Apache Kafka 连接器](https://docs.datastax.com/en/kafka/doc/kafka/kafkaIntro.html)，该连接器可在 Kafka Connect framework 的顶层使用，以将 Kafka 主题中的记录引入一个或多个 Cassandra 表的行中。 该示例提供了一个可重用的安装程序，它使用 Docker Compose。 这非常方便，因为它允许您使用单个命令在本地启动所有所需的组件。 这些组件包括 Kafka、Zookeeper、Kafka 连接辅助角色和示例数据生成器应用程序。
 
 下面是组件及其服务定义的细分，你可以参考 GitHub 存储库中的完整 `docker-compose` 文件[](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/docker-compose.yaml)。
 

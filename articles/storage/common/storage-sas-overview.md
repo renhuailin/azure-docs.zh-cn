@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: d435ced4c8ec56fae5081ede367b593d2b66ef0f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 8812ab091037bcb3144a7fed53a449c3f5de353a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936533"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802501"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限
 
@@ -112,7 +112,7 @@ SAS 令牌是在客户端生成的字符串，例如，使用某个 Azure 存储
 
 客户端应用程序提供 Azure 存储的 SAS URI 作为请求的一部分。 然后，服务将检查 SAS 参数和签名，以验证其是否有效。 如果服务确认签名有效，则请求获得授权。 否则，请求被拒绝，错误代码为 403（禁止访问）。
 
-下面是服务 SAS URI 的一个示例，其中显示了资源 URI 和 SAS 令牌：
+下面是服务 SAS URI 的一个示例，显示资源 URI 和 SAS 令牌。 由于 SAS 令牌包含 URI 查询字符串，因此，资源 URI 的后面必须是一个问号，然后是 SAS 令牌：
 
 ![服务 SAS URI 的组成部分](./media/storage-sas-overview/sas-storage-uri.png)
 

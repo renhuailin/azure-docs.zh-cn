@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: ed30c271e4c2458a33784cbcfc682001b542f2b6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d57512d631685f1f8da7dcd22181bf4d4223937f
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964943"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807563"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 
@@ -1060,18 +1060,24 @@ az --version
 
 1. 按照使用 Azure CLI 为 azure [vm 上的 azure 资源配置托管标识][qs-configure-cli-windows-vm] 一文中的步骤，为 VM 启用 System-Assigned 托管标识。 适用于 SAP 的 VM 扩展不支持 User-Assigned 托管标识。 但是，可以同时启用系统分配的和用户分配的标识。
 
-   例如：
+   示例：
    ```azurecli
    az vm identity assign -g <resource-group-name> -n <vm name>
    ```
 
 1. 按照[使用 Azure CLI 向资源分配托管标识访问][howto-assign-access-cli]中所述，将托管标识访问权限分配给 VM 的资源组或所有网络接口、托管磁盘和 VM 本身。
 
-    例如：
+    示例：
 
     ```azurecli
+    # Azure CLI on Linux
     spID=$(az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines)
     rgId=$(az group show -g <resource-group-name> --query id --out tsv)
+    az role assignment create --assignee $spID --role 'Reader' --scope $rgId
+
+    # Azure CLI on Windows/PowerShell
+    $spID=az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines
+    $rgId=az group show -g <resource-group-name> --query id --out tsv
     az role assignment create --assignee $spID --role 'Reader' --scope $rgId
     ```
 
@@ -1079,11 +1085,19 @@ az --version
     目前仅支持 AzureCloud 中的扩展。 目前尚不支持 azure 中国世纪互联、Azure 政府版或任何其他特殊环境。
 
     ```azurecli
-    # For Linux machines
+    # Azure CLI on Linux
+    ## For Linux machines
     az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
 
-    #For Windows machines
+    ## For Windows machines
     az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
+
+    # Azure CLI on Windows/PowerShell
+    ## For Linux machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
+
+    ## For Windows machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
     ```
 
 ## <a name="checks-and-troubleshooting"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>检查和故障排除

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/07/2020
+ms.date: 12/28/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2408db2d91740350405f11e2a1250ab9b3a4fe31
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181197"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803521"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 门户中预配报表 (预览版) 
 
@@ -44,6 +44,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
 * 应用程序所有者可以查看其拥有的应用程序的日志
 * 安全管理员、安全读者、报表读者、应用程序管理员和云应用程序管理员角色中的用户
+* 具有[provisioningLogs 权限](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions)的自定义角色中的用户
 * 全局管理员
 
 
@@ -56,12 +57,12 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 预配日志提供以下问题的答案：
 
 * 已成功在 ServiceNow 中创建哪些组？
-* Amazon Web Services 导入了哪些角色？
+* 哪些用户已成功从 Adobe 删除？
 * 在 DropBox 中未成功创建哪些用户？
 
 可以通过在 [Azure 门户](https://portal.azure.com)中 **Azure Active Directory** 边栏选项卡的 "**监视**" 部分选择 "**设置日志**" 来访问设置日志。 某些预配记录可能需要长达两个小时才能在门户中显示。
 
-![设置日志](./media/concept-provisioning-logs/access-provisioning-logs.png "“预配”日志")
+![“预配”日志](./media/concept-provisioning-logs/access-provisioning-logs.png "“预配”日志")
 
 
 设置日志有一个默认列表视图，其中显示：
@@ -176,7 +177,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - 总结
 
 
-![预配详细信息](./media/concept-provisioning-logs/provisioning-tabs.png "选项卡")
+![预配详细信息](./media/concept-provisioning-logs/provisioning-tabs.png "制表符")
 
 
 
@@ -219,7 +220,9 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - 对于不在作用域内的用户，可能会看到跳过的事件。 这是预期情况，特别是在同步作用域设置为 "所有用户和组" 时。 我们的服务将评估租户中的所有对象，即使是超出范围的对象。 
 
-- 预配日志当前在政府云中不可用。 如果你无法访问预配日志，请使用审核日志作为临时解决方法。  
+- 预配日志当前在政府云中不可用。 如果你无法访问预配日志，请使用审核日志作为临时解决方法。 
+
+- 预配日志不显示 (适用于 AWS、SalesForce 和 ZenDesk) 的角色导入。 可在审核日志中找到角色导入日志。 
 
 ## <a name="error-codes"></a>错误代码
 

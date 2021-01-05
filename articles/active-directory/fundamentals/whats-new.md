@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 12/18/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 734d37af58290201b415f1a4b7c8ff7553187550
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 71c0fa7a6e676e1b888bc13e0fa4cb42e93b2e71
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591253"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802841"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -38,6 +38,94 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 本页面每月更新，请不时回来查看。 如果你要查找的项超过六个月，则可以在存档中查找 [Azure Active Directory 中的新增功能](whats-new-archive.md)。
 
 ---
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="public-preview---azure-ad-b2c-phone-sign-up-and-sign-in-using-built-in-policy"></a>公共预览版-使用内置策略 Azure AD B2C 手机注册和登录
+
+**类型：** 新功能  
+**服务类别：** B2C - 用户标识管理  
+**产品功能：** B2B/B2C
+ 
+使用内置策略的 B2C 手机注册和登录可让组织的 IT 管理员和开发人员允许最终用户使用用户流中的电话号码进行登录和注册。 有关详细信息，请参阅为 [用户流 (预览设置电话注册和登录) ](../../active-directory-b2c/phone-authentication-user-flows.md) 。
+
+---
+
+### <a name="general-availability---security-defaults-now-enabled-for-all-new-tenants-by-default"></a>常规可用性-默认情况下，为所有新租户启用安全默认值
+
+**类型：** 新功能  
+**服务类别：** 其他  
+**产品功能：** 标识安全和保护
+ 
+为了保护用户帐户，在2020年11月12日或之后创建的所有新租户都将附带启用安全默认设置。 安全默认值强制实施多个策略，包括：
+- 要求所有用户和管理员使用 Microsoft Authenticator 应用注册 MFA
+- 需要关键管理员角色才能在每次登录时使用 MFA。 必要时，将提示所有其他用户进行 MFA。 
+- 旧身份验证将在租户范围内被阻止。 
+
+有关详细信息，请参阅 [什么是安全默认值？](../fundamentals/concept-fundamentals-security-defaults.md)
+
+---
+
+### <a name="general-availability---support-for-groups-with-up-to-250k-members-in-aadconnect"></a>公开上市-支持 AADConnect 中具有最多250K 成员的组
+
+**类型：** 已更改的功能  
+**服务类别：** AD Connect  
+**产品功能：** 标识生命周期管理
+ 
+Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Active Directory 的同步服务操作性能。 当你使用新的 [V2 终结点](../hybrid/how-to-connect-sync-endpoint-api-v2.md)时，你将会遇到 Azure AD 的导出和导入的显著性能改进。 此新终结点支持以下方案：
+
+- 与最多250k 个成员同步组
+- 导出和导入到 Azure AD 的性能提高
+
+---
+
+### <a name="general-availability---entitlement-management-available-for-tenants-in-azure-china-cloud"></a>公开上市-适用于 Azure 中国云中租户的授权管理
+
+**类型：** 新功能  
+**服务类别：** 用户访问管理  
+**产品功能：** 权利管理
+ 
+
+授权管理功能现已适用于 Azure 中国云中的所有租户。 有关信息，请访问我们的 [标识调控文档](https://docs.azure.cn/zh-cn/active-directory/governance/) 网站。
+
+---
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---december-2020"></a>Azure AD 应用程序库中的新预配连接器-2020 年12月
+
+**类型：** 新功能  
+**服务类别：** 应用预配  
+**产品功能：** 第三方集成
+
+现在，可以为这些新集成的应用自动创建、更新和删除用户帐户：
+
+- [Bizagi Studio for Digital Process Automation](../saas-apps/bizagi-studio-for-digital-process-automation-provisioning-tutorial.md)
+- [CybSafe](../saas-apps/cybsafe-provisioning-tutorial.md)
+- [GroupTalk](../saas-apps/grouptalk-provisioning-tutorial.md)
+- [PaperCut 云打印管理](/azure/active-directory/saas-apps/papercut-cloud-print-management-provisioning-tutorial)
+- [可解析](../saas-apps/parsable-provisioning-tutorial.md)
+- [Shopify Plus](../saas-apps/shopify-plus-provisioning-tutorial.md)
+
+有关如何使用自动化用户帐户预配更好地保护组织的详细信息，请参阅[使用 Azure AD 自动将用户预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
+ 
+---
+ 
+[1233182](https://identitydivision.visualstudio.com/IAM/IXR/_queries?id=1233182&triage=true&fullScreen=false&_a=edit)
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---december-2020"></a>Azure AD 应用程序库中提供了新的联合应用程序-2020 年12月
+
+**类型：** 新功能  
+**服务类别：** 企业应用  
+**产品功能：** 第三方集成
+ 
+2020年12月，我们已在应用程序库中添加了以下18个新应用程序，并提供联合支持：
+
+[AwareGo](../saas-apps/awarego-tutorial.md)， [HowNow SSO](https://gethownow.com/)， [ZyLAB ONE 法定候](https://www.zylab.com/en/product/legal-hold)， [Guider](http://www.guider-ai.com/)， [Softcrisis](https://www.softcrisis.se/sv/)， [Pims 365](http://www.omega365.com/pims)， [InformaCast](../saas-apps/informacast-tutorial.md)， [RetrieverMediaDatabase](../saas-apps/retrievermediadatabase-tutorial.md)， [VONAGE](../saas-apps/vonage-tutorial.md)， [统计我的操作仪表板](../saas-apps/count-me-in-operations-dashboard-tutorial.md)， [ProProfs 知识库](../saas-apps/proprofs-knowledge-base-tutorial.md)， [RightCrowd 劳动力管理](../saas-apps/rightcrowd-workforce-management-tutorial.md)， [JLL TRIRIGA](../saas-apps/jll-tririga-tutorial.md)， [Shutterstock](../saas-apps/shutterstock-tutorial.md)， [FortiWeb Web 应用程序防火墙](../saas-apps/linkedin-talent-solutions-tutorial.md)， [LinkedIn 人才解决方案](../saas-apps/linkedin-talent-solutions-tutorial.md)，Equinix [联合应用](../saas-apps/equinix-federation-app-tutorial.md)， [KFAdvance](../saas-apps/kfadvance-tutorial.md)
+
+你还可以从此处查找所有应用程序的文档 https://aka.ms/AppsTutorial
+
+若要在 Azure AD 应用库中列出你的应用程序，请阅读此处的详细信息 https://aka.ms/AzureADAppRequest
+
+--- 
+
 ## <a name="november-2020"></a>2020 年 11 月
 
 ### <a name="azure-active-directory-tls-10-tls-11-and-3des-deprecation"></a>Azure Active Directory TLS 1.0、TLS 1.1 和3DES 弃用
@@ -563,7 +651,7 @@ Azure AD Connect 云预配公共预览版刷新功能通过客户反馈开发了
 **服务类别：** 身份验证（登录）  
 **产品功能：** 标识安全和保护
  
-持续访问评估 (CAE) 现已在公共预览版中提供，适用于具有条件访问策略的 Azure AD 租户。 对于 CAE，将实时评估关键安全事件和策略。 这包括帐户禁用、密码重置和位置更改。 若要了解详细信息，请参阅 [持续访问评估](../conditional-access/concept-continuous-access-evaluation.md)。
+持续访问评估 (CAE) 现已在公共预览版中提供，适用于具有条件访问策略的 Azure AD 租户。 对于 CAE，将实时评估关键安全事件和策略。 这包括帐户禁用、密码重置和位置更改。 若要了解详细信息，请参阅[连续访问评估](../conditional-access/concept-continuous-access-evaluation.md)。
 
 ---
 
@@ -1017,190 +1105,4 @@ Azure 多重身份验证软件开发 (Azure MFA SDK) 已于2018年11月14日结�
 
 ---
 
-## <a name="june-2020"></a>2020 年 6 月 
-
-### <a name="user-risk-condition-in-conditional-access-policy"></a>条件访问策略中的用户风险条件
-
-**类型：** 更改计划  
-**服务类别：** 条件访问  
-**产品功能：** 标识安全和保护
- 
-
-Azure AD 条件性访问策略中的用户风险支持，可创建多个基于风险的用户策略。 不同的用户和应用可能需要不同的最低用户风险级别。 根据用户风险，你可以创建策略来阻止访问、需要多重身份验证、安全密码更改或重定向到 Microsoft Cloud App Security 来强制执行会话策略，如其他审核。
-
-用户风险条件需要 Azure AD Premium P2，因为它使用的是 P2 产品/服务。 有关条件性访问的详细信息，请参阅 [Azure AD 条件访问文档](../conditional-access/index.yml)。
-
----
-
-### <a name="saml-sso-now-supports-apps-that-require-spnamequalifier-to-be-set-when-requested"></a>SAML SSO 现在支持需要在请求时设置 SPNameQualifier 的应用
-
-**类型：** 已修复  
-**服务类别：** 企业应用  
-**产品功能：** SSO
- 
-某些 SAML 应用程序需要在请求时在断言主题中返回 SPNameQualifier。 现在 Azure AD 在请求 NameID 策略中请求 SPNameQualifier 时正确响应。 这也适用于 SP 发起的登录，并将在 IdP 发起的登录。  若要详细了解 Azure Active Directory 中的 SAML 协议，请参阅 [单一 Sign-On SAML 协议](../develop/single-sign-on-saml-protocol.md)。
-
----
-
-### <a name="azure-ad-b2b-collaboration-supports-inviting-msa-and-google-users-in-azure-government-tenants"></a>Azure AD B2B 协作支持邀请 MSA 和 Azure 政府租户中的 Google 用户
-
-**类型：** 新功能  
-**服务类别：** B2B  
-**产品功能：** B2B/B2C
- 
-
-使用 B2B 协作功能的 Azure 政府租户现在可以邀请具有 Microsoft 或 Google 帐户的用户。 若要查明你的租户是否可以使用这些功能，请按照[如何判断我的 AZURE 美国政府租户中是否提供了 B2B 协作中](../external-identities/current-limitations.md#how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant)的说明进行操作？
-
- 
----
- 
-### <a name="user-object-in-ms-graph-v1-now-includes-externaluserstate-and-externaluserstatechangeddatetime-properties"></a>MS Graph v1 中的用户对象现在包含 externalUserState 和 externalUserStateChangedDateTime 属性
-
-**类型：** 新功能  
-**服务类别：** B2B  
-**产品功能：** B2B/B2C
- 
-
-"ExternalUserState" 和 "externalUserStateChangedDateTime" 属性可用于查找未接受其邀请的受邀 B2B 来宾，还可用于生成自动化，如删除在数天后未接受其邀请的用户。 现在，MS Graph v1 中提供了这些属性。 有关使用这些属性的指南，请参阅 [用户资源类型](/graph/api/resources/user)。
- 
----
-
-### <a name="manage-authentication-sessions-in-azure-ad-conditional-access-is-now-generally-available"></a>管理身份验证会话 Azure AD 的条件访问现已正式发布
-
-**类型：** 新功能  
-**服务类别：** 条件访问  
-**产品功能：** 标识安全和保护
- 
-通过身份验证会话管理功能，你可以配置用户需要提供登录凭据的频率，以及在关闭和重新打开浏览器后是否需要提供凭据，以在你的环境中提供更高的安全性和灵活性。
- 
-此外，身份验证会话管理仅适用于 Azure AD 联接、混合 Azure AD 联接和 Azure AD 注册设备上的第一因素身份验证。 现在，身份验证会话管理也适用于 MFA。 有关详细信息，请参阅 [使用条件访问配置身份验证会话管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
-
----
-
-### <a name="new-federated-apps-available-in-azure-ad-application-gallery---june-2020"></a>Azure AD 应用程序库中提供了新的联合应用程序-2020 年6月
-
-**类型：** 新功能  
-**服务类别：** 企业应用  
-**产品功能：** 第三方集成
- 
-2020年6月，我们已在应用程序库中添加了以下29个新应用程序，并提供联合身份验证支持：
-
-[Shopify Plus](../saas-apps/shopify-plus-tutorial.md)， [Ekarda](../saas-apps/ekarda-tutorial.md)， [MailGates](../saas-apps/mailgates-tutorial.md)， [BullseyeTDP](../saas-apps/bullseyetdp-tutorial.md)， [Raketa](../saas-apps/raketa-tutorial.md)， [Segment](../saas-apps/segment-tutorial.md)， [Ai 审计员](https://www.mindbridge.ai/products/ai-auditor/)， [Pobuca Connect](https://app.pobu.ca/)， [Proto.io](../saas-apps/proto.io-tutorial.md)， [网关守卫](https://www.gatekeeperhq.com/)， [中心规划](../saas-apps/hub-planner-tutorial.md)人员， [Ansira-合作伙伴走向市场工具箱](https://ansira.com/technology/channel-engagement)， [IBM 数字业务自动化，适用于云](../saas-apps/ibm-digital-business-automation-on-cloud-tutorial.md)， [Kisi 物理安全性](../saas-apps/kisi-physical-security-tutorial.md)， [ViewpointOne](https://team.viewpoint.com/)， [IntelligenceBank](../saas-apps/intelligencebank-tutorial.md)， [pymetrics](../saas-apps/pymetrics-tutorial.md)， [零](https://www.teamzero.com/)， [InStation](https://instation.invillia.com/)， [edX for Business SAML 2.0 集成](../saas-apps/edx-for-business-saml-integration-tutorial.md)， [MOOC Office 365](https://mooc.office365-training.com/en/)， [SmartKargo](../saas-apps/smartkargo-tutorial.md)， [PKIsigning 平台](https://platform.pkisigning.nl/)， [SiteIntel](../saas-apps/siteintel-tutorial.md)， [字段 iD](../saas-apps/field-id-tutorial.md)， [课程 saml](../saas-apps/curricula-saml-tutorial.md)，Perforce [Helix](../saas-apps/perforce-helix-core-tutorial.md) [，Helix](https://cloud.metacompliance.com/) [SSH](https://smallstep.com/sso-ssh/)  
-
-你还可以从此处查找所有应用程序的文档 https://aka.ms/AppsTutorial 。 若要在 Azure AD 应用库中列出你的应用程序，请阅读此处的详细信息： https://aka.ms/AzureADAppRequest 。
-
----
-
-### <a name="api-connectors-for-external-identities-self-service-sign-up-are-now-in-public-preview"></a>用于外部标识的 API 连接器现在提供公共预览版
-
-**类型：** 新功能  
-**服务类别：** B2B  
-**产品功能：** B2B/B2C
- 
-使用外部标识 API 连接器，可以利用 web Api 将自助注册与外部云系统集成。 这意味着，现在可以将 web Api 作为注册流中的特定步骤调用，以触发基于云的自定义工作流。 例如，可以使用 API 连接器执行以下操作：
-
-- 与自定义批准工作流集成。
-- 执行标识校对
-- 验证用户输入数据
-- 覆盖用户属性
-- 运行自定义业务逻辑
-
-有关 API 连接器的所有可能的体验的详细信息，请参阅 [使用 api 连接器自定义和扩展自助注册](../external-identities/api-connectors-overview.md)，或 [自定义使用 web API 集成的外部标识自助服务注册](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/customize-external-identities-self-service-sign-up-with-web-api/ba-p/1257364#.XvNz2fImuQg.linkedin)。
- 
----
-
-### <a name="provision-on-demand-and-get-users-into-your-apps-in-seconds"></a>按需预配，并在几秒钟内使用户进入你的应用
-
-**类型：** 新功能  
-**服务类别：** 应用预配  
-**产品功能：** 标识生命周期管理
- 
-Azure AD 预配服务当前以循环方式进行操作。 此服务每40分钟运行一次。 按 [需预配功能](https://aka.ms/provisionondemand) 允许您选择用户并在数秒内进行设置。 此功能可让你快速排查预配问题，无需重新启动即可强制开始预配周期。 
- 
----
-
-### <a name="new-permission-for-using-azure-ad-entitlement-management-in-graph"></a>在 Graph 中使用 Azure AD 权限管理的新权限
-
-**类型：** 新功能  
-**服务类别：** 其他  
-**产品功能：** 权利管理
- 
-新的委托权限 EntitlementManagement。现在，可以在 Microsoft Graph beta 版中与授权管理 API 一起使用。 若要了解有关可用 Api 的详细信息，请参阅使用 [Azure AD 的权利管理 API](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)。
-
----
-
-### <a name="identity-protection-apis-available-in-v10"></a>在1.0 版中提供 Identity Protection Api
-
-**类型：** 新功能  
-**服务类别：** 标识保护  
-**产品功能：** 标识安全和保护
- 
-RiskyUsers 和 riskDetections Microsoft Graph Api 现已正式发布。 现在，在 v1.0 终结点上提供了它们，我们邀请你在生产环境中使用它们。 有关详细信息，请查看 [Microsoft Graph 文档](/graph/api/resources/identityprotectionroot)。
- 
----
-
-### <a name="sensitivity-labels-to-apply-policies-to-microsoft-365-groups-is-now-generally-available"></a>将策略应用到 Microsoft 365 组的敏感度标签现已正式发布
-
-**类型：** 新功能  
-**服务类别：** 组管理  
-**产品功能：** 协作
- 
-
-你现在可以创建敏感度标签，并使用标签设置将策略应用到 Microsoft 365 组，包括隐私 (公用或专用) 和外部用户访问策略。 你可以创建一个包含隐私策略的标签，并使用外部用户访问策略不允许添加来宾用户。 当用户将此标签应用于组时，该组将为 "专用"，并且不允许向该组添加来宾用户。 
-
-敏感度标签非常重要，可保护你的关键业务数据，并使你能够以相容且安全的方式管理规模较高的组。 有关使用敏感度标签的指南，请参阅 [Azure Active Directory (预览) 中的 Microsoft 365 组分配敏感度标签 ](../enterprise-users/groups-assign-sensitivity-labels.md)。
- 
----
-
-### <a name="updates-to-support-for-microsoft-identity-manager-for-azure-ad-premium-customers"></a>更新以支持 Azure AD Premium 客户 Microsoft Identity Manager
-
-**类型：** 已更改的功能  
-**服务类别：** Microsoft Identity Manager  
-**产品功能：** 标识生命周期管理
- 
-Azure 支持现可用于 Microsoft Identity Manager 2016 的 Azure AD 集成组件，Microsoft Identity Manager 2016 的扩展支持结束。 [使用 Microsoft Identity Manager 为 Azure AD Premium 客户提供更多有关支持更新的](/microsoft-identity-manager/support-update-for-azure-active-directory-premium-customers)信息。
-
----
-
-### <a name="the-use-of-group-membership-conditions-in-sso-claims-configuration-is-increased"></a>增加 SSO 声明配置中组成员条件的使用
-
-**类型：** 已更改的功能  
-**服务类别：** 企业应用  
-**产品功能：** SSO
- 
-以前，根据任何单个应用程序配置中的组成员条件更改声明时，可以使用的组数限制为10个。 SSO 声明配置中的组成员条件的使用现在已增加到最多50组。 有关如何配置声明的详细信息，请参阅 [企业应用程序 SSO 声明配置](../develop/active-directory-saml-claims-customization.md#emitting-claims-based-on-conditions)。 
-
----
-
-### <a name="enabling-basic-formatting-on-the-sign-in-page-text-component-in-company-branding"></a>在公司品牌的登录页文本组件上启用基本格式设置。
-
-**类型：** 已更改的功能  
-**服务类别：** 身份验证（登录）  
-**产品功能：** 用户身份验证
- 
-已更新 Azure AD/Microsoft 365 登录体验的公司品牌功能，以允许客户添加超链接和简单格式设置，包括粗体、下划线和斜体。 有关使用此功能的指南，请参阅 [将品牌添加到组织的 Azure Active Directory 登录页](./customize-branding.md)。
-
----
-
-### <a name="provisioning-performance-improvements"></a>预配性能改进
-
-**类型：** 已更改的功能  
-**服务类别：** 应用预配  
-**产品功能：** 标识生命周期管理
- 
-已更新预配服务，以缩短 [增量周期](../app-provisioning/how-provisioning-works.md#incremental-cycles) 的完成时间。 这意味着将用户和组预配到其应用程序中的速度比以前更快。 6/10/2020 之后创建的所有新预配作业都将自动受益于性能改进。 在6/10/2020 之前配置为预配的任何应用程序都需要在6/10/2020 后重启一次，以便充分利用性能改进。 
-
----
-
-### <a name="announcing-the-deprecation-of-adal-and-ms-graph-parity"></a>宣布弃用 ADAL 和 MS Graph 奇偶校验
-
-**类型：** 已弃用  
-**服务类别：** N/A  
-**产品功能：** 设备生命周期管理
-
-现在，Microsoft 身份验证库 (MSAL) 提供，我们将不再向 Azure Active Directory 身份验证库添加新功能 (ADAL) 并将于2022年6月30日结束安全修补程序。 有关如何迁移到 MSAL 的详细信息，请参阅将 [应用程序迁移到 Microsoft 身份验证库 (MSAL) ](../develop/msal-migration.md)。
-
-此外，我们还完成了通过 MS Graph 提供所有 Azure AD Graph 功能的工作。 因此，Azure AD Graph Api 在2022年6月30日之前仅接收到 bug 修复和安全修补程序。 有关详细信息，请参阅 [更新应用程序以使用 Microsoft 身份验证库和 MICROSOFT GRAPH API](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
- 
----
  

@@ -3,16 +3,16 @@ title: Azure IoT Central 中的应用程序模板是什么 | Microsoft Docs
 description: 可以通过 Azure IoT Central 应用程序模板进行 IoT 解决方案开发。
 author: philmea
 ms.author: philmea
-ms.date: 10/25/2019
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: dae2461336316defb6f2cfc63b775c67cf2196d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27f054cb085e5064ffed0e75b77d53a1406b566e
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91813060"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797122"
 ---
 # <a name="what-are-application-templates"></a>什么是应用程序模板？
 

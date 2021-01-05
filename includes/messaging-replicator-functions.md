@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bc6b7553d240de05404d24f828a5f7db14772f93
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 279a00a6146d756e6a518dbf86b88f471d170b3a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657367"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97805612"
 ---
 ## <a name="what-is-a-replication-task"></a>什么是复制任务？
 
@@ -22,11 +22,11 @@ ms.locfileid: "97657367"
 
 复制任务通常是无状态的，这意味着它们不会在任务的顺序或并行执行之间共享状态或其他副作用。 这也适用于批处理和链接，这两种方法都可以在流的现有状态之上实现。 
 
-这使得复制任务不同于聚合任务，这些任务通常是有状态的，并且是分析框架的域和服务（如 [Azure 流分析](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction.md)）。
+这使得复制任务不同于聚合任务，这些任务通常是有状态的，并且是分析框架的域和服务（如 [Azure 流分析](/azure/stream-analytics/stream-analytics-introduction)）。
 
 ## <a name="replication-applications-and-tasks-in-azure-functions"></a>Azure Functions 中的复制应用程序和任务
 
-在 Azure Functions 中，使用从已配置的源获取一个或多个输入消息的触发器和[输出绑定](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings.md#binding-direction)来实现复制任务，该[触发器](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings.md)将从源复制的消息转发到配置的目标。 
+在 Azure Functions 中，使用从已配置的源获取一个或多个输入消息的触发器和[输出绑定](/azure/azure-functions/functions-triggers-bindings#binding-direction)来实现复制任务，该[触发器](/azure/azure-functions/functions-triggers-bindings)将从源复制的消息转发到配置的目标。 
 
 | 触发器  | 输出 |
 |----------|--------|
@@ -57,17 +57,17 @@ ms.locfileid: "97657367"
 
 ### <a name="retry-policy"></a>重试策略
 
-若要避免在复制功能的任何一侧的可用性事件期间丢失数据，需要将重试策略配置为可靠。 请参阅有关重试配置重试策略的 [Azure Functions 文档](https://docs.microsoft.com/azure/azure-functions/functions-bindings-error-pages.md) 。 
+若要避免在复制功能的任何一侧的可用性事件期间丢失数据，需要将重试策略配置为可靠。 请参阅有关重试配置重试策略的 [Azure Functions 文档](/azure/azure-functions/functions-bindings-error-pages) 。 
 
 为 [示例存储库](https://github.com/Azure-Samples/azure-messaging-replication-dotnet) 中的示例项目所选择的策略设置将配置一个指数回退策略，重试间隔为5秒到15分钟，以避免数据丢失。 
 
-对于服务总线，查看 ["在触发器复原能力顶部使用重试支持"](https://docs.microsoft.com/azure/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience) 部分，了解触发器的交互和为队列定义的最大传递计数。
+对于服务总线，查看 ["在触发器复原能力顶部使用重试支持"](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience) 部分，了解触发器的交互和为队列定义的最大传递计数。
 
 ### <a name="setting-up-a-replication-application-host"></a>设置复制应用程序主机
 
 复制应用程序是一个或多个复制任务的执行主机。 
 
-它是配置为在消耗计划中运行的 Azure Functions 应用程序，或在 Azure Functions 高级计划中 (推荐的) 。 所有复制应用程序都必须在 [系统或用户分配的托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity.md)下运行。 
+它是配置为在消耗计划中运行的 Azure Functions 应用程序，或在 Azure Functions 高级计划中 (推荐的) 。 所有复制应用程序都必须在 [系统或用户分配的托管标识](/azure/app-service/overview-managed-identity)下运行。 
 
 链接的 Azure 资源管理器 (ARM) 模板使用以下内容创建和配置复制应用程序：
 
@@ -137,7 +137,7 @@ public static Task JobsTransfer(
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Functions 部署](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies.md)
-* [Azure Functions 诊断](https://docs.microsoft.com/azure/azure-functions/functions-diagnostics.md)
-* [Azure Functions 网络选项](https://docs.microsoft.com/azure/azure-functions/functions-networking-options.md)
-* [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview.md)
+* [Azure Functions 部署](/azure/azure-functions/functions-deployment-technologies)
+* [Azure Functions 诊断](/azure/azure-functions/functions-diagnostics)
+* [Azure Functions 网络选项](/azure/azure-functions/functions-networking-options)
+* [Azure Application Insights](/azure/azure-monitor/app/app-insights-overview)

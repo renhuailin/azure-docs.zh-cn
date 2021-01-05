@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a1b178450a1aa06db07d7b1ef525f7f781db9ef
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e116c590e07ffcdb1b7c8ae2e30b2e76bb909bff
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602812"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802705"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -62,7 +62,7 @@ Microsoft Azure 上的 VMware 范围云是一种本机云服务，可让组织�
 Automai 使你可以将相同的脚本用于性能测试、功能测试、性能监视甚至机器人流程自动化，一切都在一个平台上。
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B76N)。
-- [请参阅合作伙伴网站](https://www.automai.com/wvd-testing-monitoring?hs_preview=EyZXkOWu-30742040580)。
+- [请参阅合作伙伴网站](https://www.automai.com/windows-virtual-desktop-performance-testing/)。
 
 ## <a name="cloudhouse"></a>Cloudhouse
 

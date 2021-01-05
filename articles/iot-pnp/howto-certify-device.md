@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1b17729437b238b98f60e2cd97664fa6aafcccd4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b3ba007f03b3aa4883d9455dc43b2bc19676da59
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462452"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803963"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>如何认证 IoT 即插即用设备
 
@@ -41,7 +41,7 @@ IoT 即插即用设备认证计划包含用于检查设备是否符合 IoT 即�
 - 使用 [DPS](../iot-dps/about-iot-dps.md)连接到 Azure IoT 中心。
 - 按照 IoT 即插即用约定实现遥测、属性或命令。
 - 介绍与 [DTDL v2](https://aka.ms/dtdl) 模型的设备交互。
-- 在[Azure IoT 公共模型存储库](https://devicemodels.azureiotsolutions.com/)中发布模型和所有所需的接口
+- 在 Azure IoT 公共模型存储库中发布模型和所有所需的接口
 - 在 dps 预配负载中，在 [dps 注册](./concepts-developer-guide-device.md#dps-payload) 过程中发送模型 ID。
 - 在 [MQTT 连接](./concepts-developer-guide-device.md#model-id-announcement)过程中公告模型 ID。
 - 所有设备型号必须兼容 [Azure IoT Central](../iot-central/core/overview-iot-central-developer.md)。
@@ -174,7 +174,7 @@ az iot product test task create --type QueueTestRun --test-id d45d53d9-656d-4be7
 
 若要使用 [证书门户](https://aka.ms/acdp)，必须使用工作或学校租户中的 Azure Active Directory。
 
-若要将模型发布到 Azure IoT 公共模型存储库，你的帐户必须是 [Microsoft 合作伙伴网络](https://partner.microsoft.com)的成员。 系统将检查 Microsoft 合作伙伴网络 ID 是否存在，并在发布到设备目录之前完全审查帐户。
+若要将模型发布到 [Azure IoT 公共模型存储库](https://github.com/Azure/iot-plugandplay-models)，你的帐户必须是 [Microsoft 合作伙伴网络](https://partner.microsoft.com)的成员。 系统将检查 Microsoft 合作伙伴网络 ID 是否存在，并在发布到设备目录之前完全审查帐户。
 
 ### <a name="company-profile"></a>公司配置文件
 

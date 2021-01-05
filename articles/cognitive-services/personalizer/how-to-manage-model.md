@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: f82adad5273f1c5559cbeb1924f59e57c863f6b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e954eab9da5dfc638f93a7c4e55c675c4f2ac9
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303448"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797241"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>如何管理模型和学习设置
 
@@ -32,14 +32,14 @@ ms.locfileid: "91303448"
     |值|目的|
     |--|--|
     |记录个性化和奖励数据。|此日志记录数据用于脱机评估。 如果要重置资源，请清除数据。|
-    |重置 Personalizer 模型。|此模型将在每次重新训练时进行更改。 此训练频率在**配置**页上的 "**上载模型频率**" 中指定。 |
+    |重置 Personalizer 模型。|此模型将在每次重新训练时进行更改。 此训练频率在 **配置** 页上的 "**上载模型频率**" 中指定。 |
     |将学习策略设置为默认值。|如果在脱机评估过程中更改了学习策略，则会将其重置为原始学习策略。|
 
 1. 选择 " **清除所选数据** " 以开始清除过程。 状态在 Azure 通知的右上方导航中报告。
 
 ## <a name="import-a-new-learning-policy"></a>导入新的学习策略
 
-[学习策略](concept-active-learning.md#understand-learning-policy-settings)设置确定模型定型的_超参数_。 执行 [脱机评估](how-to-offline-evaluation.md) 以查找新的学习策略。
+[学习策略](concept-active-learning.md#understand-learning-policy-settings)设置确定模型定型的 _超参数_。 执行 [脱机评估](how-to-offline-evaluation.md) 以查找新的学习策略。
 
 1. 打开 [Azure 门户](https://portal.azure.com)，然后选择 Personalizer 资源。
 1. 选择 "**资源管理**" 部分中的 "**模型和学习设置**"。
@@ -55,4 +55,4 @@ ms.locfileid: "91303448"
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解如何管理学习策略](how-to-manage-model.md)
+[使用脱机评估来分析学习循环](how-to-offline-evaluation.md)
