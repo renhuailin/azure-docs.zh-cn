@@ -1,15 +1,15 @@
 ---
 title: 使用 Azure CLI 启用 VM 扩展
 description: 本文介绍如何使用 Azure CLI 将虚拟机扩展部署到在混合云环境中运行的支持 Azure Arc 的服务器。
-ms.date: 11/20/2020
+ms.date: 01/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3fa8273b15518c182aefa038e67d85773d500b30
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 6edb7d55e542f963c75693d535fa3b50dc5b827b
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94991445"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916195"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>使用 Azure CLI 启用 Azure VM 扩展
 
@@ -29,10 +29,10 @@ az extension add --name connectedmachine
 
 若要在启用了 Arc 的服务器上启用 VM 扩展，请将 [az connectedmachine extension create](/cli/azure/ext/connectedmachine/connectedmachine/extension#ext_connectedmachine_az_connectedmachine_extension_create) 与 `--machine-name` 、 `--extension-name` 、、 `--location` `--type` 、 `settings` 和 `--publisher` 参数一起使用。
 
-以下示例在启用了 Arc 的 Linux 服务器上启用 Log Analytics VM 扩展：
+以下示例在启用 Arc 的服务器上启用 Log Analytics VM 扩展：
 
 ```azurecli
-az connectedmachine extension create --machine-name "myMachineName" --name "OmsAgentforLinux" --location "eastus" --type "CustomScriptExtension" --publisher "Microsoft.EnterpriseCloud.Monitoring" --settings "{\"workspaceId\":\"workspaceId"}" --protected-settings "{\workspaceKey\":"\workspaceKey"} --type-handler-version "1.10" --resource-group "myResourceGroup"
+az connectedmachine extension create --machine-name "myMachineName" --name "OmsAgentForLinux or MicrosoftMonitoringAgent" --location "eastus" --settings '{\"workspaceId\":\"myWorkspaceId\"}' --protected-settings '{\"workspaceKey\":\"myWorkspaceKey\"}' --resource-group "myResourceGroup" --type-handler-version "1.13" --type "OmsAgentForLinux or MicrosoftMonitoringAgent" --publisher "Microsoft.EnterpriseCloud.Monitoring" 
 ```
 
 下面的示例在启用 Arc 的服务器上启用自定义脚本扩展：
@@ -51,7 +51,7 @@ az connectedmachine extension create --resource-group "resourceGroupName" --mach
 
 若要获取启用了 Arc 的服务器上的 VM 扩展列表，请使用 [az connectedmachine extension list](/cli/azure/ext/connectedmachine/connectedmachine/extension#ext_connectedmachine_az_connectedmachine_extension_list) with `--machine-name` 和 `--resource-group` 参数。
 
-例如：
+示例：
 
 ```azurecli
 az connectedmachine extension list --machine-name "myMachineName" --resource-group "myResourceGroup"
@@ -79,7 +79,7 @@ az connectedmachine extension list --machine-name "myMachineName" --resource-gro
 例如，若要删除适用于 Linux 的 Log Analytics VM 扩展，请运行以下命令：
 
 ```azurecli
-az connectedmachine extension delete --machine-name "myMachineName" --name "OmsAgentforLinux" --resource-group "myResourceGroup"
+az connectedmachine extension delete --machine-name "myMachineName" --name "OmsAgentForLinux" --resource-group "myResourceGroup"
 ```
 
 ## <a name="next-steps"></a>后续步骤

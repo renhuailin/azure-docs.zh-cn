@@ -1,18 +1,21 @@
 ---
 title: Service Fabric 服务分区
-description: 介绍如何对 Service Fabric 有状态服务进行分区。 使用分区可以将数据存储在本地计算机上，以便数据和计算可以一起扩展。
+description: 了解如何在无状态和有状态服务 Service Fabric 分区
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d33e7b5ee293cf9dfb49e509bec2e1950033a956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199ae9d9844149c1931da638633110f717fe0517
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005422"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915889"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
-本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)上获取。
+本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 分区可实现本地计算机上的数据存储，因此可以将数据和计算一起扩展。
+
+> [!TIP]
+> GitHub 上提供了本文中代码的 [完整示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) 。
 
 ## <a name="partitioning"></a>分区
 分区并不是 Service Fabric 所独有的。 事实上，它是生成可缩放服务的核心模式。 从更广泛的意义来说，可将分区视为将状态（数据）和计算划分为更小的可访问单元，以提高可伸缩性和性能的一种概念。 [数据分区][wikipartition]是一种众所周知的分区形式，也称为分片。
@@ -348,14 +351,14 @@ Service Fabric 提供了三个分区方案可供选择：
     
     ![浏览器屏幕截图](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-该示例的完整源代码位于 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)。
+本文中使用的代码的完整解决方案如下所示： https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions 。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Service Fabric 概念的信息，请参阅以下内容：
+了解有关 Service Fabric 服务的详细信息：
 
+* [在 Service Fabric 中与服务建立连接和通信](service-fabric-connect-and-communicate-with-services.md)
 * [Service Fabric 服务的可用性](service-fabric-availability-services.md)
 * [Service Fabric 服务的可伸缩性](service-fabric-concepts-scalability.md)
-* [Service Fabric 应用程序的容量规划](service-fabric-capacity-planning.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 

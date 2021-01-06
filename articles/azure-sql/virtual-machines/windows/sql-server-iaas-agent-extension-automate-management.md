@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e8268630b2c108dc95ded059ce41866a14fadd0e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 3fe87f94ce05efa4a784ba7e3f65e53abb00fd05
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359245"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914240"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>通过 SQL Server IaaS 代理扩展自动进行管理
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,20 +42,21 @@ SQL Server IaaS 代理扩展为 Azure Vm 上的 SQL Server 提供了很多好处
 
 - **免费**：所有三个可管理性模式中的扩展都是完全免费的。 扩展或更改管理模式不会产生额外的费用。 
 
-- **简化的许可证管理**：扩展可简化 SQL Server 许可证管理，并使你能够使用 [Azure 门户](manage-sql-vm-portal.md)、Azure CLI 或 PowerShell，使用 Azure 混合权益来快速确定 SQL Server vm： 
-
-   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-   ```azurecli-interactive
-   $vms = az sql vm list | ConvertFrom-Json
-   $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
-   ```
+- **简化的许可证管理**：扩展可简化 SQL Server 许可证管理，并使你能够使用 [Azure 门户](manage-sql-vm-portal.md)、PowerShell 或 Azure CLI 快速标识 Azure 混合权益启用 SQL Server vm： 
 
    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell-interactive
    Get-AzSqlVM | Where-Object {$_.LicenseType -eq 'AHUB'}
    ```
+
+   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+   ```azurecli-interactive
+   $ az sql vm list --query "[?sqlServerLicenseType=='AHUB']"
+   ```
+
+
 
    ---
 
@@ -71,7 +72,7 @@ SQL Server IaaS 代理扩展将为管理 SQL Server VM 提供多种功能优势�
 下表详细说明了这些优点： 
 
 
-| 功能 | 描述 |
+| 功能 | 说明 |
 | --- | --- |
 | **门户管理** | 在 [门户](manage-sql-vm-portal.md)中取消锁定管理，以便你可以在一个位置查看所有 SQL Server vm，以便可以直接从门户中启用和禁用 SQL 特定功能。 
 | **自动备份** |对 VM 中的 SQL Server 默认实例或已[正确安装](frequently-asked-questions-faq.md#administration)的命名实例自动执行所有数据库的备份计划。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动备份 (Resource Manager)](automated-backup-sql-2014.md)。 |
@@ -201,11 +202,11 @@ NoAgent 模式需要客户设置 SQL Server 版本和版本属性。 轻型模�
 
 **能否在不指定 SQL Server 许可证类型的情况下注册到 SQL IaaS 代理扩展？**
 
-错误。 当你使用 SQL IaaS 代理扩展注册时，SQL Server 许可证类型不是可选属性。 在所有可管理性模式下注册 SQL IaaS 代理扩展时，必须将 SQL Server 许可证类型设置为即用即付或 Azure 混合权益 (NoAgent、轻型和完整) 。 如果安装了任何免费版本的 SQL Server，例如开发人员或评估版，则必须注册 "即用即付" 许可。 Azure 混合权益仅适用于付费版本的 SQL Server 例如 Enterprise edition 和 Standard edition。
+不是。 当你使用 SQL IaaS 代理扩展注册时，SQL Server 许可证类型不是可选属性。 在所有可管理性模式下注册 SQL IaaS 代理扩展时，必须将 SQL Server 许可证类型设置为即用即付或 Azure 混合权益 (NoAgent、轻型和完整) 。 如果安装了任何免费版本的 SQL Server，例如开发人员或评估版，则必须注册 "即用即付" 许可。 Azure 混合权益仅适用于付费版本的 SQL Server 例如 Enterprise edition 和 Standard edition。
 
 **是否可以将 SQL Server IaaS 扩展从 NoAgent 模式升级到完整模式？**
 
-错误。 在 NoAgent 模式下，不能将可管理性模式升级为 full 或轻型。 这是 Windows Server 2008 的技术限制。 需要首先将 OS 升级到 Windows Server 2008 R2 或更高版本，然后才能升级到完整管理模式。 
+不是。 在 NoAgent 模式下，不能将可管理性模式升级为 full 或轻型。 这是 Windows Server 2008 的技术限制。 需要首先将 OS 升级到 Windows Server 2008 R2 或更高版本，然后才能升级到完整管理模式。 
 
 是否可以将 SQL Server IaaS 扩展从轻型模式升级到完整模式？
 
@@ -219,11 +220,11 @@ NoAgent 模式需要客户设置 SQL Server 版本和版本属性。 轻型模�
 
 **是否可以从 Azure 门户中的 SQL IaaS 代理扩展注册？**
 
-错误。 使用 SQL IaaS 代理扩展注册在 Azure 门户中不可用。 仅 Azure CLI 或 Azure PowerShell 支持注册到 SQL IaaS 代理扩展。 
+不是。 使用 SQL IaaS 代理扩展注册在 Azure 门户中不可用。 仅 Azure CLI 或 Azure PowerShell 支持注册到 SQL IaaS 代理扩展。 
 
 **在安装 SQL Server 之前，是否可以使用 SQL IaaS 代理扩展注册 VM？**
 
-错误。 VM 必须至少有一个 SQL Server (数据库引擎) 实例才能成功注册到 SQL IaaS 代理扩展。 如果 VM 上没有 SQL Server 实例，则新的 Microsoft.SqlVirtualMachine 资源会处于失败状态。
+不是。 VM 必须至少有一个 SQL Server (数据库引擎) 实例才能成功注册到 SQL IaaS 代理扩展。 如果 VM 上没有 SQL Server 实例，则新的 Microsoft.SqlVirtualMachine 资源会处于失败状态。
 
 **如果有多个 SQL Server 实例，能否使用 SQL IaaS 代理扩展注册 VM？**
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 12/14/2020
+ms.date: 01/05/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bde5cecc4052724f795cac03f6efceb3451ea2ee
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509540"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914342"
 ---
 # <a name="known-issues-application-provisioning"></a>已知问题：应用程序预配
 使用应用程序设置时应注意的已知问题。 你可以在 UserVoice 上提供有关应用程序预配服务的反馈，请参阅 [Azure AD 应用程序预配 UserVoice](https://aka.ms/appprovisioningfeaturerequest)。 我们密切关注 UserVoice，以便我们改进服务。 
@@ -82,6 +82,10 @@ Azure AD 当前无法预配 null 属性。 如果用户对象上的属性为 nul
 **更改不会从目标应用移动到 Azure AD**
 
 应用预配服务不知道外部应用中所做的更改。 因此，不会执行回滚操作。 应用预配服务依赖于在 Azure AD 所做的更改。 
+
+**从同步切换到同步分配的操作无效**
+
+将作用域从 "全部同步" 更改为 "已分配同步" 后，请确保还执行重新启动，以确保更改生效。 可以从 UI 执行重启。
 
 **预配周期持续到完成**
 

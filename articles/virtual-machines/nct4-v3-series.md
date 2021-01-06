@@ -6,21 +6,18 @@ ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 01/05/2021
 ms.author: vikancha
-ms.openlocfilehash: 2de6cceb1e3b85060a146b18a689b57573bc932e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 6463e54fb7f0a2cc03ffa043c00048c1131899ce
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585422"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913424"
 ---
-# <a name="ncast4_v3-series-in-preview"></a>预览中的 NCasT4_v3 系列 ()  
+# <a name="ncast4_v3-series"></a>NCasT4_v3 系列 
 
 NCasT4_v3 系列虚拟机由 [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 和 AMD EPYC 7V12 提供支持 (罗马) cpu。 Vm 的功能最多支持4个 NVIDIA T4 Gpu，每个内存有 16 GB 内存，最多64个非多线程 AMD EPYC 7V12 (罗马) 处理器核心，440 GiB 的系统内存。 这些虚拟机非常适合用于部署 AI 服务，例如用户生成的请求的实时推断，或使用 NVIDIA 网格驱动程序和虚拟 GPU 技术的交互式图形和可视化工作负荷。 基于 CUDA、TensorRT、Caffe、ONNX 和其他框架的标准 GPU 计算工作负荷，或基于 GPU 加速图形应用程序的 OpenGL 和 DirectX，可以在 NCasT4_v3 系列上以经济实惠的方式部署到用户。
-
-> [!NOTe]
-> 将请求作为预览计划的一部分[提交](https://aka.ms/NCT4v3Preview)。
 
 <br>
 

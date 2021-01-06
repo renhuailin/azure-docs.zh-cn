@@ -3,14 +3,14 @@ title: 从 Azure 自动化更新管理中删除 VM
 description: 本文介绍如何删除使用“更新管理”管理的计算机。
 services: automation
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 01/05/2021
 ms.custom: mvc
-ms.openlocfilehash: 774dbe29cbb6b4d063d3619d0c710efb1949b99a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d0399aed9be8d81abb2aa55190225570ddcc1a4e
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221986"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913186"
 ---
 # <a name="remove-vms-from-update-management"></a>从“更新管理”中删除 VM
 
@@ -32,13 +32,20 @@ ms.locfileid: "92221986"
 
 3. 在 Azure 门户中，导航到 Log Analytics 工作区。 从列表中选择你的工作区。
 
-4. 在 Log Analytics 工作区中，选择“日志”，然后从顶部的操作菜单中选择“查询资源管理器”。
+4. 在 Log Analytics 工作区中，选择 " **高级设置** "，然后从左侧菜单中选择 " **计算机组** "。
 
-5. 从右侧窗格中的查询资源管理器展开“已保存的查询\更新”，然后选择已保存的搜索查询 `MicrosoftDefaultComputerGroup` 进行编辑。
+5. 在右侧窗格中的 " **计算机组** " 中，选择 " **已保存组**"。
 
-6. 在查询编辑器中，查看该查询并找到 VM 的 UUID。 删除 VM 的 UUID，并对要删除的任何其他 VM 重复这些步骤。
+6. 在表中，对于保存的搜索查询 **更新： MicrosoftDefaultComputerGroup**，单击 " **查看成员** " 图标以运行并查看其成员。
 
-7. 完成编辑操作后，通过从顶部栏中选择“保存”来保存搜索。
+7. 在查询编辑器中，查看该查询并找到 VM 的 UUID。 删除 VM 的 UUID，并对要删除的任何其他 VM 重复这些步骤。
+
+8. 完成编辑操作后，通过从顶部栏中选择“保存”来保存搜索。 出现提示时，请指定以下各项：
+
+    * **名称**： MicrosoftDefaultComputerGroup
+    * **另存为**：函数
+    * **别名**： Updates__MicrosoftDefaultComputerGroup
+    * **类别**：更新
 
 >[!NOTE]
 >取消注册后，系统仍会显示这些计算机，因为我们会报告在过去 24 小时内评估的所有计算机。 删除计算机后，需要等待 24 小时，系统才不会再次列出这些计算机。

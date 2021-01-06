@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 01/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 1537a87999f9a8eecf83a2431b2f53d3ceaedacb
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 913d61c506505d18fff416291e7f3b718f1d92f3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854693"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913492"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -29,7 +29,7 @@ ms.locfileid: "96854693"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 数据路径是否通过 Internet？  
 
-不能。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是一个 Azure 本机服务，该服务部署到 Azure 虚拟网络 (VNet) 服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
+不是。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是一个 Azure 本机服务，该服务部署到 Azure 虚拟网络 (VNet) 服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
 
 有关详细信息，请参阅 [Azure NetApp 文件的准则网络规划](./azure-netapp-files-network-topologies.md) 。  
 
@@ -48,7 +48,7 @@ ms.locfileid: "96854693"
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>能否为 Azure NetApp 文件卷设置或选择自己的 IP 地址？  
 
-不能。 IP 分配给 Azure NetApp 文件卷是动态的。 不支持静态 IP 分配。 
+不是。 IP 分配给 Azure NetApp 文件卷是动态的。 不支持静态 IP 分配。 
 
 ### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp 文件是否支持双堆栈 (IPv4 和 IPv6) VNet？
 
@@ -138,6 +138,16 @@ Azure NetApp 文件支持 NFSv3 和 NFSv 4.1。 可以使用任一 NFS 版本 [�
 
 例如，创建一个名为的卷 `vol1` 。 然后，在同一订阅和区域中创建另一个也被称为 `vol1` 不同容量池中的卷。 在这种情况下，使用相同的卷名称 `vol1` 将导致错误。 若要使用相同的文件路径，名称必须在不同的区域或订阅中。
 
+### <a name="when-i-try-to-access-nfs-volumes-through-a-windows-client-why-does-the-client-take-a-long-time-to-search-folders-and-subfolders"></a>尝试通过 Windows 客户端访问 NFS 卷时，为什么客户端需要很长时间才能搜索文件夹和子文件夹？
+
+请确保在 `CaseSensitiveLookup` Windows 客户端上启用以加速文件夹和子文件夹的查找：
+
+1. 使用以下 PowerShell 命令来启用 CaseSensitiveLookup：   
+    `Set-NfsClientConfiguration -CaseSensitiveLookup 1`    
+2. 在 Windows server 上装载卷。   
+    示例：   
+    `Mount -o rsize=1024 -o wsize=1024 -o mtype=hard \\10.x.x.x\testvol X:*`
+
 ## <a name="smb-faqs"></a>SMB 常见问题解答
 
 ### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Azure NetApp 文件支持哪些 SMB 版本？
@@ -186,7 +196,7 @@ Azure NetApp 文件提供容量池和卷使用情况指标。 你还可以使用
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>是否可以通过 Azure 存储资源管理器管理 Azure NetApp 文件？
 
-不能。 Azure 存储资源管理器不支持 Azure NetApp 文件。
+不是。 Azure 存储资源管理器不支持 Azure NetApp 文件。
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何实现确定目录是否接近限制大小？
 
@@ -194,7 +204,7 @@ Azure NetApp 文件提供容量池和卷使用情况指标。 你还可以使用
 
 对于 320 MB 的目录，块数为655360，每个块的大小为512个字节。   (，即 320x1024x1024/512 )   
 
-例如：
+示例:
 
 ```console
 [makam@cycrh6rtp07 ~]$ stat bin
@@ -243,11 +253,11 @@ NetApp 提供基于 SaaS 的解决方案，即 [Netapp 云同步](https://cloud.
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Azure Data Box 是否支持迁移？
 
-不能。 Azure Data Box 目前不支持 Azure NetApp 文件。 
+不是。 Azure Data Box 目前不支持 Azure NetApp 文件。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支持通过 Azure 导入/导出服务进行迁移？
 
-不能。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
+不是。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
 
 ## <a name="next-steps"></a>后续步骤  
 

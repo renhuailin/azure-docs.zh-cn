@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
-ms.date: 10/19/2020
-ms.openlocfilehash: e28942a77a1d695a17f3231901f337695e602c64
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 1/5/2021
+ms.openlocfilehash: 560699296b8cae83413c36820106eedf7fef7414
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825559"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914155"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>如何为 VM 映像生成 SAS URI
 
@@ -63,7 +63,7 @@ ms.locfileid: "97825559"
 2. 创建一个 PowerShell 文件（扩展名为 .ps1），在其中复制以下代码，然后在本地保存该文件。
 
     ```azurecli-interactive
-    az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net’ --name <vhd-name> --permissions rl --start ‘<start-date>’ --expiry ‘<expiry-date>’
+    az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net’ --name <container-name> --permissions rl --start ‘<start-date>’ --expiry ‘<expiry-date>’
     ```
 
 3. 编辑该文件以使用以下参数值。 提供 UTC 日期时间格式的日期，例如 2020-04-01T00：00：00Z。
@@ -76,7 +76,7 @@ ms.locfileid: "97825559"
     下面是编写) 时 (的正确参数值的示例：
 
     ```azurecli-interactive
-    az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net’ --name vhds -- permissions rl --start ‘2020-04-01T00:00:00Z’ --expiry ‘2021-04-01T00:00:00Z’
+    az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net’ --name <container-name> -- permissions rl --start ‘2020-04-01T00:00:00Z’ --expiry ‘2021-04-01T00:00:00Z’
     ```
 
 1. 保存更改。

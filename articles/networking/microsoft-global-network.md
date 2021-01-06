@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/13/2019
+ms.date: 01/05/2020
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a33c7e7d637b519b249c250481a73d04c661d4d5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819892"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915838"
 ---
 # <a name="microsoft-global-network"></a>Microsoft 全球网络
 
@@ -40,7 +40,7 @@ Microsoft 拥有并操作世界上最大的主干网络之一。 这种全球复
   
 那么，在使用 Microsoft 服务时，这是否意味着任何流量？ 是的，数据中心之间的任何流量 Microsoft Azure 或 Microsoft 服务（例如虚拟机、Microsoft 365、XBox、SQL 数据库、存储和虚拟网络）之间的任何流量都在全球网络内路由，并从不通过公共 Internet 进行路由，以确保最佳的性能和完整性。  
  
-在大都市、地面和海底路径之间实现巨大的大规模投资，在加油站云和联机服务的极端增长时，这对我们来说是保持一致和高的服务级别。 全局网络的最新新增功能是我们的 MAREA 海底缆线、行业的第一个开源系统 (OLS) over subsea、Bilbao、西班牙和弗吉尼亚海滩、弗吉尼亚州、美国、美国和纽约、美国和都柏林之间、爱尔兰和新的北京[ (NCP) ](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system)在东京、日本和奥兰多[之间的](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) 。 
+在大都市、地面和海底路径之间实现巨大的大规模投资，在加油站云和联机服务的极端增长时，这对我们来说是保持一致和高的服务级别。 全局网络的最新新增功能是我们的 MAREA 海底缆线、行业的第一个开源系统 (OLS) over subsea、Bilbao、西班牙和弗吉尼亚海滩、弗吉尼亚州、美国、美国和纽约、美国和都柏林之间、爱尔兰和新的北京[ (NCP) ](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system)在东京、日本和奥兰多[之间的](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) [](https://www.submarinecablemap.com/#/submarine-cable/marea) 。 
  
 
 ## <a name="our-network-is-your-network"></a>网络是你的网络
@@ -71,4 +71,5 @@ Microsoft 在全球范围内运行一家领先的云，在构建和管理高性�
 Azure 及其网络的指数级增长已经达到了一个点，我们最终就会意识到，人们直觉无法再依赖于管理全局网络操作。 为了满足在网络上验证长、中和短期更改的需要，我们开发了一个平台来镜像和模拟我们的生产网络 synthetically。 创建镜像环境并运行数百万个模拟的功能，使我们能够在将软件和硬件更改及其影响提交到生产平台和网络之前对其进行测试。 
 
 ## <a name="next-steps"></a>后续步骤
+- [了解 Microsoft 如何通过智能软件提高全球网络可靠性](https://azure.microsoft.com/blog/advancing-global-network-reliability-through-intelligent-software-part-1-of-2/)
 - [详细了解 Azure 中提供的网络服务](https://azure.microsoft.com/product-categories/networking/)

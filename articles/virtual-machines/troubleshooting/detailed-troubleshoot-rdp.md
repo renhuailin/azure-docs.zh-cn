@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 91f15e32866cca008553286f7585247909d9a4ba
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5782765504eb1e0cb57558d3d4772d08de6b4d25
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002674"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913101"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 中 Windows VM 远程桌面连接问题的详细故障排除步骤
 本文提供详细的故障排除步骤，用于为基于 Windows 的 Azure 虚拟机诊断和修复复杂的远程桌面错误。
@@ -135,7 +135,7 @@ RDP 连接涉及以下组件：
 
 接下来，安装 Azure PowerShell（如果尚未安装）。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/)。
 
-接下来，打开 Azure PowerShell 命令提示符，将当前文件夹更改为 **InstallWinRMCertAzureVM.ps1** 脚本文件所在的位置。 若要运行 Azure PowerShell 脚本，必须设置正确的执行策略。 运行 **Get-ExecutionPolicy** 命令，确定当前的策略级别。 有关设置相应级别的信息，请参阅 [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1)。
+接下来，打开 Azure PowerShell 命令提示符，将当前文件夹更改为 **InstallWinRMCertAzureVM.ps1** 脚本文件所在的位置。 若要运行 Azure PowerShell 脚本，必须设置正确的执行策略。 运行 **Get-ExecutionPolicy** 命令，确定当前的策略级别。 有关设置相应级别的信息，请参阅 [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1&preserve-view=true)。
 
 接下来，填写 Azure 订阅名称、云服务名称和虚拟机名称（删除 < 和 > 字符），并运行这些命令。
 

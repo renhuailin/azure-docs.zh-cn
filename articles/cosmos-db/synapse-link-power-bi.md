@@ -6,19 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: 959070ca431c3397779a2a22c16f03b3adebbb35
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: be2657d9606f260fcea06d2535be87fc6976577c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444500"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915668"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>使用 Power BI 和无服务器 Synapse SQL 池 (预览版) 通过 Synapse 链接分析 Azure Cosmos DB 数据 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 本文介绍如何为 Azure Cosmos DB 生成无服务器 SQL 池数据库和通过 Synapse 的视图链接。 你将查询 Azure Cosmos DB 容器，然后生成一个模型，该模型的 Power BI 通过这些视图来反映该查询。
 
-在此方案中，您将使用合作伙伴零售商店中有关 Surface product sales 的虚拟数据。 你将基于与大型家庭的邻近度和广告对特定周的影响，分析每个商店的收入。 在本文中，将创建名为 **RetailSales** 和 **StoreDemographics** 的两个视图，并在它们之间进行查询。 可以从此 [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) 存储库中获取示例产品数据。
+在此方案中，您将使用合作伙伴零售商店中有关 Surface product sales 的虚拟数据。 你将基于与大型家庭的邻近度和广告对特定周的影响，分析每个商店的收入。 在本文中，将创建名为 **RetailSales** 和 **StoreDemographics** 的两个视图，并在它们之间进行查询。 可以从此 [GitHub](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) 存储库中获取示例产品数据。
 
 > [!IMPORTANT]
 > 适用于 Azure Cosmos DB 的 Azure Synapse 链接的 Synapse 无服务器 SQL 池支持目前以预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -33,7 +33,7 @@ ms.locfileid: "96444500"
 
 * 在 Azure Cosmos 帐户和两个已[启用分析存储](configure-synapse-link.md#create-analytical-ttl)的容器中创建一个数据库。
 
-* 将产品数据加载到 Azure Cosmos 容器中，如此 [批处理数据引入](https://github.com/Azure-Samples/Synapse/blob/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/spark-notebooks/pyspark/1CosmoDBSynapseSparkBatchIngestion.ipynb) 笔记本中所述。
+* 将产品数据加载到 Azure Cosmos 容器中，如此 [批处理数据引入](https://github.com/Azure-Samples/Synapse/blob/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/spark-notebooks/pyspark/1CosmoDBSynapseSparkBatchIngestion.ipynb) 笔记本中所述。
 
 * 创建一个名为 **SynapseLinkBI**[的 Synapse 工作区](../synapse-analytics/quickstart-create-workspace.md)。
 

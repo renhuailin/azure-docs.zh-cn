@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2020
+ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 283dbf152778b5ef58e298444058f619356ef241
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 1e6b66fce6b22dfd12c162d469ce44137c94ab87
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756103"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916365"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 安全中心的安全评分
 
@@ -72,7 +72,7 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>从 REST API 获取安全功能分数
 
-可以通过安全功能分数 API（当前为预览版）访问分数。 通过 API 方法，可灵活地查询数据，久而久之构建自己的安全功能分数报告机制。 例如，你可以使用[安全功能分数 API](/rest/api/securitycenter/securescores) 来获取特定订阅的分数。 此外，你可以使用 [ API](/rest/api/securitycenter/securescorecontrols) 列出订阅的安全控件和当前分数。
+可以通过安全分数 API 访问分数。 通过 API 方法，可灵活地查询数据，久而久之构建自己的安全功能分数报告机制。 例如，你可以使用[安全功能分数 API](/rest/api/securitycenter/securescores) 来获取特定订阅的分数。 此外，你可以使用 [ API](/rest/api/securitycenter/securescorecontrols) 列出订阅的安全控件和当前分数。
 
 ![正在通过 API 检索单个安全功能分数](media/secure-score-security-controls/single-secure-score-via-api.png)
 

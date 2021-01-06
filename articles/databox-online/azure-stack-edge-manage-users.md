@@ -1,23 +1,23 @@
 ---
-title: Azure Stack Edge Pro 管理用户 |Microsoft Docs
+title: Azure Stack Edge Pro FPGA 管理用户 |Microsoft Docs
 description: 描述如何使用 Azure 门户来管理 Azure Stack Edge Pro 上的用户。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/11/2019
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 3fb82e95d9d7dcfdf59bd05f91beff8e1184955e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27ca190f3bad7f75175e5206d48e13dae1f5687e
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904392"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913280"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge-pro"></a>使用 Azure 门户管理 Azure Azure Stack Edge Pro 上的用户
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro-fpga"></a>使用 Azure 门户管理 Azure Stack Edge Pro FPGA 上的用户
 
-本文介绍如何在 Azure Stack Edge Pro 上管理用户。 可以通过 Azure 门户或通过本地 web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户来添加、修改或删除用户。
+本文介绍如何在 Azure Stack Edge Pro FPGA 设备上管理用户。 可以通过 Azure 门户或通过本地 web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户来添加、修改或删除用户。
 
 在本文中，学习如何：
 
@@ -39,18 +39,18 @@ ms.locfileid: "90904392"
 
 在 Azure 门户中执行以下步骤可以添加用户。
 
-1. 在 Azure 门户中，请前往 Azure Stack Edge 资源，然后 **> "用户**"。 在命令栏上选择 " **+ 添加用户** "。
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **用户**"。 在命令栏上选择 " **+ 添加用户** "。
 
     ![选择“添加用户”](media/azure-stack-edge-manage-users/add-user-1.png)
 
-2. 指定要添加的用户的用户名和密码。 确认密码，然后选择“添加”。****
+2. 指定要添加的用户的用户名和密码。 确认密码，然后选择“添加”。
 
     ![指定用户名和密码](media/azure-stack-edge-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
     > 以下用户由系统保留，不应使用：Administrator、EdgeUser、EdgeSupport、HcsSetupUser、WDAGUtilityAccount、CLIUSR、DefaultAccount、Guest。  
 
-3. 用户创建过程开始和完成后，会显示通知。 创建用户后，在命令栏中选择“刷新”可查看更新的用户列表。****
+3. 用户创建过程开始和完成后，会显示通知。 创建用户后，在命令栏中选择“刷新”可查看更新的用户列表。
 
 
 ## <a name="modify-user"></a>修改用户
@@ -65,11 +65,11 @@ ms.locfileid: "90904392"
 在 Azure 门户中执行以下步骤可以删除用户。
 
 
-1. 在 Azure 门户中，请前往 Azure Stack Edge 资源，然后 **> "用户**"。
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **用户**"。
 
     ![选择要删除的用户](media/azure-stack-edge-manage-users/delete-user-1.png)
 
-2. 从用户列表中选择一个用户，然后选择“删除”。****  
+2. 从用户列表中选择一个用户，然后选择“删除”。  
 
    ![选择“删除”](media/azure-stack-edge-manage-users/delete-user-2.png)
 

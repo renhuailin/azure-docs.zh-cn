@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 01/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: f37b453a294a0d0a7b9a99bfebe8f3eff09e8956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36593efd4f2583f28dffbb4f5b491fbeec7ba21d
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291188"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916314"
 ---
 # <a name="azure-storage-accounts"></a>Azure 存储帐户
 
@@ -55,6 +55,9 @@ ms.locfileid: "89291188"
 
 <sup>1</sup> 在媒体服务 v3 中，仅当资产是使用媒体服务 v2 创建的时才支持存储加密（AES-256 加密）以实现向后兼容性，这意味着 v3 适用于现有存储加密的资产，但不允许创建新资产。
 
+## <a name="double-encryption"></a>双重加密
+媒体服务支持双加密。  若要了解有关双加密的详细信息，请参阅 [Azure double encryption](https://docs.microsoft.com/azure/security/fundamentals/double-encryption)。
+
 ## <a name="storage-account-errors"></a>存储帐户错误
 
 如果某个媒体服务帐户处于“已断开连接”状态，则表明该帐户不再能够访问一个或多个附加的存储帐户，因为存储访问密钥已更改。 媒体服务需要最新的存储访问密钥才能执行帐户中的许多任务。
@@ -68,7 +71,7 @@ ms.locfileid: "89291188"
 
 ## <a name="azure-storage-firewall"></a>Azure 存储防火墙
 
-Azure 媒体服务不支持启用了 Azure 存储防火墙或 [专用终结点](../../storage/common/storage-network-security.md) 的存储帐户。
+Azure 媒体服务不支持启用了 Azure 存储防火墙或[专用终结点](../../storage/common/storage-network-security.md)的存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

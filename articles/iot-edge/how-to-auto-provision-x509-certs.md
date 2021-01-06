@@ -9,12 +9,13 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 761b031916dd9ead71f5be6a6887208a1f200f58
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 385a67e117bf0cf9508b81d014e3accac4725744
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966128"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914903"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 X.509 证书创建和预配 IoT Edge 设备
 
@@ -52,7 +53,7 @@ ms.locfileid: "91966128"
 * 证书信任链中的中间或根 CA 证书。 如果创建组注册，则此证书会上传到 DPS。
 
 > [!NOTE]
-> 目前，libiothsm 中的限制会阻止使用在2038年1月1日或之后过期的证书。
+> 目前存在一个 libiothsm 限制，会阻止使用在 2038 年 1 月 1 日或之后到期的证书。
 
 ### <a name="use-test-certificates"></a>使用测试证书
 
@@ -209,20 +210,20 @@ Windows:
 
 IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在容器中运行，允许你将其他容器部署到设备，以便在边缘上运行代码。
 
-按照 [安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md)中的步骤操作，然后返回到本文来预配设备。
+按照[安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md)中的步骤操作，然后返回到本文来预配设备。
 
 只有 IoT Edge 1.0.9 或更高版本才支持使用 DPS 进行的 X.509 预配。
 
 ## <a name="configure-the-device-with-provisioning-information"></a>用预配信息配置设备
 
-在设备上安装运行时后，请使用它连接到设备预配服务和 IoT 中心所用的信息来配置设备。
+在设备上安装运行时后，请借助它用于连接到设备预配服务和 IoT 中心的信息来配置设备。
 
 准备好以下信息：
 
 * DPS 的“ID 范围”值。  可以从 Azure 门户中 DPS 实例的概述页检索此值。
 * 设备上的设备标识证书链文件。
 * 设备上的设备标识密钥文件。
-* 可选注册 ID。 如果未提供，则将从设备标识证书中的公用名提取 ID。
+* 可选的注册 ID。 如果未提供，将从设备标识证书中的公用名拉取。
 
 ### <a name="linux-device"></a>Linux 设备
 
@@ -232,9 +233,9 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    sudo nano /etc/iotedge/config.yaml
    ```
 
-1. 查找文件的 "预配配置" 部分。 取消注释 DPS 对称密钥预配的行，并确保注释掉任何其他预配行。
+1. 找到该文件的预配配置部分。 取消注释 DPS 对称密钥预配的行，并确保注释掉任何其他预配行。
 
-   `provisioning:`该行应没有前面的空格，并且嵌套项应缩进两个空格。
+   `provisioning:` 行前面应无空格，并且嵌套项应该缩进两个空格。
 
    ```yml
    # DPS TPM provisioning configuration
@@ -249,7 +250,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
        identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
    ```
 
-1. `scope_id`将、和的值更新 `identity_cert` `identity_pk` 为你的 DPS 和设备信息。
+1. 将 `scope_id`、`identity_cert` 和 `identity_pk` 的值更新为你的 DPS 和设备信息。
 
    将 X.509 证书和密钥信息添加到 config.yaml 文件时，应以文件 URI 的形式提供路径。 例如：
 
@@ -268,13 +269,13 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 1. 在管理员模式下打开 PowerShell 窗口。 在安装 IoT Edge 而不是 PowerShell (x86) 时，请确保使用 PowerShell 的 AMD64 会话。
 
-1. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时  。 命令默认使用 Windows 容器进行手动设置，因此，请使用 `-DpsX509` 标志将自动预配用于 x.509 证书身份验证。
+1. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为使用 Windows 容器手动预配，因此使用 `-DpsX509` 标志借助 X.509 证书身份验证来使用自动预配。
 
    请将 `{scope_id}`、`{identity cert chain path}` 和 `{identity key path}` 的占位符值替换为 DPS 实例中的相应值，以及设备上的文件路径。
 
-   `-RegistrationId {registration_id}`如果要将设备 ID 设置为除标识证书的 CN 名称以外的其他名称，请添加。
+   如果要将设备 ID 设置为除标识证书 CN 名称以外的名称，请添加 `-RegistrationId {registration_id}`。
 
-   `-ContainerOs Linux`如果使用的是 Windows 上的 Linux 容器，请添加参数。
+   如果是在 Windows 上使用 Linux 容器，则添加 `-ContainerOs Linux` 参数。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

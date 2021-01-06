@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 12/16/2020
-ms.openlocfilehash: b3fa9767310bfc300087c9dc7384f33993aca70d
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675816"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914104"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>与 Azure 机器学习项目的开源集成
 
@@ -101,4 +101,4 @@ ms.locfileid: "97675816"
 
 使用 DevOps 做法（如持续集成 (CI) 和持续部署 (CD) ），可以自动执行端到端机器学习生命周期，并捕获其周围的管理数据。 可以 [在 GitHub 操作中定义机器学习 CI/CD 管道](./how-to-github-actions-machine-learning.md) ，以运行 Azure 机器学习培训和部署任务。 
 
-捕获软件依赖关系、指标、元数据、数据和模型版本控制是 MLOps 过程的重要组成部分，用于构建透明、可重复且可审核的管道。 对于此任务，您可以 [在 Azure 机器学习中使用 MLFlow](how-to-use-mlflow.md) ，也可以在 [Azure Databricks 中培训机器学习模型](./how-to-use-mlflow-azure-databricks.md)。
+捕获软件依赖关系、指标、元数据、数据和模型版本控制是 MLOps 过程的重要组成部分，用于构建透明、可重复且可审核的管道。 对于此任务，您可以 [在 Azure 机器学习中使用 MLFlow](how-to-use-mlflow.md) ，也可以在 [Azure Databricks 中培训机器学习模型](./how-to-use-mlflow-azure-databricks.md)。 你还可以 [将 MLflow 模型部署为 Azure web 服务](how-to-deploy-mlflow-models.md)。 

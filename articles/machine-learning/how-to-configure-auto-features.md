@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 526afe758063ce6c5f6bd86f8192f56d5f844a85
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b26b0d9086f464556cbca2c70773374c3cccbd52
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694007"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915855"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>自动化机器学习中的数据特征化
 
@@ -68,9 +68,6 @@ ms.locfileid: "97694007"
 |_*生成更多功能**_ |对于日期时间特征：年、月、日、星期、年日期、季、年周、小时、分钟、秒。<br><br> _For 预测任务，则将创建这些其他日期时间功能： ISO 年、半年、日历月、字符串、周、每周的第几天、每周的某一天、一年中的某一天、上午/下午 (0 如果小时在中午 (12) PM 之前，则为 1; 否则) <br/><br/>对于文本特征：基于单元语法、双元语法和三元语法的字词频率。 详细了解[如何通过 BERT 执行此操作](#bert-integration)。|
 |转换和编码|将唯一值较少的数字特征转换为分类特征。<br/><br/>将为低基数分类特征使用 One-hot 编码。 将为高基数分类特征使用 One-hot-hash 编码。|
 |单词嵌入*|文本特征化器使用预先训练的模型将文本标记的矢量转换为句子矢量。 每个单词在文档中的嵌入矢量与其余矢量聚合在一起，以生成文档特征矢量。|
-|目标编码|对于分类特征，此步骤将每个类别映射到回归问题的平均目标值，并映射到分类问题的每个类的类概率。 应用基于频率的加权和 k 折交叉验证，以减少稀疏数据类别导致的映射过度拟合与干扰。|
-|文本目标编码|对于文本输入，将使用带有词袋的堆叠线性模型来生成每个类的概率。|
-|证据权重 (WoE)|将 WoE 计算为分类列与目标列的关联度量。 WoE 的计算公式为类内概率与类外概率的比的对数。 此步骤为每个类生成一个数字特征列，无需显式插补缺失值和处理离群值。|
 |群集距离|基于所有数字列训练 k 平均聚类模型。 生成 k 个新特征（每个聚类一个新数字特征），这些特征包含每个样本与每个聚类质心之间的距离。|
 
 ## <a name="data-guardrails"></a>数据护栏

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: fac26c616c977eedc466f004a9455297ec995fb8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9fe1b7a077142b00aaf2a8502faa0e166c4311c4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352535"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915617"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>通过专用链接 (预览) 保护和隔离 Azure HDInsight 群集
 
@@ -29,7 +29,7 @@ ms.locfileid: "96352535"
 
 默认虚拟网络体系结构中使用的基本负载均衡器会自动提供公共 NAT (网络地址转换) 来访问所需的出站依赖项，如 HDInsight RP。 如果要限制到公共 internet 的出站连接，可以 [配置防火墙](./hdinsight-restrict-outbound-traffic.md)，但这不是必需的。
 
-配置 `resourceProviderConnection` 到出站还允许使用专用终结点访问特定于群集的资源，例如 Azure Data Lake Storage Gen2 或外部元存储。 使用这些资源的专用终结点并不 mandetory，但如果你计划为这些资源提供专用终结点，则必须配置 `before` 你创建 HDInsight 群集所需的专用终结点和 DNS 条目。 建议在创建群集时创建并提供所需的所有外部 SQL 数据库，例如 Apache Ranger、Ambari、Oozie 和 Hive 元存储。 需要的是，所有这些资源都必须可通过其自己的专用终结点从群集子网中进行访问，否则必须是可访问的。
+配置 `resourceProviderConnection` 到出站还允许使用专用终结点访问特定于群集的资源，例如 Azure Data Lake Storage Gen2 或外部元存储。 不强制使用这些资源的专用终结点，但如果你计划为这些资源提供专用终结点，则必须配置 `before` 你创建 HDInsight 群集所需的专用终结点和 DNS 条目。 建议在创建群集时创建并提供所需的所有外部 SQL 数据库，例如 Apache Ranger、Ambari、Oozie 和 Hive 元存储。 需要的是，所有这些资源都必须可通过其自己的专用终结点从群集子网中进行访问，否则必须是可访问的。
 
 不支持将专用终结点用于 Azure Key Vault。 如果使用 Azure Key Vault 进行静态 CMK 加密，则必须可从无专用终结点的 HDInsight 子网中访问 Azure Key Vault 终结点。
 

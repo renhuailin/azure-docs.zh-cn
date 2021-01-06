@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 1/04/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509557"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916246"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用提供可选声明
 
@@ -66,7 +66,7 @@ ms.locfileid: "97509557"
 | `ztdid`                    | 零接触部署 ID | JWT | | 用于 [Windows AutoPilot](/windows/deployment/windows-autopilot/windows-10-autopilot) 的设备标识 |
 | `email`                    | 此用户的可寻址电子邮件（如果此用户有）。  | JWT、SAML | MSA、Azure AD | 如果用户是租户中的来宾，则默认包含此值。  对于托管用户（租户内部的用户），必须通过此可选声明进行请求，或者仅在 v2.0 上使用 OpenID 范围进行请求。  对于托管用户，必须在 [Office 管理门户](https://portal.office.com/adminportal/home#/users)中设置电子邮件地址。|
 | `acct`                | 租户中的用户帐户状态 | JWT、SAML | | 如果用户是租户的成员，则该值为 `0`。 如果他们是来宾，则该值为 `1`。 |
-| `groups`| 组声明的可选格式 |JWT、SAML| |与[应用程序清单](reference-app-manifest.md)中的 GroupMembershipClaims 设置（也是必需的）结合使用。 有关详细信息，请参阅下面的[组声明](#configuring-groups-optional-claims)。 有关组声明的详细信息，请参阅[如何配置组声明](../hybrid/how-to-connect-fed-group-claims.md)
+| `groups`| 组声明的可选格式 |JWT、SAML| |与 [应用程序清单](reference-app-manifest.md)中的 GroupMembershipClaims 设置一起使用，该设置也必须设置。 有关详细信息，请参阅下面的[组声明](#configuring-groups-optional-claims)。 有关组声明的详细信息，请参阅[如何配置组声明](../hybrid/how-to-connect-fed-group-claims.md)
 | `upn`                      | UserPrincipalName | JWT、SAML  |           | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于唯一标识用户信息（例如，用作数据库密钥）。 应改用用户对象 ID (`oid`) 作为数据库密钥。 使用 [备用登录 ID](../authentication/howto-authentication-use-email-signin.md) 登录的用户不应显示其用户主体名称 (UPN) 。 应改用以下 ID 令牌声明向用户显示登录状态：`preferred_username` 或 `unique_name` 适用于 v1 令牌，`preferred_username` 适用于 v2 令牌。 尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。  |
 | `idtyp`                    | 令牌类型   | JWT 访问令牌 | 特别之处：仅在仅限应用的访问令牌中 |  当令牌为仅限应用的令牌时，值为 `app`。 这是 API 确定令牌是应用令牌还是应用+用户令牌最准确的方法。|
 
@@ -85,11 +85,21 @@ ms.locfileid: "97509557"
 | `in_corp`     | 企业网络内部        | 表示客户端是否从企业网络登录。 如果不是，则不包括该声明。   |  以 MFA 中的[可信 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 设置为基础。    |
 | `family_name` | 姓氏                       | 根据用户对象中的定义提供用户的姓氏。 <br>"family_name":"Miller" | 在 MSA 和 Azure AD 中受支持。 需要 `profile` 范围。   |
 | `given_name`  | 名字                      | 根据用户对象中的设置提供用户的名字和“姓氏”。<br>"given_name":"Frank"                   | 在 MSA 和 Azure AD 中受支持。  需要 `profile` 范围。 |
-| `upn`         | 用户主体名称 | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于唯一标识用户信息（例如，用作数据库密钥）。 应改用用户对象 ID (`oid`) 作为数据库密钥。 使用 [备用登录 ID](../authentication/howto-authentication-use-email-signin.md) 登录的用户不应显示其用户主体名称 (UPN) 。 应改用以下 ID 令牌声明向用户显示登录状态：`preferred_username` 或 `unique_name` 适用于 v1 令牌，`preferred_username` 适用于 v2 令牌。 | 有关声明配置，请参阅下面的[附加属性](#additional-properties-of-optional-claims)。 需要 `profile` 范围。|
+| `upn`         | 用户主体名称 | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于唯一标识用户信息（例如，用作数据库密钥）。 应改用用户对象 ID (`oid`) 作为数据库密钥。 使用 [备用登录 ID](../authentication/howto-authentication-use-email-signin.md) 登录的用户不应显示其用户主体名称 (UPN) 。 请改用以下 `preferred_username` 声明向用户显示登录状态。 | 有关声明配置，请参阅下面的[附加属性](#additional-properties-of-optional-claims)。 需要 `profile` 范围。|
+
+
+**表4：仅限1.0 版的可选声明**
+
+V2 令牌格式的某些改进可用于使用 v1 令牌格式的应用，因为它们有助于提高安全性和可靠性。 它们不会在从 v2 终结点请求的 ID 令牌和使用 v2 令牌格式的 Api 的访问令牌时生效。 
+
+| JWT 声明     | 名称                            | 说明 | 说明 |
+|---------------|---------------------------------|-------------|-------|
+|`aud`          | 目标受众 | 始终存在于 Jwt 中，但在 v1 访问令牌中，可以通过多种方式发出，这在执行令牌验证时很难编码。  使用 [此声明的其他属性](#additional-properties-of-optional-claims) ，以确保它始终设置为 v1 访问令牌中的 GUID。 | v1 JWT 访问令牌|
+|`preferred_username` | 首选用户名        | 提供 v1 令牌中的首选用户名声明。 这使得应用程序能够更轻松地提供用户名提示并显示用户可读的显示名称，而不考虑其标记类型。  建议使用此可选声明，而不是使用，例如 `upn` 或 `unique_name` 。 | v1 ID 令牌和访问令牌 |
 
 ### <a name="additional-properties-of-optional-claims"></a>可选声明的附加属性
 
-可以配置某些可选声明来更改声明的返回方式。 这些附加属性主要用于帮助迁移具有不同数据预期的本地应用程序。 例如， `include_externally_authenticated_upn_without_hash` 有助于无法处理 UPN 中 () 哈希标记的客户端 `#` 。
+可以配置某些可选声明来更改声明的返回方式。 这些附加属性主要用于帮助迁移具有不同数据预期的本地应用程序。 例如，`include_externally_authenticated_upn_without_hash` 有助于无法处理 UPN 中的哈希标记 (`#`) 的客户端。
 
 **表 4：用于配置可选声明的值**
 
@@ -97,7 +107,9 @@ ms.locfileid: "97509557"
 |----------------|--------------------------|-------------|
 | `upn`          |                          | 可用于 SAML 和 JWT 响应，以及 v1.0 和 v2.0 令牌。 |
 |                | `include_externally_authenticated_upn`  | 包含资源租户中存储的来宾 UPN。 例如： `foo_hometenant.com#EXT#@resourcetenant.com` |
-|                | `include_externally_authenticated_upn_without_hash` | 同上，不过，井号标记 (`#`) 已替换为下划线 (`_`)，例如 `foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn_without_hash` | 同上，不过，井号标记 (`#`) 已替换为下划线 (`_`)，例如 `foo_hometenant.com_EXT_@resourcetenant.com`|
+| `aud`          |                          | 在 v1 访问令牌中，这用于更改声明的格式 `aud` 。  这对于 v2 令牌或 ID 令牌不起作用，其中， `aud` 声明始终是客户端 ID。 使用此信息来确保 API 可以更轻松地执行受众验证。 与影响访问令牌的所有可选声明一样，请求中的资源必须设置此可选声明，因为资源拥有访问令牌。|
+|                | `use_guid`               | 以 GUID 格式发出资源 () API 的客户端 ID 作为声明， `aud` 而不是 APPID URI 或 GUID。 因此，如果资源的客户端 ID 为 `bb0a297b-6a42-4a55-ac40-09a501456577` ，则请求该资源的访问令牌的任何应用都将接收具有以下内容的访问令牌 `aud` ： `bb0a297b-6a42-4a55-ac40-09a501456577` 。|
 
 #### <a name="additional-properties-example"></a>附加属性示例
 
@@ -115,7 +127,7 @@ ms.locfileid: "97509557"
 }
 ```
 
-此 OptionalClaims 对象将导致返回给客户端的 ID 令牌包含 `upn` 带有额外 home 租户和资源租户信息的声明。 仅当用户是租户中的来宾（使用不同的 IDP 进行身份验证）时，才会更改令牌中的 `upn` 声明。
+此 OptionalClaims 对象会导致返回到客户端的 ID 令牌包含一个 `upn` 声明及其他主租户和资源租户信息。 仅当用户是租户中的来宾（使用不同的 IDP 进行身份验证）时，才会更改令牌中的 `upn` 声明。
 
 ## <a name="configuring-optional-claims"></a>配置可选声明
 
@@ -183,7 +195,7 @@ ms.locfileid: "97509557"
 
 ### <a name="optionalclaims-type"></a>OptionalClaims 类型
 
-声明应用程序请求的可选声明。 应用程序可以配置可选声明，使其在每种类型的令牌中返回 (ID 令牌、访问令牌、SAML 2 令牌) 可从 security token service 接收。 应用程序可以配置为要在每种令牌类型中返回一组不同的可选声明。 Application 实体的 OptionalClaims 属性是一个 OptionalClaims 对象。
+声明应用程序请求的可选声明。 应用程序可以配置为要在它能够从安全令牌服务收到的每种令牌（共三种，即 ID 令牌、访问令牌和 SAML 2 令牌）中返回可选声明。 应用程序可以配置为要在每种令牌类型中返回一组不同的可选声明。 Application 实体的 OptionalClaims 属性是一个 OptionalClaims 对象。
 
 **表 5：OptionalClaims 类型属性**
 
@@ -239,9 +251,9 @@ ms.locfileid: "97509557"
 1. 在“管理”下，选择“应用注册”。 
 1. 在列表中选择要为其配置可选声明的应用程序。
 1. 在 " **管理**" 下，选择 " **令牌配置**"。
-1. 选择 " **添加组声明**"。
+1. 选择“添加组声明”。
 1. 选择要返回的组类型（“安全组”或“目录角色”、“所有组”和/或“分配给应用程序的组”）。 “分配给应用程序的组”选项仅包括分配给应用程序的组。 “所有组”选项包括“SecurityGroup”、“DirectoryRole”和“DistributionList”，但不包括“分配给应用程序的组”    。 
-1. 可选：选择特定的令牌类型属性以修改组声明值以包含本地组属性，或将声明类型更改为角色。
+1. 可选：选择特定的令牌类型属性，将组声明值修改为包含本地组特性，或将声明类型更改为角色。
 1. 选择“保存”。
 
 **通过应用程序清单配置组可选声明：**
@@ -270,14 +282,14 @@ ms.locfileid: "97509557"
 
 1. 设置组名配置可选声明。
 
-   如果希望令牌中的组包含 "可选声明" 部分中的 "本地 AD 组" 属性，请指定要应用的标记类型可选声明、所请求的可选声明的名称和所需的任何其他属性。  可以列出多个令牌类型：
+   如果希望令牌中的组包含“可选声明”节中的本地 AD 组特性，请指定要应用到的令牌类型可选声明、请求的可选声明的名称，以及所需的任何其他属性。  可以列出多个令牌类型：
 
    - OIDC ID 令牌的 idToken
    - OAuth 访问令牌的 accessToken
    - SAML 令牌的 Saml2Token。
 
    > [!NOTE]
-   > Saml2Token 类型适用于 SAML 1.1 和 SAML 2.0 格式令牌。
+   > Saml2Token 类型将应用到 SAML1.1 和 SAML2.0 格式令牌。
 
    对于每个相关的令牌类型，请修改组声明以在清单中使用 OptionalClaims 节。 OptionalClaims 架构如下所示：
 
@@ -299,10 +311,10 @@ ms.locfileid: "97509557"
 
    在 additionalProperties 中，只需要指定“sam_account_name”、“dns_domain_and_sam_account_name”和“netbios_domain_and_sam_account_name”中的一个。  如果存在多个，则将使用第一个，而忽略其他。
 
-   某些应用程序需要角色声明中有关用户的组信息。  若要将声明类型从组声明更改为角色声明，请将 "emit_as_roles" 添加到其他属性。  组值将在角色声明中发出。
+   某些应用程序需要角色声明中有关用户的组信息。  要将声明类型从组声明更改为角色声明，请将“emit_as_roles”添加到附加属性。  组值将在角色声明中发出。
 
    > [!NOTE]
-   > 如果使用 "emit_as_roles"，则已分配该用户的任何应用程序角色都不会出现在角色声明中。
+   > 如果使用“emit_as_roles”，则分配了用户的任何已配置应用程序角色不会显示在角色声明中。
 
 **示例：**
 

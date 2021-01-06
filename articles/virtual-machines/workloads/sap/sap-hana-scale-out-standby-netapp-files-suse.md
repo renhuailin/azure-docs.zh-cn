@@ -14,14 +14,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 01/05/2021
 ms.author: radeltch
-ms.openlocfilehash: 13644872fca06ad8fc5806326736aea23e504520
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: a152735d21a347262ce6485e6110f9e040a0071a
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608650"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916229"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>使用 SUSE Linux Enterprise Server 上的 Azure NetApp 文件在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统 
 
@@ -182,7 +182,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 为了满足数据和日志的 SAP 最小吞吐量要求以及/hana/shared 的准则，建议的大小为：
 
-| 数据量(Volume) | 大小<br>高级存储层 | 大小<br>超级存储层 | 支持的 NFS 协议 |
+| Volume | 大小<br>高级存储层 | 大小<br>超级存储层 | 支持的 NFS 协议 |
 | --- | --- | --- | --- |
 | /hana/log/ | 4 TiB | 2 TiB | v4.1 |
 | /hana/data | 6.3 TiB | 3.2 TiB | v4.1 |
@@ -190,7 +190,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 本文使用 Azure NetApp 文件 Ultra 存储层提供的布局的 SAP HANA 配置如下：
 
-| 数据量(Volume) | 大小<br>超级存储层 | 支持的 NFS 协议 |
+| Volume | 大小<br>超级存储层 | 支持的 NFS 协议 |
 | --- | --- | --- |
 | /hana/log/mnt00001 | 2 TiB | v4.1 |
 | /hana/log/mnt00002 | 2 TiB | v4.1 |
@@ -362,11 +362,13 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
     # Add the following entries in the configuration file
     ipv6.conf.all.disable_ipv6 = 1
     net.ipv4.tcp_max_syn_backlog = 16348
-    net.ipv4.ip_local_port_range = 40000 65300
     net.ipv4.conf.all.rp_filter = 0
     sunrpc.tcp_slot_table_entries = 128
     vm.swappiness=10
     </code></pre>
+
+> [!TIP]
+> 避免在 sysctl 配置文件中显式设置 net.ipv4.ip_local_port_range 和 net.ipv4.ip_local_reserved_ports，以允许 SAP 主机代理管理端口范围。 有关详细信息，请参阅 SAP 说明 [2382421](https://launchpad.support.sap.com/#/notes/2382421)。  
 
 4. **[A]** 按照 [使用 Azure NetApp 文件 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]中的建议调整 sunrpc 设置。  
 
@@ -659,7 +661,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 > [!NOTE]
 > 本文包含对 Microsoft 不再使用的术语 " *主要* " 和 " *从属*" 的引用。 从软件中删除这些字词后，我们会将其从本文中删除。
 
-1. 模拟 SAP HANA 辅助节点上的节点崩溃。 执行以下操作： 
+1. 模拟 SAP HANA 辅助节点上的节点崩溃。 请执行以下操作： 
 
    a. 在模拟节点崩溃之前，请运行以下命令作为 **hn1** adm 来捕获环境状态：  
 

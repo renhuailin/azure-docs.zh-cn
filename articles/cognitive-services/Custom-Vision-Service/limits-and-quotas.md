@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: b79bf5e8ead16bbdf9c69e8d7faae43fa778ab3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a8ea8d5f13f72b0da1e11a27b69da2570eda543
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316573"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913475"
 ---
 # <a name="limits-and-quotas"></a>限制和配额
 
@@ -45,6 +45,3 @@ ms.locfileid: "91316573"
 |每个对象的最大区域检测培训图像|300|300|
 |每个分类的最大标记图像|100|100|
 
-> [!NOTE]
-> 小于256像素的图像将被接受，但升级。
-> 图像纵横比不应大于25

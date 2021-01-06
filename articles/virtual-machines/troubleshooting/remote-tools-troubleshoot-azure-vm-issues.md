@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: c5974388c096c9bc8693c5fc2cf918989c6eadd3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0681346252f840173d5cd7d4cfe5ef40076f0068
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488725"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912591"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用远程工具排查 Azure VM 问题
 
@@ -251,7 +251,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Enter-PSSession cmdlet 的详细信息，请参阅 [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1)。
+- 有关 Enter-PSSession cmdlet 的详细信息，请参阅 [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1&preserve-view=true)。
 - 若要详细了解使用经典部署模型完成的适用于 Windows 的自定义脚本扩展，请参阅[适用于 Windows 的自定义脚本扩展](../extensions/custom-script-windows.md)。
 - PsExec 包含在 [PSTools Suite](https://download.sysinternals.com/files/PSTools.zip) 中。
 - 有关 PSTools Suite 的详细信息，请参阅 [PSTools](/sysinternals/downloads/pstools)。

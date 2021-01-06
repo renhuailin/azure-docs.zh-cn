@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: d0c26255e6d9d35d51390ed2b432b9c5dc9ab2be
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: db29fbda404900c29f85fa876e9427994ee9a093
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862467"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915906"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 数字孪生中的已知问题
 
@@ -47,11 +47,11 @@ ms.locfileid: "97862467"
 
 ## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Azure 上默认 Azure 凭据身份验证的问题。标识1.3。0
 
-**问题说明：** 使用 1.3.0 **[](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)库** 的版本在 azure 数字孪生应用程序中编写身份验证代码时，你可能会遇到这些文档中的许多示例中使用的 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true)方法的问题。当代码尝试进行身份验证时，此消息显示为 "AuthenticationFailedException： SharedTokenCacheCredential authentication failed" 的错误响应。
+**问题说明：** 当使用 **[azure](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)** 的 **1.3.0** 版本编写身份验证代码时，某些用户曾遇到过许多示例中使用的 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true)方法的问题。当代码尝试进行身份验证时，此消息显示为 "AuthenticationFailedException： SharedTokenCacheCredential authentication failed" 的错误响应。
 
 | 这是否会影响我？ | 原因 | 解决方法 |
 | --- | --- | --- |
-| 大多数包含身份验证的文档示例中都使用了 DefaultAzureCredential。 如果使用 DefaultAzureCredential 编写身份验证代码，并使用库的版本 1.3.0 `Azure.Identity` ，则很可能会影响你。 | 将 DefaultAzureCredential 与库的版本 **1.3.0** 结合使用时，会出现此问题 `Azure.Identity` 。 | 若要解决此问题，请将你的应用程序切换为使用 [版本 1.2.2](https://www.nuget.org/packages/Azure.Identity/1.2.2) `Azure.Identity` 。 更改库版本后，身份验证应该会按预期成功。 |
+| `DefaultAzureCredential` 此服务的大多数文档示例中均使用此服务，其中包括身份验证。 如果使用的是1.3.0 的库版本编写身份验证代码， `DefaultAzureCredential` `Azure.Identity` 并看到此错误消息，这会影响你。 | 这可能是由的一些配置问题导致的 `Azure.Identity` 。 | 解决此问题的一个策略是 `SharedTokenCacheCredential` 从凭据中排除，如当前打开的此 [DefaultAzureCredential 问题](https://github.com/Azure/azure-sdk/issues/1970) 中所述 `Azure.Identity` 。<br>另一种方法是将应用程序更改为使用的早期版本 `Azure.Identity` ，如 [版本 1.2.3](https://www.nuget.org/packages/Azure.Identity/1.2.3)。 这对 Azure 数字孪生不起作用，因此也是已接受的解决方案。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,12 +4,12 @@ description: 概述 Reliable Services 通信模型，包括在服务上打开侦
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7dc10055633c8e6dd2c645f28b774d5d5f3ac3f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3436d29446e963faea9bda47f5a5247b7de7d859
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574320"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912608"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>如何使用 Reliable Services 通信 API
 “Azure Service Fabric 即平台”完全不受服务间通信的影响。 所有协议和堆栈（从 UDP 到 HTTP）都可接受。 至于服务应以哪种方式通信，完全由服务开发人员选择。 Reliable Services 应用程序框架提供了内置通信堆栈和 API，可用于生成自定义通信组件。
@@ -288,7 +288,7 @@ public class MyCommunicationClient implements CommunicationClient {
 }
 ```
 
-客户端工厂主要负责创建通信客户端。 对于不会维持持续连接的客户端（例如 HTTP 客户端），工厂只需创建并返回客户端。 其他会维持持续连接的协议（例如某些二进制协议）也应该由工厂验证，以确定是否需要重新创建连接。  
+客户端工厂主要负责创建通信客户端。 对于不会维持持续连接的客户端（例如 HTTP 客户端），工厂只需创建并返回客户端。 其他维护持久性连接的协议（例如某些二进制协议）也应该 `ValidateClient(string endpoint, MyCommunicationClient client)` 由工厂)  (验证，以确定是否需要重新创建连接。  
 
 ```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>

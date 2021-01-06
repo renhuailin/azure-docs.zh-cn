@@ -1,14 +1,14 @@
 ---
 title: 使用 Azure PowerShell 启用 VM 扩展
 description: 本文介绍如何使用 Azure PowerShell 将虚拟机扩展部署到在混合云环境中运行的支持 Azure Arc 的服务器。
-ms.date: 11/24/2020
+ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6b38c425042c260a29682db11212a1f6324abd38
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9b1f83ad976aa3471430a912280fac25dc5c5c0c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387403"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916178"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>使用 Azure PowerShell 启用 Azure VM 扩展
 
@@ -35,8 +35,10 @@ ms.locfileid: "97387403"
 ```powershell
 PS C:\> $Setting = @{ "workspaceId" = "workspaceId" }
 PS C:\> $protectedSetting = @{ "workspaceKey" = "workspaceKey" }
-PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -TypeHandlerVersion "1.10" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType "OmsAgentforLinux"
+PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -TypeHandlerVersion "1.10" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType "OmsAgentForLinux"
 ```
+
+若要在启用了 Arc 的 Windows server 上启用 Log Analytics VM 扩展，请将参数的值更改 `-ExtensionType` 为 `"MicrosoftMonitoringAgent"` 上一示例中的。
 
 下面的示例在启用 Arc 的服务器上启用自定义脚本扩展：
 
@@ -80,7 +82,7 @@ PS C:\> New-AzConnectedMachineExtension -Name custom -ResourceGroupName myResour
 
 若要获取启用了 Arc 的服务器上的 VM 扩展列表，请将 [AzConnectedMachineExtension](/powershell/module/az.connectedmachine/get-azconnectedmachineextension) 与 `-MachineName` 和参数一起使用 `-ResourceGroupName` 。
 
-例如：
+示例：
 
 ```powershell
 Get-AzConnectedMachineExtension -ResourceGroupName myResourceGroup -MachineName myMachineName

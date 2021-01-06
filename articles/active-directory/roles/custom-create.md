@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 01/05/2021
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4436385b07dd4f1da81f17eb19b38e922e21a1ef
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c0adb88cd49dd3de8649703ed45821c68a31776e
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180415"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914461"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>在 Azure Active Directory 中创建和分配自定义角色
 
@@ -58,17 +58,26 @@ ms.locfileid: "96180415"
 若要安装 Azure AD PowerShell 模块，请使用以下命令：
 
 ``` PowerShell
-Install-Module AzureADPreview
-Import-Module AzureADPreview
+install-module azureadpreview 
+import-module azureadpreview 
 ```
 
 若要验证模块是否可供使用，请运行下面的命令：
 
 ``` PowerShell
-Get-Module AzureADPreview
-  ModuleType Version      Name                         ExportedCommands
-  ---------- ---------    ----                         ----------------
-  Binary     2.0.2.31     azuread                      {Add-AzureADAdministrati...}
+get-module azureadpreview 
+
+  ModuleType Version      Name                         ExportedCommands 
+  ---------- ---------    ----                         ---------------- 
+  Binary     2.0.0.115    azureadpreview               {Add-AzureADAdministrati...} 
+```
+
+### <a name="connect-to-azure"></a>连接到 Azure
+
+若要连接到 Azure Active Directory，请使用以下命令：
+
+``` PowerShell
+Connect-AzureAD
 ```
 
 ### <a name="create-the-custom-role"></a>创建自定义角色
@@ -154,7 +163,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
     ```
 
-    Body
+    正文
 
     ``` HTTP
    {

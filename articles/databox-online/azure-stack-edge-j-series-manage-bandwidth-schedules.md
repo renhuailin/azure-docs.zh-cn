@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: a0d596c7c1046ea26ac389a48c17fa5abccbfd12
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 3182258245701903e7b3d6d6163cf3e2bd55c1fc
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951598"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915420"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>使用 Azure 门户在 Azure Stack Edge Pro GPU 上管理带宽计划 
 
@@ -36,16 +36,16 @@ ms.locfileid: "91951598"
 在 Azure 门户中执行以下步骤可以添加计划。
 
 1. 在 Azure Stack Edge 资源的 Azure 门户中，请参阅 " **带宽**"。
-2. 在右窗格中，选择“+ 添加计划”****。
+2. 在右窗格中，选择“+ 添加计划”。
 
     ![选择带宽](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-1.png)
 
-3. 在“添加计划”中：**** 
+3. 在“添加计划”中：
 
-   1. 提供计划的 **开始日期**、 **结束日期**、 **开始时间**和 **结束时间** 。
+   1. 提供计划的 **开始日期**、 **结束日期**、 **开始时间** 和 **结束时间** 。
    2. 如果此计划全天运行，请选中 " **全天** " 选项。
    3. **带宽速度** 是设备在涉及云的操作中使用的带宽（以兆位/秒为单位） (Mbps) ， (上传和下载) 。 为此字段提供一个介于20和2147483647之间的数字。
-   4. 如果不希望限制数据上传和下载带宽，请选中“无限制”。****
+   4. 如果你不希望限制上传和下载数据，请选择 " **无限制带宽** "。
    5. 选择 **添加** 。
 
       ![添加计划](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-2.png)
@@ -58,9 +58,10 @@ ms.locfileid: "91951598"
 
 执行以下步骤可以编辑带宽计划。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后再中转到 " **带宽**"。 
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后再中转到 " **带宽**"。
 2. 从带宽计划列表中，选择要修改的计划。
-    ![选择带宽计划](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
+
+   ![选择带宽计划](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
 
 3. 进行所需的更改并保存更改。
 
@@ -77,7 +78,7 @@ ms.locfileid: "91951598"
 
 1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后再中转到 " **带宽**"。  
 
-2. 在带宽计划列表中，选择要删除的计划。 在“编辑计划”中****，选择“删除”****。 出现确认提示时，选择“是”****。
+2. 在带宽计划列表中，选择要删除的计划。 在“编辑计划”中，选择“删除”。 出现确认提示时，选择“是”。
 
    ![删除用户](media/azure-stack-edge-j-series-manage-bandwidth-schedules/delete-schedule-2.png)
 

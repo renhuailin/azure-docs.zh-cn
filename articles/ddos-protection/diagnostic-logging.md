@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: dd350cc5fa0c3b30b4f0d57938348a8328af311a
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 22c49502883cb444027bd59a24bfb5bb3c32da4c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827387"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915158"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>查看和配置 DDoS 诊断日志记录
 
@@ -40,7 +40,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 在完成本教程中的步骤之前，必须先创建 [Azure DDoS 标准保护计划](manage-ddos-protection.md) ，并且必须在虚拟网络上启用 DDoS 保护标准。
-- DDoS 监视分配给虚拟网络中的资源的公共 IP 地址。 如果虚拟网络中没有任何具有公共 IP 地址的资源，必须首先创建具有公共 IP 地址的资源。 你可以通过 [azure 服务的虚拟网络](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) 中列出的资源管理器 (非经典) 来监视部署的所有资源的公共 IP 地址 (包括) 环境和 Azure VPN 网关的后端虚拟机位于虚拟网络 Azure App Service 中的 Azure 负载均衡器。 可快速创建 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机继续本教程的内容。    
+- DDoS 监视分配给虚拟网络中的资源的公共 IP 地址。 如果虚拟网络中没有任何具有公共 IP 地址的资源，必须首先创建具有公共 IP 地址的资源。 你可以通过 [azure 服务的虚拟网络](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) 中列出的资源管理器 (非经典) 来监视部署的所有资源的公共 IP 地址 (包括) 环境除外的虚拟网络中的后端虚拟机所在的 Azure 负载平衡器。 可快速创建 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机继续本教程的内容。    
 
 ## <a name="configure-ddos-diagnostic-logs"></a>配置 DDoS 诊断日志
 
@@ -163,4 +163,4 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 若要了解如何配置攻击警报，请继续学习下一教程。
 
 > [!div class="nextstepaction"]
-> [查看和配置 DDoS 保护警报](alerts.md)
+> [查看和配置 DDoS 防护警报](alerts.md)

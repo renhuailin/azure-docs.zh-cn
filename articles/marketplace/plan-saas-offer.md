@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5b39ccc365575853a4a74a471023989f34ebc577
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: e188c74c6eba5e4182f7b72277db8dd8e08db8d4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821479"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913919"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何为商业市场规划 SaaS 产品/服务
 
@@ -79,7 +79,7 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
   提供的 webhook 应启动并运行24/7。 这是你将收到有关通过商业应用商店购买的客户 SaaS 订阅更新的唯一方法。
 
   > [!NOTE]
-  > 在 Azure 门户中，我们需要创建单租户 [Azure Active Directory (Azure AD) 应用程序](../active-directory/develop/howto-create-service-principal-portal.md) ，以便使用一个 Azure 应用 ID 对两个服务之间的连接进行身份验证。 若要查找 [租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，请跳到 Azure Active Directory，选择 " **属性**"，然后查找列出的目录 ID 号。 例如，`50c464d3-4930-494c-963c-1e951d15360e`。
+  > 在 Azure 门户中，我们需要创建单租户 [Azure Active Directory (Azure AD) 应用程序](../active-directory/develop/howto-create-service-principal-portal.md) ，以便使用一个 Azure 应用 ID 对两个服务之间的连接进行身份验证。 若要查找 [租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，请跳到 Azure Active Directory，选择 " **属性**"，然后查找列出的目录 ID 号。 例如，`50c464d3-4930-494c-963c-1e951d15360e` 。
 
 - **Azure Active Directory 租户 id**： (也称为目录 ID) 。 在 Azure 门户中，我们要求你 [注册 Azure Active Directory (AD) 应用程序](../active-directory/develop/howto-create-service-principal-portal.md) ，以便可以将其添加到 API (ACL) 的访问控制列表，以确保你有权调用该应用程序。 若要查找 Azure Active Directory (AD) 应用的租户 ID，请参阅 Azure Active Directory 中的 [应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 边栏选项卡。 在 " **显示名称** " 列中，选择应用。 然后查找 (列出的 **目录 (租户) ID** 号，例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
 
@@ -156,11 +156,11 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
 
 下面的示例演示了 Azure 门户中的产品/服务列表。
 
-![说明了 Azure 门户中的产品/服务列表。](./media/example-managed-services.png)
+![说明了 Azure 门户中的产品/服务列表。](./media/example-managed-service-azure-portal.png)
 
 **调出说明**
 
-1. 标题
+1. Title
 1. 说明
 1. 有用链接
 1. 屏幕截图

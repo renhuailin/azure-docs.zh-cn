@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/04/2020
+ms.date: 01/05/2020
 ms.author: b-juche
-ms.openlocfilehash: e74b729f837c8e6ebe86514a01b6c8bdddc616e4
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881083"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914973"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建双重协议 (NFSv3 和 SMB) 卷
 
@@ -133,7 +133,10 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议
     * 包含根证书的域中的另一台计算机  
 
 3. 导出根 CA 证书。  
-    可以从 "个人" 或 "受信任的根证书颁发机构" 导出根 CA 证书。   
+    可以从 "个人" 或 "受信任的根证书颁发机构" 目录中导出根 CA 证书，如以下示例中所示：   
+    ![显示个人证书的屏幕截图](../media/azure-netapp-files/personal-certificates.png)   
+    ![显示受信任的根证书颁发机构的屏幕截图](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
+
     确保将证书导出为64编码的 x.509 (。CER) 格式： 
 
     ![证书导出向导](../media/azure-netapp-files/certificate-export-wizard.png)
