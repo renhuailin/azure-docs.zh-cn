@@ -4,19 +4,19 @@ description: 了解如何使用在负载下非常高性能和缩放良好的 Pyt
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3383ec322903d15c6090630890d14ce6d90bc96f
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97899391"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935863"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>在 Azure Functions 中提高 Python 应用的吞吐量性能
 
 使用 Python 为 Azure Functions 进行开发时，需要了解函数的执行方式以及该性能如何影响函数应用的缩放方式。 设计高性能应用程序时，此需求更重要。 设计、编写和配置函数应用时要考虑的主要因素是水平缩放和吞吐量性能配置。
 
 ## <a name="horizontal-scaling"></a>水平扩展
-默认情况下，Azure Functions 会自动监视应用程序的负载，并根据需要为 Python 创建其他主机实例。 Azure Functions 使用不同触发器类型的内置阈值来决定何时添加实例，如 QueueTrigger 的消息和队列大小的期限。 这些阈值不是用户可配置的。 有关详细信息，请参阅[消耗计划和高级计划的工作原理](functions-scale.md#how-the-consumption-and-premium-plans-work)。
+默认情况下，Azure Functions 会自动监视应用程序的负载，并根据需要为 Python 创建其他主机实例。 Azure Functions 使用不同触发器类型的内置阈值来决定何时添加实例，如 QueueTrigger 的消息和队列大小的期限。 这些阈值不是用户可配置的。 有关详细信息，请参阅 [Azure Functions 中事件驱动的缩放](event-driven-scaling.md)。
 
 ## <a name="improving-throughput-performance"></a>提高吞吐量性能
 

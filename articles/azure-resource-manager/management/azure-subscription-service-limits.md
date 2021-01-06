@@ -3,12 +3,12 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4d56c5c3fd33d1cda05e23d5bc53e7540428671b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 182df937ae5c0194aecfbe20b5962b44b363c708
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547842"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934454"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -78,7 +78,7 @@ ms.locfileid: "96547842"
 
 [!INCLUDE [automation-limits](../../../includes/azure-automation-service-limits.md)]
 
-## <a name="azure-app-configuration"></a>Azure 应用程序配置
+## <a name="azure-app-configuration"></a>Azure 应用配置
 
 [!INCLUDE [app-configuration-limits](../../../includes/app-configuration-limits.md)]
 
@@ -132,7 +132,7 @@ ms.locfileid: "96547842"
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
-有关详细信息，请参阅 [Functions 托管计划比较](../../azure-functions/functions-scale.md#hosting-plans-comparison)。
+有关详细信息，请参阅 [Functions 托管计划比较](../../azure-functions/functions-scale.md)。
 
 ## <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes 服务限制
 

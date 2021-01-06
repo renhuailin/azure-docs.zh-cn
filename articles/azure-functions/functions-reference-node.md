@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 21ab58095fa919e6302251c16e474b02f1445993
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: bf6ebd01a18a0ebf0ab5dd7d7ac3aa34256b4696
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301987"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936798"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -493,7 +493,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 ## <a name="scaling-and-concurrency"></a>缩放和并发
 
-默认情况下，Azure Functions 会自动监视应用程序上的负载，并按需为 Node.js 创建更多主机实例。 Functions 针对不同触发器类型使用内置（用户不可配置）阈值来确定何时添加实例，例如 QueueTrigger 的消息和队列大小。 有关详细信息，请参阅[消耗计划和高级计划的工作原理](functions-scale.md#how-the-consumption-and-premium-plans-work)。
+默认情况下，Azure Functions 会自动监视应用程序上的负载，并按需为 Node.js 创建更多主机实例。 Functions 针对不同触发器类型使用内置（用户不可配置）阈值来确定何时添加实例，例如 QueueTrigger 的消息和队列大小。 有关详细信息，请参阅[消耗计划和高级计划的工作原理](event-driven-scaling.md)。
 
 此缩放行为足以满足多个 Node.js 应用程序的需求。 对于占用大量 CPU 的应用程序，可使用多个语言工作进程进一步提高性能。
 
@@ -508,14 +508,14 @@ FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序�
 | Functions 版本 | Node 版本 (Windows) | Node 版本 (Linux) |
 |---|---| --- |
 | 1.x | 6.11.2（运行时锁定） | 不适用 |
-| 2.x  | `~8`<br/>`~10` (建议) <br/>`~12` | `node|8`<br/>`node|10` (建议)   |
-| 3.x | `~10`<br/>`~12` (建议) <br/>`~14`（预览版）  | `node|10`<br/>`node|12` (建议) <br/>`node|14`（预览版） |
+| 2.x  | `~8`<br/>`~10`（推荐）<br/>`~12` | `node|8`<br/>`node|10`（推荐）  |
+| 3.x | `~10`<br/>`~12`（推荐）<br/>`~14`（预览版）  | `node|10`<br/>`node|12`（推荐）<br/>`node|14`（预览版） |
 
-可以通过从任何函数进行日志记录来查看运行时所使用的当前版本 `process.version` 。
+可以通过从任何函数中记录 `process.version` 来查看运行时使用的当前版本。
 
-### <a name="setting-the-node-version"></a>设置节点版本
+### <a name="setting-the-node-version"></a>设置 Node 版本
 
-对于 Windows function apps，请将 `WEBSITE_NODE_DEFAULT_VERSION` [应用设置](functions-how-to-use-azure-function-app-settings.md#settings) 设置为受支持的 LTS 版本（例如），从而在 Azure 中定位版本 `~12` 。
+对于 Windows 函数应用，通过将 `WEBSITE_NODE_DEFAULT_VERSION` [应用设置](functions-how-to-use-azure-function-app-settings.md#settings)设为受支持的 LTS 版本（例如 `~12`）来针对 Azure 中的版本进行操作。
 
 对于 Linux function apps，请运行以下 Azure CLI 命令更新节点版本。
 
@@ -563,11 +563,11 @@ module.exports = function(context) {
 
 ## <a name="environment-variables"></a>环境变量
 
-在本地和云环境中将自己的环境变量添加到函数应用，如操作机密 (连接字符串、密钥和终结点) 或环境设置 (如事件探查变量) 。 `process.env`在函数代码中使用访问这些设置。
+在本地环境和云环境中，向函数应用添加你自己的环境变量，如操作机密（连接字符串、密钥和终结点）或环境设置（例如分析变量）。 在函数代码中使用 `process.env` 访问这些设置。
 
 ### <a name="in-local-development-environment"></a>在本地开发环境中
 
-在本地运行时，"函数" 项目包含一个文件，在该[ `local.settings.json` 文件](/azure/azure-functions/functions-run-local)中，你可以在对象中存储环境变量 `Values` 。 
+在本地运行时，函数项目包括一个 [`local.settings.json` 文件](/azure/azure-functions/functions-run-local)，你可以在其中将环境变量存储到 `Values` 对象中。 
 
 ```json
 {
@@ -584,13 +584,13 @@ module.exports = function(context) {
 
 ### <a name="in-azure-cloud-environment"></a>在 Azure 云环境中
 
-在 Azure 中运行时，function app 使你可以设置使用 [应用程序设置](functions-app-settings.md)（如服务连接字符串），并在执行过程中将这些设置公开为环境变量。 
+在 Azure 中运行时，函数应用允许你使用[应用程序设置](functions-app-settings.md)（例如服务连接字符串），并在执行期间将这些设置作为环境变量公开。 
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-### <a name="access-environment-variables-in-code"></a>使用代码访问环境变量
+### <a name="access-environment-variables-in-code"></a>在代码中访问环境变量
 
-使用将应用程序设置作为环境变量进行访问 `process.env` ，如下面的第二个和第三次调用， `context.log()` 我们记录 `AzureWebJobsStorage` 和 `WEBSITE_SITE_NAME` 环境变量的位置：
+使用 `process.env` 将应用程序设置作为环境变量访问，如此处对 `context.log()` 的第二次和第三次调用所示，其中记录了 `AzureWebJobsStorage` 和 `WEBSITE_SITE_NAME` 环境变量：
 
 ```javascript
 module.exports = async function (context, myTimer) {

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fb28b4b678b37f69331b2ecff6272fd7aa64d191
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4cf0393cdb0aae1b352b81df4893f874f34970cc
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287613"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934521"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>使用 Azure PowerShell 分配 Key Vault 访问策略
 
@@ -51,7 +51,7 @@ Key Vault 访问策略确定给定的服务主体（即应用程序或用户组�
     Get-AzADServicePrincipal -SearchString <search-string>
     ```
 
-- 组：使用带有 `-SearchString` 参数的 [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) cmdlet 根据所需组的名称筛选结果：
+- 组：使用带有 `-SearchString` 参数的 [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) cmdlet 根据所需组的名称筛选结果：
 
     ```azurepowershell-interactive
     Get-AzADGroup -SearchString <search-string>
@@ -79,7 +79,6 @@ Set-AzKeyVaultAccessPolicy -VaultName <key-vault-name> -ObjectId <Id> -Permissio
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Key Vault 安全性：标识和访问管理](overview-security.md#identity-and-access-management)
+- [Azure Key Vault 安全性：标识和访问管理](security-overview.md#identity-management)
 - [保护 Key Vault](secure-your-key-vault.md)
 - [Azure Key Vault 开发人员指南](developers-guide.md)
-- [Azure Key Vault 最佳做法](best-practices.md)

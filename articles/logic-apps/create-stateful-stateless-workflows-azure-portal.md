@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: d10689937a037469399863395e0190e399334bd3
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a7e19894a4688fe270422e93f7081f98e0b699a3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924198"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936526"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>通过 Azure 逻辑应用预览在 Azure 门户中创建有状态和无状态工作流
 
@@ -72,13 +72,13 @@ ms.locfileid: "96924198"
 
 1. 在 " **创建逻辑应用 (预览")** "页上的" **基本** 信息 "选项卡上，提供有关逻辑应用的此信息。
 
-   | 属性 | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 要用于逻辑应用的 Azure 订阅。 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 在其中创建逻辑应用和相关资源的 Azure 资源组。 此资源名称在区域中必须唯一，并且只能包含字母、数字、连字符 (**-**) 、下划线 (**_**) 、括号 (**( # B6**) 和 **()** 。 <p><p>此示例将创建一个名为的资源组 `Fabrikam-Workflows-RG` 。 |
    | **逻辑应用名称** | 是 | <*logic-app-name*> | 用于逻辑应用的名称。 此资源名称在区域中必须唯一，并且只能包含字母、数字、连字符 (**-**) 、下划线 (**_**) 、括号 (**( # B6**) 和 **()** 。 <p><p>此示例创建一个名为的逻辑应用 `Fabrikam-Workflows` 。 <p><p>**注意**：逻辑应用的名称会自动获得后缀， `.azurewebsites.net` 因为 **逻辑应用 (预览)** 资源由 Azure Functions 提供支持（使用相同的应用命名约定）。 |
    | **发布** | 是 | <*部署-环境*> | 逻辑应用的部署目标。 可以通过选择 " **工作流** " 或 Docker 容器部署到 Azure。 <p><p>此示例使用 **工作流，该工作流** 是在 Azure 中 **(预览) 资源的逻辑应用** 。 <p><p>如果选择 " **Docker 容器**"，请 [指定要在逻辑应用的设置中使用的容器](#set-docker-container)。 |
-   | **区域** | 是 | <*Azure-region*> | 创建资源组和资源时要使用的 Azure 区域。 <p><p>此示例使用“美国西部”。 |
+   | 区域 | 是 | <*Azure-region*> | 创建资源组和资源时要使用的 Azure 区域。 <p><p>此示例使用“美国西部”。 |
    |||||
 
    下面是一个示例：
@@ -87,10 +87,10 @@ ms.locfileid: "96924198"
 
 1. 接下来，在 " **托管** " 选项卡上，提供有关要用于逻辑应用的存储解决方案和托管计划的信息。
 
-   | 属性 | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **存储帐户** | 是 | <*Azure-storage-account-name*> | 用于存储事务的 [Azure 存储帐户](../storage/common/storage-account-overview.md) 。 此资源名称在不同区域中必须唯一，并且包含3-24 个字符且仅包含数字和小写字母。 选择现有帐户或创建新帐户。 <p><p>此示例将创建一个名为的存储帐户 `fabrikamstorageacct` 。 |
-   | **计划类型** | 是 | <*Azure 托管-计划*> | 用于部署逻辑应用的 [托管计划](../app-service/overview-hosting-plans.md) ，该计划为 [**高级**](../azure-functions/functions-scale.md#premium-plan) 或 [**应用服务计划**](../azure-functions/functions-scale.md#app-service-plan)。 你的选择会影响你稍后可以选择的定价层。 <p><p>此示例使用 **应用服务计划**。 <p><p>**注意**：与 Azure Functions 类似， **逻辑应用 (预览版)** 资源类型需要托管计划和定价层。 此资源类型不支持和使用托管计划。 有关详细信息，请查看以下主题： <p><p>- [Azure Functions 缩放和托管](../azure-functions/functions-scale.md) <br>- [应用服务定价详细信息](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
+   | **计划类型** | 是 | <*Azure 托管-计划*> | 用于部署逻辑应用的 [托管计划](../app-service/overview-hosting-plans.md) ，该计划为 [**高级**](../azure-functions/functions-premium-plan.md) 或 [**应用服务计划**](../azure-functions/dedicated-plan.md)。 你的选择会影响你稍后可以选择的定价层。 <p><p>此示例使用 **应用服务计划**。 <p><p>**注意**：与 Azure Functions 类似， **逻辑应用 (预览版)** 资源类型需要托管计划和定价层。 此资源类型不支持和使用托管计划。 有关详细信息，请查看以下主题： <p><p>- [Azure Functions 缩放和托管](../azure-functions/functions-scale.md) <br>- [应用服务定价详细信息](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
    | **Windows 计划** | 是 | <*计划名称*> | 要使用的计划名称。 选择现有计划或提供新计划的名称。 <p><p>此示例使用名称 `Fabrikam-Service-Plan`。 |
    | **SKU 和大小** | 是 | <*定价层*> | 用于托管逻辑应用的 [定价层](../app-service/overview-hosting-plans.md) 。 你的选择会受到你之前选择的计划类型的影响。 若要更改默认层，请选择 " **更改大小**"。 然后，你可以根据所需的工作负荷选择其他定价层。 <p><p>此示例使用 **适用于开发/测试** 工作负荷的免费 **F1 定价层**。 有关详细信息，请参阅 [应用服务定价详细信息](https://azure.microsoft.com/pricing/details/app-service/)。 |
    |||||
@@ -221,7 +221,7 @@ ms.locfileid: "96924198"
 
    ![显示设计器和 "发送电子邮件" 详细信息窗格并选择 "参数" 选项卡的屏幕截图。](./media/create-stateful-stateless-workflows-azure-portal/send-email-action-details.png)
 
-   | 属性 | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **To** | 是 | <*your-email-address*> | 电子邮件收件人，可以是你的电子邮件地址，用于测试目的。 此示例使用虚构电子邮件 `sophiaowen@fabrikam.com` 。 |
    | **主题** | 是 | `An email from your example workflow` | 电子邮件主题 |
@@ -231,7 +231,7 @@ ms.locfileid: "96924198"
    > [!NOTE]
    > 在 " **设置**"、" **静态结果**" 或 "选项卡 **后运行** " 的详细信息窗格中进行任何更改时，请确保选择 " **完成** " 以在切换选项卡或将焦点更改为设计器之前提交这些更改。 否则，设计器不会保留您的更改。
 
-1. 保存所有内容。 在设计器工具栏上选择“保存”。
+1. 保存所有内容。 在设计器工具栏上选择“保存”。 
 
 接下来，若要测试工作流，请手动触发运行。
 
@@ -323,7 +323,7 @@ ms.locfileid: "96924198"
    | Aborted | !["中止" 操作状态的图标][aborted-icon] | 操作已停止或未完成，原因是外部问题，例如，系统中断或过期的 Azure 订阅。 |
    | 已取消 | !["已取消" 操作状态的图标][cancelled-icon] | 操作正在运行，但收到了取消请求。 |
    | 失败 | !["失败" 操作状态的图标][failed-icon] | 操作失败。 |
-   | 正在运行 | !["正在运行" 操作状态的图标][running-icon] | 操作当前正在运行。 |
+   | 运行 | !["正在运行" 操作状态的图标][running-icon] | 操作当前正在运行。 |
    | 已跳过 | !["跳过" 操作状态的图标][skipped-icon] | 此操作已被跳过，因为前一个操作失败。 操作具有要求在 `runAfter` 当前操作运行之前成功完成前面的操作的条件。 |
    | 成功 | !["成功" 操作状态的图标][succeeded-icon] | 操作成功。 |
    | 已成功重试 | !["已成功重试" 操作状态的图标][succeeded-with-retries-icon] | 操作成功，但仅在一个或多个重试后。 若要查看重试历史记录，请在 "运行历史记录详细信息" 视图中选择该操作，以便可以查看输入和输出。 |
@@ -351,7 +351,7 @@ ms.locfileid: "96924198"
 
 ## <a name="enable-or-open-application-insights-after-deployment"></a>部署后启用或打开 Application Insights
 
-在工作流执行过程中，逻辑应用会随其他事件一起发出遥测数据。 使用此遥测可以更好地了解工作流的运行情况以及逻辑应用运行时如何以各种方式工作。 你可以使用 Application Insights 来监视工作流，该[Application Insights](../azure-monitor/app/app-insights-overview.md)提供近实时遥测 (实时指标) 。 使用此数据诊断问题、设置警报和构建图表时，此功能可帮助您更轻松地调查故障和性能问题。
+在工作流执行过程中，逻辑应用会随其他事件一起发出遥测数据。 使用此遥测可以更好地了解工作流的运行情况以及逻辑应用运行时如何以各种方式工作。 你可以使用 Application Insights 来监视工作流，该[](../azure-monitor/app/app-insights-overview.md)提供近实时遥测 (实时指标) 。 使用此数据诊断问题、设置警报和构建图表时，此功能可帮助您更轻松地调查故障和性能问题。
 
 如果逻辑应用的创建和部署设置支持使用 [Application Insights](../azure-monitor/app/app-insights-overview.md)，则可以选择为逻辑应用启用诊断日志记录和跟踪。 在 Azure 门户或部署后创建逻辑应用时，可以执行此操作。 你需要有一个 Application Insights 实例，但你可以在创建逻辑应用时或部署后 [提前](../azure-monitor/app/create-workspace-resource.md)创建此资源。
 
@@ -447,7 +447,7 @@ Azure 逻辑应用预览支持对 Azure 函数操作、液体操作和 XML 操�
 
    `rm -rf {bundle-version}`
 
-   例如：`rm -rf 1.1.3`
+   例如： `rm -rf 1.1.3`
 
    > [!TIP]
    > 如果收到 "权限被拒绝" 或 "正在使用的文件" 之类的错误，请刷新浏览器中的页面，并再次尝试前面的步骤，直到删除该文件夹。

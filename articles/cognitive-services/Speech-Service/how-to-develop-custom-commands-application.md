@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: b3e9c1e8ad23ea0ebf540eddbd6d4a03b8a72fe2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835068"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935812"
 ---
 # <a name="develop-custom-commands-applications"></a>开发自定义命令应用程序
 
@@ -178,7 +178,7 @@ ms.locfileid: "97835068"
    1. 选择“更新”。
 
        > [!div class="mx-imgBorder"]
-       > ![显示在何处创建必需参数响应的屏幕截图。](media/custom-commands/add-required-on-off-parameter-response.png)
+       > ![屏幕截图，显示选中 "简单编辑器" 选项卡的 "添加对所需参数的响应" 部分。](media/custom-commands/add-required-on-off-parameter-response.png)
    
    1. 使用下表配置参数的属性。 有关命令的所有配置属性的信息，请参阅 [自定义命令的概念和定义](./custom-commands-references.md)。
       
@@ -242,7 +242,7 @@ turn something
 选择“保存”。
 
 > [!TIP]
-> 在示例-句子编辑器中，使用大括号来引用参数。 例如，`turn {OnOff} the {SubjectDevice}`。
+> 在示例-句子编辑器中，使用大括号来引用参数。 例如，`turn {OnOff} the {SubjectDevice}` 。
 > 使用选项卡自动完成以前创建的参数。
 
 #### <a name="modify-completion-rules-to-include-parameters"></a>修改完成规则以包含参数

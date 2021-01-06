@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3d7292999fc4b53fed06822461857185127dc793
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898719"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937104"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -256,7 +256,7 @@ _此设置当前处于预览状态。_
 函数应用可以横向扩展到的最大实例数。 默认值为无限制。
 
 > [!IMPORTANT]
-> 此设置处于预览状态。  添加了一个[函数应用横向扩展上限属性](./functions-scale.md#limit-scale-out)，建议使用此方法限制横向扩展。
+> 此设置处于预览状态。  添加了一个[函数应用横向扩展上限属性](./event-driven-scaling.md#limit-scale-out)，建议使用此方法限制横向扩展。
 
 |键|示例值|
 |---|------------|

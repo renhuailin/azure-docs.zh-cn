@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 746a97ecd9b0bdd676e70cca38edc75905e3e4bd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019493"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936934"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 
@@ -35,7 +35,7 @@ ms.locfileid: "96019493"
 
 可以从概述页导航到管理函数应用所需的所有内容，特别是 **[应用程序设置](#settings)** 和 **[平台功能](#platform-features)** 。
 
-## <a name="application-settings"></a><a name="settings"></a>应用程序设置
+## <a name="work-with-application-settings"></a><a name="settings"></a>使用应用程序设置
 
 “应用程序设置”选项卡维护函数应用使用的设置。 这些设置是加密存储的，必须选择“显示值”才能查看门户中的值。 也可使用 Azure CLI 访问应用程序设置。
 
@@ -68,6 +68,56 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
 在本地开发函数应用时，必须将这些值的本地副本保留在 local.settings.json 项目文件中。 若要了解详细信息，请参阅[本地设置文件](functions-run-local.md#local-settings-file)。
+
+## <a name="hosting-plan-type"></a>宿主计划类型
+
+创建 function app 时，还会创建应用服务托管计划，应用将在其中运行。 一个计划可以有一个或多个 function app。 函数的功能、缩放和定价取决于计划的类型。 若要了解详细信息，请参阅 [Azure Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)。
+
+你可以从 Azure 门户或使用 Azure CLI 或 Azure PowerShell Api 确定 function app 使用的计划类型。 
+
+以下值指示计划类型：
+
+| 计划类型 | 门户 | Azure CLI/PowerShell |
+| --- | --- | --- |
+| [消耗](consumption-plan.md) | **消耗** | `Dynamic` |
+| [高级](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
+| [专用（应用服务）](dedicated-plan.md) | 各种 | 各种 |
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+若要确定 function app 使用的计划类型，请参阅 [Azure 门户](https://portal.azure.com)中函数应用的 "**概览**" 选项卡上的 "**应用服务计划**"。 若要查看定价层，请选择“应用服务计划”的名称，然后从左侧窗格中选择“属性” 。
+
+![在门户中查看缩放计划](./media/functions-scale/function-app-overview-portal.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+运行以下 Azure CLI 命令以获取托管计划类型：
+
+```azurecli-interactive
+functionApp=<FUNCTION_APP_NAME>
+resourceGroup=FunctionMonitoringExamples
+appServicePlanId=$(az functionapp show --name $functionApp --resource-group $resourceGroup --query appServicePlanId --output tsv)
+az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
+
+```  
+
+在前面的示例中 `<RESOURCE_GROUP>` `<FUNCTION_APP_NAME>` ，请将和替换为资源组和函数应用名称，各自分别为。 
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+运行以下 Azure PowerShell 命令以获取托管计划类型：
+
+```azurepowershell-interactive
+$FunctionApp = '<FUNCTION_APP_NAME>'
+$ResourceGroup = '<RESOURCE_GROUP>'
+
+$PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionApp).AppServicePlan
+(Get-AzFunctionAppPlan -Name $PlanID -ResourceGroupName $ResourceGroup).SkuTier
+```
+在前面的示例中 `<RESOURCE_GROUP>` `<FUNCTION_APP_NAME>` ，请将和替换为资源组和函数应用名称，各自分别为。 
+
+---
+
 
 ## <a name="platform-features"></a>平台功能
 

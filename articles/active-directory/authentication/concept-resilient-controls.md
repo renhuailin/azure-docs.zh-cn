@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: d7e4d0c41990fcc23dd19b5682997f6381bfdb20
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861283"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937087"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -38,8 +38,8 @@ ms.locfileid: "96861283"
 本文档有四个要点：
 
 * 使用紧急访问帐户避免管理员锁定。
-* 使用条件访问 (CA) 而不是按用户 MFA 实现 MFA。
-* 使用 (CA) 控件的多个条件访问来缓解用户锁定。
+* 使用条件访问而不是按用户 MFA 实现 MFA。
+* 通过使用多个条件性访问控制来缓解用户锁定。
 * 通过为每个用户预配多种身份验证方法或等效项来缓解用户锁定风险。
 
 ## <a name="before-a-disruption"></a>中断前
@@ -138,9 +138,9 @@ ms.locfileid: "96861283"
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-下面的示例： **一个用于还原对关键任务的协作应用程序的访问的应急 CA 策略示例**，是典型的公司应急措施。 在这种情况下，组织通常要求对所有 Exchange Online 和 SharePoint Online 访问进行 MFA，而在这种情况下，客户端的 MFA 提供程序发生中断， (是 Azure AD MFA、本地 MFA 提供程序还是第三方 MFA) 。 此策略仅在特定目标用户从受信任的公司网络访问应用时才允许其从受信任的 Windows 设备访问这些应用，从而缓解此中断带来的影响。 它还将紧急帐户和核心管理员排除在这些限制之外。 然后，目标用户将会获取 Exchange Online 和 SharePoint Online 的访问权限，而其他用户仍由于服务中断而无法访问应用。 此示例需要一个名为 **CorpNetwork** 的网络位置和一个包含目标用户的安全组 **ContingencyAccess**，一个包含核心管理员的名为 **CoreAdmins** 的组，以及一个包含紧急访问帐户的名为 **EmergencyAccess** 的组。 该应急策略需要四个策略来提供所需的访问权限。 
+下面的示例： **一个用于还原对关键任务的协作应用程序的访问权限的应急条件性访问策略示例**，是典型的公司应急措施。 在这种情况下，组织通常要求对所有 Exchange Online 和 SharePoint Online 访问进行 MFA，而在这种情况下，客户端的 MFA 提供程序发生中断， (是 Azure AD MFA、本地 MFA 提供程序还是第三方 MFA) 。 此策略仅在特定目标用户从受信任的公司网络访问应用时才允许其从受信任的 Windows 设备访问这些应用，从而缓解此中断带来的影响。 它还将紧急帐户和核心管理员排除在这些限制之外。 然后，目标用户将会获取 Exchange Online 和 SharePoint Online 的访问权限，而其他用户仍由于服务中断而无法访问应用。 此示例需要一个名为 **CorpNetwork** 的网络位置和一个包含目标用户的安全组 **ContingencyAccess**，一个包含核心管理员的名为 **CoreAdmins** 的组，以及一个包含紧急访问帐户的名为 **EmergencyAccess** 的组。 该应急策略需要四个策略来提供所需的访问权限。 
 
-**示例 A - 用于恢复对任务关键型协作应用的访问权限的应急 CA 策略：**
+**用于还原对关键任务的协作应用程序的访问权限的应急条件性访问策略示例：**
 
 * 策略1：需要适用于 Exchange 和 SharePoint 的已加入域的设备
   * 名称： EM001-在紧急情况下启用： MFA 中断 [1/4]-Exchange SharePoint-需要混合 Azure AD 联接
@@ -180,9 +180,9 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 5. 启用策略4：验证所有用户不能从移动设备上的本机邮件应用程序中获取 Exchange Online。
 6. 禁用 SharePoint Online 和 Exchange Online 的现有 MFA 策略。
 
-在下一个示例（**示例 B - 允许移动设备访问 Salesforce 的应急 CA 策略**）中，将恢复业务应用的访问权限。 在此场景中，客户通常要求使用移动设备访问 Salesforce（配置为使用 Azure AD 进行单一登录）的销售员工只能使用合规的设备进行访问。 此示例中的中断是指评估设备符合性时出现问题，在销售团队需要访问 Salesforce 以完成交易的敏感时间发生中断。 这些应急策略将授权关键用户从移动设备访问 Salesforce，以便他们可以继续完成交易而不会中断业务。 在此示例中，**SalesforceContingency** 包含需要保留访问权限的所有销售员工，**SalesAdmins** 包含必要的 Salesforce 管理员。
+在下一个示例中， **示例 B-应急条件访问策略，以允许对 Salesforce 进行移动访问**。 在此场景中，客户通常要求使用移动设备访问 Salesforce（配置为使用 Azure AD 进行单一登录）的销售员工只能使用合规的设备进行访问。 此示例中的中断是指评估设备符合性时出现问题，在销售团队需要访问 Salesforce 以完成交易的敏感时间发生中断。 这些应急策略将授权关键用户从移动设备访问 Salesforce，以便他们可以继续完成交易而不会中断业务。 在此示例中，**SalesforceContingency** 包含需要保留访问权限的所有销售员工，**SalesAdmins** 包含必要的 Salesforce 管理员。
 
-**示例 B - 应急 CA 策略：**
+**示例 B-应急条件访问策略：**
 
 * 策略1：阻止不在 SalesContingency 团队中的每个人
   * 名称： EM001-在紧急情况下启用：设备合规性中断 [1/2]-Salesforce-阻止所有用户（SalesforceContingency 除外）
@@ -282,7 +282,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 >[!NOTE]
  > 为 Azure AD MFA 配置 [受信任的 ip](./howto-mfa-mfasettings.md) 仅适用于 [Azure AD Premium 许可证](./concept-mfa-licensing.md)。
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>了解详细信息
 
 * [Azure AD 身份验证文档](./howto-mfaserver-iis.md)
 * [在 Azure AD 中管理紧急访问管理账户](../roles/security-emergency-access.md)

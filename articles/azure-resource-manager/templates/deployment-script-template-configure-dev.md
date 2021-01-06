@@ -1,26 +1,26 @@
 ---
 title: 为模板中的部署脚本配置开发环境 |Microsoft Docs
-description: 为 Azure 资源管理器模板中的部署脚本配置开发环境。
+description: 为 Azure 资源管理器模板中的部署脚本配置开发环境 (ARM 模板) 。
 services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 13dc072e31f0d27768de8d9a62ea942d55460713
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734175"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936390"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>为模板中的部署脚本配置开发环境
+# <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>为 ARM 模板中的部署脚本配置开发环境
 
 了解如何通过部署脚本映像创建用于开发和测试部署脚本的开发环境。 你可以创建 [Azure 容器实例](../../container-instances/container-instances-overview.md)或使用 [Docker](https://docs.docker.com/get-docker/)。 本文介绍了这两种方法。
 
 ## <a name="prerequisites"></a>先决条件
 
-如果没有部署脚本，则可创建包含以下内容的 **hello.ps1** 文件：
+如果没有部署脚本，则可创建包含以下内容的 _hello.ps1_ 文件：
 
 ```powershell
 param([string] $name)
@@ -39,11 +39,11 @@ $DeploymentScriptOutputs['text'] = $output
 
 ### <a name="create-an-azure-container-instance"></a>创建 Azure 容器实例
 
-以下 ARM 模板创建一个容器实例和文件共享，然后将文件共享装载到容器映像。
+以下 Azure 资源管理器模板 (ARM 模板) 创建容器实例和文件共享，然后将文件共享装载到容器映像。
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "projectName": {
@@ -153,12 +153,13 @@ $DeploymentScriptOutputs['text'] = $output
   ]
 }
 ```
-装载路径的默认值是 **deploymentScript**。  这是容器实例中将它装载到文件共享的路径。
 
-模板中指定的默认容器映像为 **mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3**。   查看[支持的 Azure PowerShell 版本](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)的列表。 查看[支持的 Azure CLI 版本](https://mcr.microsoft.com/v2/azure-cli/tags/list)的列表。
+装载路径的默认值为 `deploymentScript` 。 这是容器实例中将它装载到文件共享的路径。
+
+模板中指定的默认容器映像是 `mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3` 。 查看[支持的 Azure PowerShell 版本](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)的列表。 查看[支持的 Azure CLI 版本](https://mcr.microsoft.com/v2/azure-cli/tags/list)的列表。
 
   >[!IMPORTANT]
-  > 部署脚本使用 Microsoft 容器注册表 (MCR) 中可用的 CLI 映像。 认证部署脚本的 CLI 映像大约需要一个月的时间。 不要使用 30 天内发布的 CLI 版本。 若要查找映像的发行日期，请参阅 [Azure CLI 发行说明](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)。 如果使用了不受支持的版本，错误消息中会列出受支持的版本。
+  > 部署脚本使用 Microsoft 容器注册表 (MCR) 中的可用 CLI 映像。 认证部署脚本的 CLI 映像大约需要一个月的时间。 不要使用 30 天内发布的 CLI 版本。 若要查找映像的发行日期，请参阅 [Azure CLI 发行说明](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)。 如果使用不受支持的版本，错误消息会列出受支持的版本。
 
 模板将容器实例暂停 1800 秒。 在容器实例进入终端状态并且会话结束之前，你有 30 分钟的时间。
 
@@ -196,7 +197,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
 
 1. 在 Azure 门户中，打开部署了容器实例和存储帐户的资源组。
 1. 打开容器组。 默认资源组名称是追加了 **cg** 的项目名称。 你应该会看到容器实例处于“正在运行”状态。
-1. 从左侧菜单中选择“容器”。 你应该会看到一个容器实例。  容器实例名称是追加了 **container** 的项目名称。
+1. 从左侧菜单中选择“容器”。 你应该会看到一个容器实例。 容器实例名称是追加了 **container** 的项目名称。
 
     ![部署脚本连接容器实例](./media/deployment-script-template-configure-dev/deployment-script-container-instance-connect.png)
 
@@ -248,7 +249,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
     ```
 
-    将“&lt;主机驱动器号>”和“&lt;主机目录名>”替换为共享驱动器上的现有文件夹 。  它将文件夹映射到容器中的/data 文件夹。 例如，要映射 D:\docker：
+    将“&lt;主机驱动器号>”和“&lt;主机目录名>”替换为共享驱动器上的现有文件夹 。 它将文件夹映射到容器中的/data 文件夹。 例如，若要映射 _D:\docker_：
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
@@ -262,7 +263,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
     docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
     ```
 
-1. 以下屏幕截图显示了如何运行 PowerShell 脚本，假设你在共享驱动器中具有 helloworld.ps1 文件。
+1. 以下屏幕截图显示了如何运行 PowerShell 脚本，假设共享驱动器中有 _helloworld.ps1_ 文件。
 
     ![资源管理器模板部署脚本 docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
@@ -273,4 +274,4 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
 本教程已介绍部署脚本的用法。 完成部署脚本教程：
 
 > [!div class="nextstepaction"]
-> [教程：使用 Azure 资源管理器模板中的部署脚本](./template-tutorial-deployment-script.md)
+> [教程：在 ARM 模板中使用部署脚本](./template-tutorial-deployment-script.md)

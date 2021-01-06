@@ -3,12 +3,12 @@ title: Azure Functions 的存储注意事项
 description: 了解 Azure Functions 的要求和存储数据加密。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 67ff822208f065041e479fc484173d9f06a773ba
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 66bfded384be47224e86ee8e0a2999fe3d4ed5d9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107237"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936152"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的存储注意事项
 
@@ -18,7 +18,7 @@ ms.locfileid: "97107237"
 |存储服务  | 函数用法  |
 |---------|---------|
 | [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)     | 维护绑定状态和函数密钥。  <br/>还由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。 |
-| [Azure 文件](../storage/files/storage-files-introduction.md)  | 用于在 [消耗计划](functions-scale.md#consumption-plan) 和 [高级计划](functions-scale.md#premium-plan)中存储和运行函数应用代码的文件共享。 |
+| [Azure 文件](../storage/files/storage-files-introduction.md)  | 用于在 [消耗计划](consumption-plan.md) 和 [高级计划](functions-premium-plan.md)中存储和运行函数应用代码的文件共享。 |
 | [Azure 队列存储](../storage/queues/storage-queues-introduction.md)     | 由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。   |
 | [Azure 表存储](../storage/tables/table-storage-overview.md)  |  由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。       |
 
@@ -32,6 +32,8 @@ ms.locfileid: "97107237"
 若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#core-storage-services)。 
 
 虽然可以将现有存储帐户用于函数应用，不过必须确保它满足这些要求。 在 Azure 门户中创建为函数应用 create flow 一部分的存储帐户可保证满足这些存储帐户要求。 在门户中，当在创建函数应用时选择现有存储帐户时，将筛选出不受支持的帐户。 在此流中，只允许选择与要创建的函数应用位于同一区域的现有存储帐户。 若要了解详细信息，请参阅 [存储帐户位置](#storage-account-location)。
+
+<!-- JH: Does using a Premium Storage account improve perf? -->
 
 ## <a name="storage-account-guidance"></a>存储帐户指导
 
@@ -59,7 +61,15 @@ ms.locfileid: "97107237"
 
 [!INCLUDE [functions-storage-encryption](../../includes/functions-storage-encryption.md)]
 
-## <a name="mount-file-shares-linux"></a>装载文件共享 (Linux)
+### <a name="in-region-data-residency"></a>区域内数据驻留
+
+当所有客户数据必须保留在单个区域中时，与 function app 关联的存储帐户必须是包含 [区域内冗余](../storage/common/storage-redundancy.md)的存储帐户。 还必须在 [Azure Durable Functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection)中使用区域内冗余存储帐户。
+
+其他平台管理的客户数据仅在托管到内部负载平衡应用服务环境 (ASE) 时存储在区域中。 若要了解详细信息，请参阅 [ASE 区域冗余](../app-service/environment/zone-redundancy.md#in-region-data-residency)。
+
+## <a name="mount-file-shares"></a>装载文件共享
+
+_仅当在 Linux 上运行时，此功能才可用。_ 
 
 可以将现有 Azure 文件共享装载到 Linux 函数应用。 通过将共享装载到 Linux 函数应用，可以利用现有的机器学习模型或函数中的其他数据。 可以使用 [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) 命令将现有共享装载到 Linux 函数应用。 
 

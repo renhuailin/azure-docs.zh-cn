@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c13b6ed991403e65c4c4d71c964f1f7f4d1ffe7b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 9416005c708cafe5adbad2b09ce70c41fae66fd7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443307"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936016"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>用于调用 Web API 的守护程序应用 - 获取令牌
 
@@ -24,7 +24,7 @@ ms.locfileid: "94443307"
 
 ## <a name="scopes-to-request"></a>请求的作用域
 
-请求客户端凭据流时，其作用域是资源的名称后跟 `/.default`。 此表示法告知 Azure Active Directory (Azure AD) 使用在应用程序注册过程中静态声明的 *应用程序级权限* 。 另外，这些 API 权限必须由租户管理员授予。
+请求客户端凭据流时，其作用域是资源的名称后跟 `/.default`。 此表示法告知 Azure Active Directory (Azure AD) 使用在应用程序注册过程中静态声明的 *应用程序级权限*。 另外，这些 API 权限必须由租户管理员授予。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -57,7 +57,7 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 > [!IMPORTANT]
 > 当 MSAL 向接受 1.0 版访问令牌的资源请求访问令牌时，Azure AD 将获取最后一个斜杠前面的所有内容并将其用作资源标识符，从请求的范围内分析所需的受众。
-> 因此，如果使用 Azure SQL 数据库 ( **https： \/ /database.windows.net** ) ，则资源需要使用以斜杠 (（对于 azure SQL 数据库，) ）结尾的受众 `https://database.windows.net/` `https://database.windows.net//.default` 。 （请注意双斜杠。）另请参阅 MSAL.NET 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
+> 因此，如果使用 Azure SQL 数据库 (**https： \/ /database.windows.net**) ，则资源需要使用以斜杠 (（对于 azure SQL 数据库，) ）结尾的受众 `https://database.windows.net/` `https://database.windows.net//.default` 。 （请注意双斜杠。）另请参阅 MSAL.NET 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
@@ -91,6 +91,10 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
     // Mitigation: Change the scope to be as expected.
 }
 ```
+
+### <a name="acquiretokenforclient-uses-the-application-token-cache"></a>AcquireTokenForClient 使用应用程序令牌缓存
+
+在 MSAL.NET 中，`AcquireTokenForClient` 使用应用程序令牌缓存。 （所有其他 AcquireToken *XX* 方法都使用用户令牌缓存。）不要在调用 `AcquireTokenForClient` 之前调用 `AcquireTokenSilent`，因为 `AcquireTokenSilent` 使用“用户”  令牌缓存。 `AcquireTokenForClient` 会检查 *应用程序* 令牌缓存本身并对其进行更新。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -200,10 +204,6 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 有关详细信息，请参阅协议文档：[Microsoft 标识平台和 OAuth 2.0 客户端凭据流](v2-oauth2-client-creds-grant-flow.md)。
 
-## <a name="application-token-cache"></a>应用程序令牌缓存
-
-在 MSAL.NET 中，`AcquireTokenForClient` 使用应用程序令牌缓存。 （所有其他 AcquireToken *XX* 方法都使用用户令牌缓存。）不要在调用 `AcquireTokenForClient` 之前调用 `AcquireTokenSilent`，因为 `AcquireTokenSilent` 使用“用户”  令牌缓存。 `AcquireTokenForClient` 会检查 *应用程序* 令牌缓存本身并对其进行更新。
-
 ## <a name="troubleshooting"></a>故障排除
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>你是否使用过 resource/.default 作用域？
@@ -229,18 +229,24 @@ Content: {
 }
 ```
 
+### <a name="are-you-calling-your-own-api"></a>是否在调用自己的 API？
+
+如果调用你自己的 web API，但无法将应用权限添加到后台应用程序的应用注册中，你是否在 web API 中公开了应用角色？
+
+有关详细信息，请参阅 [公开应用程序权限 (应用角色) ](scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles) 和（尤其 [是确保 Azure AD 只向允许的客户端颁发 web API 的令牌](scenario-protected-web-api-app-registration.md#ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients)）。
+
 ## <a name="next-steps"></a>后续步骤
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-在此方案中，请转到下一篇文章， [调用 WEB API](./scenario-daemon-call-api.md?tabs=dotnet)。
+转到此方案中的下一篇文章：[调用 Web API](./scenario-daemon-call-api.md?tabs=dotnet)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-在此方案中，请转到下一篇文章， [调用 WEB API](./scenario-daemon-call-api.md?tabs=python)。
+转到此方案中的下一篇文章：[调用 Web API](./scenario-daemon-call-api.md?tabs=python)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在此方案中，请转到下一篇文章， [调用 WEB API](./scenario-daemon-call-api.md?tabs=java)。
+转到此方案中的下一篇文章：[调用 Web API](./scenario-daemon-call-api.md?tabs=java)。
 
 ---

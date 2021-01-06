@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e011417b936ed83b4658e6dad25bf8e8ee88aed
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: b5c960c7fbcc29d0aaea7511ba2187c916e84ab3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317799"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935234"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 大 IP 访问策略管理器和 Azure Active Directory 集成以实现安全的混合访问
 
@@ -37,7 +37,7 @@ SHA 通过使组织能够继续将其 F5 投资用于高级网络和应用程序
 
 - [泄漏的凭据检测](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)
 
-- [自助式密码重置 (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr)
+- [自助服务密码重置 (SSPR) ](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr)
 
 - [合作伙伴协作](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users) -受管辖的来宾访问权限管理
 
@@ -71,7 +71,7 @@ SHA 通过使组织能够继续将其 F5 投资用于高级网络和应用程序
 |:------|:-----------|
 | 1. | 用户在门户中选择一个应用程序图标，将 URL 解析为 SAML SP (大 IP)  |
 | 2. | 大 IP 将用户重定向到 SAML IDP (Azure AD) 进行预身份验证|
-| 3. | Azure AD 处理授权的 CA 策略和[会话控制](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session)|
+| 3. | Azure AD 处理身份验证的条件性访问策略和[会话控制](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session)|
 | 4. | 用户重定向回大 IP，以显示 Azure AD 颁发的 SAML 声明 |
 | 5. | 大 IP 请求任何附加的会话信息，包括在 [SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) 和 [基于角色的访问控制 (RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/overview) 发布到服务 |
 | 6. | 大 IP 将客户端请求转发到后端服务

@@ -3,12 +3,12 @@ title: Azure Batch 中的节点和池
 description: 从开发的角度来了解计算节点和池及其在 Azure Batch 工作流中的运用。
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: 880a956a2d839483c59578afad1b62146799578a
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c229381ba1019a5a40a4ca6b7db88f534f57de29
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243063"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934639"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的节点和池
 
@@ -26,7 +26,7 @@ Batch 中的所有计算节点还包括：
 
 - 任务可引用的标准[文件夹结构](files-and-directories.md)和关联的[环境变量](jobs-and-tasks.md)。
 - **防火墙** 设置。
-- [远程访问](error-handling.md#connect-to-compute-nodes) Windows (远程桌面协议 (RDP) # A3 和 Linux (安全外壳 (SSH) # A7 节点 (除非你 [使用禁用远程访问) 创建池](pool-endpoint-configuration.md) 。
+- [远程访问](error-handling.md#connect-to-compute-nodes) Windows（远程桌面协议 (RDP)）和 Linux（安全外壳 (SSH)）节点（除非你[创建禁用远程访问的池](pool-endpoint-configuration.md)）。
 
 默认情况下，节点可以彼此通信，但无法与不属于同一池的虚拟机通信。 若要允许节点安全地与其他虚拟机或本地网络通信，可以[在 Azure 虚拟网络 (VNet) 的子网中](batch-virtual-network.md)预配该池。 当你这样做时，可以通过公共 IP 地址访问节点。 这些公共 IP 地址由 Batch 创建，可能会在池的生存期内更改。 你还可以[创建具有所控制的静态公共 IP 地址的池](create-pool-public-ip.md)，这样可确保它们不会意外更改。
 
@@ -40,7 +40,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 池只能由创建它的 Batch 帐户使用。 Batch 帐户可以创建多个池，以满足将运行的应用程序的资源要求。
 
-可以手动创建池，也可以在指定要完成的工作时， [由 Batch 服务自动](#autopools) 创建池。 在创建池时，可以指定以下属性：
+可以手动创建池；或者在你指定要完成的工作时，[由 Batch 服务自动创建池](#autopools)。 在创建池时，可以指定以下属性：
 
 - [节点操作系统和版本](#operating-system-and-version)
 - [节点类型和目标节点数](#node-type-and-target)
@@ -64,17 +64,20 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 Batch 中提供了两种类型的池配置。
 
+> [!IMPORTANT]
+> 应使用 "虚拟机配置" 而不是 "云服务配置" 来配置池。 "虚拟机配置" 池支持所有批处理功能，并且正在添加新功能。 "云服务配置" 池不支持所有功能，并且未计划任何新功能。
+
 ### <a name="virtual-machine-configuration"></a>虚拟机配置
 
 虚拟机配置指定池由 Azure 虚拟机组成。 可以从 Linux 或 Windows 映像创建这些 VM。
 
-[Batch 节点代理](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)是在池中的每个节点上运行的程序，它在节点和批处理服务之间提供命令和控制接口。 节点代理对于不同操作系统有不同的实现（称为 SKU）。 基于虚拟机配置创建池时，不仅要指定节点大小和用于创建它们的映像源，还必须指定要安装在节点上的“虚拟机映像引用”和批处理“节点代理 SKU”。 有关指定这些池属性的详细信息，请参阅 [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md)（在 Azure Batch 池中预配 Linux 计算节点）。 可选选择性地将一个或多个空数据磁盘附加到从市场映像创建的池 VM，也可将数据磁盘包括在用于创建 VM 的自定义映像中。 如果包括数据磁盘，需要在 VM 中装载并格式化这些磁盘，然后才能使用。
+[Batch 节点代理](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)是一个程序，它在池中的每个节点上运行，并在节点与 Batch 服务之间提供命令和控制接口。 节点代理对于不同操作系统有不同的实现（称为 SKU）。 基于虚拟机配置创建池时，不仅要指定节点大小和用于创建它们的映像源，还必须指定要安装在节点上的“虚拟机映像引用”和批处理“节点代理 SKU”。 有关指定这些池属性的详细信息，请参阅 [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md)（在 Azure Batch 池中预配 Linux 计算节点）。 可选选择性地将一个或多个空数据磁盘附加到从市场映像创建的池 VM，也可将数据磁盘包括在用于创建 VM 的自定义映像中。 如果包括数据磁盘，需要在 VM 中装载并格式化这些磁盘，然后才能使用。
 
 ### <a name="cloud-services-configuration"></a>云服务配置
 
 云服务配置指定池由 Azure 云服务节点组成。 云服务只提供 Windows 计算节点。
 
-适用于云服务配置池的可用操作系统在 [Azure 来宾 OS 版本和 SDK 兼容性矩阵](../cloud-services/cloud-services-guestos-update-matrix.md)中列出，并且可用计算节点大小在 [云服务的大小](../cloud-services/cloud-services-sizes-specs.md)中列出。 创建包含云服务节点的池时，需要指定节点大小及其 *Os 系列* (来确定随 OS) 一起安装的 .net 版本。 将云服务部署到 Azure 的速度比部署运行 Windows 的虚拟机更快。 如果需要 Windows 计算节点池，可能会发现云服务具有部署时间上的性能优势。
+[Azure 来宾 OS 版本和 SDK 兼容性对照表](../cloud-services/cloud-services-guestos-update-matrix.md)中列出了适用于云服务配置池的操作系统，[云服务的大小](../cloud-services/cloud-services-sizes-specs.md)中列出了可用的计算节点大小。 创建包含云服务节点的池时，需要指定节点大小及其 OS 系列（用于确定哪些版本的 .NET 随 OS 一起安装）。 将云服务部署到 Azure 的速度比部署运行 Windows 的虚拟机更快。 如果需要 Windows 计算节点池，可能会发现云服务具有部署时间上的性能优势。
 
 与云服务中的辅助角色一样，可以指定 *OS 版本*（有关辅助角色的详细信息，请参阅 [云服务概述](../cloud-services/cloud-services-choose-me.md)）。 对于 OS 版本，建议指定 `Latest (*)`，使节点可自动升级，而无需采取措施来适应新的版本。 选择特定 OS 版本的主要用例是在允许更新版本之前执行向后兼容测试，以确保保持应用程序兼容性。 验证后，便可以更新池的 OS 版本并安装新的 OS 映像。 所有正在运行的任务将会中断并重新排队。
 
@@ -185,9 +188,9 @@ Batch 中提供了两种类型的池配置。
 
 通常会使用一种组合方法来处理可变但持续存在的负载。 可以有一个池来容纳提交的多个作业，并且可以根据作业负载扩展或缩减节点数目。 可以根据当前负载被动执行此操作，或者在负载可预测时主动执行此操作。 有关详细信息，请参阅[自动缩放策略](#automatic-scaling-policy)。
 
-## <a name="autopools"></a>Autopools
+## <a name="autopools"></a>自动池
 
-[Autopool](/rest/api/batchservice/job/add#autopoolspecification)是在提交作业时由 Batch 服务创建的池，而不是在要在池中运行的作业之前创建的池。 批处理服务将根据你指定的特征管理 autopool 的生存期。 大多数情况下，这些池也设置为在作业完成后自动删除。
+[自动池](/rest/api/batchservice/job/add#autopoolspecification)是在提交作业时由 Batch 服务创建的池，而不是在创建将在池中运行的作业之前创建的。 Batch 服务将根据指定的特征管理自动池的生存期。 大多数情况下，这些池也设置为在其作业完成后自动删除。
 
 ## <a name="security-with-certificates"></a>证书的安全性
 

@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 45b6b182d030c267dcec7ed57c0c0dd1901b0cb1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107424"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935081"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>有关 Azure Active Directory 报告的常见问题解答
 
@@ -143,8 +143,8 @@ ms.locfileid: "97107424"
 
 **答：** 条件访问状态可以具有以下值：
 
-* **未应用**：这表示在范围内没有针对用户和应用程序的 CA 策略。 
-* **成功**：这表示在范围内存在针对用户和应用程序的 CA 策略，并且已成功满足 CA 策略。 
+* **未应用**：这意味着不存在范围内用户和应用的条件性访问策略。 
+* **成功**：这意味着有一个条件性访问策略，其中的用户和应用处于范围内，并且已成功满足条件性访问策略。 
 * **失败**：登录满足了至少一个条件性访问策略的用户和应用程序条件，授权控件要么未满足，要么设置为阻止访问。
     
 **问：条件访问策略结果的所有可能值有哪些？**
@@ -158,7 +158,7 @@ ms.locfileid: "97107424"
     
 **问： "所有登录" 报表中的策略名称与 CA 中的策略名称不匹配。为什么？**
 
-**答：** 所有登录报告中的策略名称均基于登录时的 CA 策略名称。 如果你后来（即登录后）更新了策略名称，则这可能与 CA 中的策略名称不一致。
+**答：** "所有登录" 报表中的策略名称基于登录时的条件性访问策略名称。 如果你后来（即登录后）更新了策略名称，则这可能与 CA 中的策略名称不一致。
 
 **问：由于条件性访问策略，登录已被阻止，但登录活动报告显示登录成功。为什么?**
 

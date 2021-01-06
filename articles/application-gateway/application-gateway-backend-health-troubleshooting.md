@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: b8acf1b025a5943773821c8ab78de6288eb6bec2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397892"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934894"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>排查应用程序网关中的后端运行状况问题
 ==================================================
@@ -21,6 +21,9 @@ ms.locfileid: "93397892"
 --------
 
 默认情况下，Azure 应用程序网关会探测后端服务器，以检查其运行状态，以及它们是否已准备好为请求提供服务。 用户还可以创建自定义探测，并指定主机名、要探测的路径，以及表示正常的状态代码。 在每种情况下，如果后端服务器未成功响应，则应用程序网关会将该服务器标记为“不正常”，并停止向其转发请求。 服务器成功开始响应后，应用程序网关将继续转发请求。
+
+> [!NOTE]
+> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ### <a name="how-to-check-backend-health"></a>如何检查后端运行状况
 
@@ -191,7 +194,7 @@ BackendAddressPoolsText : [
 
 **消息：** 后端 HTTP 响应的正文与探测设置不匹配。 收到的响应正文不包含 {string}。
 
-**原因：** 创建自定义探测时，可以选择通过匹配响应正文中的字符串将后端服务器标记为正常。 例如，可以将应用程序网关配置为接受“unauthorized”作为要匹配的字符串。 如果探测请求的后端服务器响应包含字符串 **unauthorized** ，则会将该服务器标记为“正常”。 否则，会将其标记为“不正常”并显示此消息。
+**原因：** 创建自定义探测时，可以选择通过匹配响应正文中的字符串将后端服务器标记为正常。 例如，可以将应用程序网关配置为接受“unauthorized”作为要匹配的字符串。 如果探测请求的后端服务器响应包含字符串 **unauthorized**，则会将该服务器标记为“正常”。 否则，会将其标记为“不正常”并显示此消息。
 
 **解决方案：** 若要解决此问题，请执行以下步骤：
 
@@ -292,7 +295,7 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 
 如果在 HTTP 设置中设置了“从后端地址中选取主机名”，则后端地址池必须包含有效的 FQDN。
 
-如果收到此错误消息，表示后端证书的 CN 与自定义探测或 HTTP 设置中配置的主机名不匹配（如果选择了“从后端 HTTP 设置中选取主机名”）。 如果使用默认探测，主机名将设置为 **127.0.0.1** 。 如果这不是所需的值，应创建一个自定义探测，并将其关联到 HTTP 设置。
+如果收到此错误消息，表示后端证书的 CN 与自定义探测或 HTTP 设置中配置的主机名不匹配（如果选择了“从后端 HTTP 设置中选取主机名”）。 如果使用默认探测，主机名将设置为 **127.0.0.1**。 如果这不是所需的值，应创建一个自定义探测，并将其关联到 HTTP 设置。
 
 **解决方案：**
 

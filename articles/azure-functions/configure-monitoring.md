@@ -4,12 +4,12 @@ description: 了解如何将函数应用连接到 Application Insights 以进行
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 77cc87e44990f471ef38871c0225835660779a3c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825762"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937274"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何为 Azure Functions 配置监视
 
@@ -197,7 +197,7 @@ Application Insights 具有[采样](../azure-monitor/app/sampling.md)功能，�
 
 _此功能为预览版。_ 
 
-可以让 [Azure Functions 缩放控制器](./functions-scale.md#runtime-scaling)将日志发出到 Application Insights 或 Blob 存储，以便更好地了解缩放控制器为函数应用做出的决策。
+可以让 [Azure Functions 缩放控制器](./event-driven-scaling.md#runtime-scaling)将日志发出到 Application Insights 或 Blob 存储，以便更好地了解缩放控制器为函数应用做出的决策。
 
 若要启用此功能，请将名为 `SCALE_CONTROLLER_LOGGING_ENABLED` 的应用程序设置添加到函数应用设置中。 此设置的值必须采用基于以下规范的 `<DESTINATION>:<VERBOSITY>` 格式：
 

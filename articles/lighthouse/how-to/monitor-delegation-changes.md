@@ -3,12 +3,12 @@ title: 监视管理租户中的委派更改
 description: 了解如何监视从客户租户到管理租户的委托活动。
 ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 8d254c90881d23255dda5c38a868eb61e51b4f08
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: f65ffda642e67ec6e2c7694a823c2ba6845a7af4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356406"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936101"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>监视管理租户中的委派更改
 
@@ -46,7 +46,7 @@ ms.locfileid: "97356406"
 
 - [创建新的服务主体帐户](../../active-directory/develop/howto-create-service-principal-portal.md) 以便仅用于此函数，而不是将此角色分配到用于其他自动化的现有服务主体。
 - 确保此服务主体不具有对任何委派的客户资源的访问权限。
-- [使用证书进行身份验证](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) ，并 [将其安全地存储在 Azure Key Vault 中](../../key-vault/general/best-practices.md)。
+- [使用证书进行身份验证](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) ，并 [将其安全地存储在 Azure Key Vault 中](../../key-vault/general/security-overview.md)。
 - 限制有权代表服务主体执行操作的用户。
 
 > [!NOTE]

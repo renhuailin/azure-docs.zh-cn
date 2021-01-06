@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df25278d37e518e99bc315a315e017b98c7f4e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deced953089fcbb2640cbf3e402db24cb511e769
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049377"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935880"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>什么是条件访问仅限报告模式？
 
@@ -30,7 +30,7 @@ ms.locfileid: "89049377"
 - 具有 Azure Monitor 订阅的客户可以使用条件访问见解工作簿来监视其条件访问策略的影响。
 
 > [!WARNING]
-> 仅限报告模式下要求符合设备的策略在策略评估过程中可能会提示用户在 Mac、iOS 和 Android 上选择设备证书，即使未强制执行设备合规性。 在使设备符合要求之前，这些提示可能会重复出现。 若要防止最终用户在登录过程中收到提示，请从执行设备合规性检查的仅限报告策略中排除设备平台 Mac、iOS 和 Android。 请注意，仅限报告模式不适用于具有“用户操作”作用域的 CA 策略。
+> 仅限报告模式下要求符合设备的策略在策略评估过程中可能会提示用户在 Mac、iOS 和 Android 上选择设备证书，即使未强制执行设备合规性。 在使设备符合要求之前，这些提示可能会重复出现。 若要防止最终用户在登录过程中收到提示，请从执行设备合规性检查的仅限报告策略中排除设备平台 Mac、iOS 和 Android。 请注意，仅限报表模式不适用于具有 "用户操作" 范围的条件性访问策略。
 
 ![Azure AD 登录日志中的“仅限报告”选项卡](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
 

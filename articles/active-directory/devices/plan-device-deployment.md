@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093083"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936441"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>规划 Azure Active Directory 设备部署
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) 使你的组织能够通过设备标识管理�
 
 * 提高工作效率-通过 Azure AD，你的用户可以对本地资源和云资源进行 [无缝登录 (SSO) ](./azuread-join-sso.md) ，使其在任何位置都能高效工作。
 
-* 提高安全性– Azure AD 设备使你能够基于设备或用户的身份将 [ (CA) 策略的条件访问](../conditional-access/require-managed-devices.md) 应用于资源。 CA 策略可以使用 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)提供额外的保护。 将设备加入 Azure AD 是使用 [无密码 Authentication](../authentication/concept-authentication-passwordless.md) 策略提高安全性的先决条件。
+* 提高安全性– Azure AD 设备使你能够基于设备或用户的身份将 [条件访问策略](../conditional-access/require-managed-devices.md) 应用到资源。 条件性访问策略可以使用 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)提供额外的保护。 将设备加入 Azure AD 是使用 [无密码 Authentication](../authentication/concept-authentication-passwordless.md) 策略提高安全性的先决条件。
 
 * 提高用户体验–在 Azure AD 中使用设备标识，你可以让用户轻松地从个人和公司设备访问组织的基于云的资源。 管理员可以为所有 Windows 设备上的统一体验启用 [企业状态漫游](enterprise-state-roaming-overview.md) 。
 
@@ -109,10 +109,10 @@ iOS 和 Android 设备只能注册 Azure AD。 下表提供了有关 Windows 客
 | Windows 下层设备 (Windows 8.1 或 Windows 7) | | | ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
 |**登录选项**| | |  |
 | 最终用户本地凭据| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| |  |
-| Password| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
+| 密码| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
 | 设备 PIN| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| |  |
 | Windows Hello| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello for Business| | ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
+| Windows Hello 企业版| | ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
 | FIDO 2.0 安全密钥| | ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
 | Microsoft Authenticator 应用 (无密码) | ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
 |**关键功能**| | |  |
@@ -129,7 +129,7 @@ iOS 和 Android 设备只能注册 Azure AD。 下表提供了有关 Windows 客
 
 已注册的设备通常通过 [Microsoft Intune](/mem/intune/enrollment/device-enrollment)进行管理。 设备在 Intune 中注册的方式有很多，具体取决于操作系统。 
 
-Azure AD 注册的设备支持自带设备 (BYOD) 和公司拥有的设备到 SSO 到云资源。 资源的访问基于应用到设备和用户的 Azure AD [CA 策略](../conditional-access/require-managed-devices.md) 。
+Azure AD 注册的设备支持自带设备 (BYOD) 和公司拥有的设备到 SSO 到云资源。 资源的访问基于应用到设备和用户的 Azure AD [条件访问策略](../conditional-access/require-managed-devices.md) 。
 
 ### <a name="registering-devices"></a>注册设备
 

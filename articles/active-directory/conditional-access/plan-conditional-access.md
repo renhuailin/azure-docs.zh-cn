@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b51cc747d3a24b1437eda988397a2e999f6ab3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a43200985820779c56983f09b81a86989261c36f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837475"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934996"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>计划条件访问部署
 
@@ -24,7 +24,7 @@ ms.locfileid: "94837475"
 
 在移动优先、云优先的世界，用户会使用各种设备和应用从任何位置访问组织的资源。 因此，关注谁可以访问资源不再能满足需求。 还需要考虑用户的位置、正在使用的设备、要访问的资源等。 
 
-Azure Active Directory (Azure AD) 条件访问 (CA) 可分析各种信号（例如，用户、设备和位置）以自动做出决策，并强制实施组织的资源访问策略。 你可以使用 CA 策略来应用访问控制，如多重身份验证 (MFA)。 通过 CA 策略，你可以在有安全性需要时提示用户进行 MFA，并在不需要时避免用户进入。
+Azure Active Directory (Azure AD) 条件性访问分析信号（例如用户、设备和位置）以自动完成决策并为资源强制实施组织访问策略。 你可以使用条件性访问策略来应用访问控制，如多重身份验证 (MFA) 。 条件性访问策略允许用户在需要安全时提示用户进行 MFA，并在不需要时保留用户的方式。
 
 ![条件访问概述](./media/plan-conditional-access/conditional-access-overview-how-it-works.png)
 
@@ -38,7 +38,7 @@ Microsoft 提供了标准的条件策略（称为[安全默认值](../fundamenta
 
 部署条件访问的优点是：
 
-* 提高工作效率。 仅在有一个或多个信号支持时，才会中断具有登录条件（如 MFA）的用户。 通过 CA 策略，你可以控制何时提示用户进行 MFA、何时阻止访问以及何时用户必须使用受信任的设备。
+* 提高工作效率。 仅在有一个或多个信号支持时，才会中断具有登录条件（如 MFA）的用户。 使用条件性访问策略，可以控制何时提示用户进行 MFA、访问被阻止以及何时必须使用受信任的设备。
 
 * 管理风险。 通过策略条件自动执行风险评估意味着，一旦识别风险登录便可立即修正或阻止。 将条件访问与[标识保护](../identity-protection/overview-identity-protection.md)耦合在一起，可以检测异常和可疑事件，使您能够在资源访问被阻止或门控时锁定目标。 
 
@@ -71,7 +71,7 @@ Microsoft 提供了标准的条件策略（称为[安全默认值](../fundamenta
 
 * [What is Conditional Access?](https://youtu.be/ffMAw2IVO7A)（什么是条件访问？）
 * [How to deploy Conditional Access?](https://youtu.be/c_izIRNJNuk)（如何部署条件访问？）
-* [How to roll out CA policies to end users?](https://youtu.be/0_Fze7Zpyvc)（如何向最终用户推出 CA 策略？）
+* [如何向最终用户推出条件性访问策略？](https://youtu.be/0_Fze7Zpyvc)
 * [Conditional Access with device controls](https://youtu.be/NcONUf-jeS4)（使用设备控件的条件访问）
 * [使用 Azure AD MFA 的条件性访问](https://youtu.be/Tbc-SU97G-w)
 * [Conditional Access in Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc)（企业移动性 + 安全性中的条件访问）
@@ -102,13 +102,13 @@ Microsoft 提供了标准的条件策略（称为[安全默认值](../fundamenta
 > [!NOTE]
 > 若要推出非特定于管理员的新策略，请排除所有管理员。 这可确保管理员仍可以访问策略，并在出现重大影响时进行更改或撤销。 在应用到所有用户之前，请始终使用较小的用户组验证策略。
 
-## <a name="understand-ca-policy-components"></a>了解 CA 策略组件
-CA 策略是 if-then 语句：如果满足分配条件，则应用这些访问控制。
+## <a name="understand-conditional-access-policy-components"></a>了解条件访问策略组件
+条件访问策略是 if-then 语句：如果满足分配，则应用这些访问控制。
 
-配置 CA 策略时，条件称为“分配”。 通过 CA 策略，你可以根据某些分配对组织的应用强制实施访问控制。
+配置条件访问策略时，条件称为 " *分配*"。 条件性访问策略使你可以基于特定的分配对组织的应用强制实施访问控制。
 
 
-有关详细信息，请参阅[生成 CA 策略](concept-conditional-access-policies.md)。
+有关详细信息，请参阅 [生成条件性访问策略](concept-conditional-access-policies.md)。
 
 ![创建策略屏幕](media/plan-conditional-access/create-policy.png)
 
@@ -195,7 +195,7 @@ CA 策略是 if-then 语句：如果满足分配条件，则应用这些访问�
 ![访问令牌颁发示意图](media/plan-conditional-access/CA-policy-token-issuance.png)
 
 > [!NOTE]
-> 如果不需要分配，并且没有任何有效的 CA 策略，则默认行为是颁发一个访问令牌。 
+> 如果不需要赋值，并且没有有效的条件性访问策略，则默认行为是发出访问令牌。 
 
 例如，请在以下情况下考虑使用策略：
 
@@ -207,14 +207,14 @@ CA 策略是 if-then 语句：如果满足分配条件，则应用这些访问�
 
 条件访问框架提供了极大的配置灵活性。 不过，极大的灵活性也意味着应先仔细检查每个配置策略，然后才能发布，以免产生不良结果。
 
-### <a name="apply-ca-policies-to-every-app"></a>将 CA 策略应用于每个应用
+### <a name="apply-conditional-access-policies-to-every-app"></a>将条件性访问策略应用于每个应用
 
-如果 CA 策略条件不触发访问控制，则默认情况下会颁发访问令牌。 确保每个应用至少已应用一个条件访问策略
+如果条件访问策略条件不触发访问控制，则默认情况下会发出访问令牌。 确保每个应用至少已应用一个条件访问策略
 
 > [!IMPORTANT]
 > 在单个策略中使用“阻止”和所有应用时要非常小心。 这可能会将管理员锁在 Azure 管理门户之外，并且无法为重要终结点（例如 Microsoft Graph）配置排除项。
 
-### <a name="minimize-the-number-of-ca-policies"></a>最大程度地减少 CA 策略的数量
+### <a name="minimize-the-number-of-conditional-access-policies"></a>将条件访问策略的数量降至最低
 
 为每个应用创建一个策略并不是很有效，而且会导致难以管理。 条件访问只会对每个用户应用前 195 个策略。 我们建议你对应用进行分析，并按对相同用户具有相同的资源要求将应用分组。 例如，如果所有 Microsoft 365 应用或所有 HR 应用对同一用户具有相同的要求，请创建一个策略，并包括应用该策略的所有应用。 
 
@@ -228,9 +228,9 @@ CA 策略是 if-then 语句：如果满足分配条件，则应用这些访问�
 
   * 创建一个本地安全组，并将其同步到 Azure AD。 安全组应包含专用的策略管理帐户。 
 
-   * 从所有 CA 策略中排除此安全组。
+   * 豁免此安全组构成所有条件访问策略。
 
-   * 发生服务中断时，请根据需要将其他管理员添加到本地组，并强制执行同步。这会将其例外动态地用于 CA 策略。
+   * 发生服务中断时，请根据需要将其他管理员添加到本地组，并强制执行同步。这会将其例外动态地用于条件访问策略。
 
 ### <a name="set-up-report-only-mode"></a>设置“仅限报告”模式
 
@@ -240,9 +240,9 @@ CA 策略是 if-then 语句：如果满足分配条件，则应用这些访问�
 * 要求 MFA
 * 实施登录风险策略
 
-[仅限报告模式](concept-conditional-access-report-only.md)允许管理员在其环境中启用 CA 策略之前评估其影响。
+[仅限报表模式 ](concept-conditional-access-report-only.md) 使管理员能够在其环境中启用条件性访问策略之前，评估这些策略的影响。
 
-了解如何[在 CA 策略上配置仅限报告模式](howto-conditional-access-insights-reporting.md)。
+了解如何 [在条件性访问策略中配置仅报告模式](howto-conditional-access-insights-reporting.md)。
 
 ### <a name="plan-for-disruption"></a>为应对中断做好计划
 
@@ -293,9 +293,9 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 当新策略为你的环境准备就绪时，请确保在发布策略之前检查每个策略，以避免产生不良结果。
 
-## <a name="common-policies"></a>常用策略
+## <a name="common-policies"></a>通用策略
 
-计划 CA 策略解决方案时，请评估是否需要创建策略来实现以下结果。
+规划条件访问策略解决方案时，请评估是否需要创建策略来实现以下结果。
 
 * [要求 MFA](#require-mfa)
 * [响应可能已泄密的帐户](#respond-to-potentially-compromised-accounts)
@@ -319,7 +319,7 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>响应可能已泄密的帐户
 
-使用 CA 策略，你可以通过可能已泄密的标识对登录实施自动响应。 帐户泄密的可能性以风险级别的形式表示。 “标识保护”会计算两种风险级别：登录风险和用户风险。 以下三个默认策略可以启用。
+使用条件性访问策略，你可以通过可能泄露的标识来实现对登录的自动响应。 帐户泄密的可能性以风险级别的形式表示。 “标识保护”会计算两种风险级别：登录风险和用户风险。 以下三个默认策略可以启用。
 
 * [要求所有用户注册 MFA](howto-conditional-access-policy-risk.md)
 
@@ -374,9 +374,9 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 ### <a name="create-a-test-plan"></a>创建测试计划
 
-测试计划非常重要，它可以在预期结果与实际结果之间进行比较。 进行测试之前，始终应该持有某种预期。 下表概述了示例测试用例。 根据 CA 策略的配置方式调整方案和预期结果。
+测试计划非常重要，它可以在预期结果与实际结果之间进行比较。 进行测试之前，始终应该持有某种预期。 下表概述了示例测试用例。 基于条件性访问策略的配置方式调整方案和预期结果。
 
-| 策略| 方案| 预期结果 |
+| 策略| 场景| 预期结果 |
 | - | - | - |
 | [在非工作时间要求执行 MFA](untrusted-networks.md)| 经授权的用户在受信任的位置/工作时登录到应用| 不提示用户执行 MFA |
 | [在非工作时间要求执行 MFA](untrusted-networks.md)| 经授权的用户不在受信任的位置/工作时登录到应用| 提示用户执行 MFA，他们可以成功登录 |
@@ -389,9 +389,9 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 ### <a name="configure-the-test-policy"></a>配置测试策略
 
-在 [Azure 门户](https://portal.azure.com/)中，你将在“Azure Active Directory”>“安全性”>“条件访问”下配置 CA 策略。
+在 [Azure 门户](https://portal.azure.com/)中，你将配置条件访问策略，Azure Active Directory > 安全 > 条件性访问。
 
-如果要了解有关如何创建 CA 策略的详细信息，请参阅以下示例：[用户登录到 Azure 门户时提示执行 MFA 的 CA 策略](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。 此快速入门可帮助你：
+如果要了解有关如何创建条件性访问策略的详细信息，请参阅以下示例： [条件访问策略，以便在用户登录到 Azure 门户时提示进行 MFA](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。 此快速入门可帮助你：
 
 * 熟悉用户界面
 
@@ -415,7 +415,7 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 验证条件访问策略的另一种方法是使用[假设工具](troubleshoot-conditional-access-what-if.md)，该工具模拟哪些策略将应用于在假设环境下登录的用户。 选择要测试的登录属性（例如，用户、应用程序、设备平台和位置），并查看要应用的策略。
 
 > [!NOTE] 
-> 尽管模拟运行可让你很好地了解 CA 策略的影响，但它不能取代实际的测试运行。
+> 尽管模拟运行可让你充分了解条件访问策略的影响，但它不会取代实际的测试运行。
 
 ### <a name="test-your-policy"></a>测试策略
 
@@ -442,14 +442,14 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 ## <a name="manage-access-to-cloud-apps"></a>管理对云应用的访问权限
 
-使用以下管理选项来控制和管理 CA 策略：
+使用以下管理选项控制和管理你的条件访问策略：
 
 ![显示用于 CA 策略的“管理”选项的屏幕截图，其中包括命名位置、自定义控件、使用条款、VPN 连接性以及所选的经典策略。](media/plan-conditional-access/manage-access.png)
 
 
 ### <a name="named-locations"></a>命名位置
 
-使用 CA 策略的位置条件可将访问控制设置绑定到用户的网络位置。 使用[命名位置](location-condition.md)可以创建 IP 地址范围、国家和地区的逻辑分组。
+使用条件访问策略的位置条件可将访问控制设置绑定到用户的网络位置。 使用[命名位置](location-condition.md)可以创建 IP 地址范围、国家和地区的逻辑分组。
 
 ### <a name="custom-controls"></a>自定义控件
 
@@ -459,9 +459,9 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 在访问环境中的某些云应用之前，你可能希望通过使用条款 (ToU) 来获取用户的同意。 请按照以下[快速入门创建使用条款](require-tou.md)。
 
-## <a name="troubleshoot-conditional-access"></a>排查条件访问问题
+## <a name="troubleshoot-conditional-access"></a>条件访问疑难解答
 
-如果用户遇到 CA 策略问题，请收集以下信息以便于进行故障排除。
+如果用户遇到条件性访问策略问题，请收集以下信息以便于进行故障排除。
 
 * 用户主体名称
 
@@ -493,4 +493,4 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 [详细了解标识保护](../identity-protection/overview-identity-protection.md)
 
-[利用 Microsoft Graph API 管理 CA 策略](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[使用 Microsoft Graph API 管理条件性访问策略](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

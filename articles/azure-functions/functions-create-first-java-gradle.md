@@ -1,24 +1,24 @@
 ---
 title: 使用 Java 和 Gradle 将函数发布到 Azure
-description: 使用 Java 和 Gradle 创建 HTTP 触发的函数并将其发布到 Azure。
+description: 通过 Java 和 Gradle 创建一个 HTTP 触发的函数，并将其发布到 Azure。
 author: KarlErickson
 ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 48a732e3935d78bdbf8b81fe989b59be1fbe2203
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c9ecb670cea022988efda8ec690c0724310cdb4b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020426"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934843"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 Java 和 Gradle 创建函数并将其发布到 Azure
 
-本文说明如何使用 Gradle 命令行工具生成和发布 Java 函数项目以 Azure Functions。 完成后，函数代码会在 Azure 的[无服务器托管计划](functions-scale.md#consumption-plan)中运行，并由 HTTP 请求触发。 
+本文介绍如何使用 Gradle 命令行工具生成 Java 函数项目并将其发布到 Azure Functions。 完成后，函数代码会在 Azure 的[无服务器托管计划](consumption-plan.md)中运行，并由 HTTP 请求触发。 
 
 > [!NOTE]
-> 如果 Gradle 不是你首选的开发工具，请使用 [Maven](./create-first-function-cli-java.md)、 [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [VS Code](./create-first-function-vs-code-java.md)来查看适用于 Java 开发人员的类似教程。
+> 如果 Gradle 不是你的首选开发工具，请查看面向使用 [Maven](./create-first-function-cli-java.md)、[IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [VS Code](./create-first-function-vs-code-java.md) 的 Java 开发人员的类似教程。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,14 +27,14 @@ ms.locfileid: "96020426"
 - [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)版本 8
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.6.666 或更高版本
-- [Gradle](https://gradle.org/)，版本4.10 及更高版本
+- [Gradle](https://gradle.org/) 4.10 和更高版本
 
 还需要一个有效的 Azure 订阅。 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
 > JAVA_HOME 环境变量必须设置为 JDK 的安装位置，以完成本快速入门。
 
-## <a name="prepare-a-functions-project"></a>准备函数项目
+## <a name="prepare-a-functions-project"></a>准备 Functions 项目
 
 使用以下命令克隆示例项目：
 
@@ -43,7 +43,7 @@ git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
 cd azure-functions-samples-java/
 ```
 
-打开 `build.gradle` 并将 `appName` 以下部分中的更改为唯一名称，以避免在部署到 Azure 时域名冲突。 
+打开 `build.gradle`，将以下节中的 `appName` 更改为唯一名称，以免在部署到 Azure 时发生域名冲突。 
 
 ```gradle
 azurefunctions {
@@ -65,7 +65,7 @@ azurefunctions {
 
 ## <a name="run-the-function-locally"></a>在本地运行函数
 
-运行以下命令生成并运行函数项目：
+运行以下命令，以生成并运行函数项目：
 
 ```bash
 gradle jar --info
@@ -85,7 +85,7 @@ Http Functions:
 ...
 </pre>
 
-在新的终端窗口中使用以下卷曲命令，从命令行触发函数：
+在新的终端窗口中使用以下 cURL 命令，从命令行触发函数：
 
 ```bash
 curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
@@ -98,7 +98,7 @@ Hello, AzureFunctions
 </pre>
 
 > [!NOTE]
-> 如果将 authLevel 设置为 `FUNCTION` 或 `ADMIN` ，则在本地运行时不需要此 [功能键](functions-bindings-http-webhook-trigger.md#authorization-keys) 。  
+> 如果将 authLevel 设置为 `FUNCTION` 或 `ADMIN`，则在本地运行时不需要[函数密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)。  
 
 在终端中使用 `Ctrl+C` 停止函数代码。
 
@@ -122,16 +122,16 @@ az login
 gradle azureFunctionsDeploy
 ```
 
-这会根据 gradle 文件中的值在 Azure 中创建以下资源：
+这会根据 build.gradle 文件中的值在 Azure 中创建以下资源：
 
 + 资源组。 使用你提供的 _resourceGroup_ 命名。
 + 存储帐户。 Functions 所需。 此名称根据存储帐户名称要求随机生成。
-+ 应用服务计划。 在指定的 _appRegion_ 中，函数应用的无服务器消耗计划托管。 此名称随机生成。
++ 应用服务计划。 指定的 appRegion 中为函数应用托管的无服务器消耗计划。 此名称随机生成。
 + 函数应用。 函数应用是函数的部署和执行单元。 此名称是 _appName_ 追加一个随机生成的数字。 
 
 此部署还会在启用“从包运行”模式的情况下，使用 [zip deployment](functions-deployment-technologies.md#zip-deploy) 将项目文件打包并部署到新函数应用。
 
-示例项目中的 authLevel for HTTP 触发器是 `ANONYMOUS` ，它将跳过身份验证。 但是，如果使用其他 authLevel （如 `FUNCTION` 或 `ADMIN` ），则需要获取函数键，以便通过 HTTP 调用函数终结点。 若要获取函数密钥，最简单的方法是使用 [Azure 门户]。
+示例项目中 HTTP 触发器的 authLevel 为 `ANONYMOUS`，它将跳过身份验证。 但是，如果使用其他 authLevel（如 `FUNCTION` 或 `ADMIN`），则需要获得函数密钥以通过 HTTP 调用函数终结点。 若要获取函数密钥，最简单的方法是使用 [Azure 门户]。
 
 > [!div class="nextstepaction"]
 > [我遇到了问题](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=deploy)
@@ -142,7 +142,7 @@ gradle azureFunctionsDeploy
 
 1. 浏览到 [Azure 门户]，登录，在页面顶部将函数应用的 _appName_ 键入“搜索”栏，然后按 Enter。
  
-1. 在函数应用中，选择 " **函数**"，选择函数，然后单击右上角的 " **</> 获取函数 Url** "。 
+1. 在函数应用中选择“函数”，选择你的函数，然后单击右上角的“</> 获取函数 URL”。  
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="从 Azure 门户复制函数 URL":::
 

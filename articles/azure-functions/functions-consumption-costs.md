@@ -3,12 +3,12 @@ title: 估算 Azure Functions 中的消耗计划成本
 description: 了解如何更好地估算在 Azure 的消耗计划中运行函数应用时可能产生的成本。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 58082e03c1416848e9aa1e97308bed1ceaa67295
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168099"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934877"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估算消耗计划成本
 
@@ -16,9 +16,9 @@ ms.locfileid: "92168099"
 
 | 计划 | 说明 |
 | ---- | ----------- |
-| [**消耗**](functions-scale.md#consumption-plan) | 只根据函数应用的运行时间收费。 此计划包括基于订阅的[免费授予][定价页]。|
-| [**高级**](functions-scale.md#premium-plan) | 提供与消耗计划相同的功能和缩放机制，但具有增强的性能和 VNET 访问权限。 成本取决于所选的定价层。 若要了解详细信息，请参阅 [Azure Functions 高级计划](functions-premium-plan.md)。 |
-| [**专用（应用服务）** ](functions-scale.md#app-service-plan) <br/>（基本或更高层） | 需要在专用 VM 或隔离的环境中运行、自定义映像，或想要使用超额的应用服务计划容量时。 使用[常规应用服务计划计费](https://azure.microsoft.com/pricing/details/app-service/)。 成本取决于所选的定价层。|
+| [**消耗**](consumption-plan.md) | 只根据函数应用的运行时间收费。 此计划包括基于订阅的[免费授予][定价页]。|
+| [**高级**](functions-premium-plan.md) | 提供与“消耗”计划相同的功能和缩放机制，但具有增强的性能和 VNET 访问权限。 成本取决于所选的定价层。 若要了解详细信息，请参阅 [Azure Functions 高级计划](functions-premium-plan.md)。 |
+| [**专用（应用服务）**](dedicated-plan.md) <br/>（基本或更高层） | 需要在专用 VM 或隔离的环境中运行、自定义映像，或想要使用超额的应用服务计划容量时。 使用[常规应用服务计划计费](https://azure.microsoft.com/pricing/details/app-service/)。 成本取决于所选的定价层。|
 
 选择对函数性能和成本要求最有利的计划。 若要了解详细信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md)。
 
@@ -57,13 +57,13 @@ Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 
 
 函数的以下行为可能会影响执行时间：
 
-+ **触发器和绑定**：从[函数绑定](functions-triggers-bindings.md)读取输入以及向其写入输出所花费的时间计为执行时间。 例如，如果函数使用某个输出绑定将消息写入 Azure 存储队列，则执行时间包括将该消息写入该队列所花费的时间，而函数成本计算包括该写入时间。 
++ **触发器和绑定**：从 [函数绑定](functions-triggers-bindings.md)读取输入以及向其写入输出所花费的时间计为执行时间。 例如，如果函数使用某个输出绑定将消息写入 Azure 存储队列，则执行时间包括将该消息写入该队列所花费的时间，而函数成本计算包括该写入时间。 
 
 + **异步执行**：函数等待异步请求（在 C# 中为 `await`）结果的时间计为执行时间。 “GB 秒”计算基于函数的开始和结束时间，以及该时间段内的内存用量。 计算中不考虑该时间段内发生的 CPU 活动。 也许可以使用 [Durable Functions](durable/durable-functions-overview.md) 来降低异步操作期间产生的成本。 业务流程协调程序函数中的等待时间不产生费用。
 
 ## <a name="viewing-cost-related-data"></a>查看与成本相关的数据
 
-在 [您的发票](../cost-management-billing/understand/download-azure-invoice.md)中，可以查看所有执行的与成本相关的数据 **-函数** 和 **执行时间-函数**以及实际计费的成本。 但是，此发票数据是过去发票周期的每月聚合。 
+在 [您的发票](../cost-management-billing/understand/download-azure-invoice.md)中，可以查看所有执行的与成本相关的数据 **-函数** 和 **执行时间-函数** 以及实际计费的成本。 但是，此发票数据是过去发票周期的每月聚合。 
 
 ### <a name="function-app-level-metrics"></a>函数应用级指标
 
@@ -73,7 +73,7 @@ Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 
 
 使用 [Azure Monitor 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)可以图形格式查看消耗计划函数应用的成本相关数据。 
 
-1. 在 [Azure 门户]顶部的“搜索服务、资源和文档”中搜索 `monitor`，然后选择“服务”下的“Monitor”。************
+1. 在 [Azure 门户]顶部的“搜索服务、资源和文档”中搜索 `monitor`，然后选择“服务”下的“Monitor”。
 
 1. 在左侧选择“指标” > “选择资源”，然后使用图像下方的设置选择你的函数应用。 
 
@@ -87,13 +87,13 @@ Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 
     | 资源类型     |  应用服务 | 函数应用将作为应用服务实例显示在 Monitor 中。 |
     | 资源     |  你的函数应用  | 要监视的函数应用。        |
 
-1. 选择“应用”以选择你的函数应用作为要监视的资源。****
+1. 选择“应用”以选择你的函数应用作为要监视的资源。
 
-1. 在“指标”中，为“聚合”选择“函数执行计数”和“求和”。**************** 这会在图表中将所选时间段内的执行计数之和相加。
+1. 在“指标”中，为“聚合”选择“函数执行计数”和“求和”。 这会在图表中将所选时间段内的执行计数之和相加。
 
     ![定义要添加到图表中的函数应用指标](media/functions-consumption-costing/monitor-metrics-add-metric.png)
 
-1. 选择“添加指标”并重复步骤 2-4，将“函数执行单位”添加到图表中。******** 
+1. 选择“添加指标”并重复步骤 2-4，将“函数执行单位”添加到图表中。 
 
 生成的图表包含所选时间范围内（在本例中为 2 小时）两个执行指标的总和。
 

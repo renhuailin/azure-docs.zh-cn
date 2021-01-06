@@ -1,14 +1,14 @@
 ---
 title: 防火墙访问规则
-description: 通过允许访问（“加入允许列表”）REST API 和数据终结点域名或特定于服务的 IP 地址范围，来配置规则以访问防火墙后的 Azure 容器注册表。
+description: 通过允许访问 REST API 和数据终结点域名或服务特定的 IP 地址范围，配置从防火墙后面访问 Azure 容器注册表的规则。
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 548d64632c1d726111770dfb49f705d31f5ca714
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148510"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935982"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>配置规则以访问防火墙后的 Azure 容器注册表
 
@@ -22,7 +22,7 @@ ms.locfileid: "92148510"
 
 * 注册表 REST API 终结点 - 身份验证和注册表管理操作通过注册表的公共 REST API 终结点进行处理。 此终结点是注册表的登录服务器名称。 示例： `myregistry.azurecr.io`
 
-* **存储（数据）终结点** - Azure 代表每个注册表在 Azure 存储帐户中[分配 blob 存储](container-registry-storage.md)，以管理容器映像和其他项目的数据。 当客户端访问 Azure 容器注册表中的映像层时，它会使用注册表提供的存储帐户终结点发出请求。
+* **存储（数据）终结点** - Azure 代表每个注册表在 Azure 存储帐户中 [分配 blob 存储](container-registry-storage.md)，以管理容器映像和其他项目的数据。 当客户端访问 Azure 容器注册表中的映像层时，它会使用注册表提供的存储帐户终结点发出请求。
 
 如果你的注册表是[异地复制](container-registry-geo-replication.md)的，则客户端可能需要与特定区域或多个已复制区域中的数据终结点交互。
 

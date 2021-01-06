@@ -3,12 +3,12 @@ title: 将 Azure Functions 与 Azure 虚拟网络集成
 description: 演示如何将函数连接到 Azure 虚拟网络的分步教程
 ms.topic: article
 ms.date: 4/23/2020
-ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efc936111d162d73b1cc5465ae6b677c9006ab32
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387517"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937004"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>教程：将 Functions 与 Azure 虚拟网络集成
 
@@ -62,7 +62,7 @@ ms.locfileid: "87387517"
     | **虚拟机名称** | VNET-Wordpress | VM 名称在资源组中需保持唯一 |
     | **[区域](https://azure.microsoft.com/regions/)** |  (欧洲) 西欧 | 在访问 VM 的函数附近或附近选择一个区域。 |
     | **大小** | B1s | 选择 " **更改大小** "，然后选择 B1s 标准映像，其中包含1个 vCPU 和 1 GB 的内存。 |
-    | **身份验证类型** | Password | 若要使用密码身份验证，还必须指定 **用户名**、安全 **密码**，然后 **确认密码**。 对于本教程，无需登录到 VM，除非需要进行故障排除。 |
+    | **身份验证类型** | 密码 | 若要使用密码身份验证，还必须指定 **用户名**、安全 **密码**，然后 **确认密码**。 对于本教程，无需登录到 VM，除非需要进行故障排除。 |
 
 1. 选择 " **网络** " 选项卡，然后在 "配置虚拟网络" 下选择 " **新建**"。
 
@@ -101,13 +101,25 @@ ms.locfileid: "87387517"
 
 1. 在“VNet 集成”下，选择“单击此处进行配置”。 
 
-    :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="在 function app 中选择网络&quot;:::
+    :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="在 function app 中选择网络":::
 
-1. 在 &quot; **VNET 集成** &quot; 页上，选择 " **添加 VNET**"。
+1. 在 " **VNET 集成** " 页上，选择 " **添加 VNET**"。
 
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="在 function app 中选择网络&quot;:::
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="添加 VNet 集成预览":::
 
-1. 在 &quot; **VNET 集成** &quot; 页上，选择 " 页。
+1. 在 " **网络功能状态**" 中，使用映像下表中的设置：
+
+    ![定义函数应用虚拟网络](./media/functions-create-vnet/networking-3.png)
+
+    | 设置      | 建议的值  | 说明      |
+    | ------------ | ---------------- | ---------------- |
+    | **虚拟网络** | MyResourceGroup-vnet | 此虚拟网络是你之前创建的网络。 |
+    | **子网** | 创建新子网 | 在虚拟网络中创建一个子网，以便函数应用使用。 必须将 VNet 集成配置为使用空子网。 函数使用不同于 VM 的子网并不重要。 虚拟网络自动在两个子网之间路由流量。 |
+    | **子网名称** | Function-Net | 新子网的名称。 |
+    | **虚拟网络地址块** | 10.10.0.0/16 | 选择 WordPress 站点使用的同一个地址块。 只应定义一个地址块。 |
+    | **地址范围** | 10.10.2.0/24   | 子网大小限制高级计划函数应用可以向外扩展到的实例总数。 此示例使用 `/24` 具有254个可用主机地址的子网。 此子网过度预配，但易于计算。 |
+
+1. 选择 **"确定"** 以添加子网。 关闭 " **VNet 集成** " 和 " **网络功能状态** " 页，返回到 "function app" 页。
 
 函数应用现在可以访问运行 WordPress 站点的虚拟网络。 接下来，使用 [Azure Functions 代理](functions-proxies.md) 从 WordPress 站点返回文件。
 
@@ -117,13 +129,19 @@ ms.locfileid: "87387517"
 
 1. 在 function app 中，从左侧菜单中选择 "  **代理** "，然后选择 " **添加**"。 使用映像下表中的代理设置：
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="在 function app 中选择网络&quot;:::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="定义代理设置":::
 
-1. 在 &quot; **VNET 集成** &quot; 页上，选择 " **创建** "，将代理添加到 function app。
+    | 设置  | 建议的值  | 说明      |
+    | -------- | ---------------- | ---------------- |
+    | **名称** | PlAnT | 该名称可以是任何值。 它用于标识代理。 |
+    | **路由模板** | /plant | 映射到 VM 资源的路由。 |
+    | **后端 URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | 将替换 `<YOUR_VM_IP>` 为前面创建的 WORDPRESS VM 的 IP 地址。 此映射返回站点中的单个文件。 |
+
+1. 选择 " **创建** "，将代理添加到 function app。
 
 ## <a name="try-it-out"></a>试试看
 
-1. 在浏览器中，尝试访问用作 **后端 url**的 URL。 如预期那样，请求会超时。发生超时的原因是你的 WordPress 站点仅连接到你的虚拟网络而不是 internet。
+1. 在浏览器中，尝试访问用作 **后端 url** 的 URL。 如预期那样，请求会超时。发生超时的原因是你的 WordPress 站点仅连接到你的虚拟网络而不是 internet。
 
 1. 复制新代理中的 " **代理 URL** " 值，并将其粘贴到浏览器的地址栏中。 返回的映像来自虚拟网络内运行的 WordPress 站点。
 
@@ -142,4 +160,4 @@ ms.locfileid: "87387517"
 > [!div class="nextstepaction"]
 > [详细了解 Functions 中的网络选项](./functions-networking-options.md)
 
-[高级计划]: functions-scale.md#premium-plan
+[高级计划]: functions-premium-plan.md

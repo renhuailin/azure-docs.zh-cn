@@ -3,12 +3,12 @@ title: 模板中的变量
 description: 介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义变量。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 5d9b58d63e96656c45d3494d24099bbeadc46b11
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7f782f9c7d3107472a74fcab73290c4cebf73693
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353453"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934656"
 ---
 # <a name="variables-in-arm-template"></a>ARM 模板中的变量
 
@@ -16,7 +16,7 @@ ms.locfileid: "96353453"
 
 资源管理器会在启动部署操作之前解析变量。 只要在模板中使用变量，资源管理器就会将其替换为解析的值。
 
-每个变量的格式必须与其中一个 [数据类型](template-syntax.md#data-types)匹配。
+每个变量的格式必须与[数据类型](template-syntax.md#data-types)中的一种匹配。
 
 ## <a name="define-variable"></a>定义变量
 
@@ -28,7 +28,7 @@ ms.locfileid: "96353453"
 },
 ```
 
-不能在 variables 节中使用 [reference](template-functions-resource.md#reference) 函数或任何 [list](template-functions-resource.md#list) 函数。 在解析变量时，这些函数获取资源的运行时状态，不能在部署之前执行。
+不能使用 [reference](template-functions-resource.md#reference) 函数或节中的任何 [列表](template-functions-resource.md#list) 函数 `variables` 。 在解析变量时，这些函数获取资源的运行时状态，不能在部署之前执行。
 
 ## <a name="use-variable"></a>使用变量
 
@@ -63,7 +63,7 @@ ms.locfileid: "96353453"
 },
 ```
 
-在参数中，可以创建一个值，用于指示要使用的配置值。
+在中 `parameters` ，创建一个值，用于指示要使用的配置值。
 
 ```json
 "parameters": {
@@ -87,7 +87,7 @@ ms.locfileid: "96353453"
 
 以下示例演示了使用变量的方案。
 
-|模板  |描述  |
+|模板  |说明  |
 |---------|---------|
 | [变量定义](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | 演示不同类型的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |
 | [配置变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 演示如何使用定义配置值的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d4df373f78a9c74584d0e4046f7532a2190f3a3f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370961"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935744"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory 调控操作参考指南
 
@@ -56,10 +56,10 @@ ms.locfileid: "92370961"
 
 在进行测试时需要特别注意的一些变化，从简单的技术（例如，向外扩展用户的目标子集到在并行测试租户中部署更改）。 如果尚未实现测试策略，则应根据下表中的准则定义测试方法：
 
-| 场景| 建议 |
+| 方案| 建议 |
 |-|-|
 |将身份验证类型从联合更改为 PHS/PTA，反之亦然| 使用 [分阶段推出](../hybrid/how-to-connect-staged-rollout.md) 来测试更改身份验证类型的影响。|
-| (CA) 策略或 Identity Protection 策略推出新的条件访问|创建新的 CA 策略并将其分配给测试用户。|
+| (CA) 策略或 Identity Protection 策略推出新的条件访问|创建新的条件访问策略并将其分配给测试用户。|
 |载入应用程序的测试环境|将应用程序添加到生产环境，将其从 "MyApps" 面板中隐藏，并在质量保证 (QA) 阶段将其分配给测试用户。|
 |更改同步规则|使用当前在生产环境中的相同配置（也称为暂存模式）执行测试 Azure AD Connect 中的更改，并分析 CSExport 结果。 如果满意，请在准备就绪时切换到生产环境。|
 |更改品牌|在单独的测试租户中测试。|

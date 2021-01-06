@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: eae7d0a34d6bd76dae5998f05f9d64e0d40f7d9b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c18d235977f1256a10e813fa8e02aa3590366fe1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321609"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936407"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>使用 Azure SQL 数据库和 Azure Synapse Analytics 的条件性访问
 
@@ -25,7 +25,7 @@ ms.locfileid: "93321609"
 
 [AZURE Sql 数据库](sql-database-paas-overview.md)、 [azure Sql 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 支持 Microsoft 条件性访问。
 
-以下步骤演示了如何将 Azure SQL 数据库、SQL 托管实例或 Azure Synapse 配置为强制 (CA) 策略的条件性访问。  
+以下步骤演示了如何将 Azure SQL 数据库、SQL 托管实例或 Azure Synapse 配置为强制实施条件性访问策略。  
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,11 +37,11 @@ ms.locfileid: "93321609"
 > [!NOTE]
 > 下面的示例使用 Azure SQL 数据库，但应选择要配置条件性访问的相应产品。
 
-1. 登录到 Azure 门户，选择 " **Azure Active Directory** "，然后选择 " **条件访问** "。 有关详细信息，请参阅 [Azure Active Directory 条件性访问技术参考](../../active-directory/conditional-access/concept-conditional-access-conditions.md)。  
+1. 登录到 Azure 门户，选择 " **Azure Active Directory**"，然后选择 " **条件访问**"。 有关详细信息，请参阅 [Azure Active Directory 条件性访问技术参考](../../active-directory/conditional-access/concept-conditional-access-conditions.md)。  
    ![条件访问边栏选项卡](./media/conditional-access-configure/conditional-access-blade.png)
 
 2. 在“条件性访问策略”边栏选项卡中，单击“新建策略”，提供一个名称，然后单击“配置规则”。  
-3. 在 " **分配** " 下，选择 " **用户和组** "，选中 " **选择用户和组** "，然后选择用于条件性访问的用户或组。 单击“选择”，然后单击“完成”应用所选内容。  
+3. 在 " **分配**" 下，选择 " **用户和组**"，选中 " **选择用户和组**"，然后选择用于条件性访问的用户或组。 单击“选择”，然后单击“完成”应用所选内容。  
    ![选择用户和组](./media/conditional-access-configure/select-users-and-groups.png)  
 
 4. 选择“云应用”，单击“选择应用”。 你将看到可用于条件性访问的所有应用。 选择“Azure SQL 数据库”，单击底部的“选择”，然后单击“完成”。  

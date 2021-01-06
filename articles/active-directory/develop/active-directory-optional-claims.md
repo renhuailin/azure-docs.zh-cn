@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/04/2021
+ms.date: 1/05/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4674fe41a0e3d63ef0cadc6ad55eca02fc69618e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916246"
+ms.locfileid: "97935897"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用提供可选声明
 
@@ -94,7 +94,7 @@ V2 令牌格式的某些改进可用于使用 v1 令牌格式的应用，因为�
 
 | JWT 声明     | 名称                            | 说明 | 说明 |
 |---------------|---------------------------------|-------------|-------|
-|`aud`          | 目标受众 | 始终存在于 Jwt 中，但在 v1 访问令牌中，可以通过多种方式发出，这在执行令牌验证时很难编码。  使用 [此声明的其他属性](#additional-properties-of-optional-claims) ，以确保它始终设置为 v1 访问令牌中的 GUID。 | v1 JWT 访问令牌|
+|`aud`          | 目标受众 | 始终存在于 Jwt 中，但在 v1 访问令牌中，可以通过多种方式发出此类-任何 appID URI （带有或不带尾随斜杠）以及资源的客户端 ID。 执行令牌验证时，此随机化很难编码。  使用 [此声明的其他属性](#additional-properties-of-optional-claims) ，以确保在 v1 访问令牌中始终将其设置为资源的客户端 ID。 | v1 JWT 访问令牌|
 |`preferred_username` | 首选用户名        | 提供 v1 令牌中的首选用户名声明。 这使得应用程序能够更轻松地提供用户名提示并显示用户可读的显示名称，而不考虑其标记类型。  建议使用此可选声明，而不是使用，例如 `upn` 或 `unique_name` 。 | v1 ID 令牌和访问令牌 |
 
 ### <a name="additional-properties-of-optional-claims"></a>可选声明的附加属性
@@ -108,8 +108,8 @@ V2 令牌格式的某些改进可用于使用 v1 令牌格式的应用，因为�
 | `upn`          |                          | 可用于 SAML 和 JWT 响应，以及 v1.0 和 v2.0 令牌。 |
 |                | `include_externally_authenticated_upn`  | 包含资源租户中存储的来宾 UPN。 例如： `foo_hometenant.com#EXT#@resourcetenant.com` |
 |                | `include_externally_authenticated_upn_without_hash` | 同上，不过，井号标记 (`#`) 已替换为下划线 (`_`)，例如 `foo_hometenant.com_EXT_@resourcetenant.com`|
-| `aud`          |                          | 在 v1 访问令牌中，这用于更改声明的格式 `aud` 。  这对于 v2 令牌或 ID 令牌不起作用，其中， `aud` 声明始终是客户端 ID。 使用此信息来确保 API 可以更轻松地执行受众验证。 与影响访问令牌的所有可选声明一样，请求中的资源必须设置此可选声明，因为资源拥有访问令牌。|
-|                | `use_guid`               | 以 GUID 格式发出资源 () API 的客户端 ID 作为声明， `aud` 而不是 APPID URI 或 GUID。 因此，如果资源的客户端 ID 为 `bb0a297b-6a42-4a55-ac40-09a501456577` ，则请求该资源的访问令牌的任何应用都将接收具有以下内容的访问令牌 `aud` ： `bb0a297b-6a42-4a55-ac40-09a501456577` 。|
+| `aud`          |                          | 在 v1 访问令牌中，这用于更改声明的格式 `aud` 。  这不会影响 v2 令牌或版本的 ID 令牌，其中， `aud` 声明始终是客户端 ID。 使用此配置以确保你的 API 能够更轻松地执行受众验证。 与影响访问令牌的所有可选声明一样，请求中的资源必须设置此可选声明，因为资源拥有访问令牌。|
+|                | `use_guid`               | 以 GUID 格式发出资源 () API 的客户端 ID 作为声明， `aud` 而不是依赖于运行时的声明。 例如，如果资源设置了此标志，并且它的客户端 ID 为 `bb0a297b-6a42-4a55-ac40-09a501456577` ，则请求该资源的访问令牌的任何应用都将接收具有以下内容的访问令牌 `aud` ： `bb0a297b-6a42-4a55-ac40-09a501456577` 。 </br></br> 如果没有此声明集，则 api 可以使用 `aud` 声明的 `api://MyApi.com` 、 `api://MyApi.com/` `api://myapi.com/AdditionalRegisteredField` 或任何其他值设置为该 API 的应用 id URI，以及资源的客户端 id。 |
 
 #### <a name="additional-properties-example"></a>附加属性示例
 

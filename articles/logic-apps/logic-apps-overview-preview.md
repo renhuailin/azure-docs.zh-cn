@@ -1,17 +1,17 @@
 ---
-title: Azure 逻辑应用预览概述
+title: Azure 逻辑应用预览版概述
 description: Azure 逻辑应用预览版是一种云解决方案，用于构建自动有状态和无状态的工作流，这些工作流集成应用、数据、服务和系统，并对企业级方案使用最少的代码。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 0c4d0416c107c9ceb4cd0dbdf80761ab9b52d56c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924183"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936118"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>概述： Azure 逻辑应用预览
 
@@ -148,7 +148,7 @@ Azure 逻辑应用预览包括许多当前功能和其他功能，例如：
 
 在 Azure 门户中创建新的逻辑应用类型或从 Visual Studio Code 部署时，必须选择要使用的逻辑应用的托管计划（ [应用服务或高级](../azure-functions/functions-scale.md)）。 此计划确定适用于运行逻辑应用的定价模型。 如果选择 "应用服务计划"，则还必须选择 [定价层](../app-service/overview-hosting-plans.md)。
 
-有 *状态* 工作流使用 [外部存储](../azure-functions/functions-scale.md#storage-account-requirements)，因此 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)适用于 azure 逻辑应用预览运行时执行的存储事务。 例如，队列用于计划，而表和 blob 用于存储工作流状态。
+有 *状态* 工作流使用 [外部存储](../azure-functions/storage-considerations.md#storage-account-requirements)，因此 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)适用于 azure 逻辑应用预览运行时执行的存储事务。 例如，队列用于计划，而表和 blob 用于存储工作流状态。
 
 > [!NOTE]
 > 公共预览期间，在应用服务上运行逻辑应用不会在所选计划的顶部产生 *额外* 的费用。

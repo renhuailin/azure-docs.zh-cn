@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 86e13c0f57b30d2c53d9194e89ec89e7abdf1574
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 707c69efddeda364f0c62e9719ae1a6073dfe9ad
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187045"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935727"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>适用于 Azure Functions 的 Azure 安全基线
 
@@ -26,7 +26,7 @@ ms.locfileid: "96187045"
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络上使用网络安全组或 Azure 防火墙来保护资源
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络中使用网络安全组或 Azure 防火墙保护资源
 
 **指南**：将 Azure Functions 应用与 Azure 虚拟网络集成。 在高级计划中运行的函数应用与 Azure App Service 中的 web 应用具有相同的托管功能，其中包括 "VNet 集成" 功能。  使用 azure 虚拟网络可以将许多 Azure 资源（如 Azure Functions）放置在非 internet 可路由网络中。
 
@@ -42,7 +42,7 @@ ms.locfileid: "96187045"
 
 **指南**：使用 Azure 安全中心并按照网络保护建议来帮助保护与 Azure Functions 应用相关的网络资源和网络配置。
 
-如果将网络安全组与 Azure Functions 实现 (Nsg) ，请启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+如果将网络安全组与 Azure Functions 实现 (Nsg) ，请启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 - [了解 Azure 安全中心提供的网络安全](../security-center/security-center-network-recommendations.md)
 
@@ -80,7 +80,7 @@ ms.locfileid: "96187045"
 
 - [Azure Functions 网络选项](./functions-networking-options.md)
 
-- [Azure Functions 高级计划](./functions-scale.md#premium-plan)
+- [Azure Functions 高级计划](./functions-premium-plan.md)
 
 - [应用服务环境简介](../app-service/environment/intro.md)
 
@@ -124,7 +124,7 @@ ms.locfileid: "96187045"
 
 - [Azure Functions 网络选项](./functions-networking-options.md)
 
-- [Azure Functions 高级计划](./functions-scale.md#premium-plan)
+- [Azure Functions 高级计划](./functions-premium-plan.md)
 
 - [应用服务环境简介](../app-service/environment/intro.md)
 
@@ -146,7 +146,7 @@ ms.locfileid: "96187045"
 
 - [Azure Functions 网络选项](./functions-networking-options.md)
 
-- [Azure Functions 高级计划](./functions-scale.md#premium-plan)
+- [Azure Functions 高级计划](./functions-premium-plan.md)
 
 - [应用服务环境简介](../app-service/environment/intro.md)
 
@@ -459,7 +459,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为 Azure Functions 应用的中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中的数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
+**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为 Azure Functions 应用的中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
 - [如何将 Azure Functions 应用配置为使用 Azure AD 登录](../app-service/configure-authentication-provider-aad.md)
 
@@ -483,7 +483,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视尝试访问已停用帐户的行为
 
-**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为 Azure Function app 的中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中的数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
+**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为 Azure Function app 的中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
 你可以访问 Azure AD 登录活动、审核和风险事件日志源，以便与 Azure Sentinel 或第三方 SIEM 集成。
 
@@ -539,7 +539,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 Azure Function apps 应由虚拟网络 (VNet 分隔) /子网并进行相应标记。
+指南：为开发、测试和生产实现单独的订阅和/或管理组。 Azure Function apps 应由虚拟网络 (VNet 分隔) /子网并进行相应标记。
 
 还可以使用专用终结点来执行网络隔离。 Azure 专用终结点是一个网络接口，该接口将你私下并安全地连接到服务 (例如： Azure Functions 应用 HTTPs 终结点) Azure Private Link。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入 VNet 中。 专用终结点位于高级计划中运行的函数应用 (预览) 。 在将专用终结点与生产工作负荷一起使用之前，请确保专用终结点不再处于 (预览) 。
 
@@ -551,7 +551,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 - [Azure Functions 网络选项](./functions-networking-options.md)
 
-- [Azure Functions 高级计划](./functions-scale.md#premium-plan)
+- [Azure Functions 高级计划](./functions-premium-plan.md)
 
 - [了解专用终结点](../private-link/private-endpoint-overview.md)
 
@@ -827,7 +827,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 - [Azure Functions 网络选项](./functions-networking-options.md)
 
-- [Azure Functions 高级计划](./functions-scale.md#premium-plan)
+- [Azure Functions 高级计划](./functions-premium-plan.md)
 
 - [应用服务环境的网络注意事项](../app-service/environment/network-info.md)
 
@@ -1099,7 +1099,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 - [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 

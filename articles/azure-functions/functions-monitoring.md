@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 7dbaa8712e09de9084e2bcb66d43f2181af292a0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6dc3c582466fe0646b0350213947ff2173368bde
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033028"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936832"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -113,7 +113,7 @@ Application Insights 允许你将遥测数据导出到长期存储或其他分�
 
 _此功能为预览版。_ 
 
-[Azure Functions 缩放控制器](./functions-scale.md#runtime-scaling)监视运行应用的 Azure Functions 主机的实例。 此控制器根据当前性能决定何时添加或删除实例。 可以让缩放控制器将日志发出到 Application Insights，以便更好地了解缩放控制器为函数应用做出的决策。 你还可以将生成的日志存储在 Blob 存储中，供其他服务分析。 
+[Azure Functions 缩放控制器](./event-driven-scaling.md#runtime-scaling)监视运行应用的 Azure Functions 主机的实例。 此控制器根据当前性能决定何时添加或删除实例。 可以让缩放控制器将日志发出到 Application Insights，以便更好地了解缩放控制器为函数应用做出的决策。 你还可以将生成的日志存储在 Blob 存储中，供其他服务分析。 
 
 若要启用此功能，请将名为 `SCALE_CONTROLLER_LOGGING_ENABLED` 的应用程序设置添加到函数应用设置中。 若要了解详细方法，请参阅[配置缩放控制器日志](configure-monitoring.md#configure-scale-controller-logs)。
 

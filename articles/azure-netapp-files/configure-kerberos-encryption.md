@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 1ffbcc24a2ee386be1a8ce50b55375d5bd458df1
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 69168060cbce4a904c53d7f79895e909c8c42e01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410090"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935217"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>为 Azure NetApp 文件配置 NFSv 4.1 Kerberos 加密
 
@@ -40,7 +40,7 @@ Azure NetApp 文件在 Kerberos 模式下支持 NFS 客户端加密 (krb5.conf�
 
 1.  按照为 [Azure NetApp 文件创建 NFS 卷](azure-netapp-files-create-volumes.md) 中的步骤创建 nfsv 4.1 卷。   
 
-    在 "创建卷" 页上，将 NFS 版本设置为 **nfsv 4.1** ，并将 Kerberos 设置为 " **已启用** "。
+    在 "创建卷" 页上，将 NFS 版本设置为 **nfsv 4.1**，并将 Kerberos 设置为 " **已启用**"。
 
     > [!IMPORTANT] 
     > 创建卷后，无法修改 Kerberos 启用选项。
@@ -61,7 +61,7 @@ Azure NetApp 文件在 Kerberos 模式下支持 NFS 客户端加密 (krb5.conf�
 
     Kerberos 要求你至少在 Active Directory 中创建一个计算机帐户。 提供的帐户信息用于创建 SMB *和* Nfsv 4.1 Kerberos 卷的帐户。 创建卷时，将自动创建此计算机。
 
-2.  在 " **Kerberos 领域** " 下，输入 **AD 服务器名称** 和 **KDC IP** 地址。
+2.  在 " **Kerberos 领域**" 下，输入 **AD 服务器名称** 和 **KDC IP** 地址。
 
     AD 服务器和 KDC IP 可以是同一服务器。 此信息用于创建由 Azure NetApp 文件使用的 SPN 计算机帐户。 创建计算机帐户后，Azure NetApp 文件将使用 DNS 服务器记录根据需要定位其他 KDC 服务器。 
 
@@ -172,6 +172,7 @@ Krb5p 对性能的影响：
 
 ## <a name="next-steps"></a>后续步骤  
 
+* [排查 NFSv 4.1 Kerberos 卷问题](troubleshoot-nfsv41-kerberos-volumes.md)
 * [有关 Azure NetApp 文件的常见问题解答](azure-netapp-files-faqs.md)
 * [创建用于 Azure NetApp 文件的 NFS 卷](azure-netapp-files-create-volumes.md)
 * [创建 Active Directory 连接器](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)

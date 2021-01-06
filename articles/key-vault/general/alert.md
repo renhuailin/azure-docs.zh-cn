@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 5946a5d6d1adb5f609f497b4c2194582f624fe24
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724691"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934588"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault 的监视和警报
 
@@ -25,8 +25,8 @@ ms.locfileid: "97724691"
 一旦开始使用密钥保管库来存储你的生产机密，就必须监视密钥保管库的运行状况，以确保你的服务按预期运转。 如果开始扩展服务，则发送到密钥保管库的请求数将增加。 这可能会增加请求的延迟时间，并且在极端情况下，会导致请求被限制，从而影响服务的性能。 如果密钥保管库发送了异常数量的错误代码，则也需要发出警报，以便你可以快速了解任何访问策略或防火墙配置的问题。 本文档包含以下主题：
 
 + 要监视的基本 Key Vault 指标
-+ 如何配置指标并创建仪表板 
-+ 如何根据指定阈值创建警报 
++ 如何配置指标并创建仪表板
++ 如何根据指定阈值创建警报
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>要监视的基本 Key Vault 指标
 

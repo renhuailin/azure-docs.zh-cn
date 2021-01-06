@@ -4,12 +4,12 @@ description: 了解将代码部署到 Azure Functions 的不同方式。
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 7a75408008a90a2c40553b1f6c5c196775a48e61
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 04d96a09d41ace64bed5667bb9f0fa6e4beed244
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168094"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936951"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
@@ -25,7 +25,7 @@ ms.locfileid: "96168094"
 | -- | -- | -- |
 | 基于工具 | &bull;&nbsp;[Visual&nbsp;Studio&nbsp;Code&nbsp;发布](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio 发布](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[核心工具发布](functions-run-local.md#publish) | 开发期间的部署和其他临时部署。 部署由工具在本地进行管理。 | 
 | 应用服务-托管| &bull;&nbsp;[部署 &nbsp; 中心 &nbsp; (CI/CD) ](functions-continuous-deployment.md)<br/>&bull;&nbsp;[容器 &nbsp; 部署](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |   (CI/CD) 从源代码管理或从容器注册表进行持续部署。 部署由应用服务平台 (Kudu) 进行管理。|
-| 外部管道|&bull;&nbsp;[DevOps 管道](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub 操作](functions-how-to-github-actions.md) | 生产和 DevOps 管道，包含其他验证、测试和作为自动部署的一部分运行的其他操作。 部署由管道进行管理。 |
+| 外部管道|&bull;&nbsp;[Azure Pipelines](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub 操作](functions-how-to-github-actions.md) | 生产和 DevOps 管道，包含其他验证、测试和作为自动部署的一部分运行的其他操作。 部署由管道进行管理。 |
 
 虽然特定的 Functions 部署使用基于其上下文的最佳技术，但大多数部署方法都基于 [zip 部署](#zip-deploy)。
 
@@ -33,9 +33,9 @@ ms.locfileid: "96168094"
 
 Azure Functions 支持跨平台的本地开发以及使用 Windows 和 Linux 作为托管位置。 目前，可以使用三种托管计划：
 
-+ [消耗](functions-scale.md#consumption-plan)
-+ [高级](functions-scale.md#premium-plan)
-+ [专用（应用服务）](functions-scale.md#app-service-plan)
++ [消耗](consumption-plan.md)
++ [高级](functions-premium-plan.md)
++ [专用（应用服务）](dedicated-plan.md)
 
 每种计划有不同的行为。 并非所有部署技术都适用于每种风格的 Azure Functions。 以下图表显示了哪些部署技术适用于操作系统和托管计划的每种组合：
 
@@ -96,7 +96,7 @@ Azure Functions 可以自动在它在压缩部署后接收的代码上执行生�
 
 ##### <a name="dedicated-and-premium-plans"></a>专用和高级计划
 
-在[专用（应用服务）计划](functions-scale.md#app-service-plan)和[高级计划](functions-scale.md#premium-plan)中的 Linux 上运行的函数应用也具有受限的 SCM/Kudu 站点。
+在[专用（应用服务）计划](dedicated-plan.md)和[高级计划](functions-premium-plan.md)中的 Linux 上运行的函数应用也具有受限的 SCM/Kudu 站点。
 
 ## <a name="deployment-technology-details"></a>部署技术详细信息
 

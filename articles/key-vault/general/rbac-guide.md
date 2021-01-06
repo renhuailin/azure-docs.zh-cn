@@ -9,17 +9,17 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: be2fa0fa85da7c0f02567580c50968b7418e4cde
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f7a0190d664e3330d2a6205014c00c61c1183dd3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445177"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936237"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限（预览）
 
 > [!NOTE]
-> Key Vault 资源提供程序支持两种资源类型： **保管库** 和 **托管的 hsm** 。 本文中所述的访问控制仅适用于 **保管库** 。 若要了解有关托管 HSM 的访问控制的详细信息，请参阅 [托管 hsm 访问控制](../managed-hsm/access-control.md)。
+> Key Vault 资源提供程序支持两种资源类型： **保管库** 和 **托管的 hsm**。 本文中所述的访问控制仅适用于 **保管库**。 若要了解有关托管 HSM 的访问控制的详细信息，请参阅 [托管 hsm 访问控制](../managed-hsm/access-control.md)。
 
 Azure 基于角色的访问控制 (Azure RBAC) 是在 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)基础上构建的授权系统，针对 Azure 资源提供精细的访问权限管理。
 
@@ -41,12 +41,12 @@ Azure RBAC 模型提供了在不同范围级别设置权限的功能：管理组
 
 有关 Azure Key Vault 管理指南的详细信息，请参阅：
 
-- [Azure Key Vault 最佳做法](best-practices.md)
+- [Azure Key Vault 安全性概述](security-overview.md)
 - [Azure Key Vault 服务限制](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>用于 Key Vault 数据平面操作的 Azure 内置角色（预览版）
 > [!NOTE]
-> `Key Vault Contributor` 角色适用于管理平面操作，用于管理密钥保管库。 它不允许访问密钥、机密和证书。
+> `Key Vault Contributor` 角色负责管理平面操作，可管理密钥保管库。 它不允许访问密钥、机密和证书。
 
 | 内置角色 | 说明 | ID |
 | --- | --- | --- |
@@ -79,11 +79,11 @@ Azure RBAC 模型提供了在不同范围级别设置权限的功能：管理组
 
 1.  对新密钥保管库启用 Azure RBAC 权限：
 
-    ![启用 Azure RBAC 权限-新建保管库](../media/rbac/image-1.png)
+    ![启用 Azure RBAC 权限 - 新建保管库](../media/rbac/image-1.png)
 
 2.  对现有密钥保管库启用 Azure RBAC 权限：
 
-    ![启用 Azure RBAC 权限-现有保管库](../media/rbac/image-2.png)
+    ![启用 Azure RBAC 权限 - 现有保管库](../media/rbac/image-2.png)
 
 ### <a name="assign-role"></a>分配角色
 

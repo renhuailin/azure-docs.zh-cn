@@ -3,12 +3,12 @@ title: 模板中的参数
 description: 介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义参数。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 4ac1aeb579040b35b2a9b4cb90fb5687f91ebd3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 929d871bc0087d4fda585773b349dee4e0945c7c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353504"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934707"
 ---
 # <a name="parameters-in-arm-templates"></a>ARM 模板中的参数
 
@@ -16,11 +16,11 @@ ms.locfileid: "96353504"
 
 资源管理器会在启动部署操作之前解析参数值。 只要在模板中使用参数，资源管理器就会将其替换为解析的值。
 
-每个参数都必须设置为其中一种 [数据类型](template-syntax.md#data-types)。
+每个参数都必需设置为[数据类型](template-syntax.md#data-types)之一。
 
 ## <a name="define-parameter"></a>定义参数
 
-以下示例展示了一个简单的参数定义。 它定义名为 **storageSKU** 的参数。 此参数为字符串值，仅接受适合其预期用途的值。 如果在部署过程中未提供任何值时，则此参数使用默认值。
+以下示例展示了一个简单的参数定义。 它定义了一个名为的参数 `storageSKU` 。 此参数为字符串值，仅接受适合其预期用途的值。 如果在部署过程中未提供任何值时，则此参数使用默认值。
 
 ```json
 "parameters": {
@@ -154,7 +154,7 @@ ms.locfileid: "96353504"
 
 以下示例演示了使用参数的方案。
 
-|模板  |描述  |
+|模板  |说明  |
 |---------|---------|
 |[包含用于默认值的函数的参数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | 演示了为参数定义默认值时如何使用模板函数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
 |[参数对象](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | 演示了将对象用于参数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |

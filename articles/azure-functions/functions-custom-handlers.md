@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: 099f90ba8c5d9dabb6c4c505e50d8c077e3eaf0f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f527b387afc01eb60bd582adc13a4ad3d516055b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746023"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936985"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Functions 自定义处理程序
 
@@ -407,7 +407,7 @@ func main() {
 对于没有其他绑定或输出的 HTTP 触发的函数，你可能希望处理程序直接处理 HTTP 请求和响应，而不是处理自定义处理程序[请求](#request-payload)和[响应](#response-payload)有效负载。 可以使用 `enableForwardingHttpRequest` 设置在 host.json 中配置此行为。
 
 > [!IMPORTANT]
-> 自定义处理程序功能的主要用途是在 Azure Functions 上启用当前不具有一流支持的语言和运行时。 虽然可以使用自定义处理程序运行 Web 应用程序，但 Azure Functions 不是标准的反向代理。 某些功能（如响应流式处理、HTTP/2 和 Websocket）不可用。 HTTP 请求的某些组件（如某些标头和路由）可能会受到限制。 应用程序也可能遇到过多的[冷启动](functions-scale.md#cold-start)。
+> 自定义处理程序功能的主要用途是在 Azure Functions 上启用当前不具有一流支持的语言和运行时。 虽然可以使用自定义处理程序运行 Web 应用程序，但 Azure Functions 不是标准的反向代理。 某些功能（如响应流式处理、HTTP/2 和 Websocket）不可用。 HTTP 请求的某些组件（如某些标头和路由）可能会受到限制。 应用程序也可能遇到过多的[冷启动](event-driven-scaling.md#cold-start)。
 >
 > 若要解决这些情况，请考虑在 [Azure 应用服务](../app-service/overview.md)上运行 Web 应用。
 

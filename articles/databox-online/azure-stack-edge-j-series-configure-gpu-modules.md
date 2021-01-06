@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b9f1180639f638e72fdea2f87958628a2e9e86b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d172ce98ba93360c621a91fb0e2a55d022470943
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891461"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935542"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>在 Azure Stack Edge Pro 设备上的 GPU 上配置和运行模块
 
@@ -30,45 +30,58 @@ Azure Stack Edge Pro 设备包含一个或多个图形处理单元 (GPU) 。 Gpu
 
 ## <a name="configure-module-to-use-gpu"></a>配置模块以使用 GPU
 
-若要将模块配置为使用 Azure Stack Edge Pro 设备上的 GPU 来运行模块，请执行以下步骤。
+若要将模块配置为使用 Azure Stack Edge Pro 设备上的 GPU 来运行模块，<!--Can it be simplified? "To configure a module to be run by the GPU on your Azure Stack Edge Pro device,"?--> 请按照以下步骤操作。
 
-1. 在 Azure 门户中，请参阅与设备关联的资源。 
+1. 在 Azure 门户中，请参阅与设备关联的资源。
 
-2. 转到“Edge 计算”>“开始”。 在 " **配置边缘计算** " 磁贴中，选择 "配置"。
+2. 在 " **概述**" 中，选择 **IoT Edge**。
 
     ![配置模块以使用 GPU 1](media/azure-stack-edge-j-series-configure-gpu-modules/configure-compute-1.png)
 
-3. 在 " **配置边缘计算** " 边栏选项卡中：
+3. 在 " **启用 IoT Edge 服务**" 中，选择 " **添加**"。
 
-    1. 对于 **IoT 中心**，请选择 " **新建**"。
-    2. 提供要为设备创建的 IoT 中心资源的名称。 若要使用免费层，请选择现有资源。 
-    3. 记下 IoT Edge 设备和使用 IoT 中心资源创建的 IoT 网关设备。 稍后的步骤中将使用此信息。
+   ![配置模块以使用 GPU 2](media/azure-stack-edge-j-series-configure-gpu-modules/configure-compute-2.png)
 
-    ![配置模块以使用 GPU 2](media/azure-stack-edge-j-series-configure-gpu-modules/configure-compute-2.png)
+4. 在 " **创建 IoT Edge 服务**" 中，输入 IoT 中心资源的设置：
 
-4. 创建 IoT 中心资源需要几分钟时间。 创建资源后，在 " **配置边缘计算** " 磁贴中，选择 " **查看配置** " 以查看 IoT 中心资源的详细信息。
+   |字段   |值    |
+   |--------|---------|
+   |订阅      | Azure Stack Edge 资源使用的订阅。 |
+   |资源组    | Azure Stack Edge 资源使用的资源组。 |
+   |IoT 中心           | 选择 " **新建** " 或 " **使用现有**"。 <br> 默认会使用标准层 (S1) 来创建 IoT 资源。 若要使用免费层 IoT 资源，请创建一个资源，然后选择现有的资源。 <br> 在每种情况下，IoT 中心资源都会使用 Azure Stack Edge 资源所用的同一订阅和资源组。     |
+   |名称              | 如果不想使用为新的 IoT 中心资源提供的默认名称，请输入其他名称。 |
 
-    ![配置模块以使用 GPU 4](media/azure-stack-edge-j-series-configure-gpu-modules/configure-compute-4.png)
+   完成设置后，请选择 " **查看 + 创建**"。 查看 IoT 中心资源的设置，并选择 " **创建**"。
 
-5. 请参阅 **自动设备管理 > IoT Edge**。
+   ![开始使用计算 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
-    ![配置模块以使用 GPU 6](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
+   IoT 中心资源的资源创建花费几分钟时间。 创建资源后， **概述** 表明 IoT Edge 服务现在正在运行。
 
-    在右侧窗格中，可以看到与 Azure Stack Edge Pro 设备关联的 IoT Edge 设备。 这对应于在创建 IoT 中心资源时在上一个步骤中创建的 IoT Edge 设备。 
-    
-6. 选择此 IoT Edge 设备。
+   ![开始使用计算 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
+
+5. 若要确认已配置边缘计算角色，请选择 " **属性**"。
+
+   ![开始使用计算 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+
+6. 在 " **属性**" 中，选择 **IoT Edge 设备** 的链接。
+
+   ![配置模块以使用 GPU 6](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
+
+   在右侧窗格中，可以看到与 Azure Stack Edge Pro 设备关联的 IoT Edge 设备。 此设备对应于创建 IoT 中心资源时创建的 IoT Edge 设备。
+ 
+7. 选择此 IoT Edge 设备。
 
    ![配置模块以使用 GPU 7](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-3.png)
 
-7.  选择“设置模块”。
+8. 选择“设置模块”。
 
-    ![配置模块以使用 GPU 8](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-4.png)
+   ![配置模块以使用 GPU 8](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-4.png)
 
-8. 选择 " **+ 添加** "，然后选择 " **+ IoT Edge 模块**"。 
+9. 选择 " **+ 添加** "，然后选择 " **+ IoT Edge 模块**"。 
 
     ![配置模块以使用 GPU 9](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-5.png)
 
-9. 在 " **添加 IoT Edge 模块** " 选项卡中：
+10. 在 " **添加 IoT Edge 模块** " 选项卡中：
 
     1. 提供 **映像 URI**。 你将在此处使用公开提供的 Nvidia 模块 **数字** 。 
     
@@ -78,32 +91,32 @@ Azure Stack Edge Pro 设备包含一个或多个图形处理单元 (GPU) 。 Gpu
     
     ![配置模块以使用 GPU 10](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-6.png)
 
-10. 在 " **环境变量** " 选项卡中，提供变量的名称和相应的值。 
+11. 在 " **环境变量** " 选项卡中，提供变量的名称和相应的值。 
 
     1. 要使当前模块在此设备上使用一个 GPU，请使用 NVIDIA_VISIBLE_DEVICES。 
 
-    2. 将该值设置为 0 或 1。 这可确保设备在此模块中至少使用一个 GPU。 如果将此值设置为0，则表示此模块正在使用设备上的两个 Gpu。
+    2. 将该值设置为 0 或 1。 值0或1，可确保设备至少使用一个 GPU 作为此模块。 如果将此值设置为0，则表示此模块正在使用设备上的两个 Gpu。
 
-        ![配置模块以使用 GPU 11](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-7.png)
+       ![配置模块以使用 GPU 11](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-7.png)
 
-        有关可与 Nvidia GPU 一起使用的环境变量的详细信息，请参阅 [nvidia 容器运行时](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec)。
+       有关可与 Nvidia GPU 一起使用的环境变量的详细信息，请参阅 [nvidia 容器运行时](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec)。
 
     > [!NOTE]
-    > GPU 只能映射到一个模块。 但是，模块可以使用其中一个，无论是不使用 Gpu。 
+    > GPU 只能映射到一个模块。 但是，模块可以使用其中一个，无论是不使用 Gpu。
 
-11. 输入模块的名称。 此时，你可以选择提供容器 create 选项和修改模块克隆设置，或者，如果已完成，请选择 " **添加**"。 
+12. 输入模块的名称。 此时，你可以选择提供容器 create 选项和修改模块克隆设置，或者，如果已完成，请选择 " **添加**"。 
 
     ![配置模块以使用 GPU 12](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-8.png)
 
-12. 确保该模块正在运行，然后选择 " **查看 + 创建**"。    
+13. 确保该模块正在运行，然后选择 " **查看 + 创建**"。
 
     ![配置模块以使用 GPU 13](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-9.png)
 
-13. 在 " **查看** " 和 "创建" 选项卡中，将显示所选的部署选项。 查看选项，然后选择 " **创建**"。
+14. 在 " **查看** " 和 "创建" 选项卡中，将显示所选的部署选项。 查看选项，然后选择 " **创建**"。
     
     ![配置模块以使用 GPU 14](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-10.png)
 
-14. 记下模块的 **运行时状态** 。 
+15. 记下模块的 **运行时状态** 。
     
     ![配置模块以使用 GPU 15](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-11.png)
 

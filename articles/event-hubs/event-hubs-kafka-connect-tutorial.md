@@ -1,17 +1,26 @@
 ---
 title: 与 Apache Kafka Connect 集成 - Azure 事件中心 | Microsoft Docs
-description: 本文介绍如何使用 Kafka Connect with Azure 事件中心进行 Kafka。
+description: 本文介绍如何将 Kafka Connect 与适用于 Kafka 的 Azure 事件中心配合使用。
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: d37d2465d9389a0bcfaabdec32bad0c86846cfb2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 01/06/2021
+ms.openlocfilehash: f82dcdafa7921f4a994361371536b2f1ace7cbc5
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369533"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935149"
 ---
-# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>在 Azure 事件中心集成 Apache Kafka Connect 支持（预览版）
-随着业务需求的引入增加，对各种外部源和接收器的引入需求也增加。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) 提供的框架可以通过 Kafka 群集连接到任何外部系统（例如 MySQL、HDFS）和文件系统并与之进行数据的导入/导出。 本教程详细介绍如何将 Kafka Connect 框架与事件中心配合使用。
+# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs"></a>在 Azure 事件中心集成 Apache Kafka Connect 支持
+[Apache Kafka connect](https://kafka.apache.org/documentation/#connect) 是一个框架，用于通过 Kafka 群集连接并导入/导出数据（如 MYSQL、HDFS 和文件系统）。 本教程详细介绍如何将 Kafka Connect 框架与事件中心配合使用。
+
+> [!WARNING]
+> 使用 Apache Kafka 连接框架及其连接器 **不能通过 Microsoft Azure 提供产品支持**。
+>
+> Apache Kafka Connect 假设将其动态配置保存在压缩的主题中，并以其他无限制保留。 Azure 事件中心不 [会将压缩作为 broker 功能实现](event-hubs-federation-overview.md#log-projections) ，并且始终会对保留事件施加基于时间的保留限制，从 Azure 事件中心是实时事件流引擎而不是长期数据或配置存储的原则进行定位。
+>
+> 尽管 Apache Kafka 项目在混合这些角色时可能很熟悉，但 Azure 相信此类信息最好在适当的数据库或配置存储中进行管理。
+>
+> 许多 Apache Kafka 连接方案都可以正常工作，但 Apache Kafka 的和 Azure 事件中心的保留模型之间的这些概念差异可能会导致某些配置无法按预期方式工作。 
 
 本教程详细介绍如何将 Kafka Connect 与事件中心集成，以及如何部署基本的 FileStreamSource 和 FileStreamSink 连接器。 此功能目前以预览版提供。 虽然这些连接器不是用于生产的，但它们可以用于演示端到端 Kafka Connect 方案，让 Azure 事件中心充当 Kafka 中转站。
 
@@ -92,7 +101,7 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
 ```
 
 > [!IMPORTANT]
-> 将 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 替换为事件中心命名空间的连接字符串。 有关获取连接字符串的说明，请参阅 [获取事件中心连接字符串](event-hubs-get-connection-string.md)。 下面是一个示例配置： `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+> 将 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 替换为事件中心命名空间的连接字符串。 有关获取连接字符串的说明，请参阅[获取事件中心连接字符串](event-hubs-get-connection-string.md)。 下面是一个配置示例：`sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
 
 
 ## <a name="run-kafka-connect"></a>运行 Kafka Connect
@@ -106,7 +115,7 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
 > [!NOTE]
 > Kafka Connect 使用 Kafka AdminClient API 自动创建具有建议配置（包括压缩）的主题。 在 Azure 门户中快速查看命名空间就可以发现，Connect 辅助角色的内部主题已自动创建。
 >
->Kafka Connect 内部主题**必须使用压缩**。  如果未正确配置内部连接主题，事件中心团队不负责修复不正确的配置。
+>Kafka Connect 内部主题 **必须使用压缩**。  如果未正确配置内部连接主题，事件中心团队不负责修复不正确的配置。
 
 ### <a name="create-connectors"></a>创建连接器
 此部分详细介绍如何启动 FileStreamSource 和 FileStreamSink 连接器。 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 9cc19548f0b969421974afe3e274fc5334590cb0
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: b487dcad83ccbc31adf2d7ec2dd77c490db2c68e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97805663"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935184"
 ---
 Azure Functions 允许创建专用于预建入口点的仅配置复制任务。 [Azure Functions 的基于配置的复制示例](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config)演示了如何在自己的代码中利用[预建的帮助](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication)程序，或者完全避免处理代码，只需使用配置即可。
 
@@ -166,7 +166,7 @@ Azure Functions 允许创建专用于预建入口点的仅配置复制任务。 
             "direction": "out",
             "type": "serviceBus",
             "connection": "functionname-target-connection",
-            "eventHubName": "queue-b",
+            "queueName": "queue-b",
             "name": "output" 
         }
     ...
@@ -190,7 +190,7 @@ Azure Functions 允许创建专用于预建入口点的仅配置复制任务。 
             "direction": "out",
             "type": "serviceBus",
             "connection": "functionname-target-connection",
-            "eventHubName": "queue-b",
+            "topicName": "topic-b",
             "name": "output" 
         }
     ...

@@ -1,24 +1,24 @@
 ---
 title: 设置资源的部署顺序
-description: 介绍如何在部署期间将一个资源设置为依赖于另一个资源。 依赖关系确保按正确的顺序部署资源。
+description: 介绍如何在部署过程中将一个 Azure 资源设置为依赖于另一个资源。 依赖关系确保按正确的顺序部署资源。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: a96dca0ab30d0baee2688427d78867ea128e673a
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: f6b63b066da06a17c3a2e51ab0f3ab9bf521a144
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722005"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934741"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>在 ARM 模板中定义部署资源的顺序
 
-部署资源时，可能需要确保某些资源在其他资源之前存在。 例如，在部署数据库之前，需要逻辑 SQL Server。 可以通过将一个资源标记为依赖于其他资源来建立此关系。 使用 **dependsOn** 元素定义显式依赖项。 使用 **reference** 或 **list** 函数定义隐式依赖项。
+部署资源时，可能需要确保某些资源在其他资源之前存在。 例如，在部署数据库之前，需要逻辑 SQL Server。 可以通过将一个资源标记为依赖于其他资源来建立此关系。 使用 `dependsOn` 元素定义显式依赖项。 使用 **reference** 或 **list** 函数定义隐式依赖项。
 
-Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序进行部署。 如果资源互不依赖，资源管理器将以并行方式部署资源。 只需为部署在同一模板中的资源定义依赖关系。
+Azure 资源管理器会评估资源之间的依赖关系，并按依赖顺序进行部署。 如果资源互不依赖，资源管理器将以并行方式部署资源。 只需为部署在同一模板中的资源定义依赖关系。
 
 ## <a name="dependson"></a>dependsOn
 
-在模板中，dependsOn 元素可让你将一个资源定义为与一个或多个资源相依赖。 它的值是字符串的 JSON 数组，其中每个字符串都是资源名称或 ID。 该数组可以包括[有条件部署](conditional-resource-deployment.md)的资源。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
+在 Azure 资源管理器模板 (ARM 模板) ，使用元素可以将 `dependsOn` 一个资源定义为依赖于一个或多个资源。 它的值是一个 JavaScript 对象表示法 (JSON) 字符串数组，其中每个字符串都是一个资源名称或 ID。 该数组可以包括[有条件部署](conditional-resource-deployment.md)的资源。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
 
 以下示例显示了依赖于虚拟网络、网络安全组和公共 IP 地址的网络接口。 有关完整的模板，请参阅 [LINUX VM 的快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-linux/azuredeploy.json)。
 
@@ -37,11 +37,11 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 }
 ```
 
-尽管你可能倾向使用 dependsOn 来映射资源之间的关系，但请务必了解这么做的理由。 例如，若要记录资源的互连方式，那么，dependsOn 方法并不合适。 部署之后，你无法查询 dependsOn 元素中定义了哪些资源。 设置不必要的依赖项会减缓部署时间，因为资源管理器无法并行部署这些资源。
+尽管你可能倾向于使用 `dependsOn` 来映射资源之间的关系，但请务必了解你为什么要这样做。 例如，若要记录资源的互连方式， `dependsOn` 不是正确的方法。 部署后，无法查询在元素中定义的资源 `dependsOn` 。 设置不必要的依赖项会减缓部署时间，因为资源管理器无法并行部署这些资源。
 
 ## <a name="child-resources"></a>子资源
 
-不会自动在 [子资源](child-resource-name-type.md) 和父资源之间创建隐式部署依赖关系。 如果需要在父资源之后部署子资源，请设置 dependsOn 属性。
+不会自动在 [子资源](child-resource-name-type.md) 和父资源之间创建隐式部署依赖关系。 如果需要在父资源之后部署子资源，请设置 `dependsOn` 属性。
 
 以下示例显示了逻辑 SQL Server 和数据库。 请注意，在数据库与服务器之间定义了显式依赖关系，尽管数据库是服务器的子级。
 
@@ -85,13 +85,13 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 
 若要强制实施隐式依赖关系，请按名称（而不是资源 ID）引用资源。 如果将资源 ID 传入到 reference 或 list 函数中，则不会创建隐式引用。
 
-reference 函数的一般格式为：
+函数的常规格式 `reference` 为：
 
 ```json
 reference('resourceName').propertyPath
 ```
 
-listKeys 函数的一般格式为：
+函数的常规格式 `listKeys` 为：
 
 ```json
 listKeys('resourceName', 'yyyy-mm-dd')
@@ -165,7 +165,7 @@ listKeys('resourceName', 'yyyy-mm-dd')
 }
 ```
 
-以下示例演示了如何在部署虚拟机之前部署三个存储帐户。 请注意，copy 元素的名称设置为 `storagecopy`，而虚拟机的 dependsOn 元素也设置为 `storagecopy`。
+以下示例演示了如何在部署虚拟机之前部署三个存储帐户。 请注意， `copy` 元素已 `name` 设置为 `storagecopy` ，并且 `dependsOn` 虚拟机的元素也设置为 `storagecopy` 。
 
 ```json
 {
@@ -213,10 +213,9 @@ Resource Manager 可在模板验证过程中确定循环依赖项。 如果接�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 相关教程，请参阅[教程：使用从属资源创建 Azure 资源管理器模板](template-tutorial-create-templates-with-dependent-resources.md)。
+* 若要学习教程，请参阅 [教程：使用依赖资源创建 ARM 模板](template-tutorial-create-templates-with-dependent-resources.md)。
 * 有关涵盖资源依赖项的 Microsoft Learn 模块，请参阅 [使用高级 ARM 模板功能管理复杂的云部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
-* 有关设置依赖项的建议，请参阅 [Azure 资源管理器模板的最佳做法](template-best-practices.md)。
+* 有关设置依赖项的建议，请参阅 [ARM 模板最佳实践](template-best-practices.md)。
 * 若要了解如何在部署期间排查依赖项故障，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
-* 若要了解有关创建 Azure Resource Manager模板的信息，请参阅[创作模板](template-syntax.md)。
-* 有关模板中的可用函数列表，请参阅[模板函数](template-functions.md)。
-
+* 若要了解如何创建 Azure 资源管理器模板，请参阅 [了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关模板中可用函数的列表，请参阅 [ARM 模板函数](template-functions.md)。
