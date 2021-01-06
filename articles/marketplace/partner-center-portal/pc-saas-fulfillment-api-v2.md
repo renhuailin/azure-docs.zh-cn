@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 1ea326cc4537176c0ddcff070f4dc3b3f77f4b58
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 0d7259972693b9ca12e0801007cbd3c0af45ca1c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512029"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937325"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>商业应用商店中的 SaaS 履单 Api 版本2
 
@@ -580,7 +580,7 @@ API 返回每页100的分页结果。
 
 |  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  用于获取操作状态的 URL。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
+|  `Operation-Location`        |  用于获取操作状态的 URL。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31` 。 |
 
 代码：400请求错误：验证失败。
 
@@ -645,7 +645,7 @@ API 返回每页100的分页结果。
 
 |  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  链接到资源以获取操作的状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。  |
+|  `Operation-Location`        |  链接到资源以获取操作的状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31` 。  |
 
 代码：400请求错误：验证失败。
 
@@ -710,7 +710,7 @@ API 返回每页100的分页结果。
 
 |  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  链接到资源以获取操作的状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
+|  `Operation-Location`        |  链接到资源以获取操作的状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31` 。 |
 
 代码：400错误的请求。  此 SaaS 订阅的 "删除" 不在 `allowedCustomerOperations` 列表中。
 
@@ -828,7 +828,7 @@ Response body:
   "quantity": "20", // purchased amount of seats
   "action": "ChangePlan", // Can be ChangePlan, ChangeQuantity or Reinstate
   "timeStamp": "2018-12-01T00:00:00", // UTC
-  "status": "InProgress", // Possible values: NotStarted, InProgress, Failed, Succeed, Conflict (new quantity / plan is the same as existing)
+  "status": "InProgress", // Possible values: NotStarted, InProgress, Failed, Succeeded, Conflict (new quantity / plan is the same as existing)
   "errorStatusCode": "",
   "errorMessage": ""
 }

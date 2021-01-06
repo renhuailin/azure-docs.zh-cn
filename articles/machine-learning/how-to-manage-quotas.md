@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 58dacc9e65da6502d083446cb7202c222cb7e795
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1b43a1ceb1f9e098e4932b405553ae8f33e27262
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034031"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937342"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>管理和增大 Azure 机器学习资源的配额
 
@@ -29,7 +29,7 @@ Azure 使用限制和配额来防止由于欺诈导致的预算超支，并遵�
 > + 请求增大配额。
 > + 专用终结点和 DNS 配额。
 
-除了管理配额，还可以了解如何 [计划和管理 Azure 机器学习的成本](concept-plan-manage-cost.md)。
+除了管理配额，还可以了解如何 [计划和管理 Azure 机器学习的成本](concept-plan-manage-cost.md) 或了解 [Azure 机器学习中的服务限制](resource-limits-quotas-capacity.md)。
 
 ## <a name="special-considerations"></a>特殊注意事项
 
@@ -53,7 +53,9 @@ Azure 使用限制和配额来防止由于欺诈导致的预算超支，并遵�
 + Azure 存储
 
 > [!IMPORTANT]
-> 限制随时会变化。 有关最新信息，请参阅 [Azure 订阅与服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md)（适用于所有 Azure 项目）。
+> 限制随时会变化。 有关最新信息，请参阅  [Azure 机器学习中的服务限制](resource-limits-quotas-capacity.md)。
+
+
 
 ### <a name="azure-machine-learning-assets"></a>Azure 机器学习资产
 基于每个工作区的资产有以下限制。 
@@ -210,3 +212,4 @@ Azure 存储的限制是每个订阅在每个区域中的存储帐户数不能�
 ## <a name="next-steps"></a>后续步骤
 
 + [计划和管理 Azure 机器学习成本](concept-plan-manage-cost.md)
++ [Azure 机器学习中的服务限制](resource-limits-quotas-capacity.md)
