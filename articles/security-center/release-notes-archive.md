@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 01/07/2020
 ms.author: memildin
-ms.openlocfilehash: 854926c64b50cf4b8e7df9fa82da58b924ddbd83
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 7325ba1a8a90fec90182f9780c1fb18d29d3c0f1
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510414"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955257"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -28,6 +28,122 @@ ms.locfileid: "96510414"
 - 新增功能
 - Bug 修复
 - 已弃用的功能
+
+
+## <a name="july-2020"></a>2020 年 7 月
+
+7 月的更新包括：
+- [虚拟机的漏洞评估现在适用于非市场映像](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)
+- [Azure 存储的威胁防护已扩展为包括 Azure 文件存储和 Azure Data Lake Storage Gen2（预览版）](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [启用威胁防护功能的八条新建议](#eight-new-recommendations-to-enable-threat-protection-features)
+- [容器安全性优化 - 注册表扫描和刷新文档速度更快](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
+- [更新了自适应应用程序控制，添加了新建议以及对路径规则中的通配符的支持](#adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules)
+- [已弃用六个 SQL 高级数据安全策略](#six-policies-for-sql-advanced-data-security-deprecated)
+
+
+
+
+### <a name="vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images"></a>虚拟机的漏洞评估现在适用于非市场映像
+
+部署漏洞评估解决方案时，安全中心以前会在部署之前执行验证检查。 检查的目的是确认目标虚拟机的市场 SKU。 
+
+从本次更新起，已删除该项检查，你现在可以将漏洞评估工具部署到“自定义”Windows 和 Linux 计算机。 自定义映像是你根据市场默认值修改的映像。
+
+虽然现在可以在更多台计算机上部署集成的漏洞评估扩展（由 Qualys 提供支持），但只有在使用[将集成漏洞扫描程序部署到标准层 VM](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)列出的操作系统时，才可以使用支持
+
+详细了解[虚拟机的集成漏洞扫描程序（需要 Azure Defender）](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)。
+
+要详细了解如何使用 Qualys 或 Rapid7 中自己私下许可的漏洞评估解决方案，请参阅[部署合作伙伴漏洞扫描解决方案](deploy-vulnerability-assessment-vm.md)。
+
+
+### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure 存储的威胁防护已扩展为包括 Azure 文件存储和 Azure Data Lake Storage Gen2（预览版）
+
+Azure 存储的威胁防护可检测 Azure 存储帐户上的潜在有害活动。 安全中心在检测到对存储帐户的访问或攻击尝试时会显示警报。 
+
+无论数据是存储为 blob 容器、文件共享还是数据湖，都可以为其提供保护。
+
+
+
+
+### <a name="eight-new-recommendations-to-enable-threat-protection-features"></a>启用威胁防护功能的八条新建议
+
+添加了八条新建议，简化了为以下资源类型启用 Azure 安全中心的威胁防护功能的过程：虚拟机、应用服务计划、Azure SQL 数据库服务器、计算机上的 SQL 服务器、Azure 存储帐户、Azure Kubernetes 服务群集、Azure 容器注册表注册表和 Azure Key Vault 保管库。
+
+新建议如下所示：
+
+- **应在 Azure SQL 数据库服务器上启用高级数据安全**
+- **应在计算机的 SQL 服务器上启用高级数据安全**
+- **应在 Azure 应用服务计划上启用高级威胁防护**
+- **应对 Azure 容器注册表的注册表启用高级威胁防护**
+- **应对 Azure Key Vault 的保管库启用高级威胁防护**
+- **应对 Azure Kubernetes 服务的群集启用高级威胁防护**
+- **应对 Azure 存储帐户启用高级威胁防护**
+- 应对虚拟机启用高级威胁防护
+
+这些新建议属于“启用 Azure Defender”安全控制。
+
+建议还包括快速修复功能。 
+
+> [!IMPORTANT]
+> 修正任一建议都将产生相关资源的保护费用。 如果当前订阅中有相关资源，则立即开始计费。 或者以后在你添加资源时，开始计费。
+> 
+> 例如，如果订阅中没有任何 Azure Kubernetes 服务群集，并且启用了威胁防护，则不会产生任何费用。 如果以后在同一订阅中添加了群集，它将自动受到保护，并从该时间点开始计费。
+
+有关上述各项的详细信息，请参阅[安全建议参考页面](recommendations-reference.md)。
+
+详细了解 [Azure 安全中心的威胁防护](azure-defender.md)。
+
+
+
+
+### <a name="container-security-improvements---faster-registry-scanning-and-refreshed-documentation"></a>容器安全性优化 - 注册表扫描和刷新文档速度更快
+
+作为对容器安全领域的持续投资的一部分，我们很高兴分享安全中心对 Azure 容器注册表中存储的容器映像的动态扫描方面的显著性能优化。 目前，扫描通常会在大约两分钟内完成。 在某些情况下，可能最多需要 15 分钟。
+
+为更好地说明和指导 Azure 安全中心的容器安全功能，我们还更新了容器安全文档页面。 
+
+若要详细了解安全中心的容器安全，请参阅以下文章：
+
+- [安全中心的容器安全功能概述](container-security.md)
+- [与 Azure 容器注册表集成的详细信息](defender-for-container-registries-introduction.md)
+- [与 Azure Kubernetes 服务集成的详细信息](defender-for-kubernetes-introduction.md)
+- [扫描注册表并强化 Docker 主机的操作说明](container-security.md)
+- [威胁防护功能中适用于 Azure Kubernetes 服务群集的安全警报](alerts-reference.md#alerts-akscluster)
+- [威胁防护功能中适用于 Azure Kubernetes 服务主机的安全警报](alerts-reference.md#alerts-containerhost)
+- [容器的安全建议](recommendations-reference.md#recs-containers)
+
+
+
+### <a name="adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules"></a>更新了自适应应用程序控制，添加了新建议以及对路径规则中的通配符的支持
+
+自适应应用程序控制功能已收到两个重要更新：
+
+* 一项新的建议指出以前不允许的可能合法的行为。 “应更新自适应应用程序控制策略中的允许列表规则”这一新建议提示向现有策略添加新规则，以减少自适应应用程序控制违规警报的误报数。
+
+* 路径规则现支持通配符。 在此更新中，可以使用通配符配置允许的路径规则。 支持以下两种方案：
+
+    * 在路径末尾使用通配符允许该文件夹和子文件夹中的所有可执行文件
+
+    * 使用路径中间的通配符启用具有更改的文件夹名称的已知可执行文件名称 (例如，使用已知可执行文件、自动生成的文件夹名称等个人用户文件夹，) 。
+
+
+[详细了解自适应应用程序控制](security-center-adaptive-application.md)。
+
+
+
+### <a name="six-policies-for-sql-advanced-data-security-deprecated"></a>已弃用六个 SQL 高级数据安全性策略
+
+即将弃用与 SQL 计算机的高级数据安全性相关的六个策略：
+
+- 应在 SQL 托管实例的“高级数据安全”设置中将“高级威胁保护类型”设置为“全部”
+- 应在 SQL Server 的高级数据安全设置中将“高级威胁防护类型”设置为“全部”
+- SQL 托管实例的“高级数据安全性”设置应包含用于接收安全警报的电子邮件地址
+- SQL 服务器的“高级数据安全性”设置应包含用于接收安全警报的电子邮件地址
+- 应在 SQL 托管实例高级数据安全设置中启用“向管理员和订阅所有者发送电子邮件通知”
+- 应在 SQL 服务器高级数据安全设置中为管理员和订阅所有者启用电子邮件通知
+
+了解有关[内置策略](./policy-reference.md)的详细信息。
+
 
 
 ## <a name="june-2020"></a>2020 年 6 月

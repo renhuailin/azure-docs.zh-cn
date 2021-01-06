@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 9c322620e1d66182937be41bb02d48fd1469f459
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: da4c5f7891b518f4e6393f3fb4e153d464f4f2a2
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697554"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955529"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>通过指标、警报和资源运行状况进行标准负载均衡器诊断
 
@@ -231,7 +231,14 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>资源运行状况
 
-可以通过“Monitor”>“服务运行状况”下面的现有“资源运行状况”公开标准负载均衡器资源的运行状况。
+可以通过“Monitor”>“服务运行状况”下面的现有“资源运行状况”公开标准负载均衡器资源的运行状况。 每隔 **两分钟** 计算一次，以确定前端负载平衡终结点是否可用的数据路径可用性。
+
+| 资源运行状况 | 说明 |
+| --- | --- |
+| 可用 | 标准负载均衡器资源正常且可用。 |
+| 已降级 | 标准负载均衡器具有平台或用户启动的影响性能的事件。 “数据路径可用性”指标至少有两分钟报告了低于 90% 但高于 25% 的运行状况。 你将遇到中等到严重程度的性能影响。 [按照故障排除 RHC 指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) 来确定是否存在导致影响可用性的用户启动的事件。
+| 不可用 | 标准负载均衡器资源不正常。 “数据路径可用性”指标至少有两分钟报告了低于 25% 的运行状况。 你会遇到严重的性能影响，或者入站连接不可用。 可能存在导致不可用的用户或平台事件。 [按照故障排除 RHC 指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) 来确定是否有用户启动的事件影响了可用性。 |
+| Unknown | 标准负载均衡器资源的资源运行状况状态尚未更新，或者最近 10 分钟内未收到数据路径可用性信息。 此状态应该是暂时性的，系统在收到数据后会立即反映正确的状态。 |
 
 若要查看公共标准负载均衡器资源的运行状况，请执行以下步骤：
 1. 选择“Monitor” > “服务运行状况”。
@@ -254,12 +261,6 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
  
 [RHC 文档](../service-health/resource-health-overview.md)中提供了一般的资源运行状况状态说明。 下表列出了 Azure 负载均衡器的特定状态： 
 
-| 资源运行状况 | 说明 |
-| --- | --- |
-| 可用 | 标准负载均衡器资源正常且可用。 |
-| 已降级 | 标准负载均衡器具有平台或用户启动的影响性能的事件。 “数据路径可用性”指标至少有两分钟报告了低于 90% 但高于 25% 的运行状况。 你将遇到中等到严重程度的性能影响。 [按照数据路径可用性故障排除指南]来确定是否存在用户启动的影响你的可用性的事件。
-| 不可用 | 标准负载均衡器资源不正常。 “数据路径可用性”指标至少有两分钟报告了低于 25% 的运行状况。 你会遇到严重的性能影响，或者入站连接不可用。 可能存在导致不可用的用户或平台事件。 [按照数据路径可用性故障排除指南]来确定是否存在用户启动的影响你的可用性的事件。 |
-| Unknown | 标准负载均衡器资源的资源运行状况状态尚未更新，或者最近 10 分钟内未收到数据路径可用性信息。 此状态应该是暂时性的，系统在收到数据后会立即反映正确的状态。 |
 
 ## <a name="next-steps"></a>后续步骤
 

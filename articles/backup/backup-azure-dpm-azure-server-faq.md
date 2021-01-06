@@ -4,12 +4,12 @@ description: 本文解答有关 Microsoft Azure 备份服务器 (MABS) 和 DPM (
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: cd974181c78586f915dad6cc6ed39d9255a1456b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1663a842b7e00c611543451d4caef96b5b5a913f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172581"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954985"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure 备份服务器和 DPM - 常见问题解答
 
@@ -56,6 +56,10 @@ ms.locfileid: "92172581"
 
 - 如果你是 System Center 客户，使用 System Center Data Protection Manager (DPM) 来保护 VMware VM。
 - 如果不是 System Center 客户，可以使用 Azure 备份服务器（即用即付）来保护 VMware VM。
+
+### <a name="can-i-restore-a-backup-of-a-hyper-v-or-vmware-vm-stored-in-azure-to-azure-as-an-azure-vm"></a>是否可以将 Azure 中存储的 Hyper-v 或 VMware VM 备份还原为 azure VM？
+
+不可以。当前不可能。 只能还原到本地主机。
 
 ## <a name="sharepoint"></a>SharePoint
 

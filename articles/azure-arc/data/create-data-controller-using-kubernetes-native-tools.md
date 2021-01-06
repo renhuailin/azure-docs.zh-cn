@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 051a7f506d351a17764e38c760ffba06d224cc38
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e8d00055d9a4d7355ccd8a33c8a9b811b852f5c8
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422563"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955274"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>使用 Kubernetes 工具创建 Azure Arc 数据控制器
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 有关概述信息，请参阅 [创建 Azure Arc 数据控制器](create-data-controller.md) 主题。
 
@@ -38,11 +38,9 @@ ms.locfileid: "93422563"
 ```console
 # Cleanup azure arc data service artifacts
 kubectl delete crd datacontrollers.arcdata.microsoft.com 
-kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 
-kubectl delete postgresql-11s.arcdata.microsoft.com 
-kubectl delete postgresql-12s.arcdata.microsoft.com
-kubectl delete clusterroles azure-arc-data:cr-arc-metricsdc-reader
-kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
+kubectl delete crd sqlmanagedinstances.sql.arcdata.microsoft.com 
+kubectl delete crd postgresql-11s.arcdata.microsoft.com 
+kubectl delete crd postgresql-12s.arcdata.microsoft.com
 ```
 
 ## <a name="overview"></a>概述
@@ -59,7 +57,7 @@ kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
 运行以下命令以创建自定义资源定义。  **[要求 Kubernetes 群集管理员权限]**
 
 ```console
-kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
+kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
 ```
 
 ## <a name="create-a-namespace-in-which-the-data-controller-will-be-created"></a>创建将在其中创建数据控制器的命名空间
@@ -79,7 +77,7 @@ kubectl create namespace arc
 运行以下命令以创建引导程序服务、引导程序服务的服务帐户，以及引导程序服务帐户的角色和角色绑定。
 
 ```console
-kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/bootstrapper.yaml
+kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/bootstrapper.yaml
 ```
 
 使用以下命令验证引导程序 pod 是否正在运行。  在状态更改为之前，你可能需要多次运行该示例 `Running` 。
@@ -102,7 +100,7 @@ containers:
       - env:
         - name: ACCEPT_EULA
           value: "Y"
-        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-oct-2020  <-- template value to change
+        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-dec-2020  <-- template value to change
         image: <your registry DNS name or IP address>/<your repo>/arc-bootstrapper:<your tag>
         imagePullPolicy: IfNotPresent
         name: bootstrapper
@@ -150,7 +148,7 @@ echo '<your string to encode here>' | base64
 # echo 'example' | base64
 ```
 
-对用户名和密码进行编码后，您可以基于 [模板文件](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/controller-login-secret.yaml) 创建一个文件，并将用户名和密码值替换为您自己的值。
+对用户名和密码进行编码后，您可以基于 [模板文件](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/controller-login-secret.yaml) 创建一个文件，并将用户名和密码值替换为您自己的值。
 
 然后运行以下命令以创建机密。
 
@@ -165,26 +163,26 @@ kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.y
 
 现在，你已准备好创建数据控制器本身。
 
-首先，在计算机上本地创建 [模板文件](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/data-controller.yaml) 的副本，以便可以修改某些设置。
+首先，在计算机上本地创建 [模板文件](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/data-controller.yaml) 的副本，以便可以修改某些设置。
 
 根据需要编辑以下内容：
 
 **必填**
-- **位置** ：将此位置更改为要在其中存储数据控制器的 _元数据_ 的 Azure 位置。  可以在 [创建数据控制器概述](create-data-controller.md) 一文中查看可用 Azure 位置的列表。
-- **resourceGroup** ：要在 azure 中创建数据控制器 azure 资源的 azure 资源组资源管理器。  通常，此资源组应该已经存在，但在将数据上传到 Azure 之前，不需要此资源组。
-- **订阅** ：要在其中创建 azure 资源的订阅的 AZURE 订阅 GUID。
+- **位置**：将此位置更改为要在其中存储数据控制器的 _元数据_ 的 Azure 位置。  可以在 [创建数据控制器概述](create-data-controller.md) 一文中查看可用 Azure 位置的列表。
+- **resourceGroup**：要在 azure 中创建数据控制器 azure 资源的 azure 资源组资源管理器。  通常，此资源组应该已经存在，但在将数据上传到 Azure 之前，不需要此资源组。
+- **订阅**：要在其中创建 azure 资源的订阅的 AZURE 订阅 GUID。
 
 **建议查看并可能更改默认值**
-- **存储空间。className** ：用于数据控制器数据和日志文件的存储类。  如果你不确定 Kubernetes 群集中可用的存储类，可以运行以下命令： `kubectl get storageclass` 。  默认值为， `default` 它假定存在一个存在且命名为 `default` 非默认存储类 _的_ 存储类。  注意：需要将两个 className 设置设置为所需的存储类-一个用于数据，一个用于日志。
-- **serviceType** ： `NodePort` 如果使用的不是 LoadBalancer，请将服务类型更改为。  注意：需要更改两个 serviceType 设置。
+- **存储空间。className**：用于数据控制器数据和日志文件的存储类。  如果你不确定 Kubernetes 群集中可用的存储类，可以运行以下命令： `kubectl get storageclass` 。  默认值为， `default` 它假定存在一个存在且命名为 `default` 非默认存储类 _的_ 存储类。  注意：需要将两个 className 设置设置为所需的存储类-一个用于数据，一个用于日志。
+- **serviceType**： `NodePort` 如果使用的不是 LoadBalancer，请将服务类型更改为。  注意：需要更改两个 serviceType 设置。
 
 **可有可无**
-- **名称** ：数据控制器的默认名称为 `arc` ，但你可以根据需要对其进行更改。
-- **displayName** ：将此值设置为与文件顶部的 name 特性相同的值。
-- **注册表** ： Microsoft 容器注册表是默认值。  如果要从 Microsoft 容器注册表拉取映像并将 [其推送到专用容器注册表](offline-deployment.md)，请在此处输入注册表的 IP 地址或 DNS 名称。
-- **dockerRegistry** ：如有必要，要用于从专用容器注册表中提取映像的映像请求密码。
-- **存储库** ： Microsoft 容器注册表中的默认存储库是 `arcdata` 。  如果使用的是专用容器注册表，请输入文件夹/存储库的路径，该文件夹/存储库包含已启用 Azure Arr 的数据服务容器映像。
-- **imageTag** ：当前的最新版本标记在模板中是默认的，但是如果要使用较旧的版本，可以对其进行更改。
+- **名称**：数据控制器的默认名称为 `arc` ，但你可以根据需要对其进行更改。
+- **displayName**：将此值设置为与文件顶部的 name 特性相同的值。
+- **注册表**： Microsoft 容器注册表是默认值。  如果要从 Microsoft 容器注册表拉取映像并将 [其推送到专用容器注册表](offline-deployment.md)，请在此处输入注册表的 IP 地址或 DNS 名称。
+- **dockerRegistry**：如有必要，要用于从专用容器注册表中提取映像的映像请求密码。
+- **存储库**： Microsoft 容器注册表中的默认存储库是 `arcdata` 。  如果使用的是专用容器注册表，请输入文件夹/存储库的路径，该文件夹/存储库包含已启用 Azure Arr 的数据服务容器映像。
+- **imageTag**：当前的最新版本标记在模板中是默认的，但是如果要使用较旧的版本，可以对其进行更改。
 
 已完成数据控制器 yaml 文件的示例：
 ```yaml
@@ -200,7 +198,7 @@ spec:
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always
-    imageTag: public-preview-oct-2020 
+    imageTag: public-preview-dec-2020 
     registry: mcr.microsoft.com
     repository: arcdata
   security:

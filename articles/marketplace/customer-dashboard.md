@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 878fa181ff09d547ef6594a238e9c1d883cc89b7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c98b47507a7543002f00aae82370f5ea0043510d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460486"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954271"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>商业 marketplace 分析中的客户仪表板
 
@@ -144,7 +144,7 @@ _**表1：数据字典**_
 
 | 列名称 | 属性名称 | 定义 |
 | ------------ | ------------- | ------------- |
-| Marketplace 订阅 Id | 市场订阅 ID | 与客户用于购买商业 marketplace 产品/服务的 Azure 订阅相关联的唯一标识符。 该 ID 以前称为“Azure 订阅 GUID”。 |
+| Marketplace 订阅 Id | 市场订阅 ID | 与客户用于购买商业 marketplace 产品/服务的 Azure 订阅相关联的唯一标识符。 对于基础结构服务，这是客户的 Azure 订阅 GUID。 对于 SaaS 服务，此操作显示为零，因为 SaaS 购买不需要 Azure 订阅。 |
 | DateAcquired | 获取日期 | 客户购买的任何产品/服务的第一个日期。 |
 | DateLost | 丢失日期 | 客户取消上次购买的所有产品/服务的最后日期。 |
 | Provider Name | Provider Name | Microsoft 与客户之间的关系所涉及的提供者的名称。 如果客户是“通过经销商购买产品/服务的企业”，则此提供商是经销商。 如果涉及到云解决方案提供商 (CSP)，则此提供商是 CSP。 |
@@ -157,7 +157,7 @@ _**表1：数据字典**_
 | 客户邮政编码 | 客户邮政编码 | 客户提供的邮政编码。 代码可能与客户的 Azure 订阅中提供的邮政编码不同。 |
 | CustomerCommunicationCulture | 客户通信语言 | 客户的首选通信语言。 |
 | CustomerCountryRegion | 客户所在国家/地区 | 客户提供的国家/地区名称。 国家/地区可能不同于客户的 Azure 订阅中的国家/地区。 |
-| AzureLicenseType | Azure 许可证类型 | 购买 Azure 的客户使用的许可协议类型。 也称为 _通道_。 可能的值为：<ul><li>云解决方案提供商</li><li>企业</li><li>企业通过分销商</li><li>即付即用</li></ul> |
+| AzureLicenseType | Azure 许可证类型 | 购买 Azure 的客户使用的许可协议类型。 也称为 _通道_。 可能的值为：<ul><li>云解决方案提供商</li><li>Enterprise</li><li>企业通过分销商</li><li>即付即用</li></ul> |
 | PromotionalCustomers | 是促销联系人选择加入 | 此值告知是否客户主动从发布者渠道登记为促销联系人。 目前我们不会向客户提供该选项，因此，在整个板块中都指示了“否”。 部署此功能后，我们将相应地开始更新。 |
 | CustomerState | 客户所在的州/省 | 客户提供的住所的状态。 状态可能与客户的 Azure 订阅中提供的状态不同。 |
 | CommerceRootCustomer | 商业根客户 | 一个计费帐户 ID 可以与多个客户 Id 相关联。<br>计费帐户 ID 和客户 ID 的一个组合可以与多个商业 marketplace 订阅相关联。<br>Commerce Root 客户表示订阅的客户的名称。 |

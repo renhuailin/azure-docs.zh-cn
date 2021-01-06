@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: a6f4b0a503e942b79dff28212863831055892246
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916552"
+ms.locfileid: "97955206"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
 
@@ -168,7 +168,7 @@ ModifyOrder 实体作为带有子实体的计算机实体，显示是否匹配�
 
 LUIS 可让你使用 LUIS 门户进行批处理测试，并 REST API。 下面列出了 REST API 的终结点。 有关使用 LUIS 门户进行批处理测试的信息，请参阅 [教程：批处理测试数据集](luis-tutorial-batch-testing.md)。 使用下面的完整 Url，并将占位符值替换为你自己的 LUIS 预测密钥和终结点。 
 
-请记得将 LUIS 键添加到 `Apim-Subscription-Id` 标头中，并将设置 `Content-Type` 为 `application/json` 。
+请记得将 LUIS 键添加到 `Ocp-Apim-Subscription-Key` 标头中，并将设置 `Content-Type` 为 `application/json` 。
 
 ### <a name="start-a-batch-test"></a>启动批处理测试
 

@@ -3,12 +3,12 @@ title: 什么是 Azure 中继？ | Microsoft Docs
 description: 本文提供 Azure 中继服务的概述。借助该服务，无需打开防火墙连接或者对网络基础设施进行彻底的改造，就能开发使用企业网络中运行的本地服务的云应用程序。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 0c9a67bcad47ad2e7284bcf6e70914d2ffb06a8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85322644"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955376"
 ---
 # <a name="what-is-azure-relay"></a>什么是 Azure 中继？
 使用 Azure 中继服务可以安全地在公有云中公开企业网络中运行的服务。 无需打开防火墙上的端口或者对企业网络基础设施进行彻底的改造就能实现此目的。 
@@ -17,7 +17,7 @@ ms.locfileid: "85322644"
 
 - 传统的单向请求/响应式通信和对等通信 
 - Internet 范围的事件分发，实现发布/订阅方案 
-- 跨网络边界的双向无缓冲套接字通信。
+- 跨网络边界的双向和无缓冲套接字通信
 
 Azure 中继不同于 VPN 等网络级集成技术。 Azure 中继的范围可以限定于一台计算机上的单个应用程序终结点。 VPN 技术的侵入性更强，因为它依赖于对网络环境的改造。 
 
@@ -56,7 +56,7 @@ WCF 中继适用于整个 .NET Framework 和 WCF。 可以使用一套 WCF“中
 | **WCF** |x | |
 | **.NET Core** | |x |
 | **.NET framework** |x |x |
-| **Java script/Node.JS** | |x |
+| **JavaScript/Node.js** | |x |
 | **基于标准的开放协议** | |x |
 | **RPC 编程模型** | |x |
 

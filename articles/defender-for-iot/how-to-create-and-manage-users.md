@@ -4,15 +4,15 @@ description: 创建和管理传感器的用户和本地管理控制台。 可以
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: c3a9e1c7e96d0392e1f94b71549f612738622dea
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 22d0c59110ba033232fbdf41062b49e9a146ca6f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838449"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955061"
 ---
 # <a name="about-defender-for-iot-console-users"></a>关于用于 IoT 控制台用户的 Defender
 
@@ -20,7 +20,7 @@ ms.locfileid: "97838449"
 
 还可以使用功能来跟踪用户活动，并启用 Active Directory 登录。
 
-默认情况下，会随 *cyberx 和支持* 用户一起安装每个传感器和本地管理控制台。 这些用户有权访问用于疑难解答和设置的高级工具。 管理员用户应使用这些用户凭据登录，创建管理员用户，然后为安全分析师和只读用户创建其他用户。
+默认情况下，会随 *cyberx 和支持* 用户一起安装每个传感器和本地管理控制台。 这些用户有权访问用于疑难解答和设置的高级工具。 管理员用户应使用这些用户凭据登录，创建管理员用户，然后为安全分析人员和只读用户创建额外的用户。
 
 ## <a name="role-based-permissions"></a>基于角色的权限
 可用的用户角色如下：
@@ -89,8 +89,8 @@ ms.locfileid: "97838449"
 定义用户：
 
 1. 在传感器或本地管理控制台的左窗格中，选择 " **用户**"。
-2. 在 " **用户** " 窗口中，选择 " **创建用户**"。
-3. 在 " **创建用户** " 窗格中，定义以下参数：
+1. 在 " **用户** " 窗口中，选择 " **创建用户**"。
+1. 在 " **创建用户** " 窗格中，定义以下参数：
 
    - **用户名**：输入用户名。
    - **电子邮件**：输入用户的电子邮件地址。
@@ -122,7 +122,7 @@ ms.locfileid: "97838449"
 
 1. 使用用于 IoT 的 IoT 管理凭据登录到传感器或本地管理控制台的 CLI。
 
-2. 输入 `sudo nano /var/cyberx/properties/authentication`。
+1. 输入 `sudo nano /var/cyberx/properties/authentication`。
 
 ```azurecli-interactive
     infinity_session_expiration = true
@@ -138,7 +138,6 @@ ms.locfileid: "97838449"
 若要禁用该功能，请将更改 `infinity_session_expiration = true` 为 `infinity_session_expiration = false` 。
 
 若要更新注销时间段，请将 `= <number>` 值调整为所需的时间。
-
 
 ## <a name="track-user-activity"></a>跟踪用户活动 
 
@@ -171,11 +170,11 @@ ms.locfileid: "97838449"
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="查看 Active Directory 系统设置。":::
 
-2. 在 " **系统设置** " 窗格中，选择 **Active Directory**。
+1. 在 " **系统设置** " 窗格中，选择 **Active Directory**。
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="编辑您的 Active Directory 配置。":::
 
-3. 在 "**编辑 Active Directory 配置**" 对话框中， **Active Directory 选择 "已启用集成**" "  >  **保存**"。 " **编辑 Active Directory 配置** " 对话框将展开，你现在可以输入用于配置 Active Directory 的参数。
+1. 在 "**编辑 Active Directory 配置**" 对话框中， **Active Directory 选择 "已启用集成**" "  >  **保存**"。 " **编辑 Active Directory 配置** " 对话框将展开，你现在可以输入用于配置 Active Directory 的参数。
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="输入用于配置 Active Directory 的参数。":::
 
@@ -184,7 +183,7 @@ ms.locfileid: "97838449"
     > - 对于所有 Active Directory 参数，只使用小写。 即使 Active Directory 中的配置使用大写，也请使用小写。
     > - 不能同时为同一个域配置 LDAP 和 LDAPS。 不过，您可以同时对不同的域使用这两种方法。
 
-4. 设置 Active Directory 服务器参数，如下所示：
+1. 设置 Active Directory 服务器参数，如下所示：
 
    | 服务器参数 | 说明 |
    |--|--|
@@ -194,9 +193,79 @@ ms.locfileid: "97838449"
    | Active Directory 组 | 输入在 LDAP 服务器上的 Active Directory 配置中定义的组名。 |
    | 受信任域 | 若要添加受信任的域，请添加域名称和受信任域的连接类型。 <br />只能为在 "用户" 下定义的用户配置受信任的域。 |
 
-5. 选择“保存”。
+1. 选择“保存”。
 
-6. 若要添加受信任的服务器，请选择 " **添加服务器** " 并配置其他服务器。
+1. 若要添加受信任的服务器，请选择 " **添加服务器** " 并配置其他服务器。
+
+## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>为传感器或本地管理控制台重置用户的密码
+
+### <a name="cyberx-or-support-user"></a>CyberX 或支持用户
+
+只有 **CyberX** 和 **支持** 用户才能访问 **密码恢复** 功能。 如果 **CyberX** 或 **支持** 用户忘记了其密码，则可以通过用于 IoT 登录页上的 **密码恢复** 选项来重置密码。
+
+为 CyberX 或支持用户重置密码：
+
+1. 在 "用于 IoT 的 Defender" 登录屏幕上，选择 "  **密码恢复**"。 " **密码恢复** " 屏幕打开。
+
+1. 选择 " **CyberX** " 或 " **支持**"，并复制唯一标识符。
+
+1. 导航到 Azure 门户，然后选择 " **站点和传感器**"。  
+
+1. 选择顶部工具栏中的 " **订阅筛选器** " 图标 :::image type="icon" source="media/password-recovery-images/subscription-icon.png" border="false":::  ，并选择传感器连接到的订阅。
+
+1. 选择 " **恢复本地管理控制台密码** " 选项卡。
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="选择 &quot;恢复本地管理&quot; 按钮以下载恢复文件。":::
+
+1. 输入在 **密码恢复** 屏幕上收到的唯一标识符，然后选择 " **恢复**"。 `password_recovery.zip`下载文件。
+
+    > [!NOTE]
+    > 请勿更改密码恢复文件。 它是已签名的文件，如果你篡改此文件，则不会工作。
+
+1. 在 **密码恢复** 屏幕上，选择 " **上传**"。 **"上传密码恢复文件"** 窗口将打开。
+
+   :::image type="content" source="media/password-recovery-images/upload.png" alt-text="上载恢复文件以获取新密码。":::
+
+1. 选择 " **浏览** " 以查找 `password_recovery.zip` 文件，或者将拖动 `password_recovery.zip` 到窗口。
+
+    > [!NOTE]
+    > 可能会出现一条错误消息，指示文件无效。 若要修复此错误消息，请确保在下载之前选择了正确的订阅 `password_recovery.zip` ，并再次下载。  
+
+1. 选择 " **下一步**"，随后将显示您的用户和您的管理控制台的系统生成的密码。
+
+### <a name="administrator-security-analyst-and-read-only-user"></a>管理员、安全分析人员和只读用户
+
+只读和安全分析人员无法重置其自己的密码，需要联系具有管理员、支持或 CyberX 角色的用户才能重置其密码。 管理员用户必须联系 **CyberX** 或 **支持** 用户才能重置其密码。
+
+在传感器上重置用户的密码：
+
+1. 管理员、支持或 CyberX 角色用户应登录到传感器。
+
+1. 从左侧面板中选择 " **用户** "。
+
+   :::image type="content" source="media/password-recovery-images/sensor-page.png" alt-text="从左侧窗格中选择 &quot;用户&quot; 选项。":::
+
+1. 找到用户，然后从 "**操作**" 下拉菜单中选择 "**编辑**"。
+
+   :::image type="content" source="media/password-recovery-images/edit.png" alt-text="从 &quot;操作&quot; 下拉菜单中选择 &quot;编辑&quot;。":::
+
+1. 在 " **新密码** " 和 " **确认新密码** " 字段中输入新密码。
+
+1. 选择“更新”。
+
+若要在本地管理控制台中重置用户的密码，请执行以下操作：
+
+1. 管理员、支持或 CyberX 角色用户应登录到传感器。
+
+1. 从左侧面板中选择 " **用户** "。
+
+   :::image type="content" source="media/password-recovery-images/console-page.png" alt-text="在左侧面板中，选择用户的选项。":::
+
+1. 找到用户，然后选择 "编辑" 图标 :::image type="icon" source="media/password-recovery-images/edit-icon.png" border="false"::: 。
+
+1. 在 " **新密码** " 和 " **确认新密码** " 字段中输入新密码。
+
+1. 选择“更新”。
 
 ## <a name="see-also"></a>另请参阅
 

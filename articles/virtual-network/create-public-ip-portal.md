@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: add763b713b93604e089d7aec586876fecd2887c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd35d3288591a01c14e306960601eef6dea7e761
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895632"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954135"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建公共 IP 地址
 
@@ -36,6 +36,7 @@ ms.locfileid: "95895632"
     | ---                     | ---                         |
     | IP 版本              | 选择“IPv4”                 |    
     | SKU                     | 选择“标准”         |
+    | 分层 (如显示 * )                   | 选择 **区域**         |
     | 名称                    | 输入 *myStandardZRPublicIP*          |
     | IP 地址分配   | 请注意，这将被锁定为 "静态"                                        |
     | 空闲超时(分钟)  | 将该值保留为“4”        |
@@ -47,9 +48,11 @@ ms.locfileid: "95895632"
 
 请注意，这些只是包含 [可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)的区域中的有效选择。   (你还可以在这些区域中选择特定的区域，但不能恢复范围故障。 ) 
 
+\* = 层关联于 [跨区域负载均衡器](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) 功能，目前为预览版。
+
 # <a name="basic-sku"></a>[**基本 SKU**](#tab/option-create-public-ip-basic)
 
-使用以下步骤创建名为“myBasicPublicIP”的基本静态公共 IP 地址。  基本公共 Ip 没有可用性区域的概念。
+使用以下步骤创建名为“myBasicPublicIP”的基本静态公共 IP 地址。  基本公共 IP 没有可用性区域的概念。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 选择“创建资源”。 

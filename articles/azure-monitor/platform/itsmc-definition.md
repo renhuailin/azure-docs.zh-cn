@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: b26643daede9e26f2bf1807ae99a6ced5d1cb08c
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 072abffcc74b8b060d98c07d1f310413c7b323ef
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901566"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954934"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -127,30 +127,34 @@ ms.locfileid: "97901566"
 
 8. 如果要使用固定值填写现成字段，请选择 " **使用自定义模板**"。 否则，请在 "**模板**" 列表中选择现有 [模板](#template-definitions)，然后在模板字段中输入固定值。
 
-9. 在操作 ITSM 组定义的最后一部分中，你可以定义将从每个警报创建的警报数。 本节仅与日志搜索警报相关。
+9. 在操作 ITSM 组定义的最后一部分中，你可以定义将为每个警报创建的工作项的数目。
+
+    >[!NOTE]
+    >
+    > * 本节仅与日志搜索警报相关。
+    > * 指标警报和活动日志警报始终会为每个警报创建一个工作项。
 
     * 在工作项下拉列表中选择 "事件" 或 "警报"：
-        * 如果选中 " **为每个配置项目创建单独的工作项** " 复选框，则每个警报中的每个配置项都将创建新的工作项。 在 ITSM 系统中，每个配置项目可以有多个工作项。
+        * 如果选中 **"为每个配置项目创建单独的工作项"** 复选框，则每个警报中的每个配置项都将创建一个新的工作项。 在 ITSM 系统中，每个配置项目可以有多个工作项。
 
             例如：
             1) 包含3个配置项目的警报1： A、B、C-将创建3个工作项。
-            2) 带有1个配置项目的警报2： D-将创建1个工作项。
+            2) 警报2，其中包含1个配置项目： A-将创建1个工作项。
 
-                **在此流结束时，将出现4个警报**
-        * 如果清除了 " **为每个配置项目创建单独的工作项** " 复选框，则会出现不会创建新工作项的警报。 将根据警报规则合并工作项。
+        * 如果清除 **"为每个配置项目创建单独的工作项"** 复选框，则 ITSM 连接器将为每个警报规则创建一个工作项，并将所有受影响的配置项追加到该工作项。 如果上一个工作项已关闭，则将创建一个新的工作项。
+        >[!NOTE]
+        > 在这种情况下，某些触发的警报不会在 ITSM 工具中生成新的工作项。
 
-            例如：
-            1) 包含3个配置项目的警报1： A、B、C-将创建1个工作项。
-            2) 与1个配置项目： D 的阶段1相同的警报规则的警报2将合并到阶段1中的工作项。
-            3) 警报3对于具有1个配置项目的不同警报规则： E-将创建1个工作项。
-
-                **在此流结束时，将出现2个警报**
+            For example:
+            1) Alert 1 with 3 Configuration Items: A, B, C - will create 1 work item.
+            2) Alert 2 for the same alert rule as phase 1 with 1 Configuration Item: D - will be merged to the work item in phase 1.
+            3) Alert 3 for a different alert rule with 1 Configuration Item: E - will create 1 work item.
 
        ![显示 ITSM 事件窗口的屏幕截图。](media/itsmc-overview/itsm-action-configuration.png)
 
     * 在工作项下拉列表中选择 "事件" 时：
-        * 如果为单选按钮选择中的 **每个日志项选择 "创建单独的工作项** "，则将根据日志搜索警报查询的搜索结果中的每行创建一个警报。 在警报的负载中，description 属性将从搜索结果中获得该行。
-        * 如果为单选按钮选择中的 **每个配置项目选择 "创建单独的工作项** "，则每个警报中的每个配置项都将创建新的工作项。 在 ITSM 系统中，每个配置项目可以有多个工作项。 这与选中 "事件/警报" 一节中的复选框相同。
+        * 如果选择 **"为每个日志项创建单独的工作项 (则不会填充配置项目字段。可能会导致大量的工作项。 ) "** 在单选按钮选择中，将根据日志搜索警报查询的搜索结果中的每一行创建一个警报。 在警报的负载中，description 属性将从搜索结果中获得该行。
+        * 如果在单选按钮选择中选择 **"为每个配置项目创建单独的工作项"** ，则每个警报中的每个配置项都将创建新的工作项。 在 ITSM 系统中，每个配置项目可以有多个工作项。 这与选中 "事件/警报" 一节中的复选框相同。
     ![显示 ITSM 事件窗口的屏幕截图。](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. 选择“确定”。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 5a912790b4a7a86c44576b98ce7e95f44b810c9e
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: a7227195c767d90141a9b6cd95f784c239a31fd5
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857369"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955189"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>训练和部署自定义语音识别模型
 
@@ -48,6 +48,11 @@ ms.locfileid: "97857369"
 
 请参阅[操作说明](how-to-custom-speech-evaluate-data.md)，了解如何评估和提高自定义语音识别模型准确度。 如果选择测试准确性，请务必选择与模型中使用的数据集不同的声音数据集，以获得模型性能的真实认识。
 
+> [!NOTE]
+> 基本模型和自定义模型只能使用特定的日期 (请参阅 [模型生命周期](custom-speech-overview.md#model-lifecycle)) 。 对于每个模型和终结点，Speech Studio 在 " **到期** " 列中显示此日期。 在该日期后，对终结点或批处理的请求可能会失败或回退到基本模型。
+>
+> 使用最新的基本模型重新训练模型，以便从准确性改进中获益，并避免模型过期。
+
 ## <a name="deploy-a-custom-model"></a>部署自定义模型
 
 上载并检查数据、评估准确性并为自定义模型定型后，可以部署自定义终结点，以便与应用、工具和产品一起使用。 
@@ -63,7 +68,7 @@ ms.locfileid: "97857369"
 
 接下来，选择“创建”。  执行此操作后会返回到“部署”  页。 表中现在有自定义终结点的对应条目。 终结点的状态显示其当前状态。 使用自定义模型实例化新终结点最长可能需要 30 分钟才能完成。 当部署状态更改为“完成”  时，终结点便可供使用。
 
-部署终结点后，其名称将以链接的形式显示。 选择该链接可查看特定于你的终结点的信息，如终结点密钥、终结点 URL 和示例代码。
+部署终结点后，其名称将以链接的形式显示。 选择该链接可查看特定于你的终结点的信息，如终结点密钥、终结点 URL 和示例代码。 记下截止日期，并在该日期之前更新终结点的模型，以确保服务不中断。
 
 ## <a name="view-logging-data"></a>查看日志记录数据
 

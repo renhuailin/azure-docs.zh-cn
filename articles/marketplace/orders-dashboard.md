@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 943f1361a2a9d6bf8d891f8b4f2137b8738f0836
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 31216db98cc02724ac3625eb1a8fa18b0f75c6ee
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450764"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955019"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“订单”仪表板
 
@@ -109,17 +109,16 @@ SaaS 产品/服务可对每个计划使用两个定价模型之一： "平面" (
 - 数据可以提取到。CSV 或。TSV 文件（如果记录计数小于1000）。
 - 如果记录数超过1000，则导出的数据将在接下来的30天内异步置于下载页中。
 - 将筛选器应用于 " **订单详细信息** " 表，以便只显示你感兴趣的数据。 按国家/地区、Azure 许可证类型、商业 marketplace 许可证类型、产品/服务类型、订单状态、免费线索、商业市场订阅 ID、客户 ID 和公司名称进行筛选。
-- 由于 SaaS 通过 Azure Marketplace 或 Microsoft AppSource 购买，因此不需要 Azure 订阅，Marketplace 订阅 ID 将以00000000-0000-0000-0000-000000000000 形式出现在 " **详细订单数据** " 部分中。
 - 当受保护的客户购买订单时，会屏蔽 **订单详细数据** 中的信息 ( * * * * * * * * * * ) 。
 
 **_表1：数据术语的字典_*
 
 | 列名称 | 属性名称 | 定义 |
 | ------------ | ------------- | ------------- |
-| Marketplace 订阅 Id | 市场订阅 ID | 与客户用于购买商业 marketplace 产品/服务的 Azure 订阅相关联的唯一标识符。 该 ID 以前称为“Azure 订阅 GUID”。 |
+| Marketplace 订阅 Id | 市场订阅 ID | 与客户用于购买商业 marketplace 产品/服务的 Azure 订阅相关联的唯一标识符。 对于基础结构服务，这是客户的 Azure 订阅 GUID。 对于 SaaS 服务，此操作显示为零，因为 SaaS 购买不需要 Azure 订阅。 |
 | MonthStartDate | 月开始日期 | 月开始日期表示采购月份。 |
 | 产品/服务类型 | 产品/服务类型 | 商业 marketplace 产品/服务的类型。 |
-| Azure 许可证类型 | Azure 许可证类型 | 购买 Azure 的客户使用的许可协议类型。 也称为“渠道”。 可能的值为：<ul><li>云解决方案提供商</li><li>企业</li><li>企业通过分销商</li><li>即付即用</li></ul> |
+| Azure 许可证类型 | Azure 许可证类型 | 购买 Azure 的客户使用的许可协议类型。 也称为“渠道”。 可能的值为：<ul><li>云解决方案提供商</li><li>Enterprise</li><li>企业通过分销商</li><li>即付即用</li></ul> |
 | 市场许可证类型 | 市场许可证类型 | 商业应用商店的计费方法。 不同的值是：<ul><li>通过 Azure 计费</li><li>自带许可</li><li>免费</li><li>Microsoft as 经销商</li></ul> |
 | SKU | SKU | 与产品/服务关联的计划 |
 | 客户所在国家/地区 | 客户所在国家/地区 | 客户提供的国家/地区名称。 国家/地区可能不同于客户的 Azure 订阅中的国家/地区。 |

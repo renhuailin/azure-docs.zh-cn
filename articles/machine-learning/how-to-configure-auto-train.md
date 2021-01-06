@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 60aab2c77a5ccf59e129b21deab34daf756b2e23
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 054d18337e50a367cf1f6f004f4e1d1652c7751e
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827421"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954392"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 
@@ -468,15 +468,17 @@ run = experiment.submit(automl_config, show_output=True)
   2. 输入 `pip freeze` 并查找 `tensorflow`，如果找到，则列出的版本应 <1.13
   3. 如果列出的版本不是受支持的版本，请 `pip uninstall tensorflow` 在命令行界面中输入 y 进行确认。
   
- * **运行失败， `jwt.exceptions.DecodeError`** 出现错误：准确的错误消息： `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` 。 
- 
-    请考虑升级到最新版本的 AutoML SDK： `pip install -U azureml-sdk[automl]` 。 
-    
-    如果这不可行，请检查 PyJWT 的版本。 支持的版本 < 2.0.0。 如果版本 >= 2.0.0，则从环境中卸载 PyJWT。 你可以检查 PyJWT 的版本，并按如下所示卸载和安装正确的版本：
+ * **运行失败， `jwt.exceptions.DecodeError`** 出现错误：准确的错误消息： `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` 。
+
+    对于版本 <= SDK 的1.17.0，安装可能会导致不受支持的 PyJWT 版本。 检查自动 ml conda 环境中的 PyJWT 版本。 支持的版本 < 2.0.0。 您可以按如下所示检查 PyJWT 的版本：
     1. 启动命令 shell，激活安装了自动化 ML 包的 conda 环境。
     2. 输入 `pip freeze` 并查找 `PyJWT` ，如果找到，则列出的版本应 < 2.0。0
-    3. 如果列出的版本不是受支持的版本，请 `pip uninstall PyJWT` 在命令行界面中输入 y 进行确认。
-    4. 使用安装 `pip install 'PyJWT<2.0.0'` 。
+
+    如果列出的版本不是受支持的版本：
+    1. 请考虑升级到最新版本的 AutoML SDK： `pip install -U azureml-sdk[automl]` 。
+    2. 如果这不可行，请从环境中卸载 PyJWT，并安装正确的版本，如下所示：
+        - `pip uninstall PyJWT` 在命令行界面中，输入 `y` 进行确认。
+        - 使用安装 `pip install 'PyJWT<2.0.0'` 。
 
 ## <a name="next-steps"></a>后续步骤
 

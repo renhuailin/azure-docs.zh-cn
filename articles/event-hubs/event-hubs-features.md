@@ -3,12 +3,12 @@ title: Azure 事件中心功能概述 | Microsoft Docs
 description: 本文详细介绍 Azure 事件中心的功能和术语。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a38cf4ba6a06dc6e977f9ea168fcf67ce83ff5de
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0730a5fa3abbc6b27cb96431125564a2475a90d1
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339976"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955633"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 
@@ -16,32 +16,48 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 本文基于[概述文章](./event-hubs-about.md)中的信息编写，并提供有关事件中心组件和功能的技术和实现详细信息。
 
+> [!TIP]
+> [ **Apache Kafka** 客户端的协议支持](event-hubs-for-kafka-ecosystem-overview.md)  (版本 >= 1.0) 提供网络终结点，使应用程序可以使用 Apache Kafka 与任何客户端使用事件中心。 大多数现有的 Kafka 应用程序可以简单地重新配置为指向事件中心命名空间而不是 Kafka 群集启动服务器。 
+>
+>从成本、运营工作量和可靠性的角度来看，Azure 事件中心是一种很好的替代方法，可用于部署和操作你自己的 Kafka 和 Zookeeper 群集以及不是本机到 Azure 的 Kafka 即服务产品/服务。 
+>
+> 除了获取 Apache Kafka broker 的核心功能，还可以访问 Azure 事件中心功能，如通过 [事件中心捕获](event-hubs-capture-overview.md)进行自动批处理和存档、自动缩放和平衡、灾难恢复、非特定于成本的可用性区域支持、灵活和安全的网络集成和多协议支持（包括防火墙友好的 AMQP over websocket 协议）。
+
+
 ## <a name="namespace"></a>命名空间
-事件中心命名空间提供由其 [完全限定的域名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)引用的唯一作用域容器，你可以在其中创建一个或多个事件中心或 Kafka 主题。 
-
-## <a name="event-hubs-for-apache-kafka"></a>用于 Apache Kafka 的事件中心
-
-[此功能](event-hubs-for-kafka-ecosystem-overview.md)提供了一个终结点，该终结点允许客户使用 Kafka 协议与事件中心进行通信。 此集成为客户提供了一个 Kafka 终结点。 这允许客户将其现有 Kafka 应用程序配置为与事件中心进行通信，提供了运行其自己的 Kafka 群集的替代方式。 Apache Kafka 的事件中心支持 Kafka 协议 1.0 和更高版本。 
-
-有了此集成，你不需要使用 Zookeeper 便可运行 Kafka 群集或管理它们。 这还允许你使用事件中心的一些要求最严苛的功能，例如“捕获”、“自动扩展”和“异地灾难恢复”。
-
-使用此集成，只需要进行配置更改，便可允许应用程序（例如 Mirror Maker）或框架（例如 Kafka Connect）以非群集方式工作。 
+事件中心命名空间提供 DNS 集成网络终结点和一系列访问控制和网络集成管理功能，例如 [IP 筛选](event-hubs-ip-filtering.md)、 [虚拟网络服务终结点](event-hubs-service-endpoints.md)和 [专用链接](private-link-service.md) ，并是 Kafka 行话) 中 (或主题的多个事件中心实例之一的管理容器。
 
 ## <a name="event-publishers"></a>事件发布者
 
-向事件中心发送数据的任何实体都是事件生成者或事件发布者。 事件发布者可以使用 HTTPS、AMQP 1.0 或 Kafka 1.0 和更高版本发布事件。 事件发布者通过共享访问签名 (SAS) 令牌向事件中心表明其身份，可以使用唯一的标识，也可以使用通用的 SAS 令牌。
+向事件中心发送数据的任何实体都是 *事件发布者* (与 *事件* 生成者) 一起使用的同义词。 事件发布者可以使用 HTTPS 或 AMQP 1.0 或 Kafka 协议发布事件。 事件发布者通过 OAuth2 颁发的 JWT 令牌或特定于事件中心的共享访问签名 (SAS) 令牌获取发布访问权限来使用基于 Azure Active Directory 的授权。
 
 ### <a name="publishing-an-event"></a>发布事件
 
-可以通过 AMQP 1.0、Kafka 1.0（和更高版本）或 HTTPS 发布事件。 事件中心服务提供 [REST API](/rest/api/eventhub/)、[.NET](event-hubs-dotnet-standard-getstarted-send.md)、[Java](event-hubs-java-get-started-send.md)、[Python](event-hubs-python-get-started-send.md)、[JavaScript](event-hubs-node-get-started-send.md) 和 [Go](event-hubs-go-get-started-send.md) 客户端库，用于将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](https://qpid.apache.org/)。 
+可以通过 AMQP 1.0、Kafka 协议或 HTTPS 发布事件。 事件中心服务提供 [REST API](/rest/api/eventhub/)、[.NET](event-hubs-dotnet-standard-getstarted-send.md)、[Java](event-hubs-java-get-started-send.md)、[Python](event-hubs-python-get-started-send.md)、[JavaScript](event-hubs-node-get-started-send.md) 和 [Go](event-hubs-go-get-started-send.md) 客户端库，用于将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](https://qpid.apache.org/)。 
 
-可以逐个或者批量发送事件。 单个发布（事件数据实例）限制为 1 MB，不管它是单个事件还是事件批。 发布大于此限制的事件将导致出错。 发布者最好是不知道事件中心内的分区数，而只是通过其 SAS 令牌指定“分区键”（如下一部分所述）或其标识。
+是要使用 AMQP 还 HTTPS 根据具体的使用方案而定。 AMQP 除了需要使用传输级别安全 (TLS) 或 SSL/TLS 以外，还需要建立持久的双向套接字。 初始化会话时，AMQP 具有较高的网络成本，但是 HTTPS 需要为每个请求使用额外的 TLS 开销。 对于频繁发布服务器，AMQP 具有明显更高的性能，并且在与异步发布代码一起使用时，延迟时间可能更低。
 
-是要使用 AMQP 还 HTTPS 根据具体的使用方案而定。 AMQP 除了需要使用传输级别安全 (TLS) 或 SSL/TLS 以外，还需要建立持久的双向套接字。 初始化会话时，AMQP 具有较高的网络成本，但是 HTTPS 需要为每个请求使用额外的 TLS 开销。 对于活动频繁的发布者，AMQP 的性能更高。
+您可以单独或分批发布事件。 单个发布的大小限制为 1 MB，无论是单个事件还是批处理，都是如此。 发布大于此阈值的事件将被拒绝。 
+
+事件中心吞吐量通过使用分区和吞吐量-单元分配进行缩放 (如下) 所示。 发布者最好是不知道为事件中心选择的特定分区模型，而只是指定用于一致地将相关事件分配给同一分区的 *分区键* 。
 
 ![分区键](./media/event-hubs-features/partition_keys.png)
 
-事件中心可确保按顺序将共享分区键值的所有事件传送到同一分区。 如果将分区键与发布者策略结合使用，则发布者的标识与分区键的值必须匹配。 否则会出错。
+事件中心确保共享分区键值的所有事件存储在一起，并按到达顺序进行传递。 如果将分区键与发布者策略结合使用，则发布者的标识与分区键的值必须匹配。 否则会出错。
+
+### <a name="event-retention"></a>事件保留
+
+根据可配置的、基于时间的保留策略，从事件中心删除已发布的事件。 默认值和可能的最短保持期为1天 (24 小时) 。 对于事件中心标准版，最长保留期为7天。 对于事件中心专用层，最长保留期为90天。
+
+> [!NOTE]
+> 事件中心是一种实时事件流引擎，并不旨在用于替代数据库和/或永久保存的事件流。 
+> 
+> 事件流的历史记录越深，就越需要辅助索引查找给定流的特定历史切片。 事件负载和索引的检查不在事件中心的功能范围内 (或 Apache Kafka) 。 因此，数据库和专用分析存储和引擎（如 [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)、 [Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-overview.md) 和 [Azure Synapse](../synapse-analytics/overview-what-is.md) ）都可以更好地用于存储历史事件。
+>
+> [事件中心捕获](event-hubs-capture-overview.md) 直接与 Azure Blob 存储和 Azure Data Lake Storage 集成，通过该集成，还可以 [直接将事件流入 Azure Synapse](store-captured-data-data-warehouse.md)。
+>
+> 如果要使用应用程序的 [事件源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) 模式，应将快照策略与事件中心的保留限制进行对齐。 请勿从开始时开始的原始事件中重新生成具体化视图。 如果你的应用程序在生产环境中投入使用一段时间并使用良好，并且你的投影生成器需要经历多年的变化事件，并且在尝试及时了解最新和正在进行的更改时，你肯定会后悔这样的策略。 
+
 
 ### <a name="publisher-policy"></a>发布者策略
 
