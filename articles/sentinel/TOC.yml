@@ -211,6 +211,8 @@
       href: /rest/api/securityinsights/
     - name: 网络规范化架构
       href: normalization-schema.md
+    - name: UEBA 扩充
+      href: ueba-enrichments.md
 - name: 资源
   items:
     - name: 有用的资源

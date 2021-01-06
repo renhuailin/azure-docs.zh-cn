@@ -205,8 +205,16 @@
           href: partner-center-portal/create-iot-edge-module-asset.md
     - name: 托管服务产品
       items:
+        - name: 规划托管服务套餐
+          href: plan-managed-service-offer.md
         - name: 创建托管服务产品
-          href: partner-center-portal/create-new-managed-service-offer.md
+          href: create-managed-service-offer.md
+        - name: 配置托管服务列表
+          href: create-managed-service-offer-listing.md
+        - name: 添加预览受众
+          href: create-managed-service-offer-preview.md
+        - name: 创建计划
+          href: create-managed-service-offer-plans.md
     - name: Power BI 应用产品/服务
       items:
         - name: 规划 Power BI 应用产品/服务

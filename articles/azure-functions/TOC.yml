@@ -25,7 +25,7 @@
               href: create-first-function-vs-code-csharp.md
             - name: Java
               href: create-first-function-vs-code-java.md
-            - name: Javascript
+            - name: JavaScript
               href: create-first-function-vs-code-node.md
             - name: PowerShell
               href: create-first-function-vs-code-powershell.md
@@ -44,7 +44,7 @@
               href: create-first-function-cli-csharp.md
             - name: Java
               href: create-first-function-cli-java.md
-            - name: Javascript
+            - name: JavaScript
               href: create-first-function-cli-node.md
             - name: PowerShell
               href: create-first-function-cli-powershell.md
@@ -100,7 +100,7 @@
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
-        - name: Javascript
+        - name: JavaScript
           href: /samples/browse/?products=azure-functions&languages=javascript
         - name: PowerShell
           href: /samples/browse/?products=azure-functions&languages=azurepowershell
@@ -176,7 +176,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: Javascript
+        - name: JavaScript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -411,12 +411,14 @@
           href: functions-create-serverless-api.md
         - name: 管理本地资源
           href: functions-hybrid-powershell.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查存储问题
           href: functions-recover-storage-account.md
         - name: Python 函数排除故障
           href: recover-python-functions.md
+        - name: Python 函数的规模和性能
+          href: python-scale-performance-reference.md
 - name: 参考
   items:
     - name: API 参考
@@ -446,7 +448,7 @@
             - name: 输入
               displayName: Blob storage
               href: functions-bindings-storage-blob-input.md
-            - name: Output
+            - name: 输出
               displayName: Blob storage
               href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
@@ -567,7 +569,7 @@
             - name: 输入
               href: functions-bindings-signalr-service-input.md
               displayName: SignalR Service
-            - name: Output
+            - name: 输出
               href: functions-bindings-signalr-service-output.md
               displayName: SignalR Service
         - name: 表存储

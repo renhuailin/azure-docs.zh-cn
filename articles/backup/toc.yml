@@ -75,7 +75,7 @@
         - name: 常见问题解答 - 恢复服务保管库
           href: backup-azure-backup-faq.md
         - name: 常见问题解答 - 备份中心
-          href: backup-center-faq.md
+          href: backup-center-faq.yml
         - name: 常见问题解答 - Azure VM 备份
           href: backup-azure-vm-backup-faq.md
         - name: 常见问题解答 - MARS 代理

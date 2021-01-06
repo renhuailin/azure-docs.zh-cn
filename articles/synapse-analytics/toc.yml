@@ -255,7 +255,7 @@
           items:
             - name: 概述
               href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 最佳实践
+            - name: 最佳做法
               href: sql/data-loading-best-practices.md
             - name: 列存储压缩
               href: sql/data-load-columnstore-compression.md
@@ -1113,6 +1113,16 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: 为 Azure Synapse 配置认知服务
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: 数据目录与治理
+  items:
+    - name: 快速入门
+      items:
+        - name: 连接 Azure Purview 帐户
+          href: ./catalog-and-governance/quickstart-connect-azure-purview.md
+    - name: 操作指南
+      items:
+        - name: 使用 Azure Purview 发现、连接和浏览 Synapse 中的数据
+          href: ./catalog-and-governance/how-to-discover-connect-analyze-azure-purview.md
 - name: 操作说明
   items:
     - name: 计划和管理成本

@@ -351,7 +351,7 @@
       items:
         - name: 概述
           href: platform/agents-overview.md
-        - name: 常见问题解答
+        - name: FAQ
           href: faq.md#agents
         - name: Azure Monitor 代理
           items:
@@ -443,7 +443,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
@@ -1090,6 +1090,8 @@
           href: insights/redis-cache-insights-overview.md
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
+        - name: Azure 数据资源管理器（预览版）
+          href: insights/data-explorer.md
         - name: 网络
           href: insights/network-insights-overview.md
         - name: Key Vault

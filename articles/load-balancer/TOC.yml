@@ -93,6 +93,8 @@
       href: manage.md
     - name: 虚拟机规模集
       items:
+        - name: 更新或删除虚拟机规模集使用的现有 Azure 负载均衡器
+          href: update-load-balancer-with-vm-scale-set.md
         - name: 与现有的 Azure 负载均衡器配合使用 - 门户
           href: configure-vm-scale-set-portal.md
         - name: 与现有的 Azure 负载均衡器配合使用 - PowerShell
@@ -142,7 +144,7 @@
       href: egress-only.md
     - name: 疑难解答
       items:
-        - name: 排查 Azure 负载均衡器问题
+        - name: 对 Azure 负载均衡器进行故障排除
           href: load-balancer-troubleshoot.md
         - name: 排查常见部署错误
           href: load-balancer-common-deployment-errors.md

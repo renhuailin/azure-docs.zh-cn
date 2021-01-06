@@ -28,7 +28,7 @@
       href: delete-application-portal.md
 - name: 教程
   items:
-    - name: 预配置应用的列表
+    - name: 应用集成教程列表
       href: /azure/active-directory/saas-apps/
     - name: 添加通过应用程序代理访问的本地应用
       href: application-proxy-add-on-premises-application.md

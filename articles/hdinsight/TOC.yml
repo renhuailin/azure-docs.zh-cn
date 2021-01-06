@@ -688,6 +688,10 @@
       items:
         - name: 使用 HDInsight 中的 Apache HBase
           href: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - name: 概念
+      items:
+        - name: 优化顾问建议
+          href: ./hbase/apache-hbase-advisor.md
     - name: 操作指南
       items:
         - name: 开发

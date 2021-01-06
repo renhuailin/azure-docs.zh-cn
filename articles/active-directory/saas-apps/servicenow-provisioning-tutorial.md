@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5894a57e6495ca02002c8f32b893e696c7f5679b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5c21efc9cb082d915fd87e9ae01606fce18016bc
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350698"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897261"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教程：为 ServiceNow 配置自动用户预配
 
@@ -50,7 +50,7 @@ ms.locfileid: "96350698"
 
 1. 确定 ServiceNow 实例名称。 可以在用于访问 ServiceNow 的 URL 中找到实例名称。 在下面的示例中，实例名称为 dev35214。
 
-   ![ServiceNow 实例](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow 实例](media/servicenow-provisioning-tutorial/servicenow-instance.png)
 
 2. 获取 ServiceNow 中管理员的凭据。 导航到 ServiceNow 中的用户配置文件，并验证该用户是否具有管理员角色。 
 
@@ -94,7 +94,7 @@ ms.locfileid: "96350698"
 
 5. 在“管理员凭据”部分中，输入 ServiceNow 管理员凭据和用户名。 单击“测试连接”以确保 Azure AD 可以连接到 ServiceNow。 如果连接失败，请确保 ServiceNow 帐户具有管理员权限，然后重试。
 
-    ![显示“预配服务”页的屏幕截图，你可以在其中输入“管理员凭据”。](./media/servicenow-provisioning-tutorial/provisioning.png)
+    ![显示“预配服务”页的屏幕截图，你可以在其中输入“管理员凭据”。](./media/servicenow-provisioning-tutorial/servicenow-provisioning.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
@@ -142,11 +142,16 @@ ms.locfileid: "96350698"
   
   `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
 
-   此错误表示与 ServiceNow 实例通信时出现问题。 仔细检查以确保以下设置在 ServiceNow 中为“禁用”状态：
+   此错误表示与 ServiceNow 实例通信时出现问题。 
+   
+   如果遇到测试连接问题，请尝试在 ServiceNow 中将以下设置设为“已禁用”：
    
    1. 选择“系统安全性” > “高安全性设置” > “需要对传入的 SCHEMA 请求进行基本身份验证”  。
    2. 选择“系统属性” > “Web 服务” > “需要对传入的 SOAP 请求进行基本授权”  。
 
+   ![授权 SOAP 请求](media/servicenow-provisioning-tutorial/servicenow-webservice.png)
+
+   如果它解决了你的问题，请联系 ServiceNow 支持，并请求他们启用 SOAP 调试，以帮助进行故障排除。 
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
