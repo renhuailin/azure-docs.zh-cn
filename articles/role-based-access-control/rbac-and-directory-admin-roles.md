@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/07/2020
+ms.date: 01/04/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: cc4f775c3cf4c016173c485d57f203b4665c6393
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3c320b8faf5ccb0b1aec521909b152dff171cbd7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370638"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862604"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>经典订阅管理员角色、Azure 角色和 Azure AD 角色
 
@@ -44,7 +44,7 @@ ms.locfileid: "92370638"
 
 | 经典订阅管理员 | 限制 | 权限 | 说明 |
 | --- | --- | --- | --- |
-| 帐户管理员 | 每个 Azure 帐户有 1 个 | <ul><li>[在 Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中管理计费</li><li>管理帐户中的所有订阅</li><li>创建新订阅</li><li>取消订阅</li><li>更改订阅的计费</li><li>更改服务管理员</li></ul> | 在概念上是订阅的计费所有者。<br>帐户管理员无权访问 Azure 门户。 |
+| 帐户管理员 | 每个 Azure 帐户有 1 个 | <ul><li>[在 Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中管理计费</li><li>管理帐户中的所有订阅</li><li>创建新订阅</li><li>取消订阅</li><li>更改订阅的计费</li><li>更改服务管理员</li></ul> | 在概念上是订阅的计费所有者。 |
 | 服务管理员 | 每个 Azure 订阅有 1 个 | <ul><li>在 [Azure 门户](https://portal.azure.com)中管理服务</li><li>取消订阅</li><li>将用户分配到共同管理员角色</li></ul> | 默认情况下，新订阅的帐户管理员也是服务管理员。<br>服务管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。<br>服务管理员具有 Azure 门户的完全访问权限。 |
 | 共同管理员 | 每个订阅有 200 个 | <ul><li>与服务管理员的访问特权相同，但无法更改订阅与 Azure 目录之间的关联。</li><li>将用户分配到共同管理员角色，但无法更改服务管理员</li></ul> | 共同管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。 |
 

@@ -4,12 +4,12 @@ description: 比较针对集成任务进行了优化的各种 Microsoft 云服�
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 2c17b311811fd2cba46db379fcc766c04dd9d56d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 81b143219fd0b53d4cd00761af6b767c173ed88d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91403069"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934860"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>在 Azure 中选择合适的集成和自动化服务
 
@@ -78,9 +78,9 @@ Azure Functions 是在 WebJobs SDK 上构建的，因此共享许多相同的事
 
 |  | 函数 | 带 WebJobs SDK 的 WebJobs |
 | --- | --- | --- |
-|使用[自动缩放](functions-scale.md#how-the-consumption-and-premium-plans-work)的[无服务器应用模型](https://azure.microsoft.com/solutions/serverless/)|✔||
+|使用[自动缩放](event-driven-scaling.md)的[无服务器应用模型](https://azure.microsoft.com/solutions/serverless/)|✔||
 |[在浏览器中进行开发和测试](functions-create-first-azure-function.md) |✔||
-|[按使用付费定价](functions-scale.md#consumption-plan)|✔||
+|[按使用付费定价](consumption-plan.md)|✔||
 |[与逻辑应用集成](functions-twitter-email.md)|✔||
 | 触发事件 |[计时器](functions-bindings-timer.md)<br>[Azure 存储队列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服务总线队列和主题](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中心](functions-bindings-event-hubs.md)<br>[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)<br>[Azure 事件网格](functions-bindings-event-grid.md)|[计时器](functions-bindings-timer.md)<br>[Azure 存储队列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服务总线队列和主题](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中心](functions-bindings-event-hubs.md)<br>[文件系统](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
 | **支持的语言**  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|

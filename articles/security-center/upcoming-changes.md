@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2020
+ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 052758079d8d413f7b0fead2a5abf3b47b9a691e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0656000a1d6449306e8afe538f846c55c79a31a2
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511325"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915280"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -44,7 +44,7 @@ ms.locfileid: "97511325"
 
 ### <a name="35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark"></a>添加了 35 条预览建议，以扩大 Azure 安全基准的覆盖范围
 
-**预计更改日期：** 2020 年 12 月
+**预计更改日期：** 2021 年 1 月
 
 Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，适用于基于常见合规框架的安全与合规最佳做法。 [详细了解 Azure 安全基准](../security/benchmarks/introduction.md)。
 
