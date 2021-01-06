@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 73a3be62e57991b63525372f008e15d8e4f36a74
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 1217ecba7a5fcb3c0fc95f505e7ca07fc76129b2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401723"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930814"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性区域部署 Azure Service Fabric 群集
 Azure 中的可用性区域是一种高可用性产品，可保护应用程序和数据免受数据中心故障的影响。 可用性区域是一种独特的物理位置，它在 Azure 区域内配有独立的电源、冷却和网络。
@@ -35,7 +35,7 @@ Service Fabric 通过部署固定到特定区域的节点类型来支持跨可�
 >[!NOTE]
 > "虚拟机规模集单位置组" 属性必须设置为 "true"，因为 Service Fabric 不支持跨区域的单个虚拟机规模集。
 
- ![Azure Service Fabric 可用性区域体系结构][sf-architecture]
+ ![显示 Azure Service Fabric 可用性区域体系结构的关系图。][sf-architecture]
 
 ## <a name="networking-requirements"></a>网络要求
 ### <a name="public-ip-and-load-balancer-resource"></a>公共 IP 和负载均衡器资源

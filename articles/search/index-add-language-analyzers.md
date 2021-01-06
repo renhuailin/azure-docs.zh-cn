@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 555709776c88dd3003e400bbcefe2ec1cfa0f4af
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656030"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934163"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加语言分析器
 
@@ -68,9 +68,9 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 ## <a name="language-analyzer-list"></a>语言分析器列表 
  下面是受支持语言的列表以及 Lucene 和 Microsoft 分析器名称。  
 
-| 语言 | Microsoft 分析器名称 | Lucene 分析器名称 |  |
-|--|--|--|--|
-| 阿拉伯语 | ar.microsoft | ar.lucene |  |
+| 语言 | Microsoft 分析器名称 | Lucene 分析器名称 |
+|--|--|--|
+| 阿拉伯语 | ar.microsoft | ar.lucene |
 | 亚美尼亚语 |  | hy.lucene |  |
 | Bangla | bn.microsoft |  |  |
 | 巴斯克语 |  | eu.lucene |  |

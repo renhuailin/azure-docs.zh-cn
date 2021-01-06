@@ -11,19 +11,19 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f34ca47d5ff6c809eef40f89ee0049285cfd7d42
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: aa6726bb5c60dceab0a58632da99c04361183246
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355386"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932684"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>向用户流添加 API 连接器
 
 若要使用 [api 连接器](api-connectors-overview.md)，首先要创建 api 连接器，然后在用户流中启用它。
 
 > [!IMPORTANT]
->**从2021年1月4日开始**，Google 是 [弃用 web 视图登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果你使用 Google federation 或使用 Gmail 进行自助注册，则应 [测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
+>从 2021 年 1 月 4 日开始，Google 将[弃用 WebView 登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果要通过 Gmail 使用 Google 联合身份验证或自助服务注册，则应[测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
 
 ## <a name="create-an-api-connector"></a>创建 API 连接器
 
@@ -319,7 +319,7 @@ Content-type: application/json
 * API 连接器的 **终结点 URL** 指向正确的 API 终结点。
 * API 显式检查收到的声明的 null 值。
 * 你的 API 可以尽快做出响应，以确保具有流畅的用户体验。
-    * 如果使用无服务器函数或可缩放的 web 服务，请使用保持 API "唤醒" 或 "热" 的托管计划。 对于 Azure Functions，建议使用 [高级计划](../../azure-functions/functions-scale.md#premium-plan)。 
+    * 如果使用无服务器函数或可缩放的 web 服务，请使用保持 API "唤醒" 或 "热" 的托管计划。 对于 Azure Functions，建议使用 [高级计划](../../azure-functions/functions-premium-plan.md)。 
 
 
 ### <a name="use-logging"></a>使用日志记录

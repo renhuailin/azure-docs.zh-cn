@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e90adcb5312df6e1dfe6d4b58407edeb924a8809
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 6e561a0e05cf1a0870d85369867caba6c4d6bf12
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862441"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932412"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -807,7 +807,7 @@ OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以
 
 **产品功能：** 协作
 
-Azure Active Directory (Azure AD) 现在提供了验证动态组规则的方法。 在 " **验证规则** " 选项卡上，可以对照组成员验证动态规则，以确认规则按预期方式工作。 创建或更新动态组规则时，管理员希望知道用户或设备是否将成为该组的成员。 这有助于评估用户或设备是否满足规则条件，并有助于在不期望成员身份时进行故障排除。
+Azure Active Directory (Azure AD) 现在提供了验证动态组规则的方法。 在“验证规则”选项卡上，可以对示例组成员验证动态规则，以确认规则按预期方式工作。 创建或更新动态组规则时，管理员希望了解用户或设备是否将成为该组的成员。 这有助于评估用户或设备是否满足规则条件，并有助于在不期望成员身份时进行故障排除。
 
 有关详细信息，请参阅 [ (预览版) 验证动态组成员身份规则 ](../enterprise-users/groups-dynamic-rule-validation.md)。
 
@@ -3733,7 +3733,7 @@ Azure AD Connect 的最新版本包括：
 
 **类型：** 新功能 **服务类别：** 其他 **产品功能：** 目录
 
-有关如何部署 Azure Active Directory (Azure AD) 的全新分步指南，包括自助式密码重置 (SSPR)、单一登录 (SSO)、条件访问 (CA)、应用代理、用户预配、Active Directory 联合身份验证服务 (ADFS) 以及传递身份验证 (PTA)、ADFS 和密码哈希同步 (PHS)。
+有关如何部署 Azure Active Directory (Azure AD) 的循序渐进指南，包括自助服务密码重置 (SSPR) 、单一登录 (SSO) 、条件性访问、应用代理、用户预配、Active Directory 联合身份验证服务 (ADFS) 传递身份验证 (PTA) 和 ADFS 到密码哈希同步 (PHS) 。
 
 若要查看部署指南，请转到 GitHub 上的[身份部署指南](./active-directory-deployment-plans.md)存储库。 若要提供有关部署指南的反馈，请使用[部署计划反馈表](https://aka.ms/deploymentplanfeedback)。 如对部署指南有任何疑问，请通过 [IDGitDeploy](mailto:idgitdeploy@microsoft.com) 与我们联系。
 

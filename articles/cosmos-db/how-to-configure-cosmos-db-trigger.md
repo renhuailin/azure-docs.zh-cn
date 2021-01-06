@@ -1,22 +1,22 @@
 ---
-title: Cosmos DB 高级配置的 Azure Functions 触发器
-description: 了解如何配置用于 Cosmos DB Azure Functions 触发器使用的日志记录和连接策略
+title: 适用于 Cosmos DB 的 Azure Functions 触发器的高级配置
+description: 了解如何配置适用于 Cosmos DB 的 Azure Functions 触发器使用的日志记录和连接策略
 author: ealsur
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
-ms.openlocfilehash: c47d18726d9581b1b03aa2e676a71d6ca1bc1b7d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f753010eb994c9f3c286ad6eca6392ca7b643075
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086459"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932905"
 ---
-# <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>如何配置与 Cosmos DB 的 Azure Functions 触发器的日志记录和连接
+# <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>如何配置适用于 Cosmos DB 的 Azure Functions 触发器的日志记录和连接
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-本文介绍了使用 Cosmos DB 的 Azure Functions 触发器时可以设置的高级配置选项。
+本文介绍使用适用于 Cosmos DB 的 Azure Functions 触发器时可设置的高级配置选项。
 
 ## <a name="enabling-trigger-specific-logs"></a>启用触发器特定日志
 
@@ -26,7 +26,7 @@ ms.locfileid: "93086459"
 
 ### <a name="enabling-logging"></a>启用日志记录
 
-若要在使用适用于 Cosmos DB 的 Azure Functions 触发器时启用日志记录，请在 Azure Functions 项目或 Azure Functions 应用中找到 `host.json` 文件，并[配置所需的日志记录级别](../azure-functions/functions-monitoring.md#log-levels-and-categories)。 启用跟踪，  `Host.Triggers.CosmosDB` 如下面的示例中所示：
+若要在使用适用于 Cosmos DB 的 Azure Functions 触发器时启用日志记录，请在 Azure Functions 项目或 Azure Functions 应用中找到 `host.json` 文件，并[配置所需的日志记录级别](../azure-functions/functions-monitoring.md#log-levels-and-categories)。 按以下示例所示为 `Host.Triggers.CosmosDB` 启用跟踪：
 
 ```js
 {
@@ -40,7 +40,7 @@ ms.locfileid: "93086459"
 }
 ```
 
-使用更新的配置部署 Azure 函数后，将在跟踪中看到适用于 Cosmos DB 的 Azure Functions 触发器日志。 您可以在配置的日志提供程序中查看日志中 *的日志* `Host.Triggers.CosmosDB` 。
+使用更新的配置部署 Azure 函数后，将在跟踪中看到适用于 Cosmos DB 的 Azure Functions 触发器日志。 可以在类别 `Host.Triggers.CosmosDB` 下查看所配置的日志记录提供程序中的日志。
 
 ### <a name="query-the-logs"></a>查询日志
 
@@ -53,11 +53,11 @@ traces
 
 ## <a name="configuring-the-connection-policy"></a>配置连接策略
 
-有两种连接模式 - Direct（直接）模式和 Gateway（网关）模式。 若要了解有关这些连接模式的详细信息，请参阅 [连接模式](sql-sdk-connection-modes.md) 一文。 默认情况下， **网关** 用于在适用于 Cosmos DB 的 Azure Functions 触发器中建立所有连接。 但是，对于性能驱动的方案，它可能不是最佳选项。
+有两种连接模式 - Direct（直接）模式和 Gateway（网关）模式。 若要详细了解这些连接模式，请参阅[连接模式](sql-sdk-connection-modes.md)一文。 默认情况下，**网关** 用于在适用于 Cosmos DB 的 Azure Functions 触发器中建立所有连接。 但是，对于性能驱动的方案，它可能不是最佳选项。
 
 ### <a name="changing-the-connection-mode-and-protocol"></a>更改连接模式和协议
 
-有两个密钥配置设置可用于配置客户端连接策略 – **连接模式** 和 **连接协议** 。 可以更改 Cosmos DB 的 Azure Functions 触发器和所有 [Azure Cosmos DB 绑定](../azure-functions/functions-bindings-cosmosdb-v2-output.md)使用的默认连接模式与协议。 若要更改默认设置，需要在 Azure Functions 项目或 Azure Functions 应用中找到 `host.json` 文件，并添加以下[附加设置](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)：
+有两个密钥配置设置可用于配置客户端连接策略 – **连接模式** 和 **连接协议**。 可以更改 Cosmos DB 的 Azure Functions 触发器和所有 [Azure Cosmos DB 绑定](../azure-functions/functions-bindings-cosmosdb-v2-output.md)使用的默认连接模式与协议。 若要更改默认设置，需要在 Azure Functions 项目或 Azure Functions 应用中找到 `host.json` 文件，并添加以下[附加设置](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)：
 
 ```js
 {
@@ -82,7 +82,7 @@ traces
 ```
 
 > [!NOTE]
-> 使用 Azure Functions 消耗计划托管计划时，每个实例可以维护的套接字连接数量有限制。 使用 Direct/TCP 模式时，根据设计会创建更多的连接，这可能会达到[消耗计划限制](../azure-functions/manage-connections.md#connection-limit)，在这种情况下，可以使用 Gateway 模式，或者以[应用服务模式](../azure-functions/functions-scale.md#app-service-plan)运行 Azure Functions。
+> 在消耗计划中托管函数应用时，每个实例都有其可维护的套接字连接量的限制。 使用直接/TCP 模式时，会创建更多的连接并达到 [消耗计划限制](../azure-functions/manage-connections.md#connection-limit)，在这种情况下，可以使用网关模式，或在 [高级计划](../azure-functions/functions-premium-plan.md) 或 [专用 (应用服务) 计划](../azure-functions/dedicated-plan.md)中托管函数应用。
 
 ## <a name="next-steps"></a>后续步骤
 

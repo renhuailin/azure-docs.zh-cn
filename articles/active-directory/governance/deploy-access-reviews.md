@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2e670525840b801df874e3f8dcbdbadc0955a12
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746297"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932429"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>规划 Azure Active Directory 访问评审部署
 
@@ -333,9 +333,9 @@ ms.locfileid: "97746297"
 > [!NOTE]
 > 建议在定义业务策略时定义组的创建方式，务必明确组所有权和责任，以便对成员身份进行定期评审。 
 
-### <a name="review-membership-of-exclusion-groups-in-ca-policies"></a>评审 CA 策略中排除组的成员身份 
+### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>在条件访问策略中查看排除组的成员身份 
 
-有时，不应将旨在确保网络安全的条件访问 (CA) 策略应用到所有用户。 例如，仅允许用户在公司网络上登录的 CA 策略可能不适用于需要到各处出差的销售团队。 在这种情况下，需将销售团队成员置于一个从 CA 策略中排除的组中。 
+有时，旨在确保网络安全的条件性访问策略不应应用到所有用户。 例如，仅允许用户在公司网络上登录的条件性访问策略可能不适用于销售团队，后者会广泛传播。 在这种情况下，销售团队成员将被放入一个组中，该组将从条件性访问策略中排除。 
 
 请定期评审此类组成员身份，因为如果从要求中排除了错误的成员，则排除意味着潜在风险。
 

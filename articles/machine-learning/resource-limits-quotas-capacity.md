@@ -10,16 +10,16 @@ ms.topic: reference
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/21/2020
-ms.openlocfilehash: 132c4b223b99f7110cd4553bb0dd93f1e58f4cdd
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: b675e72df4f128d0ce096b3ac398fab63c20557e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733276"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930797"
 ---
 # <a name="service-limits-in-azure-machine-learning"></a>Azure 机器学习中的服务限制
 
-本部分列出了 Azure 机器学习中的基本配额和限制阈值。
+本部分列出了 Azure 机器学习中的基本配额和限制阈值。 若要了解如何增加资源配额，请参阅 ["管理和增加资源配额"](how-to-manage-quotas.md)
 
 ## <a name="workspaces"></a>工作区
 | 限制 | 值 |
@@ -73,3 +73,5 @@ ms.locfileid: "97733276"
 ## <a name="next-steps"></a>后续步骤
 
 - [配置 Azure 机器学习环境](how-to-configure-environment.md)
+- 了解如何在 ["管理和增加资源配额"](how-to-manage-quotas.md)中增加资源配额。
+

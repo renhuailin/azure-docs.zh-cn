@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a9a783333d8edd40556b7744eb7cf7dfb52953a7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704208"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933976"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>通过软删除和清除保护 Azure Key Vault 恢复管理
 
@@ -394,4 +394,4 @@ ms.locfileid: "97704208"
 - [如何启用 Key Vault 日志记录](howto-logging.md)
 - [保护对密钥保管库的访问](secure-your-key-vault.md)
 - [Azure Key Vault 开发人员指南](developers-guide.md)
-- [使用密钥保管库的最佳实践](best-practices.md)
+- [使用密钥保管库的最佳实践](security-overview.md)

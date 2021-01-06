@@ -3,12 +3,12 @@ title: 使用 Azure 资源管理器部署和升级
 description: 了解如何使用 Azure 资源管理器模板，将应用程序和服务部署到 Service Fabric 群集。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: bb866eb24fb1b286f496bad9845d1ee557baa221
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ed6bc7d96cb3ea0934929e6543c5e637a9f42c1f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681663"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930831"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>将应用程序和服务作为 Azure 资源管理器资源进行管理
 
@@ -18,7 +18,7 @@ ms.locfileid: "94681663"
 
 在适当情况下，将应用程序作为资源管理器资源进行管理可改进：
 * 审核线索：资源管理器审核所有操作，并记录详细的活动日志  ，有助于跟踪对这些应用程序和群集做出的任何更改。
-* Azure RBAC)  (基于角色的访问控制：管理群集的访问权限，以及部署在群集上的应用程序可以通过相同的资源管理器模板来完成。
+* Azure 基于角色的访问控制 (Azure RBAC)：可通过同一个资源管理器模板，管理对群集及其上部署的应用程序的访问。
 * Azure 资源管理器（通过 Azure 门户）成为管理群集和关键应用程序部署的一站式平台。
 
 下面的代码片段展示了可以通过模板管理的各种资源：
@@ -50,13 +50,12 @@ ms.locfileid: "94681663"
 }
 ```
 
-
 ## <a name="add-a-new-application-to-your-resource-manager-template"></a>将新应用程序添加到资源管理器模板
 
 1. 准备群集的资源管理器模板，以供部署时使用。 若要详细了解如何执行此操作，请参阅[使用 Azure 资源管理器创建 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)。
 2. 考虑一下，打算在群集中部署的一些应用程序。 是否有始终要运行的被其他应用程序依赖的应用程序？ 是否计划部署任何群集治理应用程序或安装应用程序？ 如上所述，此类应用程序最好是通过资源管理器模板进行管理。 
-3. 确定要使用此方法部署的应用程序后，需要立即打包、压缩这些应用程序，并将它们上传到文件共享。 此共享必须可通过 REST 终结点进行访问，这样 Azure 资源管理器才能在部署期间使用它。
-4. 在资源管理器模板中的群集声明下，描述每个应用程序的属性。 这些属性包括副本或实例计数，以及资源（其他应用程序或服务）之间的任何依赖链。 有关完整属性列表，请参阅 [REST API Swagger 规范](https://aka.ms/sfrpswaggerspec)。请注意，这不会取代应用程序或服务清单，只是在群集的资源管理器模板中描述了清单的部分内容。 下面展示了示例模板，包括在 Application1  中部署无状态服务 Service1  和有状态服务 Service2  ：
+3. 确定要以这种方式部署的应用程序后，必须打包并打包应用程序，并将其放置在存储共享上。 此共享必须可通过 REST 终结点进行访问，这样 Azure 资源管理器才能在部署期间使用它。 有关详细信息，请参阅 [创建存储帐户](service-fabric-concept-resource-model.md#create-a-storage-account) 。
+4. 在资源管理器模板中的群集声明下，描述每个应用程序的属性。 这些属性包括副本或实例计数，以及资源（其他应用程序或服务）之间的任何依赖链。 请注意，这不会取代应用程序或服务清单，只是在群集的资源管理器模板中描述了清单的部分内容。 下面展示了示例模板，包括在 Application1  中部署无状态服务 Service1  和有状态服务 Service2  ：
 
    ```json
    {
@@ -244,7 +243,7 @@ ms.locfileid: "94681663"
    ```
 
    > [!NOTE] 
-   > 必须将 apiVersion  设置为 `"2019-03-01"`。 部署的此模板也可以与群集互不影响，只要群集已部署即可。
+   > 请参阅 Service Fabric [Azure 资源管理器参考](/azure/templates/microsoft.servicefabric/clusters/applicationtypes) ，查找各个模板属性的使用情况和详细信息。
 
 5. 部署！ 
 
@@ -264,7 +263,7 @@ Get-AzureRmResource -ResourceId /subscriptions/{sid}/resourceGroups/{rg}/provide
 如果群集已部署，且其上已部署一些要作为资源管理器资源进行管理的应用程序，可以使用相同的 API，将这些应用程序确定为资源管理器资源，从而执行 PUT 调用，而不用删除并重新部署应用程序。 有关更多信息，请参阅[什么是 Service Fabric 应用程序资源模型？](./service-fabric-concept-resource-model.md)
 
 > [!NOTE]
-> 若要允许群集升级忽略不正常的应用，客户可以在“upgradeDescription/healthPolicy”节中指定“maxPercentUnhealthyApplications: 100”；有关所有设置的详细说明，请参阅 [Service Fabrics REST API 群集升级策略文档](/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)。
+> 若要允许群集升级忽略不正常的应用，客户可以在 "upgradeDescription/healthPolicy" 部分指定 "maxPercentUnhealthyApplications： 100";有关所有设置的详细说明，请 [参阅 Service fabric REST API 群集升级策略文档](/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)。
 
 ## <a name="next-steps"></a>后续步骤
 

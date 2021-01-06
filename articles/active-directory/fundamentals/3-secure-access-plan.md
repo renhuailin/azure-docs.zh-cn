@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08a4f4a31893fc93789d019ea87dff390552f6a
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: fd04d24e0e46b053381858be037a009b1987f8e9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743883"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932514"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. 创建外部访问安全计划 
 
@@ -175,7 +175,7 @@ Azure AD P2 和 Microsoft 365 E5 具有全套安全和管理工具。
 | 权利管理| **通过分配或自助服务访问添加用户**| **访问包**| **访问包**|  |
 | Office 365 组| | 访问站点 ()  (和关联的内容) 组中包含| ) 组中包含的对团队 (和关联内容的访问权限|  |
 | 敏感度标签| | **手动并自动分类和限制访问**| **手动并自动分类和限制访问**| **手动并自动分类和限制访问** |
-| Azure AD 安全组| **访问包中未包含访问的 CA 策略**| | |  |
+| Azure AD 安全组| **访问包中未包含访问的条件访问策略**| | |  |
 
 
 ### <a name="entitlement-management"></a>权利管理 
@@ -195,7 +195,7 @@ Azure AD P2 和 Microsoft 365 E5 具有全套安全和管理工具。
 | Azure AD B2B 协作| **通过电子邮件、OTP、自助服务邀请**| 直接 B2B 联合| **每个合作伙伴的定期审查**| 删除帐户<br>限制登录 |
 | Microsoft 或 Office 365 组| | | | 组过期或删除。<br>从组中删除。 |
 | 安全组| | **将外部用户添加到安全组 (组织、团队、项目等 )**| |  |
-| 条件访问策略| | **外部用户的登录 CA 策略**| |  |
+| 条件访问策略| | **外部用户的登录条件访问策略**| |  |
 
 
  ### <a name="access-to-resources"></a>对资源的访问权限。
@@ -204,7 +204,7 @@ Azure AD P2 和 Microsoft 365 E5 具有全套安全和管理工具。
 | - |-|-|-|-|
 | Microsoft 或 Office 365 组| | **) 组 (和关联的内容中包含对站点 (的访问)**|**Microsoft 365 组 (和关联的内容中包含的团队的访问权限)**|  |
 | 敏感度标签| | 手动分类和限制访问| 手动分类和限制访问。| 手动分类以限制和加密 |
-| 条件访问策略| 访问控制的 CA 策略| | |  |
+| 条件访问策略| 访问控制的条件性访问策略| | |  |
 | 其他方法| | 使用安全组限制 SharePoint 站点访问的粒度。<br>禁止直接共享。| **限制团队内的外部邀请**|  |
 
 

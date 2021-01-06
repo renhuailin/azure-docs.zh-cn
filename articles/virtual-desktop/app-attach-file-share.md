@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2157a1cb96475209762e829c549d628f2c35fd91
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 49a350b77958901aae5e54e82d856e4f3772702e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425735"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930780"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>设置用于 .MSIX 应用附加 (预览的文件共享) 
 
@@ -64,6 +64,12 @@ Azure 提供了多个存储选项，可用于 MISX 应用附加。 建议使用 
 .MSIX 应用附加文件共享的设置过程在很大程度上与 [FSLogix 配置文件共享的安装过程](create-host-pools-user-profile.md)相同。 但是，需要为用户分配不同的权限。 .MSIX 应用附加需要只读权限才能访问文件共享。
 
 如果要将 .MSIX 应用程序存储在 Azure 文件中，则对于你的会话主机，你将需要为所有会话主机 Vm 分配存储帐户基于角色的访问控制 (RBAC) 和文件共享新技术文件系统 (NTFS) 对共享的权限。
+
+| Azure 对象                      | 必需的角色                                     | Role 函数                                  |
+|-----------------------------------|--------------------------------------------------|-----------------------------------------------|
+| 会话主机 (VM 计算机对象) | 存储文件数据 SMB 共享参与者          | 读取和执行、读取、列出文件夹内容  |
+| 文件共享上的管理员              | 存储文件数据 SMB 共享特权参与者 | 完全控制                                  |
+| 文件共享上的用户               | 存储文件数据 SMB 共享参与者          | 读取和执行、读取、列出文件夹内容  |
 
 为存储帐户和文件共享分配会话主机 Vm 权限：
 

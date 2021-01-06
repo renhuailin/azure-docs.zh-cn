@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1ab382ec10d932b94961c73b7d7ac9082125a88c
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e19277aa3639031371e0e8dd28f4dd849efd4597
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704514"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933925"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>如何使用资源管理器模板创建 Azure 密钥保管库和保管库访问策略
 
@@ -213,7 +213,7 @@ Write-Host "Press [ENTER] to continue..."
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)。
 - 了解有关 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 的详细信息。
-- 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)。
+- 查看 [Azure Key Vault 安全概述](security-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 
