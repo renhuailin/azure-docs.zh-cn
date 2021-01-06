@@ -1,18 +1,18 @@
 ---
 title: 配置和使用 Azure Synapse Link for Azure Cosmos DB
-description: 了解如何为 Azure Cosmos DB 帐户启用 Synapse 链接，创建启用了分析存储的容器，将 Azure Cosmos 数据库连接到 Synapse 工作区，并运行查询。
+description: 了解如何为 Azure Cosmos DB 帐户启用 Synapse Link，创建启用了分析存储的容器，将 Azure Cosmos 数据库连接到 Synapse 工作区，并运行查询。
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: 6f9d8603467ac62d443a181fa45615501023a78b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f44751feca67fdd4473dd3f427fcf2b9d1bbe717
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093564"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916484"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>配置和使用 Azure Synapse Link for Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -177,7 +177,7 @@ except exceptions.CosmosResourceExistsError:
   * 打开“规模和设置”窗口。
   * 在“设置”下，找到“分析存储生存时间”。
   * 选择“启用(无默认值)”或选择“启用”，然后设置一个 TTL 值 
-  * 单击“保存”以保存更改。
+  * 单击“保存”  以保存更改。
 
 #### <a name="net-sdk"></a>.NET SDK
 
@@ -227,7 +227,7 @@ container.replace(containerProperties).block();
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Azure Synpase Link 入门 - 示例
 
-可以在 [GitHub](https://aka.ms/cosmosdb-synapselink-samples) 上找到有关 Azure Synapse Link 入门的示例。 这些示例展示了物联网和零售场景的端到端解决方案。 也可以在 [MongoDB](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples) 文件夹下的同一存储库中找到与 Azure Cosmos DB API for MongoDB 对应的示例。 
+可以在 [GitHub](https://aka.ms/cosmosdb-synapselink-samples) 上找到有关 Azure Synapse Link 入门的示例。 这些示例展示了物联网和零售场景的端到端解决方案。 也可以在 [MongoDB](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples) 文件夹下的同一存储库中找到与 Azure Cosmos DB API for MongoDB 对应的示例。 
 
 ## <a name="next-steps"></a>后续步骤
 

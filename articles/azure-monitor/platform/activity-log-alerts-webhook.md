@@ -4,12 +4,12 @@ description: 了解有关活动日志警报激活时发布到 webhook URL 的 JS
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: a73ab12d1729acba132aeffd4104ca7846ecb9e8
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: b48f094b460a2871b502c72b39b849ed68b9c085
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901430"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916621"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
@@ -40,6 +40,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 > 如果 (操作规则、webhook、逻辑应用或其他任何配置) 当前基于活动日志警报的 **"说明"** 属性，则可能需要将其改为基于 **"活动日志事件描述"** 属性。
 >
 > 为了填充新的 **"说明"** 属性，您可以在警报规则定义中添加描述。
+> ![触发的活动日志警报](media/activity-log-alerts-webhook/activity-log-alert-fired.png)
 
 ### <a name="common"></a>通用
 

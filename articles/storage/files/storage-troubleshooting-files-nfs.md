@@ -8,16 +8,32 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 661cfd5bb410a714bc42e0cd9676ac2ec08f8a45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708614"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916450"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>排查 Azure NFS 文件共享问题
 
 本文列出了一些与 Azure NFS 文件共享相关的常见问题。 其中提供了这些问题的潜在原因和解决方法。
+
+## <a name="chgrp-filename-failed-invalid-argument-22"></a>chgrp "filename" 失败：参数 (22) 无效
+
+### <a name="cause-1-idmapping-is-not-disabled"></a>原因1：未禁用 idmapping
+Azure 文件不允许字母数字 UID/GID。 因此必须禁用 idmapping。 
+
+### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>原因2： idmapping 已禁用，但遇到错误的文件/目录名称后重新启用
+即使已正确禁用 idmapping，在某些情况下，禁用 idmapping 的设置也会被重写。 例如，当 Azure 文件遇到错误的文件名时，它将返回错误。 查看此特定错误代码后，NFS 版本 4.1 Linux 客户端决定重新启用 idmapping，以后的请求会与字母数字 UID/GID 再次发送。 有关 Azure 文件中不支持的字符的列表，请参阅此 [文](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length)。 冒号是不受支持的字符之一。 
+
+### <a name="workaround"></a>解决方法
+检查 idmapping 是否已禁用并且不会重新启用它，然后执行以下操作：
+
+- 卸载共享
+- 禁用 id-映射 # echo Y >/sys/module/nfs/parameters/nfs4_disable_idmapping
+- 重新装载共享
+- 如果正在运行 rsync，请在目录中运行 rsync，其中没有任何错误的目录/文件名。
 
 ## <a name="unable-to-create-an-nfs-share"></a>无法创建 NFS 共享
 
@@ -52,7 +68,7 @@ NFS 只能在具有以下配置的存储帐户上使用：
 - 层-高级
 - 帐户类型-FileStorage
 - 冗余-LRS
-- 区域-美国东部、美国东部2、英国南部、东南亚
+- 区域- [受支持区域的列表](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>解决方案
 
@@ -90,7 +106,7 @@ NFS 只能在具有以下配置的存储帐户上使用：
     - 虚拟网络对等互连在专用终结点中托管的虚拟网络允许 NFS 共享访问对等互连虚拟网络中的客户端。
     - 专用终结点可用于 ExpressRoute、点到站点和站点到站点 Vpn。
 
-:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="公共终结点连接的关系图。" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
+:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="专用终结点连接的关系图。" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
 
 ### <a name="cause-2-secure-transfer-required-is-enabled"></a>原因2：需要安全传输
 
@@ -100,7 +116,7 @@ NFS 只能在具有以下配置的存储帐户上使用：
 
 禁用存储帐户的配置边栏选项卡中所需的安全传输。
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="公共终结点连接的关系图。":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="存储帐户配置边栏选项卡的屏幕截图，禁用需要安全传输。":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>原因3：未安装 nfs-公共包
 在运行 mount 命令之前，请通过运行以下命令来安装包。

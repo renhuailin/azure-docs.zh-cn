@@ -3,20 +3,24 @@ title: 如何面向 Azure Functions 运行时版本
 description: Azure Functions 支持多个版本的运行时。 了解如何在 Azure 中指定函数应用的运行时版本。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: a7d86ef26d50d60389ae09bf3245ed97fea2c3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46bf7849888033b2bbb7e9b9669ee3eae4de10e9
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88926569"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916518"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>如何面向 Azure Functions 运行时版本
 
 函数应用在特定版本的 Azure Functions 运行时上运行。 有三个主版本：[1.x、2.x 和 3.x](functions-versions.md)。 默认情况下，函数应用采用 3.x 版的运行时创建。 本文介绍如何在 Azure 中将函数应用配置为在所选的版本上运行。 有关如何为特定版本配置本地开发环境的信息，请参阅[在本地编码和测试 Azure Functions](functions-run-local.md)。
 
+手动面向特定版本的方式取决于您运行的是 Windows 还是 Linux。
+
 ## <a name="automatic-and-manual-version-updates"></a>自动和手动版本更新
 
-Azure Functions 允许你通过使用函数应用中的 `FUNCTIONS_EXTENSION_VERSION` 应用程序设置来针对特定版本的运行时。 函数应用将一直保留在指定的主版本上，直到显式选择迁移到新版本。 如果仅指定主版本，当运行时的新次要版本可用时，函数应用将自动更新到该版本。 新的次要版本不应引入中断性变更。 
+_本部分不适用于 [在 Linux 上](#manual-version-updates-on-linux)运行函数应用的情况。_
+
+Azure Functions 使你可以使用 `FUNCTIONS_EXTENSION_VERSION` 函数应用中的应用程序设置针对 Windows 上的特定版本运行时。 函数应用将一直保留在指定的主版本上，直到显式选择迁移到新版本。 如果仅指定主版本，当运行时的新次要版本可用时，函数应用将自动更新到该版本。 新的次要版本不应引入中断性变更。 
 
 如果指定次要版本（例如，“2.0.12345”），则函数应用将被固定到该特定版本，直到显式更改它。 会定期从生产环境中删除旧的次要版本。 发生这种情况后，函数应用将在最新版本上运行，而不是在 `FUNCTIONS_EXTENSION_VERSION` 中设置的版本上运行。 因此，应快速解决需要特定次要版本来解决的任何函数应用问题，以便可以专注使用主要版本。 [应用服务公告](https://github.com/Azure/app-service-announcements/issues)中会公布次要版本删除信息。
 
@@ -36,6 +40,8 @@ Azure Functions 允许你通过使用函数应用中的 `FUNCTIONS_EXTENSION_VER
 更改运行时版本会导致函数应用重启。
 
 ## <a name="view-and-update-the-current-runtime-version"></a>查看和更新当前运行时版本
+
+_本部分不适用于 [在 Linux 上](#manual-version-updates-on-linux)运行函数应用的情况。_
 
 可以更改函数应用使用的运行时版本。 由于可能会成为中断性变更，因此只能在函数应用中创建任何函数之前更改运行时版本。 
 
@@ -97,7 +103,7 @@ az functionapp config appsettings set --name <FUNCTION_APP> \
 
 将 `<FUNCTION_APP>` 替换为你的函数应用的名称。 此外，还使用函数应用的资源组名称替代 `<RESOURCE_GROUP>`。 此外，将 `<VERSION>` 替换为特定版本，或者替换为 `~3`、`~2` 或 `~1`。
 
-可以通过在前面代码示例中选择“试一试”**** 运行这个来自 [Azure Cloud Shell](../cloud-shell/overview.md) 的命令。 还可以在执行 [az login](/cli/azure/reference-index#az-login) 登录后使用 [Azure CLI 在本地](/cli/azure/install-azure-cli)执行此命令。
+可以通过在前面代码示例中选择“试一试”运行这个来自 [Azure Cloud Shell](../cloud-shell/overview.md) 的命令。 还可以在执行 [az login](/cli/azure/reference-index#az-login) 登录后使用 [Azure CLI 在本地](/cli/azure/install-azure-cli)执行此命令。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -120,6 +126,65 @@ Update-AzFunctionAppSetting -Name "<FUNCTION_APP>" -ResourceGroupName "<RESOURCE
 ---
 
 在对应用程序设置进行更改后，函数应用将重启。
+
+## <a name="manual-version-updates-on-linux"></a>Linux 上的手动版本更新
+
+若要将 Linux 函数应用固定到特定主机版本，请在站点配置的 "LinuxFxVersion" 字段中指定映像 URL。例如：如果要将节点10函数应用固定为主机版本 3.0.13142-
+
+对于 **linux 应用服务/弹性高级应用** -设置 `LinuxFxVersion` 为 `DOCKER|mcr.microsoft.com/azure-functions/node:3.0.13142-node10-appservice` 。
+
+对于 **linux 消耗应用** -设置 `LinuxFxVersion` 为 `DOCKER|mcr.microsoft.com/azure-functions/mesh:3.0.13142-node10` 。
+
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli-linux)
+
+可以 `LinuxFxVersion` 从 Azure CLI 中查看和设置。  
+
+使用 Azure CLI，使用 [az functionapp config show](/cli/azure/functionapp/config) 命令查看当前运行时版本。
+
+```azurecli-interactive
+az functionapp config show --name <function_app> \
+--resource-group <my_resource_group>
+```
+
+在此代码中，用函数应用名称替代 `<function_app>`。 此外，还使用函数应用的资源组名称替代 `<my_resource_group>`。 
+
+在以下输出中，你会看到 `linuxFxVersion`，为了清晰起见，该输出已被截断：
+
+```output
+{
+  ...
+
+  "kind": null,
+  "limits": null,
+  "linuxFxVersion": <LINUX_FX_VERSION>,
+  "loadBalancing": "LeastRequests",
+  "localMySqlEnabled": false,
+  "location": "West US",
+  "logsDirectorySizeLimit": 35,
+   ...
+}
+```
+
+可以 `linuxFxVersion` 在 function app 中用 [az functionapp config set](/cli/azure/functionapp/config) 命令更新设置。
+
+```azurecli-interactive
+az functionapp config set --name <FUNCTION_APP> \
+--resource-group <RESOURCE_GROUP> \
+--linux-fx-version <LINUX_FX_VERSION>
+```
+
+将 `<FUNCTION_APP>` 替换为你的函数应用的名称。 此外，还使用函数应用的资源组名称替代 `<RESOURCE_GROUP>`。 此外，请 `<LINUX_FX_VERSION>` 将替换为上述值。
+
+可以通过在前面代码示例中选择“试一试”运行这个来自 [Azure Cloud Shell](../cloud-shell/overview.md) 的命令。 还可以在执行 [az login](/cli/azure/reference-index#az-login) 登录后使用 [Azure CLI 在本地](/cli/azure/install-azure-cli)执行此命令。
+
+
+同样，在对站点配置进行更改后，函数应用将重新启动。
+
+> [!NOTE]
+> 请注意， `LinuxFxVersion` 直接为使用应用程序设置为图像 url 将使其脱离占位符和其他冷启动优化。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 
