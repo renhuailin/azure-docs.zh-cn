@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a0abbacc55cff2f561323a22dd83311c87b1511d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 90debef39b3e657bf96221dfaf5fa762d332a364
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584487"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976514"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教程 - 使用 Azure AD 生成 SCIM 终结点并配置用户预配
 
@@ -1217,7 +1217,7 @@ OAuth 代码授权流中的步骤：
 > [!NOTE]
 > 虽然目前不能在非库应用程序上设置 OAuth，但可以手动从授权服务器生成访问令牌，并在非库应用程序的“机密令牌”字段中输入该令牌。 这样，你就可以在加入应用库之前验证 SCIM 服务器与 Azure AD SCIM 客户端的兼容性，从而支持 OAuth 代码授权。  
 
-**OAuth 长期持有者令牌：** 如果应用程序不支持 OAuth 授权代码许可流，那么还可以生成长期 OAuth 持有者令牌，该令牌的生存期比管理员用来设置预配集成的令牌要长。 该令牌应永不过期，否则当令牌过期时，预配作业将被[隔离](application-provisioning-quarantine-status.md)。 此令牌的大小必须小于 1 KB。  
+**OAuth 长期持有者令牌：** 如果应用程序不支持 OAuth 授权代码许可流，那么还可以生成长期 OAuth 持有者令牌，该令牌的生存期比管理员用来设置预配集成的令牌要长。 该令牌应永不过期，否则当令牌过期时，预配作业将被[隔离](application-provisioning-quarantine-status.md)。
 
 有关其他身份验证和授权方法，请在 [UserVoice](https://aka.ms/appprovisioningfeaturerequest) 上告诉我们。
 

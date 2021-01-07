@@ -4,15 +4,15 @@ description: 本指南介绍常用的范围方法。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 11/19/2020
+ms.date: 1/7/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 3266517b9ddc8fc7ac7b06a137286c05ea9a28fa
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 6d2e3fccd6a61fe129050faa29cb7bb77674ccfe
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838133"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976890"
 ---
 # <a name="horizon-api"></a>范围 API 
 
@@ -24,7 +24,7 @@ ms.locfileid: "97838133"
 
 - 对于水平开放开发环境 (O) ) SDK，请联系 CyberX 代表。
 - 有关支持和故障排除信息，请联系 <support@cyberx-labs.com> 。
-- 若要从 CyberX 控制台访问 Cyberx 用户指南，请选择， :::image type="icon" source="media/references-horizon-api//image3.png"::: 然后选择 **下载用户指南**。
+- 若要从 CyberX 控制台访问 Cyberx 用户指南，请选择， :::image type="icon" source="media/references-horizon-api/profile-icon.png"::: 然后选择 **下载用户指南**。
 
 ## `horizon::protocol::BaseParser`
 

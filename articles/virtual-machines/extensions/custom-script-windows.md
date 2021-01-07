@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: aa95d6792f2f5754a237c7bf5e90a11e2e011ede
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b0502fb05043a54d81d768a7809d19b108cc6248
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861788"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976837"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -50,6 +50,8 @@ ms.locfileid: "97861788"
 ### <a name="internet-connectivity"></a>Internet 连接
 
 如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙和网络安全组端口。 例如，如果脚本位于 Azure 存储中，可以使用 Azure NSG 服务标记对[存储](../../virtual-network/network-security-groups-overview.md#service-tags)进行访问。
+
+请注意，CustomScript 扩展不能跳过证书验证。 因此，如果从安全的位置下载，例如。 自签名的证书可能最终会出现错误，例如 *"远程证书根据验证过程无效"*。 请确保证书已正确安装在虚拟机上的 *"受信任的根证书颁发机构"* 存储中。
 
 如果脚本位于本地服务器上，则可能仍需要打开其他防火墙和网络安全组端口。
 
@@ -131,7 +133,7 @@ ms.locfileid: "97861788"
 | typeHandlerVersion | 1.10 | int |
 | fileUris（例如） | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | timestamp（示例） | 123456789 | 32-bit integer |
-| commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | 字符串 |
+| commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
 | storageAccountName（例如） | examplestorageacct | 字符串 |
 | storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字符串 |
 | managedIdentity（例如） | { } 或 { "clientId":"31b403aa-c364-4240-a7ff-d85fb6cd7232" } 或 { "objectId":"12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | json 对象 |

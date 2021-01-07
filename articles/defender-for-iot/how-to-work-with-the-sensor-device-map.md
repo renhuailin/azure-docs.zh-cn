@@ -4,15 +4,15 @@ description: 设备映射提供检测到的网络设备的图形表示。 使用
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/07/2020
+ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: dd0f28411dccab1a1dd36fbd01d2d1acbcc689e0
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: fd1721060bdc4b18f324a94f7c367bacde6ed4e8
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838550"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976752"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>在设备映射中调查传感器检测
 
@@ -59,7 +59,7 @@ ms.locfileid: "97838550"
 
 下图显示了具有27个 IT 网络元素的折叠的 IT 子网。
 
-:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet.png" alt-text="已折叠具有 27 IT 网络元素的 IT 子网":::
+:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet-v2.png" alt-text="已折叠具有 27 IT 网络元素的 IT 子网":::
 
 启用 IT 网络折叠功能：
 
@@ -86,7 +86,7 @@ ms.locfileid: "97838550"
 
 4. 此时将显示一个确认框，通知你无法重做布局更改。
 
-5. 选择“确定”  。 子网元素显示在地图上。
+5. 选择“确定”。 子网元素显示在地图上。
 
    :::image type="content" source="media/how-to-work-with-maps/fixed-map.png" alt-text="确定":::
 
@@ -120,7 +120,7 @@ ms.locfileid: "97838550"
 
 | 组名称 | 说明 |
 |--|--|
-| **已知应用程序或非 standrad 端口 (默认值)** | 使用保留端口的设备，如 TCP。 使用非标准端口的设备或未分配别名的端口。 |
+| **已知应用程序或非标准端口 (默认)** | 使用保留端口的设备，如 TCP。 使用非标准端口的设备或未分配别名的端口。 |
 | **(默认) 的协议** | 处理 OT 流量的设备。 |
 | **授权 (默认值)** | 在学习过程中或正式添加到网络中时在网络中发现的设备 |
 | **设备清单筛选器** | 根据筛选器保存在设备清单表中的设备进行分组。 |
@@ -226,7 +226,7 @@ ms.locfileid: "97838550"
 
 详细视图显示设备和设备标签，并提供以下信息：
 
-:::image type="content" source="media/how-to-work-with-maps/device-map.png" alt-text="详细视图":::
+:::image type="content" source="media/how-to-work-with-maps/device-map-v2.png" alt-text="详细视图":::
 
 ### <a name="control-the-zoom-view"></a>控制缩放视图
 
@@ -236,7 +236,7 @@ ms.locfileid: "97838550"
 
 ### <a name="enable-simplified-zoom-views"></a>启用简化的缩放视图
 
-如果管理员希望安全分析师和 RO 用户访问 Brid 和设备和类型连接视图，则应启用 "简化视图" 选项。
+如果管理员想要安全分析师和 RO 用户访问鸟瞰和设备和类型连接视图，则应启用简化的视图选项。
 
 启用简化地图视图：
 
@@ -308,7 +308,7 @@ ms.locfileid: "97838550"
 
   - 类型
 
-  - 操作系统
+  - OS
 
   - Purdue 层
 
@@ -356,7 +356,7 @@ ms.locfileid: "97838550"
 
 下表显示了系统中的所有类型：
 
-| Category | 设备类型 |
+| 类别 | 设备类型 |
 |--|--|
 | 保证 | 工程工作站 <br /> 股票 <br />Historian <br />HMI <br />I <br />DCS 控制器 <br />RTU <br />工业打包系统 <br />工业规模 <br />工业机器人 <br />槽位 <br />计量 <br />可变频率驱动器  <br />机器人控制器 <br />伺服驱动器 <br />气压设备 <br />Marquee |
 | IT | 域控制器 <br />DB 服务器 <br />工作站 <br />服务器 <br />终端工作站 <br />存储 <br />智慧型手機 <br />平板电脑 <br />备份服务器 |
@@ -706,6 +706,6 @@ ms.locfileid: "97838550"
 
 1. 选择导出选项。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [调查设备清单中的传感器检测](how-to-investigate-sensor-detections-in-a-device-inventory.md)

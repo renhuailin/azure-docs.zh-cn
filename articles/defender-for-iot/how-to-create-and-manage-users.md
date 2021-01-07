@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 22d0c59110ba033232fbdf41062b49e9a146ca6f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: c33b3e5fee19edc5d4ac85284e507b53e96234a0
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955061"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977007"
 ---
 # <a name="about-defender-for-iot-console-users"></a>关于用于 IoT 控制台用户的 Defender
 
@@ -224,8 +224,6 @@ ms.locfileid: "97955061"
 
 1. 在 **密码恢复** 屏幕上，选择 " **上传**"。 **"上传密码恢复文件"** 窗口将打开。
 
-   :::image type="content" source="media/password-recovery-images/upload.png" alt-text="上载恢复文件以获取新密码。":::
-
 1. 选择 " **浏览** " 以查找 `password_recovery.zip` 文件，或者将拖动 `password_recovery.zip` 到窗口。
 
     > [!NOTE]
@@ -267,7 +265,7 @@ ms.locfileid: "97955061"
 
 1. 选择“更新”。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [激活并设置传感器](how-to-activate-and-set-up-your-sensor.md) 
 [激活并设置本地管理控制台](how-to-activate-and-set-up-your-on-premises-management-console.md) 

@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bc659c11c4f43ab3cf85cdc53f704cd07a1cde
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 25d4152783129fa1c5950d6cf6287332bf90d32a
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172361"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976871"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步：目录扩展
 通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可通过[扩展](/graph/extensibility-overview
@@ -46,7 +46,7 @@ ms.locfileid: "96172361"
 
 
 >[!NOTE]
-> 虽然 Azure AD Connect 支持将多值 Active Directory 属性作为多值目录扩展同步到 Azure AD，但目前无法检索/使用在多值目录扩展属性中上传的数据。
+> Azure AD Connect 将多值 Active Directory 属性同步到 Azure AD 为多值属性扩展后，可以将属性包含到 SAML 声明。 但无法通过 API 调用来使用此数据。
 
 属性列表是从安装 Azure AD Connect 期间创建的架构缓存中读取的。 如果已使用附加属性扩展了 Active Directory 架构，则必须[刷新架构](how-to-connect-installation-wizard.md#refresh-directory-schema)，然后这些新属性才可见。
 
@@ -72,7 +72,7 @@ Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度�
 > 有关详细信息，请参阅 [Microsoft Graph: Use query parameters](/graph/query-parameters#select-parameter)（Microsoft Graph：使用查询参数）。
 
 >[!NOTE]
-> 不支持将属性值从 AADConnect 同步到不是由 AADConnect 创建的扩展属性。 这样做可能会产生性能问题和意外的结果。 仅支持在以上所示的中创建的扩展属性以进行同步。
+> 不支持将属性值从 AADConnect 同步到不是由 AADConnect 创建的扩展属性。 这样做可能会产生性能问题和意外结果。 仅支持同步如上所示创建的扩展属性。
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>使用动态组中的属性
 

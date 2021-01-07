@@ -1,5 +1,5 @@
 ---
-title: 控制所监视的流量
+title: 控制要监视的流量
 description: 传感器会自动对其和通信执行深度数据包检测，并解析网络设备的相关信息，例如设备属性和网络行为。 有几种工具可用于控制每个传感器检测到的流量类型。
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 08afba8ade30775a49492f337bb5337320b9e282
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838467"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977060"
 ---
-# <a name="control-what-traffic-is-monitored"></a>控制所监视的流量
+# <a name="control-what-traffic-is-monitored"></a>控制要监视的流量
 
 传感器会自动对其和通信执行深度数据包检测，并解析网络设备的相关信息，例如设备属性和行为。 有几种工具可用于控制每个传感器检测到的流量类型。
 
@@ -228,7 +228,7 @@ ms.locfileid: "97838467"
 
 3. 在 " **DNS 反向查找服务器的服务器**" 对话框的 "**查找地址**" 中输入地址。
 
-    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-looup-test-screen.png" alt-text="屏幕截图，显示查找地址区域。":::
+    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-lookup-test-screen.png" alt-text="屏幕截图，显示查找地址区域。":::
 
 4. 选择“测试”。
 
@@ -295,7 +295,7 @@ ms.locfileid: "97838467"
 
 1. 扫描完成后，在 " **操作** " 窗格中选择 " **查看扫描结果**"。 带有扫描结果的 CSV 文件将下载到您的计算机。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [调查设备清单](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
  中的传感器检测[在设备映射中调查传感器检测](how-to-work-with-the-sensor-device-map.md)

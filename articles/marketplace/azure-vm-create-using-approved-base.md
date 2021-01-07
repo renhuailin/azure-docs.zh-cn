@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
-ms.date: 10/20/2020
-ms.openlocfilehash: 74cab14cd162ba608a9c5d0168485e9055661f55
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 01/06/2021
+ms.openlocfilehash: 9164c1e2542024a02bf4868658d0f29728f32c7b
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590778"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976854"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>如何使用已批准的基准创建虚拟机
 
@@ -40,15 +40,11 @@ Azure 提供一系列已批准的 Linux 发行版。 有关最新列表，请参
 2. 选择“虚拟机”。
 3. 选择 " **+ 添加** " 以打开 " **创建虚拟机** " 屏幕。
 4. 从下拉列表中选择图像，或选择 " **浏览所有公用和专用映像** "，搜索或浏览所有可用的虚拟机映像。
-5. 如果要创建 **第1代** VM，请转到 " **磁盘** " 选项卡，将 " **使用托管磁盘** " 选项设置为 " **否** "，以便能够在指定的存储帐户中获取 VM 的 VHD
-
-   :::image type="content" source="media/create-vm/create-virtual-machine-sizes-2.png" alt-text="选择非托管磁盘。":::
-   
-6. 若要创建 **第2代** VM，请在 " **高级** " 选项卡中选择 " **第2代** " 选项。
+5. 若要创建 **第2代** VM，请在 " **高级** " 选项卡中选择 " **第2代** " 选项。
 
     :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="选择 &quot;第1代&quot; 或 &quot;第2代&quot;。":::
 
-7. 选择要部署的 VM 的大小。
+6. 选择要部署的 VM 的大小。
 
     :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="为所选映像选择建议的 VM 大小。":::
 
@@ -56,7 +52,6 @@ Azure 提供一系列已批准的 Linux 发行版。 有关最新列表，请参
 8. 选择“查看 + 创建”可查看选择。 显示 " **验证通过** " 消息后，选择 "  **创建**"。
 
 Azure 随即开始预配所指定的虚拟机。 选择左侧菜单中的 " **虚拟机** " 选项卡跟踪其进度。 创建后，虚拟机的状态将更改为 " **正在运行**"。
-
 
 ## <a name="configure-the-vm"></a>配置 VM
 

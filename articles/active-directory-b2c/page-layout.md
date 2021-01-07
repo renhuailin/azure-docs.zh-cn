@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 4237aba81a01423a3356a30879fbd27450c876bd
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108495"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976497"
 ---
 # <a name="page-layout-versions"></a>页面布局版本
 
@@ -51,7 +51,7 @@ ms.locfileid: "97108495"
 - 电子邮件经过验证后，焦点会置于密码字段。
 - `autofocus`从 checkbox 控件中删除。 
 - 添加了对电话号码验证的显示控件的支持。
-- 现在，你可以 `data-preload="true"` 在 html 标记中添加特性 [在 html 标记] 中 (自定义-ui 的
+- 你现在可以 `data-preload="true"` [在 HTML 标记中](customize-ui-with-html.md#guidelines-for-using-custom-page-content)添加属性
   - 在加载 HTML 模板的同时加载链接的 CSS 文件，这样它就不会在加载文件之间“闪烁”。
   - 控制在页面加载前提取和执行 `script` 标记的顺序。
 - 现在，电子邮件字段 `type=email` 将提供正确的建议。
