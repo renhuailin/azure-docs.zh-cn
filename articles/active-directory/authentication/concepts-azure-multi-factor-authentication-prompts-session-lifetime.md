@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8789015c239aae58ec25f0f644d4c497da477c2b
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 0033b6985313de351ffdaf7028d2c1e9bd76ba72
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881236"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963513"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>优化重新验证的提示并了解 Azure AD 多重身份验证的会话生存期
 
@@ -121,7 +121,7 @@ Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要�
 1. 选择 " **安全性**"，然后选择 " **条件访问**"。
 1. 使用本文详细介绍的建议会话管理选项配置策略。
 
-若要查看令牌生存期，请 [使用 Azure AD PowerShell 来查询任何 Azure AD 策略](../develop/configure-token-lifetimes.md#prerequisites)。 禁用已有的任何策略。
+若要查看令牌生存期，请 [使用 Azure AD PowerShell 来查询任何 Azure AD 策略](../develop/configure-token-lifetimes.md#get-started)。 禁用已有的任何策略。
 
 如果在租户中启用了多个设置，则建议你根据可用的许可来更新设置。 例如，如果你有 Azure AD premium 许可证，则应仅使用 *登录频率* 和 *持续浏览器会话* 的条件性访问策略。 如果有 Microsoft 365 应用或 Azure AD 免费许可证，则应使用 " *保持登录"* 配置。
 

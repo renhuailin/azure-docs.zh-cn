@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: f270f74f97a9b9306d7b23dacec12c38f418dbd1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fb85920b04e3cd457dc36d1ba1fd0f18dcd7abb6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921814"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937053"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自定义容器创建函数
 
@@ -20,7 +20,7 @@ ms.locfileid: "96921814"
 Azure Functions 使用[自定义处理程序](functions-custom-handlers.md)支持任何语言或运行时。 对于某些语言（例如本教程中使用的 R 编程语言），需要安装运行时或其他库作为依赖项，这些依赖项需要使用自定义容器。
 ::: zone-end
 
-在自定义 Linux 容器中部署函数代码需要[高级计划](functions-premium-plan.md#features)或[专用（应用服务）计划](functions-scale.md#app-service-plan)托管。 完成本教程后，你的 Azure 帐户中会产生几美元的成本，你可以在完成后[清理资源](#clean-up-resources)来最大程度地降低该成本。
+在自定义 Linux 容器中部署函数代码需要[高级计划](functions-premium-plan.md)或[专用（应用服务）计划](dedicated-plan.md)托管。 完成本教程后，你的 Azure 帐户中会产生几美元的成本，你可以在完成后[清理资源](#clean-up-resources)来最大程度地降低该成本。
 
 也可以根据[创建托管在 Linux 上的第一个函数](./create-first-function-cli-csharp.md?pivots=programming-language-python)中所述，使用默认的 Azure 应用服务容器。 Azure Functions 支持的基础映像可以在 [Azure Functions 基础映像存储库](https://hub.docker.com/_/microsoft-azure-functions-base)中找到。
 

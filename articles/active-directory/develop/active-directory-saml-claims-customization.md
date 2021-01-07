@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 1c88b9f77513021609b99c81ea572c2b5b3d365b
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9c316362e2cd3fca9290e5f8070879567d9b7ea5
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936788"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963496"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -135,7 +135,7 @@ ms.locfileid: "96936788"
 | **StartWith()** | 如果输入以指定值开始，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果想要发出一个声明，其中的值为用户的员工 ID （如果国家/地区以“美国”开始），否则就需要输出一个扩展属性。 为此，需要配置以下值：<br/>*参数 1(输入)* ：user.country<br/>*值*：美国<br/>参数 2(输出)：user.employeeid<br/>参数 3（如果没有匹配项，则为输出）：user.extensionattribute1 |
 | **Extract() - 匹配后** | 匹配指定值后返回的子字符串。<br/>例如，如果输入的值为“Finance_BSimon”，匹配值为“Finance_”，则声明的输出为“BSimon”。 |
 | **Extract() - 匹配前** | 在匹配指定值前返回的子字符串。<br/>例如，如果输入的值为“BSimon_US”，匹配值为“_US”，则声明的输出为“BSimon”。 |
-| **Extract() - 匹配之间** | 在匹配指定值前返回的子字符串。<br/>例如，如果输入的值为“Finance_BSimon_US”，第一个匹配值为“Finance_”，第二个匹配值为“_US”，则声明的输出为“BSimon”。 |
+| **Extract() - 匹配之间** | 在匹配指定值前返回的子字符串。<br/>例如，如果输入的值为 "Finance_BSimon_US"，则第一个匹配值为 "财务 \_ "，第二个匹配值为 " \_ US"，则声明的输出为 "BSimon"。 |
 | **ExtractAlpha() - 前缀** | 返回字符串的前缀字母部分。<br/>例如，如果输入的值为“BSimon_123”，则它将返回“BSimon”。 |
 | **ExtractAlpha() - 后缀** | 返回字符串的后缀字母部分。<br/>例如，如果输入的值为“123_Simon”，则它将返回“Simon”。 |
 | **ExtractNumeric() - 前缀** | 返回字符串的前缀数字部分。<br/>例如，如果输入的值为“123_BSimon”，则它将返回“123”。 |

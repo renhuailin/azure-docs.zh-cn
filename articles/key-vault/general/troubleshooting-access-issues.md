@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 78b42a8ad3685d07b61c4faca384c7ee8f5a5f94
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8e4e64cd872794354479c29d4aaa000cee45c5a3
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616382"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901209"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>排查 Azure 密钥保管库访问策略问题
 
@@ -32,10 +32,10 @@ ms.locfileid: "97616382"
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>我无法修改访问策略，如何启用它？
 用户需要有足够的 AAD 权限才能修改访问策略。 在这种情况下，用户需要具有更高级的参与者角色。
 
-### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>我看到“未知策略”错误。 这是什么意思？
+### <a name="i-am-seeing-unknown-policy-error-what-does-that-mean"></a>我看到“未知策略”错误。 这是什么意思？
 在“未知”部分中看到访问策略，可能有两种不同的情况：
 * 可能有以前的用户具有访问权限，而由于某种原因，该用户已不存在。
-* 如果通过 powershell 添加了访问策略，并为应用程序 objectid 而不是服务原则添加了访问策略
+* 如果通过 powershell 添加了访问策略，并为应用程序 objectid 而不是服务主体添加了访问策略。
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>如何为每个密钥保管库对象分配访问控制？ 
 

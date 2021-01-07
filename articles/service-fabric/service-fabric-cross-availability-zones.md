@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 1217ecba7a5fcb3c0fc95f505e7ca07fc76129b2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f729c00d3b78631a32013ec9453302584cecbd16
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930814"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962425"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性区域部署 Azure Service Fabric 群集
 Azure 中的可用性区域是一种高可用性产品，可保护应用程序和数据免受数据中心故障的影响。 可用性区域是一种独特的物理位置，它在 Azure 区域内配有独立的电源、冷却和网络。
@@ -344,7 +344,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 若要在虚拟机规模集上启用区域，必须在虚拟机规模集资源中包含以下三个值。
 
 * 第一个值为 **zones** 属性，该属性指定虚拟机规模集中存在的可用性区域。
-* 第二个值为 "singlePlacementGroup" 属性，该属性必须设置为 true。
+* 第二个值为 "singlePlacementGroup" 属性，该属性必须设置为 true。 **即使 "singlePlacementGroup = true"，规模集跨越 3 AZ 的规模集也可扩展到最多300个 Vm。**
 * 第三个值是 "zoneBalance"，它是可选的，如果设置为 true，这将确保严格区域平衡。 阅读有关 [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing)的信息。
 * 不需要配置 FaultDomain 和 UpgradeDomain 重写。
 

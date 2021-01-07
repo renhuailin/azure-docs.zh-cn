@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 5f511a898b3b2964f954ba150b05f02486456dcf
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e49a84f5ac507ac80481313c103701a88934083a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171487"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900750"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教程：将 Hugo 站点发布到 Azure 静态 Web 应用（预览版）
 
@@ -115,7 +115,7 @@ ms.locfileid: "92171487"
 
 1. 对于“SKU”，选择“免费”。
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="在门户中创建 Azure 静态 Web 应用资源":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="已填写的详细信息":::
 
 1. 单击“使用 GitHub 登录”按钮。
 
@@ -125,7 +125,7 @@ ms.locfileid: "92171487"
 
 1. 对于“分支”，选择“主”。
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="在门户中创建 Azure 静态 Web 应用资源":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="已完成的 GitHub 信息":::
 
 ### <a name="build"></a>构建
 
@@ -149,7 +149,7 @@ ms.locfileid: "92171487"
 
 1. 在 Azure 门户的新建 Azure 静态 Web 应用资源的“概述”窗口中，单击“URL”链接以打开已部署的应用程序。
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="在门户中创建 Azure 静态 Web 应用资源":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="已部署的应用程序":::
 
 #### <a name="custom-hugo-version"></a>自定义 Hugo 版本
 
@@ -176,7 +176,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
           api_location: "api" # Api source code path - optional
-          app_artifact_location: "public" # Built app content directory - optional
+          output_location: "public" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
           HUGO_VERSION: 0.58.0

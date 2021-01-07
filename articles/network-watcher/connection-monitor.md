@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2020
+ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 2da675f0836dbb10ce5227e7e93e98d706cc5c64
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 24b1549b2e460bc0e72fb76f5437b15838604949
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544796"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896356"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
@@ -75,7 +75,7 @@ ms.locfileid: "95544796"
 
 再次完成[创建第一个 VM](#create-the-first-vm) 中的步骤，并做出以下更改：
 
-|步骤|设置|值|
+|步骤|设置|“值”|
 |---|---|---|
 | 1 | 选择某一版本的 **Ubuntu Server** |                                                                         |
 | 3 | 名称                                  | myVm2                                                                   |
@@ -90,7 +90,7 @@ ms.locfileid: "95544796"
 创建一个连接监视器，监视通过 TCP 端口 22 进行的从 *myVm1* 到 *myVm2* 的通信。
 
 1. 在门户左侧选择“所有服务”  。
-2. 首先在“筛选”框中键入“网络观察程序”。 搜索结果中出现“网络观察程序”后，将其选中  。
+2. 首先在“筛选”框中键入“网络观察程序”   。 搜索结果中出现“网络观察程序”后，将其选中  。
 3. 在“监视”下选择“连接监视器”   。
 4. 选择“+ 添加”  。
 5. 输入或选择要监视的连接信息，然后选择“添加”  。 在下图所示的示例中，将通过端口 22 监视从 *myVm1* VM 到 *myVm2* VM 的连接：
@@ -154,7 +154,7 @@ ms.locfileid: "95544796"
     | 设置                 | 值          |
     | ---                     | ---            |
     | 目标端口范围 | 22             |
-    | 操作                  | Deny           |
+    | 操作                  | 拒绝           |
     | 优先级                | 100            |
     | 名称                    | DenySshInbound |
 

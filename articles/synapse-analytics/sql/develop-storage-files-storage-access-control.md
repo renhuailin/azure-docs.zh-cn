@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400669"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746722"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
 无服务器 SQL 池查询直接从 Azure 存储中读取文件。 对 Azure 存储中文件的访问权限是在以下两个级别控制的：
 - **存储级别** - 用户应具有访问基础存储文件的权限。 你的存储管理员应当允许 Azure AD 主体读取/写入文件，或者生成将用来访问存储的 SAS 密钥。
-- **SQL 服务级别** - 用户应已被授予使用[外部表](develop-tables-external-tables.md)读取数据或执行 `OPENROWSET` 函数的权限。 在此部分中详细了解[所需权限](develop-storage-files-overview.md#permissions)。
+- **SQL 服务级别** - 用户应已被授予使用 [外部表](develop-tables-external-tables.md)读取数据或执行 `OPENROWSET` 函数的权限。 在此部分中详细了解[所需权限](develop-storage-files-overview.md#permissions)。
 
 本文介绍可用的凭据类型，以及为 SQL 和 Azure AD 用户进行的凭据查找是如何执行的。
 
@@ -83,15 +83,73 @@ ms.locfileid: "97400669"
 
 | 授权类型  | Blob 存储   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| SAS    | 支持\*      | 不支持   | 支持\*     |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | 支持\*      | 不支持   | 支持\*     |
 | [托管标识](?tabs=managed-identity#supported-storage-authorization-types) | 支持      | 支持        | 支持     |
 | [用户标识](?tabs=user-identity#supported-storage-authorization-types)    | 支持\*      | 支持\*        | 支持\*     |
 
 \* SAS 令牌和 Azure AD 标识可用于访问不受防火墙保护的存储。
 
-> [!IMPORTANT]
-> 访问受防火墙保护的存储时，仅可使用托管标识。 需要[允许受信任的 Microsoft 服务设置](../../storage/common/storage-network-security.md#trusted-microsoft-services)并明确[将 Azure 角色](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)分配给该资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在这种情况下，实例的访问范围对应于分配给托管标识的 Azure 角色。
->
+
+### <a name="querying-firewall-protected-storage"></a>查询受防火墙保护的存储
+
+访问受防火墙保护的存储时，可使用用户标识或托管标识。 
+
+#### <a name="user-identity"></a>用户标识
+
+若要通过用户标识访问受防火墙保护的存储，可以使用 PowerShell 模块 Az.Storage。
+#### <a name="configuration-via-powershell"></a>通过 PowerShell 进行配置
+
+按照以下步骤配置存储帐户防火墙，并为 Synapse 工作区添加例外。
+
+1. 打开 PowerShell 或[安装 PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true )
+2. 安装已更新的 Az. Storage 模块： 
+    ```powershell
+    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    ```
+    > [!IMPORTANT]
+    > 请确保使用 3.0.1 或更新版本。 可以通过运行以下命令来检查 Az.Storage 版本：  
+    > ```powershell 
+    > Get-Module -ListAvailable -Name  Az.Storage | select Version
+    > ```
+    > 
+
+3. 连接到 Azure 租户： 
+    ```powershell
+    Connect-AzAccount
+    ```
+4. 在 PowerShell 中定义变量： 
+    - 资源组名称 - 可以在 Azure 门户中的“Synapse 工作区概述”中找到此内容。
+    - 帐户名称 - 受防火墙规则保护的存储帐户的名称。
+    - 租户 ID - 可在 Azure 门户中的“租户中的 Azure Active Directory 信息”中找到此内容。
+    - 资源组 ID - 可以在 Azure 门户中的“Synapse 工作区概述”中找到此内容。
+
+    ```powershell
+        $resourceGroupName = "<resource group name>"
+        $accountName = "<storage account name>"
+        $tenantId = "<tenant id>"
+        $resourceId = "<Synapse workspace resource id>"
+    ```
+    > [!IMPORTANT]
+    > 请确保资源 id 与此模板匹配。
+    >
+    > 以小写形式书写“resourcegroups”很重要。
+    > 一个资源 id 的示例： 
+    > ```
+    > /subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Synapse/workspaces/{name-of-workspace}
+    > ```
+    > 
+5. 添加存储网络规则： 
+    ```powershell
+        Add-AzStorageAccountNetworkRule -ResourceGroupName $resourceGroupName -Name $accountName -TenantId $tenantId -ResourceId $resourceId
+    ```
+6. 验证是否已在存储帐户中应用规则： 
+    ```powershell
+        $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
+        $rule.ResourceAccessRules
+    ```
+
+#### <a name="managed-identity"></a>托管标识
+需要[允许受信任的 Microsoft 服务设置](../../storage/common/storage-network-security.md#trusted-microsoft-services)并明确[将 Azure 角色](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)分配给该资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在这种情况下，实例的访问范围对应于分配给托管标识的 Azure 角色。
 
 ## <a name="credentials"></a>凭据
 

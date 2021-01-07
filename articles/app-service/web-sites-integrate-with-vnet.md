@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cbae833c1b207669e35b467707f946e9bafe31d2
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 077d200dcaf957f636acecebb441ff99a68eb96f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854938"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963581"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络集成
 
@@ -130,6 +130,12 @@ Azure App Service 在 VNet 集成功能上有两种变化形式：
 
 * **同步网络**：同步网络操作仅用于网关相关的 VNet 集成功能。 执行同步网络操作确保了证书与网络信息是同步的。如果添加或更改 VNet 的 DNS，请执行同步网络操作。 此操作重启使用此 VNet 的任何应用。 如果你使用的是属于不同订阅的应用和 VNet，此操作无效。
 * **添加路由**：添加路由会促使出站流量进入 VNet。
+
+分配给实例的专用 IP 通过环境变量 **WEBSITE_PRIVATE_IP** 公开。 Kudu 控制台 UI 还显示了可用于 Web 应用的环境变量的列表。 此 IP 是从集成子网的地址范围中分配的。 对于区域 VNet 集成，WEBSITE_PRIVATE_IP 的值是来自委派子网的地址范围中的 IP，对于网关必需的 VNet 集成，此值是在虚拟网络网关上配置的点到站点地址池的地址范围中的 IP。 这是 Web 应用通过虚拟网络连接到资源时将使用的 IP。 
+
+> [!NOTE]
+> WEBSITE_PRIVATE_IP 的值绑定到 change。 但是，它将是集成子网的地址范围内的 IP 或点到站点地址范围内的 IP 地址，因此你将需要允许从整个地址范围进行访问。
+>
 
 ### <a name="gateway-required-vnet-integration-routing"></a>需要网关的 VNet 集成路由
 在 VNet 中定义的路由用于将流量从应用导入 VNet。 如果需要将其他出站流量发送到 VNet 中，请在此处添加地址块。 此功能仅适用于需要网关的 VNet 集成。 使用需要网关的 VNet 集成时，路由表不会像使用区域 VNet 集成时那样影响应用流量。

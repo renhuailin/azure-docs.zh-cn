@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 072abffcc74b8b060d98c07d1f310413c7b323ef
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: fc0f148da518c718dafaab082f9598ccd4372a1f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954934"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963804"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -140,15 +140,15 @@ ms.locfileid: "97954934"
             例如：
             1) 包含3个配置项目的警报1： A、B、C-将创建3个工作项。
             2) 警报2，其中包含1个配置项目： A-将创建1个工作项。
-
-        * 如果清除 **"为每个配置项目创建单独的工作项"** 复选框，则 ITSM 连接器将为每个警报规则创建一个工作项，并将所有受影响的配置项追加到该工作项。 如果上一个工作项已关闭，则将创建一个新的工作项。
-        >[!NOTE]
+       >[!NOTE]
         > 在这种情况下，某些触发的警报不会在 ITSM 工具中生成新的工作项。
 
-            For example:
-            1) Alert 1 with 3 Configuration Items: A, B, C - will create 1 work item.
-            2) Alert 2 for the same alert rule as phase 1 with 1 Configuration Item: D - will be merged to the work item in phase 1.
-            3) Alert 3 for a different alert rule with 1 Configuration Item: E - will create 1 work item.
+        * 如果清除 **"为每个配置项目创建单独的工作项"** 复选框，则 ITSM 连接器将为每个警报规则创建一个工作项，并将所有受影响的配置项追加到该工作项。 如果上一个工作项已关闭，则将创建一个新的工作项。
+
+            例如：
+             1) 包含3个配置项目的警报1： A、B、C-将创建1个工作项。
+             2) 与1个配置项目： D 的阶段1相同的警报规则的警报2将合并到阶段1中的工作项。
+             3) 警报3对于具有1个配置项目的不同警报规则： E-将创建1个工作项。
 
        ![显示 ITSM 事件窗口的屏幕截图。](media/itsmc-overview/itsm-action-configuration.png)
 

@@ -1,73 +1,82 @@
 ---
 title: Azure Data Share 中支持的数据存储
-description: 了解使用 Azure 数据共享支持的数据存储。
+description: 了解支持在 Azure 数据共享中使用的数据存储。
 ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
 ms.date: 12/16/2020
-ms.openlocfilehash: d45d9a29f671e66c6caba689f49e1748780545e0
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 852c44f5edc5c0b0f5f655f63ab040927bd9bc7b
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616739"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963673"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share 中支持的数据存储
 
-Azure 数据共享提供了开放式和灵活的数据共享，包括从和到不同数据存储区的能力。 数据访问接口可以共享一种类型的数据存储中的数据，其数据使用者可以选择要将数据接收到的数据存储区。 
+Azure 数据共享提供了开放式和灵活的数据共享，包括从和到不同数据存储区的能力。 数据访问接口可以共享一种类型的数据存储中的数据，数据使用者可以选择数据存储来接收数据。 
 
-在本文中，你将了解 Azure 数据共享支持的丰富 Azure 数据存储集。 你还可以找到有关数据访问接口和数据使用者可以利用的数据存储组合的信息。 
+在本文中，你将了解 Azure 数据共享支持的丰富 Azure 数据存储集。 你还将了解数据访问接口和数据使用者如何合并不同的数据存储区。 
 
-## <a name="what-data-stores-are-supported-in-azure-data-share"></a>Azure 数据共享支持哪些数据存储？ 
+## <a name="supported-data-stores"></a>支持的数据存储 
 
-下表详细说明了 Azure 数据共享支持的数据源。 
+下表介绍了 Azure 数据共享支持的数据存储。 
 
-| 数据存储 | 基于快照的共享 (完整快照)  | 基于快照的共享 (增量快照)  | 就地共享 
+| 数据存储 | 基于完整快照共享 | 基于增量快照共享 | 就地共享 
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob 存储 |✓ |✓ | |
 | Azure Data Lake Storage Gen1 |✓ |✓ | |
 | Azure Data Lake Storage Gen2 |✓ |✓ ||
 | Azure SQL 数据库 |✓ | | |
-| Azure Synapse Analytics (以前的 Azure SQL DW)  |✓ | | |
+| Azure Synapse Analytics（以前称为 Azure SQL 数据仓库） |✓ | | |
 | Azure Synapse Analytics (工作区) 专用 SQL 池 |✓ | | |
 | Azure 数据资源管理器 | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>数据存储支持矩阵
 
-在确定数据存储区以接受中的数据时，Azure 数据共享可为数据使用者提供灵活性。 例如，可以将 Azure SQL 数据库中共享的数据接收到 Azure Data Lake Store Gen2、Azure SQL 数据库或 Azure Synapse Analytics 中。 客户可以在配置接收的数据共享时选择要接收数据的格式。 
+Azure 数据共享允许数据使用者选择数据存储来接受数据。 例如，可将 Azure SQL 数据库中共享的数据接收到 Azure Data Lake Storage Gen2、Azure SQL 数据库或 Azure Synapse Analytics 中。 当客户设置接收数据共享时，他们可以选择接收数据的格式。 
 
-下表详细说明了数据使用者在接受和配置其数据共享时具有的不同组合和选择。 有关如何配置数据集映射的详细信息，请参阅 [如何配置数据集映射](how-to-configure-mapping.md)。
+下表说明了数据使用者在接受和配置数据共享时可以选择的组合和选项。 有关详细信息，请参阅 [配置数据集映射](how-to-configure-mapping.md)。
 
-| 数据存储 | Azure Blob 存储 | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL 数据库 | Azure Synapse Analytics (以前的 Azure SQL DW)  | Azure Synapse Analytics (工作区) 专用 SQL 池 | Azure 数据资源管理器
+| 数据存储 | Blob 存储 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | SQL 数据库 | Synapse Analytics (以前的 SQL 数据仓库)  | Synapse Analytics (工作区) 专用 SQL 池 | 数据资源管理器
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- | :--- |
-| Azure Blob 存储 | ✓ || ✓ |||
-| Azure Data Lake Storage Gen1 | ✓ | | ✓ |||
-| Azure Data Lake Storage Gen2 | ✓ | | ✓ |||
-| Azure SQL 数据库 | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| Azure Synapse Analytics (以前的 Azure SQL DW)  | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| Azure Synapse Analytics (工作区) 专用 SQL 池 | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| Azure 数据资源管理器 ||||||| ✓ |
+| Blob 存储 | ✓ || ✓ |||
+| Data Lake Storage Gen1 | ✓ | | ✓ |||
+| Data Lake Storage Gen2 | ✓ | | ✓ |||
+| SQL 数据库 | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Synapse Analytics (以前的 SQL 数据仓库)  | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Synapse Analytics (工作区) 专用 SQL 池 | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| 数据资源管理器 ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>从存储帐户共享
-Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享文件、文件夹和文件系统。 它还支持从 Azure Blob 存储共享 blob、文件夹和容器。 目前仅支持块 blob。 在基于快照的共享中共享文件系统、容器或文件夹时，数据使用者可以选择创建共享数据的完整副本，也可以利用增量快照功能只复制新的或更新的文件。 增量快照基于文件的上次修改时间。 快照期间将覆盖具有相同名称的现有文件。 不会在目标上删除从源删除的文件。 
+Azure 数据共享支持从 Azure Data Lake Storage Gen1 和 Azure Data Lake Storage Gen2 共享文件、文件夹和文件系统。 它还支持从 Azure Blob 存储共享 blob、文件夹和容器。 目前仅支持块 blob。 
 
-有关详细信息 [，请参阅共享和接收来自 Azure Blob 存储的数据和 Azure Data Lake Storage](how-to-share-from-storage.md) 。
+在基于快照的共享中共享文件系统、容器或文件夹时，数据使用者可以选择创建共享数据的完整副本。 或者，他们可以使用增量快照功能只复制新文件或更新的文件。 
+
+增量快照基于文件的上次修改时间。 与接收的数据中的文件同名的现有文件会在快照中被覆盖。 不会在目标上删除从源删除的文件。 
+
+有关详细信息，请参阅 [从 Azure Blob 存储共享和接收数据和 Azure Data Lake Storage](how-to-share-from-storage.md)。
 
 ## <a name="share-from-a-sql-based-source"></a>从基于 SQL 的源共享
-Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中共享表和视图 (以前称为 Azure SQL DW) ，以及从 Azure Synapse Analytics (工作区) 专用 SQL 池共享表。 当前不支持从 Azure Synapse Analytics 共享 (工作区) 无服务器 SQL 池。 数据使用者可以选择接受将数据作为 csv 或 parquet 文件的 Azure Data Lake Storage Gen2 或 Azure Blob 存储，以及作为表的 Azure SQL 数据库和 Azure Synapse 分析。
+Azure 数据共享支持在以前的 Azure SQL 数据仓库)  (Azure SQL 数据库和 Azure Synapse 分析中的表和视图。 它支持从 Azure Synapse Analytics (工作区) 专用 SQL 池共享表。 当前不支持从 Azure Synapse Analytics (工作区共享) 无服务器 SQL 池。 
 
-在将数据接收到 Azure Data Lake Store Gen2 或 Azure Blob 存储时，如果已存在，则完全快照将覆盖目标文件的内容。
-当将数据接收到表中，并且如果目标表尚不存在，Azure 数据共享将创建包含源架构的 SQL 表。 如果已存在具有相同名称的目标表，则将删除该目标表并使用最新的完整快照覆盖它。 当前不支持增量快照。
+数据使用者可以选择将数据作为 CSV 文件或 parquet 文件接受 Azure Data Lake Storage Gen2 或 Azure Blob 存储。 它们还可以在 Azure SQL 数据库和 Azure Synapse 分析中以表的形式接受数据。
 
-有关详细信息，请参阅 [在 AZURE SQL 数据库和 Azure Synapse Analytics 中共享和接收数据](how-to-share-from-sql.md) 。
+当使用者在 Azure Data Lake Storage Gen2 或 Azure Blob 存储中接受数据时，如果文件已存在，则完全快照将覆盖目标文件的内容。 在将数据接收到表并且目标表尚不存在时，Azure 数据共享使用源架构创建 SQL 表。 如果目标表已存在并且具有相同的名称，则会将其删除并使用最新的完整快照进行覆盖。 当前不支持增量快照。
 
-## <a name="share-from-azure-data-explorer"></a>从 Azure 数据资源管理器进行共享
-Azure 数据共享支持从 Azure 数据资源管理器群集共享就地数据库。 数据访问接口可以在数据库级别或群集级别共享。 在数据库级别共享时，数据使用者将只能访问数据提供程序共享)  (的特定数据库。 当在群集级别共享时，数据使用者可以从提供程序的群集访问所有数据库，包括任何将来由数据提供程序创建的数据库。
+有关详细信息，请参阅 [在 AZURE SQL 数据库和 Azure Synapse Analytics 中共享和接收数据](how-to-share-from-sql.md)。
 
-若要访问共享数据库，数据使用者需要有自己的 Azure 数据资源管理器群集。 数据使用者的 Azure 数据资源管理器群集需要在与数据提供商的 Azure 数据资源管理器群集相同的 Azure 数据中心中查找。 建立共享关系时，Azure 数据共享会在提供者和使用者的 Azure 数据资源管理器群集之间创建一个符号链接。 使用批处理模式进入源 Azure 数据资源管理器群集的数据引入将在几秒钟到几分钟内显示在目标群集上。
+## <a name="share-from-data-explorer"></a>从数据资源管理器共享
+Azure 数据共享支持从 Azure 数据资源管理器群集共享就地数据库。 数据访问接口可以在数据库级别或群集级别共享。 
 
-有关详细信息，请参阅 [从 Azure 数据资源管理器共享和接收数据](/azure/data-explorer/data-share) 。 
+当数据在数据库级别共享时，数据使用者只能访问该数据访问接口共享的数据库。 当提供程序在群集级别共享数据时，数据使用者可以从提供程序的群集访问所有数据库，包括数据提供程序创建的未来任何数据库。
+
+若要访问共享数据库，数据使用者需要其自己的 Azure 数据资源管理器群集。 其群集必须与数据提供商的 Azure 数据资源管理器群集位于同一 Azure 数据中心内。 
+
+建立共享关系时，Azure 数据共享会在提供程序的群集和使用者的群集之间创建符号链接。 使用批处理模式在源群集中引入的数据会在几分钟内显示在目标群集上。
+
+有关详细信息，请参阅 [从 Azure 数据资源管理器中共享和接收数据](/azure/data-explorer/data-share)。 
 
 ## <a name="next-steps"></a>后续步骤
 

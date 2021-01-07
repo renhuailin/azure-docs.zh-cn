@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e1666b7e74ceefd7e7e4fe6e499667b09efa0ac7
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963357"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963787"
 ---
 # <a name="use-spot-vms-in-azure"></a>使用 Azure 中的专色 Vm
 
@@ -26,7 +26,7 @@ ms.locfileid: "91963357"
 
 Vm 可根据容量或设置的最大价格进行逐出。 创建点 VM 时，可以将逐出策略设置为 *释放* (默认) 或 *删除*。 
 
-*解除分配*策略会将 VM 移到停止解除分配状态，以便以后重新部署它。 但是，不保证分配将成功。 已释放的 Vm 将计入你的配额，并将对基础磁盘的存储成本进行收费。 
+*解除分配* 策略会将 VM 移到停止解除分配状态，以便以后重新部署它。 但是，不保证分配将成功。 已释放的 Vm 将计入你的配额，并将对基础磁盘的存储成本进行收费。 
 
 如果希望在逐出 VM 时删除 VM，可以将逐出策略设置为 " *删除*"。 逐出的 Vm 将连同它们的基础磁盘一起删除，因此你不会继续为存储付费。 
 
@@ -81,7 +81,7 @@ Vm 可根据容量或设置的最大价格进行逐出。 创建点 VM 时，可
 
 **表**：
 
-:::image type="content" source="./media/spot-table.png" alt-text="区域选项的屏幕截图，其中的定价和逐出率不同于图表。":::
+:::image type="content" source="./media/spot-table.png" alt-text="区域选项的屏幕截图，其中的定价和逐出率相差为表格。":::
 
 
 
@@ -104,12 +104,17 @@ Vm 可根据容量或设置的最大价格进行逐出。 创建点 VM 时，可
 
 **问：** 是否可以为 Spot 申请额外的配额？
 
-**答:** 是的，你可以通过[标准配额申请流程](../azure-portal/supportability/per-vm-quota-requests.md)提交申请，请求提高 Spot VM 的配额。
+**答:** 是的，你可以通过 [标准配额申请流程](../azure-portal/supportability/per-vm-quota-requests.md)提交申请，请求提高 Spot VM 的配额。
 
 
 **问：** 我可以在何处发布问题？
 
-**答:** 你可以在[问答](/answers/topics/azure-spot.html)中发布问题并使用 `azure-spot` 来标记问题。 
+**答:** 你可以在 [问答](/answers/topics/azure-spot.html)中发布问题并使用 `azure-spot` 来标记问题。 
+
+
+**问：** 如何更改专色 VM 的最大价格？
+
+**答：** 你需要先解除分配 VM，然后才能更改最大价格。 然后，可以从 VM 的 " **配置** " 部分更改门户中的最大价格。 
 
 ## <a name="next-steps"></a>后续步骤
 使用 [CLI](./linux/spot-cli.md)、 [门户](spot-portal.md)、 [ARM 模板](./linux/spot-template.md)或 [PowerShell](./windows/spot-powershell.md) 部署专色 vm。

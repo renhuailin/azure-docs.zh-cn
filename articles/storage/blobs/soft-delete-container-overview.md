@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 01/06/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 1ebfa137357e60a1f462ef90c6430cbf0cb5b968
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: references_regions
+ms.openlocfilehash: 85d880966c4c3864206c7e92256eb8e705812f20
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746597"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962170"
 ---
 # <a name="soft-delete-for-containers-preview"></a>容器的软删除 (预览) 
 
@@ -53,11 +53,9 @@ Azure 存储 REST API 版本2019-12-12 及更高版本支持容器软删除。
 
 容器软删除可用于以下类型的存储帐户：
 
-- 常规用途 v2 存储帐户
+- 常规用途 v2 和 v1 存储帐户
 - 块 Blob 存储帐户
 - Blob 存储帐户
-
-如果你的存储帐户是常规用途 v1 帐户，请使用 Azure 门户升级到常规用途 v2 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
 
 还支持启用了分层命名空间以与 Azure Data Lake Storage Gen2 一起使用的存储帐户。
 
