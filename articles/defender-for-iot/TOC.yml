@@ -3,6 +3,8 @@
 - name: 概述
   href: overview.md
   items:
+    - name: 新增功能
+      href: release-notes.md
     - name: 解决方案体系结构
       href: architecture.md
 - name: 快速入门
