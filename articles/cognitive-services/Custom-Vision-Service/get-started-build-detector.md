@@ -12,12 +12,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 图像识别, 图像识别应用, 自定义视觉
-ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8274ddd0e492d1a27ebc1579fc6efdcc8cc84955
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018341"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912978"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>快速入门：使用“自定义视觉”网站生成对象检测器
 
@@ -100,6 +100,7 @@ ms.locfileid: "96018341"
 
 - 精确度表示已识别的正确分类的分数。 例如，如果模型将 100 张图像识别为狗，实际上其中 99 张是狗，那么精确度为 99%。
 - 召回率表示正确识别的实际分类的分数。 例如，如果实际上有 100 张苹果的图像，并且该模型将 80 张标识为苹果，则召回率为 80%。
+- 平均精度是平均精准率 (AP) 的平均值。 AP 是精准率/召回率曲线下的区域（精准率根据每次进行的预测的召回率绘制）。
 
 ![训练结果将显示总体精度和召回率，以及平均精度。](./media/get-started-build-detector/trained-performance.png)
 
