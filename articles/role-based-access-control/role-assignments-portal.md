@@ -10,16 +10,16 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1aebb80fcba6c21ccce63772195af80b94092bde
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7c58641f0039982f05be14d0f24ba89c62273d4b
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368311"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964297"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 门户添加或删除 Azure 角色分配
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文介绍如何使用 Azure 门户分配角色。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] 本文介绍如何使用 Azure 门户分配角色。
 
 如需在 Azure Active Directory 中分配管理员角色，请参阅[在 Azure Active Directory 中查看和分配管理员角色](../active-directory/roles/manage-roles-portal.md)。
 
@@ -35,15 +35,15 @@ ms.locfileid: "92368311"
 
 ![订阅的“访问控制(IAM)”页](./media/role-assignments-portal/access-control-subscription.png)
 
-若要在访问控制 (IAM) 页上最有效，可通过以下步骤来分配角色。
+为了以最有效的方式使用访问控制 (IAM) 页，最好按以下步骤来分配一个角色。
 
-1. 确定需要访问的人员。 可以将角色分配给用户、组、服务主体或托管标识。
+1. 确定哪一用户需要访问权限。 可以将角色分配到用户、组、服务主体或托管标识。
 
-1. 查找适当的角色。 权限组合成角色。 可以从多个 [Azure 内置角色](built-in-roles.md) 的列表中进行选择，也可以使用自己的自定义角色。
+1. 查找适当的角色。 权限组合成角色。 可以从包含多个 [Azure 内置角色](built-in-roles.md)的列表中选择，也可以使用自己的自定义角色。
 
-1. 确定所需的作用域。 Azure 提供四个级别的作用域： [管理组](../governance/management-groups/overview.md)、订阅、 [资源组](../azure-resource-manager/management/overview.md#resource-groups)和资源。 有关范围的详细信息，请参阅[了解范围](scope-overview.md)。
+1. 识别所需的范围。 Azure 提供四个级别的范围：[管理组](../governance/management-groups/overview.md)、订阅、[资源组](../azure-resource-manager/management/overview.md#resource-groups)和资源。 有关范围的详细信息，请参阅[了解范围](scope-overview.md)。
 
-1. 执行以下部分之一中的步骤来分配角色。
+1. 执行以下某一部分中的步骤来分配角色。
 
 ## <a name="add-a-role-assignment"></a>添加角色分配
 
@@ -97,11 +97,11 @@ ms.locfileid: "92368311"
 
    如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
-   ![添加订阅的角色分配菜单](./media/shared/add-role-assignment-menu.png)
+   ![订阅的“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
 
     此时会打开“添加角色分配”窗格。
 
-   ![添加订阅的角色分配窗格](./media/role-assignments-portal/add-role-assignment.png)
+   ![订阅的“添加角色分配”窗格](./media/role-assignments-portal/add-role-assignment.png)
 
 1. 在“角色”下拉列表中，选择“所有者”角色。
 
@@ -111,18 +111,18 @@ ms.locfileid: "92368311"
 
    片刻之后，会在订阅范围内为该用户分配“所有者”角色。
 
-## <a name="add-a-role-assignment-for-a-managed-identity-preview"></a>为托管标识添加角色分配 (预览) 
+## <a name="add-a-role-assignment-for-a-managed-identity-preview"></a>为托管标识添加角色分配（预览版）
 
-如本文前面所述，可以使用 " **访问控制 (" IAM) ** 页添加托管标识的角色分配。 使用 "访问控制 (IAM) " 页时，请从范围开始，然后选择托管标识和角色。 本部分介绍了一种添加托管标识的角色分配的替代方法。 使用这些步骤，从托管标识开始，然后选择范围和角色。
+如本文前面所述，可以通过使用 **访问控制 (IAM)** 页为托管标识添加角色分配。 在使用访问控制 (IAM) 页时，先从范围开始，然后选择托管标识和角色。 本部分介绍了为托管标识添加角色分配的替代方法。 使用这些步骤时，先从托管标识开始，然后选择范围和角色。
 
 > [!IMPORTANT]
-> 使用这些备用步骤添加托管标识的角色分配目前处于预览阶段。
+> 使用这些替代步骤为托管标识添加角色分配的功能目前以预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ### <a name="system-assigned-managed-identity"></a>系统分配的托管标识
 
-按照以下步骤，通过托管标识将角色分配给系统分配的托管标识。
+按照以下步骤，从系统分配的托管标识开始，将角色分配到该托管标识。
 
 1. 在 Azure 门户中，打开系统分配的托管标识。
 
@@ -132,53 +132,53 @@ ms.locfileid: "92368311"
 
 1. 在“权限”下，单击“Azure 角色分配” 。
 
-    如果已将角色分配给所选系统分配的托管标识，则会看到角色分配的列表。 此列表包括你有权读取的所有角色分配。
+    如果已将角色分配到所选的系统分配托管标识，则会看到角色分配的列表。 此列表包括你有权读取的所有角色分配。
 
     ![系统分配的托管标识的角色分配](./media/shared/role-assignments-system-assigned.png)
 
 1. 若要更改订阅，请单击“订阅”列表。
 
-1. 单击 " **添加角色分配 (预览") **。
+1. 单击“添加角色分配(预览版)”。
 
-1. 使用下拉列表选择角色分配适用的资源集，如 **订阅**、 **资源组**或资源。
+1. 使用下拉列表来选择角色分配应用到的资源集，如订阅、资源组或资源 。
 
-    如果没有所选作用域的角色分配写入权限，则将显示内联消息。 
+    如果你对所选范围没有角色分配写入权限，将会显示一条内联消息。 
 
 1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。
 
-   ![为系统分配的托管标识添加角色分配窗格](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+   ![系统分配的托管标识的“添加角色分配”窗格](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
 1. 单击“保存”以分配该角色。
 
-   几分钟后，将为托管标识分配所选作用域中的角色。
+   片刻之后，就会在所选范围为托管标识分配角色。
 
 ### <a name="user-assigned-managed-identity"></a>用户分配的托管标识
 
-按照以下步骤，通过托管标识将角色分配给用户分配的托管标识。
+按照以下步骤，从用户分配的托管标识开始，将角色分配到该托管标识。
 
 1. 在 Azure 门户中，打开用户分配的托管标识。
 
-1. 在左侧菜单中，单击 " **Azure 角色分配**"。
+1. 在左侧菜单中，单击“Azure 角色分配”。
 
-    如果已将角色分配给所选的用户分配的托管标识，则会看到角色分配的列表。 此列表包括你有权读取的所有角色分配。
+    如果已将角色分配到所选的用户分配托管标识，则会看到角色分配的列表。 此列表包括你有权读取的所有角色分配。
 
     ![用户分配的托管标识的角色分配](./media/shared/role-assignments-user-assigned.png)
 
 1. 若要更改订阅，请单击“订阅”列表。
 
-1. 单击 " **添加角色分配 (预览") **。
+1. 单击“添加角色分配(预览版)”。
 
-1. 使用下拉列表选择角色分配适用的资源集，如 **订阅**、 **资源组**或资源。
+1. 使用下拉列表来选择角色分配应用到的资源集，如订阅、资源组或资源 。
 
-    如果没有所选作用域的角色分配写入权限，则将显示内联消息。 
+    如果你对所选范围没有角色分配写入权限，将会显示一条内联消息。 
 
 1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。
 
-   ![为用户分配的托管标识添加角色分配窗格](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+   ![用户分配的托管标识的“添加角色分配”窗格](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
 1. 单击“保存”以分配该角色。
 
-   几分钟后，将为托管标识分配所选作用域中的角色。
+   片刻之后，就会在所选范围为托管标识分配角色。
 
 ## <a name="remove-a-role-assignment"></a>删除角色分配
 
@@ -190,7 +190,7 @@ ms.locfileid: "92368311"
 
 1. 在角色分配列表中，在需删除其角色分配的安全主体旁边添加复选标记。
 
-   ![已选择要删除的角色分配](./media/role-assignments-portal/remove-role-assignment-select.png)
+   ![已选中要删除的角色分配](./media/role-assignments-portal/remove-role-assignment-select.png)
 
 1. 单击 **“删除”** 。
 
@@ -200,7 +200,7 @@ ms.locfileid: "92368311"
 
     此时会显示一条消息，指出无法删除继承的角色分配，而你正在尝试删除子范围的角色分配。 应在角色的分配范围打开“访问控制(IAM)”，然后重试。 在正确的范围打开“访问控制(IAM)”的快捷方法是查看“范围”列，然后单击“(继承)”旁边的链接。
 
-   ![删除继承的角色分配的角色分配消息](./media/role-assignments-portal/remove-role-assignment-inherited.png)
+   ![继承的角色分配的“删除角色分配”消息](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 
 ## <a name="next-steps"></a>后续步骤
 

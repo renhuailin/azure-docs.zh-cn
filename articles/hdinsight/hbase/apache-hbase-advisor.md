@@ -8,22 +8,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/03/2021
-ms.openlocfilehash: 36d40215f759190cc9e6c6e3f4918dcbc384f94f
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 73af7e2a1920e6cfdad9245d965908255ef95a1f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97893263"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964586"
 ---
 # <a name="apache-hbase-advisories-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache HBase 建议
 
-本文介绍了几项可帮助你在 Azure HDInsight 中优化 Apache HBase 性能的建议。 
+本文介绍了若干建议，可帮助你在 Azure HDInsight 中优化 Apache HBase 性能。 
 
 ## <a name="optimize-hbase-to-read-most-recently-written-data"></a>优化 HBase 以读取最近写入的数据
 
-在 Azure HDInsight 中使用 Apache HBase 时，可以在应用程序读取最新写入的数据的情况下优化 HBase 的配置。 为了实现高性能，最佳做法是从 memstore 而不是远程存储提供 HBase 读取。
+如果你的用例涉及到从 HBase 读取最近写入的数据，则这一建议可以为你带来帮助。 为了实现高性能，最佳做法是从 memstore 而不是远程存储提供 HBase 读取。
 
-查询建议表明，对于表中的给定列系列，有 > 75% 的读取，这些读取是从 memstore 提供的。 此指标表明即使 memstore 上发生刷新，也需要访问最近的文件，需要将其放入缓存中。 首先将数据写入到 memstore 系统访问那里的最新数据。 内部 HBase 惰性线程可能会检测到给定的区域已达到 128M (默认) 大小，并可触发刷新。 这种情况甚至是在 memstore 大约128M 时编写的最新数据。 因此，稍后读取这些最近记录可能需要读取文件而不是 memstore。 因此最好优化，甚至最近刷新的最近的数据也可以驻留在缓存中。
+查询建议表明，对于表中的给定列系列 > 从 memstore 提供的75% 读取。 此指标表明即使 memstore 上发生刷新，也需要访问最近的文件，需要将其放入缓存中。 首先将数据写入到 memstore 系统访问那里的最新数据。 内部 HBase 惰性线程可能会检测到给定的区域已达到 128M (默认) 大小，并可触发刷新。 这种情况甚至是在 memstore 大约128M 时编写的最新数据。 因此，稍后读取这些最近记录可能需要读取文件而不是 memstore。 因此最好优化，甚至最近刷新的最近的数据也可以驻留在缓存中。
 
 若要优化缓存中的最新数据，请考虑以下配置设置：
 
@@ -33,9 +33,9 @@ ms.locfileid: "97893263"
 
 3. 如果按照步骤2操作并设置 compactionThreshold，请将更改 `hbase.hstore.compaction.max` 为更高的值（例如 `100` ），并将配置的值增加 `hbase.hstore.blockingStoreFiles` 到更大的值（例如） `300` 。
 
-4. 如果确定只需要读取最近使用的数据，请将 `hbase.rs.cachecompactedblocksonwrite` "配置" 设置为 **"开**"。 此配置告知系统即使发生压缩，数据仍保留在缓存中。 还可以在 "家族" 级别设置配置。 
+4. 如果你确定只需要读取最新数据，请将 `hbase.rs.cachecompactedblocksonwrite` "配置" 设置为 **"开**"。 此配置告知系统即使发生压缩，数据仍保留在缓存中。 还可以在 "家族" 级别设置配置。 
 
-   在 HBase Shell 中运行以下命令：
+   在 HBase Shell 中运行以下命令以设置 `hbase.rs.cachecompactedblocksonwrite` 配置：
    
    ```
    alter '<TableName>', {NAME => '<FamilyName>', CONFIGURATION => {'hbase.hstore.blockingStoreFiles' => '300'}}
@@ -43,15 +43,15 @@ ms.locfileid: "97893263"
 
 5. 对于表中的给定系列，可以关闭块缓存。 确保为具有最新数据 **读取的系列** 启用此功能。 默认情况下，将为表中的所有系列启用块缓存。 如果已禁用系列的块缓存并需要将其打开，请使用 hbase shell 中的 alter 命令。
 
-   这些配置有助于确保数据位于缓存中，并确保最近的数据不会进行压缩。 如果在你的方案中可以使用 TTL，则考虑使用日期分层压缩。 有关详细信息，请参阅 [Apache HBase 参考指南：日期分层压缩](https://hbase.apache.org/book.html#ops.date.tiered)  
+   这些配置有助于确保数据在缓存中可用，并确保最近的数据不会进行压缩。 如果在你的方案中可以使用 TTL，则考虑使用日期分层压缩。 有关详细信息，请参阅 [Apache HBase 参考指南：日期分层压缩](https://hbase.apache.org/book.html#ops.date.tiered)  
 
 ## <a name="optimize-the-flush-queue"></a>优化刷新队列
 
-优化刷新队列建议表明 HBase 刷新可能需要优化。 刷新处理程序的配置可能不够高。
+此通报表明 HBase 刷新可能需要优化。 刷新处理程序的当前配置可能不够高，无法处理写入流量，这可能会导致刷新速度变慢。
 
 在区域服务器 UI 中，注意刷新队列是否增长到100以上。 此阈值表示刷新速度较慢，你可能必须优化   `hbase.hstore.flusher.count` 配置。 默认情况下，值为2。 确保最大惰性线程数不超过6。
 
-此外，请查看是否有对区域计数优化的建议。 如果是这样，请先尝试调整区域，查看是否有助于更快地刷新。 优化惰性线程可能会有多种方法，如 
+此外，请查看是否有对区域计数优化的建议。 如果是，我们建议您尝试区域调整，以查看是否有助于更快地刷新。 否则，优化惰性线程可能会有所帮助。
 
 ## <a name="region-count-tuning"></a>区域计数优化
 
@@ -65,7 +65,7 @@ ms.locfileid: "97893263"
 
 - 设置好这些设置后，区域数为100。 4 GB 的全局 memstore 现在跨100个区域拆分。 因此，对于 memstore，每个区域有效只获得 40 MB。 如果写入是统一的，则系统会频繁地刷新并减小顺序 < 40 MB。 具有很多惰性线程可能会提高刷新速度 `hbase.hstore.flusher.count` 。
 
-这一建议意味着，最好重新考虑每个服务器的区域数、堆大小和全局 memstore 大小配置以及刷新线程调整，以便避免此类更新被阻止。
+这一建议意味着，最好重新考虑每个服务器的区域数、堆大小和全局 memstore 大小配置，同时调整刷新线程以避免更新被阻止。
 
 ## <a name="compaction-queue-tuning"></a>压缩队列优化
 

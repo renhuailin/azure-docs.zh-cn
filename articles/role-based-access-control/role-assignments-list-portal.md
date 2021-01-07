@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 06a9a955e8a963f94b1885abf5a920cb96c01940
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: adb3691625d6cdde03c803480ae948bb1911cc7d
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007415"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964365"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 门户列出 Azure 角色分配
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 Azure 门户列出角色分配。
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] 本文介绍如何使用 Azure 门户列出角色分配。
 
 > [!NOTE]
 > 如果你的组织对使用 [Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商具有外包管理功能，则此处将不会显示该服务提供商授权的角色分配。
@@ -83,7 +83,7 @@ ms.locfileid: "97007415"
 
 1. 单击“检查访问权限”选项卡。
 
-    ![资源组访问控制-检查访问选项卡](./media/role-assignments-list-portal/rg-access-control-check-access.png)
+    ![资源组访问控制 - “检查访问权限”选项卡](./media/role-assignments-list-portal/rg-access-control-check-access.png)
 
 1. 在 " **查找** " 列表中，选择要检查其访问权限的用户、组、服务主体或托管标识。
 
@@ -93,11 +93,11 @@ ms.locfileid: "97007415"
 
 1. 单击安全主体以打开“分配”窗格。
 
-    在此窗格中，可以查看此范围内所选安全主体的访问权限，并将其继承到此范围。 子范围内的分配未列出。 你会看到以下分配：
+    在此窗格上，可以查看在此范围和继承到此范围的所选安全主体的访问权限。 未列出在子范围的分配。 你会看到以下分配：
 
     - 通过 Azure RBAC 添加的角色分配。
-    - 拒绝使用 Azure 蓝图或 Azure 托管应用添加的分配。
-    - 经典部署的经典服务管理员或 Co-Administrator 分配。 
+    - 使用 Azure 蓝图或 Azure 托管应用添加的拒绝分配。
+    - 经典部署的经典服务管理员或共同管理员分配。 
 
     ![分配窗格](./media/shared/rg-check-access-assignments-user.png)
 

@@ -3,12 +3,12 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 182df937ae5c0194aecfbe20b5962b44b363c708
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 20de08ee30deae74954f2857b4de756b8cf46f08
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934454"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964179"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -176,6 +176,10 @@ ms.locfileid: "97934454"
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
+## <a name="azure-role-based-access-control-limits"></a>Azure 基于角色的访问控制限制
+
+[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control/limits.md)]
+
 ## <a name="azure-signalr-service-limits"></a>Azure SignalR 服务限制
 
 [!INCLUDE [signalr-service-limits](../../../includes/signalr-service-limits.md)]
@@ -339,10 +343,6 @@ ms.locfileid: "97934454"
 ## <a name="notification-hubs-limits"></a>通知中心限制
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
-
-## <a name="azure-role-based-access-control-limits"></a>Azure 基于角色的访问控制限制
-
-[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
 
 ## <a name="service-bus-limits"></a>服务总线限制
 

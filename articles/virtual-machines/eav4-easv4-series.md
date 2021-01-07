@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 3d1b8481aa4d4a81c95643727c1eff2a4a22da2f
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 9b6ea9491575236a3ef84d660ead8022d13e01ef
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426249"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964122"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 和 Easv4 系列
 
@@ -28,7 +28,7 @@ Eav4 系列和 Easv4 系列在多线程配置中利用 AMD 的 2.35 Ghz EPYC<sup
 [VM 生成支持](generation-2.md)：第1代和第2代<br>
 <br>
 
-Eav4 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现 3.35 ghz 的提升最大频率，并使用高级 SSD。 Eav4 系列大小适用于内存密集型企业应用程序。 数据磁盘存储与虚拟机分开计费。 若要使用高级 SSD，请使用 Easv4 系列大小。 Easv4 大小的定价和计费标准与 Eav3 系列相同。
+Eav4 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现 3.35 ghz 的提升最大频率。 Eav4 系列大小适用于内存密集型企业应用程序。 数据磁盘存储与虚拟机分开计费。 若要使用高级 SSD，请使用 Easv4 系列大小。 Easv4 大小的定价和计费标准与 Eav3 系列相同。
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大 NIC 数 | 预期的网络带宽 (Mbps) |
 | -----|-----|-----|-----|-----|-----|-----|-----|

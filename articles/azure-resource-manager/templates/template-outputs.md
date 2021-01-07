@@ -3,16 +3,16 @@ title: 模板中的输出
 description: 介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义输出值。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 9e4ac134e9c1864bca8dd56c3a6e2311d0328d7d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f8f13b6caf063cea79dc71775fb936f406a3ee6c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934724"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964008"
 ---
 # <a name="outputs-in-arm-templates"></a>ARM 模板中的输出
 
-本文介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义输出值。 需要从部署的资源返回值时，可以使用输出。
+本文介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义输出值。 `outputs`需要从部署的资源返回值时，可使用。
 
 每个输出值的格式必须与[数据类型](template-syntax.md#data-types)中的一种匹配。
 
@@ -31,7 +31,7 @@ ms.locfileid: "97934724"
 
 ## <a name="conditional-output"></a>条件输出
 
-在“输出”部分中，可以有条件地返回值。 通常，[有条件地部署](conditional-resource-deployment.md)资源时，可以在输出中使用条件。 以下示例展示了如何根据是否部署了新的公共 IP 地址，有条件地返回公共 IP 地址的资源 ID：
+在 `outputs` 部分中，您可以有条件地返回值。 通常，在有 `condition` 条件地 `outputs` [部署](conditional-resource-deployment.md) 资源时，在中使用。 以下示例展示了如何根据是否部署了新的公共 IP 地址，有条件地返回公共 IP 地址的资源 ID：
 
 ```json
 "outputs": {

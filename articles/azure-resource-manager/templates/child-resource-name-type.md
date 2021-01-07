@@ -3,12 +3,12 @@ title: 模板中的子资源
 description: 介绍如何在 Azure 资源管理器模板中设置子资源的名称和类型 (ARM 模板) 。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 408914fd309676da36904a364f905a8ee809d648
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a950d72751b829c0a2aa3ba5ca27316a0544d9cc
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934299"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963906"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>设置子资源的名称和类型
 
@@ -137,5 +137,4 @@ ms.locfileid: "97934299"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何创建 ARM 模板，请参阅 [了解 arm 模板的结构和语法](template-syntax.md)。
-
 * 若要了解引用资源时的资源名称格式，请参阅[引用函数](template-functions-resource.md#reference)。

@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 8ef3ff20c67eefa2091ffb1732ced813b169e596
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d6b3d60a44725869d68dd9f1158d2279f3cf3e86
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929746"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963974"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用托管标识来访问应用程序配置
 
@@ -102,7 +102,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
     using Azure.Identity;
     ```
 
-1. 如果希望只访问直接存储在应用程序配置中的值，请通过替换 `config.AddAzureAppConfiguration()` 方法来更新 `CreateWebHostBuilder` 方法。
+1. 如果只希望访问直接存储在应用程序配置中的值，请 `CreateWebHostBuilder` 通过替换方法来更新方法 `config.AddAzureAppConfiguration()` (此方法在 `Microsoft.Azure.AppConfiguration.AspNetCore` 包) 中找到。
 
     > [!IMPORTANT]
     > `CreateHostBuilder` 替换 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根据环境选择正确的语法。

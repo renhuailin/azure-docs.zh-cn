@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 12/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 15d8a198df4769b94bced49b82f7be827c771994
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 9038d6bc9cd061200ef4553242889776f30d2dc1
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630899"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964552"
 ---
 # <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>用于 Python Azure 机器学习 SDK 的触发器机器学习管道
 
@@ -190,16 +190,19 @@ published_pipeline.endpoint
 1. 设置你的计划以设置你可能具有的任何 [DataPath PipelineParameters](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb) 的值：
 
     ```json
-    "DataPathAssignments": { 
-         "input_datapath": { 
-                            "DataStoreName": "<datastore-name>", 
-                            "RelativePath": "@triggerBody()?['Name']" 
-    } 
-    }, 
-    "ExperimentName": "MyRestPipeline", 
-    "ParameterAssignments": { 
-    "input_string": "sample_string3" 
-    },
+    {
+      "DataPathAssignments": {
+        "input_datapath": {
+          "DataStoreName": "<datastore-name>",
+          "RelativePath": "@{triggerBody()?['Name']}" 
+        }
+      },
+      "ExperimentName": "MyRestPipeline",
+      "ParameterAssignments": {
+        "input_string": "sample_string3"
+      },
+      "RunSource": "SDK"
+    }
     ```
 
     将已添加到工作区的 `DataStoreName` 用作[先决条件](#prerequisites)。

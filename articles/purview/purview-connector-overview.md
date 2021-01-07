@@ -7,11 +7,11 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 26efa840bacd3ee542816cf861cf2ef586b0582f
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 88fb9c823df6ae5df345911ccce1c579009fba02
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 01/07/2021
 ms.locfileid: "96780206"
 ---
 # <a name="supported-data-stores"></a>支持的数据存储
@@ -20,7 +20,7 @@ ms.locfileid: "96780206"
 
 ## <a name="purview-data-sources"></a>监控范围数据源
 
-|**类别**|  **数据存储**  |**元数据提取**|**完全扫描**|**增量扫描**|**作用域扫描**|**分类**|**沿袭**|
+|**类别**|  **数据存储**  |**元数据提取**|**完整扫描**|**增量扫描**|**作用域扫描**|**分类**|**沿袭**|
 |---|---|---|---|---|---|---|---|
 | Azure | [Azure Blob 存储](register-scan-azure-blob-storage-source.md)| 是| 是| 是| 是| 是| 是|
 ||[Azure Cosmos DB](register-scan-azure-cosmos-database.md)|是| 是| 是| 是| 是| 是|
@@ -31,7 +31,6 @@ ms.locfileid: "96780206"
 ||[Azure SQL 数据库托管实例](register-scan-azure-sql-database-managed-instance.md)|是| 是| 否| 是| 是| 是|
 ||[Azure Synapse Analytics（以前称为 SQL DW）](register-scan-azure-synapse-analytics.md)|是| 是| 否| 是| 是| 是|
 |数据库|[SQL Server](register-scan-on-premises-sql-server.md)|是| 是| 否| 是| 是| 是|
-||[Teradata（预览版）](register-scan-teradata-source.md)|是| 是| 否| 否| 否| 是|
 |Power BI|[Power BI](register-scan-power-bi-tenant.md)|是| 是| 否| 否| 否| 是|
 
 ## <a name="next-steps"></a>后续步骤

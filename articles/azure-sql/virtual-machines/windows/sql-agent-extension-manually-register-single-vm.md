@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: e7a8f54abbadb63c870c4d92843699c67f59752c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 393d0c69201f87ad7c96bd2f9a1f9f57df512e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505624"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964518"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>向 SQL IaaS 代理扩展注册 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,11 +41,11 @@ ms.locfileid: "97505624"
 > [!IMPORTANT]
 > SQL IaaS 代理扩展收集数据，以便在 Azure 虚拟机中使用 SQL Server 时，为客户提供可选的权益。 在未经客户的事先同意的情况下，Microsoft 不会将此数据用于许可审核。 有关详细信息，请参阅 [SQL Server 隐私补充](/sql/sql-server/sql-server-privacy#non-personal-data) 。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要向扩展注册 SQL Server VM，需要： 
 
-- [Azure 订阅](https://azure.microsoft.com/free/)。
+- 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
 - Azure 资源模型 [Windows Server 2008 (或更高版本) ](../../../virtual-machines/windows/quick-create-portal.md) 具有 [SQL Server 2008 (或更高) 版本 ](https://www.microsoft.com/sql-server/sql-server-downloads) 的虚拟机部署到公共或 Azure 政府云。 
 - 最新版本的 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell)  (5.0 ](/powershell/azure/install-az-ps)。 
 
@@ -189,6 +189,9 @@ $sqlvm.SqlManagementType
 
 在 *轻型* 模式下注册扩展的 SQL Server vm 可以使用 Azure 门户、Azure CLI 或 Azure PowerShell 升级为 _完整_ 。 在 OS 升级到 Windows 2008 R2 及更高版本之后，无代理模式下的 SQL Server VM 可以升级到完整模式 。 不可能进行降级-若要执行此操作，你将需要从 SQL IaaS 代理扩展中 [注销](#unregister-from-extension) SQL Server VM。 这样做会删除 SQL 虚拟机资源，但不会删除实际虚拟机。 
 
+> [!NOTE]
+> 将 SQL IaaS 扩展的管理模式升级到 full 后，它将重新启动 SQL Server 服务。 在某些情况下，重新启动可能会导致服务主体名称 (Spn) 与 SQL Server 服务相关联才能更改为错误的用户帐户。 如果在将管理模式升级到 full 后出现连接问题，请 [注销并重新注册 spn](/sql/database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections)。
+
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -279,7 +282,7 @@ $sqlvm.SqlManagementType
 
 若要使用 Azure 门户从扩展中注销 SQL Server VM，请执行以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 导航到 SQL VM 资源。 
   
    ![SQL 虚拟机资源](./media/sql-agent-extension-manually-register-single-vm/sql-vm-manage.png)
