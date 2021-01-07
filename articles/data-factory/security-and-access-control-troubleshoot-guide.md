@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: fac4f3029d783e9257d00466ddb9fc9741b0f5a2
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 3b7b405e34b6ca82da593507ad6103d360c5df1e
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895642"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968579"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>排查 Azure 数据工厂安全性和访问控制问题
 
@@ -151,16 +151,6 @@ ms.locfileid: "97895642"
 尝试在用户界面上启用公用网络访问，如以下屏幕截图所示：
 
 !["已启用" 控件的屏幕截图，适用于 "网络" 窗格中的 "允许公共网络访问"。](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
-
-### <a name="pipeline-runtime-varies-when-basing-on-different-ir"></a>当以不同的 IR 为基础时，管道运行时会有所不同
-
-#### <a name="symptoms"></a>症状
-
-只需切换数据集中的链接服务下拉列表，就可以执行相同的管道活动，但运行时会有很大的不同。 如果数据集基于托管虚拟网络 Integration Runtime，则完成运行所需的平均时间超过2分钟，但根据默认 Integration Runtime 完成时需要大约20秒的时间。
-
-#### <a name="cause"></a>原因
-
-检查管道运行的详细信息时，可以看到慢速管道正在 (虚拟网络) IR 上运行，同时在 Azure IR 上运行正常。 按照设计，托管 VNet IR 的排队时间比 Azure IR 长，因为我们不会为每个数据工厂保留一个计算节点，因此每个复制活动需要大约2分钟的时间来启动，并且它主要在 VNet 联接而不是 Azure IR 进行。
 
 ## <a name="next-steps"></a>后续步骤
 

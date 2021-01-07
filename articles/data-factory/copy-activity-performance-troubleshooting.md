@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: d22d040b0001ee30e29c551e686a7cb6bc47c2af
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/07/2021
+ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921925"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968885"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
@@ -172,6 +172,60 @@ ms.locfileid: "96921925"
 
   - 考虑逐步优化[并行复制](copy-activity-performance-features.md)，同时请注意，过多的并行复制可能会进一步损害性能。
 
+
+## <a name="connector-and-ir-performance"></a>连接器和 IR 性能
+
+本部分探讨特定连接器类型或集成运行时的一些性能故障排除指南。
+
+### <a name="activity-execution-time-varies-using-azure-ir-vs-azure-vnet-ir"></a>使用 Azure IR 与 Azure VNet IR 时，活动执行时间会有所不同
+
+当数据集基于不同 Integration Runtime 时，活动执行时间会有所不同。
+
+- **症状**：只需在数据集中切换 "链接的服务" 下拉列表，就可以执行相同的管道活动，但运行时间会明显不同。 如果数据集基于托管虚拟网络 Integration Runtime，则完成运行所需的平均时间超过2分钟，但根据默认 Integration Runtime 完成时需要大约20秒的时间。
+
+- **原因**：检查管道运行的详细信息，可以看到慢速管道运行在托管 VNet (虚拟网络) IR 上，而正常运行在 Azure IR 上。 按照设计，托管 VNet IR 的排队时间比 Azure IR 长，因为我们不会为每个数据工厂保留一个计算节点，因此每个复制活动需要大约2分钟的时间来启动，并且它主要在 VNet 联接而不是 Azure IR 进行。
+
+    
+### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>将数据加载到 Azure SQL 数据库时性能低
+
+- **症状**：将数据复制到 Azure SQL 数据库会变慢。
+
+- **原因**：此问题的根本原因主要由 Azure SQL 数据库端的瓶颈触发。 下面是一些可能的原因：
+
+    - Azure SQL 数据库层不够高。
+
+    - Azure SQL 数据库 DTU 使用率接近100%。 可以 [监视性能](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) 并考虑升级 Azure SQL 数据库层。
+
+    - 未正确设置索引。 在数据加载之前删除所有索引，并在加载完成后重新创建它们。
+
+    - WriteBatchSize 不够大，无法容纳架构行大小。 尝试放大此问题的属性。
+
+    - 使用的是存储过程，而不是大容量嵌入，这会使性能更差。 
+
+- **解决方法**：请参阅对 [复制活动性能进行故障排除](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)。
+
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>分析大型 Excel 文件时超时或性能降低
+
+- **症状**：
+
+    - 当你创建 Excel 数据集并从连接/存储区导入架构、预览数据、列出或刷新工作表时，如果 Excel 文件大小大，则可能会遇到超时错误。
+
+    - 使用复制活动将数据从大型 Excel 文件复制 ( # B0 = 100 MB) 到其他数据存储时，可能会遇到性能下降或 OOM 问题。
+
+- **原因**： 
+
+    - 对于导入架构、预览数据以及在 excel 数据集上列出工作表这样的操作，超时为100秒，并为静态。 对于大型 Excel 文件，这些操作可能无法在超时值内完成。
+
+    - ADF 复制活动将整个 Excel 文件读入内存，然后查找指定的工作表和单元格以读取数据。 此行为是由基础 SDK ADF 使用的。
+
+- **解决方法**： 
+
+    - 对于导入架构，你可以生成一个较小的示例文件，该文件是原始文件的子集，并选择 "从示例文件导入架构"，而不是 "从连接中导入架构"。
+
+    - 对于列表工作表，在 "工作表" 下拉列表中，可以单击 "编辑"，并改为输入工作表名称/索引。
+
+    - 若要将 ( # B0 100 MB) 的大型 excel 文件复制到其他存储，可以使用运动流式处理读取和执行的数据流 Excel 源。
+    
 ## <a name="other-references"></a>其他参考资料
 
 下面是有关一些受支持数据存储的性能监视和优化参考：

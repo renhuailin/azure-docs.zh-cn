@@ -9,12 +9,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: cfcdd143a26d36ed3c4646122fce7c19c41976d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448837"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967695"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的请求配额增加
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "91448837"
 
     ![创建新的支持请求](./media/quota-increase-request/new-support-request.png)
 
-1. 对于 " **问题类型**"，请选择 " **服务和订阅限制")  (配额 **。
+1. 对于 " **问题类型**"，请选择 " **服务和订阅限制")  (配额**。
 
    ![选择问题类型](./media/quota-increase-request/select-quota-issue-type.png)
 
@@ -43,8 +43,8 @@ ms.locfileid: "91448837"
 
 1. 对于 " **配额类型**"，请选择以下配额类型之一：
 
-   - 适用于单一数据库和弹性池配额的**SQL 数据库**。
-   - 托管实例的**SQL 数据库托管实例**。
+   - 适用于单一数据库和弹性池配额的 **SQL 数据库**。
+   - 托管实例的 **SQL 数据库托管实例**。
 
    然后选择“下一步:**解决方案 >>** 。
 
@@ -105,20 +105,22 @@ ms.locfileid: "91448837"
 
 1. 在 " **选择位置** " 列表中，选择要使用的 Azure 区域。 配额按每个区域的每个订阅设置。
 
-1. 输入 **采购模型**和 **预期消耗** 详细信息。
+1. 输入 **采购模型** 和 **预期消耗** 详细信息。
 
    ![请求区域访问](./media/quota-increase-request/quota-request.png)
 
-### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a> 启用对区域的 M 系列访问
+<!--
+### <a id="mseries"></a> Enable M-series access to a region
 
-若要为订阅和区域启用 M 系列硬件，必须打开支持请求。
+To enable M-series hardware for a subscription and region, a support request must be opened.
 
-1. 选择 **M 系列区域访问** 配额类型。
+1. Select the **M-series region access** quota type.
 
-1. 在 " **选择位置** " 列表中，选择要使用的 Azure 区域。 配额按每个区域的每个订阅设置。
+1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
 
 
-   ![请求 M 系列区域访问](./media/quota-increase-request/quota-m-series.png)
+   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
+-->
 
 ## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> SQL 托管实例配额类型
 
@@ -126,7 +128,7 @@ ms.locfileid: "91448837"
 
 1. 在 " **区域** " 列表中，选择要作为目标的 Azure 区域。
 
-1. 输入要为 **子网** 和 **vCore**请求的新限制。
+1. 输入要为 **子网** 和 **vCore** 请求的新限制。
 
    ![SQL 托管实例配额详细信息](./media/quota-increase-request/quota-details-managed-instance.png)
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: a7227195c767d90141a9b6cd95f784c239a31fd5
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 41fdb3d2e69ae39dbe80f21a953fd9fdaa6d1127
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955189"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968460"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>训练和部署自定义语音识别模型
 
@@ -35,12 +35,12 @@ ms.locfileid: "97955189"
 
 训练模型的第一步是上传训练数据。 请参阅 [准备和测试你的数据](./how-to-custom-speech-test-and-train.md) ，以获取 (最谈话和发音) 准备人为标记的转录和相关文本的分步说明。 上传定型数据后，请按照以下说明开始定型模型：
 
-1. 登录到[自定义语音识别门户](https://speech.microsoft.com/customspeech)。
+1. 登录到[自定义语音识别门户](https://speech.microsoft.com/customspeech)。 如果计划使用音频和人标记的脚本数据集来训练模型，请在 [具有专用硬件](custom-speech-overview.md#set-up-your-azure-account) 培训的区域中选择一个语音订阅。
 2. 转到 "**语音到文本**"  >  **自定义语音**  >  **[项目的名称]**  >  **训练**。
 3. 选择 " **定型模型**"。
 4. 为训练指定 **名称** 和 **说明**。
 5. 在 " **方案和基线模型** " 列表中，选择最适合你的域的方案。 如果不确定选择哪种方案，请选择 " **常规**"。 该基线模型是训练的起点。 最新的模型通常是最佳选择。
-6. 在 " **选择定型数据** " 页上，选择一个或多个要用于定型的音频和人标记的脚本数据集。
+6. 在 " **选择定型数据** " 页上，选择一个或多个相关文本数据集，或选择要用于定型的音频和人工标记的脚本数据集。 训练新模型时，请从相关文本开始;使用音频和人为标记的脚本训练可能需要更长的时间， (多达 [几天](how-to-custom-speech-evaluate-data.md#improve-model-recognition)) 。
 7. 训练完成后，可以在新训练的模型上执行准确性测试。 此步骤是可选的。
 8. 选择“创建”，生成自定义模型。
 

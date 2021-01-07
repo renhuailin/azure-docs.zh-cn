@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 6e80b1446142786cbd77245a2b6696cac1bb9272
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: b263d3e62ae97914fc8e06580486bddd0cb9b3b7
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897087"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968443"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移支持矩阵
 
@@ -44,7 +44,7 @@ ms.locfileid: "97897087"
 --- | ---
 **VMware vCenter 服务器** | 版本5.5、6.0、6.5、6.7、7.0。
 **VMware vSphere ESXI 主机** | 版本5.5、6.0、6.5、6.7、7.0。
-**vCenter Server 权限** | 无代理迁移使用 [迁移设备](migrate-appliance.md)。 设备需要这些权限才能 vCenter Server：<br/><br/> - **数据存储：浏览** (数据存储-> 浏览数据存储) ：允许浏览 VM 日志文件来排除快照创建和删除的故障。<br/><br/> - **FileManagement** (数据存储-> 低级别文件操作) ：允许在数据存储浏览器中执行读/写/删除/重命名操作，用于排查快照创建和删除的问题。<br/><br/> - **VirtualMachine.Config。更改跟踪** (虚拟机 > 磁盘更改跟踪) ：允许启用或禁用 VM 磁盘的更改跟踪，以便在快照之间请求更改的数据块。<br/><br/> - **VirtualMachine.Config。DiskLease** (虚拟机-> 磁盘租约) ：允许 VM 使用磁盘租约操作，使用 VMware vSphere 虚拟磁盘开发工具包 (VDDK) 读取磁盘。<br/><br/> - **VirtualMachine DiskAccess**： (专用于 vSphere 6.0 和更高版本) 允许在 VM 上打开磁盘，以便使用 VDDK 在磁盘上进行随机读取访问。<br/><br/> - **VirtualMachine. DiskRandomRead** (虚拟机-> 预配-> 允许只读磁盘访问) ：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **DiskRandomAccess** (虚拟机 > 预配-> 允许磁盘访问) ：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine** > 预配 (虚拟机-预配-> 允许虚拟机下载) ：允许对与 VM 关联的文件执行读取操作，下载日志，并在发生故障时进行故障排除。<br/><br/> - **VirtualMachine。 \**_ (虚拟机-> 快照管理) ：允许创建和管理用于复制的 VM 快照。 <br/> <br/>-_* VirtualMachine** (虚拟机 > 交互-> 关机) ：允许 VM 在迁移到 Azure 期间关闭。
+**vCenter Server 权限** | 无代理迁移使用 [迁移设备](migrate-appliance.md)。 设备需要这些权限才能 vCenter Server：<br/><br/> - **数据存储：浏览** (数据存储-> 浏览数据存储) ：允许浏览 VM 日志文件来排除快照创建和删除的故障。<br/><br/> - **FileManagement** (数据存储-> 低级别文件操作) ：允许在数据存储浏览器中执行读/写/删除/重命名操作，用于排查快照创建和删除的问题。<br/><br/> - **VirtualMachine.Config。更改跟踪** (虚拟机 > 磁盘更改跟踪) ：允许启用或禁用 VM 磁盘的更改跟踪，以便在快照之间请求更改的数据块。<br/><br/> - **VirtualMachine.Config。DiskLease** (虚拟机-> 磁盘租约) ：允许 VM 使用磁盘租约操作，使用 VMware vSphere 虚拟磁盘开发工具包 (VDDK) 读取磁盘。<br/><br/> - **VirtualMachine. DiskRandomRead** (虚拟机-> 预配-> 允许只读磁盘访问) ：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **DiskRandomAccess** (虚拟机 > 预配-> 允许磁盘访问) ：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine** > 预配 (虚拟机-预配-> 允许虚拟机下载) ：允许对与 VM 关联的文件执行读取操作，下载日志，并在发生故障时进行故障排除。<br/><br/> - **VirtualMachine。 \**_ (虚拟机-> 快照管理) ：允许创建和管理用于复制的 VM 快照。 <br/> <br/>-_* VirtualMachine** (虚拟机 > 交互-> 关机) ：允许 VM 在迁移到 Azure 期间关闭。
 
 
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746603"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968528"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Spark 和 Hive 工具
 
@@ -269,7 +269,7 @@ ms.locfileid: "97746603"
 
 > [!NOTE]
 >
-> 已解决["Ms-python >= 2020.5.78807 版本在此扩展上不受支持"](#issues-changed) 。 目前可以使用最新的 ms python 版本。
+> 已解决["Ms-python >= 此扩展不支持2020.5.78807 版本"](#issues-changed) 。 请立即将 **ms python** 更新到 **最新版本** 。
 
 ## <a name="submit-pyspark-batch-job"></a>提交 PySpark 批处理作业
 
@@ -491,7 +491,7 @@ ms.locfileid: "97746603"
 
 ## <a name="issues-changed"></a>已更改问题
 
-对于此问题 "ms-python >= 2020.5.78807 版本在此扩展上不受支持" 已得到解决，现在可以使用 **最新的 ms python 版本** 。
+对于此问题 "ms-python >= 2020.5.78807 版本在此扩展上不受支持"，请立即将 **ms python** 更新到 **最新版本** 。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 01/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 0d93edbefb61cb8ded09f6402ca1e1661429efe1
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ebf967fe02ab6424b9952bb0315b70fadb547fe3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952142"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967761"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro"></a>在 Azure Stack Edge Pro 上管理计算
 
@@ -38,15 +38,15 @@ ms.locfileid: "91952142"
 
 在 Azure 门户中执行以下步骤可以创建触发器。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后切换到 **edge 计算 > 触发器**。 在命令栏上选择“+ 添加触发器”****。
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后跳到 **IoT Edge > 触发器**。 在命令栏上选择“+ 添加触发器”。
 
     ![选择“添加触发器”](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
-2. 在“添加触发器”边栏选项卡中，提供触发器的唯一名称。****
+2. 在“添加触发器”边栏选项卡中，提供触发器的唯一名称。
     
     <!--Trigger names can only contain numbers, lowercase letters, and hyphens. The share name must be between 3 and 63 characters long and begin with a letter or a number. Each hyphen must be preceded and followed by a non-hyphen character.-->
 
-3. 选择触发器的**类型**。 如果该触发器用于响应文件事件，请选择“文件”。**** 如果希望该触发器在定义的时间启动并按指定的重复间隔运行，请选择“计划”。**** 根据所做的选择，屏幕上会显示一组不同的选项。
+3. 选择触发器的 **类型**。 如果该触发器用于响应文件事件，请选择“文件”。 如果希望该触发器在定义的时间启动并按指定的重复间隔运行，请选择“计划”。 根据所做的选择，屏幕上会显示一组不同的选项。
 
     - **文件触发器** - 从下拉列表中选择一个装载的共享。 当此共享中激发文件事件时，该触发器会调用某个 Azure 函数。
 
@@ -58,7 +58,7 @@ ms.locfileid: "91952142"
 
         ![添加 NFS 共享](media/azure-stack-edge-manage-compute/add-scheduled-trigger.png)
 
-4. 选择“添加”**** 以创建该触发器。 此时会显示一条通知，指出正在创建触发器。 创建触发器后，边栏选项卡会更新以反映新的触发器。
+4. 选择“添加”以创建该触发器。 此时会显示一条通知，指出正在创建触发器。 创建触发器后，边栏选项卡会更新以反映新的触发器。
  
     ![更新的触发器列表](media/azure-stack-edge-manage-compute/add-trigger-2.png)
 
@@ -68,15 +68,15 @@ ms.locfileid: "91952142"
 
 1. 在触发器列表中，选择要删除的触发器。
 
-    ![选择触发器](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![选择触发器](media/azure-stack-edge-manage-compute/delete-trigger-1.png)
 
 2. 右键单击，然后选择 " **删除**"。
 
-    ![选择“删除”](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![选择“删除”](media/azure-stack-edge-manage-compute/delete-trigger-2.png)
 
 3. 当系统提示你进行确认时，单击 **“是”**。
 
-    ![确认删除](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![确认删除](media/azure-stack-edge-manage-compute/delete-trigger-3.png)
 
 触发器列表将会更新以反映删除后的结果。
 
@@ -88,11 +88,11 @@ ms.locfileid: "91952142"
 
 在 Azure 门户中执行以下步骤可以查看设备的计算配置。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后中转到 " **边缘计算 > 模块**"。 在命令栏上选择“查看计算”。****
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，并 **IoT Edge > 概述**"。 
 
     ![选择“查看计算”](media/azure-stack-edge-manage-compute/view-compute-1.png)
 
-2. 记下设备上的计算配置。 配置计算时，已创建一个 IoT 中心资源。 在该 IoT 中心资源下，已配置 IoT 设备和 IoT Edge 设备。 仅支持在 IoT Edge 设备上运行 Linux 模块。
+2. 请参阅 " **属性** " 页。 记下设备上的计算配置。 配置计算时，已创建一个 IoT 中心资源。 在该 IoT 中心资源下，已配置 IoT 设备和 IoT Edge 设备。 仅支持在 IoT Edge 设备上运行 Linux 模块。
 
     ![查看配置](media/azure-stack-edge-manage-compute/view-compute-2.png)
 
@@ -101,11 +101,11 @@ ms.locfileid: "91952142"
 
 在 Azure 门户中执行以下步骤可以删除设备的现有 Edge 计算配置。
 
-1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到 " **边缘计算" > "入门**"。 在命令栏上选择“删除计算”。****
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，并 **IoT Edge > 概述**"。 在命令栏上选择 " **删除** "。
 
     ![选择“删除计算”](media/azure-stack-edge-manage-compute/remove-compute-1.png)
 
-2. 删除计算配置后，如果需要再次使用计算，则重新配置设备。 出现确认提示时，选择“是”****。
+2. 删除计算配置后，如果需要再次使用计算，则重新配置设备。 出现确认提示时，选择“是”。
 
     ![选择删除计算2](media/azure-stack-edge-manage-compute/remove-compute-2.png)
 
@@ -119,11 +119,11 @@ ms.locfileid: "91952142"
 
 在 Azure 门户中执行以下步骤可以同步设备的访问密钥。
 
-1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到 " **边缘计算" > "入门**"。 在命令栏上选择“刷新配置”。****
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，并 **IoT Edge > 概述**"。 在命令栏上选择“刷新配置”。
 
     ![选择“刷新配置”](media/azure-stack-edge-manage-compute/refresh-configuration-1.png)
 
-2. 出现确认提示时，选择“是”。****
+2. 出现确认提示时，选择“是”。
 
      ![出现提示时选择“是”](media/azure-stack-edge-manage-compute/refresh-configuration-2.png)
 

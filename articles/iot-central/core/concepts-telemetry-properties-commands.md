@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: c29af68433f29d7bdd363bedfa6d36316b952f4c
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 87fb7f0eb4017a39aca081f73de543a67400d4b5
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795337"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969055"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遥测、属性和命令有效负载
 
@@ -50,7 +50,7 @@ IoT Central 允许查看设备发送到应用程序的原始数据。 此视图�
 
     在此视图中，你可以选择要显示的列，并设置要查看的时间范围。 “未建模数据”列显示设备中与设备模板中的任何属性或遥测定义不匹配的数据。
 
-## <a name="telemetry"></a>遥测技术
+## <a name="telemetry"></a>遥测
 
 ### <a name="primitive-types"></a>基元类型
 
@@ -429,7 +429,7 @@ IoT Central 允许查看设备发送到应用程序的原始数据。 此视图�
 { "IntegerState": 2 }
 ```
 
-## <a name="properties"></a>属性
+## <a name="properties"></a>“属性”
 
 > [!NOTE]
 > 属性的负载格式适用于在07/14/2020 或之后创建的应用程序。
@@ -829,9 +829,6 @@ IoT Central 需要从设备到可写属性更新的响应。 响应消息应包�
 
 ## <a name="commands"></a>命令
 
-> [!NOTE]
-> 在 IoT Central web UI 中，你可以选择 " **脱机时队列** " 选项。 如果从设备模板导出模型或接口，则不包含此设置。
-
 以下来自设备模型的代码段显示了没有参数并且不希望设备返回任何内容的命令的定义：
 
 ```json
@@ -1000,6 +997,91 @@ IoT Central 需要从设备到可写属性更新的响应。 响应消息应包�
 }
 ```
 
+### <a name="offline-commands"></a>脱机命令
+
+在 IoT Central web UI 中，你可以选择 " **脱机时队列** " 选项。 脱机命令是从解决方案发送到设备的单向通知，该通知是在设备连接后立即传递的。 脱机命令可以有请求参数，但不返回响应。
+
+如果从设备模板导出模型或接口，则不包括 **脱机** 设置。 您无法通过查看导出的模型或接口 JSON 来确定命令是脱机命令。
+
+脱机命令使用 [IoT 中心云到设备的消息](../../iot-hub/iot-hub-devguide-messages-c2d.md) 将命令和负载发送到设备。
+
+设备模型中的以下代码片段显示了命令的定义。 该命令具有一个具有 datetime 字段和枚举的对象参数：
+
+```json
+{
+  "@type": "Command",
+  "displayName": {
+    "en": "Generate Diagnostics"
+  },
+  "name": "GenerateDiagnostics",
+  "request": {
+    "@type": "CommandPayload",
+    "displayName": {
+      "en": "Payload"
+    },
+    "name": "Payload",
+    "schema": {
+      "@type": "Object",
+      "displayName": {
+        "en": "Object"
+      },
+      "fields": [
+        {
+          "displayName": {
+            "en": "StartTime"
+          },
+          "name": "StartTime",
+          "schema": "dateTime"
+        },
+        {
+          "displayName": {
+            "en": "Bank"
+          },
+          "name": "Bank",
+          "schema": {
+            "@type": "Enum",
+            "displayName": {
+              "en": "Enum"
+            },
+            "enumValues": [
+              {
+                "displayName": {
+                  "en": "Bank 1"
+                },
+                "enumValue": 1,
+                "name": "Bank1"
+              },
+              {
+                "displayName": {
+                  "en": "Bank2"
+                },
+                "enumValue": 2,
+                "name": "Bank2"
+              },
+              {
+                "displayName": {
+                  "en": "Bank3"
+                },
+                "enumValue": 2,
+                "name": "Bank3"
+              }
+            ],
+            "valueSchema": "integer"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+如果在上一个代码段中的命令的设备模板 UI 中启用了 " **脱机时排队** " 选项，则设备接收的消息包括以下属性：
+
+| 属性名称 | 示例值 |
+| ---------- | ----- |
+| `custom_properties` | `{'method-name': 'GenerateDiagnostics'}` |
+| `data` | `{"StartTime":"2021-01-05T08:00:00.000Z","Bank":2}` |
+
 ## <a name="next-steps"></a>后续步骤
 
-作为一个设备开发人员，现在你已了解设备模板，接下来是了解有关如何将设备注册到 [Azure IoT Central](./concepts-get-connected.md) 的详细信息，以了解有关如何使用 IoT Central 以及 IoT Central 如何保护设备连接的详细信息。
+作为设备开发人员，现在你已了解设备模板，接下来是了解有关如何将设备注册到 [Azure IoT Central](./concepts-get-connected.md) 的详细信息，以了解有关如何使用 IoT Central 注册设备的详细信息，以及 IoT Central 如何保护设备连接。

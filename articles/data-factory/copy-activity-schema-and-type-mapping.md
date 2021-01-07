@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 2b54ee29b1b03bab5af8410a3fae06438180299d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507517"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968868"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>复制活动中的架构和数据类型映射
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +66,7 @@ ms.locfileid: "97507517"
 
 例如，若要将数据从 Salesforce 复制到 Azure SQL 数据库并显式映射三列，请执行以下操作：
 
-1. 在“复制活动”->“映射”选项卡上，单击“导入架构”按钮以导入源架构和接收器架构。
+1. 在 "复制活动-> 映射" 选项卡上，单击 " **导入架构** " 按钮以导入源和接收器架构。
 
 2. 映射所需字段并排除/删除其余字段。
 
@@ -180,7 +180,7 @@ ms.locfileid: "97507517"
 
 可在数据工厂创作 UI 上定义此类映射：
 
-1. 在“复制活动”->“映射”选项卡上，单击“导入架构”按钮以导入源架构和接收器架构。 由于数据工厂在导入架构时会对前几个对象采样，因此如果没有显示任何字段，你可以将其添加到层次结构中的正确层上：将鼠标指针悬停在现有字段名称上，然后选择添加节点、对象或数组。
+1. 在 "复制活动-> 映射" 选项卡上，单击 " **导入架构** " 按钮以导入源和接收器架构。 由于数据工厂在导入架构时会对前几个对象采样，因此如果没有显示任何字段，你可以将其添加到层次结构中的正确层上：将鼠标指针悬停在现有字段名称上，然后选择添加节点、对象或数组。
 
 2. 选择要从中遍历和提取数据的数组。 它将自动填充为“集合引用”。 请注意，此类操作只支持单个数组。
 
@@ -452,7 +452,7 @@ ms.locfileid: "97507517"
 
 可以指定复制活动 -> `translator` -> `schemaMapping`，以便在分层数据和表格形式的数据之间进行映射（例如，将数据从 MongoDB/REST 复制到文本文件以及从 Oracle 复制到 Azure Cosmos DB API for MongoDB）。 复制活动 `translator` 部分支持以下属性：
 
-| 属性            | 说明                                                  | 必须 |
+| 属性            | 说明                                                  | 必需 |
 | :------------------ | :----------------------------------------------------------- | :------- |
 | type                | 复制活动转换器的 type 属性必须设置为：**TabularTranslator** | 是      |
 | schemaMapping       | 键值对的集合，代表 **从源端到接收器端** 的映射关系。<br/>- **键：** 代表源。 对于 **表格源**，指定数据集结构中定义的列名称；对于 **分层源**，指定要提取和映射的每个字段的 JSON 路径表达式。<br>- **值：** 代表接收器。 对于 **表格接收器**，指定数据集结构中定义的列名称；对于 **分层接收器**，指定要提取和映射的每个字段的 JSON 路径表达式。 <br>在使用分层数据时，对于根对象下的字段，JSON 路径以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，JSON 路径以数组元素开头。 | 是      |

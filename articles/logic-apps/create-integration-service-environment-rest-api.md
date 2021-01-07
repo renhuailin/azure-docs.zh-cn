@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/29/2020
-ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 12/30/2020
+ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827472"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967032"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>使用逻辑应用 REST API 创建集成服务环境 (ISE)
 
@@ -25,7 +25,7 @@ ms.locfileid: "97827472"
 * [使用示例 Azure 资源管理器快速入门模板创建 ISE](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
 * [创建支持使用客户管理的密钥来加密静态数据的 ISE](customer-managed-keys-integration-service-environment.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 与在 Azure 门户中创建 ISE 时相同的[先决条件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和[访问要求](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)
 
@@ -121,7 +121,7 @@ ms.locfileid: "97827472"
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
+      // Include `certificates` object to enable self-signed certificate and the certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -185,6 +185,7 @@ ms.locfileid: "97827472"
    }
 }
 ```
+
 ## <a name="add-custom-root-certificates"></a>添加自定义根证书
 
 通常使用 ISE 连接到虚拟网络或本地上的自定义服务。 这些自定义服务通常由自定义根证书颁发机构颁发的证书（例如企业证书颁发机构或自签名证书）所保护。 有关使用自签名证书的详细信息，请参阅 [对其他服务和系统的出站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)。 为了使 ISE 通过传输层安全性 (TLS) 成功连接到这些服务，ISE 需要访问这些根证书。 若要使用自定义受信任的根证书更新 ISE，请发出以下 HTTPS `PATCH` 请求：

@@ -2,19 +2,21 @@
 title: 将 Batch 池配置从云服务迁移到虚拟机
 description: 了解如何将池配置更新为最新的和建议的配置
 ms.topic: how-to
-ms.date: 1/4/2021
-ms.openlocfilehash: 52e1762dc8e81b3eb7e1bce388d91dfd2c76191a
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 1/6/2021
+ms.openlocfilehash: b6f4184f7c4f133f74cb3157638b1621dad25fda
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937565"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969021"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>将 Batch 池配置从云服务迁移到虚拟机
 
 可以使用 [cloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) 或 [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)创建批处理池。 "virtualMachineConfiguration" 是推荐的配置，因为它支持所有批处理功能。 "cloudServiceConfiguration" 池不支持所有功能，并且未计划任何新功能。
 
-如果使用 "cloudServiceConfiguration" 池，强烈建议移动到使用 "virtualMachineConfiguration" 池。 本文介绍如何迁移到建议的 "virtualMachineConfiguration" 配置。
+如果使用 "cloudServiceConfiguration" 池，强烈建议移动到使用 "virtualMachineConfiguration" 池。 这使你可以受益于所有批处理功能，如 [VM 系列](batch-pool-vm-sizes.md)、Linux vm、 [容器](batch-docker-container-workloads.md)、 [Azure 资源管理器虚拟网络](batch-virtual-network.md)和 [节点磁盘加密](disk-encryption.md)的扩展选择。
+
+本文介绍如何迁移到 "virtualMachineConfiguration"。
 
 ## <a name="new-pools-are-required"></a>需要新池
 

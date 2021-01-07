@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/30/2020
+ms.date: 01/07/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: e6591762ed6a7e2b462a209730276f3198d86ae8
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 68547b8fb673cd54b7c21963ede122553bbbc390
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821462"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967117"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
 
@@ -458,34 +458,15 @@ ms.locfileid: "97821462"
 - **原因：** Azure Synapse Analytics 在查询 Azure 存储中的外部表时遇到问题。
 
 - **解决方法**：在 SSMS 中运行同一查询，检查是否看到相同的结果。 如果是，请创建 Azure Synapse Analytics 支持票证，并提供 Azure Synapse Analytics 服务器和数据库名称以进一步排查问题。
-            
-
-### <a name="low-performance-when-load-data-into-azure-sql"></a>将数据加载到 Azure SQL 时性能较低
-
-- **症状**：将数据复制到 Azure SQL 会使速度变慢。
-
-- **原因**：此问题的根本原因主要由 Azure SQL 端的瓶颈触发。 下面是一些可能的原因：
-
-    - Azure DB 层不够高。
-
-    - Azure DB DTU 使用率接近100%。 可以 [监视性能](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) 并考虑升级数据库层。
-
-    - 未正确设置索引。 在数据加载之前删除所有索引，并在加载完成后重新创建它们。
-
-    - WriteBatchSize 不够大，无法容纳架构行大小。 尝试放大此问题的属性。
-
-    - 使用的是存储过程，而不是大容量嵌入，这会使性能更差。 
-
-- **解决方法**：请参阅用于 [复制活动性能](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)的 TSG
 
 
 ### <a name="performance-tier-is-low-and-leads-to-copy-failure"></a>性能层不足，导致复制失败
 
-- **症状**：将数据复制到 Azure SQL 时出现以下错误消息： `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
+- **症状**：将数据复制到 Azure SQL 数据库时出现以下错误消息： `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
 
-- **原因**：正在使用 Azure SQL s1，这种情况下会命中 IO 限制。
+- **原因**：正在使用 Azure SQL 数据库 s1，这种情况下会命中 IO 限制。
 
-- **解决方法**：升级 Azure SQL 性能层以解决此问题。 
+- **解决方法**：升级 Azure SQL 数据库性能层以解决此问题。 
 
 
 ### <a name="sql-table-cannot-be-found"></a>找不到 SQL 表 
@@ -619,31 +600,6 @@ ms.locfileid: "97821462"
 - **原因**： dynamics 服务器 instable 或无法访问或网络出现问题。
 
 - **建议**：检查网络连接或查看 dynamics server 日志以了解更多详细信息。 若要获得更多帮助，请联系 dynamics 支持部门。
-
-
-## <a name="excel-format"></a>Excel 格式
-
-### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>分析大型 Excel 文件时超时或性能降低
-
-- **症状**：
-
-    - 当你创建 Excel 数据集并从连接/存储区导入架构、预览数据、列出或刷新工作表时，如果 Excel 文件大小大，则可能会遇到超时错误。
-
-    - 使用复制活动将数据从大型 Excel 文件复制 ( # B0 = 100 MB) 到其他数据存储时，可能会遇到性能下降或 OOM 问题。
-
-- **原因**： 
-
-    - 对于导入架构、预览数据以及在 excel 数据集上列出工作表这样的操作，超时为100秒，并为静态。 对于大型 Excel 文件，这些操作可能无法在超时值内完成。
-
-    - ADF 复制活动将整个 Excel 文件读入内存，然后查找指定的工作表和单元格以读取数据。 此行为是由基础 SDK ADF 使用的。
-
-- **解决方法**： 
-
-    - 对于导入架构，你可以生成一个较小的示例文件，该文件是原始文件的子集，并选择 "从示例文件导入架构"，而不是 "从连接中导入架构"。
-
-    - 对于列表工作表，在 "工作表" 下拉列表中，可以单击 "编辑"，并改为输入工作表名称/索引。
-
-    - 若要将 ( # B0 100 MB) 的大型 excel 文件复制到其他存储，可以使用运动流式处理读取和执行的数据流 Excel 源。
     
 
 ## <a name="ftp"></a>FTP
