@@ -2,17 +2,17 @@
 title: 导出 Azure 流分析作业 Azure 资源管理器模板
 description: 本文介绍如何导出 Azure 流分析作业的 Azure 资源管理器模板。
 services: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 2afebe61c4b2998692c823e66d8fc73584ec1dc2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: aa17d83dcc14675db5ff6aa4597314baffbffdbb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125642"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015413"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>导出 Azure 流分析作业 Azure 资源管理器模板
 
@@ -24,7 +24,7 @@ ms.locfileid: "93125642"
 
 导出模板之前，必须先在 Visual Studio Code 中打开现有的流分析作业。 
 
-若要将作业导出到本地项目，请在 " **流分析资源管理器** " 的 Azure 门户中找到要导出的作业。 在 " **查询** " 页上，选择 " **在 Visual Studio 中打开** "。 然后选择 **Visual Studio Code** 。
+若要将作业导出到本地项目，请在 " **流分析资源管理器** " 的 Azure 门户中找到要导出的作业。 在 " **查询** " 页上，选择 " **在 Visual Studio 中打开**"。 然后选择 **Visual Studio Code**。
 
 ![Visual Studio Code 中打开流分析作业](./media/resource-manager-export/open-job-vs-code.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "93125642"
 
 接下来，完成 Azure 资源管理模板参数文件。
 
-1. 在 Visual Studio Code 中打开位于流分析作业工作区的 " **部署** " 文件夹中的 *JobTemplate.parameters.js* 文件。
+1. 在 Visual Studio Code 中打开位于流分析作业工作区的 "**部署**" 文件夹中的 *JobTemplate.parameters.js* 文件。
 
 1. 请注意，输入和输出密钥为 null。 将空值替换为输入和输出资源的实际访问密钥。
 
@@ -58,7 +58,7 @@ ms.locfileid: "93125642"
 
 你已准备好使用上一节中生成的 Azure 资源管理器模板部署 Azure 流分析作业。
 
-在 PowerShell 窗口中运行以下命令。 请确保将 *ResourceGroupName* 、 *TemplateFile* 和 *TemplateParameterFile* 与实际资源组名称 reaplce，并将完整的文件路径放到 *JobTemplate.js上* 的，并 *JobTemplate.parameters.js* 作业工作区的 " **部署" 文件夹** 中的文件。
+在 PowerShell 窗口中运行以下命令。 请确保将 *ResourceGroupName*、 *TemplateFile* 和 *TemplateParameterFile* 与实际资源组名称 reaplce，并将完整的文件路径放到 *JobTemplate.js上* 的，并 *JobTemplate.parameters.js* 作业工作区的 " **部署" 文件夹** 中的文件。
 
 如果尚未配置 Azure PowerShell，请按照 [安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)中的步骤进行操作。
 

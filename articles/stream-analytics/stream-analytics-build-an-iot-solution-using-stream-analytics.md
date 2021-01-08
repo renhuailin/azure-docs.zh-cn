@@ -1,19 +1,18 @@
 ---
 title: 使用 Azure 流分析生成 IoT 解决方案
 description: 使用收费站方案了解流分析 IoT 解决方案的入门教程
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 87ec59d19fb442293fb7f14d110cf513015ec9f7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ddec53b18cd6f374a5665298b43b46122bcfa143
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130793"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016144"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析生成 IoT 解决方案
 
@@ -134,7 +133,7 @@ ms.locfileid: "93130793"
 
 9. 选择“购买”以部署示例模板。 
 
-10. 片刻之后，将会显示一条通知来确认 **部署成功** 。
+10. 片刻之后，将会显示一条通知来确认 **部署成功**。
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>查看 Azure 流分析 TollApp 资源
 
@@ -283,7 +282,7 @@ WHERE Registration.Expired = '1'
 ```
 
 ## <a name="scale-out-the-job"></a>横向扩展作业
-Azure 流分析可弹性缩放，因而能够处理大量数据。 Azure 流分析查询可以使用 **PARTITION BY** 子句来告诉系统此步骤会横向扩展。 **PartitionId** 是系统加入以与输入（事件中心）的分区 ID 匹配的特殊列。
+Azure 流分析可弹性缩放，因而能够处理大量数据。 Azure 流分析查询可以使用 **PARTITION BY** 子句来告诉系统此步骤会横向扩展。**PartitionId** 是系统加入以与输入（事件中心）的分区 ID 匹配的特殊列。
 
 若要横向扩展对分区的查询，请将查询语法编辑为以下代码：
 ```sql

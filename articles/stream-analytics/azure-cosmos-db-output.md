@@ -1,18 +1,17 @@
 ---
 title: 来自 Azure 流分析的 Azure Cosmos DB 输出
 description: 本文介绍如何将数据从 Azure 流分析输出到 Azure Cosmos DB。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: a086d9fe150766c6b31210f29bf802a75e0ee4ec
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 9382ac8dc71d1ccb3a85dc0a7a027c8e99296cc6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491726"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016571"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>来自 Azure 流分析的 Azure Cosmos DB 输出
 
@@ -34,12 +33,12 @@ ms.locfileid: "94491726"
 | 帐户 ID | Azure Cosmos DB 帐户的名称或终结点 URI。 |
 | 帐户密钥 | Azure Cosmos DB 帐户的共享访问密钥。 |
 | 数据库 | Azure Cosmos DB 数据库名称。 |
-| 容器名称 | 要使用的容器名称，该名称必须在 Cosmos DB 中存在。 示例：  <br /><ul><li> _MyContainer_ ：名为“MyContainer”的容器必须存在。</li>|
+| 容器名称 | 要使用的容器名称，该名称必须在 Cosmos DB 中存在。 示例：  <br /><ul><li> _MyContainer_：名为“MyContainer”的容器必须存在。</li>|
 | 文档 ID |可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。
 
 ## <a name="partitioning"></a>分区
 
-分区键基于查询中的 PARTITION BY 子句。 输出编写器的数量与[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区一致。 流分析会将 Cosmos DB 输出分区键转换为字符串。 例如，如果分区键的值为 bigint 类型的 1，则它将转换为字符串类型的“1”。 无论是否将分区属性写入 Cosmos DB，都将始终发生此转换。
+分区键基于查询中的 PARTITION BY 子句。 输出编写器的数量与[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区一致。 流分析会将 Cosmos DB 输出分区键转换为字符串。 例如，如果分区键的值为 bigint 类型的 1，则它将转换为字符串类型的“1”。 无论是否将分区属性写入 Cosmos DB，都会发生这种转换。
 
 ## <a name="output-batch-size"></a>输出批大小
 

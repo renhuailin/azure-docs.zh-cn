@@ -1,18 +1,17 @@
 ---
 title: 使用 REST API 实现 Azure IoT Edge 流分析的 CI/CD
 description: 了解如何使用 REST API 实现 Azure 流分析的持续集成和部署管道。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: su-jie
+ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: a7e56758a1a76933d6bb18883aa15ce33ce2e89e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3c3f776ad0996fa0b7422f0fca2d899a35e853d1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130912"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016127"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>使用 API 实现 IoT Edge 流分析的 CI/CD
 
@@ -59,7 +58,7 @@ echo $response
 |------|-----------|
 |PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
-使用 curl 的命令示例  ：
+使用 curl 的命令示例：
 
 ```curl
 curl -u { <username:password> } -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
@@ -148,7 +147,7 @@ JSON 中的请求正文示例：
 
 在作业成功发布前，此异步操作会返回状态 202。 位置响应标头包含用于获取进程状态的 URI。 进程正在运行时，若调用位置标头中的 URI，则会返回状态 202。 进程结束时，位置标头中的 URI 会返回状态 200。 
 
-使用 curl 的 Edge 程序包发布调用示例  ： 
+使用 curl 的 Edge 程序包发布调用示例： 
 
 ```bash
 curl -d -X POST https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}/publishedgepackage?api-version=2017-04-01-preview
@@ -163,7 +162,7 @@ https://management.azure.com/subscriptions/{**subscriptionid**}/resourcegroups/{
 ```
 在运行以下命令前等待一到两分钟，先通过在响应的 HEAD 中发现的 URL 调用 API。 如果未获得 200 响应，请重新运行该命令。
  
-使用 curl 通过返回的 URL 调用 API 的示例  ：
+使用 curl 通过返回的 URL 调用 API 的示例：
 
 ```bash
 curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{resourcename}/publishedgepackage?api-version=2017-04-01-preview 

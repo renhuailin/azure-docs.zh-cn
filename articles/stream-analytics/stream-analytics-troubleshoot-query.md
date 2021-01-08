@@ -1,19 +1,18 @@
 ---
 title: Azure 流分析查询的故障排除
 description: 本文介绍对 Azure 流分析作业中的查询进行故障排除的技巧。
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: ef03560cff704255d2779a747d124e0b39a1c657
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 0dc36b817d5b5cdf731edecd64e1879c153d866a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491301"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015124"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure 流分析查询的故障排除
 
@@ -51,7 +50,7 @@ ms.locfileid: "94491301"
 
 确保利用 Azure 流分析中的并行化。 可以学习通过配置输入分区和调整分析查询定义来[使用查询并行化对流分析作业进行缩放](stream-analytics-parallelization.md)。
 
-如果资源利用率持续超过80%，则水位线延迟会上升，而囤积事件的数量会增加，因此请考虑增加流式处理单位。 "高使用率" 指示作业使用接近分配的最大资源数。
+如果资源利用率始终超过 80%，则水印延迟增加，积压事件的数量增加，请考虑增加流单元。 高利用率指示作业使用接近分配的最大资源。
 
 ## <a name="debug-queries-progressively"></a>逐步调试查询
 

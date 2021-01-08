@@ -1,22 +1,31 @@
 ---
-title: Azure ExpressRoute：配置 ExpressRoute 直接
-description: 了解如何使用 Azure PowerShell 将 Azure ExpressRoute 直接配置为直接连接到 Microsoft 全球网络。
+title: Azure ExpressRoute：配置 ExpressRoute Direct
+description: 了解如何使用 Azure PowerShell 将 Azure ExpressRoute Direct 配置为直接连接到 Microsoft 全球网络。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: a450c4057b4639206fd1db4b7f44d27c69441f7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 964af92006aad7b5ce8bdf25a332cbcf9c7ef144
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569847"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014512"
 ---
-# <a name="how-to-configure-expressroute-direct"></a>如何配置 ExpressRoute 直接
+# <a name="how-to-configure-expressroute-direct"></a>如何配置 ExpressRoute Direct
 
-ExpressRoute Direct 使你能够通过战略分散在世界各地的对等互连位置直接连接到 Microsoft 的全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct](expressroute-erdirect-about.md)。
+使用 ExpressRoute Direct，可以直接连接到 Microsoft 战略性分布在全球的对等互连位置的的全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct](expressroute-erdirect-about.md)。
+
+## <a name="before-you-begin"></a>在开始之前
+
+需要先注册订阅，然后才能使用 ExpressRoute Direct。 若要注册，请使用你的订阅 ID 向 <ExpressRouteDirect@microsoft.com> 发送一封电子邮件，其中包括以下详细信息：
+
+* 需通过 **ExpressRoute Direct** 完成的方案
+* 位置首选项 - 请参阅[合作伙伴和对等互连位置](expressroute-locations-providers.md)，获取包含所有位置的完整列表
+* 实现的时间线
+* 其他问题
 
 ## <a name="create-the-resource"></a><a name="resources"></a>创建资源
 
@@ -28,7 +37,7 @@ ExpressRoute Direct 使你能够通过战略分散在世界各地的对等互连
    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
    
-2. 将你的订阅重新注册到 Microsoft 以访问 expressrouteportslocation 和 expressrouteport Api。
+2. 将你的订阅重新注册到 Microsoft.Network 以访问 expressrouteportslocation 和 expressrouteport API。
 
    ```powershell
    Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
@@ -155,9 +164,9 @@ ExpressRoute Direct 使你能够通过战略分散在世界各地的对等互连
    Circuits                   : []
    ```
 
-## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a> (LOA 生成授权信) 
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>生成授权信 (LOA)
 
-引用最近创建的 ExpressRoute 直接资源，输入要将 LOA 写入的客户名称，并 (可以选择) 定义用于存储文档的文件位置。 如果未引用文件路径，则文档将下载到当前目录。
+引用最近创建的 ExpressRoute Direct 资源，输入客户名称以将 LOA 写入其中，并（可选）定义用于存储文档的文件位置。 如果未引用文件路径，则文档将下载到当前目录。
 
   ```powershell 
    New-AzExpressRoutePortLOA -ExpressRoutePort $ERDirect -CustomerName TestCustomerName -Destination "C:\Users\SampleUser\Downloads" 
@@ -242,11 +251,11 @@ ExpressRoute Direct 使你能够通过战略分散在世界各地的对等互连
 
 默认情况下，可以在 ExpressRoute Direct 资源所在的订阅中创建 10 条线路。 此限制可以通过支持来提高。 你负责跟踪预配的和已利用的带宽。 预配的带宽是 ExpressRoute Direct 资源上所有线路的带宽总和，已利用的带宽是基础物理接口的物理利用率。
 
-还可以通过 ExpressRoute 直接使用其他线路带宽，以仅支持上述方案。 这些带宽为 40 Gbps 和 100 Gbps。
+有额外的线路带宽可以在 ExpressRoute Direct 上使用，仅用于支持上面概述的场景。 这些带宽为 40 Gbps 和 100 Gbps。
 
-**SkuTier** 可以是本地、标准或高级。
+SkuTier 可以为“本地”、“标准”或“高级”。
 
-**SkuFamily** 只能为 MeteredData。 ExpressRoute 直接不支持无限制。
+SkuFamily 只能为 MeteredData。 ExpressRoute Direct 不支持“无限制”。
 
 在 ExpressRoute Direct 资源上创建一个线路。
 
@@ -290,4 +299,4 @@ ExpressRoute Direct 使你能够通过战略分散在世界各地的对等互连
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 ExpressRoute Direct 的详细信息，请参阅 [概述](expressroute-erdirect-about.md)。
+有关 ExpressRoute Direct 的详细信息，请参阅[概述](expressroute-erdirect-about.md)。

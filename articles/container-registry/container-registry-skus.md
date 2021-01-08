@@ -1,14 +1,14 @@
 ---
 title: 注册表服务层级和功能
-description: 了解 Azure 容器注册表的“基本”、“标准”和“高级”服务层级 (SKU) 中的功能和限制。
+description: 了解 Azure 容器注册表 (Sku) 的基本、标准和高级服务层)  (配额的功能和限制。
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: e2a5ad52775e9000aa0beb0a926d809da1c5a0e0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b55fc16dcd6dcb544ed4597ce4bdc6ba17b52646
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048468"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015652"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure 容器注册表服务层级
 
@@ -24,13 +24,15 @@ Azure 容器注册表分为多个服务层级（也称为 SKU）。 这些层级
 
 ## <a name="service-tier-features-and-limits"></a>服务层级功能和限制
 
-下表详细介绍了基本、标准和高级服务层的功能和注册表限制。
+下表详细介绍了“基本”、“标准”和“高级”服务层级的功能和注册表限制。
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 
 ## <a name="changing-tiers"></a>更改层级
 
-可以通过 Azure CLI 或在 Azure 门户中更改注册表的服务层级。 你可以自由地在各种层级之间切换，只要你要切换到的层级具有所需的最大存储容量即可。 
+可以通过 Azure CLI 或在 Azure 门户中更改注册表的服务层级。 只要你要切换到的层具有所需的最大存储容量，你就可以在各层之间自由移动。 
+
+在服务层间移动时，无需对注册表操作造成任何影响。
 
 ### <a name="azure-cli"></a>Azure CLI
 

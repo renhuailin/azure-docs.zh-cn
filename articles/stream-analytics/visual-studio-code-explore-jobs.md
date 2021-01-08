@@ -2,16 +2,16 @@
 title: 在 Visual Studio Code 中探索 Azure 流分析作业
 description: 本文介绍如何将 Azure 流分析作业导出到本地项目、列出作业和查看作业实体。
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: su-jie
+ms.author: sujie
 ms.date: 05/15/2019
 ms.topic: how-to
-ms.openlocfilehash: 4b4ddd7db4891c642ec2002bbe992314fe67a20f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f1c0650820a419275ade6095344033b6d81a568
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891978"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013866"
 ---
 # <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>使用 Visual Studio Code（预览版）浏览 Azure 流分析
 
@@ -23,7 +23,7 @@ ms.locfileid: "90891978"
 
 ## <a name="export-a-job-to-a-local-project"></a>将作业导出到本地项目
 
-若要将作业导出到本地项目，请在 Visual Studio Code 的**流分析资源管理器**中找到要导出的作业。 然后为项目选择一个文件夹。 项目会导出到你选择的文件夹，你可以继续从 Visual Studio Code 管理该作业。 有关使用 Visual Studio Code 管理流分析作业的详细信息，请参阅 Visual Studio Code [快速入门](quick-create-visual-studio-code.md)。
+若要将作业导出到本地项目，请在 Visual Studio Code 的 **流分析资源管理器** 中找到要导出的作业。 然后为项目选择一个文件夹。 项目会导出到你选择的文件夹，你可以继续从 Visual Studio Code 管理该作业。 有关使用 Visual Studio Code 管理流分析作业的详细信息，请参阅 Visual Studio Code [快速入门](quick-create-visual-studio-code.md)。
 
 ![在 Visual Studio Code 中导出 ASA 作业](./media/vscode-explore-jobs/export-job.png)
 

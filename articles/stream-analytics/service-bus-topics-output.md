@@ -1,18 +1,17 @@
 ---
 title: 来自 Azure 流分析的服务总线主题输出
 description: 本文介绍作为 Azure 流分析的输出的服务总线主题。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: c578febf088148e9e0496d87b715c953c5bd9d36
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 584d73acf36d22f59fbbcb6dff8b2f53cbc7437d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348366"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014172"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>来自 Azure 流分析的服务总线主题输出
 
@@ -37,17 +36,17 @@ ms.locfileid: "93348366"
 
 ## <a name="partitioning"></a>分区
 
-自动选择分区。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。 输出写入器的数量与输出主题中的分区数相同。
+分区是自动选择的。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。 输出写入器的数量与输出主题中的分区数相同。
 
 ## <a name="output-batch-size"></a>输出批大小
 
-对于标准层，每条消息的最大消息大小为 256 KB，对于高级层则为 1MB。 有关详细信息，请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 若要优化，请对每条消息使用单个事件。
+标准层的每条消息的最大消息大小为 256 KB，高级层则为 1 MB。 有关详细信息，请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 若要进行优化，请对每条消息使用单个事件。
 
 ## <a name="custom-metadata-properties-for-output"></a>输出的自定义元数据属性
 
 可将查询列作为用户属性附加到传出的消息。 这些列不会进入有效负载。 这些属性以字典形式在输出消息中提供。 键是列名，值是属性字典中的列值。  支持除“记录”和“数组”以外的其他所有流分析数据类型。
 
-在以下示例中，字段 `DeviceId` 和 `DeviceStatus` 添加到了元数据。
+在以下示例中，字段 `DeviceId` 和 `DeviceStatus` 将添加到元数据中。
 
 1. 使用以下查询：
 
@@ -59,7 +58,7 @@ ms.locfileid: "93348366"
 
    :::image type="content" source="media/service-bus-topics-output/property-columns.png" alt-text="属性列":::
 
-下图显示了在事件中心使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)检查的预期输出消息属性。
+下图显示了在事件中心使用 [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) 检查的预期输出消息属性。
 
 :::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="事件自定义属性":::
 
@@ -76,7 +75,7 @@ ms.locfileid: "93348366"
 * 键和值必须是字符串。
 * 键是系统属性名称，值是查询列名。
 * 键和值以冒号分隔。
-* 每个键值对以逗号分隔。
+* 每个键/值对用逗号分隔。
 
 下面展示了如何使用此属性 –
 

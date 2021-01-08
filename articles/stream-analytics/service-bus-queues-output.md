@@ -1,18 +1,17 @@
 ---
 title: 服务总线队列：Azure 流分析输出
 description: 本文介绍作为 Azure 流分析输出的服务总线队列。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 3527bdbbf1ba337d24dc390f97ed090c8dfbe039
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 9f71a0f9c6d3fdca4b81be3a69479c78236fcc31
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348383"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014206"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>服务总线队列：Azure 流分析输出
 
@@ -83,7 +82,7 @@ ms.locfileid: "93348383"
 * 键和值必须是字符串。
 * 键是系统属性名称，值是查询列名。
 * 键和值以冒号分隔。
-* 每个键值对以逗号分隔。
+* 每个键/值对用逗号分隔。
 
 下面展示了如何使用此属性 –
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 05258e201c65138e53e861f0631eb33e08c9c199
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 391febcf8852147aedf5ef61d2442b2f50b4c9ae
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673599"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014733"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>将 JavaScript 单页应用从隐式授权迁移到授权代码流
 
@@ -41,18 +41,18 @@ MSAL.js 2.x 支持浏览器中的授权代码流（而不是隐式授权流）�
 
 对于当前配置了 Web 平台重定向 URI 的应用注册，请按照以下步骤进行操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“Azure Active Directory”租户。
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span></a>并选择 **Azure Active Directory** 租户。
 1. 在“应用注册”中，选择应用程序，然后选择“身份验证” 。
 1. 在 Web 平台磁贴下的“重定向 URI”中，选择指示“应该迁移 URI”的警告横幅 。
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Azure 门户中 Web 应用磁贴上的隐式流警告横幅":::
 1. 仅选择对应的应用程序将使用 MSAL.js 2.x 的重定向 URI，然后选择“配置”。
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Azure 门户中 Web 应用磁贴上的隐式流警告横幅":::
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="在 Azure 门户的 SPA 窗格中选择重定向 URI 窗格":::
 
 这些重定向 URI 现在应会在“单页应用程序”平台磁贴中显示，其中显示为这些 URI 启用了具有 PKCE 和 CORS 支持的授权代码流。
 
-:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Azure 门户中 Web 应用磁贴上的隐式流警告横幅":::
+:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Azure 门户中的应用注册中的单页应用程序磁贴":::
 
 还可以[创建新的应用注册](scenario-spa-app-registration.md)而不是更新现有注册中的重定向 URI。
 

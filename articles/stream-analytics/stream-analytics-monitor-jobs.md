@@ -3,17 +3,16 @@ title: 以编程方式监视和管理 Azure 流分析作业
 description: 本文说明如何以编程方式监视通过 REST API、Azure SDK 或 PowerShell 创建的流分析作业。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c746e409964b4625a4c9921d9f02ca0c9730a35
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: dda1b6b652870440e7228e6640bb555f4c2e4a63
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123440"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015070"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以编程方式创建流分析作业监视器
 
@@ -139,7 +138,7 @@ ms.locfileid: "93123440"
 以下代码为 **现有** 流分析作业启用监视功能。 代码的第一部分针对流分析服务执行 GET 请求，目的是检索特定流分析作业的信息。 它使用“ID”属性（从 GET 请求检索而得）作为代码第二部分中 Put 方法的参数，该方法将 PUT 请求发送到 Insights 服务以为流分析作业启用监视功能。
 
 > [!WARNING]
-> 如果此前为其他流分析作业启用了监视功能，那么不管是通过 Azure 门户进行还是通过以下代码以编程方式完成， **我们都建议提供在之前启用监视功能时所使用的同一个存储帐户名称。**
+> 如果此前为其他流分析作业启用了监视功能，那么不管是通过 Azure 门户进行还是通过以下代码以编程方式完成，**我们都建议提供在之前启用监视功能时所使用的同一个存储帐户名称。**
 > 
 > 存储帐户将链接到创建流分析作业时所在的区域，并不特定于作业本身。
 > 

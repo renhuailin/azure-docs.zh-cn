@@ -3,22 +3,21 @@ title: 自动缩放流分析作业
 description: 本文介绍如何根据预定义计划或作业指标值自动缩放流分析作业
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/03/2020
-ms.openlocfilehash: 8e5bcdaeaf1ec99387a708199f4353736b6bc60f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a8e089e302e9d40c69cf7ff2a3480c17894e1463
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129841"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016280"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>使用 Azure 自动化服务自动缩放流分析作业
 
 可以通过配置自动缩放来优化流分析作业的成本。 自动缩放可根据输入负载的变化增加或减少作业的流单元 (SU)。 你可以根据需要纵向扩展或纵向缩减，而不必过度预配作业。 可通过两种方式将作业配置为自动进行缩放：
-1. 如果输入负载可预测，则 **预定义计划** 。 例如，你预计白天发生输入事件的几率更高，并且你希望使用更多 SU 来运行作业。
-2. 如果输入负载不可预测，则 **根据作业指标触发纵向扩展和纵向缩减操作** 。 可以根据作业指标（例如输入事件数或积压的输入事件数）动态更改 SU 的数量。
+1. 如果输入负载可预测，则 **预定义计划**。 例如，你预计白天发生输入事件的几率更高，并且你希望使用更多 SU 来运行作业。
+2. 如果输入负载不可预测，则 **根据作业指标触发纵向扩展和纵向缩减操作**。 可以根据作业指标（例如输入事件数或积压的输入事件数）动态更改 SU 的数量。
 
 ## <a name="prerequisites"></a>先决条件
 在开始为作业配置自动缩放之前，请完成以下步骤。

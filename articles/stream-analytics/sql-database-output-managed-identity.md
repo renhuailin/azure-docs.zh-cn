@@ -1,17 +1,17 @@
 ---
 title: 使用托管标识来访问 Azure SQL 数据库或 Azure Synapse Analytics-Azure 流分析
 description: 本文介绍如何使用托管标识对 azure SQL 数据库或 Azure Synapse Analytics 输出的 Azure 流分析作业进行身份验证。
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: ee617b50d85f611e130ec5533239c8924efecc6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 244f8a446e33102e018881b3ec8f32ba9d8cbcc6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352178"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014139"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>使用托管标识从 Azure 流分析作业中访问 Azure SQL 数据库或 Azure Synapse Analytics (预览) 
 
@@ -73,7 +73,7 @@ Azure 流分析支持 Azure SQL 数据库和 Azure Synapse Analytics 输出接�
 
    ![添加 Active Directory 管理员](./media/sql-db-output-managed-identity/add-admin.png)
 
-   “Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 不能选择灰显的用户或组，因为它们不受 Azure Active Directory 管理员的支持。 请参阅在 **Azure Active Directory Features and Limitations**    [使用 SQL 数据库或 Azure Synapse 进行身份验证时使用 Azure Active Directory 身份验证](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations)的 Azure Active Directory 功能和限制部分中受支持的管理员列表。 Azure RBAC)  (基于角色的访问控制仅适用于该门户，不会传播到 SQL Server。 此外，所选用户或组是将能够在下一个部分创建“包含数据库用户”的用户。
+   “Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 不能选择灰显的用户或组，因为它们不受 Azure Active Directory 管理员的支持。 请参阅在 ****    [使用 SQL 数据库或 Azure Synapse 进行身份验证时使用 Azure Active Directory 身份验证](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations)的 Azure Active Directory 功能和限制部分中受支持的管理员列表。 Azure RBAC)  (基于角色的访问控制仅适用于该门户，不会传播到 SQL Server。 此外，所选用户或组是将能够在下一个部分创建“包含数据库用户”的用户。
 
 1. 在“Active Directory 管理员”页中，选择“保存”。 更改管理员的过程只需要几分钟。
 

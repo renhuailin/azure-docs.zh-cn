@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 46781edad6ad9290932216b9e9f23a359d25497a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 284ab3a2aabb2395636982237159117a10151019
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366150"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014937"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -75,7 +75,7 @@ ms.locfileid: "92366150"
 
 我们直接介绍如何创建标识。 如果遇到问题，请查看[所需权限](#permissions-required-for-registering-an-app)，确保帐户可以创建标识。
 
-1. 通过 [Azure 门户](https://portal.azure.com)登录到 Azure 帐户。
+1. 通过<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>登录到 Azure 帐户。
 1. 选择“Azure Active Directory” 。
 1. 选择“应用注册” 。
 1. 选择“新注册”。
@@ -107,7 +107,7 @@ ms.locfileid: "92366150"
 
    ![选择要分配给应用程序的角色](./media/howto-create-service-principal-portal/select-role.png)
 
-1. 选择“保存”完成角色分配。 应用程序会显示在其角色对应于该范围的用户的列表中。
+1. 选择“保存”  完成角色分配。 应用程序会显示在其角色对应于该范围的用户的列表中。
 
 服务主体已设置完毕。 可以开始使用它运行脚本或应用。 若要管理服务主体（权限、用户同意权限、查看已同意的用户、查看权限、查看登录信息等），请访问“企业应用程序”。
 
@@ -181,7 +181,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 ## <a name="configure-access-policies-on-resources"></a>在资源上配置访问策略
 请记住，可能需要对应用程序需要访问的资源配置附加权限。 例如，你还必须[更新密钥保管库的访问策略](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)，以使应用程序能够访问密钥、机密或证书。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，导航到密钥保管库并选择“访问策略”。
+1. 在 <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure 门户</a>中，导航到密钥保管库，然后选择 "**访问策略**"。
 1. 选择“添加访问策略”，然后选择要授予应用程序的密钥、机密和证书权限。  选择之前创建的服务主体。
 1. 选择“添加”以添加访问策略，然后选择“保存”以提交更改。
     ![添加访问策略](./media/howto-create-service-principal-portal/add-access-policy.png)

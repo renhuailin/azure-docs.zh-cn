@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: b327facc2ac9ad64cf5237ecddc3e4024f75daa6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b5a228c12cfc874673dda854de6d4dcc25f28c1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052131"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014529"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>什么是 Azure 媒体服务视频索引器？
 
@@ -76,7 +76,7 @@ ms.locfileid: "90052131"
 
 * **音频听录**：将语音转换为 12 种语言的文本并允许扩展。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（普通话）、日语、阿拉伯语、俄语、葡萄牙语、印地语和韩语。
 * **自动语言检测**：自动识别主导性的讲述语言。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（普通话）、日语、俄语和葡萄牙语。 如果无法准确识别语言，视频索引器会假定所讲语言为英语。 有关详细信息，请参阅[语言识别模型](language-identification-model.md)。
-* 多语言语音识别和转录（预览版）：自动识别音频中不同片段的话语。 它会发送要转录的媒体文件的每个片段，然后将转录合并成一个完成的转录。 有关详细信息，请参阅[自动识别和转录多语言内容](multi-language-identification-transcription.md)。
+* **多语言语音识别和脚本**：自动标识音频中不同段的口述语言。 它会发送要转录的媒体文件的每个片段，然后将转录合并成一个完成的转录。 有关详细信息，请参阅[自动识别和转录多语言内容](multi-language-identification-transcription.md)。
 * **隐藏式字幕**：以三种格式创建隐藏式字幕：VTT、TTML、SRT。
 * **双通道处理**：自动检测单独的脚本并合并到单个时间轴。
 * **噪声消减**：清理电话音频或有噪音的录制内容（基于 Skype 滤波器）。

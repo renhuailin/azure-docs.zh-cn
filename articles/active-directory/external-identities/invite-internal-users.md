@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75839893d0048841440f2c790df7d23ad825d962
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 8acc547552cecaebb60888bb7b9777f6279b9b7c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093462"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015753"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>邀请内部用户进行 B2B 协作
 
@@ -44,8 +44,7 @@ ms.locfileid: "97093462"
 
 可以使用 PowerShell 或邀请 API 将 B2B 邀请发送给内部用户。 请确保要用于邀请的电子邮件地址设置为内部用户对象上的外部电子邮件地址。
 
-- 对于仅限云的用户，请在邀请的 User.othermails 属性中使用电子邮件地址。
-- 对于本地同步的用户，你必须使用该邀请的 User. Mail 属性中的值。
+- 您必须使用该邀请的 User. Mail 属性中的电子邮件地址。
 - 用户的 Mail 属性中的域必须与他们用来登录的帐户相匹配。 否则，某些服务（例如团队）将无法对用户进行身份验证。
 
 默认情况下，邀请会向用户发送一封电子邮件，告知他们已被邀请，但你可以禁止发送此电子邮件并改为发送你自己的电子邮件。

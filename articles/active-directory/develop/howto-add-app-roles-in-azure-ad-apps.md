@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bae8f0955ef45e21d38797789bdea4f62bf5ea28
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b2ac90334ade52d68c775d9db5a84545774f3844
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614925"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013696"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -49,7 +49,7 @@ ms.locfileid: "97614925"
 
 若要使用 Azure 门户的用户界面创建应用角色，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含要向其添加应用角色的应用注册的 Azure Active Directory 租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册”，然后选择要在其中定义应用角色的应用程序 。
@@ -74,7 +74,7 @@ ms.locfileid: "97614925"
 
 如需通过直接编辑清单来添加角色，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含要向其添加应用角色的应用注册的 Azure Active Directory 租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册”，然后选择要在其中定义应用角色的应用程序 。
@@ -136,7 +136,7 @@ ms.locfileid: "97614925"
 
 若要使用 Azure 门户将用户和组分配给角色，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 在 Azure Active Directory 的左侧导航菜单中选择“企业应用程序” 。
 1. 选择“所有应用程序”，查看所有应用程序的列表。 如果应用程序未显示在列表中，请使用“所有应用程序”列表顶部的筛选器来限制此列表，或者在列表中向下滚动寻找你的应用程序。
 1. 选择一个应用程序，以便在其中为角色分配用户或安全组。
@@ -158,7 +158,7 @@ ms.locfileid: "97614925"
 
 若要使用 Azure 门户将应用角色分配给应用程序，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 在 Azure Active Directory 的左侧导航菜单中，选择“应用注册” 。
 1. 选择“所有应用程序”，查看所有应用程序的列表。 如果应用程序未显示在列表中，请使用“所有应用程序”列表顶部的筛选器来限制此列表，或者在列表中向下滚动寻找你的应用程序。
 1. 选择要向其分配应用角色的应用程序。

@@ -12,12 +12,12 @@ ms.date: 1/05/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 4674fe41a0e3d63ef0cadc6ad55eca02fc69618e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: fd3e4a4442f7da89ffee1557e7d908db805931ed
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935897"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014858"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用提供可选声明
 
@@ -136,8 +136,8 @@ V2 令牌格式的某些改进可用于使用 v1 令牌格式的应用，因为�
 
 可以通过 UI 或应用程序清单来配置应用程序的可选声明。
 
-1. 转到 [Azure 门户](https://portal.azure.com)。 
-1. 搜索并选择“Azure Active Directory”。
+1. 请参阅<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 
+1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册”。 
 1. 在列表中选择要为其配置可选声明的应用程序。
 
@@ -149,7 +149,7 @@ V2 令牌格式的某些改进可用于使用 v1 令牌格式的应用，因为�
 1. 选择“添加可选声明”。
 1. 选择要配置的令牌类型。
 1. 选择要添加的可选声明。
-1. 选择 **添加** 。
+1. 选择“添加”  。
 
 > [!NOTE]
 > 当前在 Azure AD B2C 租户中注册的应用程序的 UI 选项 **标记配置** 边栏选项卡不可用。 对于在 B2C 租户中注册的应用程序，可以通过修改应用程序清单来配置可选声明。 有关详细信息，请参阅 [在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入](../../active-directory-b2c/configure-user-input.md) 
@@ -245,7 +245,7 @@ V2 令牌格式的某些改进可用于使用 v1 令牌格式的应用，因为�
 
 **通过 UI 配置组可选声明：**
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册”。 
@@ -258,7 +258,7 @@ V2 令牌格式的某些改进可用于使用 v1 令牌格式的应用，因为�
 
 **通过应用程序清单配置组可选声明：**
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在列表中选择要为其配置可选声明的应用程序。
@@ -302,7 +302,7 @@ V2 令牌格式的某些改进可用于使用 v1 令牌格式的应用，因为�
     }
     ```
 
-   | 可选声明架构 | 值 |
+   | 可选声明架构 | Value |
    |----------|-------------|
    | **name：** | 必须是“groups” |
    | **source：** | 未使用。 省略或指定 null |
@@ -389,7 +389,7 @@ V2 令牌格式的某些改进可用于使用 v1 令牌格式的应用，因为�
 
 **UI 配置：**
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 
 1. 搜索并选择“Azure Active Directory”  。
@@ -412,7 +412,7 @@ V2 令牌格式的某些改进可用于使用 v1 令牌格式的应用，因为�
 
 **清单配置：**
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在列表中找到要为其配置可选声明的应用程序并选择它。

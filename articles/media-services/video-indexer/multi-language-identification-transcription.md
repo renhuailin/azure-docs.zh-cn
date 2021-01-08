@@ -10,14 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
-ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 657ccafa0e7b7f640122fd6b397b3fa2a7c5f0fc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72968739"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015549"
 ---
-# <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a> (预览自动识别和转录多语言内容) 
+# <a name="automatically-identify-and-transcribe-multi-language-content"></a>自动识别和转录多语言内容
 
 视频索引器支持自动语言标识和在多语言内容中进行脚本。 此过程涉及在音频中自动识别不同段中的口述语言，发送要转录的媒体文件的每个段并将其合并回一个统一脚本。 
 

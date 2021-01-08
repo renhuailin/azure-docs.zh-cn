@@ -1,17 +1,17 @@
 ---
 title: Azure 流分析兼容性级别
 description: 了解如何设置 Azure 流分析作业的兼容性级别，并了解最新兼容性级别中的重大更改
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8105988cd2036f44d214befad3365cf9ee96ee0d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348927"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015974"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
 
@@ -53,7 +53,7 @@ Azure 流分析目前支持三种兼容性级别：
 
 ###  <a name="amqp-messaging-protocol"></a>AMQP 消息传递协议
 
-**1.2 级别** ：Azure 流分析使用 [高级消息队列协议 (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) 消息传递协议将内容写入服务总线队列和主题。 通过 AMQP 可使用开放标准协议构建跨平台的混合应用程序。
+**1.2 级别**：Azure 流分析使用 [高级消息队列协议 (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) 消息传递协议将内容写入服务总线队列和主题。 通过 AMQP 可使用开放标准协议构建跨平台的混合应用程序。
 
 ### <a name="geospatial-functions"></a>地理空间函数
 

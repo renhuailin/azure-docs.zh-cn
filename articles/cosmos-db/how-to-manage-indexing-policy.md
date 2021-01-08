@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: cd51210a64223fab5d2d48a91bd3d0a6521a9627
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8d52f8c59e83a4aae8724100770965f756a439fb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341308"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015685"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "93341308"
 
 下面是以 [JSON 格式](index-policy.md#include-exclude-paths)显示的一些索引策略示例，该格式是在 Azure 门户上公开索引策略的方式。 可以通过 Azure CLI 或任何 SDK 设置相同的参数。
 
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>用以有选择地排除某些属性路径的选择退出策略
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a><a id="range-index"></a>用以有选择地排除某些属性路径的选择退出策略
 
 ```json
     {
@@ -48,7 +48,7 @@ ms.locfileid: "93341308"
     }
 ```
 
-此索引策略等同于下面的手动将 ```kind```、```dataType``` 和 ```precision``` 设置为默认值的策略。 这些属性不再需要显式设置，你应完全从索引策略中省略它们 (如以上示例) 中所示。
+此索引策略等同于下面的手动将 ```kind```、```dataType``` 和 ```precision``` 设置为默认值的策略。 这些属性不再需要显式设置，应在索引策略中完全省略它们（如上例所示）。
 
 ```json
     {
@@ -102,7 +102,7 @@ ms.locfileid: "93341308"
     }
 ```
 
-此索引策略等同于下面的手动将 ```kind```、```dataType``` 和 ```precision``` 设置为默认值的策略。 这些属性不再需要显式设置，你应完全从索引策略中省略它们 (如以上示例) 中所示。
+此索引策略等同于下面的手动将 ```kind```、```dataType``` 和 ```precision``` 设置为默认值的策略。 这些属性不再需要显式设置，应在索引策略中完全省略它们（如上例所示）。
 
 ```json
     {
@@ -144,9 +144,9 @@ ms.locfileid: "93341308"
 ```
 
 > [!NOTE]
-> 通常建议使用 **选择退出** 索引策略，让 Azure Cosmos DB 主动为可添加到数据模型中的任何新属性编制索引。
+> 通常情况下，建议使用“选择退出”索引策略来让 Azure Cosmos DB 主动为可能会添加到数据模型的任何新属性编制索引。
 
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>仅在特定属性路径上使用空间索引
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a><a id="spatial-index"></a>仅在特定属性路径上使用空间索引
 
 ```json
 {
@@ -176,9 +176,9 @@ ms.locfileid: "93341308"
 }
 ```
 
-## <a name="composite-indexing-policy-examples"></a>组合索引策略示例
+## <a name="composite-indexing-policy-examples"></a><a id="composite-index"></a>组合索引策略示例
 
-除了包含或排除各属性的路径，还可以指定一个组合索引。 如果要执行具有针对多个属性的 `ORDER BY` 子句的查询，需要使用这些属性上的[组合索引](index-policy.md#composite-indexes)。 此外，对于具有多个筛选器或筛选器和 ORDER BY 子句的查询，复合索引将具有性能优势。
+除了包含或排除各属性的路径，还可以指定一个组合索引。 如果要执行具有针对多个属性的 `ORDER BY` 子句的查询，需要使用这些属性上的[组合索引](index-policy.md#composite-indexes)。 此外，对于具有多个筛选器或同时具有筛选器和 ORDER BY 子句的查询，组合索引会有性能优势。
 
 > [!NOTE]
 > 组合路径具有隐式 `/?`，因为仅索引该路径上的标量值。 组合路径中不支持使用 `/*` 通配符。 不应在组合路径中指定 `/?` 或 `/*`。
@@ -315,7 +315,7 @@ WHERE c.name = "Tim" AND c.age > 18
 
 ### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>排除所有属性路径，但使索引保持活动状态
 
-此策略可用于以下情况： [生存时间 (TTL) 功能](time-to-live.md) 处于活动状态，但不需要额外的索引 (将 Azure Cosmos DB 用作纯键-值存储) 。
+当[生存时间 (TTL) 功能](time-to-live.md)处于活动状态但不需要额外的索引（来使用 Azure Cosmos DB 作为纯键-值存储）时，可以使用此策略。
 
 ```json
     {
@@ -751,7 +751,7 @@ indexingPolicy['compositeIndexes'] = [
 response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
 
-从响应标头中检索索引转换进度
+从响应头中检索索引转换进度
 ```python
 container_client.read(populate_quota_info = True,
                       response_hook = lambda h,p: print(h['x-ms-documentdb-collection-index-transformation-progress']))
