@@ -1,5 +1,8 @@
 {
   "build_entry_point": "docs",
+  "redirection_files": [
+    ".openpublishing.redirection.json"
+  ],
   "docsets_to_publish": [
     {
       "docset_name": "azure-documents",
@@ -27,17 +30,9 @@
     }
   ],
   "notification_subscribers": [
-<<<<<<< HEAD
-    "CnE_UE_Acom_doc_all@moravia.com"
-  ],
-  "sync_notification_subscribers": [],
-=======
     "azure-docs-publish@microsoft.com"
   ],
-  "sync_notification_subscribers": [
-    "ceicnotifications@microsoft.com"
-  ],
->>>>>>> 763c09162cc056fe03b1a40300ea9d0c23f502ba
+  "sync_notification_subscribers": [],
   "branches_to_filter": [
     "master",
     "master-sync-work",
@@ -420,11 +415,6 @@
       "url": "https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/",
       "branch": "main"
     },    
-    {
-      "path_to_root": "azure-cosmos-spark",
-      "url": "https://github.com/Azure/azure-cosmosdb-spark",
-      "branch": "2.4"
-    },     
     {
       "path_to_root": "azure-cosmos-spark",
       "url": "https://github.com/Azure/azure-cosmosdb-spark",
