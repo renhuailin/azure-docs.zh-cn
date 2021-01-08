@@ -1,17 +1,17 @@
 ---
 title: Azure 流分析中的用户定义函数
 description: 本文概述了 Azure 流分析中的用户定义函数。
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c671d3989fa46fa7546ba042b9132e19d80265a1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82598362"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020496"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Azure 流分析中的用户定义函数
 
@@ -49,7 +49,7 @@ Azure 流分析不会记录所有函数调用和返回结果。 为了保证可�
 
 ## <a name="exception-handling"></a>异常处理
 
-在 Azure 流分析中使用数据时，数据处理过程中的任何异常都被视为灾难性故障。 用户定义的函数更有可能会引发异常并导致处理停止。 若要避免此问题，请以 JavaScript 或 C# 使用 try-catch 块来捕获代码执行期间的异常**。 可以记录和处理捕获的异常，而不会导致系统故障。 建议你始终将自定义代码包装在 try-catch 块中，以避免引发处理引擎的意外异常**。
+在 Azure 流分析中使用数据时，数据处理过程中的任何异常都被视为灾难性故障。 用户定义的函数更有可能会引发异常并导致处理停止。 若要避免此问题，请以 JavaScript 或 C# 使用 try-catch 块来捕获代码执行期间的异常。 可以记录和处理捕获的异常，而不会导致系统故障。 建议你始终将自定义代码包装在 try-catch 块中，以避免引发处理引擎的意外异常。
 
 ## <a name="next-steps"></a>后续步骤
 

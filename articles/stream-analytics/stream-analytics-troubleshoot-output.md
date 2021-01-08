@@ -1,19 +1,18 @@
 ---
 title: Azure 流分析输出的故障排除
 description: 本文介绍了对 Azure 流分析作业中的输出连接进行故障排除的技巧。
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6942fd68625fd8eac18ea899330fd99f31f771f7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 02a3a7ad73bf0434a215c5ab7a6e89c299e9518b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019831"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019850"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
 
@@ -90,20 +89,20 @@ ms.locfileid: "96019831"
 1. 作业尝试连接到 SQL。
 2. 作业提取目标表的架构。
 3. 作业针对目标表架构验证列名称和类型。
-4. 作业从批处理中的输出记录准备内存中数据表。
-5. 作业使用 BulkCopy [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver)将数据表写入 SQL。
+4. 作业根据批处理中的输出记录准备内存中数据表。
+5. 作业使用 BulkCopy [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver) 将数据表写入 SQL。
 
-在这些步骤中，SQL 输出可能会出现以下类型的错误：
+在这些步骤中，SQL 输出可能会遇到以下类型的错误：
 
-* 使用指数回退重试策略重试的暂时性 [错误](../azure-sql/database/troubleshoot-common-errors-issues.md#transient-fault-error-messages-40197-40613-and-others) 。 最小重试间隔取决于各个错误代码，但间隔通常小于60秒。 上限最多可为五分钟。 
+* 使用指数退避重试策略重试的暂时性[错误](../azure-sql/database/troubleshoot-common-errors-issues.md#transient-fault-error-messages-40197-40613-and-others)。 最小重试间隔取决于各个错误代码，但是间隔通常小于 60 秒。 上限最多可为五分钟。 
 
-   [登录失败](../azure-sql/database/troubleshoot-common-errors-issues.md#unable-to-log-in-to-the-server-errors-18456-40531) 和 [防火墙问题](../azure-sql/database/troubleshoot-common-errors-issues.md#cannot-connect-to-server-due-to-firewall-issues) 将在上一次尝试后至少重试5分钟，然后重试，直到成功为止。
+   [登录失败](../azure-sql/database/troubleshoot-common-errors-issues.md#unable-to-log-in-to-the-server-errors-18456-40531)和[防火墙问题](../azure-sql/database/troubleshoot-common-errors-issues.md#cannot-connect-to-server-due-to-firewall-issues)会在上次尝试后至少 5 分钟重试一次，直到成功为止。
 
-* 数据错误（如强制转换错误和架构约束冲突）将通过输出错误策略进行处理。 这些错误是通过重试二进制拆分批处理来处理的，直到由 skip 或 retry 处理导致错误的单个记录为止。 [始终处理](./stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)主唯一键约束冲突。
+* 数据错误（如强制转换错误和架构约束冲突）将通过输出错误策略进行处理。 通过重试二进制拆分批处理来处理这些错误，直到导致错误的单个记录通过跳过或重试得到处理。 主唯一键约束冲突[始终需得到处理](./stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)。
 
-* 出现 SQL 服务问题或内部代码缺陷时，可能会出现非暂时性错误。 例如，当错误（如 (代码 1132) 弹性池达到其存储限制时，重试不会解决此错误。 在这些情况下，流分析作业的 [性能会下降](job-states.md)。
-* `BulkCopy``BulkCopy`在步骤5中，可能会发生超时。 `BulkCopy` 偶尔会出现操作超时。 默认的最小配置超时为五分钟，并在连续命中时加倍。
-超时值超过15分钟后，每个批处理的最大批大小提示 `BulkCopy` 数将减少到每个批处理100事件的一半。
+* 存在 SQL 服务问题或内部代码缺陷时，可能会出现非暂时性错误。 例如，对于弹性池达到其存储限制之类的错误（代码 1132），重试无法解决。 在这些情况下，流分析作业将遭遇[降级](job-states.md)。
+* 在步骤 5 的 `BulkCopy` 期间，可能出现 `BulkCopy` 超时。 `BulkCopy` 偶尔会出现操作超时。 默认配置的最小超时为五分钟，当连续达到此值时，它将增加一倍。
+一旦超时超过 15 分钟，`BulkCopy` 的最大批处理大小提示将减少到一半，直到每批剩下 100 个事件为止。
 
 ## <a name="column-names-are-lowercase-in-azure-stream-analytics-10"></a>Azure 流分析 (1.0) 中的列名称是小写的
 

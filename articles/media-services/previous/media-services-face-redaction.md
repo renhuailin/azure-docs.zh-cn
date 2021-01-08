@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1a7bd36a6e3f3cc5b785745fc51f0aede3b47b74
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 2029ec2d0b0f27d7078f381880cf7ca177d24ca0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803300"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020194"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订
 
@@ -36,6 +36,9 @@ ms.locfileid: "97803300"
 面部修订的工作方式是：检测每一帧视频中的面部，并跟踪之前和之后的面部对象，以便同一个人在其他角度也模糊显示。 自动编修过程很复杂，并且无法始终生成 100% 符合要求的输出，因此，媒体分析提供了几种修改最终输出的方式。
 
 除了完全自动模式外，还可使用双步工作流通过 ID 列表选择/取消选择找到的面部。 此外，为了对每一帧进行任意调整，MP 使用 JSON 格式的元数据文件。 此工作流拆分为“分析”和“修订”模式。 可将这两个模式组合为在一个作业中运行两项任务的单个过程；此模式称为“组合”。
+
+   > [!NOTE]
+   > 由于2020年6月版， [Azure 媒体服务旧组件](./legacy-components.md)已弃用了人脸检测器媒体处理器。 请考虑使用 Azure 媒体服务 v3 API。
 
 ### <a name="combined-mode"></a>组合模式
 

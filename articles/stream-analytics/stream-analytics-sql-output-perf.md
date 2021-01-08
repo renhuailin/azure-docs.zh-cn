@@ -1,20 +1,19 @@
 ---
-title: 通过 Azure 流分析提高对 Azure SQL 数据库的吞吐量性能
+title: 通过 Azure 流分析提高 Azure SQL 数据库的吞吐量性能
 description: 了解如何将数据从 Azure 流分析输出到 SQL Azure，并实现更高的写入吞吐量速率。
 author: chetanmsft
 ms.author: chetang
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: a902cbc8256e249a608a5da8436a1145ddb0d565
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 8baa33c8d9622ff76db04345f5c6c465f026e261
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490927"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020224"
 ---
-# <a name="increase-throughput-performance-to-azure-sql-database-from-azure-stream-analytics"></a>通过 Azure 流分析提高对 Azure SQL 数据库的吞吐量性能
+# <a name="increase-throughput-performance-to-azure-sql-database-from-azure-stream-analytics"></a>通过 Azure 流分析提高 Azure SQL 数据库的吞吐量性能
 
 本文提供有关在使用 Azure 流分析将数据载入 Azure SQL 数据库时，如何提高写入吞吐量性能的提示。
 
@@ -35,7 +34,7 @@ Azure 流分析中的 SQL 输出支持使用并行写入作为一个选项。 �
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- 已 **分区的表和索引** –在表中使用已 [分区](/sql/relational-databases/partitions/partitioned-tables-and-indexes)的 SQL 表和已分区索引（与分区键相同的列） (例如，PartitionId) 可以显著减少写入过程中分区之间的争用。 对于分区表，需要在 PRIMARY 文件组中创建[分区函数](/sql/t-sql/statements/create-partition-function-transact-sql)和[分区方案](/sql/t-sql/statements/create-partition-scheme-transact-sql)。 这也可以在加载新数据时提高现有数据的可用性。 根据分区的数量，可能会达到日志 IO 限制；升级 SKU 可以提高限制。
+- 已 **分区的表和索引**–在表中使用已 [分区](/sql/relational-databases/partitions/partitioned-tables-and-indexes)的 SQL 表和已分区索引（与分区键相同的列） (例如，PartitionId) 可以显著减少写入过程中分区之间的争用。 对于分区表，需要在 PRIMARY 文件组中创建[分区函数](/sql/t-sql/statements/create-partition-function-transact-sql)和[分区方案](/sql/t-sql/statements/create-partition-scheme-transact-sql)。 这也可以在加载新数据时提高现有数据的可用性。 根据分区的数量，可能会达到日志 IO 限制；升级 SKU 可以提高限制。
 
 - **避免唯一键冲突** –如果你在 Azure 流分析活动日志中收到 [多个键冲突警告消息](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) ，请确保你的作业不受在恢复案例中可能会发生的唯一约束冲突的影响。 可以通过在索引中设置 [IGNORE\_DUP\_KEY](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) 选项来避免此问题。
 

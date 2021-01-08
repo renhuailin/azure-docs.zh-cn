@@ -3,16 +3,15 @@ title: Azure 流分析中的流单元
 description: 本文介绍 Azure 流分析中的流单元设置和影响性能的其他因素。
 author: JSeb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 38f649fbff9ea2c1182adb613b9302768708a4c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a5a0e6feba966d2d10c5cd36432c3d5db172a795
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019865"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020003"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
@@ -20,7 +19,7 @@ ms.locfileid: "96019865"
 
 为了实现低延迟流式处理，Azure 流分析作业将执行内存中的所有处理。 内存不足时，流式处理作业会失败。 因此，对于生产作业，请务必监视流式处理作业的资源使用情况，并确保分配有足够的资源来保持作业的全天候运行。
 
-SU 利用率指标的范围为 0% 到 100%，描述工作负荷的内存消耗量。 对于占用最小内存的流式处理作业，此指标通常介于 10% 到 20%。 如果 SU 利用率较高（超过 80%）或者输入事件积压（即使 SU 利用率很低，因为它不显示 CPU 使用率），则可能表示工作负载需要更多的计算资源，这就需要增加 SU 的数目。 最好保持低于 80% 的 SU 指标，以应对偶发的峰值。 若要对增加的工作负荷做出反应并增加流式处理单位数，请考虑在 SU 使用情况指标上设置警报80%。 此外，还可以使用水位线延迟和囤积事件指标来查看是否会产生影响。
+SU 利用率指标的范围为 0% 到 100%，描述工作负荷的内存消耗量。 对于占用最小内存的流式处理作业，此指标通常介于 10% 到 20%。 如果 SU 利用率较高（超过 80%）或者输入事件积压（即使 SU 利用率很低，因为它不显示 CPU 使用率），则可能表示工作负载需要更多的计算资源，这就需要增加 SU 的数目。 最好保持低于 80% 的 SU 指标，以应对偶发的峰值。 为了应对工作负荷的增加和流单元的增加，考虑设置一个警报，在 SU 利用率指标为 80% 时发出。 此外，可以使用水印延迟和积压的事件指标来查看是否有影响。
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>配置流分析流式处理单元 (SU)
 1. 登录到 [Azure 门户](https://portal.azure.com/)

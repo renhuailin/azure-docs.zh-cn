@@ -198,7 +198,7 @@
           href: powershell-samples.md
         - name: Azure CLI
           href: cli-samples.md
-        - name: Azure Resource Manager
+        - name: Azure 资源管理器
           href: templates-samples-sql.md
     - name: 概念
       items:

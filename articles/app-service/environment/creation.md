@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 52a43874060748479beebc994bf0a9b663cde9dc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95238388"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020173"
 ---
 # <a name="create-an-app-service-environment"></a>创建应用服务环境
 
@@ -20,10 +20,9 @@ ms.locfileid: "95238388"
 > 本文介绍应用服务环境 v3 (预览版) 
 > 
 
-[应用服务环境 (ASE) ][Intro]是应用服务的单租户部署，它将插入到 Azure 虚拟网络 (VNet) 中。  ASEv3 仅支持在 Vnet 中公开专用地址上的应用。 预览期间创建 ASEv3 时，会向订阅添加三个资源。
+[应用服务环境 (ASE) ][Intro]是应用服务的单租户部署，它将插入到 Azure 虚拟网络 (VNet) 中。  ASEv3 仅支持在 Vnet 中公开专用地址上的应用。 预览期间创建 ASEv3 时，会将这些资源添加到订阅。
 
 - 应用服务环境
-- Azure DNS 专用区域
 - 专用终结点
 
 ASE 的部署需要使用两个子网。  一个子网将持有专用终结点。  此子网可用于 Vm 等其他功能。  另一个子网用于从 ASE 发出的出站调用。  此子网不能用于 ASE 以外的任何其他内容。 

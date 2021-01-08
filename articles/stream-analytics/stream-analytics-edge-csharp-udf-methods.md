@@ -1,18 +1,18 @@
 ---
 title: 为 Azure 流分析作业开发 .NET Standard 函数（预览版）
 description: '了解如何为流分析作业编写 c # 用户定义函数。'
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 9cf929a3a6f5b3752b030f449b3b24b2bdc941a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52fa6f05db5452a2e7b8ec4f93d65525873c8c7e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907317"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020564"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>为 Azure 流分析作业开发 .NET Standard 用户定义函数（预览版）
 
@@ -39,10 +39,10 @@ Azure 流分析提供类似 SQL 的查询语言，用于对事件数据流执行
 |**Azure 流分析类型** |**C# 类型** |
 |---------|---------|
 |bigint | long |
-|FLOAT | double |
+|浮动 | Double |
 |nvarchar(max) | 字符串 |
 |datetime | DateTime |
-|记录 | Dictionary\<string, object> |
+|Record | Dictionary\<string, object> |
 |Array | Object [] |
 
 当需要将数据从 c # 封送到 Azure 流分析时，就会出现这种情况。 下表显示了受支持的类型：
@@ -50,13 +50,13 @@ Azure 流分析提供类似 SQL 的查询语言，用于对事件数据流执行
 |**C# 类型**  |**Azure 流分析类型**  |
 |---------|---------|
 |long  |  bigint   |
-|double  |  FLOAT   |
+|Double  |  float   |
 |字符串  |  nvarchar(max)   |
 |DateTime  |  dateTime   |
-|struct  |  记录   |
-|object  |  记录   |
+|struct  |  Record   |
+|object  |  Record   |
 |Object []  |  Array   |
-|Dictionary\<string, object>  |  记录   |
+|Dictionary\<string, object>  |  Record   |
 
 ## <a name="develop-a-udf-in-visual-studio-code"></a>在 Visual Studio Code 中开发 UDF
 
@@ -74,9 +74,9 @@ Azure 流分析提供类似 SQL 的查询语言，用于对事件数据流执行
 引用本地项目：
 
 1. 在本地计算机上创建新的 .NET standard 类库。
-2. 在类中编写代码。 注意必须将类定义为公共，并且必须将对象定义为静态公共****。
+2. 在类中编写代码。 注意必须将类定义为公共，并且必须将对象定义为静态公共。
 3. 在 Azure 流分析项目中添加新的 CSharp 函数配置文件并引用 CSharp 类库项目。
-4. 在作业配置文件 "CustomCodeStorage" 部分中配置程序集路径 `JobConfig.json` 。 **CustomCodeStorage**本地测试不需要执行此步骤。
+4. 在作业配置文件 "CustomCodeStorage" 部分中配置程序集路径 `JobConfig.json` 。 本地测试不需要执行此步骤。
 
 ### <a name="local-dlls"></a>本地 Dll
 
@@ -86,7 +86,7 @@ Azure 流分析提供类似 SQL 的查询语言，用于对事件数据流执行
 
 在此示例中， **CSharpUDFProject** 是一个 c # 类库项目， **ASAUDFDemo** 是 Azure 流分析项目，它将引用 **CSharpUDFProject**。
 
-:::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-demo.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
+:::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-demo.png" alt-text="Visual Studio Code 中的 Azure 流分析项目":::
 
 下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
 
@@ -108,153 +108,35 @@ namespace CSharpUDFProject
 
 以下步骤演示如何将 c # UDF 函数添加到流分析项目。
 
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 " **添加项**"。
+1. 右键单击 " **函数** " 文件夹，然后选择 " **添加项**"。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
-
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
-
-```csharp
-using System;
-
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
-
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
-
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 ":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function.png" alt-text="在 Azure 流分析项目中添加新函数":::
 
 2. 向 Azure 流分析项目添加 c # 函数 **SquareFunction** 。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-2.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-2.png" alt-text="从 VS Code 中的流分析项目选择 CSharp 函数":::
 
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-name.png" alt-text="在 VS Code 中输入 CSharp 函数名称":::
 
-```csharp
-using System;
+3. 在 c # 函数配置中，选择 " **选择库项目路径** " 以从下拉列表中选择你的 c # 项目，并选择 " **生成项目** " 以生成项目。 然后选择 " **选择类** "，然后选择 " **方法** "，从下拉列表中选择相关的类和方法名称。 要在流分析查询中引用方法、类型和函数，必须将这些类定义为公共，并且必须将对象定义为静态公共。
 
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-project.png" alt-text="流分析 C 升函数配置 VS Code":::
 
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
+    如果要从 DLL 使用 c # UDF，请选择 " **选择库 dll 路径** " 以选择 dll。 然后选择 " **选择类** "，然后选择 " **方法** "，从下拉列表中选择相关的类和方法名称。
 
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 ":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-dll.png" alt-text="流分析 C sharp 函数配置":::
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-name.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
+4. 在 Azure 流分析查询中调用 UDF。
 
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
+   ```sql
+    SELECT price, udf.SquareFunction(price)
+    INTO Output
+    FROM Input 
+   ```
 
-```csharp
-using System;
+5. 将作业提交到 Azure 之前，请在作业配置文件 "CustomCodeStorage" 部分中配置包路径 `JobConfig.json` 。  在 CodeLens 中使用 " **从你的订阅中选择** "，选择你的订阅，并从下拉列表中选择存储帐户和容器名称。 将 **路径** 保留为默认值。 本地测试不需要执行此步骤。
 
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
-
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
-
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 " **方法** "，从下拉列表中选择相关的类和方法名称。 要在流分析查询中引用方法、类型和函数，必须将这些类定义为公共，并且必须将对象定义为静态公共****。
-
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-project.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
-
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
-
-```csharp
-using System;
-
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
-
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
-
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 " **方法** "，从下拉列表中选择相关的类和方法名称。
-
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-dll.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
-
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
-
-```csharp
-using System;
-
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
-
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
-
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 " **从你的订阅中选择** "，选择你的订阅，并从下拉列表中选择存储帐户和容器名称。 将 **路径** 保留为默认值。 本地测试不需要执行此步骤。
-
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-configure-storage-account.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
-
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
-
-```csharp
-using System;
-
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
-
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
-
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 ":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-configure-storage-account.png" alt-text="选择库路径":::
 
 ## <a name="develop-a-udf-in-visual-studio"></a>在 Visual Studio 中开发 UDF
 
@@ -266,255 +148,57 @@ namespace CSharpUDFProject
 
 ### <a name="codebehind"></a>CodeBehind
 
-可以在 Script.sql CodeBehind 中编写用户定义的函数****。 Visual Studio 工具会自动将 CodeBehind 文件编译为程序集文件。 将作业提交到 Azure 时，程序集将打包为 zip 文件并上传到存储帐户。 可以根据[流分析 Edge 作业的 UDF](stream-analytics-edge-csharp-udf.md) 教程执行操作，了解如何使用 CodeBehind 编写 C# UDF。 
+可以在 Script.sql CodeBehind 中编写用户定义的函数。 Visual Studio 工具会自动将 CodeBehind 文件编译为程序集文件。 将作业提交到 Azure 时，程序集将打包为 zip 文件并上传到存储帐户。 可以根据[流分析 Edge 作业的 UDF](stream-analytics-edge-csharp-udf.md) 教程执行操作，了解如何使用 CodeBehind 编写 C# UDF。 
 
 ### <a name="local-project"></a>本地项目
 
 在 Visual Studio 中引用本地项目：
 
 1. 在解决方案中创建新的 .NET standard 类库
-2. 在类中编写代码。 注意必须将类定义为公共，并且必须将对象定义为静态公共****。 
+2. 在类中编写代码。 注意必须将类定义为公共，并且必须将对象定义为静态公共。 
 3. 生成你的项目。 工具会将 bin 文件夹中的所有项目打包为 zip 文件，并将该 zip 文件上传到存储帐户。 对于外部引用，请使用程序集引用而不是 NuGet 包。
 4. 引用 Azure 流分析项目中的新类。
 5. 在 Azure 流分析项目中添加一个新的函数。
-6. 在作业配置文件 `JobConfig.json` 中配置程序集路径。 将程序集路径设置为“本地项目引用或 CodeBehind”****。
+6. 在作业配置文件 `JobConfig.json` 中配置程序集路径。 将程序集路径设置为“本地项目引用或 CodeBehind”。
 7. 重新生成函数项目和 Azure 流分析项目。  
 
 ### <a name="example"></a>示例
 
-在本示例中，UDFTest 是一个 C# 类库项目，ASAUDFDemo 是 Azure 流分析项目，它将引用 UDFTest************。
+在本示例中，UDFTest 是一个 C# 类库项目，ASAUDFDemo 是 Azure 流分析项目，它将引用 UDFTest。
 
-:::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
-
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
-
-```csharp
-using System;
-
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
-
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
-
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 ":::
+:::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png" alt-text="Visual Studio 中的 Azure 流分析 IoT Edge 项目":::
 
 1. 生成 C# 项目，通过该项目，可以从 Azure 流分析查询中添加对 C# UDF 的引用。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
-
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
-
-```csharp
-using System;
-
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
-
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
-
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 ":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png" alt-text="在 Visual Studio 中生成 Azure 流分析 IoT Edge 项目":::
 
 2. 在 ASA 项目中添加对 C# 项目的引用。 右键单击“引用”节点，然后选择“添加引用”。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
-
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
-
-```csharp
-using System;
-
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
-
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
-
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 ":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png" alt-text="在 Visual Studio 中添加对 C# 项目的引用":::
 
 3. 从列表中选择 C# 项目名称。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-choose-project-name.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-choose-project-name.png" alt-text="从引用列表中选择你的 C# 项目名称。":::
 
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
+4. 你会在“解决方案资源管理器”中看到“引用”下方列出的 UDFTest。
 
-```csharp
-using System;
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png" alt-text="在解决方案资源管理器中查看用户定义的函数引用":::
 
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
+5. 右键单击“Functions”文件夹，然后选择“新项”。
 
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png" alt-text="在 Azure 流分析 Edge 解决方案中向 Functions 添加新项":::
 
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 ":::
+6. 将 C# 函数“SquareFunction.json”添加到 Azure 流分析项目中。
 
-4. 你会在“解决方案资源管理器”中看到“引用”下方列出的 UDFTest************。
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png" alt-text="从 Visual Studio 的流分析 Edge 项选择 CSharp 函数":::
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
+7. 双击“解决方案资源管理器”中的函数，以打开配置对话框。
 
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png" alt-text="Visual Studio 中的 C sharp 函数配置":::
 
-```csharp
-using System;
+8. 在 C# 函数配置中，选择“从 ASA 项目引用中加载”，并从下拉列表中选择相关的程序集、类和方法名称。 要在流分析查询中引用方法、类型和函数，必须将这些类定义为公共，并且必须将对象定义为静态公共。
 
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
-
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
-
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 ":::
-
-5. 右键单击“Functions”文件夹，然后选择“新项”********。
-
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
-
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
-
-```csharp
-using System;
-
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
-
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
-
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 ":::
-
-6. 将 C# 函数“SquareFunction.json”添加到 Azure 流分析项目中****。
-
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
-
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
-
-```csharp
-using System;
-
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
-
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
-
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 ":::
-
-7. 双击“解决方案资源管理器”中的函数，以打开配置对话框****。
-
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
-
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
-
-```csharp
-using System;
-
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
-
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
-
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 ":::
-
-8. 在 C# 函数配置中，选择“从 ASA 项目引用中加载”，并从下拉列表中选择相关的程序集、类和方法名称****。 要在流分析查询中引用方法、类型和函数，必须将这些类定义为公共，并且必须将对象定义为静态公共****。
-
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png" alt-text="Visual Studio Code 中的 Azure 流分析项目&quot;:::
-
-下面的 UDF 包含一个函数，该函数将整数相乘以生成整数的平方。 类必须定义为 *公共* ，并且必须将对象定义为 *静态公共*。
-
-```csharp
-using System;
-
-namespace CSharpUDFProject
-{
-    // 
-    public class Class1
-    {
-        public static Int64 SquareFunction(Int64 a)
-        {
-            return a * a;
-        }
-    }
-}
-```
-
-以下步骤演示如何将 c # UDF 函数添加到流分析项目。
-
-1. 右键单击 &quot; **函数** &quot; 文件夹，然后选择 ":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png" alt-text="流分析 C 升函数配置 Visual Studio":::
 
 ## <a name="existing-packages"></a>现有包
 
@@ -539,7 +223,7 @@ namespace CSharpUDFProject
 
 ## <a name="user-logging"></a>用户日志记录
 
-使用日志记录机制，可以在作业运行时捕获自定义信息。 您可以使用日志数据实时调试或评估自定义代码的正确性。
+使用日志记录机制，可以在作业运行时捕获自定义信息。 可以使用日志数据实时调试或评估自定义代码的正确性。
 
 `StreamingContext`类可让你使用函数发布诊断信息 `StreamingDiagnostics.WriteError` 。 下面的代码显示了由 Azure 流分析公开的接口。
 
@@ -573,17 +257,17 @@ public static long MyUdfMethod(long data, StreamingContext context)
 SELECT udf.MyUdfMethod(input.value) as udfValue FROM input
 ```
 
-可以通过 [诊断日志](data-errors.md)访问日志消息。
+可以通过[诊断日志](data-errors.md)访问日志消息。
 
 ## <a name="limitations"></a>限制
 
 UDF 预览目前有以下限制：
 
-* 只能在 Visual Studio Code 或 Visual Studio 中创作 .NET Standard Udf，并将其发布到 Azure。 可以在 Azure 门户中的“Functions”下查看只读版本的 .NET Standard UDF****。 Azure 门户中不支持创建 .NET Standard 函数。
+* 只能在 Visual Studio Code 或 Visual Studio 中创作 .NET Standard Udf，并将其发布到 Azure。 可以在 Azure 门户中的“Functions”下查看只读版本的 .NET Standard UDF。 Azure 门户中不支持创建 .NET Standard 函数。
 
 * 在门户中使用 .NET Standard UDF 时，Azure 门户查询编辑器显示一条错误。 
 
-* 由于自定义代码与 Azure 流分析引擎共享上下文，因此自定义代码无法引用 namespace/dll_name 与 Azure 流分析代码发生冲突的任何内容。 例如，不能引用 Newtonsoft Json**。
+* 由于自定义代码与 Azure 流分析引擎共享上下文，因此自定义代码无法引用 namespace/dll_name 与 Azure 流分析代码发生冲突的任何内容。 例如，不能引用 Newtonsoft Json。
 
 * 项目中包含的支持文件会复制到用户自定义代码 zip 文件中，该文件在你将作业发布到云中时使用。 解压缩时，子文件夹中的所有文件都将直接复制到云中的用户自定义代码文件夹的根目录中。 解压缩时，zip 为 "平展"。
 

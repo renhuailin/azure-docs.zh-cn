@@ -1,19 +1,18 @@
 ---
 title: 使用适用于 Visual Studio 的 Azure 流分析工具测试实时数据
 description: 了解如何使用实时流数据在本地测试 Azure 流分析作业。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: ajetasin
+ms.author: ajetasi
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0788d8b4f659364fcedc690185c9159a24434125
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 99e9ce85bb1e59b5016e836ff16d03cb3326ec8c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123908"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020360"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>使用适用于 Visual Studio 的 Azure 流分析工具在本地测试实时数据（预览版）
 
@@ -31,7 +30,7 @@ ms.locfileid: "93123908"
 
 ## <a name="local-testing-with-live-data"></a>使用实时数据进行本地测试
 
-1. 在 [Visual Studio 中创建 Azure 流分析云项目](stream-analytics-quick-create-vs.md)后，打开 **script.asaql** 。 本地测试默认使用本地输入和本地输出。
+1. 在 [Visual Studio 中创建 Azure 流分析云项目](stream-analytics-quick-create-vs.md)后，打开 **script.asaql**。 本地测试默认使用本地输入和本地输出。
 
    ![Azure 流分析 Visual Studio 本地输入和本地输出](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
 

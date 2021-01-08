@@ -1,17 +1,17 @@
 ---
 title: 字段上的 Azure 流分析 JobConfig.js
 description: 本文列出了用于在 Visual Studio Code 中创建作业的文件 JobConfig.js的 Azure 流分析的支持字段。
-author: mamccrea
-ms.author: mamccrea
+author: su-jie
+ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: bb1a1a0b9f3a5996af56ff2c4e2de91d78a6c260
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0eebd0b62e973572a40b7b141ae908046700ba3c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129331"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020479"
 ---
 # <a name="azure-stream-analytics-jobconfigjson-fields"></a>字段上的 Azure 流分析 JobConfig.js
 
@@ -37,7 +37,7 @@ ms.locfileid: "93129331"
 }
 ```
 
-|名称|类型|必选|值|
+|名称|类型|必选|Value|
 |----|----|--------|-----|
 |DataLocale|string|否|流分析作业的数据区域设置。 值应为受支持的的名称。 如果未指定，则默认为 "en-us"。|
 |OutputErrorPolicy|string|否|指示要应用于出现错误的事件的策略，该策略不能写入到外部存储，因为 (缺少列值、错误类型或大小) 的列值。 -停止或删除|

@@ -1,18 +1,17 @@
 ---
 title: 了解 Azure 流分析中的时间处理
 description: 了解如何选择最佳开始时间、处理延迟和早期事件，以及有关 Azure 流分析中的时间处理指标。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: c8f40808834c64ad74673f1c5f0c19892607fdcc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f9dbdb3907b376df8de988730c6c48ed01bfccd0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127467"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019935"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>了解 Azure 流分析中的时间处理
 
@@ -22,11 +21,11 @@ ms.locfileid: "93127467"
 
 为了在一个更好的框架背景下讨论，现在来定义一些后台概念：
 
-- **事件时间** ：原始事件发生的时间。 例如，当高速公路上行使的汽车接近收费站时。
+- **事件时间**：原始事件发生的时间。 例如，当高速公路上行使的汽车接近收费站时。
 
-- **处理时间** ：事件到达处理系统时且被观察到的时间。 例如，收费站传感器看到汽车时，计算机系统需要一些时间来处理数据。
+- **处理时间**：事件到达处理系统时且被观察到的时间。 例如，收费站传感器看到汽车时，计算机系统需要一些时间来处理数据。
 
-- **水印** ：一个事件时间标记，指示在某个时点之前，事件已进入流式处理器。 通过水印，系统能够指示事件引入过程的明确进度。 流式传输的性质决定了事件数据的传入永远不会停止，因此水印指示的是流式传输中某个时点的进度。
+- **水印**：一个事件时间标记，指示在某个时点之前，事件已进入流式处理器。 通过水印，系统能够指示事件引入过程的明确进度。 流式传输的性质决定了事件数据的传入永远不会停止，因此水印指示的是流式传输中某个时点的进度。
 
    水印概念很重要。 流分析功能通过水印能够确定系统何时可以生成不需要撤回的完整、正确且可重复的结果。 该处理过程能够以可预测和可重复的方式完成。 例如，如果需要对某些错误处理条件进行重新计数，则水印是安全的起点和终点。
 

@@ -1,17 +1,17 @@
 ---
 title: Azure 流分析资源日志数据错误
 description: 本文解释使用 Azure 流分析时可能出现的不同输入和输出数据错误。
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 416e6cb29ab2816d53cb837f72233a9fe098f659
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2ca289cd52b9a406e486ee9c186be683e71f02d0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011415"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020105"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure 流分析数据错误
 
@@ -212,9 +212,9 @@ ms.locfileid: "96011415"
 
 ## <a name="output-data-errors"></a>输出数据错误
 
-Azure 流分析可以根据配置，识别有无 i/o 请求的输出数据错误。 例如，  `PartitionKey` 在没有 i/o 请求的情况下，如果使用 Azure 表输出，则缺少所需的列（例如）。 但是，SQL 输出中的约束冲突确实需要 i/o 请求。
+根据配置的不同，Azure 流分析可以在有或没有对输出接收器发出 I/O 请求的情况下识别输出数据错误。 例如，使用 Azure 表输出时，可以在没有 I/O 请求的情况下识别出缺少所需的列（如 `PartitionKey`）。 但是，SQL 输出中的约束冲突确实需要 I/O 请求。
 
-在调用输出接收器后，只能检测到几个数据错误，这可能会降低处理速度。 若要解决此问题，请更改作业的配置或导致数据错误的查询。
+有几个数据错误只能在调用输出接收器之后才能检测到，这可能会降低处理速度。 若要解决此问题，请更改作业的配置或导致数据错误的查询。
 
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 

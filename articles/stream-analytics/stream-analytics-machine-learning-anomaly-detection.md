@@ -1,18 +1,17 @@
 ---
 title: Azure 流分析中的异常情况检测
 description: 本文介绍如何将 Azure 流分析与 Azure 机器学习一起使用以检测异常。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: krishna0815
+ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: c57a3920dac3e18e248109fafdf61fdfa871c54d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c7cb8e40bc9a8f6664d8286ad368e2613495878b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023391"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020292"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常情况检测
 
@@ -119,7 +118,7 @@ FROM AnomalyDetectionStep
 * **事件负载** - **事件负载** 越大，模型执行的工作就越多，因而会影响 CPU 消耗量。 假设易并行有利于业务逻辑利用更多的输入分区，则可以通过易并行来横向扩展作业。
 * **函数级别分区**  - **函数级别分区** 是通过 ```PARTITION BY``` 在异常检测函数调用中使用来完成的。 此类分区会增大开销，因为需要同时保留多个模型的状态。 函数级分区在设备级分区等方案中使用。
 
-### <a name="relationship"></a>关系
+### <a name="relationship"></a>Relationship
 历史记录大小、窗口持续时间和总事件负载之间的关系如下：
 
 窗口持续时间 (毫秒) = 1000 * 历史记录大小 / (每秒输入事件总数 / 输入分区计数)

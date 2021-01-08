@@ -1,19 +1,18 @@
 ---
 title: 使用样本数据测试 Azure 流分析作业
 description: 本文介绍如何使用 Azure 门户测试 Azure 流分析作业、示例输入以及上传样本数据。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: ajetasin
+ms.author: ajetasi
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8e08c4c34495b58c105560dba9d818be9ebf5e34
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: eff9103f476e6074ab46198ff8cc78588675569f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490961"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020037"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>在门户中测试 Azure 流分析作业
 
@@ -79,11 +78,11 @@ Azure 流分析自动从流输入中提取事件。 可以针对默认示例运�
 
 4. 若要使用本地文件测试查询，请在“输入预览”选项卡上选择“上传示例输入”。 
 
-   ![屏幕截图显示了上传示例输入选项。](./media/stream-analytics-test-query/asa-upload-sample-file.png)
+   ![屏幕截图显示了“上传示例输入”选项。](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
 5. 上传本地文件以测试查询。 只能上传采用 JSON、CSV 或 AVRO 格式的文件。 选择“确定”。
 
-   ![屏幕截图显示 "上传示例数据" 对话框，你可以在其中选择文件。](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
+   ![屏幕截图显示了“上传示例数据”对话框，你可在其中选择文件。](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
 6. 上传文件后，还可以在窗体中查看表格式或原始格式的文件内容。 如果选择“重置”，示例数据将还原为上一部分所述的传入输入数据。 随时可以上传任何其他文件来测试查询。
 
@@ -112,18 +111,18 @@ Azure 流分析自动从流输入中提取事件。 可以针对默认示例运�
 
 5.  不支持机器学习。
 
-6. 在15分钟的时间段内，示例数据 API 将在五个请求后受到限制。 在15分钟时间段结束后，您可以执行更多示例数据请求。 此限制适用于订阅级别。
+6. 在 15 分钟时段内，示例数据 API 将在发出 5 个请求后受到限制。 在 15 分钟时段结束后，你可执行更多示例数据请求。 此限制在订阅级别实施。
 
 ## <a name="troubleshooting"></a>疑难解答
 
 1.  如果出现此错误，则提取结果时出现网络连接问题。 请检查你的网络和防火墙设置。 "，请执行以下步骤：
 
-  * 若要检查与服务的连接，请 [https://queryruntime.azurestreamanalytics.com/api/home/index](https://queryruntime.azurestreamanalytics.com/api/home/index) 在浏览器中打开。 如果无法打开此链接，请更新防火墙设置。
+  * 若要检查与服务的连接，请在浏览器中打开 [https://queryruntime.azurestreamanalytics.com/api/home/index](https://queryruntime.azurestreamanalytics.com/api/home/index)。 如果无法打开此链接，请更新防火墙设置。
   
-2. 如果出现此错误，则 "请求大小太大。 请减小输入数据的大小，然后重试。 "，请执行以下步骤：
+2. 如果遇到“请求大小过大。 请减小输入数据大小，然后重试。”错误，请执行以下步骤：
 
   * 减小输入大小–使用较小的大小示例文件或较小的时间范围测试查询。
-  * 缩小查询大小–若要测试选定的查询，请选择部分查询，然后单击 " **测试选定的查询** "。
+  * 缩小查询大小–若要测试选定的查询，请选择部分查询，然后单击 " **测试选定的查询**"。
 
 
 ## <a name="next-steps"></a>后续步骤

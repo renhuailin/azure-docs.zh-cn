@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
 ms.author: anwigley
-ms.openlocfilehash: b733e90b69be4e2bd458be5486564747ed4cca78
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 448b3d93ed58e4cfc73da576f0c5871600400ac6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018865"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019833"
 ---
 # <a name="apply-devops-to-luis-app-development-using-github-actions"></a>使用 GitHub Actions 将 DevOps 应用于 LUIS 应用开发
 
@@ -29,7 +29,7 @@ ms.locfileid: "95018865"
 * 克隆模板存储库 - 将模板复制到自己的 GitHub 存储库。
 * 配置 LUIS 资源 - [在 Azure 中创建 LUIS 创作和预测资源](./luis-how-to-azure-subscription.md)，这些资源将由持续集成工作流使用。
 * 配置 CI/CD 工作流 - 配置 CI/CD 工作流的参数并将它们存储在 [GitHub 机密](https://help.github.com/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)中。
-* 演练[“开发内部循环”](https://mitchdenny.com/the-inner-loop/) - 开发人员在开发分支中工作时对示例 LUIS 应用进行更新，测试更新，然后引发拉取请求来提议更改并寻求审批。
+* 演练[“开发内部循环”](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow) - 开发人员在开发分支中工作时对示例 LUIS 应用进行更新，测试更新，然后引发拉取请求来提议更改并寻求审批。
 * 执行 CI/CD 工作流 - 使用 GitHub Actions 执行[持续集成工作流以生成和测试 LUIS 应用](luis-concept-devops-automation.md)。
 * 执行自动测试 - 执行 [LUIS 应用的自动批处理测试](luis-concept-devops-testing.md)以评估应用的质量。
 * 部署 LUIS 应用 - 执行[持续交付 (CD) 作业](luis-concept-devops-automation.md#continuous-delivery-cd)以发布 LUIS 应用。
