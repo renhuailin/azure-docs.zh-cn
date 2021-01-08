@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: 3000709f19b53eb6e79b4dae0559040ca025c9e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58d547995d39505da18a6bca1a6c3925b95252a6
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282718"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978778"
 ---
-若要以压缩音频格式流式传输到语音服务，请创建 `PullAudioInputStream` 或 `PushAudioInputStream`。 然后，从流类的实例创建 `AudioConfig`，并指定流的压缩格式。
+若要将语音 SDK 配置为接受压缩的音频输入，请创建 `PullAudioInputStream` 或 `PushAudioInputStream` 。 然后，从流类的实例创建 `AudioConfig`，并指定流的压缩格式。
 
 假设你的用例是将 `PullStream` 用于 `MP3` 文件。 你的代码可能如下所示：
 
