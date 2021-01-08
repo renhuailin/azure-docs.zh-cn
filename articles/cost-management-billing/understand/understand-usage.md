@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 01/04/2021
 ms.author: banders
-ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 07e3cfdce238d5fc4e2737a49dde6fd624de8506
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149356"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882494"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 使用情况和费用文件中的术语
 
@@ -126,10 +126,24 @@ UsageDate | Date
 UsageEnd | Date
 UsageStart | Date
 
-
 ## <a name="ensure-charges-are-correct"></a>确保费用正确
 
 若要深入了解详细的使用情况和费用，请阅读介绍如何了解[即用即付](review-individual-bill.md)或 [Microsoft 客户协议](review-customer-agreement-bill.md)发票的文档。
+
+## <a name="unexpected-usage-or-charges"></a>意外使用情况或费用
+
+如果存在不太确定的使用情况或费用，你可以执行以下几项操作来帮助了解原因：
+
+- 查看含有资源费用的发票
+- 在成本分析中查看已开票费用
+- 查找资源的负责人并与其沟通
+- 分析审核日志
+- 分析用户在资源父范围的权限
+- 创建 [Azure 支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)，帮助确定费用
+
+有关详细信息，请参阅[分析意外费用](analyze-unexpected-charges.md)。
+
+请注意，Azure 不会记录大多数用户操作。 不过，Microsoft 会记录资源使用量以便计费。 如果注意到过去的使用量峰值，但并未启用日志记录，则 Microsoft 无法查明原因。 为要查看其使用量的服务启用日志记录，以便合适的技术团队能够帮助你解决问题。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 

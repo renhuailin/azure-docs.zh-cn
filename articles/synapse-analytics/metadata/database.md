@@ -10,18 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 93602e522338166abac98c3e4a198e1aff392d21
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451821"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934962"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics 共享数据库
 
-Azure Synapse Analytics 允许不同的计算工作区引擎在其无服务器 Apache Spark 池与无服务器 SQL 池引擎之间共享数据库和表。
+Azure Synapse Analytics 允许不同的计算工作区引擎共享数据库和表。 目前，在 Apache Spark 池上创建的数据库和 Parquet 表将自动与无服务器 SQL 池引擎进行共享。
 
-使用 Spark 作业创建的数据库会以相同的名称对工作区中所有当前的和将来的 Spark 池（包括无服务器 SQL 池引擎）变得可见。
+使用 Spark 作业创建的数据库会以相同的名称对工作区中所有当前的和将来的 Spark 池（包括无服务器 SQL 池引擎）变得可见。 不能使用无服务器 SQL 池直接在此复制数据库中添加自定义对象（外部表、视图、过程）。
 
 Spark 默认数据库（名为 `default`）还会在无服务器 SQL 池上下文中显示为名为 `default` 的数据库。
 

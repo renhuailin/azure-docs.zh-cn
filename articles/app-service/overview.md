@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: e9c49d472f6cf0b9f0e5b3e2f7728417034059b1
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007087"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936203"
 ---
 # <a name="app-service-overview"></a>应用服务概述
 
@@ -45,6 +45,12 @@ Azure 应用服务是一项基于 HTTP 的服务，用于托管 Web 应用程序
 ### <a name="built-in-languages-and-frameworks"></a>内置语言和框架
 
 Linux 上的应用服务支持许多特定于语言的内置映像。 只需部署代码。 支持的语言包括：Node.js、Java (JRE 8 & JRE 11)、PHP、Python、.NET Core 和 Ruby。 运行 [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) 查看最新语言和支持的版本。 如果内置映像中不支持应用程序所需的运行时，则可以使用自定义容器部署运行时。
+
+过期运行时会定期从门户的“Web 应用创建和配置”边栏选项卡中删除。 当维护组织弃用这些运行时，或发现存在重大漏洞时，这些运行时将在门户中隐藏。 隐藏这些选项可指引客户使用最新的运行时，这样他们才最能成功。 
+
+在门户中隐藏过期运行时后，任何使用该版本的现有站点都将继续运行。 如果从应用服务平台完全删除了运行时，在删除前，Azure 订阅所有者将收到电子邮件通知。
+
+如果需要使用门户上不再显示的过期运行时版本创建另一款 Web 应用，请参阅语言配置指南，获取有关如何获取站点运行时版本的说明。 可以使用 Azure CLI 创建另一个具有相同运行时的站点。 此外，还可以使用门户中的“Web 应用”边栏选项卡上的“导出模板”按钮，导出站点的 ARM 模板。 可以重复使用此模板来部署具有相同运行时和配置的新站点。
 
 ### <a name="limitations"></a>限制
 

@@ -141,8 +141,16 @@
     - name: 比较运行时版本
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
-    - name: 高级计划
-      href: functions-premium-plan.md
+    - name: 托管和缩放
+      items:
+        - name: 消耗计划
+          href: consumption-plan.md
+        - name: 高级计划
+          href: functions-premium-plan.md
+        - name: 专用计划
+          href: dedicated-plan.md
+        - name: 事件驱动的缩放
+          href: event-driven-scaling.md
     - name: 部署
       href: functions-deployment-technologies.md
     - name: 事件和消息传送
@@ -261,6 +269,8 @@
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux 消耗计划
                   href: create-first-function-cli-python.md
+                - name: 高级计划
+                  href: create-premium-plan-function-app-portal.md
                 - name: 面向学生的 Azure 入门版
                   href: functions-create-student-starter.md
             - name: Azure Cosmos DB 触发器

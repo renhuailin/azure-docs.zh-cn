@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: 68c10ba5581ffe404e8e3c1ac8ce92832cfcd6c4
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 1cbe5f986ca36ecc3b45cf4bb7ecffa7067a27bd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896423"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936611"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure Key Vault 中设置和检索机密
 
@@ -85,12 +85,12 @@ ms.locfileid: "92896423"
     * 订阅：选择一个 Azure 订阅。
     * 资源组：选择“新建”，输入资源组的唯一名称，然后单击“确定”。 
     * 位置：选择一个位置。 例如“美国中部”。
-    * **密钥保管库名称** ：输入密钥保管库的名称，该名称在 .vault.azure.net 命名空间中必须全局唯一。 在下一部分验证部署时，需要该名称。
-    * **租户 ID** ：模板函数会自动检索租户 ID。 不要更改默认值。
-    * **AD 用户 ID** ：输入在 [先决条件](#prerequisites)中检索到的 Azure AD 用户对象 ID。
-    * **机密名称** ：输入要存储在 Key Vault 中的机密的名称。 例如 **adminpassword** 。
-    * **机密值** ：输入机密值。 如果存储密码，则建议使用在“先决条件”中创建的生成密码。
-    * **我同意上述条款和条件** ：选中。
+    * **密钥保管库名称**：输入密钥保管库的名称，该名称在 .vault.azure.net 命名空间中必须全局唯一。 在下一部分验证部署时，需要该名称。
+    * **租户 ID**：模板函数会自动检索租户 ID。 不要更改默认值。
+    * **AD 用户 ID**：输入在 [先决条件](#prerequisites)中检索到的 Azure AD 用户对象 ID。
+    * **机密名称**：输入要存储在 Key Vault 中的机密的名称。 例如 **adminpassword**。
+    * **机密值**：输入机密值。 如果存储密码，则建议使用在“先决条件”中创建的生成密码。
+    * **我同意上述条款和条件**：选中。
 3. 选择“购买”。 成功部署密钥保管库后，你会收到通知：
 
     ![ARM 模板, Key Vault 集成, 部署门户通知](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
@@ -162,4 +162,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 了解有关 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)的详细信息
-- 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)

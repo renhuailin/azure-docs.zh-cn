@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b8b6383c7808fd6c298d7776fc10572631bc6ddc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f6725045064b74079e00ca5bbe1d560f3b19f3ff
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006211"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937121"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>教程：为 Zscaler One 配置自动用户预配
 
@@ -77,6 +77,9 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 > [!TIP]
 > 还可以为 Zscaler One 启用基于 SAML 的单一登录。 请遵照 [Zscaler One 单一登录教程](zscaler-One-tutorial.md)中的说明操作。 可独立于自动用户预配来配置单一登录，尽管这两个功能互相补充。
+
+> [!NOTE]
+> 预配或取消预配用户和组时，我们建议定期重启预配，以确保正确更新组成员身份。 执行重启操作将强制我们的服务重新评估所有组并更新成员身份。  
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>在 Azure AD 中为 Zscaler One 配置自动用户预配
 

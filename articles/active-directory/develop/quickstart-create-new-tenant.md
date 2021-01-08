@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 60d789c4297c400b812cd6c5c19c8c6148cb347d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f43cb80a148f5dadb409f506f237cb1210a2000a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91575973"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933993"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入门：设置租户
 
@@ -55,7 +55,7 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 > [!TIP]
 > 如果需要查找租户 ID，可执行以下操作：
 > * 将鼠标指针悬停在帐户名上以获取目录/租户 ID，或
-> * 在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”
+> * 在 Azure 门户中搜索并选择“Azure Active Directory”>“属性”>“租户 ID”
 
 如果没有任何与帐户关联的现有租户，则帐户名下面会显示一个 GUID；另外，除非按照下一节的步骤操作，否则无法执行注册应用等操作。
 

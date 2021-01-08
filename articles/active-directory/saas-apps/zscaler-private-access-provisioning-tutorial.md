@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: da3ad4f70e0cc41fe95327eb74093c1471c877bd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 14708ddcc5c0e06ee58f5e9db5945c4e9f1a1d08
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351565"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937133"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>教程：为 Zscaler Private Access (ZPA) 配置自动用户预配
 
@@ -115,6 +115,9 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 > [!TIP]
 > 还可选择按照 [Zscaler Private Access (ZPA) 单一登录教程](./zscalerprivateaccess-tutorial.md)中提供的说明为 Zscaler Private Access (ZPA) 启用基于 SAML 的单一登录。 可独立于自动用户预配来配置单一登录，尽管这两个功能互相补充。
+
+> [!NOTE]
+> 预配或取消预配用户和组时，我们建议定期重启预配，以确保正确更新组成员身份。 执行重启操作将强制我们的服务重新评估所有组并更新成员身份。  
 
 > [!NOTE]
 > 要了解有关 Zscaler Private Access 的 SCIM 终结点的详细信息，请参阅[本文](https://www.zscaler.com/partners/microsoft)。

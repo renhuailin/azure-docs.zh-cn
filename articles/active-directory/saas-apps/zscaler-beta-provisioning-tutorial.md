@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 59784b6e618e875a6eedc947ce75afdf3bd1df74
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 0d4945ee97a46c78aac3c4ac508c5f89f5942296
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327383"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937155"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>教程：为 Zscaler Beta 配置自动用户预配
 
@@ -80,6 +80,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 > [!TIP]
 > 还可选择按照 [Zscaler Beta 单一登录教程](zscaler-beta-tutorial.md)中提供的说明为 Zscaler Beta 启用基于 SAML 的单一登录。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
+
+> [!NOTE]
+> 预配或取消预配用户和组时，我们建议定期重启预配，以确保正确更新组成员身份。 执行重启操作将强制我们的服务重新评估所有组并更新成员身份。  
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>要在 Azure AD 中为 Zscaler Beta 配置自动用户预配，请执行以下操作：
 

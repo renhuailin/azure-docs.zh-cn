@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ac6981d998f25b8df7cea553fe152d68cd43fee5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cc88712dd686983baed858de47e11dfa44e85350
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181413"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955512"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>教程：为 Snowflake 配置自动用户预配
 
@@ -159,6 +159,12 @@ ms.locfileid: "96181413"
 ## <a name="connector-limitations"></a>连接器限制
 
 * Snowflake 生成的 SCIM 令牌将在 6 个月后过期。 请注意，需要在这些令牌过期前对它们进行刷新，以便“预配同步”能够继续生效。 
+
+## <a name="troubleshooting-tips"></a>故障排查提示
+
+* **IP 范围** 
+
+   Azure AD 预配服务当前在特定 IP 范围下运行。 因此，如果需要，可以限制其他 IP 范围，并将这些特定 IP 范围添加到应用程序的允许列表中，以允许流量从 Azure AD 预配服务流向应用程序。请参阅 [IP 范围](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges)处的文档。
 
 ## <a name="change-log"></a>更改日志
 

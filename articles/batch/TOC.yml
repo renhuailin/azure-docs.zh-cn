@@ -137,6 +137,8 @@
           href: batch-automatic-scaling.md
         - name: 选择计算节点的 VM 大小
           href: batch-pool-vm-sizes.md
+        - name: 从云服务迁移到虚拟机池
+          href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: 配置对计算节点的访问权限
           href: pool-endpoint-configuration.md
         - name: 使用共享映像库创建池

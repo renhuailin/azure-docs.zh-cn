@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5c21efc9cb082d915fd87e9ae01606fce18016bc
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 71f4cfa9e7b69e51bafa5364f857f8ab689f2ad0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897261"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955461"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教程：为 ServiceNow 配置自动用户预配
 
@@ -152,6 +152,11 @@ ms.locfileid: "97897261"
    ![授权 SOAP 请求](media/servicenow-provisioning-tutorial/servicenow-webservice.png)
 
    如果它解决了你的问题，请联系 ServiceNow 支持，并请求他们启用 SOAP 调试，以帮助进行故障排除。 
+
+* **IP 范围** 
+
+   Azure AD 预配服务当前在特定 IP 范围下运行。因此，如果需要，可以限制其他 IP 范围，并将这些特定 IP 范围添加到应用程序的允许列表中，以允许流量从 Azure AD 预配服务流向应用程序。请参阅 [IP 范围](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges)处的文档。
+
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)

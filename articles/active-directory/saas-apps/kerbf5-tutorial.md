@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 161348f7566ff64858d563f34ad8f3f4c7511adf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 16fff00f04c4cd57ad46759cceb50134e58d5e01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009154"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933075"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory 单一登录 (SSO) 与 F5 的集成
 
@@ -195,7 +195,7 @@ ms.locfileid: "96009154"
 1. 在“添加分配”对话框中，单击“分配”按钮。
 1. 单击“条件访问”。
 1. 单击“新建策略”。
-1. 现在，可将 F5 应用视为 CA 策略的资源，并应用任何条件访问，包括多重身份验证、基于设备的访问控制或标识保护策略。
+1. 现在，可将 F5 应用视为条件访问策略的资源，并应用任何条件访问，包括多重身份验证、基于设备的访问控制或标识保护策略。
 
 ## <a name="configure-f5-sso"></a>配置 F5 SSO
 

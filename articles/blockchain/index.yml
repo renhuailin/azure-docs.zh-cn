@@ -11,12 +11,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 10/23/2019
-  ms.openlocfilehash: 123d84cc29c1dce85cccf8c1bbb089bfbbbf7bf3
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 5c5524f6214978864b4171f5298549c7963a7bd1
+  ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "87007656"
+  ms.lasthandoff: 01/07/2021
+  ms.locfileid: "97963923"
 productDirectory:
   items:
   - title: Azure 区块链服务
@@ -44,6 +44,9 @@ conceptualContent:
     - url: ./service/send-transaction.md
       itemType: tutorial
       text: 按照教程操作并编写智能合同
+    - url: /learn/paths/ethereum-blockchain-development
+      itemType: learn
+      text: 使用 Microsoft Learn 区块链路径
     - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
       itemType: video
       text: 观看如何部署和配置网络

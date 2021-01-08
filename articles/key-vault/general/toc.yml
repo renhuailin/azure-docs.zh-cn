@@ -45,22 +45,18 @@
       href: basic-concepts.md
     - name: 安全性
       items:
+        - name: 安全概述
+          href: security-overview.md
+        - name: 保护对密钥保管库的访问
+          href: secure-your-key-vault.md
         - name: Key Vault 身份验证基础知识
           href: authentication-fundamentals.md
-        - name: Azure Key Vault 安全性
-          href: overview-security.md
-        - name: 有关使用 Key Vault 的最佳做法 - Azure Key Vault
-          href: best-practices.md
-        - name: Azure Key Vault 安全体系
+        - name: 安全体系和地理边界
           href: overview-security-worlds.md
         - name: 网络安全
           href: network-security.md
-        - name: 保护对 Key Vault 的访问 - Azure Key Vault
-          href: secure-your-key-vault.md
         - name: Key Vault 的 Azure 安全基线
           href: security-baseline.md
-        - name: Azure Key Vault 安全建议
-          href: security-recommendations.md
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
@@ -82,7 +78,7 @@
       href: overview-throttling.md
     - name: Azure 密钥保管库可用性和冗余
       href: disaster-recovery-guidance.md
-    - name: Azure Key Vault 的虚拟网络服务终结点 - Azure Key Vault
+    - name: Azure Key Vault 的虚拟网络服务终结点
       href: overview-vnet-service-endpoints.md
 - name: 操作指南
   items:
@@ -154,9 +150,9 @@
       href: whats-new.md
     - name: 客户端库
       href: client-libraries.md
-    - name: REST API 错误代码 - Azure Key Vault
+    - name: REST API 错误代码
       href: rest-error-codes.md
-    - name: 常见错误代码 - Azure Key Vault
+    - name: 常见错误代码
       href: common-error-codes.md
     - name: 常见参数和标头
       href: common-parameters-and-headers.md

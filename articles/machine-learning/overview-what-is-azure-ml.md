@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 53e6d6e67a90cd1f39aed7f9cd7c2368282b2d1f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620471"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916586"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -118,7 +118,7 @@ Azure 机器学习可与 Azure 平台上的其他服务配合使用，还能与�
 + __Azure 虚拟网络__。 有关详细信息，请参阅[虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
 + __Azure Pipelines__。 有关详细信息，请参阅[定型和部署机器学习模型](/azure/devops/pipelines/targets/azure-machine-learning)。
 + __Git 存储库日志__。 有关详细信息，请参阅 [Git 集成](concept-train-model-git-integration.md)。
-+ __MLFlow__。 有关详细信息，请参阅[使用 MLflow 跟踪指标并部署模型](how-to-use-mlflow.md) 
++ __MLFlow__。 有关详细信息，请参阅[通过 MLflow 跟踪指标](how-to-use-mlflow.md)和[将 Mlflow 模型部署为 Web 服务](how-to-deploy-mlflow-models.md) 
 + __Kubeflow__。 有关详细信息，请参阅[构建端到端工作流管道](https://www.kubeflow.org/docs/azure/)。
 
 ### <a name="secure-communications"></a>安全通信

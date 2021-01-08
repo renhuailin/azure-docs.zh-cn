@@ -1,18 +1,18 @@
 ---
-title: Azure 通信服务的 Teams 互操作入门
+title: 快速入门 - Azure 通信服务的 Teams 互操作
 titleSuffix: An Azure Communication Services quickstart
-description: 在本快速入门中，你将了解如何通过 Azure 通信通话 SDK 加入 Teams 会议
+description: 在本快速入门中，你将了解如何通过 Azure 通信通话 SDK 加入 Teams 会议。
 author: matthewrobertson
 ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: a51833088ad10fc261405d350bb8d0ba61cbcb66
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 48b9e1139ecae3deed513c954bf4faa7022a88a1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114557"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936679"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>快速入门：在 Teams 会议中加入通话应用
 
@@ -24,7 +24,7 @@ ms.locfileid: "92114557"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果想要清理并删除通信服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。 了解[清理资源](../create-communication-resource.md#clean-up-resources)的详细信息。
+如果想要清理并删除通信服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。 了解有关[清理资源](../create-communication-resource.md#clean-up-resources)的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
