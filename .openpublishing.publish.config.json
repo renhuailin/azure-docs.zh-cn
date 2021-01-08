@@ -9,7 +9,8 @@
       "monikers": [],
       "moniker_ranges": [],
       "xref_query_tags": [
-        "/dotnet"
+        "/dotnet",
+        "/python"
       ],
       "open_to_public_contributors": true,
       "type_mapping": {
@@ -25,16 +26,25 @@
       "version": 0
     }
   ],
-  "notification_subscribers": [],
+  "notification_subscribers": [
+<<<<<<< HEAD
+    "CnE_UE_Acom_doc_all@moravia.com"
+  ],
   "sync_notification_subscribers": [],
+=======
+    "azure-docs-publish@microsoft.com"
+  ],
+  "sync_notification_subscribers": [
+    "ceicnotifications@microsoft.com"
+  ],
+>>>>>>> 763c09162cc056fe03b1a40300ea9d0c23f502ba
   "branches_to_filter": [
     "master",
     "master-sync-work",
     "live"
   ],
-  "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/azure-docs.zh-cn",
+ "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/azure-docs.zh-cn",
   "git_repository_branch_open_to_public_contributors": "master",
-  "continue_with_document_error": true,
   "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
   "contribution_branch_mappings": {
@@ -65,7 +75,10 @@
       "path_to_root": "_repo.en-us",
       "url": "https://github.com/MicrosoftDocs/azure-docs-pr",
       "branch": "live",
-      "branch_mapping": {}
+      "branch_mapping": {
+      "live":"live",
+      "master":"master"
+      }
     },
     {
       "path_to_root": "cli_scripts",
@@ -413,6 +426,11 @@
       "branch": "2.4"
     },     
     {
+      "path_to_root": "azure-cosmos-spark",
+      "url": "https://github.com/Azure/azure-cosmosdb-spark",
+      "branch": "2.4"
+    },     
+    {
       "path_to_root": "cosmos-dotnet-getting-started",
       "url": "https://github.com/Azure-Samples/cosmos-dotnet-getting-started",
       "branch": "main",
@@ -590,8 +608,6 @@
       "template_folder": "_themes.pdf"
     }
   },
-  "need_generate_pdf": false,
-  "need_generate_intellisense": false,
   "docs_build_engine": {
     "name": "docfx_v3"
   }
