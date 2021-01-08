@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d083bc0b7726a284dcfd03e49d47c2a342db023c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ed909cf3feb17930b045dee1031ed5a6209b63d2
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461809"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98029009"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>什么是 Azure Synapse Link for Azure Cosmos DB？
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -117,13 +117,15 @@ Azure Cosmos DB 分析存储是 Azure Cosmos DB 中的操作数据的面向列�
 
 ## <a name="limitations"></a>限制
 
-* 目前，SQL API 和用于 MongoDB 的 Azure Cosmos DB API 支持 Azure Synapse Link for Azure Cosmos DB。 而 Gremlin API 和表 API 不支持它。 对 Cassandra API 的支持为个人预览版；如需详细信息，请联系 [Azure Synapse Link 团队](mailto:cosmosdbsynapselink@microsoft.com)。  
+* 适用于 Azure Cosmos DB 的 Azure Synapse 链接支持适用于 MongoDB 的 SQL API 和 Azure Cosmos DB API。 它不支持 Gremlin API、Cassandra API 和表 API。 
 
-* 目前，只能为新容器启用分析存储。 若要对现有容器使用分析存储，可以使用 [Azure Cosmos DB 迁移工具](cosmosdb-migrationchoices.md)将数据从现有容器迁移到新容器。 可以在新的和现有的 Azure Cosmos DB 帐户上启用 Synapse Link。
+* 只能为新容器启用分析存储。 若要对现有容器使用分析存储，可以使用 [Azure Cosmos DB 迁移工具](cosmosdb-migrationchoices.md)将数据从现有容器迁移到新容器。 可以在新的和现有的 Azure Cosmos DB 帐户上启用 Synapse Link。
 
 * 对于启用了分析存储的容器，目前不支持自动备份和还原分析存储中的数据。 在数据库帐户上启用 Synapse Link 后，Azure Cosmos DB 会像往常一样，继续按计划的备份间隔以自动方式仅对容器的事务性存储中的数据[执行备份](./online-backup-and-restore.md)。 需要特别注意的是，将启用了分析存储的容器还原到新帐户时，将仅使用事务性存储来还原容器，而不会启用分析存储。 
 
 * 当前无法访问预配了 Synapse SQL 的 Azure Cosmos DB 分析存储。
+
+* 当前不支持 Azure Cosmso DB 分析存储在 Azure Synapse Analytics 中使用托管专用终结点的网络隔离。
 
 ## <a name="pricing"></a>定价
 

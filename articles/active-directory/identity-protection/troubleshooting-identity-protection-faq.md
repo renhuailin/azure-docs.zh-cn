@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/07/2020
+ms.date: 01/07/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb63a4a0b7b7fdefd636d3460b182f8d907dd36
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558923"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028890"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 中的常见问题标识保护
 
@@ -35,7 +35,7 @@ ms.locfileid: "96558923"
 
 如果你是 Azure AD Identity Protection 的客户，请前往有风险的 [用户](howto-identity-protection-investigate-risk.md#risky-users) 视图，并单击 "有风险的用户"。 在底部的抽屉中，选项卡 "风险历史记录" 将显示导致用户风险更改的所有事件。 若要查看用户的所有有风险的登录，请单击 "用户的危险登录"。 若要查看此用户的所有风险检测，请单击 "用户的风险检测"。
 
-## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>为什么我的登录被阻止，但 Identity Protection 没有生成风险检测？
+### <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>为什么我的登录被阻止，但 Identity Protection 没有生成风险检测？
 由于多种原因，登录可能被阻止。 需要特别注意的是，标识保护仅在身份验证请求中使用正确的凭据时才会生成风险检测。 如果用户使用不正确的凭据，则标识保护将不会对其进行标记，因为如果错误的使用者使用正确的凭据，则不存在凭据泄露的风险。 阻止用户签名但不会生成标识保护检测的一些原因包括：
 * 由于来自 IP 地址的恶意活动， **ip 可能被阻止** 。 IP 阻止消息不区分凭据是否正确。 如果 IP 被阻止并且未使用正确的凭据，则不会生成标识保护检测
 * 在多次尝试失败后，**[智能锁定](../authentication/howto-password-smart-lockout.md)** 会阻止该帐户登录
@@ -96,3 +96,7 @@ IP 地理位置映射是整个行业面临的挑战。 如果你认为登录报�
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>为什么登录的“登录风险(总计)”分数为高，而与之相关的检测结果为低风险或中等风险？
 
 高总计风险评分可能基于登录的其他特性，或者针对该登录触发了多个检测的事实。 反之，登录也可能为中等“登录风险(总计)”，即使与登录相关的检测为高风险。
+
+### <a name="what-is-the-difference-between-the-activity-from-anonymous-ip-address-and-anonymous-ip-address-detections"></a>"来自匿名 IP 地址的活动" 和 "匿名 IP 地址" 检测之间的区别是什么？
+
+"匿名 IP 地址" 检测的源是 Azure AD Identity Protection，而 "来自匿名 IP 地址的活动" 检测是从 MCAS (Microsoft Cloud App Security) 集成的。 虽然它们具有非常相似的名称，并且可能会在这些信号中出现重叠，但它们具有不同的后端检测。
