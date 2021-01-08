@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2020
+ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: c3b228d2652d5f7dcf7c6596ee5425b3f5f9a4d8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 46d569eae768178815a933d9a857e19bacdaaeb9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95543997"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013220"
 ---
 # <a name="create-a-connection-monitor-using-the-arm-template"></a>使用 ARM 模板创建连接监视器
 
@@ -26,9 +26,9 @@ ms.locfileid: "95543997"
 
 ## <a name="before-you-begin"></a>准备阶段 
 
-在连接监视器中创建的连接监视器中，可以将本地计算机和 Azure Vm 添加为源。 这些连接监视器还可以监视与终结点的连接。 终结点可以位于 Azure 上，也可以位于任何其他 URL 或 IP 上。
+在通过连接监视器创建的连接监视器中，可以将本地计算机和 Azure VM 添加为源。 这些连接监视器还可以监视与终结点的连接。 终结点可以位于 Azure 上，也可以位于任何其他 URL 或 IP 上。
 
-连接监视器包括以下实体：
+连接监视器包含以下实体：
 
 * **连接监视器资源** – 特定于区域的 Azure 资源。 以下所有实体都是连接监视器资源的属性。
 * **终结点** – 参与连接检查的源或目标。 终结点的示例包括 Azure VM、本地代理、URL 和 IP。
@@ -378,13 +378,13 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
     * testFrequencySec - 指定源对指定协议和端口上的目标执行 ping 操作的频率。 可以选择 30 秒、1 分钟、5 分钟、15 分钟或 30 分钟。 源将根据所选的值来测试与目标的连接。 例如，如果选择 30 秒，则源将在 30 秒的时间段内至少检查一次与目标的连接。
     * protocol - 可以选择 TCP、ICMP、HTTP 或 HTTPS。 根据协议，可以执行一些特定于协议的配置
     
-        * preferHTTPS-如果使用的端口不是80或443，则指定是否通过 HTTP 使用 HTTPS
+        * preferHTTPS - 指定当使用的端口既不是 80 也不是 443 时是否使用 HTTPS 而非 HTTP
         * port - 指定所选的目标端口。
-        * disableTraceRoute-适用于其协议为 TCP 或 ICMP 的测试配置。 它将阻止源发现拓扑和逐跳 RTT。
-        * 方法-应用于协议为 HTTP 的测试配置。 选择 HTTP 请求方法（GET 或 POST）
-        * 路径-指定要追加到 URL 的路径参数
-        * validStatusCodes-选择适用的状态代码。 如果响应代码不匹配此列表，您将收到一条诊断消息
-        * requestHeaders-指定将传递给目标的自定义请求标头字符串
+        * disableTraceRoute - 适用于其协议为 TCP 或 ICMP 的测试配置。 它将阻止源发现拓扑和逐跳 RTT。
+        * method - 适用于其协议为 HTTP 的测试配置。 选择 HTTP 请求方法（GET 或 POST）
+        * path - 指定要追加到 URL 的路径参数
+        * validStatusCodes - 选择适用的状态代码。 如果响应代码与此列表不匹配，你会收到一条诊断消息
+        * requestHeaders - 指定将传递到目标的自定义请求头字符串
         
     * successThreshold - 可以在以下网络参数上设置阈值：
         * checksFailedPercent - 设置在源使用指定条件检查到目标的连接时可能检查失败的百分比。 对于 TCP 或 ICMP 协议，检查失败的百分比可能会与数据包丢失的百分比相同。 对于 HTTP 协议，此字段表示未接收到响应的 HTTP 请求的百分比。

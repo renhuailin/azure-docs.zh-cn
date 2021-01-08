@@ -1,25 +1,25 @@
 ---
 title: Azure Cosmos DB 的 SQL JOIN 查询
 description: 了解如何联接 Azure Cosmos DB 中的多个表以查询数据
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.author: mjbrown
-ms.openlocfilehash: c3fad0c7eed2b42a9ac340a091f17b90e22b000a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 01/07/2021
+ms.author: tisande
+ms.openlocfilehash: cb7b2e62a9fabeeca675edb8e6aa356213e0999e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333828"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011367"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联接
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 在关系数据库中，跨表联接是设计规范化架构的逻辑定理。 相比之下，SQL API 使用无架构项的反规范化数据模型，这在逻辑上等效于自联接。 
 
-内联会导致加入联接的集产生完整叉积。 N 向联接的结果是获得一组 N-元素元组，其中元组中的每个值与参与联接的别名集相关联，并且可以通过引用其他子句中的这些别名来访问。
+联接将生成参与联接的集的完整叉积。 N 向联接的结果是获得一组 N-元素元组，其中元组中的每个值与参与联接的别名集相关联，并且可以通过引用其他子句中的这些别名来访问。
 
 ## <a name="syntax"></a>语法
 
@@ -254,8 +254,10 @@ JOIN 子句真正实用的地方是通过以其他方式难以投影的形式基
     ]
 ```
 
+如果查询有联接和筛选器，则可以将查询的一部分作为 [子](sql-query-subquery.md#optimize-join-expressions) 查询重写，以提高性能。
+
 ## <a name="next-steps"></a>后续步骤
 
 - [入门](sql-query-getting-started.md)
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)
 - [子查询](sql-query-subquery.md)

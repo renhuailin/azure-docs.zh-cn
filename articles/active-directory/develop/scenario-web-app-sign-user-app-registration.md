@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 30d646ff7d4f97289ff238211418ac57cd8167a4
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7ca294d3d7764737d4e2be55aae25bc8ff08a8d1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107679"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011520"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>用于登录用户的 Web 应用：应用注册
 
@@ -41,10 +41,10 @@ ms.locfileid: "97107679"
 > 要使用的门户不同，具体取决于你的应用程序是在 Microsoft Azure 公有云还是在全国或主权云中运行。 有关详细信息，请参阅[国家云](./authentication-national-cloud.md#app-registration-endpoints)。
 
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 
+1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
-1. 在 "**管理**" 下，选择 "**应用注册**  >  **新注册**"。
+1. 在“管理”下，选择“应用注册” > “新建注册”  。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -52,7 +52,7 @@ ms.locfileid: "97107679"
    1. 输入应用程序的名称（例如 `AspNetCore-WebApp`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
    1. 为应用程序选择支持的帐户类型。 （请参阅[支持的帐户类型](./v2-supported-account-types.md)。）
    1. 在“重定向 URI”中，添加将在成功进行身份验证后接受返回的令牌响应的应用程序类型和 URI 目标。  例如，输入 `https://localhost:44321`。
-   1. 选择“注册”  。
+   1. 选择“注册”。
 1. 在 " **管理**" 下选择 " **身份验证** "，并添加以下信息：
    1. 在 " **Web** " 部分中，添加 `https://localhost:44321/signin-oidc` 作为 **重定向 URI**。
    1. 添加 `https://localhost:44321/signout-oidc` 为 **注销 URL**。
@@ -76,7 +76,7 @@ ms.locfileid: "97107679"
     1. 输入应用程序的名称（例如 `java-webapp`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。 
     1. 选择 **任何组织目录中的帐户和个人 Microsoft 帐户 (例如 Skype、Xbox、Outlook.com)**。
     1. 选择“注册”以注册应用程序。
-1. 在 "**管理**" 下，选择 "**身份验证**" "  >  **添加平台**"。
+1. 在“管理”下，选择“身份验证” > “添加平台”  。
 1. 选择“Web”。
 1. 对于 " **重定向 URI**"，请输入相同的主机和端口号，后跟 `/msal4jsample/secure/aad` 登录页。 
 1. 选择“配置” 。

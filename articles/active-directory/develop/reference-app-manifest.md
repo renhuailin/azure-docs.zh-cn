@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 1f4e1def81fc79ec159ce6be825793a9bd8d0ce7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b29d8007ba7c6fb41209ad4f792069667416616b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286955"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011537"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -33,7 +33,7 @@ ms.locfileid: "93286955"
 
 若要配置应用程序清单，请执行以下操作：
 
-1. 转到 [Azure 门户](https://portal.azure.com)。 搜索并选择 **Azure Active Directory** 服务。
+1. 请参阅<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 搜索并选择 **Azure Active Directory** 服务。
 1. 选择“应用注册” 。
 1. 选择要配置的应用。
 1. 在应用的“概览”页中，选择“清单”部分。  此时会打开一个基于 Web 的清单编辑器，可在其中编辑门户中的清单。 （可选）可以选择“下载”以在本地编辑清单，然后使用“上传”将清单重新应用于应用程序。 
@@ -664,7 +664,7 @@ ms.locfileid: "93286955"
 
 尝试上传之前下载的清单时，可能会出现以下错误之一。 此错误很可能是因为清单编辑器现在支持较新版本的架构，该架构与你尝试上传的清单不匹配。
 
-* “无法更新 xxxxxx 应用程序。 错误详细信息：无效的对象标识符 'undefined'。 []."
+* “无法更新 xxxxxx 应用程序。 错误详细信息：无效的对象标识符 'undefined'。 []。”
 * “无法更新 xxxxxx 应用程序。 错误详细信息：指定的一个或多个属性值无效。 []."
 * “无法更新 xxxxxx 应用程序。 错误详细信息：不允许在此 api 版本中设置要更新的 availableToOtherTenants。 []."
 * “无法更新 xxxxxx 应用程序。 错误详细信息：不允许对此应用程序的 replyUrls 属性进行更新。 请改用 'replyUrlsWithType' 属性。 []."

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
 ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 01/08/2021
 ms.locfileid: "92109181"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>使用 Sqoop 在 Data Lake Storage Gen1 和 Azure SQL 数据库之间复制数据
@@ -30,7 +30,7 @@ ms.locfileid: "92109181"
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
-* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 本文假定用户的群集是具有 Data Lake Storage Gen1 访问权限的 HDInsight Linux 群集。
+* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 本文假定用户的群集是具有 Data Lake Storage Gen1 访问权限的 HDInsight Linux 群集。
 * **Azure SQL 数据库**。 有关如何在 Azure SQL 数据库中创建数据库的说明，请参阅 [在 AZURE Sql 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)
 
 ## <a name="create-sample-tables-in-the-database"></a>在数据库中创建示例表
@@ -67,7 +67,7 @@ ms.locfileid: "92109181"
     GO
     ```
 
-1. 运行以下命令，将一些示例数据添加到 **Table1**。 **表 2 **留空。 稍后，将数据从 **Table1** 导入 Data Lake Storage Gen1。 然后，将 Data Lake Storage Gen1 中的数据导出到 **Table2**。
+1. 运行以下命令，将一些示例数据添加到 **Table1**。 **表 2** 留空。 稍后，将数据从 **Table1** 导入 Data Lake Storage Gen1。 然后，将 Data Lake Storage Gen1 中的数据导出到 **Table2**。
 
     ```tsql
     INSERT INTO [dbo].[Table1] VALUES (1,'Neal','Kell'), (2,'Lila','Fulton'), (3, 'Erna','Myers'), (4,'Annette','Simpson');
@@ -91,7 +91,7 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已将 HDInsight 群集
 
 1. 导航至 Sqoop 包可用的目录。 通常，此位置为 `/usr/hdp/<version>/sqoop/bin` 。
 
-1. 将数据从**表 1** 导入到 Data Lake Storage Gen1 帐户。 使用以下语法：
+1. 将数据从 **表 1** 导入到 Data Lake Storage Gen1 帐户。 使用以下语法：
 
     ```console
     sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
@@ -111,7 +111,7 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已将 HDInsight 群集
     hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
     ```
 
-   应该会看到以下输出。
+   你会看到以下输出。
 
     ```console
     -rwxrwxrwx   0 sshuser hdfs          0 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/_SUCCESS
@@ -121,11 +121,11 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已将 HDInsight 群集
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   每个 part-m-* 文件对应源表（表 1）中的一行********。 可查看 part-m-* 文件的内容进行验证。
+   每个 **part**-_ 文件对应于源表中的行 _ *Table1 * *。可以查看第 m 部分的内容* 进行验证。
 
 ### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>从 Data Lake Storage Gen1 将数据导出到 Azure SQL 数据库
 
-1. 将数据从 Data Lake Storage Gen1 帐户导出到 Azure SQL 数据库中的空表（表 2****）。 使用以下语法。
+1. 将数据从 Data Lake Storage Gen1 帐户导出到 Azure SQL 数据库中的空表（表 2）。 使用以下语法。
 
     ```console
     sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","

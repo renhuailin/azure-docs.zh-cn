@@ -11,18 +11,18 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b4ac8f87e8e19d3487859849ba37272c501751d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: e1b82dbe169e01b68e7d4b8a4c243cb72d3a3e8b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744374"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012999"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
 多重身份验证 (MFA) 等功能是保护组织的一种好方法，但用户通常会在必须记住其密码的情况下使用额外的安全层。 无密码身份验证方法更为方便，因为密码会被删除并替换为你拥有的内容，以及你或你知道的内容。
 
-| 身份验证  | 已有内容 | 你或知道的内容 |
+| Authentication  | 已有内容 | 你或知道的内容 |
 | --- | --- | --- |
 | 无密码 | Windows 10 设备、电话号码或安全密钥 | 生物识别或 PIN |
 
@@ -140,6 +140,7 @@ FIDO2 安全密钥可用于登录到其 Azure AD 或混合 Azure AD 加入 Windo
 | VinCSS | [https://passwordless.vincss.net](https://passwordless.vincss.net) |
 | KONA I | [https://konai.com/business/security/fido](https://konai.com/business/security/fido) |
 | Excelsecu | [https://www.excelsecu.com/productdetail/esecufido2secu.html](https://www.excelsecu.com/productdetail/esecufido2secu.html) |
+| 瑞士 Token2 | [https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key](https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key) |
 
 > [!NOTE]
 > 如果你购买并计划使用基于 NFC 的安全密钥，则需要为安全密钥提供支持的 NFC 读卡器。 NFC 读卡器不是 Azure 要求或限制。 有关支持的 NFC 读卡器的列表，请与供应商联系以获取基于 NFC 的安全密钥。
@@ -171,14 +172,14 @@ Azure AD 无密码登录功能当前以预览版提供。 请注意以下事项�
 ||**Windows Hello 企业版**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
 |:-|:-|:-|:-|
 |**必备组件**| Windows 10 版本 1809 或更高版本<br>Azure Active Directory| Microsoft Authenticator 应用<br>电话 (运行 Android 6.0 或更高版本的 iOS 和 Android 设备。 ) |Windows 10 版本1903或更高版本<br>Azure Active Directory|
-|**模式**|平台|软件|硬件|
+|**模式**|Platform|软件|硬件|
 |**系统和设备**|带有内置受信任的平台模块 (TPM) 的 PC<br>PIN 和生物识别识别 |电话上的 PIN 和生物识别识别|FIDO2 兼容 Microsoft 的安全设备|
 |**用户体验**|使用 PIN 或生物识别识别登录 (使用 Windows 设备的面部) 、iris 或指纹。<br>Windows Hello 身份验证已绑定到设备;用户需要设备和登录组件（如 PIN 或生物识别因素）来访问公司资源。|使用带有指纹扫描、面部或 iris 识别或 PIN 的移动电话登录。<br>用户从他们的 PC 或手机登录到工作帐户或个人帐户。|使用 FIDO2 security 设备登录 (生物识别、PIN 和 NFC) <br>用户可以基于组织控制和使用设备（如 USB 安全密钥和启用了 NFC 的智能卡、密钥或可穿戴设备）的设备，基于 PIN、生物识别来访问设备。|
 |**启用的方案**| Windows 设备的无密码体验。<br>适用于专用于设备和应用程序的单一登录功能的工作 PC。|使用移动电话的无密码的任意位置解决方案。<br>适用于从任何设备访问 web 上的工作或个人应用程序。|使用生物识别、PIN 和 NFC 的辅助角色的无密码体验。<br>适用于共享 Pc，移动电话不是可行的选项 (例如，用于咨询台人员、公共展台或医院团队) |
 
 使用下表选择支持和用户的方法。
 
-|增添|方案|环境|无密码技术|
+|增添|场景|环境|无密码技术|
 |:-|:-|:-|:-|
 |**管理员**|安全访问设备以执行管理任务|分配的 Windows 10 设备|Windows Hello 企业版和/或 FIDO2 安全密钥|
 |**管理员**|非 Windows 设备上的管理任务| 移动或非 windows 设备|无密码 Microsoft Authenticator 应用登录|

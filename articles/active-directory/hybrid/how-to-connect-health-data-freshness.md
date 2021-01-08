@@ -3,8 +3,8 @@ title: Azure AD Connect Health -“运行状况服务数据不是最新的”警
 description: 本文档介绍了“运行状况服务数据不是最新的”警报的原因以及如何对此警报进行故障排除。
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
-manager: SamuelD
+author: billmath
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: hybrid
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63d1d87d9b576a8e181b5b339052a6b6512f18a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00518eb91e57efaacb7abc63b6ad4531619be2ce
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85359222"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012863"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>“运行状况服务数据不是最新的”警报
 
@@ -28,7 +28,7 @@ ms.locfileid: "85359222"
 
 本地计算机上 Azure AD Connect Health 监视定期将数据上载到 Azure AD Connect Health 服务的代理。 如果服务没有从代理接收数据，则该门户提供的信息将会过时。 若要突出显示此问题，服务会引发 " **运行状况服务数据不是最** 新的" 警报。 在过去两小时内服务尚未收到完整数据时，将生成此警报。  
 
-- 如果运行状况服务在过去两小时内只收到从服务器发送的**部分**数据类型，则会触发**警告**状态警报。 警告状态警报不会向已配置收件人触发电子邮件通知。 
+- 如果运行状况服务在过去两小时内只收到从服务器发送的 **部分** 数据类型，则会触发 **警告** 状态警报。 警告状态警报不会向已配置收件人触发电子邮件通知。 
 - 如果运行状况服务在过去两小时内未从服务器收到任何数据类型，则会触发 **错误** 状态警报。 错误状态警报触发向已配置收件人发送电子邮件通知。
 
 服务从运行在本地计算机上的代理中获取数据，具体取决于服务类型。 下表列出了在计算机上运行的代理、其功能以及服务生成的数据类型。 在某些情况下，该过程涉及到多个服务，因此其中任何一个服务可能就是问题所在。 

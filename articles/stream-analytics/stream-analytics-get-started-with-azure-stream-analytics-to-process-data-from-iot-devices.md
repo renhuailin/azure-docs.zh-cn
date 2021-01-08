@@ -1,18 +1,17 @@
 ---
 title: 使用 Azure 流分析处理实时 IoT 数据流
 description: 带流分析和实时数据处理的 IoT 传感器标记和数据流
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: 311aca139220622a0436d490e73a536c3fc898c9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a438401ff93c20d8759e6128936c3626bd3de484
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129008"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012676"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>使用 Azure 流分析处理实时 IoT 数据流
 
@@ -44,7 +43,7 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航菜单中，选择“+ 创建资源”  。 然后从“分析”中选择“流分析作业”  。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航菜单中，选择“+ 创建资源”  。 然后从“分析”中选择“流分析作业”。
    
     ![创建新的流分析作业](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
@@ -125,7 +124,7 @@ HAVING Avg(temp)>100
 
 ![30 秒筛选查询](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-会看到结果只有 245 行，以及平均温度高于 100 度的传感器的名称。 此查询按 **dspl** （传感器名称）以 30 秒的 **轮转窗口** 对事件流进行分组。 临时查询必须声明你希望的时间进展方式。 通过使用 TIMESTAMP BY 子句，你已指定 OUTPUTTIME 列用于将时间与所有临时计算关联   。 有关详细信息，请阅读有关 [Time Management](/stream-analytics-query/time-management-azure-stream-analytics)（时间管理）和 [Windowing functions](/stream-analytics-query/windowing-azure-stream-analytics)（窗口化函数）的文章。
+会看到结果只有 245 行，以及平均温度高于 100 度的传感器的名称。 此查询按 **dspl**（传感器名称）以 30 秒的 **轮转窗口** 对事件流进行分组。 临时查询必须声明你希望的时间进展方式。 通过使用 TIMESTAMP BY 子句，你已指定 OUTPUTTIME 列用于将时间与所有临时计算关联   。 有关详细信息，请阅读有关 [Time Management](/stream-analytics-query/time-management-azure-stream-analytics)（时间管理）和 [Windowing functions](/stream-analytics-query/windowing-azure-stream-analytics)（窗口化函数）的文章。
 
 ### <a name="query-detect-absence-of-events"></a>查询：检测事件缺失
 

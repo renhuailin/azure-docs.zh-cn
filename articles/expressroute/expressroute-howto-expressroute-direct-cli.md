@@ -1,23 +1,32 @@
 ---
-title: Azure ExpressRoute：配置 ExpressRoute Direct： CLI
-description: 了解如何使用 Azure CLI 将 Azure ExpressRoute 直接配置为直接连接到 Microsoft 全球网络。
+title: Azure ExpressRoute：配置 ExpressRoute Direct：CLI
+description: 了解如何使用 Azure CLI 将 Azure ExpressRoute Direct 配置为直接连接到 Microsoft 全球网络。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7931ad9e55d62d5fa2b1828d276e56f7c8cd02e1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aea51e56f2d96fa634b1ece2029c9ea5bf3f60fc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286478"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011299"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Direct
 
-ExpressRoute Direct 使你能够通过战略分散在世界各地的对等互连位置直接连接到 Microsoft 的全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
+使用 ExpressRoute Direct，可以直接连接到 Microsoft 战略性分布在全球的对等互连位置的的全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
+
+## <a name="before-you-begin"></a>在开始之前
+
+需要先注册订阅，然后才能使用 ExpressRoute Direct。 若要注册，请使用你的订阅 ID 向 <ExpressRouteDirect@microsoft.com> 发送一封电子邮件，其中包括以下详细信息：
+
+* 需通过 **ExpressRoute Direct** 完成的方案
+* 位置首选项 - 请参阅[合作伙伴和对等互连位置](expressroute-locations-providers.md)，获取包含所有位置的完整列表
+* 实现的时间线
+* 其他问题
 
 ## <a name="create-the-resource"></a><a name="resources"></a>创建资源
 
@@ -39,7 +48,7 @@ ExpressRoute Direct 使你能够通过战略分散在世界各地的对等互连
    az account set --subscription "<subscription ID>"
    ```
 
-2. 将你的订阅重新注册到 Microsoft 以访问 expressrouteportslocation 和 expressrouteport Api
+2. 将你的订阅重新注册到 Microsoft.Network 以访问 expressrouteportslocation 和 expressrouteport API
 
    ```azurecli
    az provider register --namespace Microsoft.Network
@@ -285,9 +294,9 @@ ExpressRoute Direct 使你能够通过战略分散在世界各地的对等互连
 
 只能在 ExpressRoute Direct 上使用其他线路带宽来支持上面概述的场景。 带宽为 40 Gbps 和 100 Gbps。
 
-**SkuTier** 可以是本地、标准或高级。
+SkuTier 可以为“本地”、“标准”或“高级”。
 
-**SkuFamily** 只能为 MeteredData。 ExpressRoute 直接不支持无限制。
+SkuFamily 只能为 MeteredData。 ExpressRoute Direct 不支持“无限制”。
 
 在 ExpressRoute Direct 资源上创建线路：
 

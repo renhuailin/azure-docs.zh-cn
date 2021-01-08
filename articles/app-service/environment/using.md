@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3679bf9d55ddccefddb4bf3b2a96ec1b427315af
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663425"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013526"
 ---
 # <a name="using-an-app-service-environment"></a>使用应用服务环境
 
@@ -78,13 +78,20 @@ SCM URL 用于访问 Kudu 控制台，也可用于通过 Web 部署发布应用�
 
 ### <a name="dns-configuration"></a>DNS 配置 
 
-ASE 将专用终结点用于入站流量，并使用 Azure DNS 专用区域自动进行配置。 如果要使用自己的 DNS 服务器，则需要添加以下记录：
+ASE 将专用终结点用于入站流量。 它不会自动配置 Azure DNS 专用区域。 如果要使用自己的 DNS 服务器，则需要添加以下记录：
 
 1. 为 &lt;ASE 名称&gt;.appserviceenvironment.net 创建一个区域
 1. 在该区域中创建 A 记录，将 * 指向 ASE 专用终结点使用的入站 IP 地址
 1. 在该区域中创建 A 记录，将 @ 指向 ASE 专用终结点使用的入站 IP 地址
 1. 在 &lt;ASE 名称&gt;.appserviceenvironment.net 中创建名为 scm 的区域
 1. 在 scm 区域中创建 A 记录，将该记录指向 ASE 专用终结点使用的 IP 地址
+
+在 Azure DNS 专用区域中配置 DNS：
+
+1. 创建名为 <ASE name>.appserviceenvironment.net 的 Azure DNS 专用区域
+1. 在该区域中创建一条指向* ILB IP 地址的 A 记录
+1. 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
+1. 在该区域中创建一条将 *.scm 指向 ILB IP 地址的 A 记录
 
 ASE 默认域后缀的 DNS 设置不会将应用限制为仅可通过这些名称访问。 可以设置自定义域名，无需对 ASE 中的应用进行任何验证。 如果随后想要创建名为 *contoso.net* 的区域，则可以将其指向入站 IP 地址。 自定义域名适用于应用请求，但不适用于 scm 站点。 scm 站点仅在 &lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net 中可用。 
 
