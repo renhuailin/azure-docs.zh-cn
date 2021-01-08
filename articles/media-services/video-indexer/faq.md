@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: 721af069a76497576b92c4203a93656d19c283aa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217722"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028788"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>视频索引器常见问题
 
@@ -183,7 +183,7 @@ Azure 媒体服务的 SLA 涵盖了视频索引器，可在 [SLA](https://azure.
 
 视频索引器 API 包含授权 API 和操作 API。 授权 API 包含提供访问令牌的调用。 对操作 API 的每个调用应该与匹配调用授权范围的访问令牌相关联。
 
-出于安全目的，需要访问令牌来使用视频索引器 API。 这可确保任何调用都来自你或拥有帐户访问权限的用户。 
+出于安全目的，需要访问令牌来使用视频索引器 API。 这可确保任何调用都来自你或拥有帐户访问权限的用户。 
 
 ### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>帐户访问令牌、用户访问令牌和视频访问令牌之间的区别是什么？
 
@@ -197,7 +197,7 @@ Azure 媒体服务的 SLA 涵盖了视频索引器，可在 [SLA](https://azure.
 
 ### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>视频索引器开发人员门户有哪些登录选项？
 
-你可以使用 Azure AD、Microsoft 帐户、Google 帐户或 Facebook 帐户登录。 
+有关 [登录信息](release-notes.md#october-2020)，请参阅发行说明。
 
 使用标识提供者注册电子邮件帐户后，不能将此电子邮件帐户用于其他标识提供者。
 

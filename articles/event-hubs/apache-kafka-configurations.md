@@ -2,13 +2,13 @@
 title: 建议用于 Apache Kafka 客户端的配置 - Azure 事件中心
 description: 本文提供了建议用于与 Apache Kafka 的 Azure 事件中心进行交互的客户端的 Apache Kafka 配置。
 ms.topic: reference
-ms.date: 07/20/2020
-ms.openlocfilehash: f9a03d1d3433461a575b32cd69893408a8b0ef97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/07/2021
+ms.openlocfilehash: 713900a3cc7e2b9f6f176edb21455faa577098d6
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87095876"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028822"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>建议用于 Apache Kafka 客户端的配置
 下面是从 Apache Kafka 客户端应用程序使用 Azure 事件中心时的建议配置。 
@@ -27,7 +27,7 @@ properties | 建议的值 | 允许的范围 | 备注
 
 properties | 建议的值 | 允许的范围 | 备注
 ---|---:|---:|---
-`max.request.size` | 1000000 | < 1046528 | 如果发送的请求大于 1,046,528 字节，则服务会关闭连接。  此值**必须**更改，否则会导致高吞吐量生成场景中出现问题。
+`max.request.size` | 1000000 | < 1046528 | 如果发送的请求大于 1,046,528 字节，则服务会关闭连接。  此值 **必须** 更改，否则会导致高吞吐量生成场景中出现问题。
 `retries` | > 0 | | 可能需要增大 delivery.timeout.ms 值，请参阅文档。
 `request.timeout.ms` | 30000 .. 60000 | > 20000| EH 会在内部默认设置为最小值，即 20,000 毫秒。  虽然系统会接受超时值较低的请求，但不保证客户端行为。
 `metadata.max.idle.ms` | 180000 | > 5000 | 控制生成者为空闲的主题缓存元数据的时间长度。 如果自上次生成主题以来过去的时间超过了元数据空闲持续时间，系统会忘记该主题的元数据，在下一次访问它时会强制执行元数据提取请求。
@@ -79,7 +79,7 @@ properties | 建议的值 | 允许的范围 | 备注
 
 症状 | 问题 | 解决方案
 ----|---|-----
-由于重新平衡而导致偏移量提交失败 | 使用者在两次调用 poll() 之间等待的时间太长，因此服务将该使用者踢出了群组。 | 有几种选项： <ul><li>增大会话超时</li><li>减小消息批大小以提高处理速度</li><li>改进处理并行性，以避免阻塞 consumer.poll()</li></ul> 应用这三者的某个组合可能是最明智的。
+由于重新平衡而导致偏移量提交失败 | 使用者在两次调用 poll() 之间等待的时间太长，因此服务将该使用者踢出了群组。 | 有几种选项： <ul><li>提高轮询处理超时 (`max.poll.interval.ms`) </li><li>减小消息批大小以提高处理速度</li><li>提高处理并行性，避免阻塞使用者。轮询 ( # A1</li></ul> 应用这三者的某个组合可能是最明智的。
 生成吞吐量高时的网络异常 | 你是否正在使用 Java 客户端 + 默认的 max.request.size？  你的请求可能太大。 | 请参阅上述 Java 配置。
 
 ## <a name="next-steps"></a>后续步骤

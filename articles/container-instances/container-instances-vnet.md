@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 命令行接口将容器组部署到新的
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746905"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028873"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
@@ -20,7 +20,7 @@ ms.locfileid: "92746905"
 有关网络方案和限制，请参阅 [Azure 容器实例的虚拟网络方案和资源](container-instances-virtual-network-concepts.md)。
 
 > [!IMPORTANT]
-> 虚拟网络中的容器组部署通常适用于大多数同时可使用 Azure 容器实例的区域中的 Linux 容器。 有关详细信息，请参阅[区域和资源可用性](container-instances-virtual-network-concepts.md#where-to-deploy)。 
+> 虚拟网络中的容器组部署通常适用于大多数同时可使用 Azure 容器实例的区域中的 Linux 容器。 有关详细信息，请参阅[区域和资源可用性][container-regions]。 
 
 本文中的示例已针对 Bash shell 设置了格式。 若要使用其他 shell（例如 PowerShell 或命令提示符），请相应地调整续行符。
 
@@ -204,7 +204,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 执行该脚本之前，请将 `RES_GROUP` 变量设置为包含所要删除的虚拟网络和子网的资源组的名称。 如果未使用之前建议的 `aci-vnet` 名称，请更新虚拟网络的名称。 此脚本已针对 Bash Shell 格式化。 若要使用其他 shell（例如 PowerShell 或命令提示符），需要相应地调整变量赋值和访问器。
 
 > [!WARNING]
-> 此脚本会删除资源！ 它会删除虚拟网络及其包含的所有子网。 运行此脚本之前，请确认你不再需要该虚拟网络中的任何资源，包括其中的任何子网。 一旦删除， **这些资源就不可恢复** 。
+> 此脚本会删除资源！ 它会删除虚拟网络及其包含的所有子网。 运行此脚本之前，请确认你不再需要该虚拟网络中的任何资源，包括其中的任何子网。 一旦删除，**这些资源就不可恢复**。
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group
@@ -238,3 +238,4 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 [az-container-show]: /cli/azure/container#az-container-show
 [az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
+[container-regions]: container-instances-region-availability.md

@@ -3,12 +3,12 @@ title: 使用 Azure CLI 和模板部署资源
 description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 7b1639f31b696f300177d05107a98effc3f3ae23
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a2caea70a51a737bfa433a089c03b43f252b5d6e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676191"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028142"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>通过 ARM 模板和 Azure CLI 来部署资源
 
@@ -18,7 +18,7 @@ ms.locfileid: "92676191"
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-如果没有安装 Azure CLI，则可使用 Cloud Shell。 有关详细信息，请参阅 [从 Cloud Shell 部署 ARM 模板](deploy-cloud-shell.md)。
+如果尚未安装 Azure CLI，则可以使用 Azure Cloud Shell。 有关详细信息，请参阅 [从 Azure Cloud Shell 部署 ARM 模板](deploy-cloud-shell.md)。
 
 ## <a name="deployment-scope"></a>部署范围
 
@@ -58,15 +58,15 @@ ms.locfileid: "92676191"
 
 ## <a name="deploy-local-template"></a>部署本地模板
 
-你可以从本地计算机或从外部存储的模板部署模板。 本部分介绍如何部署本地模板。
+可以部署本地计算机中的模板，也可以部署存储在外部的模板。 本节介绍如何部署本地模板。
 
-如果要部署到不存在的资源组，请创建资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 名称不能以句点结尾。
+如果要部署到不存在的资源组，请创建该资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 名称不能以句点结尾。
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 ```
 
-若要部署本地模板，请 `--template-file` 在部署命令中使用参数。 下面的示例还演示如何设置来自模板的参数值。
+若要部署本地模板，请在部署命令中使用 `--template-file` 参数。 下面的示例还显示了如何设置来自该模板的参数值。
 
 ```azurecli-interactive
 az deployment group create \
@@ -86,7 +86,7 @@ az deployment group create \
 
 你可能更愿意将 ARM 模板存储在外部位置，而不是存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
 
-如果要部署到不存在的资源组，请创建资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 名称不能以句点结尾。
+如果要部署到不存在的资源组，请创建该资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 名称不能以句点结尾。
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
@@ -106,7 +106,7 @@ az deployment group create \
 
 ## <a name="deployment-name"></a>部署名称
 
-部署 ARM 模板时，可以为部署命名。 此名称可帮助您从部署历史记录中检索部署。 如果没有为部署提供名称，将使用模板文件的名称。 例如，如果部署一个名为 `azuredeploy.json` 的模板，但未指定部署名称，则该部署将命名为 `azuredeploy`。
+部署 ARM 模板时，可以为部署指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用模板文件的名称。 例如，如果部署一个名为 `azuredeploy.json` 的模板，但未指定部署名称，则该部署将命名为 `azuredeploy`。
 
 每次运行部署时，一个包含部署名称的条目会添加到资源组的部署历史记录中。 如果运行另一个部署并为其指定了相同的名称，则会将先前的条目替换为当前部署。 如果要在部署历史记录中保持唯一条目，请为每个部署指定唯一名称。
 
@@ -169,7 +169,7 @@ az deployment group create \
 
 ### <a name="inline-parameters"></a>内联参数。
 
-若要传递内联参数，请在 `parameters` 中提供值。 例如，若要在 Bash shell 中将字符串和数组传递给模板，请使用：
+若要传递内联参数，请在 `parameters` 中提供值。 例如，若要将字符串和数组传递到 Bash shell 中的模板，请使用：
 
 ```azurecli-interactive
 az deployment group create \
@@ -191,7 +191,7 @@ az deployment group create \
 
 当需要提供配置值时，从文件中获取参数值非常有用。 例如，可以[为 Linux 虚拟机提供 cloud-init 值](../../virtual-machines/linux/using-cloud-init.md)。
 
-arrayContent.json 格式为：
+格式 _arrayContent.js_ 为：
 
 ```json
 [
@@ -228,7 +228,7 @@ az deployment group create --name addstorage  --resource-group myResourceGroup \
 
 有关参数文件的详细信息，请参阅[创建资源管理器参数文件](parameter-files.md)。
 
-若要传递本地参数文件，请使用 `@` 指定名为 storage.parameters.json 的本地文件。
+若要传递本地参数文件，请使用 `@` 指定上名为 _storage.parameters.js_ 的本地文件。
 
 ```azurecli-interactive
 az deployment group create \

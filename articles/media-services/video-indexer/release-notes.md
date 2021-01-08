@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/30/2020
+ms.date: 01/06/2021
 ms.author: juliako
-ms.openlocfilehash: 81e52d4a6827492931179055d040b541d51228eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 3552d55d995608dd0d471c84cd5e9f9988ebe2c0
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916654"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028635"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -44,12 +44,15 @@ ms.locfileid: "97916654"
 
 ### <a name="planned-video-indexer-website-authenticatication-changes"></a>计划视频索引器网站 authenticatication 更改
 
-从2021年1月1日开始，你将不再能够使用 Facebook 或 LinkedIn (试用版产品/) 服务注册并登录到 [视频索引器](https://www.videoindexer.ai/) 网站。
+从3月 2021 1 日开始，你将不再能够使用 Facebook 或 LinkedIn 注册 [视频索引器](https://www.videoindexer.ai/) 网站并登录。
 
 你将能够使用以下提供程序之一进行注册和登录： Azure AD、Microsoft 和 Google。
 
 > [!NOTE]
-> 建议你在2021年1月1日之前导出内容，因为连接到 LinkedIn 和 Facebook 的帐户将被删除，并且内容将无法再访问。
+> 在3月 1 2021 日之后，将无法访问连接到 LinkedIn 和 Facebook 的视频索引器帐户。 
+> 
+> 你应 [邀请](invite-users.md) 你拥有的 Azure AD、Microsoft 或 Google 电子邮件发送到视频索引器帐户，以便你仍可访问。<br/>
+> 或者，你可以创建付费帐户并迁移数据。
 
 ## <a name="august-2020"></a>2020 年 8 月
 

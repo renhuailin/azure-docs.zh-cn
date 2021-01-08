@@ -4,12 +4,12 @@ description: 了解如何在 Azure Functions 的 Durable Functions 扩展中实�
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d61600801286126ea6ffb9a97bc5655b6f233816
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91128033696af6a56488db7991987f1e384b719e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77562184"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027634"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions 中的扇出/扇入方案 - 云备份示例
 
@@ -21,9 +21,9 @@ ms.locfileid: "77562184"
 
 在此示例中，函数会将指定目录下的所有文件以递归方式上传到 Blob 存储。 它们还会统计已上传的字节总数。
 
-可以编写单个函数来处理所有这些操作。 会遇到的主要问题是**可伸缩性**。 单个函数执行只能在单个虚拟机上运行，因此，吞吐量会受到该 VM 的吞吐量限制。 另一个问题是**可靠性**。 如果中途失败或者整个过程花费的时间超过 5 分钟，则备份可能以部分完成状态失败。 然后，需要重新开始备份。
+可以编写单个函数来处理所有这些操作。 会遇到的主要问题是 **可伸缩性**。 单个函数执行只能在单个虚拟机上运行，因此，吞吐量会受到该 VM 的吞吐量限制。 另一个问题是 **可靠性**。 如果中途失败或者整个过程花费的时间超过 5 分钟，则备份可能以部分完成状态失败。 然后，需要重新开始备份。
 
-更可靠的方法是编写两个正则函数：一个函数枚举文件并将文件名添加到队列，另一个函数从队列读取数据并将文件上传到 Blob 存储。 此方法可以提高吞吐量和可靠性，但需要预配和管理队列。 更重要的是，如果想要执行其他任何操作，例如报告已上传的字节总数，则这种做法会明显增大**状态管理**和**协调**的复杂性。
+更可靠的方法是编写两个正则函数：一个函数枚举文件并将文件名添加到队列，另一个函数从队列读取数据并将文件上传到 Blob 存储。 此方法可以提高吞吐量和可靠性，但需要预配和管理队列。 更重要的是，如果想要执行其他任何操作，例如报告已上传的字节总数，则这种做法会明显增大 **状态管理** 和 **协调** 的复杂性。
 
 Durable Functions 方法提供前面所述的所有优势，并且其系统开销极低。
 
@@ -72,6 +72,23 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 完成 `context.df.Task.all` 并进入暂停状态后，我们知道所有函数调用都已完成，并已收到返回值。 每次调用 `E2_CopyFileToBlob` 都会返回已上传字节数，因此，将所有这些返回值相加就能计算出字节数总和。
 
+# <a name="python"></a>[Python](#tab/python)
+
+函数对业务流程协调程序函数使用 standard *function.json* 。
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_BackupSiteContent/function.json)]
+
+下面的代码可实现业务流程协调程序函数：
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_BackupSiteContent/\_\_init\_\_.py)]
+
+请注意 `yield context.task_all(tasks);` 行。 未生成对该函数的所有单独调用 `E2_CopyFileToBlob` ，这使它们可以并行运行。  将此任务数组传递给 `context.task_all` 时，会获得所有复制操作完成之前不会完成的任务。 如果你熟悉 [`asyncio.gather`](https://docs.python.org/3/library/asyncio-task.html#asyncio.gather) Python 中的，则不是新用户。 不同之处在于，这些任务可同时在多个虚拟机上运行，而 Durable Functions 扩展可确保端到端执行可以灵活地进行回收。
+
+> [!NOTE]
+> 尽管任务在概念上类似于 Python 等待，但 orchestrator 函数应使用 `yield` `context.task_all` 和和 `context.task_any` api 来管理任务并行。
+
+从开始 `context.task_all` ，我们知道所有函数调用已完成，并将返回值返回给我们。 每个对 `E2_CopyFileToBlob` 的调用都会返回上传的字节数，因此，我们可以通过将所有返回值相加来计算总计字节数。
+
 ---
 
 ### <a name="helper-activity-functions"></a>帮助器活动函数
@@ -86,7 +103,7 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-`E2_GetFileList` 的 *function.json* 文件如下所示：
+文件 *上的function.js* `E2_GetFileList` 如下所示：
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/function.json)]
 
@@ -94,12 +111,22 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
-此函数使用 `readdirp` 模块（版本 2.x）以递归方式读取目录结构。
+函数使用 `readdirp` 模块 (版本 2.x) 以递归方式读取目录结构。
+
+# <a name="python"></a>[Python](#tab/python)
+
+文件 *上的function.js* `E2_GetFileList` 如下所示：
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_GetFileList/function.json)]
+
+下面是实现：
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_GetFileList/\_\_init\_\_.py)]
 
 ---
 
 > [!NOTE]
-> 你可能会疑惑，为何不直接将此代码放入业务流程协调程序函数？ 可以这样做，不过，这会破坏业务流程协调程序函数的基本规则，即，它们不得执行 I/O，包括本地文件系统的访问。 有关详细信息，请参阅[业务流程协调程序函数代码约束](durable-functions-code-constraints.md)。
+> 你可能会疑惑，为何不直接将此代码放入业务流程协调程序函数？ 可以这样做，不过，这会破坏业务流程协调程序函数的基本规则，即，它们不得执行 I/O，包括本地文件系统的访问。 有关详细信息，请参阅 [Orchestrator 函数代码约束](durable-functions-code-constraints.md)。
 
 #### <a name="e2_copyfiletoblob-activity-function"></a>E2_CopyFileToBlob 活动函数
 
@@ -110,7 +137,7 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 > [!NOTE]
 > 需要安装 `Microsoft.Azure.WebJobs.Extensions.Storage` NuGet 包才能运行示例代码。
 
-此函数使用了 Azure Functions 绑定的某些高级功能（即使用了 [`Binder` 参数](../functions-dotnet-class-library.md#binding-at-runtime)），但对于本演练，无需考虑这些细节。
+此函数使用 Azure Functions 绑定的一些高级功能 (也就是说，使用[ `Binder` 参数](../functions-dotnet-class-library.md#binding-at-runtime)) ，但出于本演练的目的，无需担心这些详细信息。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -118,20 +145,30 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/function.json)]
 
-JavaScript 实现使用[适用于 Node 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-node) 将文件上传到 Azure Blob 存储。
+JavaScript 实现使用适用于 [Node 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-node) 将文件上传到 Azure Blob 存储。
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+`E2_CopyFileToBlob` 的 *function.json* 文件同样也很简单：
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_CopyFileToBlob/function.json)]
+
+Python 实现使用适用于 [python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python) 将文件上传到 Azure Blob 存储。
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_CopyFileToBlob/\_\_init\_\_.py)]
 
 ---
 
 实现从磁盘加载文件，并以异步方式将内容流式传输到“backups”容器中同名的 Blob。 返回值为已复制到存储的字节数，业务流程协调程序函数随后会使用此数字来计算总和。
 
 > [!NOTE]
-> 这是一个演示如何将 I/O 操作移入 `activityTrigger` 函数的极佳示例。 这样，不仅可以在许多不同的计算机上分配工作，而且还能获得设置进度检查点的优势。 如果主机进程出于任何原因终止，你就知道哪些上传操作已完成。
+> 这是一个演示如何将 I/O 操作移入 `activityTrigger` 函数的极佳示例。 工作不仅可以分布在多个不同的计算机上，还可以获得检查进度的好处。 如果主机进程出于任何原因终止，你就知道哪些上传操作已完成。
 
 ## <a name="run-the-sample"></a>运行示例
 
-可以通过发送以下 HTTP POST 请求来启动业务流程。
+可以通过发送以下 HTTP POST 请求，在 Windows 上启动业务流程。
 
 ```
 POST http://{host}/orchestrators/E2_BackupSiteContent
@@ -139,6 +176,16 @@ Content-Type: application/json
 Content-Length: 20
 
 "D:\\home\\LogFiles"
+```
+
+或者，在 Linux Function App 上 (Python 当前仅在适用于应用服务) 的 Linux 上运行，你可以如下所示启动业务流程：
+
+```
+POST http://{host}/orchestrators/E2_BackupSiteContent
+Content-Type: application/json
+Content-Length: 20
+
+"/home/site/wwwroot"
 ```
 
 > [!NOTE]

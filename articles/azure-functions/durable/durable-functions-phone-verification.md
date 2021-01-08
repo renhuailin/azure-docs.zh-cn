@@ -4,12 +4,12 @@ description: 了解如何在 Azure Functions 的 Durable Functions 中处理人�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba3cd0fd5d8727c4ffa4d1b42d7cd9250f21032
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80335749"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028297"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
 
@@ -21,11 +21,11 @@ ms.locfileid: "80335749"
 
 ## <a name="scenario-overview"></a>方案概述
 
-电话验证用于验证应用程序的最终用户不是垃圾邮件发送者，且他们提供的是真实身份。 多重身份验证是保护用户帐户免受黑客攻击的常见用例。 实现自己的电话验证需要面临的挑战是，它需要与人进行有状态交互****。 最终用户通常会获得一些代码（例如一个 4 位数字），且必须在合理的时间内响应****。
+电话验证用于验证应用程序的最终用户不是垃圾邮件发送者，且他们提供的是真实身份。 多重身份验证是保护用户帐户免受黑客攻击的常见用例。 实现自己的电话验证需要面临的挑战是，它需要与人进行有状态交互。 最终用户通常会获得一些代码（例如一个 4 位数字），且必须在合理的时间内响应。
 
 普通的 Azure Functions 是无状态的（正如其他平台上的许多其他云终结点一样），因此这些类型的交互需要在外部的数据库或某种其他永久性存储中显式管理状态。 此外，需要将交互分解为多个可一起进行协调的函数。 例如，需要至少一个函数用于确定代码、将其持久保存在某个位置并发送至用户的电话。 此外，还需要至少一个其他函数来接收用户的响应，并以某种方式映射回原始函数调用，以实现代码验证。 超时也是保证安全的一个重要方面。 这可能很快就会变得非常复杂。
 
-如果使用 Durable Functions，可大大降低此方案的复杂性。 如此示例中所示，业务流程协调程序函数可以轻松地管理有状态交互，且无需任何外部数据存储。 由于业务流程协调程序函数是持久的，因此这些交互流也非常可靠**。
+如果使用 Durable Functions，可大大降低此方案的复杂性。 如此示例中所示，业务流程协调程序函数可以轻松地管理有状态交互，且无需任何外部数据存储。 由于业务流程协调程序函数是持久的，因此这些交互流也非常可靠。
 
 ## <a name="configuring-twilio-integration"></a>配置 Twilio 集成
 
@@ -45,11 +45,11 @@ ms.locfileid: "80335749"
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
 
 > [!NOTE]
-> 起初可能并不明显，但这个业务流程协调程序函数是完全确定的函数。 它是确定性的 `CurrentUtcDateTime` ，因为属性用于计算计时器过期时间，并在每次重播时在 orchestrator 代码中返回相同的值。 此行为对于确保 `winner` 每次重复调用中的结果都非常重要 `Task.WhenAny` 。
+> 最初可能并不明显，但此协调器不违反 [确定性的业务流程约束](durable-functions-code-constraints.md)。 它是确定性的 `CurrentUtcDateTime` ，因为属性用于计算计时器过期时间，并在每次重播时在 orchestrator 代码中返回相同的值。 此行为对于确保 `winner` 每次重复调用中的结果都非常重要 `Task.WhenAny` 。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 function.json******。
+E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 function.json。
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/function.json)]
 
@@ -58,16 +58,29 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 > [!NOTE]
-> 起初可能并不明显，但这个业务流程协调程序函数是完全确定的函数。 它是确定性的 `currentUtcDateTime` ，因为属性用于计算计时器过期时间，并在每次重播时在 orchestrator 代码中返回相同的值。 此行为对于确保 `winner` 每次重复调用中的结果都非常重要 `context.df.Task.any` 。
+> 最初可能并不明显，但此协调器不违反 [确定性的业务流程约束](durable-functions-code-constraints.md)。 它是确定性的 `currentUtcDateTime` ，因为属性用于计算计时器过期时间，并在每次重播时在 orchestrator 代码中返回相同的值。 此行为对于确保 `winner` 每次重复调用中的结果都非常重要 `context.df.Task.any` 。
+
+# <a name="python"></a>[Python](#tab/python)
+
+E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 function.json。
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/function.json)]
+
+实现该函数的代码如下：
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/\_\_init\_\_.py)]
+
+> [!NOTE]
+> 最初可能并不明显，但此协调器不违反 [确定性的业务流程约束](durable-functions-code-constraints.md)。 它是确定性的 `currentUtcDateTime` ，因为属性用于计算计时器过期时间，并在每次重播时在 orchestrator 代码中返回相同的值。 此行为对于确保 `winner` 每次重复调用中的结果都非常重要 `context.df.Task.any` 。
 
 ---
 
 启动后，该业务流程协调程序函数执行以下任务：
 
-1. 获取要向其发送短信通知的电话号码**。
-2. 调用 E4_SendSmsChallenge，向用户发送短信，并返回预期的 4 位数质询代码****。
+1. 获取要向其发送短信通知的电话号码。
+2. 调用 E4_SendSmsChallenge，向用户发送短信，并返回预期的 4 位数质询代码。
 3. 创建可从当前时间开始触发 90 秒的持久计时器。
-4. 与计时器一起，等待来自用户的 SmsChallengeResponse 事件****。
+4. 与计时器一起，等待来自用户的 SmsChallengeResponse 事件。
 
 用户会收到一条含 4 位数代码的短信。 它们有90秒的时间，可将相同的四位数代码发送回 orchestrator 函数实例，以完成验证过程。 如果提交的代码不正确，可额外尝试 3 次进行更正（在相同的 90 秒时间段内）。
 
@@ -76,7 +89,7 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 
 ## <a name="e4_sendsmschallenge-activity-function"></a>E4_SendSmsChallenge 活动函数
 
-**E4_SendSmsChallenge**函数使用 Twilio 绑定将具有四位数代码的短信发送给最终用户。
+**E4_SendSmsChallenge** 函数使用 Twilio 绑定将具有四位数代码的短信发送给最终用户。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -87,13 +100,23 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-function.json 定义如下**：
+function.json 定义如下：
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/function.json)]
 
 下面是生成四位数质询代码并发送短信的代码：
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+function.json 定义如下：
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/function.json)]
+
+下面是生成四位数质询代码并发送短信的代码：
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/\_\_init\_\_.py)]
 
 ---
 
@@ -118,9 +141,9 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-业务流程协调程序函数可接收提供的电话号码，并立即向其发送一条短信，其中包含随机生成的 4 位数验证代码 &mdash; 例如，2168**。 然后函数等待 90 秒，获取响应。
+业务流程协调程序函数可接收提供的电话号码，并立即向其发送一条短信，其中包含随机生成的 4 位数验证代码 &mdash; 例如，2168。 然后函数等待 90 秒，获取响应。
 
-若要使用代码进行回复，可以使用[ `RaiseEventAsync` ( .net) 或 `raiseEvent` (JavaScript) ](durable-functions-instance-management.md)在其他函数内部，或调用上面202响应中引用的**sendEventUrl** HTTP POST webhook， `{eventName}` 并将替换为事件的名称 `SmsChallengeResponse` ：
+若要使用代码进行回复，可以使用 [ `RaiseEventAsync` ( .net) 或 `raiseEvent` (JavaScript)](durable-functions-instance-management.md)在其他函数内部，或调用上面202响应中引用的 **sendEventUrl** HTTP POST webhook， `{eventName}` 并将替换为事件的名称 `SmsChallengeResponse` ：
 
 ```
 POST http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}

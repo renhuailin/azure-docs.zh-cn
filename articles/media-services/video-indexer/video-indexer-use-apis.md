@@ -8,29 +8,31 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 01/07/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cdba4ce36322f9c3fb0f898cb7eb1d1185ed1dc6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: fcd194e2503610db314f6a975a4afb1d27962f8c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636939"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028165"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>教程：使用视频索引器 API
 
 视频索引器在一个集成式服务中整合了 Microsoft 提供的多种音频和视频人工智能 (AI) 技术，使开发变得更简单。 API 可让开发人员专注于使用媒体 AI 技术，而无需考虑云平台的规模、全球覆盖度、可用性和可靠性的问题。 使用 API 可以上传文件、获取详细的视频见解和获取可嵌入见解和播放器小组件的 URL 等等。
 
-创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，你将创建[连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 你为索引分钟数付费，有关详细信息，请参阅 [媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)。
+创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，你将创建[连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 你需要为索引时间付费，有关详细信息，请参阅[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)。
 
 本文介绍开发人员可以如何利用[视频索引器 API](https://api-portal.videoindexer.ai/)。
 
 ## <a name="subscribe-to-the-api"></a>订阅 API
 
 1. 登录到[视频索引器开发人员门户](https://api-portal.videoindexer.ai/)。
+
+    查看有关 [登录信息](release-notes.md#october-2020)的发行说明。
     
-    ![登录到视频索引器开发人员门户](./media/video-indexer-use-apis/video-indexer-api01.png)
+     ![登录到视频索引器开发人员门户](./media/video-indexer-use-apis/sign-in.png)
 
    > [!Important]
    > * 必须使用注册视频索引器时所用的同一提供程序。
@@ -40,14 +42,14 @@ ms.locfileid: "94636939"
 
     选择[产品](https://api-portal.videoindexer.ai/products)选项卡。然后选择“授权”并订阅。
     
-    ![视频索引器开发人员门户中的“产品”选项卡](./media/video-indexer-use-apis/video-indexer-api02.png)
+    ![视频索引器开发人员门户中的“产品”选项卡](./media/video-indexer-use-apis/authorization.png)
 
     > [!NOTE]
     > 新用户已自动订阅“授权”。
     
-    订阅后，可以在 " **产品** 授权" 下找到订阅  ->  **Authorization** 。 在 "订阅" 页中，可以找到主密钥和辅助密钥。 密钥应受保护。 密钥应仅供服务器代码使用。 在客户端（js、.html 等）应该不可使用密钥。
+    订阅后，可以在 "**产品** 授权" 下找到订阅  ->  。 在 "订阅" 页中，可以找到主密钥和辅助密钥。 密钥应受保护。 密钥应仅供服务器代码使用。 在客户端（js、.html 等）应该不可使用密钥。
 
-    ![视频索引器开发人员门户中的订阅和密钥](./media/video-indexer-use-apis/video-indexer-api03.png)
+    ![视频索引器开发人员门户中的订阅和密钥](./media/video-indexer-use-apis/subscriptions.png)
 
 > [!TIP]
 > 视频索引器用户可以使用单个订阅密钥连接到多个视频索引器帐户。 然后，可以个这些视频索引器帐户链接到不同的媒体服务帐户。

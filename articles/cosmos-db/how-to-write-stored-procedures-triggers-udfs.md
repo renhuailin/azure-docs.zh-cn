@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 7938920459654bd59620ad0992f3a13db85ff4fb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7600d8aa2f78e06ea4046273635fdbba18042010
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018993"
+ms.locfileid: "98028856"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中编写存储过程、触发器和用户定义的函数
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -284,7 +284,7 @@ function async_sample() {
 
 ## <a name="how-to-write-triggers"></a><a id="triggers"></a>如何编写触发器
 
-Azure Cosmos DB 支持前触发器和后触发器。 在修改数据库项之前执行预先触发器，在修改数据库项之后执行后触发器。触发器不是自动的。 必须为要在其中执行这些操作的每个数据库操作指定这些文件。
+Azure Cosmos DB 支持前触发器和后触发器。 前触发器是在修改数据库项之前执行的，后触发器是在修改数据库项之后执行的。 触发器不会自动执行，必须为要在其中执行的每个数据库操作指定触发器。 定义触发器后，应使用 Azure Cosmos DB Sdk [注册并调用预先触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) 。
 
 ### <a name="pre-triggers"></a><a id="pre-triggers"></a>前触发器
 

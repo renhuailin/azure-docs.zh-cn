@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
-ms.openlocfilehash: 1e4b8a2d801d7d7eccfaf558c3926ead1ab0a953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 365ed60e73be9bb2098022fa767f4ae54b93c37c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313767"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028074"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>关于 Azure 虚拟 WAN 集线器中的网络虚拟设备 (预览) 
 
 Azure 虚拟 WAN 与网络合作伙伴合作，以构建自动化，使用户能够轻松地将其客户的本地设备 (CPE) 连接到虚拟中心的 Azure VPN 网关。 Azure 正在与选择的网络合作伙伴合作，使客户能够将第三方网络虚拟设备 () NVA 直接部署到虚拟中心。 这样，想要将其分支 CPE 连接到虚拟中心的同一品牌 NVA 的客户可以利用专用的端到端 SD 功能。
 
-Barracuda 网络是提供 NVA 产品/服务的第一家合作伙伴，可通过其 [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan) 产品直接部署到虚拟 WAN 中心。 Azure 正在与更多合作伙伴合作，因此应查看其他产品/服务。
+Barracuda 网络和 Cisco 系统是第一个合作伙伴，提供可直接部署到虚拟 WAN 集线器的 Nva。  有关其各自的产品文档，请参阅 [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan) And [Cisco Cloud 云中 for 多方 cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) 。 Azure 正在与更多合作伙伴合作，因此应查看其他产品/服务。
 
 > [!NOTE]
 > 只有可部署到虚拟 WAN 中心的 NVA 产品/服务可以部署到虚拟 WAN 集线器。 不能将其部署到 Azure 中的任何虚拟网络。
 
-## <a name="how-does-it-work"></a><a name="how"></a>工作原理
+## <a name="how-does-it-work"></a><a name="how"></a>它是如何工作的？
 
-可直接部署到 Azure 虚拟 WAN 中心的 Nva 专门设计为在虚拟中心中使用。 NVA 产品/服务作为托管应用程序发布到 Azure Marketplace，客户可以直接从 Azure Marketplace 部署产品/服务，也可以通过 Azure 门户从虚拟中心部署产品/服务。
+可直接部署到 Azure 虚拟 WAN 中心的 NVA 是专为在虚拟中心使用而设计的。 NVA 产品/服务作为托管应用程序发布到 Azure Marketplace，客户可以直接从 Azure Marketplace 部署产品/服务，也可以通过 Azure 门户从虚拟中心部署产品/服务。
 
 :::image type="content" source="./media/about-nva-hub/high-level-process.png" alt-text="过程概述":::
 
@@ -50,11 +50,11 @@ Barracuda 网络是提供 NVA 产品/服务的第一家合作伙伴，可通过�
 * **客户资源组** -此项将包含托管应用程序的应用程序占位符。 合作伙伴可以使用它来公开在此处选择的任何客户属性。
 * **托管资源组** -客户无法直接在此资源组中配置或更改资源，因为这由托管应用程序的发布者控制。 此资源组将包含 **NetworkVirtualAppliances** 资源。
 
-:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="过程概述":::
+:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="托管应用程序资源组":::
 
 ### <a name="nva-infrastructure-units"></a><a name="units"></a>NVA 基础结构单位
 
-在虚拟 WAN 集线器中创建 NVA 时，必须选择要部署的 NVA 基础结构单元的数量。 **NVA 基础结构单位**是虚拟 WAN 集线器中 NVA 的聚合带宽容量单位。 **NVA 基础结构单元**与 VPN[缩放单位](pricing-concepts.md#scale-unit)类似于你对容量和大小进行调整的方式。
+在虚拟 WAN 集线器中创建 NVA 时，必须选择要部署的 NVA 基础结构单元的数量。 **NVA 基础结构单位** 是虚拟 WAN 集线器中 NVA 的聚合带宽容量单位。 **NVA 基础结构单元** 与 VPN [缩放单位](pricing-concepts.md#scale-unit)类似于你对容量和大小进行调整的方式。
 
 * 1 NVA 基础结构单位代表进入此 NVA 的所有分支站点连接的聚合带宽 500 Mbps，成本为 $ 0.25/小时。
 * 对于给定的 NVA 虚拟中心部署，Azure 支持 1-80 NVA 基础结构单位。
@@ -64,7 +64,7 @@ Barracuda 网络是提供 NVA 产品/服务的第一家合作伙伴，可通过�
 
 ## <a name="network-virtual-appliance-configuration-process"></a><a name="configuration"></a>网络虚拟设备配置过程
 
-合作伙伴已努力提供在部署过程中自动配置 NVA 的体验。 将 NVA 预配到 virtual hub 后，NVA 所需的任何其他配置必须通过 NVA 合作伙伴门户或管理应用程序完成。 无法直接访问 NVA。
+合作伙伴已努力提供在部署过程中自动配置 NVA 的体验。 将 NVA 预配到虚拟中心后，NVA 可能需要的任何附加配置都必须通过 NVA 合作伙伴门户或管理应用程序来完成。 无法直接访问 NVA。
 
 ## <a name="site-and-connection-resources-with-nvas"></a><a name="resources"></a>具有 Nva 的站点和连接资源
 
@@ -79,7 +79,7 @@ Barracuda 网络是提供 NVA 产品/服务的第一家合作伙伴，可通过�
 |地缘政治区域 | Azure 区域|
 |---|---|
 | 北美| 美国西部、美国中南部、美国东部2   |
-| 南美洲 | 巴西南部 |
+| 南美洲 | Brazil South |
 | 欧洲 | 西欧，英国南部|
 |  中东 | 阿拉伯联合酋长国北部 |
 | 亚洲 | Japan East |
@@ -93,23 +93,23 @@ Barracuda 网络是提供 NVA 产品/服务的第一家合作伙伴，可通过�
 
 ### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>是否可以将 Azure Marketplace 中的任何 NVA 部署到虚拟 WAN 中心？
 
-不是。 目前，只有 [Barracuda CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer) 可用于部署到虚拟 WAN 中心。
+目前，只能将 [Barracuda CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer) 和 [Cisco Cloud vWAN 应用程序](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) 部署到虚拟 WAN 中心。
 
 ### <a name="what-is-the-cost-of-the-nva"></a>NVA 的成本是多少？
 
-必须从 Barracuda 购买 Barracuda CloudGen WAN NVA 许可证。 有关授权的详细信息，请参阅 [Barracuda 的 CLOUDGEN WAN 页面](https://www.barracuda.com/products/cloudgenwan)。 此外，你还将对你使用的 NVA 基础结构单元以及所使用的任何其他资源产生费用。 有关详细信息，请参阅 [定价概念](pricing-concepts.md)。
+必须从 NVA 供应商处购买 NVA 的许可证。  对于 Barracuda CloudGen WAN NVA from Barracuda license，请参阅 [Barracuda 的 CLOUDGEN wan 页面](https://www.barracuda.com/products/cloudgenwan)。 Cisco 目前仅提供 BYOL (自带许可证) 许可模型，需要直接从 Cisco 购买。 此外，你还将对你使用的 NVA 基础结构单元以及所使用的任何其他资源产生费用。 有关详细信息，请参阅 [定价概念](pricing-concepts.md)。
 
 ### <a name="can-i-deploy-an-nva-to-a-basic-hub"></a>是否可以将 NVA 部署到基本中心？
 
-不是。 如果要部署 NVA，必须使用标准集线器。
+错误。 如果要部署 NVA，必须使用标准集线器。
 
 ### <a name="can-i-deploy-an-nva-into-a-secure-hub"></a>是否可以将 NVA 部署到安全中心？
 
-是。 可以使用 Azure 防火墙将 Barracuda CloudGen WAN 部署到集线器。
+是的。 可以使用 Azure 防火墙将 Barracuda CloudGen WAN 部署到集线器。
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>是否可以将分支机构中的任何 CPE 设备连接到中心的 Barracuda CloudGen WAN NVA？
 
-不是。 Barracuda CloudGen WAN 仅与 Barracuda CPE 设备兼容。 若要详细了解 CloudGen WAN 要求，请参阅 [Barracuda 的 CLOUDGEN WAN 页面](https://www.barracuda.com/products/cloudgenwan)。
+错误。 Barracuda CloudGen WAN 仅与 Barracuda CPE 设备兼容。 若要详细了解 CloudGen WAN 要求，请参阅 [Barracuda 的 CLOUDGEN WAN 页面](https://www.barracuda.com/products/cloudgenwan)。 对于 Cisco，有几个 SD WAN CPE 设备兼容。 请参阅 [Cisco Cloud 云中 for](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) 文档 For 兼容 CPEs。
 
 ### <a name="what-routing-scenarios-are-supported-with-nva-in-the-hub"></a>集线器中的 NVA 支持哪些路由方案？
 

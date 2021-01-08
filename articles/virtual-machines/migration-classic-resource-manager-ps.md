@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 07b511182950095c356887d72ffde75ac098674d
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 82eaa597796bf3772faa90a9dbc4151da935c46a
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904690"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027717"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型
 
@@ -59,7 +59,7 @@ ms.locfileid: "94904690"
 2. 在“中心”菜单上中选择“订阅”。  如果看不到该选项，请选择“所有服务”。
 3. 查找相应订阅项，然后查看“我的角色”字段。 对于共同管理员，该值应为“帐户管理员”。
 
-如果无法添加协同管理员，请联系订阅的服务管理员或共同管理员，以便自行添加。
+如果无法添加协同管理员，请联系订阅的服务管理员或协同管理员，将自己添加为协同管理员。
 
 ## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>步骤 4：设置订阅并针对迁移进行注册
 首先，请启动 PowerShell 提示符。 对于迁移，请针对经典部署模型和资源管理器部署模型设置环境。
@@ -265,7 +265,7 @@ ms.locfileid: "94904690"
 完成虚拟机迁移之后，请先执行以下先决条件检查，然后再迁移存储帐户。
 
 > [!NOTE]
-> 如果存储帐户没有关联的磁盘或 VM 数据，则可以直接跳至“验证存储帐户并开始迁移”部分。
+> 如果存储帐户没有关联的磁盘或 VM 数据，则可以直接跳至“验证存储帐户并开始迁移”部分。 另请注意，删除经典磁盘、VM 映像或操作系统映像不会删除存储帐户中的源 VHD 文件。 但是，它会中断这些 VHD 文件的租约，以便在迁移后可以重复使用这些 VHD 文件来创建 ARM 磁盘或映像。
 
 * 关于是否迁移了 VM 或存储帐户是否有磁盘资源的先决条件检查：
     * 迁移其磁盘存储在存储帐户中的虚拟机。

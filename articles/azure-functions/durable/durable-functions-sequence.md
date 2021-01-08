@@ -5,16 +5,16 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/29/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b117fca23b26919f3c404dd32ba64c0c89d66ae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8223b1273c2a487e15e3c10d7c6852a119e4cdc
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87033558"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028244"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions 中的函数链 - Hello 序列示例
 
-函数链是指以特定顺序执行一系列函数的模式。 通常需要将一个函数的输出应用于另一函数的输入。 本文介绍在完成 Durable Functions 快速入门（[C#](durable-functions-create-first-csharp.md) 或 [JavaScript](quickstart-js-vscode.md)）时创建的链接序列。 有关 Durable Functions 的详细信息，请参阅 [Durable Functions 概述](durable-functions-overview.md)。
+函数链是指以特定顺序执行一系列函数的模式。 通常需要将一个函数的输出应用于另一函数的输入。 本文介绍你在完成 Durable Functions 快速入门 ([c #](durable-functions-create-first-csharp.md)、  [JavaScript](quickstart-js-vscode.md)或 [Python](quickstart-python-vscode.md)) 时创建的链接序列。 有关 Durable Functions 的详细信息，请参阅 [Durable Functions 概述](durable-functions-overview.md)。
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -24,7 +24,7 @@ ms.locfileid: "87033558"
 
 * `E1_HelloSequence`：在一个序列中多次调用 `E1_SayHello` 的一个[业务流程协调程序函数](durable-functions-bindings.md#orchestration-trigger)。 它存储来自 `E1_SayHello` 调用的输出并记录结果。
 * `E1_SayHello`：在字符串前添加“Hello”的一个[活动函数](durable-functions-bindings.md#activity-trigger)。
-* `HttpStart`：用于启动业务流程协调程序实例的一个 HTTP 触发的函数。
+* `HttpStart`：启动业务流程协调程序实例的 HTTP 触发的 [持久客户端](durable-functions-bindings.md#orchestration-client) 函数。
 
 ### <a name="e1_hellosequence-orchestrator-function"></a>E1_HelloSequence 业务流程协调程序函数
 
@@ -39,7 +39,7 @@ ms.locfileid: "87033558"
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 > [!NOTE]
-> JavaScript Durable Functions 仅适用于 Functions 2.0 运行时。
+> JavaScript Durable Functions 仅适用于3.0 运行时函数。
 
 #### <a name="functionjson"></a>function.json
 
@@ -54,17 +54,47 @@ ms.locfileid: "87033558"
 
 #### <a name="indexjs"></a>index.js
 
-下面是此函数：
+下面是业务流程协调程序函数：
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-所有 JavaScript 业务流程函数都必须包括 [`durable-functions` 模块](https://www.npmjs.com/package/durable-functions)。 它是一个库，可用于以 JavaScript 编写 Durable Functions。 业务流程函数与其他 JavaScript 函数之间有三个明显差异：
+所有 JavaScript 业务流程函数都必须包括 [`durable-functions` 模块](https://www.npmjs.com/package/durable-functions)。 它是一个库，可用于以 JavaScript 编写 Durable Functions。 业务流程协调程序函数与其他 JavaScript 函数之间存在三个重大差异：
 
-1. 此函数是一个[生成器函数](/scripting/javascript/advanced/iterators-and-generators-javascript)。
+1. 业务流程协调程序函数是一个 [生成器函数](/scripting/javascript/advanced/iterators-and-generators-javascript)。
 2. 此函数包装在对 `durable-functions` 模块的 `orchestrator` 方法的调用（此处为 `df`）中。
 3. 此函数必须是同步的。 因为“orchestrator”方法处理“context.done”的调用，所以此函数应该只是“return”。
 
 `context` 对象包含一个 `df` 持久业务流程上下文对象，可使用其 `callActivity` 方法调用其他活动  函数并传递输入参数。 该代码按顺序采用不同的参数值三次调用 `E1_SayHello`，使用 `yield` 指示执行应当等待异步活动函数调用返回。 每个调用的返回值都会添加到 `outputs` 数组，函数末尾会返回该列表。
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Python Durable Functions 仅适用于3.0 运行时函数。
+
+
+#### <a name="functionjson"></a>function.json
+
+如果使用 Visual Studio Code 或 Azure 门户进行开发，则此处为用于业务流程协调程序函数的 function.json 文件的内容。 大多数 orchestrator function.json 文件的内容都与以下内容相似。
+
+[!code-json[Main](~/samples-durable-functions-python/samples/function_chaining/E1_HelloSequence/function.json)]
+
+`orchestrationTrigger` 绑定类型非常重要。 所有 orchestrator 函数都必须使用此触发器类型。
+
+> [!WARNING]
+> 为遵守 orchestrator 函数的“无 I/O”规则，在使用 `orchestrationTrigger` 触发器绑定时不要使用任何输入或输出绑定。  如果需要其他输入或输出绑定，则应改为在业务流程协调程序调用的 `activityTrigger` 函数的上下文中使用。 有关详细信息，请参阅[业务流程协调程序函数代码约束](durable-functions-code-constraints.md)一文。
+
+#### <a name="__init__py"></a>\_\_init\_\_.py
+
+下面是业务流程协调程序函数：
+
+[!code-python[Main](~/samples-durable-functions-python/samples/function_chaining/E1_HelloSequence/\_\_init\_\_.py)]
+
+所有 Python 业务流程函数都必须包含[ `durable-functions` 包](https://pypi.org/project/azure-functions-durable)。 它是一个库，可用于在 Python 中编写 Durable Functions。 业务流程协调程序函数与其他 Python 函数之间存在两个重大差异：
+
+1. 业务流程协调程序函数是一个 [生成器函数](https://wiki.python.org/moin/Generators)。
+2. _文件_ 应通过 `main = df.Orchestrator.create(<orchestrator function name>)` 在文件的末尾指出，将 orchestrator 函数注册为 orchestrator。 这有助于将它与在文件中声明的其他帮助器函数区分开来。
+
+`context`对象允许调用其他 *活动* 函数并使用输入参数的方法传递输入参数 `call_activity` 。 该代码按顺序采用不同的参数值三次调用 `E1_SayHello`，使用 `yield` 指示执行应当等待异步活动函数调用返回。 在函数的末尾返回每个调用的返回值。
 
 ---
 
@@ -74,24 +104,24 @@ ms.locfileid: "87033558"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=27-32)]
 
-活动使用了 `ActivityTrigger` 属性。 使用提供的 `IDurableActivityContext` 执行活动相关操作，例如，使用 `GetInput<T>` 访问输入值。
+活动使用 `ActivityTrigger` 特性。 使用提供的 `IDurableActivityContext` 执行与活动相关的操作，如使用访问输入值 `GetInput<T>` 。
 
 `E1_SayHello` 的实现是一种相对简单的字符串格式设置操作。
 
-可以直接绑定到传递给活动函数的类型，而非绑定到 `IDurableActivityContext`。 例如：
+`IDurableActivityContext`可以直接绑定到传递到活动函数的类型，而不是绑定到。 例如：
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=34-38)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-#### <a name="e1_sayhellofunctionjson"></a>E1_SayHello/function.json
+#### <a name="e1_sayhellofunctionjson"></a>E1_SayHello/function.js
 
-活动函数 `E1_SayHello` 的 function.json  文件类似于 `E1_HelloSequence` 的 function.json 文件，只不过前者使用 `activityTrigger` 绑定类型而非 `orchestrationTrigger` 绑定类型。
+活动函数 `E1_SayHello` 的 function.json 文件类似于 `E1_HelloSequence` 的 function.json 文件，只不过前者使用 `activityTrigger` 绑定类型而非 `orchestrationTrigger` 绑定类型。
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/function.json)]
 
 > [!NOTE]
-> Orchestration 函数调用的任何函数都必须使用 `activityTrigger` 绑定。
+> 业务流程函数调用的所有活动函数都必须使用 `activityTrigger` 绑定。
 
 `E1_SayHello` 的实现是一种相对简单的字符串格式设置操作。
 
@@ -99,33 +129,66 @@ ms.locfileid: "87033558"
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-与 JavaScript 业务流程函数不同，活动函数不需要特殊设置。 业务流程协调程序函数传递给它的输入位于 `context.bindings` 对象上，在 `activityTrigger` 绑定的名称下，在本例中为 `context.bindings.name`。 绑定名称可以设置为导出函数的参数并且可以直接访问，这是示例代码所做的事情。
+与业务流程函数不同，活动函数不需要特殊设置。 业务流程协调程序函数传递给它的输入位于 `context.bindings` 对象上，在 `activityTrigger` 绑定的名称下，在本例中为 `context.bindings.name`。 绑定名称可以设置为导出函数的参数并且可以直接访问，这是示例代码所做的事情。
+
+# <a name="python"></a>[Python](#tab/python)
+
+#### <a name="e1_sayhellofunctionjson"></a>E1_SayHello/function.js
+
+活动函数 `E1_SayHello` 的 function.json 文件类似于 `E1_HelloSequence` 的 function.json 文件，只不过前者使用 `activityTrigger` 绑定类型而非 `orchestrationTrigger` 绑定类型。
+
+[!code-json[Main](~/samples-durable-functions-python/samples/function_chaining/E1_SayHello/function.json)]
+
+> [!NOTE]
+> 业务流程函数调用的所有活动函数都必须使用 `activityTrigger` 绑定。
+
+`E1_SayHello` 的实现是一种相对简单的字符串格式设置操作。
+
+#### <a name="e1_sayhello__init__py"></a>E1_SayHello/ \_ \_ \_ \_ py
+
+[!code-python[Main](~/samples-durable-functions-python/samples/function_chaining/E1_SayHello/\_\_init\_\_.py)]
+
+与业务流程协调程序函数不同，活动函数不需要特殊设置。 Orchestrator 函数传递给它的输入可直接作为函数的参数进行访问。
 
 ---
 
 ### <a name="httpstart-client-function"></a>HttpStart 客户端函数
 
-可以使用客户端函数启动业务流程协调程序函数的实例。 你将使用 HTTP 触发的函数 `HttpStart` 启动 `E1_HelloSequence` 的实例。
+您可以使用客户端函数启动 orchestrator 函数的实例。 将使用 `HttpStart` HTTP 触发的函数启动的实例 `E1_HelloSequence` 。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs?range=13-30)]
 
-若要与业务流程协调程序进行交互，函数必须包含 `DurableClient` 输入绑定。 你使用客户端来启动业务流程。 它还可以帮助你返回 HTTP 响应，并在其中包含用于检查新业务流程状态的 URL。
+若要与协调器交互，该函数必须包括 `DurableClient` 输入绑定。 您可以使用客户端来启动业务流程。 它还可帮助你返回包含用于检查新业务流程状态的 Url 的 HTTP 响应。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-#### <a name="httpstartfunctionjson"></a>HttpStart/function.json
+#### <a name="httpstartfunctionjson"></a>HttpStart/function.js
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json?highlight=16-20)]
 
-若要与业务流程协调程序进行交互，函数必须包含 `durableClient` 输入绑定。
+若要与协调器交互，该函数必须包括 `durableClient` 输入绑定。
 
 #### <a name="httpstartindexjs"></a>HttpStart/index.js
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-使用 `df.getClient` 获取 `DurableOrchestrationClient` 对象。 你使用客户端来启动业务流程。 它还可以帮助你返回 HTTP 响应，并在其中包含用于检查新业务流程状态的 URL。
+使用 `df.getClient` 可获取 `DurableOrchestrationClient` 对象。 您可以使用客户端来启动业务流程。 它还可帮助你返回包含用于检查新业务流程状态的 Url 的 HTTP 响应。
+
+# <a name="python"></a>[Python](#tab/python)
+
+#### <a name="httpstartfunctionjson"></a>HttpStart/function.js
+
+[!code-json[Main](~/samples-durable-functions-python/samples/function_chaining/HttpStart/function.json)]
+
+若要与协调器交互，该函数必须包括 `durableClient` 输入绑定。
+
+#### <a name="httpstart__init__py"></a>HttpStart/ \_ \_ \_ \_ py
+
+[!code-python[Main](~/samples-durable-functions-python/samples/function_chaining/HttpStart/\_\_init\_\_.py)]
+
+使用 `DurableOrchestrationClient` 构造函数获取 Durable Functions 客户端。 您可以使用客户端来启动业务流程。 它还可帮助你返回包含用于检查新业务流程状态的 Url 的 HTTP 响应。
 
 ---
 
@@ -159,7 +222,7 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/96924899c16d43b08
 GET http://{host}/runtime/webhooks/durabletask/instances/96924899c16d43b08a536de376ac786b?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
 
-结果为业务流程的状态。 它运行和完成的速度很快，因此处于已完成  状态，并伴有如下所示响应（已简化）：
+结果为业务流程的状态。 它运行和完成的速度很快，因此处于已完成状态，并伴有如下所示响应（已简化）：
 
 ```
 HTTP/1.1 200 OK
@@ -169,7 +232,7 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":null,"output":["Hello Tokyo!","Hello Seattle!","Hello London!"],"createdTime":"2017-06-29T05:24:57Z","lastUpdatedTime":"2017-06-29T05:24:59Z"}
 ```
 
-可以看到，实例的 `runtimeStatus` 为已完成  ，且 `output` 包含 orchestrator 函数执行的 JSON 序列化结果。
+可以看到，实例的 `runtimeStatus` 为已完成，且 `output` 包含 orchestrator 函数执行的 JSON 序列化结果。
 
 > [!NOTE]
 > 可对其他触发器类型（如 `queueTrigger`、`eventHubTrigger` 或 `timerTrigger`）实施类似的启动器逻辑。

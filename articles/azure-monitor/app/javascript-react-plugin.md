@@ -1,24 +1,24 @@
 ---
-title: Application Insights JavaScript SDK 的响应插件
-description: 如何安装和使用 Application Insights JavaScript SDK 的响应插件。
+title: 适用于 Application Insights JavaScript SDK 的 React 插件
+description: 如何安装和使用适用于 Application Insights JavaScript SDK 的 React 插件。
 services: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 3348654a83b6d0930d10e1f58e07455623b5861d
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 4c6d8fabbd236a2653fff8168ad73c0b45f09d64
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981079"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027836"
 ---
-# <a name="react-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK 的响应插件
+# <a name="react-plugin-for-application-insights-javascript-sdk"></a>适用于 Application Insights JavaScript SDK 的 React 插件
 
-Application Insights JavaScript SDK 的响应插件，启用：
+适用于 Application Insights JavaScript SDK 的 React 插件，支持：
 
 - 跟踪路由更改
-- 反应组件使用统计信息
+- React 组件使用情况统计信息
 
 ## <a name="getting-started"></a>入门
 
@@ -55,7 +55,7 @@ appInsights.loadAppInsights();
 export { reactPlugin, appInsights };
 ```
 
-使用高阶组件函数包装你的组件，以便在其上启用 Application Insights：
+使用高阶组件函数包装你的组件，对其启用 Application Insights：
 
 ```javascript
 import React from 'react';
@@ -69,39 +69,42 @@ class MyComponent extends React.Component {
     ...
 }
 
-export default withAITracking(reactPlugin, appInsights, MyComponent);
+// withAITracking takes 4 parameters ( reactPlugin, Component, ComponentName, className) 
+// the first two are required and the other two are optional.
+
+export default withAITracking(reactPlugin, MyComponent);
 ```
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
-| 名称    | 默认 | 说明                                                                                                    |
+| 名称    | 默认 | 描述                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
-| history | null    | 对路由器历史记录做出响应。 有关详细信息，请参阅 [响应路由器包文档](https://reactrouter.com/web/api/history)。 若要了解如何访问组件以外的历史记录对象，请参阅 [响应-路由器常见问题解答](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components)    |
+| history | null    | React 路由器历史记录。 有关详细信息，请参阅 [react-router 包文件](https://reactrouter.com/web/api/history)。 若要了解如何访问组件外部的历史记录对象，请参阅 [Reac 路由器常见问题解答](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components)    |
 
-### <a name="react-components-usage-tracking"></a>对组件使用情况跟踪做出反应
+### <a name="react-components-usage-tracking"></a>React 组件使用情况跟踪
 
-若要检测各种反应组件使用情况跟踪，请应用 `withAITracking` 高阶组件函数。
+若要检测各种 React 组件使用情况跟踪，请应用 `withAITracking` 高阶组件函数。
 
-它将 `ComponentDidMount` 通过事件度量事件的时间 `ComponentWillUnmount` 。 但是，为了使此方法更精确，它会减去用户处于空闲状态的时间 `React Component Engaged Time = ComponentWillUnmount timestamp - ComponentDidMount timestamp - idle time` 。
+它将测量从 `ComponentDidMount` 事件到 `ComponentWillUnmount` 事件的时间。 但是，为了使其更准确，它将减去用户空闲时间 `React Component Engaged Time = ComponentWillUnmount timestamp - ComponentDidMount timestamp - idle time`。
 
-若要在 Azure 门户中查看此指标，你需要导航到 Application Insights 资源，选择 "指标" 选项卡，并配置空图表以显示自定义指标名称 "响应组件占用时间 (秒") "，选择聚合 (总和，avg 等，并将 split 应用为" Component Name "。
+若要在 Azure 门户中查看此指标，需要导航到 Application Insights 资源，选择 “指标”选项卡并配置空图表以显示自定义指标名称“React 组件参与时间（秒）”，选择指标的聚合（求和、平均等），并应用拆分“组件名称”。
 
-![显示自定义指标的图表屏幕截图，"响应组件占用时间 (秒) " 拆分为 "组件名称"](./media/javascript-react-plugin/chart.png)
+![显示自定义指标“React 组件参与时间（秒）”的图表的屏幕截图，该图表按“组件名称”拆分](./media/javascript-react-plugin/chart.png)
 
-您还可以运行自定义查询，以根据您的要求来划分 Application Insights 数据以生成报表和可视化效果。 在 Azure 门户导航到 Application Insights 资源，从 "概述" 选项卡的顶部菜单中选择 "分析"，然后运行查询。
+还可以运行自定义查询来划分 Application Insights 数据，以根据需求生成报表和可视化效果。 在 Azure 门户导航到 Application Insights 资源，从“概述”选项卡的顶部菜单中选择“分析”，然后运行查询。
 
 ![自定义指标查询结果的屏幕截图。](./media/javascript-react-plugin/query.png)
 
 > [!NOTE]
-> 新的自定义指标可能需要长达10分钟的时间才能显示在 Azure 门户中。
+> 新的自定义指标最多可能需要 10 分钟才能显示在 Azure 门户中。
 
-## <a name="using-react-hooks"></a>使用响应挂钩
+## <a name="using-react-hooks"></a>使用 React 挂钩
 
-[反应挂钩](https://reactjs.org/docs/hooks-reference.html) 是在响应应用程序中进行状态和生命周期管理的一种方法，无需依赖基于类的反应组件。 Application Insights 响应插件提供了许多挂钩集成，它们的操作方式与高阶组件方法类似。
+[React 挂钩](https://reactjs.org/docs/hooks-reference.html)是一种在 React 应用程序中进行状态和生命周期管理的方法，无需依赖基于类的 React 组件。 Application Insights React 插件提供了许多挂钩集成，它们的运行方式与高阶组件方法类似。
 
-### <a name="using-react-context"></a>使用反应上下文
+### <a name="using-react-context"></a>使用 React 上下文
 
-Application Insights 的响应挂钩旨在将 [反应上下文](https://reactjs.org/docs/context.html) 用作包含它的方面。 若要使用上下文，请初始化如上所示的 Application Insights，然后导入上下文对象：
+Application Insights React 挂钩旨在使用 [React 上下文](https://reactjs.org/docs/context.html)作为它的一个包含方面。 若要使用上下文，请如上所示初始化 Application Insights，然后导入上下文对象：
 
 ```javascript
 import React from "react";
@@ -117,7 +120,7 @@ const App = () => {
 };
 ```
 
-此上下文提供程序将使 Application Insights 在 `useContext` 它的所有子组件内作为挂钩提供。
+此上下文提供程序使 Application Insights 在它的所有子组件内可作为 `useContext` 挂钩使用。
 
 ```javascript
 import React from "react";
@@ -137,7 +140,7 @@ export default MyComponent;
 
 ### `useTrackMetric`
 
-`useTrackMetric`挂钩会复制高阶组件的功能 `withAITracking` ，而不会向组件结构添加其他组件。 该挂钩采用两个参数，第一个参数是 Application Insights 实例 (可从挂钩) 获取该实例 `useAppInsightsContext` ，该实例的标识符用于跟踪 (如名称) 。
+`useTrackMetric` 挂钩会复制 `withAITracking` 高阶组件的功能，而不会向组件结构中添加其他组件。 该挂钩采用两个参数，一个是 Application Insights 实例（可从 `useAppInsightsContext` 挂钩获取），另一个是用于跟踪的组件的标识符（如其名称）。
 
 ```javascript
 import React from "react";
@@ -154,11 +157,11 @@ const MyComponent = () => {
 export default MyComponent;
 ```
 
-它将像高阶组件一样运行，但会响应挂钩生命周期事件，而不是组件生命周期。 如果需要在特定交互中运行，则需要向用户事件显式提供挂钩。
+它的运行方式与高阶组件类似，但会响应挂钩生命周期事件，而不是组件生命周期。 如果需要在特定的交互上运行，则需要向用户事件显式提供挂钩。
 
 ### `useTrackEvent`
 
-`useTrackEvent`挂钩用于跟踪应用程序可能需要跟踪的任何自定义事件，如按钮单击或其他 API 调用。 它采用两个参数，第一个参数是 Application Insights 实例 (可从挂钩) 获取该实例 `useAppInsightsContext` ，并为事件的名称。
+`useTrackEvent` 挂钩用于跟踪应用程序可能需要跟踪的任何自定义事件，例如按钮单击或其他 API 调用。 它采用两个参数，一个是 Application Insights 实例（可从 `useAppInsightsContext` 挂钩获取），另一个是事件的名称。
 
 ```javascript
 import React, { useState, useEffect } from "react";
@@ -194,11 +197,11 @@ const ProductCart = () => {
 export default MyComponent;
 ```
 
-使用挂钩时，可以向其提供数据负载，以便在将数据存储到 Application Insights 时向事件添加其他数据。
+使用该挂钩时，可以向其提供数据有效负载，以便在将事件存储到 Application Insights 时向该事件添加其他数据。
 
-## <a name="react-error-boundaries"></a>响应误差边界
+## <a name="react-error-boundaries"></a>React 错误边界
 
-[误差边界](https://reactjs.org/docs/error-boundaries.html) 提供一种在响应应用程序中发生异常的情况，并在发生此类错误时，可能需要记录异常。 Application Insights 的响应插件提供一个错误边界组件，该组件将在发生错误时自动记录错误。
+[错误边界](https://reactjs.org/docs/error-boundaries.html)提供一种在 React 应用程序中发生异常时妥善处理异常的方法，并且当发生此类错误时，很可能需要记录该异常。 Application Insights React 插件提供了一个错误边界组件，该组件将在发生错误时自动记录错误。
 
 ```javascript
 import React from "react";
@@ -214,13 +217,13 @@ const App = () => {
 };
 ```
 
-`AppInsightsErrorBoundary`需要向它传递两个属性，为 `ReactPlugin` 应用程序创建的实例和发生错误时要呈现的组件。 发生未处理的错误时， `trackException` 将使用提供给错误边界的信息调用，并 `onError` 显示组件。
+`AppInsightsErrorBoundary` 要求向它传递两个属性，一个是为应用程序创建的 `ReactPlugin` 实例，另一个是发生错误时要呈现一个组件。 发生未处理的错误时，使用提供给错误边界的信息调用 `trackException`，并且 `onError` 组件将显示。
 
 ## <a name="sample-app"></a>示例应用
 
-查看 [Application Insights 反应演示](https://github.com/Azure-Samples/application-insights-react-demo)。
+查看 [Application Insights React 演示](https://github.com/Azure-Samples/application-insights-react-demo)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关 JavaScript SDK 的详细信息，请参阅 [Application Insights JAVASCRIPT sdk 文档](javascript.md)。
-- 若要了解 Kusto 查询语言和查询 Log Analytics 中的数据，请参阅 [日志查询概述](../../azure-monitor/log-query/log-query-overview.md)。
+- 若要详细了解 JavaScript SDK，请参阅 [Application Insights JavaScript SDK 文档](javascript.md)。
+- 若要了解 Kusto 查询语言和 Log Analytics 中的查询数据，请参阅[日志查询概述](../../azure-monitor/log-query/log-query-overview.md)。

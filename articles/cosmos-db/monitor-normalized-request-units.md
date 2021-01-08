@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: kanshiG
 ms.author: govindk
-ms.date: 06/25/2020
-ms.openlocfilehash: dc47f2f7a0f1586b197d14015fe2167293c806c6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 01/07/2021
+ms.openlocfilehash: ec82532b54e7834b62fcc03d3ee7de1345a0f546
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099328"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027762"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>如何监视 Azure Cosmos 容器或帐户的规范化 RU/秒
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,13 +26,11 @@ ms.locfileid: "93099328"
 
 Azure Monitor 指标通过使用 **Total Requests** 指标帮助你查找 SQL API 的每个状态代码的操作。 稍后，你可以通过 429 状态代码对这些请求进行筛选，并按 **操作类型** 来划分这些请求。  
 
-若要查找速率受限的请求，建议使用诊断日志获取此信息。
+若要查找请求（速率有限），建议使用诊断日志获取此信息。
 
-如果连续峰值为100%，则在多个分区键范围内进行规范化的 RU/s 消耗或接近100%，则建议增加吞吐量。 可以通过使用 Azure monitor 指标和 Azure monitor 诊断日志来找出哪些操作非常繁重，使用高峰。
+如果连续峰值为100%，则在多个分区键范围内使用，或接近100%，则建议增加吞吐量。 可以通过使用 Azure monitor 指标和 Azure monitor 诊断日志来找出哪些操作非常繁重，使用高峰。
 
-总的来说， **规范化 RU 消耗** 指标用于查看在使用情况下哪些分区键范围更热。 这样，便可以在分区键范围内进行吞吐量的偏差。 你稍后可以跟进，查看 Azure Monitor 日志中的 **PartitionKeyRUConsumption** 日志，了解哪些逻辑分区键使用量较大。 这将指向分区键选择中的更改或应用程序逻辑中的更改。 若要解决速率限制问题，请在多个分区上分布数据负载，或者只是实际需要增加吞吐量。 
-
-
+总的来说， **规范化 RU 消耗** 指标用于查看在使用情况下哪些分区键范围更热。 这样，便可以在分区键范围内进行吞吐量的偏差。 你稍后可以跟进，查看 Azure Monitor 日志中的 **PartitionKeyRUConsumption** 日志，了解哪些逻辑分区键使用量较大。 这将指向分区键选择中的更改或应用程序逻辑中的更改。 若要解决速率限制，请在多个分区上分布数据的负载，或只在需要时增加吞吐量。 
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>查看规范化请求单位消耗指标
 
@@ -44,23 +42,23 @@ Azure Monitor 指标通过使用 **Total Requests** 指标帮助你查找 SQL AP
 
 3. 在“指标”窗格中选择一个资源，然后选择所需的订阅和资源组。    对于“资源类型”，请选择“Azure Cosmos DB 帐户”，选择一个现有的 Azure Cosmos 帐户，然后选择“应用”。  
 
-   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Azure Monitor 中的“指标”窗格":::
+   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="选择一个 Azure Cosmos 帐户来查看指标":::
 
 4. 接下来，可以从可用指标列表中选择一个指标。 可以选择特定于请求单位、存储、延迟、可用性、Cassandra 和其他方面的指标。 若要详细了解此列表中的所有可用指标，请参阅[按类别列出的指标](monitor-cosmos-db-reference.md)一文。 在此示例中，我们选择“规范化 RU 消耗”指标，并选择“最大值”作为聚合值。
 
    除了这些详细信息之外，还可以选择指标的时间范围和时间粒度。 可以查看过去最长 30 天的指标。  应用筛选器后，系统会根据该筛选器显示图表。
 
-   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Azure Monitor 中的“指标”窗格":::
+   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="从 Azure 门户中选择指标":::
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>针对规范化请求单位消耗的筛选器
 
-还可以按特定的 **CollectionName** 、 **DatabaseName** 、 **PartitionKeyRangeID** 和 **区域** 筛选所显示的指标和图表。 若要筛选指标，请选择“添加筛选器”，并选择所需的属性（例如 **CollectionName** ）和所关注的相应值。 然后，图中会显示在所选时间段内针对该容器消耗的规范化 RU 消耗单位。  
+还可以按特定的 **CollectionName**、**DatabaseName**、**PartitionKeyRangeID** 和 **区域** 筛选所显示的指标和图表。 若要筛选指标，请选择“添加筛选器”，并选择所需的属性（例如 **CollectionName**）和所关注的相应值。 然后，图中会显示在所选时间段内针对该容器消耗的规范化 RU 消耗单位。  
 
-可以使用“应用拆分”选项对指标进行分组。  
+可以使用“应用拆分”选项对指标进行分组。 对于共享吞吐量数据库，规范化 RU 度量值仅以数据库粒度显示数据，而不显示每个集合的任何数据。 因此对于共享吞吐量数据库，当按集合名称应用拆分时，将看不到任何数据。
 
-将会显示每个容器的规范化请求单位消耗指标，如下图所示：
+每个容器的规范化请求单位消耗指标显示如下图所示：
 
-:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Azure Monitor 中的“指标”窗格":::
+:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="对规范化请求单位消耗指标应用筛选器":::
 
 ## <a name="next-steps"></a>后续步骤
 
