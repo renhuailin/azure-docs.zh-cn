@@ -1,18 +1,17 @@
 ---
 title: 在 Azure 上选择实时和流处理解决方案
 description: 了解如何选择适当的实时分析和流式处理技术，以便在 Azure 上构建应用程序。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: a204aacc0061091e0a273581e766bb669d191f0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c10a91971357001723adcb783253c9867cf6d87
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903698"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019051"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>在 Azure 上选择实时分析和流式处理技术
 
@@ -25,7 +24,7 @@ Azure 流分析是 Azure 上提供的建议用于流分析的服务。 该服务
 * 数据可视化仪表板
 * 针对时态和空间模式或异常生成实时[警报](stream-analytics-set-up-alerts.md)
 * 提取、转换、加载 (ETL)
-* [事件来源模式](/azure/architecture/patterns/event-sourcing)
+* [事件溯源模式](/azure/architecture/patterns/event-sourcing)
 * [IoT Edge](stream-analytics-edge.md)
 
 将 Azure 流分析作业添加到应用程序，是在 Azure 中使用熟悉的 SQL 语言启动和运行流分析的最快捷方法。 Azure 流分析是一个作业服务，因此你无需花费时间来管理群集，也无需担心出现停机，因为它在作业级别提供 99.9% SLA。 还可以在作业级别进行计费，使创业成本降低（只需一个流单元），但流单元可缩放（最多可以购买 192 个）。 运行少量的流分析作业比运行并维护群集要经济高效得多。

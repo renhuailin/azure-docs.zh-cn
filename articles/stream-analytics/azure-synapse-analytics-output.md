@@ -1,18 +1,17 @@
 ---
 title: Azure 流分析中的 azure Synapse Analytics 输出
 description: 本文介绍 Azure Synapse Analytics 作为 Azure 流分析的输出。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 65752321f94bfa1403839889ead284d46b5f7191
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7e85df8ae67624a253a9fb617629d7355109c210
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740056"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019595"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Azure 流分析中的 azure Synapse Analytics 输出
 

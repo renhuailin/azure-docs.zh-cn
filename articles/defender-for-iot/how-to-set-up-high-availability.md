@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 6540b5f93bebfe39253a88dc495a3613568f8926
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: e5fa4bde316f4b1677f78c65e913a6303a9f4735
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838141"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019136"
 ---
 # <a name="about-high-availability"></a>关于高可用性
 
@@ -52,7 +52,7 @@ ms.locfileid: "97838141"
 
 3. 安装本地管理控制台辅助设备。 有关详细信息，请参阅 [关于用于 IoT 安装的 Defender](how-to-install-software.md)。
 
-4. 如 [此处](/create-the-primary-and-secondary-pair.md)所述，将主要和辅助本地管理控制台设备配对。 主要本地管理控制台必须至少管理两个传感器，才能执行安装程序。
+4. 如 [此处](https://infrascale.secure.force.com/pkb/articles/Support_Article/How-to-access-your-Appliance-Management-Console)所述，将主要和辅助本地管理控制台设备配对。 主要本地管理控制台必须至少管理两个传感器，才能执行安装程序。
 
 ## <a name="high-availability-requirements"></a>高可用性要求
 
@@ -151,4 +151,4 @@ cyberx-management-deploy-ssh-key <Primary ip>
 
 ## <a name="see-also"></a>另请参阅
 
-[激活并设置本地管理控制台](how-to-activate-and-set-up-your-on-premises-management-console.md)
+[激活和设置本地管理控制台](how-to-activate-and-set-up-your-on-premises-management-console.md)

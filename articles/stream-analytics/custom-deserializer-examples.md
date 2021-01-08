@@ -1,19 +1,18 @@
 ---
 title: 在 Azure 流分析中使用 .NET 自定义反序列化程序读取任何格式的输入
 description: 本文介绍了序列化格式，以及用来为 Azure 流分析云和边缘作业定义 .NET 自定义反序列化程序的接口。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4adf0b8a7c12abed9689b9ac0cc9c5d5c8c3f980
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 140a836882ad3abe048047120e4fe1ebc0a3067c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488428"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018150"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自定义反序列化程序读取任何格式的输入
 
@@ -201,7 +200,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>REST API 的序列化格式
 
-每个流分析输入都有一种 **序列化格式** 。 有关输入选项的详细信息，请参阅[输入 REST API](/rest/api/streamanalytics/2016-03-01/inputs) 文档。
+每个流分析输入都有一种 **序列化格式**。 有关输入选项的详细信息，请参阅[输入 REST API](/rest/api/streamanalytics/2016-03-01/inputs) 文档。
 
 以下 Javascript 代码是使用 REST API 时的 .NET 反序列化程序序列化格式示例：
 

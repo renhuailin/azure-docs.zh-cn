@@ -3,16 +3,15 @@ title: 安装适用于 Visual Studio 的 Azure 流分析工具
 description: 本文介绍安装要求以及如何安装适用于 Visual Studio 的 Azure 流分析工具。
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/22/2018
-ms.openlocfilehash: 464e8fbf624dfa84ec54bf6a7e0ce202d047e15d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0077ac8465e8f785e772b384f26e0edc6874a1a0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045104"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018694"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>安装适用于 Visual Studio 的 Azure 流分析工具
 
@@ -28,7 +27,7 @@ Visual Studio Enterprise (Ultimate/Premium)、Professional 和 Community 版本�
 
 ### <a name="install-for-visual-studio-2019-and-2017"></a>安装 Visual Studio 2019 和 2017<a name="recommended-visual-studio-2019-and-2017"></a>
 
-Azure Data Lake 和流分析工具是 **Azure 开发**和**数据存储和处理**工作负荷的一部分。 在安装过程中启用这两个工作负荷之一。 如果已安装 Visual Studio，请选择“工具”   > “获取工具和功能”  以添加工作负荷。
+Azure Data Lake 和流分析工具是 **Azure 开发** 和 **数据存储和处理** 工作负荷的一部分。 在安装过程中启用这两个工作负荷之一。 如果已安装 Visual Studio，请选择“工具”   > “获取工具和功能”  以添加工作负荷。
 
 下载 [Visual Studio 2019（预览版 2 或更高版本）和 Visual Studio 2017（15.3 或更高版本）](https://www.visualstudio.com/)并按照说明进行安装。
 
@@ -44,7 +43,7 @@ Azure Data Lake 和流分析工具是 **Azure 开发**和**数据存储和处理
 
 1. 选择“扩展”   > “管理扩展”  。
 
-1. 在**管理扩展**中，选择“更新”  并选择“Azure Data Lake 和流分析工具”  。
+1. 在 **管理扩展** 中，选择“更新”  并选择“Azure Data Lake 和流分析工具”  。
 
 1. 选择“更新”  以安装最新扩展。
 
@@ -68,4 +67,4 @@ Visual Studio Enterprise (Ultimate/Premium)、Professional 和 Community 版本�
 
 可以卸载 Azure Data Lake 和流分析工具。 对于 Visual Studio 2019 或 Visual Studio 2017，选择“工具”   > “获取工具和功能”  。 在“修改”  中，取消选择“Azure Data Lake 和流分析工具”  。 它显示在“数据存储和处理”  工作负荷或“Azure 开发”  工作负荷下。
 
-若要从 Visual Studio 2015 或 Visual Studio 2013 中卸载，请转到“控制面板”   > “程序和功能”  。 卸载**适用于 Visual Studio 的 Microsoft Azure Data Lake 和流分析工具**。
+若要从 Visual Studio 2015 或 Visual Studio 2013 中卸载，请转到“控制面板”   > “程序和功能”  。 卸载 **适用于 Visual Studio 的 Microsoft Azure Data Lake 和流分析工具**。

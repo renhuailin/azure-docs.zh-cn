@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2020
+ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 1d5f879ead35ef6d47b993ff833dc0b0595e3c6c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 99bcef2ba702235279c1327a2a5e51a8c6ab806d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861912"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018473"
 ---
 # <a name="create-a-connection-monitor-by-using-powershell"></a>使用 PowerShell 创建连接监视器
 
@@ -79,7 +79,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 
 * **位置**：在其中创建连接监视器的区域。
 
-* **Endpoints**
+* **终结点**
     * **名称**：每个终结点的唯一名称。
     * **资源 id**：对于 azure 终结点，资源 id 是指 Vm 的 Azure 资源管理器资源 id。 对于非 Azure 终结点，资源 ID 是指链接到非 Azure 代理的 Log Analytics 工作区的 Azure 资源管理器资源 ID。
     * **Address**：仅当未指定资源 id 或资源 id 在 Log Analytics 工作区中时才适用。 如果在没有资源 ID 的情况下使用，则可以是任何公共终结点的 URL 或 IP。 如果与 Log Analytics 资源 ID 一起使用，则表示监视代理的 FQDN。

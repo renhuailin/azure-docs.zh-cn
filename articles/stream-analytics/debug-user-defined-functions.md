@@ -3,17 +3,16 @@ title: 在 Azure 流分析中调试用户定义的函数
 description: 本文介绍如何在 Azure 流分析中调试用户定义的函数。
 author: jenssuessmeyer
 ms.author: jenss
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 567def7abaff3cd8d70eb56f0aa117d1eeb52a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f5a24e4d351d7c133251900a80c70094b84cc4e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300422"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019425"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>在 Azure 流分析中调试用户定义的函数 
 
@@ -49,7 +48,7 @@ JavaScript 是用于在流分析中创建函数的另一个选项。 JavaScript 
 
 下面的示例演示如何在 [Visual Studio Code](quick-create-visual-studio-code.md)中使用集成运行时环境中的某些限制调试 JavaScript udf。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保 Azure 流分析项目包含以下各项：
 
@@ -61,12 +60,12 @@ JavaScript 是用于在流分析中创建函数的另一个选项。 JavaScript 
 
 ### <a name="prepare-files"></a>准备文件
 
-在下图中， *script.asaql* 查询文件仅包括对 UDF *fxcharCount*的调用。 此更改可确保在进行更改后仍能够编译项目。
+在下图中， *script.asaql* 查询文件仅包括对 UDF *fxcharCount* 的调用。 此更改可确保在进行更改后仍能够编译项目。
 
 > [!div class="mx-imgBorder"]
 > ![流分析测试查询文件](./media/debug-user-defined-functions/asaql-file.png)
 
-在 **测试** 中创建另一个文件夹来承载测试文件，该文件夹调用以使用 JavaScript 函数执行测试。 在此示例中，文件夹的名称为 *fxcharCount* ，并且 *Test_UDF.js*的测试的名称。 
+在 **测试** 中创建另一个文件夹来承载测试文件，该文件夹调用以使用 JavaScript 函数执行测试。 在此示例中，文件夹的名称为 *fxcharCount* ，并且 *Test_UDF.js* 的测试的名称。 
 
 下图显示测试文件中的代码，该代码加载函数文件并执行函数。 此示例很简单，但你可以加载其他测试数据文件，并循环访问以获取输出的其他测试。 函数调用的表示法与常见调用略有不同，因为该文件被引用且未加载到运行时中，因此可以进行调试。 
 

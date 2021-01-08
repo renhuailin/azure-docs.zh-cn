@@ -4,16 +4,15 @@ description: 本文介绍如何使用 Azure 流分析 CI/CD 工具自动生成�
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: aa75a553ffc131f4827aa045849f1317d894ddc5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9e79e0a2c030e2ebfcd5ddfd49e7c05afdb0dc3c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123144"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019544"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>使用 CI/CD 工具自动执行 Azure 流分析作业的生成、测试和部署
 
@@ -35,7 +34,7 @@ azure-streamanalytics-cicd build -project <projectFullPath> [-outputPath <output
 
 " *生成* " 命令执行关键字语法检查并输出 Azure 资源管理器模板。
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |---|---|
 | `-project` | Visual Studio Code 项目的文件的绝对 **asaproj.js** 路径，或 **[项目名称]. Asaproj** for Visual Studio 项目。 |
 | `-outputPath` | Azure 资源管理器模板的输出文件夹的路径。 如果未指定此项，则将模板放在当前目录中。 |
@@ -66,7 +65,7 @@ azure-streamanalytics-cicd build -project "/Users/username/projects/samplejob/sa
 
 文件 parameters.js上的默认参数来自 Visual Studio Code 或 Visual Studio 项目中的设置。 如果要部署到其他环境，请相应地替换参数。
 
-所有凭据的默认值均为 **null** 。 在部署到 Azure 之前，需要设置这些值。
+所有凭据的默认值均为 **null**。 在部署到 Azure 之前，需要设置这些值。
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -84,7 +83,7 @@ azure-streamanalytics-cicd build -project "/Users/username/projects/samplejob/sa
 azure-streamanalytics-cicd localrun -project <projectFullPath> [-outputPath <outputPath>] [-customCodeZipFilePath <zipFilePath>]
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |---|---|
 | `-project` | Visual Studio Code 项目的 **asaproj.js** 文件路径，或 **[项目名称]. Asaproj** for Visual Studio 项目。 |
 | `-outputPath` | 输出文件夹的路径。 如果未指定，则输出结果文件将放在当前目录中。 |
@@ -119,10 +118,10 @@ azure-streamanalytics-cicd localrun -project "/Users/roger/projects/samplejob/sa
 azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPath <testConfigFileFullPath>]
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |---|---|
 | `-project` | Visual Studio Code 项目的 **asaproj.js** 文件路径，或 **[项目名称]. Asaproj** for Visual Studio 项目。 |
-| `-testConfigPath` | 测试配置文件的路径。 如果未指定此值，则会在 **\test** 文件的当前 **asaproj.js** 目录下的文件中搜索文件，默认文件名 **testConfig.js为 on** 。 如果不存在，则将创建新的文件。 |
+| `-testConfigPath` | 测试配置文件的路径。 如果未指定此值，则会在 **\test** 文件的当前 **asaproj.js** 目录下的文件中搜索文件，默认文件名 **testConfig.js为 on**。 如果不存在，则将创建新的文件。 |
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -139,7 +138,7 @@ azure-streamanalytics-cicd addtestcase -project "/Users/roger/projects/samplejob
 
 如果测试配置文件为空，则会将以下内容写入文件中。 否则，会将一个测试用例添加到 **测试用例** 的数组中。 必要的输入配置会根据输入配置文件（如果存在）自动填充。 否则，将配置默认值。 在运行测试之前，必须指定每个输入和预期输出的 **FilePath** 。 你可以手动修改配置。
 
-如果希望测试验证忽略特定输出，请将预期输出的 **必填** 字段设置为 **false** 。
+如果希望测试验证忽略特定输出，请将预期输出的 **必填** 字段设置为 **false**。
 
 ```json
 {
@@ -176,14 +175,14 @@ azure-streamanalytics-cicd addtestcase -project "/Users/roger/projects/samplejob
 azure-streamanalytics-cicd test -project <projectFullPath> [-testConfigPath <testConfigFileFullPath>] [-outputPath <outputPath>] [-customCodeZipFilePath <zipFilePath>]
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |---|---|
 | `-project` | Visual Studio Code 项目的 **asaproj.js** 文件路径，或 **[项目名称]. Asaproj** for Visual Studio 项目。 |
-| `-testConfigPath` | 测试配置文件的路径。 如果未指定此值，则会在 **\test** 文件的当前 **asaproj.js** 目录下的文件中搜索文件，默认文件名 **testConfig.js为 on** 。
+| `-testConfigPath` | 测试配置文件的路径。 如果未指定此值，则会在 **\test** 文件的当前 **asaproj.js** 目录下的文件中搜索文件，默认文件名 **testConfig.js为 on**。
 | `-outputPath` | 测试结果输出文件夹的路径。 如果未指定，则输出结果文件将放在当前目录中。 |
 | `-customCodeZipFilePath` | 自定义代码（如 UDF 或反序列化程序）的 zip 文件的路径（如果使用）。 |
 
-完成所有测试后，将在输出文件夹中生成 JSON 格式的测试结果的摘要。 摘要文件的名称为 **testResultSummary.js** 。
+完成所有测试后，将在输出文件夹中生成 JSON 格式的测试结果的摘要。 摘要文件的名称为 **testResultSummary.js**。
 
 ```json
 {

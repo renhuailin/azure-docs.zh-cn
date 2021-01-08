@@ -5,12 +5,12 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: e37a14b2634395d7f31565d6d5a6f6ec96a4a2f1
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 5c9612547fcfed8e583f5b2fbcfe0bddd5dc412c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954511"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019102"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 门户中创建第一个函数
 
@@ -61,13 +61,13 @@ Azure Functions 用于在无服务器环境中运行代码，无需先创建虚�
 
     ![从 Azure 门户复制函数 URL](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. 将函数 URL 粘贴到浏览器的地址栏中。 将查询字符串值 `&name=<your_name>` 添加到该 URL 尾部，然后按 Enter 来运行请求。 
+1. 将函数 URL 粘贴到浏览器的地址栏中。 将查询字符串值 `?name=<your_name>` 添加到该 URL 尾部，然后按 Enter 来运行请求。 
 
     以下示例显示了浏览器中的响应：
 
     ![浏览器中的函数响应。](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
-    请求 URL 包含通过 HTTP 访问函数默认所需的密钥。
+    如果请求 URL 包含 () 的 [访问密钥](functions-bindings-http-webhook-trigger.md#authorization-keys) `?code=...` ，则意味着在创建函数时选择 " **函数** " 而不是 " **匿名** 访问" 级别。 在这种情况下，应追加 `&name=<your_name>` 。
 
 1. 运行函数时，会在日志中写入跟踪信息。 若要查看跟踪输出，请返回到门户中的“代码 + 测试”页，并展开页面底部的“日志”箭头。
 

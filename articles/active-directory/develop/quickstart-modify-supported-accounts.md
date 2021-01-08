@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 94a7f4d9ce1471aa1dd6aef3165562a2abc02816
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1d30d1e6c9cc60af96336cfdc7bea7126b4df7a8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453254"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017623"
 ---
 # <a name="how-to-modify-the-accounts-supported-by-an-application"></a>如何修改应用程序支持的帐户
 
@@ -34,7 +34,7 @@ ms.locfileid: "96453254"
 
 若要为现有应用注册支持的帐户类型指定不同的设置，请执行以下操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册”，然后选择你的应用程序 。

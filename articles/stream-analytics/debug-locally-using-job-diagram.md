@@ -3,16 +3,15 @@ title: 在 Visual Studio 中使用作业关系图在本地调试 Azure 流分析
 description: 本文介绍如何在适用于 Visual Studio 的 Azure 流分析工具中使用作业关系图在本地调试查询。
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: c32ba468979e4566d8e349d481eddca7d407b659
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d0e94fda1fb21be1a01516f4cecf657426ae867e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130980"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019442"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>在 Visual Studio 中使用作业关系图在本地调试 Azure 流分析查询
 
@@ -111,7 +110,7 @@ ms.locfileid: "93130980"
 
 ### <a name="view-job-level-metrics-and-stop-running"></a>查看作业级指标并停止运行
 
-其他作业级指标将显示在弹出控制台中。 若要停止作业，请在控制台中按 **Ctrl+C** 。
+其他作业级指标将显示在弹出控制台中。 若要停止作业，请在控制台中按 **Ctrl+C**。
 
 ![作业关系图 - 停止作业](./media/debug-locally-using-job-diagram/stop-job.png)
 

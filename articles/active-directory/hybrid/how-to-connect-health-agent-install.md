@@ -3,7 +3,7 @@ title: 在 Azure Active Directory 中安装连接运行状况代理
 description: 本 Azure AD Connect Health 文章介绍了 Active Directory 联合身份验证服务 (AD FS) 和同步的代理安装。
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: daveba
 editor: curtand
 ms.assetid: 1cc8ae90-607d-4925-9c30-6770a4bd1b4e
@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ff6f96c62936d8bf66b908060b91f8cad7989763
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 57362aa84886d7b7d764617ce5a43ca2393bed52
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962589"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018235"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 
@@ -351,7 +351,7 @@ Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
 Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 ```
 
-下面是一个示例： 
+下面的示例说明： 
 
 `Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443`
 

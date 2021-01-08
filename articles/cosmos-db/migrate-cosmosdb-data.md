@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: c45445415f3eaa7cb0f9069dd5f64b57c19e5836
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437144"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018065"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>将数百 TB 的数据迁移到 Azure Cosmos DB 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Azure 数据工厂、Azure 数据迁移服务之类的工具正在修复上述�
 
 自定义工具使用批量执行程序库，支持跨多个客户端横向扩展，并可以跟踪引入过程中出现的错误。 若要使用此工具，应将源数据分区成 Azure Data Lake Storage (ADLS) 中的不同文件，以便不同的迁移工作线程可以选取每个文件并将其引入 Azure Cosmos DB。 自定义工具利用单独的集合，该集合存储 ADLS 中每个源文件的迁移进度的相关元数据，并跟踪与这些文件关联的任何错误。  
 
-下图描述了使用此自定义工具的迁移过程。 该工具在一组虚拟机上运行，其中每个虚拟机查询 Azure Cosmos DB 中的跟踪集合，以获取某个源数据分区上的租约。 完成此操作后，该工具将读取源数据分区，并使用批量执行程序库将其引入 Azure Cosmos DB。 接下来，跟踪集合将会更新，以记录数据引入的进度和遇到的任何错误。 处理数据分区后，该工具会尝试查询下一个可用的源分区。 它会继续处理下一个源分区，直到迁移了所有数据。 [此处](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)提供了该工具的源代码。  
+下图描述了使用此自定义工具的迁移过程。 该工具在一组虚拟机上运行，其中每个虚拟机查询 Azure Cosmos DB 中的跟踪集合，以获取某个源数据分区上的租约。 完成此操作后，该工具将读取源数据分区，并使用批量执行程序库将其引入 Azure Cosmos DB。 接下来，跟踪集合将会更新，以记录数据引入的进度和遇到的任何错误。 处理数据分区后，该工具会尝试查询下一个可用的源分区。 它会继续处理下一个源分区，直到迁移了所有数据。 [Azure Cosmos DB 大容量引入](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)存储库中提供了该工具的源代码。  
 
  
 :::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="迁移工具设置" border="false":::
