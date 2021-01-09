@@ -3,12 +3,12 @@ title: 使用 Azure 门户加入 Azure 事件网格伙伴
 description: 使用 Azure 门户载入 Azure 事件网格合作伙伴。
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 8344fcd822bfcdc67e2c27b200d97fa70dfefdf2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 44dece4d46a6d702d48fa49983818986fcd59f7b
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349380"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050946"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>使用 Azure 门户加入 Azure 事件网格伙伴
 本文介绍第三方 SaaS 提供程序（也称为事件发布者或合作伙伴）在载入到事件网格后，可以从其服务发布事件以及最终用户如何使用这些事件。
@@ -44,7 +44,7 @@ ms.locfileid: "96349380"
 - Azure [租户](../active-directory/develop/quickstart-create-new-tenant.md)。
 
 ## <a name="register-a-partner-topic-type-optional"></a>注册合作伙伴主题类型 (可选) 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 从左侧导航窗格中选择 " **所有服务** "，然后在搜索栏中键入 **事件网格伙伴注册** ，然后选择它。 
 1. 在 " **事件网格伙伴注册** " 页上，选择工具栏上的 " **+ 添加** "。 
 
@@ -112,7 +112,6 @@ ms.locfileid: "96349380"
     1. 在 " **频道详细信息** " 部分中，执行以下步骤：
         1. 对于 " **事件通道名称**"，请输入事件通道的名称。 
         1. 输入 **源**。 请参阅 [Cloud Events 1.0 规范](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source-1) ，了解源的适当值。 另请参阅 [此云事件架构示例](cloud-event-schema.md#sample-event-using-cloudevents-schema)。
-        1. 输入源 (什么？ ) 。
     1. 在 " **目标详细信息** " 部分中，输入将为此事件通道创建的目标合作伙伴主题的详细信息。 
         1. 输入将在其中创建合作伙伴主题的 **订阅的 ID** 。 
         1. 输入将在其中创建合作伙伴主题资源的 **资源组的名称** 。 
