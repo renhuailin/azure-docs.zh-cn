@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 90a425fe64424c946a02f3c113889b62b58fbeb4
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: aa6429e27faf92f047c580986d5b434c9a418730
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032314"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044367"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>设置 Azure 数字孪生实例和身份验证 (门户) 
 
@@ -44,7 +44,7 @@ ms.locfileid: "97032314"
 * **订阅**：要使用的 Azure 订阅
   - **资源组**：要在其中部署实例的资源组。 如果尚未记住现有的资源组，可通过选择 "新建" 链接并输入新资源组 *的名称* 来创建一个资源组。
 * **位置**：用于部署的支持 Azure 数字孪生的区域。 有关区域支持的更多详细信息，请访问 azure [*孪生) 提供 (的 azure 产品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
-* **资源名称**： Azure 数字孪生实例的名称。 新实例的名称在你的订阅的区域内必须是唯一的 (这意味着，如果你的订阅在已使用所选名称的区域中有另一个 Azure 数字孪生实例，则系统将要求你选择不同的名称) 。
+* **资源名称**： Azure 数字孪生实例的名称。 如果你的订阅在已使用指定名称的区域中有另一个 Azure 数字孪生实例，则系统将要求你选择其他名称。
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="填写所述的值以创建 Azure 数字孪生资源":::
 

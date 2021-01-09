@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 389842901a4c508015d527c0fd8fd87af57dcd9b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 22cc9bf1bdfdb8a3026bb09f44e007ab3438325a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967918"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046815"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Log Analytics 虚拟机扩展
 
@@ -37,6 +37,7 @@ Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Wind
 
 | Log Analytics Windows 代理捆绑包版本 | Log Analytics Windows VM 扩展版本 | 发布日期 | 发行说明 |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18053| 1.0.18053.0 | 2020 年 10 月   | <ul><li>新代理疑难解答</li><li>更新代理如何处理 Azure 服务的证书更改</li></ul> |
 | 10.20.18040 | 1.0.18040.2 | 2020 年 8 月   | <ul><li>解决 Azure Arc 问题</li></ul> |
 | 10.20.18038 | 1.0.18038 | 2020 年 4 月   | <ul><li>使用 Azure Monitor 专用链接作用域启用通过专用链接建立连接</li><li>添加引入限制，以避免在引入工作区时突然出现意外流入</li><li>添加了对其他 Azure 政府云和区域的支持</li><li>解决 HealthService.exe 出现故障的 bug</li></ul> |
 | 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>添加 SHA-2 代码签名支持</li><li>改进了 VM 扩展安装和管理</li><li>解决了用于服务器的 Azure Arc 集成中的 Bug</li><li>添加了用于客户支持的内置故障排除工具</li><li>添加其他 Azure 政府区域支持</li> |

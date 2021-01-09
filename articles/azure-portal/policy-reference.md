@@ -1,19 +1,19 @@
 ---
 title: Azure 门户的内置策略定义
-description: 列出 Azure 门户的 Azure 策略内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 11/17/2020
+description: 列出 Azure 门户的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
+ms.date: 01/08/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: a4b9664e7627074f62b2961b3867144965bea6d4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 34cfeadb301b520e0884333e32a30ec49f663106
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745683"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043893"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-portal"></a>适用于 Azure 门户的 Azure 策略内置定义
+# <a name="azure-policy-built-in-definitions-for-azure-portal"></a>Azure 门户的 Azure Policy 内置定义
 
-此页是 Azure 门户的 [Azure 策略](../governance/policy/overview.md) 内置策略定义的索引。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../governance/policy/samples/built-in-policies.md)。
+此页是 Azure 门户的 [Azure Policy](../governance/policy/overview.md) 内置策略定义的索引。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../governance/policy/samples/built-in-policies.md)。
 
 每个内置策略定义链接（指向 Azure 门户中的策略定义）的名称。 使用“版本”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。
 

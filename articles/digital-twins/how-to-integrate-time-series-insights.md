@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 58d101bb93b4635e362c5ec78a03a659b71b63da
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 22ee57592af838a236d75fa7f56a0c8e1ed89403
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495268"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046512"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解集成
 
@@ -76,7 +76,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
     >[!NOTE]
     >目前，Cloud Shell 中存在一个已知问题，该问题会影响以下命令组：`az dt route`、`az dt model` 和 `az dt twin`。
     >
-    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅[*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
+    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅 [*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
 
     ```azurecli-interactive
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -94,51 +94,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
 
 在已发布的函数应用中，将函数代码替换为以下代码。
 
-```C#
-using Microsoft.Azure.EventHubs;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Threading.Tasks;
-using System.Text;
-using System.Collections.Generic;
-
-namespace SampleFunctionsApp
-{
-    public static class ProcessDTUpdatetoTSI
-    { 
-        [FunctionName("ProcessDTUpdatetoTSI")]
-        public static async Task Run(
-            [EventHubTrigger("twins-event-hub", Connection = "EventHubAppSetting-Twins")]EventData myEventHubMessage, 
-            [EventHub("tsi-event-hub", Connection = "EventHubAppSetting-TSI")]IAsyncCollector<string> outputEvents, 
-            ILogger log)
-        {
-            JObject message = (JObject)JsonConvert.DeserializeObject(Encoding.UTF8.GetString(myEventHubMessage.Body));
-            log.LogInformation("Reading event:" + message.ToString());
-
-            // Read values that are replaced or added
-            Dictionary<string, object> tsiUpdate = new Dictionary<string, object>();
-            foreach (var operation in message["patch"]) {
-                if (operation["op"].ToString() == "replace" || operation["op"].ToString() == "add")
-                {
-                    //Convert from JSON patch path to a flattened property for TSI
-                    //Example input: /Front/Temperature
-                    //        output: Front.Temperature
-                    string path = operation["path"].ToString().Substring(1);                    
-                    path = path.Replace("/", ".");                    
-                    tsiUpdate.Add(path, operation["value"]);
-                }
-            }
-            //Send an update if updates exist
-            if (tsiUpdate.Count>0){
-                tsiUpdate.Add("$dtId", myEventHubMessage.Properties["cloudEvents:subject"]);
-                await outputEvents.AddAsync(JsonConvert.SerializeObject(tsiUpdate));
-            }
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateTSI.cs":::
 
 然后，该函数会将它创建的 JSON 对象发送到第二个事件中心，你将连接到时序见解。
 
@@ -202,12 +158,14 @@ namespace SampleFunctionsApp
 接下来，您将设置一个时序见解实例，以便从第二个事件中心接收数据。 请按照以下步骤操作，有关此过程的更多详细信息，请参阅 [*教程：设置 Azure 时序见解 GEN2 PAYG 环境*](../time-series-insights/tutorials-set-up-tsi-environment.md)。
 
 1. 在 Azure 门户中，开始创建时序见解资源。 
-    1. 选择 **PAYG (预览 ") ** 定价层。
+    1. 选择 **Gen2 (L1)** 定价层。
     2. 需要为此环境选择 **时序 ID** 。 时序 ID 最多可以有三个值，你将使用这些值在时序见解中搜索数据。 对于本教程，可以使用 **$dtId**。 有关选择 [*时序 id 的最佳实践，*](../time-series-insights/how-to-select-tsid.md)请阅读有关选择 ID 值的详细信息。
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示时序见解" **下一步：事件源** "，然后从上面选择事件中心信息。 还需要创建新的事件中心使用者组。
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="时序见解环境的创建门户 UX。选择了 Gen2 (L1) 定价层，并且时序 ID 属性名称为 $dtId" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
+
+2. 选择 " **下一步：事件源** "，然后从上面选择事件中心信息。 还需要创建新的事件中心使用者组。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示时序见解":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="时序见解环境事件源的创建门户 UX。正在使用上面的事件中心信息创建事件源。你还将创建一个新的使用者组。" lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>开始将 IoT 数据发送到 Azure 数字孪生
 
@@ -219,19 +177,21 @@ namespace SampleFunctionsApp
 
 现在，数据应流向时序见解实例，并准备好进行分析。 请按照以下步骤来浏览传入的数据。
 
-1. 在 [Azure 门户](https://portal.azure.com) 中打开时序见解实例 (可以在门户搜索栏) 中搜索实例的名称。 访问实例概述中所示的 *时序见解资源管理器 URL* 。
+1. 在 [Azure 门户](https://portal.azure.com) 中打开时序见解实例 (可以在门户搜索栏) 中搜索实例的名称。 访问实例概述中所示的“时序见解资源管理器 URL”。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示时序见解" **添加**"。
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在时序见解环境的 &quot;概述&quot; 选项卡中选择 &quot;时序见解资源管理器 URL&quot;":::
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示时序见解":::
+2. 在资源管理器中，你将看到从左侧显示的 Azure 数字孪生的三个孪生。 选择 _**thermostat67**_，选择 **温度**，然后单击 " **添加**"。
 
-3. 你现在应看到恒温器的初始温度读数，如下所示。 将为 *room21* 和 *floor1*更新相同的温度读数，并以串联方式可视化这些数据流。
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="选择 * * thermostat67 * *，选择 * * 温度 * *，然后单击 &quot;添加&quot;。":::
+
+3. 你现在应看到恒温器的初始温度读数，如下所示。 将为 *room21* 和 *floor1* 更新相同的温度读数，并以串联方式可视化这些数据流。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示时序见解":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="在 TSI 资源管理器中将初始温度数据绘入图表。它是介于68和85之间的随机值的行":::
 
 4. 如果允许模拟运行的时间更长，可视化效果将如下所示：
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示时序见解":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="每个克隆的温度数据都以不同颜色的三个平行线为绘图。":::
 
 ## <a name="next-steps"></a>后续步骤
 

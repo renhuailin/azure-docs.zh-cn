@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/23/2020
-ms.openlocfilehash: c5086eee805ffbcdf0741eae4db405b1bcbe8692
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/08/2021
+ms.openlocfilehash: d39bc35d1edcbcfef4c7774259112ec5144efa15
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760352"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044333"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB 无服务器（预览版）
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,16 +31,13 @@ Azure Cosmos DB 无服务器让你以一种基于消耗的方式使用 Azure Cos
 
 ## <a name="use-cases"></a>用例
 
-Azure Cosmos DB 无服务器最适合你预计会出现以下情况的方案：
-
-- **低流量、间歇性流量和不可预测的流量**：因为在这类情况下预配容量不是必需的，并且可能会导致成本高昂
-- 中等性能：因为无服务器容器具有[特定性能特征](#performance)
-
-由于这些原因，在下列情况下应考虑 Azure Cosmos DB 无服务器：
+Azure Cosmos DB 无服务器最适合的方案，在这些情况下，可能会出现具有长时间空闲时间的 **间歇性和不可预测** 由于这种情况下的预配容量不是必需的，并且可能会产生成本限制，因此在以下用例中应考虑 Azure Cosmos DB 无服务器。
 
 - Azure Cosmos DB 入门
-- 新应用程序的开发、测试和原型设计
-- 运行难于预测的间歇流量的小型到中型应用程序
+- 运行应用程序
+    - 突发，难于预测的间歇流量，或
+    - 低 ( # B0 10% ) 平均到高峰流量比率
+- 在流量模式未知的生产新应用程序中进行开发、测试、原型制作和运行
 - 与无服务器计算服务（如[Azure Functions](../azure-functions/functions-overview.md) ）集成
 
 有关如何选择最适合于用例的产品/服务的详细指南，请参阅[如何在预配吞吐量与无服务器之间进行选择](throughput-serverless.md)。
@@ -74,14 +71,7 @@ Azure Cosmos DB 无服务器最适合你预计会出现以下情况的方案：
 
 ## <a name="performance"></a><a id="performance"></a>性能
 
-无服务器资源会产生与预配吞吐量资源提供的性能特征不同的特定性能特征：
-
-- **可用性**：在无服务器产品/服务公开发布之后，如果未使用可用性区域（区域冗余），则无服务器容器可用性的服务级别协议 (SLA) 为 99.9%。 使用可用性区域时，SLA 为 99.99%。
-- **延迟**：在无服务器产品/服务公开发布之后，无服务器容器延迟的服务级别目标 (SLO) 对于点读取为 10 毫秒或更少，对于写入为 30 毫秒或更少。 点读取操作包含按其 ID 和分区键值提取单个项。
-- 突发性：在无服务器产品/服务公开发布之后，无服务器容器突发性的服务级别目标 (SLO) 为 95%。 这意味着至少在 95% 的时间内可以获得最大突发性。
-
-> [!NOTE]
-> 与任何 Azure 预览版一样，Azure Cosmos DB 无服务器不包括在服务级别协议 (SLA) 中。 上面提到的性能特征作为此产品/服务在公开发布时提供的功能的预览版进行提供。
+无服务器资源会产生不同于预配的吞吐量资源提供的特定性能特征。 在无服务器产品/服务公开发布后，无服务器容器的延迟将由服务级别目标 (SLO) 为10毫秒或更短（对于点读取）和30毫秒或更短时间（对于写入）。 点读取操作包含按其 ID 和分区键值提取单个项。
 
 ## <a name="next-steps"></a>后续步骤
 

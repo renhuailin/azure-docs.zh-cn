@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ca56c285baff9982ff465b0d4115d15eadedb8c9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534749"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045234"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 数字孪生模型
 
@@ -36,40 +36,12 @@ Azure 数字孪生的模型以 DTDL 编写，并保存为 *json* 文件。 还�
 
 解决该问题的第一步是创建模型来表示医院的各个方面。 此方案中的患者聊天室可能如下所述：
 
-```json
-{
-  "@id": "dtmi:com:contoso:PatientRoom;1",
-  "@type": "Interface",
-  "@context": "dtmi:dtdl:context;2",
-  "displayName": "Patient Room",
-  "contents": [
-    {
-      "@type": "Property",
-      "name": "visitorCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashPercentage",
-      "schema": "double"
-    },
-    {
-      "@type": "Relationship",
-      "name": "hasDevices"
-    }
-  ]
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/PatientRoom.json":::
 
 > [!NOTE]
 > 这是一个 json 文件的示例正文，其中定义并保存了模型，以便作为客户端项目的一部分进行上载。 另一方面，REST API 调用采用类似于上面 (的模型定义的数组，该数组 `IEnumerable<string>` 在 .NET SDK) 中映射到。 因此，若要直接在 REST API 中使用此模型，请将其括在括号中。
 
-此模型定义了患者房间的名称和唯一 ID，并定义了用于表示访问者计数和手动冲蚀状态 (这些计数器将从运动传感器和智能 soap dispensers 更新的属性，并将一起用于计算 *handwash 百分比* 属性) 。 该模型还定义了一个关系 *hasDevices* ，用于将基于此 *房间* 模型的任何 [数字孪生](concepts-twins-graph.md)连接到实际设备。
+此模型定义了患者房间的名称和唯一 ID，并定义了用于表示访问者计数和手动冲蚀状态 (这些计数器将从运动传感器和智能 soap dispensers 更新的属性，并将一起用于计算 *handwash 百分比* 属性) 。 该模型还定义了一个关系 *hasDevices*，用于将基于此 *房间* 模型的任何 [数字孪生](concepts-twins-graph.md)连接到实际设备。
 
 按照此方法，你可以继续为医院的 wards、区域或医院本身定义模型。
 
@@ -82,52 +54,20 @@ Azure 数字孪生的模型以 DTDL 编写，并保存为 *json* 文件。 还�
 创建模型后，可以将其上传到 Azure 数字孪生实例。
 
 > [!TIP]
-> 建议在将模型上传到 Azure 数字孪生实例之前，先对其进行验证。 你可以使用 " [*操作方法：分析和验证模型*](how-to-parse-models.md)" 中所述的 [DTDL 客户端分析器库](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)和 [DTDL 验证器示例](/samples/azure-samples/dtdl-validator/dtdl-validator)来检查模型，然后将它们上载到服务中。
+> 建议在将模型上传到 Azure 数字孪生实例之前，先对其进行验证。 你可以使用 "[*操作方法：分析和验证模型*](how-to-parse-models.md)" 中所述的 [DTDL 客户端分析器库](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)和 [DTDL 验证器示例](/samples/azure-samples/dtdl-validator/dtdl-validator)来检查模型，然后将它们上载到服务中。
 
 准备好上载模型时，可以使用以下代码片段：
 
-```csharp
-// 'client' is an instance of DigitalTwinsClient
-// Read model file into string (not part of SDK)
-StreamReader r = new StreamReader("MyModelFile.json");
-string dtdl = r.ReadToEnd(); r.Close();
-string[] dtdls = new string[] { dtdl };
-client.CreateModels(dtdls);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
 
 请注意，该 `CreateModels` 方法接受单个事务中的多个文件。 下面是一个示例，说明：
 
-```csharp
-var dtdlFiles = Directory.EnumerateFiles(sourceDirectory, "*.json");
-
-List<string> dtdlStrings = new List<string>();
-foreach (string fileName in dtdlFiles)
-{
-    // Read model file into string (not part of SDK)
-    StreamReader r = new StreamReader(fileName);
-    string dtdl = r.ReadToEnd(); r.Close();
-    dtdlStrings.Add(dtdl);
-}
-client.CreateModels(dtdlStrings);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
 模型文件可以包含多个模型。 在这种情况下，需要将模型放入 JSON 数组。 例如：
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:Planet",
-    "@type": "Interface",
-    //...
-  },
-  {
-    "@id": "dtmi:com:contoso:Moon",
-    "@type": "Interface",
-    //...
-  }
-]
-```
- 
+:::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
+
 上传时，模型文件由服务进行验证。
 
 ## <a name="retrieve-models"></a>检索模型
@@ -141,18 +81,7 @@ client.CreateModels(dtdlStrings);
 
 下面是一些示例调用：
 
-```csharp
-// 'client' is a valid DigitalTwinsClient object
-
-// Get a single model, metadata and data
-DigitalTwinsModelData md1 = client.GetModel(id);
-
-// Get a list of the metadata of all available models
-Pageable<DigitalTwinsModelData> pmd2 = client.GetModels();
-
-// Get models and metadata for a model ID, including all dependencies (models that it inherits from, components it references)
-Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { IncludeModelDefinition = true });
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="GetModels":::
 
 用于检索模型所有返回对象的 API 调用 `DigitalTwinsModelData` 。 `DigitalTwinsModelData` 包含有关存储在 Azure 数字孪生实例中的模型的元数据，例如名称、DTMI 和模型的创建日期。 `DigitalTwinsModelData`对象也可以选择包含模型本身。 因此，根据参数，您可以使用检索调用来仅检索元数据，这在您想要显示可用工具的 UI 列表的情况下很有用 (例如) 或整个模型。
 
@@ -194,7 +123,7 @@ Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { I
 
 这也意味着上传新版本的模型不会自动影响现有孪生。 现有孪生将只保留旧模型版本的实例。
 
-可以通过对其进行修补来将这些现有孪生更新为新模型版本，如 *操作方法：管理数字孪生* 的 [*更新数字克隆的模型*](how-to-manage-twin.md#update-a-digital-twins-model)部分中所述。 在同一修补程序中，您必须将 **模型 ID** (更新为新版本) 以及 **必须在克隆上更改以使其符合新模型的任何字段** 。
+可以通过对其进行修补来将这些现有孪生更新为新模型版本，如 *操作方法：管理数字孪生* 的 [*更新数字克隆的模型*](how-to-manage-twin.md#update-a-digital-twins-model)部分中所述。 在同一修补程序中，您必须将 **模型 ID** (更新为新版本) 以及 **必须在克隆上更改以使其符合新模型的任何字段**。
 
 ## <a name="remove-models"></a>删除模型
 
@@ -208,12 +137,7 @@ Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { I
 
 下面是用于停止模型的代码：
 
-```csharp
-// 'client' is a valid DigitalTwinsClient  
-client.DecommissionModel(dtmiOfPlanetInterface);
-// Write some code that deletes or transitions digital twins
-//...
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DecommissionModel":::
 
 模型的解除授权状态包含在 `ModelData` 模型检索 api 返回的记录中。
 
@@ -244,10 +168,8 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 6. 删除模型 
 
 若要删除模型，请使用此调用：
-```csharp
-// 'client' is a valid DigitalTwinsClient
-await client.DeleteModelAsync(IDToDelete);
-```
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DeleteModel":::
 
 #### <a name="after-deletion-twins-without-models"></a>删除后：没有模型的孪生
 

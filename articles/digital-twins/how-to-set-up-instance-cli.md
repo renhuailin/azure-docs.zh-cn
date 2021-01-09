@@ -7,22 +7,22 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 26302fa67394e6c3122b159866c3814fb5677ba6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 8e82f8974b53224b3e471d1628a1ca5819ce2955
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494981"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044469"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>设置 Azure 数字孪生实例和 (CLI 的身份验证) 
 
 [!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
 
-本文介绍 **设置新的 Azure 数字孪生实例**的步骤，包括创建实例和设置身份验证。 完成本文后，你将拥有一个可开始对进行编程的 Azure 数字孪生实例。
+本文介绍 **设置新的 Azure 数字孪生实例** 的步骤，包括创建实例和设置身份验证。 完成本文后，你将拥有一个可开始对进行编程的 Azure 数字孪生实例。
 
 本文的此版本通过使用 CLI 逐个手动完成这些步骤。
-* 若要使用 Azure 门户手动完成这些步骤，请参阅本文的门户版本： [*如何：设置实例和身份验证 (门户) *](how-to-set-up-instance-portal.md)。
-* 若要通过使用部署脚本示例的自动安装运行，请参阅本文的脚本编写版本： how [*to： Set a instance and authentication (script) *](how-to-set-up-instance-scripted.md)。
+* 若要使用 Azure 门户手动完成这些步骤，请参阅本文的门户版本： [*如何：设置实例和身份验证 (门户)*](how-to-set-up-instance-portal.md)。
+* 若要通过使用部署脚本示例的自动安装运行，请参阅本文的脚本编写版本： how [*to： Set a instance and authentication (script)*](how-to-set-up-instance-scripted.md)。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 [!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
@@ -35,12 +35,12 @@ ms.locfileid: "92494981"
 ## <a name="create-the-azure-digital-twins-instance"></a>创建 Azure 数字孪生实例
 
 在本部分中，将使用 Cloud Shell 命令 **创建 Azure 数字孪生的新实例** 。 需要提供：
-* 要在其中部署该资源的资源组。 如果尚未记住现有的资源组，可以使用以下命令创建一个资源组：
+* 将在其中部署实例的资源组。 如果尚未记住现有的资源组，可以使用以下命令创建一个资源组：
     ```azurecli-interactive
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * 部署的区域。 若要查看哪些区域支持 Azure 数字孪生，请访问 [*按区域提供的 azure 产品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
-* 实例的名称。 新实例的名称在你的订阅的区域内必须是唯一的 (这意味着，如果你的订阅在已使用所选名称的区域中有另一个 Azure 数字孪生实例，则系统将要求你选择不同的名称) 。
+* 实例的名称。 如果你的订阅在已使用指定名称的区域中有另一个 Azure 数字孪生实例，则系统将要求你选择其他名称。
 
 在以下命令中使用这些值来创建实例：
 
@@ -54,7 +54,7 @@ az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-res
 
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/create-instance.png" alt-text="成功创建资源组和 Azure 数字孪生实例命令窗口":::
 
-请注意输出中的 Azure 数字孪生实例的 *主机名*、 *名称*和 *资源* 组。 这些是你在继续使用 Azure 数字孪生实例时可能需要的所有重要值，用于设置身份验证和相关的 Azure 资源。 如果其他用户将对该实例进行编程，则应该与它们共享这些值。
+请注意输出中的 Azure 数字孪生实例的 **主机名**、 **名称** 和 **资源** 组。 这些是你在继续使用 Azure 数字孪生实例时可能需要的所有重要值，用于设置身份验证和相关的 Azure 资源。 如果其他用户将对该实例进行编程，则应该与它们共享这些值。
 
 > [!TIP]
 > 你可以随时通过运行来查看这些属性和实例的所有属性 `az dt show --dt-name <your-Azure-Digital-Twins-instance>` 。
@@ -80,7 +80,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 >
 > 使用 [Azure Active Directory 用户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) 的 "Azure 门户" 页选择用户帐户并打开其详细信息。 复制用户的 *ObjectID*：
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="成功创建资源组和 Azure 数字孪生实例命令窗口" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="Azure 门户突出显示 &quot;对象 ID&quot; 字段中的 GUID 的用户页面视图" lightbox="media/includes/user-id.png":::
 >
 > 然后，使用上面参数的用户 *对象 ID* 重复角色分配列表命令 `assignee` 。
 

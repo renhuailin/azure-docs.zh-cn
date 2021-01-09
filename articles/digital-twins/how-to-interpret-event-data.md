@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22bedcf7921e3c8d4f2566a70515eef3e3b136b6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a0f2b971eae5d37e8fb0771e213075289af6c519
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461016"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045251"
 ---
 # <a name="understand-event-data"></a>了解事件数据
 
@@ -99,7 +99,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 * 创建数字克隆
 * 删除数字克隆
 
-#### <a name="properties"></a>属性
+#### <a name="properties"></a>“属性”
 
 下面是生命周期通知正文中的字段。
 
@@ -183,9 +183,9 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 
 ### <a name="digital-twin-relationship-change-notifications"></a>数字克隆关系更改通知
 
-当创建、更新或删除数字克隆的任何关系时，将触发**关系更改通知**。 
+当创建、更新或删除数字克隆的任何关系时，将触发 **关系更改通知**。 
 
-#### <a name="properties"></a>属性
+#### <a name="properties"></a>“属性”
 
 下面是边缘更改通知正文中的字段。
 
@@ -237,11 +237,11 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 
 ### <a name="digital-twin-change-notifications"></a>数字克隆更改通知
 
-更新数字克隆时，将触发**数字克隆更改通知**，如：
+更新数字克隆时，将触发 **数字克隆更改通知**，如：
 * 属性值或元数据的更改时间。
 * 数字克隆或组件元数据发生更改时。 这种情况的一个示例是，更改数字克隆的模型。
 
-#### <a name="properties"></a>属性
+#### <a name="properties"></a>“属性”
 
 下面是数字克隆更改通知正文中的字段。
 
@@ -262,20 +262,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 
 例如，假设使用以下修补程序更新了数字克隆。
 
-```json
-[
-    {
-        "op": "replace",
-        "value": 40,
-        "path": "/Temperature"
-    },
-    {
-        "op": "add",
-        "value": 30,
-        "path": "/comp1/prop1"
-    }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-component-2.json":::
 
 如果服务同步执行，则相应的通知 (例如，更新数字克隆) 的 Azure 数字孪生将具有如下所示的正文：
 

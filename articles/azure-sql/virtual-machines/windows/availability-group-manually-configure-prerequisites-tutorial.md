@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a9a2f9d999a51f2b4600e8379d4a8913675b338
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 33233e8a6aa54e65094e0cc6130e804241d7201c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360010"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044282"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>教程：在 Azure 虚拟机中的 SQL Server 上创建可用性组的先决条件
 
@@ -245,7 +245,7 @@ Azure 会创建虚拟机。
 12. 在“所有服务器任务详细信息”对话框的“操作”栏中，选择“将此服务器提升为域控制器”。  
 13. 在“Active Directory 域服务配置向导”中，使用以下值：
 
-    | **Page** | 设置 |
+    | **第** | 设置 |
     | --- | --- |
     | **部署配置** |**添加新林**<br/> **根域名** = corp.contoso.com |
     | **域控制器选项** |**DSRM 密码** = Contoso!0000<br/>**确认密码** = Contoso!0000 |
@@ -398,7 +398,7 @@ Azure 会创建虚拟机。
 接下来，创建三台 VM - 两台 SQL Server VM 和一台用于其他群集节点的 VM。 若要创建每台 VM，请返回到“SQL-HA-RG”资源组，然后选择“添加”。 搜索相应的库项，选择“虚拟机”，然后选择“从库中”。 参考下表中的信息创建 VM：
 
 
-| Page | VM1 | VM2 | VM3 |
+| 页 | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
 | 选择相应的库项 |**Windows Server 2016 Datacenter** |**Windows Server 2016 上的 SQL Server 2016 SP1 Enterprise** |**Windows Server 2016 上的 SQL Server 2016 SP1 Enterprise** |
 | 虚拟机配置 **基本信息** |**名称** = cluster-fsw<br/>**用户名** = DomainAdmin<br/>**密码** = Contoso!0000<br/>**订阅** = 自己的订阅<br/>**资源组** = SQL-HA-RG<br/>**位置** = 你的 Azure 位置 |**名称** = sqlserver-0<br/>**用户名** = DomainAdmin<br/>**密码** = Contoso!0000<br/>**订阅** = 自己的订阅<br/>**资源组** = SQL-HA-RG<br/>**位置** = 你的 Azure 位置 |**名称** = sqlserver-1<br/>**用户名** = DomainAdmin<br/>**密码** = Contoso!0000<br/>**订阅** = 自己的订阅<br/>**资源组** = SQL-HA-RG<br/>**位置** = 你的 Azure 位置 |
@@ -539,7 +539,7 @@ Azure 会创建虚拟机。
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>优化故障转移群集网络阈值
 
-使用 SQL Server AlwaysOn 在 Azure Vm 中运行 Windows 故障转移群集节点时，建议将群集设置更改为更宽松的监视状态。  这会使群集更稳定、更可靠。  有关此功能的详细信息，请参阅 [IaaS WITH SQL AlwaysOn-优化故障转移群集网络阈值](/windows-server/troubleshoot/iaas-sql-failover-cluster)。
+使用 SQL Server 可用性组在 Azure Vm 中运行 Windows 故障转移群集节点时，请将群集设置更改为更宽松的监视状态。  这会使群集更稳定、更可靠。  有关此功能的详细信息，请参阅 [IaaS 与 SQL Server 优化故障转移群集网络阈值](/windows-server/troubleshoot/iaas-sql-failover-cluster)。
 
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a>在每个 SQL Server VM 上配置防火墙

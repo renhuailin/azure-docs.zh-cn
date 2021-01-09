@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bf7b829d70af27850affe619d47ed4a4f5ec1bea
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 2502fdd14acae206b8440fe602639aa49be55f4e
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279907"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045914"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用身份验证代码
 
@@ -22,7 +22,7 @@ Azure 数字孪生使用 [基于 OAUTH 2.0 Azure AD 安全令牌](../active-dire
 
 本文介绍如何使用 `Azure.Identity` 客户端库获取凭据。 尽管本文介绍了 c # 中的代码示例（如你编写的 [.net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)），但你可以使用版本的，无论你使用的是 `Azure.Identity` 何种 sdk (有关可用于 Azure 数字孪生的 sdk 的详细信息，请参阅 [*如何：使用 azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)) 。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 首先，请完成 [*操作方法：设置实例和身份验证*](how-to-set-up-instance-portal.md)中的设置步骤。 这将确保你有 Azure 数字孪生实例，并且你的用户具有访问权限。 完成此设置后，就可以编写客户端应用代码了。
 
@@ -39,7 +39,7 @@ Azure 数字孪生使用 [基于 OAUTH 2.0 Azure AD 安全令牌](../active-dire
 
 中有三个常见的凭据获取方法 `Azure.Identity` ：
 
-* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) 为 `TokenCredential` 将部署到 Azure 的应用程序提供默认的身份验证流，这是 **用于本地开发的推荐选择** 。 还可以启用它以尝试本文中建议的其他两种方法;它 `ManagedIdentityCredential` 使用配置变量进行包装和访问 `InteractiveBrowserCredential` 。
+* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) 为 `TokenCredential` 将部署到 Azure 的应用程序提供默认的身份验证流，这是 **用于本地开发的推荐选择**。 还可以启用它以尝试本文中建议的其他两种方法;它 `ManagedIdentityCredential` 使用配置变量进行包装和访问 `InteractiveBrowserCredential` 。
 * [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) 非常适用于你需要 [ (MSI) 的托管标识 ](../active-directory/managed-identities-azure-resources/overview.md)，这是使用 Azure Functions 和部署到 Azure 服务的良好候选项。
 * [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) 适用于交互式应用程序，可用于创建经过身份验证的 SDK 客户端
 
@@ -53,38 +53,19 @@ Azure 数字孪生使用 [基于 OAUTH 2.0 Azure AD 安全令牌](../active-dire
 
 还需要向项目代码添加以下 using 语句：
 
-```csharp
-using Azure.Identity;
-using Azure.DigitalTwins.Core;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="Azure_Digital_Twins_dependencies":::
 
 然后，添加代码以使用中的方法之一来获取凭据 `Azure.Identity` 。
 
 ### <a name="defaultazurecredential-method"></a>DefaultAzureCredential 方法
 
-[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) 为 `TokenCredential` 将部署到 Azure 的应用程序提供默认的身份验证流，这是 **用于本地开发的推荐选择** 。
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) 为 `TokenCredential` 将部署到 Azure 的应用程序提供默认的身份验证流，这是 **用于本地开发的推荐选择**。
 
 若要使用默认 Azure 凭据，需要使用 Azure 数字孪生实例的 URL ([说明查找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) 。
 
 下面是将添加到项目的代码示例 `DefaultAzureCredential` ：
 
-```csharp
-// The URL of your instance, starting with the protocol (https://)
-private static string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-URL>";
-
-//...
-
-DigitalTwinsClient client;
-try
-{
-    var credential = new DefaultAzureCredential();
-    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-} catch(Exception e)
-{
-    Console.WriteLine($"Authentication or client creation error: {e.Message}");
-    Environment.Exit(0);
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="DefaultAzureCredential_full":::
 
 #### <a name="set-up-local-azure-credentials"></a>设置本地 Azure 凭据
 
@@ -100,45 +81,20 @@ try
 
 在 Azure 函数中，可以使用如下所示的托管标识凭据：
 
-```csharp
-ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-DigitalTwinsClientOptions opts = 
-    new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="ManagedIdentityCredential":::
 
 ### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential 方法
 
 [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)方法适用于交互式应用程序，并将打开一个 web 浏览器用于身份验证。 如果需要交互式身份验证，则可以使用此来代替 `DefaultAzureCredential` 。
 
 若要使用交互式浏览器凭据，你将需要具有 Azure 数字孪生 Api 权限的 **应用注册** 。 有关如何设置此应用注册的步骤，请参阅 [*如何：创建应用注册*](how-to-create-app-registration.md)。 设置应用注册后，需要 .。。
-* 应用注册的 *应用程序 (客户端) ID* ( [查找](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) 
-* 应用注册的 *目录 (租户) ID* ( [查找](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) 
+* 应用注册的 *应用程序 (客户端) ID* ([查找](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) 
+* 应用注册的 *目录 (租户) ID* ([查找](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) 
 * Azure 数字孪生实例的 URL ([查找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) 
 
 下面是使用创建经过身份验证的 SDK 客户端的代码示例 `InteractiveBrowserCredential` 。
 
-```csharp
-// Your client / app registration ID
-private static string clientId = "<your-client-ID>"; 
-// Your tenant / directory ID
-private static string tenantId = "<your-tenant-ID>";
-// The URL of your instance, starting with the protocol (https://)
-private static string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-URL>";
-
-//...
-
-DigitalTwinsClient client;
-try
-{
-    var credential = new InteractiveBrowserCredential(tenantId, clientId);
-    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-} catch(Exception e)
-{
-    Console.WriteLine($"Authentication or client creation error: {e.Message}");
-    Environment.Exit(0);
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="InteractiveBrowserCredential":::
 
 >[!NOTE]
 > 虽然你可以将客户端 ID、租户 ID 和实例 URL 直接放置在代码中（如上所示），但最好是让你的代码从配置文件或环境变量获取这些值。

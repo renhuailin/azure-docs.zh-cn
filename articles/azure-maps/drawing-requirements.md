@@ -3,23 +3,23 @@ title: 'Microsoft Azure Map Creator (预览版中的绘图包要求) '
 description: 了解将设备设计文件转换为映射数据的绘图包要求
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 1/08/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903456"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044775"
 ---
 # <a name="drawing-package-requirements"></a>绘图包要求
 
 
 > [!IMPORTANT]
-> Azure Maps Creator 服务目前为公共预览版。
+> Azure Maps Creator 服务目前处于公共预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 您可以使用 [Azure Maps 转换服务](/rest/api/maps/conversion)将上载的绘图包转换为映射数据。 本文介绍了适用于转换 API 的绘图包要求。 若要查看示例包，可以下载示例[绘图包](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
@@ -41,7 +41,7 @@ ms.locfileid: "96903456"
 | 层 | AutoCAD DWG 图层。|
 | 级别 | 位于固定高度的建筑物区域。 例如，建筑物的地板。 |
 | Xref  |AutoCAD DWG 文件格式的文件 ( DWG) ，作为外部引用附加到主绘图。  |
-| Feature | 将几何图形与其他元数据信息合并在一起的对象。 |
+| 功能 | 将几何图形与更多元数据信息组合在一起的对象。 |
 | 功能类 | 特征的常见蓝图。 例如，某个 *单元* 是一个功能类，而 *office* 是一项功能。 |
 
 ## <a name="drawing-package-structure"></a>绘图包结构
@@ -49,9 +49,9 @@ ms.locfileid: "96903456"
 绘图包是包含以下文件的 .zip 存档：
 
 * AutoCAD DWG 文件格式的 DWG 文件。
-* 单个设施的 manifest.json 文件。
+* 描述绘图包中 DWG 文件的文件 _manifest.js_ 。
 
-你可以在文件夹中以任何方式组织 DWG 文件，但清单文件必须位于文件夹的根目录中。 必须使用 .zip 扩展名将文件夹压缩到一个存档文件中。 以下各节详细说明了 DWG 文件、清单文件和这些文件的内容的要求。  
+必须将该绘图包压缩为扩展名为 .zip 的单个存档文件。 可以在包中以任何方式组织 DWG 文件，但清单文件必须位于压缩包的根目录下。 下面各部分详细介绍了 DWG 文件和清单文件的要求，以及这两种文件的内容。
 
 ## <a name="dwg-files-requirements"></a>DWG 文件要求
 
@@ -60,6 +60,7 @@ ms.locfileid: "96903456"
 * 必须定义 Exterior 和 Unit 图层。 它可以选择定义以下可选层： _墙壁_、 _门板_、 _UnitLabel_、 _Zone_ 和 _ZoneLabel_。
 * 不得包含来自多个楼层的特征。
 * 不得包含来自多个设施的特征。
+* 必须与绘图包中的其他 DWG 文件引用相同的度量系统和度量单位。
 
 [Azure Maps 转换服务](/rest/api/maps/conversion)可以从 DWG 文件中提取以下特征类：
 
@@ -78,19 +79,19 @@ DWG 图层还必须遵循以下条件：
 
 * 所有 DWG 文件的绘图源都必须保持纬度和经度相同。
 * 每个楼层都必须与其他楼层的方向相同。
-* 自相交多边形会自动修复，并且 [Azure Maps 转换服务](/rest/api/maps/conversion) 会引发警告。 你应手动检查修复后的结果，因为它们可能与预期的结果不匹配。
+* 自相交多边形会自动修复，并且 [Azure Maps 转换服务](/rest/api/maps/conversion) 会引发警告。 建议手动检查修复后的结果，因为它们可能与预期的结果不匹配。
 
-所有层实体都必须是以下类型之一：直线、折线、多边形、圆弧、圆圈或文本 (单行) 。 任何其他实体类型都将被忽略。
+所有层实体都必须是以下类型之一：直线、折线、多边形、圆弧、圆、椭圆 (关闭) 或文本 (单行) 。 任何其他实体类型都将被忽略。
 
-下表概述了支持的实体类型和每个层支持的功能。 如果层包含不受支持的实体类型，则 [Azure Maps 转换服务](/rest/api/maps/conversion) 将忽略这些实体。  
+下表概述了每个层支持的实体类型和转换的映射功能。 如果层包含不受支持的实体类型，则 [Azure Maps 转换服务](/rest/api/maps/conversion) 将忽略这些实体。  
 
-| 层 | 实体类型 | 功能 |
+| 层 | 实体类型 | 转换后的功能 |
 | :----- | :-------------------| :-------
-| [Exterior](#exterior-layer) | Polygon、PolyLine（闭合）、Circle | Levels
-| [单位](#unit-layer) |  Polygon、PolyLine（闭合）、Circle | 垂直 penetrations，单位
-| [Wall](#wall-layer)  | Polygon、PolyLine（闭合）、Circle | 不适用。 有关详细信息，请参阅 [Wall 图层](#wall-layer)。
+| [Exterior](#exterior-layer) | 多边形、折线 (关闭) 、圆、椭圆 (闭合)  | Levels
+| [单位](#unit-layer) |  多边形、折线 (关闭) 、圆、椭圆 (闭合)  | 垂直 penetrations，Unit
+| [Wall](#wall-layer)  | 多边形、折线 (关闭) 、圆、椭圆 (闭合)  | 不适用。 有关详细信息，请参阅 [Wall 图层](#wall-layer)。
 | [Door](#door-layer) | Polygon、PolyLine、Line、CircularArc、Circle | Openings
-| [区域](#zone-layer) | Polygon、PolyLine（闭合）、Circle | Zone
+| [区域](#zone-layer) | 多边形、折线 (关闭) 、圆、椭圆 (闭合)  | Zone
 | [UnitLabel](#unitlabel-layer) | Text（单行） | 不适用。 此图层只能向 Units 图层中的 unit 特征添加属性。 有关详细信息，请参阅 [UnitLabel 图层](#unitlabel-layer)。
 | [ZoneLabel](#zonelabel-layer) | Text（单行） | 不适用。 此图层只能向 Zones 图层中的 zone 特征添加属性。 有关详细信息，请参阅 [ZoneLabel 层](#zonelabel-layer)。
 
@@ -102,8 +103,10 @@ DWG 图层还必须遵循以下条件：
 
 无论外部层有多少实体绘图， [生成的工具数据集](tutorial-creator-indoor-maps.md#create-a-feature-stateset) 在每个 DWG 文件中只包含一个级别功能。 此外：
 
-* Exteriors 必须绘制为多边形、折线 (闭合) 或圆圈。
-* Exteriors 可以重叠，但会被解析为一个几何。
+* 必须将 Exteriors 绘制为多边形、折线 (闭合的) 、圆或椭圆 (闭合) 。
+* Exteriors 可能会重叠，但会被解析为一个几何。
+* 结果级别功能必须至少为4平方米。
+* 生成的级别功能不得大于400。
 
 如果该层包含多个重叠折线，则这些折线将被解析为单个级别特征。 或者，如果层包含多个非重叠折线，则生成的级别特征具有多多边形表示形式。
 
@@ -111,9 +114,11 @@ DWG 图层还必须遵循以下条件：
 
 ### <a name="unit-layer"></a>Unit 图层
 
-每个级别的 DWG 文件定义一个包含单位的层。 单元是建筑物中可导航的空间，如办公室、走廊、楼梯和电梯。 Unit 图层应遵循以下要求：
+每个级别的 DWG 文件定义一个包含单位的层。 单元是建筑物中可导航的空间，如办公室、走廊、楼梯和电梯。 如果 `VerticalPenetrationCategory` 定义了属性，跨越多个级别的导向性单元（如电梯和楼梯）将转换为垂直滚动功能。 相互重叠的垂直滚动功能被分配 `setid` 。
 
-* 必须将单位绘制为多边形、折线 (闭合) 或圆圈。
+Unit 图层应遵循以下要求：
+
+* 必须将单元绘制为多边形、折线 (闭合) 、圆圈或 (闭合) 。
 * Unit 必须位于设施外围的边界内。
 * Unit 不得部分重叠。
 * Unit 不得包含任何自相交几何图形。
@@ -126,7 +131,7 @@ DWG 图层还必须遵循以下条件：
 
 每个级别的 DWG 文件可以包含定义墙壁、柱形和其他建筑结构的物理范围的层。
 
-* 必须将墙壁绘制为多边形、折线 (闭合) 或圆圈。
+* 必须将墙壁绘制为多边形、折线 (闭合的) 、圆或椭圆 (闭合) 。
 * 墙壁层只应包含解释为建筑结构的几何。
 
 可以在 [示例绘图包](https://github.com/Azure-Samples/am-creator-indoor-data-examples)中查看墙壁层的示例。
@@ -141,9 +146,9 @@ Azure Maps 数据集中的门开口表示为与多个单元边界重叠的单行
 
 ### <a name="zone-layer"></a>Zone 图层
 
-每个级别的 DWG 文件可以包含定义区域物理区的区域层。 区域可以是室内的空地，也可以是后院。
+每个级别的 DWG 文件可以包含定义区域物理区的区域层。 区域是可以命名和呈现的不可导航空间。 区域可以跨多个级别，并使用 zoneSetId 属性组合在一起。
 
-* 区域必须绘制为多边形、折线 (闭合) 或圆圈。
+* 必须将区域绘制为多边形、折线 (关闭的) 或 (闭合) 的椭圆形。
 * 区域可以重叠。
 * 区域可以位于设施外部外围的内部或外部。
 
@@ -153,7 +158,7 @@ Azure Maps 数据集中的门开口表示为与多个单元边界重叠的单行
 
 ### <a name="unitlabel-layer"></a>UnitLabel 图层
 
-每个级别的 DWG 文件可以包含一个 UnitLabel 层。 UnitLabel 层将名称属性添加到从单元层提取的单位。 具有 name 属性的单元可以在清单文件中指定其他详细信息。
+每个级别的 DWG 文件可以包含一个 UnitLabel 层。 UnitLabel 层将名称属性添加到从单元层提取的单位。 具有 name 属性的单位可以在清单文件中指定更多详细信息。
 
 * UnitLabel 必须是单行文本实体。
 * UnitLabel 必须位于单元的边界内。
@@ -163,7 +168,7 @@ Azure Maps 数据集中的门开口表示为与多个单元边界重叠的单行
 
 ### <a name="zonelabel-layer"></a>ZoneLabel 图层
 
-每个级别的 DWG 文件可以包含一个 ZoneLabel 层。 此图层向从 Zone 图层中提取的区域添加 name 属性。 具有 name 属性的区域可以在清单文件中指定其他详细信息。
+每个级别的 DWG 文件可以包含一个 ZoneLabel 层。 此图层向从 Zone 图层中提取的区域添加 name 属性。 具有名称属性的区域可以在清单文件中指定更多详细信息。
 
 * ZoneLabel 必须是单行文本实体。
 * ZoneLabel 必须位于区域的边界内。
@@ -186,14 +191,14 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 | `buildingLevels` | true | 指定建筑物的楼层，以及包含各楼层的设计的文件。 |
 | `georeference` | true | 包含设施绘图的数值地理信息。 |
 | `dwgLayers` | true | 列出图层名称，每个图层都列出自己的特征的名称。 |
-| `unitProperties` | false | 可用于插入 unit 特征的其他元数据。 |
-| `zoneProperties` | false | 可用于插入 zone 特征的其他元数据。 |
+| `unitProperties` | false | 可用于为单元功能插入更多元数据。 |
+| `zoneProperties` | false | 可用于为区域功能插入更多元数据。 |
 
 下面各部分详细介绍了每个对象的要求。
 
 ### `directoryInfo`
 
-| properties  | 类型 | 必选 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 | `name`      | 字符串 | true   |  建筑物名称。 |
 | `streetAddress`|    字符串 |    false    | 建筑物地址。 |
@@ -224,7 +229,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### `georeference`
 
-| 属性  | 类型 | 必需 | 说明 |
+| 属性  | 类型 | 必需 | 描述 |
 |-----------|------|----------|-------------|
 |`lat`    | numeric |    true |    设施绘图的原点的纬度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。|
 |`lon`    |numeric|    true|    设施绘图的原点的经度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。 |
@@ -232,10 +237,10 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### `dwgLayers`
 
-| 属性  | 类型 | 必需 | 说明 |
+| properties  | 类型 | 必选 | 说明 |
 |-----------|------|----------|-------------|
-|`exterior`    |字符串数组|    true|    定义外部生成配置文件的层的名称。|
-|`unit`|    字符串数组|    true|    定义单位的层的名称。|
+|`exterior`    |字符串数组|    是|    定义外部生成配置文件的层的名称。|
+|`unit`|    字符串数组|    是|    定义单位的层的名称。|
 |`wall`|    字符串数组    |false|    定义墙壁的层的名称。|
 |`door`    |字符串数组|    false   | 定义门的层的名称。|
 |`unitLabel`    |字符串数组|    false    |定义单元名称的层的名称。|
@@ -251,16 +256,16 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 |`unitName`    |字符串    |true    |要与此 `unitProperty` 记录关联的单元的名称。 仅当在层中找到标签匹配时，此记录才有效 `unitName` `unitLabel` 。 |
 |`categoryName`|    字符串|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |
 |`navigableBy`| 字符串数组 |    false    |指明可遍历单元的导航代理的类型。 此属性告知 wayfinding 功能。 允许的值为： `pedestrian` 、 `wheelchair` 、 `machine` 、 `bicycle` 、 `automobile` 、 `hiredAuto` 、 `bus` `railcar` `emergency` `ferry` `boat` 、、、、和 `disallowed` 。|
-|`routeThroughBehavior`|    字符串|    false    |单元的穿过行为。 允许的值为 `disallowed`、`allowed` 和 `preferred`。 默认值是 `allowed`。|
+|`routeThroughBehavior`|    字符串|    false    |单元的穿过行为。 允许的值为 `disallowed`、`allowed` 和 `preferred`。 默认值为 `allowed`。|
 |`occupants`    |directoryInfo 对象的数组 |false    |单元的居用者列表。 |
 |`nameAlt`|    字符串|    false|    单元的备用名称。 |
 |`nameSubtitle`|    字符串    |false|    单元的副标题。 |
 |`addressRoomNumber`|    字符串|    false|    设备的房间、单位、单元或套件编号。|
 |`verticalPenetrationCategory`|    字符串|    false| 如果定义了此属性，则生成的功能是 VRT) （而不是单元）的垂直渗透 (。 你可以使用 Vrt 来跳到它上面或下面的级别中的其他 VRT 功能。 垂直穿透是 [类别](https://aka.ms/pa-indoor-spacecategories) 名称。 如果定义了此属性，则 `categoryName` 属性会被重写 `verticalPenetrationCategory` 。 |
-|`verticalPenetrationDirection`|    字符串|    false    |如果定义了 `verticalPenetrationCategory`，则可以视需要选择定义有效的行进方向。 允许的值为： `lowToHigh` 、 `highToLow` 、 `both` 和 `closed` 。 默认值是 `both`。|
+|`verticalPenetrationDirection`|    字符串|    false    |如果定义了 `verticalPenetrationCategory`，则可以视需要选择定义有效的行进方向。 允许的值为： `lowToHigh` 、 `highToLow` 、 `both` 和 `closed` 。 默认值为 `both`。|
 | `nonPublic` | bool | false | 指明单元是否向公众开放。 |
-| `isRoutable` | bool | false | 如果将此属性设置为 `false` ，则不能通过单元进行切换。 默认值是 `true`。 |
-| `isOpenArea` | bool | false | 允许导航代理输入单位，而无需连接到设备。 默认情况下，此值设置为 `true` "对于没有开口的单位"，并将设置为 " `false` 带有开口的单位"。 如果 `isOpenArea` `false` 在没有打开的单元上手动设置为，则会出现警告。 这是因为导航代理无法访问结果单元。|
+| `isRoutable` | bool | false | 如果将此属性设置为 `false` ，则不能通过单元进行切换。 默认值为 `true`。 |
+| `isOpenArea` | bool | false | 允许导航代理输入单位，而无需连接到设备。 默认情况下，此值设置为 `true` "对于没有开口的单位"，并将设置为 " `false` 带有开口的单位"。 如果 `isOpenArea` 在没有打开的单元上手动设置为，则 `false` 会出现警告，因为导航代理无法访问结果单元。|
 
 ### `zoneProperties`
 
@@ -276,7 +281,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### <a name="sample-drawing-package-manifest"></a>示例绘图包清单
 
-下面是示例绘图包的示例清单文件。 若要下载整个包，请参阅 [示例绘图包](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
+下面是示例绘图包的清单文件。 若要下载整个包，请参阅 [示例绘图包](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
 
 #### <a name="manifest-file"></a>清单文件
 

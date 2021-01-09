@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: df7462cf047dd113c34669d9a5f68f2589cc50f4
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 47883c742d77a88adb662e8dded0723f0e105385
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672987"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044180"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
@@ -28,43 +28,28 @@ ms.locfileid: "97672987"
 
 下面是一个基本查询，它将返回实例中所有数字孪生的列表：
 
-```sql
-SELECT *
-FROM DIGITALTWINS
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="GetAllTwins":::
 
 ## <a name="query-by-property"></a>按属性查询
 
 获取数字孪生按 **属性** (包括 ID 和元数据) ：
 
-```sql
-SELECT  *
-FROM DigitalTwins T  
-WHERE T.firmwareVersion = '1.1'
-AND T.$dtId in ['123', '456']
-AND T.Temperature = 70
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
 > [!TIP]
 > 使用元数据字段查询数字克隆的 ID `$dtId` 。
 
 还可以基于 **是否定义了某个属性** 来获取孪生。 下面是一个查询，用于获取具有定义的 *Location* 属性的孪生：
 
-```sql
-SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(Location)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty2":::
 
 这可以帮助你按 *标记* 属性获取孪生，如 [向数字孪生添加标记](how-to-use-tags.md)中所述。 下面是一个查询，用于获取用 *red* 标记的所有孪生：
 
-```sql
-SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(tags.red)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 还可以基于 **属性的类型** 来获取孪生。 下面是一个可获取孪生的查询，其 *温度* 属性为数字：
 
-```sql
-SELECT * FROM DIGITALTWINS T WHERE IS_NUMBER(T.Temperature)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty3":::
 
 ## <a name="query-by-model"></a>按模型查询
 
@@ -82,30 +67,22 @@ SELECT * FROM DIGITALTWINS T WHERE IS_NUMBER(T.Temperature)
 最简单的用法 `IS_OF_MODEL` 仅采用 `twinTypeName` 参数： `IS_OF_MODEL(twinTypeName)` 。
 下面是传递此参数中的值的查询示例：
 
-```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1')
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel1":::
 
 若要在有多个 (时指定要搜索的非克隆集合（如 `JOIN`) 使用时一样），请添加 `twinCollection` 参数： `IS_OF_MODEL(twinCollection, twinTypeName)` 。
 下面是添加此参数值的查询示例：
 
-```sql
-SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1')
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel2":::
 
 若要执行完全匹配，请添加 `exact` 参数： `IS_OF_MODEL(twinTypeName, exact)` 。
 下面是添加此参数值的查询示例：
 
-```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1', exact)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel3":::
 
 你还可以将所有这三个参数同时传递： `IS_OF_MODEL(twinCollection, twinTypeName, exact)` 。
 下面是一个用于为所有三个参数指定值的查询示例：
 
-```sql
-SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1', exact)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel4":::
 
 ## <a name="query-by-relationship"></a>按关系查询
 
@@ -127,12 +104,7 @@ SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1', e
 
 下面是一个基于关系的示例查询。 此代码段选择 *ID* 属性为 "ABC" 的所有数字孪生，并通过 *包含* 关系与这些数字孪生相关的所有数字孪生。
 
-```sql
-SELECT T, CT
-FROM DIGITALTWINS T
-JOIN CT RELATED T.contains
-WHERE T.$dtId = 'ABC'
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship1":::
 
 > [!NOTE]
 > 开发人员无需将此 `JOIN` 与子句中的键值相关联 `WHERE` (或使用定义) 以内联方式指定键值 `JOIN` 。 此关联由系统自动计算，因为关系属性本身标识目标实体。
@@ -144,13 +116,7 @@ WHERE T.$dtId = 'ABC'
 
 例如，假设有一个具有 *reportedCondition* 属性的 *servicedBy* 关系。 在下面的查询中，为此关系提供了一个 "R" 别名，以便引用其属性。
 
-```sql
-SELECT T, SBT, R
-FROM DIGITALTWINS T
-JOIN SBT RELATED T.servicedBy R
-WHERE T.$dtId = 'ABC'
-AND R.reportedCondition = 'clean'
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship2":::
 
 在上面的示例中，请注意， *reportedCondition* 是 *servicedBy* 关系本身的属性， (不属于具有 *servicedBy* 关系) 的某些数字克隆。
 
@@ -160,58 +126,27 @@ AND R.reportedCondition = 'clean'
 
 下面是多联接查询的一个示例，它获取房间1和2中的灯具面板中包含的所有光源电灯泡。
 
-```sql
-SELECT LightBulb
-FROM DIGITALTWINS Room
-JOIN LightPanel RELATED Room.contains
-JOIN LightBulb RELATED LightPanel.contains
-WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')
-AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')
-AND Room.$dtId IN ['room1', 'room2']
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship3":::
 
 ## <a name="count-items"></a>计数项
 
 您可以使用子句来计算结果集中的项数 `Select COUNT` ：
 
-```sql
-SELECT COUNT()
-FROM DIGITALTWINS
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectCount1":::
 
 添加 `WHERE` 子句以计算符合特定条件的项的数目。 下面是使用基于每个克隆模型类型的已应用筛选器进行计数的示例 (有关此语法的详细信息，请参阅下面的 [*按模型查询*](#query-by-model)) ：
 
-```sql
-SELECT COUNT()
-FROM DIGITALTWINS
-WHERE IS_OF_MODEL('dtmi:sample:Room;1')
-
-SELECT COUNT()
-FROM DIGITALTWINS c
-WHERE IS_OF_MODEL('dtmi:sample:Room;1') AND c.Capacity > 20
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectCount2":::
 
 您还可以将 `COUNT` 与子句一起使用 `JOIN` 。 下面是一个查询，它对房间1和2的灯具面板中包含的所有光源电灯泡进行计数：
 
-```sql
-SELECT COUNT()  
-FROM DIGITALTWINS Room  
-JOIN LightPanel RELATED Room.contains  
-JOIN LightBulb RELATED LightPanel.contains  
-WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')  
-AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')  
-AND Room.$dtId IN ['room1', 'room2']
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectCount3":::
 
 ## <a name="filter-results-select-top-items"></a>筛选结果：选择前几项
 
 您可以使用子句在查询中选择多个 "top" 项 `Select TOP` 。
 
-```sql
-SELECT TOP (5)
-FROM DIGITALTWINS
-WHERE ...
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectTop":::
 
 ## <a name="filter-results-specify-return-set-with-projections"></a>筛选结果：指定具有投影的返回集
 
@@ -222,54 +157,25 @@ WHERE ...
 
 下面是使用投影返回孪生和关系的查询示例。 下面的查询从一个方案投影 *使用者*、*工厂* 和 *边缘*，其中 ID 为 *ABC* 的 *工厂* 通过 *factory* 的关系与 *使用者* 相关，而该关系显示为 *边缘*。
 
-```sql
-SELECT Consumer, Factory, Edge
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections1":::
 
 你还可以使用投影来返回克隆的属性。 下面的 *查询使用 ID* 为 *ABC* 的 *使用者* 的 "*名称*" 属性，通过 "*工厂*" 的关系来项目。
 
-```sql
-SELECT Consumer.name
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Consumer.name)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections2":::
 
 您还可以使用投影来返回关系的属性。 与前面的示例类似，下面的查询使用 ID 为 *ABC* 到工厂的关系，将 *与工厂* 相关的 *使用者* 的 *Name* 属性进行投影 *。* 但现在，它还返回该关系的两个属性： *prop1* 和 *prop2*。 它通过命名关系 *边缘* 并收集其属性来实现此功能。  
 
-```sql
-SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections3":::
 
 还可以使用别名来简化使用投影的查询。
 
 下面的查询执行与上一示例相同的操作，但它将属性名称的别名为 `consumerName` 、、 `first` `second` 和 `factoryArea` 。
 
-```sql
-SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second, Factory.area AS factoryArea
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections4":::
 
 下面是一个类似的查询，它查询与上述相同的集，但仅将 *Consumer.name* 属性投影为 `consumerName` ，并将整个 *工厂* 投影为一个克隆。
 
-```sql
-SELECT Consumer.name AS consumerName, Factory
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections5":::
 
 ## <a name="build-efficient-queries-with-the-in-operator"></a>用 IN 运算符生成高效查询
 
@@ -279,12 +185,7 @@ AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name)
 
 1. 根据关系在大楼中查找楼层 `contains` 。
 
-    ```sql
-    SELECT Floor
-    FROM DIGITALTWINS Building
-    JOIN Floor RELATED Building.contains
-    WHERE Building.$dtId = @buildingId
-    ```
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="INOperatorWithout":::
 
 2. 若要查找房间，而不是逐个考虑并运行 `JOIN` 查询来查找每个房间的房间，可以在下面的查询中使用名为 *Floor* 的建筑物 (中的楼层集合进行查询) 。
 
@@ -296,26 +197,18 @@ AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name)
     
     在查询中：
     
-    ```sql
-    
-    SELECT Room
-    FROM DIGITALTWINS Floor
-    JOIN Room RELATED Floor.contains
-    WHERE Floor.$dtId IN ['floor1','floor2', ..'floorn']
-    AND Room. Temperature > 72
-    AND IS_OF_MODEL(Room, 'dtmi:com:contoso:Room;1')
-    
-    ```
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="INOperatorWith":::
 
 ## <a name="other-compound-query-examples"></a>其他复合查询示例
 
 您可以使用组合运算符 **组合** 以上任意类型的查询，以便在单个查询中包含更多详细信息。 下面是一些其他查询多个类型为一次的克隆说明符的复合查询示例。
 
-| 说明 | 查询 |
-| --- | --- |
-| 在 *房间 123* 具有的设备中，返回服务于操作员角色的 MxChip 设备 | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contoso:com:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
-| 获取具有名为 *id1* 的关系 *的孪生* | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
-| 获取 *floor11* 包含的此聊天室模型的所有聊天室 | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contoso:com:DigitalTwins:Room;1')` |
+* 在 *房间 123* 具有的设备中，返回服务于操作员角色的 MxChip 设备
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="OtherExamples1":::
+* 获取具有名为 *id1* 的关系 *的孪生*
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="OtherExamples2":::
+* 获取 *floor11* 包含的此聊天室模型的所有聊天室
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="OtherExamples3":::
 
 ## <a name="run-queries-with-the-api"></a>通过 API 运行查询
 
@@ -325,42 +218,13 @@ AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name)
 
 下面的代码段演示了从客户端应用程序 [) SDK 调用的 .net (c #](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) ：
 
-```csharp
-    string adtInstanceEndpoint = "https://<your-instance-hostname>";
-
-    var credential = new DefaultAzureCredential();
-    DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceEndpoint), credential);
-
-    // Run a query for all twins   
-    string query = "SELECT * FROM DIGITALTWINS";
-    AsyncPageable<BasicDigitalTwin> result = client.QueryAsync<BasicDigitalTwin>(query);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
 此调用以 [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) 对象的形式返回查询结果。
 
 查询调用支持分页。 下面是一个完整的示例，该示例使用 `BasicDigitalTwin` 作为查询结果类型以及错误处理和分页：
 
-```csharp
-try
-{
-    await foreach(BasicDigitalTwin twin in result)
-        {
-            // You can include your own logic to print the result
-            // The logic below prints the twin's ID and contents
-            Console.WriteLine($"Twin ID: {twin.Id} \nTwin data");
-            IDictionary<string, object> contents = twin.Contents;
-            foreach (KeyValuePair<string, object> kvp in contents)
-            {
-                Console.WriteLine($"{kvp.Key}  {kvp.Value}");
-            }
-        }
-}
-catch (RequestFailedException e)
-{
-    Console.WriteLine($"Error {e.Status}: {e.Message}");
-    throw;
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="FullQuerySample":::
 
 ## <a name="next-steps"></a>后续步骤
 

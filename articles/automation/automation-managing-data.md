@@ -3,14 +3,14 @@ title: Azure 自动化数据安全性
 description: 本文介绍 Azure 自动化如何保护你的隐私并保护数据。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 07/20/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40405607e7f7198f190f621121022537ac3b3171
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87004641"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046033"
 ---
 # <a name="management-of-azure-automation-data"></a>管理 Azure 自动化数据
 
@@ -26,11 +26,9 @@ ms.locfileid: "87004641"
 
 * DSC 节点
 
-我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。 自 2020 年 9 月起，我们将开始强制执行 TLS 1.2 和更高版本的加密协议。
+我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**。 除非绝对必要，否则我们不建议将代理显式设置为仅使用 TLS 1.2，因为这可能会破坏平台级安全功能，导致无法自动检测并利用推出的更新且更安全的协议，例如 TLS 1.3。
 
-除非绝对必要，否则我们不建议将代理显式设置为仅使用 TLS 1.2，因为这可能会破坏平台级安全功能，导致无法自动检测并利用推出的更新且更安全的协议，例如 TLS 1.3。
-
-有关适用于 Windows 和 Linux 的 Log Analytics 代理（混合 Runbook 辅助角色的依赖项）的 TLS 1.2 支持的信息，请参阅 [Log Analytics 代理概述 - TLS 1.2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol)。 
+有关适用于 Windows 和 Linux 的 Log Analytics 代理（混合 Runbook 辅助角色的依赖项）的 TLS 1.2 支持的信息，请参阅 [Log Analytics 代理概述 - TLS 1.2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol)。
 
 ### <a name="platform-specific-guidance"></a>特定于平台的指南
 
@@ -51,7 +49,7 @@ ms.locfileid: "87004641"
 |:--- |:--- |
 | 帐户 |在帐户被用户删除 30 天后将其永久删除。 |
 | 资产 |在资产被用户删除 30 天后或者在包含该资产的帐户被用户删除 30 天后将其永久删除。 资产包括变量、计划、凭据、证书、Python 2 包和连接。 |
-| DSC 节点 |在使用 Azure 门户或 Windows PowerShell 中的 [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) cmdlet 从自动化帐户中取消注册 DSC 节点 30 天后，将永久删除该节点。 在用户删除保存节点的帐户 30 天后，也会永久删除该节点。 |
+| DSC 节点 |在使用 Azure 门户或 Windows PowerShell 中的 [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode) cmdlet 从自动化帐户中取消注册 DSC 节点 30 天后，将永久删除该节点。 在用户删除保存节点的帐户 30 天后，也会永久删除该节点。 |
 | 作业 |作业在修改之后（例如在作业完成、停止或暂停之后）删除，并在 30 天后永久删除。 |
 | 模块 |在模块被用户删除 30 天后或者在包含该模块的帐户被用户删除 30 天后将其永久删除。 |
 | 节点配置/MOF 文件 |生成新节点配置 30 天后，将永久删除旧节点配置。 |
@@ -80,7 +78,7 @@ ms.locfileid: "87004641"
 
 ### <a name="dsc-configurations"></a>DSC 配置
 
-可以使用 Azure 门户或 Windows PowerShell 中的 [Export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) cmdlet 将 DSC 配置导出到脚本文件。 可以在另一个自动化帐户中导入并使用这些配置。
+可以使用 Azure 门户或 Windows PowerShell 中的 [Export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration) cmdlet 将 DSC 配置导出到脚本文件。 可以在另一个自动化帐户中导入并使用这些配置。
 
 ## <a name="geo-replication-in-azure-automation"></a>Azure 自动化中的异地复制
 

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8ffbe5debaa980385a2c6dc0078de5f1cc2e9bde
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705058"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045506"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>将防火墙后的工作区用于 Azure 机器学习
 
@@ -27,7 +27,7 @@ ms.locfileid: "97705058"
 
 ## <a name="azure-firewall"></a>Azure 防火墙
 
-使用 Azure 防火墙时，请使用目标网络地址转换 (DNAT) 为入站流量创建 NAT 规则。 对于出站流量，请创建“网络”和/或“应用程序”规则 。 [一些 Azure 防火墙概念](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)中更详细地介绍了这些规则集合。
+使用 Azure 防火墙时，请使用目标网络地址转换 (DNAT) 为入站流量创建 NAT 规则。 对于出站流量，请创建“网络”和/或“应用程序”规则 。 [一些 Azure 防火墙概念](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)中更详细地介绍了这些规则集合。
 
 ### <a name="inbound-configuration"></a>入站配置
 
