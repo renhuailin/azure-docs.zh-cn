@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 12/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: b0937bbd72460b1d46ce0394af1933e858424966
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c2efd9ac137c226c1d3a77e2cb6ebe17d75cb496
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360316"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051524"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>为用户 VPN 客户端管理对轮辐 Vnet 中资源的安全访问
 
@@ -131,7 +131,7 @@ ms.locfileid: "97360316"
 1. 验证 Azure 防火墙是否保护 VNet 连接和分支连接专用流量。
 1. 选择“保存”。
 
-## <a name="validate"></a><a name="validate"></a>验证
+## <a name="validate"></a><a name="validate"></a>证实
 
 验证受保护的中心的设置。
 
@@ -147,4 +147,4 @@ ms.locfileid: "97360316"
 ## <a name="next-steps"></a>后续步骤
 
 * 有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 常见问题解答](virtual-wan-faq.md)。
-* 有关 Azure 防火墙的详细信息，请参阅 [Azure 防火墙常见问题解答](../firewall/firewall-faq.md)。
+* 有关 Azure 防火墙的详细信息，请参阅 [Azure 防火墙常见问题解答](../firewall/firewall-faq.yml)。

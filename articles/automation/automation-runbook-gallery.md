@@ -3,21 +3,21 @@ title: 在 PowerShell 库中使用 Azure 自动化 Runbook 和模块
 description: 本文介绍如何在 PowerShell 库中使用来自 Microsoft 和社区的 Runbook 和模块。
 services: automation
 ms.subservice: process-automation
-ms.date: 12/17/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 26dfedf1961cf39645c3bcf3ce5fa2db6c14119e
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 590220782a7f43e785cc7885e68eefa99afb7d1d
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97682758"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049110"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>使用 PowerShell 库中的 Runbook 和模块
 
 无需在 Azure 自动化中创建自己的 Runbook 和模块，即可访问 Microsoft 和社区构建的方案。 你可以从 Azure Automation GitHub 组织的 PowerShell 库和[Python runbook](#use-python-runbooks)获取 PowerShell runbook 和[模块](#modules-in-powershell-gallery)。 还可以通过共享[开发的方案](#add-a-powershell-runbook-to-the-gallery)来为社区做出贡献。
 
 > [!NOTE]
-> TechNet 脚本中心正在停用。 Runbook 库中脚本中心的所有 runbook 都已移至 [自动化 GitHub 组织](https://github.com/azureautomation)。
+> TechNet 脚本中心正在停用。 Runbook 库中脚本中心的所有 runbook 都已移至我们的 [自动化 GitHub 组织](https://github.com/azureautomation) ，有关详细信息，请参阅 [此处](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-automation-runbooks-moving-to-github/ba-p/2039337)。
 
 ## <a name="runbooks-in-powershell-gallery"></a>PowerShell 库中的 Runbook
 

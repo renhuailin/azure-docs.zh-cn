@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3a11cd9f3208c97748ab16c636aedd9a443c5b9f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d84acc5501b3d40f6db85d0ee6ee369aec5a6aa4
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093157"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051099"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>将 Azure 数字孪生与 Azure SignalR 服务集成
 
@@ -40,9 +40,9 @@ ms.locfileid: "93093157"
 
 首先，下载所需的示例应用。 你将需要以下两项内容：
 * [**Azure 数字孪生端到端示例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)：此示例包含一个 *AdtSampleApp* ，其中包含两个用于在 azure 数字孪生实例之间移动数据的 azure 函数 (你可以在 [*教程：连接端到端解决方案*](tutorial-end-to-end.md)) 中更详细地了解此方案。 它还包含一个 *devicesimulator.exe* 示例应用程序，该应用程序模拟 IoT 设备，每秒生成新的温度值。 
-    - 导航到示例链接并按 " *下载 ZIP* " 按钮，将示例副本下载到计算机，如 _**Azure_Digital_Twins_end_to_end_samples.zip**_ 。 解压缩文件夹。
+    - 导航到示例链接并按 " *下载 ZIP* " 按钮，将示例副本下载到计算机，如 _**Azure_Digital_Twins_end_to_end_samples.zip**_。 解压缩文件夹。
 * [**SignalR integration web 应用示例**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/)：这是一个示例响应 web 应用，它将使用 azure SignalR 服务中的 Azure 数字孪生遥测数据。
-    -  导航到示例链接并按 " *下载 ZIP* " 按钮，将示例副本下载到计算机，如 _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_ 。 解压缩文件夹。
+    -  导航到示例链接并按 " *下载 ZIP* " 按钮，将示例副本下载到计算机，如 _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_。 解压缩文件夹。
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
 
@@ -68,66 +68,8 @@ ms.locfileid: "93093157"
 1. 在 *SampleFunctionsApp* 项目中创建一个名为 **SignalRFunctions.cs** 的新 c # 清晰类。
 
 1. 将类文件的内容替换为以下代码：
-
-    ```C#
-    using System;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.Azure.EventGrid.Models;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Azure.WebJobs.Extensions.Http;
-    using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-    using Microsoft.Azure.WebJobs.Extensions.SignalRService;
-    using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-    using System.Collections.Generic;
     
-    namespace SampleFunctionsApp
-    {
-        public static class SignalRFunctions
-        {
-            public static double temperature;
-    
-            [FunctionName("negotiate")]
-            public static SignalRConnectionInfo GetSignalRInfo(
-                [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req,
-                [SignalRConnectionInfo(HubName = "dttelemetry")] SignalRConnectionInfo connectionInfo)
-            {
-                return connectionInfo;
-            }
-    
-            [FunctionName("broadcast")]
-            public static Task SendMessage(
-                [EventGridTrigger] EventGridEvent eventGridEvent,
-                [SignalR(HubName = "dttelemetry")] IAsyncCollector<SignalRMessage> signalRMessages,
-                ILogger log)
-            {
-                JObject eventGridData = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-    
-                log.LogInformation($"Event grid message: {eventGridData}");
-    
-                var patch = (JObject)eventGridData["data"]["patch"][0];
-                if (patch["path"].ToString().Contains("/Temperature"))
-                {
-                    temperature = Math.Round(patch["value"].ToObject<double>(), 2);
-                }
-    
-                var message = new Dictionary<object, object>
-                {
-                    { "temperatureInFahrenheit", temperature},
-                };
-        
-                return signalRMessages.AddAsync(
-                    new SignalRMessage
-                    {
-                        Target = "newMessage",
-                        Arguments = new[] { message }
-                    });
-            }
-        }
-    }
-    ```
+    :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/signalRFunction.cs":::
 
 1. 在 Visual Studio 的 " *包管理器控制台* " 窗口或计算机上 *Azure_Digital_Twins_end_to_end_samples \adtsampleapp\samplefunctionsapp* "文件夹中的任何命令窗口，运行以下命令将 `SignalRService` NuGet 包安装到项目中：
     ```cmd
@@ -137,11 +79,11 @@ ms.locfileid: "93093157"
     这应该解决类中的所有依赖关系问题。
 
 接下来，使用 *连接端到端解决方案* 教程中的 [*发布应用程序* 部分](tutorial-end-to-end.md#publish-the-app)中所述的步骤将函数发布到 Azure。 你可以将其发布到端到端教程 prereq 中使用的同一应用服务/函数应用，或创建一个新的应用服务/函数应用，但你可能想要使用同一个应用来最大程度地减少重复。 此外，通过以下步骤完成应用发布：
-1. 收集 *negotiate* 函数的 **HTTP 终结点 URL** 。 为此，请在 Azure 门户的 " [函数应用](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) " 页上，从列表中选择函数应用。 在 "应用程序" 菜单中，选择 " *函数* "，然后选择 *negotiate* 函数。
+1. 收集 *negotiate* 函数的 **HTTP 终结点 URL**。 为此，请在 Azure 门户的 " [函数应用](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) " 页上，从列表中选择函数应用。 在 "应用程序" 菜单中，选择 " *函数* "，然后选择 *negotiate* 函数。
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="函数应用的 Azure 门户视图，菜单中突出显示了 &quot;函数&quot;。页面上显示了函数列表，同时还会突出显示 &quot;negotiate&quot; 函数。":::
 
-    点击 " *获取函数 URL* " 并 **通过 _/api_ 复制值 (不包含最后一个 _/negotiate？_ )** 。 稍后会用到它。
+    点击 " *获取函数 URL* " 并 **通过 _/api_ 复制值 (不包含最后一个 _/negotiate？_)**。 稍后会用到它。
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="&quot;Negotiate&quot; 函数的 Azure 门户视图。&quot;获取函数 URL&quot; 按钮将突出显示，并从开头到 &quot;/api&quot; 的 URL 部分":::
 
@@ -169,7 +111,7 @@ ms.locfileid: "93093157"
 * “事件订阅详细信息” > “名称”：为事件订阅指定名称。
 * “终结点详细信息” > “终结点类型”：从菜单选项中选择“Azure 函数”。
 * “终结点详细信息” > “终结点”：点击“选择终结点”链接。 这会打开“选择 Azure 函数”窗口：
-    - 填写 **订阅** 、 **资源组** 、 **函数应用** 和 **函数** ( *广播* ) 。 在选择订阅后，其中一些可能会自动填充。
+    - 填写 **订阅**、 **资源组**、 **函数应用** 和 **函数** (*广播*) 。 在选择订阅后，其中一些可能会自动填充。
     - 点击“确认所选内容”。
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="创建事件订阅 Azure 门户视图。上面的字段已填充，并且突出显示了 &quot;确认选择&quot; 和 &quot;创建&quot; 按钮。":::
@@ -212,13 +154,13 @@ ms.locfileid: "93093157"
 
 接下来，在 Azure 门户的函数应用中设置权限：
 1. 在 Azure 门户的 " [函数应用](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) " 页中，选择 Function app 实例。
-1. 在 "实例" 菜单中向下滚动，然后选择 " *CORS* "。 在 "CORS" 页上， `http://localhost:3000` 通过将其输入到空框中来添加作为允许的源。 选中 " *启用访问控制-允许凭据* " 框，然后单击 " *保存* "。
+1. 在 "实例" 菜单中向下滚动，然后选择 " *CORS*"。 在 "CORS" 页上， `http://localhost:3000` 通过将其输入到空框中来添加作为允许的源。 选中 " *启用访问控制-允许凭据* " 框，然后单击 " *保存*"。
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="Azure Function 中的 CORS 设置":::
 
 ### <a name="see-the-results"></a>查看结果
 
-若要查看操作结果，请启动 **SignalR integration web 应用示例** 。 可以通过运行以下命令，从 *Azure_Digital_Twins_SignalR_integration_web_app_sample \src* 位置的任何控制台窗口执行此操作：
+若要查看操作结果，请启动 **SignalR integration web 应用示例**。 可以通过运行以下命令，从 *Azure_Digital_Twins_SignalR_integration_web_app_sample \src* 位置的任何控制台窗口执行此操作：
 
 ```cmd
 npm start
@@ -246,7 +188,7 @@ npm start
 az group delete --name <your-resource-group>
 ```
 
-最后，删除已下载到本地计算机的项目示例文件夹 ( *Azure_Digital_Twins_end_to_end_samples.zip* 并 *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip* ) 。
+最后，删除已下载到本地计算机的项目示例文件夹 (*Azure_Digital_Twins_end_to_end_samples.zip* 并 *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) 。
 
 ## <a name="next-steps"></a>后续步骤
 

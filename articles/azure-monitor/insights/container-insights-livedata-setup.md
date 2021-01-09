@@ -2,14 +2,14 @@
 title: 设置用于容器实时数据（预览版）的 Azure Monitor| Microsoft Docs
 description: 本文介绍在不将 kubectl 与适用于容器的 Azure Monitor 配合使用的情况下，如何设置容器日志 (stdout/stderr) 和事件的实时视图。
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 62bc7613995296504dfba551cdb631ac3386aa75
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: d5b978e7138e10ed88f5748b84ff62ddd22bebec
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830779"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050776"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何设置实时数据（预览版）功能
 
@@ -29,8 +29,6 @@ ms.locfileid: "97830779"
 - 启用了 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 的 AKS 群集
 - 集成了 Azure Active Directory 的 AKS 群集。
 
->[!NOTE]
->此功能不支持以[专用群集](https://azure.microsoft.com/updates/aks-private-cluster/)形式启用的 AKS 群集。 此功能依赖于从浏览器通过代理服务器直接访问 Kubernetes API。 启用网络安全以阻止通过此代理访问 Kubernetes API 会阻止此流量。
 
 ## <a name="authentication-model"></a>身份验证模型
 

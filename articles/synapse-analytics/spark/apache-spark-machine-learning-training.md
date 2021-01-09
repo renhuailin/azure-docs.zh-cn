@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
-ms.openlocfilehash: 805bc2aecda37599234c81dd928868d8c14aea4e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 242ff1d7c16ca952b19f44fb139f8fae7562524a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97091983"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048311"
 ---
 # <a name="train-machine-learning-models"></a>训练机器学习模型
 Azure Synapse Analytics 中的 Apache Spark 支持具有大数据的机器学习，从而能够从大量结构化、非结构化和快速移动的数据中获取有价值的见解。 使用 azure Synapse 分析中的 Azure Spark 训练机器学习模型时，有几个选项可供使用： Apache Spark MLlib、Azure 机器学习和其他各种开源库。 
@@ -58,6 +58,6 @@ Azure 机器学习是一种基于云的环境，可以对机器学习模型进�
 ## <a name="next-steps"></a>后续步骤
 本文概述了用于在 Azure Synapse 分析中的 Apache Spark 池内训练机器学习模型的各种选项。 可以按照以下教程了解有关模型定型的详细信息：
 
-- 使用 Azure 机器学习和 Azure Synapse Analytics 运行自动 ML 试验： [自动 Ml 教程](./spark/../apache-spark-autoscale.md) 
-- 运行 SparkML 试验： [Apache SparkML 教程](../spark/apache-spark-azure-machine-learning-tutorial.md)
+- 使用 Azure 机器学习和 Azure Synapse Analytics 运行自动 ML 试验： [自动 Ml 教程](../spark/apache-spark-azure-machine-learning-tutorial.md) 
+- 运行 SparkML 试验： [Apache SparkML 教程](../spark/apache-spark-machine-learning-mllib-notebook.md)
 - 查看默认库： [Azure Synapse Analytics 运行时](../spark/apache-spark-version-support.md)

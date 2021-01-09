@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: ba1542d1bb10933edb34b697f1c81cc5e3e7f1c9
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 88a7a0240a4711bebad0ea9007caf6590436e371
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705364"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049773"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>用于 Azure HDInsight 的传输中 IPSec 加密
 
@@ -24,7 +24,7 @@ Azure HDInsight 提供了多种不同的安全功能来保护企业数据。 这
 
 Azure 存储帐户上的服务器端加密以及作为 HDInsight 群集一部分的 Azure VM 上的磁盘加密都包括静态加密。
 
-在 HDInsight 上为传输中的数据加密是通过[传输层安全性 (TLS)](../transport-layer-security.md)（用于访问群集网关）和群集节点间的 [Internet 协议安全性 (IPSec)](https://wikipedia.org/wiki/IPsec) 来实现的。 可选择在所有头节点、工作器节点、边缘节点和 zookeeper 节点之间启用 IPSec。 群集中的网关或 [ID 代理](./identity-broker.md)节点（基于 Windows 的 VM）和其他基于 Linux 的节点之间的流量未启用 IPSec。
+在 HDInsight 上为传输中的数据加密是通过[传输层安全性 (TLS)](../transport-layer-security.md)（用于访问群集网关）和群集节点间的 [Internet 协议安全性 (IPSec)](https://wikipedia.org/wiki/IPsec) 来实现的。 可以选择在所有头节点、辅助角色节点、边缘节点、zookeeper 节点以及网关和 [id 代理](./identity-broker.md) 节点之间启用 IPSec。
 
 ## <a name="enable-encryption-in-transit"></a>启用传输中加密
 

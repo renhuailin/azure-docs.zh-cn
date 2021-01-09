@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: c1dbdc4761c107a8e5028a43ead9710d45526016
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3bc24e88368af056e4d4506a5cf688e1172d4930
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461181"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051558"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 创建 Azure 数字孪生的自定义 Sdk
 
@@ -93,23 +93,13 @@ AutoRest 支持多种语言代码生成器。
 
 REST API 调用通常返回强类型对象。 不过，由于 Azure 数字孪生允许用户定义孪生的自定义类型，因此无法为许多 Azure 数字孪生调用预定义静态返回数据。 相反，Api 将返回强类型化包装器类型（如果适用），并且自定义类型的 Json.NET 对象在 API 签名) 中显示数据类型 "对象" (使用。 您可以在代码中适当地强制转换这些对象。
 
-### <a name="error-handling"></a>错误处理。
+### <a name="error-handling"></a>错误处理
 
 每当 SDK 中发生错误时 (包括 HTTP 错误，如 404) ，SDK 会引发异常。 出于此原因，请务必将 try/catch 块内的所有 API 调用封装。
 
 下面是一个代码片段，它尝试添加一个克隆，并在此过程中捕获任何错误：
 
-```csharp
-try
-{
-    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(id, initData);
-    Console.WriteLine($"Created a twin successfully: {id}");
-}
-catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}"); 
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_errorHandling":::
 
 ### <a name="paging"></a>Paging
 
@@ -117,62 +107,15 @@ AutoRest 为 SDK 生成两种类型的分页模式：
 * 一个用于除查询 API 之外的所有 Api
 * 一个用于查询 API
 
-在非查询分页模式下，以下代码片段显示了如何从 Azure 数字孪生检索传出关系的分页列表：
+在非查询分页模式下，下面是一个示例方法，演示如何从 Azure 数字孪生检索传出关系的分页列表：
 
-```csharp
- try 
- {
-     // List the relationships.
-    AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
-    Console.WriteLine($"Twin {srcId} is connected to:");
-    // Iterate through the relationships found.
-    int numberOfRelationships = 0;
-    await foreach (string rel in results)
-    {
-         ++numberOfRelationships;
-         // Do something with each relationship found
-         Console.WriteLine($"Found relationship-{rel.Name}->{rel.TargetId}");
-    }
-    Console.WriteLine($"Found {numberOfRelationships} relationships on {srcId}");
-} catch (RequestFailedException rex) {
-    Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
 
 第二种模式仅为查询 API 生成。 它显式使用 `continuationToken` 。
 
 下面是此模式的示例：
 
-```csharp
-string query = "SELECT * FROM digitaltwins";
-string conToken = null; // continuation token from the query
-int page = 0;
-try
-{
-    // Repeat the query while there are pages
-    do
-    {
-        QuerySpecification spec = new QuerySpecification(query, conToken);
-        QueryResult qr = await client.Query.QueryTwinsAsync(spec);
-        page++;
-        Console.WriteLine($"== Query results page {page}:");
-        if (qr.Items != null)
-        {
-            // Query returns are JObjects
-            foreach(JObject o in qr.Items)
-            {
-                string twinId = o.Value<string>("$dtId");
-                Console.WriteLine($"  Found {twinId}");
-            }
-        }
-        Console.WriteLine($"== End query results page {page}");
-        conToken = qr.ContinuationToken;
-    } while (conToken != null);
-} catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error in twin query: ${e.Response.StatusCode}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="PagedQuery":::
 
 ## <a name="next-steps"></a>后续步骤
 

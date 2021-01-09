@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/23/2020
-ms.openlocfilehash: a6f8b79ecc8dcac71dc8f5d1be2bb58a0288a307
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/08/2021
+ms.openlocfilehash: 3f5c3400f319a3f9d5f1544457b009f90d479634
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760242"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049824"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>如何在预配吞吐量与无服务器之间进行选择
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,11 +25,11 @@ Azure Cosmos DB 提供了两种不同的容量模式：[预配吞吐量](set-thr
 | 条件 | 预配的吞吐量 | 无服务器 |
 | --- | --- | --- |
 | 状态 | 正式发布 | 预览 |
-| 最适用于 | 需要可预测性能的关键工作负荷 | 具有难以预测的轻型流量和间歇流量的小型到中型工作负荷 |
+| 最适用于 | 持续流量需要可预测性能的工作负荷 | 具有间歇或无法预测的流量和低到高峰流量比的工作负荷 |
 | 工作原理 | 对于每个容器，你预配一定数量的吞吐量（以每秒[请求单位数](request-units.md)表示）。 每秒此数量的请求单位可用于你的数据库操作。 预配的吞吐量可以手动更新，也可以通过[自动缩放](provision-throughput-autoscale.md)自动调整。 | 你对容器运行数据库操作，无需预配任何容量。 |
 | 地理分布 | 可用（Azure 区域数不受限制） | 不可用（无服务器帐户只能在 1 个 Azure 区域中运行） |
 | 每个容器的最大存储 | 无限制 | 50 GB |
-| 性能 | SLA 涵盖的可用性为 99.99% 到 99.999%<br>SLA 涵盖的针对点读取和写入的延迟 < 10 毫秒<br>SLA 涵盖的保证吞吐量为 99.99% | SLA 涵盖的可用性为 99.9% 到 99.99%<br>SLA 涵盖的针对点读取的延迟 < 10 毫秒，针对写入的延迟 < 30 毫秒<br>SLA 涵盖的突发性为 95% |
+| 性能 | SLA 涵盖的针对点读取和写入的延迟 < 10 毫秒 | SLA 涵盖的针对点读取的延迟 < 10 毫秒，针对写入的延迟 < 30 毫秒 |
 | 计费模式 | 对于预配的 RU/s，无论消耗了多少 RU，都按每小时计费。 | 根据数据库操作所消耗的 RU 数量，按小时收费。 |
 
 > [!IMPORTANT]

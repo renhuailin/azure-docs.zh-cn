@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 3d99293ea83c883f8d0870d78dfbec58f74c9bd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927311"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050555"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>如何排查 Log Analytics Windows 代理的问题 
 
@@ -21,6 +21,40 @@ ms.locfileid: "87927311"
 * 具有顶级支持权益的客户可以通过[顶级支持](https://premier.microsoft.com/)提出支持请求。
 * 签订了 Azure 支持协议的客户可以在 [Azure 门户](https://manage.windowsazure.com/?getsupport=true)中提出支持请求。
 * 请访问 Log Analytics 反馈页面，查看已提交的想法和 bug [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)或提交新的想法或 bug。 
+
+## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics 故障排除工具
+
+Log Analytics Agent Windows 故障排除工具是一组 PowerShell 脚本，旨在帮助查找和诊断 Log Analytics 代理的问题。 安装后，该工具将自动包含在代理中。 应将运行此工具作为诊断问题的第一步。
+
+### <a name="how-to-use"></a>如何使用
+1. 在安装 Log Analytics 代理的计算机上以管理员身份打开 PowerShell 提示符。
+1. 导航到该工具所在的目录。
+   * `cd "C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter"`
+1. 使用此命令执行 main 脚本：
+   * `.\GetAgentInfo.ps1`
+1. 选择故障排除方案。
+1. 按照控制台上的说明进行操作。  (注意：跟踪日志步骤需要手动干预来停止日志收集。 根据此问题的可再现性，等待持续时间，并按 "s" 停止日志收集并继续下一步) 。
+
+   完成后，将记录结果文件的位置，并突出显示新的资源管理器窗口。
+
+### <a name="installation"></a>安装
+安装 Log Analytics 代理 build 10.20.18053.0 和更高版本时，将自动包含故障排除工具。
+
+### <a name="scenarios-covered"></a>涵盖的方案
+下面是使用故障排除工具检查的方案的列表：
+
+- 代理未报告数据或检测信号数据缺失
+- 代理扩展部署失败
+- 代理崩溃
+- 消耗高 CPU/内存的代理
+- 安装/卸载失败
+- 自定义日志问题
+- OMS 网关问题
+- 性能计数器问题
+- 收集所有日志
+
+>[!NOTE]
+>遇到问题时，请运行故障排除工具。 在打开票证时，记录最初会极大地帮助我们的支持团队更快地解决问题。
 
 ## <a name="important-troubleshooting-sources"></a>重要的故障排除源
 
@@ -43,7 +77,7 @@ ms.locfileid: "87927311"
 
 可通过多种方法验证代理是否能够成功与 Azure Monitor 通信。
 
-- 在工作区中启用 [Azure Log Analytics 代理运行状况评估](../insights/solution-agenthealth.md)。 在“代理运行状况”仪表板中，查看“无响应代理的计数”列，以快速确认该代理是否已列出。****  
+- 在工作区中启用 [Azure Log Analytics 代理运行状况评估](../insights/solution-agenthealth.md)。 在“代理运行状况”仪表板中，查看“无响应代理的计数”列，以快速确认该代理是否已列出。  
 
 - 运行以下查询来确认代理是否会将检测信号发送到为其配置的目标报告工作区。 请将 `<ComputerName>` 替换为计算机的实际名称。
 
@@ -59,7 +93,7 @@ ms.locfileid: "87927311"
 
     ![TestCloudConnection 工具的执行结果](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- 按**事件源** - “运行状况服务模块”、“运行状况服务”和“服务连接器”筛选“Operations Manager”事件日志，并按**事件级别 -“警告”和“错误”进行筛选，以确认代理是否写入了下表中所述的事件。********** **** 如果已写入，请查看针对每个可能的事件提供的解决方法步骤。
+- 按 **事件源** - “运行状况服务模块”、“运行状况服务”和“服务连接器”筛选“Operations Manager”事件日志，并按 **事件级别 -“警告”和“错误”进行筛选，以确认代理是否写入了下表中所述的事件。**  如果已写入，请查看针对每个可能的事件提供的解决方法步骤。
 
     |事件 ID |源 |说明 |解决方法 |
     |---------|-------|------------|-----------|
@@ -93,11 +127,11 @@ Heartbeat
 如果查询返回了结果，则你需要确定是否未收集特定的数据类型并将其转发到服务。 原因可能是代理未从服务接收更新的配置，或者其他某种症状阻止了代理正常运行。 执行以下步骤进一步进行故障排除。
 
 1. 在计算机上打开权限提升的命令提示符，并键入 `net stop healthservice && net start healthservice` 重启代理服务。
-2. 打开“Operations Manager”事件日志，并在**事件源“运行状况服务”中搜索**事件 ID 7023、7024、7025、7028 和 1210。**** ****** **  这些事件表示代理可成功从 Azure Monitor 接收配置，并且它们正在监视计算机。 事件 ID 1210 的事件说明还会在最后一行中指定代理监视范围内的所有解决方法和见解。  
+2. 打开“Operations Manager”事件日志，并在 **事件源“运行状况服务”中搜索 **事件 ID 7023、7024、7025、7028 和 1210。****   这些事件表示代理可成功从 Azure Monitor 接收配置，并且它们正在监视计算机。 事件 ID 1210 的事件说明还会在最后一行中指定代理监视范围内的所有解决方法和见解。  
 
     ![事件 ID 1210 说明](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)
 
-3. 如果在几分钟后，查询结果或可视化效果中未按预期显示数据，请根据你查看的是解决方法还是见解中的数据，在“Operations Manager”事件日志中，搜索**事件源**“运行状况服务”和“运行状况服务模块”，并按**事件级别**“警告”和“错误”进行筛选，以确认代理是否写入了下表中所述的事件。    
+3. 如果在几分钟后，查询结果或可视化效果中未按预期显示数据，请根据你查看的是解决方法还是见解中的数据，在“Operations Manager”事件日志中，搜索 **事件源**“运行状况服务”和“运行状况服务模块”，并按 **事件级别**“警告”和“错误”进行筛选，以确认代理是否写入了下表中所述的事件。    
 
     |事件 ID |源 |说明 |解决方法 |
     |---------|-------|------------|

@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: aeae1f1a99d1fa574df8202efd2405232855628b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1517c066fe20d478094f57d85d6e27f355a93601
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091797"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049807"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>服务请求失败。 状态： 403 (禁止访问) 
 
@@ -44,7 +44,7 @@ ms.locfileid: "93091797"
 请注意，此角色不同于 .。。
 * 此角色的以前的名称在预览期间， *Azure 数字孪生所有者 (预览)* (角色相同，但名称已更改) 
 * 整个 Azure 订阅的 *所有者* 角色。 *Azure 数字孪生数据所有者* 是 Azure 数字孪生中的一个角色，其作用域为此单个 Azure 数字孪生实例。
-* Azure 数字孪生中的 *所有者* 角色。 它们是两个不同的 Azure 数字孪生管理角色， *Azure 数字孪生数据所有者* 是在预览期间用于管理的角色。
+* Azure 数字孪生中的 *所有者* 角色。 它们是两个不同的 Azure 数字孪生管理角色， *Azure 数字孪生数据所有者* 是应用于管理的角色。
 
 #### <a name="check-current-setup"></a>检查当前设置
 
@@ -60,7 +60,7 @@ ms.locfileid: "93091797"
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
-有关此角色要求和分配过程的更多详细信息，请参阅如何：设置 [*用户的用户访问权限* 部分](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) 中的 *操作方法：设置实例和身份验证 (CLI 或门户)* 。
+有关此角色要求和分配过程的更多详细信息，请参阅如何：设置 [*用户的用户访问权限* 部分](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) 中的 *操作方法：设置实例和身份验证 (CLI 或门户)*。
 
 如果已使用此角色分配 *，并且* 使用 Azure AD 应用注册来验证客户端应用，则如果此解决方案未解决403问题，则可继续执行下一解决方案。
 
