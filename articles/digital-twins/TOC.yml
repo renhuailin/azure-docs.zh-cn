@@ -49,6 +49,8 @@
               href: how-to-set-up-instance-portal.md
             - name: CLI 版本
               href: how-to-set-up-instance-cli.md
+            - name: PowerShell 版本
+              href: how-to-set-up-instance-powershell.md
             - name: 脚本版本
               href: how-to-set-up-instance-scripted.md
         - name: 编写应用身份验证码

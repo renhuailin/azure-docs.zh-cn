@@ -110,7 +110,7 @@
 - name: 资源
   items:
     - name: 常见问题解答
-      href: firewall-faq.md
+      href: firewall-faq.yml
     - name: 创作模板
       href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure 路线图

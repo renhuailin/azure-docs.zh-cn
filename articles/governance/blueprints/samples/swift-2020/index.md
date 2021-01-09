@@ -1,14 +1,14 @@
 ---
 title: SWIFT CSP-CSCF v2020 蓝图示例概述
 description: SWIFT CSP-CSCF v2020 蓝图示例概述。 此蓝图示例可帮助客户评估特定 SWIFT CSP-CSCF 控制要求。
-ms.date: 08/18/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 8c6eb7a609f1103f0b20a83e45bef9e18ae4d5c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fc2aa437cc6e69df3c5ae7c3a0acedfba67e636
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88612684"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048736"
 ---
 # <a name="overview-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 蓝图示例概述
 

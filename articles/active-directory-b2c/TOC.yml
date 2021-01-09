@@ -131,6 +131,7 @@
           href: add-profile-editing-policy.md
         - name: 资源所有者密码凭据策略
           href: add-ropc-policy.md
+          displayName: ROPC
         - name: 设置自助密码重置策略（已弃用）
           href: user-flow-self-service-password-reset.md
         - name: 手机注册和登录
@@ -163,6 +164,8 @@
           href: identity-provider-microsoft-account.md
         - name: QQ
           href: identity-provider-qq.md
+        - name: Salesforce
+          href: identity-provider-salesforce.md
         - name: Salesforce (SAML)
           href: identity-provider-salesforce-saml.md
         - name: Twitter
