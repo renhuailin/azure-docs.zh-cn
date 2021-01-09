@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 75df985377e6ed1764985f8d0b6b44323f249b8a
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 04103de47e82764f7ec4effa84a9b2b7b90b9363
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632003"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034622"
 ---
 # <a name="monitoring-azure-cosmos-db-data-reference"></a>监视 Azure Cosmos DB 数据引用
 
@@ -81,7 +81,7 @@ ms.locfileid: "97632003"
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作发生时的日期和时间 (UTC)。 |
 | **resourceId** | **资源** | 为其启用日志的 Azure Cosmos DB 帐户。|
-| **category** | **类别** |      对于 Azure Cosmos DB，DataPlaneRequests、MongoRequests、QueryRuntimeStatistics、PartitionKeyStatistics、PartitionKeyRUConsumption、ControlPlaneRequests 是可用的日志类型。 |
+| **category** | **类别** | 对于 Azure Cosmos DB、 **DataPlaneRequests**、 **MongoRequests**、 **QueryRuntimeStatistics**、 **PartitionKeyStatistics**、 **PartitionKeyRUConsumption**、 **ControlPlaneRequests**、 **CassandraRequests**、 **GremlinRequests** 是可用的日志类型。 |
 | **operationName** | **OperationName** | 操作的名称。 操作名称可以是 `Create`、`Update`、`Read`、`ReadFeed`、`Delete`、`Replace`、`Execute`、`SqlQuery`、`Query`、`JSQuery`、`Head`、`HeadFeed` 或 `Upsert`。   |
 | **properties** | 不适用 | 下面的行中描述了此字段的内容。 |
 | **activityId** | **activityId_g** | 日志记录操作的唯一 GUID。 |

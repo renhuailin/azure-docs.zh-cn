@@ -3,12 +3,12 @@ title: 使用虚拟网络的方案
 description: 将容器组部署到 Azure 虚拟网络的方案、资源和限制。
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882426"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033823"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>虚拟网络方案和资源
 
@@ -33,6 +33,7 @@ ms.locfileid: "97882426"
 * **Azure 负载均衡器** - 不支持在网络容器组中将 Azure 负载均衡器置于容器实例之前
 * **全球虚拟网络对等互连** - 不支持全球对等互连（跨 Azure 区域连接虚拟网络）
 * **公共 IP 或 DNS 标签** - 部署到虚拟网络的容器组目前不支持使用公共 IP 地址或完全限定的域名直接向 Internet 公开容器
+* **虚拟网络 NAT** -部署到虚拟网络的容器组目前不支持使用 NAT 网关资源进行出站 internet 连接。
 
 ## <a name="other-limitations"></a>其他限制
 

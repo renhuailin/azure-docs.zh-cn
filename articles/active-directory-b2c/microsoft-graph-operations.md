@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.custom: fasttrack-edit
+ms.openlocfilehash: fed1e31380381b864530b3fa0b9e8c0886737d04
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509812"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033602"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>可用于 Azure AD B2C 的 Microsoft Graph 操作
 
@@ -57,10 +58,10 @@ ms.locfileid: "97509812"
 
 配置用于注册、登录、组合式注册和登录、密码重置和配置文件更新的预先生成的策略。
 
-- [列出用户流](/graph/api/identityuserflow-list)
-- [创建用户流](/graph/api/identityuserflow-post-userflows)
-- [获取用户流](/graph/api/identityuserflow-get)
-- [删除用户流](/graph/api/identityuserflow-delete)
+- [列出用户流](/graph/api/identitycontainer-list-b2cuserflows)
+- [创建用户流](/graph/api/identitycontainer-post-b2cuserflows)
+- [获取用户流](/graph/api/b2cidentityuserflow-get)
+- [删除用户流](/graph/api/b2cidentityuserflow-delete)
 
 ## <a name="custom-policies"></a>自定义策略
 

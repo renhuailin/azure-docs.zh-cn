@@ -1,16 +1,16 @@
 ---
-title: 在 Azure 中配置函数应用设置
-description: 了解如何配置 Azure Function App 设置。
+title: 在 Azure Functions 中配置 function app 设置
+description: 了解如何在 Azure Functions 中配置 function app 设置。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 746a97ecd9b0bdd676e70cca38edc75905e3e4bd
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 2526fd60d6e07ecf43864945f2b05858b41ca567
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936934"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035200"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 
@@ -83,7 +83,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 | [高级](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
 | [专用（应用服务）](dedicated-plan.md) | 各种 | 各种 |
 
-# <a name="portal"></a>[Portal](#tab/portal)
+# <a name="portal"></a>[门户](#tab/portal)
 
 若要确定 function app 使用的计划类型，请参阅 [Azure 门户](https://portal.azure.com)中函数应用的 "**概览**" 选项卡上的 "**应用服务计划**"。 若要查看定价层，请选择“应用服务计划”的名称，然后从左侧窗格中选择“属性” 。
 

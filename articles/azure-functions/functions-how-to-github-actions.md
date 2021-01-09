@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 0018b7bafa8ff2ecd328a150df752082c85484e2
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bc80a4f5c6c2919f0cb3faa15958fb75eed70270
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608504"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035217"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 Github Actions 进行持续交付
 
-使用 [GitHub Actions](https://github.com/features/actions) 定义一个工作流，以便自动生成代码并将其部署到 Azure 函数应用。 
+使用 [GitHub 操作](https://github.com/features/actions) 来定义工作流，以便在 Azure Functions 中自动生成代码并将其部署到 function app。 
 
-在 GitHub Actions 中，[工作流](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions)是在 GitHub 存储库中定义的自动化过程。 此过程告知 GitHub 如何在 GitHub 中生成和部署函数应用项目。 
+在 GitHub Actions 中，[工作流](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions)是在 GitHub 存储库中定义的自动化过程。 此过程告知 GitHub 如何在 GitHub 上生成和部署 function app 项目。 
 
 工作流通过存储库的 `/.github/workflows/` 路径中的 YAML (.yml) 文件定义。 此定义包含组成工作流的各种步骤和参数。 
 
@@ -187,6 +187,7 @@ Python 使用 `actions/setup-python` 操作。
 ---
 
 ## <a name="deploy-the-function-app"></a>部署函数应用
+
 使用 `Azure/functions-action` 操作将代码部署到函数应用。 此操作有三个参数：
 
 |参数 |说明  |
@@ -202,7 +203,7 @@ Python 使用 `actions/setup-python` 操作。
 设置使用发布配置文件的 .NET Linux 工作流。
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Linux environment
+name: Deploy DotNet project to function app with a Linux environment
 
 on:
   [push]
@@ -241,7 +242,7 @@ jobs:
 设置使用发布配置文件的 .NET Windows 工作流。
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Windows environment
+name: Deploy DotNet project to function app with a Windows environment
 
 on:
   [push]
@@ -283,7 +284,7 @@ jobs:
 设置使用发布配置文件的 Java Linux 工作流。
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -325,7 +326,7 @@ jobs:
 设置使用发布配置文件的 Java Windows 工作流。
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -369,7 +370,7 @@ jobs:
 设置使用发布配置文件的 Node.JS Linux 工作流。
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -411,7 +412,7 @@ jobs:
 设置使用发布配置文件的 Node.JS Windows 工作流。
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -455,7 +456,7 @@ jobs:
 设置使用发布配置文件的 Python Linux 工作流。
 
 ```yaml
-name: Deploy Python project to Azure Function App
+name: Deploy Python project to function app
 
 on:
   [push]

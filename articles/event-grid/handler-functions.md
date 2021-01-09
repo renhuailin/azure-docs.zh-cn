@@ -1,31 +1,31 @@
 ---
-title: Azure Functions 作为 Azure 事件网格事件的事件处理程序
-description: 介绍如何将 Azure Functions 用作事件网格事件的事件处理程序。
+title: 在 Azure 中将函数用作 Azure 事件网格事件的事件处理程序
+description: 描述如何使用在中创建的函数以及作为事件网格事件的事件处理程序由 Azure Functions 承载的函数。
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 9e04fd3e04dab7a50940c2a4a799a56d447fbb6e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5a1ec575b58829a422e4d263ae0324e0343d5ad3
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145765"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034962"
 ---
-# <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Azure Functions 作为事件网格事件的事件处理程序
+# <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>将函数用作事件网格事件的事件处理程序
 
 事件处理程序是发送事件的位置。 处理程序将通过一个操作来处理事件。 几个 Azure 服务已自动配置为处理事件，Azure Functions 就是其中之一。 
 
 
-若要使用 Azure 函数作为事件的处理程序，请遵循以下方法之一： 
+若要在 Azure 中使用函数作为事件的处理程序，请遵循以下方法之一： 
 
--   使用 [事件网格触发器](../azure-functions/functions-bindings-event-grid-trigger.md)。  指定 **Azure 函数** 作为 **终结点类型**。 然后，指定 Azure function app 和将处理事件的函数。 
--   使用 [HTTP 触发器](../azure-functions/functions-bindings-http-webhook.md)。  指定 **Web 挂钩** 作为 **终结点类型**。 然后，指定将处理事件的 Azure 函数的 URL。 
+-   使用[事件网格触发器](../azure-functions/functions-bindings-event-grid-trigger.md)。  将“Azure 函数”指定为“终结点类型” 。 然后，指定函数应用和将处理事件的函数。 
+-   使用 [HTTP 触发器](../azure-functions/functions-bindings-http-webhook.md)。  将“Web Hook”指定为“终结点类型” 。 然后，指定将处理事件的函数的 URL。 
 
-建议使用第一种方法 (事件网格触发器) ，因为它与第二种方法相比具有以下优势：
+建议使用第一种方法（事件网格触发器），因为它与第二种方法相比具有以下优势：
 -   事件网格会自动验证事件网格触发器。 使用通用 HTTP 触发器时，必须自行实现[验证响应](webhook-event-delivery.md)。
--   事件网格根据函数可处理事件的已知速率来自动调整事件传递到事件网格事件触发的函数的速率。 这一速率匹配功能设置传递错误，这些错误不能处理事件，因为函数的事件处理速率可能会随时间而改变。 若要以高吞吐量提升效率，请对事件订阅启用批处理。 有关详细信息，请参阅 [启用批处理](#enable-batching)。
+-   事件网格根据函数处理事件的感知速率自动调整事件传递到事件网格事件触发的函数的速率。 这一速率匹配功能设置传递错误，这些错误不能处理事件，因为函数的事件处理速率可能会随时间而改变。 若要在高吞吐量下提高效率，请在事件订阅上启用批处理。 有关详细信息，请参阅[启用批处理](#enable-batching)。
 
     > [!NOTE]
-    > 目前，在 **CloudEvents** 架构中传递事件时，不能对 Azure Functions 应用使用事件网格触发器。 应转而使用 HTTP 触发器。
+    > 目前，在 **CloudEvents** 架构中传递事件时，不能为函数应用使用事件网格触发器。 应转而使用 HTTP 触发器。
 
 ## <a name="tutorials"></a>教程
 
@@ -58,29 +58,27 @@ ms.locfileid: "92145765"
 ```
 
 ## <a name="enable-batching"></a>启用批处理
-为了获得更高的吞吐量，请在订阅上启用批处理。 如果使用的是 Azure 门户，则可以设置每个批处理的最大事件数，以及在创建订阅时或创建后的首选批大小（以 kb 为单位）。 
+若要提高吞吐量，请对订阅启用批处理。 如果使用的是 Azure 门户，则可以在创建订阅时或创建订阅后设置每个批的最大事件数和首选批大小（以 KB 为单位）。 
 
-你可以使用 Azure 门户、PowerShell、CLI 或资源管理器模板配置批处理设置。 
+可以使用 Azure 门户、PowerShell、CLI 或资源管理器模板配置批处理设置。 
 
 ### <a name="azure-portal"></a>Azure 门户
-在 UI 中创建订阅时，在 " **创建事件订阅** " 页上，切换到 " **高级功能** " 选项卡，并设置 **每个批处理的最大事件数** 和 **首选批大小（kb）** 的值。 
+在 UI 中创建订阅时，在“创建事件订阅”页上切换到“高级功能”选项卡，设置“每批最大事件数”和“首选批大小(KB)”的值。 
     
-:::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="在创建订阅时启用批处理&quot;:::
+:::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="在创建订阅时启用批处理":::
 
-可以在 &quot;**事件网格主题**&quot; 页的 &quot;**功能**" 选项卡上更新现有订阅的这些值。 
+可以在“事件网格主题”页的“功能”选项卡上更新现有订阅的这些值。 
 
-:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="在创建订阅时启用批处理&quot;:::
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="创建后启用批处理":::
 
-可以在 &quot;**事件网格主题**&quot; 页的 &quot;**功能**":::
-
-### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
-可以在 Azure 资源管理器模板中设置 **maxEventsPerBatch** 和 **preferredBatchSizeInKilobytes** 。 有关详细信息，请参阅 [EventGrid eventSubscriptions template reference](/azure/templates/microsoft.eventgrid/eventsubscriptions)。
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
+可以在 Azure 资源管理器模板中设置 maxEventsPerBatch 和 preferredBatchSizeInKilobytes。 有关详细信息，请参阅 [Microsoft.EventGrid eventSubscriptions 模板参考](/azure/templates/microsoft.eventgrid/eventsubscriptions)。
 
 ### <a name="azure-cli"></a>Azure CLI
-你可以使用 [az eventgrid event-订阅 create](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create&preserve-view=true) 或 [az eventgrid 事件-订阅更新](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update&preserve-view=true) 命令，使用以下参数配置与批处理相关的设置： `--max-events-per-batch` 或 `--preferred-batch-size-in-kilobytes` 。
+可以使用 [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create&preserve-view=true) 或 [az eventgrid event-subscription update](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update&preserve-view=true) 命令，通过以下参数配置与批处理相关的设置：`--max-events-per-batch` 或 `--preferred-batch-size-in-kilobytes`。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-可以使用 [AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) 或 [AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) cmdlet，使用以下参数配置与批处理相关的设置： `-MaxEventsPerBatch` 或 `-PreferredBatchSizeInKiloBytes` 。
+可以使用 [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription)  或 [Update-AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) cmdlet，通过以下参数配置与批处理相关的设置：`-MaxEventsPerBatch` 或 `-PreferredBatchSizeInKiloBytes`。
 
 ## <a name="next-steps"></a>后续步骤
 如需支持的事件处理程序的列表，请参阅[事件处理程序](event-handlers.md)一文。

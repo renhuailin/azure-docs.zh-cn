@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows 代理概述
 description: 本文详细概述了可用的支持 Azure Arc 的服务器代理，它支持监视混合环境中托管的虚拟机。
-ms.date: 12/21/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: bff76cbaa678ed82538eb6d75633aa94cdce30bf
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 86d524665b70725108324b1d88521a4c3cb8ff05
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723263"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033959"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
 
@@ -69,6 +69,8 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 在将计算机配置为启用 Azure Arc 的服务器之前，请查看 Azure 资源管理器 [订阅限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) 和 [资源组限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) ，以规划要连接的计算机的数量。
 
+支持 Azure Arc 的服务器在一个资源组中支持多达5000的计算机实例。
+
 ### <a name="transport-layer-security-12-protocol"></a>传输层安全性1.2 协议
 
 为了确保传输到 Azure 的数据的安全性，我们强烈建议你将计算机配置为使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**。
@@ -99,7 +101,7 @@ URL：
 
 | 代理资源 | 说明 |
 |---------|---------|
-|`management.azure.com`|Azure Resource Manager|
+|`management.azure.com`|Azure 资源管理器|
 |`login.windows.net`|Azure Active Directory|
 |`login.microsoftonline.com`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
@@ -173,7 +175,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 * 安装期间将创建以下安装文件夹。
 
-    |Folder |说明 |
+    |Folder |描述 |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |包含代理支持文件的默认安装路径。|
     |%ProgramData%\AzureConnectedMachineAgent |包含代理配置文件。|

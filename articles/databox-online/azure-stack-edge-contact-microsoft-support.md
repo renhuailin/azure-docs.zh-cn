@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/07/2021
 ms.author: alkohli
-ms.openlocfilehash: a457c2816d4075190a2174339f7e52a2ea41730a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 5bbd02f9e15a4ee29e244b2a0307accd151ba487
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696032"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033942"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>为 Azure Stack Edge Pro 和 Azure Data Box Gateway 开支持票证
 
@@ -78,7 +78,7 @@ ms.locfileid: "97696032"
     * 发送故障硬件部件的现场更换单元 (FRU)。 目前，电源单元和固态驱动器是唯一受支持的 Fru。
     * 仅在下一工作日内更换 FRU，其他所有部件都需要发送完全系统更换 (FSR)。
 
-3. 如果在 4:30 pm 本地 (星期一到星期五) 之前引发支持票证，则会在下一工作日向现场技术人员派单，以执行 FRU 更换。 完全系统更换通常需要更长的时间，因为部件是从工厂发货的，可能会受到运输和海关延迟的限制。
+3. 如果确定本地时间 (星期一到星期五) 需要一个 FRU 更换，则在下一工作日向现场技术人员派单，以执行 FRU 更换。 完全系统更换通常需要更长的时间，因为部件是从工厂发货的，可能会受到运输和海关延迟的限制。
 
 ## <a name="manage-a-support-request"></a>管理支持请求
 

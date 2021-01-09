@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a78e18de1f495feb6234fa5bfd97162d8b80de4c
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 25848d313fc01fc41ef8874707bd10b2fa9912d3
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857318"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033506"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -134,11 +134,11 @@ ms.locfileid: "97857318"
 
 **答**：是的。 可以自行转录或使用专业听录服务进行转录。 有些用户更喜欢使用专业听录器，而其他用户则使用众包或自己进行听录。
 
-**问：训练自定义模型音频数据需要多长时间？**
+**问：向自定义模型定型音频数据需要多长时间？**
 
 **答**：使用音频数据训练模型是一个漫长的过程。 根据数据量，可能需要几天的时间来创建自定义模型。 如果该服务无法在一周内完成，则该服务可能会中止定型操作并将该模型报告为失败。 为了更快地获得结果，请使用专用硬件可用于培训的 [区域](custom-speech-overview.md#set-up-your-azure-account) 之一。 您可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)将完全训练的模型复制到另一个区域。 只有文本培训速度快得多，通常在几分钟内就会完成。
 
-某些基本模型不能用音频数据自定义。 对于这些服务，该服务将只使用脚本的文本进行定型并丢弃音频数据。 然后，训练将会快得多，结果将与仅文本培训相同。
+某些基本模型不能用音频数据自定义。 对于这些服务，该服务将只使用脚本的文本进行定型并忽略音频数据。 然后，训练将会快得多，结果将与仅文本培训相同。
 
 ## <a name="accuracy-testing"></a>精确度测试
 

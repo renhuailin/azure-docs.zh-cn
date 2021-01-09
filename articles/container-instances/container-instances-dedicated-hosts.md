@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: 967d2da61ffdfa9d1723bcab589deb2277d4041e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68b9b31cdfb55e8150b05e3efd35389320905cdc
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825614"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034265"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>在专用主机上部署
 
@@ -19,6 +19,9 @@ ms.locfileid: "91825614"
 专用 SKU 适用于需要从物理服务器角度隔离工作负载的容器工作负载。
 
 ## <a name="prerequisites"></a>先决条件
+
+> [!NOTE]
+> 由于当前限制，并非所有限制增加请求都保证获得批准。
 
 * 使用专用 SKU 的任何订阅的默认限制均为 0。 如果要将此 SKU 用于生产容器部署，请创建 [Azure 支持请求][azure-support]以增加限制。
 
@@ -131,7 +134,7 @@ ms.locfileid: "91825614"
 
 如果在桌面上创建并编辑了部署模板文件，可以通过将文件拖动到 Cloud Shell 目录上，将其上传到该文件。 
 
-使用“[az group create][az-group-create]”命令创建资源组。
+使用 [az group create][az-group-create] 命令创建资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

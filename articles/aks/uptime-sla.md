@@ -3,14 +3,14 @@ title: Azure Kubernetes 服务 (AKS) 与运行时间 SLA
 description: 了解 Azure Kubernetes 服务 (AKS) API 服务器的可选运行时间 SLA 产品/服务。
 services: container-service
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: d9d22b54ef2534cf0adb205175fdc3f1c57205fb
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 95728ca14b96adf7396ca13888107477d953b2a9
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607333"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033330"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
 
@@ -26,7 +26,7 @@ ms.locfileid: "97607333"
 ## <a name="region-availability"></a>上市区域
 
 * 运行时间 SLA 适用于 [支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公共区域和 Azure 政府区域。
-* 运行时间 SLA 适用于支持 AKS 的所有区域中的 [专用 AKS 群集][private-clusters] 。
+* 运行时间 SLA 适用于支持 AKS 的所有公共区域中的 [私有 AKS 群集][private-clusters] 。
 
 ## <a name="sla-terms-and-conditions"></a>SLA 条款和条件
 
