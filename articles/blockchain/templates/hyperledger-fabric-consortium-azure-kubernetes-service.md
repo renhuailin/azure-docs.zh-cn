@@ -1,15 +1,15 @@
 ---
 title: 在 Azure Kubernetes Service 上部署 Hyperledger 结构联合会
 description: 如何在 Azure Kubernetes Service 上部署和配置 Hyperledger Fabric 联合会网络
-ms.date: 08/06/2020
+ms.date: 01/08/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ab5b9fadfbb0f1c9c1cdf25ee319c7775a593ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651558"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060310"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>在 Azure Kubernetes Service 上部署 Hyperledger 结构联合会
 
@@ -66,7 +66,7 @@ ms.locfileid: "89651558"
 
 若要开始部署 Hyperledger Fabric 网络组件，请转到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择 "**创建资源**  >  " "**区块链**"，然后**在 "Azure Kubernetes 服务 (预览") 上搜索 "Hyperledger Fabric" **。
+1. 选择 "**创建资源**  >  " "**区块链**"，然后 **在 "Azure Kubernetes 服务 (预览") 上搜索 "Hyperledger Fabric"**。
 
 2. 在 " **基本** 信息" 选项卡上输入项目详细信息。
 
@@ -87,7 +87,7 @@ ms.locfileid: "89651558"
     - **节点数**：以下是两种类型的节点：
         - **订购服务**：选择用于提供网络容错能力的节点数。 支持的订单节点计数为3、5和7。
         - **对等节点**：可以根据需求选择1到10个节点。
-    - **对等节点世界状态数据库**：在 LevelDB 和 CouchDB 之间进行选择。 当你在 "**构造网络组件**" 下拉列表中选择**对等节点**时，会显示此字段。
+    - **对等节点世界状态数据库**：在 LevelDB 和 CouchDB 之间进行选择。 当你在 "**构造网络组件**" 下拉列表中选择 **对等节点** 时，会显示此字段。
     - **FABRIC ca 用户名**：输入用于构造 ca 身份验证的用户名。
     - **FABRIC ca 密码**：输入用于构造 ca 身份验证的密码。
     - **确认密码**：确认构造 CA 密码。
@@ -106,7 +106,7 @@ ms.locfileid: "89651558"
     - **Dns 前缀**：输入 AKS 群集的域名系统 (DNS) 名称前缀。 创建群集后，在管理容器时，你将使用 DNS 连接到 Kubernetes API。
     - **节点大小**：对于 Kubernetes 节点的大小，可以从 VM 库存量 (sku 列表中选择 Azure 上提供) 。 为了获得最佳性能，建议采用标准 DS3 v2。
     - **节点计数**：输入要在群集中部署的 Kubernetes 节点数。 建议将此节点计数保持为等于或大于 " **构造设置** " 选项卡上指定的 Hyperledger Fabric 节点数。
-    - **服务主体客户端 id**：输入现有服务主体的客户端 id，或创建新的服务主体。 AKS authentication 需要服务主体。 请参阅 [创建服务主体的步骤](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)。
+    - **服务主体客户端 id**：输入现有服务主体的客户端 id，或创建新的服务主体。 AKS authentication 需要服务主体。 请参阅 [创建服务主体的步骤](/powershell/azure/create-azure-service-principal-azureps#create-a-service-principal)。
     - **服务主体客户端机密**：输入服务主体的客户端 ID 中提供的服务主体的客户端机密。
     - **确认客户端密码**：确认服务主体的客户端密码。
     - **启用容器监视**：选择启用 AKS 监视，使 AKS 日志推送到指定的 Log Analytics 工作区。
@@ -334,7 +334,7 @@ CHANNEL_NAME=<channelName>
 ```
 此命令会在环境变量中对等组织集的所有对等节点上安装 chaincode `ORGNAME` 。 如果两个或多个对等组织在你的频道中，并且你想要在所有它们上安装 chaincode，请为每个对等组织单独运行此命令。  
 
-执行以下步骤:  
+执行以下步骤：  
 
 1.  `ORGNAME`根据设置并 `USER_IDENTITY` `peerOrg1` 运行 `./azhlf chaincode install` 命令。  
 2.  `ORGNAME`根据设置并 `USER_IDENTITY` `peerOrg2` 运行 `./azhlf chaincode install` 命令。  
@@ -359,7 +359,7 @@ CHANNEL_NAME=<channelName>
 ```
 
 `<collectionConfigJSONFilePath>`部分是 JSON 文件的路径，该文件包含为私有数据 chaincode 的实例化定义的集合。 可在以下路径找到一个相对于 *azhlfTool* 目录的示例集合的配置 JSON 文件： `./samples/chaincode/src/private_marbles/collections_config.json` 。
-`<transientArgs>`以字符串格式传递为有效的 JSON。 对任何特殊字符进行转义。 例如： `'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
+`<transientArgs>`以字符串格式传递为有效的 JSON。 对任何特殊字符进行转义。 例如：`'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
 > 从通道中的任意一个对等组织运行命令一次。 成功将事务提交到 orderer 后，orderer 会将此事务分发给通道中的所有对等组织。 然后，将在通道中的所有对等组织上的所有对等节点上实例化 Chaincode。  
@@ -385,7 +385,7 @@ CHANNEL_NAME=<channelName>
 ```bash
 ./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
 ```
-认可对等方是安装了 chaincode 的对等方，为执行事务而调用。 必须设置 `<endorsingPeers>` 以包含当前对等组织中的对等节点名称。 列出给定 chaincode 的认可对等方和由空格分隔的通道组合。 例如： `-p "peer1" "peer3"`。
+认可对等方是安装了 chaincode 的对等方，为执行事务而调用。 必须设置 `<endorsingPeers>` 以包含当前对等组织中的对等节点名称。 列出给定 chaincode 的认可对等方和由空格分隔的通道组合。 例如：`-p "peer1" "peer3"`。
 
 如果使用 *azhlfTool* 安装 chaincode，请将任何对等节点名称作为值传递到认可对等参数。 在该组织的每个对等节点上安装 Chaincode。 
 
@@ -393,23 +393,35 @@ CHANNEL_NAME=<channelName>
 
 ## <a name="troubleshoot"></a>疑难解答
 
-运行以下命令以查找模板部署的版本。
+### <a name="find-deployed-version"></a>查找部署版本
 
-根据部署了模板的资源组设置环境变量。
-
-```bash
-
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
-AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
-AKS_CLUSTER_NAME=<AKSClusterName>
-```
-运行以下命令以打印模板版本。
+运行以下命令以查找模板部署的版本。 根据部署了模板的资源组设置环境变量。
 
 ```bash
 SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
+```
 
+### <a name="patch-previous-version"></a>修补先前版本
+
+如果遇到 v 3.0.0 以下模板版本的任何部署的运行 chaincode 时遇到的问题，请执行以下步骤，通过修补程序修补你的对等节点。
+
+下载对等部署脚本。
+
+```bash
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/scripts/patchPeerDeployment.sh -o patchPeerDeployment.sh; chmod 777 patchPeerDeployment.sh
+```
+
+使用以下命令来运行该脚本，以替换对等方的参数。
+
+```bash
+source patchPeerDeployment.sh <peerOrgSubscription> <peerOrgResourceGroup> <peerOrgAKSClusterName>
+```
+
+等待所有对等节点进行修补。 你始终可以使用以下命令在 shell 的不同实例中检查对等节点的状态。
+
+```bash
+kubectl get pods -n hlf
 ```
 
 ## <a name="support-and-feedback"></a>支持和反馈

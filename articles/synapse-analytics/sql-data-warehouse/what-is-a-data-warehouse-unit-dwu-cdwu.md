@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3d9d5d4009ad40eecee26271b726c6a3e9aeb8b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 271922a4181f4be3ed6900b3f81cefaf5ed21191
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459184"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060276"
 ---
 # <a name="data-warehouse-units-dwus-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>数据仓库单位 (专用 SQL 池的 Dwu)  (以前的 Azure Synapse 分析中的 SQL DW) 
 
@@ -78,7 +78,7 @@ DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库�
 
 每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../../sql-database/sql-database-what-is-a-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management)。
 
-## <a name="how-many-data-warehouse-units-do-i-need"></a>我需要多少个数据仓库单位
+## <a name="how-many-data-warehouse-units-do-i-need"></a>我需要多少个数据仓库单位？
 
 合适的数据仓库单位数很大程度上取决于工作负荷及已加载到系统的数据量。
 
@@ -129,7 +129,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置。
 
-3. 单击“保存”  。 此时会显示确认消息。 单击“是”以确认或“否”以取消。
+3. 单击“ **保存**”。 此时会显示确认消息。 单击“是”确认，或者单击“否”取消。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -168,7 +168,7 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "properties": {
-        "requestedServiceObjectiveName": DW1000
+        "requestedServiceObjectiveName": "DW1000c"
     }
 }
 ```

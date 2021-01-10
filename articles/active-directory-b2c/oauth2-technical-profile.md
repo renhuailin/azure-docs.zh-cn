@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78ce6466521c7903187798d902056948c659653c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 624cf4012316b832e507518aa7e0f0874f517971
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509846"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059126"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth2 技术配置文件
 
@@ -77,7 +77,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 
 ## <a name="metadata"></a>元数据
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | IdTokenAudience | 否 | id_token 的受众。 在指定此项的情况下，Azure AD B2C 会检查令牌是否位于标识提供者返回的声明中，以及是否与指定的令牌相同。 |
@@ -87,7 +87,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 | end_session_endpoint | 是 | 每个 RFC 6749 的结束会话终结点的 URL。 |
 | AccessTokenResponseFormat | 否 | 访问令牌终结点调用的格式。 例如，Facebook 需要 HTTP GET 方法，但访问令牌响应采用 JSON 格式。 |
 | AdditionalRequestQueryParameters | 否 | 附加的请求查询参数。 例如，你可能需要向标识提供者发送更多参数。 可以使用逗号分隔符包含多个参数。 |
-| ClaimsEndpointAccessTokenName | 否 | 访问令牌查询字符串参数的名称。 某些标识提供者的声明终结点支持 GET HTTP 请求。 在这种情况下，将使用查询字符串参数而不是授权标头发送持有者令牌。 |
+| ClaimsEndpointAccessTokenName | 否 | 访问令牌查询字符串参数的名称。 某些标识提供者的声明终结点支持 GET HTTP 请求。 在这种情况下，将使用查询字符串参数而不是授权标头发送持有者令牌。 默认值： `access_token` 。 |
 | ClaimsEndpointFormatName | 否 | 格式查询字符串参数的名称。 例如，可在此 LinkedIn 声明终结点 `https://api.linkedin.com/v1/people/~?format=json` 中将名称设置为 `format`。 |
 | ClaimsEndpointFormat | 否 | 格式查询字符串参数的值。 例如，可在此 LinkedIn 声明终结点 `https://api.linkedin.com/v1/people/~?format=json` 中将值设置为 `json`。 |
 | ProviderName | 否 | 标识提供者的名称。 |
@@ -100,13 +100,14 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false`（默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 | ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值：`true` 或 `false`（默认值）。 使用此元数据从嵌套 JSON 元素中读取数据。 在 [OutputClaim](technicalprofiles.md#output-claims) 中，将 `PartnerClaimType` 设为要输出的 JSON 路径元素。 例如：`firstName.localized` 或 `data.0.to.0.email`。|
 |token_endpoint_auth_method| 否| 指定 Azure AD B2C 如何向令牌终结点发送身份验证标头。 可能的值：`client_secret_post`（默认值）和 `client_secret_basic`（公共预览版）。 有关详细信息，请参阅 [OpenID Connect 客户端身份验证部分](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)。 |
-|SingleLogoutEnabled| 否| 指示在登录时是否尝试从联合标识提供程序注销。 有关详细信息，请参阅 [Azure AD B2C 会话注销](session-behavior.md#sign-out)。 可能的值： `true` (默认) 或 `false` 。|
+|SingleLogoutEnabled| 否| 指示在登录时是否尝试从联合标识提供程序注销。 有关详细信息，请参阅 [Azure AD B2C 会话注销](session-behavior.md#sign-out)。可能的值： `true` (默认) 或 `false` 。|
+| UsePolicyInRedirectUri | 否 | 指示在构造重定向 URI 时是否要使用策略。 在标识提供者中配置应用程序时，需指定重定向 URI。 重定向 URI 指向 Azure AD B2C `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`。 如果指定 `true`，需为每个使用的策略添加重定向 URI。 例如：`https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`。 |
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
 **CryptographicKeys** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。 只有在将 **response_types** 元数据设置为 `code` 的情况下，才需要加密密钥。 在这种情况下，Azure AD B2C 会再次进行调用，以便用授权代码来交换访问令牌。 如果元数据设置为 `id_token` ，则可以省略加密密钥。 |
 
@@ -114,6 +115,6 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 
 配置标识提供者的重定向 URI 时，请输入 `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/oauth2/authresp`。 请确保将替换为 `{tenant-name}` 你的租户名称 (例如 contosob2c) 。 重定向 URI 需要采用全小写形式。
 
-示例:
+示例：
 
 - [使用自定义策略添加 Google+ 作为 OAuth2 标识提供者](identity-provider-google.md)

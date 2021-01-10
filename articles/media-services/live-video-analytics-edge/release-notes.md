@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析发行说明 - Azure
 description: 本主题提供 IoT Edge 上的实时视频分析版本的发行说明、改进、bug 修复和已知问题。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 7761fee8f23b5be259f9a5c278f761fa4ce92fbf
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400839"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059970"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 上的实时视频分析发行说明
 
@@ -33,7 +33,7 @@ ms.locfileid: "97400839"
 * 添加了对使用多个 HTTP 扩展处理器和 gRPC 扩展处理器每个图形拓扑的支持。
 * 添加了对接收器节点的磁盘空间管理的支持。
 * `MediaGraphGrpcExtension` 节点现在支持 [extensionConfiguration](grpc-extension-protocol.md) 属性，以便在单个 gRPC 服务器内使用多个 AI 模型。
-* 添加了对以[Prometheus 格式](https://prometheus.io/docs/practices/naming/)收集实时视频分析模块度量值的支持 
+* 添加了对以 [Prometheus 格式](https://prometheus.io/docs/practices/naming/)收集实时视频分析模块度量值的支持。 详细了解如何 [在 Azure Monitor 中收集指标和视图。](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
 * 帧速率筛选器处理器已 **弃用**。  
     * 帧速率管理现在在图形扩展处理器节点本身中可用。
 

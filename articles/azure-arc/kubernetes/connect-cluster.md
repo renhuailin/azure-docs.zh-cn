@@ -9,12 +9,12 @@ ms.author: mlearned
 description: 使用 Azure Arc 连接已启用 Azure Arc 的 Kubernetes 群集
 keywords: Kubernetes, Arc, Azure, K8s, 容器
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7f402d86ac1287753bc2deab53b24bb796644992
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8155ed709045626dee44fb499304ff5244a61b54
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97583926"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060242"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>连接已启用 Azure Arc 的 Kubernetes 群集（预览版）
 
@@ -30,7 +30,7 @@ ms.locfileid: "97583926"
 * 需要一个 kubeconfig 文件来访问群集上的群集和群集管理角色，以便部署启用了 Arc 的 Kubernetes 代理。
 * 使用 `az login` 和 `az connectedk8s connect` 命令的用户或服务主体必须具有对“Microsoft.Kubernetes/connectedclusters”资源类型的“读取”和“写入”权限。 "Kubernetes Cluster-Azure Arc 加入" 角色具有这些权限，可用于用户或服务主体上的角色分配。
 * 使用 connectedk8s 扩展加入群集时，Helm 3 是必需的。 [安装最新版本的 Helm 3](https://helm.sh/docs/intro/install) 以满足此要求。
-* 安装支持 Azure Arc 的 Kubernetes CLI 扩展需要 Azure CLI 版本 2.3 +。 [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 或更新到最新版本，以确保 Azure CLI 版本 2.3 +。
+* 安装支持 Azure Arc 的 Kubernetes CLI 扩展需要 Azure CLI 版本 2.15 +。 [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 或更新到最新版本，以确保具有 Azure CLI 版本 2.15 +。
 * 安装启用 Arc 的 Kubernetes CLI 扩展：
   
   安装 `connectedk8s` 扩展，该扩展可帮助你将 Kubernetes 群集连接到 Azure：

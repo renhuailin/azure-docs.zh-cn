@@ -16,12 +16,12 @@ ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6299f9ad660252ae39903401672d493b1c1ad52c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347483"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059375"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中添加连接的组织
 
@@ -135,8 +135,6 @@ Azure AD 目录或域中的用户进行身份验证的方式取决于身份验�
 1. 在左窗格中，选择“连接的组织”，然后选择连接的组织以将其打开。
 
 1. 在连接的组织的概览窗格中，选择“删除”以将其删除。
-
-    目前，只有不存在连接的用户时，才能删除连接的组织。
 
     ![连接的组织的“删除”按钮](./media/entitlement-management-organization/organization-delete.png)
 

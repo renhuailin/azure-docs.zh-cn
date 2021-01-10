@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: 31cf89cb66dfbc404d65f8fc09b96c03e1be2f8f
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401285"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060225"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>对 IoT Edge 上的实时视频分析进行故障排除
 
@@ -65,6 +65,8 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
     * 406 - IoT Edge 设备脱机或不发送状态报告。
     * 500 - IoT Edge 运行时中出现了一个错误。
 
+    > [!TIP]
+    > 如果在环境中运行 Azure IoT Edge 模块时遇到问题，请使用 **[Azure IoT Edge 标准诊断步骤](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** 作为故障排除和诊断指南。
 ### <a name="post-deployment-direct-method-error-code"></a>部署后：直接方法错误代码
 1. 如果获得状态，请 `501 code` 检查以确保直接方法名称准确无误。 如果方法名称和请求有效负载准确，则应获得结果，并显示成功代码 =200。 
 1. 如果请求有效负载不准确，你将获得一个状态 `400 code` 和响应有效负载，指示错误代码和消息，这些错误代码和消息应该有助于诊断你的直接方法调用的问题。
@@ -93,6 +95,8 @@ IoT Edge 模块的容器日志应包含诊断信息，以帮助调试模块运�
 * [实时视频分析或任何其他自定义 IoT Edge 模块无法将消息发送到边缘中心，出现 404 错误](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-fails-to-send-a-message-to-edgehub-with-404-error)。
 * [IoT Edge 模块部署成功，然后从设备中消失](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device)。
 
+    > [!TIP]
+    > 如果在环境中运行 Azure IoT Edge 模块时遇到问题，请使用 **[Azure IoT Edge 标准诊断步骤](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** 作为故障排除和诊断指南。
 ### <a name="live-video-analytics-working-with-external-modules"></a>用于外部模块的实时视频分析
 
 通过 media graph 扩展处理器的实时视频分析可以通过使用 HTTP 或 gRPC 协议扩展 media graph 以发送和接收来自其他 IoT Edge 模块的数据。 作为 [具体的例子](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)，此 media graph 可以将视频帧作为图像发送到外部推理模块（例如 Yolo v3），并使用 HTTP 协议接收基于 JSON 的分析结果。 在这种拓扑中，事件的目标主要是 IoT 中心。 如果在中心上看不到推理事件，请检查以下各项：
@@ -209,7 +213,7 @@ IoT Edge 上的实时视频分析提供了一种基于直接方法的编程模�
 
 1. 选择“更新”。
 1. 选择“查看 + 创建”  。 成功的验证消息将在绿色横幅下发布。
-1. 选择“创建”  。
+1. 选择“创建”。
 1. 更新 **模块标识** ，以指向 DebugLogsDirectory 参数，该参数指向收集日志的目录：
 
     a. 在 " **模块** " 表下，选择 " **lvaEdge**"。  

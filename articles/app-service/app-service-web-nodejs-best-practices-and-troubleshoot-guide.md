@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 9763835142e66bbbce51cd5c863dff87f261c270
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763938"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060154"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
 
@@ -121,7 +121,7 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 许多应用程序想要在其定期操作中进行出站连接。 例如，请求传入时，节点应用程序会想连接别处的 REST API，并获取一些信息来处理请求。 建议在进行 http 或 https 调用时使用保持连接代理。 可在进行这些出站调用时，使用 agentkeepalive 模块作为保持连接代理。
 
-agentkeepalive 模块确保在 Azure Web 应用 VM 上重复使用套接字。 在每个出站请求中创建新套接字会增大应用程序的开销。 让应用程序对出站请求重复使用套接字可确保应用程序不会超过为每个 VM 分配的 maxSockets。 Azure App Service 上的建议是将 agentKeepAlive maxSockets 值设置为 \* 每个 VM 每个 node.exe 32 maxSockets/instance) 128 插槽的 (4 个实例。
+agentkeepalive 模块确保在 Azure Web 应用 VM 上重复使用套接字。 在每个出站请求中创建新套接字会增大应用程序的开销。 让应用程序对出站请求重复使用套接字可确保应用程序不会超过为每个 VM 分配的 maxSockets。 对于 Azure 应用服务的建议是将 agentKeepAlive maxSockets 值设置为每个 VM 总共 128 个套接字（4 个 node.exe 实例 \* 每个实例 32 个 maxSockets）。
 
 [agentKeepALive 配置](https://www.npmjs.com/package/agentkeepalive)示例：
 
@@ -245,9 +245,8 @@ node.exe 随机关闭的原因有多种：
 应用程序启动时间过长的最常见原因是 node\_modules 中有大量文件。 应用程序在启动时会尝试加载其中的大多数文件。 默认情况下，由于文件存储在 Azure 应用服务的网络共享上，因此加载过多的文件可能需要一段时间。
 加速此过程的某些解决方法包括：
 
-1. 使用 npm3 来安装模块，确保采用平面依赖关系结构，并且没有重复的依赖项。
-2. 尝试延迟加载 node\_modules，而不要在应用程序启动时加载所有模块。 若要延迟加载模块，应在首次执行模块代码之前，在函数中真正需要该模块时调用 require('module')。
-3. Azure 应用服务提供一项称为本地缓存的功能。 此功能会将内容从网络共享复制到 VM 上的本地磁盘。 由于文件位于本地，因此，node\_modules 的加载时间快很多。
+1. 尝试延迟加载 node\_modules，而不要在应用程序启动时加载所有模块。 若要延迟加载模块，应在首次执行模块代码之前，在函数中真正需要该模块时调用 require('module')。
+2. Azure 应用服务提供一项称为本地缓存的功能。 此功能会将内容从网络共享复制到 VM 上的本地磁盘。 由于文件位于本地，因此，node\_modules 的加载时间快很多。
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE http 状态和子状态
 

@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 11a45adfda306b2ab843725b6aaa28a5e6c026a6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: f9748d0d278375029fc9875f5b36674d19ad871a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614245"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058967"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>配置 Azure Active Directory B2C 中的密码复杂性要求
 
@@ -76,7 +76,7 @@ Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建�
 允许你控制密码的长度要求。
 
 - 最小长度  必须至少为 4。
-- 最大长度  必须大于或等于最小长度，最多可包含 64 个字符。
+- **最大长度** 必须大于或等于最小长度，最大长度为256个字符。
 
 ### <a name="character-classes"></a>字符类
 

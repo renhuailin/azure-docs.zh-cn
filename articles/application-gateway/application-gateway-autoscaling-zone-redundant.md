@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 8c989e426faa77025a84515fe0a19424cb6bfa89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fad6e27c4ee7e8c10237cb3face5cfab9329b2ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826635"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059715"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
@@ -21,7 +21,7 @@ ms.locfileid: "91826635"
 
 新的 v2 SKU 包括以下增强：
 
-- 自动**缩放**：自动缩放 SKU 下的应用程序网关或 WAF 部署可以根据不断变化的流量负载模式进行扩展或缩减。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 此 SKU 提供真正的弹性。 在 Standard_v2 和 WAF_v2 SKU 中，应用程序网关可同时在固定容量（自动缩放已禁用）和已启用自动缩放的模式下运行。 固定容量模式对具有一致性和可预测工作负荷的方案非常有用。 应用程序流量会出现差异的应用程序可以受益于自动缩放模式。
+- **自动缩放**：凭借自动缩放 SKU，应用程序网关或 WAF 部署可根据不断变化的流量负载模式横向扩展或缩减。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 此 SKU 提供真正的弹性。 在 Standard_v2 和 WAF_v2 SKU 中，应用程序网关可同时在固定容量（自动缩放已禁用）和已启用自动缩放的模式下运行。 固定容量模式对具有一致性和可预测工作负荷的方案非常有用。 应用程序流量会出现差异的应用程序可以受益于自动缩放模式。
 - **区域冗余**：应用程序网关或 WAF 部署可跨多个可用性区域，因此不需要使用流量管理器在每个区域中单独预配应用程序网关实例。 可以选择一个或多个区域来部署应用程序网关实例，以便更灵活地应对区域故障。 应用程序的后端池可以通过类似方式分布在多个可用性区域中。
 
   仅当 Azure 区域可用时，区域冗余才可用。 在其他区域中，支持所有其他功能。 有关详细信息，请参阅 [Azure 中的区域和可用性区域](../availability-zones/az-overview.md)
@@ -74,7 +74,7 @@ Azure 应用程序网关始终以高度可用的方式部署。 服务由多个�
 | 区域冗余                                   |          | &#x2713; |
 | 静态 VIP                                        |          | &#x2713; |
 | Azure Kubernetes 服务 (AKS) 入口控制器 |          | &#x2713; |
-| Azure 密钥保管库集成                       |          | &#x2713; |
+| Azure Key Vault 集成                       |          | &#x2713; |
 | 重写 HTTP(S) 标头                           |          | &#x2713; |
 | 基于 URL 的路由                                 | &#x2713; | &#x2713; |
 | 多站点托管                             | &#x2713; | &#x2713; |
@@ -101,7 +101,7 @@ Azure 应用程序网关始终以高度可用的方式部署。 服务由多个�
 |身份验证证书|不支持。<br>有关详细信息，请参阅[应用程序网关的端到端 TLS 概述](ssl-overview.md#end-to-end-tls-with-the-v2-sku)。|
 |在同一子网上混合使用 Standard_v2 和标准应用程序网关|不支持|
 |应用程序网关子网上的用户定义路由 (UDR)|支持（特定方案）。 处于预览状态。<br> 有关支持的方案的详细信息，请参阅[应用程序网关配置概述](configuration-infrastructure.md#supported-user-defined-routes)。|
-|入站端口范围的 NSG| 对于 Standard_v2 SKU，为 - 65200 到 65535<br>对于标准 SKU，为 - 65503 到 65534<br>有关详细信息，请参阅[常见问题解答](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)。|
+|入站端口范围的 NSG| 对于 Standard_v2 SKU，为 - 65200 到 65535<br>对于标准 SKU，为 - 65503 到 65534<br>有关详细信息，请参阅[常见问题解答](application-gateway-faq.yml#are-network-security-groups-supported-on-the-application-gateway-subnet)。|
 |Azure 诊断中的性能日志|不支持。<br>应当使用 Azure 指标。|
 |计费|我们已安排在 2019 年 7 月 1 日开始计费。|
 |FIPS 模式|目前不支持。|

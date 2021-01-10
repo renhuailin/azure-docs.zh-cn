@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: dd24c4f20fa3a56d25ef142947268b2d2b75474a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 664264f2cd810f232b967f5af78ba3d522f0a41f
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029594"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060004"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -43,7 +43,7 @@ ms.locfileid: "97029594"
 
 下表比较了服务如何使用 VNet 而不使用 VNet 访问 Azure 机器学习网络的不同部分。
 
-| 场景 | 工作区 |  关联的资源 | 训练计算环境 | 推断计算环境 |
+| 方案 | 工作区 |  关联的资源 | 训练计算环境 | 推断计算环境 |
 |-|-|-|-|-|-|
 |**无虚拟网络**| 公共 IP | 公共 IP | 公共 IP | 公共 IP |
 |**保护虚拟网络中的资源**| 专用 IP (专用终结点)  | 公共 IP (服务终结点)  <br> **或** <br> 专用 IP (专用终结点)  | 专用 IP | 专用 IP  | 
@@ -152,7 +152,8 @@ ms.locfileid: "97029594"
 若要在 VNet 内部启用完整的 studio 功能，请参阅 [在虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio)。 Studio 支持使用服务终结点或专用终结点的存储帐户。
 
 ### <a name="limitations"></a>限制
-- [ML 辅助数据标记](how-to-create-labeling-projects.md#use-ml-assisted-labeling) 不支持虚拟网络后保护的默认存储帐户。 对于 ML 辅助数据标签，必须使用非默认存储帐户。 请注意，非默认存储帐户可在虚拟网络后受到保护。 
+
+[ML 辅助数据标记](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling) 不支持在虚拟网络后保护的默认存储帐户。 对于 ML 辅助数据标签，必须使用非默认存储帐户。 请注意，非默认存储帐户可在虚拟网络后受到保护。 
 
 ## <a name="configure-firewall-settings"></a>配置防火墙设置
 

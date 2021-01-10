@@ -9,12 +9,12 @@ ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 2eb7984097b4edf34ed2f0214e1453246e12916f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f00b2c1a8a8264267aa8ae68d80890adeb642ea
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786745"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059103"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database（使用 Azure SQL 数据库进行扩展）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "92786745"
 
 * [弹性数据库客户端库](elastic-database-client-library.md)：客户端库是一项功能，可用于创建和维护分片数据库。  请参阅[弹性数据库工具入门](elastic-scale-get-started.md)。
 * [弹性数据库拆分/合并工具](elastic-scale-overview-split-and-merge.md)：在分片数据库之间移动数据。 此工具对于将数据从多租户数据库移动到单租户数据库很有用（反之亦然）。 请参阅[弹性数据库拆分/合并工具教程](elastic-scale-configure-deploy-split-and-merge.md)。
-* [弹性数据库作业](elastic-jobs-overview.md)：使用作业来管理 Azure SQL 数据库中的大量数据库。 轻松执行管理操作，例如，使用作业更改架构、管理凭据、更新引用数据、收集性能数据，或收集租户（客户）遥测数据。
+* [弹性数据库作业](elastic-jobs-overview.md) (预览版) ：使用作业来管理 Azure SQL 数据库中的大量数据库。 轻松执行管理操作，例如，使用作业更改架构、管理凭据、更新引用数据、收集性能数据，或收集租户（客户）遥测数据。
 * [弹性数据库查询](elastic-query-overview.md)（预览版）：可跨多个数据库运行 Transact-SQL 查询。 这样，便可以连接到 Excel、Power BI、Tableau 等报表工具。
 * [弹性事务](elastic-transactions-overview.md)：使用此功能可跨多个数据库运行事务。 弹性数据库事务适用于使用 ADO .NET 的 .NET 应用程序，并且与你熟悉的使用 [System.Transaction](/dotnet/api/system.transactions)类的编程体验相集成。
 
@@ -33,7 +33,7 @@ ms.locfileid: "92786745"
 
 1. 一组使用分片体系结构的 SQL 数据库托管在 Azure 上。
 2. **弹性数据库客户端库** 用于管理分片集。
-3. 一个数据库子集已放入 **弹性池** 。 （请参阅[什么是池？](elastic-pool-overview.md)）。
+3. 一个数据库子集已放入 **弹性池**。 （请参阅[什么是池？](elastic-pool-overview.md)）。
 4. 弹性数据库针对所有数据库运行计划的或即席的 T-SQL 脚本。
 5. **拆分/合并工具** 用于将数据从一个分片移到另一个分片。
 6. 使用 **弹性数据库查询** 可以编写跨分片集中所有数据库运行的查询。

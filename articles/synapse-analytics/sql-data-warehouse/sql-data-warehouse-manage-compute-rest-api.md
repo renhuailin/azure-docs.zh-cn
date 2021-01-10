@@ -1,6 +1,6 @@
 ---
 title: 通过 REST API 暂停、恢复、缩放
-description: 通过 REST Api 在 Azure Synapse Analytics 中管理专用 SQL 池 (以前的 SQL DW) 的计算能力。
+description: 通过 REST API 在 Azure Synapse Analytics 中管理专用 SQL 池（以前称为 SQL DW）的计算能力。
 services: synapse-analytics
 author: antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 03/29/2019
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 49702051b5399d5079aacc97c00233a23ba8712d
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 243a7fd71e7b4f762130db2383f449021129cc62
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556006"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060293"
 ---
-# <a name="rest-apis-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>用于专用 SQL 池 (以前的 SQL DW) 在 Azure Synapse Analytics 中的 REST Api
+# <a name="rest-apis-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池（以前称为 SQL DW）的 REST API
 
-用于管理专用 SQL 池计算的 REST Api (以前的 SQL DW) 在 Azure Synapse Analytics 中。
+用于管理 Azure Synapse Analytics 中专用 SQL 池（以前称为 SQL DW）的计算的 REST API。
 
 ## <a name="scale-compute"></a>缩放计算
 
@@ -32,7 +32,7 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "properties": {
-        "requestedServiceObjectiveName": DW1000
+        "requestedServiceObjectiveName": "DW1000c"
     }
 }
 ```
@@ -64,7 +64,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="get-maintenance-schedule"></a>获取维护计划
 
-检查已为专用 SQL 池 (以前的 SQL DW) 设置的维护计划。
+检查已为专用 SQL 池（以前称为 SQL DW）设置的维护计划。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -73,7 +73,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="set-maintenance-schedule"></a>设置维护计划
 
-若要设置和更新现有专用 SQL 池上的维护计划 (以前的 SQL DW) 。
+设置和更新现有专用 SQL 池（以前称为 SQL DW）的维护计划。
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -82,14 +82,14 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
     "properties": {
         "timeRanges": [
                 {
-                                "dayOfWeek": Saturday,
-                                "startTime": 00:00,
-                                "duration": 08:00,
+                                "dayOfWeek": "Saturday",
+                                "startTime": "00:00",
+                                "duration": "08:00",
                 },
                 {
-                                "dayOfWeek": Wednesday
-                                "startTime": 00:00,
-                                "duration": 08:00,
+                                "dayOfWeek": "Wednesday",
+                                "startTime": "00:00",
+                                "duration": "08:00",
                 }
                 ]
     }

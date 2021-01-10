@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4a789574b736eb22bd8d13fcf1a9facec5e241c9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585184"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058661"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -59,7 +59,7 @@ Azure AD B2C 使用 [跨域资源共享 (CORS) ](https://www.w3.org/TR/cors/)在
 
 下表列出了 Azure AD B2C 提供的默认页面内容。 下载文件，并将它们用作创建自己的自定义页面的起点。
 
-| 默认页 | 说明 | 内容定义 ID<br/>仅 (自定义策略)  |
+| 默认页 | 描述 | 内容定义 ID<br/>仅 (自定义策略)  |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **错误页**。 遇到异常或错误时显示此页面。 | *api.error* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **自断言页**。 将此文件用作社交帐户注册页面、本地帐户注册页面、本地帐户登录页、密码重置等的自定义页面内容。 该窗体可以包含各种输入控件，如文本输入框、密码输入框、单选按钮、单选下拉框和多选复选框。 | *localaccountsignin*、 *localaccountsignup*、 *localaccountpasswordreset*、 *selfasserted。* |
@@ -74,7 +74,7 @@ Azure AD B2C 使用 [跨域资源共享 (CORS) ](https://www.w3.org/TR/cors/)在
 ## <a name="guidelines-for-using-custom-page-content"></a>使用自定义页面内容的准则
 
 - 在 HTML 文件中包含外部资源（如媒体、CSS 和 JavaScript 文件）时，请使用绝对 URL。
-- 使用 [页面布局版本](page-layout.md) 1.2.0 和更高版本，你可以 `data-preload="true"` 在 HTML 标记中添加属性，以控制 CSS 和 JavaScript 的加载顺序。 对于 `data-preload=true` ，在向用户显示该页之前，对页进行构造。 此属性可通过预加载 CSS 文件来防止页面 "闪烁"，而不会向用户显示未经过样式的 HTML。 以下 HTML 代码段演示了如何使用 `data-preload` 标记。
+- 使用 [页面布局版本](page-layout.md) 1.2.0 和更高版本，你可以 `data-preload="true"` 在 HTML 标记中添加属性，以控制 CSS 和 JavaScript 的加载顺序。 对于 `data-preload="true"` ，在向用户显示该页之前，对页进行构造。 此属性可通过预加载 CSS 文件来防止页面 "闪烁"，而不会向用户显示未经过样式的 HTML。 以下 HTML 代码段演示了如何使用 `data-preload` 标记。
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```
@@ -379,7 +379,7 @@ git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```
 
-    目标
+    功能
     ```html
     <link href="https://your-storage-account.blob.core.windows.net/your-container/css/assets.css" rel="stylesheet" type="text/css" />
     ```

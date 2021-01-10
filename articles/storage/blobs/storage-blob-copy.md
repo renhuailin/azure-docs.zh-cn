@@ -4,17 +4,17 @@ description: 了解如何使用 Azure 存储客户端库复制 blob。
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/10/2020
+ms.date: 01/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 2c474ed4d4158356075f861c3c0d5ace69173255
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28b23555f97e58dde038c5e3e12a4b741b81776d
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014644"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059035"
 ---
 # <a name="copy-a-blob-with-azure-storage-client-libraries"></a>使用 Azure 存储客户端库复制 blob
 

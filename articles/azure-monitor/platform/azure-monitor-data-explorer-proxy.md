@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Monitor 跨资源查询 Azure 数据资源管理器
 description: 使用 Azure Monitor 在 Azure Monitor 中的 Azure 数据资源管理器、Log Analytics 工作区和经典 Application Insights 应用程序之间执行跨产品查询。
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: cb586d15e762f88620fe0c91152af41b3f607d74
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674423"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060446"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>使用 Azure Monitor 跨资源查询 Azure 数据资源管理器
 Azure Monitor 支持 Azure 数据资源管理器、 [Application Insights](/azure/azure-monitor/app/app-insights-overview)和 [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)之间的跨服务查询。 然后，你可以使用 Log Analytics/Application Insights 工具查询 Azure 数据资源管理器群集，并在跨服务查询中引用它。 本文介绍如何进行跨服务查询。
@@ -22,7 +22,7 @@ Azure Monitor 支持 Azure 数据资源管理器、 [Application Insights](/azur
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="显示用户、Azure Monitor、代理和 Azure 数据资源管理器之间的查询流的关系图。":::
 
 >[!NOTE]
-> Azure Monitor 在个人预览版中进行跨服务查询。 Allowlisting 是必需的。 如有任何疑问，请联系 [服务团队](mailto:ADXProxy@microsoft.com) 。
+> Azure Monitor 的跨服务查询是公共预览。 如有任何疑问，请联系 [服务团队](mailto:ADXProxy@microsoft.com) 。
 
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>跨查询 Log Analytics 或 Application Insights 资源和 Azure 数据资源管理器
 
