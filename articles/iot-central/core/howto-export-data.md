@@ -7,25 +7,22 @@ ms.author: viviali
 ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: b84f1efd77ca757fd2ceaa8bb5605e3fc78297d0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q1, contperf-fy21q3
+ms.openlocfilehash: 3079b8384a24642322d6f6eb86e2ca7f0927db15
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032365"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065382"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用数据导出将 IoT 数据导出到云目标
 
 > [!Note]
-> 本文介绍 IoT Central 中的数据导出功能。
->
-> - 有关旧数据导出功能的信息，请参阅 [使用数据导出将 IoT 数据导出到云目标 (旧) ](./howto-export-data-legacy.md)。
-> - 若要了解数据导出功能和旧数据导出功能之间的差异，请参阅下表中的 [比较表](#comparison-of-legacy-data-export-and-data-export) 。
+> 本文介绍 IoT Central 中的数据导出功能。 有关旧数据导出功能的信息，请参阅 [使用数据导出将 IoT 数据导出到云目标 (旧) ](./howto-export-data-legacy.md)。
 
 本文介绍如何使用 Azure 中的新数据导出功能 IoT Central。 使用此功能可以从您的 IoT Central 应用程序持续导出已筛选和增加的 IoT 数据。 数据导出会将接近实时的更改推送到云解决方案的其他部分，以获取热路径见解、分析和存储。
 
-例如，你能够：
+例如，可以：
 
 - 以近乎实时的顺序连续导出 JSON 格式的遥测数据和属性更改。
 - 筛选数据流以导出与自定义条件匹配的数据。
@@ -161,7 +158,7 @@ ms.locfileid: "97032365"
     - 对于 Webhook，请粘贴 webhook 终结点的回调 URL。 你可以选择配置 webhook 授权 (OAuth 2.0 和授权令牌) 并添加自定义标头。 
         - 对于 OAuth 2.0，仅支持客户端凭据流。 保存目标后，IoT Central 将与 OAuth 提供程序进行通信以检索授权令牌。 对于发送到此目标的每个消息，此标记将附加到 "Authorization" 标头。
         - 对于 "授权令牌"，可以为发送到此目标的每个消息指定将直接附加到 "Authorization" 标头的令牌值。
-    - 选择“创建”  。
+    - 选择“创建” 。
 
 1. 选择 " **+ 目标** "，然后从下拉列表中选择一个目标。 最多可以向单个导出添加5个目标。
 
@@ -279,7 +276,7 @@ ms.locfileid: "97032365"
 | 功能  | 旧数据导出 | 新数据导出 |
 | :------------- | :---------- | :----------- |
 | 可用数据类型 | 遥测、设备、设备模板 | 遥测，属性更改 |
-| Filtering | 无 | 取决于导出的数据类型。 对于遥测，按遥测、消息属性和属性值进行筛选 |
+| 筛选 | 无 | 取决于导出的数据类型。 对于遥测，按遥测、消息属性和属性值进行筛选 |
 | 根据 | 无 | 使用自定义字符串或设备上的属性值丰富 |
 | 目标 | Azure 事件中心、Azure 服务总线队列和主题、Azure Blob 存储 | 与旧数据导出和 webhook 相同|
 | 支持的应用程序版本 | V2、V3 | 仅 V3 |

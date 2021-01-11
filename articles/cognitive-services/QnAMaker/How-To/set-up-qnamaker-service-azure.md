@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 83917214705546b21553e997ccab11a7511f77fd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5af4eb931015e386e35470f2b36341e15f76150f
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353300"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065399"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -122,18 +122,24 @@ QnAMaker 运行时是在 Azure 门户中 [创建 QnAMaker 服务](./set-up-qnama
     > [!div class="mx-imgBorder"]
     > ![在 "配置" 窗格上，选择 "常规设置"，然后查找 * * Always on * *，然后选择 * * On * * 作为值。](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
 
-1. 选择“保存”以保存配置。
-1. 系统会询问你是否要重新启动应用程序以使用新设置。 选择“继续”。 
+1. 选择“保存”  以保存配置。
+1. 系统会询问你是否要重新启动应用程序以使用新设置。 选择“继续”。
 
 详细了解如何配置应用服务 [常规设置](../../../app-service/configure-common.md#configure-general-settings)。
 
 ### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>配置应用服务环境以承载 QnA Maker 应用服务
-应用服务环境可用于承载 QnA Maker 应用服务。 如果应用服务环境是内部的，则需要执行以下步骤：
-1. 创建应用服务和 Azure 搜索服务。
-2. 公开应用服务并允许 QnA Maker 可用性，如下所示：
-    * 公开可用-默认
-    * DNS 服务标记： `CognitiveServicesManagement`
-3. 使用 Azure 资源管理器 (Cognitiveservices account/accounts) 创建 QnA Maker 认知服务实例，其中 QnA Maker 终结点应设置为应用服务环境。
+应用服务环境 (ASE) 可用于托管 QnA Maker 应用服务。 请执行以下步骤：
+
+1. 创建应用服务环境并将其标记为 "外部"。 请按照 [本教程](https://docs.microsoft.com/azure/app-service/environment/create-external-ase) 中的说明进行操作。
+2.  在应用服务环境中创建应用服务。
+    * 检查应用服务的配置，并将 "PrimaryEndpointKey" 添加为应用程序设置。 "PrimaryEndpointKey" 的值应设置为 " \<app-name\> -PrimaryEndpointKey"。 应用程序名称在应用服务 URL 中定义。 例如，如果应用服务 URL 为 "mywebsite.myase.p.azurewebsite.net"，则应用名称为 "mywebsite"。 在这种情况下，应将 "PrimaryEndpointKey" 的值设置为 "mywebsite-PrimaryEndpointKey"。
+    * 创建 Azure 搜索服务。
+    * 确保已正确配置 Azure 搜索和应用设置。 
+      请按照本 [教程](https://docs.microsoft.com/azure/cognitiveservices/qnamaker/reference-app-service#app-service)操作。
+3.  更新与应用服务环境关联的网络安全组
+    * 按照您的要求更新预先创建的入站安全规则。
+    * 添加一个新的入站安全规则，将源作为 "服务标记"，将源服务标记添加为 "CognitiveServicesManagement"。
+4.  使用 Azure 资源管理器 (Cognitiveservices account/accounts) 创建 QnA Maker 认知服务实例，其中 QnA Maker 终结点应设置为上面 (https://mywebsite.myase.p.azurewebsite.net) 创建的应用服务终结点。
 
 ### <a name="network-isolation-for-app-service"></a>应用服务的网络隔离
 
@@ -254,15 +260,15 @@ QnA Maker 认知服务使用服务标记： `CognitiveServicesManagement` 。 �
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
-如果计划有很多知识库，请升级 Azure 认知搜索服务定价层。
+如果计划拥有许多知识库，请升级 Azure 认知搜索服务定价层。
 
-目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 为此，请执行以下步骤：
+目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 为此，请按照下列步骤进行操作：
 
 1. 在 Azure 门户中创建新的 Azure 搜索资源，并选择所需的 SKU。
 
     ![QnA Maker Azure 搜索资源](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-1. 将索引从原始 Azure 搜索资源还原到新资源。 请参阅 [备份还原示例代码](https://github.com/pchoudhari/QnAMakerBackupRestore)。
+1. 将索引从原始 Azure 搜索资源还原到新资源。 请参阅[备份还原示例代码](https://github.com/pchoudhari/QnAMakerBackupRestore)。
 
 1. 还原数据后，请切换到新的 Azure 搜索资源，选择 " **密钥**"，并记下 **名称** 和 **管理密钥**：
 
@@ -272,11 +278,11 @@ QnA Maker 认知服务使用服务标记： `CognitiveServicesManagement` 。 �
 
     ![QnA Maker 应用服务实例](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
-1. 选择 " **应用程序设置** "，并修改步骤3中 " **AzureSearchName** " 和 " **AzureSearchAdminKey** " 字段中的设置。
+1. 选择“应用程序设置”并修改步骤 3 中“AzureSearchName”和“AzureSearchAdminKey”字段的设置  。
 
     ![QnA Maker 应用服务设置](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
 
-1. 重新启动应用服务实例。
+1. 重启应用服务实例。
 
     ![QnA Maker 应用服务实例的重新启动](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
@@ -343,15 +349,15 @@ QnA Maker 的 **应用服务** 资源使用认知搜索资源。 若要更改 Qn
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
-如果计划有很多知识库，请升级 Azure 认知搜索服务定价层。
+如果计划拥有许多知识库，请升级 Azure 认知搜索服务定价层。
 
-目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 为此，请执行以下步骤：
+目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 为此，请按照下列步骤进行操作：
 
 1. 在 Azure 门户中创建新的 Azure 搜索资源，并选择所需的 SKU。
 
     ![QnA Maker Azure 搜索资源](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-1. 将索引从原始 Azure 搜索资源还原到新资源。 请参阅 [备份还原示例代码](https://github.com/pchoudhari/QnAMakerBackupRestore)。
+1. 将索引从原始 Azure 搜索资源还原到新资源。 请参阅[备份还原示例代码](https://github.com/pchoudhari/QnAMakerBackupRestore)。
 
 1. 若要将新的 Azure 搜索资源链接到 QnA Maker 管理的 (预览版) 服务，请参阅以下主题。
 

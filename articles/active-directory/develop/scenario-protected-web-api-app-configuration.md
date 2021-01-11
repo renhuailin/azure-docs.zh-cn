@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 12eba5a0de85f97dba9c220ed71679bdd35d7482
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: f1277972480f504d9d2df67930d9385cbe8c06b4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963326"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063189"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 Web API：代码配置
 
@@ -40,7 +40,7 @@ ms.locfileid: "97963326"
 
 调用应用时在标头中设置的持有者令牌包含有关应用标识的信息。 除非 Web 应用接受来自守护程序应用的服务到服务调用，否则该令牌还包含有关用户的信息。
 
-以下 C# 代码示例演示了某个客户端在使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 获取令牌后调用 API：
+下面是一个 c # 代码示例，该示例演示了在使用 Microsoft (MSAL.NET) 的 Microsoft 身份验证库获取令牌后调用 API 的客户端：
 
 ```csharp
 var scopes = new[] {$"api://.../access_as_user"};

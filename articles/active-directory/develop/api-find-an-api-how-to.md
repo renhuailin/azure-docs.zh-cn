@@ -10,12 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.openlocfilehash: 8c3d79211ce594ec4c175aa6f6b5f8df3a7c4ba8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4a108f8f5c5b333a9fc7e6eabbfa516b6578ca76
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115537"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063818"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>如何为自定义开发的应用程序查找所需的特定 API
 
@@ -27,7 +28,7 @@ ms.locfileid: "88115537"
 
 ## <a name="configuring-a-client-application-to-access-web-apis"></a>将客户端应用程序配置为访问 Web API
 
-在将权限添加到应用注册时，可**添加 API 访问**到已公开的 Web API。 若要访问 Web API，请按照[配置客户端应用程序以访问 Web API](quickstart-configure-app-access-web-apis.md) 中列出的步骤进行操作。
+在将权限添加到应用注册时，可 **添加 API 访问** 到已公开的 Web API。 若要访问 Web API，请按照[配置客户端应用程序以访问 Web API](quickstart-configure-app-access-web-apis.md) 中列出的步骤进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 07/10/2020
+ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 4b2769139e74289c4760b5c398c80380afea351f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 90c827774f38f07b9791a6399a53b0304bbe28c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921885"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695220"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教程：使用 Azure 机器学习中的自动化 ML 创建分类模型
 
@@ -102,9 +102,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
         列标题| 指示如何处理数据集的标头（如果有）。| 所有文件都具有相同的标题
         跳过行 | 指示要跳过数据集中的多少行（如果有）。| 无
 
-    1. 通过“架构”窗体，可以进一步为此试验配置数据。 对于本示例，为 day_of_week 特征选择切换开关，以便在此试验中不包含在内。 选择“**下一页**”。
-
-        ![“预览”选项卡中的配置](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
+    1. 通过“架构”窗体，可以进一步为此试验配置数据。 对于本示例，我们不做任何选择。 选择“**下一页**”。
 
     1. 在“确认详细信息”窗体上，确认信息与先前在“基本信息”、“数据存储和文件选择”和“设置和预览”窗体上填充的内容匹配。  
     
@@ -112,32 +110,44 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
     
     1. 当数据集出现在列表中时，则选择它。
     
-    1. 查看“数据预览”，以确保未包括“day_of_week”，然后选择“确定”。
+    1. 查看“数据预览”，以确保未包括“day_of_week”，然后选择“关闭”  。
 
     1. 选择“下一步”。
 
-## <a name="configure-experiment-run"></a>配置试验运行
+## <a name="configure-run"></a>配置运行
 
 加载并配置数据后，可以设置试验。 此设置包括试验设计任务，如选择计算环境大小以及指定要预测的列。 
+
+1. 选择“新建”单选按钮。
 
 1. 按如下所示填充“配置运行”窗体：
     1. 输入以下试验名称：`my-1st-automl-experiment`
 
     1. 选择“y”作为用于执行预测的目标列。 此列指示客户是否认购了定期存款产品。
     
-    1. 选择“创建新计算”并配置计算目标。 计算目标是本地的或基于云的资源环境，用于运行训练脚本或托管服务部署。 对于此试验，我们使用基于云的计算。 
+    1. 选择“+创建新计算”并配置计算目标。 计算目标是本地的或基于云的资源环境，用于运行训练脚本或托管服务部署。 对于此试验，我们使用基于云的计算。 
+        1. 填充“虚拟机”窗体以设置计算。
 
-        字段 | 说明 | 教程的值
-        ----|---|---
-        计算名称 |用于标识计算上下文的唯一名称。|automl-compute
-        虚拟机类型&nbsp;&nbsp;| 选择计算的虚拟机大小。|CPU（中央处理单元）
-        虚拟机大小&nbsp;&nbsp;| 指定计算资源的虚拟机大小。|Standard_DS12_V2
-        最小/最大节点数| 若要分析数据，必须指定一个或多个节点。|最小节点数：1<br>最大节点数：6
-        缩减前的空闲秒数 | 群集自动缩减到最小节点数之前的空闲时间。|120（默认值）
-        高级设置 | 用于为试验配置虚拟网络并对其进行授权的设置。| 无
-        1. 选择“创建”，获取计算目标。 
+            字段 | 说明 | 教程的值
+            ----|---|---
+            虚拟机优先级 |选择试验应具有的优先级| 专用
+            虚拟机类型&nbsp;&nbsp;| 选择计算的虚拟机大小。|CPU（中央处理单元）
+            虚拟机大小&nbsp;&nbsp;| 指定计算资源的虚拟机大小。 根据数据和试验类型提供了建议的大小列表。 |Standard_DS12_V2
+        
+        1. 选择“下一步”以填充“配置设置窗体” 。
+        
+            字段 | 说明 | 教程的值
+            ----|---|---
+            计算名称 |  用于标识计算上下文的唯一名称。 | automl-compute
+            最小/最大节点数| 若要分析数据，必须指定一个或多个节点。|最小节点数：1<br>最大节点数：6
+            缩减前的空闲秒数 | 群集自动缩减到最小节点数之前的空闲时间。|120（默认值）
+            高级设置 | 用于为试验配置虚拟网络并对其进行授权的设置。| 无               
+
+        1. 选择“创建”，创建计算目标。 
 
             **完成此操作需要数分钟的时间。** 
+
+             ![“设置”页](./media/tutorial-first-experiment-automated-ml/compute-settings.png)
 
         1. 创建后，从下拉列表中选择新的计算目标。
 
@@ -159,14 +169,18 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
         并发| 每次迭代执行的并行迭代的最大数目| 最大并发迭代次数：&nbsp;&nbsp;5
         
         选择“保存”。
+    
+    1. 选择“查看特征化设置”。 对于本示例，为 day_of_week 功能选择切换开关，以便在本试验中不包含此特征化。
 
-1. 选择“完成”以运行试验。 当试验准备开始时，将打开“运行详细信息”屏幕并且会在顶部显示“运行状态”。
+        ![特征化选择](./media/tutorial-first-experiment-automated-ml/featurization-setting-config.gif)   
+ 
+        选择“保存”。
+
+1. 选择“完成”以运行试验。 当试验准备开始时，将打开“运行详细信息”屏幕并且会在顶部显示“运行状态”。 此状态随着试验的进行而更新。 通知也会显示在工作室的右上角，以告知你试验的状态。
 
 >[!IMPORTANT]
 > 准备试验运行时，准备需要 **10-15 分钟**。
-> 运行以后，**每个迭代还需要 2-3 分钟**。  
-> 定期选择“刷新”，以查看实验过程中运行的状态。
->
+> 运行以后，**每个迭代还需要 2-3 分钟**。  <br> <br>
 > 在生产环境中，你可能会走开一段时间。 但在本教程中，建议你开始浏览“模型”选项卡上的已测试算法，因为当其他模型仍在运行的时候，这些模型已经完成。 
 
 ##  <a name="explore-models"></a>浏览模型
@@ -238,7 +252,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 在本自动化机器学习教程中，你已使用 Azure 机器学习的自动化 ML 界面创建并部署了一个分类模型。 有关详细信息和后续步骤，请参阅以下文章：
 
 > [!div class="nextstepaction"]
-> [使用 Web 服务](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [使用 Web 服务](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
 
 + 详细了解[自动化机器学习](concept-automated-ml.md)。
 + 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md)一文。

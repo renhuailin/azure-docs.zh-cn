@@ -1,7 +1,7 @@
 ---
 title: 将中介与 Xamarin、iOS 和 Android 配合使用 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何设置可使用 Microsoft Authenticator 以及适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 的 Xamarin iOS 应用程序。 此外，了解如何从适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 迁移到适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET)。
+description: 了解如何设置可使用 Microsoft Authenticator 的 Xamarin iOS 应用程序和适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 。 还了解如何从适用于 .NET () ADAL.NET 的 Azure AD 身份验证库迁移到用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 。
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 10fb55cc133d5d6b39ca2809474ff20dfe500708
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 73fbda9a3356e2877617391430a7f2b555b1a0e5
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017793"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063478"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 应用程序中使用 Microsoft Authenticator 或 Intune 公司门户
 
@@ -183,7 +183,7 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 **若要生成重定向 URI，请执行以下操作：**
 
-1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 选择“Azure Active Directory” > “应用注册”> 你的已注册应用
 1. 选择  “身份验证” > “添加平台” > “iOS/macOS”
 1. 输入你的捆绑 ID，然后选择“配置”。

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 9d2fba48762e11a92f6f3925c969b01aebbe3630
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347585"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065314"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -222,7 +222,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |serverRouted| 应用程序网关将请求路由到的后端服务器。|
 |serverStatus| 后端服务器的 HTTP 状态代码。|
 |serverResponseLatency| 后端服务器的响应延迟。|
-|host| 请求的主机标头中列出的地址。 如果重写，此字段将包含更新的主机名|
+|host| 请求的主机标头中列出的地址。 如果使用标头重写重写，则此字段包含更新的主机名|
 |originalRequestUriWithArgs| 此字段包含原始请求 URL |
 |requestUri| 在应用程序网关上执行重写操作后，此字段将包含 URL |
 |originalHost| 此字段包含原始请求主机名

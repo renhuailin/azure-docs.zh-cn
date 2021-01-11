@@ -1,7 +1,7 @@
 ---
 title: 将 MSAL.js 与 Azure AD B2C 配合使用
 titleSuffix: Microsoft identity platform
-description: 借助适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js)，应用程序可以使用 Azure AD B2C 并获取用于调用受保护 Web API 的令牌。 这些 Web API 可以是 Microsoft Graph、其他 Microsoft API、其他来源的 Web API 或你自己的 Web API。
+description: '适用于 JavaScript 的 Microsoft 身份验证库 ( # A0) 使应用程序能够与 Azure AD B2C 和获取令牌，以调用受保护的 web Api。 这些 Web API 可以是 Microsoft Graph、其他 Microsoft API、其他来源的 Web API 或你自己的 Web API。'
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 53294a30b38bed7ab7516443277cac24e4fef4c1
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107866"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063716"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>通过适用于 JavaScript 的 Microsoft 身份验证库来使用 Azure AD B2C
+# <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>使用适用于 JavaScript 的 Microsoft 身份验证库来处理 Azure AD B2C
 
-借助[适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js)，JavaScript 应用程序开发人员可以使用 [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) 通过社交和本地标识对用户进行身份验证。
+[适用于 javascript 的 Microsoft 身份验证库 ( # A0) ](https://github.com/AzureAD/microsoft-authentication-library-for-js)使 JavaScript 开发人员能够使用[Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C) 来对具有社交和本地标识的用户进行身份验证。
 
 使用作为标识管理服务的 Azure AD B2C，可以自定义和控制客户的注册和登录方式，并在他们使用你的应用程序时管理其配置文件。 使用 Azure AD B2C，还可以为应用程序在身份验证过程中显示的 UI 提供品牌标志并进行自定义。
 

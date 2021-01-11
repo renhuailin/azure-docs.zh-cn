@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 391febcf8852147aedf5ef61d2442b2f50b4c9ae
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 2c03e6940d392e3e2c03bf6508de41a7a19aef3b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014733"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063767"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>将 JavaScript 单页应用从隐式授权迁移到授权代码流
 
-适用于 JavaScript (MSAL.js) v2.0 的 Microsoft 身份验证库为 Microsoft 标识平台上的单页面应用程序提供了对具有 PKCE 和 CORS 的授权代码流的支持。 按照以下部分中的步骤，将使用隐式授权的 MSAL.js 1.x 迁移到 MSAL.js 2.0+（以下称为 2.x）和授权代码流。
+适用于 JavaScript 的 Microsoft 身份验证库 ( # A0) v2.0 为 Microsoft 标识平台上的单页面应用程序提供了 PKCE 和 CORS 的授权代码流支持。 按照以下部分中的步骤，将使用隐式授权的 MSAL.js 1.x 迁移到 MSAL.js 2.0+（以下称为 2.x）和授权代码流。
 
 MSAL.js 2.x 支持浏览器中的授权代码流（而不是隐式授权流），从而在 MSAL.js 1.x 的基础上进行了改进。 MSAL.js 2.x 不支持隐式流。
 

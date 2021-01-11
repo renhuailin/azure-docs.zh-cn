@@ -1,7 +1,7 @@
 ---
 title: Xamarin Android 代码配置和故障排除 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的注意事项。
+description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用的注意事项。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 08/28/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 320d48535c4792a4d610888c6a7030568ccf16bc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34f2b146dda6e739f977c4894b5ec333c79d74d4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995176"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063427"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Xamarin Android 与 MSAL.NET 配合使用时的配置要求和故障排除提示
 
-在将 Xamarin Android 与用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时，需要在代码中完成一些配置更改。 以下部分介绍了所要求的修改，之后的[故障排除](#troubleshooting)部分用于帮助避免一些最常见的问题。
+使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 时，需要在代码中进行几项配置更改。 以下部分介绍了所要求的修改，之后的[故障排除](#troubleshooting)部分用于帮助避免一些最常见的问题。
 
 ## <a name="set-the-parent-activity"></a>设置父活动
 

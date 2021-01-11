@@ -1,7 +1,7 @@
 ---
 title: 在全国云应用中使用 MSAL |Microsoft
 titleSuffix: Microsoft identity platform
-description: 借助 Microsoft 身份验证库 (MSAL)，应用程序开发人员可以获取令牌，以调用受保护的 Web API。 这些 web Api 可以是 Microsoft Graph、其他 Microsoft Api、合作伙伴 web Api 或你自己的 web API。 MSAL 支持多个应用程序体系结构和平台。
+description: Microsoft 身份验证库 (MSAL) 使应用程序开发人员能够获取令牌，以便调用受保护的 web Api。 这些 web Api 可以是 Microsoft Graph、其他 Microsoft Api、合作伙伴 web Api 或你自己的 web API。 MSAL 支持多个应用程序体系结构和平台。
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2f631ad650b20110084ff902043447f26c2d4ab3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 22b3ea9eb0e4c3379438b6c3fb58ccfb13b4ed32
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453605"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064787"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在国家/地区云环境中使用 MSAL
 
@@ -79,7 +79,7 @@ ms.locfileid: "96453605"
 1. “注册应用程序”页显示后，请输入应用程序的名称。
 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。 
 1. 在 " **重定向 URI** " 部分中，选择 **web** 平台，并基于你的 Web 服务器将值设置为应用程序的 URL。 有关如何在 Visual Studio 和节点中设置和获取重定向 URL 的说明，请参阅后续部分。
-1. 选择“注册”  。
+1. 选择“注册”。
 1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值。
 1. 本教程要求你启用 [隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”。
 1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框   。 ID 令牌和访问令牌是必需的，因为此应用需要登录用户并调用 API。
@@ -89,7 +89,7 @@ ms.locfileid: "96453605"
 
 - 下载本地 web 服务器（如 Node）的[项目文件](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)。
 
-  or
+  或
 
 - [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)。
 

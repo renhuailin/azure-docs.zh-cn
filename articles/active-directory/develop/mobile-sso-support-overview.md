@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9c53ea5bad88eb79940274c409218045c06d7981
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173458"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064962"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>支持你开发的移动应用中的单一登录和应用保护策略
 
@@ -36,7 +36,7 @@ ms.locfileid: "96173458"
 
 建议使用以下项来使应用程序能够利用单一登录。
 
-### <a name="use-microsoft-authentication-library-msal"></a>使用 Microsoft 身份验证库 (MSAL) 
+### <a name="use-the-microsoft-authentication-library-msal"></a>使用 Microsoft 身份验证库 (MSAL)
 
 在应用程序中实现单一登录的最佳选择是使用 [Microsoft 身份验证库 (MSAL) ](msal-overview.md)。 通过使用 MSAL，你可以通过最少的代码和 API 调用向应用添加身份验证，获取 [Microsoft 标识平台](./index.yml)的全部功能，并让 Microsoft 处理安全身份验证解决方案的维护。 默认情况下，MSAL 会为应用程序添加 SSO 支持。 此外，如果还计划实施应用保护策略，则需要使用 MSAL。
 

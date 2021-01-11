@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 853ab82ab40cc7ebee1c74feaf6aad87adf39ece
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f60e21f98092df65ef01e68fe9c2e64833a24855
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443103"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063206"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>方案：用于调用 Web API 的移动应用程序
 
@@ -34,16 +34,16 @@ ms.locfileid: "94443103"
 
 ## <a name="overview"></a>概述
 
-个性化无缝用户体验对于移动应用很重要。  移动开发人员可以通过 Microsoft 标识平台为 iOS 和 Android 用户创建该体验。 应用程序可以 Azure Active Directory (Azure AD) 用户、个人 Microsoft 帐户用户和 Azure AD B2C 用户进行登录。 它还可以获取令牌，代表这些用户来调用 Web API。 为了实现这些流，我们将使用 Microsoft 身份验证库 (MSAL)。 MSAL 用于实现行业标准 [OAuth2.0 授权代码流](v2-oauth2-auth-code-flow.md)。
+个性化无缝用户体验对于移动应用很重要。  移动开发人员可以通过 Microsoft 标识平台为 iOS 和 Android 用户创建该体验。 应用程序可以 Azure Active Directory (Azure AD) 用户、个人 Microsoft 帐户用户和 Azure AD B2C 用户进行登录。 它还可以获取令牌，代表这些用户来调用 Web API。 为了实现这些流程，我们将使用 Microsoft 身份验证库 (MSAL) 。 MSAL 用于实现行业标准 [OAuth2.0 授权代码流](v2-oauth2-auth-code-flow.md)。
 
 ![守护程序应用](./media/scenarios/mobile-app.svg)
 
 移动应用的注意事项：
 
-- **关键在于用户体验** ：在要求用户登录之前，让用户了解应用的价值。 只请求所需的权限。
-- **支持所有用户配置** ：许多移动业务用户必须遵循条件访问策略和设备合规性策略。 请务必支持这些关键方案。
+- **关键在于用户体验**：在要求用户登录之前，让用户了解应用的价值。 只请求所需的权限。
+- **支持所有用户配置**：许多移动业务用户必须遵循条件访问策略和设备合规性策略。 请务必支持这些关键方案。
 - **实现单一登录 (SSO)** ：使用 MSAL 和 Microsoft 标识平台即可通过设备的浏览器或 Microsoft Authenticator（以及 Android 上的 Intune 公司门户）进行单一登录。
-- **实现共享设备模式** ：使应用程序可以在共享设备场景（例如医院、制造、零售和金融）中使用。 [阅读有关支持共享设备模式的详细信息](msal-shared-devices.md)。
+- **实现共享设备模式**：使应用程序可以在共享设备场景（例如医院、制造、零售和金融）中使用。 [阅读有关支持共享设备模式的详细信息](msal-shared-devices.md)。
 
 ## <a name="specifics"></a>详情
 
@@ -59,4 +59,4 @@ ms.locfileid: "94443103"
 
 ## <a name="next-steps"></a>后续步骤
 
-转到本方案中的下一篇文章 " [应用注册](scenario-mobile-app-registration.md)"。
+转到此方案中的下一篇文章，[应用注册](scenario-mobile-app-registration.md)。

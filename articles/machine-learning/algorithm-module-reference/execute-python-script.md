@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 12/02/2020
-ms.openlocfilehash: d1e4ffa525c5628d0b6c9a3ca67f3e069c44e823
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.date: 01/02/2021
+ms.openlocfilehash: 7b5bc77375d684340116a21b7f95cf576d99dad2
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679193"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065348"
 ---
 # <a name="execute-python-script-module"></a>“执行 Python 脚本”模块
 
@@ -60,7 +60,7 @@ if spec is None:
 > [!WARNING]
 > “执行 Python 脚本”模块不支持使用“apt-get”之类的命令安装依赖于其他本机库的包，例如 Java、PyODBC 等。这是因为，此模块是在仅预安装了 Python 并且具有非管理员权限的简单环境中执行的。  
 
-## <a name="access-to-registered-datasets"></a>访问已注册的数据集
+## <a name="access-to-current-workspace-and-registered-datasets"></a>访问当前工作区和已注册的数据集
 
 可以参考以下示例代码，访问工作区中 [已注册的数据集](../how-to-create-register-datasets.md) ：
 
@@ -71,8 +71,10 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     print(f'Input pandas.DataFrame #1: {dataframe1}')
     from azureml.core import Run
     run = Run.get_context(allow_offline=True)
+    #access to current workspace
     ws = run.experiment.workspace
 
+    #access to registered dataset of current workspace
     from azureml.core import Dataset
     dataset = Dataset.get_by_name(ws, name='test-register-tabular-in-designer')
     dataframe1 = dataset.to_pandas_dataframe()
@@ -219,7 +221,9 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 6. 提交管道。
 
-    所有数据和代码都将加载到虚拟机中，并使用指定的 Python 环境运行。
+    如果模块已完成，请检查输出（如果需要）。
+
+    如果该模块失败，则需要进行一些故障排除。 选择该模块，然后在右侧窗格中打开 " **输出 + 日志** "。 打开 **70_driver_log.txt** 并 **在 azureml_main 中** 搜索，然后可以找到导致错误的行。 例如，在 azureml_main "中第17行" File "/tmp/tmp01_ID/user_script. py" 表示错误发生在 python 脚本的17行中。
 
 ## <a name="results"></a>结果
 

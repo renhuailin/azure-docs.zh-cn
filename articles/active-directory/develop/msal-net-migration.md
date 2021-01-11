@@ -1,7 +1,7 @@
 ---
 title: 迁移到 MSAL.NET
 titleSuffix: Microsoft identity platform
-description: 了解适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 与适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 之间的差异，以及如何迁移到 MSAL.NET。
+description: 了解适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 和 .NET () ADAL.NET 的 Azure AD 身份验证库之间的差异，以及如何迁移到 MSAL.NET。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 21f29135cc3b94e5b8c2dfc99b0f7be26b37d123
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c6049bf55e379a2629e8cd4ef1427f91fc31d2cd
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995193"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063597"
 ---
 # <a name="migrating-applications-to-msalnet"></a>将应用程序迁移到 MSAL.NET
 
-适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 与适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 用于对 Azure AD 实体进行身份验证，以及从 Azure AD 请求令牌。 截止目前，大多数开发人员都是通过 Azure AD 身份验证库 (ADAL) 来请求令牌，使用面向开发人员的 Azure AD 平台 (v1.0) 来对 Azure AD 标识（工作和学校帐户）进行身份验证。 使用 MSAL：
+适用于 .net 的 Microsoft 身份验证库 (MSAL.NET) 和适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 用于对 Azure AD 的实体进行身份验证和请求令牌。 截止目前，大多数开发人员都是通过 Azure AD 身份验证库 (ADAL) 来请求令牌，使用面向开发人员的 Azure AD 平台 (v1.0) 来对 Azure AD 标识（工作和学校帐户）进行身份验证。 使用 MSAL：
 
 - 你可以通过 Azure AD B2C) 来验证更广泛的一组 Microsoft 标识 (Azure AD 标识和 Microsoft 帐户，以及社交和本地帐户，因为它使用 Microsoft 标识平台终结点，
 - 你的用户将获得最佳单一登录体验。

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 99246ecee27f7ded693e2a797f8e98480e350983
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 0143b014328dfd5c164f0c3c62aeef7cabe1a17c
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854523"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065416"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud 常见问题解答
 
@@ -37,7 +37,7 @@ Azure Spring Cloud 通过集成 Azure Monitor、Application Insights 和 Log Ana
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure 春季云在哪些区域可用？
 
-美国东部、美国东部2、美国中部、美国中南部、美国中北部、美国西部、美国西部2、西欧、北欧、英国南部、东南亚、澳大利亚东部、加拿大中部和阿拉伯联合酋长国北部。
+美国东部、美国东部2、美国中部、美国中南部、美国中北部、美国西部、美国西部2、西欧、北欧、英国南部、东南亚、澳大利亚东部、加拿大中部、阿拉伯联合酋长国北部、印度中部和东亚。 [了解详细信息](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>是否有客户数据存储在指定区域之外？
 
@@ -70,8 +70,8 @@ Azure Spring Cloud 有以下已知限制：
 
 Azure Spring Cloud 支持 Java 8 和 11。 请参阅 [Java 运行时和操作系统版本](#java-runtime-and-os-versions)
 
-### <a name="is-spring-boot-24x-supported"></a>是否支持春季 Boot 2.4. x？
-我们已识别到春季 Boot 2.4 的问题，当前正在与春季社区合作解决此问题。 同时，请包括这两个依赖关系，以便在应用和 Eureka 之间启用 TLS 身份验证。
+### <a name="is-spring-boot-24x-supported"></a>是否支持 Spring Boot 2.4.x？
+我们已确认 Spring Boot 2.4 出现问题，目前正与 Spring 社区合作解决该问题。 请提供在应用和 Eureka 之间启用 TLS 身份验证所需的这两个依赖项。
 
 ```xml
 <dependency> 
@@ -111,11 +111,11 @@ Azure Spring Cloud 支持将 Spring Cloud 应用程序日志和指标导出到 A
 
 是的。
 
-### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Azure 春季云实例有多少出站公共 IP 地址？
+### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Azure Spring Cloud 实例有多少出站公共 IP 地址？
 
-出站公共 IP 地址的数量可能因层和其他因素而异。 
+出站公共 IP 地址数可能因层级和其他因素而异。 
 
-| Azure 春季云实例类型 | 默认的出站公共 IP 地址数 |
+| Azure Spring Cloud 实例类型 | 默认的出站公共 IP 地址数 |
 | -------------------------------- | ---------------------------------------------- |
 | 基本层实例             | 1                                              |
 | 标准层实例          | 2                                              |
@@ -124,7 +124,7 @@ Azure Spring Cloud 支持将 Spring Cloud 应用程序日志和指标导出到 A
 
 ### <a name="can-i-increase-the-number-of-outbound-public-ip-addresses"></a>是否可以增加出站公共 IP 地址的数量？
 
-是的，你可以打开 [支持票证](https://azure.microsoft.com/support/faq/)  来请求更多出站公共 IP 地址。
+是，你可以提交[支持票证](https://azure.microsoft.com/support/faq/)以请求更多出站公共 IP 地址。
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>删除/移动 Azure Spring Cloud 服务实例时，是否也会删除/移动其扩展资源？
 

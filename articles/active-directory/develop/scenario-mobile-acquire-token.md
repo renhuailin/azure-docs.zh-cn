@@ -13,16 +13,16 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 85d1880479a514ffb002e4894066734690480457
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 946908bf28a50bc8b523c4efd853e8720b115c7b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443120"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063070"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>获取调用 Web API 的移动应用的令牌
 
-应用需要先获得访问令牌才能调用受保护的 Web API。 本文详述使用 Microsoft 身份验证库 (MSAL) 获取令牌的过程。
+应用需要先获得访问令牌才能调用受保护的 Web API。 本文指导你完成使用 Microsoft 身份验证库 (MSAL) 获取令牌的过程。
 
 ## <a name="define-a-scope"></a>定义范围
 
@@ -255,7 +255,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ##### <a name="other-optional-parameters"></a>其他可选参数
 
-若要了解 `AcquireTokenInteractive` 的其他可选参数，请参阅 [AcquireTokenInteractiveParameterBuilder 的参考文档](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)。
+若要了解 `AcquireTokenInteractive` 的其他可选参数，请参阅 [AcquireTokenInteractiveParameterBuilder 的参考文档](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder#methods)。
 
 ### <a name="acquire-tokens-via-the-protocol"></a>通过协议获取令牌
 
@@ -294,4 +294,4 @@ client_id=<CLIENT_ID>
 
 ## <a name="next-steps"></a>后续步骤
 
-在此方案中，请转到下一篇文章， [调用 WEB API](scenario-mobile-call-api.md)。
+转到此方案中的下一篇文章：[调用 Web API](scenario-mobile-call-api.md)。

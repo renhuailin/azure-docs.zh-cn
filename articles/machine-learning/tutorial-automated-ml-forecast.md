@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 07/10/2020
+ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 8b354abb98c56a572badf2421b0d7dbbd25f7a63
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 31e9ff3fd07a7d305c88d28629f3252db5d857c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921854"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695425"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教程：使用自动化机器学习预测需求
 
@@ -100,7 +100,7 @@ ms.locfileid: "96921854"
 
     1. 选择“下一步”。
 
-## <a name="configure-experiment-run"></a>配置试验运行
+## <a name="configure-run"></a>配置运行
 
 加载并配置数据后，请设置远程计算目标，并在数据中选择要预测的列。
 
@@ -111,14 +111,22 @@ ms.locfileid: "96921854"
 
     1. 选择“创建新计算”并配置计算目标。 自动 ML 仅支持 Azure 机器学习计算。 
 
-        字段 | 说明 | 教程的值
-        ----|---|---
-        计算名称 |用于标识计算上下文的唯一名称。|bike-compute
-        虚拟机类型&nbsp;&nbsp;|选择计算的虚拟机大小。|CPU（中央处理单元）
-        虚拟机大小&nbsp;&nbsp;| 指定计算资源的虚拟机大小。|Standard_DS12_V2
-        最小/最大节点数| 若要分析数据，必须指定一个或多个节点。|最小节点数：1<br>最大节点数：6
-        缩减前的空闲秒数 | 群集自动缩减到最小节点数之前的空闲时间。|120（默认值）
-        高级设置 | 用于为试验配置虚拟网络并对其进行授权的设置。| 无
+        1. 填充“虚拟机”窗体以设置计算。
+
+            字段 | 说明 | 教程的值
+            ----|---|---
+            虚拟机优先级 |选择试验应具有的优先级| 专用
+            虚拟机类型&nbsp;&nbsp;| 选择计算的虚拟机大小。|CPU（中央处理单元）
+            虚拟机大小&nbsp;&nbsp;| 指定计算资源的虚拟机大小。 根据数据和试验类型提供了建议的大小列表。 |Standard_DS12_V2
+        
+        1. 选择“下一步”以填充“配置设置窗体” 。
+        
+             字段 | 说明 | 教程的值
+            ----|---|---
+            计算名称 |  用于标识计算上下文的唯一名称。 | bike-compute
+            最小/最大节点数| 若要分析数据，必须指定一个或多个节点。|最小节点数：1<br>最大节点数：6
+            缩减前的空闲秒数 | 群集自动缩减到最小节点数之前的空闲时间。|120（默认值）
+            高级设置 | 用于为试验配置虚拟网络并对其进行授权的设置。| 无 
   
         1. 选择“创建”，获取计算目标。 
 
@@ -145,7 +153,7 @@ ms.locfileid: "96921854"
     主要指标| 对机器学习算法进行度量时依据的评估指标。|规范化均方根误差
     解释最佳模型| 自动显示有关自动化 ML 创建的最佳模型的可解释性。| 启用
     阻止的算法 | 要从训练作业中排除的算法| 极端随机树
-    其他预测设置| 这些设置有助于改善模型的准确度 <br><br> _**预测目标滞后**_：要将目标变量的滞后往后推多久 <br> _**目标滚动窗口**_：指定滚动窗口的大小（例如 *max, min* 和 *sum*），将基于此大小生成特征。 | <br><br>预测目标延隔：&nbsp;&nbsp;无 <br> 目标滚动窗口大小：&nbsp;&nbsp;&nbsp;无
+    其他预测设置| 这些设置有助于提高模型的准确度。 <br><br> _**预测目标滞后**_：要将目标变量的滞后往后推多久 <br> _**目标滚动窗口**_：指定滚动窗口的大小（例如 *max, min* 和 *sum*），将基于此大小生成特征。 | <br><br>预测目标延隔：&nbsp;&nbsp;无 <br> 目标滚动窗口大小：&nbsp;&nbsp;&nbsp;无
     退出条件| 如果符合某个条件，则会停止训练作业。 |训练作业时间（小时）：&nbsp;&nbsp;3 <br> 指标分数阈值：&nbsp;&nbsp;无
     验证 | 选择交叉验证类型和测试数。|验证类型：<br>k-折交叉验证&nbsp;&nbsp; <br> <br> 验证次数：5
     并发| 每次迭代执行的并行迭代的最大数目| 最大并发迭代次数：&nbsp;&nbsp;6
@@ -154,11 +162,11 @@ ms.locfileid: "96921854"
 
 ## <a name="run-experiment"></a>运行试验
 
-若要运行试验，请选择“完成”。 此时会打开“运行详细信息”屏幕，其顶部的运行编号旁边显示了“运行状态”。 此状态随着试验的进行而更新。
+若要运行试验，请选择“完成”。 此时会打开“运行详细信息”屏幕，其顶部的运行编号旁边显示了“运行状态”。 此状态随着试验的进行而更新。 通知也会显示在工作室的右上角，以告知你试验的状态。
 
 >[!IMPORTANT]
 > 准备试验运行时，准备需要 **10-15 分钟**。
-> 运行以后，**每个迭代还需要 2-3 分钟**。  <br> <br>
+> 运行以后，**每个迭代还需要 2-3 分钟**。<br> <br>
 > 在生产环境中，此过程需要一段时间，因此不妨干点其他的事。 在等待过程中，我们建议在“模型”选项卡上开始浏览已完成测试的算法。 
 
 ##  <a name="explore-models"></a>浏览模型
@@ -169,7 +177,7 @@ ms.locfileid: "96921854"
 
 以下示例将浏览“详细信息”和“指标”选项卡，以查看选定模型的属性、指标和性能图表。  
 
-![运行详细信息](./media/tutorial-automated-ml-forecast/explore-models-ui.gif)
+![运行详细信息](./media/tutorial-automated-ml-forecast/explore-models.gif)
 
 ## <a name="deploy-the-model"></a>部署模型
 
@@ -232,7 +240,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 请参阅以下文章中的步骤来创建 Power BI 支持的架构，以方便使用新部署的 Web 服务：
 
 > [!div class="nextstepaction"]
-> [使用 Web 服务](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [使用 Web 服务](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
 
 + 详细了解[自动化机器学习](concept-automated-ml.md)。
 + 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md)一文。

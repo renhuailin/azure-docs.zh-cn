@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: 846c5519dced06ed16f5a0d12b0bb25443961f93
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: b917e3fc93c59de85c5236c18e31d7bbc9d891f0
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753903"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065467"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>设计器的异常和错误代码
 
@@ -281,10 +281,10 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
  当列包含太多唯一值（如 ID 列或文本列）时，会出现此错误。 如果您指定将某列作为分类数据进行处理，但列中的唯一值太多以允许处理完成，则您可能会看到此错误。 如果两个输入中的唯一值数目不匹配，也可能会看到此错误。   
 
-如果同时满足以下 **两个** 条件，将会出现唯一值的错误：
+如果同时满足以下条件，将出现唯一值大于允许值的错误：
 
-- 一个列超过97% 的实例是唯一值，这意味着几乎所有类别都是不同的。
-- 一列具有超过1000个唯一值。
+- 一列中超过 97% 的实例是唯一值，这意味着几乎所有类别都互不相同。
+- 一列有超过 1000 个唯一值。
 
 **解决方法：**
 
@@ -1532,3 +1532,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |库异常。|
 |库异常: {exception}。|
 |未知库异常: {exception}。 {customer_support_guidance}。|
+
+
+## <a name="execute-python-script-module"></a>执行 Python 脚本模块
+
+在 "**执行 Python 脚本" 模块** **70_driver_logs** 中搜索 azureml_main，并找到 **"** 发生了行错误"。 例如，在 azureml_main "中第17行" File "/tmp/tmp01_ID/user_script. py" 表示错误发生在 python 脚本的17行中。

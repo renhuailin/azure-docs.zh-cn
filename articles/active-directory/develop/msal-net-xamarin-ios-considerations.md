@@ -1,7 +1,7 @@
 ---
 title: Xamarin iOS 注意事项 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: 了解将 Xamarin iOS 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的注意事项。
+description: 了解将 Xamarin iOS 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用的注意事项。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62eb4ab9eb6e4b0e7be0f7aadae1173950d21615
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258053"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064481"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>将 Xamarin iOS 与 MSAL.NET 配合使用时的注意事项
 
-在 Xamarin iOS 上使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 时，应该：
+在 Xamarin iOS 上使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 时，应执行以下操作：
 
 - 重写并实现 `AppDelegate` 中的 `OpenUrl` 函数。
 - 启用密钥链组。
@@ -81,7 +81,7 @@ var builder = PublicClientApplicationBuilder
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>启用 iOS 应用程序之间的令牌缓存共享
 
-从 MSAL 2.x 开始，可以指定一个密钥链访问组，用于在多个应用程序之间保留令牌缓存。 此设置可让你在使用相同密钥链访问组的多个应用程序之间共享令牌缓存。 可以在 [ADAL.NET](https://aka.ms/adal-net) 应用程序、MSAL.NET Xamarin ios 应用程序和 [objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) 或 [MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)开发的本机 iOS 应用程序之间共享令牌缓存。
+从 MSAL 2.x 开始，可以指定一个密钥链访问组，用于在多个应用程序之间保留令牌缓存。 此设置可让你在使用相同密钥链访问组的多个应用程序之间共享令牌缓存。 可以在使用 [ADAL.objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) 或 [MSAL.objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc) 开发的 [ADAL.NET](https://aka.ms/adal-net) 应用程序、MSAL.NET Xamarin.iOS 应用程序与本机 iOS 应用程序之间共享令牌缓存。
 
 通过共享令牌缓存，可以在使用相同密钥链访问组的所有应用程序之间实现单一登录 (SSO)。
 

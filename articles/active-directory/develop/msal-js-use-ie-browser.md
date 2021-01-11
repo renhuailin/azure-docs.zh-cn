@@ -13,16 +13,16 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 633166f3bb46212991920d6720737f8268b3f401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 428405fc200751d2581ad9ca6e8ec97382594c09
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87026848"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064838"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Internet Explorer 浏览器 (MSAL.js) 的已知问题
 
-适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 是为 [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) 生成的，因此可以在 Internet Explorer 中运行。 但是，需要注意几个问题。
+适用于 JavaScript 的 Microsoft 身份验证库 ( # A0) 为 [JAVASCRIPT ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) 生成，以便它可以在 Internet Explorer 中运行。 但是，需要注意几个问题。
 
 ## <a name="run-an-app-in-internet-explorer"></a>在 Internet Explorer 中运行应用
 若要在能够在 Internet Explorer 中运行的应用程序中使用 MSAL.js，需在引用 MSAL.js 脚本之前添加对承诺填充代码的引用。

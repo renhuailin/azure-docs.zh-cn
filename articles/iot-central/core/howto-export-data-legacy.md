@@ -7,19 +7,19 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 9e5f4fd14f56f0a2dff45dd2650ea552b07fecd7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d4c099d29a843b4c354ffb218887dc7ffab51771
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987348"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065433"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>使用数据导出 (旧) 将 IoT 数据导出到云目标
 
 > [!Note]
 > 本文介绍 IoT Central 中的旧数据导出功能。
 >
-> - 有关新的预览版数据导出功能的信息，请参阅 [使用数据导出将 IoT 数据导出到云目标](./howto-export-data.md)。
+> - 有关最新的数据导出功能的信息，请参阅 [使用数据导出将 IoT 数据导出到云目标](./howto-export-data.md)。
 > - 若要了解预览版数据导出功能和旧数据导出功能之间的差异，请参阅 [比较表](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export)。
 
 本文介绍如何使用 Azure 中的数据导出功能 IoT Central。 此功能可让你将数据连续导出到 **Azure 事件中心**、 **azure 服务总线** 或 **azure Blob 存储** 实例。 数据导出使用 JSON 格式，可以包括遥测、设备信息和设备模板信息。 使用导出的数据可以获取：
@@ -67,10 +67,10 @@ ms.locfileid: "94987348"
 
     |性能层|帐户类型|
     |-|-|
-    |Standard|常规用途 V2|
-    |Standard|常规用途 V1|
-    |Standard|Blob 存储|
-    |高级|块 Blob 存储|
+    |标准|常规用途 V2|
+    |标准|常规用途 V1|
+    |标准|Blob 存储|
+    |Premium|块 Blob 存储|
 
 2. 在存储帐户中创建容器。 转到存储帐户。 在“Blob 服务”下选择“浏览 Blob”。 选择顶部的“+ 容器”以创建新容器。
 

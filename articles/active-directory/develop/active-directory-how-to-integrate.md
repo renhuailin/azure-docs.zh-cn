@@ -1,5 +1,5 @@
 ---
-title: 如何与 Microsoft 标识平台集成 |Microsoft
+title: 如何与 Microsoft 标识平台集成 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解将应用程序与 Microsoft 标识平台集成的优点，并获取诸如简化登录、标识管理、多重身份验证和访问控制等功能的资源。
 services: active-directory
@@ -13,12 +13,13 @@ ms.date: 10/01/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: e9724bb2e5377f84904dc77c33375c39f3077dd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: deb923a52e5d6cd5384dbf94d2249572b25b1a61
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631403"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063835"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>与 Microsoft 标识平台集成
 
@@ -48,13 +49,13 @@ ms.locfileid: "91631403"
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>获取对用户配置文件、日历、电子邮件、联系人、文件等的访问权限
 
-**Microsoft 标识平台是用于 Microsoft 365 和其他 Microsoft 业务服务的授权服务器。**  如果支持使用 Microsoft 标识平台登录到应用程序，或者支持将当前用户帐户链接到使用 OAuth 2.0 的 Azure AD 用户帐户，则可以请求获得用户配置文件、日历、电子邮件、联系人、文件和其他信息的读写访问权限。 可以顺利地将事件写入用户日历，以及在其 OneDrive 中读取或写入文件。 详细了解 [Microsoft 365 api](/graph/overview)。
+**Microsoft 标识平台是 Microsoft 365 和其他 Microsoft 业务服务的授权服务器。**  如果支持使用 Microsoft 标识平台登录到应用程序，或者支持将当前用户帐户链接到使用 OAuth 2.0 的 Azure AD 用户帐户，则可以请求获得用户配置文件、日历、电子邮件、联系人、文件和其他信息的读写访问权限。 可以顺利地将事件写入用户日历，以及在其 OneDrive 中读取或写入文件。 详细了解 [Microsoft 365 API](/graph/overview)。
 
-### <a name="promote-your-application-in-the-azure-and-microsoft-365-marketplaces"></a>在 Azure 中升级应用程序并 Microsoft 365 市场
+### <a name="promote-your-application-in-the-azure-and-microsoft-365-marketplaces"></a>在 Azure 和 Microsoft 365 市场中推广你的应用程序
 
 **向数百万个已使用 Azure AD 的组织推广应用程序。**  搜索和浏览这些市场的用户已在使用一个或多个云服务，这让他们成为合格的云服务客户。 深入了解如何在 [Azure 市场](https://azure.microsoft.com/marketplace/partner-program/)中推广应用程序。
 
-**当用户注册应用程序时，它将显示在其 Azure AD 访问面板和 Microsoft 365 应用程序启动器中。**  之后，用户能够快速轻松地返回应用程序，可提高用户参与度。 深入了解 [Azure AD 访问面板](../user-help/my-apps-portal-end-user-access.md)。
+**用户注册应用程序后，该程序会在其 Azure AD 访问面板和 Microsoft 365 应用启动器中显示。**  之后，用户能够快速轻松地返回应用程序，可提高用户参与度。 深入了解 [Azure AD 访问面板](../user-help/my-apps-portal-end-user-access.md)。
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>保护设备与服务之间以及服务与服务之间的通信
 
@@ -82,7 +83,7 @@ ms.locfileid: "91631403"
 
 **行业标准协议。**  Microsoft 承诺支持行业标准。 Microsoft 标识平台支持行业标准协议 OAuth 2.0 和 OpenID Connect 1.0。 详细了解 [Microsoft 标识平台身份验证协议](active-directory-v2-protocols.md)。
 
-**开放源代码库。**  Microsoft 为主流语言和平台提供完全受支持的开放源代码库以加速开发。 这些源代码已获 Apache 2.0 的授权，可以在项目中任意衍生和改写。 详细了解 [Microsoft 身份验证库 (MSAL)](reference-v2-libraries.md)。
+**开放源代码库。**  Microsoft 为主流语言和平台提供完全受支持的开放源代码库以加速开发。 这些源代码已获 Apache 2.0 的授权，可以在项目中任意衍生和改写。 详细了解 [MICROSOFT MSAL)  (的 Microsoft 身份验证库 ](reference-v2-libraries.md)。
 
 ### <a name="worldwide-presence-and-high-availability"></a>全球存在和高可用性
 

@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8935cb3208aadc2822af1f57067877f9cedcb931
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120620"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064362"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问开发人员指南
 
@@ -43,7 +43,7 @@ ms.locfileid: "88120620"
 
 ### <a name="app-types-impacted"></a>受影响的应用类型
 
-通常，在多数情况下，条件访问不会更改应用的行为或要求开发人员进行任何更改。 只有在特定情况下（应用以间接方式或无提示的方式请求服务令牌时），应用才需要进行代码更改以处理条件访问“质询”。 此过程可能与执行交互式登录请求一样简单。
+通常，在多数情况下，条件访问不会更改应用的行为或要求开发人员进行任何更改。  只有在特定情况下（应用以间接方式或无提示的方式请求服务令牌时），应用才需要进行代码更改以处理条件访问“质询”。  此过程可能与执行交互式登录请求一样简单。
 
 具体来说，在以下应用场景下要求代码处理条件访问“质询”：
 
@@ -182,6 +182,6 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 * 若要详细了解这些功能，请参阅 [Azure Active Directory 中的条件访问](../conditional-access/overview.md)。
 * 有关更多的 Azure AD 代码示例，请参阅[示例](sample-v2-code.md)。
-* 有关 MSAL SDK 的详细信息以及如何访问参考文档，请参阅 [Microsoft 身份验证库概述](msal-overview.md)。
+* 有关 MSAL SDK 和访问参考文档的详细信息，请参阅 [Microsoft 身份验证库概述](msal-overview.md)。
 * 若要详细了解多租户应用场景，请参阅[如何使用多租户模式让用户进行登录](howto-convert-app-to-be-multi-tenant.md)。
 * 详细了解[条件访问以及如何保护对 IoT 应用的访问](/azure/architecture/example-scenario/iot-aad/iot-aad)。

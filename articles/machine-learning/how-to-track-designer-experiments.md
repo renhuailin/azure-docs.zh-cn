@@ -8,15 +8,15 @@ ms.author: keli19
 ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/25/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: designer
-ms.openlocfilehash: 29d83f4acddfce6294457f87519d62e35f52bf15
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: b940f5c9bd14bcec404827daaef666da802d969b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709412"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065246"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>在 Azure 机器学习设计器管道中启用日志记录
 
@@ -53,7 +53,7 @@ ms.locfileid: "97709412"
         
         # Log left output port result of Evaluate Model. This also works when evaluate only 1 model.
         parent_run.log(name='Mean_Absolute_Error (left port)', value=dataframe1['Mean_Absolute_Error'][0])
-        # Log right output port result of Evaluate Model.
+        # Log right output port result of Evaluate Model. The following line should be deleted if you only connect one Score Module to the` left port of Evaluate Model module.
         parent_run.log(name='Mean_Absolute_Error (right port)', value=dataframe1['Mean_Absolute_Error'][1])
 
         return dataframe1,
@@ -81,3 +81,4 @@ ms.locfileid: "97709412"
 
 * 若要了解如何对设计器管道进行故障排除，请参阅[对 ML 管道进行调试和故障排除](how-to-debug-pipelines.md#azure-machine-learning-designer)。
 * 若要了解如何使用 Python SDK 在 SDK 创作体验中记录指标，请参阅[在 Azure ML 训练运行中启用日志记录](how-to-track-experiments.md)。
+* 了解如何在设计器中使用 " [执行 Python 脚本](./algorithm-module-reference/execute-python-script.md) "。
