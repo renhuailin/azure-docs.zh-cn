@@ -283,7 +283,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: 字符串
+                    - name: String
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md
@@ -443,7 +443,7 @@
     - name: 计费模式
       href: billing.md
     - name: 代码示例
-      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
+      href: /samples/browse/?terms=b2c
     - name: Cookie 定义
       href: cookie-definitions.md
       displayName: 'cookies, SameSite'
