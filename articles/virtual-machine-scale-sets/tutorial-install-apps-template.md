@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 2d748f787b40bb26e9faebb028d71c6c3e30ee55
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d5eba5486e7d26e62379e0112cd4b95322e6dae1
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516554"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705228"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>教程：使用 Azure 模板在虚拟机规模集中安装应用程序
 若要在规模集中的虚拟机 (VM) 实例上运行应用程序，首先需要安装应用程序组件和所需文件。 前一篇教程介绍了如何创建自定义 VM 映像并使用它来部署 VM 实例。 使用此自定义映像可以手动安装和配置应用程序。 也可以在部署每个 VM 实例之后，将应用程序自动安装到规模集，或者更新已在规模集中运行的应用程序。 本教程介绍如何执行下列操作：
@@ -76,10 +76,10 @@ ms.locfileid: "94516554"
 az group create --name myResourceGroup --location eastus
 ```
 
-现在，使用 [az group deployment create](/cli/azure/group/deployment) 创建虚拟机规模集。 出现提示时，请提供自己的、用作每个 VM 实例的凭据的用户名和密码：
+现在，使用 [az deployment group create](/cli/azure/deployment/group) 创建虚拟机规模集。 出现提示时，请提供自己的、用作每个 VM 实例的凭据的用户名和密码：
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy.json
 ```
@@ -134,10 +134,10 @@ az network public-ip show \
 }
 ```
 
-使用 [az group deployment create](/cli/azure/group/deployment) 再次将自定义脚本扩展配置应用到规模集中的 VM 实例。 此 *azuredeployv2.json* 模板用于应用更新版本的应用程序。 在实践中，请根据前一部分中所示编辑现有的 *azuredeploy.json* 模板，以引用更新的安装脚本。 出现提示时，请输入首次创建规模集时使用的相同用户名和密码凭据：
+使用 [az deployment group create](/cli/azure/deployment/group) 再次将自定义脚本扩展配置应用到规模集中的 VM 实例。 此 *azuredeployv2.json* 模板用于应用更新版本的应用程序。 在实践中，请根据前一部分中所示编辑现有的 *azuredeploy.json* 模板，以引用更新的安装脚本。 出现提示时，请输入首次创建规模集时使用的相同用户名和密码凭据：
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy_v2.json
 ```

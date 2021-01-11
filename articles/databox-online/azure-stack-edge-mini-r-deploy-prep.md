@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/22/2020
+ms.date: 12/16/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 54ac683dcc2b124c4a6410b2e8449fa7e969ce8c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6d41c186a5d239ad7228c37902f5691085e43dbf
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463747"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631238"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>教程：准备部署 Azure Stack Edge Mini R
 
@@ -40,7 +40,7 @@ ms.locfileid: "96463747"
 |  | |
 |**部署教程** |需要完成这些教程，才能在生产环境中部署 Azure Stack Edge Mini R 设备。 |
 |**[1.在 Azure 门户中做好部署设备的准备](azure-stack-edge-mini-r-deploy-prep.md)** |在安装物理设备之前创建并配置 Azure Stack Edge 资源。 |
-|**[2.安装设备](azure-stack-edge-mini-r-deploy-install.md)**|拆开物理设备包装，将其装入机架并通过数据线连接它。  |
+|**[2.安装设备](azure-stack-edge-mini-r-deploy-install.md)**|检查物理设备，并通过数据线连接它。  |
 |**[3.连接到设备](azure-stack-edge-mini-r-deploy-connect.md)** |安装设备后，连接到设备本地 Web UI。  |
 |**[4.配置网络设置](azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy.md)** |配置网络，包括设备的计算网络和 Web 代理设置。   |
 |**[5.配置设备设置](azure-stack-edge-mini-r-deploy-set-up-device-update-time.md)** |分配设备名称和 DNS 域，配置更新服务器和设备时间。 |

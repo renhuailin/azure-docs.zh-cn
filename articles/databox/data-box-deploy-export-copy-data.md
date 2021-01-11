@@ -6,17 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 12/18/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 495b4427fb7e456c60a489b9ce3d19c2a44bd918
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335207"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680887"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>教程：通过 SMB 从 Azure Data Box 复制数据（预览版）
+# <a name="tutorial-copy-data-from-azure-data-box-via-smb"></a>教程：通过 SMB 从 Azure Data Box 复制数据
 
 本教程介绍如何使用本地 Web UI 连接到 Data Box 并从中将数据复制到本地服务器。 Data Box 设备包含从 Azure 存储帐户导出的数据。
 
@@ -27,8 +27,6 @@ ms.locfileid: "94335207"
 > * 先决条件
 > * 连接到 Data Box
 > * 从 Data Box 复制数据
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

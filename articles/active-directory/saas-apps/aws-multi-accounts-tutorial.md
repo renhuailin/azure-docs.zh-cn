@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 7e71058e1899cf83e712025b534e51a1be1f6bdb
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e6b4175f4f47c9dd378bec84da2575c079a2079f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591746"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014393"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>教程：Azure Active Directory 与 Amazon Web Services (AWS) 集成（旧教程）
 
@@ -89,11 +89,11 @@ ms.locfileid: "97591746"
 
 若要配置和测试 Amazon Web Services (AWS) 的 Azure AD 单一登录，请执行以下步骤：
 
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Amazon Web Services (AWS) 单一登录](#configure-amazon-web-services-aws-single-sign-on)** - 在应用程序端配置单一登录设置。
-3. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+2. **[配置 Amazon Web Services (AWS) SSO](#configure-amazon-web-services-aws-sso)** - 在应用程序端配置单一登录设置。
+3. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 在本部分中，会在 Azure 门户中启用 Azure AD 单一登录并在 Amazon Web Services (AWS) 应用程序中配置单一登录。
 
@@ -107,7 +107,7 @@ ms.locfileid: "97591746"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
+3. 在“使用 SAML 设置单一登录”页上，单击“铅笔”图标以打开“基本 SAML 配置”对话框  。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -143,11 +143,14 @@ ms.locfileid: "97591746"
 
     g. 单击“ **保存**”。
 
+    >[!NOTE]
+    >有关 Azure AD 中的角色的详细信息，请参阅[此处](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
+
 7. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“下载”以下载“联合元数据 XML”并将其保存在计算机上。
 
     ![证书下载链接](common/metadataxml.png)
 
-### <a name="configure-amazon-web-services-aws-single-sign-on"></a>配置 Amazon Web Services (AWS) 单一登录
+### <a name="configure-amazon-web-services-aws-sso"></a>配置 Amazon Web Services (AWS) SSO
 
 1. 在其他浏览器窗口中，以管理员身份登录 Amazon Web Services (AWS) 公司站点。
 
@@ -231,7 +234,7 @@ ms.locfileid: "97591746"
 
     ![屏幕截图显示帐户 ID 在 AWS 窗口中的显示位置。](./media/aws-multi-accounts-tutorial/aws-accountid.png)
 
-1. 现在，登录 [Azure 门户](https://portal.azure.com/)并导航到“组”。
+1. 现在，登录 **Azure 门户** 并导航到“组”。
 
 1. 创建与之前所创建的 IAM 角色同名的新组，然后记下这些新组的对象 ID。
 
@@ -347,11 +350,11 @@ ms.locfileid: "97591746"
     > [!Note]
     > 请注意，需要在 Azure 门户中刷新会话才能看到新角色。
 
-### <a name="test-single-sign-on"></a>测试单一登录
+### <a name="test-sso"></a>测试 SSO
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+本部分将使用“我的应用”测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Amazon Web Services (AWS)”磁贴时，应会看到 Amazon Web Services (AWS) 应用程序页，其中包含用于选择角色的选项。
+在“我的应用”中单击“Amazon Web Services (AWS)”磁贴时，应会看到 Amazon Web Services (AWS) 应用程序页，其中包含用于选择角色的选项。
 
 ![测试单一登录 1](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-screen.png)
 
@@ -359,7 +362,7 @@ ms.locfileid: "97591746"
 
 ![测试单一登录 2](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
 
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 3725970c982c2d060685bf0b99d12a8fc998f20a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 2079a3a7c9ce6817186e743bb09d31facdecf0e7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763568"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931715"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
@@ -697,7 +697,7 @@ PowerShell 目前不支持持久性实体。
 
 ## <a name="billing"></a>计费
 
-Durable Functions 的计费与 Azure Functions 一样。 有关详细信息，请参阅 [Azure Functions 定价](https://azure.microsoft.com/pricing/details/functions/)。 在 Azure Functions [消耗计划](../functions-scale.md#consumption-plan)中执行业务流程协调程序函数时，需要注意一些计费行为。 有关这些行为的详细信息，请参阅 [Durable Functions 计费](durable-functions-billing.md)一文。
+Durable Functions 的计费与 Azure Functions 一样。 有关详细信息，请参阅 [Azure Functions 定价](https://azure.microsoft.com/pricing/details/functions/)。 在 Azure Functions [消耗计划](../consumption-plan.md)中执行业务流程协调程序函数时，需要注意一些计费行为。 有关这些行为的详细信息，请参阅 [Durable Functions 计费](durable-functions-billing.md)一文。
 
 ## <a name="jump-right-in"></a>立即投入
 

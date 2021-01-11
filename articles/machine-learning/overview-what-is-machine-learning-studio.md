@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565902"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740498"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 
@@ -25,6 +25,11 @@ ms.locfileid: "94565902"
 > - 如何在工作室中[管理资产和资源](#manage-assets-and-resources)。
 > - [Azure 机器学习工作室和机器学习工作室（经典）](#ml-studio-classic-vs-azure-machine-learning-studio)之间的差异。
 
+建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
+  * Microsoft Edge（新的 Microsoft Edge（最新版）， 不是旧版 Microsoft Edge）
+  * Safari（最新版本，仅限 Mac）
+  * Chrome（最新版本）
+  * Firefox（最新版本）
 
 ## <a name="author-machine-learning-projects"></a>创作机器学习项目
 
@@ -33,6 +38,8 @@ ms.locfileid: "94565902"
 + **Notebook**
 
   在直接集成到工作室中的托管 [Jupyter Notebook 服务器](how-to-run-jupyter-notebooks.md)中编写和运行自己的代码。 
+
+:::image type="content" source="media/overview-what-is-azure-ml-studio/notebooks.gif" alt-text="屏幕截图：在笔记本中编写和运行代码":::
 
 + **Azure 机器学习设计器**
 
@@ -94,6 +101,9 @@ Azure 机器学习工作室是 Azure 机器学习中的 Web 门户，其中包�
 | 数据偏移检测 | 不支持 | [支持](how-to-monitor-datasets.md) |
 | 数据标签项目 | 不支持 | [支持](how-to-create-labeling-projects.md) |
 
+## <a name="troubleshooting"></a>疑难解答
+
+* **工作室中缺少用户界面项** 可使用 Azure 基于角色的访问控制限制可通过 Azure 机器学习执行的操作。 这些限制可以防止用户界面项出现在 Azure 机器学习工作室中。 例如，如果分配了无法创建计算实例的角色，则创建计算实例的选项不会出现在工作室中。 有关详细信息，请参阅[管理用户和角色](how-to-assign-roles.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

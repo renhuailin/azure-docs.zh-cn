@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 3fe1b966b56142fd312850ac5d77839b7d9db434
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e451171859efc49753131b145642aec4864db45d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97706212"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015653"
 ---
 | 资源 | 基本 | Standard | Premium |
 |---|---|---|---|
@@ -22,8 +22,8 @@ ms.locfileid: "97706212"
 | 最大映像层大小 (GiB) | 200 | 200 | 200 |
 | 每分钟读取操作数<sup>2、3</sup> | 1,000 | 3,000 | 10,000 |
 | 每分钟写入操作数<sup>2、4</sup> | 100 | 500 | 2,000 |
-| 下载带宽 Mbps<sup>2</sup> | 30 | 60 | 100 |
-| 上传带宽 Mbps<sup>2</sup> | 10 | 20 | 50 |
+| 下载带宽<sup>2</sup> (Mbps) | 30 | 60 | 100 |
+| 上传带宽<sup>2</sup> (Mbps) | 10 | 20 | 50 |
 | Webhook | 2 | 10 | 500 |
 | 异地复制 | 空值 | 空值 | [支持][geo-replication] |
 | 可用性区域 | 空值 | 空值 | [预览][zones] |
@@ -38,7 +38,7 @@ ms.locfileid: "97706212"
 | &bull; 每个范围映射的存储库 | 空值 | 空值 | 500 |
 
 
-<sup>1</sup> 在每日费率中包括的每个层级的存储。 对于附加存储，将按 GiB（存在存储限制）收取额外的每日费率费用。 有关费率的信息，请参阅 [Azure 容器注册表定价][pricing]。
+<sup>1</sup> 在每日费率中包括的每个层级的存储。 可以使用额外的存储空间，空间上限为注册表存储上限，且每 GiB 都会产生额外每日费率。 有关费率的信息，请参阅 [Azure 容器注册表定价][pricing]。
 
 <sup>2</sup>读取操作数、写入操作数和带宽是最小估计值。 Azure 容器注册表致力于根据使用情况来提高性能。
 

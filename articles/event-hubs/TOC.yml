@@ -199,9 +199,9 @@
           href: event-hubs-kafka-spark-tutorial.md
         - name: 将 Apache Flink 连接到事件中心
           href: event-hubs-kafka-flink-tutorial.md
-        - name: 将 Apache Kafka Connect 与中心集成（预览版）
+        - name: 集成 Apache Kafka Connect
           href: event-hubs-kafka-connect-tutorial.md
-        - name: 将 Apache Kafka Connect（预览版）与 Debezium 集成
+        - name: 将 Apache Kafka Connect 与 Debezium 集成
           href: event-hubs-kafka-connect-debezium.md
         - name: 将 Akka Streams 连接到事件中心
           href: event-hubs-kafka-akka-streams-tutorial.md
@@ -229,7 +229,7 @@
           href: private-link-service.md
         - name: 配置客户管理的密钥
           href: configure-customer-managed-key.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 解决连接问题
           href: troubleshooting-guide.md

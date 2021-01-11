@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 6265a7cde8e276570409238cadfd5ebc777b4527
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 71782661fd960cae3248005a8b90944eff9bef45
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97531973"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024223"
 ---
 | 资源 | 免费 | 共享 | 基本 | Standard | 高级 (v1-v3) | 隔离 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -31,6 +31,7 @@ ms.locfileid: "97531973"
 | 自定义域 [SSL 支持](../articles/app-service/configure-ssl-certificate.md) |不支持，默认情况下 \*.azurewebsites.net 的通配符证书可用|不支持，默认情况下 \*.azurewebsites.net 的通配符证书可用|无限制的 SNI SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 | 包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接|
 | 混合连接 | | | 每个计划 5 个 | 每个计划 25 个 | 每个应用 200 个 | 每个应用 200 个 |
 | [虚拟网络集成](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
+| [终结点](../articles/app-service/networking/private-endpoint.md) | | |   |   |  每个应用 100 个  |    |
 | 集成负载均衡器 | |X |X |X |X |X<sup>10</sup> |
 | [访问限制](../articles/app-service/networking-features.md#access-restrictions) | 每个应用 512 条规则 | 每个应用 512 条规则 | 每个应用 512 条规则 | 每个应用 512 条规则 | 每个应用 512 条规则 | 每个应用 512 条规则 |
 | [Always On](../articles/app-service/configure-common.md) | | |X |X |X |X |

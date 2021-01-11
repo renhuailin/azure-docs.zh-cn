@@ -9,29 +9,46 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 6037deb484ca966ab3a54cc60b0d53ac8299d500
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: ef2c69409ce3f479338ffc9d418b3469f197ad30
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589995"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679392"
 ---
-# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>教程 - 从必应地图迁移 Web 应用
+# <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>教程：从必应地图迁移 Web 应用
 
-使用必应地图的 Web 应用通常使用必应地图 V8 JavaScript SDK。 Azure Maps Web SDK 是适合用于迁移目标的基于 Azure 的 SDK。 Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地图，以便在 Web 或移动应用程序中显示。 此控件使用 WebGL，因此可以渲染大型数据集，同时保持很高的性能。 使用 JavaScript 或 TypeScript 通过此 SDK 进行开发。
+使用必应地图的 Web 应用通常使用必应地图 V8 JavaScript SDK。 Azure Maps Web SDK 是适合用于迁移目标的基于 Azure 的 SDK。 Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地图，以便在 Web 或移动应用程序中显示。 此控件使用 WebGL，因此可以渲染大型数据集，同时保持很高的性能。 使用 JavaScript 或 TypeScript 通过此 SDK 进行开发。 在本教程中，您将学习如何执行以下操作：
+
+> [!div class="checklist"]
+> * 加载地图
+> * 将地图本地化
+> * 添加图钉、折线和多边形。
+> * 在弹出窗口或信息框中显示信息
+> * 加载并显示 KML 和 GeoJSON 数据
+> * 群集图钉
+> * 叠加图块层
+> * 显示交通情况数据
+> * 添加地面叠加层
 
 如果迁移现有的 Web 应用程序，请检查该应用程序是否使用 Cesium、Leaflet 和 OpenLayers 等开源地图控件库。 如果使用上述某个库，并且你希望继续使用该库，那么可将其连接到 Azure Maps 图块服务（[道路图块](/rest/api/maps/render/getmaptile) \| [卫星图块](/rest/api/maps/render/getmapimagerytile)）。 可在下面的链接中详细了解如何在一些常用开源地图控件库中使用 Azure Maps。
 
--   Cesium - 适用于 Web 的 3D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文档](https://cesiumjs.org/)
--   Leaflet - 适用于 Web 的轻型 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文档](https://leafletjs.com/)
--   OpenLayers - 支持投影的适用于 Web 的 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [文档](https://openlayers.org/)
+* Cesium - 适用于 Web 的 3D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文档](https://cesiumjs.org/)
+* Leaflet - 适用于 Web 的轻型 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文档](https://leafletjs.com/)
+* OpenLayers - 支持投影的适用于 Web 的 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [文档](https://openlayers.org/)
 
 如果使用 JavaScript 框架进行开发，则下述某一开源项目可能很有用：
 
-- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - 围绕 Azure Maps 的 Angular 10 包装器。
-- [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor 组件。
-- [Azure Maps React 组件](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps 控件的 React 包装器。
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue 应用程序的 Azure Maps 组件。
+* [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - 围绕 Azure Maps 的 Angular 10 包装器。
+* [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor 组件。
+* [Azure Maps React 组件](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps 控件的 React 包装器。
+* [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue 应用程序的 Azure Maps 组件。
+
+## <a name="prerequisites"></a>先决条件
+
+1. 登录 [Azure 门户](https://portal.azure.com)。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+2. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 ## <a name="key-features-support"></a>重要功能支持
 
@@ -68,24 +85,24 @@ Azure Maps 还具有其他很多[用于 Web SDK 的开源模块](open-source-pro
 
 下面是必应地图与 Azure Maps Web SDK 之间需要注意的一些重要区别：
 
--   除了提供托管终结点用于访问 Azure Maps Web SDK 以外，还可以根据偏好使用某个 NPM 包将 Web SDK 嵌入应用。 有关详细信息，请参阅此[文档](./how-to-use-map-control.md)。 此程序包还包括了 TypeScript 定义。
--   必应地图提供了其 SDK 的两个托管分支：发布和实验。 在进行新的开发时，实验分支每天可能会收到多个更新。 Azure Maps 仅托管发布分支，但实验功能在开源 Azure Maps 代码示例项目中作为自定义模块进行创建。 必应地图之前有一个冻结的分支，该分支更新频率较低，因此降低了因发布而出现中断性变更的风险。 在 Azure Maps 中可使用 NPM 模块，并指向之前任何的次要版本。
+* 除了提供托管终结点用于访问 Azure Maps Web SDK 以外，还可以根据偏好使用某个 NPM 包将 Web SDK 嵌入应用。 有关详细信息，请参阅此[文档](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。 此程序包还包括了 TypeScript 定义。
+* 必应地图提供了其 SDK 的两个托管分支：发布和实验。 在进行新的开发时，实验分支每天可能会收到多个更新。 Azure Maps 仅托管发布分支，但实验功能在开源 Azure Maps 代码示例项目中作为自定义模块进行创建。 必应地图之前有一个冻结的分支，该分支更新频率较低，因此降低了因发布而出现中断性变更的风险。 在 Azure Maps 中可使用 NPM 模块，并指向之前任何的次要版本。
 
 > [!TIP]
 > Azure Maps 同时发布了 SDK 的简化版和非简化版本。 只需从文件名中删除 `.min`。 在调试问题时，非简化版本非常有用，但请务必在生产环境中使用简化版本来利用更小的文件大小。
 
--   在 Azure Maps 中创建 Map 类的实例后，代码应等待激发地图 `ready` 或 `load` 事件，然后与地图交互。 这些事件可确保所有地图资源均已加载且准备好可供访问。
--   这两个平台为基础地图使用类似的图块系统，但必应地图中图块的尺寸为 256 像素，而 Azure Maps 中图块的尺寸为 512 像素。 因此，若要在 Azure Maps 中获得与必应地图相同的地图视图，在必应地图中使用的缩放级别在 Azure Maps 中需要减 1。
--   必应地图中的坐标称为 `latitude, longitude`，而 Azure Maps 使用 `longitude, latitude`。 此格式符合大多数 GIS 平台所遵循的标准 `[x, y]`。
+* 在 Azure Maps 中创建 Map 类的实例后，代码应等待激发地图 `ready` 或 `load` 事件，然后与地图交互。 这些事件可确保所有地图资源均已加载且准备好可供访问。
+* 这两个平台为基础地图使用类似的图块系统，但必应地图中图块的尺寸为 256 像素，而 Azure Maps 中图块的尺寸为 512 像素。 因此，若要在 Azure Maps 中获得与必应地图相同的地图视图，在必应地图中使用的缩放级别在 Azure Maps 中需要减 1。
+* 必应地图中的坐标称为 `latitude, longitude`，而 Azure Maps 使用 `longitude, latitude`。 此格式符合大多数 GIS 平台所遵循的标准 `[x, y]`。
 
--   Azure Maps Web SDK 中的形状基于 GeoJSON 架构。 帮助器类通过 [atlas.data 命名空间](/javascript/api/azure-maps-control/atlas.data)公开。 还有 [atlas.Shape](/javascript/api/azure-maps-control/atlas.shape) 类可用于包装 GeoJSON 对象，使它们可以数据可绑定的方式轻松更新和维护。
--   Azure Maps 中的坐标定义为 Position 对象，可将这些对象指定为采用 `[longitude, latitude]` 或 `new atlas.data.Position(longitude, latitude)` 格式的简单数字数组。
+* Azure Maps Web SDK 中的形状基于 GeoJSON 架构。 帮助器类通过 [atlas.data 命名空间](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)公开。 还有 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 类可用于包装 GeoJSON 对象，使它们可以数据可绑定的方式轻松更新和维护。
+* Azure Maps 中的坐标定义为 Position 对象，可将这些对象指定为采用 `[longitude, latitude]` 或 `new atlas.data.Position(longitude, latitude)` 格式的简单数字数组。
 
 > [!TIP]
 > Position 类有一个静态帮助程序函数，用于导入 `latitude, longitude` 格式的坐标。 [atlas.data.Position.fromLatLng](/javascript/api/azure-maps-control/atlas.data.position) 函数常常可取代必应地图代码中的 `new Microsoft.Maps.Location` 函数。
 
--   Azure Maps 将样式与数据相区分，而不是在添加到地图的每个形状中指定样式信息。 数据存储在数据源中，并连接到 Azure Maps 代码用来呈现数据的呈现层。 此方法提供增强的性能优势。 此外，很多层支持数据驱动的样式，其中，业务逻辑可添加到层样式选项，这些选项可以更改单个形状根据形状中定义的属性在层中的呈现方式。
--   Azure Maps 在 `atlas.math` 命名空间中提供了一组有用的空间数学函数，但这些函数不同于必应地图空间数学模块中的函数。 主要区别是 Azure Maps 不为二元运算（例如并集和交集）提供内置函数，但由于 Azure Maps 是基于开放标准 GeoJSON，因此有许多可用的开源库。 一个与 Azure Maps 配合良好且提供海量空间数学功能的常用选项是 [turf js](http://turfjs.org/)。
+* Azure Maps 将样式与数据相区分，而不是在添加到地图的每个形状中指定样式信息。 数据存储在数据源中，并连接到 Azure Maps 代码用来呈现数据的呈现层。 此方法提供增强的性能优势。 此外，很多层支持数据驱动的样式，其中，业务逻辑可添加到层样式选项，这些选项可以更改单个形状根据形状中定义的属性在层中的呈现方式。
+* Azure Maps 在 `atlas.math` 命名空间中提供了一组有用的空间数学函数，但这些函数不同于必应地图空间数学模块中的函数。 主要区别是 Azure Maps 不为二元运算（例如并集和交集）提供内置函数，但由于 Azure Maps 是基于开放标准 GeoJSON，因此有许多可用的开源库。 一个与 Azure Maps 配合良好且提供海量空间数学功能的常用选项是 [turf js](http://turfjs.org/)。
 
 另请参阅 [Azure Maps 术语表](./glossary.md)，获取与 Azure Maps 关联的术语的详细列表。
 
@@ -95,41 +112,40 @@ Azure Maps 还具有其他很多[用于 Web SDK 的开源模块](open-source-pro
 
 **主题**
 
-- [加载地图](#load-a-map)
-- [本地化地图](#localizing-the-map)
-- [设置地图视图](#setting-the-map-view)
-- [添加图钉](#adding-a-pushpin)
-- [添加自定义图钉](#adding-a-custom-pushpin)
-- [添加折线](#adding-a-polyline)
-- [添加多边形](#adding-a-polygon)
-- [显示信息框](#display-an-infobox)
-- [图钉聚类](#pushpin-clustering)
-- [添加热度地图](#add-a-heat-map)
-- [叠加图块层](#overlay-a-tile-layer)
-- [显示交通情况数据](#show-traffic-data)
-- [添加地面叠加层](#add-a-ground-overlay)
-- [将 KML 数据添加到地图](#add-kml-data-to-the-map)
-- [添加绘图工具](#add-drawing-tools)
-
+* [加载地图](#load-a-map)
+* [本地化地图](#localizing-the-map)
+* [设置地图视图](#setting-the-map-view)
+* [添加图钉](#adding-a-pushpin)
+* [添加自定义图钉](#adding-a-custom-pushpin)
+* [添加折线](#adding-a-polyline)
+* [添加多边形](#adding-a-polygon)
+* [显示信息框](#display-an-infobox)
+* [图钉聚类](#pushpin-clustering)
+* [添加热度地图](#add-a-heat-map)
+* [叠加图块层](#overlay-a-tile-layer)
+* [显示交通情况数据](#show-traffic-data)
+* [添加地面叠加层](#add-a-ground-overlay)
+* [将 KML 数据添加到地图](#add-kml-data-to-the-map)
+* [添加绘图工具](#add-drawing-tools)
 
 ### <a name="load-a-map"></a>加载地图
 
 在这两个 SDK 中加载地图需遵循相同的一组步骤；
 
--   添加对 Map SDK 的引用。
--   将充当地图占位符的 `div` 标记添加到页面的正文。
--   创建加载页面时要调用的 JavaScript 函数。
--   创建相应 map 类的实例。
+* 添加对 Map SDK 的引用。
+* 将充当地图占位符的 `div` 标记添加到页面的正文。
+* 创建加载页面时要调用的 JavaScript 函数。
+* 创建相应 map 类的实例。
 
 **一些重要差别**
 
--   必应地图需要在 API 的脚本引用中指定帐户密钥或将其指定为 map 选项。 Azure Maps 的身份验证凭据指定为 map 类的选项。 它可以是订阅密钥或 Azure Active Directory 信息。
--   必应地图在 API 的脚本引用中采用一个回调函数，该函数用于调用初始化函数来加载地图。 使用 Azure Maps 时，应使用页面的 onload 事件。
--   当使用 ID 引用将在其中呈现地图的 `div` 元素时，必应地图使用 HTML 选择器（即 `#myMap`），而 Azure Maps 仅使用 ID 值（即 `myMap`）。
--   Azure Maps 中的坐标定义为 Position 对象，可将这些对象指定为采用 `[longitude, latitude]` 格式的简单数字数组。
--   Azure Maps 中的缩放级别比必应地图示例低一级，原因是这两个平台之间的图块系统大小有差异。
--   默认情况下，Azure Maps 不会将任何导航控件（例如缩放按钮和地图样式按钮）添加到地图画布。 但是，有一些控件可用于添加地图样式选取器、缩放按钮、罗盘或旋转控件以及俯仰角控件。
--   Azure Maps 中添加了一个事件处理程序用于监视地图实例的 `ready` 事件。 在地图加载完 WebGL 上下文以及所需的所有资源后，将激发此事件。 任何加载后的代码可添加到此事件处理程序中。
+* 必应地图需要在 API 的脚本引用中指定帐户密钥或将其指定为 map 选项。 Azure Maps 的身份验证凭据指定为 map 类的选项。 它可以是订阅密钥或 Azure Active Directory 信息。
+* 必应地图在 API 的脚本引用中采用一个回调函数，该函数用于调用初始化函数来加载地图。 使用 Azure Maps 时，应使用页面的 onload 事件。
+* 当使用 ID 引用将在其中呈现地图的 `div` 元素时，必应地图使用 HTML 选择器（即 `#myMap`），而 Azure Maps 仅使用 ID 值（即 `myMap`）。
+* Azure Maps 中的坐标定义为 Position 对象，可将这些对象指定为采用 `[longitude, latitude]` 格式的简单数字数组。
+* Azure Maps 中的缩放级别比必应地图示例低一级，原因是这两个平台之间的图块系统大小有差异。
+* 默认情况下，Azure Maps 不会将任何导航控件（例如缩放按钮和地图样式按钮）添加到地图画布。 但是，有一些控件可用于添加地图样式选取器、缩放按钮、罗盘或旋转控件以及俯仰角控件。
+* Azure Maps 中添加了一个事件处理程序用于监视地图实例的 `ready` 事件。 在地图加载完 WebGL 上下文以及所需的所有资源后，将激发此事件。 任何加载后的代码可添加到此事件处理程序中。
 
 以下示例演示如何加载基本地图，使该地图在 Google Maps 中的中心点位于纽约，坐标为（经度：-73.985，纬度：40.747），必应地图中的缩放级别为 12。
 
@@ -152,7 +168,7 @@ Azure Maps 还具有其他很多[用于 Web SDK 的开源模块](open-source-pro
         function initMap() {
             map = new Microsoft.Maps.Map('#myMap', {
                 credentials: '<Your Bing Maps Key>',
-          center: new Microsoft.Maps.Location(40.747, -73.985),
+                center: new Microsoft.Maps.Location(40.747, -73.985),
                 zoom: 12
             });
         }
@@ -169,9 +185,7 @@ Azure Maps 还具有其他很多[用于 Web SDK 的开源模块](open-source-pro
 
 在浏览器中运行此代码会显示如下图所示的地图：
 
-<center>
-
-![必应地图地图](media/migrate-bing-maps-web-app/bing-maps-load-map.jpg)</center>
+![必应地图地图](media/migrate-bing-maps-web-app/bing-maps-load-map.jpg)
 
 **后者：Azure Maps**
 
@@ -209,10 +223,10 @@ Azure Maps 还具有其他很多[用于 Web SDK 的开源模块](open-source-pro
             map.events.add('ready', function () {
                 //Add zoom and map style controls to top right of map.
                 map.controls.add([
-                    new atlas.control.StyleControl(),
-                    new atlas.control.ZoomControl()
-                ], {
-                    position: 'top-right'
+                        new atlas.control.StyleControl(),
+                        new atlas.control.ZoomControl()
+                    ], {
+                        position: 'top-right'
                 });
             });
         }
@@ -226,18 +240,16 @@ Azure Maps 还具有其他很多[用于 Web SDK 的开源模块](open-source-pro
 
 在浏览器中运行此代码会显示如下图所示的地图：
 
-<center>
+![Azure Maps 地图](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)
 
-![Azure Maps 地图](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)</center>
-
-在[此处](./how-to-use-map-control.md)可以找到有关如何在 Web 应用中设置和使用 Azure Maps 地图控件的详细文档。
+在[此处](how-to-use-map-control.md)可以找到有关如何在 Web 应用中设置和使用 Azure Maps 地图控件的详细文档。
 
 > [!TIP]
 > Azure Maps 同时发布了 SDK 的简化版和非简化版本。 从文件名中删除 `.min`。 在调试问题时，非简化版本非常有用，但请务必在生产环境中使用简化版本来利用更小的文件大小。
 
 **其他资源**
 
--   Azure Maps 还提供了导航控件，用于按[此文](./map-add-controls.md)所述旋转地图视图及调整其俯仰角。
+* Azure Maps 还提供了导航控件，用于按[此文](map-add-controls.md)所述旋转地图视图及调整其俯仰角。
 
 ### <a name="localizing-the-map"></a>本地化地图
 
@@ -253,13 +265,11 @@ Azure Maps 还具有其他很多[用于 Web SDK 的开源模块](open-source-pro
 
 下面是将语言设置为“fr-FR”的必应地图示例。
 
-<center>
-
-![本地化必应地图地图](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)</center>
+![本地化必应地图地图](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)
 
 **后者：Azure Maps**
 
-Azure Maps 仅提供设置地图的语言和区域视图的选项。 市场参数不用于限制功能。 可通过两种不同的方式来设置地图的语言和区域视图。 第一种做法是将此信息添加到全局 `atlas` 命名空间，使应用中的所有地图控件实例默认采用这些设置。 以下示例将语言设置为法语（“fr-FR”），将区域视图设置为 `"auto"`：
+Azure Maps 仅提供设置地图的语言和区域视图的选项。 市场参数不用于限制功能。 可通过两种不同的方式来设置地图的语言和区域视图。 第一种做法是将此信息添加到全局 `atlas` 命名空间，使应用中的所有地图控件实例默认采用这些设置。 以下示例将语言设置为法语（“fr-FR”），将区域视图设置为 `"Auto"`：
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -285,9 +295,7 @@ map = new atlas.Map('myMap', {
 
 下面是将语言设置为“fr”、将用户区域设置为“fr-FR”的 Azure Maps 示例。
 
-<center>
-
-![本地化 Azure Maps 地图](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)</center>
+![本地化 Azure Maps 地图](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)
 
 ### <a name="setting-the-map-view"></a>设置地图视图
 
@@ -308,9 +316,7 @@ map.setView({
 });
 ```
 
-<center>
-
-![必应地图设置地图视图](media/migrate-bing-maps-web-app/bing-maps-set-map-view.jpg)</center>
+![必应地图设置地图视图](media/migrate-bing-maps-web-app/bing-maps-set-map-view.jpg)
 
 **后者：Azure Maps**
 
@@ -327,9 +333,7 @@ map.setStyle({
 });
 ```
 
-<center>
-
-![Azure Maps 设置地图视图](media/migrate-bing-maps-web-app/azure-maps-set-map-view.jpg)</center>
+![Azure Maps 设置地图视图](media/migrate-bing-maps-web-app/azure-maps-set-map-view.jpg)
 
 **其他资源**
 
@@ -340,9 +344,9 @@ map.setStyle({
 
 在 Azure Maps 中，可通过多种方式在地图上呈现点数据；
 
--   HTML 标记 – 使用传统的 DOM 元素呈现点。 HTML 标记支持拖动。
--   符号层 – 在 WebGL 上下文中使用图标和/或文本呈现点。
--   气泡层 – 在地图上以圆的形式呈现点。 可根据数据中的属性缩放圆的半径。
+* HTML 标记 – 使用传统的 DOM 元素呈现点。 HTML 标记支持拖动。
+* 符号层 – 在 WebGL 上下文中使用图标和/或文本呈现点。
+* 气泡层 – 在地图上以圆的形式呈现点。 可根据数据中的属性缩放圆的半径。
 
 符号层和气泡层都在 WebGL 上下文中呈现，并且能够在地图上呈现极大的点集。 这些层要求将数据存储在数据源中。 激发 `ready` 事件后，应将数据源和呈现层添加到地图中。 HTML 标记在页面中呈现为 DOM 元素，且不使用数据源。 页面中的 DOM 元素越多，页面加载速度越慢。 若要在地图上呈现好几百个点，则我们建议改用某个呈现层。
 
@@ -374,9 +378,7 @@ var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(51.5, -0.2)
 map.entities.add(pushpin);
 ```
 
-<center>
-
-![必应地图添加图钉](media/migrate-bing-maps-web-app/bing-maps-add-pushpin.jpg)</center>
+![必应地图添加图钉](media/migrate-bing-maps-web-app/bing-maps-add-pushpin.jpg)
 
 **后者：使用 HTML 标记的 Azure Maps**
 
@@ -390,9 +392,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Azure Maps 添加标记](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)</center>
+![Azure Maps 添加标记](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)
 
 **后者：使用符号层的 Azure Maps**
 
@@ -456,9 +456,7 @@ map.markers.add(new atlas.HtmlMarker({
 </html>
 ```
 
-<center>
-
-![Azure Maps 添加符号层](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)</center>
+![Azure Maps 添加符号层](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)
 
 **其他资源**
 
@@ -481,7 +479,6 @@ map.markers.add(new atlas.HtmlMarker({
 |:-----------------------------------------------------------------------:|
 | yellow-pushpin.png                                                        |
 
-
 **前者：必应地图**
 
 在必应地图中，通过将图像的 URL 传递到图钉的 `icon` 选项来创建自定义标记。 `anchor` 选项用于将图钉图像的点与地图上的坐标对齐。 必应地图中的定位点值相对于图像的左上角。
@@ -497,9 +494,7 @@ layer.add(pushpin);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![必应地图添加自定义图钉](media/migrate-bing-maps-web-app/bing-maps-add-custom-pushpin.jpg)</center>
+![必应地图添加自定义图钉](media/migrate-bing-maps-web-app/bing-maps-add-custom-pushpin.jpg)
 
 **后者：使用 HTML 标记的 Azure Maps**
 
@@ -517,9 +512,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Azure Maps 添加自定义标记](media/migrate-bing-maps-web-app/azure-maps-add-custom-marker.jpg)</center>
+![Azure Maps 添加自定义标记](media/migrate-bing-maps-web-app/azure-maps-add-custom-marker.jpg)
 
 **后者：使用符号层的 Azure Maps**
 
@@ -584,9 +577,7 @@ Azure Maps 中的符号层也支持自定义图像，但需要先将图像载入
 </html>
 ```
 
-<center>
-
-![必应地图添加自定义符号层](media/migrate-bing-maps-web-app/azure-maps-add-custom-symbol-layer.jpg)</center>
+![必应地图添加自定义符号层](media/migrate-bing-maps-web-app/azure-maps-add-custom-symbol-layer.jpg)
 
 > [!TIP]
 > 若要创建点的高级自定义呈现，请结合使用多个呈现层。 例如，若要使用多个图钉，而这些图钉在不同的彩色圆上使用相同的图标，则不需要针对每种颜色创建大量的图像，而可以在气泡层上叠加一个符号层，并使该符号层引用同一个数据源。 这比创建大量不同的图像并让地图维护这些图像要高效得多。
@@ -631,9 +622,7 @@ layer.add(polyline);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![必应地图折线](media/migrate-bing-maps-web-app/bing-maps-line.jpg)</center>
+![必应地图折线](media/migrate-bing-maps-web-app/bing-maps-line.jpg)
 
 **后者：Azure Maps**
 
@@ -662,9 +651,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 }));
 ```
 
-<center>
-
-![Azure Maps 线条](media/migrate-bing-maps-web-app/azure-maps-line.jpg)</center>
+![Azure Maps 线条](media/migrate-bing-maps-web-app/azure-maps-line.jpg)
 
 **其他资源**
 
@@ -702,9 +689,7 @@ layer.add(polygon);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![必应地图多边形](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)</center>
+![必应地图多边形](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)
 
 **后者：Azure Maps**
 
@@ -738,9 +723,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 }));
 ```
 
-<center>
-
-![Azure Maps 多边形](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)</center>
+![Azure Maps 多边形](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)
 
 **其他资源**
 
@@ -780,9 +763,7 @@ Microsoft.Maps.Events.addHandler(pushpin, 'click', function () {
 });
 ```
 
-<center>
-
-![必应地图信息框](media/migrate-bing-maps-web-app/bing-maps-infobox.jpg)</center>
+![必应地图信息框](media/migrate-bing-maps-web-app/bing-maps-infobox.jpg)
 
 **后者：Azure Maps**
 
@@ -811,9 +792,7 @@ map.events.add('click', marker, function () {
 });
 ```
 
-<center>
-
-![Azure Maps 弹出窗口](media/migrate-bing-maps-web-app/azure-maps-popup.jpg)</center>
+![Azure Maps 弹出窗口](media/migrate-bing-maps-web-app/azure-maps-popup.jpg)
 
 > [!NOTE]
 > 若要使用符号、气泡、线条或多边形层实现相同的目的，请将该层传入地图事件代码而不是标记。
@@ -883,7 +862,7 @@ map.events.add('click', marker, function () {
             var clusterSize = cluster.containedPushpins.length;
 
             var radius = 20;    //Default radius to 20 pixels.
-            var fillColor = 'lime';   //Default to lime green.
+            var fillColor = 'lime';     //Default to lime green.
 
             if (clusterSize >= 750) {
                 radius = 40;   //If point_count >= 750, radius is 40 pixels.
@@ -917,18 +896,16 @@ map.events.add('click', marker, function () {
 </html>
 ```
 
-<center>
-
-![必应地图聚类](media/migrate-bing-maps-web-app/bing-maps-clustering.jpg)</center>
+![必应地图聚类](media/migrate-bing-maps-web-app/bing-maps-clustering.jpg)
 
 **后者：Azure Maps**
 
 在 Azure Maps 中，数据由数据源添加和管理。 层连接到数据源并在其中呈现数据。 Azure Maps 中的 `DataSource` 类提供多个聚类选项。
 
--   `cluster` – 告知数据源聚类点数据。 
--   `clusterRadius` - 要将其中的点聚类到一起的半径（以像素为单位）。
--   `clusterMaxZoom` - 进行聚类的最大缩放级别。 如果放大到此级别以上，将以符号形式呈现所有点。
--   `clusterProperties` - 定义自定义属性，这些属性是使用表达式针对每个聚类中的、已添加到每个聚类点的属性中的所有点计算的。
+* `cluster` – 告知数据源聚类点数据。 
+* `clusterRadius` - 要将其中的点聚类到一起的半径（以像素为单位）。
+* `clusterMaxZoom` - 进行聚类的最大缩放级别。 如果放大到此级别以上，将以符号形式呈现所有点。
+* `clusterProperties` - 定义自定义属性，这些属性是使用表达式针对每个聚类中的、已添加到每个聚类点的属性中的所有点计算的。
 
 启用聚类后，数据源会将已聚类和未聚类的数据点发送到层进行呈现。 数据源能够聚类数十万个数据点。 聚类的数据点包含以下属性：
 
@@ -1045,9 +1022,7 @@ map.events.add('click', marker, function () {
 </html>
 ```
 
-<center>
-
-![Azure Maps 聚类](media/migrate-bing-maps-web-app/azure-maps-clustering.jpg)</center>
+![Azure Maps 聚类](media/migrate-bing-maps-web-app/azure-maps-clustering.jpg)
 
 **其他资源**
 
@@ -1113,9 +1088,7 @@ map.events.add('click', marker, function () {
 </html>
 ```
 
-<center>
-
-![必应地图热图](media/migrate-bing-maps-web-app/bing-maps-heatmap.jpg)</center>
+![必应地图热图](media/migrate-bing-maps-web-app/bing-maps-heatmap.jpg)
 
 **后者：Azure Maps**
 
@@ -1177,9 +1150,7 @@ map.events.add('click', marker, function () {
 </html>
 ```
 
-<center>
-
-![Azure Maps 热图](media/migrate-bing-maps-web-app/azure-maps-heatmap.jpg)</center>
+![Azure Maps 热图](media/migrate-bing-maps-web-app/azure-maps-heatmap.jpg)
 
 **其他资源**
 
@@ -1207,9 +1178,7 @@ var weatherTileLayer = new Microsoft.Maps.TileLayer({
 map.layers.insert(weatherTileLayer);
 ```
 
-<center>
-
-![必应地图加权热图](media/migrate-bing-maps-web-app/bing-maps-weighted-heatmap.jpg)</center>
+![必应地图加权热图](media/migrate-bing-maps-web-app/bing-maps-weighted-heatmap.jpg)
 
 **后者：Azure Maps**
 
@@ -1217,7 +1186,7 @@ map.layers.insert(weatherTileLayer);
 
 > [!TIP]
 > 在 Azure Maps 中，可以轻松地在其他层（包括基础地图层）下面呈现层。 通常，最好是在地图标签下面呈现图块层，以便于阅读。 `map.layers.add` 函数采用另一个参数，该参数是要在下面插入新层的另一个层的 ID。 若要在地图标签下面插入图块层，可使用以下代码：
-> 
+>
 > `map.layers.add(myTileLayer, "labels");`
 
 ```javascript
@@ -1229,9 +1198,7 @@ map.layers.add(new atlas.layer.TileLayer({
 }), 'labels');
 ```
 
-<center>
-
-![Azure Maps 加权热图](media/migrate-bing-maps-web-app/azure-maps-weighted-heatmap.jpg)</center>
+![Azure Maps 加权热图](media/migrate-bing-maps-web-app/azure-maps-weighted-heatmap.jpg)
 
 > [!TIP]
 > 可以使用地图的 `transformRequest` 选项捕获图块请求。 这样，就可以根据需要修改请求或在其中添加标头。
@@ -1257,9 +1224,7 @@ Microsoft.Maps.loadModule('Microsoft.Maps.Traffic', function () {
 });
 ```
 
-<center>
-
-![必应地图交通状况](media/migrate-bing-maps-web-app/bing-maps-traffic.jpg)</center>
+![必应地图交通状况](media/migrate-bing-maps-web-app/bing-maps-traffic.jpg)
 
 **后者：Azure Maps**
 
@@ -1272,15 +1237,11 @@ map.setTraffic({
 });
 ```
 
-<center>
-
-![Azure Maps 交通状况](media/migrate-bing-maps-web-app/azure-maps-traffic.jpg)</center>
+![Azure Maps 交通状况](media/migrate-bing-maps-web-app/azure-maps-traffic.jpg)
 
 如果在 Azure Maps 中单击某个交通状况图标，弹出窗口中会显示更多信息。
 
-<center>
-
-![Azure Maps 交通状况弹出窗口](media/migrate-bing-maps-web-app/azure-maps-traffic-popup.jpg)</center>
+![Azure Maps 交通状况弹出窗口](media/migrate-bing-maps-web-app/azure-maps-traffic-popup.jpg)
 
 **其他资源**
 
@@ -1335,9 +1296,7 @@ map.setTraffic({
 
 在浏览器中运行此代码会显示如下图所示的地图：
 
-<center>
-
-![必应地图地面叠加层](media/migrate-bing-maps-web-app/bing-maps-ground-overlay.jpg)</center>
+![必应地图地面叠加层](media/migrate-bing-maps-web-app/bing-maps-ground-overlay.jpg)
 
 **后者：Azure Maps**
 
@@ -1398,9 +1357,7 @@ map.setTraffic({
 </html>
 ```
 
-<center>
-
-![Azure Maps 地面叠加层](media/migrate-bing-maps-web-app/azure-maps-ground-overlay.jpg)</center>
+![Azure Maps 地面叠加层](media/migrate-bing-maps-web-app/azure-maps-ground-overlay.jpg)
 
 **其他资源**
 
@@ -1433,7 +1390,7 @@ Azure Maps 和必应地图均可导入 KML、KMZ、GeoRSS、GeoJSON 和已知文
                 center: new Microsoft.Maps.Location(40.747, -73.985),
                 zoom: 12
             });
-
+                
             Microsoft.Maps.loadModule('Microsoft.Maps.GeoXml', function () {
                 var callback = function (dataset) {
                     if (dataset.shapes) {
@@ -1461,9 +1418,7 @@ Azure Maps 和必应地图均可导入 KML、KMZ、GeoRSS、GeoJSON 和已知文
 </html>
 ```
 
-<center>
-
-![必应地图 kml](media/migrate-bing-maps-web-app/bing-maps-kml.jpg)</center>
+![必应地图 kml](media/migrate-bing-maps-web-app/bing-maps-kml.jpg)
 
 **后者：Azure Maps**
 
@@ -1558,9 +1513,7 @@ Azure Maps 和必应地图均可导入 KML、KMZ、GeoRSS、GeoJSON 和已知文
 </html>
 ```
 
-<center>
-
-![Azure Maps kml](media/migrate-bing-maps-web-app/azure-maps-kml.jpg)</center>
+![Azure Maps kml](media/migrate-bing-maps-web-app/azure-maps-kml.jpg)
 
 **其他资源**
 
@@ -1617,9 +1570,7 @@ Azure Maps 和必应地图均可导入 KML、KMZ、GeoRSS、GeoJSON 和已知文
 
 ```
 
-<center>
-
-![必应地图绘图工具](media/migrate-bing-maps-web-app/bing-maps-drawing-tools.jpg)</center>
+![必应地图绘图工具](media/migrate-bing-maps-web-app/bing-maps-drawing-tools.jpg)
 
 **后者：Azure Maps**
 
@@ -1649,8 +1600,8 @@ Azure Maps 和必应地图均可导入 KML、KMZ、GeoRSS、GeoJSON 和已知文
             //Initialize a map instance.
             map = new atlas.Map('myMap', {
                 view: 'Auto',
-                
-                //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
+
+                //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.                
                 authOptions: {
                     authType: 'subscriptionKey',
                     subscriptionKey: '<Your Azure Maps Key>'
@@ -1674,9 +1625,7 @@ Azure Maps 和必应地图均可导入 KML、KMZ、GeoRSS、GeoJSON 和已知文
 </html>
 ```
 
-<center>
-
-![Azure Maps 绘图工具](media/migrate-bing-maps-web-app/azure-maps-drawing-tools.jpg)</center>
+![Azure Maps 绘图工具](media/migrate-bing-maps-web-app/azure-maps-drawing-tools.jpg)
 
 > [!TIP]
 > 在 Azure Maps 层中，绘图工具提供了多种方式可供用户用来绘制形状。 例如，在绘制多边形时，用户可单击以添加每个点，或按住鼠标左键并拖动鼠标来绘制路径。 可使用 `DrawingManager` 的 `interactionType` 选项来对其进行修改。
@@ -1686,7 +1635,7 @@ Azure Maps 和必应地图均可导入 KML、KMZ、GeoRSS、GeoJSON 和已知文
 -   [文档](./set-drawing-options.md)
 -   [代码示例](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
-## <a name="next-steps"></a>后续步骤
+## <a name="additional-resources"></a>其他资源
 
 请查看[开源 Azure Maps Web SDK 模块](open-source-projects.md#open-web-sdk-modules)。 这些模块提供了海量附加功能，并且可完全自定义。
 
@@ -1733,3 +1682,14 @@ Azure Maps 和必应地图均可导入 KML、KMZ、GeoRSS、GeoJSON 和已知文
 
 > [!div class="nextstepaction"]
 > [Azure Maps Web SDK 服务 API 参考文档](/javascript/api/azure-maps-control/)
+
+## <a name="clean-up-resources"></a>清理资源
+
+没有要清理的资源。
+
+## <a name="next-steps"></a>后续步骤
+
+详细了解如何从必应地图迁移到 Azure Maps。
+
+> [!div class="nextstepaction"]
+> [迁移 Web 服务](migrate-from-bing-maps-web-services.md)
