@@ -7,23 +7,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 52772519cc3b9aebc42175e812ad47ae54b529e9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: dd71b03f55cc1522727f6c496c1bdbe0f42cb828
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336671"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678610"
 ---
 # <a name="what-is-azure-data-box"></a>什么是 Azure Data Box？
 
 使用 Microsoft Azure Data Box 云解决方案可以通过快速、经济、可靠的方式向 Azure 发送 TB 量级的数据。 通过向你发送专有的 Data Box 存储设备来加速安全数据传输。 每个存储设备的最大可用存储容量为 80 TB，并通过区域运营商传送到数据中心。 该设备具有坚固的外壳，可在运输过程中保护数据。
 
 可以通过 Azure 门户订购 Data Box 设备，以便从 Azure 导入或导出数据。 收到设备后，可使用本地 Web UI 进行快速设置。 根据是导入数据还是导出数据，将数据从服务器复制到设备或从设备复制到服务器，再将设备寄回 Azure。 如果要将数据导入到 Azure，在 Azure 数据中心内，数据将从设备自动上传到 Azure。 通过 Azure 门户中的 Data Box 服务对整个过程进行端到端跟踪。
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
-
 
 ## <a name="use-cases"></a>用例
 
@@ -43,7 +40,7 @@ Data Box 非常适合在在无网络连接到有限网络连接的情况下传�
 
 下面是可以使用 Data Box 从 Azure 导出数据的各种场景。
 
-- **灾难恢复** - 将来自 Azure 的数据副本还原到本地网络。 灾难恢复时需要将大量 Azure 数据导出到 Data Box，此时通常执行此操作。 Microsoft 随后会发送此 Data Box，数据将在短时间内在本地进行还原。 
+- **灾难恢复** - 将来自 Azure 的数据副本还原到本地网络。 在典型的灾难恢复场景中，大量的 Azure 数据会被导出到 Data Box。 Microsoft 随后会发送此 Data Box，数据很快就会在本地还原。
 
 - **安全要求** - 由于政府或安全要求，你需要能够从 Azure 导出数据。 例如，Azure 存储在 US Secret 和 Top Secret 云中可用时，你可以使用 Data Box 从 Azure 导出数据。 
 
@@ -54,14 +51,14 @@ Data Box 非常适合在在无网络连接到有限网络连接的情况下传�
 
 Data Box 旨在几乎不影响网络的情况下将大量数据移至 Azure。 该解决方案具有以下优点：
 
-- **速度** - Data Box 使用 1 Gbps 或 10 Gbps 网络接口将多达 80 TB 的数据移入或移出 Azure。
+- **速度** - Data Box 使用 1 Gbps 或 10 Gbps 网络接口将多达 80 TB 的数据移入和移出 Azure。
 
 - **安全** - Data Box 为设备、数据和服务提供内置安全保护。
   - 该设备具有坚固的外壳，通过防破坏螺钉和防破坏贴纸固定。 
   - 设备上的数据始终使用 AES 256 位加密进行保护。
   - 只能使用 Azure 门户中提供的密钥解锁设备。
   - 服务受 Azure 安全功能的保护。
-  - 对于导入订单，将数据上传到 Azure 后，会根据 NIST 800-88r1 标准完全擦除设备上的磁盘数据。 对于导出订单，一旦设备到达 Azure 数据中心，就会擦除磁盘。
+  - 将导入订单中的数据上传到 Azure 后，会根据 NIST 800-88r1 标准完全擦除设备上的磁盘数据。 对于导出订单，一旦设备到达 Azure 数据中心，就会擦除磁盘。
     
     有关详细信息，请参阅 [Azure Data Box 安全性和数据保护](data-box-security.md)。
 
@@ -88,7 +85,7 @@ Data Box 旨在几乎不影响网络的情况下将大量数据移至 Azure。 �
 
 Data Box 包括以下组件：
 
-* **Data Box 设备** - 提供主存储、管理与云存储通信的物理设备，并有助于确保存储在设备上的所有数据的安全性和机密性。 Data Box 设备的可用存储容量为 80 TB。 
+* **Data Box 设备** - 一种物理设备，它提供主存储、管理与云存储的通信，还有助于确保存储在设备上的所有数据的安全性和机密性。 Data Box 设备的可用存储容量为 80 TB。 
 
     ![Data Box 的正面和背面](media/data-box-overview/data-box-combined.png)
 
@@ -138,11 +135,11 @@ Data Box 包括以下组件：
 
 ## <a name="region-availability"></a>上市区域
 
-Data Box 可以根据部署服务的区域、设备的发货国家/地区以及传输数据的目标 Azure 存储帐户传输数据。 
+Data Box 可根据部署服务的区域、设备的接收国家/地区以及传输数据的目标 Azure 存储帐户来传输数据。
 
 ### <a name="for-import"></a>导入
 
-- **服务可用性** - 当对导入或导出订单使用 Data Box 时，若要获取有关区域可用性的信息，请转到 [Azure 可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 Data Box 上的导出功能当前为预览版。 
+- **服务可用性** - 当对导入或导出订单使用 Data Box 时，若要获取有关区域可用性的信息，请转到 [Azure 可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。
 
     对于导入订单，Data Box 也可以部署在 Azure 政府云中。 有关详细信息，请参阅[什么是 Azure 政府？](../azure-government/documentation-government-welcome.md)。 
 

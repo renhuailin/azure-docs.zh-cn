@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: e25469e23358ade32e050bed0818338dc290e71f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7dccce597dcfbcedd5083befafa79b8ba6f3adac
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451387"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693474"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL 数据库和 Azure SQL 托管实例连接和查询文章
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,6 +42,29 @@ ms.locfileid: "96451387"
 |[Ruby](connect-query-ruby.md)|本快速入门演示如何使用 Ruby 创建连接到数据库的程序，并使用 Transact-SQL 语句查询数据。|
 |[R](connect-query-r.md)|本快速入门演示如何将 R 与 Azure SQL 数据库机器学习服务配合使用来创建连接到 Azure SQL 数据库中数据库的程序并使用 Transact-SQL 语句查询数据。|
 |||
+
+## <a name="get-server-connection-information"></a>获取服务器连接信息
+
+获取连接到 Azure SQL 数据库中的数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
+
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+
+2. 导航到“SQL 数据库”或“SQL 托管实例”页 。
+
+3. 在“概述”页上，在“Server 名称”旁查看 Azure SQL 数据库中的数据库的完全限定服务器名称，或在“Host”旁边查看 Azure VM 上 Azure SQL 托管实例中或 SQL Server 的完全限定服务器名称（或 IP 地址）  。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标。
+
+> [!NOTE]
+> 有关 Azure VM 上的 SQL Server 的连接信息，请参阅[连接到 SQL Server 实例](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)。
+
+## <a name="get-adonet-connection-information-optional---sql-database-only"></a>获取 ADO.NET 连接信息（可选 - 仅限 SQL 数据库）
+
+1. 导航到 Azure 门户中的“数据库”边栏选项卡，在“设置”下选择“连接字符串” 。
+
+2. 查看完整的 ADO.NET 连接字符串。
+
+    ![ADO.NET 连接字符串](./media/connect-query-dotnet-core/adonet-connection-string2.png)
+
+3. 如果想要使用 ADO.NET 连接字符串，请复制它。
 
 ## <a name="tls-considerations-for-database-connectivity"></a>数据库连接的 TLS 注意事项
 

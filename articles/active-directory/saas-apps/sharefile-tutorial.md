@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/04/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: e0cabcbaaf8e84ac1bdfd13c0ef4ab14f326fcf7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182278"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723944"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>教程：Azure Active Directory 与 Citrix ShareFile 的集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "96182278"
 1. 在“从库中添加”部分的搜索框中，键入“Citrix ShareFile” 。
 1. 从结果面板中选择“Citrix ShareFile”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
+## <a name="configure-and-test-azure-ad-sso-for-citrix-sharefile"></a>配置并测试 Citrix ShareFile 的 Azure AD SSO
 
 在本部分中，基于一个名为 Britta Simon 的测试用户配置和测试 Citrix ShareFile 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Citrix ShareFile 相关用户之间建立链接关系。
@@ -60,10 +60,10 @@ ms.locfileid: "96182278"
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     
-    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 2. [配置 Citrix ShareFile SSO](#configure-citrix-sharefile-sso) - 在应用程序端配置单一登录设置。
-    * **[创建 Citrix ShareFile 测试用户](#create-citrix-sharefile-test-user)** - 在 Citrix ShareFile 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+    1. **[创建 Citrix ShareFile 测试用户](#create-citrix-sharefile-test-user)** - 在 Citrix ShareFile 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 3. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -78,7 +78,7 @@ ms.locfileid: "96182278"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<tenant-name>.sharefile.com/saml/login`。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.sharefile.com/saml/login`。
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
 
@@ -110,7 +110,7 @@ ms.locfileid: "96182278"
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”。
+1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
@@ -131,7 +131,15 @@ ms.locfileid: "96182278"
 
 ## <a name="configure-citrix-sharefile-sso"></a>配置 Citrix ShareFile SSO
 
-1. 在另一 Web 浏览器窗口中，以管理员身份登录到你的 **Citrix ShareFile** 公司站点。
+1. 若要在 Citrix ShareFile 中自动执行配置，需要通过单击“安装扩展”，安装“我的应用安全登录”浏览器扩展  。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 Citrix ShareFile”，此时会将你定向到 Citrix ShareFile 应用程序。 在此处提供管理员凭据以登录到 Citrix ShareFile。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 Citrix ShareFile，请在另一个 Web 浏览器窗口中，以管理员身份登录到 Citrix ShareFile 公司站点。
 
 1. 在“仪表板”中，单击“设置”，然后选择“管理设置”  
 
@@ -184,13 +192,13 @@ ms.locfileid: "96182278"
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Citrix ShareFile 登录 URL，你可以在其中启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Citrix ShareFile 登录 URL，你可以在其中启动登录流。
 
-2. 直接转到 Citrix ShareFile 登录 URL，并在其中启动登录流。
+* 直接转到 Citrix ShareFile 登录 URL，并在其中启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 Citrix ShareFile 磁贴时，将会重定向到 Citrix ShareFile 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Citrix ShareFile 磁贴时，会重定向到 Citrix ShareFile 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 
 ## <a name="next-steps"></a>后续步骤

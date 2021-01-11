@@ -7,18 +7,21 @@ ms.service: storage
 ms.subservice: blobs
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 11/07/2017
+ms.date: 12/29/2020
 ms.author: fryu
-ms.openlocfilehash: 2d921a968f50f64788ccbd7637bc04c8492a3f90
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: dfc338844e310102447e2498ee9cce8f28a79b9f
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96010888"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809558"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>计算要计费的 Blob 容器总大小
 
 此脚本出于估算计费成本的目的，计算 Azure Blob 存储中的容器大小。 此脚本计算容器中各 blob 的大小总和。
+
+> [!IMPORTANT]
+> 本文中提供的示例脚本可能无法准确地计算 blob 快照的账单大小。
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -31,7 +34,7 @@ ms.locfileid: "96010888"
 
 Blob 容器的总大小包括容器自身大小，以及容器内所有 blob 的大小。
 
-下述部分介绍 Blob 容器和 blob 的存储容量计算方法。  在下一部分中，Len(X) 表示字符串中的字符数。
+下述部分介绍 Blob 容器和 blob 的存储容量计算方法。 在下一部分中，Len(X) 表示字符串中的字符数。
 
 ### <a name="blob-containers"></a>Blob 容器
 
@@ -44,6 +47,7 @@ For-Each Signed Identifier[512 bytes]
 ```
 
 以下是明细信息：
+
 * 每个容器的开销（48 字节）包括最后修改时间、权限、公共设置和一些系统元数据。
 
 * 容器名称以 Unicode 形式存储，因此字节数按字符数乘以 2 计算。
@@ -103,7 +107,7 @@ For-Each Signed Identifier[512 bytes]
     >使用快照时，大小仅包括此基本或快照 blob 的唯一数据。 如果未提交块在一周后未被使用，则回收到垃圾桶。 之后不计入账单。
 
 * 对于页 blob：
-  * 字节数按具有数据的不连续页面范围数乘以 12 计算。 这是在调用 GetPageRanges API 时看到的唯一页面范围数  。
+  * 字节数按具有数据的不连续页面范围数乘以 12 计算。 这是在调用 GetPageRanges API 时看到的唯一页面范围数。
 
   * 所有存储页面中的数据大小（按字节计）。
 

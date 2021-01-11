@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: mbullwin
 keywords: 异常检测, 机器学习, 算法
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 1a13b962a000e6e3b2143dc23f94b63c122bd963
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d8698a17db8be6a3d5b26d764ef86702320ebfa4
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999088"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705075"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什么是异常检测器 API？
 
@@ -97,6 +97,6 @@ ms.locfileid: "95999088"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [快速入门：使用异常检测器 REST API 检测时序数据的异常](quickstarts/detect-data-anomalies-csharp.md)
+* [快速入门：使用异常检测器检测时序数据中的异常](quickstarts/client-libraries.md)
 * 异常检测器 API [在线演示](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
 * 异常检测器 [REST API 参考](https://aka.ms/anomaly-detector-rest-api-ref)

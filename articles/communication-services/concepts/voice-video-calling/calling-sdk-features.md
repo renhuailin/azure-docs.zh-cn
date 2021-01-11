@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f47ee36c0e7806afc10f8f0907825378c2d24410
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: c801a276f3a116f00b34d750ca8bfec7e56d377b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505539"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680746"
 ---
 # <a name="calling-client-library-overview"></a>呼叫客户端库概述
 
@@ -58,13 +58,13 @@ ms.locfileid: "97505539"
 |                   | 以 PSTN 参与者身份在组呼叫中拨出                                                                    | ✔️   | ✔️            | ✔️   
 | 常规           | 使用音频测试服务测试麦克风、扬声器和照相机（可通过呼叫 8:echo123 使用）                   |  ✔️  | ✔️            | ✔️   
 
-## <a name="calling-client-library-browser-support"></a>呼叫客户端库浏览器支持
+## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>OS 和浏览器对 Javascript 调用客户端库的支持
 
 下表显示了当前可用的一组受支持的浏览器和版本。
 
-|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    |
-| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ |
-| **呼叫客户端库** | Chrome*、新 Edge | Chrome、Safari* | Chrome*  | Chrome* | Chrome* | Safari** |
+|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad OS|
+| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
+| **呼叫客户端库** | Chrome*、新 Edge | Chrome、Safari* | Chrome*  | Chrome* | Chrome* | Safari** | Safari** |
 
 
 *请注意，除前两个版本外，还支持最新版本的 Chrome。<br/>

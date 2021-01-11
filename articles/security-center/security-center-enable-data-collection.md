@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: f5cf432e3824ca0bb441a458a08fc7353291cf1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be8123d3c8a4acc684610aeaa9ee263c5defa17d
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490051"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813609"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>从 Azure 安全中心自动预配代理和扩展
 
@@ -30,6 +30,17 @@ ms.locfileid: "96490051"
 > 随着安全中心的发展，可以监视的资源类型也在增加。 扩展的数量也有所增加。 自动预配工具已扩展，可通过利用 Azure Policy 的功能来支持更多资源类型。
 
 :::image type="content" source="./media/security-center-enable-data-collection/auto-provisioning-options.png" alt-text="安全中心的自动预配设置页":::
+
+
+## <a name="availability"></a>可用性
+
+| 方面                  | 详细信息                                                                                                                                                                                                                      |
+|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 发布状态：          | **功能**：自动预配功能已正式发布 (GA)<br>**代理和扩展**：适用于 Azure VM 的 Log Analytics 代理已正式发布，Microsoft Dependency Agent 为预览版，适用于 Kubernetes 的策略加载项已正式发布                |
+| 定价：                | 免费                                                                                                                                                                                                                         |
+| 支持的目标： | ![是](./media/icons/yes-icon.png) Azure 计算机<br>![否](./media/icons/no-icon.png) Azure Arc 计算机<br>![否](./media/icons/no-icon.png) Kubernetes 节点<br>![否](./media/icons/no-icon.png) 虚拟机规模集 |
+| 云：                 | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov、China Gov、其他 Gov                                                                                                      |
+|                         |                                                                                                                                                                                                                              |
 
 
 ## <a name="why-use-auto-provisioning"></a>为什么要使用自动预配？
@@ -156,7 +167,7 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
 
 | 数据层 | 收集的事件指示器 |
 | --- | --- |
-| 轻微 | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
+| 最少 | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
 | 通用 | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,4622, |
 | |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |

@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/28/2020
-ms.openlocfilehash: c4d4c659fd1c33c9ffc1b833b92d0727b5c17bf7
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 170a919ca184c959800e62cb0d8ede8659c96df4
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922889"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708985"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建和管理逻辑应用工作流定义
 
@@ -101,7 +101,7 @@ ms.locfileid: "96922889"
 
 1. 如果你尚未从 Visual Studio Code 内登录到 Azure 订阅，请按照[前面的步骤操作，以立即登录](#access-azure)。
 
-1. 在 Visual Studio 代码中的“逻辑应用”下，打开订阅的快捷菜单，并选择“创建逻辑应用” 。
+1. 在 Visual Studio Code 中的“逻辑应用”下，打开订阅的快捷菜单，然后选择“创建逻辑应用” 。
 
    ![从订阅菜单中选择“创建逻辑应用”](./media/quickstart-create-logic-apps-visual-studio-code/create-logic-app-visual-studio-code.png)
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a52188dc5058dbc74d3b03fba860b98540cd4a41
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: d2b77708609f61eeb4ce33148f020027d646836b
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608496"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813592"
 ---
 # <a name="communication-services-notifications"></a>通信服务通知
 
@@ -45,15 +45,15 @@ Azure 通信服务与 [Azure 事件网格](https://azure.microsoft.com/services/
 
 ### <a name="notification-hub-provisioning"></a>通知中心预配 
 
-若要使用通知中心将推送通知传递到客户端设备，请在与通信服务资源相同的订阅中[创建通知中心](../../notification-hubs/create-notification-hub-portal.md)。 必须为想要使用的平台通知服务配置 Azure 通知中心。 若要了解如何从通知中心获取客户端应用程序中的推送通知，请参阅[通知中心入门](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)，并从页面顶部附近的下拉列表中选择目标客户端平台。
+若要使用通知中心将推送通知传递到客户端设备，请在与通信服务资源相同的订阅中[创建通知中心](../../notification-hubs/create-notification-hub-portal.md)。 必须为想要使用的平台通知系统配置 Azure 通知中心。 若要了解如何从通知中心获取客户端应用程序中的推送通知，请参阅[通知中心入门](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)，并从页面顶部附近的下拉列表中选择目标客户端平台。
 
 > [!NOTE]
 > 目前支持 APN 和 FCM 平台。  
 APN 平台需要使用令牌身份验证模式进行配置。 目前不支持证书身份验证模式。 
 
-通知中心配置完成后，便可以使用 Azure 资源管理器客户端或通过 Azure 门户为中心提供连接字符串，从而将它关联到通信服务资源。 连接字符串应包含“发送”权限。 建议专门为中心创建另一个仅具有“发送”权限的访问策略。 详细了解[通知中心安全和访问策略](../../notification-hubs/notification-hubs-push-notification-security.md)
+通知中心配置完成后，便可以使用 Azure 资源管理器客户端或通过 Azure 门户为中心提供连接字符串，从而将它关联到通信服务资源。 连接字符串应包含 `Send` 权限。 建议专门为中心另外创建一个仅具有 `Send` 权限的访问策略。 详细了解[通知中心安全和访问策略](../../notification-hubs/notification-hubs-push-notification-security.md)
 
-#### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>使用 Azure 资源管理器客户端配置通知中心
+#### <a name="using-the-azure-resource-manager-client-to-link-your-notification-hub"></a>使用 Azure 资源管理器客户端链接通知中心
 
 若要登录 Azure 资源管理器，请执行以下操作并使用你的凭据登录。
 
@@ -67,9 +67,9 @@ armclient login
 armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers/Microsoft.Communication/CommunicationServices/<resource_id>/linkNotificationHub?api-version=2020-08-20-preview "{'connectionString': '<connection_string>','resourceId': '<resource_id>'}"
 ```
 
-#### <a name="using-the-azure-portal-to-configure-the-notification-hub"></a>使用 Azure 门户配置通知中心
+#### <a name="using-the-azure-portal-to-link-your-notification-hub"></a>使用 Azure 门户链接通知中心
 
-在门户中，导航到 Azure 通信服务资源。 在通信服务资源中，从“通信服务”页的左侧菜单中选择“推送通知”，并连接之前预配的通知中心。 你需要在此处提供连接字符串和资源 ID：
+在门户中，导航到 Azure 通信服务资源。 在通信服务资源中，从“通信服务”页的左侧菜单中选择“推送通知”，并连接之前预配的通知中心。 你需要在此处提供连接字符串和 resourceId：
 
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="显示 Azure 门户中的推送通知设置的屏幕截图。":::
 
@@ -77,9 +77,51 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 > 如果更新了 Azure 通知中心连接字符串，还必须更新通信服务资源。  
 对中心链接方式的任何更改将在最多 ``10`` 分钟内反映在数据平面（即发送通知时）中。 这也适用于之前发送过通知且中心第一次链接的情况。
 
-#### <a name="device-registration"></a>设备注册 
+### <a name="device-registration"></a>设备注册 
 
 请参阅[语音呼叫快速入门](../quickstarts/voice-video-calling/getting-started-with-calling.md)，以了解如何向通信服务注册设备句柄。
+
+### <a name="troubleshooting-guide-for-push-notifications"></a>推送通知疑难解答指南
+
+如果在设备上看不到推送通知，则可能是已在下面三个位置删除了通知：
+
+- Azure 通知中心未接受来自 Azure 通信服务的通知
+- 平台通知系统（例如 APNs 和 FCM）未接受来自 Azure 通知中心的通知
+- 平台通知系统未将通知传递到设备。
+
+下面介绍了可能删除通知的第一个位置（Azure 通知中心未接受来自 Azure 通信服务的通知）。 对于其他两个位置，请参阅[在 Azure 通知中心诊断已删除的通知](../../notification-hubs/notification-hubs-push-notification-fixer.md)。
+
+若要查看通信服务资源是否将通知发送到 Azure 通知中心，一种方法是查看链接的 [Azure 通知中心指标](../../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs)中的 `incoming messages` 指标。
+
+下面是一些常见的错误配置，它们可能是 Azure 通知中心不接受来自通信服务资源的通知的原因。
+
+#### <a name="azure-notification-hub-not-linked-to-the-communication-services-resource"></a>Azure 通知中心未链接到通信服务资源
+
+可能存在你没有将 Azure 通知中心链接到通信服务资源的情况。 可查看[通知中心预配部分](#notification-hub-provisioning)，了解如何链接它们。
+
+#### <a name="the-linked-azure-notification-hub-isnt-configured"></a>已链接的 Azure 通知中心未配置
+
+必须通过要使用的平台（例如 iOS 或 Android）的平台通知系统凭据来配置已链接的通知中心。 若要更详细地了解如何执行此操作，请参阅[在通知中心设置推送通知](../../notification-hubs/configure-notification-hub-portal-pns-settings.md)。
+
+#### <a name="the-linked-azure-notification-hub-doesnt-exist"></a>已链接的 Azure 通知中心不存在
+
+链接到通信服务资源的 Azure 通知中心不复存在。 请检查已链接的通知中心是否仍然存在。
+
+#### <a name="the-azure-notification-hub-apns-platform-is-configured-with-certificate-authentication-mode"></a>Azure 通知中心 APNs 平台已配置有证书身份验证模式
+
+如果要使用带有证书身份验证模式的 APNs 平台，请注意当前不支持此操作。 应为 APNs 平台配置[在通知中心设置推送通知](../../notification-hubs/configure-notification-hub-portal-pns-settings.md)中指定的令牌身份验证模式。
+
+#### <a name="the-linked-connection-string-doesnt-have-send-permission"></a>已链接的连接字符串没有 `Send` 权限
+
+用于将通知中心链接到通信服务资源的连接字符串需要具有 `Send` 权限。 若要更详细地了解如何创建新的连接字符串，或者查看 Azure 通知中心当前提供的连接字符串，可查看[通知中心安全性和访问策略](../../notification-hubs/notification-hubs-push-notification-security.md)
+
+#### <a name="the-linked-connection-string-or-azure-notification-hub-resourceid-arent-valid"></a>已链接的连接字符串或 Azure 通知中心 resourceId 无效
+
+请确保为通信服务资源配置了正确的连接字符串和 Azure 通知中心 resourceId
+
+#### <a name="the-linked-connection-string-is-regenerated"></a>已重新生成链接的连接字符串
+
+如果重新生成了链接的 Azure 通知中心的连接字符串，则必须通过[重新链接通知中心](#notification-hub-provisioning)，在通信服务资源中更新连接字符串。
 
 ## <a name="next-steps"></a>后续步骤
 

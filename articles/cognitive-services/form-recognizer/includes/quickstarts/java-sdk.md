@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: d53863ccf71970cca3900707c844a2e5add050fa
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6768f46f39920c975e7eccef72563fc0bb7e5180
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356505"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808583"
 ---
 > [!IMPORTANT]
 > 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。
@@ -58,7 +58,7 @@ gradle init --type basic
 
 在项目的 build.gradle.kts 文件中，以 `implementation` 语句的形式包含客户端库及所需的插件和设置。
 
-#### <a name="version-30"></a>[版本 3.0](#tab/ga)
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
 ```kotlin
 plugins {
     java
@@ -74,6 +74,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
 }
 ```
+
+> [!NOTE]
+> 表单识别器 3.0.0 SDK 反映了 API 版本 2.0
+
 #### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
 ```kotlin
 plugins {
@@ -90,6 +94,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.1")
 }
 ```
+
+> [!NOTE]
+> 表单识别器 3.1.0 SDK 反映了 API 版本 2.1 preview
+
 ---
 
 ### <a name="create-a-java-file"></a>创建 Java 文件
@@ -120,15 +128,17 @@ mkdir -p src/main/java
 
 在应用程序的 main 方法中，添加对本快速入门中使用的方法的调用。 稍后将对这些调用进行定义。 还需要为训练和测试数据添加对 URL 的引用。
 
-* 若要检索自定义模型训练数据的 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”。 确保选中“读取”和“列表”权限，然后单击“创建”。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+  
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 检索":::
 * 若要获取要测试的表单的 URL，可以使用上述步骤获取 blob 存储中单个文档的 SAS URL。 或者获取位于其他位置的文档的 URL。
 * 使用上述方法还可获取回执图像的 URL。
 
-#### <a name="version-30"></a>[版本 3.0](#tab/ga)
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
-#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
@@ -165,14 +175,14 @@ mkdir -p src/main/java
 
 这些代码片段演示如何使用适用于 Java 的表单识别器客户端库执行以下任务：
 
-#### <a name="version-30"></a>[版本 3.0](#tab/ga)
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
 * [对客户端进行身份验证](#authenticate-the-client)
 * [识别表单内容](#recognize-form-content)
 * [识别回执](#recognize-receipts)
 * [训练自定义模型](#train-a-custom-model)
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
 * [管理自定义模型](#manage-your-custom-models)
-#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 * [对客户端进行身份验证](#authenticate-the-client)
 * [识别表单内容](#recognize-form-content)
 * [识别回执](#recognize-receipts)
@@ -259,11 +269,14 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-#### <a name="version-30"></a>[版本 3.0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>识别名片
+
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> 此功能在所选的 API 版本中不可用。
+
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 
 本部分演示如何使用预先训练的模型识别和提取英文名片中的常见字段。
 
@@ -278,7 +291,16 @@ Total Price: null, confidence: 0.93
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>识别发票
+
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> 此功能在所选的 API 版本中不可用。
+
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 
 本部分演示如何使用预先训练的模型识别和提取销售发票中的常见字段。
 

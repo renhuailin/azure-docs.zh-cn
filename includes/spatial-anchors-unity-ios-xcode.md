@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: d969b1639dbb39b920c985964abe1239f068d740
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 81d2804d99896200ea6f68592ea168112e172c20
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185230"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762587"
 ---
 选择“生成”  。 在打开的窗格中，选择要将 Xcode 项目导出到的文件夹。
 
@@ -30,9 +30,9 @@ open ./Unity-iPhone.xcodeproj
 
 选择根“Unity-iPhone”节点以查看项目设置，然后选择“常规”选项卡。
 
-在“签名”下，确保已启用“自动管理签名” 。 如果未启用，请启用，然后在出现的窗格中选择“自动启用”重置生成设置。
+在“部署信息”下，确保将部署目标设置为“iOS 11.0” 。
 
-在“部署信息”下，确保“部署目标”设置为“11.0”  。
+选择“签名和功能”选项卡，并确保已启用“自动管理签名” 。 如果未启用，请启用，然后在出现的窗格中选择“自动启用”重置生成设置。
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>将应用部署到 iOS 设备
 

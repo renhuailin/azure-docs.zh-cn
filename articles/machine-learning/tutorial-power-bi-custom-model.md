@@ -1,7 +1,7 @@
 ---
-title: 教程：使用 Notebook 创建预测模型（第 1 部分，共 2 部分）
+title: 教程：使用笔记本创建预测模型（第 1 部分，共 2 部分）
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Jupyter Notebook 中的代码生成和部署机器学习模型，以便可以使用它来预测 Microsoft Power BI 中的结果。
+description: 了解如何使用 Jupyter Notebook 中的代码来构建和部署机器学习模型。 你可以使用该模型来预测 Microsoft Power BI 中的结果。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,69 +10,70 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: f8209c0d26cf8c572d10666696231b0468cfcbc6
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97370581"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814765"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-notebook-part-1-of-2"></a>教程：Power BI 集成 - 使用 Notebook 创建预测模型（第 1 部分，共 2 部分）
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>教程：Power BI 集成 - 使用 Jupyter Notebook 创建预测模型（第 1 部分，共 2 部分）
 
-在本教程的第一部分中，你将使用 Jupyter Notebook 中的代码训练和部署预测机器学习模型。 在第 2 部分中，你将使用该模型来预测 Microsoft Power BI 中的结果。
+在本教程的第 1 部分中，你将使用 Jupyter Notebook 中的代码训练和部署预测机器学习模型。 在第 2 部分中，你将使用该模型来预测 Microsoft Power BI 中的结果。
 
 在本教程中，你将了解：
 
 > [!div class="checklist"]
-> * 创建 Jupyter Notebook
-> * 创建 Azure 机器学习计算实例
-> * 使用 scikit-learn 训练回归模型
-> * 将模型部署到实时评分终结点
+> * 创建 Jupyter Notebook。
+> * 创建 Azure 机器学习计算实例。
+> * 使用 scikit-learn 训练回归模型。
+> * 将模型部署到实时评分终结点。
 
-有三种不同的方法可用于创建和部署要在 Power BI 中使用的模型。  本文介绍选项 A：使用 Notebook 训练和部署模型。  此选项显示使用 Azure 机器学习工作室中托管的 Jupyter 笔记本的代码优先创作体验。 
+可以通过三种方法创建和部署要在 Power BI 中使用的模型。  本文介绍“选项 A：使用笔记本训练和部署模型。”  此选项是代码优先的创作体验。 这会使用 Azure 机器学习工作室中托管的 Jupyter Notebook。 
 
-可以改用：
+但你可改用其他选项之一：
 
-* [选项 B：使用设计器训练和部署模型](tutorial-power-bi-designer-model.md) - 使用设计器（拖放式用户界面）的低代码创作体验。
-* [选项 C：使用自动化 ML 训练和部署模型](tutorial-power-bi-automated-model.md) - 可完全自动执行数据准备和模型训练的无代码创作体验。
+* [选项 B：使用 Azure 机器学习设计器训练和部署模型](tutorial-power-bi-designer-model.md)。 这种少用代码的创作体验使用拖放式用户界面。
+* [选项 C：使用自动化机器学习训练和部署模型](tutorial-power-bi-automated-model.md)。 这种不用代码的创作体验可完全自动执行数据准备和模型训练。
 
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅（[已推出免费试用版](https://aka.ms/AMLFree)）。 
-- Azure 机器学习工作区。 如果还没有工作区，请按照[如何创建 Azure 机器学习工作区](./how-to-manage-workspace.md#create-a-workspace)所述进行操作。
+- Azure 订阅。 如果没有订阅，可使用[免费试用版](https://aka.ms/AMLFree)。 
+- Azure 机器学习工作区。 如果没有工作区，请参阅[创建和管理 Azure 机器学习工作区](./how-to-manage-workspace.md#create-a-workspace)。
 - Python 语言和机器学习工作流的入门知识。
 
 ## <a name="create-a-notebook-and-compute"></a>创建笔记本和计算
 
-在 [Azure 机器学习工作室](https://ml.azure.com)主页中，选择“新建”，然后选择“笔记本” ：
+在 [Azure 机器学习工作室](https://ml.azure.com)主页中，选择“新建” > “笔记本”  ：
 
-:::image type="content" source="media/tutorial-power-bi/create-new-notebook.png" alt-text="显示如何创建笔记本的屏幕截图":::
+:::image type="content" source="media/tutorial-power-bi/create-new-notebook.png" alt-text="显示如何创建笔记本的屏幕截图。":::
  
-随即显示一个用于创建新文件的对话框，输入：
+在“创建新文件”页上，执行以下操作：
 
-1. 笔记本的文件名（例如 `my_model_notebook`）
-1. 将“文件类型”改为“笔记本” 
+1. 为笔记本命名（例如 my_model_notebook）。
+1. 将“文件类型”改为“笔记本” 。
+1. 选择“创建”  。 
+ 
+接下来，若要运行代码单元格，请创建一个计算实例并将其附加到笔记本。 首先选择笔记本顶部的加号图标：
 
-选择“创建”  。 接下来，需要创建一些计算，并将其附加到笔记本以便运行代码单元格。 为此，请选择笔记本顶部的加号图标：
+:::image type="content" source="media/tutorial-power-bi/create-compute.png" alt-text="显示如何创建计算实例的屏幕截图。":::
 
-:::image type="content" source="media/tutorial-power-bi/create-compute.png" alt-text="显示如何创建计算实例的屏幕截图":::
+在“创建计算实例”页上，执行以下操作：
 
-接下来，在“创建计算实例”页中：
-
-1. 选择 CPU 虚拟机大小 - 对于本教程，选择 Standard_D11_v2（双核，14-GB RAM）就可以了。
+1. 选择 CPU 虚拟机大小。 对于本教程，可以选择 Standard_D11_v2，其中包含 2 个核心和 14 GB 的 RAM。
 1. 选择“**下一页**”。 
-1. 在“配置设置”页上，提供有效的“计算名称”（有效字符包括大小写字母、数字和 - 字符） 。
+1. 在“配置设置”页上，提供有效的“计算名称” 。 有效字符包括大写字母、小写字母、数字和连字符 (-)。
 1. 选择“创建”  。
 
-你可能会注意到，笔记本上“计算”旁边的圆圈已变为蓝绿色，指示正在创建计算实例：
+在笔记本中，你可能会注意到“计算”旁边的圆圈变为了蓝绿色。 此颜色更改表明正在创建计算实例：
 
-:::image type="content" source="media/tutorial-power-bi/creating.png" alt-text="显示正在创建计算的屏幕截图":::
+:::image type="content" source="media/tutorial-power-bi/creating.png" alt-text="显示正在创建计算的屏幕截图。":::
 
 > [!NOTE]
-> 预配计算大约需要 2-4 分钟。
+> 计算实例可能需要 2 到 4 分钟时间才能完成预配。
 
-预配计算后，可以使用笔记本来执行代码单元格。 例如，在单元格中键入：
+预配计算后，可以使用笔记本来运行代码单元格。 例如，在单元格中，可以键入以下代码：
 
 ```python
 import numpy as np
@@ -80,20 +81,20 @@ import numpy as np
 np.sin(3)
 ```
 
-接下来，按“Shift-Enter”（或“Control-Enter”或选择单元格旁边的播放按钮） 。 应会看到以下输出：
+然后按 Shift + Enter（或按 Control + Enter 或选择单元格旁边的“播放”按钮）。 应会看到以下输出：
 
-:::image type="content" source="media/tutorial-power-bi/simple-sin.png" alt-text="显示单元格执行的屏幕截图":::
+:::image type="content" source="media/tutorial-power-bi/simple-sin.png" alt-text="显示单元格输出的屏幕截图。":::
 
-现在，你可以构建机器学习模型！
+现在，你可以构建机器学习模型。
 
-## <a name="build-a-model-using-scikit-learn"></a>使用 scikit-learn 构建模型
+## <a name="build-a-model-by-using-scikit-learn"></a>使用 scikit-learn 构建模型
 
-本教程中将使用[糖尿病数据集](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html)，[Azure 开放数据集](https://azure.microsoft.com/services/open-datasets/)中提供了该数据集。 
+在本教程中，将使用[糖尿病数据集](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html)。 [Azure 开放数据集](https://azure.microsoft.com/services/open-datasets/)中提供了该数据集。
 
 
 ### <a name="import-data"></a>导入数据
 
-若要导入数据，请将以下代码复制并粘贴到笔记本中的新“代码单元格”：
+若要导入数据，请复制以下代码并将其粘贴到笔记本中的新“代码单元格”。
 
 ```python
 from azureml.opendatasets import Diabetes
@@ -106,11 +107,11 @@ y_df = y.to_pandas_dataframe()
 X_df.info()
 ```
 
-`X_df` pandas 数据帧包含 10 个基线输入变量（例如年龄、性别、体重指数、平均血压和六项血清度量）。 `y_df` pandas 数据帧是目标变量，其中包含基线后一年疾病进展的定量度量值。 共有 442 条记录。
+`X_df` pandas 数据帧包含 10 个基线输入变量。 这些变量包括年龄、性别、体重指数、平均血压和六个血清测定值。 `y_df` pandas 数据帧是目标变量。 其中包含基线后一年疾病进展的量化度量值。 该数据帧包含 442 条记录。
 
-### <a name="train-model"></a>定型模型
+### <a name="train-the-model"></a>定型模型
 
-在笔记本中创建新的“代码单元格”，并复制粘贴以下代码片段，这将构建一个岭回归模型并使用 Python 的 pickle 格式对模型进行序列化：
+在笔记本中创建新的代码单元格。 然后复制下面的代码并将其粘贴到单元格中。 此代码片段可构造岭回归模型，并使用 Python pickle 格式对其进行序列化。
 
 ```python
 import joblib
@@ -122,9 +123,11 @@ joblib.dump(model, 'sklearn_regression_model.pkl')
 
 ### <a name="register-the-model"></a>注册模型
 
-除了模型文件本身的内容，注册模型还将存储模型元数据（模型说明、标记和框架信息），在工作区中管理和部署模型时，这些元数据非常有用。 例如，通过使用标记，可以对模型进行分类，并在工作区中列出模型时应用筛选器。 此外，使用 scikit-learn 框架标记此模型可简化将其部署为 Web 服务的过程，稍后会对这一点进行介绍。
+除了模型文件本身的内容之外，注册的模型还将存储元数据。 元数据包括模型说明、标记和框架信息。 
 
-将以下代码复制并粘贴到笔记本中的新“代码单元格”：
+在工作区中管理和部署模型时，元数据很有用。 例如，通过使用标记，可以对模型进行分类，并在工作区中列出模型时应用筛选器。 此外，如果使用 scikit-learn 框架标记此模型，则可简化将其部署为 Web 服务的过程。
+
+复制以下代码，然后将其粘贴到笔记本中的新“代码单元格”。
 
 ```python
 import sklearn
@@ -150,21 +153,21 @@ print('Name:', model.name)
 print('Version:', model.version)
 ```
 
-还可以通过导航到左侧菜单中的“终结点”来查看 Azure 机器学习工作室中的模型：
+你还可以在 Azure 机器学习工作室中查看模型。 在左侧菜单中选择“模型”：
 
-:::image type="content" source="media/tutorial-power-bi/model.png" alt-text="显示模型的屏幕截图":::
+:::image type="content" source="media/tutorial-power-bi/model.png" alt-text="显示如何查看模型的屏幕截图。":::
 
 ### <a name="define-the-scoring-script"></a>定义评分脚本
 
-部署要集成到 Microsoft Power BI 的模型时，需要定义 Python 评分脚本和自定义环境。 评分脚本包含两个函数：
+部署要集成到 Power BI 的模型时，需要定义 Python 评分脚本和自定义环境。 评分脚本包含两个函数：
 
-- `init()` - 服务启动后，将执行此函数。 此函数会加载模型（请注意，将自动从模型注册表下载模型），并对其进行反序列化。
-- `run(data)` - 使用需要评分的一些输入数据调用服务时，将执行此函数。 
+- 当服务启动时，`init()` 函数将运行。 它会加载模型（从模型注册表自动下载），并对其进行反序列化。
+- 当对服务的调用包含需要评分的输入数据时，`run(data)` 函数将运行。 
 
 >[!NOTE]
-> 我们使用 Python 修饰器来定义输入和输出数据的架构，这对于 Microsoft Power BI 集成发挥作用非常重要。
+> 本文使用 Python 修饰器来定义输入和输出数据的架构。 此设置对于 Power BI 集成非常重要。
 
-将以下代码复制并粘贴到笔记本中的新“代码单元格”。 下面的代码片段具有一个单元格魔术，它将代码写入名为 score.py 的文件中。
+复制以下代码并将其粘贴到笔记本中的新“代码单元格”。 以下代码片段具有单元格 magic，可将代码写入名为 score.py 的文件中。
 
 ```python
 %%writefile score.py
@@ -219,7 +222,7 @@ def run(data):
         result = model.predict(data)
         print("result.....")
         print(result)
-    # You can return any data type, as long as it is JSON serializable.
+    # You can return any data type, as long as it can be serialized by JSON.
         return result.tolist()
     except Exception as e:
         error = str(e)
@@ -228,9 +231,9 @@ def run(data):
 
 ### <a name="define-the-custom-environment"></a>定义自定义环境
 
-接下来，我们需要定义对模型进行评分的环境 - 我们需要在此环境中定义上面定义的评分脚本 (score.py) 所需的 Python 包（如 pandas、scikit-learn 等）。
+接下来，定义环境以对模型进行评分。 在环境中，定义评分脚本 (score.py) 所需的 Python 包，例如 pandas 和 scikit-learn。
 
-若要定义环境，请将以下代码复制并粘贴到笔记本中的新“代码单元格”：
+若要定义环境，请复制以下代码并将其粘贴到笔记本中的新“代码单元格”。
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -252,7 +255,7 @@ inference_config = InferenceConfig(entry_script='./score.py',environment=environ
 
 ### <a name="deploy-the-model"></a>部署模型
 
-若要部署模型，请将以下代码复制并粘贴到笔记本中的新“代码单元格”：
+若要部署模型，请复制以下代码并将其粘贴到笔记本中的新“代码单元格”：
 
 ```python
 service_name = 'my-diabetes-model'
@@ -262,9 +265,9 @@ service.wait_for_deployment(show_output=True)
 ```
 
 >[!NOTE]
-> 部署服务大约需要 2-4 分钟。
+> 该服务可能需要 2 到 4 分钟才能完成部署。
 
-应会看到已成功部署服务的以下输出：
+如果服务成功部署，则应会看到以下输出：
 
 ```txt
 Tips: You can try get_logs(): https://aka.ms/debugimage#dockerlog or local deployment: https://aka.ms/debugimage#debug-locally to debug if deployment takes longer than 10 minutes.
@@ -273,11 +276,11 @@ Succeeded
 ACI service creation operation finished, operation "Succeeded"
 ```
 
-还可以通过导航到左侧菜单中的“终结点”来查看 Azure 机器学习工作室中的服务：
+你还可以在 Azure 机器学习工作室中查看服务。 在左侧菜单中选择“终结点”：
 
-:::image type="content" source="media/tutorial-power-bi/endpoint.png" alt-text="显示终结点的屏幕截图":::
+:::image type="content" source="media/tutorial-power-bi/endpoint.png" alt-text="显示如何查看服务的屏幕截图。":::
 
-建议你测试 Web 服务，以确保其按预期运行。 通过在 Azure 机器学习工作室的左侧菜单中选择“笔记本”导航回笔记本。 将以下代码复制并粘贴到笔记本中的新“代码单元格”以测试服务：
+建议你测试 Web 服务，以确保其按预期运行。 若要返回笔记本，请在 Azure 机器学习工作室中的左侧菜单中，选择“Notebooks”。 然后复制以下代码并将其粘贴到笔记本中的新“代码单元格”以测试服务。
 
 ```python
 import json
@@ -293,11 +296,11 @@ output = service.run(input_payload)
 print(output)
 ```
 
-输出应类似于以下 json 结构：`{'predict': [[205.59], [68.84]]}`。
+输出应类似于此 JSON 结构：`{'predict': [[205.59], [68.84]]}`。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解如何生成和部署模型，使其可供 Microsoft Power BI 使用。 在下一部分中，你将了解如何在 Power BI 报表中使用此模型。
+在本教程中，你已了解如何生成和部署模型，使其可供 Power BI 使用。 在下一部分中，你将了解如何在 Power BI 报表中使用此模型。
 
 > [!div class="nextstepaction"]
 > [教程：在 Power BI 中使用模型](/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)

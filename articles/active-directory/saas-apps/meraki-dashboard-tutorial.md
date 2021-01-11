@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 0d5b6b7b3cf74ab740dbaeb8d86ab8bbb98e8531
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0c43e085725ceb5db718c9b4c9c9d83787964d63
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356995"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813524"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>教程：Azure Active Directory 与 Meraki Dashboard 的单一登录 (SSO) 集成
 
@@ -132,7 +132,7 @@ ms.locfileid: "97356995"
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮 。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 
     ![用户角色](./media/meraki-dashboard-tutorial/user-role.png)
 
@@ -143,7 +143,15 @@ ms.locfileid: "97356995"
 
 ## <a name="configure-meraki-dashboard-sso"></a>配置 Meraki Dashboard SSO
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Meraki Dashboard。
+1. 若要在 Meraki Dashboard 中自动执行配置，需要通过单击“安装扩展”来安装“我的应用安全登录”浏览器扩展 。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 Meraki Dashboard”会将你定向到 Meraki Dashboard 应用程序。 在此处，请提供管理员凭据以登录到 Meraki Dashboard。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 Meraki Dashboard，请在另一个 Web 浏览器窗口中，以管理员身份登录到 Meraki Dashboard 公司站点。
 
 1. 导航到“组织”   ->   “设置”。
 

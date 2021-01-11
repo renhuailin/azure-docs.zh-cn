@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 12/16/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: d992748e9829993acc28795778baae3eb92e88f3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7ca9b21838d35b54b4ed84d5aaf3aa797b02d9e0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463568"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630762"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>教程：准备部署 Azure Stack Edge Pro R
 
@@ -41,7 +41,7 @@ ms.locfileid: "96463568"
 |  | |
 |**部署教程** |需要完成这些教程，才能在生产环境中部署 Azure Stack Edge Pro R 设备。 |
 |**[1.在 Azure 门户中做好部署设备的准备](azure-stack-edge-pro-r-deploy-prep.md)** |在安装 Azure Stack Edge 物理设备之前创建并配置 Azure Stack Edge 资源。 |
-|**[2.安装设备](azure-stack-edge-pro-r-deploy-install.md)**|拆开物理设备包装，将其装入机架并通过数据线连接它。  |
+|**[2.安装设备](azure-stack-edge-pro-r-deploy-install.md)**|检查物理设备，并通过数据线连接它。  |
 |**[3.连接到设备](azure-stack-edge-pro-r-deploy-connect.md)** |安装设备后，连接到设备本地 Web UI。  |
 |**[4.配置网络设置](azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy.md)** |配置网络，包括设备的计算网络和 Web 代理设置。   |
 |**[5.配置设备设置](azure-stack-edge-pro-r-deploy-set-up-device-update-time.md)** |分配设备名称和 DNS 域，配置更新服务器和设备时间。 |

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/15/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 7bb74732074482c12d3bc760e259bb014ccf006f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d9e118620cb38e94cfc18d01d31888ac0a444bb7
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179225"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813422"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ekarda 的集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "96179225"
 * 在 Azure AD 中控制谁有权访问 ekarda。
 * 让用户使用其 Azure AD 帐户自动登录 ekarda。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解软件即服务 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[什么是单一登录 (SSO)？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,13 +39,12 @@ ms.locfileid: "96179225"
 
 * ekarda 支持 SP 和 IdP 发起的 SSO。
 * ekarda 支持实时用户预配。
-* 配置 ekarda 后，可强制实施会话控制。 此预防措施可实时保护组织的敏感数据免于外泄和渗透。 会话控制扩展自条件访问应用控制。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-ekarda-from-the-gallery"></a>从库中添加 ekarda
 
 若要配置 ekarda 与 Azure AD 的集成，请从库中将 ekarda 添加到托管 SaaS 应用列表：
 
-1. 使用工作或学校帐户或者个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或者个人 Microsoft 帐户登录到 Azure 门户。
 
 1. 在左侧窗格中选择“Azure Active Directory”服务。 
 1. 转到“企业应用程序”，并选择“所有应用程序”。 
@@ -55,11 +52,11 @@ ms.locfileid: "96179225"
 1. 在“从库中添加”部分的搜索框中，键入“ekarda” 。
 1. 在结果面板中选择“ekarda”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-ekarda"></a>配置并测试 ekarda 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-ekarda"></a>配置并测试 ekarda 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置和测试 ekarda 的 Azure AD SSO。 要使 SSO 正常工作，需要在 Azure AD 用户与 ekarda 中的相关用户之间建立链接关系。
 
-若要配置并测试 ekarda 的 Azure AD SSO，请完成以下步骤：
+若要配置并测试 ekarda 的 Azure AD SSO，请执行以下步骤：
 
 1. [配置 Azure AD SSO](#configure-azure-ad-sso)，使用户能够使用此功能。
 
@@ -73,7 +70,7 @@ ms.locfileid: "96179225"
 
 在 Azure 门户中执行以下步骤来启用 Azure AD SSO：
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 Azure 门户。
 1. 在 ekarda 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页面上，选择铅笔图标以编辑“基本 SAML 配置”设置 。
@@ -95,7 +92,7 @@ ms.locfileid: "96179225"
 
 1. 如果要在 SP 发起的模式下配置应用程序，选择“设置其他 URL”并执行以下步骤：
 
-    * 在“登录 URL”文本框中，使用以下模式键入 URL：`https://my.ekarda.com/users/saml_sso/<COMPANY_ID>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://my.ekarda.com/users/saml_sso/<COMPANY_ID>`
 
     > [!NOTE]
     > 前两个步骤中的值不是实际值。 请使用实际的标识符、回复 URL 和登录 URL 值更新这些值。 请联系 [ekarda 客户端支持团队](mailto:contact@ekarda.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -114,7 +111,7 @@ ms.locfileid: "96179225"
 
 1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。
 
-1. 选择屏幕顶部的“新建用户”。
+1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，输入 `B.Simon@contoso.com`。
@@ -129,19 +126,24 @@ ms.locfileid: "96179225"
 1. 在应用程序列表中，选择“ekarda”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
-   ![“管理”部分的屏幕截图，其中突出显示了“用户和组”。](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
-    ![“用户和组”部分的屏幕截图，其中已突出显示“添加用户”。](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中，从用户列表中选择“B.Simon”。   然后选择屏幕底部的“选择”。
-1. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。 然后选择屏幕底部的“选择”。
-1. 在“添加分配”对话框中选择“分配”。  
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中选择“分配”。
 
 ## <a name="configure-ekarda-sso"></a>配置 ekarda SSO
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录 ekarda 公司站点。
+1. 若要在 ekarda 中自动执行配置，需要通过单击“安装扩展”来安装“我的应用安全登录”浏览器扩展 。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 ekarda”会将你定向到 ekarda 应用程序。 在此处提供管理员凭据以登录到 ekarda。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-6。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 ekarda，请在另一个 Web 浏览器窗口中，以管理员身份登录到 ekarda 公司站点。
+
 1. 选择“管理” > “我的帐户” 。
 
     ![ekarda 站点 UI 的屏幕截图，其中突出显示了“管理员”菜单上的“我的帐户”。](./media/ekarda-tutorial/ekarda.png)
@@ -166,16 +168,20 @@ ms.locfileid: "96179225"
 
 ## <a name="test-sso"></a>测试 SSO
 
-本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-在“我的应用”门户中选择 ekarda 磁贴时，应自动登录到已为其设置 SSO 的 ekarda 站点。 有关“我的应用”门户的详细信息，请参阅[“我的应用”门户简介](../user-help/my-apps-portal-end-user-access.md)。
+#### <a name="sp-initiated"></a>SP 启动的：
 
-## <a name="additional-resources"></a>其他资源
+* 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 ekarda 登录 URL，可以从那里启动登录流。
 
-* [用于将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
-* [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
-* [通过 Azure AD 试用 ekarda](https://aad.portal.azure.com/)
-* 使用 [ekarda 的企业 eCard 解决方案](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise)预配任意数量的员工，将具有公司徽标品牌的 eCard 发送给其客户和同事。 详细了解如何[设置 ekarda 作为 SSO 解决方案](https://support.ekarda.com/#SSO-Implementation)。
-* [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
-* [如何通过高级可见性和控制保护 ekarda](/cloud-app-security/proxy-intro-aad)
+* 直接转到 ekarda 登录 URL，并从那里启动登录流。
+
+#### <a name="idp-initiated"></a>IDP 启动的：
+
+* 在 Azure 门户中单击“测试此应用程序”后，应该会自动登录到为其设置了 SSO 的 ekarda
+
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 ekarda 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 ekarda。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+
+## <a name="next-steps"></a>后续步骤
+
+配置 ekarda 后，可强制实施会话控制。 此预防措施可实时保护组织的敏感数据免于外泄和渗透。 会话控制扩展自条件访问应用控制。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

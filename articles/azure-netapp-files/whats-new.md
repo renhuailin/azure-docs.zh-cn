@@ -12,18 +12,32 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/05/2020
+ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 3f13d997f73e9737b8770eec7e0742d50bf1abb8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: bba3dce2a2a18888cb88f4cf8b33cd48d6a4cd69
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421696"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631153"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp 文件中的新增功能
 
 Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强功能。 
+
+## <a name="december-2020"></a>2020 年 12 月
+
+* [Azure 应用程序一致性快照工具](azacsnap-introduction.md)（公共预览版）    
+
+    Azure 应用程序一致性快照工具 (AzAcSnap) 是一款命令行工具，你可用它来简化 Linux 环境（例如 SUSE 和 RHEL）中第三方数据库 (SAP HANA) 的数据保护。   
+
+    AzAcSnap 会使用 Azure NetApp 文件和 Azure 大型实例中的卷快照和复制功能。 它提供以下优势：
+
+    * 应用程序一致性数据保护 
+    * 数据库目录管理 
+    * 即席卷保护 
+    * 克隆存储卷 
+    * 支持灾难恢复 
 
 ## <a name="november-2020"></a>2020 年 11 月
 

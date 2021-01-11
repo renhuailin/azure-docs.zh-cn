@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 05ac0f78345e1c1d7643f24410d53b209ab7c375
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 62a1f43fb73f0eda77ebb8f62f64c95ff4ad37a1
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574150"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734192"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>教程：在你的开发环境中开始使用 Azure 机器学习（第 1 部分，共 4 部分）
 
@@ -65,6 +65,9 @@ tutorial
 
 - `tutorial`：项目的顶级目录。
 - `.azureml`：用于存储 Azure 机器学习配置文件的隐藏子目录。
+
+> [!TIP]
+> 如果你使用的是 Mac，请在查找器窗口中使用 Command+Shift+. 来切换功能以查看和创建以点开头的目录。  或使用命令终端创建目录。
 
 
 > [!div class="nextstepaction"]

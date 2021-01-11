@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/24/2020
+ms.date: 12/17/2020
 ms.author: jeedes
-ms.openlocfilehash: d232048cbc5592b9b0fcacea6ee44e00e8d671e2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7275bd8bc51d5f2889c7fc9365e9187040049876
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455827"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722243"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Clever 集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "92455827"
 * 在 Azure AD 中控制谁有权访问 Clever。
 * 让用户使用其 Azure AD 帐户自动登录到 Clever。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +38,6 @@ ms.locfileid: "92455827"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Clever 支持 **SP** 发起的 SSO
-* 配置 Concur 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -49,9 +46,9 @@ ms.locfileid: "92455827"
 
 若要配置 Clever 与 Azure AD 的集成，需要从库中将 Clever 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Clever”。
 1. 在结果面板中选择“Clever”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -74,24 +71,24 @@ ms.locfileid: "92455827"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 “Clever”应用程序集成页上，找到“管理”部分，选择“单一登录”。
+1. 在 Azure 门户的“Clever”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://clever.com/in/<companyname>` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://clever.com/in/<companyname>`
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://clever.com/oauth/saml/metadata.xml`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://clever.com/<companyname>`
+    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://clever.com/<companyname>`
     
     > [!NOTE]
     >  这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 请联系 [Clever 客户端支持团队](https://clever.com/about/contact/)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -100,10 +97,10 @@ ms.locfileid: "92455827"
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”。
+1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -114,42 +111,14 @@ ms.locfileid: "92455827"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“Clever”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-clever-sso"></a>配置 Clever SSO
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Clever 公司站点。
-
-1. 在工具栏中，单击“即时登录”。
-
-    ![即时登录](./media/clever-tutorial/ic798984.png "即时登录")
-
-    > [!NOTE]
-    > 在可以测试单一登录之前，你必须联系 [Clever 客户支持团队](https://clever.com/about/contact/)，以在后端启用 Microsoft 365 SSO。
-
-1. 在“即时登录”页上，执行以下步骤：
- 
-    ![“即时登录”页中的 SSO 配置](./media/clever-tutorial/ic798985.png "即时登录")
-
-    a. 键入“登录 URL”。
-
-    >[!NOTE]
-    >“登录 URL”是一个自定义值。 请联系 [Clever 客户端支持团队](https://clever.com/about/contact/)来获取此值。
-
-    b. 对于“标识系统”，选择“ADFS”。
-
-    c. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的 **应用联合元数据 URL** 值。
-
-    d. 单击“ **保存**”。
+按照[链接](https://support.clever.com/hc/articles/205889768-Single-Sign-On-SSO-Log-in-with-Office-365-Azure-)中提供的说明在 Clever 端配置单一登录。
 
 ### <a name="create-clever-test-user"></a>创建 Clever 测试用户
 
@@ -162,16 +131,14 @@ ms.locfileid: "92455827"
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-单击访问面板中的 Clever 磁贴时，应当会自动登录到为其设置了 SSO 的 Clever。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Clever 登录 URL，可在其中启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+* 直接转到 Clever 登录 URL，并从那里启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Clever 磁贴时，会重定向到 Clever 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
-
-- [通过 Azure AD 试用 Clever](https://aad.portal.azure.com/)
+配置 Clever 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)

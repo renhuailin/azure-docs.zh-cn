@@ -3,19 +3,19 @@ title: Durable Functions 概述 - Azure
 description: Azure Functions 的 Durable Functions 扩展简介。
 author: cgillum
 ms.topic: overview
-ms.date: 03/12/2020
+ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 28c494bf2867ec5d2d3ee99ef7ee45f8181cfd90
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 3725970c982c2d060685bf0b99d12a8fc998f20a
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669246"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763568"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
-*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的一个扩展，可用于在无服务器计算环境中编写有状态函数。 在该扩展中，可以通过编写[业务流程协调程序函数](durable-functions-orchestrations.md)和有状态实体并使用 Azure Functions 编程模型编写[实体函数](durable-functions-entities.md)，来定义有状态工作流。**** 在幕后，该扩展可以管理状态、检查点和重启，使你可以专注于业务逻辑。
+*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的一个扩展，可用于在无服务器计算环境中编写有状态函数。 在该扩展中，可以通过编写[业务流程协调程序函数](durable-functions-orchestrations.md)和有状态实体并使用 Azure Functions 编程模型编写[实体函数](durable-functions-entities.md)，来定义有状态工作流。 在幕后，该扩展可以管理状态、检查点和重启，使你可以专注于业务逻辑。
 
 ## <a name="supported-languages"></a><a name="language-support"></a>支持的语言
 
@@ -23,9 +23,11 @@ Durable Functions 目前支持以下语言：
 
 * **C#**：[预编译的类库](../functions-dotnet-class-library.md)和 [C# 脚本](../functions-reference-csharp.md)。
 * **JavaScript**：仅 Azure Functions 运行时的版本 2.x 支持此语言。 要求使用 1.7.0 版或更高版本的 Durable Functions 扩展。 
-* **Python**：要求使用 1.8.5 版或更高版本的 Durable Functions 扩展。 对 Durable Functions 的支持目前为公共预览版。
+* **Python**：要求使用 2.3.1 版或更高版本的 Durable Functions 扩展。 对 Durable Functions 的支持目前为公共预览版。
 * **F#**：预编译的类库和 F# 脚本。 仅 Azure Functions 运行时的版本 1.x 支持 F# 脚本。
 * **PowerShell**：对 Durable Functions 的支持目前以公共预览版提供。 仅 Azure Functions 运行时的版本 3.x 和 PowerShell 7 支持。 要求使用 2.2.2 版或更高版本的 Durable Functions 扩展。 目前仅支持以下模式：[函数链](#chaining)、[扇出/扇入](#fan-in-out)和[异步 HTTP API](#async-http)。
+
+若要访问最新的功能和更新，建议使用最新版本的 Durable Functions 扩展以及语言特定的 Durable Functions 库。 请详细了解 [Durable Functions 版本](durable-functions-versions.md)。
 
 Durable Functions 的目标是支持所有 [Azure Functions 语言](../supported-languages.md)。 请参阅 [Durable Functions 问题列表](https://github.com/Azure/azure-functions-durable-extension/issues)，了解支持其他语言所需的最新工作状态。
 
@@ -261,7 +263,7 @@ Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
 
 ![HTTP API 模式示意图](./media/durable-functions-concepts/async-http-api.png)
 
-Durable Functions **原生支持**此模式，可以简化甚至消除为了与长时间运行的函数执行进行交互而需要编写的代码。 例如，Durable Functions 快速入门示例（[C#](durable-functions-create-first-csharp.md) 和 [JavaScript](quickstart-js-vscode.md)）演示了可用于启动新业务流程协调程序函数实例的简单 REST 命令。 启动实例后，该扩展会公开 Webhook HTTP API 用于查询业务流程协调程序函数的状态。 
+Durable Functions **原生支持** 此模式，可以简化甚至消除为了与长时间运行的函数执行进行交互而需要编写的代码。 例如，Durable Functions 快速入门示例（[C#](durable-functions-create-first-csharp.md) 和 [JavaScript](quickstart-js-vscode.md)）演示了可用于启动新业务流程协调程序函数实例的简单 REST 命令。 启动实例后，该扩展会公开 Webhook HTTP API 用于查询业务流程协调程序函数的状态。 
 
 以下示例演示用于启动业务流程协调程序和查询其状态的 REST 命令。 为简明起见，实例中省略了一些协议细节。
 
@@ -556,7 +558,7 @@ PowerShell 目前不支持人机交互。
 
 ### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>模式 #6：聚合器（有状态实体）
 
-第六种模式涉及到将一段时间的事件数据聚合到单个可寻址的实体。** 在此模式中，要聚合的数据可来自多个源、可分批传送，也可以分散在较长的时间段。 聚合器可能需要在事件数据抵达时对其执行操作，而外部客户端可能需要查询聚合数据。
+第六种模式涉及到将一段时间的事件数据聚合到单个可寻址的实体。 在此模式中，要聚合的数据可来自多个源、可分批传送，也可以分散在较长的时间段。 聚合器可能需要在事件数据抵达时对其执行操作，而外部客户端可能需要查询聚合数据。
 
 ![聚合器示意图](./media/durable-functions-concepts/aggregator.png)
 
@@ -639,7 +641,7 @@ PowerShell 目前不支持持久性实体。
 
 ---
 
-客户端可以使用[实体客户端绑定](durable-functions-bindings.md#entity-client)将实体函数的操作排入队列（也称为“信号发送”）。**
+客户端可以使用[实体客户端绑定](durable-functions-bindings.md#entity-client)将实体函数的操作排入队列（也称为“信号发送”）。
 
 # <a name="c"></a>[C#](#tab/csharp)
 

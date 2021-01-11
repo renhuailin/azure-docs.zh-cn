@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f3de29e5f046da56638876a35ca983792a4ce6c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d2e7935de23dcbdccfa6f4efa602dbab42931075
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319123"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-360-online"></a>教程：Azure Active Directory 与 360 Online 集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "92319123"
 
 4. 在搜索框中，键入“360 Online”  ，从结果面板中选择“360 Online”  ，再单击“添加”  按钮，添加此应用程序。
 
-     ![结果列表中的 360 Online](common/search-new-app.png)
+    ![结果列表中的 360 Online](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -89,7 +89,7 @@ ms.locfileid: "92319123"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "92319123"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
@@ -177,7 +177,7 @@ ms.locfileid: "92319123"
 
 ### <a name="create-360-online-test-user"></a>创建 360 Online 测试用户
 
-在本部分中，将在 360 Online 中创建一个名为“Britta Simon”的用户。 与  [360 Online 支持团队](mailto:360online@software-innovation.com)协作，共同在 360 Online 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 360 Online 中创建一个名为“Britta Simon”的用户。 与 [360 Online 支持团队](mailto:360online@software-innovation.com)协作，将用户添加到 360 Online 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

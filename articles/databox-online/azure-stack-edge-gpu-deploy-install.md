@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 12/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 52f0bcbb332b5d5e47440accff9d9895dcef7056
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 830e0a8733d3f5a49cede09b331dc0298ee1ce4d
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449370"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734689"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 安装 Azure Stack Edge Pro
 
@@ -166,7 +166,7 @@ ms.locfileid: "96449370"
 - 至少一根用于连接管理接口的 1-GbE RJ-45 网线。 设备上有两个 1-GbE 网络接口：一个用于管理，一个用于数据。
 - 一根 25-GbE SFP+ 铜缆用于配置每个数据网络接口。 至少需要将一个数据网络接口（端口 2、端口 3、端口 4、端口 5 或端口 6）连接到 Internet（在连接到 Azure 的情况下）。  
 - 可以取用两个配电单元（建议）。
-- 至少一个 1-GbE 网络交换机，用于将 1-GbE 网络接口连接到 Internet 以获取数据。 若连接的交换机低于 1-GbE，则无法访问本地 Web UI。 若在获取数据时使用 25/10 GbE 接口，则需要 25-GbE 或 10-GbE 交换机。 
+- 至少一个 1-GbE 网络交换机，用于将 1-GbE 网络接口连接到 Internet 以获取数据。 若连接的交换机低于 1 GbE，则无法访问本地 Web UI。 若在获取数据时使用 25/10 GbE 接口，则需要 25-GbE 或 10-GbE 交换机。
 
 > [!NOTE]
 > - 如果仅连接一个数据网络接口，我们建议使用 25/10-GbE 网络接口（例如端口 3、端口 4、端口 5 或端口 6）将数据发送到 Azure。 
@@ -188,12 +188,12 @@ ms.locfileid: "96449370"
 
 - 背板有两块对应于 6 个端口的网卡：
 
-    - **自定义 Microsoft Qlogic Cavium 25G NDC 适配器** - 端口 1 到端口 4。
+    - **自定义 Microsoft `Qlogic` Cavium 25G NDC 适配器** - 端口 1 到端口 4。
     - **Mellanox 双端口 25G ConnectX-4 通道网络适配器** - 端口 5 和端口 6。
 
 若要查看这些网卡支持的线缆、交换机和收发器的完整列表，请参阅：
 
-- [Qlogic Cavium 25G NDC 适配器互操作性矩阵](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
+- [`Qlogic` Cavium 25G NDC 适配器互操作性矩阵](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
 - [Mellanox 双端口 25G ConnectX-4 通道网络适配器兼容产品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。  
 
  

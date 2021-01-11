@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/19/2020
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: a71c29032730e0724213f9f5ef17f7336c188741
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 622ead38a62e593e304f49da9a9d3f652a868bde
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516675"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814391"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>教程：Azure Active Directory 单一登录 (SSO) 与 OpsGenie 的集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "92516675"
 * 在 Azure AD 中控制谁有权访问 OpsGenie。
 * 让用户使用其 Azure AD 帐户自动登录到 OpsGenie。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,39 +38,38 @@ ms.locfileid: "92516675"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * OpsGenie 支持 IDP 发起的 SSO 
-* 配置 OpsGenie 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-opsgenie-from-the-gallery"></a>从库中添加 OpsGenie
 
 要通过配置将 OpsGenie 集成到 Azure AD 中，需从库将 OpsGenie 添加到托管式 SaaS 应用的列表中。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 OpsGenie。  
 1. 在结果面板中选择“OpsGenie”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-opsgenie"></a>为 OpsGenie 配置并测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-opsgenie"></a>配置并测试 OpsGenie 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置并测试 OpsGenie 的 Azure AD SSO。  若要使 SSO 有效，需要在 Azure AD 用户与 OpsGenie 相关用户之间建立关联。
 
-若要配置并测试 OpsGenie 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 OpsGenie 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 OpsGenie SSO](#configure-opsgenie-sso)** - 在应用程序端配置单一登录设置。
-    * **[创建 OpsGenie 测试用户](#create-opsgenie-test-user)** - 在 OpsGenie 中创建 B.Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
+    1. **[创建 OpsGenie 测试用户](#create-opsgenie-test-user)** - 在 OpsGenie 中创建 B.Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“OpsGenie”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 Azure 门户中的“OpsGenie”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -97,13 +94,13 @@ ms.locfileid: "92516675"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
 1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -113,19 +110,23 @@ ms.locfileid: "92516675"
 1. 在应用程序列表中，选择“OpsGenie”。 
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 
-   ![“用户和组”链接](common/users-groups-blade.png)
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-opsgenie-sso"></a>配置 OpsGenie SSO
 
-1. 打开另一个浏览器实例，然后以管理员身份登录到 OpsGenie。
+1. 若要在 OpsGenie 中自动执行配置，需要通过单击“安装扩展”，安装“我的应用安全登录”浏览器扩展 。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“安装 OpsGenie”会将你定向到 OpsGenie 应用程序。 在此处提供管理员凭据以登录到 OpsGenie。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 OpsGenie，请在另一个 Web 浏览器窗口中，以管理员身份登录到 OpsGenie 公司站点。
 
 2. 单击“设置”，并单击“单一登录”选项卡。  
    
@@ -175,25 +176,19 @@ ms.locfileid: "92516675"
    
     b. 在“全名”文本框中，键入 B.Simon。  
    
-    c. 单击“ **保存** ”。 
+    c. 单击“ **保存**”。 
 
 > [!NOTE]
 > B.Simon 会收到一封电子邮件，其中包含个人资料设置说明。
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-单击访问面板中的 OpsGenie 磁贴时，应当会自动登录到你为其设置了 SSO 的 OpsGenie。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 OpsGenie
 
-## <a name="additional-resources"></a>其他资源
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 OpsGenie 磁贴时，你应当会自动登录到为其设置了 SSO 的 OpsGenie。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+## <a name="next-steps"></a>后续步骤
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
-
-- [在 Azure AD 中试用 OpsGenie](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
+* 配置 OpsGenie 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

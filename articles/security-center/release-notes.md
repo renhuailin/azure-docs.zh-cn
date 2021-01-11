@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 12/28/2020
 ms.author: memildin
-ms.openlocfilehash: 484a8c7c230863f230719ddaf4e98a6248512bcc
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: f0015177332aa07ed65f9d0345a11bfdad170104
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560247"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862617"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -40,6 +40,12 @@ ms.locfileid: "97560247"
 - [全局管理员现在可以授予自己的租户级别权限](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [两项新的 Azure Defender 计划：适用于 DNS 的 Azure Defender 和适用于资源管理器的 Azure Defender（预览版）](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 - [Azure 门户中的新安全警报页（预览版）](#new-security-alerts-page-in-the-azure-portal-preview)
+- [在 Azure SQL 数据库和 SQL 托管实例中更新了安全中心体验](#revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance)
+- [更新了资产清单工具和筛选器](#asset-inventory-tools-and-filters-updated)
+- [有关请求 SSL 证书的 Web 应用的建议不再属于安全功能分数](#recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score)
+- [建议页面包含用于环境、严重性和可用响应的新筛选器](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)
+- [连续导出获得新的数据类型和改进的 deployifnotexist 策略](#continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies)
+
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>适用于计算机上的 SQL 服务器的 Azure Defender 现已正式发布
 
@@ -114,6 +120,87 @@ Azure 安全中心的安全警报页经过重新设计，可提供以下内容�
 :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="带有新预览版警报体验链接的横幅":::
 
 若要通过新的警报体验创建示例警报，请参阅[生成 Azure Defender 示例警报](security-center-alert-validation.md#generate-sample-azure-defender-alerts)。
+
+
+### <a name="revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance"></a>在 Azure SQL 数据库和 SQL 托管实例中更新了安全中心体验 
+
+通过 SQL 中的安全中心体验，可访问安全中心和 Azure Defender for SQL 的下列功能：
+
+- **安全建议** - 安全中心会定期分析所有已连接的 Azure 资源的安全状态，以识别潜在的安全配置错误。 然后，它会提供建议来指导如何修正这些漏洞和提升组织的安全状况。
+- **安全警报** - 一种检测服务，用于持续监视 Azure SQL 活动是否存在 SQL 注入、暴力攻击和特权滥用等威胁。 该服务会在安全中心触发面向操作的详细安全警报，并提供选项便于继续使用 Azure Sentinel（Microsoft 的 Azure 原生 SIEM 解决方案）进行调查。
+- **结果** - 一种漏洞评估服务，可持续监视 Azure SQL 配置并帮助修正漏洞。 评估扫描会提供 Azure SQL 安全状态的概述以及详细的安全扫描结果。     
+
+:::image type="content" source="media/release-notes/azure-security-center-experience-in-sql.png" alt-text="Azure 安全中心适用于 SQL 的安全功能在 Azure SQL 中可用":::
+
+
+### <a name="asset-inventory-tools-and-filters-updated"></a>更新了资产清单工具和筛选器
+
+Azure 安全中心的“清单”页面已刷新，它具有以下更改：
+
+- 工具栏上添加了“指南和反馈”。 该操作会打开一个窗格，其中有指向相关信息和工具的链接。 
+- 可用于资源的默认筛选器中添加了“订阅筛选器”。
+- “打开查询”链接，它用于将当前筛选器选项作为 Azure Resource Graph 查询（以前称为“在 Resource Graph 资源管理器中查看”）打开。
+- 每个筛选器都有了运算符选项。 现在，可从“=”之外的其他逻辑运算符中进行选择。 例如，你可能想要查找所有具有活动建议且标题包含“encrypt”字符串的资源。 
+
+    :::image type="content" source="media/release-notes/inventory-filter-operators.png" alt-text="资产清单筛选器中运算符选项的控件":::
+
+有关清单的详细信息，请参阅[利用资产清单浏览和管理资源](asset-inventory.md)。
+
+
+### <a name="recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score"></a>有关请求 SSL 证书的 Web 应用的建议不再属于安全功能分数
+
+“Web 应用应请求一个 SSL 证书用于所有传入请求”这一建议已从“管理访问和权限”安全控制（最多值 4 分）移至“实现安全最佳做法”（不值任何分数） 。 
+
+确保 Web 应用请求证书肯定会使其更安全。 但是，对于面向公众的 Web 应用，这是不相关的。 如果通过 HTTP 而不是 HTTPS 访问站点，不会收到任何客户端证书。 因此，如果应用程序需要客户端证书，则你不应允许通过 HTTP 对应用程序发出请求。 有关详细信息，请参阅[为 Azure 应用服务配置 TLS 相互身份验证](../app-service/app-service-web-configure-tls-mutual-auth.md)。
+
+在此更改后，此建议现在已是推荐的最佳做法，不会影响你的分数。 
+
+请在[安全控件及其建议](secure-score-security-controls.md#security-controls-and-their-recommendations)中了解每个安全控件中的建议。
+
+
+### <a name="recommendations-page-has-new-filters-for-environment-severity-and-available-responses"></a>建议页面包含用于环境、严重性和可用响应的新筛选器
+
+Azure 安全中心会监视所有已连接的资源并生成安全建议。 可使用这些建议来强化你的混合云状况，并跟踪与组织、行业和国家/地区相关的策略和标准的合规性。
+
+随着安全中心不断扩展其覆盖范围和功能，安全建议的列表每月都在扩充。 例如，请参阅[添加了 29 条预览建议，以扩大 Azure 安全基准的覆盖范围](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)。
+
+随着列表的扩充，需要能够筛选出最感兴趣的建议。 11 月，我们在“建议”页面中添加了筛选器（请参阅[建议列表现包含筛选器](#recommendations-list-now-includes-filters)）。
+
+本月添加的筛选器提供了一些选项，可根据以下条件优化建议列表：
+
+- 环境 - 查看有关 AWS、GCP 或 Azure 资源（或任何组合）的建议
+- 严重性 - 根据安全中心设置的严重性分类来查看建议
+- 响应操作 - 根据安全中心响应选项的可用性来查看建议：快速修复、拒绝和强制实施
+
+    > [!TIP]
+    > “响应操作”筛选器替代了“可用的快速修复(是/否)”筛选器。 
+    > 
+    > 请详细了解每个响应选项：
+    > - [快速修复修正](security-center-remediate-recommendations.md#quick-fix-remediation)
+    > - [使用“强制执行/拒绝”建议防止错误配置](prevent-misconfigurations.md)
+
+:::image type="content" source="./media/release-notes/added-recommendations-filters.png" alt-text="建议会按安全控制分组" lightbox="./media/release-notes/added-recommendations-filters.png":::
+
+### <a name="continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies"></a>连续导出获得新的数据类型和改进的 deployifnotexist 策略
+
+借助 Azure 安全中心的连续导出工具，可导出安全中心的建议和警报，以便与环境中的其他监视工具一起使用。
+
+“连续导出”使你可以完全自定义将要导出的内容，以及要导出到的位置 。 有关完整详细信息，请参阅[连续导出安全中心数据](continuous-export.md)。
+
+这些工具已通过以下方式进行了增强和扩展：
+
+- **连续导出的 deployifnotexist 策略已得到增强**。 策略目前执行以下操作：
+
+    - **检查配置是否已启用。** 如果未启用，策略将显示为不合规，并将创建合规的资源。 若要详细了解所提供的 Azure Policy 模板，请参阅[设置连续导出](continuous-export.md#set-up-a-continuous-export)的“使用 Azure Policy 选项卡大规模部署”。
+
+    - **支持导出安全结果。** 使用 Azure 策略模板时，可配置连续导出，使其包含结果。 这在导出具有子建议的建议时非常重要，例如漏洞评估扫描程序的结果或针对“应在计算机上安装系统更新”这一父建议的特定系统更新。
+    
+    - **支持导出安全功能分数数据。**
+
+- **已添加合规性评估数据（预览）。** 现在，你可将对法规合规性评估的更新（包括针对任何自定义计划的更新）连续导出到 Log Analytics 工作区或事件中心。 此功能在国家云/主权云上不可用。
+
+    :::image type="content" source="media/release-notes/continuous-export-regulatory-compliance-option.png" alt-text="用于将法规合规性评估信息包含在连续导出数据中的选项。":::
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -464,7 +551,7 @@ Azure 安全中心的资产清单页提供了一个页面，用于查看已连�
 
 当任何资源具有未完成的建议时，它们将显示在清单中。
 
-有关详细信息，请参阅[利用资产清单和管理工具浏览和管理资源](asset-inventory.md)。
+有关详细信息，请参阅[利用资产清单浏览和管理资源](asset-inventory.md)。
 
 
 
@@ -805,7 +892,7 @@ Azure 存储的威胁防护可检测 Azure 存储帐户上的潜在有害活动�
 
     * 在路径末尾使用通配符允许该文件夹和子文件夹中的所有可执行文件
 
-    * 在路径中间使用通配符来启用具有更改的文件夹名称的已知可执行文件名称（例如，包含已知可执行文件的个人用户文件夹，自动生成的文件夹名称等）。
+    * 如果在路径中间使用通配符，则可在变化的文件夹名称中具有已知的可执行文件名称（例如，使用已知可执行文件的个人用户文件夹、自动生成的文件夹名称等）。
 
 
 [详细了解自适应应用程序控制](security-center-adaptive-application.md)。

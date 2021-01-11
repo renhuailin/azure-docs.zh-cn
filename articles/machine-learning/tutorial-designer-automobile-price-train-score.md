@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: ca812fc7548e3c70f1faa1e1ed6a34afda3872af
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 2e46da1657a7473d3ff8cdf4ac43e5341b143455
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575969"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796102"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>教程：使用设计器预测汽车价格
 
@@ -272,7 +272,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
     > [!NOTE]
     > 试验将相似的管道运行组合在一起。 如果多次运行管道，则可以选择相同的试验进行连续运行。
 
-    1. 为“新试验名称”输入一个描述性名称。
+    1. 对于“新试验名称”，输入“Tutorial-CarPrices” 。
 
     1. 选择“提交”。 
     

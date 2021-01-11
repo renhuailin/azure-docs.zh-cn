@@ -7,16 +7,16 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 0c3b86fc823e4b563dc747a5604fcb2e04995fed
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 480051680ea98b82627a9a2b3ea004d9472f7124
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752645"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797088"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
-本文介绍如何通过基于代理的迁移，使用 [Azure Migrate:服务器迁移](migrate-services-overview.md#azure-migrate-server-migration-tool)工具将本地 VMware VM 迁移到 Azure。  还可以使用基于代理的迁移来迁移 VMware VM。 [比较](server-migrate-overview.md#compare-migration-methods)方法。
+本文介绍如何通过基于代理的迁移，使用 [Azure Migrate:服务器迁移](migrate-services-overview.md#azure-migrate-server-migration-tool)工具将本地 VMware VM 迁移到 Azure。  还可以使用无代理迁移来迁移 VMware VM。 [比较](server-migrate-overview.md#compare-migration-methods)方法。
 
 
  在本教程中，你将了解如何执行以下操作：
@@ -253,7 +253,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
     
 13. 在“Azure 混合权益”中：
 
-    - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”  。
+    - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
     - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”  。
 
 14. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性配置（如果在上一步中选定）。 VM 必须符合 [Azure 要求](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)。
@@ -263,7 +263,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
     - **可用性区域**：指定要使用的可用性区域。
     - **可用性集**：指定要使用的可用性集。
 
-15. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”  。
+15. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
     - 可以从复制中排除磁盘。
     - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
 

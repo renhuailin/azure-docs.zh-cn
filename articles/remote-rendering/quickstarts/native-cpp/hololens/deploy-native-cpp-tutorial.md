@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4513a1997dc2955e1c5488a4a3740afa88f51623
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d35d6e75b45c2ea263c2e986c5fc6f414cad16e4
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207268"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724963"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>快速入门：将原生 C++ 示例部署到 HoloLens
 
@@ -39,7 +39,7 @@ ms.locfileid: "92207268"
 
 ## <a name="clone-the-arr-samples-repository"></a>克隆 ARR 示例存储库
 
-第一步，克隆 Git 存储库，其中包含公共的 Azure 远程渲染示例。 打开命令提示符（在 Windows 开始菜单中键入 `cmd`），并切换到要在其中存储 ARR 示例项目的目录。
+第一步是克隆 Git 存储库，其中包含全局 Azure 远程渲染示例。 打开命令提示符（在 Windows 开始菜单中键入 `cmd`），并切换到要在其中存储 ARR 示例项目的目录。
 
 运行以下命令：
 
@@ -70,7 +70,8 @@ C++ HoloLens 教程位于子目录 NativeCpp/HoloLens 中。
     RR::AzureFrontendAccountInfo init;
     init.AccountId = "00000000-0000-0000-0000-000000000000";
     init.AccountKey = "<account key>";
-    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to your region>
+    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+    init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
     m_modelURI = "builtin://Engine";
     m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
     m_frontEnd = RR::ApiHandle(RR::AzureFrontend(init));
@@ -78,9 +79,9 @@ C++ HoloLens 教程位于子目录 NativeCpp/HoloLens 中。
 ```
 
 具体而言，请更改以下值：
-* 更改 `init.AccountId` 和 `init.AccountKey` 以使用帐户数据。 请参阅有关如何[检索帐户信息](../../../how-tos/create-an-account.md#retrieve-the-account-information)的段落。
-* 将 `init.AccountDomain` 字符串中的区域部分更改为 `westus2` 以外的其他区域，例如 `"westeurope.mixedreality.azure.com"`
-* 此外，可以将 `m_sessionOverride` 更改为现有会话 ID。 可在此示例外部创建会话。例如，可使用 [powershell 脚本](../../../samples/powershell-example-scripts.md#script-renderingsessionps1)或直接使用[会话 REST API](../../../how-tos/session-rest-api.md#create-a-session) 执行此操作。
+* 更改 `init.AccountId``init.AccountKey` 和 `init.AccountAuthenticationDomain` 以使用帐户数据。 请参阅有关如何[检索帐户信息](../../../how-tos/create-an-account.md#retrieve-the-account-information)的段落。
+* 对于 `westus2` 以外的其他区域（例如 `"westeurope.mixedreality.azure.com"`），修改 `init.AccountDomain` 字符串的区域部分来指定在何处创建远程渲染会话。
+* 此外，可以将 `m_sessionOverride` 更改为现有会话 ID。 可在此示例外部创建会话，例如通过使用 [PowerShell 脚本](../../../samples/powershell-example-scripts.md#script-renderingsessionps1)或直接使用[会话 REST API](../../../how-tos/session-rest-api.md#create-a-session)。
 当示例应多次运行时，建议在示例外部创建会话。 如果未传入任何会话，则该示例将在每次启动时创建一个新会话，这可能需花费几分钟的时间。
 
 现在可以编译该应用程序了。

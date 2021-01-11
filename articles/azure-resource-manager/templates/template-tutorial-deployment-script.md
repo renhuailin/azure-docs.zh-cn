@@ -8,15 +8,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/14/2020
+ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ec7b951581efd0a25b44d298b1f1bfb997167d88
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589094"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683497"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>教程：使用部署脚本创建自签名证书
 
@@ -34,13 +34,15 @@ ms.locfileid: "97589094"
 > * 调试失败的脚本
 > * 清理资源
 
+有关介绍部署脚本的 Microsoft Learn 模块，请参阅[使用部署脚本扩展 ARM 模板](/learn/modules/extend-resource-manager-template-deployment-scripts/)。
+
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 
 * **包含资源管理器工具扩展的 [Visual Studio Code](https://code.visualstudio.com/)** 。 请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](./quickstart-create-templates-use-visual-studio-code.md)。
 
-* **在订阅级别具有参与者角色的用户分配的托管标识**。 此标识用来执行部署脚本。 若要创建一个标识，请参阅[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 部署模板时需要此标识 ID。 标识符的格式为：
+* 用户分配的托管标识。 此标识用于在脚本中执行特定于 Azure 的操作。 若要创建一个标识，请参阅[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 部署模板时需要此标识 ID。 标识符的格式为：
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -253,7 +255,7 @@ ms.locfileid: "97589094"
 
     `deploymentScripts` 资源依赖于密钥保管库资源和角色分配资源。 它具有以下属性：
 
-    * `identity`：部署脚本使用用户分配的托管标识来执行脚本。
+    * `identity`：部署脚本使用用户分配的托管标识在脚本中执行操作。
     * `kind`：指定脚本类型。 目前仅支持 PowerShell 脚本。
     * `forceUpdateTag`：确定是否应执行部署脚本，即使脚本源未更改。 可以是当前时间戳或 GUID。 若要了解详细信息，请参阅[多次运行脚本](./deployment-script-template.md#run-script-more-than-once)。
     * `azPowerShellVersion`：指定要使用的 Azure PowerShell 模块版本。 目前，部署脚本支持版本 2.7.0、2.8.0 和 3.0.0。
@@ -322,7 +324,7 @@ ms.locfileid: "97589094"
 
 ## <a name="debug-the-failed-script"></a>调试失败的脚本
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 打开资源组。 资源组是追加了 rg 的项目名称。 你会看到，该资源组中总共有两个其他资源。 这些资源称为 *部署脚本资源*。
 
     ![资源管理器模板部署脚本资源](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)

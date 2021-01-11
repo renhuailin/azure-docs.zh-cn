@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 572c657dd44db73b1401c72f0750fe8e000985ac
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 8d0d4726763e36bd889c2f564d116d454b2f62b9
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734347"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740600"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>将非 Azure 计算机连接到安全中心
 
@@ -139,4 +139,4 @@ ms.locfileid: "94734347"
 
 本页介绍了如何将非 Azure 计算机添加到 Azure 安全中心。 若要监视其状态，请使用以下页面中介绍的清单工具：
 
-- [利用资产清单和管理工具浏览和管理资源](asset-inventory.md)
+- [使用资产清单浏览和管理资源](asset-inventory.md)

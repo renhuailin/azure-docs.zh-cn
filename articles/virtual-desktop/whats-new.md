@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: e267de136271991446444a47a470dd52789b3613
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: e42e49f69a159bf3bfdc732d41dc66a9a707f42f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533955"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617351"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虚拟桌面中有哪些新增功能？
 
@@ -49,7 +49,7 @@ RDP Shortpath 使用点到站点和站点到站点 VPN 和 ExpressRoute 引入�
 
 ### <a name="azure-advisor-updates"></a>Azure 顾问更新
 
-Azure 顾问现在提供有关 Windows 虚拟桌面中邻近指导的新建议。 有关详细信息，请访问 [Azure 网站](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/)。
+现在，Azure 顾问对 Windows 虚拟桌面中的邻近性指导有新的建议，而对于深度优先负载均衡主机池中的性能优化也有新的建议。 有关详细信息，请访问 [Azure 网站](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/)。
 
 ## <a name="october-2020"></a>2020 年 10 月
 

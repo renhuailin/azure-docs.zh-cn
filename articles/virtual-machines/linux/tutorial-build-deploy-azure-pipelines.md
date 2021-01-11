@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 6bc6776df889c5c8ccc6acfe5764549ccf7354a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320194"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739699"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>教程：使用 Azure DevOps Services 和 Azure Pipelines 将应用部署到 Azure 中的 Linux 虚拟机
 
@@ -91,7 +91,7 @@ https://github.com/azure-devops/fabrikam-node
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
-若要安装 javascript 应用或 Node.js 应用，需要使用包含 Nginx Web 服务器的 Linux VM 来部署应用。
+若要安装 JavaScript 应用或 Node.js 应用，需要使用包含 Nginx Web 服务器的 Linux VM 来部署应用。
 如果你没有包含 Nginx 的 Linux VM，请使用[此示例](./quick-create-cli.md)中的步骤在 Azure 中创建一个。
 
 * * * 
@@ -118,7 +118,7 @@ https://github.com/azure-devops/fabrikam-node
 
     ![VMresource_view](media/tutorial-deploy-vms-azure-pipelines/vm-resourceview.png)
 
-9. 可以在交互式 PS 注册脚本中将标记添加到 VM，（或者）也可以单击“资源”视图中每个 VM 资源末尾的三个点，在资源视图中添加/删除相同的标记。
+9. 可以在交互式 PowerShell 注册脚本中将标记添加到 VM，（或者）也可以单击“资源”视图中每个 VM 资源末尾的三个点，在资源视图中添加/删除相同的标记。
 
    借助分配的标记，可在部署作业中使用环境时限制特定虚拟机的部署。 每个标记最多为 256 个字符，但你可以使用的标记数量没有限制。
 
@@ -202,7 +202,7 @@ jobs:
 
 - 查看管道以了解其功能。 请确保所有默认输入都适用于你的代码。
 
-- 选择“保存并运行”，再选择“直接提交到主分支”，然后再次选择“保存并运行”    。
+- 选择“保存并运行”，再选择“直接提交到主分支”，然后再次选择“保存并运行”  。
 
 - 开始新运行。 请等待运行完成。
 
@@ -224,7 +224,7 @@ jobs:
 2. 可以从环境中选择特定的虚拟机集来接收部署，方法是指定为环境中的每个虚拟机定义的“标记”  。
 [此处](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) 是部署作业的完整 YAML 架构。
 
-3. 可以指定`runOnce` 或 `rolling` 作为部署策略。 
+3. 可以指定 `runOnce` 或 `rolling` 作为部署策略。 
 
    `runOnce` 是最简单的部署策略，其中所有生命周期挂钩（即 `preDeploy` `deploy`、`routeTraffic` 和 `postRouteTraffic`）都执行一次。 然后，执行 `on:` `success` 或 `on:` `failure`。
 

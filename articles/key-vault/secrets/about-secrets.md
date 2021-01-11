@@ -1,6 +1,6 @@
 ---
 title: 关于 Azure Key Vault 机密 - Azure Key Vault
-description: Azure Key Vault REST 接口概述以及机密的开发人员详细信息。
+description: Azure Key Vault 机密概述。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4ded48fe8f04d2cdba40650974fd5002d659e381
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82930465"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705262"
 ---
 # <a name="about-azure-key-vault-secrets"></a>关于 Azure Key Vault 机密
 
-Key Vault 为机密（例如密码和数据库连接字符串）提供安全存储。
+[Key Vault](../general/overview.md) 提供了安全的通用存储机密，例如密码和数据库连接字符串。
 
 从开发人员的角度来看，Key Vault API 接受机密值并将其作为字符串返回。 在内部，Key Vault 存储机密并将其作为八位字节序列（8 位字节）管理，每个字节的最大大小为 25k 字节。 Key Vault 服务不提供机密的语义。 它只是接受数据，然后加密和存储该数据，最后返回机密标识符（“id”）。 该标识符可用于稍后检索机密。  
 
@@ -43,6 +43,8 @@ Key Vault 中的所有机密均已加密存储。 此加密是透明的，不需
 
 - *created*：IntDate，可选。 created 属性指示创建此版本的机密的时间。 如果机密在添加此属性之前创建，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
 - *updated*：IntDate，可选。 updated 属性指示更新此版本的机密的时间。 如果机密上次更新的时间早于添加此属性的时间，此值为 NULL。 其值必须是包含 IntDate 值的数字。
+
+有关每种密钥保管库对象类型的通用属性的信息，请参阅 [Azure Key Vault 密钥、机密和证书概述](../general/about-keys-secrets-certificates.md)
 
 ### <a name="date-time-controlled-operations"></a>日期时间控制的操作
 
@@ -68,6 +70,12 @@ Key Vault 中托管的机密的访问控制是在包含这些机密的 Key Vault
 
 有关使用机密的详细信息，请参阅 [Key Vault REST API 中的机密操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。 
 
+用于在 Key Vault 中控制访问的操作指南：
+- [使用 CLI 分配 Key Vault 访问策略](../general/assign-access-policy-cli.md)
+- [使用 PowerShell 分配 Key Vault 访问策略](../general/assign-access-policy-powershell.md)
+- [使用 Azure 门户分配 Key Vault 访问策略](../general/assign-access-policy-portal.md)
+- [使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限（预览）](../general/rbac-guide.md)
+
 ## <a name="secret-tags"></a>机密标记  
 可以用标记的形式指定其他特定于应用程序的元数据。 Key Vault 支持多达 15 种标记，每种标记可以有 256 个字符的名称和 256 个字符的值。  
 
@@ -76,14 +84,17 @@ Key Vault 中托管的机密的访问控制是在包含这些机密的 Key Vault
 
 ## <a name="azure-storage-account-key-management"></a>Azure 存储帐户密钥管理
 
-Key Vault 可以管理 Azure 存储帐户密钥：
+Key Vault 可以管理 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-overview)密钥：
 
 - 在内部，Key Vault 可以使用 Azure 存储帐户列出（同步）密钥。 
 - Key Vault 定期重新生成（轮换）密钥。
 - 响应调用方时永远不会返回密钥值。
 - Key Vault 管理存储帐户和经典存储帐户的密钥。
 
-有关详细信息，请参阅 [Azure Key Vault 存储帐户密钥](../secrets/overview-storage-keys.md)
+有关详细信息，请参阅：
+- [存储帐户访问密钥](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [Azure Key Vault 中的存储帐户密钥管理](../secrets/overview-storage-keys.md)
+
 
 ## <a name="storage-account-access-control"></a>存储帐户访问控制
 
@@ -109,11 +120,18 @@ Key Vault 可以管理 Azure 存储帐户密钥：
 
 有关详细信息，请参阅 [Key Vault REST API 中的存储帐户操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
 
+用于在 Key Vault 中控制访问的操作指南：
+- [使用 CLI 分配 Key Vault 访问策略](../general/assign-access-policy-cli.md)
+- [使用 PowerShell 分配 Key Vault 访问策略](../general/assign-access-policy-powershell.md)
+- [使用 Azure 门户分配 Key Vault 访问策略](../general/assign-access-policy-portal.md)
+- [使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限（预览）](../general/rbac-guide.md)
+
+
 ## <a name="next-steps"></a>后续步骤
 
 - [关于 Key Vault](../general/overview.md)
 - [关于键、密钥和证书](../general/about-keys-secrets-certificates.md)
 - [关于密钥](../keys/about-keys.md)
 - [关于证书](../certificates/about-certificates.md)
-- [身份验证、请求和响应](../general/authentication-requests-and-responses.md)
+- [保护对密钥保管库的访问](../general/secure-your-key-vault.md)
 - [Key Vault 开发人员指南](../general/developers-guide.md)

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/11/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 1035f7fb34ed5b2b11e3ef472ccda7cccc30f652
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4b5bbe19ddeda7c6b313186b7e24532a294f7253
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359024"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680842"
 ---
-# <a name="tutorial-return-azure-data-box-preview"></a>教程：退回 Azure Data Box（预览版）
+# <a name="tutorial-return-azure-data-box"></a>教程：退回 Azure Data Box
 
 本教程介绍如何退回 Azure Data Box，并且在 Azure 数据中心收到设备后，数据就会被删除。
 
@@ -27,8 +27,6 @@ ms.locfileid: "97359024"
 > * 准备交付
 > * 将 Data Box 寄送到 Microsoft
 > * 从 Data Box 中擦除数据
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

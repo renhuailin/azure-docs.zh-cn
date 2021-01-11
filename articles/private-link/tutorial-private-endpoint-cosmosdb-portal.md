@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: c9866ac2c14e4deb29326ffdd1a93a7d8eae1ea3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484798"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631943"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>教程：使用 Azure 专用终结点连接到 Azure Cosmos 帐户
 
@@ -208,13 +208,9 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 5. 选择“确定”  。
 
-10. 在 CosmosDB 帐户的“设置”部分中，选择“密钥” 。
+6. 在 CosmosDB 帐户的“设置”部分中，选择“密钥” 。
 
-11. 选择“myResourceGroup”。
-
-12. 选择你在之前的步骤中创建的存储帐户。
-
-14. 选择“主连接字符串”上的复制。
+7. 选择“主连接字符串”上的复制。
 
 ## <a name="test-connectivity-to-private-endpoint"></a>测试到专用终结点的连接
 
@@ -234,7 +230,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 7. 连接后，在服务器上打开 Windows PowerShell。
 
-8. 输入 `nslookup <storage-account-name>.documents.azure.com`。 将 **\<storage-account-name>** 替换为你在前面步骤中创建的存储帐户的名称。 
+8. 输入 `nslookup <cosmosdb-account-name>.documents.azure.com`。 将 \<cosmosdb-account-name> 替换为你在前面步骤中创建的 Cosmos DB 帐户的名称。 
 
     ```powershell
     Server:  UnKnown

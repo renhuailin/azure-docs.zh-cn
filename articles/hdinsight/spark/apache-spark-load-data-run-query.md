@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/12/2020
-ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85c4298c0c83480c244cc12238c21160a4a4282e
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77198882"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822108"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询
 
@@ -28,7 +28,7 @@ ms.locfileid: "77198882"
 
 HDInsight 上的 Apache Spark 群集。 请参阅[创建 Apache Spark 群集](./apache-spark-jupyter-spark-sql-use-portal.md)。
 
-## <a name="create-a-jupyter-notebook"></a>创建 Jupyter 笔记本
+## <a name="create-a-jupyter-notebook"></a>创建 Jupyter Notebook
 
 Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通过此笔记本可以与数据进行交互、结合代码和 markdown 文本以及执行简单的可视化效果。
 
@@ -49,7 +49,7 @@ Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通�
 
 ![交互式 Spark SQL 查询的数据快照](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "交互式 Spark SQL 查询的数据快照")
 
-1. 在 Jupyter 笔记本的空单元格中粘贴以下代码，然后按 **SHIFT + ENTER** 运行这些代码。 这些代码会导入此方案所需的类型：
+1. 在 Jupyter Notebook 的空单元格中粘贴以下代码，然后按 Shift+Enter 运行这些代码。 这些代码会导入此方案所需的类型：
 
     ```python
     from pyspark.sql import *
@@ -95,7 +95,7 @@ Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-有了 HDInsight，便可以将数据和 Jupyter Notebook 存储在 Azure 存储或 Azure Data Lake Store 中，以便在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 如果打算立即开始学习下一教程，可能需要保留该群集。
+有了 HDInsight，便可以将数据和 Jupyter Notebook 存储在 Azure 存储或 Azure Data Lake Store 中，以便在不使用群集时安全地删除它。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 如果打算立即开始学习下一教程，可能需要保留该群集。
 
 在 Azure 门户中打开群集，然后选择“删除”  。
 

@@ -8,12 +8,12 @@ ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 56505c95e65911cafbaaa403cd09332695439d97
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149010"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825675"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 应用程序配置存储
 
@@ -27,7 +27,7 @@ ms.locfileid: "92149010"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,10 +46,10 @@ ms.locfileid: "92149010"
 
 该模板中定义了两个 Azure 资源：
 
-- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-06-01/configurationstores)：创建应用程序配置存储。
-- Microsoft.AppConfiguration/configurationStores/keyValues：在应用程序配置存储中创建一个键值。
+- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores)：创建应用程序配置存储。
+- [Microsoft.AppConfiguration/configurationStores/keyValues](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores/keyvalues)：在应用程序配置存储中创建一个键值。
 
-> [!NOTE]
+> [!TIP]
 > `keyValues` 资源的名称是键和标签的组合。 键和标签由 `$` 分隔符联接。 标签是可选的。 在上面的示例中，名称为 `myKey` 的 `keyValues` 资源创建了一个不带标签的键值。
 >
 > 使用百分号编码（也称为 URL 编码），就能在键或标签中包含 ARM 模板资源名称中不允许使用的字符。 `%` 也不是允许使用的字符，因此在其位置使用了 `~`。 若要正确对名称编码，请按照以下步骤操作：
@@ -59,6 +59,13 @@ ms.locfileid: "92149010"
 > 3. 将 `%` 替换为 `~`
 >
 > 例如，若要创建键名为 `AppName:DbEndpoint` 且标签名为 `Test` 的键值对，资源名应为 `AppName~3ADbEndpoint$Test`。
+
+> [!NOTE]
+> 借助应用程序配置，可通过虚拟网络上的[专用链接](concept-private-endpoint.md)访问键值数据。 默认情况下，启用此功能后，通过公用网络对你的应用程序配置数据的所有请求都会被拒绝。 ARM 模板在你的虚拟网络外部运行，因此不允许从 ARM 模板访问数据。 若要在使用专用链接时允许从 ARM 模板访问数据，可使用以下 Azure CLI 命令启用公共网络访问。 在这种情况下，请务必考虑启用公用网络访问的安全隐患。
+>
+> ```azurecli-interactive
+> az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
+> ```
 
 ## <a name="deploy-the-template"></a>部署模板
 

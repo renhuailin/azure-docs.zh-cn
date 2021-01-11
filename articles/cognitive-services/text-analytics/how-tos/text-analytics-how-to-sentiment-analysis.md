@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505216"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673047"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>如何：情绪分析和观点挖掘
 
@@ -24,8 +24,6 @@ ms.locfileid: "97505216"
 API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析。
 
 ## <a name="sentiment-analysis-versions-and-features"></a>情绪分析版本和功能
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 | Feature                                   | 情绪分析 v3 | 情绪分析 v3.1（预览） |
 |-------------------------------------------|-----------------------|-----------------------------------|
@@ -47,7 +45,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 | 文档中至少有一个 `negative` 句子和一个 `positive` 句子。    | `mixed`                 |
 | 文档中的所有句子为 `neutral`。                                                  | `neutral`               |
 
-置信度分数范围介于 1 到 0 之间。 分数越接近于 1 表示标签分类的置信度越高，分数越低表示置信度越低。 对于每个文档或每个句子，与标签（积极、消极和中性）关联的预测分数总和为 1。
+置信度分数范围介于 1 到 0 之间。 分数越接近于 1 表示标签分类的置信度越高，分数越低表示置信度越低。 对于每个文档或每个句子，与标签（积极、消极和中性）关联的预测分数总和为 1。 有关详细信息，请参阅[文本分析透明度备注](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context)。 
 
 ## <a name="opinion-mining"></a>观点挖掘
 

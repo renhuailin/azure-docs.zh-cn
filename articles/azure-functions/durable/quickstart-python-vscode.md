@@ -3,14 +3,14 @@ title: 使用 Python 在 Azure 中创建你的第一个持久函数
 description: 在 Python 中使用 Visual Studio Code 创建并发布 Azure 持久函数。
 author: anthonychu
 ms.topic: quickstart
-ms.date: 04/04/2020
+ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0cc321563de645aeb1d204b67b0ab72053d79c7e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012623"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763551"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>使用 Python 创建你的第一个持久函数
 
@@ -40,7 +40,7 @@ ms.locfileid: "96012623"
 
 在本部分，你将使用 Visual Studio Code 创建一个本地 Azure Functions 项目。 
 
-1. 在 Visual Studio Code 中，按 F1（或 Ctrl/命令键+Shift+P）打开命令面板。 在命令面板中，搜索并选择 `Azure Functions: Create New Project...`。
+1. 在 Visual Studio Code 中，按 F1（或 <kbd>Ctrl/Cmd+Shift+P</kbd>）打开命令面板。 在命令面板中，搜索并选择 `Azure Functions: Create New Project...`。
 
     ![创建函数](media/quickstart-python-vscode/functions-create-project.png)
 
@@ -60,18 +60,33 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 此外，还会在根文件夹中创建 requirements.txt 文件。 它指定运行函数应用所需的 Python 包。
 
+## <a name="update-azure-functions-extension-bundles-version"></a>更新 Azure Functions 扩展捆绑包版本
+
+Python Azure Functions 需要版本 2.x 的 [Azure Functions 扩展捆绑包](../functions-bindings-register.md#access-extensions-in-non-net-languages)。 扩展捆绑包是在 host.json 中配置的。
+
+1. 在项目中打开 host.json。 将扩展捆绑包 `version` 扩展为 `[2.*, 3.0.0)`。 这将指定一个大于等于 2.0 且小于 3.0 的版本范围。
+
+    ```json
+    "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[2.*, 3.0.0)"
+    }
+    ```
+
+1. 必须重新加载 VS Code，然后更新的扩展捆绑包版本才会反映出来。 在命令面板中，搜索“开发人员: 重载窗口”命令并运行它。
+
 ## <a name="install-azure-functions-durable-from-pypi"></a>从 PyPI 安装 azure-functions-durable
 
 创建项目时，Azure Functions VS Code 扩展会自动使用所选的 Python 版本创建虚拟环境。 你将在终端中激活该虚拟环境，并安装 Azure Functions 和 Durable Functions 所需的某些依赖项。
 
-1. 在编辑器中打开 `requirements.txt` 文件，并更改其内容，如下所示：
+1. 在编辑器中打开 requirements.txt，并更改其内容，如下所示：
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b6
+    azure-functions-durable>=1.0.0b12
     ```
 
-1. 打开当前文件夹中编辑器的集成终端 (`` Ctrl-Shift-` ``)。
+1. 打开当前文件夹中编辑器的集成终端 (<kbd>Ctrl+Shift+`</kbd>)。
 
 1. 在集成终端中，激活当前文件夹中的虚拟环境：
 
@@ -155,7 +170,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 使用 Azure Functions Core Tools 可以在本地开发计算机上运行 Azure Functions 项目。 首次从 Visual Studio Code 启动某个函数时，系统会提示你安装这些工具（若尚未安装）。
 
-1. 若要测试函数，请在 `Hello` 活动函数代码 (Hello/\_\_init__.py) 中设置断点。 按 F5 或者在命令面板中选择 `Debug: Start Debugging` 以启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。
+1. 若要测试函数，请在 `Hello` 活动函数代码 (Hello/\_\_init__.py) 中设置断点。 按 F5 或者在命令面板中选择 `Debug: Start Debugging` 以启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”  面板中。
 
     > [!NOTE]
     > 有关调试的详细信息，请参阅 [Durable Functions 诊断](durable-functions-diagnostics.md#debugging)。
@@ -172,9 +187,9 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
     | 选择存储帐户 | 新建存储帐户 |  |
     | 输入新存储帐户的名称 | *唯一名称* | 要创建的存储帐户的名称 |
     | 选择资源组 | *唯一名称* | 要创建的资源组名称 |
-    | 选择一个位置 | *region* | 选择离你较近的区域 |
+    | 选择位置 | *region* | 选择离你较近的区域 |
 
-1. 在“终端”面板中，复制 HTTP 触发的函数的 URL 终结点。
+1. 在“终端”  面板中，复制 HTTP 触发的函数的 URL 终结点。
 
     ![Azure 本地输出](media/quickstart-python-vscode/functions-f5.png)
 
@@ -203,7 +218,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
     }
     ```
 
-1. 若要停止调试，请在 VS Code 中按 **Shift + F5**。
+1. 若要停止调试，请在 VS Code 中按 <kbd>Shift+F5</kbd>。
 
 确认该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
 
@@ -213,7 +228,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
 
-1. 从“输出”面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用此格式：`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
+1. 从“输出”  面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用此格式：`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
 
 2. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 你应当会得到与之前使用已发布的应用时相同的状态响应。
 

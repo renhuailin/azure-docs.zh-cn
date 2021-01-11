@@ -4,12 +4,12 @@ description: 介绍如何使用 Azure 资源管理器在 Azure 上部署和管�
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f3b3ebce3dd34637a787895e7724736adfc186fb
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032246"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858512"
 ---
 # <a name="what-is-azure-resource-manager"></a>什么是 Azure 资源管理器？
 
@@ -33,7 +33,7 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供了一个管
 
 * **资源** - 可通过 Azure 获取的可管理项。 资源的示例包括虚拟机、存储帐户、Web 应用、数据库和虚拟网络。 资源组、订阅、管理组和标记也是资源的示例。
 * **资源组** — 一个容器，用于保存 Azure 解决方案的相关资源。 资源组包括你想要作为一个组进行管理的那些资源。 根据最适合组织的情况来决定哪些资源属于哪个资源组。 请参阅 [资源组](#resource-groups)。
-* **资源提供程序** - 提供 Azure 资源的服务。 例如，Microsoft.Compute 就是一个常见的资源提供程序，它提供虚拟机资源。 Microsoft.Storage 是另一个常见的资源提供程序。 请参阅[资源提供程序和类型](resource-providers-and-types.md)。
+* **资源提供程序** - 提供 Azure 资源的服务。 例如，`Microsoft.Compute` 就是一个常见的资源提供程序，它提供虚拟机资源。 `Microsoft.Storage` 也是一个常见的资源提供程序。 请参阅[资源提供程序和类型](resource-providers-and-types.md)。
 * 资源管理器模板 - 一个 JavaScript 对象表示法 (JSON) 文件，用于定义一个或多个要部署到资源组、订阅、管理组或租户的资源。 使用模板能够以一致方式反复部署资源。 请参阅[模板部署概述](../templates/overview.md)。
 * **声明性语法** — 一种语法，允许声明“以下是我想要创建的项目”，而不需要编写一系列编程命令来进行创建。 资源管理器模板便是声明性语法的其中一个示例。 在该文件中，可以定义要部署到 Azure 的基础结构的属性。  请参阅[模板部署概述](../templates/overview.md)。
 
@@ -61,7 +61,7 @@ Azure 提供四个级别的范围：[管理组](../../governance/management-grou
 
 ![管理级别](./media/overview/scope-levels.png)
 
-将在上述任何级别的作用域中应用管理设置。 所选的级别确定应用设置的广泛程度。 较低级别继承较高级别的设置。 例如，将[策略](../../governance/policy/overview.md)应用于订阅时，该策略将应用于订阅中的所有资源组和资源。 在资源组上应用策略时，该策略将应用于资源组及其所有资源。 但是，其他资源组没有该策略分配。
+将在上述任何级别的作用域中应用管理设置。 所选的级别确定应用设置的广泛程度。 较低级别继承较高级别的设置。 例如，将[策略](../../governance/policy/overview.md)应用于订阅时，该策略将应用于订阅中的所有资源组和资源。 在资源组上应用策略时，该策略将应用于该资源组及其所有资源。 但是，其他资源组没有该策略分配。
 
 可以将模板部署到租户、管理组、订阅或资源组。
 
@@ -99,11 +99,11 @@ Azure 提供四个级别的范围：[管理组](../../governance/management-grou
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure 资源管理器的复原能力
 
-Azure 资源管理器服务旨在实现复原能力和持续可用性。 REST API 中的资源管理器和控制平面操作（发送到 management.azure.com 的请求）具有以下特性：
+Azure 资源管理器服务旨在实现复原能力和持续可用性。 REST API 中的资源管理器和控制平面操作（发送到 `management.azure.com` 的请求）具有以下特性：
 
 * 跨区域分布。 某些服务具有区域性。
 
-* 在具有多个可用性区域的位置上跨可用性区域（以及区域）分布。
+* 在具有多个可用性区域的位置上跨可用性区域（以及地区）分布。
 
 * 不依赖于单个逻辑数据中心。
 

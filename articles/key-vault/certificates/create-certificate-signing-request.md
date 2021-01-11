@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 6d66648680aa14baa53372732df52a6c247a0117
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 42f649f9dd206b34f0fac8513ba742febed2dbcb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483757"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724623"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>在 Key Vault 中创建和合并 CSR
 
@@ -38,7 +38,34 @@ Key Vault 与以下两个证书颁发机构合作，以简化证书的创建。
 以下步骤将帮助你从没有与 Key Vault 合作的证书颁发机构（例如，GoDaddy 不是受信任的密钥保管库 CA）创建证书 
 
 
-### <a name="azure-powershell"></a>Azure PowerShell
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1.  若要为所选的 CA 生成 CSR，请导航到要添加证书的密钥保管库。
+2.  在密钥保管库属性页中，选择“证书”。
+3.  选择“生成/导入”选项卡。
+4.  在“创建证书”屏幕上，选择以下值：
+    - 证书创建方法：生成。
+    - 证书名称：ContosoManualCSRCertificate。
+    - 证书颁发机构 (CA) 类型：非集成 CA 颁发的证书
+    - 主题：`"CN=www.contosoHRApp.com"`
+    - 根据需要选择其他值。 单击“创建”。
+
+    ![证书属性](../media/certificates/create-csr-merge-csr/create-certificate.png)  
+
+
+6.  此时，将看到证书已添加到“证书”列表中。 选择刚创建的新证书。 证书的当前状态为“已禁用”，因为它尚未由 CA 颁发。
+7. 单击“证书操作”选项卡，然后选择“下载 CSR” 。
+
+   ![突出显示“下载 CSR”按钮的屏幕截图。](../media/certificates/create-csr-merge-csr/download-csr.png)
+ 
+8.  将 .csr 文件带到 CA，以便对请求进行签名。
+9.  CA 对请求进行签名后，请带回证书文件以在同一“证书操作”屏幕中合并已签名的请求。
+
+现已成功合并证书请求。
+
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 
 
@@ -68,36 +95,11 @@ Key Vault 与以下两个证书颁发机构合作，以简化证书的创建。
     ```
 
     现已成功合并证书请求。
-
-### <a name="azure-portal"></a>Azure 门户
-
-1.  若要为所选的 CA 生成 CSR，请导航到要添加证书的密钥保管库。
-2.  在密钥保管库属性页中，选择“证书”。
-3.  选择“生成/导入”选项卡。
-4.  在“创建证书”屏幕上，选择以下值：
-    - 证书创建方法：生成。
-    - 证书名称：ContosoManualCSRCertificate。
-    - 证书颁发机构 (CA) 类型：非集成 CA 颁发的证书
-    - 主题：`"CN=www.contosoHRApp.com"`
-    - 根据需要选择其他值。 单击“创建”。
-
-    ![证书属性](../media/certificates/create-csr-merge-csr/create-certificate.png)  
-
-
-6.  此时，将看到证书已添加到“证书”列表中。 选择刚创建的新证书。 证书的当前状态为“已禁用”，因为它尚未由 CA 颁发。
-7. 单击“证书操作”选项卡，然后选择“下载 CSR” 。
-
-   ![突出显示“下载 CSR”按钮的屏幕截图。](../media/certificates/create-csr-merge-csr/download-csr.png)
- 
-8.  将 .csr 文件带到 CA，以便对请求进行签名。
-9.  CA 对请求进行签名后，请带回证书文件以在同一“证书操作”屏幕中合并已签名的请求。
-
-现已成功合并证书请求。
+---
 
 > [!NOTE]
 > 如果 RDN 值有逗号，也可以通过将值括在双引号中，在“主题”字段中添加它们，如步骤 4 中所示。
 > “主题”的示例条目：`DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com` 在本示例中，RDN `OU` 包含在名称中有逗号的值。 `OU` 生成的输出是“Docs, Contoso”。
-
 
 ## <a name="adding-more-information-to-csr"></a>向 CSR 添加更多信息
 
@@ -105,7 +107,7 @@ Key Vault 与以下两个证书颁发机构合作，以简化证书的创建。
     - 国家/地区：
     - 城市/区域：
     - 省/自治区/直辖市：
-    - 组织：
+    - 组织:
     - 组织单位：可以在创建 CSR 时通过在 subjectName 中定义这些信息来添加所有这些信息。
 
 示例
@@ -118,6 +120,8 @@ Key Vault 与以下两个证书颁发机构合作，以简化证书的创建。
 
 ## <a name="troubleshoot"></a>疑难解答
 
+- 若要监视或管理证书请求响应，请在[此处](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)了解详细信息
+
 - 错误类型“指定的 X.509 证书内容中终端实体证书的公钥与指定私钥的公共部分不一致。请检查证书是否有效”。如果你不将 CSR 与启动的同一 CSR 请求合并，则会发生此错误。 每次创建 CSR 时，它都会创建一个在合并签名请求时必须匹配的私钥。
     
 - 当 CSR 合并时，它会合并整个链吗？
@@ -129,6 +133,7 @@ Key Vault 与以下两个证书颁发机构合作，以简化证书的创建。
 
 - 错误类型“提供的主题名称不是有效的 X500 名称”如果在 SubjectName 的值中包含任何“特殊字符”，则可能发生此错误。 请参阅 Azure 门户和 PowerShell 说明中的注释。 
 
+---
 ## <a name="next-steps"></a>后续步骤
 
 - [身份验证、请求和响应](../general/authentication-requests-and-responses.md)

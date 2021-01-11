@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 6d2ede8ab49b22a22d8959ce296182a2210640d0
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 259db10aa8f5cd2b711eca001bc6d48057d5280d
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905462"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683212"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks (Python) 将传感器数据与天气预报数据相联接
 
@@ -48,7 +48,7 @@ ms.locfileid: "96905462"
 若要熟悉 Azure Notebooks 并了解如何开始使用它，请参考[创建 Azure 笔记本](./tutorial-ev-routing.md#create-an-azure-notebooks-project)中的说明。
 
 > [!Note]
-> 可以从 [Maps 天气 Jupyter 笔记本存储库](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)下载此项目的 Jupyter 笔记本文件。
+> 可以从 [Maps 天气 Jupyter Notebook 存储库](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)下载此项目的 Jupyter Notebook 文件。
 
 ## <a name="load-the-required-modules-and-frameworks"></a>加载所需的模块和框架
 

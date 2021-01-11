@@ -12,12 +12,12 @@ ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 图像识别, 图像标识符, 图像识别应用, 自定义视觉
-ms.openlocfilehash: 7274fed961c4bbac8841e1c741f54031614cea5c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 12877f2d43f9b8f864871e5a5ab050aa0eeb61e2
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562984"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814595"
 ---
 # <a name="what-is-custom-vision"></a>什么是自定义视觉？
 
@@ -51,4 +51,4 @@ Azure 自定义视觉是一种图像识别服务，可用于构建、部署和�
 
 ## <a name="next-steps"></a>后续步骤
 
-按照[生成分类器](getting-started-build-a-classifier.md)指南操作，开始在 Web 门户上使用自定义视觉，或完成[客户端库快速入门](quickstarts/image-classification.md)，以便实现代码中的基本方案。
+按照[生成分类器](getting-started-build-a-classifier.md)指南操作，开始在 Web 门户上使用自定义视觉，或者完成[快速入门](quickstarts/image-classification.md)来实现代码中的基本方案。

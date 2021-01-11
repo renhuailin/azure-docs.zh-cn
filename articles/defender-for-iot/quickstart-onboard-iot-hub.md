@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 786fcd1a0c6d7df2c38a086a830a63f7179d7d40
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e3768ef233c60f1687bc804778c3dabf32666e1d
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352501"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835153"
 ---
 # <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>快速入门：将 Azure Defender for IoT 服务加入 IoT 中心
 
@@ -33,7 +33,7 @@ ms.locfileid: "96352501"
   - 默认情况下，Defender for IoT 会在 Log Analytics 工作区中存储两类信息：“安全警报”和“建议” 。
   - 可以选择添加另一信息类型（**原始事件**）的存储。 请注意，在 Log Analytics 中存储 **原始事件** 会带来额外的存储成本。
 - IoT 中心（标准层）
-- 满足所有[服务先决条件](service-prerequisites.md)
+- 满足所有[系统先决条件](quickstart-system-prerequisites.md)。
 
 ## <a name="enable-defender-for-iot-on-your-iot-hub"></a>在 IoT 中心启用 Defender for IoT
 

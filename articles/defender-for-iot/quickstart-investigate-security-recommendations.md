@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 859f1c4a1ed1b3d9139307c52f44a14e3089e31f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 66b5694823096f0747ea099b631a53198a819816
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943431"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835034"
 ---
 # <a name="quickstart-investigate-security-recommendations"></a>快速入门：调查安全建议
 
@@ -33,11 +33,11 @@ Defender for IoT 对建议的及时分析和缓解是改进整个 IoT 解决方�
 
 IoT 中心建议列表显示 IoT 中心的所有聚合安全建议。
 
-1.  在 Azure 门户中，打开要调查是否存在新建议的“IoT 中心”  **** 。
+1.  在 Azure 门户中，打开要调查是否存在新建议的“IoT 中心”。
 
-1.  从“安全” 菜单，选择“建议” ****  **** 。 所有 IoT 中心的安全建议都将显示，带有“新”标志的建议标记你过去 24 小时的建议 ****  。 
+1.  从“安全”菜单中，选择“建议” 。 所有 IoT 中心的安全建议都将显示，带有“新”标志的建议标记你过去 24 小时的建议。 
 
-    [ ![使用适用于 IoT 的 ASC 调查安全建议](media/quickstart/investigate-security-recommendations-inline.png)](media/quickstart/investigate-security-recommendations-expanded.png#lightbox)
+    :::image type="content" source="media/quickstart/investigate-security-recommendations-expanded.png#lightbox" alt-text="使用 ASC for IoT 调查安全建议](media/quickstart/investigate-security-recommendations-inline.png)":::
 
 
 1.  从列表中选择并打开任何建议，可打开建议详细信息并深化了解细节。
@@ -46,21 +46,21 @@ IoT 中心建议列表显示 IoT 中心的所有聚合安全建议。
 
 打开每个聚合建议以显示触发建议的每个设备的详细建议说明、修正步骤、设备 ID。 它还显示建议的严重性和使用 Log Analytics 的直接调查访问。
 
-1.  从“IoT 中心” \>“安全”和 \>“建议” 列表中选择打开任何安全建议 ****  ****  **** 。
+1.  从“IoT 中心”\>“安全”\>“建议”列表中选择打开任何安全建议  。
 
-1.  查看建议“说明”、“严重性”和在聚合期间发出此建议的所有设备的“设备详细信息” ****  ****  。 
+1.  查看建议“说明”、“严重性”和在聚合期间发出此建议的所有设备的“设备详细信息”  。 
 
-1.  查看建议细节后，使用“手动修正步骤” 说明可帮助修正并解决导致建议的问题 **** 。 
+1.  查看建议细节后，使用“手动修正步骤”说明可帮助修正并解决导致建议的问题。 
 
-    [ ![使用适用于 IoT 的 ASC 修正安全建议](media/quickstart/remediate-security-recommendations-inline.png)](media/quickstart/remediate-security-recommendations-expanded.png#lightbox)
+    [ :::image type="content" source="media/quickstart/remediate-security-recommendations-expanded.png#lightbox" alt-text="使用 ASC for IoT 修正安全建议](media/quickstart/remediate-security-recommendations-inline.png)":::
 
 
 1.  通过在深入了解页面中选择所需的设备，浏览特定设备的建议详细信息。
 
-    [ ![使用适用于 IoT 的 ASC 调查设备的特定安全建议](media/quickstart/explore-security-recommendation-detail-inline.png)](media/quickstart/explore-security-recommendation-detail-expanded.png#lightbox)
+    [ :::image type="content" source="media/quickstart/explore-security-recommendation-detail-expanded.png#lightbox" alt-text="使用 ASC for IoT 调查设备的特定安全建议](media/quickstart/explore-security-recommendation-detail-inline.png)":::
 
 
-1.  如果需要进一步调查，请使用此链接“在 Log Analytics 中调查建议”  **** 。 
+1.  如果需要进一步调查，请使用此链接“在 Log Analytics 中调查建议”。 
 
 
 ## <a name="next-steps"></a>后续步骤

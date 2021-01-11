@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文档处理
-ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96009324"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845550"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
@@ -106,7 +106,7 @@ ms.locfileid: "96009324"
    此命令将使示例标记工具可通过 web 浏览器提供。 转到  `http://localhost:3000` 。
 
 > [!NOTE]
-> 还可以使用表单识别器 REST API 来标记文档和训练模型。 若要使用 REST API 进行训练和分析，请参阅[使用 REST API 和 Python 通过标签进行训练](./python-labeled-data.md)。
+> 还可以使用表单识别器 REST API 来标记文档和训练模型。 若要使用 REST API 进行训练和分析，请参阅[使用 REST API 和 Python 通过标签进行训练](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)。
 
 ## <a name="set-up-input-data"></a>设置输入数据
 
@@ -137,7 +137,9 @@ ms.locfileid: "96009324"
 
 * **显示名称** - 连接显示名称。
 * **说明** - 项目说明。
-* **SAS URL** - Azure Blob 存储容器的共享访问签名 (SAS) URL。 若要检索 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”  。 将到期时间设置为你使用服务后的某个时间。 确保选中“读取”、“写入”、“删除”和“列表”权限，然后单击“创建”    。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
+* **SAS URL** - Azure Blob 存储容器的共享访问签名 (SAS) URL。 [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
+
+   :::image type="content" source="../media/quickstarts/get-sas-url.png" alt-text="SAS URL 检索":::
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="示例标记工具的连接设置。":::
 
@@ -223,7 +225,7 @@ ms.locfileid: "96009324"
 
 ### <a name="specify-tag-value-types"></a>指定标记值类型
 
-（可选）你可以为每个标记设置所需的数据类型。 打开标记右侧的上下文菜单，然后从菜单中选择一个类型。 此功能可让检测算法做出某些假设，从而提高文本检测准确性。 它还确保在最终 JSON 输出中以标准格式返回检测到的值。 
+（可选）你可以为每个标记设置所需的数据类型。 打开标记右侧的上下文菜单，然后从菜单中选择一个类型。 此功能可让检测算法做出某些假设，从而提高文本检测准确性。 它还确保在最终 JSON 输出中以标准格式返回检测到的值。 值类型信息保存在与标签文件位于相同路径的 fields.json 文件中。
 
 > [!div class="mx-imgBorder"]
 > ![使用示例标记工具选择值类型](../media/whats-new/formre-value-type.png)
@@ -266,7 +268,7 @@ ms.locfileid: "96009324"
 
 单击左侧窗格中的“训练”图标以打开“训练”页。 然后单击“训练”按钮，开始训练模型。 训练过程完成后，你将看到以下信息：
 
-* **模型 ID** - 已创建和训练的模型的 ID。 每个训练调用都将创建一个具有自己的 ID 的新模型。 将此字符串复制到安全位置；如果要通过 [REST API](./curl-train-extract.md) 或[客户端库](./client-library.md)进行预测调用，则需要使用此字符串。
+* **模型 ID** - 已创建和训练的模型的 ID。 每个训练调用都将创建一个具有自己的 ID 的新模型。 将此字符串复制到安全位置；如果要通过 [REST API](./client-library.md?pivots=programming-language-rest-api) 或[客户端库](./client-library.md)进行预测调用，则需要使用此字符串。
 * **平均准确度** - 模型的平均准确性。 可以通过再次标记其他表单和训练来创建新的模型，从而提高模型准确度。 建议首先标记五个表单，然后根据需要添加更多表单。
 * 标记列表，以及每个标记的估计准确度。
 
@@ -276,7 +278,7 @@ ms.locfileid: "96009324"
 训练完成后，检查“平均准确度”值。 如果该值较低，应添加更多输入文档，并重复上述步骤。 已标记的文档将保留在项目索引中。
 
 > [!TIP]
-> 还可以使用 REST API 调用来运行训练过程。 若要了解如何执行此操作，请参阅[使用 Python 通过标签进行训练](./python-labeled-data.md)。
+> 还可以使用 REST API 调用来运行训练过程。 若要了解如何执行此操作，请参阅[使用 Python 通过标签进行训练](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)。
 
 ## <a name="compose-trained-models"></a>组合已训练的模型
 
@@ -299,7 +301,7 @@ ms.locfileid: "96009324"
 单击左侧的“预测(灯泡)”图标以测试模型。 上传训练过程中未使用的表单文档。 然后单击右侧的“预测”按钮，获取表单的键/值预测。 该工具将在边界框中应用标记，并报告每个标记的置信度。
 
 > [!TIP]
-> 还可以通过 REST 调用运行分析 API。 若要了解如何执行此操作，请参阅[使用 Python 通过标签进行训练](./python-labeled-data.md)。
+> 还可以通过 REST 调用运行分析 API。 若要了解如何执行此操作，请参阅[使用 Python 通过标签进行训练](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)。
 
 ## <a name="improve-results"></a>改进结果
 
@@ -326,7 +328,7 @@ ms.locfileid: "96009324"
 本快速入门介绍了如何使用表单识别器示例标记工具通过手动标记的数据来训练模型。 如果要构建自己的实用工具来标记训练数据，请使用用于处理标记数据训练的 REST API。
 
 > [!div class="nextstepaction"]
-> [使用 Python 通过标签进行训练](./python-labeled-data.md)
+> [使用 Python 通过标签进行训练](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
 
 * [什么是表单识别器？](../overview.md)
-* [表单识别器客户端库快速入门](client-library.md)
+* [表单识别器快速入门](client-library.md)

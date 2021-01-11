@@ -3,12 +3,12 @@ title: Azure Arc 概述
 description: 了解什么是 Azure Arc，以及它如何帮助客户使用其他 Azure 服务和功能对混合资源进行管理和治理。
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8f39dff16037b5f52a050b7d07193b0ad7cab93d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714149"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672680"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc 概述
 
@@ -50,7 +50,7 @@ Azure Arc 的主要功能包括：
 
 ### <a name="arc-enabled-servers"></a>已启用 Arc 的服务器
 
-Azure Arc 控制平面功能无需额外付费。这包括：
+Azure Arc 控制平面功能无需额外付费。 这包括：
 
 * 通过 Azure 管理组和标记来整理资源。
 
@@ -79,3 +79,5 @@ Azure Arc 控制平面功能无需额外付费。这包括：
 * 若要了解有关已启用 Arc 的 Kubernetes 的详细信息，请参阅以下[概述](./kubernetes/overview.md)
 
 * 若要了解有关已启用 Arc 的数据服务的详细信息，请参阅以下[概述](https://azure.microsoft.com/services/azure-arc/hybrid-data-services/)
+
+* 从[快速入门概念证明](https://azurearcjumpstart.io/azure_arc_jumpstart/)体验已启用 Arc 的服务

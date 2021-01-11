@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/16/2020
-ms.openlocfilehash: bc93c3643e329879e5118d1cfb61a356442df808
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 7d93002af866aa653972182a13ea37d37e912ce8
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618364"
+ms.locfileid: "97630303"
 ---
 # <a name="tutorial-shard-data-on-worker-nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>教程：Azure Database for PostgreSQL - 超大规模 (Citus) 中的工作器节点上的分片数据
 
@@ -171,8 +171,8 @@ limit 5;
 
 `users` 示例中的行因分布列 `email` 的属性而均匀分布。
 
-1. 电子邮件地址数大于或等于分片数
-2. 每个电子邮件地址的行数类似（在我们的示例中，每个地址正好占一行，因为我们将电子邮件声明为键）
+1. 电子邮件地址数大于或等于分片数。
+2. 每个电子邮件地址的行数类似（在我们的示例中，每个地址正好占一行，因为我们将电子邮件声明为键）。
 
 对于选择的任何表和分布列，如果其中任一属性失败，都将导致工作器上的数据大小不均匀，即数据倾斜。
 

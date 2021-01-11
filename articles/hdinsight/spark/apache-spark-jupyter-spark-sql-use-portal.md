@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
-ms.openlocfilehash: c22136e58ddf35ca28ab2251b3476ce2a80dbc4a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6554d112e494a129fa2cc811c2acf1959ff79f8b
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539269"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822261"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Spark 群集
 
-在本快速入门中，你将使用 Azure 门户在 Azure HDInsight 中创建 Apache Spark 群集。 然后你将创建一个 Jupyter 笔记本，并使用它来针对 Apache Hive 表运行 Spark SQL 查询。 Azure HDInsight 是适用于企业的分析服务，具有托管、全面且开源的特点。 用于 HDInsight 的 Apache Spark 框架使用内存中处理功能实现快速数据分析和群集计算。 使用 Jupyter 笔记本，可以与数据进行交互、将代码和 Markdown 文本结合使用，以及进行简单的可视化。
+在本快速入门中，你将使用 Azure 门户在 Azure HDInsight 中创建 Apache Spark 群集。 然后，我们创建一个 Jupyter Notebook，并使用它针对 Apache Hive 表运行 Spark SQL 查询。 Azure HDInsight 是适用于企业的分析服务，具有托管、全面且开源的特点。 用于 HDInsight 的 Apache Spark 框架使用内存中处理功能实现快速数据分析和群集计算。 使用 Jupyter Notebook，可以与数据进行交互、将代码和 Markdown 文本结合使用，以及进行简单的可视化。
 
 有关可用配置的详细说明，请参阅[在 HDInsight 中设置群集](../hdinsight-hadoop-provision-linux-clusters.md)。 有关使用门户创建群集的详细信息，请参阅[在门户中创建群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
@@ -36,23 +36,23 @@ ms.locfileid: "92539269"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 在顶部菜单中，选择“+ 创建资源”。
+1. 在顶部菜单中，选择“+ 创建资源”  。
 
     ![Azure 门户“创建资源”](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-resource.png "在 Azure 门户中创建资源")
 
-1. 选择“分析” > “Azure HDInsight”，转到“创建 HDInsight 群集”页。
+1. 选择“分析”   >   “Azure HDInsight”，转到“创建 HDInsight 群集”  页。
 
-1. 在“基本信息”选项卡中提供以下信息：
+1. 在“基本信息”选项卡中提供以下信息： 
 
     |属性  |说明  |
     |---------|---------|
     |订阅  | 从下拉列表中选择用于此群集的 Azure 订阅。 |
-    |资源组 | 从下拉列表中选择现有资源组，或选择“新建”。|
+    |资源组 | 从下拉列表中选择现有资源组，或选择“新建”  。|
     |群集名称 | 输入任何全局唯一的名称。|
     |区域   | 从下拉列表中，选择在其中创建群集的区域。 |
     |群集类型| 选择“选择群集类型”，打开一个列表。 从列表中选择“Spark”。|
     |群集版本|选择群集类型后，此字段中将自动填充默认版本。|
-    |群集登录用户名| 输入群集登录用户名。  默认名称为 **admin** 。在此快速入门中稍后使用该帐户登录到 Jupyter notebook。 |
+    |群集登录用户名| 输入群集登录用户名。  默认名称为 **admin**。在此快速入门中稍后使用该帐户登录到 Jupyter Notebook。 |
     |群集登录密码| 输入群集登录密码。 |
     |安全外壳 (SSH) 用户名| 输入 SSH 用户名。 用于此快速入门的 SSH 用户名为“sshuser”。 默认情况下，此帐户的密码与群集登录用户名帐户的密码相同。 |
 
@@ -60,12 +60,12 @@ ms.locfileid: "92539269"
 
     在完成时选择“下一步:存储 >>”转到“存储”页。
 
-1. 在“存储”下，提供以下值：
+1. 在“存储”下，提供以下值  ：
 
     |属性  |说明  |
     |---------|---------|
-    |主存储类型|使用默认值“Azure 存储”。|
-    |选择方法|使用默认值“从列表中选择”。|
+    |主存储类型|使用默认值“Azure 存储”。 |
+    |选择方法|使用默认值“从列表中选择”。 |
     |主存储帐户|使用自动填充的值。|
     |容器|使用自动填充的值。|
 
@@ -73,11 +73,11 @@ ms.locfileid: "92539269"
 
     选择“查看 + 创建”以继续。
 
-1. 在“查看 + 创建”中，选择“创建”。 创建群集大约需要 20 分钟时间。 必须先创建群集，才能继续下一会话。
+1. 在“查看 + 创建”下，选择“创建”。   创建群集大约需要 20 分钟时间。 必须先创建群集，才能继续下一会话。
 
 如果在创建 HDInsight 群集时遇到问题，可能是因为你没有这样做的适当权限。 有关详细信息，请参阅[访问控制要求](../hdinsight-hadoop-customize-cluster-linux.md#access-control)。
 
-## <a name="create-a-jupyter-notebook"></a>创建 Jupyter 笔记本
+## <a name="create-a-jupyter-notebook"></a>创建 Jupyter Notebook
 
 Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通过此笔记本可以与数据进行交互、结合代码和 markdown 文本以及执行简单的可视化效果。
 

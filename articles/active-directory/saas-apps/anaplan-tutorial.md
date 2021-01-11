@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 92a878c60ba2a7c08a17ce2833132b389ef49435
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9b6fcec6f564e944f0e73d151b61d46af4b4cc03
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318735"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673131"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-anaplan"></a>教程：Azure Active Directory 与 Anaplan 集成
 
@@ -63,7 +63,7 @@ ms.locfileid: "92318735"
 
 4. 在搜索框中键入 **Anaplan**，在结果面板中选择“Anaplan”，然后单击“添加”按钮添加该应用程序。  
 
-     ![结果列表中的“Anaplan”](common/search-new-app.png)
+    ![结果列表中的“Anaplan”](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -89,7 +89,7 @@ ms.locfileid: "92318735"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -143,7 +143,7 @@ ms.locfileid: "92318735"
     ![“用户”对话框](common/user-properties.png)
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
-  
+
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
@@ -179,7 +179,7 @@ ms.locfileid: "92318735"
 
 ### <a name="create-anaplan-test-user"></a>创建 Anaplan 测试用户
 
-在本部分中，会在 Anaplan 中创建一个名为“Britta Simon”的用户。 在  [Anaplan 支持团队](mailto:support@anaplan.com)的配合下，将用户添加到 Anaplan 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分中，会在 Anaplan 中创建一个名为“Britta Simon”的用户。 与 [Anaplan 支持团队](mailto:support@anaplan.com)协作，将用户添加到 Anaplan 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: d7577668d87ecaf2d769136d64990f95fc212fe6
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4b44a8375bc13709959e2401f9d772fdeab00f52
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356522"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808600"
 ---
 > [!IMPORTANT]
 > 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。
@@ -58,17 +58,24 @@ Build succeeded.
 
 在应用程序目录中，使用以下命令安装适用于 .NET 的表单识别器客户端库：
 
-#### <a name="version-30"></a>[版本 3.0](#tab/ga)
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 ```
 
-#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
+> [!NOTE]
+> 表单识别器 3.0.0 SDK 反映了 API 版本 2.0
+
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
+
+> [!NOTE]
+> 表单识别器 3.1.0 SDK 反映了 API 版本 2.1 preview
+
 ---
 
 > [!TIP]
@@ -89,9 +96,9 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 
 在应用程序的“Main”方法中，添加对此快速入门中使用的异步任务的调用。 稍后将实现这些操作。
 
-#### <a name="version-30"></a>[版本 3.0](#tab/ga)
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
-#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
 
 ---
@@ -127,7 +134,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 
 这些代码片段演示如何使用适用于 .NET 的表单识别器客户端库执行以下任务：
 
-#### <a name="version-30"></a>[版本 3.0](#tab/ga)
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
 
 * [对客户端进行身份验证](#authenticate-the-client)
 * [识别表单内容](#recognize-form-content)
@@ -136,7 +143,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
 * [管理自定义模型](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 
 * [对客户端进行身份验证](#authenticate-the-client)
 * [识别表单内容](#recognize-form-content)
@@ -168,13 +175,15 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 
 还需要为训练和测试数据添加对 URL 的引用。 将它们添加到“Program”类的根中。
 
-* 若要检索自定义模型训练数据的 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”。 确保选中“读取”和“列表”权限，然后单击“创建”。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
-* 然后，使用上述步骤获取 blob 存储中单个文档的 SAS URL。
+* [!INCLUDE [get SAS URL](../sas-instructions.md)]
+
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 检索":::
+* 然后，重复上述步骤获取 Blob 存储容器中单个文档的 SAS URL。 同样将其保存到临时位置。
 * 最后，保存下方包含的示例图像的 URL（也可以在 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) 上找到）。 
 
-#### <a name="version-30"></a>[版本 3.0](#tab/ga)
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
-#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
 
 ---
@@ -289,11 +298,15 @@ Item:
 Total: '1203.39', with confidence '0.774'
 ```
 
-#### <a name="version-30"></a>[版本 3.0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>识别名片
+
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> 此功能在所选的 API 版本中不可用。
+
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
+
 
 本部分演示如何使用预先训练的模型识别和提取英文名片中的常见字段。
 
@@ -308,7 +321,16 @@ Total: '1203.39', with confidence '0.774'
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>识别发票
+
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> 此功能在所选的 API 版本中不可用。
+
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 
 本部分演示如何使用预先训练的模型识别和提取销售发票中的常见字段。
 

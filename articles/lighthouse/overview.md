@@ -1,20 +1,20 @@
 ---
 title: 什么是 Azure Lighthouse？
 description: 借助 Azure Lighthouse，服务提供商可为其客户提供自动化程度更高且更高效的规模级托管服务。
-ms.date: 12/10/2020
+ms.date: 12/16/2020
 ms.topic: overview
-ms.openlocfilehash: bef6107878f36e02a896b3c38b8913ebb50169a7
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: b9215f42e3ad3b7517d14fdaee710a31680ce453
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356355"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617147"
 ---
 # <a name="what-is-azure-lighthouse"></a>什么是 Azure Lighthouse？
 
 Azure Lighthouse 允许跨租户和多租户管理，允许跨资源和租户提升自动化程度、可伸缩性并增强管理。
 
-借助 Azure Lighthouse，服务提供商可以使用 Azure 平台内置的全面而强大的管理工具来提供托管服务。 客户对可访问其租户的人员、这些人员可以访问的资源以及可执行的操作保持控制。 此产品/服务还可让[企业 IT 组织](concepts/enterprise.md)跨多个租户管理资源。
+借助 Azure Lighthouse，服务提供商可以使用 Azure 平台内置的全面而强大的管理工具来提供托管服务。 客户对可访问其租户的人员、可以访问的资源以及可执行的操作保持控制。 此产品/服务还可让[企业 IT 组织](concepts/enterprise.md)跨多个租户管理资源。
 
 ![Azure Lighthouse 概述示意图](media/azure-lighthouse-overview.jpg)
 

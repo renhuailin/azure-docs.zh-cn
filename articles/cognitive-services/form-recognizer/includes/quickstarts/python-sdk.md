@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 12b49bf81328cc405337b682241aef2cd965c3de
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9762ca79f73b3333045d1c11376ab315aac2d55e
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356539"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808651"
 ---
 > [!IMPORTANT]
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 请参阅下面的参考文档。 
@@ -36,17 +36,23 @@ ms.locfileid: "96356539"
 
 安装 Python 后，可以使用以下内容安装最新版本的表单识别器客户端库：
 
-#### <a name="version-30"></a>[版本 3.0](#tab/ga)
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
 
 ```console
 pip install azure-ai-formrecognizer
 ```
 
-#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
+> [!NOTE]
+> 最新的表单识别器反映了 API 版本 2.0
+
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 
 ```console
 pip install azure-ai-formrecognizer --pre
 ```
+
+> [!NOTE]
+> 表单识别器预览版 SDK 反映了 API 2.1 预览版
 
 ---
 
@@ -91,7 +97,7 @@ pip install azure-ai-formrecognizer --pre
 
 这些代码片段演示如何使用适用于 Python 的表单识别器客户端库执行以下任务：
 
-#### <a name="version-30"></a>[版本 3.0](#tab/ga)
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
 
 * [对客户端进行身份验证](#authenticate-the-client)
 * [识别表单内容](#recognize-form-content)
@@ -100,7 +106,7 @@ pip install azure-ai-formrecognizer --pre
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
 * [管理自定义模型](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 
 * [对客户端进行身份验证](#authenticate-the-client)
 * [识别表单内容](#recognize-form-content)
@@ -123,7 +129,9 @@ pip install azure-ai-formrecognizer --pre
 ## <a name="get-assets-for-testing"></a>获取用于测试的资产
 
 需要为训练和测试数据添加对 URL 的引用。
-* 若要检索自定义模型训练数据的 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”。 确保选中“读取”和“列表”权限，然后单击“创建”。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+  
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 检索":::
 * 使用以下示例中包含的示例和回执图像（也可以在 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) 上获得），或使用上述步骤来获取 blob 存储中单个文档的 SAS URL。 
 
 > [!NOTE]
@@ -194,11 +202,15 @@ Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
 
-#### <a name="version-30"></a>[版本 3.0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
 
 ## <a name="recognize-business-cards"></a>识别名片
+
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> 此功能在所选的 API 版本中不可用。
+
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 
 本部分演示如何使用预先训练的模型识别和提取英文名片中的常见字段。 若要从 URL 识别名片，请使用 `begin_recognize_business_cards_from_url` 方法。 
 
@@ -207,7 +219,16 @@ Total: 1203.39 has confidence 0.774
 > [!TIP]
 > 还可识别本地名片图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_business_cards`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
 
+---
+
 ## <a name="recognize-invoices"></a>识别发票
+
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> 此功能在所选的 API 版本中不可用。
+
+#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 
 本部分演示如何使用预先训练的模型识别和提取销售发票中的常见字段。 若要从 URL 识别发票，请使用 `begin_recognize_invoices_from_url` 方法。 
 

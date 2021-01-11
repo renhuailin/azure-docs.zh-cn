@@ -1,18 +1,18 @@
 ---
 title: 注册并扫描 Azure SQL 数据库
 description: 本教程介绍如何扫描 Azure SQL 数据库
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 1fbeedd8643a777b29ebe4993eed7b664240621c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920278"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739784"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>注册并扫描 Azure SQL 数据库
 
@@ -28,7 +28,7 @@ Azure SQL 数据库数据源支持以下功能：
 
 ### <a name="known-limitations"></a>已知的限制
 
-Azure Purview 不支持扫描 Azure SQL 数据库中的[视图](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15)。 
+Azure Purview 不支持扫描 Azure SQL 数据库中的[视图](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true)。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -89,7 +89,7 @@ Purview 可以通过几个步骤使用服务主体或自己的托管标识来扫
 服务主体或托管标识必须具有获取数据库、架构和表的元数据的权限。 它还必须能够查询表以进行采样分类。
 
 - [使用 Azure SQL 配置和管理 Azure AD 身份验证](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- 如果你使用的是托管标识，则你的 Purview 帐户具有其自己的托管标识，这基本上就是创建它时所用的 Purview 名称。 必须遵循关于[在 Azure SQL 数据库中创建服务主体用户](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database)的教程，在 Azure SQL 数据库中使用确切的 Purview 托管标识或你自己的服务主体创建 Azure AD 用户。 需要为该标识分配 `db_owner`（推荐）权限。 用于创建用户和授予权限的示例 SQL 语法：
+- 如果你使用的是托管标识，则你的 Purview 帐户具有其自己的托管标识，这基本上就是创建它时所用的 Purview 名称。 必须遵循关于[在 Azure SQL 数据库中创建服务主体用户](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database)的教程，在 Azure SQL 数据库中使用确切的 Purview 托管标识或你自己的服务主体创建 Azure AD 用户。 需要为该标识分配适当的权限（例如 `db_owner` 或 `db_datareader`）。 用于创建用户和授予权限的示例 SQL 语法：
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER
@@ -100,7 +100,7 @@ Purview 可以通过几个步骤使用服务主体或自己的托管标识来扫
     ```
 
     > [!Note]
-    > `Username` 是你自己的服务主体或 Purview 的托管标识
+    > `Username` 是你自己的服务主体或 Purview 的托管标识。 可以详细了解[固定数据库角色及其功能](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)。
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>将服务主体添加到密钥保管库和 Purview 的凭据
 

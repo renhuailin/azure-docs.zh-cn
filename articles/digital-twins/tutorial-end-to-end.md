@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f788c9e78790e6872870869e2bc153e1b1451e51
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 64e648cf6ae3c763d3e9ab1a6970f48c84331bad
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566531"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845620"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教程：扩建端到端解决方案
 
@@ -52,8 +52,6 @@ ms.locfileid: "94566531"
 * 调用 Azure 数字孪生 API 的控制台接口
 * SampleClientApp - Azure 数字孪生解决方案示例
 * SampleFunctionsApp - Azure Functions 应用，可将 Azure 数字孪生图更新为来自 IoT 中心和 Azure 数字孪生事件的遥测结果
-
-示例项目还包含交互式授权组件。 每次启动项目时，浏览器窗口都会随即打开，提示你使用 Azure 帐户登录。
 
 ### <a name="instantiate-the-pre-created-twin-graph"></a>实例化预先创建的孪生图
 
@@ -134,7 +132,7 @@ Query
 
 在“Functions 实例”页上，选择你的订阅。 这应该会使订阅中资源组填入方框。
 
-选择实例的资源组，然后点击“+ 创建新的 Azure 函数…”。
+选择实例的资源组，然后点击 + 来创建新的 Azure 函数。
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="在 Visual Studio 中发布 Azure 函数：Functions 实例（在函数应用之前）":::
 

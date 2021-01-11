@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: ffbfd3214242d8df5fe33faf465bc1da3eb9986d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 9d1d22d57464266239aea96f427020351eb749d5
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96580040"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740651"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>教程：在 Hyper-V 中预配 Azure Data Box Gateway
 
@@ -58,7 +58,7 @@ ms.locfileid: "96580040"
   * 至少 8 GB 的 RAM。
   * 一个网络接口。
   * 一个 250 GB 的 OS 磁盘。
-  * 一个 2 TB 的用于数据的虚拟磁盘。
+  * 一个用于存储数据的 2 TB 虚拟磁盘。
 
 ### <a name="for-the-network-in-the-datacenter"></a>对于数据中心中的网络
 
@@ -79,7 +79,7 @@ ms.locfileid: "96580040"
   * 至少 8 GB 的 RAM。
   * 一个连接到网络的网络接口，可以将流量路由到 Internet。
   * 一个 250 GB 的 OS 磁盘。
-  * 一个 2 TB 的用于系统数据的虚拟磁盘。
+  * 一个用于存储系统数据的 2 TB 虚拟磁盘。
 
 ## <a name="bitlocker-considerations"></a>BitLocker 注意事项
 
@@ -92,10 +92,11 @@ ms.locfileid: "96580040"
 执行以下步骤，预配虚拟机监控程序中的设备。
 
 1. 在 Windows Server 主机上，将虚拟设备映像复制到本地驱动器。 已通过 Azure 门户下载该 VHDX 映像。 记下复制映像的位置，因为在以后的过程中将使用此映像。
+
 2. 打开 **“服务器管理器”** 。 单击右上角的“工具”，并选择“Hyper-V 管理器”。 
 
-    ![在服务器管理器中选择“Hyper-V 管理器”](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
-  
+    ![在服务器管理器中选择“Hyper-V 管理器”](./media/data-box-gateway-deploy-provision-hyperv/image1.png)
+
 3. 在“Hyper-V 管理器”的作用域窗格中，右键单击系统节点打开上下文菜单，并单击“新建” > “虚拟机”。  
 
    ![在 Hyper-V 管理器中创建新的虚拟机](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
@@ -152,6 +153,11 @@ ms.locfileid: "96580040"
 21. 返回到“设置”页。 单击“确定”关闭“设置”页，返回到“Hyper-V 管理器”窗口。 
 
     ![“设置”页](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
+
+虚拟机现已完全配置。
+
+> [!NOTE]
+> 无法通过复制已配置的 VHD 来配置新的 Data Box Gateway。 每个新 Data Box Gateway 虚拟设备必须通过从 Azure 门户下载的 Hyper-V 虚拟设备映像进行预配。
 
 ## <a name="start-the-virtual-device-and-get-the-ip"></a>启动虚拟设备并获取 IP
 

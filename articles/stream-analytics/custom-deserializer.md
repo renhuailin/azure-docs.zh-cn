@@ -6,19 +6,19 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.date: 05/06/2019
-ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 2353d15707fe215bfcab7912f2a9c598c4af7e49
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75443691"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822006"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>教程：为 Azure 流分析自定义 .NET 反序列化程序
 
 Azure 流分析[内置了对三种数据格式的支持](stream-analytics-parsing-json.md)：JSON、CSV 和 Avro。 借助自定义 .NET 反序列化程序，可以从其他格式（如[协议缓冲区](https://developers.google.com/protocol-buffers/)、[绑定](https://github.com/Microsoft/bond)以及用于云和边缘作业的其他用户定义的格式）读取数据。
 
-本教程演示如何使用 Visual Studio 为 Azure 流分析云作业创建自定义 .NET 反序列化程序。 
+本教程演示如何使用 Visual Studio 为 Azure 流分析云作业创建自定义 .NET 反序列化程序。 若要了解如何在 Visual Studio Code 中创建 .NET 反序列化程序，请参阅[在 Visual Studio Code 中创建用于 Azure 流分析作业的 .NET 反序列化程序](visual-studio-code-custom-deserializer.md)。
 
 本教程介绍如何执行下列操作：
 
@@ -26,17 +26,16 @@ Azure 流分析[内置了对三种数据格式的支持](stream-analytics-parsin
 > * 为协议缓冲区创建自定义反序列化程序。
 > * 在 Visual Studio 中创建 Azure 流分析作业。
 > * 将流分析作业配置为使用自定义反序列化程序。
-> * 在本地运行流分析作业以测试自定义反序列化程序。
+> * 在本地运行流分析作业以测试和调试自定义反序列化程序。
+
 
 ## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 或 [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/)。 支持 Enterprise (Ultimate/Premium)、Professional 和 Community 版本。 不支持 Express 版本。
+* 安装 [Visual Studio 2019（推荐）](https://www.visualstudio.com/downloads/)或 [Visual Studio 2017](https://www.visualstudio.com/vs/older-downloads/)。 支持 Enterprise (Ultimate/Premium)、Professional 和 Community 版本。 不支持 Express 版本。 
 
-* [安装用于 Visual Studio 的流分析工具](stream-analytics-tools-for-visual-studio-install.md)或更新到最新版本。 支持以下 Visual Studio 版本：
-   * Visual Studio 2015
-   * Visual Studio 2017
+* [安装用于 Visual Studio 的流分析工具](stream-analytics-tools-for-visual-studio-install.md)或更新到最新版本。 
 
 * 在 Visual Studio 中打开 Cloud Explorer，然后登录到 Azure 订阅。
 
@@ -116,11 +115,13 @@ Azure 流分析[内置了对三种数据格式的支持](stream-analytics-parsin
 
 ## <a name="debug-your-deserializer"></a>调试反序列化程序
 
-可以在本地采用调试标准 .NET 代码的方式调试 .NET 反序列化程序。 
+可以在本地采用调试标准 .NET 代码的方式调试 .NET 反序列化程序。
 
-1. 在函数中添加断点。
+1. 右键单击“ProtobufCloudDeserializer”项目名称并将其设置为启动项目。
 
-2. 按 **F5** 开始调试。 程序按预期在断点处停止。
+2. 在函数中添加断点。
+
+3. 按 **F5** 开始调试。 程序按预期在断点处停止。
 
 ## <a name="clean-up-resources"></a>清理资源
 

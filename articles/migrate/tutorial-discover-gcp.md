@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 767617833789c71bfc2ecfc2d518166f8bcee6c6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 181f645540a267d65b15a0345a61752a8a5f78fa
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109515"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704719"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>教程：使用服务器评估发现 Google Cloud Platform (GCP) 实例
 
@@ -225,11 +225,16 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 ### <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
 1. 粘贴从门户复制的 Azure Migrate 项目密钥。 如果没有密钥，请转到“服务器评估”>“发现”>“管理现有设备”，选择在生成密钥时提供的设备名称，然后复制相应的密钥。
-1. 单击“登录”。 这将在新的浏览器选项卡中打开 Azure 登录提示。如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
-1. 在新选项卡上，使用 Azure 用户名和密码登录。
+1. 需要使用设备代码对 Azure 进行身份验证。 单击“登录”将打开包含设备代码的模式，如下所示。
+
+    ![显示设备代码的模式](./media/tutorial-discover-vmware/device-code.png)
+
+1. 单击“复制代码并登录”以复制设备代码，并在新的浏览器选项卡中打开 Azure 登录提示。如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
+1. 在新选项卡上，粘贴设备代码并使用 Azure 用户名和密码登录。
    
    不支持使用 PIN 登录。
-3. 成功登录后，返回到 Web 应用。 
+3. 如果在未登录的情况下意外关闭了登录选项卡，则需要刷新设备配置管理器的浏览器选项卡以再次启用“登录”按钮。
+1. 成功登录后，使用设备配置管理器返回到上一个选项卡。
 4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限](#prepare-an-azure-user-account)，会启动设备注册。
 5. 成功注册设备后，可以通过单击“查看详细信息”来查看注册详细信息。
 
@@ -246,6 +251,10 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
     - Azure Migrate 支持由 ssh-keygen 命令使用 RSA、DSA、ECDSA 和 ed25519 算法生成的 SSH 私钥。
     - 目前 Azure Migrate 不支持基于密码的 SSH 密钥。 请使用不含密码的 SSH 密钥。
     - 目前 Azure Migrate 不支持 PuTTY 生成的 SSH 私钥文件。
+    - Azure Migrate 支持 SSH 私钥文件的 OpenSSH 格式，如下所示：
+    
+    ![支持 SSH 私钥的格式](./media/tutorial-discover-physical/key-format.png)
+
 
 2. 如果要一次添加多个凭据，请单击“添加更多”，以保存和添加更多凭据。 
 3. 在“步骤 2：提供物理服务器或虚拟服务器详细信息”中，单击“添加发现源”，以指定服务器 IP地址/FQDN 以及为用于连接到服务器的凭据指定易记名称  。

@@ -1,17 +1,17 @@
 ---
 title: 映射数据流视频教程
 description: 介绍映射数据流概念的视频教程列表
-author: dcstwh
-ms.author: weetok
+author: kromerm
+ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 11/02/2020
-ms.openlocfilehash: 605d740b56b4f1cd57ab705e442a8b3e3946fcff
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/14/2020
+ms.openlocfilehash: 289f22230a38ef8dd6e369573091c5b30dd4a5c7
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490697"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706994"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>映射数据流视频教程
 
@@ -88,6 +88,8 @@ ms.locfileid: "96490697"
 [排名转换](https://youtu.be/6XvgkbMtws0)
 
 [缓存查找](https://www.youtube.com/watch?v=HqCn42FaRJs)
+
+[通过窗口转换提供行上下文](http://youtu.be/jqt1gmX2XUg)
 
 ## <a name="source-and-sink"></a>源和接收器
 

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: d8b6a852ff0aeb287b12d63bfa689a38a56d418f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 00ae812536e73f432b9bddb93fc1b4a958b379f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485004"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97812862"
 ---
 # <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？
 
@@ -56,8 +56,7 @@ Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL
 如果你偏向于手动编写转换代码，ADF 支持使用外部活动在 HDInsight Hadoop、Spark、Data Lake Analytics 和机器学习等计算服务中执行转换。
 
 ### <a name="cicd-and-publish"></a>CI/CD 和发布
-数据工厂完全支持使用 Azure DevOps 和 GitHub 实现数据管道的 CI/CD。 这样，你就可以增量开发和交付 ETL 流程，然后发布成品。 原始数据被优化为业务就绪型可使用的窗体后，请将数据载入 Azure 数据仓库、Azure SQL 数据库、Azure CosmosDB 或业务用户可从其商业智能工具中指向的任何分析引擎。
-
+[数据工厂完全支持使用 Azure DevOps 和 GitHub 实现数据管道的 CI/CD](continuous-integration-deployment.md)。 这样，你就可以增量开发和交付 ETL 流程，然后发布成品。 原始数据被优化为业务就绪型可使用的窗体后，请将数据载入 Azure 数据仓库、Azure SQL 数据库、Azure CosmosDB 或业务用户可从其商业智能工具中指向的任何分析引擎。
 ### <a name="monitor"></a>监视
 成功地构建和部署数据集成管道后（提供优化数据的业务值），请监视计划的活动和管道，以了解成功率和失败率。 Azure 数据工厂通过 Azure 门户上的 Azure Monitor、API、PowerShell、Azure Monitor 日志和运行状况面板，对管道监视提供内置支持。
 

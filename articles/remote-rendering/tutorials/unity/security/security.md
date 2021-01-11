@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d8a7bb620b7fcc9c878986d3575e22bb6f0f77bc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207523"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724100"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>教程：保护 Azure 远程渲染和模型存储
 
@@ -255,6 +255,14 @@ RemoteRenderingCoordinator 脚本有一个名为 ARRCredentialGetter 的委托�
             get => azureRemoteRenderingAccountID.Trim();
             set => azureRemoteRenderingAccountID = value;
         }
+    
+        [SerializeField]
+        private string azureRemoteRenderingAccountAuthenticationDomain;
+        public string AzureRemoteRenderingAccountAuthenticationDomain
+        {
+            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
+            set => azureRemoteRenderingAccountAuthenticationDomain = value;
+        }
 
         public override event Action<string> AuthenticationInstructions;
 
@@ -262,7 +270,7 @@ RemoteRenderingCoordinator 脚本有一个名为 ARRCredentialGetter 的委托�
 
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
 
-        string[] scopes => new string[] { "https://sts.mixedreality.azure.com/mixedreality.signin" };
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
 
         public void OnEnable()
         {
@@ -279,7 +287,7 @@ RemoteRenderingCoordinator 脚本有一个名为 ARRCredentialGetter 的委托�
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new AzureFrontendAccountInfo(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -369,7 +377,7 @@ RemoteRenderingCoordinator 脚本有一个名为 ARRCredentialGetter 的委托�
 return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-此处，我们将使用帐户域、帐户 ID 和访问令牌创建新的 AzureFrontendAccountInfo 对象。 只要基于先前配置的基于角色的权限向用户授予了所需权限，ARR 服务便可以使用此令牌来查询、创建和加入远程渲染会话。
+在这里，我们使用帐户域、帐户 ID、帐户身份验证域和访问令牌创建新的“AzureFrontendAccountInfo”对象。 只要基于先前配置的基于角色的权限向用户授予了所需权限，ARR 服务便可以使用此令牌来查询、创建和加入远程渲染会话。
 
 进行此更改后，应用程序的当前状态及其对 Azure 资源的访问权限如下所示：
 
@@ -391,6 +399,7 @@ return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRe
     * Active Directory 应用程序客户端 ID 是 AAD 应用注册中的应用程（客户端）ID（见下图）。
     * Active 租户 ID 是在 AAD 应用注册中找到的目录(租户) ID（请参阅下图）。
     * Azure 远程渲染帐户 ID 与用于 RemoteRenderingCoordinator 的帐户 ID 相同  。
+    * 帐户身份验证域与你在 RemoteRenderingCoordinator 中使用的帐户身份验证域相同  。
 
     ![屏幕截图，其中突出显示了“应用程序(客户端)ID”和“目录(租户) ID”。](./media/app-overview-data.png)
 

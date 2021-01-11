@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: fd7300fd21d20476305dc5404158f255d533ffed
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 14b6dd8f8db00469be49c2f57e12d3c15302f8a6
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539320"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822210"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>快速入门：使用 PowerShell 在 Azure HDInsight 中创建 Apache Spark 群集
 
-在本快速入门中，我们使用 Azure PowerShell 在 Azure HDInsight 中创建 Apache Spark 群集。 然后，我们创建一个 Jupyter 笔记本，并使用它针对 Apache Hive 表运行 Spark SQL 查询。 Azure HDInsight 是适用于企业的分析服务，具有托管、全面且开源的特点。 用于 Azure HDInsight 的 Apache Spark 框架允许使用内存中处理功能实现快速数据分析和群集计算。 使用 Jupyter 笔记本，可以与数据进行交互、将代码和 Markdown 文本结合使用，以及进行简单的可视化。
+在本快速入门中，我们使用 Azure PowerShell 在 Azure HDInsight 中创建 Apache Spark 群集。 然后，我们创建一个 Jupyter Notebook，并使用它针对 Apache Hive 表运行 Spark SQL 查询。 Azure HDInsight 是适用于企业的分析服务，具有托管、全面且开源的特点。 用于 Azure HDInsight 的 Apache Spark 框架允许使用内存中处理功能实现快速数据分析和群集计算。 使用 Jupyter Notebook，可以与数据进行交互、将代码和 Markdown 文本结合使用，以及进行简单的可视化。
 
 [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md) | [Apache Spark](https://spark.apache.org/) | [Apache Hive](https://hive.apache.org/) | [Jupyter Notebook](https://jupyter.org/)
 
@@ -45,7 +45,7 @@ ms.locfileid: "92539320"
 
 运行 PowerShell 脚本时，系统会提示输入以下值：
 
-|参数|Value|
+|参数|值|
 |------|------|
 |Azure 资源组名称 | 提供资源组的唯一名称。|
 |位置| 指定 Azure 区域，例如“美国中部”。 |
@@ -136,7 +136,7 @@ ms.locfileid: "92539320"
 
 如果在创建 HDInsight 群集时遇到问题，可能是因为你没有这样做的适当权限。 有关详细信息，请参阅[访问控制要求](../hdinsight-hadoop-customize-cluster-linux.md#access-control)。
 
-## <a name="create-a-jupyter-notebook"></a>创建 Jupyter 笔记本
+## <a name="create-a-jupyter-notebook"></a>创建 Jupyter Notebook
 
 [Jupyter Notebook](https://jupyter.org/) 是支持各种编程语言的交互式笔记本环境。 通过此笔记本可以与数据进行交互、结合代码和 markdown 文本以及执行简单的可视化效果。
 

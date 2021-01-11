@@ -3,12 +3,12 @@ title: Azure Policy 概述
 description: Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
 ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 8a32e32afb544588bb033cc64ede5ecbe6e2bac2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097382"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803946"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -109,12 +109,12 @@ Azure Policy 评估 Azure 中的所有资源以及已启用 Arc 的资源。 对
 
 在 Azure Policy 中，我们将提供一些默认可供使用的内置策略。 例如：
 
-- **允许的存储帐户 SKU** （拒绝）：确定正在部署的存储帐户是否在 SKU 大小集内。 其效果是拒绝所有不符合定义的 SKU 大小集的存储帐户。
-- **允许的资源类型** （拒绝）：定义可以部署的资源类型。 其效果是拒绝所有不属于此定义列表的资源。
-- **允许的位置** （拒绝）：限制新资源的可用位置。 其效果是用于强制执行异地符合性要求。
-- **允许的虚拟机 SKU** （拒绝）：指定可以部署的虚拟机 SKU 集。
-- **将标记添加到资源** （修改）：如果部署请求未指定，则应用所需的标记及其默认值。
-- **不允许的资源类型** （拒绝）：禁止部署资源类型的列表。
+- **允许的存储帐户 SKU**（拒绝）：确定正在部署的存储帐户是否在 SKU 大小集内。 其效果是拒绝所有不符合定义的 SKU 大小集的存储帐户。
+- **允许的资源类型**（拒绝）：定义可以部署的资源类型。 其效果是拒绝所有不属于此定义列表的资源。
+- **允许的位置**（拒绝）：限制新资源的可用位置。 其效果是用于强制执行异地符合性要求。
+- **允许的虚拟机 SKU**（拒绝）：指定可以部署的虚拟机 SKU 集。
+- **将标记添加到资源**（修改）：如果部署请求未指定，则应用所需的标记及其默认值。
+- **不允许的资源类型**（拒绝）：禁止部署资源类型的列表。
 
 若要实现这些策略定义（包括内置定义和自定义定义），需将其分配出去。 可通过 Azure 门户、PowerShell 或 Azure CLI 来分配上述任意策略。
 
@@ -143,12 +143,12 @@ Azure Policy 评估 Azure 中的所有资源以及已启用 Arc 的资源。 对
 
 类似于策略参数，计划参数通过减少冗余来帮助简化计划管理。 计划参数是计划内的策略定义正在使用的参数。
 
-例如，假设出现这样一种情况，有一个带有两个策略定义（ **policyA** 和 **policyB** ，每个都需要不同类型的参数）的计划定义 - initiativeC：
+例如，假设出现这样一种情况，有一个带有两个策略定义（**policyA** 和 **policyB**，每个都需要不同类型的参数）的计划定义 - initiativeC：
 
 | 策略 | 参数的名称 |参数的类型  |注意 |
 |---|---|---|---|
 | policyA | allowedLocations | array  |此参数要求将值设置为字符串列表，因为参数类型已定义为数组 |
-| policyB | allowedSingleLocation |string |此参数要求将值设置为一个字词，因为参数类型已定义为字符串 |
+| policyB | allowedSingleLocation |字符串 |此参数要求将值设置为一个字词，因为参数类型已定义为字符串 |
 
 在此情况下，定义 initiativeC 的计划参数时，有三个选项可供选择：
 

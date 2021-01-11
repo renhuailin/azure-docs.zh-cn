@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/29/2020
+ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: a960bb3590138ca5efa5146988240db1707a3cf0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c26224f388c09ec758373c877004f5485bb420df
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182115"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725069"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-cloud"></a>教程：Azure Active Directory 与 Terraform Cloud 的单一登录 (SSO) 集成
 
@@ -76,7 +76,7 @@ ms.locfileid: "96182115"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
     在“标识符”文本框中，使用以下模式键入 URL：`https://app.terraform.io/sso/saml/samlconf-<ID>/metadata` 
 
@@ -95,7 +95,7 @@ ms.locfileid: "96182115"
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”。
+1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
@@ -116,7 +116,15 @@ ms.locfileid: "96182115"
 
 ## <a name="configure-terraform-cloud-sso"></a>配置 Terraform Cloud SSO
 
-1. 在其他 Web 浏览器窗口中，以管理员身份登录到 Terraform Cloud 网站。
+1. 若要在 Terraform Cloud 中自动执行配置，需要通过单击“安装扩展”来安装“我的应用安全登录浏览器扩展” 。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 Terraform Cloud”会将你定向到 Terraform Cloud 应用程序。 在此处，请提供管理员凭据以登录到 Terraform Cloud。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-5。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 Terraform Cloud，请在另一个 Web 浏览器窗口中，以管理员身份登录到 Terraform Cloud 公司站点。
 
 2. 转到“设置”>“SSO”>“编辑设置”
 

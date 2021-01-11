@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/03/2020
-ms.openlocfilehash: 21ccbc83c80e1b659dd240973a609d624f270835
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: cb7a441a6d86cd64847300d1e597cf6f86067282
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028506"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740940"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>快速入门：创建 Azure SQL 数据库单一数据库
 
@@ -107,7 +107,7 @@ endip=0.0.0.0
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
+使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name $resourceGroupName --location $location
@@ -141,7 +141,7 @@ az sql server firewall-rule create \
 ```
 
 
-## <a name="create-a-single-database"></a>创建单一数据库
+## <a name="create-a-single-database-with-azure-cli"></a>使用 Azure CLI 创建单一数据库
 
 使用 [az sql db create](/cli/azure/sql/db) 命令创建数据库。 以下代码将创建
 
@@ -230,7 +230,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 ```
 
 
-## <a name="create-a-single-database"></a>创建单一数据库
+## <a name="create-a-single-database-with-powershell"></a>使用 PowerShell 创建单一数据库
 
 使用 [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) cmdlet 创建单一数据库。
 

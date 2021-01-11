@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 3225fff1c82822dee990804f934ada86068841e8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 96533c1742e8ad5fde9796ea2073f6e402ac8dcf
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011236"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862381"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教程：使用 Azure 数字孪生 API 编写代码
 
@@ -57,9 +57,12 @@ dotnet new console
 
 让命令窗口保持打开状态，因为整个教程都要继续使用该窗口。
 
-接下来，将两个依赖项添加到你的项目，这是与 Azure 数字孪生结合使用所必需的。 可以使用以下链接导航到 NuGet 上的包，在那里可以找到控制台命令（包括适用于 .NET CLI 的命令）将每个包的最新版本添加到项目中。
-* [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 这是用于[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的包。 
-* [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). 该库提供可帮助进行 Azure 身份验证的工具。
+接下来，将两个依赖项添加到你的项目，这是与 Azure 数字孪生结合使用所必需的。 可使用以下链接导航到 NuGet 上的包，在那里可以找到控制台命令（包括适用于 .NET CLI 的命令）将每个包添加到项目中。
+* [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 这是用于[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的包。 添加最新版本。
+* [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). 该库提供可帮助进行 Azure 身份验证的工具。 添加版本 1.2.2。
+
+>[!NOTE]
+> 目前存在一个[已知问题](troubleshoot-known-issues.md#issue-with-default-azure-credential-authentication-on-azureidentity-130)，它会影响在本教程中使用 Azure.Identity 1.3.0 版本。 如果此问题仍然存在，请使用版本 1.2.2。
 
 ## <a name="get-started-with-project-code"></a>开始使用项目代码
 

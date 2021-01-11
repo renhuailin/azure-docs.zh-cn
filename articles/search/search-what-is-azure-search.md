@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 11/24/2020
+ms.date: 12/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 01f61eac31c388cd0bf8a857beb7a10944187c6b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1814555f738f37523c5b23ae729bf20bff62e1f9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027894"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679529"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure 认知搜索是什么？
 
@@ -25,8 +25,8 @@ Azure 认知搜索（[以前称为“Azure 搜索”](whats-new.md#new-service-n
 + 执行索引和查询执行的搜索引擎
 + 创建和管理的搜索索引的持久存储
 + 用于编写简单到复杂查询的查询语言
-+ 以 AI 为中心的分析，可从图像、原始文本、应用程序文件中创建可搜索的内容
-+ 通过搜索索引器与 Azure 数据的集成，可自动执行数据导入和刷新
++ [AI 驱动的扩充](cognitive-search-concept-intro.md)，可从图像、原始文本、应用程序文件中创建可搜索的内容
++ 与其他 Azure 服务集成以实现数据、机器学习/AI 和安全性
 
 从体系结构方面来讲，搜索服务位于外部数据存储（包含未索引数据）与客户端应用（向搜索索引发送查询请求并处理响应）之间。
 
@@ -89,11 +89,11 @@ Azure 认知搜索非常适合以下应用程序方案：
 主要优势包括：
 
 + 在索引层的 Azure 数据集成（爬网程序）
-+ 用于集中管理的 Azure 门户
-+ Azure 可伸缩性、可靠性和世界一流的可用性
-+ 对原始数据进行 AI 处理，使其更易于搜索，包括识别图像中的文本，或查找非结构化内容中的模式。
++ Azure 专用链接集成，支持断网安全要求
++ 与 AI 处理的集成，使不可搜索的内容类型变成可通过文本进行搜索。
 + 语言分析和自定义分析，提供分析器，用于支持以 56 种语言进行可靠的全文搜索
-+ [对以搜索为中心的应用通用的核心功能](search-features-list.md)：评分、分面、建议、同义词、地理搜索，等等。
++ [关键功能](search-features-list.md)：丰富的查询语言、相关性优化、分面、自动补全、同义词、异地搜索和结果组合。
++ Azure 可伸缩性、可靠性和世界一流的可用性
 
 在我们的所有客户中，能够利用 Azure 认知搜索中最广泛功能的客户包括在线目录、业务线程序以及文档发现应用程序。
 
