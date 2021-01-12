@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 95c3ad6f689893195e0e5c17c59ab31143cf238d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 473353c3f61d1096beb11c521c08ac723d54b780
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346513"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071590"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控制来减少计算机的攻击面
 
@@ -61,13 +61,13 @@ ms.locfileid: "93346513"
 
 ## <a name="enable-application-controls-on-a-group-of-machines"></a>在一组计算机上启用应用程序控制
 
-如果安全中心在你的订阅中确定了始终运行一组相似应用程序的计算机组，则系统将提示以下建议： **应在计算机中启用自适应应用程序控制以定义安全应用程序** 。
+如果安全中心在你的订阅中确定了始终运行一组相似应用程序的计算机组，则系统将提示以下建议：**应在计算机中启用自适应应用程序控制以定义安全应用程序**。
 
 选择建议，或打开自适应应用程序控制页面，查看建议的已知安全应用程序列表和计算机组。
 
-1. 打开 Azure Defender 仪表板，并从 "高级保护" 区域中选择 " **自适应应用程序控件** "。
+1. 打开 Azure Defender 仪表板，从高级保护区域选择“自适应应用程序控制”。
 
-    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="从 Azure 仪表板打开自适应应用程序控件" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="从 Azure 仪表板打开自适应应用程序控制" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     “自适应应用程序控制”页随即打开，你的 VM 会分组到以下多个选项卡中：
 
@@ -88,7 +88,7 @@ ms.locfileid: "93346513"
       - 这是一台 Windows 计算机，具有通过 GPO 或本地安全策略启用的预先存在的 [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) 策略
 
       > [!TIP]
-      > 安全中心至少需要两周的数据才能定义每个计算机组的唯一推荐。 最近创建的计算机，或属于仅最近使用 Azure Defender 启用的订阅的计算机将显示在 " **无建议** " 选项卡下。
+      > 安全中心至少需要两周的数据才能定义每个计算机组的唯一推荐。 “无推荐”选项卡下将显示最近创建的计算机或属于仅最近启用了 Azure Defender 的订阅的计算机。
 
 
 1. 打开“推荐”选项卡。此时将显示带有推荐允许列表的计算机组。
@@ -123,7 +123,7 @@ ms.locfileid: "93346513"
 
 编辑计算机组的规则：
 
-1. 打开 Azure Defender 仪表板，并从 "高级保护" 区域中选择 " **自适应应用程序控件** "。
+1. 打开 Azure Defender 仪表板，从高级保护区域选择“自适应应用程序控制”。
 
 1. 从“已配置”选项卡中，选择包含要编辑的规则的组。
 
@@ -135,7 +135,7 @@ ms.locfileid: "93346513"
 
       ![添加自定义规则](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
 
-   1. 如果要定义已知的安全路径，请将 **规则类型** 更改为 "path"，然后输入单个路径。 可以在路径中包含通配符。
+   1. 如果要定义已知的安全路径，请将“规则类型”更改为“路径”，然后输入单个路径。 可以在路径中包含通配符。
    
       > [!TIP]
       > 在路径中使用通配符可能有用的一些方案：
@@ -150,22 +150,17 @@ ms.locfileid: "93346513"
 1. 选择“保存”，应用所做的更改。
 
 
-## <a name="review-and-edit-a-groups-settings"></a>查看和编辑组的设置
+## <a name="review-and-edit-a-groups-settings"></a>查看和编辑组设置
 
-1. 若要查看组的详细信息和设置，请选择 " **组设置** "
+1. 若要查看组详细信息和设置，请选择“组设置”
 
-    此窗格显示了可) 、OS 类型、位置和其他相关详细信息修改 (的组的名称。
+    此窗格显示组名称（可修改）、OS 类型、位置和其他相关详细信息。
 
-    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="自适应应用程序控件的 &quot;组设置&quot; 页" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="自适应应用程序控制的“组设置”页" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
-    > [!IMPORTANT]
-    > "文件类型" 保护模式 "设置" 中的 " **强制** " 选项在 **所有** 方案中都灰显。 此时无强制选项可用。 
-    >
-    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="文件保护的强制模式将永久显示为灰色。无强制选项可用。":::
+1. （可选）修改组名称或文件类型保护模式。
 
-1. （可选）修改组的 "名称" 或 "文件类型" 保护模式。
-
-1. 选择 " **应用** 并 **保存** "。
+1. 选择“应用”和“保存” 。
 
 
 
@@ -188,7 +183,7 @@ ms.locfileid: "93346513"
 
 ## <a name="audit-alerts-and-violations"></a>审核警报和冲突
 
-1. 打开 Azure Defender 仪表板，并从 "高级保护" 区域中选择 " **自适应应用程序控件** "。
+1. 打开 Azure Defender 仪表板，从高级保护区域选择“自适应应用程序控制”。
 
 1. 要查看最近发出了警报的计算机组，请查看“已配置”选项卡中列出的组。
 
@@ -204,7 +199,7 @@ ms.locfileid: "93346513"
 
 将计算机从一个组移动到另一个组时，适用于该计算机的应用程序控制策略会更改为移动到的组的设置。 也可将计算机从已配置的组移动到未配置的组，这样做会删除应用于该计算机的所有应用程序控制规则。
 
-1. 打开 Azure Defender 仪表板，并从 "高级保护" 区域中选择 " **自适应应用程序控件** "。
+1. 打开 Azure Defender 仪表板，从高级保护区域选择“自适应应用程序控制”。
 
 1. 在“自适应应用程序控制”页中，从“已配置”选项卡中选择包含要移动的计算机的组 。
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: dec41a5e05d22891aae9d16280ebb6b0c8da3f20
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 49762b1844aec85ff55ae2a16243a231414b263f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185107"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071572"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 输入绑定
 
@@ -300,7 +300,7 @@ namespace CosmosDBSamplesV2
 以下示例演示检索文档列表的 [C# 函数](functions-dotnet-class-library.md)。 此函数由 HTTP 请求触发。 此代码使用 Azure Cosmos DB 绑定提供的 `DocumentClient` 实例来读取文档列表。 `DocumentClient` 实例也可用于写入操作。
 
 > [!NOTE]
-> 还可以使用 [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) 接口来简化测试。
+> 还可以使用 [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet&preserve-view=true) 接口来简化测试。
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -721,421 +721,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-此部分包含的以下示例可以通过指定各种源提供的 ID 值来读取单个文档：
-
-* [队列触发器，从 JSON 查找 ID](#queue-trigger-look-up-id-from-json-javascript)
-* [HTTP 触发器，从查询字符串查找 ID](#http-trigger-look-up-id-from-query-string-javascript)
-* [HTTP 触发器，从路由数据查找 ID](#http-trigger-look-up-id-from-route-data-javascript)
-* [队列触发器，使用 SqlQuery 获取多个文档](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
-
-<a id="queue-trigger-look-up-id-from-json-javascript"></a>
-
-### <a name="queue-trigger-look-up-id-from-json"></a>队列触发器，从 JSON 查找 ID
-
-以下示例演示 *function.json* 文件中的一个 Cosmos DB 输入绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数读取单个文档，并更新文档的文本值。
-
-下面是 function.json 文件中的绑定数据：
-
-```json
-{
-    "name": "inputDocumentIn",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "id" : "{queueTrigger_payload_property}",
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "in"
-},
-{
-    "name": "inputDocumentOut",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": false,
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-
-[配置](#configuration)部分解释了这些属性。
-
-JavaScript 代码如下所示：
-
-```javascript
-    // Change input document contents using Azure Cosmos DB input binding, using context.bindings.inputDocumentOut
-    module.exports = function (context) {
-    context.bindings.inputDocumentOut = context.bindings.inputDocumentIn;
-    context.bindings.inputDocumentOut.text = "This was updated!";
-    context.done();
-    };
-```
-
-<a id="http-trigger-look-up-id-from-query-string-javascript"></a>
-
-### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP 触发器，从查询字符串查找 ID
-
-以下示例演示检索单个文档的 [JavaScript 函数](functions-reference-node.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
-
-function.json 文件如下所示：
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "name": "$return",
-      "type": "http",
-      "direction": "out"
-    },
-    {
-      "type": "cosmosDB",
-      "name": "toDoItem",
-      "databaseName": "ToDoItems",
-      "collectionName": "Items",
-      "connectionStringSetting": "CosmosDBConnection",
-      "direction": "in",
-      "Id": "{Query.id}",
-      "PartitionKey": "{Query.partitionKeyValue}"
-    }
-  ],
-  "disabled": false
-}
-```
-
-JavaScript 代码如下所示：
-
-```javascript
-module.exports = function (context, req, toDoItem) {
-    context.log('JavaScript queue trigger function processed work item');
-    if (!toDoItem)
-    {
-        context.log("ToDo item not found");
-    }
-    else
-    {
-        context.log("Found ToDo item, Description=" + toDoItem.Description);
-    }
-
-    context.done();
-};
-```
-
-<a id="http-trigger-look-up-id-from-route-data-javascript"></a>
-
-### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP 触发器，从路由数据查找 ID
-
-以下示例演示检索单个文档的 [JavaScript 函数](functions-reference-node.md)。 此函数由 HTTP 请求触发，该请求使用的路由数据用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
-
-function.json 文件如下所示：
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in",
-      "methods": [
-        "get",
-        "post"
-      ],
-      "route":"todoitems/{partitionKeyValue}/{id}"
-    },
-    {
-      "name": "$return",
-      "type": "http",
-      "direction": "out"
-    },
-    {
-      "type": "cosmosDB",
-      "name": "toDoItem",
-      "databaseName": "ToDoItems",
-      "collectionName": "Items",
-      "connectionStringSetting": "CosmosDBConnection",
-      "direction": "in",
-      "Id": "{id}",
-      "PartitionKey": "{partitionKeyValue}"
-    }
-  ],
-  "disabled": false
-}
-```
-
-JavaScript 代码如下所示：
-
-```javascript
-module.exports = function (context, req, toDoItem) {
-    context.log('JavaScript queue trigger function processed work item');
-    if (!toDoItem)
-    {
-        context.log("ToDo item not found");
-    }
-    else
-    {
-        context.log("Found ToDo item, Description=" + toDoItem.Description);
-    }
-
-    context.done();
-};
-```
-
-<a id="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>
-
-### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>队列触发器，使用 SqlQuery 获取多个文档
-
-以下示例演示 *function.json* 文件中的一个 Azure Cosmos DB 输入绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数使用队列触发器自定义查询参数检索 SQL 查询指定的多个文档。
-
-队列触发器提供参数 `departmentId`。 `{ "departmentId" : "Finance" }` 的队列消息将返回财务部的所有记录。
-
-下面是 function.json 文件中的绑定数据：
-
-```json
-{
-    "name": "documents",
-    "type": "cosmosDB",
-    "direction": "in",
-    "databaseName": "MyDb",
-    "collectionName": "MyCollection",
-    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
-    "connectionStringSetting": "CosmosDBConnection"
-}
-```
-
-[配置](#configuration)部分解释了这些属性。
-
-JavaScript 代码如下所示：
-
-```javascript
-    module.exports = function (context, input) {
-        var documents = context.bindings.documents;
-        for (var i = 0; i < documents.length; i++) {
-            var document = documents[i];
-            // operate on each document
-        }
-        context.done();
-    };
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-此部分包含的以下示例可以通过指定各种源提供的 ID 值来读取单个文档：
-
-* [队列触发器，从 JSON 查找 ID](#queue-trigger-look-up-id-from-json-python)
-* [HTTP 触发器，从查询字符串查找 ID](#http-trigger-look-up-id-from-query-string-python)
-* [HTTP 触发器，从路由数据查找 ID](#http-trigger-look-up-id-from-route-data-python)
-* [队列触发器，使用 SqlQuery 获取多个文档](#queue-trigger-get-multiple-docs-using-sqlquery-python)
-
-<a id="queue-trigger-look-up-id-from-json-python"></a>
-
-### <a name="queue-trigger-look-up-id-from-json"></a>队列触发器，从 JSON 查找 ID
-
-以下示例演示 *function.json* 文件中的一个 Cosmos DB 输入绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 该函数读取单个文档，并更新文档的文本值。
-
-下面是 function.json 文件中的绑定数据：
-
-```json
-{
-    "name": "documents",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "id" : "{queueTrigger_payload_property}",
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "in"
-},
-{
-    "name": "$return",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": false,
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-
-[配置](#configuration)部分解释了这些属性。
-
-下面是 Python 代码：
-
-```python
-import azure.functions as func
-
-
-def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Document:
-    if documents:
-        document = documents[0]
-        document['text'] = 'This was updated!'
-        return document
-```
-
-<a id="http-trigger-look-up-id-from-query-string-python"></a>
-
-### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP 触发器，从查询字符串查找 ID
-
-以下示例展示了检索单个文档的 [Python 函数](functions-reference-python.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
-
-function.json 文件如下所示：
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "name": "$return",
-      "type": "http",
-      "direction": "out"
-    },
-    {
-      "type": "cosmosDB",
-      "name": "todoitems",
-      "databaseName": "ToDoItems",
-      "collectionName": "Items",
-      "connectionStringSetting": "CosmosDBConnection",
-      "direction": "in",
-      "Id": "{Query.id}",
-      "PartitionKey": "{Query.partitionKeyValue}"
-    }
-  ],
-  "scriptFile": "__init__.py"
-}
-```
-
-下面是 Python 代码：
-
-```python
-import logging
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
-    if not todoitems:
-        logging.warning("ToDo item not found")
-    else:
-        logging.info("Found ToDo item, Description=%s",
-                     todoitems[0]['description'])
-
-    return 'OK'
-```
-
-<a id="http-trigger-look-up-id-from-route-data-python"></a>
-
-### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP 触发器，从路由数据查找 ID
-
-以下示例展示了检索单个文档的 [Python 函数](functions-reference-python.md)。 此函数由 HTTP 请求触发，该请求使用的路由数据用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
-
-function.json 文件如下所示：
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in",
-      "methods": [
-        "get",
-        "post"
-      ],
-      "route":"todoitems/{partitionKeyValue}/{id}"
-    },
-    {
-      "name": "$return",
-      "type": "http",
-      "direction": "out"
-    },
-    {
-      "type": "cosmosDB",
-      "name": "todoitems",
-      "databaseName": "ToDoItems",
-      "collectionName": "Items",
-      "connection": "CosmosDBConnection",
-      "direction": "in",
-      "Id": "{id}",
-      "PartitionKey": "{partitionKeyValue}"
-    }
-  ],
-  "disabled": false,
-  "scriptFile": "__init__.py"
-}
-```
-
-下面是 Python 代码：
-
-```python
-import logging
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
-    if not todoitems:
-        logging.warning("ToDo item not found")
-    else:
-        logging.info("Found ToDo item, Description=%s",
-                     todoitems[0]['description'])
-    return 'OK'
-```
-
-<a id="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>
-
-### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>队列触发器，使用 SqlQuery 获取多个文档
-
-以下示例演示 *function.json* 文件中的一个 Azure Cosmos DB 输入绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 该函数使用队列触发器自定义查询参数检索 SQL 查询指定的多个文档。
-
-队列触发器提供参数 `departmentId`。 `{ "departmentId" : "Finance" }` 的队列消息将返回财务部的所有记录。
-
-下面是 function.json 文件中的绑定数据：
-
-```json
-{
-    "name": "documents",
-    "type": "cosmosDB",
-    "direction": "in",
-    "databaseName": "MyDb",
-    "collectionName": "MyCollection",
-    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
-    "connectionStringSetting": "CosmosDBConnection"
-}
-```
-
-[配置](#configuration)部分解释了这些属性。
-
-下面是 Python 代码：
-
-```python
-import azure.functions as func
-
-def main(queuemsg: func.QueueMessage, documents: func.DocumentList):
-    for document in documents:
-        # operate on each document
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 本部分包含以下示例：
@@ -1400,6 +985,636 @@ public class DocsFromRouteSqlQuery {
 }
  ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+此部分包含的以下示例可以通过指定各种源提供的 ID 值来读取单个文档：
+
+* [队列触发器，从 JSON 查找 ID](#queue-trigger-look-up-id-from-json-javascript)
+* [HTTP 触发器，从查询字符串查找 ID](#http-trigger-look-up-id-from-query-string-javascript)
+* [HTTP 触发器，从路由数据查找 ID](#http-trigger-look-up-id-from-route-data-javascript)
+* [队列触发器，使用 SqlQuery 获取多个文档](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
+
+<a id="queue-trigger-look-up-id-from-json-javascript"></a>
+
+### <a name="queue-trigger-look-up-id-from-json"></a>队列触发器，从 JSON 查找 ID
+
+以下示例演示 *function.json* 文件中的一个 Cosmos DB 输入绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数读取单个文档，并更新文档的文本值。
+
+下面是 function.json 文件中的绑定数据：
+
+```json
+{
+    "name": "inputDocumentIn",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "id" : "{queueTrigger_payload_property}",
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "in"
+},
+{
+    "name": "inputDocumentOut",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "createIfNotExists": false,
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "out"
+}
+```
+
+[配置](#configuration)部分解释了这些属性。
+
+JavaScript 代码如下所示：
+
+```javascript
+    // Change input document contents using Azure Cosmos DB input binding, using context.bindings.inputDocumentOut
+    module.exports = function (context) {
+    context.bindings.inputDocumentOut = context.bindings.inputDocumentIn;
+    context.bindings.inputDocumentOut.text = "This was updated!";
+    context.done();
+    };
+```
+
+<a id="http-trigger-look-up-id-from-query-string-javascript"></a>
+
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP 触发器，从查询字符串查找 ID
+
+以下示例演示检索单个文档的 [JavaScript 函数](functions-reference-node.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
+
+function.json 文件如下所示：
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "toDoItem",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connectionStringSetting": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{Query.id}",
+      "PartitionKey": "{Query.partitionKeyValue}"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript 代码如下所示：
+
+```javascript
+module.exports = function (context, req, toDoItem) {
+    context.log('JavaScript queue trigger function processed work item');
+    if (!toDoItem)
+    {
+        context.log("ToDo item not found");
+    }
+    else
+    {
+        context.log("Found ToDo item, Description=" + toDoItem.Description);
+    }
+
+    context.done();
+};
+```
+
+<a id="http-trigger-look-up-id-from-route-data-javascript"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP 触发器，从路由数据查找 ID
+
+以下示例演示检索单个文档的 [JavaScript 函数](functions-reference-node.md)。 此函数由 HTTP 请求触发，该请求使用的路由数据用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
+
+function.json 文件如下所示：
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route":"todoitems/{partitionKeyValue}/{id}"
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "toDoItem",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connectionStringSetting": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{id}",
+      "PartitionKey": "{partitionKeyValue}"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript 代码如下所示：
+
+```javascript
+module.exports = function (context, req, toDoItem) {
+    context.log('JavaScript queue trigger function processed work item');
+    if (!toDoItem)
+    {
+        context.log("ToDo item not found");
+    }
+    else
+    {
+        context.log("Found ToDo item, Description=" + toDoItem.Description);
+    }
+
+    context.done();
+};
+```
+
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>
+
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>队列触发器，使用 SqlQuery 获取多个文档
+
+以下示例演示 *function.json* 文件中的一个 Azure Cosmos DB 输入绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数使用队列触发器自定义查询参数检索 SQL 查询指定的多个文档。
+
+队列触发器提供参数 `departmentId`。 `{ "departmentId" : "Finance" }` 的队列消息将返回财务部的所有记录。
+
+下面是 function.json 文件中的绑定数据：
+
+```json
+{
+    "name": "documents",
+    "type": "cosmosDB",
+    "direction": "in",
+    "databaseName": "MyDb",
+    "collectionName": "MyCollection",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
+    "connectionStringSetting": "CosmosDBConnection"
+}
+```
+
+[配置](#configuration)部分解释了这些属性。
+
+JavaScript 代码如下所示：
+
+```javascript
+module.exports = function (context, input) {
+  var documents = context.bindings.documents;
+  for (var i = 0; i < documents.length; i++) {
+    var document = documents[i];
+    // operate on each document
+  }
+  context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+* [队列触发器，从 JSON 查找 ID](#queue-trigger-look-up-id-from-json-ps)
+* [HTTP 触发器，从查询字符串查找 ID](#http-trigger-id-query-string-ps)
+* [HTTP 触发器，从路由数据查找 ID](#http-trigger-id-route-data-ps)
+* [队列触发器，使用 SqlQuery 获取多个文档](#queue-trigger-multiple-docs-sqlquery-ps)
+
+### <a name="queue-trigger-look-up-id-from-json"></a>队列触发器，从 JSON 查找 ID
+
+下面的示例演示如何读取和更新单个 Cosmos DB 文档。 文档的唯一标识符通过队列消息中的 JSON 值提供。
+
+Cosmos DB 输入绑定首先列在函数配置文件中找到的绑定列表中 (_function.js_) 。
+
+<a name="queue-trigger-look-up-id-from-json-ps"></a>
+
+```json
+{
+  "name": "InputDocumentIn",
+  "type": "cosmosDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "id" : "{queueTrigger_payload_property}",
+  "partitionKey": "{queueTrigger_payload_property}",
+  "connectionStringSetting": "CosmosDBConnection",
+  "direction": "in"
+},
+{
+  "name": "InputDocumentOut",
+  "type": "cosmosDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "createIfNotExists": false,
+  "partitionKey": "{queueTrigger_payload_property}",
+  "connectionStringSetting": "CosmosDBConnection",
+  "direction": "out"
+}
+```
+
+_run.ps1_ 文件具有 PowerShell 代码，该代码读取传入的文档并输出更改。
+
+```powershell
+param($QueueItem, $InputDocumentIn, $TriggerMetadata) 
+
+$Document = $InputDocumentIn 
+$Document.text = 'This was updated!' 
+
+Push-OutputBinding -Name InputDocumentOut -Value $Document  
+```
+
+<a name="http-trigger-id-query-string-ps"></a>
+
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP 触发器，从查询字符串查找 ID
+
+下面的示例演示如何从 web API 读取和更新单个 Cosmos DB 文档。 文档的唯一标识符是通过 HTTP 请求中的 querystring 参数提供的，该参数是在绑定的属性中定义的 `"Id": "{Query.Id}"` 。
+
+Cosmos DB 输入绑定首先列在函数配置文件中找到的绑定列表中 (_function.js_) 。
+
+```json
+{ 
+  "bindings": [ 
+    { 
+      "type": "cosmosDB", 
+      "name": "ToDoItem", 
+      "databaseName": "ToDoItems", 
+      "collectionName": "Items", 
+      "connectionStringSetting": "CosmosDBConnection", 
+      "direction": "in", 
+      "Id": "{Query.id}", 
+      "PartitionKey": "{Query.partitionKeyValue}" 
+    },
+    { 
+      "authLevel": "anonymous", 
+      "name": "Request", 
+      "type": "httpTrigger", 
+      "direction": "in", 
+      "methods": [ 
+        "get", 
+        "post" 
+      ] 
+    }, 
+    { 
+      "name": "Response", 
+      "type": "http", 
+      "direction": "out" 
+    },
+  ], 
+  "disabled": false 
+} 
+```
+  
+_run.ps1_ 文件具有 PowerShell 代码，该代码读取传入的文档并输出更改。
+
+```powershell
+using namespace System.Net 
+
+param($Request, $ToDoItem, $TriggerMetadata) 
+
+Write-Host 'PowerShell HTTP trigger function processed a request' 
+
+if (-not $ToDoItem) { 
+    Write-Host 'ToDo item not found' 
+
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::NotFound 
+        Body = $ToDoItem.Description 
+    }) 
+
+} else { 
+
+    Write-Host "Found ToDo item, Description=$($ToDoItem.Description)" 
+ 
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::OK 
+        Body = $ToDoItem.Description 
+    }) 
+}
+```
+
+<a name="http-trigger-id-route-data-ps"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP 触发器，从路由数据查找 ID
+
+下面的示例演示如何从 web API 读取和更新单个 Cosmos DB 文档。 文档的唯一标识符通过路由参数提供。 路由参数在 HTTP 请求绑定的属性中定义 `route` ，并在 Cosmos DB `"Id": "{Id}"` 绑定属性中引用。
+
+Cosmos DB 输入绑定首先列在函数配置文件中找到的绑定列表中 (_function.js_) 。
+
+```json
+{ 
+  "bindings": [ 
+    { 
+      "type": "cosmosDB", 
+      "name": "ToDoItem", 
+      "databaseName": "ToDoItems", 
+      "collectionName": "Items", 
+      "connectionStringSetting": "CosmosDBConnection", 
+      "direction": "in", 
+      "Id": "{id}", 
+      "PartitionKey": "{partitionKeyValue}" 
+    },
+    { 
+      "authLevel": "anonymous", 
+      "name": "Request", 
+      "type": "httpTrigger", 
+      "direction": "in", 
+      "methods": [ 
+        "get", 
+        "post" 
+      ], 
+      "route": "todoitems/{partitionKeyValue}/{id}" 
+    }, 
+    { 
+      "name": "Response", 
+      "type": "http", 
+      "direction": "out" 
+    }
+  ], 
+  "disabled": false 
+} 
+```
+
+_run.ps1_ 文件具有 PowerShell 代码，该代码读取传入的文档并输出更改。
+
+```powershell
+using namespace System.Net 
+
+param($Request, $ToDoItem, $TriggerMetadata) 
+
+Write-Host 'PowerShell HTTP trigger function processed a request' 
+
+if (-not $ToDoItem) { 
+    Write-Host 'ToDo item not found' 
+
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::NotFound 
+        Body = $ToDoItem.Description 
+    }) 
+
+} else { 
+    Write-Host "Found ToDo item, Description=$($ToDoItem.Description)" 
+  
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::OK 
+        Body = $ToDoItem.Description 
+    }) 
+} 
+```
+
+<a name="queue-trigger-multiple-docs-sqlquery-ps"></a>
+
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>队列触发器，使用 SqlQuery 获取多个文档
+
+下面的示例演示如何读取多个 Cosmos DB 文档。 函数的配置文件 (_上的function.js_) 定义绑定属性，其中包括 `sqlQuery` 。 为属性提供的 SQL 语句 `sqlQuery` 选择提供给函数的文档集。
+
+```json
+{ 
+  "name": "Documents", 
+  "type": "cosmosDB", 
+  "direction": "in", 
+  "databaseName": "MyDb", 
+  "collectionName": "MyCollection", 
+  "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}", 
+  "connectionStringSetting": "CosmosDBConnection" 
+} 
+```
+
+_Run1.ps_ 文件包含用于读取传入文档的 PowerShell 代码。
+
+```powershell
+param($QueueItem, $Documents, $TriggerMetadata) 
+
+foreach ($Document in $Documents) { 
+    # operate on each document 
+} 
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+此部分包含的以下示例可以通过指定各种源提供的 ID 值来读取单个文档：
+
+* [队列触发器，从 JSON 查找 ID](#queue-trigger-look-up-id-from-json-python)
+* [HTTP 触发器，从查询字符串查找 ID](#http-trigger-look-up-id-from-query-string-python)
+* [HTTP 触发器，从路由数据查找 ID](#http-trigger-look-up-id-from-route-data-python)
+* [队列触发器，使用 SqlQuery 获取多个文档](#queue-trigger-get-multiple-docs-using-sqlquery-python)
+
+<a id="queue-trigger-look-up-id-from-json-python"></a>
+
+### <a name="queue-trigger-look-up-id-from-json"></a>队列触发器，从 JSON 查找 ID
+
+以下示例演示 *function.json* 文件中的一个 Cosmos DB 输入绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 该函数读取单个文档，并更新文档的文本值。
+
+下面是 function.json 文件中的绑定数据：
+
+```json
+{
+    "name": "documents",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "id" : "{queueTrigger_payload_property}",
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "in"
+},
+{
+    "name": "$return",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "createIfNotExists": false,
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "out"
+}
+```
+
+[配置](#configuration)部分解释了这些属性。
+
+下面是 Python 代码：
+
+```python
+import azure.functions as func
+
+
+def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Document:
+    if documents:
+        document = documents[0]
+        document['text'] = 'This was updated!'
+        return document
+```
+
+<a id="http-trigger-look-up-id-from-query-string-python"></a>
+
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP 触发器，从查询字符串查找 ID
+
+以下示例展示了检索单个文档的 [Python 函数](functions-reference-python.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
+
+function.json 文件如下所示：
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "todoitems",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connectionStringSetting": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{Query.id}",
+      "PartitionKey": "{Query.partitionKeyValue}"
+    }
+  ],
+  "scriptFile": "__init__.py"
+}
+```
+
+下面是 Python 代码：
+
+```python
+import logging
+import azure.functions as func
+
+
+def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
+    if not todoitems:
+        logging.warning("ToDo item not found")
+    else:
+        logging.info("Found ToDo item, Description=%s",
+                     todoitems[0]['description'])
+
+    return 'OK'
+```
+
+<a id="http-trigger-look-up-id-from-route-data-python"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP 触发器，从路由数据查找 ID
+
+以下示例展示了检索单个文档的 [Python 函数](functions-reference-python.md)。 此函数由 HTTP 请求触发，该请求使用的路由数据用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
+
+function.json 文件如下所示：
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route":"todoitems/{partitionKeyValue}/{id}"
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "todoitems",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connection": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{id}",
+      "PartitionKey": "{partitionKeyValue}"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+下面是 Python 代码：
+
+```python
+import logging
+import azure.functions as func
+
+
+def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
+    if not todoitems:
+        logging.warning("ToDo item not found")
+    else:
+        logging.info("Found ToDo item, Description=%s",
+                     todoitems[0]['description'])
+    return 'OK'
+```
+
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>
+
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>队列触发器，使用 SqlQuery 获取多个文档
+
+以下示例演示 *function.json* 文件中的一个 Azure Cosmos DB 输入绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 该函数使用队列触发器自定义查询参数检索 SQL 查询指定的多个文档。
+
+队列触发器提供参数 `departmentId`。 `{ "departmentId" : "Finance" }` 的队列消息将返回财务部的所有记录。
+
+下面是 function.json 文件中的绑定数据：
+
+```json
+{
+    "name": "documents",
+    "type": "cosmosDB",
+    "direction": "in",
+    "databaseName": "MyDb",
+    "collectionName": "MyCollection",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
+    "connectionStringSetting": "CosmosDBConnection"
+}
+```
+
+[配置](#configuration)部分解释了这些属性。
+
+下面是 Python 代码：
+
+```python
+import azure.functions as func
+
+def main(queuemsg: func.QueueMessage, documents: func.DocumentList):
+    for document in documents:
+        # operate on each document
+```
+
  ---
 
 ## <a name="attributes-and-annotations"></a>特性和注释
@@ -1414,17 +1629,21 @@ public class DocsFromRouteSqlQuery {
 
 C# 脚本不支持特性。
 
+# <a name="java"></a>[Java](#tab/java)
+
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对写入 Cosmos DB 的参数使用 `@CosmosDBOutput` 注释。 注释参数类型应当为 `OutputBinding<T>`，其中 `T` 是本机 Java 类型或 POJO。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支持特性。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支持特性。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python 不支持特性。
-
-# <a name="java"></a>[Java](#tab/java)
-
-在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对写入 Cosmos DB 的参数使用 `@CosmosDBOutput` 注释。 注释参数类型应当为 `OutputBinding<T>`，其中 `T` 是本机 Java 类型或 POJO。
 
 ---
 
@@ -1434,7 +1653,7 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**     | 不适用 | 必须设置为 `cosmosDB`。        |
+|type     | 不适用 | 必须设置为 `cosmosDB`。        |
 |**direction**     | 不适用 | 必须设置为 `in`。         |
 |**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** |**DatabaseName** |包含文档的数据库。        |
@@ -1457,17 +1676,21 @@ Python 不支持特性。
 
 函数成功退出时，通过命名输入参数对输入文档所做的任何更改都会自动保存。
 
+# <a name="java"></a>[Java](#tab/java)
+
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，[@CosmosDBInput](/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) 注释向函数公开 Cosmos DB 数据。 可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 请参阅 JavaScript 示例。
+函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 有关更多详细信息，请参阅 [JavaScript 示例](#example) 。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+不会在函数退出时自动更新文档。 若要更新函数中的文档，请使用 [输出绑定](./functions-bindings-cosmosdb-v2-input.md)。 有关更多详细信息，请参阅 [PowerShell 示例](#example) 。
 
 # <a name="python"></a>[Python](#tab/python)
 
 数据通过参数提供给函数 `DocumentList` 。 对文档所做的更改不会自动保存。
-
-# <a name="java"></a>[Java](#tab/java)
-
-在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，[@CosmosDBInput](/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) 注释向函数公开 Cosmos DB 数据。 可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
 ---
 

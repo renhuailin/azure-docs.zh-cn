@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: af5ed0296ce99a4450fffec6b047285307ed0ff2
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: d24565522a75427be04cacfdc20347056a515847
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709293"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070756"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音识别的数据
 
@@ -50,7 +50,7 @@ ms.locfileid: "97709293"
 | [音频和人为标记的听录内容](#audio--human-labeled-transcript-data-for-testingtraining) | 是<br>用于评估准确度 | 0.5-5 小时的音频 | 是 | 1-20 小时的音频 |
 | [相关文本](#related-text-data-for-training) | 否 | 不适用 | 是 | 1-200 MB 的相关文本 |
 
-训练新模型时，请从 [相关文本](#related-text-data-for-training)开始。 此数据已改进了特殊术语和短语的识别。
+训练新模型时，请从[相关文本](#related-text-data-for-training)开始。 这些数据将改善对特殊术语和短语的识别。 利用文本定型比) 的音频 (的培训速度快得多。
 
 文件应按类型分组成数据集，并作为 .zip 文件上传。 每个数据集只能包含一种数据类型。
 
@@ -119,7 +119,7 @@ ms.locfileid: "97709293"
 > [!NOTE]
 > 上传训练和测试数据时，.zip 文件大小不能超过 2 GB。 只能从单个数据集进行测试，请确保将其保持在适当的文件大小内。 另外，每个训练文件不能超过 60 秒，否则将出错。
 
-若要解决字词删除或替换等问题，需要提供大量的数据来改善识别能力。 通常，建议提供大约10到20小时的音频的单词转录。 应在单个纯文本文件中包含所有 WAV 文件的听录。 听录文件的每一行应包含一个音频文件的名称，后接相应的听录。 文件名和听录应以制表符 (\t) 分隔。
+若要解决字词删除或替换等问题，需要提供大量的数据来改善识别能力。 通常，我们建议为大约 10 到 20 小时的音频提供逐字对照的听录。 应在单个纯文本文件中包含所有 WAV 文件的听录。 听录文件的每一行应包含一个音频文件的名称，后接相应的听录。 文件名和听录应以制表符 (\t) 分隔。
 
   例如：
 ```
@@ -138,7 +138,9 @@ ms.locfileid: "97709293"
 > [!div class="mx-imgBorder"]
 > ![从语音门户选择音频](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
-请参阅 [设置 Azure 帐户](custom-speech-overview.md#set-up-your-azure-account) ，获取语音服务订阅的推荐区域列表。 在其中一个区域中设置语音订阅将减少训练模型所用的时间。
+有关语音服务订阅的建议区域列表，请参阅[设置 Azure 帐户](custom-speech-overview.md#set-up-your-azure-account)。 在这些区域之一中设置语音订阅将减少训练模型所需的时间。 在这些区域中，培训每日可以处理大约10小时的音频，而不是在其他地区每天一小时处理一次。 如果无法在一周内完成模型训练，则该模型将标记为 "失败"。
+
+并非所有基本模型都支持音频数据培训。 如果基本模型不支持该模型，则该服务将忽略音频，并只训练转录的文本。 在这种情况下，训练将与相关文本定型相同。
 
 ## <a name="related-text-data-for-training"></a>用于训练的相关文本数据
 
@@ -150,6 +152,8 @@ ms.locfileid: "97709293"
 | 发音 | 改善不常见字词、缩写词或其他未定义发音的单词的发音。 |
 
 可将言语作为单个或多个文本文件提供。 若要提高准确性，请使用较接近预期口头言语的文本数据。 应以单个文本文件的形式提供发音。 可将所有内容打包成单个 zip 文件，并上传到<a href="https://speech.microsoft.com/customspeech" target="_blank">自定义语音识别门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+
+相关文本的定型通常在几分钟内完成。
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>有关创建句子文件的指导原则
 

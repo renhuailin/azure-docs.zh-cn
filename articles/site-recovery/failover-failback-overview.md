@@ -3,12 +3,12 @@ title: 关于 Azure Site Recovery 中的故障转移和故障回复
 description: 了解 Azure Site Recovery 中的故障转移和故障回复。
 ms.topic: conceptual
 ms.date: 12/24/2019
-ms.openlocfilehash: 3617683200aa3ffba08061b70993613fd0cc7241
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b900655d6fdf1143d430ac842bfd84eb1dfdf34c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369873"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070732"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>关于本地灾难恢复故障转移/故障回复
 
@@ -45,7 +45,7 @@ Site Recovery 中的故障转移和故障回复分为四个阶段：
 
 **故障转移** | **位置** | **操作**
 --- | --- | ---
-**Azure VM (Windows(** | 故障转移之前在本地计算机上 | **通过 Internet 访问**：启用 RDP。 确保已针对“公共”添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP    。<br/><br/> **通过站点到站点 VPN 访问**：在计算机上启用 RDP。 检查是否在“Windows 防火墙” -> “允许的应用和功能”中针对“域和专用”网络允许 RDP    。<br/><br/>  确保操作系统 SAN 策略已设置为 **OnlineAll**。 [了解详细信息](https://support.microsoft.com/kb/3031135)。<br/><br/> 在触发故障转移时，请确保 VM 上没有处于挂起状态的 Windows 更新。 Windows 更新可能会在故障转移时启动，在更新完成之前，无法登录到 VM。
+**运行 Windows 的 Azure VM** | 故障转移之前在本地计算机上 | **通过 Internet 访问**：启用 RDP。 确保已针对“公共”添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP    。<br/><br/> **通过站点到站点 VPN 访问**：在计算机上启用 RDP。 检查是否在“Windows 防火墙” -> “允许的应用和功能”中针对“域和专用”网络允许 RDP    。<br/><br/>  确保操作系统 SAN 策略已设置为 **OnlineAll**。 [了解详细信息](https://support.microsoft.com/kb/3031135)。<br/><br/> 在触发故障转移时，请确保 VM 上没有处于挂起状态的 Windows 更新。 Windows 更新可能会在故障转移时启动，在更新完成之前，无法登录到 VM。
 **运行 Windows 的 Azure VM** | 故障转移之后在 Azure VM 上 |  为 VM [添加公共 IP 地址](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr)。<br/><br/> 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则必须允许与 RDP 端口建立传入连接。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图  。 如果无法连接，请检查 VM 是否正在运行，并查看[故障排除提示](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 **运行 Linux 的 Azure VM** | 故障转移之前在本地计算机上 | 确保 VM 上的安全外壳服务已设置为在系统引导时自动启动。<br/><br/> 确保防火墙规则允许 SSH 连接。
 **运行 Linux 的 Azure VM** | 故障转移之后在 Azure VM 上 | 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则需要允许与 SSH 端口建立传入连接。<br/><br/> 为 VM [添加公共 IP 地址](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr)。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图  。<br/><br/>
@@ -99,7 +99,7 @@ Site Recovery 提供不同的故障转移选项。
 故障回复的工作原理如下：
 
 - VM 至少需有一个恢复点才能故障回复。 恢复计划中的所有 VM 至少需有一个恢复点。
-- 我们建议使用**最新**恢复点进行故障回复（崩溃一致性恢复点）。
+- 我们建议使用 **最新** 恢复点进行故障回复（崩溃一致性恢复点）。
     - 有一个应用一致性恢复点选项。 在这种情况下，单个 VM 将恢复到其最新可用的应用一致性恢复点。 对于包含复制组的恢复计划，每个复制组将恢复到其公共的可用恢复点。
     - 应用一致性恢复点在时间上可能会落后，并且可能会发生数据丢失。
 - 从 Azure 故障转移到本地站点期间，Site Recovery 将关闭 Azure VM。 提交故障转移时，Site Recovery 将删除 Azure 中已故障回复的 Azure VM。

@@ -1,15 +1,15 @@
 ---
-title: 推送 & 拉取 Docker 映像
+title: 推送和拉取 Docker 映像
 description: 使用 Docker CLI 在 Azure 的专用容器注册表中推送和拉取 Docker 映像
 ms.topic: article
 ms.date: 01/23/2019
-ms.custom: seodec18, H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 067b5749332c2c41b86d22e7de60083d5f61a442
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: seodec18, H1Hack27Feb2017
+ms.openlocfilehash: d04a5fcbc4d6294a216ddfc9a8e6ea1ef98825a3
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020052"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071623"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 
@@ -37,6 +37,8 @@ docker login myregistry.azurecr.io
 ```
 
 完成后，这两个命令将返回 `Login Succeeded`。
+> [!NOTE]
+>* 你可能希望将 Visual Studio Code 与 Docker 扩展一起使用，以便更快、更方便地登录。
 
 > [!TIP]
 > 使用 `docker login` 以及标记要推送到注册表的映像时，请始终指定完全限定的注册表名称（全部小写）。 在本文的示例中，完全限定的名称为 *myregistry.azurecr.io*。

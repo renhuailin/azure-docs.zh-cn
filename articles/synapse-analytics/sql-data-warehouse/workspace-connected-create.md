@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: a1fbc6eede6c82020b765185602c672c1162fdf8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 769ca4cf0ecbdba5fd80d977eb69c8a4f58df55f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548182"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071181"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>为专用 SQL 池启用 Synapse 工作区功能 (以前的 SQL DW) 
 
 所有 SQL 数据仓库用户现在都可以通过 Synapse Studio 和工作区访问现有专用 SQL 池 (以前的 SQL DW) 实例。 用户可以使用 Synapse Studio 和工作区，而不影响自动化、连接或工具。 本文介绍现有的 Azure Synapse Analytics 用户如何启用现有专用 SQL 池的 Synapse 工作区功能 (以前的 SQL DW) 。 用户可以通过 Synapse 工作区和工作室利用现在提供的新功能丰富的功能来扩展其现有分析解决方案。   
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 在数据仓库上启用 Synapse 工作区功能之前，必须确保已完成以下工作：
 - 用于创建和管理 SQL 逻辑服务器上承载的 SQL 资源的权限。
 - 创建 Azure Synapse 资源的权限。
@@ -57,6 +57,9 @@ ms.locfileid: "96548182"
 4. 选择一个专用的 SQL 池 (以前托管在逻辑服务器上的 SQL DW) 实例。 在 "概述" 页中，选择 " **启动 Synapse studio** " 或 "进入 [Synapse studio](https://web.azuresynapse.net) "，然后登录到你的工作区。
 
 5. 打开 **数据中心** ，并在对象资源管理器中展开专用 SQL 池，以确保你已访问和查询数据仓库。
+
+    > [!NOTE] 
+    > 可以随时删除已连接的工作区。 删除工作区将不会删除已连接的专用 SQL 池 (以前的 SQL DW) 。 删除操作完成后，可在专用 SQL DW (以前的 SQL DW) 上重新启用工作区功能。
 
 ## <a name="next-steps"></a>后续步骤
 [Synapse 工作区和 Studio](../get-started.md)入门。

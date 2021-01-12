@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: eacdf0cf80414c44aaccf6925e466b914c66da03
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a7e39bb8ed742007a13a222771b430372d50e889
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065297"
+ms.locfileid: "98071691"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -131,11 +131,11 @@ ms.locfileid: "98065297"
 
     >[!NOTE]
     >
-    > * 本节仅与日志搜索警报相关。
-    > * 指标警报和活动日志警报始终会为每个警报创建一个工作项。
+    > * 本部分仅适用于日志搜索警报。
+    > * 对于所有其他警报类型，将为每个警报创建一个工作项。
 
-    * 在工作项下拉列表中选择 "事件" 或 "警报"：
-        * 如果选中 **"为每个配置项目创建单独的工作项"** 复选框，则每个警报中的每个配置项都将创建一个新的工作项。 在 ITSM 系统中，每个配置项目可以有多个工作项。
+    * 在 "工作项" 下拉 "事件" 或 "警报" 中选择的情况下，将 ![ 显示 "ITSM 事件" 窗口的屏幕截图。](media/itsmc-overview/itsm-action-configuration.png)
+        * 如果选中 **"为每个配置项目创建单独的工作项"** 复选框，则每个警报中的每个配置项都将创建一个新的工作项。 由于相同配置项目的多个警报会受到影响，因此每个配置项目将有多个工作项。
 
              例如：
              1) 包含3个配置项目的警报1： A、B、C-将创建3个工作项。
@@ -148,15 +148,13 @@ ms.locfileid: "98065297"
 
         例如：
          1) 包含3个配置项目的警报1： A、B、C-将创建1个工作项。
-         2) 与1个配置项目： D 的阶段1相同的警报规则的警报2将合并到阶段1中的工作项。
+         2) 与1个配置项目中的步骤 a 相同的警报规则的警报2： D-D 将附加到步骤 a 中创建的工作项中受影响的配置项列表。
          3) 警报3对于具有1个配置项目的不同警报规则： E-将创建1个工作项。
 
-       ![显示 ITSM 事件窗口的屏幕截图。](media/itsmc-overview/itsm-action-configuration.png)
+    * 在 "工作项" 下拉列表中选择 "事件"： ![ 屏幕截图，显示 "ITSM" 事件窗口。](media/itsmc-overview/itsm-action-configuration-event.png)
 
-    * 在工作项下拉列表中选择 "事件" 时：
         * 如果选择 **"为每个日志项创建单独的工作项 (则不会填充配置项目字段。可能会导致大量的工作项。 ) "** 在单选按钮选择中，将根据日志搜索警报查询的搜索结果中的每一行创建一个工作项。 在工作项的负载中，description 属性将从搜索结果中获得该行。
         * 如果在单选按钮选择中选择 **"为每个配置项目创建单独的工作项"** ，则每个警报中的每个配置项都将创建新的工作项。 在 ITSM 系统中，每个配置项目可以有多个工作项。 这与选中 "事件/警报" 一节中的复选框相同。
-    ![显示 ITSM 事件窗口的屏幕截图。](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. 选择“确定”。
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/13/2020
-ms.openlocfilehash: a82606be62007816d545942161774e776c38a4e3
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 01/11/2021
+ms.openlocfilehash: 2c60e8c71c38e5a6e92939b655cef9fcc1e04f70
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637286"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072067"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
 
@@ -42,7 +42,7 @@ ms.locfileid: "92637286"
 - Salesforce 开发人员版、专业版、企业版或不受限制版。
 - 从/向 Salesforce 生产、沙盒和自定义域复制数据。
 
-Salesforce 连接器在 Salesforce REST/Bulk API 之上构建。 默认情况下，连接器使用 [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) 从 Salesforce 复制数据，使用 [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) 将数据复制到 Salesforce。 还可通过链接服务中的 [`apiVersion` 属性](#linked-service-properties)显式设置用于读取/写入数据的 API 版本。
+Salesforce 连接器在 Salesforce REST/Bulk API 之上构建。 默认情况下，当从 Salesforce 复制数据时，连接器将使用 [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) ，并根据数据大小自动选择 REST 和大容量 api –如果结果集很大，则使用大容量 api 以获得更好的性能;向 Salesforce 写入数据时，连接器使用大容量 API 的 [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) 。 还可通过链接服务中的 [`apiVersion` 属性](#linked-service-properties)显式设置用于读取/写入数据的 API 版本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -67,9 +67,9 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 Salesforce 链接服务支持以下属性。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
-| type |类型属性必须设置为 **Salesforce** 。 |是 |
+| type |类型属性必须设置为 **Salesforce**。 |是 |
 | environmentUrl | 指定 Salesforce 实例的 URL。 <br> - 默认为 `"https://login.salesforce.com"`。 <br> - 要从沙盒复制数据，请指定 `"https://test.salesforce.com"`。 <br> - 要从自定义域复制数据，请指定 `"https://[domain].my.salesforce.com"`（以此为例）。 |否 |
 | username |为用户帐户指定用户名。 |是 |
 | password |指定用户帐户的密码。<br/><br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
@@ -144,11 +144,11 @@ Salesforce 链接服务支持以下属性。
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Salesforce 数据集支持的属性列表。
 
-要从/向 Salesforce 复制数据，请将数据集的 type 属性设置为 **SalesforceObject** 。 支持以下属性。
+要从/向 Salesforce 复制数据，请将数据集的 type 属性设置为 **SalesforceObject**。 支持以下属性。
 
-| properties | 说明 | 必选 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 **SalesforceObject** 。  | 是 |
+| type | type 属性必须设置为 **SalesforceObject**。  | 是 |
 | objectApiName | 要从中检索数据的 Salesforce 对象名称。 | 对于源为“No”，对于接收器为“Yes” |
 
 > [!IMPORTANT]
@@ -178,9 +178,9 @@ Salesforce 链接服务支持以下属性。
 >[!NOTE]
 >为了向后兼容：从 Salesforce 复制数据时，如果使用以前的“RelationalTable”类型数据集，它会在你看到切换到新的“SalesforceObject”类型的建议时继续工作。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为 **RelationalTable** 。 | 是 |
+| type | 数据集的 type 属性必须设置为 **RelationalTable**。 | 是 |
 | tableName | 在 Salesforce 中表的名称。 | 否（如果指定了活动源中的“query”） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
@@ -189,13 +189,13 @@ Salesforce 链接服务支持以下属性。
 
 ### <a name="salesforce-as-a-source-type"></a>将 Salesforce 用作源类型
 
-要从 Salesforce 复制数据，请将复制活动中的源类型设置为“SalesforceSource”  。 复制活动的 **source** 节支持以下属性。
+要从 Salesforce 复制数据，请将复制活动中的源类型设置为“SalesforceSource”。 复制活动的 **source** 节支持以下属性。
 
-| properties | 说明 | 必选 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为 **SalesforceSource** 。 | 是 |
+| type | 复制活动源的 type 属性必须设置为 **SalesforceSource**。 | 是 |
 | 查询 |使用自定义查询读取数据。 可以使用 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询或 SQL-92 查询。 请在[查询提示](#query-tips)部分中查看更多提示。 如果未指定查询，将检索在数据集的“objectApiName”中指定的 Salesforce 对象的所有数据。 | 否（如果指定了数据集中的“objectApiName”） |
-| readBehavior | 指示是查询现有记录，还是查询包括已删除记录在内的所有记录。 如果未指定，默认行为是前者。 <br>允许的值： **query** （默认值）、 **queryAll** 。  | 否 |
+| readBehavior | 指示是查询现有记录，还是查询包括已删除记录在内的所有记录。 如果未指定，默认行为是前者。 <br>允许的值：**query**（默认值）、**queryAll**。  | 否 |
 
 > [!IMPORTANT]
 > 任何自定义对象均需要 **API 名称** 的“__c”部分。
@@ -239,15 +239,15 @@ Salesforce 链接服务支持以下属性。
 
 ### <a name="salesforce-as-a-sink-type"></a>将 Salesforce 用作接收器类型
 
-要向 Salesforce 复制数据，请将复制活动中的接收器类型设置为“SalesforceSink”  。 复制活动 **sink** 节支持以下属性。
+要向 Salesforce 复制数据，请将复制活动中的接收器类型设置为“SalesforceSink”。 复制活动 **sink** 节支持以下属性。
 
-| properties | 说明 | 必选 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的 type 属性必须设置为 **SalesforceSink** 。 | 是 |
-| writeBehavior | 操作写入行为。<br/>允许的值为 **Insert** 和 **Upsert** 。 | 否（默认值为 Insert） |
+| type | 复制活动接收器的 type 属性必须设置为 **SalesforceSink**。 | 是 |
+| writeBehavior | 操作写入行为。<br/>允许的值为 **Insert** 和 **Upsert**。 | 否（默认值为 Insert） |
 | externalIdFieldName | 更新插入操作的外部的 ID 字段名称。 指定的字段必须在 Salesforce 对象中定义为“外部 ID 字段”。 它相应的输入数据中不能有 NULL 值。 | 对于“Upsert”是必需的 |
 | writeBatchSize | 每批中写入到 Salesforce 的数据行计数。 | 否（默认值为5,000） |
-| ignoreNullValues | 指示是否忽略 NULL 值从输入数据期间写入操作。<br/>允许的值为 **true** 和 **false** 。<br>- **True** ：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False** ：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
+| ignoreNullValues | 指示是否忽略 NULL 值从输入数据期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
 
 **示例：复制活动中的 Salesforce 接收器**
 
@@ -302,7 +302,7 @@ Salesforce 链接服务支持以下属性。
 |:--- |:--- |:--- |
 | 列选择 | 需要枚举要在查询中复制的字段，例如 `SELECT field1, filed2 FROM objectname` | 除了列选择之外，还支持 `SELECT *`。 |
 | 引号 | 字段/对象名称不能用引号引起来。 | 字段/对象名称可以用引号引起来，例如 `SELECT "id" FROM "Account"` |
-| 日期时间格式 |  请参考[此处的](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm)详细信息和下一部分中的示例。 | 请参考[此处的](/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017)详细信息和下一部分中的示例。 |
+| 日期时间格式 |  请参考[此处的](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm)详细信息和下一部分中的示例。 | 请参考[此处的](/sql/odbc/reference/develop-app/date-time-and-timestamp-literals)详细信息和下一部分中的示例。 |
 | 布尔值 | 表示为 `False` 和 `True`，例如 `SELECT … WHERE IsDeleted=True`。 | 表示为 0 或 1，例如 `SELECT … WHERE IsDeleted=1`。 |
 | 列重命名 | 不支持。 | 支持，例如：`SELECT a AS b FROM …`。 |
 | 关系 | 支持，例如 `Account_vod__r.nvs_Country__c`。 | 不支持。 |
@@ -311,8 +311,8 @@ Salesforce 链接服务支持以下属性。
 
 当指定 SOQL 或 SQL 查询时，请注意 DateTime 的格式差异。 例如：
 
-* **SOQL 示例** ：`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
-* **SQL 示例** ：`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
+* **SOQL 示例**：`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
+* **SQL 示例**：`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
 ### <a name="error-of-malformed_query-truncated"></a>MALFORMED_QUERY:Truncated 错误
 

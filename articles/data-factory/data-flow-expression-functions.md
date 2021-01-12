@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2021
-ms.openlocfilehash: b939d16c25d0d90e6b896098c8065bc57b044813
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: d0bebf030a35d5e0cec7e5f9364fddbf090ee1c7
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963889"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072252"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>映射数据流中的数据转换表达式
 
@@ -256,8 +256,8 @@ ___
 ### <code>fromUTC</code>
 <code><b>fromUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
 转换为 UTC 格式的时间戳。 可以选择以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递时区。 默认为当前时区。 有关可用格式，请参阅 Java 的 `SimpleDateFormat` 类。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``fromUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
-* ``fromUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
+* ``fromUTC(currentTimestamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
+* ``fromUTC(currentTimestamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 ___
 ### <code>greater</code>
 <code><b>greater(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
@@ -1224,8 +1224,8 @@ ___
 ### <code>toUTC</code>
 <code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
 将时间戳转换为 UTC。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 默认为当前时区。 有关可用格式，请参阅 Java 的 `SimpleDateFormat` 类。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
-* ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
+* ``toUTC(currentTimestamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
+* ``toUTC(currentTimestamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 
 ## <a name="metafunctions"></a>Metafunctions
 

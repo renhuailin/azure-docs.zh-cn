@@ -3,12 +3,12 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure 策略如何使用来宾配置客户端审核虚拟机内的设置。
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 58fe1c630de4abfb2fe04ddedb45b360cfebd423
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 5ec43516c60d2fe5d923a7b87cddbea0ad640453
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862324"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071827"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -62,7 +62,7 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 
 |发布者|名称|版本|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04-18.04|
+|Canonical|Ubuntu Server|14.04 - 18.04|
 |Credativ|Debian|8 及更高版本|
 |Microsoft|Windows Server|2012 及更高版本|
 |Microsoft|Windows 客户端|Windows 10|
@@ -153,8 +153,6 @@ Azure Policy 中的一个计划提供了按照“基线”审核操作系统设�
 Windows： `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
 Linux：`/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
-
-其中 `<version>` 指的是当前版本号。
 
 ### <a name="collecting-logs-remotely"></a>远程收集日志
 

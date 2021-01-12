@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 454ac9a377800bd11a53250569c3e7b65bac713a
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 779b66412319ec8422977a7e56570a4d16f89aa9
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558787"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071538"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 输出绑定
 
@@ -248,136 +248,6 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-以下示例演示 *function.json* 文件中的一个 Azure Cosmos DB 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数使用一个用于某个队列的队列输入绑定，该队列以下列格式接收 JSON：
-
-```json
-{
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-该函数按下列格式为每个记录创建 Azure Cosmos DB 文档：
-
-```json
-{
-    "id": "John Henry-123456",
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-下面是 function.json 文件中的绑定数据：
-
-```json
-{
-    "name": "employeeDocument",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": true,
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-
-[配置](#configuration)部分解释了这些属性。
-
-JavaScript 代码如下所示：
-
-```javascript
-    module.exports = function (context) {
-
-      context.bindings.employeeDocument = JSON.stringify({
-        id: context.bindings.myQueueItem.name + "-" + context.bindings.myQueueItem.employeeId,
-        name: context.bindings.myQueueItem.name,
-        employeeId: context.bindings.myQueueItem.employeeId,
-        address: context.bindings.myQueueItem.address
-      });
-
-      context.done();
-    };
-```
-
-对于大容量插入，请首先对对象进行窗体，然后运行 json.stringify 函数。 JavaScript 代码如下所示：
-
-```javascript
-    module.exports = function (context) {
-    
-        context.bindings.employeeDocument = JSON.stringify([
-        {
-            "id": "John Henry-123456",
-            "name": "John Henry",
-            "employeeId": "123456",
-            "address": "A town nearby"
-        },
-        {
-            "id": "John Doe-123457",
-            "name": "John Doe",
-            "employeeId": "123457",
-            "address": "A town far away"
-        }]);
-    
-      context.done();
-    };
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-下面的示例演示如何将文档作为函数的输出写入 Azure CosmosDB 数据库。
-
-绑定定义在 function.json 中定义，其中 type 设置为 `cosmosDB`。
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "cosmosDB",
-      "direction": "out",
-      "name": "doc",
-      "databaseName": "demodb",
-      "collectionName": "data",
-      "createIfNotExists": "true",
-      "connectionStringSetting": "AzureCosmosDBConnectionString"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ]
-}
-```
-
-若要写入数据库，请将文档对象传递给数据库参数的 `set` 方法。
-
-```python
-import azure.functions as func
-
-def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpResponse:
-
-    request_body = req.get_body()
-
-    doc.set(func.Document.from_json(request_body))
-
-    return 'OK'
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 * [队列触发器，通过返回值将消息保存到数据库](#queue-trigger-save-message-to-database-via-return-value-java)
@@ -545,6 +415,165 @@ public String cosmosDbQueryById(
 
 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将写入到 Cosmos DB 的参数使用 `@CosmosDBOutput` 注释。  注释参数类型应当为 ```OutputBinding<T>```，其中 T 是本机 Java 类型或 POJO。
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+以下示例演示 *function.json* 文件中的一个 Azure Cosmos DB 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数使用一个用于某个队列的队列输入绑定，该队列以下列格式接收 JSON：
+
+```json
+{
+    "name": "John Henry",
+    "employeeId": "123456",
+    "address": "A town nearby"
+}
+```
+
+该函数按下列格式为每个记录创建 Azure Cosmos DB 文档：
+
+```json
+{
+    "id": "John Henry-123456",
+    "name": "John Henry",
+    "employeeId": "123456",
+    "address": "A town nearby"
+}
+```
+
+下面是 function.json 文件中的绑定数据：
+
+```json
+{
+    "name": "employeeDocument",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "createIfNotExists": true,
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "out"
+}
+```
+
+[配置](#configuration)部分解释了这些属性。
+
+JavaScript 代码如下所示：
+
+```javascript
+    module.exports = function (context) {
+
+      context.bindings.employeeDocument = JSON.stringify({
+        id: context.bindings.myQueueItem.name + "-" + context.bindings.myQueueItem.employeeId,
+        name: context.bindings.myQueueItem.name,
+        employeeId: context.bindings.myQueueItem.employeeId,
+        address: context.bindings.myQueueItem.address
+      });
+
+      context.done();
+    };
+```
+
+对于大容量插入，请首先对对象进行窗体，然后运行 json.stringify 函数。 JavaScript 代码如下所示：
+
+```javascript
+    module.exports = function (context) {
+    
+        context.bindings.employeeDocument = JSON.stringify([
+        {
+            "id": "John Henry-123456",
+            "name": "John Henry",
+            "employeeId": "123456",
+            "address": "A town nearby"
+        },
+        {
+            "id": "John Doe-123457",
+            "name": "John Doe",
+            "employeeId": "123457",
+            "address": "A town far away"
+        }]);
+    
+      context.done();
+    };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下面的示例演示如何使用输出绑定将数据写入 Cosmos DB。 绑定在函数的配置文件中声明 (functions.js) _上_ ，并从队列消息中提取数据并写出到 Cosmos DB 文档。
+
+```json
+{ 
+  "name": "EmployeeDocument",
+  "type": "cosmosDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "createIfNotExists": true,
+  "connectionStringSetting": "MyStorageConnectionAppSetting",
+  "direction": "out" 
+} 
+```
+
+在 _run.ps1_ 文件中，从函数返回的对象映射到 `EmployeeDocument` 数据库中保留的对象。
+
+```powershell
+param($QueueItem, $TriggerMetadata) 
+
+Push-OutputBinding -Name EmployeeDocument -Value @{ 
+    id = $QueueItem.name + '-' + $QueueItem.employeeId 
+    name = $QueueItem.name 
+    employeeId = $QueueItem.employeeId 
+    address = $QueueItem.address 
+} 
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+下面的示例演示如何将文档作为函数的输出写入 Azure CosmosDB 数据库。
+
+绑定定义在 function.json 中定义，其中 type 设置为 `cosmosDB`。
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "doc",
+      "databaseName": "demodb",
+      "collectionName": "data",
+      "createIfNotExists": "true",
+      "connectionStringSetting": "AzureCosmosDBConnectionString"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
+```
+
+若要写入数据库，请将文档对象传递给数据库参数的 `set` 方法。
+
+```python
+import azure.functions as func
+
+def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpResponse:
+
+    request_body = req.get_body()
+
+    doc.set(func.Document.from_json(request_body))
+
+    return 'OK'
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>特性和注释
@@ -569,17 +598,21 @@ public String cosmosDbQueryById(
 
 C# 脚本不支持特性。
 
+# <a name="java"></a>[Java](#tab/java)
+
+`CosmosDBOutput` 注释可用于将数据写入 Cosmos DB。 可将注释应用到函数或单个函数参数。 在函数方法中使用时，函数的返回值就是写入 Cosmos DB 的值。 如果对参数使用注释，则必须将参数的类型声明为 `OutputBinding<T>`，其中 `T` 是本机 Java 类型或 POJO。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支持特性。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支持特性。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python 不支持特性。
-
-# <a name="java"></a>[Java](#tab/java)
-
-`CosmosDBOutput` 注释可用于将数据写入 Cosmos DB。 可将注释应用到函数或单个函数参数。 在函数方法中使用时，函数的返回值就是写入 Cosmos DB 的值。 如果对参数使用注释，则必须将参数的类型声明为 `OutputBinding<T>`，其中 `T` 是本机 Java 类型或 POJO。
 
 ---
 
@@ -589,9 +622,9 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**     | 不适用 | 必须设置为 `cosmosDB`。        |
-|direction      | 不适用 | 必须设置为 `out`。         |
-|name      | 不适用 | 表示函数中的文档的绑定参数的名称。  |
+|type     | 不适用 | 必须设置为 `cosmosDB`。        |
+|**direction**     | 不适用 | 必须设置为 `out`。         |
+|**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |
 |**collectionName** |**CollectionName**  | 包含在其中创建文档的集合的名称。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*，因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |

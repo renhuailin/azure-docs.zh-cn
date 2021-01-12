@@ -7,18 +7,17 @@ author: vladvino
 manager: erikre
 editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: e36f7c6085908630d5e7aa2593fe4d57202d6ee7
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: d0d5434de747b48464df1c07f8c7b6a7e785c858
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107645"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070902"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何将 Azure API 管理与虚拟网络配合使用
 使用 Azure 虚拟网络 (VNET) 可将你的任何 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -148,6 +147,9 @@ ms.locfileid: "97107645"
 
 + **区域服务标记**：允许与存储、SQL 和事件中心服务标记建立出站连接的 NSG 规则可以使用与包含 API 管理实例的区域对应的这些标记的区域版本（例如，美国西部区域中 API 管理实例对应 Storage.WestUS）。 在多区域部署中，每个区域中的 NSG 应该允许流量进入该区域和主要区域的服务标记。
 
+    > [!IMPORTANT]
+    > 若要为虚拟网络中的 API 管理实例启用发布 [开发人员门户](api-management-howto-developer-portal.md) ，请确保还允许到美国西部区域的到 blob 存储的出站连接。 例如，在 NSG 规则中使用 **WestUS** 服务标记。 当前需要连接到美国西部区域中的 blob 存储，才能发布适用于任何 API 管理实例的开发人员门户。
+
 + **SMTP 中继**：在主机 `smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com`、`ies.global.microsoft.com` 下解析的 SMTP 中继的出站网络连接
 
 + **开发人员门户 CAPTCHA**：在主机 `client.hip.live.com` 和 `partner.hip.live.com` 下解析的开发人员门户 CAPTCHA 的出站网络连接。
@@ -173,7 +175,7 @@ ms.locfileid: "97107645"
 ## <a name="troubleshooting"></a><a name="troubleshooting"> </a>疑难解答
 * **初始设置**：如果在某个子网中初次部署 API 管理服务未成功，建议首先在同一子网中部署一个虚拟机。 接下来，在虚拟机中部署远程桌面，并验证是否与 Azure 订阅中的以下每个资源建立了连接
     * Azure 存储 Blob
-    * Azure SQL Database
+    * Azure SQL 数据库
     * Azure 存储表
 
   > [!IMPORTANT]

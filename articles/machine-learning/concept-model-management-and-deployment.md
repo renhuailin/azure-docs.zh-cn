@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 64784d747e9f33961c2f5d2df95e0d5a83e01548
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8813b2cad5800bd4ede6e64119117df57c230fdc
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324833"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071215"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
 
@@ -32,12 +31,12 @@ ms.locfileid: "93324833"
 
 Azure 机器学习提供以下 MLOps 功能：
 
-- **创建可重现的 ML 管道** 。 使用机器学习管道可为数据准备、训练和评分过程定义可重复且可重用的步骤。
+- **创建可重现的 ML 管道**。 使用机器学习管道可为数据准备、训练和评分过程定义可重复且可重用的步骤。
 - 创建可重用的软件环境用于训练和部署模型。
 - 从任意位置注册、打包和部署模型。 还可以跟踪使用模型时所需的关联元数据。
 - 捕获端到端 ML 生命周期的监管数据。 记录的信息可以包括模型的发布者、做出更改的原因，以及在生产环境中部署或使用模型的时间。
 - 针对 ML 生命周期中的事件发出通知和警报。 例如，试验完成、模型注册、模型部署和数据偏移检测。
-- **监视 ML 应用程序中的操作和 ML 相关问题** 。 比较训练与推理之间的模型输入，浏览特定于模型的指标，以及针对 ML 基础结构提供监视和警报。
+- **监视 ML 应用程序中的操作和 ML 相关问题**。 比较训练与推理之间的模型输入，浏览特定于模型的指标，以及针对 ML 基础结构提供监视和警报。
 - 使用 Azure 机器学习和 Azure Pipelines 自动化端到端 ML 生命周期。 使用管道可以频繁更新模型、测试新模型，并连同其他应用程序和服务持续推出新的 ML 模型。
 
 ## <a name="create-reproducible-ml-pipelines"></a>创建可重现的 ML 管道
@@ -72,7 +71,7 @@ ML 管道可以包含从数据准备、到特征提取、到超参数优化、�
 有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md#registermodel)的注册模型部分。
 
 > [!IMPORTANT]
-> 使用 `Tags` Azure 机器学习 Studio 的 "模型" 页上的 "筛选依据" 选项时，不使用 `TagName : TagValue` 客户应使用 `TagName=TagValue` (而不使用空间) 
+> 在 Azure 机器学习工作室的“模型”页上使用“按 `Tags` 筛选”选项时，客户应该使用 `TagName=TagValue`（无空格），而不是使用 `TagName : TagValue`
 
 ### <a name="profile-models"></a>分析模型
 

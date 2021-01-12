@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 8b1eedc47d2a89b9552c22b3ae770f655f926945
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 6cd1965ab51e7a7bbcc65836383000f0773b9b82
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898770"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070918"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -89,7 +89,7 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
       南非北部  
       美国中南部  
       印度南部  
-      Southeast Asia  
+      东南亚  
       瑞士北部  
       瑞士西部  
       英国南部  
@@ -139,7 +139,7 @@ Log Analytics 工作区必须存在于以下区域中：
       美国中南部  
    :::column-end:::
    :::column span="":::
-      Southeast Asia  
+      东南亚  
       瑞士北部  
       瑞士西部  
       阿联酋中部  
@@ -168,7 +168,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 |部署模型   | 角色                   |
 |---------          |---------               |
-|资源管理器   | 所有者                  |
+|Resource Manager   | 所有者                  |
 |                   | 参与者            |
 |                   | 读取器                 |
 |                   | 网络参与者    |
@@ -269,7 +269,7 @@ New-AzStorageAccount `
 - 阻止的流量统计信息。
     - 主机为何阻止大量良性流量？ 对于此行为，需要进一步进行调查，并且可能需要对配置进行优化。
 - 允许/阻止的恶意流量统计信息
-  - 主机为何在接收恶意流量以及为何允许来自恶意源的流？ 对于此行为，需要进一步进行调查，并且可能需要对配置进行优化。
+  - 为什么某个主机收到恶意流量，为什么允许来自恶意源的流？ 对于此行为，需要进一步进行调查，并且可能需要对配置进行优化。
 
     在“主机”下选择“查看全部”，如下图所示 ：
 

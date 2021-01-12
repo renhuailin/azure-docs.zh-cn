@@ -4,14 +4,14 @@ description: Azure Monitor 指标警报的常见问题和可能的解决方案�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/03/2021
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857335"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070722"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -91,9 +91,9 @@ ms.locfileid: "97857335"
 如果希望对[指标的特定维度值](./alerts-metric-overview.md#using-dimensions)发出警报，但找不到这些值，请注意以下事项：
 
 1. 维度值可能需要几分钟时间才能显示在“维度值”列表下
-1. 显示的维度值基于在过去三天内收集到的指标数据
-1. 如果未发出此维度值，请单击“+”符号以添加自定义值
-1. 如果要对某个维度的所有可能值（包括将来的值）发出警报，请选中“选择 *”复选框
+1. 显示的维度值基于上一天收集的指标数据
+1. 如果维度值尚未发出或未显示，可以使用 "添加自定义值" 选项添加自定义维度值
+1. 如果要对维度的所有可能值 (包括) 的未来值进行警报，请选择 "选择所有当前和未来值" 选项
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>在已删除资源上仍然会定义指标警报规则 
 

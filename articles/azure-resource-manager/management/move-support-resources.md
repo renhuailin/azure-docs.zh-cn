@@ -2,13 +2,13 @@
 title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: 72cc2bd1b391acd2065cc4b775c50af94510a840
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.date: 01/11/2021
+ms.openlocfilehash: fe8f6705fdce1a692dd8a969cfc4b3b21d2d2a11
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795895"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072099"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -754,7 +754,7 @@ ms.locfileid: "97795895"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | availableskus | 否 | 否 |
-> | databoxedgedevices | 是 | 是 |
+> | databoxedgedevices | 否 | 否 |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 

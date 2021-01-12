@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: c5613dda7adbbc47f989bc2a772777e716620b3c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 0df91680dadbc4ac19299a4df48a585a11f044e8
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348027"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072235"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure 防火墙 SNAT 专用 IP 地址范围
 
@@ -22,9 +22,12 @@ ms.locfileid: "97348027"
 
 如果组织对专用网络使用公共 IP 地址范围，Azure 防火墙会通过 SNAT 将流量发送到 AzureFirewallSubnet 中的某个防火墙专用 IP 地址。 但是，可以将 Azure 防火墙配置为不 SNAT 公共 IP 地址范围。 例如，若要指定单个 IP 地址，可以按如下所示指定它：`192.168.1.10`。 若要指定 IP 地址范围，可以按如下所示指定它：`192.168.1.0/24`。
 
-- 若要将 Azure 防火墙配置为 **永远不** 考虑目标 ip 地址，请使用 **0.0.0.0/0** 作为专用 ip 地址范围。 通过此配置，Azure 防火墙永远不能将流量直接路由到 Internet。 
+- 若要将 Azure 防火墙配置为无论目标 IP 地址为何都不会执行 SNAT，请使用“0.0.0.0/0”作为专用 IP 地址范围 。 通过此配置，Azure 防火墙永远不能将流量直接路由到 Internet。 
 
-- 若要将防火墙配置为 **始终** 不考虑目标地址，请使用 **255.255.255.255/32** 作为专用 IP 地址范围。
+- 若要将防火墙配置为无论目标地址为何都始终执行 SNAT，请使用“255.255.255.255/32”作为专用 IP 地址范围 。
+
+> [!IMPORTANT]
+> 指定的专用地址范围仅适用于网络规则。 目前，应用程序规则始终为 SNAT。
 
 > [!IMPORTANT]
 > 若要指定自己的专用 IP 地址范围，并保留默认的 IANA RFC 1918 地址范围，请确保自定义列表仍包含 IANA RFC 1918 范围。 

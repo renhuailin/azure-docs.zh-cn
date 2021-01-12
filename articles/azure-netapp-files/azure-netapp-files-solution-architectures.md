@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/04/2020
+ms.date: 01/11/2021
 ms.author: b-juche
-ms.openlocfilehash: 919a9831731a8f7c8065f2f1c496691ae33ba659
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: a66b5d59415aad7abf3e8dc95c7498b5d774d640
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861981"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071266"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文介绍了可帮助你了解使用 Azure NetApp 文件的解决方案体系结构的最佳做法。  
@@ -136,6 +136,7 @@ ms.locfileid: "97861981"
 * [将 Azure NetApp 文件与 Azure Kubernetes 服务集成](../aks/azure-netapp-files.md)
 * [Azure 上的 Kubernetes 在 Azure 中的性能和 Azure NetApp 文件](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
 * [Trident-容器的存储 Orchestrator](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
+* [Azure Kubernetes 服务中的 Magento 电子商务平台 (AKS) ](/azure/architecture/example-scenario/magento/magento-azure)
 
 ### <a name="azure-batch"></a>Azure Batch
 

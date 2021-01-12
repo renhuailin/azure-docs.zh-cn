@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: e19c5064dd69538dfc025b0d244baf4fa74706b2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753529"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071368"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>排查无代理 VMware VM 迁移中的复制问题
 
@@ -297,6 +297,24 @@ VCenter Server 管理代理停止工作时，会出现此问题。 若要解决�
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>错误消息：出现内部错误。 [内存分配失败。 内存不足。]
 
 当 NFC 主机缓冲区内存不足时，会发生这种情况。 若要解决此问题，需要将 VM (计算 vMotion) 转移到具有可用资源的其他主机。
+
+## <a name="replication-cycle-failed"></a>复制周期失败
+
+**错误 ID：** 181008
+
+**错误消息：** VM： "VMName"。 错误：找不到快照 Id 为 "SnapshotID" 的快照复制的 disksnapshots。
+
+**可能的原因：**
+
+可能的原因包括：
+1. 由于存储 VMotion 的原因，包含的一个或多个磁盘的路径发生了更改。
+2. 一个或多个包含的磁盘不再附加到 VM。
+      
+**建议：**
+
+提供以下建议
+1. 使用 storage vMotion 将包含的磁盘还原到原始路径，然后禁用 storage vmotion。
+2. 禁用存储 VMotion，如果启用，请停止虚拟机上的复制，并再次复制虚拟机。 如果该问题仍然存在，请联系支持部门。
 
 ## <a name="next-steps"></a>后续步骤
 

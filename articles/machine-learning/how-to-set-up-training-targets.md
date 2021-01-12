@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a3427be85314f06b5408c4450e0415768122879f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: a5764a9f230540d58edf71e8c00781e86589aa9a
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912999"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070161"
 ---
 # <a name="configure-and-submit-training-runs"></a>配置和提交训练运行
 
@@ -216,6 +216,8 @@ run.wait_for_completion(show_output=True)
     4. 使用 `pip install 'PyJWT<2.0.0'` 进行安装
     
     如果要在运行时提交用户创建的环境，请考虑在该环境中使用最新版本的 azureml 核心。 版本 >= azureml 核心 < 2.0.0 的 pin PyJWT。 如果需要在提交的环境中使用 azureml 核心 < 1.18.0 的版本，请确保在 pip 依赖项中指定 PyJWT < 2.0.0。
+
+* **计算目标需要很长时间才能启动**：计算目标的 Docker 映像是从 Azure 容器注册表 (ACR) 加载的。 默认情况下，Azure 机器学习创建使用 *基本* 服务层的 ACR。 将工作区的 ACR 更改为 "标准" 或 "高级" 级别可能会减少生成和加载图像所用的时间。 有关详细信息，请参阅 [Azure 容器注册表服务层级](../container-registry/container-registry-skus.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

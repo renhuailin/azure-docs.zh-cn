@@ -5,17 +5,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: a413cabf59fbd89cfe53b581d1018231c0e22e84
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e88fbaed77113896f818710497a544fbab486246
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323931"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072269"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>安装和使用 Azure 机器学习的 CLI 扩展
 
@@ -53,7 +52,7 @@ CLI 不能取代 Azure 机器学习 SDK。 它是一个经过优化的补充工�
 az login
 ```
 
-如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 按照说明操作时，需要浏览到 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 并输入授权代码。
+如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 按说明操作时，需要浏览到 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 并输入授权代码。
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
@@ -414,7 +413,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 | `name` | `string` | 环境的名称。 名称不能以 **Microsoft** 或 **AzureML** 开头。 |
 | `version` | `string` | 环境的版本。 |
 | `environmentVariables` | `{string: string}` | 环境变量名称和值的哈希映射。 |
-| `python` | [`PythonSection`](/python/api/azureml-core/azureml.core.environment.pythonsection?preserve-view=true&view=azure-ml-py)hat 定义要在目标计算资源上使用的 Python 环境和解释器。 |
+| `python` | [`PythonSection`](/python/api/azureml-core/azureml.core.environment.pythonsection?preserve-view=true&view=azure-ml-py) 定义要在目标计算资源上使用的 Python 环境和解释器。 |
 | `docker` | [`DockerSection`](/python/api/azureml-core/azureml.core.environment.dockersection?preserve-view=true&view=azure-ml-py) | 定义根据环境规范对生成的 Docker 映像进行自定义时使用的设置。 |
 | `spark` | [`SparkSection`](/python/api/azureml-core/azureml.core.environment.sparksection?preserve-view=true&view=azure-ml-py) | 此节配置 Spark 设置。 仅当 framework 设置为 PySpark 时才使用它。 |
 | `databricks` | [`DatabricksSection`](/python/api/azureml-core/azureml.core.databricks.databrickssection?preserve-view=true&view=azure-ml-py) | 配置 Databricks 库依赖项。 |

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: e845efa2c1df47c80fcc10e7fb758f05af9fbecc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a2f57fd6a369fba4a78799f768eb3fd2f3d27050
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002130"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071470"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 触发器
 
@@ -91,6 +91,27 @@ C# 脚本代码如下所示：
     }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+当指定数据库和集合中发生插入或更新操作时，会调用此函数。
+
+```java
+    @FunctionName("cosmosDBMonitor")
+    public void cosmosDbProcessor(
+        @CosmosDBTrigger(name = "items",
+            databaseName = "ToDoList",
+            collectionName = "Items",
+            leaseCollectionName = "leases",
+            createLeaseCollectionIfNotExists = true,
+            connectionStringSetting = "AzureCosmosDBConnection") String[] items,
+            final ExecutionContext context ) {
+                context.getLogger().info(items.length + "item(s) is/are changed.");
+            }
+```
+
+
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的参数使用 `@CosmosDBTrigger` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 触发器绑定以及使用该绑定的 [JavaScript 脚本函数](functions-reference-node.md)。 添加或修改 Cosmos DB 记录时，该函数会写入日志消息。
@@ -118,6 +139,31 @@ JavaScript 代码如下所示：
 
       context.done();
     }
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下面的示例演示如何将函数作为 Cosmos DB 中的数据更改运行。
+
+```json
+{
+  "type": "cosmosDBTrigger",
+  "name": "Documents",
+  "direction": "in",
+  "leaseCollectionName": "leases",
+  "connectionStringSetting": "MyStorageConnectionAppSetting",
+  "databaseName": "Tasks",
+  "collectionName": "Items",
+  "createLeaseCollectionIfNotExists": true
+}
+```
+
+在 _run.ps1_ 文件中，您可以访问通过参数触发函数的文档 `$Documents` 。
+
+```powershell
+param($Documents, $TriggerMetadata) 
+
+Write-Host "First document Id modified : $($Documents[0].id)" 
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -151,27 +197,6 @@ JavaScript 代码如下所示：
             logging.info('First document Id modified: %s', documents[0]['id'])
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-当指定数据库和集合中发生插入或更新操作时，会调用此函数。
-
-```java
-    @FunctionName("cosmosDBMonitor")
-    public void cosmosDbProcessor(
-        @CosmosDBTrigger(name = "items",
-            databaseName = "ToDoList",
-            collectionName = "Items",
-            leaseCollectionName = "leases",
-            createLeaseCollectionIfNotExists = true,
-            connectionStringSetting = "AzureCosmosDBConnection") String[] items,
-            final ExecutionContext context ) {
-                context.getLogger().info(items.length + "item(s) is/are changed.");
-            }
-```
-
-
-在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的参数使用 `@CosmosDBTrigger` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
-
 ---
 
 ## <a name="attributes-and-annotations"></a>特性和注释
@@ -198,17 +223,21 @@ JavaScript 代码如下所示：
 
 C# 脚本不支持特性。
 
+# <a name="java"></a>[Java](#tab/java)
+
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对从 Cosmos DB 读取数据的参数使用 `@CosmosDBInput` 注释。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支持特性。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支持特性。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python 不支持特性。
-
-# <a name="java"></a>[Java](#tab/java)
-
-在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对从 Cosmos DB 读取数据的参数使用 `@CosmosDBInput` 注释。
 
 ---
 
@@ -218,7 +247,7 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `cosmosDBTrigger`。 |
+|type | 不适用 | 必须设置为 `cosmosDBTrigger`。 |
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
 |**name** | 不适用 | 函数代码中使用的变量名称，表示发生更改的文档列表。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 |
@@ -227,7 +256,7 @@ Python 不支持特性。
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | （可选）应用设置的名称，该设置包含保存租用集合的 Azure Cosmos DB 帐户的连接字符串。 未设置时，使用 `connectionStringSetting` 值。 在门户中创建绑定时，将自动设置该参数。 用于租用集合的连接字符串必须具有写入权限。|
 |**leaseDatabaseName** |**LeaseDatabaseName** | （可选）数据库的名称，该数据库包含用于存储租用的集合。 未设置时，使用 `databaseName` 设置的值。 在门户中创建绑定时，将自动设置该参数。 |
 |**leaseCollectionName** | **LeaseCollectionName** | （可选）用于存储租用的集合的名称。 未设置时，使用值 `leases`。 |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | （可选）设置为 `true` 时，如果租用集合并不存在，将自动创建该集合。 默认值是 `false`。 |
+|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | （可选）设置为 `true` 时，如果租用集合并不存在，将自动创建该集合。 默认值为 `false`。 |
 |**leasesCollectionThroughput**| **LeasesCollectionThroughput**| （可选）在创建租用集合时，定义要分配的请求单位的数量。 仅当 `createLeaseCollectionIfNotExists` 设置为 `true` 时，才会使用此设置。 使用门户创建绑定时，将自动设置该参数。
 |**leaseCollectionPrefix**| **LeaseCollectionPrefix**| （可选）设置后，该值将作为前缀添加到在此函数的租约集合中创建的租约。 使用前缀可让两个不同的 Azure 函数通过不同的前缀来共享同一个租约集合。
 |**feedPollDelay**| **FeedPollDelay**| （可选）在所有当前更改清空后，每两次在分区中轮询源上的新更改的延迟时间（以毫秒为单位）。 默认值为 5,000 毫秒（5 秒）。

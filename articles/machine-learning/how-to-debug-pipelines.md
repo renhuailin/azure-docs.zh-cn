@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 9baf305ab72354c150cb06e594ed8909f2fa1dda
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d55a9ff4dc2a639fca67d19d9323b9397aa0f409
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739308"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070365"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>机器学习管道疑难解答
 
@@ -33,6 +33,7 @@ ms.locfileid: "97739308"
 | 管道未重复使用步骤 | 默认已启用步骤重复使用，但是，请确保未在管道步骤中禁用它。 如果已禁用重复使用，则步骤中的 `allow_reuse` 参数将设置为 `False`。 |
 | 管道不必要地重新运行 | 为了确保步骤只在其基础数据或脚本发生更改时才重新运行，请分离每个步骤的源代码目录。 如果对多个步骤使用同一个源目录，则可能会遇到不必要的重新运行。 在管道步骤对象中使用 `source_directory` 参数以指向该步骤的隔离目录，并确保未对多个步骤使用同一个 `source_directory` 路径。 |
 | 在训练时期或其他循环行为中逐步减速 | 尝试将任何文件写入操作（包括日志记录）从 `as_mount()` 切换到 `as_upload()`。 “装载”模式使用远程虚拟化文件系统，在每次将文件追加到该系统时上传整个文件。 |
+| 计算目标需要很长时间才能启动 | 计算目标的 Docker 映像是从 Azure 容器注册表 (ACR) 加载的。 默认情况下，Azure 机器学习创建使用 *基本* 服务层的 ACR。 将工作区的 ACR 更改为 "标准" 或 "高级" 级别可能会减少生成和加载图像所用的时间。 有关详细信息，请参阅 [Azure 容器注册表服务层级](../container-registry/container-registry-skus.md)。 |
 
 ### <a name="authentication-errors"></a>身份验证错误
 

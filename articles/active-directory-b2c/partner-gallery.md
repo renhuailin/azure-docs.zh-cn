@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4592742b99d7c3e915c31ca5a202355d32e76d68
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356117"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070858"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作伙伴
 
@@ -54,7 +54,7 @@ Microsoft 合作伙伴，其中包含以下用于 MFA 和无密码 authenticatio
 | ![尼维斯标志的屏幕截图](./media/partner-gallery/nevis-logo.png) | [尼维斯](./partner-nevis.md) 支持无密码身份验证，并为用户提供了一种具有客户身份验证的最优秀最终用户体验。 |
 | ![Trusona 徽标的屏幕截图](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) 集成可帮助你安全登录并启用无密码 AUTHENTICATION、MFA 和数字许可扫描。 |
 | ![Twilio 徽标的屏幕截图。](./media/partner-gallery/twilio-logo.png) | [Twilio 验证应用程序](./partner-twilio.md) 提供多个解决方案，可通过 SMS 一次性密码 (OTP) 、基于时间的一次性密码 (TOTP) 和推送通知，以及符合 PSD2 的 SCA 要求。 |
-| ![TypingDNA 徽标的屏幕截图](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-twilio.md) 通过分析用户的键入模式，实现了强大的客户身份验证。 它可帮助公司实现无提示 MFA 并符合 PSD2 的 SCA 要求。 |
+| ![TypingDNA 徽标的屏幕截图](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) 通过分析用户的键入模式，实现了强大的客户身份验证。 它可帮助公司实现无提示 MFA 并符合 PSD2 的 SCA 要求。 |
 | ![Whoiam 徽标的屏幕截图](./media/partner-gallery/whoiam-logo.png) | [WhoIAM](./partner-whoiam.md) 是一种署名的标识管理系统 (BRIMS) 应用程序，使组织能够通过语音、短信和电子邮件来验证其用户群。 |
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制 

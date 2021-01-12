@@ -1,186 +1,186 @@
 ---
-title: 监视单个指标警报规则中的多个时序
-description: 针对多个时序使用单个警报规则进行大规模警报
+title: 在单个指标警报规则中监视多个时序
+description: 针对多个时序使用单个警报规则进行大规模报警
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 66987a28acc8a2c9ae71d89ff5760fa508e32963
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 47a2fb9240f6826ed862f7a857264c09b79de9bc
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566497"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071079"
 ---
-# <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>监视单个指标警报规则中的多个时序
+# <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>在单个指标警报规则中监视多个时序
 
-单个指标警报规则可用于监视一个或多个指标时间系列，从而更容易地大规模监视资源。
+可以使用单个指标警报规则监视一个或多个指标时序，从而更容易地大规模监视资源。
 
-## <a name="metric-time-series"></a>指标时间系列
+## <a name="metric-time-series"></a>指标时序
 
-指标时序是一系列度量值 (或 "指标值" ) 在一段时间内捕获的。 
+指标时序是在一段时间内捕获的一系列度量（或“指标值”）。 
 
 例如：
 
 - 虚拟机的 CPU 使用率
-- 传入字节 (入口) 到存储帐户
+- 到存储帐户的传入字节数（流入量）
 - Web 应用程序的失败请求数
 
 
 
-## <a name="alert-rule-on-a-single-time-series"></a>单个时间系列上的预警规则
-当警报规则满足以下所有条件时，它将监视单个时间系列：
--   规则监视单个目标资源 
+## <a name="alert-rule-on-a-single-time-series"></a>针对单个时序的警报规则
+当警报规则满足以下所有条件时，它会监视单个时序：
+-   该规则监视单个目标资源 
 -   包含单个条件
--   计算指标但不选择维度 (假设度量值支持维度) 
+-   对指标进行评估而不选择维度（假定指标支持维度）
 
-此类警报规则的一个示例 (仅) 显示的相关属性：
--   目标资源： *myVM1*
--   指标： *CPU 百分比*
--   运算符： *大于*
--   阈值： *70*
+此类警报规则的示例（仅显示了相关属性）：
+-   目标资源：myVM1
+-   指标：CPU 百分比
+-   运算符：大于
+-   阈值：*70*
 
 
 对于此警报规则，将监视单个指标时序：
--   *Resource* = ' myVM1 ' > 70% 的 CPU 百分比
+-   资源=“myVM1”时的 CPU 百分比 > 70%
 
-![单个时间系列上的预警规则](media/alerts-metric-multiple-time-series-single-rule/simple-alert-rule.png)
+![针对单个时序的警报规则](media/alerts-metric-multiple-time-series-single-rule/simple-alert-rule.png)
 
-## <a name="alert-rule-on-multiple-time-series"></a>多个时序的预警规则
-如果警报规则至少使用以下功能之一，则会监视多个时间序列： 
+## <a name="alert-rule-on-multiple-time-series"></a>针对多个时序的警报规则
+如果警报规则至少使用以下功能之一，则会监视多个时序： 
 -   多个资源
 -   多个条件 
 -   多个维度
 
 
-## <a name="multiple-resources-multi-resource"></a>多个资源 (多资源) 
+## <a name="multiple-resources-multi-resource"></a>多个资源（多资源）
 
 单个指标警报规则可监视多个资源，前提是资源属于同一类型并且存在于同一 Azure 区域中。 使用这种类型的规则可降低复杂性和必须维护的警报规则总数。 
 
-此类警报规则的示例：
--   目标资源： *myVM1、myVM2*
--   指标： *CPU 百分比*
--   运算符： *大于*
--   阈值： *70*
+此类警报规则的一个示例：
+-   目标资源：myVM1、myVM2
+-   指标：CPU 百分比
+-   运算符：大于
+-   阈值：*70*
 
-对于此警报规则，单独监视两个指标时间系列：
--   *Resource* = ' myVM1 ' > 70% 的 CPU 百分比
--   *Resource* = ' myVM2 ' > 70% 的 CPU 百分比
+对于此警报规则，将分别监视两个指标时序：
+-   资源=“myVM1”时的 CPU 百分比 > 70%
+-   资源=“myVM2”时的 CPU 百分比 > 70%
 
 ![多资源警报规则](media/alerts-metric-multiple-time-series-single-rule/multi-resource-alert-rule.png)
  
-在多资源警报规则中，对于每个资源) 的每个指标时序对应， **分别** 为每个资源 (或更精确地评估该条件。 这意味着，还会为每个资源单独触发警报。
+在多资源警报规则中，将分别针对每个资源（或者更准确地说，将分别针对与每个资源对应的每个指标时序）来评估条件。 这意味着，还会为每个资源分别触发警报。
 
-例如，假设我们已将上面的警报规则设置为对高于70% 的 CPU 进行监视。 在计算的时间段 (即，最后5分钟) 
--   *MyVM1* 的 *CPU 百分比* 大于70% 
--   *MyVM2* 的 *CPU 百分比* 为50%
+例如，假设我们已将上面的警报规则设置为监视 CPU 使用率高于 70% 的情况。 在评估的时间段内（即过去的 5 分钟）
+-   myVM1 的 CPU 百分比大于 70% 
+-   myVM2 的 CPU 百分比为 50%
 
-警报规则在 *myVM1* （而不是 *myVM2* ）上触发。 这些触发的警报是独立的。 它们还可以在不同的时间进行解析，具体取决于每个虚拟机的各个行为。
+警报规则在 myVM1 上触发，但不在 myVM2 上触发。 这些触发的警报是独立的。 它们还可以根据每个虚拟机的个体行为在不同的时间解决。
 
-有关多资源警报规则以及此功能支持的资源类型的详细信息，请参阅 [Azure Monitor 中的使用指标警报进行大规模监视](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)。
+有关多资源警报规则以及此功能支持的资源类型的详细信息，请参阅[使用 Azure Monitor 中的指标警报进行大规模监视](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)。
 
 > [!NOTE] 
-> 在监视多个资源的指标警报规则中，只允许单个条件。
+> 在监视多个资源的指标警报规则中，仅允许包含单个条件。
 
-## <a name="multiple-conditions-multi-condition"></a>多条件 (多条件) 
+## <a name="multiple-conditions-multi-condition"></a>多个条件（多条件）
 
-单个指标警报规则还可以监视每个警报规则最多五个条件。 
+使用单个指标警报规则时，每个警报规则还可以监视最多五个条件。 
 
 例如：
 
-- 目标资源： *myVM1*
+- 目标资源：myVM1
 - Condition1
-  - 指标： *CPU 百分比*
-  - 运算符： *大于*
-  - 阈值： *70*
+  - 指标：CPU 百分比
+  - 运算符：大于
+  - 阈值：*70*
 - Condition2
-  - 指标： *网络总数*
-  - 运算符： *大于*
-  - 阈值： *20 MB*
+  - 指标：网络传入流量总计
+  - 运算符：大于
+  - 阈值：20 MB
 
 对于此警报规则，将监视两个指标时序：
 
-- *Resource* = ' myVM1 ' > 70% 的 CPU 百分比
-- 总网络，其中 *Resource* = ' myVM1 ' > 20 MB
+- 资源=“myVM1”时的 CPU 百分比 > 70%
+- 资源=“myVM1”时的网络传入流量总计 > 20 MB
 
 ![多条件警报规则](media/alerts-metric-multiple-time-series-single-rule/multi-condition-alert-rule.png)
  
-条件之间使用了 "AND" 运算符。 满足 **所有** 条件时，警报规则会触发警报。 如果至少有一个条件不再满足，则触发的警报会解决问题。 
+条件之间使用“AND”运算符。 当满足所有条件时，警报规则触发警报。 如果至少有一个条件不再满足，则触发的警报得以解决。 
 
 > [!NOTE]
-> 在包含多个条件的警报规则中使用维度时，有一些限制。 有关详细信息，请参阅在 [具有多个条件的指标警报规则中使用维度时的限制](alerts-troubleshoot-metric.md#restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions)。
+> 在具有多个条件的警报规则中使用维度时存在限制。 有关详细信息，请参阅[在具有多个条件的指标警报规则中使用维度时的限制](alerts-troubleshoot-metric.md#restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions)。
 
 
-## <a name="multiple-dimensions-multi-dimension"></a>多维度 (多维度) 
+## <a name="multiple-dimensions-multi-dimension"></a>多个维度（多维度）
 
-单个指标警报规则还可以监视指标的多个维度值。 指标的维度是包含附加数据的名称-值对，用于描述指标值。 例如，存储帐户的 **事务** 度量值具有一个名为 " **api 名称** " 的维度，描述每个事务调用的 api 的名称 (例如，GetBlob、DeleteBlob、PutPage) 。 维度的使用是可选的，但它允许筛选度量值并仅监视特定的时间序列，而不是将度量值作为所有维度值的聚合组合在一起。 
+单个指标警报规则还可以监视指标的多个维度值。 指标的维度是携带附加数据来描述指标值的名称/值对。 例如，存储帐户的“事务”指标有一个名为“API 名称”的维度，它描述每个事务调用的 API 的名称（例如，GetBlob、DeleteBlob、PutPage）。 维度的使用是可选的，但可用来对指标进行筛选并仅监视特定的时序，而不是将指标作为放置在一起的所有维度值的聚合进行监视。 
 
-例如，你可以选择在所有 API 名称的数量较高的情况下触发警报， (这是聚合数据) ，或者进一步将其分解为仅在事务数高为特定 API 名称时发出警报。 
+例如，你可以选择在所有 API 名称中的事务数（这是聚合数据）较高的情况下触发警报，或进一步将其分解为仅在特定 API 名称的事务数较高时发出警报。 
 
 监视多个维度的警报规则的一个示例是：
 
-- 目标资源： *myStorage1*
-- 度量值： *事务*
+- 目标资源：myStorage1
+- 指标：*Transactions*
 - 维度
-  * API 名称 = *GetBlob、DeleteBlob、PutPage*
-- 运算符： *大于*
-- 阈值： *70*
+  * API 名称 = GetBlob、DeleteBlob、PutPage
+- 运算符：大于
+- 阈值：*70*
 
 对于此警报规则，将监视三个指标时序：
 
-- *资源* = "myStorage1"、 *API 名称* = "GetBlob" > 70 的事务
-- *资源* = "myStorage1"、 *API 名称* = "DeleteBlob" > 70 的事务
-- *资源* = "myStorage1"、 *API 名称* = "PutPage" > 70 的事务
+- 资源 =“myStorage1”且 API 名称 =“GetBlob”时的事务数 > 70 
+- 资源 =“myStorage1”且 API 名称 =“DeleteBlob”时的事务数 > 70 
+- 资源 =“myStorage1”且 API 名称 =“PutPage”时的事务数 > 70 
 
-![包含一个维度中的值的多维度预警规则](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-1.png)
+![包含一个维度中的值的多维度警报规则](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-1.png)
 
-多维度指标警报规则还可以监视指标的 **不同** 维度中的多个维度值。 在这种情况下，预警规则将 **分别** 监视所选维度值的所有维度值组合。
+多维度指标警报规则还可以监视指标的不同维度中的多个维度值。 在此情况下，警报规则分别监视所选维度值的所有维度值组合。
 
-这种类型的警报规则的一个示例：
+此类警报规则的一个示例：
 
-- 目标资源： *myStorage1*
-- 度量值： *事务*
+- 目标资源：myStorage1
+- 指标：*Transactions*
 - 维度
-  * API 名称 = *GetBlob、DeleteBlob、PutPage*
-  * Authentication = *SAS，AccountKey*
-- 运算符： *大于*
-- 阈值： *70*
+  * API 名称 = GetBlob、DeleteBlob、PutPage
+  * 身份验证 = SAS、AccountKey
+- 运算符：大于
+- 阈值：*70*
 
-对于此警报规则，单独监视六个指标时间系列：
+对于此警报规则，将分别监视六个指标时序：
 
-- *资源* = "myStorage1"、 *API 名称* = "GetBlob" 和 *Authentication* = "SAS" > 70 的事务
-- *资源* = "myStorage1"、 *API 名称* = "GetBlob" 和 *Authentication* = "AccountKey" > 70 的事务
-- *资源* = "myStorage1"、 *API 名称* = "DeleteBlob" 和 *Authentication* = "SAS" > 70 的事务
-- *资源* = "myStorage1"、 *API 名称* = "DeleteBlob" 和 *Authentication* = "AccountKey" > 70 的事务
-- *资源* = "myStorage1"、 *API 名称* = "PutPage" 和 *Authentication* = "SAS" > 70 的事务
-- *资源* = "myStorage1"、 *API 名称* = "PutPage" 和 *Authentication* = "AccountKey" > 70 的事务
+- 资源 =“myStorage1”且 API 名称 =“GetBlob”且身份验证=“SAS”时的事务数 > 70  
+- 资源 =“myStorage1”且 API 名称 =“GetBlob”且身份验证=“AccountKey”时的事务数 > 70  
+- 资源 =“myStorage1”且 API 名称 =“DeleteBlob”且身份验证=“SAS”时的事务数 > 70  
+- 资源 =“myStorage1”且 API 名称 =“DeleteBlob”且身份验证=“AccountKey”时的事务数 > 70  
+- 资源 =“myStorage1”且 API 名称 =“PutPage”且身份验证=“SAS”时的事务数 > 70  
+- 资源 =“myStorage1”且 API 名称 =“PutPage”且身份验证=“AccountKey”时的事务数 > 70  
 
-![具有多个维度中的值的多维度预警规则](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-2.png)
+![包含多个维度中的值的多维度警报规则](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-2.png)
  
 ### <a name="advanced-multi-dimension-features"></a>高级多维度功能
 
-1.  **选择所有当前和未来的维度** -可以选择监视维度的所有可能值，包括未来值。 此类警报规则将自动缩放以监视维度的所有值，而无需在每次添加或删除维度值时修改警报规则。
+1.  **选择所有当前和未来的维度** -可以选择监视维度的所有可能值，包括未来值。 此类警报规则会自动缩放以监视维度的所有值，不需要你在每次添加或删除维度值时修改警报规则。
 2.  **排除维度** –为维度值选择 "≠" ("排除") 运算符等效于选择该维度的所有其他值，包括未来值。
-3.  **新维度和自定义维度** -Azure 门户中显示的维度值基于在过去三天内收集的指标数据。 如果您要查找的维度值尚未发出，则可以添加自定义维度值。
-4. **与前缀匹配的维度** -可以选择使用 "始于" 运算符并输入自定义前缀来监视以特定模式开头的所有维度值。
+3.  **新维度和自定义维度** -Azure 门户中显示的维度值基于在上一天收集的指标数据。 如果你要查找的维度值尚未发出，则可以添加自定义维度值。
+4. 与前缀匹配的维度 - 通过选择“开头为”运算符并输入自定义前缀，你可以选择监视以特定模式开头的所有维度值。
 
 ![高级多维度功能](media/alerts-metric-multiple-time-series-single-rule/advanced-features.png)
 
 
 ## <a name="metric-alerts-pricing"></a>指标警报定价
 
-指标警报规则的定价在 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)上提供。
+指标警报规则的定价位于 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)上。
 
-创建指标警报规则时，提供的价格估算基于所选功能和监视时间系列的数量，该时间是根据规则配置和当前指标值决定的。 不过，每月费用取决于时序的实际计算，因此，如果某个时间系列没有要评估的数据，或者如果警报规则使用可以使其以动态方式缩放的功能，则可能与原始估计值不同。
+创建指标警报规则时，提供的价格估算基于所选功能和监视的时序数，时序数是根据规则配置和当前指标值确定的。 不过，每月费用取决于时序的实际评估，因此，如果某个时序没有要评估的数据，或者警报规则使用可能会导致其动态缩放的功能，则每月费用可能不同于原始估算值。
 
-例如，如果某个警报规则利用了多维度功能，并且选择了大量维度值组合，则它可以显示高价格估算，这将导致监视多个时序。 但是，如果不是维度值组合实际包含要计算的数据的所有时间序列，则该警报规则的实际费用可能会降低。
+例如，如果某个警报规则利用了多维度功能，并且选择了大量维度值组合（这将导致监视许多时序），该警报规则可能会显示较高的价格估算值。 但是，如果实际上并非维度值组合生成的所有时序都有要评估的数据，则该警报规则的实际费用可能较低。
 
-## <a name="number-of-time-series-monitored-by-a-single-alert-rule"></a>单个警报规则监视的时序数量
+## <a name="number-of-time-series-monitored-by-a-single-alert-rule"></a>单个警报规则监视的时序数
 
-为避免额外的成本，默认情况下每个警报规则最多可监视5000时间系列。 若要从订阅中提升此限制，请打开支持票证。
+为避免额外的成本，默认情况下每个警报规则最多可监视 5000 个时序。 若要提升你的订阅中的此限制，请创建一个支持票证。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关使用指标警报和 [动态阈值](alerts-dynamic-thresholds.md)进行大规模监视的详细信息。
+详细了解如何使用指标警报和[动态阈值](alerts-dynamic-thresholds.md)进行大规模监视。

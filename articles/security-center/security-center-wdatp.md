@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 10fa47a8f613218b1331259040be77df867ade95
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 9a8dba99435e1616b1c49d5209b30c3c523876db
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854836"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071334"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>利用安全中心的集成 EDR 解决方案保护终结点： Microsoft Defender for Endpoint
 
@@ -121,13 +121,19 @@ Microsoft Defender for Endpoint 提供：
 
 ## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>安全中心集成的 Microsoft Defender for Endpoint 常见问题解答
 
-### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Microsoft Defender for Endpoint 有哪些许可要求？
+- [Microsoft Defender for Endpoint 有哪些许可要求？](#what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint)
+- [如果我已有适用于终结点的 Microsoft Defender 许可证，是否可以获得 Azure Defender 的折扣？](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
+- [如何实现从第三方 EDR 工具切换？](#how-do-i-switch-from-a-third-party-edr-tool)
 
+### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Microsoft Defender for Endpoint 有哪些许可要求？
 **Azure defender for server** 附带的 Defender for Endpoint 无需额外付费。 或者，可以单独为50或更多计算机购买。
 
+### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>如果我已有适用于终结点的 Microsoft Defender 许可证，是否可以获得 Azure Defender 的折扣？
+如果你已经获得了 Microsoft Defender for Endpoint 的许可证，则无需为 Azure Defender 许可证的此部分付费。
+
+若要确认折扣，请联系安全中心的支持团队并提供相关的工作区 ID、区域和许可信息。
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>如何实现从第三方 EDR 工具切换？
-
 Microsoft Defender for Endpoint 文档中提供了有关从非 Microsoft 终结点解决方案切换的完整说明： [迁移概述](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration)。
   
 

@@ -5,22 +5,19 @@ description: 了解如何使用 Azure 机器学习工作室、CLI、SDK 和经�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 82e128ffdc215a084110a68170ac12accd8fca0e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c4f48acc2d6e57dea0a8db2a149d7ca2871c9f39
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308136"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071997"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>导出或删除机器学习服务工作区数据
-
-
 
 在 Azure 机器学习中，可以使用门户的图形界面或 Python SDK 来导出或删除工作区数据。 本文介绍这两种选项。
 

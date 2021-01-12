@@ -1,15 +1,15 @@
 ---
 title: 了解指标警报在 Azure Monitor 中的工作原理。
 description: 获取指标警报功能的概述，以及它们在 Azure Monitor 中的工作原理。
-ms.date: 09/30/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 066ffff5979e658a7c06fe10bd668a9fac839a14
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 424cc9db01f1eb6300c2915795f3e2c37b34449f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460848"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071045"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -137,7 +137,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 | 服务 | 公共 Azure | Government | 中国 |
 |:--------|:--------|:--------|:--------|
-| 虚拟机<sup>1</sup>  | **是** | 否 | 否 |
+| 虚拟机<sup>1</sup>  | **是** | **是** | 否 |
 | SQL 服务器数据库 | **是** | **是** | **是** |
 | SQL 服务器弹性池 | **是** | **是** | **是** |
 | NetApp 文件容量池 | **是** | **是** | **是** |

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: dd7a336df5ff187b874876db32abb45915e00f3b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 195f1c527185fbd55450b6151f26525074db75f7
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739376"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070416"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 
@@ -322,6 +322,8 @@ print(service.state)
 | 已失败 | 由于出现错误或崩溃，服务未能部署。 | 是 |
 | 正常 | 服务正常，终结点可用。 | 是 |
 
+> [!TIP]
+> 部署时，会从 Azure 容器注册表 (ACR) 生成并加载用于计算目标的 Docker 映像。 默认情况下，Azure 机器学习创建使用 *基本* 服务层的 ACR。 将工作区的 ACR 更改为 "标准" 或 "高级" 级别可能会减少生成映像并将其部署到计算目标所花费的时间。 有关详细信息，请参阅 [Azure 容器注册表服务层级](../container-registry/container-registry-skus.md)。
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> 批量推理
 Azure 机器学习计算目标由 Azure 机器学习创建和管理。 它们可用于 Azure 机器学习管道中的批量预测。
