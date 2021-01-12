@@ -226,6 +226,8 @@
               href: platform/service-providers.md
             - name: 专用群集
               href: log-query/logs-dedicated-clusters.md
+            - name: 故障排除日志
+              href: platform/azure-monitor-troubleshooting-logs.md
         - name: Log Analytics
           items:
             - name: 概述
@@ -351,7 +353,7 @@
       items:
         - name: 概述
           href: platform/agents-overview.md
-        - name: FAQ
+        - name: 常见问题解答
           href: faq.md#agents
         - name: Azure Monitor 代理
           items:

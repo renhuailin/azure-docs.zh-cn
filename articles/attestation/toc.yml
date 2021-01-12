@@ -15,6 +15,8 @@
   items:
     - name: 创作证明策略
       href: author-sign-policy.md
+    - name: 创建专用终结点 - PowerShell
+      href: private-endpoint-powershell.md
     - name: SGX 证明代码示例
       href: /samples/browse/?expanded=azure&terms=attestation
 - name: 示例
