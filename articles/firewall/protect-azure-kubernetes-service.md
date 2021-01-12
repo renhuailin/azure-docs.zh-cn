@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: 43755b312a64c429b38a07c8c4fad8c85b08342a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51af9ff4972f5edef02426a6e81e8582123c9a7a
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89437847"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107848"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>使用 Azure 防火墙保护 Azure Kubernetes 服务 (AKS) 部署
 
@@ -47,7 +47,7 @@ Azure 防火墙提供 AKS FQDN 标记以简化此配置。 使用以下步骤允
    - 如果有应用需要与 API 服务器通信，则需要 TCP [IPAddrOfYourAPIServer]:443。 创建群集后，可以设置此更改。
    - TCP 端口 9000 和 UDP 端口 1194，使隧道前端 pod 与 API 服务器上的隧道后端进行通信。
 
-      若要更具体地了解，请参阅 **hcp. <location> 。* 下表中的 azmk8s.io 和地址：
+      若要更为具体，请参阅下表中的地址：
 
    | 目标终结点                                                             | 协议 | 端口    | 用途  |
    |----------------------------------------------------------------------------------|----------|---------|------|

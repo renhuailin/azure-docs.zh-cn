@@ -9,14 +9,14 @@ author: stevestein
 ms.custom: sqldbrb=2
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/16/2019
+ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 7dc6cd580687544226b61a29ca9ccf2d1b8dff42
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f874803e0ae361255754477ca68184255f35b91f
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671533"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107372"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>导出到 BACPAC 文件 - Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -30,6 +30,7 @@ ms.locfileid: "92671533"
 - 如果是导出到 Blob 存储，则 BACPAC 文件的最大大小为 200 GB。 若要存档更大的 BACPAC 文件，请导出到本地存储。
 - 不支持使用本文所述方法将 BACPAC 文件导出到 Azure 高级存储。
 - 目前不支持有防火墙的存储。
+- 存储文件名或 StorageURI 的输入值的长度不能超过128个字符，并且不能以 "." 结尾，且不能包含空格字符或 "<、>、*、%、&、：、 \, /、？" 等特殊字符。 
 - 如果导出操作超过 20 个小时，可能会取消操作。 为提高导出过程中的性能，可以进行如下操作：
 
   - 暂时提高计算大小。
@@ -48,7 +49,7 @@ ms.locfileid: "92671533"
 
 1. 若要使用 [Azure 门户](https://portal.azure.com)导出数据库，请打开数据库页，并在工具栏上单击“导出”。
 
-   ![突出显示 "导出" 按钮的屏幕截图。](./media/database-export/database-export1.png)
+   ![突出显示“导出”按钮的屏幕截图。](./media/database-export/database-export1.png)
 
 2. 指定 BACPAC 文件名，为导出选择现有的 Azure 存储帐户和容器，然后提供用于访问源数据库的相应凭据。 即使你是 Azure 管理员，此处也需要 SQL Server 管理员登录名，因为是 Azure 管理员并不等同于在 Azure SQL 数据库或 Azure SQL 托管实例中拥有管理员权限。
 

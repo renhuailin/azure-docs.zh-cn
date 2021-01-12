@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 5af4eb931015e386e35470f2b36341e15f76150f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: af9087f0dd45212ec88b620dcd965c895b86bbce
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065399"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108186"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -114,7 +114,7 @@ QnAMaker 运行时是在 Azure 门户中 [创建 QnAMaker 服务](./set-up-qnama
 
 若要使预测终结点应用始终加载（即使没有流量），请将 "空闲" 设置为 "始终打开"。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择 QnA Maker 资源的应用服务。 它将具有与 QnA Maker 资源相同的名称，但它将具有不同 **类型** 的应用服务。
 1. 找到 " **设置** "，然后选择 " **配置**"。
 1. 在 "配置" 窗格上，选择 " **常规设置**"，然后找到 " **始终打开**"，并选择 **"打开** " 作为值。
@@ -135,7 +135,7 @@ QnAMaker 运行时是在 Azure 门户中 [创建 QnAMaker 服务](./set-up-qnama
     * 检查应用服务的配置，并将 "PrimaryEndpointKey" 添加为应用程序设置。 "PrimaryEndpointKey" 的值应设置为 " \<app-name\> -PrimaryEndpointKey"。 应用程序名称在应用服务 URL 中定义。 例如，如果应用服务 URL 为 "mywebsite.myase.p.azurewebsite.net"，则应用名称为 "mywebsite"。 在这种情况下，应将 "PrimaryEndpointKey" 的值设置为 "mywebsite-PrimaryEndpointKey"。
     * 创建 Azure 搜索服务。
     * 确保已正确配置 Azure 搜索和应用设置。 
-      请按照本 [教程](https://docs.microsoft.com/azure/cognitiveservices/qnamaker/reference-app-service#app-service)操作。
+      请按照本 [教程](https://docs.microsoft.com/azure/cognitive-services/qnamaker/reference-app-service?tabs=v1#app-service)操作。
 3.  更新与应用服务环境关联的网络安全组
     * 按照您的要求更新预先创建的入站安全规则。
     * 添加一个新的入站安全规则，将源作为 "服务标记"，将源服务标记添加为 "CognitiveServicesManagement"。

@@ -12,19 +12,21 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8b95c5a45992c895713e0be056856172b14b830d
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 52b52c4c19b22fb1afd76d1e8dfa4163326c0244
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740668"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108584"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure 机器学习中的数据集进行训练
 
 
-本文介绍如何在训练实验中使用 [Azure 机器学习数据集](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)。  可以在本地或远程计算目标中使用数据集，而不必考虑连接字符串或数据路径。
+本文介绍如何使用 [Azure 机器学习数据集](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) 来训练机器学习模型。  可以在本地或远程计算目标中使用数据集，而不必考虑连接字符串或数据路径。 
 
 Azure 机器学习数据集提供了与 Azure 机器学习训练功能（如 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、[HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) 和 [Azure 机器学习管道](how-to-create-your-first-pipeline.md)）的无缝集成。
+
+如果尚未准备好将数据提供给模型定型，但想要将数据加载到笔记本进行数据浏览，请参阅如何 [浏览数据集中的数据](how-to-create-register-datasets.md#explore-data)。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,7 +36,7 @@ Azure 机器学习数据集提供了与 Azure 机器学习训练功能（如 [Sc
 
 * [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-* [已安装适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)（1.13.0 及以上版本），其中包含 azureml-datasets 包。
+* [安装的 Python AZURE 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) ( # B0 = 1.13.0) ，其中包括 `azureml-datasets` 包。
 
 > [!Note]
 > 某些数据集类依赖于 [azureml-dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) 包。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
@@ -65,7 +67,7 @@ TabularDataset 对象提供将 TabularDataset 中的数据加载到 pandas 或 S
 > [!Note]
 > 如果原始数据源包含 NaN、空字符串或空值，则当你使用 `to_pandas_dataframe()` 时，这些值会被替换为“Null”值。
 
-如果需要从内存中的 pandas 数据帧将准备好的数据加载到新数据集中，请将这些数据写入到一个本地文件（如 parquet），然后从该文件创建新数据集。 你还可以从数据存储中的本地文件或路径创建数据集。 详细了解[如何创建数据集](how-to-create-register-datasets.md)。
+如果需要从内存中的 pandas 数据帧将准备好的数据加载到新数据集中，请将这些数据写入到一个本地文件（如 parquet），然后从该文件创建新数据集。 详细了解[如何创建数据集](how-to-create-register-datasets.md)。
 
 ```Python
 %%writefile $script_folder/train_titanic.py

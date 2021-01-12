@@ -3,19 +3,19 @@ title: 访问 Azure 虚拟网络
 description: '概述 (的集成服务环境如何) 帮助逻辑应用访问 Azure 虚拟网络 (Vnet) '
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/11/2021
+ms.openlocfilehash: 7bb9c8552f673587891fde12e25d4fb899726c22
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996315"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108562"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
-有时，逻辑应用需要访问受保护的资源，例如虚拟机 (Vm) 以及连接到 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的其他系统或服务。 若要设置此访问权限，可以 [ (ISE) 创建 *integration service 环境*](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。 ISE 是逻辑应用服务的实例，它使用专用资源并独立于 "全局" 多租户逻辑应用服务运行。
+有时，逻辑应用需要访问受保护的资源，例如虚拟机 (Vm) 以及连接到 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的其他系统或服务。 若要设置此访问权限，可以 [ (ISE) 创建 *integration service 环境*](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。 ISE 是逻辑应用服务的实例，它使用专用资源并独立于 "全局" 多租户逻辑应用服务运行。 ISE 中的数据保留在 [创建和部署 ise 的同一区域](https://azure.microsoft.com/global-infrastructure/data-residency/)中。
 
 例如，某些 Azure 虚拟网络使用专用终结点，你可以通过 [Azure 专用链接](../private-link/private-link-overview.md)进行设置，以提供对 azure PaaS 服务（例如 azure 存储、Azure Cosmos DB 或 Azure SQL 数据库、合作伙伴服务或托管在 azure 上的客户服务）的访问权限。 如果逻辑应用需要访问使用专用终结点的虚拟网络，则必须在 ISE 中创建、部署和运行这些逻辑应用。
 

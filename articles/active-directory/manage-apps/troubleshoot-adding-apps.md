@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 714cbb06506cc3e0dffe74007712d9cbad072284
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f873608d07785e6b99bd8e0fcdadf64a8899d490
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655062"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108409"
 ---
 # <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>排查在 Azure Active Directory 中添加或删除应用程序时遇到的常见问题
 本文帮助你了解用户在 Azure Active Directory 中添加或删除应用时遇到的常见问题。
@@ -43,7 +43,7 @@ ms.locfileid: "94655062"
 
 - 对于 Microsoft 应用程序，无论你具有什么角色，都无法从 UI 中删除这些应用。
 
-- 对于与托管标识对应的服务主体， 无法在“企业应用”边栏选项卡中删除托管标识服务主体。 你需要转到 Azure 资源来管理它。 详细了解[托管标识](../managed-identities-azure-resources/overview.md)
+- 对于与托管标识对应的服务主体， 无法在“企业应用”边栏选项卡中删除托管标识服务主体。 你需要转到 Azure 资源来管理它。 了解有关[托管标识](../managed-identities-azure-resources/overview.md)的详细信息
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>如何查看门户通知的详细信息
 可以通过遵循以下步骤来查看任何门户通知的详细信息：

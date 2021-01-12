@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a3e2dd1ac58c89060fc3e09e97617cb2a68d8ac
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 2dac4b461d4506015f0ef374eae37f67c445791d
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094567"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107865"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
@@ -85,6 +85,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
    > [!NOTE]
    >你将需要以下步骤的域管理员和全局管理员凭据。
+   >如果你不是域管理员，并且域管理员已为你分配了权限，则应该调用 `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
 
    **步骤 1。获取已在其中启用了无缝 SSO 的 AD 林列表**
 
@@ -105,9 +106,6 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
    >使用的域管理员帐户不得是受保护用户组的成员。 如果是，则操作将失败。
 
    2. 调用 `Update-AzureADSSOForest -OnPremCredentials $creds`。 此命令会在此特定 AD 林中更新 `AZUREADSSO` 计算机帐户的 Kerberos 解密密钥，并在 Azure AD 中对其进行更新。
-   
-   >[!NOTE]
-   >如果你不是域管理员，并且域管理员已为你分配了权限，则应该调用 `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
    
    3. 针对已设置了此功能的每个 AD 林重复上述步骤。
    

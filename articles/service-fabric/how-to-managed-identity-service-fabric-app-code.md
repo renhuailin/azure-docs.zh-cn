@@ -3,22 +3,75 @@ title: 在应用程序中使用托管标识
 description: 如何使用 Azure Service Fabric 应用程序代码中的托管标识访问 Azure 服务。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c89f7bd064e643b978253f2e083c449d904d2cad
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253637"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108511"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务
 
 Service Fabric 应用程序可以利用托管标识来访问支持基于 Azure Active Directory 的身份验证的其他 Azure 资源。 应用程序可以获取代表其标识（由系统分配或用户分配）的[访问令牌](../active-directory/develop/developer-glossary.md#access-token)，并使用该令牌作为“持有者”令牌在其他服务（也称为[受保护的资源服务器](../active-directory/develop/developer-glossary.md#resource-server)）中验证自己的身份。 令牌表示分配给 Service Fabric 应用程序的标识，只会颁发给共享该标识的 Azure 资源（包括 SF 应用程序）。 有关托管标识的详细介绍以及系统分配的标识和用户分配的标识之间的区别，请参阅[托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)文档。 在整篇文章中，我们将支持托管标识的 Service Fabric 应用程序称作[客户端应用程序](../active-directory/develop/developer-glossary.md#client-application)。
+
+请参阅示例应用程序，该应用程序演示如何对 Reliable Services 和容器使用系统分配的和用户分配的 [Service Fabric 应用程序托管标识](https://github.com/Azure-Samples/service-fabric-managed-identity) 。
 
 > [!IMPORTANT]
 > 托管标识表示 Azure 资源与相应 Azure AD 租户（该租户与包含该资源的订阅相关联）中的服务主体之间的关联。 因此，在 Service Fabric 的上下文中，只有部署为 Azure 资源的应用程序才支持托管标识。 
 
 > [!IMPORTANT]
 > 在使用 Service Fabric 应用程序的托管标识之前，必须为客户端应用程序授予对受保护资源的访问权限。 请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)列表来了解支持情况，然后参阅相关服务的文档，以获取为标识授予对相关资源的访问权限的具体步骤。 
+ 
+
+## <a name="leverage-a-managed-identity-using-azureidentity"></a>使用 Azure 身份利用托管标识
+
+Azure 标识 SDK 现在支持 Service Fabric。 使用 Azure。标识使得编写代码更容易使用 Service Fabric 应用托管标识，因为它处理提取令牌、缓存令牌和服务器身份验证。 访问大多数 Azure 资源时，将隐藏标记的概念。
+
+Service Fabric 支持可在以下语言版本中使用： 
+- [版本1.3.0 中的 c #](https://www.nuget.org/packages/Azure.Identity)。 请参阅 [c # 示例](https://github.com/Azure-Samples/service-fabric-managed-identity)。
+- [版本1.5.0 中的 Python](https://pypi.org/project/azure-identity/)。 请参阅 [Python 示例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md)。
+- [版本1.2.0 中的 Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable)。
+
+C # 示例：初始化凭据并使用凭据从 Azure Key Vault 提取机密：
+
+```csharp
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+
+namespace MyMIService
+{
+    internal sealed class MyMIService : StatelessService
+    {
+        protected override async Task RunAsync(CancellationToken cancellationToken)
+        {
+            try
+            {
+                // Load the service fabric application managed identity assigned to the service
+                ManagedIdentityCredential creds = new ManagedIdentityCredential();
+
+                // Create a client to keyvault using that identity
+                SecretClient client = new SecretClient(new Uri("https://mykv.vault.azure.net/"), creds);
+
+                // Fetch a secret
+                KeyVaultSecret secret = (await client.GetSecretAsync("mysecret", cancellationToken: cancellationToken)).Value;
+            }
+            catch (CredentialUnavailableException e)
+            {
+                // Handle errors with loading the Managed Identity
+            }
+            catch (RequestFailedException)
+            {
+                // Handle errors with fetching the secret
+            }
+            catch (Exception e)
+            {
+                // Handle generic errors
+            }
+        }
+    }
+}
+
+```
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>使用 REST API 获取访问令牌
 在支持托管标识的群集中，Service Fabric 运行时将公开一个 localhost 终结点，应用程序可使用该终结点获取访问令牌。 该终结点将在群集的每个节点上提供，可供该节点上的所有实体访问。 已获授权的调用方可以通过调用此终结点并提供身份验证代码来获取访问令牌；每次激活不同的服务代码包时，此代码将由 Service Fabric 运行时生成，并且此代码与托管该服务代码包的进程的生存期紧密相关。
@@ -377,3 +430,4 @@ HTTP 响应标头的“状态代码”字段指示请求的成功状态；“200
 * [使用系统分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [使用用户分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
+* [使用 Service Fabric 托管标识浏览示例应用程序](https://github.com/Azure-Samples/service-fabric-managed-identity)

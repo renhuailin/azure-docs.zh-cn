@@ -1,5 +1,5 @@
 ---
-title: 将数据工厂连接到 Azure 监控范围
+title: 将数据工厂连接到 Azure Purview
 description: 了解如何将数据工厂连接到 Azure 监控范围
 services: data-factory
 ms.author: lle
@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: 94b2ed8a25ca5cc837f6677dea1c0bbb54225fcd
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7dc05c88416bb2a23221029bc04c506271a86652
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603124"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108341"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>将数据工厂连接到 Azure 监控范围 (预览) 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]

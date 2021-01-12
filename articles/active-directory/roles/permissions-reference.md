@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da053bb04e5ee3f2b2b307c382f2695663669e5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 568584b849b2c5977d4bbb6216697dce3c498cfd
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020649"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107916"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -770,6 +770,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/directoryRoles/allProperties/allTasks | 创建和删除 directoryRoles，然后读取和更新 Azure Active Directory 中的所有属性。 |
 | microsoft.directory/directoryRoleTemplates/allProperties/allTasks | 创建和删除 directoryRoleTemplates，然后读取和更新 Azure Active Directory 中的所有属性。 |
 | microsoft.directory/domains/allProperties/allTasks | 创建和删除域，然后读取和更新 Azure Active Directory 中的所有属性。 |
+| entitlementManagement/allProperties/allTasks | 创建和删除资源，并读取和更新 Azure AD 的权利管理中的所有属性。 |
 | microsoft.directory/groups/allProperties/allTasks | 创建和删除组，然后读取和更新 Azure Active Directory 中的所有属性。 |
 | microsoft.directory/groupsAssignableToRoles/allProperties/update | 更新 Azure Active Directory 中 isAssignableToRole 属性设置为 true 的组。 |
 | microsoft.directory/groupsAssignableToRoles/create | 在 Azure Active Directory 中创建 isAssignableToRole 属性设置为 true 的组。 |
@@ -831,6 +832,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 为目录级服务创建和管理 Azure 支持票证。 |
+| entitlementManagement/allProperties/read | 读取 Azure AD 的权利管理中的所有属性。 |
 | microsoft.office365.complianceManager/allEntities/allTasks | 管理 Office 365 合规性管理器的各个方面 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
@@ -1133,6 +1135,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/directoryRoles/eligibleMembers/read    | 读取 Azure Active Directory 中的 directoryRoles.eligibleMembers 属性。 |
 | microsoft.directory/directoryRoles/members/read    | 读取 Azure Active Directory 中的 directoryRoles.members 属性。 |
 | microsoft.directory/domains/basic/read    | 读取 Azure Active Directory 中域的基本属性。 |
+| entitlementManagement/allProperties/read | 读取 Azure AD 的权利管理中的所有属性。 |
 | microsoft.directory/groups/appRoleAssignments/read    | 读取 Azure Active Directory 中的 groups.appRoleAssignments 属性。 |
 | microsoft.directory/groups/basic/read    | 读取 Azure Active Directory 中组的基本属性。 |
 | microsoft.directory/groups/hiddenMembers/read    | 读取 Azure Active Directory 中的 groups.hiddenMembers 属性。 |
@@ -1231,7 +1234,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 ### <a name="hybrid-identity-administrator-permissions"></a>混合标识管理员权限
 
-启用、部署、配置、管理、监视云配置和身份验证服务，并排除它们的故障。 
+可以管理 AD 以 Azure AD 云设置和联合设置。 
 
 | **操作** | **说明** |
 | --- | --- |
@@ -1249,8 +1252,10 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/applicationTemplates/instantiate | 从应用程序模板实例化库应用程序。 |
 | microsoft.directory/auditLogs/allProperties/read | 读取 Azure Active Directory 中 auditLogs 上的所有属性（包括特权属性）。 |
 | microsoft.directory/cloudProvisioning/allProperties/allTasks | 读取和配置 Azure AD 云配置服务的所有属性。 |
-| microsoft.directory/federatedAuthentication/allProperties/allTasks | 在 Azure AD 中管理 Active Directory 联合身份验证服务 (ADFS) 或第三方联合身份验证提供程序的所有方面。 |
+| microsoft. directory/域/allProperties/read | 读取域的所有属性。 |
+| microsoft. directory/域/联合/更新 | 更新域的联合属性。 |
 | microsoft.directory/organization/dirSync/update | 更新 Azure Active Directory 中的 organization.dirSync 属性。 |
+| microsoft.directory/provisioningLogs/allProperties/read | 读取预配日志的所有属性。 |
 | microsoft.directory/servicePrincipals/audience/update | 更新 Azure Active Directory 中的 servicePrincipals.audience 属性。 |
 | microsoft.directory/servicePrincipals/authentication/update | 更新 Azure Active Directory 中的 servicePrincipals.authentication 属性。 |
 | microsoft.directory/servicePrincipals/basic/update | 更新 Azure Active Directory 中 servicePrincipals 的基本属性。 |
@@ -1708,9 +1713,10 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 为目录级服务创建和管理 Azure 支持票证。 |
-| microsoft.directory/bitlockerKeys/key/read | 读取 Azure Active Directory 中的 bitlocker 密钥对象和属性（包括恢复密钥）。 |
 | microsoft.directory/applications/policies/update | 更新 Azure Active Directory 中的 applications.policies 属性。 |
 | microsoft.directory/auditLogs/allProperties/read | 读取 Azure Active Directory 中 auditLogs 上的所有属性（包括特权属性）。 |
+| microsoft.directory/bitlockerKeys/key/read | 读取 Azure Active Directory 中的 bitlocker 密钥对象和属性（包括恢复密钥）。 |
+| entitlementManagement/allProperties/read | 读取 Azure AD 的权利管理中的所有属性。 |
 | microsoft.directory/identityProtection/allProperties/read | 读取 microsoft.aad.identityProtection 中的所有资源。 |
 | microsoft.directory/identityProtection/allProperties/update | 更新 microsoft.aad.identityProtection 中的所有资源。 |
 | microsoft.directory/policies/basic/update | 更新 Azure Active Directory 中策略的基本属性。 |
@@ -1761,6 +1767,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | 读取 Azure Active Directory 中 auditLogs 上的所有属性（包括特权属性）。 |
 | microsoft.directory/bitlockerKeys/key/read | 读取 Azure Active Directory 中的 bitlocker 密钥对象和属性（包括恢复密钥）。 |
+| entitlementManagement/allProperties/read | 读取 Azure AD 的权利管理中的所有属性。 |
 | microsoft.directory/policies/conditionalAccess/basic/read | 读取 Azure Active Directory 中的 policies.conditionalAccess 属性。 |
 | microsoft.directory/signInReports/allProperties/read | 读取 Azure Active Directory 中 signInReports 上的所有属性（包括特权属性）。 |
 | microsoft.aad.identityProtection/allEntities/read | 读取 microsoft.aad.identityProtection 中的所有资源。 |
@@ -1926,6 +1933,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/contacts/basic/update | 更新 Azure Active Directory 中联系人的基本属性。 |
 | microsoft.directory/contacts/create | 在 Azure Active Directory 中创建联系人。 |
 | microsoft.directory/contacts/delete | 删除 Azure Active Directory 中的联系人。 |
+| entitlementManagement/allProperties/allTasks | 创建和删除资源，并读取和更新 Azure AD 的权利管理中的所有属性。 |
 | microsoft.directory/groups/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.appRoleAssignments 属性。 |
 | microsoft.directory/groups/basic/update | 更新 Azure Active Directory 中组的基本属性。 |
 | microsoft.directory/groups/create | 在 Azure Active Directory 中创建组。 |

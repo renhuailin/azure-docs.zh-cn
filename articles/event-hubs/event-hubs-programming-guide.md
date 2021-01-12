@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure .NET SDK 为 Azure 事件中心编�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17bec931f79a6dbb3d98270ab0ff6e2d1d4c6541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f95abe3668bb400d84e354c3bca9eac289c5795
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013905"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108681"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中心的 .NET 编程指南（旧版 Microsoft.Azure.EventHubs 包）
 本文介绍使用 Azure 事件中心编写代码时的一些常见情况。 它假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](./event-hubs-about.md)。
@@ -144,7 +144,6 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 > [!NOTE]
 > 目前，只有 REST API 支持此功能（[发布者吊销](/rest/api/eventhub/revoke-publisher)）。
 
-有关发布者吊销以及如何以发布者身份向事件中心发送事件的详细信息，请参阅 [Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab)（事件中心大规模安全发布）示例。
 
 ## <a name="next-steps"></a>后续步骤
 

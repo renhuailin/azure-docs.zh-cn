@@ -9,16 +9,36 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 1cc6c8cd49a2388ad66a276f4a1667b4c3ee3826
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 0ecf47ecdc66c0005f0d793d91a67af102fb1c76
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070314"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107899"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 参考页。
+
+
+ ## <a name="2021-01-11"></a>2021-01-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1200"></a>用于 Python 的 Azure 机器学习 SDK 1.20。0
++ **Bug 修复与改进**
+  + **azure-cli-ml**
+    + framework_version 在 OptimizationConfig 中添加。 在将模型注册到框架多个时，将使用此方法。
+  + **azureml-automl-runtime**
+    + 在此更新中，我们添加了 holt holt-winters 指数平滑处理 AutoML SDK 的预测工具箱。 给定时序后， (AICc 会选择最佳模型) 并返回 [的信息标准 ](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) 。
+  + **contrib-优化**
+    + framework_version 在 OptimizationConfig 中添加。 在将模型注册到框架多个时，将使用此方法。
+  + **azureml-pipeline-steps**
+    + 引入将执行命令的 CommandStep。 命令可以包含可执行文件、shell 命令、脚本等。
+  + **azureml-core**
+    + 现在工作区创建支持用户分配的标识。 从 SDK/CLI 添加 uai 支持
+    + 已修复有关服务的问题。请重新加载 ( # A1，在本地部署中选择 score.py 上的更改。
+    + `run.get_details()` 具有一个名为 "提交者" 的额外字段，该字段显示该运行的作者名称。
+    + 已编辑的模型。注册方法文档，以了解如何直接从运行中注册模型
+   
 
 ## <a name="2020-12-31"></a>2020-12-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure 机器学习 Studio 笔记本体验 (12 月更新版) 
@@ -31,6 +51,7 @@ ms.locfileid: "98070314"
   + 改善了页面加载时间
   + 提高了性能 
   + 提高速度和内核可靠性
+
   
 ## <a name="2020-12-07"></a>2020-12-07
 

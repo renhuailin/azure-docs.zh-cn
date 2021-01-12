@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 11/16/2020
-ms.openlocfilehash: aaf0374bcafdb91f316b7133de1c2d019b12b285
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.date: 12/18/2020
+ms.openlocfilehash: 091af70383eb3cab32a0453d7f7542d8a4395d0b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302864"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107389"
 ---
 # <a name="introduction-to-listing-options"></a>列表选项简介
 
@@ -22,25 +22,27 @@ ms.locfileid: "96302864"
 
 ## <a name="available-listing-options-by-offer-type"></a>按产品/服务类型列出的可用列表选项
 
-当你创建产品/服务类型时，你可以选择一个或多个列表选项。 这些选项确定客户在在线商店中的产品/服务列表页上看到的按钮。 列表选项包括 _免费试用版、试用版_、_与我联系_ 并 _立即获取_。 _Test Drive_
+当你创建产品/服务类型时，你可以选择一个或多个列表选项。 这些选项确定客户在在线商店中的产品/服务列表页上看到的按钮。 列表选项包括 _免费试用版、试用版_、_与我联系_ 并 _立即获取_。 
 
 此表显示了可用于每种产品/服务类型的列表选项。
 
-| 产品/服务类型 | 免费试用版 | 体验版 | 与我联系 | 立即获取 (事务)  |
+| 产品/服务类型 | 免费试用版 | 体验版 | 与我联系 | 立即获取 `*` |
 | ------------ | ------------- | ------------- | ------------- | ------------- |
 |  (托管应用的 Azure 应用程序)  |   | &#10004; |   | &#10004; |
-|  (解决方案模板 Azure 应用程序)  |  |  |  |  |
+|  (解决方案模板 Azure 应用程序)  |  |  |  | &#10004; |
 | 咨询服务 |  |  | &#10004; |  |
-| Azure 容器 |  |  |  |  |
-| Dynamics 365 business central | &#10004; | &#10004; | &#10004; |  |
-| Dynamics 365 Customer Engagement & PowerApps | &#10004; | &#10004; | &#10004; |  |
-| 用于操作的 Dynamics 365 | &#10004; | &#10004; | &#10004; |  |
-| IoT Edge 模块 |  |  |  |  |
-| 托管服务 |  |  |  |  |
-| Power BI 应用 |  |  |  |  |
+| Azure 容器 |  |  |  | &#10004; |
+| Dynamics 365 business central | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 Customer Engagement & PowerApps | &#10004; | &#10004; | &#10004; | &#10004; |
+| 用于操作的 Dynamics 365 | &#10004; | &#10004; | &#10004; | &#10004; |
+| IoT Edge 模块 |  |  |  | &#10004; |
+| 托管服务 |  |  |  | &#10004; |
+| Power BI 应用 |  |  |  | &#10004; |
 | Azure 虚拟机 | &#10004; | &#10004; |  | &#10004; |
 | 软件即服务 | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
+
+`*` "立即获取" 列表选项包括立即获取 (免费) 、自带许可证 (BYOL) 、订阅和基于使用情况的定价。 有关详细信息，请参阅 [立即获取](#get-it-now)。
 
 ### <a name="free-trial"></a>免费试用版
 

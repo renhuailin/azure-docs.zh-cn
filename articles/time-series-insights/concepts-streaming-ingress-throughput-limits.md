@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: c8be18049e6ae74a198f5885a46b70df581e0cd7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7496a7a40df49fa1b9f8410526cb9ec00c10478b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187453"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108766"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>流式引入吞吐量限制
 
@@ -34,7 +34,7 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 
 > [!TIP]
 >
-> * 我们可按请求提供最高 8 MBps 引入速度的环境支持。
+> * 请求最多可提供 2 MBps 的引入速度的环境支持。
 > * 如果需要更高的吞吐量，请通过在 Azure 门户中提交支持票证来联系我们。
 
 * **示例 1：**
@@ -47,10 +47,10 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 
 * **示例 2：**
 
-    Contoso Fleet Analytics 有 40,000 台设备，它们每秒发出某个事件。 它们使用分区计数为 2 的事件中心作为 Azure 时序见解第 2 代事件源。 事件的大小为 200 字节。
+    Contoso 汽油分析具有10000个设备，每秒发出一个事件。 它们使用分区计数为 2 的事件中心作为 Azure 时序见解第 2 代事件源。 事件的大小为 200 字节。
 
-  * 环境引入速率为：40,000 设备 * 200 字节/事件 * 1 事件/秒 = 8 MBps。
-    * 假设分区平衡，则每个分区的速率为 4 MBps。
+  * 环境引入速率为： **10000 设备 * 200 字节/事件 * 1 事件/秒 = 2 MBps**。
+    * 假设已平衡分区，每个分区速率为 1 MBps。
     * Contoso Fleet Analytics 的引入速率超出了环境和分区限制。 它们可以通过 Azure 门户向 Azure 时序见解第 2 代提交一个请求，要求提高其环境的引入速率，并创建一个事件中心，提高限制中的分区数。
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>中心分区和每个分区的限制
