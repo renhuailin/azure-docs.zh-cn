@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43200985820779c56983f09b81a86989261c36f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 13756be041f88883d84f9558308c7fe5c9be2d0e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934996"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116001"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>计划条件访问部署
 
@@ -224,14 +224,6 @@ Microsoft 提供了标准的条件策略（称为[安全默认值](../fundamenta
 
 * 创建专用于策略管理并从所有策略中排除的用户帐户。
 
-* 混合环境的不受限方案：
-
-  * 创建一个本地安全组，并将其同步到 Azure AD。 安全组应包含专用的策略管理帐户。 
-
-   * 豁免此安全组构成所有条件访问策略。
-
-   * 发生服务中断时，请根据需要将其他管理员添加到本地组，并强制执行同步。这会将其例外动态地用于条件访问策略。
-
 ### <a name="set-up-report-only-mode"></a>设置“仅限报告”模式
 
 可能很难预测受常见部署计划（示例如下）影响的用户的数量和名称：
@@ -376,7 +368,7 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 测试计划非常重要，它可以在预期结果与实际结果之间进行比较。 进行测试之前，始终应该持有某种预期。 下表概述了示例测试用例。 基于条件性访问策略的配置方式调整方案和预期结果。
 
-| 策略| 场景| 预期结果 |
+| 策略| 方案| 预期结果 |
 | - | - | - |
 | [在非工作时间要求执行 MFA](untrusted-networks.md)| 经授权的用户在受信任的位置/工作时登录到应用| 不提示用户执行 MFA |
 | [在非工作时间要求执行 MFA](untrusted-networks.md)| 经授权的用户不在受信任的位置/工作时登录到应用| 提示用户执行 MFA，他们可以成功登录 |
@@ -493,4 +485,4 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 [详细了解标识保护](../identity-protection/overview-identity-protection.md)
 
-[使用 Microsoft Graph API 管理条件性访问策略](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[使用 Microsoft Graph API 管理条件性访问策略](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy)

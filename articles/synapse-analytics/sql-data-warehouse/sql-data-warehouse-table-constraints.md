@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: emtehran
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bdb27c5c9f5ec8a7be433ab6e421ecabf5c8c254
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 88b63ce30000340a70811e9f623e4273ccbb272a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505573"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117276"
 ---
 # <a name="primary-key-foreign-key-and-unique-key-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用专用 SQL 池的主键、外键和唯一键
 
@@ -28,7 +28,7 @@ ms.locfileid: "97505573"
 - 仅当同时使用 NONCLUSTERED 和 NOT ENFORCED 时才支持 PRIMARY KEY。    
 - 仅在使用 NOT ENFORCED 时才支持 UNIQUE 约束。
 
-有关语法，请查看 [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) 和 [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)。 
+有关语法，请查看 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) 和 [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)。 
 
 专用 SQL 池不支持外键约束。  
 

@@ -12,12 +12,12 @@ ms.subservice: sql-dw
 ms.date: 05/11/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 456d7eb0cabd7ebede6415e3ce92d7403ecef7ef
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 56a2cbf88cec47417e992990c16a76ec84c6433d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368748"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117803"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Visual Studio 2019 入门
 
@@ -43,7 +43,7 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于�
 - [行级安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)（包括表值函数）
   - 提交 [支持票证或投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) 以获取支持的功能。
   - 提交 [支持票证或投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) 以获取支持的功能。
-- 具有[标识列](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql-identity-property?view=sql-server-ver15)的表
+- 具有[标识列](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=sql-server-ver15)的表
 - 某些 T-SQL 功能，如：
    - [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql) 字符串函数中的 WITHIN GROUP 子句。
 

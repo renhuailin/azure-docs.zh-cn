@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: a3c44d667b6baaf16e109dfb88c22c16a1ea2ce1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 1fc6c7086917f2bcd6e4991d2dac37ea24cbfa83
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697197"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116375"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的 Blob 索引器为 JSON Blob 编制索引
 
@@ -108,7 +108,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档（分析模式为 
 
 可以查看本部分末尾的 [REST 示例代码](#rest-example)，其中演示了如何创建所有三个对象。 本部分还包含有关 [JSON 分析模式](#parsing-modes)、[单一 Blob](#parsing-single-blobs)、[JSON 数组](#parsing-arrays)和[嵌套数组](#nested-json-arrays)的详细信息。
 
-对于基于代码的 JSON 索引，请使用 [Postman 或 Visual Studio Code](search-get-started-rest.md) 和 REST API 创建这些对象：
+对于基于代码的 JSON 索引，请使用 [Postman](search-get-started-rest.md) 或 [Visual Studio Code](search-get-started-vs-code.md) 和 REST API 创建这些对象：
 
 + [索引](/rest/api/searchservice/create-index)
 + [数据源](/rest/api/searchservice/create-data-source)
@@ -126,7 +126,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON“数组�
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - 汇编请求的输入
 
-对于每个请求，必须提供 Azure 认知搜索的服务名称和管理密钥（在 POST 标头中），以及 Blob 存储的存储帐户名称和密钥。 可以使用 [WEB API 测试工具](search-get-started-rest.md) 将 HTTP 请求发送到 Azure 认知搜索。
+对于每个请求，必须提供 Azure 认知搜索的服务名称和管理密钥（在 POST 标头中），以及 Blob 存储的存储帐户名称和密钥。 可以使用 [Web API 测试工具](search-get-started-rest.md)将 HTTP 请求发送到 Azure 认知搜索。
 
 将以下四个值复制到记事本中，以便将其粘贴到请求：
 
@@ -280,10 +280,10 @@ schedule 和 parameters 是可选的。 如果将其省略，索引器将使用 
 
 .NET SDK 完全可与 REST API 搭配使用。 我们建议查看前面的 REST API 部分，以了解相关概念、工作流和要求。 然后，可以参阅以下 .NET API 参考文档，在托管代码中实现 JSON 索引器。
 
-+ [azure.search.documents. searchindexerdatasourceconnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)
-+ [azure.search.documents. searchindexerdatasourcetype](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) 
-+ [azure.search.documents. searchindex](/dotnet/api/azure.search.documents.indexes.models.searchindex) 
-+ [azure.search.documents. searchindexer](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
++ [azure.search.documents.indexes.models.searchindexerdatasourceconnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)
++ [azure.search.documents.indexes.models.searchindexerdatasourcetype](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) 
++ [azure.search.documents.indexes.models.searchindex](/dotnet/api/azure.search.documents.indexes.models.searchindex) 
++ [azure.search.documents.indexes.models.searchindexer](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
 <a name="parsing-modes"></a>
 
@@ -460,4 +460,4 @@ Blob 索引器将 JSON 文档分析成单个 Azure 认知搜索文档。 索引�
 + [Azure 认知搜索中的索引器](search-indexer-overview.md)
 + [使用 Azure 认知搜索为 Azure Blob 存储编制索引](search-howto-index-json-blobs.md)
 + [使用 Azure 认知搜索 Blob 索引器为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)
-+ [教程：从 Azure Blob 存储搜索半结构化数据](search-semi-structured-data.md)
++ [教程：在 Azure Blob 存储中搜索半结构化数据](search-semi-structured-data.md)

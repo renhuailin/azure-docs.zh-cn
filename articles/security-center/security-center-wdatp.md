@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 9a8dba99435e1616b1c49d5209b30c3c523876db
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 34d8881eb072c4c723bf68b7c6ccfd24ab19cd3c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071334"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116273"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>利用安全中心的集成 EDR 解决方案保护终结点： Microsoft Defender for Endpoint
 
@@ -131,7 +131,7 @@ Microsoft Defender for Endpoint 提供：
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>如果我已有适用于终结点的 Microsoft Defender 许可证，是否可以获得 Azure Defender 的折扣？
 如果你已经获得了 Microsoft Defender for Endpoint 的许可证，则无需为 Azure Defender 许可证的此部分付费。
 
-若要确认折扣，请联系安全中心的支持团队并提供相关的工作区 ID、区域和许可信息。
+若要确认折扣，请联系安全中心的支持团队，并为每个相关许可证提供相关的工作区 ID、区域和许可信息。
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>如何实现从第三方 EDR 工具切换？
 Microsoft Defender for Endpoint 文档中提供了有关从非 Microsoft 终结点解决方案切换的完整说明： [迁移概述](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration)。

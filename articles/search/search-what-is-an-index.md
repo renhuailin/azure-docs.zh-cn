@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: aa7c06c3bad59bad11fa288631042cca86109706
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3d5663177bb087e936a49dd7289659b684d85860
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701127"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116188"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建基本搜索索引
 
@@ -70,7 +70,7 @@ ms.locfileid: "94701127"
 在开发过程中，规划频繁的重新生成。 由于物理结构是在服务中创建的，对现有的字段定义进行的许多更改，都必须[删除并重新创建索引](search-howto-reindex.md)。 可以考虑使用一部分数据来加快重新生成的速度。 
 
 > [!Tip]
-> 建议在索引设计和数据导入中都使用代码（而不是门户方法）。 作为一种替代方法，当开发项目仍处于初期阶段时， [Postman 和 Visual Studio Code](search-get-started-rest.md) 之类的工具对于概念验证测试非常有用。 可对请求正文中的索引定义进行增量更改，然后将请求发送到服务，以使用更新的架构重新创建索引。
+> 建议在索引设计和数据导入中都使用代码（而不是门户方法）。 作为一种替代方法，当开发项目仍处于初期阶段时， [Postman](search-get-started-rest.md) 或 [Visual Studio Code](search-get-started-vs-code.md) 之类的工具对于概念验证测试非常有用。 可对请求正文中的索引定义进行增量更改，然后将请求发送到服务，以使用更新的架构重新创建索引。
 
 ## <a name="index-schema"></a>索引架构
 

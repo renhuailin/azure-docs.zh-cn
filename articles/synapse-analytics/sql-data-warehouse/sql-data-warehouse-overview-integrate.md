@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2afc274bf7c040eca6a83abbab24c41767f16482
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3e55ef054d5c305937f88d6ec5b2b4453cac6792
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453672"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117752"
 ---
 # <a name="integrate-other-services-with-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>将其他服务与 Azure Synapse Analytics 中以前的 SQL DW)  (专用 SQL 池集成。
 
@@ -36,7 +36,7 @@ ms.locfileid: "96453672"
 * **直接连接**：对于使用专用 sql DW)  (预配的数据仓库，使用逻辑下推的更高级连接。 下推提供更快且更大规模的分析。
 * **在 Power BI 中打开**：“在 Power BI 中打开”按钮将实例信息传递给 Power BI，以简化连接方式。
 
-有关详细信息，请参阅[与 Power BI 集成](sql-data-warehouse-get-started-visualize-with-power-bi.md)或 [Power BI 文档](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/)。
+有关详细信息，请参阅[与 Power BI 集成](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)或 [Power BI 文档](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/)。
 
 ## <a name="azure-data-factory"></a>Azure 数据工厂
 

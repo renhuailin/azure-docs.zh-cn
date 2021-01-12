@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 11/13/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: ca55186a53b228aa97cc82d33a09aa3ffe455eee
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0485f697b9360b0f2dfe94fdf07629978b5127c1
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092000"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116919"
 ---
 # <a name="machine-learning-with-apache-spark"></a>计算机学习与 Apache Spark
 
@@ -44,7 +44,7 @@ Synapse 运行时是针对数据科学和机器学习进行优化的特选环境
 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中使用的迭代算法的最佳选择。 ```spark.ml``` 提供了一组统一的高级 Api，可帮助用户创建和优化机器学习管道。若要了解有关 ```spark.ml``` 的详细信息，可以访问 [Apache Spark ML 编程指南](https://spark.apache.org/docs/1.2.2/ml-guide.html)。
 
 ### <a name="azure-machine-learning-automated-ml"></a>Azure 机器学习自动 ML
-自动机器学习 ([Azure 机器学习自动 ML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml)) 有助于自动执行计算机学习模型的开发过程。 数据科学家、分析师和开发人员可以使用它来生成高度可缩放、高效且高产能的 ML 模型，同时保证模型的质量。 运行 Azure 机器学习自动 ML SDK 的组件将直接内置到 Synapse 运行时中。
+自动机器学习 ([Azure 机器学习自动 ML](../../machine-learning/concept-automated-ml.md)) 有助于自动执行计算机学习模型的开发过程。 数据科学家、分析师和开发人员可以使用它来生成高度可缩放、高效且高产能的 ML 模型，同时保证模型的质量。 运行 Azure 机器学习自动 ML SDK 的组件将直接内置到 Synapse 运行时中。
 
 ### <a name="open-source-libraries"></a>开源库
 Azure Synapse Analytics 中的每个 Apache Spark 池附带一组预加载的和热门的机器学习库。  默认情况下包含的一些相关机器学习库包括：
@@ -56,13 +56,13 @@ Azure Synapse Analytics 中的每个 Apache Spark 池附带一组预加载的和
 - [PyTorch](https://pytorch.org/)  & [Tensorflow](https://www.tensorflow.org/)是功能强大的 Python 深度学习库。 在 Azure Synapse Analytics 的 Apache Spark 池中，可以通过将池上的执行器数设置为零，使用这些库来构建单机模型。 尽管 Apache Spark 在此配置下不起作用，但它是创建单机模型的一种简单且经济高效的方式。
 
 ## <a name="track-model-development"></a>跟踪模型开发
-[MLFlow](https://www.mlflow.org/) 是一个开源库，用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件，用于记录和跟踪定型运行指标和模型项目。 若要详细了解如何通过 Azure Synapse Analytics 和 Azure 机器学习使用 MLFlow 跟踪，请访问本教程， [了解如何使用 MLFlow](https://docs.microsoft.com/azure/machine-learning/how-to-use-mlflow)。
+[MLFlow](https://www.mlflow.org/) 是一个开源库，用于管理机器学习试验的生命周期。 MLflow 跟踪是 MLflow 的一个组件，用于记录和跟踪训练运行指标和模型项目。 若要详细了解如何通过 Azure Synapse Analytics 和 Azure 机器学习使用 MLFlow 跟踪，请访问本教程， [了解如何使用 MLFlow](../../machine-learning/how-to-use-mlflow.md)。
 
 ## <a name="model-scoring"></a>模型评分
 模型计分或推断是模型用于进行预测的阶段。 对于使用 SparkML 或 MLLib 的模型评分，可以利用本机 Spark 方法直接在 Spark 数据帧上执行推断。 对于其他开源库和模型类型，您还可以创建一个 Spark UDF 来横向扩展大型数据集上的推理。 对于较小的数据集，还可以使用库提供的本机模型推理方法。
 
 ## <a name="register-and-serve-models"></a>注册和服务模型
-通过注册模型可以让你在工作区中存储、版本和跟踪有关模型的元数据。 完成模型定型后，可以将模型注册到 [Azure 机器学习模型注册表](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment#register-package-and-deploy-models-from-anywhere)。 注册后，还可以使用 ONNX 模型来丰富存储在专用 SQL 池中 [的数据](../machine-learning/tutorial-sql-pool-model-scoring-wizard.md) 。
+通过注册模型可以让你在工作区中存储、版本和跟踪有关模型的元数据。 完成模型定型后，可以将模型注册到 [Azure 机器学习模型注册表](../../machine-learning/concept-model-management-and-deployment.md#register-package-and-deploy-models-from-anywhere)。 注册后，还可以使用 ONNX 模型来丰富存储在专用 SQL 池中 [的数据](../machine-learning/tutorial-sql-pool-model-scoring-wizard.md) 。
 
 ## <a name="next-steps"></a>后续步骤
 若要开始在 Azure Synapse Analytics 中进行机器学习，请务必查看以下教程：
@@ -71,4 +71,3 @@ Azure Synapse Analytics 中的每个 Apache Spark 池附带一组预加载的和
 - [使用自动 ML 训练机器学习模型](../spark/apache-spark-azure-machine-learning-tutorial.md)
 
 - [使用 Apache Spark MLlib 训练机器学习模型](../spark/apache-spark-machine-learning-mllib-notebook.md)
-  

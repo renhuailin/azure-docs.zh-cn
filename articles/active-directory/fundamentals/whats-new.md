@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c0fa7a6e676e1b888bc13e0fa4cb42e93b2e71
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 412a987e0a93f7b69250450b8367a37bd3682925
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802841"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115695"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -107,8 +107,6 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
 有关如何使用自动化用户帐户预配更好地保护组织的详细信息，请参阅[使用 Azure AD 自动将用户预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
  
 ---
- 
-[1233182](https://identitydivision.visualstudio.com/IAM/IXR/_queries?id=1233182&triage=true&fullScreen=false&_a=edit)
 
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---december-2020"></a>Azure AD 应用程序库中提供了新的联合应用程序-2020 年12月
 
@@ -123,6 +121,29 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
 你还可以从此处查找所有应用程序的文档 https://aka.ms/AppsTutorial
 
 若要在 Azure AD 应用库中列出你的应用程序，请阅读此处的详细信息 https://aka.ms/AzureADAppRequest
+
+---
+
+### <a name="navigate-to-teams-directly-from-my-access-portal"></a>直接从我的访问门户导航到团队
+
+**类型：** 已更改的功能  
+**服务类别：** 用户访问管理 **产品功能：** 权利管理
+
+你现在可以直接从我的访问门户启动团队。 为此，请登录到 ["我的访问](https://myaccess.microsoft.com/)"，导航到 " **访问包**"，然后转到 " **活动** " 选项卡以查看你有权访问的所有访问包。 展开访问包并将鼠标悬停在团队中时，可以通过单击 " **打开** " 按钮启动该访问包。 
+
+若要详细了解如何使用 "我的访问门户"，请访问 Azure AD 权限管理 "中的" [请求访问访问包](../governance/entitlement-management-request-access.md#sign-in-to-the-my-access-portal)"。
+
+---
+
+### <a name="public-preview---second-level-manager-can-be-set-as-alternate-approver"></a>公共预览版-第二级经理可以设置为备用审批者
+
+**类型：** 已更改的功能  
+**服务类别：** 用户访问管理  
+**产品功能：** 权利管理
+
+在授权管理的审批流程中现在提供了一个附加选项。 如果为第一个审批者选择了经理作为审批者，你将有一个额外的选项，即第二级经理作为备用审批者，可在备用审批者字段中进行选择。 如果选择此选项，则需要添加后备审批者，以便在系统找不到第二层管理器的情况下将请求转发到。
+
+有关详细信息，请转到 [Azure AD 授权管理中的访问包的 "更改批准设置](../governance/entitlement-management-access-package-approval-policy.md#alternate-approvers)"。
 
 --- 
 
@@ -502,7 +523,7 @@ API 连接器现在可用于 Azure Active Directory B2C。 利用 API 连接器�
  
 10月2020，我们已在应用程序库中添加了以下27个新应用程序，并提供联合身份验证支持：
 
-[卫士](../saas-apps/sentry-tutorial.md)， [Bumblebee Superapp](https://app.yellowmessenger.com/user/login)， [ABBYY FlexiCapture Cloud](../saas-apps/abbyy-flexicapture-cloud-tutorial.md)， [EAComposer](../saas-apps/eacomposer-tutorial.md)， [Genesys cloud Integration for Azure](https://apps.mypurecloud.com/msteams-integration/)，[区域技术门户](https://portail.zonetechnologie.com/signin)， [Beautiful.ai](../saas-apps/beautiful.ai-tutorial.md)， [Datawiza Access Broker](https://console.datawiza.com/)， [ZOKRI](https://app.zokri.com/)， [CheckProof](../saas-apps/checkproof-tutorial.md)， [Ecochallenge.org](https://events.ecochallenge.org/users/login)，atSpoke， [](http://atspoke.com/login)[约会提醒](https://app.appointmentreminder.co.nz/account/login)，[云和](https://cloud.market/)marketplace，TravelPerk， [Greetly](https://app.greetly.com/)，[OrgVitality SSO} (。 [](../saas-apps/travelperk-tutorial.md)/saas-apps/orgvitality-sso-tutorial.md) ， [Web 货物 Air](../saas-apps/web-cargo-air-tutorial.md)，[循环流 CRM](../saas-apps/loop-flow-crm-tutorial.md)， [Starmind](../saas-apps/starmind-tutorial.md)， [Workstem](https://hrm.workstem.com/login)，[零售 Zipline](../saas-apps/retail-zipline-tutorial.md)， [Hoxhunt](../saas-apps/hoxhunt-tutorial.md)， [MEVISIO](../saas-apps/mevisio-tutorial.md)， [Samsara](../saas-apps/samsara-tutorial.md)， [Nimbus](../saas-apps/nimbus-tutorial.md)，[脉冲安全虚拟流量管理器](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
+[卫士](../saas-apps/sentry-tutorial.md)、 [Bumblebee-Superapp](https://app.yellowmessenger.com/user/login)， [ABBYY FlexiCapture Cloud](../saas-apps/abbyy-flexicapture-cloud-tutorial.md)， [EAComposer](../saas-apps/eacomposer-tutorial.md)， [Genesys cloud Integration for Azure](https://apps.mypurecloud.com/msteams-integration/)，[区域技术门户](https://portail.zonetechnologie.com/signin)， [Beautiful.ai](../saas-apps/beautiful.ai-tutorial.md)， [Datawiza ACCESS Broker](https://console.datawiza.com/)， [ZOKRI](https://app.zokri.com/)， [CheckProof](../saas-apps/checkproof-tutorial.md)， [Ecochallenge.org](https://events.ecochallenge.org/users/login)，atSpoke [](http://atspoke.com/login)，[约会提醒](https://app.appointmentreminder.co.nz/account/login) [，](https://cloud.market/)SSO， [Web TravelPerk](../saas-apps/web-cargo-air-tutorial.md)， [Greetly，](../saas-apps/travelperk-tutorial.md) [](../saas-apps/loop-flow-crm-tutorial.md) [OrgVitality](https://app.greetly.com/)，[货物](../saas-apps/orgvitality-sso-tutorial.md)， [Starmind](../saas-apps/starmind-tutorial.md) [，](../saas-apps/mevisio-tutorial.md)[零售 Workstem](../saas-apps/retail-zipline-tutorial.md) [，Zipline，](../saas-apps/hoxhunt-tutorial.md) [Hoxhunt，MEVISIO](https://hrm.workstem.com/login) [，](../saas-apps/samsara-tutorial.md) [Samsara](../saas-apps/nimbus-tutorial.md)，[脉冲安全虚拟流量管理器](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
 
 你还可以从此处查找所有应用程序的文档 https://aka.ms/AppsTutorial
 

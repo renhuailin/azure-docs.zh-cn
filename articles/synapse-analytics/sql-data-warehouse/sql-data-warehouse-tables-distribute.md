@@ -1,6 +1,6 @@
 ---
 title: 分布式表设计指南
-description: 使用 Azure Synapse 分析中的专用 SQL 池设计哈希分布式表和轮循机制分布式表的建议。
+description: 有关如何在 Azure Synapse Analytics 中使用专用 SQL 池设计哈希分布式表和轮循机制分布式表的一些建议。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c452d51018ef3f204cd7281971c07fb6337d39bf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3b61df954e913671eafff4b739e0f53a4d420c28
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449700"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117293"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用专用 SQL 池设计分布式表的指南
 
-用于在专用 SQL 池中设计哈希分布式和轮循机制分布式表的建议。
+有关如何在专用 SQL 池中设计哈希分布式表和轮循机制分布式表的一些建议。
 
-本文假设你熟悉专用 SQL 池中的数据分发和数据移动概念。  有关详细信息，请参阅 [Azure Synapse Analytics 体系结构](massively-parallel-processing-mpp-architecture.md)。
+本文假定你熟悉专用 SQL 池中的数据分布和数据移动概念。  有关详细信息，请参阅 [Azure Synapse Analytics 体系结构](massively-parallel-processing-mpp-architecture.md)。
 
 ## <a name="what-is-a-distributed-table"></a>什么是分布式表？
 
@@ -36,7 +36,7 @@ ms.locfileid: "96449700"
 
 - 表有多大？
 - 表的刷新频率是多少？
-- 是否在专用 SQL 池中有事实数据表和维度表？
+- 专用 SQL 池中是否有事实数据表和维度表？
 
 ### <a name="hash-distributed"></a>哈希分布
 
@@ -44,7 +44,7 @@ ms.locfileid: "96449700"
 
 ![分布式表](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "分布式表")  
 
-由于相同的值始终哈希处理到相同的分布，因此 SQL Analytics 具有行位置的内置知识。 在专用 SQL 池中，此知识用于最大程度地减少查询期间的数据移动，从而提高查询性能。
+由于相同的值始终哈希处理到相同的分布，因此 SQL Analytics 具有行位置的内置知识。 可以在专用 SQL 池中根据此信息最大程度地减少查询期间的数据移动，提高查询性能。
 
 哈希分布表适用于星型架构中的大型事实数据表。 它们可以包含大量行，但仍实现高性能。 当然，用户应该了解一些设计注意事项，它们有助于获得分布式系统本应具有的性能。 本文所述的选择合适的分布列就是其中之一。
 
@@ -68,7 +68,7 @@ ms.locfileid: "96449700"
 - 该联接比查询中的其他联接更不重要时
 - 表是临时过渡表时
 
-教程[加载纽约出租车数据](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)提供了将数据加载到轮循机制临时表的示例。
+教程[加载纽约出租车数据](./load-data-from-azure-blob-storage-using-copy.md#load-the-data-into-your-data-warehouse)提供了将数据加载到轮循机制临时表的示例。
 
 ## <a name="choosing-a-distribution-column"></a>选择分布列
 
@@ -113,7 +113,7 @@ WITH
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>选择能最大程度减少数据移动的分布列
 
-为了获取正确的查询结果，查询可能将数据从一个计算节点移至另一个计算节点。 当查询对分布式表执行联接和聚合操作时，通常会发生数据移动。 选择有助于最大程度减少数据移动的分布列是优化专用 SQL 池性能的最重要策略之一。
+为了获取正确的查询结果，查询可能将数据从一个计算节点移至另一个计算节点。 当查询对分布式表执行联接和聚合操作时，通常会发生数据移动。 选择一个能最大程度减少数据移动的分布列，这是优化专用 SQL 池性能的最重要策略之一。
 
 若要最大程度减少数据移动，请选择符合以下条件的分布列：
 
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 若要创建分布式表，请使用以下语句之一：
 
-- [ (专用 SQL 池 CREATE TABLE) ](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE 为 SELECT (专用 SQL 池) ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE（专用 SQL 池）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE AS SELECT（专用 SQL 池）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

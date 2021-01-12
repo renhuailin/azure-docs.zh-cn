@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c4fe512ff6db24498148ffa724c3144a2f61823f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ceb242dcd05105b533e365e91afd9601cc550392
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451704"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116722"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用具有专用 SQL 池的事务
 
@@ -29,7 +29,7 @@ ms.locfileid: "96451704"
 
 专用 SQL 池实现 ACID 事务。 事务支持的隔离级别默认为 READ UNCOMMITTED。  你可以通过在连接到主数据库时为用户数据库打开 READ_COMMITTED_SNAPSHOT 数据库选项，将默认的隔离级别更改为 READ COMMITTED SNAPSHOT ISOLATION。  
 
-启用后，将在 READ COMMITTED SNAPSHOT ISOLATION 下执行此数据库中的所有事务，并且将不接受会话级别的设置 READ UNCOMMITTED。 有关详细信息，请查看 [ALTER DATABASE SET 选项 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true)。
+启用后，将在 READ COMMITTED SNAPSHOT ISOLATION 下执行此数据库中的所有事务，并且将不接受会话级别的设置 READ UNCOMMITTED。 有关详细信息，请查看 [ALTER DATABASE SET 选项 (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?preserve-view=true&view=azure-sqldw-latest)。
 
 ## <a name="transaction-size"></a>事务大小
 单个数据修改事务有大小限制。 限制按每个分发进行应用。 因此，可以通过将限制乘以分布计数来计算总分配量。 

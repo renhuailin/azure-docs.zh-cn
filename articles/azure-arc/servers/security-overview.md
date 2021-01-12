@@ -3,12 +3,12 @@ title: 安全概述
 description: 有关启用了 Azure Arc 的服务器的安全信息。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa8653b783e7eb3e211b7514831604dd5642cfbe
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329034"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117021"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>适用于服务器的 Azure Arc 安全概述
 
@@ -16,13 +16,13 @@ ms.locfileid: "91329034"
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-每个启用了 Azure Arc 的服务器都有一个托管标识作为 Azure 订阅中的资源组的一部分，此标识表示在本地或其他云环境中运行的服务器。 对此资源的访问权限由标准 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md)来控制。 从 Azure 门户中的 " [**访问控制 (" IAM) **](../../role-based-access-control/role-assignments-portal.md#access-control-iam) "页上，可以验证谁有权访问启用了 Azure Arc 的服务器。
+每个启用了 Azure Arc 的服务器都有一个托管标识作为 Azure 订阅中的资源组的一部分，此标识表示在本地或其他云环境中运行的服务器。 对此资源的访问权限由标准 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md)来控制。 从 Azure 门户中的 " [**访问控制 (" IAM)**](../../role-based-access-control/role-assignments-portal.md) "页上，可以验证谁有权访问启用了 Azure Arc 的服务器。
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="启用了 Azure Arc 的服务器访问控制" border="false" lightbox="./media/security-overview/access-control-page.png":::
 
 授予了对资源的 [参与者](../../role-based-access-control/built-in-roles.md#contributor) 或管理员角色访问权限的用户和应用程序可以对资源进行更改，包括在计算机上部署或删除 [扩展](manage-vm-extensions.md) 。 扩展可以包含在特权上下文中运行的任意脚本，因此请考虑将 Azure 资源上的任何参与者作为服务器的间接管理员。
 
-**Azure 连接的计算机加入**角色可用于大规模载入，只能在 Azure 中读取或创建启用了新 Arc 的服务器。 它不能用于删除已注册或管理扩展的服务器。 作为最佳做法，我们建议仅将此角色分配到 Azure Active Directory (Azure AD 用于扩展计算机的) 服务主体。
+**Azure 连接的计算机加入** 角色可用于大规模载入，只能在 Azure 中读取或创建启用了新 Arc 的服务器。 它不能用于删除已注册或管理扩展的服务器。 作为最佳做法，我们建议仅将此角色分配到 Azure Active Directory (Azure AD 用于扩展计算机的) 服务主体。
 
 作为 **Azure 连接的计算机资源管理员** 角色成员的用户可以读取、修改、重新载入和删除计算机。 此角色旨在支持对启用了 Arc 的服务器的管理，但不支持对资源组或订阅中的其他资源进行管理。
 

@@ -7,19 +7,17 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 5aadd9d96f538f92e1b9e0100b2c1055ee0b0633
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: e60f77495cdb822a0c50be936c2b0d3ac31348f3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065263"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116703"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>跨服务查询-Azure Monitor 和 Azure 数据资源管理器 (预览) 
 在 [Azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/)、 [Application Insights](/azure/azure-monitor/app/app-insights-overview)和 [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)之间创建跨服务查询。
 ## <a name="azure-monitor-and-azure-data-explorer-cross-service-querying"></a>Azure Monitor 和 Azure 数据资源管理器跨服务查询
 利用这种体验，你可以在 [Azure 数据资源管理器和 Azure Monitor 之间创建跨服务查询](https://docs.microsoft.com/azure/data-explorer/query-monitor-data) ，以及在 [Azure Monitor 与 Azure 数据资源管理器之间创建跨服务查询](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy)。
-
-:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Azure 数据资源管理器代理流。":::
 
 例如，从 Log Analytics) 查询 Azure 数据资源管理器 (：
 ```kusto

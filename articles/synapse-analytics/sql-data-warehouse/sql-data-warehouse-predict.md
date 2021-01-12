@@ -11,16 +11,16 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b1a2e802f66132a88060fb74831781055897b077
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 9e7d45a588e60cd082f1eef43d1d1b6681b9e912
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093649"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117735"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>通过预测对机器学习模型进行评分
 
-专用 SQL 池提供使用熟悉的 T-sql 语言对机器学习模型进行评分的功能。 利用 T-sql [预测](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)，你可以将现有机器学习模型与历史数据定型，并将其评分到数据仓库的安全边界内。 PREDICT 函数使用 [ONNX (打开神经网络交换) ](https://onnx.ai/) 模型和数据作为输入。 此功能消除了在数据仓库外移动宝贵数据以实现评分的步骤。 它旨在使数据专业人员能够轻松地使用熟悉的 T-sql 界面来部署机器学习模型，并与数据科学家无缝协作，为其任务使用正确的框架。
+专用 SQL 池提供使用熟悉的 T-sql 语言对机器学习模型进行评分的功能。 利用 T-sql [预测](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)，你可以将现有机器学习模型与历史数据定型，并将其评分到数据仓库的安全边界内。 PREDICT 函数使用 [ONNX (打开神经网络交换) ](https://onnx.ai/) 模型和数据作为输入。 此功能消除了在数据仓库外移动宝贵数据以实现评分的步骤。 它旨在使数据专业人员能够轻松地使用熟悉的 T-sql 界面来部署机器学习模型，并与数据科学家无缝协作，为其任务使用正确的框架。
 
 > [!NOTE]
 > 此功能目前在无服务器 SQL 池中不受支持。
@@ -35,7 +35,7 @@ ms.locfileid: "97093649"
 
 - 专用 SQL 池仅支持 ONNX 格式模型。 ONNX 是一种开源模型格式，可用于在不同框架之间交换模型以实现互操作性。 你可以使用框架将现有模型转换为 ONNX 格式，这种框架既支持本机支持，也可用来转换可用的包。 例如， [spark-sklearn-onnx](https://github.com/onnx/sklearn-onnx) package 将 scikit-learn-了解模型转换为 onnx。 [ONNX GitHub 存储库](https://github.com/onnx/tutorials#converting-to-onnx-format) 提供支持的框架和示例的列表。
 
-   如果使用 [自动 ML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) 进行培训，请确保将 *enable_onnx_compatible_models* 参数设置为 TRUE，以生成 onnx 格式模型。 [自动机器学习笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) 显示了如何使用自动 ML 创建 ONNX 格式的机器学习模型的示例。
+   如果使用 [自动 ML](../../machine-learning/concept-automated-ml.md) 进行培训，请确保将 *enable_onnx_compatible_models* 参数设置为 TRUE，以生成 onnx 格式模型。 [自动机器学习笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) 显示了如何使用自动 ML 创建 ONNX 格式的机器学习模型的示例。
 
 - 输入数据支持以下数据类型：
     - int、bigint、real、float
@@ -66,7 +66,7 @@ GO
 
 ```
 
-一旦将模型转换为十六进制字符串并指定了表定义，就可以使用 [COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) 或 Polybase 加载专用 SQL 池表中的模型。 下面的代码示例使用 Copy 命令来加载模型。
+一旦将模型转换为十六进制字符串并指定了表定义，就可以使用 [COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?preserve-view=true&view=azure-sqldw-latest) 或 Polybase 加载专用 SQL 池表中的模型。 下面的代码示例使用 Copy 命令来加载模型。
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location
@@ -80,9 +80,9 @@ WITH (
 
 ## <a name="scoring-the-model"></a>为模型评分
 
-一旦将模型和数据加载到数据仓库中，就可以使用 **T-SQL 预测** 函数对模型进行评分。 请确保新的输入数据的格式与用于生成模型的定型数据的格式相同。 T-sql 预测采用两个输入：模型和新的评分输入数据，并为输出生成新列。可以将模型指定为变量、文本或标量 sub_query。 [与 Common_table_expression 一起](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=azure-sqldw-latest&preserve-view=true)使用，以便为数据参数指定命名的结果集。
+一旦将模型和数据加载到数据仓库中，就可以使用 **T-SQL 预测** 函数对模型进行评分。 请确保新的输入数据的格式与用于生成模型的定型数据的格式相同。 T-sql 预测采用两个输入：模型和新的评分输入数据，并为输出生成新列。可以将模型指定为变量、文本或标量 sub_query。 [与 Common_table_expression 一起](/sql/t-sql/queries/with-common-table-expression-transact-sql?preserve-view=true&view=azure-sqldw-latest)使用，以便为数据参数指定命名的结果集。
 
-下面的示例演示了一个使用预测函数的示例查询。 创建了包含预测结果的具有名称 *分数* 和数据类型 *float* 的其他列。 所有输入数据列以及输出预测列都可与 select 语句一起显示。 有关更多详细信息，请参阅 [预测 (transact-sql) ](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
+下面的示例演示了一个使用预测函数的示例查询。 创建了包含预测结果的具有名称 *分数* 和数据类型 *float* 的其他列。 所有输入数据列以及输出预测列都可与 select 语句一起显示。 有关更多详细信息，请参阅 [预测 (transact-sql) ](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)。
 
 ```sql
 -- Query for ML predictions
@@ -93,4 +93,4 @@ DATA = dbo.mytable AS d, RUNTIME = ONNX) WITH (Score float) AS p;
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 PREDICT 函数的详细信息，请参阅 [预测 (transact-sql) ](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
+若要了解有关 PREDICT 函数的详细信息，请参阅 [预测 (transact-sql) ](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)。
