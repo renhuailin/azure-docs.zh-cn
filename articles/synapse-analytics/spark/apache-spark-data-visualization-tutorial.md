@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 8735514b639cb0322a83ffb19d661027327c0f73
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8768b8f8c7bf70b184971abc6ce27e2193823dea
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458770"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121543"
 ---
 # <a name="analyze-data-with-apache-spark"></a>用 Apache Spark 分析数据
 
@@ -21,11 +21,11 @@ ms.locfileid: "96458770"
 
 具体而言，我们将分析 [纽约 (NYC) 出租车](https://azure.microsoft.com/en-us/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) 数据集。 数据通过 Azure 开放数据集提供。 此数据集的子集包含有关黄色出租车行程的信息，其中包括每个行程的相关信息、开始时间和结束时间以及地点、成本和其他有趣的属性。
   
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 - 按照[创建 Apache Spark 池教程](../articles/../quickstart-create-apache-spark-pool-studio.md)创建 Apache Spark 池 
 
 ## <a name="download-and-prepare-the-data"></a>下载并准备数据
-1. 使用 PySpark 内核创建笔记本。 有关说明，请参阅 [创建笔记本](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook)。 
+1. 使用 PySpark 内核创建笔记本。 有关说明，请参阅 [创建笔记本](../quickstart-apache-spark-notebook.md#create-a-notebook)。 
    
 > [!Note]
 > 
@@ -92,7 +92,7 @@ GROUP BY day_of_month
 ORDER BY day_of_month ASC
 ```
 
-2. 查询完成运行后，可以通过切换到 " **图表" 视图** 来可视化结果。 在此示例中，我们将通过 **line chart** 将 ```day_of_month``` 字段指定为 **键** 并将指定 ```avgTipAmount``` 为 **值** 来创建折线图。 做出选择后，单击 " **应用** " 以刷新图表。 
+2. 查询完成运行后，可以通过切换到 " **图表" 视图** 来可视化结果。 在此示例中，我们将通过将 ```day_of_month``` 字段指定为 **键** 并将指定 ```avgTipAmount``` 为 **值** 来创建折线图。 做出选择后，单击 " **应用** " 以刷新图表。 
    
 ## <a name="visualize-data"></a>可视化数据
 除了内置的笔记本图表选项外，还可以使用常用的开源库来创建自己的可视化效果。 在下面的示例中，我们将使用 Seaborn 和 Matplotlib，它们常用于数据可视化的 Python 库。 
@@ -180,5 +180,5 @@ plt.show()
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Apache Spark 官方文档](https://spark.apache.org/docs/latest/)
