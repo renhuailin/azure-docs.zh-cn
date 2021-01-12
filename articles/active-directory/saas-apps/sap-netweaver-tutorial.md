@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 12/11/2020
 ms.author: jeedes
-ms.openlocfilehash: 688c496239becad7d1462f41afee9c6f88af9f95
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a282e1be019c697ad15d86df56ad191043ab4ae9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676678"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935830"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SAP NetWeaver 的集成
 
@@ -36,7 +36,7 @@ ms.locfileid: "92676678"
 
 ## <a name="scenario-description"></a>方案描述
 
-* SAP NetWeaver 支持 **SAML** （ **SP 发起的 SSO** ）和 **OAuth** 。 本教程在测试环境中配置并测试 Azure AD SSO。 
+* SAP NetWeaver 支持 **SAML**（**SP 发起的 SSO**）和 **OAuth**。 本教程在测试环境中配置并测试 Azure AD SSO。 
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -52,7 +52,7 @@ ms.locfileid: "92676678"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **SAP NetWeaver** 。 
+1. 在“从库中添加”部分的搜索框中，键入 **SAP NetWeaver**。 
 1. 在结果面板中选择“SAP NetWeaver”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-sso-for-sap-netweaver"></a>配置并测试 SAP NetWeaver 的 Azure AD SSO
@@ -124,7 +124,7 @@ ms.locfileid: "92676678"
 
     ![多个 SAP NetWeaver ABAP 引擎](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
 
-1. **生成服务提供程序元数据** ：完成在 SAML 2.0 用户界面上配置“本地提供商”和“受信任的提供程序”设置后，下一步将是生成服务提供程序元数据文件（包含 SAP 中的所有设置、身份验证上下文和其他配置）   。 生成此文件后，需要在 Azure AD 中上传此文件。
+1. **生成服务提供程序元数据**：完成在 SAML 2.0 用户界面上配置“本地提供商”和“受信任的提供程序”设置后，下一步将是生成服务提供程序元数据文件（包含 SAP 中的所有设置、身份验证上下文和其他配置）   。 生成此文件后，需要在 Azure AD 中上传此文件。
 
     ![生成服务提供程序元数据](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_generatesp.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "92676678"
 
     b. 单击“文件夹徽标”  来选择元数据文件并单击“上传”。 
 
-    c. 成功上传元数据文件后， **标识符** 和 **回复 URL** 值会自动填充在“基本 SAML 配置”  部分的文本框中，如下所示：
+    c. 成功上传元数据文件后，**标识符** 和 **回复 URL** 值会自动填充在“基本 SAML 配置”  部分的文本框中，如下所示：
 
     d. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<your company instance of SAP NetWeaver>`。
 
@@ -175,7 +175,7 @@ ms.locfileid: "92676678"
 
     c. 从“参数 1”列表中选择“user.userprincipalname”   。
 
-    d. 单击“ **保存** ”。
+    d. 单击“ **保存**”。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -213,11 +213,11 @@ ms.locfileid: "92676678"
 
 1. 登录到 SAP 系统并转到事务代码 SAML2。 这将打开带有 SAML 配置屏幕的新浏览器窗口。
 
-2. 要为受信任的标识提供程序 (Azure AD) 配置终结点，请转到“受信任的提供程序”选项卡  。
+2. 要为受信任的标识提供程序 (Azure AD) 配置终结点，请转到“受信任的提供程序”选项卡。
 
     ![配置信任单一登录的提供程序](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_samlconfig.png)
 
-3. 按“添加”，然后从上下文菜单选择“上传元数据文件”  。
+3. 按“添加”，然后从上下文菜单选择“上传元数据文件”。
 
     ![配置单一登录 2](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_uploadmetadata.png)
 
@@ -225,27 +225,27 @@ ms.locfileid: "92676678"
 
     ![配置单一登录 3](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_metadatafile.png)
 
-5. 在下一个屏幕中，键入别名。 例如，键入 aadsts 并按“下一步”以继续操作  。
+5. 在下一个屏幕中，键入别名。 例如，键入 aadsts 并按“下一步”以继续操作。
 
     ![配置单一登录 4](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_aliasname.png)
 
-6. 请确保“摘要算法”应为“SHA-256”且无需进行任何更改，然后按“下一步”  。
+6. 请确保“摘要算法”应为“SHA-256”且无需进行任何更改，然后按“下一步”。
 
     ![配置单一登录 5](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_identityprovider.png)
 
-7. 在“单一登录终结点”上，使用“HTTP POST”并单击“下一步”以继续  。
+7. 在“单一登录终结点”上，使用“HTTP POST”并单击“下一步”以继续。
 
     ![配置单一登录 6](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect.png)
 
-8. 在“单一注销终结点”上，选择“HTTPRedirect”并单击“下一步”以继续  。
+8. 在“单一注销终结点”上，选择“HTTPRedirect”并单击“下一步”以继续。
 
     ![配置单一登录 7](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect1.png)
 
-9. 在“项目终结点”上，按“下一步”以继续  。
+9. 在“项目终结点”上，按“下一步”以继续。
 
     ![配置单一登录 8](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_artifactendpoint.png)
 
-10. 在“身份验证要求”上，单击“完成”  。
+10. 在“身份验证要求”上，单击“完成”。
 
     ![配置单一登录 9](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
 
@@ -253,15 +253,19 @@ ms.locfileid: "92676678"
 
     ![配置单一登录 10](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
 
-12. 单击“联合身份验证”（底部窗口）选项卡下的“添加”  。
+12. 单击“联合身份验证”（底部窗口）选项卡下的“添加”。
 
     ![配置单一登录 11](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_addidentityprovider.png)
 
-13. 从弹出窗口中选择“支持的 NameID 格式”中的“未指定”，然后单击“确定”  。
+13. 从弹出窗口中选择“支持的 NameID 格式”中的“未指定”，然后单击“确定”。
 
     ![配置单一登录 12](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameid.png)
 
-14. 请注意，“用户 ID 源”和“用户 ID 映射模式”值确定 SAP 用户与 Azure AD 声明之间的链接  。  
+1. 将“用户 ID 源”值指定为“断言属性”，将“用户 ID 映射模式”值指定为“电子邮件”，并将“断言属性名称”指定为 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`    。
+
+    ![配置单一登录 ](./media/sapnetweaver-tutorial/nameid-format.png)
+
+14. 请注意，“用户 ID 源”和“用户 ID 映射模式”值确定 SAP 用户与 Azure AD 声明之间的关联 。
 
     #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>场景：SAP 用户到 Azure AD 用户的映射。
 
@@ -283,11 +287,11 @@ ms.locfileid: "92676678"
 
     ![配置单一登录 16](./media/sapnetweaver-tutorial/claimsaad2.png)
 
-15. 单击“保存”，再单击“启用”以启用标识提供程序  。
+15. 单击“保存”，再单击“启用”以启用标识提供程序。
 
     ![配置单一登录 17](./media/sapnetweaver-tutorial/configuration1.png)
 
-16. 出现提示后，请单击“确定”  。
+16. 出现提示后，请单击“确定”。
 
     ![配置单一登录 18](./media/sapnetweaver-tutorial/configuration2.png)
 
@@ -320,7 +324,7 @@ ms.locfileid: "92676678"
 
 1. 以下位置提供了 SAP 阐述的过程：[启用 NetWeaver 网关服务和创建 OAuth 2.0 范围](https://wiki.scn.sap.com/wiki/display/Security/NetWeaver+Gateway+Service+Enabling+and+OAuth+2.0+Scope+Creation)
 
-2. 转到“SPRO”并找到“激活和维护服务”。 
+2. 转到“SPRO”并找到“激活和维护服务”。
 
     ![激活和维护服务](./media/sapnetweaver-tutorial/oauth01.png)
 
@@ -328,7 +332,7 @@ ms.locfileid: "92676678"
 
     ![OData 服务](./media/sapnetweaver-tutorial/oauth02.png)
 
-    * 然后单击顶部按钮栏上的“OAuth”按钮，并分配 `scope`（保留提供的默认名称）。 
+    * 然后单击顶部按钮栏上的“OAuth”按钮，并分配 `scope`（保留提供的默认名称）。
 
 4. 在本示例中，范围为 `DAAG_MNGGRP_001`，它是通过自动添加数字基于服务名称生成的。 报告 `/IWFND/R_OAUTH_SCOPES` 可用于更改范围名称或手动创建。
 
@@ -350,7 +354,7 @@ ms.locfileid: "92676678"
 
 ### <a name="register-the-new-oauth-20-client-id-with-the-creation-wizard"></a>使用创建向导注册新的 OAuth 2.0 客户端 ID
 
-1. 若要注册新的 **OAuth 2.0 客户端** ，请启动事务 **SOAUTH2** 。 该事务将显示有关已注册的 OAuth 2.0 客户端的概述。 选择“创建”，针对本示例中名为 CLIENT1 的新 OAuth 客户端启动向导。 
+1. 若要注册新的 **OAuth 2.0 客户端**，请启动事务 **SOAUTH2**。 该事务将显示有关已注册的 OAuth 2.0 客户端的概述。 选择“创建”，针对本示例中名为 CLIENT1 的新 OAuth 客户端启动向导。
 
 2. 转到“T-Code:SOAUTH2”并提供说明，然后单击“下一步”。 
 
@@ -358,7 +362,7 @@ ms.locfileid: "92676678"
 
     ![OAuth 2.0 客户端 ID](./media/sapnetweaver-tutorial/oauth05.png)
 
-3. 从下拉列表中选择已添加的“SAML2 IdP – Azure AD”，然后单击“保存”。 
+3. 从下拉列表中选择已添加的“SAML2 IdP – Azure AD”，然后单击“保存”。
 
     ![SAML2 IdP - Azure AD 1](./media/sapnetweaver-tutorial/oauth06.png)
 
@@ -366,7 +370,7 @@ ms.locfileid: "92676678"
 
     ![SAML2 IdP - Azure AD 3](./media/sapnetweaver-tutorial/oauth08.png)
 
-4. 单击范围分配下的“添加”，以添加前面创建的范围： `DAAG_MNGGRP_001`
+4. 单击范围分配下的“添加”，以添加前面创建的范围：`DAAG_MNGGRP_001`
 
     ![范围](./media/sapnetweaver-tutorial/oauth09.png)
 

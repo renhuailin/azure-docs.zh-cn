@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/21/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: cdfd012d5015e156439a1afa89e818bf82b64dc6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e8b58069dc41d5272c67edcb1f05ebd9f1bc5ad4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449339"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935592"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>教程：准备部署 Azure Stack Edge Pro with GPU 
 
@@ -36,7 +36,7 @@ ms.locfileid: "96449339"
 | --- | --- |
 | **准备工作** |在为即将进行的部署执行准备工作时必须完成这些步骤。 |
 | **[部署配置清单](#deployment-configuration-checklist)** |在部署之前或在部署期间使用此清单来收集和记录信息。 |
-| **[部署先决条件](#prerequisites)** |这些项会验证环境是否已准备就绪以进行部署。 |
+| **[部署先决条件](#prerequisites)** |这些先决条件会验证环境是否已做好部署准备。 |
 |  | |
 |**部署教程** |需要完成这些教程，才能在生产环境中部署 Azure Stack Edge Pro 设备。 |
 |**[1.在 Azure 门户中做好部署 Azure Stack Edge Pro 的准备](azure-stack-edge-gpu-deploy-prep.md)** |在安装 Azure Stack Edge 物理设备之前创建并配置 Azure Stack Edge 资源。 |
@@ -46,7 +46,7 @@ ms.locfileid: "96449339"
 |**[5.配置 Azure Stack Edge Pro 的设备设置](azure-stack-edge-gpu-deploy-set-up-device-update-time.md)** |分配设备名称和 DNS 域，配置更新服务器和设备时间。 |
 |**[6.配置 Azure Stack Edge Pro 的安全设置](azure-stack-edge-gpu-deploy-configure-certificates.md)** |为设备配置证书。 可使用设备生成的证书，或者使用自己的证书。   |
 |**[7.激活 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md)** |使用从服务中获取的激活密钥来激活设备。 现已准备好在设备设置 SMB 或 NFS 共享或通过 REST 进行连接。 |
-|**[8.配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)** |配置设备上的计算角色。 此操作也会创建一个 Kubernetes 群集。 |
+|**[8.配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)** |配置设备上的计算角色。 还会创建 Kubernetes 群集。 |
 |**[9A.使用 Edge 共享传输数据](azure-stack-edge-j-series-deploy-add-shares.md)** |添加共享，并通过 SMB 或 NFS 连接到共享。 |
 |**[9B.使用 Edge 存储帐户传输数据](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |添加存储帐户，并通过 REST API 连接到 blob 存储。 |
 
@@ -66,7 +66,7 @@ ms.locfileid: "96449339"
 
 在开始之前，请确保：
 
-- 已为你的 Microsoft Azure 订阅启用了 Azure Stack Edge 资源。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。 若要确定你的 Azure 订阅的类型，请参阅[什么是 Azure 产品/服务？](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)。
+- 已为 Azure Stack Edge 资源启用 Microsoft Azure 订阅。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。 若要确定你的 Azure 订阅的类型，请参阅[什么是 Azure 产品/服务？](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)。
 - 你在资源组级别拥有对 Azure Stack Edge Pro/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
 
     - 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 
@@ -125,7 +125,7 @@ ms.locfileid: "96449339"
     
     |设置  |值  |
     |---------|---------|
-    |订阅    |系统会根据前面所做的选择自动填充此字段。 订阅将链接到你的计费帐户。 |
+    |订阅    |系统会根据前面所做的选择自动填充此订阅。 订阅将链接到你的计费帐户。 |
     |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
 
 7. 输入或选择以下“实例详细信息”。 
@@ -139,7 +139,7 @@ ms.locfileid: "96449339"
 
 8. 在完成时选择“下一步:送货地址”。
 
-    - 如果你已有一个设备，请选择与“我有 Azure Stack Edge Pro 设备”对应的组合框。
+    - 如果已经有一台设备，请选择与“我已有设备”对应的组合框。
 
         ![创建资源 6](media/azure-stack-edge-gpu-deploy-prep/create-resource-6.png)
 
@@ -176,19 +176,17 @@ ms.locfileid: "96449339"
 
 在 Azure Stack Edge 资源启动并运行后，你需要获取激活密钥。 此密钥用于激活 Azure Stack Edge Pro 设备并将其连接到资源。 如果你仍在 Azure 门户中，则现在可以获取此密钥。
 
-1. 选择所创建的资源。 选择“概述”，然后选择“设备设置” 。
+1. 选择创建的资源，然后选择“概述”。
 
-    ![选择“设备设置”](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)
+2. 在右侧窗格上，为 Azure Key Vault 输入一个名称，或者接受默认名称。 密钥保管库名称的长度可介于 3 至 24 个字符之间。
 
-2. 在“激活”磁贴上，为 Azure Key Vault 提供一个名称，或者接受默认名称。 密钥保管库名称的长度可介于 3 至 24 个字符之间。 
+   对于随设备一起激活的每个 Azure Stack Edge 资源，都会创建一个密钥保管库。 通过密钥保管库，可存储和访问机密，例如密钥保管库中存储的服务的通道完整性密钥 (CIK)。 
 
-    对于随设备一起激活的每个 Azure Stack Edge 资源，都会创建一个密钥保管库。 通过密钥保管库，可存储和访问机密，例如密钥保管库中存储的服务的通道完整性密钥 (CIK)。 
+   指定密钥保管库名称后，请选择“生成密钥”来创建一个激活密钥。 
 
-    指定密钥保管库名称后，请选择“生成密钥”来创建一个激活密钥。 
+   ![获取激活密钥](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
 
-    ![获取激活密钥](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
-
-    创建密钥保管库和激活密钥需要几分钟时间，请稍候。 选择复制图标复制密钥并将其保存供日后使用。
+   创建密钥保管库和激活密钥需要几分钟时间，请稍候。 选择复制图标复制密钥并将其保存供日后使用。<!--Verify that the new screen has a copy icon.-->
 
 
 > [!IMPORTANT]

@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7ca9b21838d35b54b4ed84d5aaf3aa797b02d9e0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: dd0b6833c4c51c218497cea4fec04390200edff4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630762"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935338"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>教程：准备部署 Azure Stack Edge Pro R
 
-这是完全部署 Azure Stack Edge Pro R 所需的部署教程系列中的第一个教程。本教程介绍如何准备 Azure 门户以部署 Azure Stack Edge 资源。 本教程使用附带不间断电源 (UPS) 的 1 节点 Azure Stack Edge Pro R 设备。
+本教程是完全部署 Azure Stack Edge Pro R 所需的部署教程系列中的第一个。本教程介绍如何准备 Azure 门户以部署 Azure Stack Edge 资源。 本教程使用附带不间断电源 (UPS) 的 1 节点 Azure Stack Edge Pro R 设备。
 
 需要有管理员权限才能完成安装和配置过程。 门户准备只需不到 10 分钟的时间。
 
@@ -37,7 +37,7 @@ ms.locfileid: "97630762"
 | --- | --- |
 | **准备工作** |在为即将进行的部署执行准备工作时必须完成这些步骤。 |
 | **[部署配置清单](#deployment-configuration-checklist)** |在部署之前或在部署期间使用此清单来收集和记录信息。 |
-| **[部署先决条件](#prerequisites)** |这些项会验证环境是否已准备就绪以进行部署。 |
+| **[部署先决条件](#prerequisites)** |这些先决条件会验证环境是否已做好部署准备。 |
 |  | |
 |**部署教程** |需要完成这些教程，才能在生产环境中部署 Azure Stack Edge Pro R 设备。 |
 |**[1.在 Azure 门户中做好部署设备的准备](azure-stack-edge-pro-r-deploy-prep.md)** |在安装 Azure Stack Edge 物理设备之前创建并配置 Azure Stack Edge 资源。 |
@@ -47,7 +47,7 @@ ms.locfileid: "97630762"
 |**[5.配置设备设置](azure-stack-edge-pro-r-deploy-set-up-device-update-time.md)** |分配设备名称和 DNS 域，配置更新服务器和设备时间。 |
 |**[6.配置安全设置](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)** |为设备配置证书、VPN 和静态加密。 可使用设备生成的证书，或者使用自己的证书。   |
 |**[7.激活设备](azure-stack-edge-pro-r-deploy-activate.md)** |使用从服务中获取的激活密钥来激活设备。 现已准备好在设备设置 SMB 或 NFS 共享或通过 REST 进行连接。 |
-|**[8.配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)** |配置设备上的计算角色。 此操作也会创建一个 Kubernetes 群集。 |
+|**[8.配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)** |配置设备上的计算角色。 还会创建 Kubernetes 群集。 |
 
 现在可以开始设置 Azure 门户。
 
@@ -109,7 +109,7 @@ ms.locfileid: "97630762"
     
     |设置  |值  |
     |---------|---------|
-    |订阅    |系统会根据前面所做的选择自动填充此字段。 订阅将链接到你的计费帐户。 |
+    |订阅    |系统会根据前面所做的选择自动填充此订阅。 订阅将链接到你的计费帐户。 |
     |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
 
 7. 输入或选择以下“实例详细信息”。 
@@ -150,7 +150,7 @@ ms.locfileid: "97630762"
 
 在你下单以后，Microsoft 会审核订单并通过电子邮件联系你，核对配送详细信息。
 
-<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
+<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png) - If this is restored, it must go above "After the resource is successfully created." The azure-stack-edge-resource-1.png would seem superfluous in that case.--> 
 
 若在处理订单的过程中遇到任何问题，请参阅[排查订单问题](azure-stack-edge-troubleshoot-ordering.md)。
 
@@ -158,20 +158,17 @@ ms.locfileid: "97630762"
 
 在 Azure Stack Edge 资源启动并运行后，你需要获取激活密钥。 此密钥用于激活 Azure Stack Edge Pro 设备并将其连接到资源。 如果你仍在 Azure 门户中，则现在可以获取此密钥。
 
-1. 选择所创建的资源。 选择“概述”，然后选择“设备设置” 。
+1. 选择创建的资源，然后选择“概述”。
 
-    ![选择“设备设置”](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-2.png)
+2. 在右侧窗格上，为 Azure Key Vault 提供一个名称，或者接受默认名称。 密钥保管库名称的长度可介于 3 至 24 个字符之间。
 
-2. 在“激活”磁贴上，为 Azure Key Vault 提供一个名称，或者接受默认名称。 密钥保管库名称的长度可介于 3 至 24 个字符之间。 
+   对于随设备一起激活的每个 Azure Stack Edge 资源，都会创建一个密钥保管库。 通过密钥保管库，可存储和访问机密，例如密钥保管库中存储的服务的通道完整性密钥 (CIK)。
 
-    对于随设备一起激活的每个 Azure Stack Edge 资源，都会创建一个密钥保管库。 通过密钥保管库，可存储和访问机密，例如密钥保管库中存储的服务的通道完整性密钥 (CIK)。 
+   指定密钥保管库名称后，请选择“生成激活密钥”来创建激活密钥。
 
-    指定密钥保管库名称后，请选择“生成密钥”来创建一个激活密钥。 
+   ![获取激活密钥](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
 
-    ![获取激活密钥](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
-
-    创建密钥保管库和激活密钥需要几分钟时间，请稍候。 选择复制图标复制密钥并将其保存供日后使用。
-
+   创建密钥保管库和激活密钥需要几分钟时间，请稍候。 选择复制图标复制密钥并将其保存供日后使用。<!--Verify that the new screen has a copy icon.-->
 
 > [!IMPORTANT]
 > - 生成的激活密钥将在三天后过期。

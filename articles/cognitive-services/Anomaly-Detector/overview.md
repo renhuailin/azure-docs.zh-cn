@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 01/05/2021
 ms.author: mbullwin
 keywords: 异常检测, 机器学习, 算法
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d8698a17db8be6a3d5b26d764ef86702320ebfa4
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705075"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901362"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什么是异常检测器 API？
 
@@ -83,8 +83,17 @@ ms.locfileid: "97705075"
 
 可以阅读论文 [Microsoft 的时序异常检测服务](https://arxiv.org/abs/1906.03821)（KDD 2019 接受），详细了解 Microsoft 开发的 SR-CNN 算法。
 
-
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="service-availability-and-redundancy"></a>服务可用性和冗余性
+
+### <a name="is-the-anomaly-detector-service-zone-resilient"></a>异常检测器服务是否可在区域内复原？
+
+是。 默认情况下，异常探测器服务可在区域内复原。
+
+### <a name="how-do-i-configure-the-anomaly-detector-service-to-be-zone-resilient"></a>如何将异常探测器服务配置为可在区域内复原？
+
+客户无需配置即可启用区域复原能力。 异常探测器资源默认提供区域内复原能力，由服务自身进行管理。
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器进行本地部署
 

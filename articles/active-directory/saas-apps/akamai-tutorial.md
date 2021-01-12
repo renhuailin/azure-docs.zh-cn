@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: bbea6a0aa31034cd1c04145fb50b72432c9f8520
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9e5d12bcea1bd7a587568c30b49c8c4ee95f8362
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319015"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937376"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Akamai 的集成
 
@@ -53,7 +53,7 @@ Azure Active Directory 和 Akamai Enterprise Application Access 相集成，让�
 
 #### <a name="integration-scenario-1"></a>集成方案 1
 
-Akamai EAA 被配置为 Azure AD 上的单个应用程序。 管理员可在应用程序上配置 CA 策略；一旦满足条件，用户就可获取对 Akamai EAA 门户的访问权限。
+Akamai EAA 被配置为 Azure AD 上的单个应用程序。 管理员可在应用程序上配置条件访问策略；一旦满足条件，用户就可获取对 Akamai EAA 门户的访问权限。
 
 优点：
 
@@ -63,13 +63,13 @@ Akamai EAA 被配置为 Azure AD 上的单个应用程序。 管理员可在应�
 
 * 用户最终拥有两个应用程序门户
 
-* 单个通用 CA 策略覆盖所有应用程序。
+* 单个通用条件访问策略覆盖所有应用程序。
 
 ![集成方案 1](./media/header-akamai-tutorial/scenario1.png)
 
 #### <a name="integration-scenario-2"></a>集成方案 2
 
-Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应用程序上配置单独的 CA 策略；一旦满足条件，用户就可直接重定向到特定的应用程序。
+Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应用程序上配置单独的条件访问策略；一旦满足条件，用户就可直接重定向到特定的应用程序。
 
 优点：
 
@@ -142,16 +142,16 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<Yourapp>.login.go.akamai-access.com/saml/sp/response`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https:// <Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Akamai 客户端支持团队](https://www.akamai.com/us/en/contact-us/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
@@ -167,7 +167,7 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

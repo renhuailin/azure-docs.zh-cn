@@ -8,18 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 09e922ffddcce732d9213eb91026561528c0728a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ce854c8f2d1d317c3660aaab9c0a6569aae0bb36
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169131"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895965"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>教程：从 Blazor WebAssembly 应用让用户登录并调用受保护的 API
 
-在本教程中，你将使用 Microsoft 标识平台并在 Azure Active Directory (Azure AD) 中注册应用，从而构建 Blazor WebAssembly 应用，用户可登录该应用并通过 Microsoft Graph 检索数据。
-
-我们还提供了[关于 Blazor Server 的教程](tutorial-blazor-server.md)。 
+在本教程中，你将使用 Microsoft 标识平台并在 Azure Active Directory (Azure AD) 中注册应用，从而构建 Blazor WebAssembly 应用，用户可登录该应用并通过 Microsoft Graph 检索数据。 
 
 在本教程中：
 
@@ -27,6 +25,10 @@ ms.locfileid: "96169131"
 >
 > * 创建新的 Blazor WebAssembly 应用，并将其配置为通过 Microsoft 标识平台使用 Azure Active Directory (Azure AD) [进行身份验证和授权](authentication-vs-authorization.md)
 > * 从受保护的 Web API（在本例中为 [Microsoft Graph](/graph/overview)）中检索数据
+
+本教程使用 .NET Core 3.1。 .NET 文档包含有关如何使用 ASP.NET Core 5.0 [保护 Blazor WebAssembly 应用](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api)的说明。 
+
+我们还提供了[关于 Blazor Server 的教程](tutorial-blazor-server.md)。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -74,9 +76,11 @@ dotnet run --framework netstandard2.1
 
 [本主题的 ASP.NET 文档](/aspnet/core/blazor/security/webassembly/standalone-with-azure-active-directory#authentication-package)中说明了此模板的组件，这些组件允许通过 Microsoft 标识平台使用 Azure AD 进行登录。
 
-## <a name="retrieving-data-from-microsoft-graph"></a>通过 Microsoft Graph 检索数据
+## <a name="retrieving-data-from-a-protected-api-microsoft-graph"></a>通过受保护的 API (Microsoft Graph) 检索数据
 
-[Microsoft Graph](/graph/overview) 提供了一系列 API，可用于访问租户中用户的 Microsoft 365 数据。 通过使用 Microsoft 标识平台作为你的应用的标识提供者，你可以更轻松地访问此信息，因为 Microsoft Graph 直接支持 Microsoft 标识平台颁发的令牌。 在本部分中，你将添加代码，以便在应用程序的“提取数据”页上显示已登录用户的电子邮件。
+[Microsoft Graph](/graph/overview) 包含使用户可访问 Microsoft 365 数据的 API，并且支持 Microsoft 标识平台颁发的令牌，这使得它成为很棒的受保护 API，可用作示例。 在本部分，你将添加代码来调用 Microsoft Graph，并在应用程序的“提取数据”页面上显示用户的电子邮件。
+
+本部分采用常见方法编写，该方法使用命名客户端调用受保护的 API。 这一方法可用于其他要调用的受保护 API。 但是，如果你确实计划从应用程序调用 Microsoft Graph，那么可使用 Graph SDK 来减少样板。 .NET 文档包含有关[如何使用 Graph SDK](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0) 的说明。
 
 在开始之前，请注销你的应用，因为你将对所需权限进行更改，并且你的当前令牌将不起作用。 如果你尚未这样做，请再次运行应用，并在更新以下代码之前选择“注销”。
 

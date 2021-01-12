@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4851dfb4a96ab2ca19ba6ea67139772f9c091a69
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: c3f61c3fe688a0b7533902fb0caa19b67f883482
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763637"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901583"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -24,13 +24,6 @@ ms.locfileid: "97763637"
 
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
-
-> [!NOTE]
-> G Suite 连接器最近于 2019 年 10 月进行了更新。 对 G Suite 连接器进行的更改包括：
->
-> * 添加了对其他 G Suite 用户和组属性的支持。
-> * 更新了 G Suite 目标属性名称，以匹配[此处](https://developers.google.com/admin-sdk/directory)定义的内容。
-> * 更新了默认属性映射。
 
 > [!NOTE]
 > 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
@@ -63,15 +56,15 @@ ms.locfileid: "97763637"
 
 1. 使用管理员帐户登录到 [G Suite 管理控制台](https://admin.google.com/)，然后选择“安全”。 如果没有看到该链接，它可能被隐藏在屏幕底部的“其他控件”菜单下。
 
-    ![G Suite 安全](./media/google-apps-provisioning-tutorial/gapps-security.png)
+    ![G Suite 安全](./media/g-suite-provisioning-tutorial/gapps-security.png)
 
 2. 在“安全”页上，选择“API 参考”。
 
-    ![G Suite API](./media/google-apps-provisioning-tutorial/gapps-api.png)
+    ![G Suite API](./media/g-suite-provisioning-tutorial/gapps-api.png)
 
 3. 选择 **“启用 API 访问”**。
 
-    ![已启用 G Suite API](./media/google-apps-provisioning-tutorial/gapps-api-enabled.png)
+    ![已启用 G Suite API](./media/g-suite-provisioning-tutorial/gapps-api-enabled.png)
 
     > [!IMPORTANT]
    > 对于要预配到 G Suite 的每个用户，他们在 Azure AD 中的用户名必须绑定到自定义域。 例如，G Suite 不会接受 bob@contoso.onmicrosoft.com 之类的用户名， 但会接受 bob@contoso.com。 可以按照[此处](../fundamentals/add-custom-domain.md)的说明来更改现有用户的域。
@@ -80,15 +73,15 @@ ms.locfileid: "97763637"
 
     a. 在 [G Suite 管理控制台](https://admin.google.com/)中，选择“域”。
 
-    ![G Suite 域](./media/google-apps-provisioning-tutorial/gapps-domains.png)
+    ![G Suite 域](./media/g-suite-provisioning-tutorial/gapps-domains.png)
 
     b. 选择“添加域或域别名”。
 
-    ![G Suite 添加域](./media/google-apps-provisioning-tutorial/gapps-add-domain.png)
+    ![G Suite 添加域](./media/g-suite-provisioning-tutorial/gapps-add-domain.png)
 
     c. 选择“添加另一个域”，然后键入要添加的域名。
 
-    ![G Suite 添加另一个域](./media/google-apps-provisioning-tutorial/gapps-add-another.png)
+    ![G Suite 添加另一个域](./media/g-suite-provisioning-tutorial/gapps-add-another.png)
 
     d. 选择“继续验证域所有权”。 然后按步骤验证所拥有的域名。 有关如何通过 Google 来验证域的完整说明，请参阅[验证站点所有权](https://support.google.com/webmasters/answer/35179)。
 
@@ -96,11 +89,11 @@ ms.locfileid: "97763637"
 
 5. 接下来，确定要用于在 G Suite 中管理用户预配的管理员帐户。 导航到“管理员角色”。
 
-    ![G Suite 管理员](./media/google-apps-provisioning-tutorial/gapps-admin.png)
+    ![G Suite 管理员](./media/g-suite-provisioning-tutorial/gapps-admin.png)
 
 6. 对于该帐户的“管理员角色”，编辑该角色的“特权”。 请确保启用该帐户的所有“管理员 API 权限”，使其可用于预配。
 
-    ![G Suite 管理员权限](./media/google-apps-provisioning-tutorial/gapps-admin-privileges.png)
+    ![G Suite 管理员权限](./media/g-suite-provisioning-tutorial/gapps-admin-privileges.png)
 
 ## <a name="step-3-add-g-suite-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库中添加 G Suite
 
@@ -126,9 +119,9 @@ ms.locfileid: "97763637"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。 用户需要登录到 portal.azure.com，并且将无法使用 aad.portal.azure.com
 
-    ![“企业应用程序”边栏选项卡](./media/google-apps-provisioning-tutorial/enterprise-applications.png)
+    ![“企业应用程序”边栏选项卡](./media/g-suite-provisioning-tutorial/enterprise-applications.png)
 
-    ![“所有应用程序”边栏选项卡](./media/google-apps-provisioning-tutorial/all-applications.png)
+    ![“所有应用程序”边栏选项卡](./media/g-suite-provisioning-tutorial/all-applications.png)
 
 2. 在应用程序列表中，选择“G Suite”。
 
@@ -138,7 +131,7 @@ ms.locfileid: "97763637"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-      ![“开始”边栏选项卡](./media/google-apps-provisioning-tutorial/get-started.png)
+      ![“开始”边栏选项卡](./media/g-suite-provisioning-tutorial/get-started.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -146,11 +139,11 @@ ms.locfileid: "97763637"
 
 5. 在“管理员凭据”部分下，单击“授权”。 你会在新的浏览器窗口中重定向到 Google 授权对话框。
 
-      ![G Suite 授权](./media/google-apps-provisioning-tutorial/authorize-1.png)
+      ![G Suite 授权](./media/g-suite-provisioning-tutorial/authorize-1.png)
 
 6. 确认想要授权 Azure AD 对你的 G Suite 租户进行更改。 选择“接受”。
 
-     ![G Suite 租户身份验证](./media/google-apps-provisioning-tutorial/gapps-auth.png)
+     ![G Suite 租户身份验证](./media/g-suite-provisioning-tutorial/gapps-auth.png)
 
 7. 在 Azure 门户中单击“测试连接”，确保 Azure AD 可以连接到 G Suite。 如果连接失败，请确保 G Suite 帐户具有管理员权限，然后重试。 然后再次重试“授权”步骤。
 
@@ -262,7 +255,7 @@ ms.locfileid: "97763637"
 
     ![预配范围](common/provisioning-scope.png)
 
-15. 已准备好预配时，单击“保存”。
+15. 已准备好预配时，单击“保存”  。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 
@@ -276,7 +269,13 @@ ms.locfileid: "97763637"
 
 1. 通过[预配日志](../reports-monitoring/concept-provisioning-logs.md)来确定哪些用户已预配成功或失败
 2. 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)来查看预配周期的状态以及完成进度
-3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](../app-provisioning/application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](../app-provisioning/application-provisioning-quarantine-status.md)。  
+
+## <a name="change-log"></a>更改日志
+
+* 2020/10/17 - 添加了对其他 G Suite 用户和组属性的支持。
+* 2020/10/17 - 更新了 G Suite 目标属性名称，使其匹配[此处](https://developers.google.com/admin-sdk/directory)定义的内容。
+* 2020/10/17 - 更新了默认属性映射。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 45c959bc3cb71a965f254867798ae32d86ba1e70
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cd3ff3fce80e66d7cd61636b4416cb2fc28f5e77
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97612694"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97956574"
 ---
 | 资源 | 限制 |
 | --- | --- |
@@ -19,6 +19,7 @@ ms.locfileid: "97612694"
 | VM 系列（例如 Dv2 和 F）、每个[订阅](https://azure.microsoft.com/pricing/)的核心数 |每个区域 20 个<sup>1</sup> 若要提高限制，请与支持人员联系。 |
 | 每个订阅的[可用性集数](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |每个区域 2,500 个。 |
 | 每个可用性集的虚拟机数 | 200 |
+| 每个[资源组](../articles/azure-resource-manager/management/overview.md#resource-groups)的[邻近放置组](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups-portal) | 800 | 
 | 每个可用性集的证书 | 199<sup>2</sup> |
 | 每个订阅的证书数 |不受限制<sup>3</sup> |
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 41c0bd23bbd2d69506a979c5a36ac40f73258f2c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: ab03e0bdf7761e45a134ec90685955403fbc433b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605507"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060378"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL
 
@@ -237,7 +237,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
     ![映射到目标数据库](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
    > [!NOTE] 
-   > 尽管可以在此步骤中选择多个数据库，但 Azure 数据库迁移服务的每个实例最多支持四个数据库进行并发迁移。 此外，订阅中每个区域的 Azure 数据库迁移服务有两个实例的限制。 例如，如果有 40 个数据库要迁移，那么只能同时迁移其中的 8 个，而且只有在已创建了两个 Azure 数据库迁移服务实例的情况下才能如此。
+   > 虽然在此步骤中可以选择多个数据库，但每个 Azure 数据库迁移服务实例最多支持 4 个数据库进行并发迁移。 此外，每个区域的每个订阅的 Azure 数据库迁移服务实例数限制为 10 个。 例如，如果要迁移 80 个数据库，则可以将其中的 40 个数据库同时迁移到同一区域，但前提是你已经创建了 10 个 Azure 数据库迁移服务实例。
 
 3. 选择“保存”，在“迁移摘要”屏幕上的“活动名称”文本框中指定迁移活动的名称，然后查看摘要，确保源和目标详细信息与此前指定的信息相符  。
 

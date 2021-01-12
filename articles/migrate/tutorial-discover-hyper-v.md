@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e7b4a1b2e1d737dad0054cbdf08443436ac2c181
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 90532a88e145507b09de9d36f704bc5c88899e95
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705551"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861892"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>教程：使用服务器评估发现 Hyper-V VM
 
@@ -42,7 +42,7 @@ ms.locfileid: "97705551"
 **要求** | **详细信息**
 --- | ---
 **Hyper-V 主机** | VM 所在的 Hyper-V 主机可以是独立的，也可以在群集中。<br/><br/> 主机必须运行 Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/><br/> 验证 WinRM 端口 5985 (HTTP) 上是否允许入站连接，使设备可以使用通用信息模型 (CIM) 会话连接到拉取 VM 元数据和性能数据。
-**设备部署** | Hyper-v 主机需要资源来为设备分配 VM：<br/><br/> - Windows Server 2016<br/><br/> -16 GB RAM<br/><br/> - 8 个 vCPU<br/><br/> - 约 80 GB 磁盘存储。<br/><br/> - 外部虚拟交换机。<br/><br/> - VM 直接或通过代理进行 Internet 访问。
+**设备部署** | Hyper-V 主机需要资源来为设备分配 VM：<br/><br/> - Windows Server 2016<br/><br/> -16 GB RAM<br/><br/> - 8 个 vCPU<br/><br/> - 约 80 GB 磁盘存储。<br/><br/> - 外部虚拟交换机。<br/><br/> - VM 直接或通过代理进行 Internet 访问。
 **VM** | VM 可以运行任何 Windows 或 Linux 操作系统。 
 
 开始之前，可以[查看设备在发现期间收集的数据](migrate-appliance.md#collected-data---hyper-v)。
@@ -212,7 +212,7 @@ ms.locfileid: "97705551"
    不支持使用 PIN 登录。
 3. 如果在未登录的情况下意外关闭了登录选项卡，则需要刷新设备配置管理器的浏览器选项卡以再次启用“登录”按钮。
 1. 成功登录后，使用设备配置管理器返回到上一个选项卡。
-4. 如果用于登录的 Azure 用户帐户对在密钥生成过
+4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的权限，会启动设备注册。
 1. 成功注册设备后，可以通过单击“查看详细信息”来查看注册详细信息。
 
 

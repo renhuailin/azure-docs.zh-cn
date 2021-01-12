@@ -1,6 +1,6 @@
 ---
-title: 快速入门 - 适用于 Java 的 Azure Key Vault 证书客户端库
-description: 提供适用于 Java 的 Azure Key Vault 证书客户端库的快速入门。
+title: Azure Key Vault 证书客户端库快速入门 - Java
+description: 通过本快速入门中的步骤，了解适用于 Java 的 Azure Key Vault 证书客户端库。
 author: msmbaldwin
 ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
@@ -8,14 +8,14 @@ ms.date: 12/18/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 1890c2a3d4043d43dd890f06942dbe704e3f7689
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 99b8c63060cebeffea0f3473e03b5f49a415230b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733468"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936033"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-java"></a>快速入门：适用于 Java 的 Azure Key Vault 证书客户端库
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>快速入门：适用于 Java 的 Azure Key Vault 证书客户端库（证书）
 适用于 Java 的 Azure Key Vault 证书客户端库入门。 请遵循以下步骤安装包并试用基本任务的示例代码。
 
 其他资源：
@@ -126,7 +126,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS 或 Linux

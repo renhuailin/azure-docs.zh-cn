@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 711da24b3edf08f4867109d0d70165955236c39a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c884ad6850b8f94baa7c658d685651c3241be33f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184648"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935630"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>教程：在 Azure Stack Edge Pro GPU 设备上配置计算
 
@@ -45,40 +45,38 @@ ms.locfileid: "96184648"
 
 若要在 Azure Stack Edge Pro 上配置计算，必须通过 Azure 门户创建一个 IoT 中心资源。
 
-1. 在 Azure Stack Edge 资源的 Azure 门户中，转到“概览”。 在右窗格中的“计算”磁贴上，选择“开始”。 
+1. 在 Azure Stack Edge 资源的 Azure 门户中，转到“概述”，然后选择“IoT Edge” 。
 
-    ![开始使用计算](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
+   ![开始使用计算](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-1.png)
 
-2. 在“配置 Edge 计算”磁贴上，选择“配置计算”。 
+2. 在“启用 IoT Edge 服务”中，选择“添加” 。
 
-    ![配置计算](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
+   ![配置计算](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-2.png)
 
-3. 在“配置 Edge 计算”边栏选项卡上输入以下内容：
-
+3. 在“配置 Edge 计算”边栏选项卡上输入以下信息：
    
-    |字段  |值  |
-    |---------|---------|
-    |IoT 中心     | 选择“新建”或“现有”。  <br> 默认会使用标准层 (S1) 来创建 IoT 资源。 若要使用免费层 IoT 资源，请创建一个资源，然后选择现有的资源。 <br> 在每种情况下，IoT 中心资源都会使用 Azure Stack Edge 资源所用的同一订阅和资源组。     |
-    |名称     |输入 IoT 中心资源的名称。         |
+   |字段  |值  |
+   |---------|---------|
+   |IoT 中心     | 选择“新建”或“现有”。  <br> 默认会使用标准层 (S1) 来创建 IoT 资源。 若要使用免费层 IoT 资源，请创建一个资源，然后选择现有的资源。 <br> 在每种情况下，IoT 中心资源都会使用 Azure Stack Edge 资源所用的同一订阅和资源组。     |
+   |名称     |输入 IoT 中心资源的名称。         |
 
-    ![开始使用计算 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
+   ![开始使用计算 2](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-3.png)
 
-4. 选择“创建”。 创建 IoT 中心资源需要花费几分钟时间。 创建 IoT 中心资源后，“配置计算”磁贴会更新，以显示计算配置。 
+4. 完成设置后，选择“查看 + 创建”。 查看 IoT 中心资源的设置，然后选择“创建”。
 
-    ![开始使用计算 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
+   IoT 中心资源的资源创建需要几分钟时间。 创建资源后，“概述”会指示 IoT Edge 服务现在正在运行。
 
-5. 若要确认是否已配置 Edge 计算角色，请在“配置计算”磁贴上选择“查看计算”。
-    
-    ![开始使用计算 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+   ![开始使用计算 3](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-4.png)
 
-    > [!NOTE]
-    > 如果在 IoT 中心与 Azure Stack Edge Pro 设备关联之前关闭了“配置计算”对话框，则仍然会创建 IoT 中心，但不会在计算配置中显示该 IoT 中心。 
-    
-如果在 Edge 设备上设置了 Edge 计算角色，则会创建两个设备：一个 IoT 设备，一个 IoT Edge 设备。 可在 IoT 中心资源中查看这两个设备。 某个 IoT Edge 运行时也在此 IoT Edge 设备上运行。 目前，只有 Linux 平台适用于你的 IoT Edge 设备。
+5. 若要确认是否已配置 Edge 计算角色，请选择“属性”。
 
-由于要在后台创建虚拟机和 Kubernetes 群集，因此可能需要 20-30 分钟来配置计算。 
+   ![开始使用计算 4](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-5.png)
 
-在 Azure 门户中成功配置计算后，会有一个 Kubernetes 群集和一个与 IoT 命名空间（由 Azure Stack Edge Pro 控制的系统命名空间）关联的默认用户。 
+   如果在 Edge 设备上设置了 Edge 计算角色，则会创建两个设备：一个 IoT 设备，一个 IoT Edge 设备。 可在 IoT 中心资源中查看这两个设备。 某个 IoT Edge 运行时也在此 IoT Edge 设备上运行。 目前，只有 Linux 平台适用于你的 IoT Edge 设备。
+
+由于要在后台创建虚拟机和 Kubernetes 群集，因此可能需要 20-30 分钟来配置计算。
+
+在 Azure 门户中成功配置计算后，会有一个 Kubernetes 群集和一名与 IoT 命名空间（由 Azure Stack Edge Pro 控制的系统命名空间）关联的默认用户。
 
 ## <a name="get-kubernetes-endpoints"></a>获取 Kubernetes 终结点
 
@@ -89,7 +87,7 @@ ms.locfileid: "96184648"
 
     ![本地 UI 中的“设备”页](./media/azure-stack-edge-j-series-create-kubernetes-cluster/device-kubernetes-endpoint-1.png)
 
-3. 保存该终结点字符串。 稍后配置客户端以通过 kubectl 访问 Kubernetes 群集时，将使用该字符串。
+3. 保存该终结点字符串。 稍后配置客户端以通过 kubectl 访问 Kubernetes 群集时，将使用该终结点字符串。
 
 4. 在本地 Web UI 中，你可以：
 
@@ -97,7 +95,7 @@ ms.locfileid: "96184648"
 
         ![本地 UI 中的“设备”页 1](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-1.png)
 
-        如果从 Microsoft 获得了密钥（某些用户可能有此密钥），则可以使用此配置文件。
+        如果从 Microsoft 获得了密钥（特选用户可能有此密钥），则可使用此配置文件。
 
         ![本地 UI 中的“设备”页 2](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-2.png)
 

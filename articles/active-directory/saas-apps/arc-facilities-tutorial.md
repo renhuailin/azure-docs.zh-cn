@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 87fc136d6e46fbdb600b04c8a527c7576e4a9a89
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8cbbe3ada5d39e550daa25b6ac8a662f5c98f994
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457786"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914631"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ARC Facilities 集成
 
@@ -26,7 +26,6 @@ ms.locfileid: "92457786"
 * 让用户使用其 Azure AD 帐户自动登录到 ARC Facilities。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,7 +49,7 @@ ms.locfileid: "92457786"
 
 若要配置 ARC Facilities 与 Azure AD 的集成，需要从库中将 ARC Facilities 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
@@ -74,13 +73,13 @@ ms.locfileid: "92457786"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“ARC Facilities”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 Azure 门户的 ARC Facilities 应用程序集成页上，找到“管理”部分，并选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在基本 SAML 配置  部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
+1. 在基本 SAML 配置部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
 
 1. ARC Facilities 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
@@ -88,7 +87,7 @@ ms.locfileid: "92457786"
 
 1. 除了上述属性，ARC Facilities 应用程序还要求在 SAML 响应中传递回更多的属性。 在“组声明(预览)”对话框中的“用户属性和声明”部分，执行以下步骤   ：
 
-    a. 单击“声明中返回的组”旁边的 **笔** 。 
+    a. 单击“声明中返回的组”旁边的 **笔**。 
 
     ![显示“用户属性和声明”部分的屏幕截图，其中笔位于“声明中返回的组”旁边。](./media/arc-facilities-tutorial/config01.png)
 
@@ -98,9 +97,12 @@ ms.locfileid: "92457786"
 
     c. 选择“组 ID”作为“源属性”  。 
 
-    d. 单击“ **保存** ”。
+    d. 单击“ **保存**”。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+    > [!NOTE]
+    > ARC Facilities 需要分配给应用程序的用户的角色。 请在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
+
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -112,13 +114,13 @@ ms.locfileid: "92457786"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -127,15 +129,9 @@ ms.locfileid: "92457786"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“ARC Facilities”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-arc-facilities-sso"></a>配置 ARC Facilities SSO
@@ -148,16 +144,13 @@ ms.locfileid: "92457786"
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-单击访问面板中的 ARC Facilities 磁贴时，应会自动登录到为其设置了 SSO 的 ARC Facilities。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 ARC Facilities
 
-## <a name="additional-resources"></a>其他资源
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 ARC Facilities 磁贴时，应会自动登录到为其设置了 SSO 的 ARC Facilities。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
-
-- [在 Azure AD 中试用 ARC Facilities](https://aad.portal.azure.com/)
+配置 ARC Facilities 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/04/2020
+ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 40ee2d9470f80f6bcfe79b0f96a871e1affe003c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 94dff1f66f631141c7ce29139f6c38cbe16308e6
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458778"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913594"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kumolus"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Kumolus 的集成
 
@@ -71,7 +71,7 @@ ms.locfileid: "92458778"
 
 1. 在 Azure 门户的 Kumolus 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "92458778"
     | 角色 (role) | user.assignedroles |
 
     > [!NOTE]
-    > Kumolus 需要分配给应用程序的用户的角色。 请在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](../develop/active-directory-enterprise-app-role-management.md)。
+    > Kumolus 需要分配给应用程序的用户的角色。 请在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -131,7 +131,7 @@ ms.locfileid: "92458778"
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1.  如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 如果已如上述所示设置角色，可从“选择角色”下拉列表中选择角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-kumolus-sso"></a>配置 Kumolus SSO

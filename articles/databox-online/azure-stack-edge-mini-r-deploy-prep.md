@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6d41c186a5d239ad7228c37902f5691085e43dbf
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4535368b7d8d044469a4b0effee914176aca78e4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631238"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935389"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>教程：准备部署 Azure Stack Edge Mini R
 
-本文是完整部署 Azure Stack Edge Mini R 设备时必读的部署教程系列的第一篇教程。 本教程介绍如何准备 Azure 门户，以便部署 Azure Stack Edge 资源。
+本教程是完整部署 Azure Stack Edge Mini R 设备时必读的部署教程系列的第一篇。 本教程介绍如何准备 Azure 门户，以便部署 Azure Stack Edge 资源。
 
 需要有管理员权限才能完成安装和配置过程。 门户准备只需不到 10 分钟的时间。
 
@@ -36,7 +36,7 @@ ms.locfileid: "97631238"
 | --- | --- |
 | **准备工作** |在为即将进行的部署执行准备工作时必须完成这些步骤。 |
 | **[部署配置清单](#deployment-configuration-checklist)** |在部署之前或在部署期间使用此清单来收集和记录信息。 |
-| **[部署先决条件](#prerequisites)** |这些项会验证环境是否已准备就绪以进行部署。 |
+| **[部署先决条件](#prerequisites)** |这些先决条件会验证环境是否已做好部署准备。 |
 |  | |
 |**部署教程** |需要完成这些教程，才能在生产环境中部署 Azure Stack Edge Mini R 设备。 |
 |**[1.在 Azure 门户中做好部署设备的准备](azure-stack-edge-mini-r-deploy-prep.md)** |在安装物理设备之前创建并配置 Azure Stack Edge 资源。 |
@@ -46,7 +46,7 @@ ms.locfileid: "97631238"
 |**[5.配置设备设置](azure-stack-edge-mini-r-deploy-set-up-device-update-time.md)** |分配设备名称和 DNS 域，配置更新服务器和设备时间。 |
 |**[6.配置安全设置](azure-stack-edge-mini-r-deploy-configure-certificates-vpn-encryption.md)** |使用自己的证书配置证书，设置 VPN 并为设备配置静态加密。   |
 |**[7.激活设备](azure-stack-edge-mini-r-deploy-activate.md)** |使用从服务中获取的激活密钥来激活设备。 现已准备好在设备设置 SMB 或 NFS 共享或通过 REST 进行连接。 |
-|**[8.配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)** |配置设备上的计算角色。 此操作也会创建一个 Kubernetes 群集。 |
+|**[8.配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)** |配置设备上的计算角色。 还会创建 Kubernetes 群集。 |
 
 现在可以开始设置 Azure 门户。
 
@@ -101,43 +101,43 @@ ms.locfileid: "97631238"
     [![创建资源 2](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png)](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png#lightbox)
 
 
-6. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。  
+5. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。  
     
     |设置  |值  |
     |---------|---------|
-    |订阅    |系统会根据前面所做的选择自动填充此字段。 订阅将链接到你的计费帐户。 |
+    |订阅    |系统会根据前面所做的选择自动填充此订阅。 订阅将链接到你的计费帐户。 |
     |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
 
 
-7. 输入或选择以下“实例详细信息”。 
+6. 输入或选择以下“实例详细信息”。 
 
     |设置  |值  |
     |---------|---------|
-    |名称   | 用于标识资源的友好名称。<br>该名称的长度必须介于 2 和 50 个字符之间，只能包含字母、数字和连字符。<br> 名称以字母或数字开头和结尾。        |
+    |名称   | 用于标识资源的友好名称。<br>名称可具有 2 和 50 个字符，包括字母、数字和连字符。<br> 名称以字母或数字开头和结尾。        |
     |区域     |有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 如果使用 Azure 政府版，则可选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中显示的所有可用的政府区域。<br> 选择离要部署设备的地理区域最近的位置。|
 
     ![创建资源 4](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
 
 
-8. 在完成时选择“下一步:送货地址”。
+7. 在完成时选择“下一步:送货地址”。
 
-    - 如果你已有一个设备，请选择与“我有 Azure Stack Edge Pro R 设备”对应的组合框。
+    - 如果已经有一台设备，请选择与“我已有设备”对应的组合框。
 
-        ![创建资源 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
+     ![创建资源 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
-    - 如果这是你订购的新设备，请输入联系人姓名、公司、寄送设备的地址，以及联系人信息。
+    - 如果这是你订购的新设备，请输入联系人姓名、公司、要将设备寄送到的地址，以及联系人信息。
 
-        ![创建资源 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
+     ![创建资源 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
-9. 在完成时选择“下一步:  标记”。 （可选）提供标记，以便对资源进行分类并合并账单。 在完成时选择“下一步:查看 + 创建”。
+8. 在完成时选择“下一步:  标记”。 （可选）提供标记，以便对资源进行分类并合并账单。 在完成时选择“下一步:查看 + 创建”。
 
-10. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。 选择与“我已经查看隐私条款”对应的组合框。
+9. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。 选择与“我已经查看隐私条款”对应的组合框。
 
-    ![创建资源 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png) 
+    ![创建资源 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png)
 
     你还会收到通知，了解到在资源创建期间启用了一个托管服务标识 (MSI)，你可通过它对云服务进行身份验证。 只要资源存在，就会存在此标识。
 
-8. 选择“创建”。
+10. 选择“创建”。
 
     创建资源需要几分钟时间。 还会创建一个 MSI，Azure Stack Edge 设备可通过它与 Azure 中的资源提供程序进行通信。
     
@@ -153,15 +153,15 @@ ms.locfileid: "97631238"
 
 在 Azure Stack Edge 资源启动并运行后，你需要获取激活密钥。 此密钥用于激活 Azure Stack Edge Mini R 设备并将其连接到资源。 如果你仍在 Azure 门户中，则现在可以获取此密钥。
 
-1. 选择所创建的资源。 选择“概述”，然后选择“设备设置” 。
+1. 选择创建的资源，然后选择“概述”。
 
-    ![选择“设备设置”](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
+   ![选择“设备设置”](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
 
 2. 在“激活”磁贴上，为 Azure Key Vault 提供一个名称，或者接受默认名称。 密钥保管库名称的长度可介于 3 至 24 个字符之间。 
 
-    对于随设备一起激活的每个 Azure Stack Edge 资源，都会创建一个密钥保管库。 通过密钥保管库，可存储和访问机密，例如密钥保管库中存储的服务的通道完整性密钥 (CIK)。 
+    对于随设备一起激活的每个 Azure Stack Edge 资源，都会创建一个密钥保管库。 通过密钥保管库，可存储和访问机密， 例如密钥保管库中存储的服务的通道完整性密钥 (CIK)。
 
-    指定密钥保管库名称后，请选择“生成密钥”来创建一个激活密钥。 
+    指定密钥保管库名称后，请选择“生成激活密钥”来创建激活密钥。
 
     [![获取激活密钥](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png)](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png#lightbox)
 

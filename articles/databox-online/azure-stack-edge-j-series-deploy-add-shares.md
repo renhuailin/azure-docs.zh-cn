@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/22/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 845eef6e119823af789c9a263bfb750845d55bc0
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 919ec1c3c2b71b7d9aecb90d434aa919c7188d38
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740906"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897584"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>教程：使用 Azure Stack Edge Pro GPU 通过共享传输数据
 
@@ -43,7 +43,7 @@ ms.locfileid: "97740906"
 
 若要创建共享，请执行以下过程：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择自己的 Azure Stack Edge 资源，然后转到“概览”。  设备应为“联机”状态。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择自己的 Azure Stack Edge 资源，然后转到“概览”。  设备应为“联机”状态。 选择“云存储网关”。
 
    ![联机的设备](./media/azure-stack-edge-j-series-deploy-add-shares/device-online-1.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "97740906"
 
    ![添加共享](./media/azure-stack-edge-j-series-deploy-add-shares/select-add-share-1.png)
 
-3. 在“添加共享”  窗格中，执行以下过程：
+3. 在“添加共享”窗格中，执行以下步骤：
 
     a. 在“名称”框中，提供共享的唯一名称。   
     共享名称只能包含字母、数字和连字符。 它必须包含 3 到 63 个字符，并以字母或数字开头。 紧邻连字符的字符必须为字母或数字。

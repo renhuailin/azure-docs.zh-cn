@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a9d8c42432d619ab120afd0bd5734f6fa269b514
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: db85bf19c1b040fea1ed2f5d6dcf904288366c7f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458092"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050232"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>教程：使用示例客户端应用了解 Azure 数字孪生
 
@@ -51,27 +51,15 @@ ms.locfileid: "96458092"
 1. 编辑属性。 将 `Humidity` 属性的名称更改为 HumidityLevel（或根据需要将其更改为其他名称。 如果使用的名称不是 HumidityLevel，请记住自己使用的名称，并在整个教程中继续使用该名称，而不使用 HumidityLevel） 。
 1. 添加属性。 在结束于第 15 行的 `HumidityLevel` 属性下方，粘贴以下代码以将 `RoomName` 属性添加到 room 中：
 
-    ```json
-    ,
-    {
-      "@type": "Property",
-      "name": "RoomName",
-      "schema": "string"
-    }
-    ```
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="16-20":::
+
 1. 添加关系。 在刚刚添加的 `RoomName` 属性下方，粘贴以下代码，使此类孪生能够与其他孪生形成包含关系：
 
-    ```json
-    ,
-    {
-      "@type": "Relationship",
-      "name": "contains"
-    }
-    ```
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="21-24":::
 
 完成后，更新后的模型应如下所示：
 
-:::image type="content" source="media/tutorial-command-line-app/room-model.png" alt-text="编辑了更新版本号、HumidityLevel 和 RoomName 属性和包含关系的 Room.json" border="false":::
+:::code language="json" source="~/digital-twins-docs-samples/models/Room.json":::
 
 在继续操作之前，请务必保存该文件。
 

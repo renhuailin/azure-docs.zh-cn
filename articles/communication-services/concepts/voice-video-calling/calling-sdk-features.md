@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c801a276f3a116f00b34d750ca8bfec7e56d377b
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: e0fff67d6998e55854d4dc3c8db261bc4499f0be
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680746"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936050"
 ---
 # <a name="calling-client-library-overview"></a>呼叫客户端库概述
 
@@ -58,7 +58,7 @@ ms.locfileid: "97680746"
 |                   | 以 PSTN 参与者身份在组呼叫中拨出                                                                    | ✔️   | ✔️            | ✔️   
 | 常规           | 使用音频测试服务测试麦克风、扬声器和照相机（可通过呼叫 8:echo123 使用）                   |  ✔️  | ✔️            | ✔️   
 
-## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>OS 和浏览器对 Javascript 调用客户端库的支持
+## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>OS 和浏览器对 JavaScript 调用客户端库的支持
 
 下表显示了当前可用的一组受支持的浏览器和版本。
 
@@ -96,8 +96,8 @@ WebRTC API（如 `getUserMedia`）要求通过 HTTPS 处理调用这些 API 的�
 
 |           |Web | Android/iOS|
 |-----------|----|------------|
-|# 个可同时发送的传出数据流 |1 个视频 + 1 个屏幕共享 | 1 个视频 + 1 个屏幕共享|
-|# 个可同时呈现的传入数据流 |1 个视频 + 1 个屏幕共享| 6 个视频 + 1 个屏幕共享 |
+|**# 个可同时发送的传出数据流** |1 个视频 + 1 个屏幕共享 | 1 个视频 + 1 个屏幕共享|
+|**# 个可同时呈现的传入数据流** |1 个视频 + 1 个屏幕共享| 6 个视频 + 1 个屏幕共享 |
 
 
 ## <a name="next-steps"></a>后续步骤

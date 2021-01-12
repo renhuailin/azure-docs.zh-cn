@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/24/2019
+ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 3a9279189e3767b035256726a1da53b9edc8392f
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 4f519ed60dcec85048907be0660e1fd01871ccc3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608980"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937070"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>教程：Azure Active Directory 与 Zscaler One 的集成
 
@@ -27,10 +27,8 @@ ms.locfileid: "97608980"
 * 可让用户使用其 Azure AD 帐户自动登录到 Zscaler One（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Zscaler One 的集成，需要以下项：
 
@@ -49,59 +47,37 @@ ms.locfileid: "97608980"
 
 若要配置 Zscaler One 与 Azure AD 的集成，需从库中将 Zscaler One 添加到托管 SaaS 应用列表。
 
-**若要从库添加 Zscaler One，请执行以下步骤：**
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 在“从库中添加”部分的搜索框中，键入“Zscaler One” 。
+1. 从结果面板中选择“Zscaler One”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
+## <a name="configure-and-test-azure-ad-sso-for-zscaler-one"></a>配置并测试 Zscaler One 的 Azure AD SSO
 
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
+使用名为 B.Simon 的测试用户配置和测试 Zscaler One 的 Azure AD SSO。 若要使 SSO 正常运行，需要在 Azure AD 用户与 Zscaler One 中的相关用户之间建立链接关系。
 
-2. 转到“企业应用”，并选择“所有应用”选项   。
+若要配置并测试 Zscaler One 的 Azure AD SSO，请执行以下步骤：
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+2. **[配置 Zscaler One SSO](#configure-zscaler-one-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 Zscaler One 测试用户](#create-zscaler-one-test-user)** - 在 Zscaler One 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
+### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
-    ![“新增应用程序”按钮](common/add-new-app.png)
+按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-4. 在搜索框中，键入“Zscaler One”，在结果面板中选择“Zscaler One”，然后单击“添加”按钮添加该应用程序。   
+1. 在 Azure 门户的 Zscaler One 应用程序集成页上，找到“管理”部分，并选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
-     ![结果列表中的 Zscaler One](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-
-在本部分中，我们基于名为“Britta Simon”的测试用户为 Zscaler One 配置和测试 Azure AD 单一登录。 
-若要使单一登录有效，需要在 Azure AD 用户与 Zscaler One 相关用户之间建立关联。
-
-若要配置和测试 Zscaler One 的 Azure AD 单一登录，需要完成以下构建基块：
-
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Zscaler One 单一登录](#configure-zscaler-one-single-sign-on)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Zscaler One 测试用户](#create-zscaler-one-test-user)** - 在 Zscaler One 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
-
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
-
-要为 Zscaler One 配置 Azure AD 单一登录，请执行以下步骤：
-
-1. 在 [Azure 门户](https://portal.azure.com/)中的 Zscaler One 应用程序集成页上，选择“单一登录”  。 
-
-    ![配置单一登录链接](common/select-sso.png)
-
-2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
-
-    ![单一登录选择模式](common/select-saml-option.png)
-
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
-
-    ![编辑基本 SAML 配置](common/edit-urls.png)
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
 4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
-
-    ![Zscaler One 域和 URL 单一登录信息](common/sp-signonurl.png)
 
     在“登录 URL”文本框中，键入用户用来登录 ZScaler One 应用程序的 URL。 
 
@@ -120,10 +96,6 @@ ms.locfileid: "97608980"
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![屏幕截图显示“用户声明”以及“添加新声明”选项。](common/new-save-attribute.png)
-
-    ![屏幕截图显示“管理用户声明”对话框，可在其中输入所述的值。](common/new-attribute-details.png)
-
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
     c. 将“命名空间”留空  。
@@ -132,10 +104,10 @@ ms.locfileid: "97608980"
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
     
-    f. 单击“保存”  。
+    f. 单击“ **保存**”。
 
     > [!NOTE]
-    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](../develop/active-directory-enterprise-app-role-management.md)
+    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
 
 7. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
@@ -145,13 +117,31 @@ ms.locfileid: "97608980"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    a. 登录 URL
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
-    b. Azure AD 标识符
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-    c. 注销 URL
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
-### <a name="configure-zscaler-one-single-sign-on"></a>配置 Zscaler One 单一登录
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，你将通过授予 B.Simon 访问 Zscaler One 的权限，使其能够使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Zscaler One”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果已如上述所示设置角色，可从“选择角色”下拉列表中选择角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
+
+### <a name="configure-zscaler-one-sso"></a>配置 Zscaler One SSO
 
 1. 若要在“Zscaler One”中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”   。
 
@@ -189,7 +179,7 @@ ms.locfileid: "97608980"
 
     g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。
 
-    h. 单击“保存”  。
+    h. 单击“ **保存**”。
 
 6. 在“配置用户身份验证”  对话框页上，执行以下步骤：
 
@@ -230,62 +220,6 @@ ms.locfileid: "97608980"
 
 7. 单击“确定”  ，关闭“Internet 选项”  对话框。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
-
-本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
-
-    ![“用户和组”以及“所有用户”链接](common/users.png)
-
-2. 选择屏幕顶部的“新建用户”  。
-
-    ![“新建用户”按钮](common/new-user.png)
-
-3. 在“用户属性”中，按照以下步骤操作。
-
-    ![“用户”对话框](common/user-properties.png)
-
-    a. 在“名称”  字段中，输入 BrittaSimon  。
-  
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
-
-    d. 单击“创建”。 
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分，通过授予 Britta Simon 访问 Zscaler One 的权限，使她能够使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Zscaler One”    。
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-2. 在应用程序列表中，选择“Zscaler One”  。
-
-    ![应用程序列表中的 Zscaler One 链接](common/all-applications.png)
-
-3. 在左侧菜单中，选择“用户和组”  。
-
-    ![“用户和组”链接](common/users-groups-blade.png)
-
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加分配”窗格](common/add-assign-user.png)
-
-5. 在“用户和组”对话框中，从列表中选择用户（例如“Britta Simon”），然后单击屏幕底部的“选择”按钮    。
-
-    ![显示“用户和组”对话框的屏幕截图，你可以在其中选择用户。](./media/zscaler-one-tutorial/tutorial_zscalerone_users.png)
-
-6. 从“选择角色”对话框中，选择列表中合适的用户角色，然后单击屏幕底部的“选择”按钮   。
-
-    ![显示“选择角色”对话框的屏幕截图，你可以在其中选择用户角色。](./media/zscaler-one-tutorial/tutorial_zscalerone_roles.png)
-
-7. 在“添加分配”  对话框中，选择“分配”  按钮。
-
-    ![显示“添加分配”对话框的屏幕截图，你可以在其中选择“分配”。](./media/zscaler-one-tutorial/tutorial_zscalerone_assign.png)
-
 ### <a name="create-zscaler-one-test-user"></a>创建 Zscaler One 测试用户
 
 在本部分，我们将在 Zscaler One 中创建一个名为 Britta Simon 的用户。 Zscaler One 支持默认启用的恰时用户预配。 此部分不存在任何操作项。 如果 Zscaler One 中尚不存在用户，则会在身份验证后创建一个新用户。
@@ -293,16 +227,17 @@ ms.locfileid: "97608980"
 >[!Note]
 >如果需要手动创建用户，请联系 [Zscaler One 支持团队](https://www.zscaler.com/company/contact)。
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+### <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-单击访问面板中的 Zscaler One 磁贴时，应当会自动登录到为其设置了 SSO 的 Zscaler One。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Zscaler One 登录 URL，可以在其中启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+* 直接转到 Zscaler One 登录 URL，并从那里启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler One 磁贴时，会重定向到 Zscaler One 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+## <a name="next-steps"></a>后续步骤
+
+配置 Zscaler One 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

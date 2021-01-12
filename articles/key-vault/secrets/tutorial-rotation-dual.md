@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: c2496959f851b55f8cc66c0e793b641cdafb003a
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 39081bc7bec7cfd76ccfc9107d5c2286affb7df0
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808328"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913764"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>自动轮换使用两组身份验证凭据的资源的机密
 
@@ -95,7 +95,7 @@ vaultrotationstorage2    vaultrotation      westus      Microsoft.Storage/storag
 1. 在“机密名称”框中，输入要在其中存储访问密钥的机密的名称。
 1. 在“存储库 URL”框中，输入函数代码的 GitHub 位置。 在本教程中，你可以使用 https://github.com/Azure-Samples/KeyVault-Rotation-StorageAccountKey-PowerShell.git。
 1. 选择“查看 + 创建”。
-1. 选择“创建”  。
+1. 选择“创建”。
 
    ![演示如何创建和部署函数的屏幕截图。](../media/secrets/rotation-dual/dual-rotation-2.png)
 
@@ -222,8 +222,15 @@ az storage account keys list -n vaultrotationstorage
 
 ## <a name="key-vault-rotation-functions-for-two-sets-of-credentials"></a>两组凭据的 Key Vault 轮换函数
 
-- [存储帐户](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
-- [Redis 缓存](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
+两组凭据和几个现成函数的轮换函数模板：
+
+- [项目模板](https://serverlesslibrary.net/sample/bc72c6c3-bd8f-4b08-89fb-c5720c1f997f)
+- [Redis 缓存](https://serverlesslibrary.net/sample/0d42ac45-3db2-4383-86d7-3b92d09bc978)
+- [存储帐户](https://serverlesslibrary.net/sample/0e4e6618-a96e-4026-9e3a-74b8412213a4)
+- [Cosmos DB](https://serverlesslibrary.net/sample/bcfaee79-4ced-4a5c-969b-0cc3997f47cc)
+
+> [!NOTE]
+> 上述轮换函数由社区成员（而不是 Microsoft）创建。 任何 Microsoft 支持计划或服务都不支持社区 Azure 函数，这些函数按原样提供，无任何形式的保证。
 
 ## <a name="next-steps"></a>后续步骤
 

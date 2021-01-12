@@ -966,6 +966,10 @@
               href: cassandra-migrate-cosmos-db-blitzz.md
             - name: 迁移 - Apache Cassandra 到 Cassandra API（使用 Databricks）
               href: cassandra-migrate-cosmos-db-databricks.md
+            - name: 迁移 - Apache Cassandra 到 Cassandra API（使用 Databricks）
+              href: cassandra-migrate-cosmos-db-databricks.md
+            - name: 迁移 - PostgreSQL 到 Cassandra API（使用 Apache Kafka）
+              href: postgres-migrate-cosmos-db-kafka.md
         - name: 更改源
           href: cassandra-change-feed.md
         - name: 创建容器 - Cassandra API

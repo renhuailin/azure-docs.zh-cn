@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cf638e1de116532136b9e78df1933048c8305b7b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 907bf06c009738eb098532ac5ff53e13dbd16826
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005448"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98047194"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -65,3 +65,4 @@ ms.locfileid: "96005448"
 |[必须使用 BYOK 对包含具有活动日志的容器的存储帐户进行加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |此策略审核是否已使用 BYOK 对包含具有活动日志的容器的存储帐户进行加密。 仅当存储帐户在设计上依赖于与活动日志相同的订阅时，此策略才起作用。 有关 Azure 存储静态加密的详细信息，请参阅 [https://aka.ms/azurestoragebyok](https://aka.ms/azurestoragebyok)。  |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json) |
 |[应在虚拟机规模集上安装 Log Analytics 代理](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fefbde977-ba53-4479-b8e9-10b957924fbf) |此策略审核是否有任何 Windows/Linux 虚拟机规模集未安装 Log Analytics 代理。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VMSS_LogAnalyticsAgent_AuditIfNotExists.json) |
 |[应在虚拟机上安装 Log Analytics 代理](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa70ca396-0a34-413a-88e1-b956c1e683be) |此策略审核是否有任何 Windows/Linux 虚拟机未安装 Log Analytics 代理。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VirtualMachines_LogAnalyticsAgent_AuditIfNotExists.json) |
+|[工作簿应保存到你控制的存储帐户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6fc8115b-2008-441f-8c61-9b722c1e537f) |使用自带存储 (BYOS)，工作簿将上传到你控制的存储帐户。 这意味着，你可以控制静态加密策略、生存期管理策略和网络访问。 但需支付与该存储帐户相关的费用。 有关详细信息，请访问 [https://aka.ms/workbooksByos](https://aka.ms/workbooksByos) |拒绝、审核、已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Workbooks_BYOSEnabled_Audit.json) |

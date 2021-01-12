@@ -54,7 +54,7 @@
           href: enable-dynamic-configuration-java-spring-app.md
     - name: 使用功能标志
       items:
-        - name: .NET Core
+        - name: ASP.NET Core
           href: use-feature-flags-dotnet-core.md
         - name: Spring Boot
           href: use-feature-flags-spring-boot.md
@@ -110,7 +110,7 @@
           href: concept-disaster-recovery.md
 - name: 操作指南
   items:
-    - name: 为一部分用户启用功能
+    - name: 使用条件功能标志
       href: howto-feature-filters-aspnet-core.md
     - name: 为指定用户/组启用功能
       href: howto-targetingfilter-aspnet-core.md

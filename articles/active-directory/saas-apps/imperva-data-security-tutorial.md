@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ea08f8ec98ff8ddd4a9f15f12a0224db440b7b0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 710164fa3712058d64e5d23006b986eb3dc3eaba
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675620"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882749"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-imperva-data-security"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Imperva Data Security 的集成
 
@@ -37,7 +37,7 @@ ms.locfileid: "97675620"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Imperva Data Security 支持 IDP 发起的 SSO
+* Imperva Data Security 支持 SP 发起的 SSO
 
 ## <a name="adding-imperva-data-security-from-the-gallery"></a>从库中添加 Imperva Data Security
 
@@ -45,8 +45,8 @@ ms.locfileid: "97675620"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
-1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Imperva Data Security” 。
 1. 从结果面板中选择“Imperva Data Security”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
@@ -76,12 +76,16 @@ ms.locfileid: "97675620"
 
 1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<IMPERVA_DNS_NAME>:8443`
+    a. 在“标识符”文本框中，使用以下模式键入标识符：`application-name`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<IMPERVA_DNS_NAME>:8443`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<IMPERVA_DNS_NAME>:8443`
+    
+    c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<IMPERVA_DNS_NAME>:8443` 
+    
+    d. 在“注销 URL”文本框中，使用以下模式键入 URL：`https://<IMPERVA_DNS_NAME>:8443`    
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Imperva Data Security 客户端支持团队](mailto:support@jsonar.imperva.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Imperva Data Security 客户端支持团队](mailto:support@jsonar.imperva.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
@@ -95,10 +99,10 @@ ms.locfileid: "97675620"
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”  。
+1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

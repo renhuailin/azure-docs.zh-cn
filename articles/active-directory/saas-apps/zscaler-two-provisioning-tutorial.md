@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fcbe2101f85678414d4496977d9a0a1d41a71ea5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1c63639321966cbb73f5c47524f408d17ba46c3a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517491"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936546"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>教程：为 Zscaler Two 配置自动用户预配
 
@@ -52,7 +52,7 @@ ms.locfileid: "92517491"
 
 ![选择“新建应用程序”](common/add-new-app.png)
 
-在搜索框中输入 **Zscaler Two** 。 在结果中选择“Zscaler Two”，然后选择“添加”   。
+在搜索框中输入 **Zscaler Two**。 在结果中选择“Zscaler Two”，然后选择“添加”   。
 
 ![结果列表](common/search-new-app.png)
 
@@ -74,6 +74,9 @@ ms.locfileid: "92517491"
 
 > [!TIP]
 > 此外，还建议为 Zscaler Two 启用基于 SAML 的单一登录。 若要这样做，请遵照 [Zscaler Two 单一登录教程](zscaler-two-tutorial.md)中的说明操作。 可以独立于自动用户预配配置单一登录，但这两个功能是互补的。
+
+> [!NOTE]
+> 预配或取消预配用户和组时，我们建议定期重启预配，以确保正确更新组成员身份。 执行重启操作将强制我们的服务重新评估所有组并更新成员身份。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，选择“企业应用程序” > “所有应用程序” > “Zscaler Two”    ：
 

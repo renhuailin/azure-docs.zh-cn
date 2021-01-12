@@ -146,11 +146,15 @@
       items:
         - name: 对 Azure 负载均衡器进行故障排除
           href: load-balancer-troubleshoot.md
-        - name: 排查常见部署错误
+        - name: 运行状况探测状态
+          href: load-balancer-troubleshoot-health-probe-status.md
+        - name: 后端池 (VM) 流量
+          href: load-balancer-troubleshoot-backend-traffic.md
+        - name: 常见部署错误
           href: load-balancer-common-deployment-errors.md
-        - name: 排查常见的出站连接问题
+        - name: 常见的出站连接问题
           href: troubleshoot-outbound-connection.md
-        - name: 排查资源运行状况和入站可用性问题
+        - name: 资源运行状况和入站可用性问题
           href: troubleshoot-rhc.md
 - name: 参考
   items:

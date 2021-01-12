@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 8706ac588f2cc868805de7126140a1edd4b8c735
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6bf21205c028eaff08eef91757424f8b52764ada
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92445488"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936135"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>教程：在 Azure Active Directory 与 F5 之间配置单一登录 (SSO)
 
@@ -117,7 +117,7 @@ ms.locfileid: "92445488"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **F5** 。
+1. 在“从库中添加”部分的搜索框中，键入 **F5**。
 1. 在结果面板中选择“F5”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>配置并测试 F5 的 Azure AD 单一登录
@@ -195,7 +195,7 @@ ms.locfileid: "92445488"
 1. 在“添加分配”对话框中，单击“分配”按钮。
 1. 单击“条件访问”  。
 1. 单击“新建策略”  。
-1. 现在，可将 F5 应用视为 CA 策略的资源，并应用任何条件访问，包括多重身份验证、基于设备的访问控制或标识保护策略。
+1. 现在，可将 F5 应用视为条件访问策略的资源，并应用任何条件访问，包括多重身份验证、基于设备的访问控制或标识保护策略。
 
 ## <a name="configure-f5-sso"></a>配置 F5 SSO
 

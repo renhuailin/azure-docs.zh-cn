@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 92fdef48556a3306ee5e3f10e07ff609a8fc4be4
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 12983f43e5f778cdf46c2ea3e0177d43838e5b47
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656217"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051592"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB 模拟器 - 发行说明和下载信息
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,10 @@ ms.locfileid: "97656217"
 |**入门**|[使用 Azure Cosmos DB 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="21110-5-january-2021"></a>2.11.10（2021 年 1 月 5 日）
+
+ - 此版本将本地数据资源管理器内容更新为最新的 Azure 门户版本，并增加了一个新的公共选项“/ExportPemCert”，该选项允许仿真器用户直接将公共仿真器的证书导出为 .PEM 文件。
 
 ### <a name="2119-3-december-2020"></a>2.11.9（2020 年 12 月 3 日）
 

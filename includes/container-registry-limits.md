@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: e451171859efc49753131b145642aec4864db45d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 089b1b6f1af2f19c16866858324bde2e151e8bdb
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015653"
+ms.locfileid: "98052924"
 ---
 | 资源 | 基本 | Standard | Premium |
 |---|---|---|---|
@@ -38,7 +38,7 @@ ms.locfileid: "98015653"
 | &bull; 每个范围映射的存储库 | 空值 | 空值 | 500 |
 
 
-<sup>1</sup> 在每日费率中包括的每个层级的存储。 可以使用额外的存储空间，空间上限为注册表存储上限，且每 GiB 都会产生额外每日费率。 有关费率的信息，请参阅 [Azure 容器注册表定价][pricing]。
+<sup>1</sup> 在每日费率中包括的每个层级的存储。 可以使用额外的存储空间，空间上限为注册表存储上限，且每 GiB 都会产生额外每日费率。 有关费率的信息，请参阅 [Azure 容器注册表定价][pricing]。 如果需要超出注册表存储限制的存储空间，请联系 Azure 支持。
 
 <sup>2</sup>读取操作数、写入操作数和带宽是最小估计值。 Azure 容器注册表致力于根据使用情况来提高性能。
 

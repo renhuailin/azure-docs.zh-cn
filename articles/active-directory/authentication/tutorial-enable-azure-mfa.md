@@ -10,18 +10,18 @@ ms.author: justinha
 author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32228e90e3cfc064cd5be9cd0655f321ab3e2809
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f2e8bf2ccbf7a53563013c7ba653a6f6e8905337
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741144"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881304"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>教程：使用 Azure AD 多重身份验证保护用户登录事件
 
 多重身份验证 (MFA) 是在登录事件期间提示用户完成其他形式的身份识别的过程。 此提示可以是让用户在手机上输入某个代码，或提供指纹扫描。 需要另一种形式的身份验证时，会提高安全性，因为攻击者并不容易获取或复制进行多重身份验证所需的额外内容。
 
-在特定的登录事件期间，可通过 Azure AD 多重身份验证和条件访问策略来灵活地为用户启用 MFA。
+在特定的登录事件期间，可通过 Azure AD 多重身份验证和条件访问策略来灵活地为用户启用 MFA。 下面是[介绍如何在租户中配置和强制实施多重身份验证的视频](https://www.youtube.com/watch?v=qNndxl7gqVM)（推荐）
 
 > [!IMPORTANT]
 > 本教程向管理员展示如何启用 Azure AD 多重身份验证。

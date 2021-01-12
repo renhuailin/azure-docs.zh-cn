@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: e8cb939b48f8cfe311ec10c0850cfb234de04fad
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f3fcad14ae0c448ee2a41cddf56f5ea64c8e08d2
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589740"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916127"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>教程：Azure Active Directory 与 Andromeda 集成
 
@@ -27,10 +27,7 @@ ms.locfileid: "97589740"
 * 可以让用户使用其 Azure AD 帐户自动登录到 Andromeda（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
-
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Andromeda 的集成，需要以下项：
 
@@ -48,69 +45,49 @@ ms.locfileid: "97589740"
 
 若要配置 Andromeda 与 Azure AD 的集成，需要从库中将 Andromeda 添加到托管的 SaaS 应用列表。
 
-**若要从库中添加 Andromeda，请执行以下步骤：**
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 在“从库中添加”部分的搜索框中，键入“Andromeda” 。
+1. 从结果面板中选择“Andromeda”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-andromeda"></a>配置并测试 Andromeda 的 Azure AD SSO
 
-2. 转到“企业应用”，并选择“所有应用”选项   。
+使用名为 B. Simon 的测试用户配置和测试 Andromeda 的 Azure AD SSO。 若要使 SSO 正常运行，需要在 Azure AD 用户与 Andromeda 中的相关用户之间建立链接关系。
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+若要配置并测试 Andromeda 的 Azure AD SSO，请执行以下步骤：
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
-    ![“新增应用程序”按钮](common/add-new-app.png)
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+2. **[配置 Andromeda SSO](#configure-andromeda-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 Andromeda 测试用户](#create-andromeda-test-user)** - 在 Andromeda 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-4. 在搜索框中，键入“Andromeda”，在结果面板中选择“Andromeda”，然后单击“添加”按钮添加该应用程序。   
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
-    ![结果列表中的 Andromeda](common/search-new-app.png)
+按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+1. 在 Azure 门户的 Andromeda 应用程序集成页上，找到“管理”部分，并选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
-在本部分中，将基于名为 **Britta Simon** 的测试用户配置和测试 Andromeda 的 Azure AD 单一登录。
-若要运行单一登录，需要在 Azure AD 用户与 Andromeda 中相关用户之间建立链接关系。
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
-若要配置和测试 Andromeda 的 Azure AD 单一登录，需要完成以下构建基块：
-
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Andromeda 单一登录](#configure-andromeda-single-sign-on)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Andromeda 测试用户](#create-andromeda-test-user)** - 在 Andromeda 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
-
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
-
-若要配置 Andromeda 的 Azure AD 单一登录，请执行以下步骤：
-
-1. 在 [Azure 门户](https://portal.azure.com/)中，在 **Andromeda** 应用程序集成页上，选择“单一登录”  。
-
-    ![配置单一登录链接](common/select-sso.png)
-
-2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
-
-    ![单一登录选择模式](common/select-saml-option.png)
-
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
-
-    ![编辑基本 SAML 配置](common/edit-urls.png)
-
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
-
-    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
 
     > [!NOTE]
     > 这些不是实际值。 本教程稍后将介绍如何使用实际的登录 URL 和标识符来更新该值。
@@ -126,30 +103,30 @@ ms.locfileid: "97589740"
 
     | 名称 | 源属性|
     | ------ | -----------|
-    | 角色 (role) | 应用特定的角色 |
-    | type | 应用类型 |
-    | company | CompanyName |
+    | 角色 (role)        | 应用特定的角色 |
+    | type        | 应用类型 |
+    | company       | CompanyName |
 
     > [!NOTE]
-    > 这些不是实际值。 这些值仅用于演示，请使用组织角色。
+    > Andromeda 需要分配给应用程序的用户的角色。 请在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
 
-    1. 单击“添加新声明”  以打开“管理用户声明”  对话框。
+    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-        ![屏幕截图显示具有“添加新声明”和“保存”选项的“用户声明”。](common/new-save-attribute.png)
+    ![屏幕截图显示具有“添加新声明”和“保存”选项的“用户声明”。](common/new-save-attribute.png)
 
-        ![屏幕截图显示“管理用户声明”对话框，可在其中输入此步骤所述的值。](common/new-attribute-details.png)
+    ![屏幕截图显示“管理用户声明”对话框，可在其中输入此步骤所述的值。](common/new-attribute-details.png)
 
-    1. 在“名称”文本框中，键入为该行显示的属性名称。 
+    b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
-    1. 将“命名空间”留空  。
+    c. 将“命名空间”留空  。
 
-    1. 选择“源”作为“属性”  。
+    d. 选择“源”作为“属性”  。
 
-    1. 在“源属性”  列表中，键入为该行显示的属性值。
+    e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    1. 单击“确定” 
+    f. 单击“确定” 
 
-    1. 单击“ **保存**”。
+    g. 单击“ **保存**”。
 
 8. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
@@ -159,13 +136,32 @@ ms.locfileid: "97589740"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    1. 登录 URL
 
-    1. Azure AD 标识符
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-    1. 注销 URL
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-### <a name="configure-andromeda-single-sign-on"></a>配置 Andromeda 单一登录
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
+
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，你将授予 B. Simon 访问 Andromeda 的权限，使其能够使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Andromeda”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果已如上述所示设置角色，可从“选择角色”下拉列表中选择角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
+
+### <a name="configure-andromeda-sso"></a>配置 Andromeda SSO
 
 1. 以管理员身份登录 Andromeda 公司站点。
 
@@ -181,90 +177,47 @@ ms.locfileid: "97589740"
 
     ![Andromeda 配置](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    1. 选中“使用 SAML 启用 SSO”。 
+    a. 选中“使用 SAML 启用 SSO”。 
 
-    1. 在“Andromeda 信息”部分下，复制“SP 标识”值并将其粘贴到“基本 SAML 配置”部分的“标识符”文本框中。    
+    b. 在“Andromeda 信息”部分下，复制“SP 标识”值并将其粘贴到“基本 SAML 配置”部分的“标识符”文本框中。    
 
-    1. 复制“使用者 URL”值，并将其粘贴到“基本 SAML 配置”部分的“回复 URL”文本框中。   
+    c. 复制“使用者 URL”值，并将其粘贴到“基本 SAML 配置”部分的“回复 URL”文本框中。   
 
-    1. 复制“登录 URL”值，并将其粘贴到“基本 SAML 配置”部分的“登录 URL”文本框中。   
+    d. 复制“登录 URL”值，并将其粘贴到“基本 SAML 配置”部分的“登录 URL”文本框中。   
 
-    1. 在“SAML 标识提供者”部分下，键入 IDP 名称。 
+    e. 在“SAML 标识提供者”部分下，键入 IDP 名称。 
 
-    1. 在“单一登录终结点”  文本框中，粘贴从 Azure 门户复制的“登录 URL”  值。
+    f. 在“单一登录终结点”  文本框中，粘贴从 Azure 门户复制的“登录 URL”  值。
 
-    1. 在记事本中打开从 Azure 门户下载的 **Base64 编码证书**，将其粘贴到“X 509 证书”文本框中。 
+    g. 在记事本中打开从 Azure 门户下载的 **Base64 编码证书**，将其粘贴到“X 509 证书”文本框中。 
+    
+    h. 将以下属性映射到相应的值，以便于从 Azure AD 进行 SSO 登录。 登录时必须使用“用户 ID”属性  。 预配时，必须使用“电子邮件”、“公司”、“用户类型”和“角色”     。 本部分定义要关联到 Azure 门户中定义的值的属性映射（名称和值）
 
-    1. 将以下属性映射到相应的值，以便于从 Azure AD 进行 SSO 登录。 登录时必须使用“用户 ID”属性  。 预配时，必须使用“电子邮件”、“公司”、“用户类型”和“角色”     。 本部分定义要关联到 Azure 门户中定义的值的属性映射（名称和值）
+    ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
 
-        ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+    i. 单击“ **保存**”。
 
-    1. 单击“ **保存**”。
-
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-
-本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
-
-    ![“用户和组”以及“所有用户”链接](common/users.png)
-
-2. 选择屏幕顶部的“新建用户”  。
-
-    ![“新建用户”按钮](common/new-user.png)
-
-3. 在“用户属性”中，按照以下步骤操作。
-
-    ![“用户”对话框](common/user-properties.png)
-
-    a. 在“名称”  字段中，输入 BrittaSimon  。
-
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
-
-    d. 单击“创建”。
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，通过授予 Britta Simon 访问 Andromeda 的权限，允许其使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Andromeda”    。
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-2. 在应用程序列表中，选择“Andromeda”  。
-
-    ![应用程序列表中的 Andromeda 链接](common/all-applications.png)
-
-3. 在左侧菜单中，选择“用户和组”  。
-
-    ![“用户和组”链接](common/users-groups-blade.png)
-
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加分配”窗格](common/add-assign-user.png)
-
-5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
-
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
-
-7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-andromeda-test-user"></a>创建 Andromeda 测试用户
 
 在本部分中，我们会在 Andromeda 中创建一个名为 Britta Simon 的用户。 Andromeda 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Andromeda 中尚不存在用户，则会在进行身份验证后创建一个新用户。 如果需要手动创建用户，请联系 [Andromeda 客户端支持团队](https://www.ngcsoftware.com/support/)。
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+## <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-单击访问面板中的 Andromeda 磁贴时，应会自动登录到你为其设置了 SSO 的 Andromeda。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+#### <a name="sp-initiated"></a>SP 启动的：
 
-## <a name="additional-resources"></a>其他资源
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Andromeda 登录 URL，可在其中启动登录流。  
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 直接转到 Andromeda 登录 URL，并从那里启动登录流。
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP 启动的：
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+* 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Andromeda 
+
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Andromeda 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Andromeda。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+
+## <a name="next-steps"></a>后续步骤
+
+配置 Andromeda 后，可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

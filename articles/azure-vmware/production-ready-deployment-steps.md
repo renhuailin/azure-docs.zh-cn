@@ -3,12 +3,12 @@ title: 规划 Azure VMware 解决方案部署
 description: 本文概述了 Azure VMware 解决方案部署工作流。  最终结果是一个就绪的可用于创建和迁移虚拟机 (VM) 的环境。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 1d1deebd56717c63a745500198eb8df9e3687b49
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 2cc4d40fd8088a632e0c24e3c4b770ebdc9de2e8
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558685"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912727"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>规划 Azure VMware 解决方案部署
 
@@ -62,7 +62,7 @@ ms.locfileid: "96558685"
 
 规划部署的第一步是规划 IP 分段。  Azure VMware 解决方案引入你提供的一个 /22 网络。 然后将其划分为较小的段，并将这些 IP 段用于 vCenter、VMware HCX、NSX-T 和 vMotion。
 
-Azure VMware 解决方案通过内部 ExpressRoute 线路连接到 Microsoft Azure 虚拟网络。 在大多数情况下，它通过 ExpressRoute Global Reach 连接到你的数据中心。 
+Azure VMware 解决方案通过内部 ExpressRoute 线路连接到 Microsoft Azure 虚拟网络。 大多数情况下，它通过 ExpressRoute Global Reach 连接到你的数据中心。 
 
 通常情况下，Azure VMware 解决方案、你现有的 Azure 环境和本地环境都会交换路由。 这种情况下，在此步骤中定义的 /22 CIDR 网络地址块不应与本地或 Azure 中已有的任何地址块重叠。
 
