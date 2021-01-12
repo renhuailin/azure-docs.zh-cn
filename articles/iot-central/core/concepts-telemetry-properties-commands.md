@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 87fb7f0eb4017a39aca081f73de543a67400d4b5
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 5a9f6fa79da59425e4972dddd21ffdea15af73e7
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969055"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127900"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遥测、属性和命令有效负载
 
@@ -50,7 +50,7 @@ IoT Central 允许查看设备发送到应用程序的原始数据。 此视图�
 
     在此视图中，你可以选择要显示的列，并设置要查看的时间范围。 “未建模数据”列显示设备中与设备模板中的任何属性或遥测定义不匹配的数据。
 
-## <a name="telemetry"></a>遥测
+## <a name="telemetry"></a>遥测技术
 
 ### <a name="primitive-types"></a>基元类型
 
@@ -187,6 +187,9 @@ IoT Central 允许查看设备发送到应用程序的原始数据。 此视图�
   "schema": "geopoint"
 }
 ```
+
+> [!NOTE]
+> **Geopoint** 架构类型不属于 [数字孪生定义语言规范](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 IoT Central 当前支持 **geopoint** 架构类型和 **location** 语义类型，以便向后兼容。
 
 设备客户端应发送类似于以下示例的 JSON 的遥测数据。 IoT Central 将值显示为地图上的 pin：
 
@@ -429,7 +432,7 @@ IoT Central 允许查看设备发送到应用程序的原始数据。 此视图�
 { "IntegerState": 2 }
 ```
 
-## <a name="properties"></a>“属性”
+## <a name="properties"></a>属性
 
 > [!NOTE]
 > 属性的负载格式适用于在07/14/2020 或之后创建的应用程序。
@@ -575,6 +578,9 @@ IoT Central 允许查看设备发送到应用程序的原始数据。 此视图�
   "writable": false
 }
 ```
+
+> [!NOTE]
+> **Geopoint** 架构类型不属于 [数字孪生定义语言规范](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 IoT Central 当前支持 **geopoint** 架构类型和 **location** 语义类型，以便向后兼容。
 
 设备客户端应将类似于以下示例的 JSON 有效负载发送到设备克隆中的报告属性：
 

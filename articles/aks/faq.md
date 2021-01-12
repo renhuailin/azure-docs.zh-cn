@@ -3,12 +3,12 @@ title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的解答。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 94cbaf417413b3e11071fb8c7237cbb3ac7b9a37
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7fc348ae7b3edb79e75aa1acd08941fec447da6f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780342"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127628"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -146,7 +146,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 目前不支持跨订阅移动群集。
 
-## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>是否可以将 AKS 群集从当前的 Azure 订阅移到另一个订阅？ 
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>是否可以将 AKS 群集从当前的 Azure 订阅移到另一个订阅？
 
 不支持在 Azure 订阅之间移动 AKS 群集及其关联的资源。
 
@@ -154,7 +154,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 不支持移动或重命名 AKS 群集及其关联的资源。
 
-## <a name="why-is-my-cluster-delete-taking-so-long"></a>为何群集删除需要如此长的时间？ 
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>为何群集删除需要如此长的时间？
 
 大多数群集是按用户请求删除的；某些情况下，尤其是在客户引入自己的资源组或执行跨 RG 任务的情况下，删除操作可能需要更多的时间，或者可能会失败。 如果删除有问题，请仔细检查是否在 RG 上没有锁，RG 之外的任何资源是否与 RG 断开关联，等等。
 
@@ -166,7 +166,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 否，删除/删除处于失败状态的任何节点，或在升级之前从群集中删除。
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>我运行了群集删除操作，但出现错误：`[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>我运行了群集删除操作，但出现错误：`[Errno 11001] getaddrinfo failed`
 
 这种情况最可能的原因是用户有一个或多个网络安全组 (NSG) 仍在使用并与群集相关联。  请将其删除，然后重试删除。
 
@@ -174,7 +174,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 确认你的服务主体未过期。  请参阅： [AKS 服务主体](./kubernetes-service-principal.md) 和 [AKS 更新凭据](./update-credentials.md)。
 
-## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>我的群集正在运行，但突然无法预配 LoadBalancers、装载 Pvc 等。 
+## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>我的群集正在运行，但突然无法预配 LoadBalancers、装载 Pvc 等。
 
 确认你的服务主体未过期。  请参阅： [AKS 服务主体](./kubernetes-service-principal.md)  和 [AKS 更新凭据](./update-credentials.md)。
 
@@ -254,6 +254,25 @@ root@k8s-agentpool1-20465682-1:/#
 - 网桥模式下的一个角落情况是，Azure CNI 不能继续更新自定义 DNS 服务器列表用户添加到 VNET 或 NIC 的列表。 这会导致 CNI 仅选取 DNS 服务器列表的第一个实例。 在透明模式下解决，因为 CNI 不会更改任何 eth0 属性。 在[此处](https://github.com/Azure/azure-container-networking/issues/713)了解详细信息。
 - 更好地处理 UDP 流量，并在 ARP 超时时降低 UDP 淹没风暴。在桥接模式下，当桥不知道 VM 内盒到 Pod 通信中的目标 pod 的 MAC 地址时，设计时，这会导致将数据包风暴到所有端口。 在透明模式下解决，因为路径中没有 L2 设备。 在[此处](https://github.com/Azure/azure-container-networking/issues/704)了解详细信息。
 - 与 bridge 模式相比，透明模式在吞吐量和延迟方面的 VM Pod 到 Pod 通信中性能更佳。
+
+## <a name="how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files"></a>如果卷包含大量文件，如何避免权限所有权设置慢问题？
+
+通常情况下，如果你的 pod 作为非根用户运行 (应) ，则必须在 `fsGroup` pod 的安全上下文中指定，以便该卷可供盒读写。 [此处](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)更详细地介绍了这一要求。
+
+但设置的一个副作用 `fsGroup` 是，每次装入一个卷时，Kubernetes 必须以递归方式 `chown()` 和 `chmod()` 卷内的所有文件和目录-下面记下一些例外。 即使卷的组所有权已经与请求的组所有权匹配， `fsGroup` 但对于包含大量小文件的较大卷来说，这种情况也会非常昂贵，这会导致 pod 启动花费很长时间。 此方案是 v 1.20 前的一个已知问题，而解决方法是将 Pod 设置为 root 运行：
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+    fsGroup: 0
+```
+
+此问题已由 Kubernetes v 1.20 解决。有关更多详细信息，请参阅 [Kubernetes 1.20：对卷权限更改的精细控制](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/) 。
 
 
 <!-- LINKS - internal -->

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 07562167131d1839bc0827c74fae09c683302c08
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6c1f323828eb48b61b38370bc2fe56d4c93bf036
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118602"
+ms.locfileid: "98127203"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -126,10 +126,10 @@ Authorization: Bearer <token>
 ## <a name="create-cluster"></a>创建群集
 
 > [!NOTE]
-> 群集支持由系统分配和用户分配的两个 [托管标识类型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)，这些类型可根据你的方案使用。 当你将标识设置为-时，系统分配的托管标识将更简单，并会自动创建， `type` `SystemAssigned` 此标识稍后可用于授予对 Key Vault 的访问权限。 如果需要在创建时创建具有客户管理的密钥配置的群集，你应事先在 Key Vault 中定义密钥和用户分配的标识，然后 `type` `UserAssigned` `UserAssignedIdentities` 使用标识的资源 ID 和中的密钥详细信息创建具有标识的群集 `keyVaultProperties` 。
+> 群集支持两种 [托管的标识类型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)：系统分配的和用户分配的类型，每种类型都可以根据方案来确定。 系统分配的托管标识更简单，并且在将标识设置为 "SystemAssigned" 时，会自动创建群集， `type` 此标识稍后可用于授予群集对 Key Vault 的访问权限。 如果你想要在创建群集时创建客户管理的密钥，则应事先在 Key Vault 中为其定义了密钥和用户分配的标识，然后使用以下设置创建群集：标识 `type` 为 "*UserAssigned*"， `UserAssignedIdentities` 其中包含标识的资源 ID 和 `keyVaultProperties` 密钥详细信息。
 
 > [!IMPORTANT]
-> 如果 Key Vault 位于 Private-Link (vNet) ，则当前无法用用户分配的托管标识定义客户管理的密钥。 此限制不适用于系统分配的托管标识。
+> 如果 Key Vault 位于 Private-Link (vNet) ，并且你可以使用系统分配的托管标识，则当前无法使用用户分配的托管标识定义客户管理的密钥。
 
 请遵循[“专用群集”一文](../log-query/logs-dedicated-clusters.md#creating-a-cluster)中说明的过程。 
 
@@ -416,7 +416,7 @@ Content-type: application/json
 
   - 如果你的群集是使用用户分配的托管标识设置的，则设置 `UserAssignedIdentities` `None` 会挂起群集并阻止对数据的访问，但不能在不打开支持请求的情况下还原吊销并激活群集。 此限制不会应用到系统分配的托管标识。
 
-  - 如果 Key Vault 位于 Private-Link (vNet) ，则当前无法用用户分配的托管标识定义客户管理的密钥。 此限制不适用于系统分配的托管标识。
+  - 如果 Key Vault 位于 Private-Link (vNet) ，并且你可以使用系统分配的托管标识，则当前无法使用用户分配的托管标识定义客户管理的密钥。
 
 ## <a name="troubleshooting"></a>疑难解答
 

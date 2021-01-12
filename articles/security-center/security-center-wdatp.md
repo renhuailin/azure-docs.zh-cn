@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 34d8881eb072c4c723bf68b7c6ccfd24ab19cd3c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 553151aebeadf4ad4764e747b1bf6dcd8c552721
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116273"
+ms.locfileid: "98126846"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>利用安全中心的集成 EDR 解决方案保护终结点： Microsoft Defender for Endpoint
 
@@ -71,7 +71,7 @@ Microsoft Defender for Endpoint 提供：
 
 使用 Azure 安全中心监视你的服务器时，将自动创建 Microsoft Defender for Endpoint 租户。 由 Defender for Endpoint 收集的数据存储在租户的地理位置，如预配期间所标识。 客户数据-以 pseudonymized 的形式，也可以存储在美国中央存储和处理系统中。 
 
-配置位置后，无法对其进行更改。 如果需要将数据移动到另一个位置，请联系 Microsoft 支持部门重置租户。
+配置位置后，无法对其进行更改。 如果你有自己的 Microsoft Defender for Endpoint 许可证，并且需要将数据移至另一个位置，请联系 Microsoft 支持部门重置租户。
 
 
 ## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>启用 Microsoft Defender for Endpoint integration

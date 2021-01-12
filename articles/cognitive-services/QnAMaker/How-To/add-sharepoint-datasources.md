@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: c231ac95841043e5576f064e683dd86d9695b108
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: d6e52da7fce39a259107fe60a21fb5ead7b18709
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353181"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127815"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>向知识库添加受保护的 SharePoint 数据源
 
@@ -127,12 +127,16 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 
 
+
+## <a name="add-sharepoint-data-source-with-apis"></a>通过 Api 添加 SharePoint 数据源
+
+有关使用 Azure blob 存储通过 API 添加最新 SharePoint 内容的解决方法，请执行以下步骤： 
+1.  在本地下载 SharePoint 文件。 调用 API 的用户需要具有访问 SharePoint 的权限。 
+1.  将其上传到 Azure blob 存储。 这会[使用 SAS 令牌](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works)创建安全的共享访问。 
+1. 将用 SAS 令牌生成的 blob URL 传递到 QnA Maker API。 若要允许从文件中提取问题答案，需要先将后缀文件类型添加为 URL 末尾的 "&ext = pdf" 或 "&ext = doc"，然后再将其传递到 QnA Maker API>  
+
+
 <!--
-
-## Add SharePoint data source with APIs
-
-You need to get the SharePoint file's URI before adding it to QnA Maker.
-
 ## Get SharePoint File URI
 
 Use the following steps to transform the SharePoint URL into a sharing token.

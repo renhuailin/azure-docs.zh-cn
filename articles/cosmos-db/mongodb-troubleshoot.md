@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
-ms.openlocfilehash: faf50899e5897a8f06cf0e24166abd303d24b491
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 06a06d275ba6f5ded475ffd693ee61e7a72b9516
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011371"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127696"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>解决 Azure Cosmos DB 的 API for MongoDB 中的常见问题
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "98011371"
 | 13 | 未授权 | 请求无权完成。 | 确保为数据库和集合设置了正确的权限。  |
 | 16 | InvalidLength | 指定的请求具有无效长度。 | 如果使用的是说明 ( # A1 函数，请确保只提供一个操作。 |
 | 26 | NamespaceNotFound | 找不到查询中所引用的数据库或集合。 | 确保数据库/集合名称与查询中的名称完全匹配。|
-| 50 | ExceededTimeLimit | 请求已超过 60 秒执行时间的超时。 |  此问题的原因可能有很多。 其中一个原因是当前分配的请求单位容量不足，无法完成请求。 可以通过增加该集合或数据库的请求单位来解决此问题。 其他情况下，可以通过将大型请求拆分为较小请求来规避此问题。|
+| 50 | ExceededTimeLimit | 请求已超过 60 秒执行时间的超时。 |  此问题的原因可能有很多。 其中一个原因是当前分配的请求单位容量不足，无法完成请求。 可以通过增加该集合或数据库的请求单位来解决此问题。 其他情况下，可以通过将大型请求拆分为较小请求来规避此问题。 重试已收到此错误的写入操作可能会导致重复写入。|
 | 61 | ShardKeyNotFound | 请求中的文档未包含集合的分片键 (Azure Cosmos DB 分区键) 。 | 请确保在请求中使用集合的分片键。|
 | 66 | ImmutableField | 请求尝试更改不可变字段 | "id" 字段是不可变的。 确保请求不会尝试更新该字段。 |
 | 67 | CannotCreateIndex | 无法完成创建索引的请求。 | 最多可在一个容器中创建500个单字段索引。 复合索引中最多可以包含八个字段 (在版本3.6 和) 中支持复合索引。 |
@@ -40,6 +40,7 @@ ms.locfileid: "98011371"
 | 16501 | ExceededMemoryLimit | 作为一种多租户服务，操作已超出客户端的内存配额。 | 通过限制性更强的查询条件缩小操作的作用域，或者通过 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)联系技术支持。 示例： `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | 40324 | 无法识别的管道阶段名称。 | 聚合管道请求中的阶段名称无法识别。 | 确保所有聚合管道名称在你的请求中都有效。 |
 | - | MongoDB 线路版本问题 | 旧版本的 MongoDB 驱动程序无法在连接字符串中检测 Azure Cosmos 帐户的名称。 | 在 Cosmos DB 的 API for MongoDB 连接字符串末尾追加 appName=@**accountName**@，其中 ***accountName*** 是 Cosmos DB 帐户名。 |
+| - | MongoDB 客户端网络问题 (例如 socket 或 endOfStream 异常) | 网络请求已失败。 这通常是由 MongoDB 客户端正在尝试使用的非活动 TCP 连接引起的。 MongoDB 驱动程序通常利用连接池，这会导致从用于请求的池中选择随机连接。 非活动连接通常在四分钟后 Azure Cosmos DB 结束。 | 你可以在应用程序代码中重试这些失败的请求，将 MongoDB 客户端 (驱动程序) 设置更改为在四分钟超时时间段之前拆卸非活动 TCP 连接，或配置 OS keepalive 设置以保持处于活动状态的 TCP 连接。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a5764a9f230540d58edf71e8c00781e86589aa9a
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ec4917aa378f746eb2caac6a7b4ce99d1c44db90
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070161"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127645"
 ---
 # <a name="configure-and-submit-training-runs"></a>配置和提交训练运行
 
@@ -175,6 +175,19 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="troubleshooting"></a>疑难解答
 
+* **运行失败， `jwt.exceptions.DecodeError`** 出现错误：准确的错误消息： `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` 。 
+    
+    请考虑升级到最新版本的 azureml 核心： `pip install -U azureml-core` 。
+    
+    如果在本地运行时遇到此问题，请检查在启动运行的环境中安装的 PyJWT 版本。 受支持的 PyJWT 版本为 2.0.0 <。 如果版本 >= 2.0.0，则从环境中卸载 PyJWT。 你可以检查 PyJWT 的版本，并按如下所示卸载和安装正确的版本：
+    1. 启动命令行界面，激活安装了 azureml 核心的 conda 环境。
+    2. 输入 `pip freeze` 并查找 `PyJWT` ，如果找到，则列出的版本应 < 2.0。0
+    3. 如果列出的版本不是受支持的版本，请 `pip uninstall PyJWT` 在命令行界面中输入 y 进行确认。
+    4. 使用 `pip install 'PyJWT<2.0.0'` 进行安装
+    
+    如果要在运行时提交用户创建的环境，请考虑在该环境中使用最新版本的 azureml 核心。 版本 >= azureml 核心 < 2.0.0 的 pin PyJWT。 如果需要在提交的环境中使用 azureml 核心 < 1.18.0 的版本，请确保在 pip 依赖项中指定 PyJWT < 2.0.0。
+
+
  * **ModuleErrors (没有名为) 的模块**：如果在 Azure ML 中提交试验时运行到 ModuleErrors 中，则训练脚本需要安装一个包，但不会添加它。 你提供包名称后，Azure ML 在用于训练运行的环境中安装该包。
 
     如果使用估算器提交试验，则可以根据要从哪个源安装包，通过估算器中的 `pip_packages` 或 `conda_packages` 参数指定包名称。 还可以使用 `conda_dependencies_file` 指定包含所有依赖项的 yml 文件，或使用 `pip_requirements_file` 参数列出 txt 文件中的所有 pip 要求。 如果你有自己的 Azure ML 环境对象，并且希望替代估算器使用的默认映像，则可以通过估算器构造函数的 `environment` 参数来指定该环境。
@@ -204,18 +217,6 @@ run.wait_for_completion(show_output=True)
     ```
 
     在内部，Azure ML 会将具有相同指标名称的块串联到一个连续列表中。
-
-* **运行失败， `jwt.exceptions.DecodeError`** 出现错误：准确的错误消息： `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` 。 
-    
-    请考虑升级到最新版本的 azureml 核心： `pip install -U azureml-core` 。
-    
-    如果在本地运行时遇到此问题，请检查在启动运行的环境中安装的 PyJWT 版本。 受支持的 PyJWT 版本为 2.0.0 <。 如果版本 >= 2.0.0，则从环境中卸载 PyJWT。 你可以检查 PyJWT 的版本，并按如下所示卸载和安装正确的版本：
-    1. 启动命令行界面，激活安装了 azureml 核心的 conda 环境。
-    2. 输入 `pip freeze` 并查找 `PyJWT` ，如果找到，则列出的版本应 < 2.0。0
-    3. 如果列出的版本不是受支持的版本，请 `pip uninstall PyJWT` 在命令行界面中输入 y 进行确认。
-    4. 使用 `pip install 'PyJWT<2.0.0'` 进行安装
-    
-    如果要在运行时提交用户创建的环境，请考虑在该环境中使用最新版本的 azureml 核心。 版本 >= azureml 核心 < 2.0.0 的 pin PyJWT。 如果需要在提交的环境中使用 azureml 核心 < 1.18.0 的版本，请确保在 pip 依赖项中指定 PyJWT < 2.0.0。
 
 * **计算目标需要很长时间才能启动**：计算目标的 Docker 映像是从 Azure 容器注册表 (ACR) 加载的。 默认情况下，Azure 机器学习创建使用 *基本* 服务层的 ACR。 将工作区的 ACR 更改为 "标准" 或 "高级" 级别可能会减少生成和加载图像所用的时间。 有关详细信息，请参阅 [Azure 容器注册表服务层级](../container-registry/container-registry-skus.md)。
 

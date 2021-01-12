@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62c8240a4d2e50aa3b584f322baf7d2ee217c6d3
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816150"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127866"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>排查移动服务推送安装问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "88816150"
 
 ## <a name="credentials-check-errorid-95107--95108"></a>凭据检查（ErrorID：95107 和 95108）
 
-验证在启用复制期间选择的用户帐户是否有效且准确。 Azure Site Recovery 需要具有**管理员特权**的 **root** 帐户或用户帐户来执行推送安装。 否则，系统会在源计算机上阻止推送安装。
+验证在启用复制期间选择的用户帐户是否有效且准确。 Azure Site Recovery 需要具有 **管理员特权** 的 **root** 帐户或用户帐户来执行推送安装。 否则，系统会在源计算机上阻止推送安装。
 
 对于 Windows（**错误 95107**），请验证用户是否能够使用本地帐户或域帐户在源计算机上进行管理访问。 如果使用的不是域帐户，则需在本地计算机上禁用远程用户访问控制。
 
@@ -106,7 +106,22 @@ ms.locfileid: "88816150"
 
 若要解决该错误：
 
+* 使用本地帐户或域帐户验证用户帐户是否具有源计算机的管理访问权限。 如果使用的不是域帐户，则需在本地计算机上禁用远程用户访问控制。
+  * 若要手动添加注册表项来禁用远程用户访问控制，请执行以下操作：
+    * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+    * 添加一个新的 `DWORD`：`LocalAccountTokenFilterPolicy`
+    * 将值设置为 `1`
+  * 若要添加注册表项，请在命令提示符下运行以下命令：
+
+    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+
 * 请确保你能够从配置服务器对源计算机执行 ping 操作。 如果在启用复制期间选择了横向扩展进程服务器，请确保能够从进程服务器对源计算机执行 ping 操作。
+
+* 请确保虚拟机上已启用 "文件和打印机共享" 服务。 查看 [此处](vmware-azure-troubleshoot-push-install.md#file-and-printer-sharing-services-check-errorid-95105--95106)的步骤。
+
+* 请确保虚拟机上已启用 WMI 服务。 查看 [此处](vmware-azure-troubleshoot-push-install.md#windows-management-instrumentation-wmi-configuration-check-error-code-95103)的步骤。
+
+* 确保可从进程服务器访问虚拟机上的网络共享文件夹。 查看 [此处](vmware-azure-troubleshoot-push-install.md#check-access-for-network-shared-folders-on-source-machine-errorid-9510595523)的步骤。
 
 * 从源服务器计算机的命令行中，使用 `Telnet` 在 HTTPS 端口 135 上对配置服务器或横向扩展进程服务器执行 ping 操作，如以下命令所示。 此命令检查是否存在任何网络连接问题或防火墙端口阻止问题。
 

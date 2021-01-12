@@ -1,14 +1,14 @@
 ---
 title: Azure 服务总线故障排除指南 | Microsoft Docs
-description: 了解有关使用 Azure 服务总线时可能会遇到的一些问题的疑难解答提示和建议。
+description: 了解你在使用 Azure 服务总线时可能遇到的一些问题的故障排除技巧和建议。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: aab7fa53b4af309c68cd91fdb1d25c5771f89828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c31d252d75a2ba75528cd12d3a94bad5bd9f677
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261118"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126863"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服务总线故障排除指南
 本文提供的故障排除技巧和建议适用于你在使用 Azure 服务总线时可能会遇到的一些问题。 
@@ -26,7 +26,7 @@ ms.locfileid: "91261118"
     
     失败错误消息的示例：
 
-    ```json
+    ```xml
     <Error>
         <Code>400</Code>
         <Detail>

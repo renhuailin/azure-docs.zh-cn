@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: bca826cda8dfe47c341886faaf4a0d66f09d37d2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966337"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127135"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 扩展故障排除
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -78,26 +78,30 @@ Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomS
 
 ### <a name="trigger-a-new-goalstate-to-the-vm"></a>触发 VM 的新 GoalState
 你可能会注意到某个扩展尚未执行，或者由于缺少“Windows Azure CRP 证书生成器”（该证书用于保护扩展的受保护设置的传输）而无法执行。
-可以通过从虚拟机内重启 Windows 来宾代理自动重新生成该证书：
+此证书将通过从虚拟机内重新启动 Windows 来宾代理来自动重新生成：
 - 打开任务管理器
 - 转到“详细信息”选项卡
 - 找到 WindowsAzureGuestAgent.exe 进程
 - 右键单击并选择“结束任务”。 该进程将自动重启
 
 
-还可以通过执行“空更新”来触发 VM 的新 GoalState：
+还可以通过执行 "VM 重新应用" 来触发到 VM 的新 GoalState。 VM [重新应用](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) 是一种在2020中引入的 API，用于重新应用 VM 的状态。 我们建议你一次执行此操作，这样可以容忍短暂的 VM 停机。 虽然重新应用本身不会导致 VM 重新启动，但大多数情况下调用 "重新应用" 不会重新启动 VM，但当重新应用触发新的目标状态时，将应用其他对 VM 模型的其他待定更新，并且其他更改可能需要重新启动。 
 
-Azure PowerShell：
+Azure 门户：
+
+在门户中，选择 VM，并在左侧窗格中的 " **支持 + 故障排除**" 下，选择 "重新 **应用**"，然后选择 " **重新应用**"。
+
+
+Azure PowerShell *(将 RG 名称和 VM 名称替换为你的值)*：
 
 ```azurepowershell
-$vm = Get-AzureRMVM -ResourceGroupName <RGName> -Name <VMName>  
-Update-AzureRmVM -ResourceGroupName <RGName> -VM $vm  
+Set-AzVM -ResourceGroupName <RG Name> -Name <VM Name> -Reapply
 ```
 
-Azure CLI：
+Azure CLI *(将 RG 名称和 VM 名称替换为你的值)*：
 
 ```azurecli
-az vm update -g <rgname> -n <vmname>
+az vm reapply -g <RG Name> -n <VM Name>
 ```
 
-如果“空更新”不起作用，则可以从 Azure 管理门户向 VM 添加新的空数据磁盘，然后在重新添加证书后将其删除。
+如果 "VM 重新应用" 不起作用，则可以从 Azure 管理门户向 VM 添加新的空数据磁盘，然后在添加证书后将其删除。

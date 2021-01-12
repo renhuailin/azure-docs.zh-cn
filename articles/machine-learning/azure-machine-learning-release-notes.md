@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 0ecf47ecdc66c0005f0d793d91a67af102fb1c76
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 4ba06af98714004e4429fe802a206acdfa8fb148
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107899"
+ms.locfileid: "98127611"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -27,8 +27,6 @@ ms.locfileid: "98107899"
 + **Bug 修复与改进**
   + **azure-cli-ml**
     + framework_version 在 OptimizationConfig 中添加。 在将模型注册到框架多个时，将使用此方法。
-  + **azureml-automl-runtime**
-    + 在此更新中，我们添加了 holt holt-winters 指数平滑处理 AutoML SDK 的预测工具箱。 给定时序后， (AICc 会选择最佳模型) 并返回 [的信息标准 ](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) 。
   + **contrib-优化**
     + framework_version 在 OptimizationConfig 中添加。 在将模型注册到框架多个时，将使用此方法。
   + **azureml-pipeline-steps**

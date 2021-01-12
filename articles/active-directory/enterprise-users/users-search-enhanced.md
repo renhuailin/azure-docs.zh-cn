@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 01/11/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296679135063e2c7e1b7f0e3ffd193c8f18c3acf
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5038bde01a6b183a25a47f3b4e206c1ce80e6b6d
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576258"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127832"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Azure Active Directory 中 (预览) 的用户管理增强功能
 
@@ -60,6 +60,9 @@ ms.locfileid: "96576258"
 - 名称：用户的显示名称。
 - 用户主体名称：用户的用户主体名称 (UPN) 。
 - 用户类型： Member、guest、none。
+- 创建时间：创建用户的日期和时间。
+- 职务：用户的职务。
+- 部门：用户所在的部门。
 - 目录已同步：指示用户是否从本地目录同步。
 - 标识颁发者：用于登录用户帐户的标识的颁发者。
 - 对象 ID：用户的对象 ID。
@@ -76,7 +79,8 @@ ms.locfileid: "96576258"
 " **已删除用户** " 页包括 " **所有用户** " 页上可用的所有列，以及一些其他列，即：
 
 - 删除日期：用户从组织中第一次删除的日期 (用户可) 还原。
-- 永久删除日期：从组织中永久删除用户的过程将自动开始的日期。 
+- 永久删除日期：从组织中永久删除用户的过程将自动开始的日期。
+- 原始用户主体名称：在其对象 ID 添加为其已删除 UPN 的前缀之前，用户的原始 UPN。
 
 > [!NOTE]
 > 删除日期以协调世界时 (UTC) 显示。
@@ -105,6 +109,10 @@ ms.locfileid: "96576258"
 - 用户类型： Member、guest、none
 - 目录已同步状态：是，否
 - 创建类型：邀请、电子邮件验证、本地帐户
+- 创建时间：过去7、14、30、90、360或 >360 天前
+- 职务：输入职务
+- 部门：输入部门名称
+- 组：搜索组
 - 邀请状态–等待接受，已接受
 - 域名：输入域名
 - 公司名称：输入公司名称
@@ -117,6 +125,9 @@ ms.locfileid: "96576258"
 - 用户类型： Member、guest、none
 - 目录已同步状态：是，否
 - 创建类型：邀请、电子邮件验证、本地帐户
+- 创建时间：过去7、14、30、90、360或 > 360 天前
+- 职务：输入职务
+- 部门：输入部门名称
 - 邀请状态：待定接受，已接受
 - 删除日期：过去7天、14天或30天
 - 域名：输入域名

@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: a7e39bb8ed742007a13a222771b430372d50e889
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 717a1bc4361ba4a7366f4864c1fe44f93b6f4b5e
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071691"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127849"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -43,7 +43,7 @@ ms.locfileid: "98071691"
    >[!NOTE]
    >作为 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续转换的一部分，OMS 工作区现在称为 *Log Analytics 工作区*。
 
-5. 选择“确定”。
+5. 选择“确定”  。
 
 部署 ITSMC 资源后，窗口右上角会出现一个通知。
 
@@ -153,10 +153,10 @@ ms.locfileid: "98071691"
 
     * 在 "工作项" 下拉列表中选择 "事件"： ![ 屏幕截图，显示 "ITSM" 事件窗口。](media/itsmc-overview/itsm-action-configuration-event.png)
 
-        * 如果选择 **"为每个日志项创建单独的工作项 (则不会填充配置项目字段。可能会导致大量的工作项。 ) "** 在单选按钮选择中，将根据日志搜索警报查询的搜索结果中的每一行创建一个工作项。 在工作项的负载中，description 属性将从搜索结果中获得该行。
+        * 如果选择 **"为每个日志项创建单独的工作项 (则不会填充配置项目字段。可能会导致大量的工作项。 ) "** 在单选按钮选择中，将根据日志搜索警报查询的搜索结果中的每一行创建一个工作项。 工作项的负载中的 "说明" 属性将包含搜索结果中的行。
         * 如果在单选按钮选择中选择 **"为每个配置项目创建单独的工作项"** ，则每个警报中的每个配置项都将创建新的工作项。 在 ITSM 系统中，每个配置项目可以有多个工作项。 这与选中 "事件/警报" 一节中的复选框相同。
 
-10. 选择“确定”。
+10. 选择“确定”  。
 
 当你创建或编辑 Azure 警报规则时，使用具有 ITSM 操作的操作组。 当警报触发时，会在 ITSM 工具中创建或更新工作项。
 

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22ee57592af838a236d75fa7f56a0c8e1ed89403
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f776482c684004c8d661f69d8158ba9597c923b2
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046512"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127022"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解集成
 
@@ -84,13 +84,13 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
 
 在继续之前，请记下你的 *事件中心命名空间* 和 *资源组*，因为你将在本文的后面再次使用它们来创建另一个事件中心。
 
-## <a name="create-an-azure-function"></a>创建 Azure 函数 
+## <a name="create-a-function-in-azure"></a>在 Azure 中创建一个函数
 
-接下来，你将在 function app 中创建一个事件中心触发的函数。 可以使用端到端教程中创建的函数应用 ([*教程：连接端到端解决方案*](./tutorial-end-to-end.md)) 或你自己的解决方案。 
+接下来，你将使用 Azure Functions 在 function app 中创建事件中心触发的函数。 可以使用端到端教程中创建的函数应用 ([*教程：连接端到端解决方案*](./tutorial-end-to-end.md)) 或你自己的解决方案。 
 
 此函数将这些克隆的更新事件从其原始格式转换为 json 对象，仅包含来自孪生的更新和添加的值。
 
-有关将事件中心与 Azure 函数结合使用的详细信息，请参阅 [*适用于 Azure Functions 的 Azure 事件中心触发器*](../azure-functions/functions-bindings-event-hubs-trigger.md)。
+有关将事件中心与 Azure Functions 一起使用的详细信息，请参阅 [*Azure Functions 的 Azure 事件中心触发器*](../azure-functions/functions-bindings-event-hubs-trigger.md)。
 
 在已发布的函数应用中，将函数代码替换为以下代码。
 

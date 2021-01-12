@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bb90c5776e67c1ba8fecdbf394a8098e96ca0652
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a2c26c3e41f64a1593a2d3386c76427c0b9682e9
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022371"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127475"
 ---
 # <a name="soft-delete-for-blobs"></a>blob 的软删除
 
@@ -79,7 +79,7 @@ Blob 软删除适用于新的和现有的常规用途 v2、常规用途 v1 和 B
 > [!NOTE]  
 > 覆盖软删除 blob 时，将自动生成写入操作前 blob 状态的软删除快照。 新 blob 将继承被覆盖 blob 的层级。
 
-如果删除容器或帐户或者覆盖 blob 元数据和 blob 属性，软删除皆不会保存数据。 若要防止存储帐户被错误删除，可以使用 Azure 资源管理器配置锁定。 有关详细信息，请参阅 Azure 资源管理器文章[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
+如果删除容器或帐户，或者覆盖 blob 元数据和 blob 属性，软删除不会保存数据。 若要防止存储帐户被删除，你可以使用 Azure 资源管理器配置锁。 有关详细信息，请参阅 Azure 资源管理器文章 [锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
 
 下表详述了启用软删除后的预期行为：
 
@@ -171,7 +171,7 @@ Copy a snapshot over the base blob:
 
 ### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>如果在启用软删除的情况下删除整个帐户或容器，是否会保存所有相关 Blob？
 
-不会，如果删除整个帐户或容器，将永久删除所有相关 blob。 若要了详细解如何防止意外删除存储帐户，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
+不会，如果删除整个帐户或容器，将永久删除所有相关 blob。 有关防止意外删除存储帐户的详细信息，请参阅 [锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>能否查看已删除数据的容量指标？
 

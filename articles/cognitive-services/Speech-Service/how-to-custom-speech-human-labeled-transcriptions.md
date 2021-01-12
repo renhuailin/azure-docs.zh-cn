@@ -10,18 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 4516bbddd3fda593021288a440e1b354d4d7f1e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340231"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126880"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>如何创建人为标记的听录
 
 若要提高特定情况下（尤其是在因删除或错误替代单词而导致问题的情况下）的识别准确度，需要对音频数据使用人为标记的听录。 什么是人为标记的听录？ 很简单，人为标记的听录是对音频文件进行的逐字/词听录。
 
-需要大的听录数据样本来提高识别准确性。建议提供 10 到 1,000 小时的听录数据。 在此页上，我们将查看旨在帮助你创建高质量听录的准则。 本指南按区域设置划分为“美国英语”、“中国大陆普通话”和“德语”三部分。
+若要改善识别，建议使用大量的脚本数据，建议提供10到20小时的脚本数据。 在此页上，我们将查看旨在帮助你创建高质量听录的准则。 本指南按区域设置划分为“美国英语”、“中国大陆普通话”和“德语”三部分。
+
+> [!NOTE]
+> 并非所有基本模型都支持音频文件的自定义。 如果基本模型不支持该模型，则训练将使用与使用相关文本相同的方式来使用转录的文本。
 
 ## <a name="us-english-en-us"></a>美国英语 (en-US)
 
@@ -29,9 +32,9 @@ ms.locfileid: "96340231"
 
 以下是一些示例：
 
-| 要避免的字符 | Substitution | 注释 |
+| 要避免的字符 | 替换 | 备注 |
 | ------------------- | ------------ | ----- |
-| “Hello world” | "Hello world" | 左引号和右引号都已替换为相应的 ASCII 字符。 |
+| “Hello world” | “Hello world” | 左引号和右引号都已替换为相应的 ASCII 字符。 |
 | John’s day | John's day | 撇号已替换为相应的 ASCII 字符。 |
 | it was good—no, it was great! | it was good--no, it was great! | 长划线已替换为两个连字符。 |
 
@@ -49,7 +52,7 @@ ms.locfileid: "96340231"
 
 | 原始文本               | 规范化后的文本              |
 | --------------------------- | ------------------------------------- |
-| Dr.Bruce Banner            | Doctor Bruce Banner                   |
+| Bruce 横幅            | Doctor Bruce Banner                   |
 | James Bond, 007             | James Bond, double oh seven           |
 | Ke$ha                       | Kesha                                 |
 | How long is the 2x4         | How long is the two by four           |
@@ -84,7 +87,7 @@ ms.locfileid: "96340231"
 
 以下是一些示例：
 
-| 要避免的字符 | Substitution   | 注释 |
+| 要避免的字符 | 替换   | 备注 |
 | ------------------- | -------------- | ----- |
 | "你好" | "你好" | 左引号和右引号都已替换为相应的字符。 |
 | 需要什么帮助? | 需要什么帮助？| 问号已替换为相应的字符。 |
@@ -131,7 +134,7 @@ ms.locfileid: "96340231"
 文本规范化是指将字词转换为在训练模型时使用的一致格式。 某些规范化规则会自动应用到文本，但我们建议你在准备人为标记的听录数据时遵循以下准则：
 
 - 将小数点写为“,”，而不是“.”。
-- 将时间分隔符写为“:”，而不是“.”（例如：12:00 Uhr）。
+- 写入时间分隔符为 "："，而不是 "." (例如： 12:00 Uhr) 。
 - 不替换“ca.” 等缩写。 我们建议使用完整的口语形式。
 - 删除四个主要的数学运算符（+、-、\* 和 /）。 我们建议将其替换为文字形式：“plus”、“minus”、“mal”、“geteilt”。
 - 删除比较运算符（=、< 和 >）。 我们建议其替换为“gleich”、“kleiner als”和“grösser als”。
