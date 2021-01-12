@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: db36a77d93735b151ad893b7e25ba86f104e7b90
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 9bee391ddb0fa6c270c6d833fb7e81d5f4880497
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510458"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118636"
 ---
 # <a name="create-a-query-in-azure-cognitive-search"></a>在 Azure 中创建查询认知搜索
 
@@ -26,7 +26,7 @@ ms.locfileid: "97510458"
 | 方法 | 说明 |
 |-------------|-------------|
 | 门户| [搜索资源管理器 (门户) ](search-explorer.md) 是 Azure 门户中的查询接口，用于对基础搜索服务中的索引运行查询。 门户会在后台对 [搜索文档](/rest/api/searchservice/search-documents) 操作进行 REST API 调用，但无法调用自动完成、建议或文档查找。<br/><br/> 您可以选择任何索引和 REST API 版本，包括预览。 查询字符串可以使用简单或完整语法，并支持所有查询参数 (filter、select、searchFields 等) 。 在门户中，打开索引时，可以在并排选项卡中使用 "搜索资源管理器" 和 "索引 JSON 定义" 来轻松访问字段属性。 在测试查询时检查哪些字段可搜索、可排序、可筛选和可查找。 <br/>建议用于早期调查、测试和验证。 [了解详细信息。](search-explorer.md) |
-| Web 测试工具| [Postman 或 Visual Studio Code](search-get-started-rest.md) 是用于在 REST 上构建 [搜索文档](/rest/api/searchservice/search-documents) 请求和任何其他请求的强选项。 REST Api 支持 Azure 认知搜索中每个可能的编程操作，并且当你使用 Postman 或 Visual Studio Code 之类的工具时，你可以通过交互方式发出请求，以了解该功能在投入使用之前的工作方式。 如果在 Azure 门户中没有参与者或管理权限，则 web 测试工具是一个不错的选择。 只要有搜索 URL 和查询 API 密钥，就可以使用这些工具对现有索引运行查询。 |
+| Web 测试工具| [Postman](search-get-started-rest.md) 或 [Visual Studio Code](search-get-started-vs-code.md) 是用于在 REST 上构建 [搜索文档](/rest/api/searchservice/search-documents) 请求和任何其他请求的强选项。 REST Api 支持 Azure 认知搜索中每个可能的编程操作，并且当你使用 Postman 或 Visual Studio Code 之类的工具时，你可以通过交互方式发出请求，以了解该功能在投入使用之前的工作方式。 如果在 Azure 门户中没有参与者或管理权限，则 web 测试工具是一个不错的选择。 只要有搜索 URL 和查询 API 密钥，就可以使用这些工具对现有索引运行查询。 |
 | Azure SDK | 准备好编写代码时，可以在适用于 .NET、Python、JavaScript 或 Java 的 Azure Sdk 中使用 Azure.Search.Docargumentable 客户端库。 每个 SDK 都具有自己的发布计划，但你可以在其中创建和查询索引。 <br/><br/>[SearchClient ( .net) ](/dotnet/api/azure.search.documents.searchclient) 可用于在 c # 中查询搜索索引。  [了解详细信息。](search-howto-dotnet-sdk.md)<br/><br/>可以使用[python) 的 SearchClient (](/dotnet/api/azure.search.documents.searchclient)在 python 中查询搜索索引。 [了解详细信息。](search-get-started-python.md)<br/><br/>[SearchClient (javascript) ](/dotnet/api/azure.search.documents.searchclient) 可用于在 javascript 中查询搜索索引。 [了解详细信息。](search-get-started-javascript.md) |
 
 ## <a name="set-up-a-search-client"></a>设置搜索客户端
@@ -68,7 +68,7 @@ POST https://myservice.search.windows.net/indexes/hotels-sample-index/docs/searc
 | C # 和 .NET | [SearchClient](/dotnet/api/azure.search.documents.searchclient) | [在 C 中发送第一个搜索查询#](/dotnet/api/overview/azure/search.documents-readme#send-your-first-search-query) |
 | Python      | [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) | [在 Python 中发送第一个搜索查询](/python/api/overview/azure/search-documents-readme#send-your-first-search-request) |
 | Java        | [SearchClient](/java/api/com.azure.search.documents.searchclient) | [在 Java 中发送第一个搜索查询](/java/api/overview/azure/search-documents-readme#send-your-first-search-query)  |
-| Javascript  | [SearchClient](/javascript/api/@azure/search-documents/searchclient) | [在 JavaScript 中发送第一个搜索查询](/javascript/api/overview/azure/search-documents-readme#send-your-first-search-query)  |
+| JavaScript  | [SearchClient](/javascript/api/@azure/search-documents/searchclient) | [在 JavaScript 中发送第一个搜索查询](/javascript/api/overview/azure/search-documents-readme#send-your-first-search-query)  |
 
 ## <a name="choose-a-parser-simple--full"></a>选择一个分析器：简单 | 完整
 

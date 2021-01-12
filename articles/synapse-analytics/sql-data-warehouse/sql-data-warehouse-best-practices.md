@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9802e6553d553aae4f13194dc9951d1a17af6f66
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b17e47463ef3fe9a2cc959364825451468266f0e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462884"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120013"
 ---
 # <a name="best-practices-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中 (以前的 SQL DW) 专用 SQL 池的最佳实践
 
@@ -74,7 +74,7 @@ Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似�
 > [!NOTE]
 > 若要在使用 gzip 文本文件时获得最大的吞吐量，请将文件拆分成至少 60 个文件，以便最大程度提高加载的并行度。  若要更快的总吞吐量，请考虑并行加载数据。
 
-另请参阅 [加载数据](design-elt-data-loading.md)、 [使用 PolyBase 的指南](guidance-for-loading-data.md)、 [专用 SQL 池加载模式和策略](https://blogs.msdn.microsoft.com/sqlcat/20../../)、使用 [Azure 数据工厂加载数据]( ../../data-factory/load-azure-sql-data-warehouse.md)、 [使用 AZURE 数据工厂移动数据](../../data-factory/transform-data-using-machine-learning.md)、 [创建外部文件格式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以及 [创建表作为 select (CTAS) ](sql-data-warehouse-develop-ctas.md)。
+另请参阅 [加载数据](design-elt-data-loading.md)、 [使用 PolyBase 的指南](guidance-for-loading-data.md)、 [专用 SQL 池加载模式和策略](/archive/blogs/sqlcat/)、使用 [Azure 数据工厂加载数据]( ../../data-factory/load-azure-sql-data-warehouse.md)、 [使用 AZURE 数据工厂移动数据](../../data-factory/transform-data-using-machine-learning.md)、 [创建外部文件格式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以及 [创建表作为 select (CTAS) ](sql-data-warehouse-develop-ctas.md)。
 
 ## <a name="load-then-query-external-tables"></a>加载并查询外部表
 
@@ -97,7 +97,7 @@ Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似�
 
 有关选择分布列如何能提升性能，以及如何在 CREATE TABLE 语句的 WITH 子句中定义分布式表的更多详细信息，请参阅以下链接。
 
-另请参阅[表概述](sql-data-warehouse-tables-overview.md)、[表分布](sql-data-warehouse-tables-distribute.md)、[选择表分布](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+另请参阅[表概述](sql-data-warehouse-tables-overview.md)、[表分布](sql-data-warehouse-tables-distribute.md)、[选择表分布](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="do-not-over-partition"></a>不要过度分区
 
@@ -180,7 +180,7 @@ Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似�
 
 另请参阅[故障诊断](sql-data-warehouse-troubleshoot.md)一文，了解常见的问题和解决方案。
 
-如果在本文中没有找到所需内容，可尝试使用本页面左侧的“搜索文档”来搜索所有 Azure Synapse 文档。  可以在[有关 Azure Synapse 的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)上向其他用户和 Azure Synapse 产品组发布问题。 我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  
+如果在本文中没有找到所需内容，可尝试使用本页面左侧的“搜索文档”来搜索所有 Azure Synapse 文档。  可以在[有关 Azure Synapse 的 Microsoft 问答页](/answers/topics/azure-synapse-analytics.html)上向其他用户和 Azure Synapse 产品组发布问题。 我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  
 
 如果更喜欢在 Stack Overflow 上提问，还可以访问 [Azure Synapse Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)。
 

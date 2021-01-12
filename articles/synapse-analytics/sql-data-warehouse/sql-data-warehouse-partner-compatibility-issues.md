@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 11/18/2020
 ms.author: procha
 ms.reviewer: jrasnick
-ms.openlocfilehash: 861b963922d64926266b42a23f85e9dc30fda7a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1031656eaa5125d07ae078773379270b26625e7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95903978"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121373"
 ---
 # <a name="compatibility-issues-with-third-party-applications-and-azure-synapse-analytics"></a>第三方应用程序与 Azure Synapse Analytics 的兼容性问题
 
@@ -55,5 +55,5 @@ ms.locfileid: "95903978"
 
 ## <a name="see-also"></a>另请参阅
 
-* [Azure Synapse Analytics 中专用 SQL 池的 t-sql 语言元素。](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-* [支持 t-sql 语句，适用于 Azure Synapse 分析中的专用 SQL 池。](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)
+* [Azure Synapse Analytics 中专用 SQL 池的 t-sql 语言元素。](./sql-data-warehouse-reference-tsql-language-elements.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
+* [支持 t-sql 语句，适用于 Azure Synapse 分析中的专用 SQL 池。](./sql-data-warehouse-reference-tsql-statements.md)

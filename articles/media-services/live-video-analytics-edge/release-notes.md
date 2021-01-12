@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析发行说明 - Azure
 description: 本主题提供 IoT Edge 上的实时视频分析版本的发行说明、改进、bug 修复和已知问题。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7761fee8f23b5be259f9a5c278f761fa4ce92fbf
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059970"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121237"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 上的实时视频分析发行说明
 
@@ -20,6 +20,23 @@ ms.locfileid: "98059970"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
+
+<hr width=100%>
+
+## <a name="january-12-2021"></a>2021年1月12日
+
+此版本标记适用于模块2021年1月的刷新：
+
+```
+mcr.microsoft.com/media/live-video-analytics:2.0.1
+```
+
+> [!NOTE]
+> 在快速入门和教程中，部署清单使用2个 (实时视频分析： 2) 的标记。 因此，只需重新部署此类清单，即可在“边缘”>“设备”上更新该模块。
+### <a name="bug-fixes"></a>Bug 修复 
+
+* `ActivationSignalOffset` `MinimumActivationTime` `MaximumActivationTime` 未正确地将字段和信号入口处理器设置为所需属性。 它们现在是 **可选** 属性。
+* 修复了一个使用 bug，该 bug 会导致 IoT Edge 模块上的实时视频分析在特定区域中部署时崩溃。
 
 <hr width=100%>
 

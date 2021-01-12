@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 8d4c1928ae1fac9b840245756c4bf5fe22a83f0f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4ed02901aa0d6948e9c6443e5bbcf4ebfbc872f7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590505"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118687"
 ---
 # <a name="synapse-studio-sql-scripts-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Synapse Studio SQL 脚本 
 
@@ -88,4 +88,4 @@ Synapse Studio 提供了一个用于编写 SQL 查询的 SQL 脚本 web 界面�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关编写 SQL 脚本的详细信息，请参阅 [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)。
+有关编写 SQL 脚本的详细信息，请参阅 [Azure Synapse Analytics](../index.yml)。

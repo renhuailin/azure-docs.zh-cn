@@ -11,18 +11,18 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c55f8483ba54ecf9778693b364603d642ddb3deb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2b81ddedbcb254a840e85d41cf9d69c78b149bbd
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452328"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121390"
 ---
 # <a name="connect-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>通过 Visual Studio 和 SSDT 连接到 Azure Synapse Analytics (以前的 SQL DW) 
 
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](../sql/get-started-azure-data-studio.md)
-> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+> * [Power BI](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
@@ -43,7 +43,7 @@ ms.locfileid: "96452328"
 2. 通过选择“视图”   > “SQL Server 对象资源管理器”  打开 SQL Server 对象资源管理器。
    
     ![SQL Server 对象资源管理器](./media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
-3. 单击“添加 SQL Server”图标。
+3. 单击“添加 SQL Server”  图标。
    
     ![添加 SQL 服务器](./media/sql-data-warehouse-query-visual-studio/add-server.png)
 4. 填写“连接到服务器”窗口中的字段。
@@ -70,7 +70,7 @@ ms.locfileid: "96452328"
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. 若要运行查询，请单击绿色箭头，或使用以下快捷键：`CTRL`+`SHIFT`+`E`。
+4. 通过单击绿色箭头或使用以下快捷方式运行查询：`CTRL`+`SHIFT`+`E`。
    
     ![运行查询](./media/sql-data-warehouse-query-visual-studio/run-query.png)
 5. 查看查询结果。 在此示例中，FactInternetSales 表包含 60398 行。
@@ -78,6 +78,6 @@ ms.locfileid: "96452328"
     ![查询结果](./media/sql-data-warehouse-query-visual-studio/query-results.png)
 
 ## <a name="next-steps"></a>后续步骤
-可以进行连接和查询后，接下来请尝试[使用 Power BI 可视化数据](sql-data-warehouse-get-started-visualize-with-power-bi.md)。
+可以进行连接和查询后，接下来请尝试[使用 Power BI 可视化数据](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)。
 
 若要为 Azure Active Directory 身份验证配置环境，请参阅 [ (以前的 SQL DW) 验证专用 sql 池 ](sql-data-warehouse-authentication.md)。

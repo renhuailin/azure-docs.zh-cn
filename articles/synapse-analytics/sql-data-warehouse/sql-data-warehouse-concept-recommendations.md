@@ -11,12 +11,12 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 667629b7f613b11f40528b039c7525339b7a62d0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd32b9690f8a9aef92eb1f2fbcc4ec926a65584e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462872"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121186"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中针对专用 SQL 池的 azure 顾问建议
 
@@ -65,12 +65,12 @@ ms.locfileid: "96462872"
 
 
 ## <a name="adaptive-gen2-cache-utilization"></a>自适应 (Gen2) 缓存利用率
-如果你有一个很大的工作集，则可能会出现缓存命中百分比较低和缓存利用率较高的情况。 对于这种情况，应纵向扩展以增加缓存容量并重新运行工作负荷。 有关详细信息，请访问以下[文档](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache)。 
+如果你有一个很大的工作集，则可能会出现缓存命中百分比较低和缓存利用率较高的情况。 对于这种情况，应纵向扩展以增加缓存容量并重新运行工作负荷。 有关详细信息，请访问以下[文档](./sql-data-warehouse-how-to-monitor-cache.md)。 
 
 ## <a name="tempdb-contention"></a>tempdb 争用
 
-当存在高 tempdb 争用时，查询性能可能会降低。  tempdb 争用可以通过用户定义的临时表或在发生大量数据移动时发生。 对于这种情况，可以进行扩展以分配更多的 tempdb，并[配置资源类和工作负荷管理](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management)以便为查询提供更多内存。 
+当存在高 tempdb 争用时，查询性能可能会降低。  tempdb 争用可以通过用户定义的临时表或在发生大量数据移动时发生。 对于这种情况，可以进行扩展以分配更多的 tempdb，并[配置资源类和工作负荷管理](./sql-data-warehouse-workload-management.md)以便为查询提供更多内存。 
 
 ## <a name="data-loading-misconfiguration"></a>数据加载配置错误
 
-应始终从与专用 SQL 池相同的区域中的存储帐户加载数据，以最大程度地减少延迟。 使用 [COPY 语句进行高吞吐量数据引入](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，并在存储帐户中拆分暂存文件以最大限度地提高吞吐量。 如果无法使用 COPY 语句，可以使用 SqlBulkCopy API 或批处理容量较高的 bcp 来提高吞吐量。 有关其他数据加载指南，请访问以下[文档](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)。 
+应始终从与专用 SQL 池相同的区域中的存储帐户加载数据，以最大程度地减少延迟。 使用 [COPY 语句进行高吞吐量数据引入](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，并在存储帐户中拆分暂存文件以最大限度地提高吞吐量。 如果无法使用 COPY 语句，可以使用 SqlBulkCopy API 或批处理容量较高的 bcp 来提高吞吐量。 有关其他数据加载指南，请访问以下[文档](./guidance-for-loading-data.md)。

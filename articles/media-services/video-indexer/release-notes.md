@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 01/06/2021
 ms.author: juliako
-ms.openlocfilehash: 3552d55d995608dd0d471c84cd5e9f9988ebe2c0
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: b6e18e077b717da65ca8d70b9bda6a133dba1f5c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028635"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120081"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -44,7 +44,7 @@ ms.locfileid: "98028635"
 
 ### <a name="planned-video-indexer-website-authenticatication-changes"></a>计划视频索引器网站 authenticatication 更改
 
-从3月 2021 1 日开始，你将不再能够使用 Facebook 或 LinkedIn 注册 [视频索引器](https://www.videoindexer.ai/) 网站并登录。
+从3月1日开始2021，你将不再能够使用 Facebook 或 LinkedIn 注册并登录到[视频索引器网站](https://www.videoindexer.ai/)[开发人员门户](video-indexer-use-apis.md)。
 
 你将能够使用以下提供程序之一进行注册和登录： Azure AD、Microsoft 和 Google。
 

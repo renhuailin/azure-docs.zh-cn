@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
-ms.openlocfilehash: 5d291ad745122d929c4b664e9da5e4649e463529
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679105"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118995"
 ---
 # <a name="execute-r-script-module"></a>“执行 R 脚本”模块
 
@@ -49,10 +49,12 @@ azureml_main <- function(dataframe1, dataframe2){
 若要安装其他 R 包，请使用 `install.packages()` 方法。 包是针对每一个“执行 R 脚本”模块分别安装的。 它们不在其他“执行 R 脚本”模块之间共享。
 
 > [!NOTE]
+> **不** 建议从脚本捆绑包安装 R 包。 建议直接在脚本编辑器中安装包。
 > 在安装包时，请指定 CRAN 存储库，例如 `install.packages("zoo",repos = "http://cran.us.r-project.org")`。
 
 > [!WARNING]
 > Excute R 脚本模块不支持安装需要本机编译的包，如 `qdap` 需要 JAVA 和需要 `drc` c + + 的包的包。 这是因为此模块是在预安装的环境中使用非管理员权限执行的。
+> 不要安装预构建于 Windows 上的包，因为设计器模块是在 Ubuntu 上运行的。 若要检查是否在 windows 上预先生成了包，可以使用 [CRAN](https://cran.r-project.org/) 并搜索包，根据 OS 下载一个二进制文件，然后选中 " **生成：** **说明** 文件中的部分"。 下面是一个示例： :::image type="content" source="media/module/r-package-description.png" alt-text="R 包说明" lightbox="media/module/r-package-page.png":::
 
 此示例演示如何安装 Zoo：
 ```R

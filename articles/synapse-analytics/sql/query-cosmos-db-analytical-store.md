@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 22103ad580fa474f44eaf42c696d19bbbd137c8e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a0458264b6ea0c741244531fc104a7637108b06e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095094"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121339"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>使用 Azure Synapse 链接预览中的无服务器 SQL 池查询 Azure Cosmos DB 数据
 
@@ -222,7 +222,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-不要使用 `OPENROWSET` 没有显式定义的架构，因为这可能会影响性能。 请确保使用列的最小可能大小 (例如 VARCHAR (100) ，而不是默认 VARCHAR (8000) # A5。 你应使用某种 UTF-8 排序规则作为默认数据库排序规则或将其设置为显式列排序规则，以避免 [utf-8 转换问题](/azure/synapse-analytics/troubleshoot/reading-utf8-text)。 排序规则 `Latin1_General_100_BIN2_UTF8` 可以在使用某些字符串列筛选数据时提供最佳性能。
+不要使用 `OPENROWSET` 没有显式定义的架构，因为这可能会影响性能。 请确保使用列的最小可能大小 (例如 VARCHAR (100) ，而不是默认 VARCHAR (8000) # A5。 你应使用某种 UTF-8 排序规则作为默认数据库排序规则或将其设置为显式列排序规则，以避免 [utf-8 转换问题](../troubleshoot/reading-utf8-text.md)。 排序规则 `Latin1_General_100_BIN2_UTF8` 可以在使用某些字符串列筛选数据时提供最佳性能。
 
 ## <a name="query-nested-objects-and-arrays"></a>查询嵌套对象和数组
 
@@ -268,8 +268,8 @@ WITH (  paper_id    varchar(8000),
 详细了解如何分析 [Azure Synapse 链接中的复杂数据类型](../how-to-analyze-complex-schema.md) 和 [无服务器 SQL 池中的嵌套结构](query-parquet-nested-types.md)。
 
 > [!IMPORTANT]
-> 如果在文本（ `MÃƒÂ©lade` 而不是）中看到意外字符 `Mélade` ，则数据库排序规则不会设置为 [utf-8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) 排序规则。
-> 使用 SQL 语句（如）[将数据库的排序规则更改](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)为 utf-8 排序规则 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` 。
+> 如果在文本（ `MÃƒÂ©lade` 而不是）中看到意外字符 `Mélade` ，则数据库排序规则不会设置为 [utf-8](/sql/relational-databases/collations/collation-and-unicode-support#utf8) 排序规则。
+> 使用 SQL 语句（如）[将数据库的排序规则更改](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)为 utf-8 排序规则 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` 。
 
 ## <a name="flatten-nested-arrays"></a>平展嵌套数组
 
@@ -325,7 +325,7 @@ FROM
 | 补充信息 a epidemi .。。 |   `[{"first":"Olivier","last":"Flores","suffix":"","affiliation":{"laboratory":"UMR C53 CIRAD, …` | Marc-olivier | Flores |`{"laboratory":"UMR C53 CIRAD, …` |     
 
 > [!IMPORTANT]
-> 如果在文本（ `MÃƒÂ©lade` 而不是）中看到意外字符 `Mélade` ，则数据库排序规则不会设置为 [utf-8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) 排序规则。 使用 SQL 语句（如）[将数据库的排序规则更改](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)为 utf-8 排序规则 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` 。
+> 如果在文本（ `MÃƒÂ©lade` 而不是）中看到意外字符 `Mélade` ，则数据库排序规则不会设置为 [utf-8](/sql/relational-databases/collations/collation-and-unicode-support#utf8) 排序规则。 使用 SQL 语句（如）[将数据库的排序规则更改](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)为 utf-8 排序规则 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` 。
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Azure Cosmos DB 到 SQL 类型的映射
 

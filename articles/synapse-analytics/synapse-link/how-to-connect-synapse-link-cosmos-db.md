@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e4bcc13a2eaddbf394d8468b29eeff475119e2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5316f74ee38f597592ae4582aef31837f0f05fda
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459016"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119826"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>连接到 Azure Synapse Link for Azure Cosmos DB
 
@@ -24,8 +24,8 @@ ms.locfileid: "96459016"
 
 将 Azure Cosmos DB 数据库连接到工作区之前，需要以下各项：
 
-* 现有的 Azure Cosmos DB 数据库或按照[快速入门：管理 Azure Cosmos DB 帐户](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account)中的步骤创建一个新帐户。
-* 现有的 Azure Synapse 工作区，或按照[快速入门：创建 Synapse 工作区](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)中的步骤创建一个新工作区。
+* 现有的 Azure Cosmos DB 数据库或按照[快速入门：管理 Azure Cosmos DB 帐户](../../cosmos-db/how-to-manage-database-account.md)中的步骤创建一个新帐户。
+* 现有的 Azure Synapse 工作区，或按照[快速入门：创建 Synapse 工作区](../quickstart-create-workspace.md)中的步骤创建一个新工作区。
 
 > [!IMPORTANT]
 > 未启用托管虚拟网络的工作区当前支持 Azure Synapse Link for Azure Cosmos DB。

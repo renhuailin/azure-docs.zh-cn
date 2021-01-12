@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: bfb822481e00e84fa17bd4b1fcb58c1d4b89a124
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7bb0b9b4645be7e548fe116d9e9a2c92fae7dc96
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450854"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120948"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio 笔记本
 
@@ -33,7 +33,7 @@ Synapse Studio 笔记本是一个 web 界面，用于创建包含实时代码、
 ## <a name="preview-of-the-new-notebook-experience"></a>全新笔记本体验预览
 Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客户提供一致的笔记本体验，并最大限度地提高可发现性、生产力、共享和协作。 全新的笔记本体验已准备就绪，可供预览。 检查笔记本工具栏中的 " **预览功能** " 按钮，将其打开。 下表捕获了现有笔记本 (之间的功能比较，并将其称为 "经典笔记本" ) 新的预览。  
 
-|功能|传统笔记本|预览笔记本|
+|Feature|传统笔记本|预览笔记本|
 |--|--|--|
 |% 运行| 不支持 | &#9745;|
 |% 历史记录| 不支持 |&#9745;
@@ -553,4 +553,4 @@ Azure 数据工厂将查找参数单元，并将此单元格视为执行时传�
 - [Azure Synapse Analytics 中的 Apache Spark 是什么](apache-spark-overview.md)
 - [将 .NET for Apache Spark 与 Azure Synapse Analytics 配合使用](spark-dotnet.md)
 - [.NET for Apache Spark 文档](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)

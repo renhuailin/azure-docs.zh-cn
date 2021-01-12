@@ -6,16 +6,16 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 23961a03d1da1137d92ecd3b8003241120b11d80
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c2a6a88e9f730e17c929cf7949352448903435f6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493777"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118449"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密
 
-通过使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密，让你能够创建自己的密钥 (BYOK) 来保护静态数据。 通过它，组织还可在管理密钥和数据时实现职责分离。 通过客户托管的加密，密钥的生命周期、密钥使用权限以及对密钥操作的审核都由你负责和完全控制。
+Azure PostgreSQL 利用 [Azure 存储加密](../storage/common/storage-service-encryption.md) ，在默认情况下使用 Microsoft 托管密钥来加密静态数据。 对于 Azure PostgreSQL 用户而言，这与在其他数据库（例如 SQL Server）中) 的透明数据 Encruption (。 许多组织需要完全控制使用客户管理的密钥对数据的访问权限。 通过使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密，让你能够创建自己的密钥 (BYOK) 来保护静态数据。 通过它，组织还可在管理密钥和数据时实现职责分离。 通过客户托管的加密，密钥的生命周期、密钥使用权限以及对密钥操作的审核都由你负责和完全控制。
 
 在服务器级别使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密。 客户管理的密钥被称为密钥加密密钥 (KEK)，它在给定的服务器中用于对该服务使用的数据加密密钥 (DEK) 进行加密。 KEK 是一种非对称密钥，它存储在客户自有和客户管理的 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) 实例中。 本文稍后将更详细地描述密钥加密密钥 (KEK) 和数据加密密钥 (DEK)。
 
@@ -60,7 +60,9 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 下面是 Key Vault 的配置要求：
 
 * Key Vault 和 Azure Database for PostgreSQL 单一服务器必须属于同一个 Azure Active Directory (Azure AD) 租户。 不支持跨租户的 Key Vault 和服务器交互。 以后移动 Key Vault 资源时，需要重新配置数据加密。
-* 启用 Key Vault 上的软删除功能，防止在意外删除密钥（或 Key Vault）时丢失数据。 被软删除的资源将保留 90 天，除非用户在此期间恢复或清除它们。 “恢复”和“清除”操作均自带与 Key Vault 访问策略关联的权限。 软删除功能默认关闭，但你可通过 PowerShell 或 Azure CLI 启用它（请注意，无法通过 Azure 门户启用）。
+* 若要保留已删除的保管库，必须将密钥保管库设置为90天。 如果已将现有的密钥保管库配置为使用较小的数字，则需要创建新的密钥保管库，因为在创建后不能对其进行修改。
+* 启用 Key Vault 上的软删除功能，防止在意外删除密钥（或 Key Vault）时丢失数据。 被软删除的资源将保留 90 天，除非用户在此期间恢复或清除它们。 “恢复”和“清除”操作均自带与 Key Vault 访问策略关联的权限。 软删除功能默认关闭，但你可通过 PowerShell 或 Azure CLI 启用它（请注意，无法通过 Azure 门户启用）。 
+* 启用清除保护以对已删除的保管库和保管库对象强制执行必需的保留期
 * 通过唯一托管标识，使用 get、wrapKey 和 unwrapKey 权限授权 Azure Database for PostgreSQL 单一服务器访问 Key Vault。 在 Azure 门户中，当在 PostgreSQL 单一服务器上启用数据加密时，将自动创建唯一的 "服务" 标识。 有关使用 Azure 门户时的详细分步说明，请参阅[通过 Azure 门户对 Azure Database for PostgreSQL 单一服务器进行数据加密](howto-data-encryption-portal.md)。
 
 下面是客户管理的密钥的配置要求：

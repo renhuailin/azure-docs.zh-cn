@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 45e1ae5b8a1084334b7596f62c272e16294c4c14
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462554"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118755"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的无服务器 SQL 池查询 Parquet 和 JSON 文件中的嵌套类型
 
@@ -24,7 +24,7 @@ ms.locfileid: "96462554"
 - 分层 [JSON 文件](query-json-files.md)，您可以在其中以单个列的形式读取复杂的 json 文档。
 - Azure Cosmos DB 集合 (目前处于封闭公共预览) ，其中每个文档都可以包含复杂的嵌套属性。
 
-无服务器 SQL 池将所有嵌套类型的格式设置为 JSON 对象和数组。 因此，您可以 [使用 JSON 函数提取或修改复杂对象](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) ，或 [使用 OPENJSON 函数分析 JSON 数据](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)。 
+无服务器 SQL 池将所有嵌套类型的格式设置为 JSON 对象和数组。 因此，您可以 [使用 JSON 函数提取或修改复杂对象](/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) ，或 [使用 OPENJSON 函数分析 JSON 数据](/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)。 
 
 下面是一个从 [COVID-19 开放式搜索数据集](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) JSON 文件（其中包含嵌套对象）提取标量和对象值的查询示例： 
 
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > 此示例使用 COVID-19 开放式研究数据集中的文件。 [请参阅此处的数据的许可和结构](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 第一步是创建将在其中创建数据源的数据库。 然后，您将通过在数据库上运行 [安装脚本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) 来初始化这些对象。 安装脚本将创建在示例中使用的数据源、数据库范围的凭据和外部文件格式。
 
@@ -121,7 +121,7 @@ FROM
 | --- | --- | --- | --- |
 | 补充信息 a epidemiolo .。。 | Julien   | -图 S1： Phylogeny .。。 | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
-与 JSON 文件不同，在大多数情况下，它会返回包含复杂 JSON 对象的单列，Parquet 文件可以具有多个复杂列。 您可以通过对每列使用函数来读取嵌套列的属性 `JSON_VALUE` 。 `OPENROWSET` 使您能够直接指定子句中嵌套属性的路径 `WITH` 。 可以将路径设置为列的名称，也可以在列类型后面添加 [JSON 路径表达式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) 。
+与 JSON 文件不同，在大多数情况下，它会返回包含复杂 JSON 对象的单列，Parquet 文件可以具有多个复杂列。 您可以通过对每列使用函数来读取嵌套列的属性 `JSON_VALUE` 。 `OPENROWSET` 使您能够直接指定子句中嵌套属性的路径 `WITH` 。 可以将路径设置为列的名称，也可以在列类型后面添加 [JSON 路径表达式](/sql/relational-databases/json/json-path-expressions-sql-server) 。
 
 下面的查询读取 structExample parquet 文件，并演示如何呈现嵌套列的元素。 可以通过两种方式引用嵌套值：
 - 通过在类型规范后指定嵌套值路径表达式。

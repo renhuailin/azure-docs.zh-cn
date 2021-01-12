@@ -1,17 +1,17 @@
 ---
 title: Azure Monitor 客户管理的密钥
-description: 使用 Azure Key Vault 密钥配置客户管理的密钥以加密 Log Analytics 工作区中的数据的信息和步骤。
+description: 使用 Azure Key Vault 密钥配置客户托管密钥以加密 Log Analytics 工作区中的数据的信息和步骤。
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 66a3276863b05cb2fe0dd80a2195f7fd2af1443c
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 07562167131d1839bc0827c74fae09c683302c08
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071929"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118602"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -25,23 +25,23 @@ Azure Monitor 中的数据是通过 Microsoft 管理的密钥加密的。 你可
 
 Azure Monitor 确保使用 Microsoft 管理的密钥 (MMK) 静态加密所有数据和保存的查询。 Azure Monitor 还提供了使用你自己的密钥（存储在 [Azure Key Vault](../../key-vault/general/overview.md)中）进行加密的选项，该选项可让你随时撤销对数据的访问权限。 Azure Monitor 进行加密的操作与[Azure 存储加密](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)的操作相同。
 
-Customer-Managed 密钥在提供更高保护级别和控制的 [专用群集](../log-query/logs-dedicated-clusters.md) 上传递。 引入到专用群集的数据进行两次加密 — 一次在服务级别使用 Microsoft 管理的密钥或客户管理的密钥，一次在基础结构级别使用两种不同的加密算法和两个不同的密钥。 [双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。 专用群集还允许通过[密码箱](#customer-lockbox-preview)控制来保护数据。
+客户管理的密钥在提供更高保护级别和控制的 [专用群集](../log-query/logs-dedicated-clusters.md) 上传递。 引入到专用群集的数据将被加密两次-一次是在使用 Microsoft 托管密钥或客户托管密钥的服务级别，一次使用两种不同的加密算法和两个不同的密钥。 [双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。 专用群集还允许通过[密码箱](#customer-lockbox-preview)控制来保护数据。
 
-过去 14 天内引入的数据也保存在热缓存（受 SSD 支持）中，以实现高效的查询引擎操作。 此数据保持使用 Microsoft 密钥进行加密，而不管客户管理的密钥的配置如何，但你对 SSD 数据的控制将遵循[密钥吊销](#key-revocation)规定。 我们正致力于在 2021 年的上半年使用客户管理的密钥加密 SSD 数据。
+过去 14 天内引入的数据也保存在热缓存（受 SSD 支持）中，以实现高效的查询引擎操作。 无论客户托管的密钥配置如何，都可以通过 Microsoft 密钥对此数据进行加密，但对 SSD 数据的控制将遵循 [密钥吊销](#key-revocation)的需要。 我们正在努力在2021的上半年内使用客户管理的密钥加密 SSD 数据。
 
 Log Analytics 专用群集使用容量保留 [定价模型](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) ，起价为 1000 GB/天。
 
 > [!IMPORTANT]
 > 由于临时产能限制，我们要求你在创建群集之前预先注册。 通过你的联系人与 Microsoft 取得联系，或提交支持请求来注册你的订阅 ID。
 
-## <a name="how-customer-managed-key-works-in-azure-monitor"></a>客户管理的密钥在 Azure Monitor 中如何工作
+## <a name="how-customer-managed-key-works-in-azure-monitor"></a>客户托管的密钥在 Azure Monitor 中的工作原理
 
-Azure Monitor 使用托管标识授予对 Azure Key Vault 的访问权限。 群集级别支持 Log Analytics 群集的标识。 若要允许对多个工作区 Customer-Managed 密钥保护，新的 Log Analytics *群集* 资源将作为 Key Vault 和 Log Analytics 工作区之间的中间标识连接执行。 群集的存储使用 \' 与 *群集* 资源关联的托管标识，通过 Azure Active Directory 向 Azure Key Vault 进行身份验证。 
+Azure Monitor 使用托管标识授予对 Azure Key Vault 的访问权限。 群集级别支持 Log Analytics 群集的标识。 若要允许在多个工作区上进行客户管理的密钥保护，新的 Log Analytics *群集* 资源将作为 Key Vault 和 Log Analytics 工作区之间的中间标识连接执行。 群集的存储使用 \' 与 *群集* 资源关联的托管标识，通过 Azure Active Directory 向 Azure Key Vault 进行身份验证。 
 
 在客户托管的密钥配置后，将新的引入数据连接到与专用群集关联的工作区，并通过密钥对其进行加密。 可以随时取消工作区与群集的链接。 然后，新数据会被引入到 Log Analytics 存储并使用 Microsoft 密钥进行加密，而你可以无缝查询新旧数据。
 
 > [!IMPORTANT]
-> 客户管理的密钥功能是区域性的。 Azure Key Vault、群集和链接的 Log Analytics 工作区必须位于同一区域，但可以位于不同订阅。
+> 客户托管的密钥功能是区域。 Azure Key Vault、群集和链接的 Log Analytics 工作区必须位于同一区域，但可以位于不同订阅。
 
 ![客户管理的密钥概述](media/customer-managed-keys/cmk-overview.png)
 
@@ -54,7 +54,7 @@ Azure Monitor 使用托管标识授予对 Azure Key Vault 的访问权限。 群
 
 存储数据加密涉及 3 种类型的密钥：
 
-- KEK - 密钥加密密钥（你的客户管理的密钥）
+- **KEK** (客户托管密钥的密钥加密密钥) 
 - **AEK** - 帐户加密密钥
 - **DEK** - 数据加密密钥
 
@@ -75,7 +75,7 @@ Azure Monitor 使用托管标识授予对 Azure Key Vault 的访问权限。 群
 1. 正在更新具有密钥标识符详细信息的群集
 1. 链接 Log Analytics 工作区
 
-当前 Azure 门户不支持 Customer-Managed 密钥配置，并且可以通过 [PowerShell](/powershell/module/az.operationalinsights/)、 [CLI](/cli/azure/monitor/log-analytics) 或 [REST](/rest/api/loganalytics/) 请求执行预配。
+目前 Azure 门户中不支持客户托管的密钥配置，并且可以通过 [PowerShell](/powershell/module/az.operationalinsights/)、 [CLI](/cli/azure/monitor/log-analytics) 或 [REST](/rest/api/loganalytics/) 请求执行预配。
 
 ### <a name="asynchronous-operations-and-status-check"></a>异步操作和状态检查
 
@@ -125,7 +125,8 @@ Authorization: Bearer <token>
 
 ## <a name="create-cluster"></a>创建群集
 
-> [!信息] 群集支持两个 [托管的标识类型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。 当你输入标识类型时，系统分配的托管标识是使用群集创建的 `SystemAssigned` ，稍后可用于授予对 Key Vault 的访问权限。 如果要创建在创建时为客户托管的密钥配置的群集，请使用用户分配的托管标识创建群集，该群集在 Key Vault 中授予--使用 `UserAssigned` 标识类型、标识在中的资源 ID `UserAssignedIdentities` 和提供中提供的密钥详细信息 `keyVaultProperties` 。
+> [!NOTE]
+> 群集支持由系统分配和用户分配的两个 [托管标识类型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)，这些类型可根据你的方案使用。 当你将标识设置为-时，系统分配的托管标识将更简单，并会自动创建， `type` `SystemAssigned` 此标识稍后可用于授予对 Key Vault 的访问权限。 如果需要在创建时创建具有客户管理的密钥配置的群集，你应事先在 Key Vault 中定义密钥和用户分配的标识，然后 `type` `UserAssigned` `UserAssignedIdentities` 使用标识的资源 ID 和中的密钥详细信息创建具有标识的群集 `keyVaultProperties` 。
 
 > [!IMPORTANT]
 > 如果 Key Vault 位于 Private-Link (vNet) ，则当前无法用用户分配的托管标识定义客户管理的密钥。 此限制不适用于系统分配的托管标识。
@@ -254,20 +255,20 @@ Content-type: application/json
 
 ## <a name="key-rotation"></a>密钥轮换
 
-客户管理的密钥的轮换需要使用 Azure Key Vault 中的新密钥版本对群集进行显式更新。 [更新具有密钥标识符详细信息的群集](#update-cluster-with-key-identifier-details)。 如果未在群集中更新新的密钥版本，Log Analytics 群集存储将继续使用以前的密钥进行加密。 如果在更新群集中的新密钥之前禁用或删除旧密钥，则你将进入[密钥吊销](#key-revocation)状态。
+客户托管的密钥轮换需要在 Azure Key Vault 中使用新密钥版本对群集进行显式更新。 [更新具有密钥标识符详细信息的群集](#update-cluster-with-key-identifier-details)。 如果未在群集中更新新的密钥版本，Log Analytics 群集存储将继续使用以前的密钥进行加密。 如果在更新群集中的新密钥之前禁用或删除旧密钥，则你将进入[密钥吊销](#key-revocation)状态。
 
 进行密钥轮换操作后，所有数据都将保持可访问，因为数据始终使用帐户加密密钥 (AEK) 进行加密，而 AEK 目前使用 Key Vault 中的新密钥加密密钥 (KEK) 版本进行加密。
 
-## <a name="customer-managed-key-for-queries"></a>用于查询的客户管理的密钥
+## <a name="customer-managed-key-for-queries"></a>用于查询的客户托管的密钥
 
-Log Analytics 中使用的查询语言可以实现丰富的表达，并且可以在添加到查询的注释中或查询语法中包含敏感信息。 某些组织要求将此类信息按照客户管理的密钥的策略进行保护，因此你需要保存使用密钥加密的查询。 使用 Azure Monitor 可以在连接到工作区时将采用密钥加密的已存搜索查询和日志警报查询存储到你自己的存储帐户 。 
+Log Analytics 中使用的查询语言可以实现丰富的表达，并且可以在添加到查询的注释中或查询语法中包含敏感信息。 某些组织要求将此类信息保留在客户管理的密钥策略下，并且需要保存用密钥加密的查询。 使用 Azure Monitor 可以在连接到工作区时将采用密钥加密的已存搜索查询和日志警报查询存储到你自己的存储帐户 。 
 
 > [!NOTE]
-> 根据所使用的方案，可将 Log Analytics 查询保存到各种存储。 在以下方案中，仍使用 Microsoft 密钥 (MMK) 对查询加密，而不考虑客户管理的密钥的配置：Azure Monitor 中的工作簿、Azure 仪表板、Azure 逻辑应用、Azure Notebooks 和自动化 runbook。
+> 根据所使用的方案，可将 Log Analytics 查询保存到各种存储。 如果客户托管的密钥配置： Azure Monitor、Azure 仪表板、Azure 逻辑应用、Azure Notebooks 和自动化 Runbook 中的工作簿，则在以下情况下，查询将在 Microsoft key (MMK) 保持加密。
 
 自带存储 (BYOS) 并将其链接到工作区时，该服务会将已存搜索查询和日志警报查询上传到存储帐户 。 这意味着，可以使用加密 Log Analytics 群集中数据的密钥或其他密钥来控制存储帐户和[静态加密策略](../../storage/common/customer-managed-keys-overview.md)。 但需支付与该存储帐户相关的费用。 
 
-**设置用于查询的客户管理的密钥之前需要注意的事项**
+**为查询设置客户托管密钥之前的注意事项**
 * 需拥有对工作区和存储帐户的“写入”权限
 * 确保在 Log Analytics 工作区所在区域创建存储帐户
 * 存储中的保存搜索视为服务项目，并且其格式可能会发生变化
@@ -385,7 +386,7 @@ Content-type: application/json
 
 ## <a name="limitations-and-constraints"></a>限制和约束
 
-- 客户管理的密钥在专用 Log Analytics 群集上受支持，适用于每天发送 1TB 或更多数据的客户。
+- 客户托管的密钥在专用 Log Analytics 群集上受支持，适用于每天发送1TB 或更多的客户。
 
 - 每个区域和每个订阅的群集的最大数目为 2
 
@@ -395,7 +396,7 @@ Content-type: application/json
 
 - 验证是否完成 Log Analytics 群集预配之后，工作区才能与群集链接。  完成预配之前发送到工作区的数据将被删除，并且无法恢复。
 
-- 客户管理的密钥的加密应用于在配置后新引入的数据。 在配置前引入的数据仍将使用 Microsoft 密钥进行加密。 你可以无缝查询在配置客户管理的密钥前后引入的数据。
+- 在配置时间之后，客户托管的密钥加密适用于新的引入数据。 在配置前引入的数据仍将使用 Microsoft 密钥进行加密。 你可以在客户管理的密钥配置无缝地查询数据引入。
 
 - Azure Key Vault 必须配置为可恢复。 默认情况下，这些属性不会启用，并且应使用 CLI 或 PowerShell 对其进行配置：<br>
   - [软删除](../../key-vault/general/soft-delete-overview.md)
@@ -424,7 +425,7 @@ Content-type: application/json
     
   - 暂时性连接错误 -- 存储通过允许密钥在缓存中保留一小段时间来处理暂时性错误（超时、连接失败、DNS 问题），这可以克服可用性方面的任何小问题。 查询和引入功能将继续运行而不会中断。
     
-  - 实时网站 -- 如果在约 30 分钟内未进行访问，则会导致无法使用存储帐户。 查询功能不可用，引入的数据会使用 Microsoft 密钥缓存几个小时，以避免数据丢失。 恢复对 Key Vault 的访问后，查询将变为可用，临时缓存的数据会引入到数据存储并使用客户管理的密钥进行加密。
+  - 实时网站 -- 如果在约 30 分钟内未进行访问，则会导致无法使用存储帐户。 查询功能不可用，引入的数据会使用 Microsoft 密钥缓存几个小时，以避免数据丢失。 当还原对 Key Vault 的访问时，查询将变为可用，临时缓存数据将引入到数据存储区，并使用客户托管的密钥进行加密。
 
   - Key Vault 访问速率 -- Azure Monitor 存储为实现包装和解包操作而访问 Key Vault 的频率介于 6 到 60 秒之间。
 

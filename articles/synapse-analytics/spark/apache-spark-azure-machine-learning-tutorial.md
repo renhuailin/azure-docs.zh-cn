@@ -9,18 +9,18 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e547d047e8d736acbd1cdda5ffe3a78dbe8259f7
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 2594e25bff3ca949b329f8b66f4427eb1f6950b0
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901027"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118704"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>教程：使用 Python 通过自动化机器学习训练模型
 
 Azure 机器学习是一种基于云的环境，可以对机器学习模型进行训练、部署、自动化、管理和跟踪。 
 
-在本教程中，你将使用 Azure 机器学习中的[自动机器学习](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml)来创建一个用于预测出租车收费价格的回归模型。 此过程接受训练数据设置和配置设置，并自动迭代各种方法、模型和超参数设置的组合，以得出最佳模型。
+在本教程中，你将使用 Azure 机器学习中的[自动机器学习](../../machine-learning/concept-automated-ml.md)来创建一个用于预测出租车收费价格的回归模型。 此过程接受训练数据设置和配置设置，并自动迭代各种方法、模型和超参数设置的组合，以得出最佳模型。
 
 在本教程中，你将了解如何执行以下操作：
 - 使用 Apache Spark 和 Azure 开放数据集下载数据。
@@ -31,7 +31,7 @@ Azure 机器学习是一种基于云的环境，可以对机器学习模型进�
 ## <a name="before-you-begin"></a>在开始之前
 
 - 按照[创建无服务器 Apache Spark 池快速入门](../quickstart-create-apache-spark-pool-studio.md)进行操作以创建无服务器 Apache Spark 池。
-- 如果还没有 Azure 机器学习工作区，请完成 [Azure 机器学习工作区设置教程](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup)。 
+- 如果还没有 Azure 机器学习工作区，请完成 [Azure 机器学习工作区设置教程](../../machine-learning/tutorial-1st-experiment-sdk-setup.md)。 
 
 ## <a name="understand-regression-models"></a>了解回归模型
 
@@ -48,7 +48,7 @@ Azure 机器学习是一种基于云的环境，可以对机器学习模型进�
 
 下面介绍如何操作：
 
-1. 使用 PySpark 内核创建笔记本。 有关说明，请参阅[创建笔记本](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook)。
+1. 使用 PySpark 内核创建笔记本。 有关说明，请参阅[创建笔记本](../quickstart-apache-spark-notebook.md#create-a-notebook)。
    
     > [!Note]
     > 由于使用的是 PySpark 内核，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 上下文。
@@ -144,7 +144,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>将数据帧转换为 Azure 机器学习数据集
-若要提交远程试验，请将数据集转换为 Azure 机器学习 ```TabularDatset```。 [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) 通过分析提供的文件，以表格格式表示数据。
+若要提交远程试验，请将数据集转换为 Azure 机器学习 ```TabularDatset```。 [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) 通过分析提供的文件，以表格格式表示数据。
 
 以下代码获取现有工作区和默认 Azure 机器学习默认数据存储。 然后它将数据存储和文件位置传递给 path 参数，以创建新的 ```TabularDataset```。 
 
@@ -170,7 +170,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 以下各节将引导你完成提交自动化机器学习试验的过程。
 
 ### <a name="define-training-settings"></a>定义训练设置
-1. 若要提交试验，需要定义用于训练的试验参数和模型设置。 有关设置的完整列表，请参阅[使用 Python 配置自动化机器学习试验](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)。
+1. 若要提交试验，需要定义用于训练的试验参数和模型设置。 有关设置的完整列表，请参阅[使用 Python 配置自动化机器学习试验](../../machine-learning/how-to-configure-auto-train.md)。
 
    ```python
    import logging
@@ -338,5 +338,5 @@ NYCGreenTaxiModel 1
 ![Azure 机器学习工作区的屏幕截图。](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>后续步骤
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [教程：使用 Apache Spark MLlib 和 Azure Synapse Analytics 构建机器学习应用](./apache-spark-machine-learning-mllib-notebook.md)

@@ -10,19 +10,19 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 45c7f89f773095a102429c07f7441223de3c2dec
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c537d3109f770c1ce77be6495bdacd24270dad5f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448267"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119588"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中以前的 SQL DW) 体系结构的专用 SQL 池 (
 
 Azure Synapse Analytics 是一种分析服务，它将企业数据仓库和大数据分析结合在一起。 它使你可以自由地根据你的条件查询数据。
 
 > [!NOTE]
->了解 [Azure Synapse Analytics 文档](../overview-what-is.md)。
+>浏览 [Azure Synapse Analytics 文档](../overview-what-is.md)。
 >
 
 
@@ -50,7 +50,7 @@ Azure Synapse Analytics 是一种分析服务，它将企业数据仓库和大�
 专用 SQL 池 SQL (以前的 SQL DW) 利用 Azure 存储空间来确保用户数据的安全。  由于数据通过 Azure 存储进行存储和管理，因此会对存储消耗单独收费。 将数据分片到“分布区”中来优化系统性能。 可选择在定义表时用于分布数据的分片模式。 支持以下分片模式：
 
 - 哈希
-- 循环
+- 轮循机制
 - 复制
 
 ### <a name="control-node"></a>控制节点
@@ -107,13 +107,13 @@ Azure Synapse Analytics 是一种分析服务，它将企业数据仓库和大�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解有关 Azure Synapse 的一点，接下来了解如何快速 [创建 (以前的 SQL DW) 的专用 sql 池 ](create-data-warehouse-portal.md) 并 [加载示例数据](load-data-from-azure-blob-storage-using-polybase.md)。 如果不熟悉 Azure，遇到新术语时，[Azure 词汇表](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 可以提供帮助。 或者，查看以下一些其他 Azure Synapse 资源。  
+现在，你已了解有关 Azure Synapse 的一点，接下来了解如何快速 [创建 (以前的 SQL DW) 的专用 sql 池 ](create-data-warehouse-portal.md) 并 [加载示例数据](./load-data-from-azure-blob-storage-using-copy.md)。 如果不熟悉 Azure，遇到新术语时，[Azure 词汇表](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 可以提供帮助。 或者，查看以下一些其他 Azure Synapse 资源。  
 
 - [客户成功案例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [博客](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [功能请求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)
-- [Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+- [Microsoft Q&A 问题页面](/answers/topics/azure-synapse-analytics.html)
 - [Stackoverflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

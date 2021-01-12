@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f8db19b209ddefebd4a297f18fb9b178fcf40f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8826dff6d347f78625272a5620a1f168b8804db
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89457900"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120030"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Synapse SQL 池开发最佳做法
 
@@ -55,7 +55,7 @@ ms.locfileid: "89457900"
 
 加载分布的表时，请确保传入数据的分布键没有排序，因为这会拖慢加载速度。  下文详细介绍了如何选择分布列以提高性能，以及如何在 CREATE TABLES 语句的 WITH 子句中定义分布表。
 
-另请参阅[表概述](sql-data-warehouse-tables-overview.md)、[表分布](sql-data-warehouse-tables-distribute.md)、[选择表分布](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](sql-data-warehouse-tables-overview.md) 以及 [CREATE TABLE AS SELECT](sql-data-warehouse-develop-ctas.md)。
+另请参阅[表概述](sql-data-warehouse-tables-overview.md)、[表分布](sql-data-warehouse-tables-distribute.md)、[选择表分布](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)、[CREATE TABLE](sql-data-warehouse-tables-overview.md) 以及 [CREATE TABLE AS SELECT](sql-data-warehouse-develop-ctas.md)。
 
 ## <a name="do-not-over-partition"></a>不要过度分区
 
@@ -120,7 +120,7 @@ ms.locfileid: "89457900"
 
 如果在本文中没有找到所需内容，可尝试使用本页面左侧的“搜索文档”来搜索所有 Azure Synapse 文档。  
 
-可以在[有关 Azure Synapse 的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)上向其他用户和 Azure Synapse 产品组发布问题。  我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  
+可以在[有关 Azure Synapse 的 Microsoft 问答页面](/answers/topics/azure-synapse-analytics.html)上向其他用户和 Azure Synapse 产品组发布问题。  我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  
 
 如果你希望在 Stack Overflow 上提出问题，我们还会获得一个 [Azure Synapse Analytics Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)。
 

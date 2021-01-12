@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: fee7e244e26a59a773a5d5c9c74e23acd4113ee6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c681195a60329320b875cc06919e9440b65eb9e5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446690"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120234"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark 实用工具简介
 
@@ -48,7 +48,7 @@ Synapse 利用 **共享访问签名 (SAS)** 访问 Azure Blob 存储。 若要�
 1. 打开 [Azure Synapse Studio](https://web.azuresynapse.net/)。
 2. 从左侧面板中选择 "**管理**"，并选择 "**外部连接**" 下的 "**链接服务**"。
 3. 在右侧的 "**新建链接服务**" 面板中搜索 " **Azure Blob 存储**"。
-4. 选择“继续”。
+4. 选择“继续”。 
 5. 选择要访问的 Azure Blob 存储帐户，并配置链接服务名称。 建议使用 **身份验证方法** 的 **帐户密钥**。
 6. 选择 " **测试连接** " 以验证设置是否正确。
 7. 依次选择 " **创建** " 和 " **全部发布** " 以保存所做的更改。 
@@ -706,12 +706,12 @@ Env.Help()
 
 获取结果：
 ```
-getUserName(): returns user name
-getUserId(): returns unique user id
-getJobId(): returns job id
-getWorkspaceName(): returns workspace name
-getPoolName(): returns Spark pool name
-getClusterId(): returns cluster id
+GetUserName(): returns user name
+GetUserId(): returns unique user id
+GetJobId(): returns job id
+GetWorkspaceName(): returns workspace name
+GetPoolName(): returns Spark pool name
+GetClusterId(): returns cluster id
 ```
 
 ### <a name="get-user-name"></a>获取用户名
@@ -881,4 +881,4 @@ Env.GetClusterId()
 - [查看 Synapse 示例笔记本](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [快速入门：使用 Web 工具在 Azure Synapse Analytics 中创建 Apache Spark 池](../quickstart-apache-spark-notebook.md)
 - [Azure Synapse Analytics 中的 Apache Spark 是什么](apache-spark-overview.md)
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)

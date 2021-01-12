@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: 9621f0a933c6102309286505f2c551c5256c5506
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: aa8657550c6475afd9f893acf8985c50cec0f199
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901549"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119452"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>将 IoT Edge 上的实时视频分析升级到1.0 到2。0
 
@@ -19,9 +19,9 @@ ms.locfileid: "97901549"
 ## <a name="change-list"></a>更改列表
 
 > [!div class="mx-tdCol4BreakAll"]
-> |Title|实时视频分析1。0|实时视频分析2。0|说明|
+> |Title|实时视频分析1。0|实时视频分析2。0|描述|
 > |-------------|----------|---------|---------|
-> |容器映像|mcr.microsoft.com/media/live-video-analytics:1.0.0|mcr.microsoft.com/media/live-video-analytics:2.0.0|Microsoft 发布的 docker 映像，适用于 Azure IoT Edge 上的实时视频分析|
+> |容器映像|mcr.microsoft.com/media/live-video-analytics:1|mcr.microsoft.com/media/live-video-analytics:2|Microsoft 发布的 docker 映像，适用于 Azure IoT Edge 上的实时视频分析|
 > |**MediaGraph 节点** |    |   |   |
 > |源|:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP 源 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT 中心消息源 |:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP 源 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT 中心消息源 | 充当媒体引入和消息源的 MediaGraph 节点。|
 > |Processors|:::image type="icon" source="./././media/upgrading-lva/check.png"::: 运动检测处理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: 帧速率筛选器处理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Http 扩展处理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Grpc 扩展处理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: 信号入口处理器 |:::image type="icon" source="./././media/upgrading-lva/check.png"::: 运动检测处理器 </br>:::image type="icon" source="./././media/upgrading-lva/remove.png"::: **帧速率筛选器处理器**</br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Http 扩展处理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Grpc 扩展处理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: 信号入口处理器 | 使你能够在发送到 AI 推理服务器之前格式化媒体的 MediaGraph 节点。|
@@ -60,7 +60,7 @@ ms.locfileid: "97901549"
 * 在 `MediaGraphHttpExtension` 和 `MediaGraphGrpcExtension` 处理器中，请注意以下更改：  
     * **映像属性**
         * `MediaGraphImageFormatEncoded` 不再受支持。 
-        * 请改用 **`MediaGraphImageFormatBmp`** 或 **`MediaGraphImageFormatJpeg`** **`MediaGraphImageFormatPng`** 。 例如，
+        * 请改用 **`MediaGraphImageFormatBmp`** 或 **`MediaGraphImageFormatJpeg`** **`MediaGraphImageFormatPng`** 。 例如，应用于对象的
         ```
         "image": {
                 "scale": 

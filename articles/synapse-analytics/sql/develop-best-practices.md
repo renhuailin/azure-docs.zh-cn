@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a5e514602668c96d63562e45fb114cf9770a54a9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1fd7649cac6b636873ca529fe9780429d86697c6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321487"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120897"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Synapse SQL 开发最佳做法
 
@@ -53,7 +53,7 @@ ms.locfileid: "93321487"
 
 请参阅以下链接，了解有关选择分布列如何能提升性能，以及如何在 CREATE TABLES 语句的 WITH 子句中定义分布式表的额外详细信息。
 
-另请参阅[表概述](develop-tables-overview.md)、[表分布](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[选择表分布](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 以及 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+另请参阅[表概述](develop-tables-overview.md)、[表分布](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[选择表分布](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 以及 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ### <a name="do-not-over-partition"></a>不要过度分区
 尽管数据分区对于维护数据（通过分区切换）或优化扫描（通过分区排除）很有效，但分区过多会减慢查询速度。  通常，可以很好地处理 SQL Server 的高粒度分区策略可能无法很好地在专用 SQL 池上工作。  
@@ -167,7 +167,6 @@ ms.locfileid: "93321487"
 
 ### <a name="next-steps"></a>后续步骤
 
-如果你需要本文中未提供的信息，请使用此页面左侧的 " **搜索 doc** 函数" 以搜索所有 SQL 池文档。  [Microsoft 问答&一个用于 Azure Synapse analytics 的问题页](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)，可以向其他用户和 Azure Synapse Analytics 产品组提出问题。 我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  
+如果你需要本文中未提供的信息，请使用此页面左侧的 " **搜索 doc** 函数" 以搜索所有 SQL 池文档。  [Microsoft 问答&一个用于 Azure Synapse analytics 的问题页](/answers/topics/azure-synapse-analytics.html)，可以向其他用户和 Azure Synapse Analytics 产品组提出问题。 我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  
 
 如果你希望在 Stack Overflow 上提出问题，我们还会获得一个 [Azure Synapse Analytics Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)。
- 

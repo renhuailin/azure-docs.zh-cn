@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c69df88828a179cf1dce7bd35ac19c518b07903d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 8db1825e7abfaaeca4650cbd03dd05eec4777c21
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530708"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121271"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中 (以前的 SQL DW) 的专用 SQL 池疑难解答
 
@@ -44,7 +44,7 @@ ms.locfileid: "96530708"
 
 | 问题                                                        | 解决方法                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 使用 CETAS 导出空字符串将导致 Parquet 和 ORC 文件中出现 NULL 值。 注意如果要从不具有 NULL 约束的列中导出空字符串，则 CETAS 将导致拒绝记录，导出可能会失败。 | 删除 CETAS 的 SELECT 语句中的空字符串或有问题的列。 |
+| 使用 CETAS 导出空字符串会导致 Parquet 和 ORC 文件中出现 NULL 值。 请注意，如果从具有 NOT NULL 约束的列中导出空字符串，CETAS 会导致记录被拒绝，并且导出可能会失败。 | 删除 CETAS 的 SELECT 语句中的空字符串或有问题的列。 |
 | 不支持将0-127 范围外的值加载到 Parquet 和 ORC 文件格式的 tinyint 列中。 | 为目标列指定较大的数据类型。           |
 
 ## <a name="performance"></a>性能
@@ -85,6 +85,6 @@ ms.locfileid: "96530708"
 * [功能请求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 * [视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 * [创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)
-* [Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+* [Microsoft Q&A 问题页面](/answers/topics/azure-synapse-analytics.html)
 * [Stackoverflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)
 * [Twitter](https://twitter.com/hashtag/SQLDW)

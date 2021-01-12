@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 1d8c67fa5373afc8ea8bae5a49b87309f3893a12
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 7c41474143fbb7782ccf7b5c89b0b34802e5ef0a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028720"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119690"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教程：将数据加载到 Azure Synapse Analytics SQL 池
 
@@ -37,7 +37,7 @@ ms.locfileid: "98028720"
 
 开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)。
 
-本教程假设你已根据以下[教程](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal#connect-to-the-server-as-server-admin)创建 SQL 专用池。
+本教程假设你已根据以下[教程](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)创建 SQL 专用池。
 
 ## <a name="create-a-user-for-loading-data"></a>创建用于加载数据的用户
 

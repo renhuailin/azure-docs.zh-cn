@@ -7,16 +7,16 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a517f7a796b6543c8d60f0d1ebdba16afa0bc4b7
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 36329987e510372ff286a10584a115ea259afc60
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751421"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119078"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>使用 Azure IoT Central 解决方案中的属性
 
-本文介绍如何使用 Azure IoT Central 应用程序的设备模板中定义的设备属性。
+本操作方法指南介绍了如何以设备开发人员的身份使用 Azure IoT Central 应用程序的设备模板中定义的设备属性。
 
 属性表示时间点值。 例如，设备可使用属性来报告它尝试达到的目标温度。 默认情况下，设备属性在 IoT Central 中是只读的。 可写属性使你可以在设备和 Azure IoT Central 应用程序之间同步状态。
 
@@ -35,17 +35,17 @@ ms.locfileid: "96751421"
 | 字段           | 说明                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 显示名称    | 仪表板和窗体上使用的属性值的显示名称。                                                                                                                                                              |
-| 名称            | 属性的名称。 Azure IoT Central 会根据显示名称生成此字段的值，但你可以根据需要选择自己的值。 此字段必须为字母数字。                                                 |
+| 名称            | 属性的名称。 Azure IoT Central 会根据显示名称生成此字段的值，但你可以根据需要选择自己的值。 此字段必须为字母数字。  设备代码使用此 **名称** 值。           |
 | 功能类型 | 属性。                                                                                                                                                                                                                          |
 | 语义类型   | 属性的语义类型，如温度、状态或事件。 选择的语义类型将决定以下哪些字段可用。                                                                       |
 | 架构          | 属性数据类型，如 double、string 或 vector。 可用的选项取决于语义类型。 架构不可用于事件和状态语义类型。                                               |
 | 可写       | 如果该属性不是可写的，则设备可以将属性值报告给 Azure IoT Central。 如果该属性是可写的，则设备可以将属性值报告给 Azure IoT Central。 然后，Azure IoT Central 可以将属性更新发送到设备。 |
-| 严重性        | 仅适用于事件语义类型。 严重性为“错误”、“信息”或“警告”。                                                                                                                         |
+| Severity        | 仅适用于事件语义类型。 严重性为“错误”、“信息”或“警告”。                                                                                                                         |
 | 状态值    | 仅适用于状态语义类型。 定义可能的状态值，其中每个状态值都具有显示名称、名称、枚举类型和值。                                                                                   |
-| 计价单位            | 属性值的单位，如 **mph**、 **%** 或 **&deg; C**。                                                                                                                                                              |
+| 单位            | 属性值的单位，如 **mph**、 **%** 或 **&deg; C**。                                                                                                                                                              |
 | 显示单位    | 仪表板和窗体上使用的显示单位。                                                                                                                                                                                    |
 | 评论         | 有关属性功能的任何注释。                                                                                                                                                                                        |
-| 说明     | 属性功能的说明。                                                                                                                                                                                          |
+| 描述     | 属性功能的说明。                                                                                                                                                                                          |
 
 属性还可以在设备模板中的接口中定义，如下所示：
 
@@ -160,7 +160,7 @@ hubClient.getTwin((err, twin) => {
 });
 ```
 
-为了简单起见，本文使用 Node.js。 有关设备应用程序示例的完整信息，请参阅以下 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md) 教程。
+为了简单起见，本文使用 Node.js。 有关其他语言示例，请参阅 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md) 教程。
 
 Azure IoT Central 应用程序中的以下视图显示了你可以查看的属性。 视图自动使 **设备模型** 属性成为 _只读设备属性_。
 

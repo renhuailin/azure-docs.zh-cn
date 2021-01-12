@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 64ba24eb0eab581310122908fc05d1d671ac1d40
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 1a988dba52b36b1d27407316200bfa6897de7cf5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531567"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120149"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的数据加载策略
 
@@ -42,7 +42,7 @@ ms.locfileid: "96531567"
 5. 转换数据。
 6. 将数据插入生产表。
 
-有关加载教程，请参阅[从 Azure Blob 存储加载数据](load-data-from-azure-blob-storage-using-polybase.md)。
+有关加载教程，请参阅[从 Azure Blob 存储加载数据](./load-data-from-azure-blob-storage-using-copy.md)。
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1.将源数据提取到文本文件中
 
@@ -123,7 +123,7 @@ ms.locfileid: "96531567"
 >- 如果在 Parquet 和 SQL 中的类型不匹配，或者如果你有不受支持的 Parquet 数据类型，则可能会遇到以下错误： **"HdfsBridge：： recordReaderFillBuffer-遇到填充记录读取器缓冲区时出现意外错误： ClassCastException： ..."**
 >- 不支持将0-127 范围外的值加载到 Parquet 和 ORC 文件格式的 tinyint 列中。
 
-有关创建外部对象的示例，请参阅[创建外部表](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool)。
+有关创建外部对象的示例，请参阅[创建外部表](../sql/develop-tables-external-tables.md?tabs=sql-pool)。
 
 ### <a name="format-text-files"></a>设置文本文件的格式
 
@@ -142,11 +142,11 @@ ms.locfileid: "96531567"
 
 若要加载数据，可以使用下列任一加载选项：
 
-- [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)是推荐使用的加载实用工具，因为它可以无缝且灵活地加载数据。 该语句具有许多 PolyBase 不提供的其他加载功能。 
-- [具有 T-SQL 的 PolyBase](load-data-from-azure-blob-storage-using-polybase.md) 要求定义外部数据对象。
+- [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)是推荐使用的加载实用工具，因为它可以无缝且灵活地加载数据。 该语句具有许多 PolyBase 不提供的其他加载功能。 
+- [具有 T-SQL 的 PolyBase](./load-data-from-azure-blob-storage-using-copy.md) 要求定义外部数据对象。
 - [Azure 数据工厂 (ADF) 的 PolyBase 和 COPY 语句](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)是另一个业务流程工具。  它定义管道并计划作业。
 - 源数据位于 SQL Server 时，[具有 SSIS 的 PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 运行良好。 SSIS 定义源到目标表的映射，同时可协调负载。 如果已有 SSIS 包，可将这些包修改为使用新的数据仓库目标。
-- [将 PolyBase 与 Azure DataBricks 配合使用](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)，可使用 PolyBase 将数据从表传输到 Databricks 数据帧，并且/或者可将 Databricks 数据帧中的数据写入表。
+- [将 PolyBase 与 Azure DataBricks 配合使用](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)，可使用 PolyBase 将数据从表传输到 Databricks 数据帧，并且/或者可将 Databricks 数据帧中的数据写入表。
 
 ### <a name="other-loading-options"></a>其他加载选项
 

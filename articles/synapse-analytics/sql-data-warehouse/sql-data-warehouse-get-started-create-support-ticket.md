@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: de45e338b0b863dc2364af399a6991f56658b0e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6042b5be48144ce6730a9bf4f342d7735a262643
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212269"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118058"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>请求增加配额并获取 Azure Synapse Analytics 支持
 
@@ -36,7 +36,7 @@ ms.locfileid: "85212269"
 
 1. 查看 [Azure 支持计划](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/)。
 
-   * **计费、配额和订阅管理**支持适用于所有支持级别。
+   * **计费、配额和订阅管理** 支持适用于所有支持级别。
    * “故障维修服务”支持通过[开发人员支持](https://azure.microsoft.com/support/plans/developer/)、[标准支持](https://azure.microsoft.com/support/plans/standard/)、[专业直接支持](https://azure.microsoft.com/support/plans/prodirect/)或[顶级支持](https://azure.microsoft.com/support/plans/premier/)提供。 故障维修服务问题是客户在使用 Azure 时遇到的确定是由 Microsoft 引起的问题。
    * 我们在[专业直接支持](https://azure.microsoft.com/support/plans/prodirect/)和[顶级支持](https://azure.microsoft.com/support/plans/premier/)级别提供“开发人员辅导”与“咨询服务”。
 
@@ -100,7 +100,7 @@ ms.locfileid: "85212269"
 
 若要为订阅启用区域访问，需要完成以下步骤：  
 
-1. ** (数据仓库) 区域访问**配额类型中选择 Synapse SQL 池。
+1. **(数据仓库) 区域访问** 配额类型中选择 Synapse SQL 池。
 
 1. 通过从下拉列表中选择一个 **位置** 来选择区域。
 
@@ -137,5 +137,4 @@ ms.locfileid: "85212269"
 
 ## <a name="other-resources"></a>其他资源
 
-你还可以通过 azure Synapse Analytics [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) 上或通过 [Microsoft Q&问题页面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)连接到 azure Synapse Analytics 社区。
-
+你还可以通过 azure Synapse Analytics [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) 上或通过 [Microsoft Q&问题页面](/answers/topics/azure-synapse-analytics.html)连接到 azure Synapse Analytics 社区。

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 53c68f44273b14658bd4d95ce7cf3cf847c077d0
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: f780d5404d99435a61c4e3f9e90b1acbd9539af9
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025946"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118432"
 ---
 # <a name="monitor-workload---azure-portal"></a>监视工作负荷 - Azure 门户
 
@@ -24,7 +24,7 @@ ms.locfileid: "93025946"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-- SQL 池：我们将收集 SQL 池的日志。 如果尚未预配 SQL 池，请参阅[创建 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)中的说明。
+- SQL 池：我们将收集 SQL 池的日志。 如果尚未预配 SQL 池，请参阅[创建 SQL 池](./load-data-from-azure-blob-storage-using-copy.md)中的说明。
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
@@ -32,7 +32,7 @@ ms.locfileid: "93025946"
 
 ![Log Analytics 工作区](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspaces.png)
 
-![屏幕截图显示 Log Analytics 工作区，可在其中选择 "添加"。](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace.png)
+![屏幕截图显示 Log Analytics 工作区，可在其中选择“添加”。](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace.png)
 
 ![屏幕截图显示 Log Analytics 工作区，可在其中输入值。](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "93025946"
 - 创建日志警报
 - 将查询结果固定到仪表板
 
-有关日志查询功能的详细信息，请访问以下[文档](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+有关日志查询功能的详细信息，请访问以下[文档](/azure/data-explorer/kusto/query/?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)。
 
 ![Log Analytics 工作区编辑器](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 4d9a5900990ea41788ced5f25690619fbde68d33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87bc2338ecc48f1115a406c276ef221cb185a4c5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854981"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118619"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的托管标识
 
@@ -27,7 +27,7 @@ ms.locfileid: "91854981"
 
 在 Azure HDInsight 中，托管标识仅适用于内部组件的 HDInsight 服务。 目前没有任何支持的方法可用于通过 HDInsight 群集节点上安装的托管标识生成访问令牌来访问外部服务。 对于计算 VM 等某些 Azure 服务，托管标识是使用某个可用于获取访问令牌的终结点实现的。 此终结点当前在 HDInsight 节点中不可用。
 
-如果需要启动应用程序以避免在分析作业中放置机密/密码 (例如 SCALA 作业) ，可以使用脚本操作将自己的证书分发到群集节点，然后使用该证书获取访问令牌 (例如访问 Azure KeyVault) 。
+如果需要启动应用程序以避免将机密/密码放入分析作业（例如 SCALA 作业），可以使用脚本操作将自己的证书分发到群集节点，然后使用该证书获取访问令牌（例如，用于访问 Azure KeyVault 的令牌）。
 
 ## <a name="create-a-managed-identity"></a>创建托管标识
 
@@ -48,14 +48,15 @@ Azure HDInsight 中的多种方案都会使用托管标识。 有关详细的设
 * [企业安全性套餐](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [客户管理的密钥磁盘加密](disk-encryption.md)
 
-HDInsight 将自动续订用于这些方案的托管标识的证书。 但是，当多个不同的托管标识用于长时间运行的群集时，可能会有一个限制：对于所有托管标识，证书续订可能不会按预期方式工作。 由于此限制，如果你计划使用长时间运行的群集 (例如，超过60天) ，则建议你为上述所有方案使用同一个托管标识。 
+HDInsight 将自动续订用于这些方案的托管标识的证书。 但是，当多个不同的托管标识用于长时间运行的群集时，可能会有一个限制，即对于所有托管标识，证书续订可能不会按预期方式允许。 由于此限制，如果你计划使用长时间运行的群集（例如，运行超过 60 天），我们建议对上述所有方案使用相同的托管标识。 
 
 如果你已经创建了具有多个不同托管标识的长时间运行的群集并且遇到以下问题之一：
- * 在 ESP 群集中，群集服务将启动失败或增加，其他操作启动失败，并出现身份验证错误。
- * 在 ESP 群集中，更改 AAD DS LDAPS 证书时，LDAPS 证书不会自动更新，因此 LDAP 同步和扩展的 ups 开始失败。
- * MSI 对 ADLS Gen2 启动失败。
- * 加密密钥不能在 CMK 方案中旋转。
-然后，应将上述方案所需的角色和权限分配给群集中使用的所有管理标识。 例如，如果你对 ADLS Gen2 和 ESP 群集使用了不同的托管标识，则这两个群集都应具有分配给他们的 "存储 blob 数据所有者" 和 "HDInsight 域服务参与者" 角色，以避免在这些问题中运行。
+ * 在 ESP 群集中，群集服务启动失败，或者纵向扩展和其他操作启动失败，并出现身份验证错误。
+ * 在 ESP 群集中，更改 AAD-DS LDAPS 证书时，LDAPS 证书不会自动更新，因此 LDAP 同步和纵向扩展启动失败。
+ * 对 ADLS Gen2 的 MSI 访问启动失败。
+ * 在 CMK 方案中无法轮换加密密钥。
+
+则应将上述方案所需的角色和权限分配给群集中使用的所有托管标识。 例如，如果你对 ADLS Gen2 和 ESP 群集使用了不同的托管标识，则它们都应分配有“存储 Blob 数据所有者”和“HDInsight 域服务参与者”角色，以避免遇到这些问题。
 
 ## <a name="faq"></a>常见问题
 

@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 0cad8fcdf58f4827f28b40550ae93e607e0c0858
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: b2d4f653f2bd86d30b2a0f7828a6e09c64c62e82
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368998"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121203"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 发行说明 (以前的 sql DW) 专用 SQL DW
 
@@ -44,22 +44,22 @@ ms.locfileid: "97368998"
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|**(预览的列的存储过程 sp_rename)**|如果不使用 [CTAS](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-ctas) 重命名列，就变得更加简单。 Azure Synapse SQL 现在已添加了对系统存储过程的支持 sp_rename (preview) 重命名用户表中的非分布列。 此功能目前以预览版提供，正式发布时将受到工具支持。 有关详细信息，请参阅 [sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?view=azure-sqldw-latest)。|
-|**T-sql 预测的其他参数**|在这个新版本中，将为现有 T-sql PREDICT 语句添加一个名为 "运行时" 的必需附加参数。 若要更新现有脚本，请参阅 [T-SQL 预测](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)中的示例。|
+|**(预览的列的存储过程 sp_rename)**|如果不使用 [CTAS](./sql-data-warehouse-develop-ctas.md) 重命名列，就变得更加简单。 Azure Synapse SQL 现在已添加了对系统存储过程的支持 sp_rename (preview) 重命名用户表中的非分布列。 此功能目前以预览版提供，正式发布时将受到工具支持。 有关详细信息，请参阅 [sp_rename](/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?view=azure-sqldw-latest)。|
+|**T-sql 预测的其他参数**|在这个新版本中，将为现有 T-sql PREDICT 语句添加一个名为 "运行时" 的必需附加参数。 若要更新现有脚本，请参阅 [T-SQL 预测](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)中的示例。|
 
 ## <a name="oct-2020"></a>2020 年 10 月
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|T-SQL 内联表值函数（预览版）|在此版本中，现在可以使用 Transact-SQL 创建内联表值函数，并像查询表一样查询其结果。 此功能目前以预览版提供，正式发布时将受到工具支持。 有关详细信息，请参阅 [CREATE FUNCTION (Azure Synapse Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest)。|
-|MERGE 命令（预览版）|根据与源表联接的结果，现在可以对目标表运行插入、更新或删除操作。 例如，根据在另一个表中找到的差异在一个表中插入、更新或删除行，可以对两个表进行同步。  有关详细信息，请参阅 [MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current)。|
+|T-SQL 内联表值函数（预览版）|在此版本中，现在可以使用 Transact-SQL 创建内联表值函数，并像查询表一样查询其结果。 此功能目前以预览版提供，正式发布时将受到工具支持。 有关详细信息，请参阅 [CREATE FUNCTION (Azure Synapse Analytics)](/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest)。|
+|MERGE 命令（预览版）|根据与源表联接的结果，现在可以对目标表运行插入、更新或删除操作。 例如，根据在另一个表中找到的差异在一个表中插入、更新或删除行，可以对两个表进行同步。  有关详细信息，请参阅 [MERGE](/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current)。|
 
 ## <a name="aug-2020"></a>2020 年 8 月
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|工作负载管理 - 门户体验|用户可以通过 Azure 门户来配置和管理自己的工作负荷管理设置。 可以配置[工作负荷组](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal)和[工作负荷分类器](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)（含重要性）。|
-|改进了表映射目录视图|新的目录视图 [sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql) 将永久用户表的 object_id 映射到它们的物理表名称。|
+|工作负载管理 - 门户体验|用户可以通过 Azure 门户来配置和管理自己的工作负荷管理设置。 可以配置[工作负荷组](./quickstart-configure-workload-isolation-portal.md)和[工作负荷分类器](./quickstart-create-a-workload-classifier-portal.md)（含重要性）。|
+|改进了表映射目录视图|新的目录视图 [sys.pdw_permanent_table_mappings](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql) 将永久用户表的 object_id 映射到它们的物理表名称。|
 
 ## <a name="july-2020"></a>2020 年 7 月
 
@@ -68,22 +68,22 @@ ms.locfileid: "97368998"
 |列级加密（公共预览版）|使用 Transact-SQL 对数据列应用对称加密，从而保护 Azure Synapse Analytics 中的敏感信息。 列级加密具有内置函数，可用于使用对称密钥（通过证书、密码、对称密钥或非对称密钥受到进一步保护）来加密数据。 有关详细信息，请访问[加密数据列](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)。|
 |兼容性级别支持 (GA)|在此版本中，用户现在可以设置数据库的兼容性级别，以获取 Synapse SQL 引擎的特定版本的 Transact-SQL 语言和查询处理行为。 有关详细信息，请参阅 [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和[更改数据库范围的配置](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
 |**行级别安全性**|此版本包含对于在强制执行了 RLS 的行上进行的更新和删除操作的改进。 在此版本中，如果内部函数（如 "is_rolemember"）包含内部函数的更新和删除操作，则这些函数将成功。 在此次改进之前，这些操作会因基础 DML 操作中的限制而失败。|
-|DBCC SHRINKDATABASE (GA)|现在可以收缩指定数据库中的数据文件和日志文件的大小。 有关详细信息，请参阅[文档](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)。|
+|DBCC SHRINKDATABASE (GA)|现在可以收缩指定数据库中的数据文件和日志文件的大小。 有关详细信息，请参阅[文档](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)。|
 
 ## <a name="may-2020"></a>2020 年 5 月
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|**工作负荷隔离 (GA)**|[工作负荷隔离](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation)现已正式发布。  通过[工作负荷组](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)，可以保留和包含资源。  还可以配置查询超时来取消失控查询。|
-|**工作负荷管理门户体验（预览）**| 用户可以通过 Azure 门户来配置和管理自己的工作负荷管理设置。  可以配置[工作负荷组](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)和[工作负荷分类器](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)（含重要性）。|
-|**ALTER WORKLOAD GROUP**|现在可以使用 [ALTER WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-workload-group-transact-sql?view=azure-sqldw-latest) 命令。  使用 ALTER 命令可以更改现有[工作负荷组](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation)的配置。|
-|**使用 COPY 命令（预览版）对 Parquet 文件执行自动架构检测**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)现在支持在加载 Parquet 文件时执行自动架构检测。 此命令会在加载文件前先自动检测 Parquet 文件架构并创建表。 若要启用此功能，请访问以下电子邮件通讯组列表： sqldwcopypreview@service.microsoft.com 。 |
-|**使用 COPY 命令（预览版）加载复杂的 Parquet 数据类型**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)现在支持加载复杂的 Parquet 类型。 可以将复杂类型（如 Maps 和 Lists）加载到字符串列中。  若要启用此功能，请访问以下电子邮件通讯组列表： sqldwcopypreview@service.microsoft.com 。 |
-|**使用 COPY 命令对 Parquet 文件执行自动压缩检测**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)现在支持自动检测一个或多个 Parquet 文件的压缩方法。 若要启用此功能，请访问以下电子邮件通讯组列表： sqldwcopypreview@service.microsoft.com 。|
-|**其他加载建议**|[加载建议](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations)现在可用于 Synapse SQL。 如果你应该拆分你的文件以获得最大吞吐量，请将你的存储帐户与专用 SQL DW (在以前的 SQL DW) 中，或者在使用加载实用程序（例如 SQLBulkCopy API 或 BCP）时增加批大小，以获取主动通知|
-|**T-SQL 可更新的分布列 (GA)**|用户现在可以更新在分布列中存储的数据。 有关详细信息，请参阅 [在专用 sql DW (以前的 sql DW) 中设计分布式表的指南 ](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute) 。|
-|**T-SQL 根据联接结果进行更新/删除 (GA)**|现在可以根据与其他表联接的结果进行更新和删除。 有关详细信息，请参阅 [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest) 和 [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest) 文档。|
-|**T-SQL PREDICT（预览）**|现在可以对数据仓库中的机器学习模型进行预测，从而避免需要进行大型且复杂的数据移动。 T-SQL PREDICT 函数依赖开放模型框架，需要使用数据和机器学习模型作为输入来生成预测。 有关详细信息，请参阅这篇[文档](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)。|
+|**工作负荷隔离 (GA)**|[工作负荷隔离](./sql-data-warehouse-workload-isolation.md)现已正式发布。  通过[工作负荷组](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)，可以保留和包含资源。  还可以配置查询超时来取消失控查询。|
+|**工作负荷管理门户体验（预览）**| 用户可以通过 Azure 门户来配置和管理自己的工作负荷管理设置。  可以配置[工作负荷组](./quickstart-create-a-workload-classifier-portal.md)和[工作负荷分类器](./quickstart-create-a-workload-classifier-portal.md)（含重要性）。|
+|**ALTER WORKLOAD GROUP**|现在可以使用 [ALTER WORKLOAD GROUP](/sql/t-sql/statements/alter-workload-group-transact-sql?view=azure-sqldw-latest) 命令。  使用 ALTER 命令可以更改现有[工作负荷组](./sql-data-warehouse-workload-isolation.md)的配置。|
+|**使用 COPY 命令（预览版）对 Parquet 文件执行自动架构检测**|[COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)现在支持在加载 Parquet 文件时执行自动架构检测。 此命令会在加载文件前先自动检测 Parquet 文件架构并创建表。 若要启用此功能，请访问以下电子邮件通讯组列表： sqldwcopypreview@service.microsoft.com 。 |
+|**使用 COPY 命令（预览版）加载复杂的 Parquet 数据类型**|[COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)现在支持加载复杂的 Parquet 类型。 可以将复杂类型（如 Maps 和 Lists）加载到字符串列中。  若要启用此功能，请访问以下电子邮件通讯组列表： sqldwcopypreview@service.microsoft.com 。 |
+|**使用 COPY 命令对 Parquet 文件执行自动压缩检测**|[COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)现在支持自动检测一个或多个 Parquet 文件的压缩方法。 若要启用此功能，请访问以下电子邮件通讯组列表： sqldwcopypreview@service.microsoft.com 。|
+|**其他加载建议**|[加载建议](./sql-data-warehouse-concept-recommendations.md)现在可用于 Synapse SQL。 如果你应该拆分你的文件以获得最大吞吐量，请将你的存储帐户与专用 SQL DW (在以前的 SQL DW) 中，或者在使用加载实用程序（例如 SQLBulkCopy API 或 BCP）时增加批大小，以获取主动通知|
+|**T-SQL 可更新的分布列 (GA)**|用户现在可以更新在分布列中存储的数据。 有关详细信息，请参阅 [在专用 sql DW (以前的 sql DW) 中设计分布式表的指南 ](./sql-data-warehouse-tables-distribute.md) 。|
+|**T-SQL 根据联接结果进行更新/删除 (GA)**|现在可以根据与其他表联接的结果进行更新和删除。 有关详细信息，请参阅 [UPDATE](/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest) 和 [DELETE](/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest) 文档。|
+|**T-SQL PREDICT（预览）**|现在可以对数据仓库中的机器学习模型进行预测，从而避免需要进行大型且复杂的数据移动。 T-SQL PREDICT 函数依赖开放模型框架，需要使用数据和机器学习模型作为输入来生成预测。 有关详细信息，请参阅这篇[文档](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)。|
 
 ## <a name="april-2020"></a>2020 年 4 月
 
@@ -94,13 +94,13 @@ ms.locfileid: "97368998"
 
 | 工具改进                                         | 详细信息                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[Visual Studio 16.6 Preview 5](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#--visual-studio-2019-version-166-preview-5-) - SQL Server Data Tools (SSDT)** | 此版本包含以下针对 SSDT 的改进： </br> </br> - 数据发现和分类<br/> - COPY 语句 <br/> - 包含唯一约束的表<br/> - 包含有序聚集列存储索引的表<br/> <br/>此版本包含以下针对 SSDT 的修复： </br></br>  - 当你更改分布列的数据类型时，由 SSDT 生成的更新脚本会执行 CTAS 和 RENAME 操作，而不是删除表并重新创建。 </br> |
+| **[Visual Studio 16.6 Preview 5](/visualstudio/releases/2019/release-notes-preview#--visual-studio-2019-version-166-preview-5-) - SQL Server Data Tools (SSDT)** | 此版本包含以下针对 SSDT 的改进： </br> </br> - 数据发现和分类<br/> - COPY 语句 <br/> - 包含唯一约束的表<br/> - 包含有序聚集列存储索引的表<br/> <br/>此版本包含以下针对 SSDT 的修复： </br></br>  - 当你更改分布列的数据类型时，由 SSDT 生成的更新脚本会执行 CTAS 和 RENAME 操作，而不是删除表并重新创建。 </br> |
 
 ## <a name="march-2020"></a>2020 年 3 月
 
 | 工具改进                                         | 详细信息                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[Visual Studio 16.6 Preview 2](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#whats-new-in-visual-studio-2019) - SQL Server Data Tools (SSDT)** | 此版本包含下述针对 SSDT 的改进和修复： </br> </br> - 解决了以下问题：更改具体化视图 (MV) 引用的表会导致生成 MV 不支持的 Alter View 语句<br/><br/> - 实现了一项更改，以确保当数据库或项目中存在行级安全性对象时“架构比较”操作不会失败。 SSDT 目前不支持行级安全对象。  <br/><br/> - 增大了 SQL Server 对象资源管理器的超时阈值，以避免在列出数据库中的大量对象时发生超时<br/><br/> - 优化了 SQL Server 对象资源管理器检索数据库对象列表的方式，以便在填充对象资源管理器时降低不稳定性并提高性能 |
+| **[Visual Studio 16.6 Preview 2](/visualstudio/releases/2019/release-notes-preview#whats-new-in-visual-studio-2019) - SQL Server Data Tools (SSDT)** | 此版本包含下述针对 SSDT 的改进和修复： </br> </br> - 解决了以下问题：更改具体化视图 (MV) 引用的表会导致生成 MV 不支持的 Alter View 语句<br/><br/> - 实现了一项更改，以确保当数据库或项目中存在行级安全性对象时“架构比较”操作不会失败。 SSDT 目前不支持行级安全对象。  <br/><br/> - 增大了 SQL Server 对象资源管理器的超时阈值，以避免在列出数据库中的大量对象时发生超时<br/><br/> - 优化了 SQL Server 对象资源管理器检索数据库对象列表的方式，以便在填充对象资源管理器时降低不稳定性并提高性能 |
 
 ## <a name="january-2020"></a>2020 年 1 月
 
@@ -226,7 +226,7 @@ ms.locfileid: "97368998"
 ## <a name="more-information"></a>详细信息
 
 - [博客 - Azure Synapse Analytics](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
-- [客户顾问团队博客](https://docs.microsoft.com/archive/blogs/sqlcat/)
+- [客户顾问团队博客](/archive/blogs/sqlcat/)
 - [客户成功案例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Stackoverflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)
