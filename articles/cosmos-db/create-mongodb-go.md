@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
-ms.openlocfilehash: 3f6ff0f81c1979297ed0144eca336cb252c2e787
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 60e7f0abbde8dbb4cb7d87e3c5aa8bbe9f8dad6a
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574354"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165580"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：将 Go 应用程序连接到 Azure Cosmos DB 的 API for MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -278,7 +278,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 创建 Azure Cosmos DB 帐户后，Azure CLI 会显示类似于以下示例的信息： 
 
 > [!NOTE]
-> 此示例使用 JSON 作为 Azure CLI 输出格式，此为默认设置。 若要使用其他输出格式，请参阅 [Azure CLI 命令的输出格式](/cli/azure/format-output-azure-cli)。
+> 此示例使用 JSON 作为 Azure CLI 输出格式，此为默认设置。 若要使用其他输出格式，请参阅 [Azure CLI 命令的输出格式](/cli/azure/format-output-azure-cli)。 
 
 ```json
 {
@@ -332,7 +332,7 @@ Azure CLI 输出类似于以下示例的信息。
 ### <a name="export-the-connection-string-mongodb-database-and-collection-names-as-environment-variables"></a>将连接字符串、MongoDB 数据库和集合名称导出为环境变量。 
 
 ```bash
-export MONGODB_CONNECTION_STRING="mongodb://<COSMOSDB_ACCOUNT_NAME>:<COSMOSDB_PASSWORD>@<COSMOSDB_ACCOUNT_NAME>.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@<COSMOSDB_ACCOUNT_NAME>@"
+export MONGODB_CONNECTION_STRING="mongodb://<COSMOSDB_ACCOUNT_NAME>:<COSMOSDB_PASSWORD>@<COSMOSDB_ACCOUNT_NAME>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@<COSMOSDB_ACCOUNT_NAME>@"
 ```
 
 > [!NOTE] 

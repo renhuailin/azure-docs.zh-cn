@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: 7f4d820b33f36c295c294000d33a0ca5177fc4d1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a1ef441943ec3c29770e0964b3c1132f86239b42
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028064"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127407"
 ---
 # <a name="what-is-azure-hdinsight"></a>什么是 Azure HDInsight？
 
@@ -53,7 +53,7 @@ Azure HDInsight 适用于各种方案的大数据处理。 大数据可以是历
 
 ### <a name="data-warehousing"></a>数据仓库
 
-可以使用 HDInsight 对任何格式的结构化或非结构化数据执行 PB 规模的交互式查询。 也可以通过生成模型将其连接到 BI 工具。 有关详细信息，请[阅读此客户经历](https://customers.microsoft.com/story/milliman)。
+可以使用 HDInsight 对任何格式的结构化或非结构化数据执行 PB 规模的交互式查询。 也可以通过生成模型将其连接到 BI 工具。
 
 HDInsight 体系结构：数据仓库
 

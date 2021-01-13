@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 7311c7e700edbf8565a449ecbd045a91846e72c3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 175ec6766f7cad96c2cc386894f01e5e9fb393fc
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844755"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121461"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (C)
 
@@ -131,7 +131,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyCDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyCDevice --output table
     ```
 
     记下如下所示的设备连接字符串：

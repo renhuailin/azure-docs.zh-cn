@@ -5,16 +5,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: overview
-author: j-martens
-ms.author: jmartens
+ms.author: larryfr
+author: BlackMist
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 53e6d6e67a90cd1f39aed7f9cd7c2368282b2d1f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 9b4cb3117464bfd32e17df4a1dbfdf7efd4ecbe6
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916586"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127764"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -47,7 +47,7 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 + R 脚本或笔记本，其中你使用<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">适用于 R 的 SDK</a> 编写自己的代码，或使用设计器中的 R 模块。
 
-+ + [多模型解决方案加速器](https://aka.ms/many-models)（预览版）在 Azure 机器学习的基础上构建，使你能够训练、操作和管理数百甚至数千个机器学习模型。
++ [多模型解决方案加速器](https://aka.ms/many-models)（预览版）在 Azure 机器学习的基础上构建，使你能够训练、操作和管理数百甚至数千个机器学习模型。
 
 + [面向 Visual Studio Code 用户的机器学习扩展](tutorial-setup-vscode-extension.md)
 
