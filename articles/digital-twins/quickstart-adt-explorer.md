@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187285"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050521"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>快速入门 - 使用 ADT Explorer 探索示例 Azure 数字孪生方案
 
@@ -251,9 +251,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 若要查看答案，请在“查询资源管理器”框中运行以下查询。
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 回想一下之前查看过的孪生属性，Room0 的温度为 70，Room1 的温度为 80。 因此，此处的结果中仅显示 Room1。
     
@@ -284,9 +282,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 若要验证该图是否已成功将更新内容注册为 Room0 的温度，请重新运行先前进行的查询，获取环境中温度高于 75 的所有孪生。
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 现在，房间 0 的温度已从 70 更改为 76，因此两个孪生都应出现在结果中 。
 
