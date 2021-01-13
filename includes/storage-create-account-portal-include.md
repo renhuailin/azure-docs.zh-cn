@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/25/2020
+ms.date: 01/11/2021
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: f8959904482bda8dc26e4df626377027e1ab4bd1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3da4fd26b3f985e034ca60039c09412e8237e965
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005532"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109374"
 ---
 若要在 Azure 门户中创建常规用途 v2 存储帐户，请执行以下步骤：
 
@@ -26,8 +26,7 @@ ms.locfileid: "96005532"
 1. 选择性能层。 默认层为“标准”。
 1. 将“帐户类型”字段设置为“存储 V2 (常规用途 v2)”。
 1. 指定将如何复制存储帐户。 默认的复制选项为“读取访问权限异地冗余存储(RA-GRS)”。 要详细了解可用的复制选项，请参阅 [Azure 存储冗余](../articles/storage/common/storage-redundancy.md)。
-1. 指定存储帐户中 Blob 的访问层。 默认层为“热”。 有关 Blob 访问层的详细信息，请参阅 [Blob 的热访问层、冷访问层和存档访问层](../articles/storage/blobs/storage-blob-storage-tiers.md)。
-1. 若要使用 Azure Data Lake Storage，请选择“高级”选项卡，然后将“分层命名空间”设置为“启用”  。 有关详细信息，请参阅 [Azure Data Lake Storage Gen2 简介](../articles/storage/blobs/data-lake-storage-introduction.md)
+1. “网络”、“数据保护”、“高级”和“标签”选项卡上提供了其他选项   。 若要使用 Azure Data Lake Storage，请选择“高级”选项卡，然后将“分层命名空间”设置为“启用”  。 有关详细信息，请参阅 [Azure Data Lake Storage Gen2 简介](../articles/storage/blobs/data-lake-storage-introduction.md)
 1. 选择“查看+创建”可查看存储帐户设置并创建帐户。
 1. 选择“创建” 。
 

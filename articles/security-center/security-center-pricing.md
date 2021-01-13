@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: 0b6a9d081d2b81124b0cae15e81e4b233f7824bb
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 99f47df86d89e9daf2bc8878b868b04b7038ffd5
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629334"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071198"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure 安全中心定价
 Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络风险的智能检测功能。
@@ -72,6 +72,7 @@ Azure Defender 前 30 天免费。 30 天后，如果选择继续使用服务，
 - [安全中心提供了哪些计划？](#what-are-the-plans-offered-by-security-center)
 - 如何为订阅启用 Azure Defender？
 - 能否在我的订阅中为服务器子集上的服务器启用 Azure Defender？
+- [如果我已有 Microsoft Defender for Endpoint 许可证，能否获得 Azure Defender 的折扣？](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
 - [我的订阅已为服务器启用了 Azure Defender，是否需要为未运行的服务器付费？](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
 - [是否需要为未安装 Log Analytics 代理的计算机付费？](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
 - [如果 Log Analytics 代理向多个工作区报告，是否需要重复付费？](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
@@ -111,6 +112,10 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 
 替代方法如下：在 Log Analytics 工作区级别为服务器启用 Azure Defender。 如果执行此操作，将仅保护向该工作区报告的服务器并对其计费。 但某些功能将不可用。 其中包括实时 VM 访问、网络检测、法规合规性、自适应网络强化、自适应应用程序控制等。 
 
+### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>如果我已有 Microsoft Defender for Endpoint 许可证，能否获得 Azure Defender 的折扣？
+如果你已获得 Microsoft Defender for Endpoint 的许可证，则无需为 Azure Defender 许可证的相应部分付费。
+
+若要确认折扣，请联系安全中心的支持团队，并提供相关工作区 ID、区域和许可证信息。
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>我的订阅已为服务器启用了 Azure Defender，是否需要为未运行的服务器付费？ 
 不是。 在订阅上启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 时，仅针对正在运行的服务器按小时计费。 无需为关闭的任何服务器付费。 

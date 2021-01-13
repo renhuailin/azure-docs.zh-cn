@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 01/07/2021
+ms.date: 01/11/2021
 ms.author: duau
-ms.openlocfilehash: 3e106bc313d6189b2fae8cf6a4dd7ce862294b8f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f780c8c2f932b612ee42e13906f72983b324eefd
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019218"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108528"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>教程：使用 Azure 门户创建和修改 ExpressRoute 线路的对等互连
 
@@ -136,7 +136,7 @@ ms.locfileid: "98019218"
 
 2. 配置线路的 Azure 专用对等互连。 在继续执行后续步骤之前，确保已准备好以下各项：
 
-   * 你拥有并在 RIR / IRR 中注册的一对 /30 子网。 一个子网将用于主链路，而另一个子网将用于辅助链路。 在每个子网中，当 Microsoft 将第二个可用的 IP 用于其路由器时，你需为路由器分配第一个可用的 IP 地址。 对于这对子网，你有三个选择：
+   * 你拥有的一对 /30 子网。 一个子网将用于主链路，而另一个子网将用于辅助链路。 在每个子网中，当 Microsoft 将第二个可用的 IP 用于其路由器时，你需为路由器分配第一个可用的 IP 地址。
    * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。 主要链接和次要链接都必须使用相同的 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。 可以使用专用 AS 编号建立对等互连（65515 到 65520 之间的数字除外）。
    * 配置专用对等互连后，必须通过 BGP 将路由从本地边缘路由器播发到 Azure。
