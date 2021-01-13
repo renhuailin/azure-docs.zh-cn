@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: ba4e6b8b5e9db494ab4c0c372c2086087a2d58cb
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133168"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165784"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a> (预览版的遥测处理器) -Azure Monitor Application Insights Java
 
@@ -23,58 +23,48 @@ ms.locfileid: "98133168"
 下面是遥测处理器的一些用例：
  * 屏蔽敏感数据
  * 有条件地添加自定义维度
- * 更新用于聚合和显示的遥测名称
- * 删除或筛选跨越属性以控制引入成本
+ * 更新用于聚合并在 Azure 门户中显示的名称
+ * 删除范围属性以控制引入成本
 
 ## <a name="terminology"></a>术语
 
-在转到遥测处理器之前，请务必了解跟踪和跨越的内容。
+在跳转到遥测处理器之前，请务必了解术语范围所指的内容。
 
-### <a name="traces"></a>跟踪
+范围是以下三种情况中的任何一项的一般术语：
 
-跟踪跟踪单个请求的进度（称为 `trace` ），因为它是由构成应用程序的服务来处理的。 请求可能由用户或应用程序启动。 中的每个工作单元 `trace` 均称为 `span` ; 是 `trace` 范围的树。 由 `trace` 单个根范围和任意数量的子范围组成。
+* 传入的请求
+* 传出依赖关系 (例如，对另一个服务的远程调用) 
+* 进程内依赖关系 (例如，通过服务的子组件完成的工作) 
 
-### <a name="span"></a>格
+出于遥测处理器的目的，范围的重要组成部分如下：
 
-跨越是对象，表示由请求中涉及的单个服务或组件在系统中流动时所做的工作。 `span`包含一个 `span context` ，它是一组全局唯一标识符，表示每个跨度所属的唯一请求。 
+* 名称
+* 属性
 
-跨度封装：
+范围名称是用于 Azure 门户中的请求和依赖项的主显示器。
 
-* 范围名称
-* `SpanContext`唯一标识范围的不可变的
-* `Span`、或 null 形式的父范围 `SpanContext`
-* 一个 `SpanKind`
-* 开始时间戳
-* 结束时间戳
-* [`Attributes`](#attributes)
-* 带时间戳的事件的列表
-* `Status`。
+范围属性表示给定请求或依赖项的标准属性和自定义属性。
 
-通常，范围的生命周期如下所示：
+## <a name="telemetry-processor-types"></a>遥测处理器类型
 
-* 服务收到请求。 范围上下文是从请求标头（如果存在）中提取的。
-* 新范围将创建为提取的范围上下文的子元素;如果不存在，则创建一个新的根跨度。
-* 服务处理请求。 其他属性和事件将添加到可用于了解请求上下文的范围，例如处理请求的计算机的主机名或客户标识符。
-* 可以创建新的范围来表示服务的子组件完成的工作。
-* 当服务对另一服务进行远程调用时，会将范围上下文注入标头或消息信封，从而序列化当前范围上下文并将其转发到下一个服务。
-* 服务完成的工作已成功完成。 范围状态已适当设置，跨度标记为 "已完成"。
+目前有两种类型的遥测处理器。
 
-### <a name="attributes"></a>属性
+#### <a name="attribute-processor"></a>属性处理器
 
-`Attributes` 是在中封装的零个或多个键/值对的列表 `span` 。 特性必须具有以下属性：
+特性处理器具有插入、更新、删除或哈希特性的功能。
+它还可以通过正则表达式提取 (，) 现有属性中的一个或多个新属性。
 
-特性键，必须为非 null 和非空字符串。
-属性值，可以是：
-* 基元类型： string、boolean、双精度浮点 (IEEE 754-1985) 或带符号64位整数。
-* 基元类型值的数组。 数组必须为同类类型，即不能包含不同类型的值。 对于不支持数组值的本机协议，应将这些值表示为 JSON 字符串。
+#### <a name="span-processor"></a>跨越处理器
 
-## <a name="supported-processors"></a>支持的处理器：
- * 属性处理器
- * 范围处理器
+Span 处理器能够更新遥测名称。
+它还可以通过正则表达式提取 (，) 范围名称中的一个或多个新属性。
 
-## <a name="to-get-started"></a>入门指南
+> [!NOTE]
+> 请注意，当前遥测处理器仅处理字符串类型的属性，不处理类型为布尔值或数字的属性。
 
-使用以下模板创建一个名为 `applicationinsights.json` 的配置文件，并将其置于 `applicationinsights-agent-***.jar` 所在的目录中。
+## <a name="getting-started"></a>入门
+
+使用以下模板创建一个名为 `applicationinsights.json` 的配置文件，并将其置于 `applicationinsights-agent-*.jar` 所在的目录中。
 
 ```json
 {
@@ -98,9 +88,14 @@ ms.locfileid: "98133168"
 }
 ```
 
-## <a name="includeexclude-spans"></a>包含/排除范围
+## <a name="includeexclude-criteria"></a>包含/排除条件
 
-特性处理器和跨度处理器公开选项以提供一组要匹配的范围的属性，以确定是否应在遥测处理器中包含或排除跨距。 若要配置此选项，则在 `include` 和/或 `exclude` 下至少必须有一个 `matchType` 以及 `spanNames` 和 `attributes` 中的一个。 允许包括/排除配置有多个指定的条件。 所有指定条件的评估结果都必须为 true 才会被视为匹配。 
+特性处理器和范围处理器都支持可选 `include` 的和 `exclude` 条件。
+仅当所提供的) 满足条件时，才会将处理器应用于与其条件匹配的那些范围 `include` (如果提供了) _，_ 则不符合其 `exclude` 标准 (。
+
+若要配置此选项，则在 `include` 和/或 `exclude` 下至少必须有一个 `matchType` 以及 `spanNames` 和 `attributes` 中的一个。
+支持包含/排除配置具有多个指定的条件。
+所有指定条件的评估结果都必须为 true 才会被视为匹配。 
 
 必填字段： 
 * `matchType` 控制如何解释 `spanNames` 和 `attributes` 数组中的项。 可能的值包括 `regexp` 或 `strict`。 
@@ -150,7 +145,7 @@ ms.locfileid: "98133168"
 ```
 有关详细信息，请查看 [遥测处理器示例](./java-standalone-telemetry-processors-examples.md) 文档。
 
-## <a name="attribute-processor"></a>属性处理器 
+## <a name="attribute-processor"></a>属性处理器
 
 属性处理器修改范围的属性。 它还可以支持用于包括/排除范围的功能。 它接受一个操作列表，这些操作按配置文件中指定的顺序执行。 支持的操作有：
 
@@ -167,7 +162,7 @@ ms.locfileid: "98133168"
         "key": "attribute1",
         "value": "value1",
         "action": "insert"
-      },
+      }
     ]
   }
 ]
@@ -190,7 +185,7 @@ ms.locfileid: "98133168"
         "key": "attribute1",
         "value": "newValue",
         "action": "update"
-      },
+      }
     ]
   }
 ]
@@ -213,7 +208,7 @@ ms.locfileid: "98133168"
       {
         "key": "attribute1",
         "action": "delete"
-      },
+      }
     ]
   }
 ]
@@ -234,7 +229,7 @@ ms.locfileid: "98133168"
       {
         "key": "attribute1",
         "action": "hash"
-      },
+      }
     ]
   }
 ]
@@ -259,7 +254,7 @@ ms.locfileid: "98133168"
         "key": "attribute1",
         "pattern": "<regular pattern with named matchers>",
         "action": "extract"
-      },
+      }
     ]
   }
 ]
@@ -271,7 +266,7 @@ ms.locfileid: "98133168"
 
 有关详细信息，请查看 [遥测处理器示例](./java-standalone-telemetry-processors-examples.md) 文档。
 
-## <a name="span-processors"></a>范围处理器
+## <a name="span-processor"></a>跨越处理器
 
 范围处理器修改范围名称或根据范围名称修改范围的属性。 它还可以支持用于包括/排除范围的功能。
 

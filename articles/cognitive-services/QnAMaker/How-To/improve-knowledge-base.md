@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a77083c721328a8df9facd2f4b320b863aa03c68
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6b9077fec13dd177ec4e07e7fbd7818ded2fd0a1
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352399"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164934"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知识库中的活动学习建议问题
 
@@ -26,7 +26,7 @@ ms.locfileid: "96352399"
 
 ## <a name="view-suggested-questions"></a>查看建议的问题
 
-1. 若要查看建议的问题，请在 " **编辑** 知识库" 页上选择 " **查看选项**"，然后选择 " **显示活动的学习建议**"。
+1. 若要查看建议的问题，请在 " **编辑** 知识库" 页上选择 " **查看选项**"，然后选择 " **显示活动的学习建议**"。 如果没有针对任何问题和答案对的建议，则将禁用此选项。  
 
     [![在门户的 "编辑" 部分中，选择 "显示建议"，以查看活动学习的新问题备选方案。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
@@ -145,7 +145,7 @@ JSON 正文具有几个设置：
 |`feedbackRecords`|array|反馈列表。|
 |`userId`|字符串|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
 |`userQuestion`|字符串|用户查询的确切文本。 必需。|
-|`qnaID`|number|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
+|`qnaID`|数字|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
 
 示例 JSON 正文如下所示：
 

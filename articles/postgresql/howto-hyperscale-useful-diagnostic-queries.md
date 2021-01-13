@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/5/2021
-ms.openlocfilehash: 90f8b74168f1b02647f14645aa4dc7a3dff8c2ba
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4858f650aca1b704ac79482e0158fd83fc0264b8
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937559"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165235"
 ---
 # <a name="useful-diagnostic-queries"></a>有用的诊断查询
 
@@ -278,6 +278,31 @@ $cmd$);
 │ 10.0.0.20 │ 0.89           │
 └───────────┴────────────────┘
 ```
+
+## <a name="cache-hit-rate"></a>缓存命中率
+
+大多数应用程序通常只是一次访问其总数据的一小部分。 PostgreSQL 在内存中保留频繁访问的数据，以避免磁盘读取速度缓慢。 可以在 " [pg_statio_user_tables](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STATIO-ALL-TABLES-VIEW) " 视图中查看有关它的统计信息。
+
+一项重要的度量是：内存缓存与工作负荷中的磁盘相比，数据的百分比是多少：
+
+``` postgresql
+SELECT
+  sum(heap_blks_read) AS heap_read,
+  sum(heap_blks_hit)  AS heap_hit,
+  sum(heap_blks_hit) / (sum(heap_blks_hit) + sum(heap_blks_read)) AS ratio
+FROM
+  pg_statio_user_tables;
+```
+
+示例输出：
+
+```
+ heap_read | heap_hit |         ratio
+-----------+----------+------------------------
+         1 |      132 | 0.99248120300751879699
+```
+
+如果发现自己的比率明显低于99%，则可能需要考虑增加数据库的可用缓存。
 
 ## <a name="next-steps"></a>后续步骤
 

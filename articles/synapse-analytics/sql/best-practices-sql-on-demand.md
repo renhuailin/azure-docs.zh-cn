@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 93ac8cd3e462c244840a5ed569d685a9d67fa6c2
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457908"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165869"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中无服务器 SQL 池的最佳实践
 
@@ -25,9 +25,9 @@ ms.locfileid: "96457908"
 
 无服务器 SQL 池允许查询 Azure 存储帐户中的文件。 它没有本地存储或引入功能。 因此，查询所面向的所有文件都是无服务器 SQL 池外部的。 与从存储中读取文件相关的所有操作都可能会对查询性能产生影响。
 
-## <a name="colocate-your-azure-storage-account-and-serverless-sql-pool"></a>归置你的 Azure 存储帐户和无服务器 SQL 池
+## <a name="colocate-your-storage-and-serverless-sql-pool"></a>归置存储和无服务器 SQL 池
 
-若要最大程度地减少延迟，请归置你的 Azure 存储帐户和无服务器 SQL 池终结点。 在创建工作区期间预配的存储帐户和终结点位于同一区域。
+若要最大程度地减少延迟，请将 Azure 存储帐户或 CosmosDB 分析存储归置到无服务器的 SQL 池终结点。 在创建工作区期间预配的存储帐户和终结点位于同一区域。
 
 为了获得最佳性能，如果访问具有无服务器 SQL 池的其他存储帐户，请确保它们位于同一区域。 如果它们不在同一区域，那么远程区域和终结点区域之间的数据网络传输延迟将会增加。
 
@@ -44,9 +44,9 @@ ms.locfileid: "96457908"
 
 如果可以，尽可能准备文件来提升性能：
 
-- 将 CSV 和 JSON 转换为 Parquet。 Parquet 是一种分列格式。 由于经过压缩，它的文件大小小于包含相同数据的 CSV 或 JSON 文件。 无服务器 SQL 池需要更少的时间，更少的存储请求才能读取它。
+- 将大型 CSV 和 JSON 转换为 Parquet。 Parquet 是一种分列格式。 由于经过压缩，它的文件大小小于包含相同数据的 CSV 或 JSON 文件。 如果您正在读取 Parquet 文件，则无服务器 SQL 池可以跳过查询中不需要的列和行。 无服务器 SQL 池需要更少的时间，更少的存储请求才能读取它。
 - 如果查询目标是一个大文件，那么把它拆分为多个较小文件将会让你受益匪浅。
-- 尽量让 CSV 文件大小小于 10 GB。
+- 尝试将 CSV 文件大小保留为 100 MB 和 10 GB。
 - 对于单个 OPENROWSET 路径或外部表 LOCATION，最好有相等大小的文件。
 - 通过将分区存储到不同文件夹或文件名称来对数据进行分区。 请参阅[使用 filename 和 filepath 函数定目标到特定分区](#use-filename-and-filepath-functions-to-target-specific-partitions)。
 

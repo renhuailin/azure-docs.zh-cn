@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 7/1/2020
-ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 1/12/2021
+ms.openlocfilehash: 48537483501165d4a978afdbd05560613170d187
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964509"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165605"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL –超大规模 (Citus) 配置选项
 
@@ -84,7 +84,7 @@ ms.locfileid: "85964509"
     * 澳大利亚东部
     * Japan East
     * 韩国中部
-    * 东南亚
+    * Southeast Asia
 * 东欧
     * 北欧
     * 英国南部
@@ -119,9 +119,13 @@ ms.locfileid: "85964509"
 
 协调器和工作节点上最多支持2个 TiB 的存储。 请参阅 [上述](#compute-and-storage) 适用于节点和群集大小的存储选项和 IOPS 计算。
 
+### <a name="database-creation"></a>数据库创建
+
+Azure 门户提供的凭据用于连接到每个超大规模 (Citus) 服务器组（数据库）中的一个数据库 `citus` 。 当前不允许创建另一个数据库，并且 CREATE DATABASE 命令将失败并出现错误。
+
 ## <a name="pricing"></a>定价
 有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/postgresql/)。
-若要查看所需配置的开销， [Azure 门户](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) 会根据所选选项，在 " **配置** " 选项卡上显示每月成本。 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/) 网站上，选择 **"添加项**"，展开 " **数据库** " 类别，然后选择 " **Azure Database for PostgreSQL –超大规模" (") ** " 以自定义选项。
+若要查看所需配置的开销， [Azure 门户](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) 会根据所选选项，在 " **配置** " 选项卡上显示每月成本。 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/) 网站上，选择 **"添加项**"，展开 " **数据库** " 类别，然后选择 " **Azure Database for PostgreSQL –超大规模" (")** " 以自定义选项。
  
 ## <a name="next-steps"></a>后续步骤
 了解如何 [在门户中创建超大规模 (Citus) 服务器组](quickstart-create-hyperscale-portal.md)。

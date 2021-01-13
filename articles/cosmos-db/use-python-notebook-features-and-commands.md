@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 381aa88326440aba91e02393cfe2bdb1e2c38097
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b89fcf32ed033f359b4db601e36cc69bb899944d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340407"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165818"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>使用 Azure Cosmos DB Python 笔记本中的内置笔记本命令和功能（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -123,6 +123,8 @@ Total time taken : 00:00:38.1228087 hours
 Total RUs consumed : 25022.58
 ```
 可以使用输出统计信息计算用于上传项的有效 RU/秒。 例如，如果在 38 秒内消耗了 25,000 个 RU，则有效 RU/秒为 25,000 RU / 38 秒 = 658 RU/秒。
+
+可以将文件 (如 CSV 或 JSON 文件) 保存到本地笔记本工作区。 建议在笔记本中添加一个单元格来保存文件。 你可以在笔记本环境的集成终端中查看这些文件。 可以使用 "ls" 命令查看已保存的文件。 但是，如果重置工作区，则会删除这些文件。 因此，最好使用持久性存储，例如 GitHub 或存储帐户而不是本地工作区。
 
 ## <a name="run-another-notebook-in-current-notebook"></a>在当前笔记本中运行另一个笔记本 
 可以使用 ``%%run`` magic 命令从当前笔记本运行工作区中的另一个笔记本。 使用语法：

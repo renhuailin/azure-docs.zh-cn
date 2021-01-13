@@ -12,21 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 3eb456dad2836bed55c45e7be9e898fdf72ac4d2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 59e266274d6b65182ad63513ecf9bf3b5ab95490
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017929"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164832"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>从网络性能监视器迁移到连接监视器
 
 你可以通过一次单击和零停机时间，将测试从网络性能监视器 (NPM) 迁移到新的、经过改进的连接监视器。 若要了解有关这些优势的详细信息，请参阅 [连接监视器](./connection-monitor-overview.md)。
 
-
->[!NOTE]
-> 只有服务连接监视器中的测试可以迁移到连接监视器。
->
 
 ## <a name="key-points-to-note"></a>需要注意的要点
 
@@ -39,7 +35,7 @@ ms.locfileid: "98017929"
    * **Log Analytics 中的数据**：迁移之前，数据将保留在 NetworkMonitoring 表中配置 NPM 的工作区中。 迁移后，数据将转到 NetworkMonitoring 表，并在同一工作区中 ConnectionMonitor_CL 表。 在 NPM 中禁用测试后，数据仅存储在 ConnectionMonitor_CL 表中。
    * **基于日志的警报、仪表板和集成**：您必须基于新的 ConnectionMonitor_CL 表手动编辑查询。 若要在指标中重新创建警报，请参阅 [利用连接监视器进行网络连接监视](./connection-monitor-overview.md#metrics-in-azure-monitor)。
     
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 确保在你的订阅中启用了网络观察程序以及 Log Analytics 工作区的区域。
 * 必须通过网络观察程序扩展启用装有 Log Analytics 代理的 Azure 虚拟机。
@@ -52,7 +48,7 @@ ms.locfileid: "98017929"
 
     :::image type="content" source="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png" alt-text="将测试从网络性能监视器迁移到连接监视器" lightbox="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png":::
     
-1. 在下拉列表中，选择订阅和工作区，然后选择要迁移的 NPM 功能。 目前只能从服务连接监视器迁移测试。  
+1. 在下拉列表中，选择订阅和工作区，然后选择要迁移的 NPM 功能。 
 1. 选择 " **导入** " 以迁移测试。
 
 迁移开始后，将进行以下更改： 
@@ -74,5 +70,5 @@ ms.locfileid: "98017929"
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关连接监视器的详细信息，请参阅：
-* [从连接监视器迁移到连接监视器](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
+* [从连接监视器 (经典) 迁移到连接监视器](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
 * [使用 Azure 门户创建连接监视器](./connection-monitor-create-using-portal.md)

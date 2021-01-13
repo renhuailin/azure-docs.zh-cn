@@ -6,19 +6,19 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 7c5cac0b52fb0a224595ca7e328b551fd48d6661
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 375f0a26006f1176174b335073709e45911d9921
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614228"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165801"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项-Azure Monitor Java Application Insights
 
 > [!WARNING]
-> **如果要从3.0 预览版升级**
+> **如果要从 3.0 预览版升级**
 >
-> 请仔细查看下面的所有配置选项，因为 json 结构已完全更改，而文件名本身则以全部小写。
+> 请仔细查看下面的所有配置选项，因为除了文件名本身全部变为小写外，json 结构也已完全改变。
 
 ## <a name="connection-string-and-role-name"></a>连接字符串和角色名称
 
@@ -35,11 +35,11 @@ ms.locfileid: "97614228"
 
 将数据从不同的应用程序发送到同一个 Application Insights 资源时，必须使用连接字符串和角色名称。
 
-你将在下面找到更多详细信息和其他配置选项。
+下面提供了更多详细信息和其他配置选项。
 
 ## <a name="configuration-file-path"></a>配置文件路径
 
-默认情况下，Application Insights Java 3.0 需要将配置文件命名为，并将其置于与 `applicationinsights.json` 相同的目录中 `applicationinsights-agent-3.0.0.jar` 。
+默认情况下，Application Insights Java 3.0 要求将配置文件命名为 `applicationinsights.json` 并置于 `applicationinsights-agent-3.0.0.jar` 所在的目录中。
 
 可以使用以下任一方法指定你自己的配置文件路径：
 
@@ -107,7 +107,7 @@ ms.locfileid: "97614228"
 
 例如，如果将采样率设置为 10%，则只会看到 10% 的事务，但在这 10% 的事务中，每个事务都有完整的端到端事务详细信息。
 
-下面是一个示例，说明如何将采样设置为捕获大约 **1/3 的所有事务** ，确保为用例设置了正确的采样率：
+下面是一个示例，演示了如何将采样设置为捕获大约 1/3 的事务 - 请确保你设置的采样率适合自己的用例：
 
 ```json
 {
@@ -124,7 +124,7 @@ ms.locfileid: "97614228"
 
 ## <a name="jmx-metrics"></a>JMX 指标
 
-如果要收集一些其他 JMX 指标：
+如果要收集一些其他 JMX 指标，请运行以下命令：
 
 ```json
 {
@@ -143,11 +143,11 @@ ms.locfileid: "97614228"
 }
 ```
 
-`name` 将分配给此 JMX 指标 (的度量值名称可以是任何) 。
+`name` 是将分配给此 JMX 指标的指标名称（可以是任何名称）。
 
-`objectName` 要收集的 JMX MBean 的 [对象名称](https://docs.oracle.com/javase/8/docs/api/javax/management/ObjectName.html) 。
+`objectName` 是要收集的 JMX MBean 的[对象名称](https://docs.oracle.com/javase/8/docs/api/javax/management/ObjectName.html)。
 
-`attribute` 要收集的 JMX MBean 中的属性名称。
+`attribute` 是要收集的 JMX MBean 内部的属性名称。
 
 支持数值和布尔 JMX 指标值。 False 表示布尔 JMX 指标映射到 `0`，true 表示映射到 `1`。
 
@@ -156,7 +156,7 @@ ms.locfileid: "97614228"
 
 ## <a name="custom-dimensions"></a>自定义维度
 
-如果要将自定义维度添加到所有遥测：
+如果要向所有遥测数据添加自定义维度：
 
 ```json
 {
@@ -172,20 +172,20 @@ ms.locfileid: "97614228"
 > [!NOTE]
 > 从3.0.1 版版开始，如果添加一个名为的自定义维度 `service.version` ，该值将存储在 `application_Version` Application Insights 日志 "表的列中，而不是作为自定义维度。
 
-## <a name="telemetry-processors-preview"></a> (预览版的遥测处理器) 
+## <a name="telemetry-processors-preview"></a>遥测处理器（预览版）
 
 此功能为预览版。
 
-它允许你配置将应用于请求、依赖项和跟踪遥测的规则，例如：
+它可用于配置将应用于请求、依赖项和跟踪遥测的规则，例如：
  * 屏蔽敏感数据
  * 有条件地添加自定义维度
  * 更新用于聚合和显示的遥测名称
 
-有关详细信息，请查看 [遥测处理器](./java-standalone-telemetry-processors.md) 文档。
+有关详细信息，请查看[遥测处理器](./java-standalone-telemetry-processors.md)文档。
 
 ## <a name="auto-collected-logging"></a>自动收集的日志记录
 
-Log4j、Logback 和 util。日志记录是自动检测的，将自动收集通过这些日志记录框架执行的日志记录。
+系统自动检测 Log4j、Logback 和 java.util.logging，并自动收集通过这些记录框架执行的日志记录。
 
 仅在第一次满足日志记录框架配置的阈值时才捕获日志记录，另一种方法还满足 Application Insights 配置的阈值。
 
@@ -201,9 +201,9 @@ Log4j、Logback 和 util。日志记录是自动检测的，将自动收集通�
 }
 ```
 
-还可以使用环境变量设置阈值 `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` 。
+还可以使用环境变量 `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` 设置阈值。
 
-这些是 `level` 可以在文件中指定的有效值 `applicationinsights.json` ，以及这些值如何与不同日志记录框架中的日志记录级别相对应：
+下面介绍了你可以在 `applicationinsights.json` 文件中指定的有效 `level` 值，以及这些值如何对应于不同记录框架中的日志记录级别：
 
 | 级别             | Log4j  | Logback | JUL     |
 |-------------------|--------|---------|---------|
@@ -218,16 +218,16 @@ Log4j、Logback 和 util。日志记录是自动检测的，将自动收集通�
 | TRACE（或 FINEST） | TRACE  | TRACE   | FINEST  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>自动收集的 Micrometer 指标 (包括弹簧 Boot 制动器指标) 
+## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>自动收集的 Micrometer 指标（包括 Spring Boot Actuator 指标）
 
-如果你的应用程序使用 [Micrometer](https://micrometer.io)，则会自动收集发送到 Micrometer 全局注册表的指标。
+如果应用程序使用 [Micrometer](https://micrometer.io)，系统会自动收集发送到 Micrometer 全局注册表的指标。
 
-此外，如果应用程序使用 [春季 Boot 传动装置](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)，则也会自动收集弹簧 boot 制动器配置的指标。
+此外，如果应用程序使用 [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)，系统也会自动收集 Spring Boot Actuator 配置的指标。
 
-若要禁用 Micrometer 指标的自动收集 (包括弹簧 Boot 传动指标) ：
+若要禁止自动收集 Micrometer 指标（包括 Spring Boot Actuator 指标），请运行以下命令：
 
 > [!NOTE]
-> 自定义指标单独计费，并可能产生额外费用。 请确保查看详细 [定价信息](https://azure.microsoft.com/pricing/details/monitor/)。 若要禁用 Micrometer 和弹簧制动器指标，请将以下配置添加到配置文件。
+> 自定义指标单独计费，并可能产生额外费用。 请确保查看详细的[定价信息](https://azure.microsoft.com/pricing/details/monitor/)。 若要禁用 Micrometer 和 Spring Actuator 指标，请将以下配置添加到配置文件中。
 
 ```json
 {
@@ -239,9 +239,38 @@ Log4j、Logback 和 util。日志记录是自动检测的，将自动收集通�
 }
 ```
 
+## <a name="suppressing-specific-auto-collected-telemetry"></a>抑制特定的自动收集遥测
+
+从3.0.1 版开始，可使用以下配置选项禁止显示特定自动收集的遥测数据：
+
+```json
+{
+  "instrumentation": {
+    "cassandra": {
+      "enabled": false
+    },
+    "jdbc": {
+      "enabled": false
+    },
+    "kafka": {
+      "enabled": false
+    },
+    "micrometer": {
+      "enabled": false
+    },
+    "mongo": {
+      "enabled": false
+    },
+    "redis": {
+      "enabled": false
+    }
+  }
+}
+```
+
 ## <a name="heartbeat"></a>检测信号
 
-默认情况下，Application Insights Java 3.0 每15分钟发送一次检测信号指标。 如果使用检测信号指标来触发警报，则可增加此检测信号的频率：
+默认情况下，Application Insights Java 3.0 每 15 分钟发送一个检测信号指标。 如果使用检测信号指标来触发警报，则可增加此检测信号的频率：
 
 ```json
 {
@@ -252,11 +281,11 @@ Log4j、Logback 和 util。日志记录是自动检测的，将自动收集通�
 ```
 
 > [!NOTE]
-> 不能降低检测信号的频率，因为检测信号数据也用于跟踪 Application Insights 使用情况。
+> 不能降低此检测信号的频率，因为检测信号数据也用于跟踪 Application Insights 使用情况。
 
 ## <a name="http-proxy"></a>HTTP 代理
 
-如果你的应用程序位于防火墙之后，并且无法直接连接到 Application Insights (请参阅 [Application Insights) 使用的 IP 地址](./ip-addresses.md) ，你可以将 Application Insights Java 3.0 配置为使用 HTTP 代理：
+如果应用程序位于防火墙后面，无法直接连接到 Application Insights（请参阅 [Application Insights 使用的 IP 地址](./ip-addresses.md)），则可将 Application Insights Java 3.0 配置为使用 HTTP 代理：
 
 ```json
 {
@@ -267,29 +296,29 @@ Log4j、Logback 和 util。日志记录是自动检测的，将自动收集通�
 }
 ```
 
-[//]: # "请注意，在我们支持0.10.0 之前，不会公布 OpenTelemetry 支持，这对0.9.0 有重大重大更改"
+[//]: # "请注意，在我们支持 0.10.0 之前，不会播发 OpenTelemetry 支持，0.10.0 与 0.9.0 相比有巨大的突破性变化"
 
-[//]: # "# # 支持 OpenTelemetry API 1.0 版"
+[//]: # "## 对 OpenTelemetry API 1.0 之前的版本的支持"
 
-[//]: # "由于 OpenTelemetry API 尚不稳定，因此支持 OpenTelemetry API 的预1.0 版本"
-[//]: # "因此，代理的每个版本仅支持 OpenTelemetry API 的特定1.0 版"
-[//]: # " (一旦发布 OpenTelemetry API 1.0，此限制将不适用) 。"
+[//]: # "可选择启用对 OpenTelemetry API 1.0 之前的版本的支持，因为 OpenTelemetry API 尚不稳定"
+[//]: # "因此，该代理的各个版本仅支持 OpenTelemetry API 1.0 之前的特定版本"
+[//]: # "（OpenTelemetry API 1.0 发布后，此限制将不再适用）。"
 
-[//]: # """ "json"
+[//]: # "```json"
 [//]: # "{"
-[//]: # "  \"预览 \" ： {"
-[//]: # "    \"openTelemetryApiSupport \" ： true"
+[//]: # "  \"preview\": {"
+[//]: # "    \"openTelemetryApiSupport\": true"
 [//]: # "  }"
 [//]: # "}"
 [//]: # "```"
 
 ## <a name="self-diagnostics"></a>自我诊断
 
-"自诊断" 指的是 Application Insights Java 3.0 的内部日志记录。
+“自我诊断”指的是 Application Insights Java 3.0 的内部日志记录。
 
-此功能有助于发现和诊断 Application Insights 本身的问题。
+此功能可用于发现和诊断 Application Insights 本身的问题。
 
-默认情况下，与 `INFO` `applicationinsights.log` 此配置相对应，在文件和控制台级别 Application Insights Java 3.0 日志：
+默认情况下，Application Insights Java 3.0 在 `INFO` 级别将日志记录到文件 `applicationinsights.log` 和控制台，对应于以下配置：
 
 ```json
 {
@@ -305,20 +334,20 @@ Log4j、Logback 和 util。日志记录是自动检测的，将自动收集通�
 }
 ```
 
-`destination` 可以是 `file` 、或之一 `console` `file+console` 。
+`destination` 可以为 `file`、`console` 或 `file+console` 中的一个。
 
-`level` 可以是、、 `OFF` 、 `ERROR` `WARN` `INFO` 、或之一 `DEBUG` `TRACE` 。
+`level` 可以为 `OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG` 或 `TRACE` 中的一个。
 
-`path` 可以是绝对路径或相对路径。 相对路径是根据所在的目录解析的 `applicationinsights-agent-3.0.0.jar` 。
+`path` 可以是绝对或相对路径。 相对路径根据 `applicationinsights-agent-3.0.0.jar` 所在的目录进行解析。
 
-`maxSizeMb` 滚动之前日志文件的最大大小。
+`maxSizeMb` 是日志文件滚动更新之前的最大大小。
 
-`maxHistory` (除了当前日志文件) 之外保留的日志文件的数目。
+`maxHistory` 是保留的滚动更新日志文件的数目（除当前日志文件外）。
 
 ## <a name="an-example"></a>示例
 
-这只是一个示例，用于显示具有多个组件的配置文件。
-请根据你的需要配置特定的选项。
+这只是一个示例，用来展示包含多个组件的配置文件的外观。
+请根据你的需求配置特定选项。
 
 ```json
 {

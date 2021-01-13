@@ -4,17 +4,17 @@ description: 从存档存储中解冻 Blob，以便可以访问 Blob 数据。 �
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/08/2020
+ms.date: 01/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f74d4ffdd724039354a311234317dac889cd7cfe
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5a89e5a9eca653a2d15e5b09605b78bc18d76b8f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545920"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165665"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>从存档层解冻 Blob 数据
 
@@ -29,9 +29,13 @@ ms.locfileid: "95545920"
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+## <a name="monitor-rehydration-progress"></a>监视解除冻结进度
+
+在解除冻结期间，使用 "获取 blob 属性" 操作来检查 " **存档状态** " 属性，并在层更改完成后确认。 状态显示为“rehydrate-pending-to-hot”或“rehydrate-pending-to-cool”，具体取决于目标层。 完成后，“存档状态”属性会被删除，“访问层”Blob 属性会反映出新层是热层还是冷层。
+
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>将存档的 Blob 复制到联机层
 
-如果你不想要解冻存档的 Blob，可以选择执行[复制 Blob](/rest/api/storageservices/copy-blob) 操作。 原始 Blob 在存档中保持未修改状态，同时会在热层或冷层中联机创建新的 Blob 供你使用。 在“复制 Blob”操作中，还可以将可选的 x-ms-rehydrate-priority 属性置为“标准”或“高”，以指定要在哪个优先级创建你的 Blob 副本。
+如果你不想要解冻存档的 Blob，可以选择执行[复制 Blob](/rest/api/storageservices/copy-blob) 操作。 原始 Blob 在存档中保持未修改状态，同时会在热层或冷层中联机创建新的 Blob 供你使用。 在 " **复制 Blob** " 操作中，你还可以将可选的 " *解除冻结" 优先级* 设置为 "标准" 或 "高"，以指定要创建 Blob 副本的优先级。
 
 从存档中复制 Blob 可能需要数小时才能完成，具体取决于所选解冻优先级。 在幕后，“复制 Blob”操作会读取存档源 Blob，以便在所选目标层中创建新的联机 Blob。 列出 Blob 时，新 Blob 也许可见，但数据并不可用，直到从源存档 Blob 进行读取的操作完成并将数据写入到新的联机目标 Blob 为止。 新 Blob 充当独立的副本，对它进行的任何修改或删除操作不会影响源存档 Blob。
 
@@ -60,7 +64,7 @@ ms.locfileid: "95545920"
 ## <a name="quickstart-scenarios"></a>快速入门方案
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>将存档 Blob 解冻到联机层
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户中，搜索并选择“所有资源”。

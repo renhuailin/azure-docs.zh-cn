@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8086bd2a193ac52e76bf8da245063163ab2ea2f9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a2d4cec57eb6ac23c191e504c305c2c6d11268ac
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591049"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164996"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -25,7 +25,7 @@ ms.locfileid: "97591049"
 
 ## <a name="what-is-an-application-proxy-connector"></a>什么是应用程序代理连接器？
 
-连接器是位于本地的轻型代理，能够帮助与应用程序代理服务建立出站连接。 必须将连接器安装在能够访问后端应用程序的 Windows Server 上。 可将连接器组织成连接器组，每个组处理发往特定应用程序的流量。
+连接器是位于本地的轻型代理，能够帮助与应用程序代理服务建立出站连接。 必须将连接器安装在能够访问后端应用程序的 Windows Server 上。 可将连接器组织成连接器组，每个组处理发往特定应用程序的流量。 有关应用程序代理的更多信息和应用程序代理体系结构的关系图表示形式，请参阅[使用 Azure AD 应用程序代理为远程用户发布本地应用](what-is-application-proxy.md#application-proxy-connectors)程序
 
 ## <a name="requirements-and-deployment"></a>要求和部署
 
@@ -86,7 +86,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 有关连接器组的详细信息，请参阅[使用连接器组在单独的网络和位置上发布应用程序](application-proxy-connector-groups.md)。
 
-## <a name="capacity-planning"></a>容量计划
+## <a name="capacity-planning"></a>容量规划
 
 请务必确保已在连接器之间规划足够的容量以处理预期的流量。 建议每个连接器组至少有两个连接器，以提供高可用性和规模。 如果在任何时候都需要为计算机服务，则具有三个连接器是最佳的。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005378"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165053"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -105,6 +105,21 @@ Service Fabric 支持具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 
 > **何时使用：** 如果要创建应用程序或重新编写现有应用程序，以使用微服务体系结构，则 Service Fabric 将是一个不错的选择。 当你需要更好地控制或直接访问底层基础结构时，也可以使用 Service Fabric。
 >
 > **开始使用：** [创建第一个 Azure Service Fabric 应用程序](../../service-fabric/service-fabric-tutorial-create-dotnet-app.md)。
+
+#### <a name="azure-spring-cloud"></a>Azure Spring Cloud
+
+Azure 春季云是一个无服务器微服务平台，可让你在云中构建、部署、缩放和监视你的应用程序。 使用春季 Cloud 将新式微服务模式带入春季 Boot apps，消除了用于快速构建可靠 Java 应用的样板代码。
+
+- 利用 "春季云服务发现和配置服务器" 的托管版本，同时确保这些关键组件在最佳条件下运行。
+- 专注于构建业务逻辑，并使用安全修补程序、合规性标准和高可用性来处理服务运行时。
+- 管理应用程序生命周期 (例如：部署、启动、停止、缩放 Azure Kubernetes 服务的顶层) 。
+- 在应用与 Azure 服务（例如 Azure Database for MySQL 和用于 Redis 的 Azure 缓存）之间轻松绑定连接。
+- 使用企业级统一监视工具监视和故障排除微服务和应用程序，并深入了解应用程序依赖关系和操作遥测。
+
+> **何时使用：** 作为完全托管的服务，Azure 春季云在 Azure 上运行基于春季 Boot/春季 Cloud 的微服务时，这是一个不错的选择。 
+>
+> **入门：** [部署第一个 Azure 春季云应用程序](../../spring-cloud/spring-cloud-quickstart.md)。
+
 
 ### <a name="enhance-your-applications-with-azure-services"></a>使用 Azure 服务增强应用程序
 

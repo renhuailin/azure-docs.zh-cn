@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860943"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165138"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -100,7 +100,7 @@ ms.locfileid: "96860943"
 
       对于 Azure AD 注册的 Windows 10 设备，请执行以下步骤：
 
-      1. 中转到 "**设置**" "帐户" "  >  **Accounts**  >  **访问工作单位或学校**"。 
+      1. 中转到 "**设置**" "帐户" "  >    >  **访问工作单位或学校**"。 
       1. 选择该帐户，然后选择 " **断开连接**"。
       1. 单击 "+ 连接"，然后通过登录过程再次注册设备。
 
@@ -144,11 +144,17 @@ ms.locfileid: "96860943"
 >在这两种情况下，必须在每台设备上手动重新注册设备。 若要查看设备是否之前已注册，可以 [使用 dsregcmd.exe 命令对设备进行故障排除](troubleshoot-device-dsregcmd.md)。
 
 ---
+
+### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>问：我无法在 Windows 10 设备上的同一个用户会话下添加超过3个 Azure AD 用户帐户，为什么？
+
+**答**： Azure AD 增加了对 Windows 10 1803 版本中的多个 Azure AD 帐户的支持。 但是，Windows 10 会将设备上 Azure AD 帐户的数目限制为3，以限制令牌请求的大小并启用 (SSO) 的可靠单一登录。 添加3个帐户后，用户将看到后续帐户出现错误。 错误屏幕上的其他问题信息提供了以下消息，指示原因： "由于达到帐户限制，添加帐户操作被阻止"。 
+
+---
 ## <a name="azure-ad-join-faq"></a>Azure AD 加入常见问题解答
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>问：如何实现在设备本地脱离 Azure AD 已加入设备？
 
-**答：** 对于纯 Azure AD 联接设备，请确保具有脱机的本地管理员帐户或创建一个。 无法使用 Azure AD 用户凭据登录。 接下来，请访问 "**设置**" "帐户" "  >  **Accounts**  >  **访问工作或学校**"。 选择帐户，然后选择“断开连接”。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
+**答：** 对于纯 Azure AD 联接设备，请确保具有脱机的本地管理员帐户或创建一个。 无法使用 Azure AD 用户凭据登录。 接下来，请访问 "**设置**" "帐户" "  >    >  **访问工作或学校**"。 选择帐户，然后选择“断开连接”。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
 
 ---
 
@@ -290,7 +296,7 @@ Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新�
 ### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>问：如何实现删除设备在本地 Azure AD 注册状态吗？
 
 **的** 
-- 对于 Windows 10 Azure AD 注册的设备，请访问 **设置**"帐户" "  >  **Accounts**  >  **访问工作或学校**"。 选择帐户，然后选择“断开连接”。 设备注册为 Windows 10 上的每个用户配置文件。
+- 对于 Windows 10 Azure AD 注册的设备，请访问 **设置**"帐户" "  >    >  **访问工作或学校**"。 选择帐户，然后选择“断开连接”。 设备注册为 Windows 10 上的每个用户配置文件。
 - 对于 iOS 和 Android，你可以使用 Microsoft Authenticator 应用程序 **设置**"  >  **设备注册**"，然后选择 "**注销设备**"。
 - 对于 macOS，可以使用 Microsoft Intune 公司门户应用程序从管理中取消注册设备，并删除任何注册。 
 

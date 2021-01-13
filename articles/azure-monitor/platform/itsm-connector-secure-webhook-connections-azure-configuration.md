@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/03/2021
-ms.openlocfilehash: 5eb58c48acc7974a4379cf1993a73228c99f5e6d
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 03a16bfbcb3a8d46a6cb4faa03aa6b6e96cf3db3
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857565"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165954"
 ---
 # <a name="configure-azure-to-connect-itsm-tools-using-secure-export"></a>使用安全导出配置 Azure 以连接 ITSM 工具
 
@@ -39,9 +39,9 @@ ms.locfileid: "97857565"
 
 ## <a name="define-service-principal"></a>定义服务主体
 
-操作组服务将需要从 AAD 应用程序获取身份验证令牌的权限，以便立即对服务进行身份验证。 若要授予这些权限，你将需要在租户中创建操作组服务的服务主体。
-你可以使用此 [PowerShell 命令](./action-groups.md#secure-webhook-powershell-script) 来实现此目的。  (要求) 租户管理员权限。
-作为一个可选步骤，你可以在创建的应用的清单中定义应用程序角色，这样就可以进一步限制，只需具有特定角色的特定应用程序就可以发送消息。 必须将此角色分配给操作组服务主体。 \
+操作组服务是第一方应用程序，因此它有权从 AAD 应用程序获取身份验证令牌，以便立即使用服务进行身份验证。
+作为一个可选步骤，你可以在创建的应用的清单中定义应用程序角色，这样就可以进一步限制，只需具有特定角色的特定应用程序就可以发送消息。 必须将此角色分配给操作组服务主体 (需要) 租户管理员权限。
+
 可以通过相同的 [PowerShell 命令](./action-groups.md#secure-webhook-powershell-script)来执行此步骤。
 
 ## <a name="create-a-secure-webhook-action-group"></a>创建安全 Webhook 操作组

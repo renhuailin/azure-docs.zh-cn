@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: b3dca3617e2fb7ccdff870041374e9158498c9d1
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708934"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164866"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
@@ -74,10 +74,10 @@ ms.locfileid: "97708934"
 
 下表列出了元数据名称和值可接受的长度和可接受的字符。
 
-|Item|允许的字符|Regex 模式匹配|最大字符数|
+|项|允许的字符|Regex 模式匹配|最大字符数|
 |--|--|--|--|
 |名称 (密钥) |可用<br>字母数字 (字母和数字) <br>`_` (下划线) <br> 不得包含空格。|`^[a-zA-Z0-9_]+$`|100|
-|值|允许除以外的所有内容<br>`:` (冒号) <br>`|` (垂直管道) <br>仅允许一个值。|`^[^:|]+$`|500|
+|Value|允许除以外的所有内容<br>`:` (冒号) <br>`|` (垂直管道) <br>仅允许一个值。|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>知识库内容限制
@@ -99,6 +99,7 @@ ms.locfileid: "97708934"
 * 建议的每个回答的最大替代问题数：300
 * 最大 URL 数：10
 * 最大文件数：10
+* 每个调用允许的最大 Qna 数：1000
 
 ## <a name="update-knowledge-base-call-limits"></a>更新知识库调用限制
 表示每个更新操作的限制；即，单击“保存并培训”或调用 UpdateKnowledgeBase API。
@@ -106,6 +107,7 @@ ms.locfileid: "97708934"
 * 建议添加或删除的最大替代问题数：300
 * 添加或删除的元数据字段的最大数量：10
 * 可以刷新的 URL 的最大数量：5
+* 每个调用允许的最大 Qna 数：1000
 
 ## <a name="next-steps"></a>后续步骤
 
