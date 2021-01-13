@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 01/13/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6abc3316e18fc70a2969bc220fd75e10e10f0e6e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ff3cd858de86d21637f4a7a9ab9d9a83c7022f5a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507772"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178868"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C 用户帐户
 
@@ -43,85 +43,6 @@ Microsoft Graph 允许通过在 Microsoft Graph API 中提供创建、读取、�
 - [更新用户](/graph/api/user-update)
 - [删除用户](/graph/api/user-delete)
 
-## <a name="user-properties"></a>用户属性
-
-### <a name="display-name-property"></a>显示名称属性
-
-`displayName` 是要在用户的 Azure 门户用户管理界面中显示的，以及要在 Azure AD B2C 返回给应用程序的访问令牌中显示的名称。 此属性是必需项。
-
-### <a name="identities-property"></a>标识属性
-
-客户帐户（可以是使用者、合作伙伴或居民）可与以下标识类型相关联：
-
-- **本地** 标识 - 将用户名和密码存储在 Azure AD B2C 目录本地。 我们通常将此类标识称为“本地帐户”。
-- **联合** 身份（也称为 *社交* 或 *企业* 帐户），用户的标识由 Facebook、Microsoft、ADFS 或 Salesforce 等联合标识提供者进行管理。
-
-具有客户帐户的用户可以使用多个标识进行登录。 例如，使用用户名、电子邮件、员工 ID、政府 ID 等。 一个帐户可以有多个密码相同的本地和社交标识。
-
-在 Microsoft Graph API 中，本地标识和联合标识都存储在 [objectIdentity][graph-objectIdentity] 类型的用户 `identities` 特性中。 `identities` 集合表示用于登录到用户帐户的一组标识。 此集合使用户能够使用其关联的任何标识登录到用户帐户。
-
-| 属性   | 类型 |说明|
-|:---------------|:--------|:----------|
-|signInType|string| 指定目录中的用户登录类型。 对于本地帐户：`emailAddress`、`emailAddress1`、`emailAddress2`、`emailAddress3`、`userName`，或所需的任何其他类型。 社交帐户必须设置为 `federated`。|
-|颁发者|string|指定标识的颁发者。 对于本地帐户（其 **signInType** 不是 `federated`），此属性是本地 B2C 租户的默认域名，例如 `contoso.onmicrosoft.com`。 对于社会身份 (，其中 **signInType** 为  `federated`) ，该值为颁发者的名称，例如 `facebook.com`|
-|issuerAssignedId|string|指定由颁发者分配给用户的唯一标识符。 **issuer** 和 **issuerAssignedId** 的组合在租户中必须唯一。 对于本地帐户，当 **signInType** 设置为 `emailAddress` 或 `userName` 时，它表示用户的登录名。<br>如果 **signInType** 设置为： <ul><li>`emailAddress`（或以 `emailAddress` 开头，例如 `emailAddress1`），则 **issuerAssignedId** 必须是有效的电子邮件地址</li><li>`userName`（或任何其他值），则 **issuerAssignedId** 必须是有效的 [电子邮件地址本地部分](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`，则 **issuerAssignedId** 表示联合帐户唯一标识符</li></ul>|
-
-以下 Identities 属性包含一个本地帐户标识、一个电子邮件地址和一个社交标识，它们均可用作登录名。 
-
- ```json
- "identities": [
-     {
-       "signInType": "userName",
-       "issuer": "contoso.onmicrosoft.com",
-       "issuerAssignedId": "johnsmith"
-     },
-     {
-       "signInType": "emailAddress",
-       "issuer": "contoso.onmicrosoft.com",
-       "issuerAssignedId": "jsmith@yahoo.com"
-     },
-     {
-       "signInType": "federated",
-       "issuer": "facebook.com",
-       "issuerAssignedId": "5eecb0cd"
-     }
-   ]
- ```
-
-对于联合标识，根据标识提供者，**issuerAssignedId** 是每个应用程序的给定用户或开发帐户的唯一值。 使用社交网络提供商以前分配的相同应用程序 ID 或者同一开发帐户中的另一应用程序配置 Azure AD B2C 策略。
-
-### <a name="password-profile-property"></a>密码配置文件属性
-
-对于本地标识，**passwordProfile** 属性是必需的，其中包含用户的密码。 `forceChangePasswordNextSignIn` 属性必须设置为 `false`。
-
-对于联合（社交）标识，**passwordProfile** 属性不是必需的。
-
-```json
-"passwordProfile" : {
-    "password": "password-value",
-    "forceChangePasswordNextSignIn": false
-  }
-```
-
-### <a name="password-policy-property"></a>密码策略属性
-
-Azure AD B2C 密码策略（对于本地帐户）基于 Azure Active Directory [强密码强度](../active-directory/authentication/concept-sspr-policy.md)策略。 Azure AD B2C 的注册或登录和密码重置策略要求实施此强密码强度，并且不能让密码过期。
-
-在用户迁移方案中，如果与 Azure AD B2C 强制实施的[强密码强度](../active-directory/authentication/concept-sspr-policy.md)相比，要迁移的帐户的密码强度更弱，则你可以禁用强密码要求。 若要更改默认密码策略，请将 `passwordPolicies` 属性设置为 `DisableStrongPassword`。 例如，可按如下所示修改创建用户请求：
-
-```json
-"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
-```
-
-### <a name="extension-properties"></a>扩展属性
-
-每个面向客户的应用程序对要收集的信息都有独特的要求。 Azure AD B2C 租户附带了一组存储在属性中的内置信息：名字、姓氏、城市和邮政编码。 使用 Azure AD B2C 可以扩展存储在每个客户帐户中的属性集。 有关定义自定义属性的详细信息，请参阅 [自定义属性](user-flow-custom-attributes.md)。
-
-Microsoft Graph API 支持使用扩展特性创建和更新用户。 图形 API 中的扩展属性使用约定 `extension_ApplicationClientID_attributename` 命名，其中 `ApplicationClientID` 是 `b2c-extensions-app` 应用程序的应用程序（客户端）ID（可在 Azure 门户中的“应用注册” > “所有应用”中找到）  。 请注意，应用程序（客户端）ID 以扩展属性名称表示时不包含连字符。 例如：
-
-```json
-"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
-```
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>代码示例：如何以编程方式管理用户帐户
 

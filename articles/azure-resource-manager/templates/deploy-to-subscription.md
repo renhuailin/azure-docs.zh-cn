@@ -2,15 +2,15 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 2d4bd0db32a4bf0224b9da3af6e03ca86d7b496e
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: ba055970a8fac71b798fca9d3c76550cb7d482a7
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807708"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178987"
 ---
-# <a name="subscription-deployments-with-arm-templates"></a>具有 ARM 模板的订阅部署
+# <a name="subscription-deployments-with-arm-templates"></a>使用 ARM 模板进行订阅部署
 
 若要简化资源管理，可以使用 Azure 资源管理器模板（ARM 模板）在 Azure 订阅级别部署资源。 例如，可以将[策略](../../governance/policy/overview.md)和 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 部署到你的订阅中，从而将它们应用于整个订阅。 还可以在订阅中创建资源组，然后将资源部署到订阅中的资源组。
 
@@ -88,7 +88,7 @@ ms.locfileid: "95807708"
 
 ## <a name="deployment-commands"></a>部署命令
 
-若要部署到订阅，请使用订阅级部署命令。
+若要部署到订阅，请使用订阅级别部署命名。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -117,68 +117,69 @@ New-AzSubscriptionDeployment `
 
 ---
 
-有关部署 ARM 模板的部署命令和选项的更多详细信息，请参阅：
+有关部署命令和部署 ARM 模板的选项的更多详细信息，请参阅：
 
 * [使用 ARM 模板和 Azure 门户部署资源](deploy-portal.md)
 * [使用 ARM 模板和 Azure CLI 部署资源](deploy-cli.md)
 * [使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)
-* [利用 ARM 模板和 Azure 资源管理器部署资源 REST API](deploy-rest.md)
+* [使用 ARM 模板和 Azure 资源管理器 REST API 部署资源](deploy-rest.md)
 * [使用部署按钮从 GitHub 存储库部署模板](deploy-to-azure-button.md)
 * [从 Cloud Shell 部署 ARM 模板](deploy-cloud-shell.md)
 
 ## <a name="deployment-location-and-name"></a>部署位置和名称
 
-对于订阅级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。 [管理组](deploy-to-management-group.md) 和 [租户](deploy-to-tenant.md) 部署还需要位置。 对于 [资源组](deploy-to-resource-group.md) 部署，资源组的位置用于存储部署数据。
+对于订阅级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。 [管理组](deploy-to-management-group.md)和[租户](deploy-to-tenant.md)部署也需要位置。 对于[资源组](deploy-to-resource-group.md)部署，资源组的位置用于存储部署数据。
 
 可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
 
-每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 **centralus** 中创建名为 **deployment1** 的订阅部署，则以后无法使用 deployment1 的位置创建另一个名为 **deployment1** 的 **部署。** 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
+每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 **centralus** 中创建名为 **deployment1** 的订阅部署，则以后无法使用 deployment1 的位置创建另一个名为的 **部署。** 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
 ## <a name="deployment-scopes"></a>部署范围
 
 部署到订阅时，可以将资源部署到：
 
-* 操作的目标订阅
+* 操作中的目标订阅
 * 租户中的任何订阅
-* 订阅或其他订阅中的资源组
+* 该订阅或其他订阅中的资源组
 * 订阅的租户
-* [扩展资源](scope-extension-resources.md) 可以应用于资源
+
+[扩展资源](scope-extension-resources.md)的作用域可以是与部署目标不同的目标。
 
 部署模板的用户必须有权访问指定的作用域。
 
-本部分说明如何指定不同的范围。 可以在单个模板中组合这些不同的范围。
+本部分演示如何指定不同范围。 可以在单个模板中组合这些不同范围。
 
-### <a name="scope-to-target-subscription"></a>作用域到目标订阅
+### <a name="scope-to-target-subscription"></a>将范围限制为目标订阅
 
-若要将资源部署到目标订阅，请将这些资源添加到模板的 resources 节中。
+若要将资源部署到目标订阅，请将这些资源添加到模板的资源部分。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
 
-有关部署到订阅的示例，请参阅 [创建资源组](#create-resource-groups) 和 [分配策略定义](#assign-policy-definition)。
+有关部署到订阅的示例，请参阅[创建资源组](#create-resource-groups)和[分配策略定义](#assign-policy-definition)。
 
-### <a name="scope-to-other-subscription"></a>作用域到其他订阅
+### <a name="scope-to-other-subscription"></a>将范围限制为其他订阅
 
-若要将资源部署到与操作中的订阅不同的订阅，请添加嵌套部署。 将 `subscriptionId` 属性设置为要部署到的订阅的 ID。 设置 `location` 嵌套部署的属性。
+若要将资源部署到与操作中的订阅不同的订阅，请添加嵌套部署。 将 `subscriptionId` 属性设置为要部署到的订阅的 ID。 为嵌套部署设置 `location` 属性。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-sub.json" highlight="9,10,14":::
 
-### <a name="scope-to-resource-group"></a>作用域到资源组
+### <a name="scope-to-resource-group"></a>将范围限定于资源组
 
 若要将资源部署到订阅中的资源组，请添加嵌套部署并包括 `resourceGroup` 属性。 在以下示例中，嵌套部署以名为 `demoResourceGroup` 的资源组为目标。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
 
-有关部署到资源组的示例，请参阅 [创建资源组和资源](#create-resource-group-and-resources)。
+有关部署到资源组的示例，请参阅[创建资源组和资源](#create-resource-group-and-resources)。
 
-### <a name="scope-to-tenant"></a>作用域到租户
+### <a name="scope-to-tenant"></a>将范围设定为租户
 
-可以通过将设置为来在租户中创建资源 `scope` `/` 。 部署模板的用户必须具有 [所需的访问权限才能在租户上进行部署](deploy-to-tenant.md#required-access)。
+可通过将 `scope` 设置为 `/`，在租户中创建资源。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
 
-你可以使用嵌套的部署 `scope` 并 `location` 设置。
+可使用设置了 `scope` 和 `location` 的嵌套部署。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-to-tenant.json" highlight="9,10,14":::
 
-或者，你可以 `/` 为某些资源类型（例如管理组）设置作用域。
+或者，可以将某些资源类型（如管理组）的 scope 设置为 `/`。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-create-mg.json" highlight="12,15":::
 

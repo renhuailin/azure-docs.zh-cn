@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 47a2aae39be93361e1e0e581efb56cc678b444cd
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549083"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178970"
 ---
 # <a name="object-replication-for-block-blobs"></a>块 blob 的对象复制
 
@@ -66,7 +66,7 @@ ms.locfileid: "96549083"
 
 ### <a name="immutable-blobs"></a>不可变 blob
 
-对象复制不支持不可变 blob。 如果源或目标容器具有基于时间的保留策略或合法保留，则对象复制将失败。 有关不可变 blob 的详细信息，请参阅 [将业务关键 blob 数据存储在不可变的存储](storage-blob-immutable-storage.md)中。
+对象复制不支持不可变 blob。 如果源或目标容器具有基于时间的保留策略或合法保留，则对象复制将失败。 有关不可变 blob 的详细信息，请参阅[使用不可变存储来存储业务关键型 blob 数据](storage-blob-immutable-storage.md)。
 
 ## <a name="object-replication-policies-and-rules"></a>对象复制策略和规则
 
@@ -89,6 +89,16 @@ ms.locfileid: "96549083"
 也可以将一个或多个筛选器指定为复制规则的一部分，以按前缀筛选块 blob。 指定前缀时，只会将源容器中与该前缀匹配的 blob 复制到目标容器。
 
 源和目标容器必须都存在，然后才能在规则中指定它们。 创建复制策略后，目标容器变为只读。 任何尝试写入目标容器的操作都会失败，错误代码为 409（冲突）。 但是，可以对目标容器中的 blob 调用 " [设置 Blob 层](/rest/api/storageservices/set-blob-tier) " 操作，以将其移动到 "存档" 层。 有关存档层的详细信息，请参阅 [Azure Blob 存储： "热"、"冷" 和 "存档" 访问层](storage-blob-storage-tiers.md#archive-access-tier)。
+
+## <a name="replication-status"></a>复制状态
+
+可以在源帐户中查看 blob 的复制状态。 有关详细信息，请参阅 [检查 blob 的复制状态](object-replication-configure.md#check-the-replication-status-of-a-blob)。
+
+如果源帐户中 blob 的复制状态指示失败，则调查以下可能的原因：
+
+- 请确保已在目标帐户上配置对象复制策略。
+- 验证目标容器是否仍然存在。
+- 如果源 blob 已使用客户提供的密钥在写入操作过程中进行了加密，则对象复制将失败。 有关客户提供的密钥的详细信息，请参阅[在对 Blob 存储的请求中提供加密密钥](encryption-customer-provided-keys.md)。
 
 ## <a name="billing"></a>计费
 

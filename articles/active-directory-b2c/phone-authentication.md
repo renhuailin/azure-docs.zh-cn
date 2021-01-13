@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4fa80f669493e4dc47a9ad0f9bfe9390d4ab24
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953570"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178936"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>在 Azure AD B2C 中设置自定义策略的手机注册和登录
 
@@ -39,7 +39,7 @@ ms.locfileid: "94953570"
 >
 > *&lt;insert：隐私声明的链接&gt;*<br/>*&lt;insert：服务条款的链接&gt;*
 
-若要添加你自己的许可信息，请自定义以下示例，并将其包含在 LocalizedResources 中，其中包含自断言页面所使用的 ContentDefinition 的，并将其 (显示在电话注册 & 登录初学者包中的 Phone-Email-Base.xml 文件) ：
+若要添加你自己的许可信息，请自定义以下示例，并将其包含在 LocalizedResources 中，其中包含自断言页面使用的 ContentDefinition 的 "" 和 "显示" 控件， ([电话注册和登录初学者包][starter-pack-phone]中的 *Phone_Email_Base.xml* 文件) ：
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        
@@ -88,7 +88,7 @@ ms.locfileid: "94953570"
 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在设置 OTP 之前，需要准备好以下资源。
 

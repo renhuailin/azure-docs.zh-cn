@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 14b6d6ecc6523199102fd3ef9370fe901c4ff51d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d3edadd4878dbd6e06648f7fb67a0c3e111665d1
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355692"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178120"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -166,10 +166,11 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>配置应用程序的静态请求权限列表
 
-1. 在 Azure 门户中， [应用注册](https://go.microsoft.com/fwlink/?linkid=2083908) 体验中转到你的应用程序，或 [创建应用](quickstart-register-app.md) （如果尚未这样做）。
-2. 找到“API 权限”部分，然后在“API 权限”中单击“添加权限”。
-3. 从可用 API 列表中选择 **Microsoft Graph**，然后添加应用所需的权限。
-3. **保存** 应用注册。
+1. 请在<a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure 门户应用注册 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>快速入门教程中转到你的应用程序。
+1. 选择一个应用程序，或 [创建一个应用](quickstart-register-app.md) （如果尚未这样做）。
+1. 在应用程序的 "**概述**" 页的 "**管理**" 下，选择 " **API 权限**" "  >  **添加权限**"。
+1. 从可用 API 列表中选择 **Microsoft Graph**，然后添加应用所需的权限。
+1. 选择 " **添加权限**"。
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>建议：让用户登录到应用
 
@@ -195,8 +196,8 @@ https://graph.microsoft.com/mail.send
 
 | 参数        | 条件        | 说明                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | 必须 | 要向其请求权限的目录租户。 可以用 GUID 或友好名称格式提供，或以常规方式使用组织引用，如示例所示。 不要使用 "公用"，因为个人帐户不能提供管理员同意，但在租户的上下文中除外。 若要确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
-| `client_id` | 必须 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
+| `tenant` | 必需 | 要向其请求权限的目录租户。 可以用 GUID 或友好名称格式提供，或以常规方式使用组织引用，如示例所示。 不要使用 "公用"，因为个人帐户不能提供管理员同意，但在租户的上下文中除外。 若要确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
+| `client_id` | 必选 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
 | `redirect_uri` | 必需 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 使用该状态可在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
 |`scope`        | 必需        | 定义应用程序请求的权限集。 这可以是静态范围（使用 [`/.default`](#the-default-scope)）或动态范围。  这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 如果需要应用程序权限，必须使用 `/.default` 来请求静态配置的权限列表。  |

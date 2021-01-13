@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/08/2021
+ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 60ae6eb3142f8898f760027d37881ded8261f571
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 3c0b466a7db688ed3e24441f652f6a1ef1a88ee1
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108086"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180075"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -155,7 +155,7 @@ GRS 和 GZRS 之间的主要区别是在主要区域中复制数据的方式。 
 | 对象在给定年的持续性百分比 | 至少为 99.999999999% (11 9's) | 至少为 99.9999999999% (12 9's) | 至少为 99.99999999999999% (16 9's) | 至少为 99.99999999999999% (16 9's) |
 | 读取请求的可用性 | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | GRS 至少为 99.9%（冷访问层为 99%）<br /><br />对于 RA-GRS，至少为 99.99%（冷访问层为 99.9%） | 对于 GZRS，至少为 99.9%（冷访问层为 99%）<br /><br />对于 RA-GZRS，至少为 99.99%（冷访问层为 99.9%） |
 | 写入请求的可用性 | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） |
-| 在单独的节点上维护的数据副本数。                             | 3   | 3   | 6   | 6      |
+| 在单独的节点上维护的数据副本数 | 单个区域内的三个副本 | 在单个区域内跨不同的可用性区域的三个副本 | 共六个副本，包括主要区域的三个副本和第三个副本 | 六个副本总数，其中包括主要区域的三个不同的可用性区域和次要区域中的三个本地冗余副本 |
 
 ### <a name="durability-and-availability-by-outage-scenario"></a>持久性和可用性（按中断方案）
 

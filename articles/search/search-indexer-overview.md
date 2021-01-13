@@ -7,34 +7,44 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 01/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 305682812896bb74474b5065cfd56a071a73ed15
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0405db2b68abefbfdc424def9e35e363e45043cd
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358773"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180126"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
-Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 数据源提取可搜索的数据和元数据，并根据索引与数据源之间字段到字段映射填充索引。 由于不需要编写任何将数据添加到索引的代码，该服务就能拉取数据，因此这种方法有时也称为“拉取模式”。
+Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 数据源提取可搜索的数据和元数据，并使用源数据和索引之间的字段到字段映射填充搜索索引。 由于不需要编写任何将数据添加到索引的代码，该服务就能拉取数据，因此这种方法有时也称为“拉取模式”。
 
-索引器基于数据源类型或平台，单个索引器适用于 Azure 上的 SQL Server、Cosmos DB、Azure 表存储和 Blob 存储。 Blob 存储索引器有特定于 Blob 内容类型的其他属性。
-
-可以单独使用索引器来引入数据，也可以结合索引器使用多种技术来加载索引中的部分字段。
+索引器仅适用于 azure，其中包含 Azure SQL 的单个索引器、Azure Cosmos DB、Azure 表存储和 Blob 存储。 配置索引器时，您将指定 (源) 的数据源，以及 (目标) 的索引。 一些数据源（例如 Blob 存储索引器）具有特定于该内容类型的其他属性。
 
 可以按需运行索引器，也可以采用每 5 分钟运行一次的定期数据刷新计划来运行索引器。 要进行更频繁的更新，则需要采用“推送模式”，便于同时更新 Azure 认知搜索和外部数据源中的数据。
+
+## <a name="usage-scenarios"></a>使用方案
+
+您可以使用索引器作为数据引入的唯一方法，也可以使用包括仅在索引中加载某些字段的方法组合，还可以根据情况转换或浓缩内容。 下表汇总了主要方案。
+
+| 方案 |策略 |
+|----------|---------|
+| 单一源 | 此模式是最简单的模式：一个数据源是搜索索引的唯一内容提供程序。 在源中，您将标识一个字段，其中包含用于在搜索索引中充当文档键的唯一值。 将使用唯一值作为标识符。 所有其他源字段将隐式或显式映射到索引中的相应字段。 </br></br>一个重要的要点在于是，文档键的值源自源数据。 搜索服务不生成键值。 在后续运行中，将添加包含新密钥的传入文档，而包含现有密钥的传入文档会合并或覆盖，具体取决于索引字段是 null 还是填充。 |
+| 多个源| 索引可以接受来自多个源的内容，其中每个源都从不同的源中引入了新的内容。 </br></br>其中一项结果可能是在每个索引器运行后获得文档的索引，其中的整个文档完全由每个源创建。 此方案的难题在于设计适用于所有传入数据的索引架构，以及在搜索索引中统一的文档键。 例如，如果在 blob 容器中 metadata_storage_path 唯一标识文档的值和 SQL 表中的主键，则可以假设必须修改一个或两个源来提供公共格式的键值，而不考虑内容源。 对于这种情况，应执行一定程度的预处理来 homogenize 数据，以便将数据提取到单个索引中。</br></br>另一种结果可能是搜索在第一次运行时部分填充的文档，然后后续运行会进一步填充这些文档以引入来自其他源的值。 此模式的难题是确保每个索引运行都面向相同的文档。 若要将字段合并到现有文档中，则需要对文档键进行匹配。 有关此方案的演示，请参阅 [教程：来自多个数据源的索引](tutorial-multiple-data-sources.md)。 |
+| 内容转换 | 认知搜索支持可选的 [AI 扩充](cognitive-search-concept-intro.md) 行为，这些行为可添加图像分析和自然语言处理，以创建新的可搜索内容和结构。 AI 扩充由附加到索引器的 [技能组合](cognitive-search-working-with-skillsets.md)定义。 若要执行 AI 扩充，索引器仍需要索引和数据源，但在此方案中，会将技能组合处理添加到索引器执行。 |
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>创建及管理索引器的方法
 
 可以使用以下方法创建和管理索引器：
 
-* [门户 > 导入数据向导](search-import-data-portal.md)
-* [服务 REST API](/rest/api/searchservice/Indexer-operations)
-* [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
++ [门户 > 导入数据向导](search-import-data-portal.md)
++ [服务 REST API](/rest/api/searchservice/Indexer-operations)
++ [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
-一开始会将新的索引器宣布为预览版功能。 预览版功能首先在 API（REST 和 .NET）中引入，然在逐渐公开发行以后再集成到门户中。 如果评估的是新索引器，则应做好编写代码的计划。
+如果使用的是 SDK，请创建 [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient) 以使用索引器、数据源和技能集。 上述链接适用于 .NET SDK，但所有 Sdk 都提供了 SearchIndexerClient 和类似的 Api。
+
+最初，新数据源将发布为预览功能，并且仅适用于 REST。 毕业到公开上市后，将完全支持内置于门户中并融入到各种 Sdk 中，每个 Sdk 都有各自的发布计划。
 
 ## <a name="permissions"></a>权限
 
@@ -46,15 +56,15 @@ Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 
 
 索引器在 Azure 上抓取数据存储。
 
-* [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
-* [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)（预览版）
-* [Azure 表存储](search-howto-indexing-azure-tables.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [SQL 托管实例](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
-* [Azure 虚拟机中的 SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
++ [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
++ [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)（预览版）
++ [Azure 表存储](search-howto-indexing-azure-tables.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [SQL 托管实例](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
++ [Azure 虚拟机中的 SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 
-## <a name="indexer-stages"></a>索引器阶段
+## <a name="stages-of-indexing"></a>索引阶段
 
 在首次运行时，如果索引为空，索引器将读取表或容器中提供的所有数据。 在后续运行中，索引器通常可以只检测并检索已更改的数据。 对于 blob 数据，更改检测是自动进行的。 对于其他数据源（如 Azure SQL 或 Cosmos DB），必须启用更改检测。
 
@@ -68,9 +78,9 @@ Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 
 
 示例：  
 
-* 如果文档是 [Azure SQL 数据源](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)中的记录，则索引器将提取记录中的每个字段。
-* 如果文档是 [Azure Blob 存储数据源](search-howto-indexing-azure-blob-storage.md)中的 PDF 文件，则索引器将提取该文件的文本、图像和元数据。
-* 如果文档是 [Cosmos DB 数据源](search-howto-index-cosmosdb.md)中的记录，则索引器将提取 Cosmos DB 文档中的字段和子字段。
++ 如果文档是 [Azure SQL 数据源](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)中的记录，则索引器将提取记录中的每个字段。
++ 如果文档是 [Azure Blob 存储数据源](search-howto-indexing-azure-blob-storage.md)中的 PDF 文件，则索引器将提取文本、图像和元数据。
++ 如果文档是 [Cosmos DB 数据源](search-howto-index-cosmosdb.md)中的记录，则索引器将提取 Cosmos DB 文档中的字段和子字段。
 
 ### <a name="stage-2-field-mappings"></a>第 2 阶段：字段映射 
 
@@ -95,18 +105,21 @@ Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 
 索引器可提供数据源独有的功能。 因此，索引器或数据源配置的某些方面会因索引器类型而不同。 但是，所有索引器的基本构成元素和要求都相同。 下面介绍所有索引器都适用的共同步骤。
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
-索引器从数据源对象获取数据源连接。 数据源定义提供连接字符串和可能的凭据。 调用 [Create Datasource](/rest/api/searchservice/create-data-source) REST API 或 [SearchIndexerDataSourceConnection 类](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) 来创建资源。
+
+索引器从数据源对象获取数据源连接。 数据源定义提供连接字符串和可能的凭据。 调用[创建数据源](/rest/api/searchservice/create-data-source) REST API 或 [SearchIndexerDataSourceConnection 类](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)以创建资源。
 
 数据源的配置和管理独立于使用数据源的索引器，这意味着多个索引器可使用一个数据源，同时加载多个索引。
 
 ### <a name="step-2-create-an-index"></a>步骤 2：创建索引
-索引器会自动执行某些与数据引入相关的任务，但通常不会自动创建索引。 先决条件是必须具有预定义的索引，且索引的字段必须与外部数据源中的字段匹配。 字段需按名称和数据类型进行匹配。 有关构造索引的详细信息，请参阅 [ (Azure 认知搜索 REST API) ](/rest/api/searchservice/Create-Index) 或 [SearchIndex 类](/dotnet/api/azure.search.documents.indexes.models.searchindex)创建索引。 如需字段关联方面的帮助，请参阅 [Azure 认知搜索索引器中的字段映射](search-indexer-field-mappings.md)。
+
+索引器会自动执行某些与数据引入相关的任务，但通常不会自动创建索引。 先决条件是必须具有预定义的索引，且索引的字段必须与外部数据源中的字段匹配。 字段需按名称和数据类型进行匹配。 若要详细了解如何构建索引，请参阅[创建索引（Azure 认知搜索 REST API）](/rest/api/searchservice/Create-Index)或 [SearchIndex 类](/dotnet/api/azure.search.documents.indexes.models.searchindex)。 如需字段关联方面的帮助，请参阅 [Azure 认知搜索索引器中的字段映射](search-indexer-field-mappings.md)。
 
 > [!Tip]
 > 虽然不能使用索引器来生成索引，但可以使用门户中的 **导入数据** 向导。 大多数情况下，该向导可以根据源中现有的元数据推断索引架构，提供一个初级索引架构，该架构在向导处于活动状态时可以进行内联编辑。 在服务上创建索引以后，若要在门户中进一步进行编辑，多数情况下只能添加新字段。 可以将向导视为索引的创建工具而非修订工具。 如需手动方式的学习，请一步步完成[门户演练](search-get-started-portal.md)。
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>步骤 3：创建和计划索引器
-索引器定义是一种构造，它将与数据引入相关的所有元素组合在一起。 必需元素包括数据源和索引。 可选元素包括计划和字段映射。 只有在源字段和索引字段明确对应的情况下，字段映射才是可选的。 有关构建索引器的详细信息，请参阅 [创建索引器（Azure 认知搜索 REST API）](/rest/api/searchservice/Create-Indexer)。
+
+索引器定义是一种构造，它将与数据引入相关的所有元素组合在一起。 必需元素包括数据源和索引。 可选元素包括计划和字段映射。 仅当源字段和索引字段清晰对应时，字段映射才是可选的。 有关构建索引器的详细信息，请参阅 [创建索引器（Azure 认知搜索 REST API）](/rest/api/searchservice/Create-Indexer)。
 
 <a id="RunIndexer"></a>
 
@@ -120,9 +133,9 @@ api-key: [Search service admin key]
 ```
 
 > [!NOTE]
-> “运行 API”成功返回时，已计划索引器调用，但实际处理过程以异步方式发生。 
+> 如果运行 API 返回成功代码，则已计划索引器调用，但实际处理会异步发生。 
 
-可以通过门户或“获取索引器状态 API”监视索引器状态。 
+可以在门户中或通过 [获取索引器状态 API](/rest/api/searchservice/get-indexer-status)来监视索引器状态。 
 
 <a name="GetIndexerStatus"></a>
 
@@ -168,11 +181,12 @@ api-key: [Search service admin key]
 执行历史记录包含最多 50 个最近完成的执行，它们被按反向时间顺序排序（因此，最新执行出现在响应中的第一个）。
 
 ## <a name="next-steps"></a>后续步骤
+
 了解基本概念后，下一步是查看每种数据源特定的要求和任务。
 
-* [Azure 虚拟机上的 Azure SQL 数据库、SQL 托管实例或 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
-* [Azure 表存储](search-howto-indexing-azure-tables.md)
-* [使用 Azure 认知搜索 Blob 索引器为 CSV blob 编制索引](search-howto-index-csv-blobs.md)
-* [使用 Azure 认知搜索 Blob 索引器为 JSON blob 编制索引](search-howto-index-json-blobs.md)
++ [Azure 虚拟机上的 Azure SQL 数据库、SQL 托管实例或 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
++ [Azure 表存储](search-howto-indexing-azure-tables.md)
++ [使用 Azure 认知搜索 Blob 索引器为 CSV blob 编制索引](search-howto-index-csv-blobs.md)
++ [使用 Azure 认知搜索 Blob 索引器为 JSON blob 编制索引](search-howto-index-json-blobs.md)

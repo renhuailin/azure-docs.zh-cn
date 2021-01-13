@@ -1,18 +1,18 @@
 ---
 title: 如何使用多租户托管权限在 Azure 上部署 Windows 10
-description: 了解如何利用 Windows 软件保障权益将本地许可证引入到具有多租户托管权限的 Azure。
+description: 了解如何使用多租户托管权限来充分利用 Windows 软件保障权益，从而将本地许可证引入到 Azure 中。
 author: xujing
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
-ms.author: xujing
-ms.openlocfilehash: 101f2cfe57624502764d145351a6343cfdd2a334
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.author: mimckitt
+ms.openlocfilehash: 9f45b0a9454176f53413940d3c310e0499b43d3c
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572858"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180109"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租户托管权限在 Azure 上部署 Windows 10 
 对于其用户使用 Windows 10 企业版 E3/E5 或使用 Windows 虚拟桌面访问（用户订阅许可证或附加设备用户订阅许可证）的客户，通过使用 Windows 10 多租户托管权限，他们可以在云中使用其 Windows 10 许可证并在 Azure 上运行 Windows 10 虚拟机，无需购买其他许可证。 有关详细信息，请参阅 [Multitenant Hosting for Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)（Windows 10 多租户托管）。
@@ -24,7 +24,7 @@ ms.locfileid: "96572858"
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>通过 Azure 市场部署 Windows 10 映像 
-对于 PowerShell、CLI 和 Azure 资源管理器模板部署，可通过以下 publishername、产品/服务、sku 找到 Windows 10 映像。
+对于 PowerShell、CLI 和 Azure 资源管理器模板部署，可使用以下 publishername、产品/服务及 sku 找到 Windows 10 映像。
 
 | OS  |      PublisherName      |  产品/服务 | SKU |
 |:----------|:-------------:|:------|:------|
@@ -33,8 +33,8 @@ ms.locfileid: "96572858"
 | Windows 10 专业版    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
 | Windows 10 专业版 N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
 
-## <a name="qualify-for-multi-tenant-hosting-rights"></a>适用于多租户托管权限 
-若要在 Azure 用户上有资格使用多租户托管权限和运行 Windows 10 映像，必须具有以下订阅之一： 
+## <a name="qualify-for-multi-tenant-hosting-rights"></a>满足拥有多租户托管权限的条件 
+若要满足拥有多租户托管权限的条件以及在 Azure 上运行 Windows 10 映像，用户必须具有以下订阅之一： 
 
 -   Microsoft 365 E3/E5 
 -   Microsoft 365 F3 
@@ -51,7 +51,7 @@ ms.locfileid: "96572858"
 Net user <username> /active:yes
 ```
 
-以下 PowerShell 代码片段将所有管理员帐户标记为活动状态，包括内置管理员。 如果内置 Administrator 用户名未知，此示例非常有用。
+以下 PowerShell 代码片段用于将所有管理员（包括内置 Administrator）帐户标记为活动帐户。 如果内置 Administrator 用户名未知，此示例非常有用。
 ```powershell
 $adminAccount = Get-WmiObject Win32_UserAccount -filter "LocalAccount=True" | ? {$_.SID -Like "S-1-5-21-*-500"}
 if($adminAccount.Disabled)
@@ -112,7 +112,7 @@ LicenseType              :
 
 ## <a name="additional-information-about-joining-azure-ad"></a>有关联接 Azure AD 的其他信息
 >[!NOTE]
->Azure 使用内置 Administrator 帐户预配所有 Windows，但不能使用此方法联接 AAD。 例如，“设置”>“帐户”>“访问工作或学校帐户”>“+连接”将不起作用。 若要手动加入 Azure AD，必须创建另一个管理员帐户并以其身份登录。 你还可以使用预配包配置 Azure AD，使用 *后续步骤* 部分中的链接来了解详细信息。
+>Azure 使用内置 Administrator 帐户预配所有 Windows，但不能使用此方法联接 AAD。 例如，“设置”>“帐户”>“访问工作或学校帐户”>“+连接”将不起作用。 若要手动加入 Azure AD，必须创建另一个管理员帐户并以其身份登录。 还可以使用预配包配置 Azure AD，使用“后续步骤”部分的链接了解详细信息。
 >
 >
 

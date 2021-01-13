@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e3cfede444b65ee6990afd006d3b174d65f9cfad
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132471"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179157"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>适用于 Blob 存储的安全建议
 
@@ -35,7 +35,7 @@ Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在�
 | 为容器启用软删除 | 容器的软删除使你能够在容器被删除后恢复容器。 有关容器软删除的详细信息，请参阅 [ (预览版) 的容器软删除 ](./soft-delete-container-overview.md)。 | - |
 | 锁定存储帐户以防止意外删除帐户 | 可以锁定 Azure 资源管理器资源（例如订阅、资源组或存储帐户），以防止组织中的其他用户意外删除或修改它。 锁定存储帐户不会阻止删除该帐户中的数据。 它仅阻止删除帐户本身。 有关详细信息，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
 | 在不可变 Blob 中存储业务关键数据 | 配置法定保留和基于时间的保留策略，以 WORM（一次写入，多次读取）状态存储 Blob 数据。 在保留时间间隔期间内，可以读取即时存储的 Blob，但不能对其进行修改或删除。 有关详细信息，请参阅[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)。 | - |
-| 需要安全传输 (HTTPS) 到存储帐户 | ??? | - |
+| 需要安全传输 (HTTPS) 到存储帐户 | 如果需要对存储帐户进行安全传输，则必须通过 HTTPS 进行对存储帐户的所有请求。 拒绝通过 HTTP 发出的任何请求。 Microsoft 建议你始终需要对所有存储帐户进行安全传输。 有关详细信息，请参阅 [要求安全传输以确保安全连接](../common/storage-require-secure-transfer.md)。 | - |
 | 将共享访问签名 (SAS) 令牌限制为仅用于 HTTPS 连接 | 当客户端使用 SAS 令牌访问 Blob 数据时要求使用 HTTPS 有助于最大程度地降低被窃听的风险。 有关详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。 | - |
 
 ## <a name="identity-and-access-management"></a>标识和访问管理

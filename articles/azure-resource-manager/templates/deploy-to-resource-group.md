@@ -1,22 +1,22 @@
 ---
 title: 将资源部署到资源组
-description: 介绍如何在 Azure 资源管理器模板中部署资源。 它演示如何将多个资源组作为目标。
+description: 介绍如何在 Azure 资源管理器模板中部署资源。 它介绍如何将多个资源组作为目标。
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 9d0bec51fa55ee377eb647a11fb554ec3b81e9eb
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: 8fe503cc95d71772c07427438b17e2ff0d4620a7
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807726"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178885"
 ---
-# <a name="resource-group-deployments-with-arm-templates"></a>具有 ARM 模板的资源组部署
+# <a name="resource-group-deployments-with-arm-templates"></a>使用 ARM 模板进行资源组部署
 
-本文介绍如何将部署范围限定为资源组。 使用 Azure 资源管理器模板 (ARM 模板) 用于部署。 本文还介绍了如何在部署操作中扩展资源组之外的范围。
+本文介绍如何将部署范围限定于资源组。 使用 Azure 资源管理器模板（ARM 模板）进行部署。 本文还介绍了如何在部署操作中将范围扩展到资源组之外。
 
 ## <a name="supported-resources"></a>支持的资源
 
-大多数资源可部署到资源组。 有关可用资源的列表，请参阅 [ARM 模板引用](/azure/templates)。
+可以将大多数资源部署到资源组。 有关可用资源的列表，请参阅 [ARM 模板参考](/azure/templates)。
 
 ## <a name="schema"></a>架构
 
@@ -56,7 +56,7 @@ az deployment group create \
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-对于 PowerShell 部署命令，请使用 [AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)。 以下示例会部署一个模板来创建资源组：
+对于 PowerShell 部署命令，请使用 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)。 以下示例会部署一个模板来创建资源组：
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment `
@@ -68,12 +68,12 @@ New-AzResourceGroupDeployment `
 
 ---
 
-有关部署 ARM 模板的部署命令和选项的更多详细信息，请参阅：
+有关部署命令和部署 ARM 模板的选项的更多详细信息，请参阅：
 
 * [使用 ARM 模板和 Azure 门户部署资源](deploy-portal.md)
 * [使用 ARM 模板和 Azure CLI 部署资源](deploy-cli.md)
 * [使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)
-* [利用 ARM 模板和 Azure 资源管理器部署资源 REST API](deploy-rest.md)
+* [使用 ARM 模板和 Azure 资源管理器 REST API 部署资源](deploy-rest.md)
 * [使用部署按钮从 GitHub 存储库部署模板](deploy-to-azure-button.md)
 * [从 Cloud Shell 部署 ARM 模板](deploy-cloud-shell.md)
 
@@ -85,21 +85,22 @@ New-AzResourceGroupDeployment `
 * 同一订阅或其他订阅中的其他资源组
 * 租户中的任何订阅
 * 资源组的租户
-* [扩展资源](scope-extension-resources.md) 可以应用于资源
+
+[扩展资源](scope-extension-resources.md)的作用域可以是与部署目标不同的目标。
 
 部署模板的用户必须有权访问指定的作用域。
 
-本部分说明如何指定不同的范围。 可以在单个模板中组合这些不同的范围。
+本部分演示如何指定不同范围。 可以在单个模板中组合这些不同范围。
 
-### <a name="scope-to-target-resource-group"></a>作用域到目标资源组
+### <a name="scope-to-target-resource-group"></a>目标资源组的范围
 
-若要将资源部署到目标资源，请将这些资源添加到模板的 resources 节中。
+若要将资源部署到目标资源，请将这些资源添加到模板的资源部分。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-rg.json" highlight="5":::
 
-有关示例模板，请参阅 [部署到目标资源组](#deploy-to-target-resource-group)。
+有关示例模板，请参阅[部署到目标资源组](#deploy-to-target-resource-group)。
 
-### <a name="scope-to-resource-group-in-same-subscription"></a>作用域到同一订阅中的资源组
+### <a name="scope-to-resource-group-in-same-subscription"></a>将范围限定于同一订阅中的资源组
 
 若要将资源部署到同一订阅中的其他资源组，请添加嵌套部署并包括 `resourceGroup` 属性。 如果未指定订阅 ID 或资源组，将使用父模板中的订阅和资源组。 在运行部署之前，所有资源组都必须存在。
 
@@ -107,39 +108,39 @@ New-AzResourceGroupDeployment `
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/same-sub-to-resource-group.json" highlight="9,13":::
 
-有关示例模板，请参阅 [部署到多个资源组](#deploy-to-multiple-resource-groups)。
+有关示例模板，请参阅[部署到多个资源组](#deploy-to-multiple-resource-groups)。
 
-### <a name="scope-to-resource-group-in-different-subscription"></a>不同订阅中的资源组的范围
+### <a name="scope-to-resource-group-in-different-subscription"></a>将范围限定于不同订阅中的资源组
 
 若要将资源部署到不同订阅中的资源组，请添加嵌套部署并包括 `subscriptionId` 和 `resourceGroup` 属性。 在以下示例中，嵌套部署以名为 `demoResourceGroup` 的资源组为目标。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/different-sub-to-resource-group.json" highlight="9,10,14":::
 
-有关示例模板，请参阅 [部署到多个资源组](#deploy-to-multiple-resource-groups)。
+有关示例模板，请参阅[部署到多个资源组](#deploy-to-multiple-resource-groups)。
 
-### <a name="scope-to-subscription"></a>作用域到订阅
+### <a name="scope-to-subscription"></a>订阅的范围
 
-若要将资源部署到订阅，请添加嵌套部署并包括 `subscriptionId` 属性。 订阅可以是目标资源组的订阅，也可以是租户中的任何其他订阅。 此外， `location` 为嵌套部署设置属性。
+若要将资源部署到订阅，请添加嵌套部署并包含 `subscriptionId` 属性。 订阅可以针对目标资源组，也可针对租户中的任何其他订阅。 此外，请为嵌套部署设置 `location` 属性。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-subscription.json" highlight="9,10,14":::
 
-有关示例模板，请参阅 [创建资源组](#create-resource-group)。
+有关示例模板，请参阅[创建资源组](#create-resource-group)。
 
-### <a name="scope-to-tenant"></a>作用域到租户
+### <a name="scope-to-tenant"></a>将范围设定为租户
 
-可以通过将设置为来在租户中创建资源 `scope` `/` 。 部署模板的用户必须具有 [所需的访问权限才能在租户上进行部署](deploy-to-tenant.md#required-access)。
+可通过将 `scope` 设置为 `/`，在租户中创建资源。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
 
-你可以使用嵌套的部署 `scope` 并 `location` 设置。
+可使用设置了 `scope` 和 `location` 的嵌套部署。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-tenant.json" highlight="9,10,14":::
 
-或者，你可以 `/` 为某些资源类型（例如管理组）设置作用域。
+或者，可将某些资源类型（如管理组）的范围设置为 `/`。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-create-mg.json" highlight="12,15":::
 
 ## <a name="deploy-to-target-resource-group"></a>部署到目标资源组
 
-若要在目标资源组中部署资源，请在模板的 **resources** 节中定义这些资源。 以下模板在部署操作中指定的资源组中创建存储帐户。
+若要在目标资源组部署资源，请在模板的“资源”部分定义这些资源。 以下模板会在部署操作中指定的资源组中创建一个存储帐户。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 
@@ -244,7 +245,7 @@ az deployment group create \
 
 ## <a name="create-resource-group"></a>创建资源组
 
-从资源组部署中，可以切换到订阅级别并创建资源组。 以下模板将存储帐户部署到目标资源组，并在指定的订阅中创建新的资源组。
+可从资源组部署中切换到订阅级别并创建一个资源组。 以下模板会向目标资源组部署一个存储帐户，并在指定的订阅中创建一个新的资源组。
 
 ```json
 {

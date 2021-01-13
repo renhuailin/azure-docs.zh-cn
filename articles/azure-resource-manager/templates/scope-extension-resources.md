@@ -1,28 +1,31 @@
 ---
 title: 扩展资源类型的范围
-description: 介绍如何在部署扩展资源类型时使用作用域属性。
+description: 介绍如何在部署扩展资源类型时使用 scope 属性。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: bd468d31454c38bd314269243702d7df4f279a5e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 01/13/2021
+ms.openlocfilehash: 75c2c8b8409cc9f8e7a8e71965589ece6660607a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681426"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179973"
 ---
-# <a name="setting-scope-for-extension-resources-in-arm-templates"></a>在 ARM 模板中设置扩展资源的作用域
+# <a name="setting-scope-for-extension-resources-in-arm-templates"></a>在 ARM 模板中设置扩展资源的范围
 
-扩展资源是修改其他资源的资源。 例如，可以将角色分配给资源以限制访问。 角色分配是扩展资源类型。
+扩展资源是用于修改其他资源的资源。 例如，可以将角色分配给资源。 角色分配是扩展资源类型。
 
-有关扩展资源类型的完整列表，请参阅 [扩展其他资源功能的资源类型](../management/extension-resource-types.md)。
+有关扩展资源类型的完整列表，请参阅[用于扩展其他资源的功能的资源类型](../management/extension-resource-types.md)。
 
-本文介绍如何在使用 Azure 资源管理器模板（ (ARM 模板) 部署时设置扩展资源类型的作用域。 它介绍了在应用到资源时可用于扩展资源的作用域属性。
+本文介绍如何在使用 Azure 资源管理器模板（ARM 模板）进行部署时设置扩展资源类型的范围。 它介绍了在应用到资源时可用于扩展资源的 scope 属性。
 
-## <a name="apply-at-deployment-scope"></a>应用于部署范围
+> [!NOTE]
+> 作用域属性仅适用于扩展资源类型。 若要为非扩展类型的资源类型指定不同的作用域，请使用嵌套或链接的部署。 有关详细信息，请参阅 [资源组部署](deploy-to-resource-group.md)、 [订阅部署](deploy-to-subscription.md)、 [管理组部署](deploy-to-management-group.md)和 [租户部署](deploy-to-tenant.md)。
 
-若要在目标部署范围内应用扩展资源类型，请将资源添加到模板中，就像任何资源类型一样。 可用范围包括 [资源组](deploy-to-resource-group.md)、 [订阅](deploy-to-subscription.md)、 [管理组](deploy-to-management-group.md)和 [租户](deploy-to-tenant.md)。 部署范围必须支持资源类型。
+## <a name="apply-at-deployment-scope"></a>在部署范围内应用
 
-以下模板将部署一个锁。
+若要在目标部署范围内应用扩展资源类型，请将该资源添加到模板中，就像应用任何资源类型一样。 可用的范围是[资源组](deploy-to-resource-group.md)、[订阅](deploy-to-subscription.md)、[管理组](deploy-to-management-group.md)和[租户](deploy-to-tenant.md)。 部署范围必须支持该资源类型。
+
+以下模板会部署一个锁。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/locktargetscope.json":::
 
@@ -46,11 +49,11 @@ az deployment group create \
 
 ---
 
-下一个示例分配一个角色。
+下一个示例会分配角色。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/roletargetscope.json":::
 
-部署到订阅时，会将角色分配给订阅。
+部署到订阅时，它会为订阅分配角色。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -74,9 +77,9 @@ New-AzSubscriptionDeployment `
 
 ## <a name="apply-to-resource"></a>应用于资源
 
-若要将扩展资源应用于资源，请使用 `scope` 属性。 将 "作用域" 属性设置为要将扩展添加到的资源的名称。 作用域属性是扩展资源类型的根属性。
+若要将扩展资源应用于资源，请使用 `scope` 属性。 将 scope 属性设置为要将扩展添加到其中的资源的名称。 scope 属性是扩展资源类型的根属性。
 
-下面的示例创建存储帐户并向其应用角色。
+下面的示例创建一个存储帐户并对其应用角色。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/storageandrole.json" highlight="56":::
 

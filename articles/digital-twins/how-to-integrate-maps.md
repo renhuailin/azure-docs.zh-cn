@@ -1,19 +1,19 @@
 ---
 title: 与 Azure Maps 集成
 titleSuffix: Azure Digital Twins
-description: 请参阅如何创建可使用非整数图形和 Azure 数字孪生通知的 Azure 函数来更新 Azure Maps 室内地图。
+description: 请参阅如何使用 Azure Functions 创建一个函数，该函数可使用孪生和 Azure 数字通知来更新 Azure Maps 的室内地图。
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 7b2039f8b1aebef65112067e4fd9184777192015
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e582415d9a83dc506b77d506f3e0803002129a07
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051575"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180041"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 数字孪生更新 Azure Maps 室内地图
 
@@ -22,10 +22,10 @@ ms.locfileid: "98051575"
 本操作说明将涉及：
 
 1. 配置 Azure 数字孪生实例，以将克隆更新事件发送到 [Azure Functions](../azure-functions/functions-overview.md)中的函数。
-2. 创建 Azure 函数以更新 Azure Maps 室内地图功能 stateset。
+2. 创建用于更新 Azure Maps 室内地图功能的函数 stateset。
 3. 如何在 Azure 数字孪生图中存储地图 ID 和功能 stateset ID。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 * 遵循 Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-end.md)。
     * 将使用其他终结点和路由扩展此克隆。 您还将从该教程向函数应用程序添加另一个函数。 
@@ -41,7 +41,7 @@ ms.locfileid: "98051575"
 
 ## <a name="create-a-function-to-update-a-map-when-twins-update"></a>创建一个函数以便在孪生更新时更新映射
 
-首先，你将在 Azure 数字孪生中创建一个路由，以便将所有克隆的更新事件转发到事件网格主题。 然后，使用 Azure 函数读取这些更新消息，并更新 Azure Maps 中的功能 stateset。 
+首先，你将在 Azure 数字孪生中创建一个路由，以便将所有克隆的更新事件转发到事件网格主题。 然后，将使用函数读取这些更新消息，并更新 Azure Maps 中的功能 stateset。 
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>创建路由并筛选到克隆更新通知
 
@@ -70,7 +70,7 @@ ms.locfileid: "98051575"
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
-## <a name="create-an-azure-function-to-update-maps"></a>创建 Azure 函数以更新映射
+## <a name="create-a-function-to-update-maps"></a>创建用于更新映射的函数
 
 从端到端教程 ([*教程：连接端到端解决方案*](./tutorial-end-to-end.md)) ，在函数应用中创建一个事件网格触发的函数。 此函数将解包这些通知，并将更新发送到 Azure Maps 功能 stateset，以更新一个房间的温度。 
 

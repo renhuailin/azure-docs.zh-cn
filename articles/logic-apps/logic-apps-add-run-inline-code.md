@@ -7,12 +7,12 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 1736a1d22ccfb0f00061534d1c733ab72da4c7b0
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3f88fa38d62778bc3c4c1e29571d1d0ae4eeb5ff
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922509"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179599"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用内联代码添加和运行代码片段
 
@@ -31,13 +31,13 @@ ms.locfileid: "96922509"
   > [!NOTE]
   > `require()`用于运行 JavaScript 的内联代码操作不支持该函数。
 
-此操作运行代码片段，并将该代码段的输出作为名为的标记返回 `Result` 。 可以在逻辑应用的工作流中将此标记与后续操作一起使用。 对于想要为代码创建函数的其他方案，请尝试在逻辑应用中 [创建并调用 Azure 函数](../logic-apps/logic-apps-azure-functions.md) 。
+此操作运行代码片段，并将该代码段的输出作为名为的标记返回 `Result` 。 可以在逻辑应用的工作流中将此标记与后续操作一起使用。 对于想要为代码创建函数的其他方案，请尝试 [通过 Azure Functions 而不是逻辑应用来创建和调用函数](../logic-apps/logic-apps-azure-functions.md) 。
 
 本文介绍了在工作或学校帐户中收到新电子邮件时，将触发示例逻辑应用。 代码段提取并返回电子邮件正文中显示的任何电子邮件地址。
 
 ![显示示例逻辑应用的屏幕截图](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -69,7 +69,7 @@ ms.locfileid: "96922509"
 
 ## <a name="add-inline-code"></a>添加内联代码
 
-1. 如果尚未这样做，请在 [Azure 门户](https://portal.azure.com)中的逻辑应用设计器中打开逻辑应用。
+1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 在设计器中，选择要在逻辑应用的工作流中添加内联代码操作的位置。
 
@@ -147,7 +147,7 @@ ms.locfileid: "96922509"
 
 此表包含有关这些子属性的详细信息：
 
-| Property | 类型 | 说明 |
+| properties | 类型 | 说明 |
 |----------|------|-------|
 | `actions` | 对象集合 | 在运行代码段之前运行的操作的结果对象。 每个对象都有一个 *键-值* 对，其中键是操作的名称，并且值等效于调用 [ ( # A1 函数的操作](../logic-apps/workflow-definition-language-functions-reference.md#actions) `@actions('<action-name>')` 。 操作的名称使用的操作名称与基础工作流定义中使用的操作名称相同，后者使用下划线 (_) 替换操作名称中的空格 ( "" ) 。 此对象提供对当前工作流实例运行的操作属性值的访问。 |
 | `trigger` | 对象 | 触发器中的 Result 对象并等效于调用 [ ( # A1 函数的触发器](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 此对象提供对当前工作流实例运行的触发器属性值的访问。 |
