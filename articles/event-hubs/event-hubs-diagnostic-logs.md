@@ -3,12 +3,12 @@ title: 设置诊断日志 - Azure 事件中心 | Microsoft Docs
 description: 了解如何为 Azure 中的事件中心设置活动日志和诊断日志。
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: a7230746dc4225b04b0507c872416368aa14442b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 015814b9a56ec963f5209f971f096ac6c173d7e1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912593"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131978"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
@@ -45,7 +45,7 @@ ms.locfileid: "92912593"
 | 类别 | 说明 | 
 | -------- | ----------- | 
 | 存档日志 | 捕获有关[事件中心捕获](event-hubs-capture-overview.md)操作的信息，特别是与捕获错误相关的日志。 |
-| 操作日志 | 捕获在 Azure 事件中心命名空间中执行的所有管理操作。 由于在 Azure 事件中心进行的数据操作量较大，因此不会捕获数据操作。 |
+| 操作日志 | 捕获在 Azure 事件中心命名空间中执行的所有管理操作。 由于在 Azure 事件中心进行的数据操作量很大，因此不会捕获数据操作。 |
 | 自动缩放日志 | 捕获在事件中心命名空间中执行的自动膨胀操作。 |
 | Kafka 协调器日志 | 捕获与事件中心相关的 Kafka 协调器操作。 |
 | Kafka 用户错误日志 | 捕获事件中心中调用的 Kafka API 的相关信息。 |
@@ -64,7 +64,7 @@ ms.locfileid: "92912593"
 `TaskName` | 描述失败的任务
 `ActivityId` | 用于跟踪的内部 ID
 `trackingId` | 用于跟踪的内部 ID
-`resourceId` | Azure 资源管理器资源 ID
+`resourceId` | Azure Resource Manager 资源 ID
 `eventHub` | 事件中心的完整名称（包括命名空间名称）
 `partitionId` | 要写入到的事件中心分区
 `archiveStep` | 可能值：ArchiveFlushWriter、DestinationInit
@@ -100,12 +100,12 @@ ms.locfileid: "92912593"
 名称 | 说明
 ------- | -------
 `ActivityId` | 内部 ID，用于跟踪目的 |
-`EventName` | 操作名称 |
-`resourceId` | Azure 资源管理器资源 ID |
+`EventName` | 操作名称。 有关此元素的值列表，请参阅 [事件名称](#event-names) |
+`resourceId` | Azure Resource Manager 资源 ID |
 `SubscriptionId` | 订阅 ID |
 `EventTimeString` | 操作时间 |
-`EventProperties` | 操作属性 |
-`Status` | 操作状态 |
+`EventProperties` |操作的属性。 此元素提供有关事件的详细信息，如下面的示例中所示。 |
+`Status` | 操作状态。 该值可以是 **Succeeded** 或 **Failed**。  |
 `Caller` | 操作的调用方（Azure 门户或管理客户端） |
 `Category` | OperationalLogs |
 
@@ -125,6 +125,13 @@ Example:
    "category": "OperationalLogs"
 }
 ```
+
+### <a name="event-names"></a>事件名称
+事件名称作为操作类型和以下枚举中的资源类型填充。 例如，`Create Queue`、`Retrieve Event Hu` 或 `Delete Rule`。 
+
+| 操作类型 | 资源类型 | 
+| -------------- | ------------- | 
+| <ul><li>创建</li><li>更新</li><li>删除</li><li>检索</li><li>Unknown</li></ul> | <ul><li>命名空间</li><li>队列</li><li>主题</li><li>订阅</li><li>EventHub</li><li>EventHubSubscription</li><li>NotificationHub</li><li>NotificationHubTier</li><li>SharedAccessPolicy</li><li>UsageCredit</li><li>NamespacePnsCredentials</li>规则</li>ConsumerGroup</li> |
 
 ## <a name="autoscale-logs-schema"></a>自动缩放日志架构
 自动缩放日志 JSON 包括下表列出的元素：
@@ -200,7 +207,7 @@ Kafka 用户错误日志 JSON 包括下表列出的元素：
 | `Count` | 给定操作的发生次数 |
 | `ResourceId` | Azure 资源管理器资源 ID。 |
 
-仅当命名空间允许从 **所选网络** 或从 **特定 ip 地址** 进行访问时，才会生成虚拟网络日志)  (ip 筛选器规则。 如果不想使用这些功能限制对命名空间的访问，但仍希望获取虚拟网络日志来跟踪连接到事件中心命名空间的客户端的 IP 地址，可以使用以下解决方法。 启用 IP 筛选，并将 "可寻址 IPv4 范围" (1.0.0.0/1-255.0.0.0/1) 中添加。 事件中心不支持 IPv6 范围。 
+只有当命名空间允许从选定的网络或从特定的 IP 地址（IP 筛选器规则）进行访问时，才会生成虚拟网络日志 。 如果你不想使用这些功能限制对命名空间的访问，但仍希望获取虚拟网络日志来跟踪连接到事件中心命名空间的客户端的 IP 地址，则可以使用以下解决方法。 启用 IP 筛选并添加整个可寻址 IPv4 范围 (1.0.0.0/1 - 255.0.0.0/1)。 事件中心不支持 IPv6 范围。 
 
 ### <a name="example"></a>示例
 

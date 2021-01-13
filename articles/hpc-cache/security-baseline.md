@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 036cab033e5b70a8940a488c07374e9092d52b33
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 04f873763b087bfd5168abc2c558cc9d7161c361
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533649"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132131"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>Azure HPC 缓存的 azure 安全基线
 
@@ -62,9 +62,9 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 
 ### <a name="ns-2-connect-private-networks-together"></a>NS-2：将专用网络连接在一起
 
-**指南**：使用 azure ExpressRoute 或 azure 虚拟专用网络 (VPN) 在归置环境中的 Azure 数据中心和本地基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 internet，它们提供比典型 internet 连接更高的可靠性、更快的速度和更低的延迟。 对于点到站点 VPN 和站点到站点 VPN，可使用这些 VPN 选项的任意组合以及 Azure ExpressRoute 将本地设备或网络连接到虚拟网络。 
+**指南**：使用 azure ExpressRoute 或 azure 虚拟专用网络 (VPN) 在归置环境中的 Azure 数据中心和本地基础结构之间创建专用连接。 ExpressRoute 连接并不通过公共 Internet，与典型的 Internet 连接相比，它们的可靠性更高、速度更快且延迟时间更短。 对于点到站点 VPN 和站点到站点 VPN，可使用这些 VPN 选项的任意组合以及 Azure ExpressRoute 将本地设备或网络连接到虚拟网络。 
 
-若要将 Azure 中的两个或多个虚拟网络连接在一起，请使用虚拟网络对等互连。 对等互连虚拟网络之间的网络流量是专用的，且保留在 Azure 主干网络上。
+若要将 Azure 中的两个或更多虚拟网络连接在一起，请使用虚拟网络对等互连。 对等互连虚拟网络之间的网络流量是专用的，且保留在 Azure 主干网络上。
 
 - [什么是 ExpressRoute 连接模型](../expressroute/expressroute-connectivity-models.md) 
 
@@ -108,7 +108,7 @@ Azure HPC 缓存并不用于运行 web 应用程序，并且不需要配置任�
 
 - [使用 Azure 门户管理 Azure DDoS 防护标准](../ddos-protection/manage-ddos-protection.md) 
 
-- [Azure 安全中心建议](../security-center/recommendations-reference.md#recs-network)
+- [Azure 安全中心建议](../security-center/recommendations-reference.md#recs-networking)
 
 **Azure 安全中心监视**：是
 
@@ -176,9 +176,9 @@ Azure HPC 缓存需要 DNS 访问缓存专用虚拟网络外部的资源。 如�
 
 **指南**： Azure HPC 缓存未与内部操作的 Azure Active Directory 集成。 但是，可以使用 Azure AD 来对 Azure 门户或 CLI 中的用户进行身份验证，以便创建、查看和管理 HPC 缓存部署和相关组件。
 
-Azure Active Directory (Azure AD) 是 Azure 中的默认标识和访问管理服务。 应将 Azure AD 标准化，以便在中管理组织的标识和访问管理：
+Azure Active Directory (Azure AD) 是 Azure 中的默认标识和访问管理服务。 你应该使 Azure AD 标准化，以便控制组织在以下资源中的标识和访问管理：
 
-- Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机 (Linux 和 Windows) 、Azure Key Vault、PaaS 和 SaaS 应用程序。
+- Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机（Linux 和 Windows）、Azure Key Vault、PaaS 和 SaaS 应用程序。
 
 - 你的组织的资源，例如 Azure 上的应用程序，或公司网络资源。
 
@@ -231,7 +231,7 @@ Azure Active Directory 提供对 Azure 资源、云应用程序和本地应用�
 Azure AD 通过多重身份验证 (MFA) 和强无密码方法支持强身份验证控制。
 
 - 多重身份验证：启用 Azure AD MFA，并遵循 Azure 安全中心的标识和访问管理建议，了解 MFA 设置中的一些最佳实践。 可以基于登录条件和风险因素，对所有用户、特选用户或单个用户强制执行 MFA。
-- 无密码身份验证 - 有三个无密码身份验证选项可用：Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
+- 无密码身份验证 - 提供三个无密码身份验证选项：Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
 
 对于管理员和特权用户，请确保使用强身份验证方法的最高级别。 向其他用户推出适当的强身份验证策略。
 
@@ -265,7 +265,7 @@ Azure HPC 缓存还支持旧的基于密码的身份验证，适用于连接到�
 
 - 已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-这些数据源可以与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
+这些数据源可与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
 
 Azure 安全中心还可以针对某些可疑活动（例如，过多的身份验证尝试失败，以及在订阅中不推荐使用的帐户）发出警报。
 
@@ -327,17 +327,17 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 **指南**：定期查看用户帐户和访问分配，以确保帐户及其访问级别有效。 
 
-Azure HPC 缓存可使用 Azure Active Directory (Azure AD) 帐户来通过 Azure 门户和相关接口管理用户访问。 Azure AD 提供了访问评审，可帮助你查看组成员身份、对企业应用程序的访问权限以及角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可以使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流，以便于审核过程。
+Azure HPC 缓存可使用 Azure Active Directory (Azure AD) 帐户来通过 Azure 门户和相关接口管理用户访问。 Azure AD 提供了访问评审，可帮助你查看组成员身份、对企业应用程序的访问权限以及角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流以便于执行评审。
 
 此外，Azure Privileged Identity Management 还可配置为在创建过多的管理员帐户时发出警报，并识别过时或配置不正确的管理员帐户。
 
-注意：某些 Azure 服务支持不通过 Azure AD 管理的本地用户和角色。 需要单独管理这些用户。
+注意：某些 Azure 服务支持不通过 Azure AD 管理的本地用户和角色。 你需要单独管理这些用户。
 
 使用 NFS 存储目标时，需要与网络管理员和防火墙管理员合作来验证访问设置，并确保 Azure HPC 缓存能够与 NFS 存储系统进行通信。
 
 - [有关 HPC 缓存权限的列表，请阅读 Azure HPC 缓存必备组件](hpc-cache-prerequisites.md) 
 
-- [在 Privileged Identity Management (PIM 中创建 Azure 资源角色的访问评审) ](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
+- [在 Privileged Identity Management (PIM) 中创建对 Azure 资源角色的访问评审](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -403,7 +403,7 @@ Azure HPC 缓存可使用 Azure Active Directory (Azure AD) 帐户来通过 Azur
 
 ### <a name="dp-2-protect-sensitive-data"></a>DP-2：保护敏感数据
 
-**指南**：通过使用 Azure 基于角色的访问控制来限制对敏感数据的访问控制 (azure RBAC) 、基于网络的访问控制和 azure 服务中的特定控件 (例如，SQL 中的加密和) 的其他数据库。
+**指导**：使用 Azure 基于角色的访问控制 (Azure RBAC)、基于网络的访问控制以及 Azure 服务中的特定控制（例如 SQL 和其他数据库中的加密）来限制访问，从而保护敏感数据。
 
 为了确保一致的访问控制，所有类型的访问控制都应符合企业分段策略。 企业分段策略还应根据敏感的或业务关键型的数据和系统的位置来确定。
 
@@ -493,7 +493,7 @@ Azure HPC 缓存可使用 Azure Active Directory (Azure AD) 帐户来通过 Azur
 
 ### <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2：确保安全团队有权访问资产清单和元数据
 
-**指南**： Azure HPC 缓存支持使用标记。 将标记应用于 Azure 资源、资源组和订阅，以逻辑方式将它们组织到分类。 每个标记均由名称和值对组成。 
+**指南**： Azure HPC 缓存支持使用标记。 将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 
 
 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。 可以在创建缓存时添加标记，也可以在部署缓存后添加标记。 
 
@@ -544,7 +544,7 @@ HPC 缓存不允许在其资源上运行应用程序或软件安装。
 
 **指南**：使用 Azure 安全中心内置威胁检测功能，并为 HPC 缓存资源启用 azure Defender (正式的 Azure 高级威胁防护) 。 Azure Defender for HPC 缓存提供额外的安全智能层，用于检测访问或利用缓存资源的异常和潜在有害尝试。
 
-将所有日志从 HPC 缓存转发到你的 SIEM，可用于设置自定义威胁检测。 确保正在监视不同类型的 Azure 资产，以发现潜在的威胁和异常情况。 专注于获得高质量的警报，以减少对分析人员进行排序的误报。 警报可能源自日志数据、代理或其他数据。
+将所有日志从 HPC 缓存转发到你的 SIEM，可用于设置自定义威胁检测。 确保正在监视不同类型的 Azure 资产，以发现潜在的威胁和异常情况。 专注于获取高质量警报以减少误报，便于分析人员进行分类整理。 警报可能源自日志数据、代理或其他数据。
 
 - [Azure 安全中心的威胁防护](../security-center/azure-defender.md) 
 
@@ -611,7 +611,7 @@ Azure 安全中心还可以针对某些可疑活动发出警报，如失败的�
 
 **指南**： Azure HPC 缓存资源自动创建活动日志。 这些日志包含 (PUT、POST、DELETE) 的所有写入操作，但不包括读取操作 (GET) 。 活动日志可用于在故障排除时查找错误，或监视组织中的用户如何修改资源。
 
-还可以使用 Azure 安全中心和 Azure 策略为 HPC 缓存启用 Azure 资源日志，并使用和记录数据收集。 这些日志对于日后调查安全事件和执行鉴证演练可能至关重要。
+还可以使用 Azure 安全中心和 Azure 策略为 HPC 缓存启用 Azure 资源日志，并使用和记录数据收集。 这些日志可能对日后调查安全事件和执行取证演练至关重要。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 
@@ -625,13 +625,13 @@ Azure 安全中心还可以针对某些可疑活动发出警报，如失败的�
 
 ### <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5：集中管理和分析安全日志
 
-**指南**：集中记录存储和分析以启用关联。 对于每个日志源，请确保已分配一个数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
+**指导**：集中记录存储和分析来实现关联。 对于每个日志源，请确保已分配一个数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
 
 确保正在将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
-此外，启用数据并将数据集成到 Azure Sentinel 或第三方 SIEM。
+另外，请启用 Azure Sentinel 或第三方 SIEM 并将数据载入其中。
 
-许多组织选择使用 Azure Sentinel 作为 "热" 数据，这些数据经常使用，而 Azure 存储则用于不频繁使用的 "冷" 数据。
+许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 
@@ -673,7 +673,7 @@ Azure 安全中心还可以针对某些可疑活动发出警报，如失败的�
 
 可以基于过去的事件经验、经验证的社区源以及旨在通过融合和关联各种信号源来生成和清理警报的工具构建高质量警报。 
 
-Azure 安全中心可跨多个 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
+Azure 安全中心可跨许多 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
 
 使用导出功能导出 Azure 安全中心警报和建议，以帮助识别 Azure 资源的风险。 手动导出或持续导出警报和建议。
 
@@ -719,7 +719,7 @@ Azure Sentinel 提供几乎针对任何日志源的广泛数据分析，并提�
 
 **指南**：根据警报严重性和资产敏感度，为分析人员提供上下文来确定应首要关注哪些事件。 
 
-Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心在查找或用于发出警报的从分析上中的置信度，以及导致警报的活动的恶意意图的置信度。
+Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心对调查结果或用于发出警报的分析的确信程度，以及对导致警报的活动背后存在恶意意图的确信程度。
 
 此外，使用标记来标记资源，并创建命名系统来对 Azure 资源进行标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
@@ -832,7 +832,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4：减少密钥丢失风险
 
-**指南**：确保已准备好措施来防止密钥丢失和从密钥丢失中恢复。 在 Azure Key Vault 中启用软删除和清除保护，以防止意外删除或恶意删除密钥。
+**指导**：确保你有适当的措施来防止和恢复丢失的密钥。 在 Azure Key Vault 中启用软删除和清除保护，以防止意外删除或恶意删除密钥。
 
 - [如何在 Key Vault 中启用软删除和清除保护](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 

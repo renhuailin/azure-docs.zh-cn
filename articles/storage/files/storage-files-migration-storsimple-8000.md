@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 08ed07adbfe0fc4b22d8a3d0afcfc9ab1312dba4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723972"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134341"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 和8600迁移到 Azure 文件同步
 
@@ -163,7 +163,7 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 * 如果需要 [高级 Azure 文件共享的性能](understanding-billing.md#provisioned-billing)，请选择 "高级存储"。
 * 为常规用途文件服务器工作负荷（包括热数据和存档数据）选择 "标准存储"。 如果在云中共享中的唯一工作负荷将 Azure 文件同步，请选择 "标准存储"。
 
-#### <a name="account-kind"></a>帐户类型
+#### <a name="account-kind"></a>帐户种类
 
 * 对于标准存储，请选择 *StorageV2 (常规用途 v2)*。
 * 对于高级文件共享，请选择 " *FileStorage*"。
@@ -441,6 +441,9 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 1. 由于无效字符，数据转换作业可能会遗留某些文件。 如果是这样，请将它们复制到已启用 Azure 文件同步的 Windows Server 实例。 稍后，你可以对其进行调整以使其同步。如果不将 Azure 文件同步用于特定共享，则可以更好地使用 StorSimple 卷上的无效字符来重命名文件。 然后直接对 Azure 文件共享运行 RoboCopy。
 
 > [!WARNING]
+> Windows Server 2019 中的 Robocopy 目前遇到一个问题，该问题会导致在目标服务器上 Azure 文件同步的文件分层，使其在使用 robocopy 的/MIR 函数时重新复制从源服务器上并重新上传到 Azure。 在2019以外的 Windows Server 上，必须使用 Robocopy。 首选为 Windows Server 2016。 如果通过 Windows 更新解决该问题，则将更新此注释。
+
+> [!WARNING]
 > 在服务器具有完全下载的 Azure 文件共享的命名空间之前， *不能* 启动 RoboCopy。 有关详细信息，请参阅 [确定何时将命名空间完全下载到你的服务器](#determine-when-your-namespace-has-fully-synced-to-your-server)。
 
  你只想要复制在迁移作业上次运行后更改的文件，以及之前尚未完成这些作业的文件。 完成迁移后，你可以解决此问题，原因是它们没有在以后的服务器上移动。 有关详细信息，请参阅 [Azure 文件同步故障排除](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)。
@@ -448,7 +451,7 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 RoboCopy 具有多个参数。 下面的示例展示了一个完成的命令以及选择这些参数的原因列表。
 
 ```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 背景色：
@@ -499,6 +502,14 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <Source
    :::column-end:::
    :::column span="1":::
       允许 RoboCopy 仅考虑源 (StorSimple 设备) 和目标 (Windows Server 目录) 之间的增量。
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /IT
+   :::column-end:::
+   :::column span="1":::
+      确保在某些镜像方案中保留保真度。</br>示例：在两个 Robocopy 之间运行，文件会经历 ACL 更改和属性更新，例如，它也被标记为 *隐藏*。 如果没有/IT，则可通过 Robocopy 丢失 ACL 更改，因此不会将其传输到目标位置。
    :::column-end:::
 :::row-end:::
 :::row:::

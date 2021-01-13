@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: b36f52fd97a9f7ff294f14ec394ff9a9f607b5b0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3c0dd2b4e7e48eeb76d82c26eb52b89b61e9f668
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187147"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134103"
 ---
 # <a name="monitor-identity-and-access"></a>监视标识和访问
 
@@ -30,7 +30,7 @@ ms.locfileid: "96187147"
 
 Azure 安全中心具有两个专用的安全控件，用于确保满足组织的标识和安全要求： 
 
- - **管理访问和权限** - 建议采用 [最小特权访问模式](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)，并确保仅向用户授予完成其工作所需的访问权限。 此控件还包括有关实现 [azure 基于角色的访问控制 (AZURE RBAC) ](../role-based-access-control/overview.md) 以控制对资源的访问权限的建议。
+ - **管理访问和权限** - 建议采用 [最小特权访问模式](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)，并确保仅向用户授予完成其工作所需的访问权限。 此控件还包括有关实现 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 来控制对资源的访问的建议。
  
  - **启用 MFA** - 启用 [MFA](https://www.microsoft.com/security/business/identity/mfa) 后，帐户将更加安全，用户仍可通过单一登录对几乎所有应用程序进行身份验证。
 
@@ -44,7 +44,7 @@ Azure 安全中心具有两个专用的安全控件，用于确保满足组织�
 - 应从订阅中删除弃用的帐户（弃用的帐户是不再需要且被 Azure Active Directory 阻止登录的帐户）
 
 > [!TIP]
-> 有关这些建议以及可能会在这些控件中看到其他建议的详细信息，请参阅[标识和访问建议](recommendations-reference.md#recs-identity)。
+> 有关这些建议以及可能会在这些控件中看到其他建议的详细信息，请参阅[标识和访问建议](recommendations-reference.md#recs-identityandaccess)。
 
 ### <a name="limitations"></a>限制
 
@@ -52,7 +52,7 @@ Azure 安全中心具有两个专用的安全控件，用于确保满足组织�
 
 - 标识建议不适用于拥有超过 600 个帐户的订阅。 在这种情况下，这些建议将在“不可用的评估”下列出。
 - 标识建议不适用于云解决方案提供商 (CSP) 合作伙伴的管理代理。
-- 标识建议不标识使用特权标识管理 (PIM) 系统管理的帐户。 如果你使用的是 PIM 工具，你可能会在 **管理访问权限和权限** 控制中看到不准确的结果。
+- 标识建议不标识使用特权标识管理 (PIM) 系统管理的帐户。 如果使用的是 PIM 工具，则可能会在“管理访问和权限”控件中看到不准确的结果。
 
 ## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>多重身份验证 (MFA) 和 Azure Active Directory 
 

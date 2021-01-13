@@ -3,12 +3,12 @@ title: Azure Service Fabric 中支持的群集版本
 description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中最新版本的链接。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 5770aa072666f89a574da9d1f2584ab33b612330
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: abf9900e9749a1b21d927e0315076b38848bea10
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862173"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132641"
 ---
 # <a name="supported-service-fabric-versions"></a>支持的 Service Fabric 版本
 
@@ -25,25 +25,57 @@ ms.locfileid: "97862173"
 ## <a name="unsupported-versions"></a>不受支持的版本
 
 ### <a name="upgrade-alert-for-versions-between-57-and-below-6363"></a>5.7 及更低版本之间的版本升级警报。 *
+为了提高安全性和可用性，Azure 基础结构将做出可能影响 Service Fabric 客户的更改。 **从5.7 到6.3 的不受支持版本的所有 Service Fabric 群集均受影响**。 若要解决此更改，需要对 Service Fabric 运行时进行更新，它已可用于所有区域中所有受支持的 Service Fabric 版本。
 
-***位于5.7 到6.3.63 的不受支持版本的所有 Service Fabric 群集。* 将受安全重大更改的影响，该更改将在 2021 * * * 的 Azure 中推出。
- 
- 为了避免严重的服务中断 (包括未) 的群集，你必须尽快将群集升级到包括安全问题修补程序的 Service Fabric 运行时的以下支持版本之一。 我们已向受影响的客户提供指导。 如果你有支持计划并需要技术帮助，请通过 [Azure 支持渠道](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) 联系我们，方法是打开支持请求，并在支持票证中提到此上下文。 
- 
-  #### <a name="supported-service-fabric-runtime-versions-including-the-fix-for-the-security-breaking-change"></a>支持的 Service Fabric 运行时版本，包括安全重大更改的修复 
-   将在较旧不受支持的版本上运行的 Service Fabric 群集升级到受支持的版本之一。
+我们请求并建议采取措施来升级到支持的最新支持版本 **（1月19日），2021** 若要避免服务中断（如果你有支持计划并需要技术帮助），请通过为 azure Service Fabric 打开支持请求并在支持票证中提到此上下文，通过 azure 支持渠道联系我们。
 
-  | 操作系统 | 群集中的当前 Service Fabric 运行时 | CU/修补程序版本  | 
+#### <a name="impact-if-not-upgraded-to-supported-versions"></a>如果未升级到受支持的版本则产生影响
+
+**在不受支持的版本5.7 到6.3.63 的 Azure Service Fabric 群集中运行。 \*** 如果尚未升级到2021的以下受支持版本之一，将无法启动，并且将无法使用。
+
+#### <a name="required-action"></a>所需的操作
+升级到下面列出的 Service Fabric 支持的版本，以防止与此更改相关的停机时间或功能丢失。 请确保群集至少运行这些版本，以防环境出现问题。
+
+  ###### <a name="supported-service-fabric-runtime-versions"></a>支持的 Service Fabric 运行时版本
+   如果你不在下面列出的支持的 Service Fabric 版本中，请升级到这些版本中的一个，这些版本已经包含必要的更改，以防止群集中断。  
+  
+  | (OS) | 群集中的当前 Service Fabric 运行时 | CU/修补程序版本  | 
   | --- | --- |--- | 
   | Windows | 7.0. * | 7.0.478.9590 |
   | Windows | 7.1. * | 7.1.503.9590 |
   | Windows | 7.2. * | 7.2.445.9590 |
   | Ubuntu 16 | 7.0. * | 7.0.472.1  |
-  | Ubuntu 16 | 7.1. * | 7.1.455.1  |
-  | Ubuntu 1804 | 7.1. * | 7.1.455.1804 |
-  | Ubuntu 16 | 7.2. * | 7.2.447.1 |
-  | Ubuntu 1804 | 7.2. * | 7.2.447.1804 |
+  | Linux Ubuntu 16.04 | 7.1. * | 7.1.455.1  |
+  | Linux Ubuntu 18.04 | 7.1. * | 7.1.455.1804 |
+  | Linux Ubuntu 16.04 | 7.2. * | 7.2.447.1 |
+  | Linux Ubuntu 18.04 | 7.2. * | 7.2.447.1804 |
  
+### <a name="upgrade-alert-for-versions-greater-than-63"></a>版本超过6.3 的升级警报 
+为了提高安全性和可用性，Azure 基础结构将做出可能影响 Service Fabric 客户的更改。 **[对于使用容器的开放网络功能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)的所有 Service Fabric 群集，在不受支持的版本超过6.3 和低于7.0 的情况下运行，并会影响从7.0 开始的不兼容支持的版本**。 若要解决此更改，需要对 Service Fabric 运行时进行更新，它已可用于所有区域中所有受支持的 Service Fabric 版本。
+
+ #### <a name="impact-if-not-upgraded-to-supported-versions"></a>如果未升级到受支持的版本则产生影响
+  如果 Azure Service Fabric 群集 **使用 [开放网络功能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) for 容器的 "容器" 功能，而在大于6.3 的版本上运行** ，则不包含更改的功能可能会导致功能丢失或服务中断（如果未升级到2021的以下受支持版本之一 **）**。
+ 
+  - **对于运行版本高于6.3 的 Service Fabric 的群集**，该群集将保持不变，但对于容器群集的开放网络功能，将停止运行，这可能会导致工作负荷的服务中断。
+
+ - **对于运行版本高于6.3 的 Service Fabric 的群集，并对 [容器使用开放网络功能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** ，该群集将保持运行状态，但会停止运行，这可能会导致工作负荷的服务中断。
+  
+#### <a name="required-action"></a>所需的操作
+升级到下面列出的 Service Fabric 支持的版本，以防止与此更改相关的停机时间或功能丢失。 请确保群集至少运行这些版本，以防环境出现问题。 
+ 
+ ###### <a name="supported-service-fabric-runtime-versions"></a>支持的 Service Fabric 运行时版本
+ 如果你不在下面列出的支持 Service Fabric 版本中，请升级到这些版本中的一个，这些版本已经包含必要的更改，以防止功能丢失。  
+ 
+  | (OS) | 群集中的当前 Service Fabric 运行时 | CU/修补程序版本  | 
+  | --- | --- |--- | 
+  | Windows | 7.0. * | 7.0.478.9590 |
+  | Windows | 7.1. * | 7.1.503.9590 |
+  | Windows | 7.2. * | 7.2.445.9590 |
+  | Linux Ubuntu 16.04 | 7.0. * | 7.0.472.1  |
+  | Linux Ubuntu 16.04 | 7.1. * | 7.1.455.1  |
+  | Linux Ubuntu 18.04 | 7.1. * | 7.1.455.1804 |
+  | Linux Ubuntu 16.04 | 7.2. * | 7.2.447.1 |
+  | Linux Ubuntu 18.04 | 7.2. * | 7.2.447.1804 |
 
 ## <a name="supported-versions"></a>支持的版本
 下表列出了 Service Fabric 版本及其支持结束日期。

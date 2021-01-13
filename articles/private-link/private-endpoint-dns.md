@@ -5,14 +5,14 @@ services: private-link
 author: mblanco77
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 01/12/2021
 ms.author: allensu
-ms.openlocfilehash: 1c296b157fbac1e4c8d3fefb2b8cc09ff2ccc7a8
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 859768345c2b88e38e09d897391ac8a3501fd901
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620590"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134069"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 专用终结点 DNS 配置
 
@@ -68,7 +68,7 @@ Azure 服务将在公共 DNS 服务上创建一个规范名称 DNS 记录 (CNAME
 | Azure 备份 (Microsoft.RecoveryServices/vaults) / vault | privatelink.{region}.backup.windowsazure.com | {region}.backup.windowsazure.com |
 | Azure 事件中心 (Microsoft.EventHub/namespaces)/namespace | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure 服务总线 (Microsoft.ServiceBus/namespaces) / namespace | privatelink.servicebus.windows.net | servicebus.windows.net |
-| Azure IoT 中心 (Microsoft.Devices/IotHubs)/iotHub | privatelink.azure-devices.net | azure-devices.net |
+| Azure IoT 中心 (Microsoft.Devices/IotHubs)/iotHub | privatelink.azure-devices.net<br/>privatelink.servicebus.windows.net<sup>1</sup> | azure-devices.net<br/>servicebus.windows.net |
 | Azure 中继 (Microsoft.Relay/namespaces) / namespace | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure 事件网格 (Microsoft.EventGrid/topics) / topic | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure 事件网格 (Microsoft.EventGrid/domains) / domain | privatelink.eventgrid.azure.net | eventgrid.azure.net |
@@ -83,6 +83,7 @@ Azure 服务将在公共 DNS 服务上创建一个规范名称 DNS 记录 (CNAME
 | Azure 数据工厂 (DataFactory/工厂 ) /门户 |  privatelink.azure.com  |  azure.com  |
 | 适用于 Redis 的 Azure Cache (Redis) /redisCache | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 
+<sup>1</sup>用于 IoT 中心内置的与事件中心兼容的终结点。 若要了解详细信息，请参阅 [IoT 中心内置终结点的私有链接支持](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint)
  
 ## <a name="dns-configuration-scenarios"></a>DNS 配置方案
 

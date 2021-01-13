@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.author: jushiman
-ms.openlocfilehash: 0b7d200ef39a6b4da6af33a0a9b9314635c3db33
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 01/12/2020
+ms.author: vikancha
+ms.openlocfilehash: 67780c725466707f347e9009a77099786cc64939
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586425"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133287"
 ---
 # <a name="nvv4-series"></a>NVv4 系列 
 
@@ -26,7 +26,7 @@ NVv4 系列虚拟机由 [Amd Radeon INSTINCT MI25](https://www.amd.com/en/produc
 [高级存储缓存](premium-storage-performance.md)：支持<br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
-[VM 代系支持](generation-2.md)：第 1 代<br>
+[VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 加速网络：支持<br>
 <br>
 

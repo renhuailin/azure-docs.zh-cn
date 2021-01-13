@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: d4f5d4b7fed8f14f048794616ee272342d1e8343
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 23b7a66afcc91cf1cf4a5dd9f720aad24ad40071
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915549"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133984"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion 疑难解答
 
@@ -22,11 +22,7 @@ ms.locfileid: "97915549"
 
 **问：** 我尝试在 Azure Bastion 子网上创建 NSG 时，遇到以下错误：“网络安全组 <NSG name> 没有 Azure Bastion 子网 AzureBastionSubnet 必需的规则”。
 
-**答:** 如果要创建 NSG 并将其应用到 AzureBastionSubnet，请确保已在 NSG 中添加以下规则。 如果未添加它们，则 NSG 创建/更新操作将失败。
-
-1. 控制平面连接-从 GatewayManager 到443的入站
-2. 诊断日志记录和其他内容-在443到 AzureCloud 的出站 (尚不支持此服务标记内的区域标记。 ) 
-3. 目标 VM –3389和22到 VirtualNetwork 的出站
+**答：** 如果创建 NSG 并将其应用于 *AzureBastionSubnet*，请确保已将所需规则添加到 NSG。 有关所需规则的列表，请参阅 [使用 NSG access 和 Azure 堡垒](./bastion-nsg.md)。 如果未添加它们，则 NSG 创建/更新操作将失败。
 
 [快速启动模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)中提供了 NSG 规则的示例以供参考。
 有关详细信息，请参阅 [Azure 服务的 NSG 指南](bastion-nsg.md)。

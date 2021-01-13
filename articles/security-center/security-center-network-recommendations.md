@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 28d0d7b14c18a1d98be1872b1555930b2e1650c3
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 366a9a63e4577a9b8470faec68f8d4a25114dd48
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342444"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133695"
 ---
 # <a name="protect-your-network-resources"></a>保护你的网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
 
-有关网络建议的完整列表，请参阅[网络建议](recommendations-reference.md#recs-network)。
+有关网络建议的完整列表，请参阅[网络建议](recommendations-reference.md#recs-networking)。
 
 本文从网络安全角度介绍适用于 Azure 资源的建议。 网络建议以下一代防火墙、网络安全组、JIT VM 访问过度宽容的入站流量规则等为中心。 有关网络建议和修复操作的列表，请参阅[管理 Azure 安全中心的安全建议](security-center-recommendations.md)。
 
-安全中心的 **网络** 功能包括： 
+安全中心的网络功能包括： 
 
-- 网络映射 (需要 Azure Defender) 
+- 网络映射（需要 Azure Defender）
 - [自适应网络强化](security-center-adaptive-network-hardening.md) (需要 Azure Defender) 
 - 网络安全建议
  
 ## <a name="view-your-networking-resources-and-their-recommendations"></a>查看网络资源及其建议
 
-在 " [资产清单" 页](asset-inventory.md)上，使用 "资源类型" 筛选器选择要调查的网络资源：
+在[资产清单页面](asset-inventory.md)中，使用资源类型筛选器选择要调查的网络资源：
 
 :::image type="content" source="./media/security-center-network-recommendations/network-filters-inventory.png" alt-text="资产清单网络资源类型" lightbox="./media/security-center-network-recommendations/network-filters-inventory.png":::
 
@@ -46,11 +46,11 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 打开网络映射：
 
-1. 在安全中心的菜单中，打开 "Azure Defender" 仪表板，然后选择 " **网络映射**"。
+1. 从安全中心的菜单打开 Azure Defender 仪表板，然后选择“网络映射”。
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="资产清单网络资源类型" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="从 Azure Defender 仪表板打开网络映射" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
-1. 选择 " **层** " 菜单选择 " **拓扑**"。
+1. 选择“层”菜单，然后选择“拓扑” 。
  
 拓扑图的默认视图显示：
 

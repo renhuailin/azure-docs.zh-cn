@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 05/04/2020
-ms.openlocfilehash: 2d6d18cc73c02d3139074555fdd22a40c797ce40
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/12/2021
+ms.openlocfilehash: 429f0b2ffe486279a1c429fc7a153e6528642f54
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825150"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131655"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>规划 Azure HDInsight 的虚拟网络
 
@@ -51,7 +51,8 @@ ms.locfileid: "97825150"
 使用本部分中的步骤，了解如何将 HDInsight 添加到现有 Azure 虚拟网络。
 
 > [!NOTE]  
-> 无法将现有 HDInsight 群集添加到虚拟网络中。
+> - 无法将现有 HDInsight 群集添加到虚拟网络中。
+> - 正在创建的 VNET 和群集必须位于同一订阅中。
 
 1. 是否对虚拟网络使用经典或 Resource Manager 部署模型？
 
@@ -212,4 +213,4 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 * 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 * 有关网络安全组的详细信息，请参阅[网络安全组](../virtual-network/network-security-groups-overview.md)。
 * 有关用户定义的路由的详细信息，请参阅[用户定义的路由和 IP 转发](../virtual-network/virtual-networks-udr-overview.md)。
-* 有关控制流量（包括防火墙集成）的详细信息，请参阅 [控制网络流量](./control-network-traffic.md)。
+* 有关如何控制流量（包括防火墙集成）的详细信息，请参阅[控制网络流量](./control-network-traffic.md)。

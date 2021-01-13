@@ -6,26 +6,26 @@ ms.date: 01/10/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 299e9010b74c8363cacd1c20044d183dc1def6a6
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 50c5a8a0c1e7c5d554e19ffcbc9a78bc0a385a5c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601282"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131723"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
 
 > [!IMPORTANT]
 > 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
 
-如果已 [使用 APPLICATION INSIGHTS SDK 检测了 java web 应用][java]，则可以使用 Java 代理获得更深入的见解，无需进行任何代码更改：
+如果已[使用 Application Insights SDK 检测了 Java Web 应用][java]，则无需更改任何代码，就能使用 Java 代理来获取更深入的见解：
 
 * **依赖项：** 有关应用程序对其他组件的调用的数据，包括：
   * 捕获通过 Apache HttpClient、OkHttp 和 `java.net.HttpURLConnection` 进行的 **传出 HTTP 调用**。
-  * 捕获通过 Jedis 客户端发出的 **Redis 调用**。
+  * 捕获通过 Jedis 客户端进行的 **Redis 调用**。
   * **JDBC 查询** - 对于 MySQL 和 PostgreSQL，如果调用花费的时间长于 10 秒，代理将报告查询计划。
 
-* **应用程序日志记录：** 捕获应用程序日志，并将其与 HTTP 请求和其他遥测数据关联
+* **应用程序日志记录：** 捕获应用程序日志并将其与 HTTP 请求和其他遥测数据相关联
   * **Log4j 1.2**
   * **Log4j2**
   * **Logback**
@@ -37,7 +37,7 @@ ms.locfileid: "96601282"
 若要使用 Java 代理，请在服务器上安装该代理。 必须使用 [Application Insights Java SDK][java] 检测 Web 应用。 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>安装适用于 Java 的 Application Insights 代理
-1. 在运行 Java 服务器的计算机上[下载该代理](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)。 请确保下载与 Application Insights Java SDK 核心和 Web 程序包版本相同的 Java 代理版本。
+1. 在运行 Java 服务器的计算机上， [下载2.x 代理](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/2.6.2)。 请确保所使用的 2.x Java Agent 版本与你使用的 Application Insights Java SDK 版本相匹配。
 2. 编辑应用程序服务器启动脚本，并添加以下 JVM 参数：
    
     `-javaagent:<full path to the agent JAR file>`
@@ -89,12 +89,9 @@ ms.locfileid: "96601282"
 * 选择“设置”>“应用程序设置”
 * 在“应用设置”下添加新的键/值对：
 
-Key： `JAVA_OPTS` 值： `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+注册表项：`JAVA_OPTS` 值：`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.6.2.jar`
 
-有关 Java 代理的最新版本，请在[此处](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)查看版本。 
-
-代理必须打包为项目中的资源，以便它最终位于 D:/home/site/wwwroot/ 目录中。 可以通过转到 "**开发工具**" "  >  **高级工具**"  >  **调试控制台** 并检查站点目录的内容来确认代理是否处于正确的应用服务目录中。    
+代理必须打包为项目中的资源，以便它最终位于 D:/home/site/wwwroot/ 目录中。 可以通过转到“开发工具” > “高级工具” > “调试控制台”并查看站点目录的内容，确认你的代理处于正确的应用服务目录中。    
 
 * 保存设置并重启应用。 （这些步骤仅适用于 Windows 上运行的应用程序服务。）
 

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: cfb83c4ec9972fda3813d414583bc73edeef3229
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.date: 01/12/2021
+ms.openlocfilehash: ff83e559919a836208faae4eae4a5f992534b6cb
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285968"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134137"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Ambari 的用法
 
@@ -56,7 +56,7 @@ ps -ef | grep failover
 
 ## <a name="ambari-database"></a>Ambari 数据库
 
-HDInsight 将在 SQL 数据库中创建一个数据库，该数据库的作用是充当 Ambari 服务器的数据库。 默认的[服务层级是 S0](../azure-sql/database/elastic-pool-scale.md)。
+HDInsight 幕后会在 SQL 数据库中创建数据库，用作 Ambari 服务器的数据库。 默认的[服务层级是 S0](../azure-sql/database/elastic-pool-scale.md)。
 
 对于在创建时其工作器节点数超过 16 个的任何群集，数据库服务层级为 S2。
 
@@ -65,6 +65,15 @@ HDInsight 将在 SQL 数据库中创建一个数据库，该数据库的作用�
 切勿手动启动/停止 Ambari 服务器或 Ambari 代理服务，除非你要尝试重启这些服务来解决某个问题。 若要强制故障转移，可以重新启动活动头节点。
 
 切勿手动修改任何群集节点上的任何配置文件，应该让 Ambari UI 完成此类作业。
+
+## <a name="property-values-in-esp-clusters"></a>ESP 群集中的属性值
+
+在 HDInsight 4.0 企业安全性套餐群集中，使用管道 `|` 而不是逗号作为可变分隔符。 下面显示了一个示例：
+
+```
+Property Key: hive.security.authorization.sqlstd.confwhitelist.append
+Property Value: environment|env|dl_data_dt
+```
 
 ## <a name="next-steps"></a>后续步骤
 

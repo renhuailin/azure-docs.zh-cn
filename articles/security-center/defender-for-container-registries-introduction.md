@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ad880b7c23c687530a79ca1123474e94c923e150
-ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
+ms.openlocfilehash: 79a428c322b65bfbb982be7a7e0c8b9fab7eed18
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96310385"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132720"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 简介
 
@@ -28,7 +28,7 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 **适用于容器注册表的 Azure Defender** 包含一个漏洞扫描程序，可扫描基于 Azure 资源管理器的 Azure Container Registry 注册表中的映像，使你能够更深入地了解映像漏洞。 该集成的扫描程序由业界领先的漏洞扫描供应商 Qualys 提供支持。
 
-当 Qualys 或安全中心发现问题时，你将在安全中心仪表板中收到通知。 安全中心会针对每个漏洞提供可行的建议、严重性分类，以及有关如何修正问题的指南。 若要详细了解安全中心针对容器提供的建议，请参阅[建议的参考列表](recommendations-reference.md#recs-containers)。
+当 Qualys 或安全中心发现问题时，你将在安全中心仪表板中收到通知。 安全中心会针对每个漏洞提供可行的建议、严重性分类，以及有关如何修正问题的指南。 若要详细了解安全中心针对容器提供的建议，请参阅[建议的参考列表](recommendations-reference.md#recs-compute)。
 
 安全中心会对扫描程序的扫描结果进行筛选和分类。 当映像正常运行时，安全中心会将其标为正常。 安全中心仅为存在待解决问题的映像生成安全建议。 安全中心针对每个报告的漏洞提供相关详细信息和严重性类别。 此外，它还提供有关如何修正每个映像上发现的特定漏洞的指导内容。
 

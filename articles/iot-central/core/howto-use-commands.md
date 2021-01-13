@@ -7,12 +7,12 @@ ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: dd05a4880bdf077f63dc58575828e6180e415260
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 52872175eb799785674c331ad4d687ff8ef427a4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122046"
+ms.locfileid: "98134273"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>如何在 Azure IoT Central 解决方案中使用命令
 
@@ -219,10 +219,8 @@ const commandHandler = async (request, response) => {
 
 本部分说明设备如何处理脱机命令。 如果设备处于联机状态，则它可以在收到脱机命令后立即进行处理。 如果设备处于脱机状态，它将在下一次连接到 IoT Central 时处理脱机命令。 设备无法发送返回值以响应脱机命令。
 
-以下代码段演示了设备如何实现脱机命令：
-
 > [!NOTE]
-> 为了简单起见，本文使用 Node.js。 有关其他语言示例，请参阅 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md) 教程。
+> 为了简单起见，本文使用 Node.js。
 
 以下屏幕截图显示了名为 **GenerateDiagnostics** 的脱机命令。 Request 参数是一个对象，它具有名为 **StartTime** 的 datetime 属性和一个名为 **Bank** 的整数枚举属性：
 

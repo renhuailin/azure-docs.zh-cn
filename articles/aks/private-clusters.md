@@ -4,12 +4,12 @@ description: 了解如何创建专用 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 696ba785abb317a29de38160440dc06487ff5bca
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 87966a9bd2f83916998a724fc6c1c26a91609665
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673879"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133389"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure Kubernetes 服务群集
 
@@ -68,17 +68,21 @@ az aks create \
 
 ### <a name="configure-private-dns-zone"></a>配置专用 DNS 区域
 
-如果省略了--private----zone 参数，则默认值为 "系统"。 AKS 将在节点资源组中创建专用 DNS 区域。 传递 "none" 参数意味着 AKS 不会创建专用 DNS 区域。  这依赖于自带 DNS 服务器并配置专用 FQDN 的 DNS 解析。  如果未配置 DNS 解析，则仅可在代理节点内解析 DNS，并在部署后导致群集问题。
+可以利用以下参数配置专用 DNS 区域。
+
+1. "系统" 是默认值。 如果省略了--AKS 参数，则会在节点资源组中创建专用 DNS 区域。
+2. "无" 表示 AKS 不会创建专用 DNS 区域。  这要求你引入自己的 DNS 服务器，并为专用 FQDN 配置 DNS 解析。  如果未配置 DNS 解析，则仅可在代理节点内解析 DNS，并在部署后导致群集问题。
+3. Azure global cloud 的 "自定义专用 dns 区域名称" 格式应为： `privatelink.<region>.azmk8s.io` 。 用户分配的标识或服务主体必须至少授予 `private dns zone contributor` 自定义专用 dns 区域的角色。
 
 ## <a name="no-private-dns-zone-prerequisites"></a>无专用 DNS 区域先决条件
-无 PrivateDNSZone
-* Azure CLI 版本0.4.67 或更高版本
+
+* Azure CLI 版本0.4.71 或更高版本
 * Api 版本2020-11-01 或更高版本
 
 ## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>使用专用 DNS 区域创建专用 AKS 群集
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system|custom private dns zone]
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>连接到专用群集的选项
 

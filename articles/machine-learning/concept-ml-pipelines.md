@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 08/17/2020
+ms.date: 01/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: c29ee87ab177357f4289134bb39353c764a0d75b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ee3d7d1cf285573db894d64549cf79babb517d95
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535293"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131281"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
@@ -41,7 +41,7 @@ Azure 云提供多种其他管道，每种管道都有不同的用途。 下表�
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
 | 模型业务流程（机器学习） | 数据科学家 | Azure 机器学习管道 | Kubeflow 管道 | 数据 -> 模型 | 分布、缓存、代码优先、重用 | 
 | 数据业务流程（数据准备） | 数据工程师 | [Azure 数据工厂管道](../data-factory/concepts-pipelines-activities.md) | Apache Airflow | 数据 -> 数据 | 强类型移动，以数据为中心的活动 |
-| 代码和应用业务流程 (CI/CD) | 应用开发人员/Ops | [Azure DevOps Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | 代码 + 模型 -> 应用/服务 | 最开放和灵活的活动支持、审批队列、门控相位 | 
+| 代码和应用业务流程 (CI/CD) | 应用开发人员/Ops | [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | 代码 + 模型 -> 应用/服务 | 最开放和灵活的活动支持、审批队列、门控相位 | 
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML 管道有哪些用途？
 
@@ -107,15 +107,18 @@ experiment = Experiment(ws, 'MyExperiment')
 input_data = Dataset.File.from_files(
     DataPath(datastore, '20newsgroups/20news.pkl'))
 
-output_data = PipelineData("output_data", datastore=blob_store)
-
+dataprep_step = PythonScriptStep(
+    name="prep_data",
+    script_name="dataprep.py",
+    compute_target=cluster,
+    arguments=[input_dataset.as_named_input('raw_data').as_mount(), dataprep_output]
+    )
+output_data = OutputFileDatasetConfig()
 input_named = input_data.as_named_input('input')
 
 steps = [ PythonScriptStep(
     script_name="train.py",
     arguments=["--input", input_named.as_download(), "--output", output_data],
-    inputs=[input_data],
-    outputs=[output_data],
     compute_target=compute_target,
     source_directory="myfolder"
 ) ]
@@ -126,7 +129,9 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-代码片段以常用 Azure 机器学习对象（`Workspace`、`Datastore`、[ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py) 和 `Experiment`）开头。 然后，该代码将创建用于保存 `input_data` 和 `output_data` 的对象。 数组 `steps` 保存一个元素，即：将使用数据对象并在 `compute_target` 上运行的 `PythonScriptStep`。 然后，代码将实例化 `Pipeline` 对象本身，并将其传入工作区和步骤数组。 对 `experiment.submit(pipeline)` 的调用开始 Azure ML 管道运行。 在管道完成之前，对 `wait_for_completion()` 的调用会被阻止。 
+代码片段以常用 Azure 机器学习对象（`Workspace`、`Datastore`、[ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py) 和 `Experiment`）开头。 然后，该代码将创建用于保存 `input_data` 和 `output_data` 的对象。 `input_data`是[FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true)的实例，并且 `output_data` 是[OutputFileDatasetConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true)的实例。 `OutputFileDatasetConfig`默认行为是将输出复制到 `workspaceblobstore` 路径下的数据存储 `/dataset/{run-id}/{output-name}` 中，其中 `run-id` 是运行的 ID， `output-name` 如果开发人员未指定，则为自动生成的值。
+
+数组 `steps` 保存一个元素，即：将使用数据对象并在 `compute_target` 上运行的 `PythonScriptStep`。 然后，代码将实例化 `Pipeline` 对象本身，并将其传入工作区和步骤数组。 对 `experiment.submit(pipeline)` 的调用开始 Azure ML 管道运行。 在管道完成之前，对 `wait_for_completion()` 的调用会被阻止。 
 
 若要详细了解如何将管道连接到数据，请参阅以下文章：[Azure 机器学习中的数据访问](concept-data.md)和[将数据移入 ML 管道并在管道之间移动的步骤 (Python)](how-to-move-data-in-out-of-pipelines.md)。 
 

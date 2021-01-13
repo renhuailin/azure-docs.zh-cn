@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 47cc67b408ff7fa50a244fffa8d41e640df0ecf3
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 2b24b6480e4331f3a9470dcbb49e7ad221809187
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796425"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132076"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 
@@ -224,6 +224,9 @@ automl_config = AutoMLConfig(task='forecasting',
 |删除列 |指定要从特征化中删除的列。|
 
 若要使用 SDK 来自定义特征化，请在 `AutoMLConfig` 对象中指定 `"featurization": FeaturizationConfig`。 详细了解[自定义特征化](how-to-configure-auto-features.md#customize-featurization)。
+
+>[!NOTE]
+> 由于 SDK 版本1.19， **删除列** 功能已弃用。 在自动 ML 试验中使用数据集之前，请将列从数据集中的列中删除。 
 
 ```python
 featurization_config = FeaturizationConfig()

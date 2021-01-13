@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 94db8ce46fc240a6c48c0919b6d2c2cd148522ac
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6e3333ac780cfca02a6ce4f28d2b0e312016f713
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976044"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131502"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>上传通用化 VHD 并使用它在 Azure 中创建新 VM
 
@@ -38,13 +38,15 @@ ms.locfileid: "91976044"
 > 
 
 1. 登录到 Windows 虚拟机。
-2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 %windir%\system32\sysprep，然后运行 `sysprep.exe`。
-3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。  
-4. 在“关机选项”中选择“关机”。
-5. 选择“确定” 。
+1. 以管理员身份打开“命令提示符”窗口。 
+1. 删除 panther 目录 (C:\Windows\Panther)。
+1. 将目录切换到 %windir%\system32\sysprep，然后运行 `sysprep.exe`。
+1. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。  
+1. 在“关机选项”中选择“关机”。
+1. 选择“确定”。
    
     ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. 在 Sysprep 完成时，它会关闭虚拟机。 不要重新启动 VM。
+1. 在 Sysprep 完成时，它会关闭虚拟机。 不要重新启动 VM。
 
 
 ## <a name="upload-the-vhd"></a>上传 VHD 

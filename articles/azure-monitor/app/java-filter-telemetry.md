@@ -6,12 +6,12 @@ ms.date: 3/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 1e37b38170fb32aa4f9bdb64318ac36767c4bf78
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 71858be97404344bad88ea20e31b17fa44f669a2
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653140"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131179"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 应用中筛选遥测
 
@@ -83,7 +83,7 @@ ms.locfileid: "97653140"
 
 ```
 
-[检查整套内置处理器](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)。
+[检查整套内置处理器](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)。
 
 ## <a name="built-in-filters"></a>内置筛选器
 
@@ -191,7 +191,7 @@ ms.locfileid: "97653140"
 
 ## <a name="custom-filters"></a>自定义筛选器
 
-### <a name="1-code-your-filter"></a>1. 编码筛选器
+### <a name="1-code-your-filter"></a>1.编写筛选器代码
 
 在代码中创建实现 `TelemetryProcessor` 的类：
 
@@ -229,7 +229,7 @@ ms.locfileid: "97653140"
 
 ```
 
-### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. 在配置文件中调用筛选器
+### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2.在配置文件中调用筛选器
 
 在 ApplicationInsights.xml 中：
 
@@ -248,7 +248,7 @@ ms.locfileid: "97653140"
 
 ```
 
-### <a name="3-invoke-your-filter-java-spring"></a>3. (Java 弹簧调用筛选器) 
+### <a name="3-invoke-your-filter-java-spring"></a>3.调用筛选器 (Java Spring)
 
 对于基于 Spring 框架的应用程序，自定义遥测处理器必须在主应用程序类中注册为 bean。 然后，它们将在应用程序启动时自动连接。
 

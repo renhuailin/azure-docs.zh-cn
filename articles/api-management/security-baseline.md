@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 62b4629d258f8779dc53b4b8e00684d3b793291d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ab4ae6980af9556f973ece93634b614d01c615e9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183747"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132658"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API 管理的 Azure 安全基线
 
@@ -22,11 +22,11 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络上使用网络安全组或 Azure 防火墙来保护资源
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络中使用网络安全组或 Azure 防火墙保护资源
 
 **指南**：可以将 Azure API 管理部署到 Azure 虚拟网络 (Vnet) 内部，以便它可以访问该网络中的后端服务。 可以将开发人员门户和 API 管理网关配置为可以从 Internet（外部）访问或只能在 Vnet（内部）内访问。
 - 外部：可以通过外部负载均衡器从公共 Internet 访问 API 管理网关和开发人员门户。 网关可以访问虚拟网络中的资源。
@@ -46,7 +46,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：监视和记录 VNet、子网和 NIC 的配置与流量
 
-**指南**：可以使用网络安全组 (NSG) 控制其中部署了 API 管理的子网的入站和出站流量。 将 NSG 部署到 API 管理子网，启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+**指南**：可以使用网络安全组 (NSG) 控制其中部署了 API 管理的子网的入站和出站流量。 将 NSG 部署到 API 管理子网，启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 警告：在 API 管理子网上配置 NSG 时，需要打开一组端口。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。
 
@@ -108,7 +108,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：记录网络数据包和流日志
 
-**指南**：可以使用网络安全组 (NSG) 控制其中部署了 API 管理的子网的入站和出站流量。 将 NSG 部署到 API 管理子网，启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+**指南**：可以使用网络安全组 (NSG) 控制其中部署了 API 管理的子网的入站和出站流量。 将 NSG 部署到 API 管理子网，启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 警告：在 API 管理子网上配置 NSG 时，需要打开一组端口。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。
 
@@ -273,7 +273,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -323,7 +323,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 * [如何启用 Azure API 管理的诊断设置](./api-management-howto-use-azure-monitor.md#activity-logs)
 
-* [如何配置 Azure API 管理的警报规则](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule)
+* [如何针对 Azure API 管理配置警报规则](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule)
 
 * [如何查看 Azure API 管理实例的容量指标](./api-management-capacity.md)
 
@@ -353,7 +353,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：启用命令行审核日志记录
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -381,7 +381,7 @@ Azure Active Directory (AD) 具有必须显式分配且可查询的内置角色�
 
 * [如何使用 PowerShell 获取 Azure AD 中目录角色定义](/powershell/module/az.resources/get-azroledefinition)
 
-* [了解 Azure 安全中心提供的标识和访问管理建议](../security-center/recommendations-reference.md#recs-identity)
+* [了解 Azure 安全中心提供的标识和访问管理建议](../security-center/recommendations-reference.md#recs-identityandaccess)
 
 **Azure 安全中心监视**：是
 
@@ -584,7 +584,7 @@ Azure API 管理订阅是保护对 API 的访问的一种方法，但会附带�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 Azure API 管理实例应由虚拟网络 (VNet)/子网分隔并正确标记。
+**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 Azure API 管理实例应由虚拟网络 (VNet)/子网分隔并正确标记。
 
 * [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
@@ -630,7 +630,7 @@ Microsoft 管理 Azure API 管理的底层基础结构，并实施了严格的�
 
 **指南**：目前不可用；数据标识、分类和丢失防护功能尚不适用于 Azure API 管理。 标记可能正在处理敏感信息的 Azure API 管理服务，如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 * [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -650,7 +650,7 @@ Microsoft 管理 Azure API 管理的底层基础结构，并实施了严格的�
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Microsoft 管理 Azure API 管理的底层基础结构，并实施了严格的控制来防止客户数据丢失或泄露。
 
@@ -700,7 +700,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用的安全控制
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -708,7 +708,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用的安全控制
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署第三方自动软件修补管理解决方案
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -716,7 +716,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用的安全控制
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比较连续进行的漏洞扫描
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -784,7 +784,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4：维护已批准的 Azure 资源和软件标题的清单
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -808,7 +808,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -816,7 +816,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：删除未批准的 Azure 资源和软件应用程序
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -824,7 +824,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 ### <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -846,7 +846,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 ### <a name="610-implement-approved-application-list"></a>6.10：实施已批准的应用程序列表
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -866,7 +866,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的功能
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -898,7 +898,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的操作系统配置
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -918,7 +918,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：维护安全的操作系统配置
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -938,7 +938,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -958,7 +958,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：为操作系统部署系统配置管理工具
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -980,7 +980,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -1024,7 +1024,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 在支持 Azure 服务（例如 Azure API 管理）的底层主机上已启用 Microsoft 反恶意软件，但是，该软件不会针对客户内容运行。
 
@@ -1032,7 +1032,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 **责任**：客户
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预扫描要上传到非计算 Azure 资源的文件
 
 **指南**：不适用；此建议适用于设计用于存储数据的非计算资源。
 
@@ -1122,7 +1122,7 @@ API 管理的服务备份和还原功能为实现灾难恢复策略提供必要�
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 * [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1138,7 +1138,7 @@ API 管理的服务备份和还原功能为实现灾难恢复策略提供必要�
 
 **指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 * [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 

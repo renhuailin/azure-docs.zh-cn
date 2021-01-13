@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: d064eb0b748c361b76139b1a21d25cec8996e818
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 6db0c82c034aab97deee1be4aa8bdc54368521bc
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734770"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131519"
 ---
 # <a name="manage-variables-in-azure-automation"></a>在 Azure 自动化中管理变量
 
@@ -26,7 +26,7 @@ ms.locfileid: "97734770"
 
 Azure 自动化会持久保存变量，因此即使 Runbook 或 DSC 配置失败，变量也仍然可用。 此行为允许一个 Runbook 或 DSC 配置设置的值随后由另一个 Runbook 使用，或由同一 Runbook 或 DSC 配置在下次运行时使用。
 
-Azure 自动化会安全存储每个加密的变量。 创建变量时，可以指定将其加密，并由 Azure 自动化将其作为安全资产进行存储。 创建变量后，除非重新创建变量，否则将无法更改其加密状态。 如果你拥有存储了尚未加密的敏感数据的自动化帐户变量，需要删除这些变量并将其重新创建为加密变量。 Azure 安全中心建议对所有 Azure 自动化变量进行加密，如[自动化帐户变量应进行加密](../../security-center/recommendations-reference.md#recs-computeapp)中所述。 如果你希望从该安全建议中排除未加密的变量，请参阅[从建议和安全分数中排除资源](../../security-center/exempt-resource.md)以创建排除规则。
+Azure 自动化会安全存储每个加密的变量。 创建变量时，可以指定将其加密，并由 Azure 自动化将其作为安全资产进行存储。 创建变量后，除非重新创建变量，否则将无法更改其加密状态。 如果你拥有存储了尚未加密的敏感数据的自动化帐户变量，需要删除这些变量并将其重新创建为加密变量。 Azure 安全中心建议对所有 Azure 自动化变量进行加密，如[自动化帐户变量应进行加密](../../security-center/recommendations-reference.md#recs-compute)中所述。 如果你希望从该安全建议中排除未加密的变量，请参阅[从建议和安全分数中排除资源](../../security-center/exempt-resource.md)以创建排除规则。
 
 >[!NOTE]
 >Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥进行加密并存储在 Azure 自动化中。 Azure 自动化将密钥存储在系统管理的 Key Vault 中。 在存储安全资产之前，自动化会从 Key Vault 加载密钥，然后使用该密钥加密资产。
@@ -219,4 +219,4 @@ except AutomationAssetNotFound:
 
 * 若要了解有关用于访问变量的 cmdlet 的详细信息，请参阅[在 Azure 自动化中管理模块](modules.md)。
 * 有关 Runbook 的常规信息，请参阅[在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)。
-* 有关 DSC 配置的详细信息，请参阅 [Azure 自动化状态配置概述](../automation-dsc-overview.md)。
+* 有关 DSC 配置的详细信息，请参阅 [Azure 自动化 State Configuration 概述](../automation-dsc-overview.md)。

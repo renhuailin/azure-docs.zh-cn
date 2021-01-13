@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 180de56e3c158802460d2ff995041e8572d4dcd7
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: a0cd968c90a27d6f1ae79d08fb2bd027169233db
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97844957"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133780"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>文本分析 API v3 语言支持 
 
@@ -86,11 +86,9 @@ ms.locfileid: "97844957"
 
 #### <a name="key-phrase-extraction"></a>[关键短语提取](#tab/key-phrase-extraction)
 
-> [!NOTE]
-> 2020-07-01 以前的关键短语提取模型版本有 64 个字符的限制。 此限制在之后的模型版本中不存在。
-
 | 语言              | 语言代码 | v2 支持 | v3 支持 | 从 v3 模型版本开始提供： |       说明        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
+| 丹麦语                |     `da`      |     ✓      |      ✓     |                2019-10-01                 |                    |
 | 荷兰语                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | 英语               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | 芬兰语               |     `fi`      |     ✓      |     ✓      |                2019-10-01                 |                    |

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 08bcb74fd50be0eeb7a73c0743db2c4f3a57be32
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030843"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131332"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保护 Kubernetes 工作负载
 
@@ -27,7 +27,7 @@ ms.locfileid: "96030843"
 - 获取 K8s 群集的实时威胁检测警报 [Azure Defender For Kubernetes](defender-for-kubernetes-introduction.md)
 
 > [!TIP]
-> 有关可能会为 Kubernetes 群集和节点显示的 *所有* 安全建议的列表，请参阅 "建议参考" 表的 " [容器" 部分](recommendations-reference.md#recs-containers) 。
+> 有关可能会为 Kubernetes 群集和节点显示的 *所有* 安全建议的列表，请参阅 "建议参考" 表的 " [计算" 部分](recommendations-reference.md#recs-compute) 。
 
 
 
@@ -51,7 +51,7 @@ Azure 安全中心包含一系列建议，这些建议可在安装 **适用于 K
 
 若要配置建议，请安装  **适用于 Kubernetes 的 Azure 策略外接程序**。 
 
-- 你可以自动部署此加载项，如 [启用自动预配扩展](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)中所述。 将外接程序的自动预配设置为 "启用" 时，默认情况下，会在所有现有和未来的群集 (中启用符合外接程序安装要求) 的扩展。
+- 你可以自动部署此加载项，如 [启用自动预配扩展](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)中所述。 将加载项的自动预配设置为“启用”时，默认情况下会在所有现有和未来的群集（满足加载项安装要求）中启用该扩展。
 
 - 若要手动部署外接程序：
 
@@ -251,6 +251,6 @@ spec:
 
 有关其他相关材料，请参阅以下页面： 
 
-- [容器的安全中心建议](recommendations-reference.md#recs-containers)
+- [用于计算的安全中心建议](recommendations-reference.md#recs-compute)
 - [AKS 群集级别的警报](alerts-reference.md#alerts-akscluster)
 - [容器主机级别的警报](alerts-reference.md#alerts-containerhost)

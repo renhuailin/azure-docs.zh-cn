@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/05/2020
+ms.date: 01/12/2020
 ms.author: b-juche
-ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: c914ab007f482e4d2b560b1cb461e27d4f4442ec
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914973"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133151"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建双重协议 (NFSv3 和 SMB) 卷
 
 Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议创建卷。 本文介绍如何创建使用 NFSv3 和 SMB 的双重协议的卷，并支持 LDAP 用户映射。  
 
 
-## <a name="before-you-begin"></a>开始之前 
+## <a name="before-you-begin"></a>在开始之前 
 
 * 你必须已创建容量池。  
     请参阅 [设置容量池](azure-netapp-files-set-up-capacity-pool.md)。   
@@ -39,7 +39,6 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议
 * 在 DNS 服务器上创建反向查找区域，然后在该反向查找区域中的 AD 主机计算机 (PTR) 记录中添加一个指针。 否则，双协议卷创建将会失败。
 * 确保 NFS 客户端是最新的，并且正在运行操作系统的最新更新。
 * 确保 Active Directory (AD) LDAP 服务器已在 AD 上启动并运行。 为此，可以在 AD 计算机上安装和配置 [Active Directory 轻型目录服务 (AD LDS) ](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) 角色。
-* 确保使用 [Active Directory 证书服务 (AD CS) ](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 角色为 ad 创建证书颁发机构 (CA) ，以生成和导出自签名根 CA 证书。   
 * 双协议卷当前不支持 Azure Active Directory 域服务 (AADDS) 。  
 * 双协议卷使用的 NFS 版本为 NFSv3。 因此，请注意以下事项：
     * 双重协议不支持 `set/get` 来自 NFS 客户端的 WINDOWS acl 扩展属性。
@@ -105,9 +104,6 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议
 3. 单击“协议”  ，然后完成以下操作：  
     * 选择 " **双协议 (NFSv3 和 SMB)** 作为卷的协议类型。   
 
-    * 从下拉列表中选择 " **Active Directory** 连接"。  
-    使用的 Active Directory 必须具有服务器根 CA 证书。 
-
     * 指定卷的 **卷路径** 。   
     此卷路径是共享卷的名称。 名称必须以字母字符开头，并且在每个订阅和每个区域中必须是唯一的。  
 
@@ -122,32 +118,6 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议
     创建的卷将显示在“卷”页中。 
  
     卷从其容量池继承订阅、资源组和位置属性。 若要监视卷部署状态，可以使用“通知”选项卡。
-
-## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>上载 Active Directory 证书颁发机构公共根证书  
-
-1.  按照 [安装证书颁发机构的](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 步骤安装和配置添加证书颁发机构。 
-
-2.  遵循使用 [mmc 管理单元查看证书](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) ，使用 mmc 管理单元和证书管理器工具。  
-    使用 "证书管理器" 管理单元查找本地设备的根证书或证书证书。 你应从下列设置之一运行证书管理管理单元命令：  
-    * 已加入域并已安装根证书的基于 Windows 的客户端 
-    * 包含根证书的域中的另一台计算机  
-
-3. 导出根 CA 证书。  
-    可以从 "个人" 或 "受信任的根证书颁发机构" 目录中导出根 CA 证书，如以下示例中所示：   
-    ![显示个人证书的屏幕截图](../media/azure-netapp-files/personal-certificates.png)   
-    ![显示受信任的根证书颁发机构的屏幕截图](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
-
-    确保将证书导出为64编码的 x.509 (。CER) 格式： 
-
-    ![证书导出向导](../media/azure-netapp-files/certificate-export-wizard.png)
-
-4. 中转到双重协议卷的 NetApp 帐户，单击 **Active Directory 连接**"，然后使用" **加入 Active Directory** "窗口上传根 CA 证书：  
-
-    ![服务器根 CA 证书](../media/azure-netapp-files/server-root-ca-certificate.png)
-
-    确保证书颁发机构名称可以通过 DNS 进行解析。 此名称是证书上的 "颁发者" 或 "颁发者" 字段：  
-
-    ![证书信息](../media/azure-netapp-files/certificate-information.png)
 
 ## <a name="manage-ldap-posix-attributes"></a>管理 LDAP POSIX 属性
 

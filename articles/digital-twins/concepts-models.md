@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: dfea6d531dfb87a5344c5d8e53570b6e1ae8e598
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049314"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131383"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>了解 Azure 数字孪生中的克隆模型
 
@@ -140,7 +140,7 @@ Azure 数字孪生也不会 `writable` 对属性或关系观察属性。 尽管�
 
 在设计 Azure 数字孪生模型时，使用基于行业标准或使用标准 ontology 表示形式（如 RDF 或 OWL）的模型可提供丰富的起点。 使用行业模型还有助于标准化和信息共享。
 
-要与 Azure 数字孪生一起使用，必须使用基于 JSON LD 的 [**数字孪生定义语言 (DTDL)**](concepts-models.md)来表示模型。 因此，本文介绍了如何在 DTDL 中表示行业标准模型，将现有行业概念与 DTDL 语义相集成，使 Azure 数字孪生可以使用它们。 然后，DTDL 模型充当 Azure 数字孪生中模型的真实来源。
+要与 Azure 数字孪生一起使用，必须使用基于 JSON LD 的 [**数字孪生定义语言 (DTDL)**](concepts-models.md)来表示模型。 因此，若要使用行业标准模型，必须首先将其转换为 DTDL，以便 Azure 数字孪生可以使用它。 然后，DTDL 模型充当 Azure 数字孪生中模型的真实来源。
 
 有两个主要路径可用于将行业标准模型与 DTDL 集成，具体取决于你的情况：
 * 如果你尚未创建模型，则可以在包含特定于你的行业的语言的 **现有 STARTER DTDL 本体论** 上对其进行设计。

@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 6/15/2019
+ms.date: 01/11/2021
 ms.author: rohink
-ms.openlocfilehash: 2f7e4eadc25028db4668db8d245803c7ddba8688
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c468b1216670ce7e6b5d252a7f7fee807199d20c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968241"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131485"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
@@ -24,7 +24,7 @@ ms.locfileid: "94968241"
 
 Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上。 此系统使用任意广播网络，以便每个 DNS 查询由最近的可用 DNS 服务器来应答。 Azure DNS 为域提供更快的性能和高可用性。
 
-Azure DNS 基于 Azure 资源管理器。 Azure DNS 从资源管理器功能（如 Azure 基于角色的访问控制、审核日志和资源锁定）中受益。 可以通过 Azure 门户、Azure PowerShell cmdlet 和跨平台 Azure CLI 来管理域和记录。 需要自动 DNS 管理的应用程序可通过 REST API 和 SDK 与服务集成。
+Azure DNS 基于 Azure 资源管理器。 Azure DNS 可以利用资源管理器功能，例如 Azure 基于角色的访问控制、审核日志和资源锁定。 可以通过 Azure 门户、Azure PowerShell cmdlet 和跨平台 Azure CLI 来管理域和记录。 需要自动 DNS 管理的应用程序可通过 REST API 和 SDK 与服务集成。
 
 ### <a name="how-much-does-azure-dns-cost"></a>Azure DNS 的费用是多少？
 
@@ -117,8 +117,8 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 ### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>支持哪些资源作为别名记录集的目标？
 
 - **从 DNS A/AAAA 记录集指向公共 IP 资源**。 可以创建一个 A/AAAA 记录集，并使其成为指向公共 IP 资源的别名记录集。
-- **从 DNS A/AAAA/CNAME 记录集中指向流量管理器配置文件。** 可以从 DNS CNAME 记录集指向流量管理器配置文件的 CNAME。 例如 contoso.trafficmanager.net。 现在，还可以从 DNS 区域中的 A 或 AAAA 记录集指向包含外部终结点的流量管理器配置文件。
-- **(CDN) 终结点指向 Azure 内容分发网络**。 当你使用 Azure 存储和 Azure CDN 创建静态网站时，这非常有用。
+- **从 DNS A/AAAA/CNAME 记录集指向流量管理器配置文件**。 可以从 DNS CNAME 记录集指向流量管理器配置文件的 CNAME。 例如 contoso.trafficmanager.net。 现在，还可以从 DNS 区域中的 A 或 AAAA 记录集指向包含外部终结点的流量管理器配置文件。
+- **指向 Azure 内容分发网络 (CDN) 终结点**。 使用 Azure 存储和 Azure CDN 创建静态网站时，这非常有用。
 - **指向同一区域中的另一 DNS 记录集**。 别名记录可引用相同类型的其他记录集。 例如，可以使 DNS CNAME 记录集成为相同类型的另一 CNAME 记录集的别名。 如果希望有些记录集是别名，有些记录集不是别名，则这种安排会很有用。
 
 ### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>是否可以从 Azure 门户创建和更新别名记录？
@@ -187,13 +187,17 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 ### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Azure DNS 名称服务器是否通过 IPv6 解析？ 
 
-是的。 Azure DNS 名称服务器是双重堆栈。 双重堆栈表示它们具有 IPv4 和 IPv6 地址。 若要查找分配给 DNS 区域的 Azure DNS 名称服务器的 IPv6 地址，请使用 nslookup 等工具。 例如 `nslookup -q=aaaa <Azure DNS Nameserver>`。
+是的。 Azure DNS 名称服务器是双重堆栈。 双重堆栈表示它们具有 IPv4 和 IPv6 地址。 若要查找分配给 DNS 区域的 Azure DNS 名称服务器的 IPv6 地址，请使用 nslookup 等工具。 示例为 `nslookup -q=aaaa <Azure DNS Nameserver>`。
 
 ### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>如何在 Azure DNS 中设置 IDN？
 
 国际域名 (IDN) 使用 [punycode](https://en.wikipedia.org/wiki/Punycode) 对每个 DNS 名称进行编码。 DNS 查询就是使用这些 punycode 编码名称构建的。
 
 若要在 Azure DNS 中配置 IDN，请将区域名称或记录集名称转换为 punycode。 目前，Azure DNS 原生并不支持与 punycode 之间的相互转换。
+
+### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Azure DNS 专用区域是否存储所有客户内容？
+
+不能，Azure DNS 专用区域不存储任何客户内容。
 
 ## <a name="next-steps"></a>后续步骤
 

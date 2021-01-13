@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845471"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131436"
 ---
-# <a name="receipt-concepts"></a>回执概念
+# <a name="form-recognizer-prebuilt-receipt-model"></a>窗体识别器预生成接收模型
 
-Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接收方 API 从销售收据提取关键信息，如商家名称、交易日期、交易总计、行项等。 
+Azure 窗体识别器可以使用其预生成的接收模型分析和提取销售回执的信息。 它结合了强大的 [光学字符识别功能 (OCR) ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) 功能，并具有接收了解深度学习模型的信息，以从采用英语的收据中提取关键信息。 接收方 API 从销售收据提取关键信息，如商家名称、交易日期、交易总计、行项等。 
 
 ## <a name="understanding-receipts"></a>了解回执 
 
@@ -27,32 +27,39 @@ Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接�
 
 自动从这些收据提取数据可能会很复杂。 收据可能 crumpled、打印或手写部分，收据的智能手机图像可能质量较低。 另外，收据模板和字段在市场、区域和商家上可能会有很大的差异。 数据提取和现场检测中的这些挑战都使接收处理成为一个独特的问题。  
 
-使用光学字符识别 (OCR) 和预生成的接收模型，接收 API 可实现这些接收处理方案，并从收据中提取数据，例如商人名称、提示、总计、行项等等。 使用此 API 时，无需对模型进行定型，只需将收据发送到分析回执 API 并提取数据。
+使用光学字符识别 (OCR) 和预生成的接收模型，接收 API 可实现这些接收处理方案，并从收据中提取数据，例如商人名称、提示、总计、行项等等。 使用此 API 时，无需定型模型，只需将接收图像发送到分析回执 API 并提取数据。
 
-![收据示例](./media/contoso-receipt-small.png)
+![收据示例](./media/receipts-example.jpg)
 
-## <a name="what-does-the-receipt-api-do"></a>回执 API 有什么作用？ 
 
-预生成的回执 API 提取销售回执的内容， &mdash; 即您通常会获得餐馆、零售商或杂货店的收据类型。
+## <a name="what-does-the-receipt-service-do"></a>回执服务有什么作用？ 
+
+预生成的回执服务提取销售回执的内容， &mdash; 即您通常会获得餐馆、零售商或杂货店的收据类型。
 
 ### <a name="fields-extracted"></a>提取的字段
 
-* 商家名称 
-* 商家地址 
-* 商家电话号码 
-* 事务日期 
-* Transaction Time（事务时间） 
-* 小计 
-* 税款 
-* 总计 
-* 提示 
-* 行项提取 (例如，项数量、项价格、项名称) 
+|名称| 类型 | 说明 | 文本 | 值 (标准化输出)  |
+|:-----|:----|:----|:----| :----|
+| ReceiptType | 字符串 | 销售收据类型 | 经费 |  |
+| MerchantName | 字符串 | 发出收据的商家的名称 | Contoso |  |
+| MerchantPhoneNumber | phoneNumber | 商家列出的电话号码 | 987-654-3210 | + 19876543210 |
+| MerchantAddress | 字符串 | 商家的已列出地址 | 123主要 St Redmond WA 98052 |  |
+| TransactionDate | date | 发出回执的日期 | 6月6日，2019 | 2019-06-26  |
+| TransactionTime | time | 发出回执的时间 | 4:49 PM | 16:49:00  |
+| 总计 | 数字 | 全部交易总计（接收） | $14.34 | 14.34 |
+| 小计 | 数字 | 收据小计，通常在应用税款之前 | $12.34 | 12.34 |
+| 税款 | 数字 | 收据上的税金，通常为销售税或等效 | $2.00 | 2.00 |
+| 提示 | 数字 | 买家包含的提示 | $1.00 | 1.00 |
+| 项目 | 对象数组 | 提取的行项，其中包含名称、数量、单价和提取的总价格 | |
+| 名称 | 字符串 | 项名称 | Surface Pro 6 | |
+| 数量 | 数字 | 每个项的数量 | 1 | |
+| 价格 | 数字 | 每个物料单位的单独价格 | $999.00 | 999.00 |
+| 总价 | 数字 | 行项总价格 | $999.00 | 999.00 |
 
 ### <a name="additional-features"></a>其他功能
 
 接收 API 还会返回以下信息：
 
-* 收据类型 (如明细化、信用卡等) 
 * 字段置信度 (每个字段都返回关联的置信度值) 
 * OCR raw 文本 (用于整接收的 OCR 提取文本输出) 
 * 每个值、行和字的边界框

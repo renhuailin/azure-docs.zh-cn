@@ -10,39 +10,43 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845619"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131113"
 ---
-# <a name="business-card-concepts"></a>名片概念
+# <a name="form-recognizer-prebuilt-business-cards-model"></a>表单识别器预生成的名片模型 
 
-Azure 窗体识别器可以使用其预生成的模型之一来分析和提取名片中的联系人信息。 此名片 API 结合了强大的光学字符识别功能 (OCR) 功能与我们的业务卡理解模型结合了来自名片的信息（英语）。 它提取个人联系信息、公司名称、职务等。 预构建的名片 API 在表单识别器2.1 版预览版中公开提供。 
+Azure 窗体识别器可以使用其预建的名片模型来分析和提取名片中的联系人信息。 它结合了强大的光学字符识别功能 (OCR) 功能与我们的业务卡理解模型结合了名片中的重要信息。 它提取个人联系信息、公司名称、职务等。 预构建的名片 API 在表单识别器2.1 版预览版中公开提供。 
 
-## <a name="what-does-the-business-card-api-do"></a>名片 API 有什么作用？
+## <a name="what-does-the-business-card-service-do"></a>名片服务有什么作用？
 
-名片 API 从名片提取关键字段，并将它们以组织的 JSON 响应返回。
+预构建的名片 API 从名片提取关键字段，并将它们以组织的 JSON 响应返回。
 
-![Contoso 详细的 FOTT + JSON 输出](./media/business-card-english.jpg)
+![Contoso 详细的 FOTT + JSON 输出](./media/business-card-example.jpg)
+
+
 
 ### <a name="fields-extracted"></a>提取的字段：
 
-* 联系人姓名 
-  * 名字
-  * 姓氏
-* 公司名称 
-* Departments 
-* 职务 
-* 电子邮件 
-* 网站 
-* 地址 
-* 电话号码 
-  * 移动电话 
-  * 传真 
-  * 工作电话 
-  * 其他电话 
+|名称| 类型 | 说明 | 文本 | 
+|:-----|:----|:----|:----|
+| ContactNames | 对象数组 | 从名片提取的联系人姓名 | [{"FirstName"： "John"，"LastName"： "Doe"}] |
+| FirstName | 字符串 | 第一个 (给定) 联系人姓名 | "John" | 
+| LastName | 字符串 | 上次 (家庭) 联系人姓名 |   "Doe" | 
+| CompanyNames | 字符串数组 | 从名片提取的公司名称 | ["Contoso"] | 
+| Departments | 字符串数组 | 联系人的部门或组织 | ["R&D"] | 
+| JobTitles | 字符串数组 | 联系人职务 | ["软件工程师"] | 
+| 电子邮件 | 字符串数组 | 联系人电子邮件已从名片提取 | ["johndoe@contoso.com"] | 
+| 网站 | 字符串数组 | 从名片提取的网站 | ["https://www.contoso.com"] | 
+| 地址 | 字符串数组 | 从名片提取的地址 | ["123 主要街道，Redmond，WA 98052"] | 
+| MobilePhones | 电话号码的数组 | 从名片提取的移动电话号码 | ["+ 19876543210"] |
+| 传真 | 电话号码的数组 | 从名片提取的传真电话号码 | ["+ 19876543211"] |
+| WorkPhones | 电话号码的数组 | 从名片提取的工作电话号码 | ["+ 19876543231"] |
+| OtherPhones    | 电话号码的数组 | 从名片中提取的其他电话号码 | ["+ 19876543233"] |
+
 
 名片 API 还可以从名片返回所有已识别的文本。 此 OCR 输出包含在 JSON 响应中。  
 

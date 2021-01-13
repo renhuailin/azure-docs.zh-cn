@@ -4,12 +4,12 @@ description: 了解如何排查 Azure Monitor 的 Java agent Application Insight
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 54bf2440dff20fc757f37e3f31a53c57ebd59120
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507636"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133185"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>故障排除指南： Azure Monitor Java Application Insights
 
@@ -20,6 +20,10 @@ ms.locfileid: "97507636"
 默认情况下，Application Insights 的 Java 3.0 代理 `applicationinsights.log` 会在保存文件的同一目录中生成一个名为的日志文件 `applicationinsights-agent-3.0.0.jar` 。
 
 此日志文件是检查你可能遇到的任何问题的提示的第一个位置。
+
+## <a name="jvm-fails-to-start"></a>JVM 无法启动
+
+如果 JVM 无法启动，因为 "缺少打开 zip 文件或 JAR 清单时出错"，请尝试重新下载代理 JAR 文件，因为它可能在文件传输过程中已损坏。
 
 ## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>从 Application Insights Java 2.x SDK 升级
 

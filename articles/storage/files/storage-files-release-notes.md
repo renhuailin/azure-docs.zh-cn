@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 739e59ea8e5737abbc6f0f0799129be5f59fb9b0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 3bf3ecefb17f4c9fda6405da7fb2bdc2650f5324
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674491"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131468"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -236,14 +236,14 @@ ms.locfileid: "97674491"
 ### <a name="improvements-and-issues-that-are-fixed"></a>改进和已解决的问题
 
 - 自助式还原支持
-    - 用户现在可以使用以前的版本功能还原其文件。 在 v9 版本之前，启用云分层的卷上不支持以前的版本功能。 必须为每个卷单独启用此功能，此卷上存在启用了云分层的终结点。 若要了解详细信息，请参阅  
+    - 用户现在还可以使用以前的版本功能，从在卷上启用自助还原功能后创建的 VSS 快照还原分层文件 (以及使用以前版本功能) 。 在 v9.x 版本之前，分层文件不支持以前的版本功能。 必须为每个卷单独启用此功能，此卷上存在启用了云分层的终结点。 若要了解详细信息，请参阅  
 [通过早期版本和 VSS（卷影复制服务）进行自助式还原](./storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service)。 
  
 - 支持较大的文件共享大小 
     - Azure 文件同步目前在单个同步命名空间中最多支持 64TiB 和 1 亿个文件。  
  
 - 服务器 2019 上的重复数据删除支持 
-    - Windows Server 2019 现在支持重复数据删除并启用了云分层功能。 若要支持云分层卷上的重复数据删除，必须安装 Windows 更新 [KB4520062](https://support.microsoft.com/help/4520062)。 
+    -  (，无论是否在 Windows Server 2016 和 Windows Server 2019 上的卷) 上的一个或多个服务器终结点上启用或禁用云分层，现在都支持重复数据删除。 若要在服务器2019上支持云分层的卷上支持重复数据删除，必须安装 Windows update [KB4520062](https://support.microsoft.com/help/4520062) 。 
  
 - 改进了要进行分层的文件的最小文件大小 
     - 目前，要进行分层的文件的最小文件大小取决于文件系统群集大小（文件系统群集大小的两倍）。 例如，默认情况下，NTFS 文件系统群集大小为 4KB，生成的要进行分层的文件的最小文件大小为 8KB。 

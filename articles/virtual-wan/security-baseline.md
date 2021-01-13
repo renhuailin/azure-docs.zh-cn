@@ -1,5 +1,5 @@
 ---
-title: 适用于虚拟 WAN 的 Azure 安全基准
+title: 适用于虚拟 WAN 的 Azure 安全基线
 description: 虚拟 WAN 安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: virtual-wan
@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 994cb250aff2079e32eeef6a0d22466a284481f5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 0f124c0b4af69338ad10f7247a4260b4a348beb5
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602421"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131196"
 ---
-# <a name="azure-security-baseline-for-virtual-wan"></a>适用于虚拟 WAN 的 Azure 安全基准
+# <a name="azure-security-baseline-for-virtual-wan"></a>适用于虚拟 WAN 的 Azure 安全基线
 
-此安全基准应用 [Azure 安全基准2.0 版](../security/benchmarks/overview.md) 中的指南，以 MICROSOFT AZURE 虚拟 WAN。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容由 Azure 安全基准定义的 **安全控制** 和适用于虚拟 WAN 的相关指南进行分组。 排除了不适用于虚拟 WAN 的 **控件**。
+此安全基准应用 [Azure 安全基准2.0 版](../security/benchmarks/overview.md) 中的指南，以 MICROSOFT AZURE 虚拟 WAN。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按“安全控制”分组，这些控制由适用于虚拟 WAN 的 Azure 安全基准和相关指南定义。 排除了不适用于虚拟 WAN 的控制。
 
-若要查看虚拟 WAN 如何完全映射到 Azure 安全基准，请参阅 [完整的虚拟 wan 安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+若要查看虚拟 WAN 到 Azure 安全基准的完整映射，请参阅[完整的虚拟 WAN 安全基准映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="network-security"></a>网络安全
 
@@ -26,7 +26,7 @@ ms.locfileid: "96602421"
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1：实现内部流量的安全性
 
-**指南**： MICROSOFT AZURE 虚拟 WAN 提供自定义路由功能并为 ExpressRoute 流量提供加密。 所有路由管理功能均由虚拟中心路由器提供，该路由器还启用了虚拟网络之间的传输连接。 使用虚拟 WAN 加密 ExpressRoute 流量，可以在本地网络与 Azure 虚拟网络之间通过 ExpressRoute 进行加密传输，而无需通过公共 internet 或使用公共 IP 地址。 
+**指南**： MICROSOFT AZURE 虚拟 WAN 提供自定义路由功能并为 ExpressRoute 流量提供加密。 所有路由管理功能均由虚拟中心路由器提供，该路由器还启用了虚拟网络之间的传输连接。 使用虚拟 WAN 加密 ExpressRoute 流量，可通过 ExpressRoute 在本地网络和 Azure 虚拟网络之间提供加密的传输，而无需通过公共 Internet 或使用公共 IP 地址。 
 
 - [ExpressRoute 流量加密](virtual-wan-about.md#encryption)
 
@@ -42,7 +42,7 @@ ms.locfileid: "96602421"
 
 ### <a name="ns-2-connect-private-networks-together"></a>NS-2：将专用网络连接在一起 
 
-**指南**： Microsoft Azure ExpressRoute 提供与 AZURE 虚拟 WAN 的专用连接。 由于 ExpressRoute 连接不通过公共 internet，ExpressRoute 提供更高的可靠性、更快的速度和比典型 internet 连接更短的延迟。 你还可以使用虚拟专用网络通过站点到站点 (S2S) VPN 或点到站点 (P2S) VPN 连接到 Azure。
+**指南**： Microsoft Azure ExpressRoute 提供与 AZURE 虚拟 WAN 的专用连接。 由于 ExpressRoute 连接并不通过公共 Internet，因此与典型的 Internet 连接相比，ExpressRoute 可靠性更高、速度更快且延迟时间更短。 你还可以使用虚拟专用网络通过站点到站点 (S2S) VPN 或点到站点 (P2S) VPN 连接到 Azure。
 
 - [虚拟 WAN 中的 ExpressRoute](virtual-wan-expressroute-portal.md)
 
@@ -56,17 +56,17 @@ ms.locfileid: "96602421"
 
 ### <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4：保护应用程序和服务不受外部网络攻击
 
-**指南**：虚拟 WAN 不向外部网络公开任何终结点，这些终结点需要通过常规网络保护来保护这些终结点。 使用虚拟网络保护服务，可以在连接到虚拟) 中心 (任何虚拟网络的情况中，免费保护辐射虚拟网络中的资源。 
+**指导**：虚拟 WAN 不向外部网络公开任何终结点，因此需要通过常规网络保护来保护它们。 可以使用虚拟网络保护服务来保护辐射型虚拟网络（连接到虚拟中心的任何虚拟网络）中的资源。 
 
 使用 Azure 防火墙保护应用程序和服务免受来自 Internet 和其他外部位置的潜在恶意流量的侵害。 
 
-选择 Azure 提供的 DDoS 防护来保护你的资产免受 Azure 虚拟网络上的攻击。 使用 Azure 安全中心来检测与网络相关资源相关的错误配置风险。
+选择 Azure 提供的 DDoS 防护，保护 Azure 虚拟网络上的资产免受攻击。 使用 Azure 安全中心来检测网络相关资源的配置错误风险。
 
 - [Azure 防火墙文档](/azure/firewall)
 
 - [使用 Azure 门户管理 Azure DDoS 防护标准](/azure/virtual-network/manage-ddos-protection) 
 
-- [Azure 安全中心建议](../security-center/recommendations-reference.md#recs-network)
+- [Azure 安全中心建议](../security-center/recommendations-reference.md#recs-networking)
 
 **Azure 安全中心监视**：是
 
@@ -74,7 +74,7 @@ ms.locfileid: "96602421"
 
 ### <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5：部署入侵检测/入侵防护系统 (IDS/IPS)
 
-**指南**：虚拟 WAN 是一项 Microsoft 托管的服务。 它不提供本机入侵检测或入侵防护功能。 不过，可以通过 Azure 防火墙向虚拟 WAN 提供安全功能，以实现策略控制的统一点。 你可以创建 Azure 防火墙策略，并将策略链接到虚拟 WAN 集线器，以允许现有虚拟 WAN 中心作为受保护的虚拟中心运行，并部署所需的 Azure 防火墙资源。
+**指南**：虚拟 WAN 是一项 Microsoft 托管的服务。 它不提供本机入侵检测或入侵防护功能。 不过，我们通过 Azure 防火墙向虚拟 WAN 提供了安全功能，以实现统一的策略控制点。 可以创建 Azure 防火墙策略，并将该策略链接到虚拟 WAN 中心，以允许现有虚拟 WAN 中心充当安全虚拟中心，并部署所需的 Azure 防火墙资源。
 
 - [在虚拟 WAN 中心配置 Azure 防火墙](howto-firewall.md)
 
@@ -84,7 +84,7 @@ ms.locfileid: "96602421"
 
 ### <a name="ns-6-simplify-network-security-rules"></a>NS-6：简化网络安全规则
 
-**指南**：通过利用虚拟网络服务标记来定义网络安全组或 Azure 防火墙上的网络访问控制，简化网络安全规则。 创建安全规则时，可以使用服务标记代替特定 IP 地址。 通过在规则的“源”或“目标”字段中指定服务标记名称，可允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
+**指导**：在网络安全组或 Azure 防火墙中利用虚拟网络服务标记来定义网络访问控制，可简化网络安全规则。 创建安全规则时，可以使用服务标记代替特定 IP 地址。 通过在规则的“源”或“目标”字段中指定服务标记名称，可允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
 - [了解并使用服务标记](../virtual-network/service-tags-overview.md)
 
@@ -98,13 +98,13 @@ ms.locfileid: "96602421"
 
 ### <a name="ns-7-secure-domain-name-service-dns"></a>NS-7：安全域名服务 (DNS)
 
-**指南**：将安全 DNS 功能提供给 Azure 防火墙的虚拟 WAN。 将 Azure 防火墙配置为充当 dns 代理，该代理成为从客户端虚拟机向 DNS 服务器发出的 DNS 请求的中介。 对于自定义 DNS 服务器配置，请启用 DNS 代理以避免 DNS 解析不匹配，并启用网络规则中的完全限定的域名筛选。 
+**指导**：通过 Azure 防火墙向虚拟 WAN 提供安全 DNS 功能。 配置 Azure 防火墙，使其充当 DNS 代理，作为从客户端虚拟机到 DNS 服务器的 DNS 请求的中介。 对于自定义 DNS 服务器配置，请启用 DNS 代理以避免 DNS 解析不匹配，并在网络规则中启用完全限定的域名筛选。 
 
 - [Azure 防火墙文档](/azure/firewall/)
 
 - [Azure 防火墙 DNS 设置](/azure/firewall/dns-settings)
 
-- [使用 Azure 防火墙作为带有专用链接的 DNS 转发器](https://github.com/adstuart/azure-privatelink-dns-azurefirewall)
+- [使用 Azure 防火墙作为专用链接的 DNS 转发器](https://github.com/adstuart/azure-privatelink-dns-azurefirewall)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -116,16 +116,16 @@ ms.locfileid: "96602421"
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
-**指南**： Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理服务。 包括虚拟 WAN。 标准化 Azure AD 来管理组织的标识和访问管理：
+**指导**：Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理服务。 包括虚拟 WAN。 标准化 Azure AD 来管理组织的标识和访问管理：
 
 - Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机 (Linux 和 Windows) 、Azure Key Vault、平台即服务 (PaaS) 和软件即服务 (SaaS) 应用程序。
-- 你组织的资源，如 Azure 上的应用程序或你的公司网络资源
+- 你的组织的资源，例如 Azure 上的应用程序，或公司网络资源
 
 安全 Azure AD 在组织的云安全实践中作为高优先级。 利用安全中心的安全评分功能评估你的身份和安全状况，以衡量你的配置与 Microsoft 的最佳实践建议的匹配程度。 如有必要，请实现 Microsoft 的最佳实践建议，以提高安全状况。
 
 Azure AD 还支持外部标识，这允许没有 Microsoft 帐户的用户使用其外部标识登录到其应用程序和资源。 
 
-有关在点到站点 VPN 方案中使用 Azure AD 的信息，请参阅引用的链接。
+请参阅引用的链接，了解有关在点到站点 VPN 方案中使用 Azure AD 的信息。
 
 - [为 P2S OpenVPN 协议连接创建 Azure Active Directory (AD) 租户](openvpn-azure-ad-tenant-multi-app.md)
 
@@ -141,19 +141,19 @@ Azure AD 还支持外部标识，这允许没有 Microsoft 帐户的用户使用
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制
 
-**指南**：目前，通过与虚拟 WAN 点到站点 VPN 集成提供了 Azure Active Directory (Azure AD) 身份验证。
+**指导**：目前，通过与虚拟 WAN 点到站点 VPN 集成提供 Azure Active Directory (Azure AD) 身份验证。
 
-Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理服务。 Azure AD 支持多因素身份验证和强无密码方法的强身份验证控件。
+Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理服务。 Azure AD 支持通过多重身份验证和强无密码方法进行强身份验证控制。
 
-对于强身份验证控件，Azure AD 建议以下内容：
+Azure AD 建议通过以下方案实现强身份验证控件：
 
-- 多重身份验证-启用 Azure AD 多重身份验证，并遵循 Azure 安全中心的标识和访问管理建议，以获得最佳安全方案。 基于登录条件和风险因素，对所有用户执行多重身份验证，选择用户或按用户级别
+- 多重身份验证 - 启用 Azure AD 多重身份验证，并遵循 Azure 安全中心的“标识和访问管理”建议，以执行安全方面的最佳做法。 根据登录条件和风险因素，对所有用户、选定用户或以用户为单位强制执行多重身份验证
 
 - 无密码 authentication –三个无密码 authentication 选项可用。 其中包括 Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）
 
-确保为管理员和特权用户使用强身份验证方法的最高级别，然后向其他用户推出强身份验证策略。
+请确保对管理员和特权用户使用最高级别的强身份验证方法，然后向其他用户推出强身份验证策略。
 
-- [如何在 P2S VPN 中为虚拟广域网启用 MFA](openvpn-azure-ad-mfa.md)
+- [如何在 P2S VPN 中为虚拟 WAN 启用 MFA](openvpn-azure-ad-mfa.md)
 
 **Azure 安全中心监视**：是
 
@@ -161,11 +161,11 @@ Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理
 
 ### <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6：基于条件限制 Azure 资源访问
 
-**指南**：启用 Azure Active Directory (Azure AD VPN 用户使用 (身份验证) 点到站点 Azure AD 进行) 多重身份验证。 为每个用户配置多重身份验证，或利用条件性访问的多重身份验证。 使用条件访问可对提升第二个因素的方式进行更细粒度的控制。 它可以允许将多重身份验证仅分配给 VPN，并排除关联到 Azure AD 租户的其他应用程序。 
+**指导**：为使用 Azure AD 身份验证的 VPN 用户（点到站点）启用 Azure Active Directory (Azure AD) 多重身份验证。 为每个用户配置多重身份验证，或通过条件访问利用多重身份验证。 使用条件访问可对提升第二个因素的方式进行更细粒度的控制。 它可以允许仅将多重身份验证分配给 VPN，并排除绑定到 Azure AD 租户的其他应用程序。 
 
-请注意，Azure AD 身份验证仅适用于使用 OpenVPN 协议的网关和运行 Windows 的客户端。
+请注意，Azure AD 身份验证仅适用于使用 OpenVPN 协议的网关以及运行 Windows 的客户端。
 
-- [什么是条件访问？](../active-directory/conditional-access/overview.md)
+- [什么是条件访问](../active-directory/conditional-access/overview.md)
 
 - [为用户 VPN 配置 Azure Active Directory 身份验证](virtual-wan-point-to-site-azure-ad.md)
 
@@ -175,7 +175,7 @@ Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理
 
 ### <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7：消除意外的凭据透露
 
-**指南**：虚拟 WAN 中的站点到站点 VPN 使用预共享密钥 (PSK) ，客户在其 Azure Key Vault 中发现、创建和管理这些密钥。 实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
+**指导**：虚拟 WAN 中的站点到站点 VPN 使用提前共享的密钥 (PSK)，客户可在其 Azure Key Vault 中发现、创建和管理这类秘钥。 实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
 对于 GitHub，你可以使用原生的机密扫描功能来识别代码中的凭据或其他形式的机密。
 
@@ -193,9 +193,9 @@ Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制对关键业务型系统的管理访问权限
 
-**指南**： AZURE 虚拟 WAN 使用 azure 基于角色的访问控制 (azure RBAC) 通过限制授予了对订阅和管理组的特权访问权限的帐户，隔离对关键系统的访问。
+**指导**：Azure 虚拟 WAN 使用 Azure 基于角色的访问控制 (Azure RBAC)，限制向哪些帐户授予对其所属的订阅和管理组的特权访问权限，从而隔离对业务关键系统的访问。
 
-还将访问权限限制为对业务关键访问具有管理访问权限的管理、标识和安全系统，如 Active Directory 域控制器、安全工具以及安装在业务关键系统上的代理的系统管理工具。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
+还限制了对业务关键型资产具有管理访问权限的管理、标识和安全系统的访问，这些资产包括在业务关键型系统上安装了代理的 Active Directory 域控制器、安全工具和系统管理工具。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
 
 所有类型的访问控制都应符合企业分段策略，确保访问控制保持一致。
 
@@ -215,7 +215,7 @@ Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4：加密传输中的敏感信息
 
-**指南**：使用点到站点 Vpn、站点到站点 Vpn 和加密快速路由和虚拟 WAN 满足你的连接要求。 VPN 加密可防止数据从 "带外" 攻击传输 (例如，流量捕获) ，以确保攻击者无法读取或修改数据。 
+**指导**：将点到站点 VPN、站点到站点 VPN 和加密 Express Route 用于虚拟 WAN，以满足你的连接要求。 VPN 加密可保护传输中的数据免受“带外”攻击（例如流量捕获），确保攻击者无法读取或修改数据。 
 
 - [点到站点 VPN](virtual-wan-point-to-site-portal.md)
 
@@ -235,9 +235,9 @@ Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理
 
 **指南**：确保在 Azure 租户和订阅中向安全团队授予了安全读取者权限，以便他们可以使用 Azure 安全中心监视安全风险。 
 
-根据安全团队责任划分方式的不同，监视安全风险可能是中心安全团队或本地团队的责任。 这样，安全见解和风险必须始终集中在一个组织内进行聚合。 
+根据安全团队责任划分方式的不同，监视安全风险可能是中心安全团队或本地团队的责任。 这样，安全见解和风险必须始终在组织内集中聚合。 
 
-安全读者权限可广泛应用于整个租户 (根管理组) 或作用域限制为管理组或特定订阅。 
+安全读取者权限可以广泛应用于整个租户（根管理组），也可以限制到管理组或特定订阅。 
 
 注意：若要了解工作负载和服务，可能需要更多权限。 
 
@@ -251,7 +251,7 @@ Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理
 
 ### <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2：确保安全团队有权访问资产清单和元数据
 
-**指南**：将标记应用于 Azure 资源、资源组和订阅，以逻辑方式将它们组织到分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。 Azure 虚拟 WAN 还支持基于 Azure 资源管理器的资源部署，你可以将其导出到资产模板。 
+**指导**：将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。 Azure 虚拟 WAN 还支持基于 Azure 资源管理器的资源部署，可以通过它们导出资产模板。 
 
 - [资源命名和标记决策指南](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
 
@@ -263,7 +263,7 @@ Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理
 
 ### <a name="am-3-use-only-approved-azure-services"></a>AM-3：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure Monitor 创建在检测到未批准的服务时触发警报的规则。 虚拟 WAN 汇集了许多网络、安全性和路由功能，以提供单个操作接口。 虚拟 WAN VPN 网关、ExpressRoute 网关和 Azure 防火墙都具有通过 Azure Monitor 提供的日志记录和指标。 
+**指导**：使用 Azure Monitor 来创建规则，以便在检测到未经批准的服务时触发警报。 虚拟 WAN 整合了多种网络、安全和路由功能，提供单一操作界面。 虚拟 WAN VPN 网关、ExpressRoute 网关和 Azure 防火墙都具有通过 Azure Monitor 提供的日志记录和指标。 
  
 
 - [虚拟 WAN 日志和指标](logs-metrics.md)
@@ -288,14 +288,14 @@ Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：为 Azure 资源启用威胁检测
 
-**指南**：包含虚拟 WAN 的点到站点 VPN 与 Azure Active Directory (Azure AD) 集成。 Azure AD 提供了以下用户日志，可以在报表中查看 Azure AD 报告或与 Azure Monitor、Azure Sentinel、SIEM 或监视工具集成，以实现更复杂的威胁监视和分析用例。 它们是：
+**指导**：通过虚拟 WAN 实现的点到站点 VPN 与 Azure Active Directory (Azure AD) 集成。 Azure AD 提供以下用户日志，可在 Azure AD 报表中进行查看，也可将这些日志与 Azure Monitor、Azure Sentinel、SIEM 或监视工具集成，以用于更复杂的威胁监视和分析用例。 这些是：
 
 - 登录– "登录" 报表提供有关托管应用程序和用户登录活动的使用情况的信息。
-- 审核日志 - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源所做的更改，如添加或删除用户、应用、组、角色和策略。
-- 有风险的登录-有风险登录是指可能已由非用户帐户合法所有者执行的登录尝试。
+- 审核日志 - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中任何资源的更改，例如添加或删除用户、应用、组、角色和策略。
+- 风险登录 - 风险登录指示可能有用户帐户合法拥有者以外的人进行了登录尝试。
 - 已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-使用 Azure 安全中心来创建有关某些可疑活动的警报，如过多失败的身份验证尝试，包括订阅中不推荐使用的帐户。 除了基本的安全卫生监视之外，还可以使用安全中心的威胁防护模块，从单个 Azure 计算资源收集更详细的安全警报 (虚拟机、容器、应用服务) 、数据资源 (SQL 数据库和存储) 以及 Azure 服务层。 通过此功能，可查看各个资源内的帐户异常情况。
+使用 Azure 安全中心，可针对某些可疑活动发出警报，例如身份验证尝试失败次数过多（包括使用订阅中已弃用的帐户造成的失败）。 除了基本的安全机制监视，安全中心的威胁防护模块还可从各个 Azure 计算资源（虚拟机、容器、应用服务）、数据资源（SQL DB 和存储）和 Azure 服务层收集更深入的安全警报。 通过此功能，可查看各个资源内的帐户异常情况。
 
 - [Azure Active Directory 中的“审核活动”报表](../active-directory/reports-monitoring/concept-audit-logs.md) 
 
@@ -309,14 +309,14 @@ Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理
 
 ### <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2：启用 Azure 标识和访问管理的威胁检测
 
-**指南**：包含虚拟 WAN 的点到站点 VPN 与 Azure Active Directory (Azure AD) 集成。 Azure AD 提供了以下用户日志，可以在报表中查看 Azure AD 报告或与 Azure Monitor、Azure Sentinel、SIEM 或监视工具集成，以实现更复杂的威胁监视和分析用例。 它们是：
+**指导**：通过虚拟 WAN 实现的点到站点 VPN 与 Azure Active Directory (Azure AD) 集成。 Azure AD 提供以下用户日志，可在 Azure AD 报表中进行查看，也可将这些日志与 Azure Monitor、Azure Sentinel、SIEM 或监视工具集成，以用于更复杂的威胁监视和分析用例。 这些是：
 
 - 登录– "登录" 报表提供有关托管应用程序和用户登录活动的使用情况的信息。
-- 审核日志 - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源所做的更改，如添加或删除用户、应用、组、角色和策略。
-- 有风险的登录-有风险登录是指可能已由非用户帐户合法所有者执行的登录尝试。
+- 审核日志 - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中任何资源的更改，例如添加或删除用户、应用、组、角色和策略。
+- 风险登录 - 风险登录指示可能有用户帐户合法拥有者以外的人进行了登录尝试。
 - 已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-使用 Azure 安全中心来创建有关某些可疑活动的警报，如过多失败的身份验证尝试，包括订阅中不推荐使用的帐户。 除了基本的安全卫生监视之外，还可以使用安全中心的威胁防护模块，从单个 Azure 计算资源收集更详细的安全警报 (虚拟机、容器、应用服务) 、数据资源 (SQL 数据库和存储) 以及 Azure 服务层。 通过此功能，可查看各个资源内的帐户异常情况。
+使用 Azure 安全中心，可针对某些可疑活动发出警报，例如身份验证尝试失败次数过多（包括使用订阅中已弃用的帐户造成的失败）。 除了基本的安全机制监视，安全中心的威胁防护模块还可从各个 Azure 计算资源（虚拟机、容器、应用服务）、数据资源（SQL DB 和存储）和 Azure 服务层收集更深入的安全警报。 通过此功能，可查看各个资源内的帐户异常情况。
 
 - [Azure Active Directory 中的“审核活动”报表](../active-directory/reports-monitoring/concept-audit-logs.md) 
 
@@ -330,9 +330,9 @@ Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3：为 Azure 网络活动启用日志记录
 
-**指南**：通过 Azure Monitor 监视 AZURE 虚拟 WAN。 虚拟 WAN 汇集了许多网络、安全性和路由功能，以提供单个操作接口。 虚拟 WAN VPN 网关、ExpressRoute 网关和 Azure 防火墙都具有通过 Azure Monitor 提供的日志记录和指标。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。 可以使用 Azure 活动日志（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作。 
+**指导**：使用 Azure Monitor 监视 Azure 虚拟 WAN。 虚拟 WAN 整合了多种网络、安全和路由功能，提供单一操作界面。 虚拟 WAN VPN 网关、ExpressRoute 网关和 Azure 防火墙都具有通过 Azure Monitor 提供的日志记录和指标。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。 可以使用 Azure 活动日志（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作。
 
-各种诊断日志还可用于虚拟 WAN，并可使用 Azure 门户为虚拟 WAN 资源进行配置。  你可以选择发送到 Log Analytics、流式传输到事件中心，或者直接存档到某个存储帐户。 
+还为虚拟 WAN 提供了各种诊断日志，可使用 Azure 门户为虚拟 WAN 资源配置这些日志。  你可以选择发送到 Log Analytics、流式传输到事件中心，或者直接存档到某个存储帐户。 
  
 
 - [虚拟 WAN 日志和指标](logs-metrics.md)
@@ -345,9 +345,9 @@ Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4：为 Azure 资源启用日志记录
 
-**指南**： azure 活动日志（自动启用）包含 AZURE 虚拟 WAN 资源 (PUT、POST、DELETE) 的所有写入操作，但读取 (获取) 操作。 活动日志可用于在故障排除过程中查找错误或监视组织中的用户如何修改资源。
+**指导**：自动启用了 Azure 活动日志，其中包含针对 Azure 虚拟 WAN 资源的所有写入操作（PUT、POST、DELETE），但读取操作 (GET) 除外。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
 
-为虚拟 WAN 启用 Azure 资源日志。 可以使用 Azure 安全中心和 Azure 策略来启用资源日志和日志数据收集。 这些日志对于日后调查安全事件和执行鉴证演练可能至关重要。
+为虚拟 WAN 启用 Azure 资源日志。 可以使用 Azure 安全中心和 Azure Policy 来启用资源日志和日志数据收集。 这些日志可能对日后调查安全事件和执行取证演练至关重要。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 
@@ -361,16 +361,16 @@ Azure Active Directory (Azure AD) 是 Azure 服务的默认标识和访问管理
 
 ### <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5：集中管理和分析安全日志
 
-**指南**：使用 Azure Monitor 为虚拟 WAN 启用安全日志记录。 虚拟 WAN 汇集了许多网络、安全性和路由功能，以提供单个操作接口。 虚拟 WAN VPN 网关、ExpressRoute 网关和 Azure 防火墙都具有通过 Azure Monitor 提供的日志记录和指标。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。 可以使用 Azure 活动日志（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作。  
+**指导**：使用 Azure Monitor 为虚拟 WAN 启用安全日志记录。 虚拟 WAN 整合了多种网络、安全和路由功能，提供单一操作界面。 虚拟 WAN VPN 网关、ExpressRoute 网关和 Azure 防火墙都具有通过 Azure Monitor 提供的日志记录和指标。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。 可以使用 Azure 活动日志（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作。 
 
-各种诊断日志还可用于虚拟 WAN，并可使用 Azure 门户为虚拟 WAN 资源进行配置。 发送到 Log Analytics、流式传输到事件中心，或者只是存档到存储帐户。 此外，启用数据并将数据集成到 Azure Sentinel 或第三方安全信息和事件管理解决方案。 
+还为虚拟 WAN 提供了各种诊断日志，可使用 Azure 门户为虚拟 WAN 资源配置这些日志。 发送到 Log Analytics，流式传输到事件中心，或者直接存档到某个存储帐户。 另外，请启用 Azure Sentinel 或第三方安全信息和事件管理解决方案并将数据载入其中。 
  
 
 - [虚拟 WAN 日志和指标](logs-metrics.md)
 
 - [Azure 防火墙日志和指标](/azure/firewall/logs-and-metrics)
 
-Azure 虚拟 WAN 安全通过 Azure 防火墙提供。 
+Azure 虚拟 WAN 安全性通过 Azure 防火墙实现。 
 
 - [Azure 防火墙文档](/azure/firewall/overview)
 
@@ -380,7 +380,7 @@ Azure 虚拟 WAN 安全通过 Azure 防火墙提供。
 
 ### <a name="lt-6-configure-log-storage-retention"></a>LT-6：配置日志存储保留期
 
-**指南**：根据符合性、法规和业务要求配置日志保留。 在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 使用 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期和存档存储。
+**指导**：根据合规性、法规和业务要求配置日志保留。 在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期存储和存档存储。
 
 - [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -515,13 +515,13 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 **责任**：共享
 
-## <a name="endpoint-security"></a>终结点安全
+## <a name="endpoint-security"></a>终结点安全性
 
-*有关详细信息，请参阅 [Azure 安全基准：终结点安全性](/azure/security/benchmarks/security-controls-v2-endpoint-security)。*
+*有关详细信息，请参阅 [Azure 安全基线：终结点安全性](/azure/security/benchmarks/security-controls-v2-endpoint-security)。*
 
 ### <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1：使用终结点检测和响应 (EDR)
 
-**指南**：不明确允许客户配置终结点检测和响应设置。 但是，Azure 虚拟 WAN 产品中使用的虚拟机确实使用这些功能。 在引用的链接上了解有关这些常规功能的详细信息。 
+**指导**：并未明确允许客户配置终结点检测和响应设置。 但是，Azure 虚拟 WAN 产品中使用的虚拟机确实使用了这些功能。 可通过引用的链接详细了解这些常规功能。 
 
 - [Microsoft Defender 高级威胁防护概述](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
 

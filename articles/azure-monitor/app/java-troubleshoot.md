@@ -6,14 +6,14 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3144633f76d1c4738f2323f1e047d6f32329909f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607892"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133236"
 ---
-# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Java SDK Application Insights 疑难解答和问答
+# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>用于 Java SDK 的 Application Insights 的故障排除与问答
 
 > [!IMPORTANT]
 > 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
@@ -23,7 +23,7 @@ ms.locfileid: "97607892"
 ## <a name="build-errors"></a>生成错误
 **在 Eclipse 或 Intellij Idea 中，通过 Maven 或 Gradle 添加 Application Insights SDK 时，收到生成或校验和验证错误。**
 
-* 如果依赖项 `<version>` 元素使用包含通配符字符的模式（例如(Maven) `<version>[2.0,)</version>` 或 (Gradle) `version:'2.0.+'`），则尝试改为指定特定版本，如 `2.0.1`。 请参阅最新版本的[发行说明](https://github.com/Microsoft/ApplicationInsights-Java/releases)。
+* 如果依赖项 `<version>` 元素使用包含通配符字符的模式（例如(Maven) `<version>[2.0,)</version>` 或 (Gradle) `version:'2.+'`），则尝试改为指定特定版本，如 `2.6.2`。
 
 ## <a name="no-data"></a>无数据
 **我已成功添加 Application Insights 并运行应用，但在门户中从未看到数据。**
@@ -36,7 +36,7 @@ ms.locfileid: "97607892"
 * 在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中的根节点下添加 `<SDKLogger />` 元素，[打开记录功能](#debug-data-from-the-sdk)，并检查条目的前面是否带有 AI：INFO/WARN/ERROR 以发现任何可疑日志。 
 * 查看控制台输出消息中是否包含“已成功找到配置文件”语句，确保 Java SDK 成功加载正确的 ApplicationInsights.xml 文件。
 * 如果找不到配置文件，请检查输出消息来确定在何处搜索配置文件，并确保 ApplicationInsights.xml 位在这些搜索位置之一。 根据经验法则，可以将配置文件放置在 Application Insights SDK JAR 的附近。 例如：在 Tomcat 中，这可能是 WEB-INF/classes 文件夹。 在开发期间，可以将 ApplicationInsights.xml 放在 Web 项目的 resources 文件夹中。
-* 另请查看 [GitHub 问题页](https://github.com/Microsoft/ApplicationInsights-Java/issues)，了解 SDK 的已知问题。
+* 另请查看 [GitHub 问题页](https://github.com/microsoft/ApplicationInsights-Java/issues)，了解 SDK 的已知问题。
 * 请确保使用相同版本的 Application Insights Core、Web、代理和日志记录追加器以避免任何版本冲突问题。
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>我以前看到了数据，但现在看不到
@@ -194,7 +194,7 @@ Application Insights 使用 `org.apache.http`。 这将在命名空间 `com.micr
 
 ## <a name="get-help"></a>获取帮助
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-* [在 GitHub 上提出问题](https://github.com/Microsoft/ApplicationInsights-Java/issues)
+* [在 GitHub 上提出问题](https://github.com/microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 

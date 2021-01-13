@@ -6,18 +6,18 @@ ms.date: 11/22/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6bdad71f0b36995abdeb3b1edb87cbef32df8b67
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 115e1ec347cdcd80904b47a0c8798206360d0dad
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919421"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131774"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入门：Java Web 项目中的 Application Insights 入门
 
 
 > [!CAUTION]
-> 从2020年11月起，对于监视 Java 应用程序，我们建议使用 Azure Monitor Application Insights Java 3.0 代理进行自动检测。 有关如何入门的详细信息，请参阅 [Application Insights Java 3.0 agent](./java-in-process-agent.md)。
+> 从2020年11月起，对于监视 Java 应用程序，我们建议使用 Azure Monitor Application Insights Java 3.0 代理进行自动检测。 有关如何入门的详细信息，请参阅 [Application Insights Java 3.0 代理](./java-in-process-agent.md)。
 
 在本快速入门中，你将使用 Application Insights SDK 检测请求、跟踪依赖项、收集性能计数器、诊断性能问题和异常，并编写代码以跟踪用户对应用执行的操作。
 
@@ -56,7 +56,7 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
         <artifactId>applicationinsights-web-auto</artifactId>
         <!-- or applicationinsights-web for manual web filter registration -->
         <!-- or applicationinsights-core for bare API -->
-        <version>2.5.0</version>
+        <version>2.6.2</version>
       </dependency>
     </dependencies>
 ```
@@ -69,15 +69,11 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
 
 ```gradle
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.5.0'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.6.2'
       // or applicationinsights-web for manual web filter registration
       // or applicationinsights-core for bare API
     }
 ```
-
-# <a name="other-types"></a>[其他类型](#tab/other)
-
-请下载[最新版本](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)，将所需文件复制到项目中，替换以前的版本。
 
 ---
 
@@ -88,10 +84,7 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
   * 例如，如果应用程序不是基于 servlet 的应用程序，则 `applicationinsights-core` 仅提供单纯的 API。
   
 * 应怎样将 SDK 更新到最新版本？
-  * 如果使用的是 Gradle 或 Maven...
-    * 更新生成文件以指定最新版本。
-  * 如果是手动管理依赖项...
-    * 下载最新的 [用于 Java 的 Application Insights SDK](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) 并替换旧版本。 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）中描述了更改。
+  * 从2020年11月起，对于监视 Java 应用程序，我们建议使用 Azure Monitor Application Insights Java 3.0 代理进行自动检测。 有关如何入门的详细信息，请参阅 [Application Insights Java 3.0 代理](./java-in-process-agent.md)。
 
 ## <a name="add-an-applicationinsightsxml-file"></a>添加 ApplicationInsights.xml 文件
 在项目的 resources 文件夹中添加 ApplicationInsights.xml，或确保将其添加到项目的部署类路径。 将以下 XML 复制到其中。
@@ -168,10 +161,6 @@ Application Insights SDK 按以下顺序查找密钥：
 单击任一图表可查看详细聚合指标。
 
 ![带有图表的“Application Insights 故障”窗格](./media/java-get-started/006-barcharts.png)
-
-<!--
-[TODO update image with 2.5.0 operation naming provided by agent]
--->
 
 ### <a name="instance-data"></a>实例数据
 单击特定的请求类型可查看各个实例。
