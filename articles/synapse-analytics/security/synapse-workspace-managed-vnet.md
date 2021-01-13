@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: b605c2c9f3c7468d0fe1f2cccd8c3602c556714b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 949b7e55569cc6fceacc37677ed06a28bb85d7c2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501067"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116358"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure Synapse Analytics 托管虚拟网络
 
@@ -41,7 +41,7 @@ ms.locfileid: "96501067"
 
 ## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-virtual-network"></a>创建包含托管工作区虚拟网络的 Azure Synapse 工作区
 
-如果尚未注册网络资源提供程序，请注册它。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 [注册](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)时，从资源提供程序列表中选择“Microsoft.Network”。
+如果尚未注册网络资源提供程序，请注册它。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 [注册](../../azure-resource-manager/management/resource-providers-and-types.md)时，从资源提供程序列表中选择“Microsoft.Network”。
 
 若要创建具有关联的托管工作区虚拟网络的 Azure Synapse 工作区，请在 Azure 门户中选择“网络”选项卡，然后选中“启用托管虚拟网络”复选框 。
 

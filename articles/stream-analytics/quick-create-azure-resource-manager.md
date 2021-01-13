@@ -3,19 +3,18 @@ title: 快速入门 - 通过 Azure 资源管理器模板创建 Azure 流分析�
 description: 本快速入门介绍如何使用 Azure 资源管理器模板创建 Azure 流分析作业。
 services: stream-analytics
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: jasonh
+author: sidramadoss
+ms.author: sidram
 ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
-ms.openlocfilehash: 26ae0f5add40125b5e9c1ce9451583040322314b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2e8e7890adcb6b91d79bbf4e119488e365410d3c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88641885"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020071"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 流分析作业
 
@@ -25,7 +24,7 @@ ms.locfileid: "88641885"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-streamanalytics-create%2Fazuredeploy.json)
+[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-streamanalytics-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,7 +46,7 @@ ms.locfileid: "88641885"
 
 1. 选择下图登录到 Azure 并打开一个模板。 该模板会创建 Azure 流分析作业。
 
-   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-streamanalytics-create%2Fazuredeploy.json)
+   [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-streamanalytics-create%2Fazuredeploy.json)
 
 2. 提供所需的值以创建 Azure 流分析作业。
 
@@ -55,7 +54,7 @@ ms.locfileid: "88641885"
 
    提供以下值：
 
-   |属性  |说明  |
+   |properties  |说明  |
    |---------|---------|
    |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
    |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/management/overview.md)。 |

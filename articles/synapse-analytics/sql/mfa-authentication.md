@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: fb8aad52eeaef2366afe28aa71059b7f8f780501
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 511d5841652b1f7b6487a42341ec392cb86d2b3a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843292"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120370"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>将多重 AAD 身份验证与 Synapse SQL（针对 MFA 的 SSMS 支持）配合使用
 
@@ -71,7 +71,7 @@ Azure AD MFA 可保护对数据和应用程序的访问，同时满足用户对�
    ![mfa-tenant-ssms](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD 企业到企业支持   
-可以作为来宾用户用于 Azure AD B2B 方案的 Azure AD 用户（请参阅[什么是 Azure B2B 协作](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)）只能作为符合以下条件的组的成员连接到 Synapse SQL：在当前 Azure AD 中创建，并使用 Transact-SQL `CREATE USER` 语句在给定数据库中手动进行映射。 
+可以作为来宾用户用于 Azure AD B2B 方案的 Azure AD 用户（请参阅[什么是 Azure B2B 协作](../../active-directory/external-identities/what-is-b2b.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)）只能作为符合以下条件的组的成员连接到 Synapse SQL：在当前 Azure AD 中创建，并使用 Transact-SQL `CREATE USER` 语句在给定数据库中手动进行映射。 
 
 例如，如果 `steve@gmail.com` 受邀加入 Azure AD `contosotest`（具有 Azure Ad 域 `contosotest.onmicrosoft.com`），则必须在 Azure AD 中创建包含 `steve@gmail.com` 成员的 Azure AD 组（如 `usergroup`）。 然后，必须由 Azure AD SQL 管理员或 Azure AD DBO 执行 Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` 语句，为特定数据库（即 MyDatabase）创建此组。 
 
@@ -92,5 +92,4 @@ Azure AD MFA 可保护对数据和应用程序的访问，同时满足用户对�
 - 通用身份验证的 Active Directory 身份验证库 (ADAL) 版本已更新到最新的 ADAL.dll 3.13.9 可用发行版。 请参阅 [Active Directory 身份验证库 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)。  
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅[通过 SQL Server Management Studio 连接到 Synapse SQL](get-started-ssms.md) 一文。 
-
+有关详细信息，请参阅[通过 SQL Server Management Studio 连接到 Synapse SQL](get-started-ssms.md) 一文。

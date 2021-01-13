@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 37033e3c5f388d1a55a122899114914e661565f6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f3eaa6383b174e06ff6ce9b1b08c4eba9108d770
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460224"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115508"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-t-sql"></a>快速入门：使用 T-SQL 在 Azure Synapse Analytics 中缩放专用 SQL 池（以前称为 SQL DW）中的计算
 
@@ -153,4 +153,4 @@ AND
 你现在已了解了如何缩放专用 SQL 池（之前称为 SQL DW）中的计算。 若要详细了解 Azure Synapse Analytics，请继续阅读有关加载数据的教程。
 
 > [!div class="nextstepaction"]
->[将数据加载到专用 SQL 池中](load-data-from-azure-blob-storage-using-polybase.md)
+>[将数据加载到专用 SQL 池中](./load-data-from-azure-blob-storage-using-copy.md)

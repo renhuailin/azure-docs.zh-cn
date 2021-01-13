@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 78a0982081b8e34461fb2910cc7ce21be622cb6a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 4da99200079557ab9d1674635c0df26c9e62d488
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922787"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120268"
 ---
 # <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Synapse Analytics 中创建和查询专用 SQL 池（之前称为 SQL DW）
 
@@ -118,7 +118,7 @@ Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻�
 
 请在 Azure 门户中获取服务器的完全限定的服务器名称。 稍后，在连接到服务器时，将使用该完全限定的名称。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 在左侧菜单中选择“Azure Synapse Analytics”，然后在“Azure Synapse Analytics”页上选择你的 SQL 池。 
 
@@ -153,11 +153,11 @@ Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻�
 
 ## <a name="run-some-queries"></a>运行一些查询
 
-不建议在以服务器管理员身份登录时运行大型查询，因为它使用[有限的资源类](resource-classes-for-workload-management.md)。 改为按[教程中所示](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data)配置[工作负荷隔离](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql)。
+不建议在以服务器管理员身份登录时运行大型查询，因为它使用[有限的资源类](resource-classes-for-workload-management.md)。 改为按[教程中所示](./load-data-wideworldimportersdw.md#create-a-user-for-loading-data)配置[工作负荷隔离](./quickstart-configure-workload-isolation-tsql.md)。
 
 Azure Synapse Analytics 使用 T-SQL 作为查询语言。 打开一个查询窗口并运行一些 T-SQL 查询，请使用以下步骤：
 
-1. 右键单击“mySampleDataWarehouse”并选择“新建查询”。  “新建查询”窗口随即打开。
+1. 右键单击“mySampleDataWarehouse”并选择“新建查询”。  此时将打开一个新的查询窗口。
 
 2. 在查询窗口中，输入以下命令以查看数据库列表。
 

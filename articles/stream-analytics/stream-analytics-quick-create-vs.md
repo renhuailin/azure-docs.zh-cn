@@ -1,17 +1,17 @@
 ---
 title: 快速入门 - 使用 Visual Studio 创建 Azure 流分析作业
 description: 本快速入门展示了如何开始使用 Visual Studio 创建流分析作业、配置输入和输出，以及定义查询。
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 034f1497cb6262ca86cd440b914f3ae67356eef9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7a02d0914ae111d6e2e00493fe27613e27d836b1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124605"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012353"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>快速入门：使用 Visual Studio 创建 Azure 流分析作业
 
@@ -77,7 +77,7 @@ ms.locfileid: "93124605"
 
    ![存储帐户概述](./media/stream-analytics-quick-create-portal/blob-storage.png)
 
-4. 从“Blob 服务”页面中，选择“容器”，为你的容器提供一个名称，例如 *container1* 。 将“公共访问级别”保留为“专用(非匿名访问)”，然后选择“确定”。  
+4. 从“Blob 服务”页面中，选择“容器”，为你的容器提供一个名称，例如 *container1*。 将“公共访问级别”保留为“专用(非匿名访问)”，然后选择“确定”。  
 
    ![创建 blob 容器](./media/stream-analytics-quick-create-portal/create-blob-container.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "93124605"
 
 3. 在左侧的模板列表中，选择“流分析”，然后选择“Azure 流分析应用程序” 。  
 
-4. 输入项目的 **名称** 、 **位置** 和 **解决方案名称** ，然后选择“确定”。
+4. 输入项目的 **名称**、**位置** 和 **解决方案名称**，然后选择“确定”。
 
    ![创建流分析项目](./media/stream-analytics-quick-create-vs/create-stream-analytics-project.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "93124605"
 
 ## <a name="define-the-transformation-query"></a>定义转换查询
 
-1. 从 Visual Studio 中的“解决方案资源管理器”打开 **Script.asaql** 。
+1. 从 Visual Studio 中的“解决方案资源管理器”打开 **Script.asaql**。
 
 2. 添加以下查询：
 
@@ -160,7 +160,7 @@ ms.locfileid: "93124605"
 
 1. 在“查询编辑器”中，选择脚本编辑器中的“提交到 Azure” 。
 
-2. 选择“创建新的 Azure 流分析作业”并输入 **作业名称** 。 选择你在本快速入门开头使用的 **订阅** 、 **资源组** 和 **位置** 。
+2. 选择“创建新的 Azure 流分析作业”并输入 **作业名称**。 选择你在本快速入门开头使用的 **订阅**、**资源组** 和 **位置**。
 
    ![将作业提交到 Azure](./media/stream-analytics-quick-create-vs/stream-analytics-job-to-azure.png)
 
@@ -188,7 +188,7 @@ ms.locfileid: "93124605"
 
    ![运行流分析作业](./media/stream-analytics-quick-create-vs/stream-analytics-job-running.png)
 
-4. 若要查看结果，请在“视图”菜单上选择“Cloud Explorer”，然后导航到你的资源组中的存储帐户。 在“Blob 容器”下，双击 **container1** ，然后双击 **输出** 文件路径。
+4. 若要查看结果，请在“视图”菜单上选择“Cloud Explorer”，然后导航到你的资源组中的存储帐户。 在“Blob 容器”下，双击 **container1**，然后双击 **输出** 文件路径。
 
    ![查看结果](./media/stream-analytics-quick-create-vs/stream-analytics-vs-results.png)
 

@@ -2,17 +2,17 @@
 title: 快速入门 - 在 Visual Studio Code 中创建 Azure 流分析作业
 description: 本快速入门介绍如何开始使用 Visual Studio Code 创建流分析作业、配置输入和输出，以及定义查询。
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: su-jie
+ms.author: sujie
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: f53ff85dd118774b86a0ec25c89f912798a6418d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 104dfe7b2ce253d7ae42c7484532cfd5b2993aec
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125846"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014605"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>快速入门：在 Visual Studio Code 中创建 Azure 流分析作业（预览）
 
@@ -25,7 +25,7 @@ ms.locfileid: "93125846"
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-* 登录 [Azure 门户](https://portal.azure.com/)。
+* 登录到 [Azure 门户](https://portal.azure.com/)。
 
 * 安装 [Visual Studio Code](https://code.visualstudio.com/)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "93125846"
 
 在定义流分析作业之前，应该对稍后会配置为作业输入的数据进行准备。 若要对作业所需的输入数据进行准备，请完成以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 选择“创建资源” > “物联网” > “IoT 中心”。
 
@@ -108,7 +108,7 @@ ms.locfileid: "93125846"
 
    ![存储帐户概述](./media/quick-create-visual-studio-code/blob-storage.png)
 
-4. 从“Blob 服务”页面中，选择“容器”，为你的容器提供一个名称，例如 **container1** 。 将“公共访问级别”保留为“专用(非匿名访问)”，然后选择“确定”  。
+4. 从“Blob 服务”页面中，选择“容器”，为你的容器提供一个名称，例如 **container1**。 将“公共访问级别”保留为“专用(非匿名访问)”，然后选择“确定”  。
 
    ![创建 Blob 容器](./media/quick-create-visual-studio-code/create-blob-container.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "93125846"
 
 ## <a name="define-the-transformation-query"></a>定义转换查询
 
-1. 打开项目文件夹中的 **myASAproj.asaql** 。
+1. 打开项目文件夹中的 **myASAproj.asaql**。
 
 2. 添加以下查询：
 
@@ -150,7 +150,7 @@ ms.locfileid: "93125846"
 
     ![从“输入”文件夹添加输入](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
-    或选择 Ctrl+Shift+P 打开命令面板，然后输入“ASA: **Add Input** 。
+    或选择 Ctrl+Shift+P 打开命令面板，然后输入“ASA: **Add Input**。
 
    ![在 Visual Studio Code 中添加流分析输入](./media/quick-create-visual-studio-code/add-input.png)
 
@@ -188,7 +188,7 @@ ms.locfileid: "93125846"
 
 ## <a name="define-an-output"></a>定义输出
 
-1. 按 **Ctrl+Shift+P** 打开命令面板。 然后输入 **ASA:Add Output** 。
+1. 按 **Ctrl+Shift+P** 打开命令面板。 然后输入 **ASA:Add Output**。
 
    ![在 Visual Studio Code 中添加流分析输出](./media/quick-create-visual-studio-code/add-output.png)
 
@@ -196,7 +196,7 @@ ms.locfileid: "93125846"
 
 3. 选择使用此输入的流分析查询脚本。
 
-4. 输入输出文件名为 **BlobStorage** 。
+4. 输入输出文件名为 **BlobStorage**。
 
 5. 使用以下值编辑 BlobStorage。 对于下面未提到的字段，请保留默认值。 使用 CodeLens 功能可帮助你从下拉列表中选择或输入字符串。
 
@@ -219,7 +219,7 @@ ms.locfileid: "93125846"
 
    ![使用 Visual Studio Code 命令面板编译脚本](./media/quick-create-visual-studio-code/compile-script1.png)
 
-- 右键单击脚本，然后选择“ASA: **Compile Script** 。
+- 右键单击脚本，然后选择“ASA:**Compile Script**。
 
     ![右键单击要编译的流分析脚本](./media/quick-create-visual-studio-code/compile-script2.png)
 

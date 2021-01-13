@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74a6c816979732e21813a0f2024167c68ca1c5dc
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: d8e1af1848405441088796d2e3b42e7b52eedba8
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874094"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065110"
 ---
 # <a name="what-is-azure-ad-connect"></a>什么是 Azure AD Connect？
 
@@ -26,7 +26,7 @@ Azure AD Connect 专用于满足和完成混合标识目标的 Microsoft 工具�
 - [直通身份验证](how-to-connect-pta.md) - 另一种登录方法，它允许用户在本地和云中使用相同的密码，但不要求额外提供联合环境的基础结构。
 - [联合身份验证集成](how-to-connect-fed-whatis.md) - 联合身份验证是 Azure AD Connect 的可选部件，可用于使用本地 AD FS 基础结构配置混合环境。 它还提供了 AD FS 管理功能，例如证书续订和其他 AD FS 服务器部署。
 - [同步](how-to-connect-sync-whatis.md) - 负责创建用户、组和其他对象。  另外，它还负责确保本地用户和组的标识信息与云匹配。  此同步还包括密码哈希。
-- [运行状况监视]() - Azure AD Connect Health 提供可靠监视，并在 Azure 门户中提供一个中心位置，用于查看此活动。 
+- [运行状况监视](whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) - Azure AD Connect Health 提供可靠监视，并在 Azure 门户中提供一个中心位置，用于查看此活动。 
 
 
 ![什么是 Azure AD Connect](./media/whatis-hybrid-identity/arch.png)

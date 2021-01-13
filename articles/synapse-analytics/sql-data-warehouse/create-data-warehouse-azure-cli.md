@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 11/20/2020
 ms.author: Kevin
 ms.custom: azure-synapse
-ms.openlocfilehash: 59195bba69bb343e55cfcb7342400d93dcce60c0
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 2920c96d6a2e505347edb51780101327cb884e08
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94932951"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120166"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-with-azure-cli"></a>快速入门：使用 Azure CLI 创建 Synapse SQL 池
 
@@ -134,4 +134,4 @@ az group delete --ResourceGroupName MyResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-现已创建 SQL 池，创建防火墙规则并连接到 SQL 池。 若要了解详细信息，请继续阅读[将数据加载到 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)一文。
+现已创建 SQL 池，创建防火墙规则并连接到 SQL 池。 若要了解详细信息，请继续阅读[将数据加载到 SQL 池](./load-data-from-azure-blob-storage-using-copy.md)一文。

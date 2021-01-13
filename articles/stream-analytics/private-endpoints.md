@@ -3,17 +3,16 @@ title: 在 Azure 流分析群集中创建和删除专用终结点
 description: 了解如何在 Azure 流分析群集中管理专用终结点。
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 36d26195e78c74ed7b976cfdd48e1e965bca872b
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: cff02bb4b7d0f7e969589a9977a89f89e2674ffc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95249778"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019408"
 ---
 # <a name="create-and-delete-private-endpoints-in-an-azure-stream-analytics-cluster"></a>在 Azure 流分析群集中创建和删除专用终结点
 
@@ -31,7 +30,7 @@ ms.locfileid: "95249778"
 
 1. 选择“添加专用终结点”并输入以下信息，以选择要通过专用终结点安全访问的资源。
 
-   |设置|值|
+   |设置|Value|
    |---|---|
    |名称|为专用终结点输入任意名称。 如果此名称已被使用，请创建唯一的名称。|
    |连接方法|选择“连接到我的目录中的 Azure 资源”。<br><br>你可以选择自己的一个资源来使用专用终结点安全连接，或者你可以使用其他人共享给你的资源 ID 或别名连接到他的资源。|

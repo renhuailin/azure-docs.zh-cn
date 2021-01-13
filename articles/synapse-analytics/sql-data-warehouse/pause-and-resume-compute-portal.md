@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 567d5ae8b9d480003486362a7aa0ef69f9740d52
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109642"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120285"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>快速入门：通过 Azure 门户暂停和恢复专用 SQL 池中的计算
 
@@ -98,5 +98,4 @@ ms.locfileid: "97109642"
 
 ## <a name="next-steps"></a>后续步骤
 
-现已暂停并恢复了专用 SQL 池的计算。 请继续阅读下一篇文章，详细了解如何[将数据加载到专用 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)。 有关管理计算功能的其他信息，请参阅[管理计算概述](sql-data-warehouse-manage-compute-overview.md)一文。 
-
+现已暂停并恢复了专用 SQL 池的计算。 请继续阅读下一篇文章，详细了解如何[将数据加载到专用 SQL 池](./load-data-from-azure-blob-storage-using-copy.md)。 有关管理计算功能的其他信息，请参阅[管理计算概述](sql-data-warehouse-manage-compute-overview.md)一文。

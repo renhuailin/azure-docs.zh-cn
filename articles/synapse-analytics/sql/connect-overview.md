@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ff2d9708642c347a829de290d45849d8629807f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f0c762d0f12f11cb4eef23b55fccb5b7c2a274d3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462359"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118211"
 ---
 # <a name="connect-to-synapse-sql"></a>连接到 Synapse SQL
 连接到 Azure Synapse Analytics 中的 Synapse SQL 功能。
@@ -51,7 +51,7 @@ ms.locfileid: "96462359"
 ![完整服务器名称 - 无服务器 SQL 池](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>支持的驱动程序和连接字符串
-Synapse SQL 支持 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 和 [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)。 选择前述的驱动程序之一，查找最新版本和文档。 若要自动生成通过 Azure 门户使用的驱动程序的连接字符串，请选择前述示例中的“显示数据库连接字符串”。 下面也是一些示例，说明了每个驱动程序的连接字符串的样式。
+Synapse SQL 支持 [ADO.NET](/dotnet/framework/data/adonet/)、[ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows)、[PHP](/sql/connect/php/overview-of-the-php-sql-driver?f=255&MSPPError=-2147217396) 和 [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server)。 选择前述的驱动程序之一，查找最新版本和文档。 若要自动生成通过 Azure 门户使用的驱动程序的连接字符串，请选择前述示例中的“显示数据库连接字符串”。 下面也是一些示例，说明了每个驱动程序的连接字符串的样式。
 
 > [!NOTE]
 > 请考虑将连接超时值设置为 300 秒，以便连接可以经受住短时间内不可用。

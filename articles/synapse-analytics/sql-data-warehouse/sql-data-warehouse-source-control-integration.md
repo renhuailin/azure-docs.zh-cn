@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 862fa839c56746042c072ae3100832fb2b78451a
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 56b417c65eae0df9b073cf72fe87ce0002fc2ba0
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296834"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115831"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的源代码管理集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "96296834"
 
    ![克隆存储库](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "克隆存储库")
 
-有关使用 Visual Studio 连接项目的详细信息，请参阅[在团队资源管理器中连接到项目](https://docs.microsoft.com/visualstudio/ide/connect-team-project?view=vs-2019)。 有关使用 Visual Studio 克隆存储库的指南，请查看[克隆现有 Git 存储库](https://docs.microsoft.com/azure/devops/repos/git/clone?view=azure-devops&tabs=visual-studio)一文。 
+有关使用 Visual Studio 连接项目的详细信息，请参阅[在团队资源管理器中连接到项目](/visualstudio/ide/connect-team-project?view=vs-2019)。 有关使用 Visual Studio 克隆存储库的指南，请查看[克隆现有 Git 存储库](/azure/devops/repos/git/clone?tabs=visual-studio&view=azure-devops)一文。 
 
 ## <a name="create-and-connect-your-project"></a>创建并连接项目
 

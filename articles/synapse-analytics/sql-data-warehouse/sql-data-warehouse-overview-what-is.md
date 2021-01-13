@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f9ab6dacde0259905368d8a0cb788dde77bbfb2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b8738b46359287ce1d4e410292cdce213ab80999
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453615"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115814"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>什么是 Azure Synapse Analytics 中的专用 SQL 池（之前称为 SQL DW）？
 
@@ -51,7 +51,7 @@ Azure Synapse Analytics 是一种分析服务，它将企业数据仓库和大�
 
 - 浏览 [Azure Synapse 体系结构](massively-parallel-processing-mpp-architecture.md)
 - 快速[创建专用 SQL 池](create-data-warehouse-portal.md)
-- [加载示例数据](load-data-from-azure-blob-storage-using-polybase.md)
+- [加载示例数据](./load-data-from-azure-blob-storage-using-copy.md)
 - 浏览[视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 或者，查看以下一些其他 Azure Synapse 资源。
@@ -59,5 +59,5 @@ Azure Synapse Analytics 是一种分析服务，它将企业数据仓库和大�
 - 搜索[博客](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - 提交[功能请求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)
-- 搜索 [Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+- 搜索 [Microsoft Q&A 问题页面](/answers/topics/azure-synapse-analytics.html)
 - 搜索 [Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)

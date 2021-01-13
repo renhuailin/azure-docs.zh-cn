@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12ff369cb931eb36014b7c9598b036afdc158750
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4c3b5095da4e55dc8f881a610f80f1150422e739
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457185"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119911"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>无服务器 SQL 池自助服务
 
@@ -25,7 +25,7 @@ ms.locfileid: "96457185"
 如果 Synapse Studio 无法建立到无服务器 SQL 池的连接，你会看到无服务器 SQL 池是灰显的，或者显示“脱机”状态。 通常，当发生下列情况之一时，会出现此问题：
 
 1) 你的网络阻止了与 Azure Synapse 后端的通信。 最常见的情况是端口 1443 被阻止。 若要使无服务器 SQL 池正常工作，请取消阻止此端口。 其他问题可能也会阻止无服务器 SQL 池运行，[请访问完整的故障排除指南了解详细信息](../troubleshoot/troubleshoot-synapse-studio.md)。
-2) 你无权登录到无服务器 SQL 池。 若要获取访问权限，可以要求某位 Azure Synapse 工作区管理员将你添加到工作区管理员或 SQL 管理员角色。 [有关详细信息，请参阅关于访问控制的完整指南](access-control.md)。
+2) 你无权登录到无服务器 SQL 池。 若要获取访问权限，可以要求某位 Azure Synapse 工作区管理员将你添加到工作区管理员或 SQL 管理员角色。 [有关详细信息，请参阅关于访问控制的完整指南](../security/synapse-workspace-access-control-overview.md)。
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>查询失败，因为无法打开文件
 

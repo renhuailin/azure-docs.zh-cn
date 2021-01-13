@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: e693bd15e5255fda135a7a1dc416dd67f24f7f25
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746722"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120404"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
@@ -63,7 +63,7 @@ ms.locfileid: "97746722"
 
 ### <a name="anonymous-access"></a>[匿名访问](#tab/public-access)
 
-你可以访问[允许匿名访问](/azure/storage/blobs/storage-manage-access-to-resources)的 Azure 存储帐户中放置的公开可用文件。
+你可以访问[允许匿名访问](../../storage/blobs/anonymous-read-access-configure.md)的 Azure 存储帐户中放置的公开可用文件。
 
 ---
 
@@ -101,7 +101,7 @@ ms.locfileid: "97746722"
 
 按照以下步骤配置存储帐户防火墙，并为 Synapse 工作区添加例外。
 
-1. 打开 PowerShell 或[安装 PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true )
+1. 打开 PowerShell 或[安装 PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
 2. 安装已更新的 Az. Storage 模块： 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: efa160eb422658aeeb2eea3ad3c1d305b4b9f8be
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1217cf74ab36a8fe865e47009616b1ccb240df67
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462398"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119877"
 ---
 # <a name="sql-authentication"></a>SQL 身份验证
 
@@ -111,7 +111,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. 使用 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) 过程将新用户添加到 `master` 中的“dbmanager”数据库角色（请注意，[ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 语句在 SQL 配置中不受支持）。 示例语句：
+4. 使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) 过程将新用户添加到 `master` 中的“dbmanager”数据库角色（请注意，[ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 语句在 SQL 配置中不受支持）。 示例语句：
 
    ```sql
    EXEC sp_addrolemember 'dbmanager', 'Mary'; 
@@ -133,7 +133,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 ## <a name="non-administrator-users"></a>非管理员用户
 
-非管理员帐户通常无需访问 master 数据库。 使用 [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx) 语句在数据库级别创建包含数据库用户。 
+非管理员帐户通常无需访问 master 数据库。 使用 [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) 语句在数据库级别创建包含数据库用户。 
 
 该用户可以是 Azure Active Directory 身份验证包含数据库用户（如果已针对 Azure AD 身份验证配置了环境），可以是 SQL Server 身份验证包含数据库用户，也可以是基于 SQL Server 身份验证登录名（在前一步骤中创建）的 SQL Server 身份验证用户。  
 
@@ -191,7 +191,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 
 例如，**db_datareader** 固定数据库角色授予用户对数据库中每个表的读取访问权限，这通常超出了必要的范畴。 
 
-最好使用 [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) 语句创建自己的用户定义数据库角色，并谨慎地为每个角色授予满足业务需要所需的最低权限。 如果用户是多个角色的成员，则会聚合所有这些角色的权限。
+最好使用 [CREATE ROLE](/sql/t-sql/statements/create-role-transact-sql) 语句创建自己的用户定义数据库角色，并谨慎地为每个角色授予满足业务需要所需的最低权限。 如果用户是多个角色的成员，则会聚合所有这些角色的权限。
 
 ## <a name="permissions"></a>权限
 
@@ -199,7 +199,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 
 考虑到权限的嵌套性质和数目，可能需要进行仔细的研究才能设计出适当的权限系统，以便对数据库进行恰当的保护。 
 
-一开始可以了解[权限（数据库引擎）](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)中的权限列表，并查看这些权限的[海报大小的图](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png)。
+一开始可以了解[权限（数据库引擎）](/sql/relational-databases/security/permissions-database-engine)中的权限列表，并查看这些权限的[海报大小的图](/sql/relational-databases/security/media/database-engine-permissions.png)。
 
 ### <a name="considerations-and-restrictions"></a>注意事项和限制
 
@@ -236,5 +236,4 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [包含的数据库用户 - 使你的数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
- 
+有关详细信息，请参阅 [包含的数据库用户 - 使你的数据库可移植](/sql/relational-databases/security/contained-database-users-making-your-database-portable)。
