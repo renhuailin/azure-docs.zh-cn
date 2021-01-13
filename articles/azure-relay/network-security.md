@@ -3,18 +3,18 @@ title: Azure 中继的网络安全性
 description: 本文介绍如何将 IP 防火墙规则和专用终结点用于 Azure 中继。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3aa3ffd119f65ec5181b0c382472cc4ef3c8bac4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 608224f42fac8cd2d8ff06ab84989b1f675d418c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263719"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134460"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure 中继的网络安全性 
 本文介绍如何将以下安全功能与 Azure 中继配合使用： 
 
 - IP 防火墙规则（预览版）
-- 专用终结点（预览版）
+- 专用终结点 
 
 > [!NOTE]
 > Azure 中继不支持网络服务终结点。 
@@ -29,14 +29,14 @@ IP 防火墙规则应用于中继命名空间级别。 因此，这些规则适�
 
 有关详细信息，请参阅[如何为中继命名空间配置 IP 防火墙](ip-firewall-virtual-networks.md)
 
-## <a name="private-endpoints"></a>专用终结点
-
-使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如，Azure 中继、Azure 服务总线、Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户/合作伙伴服务。 有关详细信息，请参阅[什么是 Azure 专用链接（预览版）？](../private-link/private-link-overview.md)
-
-专用终结点是一个网络接口，它允许在虚拟网络中运行的工作负荷以私密方式安全地连接到具有专用链接资源的服务（例如，中继命名空间）。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute、VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以通过允许连接到特定的 Azure 中继命名空间来提供访问控制的粒度级别。
-
 > [!NOTE]
 > 此功能目前为预览版。 
+
+## <a name="private-endpoints"></a>专用终结点
+
+使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如，Azure 中继、Azure 服务总线、Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户/合作伙伴服务。 有关详细信息，请参阅[什么是 Azure 专用链接？](../private-link/private-link-overview.md)
+
+专用终结点是一个网络接口，它允许在虚拟网络中运行的工作负荷以私密方式安全地连接到具有专用链接资源的服务（例如，中继命名空间）。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute、VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以通过允许连接到特定的 Azure 中继命名空间来提供访问控制的粒度级别。
 
 有关详细信息，请参阅[如何配置专用终结点](private-link-service.md)
 

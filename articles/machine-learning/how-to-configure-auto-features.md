@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: b26b0d9086f464556cbca2c70773374c3cccbd52
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 5fcb57d1ef909d7c15e21b34c3f584c6615a6a44
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915855"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134409"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>自动化机器学习中的数据特征化
 
@@ -122,6 +122,9 @@ ms.locfileid: "97915855"
 |转换器参数更新 |更新指定转换器的参数。 当前支持 Imputer（平均值、最频繁使用的值和中值）和 HashOneHotEncoder。 |
 |删除列 |指定要从特征化中删除的列。|
 |阻止转换器| 指定要在特征化过程中使用的块转换器。|
+
+>[!NOTE]
+> 由于 SDK 版本1.19， **删除列** 功能已弃用。 在自动 ML 试验中使用数据集之前，请将列从数据集中的列中删除。 
 
 使用 API 调用创建 `FeaturizationConfig` 对象：
 

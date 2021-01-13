@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 308b2a9cb00f44f0e330d4fef5592d8855ee3394
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 00c1c8ddab9214bf7698c21b05c24afa36ec20d9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553223"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147686"
 ---
 ## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>健康状况类别、实体和属性的文本分析
 
@@ -23,15 +23,15 @@ ms.locfileid: "94553223"
 
 | Category  | 说明  |
 |---------|---------|
-| ANATOMY | 描述有关身体和解剖系统、地点、位置或区域信息的概念。 |
- | DEMOGRAPHICS | 描述有关性别和年龄信息的概念。 |
- | EXAMINATION | 描述有关诊断过程和测试信息的概念。 |
- | GENOMICS | 描述有关基因和变体信息的概念。 |
- | HEALTHCARE | 描述有关管理事件、护理环境和医疗保健职业信息的概念。 |
- | MEDICAL CONDITION | 描述有关诊断、症状或体征信息的概念。 |
- | MEDICATION | 描述有关药物信息的概念，包括药物名称、类别、剂量和给药途径。 |
- | SOCIAL | 描述有关医学相关的社会领域信息的概念，例如家庭关系。 |
- | TREATMENT | 描述有关治疗过程的信息的概念。 |
+| [ANATOMY](#anatomy) | 描述有关身体和解剖系统、地点、位置或区域信息的概念。 |
+ | [DEMOGRAPHICS](#demographics) | 描述有关性别和年龄信息的概念。 |
+ | [EXAMINATION](#examinations) | 描述有关诊断过程和测试信息的概念。 |
+ | [GENOMICS](#genomics) | 描述有关基因和变体信息的概念。 |
+ | [HEALTHCARE](#healthcare) | 描述有关管理事件、护理环境和医疗保健职业信息的概念。 |
+ | [MEDICAL CONDITION](#medical-condition) | 描述有关诊断、症状或体征信息的概念。 |
+ | [MEDICATION](#medication) | 描述有关药物信息的概念，包括药物名称、类别、剂量和给药途径。 |
+ | [SOCIAL](#social) | 描述有关医学相关的社会领域信息的概念，例如家庭关系。 |
+ | [TREATMENT](#treatment) | 描述有关治疗过程的信息的概念。 |
   
 每个类别可能包括两个概念组：
 
@@ -184,9 +184,9 @@ ms.locfileid: "94553223"
 
 :::image type="content" source="../../media/ta-for-health/conditional-qualifier-symptom-medication.png" alt-text="带有症状和药物实体的病情限定符属性的示例。":::
 
-:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis-3.png" alt-text="此屏幕截图显示了具有诊断实体的条件限定符属性的另一个示例。":::
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis-3.png" alt-text="此屏幕截图显示了包含诊断实体的病情限定符属性的另一个示例。":::
 
-:::image type="content" source="../../media/ta-for-health/condition-qualifier-symptom.png" alt-text="此屏幕截图显示了具有诊断实体的条件限定符属性的另一个示例。":::
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-symptom.png" alt-text="此屏幕截图显示了包含诊断实体的病情限定符属性的另一个示例。":::
 
 **DIRECTION** - 表征身体医疗状况的方向术语。
 
@@ -204,15 +204,15 @@ ms.locfileid: "94553223"
 
 **MEASUREMENT_VALUE** - 表征身体状况的值。 例如，在“1.5x2x1 cm 肿瘤”中，术语“1.5x2x1”是“肿瘤”的值  。 
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-measure-value-attribute.png" alt-text="屏幕截图显示了具有症状或符号实体的 direction 属性的示例。":::
+:::image type="content" source="../../media/ta-for-health/medical-condition-measure-value-attribute.png" alt-text="此屏幕截图显示了包含症状或征兆实体的方向属性的示例。":::
 
 **RELATIONAL_OPERATOR** - 表示身体状况附加信息之间关系的短语。 例如，时间或测量值。 
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-relational-operator.png" alt-text="屏幕截图显示了具有症状或符号实体的 direction 属性的另一个示例。":::
+:::image type="content" source="../../media/ta-for-health/medical-condition-relational-operator.png" alt-text="此屏幕截图显示了包含症状或征兆实体的方向属性的另一个示例。":::
 
 **TIME** - 与身体状况的开始和/或长度（持续时间）有关的时间术语。 例如，症状开始（发作）或疾病发生的时间。
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-time-attribute.png" alt-text="屏幕截图显示了具有症状或符号实体的 direction 属性的其他示例。":::
+:::image type="content" source="../../media/ta-for-health/medical-condition-time-attribute.png" alt-text="此屏幕截图显示了包含症状或征兆实体的方向属性的另一个示例。":::
 
 ### <a name="supported-relations"></a>支持的关系
 
@@ -256,9 +256,9 @@ ms.locfileid: "94553223"
 
 **RELATIONAL_OPERATOR** - 表示药物与其他信息之间的关系的短语。 例如，所需的测量值。
 
-:::image type="content" source="../../media/ta-for-health/medication-relational-operator.png" alt-text="屏幕截图显示了包含药物实体的关系运算符属性的示例。":::
+:::image type="content" source="../../media/ta-for-health/medication-relational-operator.png" alt-text="此屏幕截图显示了包含药物实体的关系运算符属性的示例。":::
 
-:::image type="content" source="../../media/ta-for-health/medication-time.png" alt-text="屏幕截图显示了具有药物实体的关系运算符属性的另一个示例。":::
+:::image type="content" source="../../media/ta-for-health/medication-time.png" alt-text="此屏幕截图显示了包含药物实体的关系运算符属性的另一个示例。":::
 
 ### <a name="supported-relations"></a>支持的关系
 
@@ -267,7 +267,15 @@ ms.locfileid: "94553223"
 +   **FREQUENCY_OF_MEDICATION**
 +   **ROUTE_OF_MEDICATION**
 +   **TIME_OF_MEDICATION**
-  
+
+## <a name="social"></a>社交
+
+### <a name="entities"></a>实体
+
+**FAMILY_RELATION** -主题的家庭亲属提及。 例如父亲、女儿、兄弟姐妹、父母。
+
+:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="此屏幕截图显示了治疗时间属性的另一个示例。":::
+
 ## <a name="treatment"></a>处理方式
 
 ### <a name="entities"></a>实体
@@ -280,11 +288,11 @@ ms.locfileid: "94553223"
 
 **DIRECTION** - 表征治疗的方向术语。
 
-:::image type="content" source="../../media/ta-for-health/treatment-direction.png" alt-text="屏幕截图显示了一个处理方向特性的示例。":::
+:::image type="content" source="../../media/ta-for-health/treatment-direction.png" alt-text="此屏幕截图显示了治疗方向属性的示例。":::
 
 **FREQUENCY** - 治疗发生或应该发生的频率。
 
-:::image type="content" source="../../media/ta-for-health/treatment-frequency.png" alt-text="屏幕截图显示了处理方向属性的另一个示例。":::
+:::image type="content" source="../../media/ta-for-health/treatment-frequency.png" alt-text="此屏幕截图显示了治疗方向属性的另一个示例。":::
  
 **RELATIONAL_OPERATOR** - 表示治疗与其他信息之间的关系的短语。  例如，距离上一个过程经过了多少时间。
 
@@ -292,19 +300,10 @@ ms.locfileid: "94553223"
 
 **TIME** - 与治疗的开始和/或长度（持续时间）有关的时间术语。 例如治疗的日期。
 
-:::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="屏幕截图显示处理时间属性的示例。":::
-
+:::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="此屏幕截图显示了治疗时间属性的示例。":::
 
 ### <a name="supported-relations"></a>支持的关系
 
 + **DIRECTION_OF_TREATMENT**
 +   **TIME_OF_TREATMENT**
 +   **FREQUENCY_OF_TREATMENT**
-
-## <a name="social"></a>社交
-
-### <a name="entities"></a>实体
-
-**FAMILY_RELATION** -主题的家庭亲属提及。 例如父亲、女儿、兄弟姐妹、父母。
-
-:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="屏幕截图显示了处理时间属性的另一个示例。":::
