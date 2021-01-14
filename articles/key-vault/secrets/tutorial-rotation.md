@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e61510965693e123c724d7b40d2fa6071fdd94c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 61e1e729ab0aeac1f7b8e5ee6787da38c5fef108
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824801"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020139"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>自动轮换使用一组身份验证凭据的资源的机密
 
@@ -244,7 +244,7 @@ az keyvault secret set --name sqlPassword --vault-name akvrotation-kv --value "S
 
 转到部署的应用程序 URL：
  
-https://akvrotation-app.azurewebsites.net/
+'https://akvrotation-app.azurewebsites.net/'
 
 当应用程序在浏览器中打开时，你会看到“生成的机密值”，并会看到“数据库已连接”的值为“true”。
 

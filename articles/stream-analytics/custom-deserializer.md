@@ -1,18 +1,17 @@
 ---
 title: 教程 - 用于 Azure 流分析云作业的自定义 .NET 反序列化程序
 description: 本教程演示如何使用 Visual Studio 为 Azure 流分析云作业创建自定义 .NET 反序列化程序。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/17/2020
-ms.openlocfilehash: 2353d15707fe215bfcab7912f2a9c598c4af7e49
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 6db65d85b5d5d72e7b4764949abcffed004cae85
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822006"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018201"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>教程：为 Azure 流分析自定义 .NET 反序列化程序
 

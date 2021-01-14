@@ -1,18 +1,18 @@
 ---
 title: 教程 - 在 Azure 流分析作业中运行 Azure Functions
 description: 本教程介绍如何将 Azure Functions 配置为流分析作业的输出接收器。
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: bb2eb36e4116c17efb20946b0da4586678838f3b
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: ffc056a97d3c0fd14bab186614015a9352a34077
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861997"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015141"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教程：从 Azure 流分析作业运行 Azure Functions 
 

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 25c58f99f56a4328527d1dd970e3ade21eb51819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a556ea66bb54f994349ce9ba4d12fb486827edf
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987167"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013288"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>教程：使用 Azure 门户诊断网络之间的通信问题
 
@@ -61,10 +61,10 @@ ms.locfileid: "90987167"
 ## <a name="diagnose-a-gateway"></a>诊断网关
 
 1. 在门户左侧选择“所有服务”。
-2. 首先在“筛选”框中键入“网络观察程序”。 搜索结果中出现“网络观察程序”后，将其选中。
+2. 首先在“筛选”框中键入“网络观察程序”   。 搜索结果中出现“网络观察程序”后，将其选中。
 3. 在“网络诊断工具”下选择“VPN 诊断”。 
 4. 选择“存储帐户”，然后选择要向其写入诊断信息的存储帐户。
-5. 在“存储帐户”列表中，选择要使用的存储帐户。 如果没有现成的存储帐户，则请选择“+ 存储帐户”，输入或选择所需信息，然后选择“创建”，以便创建一个。  如果已使用[先决条件](#prerequisites)中的脚本创建了一个 VPN 网关，则可能需要在该网关所在的资源组 *TestRG1* 中创建存储帐户。
+5. 在“存储帐户”列表中，选择要使用的存储帐户。 如果没有现成的存储帐户，则请选择“+ 存储帐户”，输入或选择所需信息，然后选择“创建”，以便创建一个。  如果已使用 [先决条件](#prerequisites)中的脚本创建了一个 VPN 网关，则可能需要在该网关所在的资源组 *TestRG1* 中创建存储帐户。
 6. 从“容器”列表中选择要使用的容器，然后选择“选择”。 如果没有任何容器，请选择“+ 容器”，输入容器的名称，然后选择“确定”。
 7. 选择一个网关，然后选择“开始故障排除”。 如下图所示，测试是针对名为 **Vnet1GW** 的网关运行的：
 

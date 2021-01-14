@@ -1,19 +1,18 @@
 ---
 title: 教程 - 在 Visual Studio 中为 Azure 流分析作业编写 C# 用户定义函数（预览）
 description: 本教程介绍如何在 Visual Studio 中为流分析作业编写 C# 用户定义函数。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d53f13cb740b3feb39dc64ce012ff320afbb1db5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 851229e441aa2fbdf7b6eec05390c0ce2b149da2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130487"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020462"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>教程：为 Azure 流分析作业编写 C# 用户定义函数（预览）
 
@@ -46,7 +45,7 @@ ms.locfileid: "93130487"
 
 3. 在左侧的模板列表中，选择“流分析”，然后选择“Azure 流分析 Edge 应用程序”或“Azure 流分析应用程序”  。
 
-4.  输入项目的 **名称** 、 **位置** 和 **解决方案名称** ，然后选择“确定”。
+4.  输入项目的 **名称**、**位置** 和 **解决方案名称**，然后选择“确定”。
 
     ![在 Visual Studio 中创建 Azure 流分析 Edge 项目](./media/stream-analytics-edge-csharp-udf/stream-analytics-create-edge-app.png)
 
