@@ -102,6 +102,8 @@
   items:
     - name: 应用服务计划
       href: overview-hosting-plans.md
+    - name: 成本管理
+      href: overview-manage-costs.md
     - name: OS 功能
       href: operating-system-functionality.md
     - name: 部署最佳做法
@@ -320,7 +322,7 @@
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: 迁移助手指南
       href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
-    - name: 最佳做法
+    - name: 最佳实践
       href: app-service-best-practices.md
     - name: 示例
       href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
