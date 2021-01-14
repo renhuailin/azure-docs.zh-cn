@@ -2,16 +2,16 @@
 title: 排查 Azure Monitor 基于工作簿的见解的问题
 description: 提供 Azure Monitor 基于工作簿的见解的故障排除指南，帮助你了解诸如 Azure Key Vault、Azure CosmosDB、Azure 存储和 Azure Cache for Redis 之类的服务。
 services: azure-monitor
-ms.author: mbullwin
-author: mrbullwinkle
+ms.author: lagayhar
+author: lgayhardt
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 90743a213092aacfa10139c12f47bc11faf0d86d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a2765e9dcf3b0e7bf28191e6ecbb069f26c42f5
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498706"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208516"
 ---
 # <a name="troubleshooting-workbook-based-insights"></a>排查基于工作簿的见解的问题
 

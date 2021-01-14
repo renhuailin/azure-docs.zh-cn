@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de16c947c59f5a0111b9325dbefe7daf1268fb40
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 006aaf7ca5066c552f9c0b797549d7e90ac9beb7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649154"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208686"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>为 Azure Active Directory 开发业务线应用
 本指南简要介绍了如何开发用于 Azure Active Directory (AD) 的业务线 (LoB) 应用程序，目标受众为 Active Directory/Microsoft 365 全局管理员。
@@ -27,7 +27,7 @@ ms.locfileid: "94649154"
 
 注册应用程序以使用 Azure Active Directory。 注册应用程序意味着开发人员可以使用 Azure AD 对用户进行身份验证并请求访问用户资源（如电子邮件、日历和文档）。
 
-目录的任何成员（不是来宾）都可以注册应用程序，也称为 *创建应用程序对象*。 如果无法注册应用程序，则表示目录的全局管理员限制了此功能，因此你可能需要与他们联系以 [获取正确的权限](../roles/delegate-app-roles.md#assign-built-in-application-admin-roles) 才能注册应用程序。 若要详细了解如何限制用户的详细信息，请参阅 [Azure Active Directory 中的委派应用注册权限](../roles/delegate-app-roles.md#restrict-who-can-create-applications)。
+目录的任何成员（不是来宾）都可以注册应用程序，也称为 *创建应用程序对象*。 如果你无法注册应用程序，则意味着你的目录的全局管理员已限制了此功能，你可能需要与他们联系以[获得适当的权限](../roles/delegate-app-roles.md#assign-built-in-application-admin-roles)，然后才能注册该应用程序。 若要详细了解如何限制用户的权限，请参阅[在 Azure Active Directory 中委托应用注册权限](../roles/delegate-app-roles.md#restrict-who-can-create-applications)。
 
 注册应用程序后，可让任何用户执行以下操作：
 
@@ -70,7 +70,7 @@ ms.locfileid: "94649154"
 
 对于信任的应用程序，可以代表组织来同意应用程序，以简化用户体验。
 
-有关 Azure 中的用户同意和同意体验的详细信息，请参阅 [Integrating Applications with Azure Active Directory](../develop/quickstart-register-app.md)（将应用程序与 Azure Active Directory 集成）。
+有关 Azure 中的用户同意和同意体验的详细信息，请参阅 [了解 Azure AD 应用程序许可体验](../develop/application-consent-experience.md)。
 
 ## <a name="related-articles"></a>相关文章
 * [使用 Azure AD 应用程序代理启用对本地应用程序的安全远程访问](application-proxy.md)

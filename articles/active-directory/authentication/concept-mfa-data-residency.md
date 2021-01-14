@@ -1,51 +1,51 @@
 ---
-title: Azure AD 多因素身份验证数据驻留
-description: 了解 Azure AD 多重身份验证存储有关你和你的用户的个人和组织数据以及哪些数据保留在源国家/地区。
+title: Azure AD 多重身份验证数据派驻服务
+description: 了解个人和组织数据 Azure AD 多因素身份验证存储有关你和你的用户的信息，以及哪些数据仍在源的国家/地区。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 01/14/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 788512db242bf1a1c6f18ffc0ee773bd3372aa42
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 788a666e8ec509bbd29a8dbd503a60b3dddefd6b
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355858"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208346"
 ---
-# <a name="data-residency-and-customer-data-for-azure-ad-multi-factor-authentication"></a>Azure AD 多重身份验证的数据驻留和客户数据
+# <a name="data-residency-and-customer-data-for-azure-ad-multifactor-authentication"></a>数据驻留和客户数据用于 Azure AD 多重身份验证
 
 客户数据根据你的组织在订阅 Microsoft Online 服务（例如 Microsoft 365 和 Azure）时所提供的地址 Azure AD 存储在地理位置。 要了解客户数据的存储位置，请参阅 Microsoft 信任中心的[数据存储在何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)部分。
 
-基于云的 Azure AD 多重身份验证和 Azure 多重身份验证服务器处理并存储一些个人数据和组织数据。 本文简要介绍了存储哪些数据及存储在何处。
+基于云的 Azure AD 多重身份验证和 Azure AD 多重身份验证服务器进程，并存储一定量的个人数据和组织数据。 本文简要介绍了存储哪些数据及存储在何处。
 
-Azure AD 多重身份验证服务在美国、欧洲和亚太有数据中心。 以下活动源自地区数据中心，但以下情况除外：
+Azure AD 多重身份验证服务在美国、欧洲和亚太包含数据中心。 以下活动源自地区数据中心，但以下情况除外：
 
 * 使用电话呼叫的多重身份验证源自美国数据中心，由全局提供商路由。
 * 根据用户的位置，当前正在处理来自其他区域（如欧洲或澳大利亚）的常规用途用户身份验证请求。
 * 使用 Microsoft Authenticator 应用的推送通知当前在区域数据中心基于用户位置进行处理。
     * 特定于设备供应商的服务（如 Apple 推送通知）可能位于用户位置之外。
 
-## <a name="personal-data-stored-by-azure-ad-multi-factor-authentication"></a>Azure AD 多重身份验证存储的个人数据
+## <a name="personal-data-stored-by-azure-ad-multifactor-authentication"></a>Azure AD 多重身份验证存储的个人数据
 
 个人数据是与特定人员关联的用户级信息。 以下数据存储包含个人信息：
 
 * 被阻止的用户
 * 免验证的用户
 * Microsoft Authenticator 设备令牌更改请求
-* 多重身份验证活动报告
+* 多重身份验证活动报表
 * Microsoft Authenticator 激活
 
 此信息将保留 90 天。
 
-Azure AD 多重身份验证不会记录个人数据（例如用户名、电话号码或 IP 地址），但有一个 *UserObjectId* 用于标识用户的多重身份验证尝试。 日志数据将存储 30 天。
+Azure AD 多重身份验证不会记录个人数据（例如用户名、电话号码或 IP 地址），但有一个 *UserObjectId* ，用于标识用户的多重身份验证尝试。 日志数据将存储 30 天。
 
-### <a name="azure-ad-multi-factor-authentication"></a>Azure AD 多重身份验证
+### <a name="azure-ad-multifactor-authentication"></a>Azure AD 多重身份验证
 
 对于 Azure 公有云（不包括 Azure B2C 身份验证、NPS 扩展和 Windows Server 2016 或 2019 AD FS 适配器），将存储以下个人数据：
 
@@ -53,57 +53,74 @@ Azure AD 多重身份验证不会记录个人数据（例如用户名、电话�
 |--------------------------------------|-----------------|
 | OATH 令牌                           | 在多重身份验证日志中     |
 | 单向短信                          | 在多重身份验证日志中     |
-| 语音呼叫                           | 在多重身份验证日志中<br />多重身份验证活动报告数据存储<br />被阻止的用户（如果报告欺诈） |
-| Microsoft Authenticator 通知 | 在多重身份验证日志中<br />多重身份验证活动报告数据存储<br />被阻止的用户（如果报告欺诈）<br />Microsoft Authenticator 设备令牌更改时的更改请求 |
-
-> [!NOTE]
-> 无论是哪个区域负责处理身份验证请求，所有云中的多重身份验证活动报告数据都存储在美国。 Microsoft Azure 德国、由世纪互联运营的 Microsoft Azure 以及 Microsoft 政府都有自己的数据存储，它们独立于公有云区域数据存储，但是这些数据始终存储在美国。 这些数据存储包含个人身份信息 (PII) 例如用户主体名称 (UPN) 和完整的电话号码。 
+| 语音呼叫                           | 在多重身份验证日志中<br />多重身份验证活动报表数据存储<br />被阻止的用户（如果报告欺诈） |
+| Microsoft Authenticator 通知 | 在多重身份验证日志中<br />多重身份验证活动报表数据存储<br />被阻止的用户（如果报告欺诈）<br />Microsoft Authenticator 设备令牌更改时的更改请求 |
 
 对于 Microsoft Azure 政府、Microsoft Azure 德国、由世纪互联运营的 Microsoft Azure、Azure B2C 身份验证、NPS 扩展，以及 Windows Server 2016 或 2019 AD FS 适配器，将存储以下个人数据：
 
 | 事件类型                           | 数据存储类型 |
 |--------------------------------------|-----------------|
-| OATH 令牌                           | 在多重身份验证日志中<br />多重身份验证活动报告数据存储 |
-| 单向短信                          | 在多重身份验证日志中<br />多重身份验证活动报告数据存储 |
-| 语音呼叫                           | 在多重身份验证日志中<br />多重身份验证活动报告数据存储<br />被阻止的用户（如果报告欺诈） |
-| Microsoft Authenticator 通知 | 在多重身份验证日志中<br />多重身份验证活动报告数据存储<br />被阻止的用户（如果报告欺诈）<br />Microsoft Authenticator 设备令牌更改时的更改请求 |
+| OATH 令牌                           | 在多重身份验证日志中<br />多重身份验证活动报表数据存储 |
+| 单向短信                          | 在多重身份验证日志中<br />多重身份验证活动报表数据存储 |
+| 语音呼叫                           | 在多重身份验证日志中<br />多重身份验证活动报表数据存储<br />被阻止的用户（如果报告欺诈） |
+| Microsoft Authenticator 通知 | 在多重身份验证日志中<br />多重身份验证活动报表数据存储<br />被阻止的用户（如果报告欺诈）<br />Microsoft Authenticator 设备令牌更改时的更改请求 |
 
-### <a name="multi-factor-authentication-server"></a>多重身份验证服务器
+### <a name="multifactor-authentication-server"></a>多重身份验证服务器
 
-如果部署并运行 Azure 多重身份验证服务器，将存储以下个人数据：
+如果部署并运行 Azure AD 多重身份验证服务器，则会存储以下个人数据：
 
 > [!IMPORTANT]
-> 从 2019 年 7 月 1 日开始，Microsoft 不再为新部署提供多重身份验证服务器。 希望其用户需要多重身份验证的新客户应使用基于云的 Azure AD 多重身份验证。 在 7 月 1 日之前激活了多重身份验证服务器的现有客户可像平时一样下载最新版本和未来的更新，也可生成激活凭据。
+> 从2019年7月1日起，Microsoft 将不再为新部署提供多重身份验证服务器。 想要从用户要求多重身份验证的新客户应使用基于云的 Azure AD 多重身份验证。 在7月1日前激活多重身份验证服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
 
 | 事件类型                           | 数据存储类型 |
 |--------------------------------------|-----------------|
-| OATH 令牌                           | 在多重身份验证日志中<br />多重身份验证活动报告数据存储 |
-| 单向短信                          | 在多重身份验证日志中<br />多重身份验证活动报告数据存储 |
-| 语音呼叫                           | 在多重身份验证日志中<br />多重身份验证活动报告数据存储<br />被阻止的用户（如果报告欺诈） |
-| Microsoft Authenticator 通知 | 在多重身份验证日志中<br />多重身份验证活动报告数据存储<br />被阻止的用户（如果报告欺诈）<br />Microsoft Authenticator 设备令牌更改时的更改请求 |
+| OATH 令牌                           | 在多重身份验证日志中<br />多重身份验证活动报表数据存储 |
+| 单向短信                          | 在多重身份验证日志中<br />多重身份验证活动报表数据存储 |
+| 语音呼叫                           | 在多重身份验证日志中<br />多重身份验证活动报表数据存储<br />被阻止的用户（如果报告欺诈） |
+| Microsoft Authenticator 通知 | 在多重身份验证日志中<br />多重身份验证活动报表数据存储<br />被阻止的用户（如果报告欺诈）<br />Microsoft Authenticator 设备令牌更改时的更改请求 |
 
-## <a name="organizational-data-stored-by-azure-ad-multi-factor-authentication"></a>Azure AD 多重身份验证存储的组织数据
+## <a name="organizational-data-stored-by-azure-ad-multifactor-authentication"></a>Azure AD 多重身份验证存储的组织数据
 
-组织数据是可公开配置或环境设置的租户级别的信息。 来自 Azure 门户中下列多重身份验证页面的租户设置可存储组织数据，例如锁定阈值或传入电话身份验证请求的调用方 ID 信息：
+组织数据是可公开配置或环境设置的租户级别的信息。 以下 Azure 门户多因素身份验证页面中的租户设置可能存储组织数据，如锁定阈值或传入电话身份验证请求的调用方 ID 信息：
 
 * 帐户锁定
 * 欺诈警报
 * 通知
 * 电话呼叫设置
 
-对于 Azure 多重身份验证服务器，Azure 门户的以下页面可能包含组织数据：
+对于 Azure AD 多重身份验证服务器，以下 Azure 门户页面可能包含组织数据：
 
 * 服务器设置
 * 免验证一次
 * 缓存规则
 * 多重身份验证服务器状态
 
-## <a name="log-data-location"></a>日志数据位置
+## <a name="multifactor-authentication-logs-location"></a>多重身份验证日志位置
 
-日志信息的存储位置取决于处理它们的区域。 大多数地区具有本机 Azure AD 多重身份验证功能，因此日志数据存储在处理多重身份验证请求的同一区域中。 在没有本机 Azure AD 多因素身份验证支持的地理位置中，它们由美国或欧洲地区提供服务，日志数据存储在处理多重身份验证请求的同一区域中。
+下表显示了公有云的服务日志的位置。
 
-某些核心身份验证日志数据仅存储在美国。 Microsoft Azure 德国以及世纪互联运营的 Microsoft Azure 始终存储在各自的云中。 Microsoft 政府云日志数据始终存储在美国。
+| 公有云| 登录日志 | 多重身份验证活动报表        | 多重身份验证服务日志       |
+|-------------|--------------|----------------------------------------|------------------------|
+| US          | US           | US                                     | US                     |
+| 欧洲      | 欧洲       | 美国                                     | 欧洲 <sup>2</sup>    |
+| 澳大利亚   | 澳大利亚    | US<sup>1</sup>                         | 澳大利亚 <sup>2</sup> |
+
+<sup>1</sup>OATH 代码日志存储在澳大利亚
+
+<sup>2</sup>语音呼叫多因素身份验证服务日志存储在美国
+
+下表显示了主权云的服务日志的位置。
+
+| 主权云                      | 登录日志                         | 多重身份验证活动报表 (包含个人数据) | 多重身份验证服务日志 |
+|--------------------------------------|--------------------------------------|-------------------------------|------------------|
+| Microsoft Azure 德国              | 德国                              | US                            | US               |
+| 由世纪互联运营的 Microsoft Azure | 中国                                | US                            | US               |
+| Microsoft 政府云           | US                                   | US                            | US               |
+
+多重身份验证活动报表数据包含个人数据，如用户主体名称 (UPN) 和完整的电话号码。
+
+多重身份验证服务日志用于运行服务。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关基于云的 Azure AD 多重身份验证和 Azure 多重身份验证服务器收集的用户信息的详细信息，请参阅 [Azure AD 多重身份验证用户数据收集](howto-mfa-reporting-datacollection.md)。
+有关基于云的 Azure AD 多重身份验证和 Azure AD 多重身份验证服务器收集的用户信息的详细信息，请参阅 [Azure AD 多重身份验证用户数据收集](howto-mfa-reporting-datacollection.md)。

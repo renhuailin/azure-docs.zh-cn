@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93ac8cd3e462c244840a5ed569d685a9d67fa6c2
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c752bc6ae49f009056067545fde292dc29027d5d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165869"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208125"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中无服务器 SQL 池的最佳实践
 
@@ -129,7 +129,7 @@ FROM
 
 ## <a name="manually-create-statistics-for-csv-files"></a>手动为 CSV 文件创建统计信息
 
-无服务器 SQL 池依赖统计信息来生成最佳查询执行计划。 需要时，将自动为 Parquet 文件中的列创建统计信息。 此时，不会为 CSV 文件中的列自动创建统计信息，应为查询中使用的列手动创建统计信息，尤其是在 DISTINCT、JOIN、WHERE、ORDER BY 和 GROUP BY 中使用的列。 查看 [无服务器 SQL 池中的统计信息] (开发-表-统计信息-有关详细信息，请参阅无服务器 sql 池。
+无服务器 SQL 池依赖统计信息来生成最佳查询执行计划。 需要时，将自动为 Parquet 文件中的列创建统计信息。 此时，不会为 CSV 文件中的列自动创建统计信息，应为查询中使用的列手动创建统计信息，尤其是在 DISTINCT、JOIN、WHERE、ORDER BY 和 GROUP BY 中使用的列。 有关详细信息，请查看 [无服务器 SQL 池中的统计](develop-tables-statistics.md#statistics-in-serverless-sql-pool) 信息。
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>使用 CETAS 增强查询性能和联接
 

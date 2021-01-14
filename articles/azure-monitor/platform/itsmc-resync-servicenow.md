@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 9a6e46c0b52c22df0682034deaebd58bbfeb34a7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065165"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210034"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>排查 ITSM 连接器中的问题
 
@@ -53,6 +53,25 @@ ITSM 提供将警报发送到外部票证系统（如 ServiceNow）的选项。
 
 5. 使用此仪表板，你可以查看连接器中的状态和错误。
     ![显示连接器状态的屏幕截图。](media/itsmc-resync-servicenow/connector-dashboard.png)
+
+### <a name="dashboard-elements"></a>仪表板元素
+
+该仪表板包含有关使用此连接器发送到 ITSM 工具的警报的信息。
+仪表板分为四个部分：
+
+1. 已创建工作项：图和下表包含每个类型的工作项的计数。 如果单击关系图或表上的，则可以查看有关工作项的更多详细信息。
+    ![显示已创建工作项的屏幕截图。](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
+2. 受影响的计算机：表包含有关创建配置项目的配置项目的详细信息。
+    通过单击表中的行，可以获取有关配置项目的更多详细信息。
+    如果要查看所有列表，则表中包含的行数有限，可以单击 "查看全部"。
+    ![显示受影响的计算机的屏幕截图。](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
+3. 连接器状态：下图和下表包含有关连接器状态的消息。 通过单击表中的行，可以获取有关连接器状态消息的更多详细信息。
+    如果要查看所有列表，则表中包含的行数有限，可以单击 "查看全部"。
+    ![显示连接器状态的屏幕截图。](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
+4. 警报规则：表包含有关检测到的警报规则数的信息。
+    通过单击表中的行，可以获取有关检测到的规则的更多详细信息。
+    如果要查看所有列表，则表中包含的行数有限，可以单击 "查看全部"。
+    ![显示警报规则的屏幕截图。](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)
 
 ### <a name="service-map"></a>服务映射
 

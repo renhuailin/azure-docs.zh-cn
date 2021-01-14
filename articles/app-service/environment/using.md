@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ba06a0f9d520f445965329203aecd6c576666737
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013526"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209723"
 ---
 # <a name="using-an-app-service-environment"></a>使用应用服务环境
 
@@ -51,7 +51,7 @@ ms.locfileid: "98013526"
     > Linux 应用和 Windows 应用不能处于同一应用服务计划中，但可以在同一应用服务环境中。
     >
 
-1. 选择 "下一步：监视"。如果想要使用应用程序启用 Application Insights，可以在创建流程中执行此操作。 
+1. 选择 " **下一步：监视**  "。如果想要使用应用程序启用 application Insights，可以在创建流程中执行此操作。 
 
 1.  选择 **下一步：标记** 向应用添加所需的任何标记  
 

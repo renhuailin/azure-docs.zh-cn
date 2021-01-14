@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a18a36b8583f8534b2a2e643e5c155dc7a2d65e2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2c632de3d602fe2d3e5bfa74f78e90f48412067
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444055"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208907"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>配置调用 Web API 的移动应用
 
@@ -149,8 +149,8 @@ var pca = PublicClientApplicationBuilder
 在 Android 和 iOS 上，中介可以实现：
 
 - **单一登录 (SSO)** ：对于已注册到 Azure Active Directory (Azure AD) 的设备，可以使用 SSO。 使用 SSO 时，用户无需登录到每个应用程序。
-- **设备标识** ：此设置启用与 Azure AD 设备相关的条件访问策略。 身份验证过程使用将设备加入工作区时创建的设备证书。
-- **应用程序标识验证** ：应用程序在调用中介时会传递其重定向 URL。 然后中介验证该 URL。
+- **设备标识**：此设置启用与 Azure AD 设备相关的条件访问策略。 身份验证过程使用将设备加入工作区时创建的设备证书。
+- **应用程序标识验证**：应用程序在调用中介时会传递其重定向 URL。 然后中介验证该 URL。
 
 ### <a name="enable-the-broker-on-xamarin"></a>在 Xamarin 上启用中介
 
@@ -249,8 +249,8 @@ MSAL.NET 使用 URL 调用中介，然后将中介响应返回到应用。 若�
 
    此处，`BundleId` 用于唯一标识设备。 例如，如果 `BundleId` 是 `yourcompany.xforms`，则 URL 方案是 `msauth.com.yourcompany.xforms`。
 
-   > [!NOTE]
-   > 接收中介的响应时，此 URL 方案将成为用于唯一标识应用的重定向 URI 的一部分。
+  
+      接收中介的响应时，此 URL 方案将成为用于唯一标识应用的重定向 URI 的一部分。
 
    ```XML
     <key>CFBundleURLTypes</key>
@@ -310,10 +310,9 @@ MSAL 使用 `–canOpenURL:` 来检查是否在设备上安装了中介。 在 i
     }
 ```
 
-> [!NOTE]
-> 如果在 iOS 13 或更高版本中采用了 `UISceneDelegate`，请改为将 MSAL 回调放入 `UISceneDelegate` 的 `scene:openURLContexts:` 中。 只能对每个 URL 调用 MSAL `handleMSALResponse:sourceApplication:` 一次。
->
-> 有关详细信息，请参阅 [Apple 文档](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)。
+如果在 iOS 13 或更高版本中采用了 `UISceneDelegate`，请改为将 MSAL 回调放入 `UISceneDelegate` 的 `scene:openURLContexts:` 中。 只能对每个 URL 调用 MSAL `handleMSALResponse:sourceApplication:` 一次。
+
+有关详细信息，请参阅 [Apple 文档](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)。
 
 #### <a name="step-2-register-a-url-scheme"></a>步骤 2：注册 URL 方案
 
@@ -329,8 +328,7 @@ MSAL 使用 `–canOpenURL:` 来检查是否在设备上安装了中介。 在 i
 
    此处，`BundleId` 用于唯一标识设备。 例如，如果 `BundleId` 是 `yourcompany.xforms`，则 URL 方案是 `msauth.com.yourcompany.xforms`。
 
-   > [!NOTE]
-   > 接收中介的响应时，此 URL 方案将成为用于唯一标识应用的重定向 URI 的一部分。 确保在 [Azure 门户](https://portal.azure.com)中为应用程序注册 `msauth.(BundleId)://auth` 格式的重定向 URI。
+    接收中介的响应时，此 URL 方案将成为用于唯一标识应用的重定向 URI 的一部分。 确保在 [Azure 门户](https://portal.azure.com)中为应用程序注册 `msauth.(BundleId)://auth` 格式的重定向 URI。
 
    ```XML
    <key>CFBundleURLTypes</key>
@@ -367,4 +365,4 @@ MSAL 使用 `–canOpenURL:` 来检查是否在设备上安装了中介。 在 i
 
 ## <a name="next-steps"></a>后续步骤
 
-若要 [获取令牌](scenario-mobile-acquire-token.md)，请转到本方案中的下一篇文章。
+转到此方案中的下一篇文章：[获取令牌](scenario-mobile-acquire-token.md)。

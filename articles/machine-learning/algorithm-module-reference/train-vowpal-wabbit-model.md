@@ -8,15 +8,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 6bc9f69440be772910ea8200b5ccf7d5a5122ae6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907794"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210199"
 ---
 # <a name="train-vowpal-wabbit-model"></a>训练 Vowpal Wabbit 模型
-本文介绍如何使用 Azure 机器学习设计器中的 " **定型 Vowpal Wabbit 模型** " 模块，通过 Vowpal Wabbit 创建机器学习模型。  
+本文介绍如何在 Azure 机器学习设计器中使用“训练 Vowpal Wabbit 模型”模块，以通过 Vowpal Wabbit 创建一个机器学习模型。  
 
 若将 Vowpal Wabbit 用于机器学习，请按照 Vowpal Wabbit 要求将输入格式化，并按照必需的格式准备数据。 使用此模块可指定 Vowpal Wabbit 命令行参数。 
 
@@ -87,7 +87,7 @@ Vowpal Wabbit 通过向现有模型中添加新数据来支持增量训练。 �
 2. 将以前已训练的模型连接到模块的“预训练 Vowpal Wabbit 模型”输入端口。
 3. 将新的训练数据连接到模块的“训练数据”输入端口。
 4. 在“训练 Vowpal Wabbit 模型”的参数窗格中，指定新的训练数据的格式，如果输入的数据集是一个目录，也要指定训练数据文件名。
-5. 如果需要在运行记录中保存对应的文件，请选择“输出可读模型文件”和“输出反向哈希文件”选项。
+5. 如果需要将相应的文件保存在运行记录中，请选择 **输出可读模型文件** 并 **输出反转的哈希文件** 选项。
 
 6. 提交管道。  
 7. 选择该模块并选择右窗格中“输出 + 日志”选项卡下的“注册数据集”，以在 Azure 机器学习工作区中保留更新后的模型 。  如果你不指定新名称，则更新后的模型将覆盖现有的已保存模型。
@@ -100,7 +100,7 @@ Vowpal Wabbit 通过向现有模型中添加新数据来支持增量训练。 �
 
 Vowpal Wabbit 通过非线性特征（如 n 元语法）提供极快的学习。  
 
-Vowpal Wabbit 使用*在线学习*技术，如随机梯度下降 (SGD)，以一次一条记录的形式拟合模型。 因此，它将循环访问原始数据的速度非常快，并可以比大多数其他模型更快地开发的最佳预测因子。 这种方法也可避免让所有训练数据读入内存。  
+Vowpal Wabbit 使用 *在线学习* 技术，如随机梯度下降 (SGD)，以一次一条记录的形式拟合模型。 因此，它将循环访问原始数据的速度非常快，并可以比大多数其他模型更快地开发的最佳预测因子。 这种方法也可避免让所有训练数据读入内存。  
 
 Vowpal Wabbit 将所有数据都转换为哈希值，而不仅仅是文本数据，但其他类别的变量。 使用哈希可以更有效地查找回归权重，这对于有效的随机梯度下降而言至关重要。  
 

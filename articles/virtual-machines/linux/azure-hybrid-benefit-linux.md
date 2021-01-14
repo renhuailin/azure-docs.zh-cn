@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: ba7081c877f3c3adae6e678280592c9445a95d1b
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 990c396c859477c83e0ef421659a299920ee0c35
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858801"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209128"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>如何将 Azure 混合权益适用于 Linux 虚拟机
 
@@ -47,6 +47,9 @@ RHEL Azure 混合权益适用于满足这两个条件的 Red Hat 客户：
 
 - 具有可在 Azure 中使用的有效或未使用的 RHEL 订阅
 - 已在 Azure 中启用了一个或多个使用 [Red Hat 云访问](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) 计划的订阅
+
+> [!IMPORTANT]
+> 确保已在 [云访问](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) 计划中启用了正确的订阅。
 
 开始使用 Red Hat 权益：
 

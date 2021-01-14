@@ -1,19 +1,18 @@
 ---
-title: Azure 服务总线管理库 | Microsoft Docs
-description: 本文介绍如何使用 Azure 服务总线管理库动态预配服务总线命名空间和实体。
+title: 以编程方式创建 Azure 服务总线实体 |Microsoft Docs
+description: 本文介绍如何使用动态或以编程方式预配服务总线命名空间和实体。
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/13/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 915606bffc2037c8fcd1a7d33218143f40c78f2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97d89db17af9cde3afadee430b3d0c2a434e12c9
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008040"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210131"
 ---
-# <a name="service-bus-management-libraries"></a>服务总线管理库
-
+# <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>动态预配服务总线命名空间和实体 
 Azure 服务总线管理库可以动态预配服务总线命名空间和实体。 这样可以实现复杂的部署和消息方案，并能以编程方式确定要预配的实体。 这些库目前可用于 .NET。
 
 ## <a name="supported-functionality"></a>受支持的功能
@@ -23,9 +22,137 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
 * 创建、更新、删除主题
 * 创建、更新、删除订阅
 
-## <a name="prerequisites"></a>先决条件
+## <a name="azuremessagingservicebusadministration-recommended"></a>请 (建议) 
+可以使用 [ServiceBusAdministrationClient](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient) 命名空间中的类来管理 [命名空间、](/dotnet/api/azure.messaging.servicebus.administration) 队列、主题和订阅。 下面是示例代码。 有关完整示例，请参阅 [CRUD 示例](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/tests/Samples/Sample07_CrudOperations.cs)。
 
-若要开始使用服务总线管理库，必须使用 Azure Active Directory (Azure AD) 服务进行身份验证。 Azure AD 要求身份验证为服务主体，并且该主体提供对 Azure 资源的访问权限。 有关创建服务主体的信息，请参阅以下文章之一：  
+```csharp
+using System;
+using System.Threading.Tasks;
+
+using Azure.Messaging.ServiceBus.Administration;
+
+namespace adminClientTrack2
+{
+    class Program
+    {
+        public static void Main()
+        {
+            MainAsync().GetAwaiter().GetResult();
+        }
+
+        private static async Task MainAsync()
+        {
+            string connectionString = "SERVICE BUS NAMESPACE CONNECTION STRING";
+            string QueueName = "QUEUE NAME";
+            string TopicName = "TOPIC NAME";
+            string SubscriptionName = "SUBSCRIPTION NAME";
+
+            var adminClient = new ServiceBusAdministrationClient(connectionString);
+            bool queueExists = await adminClient.QueueExistsAsync(QueueName);
+            if (!queueExists)
+            {
+                var options = new CreateQueueOptions(QueueName)
+                {
+                    MaxDeliveryCount = 3                    
+                };
+                await adminClient.CreateQueueAsync(options);
+            }
+
+
+            bool topicExists = await adminClient.TopicExistsAsync(TopicName);
+            if (!topicExists)
+            {
+                var options = new CreateTopicOptions(TopicName)
+                {
+                    MaxSizeInMegabytes = 1024
+                };
+                await adminClient.CreateTopicAsync(options);
+            }
+
+            bool subscriptionExists = await adminClient.SubscriptionExistsAsync(TopicName, SubscriptionName);
+            if (!subscriptionExists)
+            {
+                var options = new CreateSubscriptionOptions(TopicName, SubscriptionName)
+                {
+                    DefaultMessageTimeToLive = new TimeSpan(2, 0, 0, 0)
+                };
+                await adminClient.CreateSubscriptionAsync(options);
+            }
+        }
+    }
+}
+
+```
+
+
+## <a name="microsoftazureservicebusmanagement"></a>Microsoft。 
+可以使用 [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) 命名空间中的类来管理 [命名空间、](/dotnet/api/microsoft.azure.servicebus.management) 队列、主题和订阅。 下面是示例代码： 
+
+> [!NOTE]
+> 建议使用库中的 `ServiceBusAdministrationClient` 类 `Azure.Messaging.ServiceBus.Administration` ，它是最新的 SDK。 有关详细信息，请参阅 [第一部分](#azuremessagingservicebusadministration-recommended)。 
+
+```csharp
+using System;
+using System.Threading.Tasks;
+
+using Microsoft.Azure.ServiceBus.Management;
+
+namespace SBusManagementClient
+{
+    class Program
+    {
+        public static void Main()
+        {
+            MainAsync().GetAwaiter().GetResult();
+        }
+
+        private static async Task MainAsync()
+        {
+            string connectionString = "SERVICE BUS NAMESPACE CONNECTION STRING";
+            string QueueName = "QUEUE NAME";
+            string TopicName = "TOPIC NAME";
+            string SubscriptionName = "SUBSCRIPTION NAME";
+
+            var managementClient = new ManagementClient(connectionString);
+            bool queueExists = await managementClient.QueueExistsAsync(QueueName);
+            if (!queueExists)
+            {
+                QueueDescription qd = new QueueDescription(QueueName);
+                qd.MaxSizeInMB = 1024;
+                qd.MaxDeliveryCount = 3;
+                await managementClient.CreateQueueAsync(qd);
+            }
+
+
+            bool topicExists = await managementClient.TopicExistsAsync(TopicName);
+            if (!topicExists)
+            {
+                TopicDescription td = new TopicDescription(TopicName);
+                td.MaxSizeInMB = 1024;
+                td.DefaultMessageTimeToLive = new TimeSpan(2, 0, 0, 0);
+                await managementClient.CreateTopicAsync(td);
+            }
+
+            bool subscriptionExists = await managementClient.SubscriptionExistsAsync(TopicName, SubscriptionName);
+            if (!subscriptionExists)
+            {
+                SubscriptionDescription sd = new SubscriptionDescription(TopicName, SubscriptionName);
+                sd.DefaultMessageTimeToLive = new TimeSpan(2, 0, 0, 0);
+                sd.MaxDeliveryCount = 3;
+                await managementClient.CreateSubscriptionAsync(sd);
+            }
+        }
+    }
+}
+```
+
+
+## <a name="microsoftazuremanagementservicebus"></a>Microsoft.Azure.Management.ServiceBus 
+此库是基于 Azure 资源管理器的控制平面 SDK 的一部分。 
+
+### <a name="prerequisites"></a>先决条件
+
+若要开始使用此库，必须使用 Azure Active Directory (Azure AD) 服务进行身份验证。 Azure AD 要求身份验证为服务主体，并且该主体提供对 Azure 资源的访问权限。 有关创建服务主体的信息，请参阅以下文章之一：  
 
 * [使用 Azure 门户创建可访问资源的 Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)
 * [使用 Azure PowerShell 创建服务主体来访问资源](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
@@ -33,7 +160,7 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
 
 这些教程提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都将用于管理库进行的身份验证。 对于用于运行的资源组，需要至少具有 [Azure 服务总线数据所有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)或[参与者](../role-based-access-control/built-in-roles.md#contributor)权限 。
 
-## <a name="programming-pattern"></a>编程模式
+### <a name="programming-pattern"></a>编程模式
 
 所有服务总线资源的操纵模式都遵循常用协议：
 
@@ -67,8 +194,8 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
    ```
 
-## <a name="complete-code-to-create-a-queue"></a>完成创建队列的代码
-下面是创建服务总线队列的完整代码： 
+### <a name="complete-code-to-create-a-queue"></a>完成创建队列的代码
+下面是创建服务总线队列的示例代码。 有关完整示例，请参阅 [GitHub 上的 .NET 管理示例](https://github.com/Azure-Samples/service-bus-dotnet-management/)。 
 
 ```csharp
 using System;
@@ -154,8 +281,13 @@ namespace SBusADApp
 }
 ```
 
-> [!IMPORTANT]
-> 有关完整示例，请参阅 [GitHub 上的 .NET 管理示例](https://github.com/Azure-Samples/service-bus-dotnet-management/)。 
+## <a name="fluent-library"></a>流畅库
+有关使用熟知库来管理服务总线实体的示例，请参阅 [此示例](https://github.com/Azure/azure-libraries-for-net/tree/master/Samples/ServiceBus)。 
 
 ## <a name="next-steps"></a>后续步骤
-[Microsoft.Azure.Management.ServiceBus API 参考](/dotnet/api/Microsoft.Azure.Management.ServiceBus)
+请参阅以下参考主题： 
+
+- [Azure. 消息传递. 管理](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient)
+- [Microsoft。](/dotnet/api/microsoft.azure.servicebus.management.managementclient)
+- [Microsoft.Azure.Management.ServiceBus](/dotnet/api/microsoft.azure.management.servicebus.servicebusmanagementclient)
+- [Fluent](/dotnet/api/microsoft.azure.management.servicebus.fluent)

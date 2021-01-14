@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df2d74701e21c3773d96564f1b06d80ddb9fce9d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022949"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209213"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>使用 StorSimple Snapshot Manager 创建和管理卷组
 ## <a name="overview"></a>概述
@@ -48,11 +48,11 @@ ms.locfileid: "96022949"
 ## <a name="view-volume-groups"></a>查看卷组
 如果单击“**卷组**”节点，“**结果**”窗格会显示有关每个卷组的以下信息，具体取决于所选择的列。 （“**结果**”窗格中的列是可以配置的。 右键单击“**卷**”节点，选择“**查看**”，并选择“**添加/删除列**”。）
 
-| 结果列 | 说明 |
+| 结果列 | 描述 |
 |:--- |:--- |
 | 名称 |**“名称”** 列包含卷组的名称。 |
 | 应用程序 |**“应用程序”** 列显示当前已在 Windows 主机上安装并正在运行的 VSS 编写器的数量。 |
-| 选定 |**“已选择”** 列显示卷组中包含的卷数量。 零 (0) 表示没有任何应用程序与卷组中的卷相关联。 |
+| 已选定 |**“已选择”** 列显示卷组中包含的卷数量。 零 (0) 表示没有任何应用程序与卷组中的卷相关联。 |
 | 已导入 |**“已导入”** 列显示已导入卷的数量。 设置为“True”时，此列指示卷组是从 Azure 门户导入的，而不是在 StorSimple Snapshot Manager 中创建的。 |
 
 > [!NOTE]
@@ -107,7 +107,7 @@ ms.locfileid: "96022949"
 #### <a name="to-edit-a-volume-group"></a>编辑卷组
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
 2. 在 **“作用域”** 窗格中，展开 **“卷组”** 节点，右键单击卷组名称，然后单击 **“编辑”**。
-3. 此时将显示“创建卷组”对话框。 你可以更改 **“名称”**、**“应用程序”** 和 **“卷”** 条目。
+3. 此时会显示 **“创建卷组”** 对话框。 你可以更改 **“名称”**、**“应用程序”** 和 **“卷”** 条目。
 4.  单击“确定”以保存你的更改。
 
 ## <a name="delete-a-volume-group"></a>删除卷组

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3c0b466a7db688ed3e24441f652f6a1ef1a88ee1
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5a09a2083c1258a3120f8696aa39a0252dbfcf2d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180075"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209674"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -97,11 +97,19 @@ GRS 和 GZRS 之间的主要区别是在主要区域中复制数据的方式。 
 
 首先会将写入操作提交到主要位置，并使用 LRS 复制该操作。 然后会以异步方式将更新复制到次要区域。 将数据写入次要位置后，还会使用 LRS 在该位置复制数据。
 
+下图显示了如何通过 GRS 或 GRS 复制数据：
+
+:::image type="content" source="media/storage-redundancy/geo-redundant-storage.png" alt-text="显示如何将数据与 GRS 或 GRS 一起复制的关系图":::
+
 ### <a name="geo-zone-redundant-storage"></a>异地区域冗余存储
 
 地域区域冗余存储 (GZRS) 将冗余跨可用性区域提供的高可用性与异地复制提供的区域中断保护相结合。 将跨主要区域中的三个 [Azure 可用性区域](../../availability-zones/az-overview.md)复制 GZRS 存储帐户中的数据，并将其复制到次要地理区域，以防御区域灾难。 Microsoft 建议对需要最大程度的一致性、耐用性和可用性、卓越性能和灾难恢复复原能力的应用程序使用 GZRS。
 
 如果使用 GZRS 存储帐户，在可用性区域不可用或无法恢复的情况下，可以继续读取和写入数据。 此外，即使在遇到区域完全停电或导致主要区域不可恢复的灾难，数据也能持久保存。 GZRS 可在一年中提供至少 99.99999999999999%（16 个 9）的对象持久性。
+
+下图显示了如何通过 GZRS 或 GZRS 复制数据：
+
+:::image type="content" source="media/storage-redundancy/geo-zone-redundant-storage.png" alt-text="显示如何将数据与 GZRS 或 GZRS 一起复制的关系图":::
 
 仅常规用途 v2 存储帐户支持 GZRS 和 RA-GZRS。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。 GZRS 和 RA-GZRS 支持块 Blob、页 Blob（但无法用于 VHD 磁盘）、文件、表和队列。
 

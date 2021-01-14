@@ -2,19 +2,19 @@
 title: 适用于 Redis 的 Azure Cache Azure Monitor |Microsoft Docs
 description: 本文介绍了适用于 Azure Redis Cache 的 Azure Monitor 功能。使用此功能，缓存所有者能够快速了解性能和利用率问题。
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: e7b8a8e131cf7e0aae051f42043abf0640c927e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35f575410caa7a8a8ffbda35bdfa876418db8945
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887009"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210369"
 ---
-# <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>浏览用于 Redis 的 Azure Cache Azure Monitor
+# <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>探究适用于 Azure Cache for Redis 的 Azure Monitor
 
-对于所有适用于 Redis 资源的 Azure 缓存，适用于 Redis 的 Azure Cache Azure Monitor 提供了一个统一的交互式视图，其中提供了：
+对于所有 Azure Cache for Redis 资源，适用于 Azure Cache for Redis 的 Azure Monitor 提供了一个统一的交互式视图，其中提供了：
 
 - 总体性能
 - 失败数
@@ -50,7 +50,7 @@ ms.locfileid: "90887009"
 
     ![搜索框显示单词“Monitor”，“服务”搜素结果显示了具有速度计符号的“Monitor”](./media/cosmosdb-insights-overview/search-monitor.png)
 
-1. **为 Redis 选择 "Azure 缓存**"。 如果此选项不存在，请选择“更多” > “Azure Cache for Redis” 。
+1. 选择“Azure Cache for Redis”。 如果此选项不存在，请选择“更多” > “Azure Cache for Redis” 。
 
 ### <a name="overview"></a>概述
 
@@ -128,9 +128,9 @@ ms.locfileid: "90887009"
 
 1. 在 Azure 门户中，选择 Azure Cache for Redis。
 
-2. 从列表中，选择单个 Azure Cache for Redis 资源。 在 "监视" 部分，选择 "见解"。
+2. 从列表中，选择单个 Azure Cache for Redis 资源。 在“监视”部分中，选择“见解”。
 
-    ![红色框中突出显示了 "Insights" 字样的菜单选项的屏幕截图](./media/redis-cache-insights-overview/insights.png)
+    ![屏幕截图，其中的“菜单”选项以红色框突出显示了“见解”一词](./media/redis-cache-insights-overview/insights.png)
 
 还可以通过从 Azure Monitor 级工作簿中选择 Azure Cache for Redis 资源的资源名称来访问这些视图。
 
@@ -168,7 +168,7 @@ ms.locfileid: "90887009"
 
 ![突出显示的展开工作簿符号](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cache-for-redis"></a>自定义 Redis 的 Azure Cache Azure Monitor
+## <a name="customize-azure-monitor-for-azure-cache-for-redis"></a>自定义适用于 Azure Cache for Redis 的 Azure Monitor
 
 因为此体验是基于 Azure Monitor 工作簿模板构建的，所以可以选择“自定义” > “编辑” > 保存”，将修改后版本的副本保存为自定义工作簿  。
 

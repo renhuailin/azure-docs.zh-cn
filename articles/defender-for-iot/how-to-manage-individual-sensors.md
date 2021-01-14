@@ -4,15 +4,15 @@ description: 了解如何管理单个传感器，包括管理激活文件、执�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/22/2020
+ms.date: 01/10/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: daaca1d7c6cf43f69241e6a23f8bdfaf4015ba23
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: b61bef89d53da280961b818425d11a6f81bbf5ea
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976939"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210233"
 ---
 # <a name="manage-individual-sensors"></a>管理单个传感器
 
@@ -282,7 +282,7 @@ Pem (或很少使用其他扩展名) 格式的文件。 Windows 资源管理器�
 
 3. 按如下所示设置参数：
 
-    | 参数 | 说明 |
+    | 参数 | 描述 |
     |--|--|
     | IP 地址 | 传感器 IP 地址 |
     | 子网掩码 | 掩码地址 |
@@ -299,7 +299,7 @@ Pem (或很少使用其他扩展名) 格式的文件。 Windows 资源管理器�
 
 :::image type="content" source="media/how-to-manage-individual-sensors/time-and-region.png" alt-text="配置时间和区域。":::
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |--|--|
 | 时区 | 的时区定义：<br />-警报<br />-趋势和统计小组件<br />-数据挖掘报表<br />   -风险评估报表<br />-攻击向量 |
 | 日期格式 | 选择以下格式选项之一：<br />-dd/MM/yyyy HH： MM： ss<br />-MM/dd/yyyy HH： MM： ss<br />-yyyy/MM/dd HH： MM： ss |
@@ -329,7 +329,7 @@ Pem (或很少使用其他扩展名) 格式的文件。 Windows 资源管理器�
 
 **不备份的内容：** PCAP 文件和日志。 可以手动备份和还原 PCAPs 和日志。
 
-传感器备份文件通过以下格式自动命名： `<sensor name>-backup-version-<version>-<date>.tar` 。 示例为 `Sensor_1-backup-version-2.6.0.102-2019-06-24_09:24:55.tar`。
+传感器备份文件通过以下格式自动命名： `<sensor name>-backup-version-<version>-<date>.tar` 。 例如 `Sensor_1-backup-version-2.6.0.102-2019-06-24_09:24:55.tar`。
 
 配置备份：
 
@@ -455,7 +455,7 @@ Pem (或很少使用其他扩展名) 格式的文件。 Windows 资源管理器�
 
 3. 从 "**常规**" 部分中选择 "**系统属性**"。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [威胁情报研究和包](how-to-work-with-threat-intelligence-packages.md)
 

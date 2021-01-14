@@ -1,14 +1,14 @@
 ---
 title: 了解如何审核虚拟机的内容
 description: 了解 Azure 策略如何使用来宾配置客户端审核虚拟机内的设置。
-ms.date: 10/14/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5ec43516c60d2fe5d923a7b87cddbea0ad640453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071827"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210114"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -101,11 +101,11 @@ Azure Arc 计算机使用本地网络基础结构连接到 Azure 服务并报告
 
 ## <a name="managed-identity-requirements"></a>托管标识要求
 
-[部署先决条件以在虚拟机上启用 Guest Configuration 策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)计划中的策略定义会启用系统分配的托管标识（如果不存在）。 计划中有两个管理标识创建的策略定义。 策略定义中的 IF 条件基于 Azure 中计算机资源的当前状态确保行为正确。
+_部署先决条件以在虚拟机上启用 Guest Configuration 策略_ 计划中的策略定义会启用系统分配的托管标识（如果不存在）。 计划中有两个管理标识创建的策略定义。 策略定义中的 IF 条件基于 Azure 中计算机资源的当前状态确保行为正确。
 
-如果计算机当前没有任何托管标识，则有效策略将为：[\[预览版\]:添加系统分配的托管标识，在没有标识的虚拟机上启用来宾配置分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+如果计算机当前没有任何托管标识，则有效策略将为： [添加系统分配的托管标识，以在没有标识的虚拟机上启用来宾配置分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
 
-如果计算机当前具有用户分配的系统标识，则有效策略将为：[\[预览版\]:添加系统分配的托管标识，在具有用户分配的标识的虚拟机上启用来宾配置分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
+如果计算机当前具有用户分配的系统标识，则有效策略将为： [添加系统分配的托管标识，以在具有用户分配的标识的 vm 上启用来宾配置分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>来宾配置定义要求
 
@@ -120,7 +120,7 @@ Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“�
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>按照行业基线审核操作系统设置
 
-Azure Policy 中的一个计划提供了按照“基线”审核操作系统设置的功能。 定义 _\[预览\]：审核不匹配 Azure 安全基线设置的 Windows VM_ 包含一组基于 Active Directory 组策略的规则。
+Azure 策略中的一个计划会按照 "基准" 审核操作系统设置。 定义、 _\[ 预览 \] ： Windows 计算机应符合 Azure 安全基线的要求_，其中包含一组基于 Active Directory 组策略的规则。
 
 大多数设置都可用作参数。 参数允许你自定义要审核的内容。
 根据你的要求调整策略，或将策略映射到第三方信息（如行业监管标准）。

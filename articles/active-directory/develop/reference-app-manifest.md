@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b29d8007ba7c6fb41209ad4f792069667416616b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d855e124c84dee8554073d05fa04fe078b92ddaa
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011537"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208883"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -115,17 +115,6 @@ ms.locfileid: "98011537"
     "allowPublicClient": false,
 ```
 
-### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants 属性
-
-| 密钥 | 值类型 |
-| :--- | :--- |
-| availableToOtherTenants | 布尔 |
-
-如果应用程序与其他租户共享，则设为 true；否则为 false。
-
-> [!NOTE]
-> 此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中替换为了 `signInAudience`。
-
 ### <a name="appid-attribute"></a>appId 属性
 
 | 密钥 | 值类型 |
@@ -165,17 +154,6 @@ ms.locfileid: "98011537"
     ],
 ```
 
-### <a name="displayname-attribute"></a>displayName 属性
-
-| 密钥 | 值类型 |
-| :--- | :--- |
-| displayName | 字符串 |
-
-应用的显示名称。
-
-> [!NOTE]
-> 此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中替换为了 `name`。
-
 ### <a name="errorurl-attribute"></a>errorUrl 属性
 
 | 密钥 | 值类型 |
@@ -186,9 +164,9 @@ ms.locfileid: "98011537"
 
 ### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-|groupMembershipClaims | 字符串 |
+|groupMembershipClaims | String |
 
 配置应用所需的用户访问令牌或 OAuth 2.0 访问令牌中颁发的 `groups` 声明。 若要设置此属性，请使用以下有效的字符串值之一：
 
@@ -201,33 +179,6 @@ ms.locfileid: "98011537"
 
 ```json
     "groupMembershipClaims": "SecurityGroup",
-```
-
-### <a name="homepage-attribute"></a>homepage 属性
-
-| 密钥 | 值类型 |
-| :--- | :--- |
-| homepage |字符串 |
-
-应用程序主页的 URL。
-
-> [!NOTE]
-> 此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中替换为了 `signInUrl`。
-
-### <a name="objectid-attribute"></a>objectId 属性
-
-| 密钥 | 值类型 |
-| :--- | :--- |
-|objectId | 字符串 |
-
-应用在目录中的唯一标识符。
-
-这仅在应用注册（旧版）体验中可用。 在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中替换为了 `id`。
-
-示例：
-
-```json
-    "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
 ```
 
 ### <a name="optionalclaims-attribute"></a>optionalClaims 属性
@@ -245,7 +196,6 @@ ms.locfileid: "98011537"
 ```json
     "optionalClaims": null,
 ```
-
 
 
 ### <a name="identifieruris-attribute"></a>identifierUris 属性
@@ -489,16 +439,6 @@ ms.locfileid: "98011537"
     ],
 ```
 
-### <a name="publicclient-attribute"></a>publicClient 属性
-
-| 密钥 | 值类型 |
-| :--- | :--- |
-| publicClient | 布尔|
-
-指定此应用程序是否是公共客户端（例如在移动设备上运行的已安装应用程序）。
-
-此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中替换为了 `allowPublicClient`。
-
 ### <a name="publisherdomain-attribute"></a>publisherDomain 属性
 
 | 密钥 | 值类型 |
@@ -511,17 +451,7 @@ ms.locfileid: "98011537"
 
 ```json
     "publisherDomain": "https://www.contoso.com",
-````
-
-### <a name="replyurls-attribute"></a>replyUrls 属性
-
-| 密钥 | 值类型 |
-| :--- | :--- |
-| replyUrls | 字符串数组 |
-
-此多值属性保存 Azure AD 在返回令牌时接受用作目标的已注册 redirect_uri 值列表。
-
-此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中替换为了 `replyUrlsWithType`。
+```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 属性
 
@@ -577,7 +507,7 @@ ms.locfileid: "98011537"
 
 ### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | samlMetadataUrl | 字符串 |
 
@@ -664,7 +594,7 @@ ms.locfileid: "98011537"
 
 尝试上传之前下载的清单时，可能会出现以下错误之一。 此错误很可能是因为清单编辑器现在支持较新版本的架构，该架构与你尝试上传的清单不匹配。
 
-* “无法更新 xxxxxx 应用程序。 错误详细信息：无效的对象标识符 'undefined'。 []。”
+* “无法更新 xxxxxx 应用程序。 错误详细信息：无效的对象标识符 'undefined'。 []."
 * “无法更新 xxxxxx 应用程序。 错误详细信息：指定的一个或多个属性值无效。 []."
 * “无法更新 xxxxxx 应用程序。 错误详细信息：不允许在此 api 版本中设置要更新的 availableToOtherTenants。 []."
 * “无法更新 xxxxxx 应用程序。 错误详细信息：不允许对此应用程序的 replyUrls 属性进行更新。 请改用 'replyUrlsWithType' 属性。 []."
