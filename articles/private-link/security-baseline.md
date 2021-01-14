@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 636bc3c64dcd15ead36a9a4e969e802d49895dca
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b38d86402f418e5c2b484bb9101e2b4cc3575d6e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522237"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196616"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure 专用链接的 azure 安全基线
 
@@ -56,7 +56,7 @@ ms.locfileid: "95522237"
 
 - [网络安全组的诊断日志记录](../virtual-network/virtual-network-nsg-manage-log.md)
 
-- [如何开始将 Azure Monitor 与第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
+- [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 **Azure 安全中心监视**：是
 
@@ -176,7 +176,7 @@ ms.locfileid: "95522237"
 
 **指南**：通过配置为登录和配置 Azure 网络资源的多重身份验证，使用特权访问工作站 (PAW) 。
 
-- [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -220,7 +220,7 @@ ms.locfileid: "95522237"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：Azure Active Directory 提供有助于发现陈旧帐户的日志。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。
+**指南**：Azure Active Directory 提供日志来帮助发现过时的帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。
 
 - [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
@@ -294,7 +294,7 @@ ms.locfileid: "95522237"
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对数据和资源的访问，否则使用服务特定的访问控制方法。
+**指导**：使用 Azure 基于角色的访问控制 (Azure RBAC) 控制对数据和资源的访问，否则请使用特定于服务的访问控制方法。
 
 - [在此处熟悉 Azure 内置角色的简短描述和唯一 ID](../role-based-access-control/built-in-roles.md)
 
@@ -400,7 +400,7 @@ ms.locfileid: "95522237"
 
 ### <a name="67-remove-unapproved-azure-resources"></a>6.7：删除未经批准的 Azure 资源
 
-**指南**：客户可以根据客户公司策略的要求，阻止创建或使用 Azure 策略的资源。 你可以实施自己的流程来删除未经授权的资源。
+**指导**：根据客户的公司政策，客户可以阻止通过 Azure Policy 来创建或使用资源的操作。 你可以实施自己的流程来删除未经授权的资源。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 

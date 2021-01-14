@@ -1,22 +1,22 @@
 ---
-title: 适用于 Azure Database for PostgreSQL 的 Azure 安全基线-单服务器
-description: Azure Database for PostgreSQL 单服务器安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
+title: 适用于 Azure Database for PostgreSQL 单一服务器的 Azure 安全基线
+description: Azure Database for PostgreSQL 单一服务器安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 830f58ea11ba84dd2aee81c0352b3ede4aa4929c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8aecee0946c8418016be542e65b117894c68c591
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498245"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197602"
 ---
-# <a name="azure-security-baseline-for-azure-database-for-postgresql---single-server"></a>适用于 Azure Database for PostgreSQL 的 Azure 安全基线-单服务器
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---single-server"></a>适用于 Azure Database for PostgreSQL 单一服务器的 Azure 安全基线
 
-适用于 Azure Database for PostgreSQL 的 Azure 安全基线-单服务器包含的建议可帮助你提高部署的安全状况。
+适用于 Azure Database for PostgreSQL 单一服务器的 Azure 安全基线包含有助于改进部署安全状况的建议。
 
 此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
@@ -34,9 +34,9 @@ ms.locfileid: "96498245"
 
 还可以使用防火墙规则保护 Azure Database for PostgreSQL 服务器。 在指定哪些计算机具有权限之前，服务器防火墙将禁止所有对数据库服务器的访问。 要配置防火墙，请创建防火墙规则，以指定可接受的 IP 地址的范围。 可以在服务器级别创建防火墙规则。
 
-- [如何配置 Azure Database for PostgreSQL 的专用链接](howto-configure-privatelink-portal.md)
+- [如何为 Azure Database for PostgreSQL 配置专用链接](howto-configure-privatelink-portal.md)
 
-- [如何在中创建和管理 VNet 服务终结点和 VNet 规则 Azure Database for PostgreSQL](howto-manage-vnet-using-portal.md)
+- [如何在 Azure Database for PostgreSQL 中创建和管理 VNet 服务终结点和 VNet 规则](howto-manage-vnet-using-portal.md)
 
 - [如何配置 Azure Database for PostgreSQL 防火墙规则](howto-manage-firewall-using-portal.md)
 
@@ -48,7 +48,7 @@ ms.locfileid: "96498245"
 
 **指南**：Azure Database for PostgreSQL 实例在专用终结点中受到保护时，可以在同一虚拟网络中部署虚拟机。 可以使用网络安全组 (NSG) 来降低数据外泄的风险。 启用 NSG 流日志，并将日志发送到存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
-- [如何配置 Azure Database for PostgreSQL 的专用链接](howto-configure-privatelink-portal.md)
+- [如何为 Azure Database for PostgreSQL 配置专用链接](howto-configure-privatelink-portal.md)
 
 - [如何启用 NSG 流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -180,9 +180,9 @@ ms.locfileid: "96498245"
 
 **责任**：Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2.2：配置安全日志集中管理
+### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指南**：启用诊断设置和服务器日志，并引入日志来聚合 Azure Database for PostgreSQL 实例生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区进行查询和执行分析，并将 Azure 存储帐户用于长期/存档存储。 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
+**指南**：启用诊断设置和服务器日志，并引入日志来聚合 Azure Database for PostgreSQL 实例生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期/存档存储。 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
 - [如何配置和访问 Azure Database for PostgreSQL 的服务器日志](howto-configure-server-logs-in-portal.md)
 
@@ -338,7 +338,7 @@ Azure Database for PostgreSQL 不支持内置基于角色的访问控制，但�
 
 另外，对 PostgreSQL 的控制平面访问可通过 REST API 进行，并且支持 SSO。 要进行身份验证，请将请求的授权标头设置为从 Azure Active Directory 获取的 JSON Web 令牌。
 
-- [使用 Azure Active Directory 对 Azure Database for PostgreSQL 进行身份验证](howto-configure-sign-in-aad-authentication.md)
+- [使用 Azure Active Directory 向 Azure Database for PostgreSQL 进行身份验证](howto-configure-sign-in-aad-authentication.md)
 
 - [了解 Azure Database for PostgreSQL REST API](/rest/api/postgresql/)
 
@@ -354,7 +354,7 @@ Azure Database for PostgreSQL 不支持内置基于角色的访问控制，但�
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [使用 Azure Active Directory 对 Azure Database for PostgreSQL 进行身份验证](howto-configure-sign-in-aad-authentication.md)
+- [使用 Azure Active Directory 向 Azure Database for PostgreSQL 进行身份验证](howto-configure-sign-in-aad-authentication.md)
 
 - [如何在 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
@@ -366,7 +366,7 @@ Azure Database for PostgreSQL 不支持内置基于角色的访问控制，但�
 
 **指南**：将特权访问工作站 (PAW) 与为登录和配置 Azure 资源而配置的多重身份验证 (MFA) 结合使用。
 
-- [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -410,7 +410,7 @@ Azure Database for PostgreSQL 不支持内置基于角色的访问控制，但�
 
 Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）进行管理，以控制 PostgreSQL 管理员帐户。
 
-- [使用 Azure Active Directory 对 Azure Database for PostgreSQL 进行身份验证](howto-configure-sign-in-aad-authentication.md)
+- [使用 Azure Active Directory 向 Azure Database for PostgreSQL 进行身份验证](howto-configure-sign-in-aad-authentication.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -424,7 +424,7 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 - [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
-- [查看 PostgreSQL 用户和分配的角色](https://www.postgresql.org/docs/current/database-roles.html)
+- [评审 PostgreSQL 用户和分配的角色](https://www.postgresql.org/docs/current/database-roles.html)
 
 **Azure 安全中心监视**：是
 
@@ -496,9 +496,9 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 - [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [如何配置 Azure Database for PostgreSQL 的专用链接](howto-configure-privatelink-portal.md)
+- [如何为 Azure Database for PostgreSQL 配置专用链接](howto-configure-privatelink-portal.md)
 
-- [如何在中创建和管理 VNet 服务终结点和 VNet 规则 Azure Database for PostgreSQL](howto-manage-vnet-using-portal.md)
+- [如何在 Azure Database for PostgreSQL 中创建和管理 VNet 服务终结点和 VNet 规则](howto-manage-vnet-using-portal.md)
 
 - [如何配置 Azure Database for PostgreSQL 防火墙规则](concepts-firewall-rules.md)
 
@@ -512,7 +512,7 @@ Azure 安全中心监视：不可用
 
 Microsoft 会管理 Azure Database for PostgreSQL 的底层基础结构，并实施了严格控制来防止客户数据丢失或泄露。
 
-- [如何减小 Azure Database for PostgreSQL 的数据渗透](concepts-data-access-and-security-private-link.md)
+- [如何缓解 Azure Database for PostgreSQL 的数据外泄](concepts-data-access-and-security-private-link.md)
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -526,7 +526,7 @@ Microsoft 会管理 Azure Database for PostgreSQL 的底层基础结构，并实
 
 Azure Database for PostgreSQL 当前支持的 TLS 版本为 TLS 1.0、TLS 1.1、TLS 1.2。
 
-- [如何配置传输中的加密 Azure Database for PostgreSQL](concepts-ssl-connection-security.md)
+- [如何为 Azure Database for PostgreSQL 配置传输中加密](concepts-ssl-connection-security.md)
 
 **Azure 安全中心监视**：是
 
@@ -536,7 +536,7 @@ Azure Database for PostgreSQL 当前支持的 TLS 版本为 TLS 1.0、TLS 1.1、
 
 **指南**：数据标识、分类和丢失防护功能尚不可用于 Azure Database for PostgreSQL。 在合规性目的需要时，实现第三方解决方案。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -546,11 +546,11 @@ Azure Database for PostgreSQL 当前支持的 TLS 版本为 TLS 1.0、TLS 1.1、
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指导**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对 Azure Database for PostgreSQL 控制平面的访问 (例如 Azure 门户) 。 对于数据平面访问（在数据库本身内），使用 SQL 查询创建用户并配置用户权限。 Azure RBAC 不影响数据库中的用户权限。
+**指导**：使用 Azure 基于角色的访问控制 (Azure RBAC) 来控制对 Azure Database for PostgreSQL 控制平面（如 Azure 门户）的访问。 对于数据平面访问（在数据库本身内），使用 SQL 查询创建用户并配置用户权限。 Azure RBAC 不影响数据库中的用户权限。
 
 - [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
-- [如何使用 SQL for Azure Database for PostgreSQL 配置用户访问权限](howto-create-users.md)
+- [Azure 如何使用 SQL 为 Azure Database for PostgreSQL 配置用户访问权限](howto-create-users.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -584,7 +584,7 @@ AskAzureDBforPostgreSQL@service.microsoft.com.
 
 **责任**：Microsoft
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并发出警报
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
 **指南**：结合使用 Azure Monitor 与 Azure 活动，以创建在 Azure Database for PostgreSQL 的生产实例和其他关键或相关资源发生更改时发出的警报。
 
@@ -600,13 +600,13 @@ AskAzureDBforPostgreSQL@service.microsoft.com.
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
-**指南**：通过 Azure 安全中心的建议来保护 Azure Database for PostgreSQL 和相关资源。
+**指导**：请遵循 Azure 安全中心关于保护 Azure Database for PostgreSQL 和相关资源的建议。
 
 Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管理。
 
 - [了解 Azure 安全中心建议](../security-center/recommendations-reference.md)
 
-- [Azure 安全中心 Azure PaaS 服务的功能范围](../security-center/features-paas.md)
+- [Azure 安全中心内 Azure PaaS 服务的功能覆盖范围](../security-center/features-paas.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -650,7 +650,7 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
-**指南**：使用 Azure 资源关系图可查询和发现所有资源 (包括订阅中) Azure Database for PostgreSQL 实例。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
+**指导**：使用 Azure Resource Graph 查询和发现订阅中的所有资源（包括 Azure Database for PostgreSQL 实例）。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
 
 - [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
@@ -892,7 +892,7 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全管理 Azure 机密
 
-**指南**：对于在 Azure 应用服务上运行的用于访问 Azure Database for PostgreSQL 实例的 Azure 虚拟机或 Web 应用程序，请结合使用托管服务标识与 Azure Key Vault，以简化和保护 Azure Database for PostgreSQL 机密管理。 请确保启用 Key Vault 软删除。
+**指南**：对于在 Azure 应用服务上运行的用于访问 Azure Database for PostgreSQL 实例的 Azure 虚拟机或 Web 应用程序，请结合使用托管服务标识与 Azure Key Vault，以简化和保护 Azure Database for PostgreSQL 机密管理。 确保启用 Key Vault 软删除。
 
 - [如何与 Azure 托管标识集成](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
@@ -904,7 +904,7 @@ Microsoft 对支持 Azure Database for PostgreSQL 的基础系统执行漏洞管
 
 **责任**：客户
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全地自动管理标识
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
 **指南**：Azure Database for PostgreSQL 服务器支持通过 Azure Active Directory 身份验证访问数据库。  创建 Azure Database for PostgreSQL 服务器时，需要为管理员用户提供凭据。 此管理员可用于创建其他数据库用户。  
 
@@ -1024,7 +1024,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure Database for
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 - [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 
@@ -1040,7 +1040,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure Database for
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 

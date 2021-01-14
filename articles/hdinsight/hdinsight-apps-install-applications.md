@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3c1c7ac8fe8b7adf287bcde30a054df5ebaa63d7
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 2b6ea68d069b90293ab35024bebf3fbdc8acb592
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337434"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197670"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装第三方 Apache Hadoop 应用程序
 
@@ -37,7 +37,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 |[适用于 Azure HDInsight 的 Starburst Presto](https://azuremarketplace.microsoft.com/marketplace/apps/starburstdatainc1579800938563.starburst-presto?tab=Overview) |Hadoop |Presto 是一种快速的可缩放分布式 SQL 查询引擎。 Presto 针对存储和计算的分离进行了架构设计，非常适用于查询 Azure Data Lake Storage、Azure Blob 存储、SQL 和 NoSQL 数据库以及其他数据源中的数据。 |
 |[适用于 HDInsight 云的 StreamSets 数据收集器](https://azuremarketplace.microsoft.com/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop、HBase、Spark、Kafka |StreamSets 数据收集器是一种轻量级的功能强大的引擎，可实时流式处理数据。 该数据收集器可用来路由和处理数据流中的数据。 该产品附带 30 天试用版许可证。 |
 |[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.trifacta-db?tab=Overview) |Hadoop、Spark、HBase |Trifacta Wrangler Enterprise for HDInsight 支持对任何规模的数据进行企业范围的数据整理。 在 Azure 上运行 Trifacta 所产生的成本是 Trifacta 订阅成本及虚拟机的 Azure 基础结构成本之和。 |
-|[Unifi Data Platform](https://unifisoftware.com/platform/) |Hadoop、HBase、Storm、Spark |Unifi Data Platform 是一套无缝集成的自助服务数据工具，旨在使业务用户能够解决促进收入增长、降低成本或运营复杂性的数据难题。 |
+|[Unifi Data Platform](https://www.crunchbase.com/organization/unifi-software) |Hadoop、HBase、Storm、Spark |Unifi Data Platform 是一套无缝集成的自助服务数据工具，旨在使业务用户能够解决促进收入增长、降低成本或运营复杂性的数据难题。 |
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |适用于 HDInsight Spark 群集的 Unravel Data 应用。 |
 |[Waterline AI 驱动的数据目录](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |Waterline 使用 AI 来编录、整理和管理数据，从而使用业务术语自动标记数据。 Waterline 的商业文献目录是一个用于自助分析、符合性和管理，以及 IT 管理计划的关键成功组件。 |
 

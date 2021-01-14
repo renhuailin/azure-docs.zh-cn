@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 30da040a977f8052f227f19e975915cbbe915102
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 4b737c570f7f4b56f387b60fad180ddd89b84ebe
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532561"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196021"
 ---
 # <a name="azure-security-baseline-for-azure-advisor"></a>Azure Advisor 的 azure 安全基准
 
@@ -29,7 +29,7 @@ ms.locfileid: "96532561"
 **指南**： Azure 顾问使用 Azure Active Directory (Azure AD) 作为默认的标识和访问管理服务。 标准化 Azure AD 来管理组织的标识和访问管理：
 
 - Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机 (Linux 和 Windows) 、Azure Key Vault、PaaS 和 SaaS 应用程序
-- 你组织的资源，如 Azure 上的应用程序或你的公司网络资源
+- 你的组织的资源，例如 Azure 上的应用程序，或公司网络资源
 
 确保在组织的云安全实践中保护 Azure AD 的优先级较高。 Azure AD 还提供了一个标识安全分数，有助于根据 Microsoft 的最佳实践建议评估标识安全状况。 使用评分来估计你的配置与最佳做法建议的匹配程度，并改善你的安全状况。
 
@@ -78,9 +78,9 @@ ms.locfileid: "96532561"
 ### <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：监视并提醒帐户异常
 
 **指南**： Azure Advisor 与 Azure Active Directory (Azure AD 的) ，其中提供了以下数据源：
-- 登录-登录报表提供有关托管应用程序和用户登录活动的使用情况的信息。
+- 登录 - 登录报告提供有关托管应用程序使用情况和用户登录活动的信息。
 - 审核日志 - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
-- 有风险的登录-有风险登录是指可能已由非用户帐户合法所有者执行的登录尝试。
+- 风险登录 - 风险登录指示可能有用户帐户合法拥有者以外的人进行了登录尝试。
 - 已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
 使用这些数据源可以与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。 在 Azure 安全中心为某些可疑活动（如过多的身份验证尝试次数、不推荐使用的帐户）设置警报。
@@ -141,7 +141,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 请注意，某些 Azure 服务支持不通过 Azure AD 管理的本地用户和角色。 客户需要单独管理这些用户。
 
-- [在 Privileged Identity Management (PIM 中创建 Azure 资源角色的访问评审) ](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
+- [在 Privileged Identity Management (PIM) 中创建对 Azure 资源角色的访问评审](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
 - [如何使用 Azure AD 标识和访问评审](/azure/active-directory/governance/access-reviews-overview)
 
@@ -157,7 +157,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 集中管理受保护的工作站来强制实施安全配置，包括强身份验证、软件和硬件基准、受限的逻辑访问和网络访问。
 
-- [了解特权访问工作站](../active-directory/devices/concept-azure-managed-workstation.md) 
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
  
 - [部署特权访问工作站](../active-directory/devices/howto-azure-managed-workstation.md)
 
@@ -237,11 +237,11 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5：集中管理和分析安全日志
 
-**指南**：集中记录存储和分析以启用关联。 对于每个日志源，请确保已分配数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
+**指导**：集中记录存储和分析来实现关联。 对于每个日志源，请确保已分配数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
 
 确保正在将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
-此外，启用数据并将数据集成到 Azure Sentinel 或第三方 SIEM。 许多组织选择使用 Azure Sentinel 作为 "热" 数据，这些数据经常使用，而 Azure 存储则用于不频繁使用的 "冷" 数据。
+另外，请启用 Azure Sentinel 或第三方 SIEM 并将数据载入其中。 许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 
@@ -254,7 +254,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 ### <a name="lt-6-configure-log-storage-retention"></a>LT-6：配置日志存储保留期
 
 **指南**：确保用于存储 Azure 顾问日志的任何存储帐户或 Log Analytics 工作区都具有根据你的组织的符合性规定设置的日志保持期。
-在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 使用 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期和存档存储。
+在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期存储和存档存储。
 
 - [如何配置 Log Analytics 工作区保留期](../azure-monitor/platform/manage-cost-storage.md) 
 

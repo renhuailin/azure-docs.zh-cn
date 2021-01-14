@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 29e72f8358591614489be2731d16e89428ef388b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301363"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195715"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>适用于 Azure 存储的 Azure 安全基线
 
@@ -90,7 +90,7 @@ ms.locfileid: "96301363"
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems"></a>1.6：部署基于网络的入侵检测/入侵防护系统
 
-**指南**： Azure 存储的高级威胁防护提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 当活动出现异常时，会触发安全警报。 这些安全警报与 Azure 安全中心集成，还会通过电子邮件发送给订阅管理员，并详细介绍了可疑活动以及如何调查和修正威胁的建议。 
+**指南**： Azure 存储的高级威胁防护提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 当活动出现异常时，会触发安全警报。 这些安全警报与 Azure 安全中心集成，并通过电子邮件发送给订阅管理员，内容包括可疑活动的详细信息以及如何调查和修正威胁的建议。 
 
 - [配置 Azure 存储的高级威胁防护](./azure-defender-storage-configure.md)
 
@@ -220,7 +220,7 @@ ms.locfileid: "96301363"
 
 **指导**：若要查看 Azure 存储日志，可以使用通过 Log Analytics 产品/服务进行查询之类的常用选项，也可以使用唯一用于直接查看日志文件的选项。 在 Azure 存储中，日志存储在 `http://accountname.blob.core.windows.net/$logs` 默认情况下隐藏 (日志记录文件夹的 blob 中，因此你将需要直接导航。 它不会显示在 List 命令中） 
 
-同时，为你的 Azure 存储帐户启用高级威胁防护。 适用于 Azure 存储的高级威胁防护提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 当活动出现异常时，会触发安全警报。 这些安全警报与 Azure 安全中心集成，还会通过电子邮件发送给订阅管理员，并详细介绍了可疑活动以及如何调查和修正威胁的建议。 
+同时，为你的 Azure 存储帐户启用高级威胁防护。 适用于 Azure 存储的高级威胁防护提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 当活动出现异常时，会触发安全警报。 这些安全警报与 Azure 安全中心集成，并通过电子邮件发送给订阅管理员，内容包括可疑活动的详细信息以及如何调查和修正威胁的建议。 
 
 - [记录和查看数据](./storage-analytics-logging.md#how-logs-are-stored)
 
@@ -346,7 +346,7 @@ ms.locfileid: "96301363"
 
 **指导**：使用配置了 MFA 的 PAW（特权访问工作站）来登录并配置存储帐户资源。 
 
-- [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中启用 MFA](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -722,7 +722,7 @@ ms.locfileid: "96301363"
 
 ### <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -745,7 +745,7 @@ ms.locfileid: "96301363"
 
 ### <a name="610-implement-approved-application-list"></a>6.10：实施已批准的应用程序列表
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -1045,7 +1045,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 **指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
 
-此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [Azure 安全中心中的安全警报](../../security-center/security-center-alerts-overview.md)
 

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 0143b014328dfd5c164f0c3c62aeef7cabe1a17c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 307afc8f1caafac1a511f0f9895cc73dd9b47eb4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065416"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196038"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud 常见问题解答
 
@@ -37,7 +37,7 @@ Azure Spring Cloud 通过集成 Azure Monitor、Application Insights 和 Log Ana
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure 春季云在哪些区域可用？
 
-美国东部、美国东部2、美国中部、美国中南部、美国中北部、美国西部、美国西部2、西欧、北欧、英国南部、东南亚、澳大利亚东部、加拿大中部、阿拉伯联合酋长国北部、印度中部和东亚。 [了解详细信息](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
+美国东部、美国东部2、美国中部、美国中南部、美国中北部、美国西部、美国西部2、西欧、北欧、英国南部、东南亚、澳大利亚东部、加拿大中部、阿拉伯联合酋长国北部、澳大利亚东部、加拿大中部、、印度中部、韩国、东亚和中国东部 2 (Mooncake) 。 [了解详细信息](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>是否有客户数据存储在指定区域之外？
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: dfa0efaa49fbca0b927bfd32511348f3ded7e6c7
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302809"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197993"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中将基础结构自动化工具与虚拟机配合使用
 
@@ -88,7 +88,7 @@ DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 
 了解如何：
 
 - [通过 Azure CLI 创建 Linux VM 并使用自定义脚本扩展](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json)。
-- [通过 Azure PowerShell 创建 Windows VM 并使用自定义脚本扩展](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json)。
+- [通过 Azure PowerShell 创建 Windows VM 并使用自定义脚本扩展](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md)。
 
 
 ## <a name="packer"></a>Packer

@@ -1,18 +1,18 @@
 ---
-title: '使用监控范围 Insights (预览版对你的数据进行分类报告) '
-description: 本操作方法指南介绍了如何查看和使用监控范围 Insights 分类报表数据。
+title: 使用监控范围 Insights 在 Azure 监控范围中报告数据
+description: 本操作方法指南介绍如何查看和使用数据的监控范围分类报告。
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: bb3c7cc3f51eae90c5b712d224407e639b232fbc
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a0eed27636a3f65d68489d1f2249db784ba1d722
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938879"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196531"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>有关 Azure 监控范围中的数据的分类见解
 
@@ -33,7 +33,9 @@ ms.locfileid: "96938879"
 
 - 设置 Azure 资源并用测试数据填充相关帐户
 
-- 为每个数据源中的测试数据设置并完成扫描 
+- 为每个数据源中的测试数据设置并完成扫描
+
+- 使用 [数据读取器或数据陈列角色](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)的帐户登录到监控范围。
 
 有关详细信息，请参阅 [在 Azure 监控范围中管理数据源 (预览) ](manage-data-sources.md)。
 

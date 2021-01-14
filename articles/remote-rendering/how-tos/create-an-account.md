@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 8169b277dfae918e86ac493259325ff84d0b6a4e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83bd4a7ae0082d24f7ac617719e628f4db4baeb9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998526"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197620"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>创建“Azure 远程渲染”帐户
 
@@ -71,35 +71,26 @@ ms.locfileid: "95998526"
 
 本段落介绍如何将存储帐户链接到远程渲染帐户。 链接存储帐户时，无需在每次要与帐户中的数据进行交互时（例如加载模型时）生成 SAS URI。 你可以直接改用存储帐户名称，如[加载模型部分](../concepts/models.md#loading-models)中所述。
 
-必须为应使用此替代访问方法的每个存储帐户执行本段落中的步骤。 如果尚未创建存储帐户，可以完成[“转换模型以进行渲染”快速入门](../quickstarts/convert-model.md#storage-account-creation)中的相应步骤。
+必须为应使用此访问方法的每个存储帐户执行此段落中的步骤。 如果尚未创建存储帐户，可以完成[“转换模型以进行渲染”快速入门](../quickstarts/convert-model.md#storage-account-creation)中的相应步骤。
 
 现在，假设你有一个存储帐户。 导航到门户中的存储帐户，然后转到该存储帐户的访问控制 (IAM) 选项卡：
 
 ![存储帐户 IAM](./media/azure-storage-account.png)
 
- 确保你拥有对此存储帐户的所有者权限，以确保可以添加角色分配。 如果你没有访问权限，则将禁用“添加角色分配”选项。
+确保你拥有对此存储帐户的所有者权限，以确保可以添加角色分配。 如果你没有访问权限，则将禁用“添加角色分配”选项。
 
- 你需要添加三个不同的角色，如后续步骤中所述。 如果你未提供所有三个级别的访问权限，则你尝试访问存储帐户时将会出现权限问题。
-
- 单击“添加角色分配”磁贴中的“添加”按钮，添加第一个角色：
+单击 "添加角色分配" 磁贴中的 " **添加** " 按钮，添加该角色。
 
 ![存储帐户 IAM 添加角色分配](./media/azure-add-role-assignment.png)
 
-* 要分配的第一个角色是“所有者”，如上面的屏幕截图中所示。
-* 在“访问权限分配对象”下拉列表中，选择“远程渲染帐户” 。
+* 如上面的屏幕截图中所示，分配 **存储 Blob 数据参与者** 角色。
+* 从 "**分配访问权限**" 下拉列表中选择 "**远程呈现帐户** 系统分配的托管标识"。
 * 在上一个下拉列表中选择你的订阅和远程渲染帐户。
+* 单击 "保存" 以保存所做的更改。
 
 > [!WARNING]
 > 如果未列出远程渲染帐户，请参阅此[疑难解答部分](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account)。
 
-对于“角色”下拉列表中的相应选择，请重复添加新角色两次：
-
-* **存储帐户参与者**
-* **存储 Blob 数据参与者**
-
-与第一步一样，选择其他下拉列表。
-
-如果你已添加全部三个角色，则 Azure 远程渲染帐户可以使用系统分配的托管服务标识访问你的存储帐户。
 > [!IMPORTANT]
 > Azure 角色分配由 Azure 存储缓存，因此，在你授予远程呈现帐户的访问权限以及可用于访问你的存储帐户时，可能会有最多30分钟的延迟。 有关详细信息，请参阅 azure [RBAC) 文档 (azure 基于角色的访问控制](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected) 。
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b18e1cd20a4b0a886258fd56003cd273d92381fa
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: c1403c514f5a278fd406769f1d5271cc95a5c1df
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093972"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195732"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA（大型实例）网络体系结构
 
@@ -47,9 +47,9 @@ Azure 网络服务的体系结构是在 HANA 大型实例上成功部署 SAP 应
 
 ## <a name="additional-virtual-network-information"></a>其他虚拟网络信息
 
-若要将虚拟网络连接到 ExpressRoute，必须创建 Azure ExpressRoute 网关。 有关详细信息，请参阅 [关于 expressroute 的 expressroute 网关](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
+若要将虚拟网络连接到 ExpressRoute，必须创建 Azure ExpressRoute 网关。 有关详细信息，请参阅 [关于 expressroute 的 expressroute 网关](../../../expressroute/expressroute-about-virtual-network-gateways.md)。 
 
-使用 Azure ExpressRoute 网关与 Azure 外部的基础结构或 Azure 大型实例标记。 可以将 Azure ExpressRoute 网关连接到最多四个不同的 ExpressRoute 线路，只要这些连接来自不同的 Microsoft 企业边缘路由器。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
+使用 Azure ExpressRoute 网关与 Azure 外部的基础结构或 Azure 大型实例标记。 可以将 Azure ExpressRoute 网关连接到最多四个不同的 ExpressRoute 线路，只要这些连接来自不同的 Microsoft 企业边缘路由器。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md)。 
 
 > [!NOTE] 
 > 对于 ExpressRoute 网关，可以使用 ExpressRoute 连接实现的最大吞吐量为 10 Gbps。 在位于虚拟网络中的 VM 与本地系统之间复制文件（使用单一复制流）不会获得各种网关 SKU 的完整吞吐量。 若要利用 ExpressRoute 网关的完整带宽，请使用多个流。 或者，必须采用单一文件的并行流复制各个文件。
@@ -60,7 +60,7 @@ HANA 大型实例的网络体系结构可以分为四个不同的部分：
 
 - 本地网络和到 Azure 的 ExpressRoute 连接。 此部分是客户域，通过 ExpressRoute 连接到 Azure。 此 Expressroute 线路完全由你作为客户支付。 带宽应该足够大，能够处理本地资产与连接到的 Azure 区域之间的网络流量。 请参阅下图右下方。
 - 如前所述，Azure 网络服务与虚拟网络一起讨论，后者又需要添加 ExpressRoute 网关。 此部件是需要根据应用程序要求以及安全性和符合性要求找到合适设计的区域。 使用 HANA 大型实例是另一个考虑点，需要考虑到虚拟网络数以及可供选择的 Azure 网关 SKU。 请参阅下图右上方。
-- 通过 ExpressRoute 技术将 HANA 大型实例连接到 Azure 中。 此部件已部署，由 Microsoft 处理。 你只需提供一些 IP 地址范围，在将资产部署到 HANA 大型实例中后，再将 ExpressRoute 线路连接到虚拟网络。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 对于 Azure 数据中心网络结构与 HANA 大型实例单位之间的连接，客户不需要支付额外的费用。
+- 通过 ExpressRoute 技术将 HANA 大型实例连接到 Azure 中。 此部件已部署，由 Microsoft 处理。 你只需提供一些 IP 地址范围，在将资产部署到 HANA 大型实例中后，再将 ExpressRoute 线路连接到虚拟网络。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md)。 对于 Azure 数据中心网络结构与 HANA 大型实例单位之间的连接，客户不需要支付额外的费用。
 - HANA 大型实例戳记中的网络，这对您来说是透明的。
 
 ![连接到了 Azure 上的 SAP HANA（大型实例）和本地的虚拟网络](./media/hana-overview-architecture/image1-architecture.png)
@@ -98,7 +98,7 @@ Azure 中 SAP 部署的差别如下：
 
 ## <a name="single-sap-system"></a>单个 SAP 系统
 
-上面所示的本地基础结构通过 ExpressRoute 连接到 Azure。 ExpressRoute 线路连接到 Microsoft 企业边缘路由器 (MSEE) 。 有关详细信息，请参阅 [ExpressRoute 技术概述](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 建立路由后，它会连接到 Azure 主干。
+上面所示的本地基础结构通过 ExpressRoute 连接到 Azure。 ExpressRoute 线路连接到 Microsoft 企业边缘路由器 (MSEE) 。 有关详细信息，请参阅 [ExpressRoute 技术概述](../../../expressroute/expressroute-introduction.md)。 建立路由后，它会连接到 Azure 主干。
 
 > [!NOTE] 
 > 若要在 Azure 中运行 SAP 布局，请连接到距离 SAP 布局中的 Azure 区域最近的企业边缘路由器。 HANA 大型实例戳通过专用企业边缘路由器设备进行连接，以最大限度地减少 Azure IaaS 中 Vm 与 HANA 大型实例标记之间的网络延迟。
@@ -136,7 +136,7 @@ Azure 中 SAP 部署的差别如下：
 
 * 如果在两个不同的 Azure 区域部署了 HANA 大型实例单元用于进行灾难恢复，则会在过去应用相同的暂时性路由限制。 换言之，一个区域中的 HANA 大型实例单元的 IP 地址 (例如，美国西部) 未路由到部署在另一个区域中的 HANA 大型实例单元 (例如，美国东部) 。 此限制独立于跨区域使用 Azure 网络对等互连，或者跨连接 ExpressRoute 线路（将 HANA 大型实例单元连接到虚拟网络）。 有关图形表示形式，请参阅“在多个区域使用 HANA 大型实例单位”部分中的插图。 此限制在已部署的体系结构的基础上，禁止立即将 HANA 系统复制用作灾难恢复功能。 对于最近的更改，查找 "在多个区域使用 HANA 大型实例单元" 一节。 
 
-* Azure 上的 SAP HANA (大型实例) 单位具有从服务器 IP 池地址范围分配的 IP 地址，该地址是在请求 HANA 大型实例部署时提交的。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 可以通过将 Azure 虚拟网络连接到 HANA 大型实例的 Azure 订阅和线路来访问此 IP 地址。 从该服务器 IP 池地址范围中分配的 IP 地址将直接分配给硬件单元， 而不会经过 NAT 转换，在此解决方案的第一个部署中也存在这种情况。 
+* Azure 上的 SAP HANA (大型实例) 单位具有从服务器 IP 池地址范围分配的 IP 地址，该地址是在请求 HANA 大型实例部署时提交的。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md)。 可以通过将 Azure 虚拟网络连接到 HANA 大型实例的 Azure 订阅和线路来访问此 IP 地址。 从该服务器 IP 池地址范围中分配的 IP 地址将直接分配给硬件单元， 而不会经过 NAT 转换，在此解决方案的第一个部署中也存在这种情况。 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>直接路由到 HANA 大型实例
 

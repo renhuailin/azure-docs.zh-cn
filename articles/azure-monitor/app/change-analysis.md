@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 0cdb82bbf38244bc91ed54ffb7d7d734cefe9dd2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 728fd8f4705d24f719b6dd47ba88d89fb399fd5a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183313"
+ms.locfileid: "98195868"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>使用 Azure Monitor 中的应用程序更改分析（预览版）
 
@@ -206,8 +206,10 @@ foreach ($webapp in $webapp_list)
 这是一般性的未授权错误消息，说明当前用户的权限不足，无法查看更改。 至少需要对资源具有读取者访问权限，才能查看 Azure 资源图和 Azure 资源管理器返回的基础结构更改。 对于 web 应用中的来宾文件更改和配置更改，必须至少具有 "参与者" 角色。
 
 ### <a name="failed-to-register-microsoftchangeanalysis-resource-provider"></a>未能注册 ChangeAnalysis 资源提供程序
+此消息意味着 UI 发送请求以注册资源提供程序时，会立即失败，这与权限问题无关。 可能是暂时性的 internet 连接问题。 请尝试刷新页面并检查你的 internet 连接。 如果错误仍然存在，请联系 changeanalysishelp@microsoft.com
  
-**你的权限不足，无法注册 ChangeAnalysis 资源提供程序。请联系你的 Azure 订阅管理员。** 此错误消息表示当前订阅中的角色不具有与之关联的 **Microsoft. 支持/注册/操作** 范围。 如果你不是订阅的所有者，并且通过同事获取共享访问权限，则可能会发生这种情况。 即，查看对资源组的访问权限。 若要解决此问题，可以联系订阅所有者来注册 **ChangeAnalysis** 资源提供程序。 这可以通过订阅 Azure 门户来完成 **|资源提供程序** ，并 ```Microsoft.ChangeAnalysis``` 在 UI 中搜索和注册，或通过 Azure PowerShell 或 Azure CLI。
+### <a name="you-dont-have-enough-permissions-to-register-microsoftchangeanalysis-resource-provider-contact-your-azure-subscription-administrator"></a>你的权限不足，无法注册 ChangeAnalysis 资源提供程序。 请联系你的 Azure 订阅管理员。
+此错误消息表示当前订阅中的角色不具有与之关联的 **Microsoft. 支持/注册/操作** 范围。 如果你不是订阅的所有者，并且通过同事获取共享访问权限，则可能会发生这种情况。 即，查看对资源组的访问权限。 若要解决此问题，可以联系订阅所有者来注册 **ChangeAnalysis** 资源提供程序。 这可以通过订阅 Azure 门户来完成 **|资源提供程序** ，并 ```Microsoft.ChangeAnalysis``` 在 UI 中搜索和注册，或通过 Azure PowerShell 或 Azure CLI。
 
 通过 PowerShell 注册资源提供程序： 
 

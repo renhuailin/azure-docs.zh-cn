@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 53324709e2d3dd11160ee0b7837d86d9e9594571
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 77fccf8b2480232debb88136394013941af796c8
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763921"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197262"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure 前门的 azure 安全基线
 
@@ -86,7 +86,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 使用具有 Azure 堡垒的高度安全用户工作站执行管理任务。 选择 Azure Active Directory (Azure AD) 、Microsoft Defender 高级威胁防护 (ATP) 和 Microsoft Intune，为管理任务部署安全和托管用户工作站。 必须对受保护的工作站进行集中管理，以强制实施安全配置，包括强身份验证、软件和硬件基线、受限的逻辑访问和网络访问。
 
-- [了解特权访问工作站](../active-directory/devices/concept-azure-managed-workstation.md) 
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [部署特权访问工作站](../active-directory/devices/howto-azure-managed-workstation.md)
 
@@ -118,7 +118,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4：加密传输中的敏感信息
 
-**指南**：若要补充访问控制，应保护传输中的数据免受 "带外" 攻击 (例如，流量捕获) 使用加密确保攻击者无法轻松读取或修改数据。
+**指导**：为了对访问控制进行补充，应该对传输中的数据使用加密技术防止“带外”攻击（例如流量捕获），以确保攻击者无法轻松读取或修改数据。
 
 前门支持 TLS 版本1.0、1.1 和1.2。 目前尚不支持 TLS 1.3。 2019年9月之后创建的所有前门配置文件都使用 TLS 1.2 作为默认的最小值。
 
@@ -176,7 +176,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 ### <a name="am-3-use-only-approved-azure-services"></a>AM-3：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略审核和限制用户可在你的环境中预配的服务。 在 Azure 资源关系图中查询和发现其订阅中的资源。
+**指导**：请使用 Azure Policy 来审核和限制用户可以在你的环境中预配哪些服务。 在 Azure 资源关系图中查询和发现其订阅中的资源。
 
 使用 Azure Monitor 创建在检测到未批准的服务时触发警报的规则。
 
@@ -220,7 +220,7 @@ Azure 前门会记录它为客户访问处理的所有网络流量。 启用网�
 
 **指南**：自动可用的活动日志包含 Azure 前门资源的所有写入操作 (PUT、POST、DELETE) ，但读取操作 (获取) 。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
 
-为 Azure 前门启用 Azure 资源日志。 可以使用 Azure 安全中心和 Azure 策略来启用资源日志和日志数据收集。 这些日志对于日后调查安全事件和执行鉴证演练可能至关重要。
+为 Azure 前门启用 Azure 资源日志。 可以使用 Azure 安全中心和 Azure Policy 来启用资源日志和日志数据收集。 这些日志可能对日后调查安全事件和执行取证演练至关重要。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 

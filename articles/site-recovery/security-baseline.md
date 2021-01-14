@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 860bc9440547a4c62336ccc573859ec56b3400b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c3e2245ae47504e058921c532ed40a220e95423d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533853"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197568"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery 的 Azure 安全基线
 
@@ -222,7 +222,7 @@ ms.locfileid: "96533853"
 
 **指导**：将安全的、由 Azure 托管的工作站（也称为特权访问工作站 (PAW)）与 Azure 多重身份验证配合使用来执行管理任务，以及对 Site Recovery 资源执行特权操作。
 
-- [特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [规划基于云的 Azure AD 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -602,7 +602,7 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
-**指南**： Site Recovery 仅支持客户可以在恢复服务保管库上启用系统托管标识的系统管理的标识。 这种方法适用于灾难恢复产品中使用的资源，用于定义访问边界。 
+**指导**：Site Recovery 仅在客户可以在恢复服务保管库上启用系统托管的标识时才支持系统托管的标识。 这种方法同样适用于灾难恢复产品/服务中用于定义访问边界的资源。 
 
 使用托管标识在 Azure AD 中为 Azure 服务提供自动托管标识。 
 

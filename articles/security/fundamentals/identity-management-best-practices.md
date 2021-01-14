@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: bf593eab54233ab65435585485dd8e3940f5addb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d2abc357a5a636aa15909a3645e284c978fb903f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489813"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197585"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -157,7 +157,7 @@ ms.locfileid: "96489813"
 
 建议对所有用户要求进行双重验证。 这包括组织中的管理员和其他人员，如果他们的帐户泄露，可能会产生重大影响（例如，财务官员）。
 
-要求双重验证有多种选项。 最佳选项取决于你的目标、正在运行的 Azure AD 版本以及许可计划。 请参阅[如何要求对用户进行双重验证](../../active-directory/authentication/howto-mfa-userstates.md)了解最佳选项。 有关许可证和定价的详细信息，请参阅 [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) 和 [Azure AD 多重身份验证](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) 定价页。
+要求双重验证有多种选项。 最佳选项取决于你的目标、正在运行的 Azure AD 版本以及许可计划。 请参阅[如何要求对用户进行双重验证](../../active-directory/authentication/howto-mfa-userstates.md)了解最佳选项。 有关许可和定价的详细信息，请参阅 [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) 和 [Azure AD 多重身份验证](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)定价页。
 
 以下是启用双重验证的选项和优势：
 
@@ -195,13 +195,13 @@ ms.locfileid: "96489813"
 
 ## <a name="use-role-based-access-control"></a>使用基于角色的访问控制
 
-对于任何使用云的组织而言，云资源的访问管理至关重要。 Azure [RBAC) 的基于角色的访问控制 (](../../role-based-access-control/overview.md)可帮助你管理有权访问 Azure 资源的人员、他们可以对这些资源执行哪些操作以及他们有权访问哪些区域。
+对于任何使用云的组织而言，云资源的访问管理至关重要。 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 可帮助你管理谁有权访问 Azure 资源、他们可以对这些资源执行哪些操作以及他们有权访问哪些区域。
 
-在 Azure 中指定负责特定职能的组或各个角色有助于避免混乱，这些混乱可能会导致造成安全风险的人为错误和自动化错误。 对于想要实施数据访问安全策略的组织而言，必须根据[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全策略限制访问权限。
+在 Azure 中指定负责特定功能的组或单个角色有助于避免混乱，从而避免可能会导致安全风险的人为错误和自动化错误。 对于想要实施数据访问安全策略的组织而言，必须根据[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全策略限制访问权限。
 
 你的安全团队需要能够查看 Azure 资源，以便评估和修正风险。 如果安全团队具有运营职责，则需要额外的权限来完成他们的作业。
 
-可以使用 [AZURE RBAC](../../role-based-access-control/overview.md) 向特定范围内的用户、组和应用程序分配权限。 角色分配的范围可以是订阅、资源组或单个资源。
+可以使用 [Azure RBAC](../../role-based-access-control/overview.md) 向特定范围的用户、组和应用程序分配权限。 角色分配的范围可以是订阅、资源组或单个资源。
 
 **最佳做法**：在团队中分离职责，只向用户授予执行作业所需的访问权限。 只允许在特定范围内执行特定操作，而不要在 Azure 订阅或资源中向每个人都授予无限制权限。
 **详细信息**：使用 Azure 中的 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)向用户分配权限。
@@ -210,16 +210,16 @@ ms.locfileid: "96489813"
 > 特定的权限会造成不必要的复杂性和混乱，进而积累为很难在不担心造成破坏的情况下进行修复的“旧”配置。 避免特定于资源的权限。 而是将管理组用于企业范围内的权限，并将资源组用于订阅中的权限。 避免用户特定的权限。 而是向 Azure AD 中的组分配权限。
 
 **最佳做法**：向具有 Azure 职责的安全团队授予对 Azure 资源的访问权限，以便他们可以评估和修正风险。
-**详细信息**：授予安全团队 Azure RBAC [安全读者](../../role-based-access-control/built-in-roles.md#security-reader) 角色。 可以使用根管理组或段管理组，具体视职责范围而定：
+**详细信息**：向安全团队授予 Azure RBAC [安全读取者](../../role-based-access-control/built-in-roles.md#security-reader)角色。 可以使用根管理组或段管理组，具体视职责范围而定：
 
 * 根管理组：用于负责所有企业资源的团队
 * 段管理组：用于范围有限的团队（通常是由于法规或其他组织边界所致）
 
 **最佳做法**：向具有直接运营职责的安全团队授予适当的权限。
-**详细信息**：查看适用于角色分配的 Azure 内置角色。 如果内置角色不能满足组织的具体需求，则可以创建 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)。 与内置角色一样，可以在订阅、资源组和资源范围内向用户、组和服务主体分配自定义角色。
+**详细信息**：查看 Azure 内置角色以进行合适的角色分配。 如果内置角色不能满足组织的具体需求，则可以创建 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)。 与内置角色一样，可以在订阅、资源组和资源范围内向用户、组和服务主体分配自定义角色。
 
 **最佳做法**：向需要的安全角色授予 Azure 安全中心访问权限。 使用安全中心，安全团队可以快速发现和修正风险。
-**详细信息**：将这些安全团队添加到 Azure RBAC [安全管理员](../../role-based-access-control/built-in-roles.md#security-admin) 角色，以便他们可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议，以及消除警报和建议。 你可以使用根管理组或段管理组来执行此操作，具体取决于职责范围。
+**详细信息**：将具有这些需求的安全团队添加到 Azure RBAC [安全管理员](../../role-based-access-control/built-in-roles.md#security-admin)角色，以便他们可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议，以及关闭警报和建议。 你可以使用根管理组或段管理组来执行此操作，具体取决于职责范围。
 
 不通过使用 Azure RBAC 等功能实施数据访问控制的组织可能会向其用户提供比所需权限更多的特权。 允许用户访问他们不应该有权访问的数据类型（例如，对业务有重大影响的数据）可能会导致数据泄露。
 
@@ -275,7 +275,7 @@ ms.locfileid: "96489813"
 **详细信息**：使用管理工作站。 选择工作站安全级别：
 
 - 高度安全的效率提升设备为浏览和其他效率提升任务提供高级安全性。
-- [特权访问工作站 (PAW)](/windows-server/identity/securing-privileged-access/privileged-access-workstations) 为敏感任务提供免受 Internet 攻击和威胁攻击途径侵害的专用操作系统。
+- [特权访问工作站 (PAW)](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 为敏感任务提供免受 Internet 攻击和威胁攻击途径侵害的专用操作系统。
 
 **最佳做法**：在员工离开组织时，取消设置管理员帐户。
 **详细信息**：准备一个流程，在员工离开组织时禁用或删除管理员帐户。
@@ -313,7 +313,7 @@ ms.locfileid: "96489813"
 可以使用 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)创建安全策略，其中的定义描述了会明确遭到拒绝的操作或资源。 可以在所需范围（例如订阅、资源组或是单个资源）分配这些策略定义。
 
 > [!NOTE]
-> 安全策略不同于 Azure RBAC。 他们实际使用 Azure RBAC 来授权用户创建这些资源。
+> 安全策略与 Azure RBAC 不同。 它们实际上使用 Azure RBAC 来授权用户创建这些资源。
 >
 >
 

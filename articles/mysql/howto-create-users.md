@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/1/2020
-ms.openlocfilehash: 2e934ede193d6efb9cc795c6b63cb485b88f792e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/13/2021
+ms.openlocfilehash: de4e7959a5778c7275427450ead876338f052882
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541413"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196769"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中创建数据库和用户
 
@@ -20,25 +20,23 @@ ms.locfileid: "94541413"
 本文介绍如何在 Azure Database for MySQL 中创建用户。
 
 > [!NOTE]
-> **无偏差通信**
+> 无偏差通信
 >
-> Microsoft 支持多样化的包容性环境。 本文包含对单词 slave 的引用。 Microsoft 的[无偏差通信风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)将其视为排他性单词。 本文中使用的词是为了保持一致，因为它是当前显示在软件中的单词。 如果软件更新后删除了该单词，则本文也将更新以保持一致。
+> Microsoft 支持多样化的包容性环境。 本文包含对关键字 _master_ 和 _从属_ 的引用。 [用于偏置通信的 Microsoft 风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)识别为 exclusionary 词。 本文中使用的词是为了保持一致，因为它们目前是软件中出现的单词。 当软件更新为删除字词时，本文将更新为对齐。
 >
 
 首次创建 Azure Database for MySQL 服务器时，需要提供服务器管理员用户名和密码。 有关详细信息，请参阅此[快速入门](quickstart-create-mysql-server-database-using-azure-portal.md)。 你可以在 Azure 门户中确定你的服务器管理员用户名。
 
-服务器管理员用户具有以下权限： 
+服务器管理员用户具有以下权限：
 
    选择、插入、更新、删除、创建、放置、重载、处理、引用、索引、更改、显示数据库、创建临时表、锁定表、执行、复制从属、复制客户端、创建视图、显示视图、创建例程、更改例程、创建用户、事件、触发器
 
-
-创建 Azure Database for MySQL 服务器后，你可以使用第一个服务器管理员帐户来创建其他用户，并授予这些用户管理员访问权限。 你还可以使用服务器管理员帐户来创建只能访问各个数据库架构的权限较低的用户。
+创建 Azure Database for MySQL 服务器后，可以使用第一个服务器管理员帐户来创建更多用户，并向管理员授予对它们的访问权限。 你还可以使用服务器管理员帐户来创建只能访问各个数据库架构的权限较低的用户。
 
 > [!NOTE]
 > 不支持 SUPER 权限和 DBA 角色。 请在“限制”一文中查看[权限](concepts-limits.md#privileges--data-manipulation-support)，以了解服务中不支持的权限。
 >
 > 服务器不支持 `validate_password` 和 `caching_sha2_password` 等密码插件。
-
 
 ## <a name="to-create-a-database-with-a-non-admin-user-in-azure-database-for-mysql"></a>若要在 Azure Database for MySQL 中使用非管理员用户创建数据库
 
@@ -46,7 +44,7 @@ ms.locfileid: "94541413"
    若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 可以在 Azure 门户的服务器“概览”页或“属性”页中轻松地找到服务器名称和登录信息 。
 
 2. 使用管理员帐户和密码连接到你的数据库服务器。 使用你的首选客户端工具，如 MySQL Workbench、mysql.exe 或 HeidiSQL。
-   
+
    如果你不确定如何连接，请参阅 [连接和查询单一服务器的数据](./connect-workbench.md) 或 [连接和查询数据以用于灵活的服务器](./flexible-server/connect-workbench.md)。
 
 3. 编辑并运行下面的 SQL 代码。 将占位符 `db_user` 替换为所需的新用户名。 将占位符 `testdb` 替换为数据库名称。
@@ -73,25 +71,26 @@ ms.locfileid: "94541413"
 
 5. 登录到服务器，指定选定的数据库并使用新用户名和密码。 此示例显示了 mysql 命令行。 使用此命令时，系统会提示你输入用户的密码。 使用你自己的服务器名称、数据库名称和用户名。
 
-   # <a name="single-server"></a>[单一服务器](#tab/single-server)
+   ### <a name="single-server"></a>[单一服务器](#tab/single-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-   # <a name="flexible-server"></a>[灵活服务器](#tab/flexible-server)
+
+   ### <a name="flexible-server"></a>[灵活服务器](#tab/flexible-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user -p
    ```
  ---
 
-## <a name="to-create-additional-admin-users-in-azure-database-for-mysql"></a>若要在 Azure Database for MySQL 中创建其他管理员用户
+## <a name="to-create-more-admin-users-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中创建更多管理员用户
 
 1. 获取连接信息和管理员用户名。
    若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 可以在 Azure 门户的服务器“概览”页或“属性”页中轻松地找到服务器名称和登录信息 。
 
 2. 使用管理员帐户和密码连接到你的数据库服务器。 使用你的首选客户端工具，如 MySQL Workbench、mysql.exe 或 HeidiSQL。
-   
+
    如果你不确定如何连接，请参阅[使用 MySQL Workbench 连接和查询数据](./connect-workbench.md)。
 
 3. 编辑并运行下面的 SQL 代码。 将占位符 `new_master_user` 替换为新用户名。 此语法会将所有数据库架构 ( *.* ) 上列出的权限授予该用户名（本示例中的 `new_master_user`）。
@@ -119,7 +118,8 @@ ms.locfileid: "94541413"
 ## <a name="next-steps"></a>后续步骤
 
 针对新用户计算机的 IP 地址打开防火墙，使其能够连接：
-- [在单一服务器上创建和管理防火墙规则](howto-manage-firewall-using-portal.md) 
-- [ 在灵活的服务器上创建和管理防火墙规则](flexible-server/how-to-connect-tls-ssl.md)
+
+* [在单一服务器上创建和管理防火墙规则](howto-manage-firewall-using-portal.md)
+* [在灵活的服务器上创建和管理防火墙规则](flexible-server/how-to-connect-tls-ssl.md)
 
 有关用户帐户管理的详细信息，请参阅 MySQL 产品文档，了解[用户帐户管理](https://dev.mysql.com/doc/refman/5.7/en/access-control.html)、[GRANT 语法](https://dev.mysql.com/doc/refman/5.7/en/grant.html)和[权限](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)。

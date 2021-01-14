@@ -3,12 +3,12 @@ title: 使用客户托管密钥加密备份数据
 description: 了解 Azure 备份如何允许使用客户管理的密钥加密备份数据， (CMK) 。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 6e3eea4b5f44203b68c1263c0fb3ae843cabbe72
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cc6ad2f67b84bcd62bcc18566a4ac5d159ea32c4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895981"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197726"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
 
@@ -25,11 +25,11 @@ Azure 备份允许使用客户管理的密钥加密备份数据， (CMK) ，而�
 
 ## <a name="before-you-start"></a>开始之前
 
-- 此功能仅允许加密 **新的恢复服务保管库** 。 不支持任何包含注册或试图注册到它的现有项目的保管库。
+- 此功能仅允许加密 **新的恢复服务保管库**。 不支持任何包含注册或试图注册到它的现有项目的保管库。
 
 - 为恢复服务保管库启用后，使用客户托管的密钥进行加密时，不能使用平台管理的密钥 (默认) 。 你可以根据需要更改加密密钥。
 
-- 此功能当前 **不支持使用 MARS 代理进行备份** ，并且你可能无法使用 CMK 加密的保管库。 MARS 代理使用基于用户密码的加密。 此功能也不支持经典 Vm 的备份。
+- 此功能当前 **不支持使用 MARS 代理进行备份**，并且你可能无法使用 CMK 加密的保管库。 MARS 代理使用基于用户密码的加密。 此功能也不支持经典 Vm 的备份。
 
 - 此功能与 [Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)无关，后者使用 Windows) 的 BitLocker (和适用于 Linux 的 DM-Crypt (对 VM 磁盘使用基于来宾的加密) 
 
@@ -74,11 +74,11 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 你现在需要允许恢复服务保管库访问包含加密密钥的 Azure Key Vault。 这是通过允许恢复服务保管库的托管标识访问 Key Vault 来完成的。
 
-1. 请访问 Azure Key Vault > **访问策略** 。 继续执行 **+ 添加访问策略** 。
+1. 请访问 Azure Key Vault > **访问策略**。 继续执行 **+ 添加访问策略**。
 
     ![添加访问策略](./media/encryption-at-rest-with-cmk/access-policies.png)
 
-1. 在 " **密钥权限** " 下，选择 " **获取** "、" **列出** "、" **解包** 密钥并 **打包密钥** " 操作 这将指定对允许的键的操作。
+1. 在 " **密钥权限**" 下，选择 " **获取**"、" **列出**"、" **解包** 密钥并 **打包密钥** " 操作 这将指定对允许的键的操作。
 
     ![分配密钥权限](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
@@ -148,28 +148,36 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
     ![加密设置](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
-1. 选择 " **加密设置** " 下的 " **更新** "。
+1. 选择 "**加密设置**" 下的 "**更新**"。
 
 1. 在 "加密设置" 窗格中，选择 " **使用你自己的密钥** "，然后使用以下方法之一继续指定密钥。 **确保要使用的密钥是 RSA 2048 密钥，它处于启用状态。**
 
     1. 输入要用于对此恢复服务保管库中的数据进行加密的 **密钥 URI** 。 还需要指定包含此密钥) Azure Key Vault (的订阅。 可以从 Azure Key Vault 中的相应密钥获取此密钥 URI。 请确保正确复制了密钥 URI。 建议使用与密钥标识符一起提供的 " **复制到剪贴板** " 按钮。
 
+        >[!NOTE]
+        >使用密钥 URI 指定加密密钥时，将不会自动旋转密钥。 因此需要手动完成密钥更新，方法是在需要时指定新密钥。
+
         ![输入密钥 URI](./media/encryption-at-rest-with-cmk/key-uri.png)
 
     1. 从 "密钥选取器" 窗格中的 Key Vault 浏览并选择密钥。
+
+        >[!NOTE]
+        >当使用密钥选取器窗格指定加密密钥时，每当启用密钥的新版本时，将自动旋转密钥。
 
         ![从密钥保管库中选择密钥](./media/encryption-at-rest-with-cmk/key-vault.png)
 
 1. 选择“保存”。
 
-1. **跟踪加密密钥更新的进度：** 可以使用恢复服务保管库中的 **活动日志** 跟踪密钥分配的进度。 状态应更改为 " **成功** "。 现在，保管库会将具有指定密钥的所有数据加密为 KEK。
+1. **跟踪加密密钥更新的进度和状态**：可以使用左侧导航栏上的 " **备份作业** " 视图跟踪加密密钥分配的进度和状态。 状态应更改为 " **已完成**"。 现在，保管库会将具有指定密钥的所有数据加密为 KEK。
 
-    ![跟踪活动日志的进度](./media/encryption-at-rest-with-cmk/activity-log.png)
+    ![已完成状态](./media/encryption-at-rest-with-cmk/status-succeeded.png)
 
-    ![状态成功](./media/encryption-at-rest-with-cmk/status-succeeded.png)
+    加密密钥更新也记录在保管库的活动日志中。
+
+    ![活动日志](./media/encryption-at-rest-with-cmk/activity-log.png)
 
 >[!NOTE]
-> 当你希望更新/更改加密密钥时，此过程保持不变。 如果要从其他 Key Vault 中更新和使用某个密钥 (不同于当前所用) 的密钥，请确保：
+> 当你希望更新或更改加密密钥时，此过程保持不变。 如果要从其他 Key Vault 中更新和使用某个密钥 (不同于当前所用) 的密钥，请确保：
 >
 > - Key Vault 与恢复服务保管库位于同一区域
 >
@@ -192,7 +200,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 >
 >如果已确认以上所有步骤，则只需继续配置备份。
 
-使用客户管理的密钥来配置和执行备份到恢复服务保管库的过程与使用平台托管密钥的保管库相同， **不会更改体验** 。 这适用于 [Azure vm 的备份](./quick-backup-vm-portal.md) 以及在 VM 内运行的工作负荷的备份 (例如 [SAP HANA](./tutorial-backup-sap-hana-db.md) [SQL Server](./tutorial-sql-backup.md) 数据库) 。
+使用客户管理的密钥来配置和执行备份到恢复服务保管库的过程与使用平台托管密钥的保管库相同， **不会更改体验**。 这适用于 [Azure vm 的备份](./quick-backup-vm-portal.md) 以及在 VM 内运行的工作负荷的备份 (例如 [SAP HANA](./tutorial-backup-sap-hana-db.md) [SQL Server](./tutorial-sql-backup.md) 数据库) 。
 
 ## <a name="restoring-data-from-backup"></a>从备份还原数据
 
@@ -214,7 +222,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 磁盘加密集在 "还原" 窗格的 "加密设置" 下指定，如下所示：
 
-1. 在 " **使用你的密钥加密磁盘 ()** 中，选择 **" 是 "** 。
+1. 在 " **使用你的密钥加密磁盘 ()** 中，选择 **" 是 "**。
 
 1. 从下拉列表中，选择要用于还原的磁盘的 DES)  (。 **确保你有权访问 DES。**
 

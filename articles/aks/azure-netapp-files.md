@@ -4,12 +4,12 @@ description: 了解如何将 Azure NetApp 文件与 Azure Kubernetes 服务集�
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 19727d3c3322b05f340463d94a2bc3884e5d9d93
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126247"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196004"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>将 Azure NetApp 文件与 Azure Kubernetes 服务集成
 
@@ -28,14 +28,14 @@ ms.locfileid: "93126247"
 使用 Azure NetApp 文件时有以下限制：
 
 * Azure NetApp 文件仅 [在所选 azure 区域中][anf-regions]可用。
-* 在可以使用 Azure NetApp 文件之前，必须授予对 Azure NetApp 文件服务的访问权限。 若要申请访问权限，可以使用 [Azure NetApp 文件候补报送窗体][anf-waitlist]。 在从 Azure NetApp 文件团队收到官方确认电子邮件之前，无法访问 Azure NetApp 文件服务。
+* 在可以使用 Azure NetApp 文件之前，必须授予对 Azure NetApp 文件服务的访问权限。 若要申请访问权限，可以使用 [Azure NetApp 文件候补提交窗体][anf-waitlist] 或访问 https://azure.microsoft.com/services/netapp/#getting-started 。 在从 Azure NetApp 文件团队收到官方确认电子邮件之前，无法访问 Azure NetApp 文件服务。
 * 初次部署 AKS 群集后，仅支持 Azure NetApp 文件的静态预配。
 * 若要在 Azure NetApp 文件中使用动态预配，请安装和配置 [NetApp Trident](https://netapp-trident.readthedocs.io/) 版本19.07 或更高版本。
 
 ## <a name="configure-azure-netapp-files"></a>配置 Azure NetApp 文件
 
 > [!IMPORTANT]
-> 必须先完成订阅的 [Azure NetApp 文件候补提交窗体][anf-waitlist]，才能注册 *Microsoft netapp* 资源提供程序。 在从 Azure NetApp 文件团队收到官方确认电子邮件之前，无法注册资源提供。
+> 若要注册  *Microsoft netapp* 资源提供程序，必须先完成 [Azure NetApp 文件候补提交窗体][anf-waitlist] 或访问 https://azure.microsoft.com/services/netapp/#getting-started 订阅。 在从 Azure NetApp 文件团队收到官方确认电子邮件之前，无法注册资源提供。
 
 注册 *Microsoft NetApp* 资源提供程序：
 
@@ -158,6 +158,8 @@ spec:
     storage: 100Gi
   accessModes:
     - ReadWriteMany
+  mountOptions:
+    - vers=3
   nfs:
     server: 10.0.0.4
     path: /myfilepath2
@@ -169,7 +171,7 @@ spec:
 kubectl apply -f pv-nfs.yaml
 ```
 
-使用 [kubectl 说明][kubectl-describe]命令验证 PersistentVolume 的 *Available* *状态* ：
+使用 [kubectl 说明][kubectl-describe]命令验证 PersistentVolume 的 *状态*：
 
 ```console
 kubectl describe pv pv-nfs
@@ -199,7 +201,7 @@ spec:
 kubectl apply -f pvc-nfs.yaml
 ```
 
-使用 [kubectl 说明][kubectl-describe]命令验证 PersistentVolumeClaim 的 *Bound* *状态* ：
+使用 [kubectl 说明][kubectl-describe]命令验证 PersistentVolumeClaim 的 *状态*：
 
 ```console
 kubectl describe pvc pvc-nfs
@@ -237,7 +239,7 @@ spec:
 kubectl apply -f nginx-nfs.yaml
 ```
 
-使用 [kubectl 说明][kubectl-describe]命令验证 Pod 是否 *正在运行* ：
+使用 [kubectl 说明][kubectl-describe]命令验证 Pod 是否 *正在运行*：
 
 ```console
 kubectl describe pod nginx-nfs

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c88a2cf33cf1149a17af4a82dcf2858822f0c6d4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3808da24c1baf6dd6e3332d4bd26fd176b761c65
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696143"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196072"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳做法
 本文介绍了针对数据安全和加密的最佳做法。
@@ -51,7 +51,7 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 **最佳做法**：控制用户有权访问的内容。   
 **详细信息**：可通过以下两个独立接口来控制对密钥保管库的访问：管理平面和数据平面。 管理平面访问控制与数据平面访问控制相互独立。
 
-使用 Azure RBAC 控制用户有权访问的内容。 例如，如果想要授予应用程序使用密钥保管库中的密钥的访问权限，只需使用密钥保管库访问策略授予数据平面访问权限，而无需授予此应用程序的管理平面访问权限。 相反，如果你希望用户能够读取保管库属性和标记，但不能访问密钥、机密或证书，则可以使用 Azure RBAC 向此用户授予 "读取" 访问权限，而不需要访问数据平面。
+使用 Azure RBAC 控制用户有权访问的内容。 例如，如果想要授予应用程序使用密钥保管库中的密钥的访问权限，只需使用密钥保管库访问策略授予数据平面访问权限，而无需授予此应用程序的管理平面访问权限。 相反，如果希望用户能够读取保管库属性和标记，但不让其具有任何访问密钥、机密或证书的权限，则可以使用 Azure RBAC 向此用户授予“读取”访问权限，而无需授予数据平面访问权限。
 
 **最佳做法**：将证书存储在 Key Vault 中。 证书的价值很高。 如果落入他人之手，应用程序或数据的安全性可能会受到损害。   
 **详细信息**：Azure 资源管理器可以在部署 VM 时，将存储在 Azure Key Vault 中的证书安全地部署到 Azure VM。 通过为密钥保管库设置适当的访问策略，还可以控制有权访问证书的人员。 另一个好处是，可以在 Azure Key Vault 中的一个位置管理所有证书。 有关详细信息，请参阅[将证书从客户托管的 Key Vault 部署到 VM](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault)。
@@ -60,7 +60,7 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 **详细信息**：删除 Key Vault 或 Key Vault 对象可以是无意或恶意的。 启用 Key Vault 的软删除和清除保护功能，尤其是对用于加密静态数据的密钥。 删除这些密钥相当于丢失数据，因此可以在需要时恢复已删除的保管库和保管库对象。 定期练习 Key Vault 恢复操作。
 
 > [!NOTE]
-> 如果用户具有对密钥保管库管理平面 (Azure RBAC) 的参与者权限，则他们可以通过设置密钥保管库访问策略来授予对数据平面的访问权限。 建议严格控制具有密钥保管库“参与者”权限的人员，以确保只有获得授权的人员可以访问和管理密钥保管库、密钥、机密和证书。
+> 如果用户具有密钥保管库管理平面的参与者权限 (Azure RBAC)，则该用户可以通过设置密钥保管库访问策略来授予自己对数据平面的访问权限。 建议严格控制具有密钥保管库“参与者”权限的人员，以确保只有获得授权的人员可以访问和管理密钥保管库、密钥、机密和证书。
 >
 >
 
@@ -74,7 +74,7 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 因为绝大多数的攻击以最终用户为目标，所以终结点将成为主要攻击点之一。 入侵终结点的攻击者可以使用用户的凭据来访问组织的数据。 大多数终结点攻击都利用了用户是其本地工作站的管理员这一事实。
 
 **最佳做法**：使用安全管理工作站来保护敏感帐户、任务和数据。   
-**详细信息**：使用 [特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)来减小工作站的受攻击面。 这些安全管理工作站可帮助减轻其中一些攻击，以确保数据更为安全。
+**详细信息**：使用 [特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)来减小工作站的受攻击面。 这些安全管理工作站可帮助减轻其中一些攻击，以确保数据更为安全。
 
 **最佳做法**：确保终结点受保护。   
 **详细信息**：在用于使用数据的所有设备上强制实施安全策略（无论数据位于云中还是本地）。
@@ -86,7 +86,7 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 **最佳做法**：使用磁盘加密来帮助保护数据。   
 **详细信息**：使用 [Azure 磁盘加密](./azure-disk-encryption-vms-vmss.md)。 它使 IT 管理员能够加密 Windows 和 Linux IaaS VM 磁盘。 磁盘加密利用符合行业标准的 Windows BitLocker 功能和 Linux dm-crypt 功能为 OS 和数据磁盘提供卷加密。
 
-Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许多服务都将加密作为选项提供。 可以使用 Azure Key Vault 来持续控制用于访问和加密数据的密钥。 有关 [详细信息，请参阅 Azure 资源提供程序加密模型支持](encryption-atrest.md#azure-resource-providers-encryption-model-support)。
+Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许多服务都将加密作为选项提供。 可以使用 Azure Key Vault 来持续控制用于访问和加密数据的密钥。 有关详细信息，请参阅 [Azure 资源提供程序加密模型支持](encryption-atrest.md#azure-resource-providers-encryption-model-support)。
 
 **最佳做法**：使用加密来帮助降低与未经授权访问数据相关的风险。   
 **详细信息**：在将敏感数据写入驱动器之前先将驱动器加密。
@@ -97,7 +97,7 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 
 保护传输中的数据应该是数据保护策略中不可或缺的部分。 由于数据在许多位置间来回移动，因此，通常建议始终使用 SSL/TLS 协议在不同位置间交换数据。 在某些情况下，可以使用 VPN 隔离本地与云基础结构之间的整个信道。
 
-对于在本地基础结构与 Azure 之间移动的数据，请考虑适当的防护措施，例如 HTTPS 或 VPN。 通过公共 internet 在 Azure 虚拟网络与本地位置之间发送加密流量时，请使用 [AZURE VPN 网关](../../vpn-gateway/index.yml)。
+对于在本地基础结构与 Azure 之间移动的数据，请考虑适当的防护措施，例如 HTTPS 或 VPN。 通过公共 Internet 在 Azure 虚拟网络和本地位置之间发送加密流量时，请使用 [Azure VPN 网关](../../vpn-gateway/index.yml)。
 
 以下是特定于使用 Azure VPN 网关、SSL/TLS 和 HTTPS 的最佳做法。
 

@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: eda648a4d00a0ab4a51c66510060ce16421972ff
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4f6b2b1c0f584e092c9e8f7d330a94b0b54fd6f2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020004"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197415"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -197,7 +197,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 | Facebook、Google、Yahoo 帐户 | 支持 | 都不支持 |
 | **协议和 SDK 兼容性** | | |
 | WIF | 支持 | 支持，但说明有限 |
-| WS 联合身份验证 | 支持 | 支持 |
+| WS-Federation | 支持 | 支持 |
 | OAuth 2.0 | 支持草案 13 | 支持最新规范 RFC 6749 |
 | WS-Trust | 支持 | 不支持 |
 | **标记格式** | | |
@@ -248,7 +248,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 | Facebook、Google、Yahoo 帐户 | 支持 | 本身支持 Facebook 和 Google，使用自定义策略通过 OpenID Connect 联合支持 Yahoo |
 | **协议和 SDK 兼容性** | | |
 | Windows Identity Foundation (WIF) | 支持 | 不支持 |
-| WS 联合身份验证 | 支持 | 不支持 |
+| WS-Federation | 支持 | 不支持 |
 | OAuth 2.0 | 支持草案 13 | 支持最新规范 RFC 6749 |
 | WS-Trust | 支持 | 不支持 |
 | **标记格式** | | |
@@ -287,7 +287,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 ![此图显示了 Ping 标识徽标](./media/active-directory-acs-migration/rsz-ping.png)
 
-[Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，它支持与 ACS 相同的许多功能，而 PingFederate 是一种类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/posts/2017/migrating-from-microsoft-acs-to-ping-identity.html)。
+[Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，它支持与 ACS 相同的许多功能，而 PingFederate 是一种类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 Ping 的 ACS 停用指南。
 
 使用 Ping 标识和 Auth0 是为了确保所有访问控制客户都拥有适用于其应用和服务的迁移途径，从而最大限度地减少从访问控制迁移所需的工作量。
 
@@ -351,7 +351,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。
 
 ![此图显示了 Ping 标识徽标 ](./media/active-directory-acs-migration/rsz-ping.png)
- [ping 标识](https://www.pingidentity.com)提供了类似于 ACS 的两种解决方案。 PingOne 是一种云标识服务，它支持与 ACS 相同的许多功能，而 PingFederate 是一种类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/posts/2017/migrating-from-microsoft-acs-to-ping-identity.html)。
+ [ping 标识](https://www.pingidentity.com)提供了类似于 ACS 的两种解决方案。 PingOne 是一种云标识服务，它支持与 ACS 相同的许多功能，而 PingFederate 是一种类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 Ping 的 ACS 停用指南。
 
 使用 Ping 标识和 Auth0 是为了确保所有访问控制客户都拥有适用于其应用和服务的迁移途径，从而最大限度地减少从访问控制迁移所需的工作量。
 
