@@ -629,15 +629,19 @@
         - name: Azure 集成运行时
           href: create-azure-integration-runtime.md
         - name: 自承载集成运行时
-          href: create-self-hosted-integration-runtime.md
+          items:
+            - name: 创建和配置自承载集成运行时
+              href: create-self-hosted-integration-runtime.md
+            - name: 自承载集成运行时自动更新和过期通知
+              href: self-hosted-integration-runtime-auto-update.md
+            - name: 共享的自承载集成运行时
+              href: create-shared-self-hosted-integration-runtime-powershell.md
+            - name: 自承载集成运行时的自动化脚本
+              href: self-hosted-integration-runtime-automation-scripts.md
+            - name: 在 Windows 容器中运行自承载集成运行时
+              href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
         - name: Azure-SSIS 集成运行时
           href: create-azure-ssis-integration-runtime.md
-        - name: 共享的自承载集成运行时
-          href: create-shared-self-hosted-integration-runtime-powershell.md
-        - name: 自承载集成运行时的自动化脚本
-          href: self-hosted-integration-runtime-automation-scripts.md
-        - name: 在 Windows 容器中运行自承载集成运行时
-          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: 在 Azure 中运行 SSIS 包
       items:
         - name: 从 SSDT 运行 Azure 中的 SSIS 包

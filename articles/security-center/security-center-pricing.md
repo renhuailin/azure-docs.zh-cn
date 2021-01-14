@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: 99f47df86d89e9daf2bc8878b868b04b7038ffd5
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ce95106c56e919fa0fcc7d7553a3f0cc0dc77f98
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071198"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121288"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure 安全中心定价
 Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络风险的智能检测功能。
@@ -115,7 +115,7 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>如果我已有 Microsoft Defender for Endpoint 许可证，能否获得 Azure Defender 的折扣？
 如果你已获得 Microsoft Defender for Endpoint 的许可证，则无需为 Azure Defender 许可证的相应部分付费。
 
-若要确认折扣，请联系安全中心的支持团队，并提供相关工作区 ID、区域和许可证信息。
+若要确认折扣，请联系安全中心的支持团队，并提供相关工作区 ID、区域和每个相关许可证的许可证信息。
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>我的订阅已为服务器启用了 Azure Defender，是否需要为未运行的服务器付费？ 
 不是。 在订阅上启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 时，仅针对正在运行的服务器按小时计费。 无需为关闭的任何服务器付费。 

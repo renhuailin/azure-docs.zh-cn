@@ -38,6 +38,9 @@
     - name: 创建共享查询 - Azure CLI
       displayName: 'extension, docker, queries'
       href: ./shared-query-azure-cli.md
+    - name: 创建共享查询 - Azure PowerShell
+      displayName: 'powershell, queries, Az.ResourceGraph'
+      href: ./shared-query-azure-powershell.md
     - name: 部署共享查询 - ARM 模板
       displayName: 'resource manager, queries'
       href: ./shared-query-template.md
@@ -110,7 +113,7 @@
           href: /rest/api/azure-resourcegraph/
         - name: OpenAPI
           href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2019-04-01'
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: /azure/templates/microsoft.resourcegraph/allversions
     - name: Resource Graph 表和资源类型
       href: ./reference/supported-tables-resources.md

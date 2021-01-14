@@ -12,12 +12,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 图像识别, 图像识别应用, 自定义视觉
-ms.openlocfilehash: 8274ddd0e492d1a27ebc1579fc6efdcc8cc84955
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: b27864fc1fd1f94f99fccacd90a66120e6d044c4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912978"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132573"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>快速入门：使用“自定义视觉”网站生成对象检测器
 
@@ -107,6 +107,10 @@ ms.locfileid: "97912978"
 ### <a name="probability-threshold"></a>概率阈值
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
+
+### <a name="overlap-threshold"></a>重叠阈值
+
+“重叠阈值”滑块处理在训练中必须将对象预测视为“正确”的方式。 此滑块设置预测的对象边界框和实际用户输入的边界框之间允许的最小重叠。 如果边界框未达到这种重叠度，则不会将预测视为正确。
 
 ## <a name="manage-training-iterations"></a>管理训练迭代
 

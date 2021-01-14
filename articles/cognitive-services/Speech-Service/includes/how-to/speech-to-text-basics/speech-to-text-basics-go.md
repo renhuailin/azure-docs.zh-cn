@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: f87db54b43f0ece49b940521bea34737da676a31
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7603a5aa138e719d7ffe3db7a4c4484466efc1e3
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96912336"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147517"
 ---
 语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音转文本转换。
 
@@ -99,6 +99,20 @@ func main() {
 }
 ```
 
+运行以下命令以创建 go.mod 文件并使其链接到 Github 上托管的组件。
+
+```cmd
+go mod init quickstart
+go get github.com/Microsoft/cognitive-services-speech-sdk-go
+```
+
+现在生成并运行代码。
+
+```cmd
+go build
+go run quickstart
+```
+
 有关 [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechConfig) 和 [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechRecognizer) 类的详细信息，请参阅参考文档。
 
 ## <a name="speech-to-text-from-audio-file"></a>从音频文件将语音转换为文本
@@ -163,6 +177,20 @@ func main() {
     fmt.Println("Got a recognition!")
     fmt.Println(outcome.Result.Text)
 }
+```
+
+运行以下命令以创建 go.mod 文件并使其链接到 Github 上托管的组件。
+
+```cmd
+go mod init quickstart
+go get github.com/Microsoft/cognitive-services-speech-sdk-go
+```
+
+现在生成并运行代码。
+
+```cmd
+go build
+go run quickstart
 ```
 
 有关 [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechConfig) 和 [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechRecognizer) 类的详细信息，请参阅参考文档。

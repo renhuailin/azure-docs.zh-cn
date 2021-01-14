@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: eddee6bc0fdcd636b7b9ffb81b121052499251b2
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 97b8f889bf625ac36917debe2cc2848cb1a97e37
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97745684"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97956476"
 ---
 [参考文档](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices) | [包 (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
@@ -74,7 +74,7 @@ npm install @azure/ms-rest-nodeauth
 
 将以下代码添加到 `quickstart` 函数的末尾，以列出可用资源、创建示例资源、列出拥有的资源，然后删除示例资源。 你将在后续步骤中定义这些函数。
 
-## <a name="create-a-cognitive-services-resource"></a>创建认知服务资源
+## <a name="create-a-cognitive-services-resource-nodejs"></a>创建认知服务资源 (Node.js)
 
 若要创建并订阅新的认知服务资源，请使用 Create 函数。 此函数向传入的资源组添加新的可计费资源。 创建新资源时，需要知道要使用的服务的种类，以及其定价层（或 SKU）和 Azure 位置。 下面的函数使用所有这些参数并创建资源。
 

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 45654d55ac07bc9056a41cacba6f8f5890c56580
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 6520c1e326dc95584030d3187fdaaaa7e06c498a
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808634"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132256"
 ---
 > [!IMPORTANT]
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 请参阅下面的参考文档。 
@@ -102,8 +102,8 @@ npm install @azure/ai-form-recognizer
 这些代码片段演示如何使用适用于 JavaScript 的表单识别器客户端库执行以下任务：
 
 * [对客户端进行身份验证](#authenticate-the-client)
-* [识别表单内容](#recognize-form-content)
-* [识别回执](#recognize-receipts)
+* [分析布局](#analyze-layout)
+* [分析回执](#analyze-receipts)
 * [训练自定义模型](#train-a-custom-model)
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
 * [管理自定义模型](#manage-your-custom-models)
@@ -126,7 +126,7 @@ npm install @azure/ai-form-recognizer
 * 使用以下示例中包含的示例和回执图像（也可以在 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets) 上获得），或使用上述步骤来获取 blob 存储中单个文档的 SAS URL。 
 
 
-## <a name="recognize-form-content"></a>识别表单内容
+## <a name="analyze-layout"></a>分析布局
 
 可以使用表单识别器识别文档中的表格、线条和单词，而无需训练模型。 若要识别位于给定 URI 的文件的内容，请使用 `beginRecognizeContentFromUrl` 方法。
 
@@ -152,7 +152,7 @@ cell [1,3] has text $56,651.49
 cell [1,5] has text PT
 ```
 
-## <a name="recognize-receipts"></a>识别回执
+## <a name="analyze-receipts"></a>分析回执
 
 本部分演示如何使用预先训练的回执模型识别和提取美国回执中的常见字段。
 

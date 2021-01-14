@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: c60adb09da05ba945bcf6ccb55e71c395f064211
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2adca03a820d02731bca252dee99c76debc85e2e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965096"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028125"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>文本分析 API 的数据和速率限制
 <a name="data-limits"></a>
@@ -35,7 +35,15 @@ ms.locfileid: "94965096"
 | 单个文档的最大大小（`/analyze` 终结点）  | 12.5 万个字符，通过 [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) 进行度量。 不适用于运行状况文本分析。 |
 | 整个请求的最大大小 | 1MB。 也适用于运行状况文本分析。 |
 
-可以在单个请求中发送的最大文档数将取决于所使用的 API 版本和功能。 如果任何文档超过最大大小（12.5 万个字符），则 `/analyze` 终结点将拒绝整个请求
+
+如果文档超出了字符限制，则 API 的行为会有所不同，具体取决于所使用的终结点：
+
+* `/analyze` 终结点：
+  * 如果请求中有任何文档超出最大大小，则 API 将拒绝整个请求并返回 `400 bad request` 错误。
+* 所有其他终结点：  
+  * API 不会处理超过最大大小的文档，并将为其返回无效的文档错误。 如果 API 请求包含多个文档，则 API 将继续处理它们（只要它们在字符限制内）。
+
+可以在单个请求中发送的最大文档数将取决于所使用的 API 版本和功能，如下表中所述。
 
 #### <a name="version-3"></a>[第 3 版](#tab/version-3)
 

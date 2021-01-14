@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 9762ca79f73b3333045d1c11376ab315aac2d55e
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: fb9d74da6030c430cce4a2a3c4c5e4299183ca15
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808651"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132257"
 ---
 > [!IMPORTANT]
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 请参阅下面的参考文档。 
@@ -100,8 +100,8 @@ pip install azure-ai-formrecognizer --pre
 #### <a name="version-20"></a>[版本 2.0](#tab/ga)
 
 * [对客户端进行身份验证](#authenticate-the-client)
-* [识别表单内容](#recognize-form-content)
-* [识别回执](#recognize-receipts)
+* [分析布局](#analyze-layout)
+* [分析回执](#analyze-receipts)
 * [训练自定义模型](#train-a-custom-model)
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
 * [管理自定义模型](#manage-your-custom-models)
@@ -109,10 +109,10 @@ pip install azure-ai-formrecognizer --pre
 #### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 
 * [对客户端进行身份验证](#authenticate-the-client)
-* [识别表单内容](#recognize-form-content)
-* [识别回执](#recognize-receipts)
-* [识别名片](#recognize-business-cards)
-* [识别发票](#recognize-invoices)
+* [分析布局](#analyze-layout)
+* [分析回执](#analyze-receipts)
+* [分析名片](#analyze-business-cards)
+* [分析发票](#analyze-invoices)
 * [训练自定义模型](#train-a-custom-model)
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
 * [管理自定义模型](#manage-your-custom-models)
@@ -137,7 +137,7 @@ pip install azure-ai-formrecognizer --pre
 > [!NOTE]
 > 本指南中的代码片段使用通过 URL 访问的远程表单。 如果要改为处理本地表单文档，请参阅[参考文档](/python/api/azure-ai-formrecognizer)中的相关方法和[示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)。
 
-## <a name="recognize-form-content"></a>识别表单内容
+## <a name="analyze-layout"></a>分析布局
 
 可以使用表单识别器识别文档中的表格、线条和单词，而无需训练模型。
 
@@ -171,7 +171,7 @@ Confidence score: 1.0
 
 ```
 
-## <a name="recognize-receipts"></a>识别回执
+## <a name="analyze-receipts"></a>分析回执
 
 本部分演示如何使用预先训练的回执模型识别和提取美国回执中的常见字段。 若要从 URL 识别回执，请使用 `begin_recognize_receipts_from_url` 方法。 
 
@@ -203,7 +203,7 @@ Total: 1203.39 has confidence 0.774
 ```
 
 
-## <a name="recognize-business-cards"></a>识别名片
+## <a name="analyze-business-cards"></a>分析名片
 
 #### <a name="version-20"></a>[版本 2.0](#tab/ga)
 
@@ -221,7 +221,7 @@ Total: 1203.39 has confidence 0.774
 
 ---
 
-## <a name="recognize-invoices"></a>识别发票
+## <a name="analyze-invoices"></a>分析发票
 
 #### <a name="version-20"></a>[版本 2.0](#tab/ga)
 

@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d1fab57adfb675e8cc4ea604980e6f04a3f4a89f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 08679bac77121ee2d276f3d2854e0b119c769582
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425108"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109286"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -75,6 +75,13 @@ ms.locfileid: "94425108"
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=31-33)]
 
 此示例使用 `AddIntent()` 函数单独添加意向。 如果要从模型中添加所有意向，请使用 `AddAllIntents(model)` 并传递模型。
+
+> [!NOTE]
+> 语音 SDK 仅支持 LUIS v2.0 终结点。
+> 必须手动修改位于示例查询字段中的 v3.0 终结点 URL 才能使用 v2.0 URL 模式。
+> LUIS v2.0 终结点始终采用以下两种模式之一：
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 
 ## <a name="recognize-an-intent"></a>识别意向
 

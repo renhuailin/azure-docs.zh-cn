@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 616ad26e28db46f8c28aaa3fb763e2f0acf15409
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 074df0e79313a570e83ea72239394c1aa4946fc0
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97745685"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97956453"
 ---
 [参考文档](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices) | [包 (PyPi)](https://pypi.org/project/azure-mgmt-cognitiveservices/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
 
@@ -56,7 +56,7 @@ pip install azure-mgmt-cognitiveservices
 
 [!code-python[](~/cognitive-services-quickstart-code/python/azure_management_service/create_delete_resource.py?name=snippet_auth)]
 
-## <a name="create-a-cognitive-services-resource"></a>创建认知服务资源
+## <a name="create-a-cognitive-services-resource-python"></a>创建认知服务资源 (Python)
 
 若要创建并订阅新的认知服务资源，请使用 Create 函数。 此函数向传入的资源组添加新的可计费资源。 创建新资源时，需要知道要使用的服务的种类，以及其定价层（或 SKU）和 Azure 位置。 下面的函数使用所有这些参数并创建资源。
 

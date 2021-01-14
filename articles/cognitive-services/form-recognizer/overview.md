@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自动化数据处理, 文档处理, 自动化数据输入, 表单处理
-ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: e1e5a4abf8eab96af62b160e28f98d95cf527eaf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845522"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044758"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
 
@@ -42,11 +42,11 @@ Azure 表单识别器是一种认知服务，可让你使用机器学习技术�
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [试用预生成模型](https://fott.azurewebsites.net/)
+> [尝试使用表单识别器](https://fott.azurewebsites.net/)
 
 # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
 > [!div class="nextstepaction"]
-> [试用预生成模型](https://fott-preview.azurewebsites.net/)
+> [尝试使用表单识别器](https://fott-preview.azurewebsites.net/)
 
 ---
 
@@ -152,7 +152,18 @@ Azure 表单识别器是一种认知服务，可让你使用机器学习技术�
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器进行本地部署
 
-[使用表单识别器容器（预览版）](form-recognizer-container-howto.md)在本地部署 API 功能。 借助此 Docker 容器，你能够将服务进一步引入数据，以满足合规性、安全性或其他操作目的。
+[使用表单识别器容器（预览版）](form-recognizer-container-howto.md)在本地部署 API 功能。 借助此 Docker 容器，你能够将服务进一步引入数据，以满足合规性、安全性或其他操作目的。 
+
+## <a name="service-availability-and-redundancy"></a>服务可用性和冗余性
+
+### <a name="is-form-recognizer-service-zone-resilient"></a>表单识别器服务是否可在区域内复原？
+
+是。 默认情况下，表单识别器服务可在区域内复原。
+
+### <a name="how-do-i-configure-the-form-recognizer-service-to-be-zone-resilient"></a>如何将表单识别器服务配置为可在区域内复原？
+
+客户无需配置即可启用区域复原能力。 表单识别器资源默认提供区域内复原能力，由服务自身进行管理。
+
 
 ## <a name="data-privacy-and-security"></a>数据隐私和安全性
 

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 6768f46f39920c975e7eccef72563fc0bb7e5180
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 93552d203508fb893bd2e85d27a3a991fc539472
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808583"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132259"
 ---
 > [!IMPORTANT]
 > 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。
@@ -156,8 +156,8 @@ mkdir -p src/main/java
 `FormRecognizerClient` 提供操作以实现以下目的：
 
 - 使用经过训练的自定义模型识别表单域和内容，以识别自定义表单。  这些值在 `RecognizedForm` 对象的集合中返回。 请参阅示例[分析自定义表单](#analyze-forms-with-a-custom-model)。
-- 无需训练模型即可识别表单内容，包括表格、行和单词。  表单内容在 `FormPage` 对象的集合中返回。 请参阅示例[识别表单内容](#recognize-form-content)。
-- 使用表单识别器服务上预先训练的回执模型，识别美国回执中的常见字段。  这些字段和元数据在 `RecognizedForm` 对象的集合中返回。 请参阅示例[识别回执](#recognize-receipts)。
+- 无需训练模型即可识别表单内容，包括表格、行和单词。  表单内容在 `FormPage` 对象的集合中返回。 请参阅示例[分析布局](#analyze-layout)。
+- 使用表单识别器服务上预先训练的回执模型，识别美国回执中的常见字段。  这些字段和元数据在 `RecognizedForm` 对象的集合中返回。 请参阅示例[分析回执](#analyze-receipts)。
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -177,17 +177,17 @@ mkdir -p src/main/java
 
 #### <a name="version-20"></a>[版本 2.0](#tab/ga)
 * [对客户端进行身份验证](#authenticate-the-client)
-* [识别表单内容](#recognize-form-content)
-* [识别回执](#recognize-receipts)
+* [分析布局](#analyze-layout)
+* [分析回执](#analyze-receipts)
 * [训练自定义模型](#train-a-custom-model)
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
 * [管理自定义模型](#manage-your-custom-models)
 #### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 * [对客户端进行身份验证](#authenticate-the-client)
-* [识别表单内容](#recognize-form-content)
-* [识别回执](#recognize-receipts)
-* [识别名片](#recognize-business-cards)
-* [识别发票](#recognize-invoices)
+* [分析布局](#analyze-layout)
+* [分析回执](#analyze-receipts)
+* [分析名片](#analyze-business-cards)
+* [分析发票](#analyze-invoices)
 * [训练自定义模型](#train-a-custom-model)
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
 * [管理自定义模型](#manage-your-custom-models)
@@ -200,7 +200,7 @@ mkdir -p src/main/java
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_auth)]
 
-## <a name="recognize-form-content"></a>识别表单内容
+## <a name="analyze-layout"></a>分析布局
 
 可以使用表单识别器识别文档中的表格、线条和单词，而无需训练模型。
 
@@ -233,7 +233,7 @@ Cell has text $89,024.34.
 Cell has text ET.
 ```
 
-## <a name="recognize-receipts"></a>识别回执
+## <a name="analyze-receipts"></a>分析回执
 
 本部分演示如何使用预先训练的回执模型识别和提取美国回执中的常见字段。
 
@@ -269,7 +269,7 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-## <a name="recognize-business-cards"></a>识别名片
+## <a name="analyze-business-cards"></a>分析名片
 
 #### <a name="version-20"></a>[版本 2.0](#tab/ga)
 
@@ -293,7 +293,7 @@ Total Price: null, confidence: 0.93
 
 ---
 
-## <a name="recognize-invoices"></a>识别发票
+## <a name="analyze-invoices"></a>分析发票
 
 #### <a name="version-20"></a>[版本 2.0](#tab/ga)
 
