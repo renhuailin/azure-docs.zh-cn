@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 24dc41493ff48aeba362137347c44cbf0fd20c7a
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3012b1283688a9a680a5a4d0607ca135eab7b0f5
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134205"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200407"
 ---
 # <a name="azure-security-baseline-for-azure-app-configuration"></a>Azure 应用配置的 Azure 安全基线
 
@@ -363,7 +363,7 @@ Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予�
 
 **指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 对于与应用程序配置相关的管理任务，使用高度安全的用户工作站和/或 Azure 堡垒。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可通过集中管理安全的工作站来强制实施安全配置，包括强身份验证、软件和硬件基线、受限的逻辑和网络访问。
 
-- [了解特权访问工作站](../active-directory/devices/concept-azure-managed-workstation.md) 
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [部署特权访问工作站](../active-directory/devices/howto-azure-managed-workstation.md)
 

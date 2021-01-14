@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b84256188cf5df3ddf389f763e669a2b2ca00852
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e2f0d62ae6882229cee3ee32e3b362f2b6593da7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183330"
+ms.locfileid: "98199229"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -52,9 +52,11 @@ driveletter:\ 不可访问。
 <a id="server-registration-missing-subscriptions"></a>**服务器注册未列出所有 Azure 订阅**  
 使用 ServerRegistration.exe 注册服务器时，如果单击 Azure 订阅下拉列表，订阅将丢失。
 
-出现此问题的原因是 ServerRegistration.exe 目前不支持多租户环境。 此问题将在未来的 Azure 文件同步代理更新中解决。
+之所以出现此问题，是因为 ServerRegistration.exe 将仅检索前 5 Azure AD 租户的订阅。 
 
-若要解决此问题，请使用以下 PowerShell 命令注册服务器：
+若要增加服务器上的服务器注册租户限制，请在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync 中创建一个名为 ServerRegistrationTenantLimit 的 DWORD 值，其值大于5。
+
+还可以通过使用以下 PowerShell 命令注册服务器来解决此问题：
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"

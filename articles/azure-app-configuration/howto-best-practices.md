@@ -1,6 +1,6 @@
 ---
 title: Azure 应用程序配置最佳做法 | Microsoft Docs
-description: 了解使用 Azure 应用配置时的最佳做法。 涉及的主题包括密钥分组、键值组合、应用配置启动，等等。
+description: 了解使用 Azure 应用配置时的最佳做法。 涉及的主题包括键分组、键-值组合、应用配置启动，等等。
 services: azure-app-configuration
 documentationcenter: ''
 author: AlexandraKemperMS
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f407f9ee2ea0ca73b29e4fde9d542c005f78a929
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929083"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200441"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 应用程序配置最佳做法
 
@@ -89,6 +89,10 @@ configBuilder.AddAzureAppConfiguration(options => {
 ## <a name="multi-region-deployment-in-app-configuration"></a>应用程序配置中的多区域部署
 
 应用程序配置是一种区域服务。 对于在每个区域设有不同配置的应用程序，将这些配置存储在一个实例中可能会导致单一故障点。 跨多个区域为每个区域部署一个应用程序配置实例可能是一个更好的选择。 它可帮助实现区域性灾难恢复、提高性能以及实现安全孤岛。 按区域配置还可以减少延迟并使用单独的限制配额，因为限制是按实例执行的。 若要应用灾难恢复缓解，可以使用[多个配置存储](./concept-disaster-recovery.md)。 
+
+## <a name="client-applications-in-app-configuration"></a>应用配置中的客户端应用程序 
+
+对应用程序配置的请求过多可能会导致限制或超额费用。 应用程序利用当前可用的缓存和智能刷新来优化其发送的请求数。 通过避免直接连接到配置存储，可以在大量客户端应用程序中对此过程进行镜像。 相反，客户端应用程序连接到自定义服务，此服务与配置存储区进行通信。 此代理解决方案可以确保客户端应用程序不会对配置存储区进行限制。 有关限制的详细信息，请参阅 [常见问题解答](https://docs.microsoft.com/azure/azure-app-configuration/faq#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration)。  
 
 ## <a name="next-steps"></a>后续步骤
 

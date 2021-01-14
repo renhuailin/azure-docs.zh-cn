@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1430b32c0e74be7a0e50fa4c5c183018b2b55e0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 81d44dae0fed45d4a4df76973c7e233fd71baff1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006296"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198962"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何安装和配置 Azure 上的 SAP HANA（大型实例）
 
@@ -129,7 +129,7 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 假设已遵循以下文档中的建议设计了 Azure 虚拟网络并将这些虚拟网络连接到了 HANA 大型实例：
 
 - [Azure 上的 SAP HANA（大型实例）概述和体系结构](./hana-overview-architecture.md)
-- [SAP HANA Azure 上的 (大型实例) 基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA Azure 上的 (大型实例) 基础结构和连接](hana-overview-infrastructure-connectivity.md)
 
 在单个单元的网络方面，有些详细信息值得注意。 每个 HANA 大型实例单元附带两个或三个 IP 地址，这些地址已分配到两个或三个 NIC 端口。 HANA 横向扩展配置和 HANA 系统复制方案中使用三个 IP 地址。 分配给单元 NIC 的一个 IP 地址位于 [Azure 上的 SAP HANA（大型实例）概述和体系结构](./hana-overview-architecture.md)中所述的服务器 IP 池外部。
 
@@ -139,7 +139,7 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 
 Azure 上的 SAP HANA 的存储布局 (大型实例) 通过 Azure 上的 Azure `service management` 建议指导原则进行 SAP HANA 配置。 [SAP HANA 存储要求](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮书中阐述了这些指导原则。 
 
-有关包含不同 HANA 大型实例 SKU 的各卷的粗略大小，请参阅 [Azure 上的 SAP HANA（大型实例）概述和体系结构](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关包含不同 HANA 大型实例 SKU 的各卷的粗略大小，请参阅 [Azure 上的 SAP HANA（大型实例）概述和体系结构](hana-overview-architecture.md)。
 
 下表列出了存储卷的命名约定：
 
@@ -161,7 +161,7 @@ HANA usr/sap 共享同一个卷。 装入点的命名法包括 HANA 实例系统
 
 查看 HANA 大型实例单元时，你会发现，单元随附了相当大的 HANA/data 磁盘卷，并且还有一个 HANA/log/backup 卷。 我们提供这么大的 HANA/data 卷的原因是，为客户提供的存储快照使用同一个磁盘卷。 执行的存储快照越多，分配的存储卷中的快照占用的空间就越多。 
 
-HANA/log/backup 卷并非旨在用作数据库备份的卷。 它的大小适合用作 HANA 事务日志备份的备份卷。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
+HANA/log/backup 卷并非旨在用作数据库备份的卷。 它的大小适合用作 HANA 事务日志备份的备份卷。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md) 
 
 除了提供的存储以外，还可以购买更多存储容量，增量为 1-TB。 可以将此附加存储作为新卷添加到 HANA 大型实例。
 

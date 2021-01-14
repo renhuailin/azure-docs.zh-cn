@@ -6,12 +6,12 @@ author: cynthn
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 8c0694bd1dc2fefed644dc91a0d649dd1a480428
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 54f59a052132826897cfbc8dda59bc73fb6ad8d9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654534"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200560"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>更改 VM 的可用性集
 以下步骤说明如何使用 Azure PowerShell 来更改 VM 的可用性集。 只能在创建 VM 时将 VM 添加到可用性集。 若要更改可用性集，必须将虚拟机删除，然后重新创建虚拟机。 
@@ -106,4 +106,4 @@ ms.locfileid: "97654534"
 
 ## <a name="next-steps"></a>后续步骤
 
-通过添加附加[数据磁盘](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，向 VM 添加附加存储。
+通过添加附加[数据磁盘](attach-managed-disk-portal.md)，向 VM 添加附加存储。

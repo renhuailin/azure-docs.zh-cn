@@ -6,33 +6,36 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 10/25/2020
-ms.openlocfilehash: 30ac28ef996c42e99ebece27ec156777f0d033d2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 01/13/2021
+ms.openlocfilehash: 34210d08ad5328f200f5b92c13bfcf85cfead3ec
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587870"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199472"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>排查 Azure Database for MySQL 中的复制延迟问题
 
 [!INCLUDE[applies-to-single-flexible-server](./includes/applies-to-single-flexible-server.md)]
 
-使用[只读副本](concepts-read-replicas.md)功能可将数据从 Azure Database for MySQL 服务器复制到只读副本服务器。 可以通过将读取和报告查询从应用程序路由到副本服务器来横向扩展工作负荷。 此设置可减小源服务器上的压力。 它还改进了应用程序在缩放时的整体性能和延迟。 
+使用[只读副本](concepts-read-replicas.md)功能可将数据从 Azure Database for MySQL 服务器复制到只读副本服务器。 可以通过将读取和报告查询从应用程序路由到副本服务器来横向扩展工作负荷。 此设置可减小源服务器上的压力。 它还改进了应用程序在缩放时的整体性能和延迟。
 
-副本使用 MySQL 引擎的原生二进制日志 (binlog) 文件基于位置的复制技术以异步方式进行更新。 有关详细信息，请参阅 [MySQL binlog 文件基于位置的复制配置概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。 
+副本使用 MySQL 引擎的原生二进制日志 (binlog) 文件基于位置的复制技术以异步方式进行更新。 有关详细信息，请参阅 [MySQL binlog 文件基于位置的复制配置概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。
 
-辅助只读副本上的复制延迟取决于多个因素。 这些因素包括但不限于： 
+辅助只读副本上的复制延迟取决于多个因素。 这些因素包括但不限于：
 
 - 网络延迟。
 - 源服务器上的事务量。
 - 源服务器和辅助只读副本服务器的计算层。
-- 在源服务器和辅助服务器上运行的查询。 
+- 在源服务器和辅助服务器上运行的查询。
 
 在本文中，你将了解如何排查 Azure Database for MySQL 中的复制延迟问题。 你还将了解副本服务器上复制延迟增加的一些常见原因。
 
 > [!NOTE]
-> 本文包含对字词从属的引用，这是 Microsoft 不再使用的术语。 从软件中删除该字词后，我们会将其从本文中删除。
+> 无偏差通信
+>
+> Microsoft 支持多样化的包容性环境。 本文包含对关键字 _master_ 和 _从属_ 的引用。 [用于偏置通信的 Microsoft 风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)识别为 exclusionary 词。 本文中使用的词是为了保持一致，因为它们目前是软件中出现的单词。 当软件更新为删除字词时，本文将更新为对齐。
+>
 
 ## <a name="replication-concepts"></a>复制概念
 
@@ -47,7 +50,7 @@ Azure Database for MySQL 在 [Azure Monitor](concepts-monitoring.md) 中提供�
 
 若要了解复制滞后时间增加的原因，请使用 [MySQL 工作台](connect-workbench.md) 或 [Azure Cloud Shell](https://shell.azure.com)连接到副本服务器。 然后运行以下命令。
 
->[!NOTE] 
+>[!NOTE]
 > 在代码中，将示例值替换为你的副本服务器名称和管理员用户名。 对于 Azure Database for MySQL，管理员用户名需要包含 `@\<servername>`。
 
 ```azurecli-interactive
@@ -92,7 +95,6 @@ mysql> SHOW SLAVE STATUS;
 >[!div class="mx-imgBorder"]
 > :::image type="content" source="./media/howto-troubleshoot-replication-latency/show-status.png" alt-text="监视复制延迟":::
 
-
 输出中包含许多信息。 通常，只需关注下表中所述的行。
 
 |指标|说明|
@@ -122,7 +124,7 @@ mysql> SHOW SLAVE STATUS;
 
 ### <a name="network-latency-or-high-cpu-consumption-on-the-source-server"></a>源服务器上的网络延迟或高 CPU 消耗
 
-如果看到以下值，则复制延迟可能是由源服务器上的高网络延迟或高 CPU 消耗导致的。 
+如果看到以下值，则复制延迟可能是由源服务器上的高网络延迟或高 CPU 消耗导致的。
 
 ```
 Slave_IO_State: Waiting for master to send event
@@ -132,7 +134,7 @@ Relay_Master_Log_File: the file sequence is smaller than Master_Log_File, e.g. m
 
 在这种情况下，IO 线程在源服务器上处于正在运行和等待状态。 源服务器已将内容写入到编号 20 的二进制日志文件。 副本最多已接收 10 号文件。 在此场景中，高复制延迟的主要因素是源服务器上的网络速度或高 CPU 使用率。  
 
-在 Azure 中，区域内的网络延迟通常以毫秒为单位。 不同区域的延迟在数毫秒到数秒的范围内。 
+在 Azure 中，区域内的网络延迟通常以毫秒为单位。 不同区域的延迟在数毫秒到数秒的范围内。
 
 在大多数情况下，IO 线程与源服务器之间的连接延迟是由源服务器上的 CPU 使用率较高引起的。 IO 线程处理速度缓慢。 可以通过使用 Azure Monitor 检查源服务器上的 CPU 使用率和并发连接数来检测此问题。
 
@@ -148,18 +150,17 @@ Master_Log_File: the binary file sequence is larger then Relay_Master_Log_File, 
 Relay_Master_Log_File: the file sequence is smaller then Master_Log_File, e.g. mysql-bin.00010
 ```
 
-输出表明副本可以检索源服务器背后的二进制日志。 但是，副本 IO 线程表明中继日志空间已满。 
+输出表明副本可以检索源服务器背后的二进制日志。 但是，副本 IO 线程表明中继日志空间已满。
 
-网络速度没有导致延迟。 副本正在尝试追赶进度。 但更新后的二进制日志大小超出中继日志空间的上限。 
+网络速度没有导致延迟。 副本正在尝试追赶进度。 但更新后的二进制日志大小超出中继日志空间的上限。
 
 若要排查此问题，请在源服务器上启用[慢速查询日志](concepts-server-logs.md)。 使用慢速查询日志标识源服务器上长时间运行的事务。 然后，优化所标识的查询以降低服务器上的延迟。 
 
 此类复制延迟通常是由源服务器上的数据负载导致的。 遗憾的是，如果源服务器有每周或每月数据负载，则复制延迟不可避免。 在源服务器上的数据负载完成后，副本服务器最终会赶上进度。
 
-
 ### <a name="slowness-on-the-replica-server"></a>副本服务器上的速度缓慢
 
-如果看到以下值，则问题可能出在副本服务器上。 
+如果看到以下值，则问题可能出在副本服务器上。
 
 ```
 Slave_IO_State: Waiting for master to send event
@@ -172,7 +173,7 @@ Exec_Master_Log_Pos: The position of slave reads from master binary log file is 
 Seconds_Behind_Master: There is latency and the value here is greater than 0
 ```
 
-在此场景中，输出表明 IO 线程和 SQL 线程正在正常运行。 副本读取源服务器写入的同一个二进制日志文件。 但是，副本服务器上的某种延迟反映了来自源服务器的同一事务。 
+在此场景中，输出表明 IO 线程和 SQL 线程正在正常运行。 副本读取源服务器写入的同一个二进制日志文件。 但是，副本服务器上的某种延迟反映了来自源服务器的同一事务。
 
 以下部分介绍了此类延迟的常见原因。
 
@@ -180,13 +181,13 @@ Seconds_Behind_Master: There is latency and the value here is greater than 0
 
 Azure Database for MySQL 使用基于行的复制。 源服务器会将事件写入到二进制日志，在各个表行中记录更改。 然后，SQL 线程会将这些更改复制到副本服务器上的相应表行。 当表缺少主键或唯一键时，SQL 线程会扫描目标表中的所有行，以应用这些更改。 此扫描可能会导致复制延迟。
 
-在 MySQL 中，主键是一个关联的索引，可确保快速进行查询，因为它不能包含 NULL 值。 如果使用 InnoDB 存储引擎，则表数据以物理方式组织，以基于主键执行超高速度的查找和排序。 
+在 MySQL 中，主键是一个关联的索引，可确保快速进行查询，因为它不能包含 NULL 值。 如果使用 InnoDB 存储引擎，则表数据以物理方式组织，以基于主键执行超高速度的查找和排序。
 
 建议在创建副本服务器之前，在源服务器中的表上添加主键。 在源服务器上添加主键，然后重新创建只读副本，这样有助于改进复制延迟。
 
 使用以下查询来查明源服务器上缺少主键的表：
 
-```sql 
+```sql
 select tab.table_schema as database_name, tab.table_name 
 from information_schema.tables tab left join 
 information_schema.table_constraints tco 
@@ -202,19 +203,19 @@ order by tab.table_schema, tab.table_name;
 
 #### <a name="long-running-queries-on-the-replica-server"></a>副本服务器上长时间运行的查询
 
-副本服务器上的工作负荷可能会导致 SQL 线程滞后于 IO 线程。 副本服务器上长时间运行的查询是复制延迟较高的常见原因之一。 若要排查此问题，请在副本服务器上启用[慢速查询日志](concepts-server-logs.md)。 
+副本服务器上的工作负荷可能会导致 SQL 线程滞后于 IO 线程。 副本服务器上长时间运行的查询是复制延迟较高的常见原因之一。 若要排查此问题，请在副本服务器上启用[慢速查询日志](concepts-server-logs.md)。
 
 慢速查询可能会增加资源消耗或降低服务器的速度，使副本无法赶上源服务器的进度。 在这种情况下，请优化慢速查询。 更快的查询可防止 SQL 线程阻塞并显著改进复制延迟。
 
-
 #### <a name="ddl-queries-on-the-source-server"></a>源服务器上的 DDL 查询
+
 在源服务器上，数据定义语言 (DDL) 命令（例如 [`ALTER TABLE`](https://dev.mysql.com/doc/refman/5.7/en/alter-table.html)）可能需要花费较长的时间。 当 DDL 命令正在运行时，源服务器上可能会有数千个其他的查询在并行运行。 
 
 复制 DDL 时，为了确保数据库的一致性，MySQL 引擎会在单个复制线程中运行 DDL。 在执行此任务期间，所有其他复制的查询会被阻止，它们必须等待，直到 DDL 操作在副本服务器上完成。 即使联机 DDL 操作也会导致此延迟。 DDL 操作会增加复制延迟。
 
-如果在源服务器上启用了[慢速查询日志](concepts-server-logs.md)，则可以通过检查是否有已在源服务器上运行的 DDL 命令来检测此延迟问题。 通过索引删除、重命名和创建，你可以将 INPLACE 算法用于 ALTER TABLE。 你可能需要复制表数据并重新生成表。 
+如果在源服务器上启用了[慢速查询日志](concepts-server-logs.md)，则可以通过检查是否有已在源服务器上运行的 DDL 命令来检测此延迟问题。 通过索引删除、重命名和创建，你可以将 INPLACE 算法用于 ALTER TABLE。 你可能需要复制表数据并重新生成表。
 
-通常，并发 DML 支持 INPLACE 算法。 但在准备和运行操作时，可以在表上简单地采用排他的元数据锁。 因此，对于 CREATE INDEX 语句，可以使用子句 ALGORITHM 和 LOCK 来影响用于表复制的方法以及用于读取和写入的并发级别。 你仍可以通过添加 FULLTEXT 索引或 SPATIAL 索引来阻止 DML 操作。 
+通常，并发 DML 支持 INPLACE 算法。 但在准备和运行操作时，可以在表上简单地采用排他的元数据锁。 因此，对于 CREATE INDEX 语句，可以使用子句 ALGORITHM 和 LOCK 来影响用于表复制的方法以及用于读取和写入的并发级别。 你仍可以通过添加 FULLTEXT 索引或 SPATIAL 索引来阻止 DML 操作。
 
 以下示例使用 ALGORITHM 和 LOCK 子句来创建索引。
 
@@ -226,24 +227,25 @@ ALTER TABLE table_name ADD INDEX index_name (column), ALGORITHM=INPLACE, LOCK=NO
 
 #### <a name="downgraded-replica-server"></a>降级的副本服务器
 
-在 Azure Database for MySQL 中，只读副本使用与源服务器相同的服务器配置。 可以在创建副本服务器后更改其配置。 
+在 Azure Database for MySQL 中，只读副本使用与源服务器相同的服务器配置。 可以在创建副本服务器后更改其配置。
 
-如果副本服务器已降级，则工作负荷可能会占用更多资源，进而导致复制延迟。 若要检测此问题，请使用 Azure Monitor 来检查副本服务器的 CPU 和内存消耗。 
+如果副本服务器已降级，则工作负荷可能会占用更多资源，进而导致复制延迟。 若要检测此问题，请使用 Azure Monitor 来检查副本服务器的 CPU 和内存消耗。
 
 在这种情况下，建议你在保留副本服务器的配置时，使其值等于或大于源服务器的值。 此配置使副本服务器能够跟上源服务器的进度。
 
 #### <a name="improving-replication-latency-by-tuning-the-source-server-parameters"></a>通过优化源服务器参数改进复制延迟
 
-在 Azure Database for MySQL 中，默认情况下，复制经过优化后可在副本上通过并行线程运行。 如果源服务器上的高并发工作负荷导致副本服务器滞后，则可以通过在源服务器上配置参数 binlog_group_commit_sync_delay 来改进复制延迟。 
+在 Azure Database for MySQL 中，默认情况下，复制经过优化后可在副本上通过并行线程运行。 如果源服务器上的高并发工作负荷导致副本服务器滞后，则可以通过在源服务器上配置参数 binlog_group_commit_sync_delay 来改进复制延迟。
 
-binlog_group_commit_sync_delay 参数控制在同步二进制日志文件之前，二进制日志提交操作需要等待多少微秒。 使用此参数的优点是，源服务器会批量发送二进制日志更新，而不是立即应用每个已提交的事务。 此延迟减少了副本上的 IO，有助于提高性能。 
+binlog_group_commit_sync_delay 参数控制在同步二进制日志文件之前，二进制日志提交操作需要等待多少微秒。 使用此参数的优点是，源服务器会批量发送二进制日志更新，而不是立即应用每个已提交的事务。 此延迟减少了副本上的 IO，有助于提高性能。
 
-可以将 binlog_group_commit_sync_delay 参数设置为 1000 左右。 然后，监视复制延迟。 请谨慎设置此参数，仅将其用于高并发工作负荷。 
+可以将 binlog_group_commit_sync_delay 参数设置为 1000 左右。 然后，监视复制延迟。 请谨慎设置此参数，仅将其用于高并发工作负荷。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 在副本服务器中，建议将参数 binlog_group_commit_sync_delay 设置为 0。 这是因为副本服务器与源服务器不同，它没有高并发性，并且增加副本服务器上 binlog_group_commit_sync_delay 的值可能会无意中导致复制延迟增加。
 
-对于包含许多单一实例事务的低并发工作负荷，binlog_group_commit_sync_delay 设置可能会增加延迟。 延迟可能会增加，因为 IO 线程会等待批量二进制日志更新，即使只提交了几个事务。 
+对于包含许多单一实例事务的低并发工作负荷，binlog_group_commit_sync_delay 设置可能会增加延迟。 延迟可能会增加，因为 IO 线程会等待批量二进制日志更新，即使只提交了几个事务。
 
 ## <a name="next-steps"></a>后续步骤
+
 查看 [MySQL binlog 复制概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。

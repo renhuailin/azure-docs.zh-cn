@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 993cd614f150866817e8d71dbd9dca9be606465f
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 5b38da5539cb80110b2a769a219213a5c74e1506
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035149"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198549"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>适用于 Azure Functions 的 Azure 安全基线
 
@@ -22,7 +22,7 @@ ms.locfileid: "98035149"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -425,7 +425,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 **指南**：使用配置了多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录并配置 Azure 资源。
 
-- [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -539,7 +539,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-指南：为开发、测试和生产实现单独的订阅和/或管理组。 函数应用应由虚拟网络 (VNet) /子网进行分隔，并相应地进行标记。
+**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 函数应用应由虚拟网络 (VNet) /子网进行分隔，并相应地进行标记。
 
 还可以使用专用终结点来执行网络隔离。 Azure 专用终结点是一个网络接口，该接口将你私下并安全地连接到服务 (例如： function app HTTPs 终结点) 由 Azure 私有链接提供支持。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入 VNet 中。 专用终结点位于高级计划中运行的函数应用 (预览) 。 在将专用终结点与生产工作负荷一起使用之前，请确保专用终结点不再处于 (预览) 。
 
@@ -585,7 +585,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **指南**：当前不可用;数据标识、分类和丢失防护功能当前不可用于 Azure Functions。 标记函数应用程序可能会以这种方式处理敏感信息，并在需要时实现第三方解决方案以实现符合性。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -972,7 +972,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
-**指南**：在 Azure AD 中，使用托管标识向函数应用提供自动管理的标识。 通过托管标识可向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。
+**指南**：在 Azure AD 中，使用托管标识向函数应用提供自动管理的标识。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
 
 - [如何使用应用服务和 Azure Functions 的托管标识](../app-service/overview-managed-identity.md)
 
@@ -1045,7 +1045,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **责任**：客户
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整的系统备份并备份所有客户管理的密钥
 
 **指南**：使用备份和还原功能来计划应用的定期备份。 在高级计划中运行的函数应用与 Azure App Service 中的 web 应用具有相同的托管功能，其中包括 "备份和还原" 功能。 在 Azure 密钥保管库中备份客户托管的密钥。
 

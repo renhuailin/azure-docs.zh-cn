@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7304ffbb7718205ead48e27989d4a169375997
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c981bde4e0699c4da33ada7e287b16e54b899a58
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861980"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198911"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -114,7 +114,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>启用多重身份验证，并注册所有其他的特许权限高的单用户非联合管理员帐户
 
-需要 Azure AD 多重身份验证 (MFA) ，以便在登录时将永久分配给一个或多个 Azure AD 管理员角色的所有用户：全局管理员、特权角色管理员、Exchange 管理员和 SharePoint 管理员。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](../authentication/howto-mfa-userstates.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，可参阅[保护对 Microsoft 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步骤 2 和步骤 3。 
+对于永久分配给一个或多个 Azure AD 管理员角色的所有个人用户，要求其在登录时进行 Azure AD 多重身份验证 (MFA)：全局管理员、特权角色管理员、Exchange 管理员和 SharePoint 管理员。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](../authentication/howto-mfa-userstates.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，可参阅[保护对 Microsoft 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步骤 2 和步骤 3。 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>阶段 2：缓解经常使用的攻击
 
@@ -135,7 +135,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 * 确保用于管理目的的帐户：
 
   * 附加了工作电子邮件地址
-  * 已注册 Azure AD 多重身份验证，或在本地使用 MFA
+  * 已注册 Azure AD 多重身份验证或在本地使用 MFA
 * 要求用户提供进行管理访问的业务理由。
 * 删除那些不需要管理员访问权限的个人和服务的此类权限。
 
@@ -240,7 +240,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>针对所有用户持续推出更强的身份验证
 
-要求高度公开的用户具有新式强身份验证，例如 Azure AD MFA 或 Windows Hello。 身份暴露可能性高的用户的示例包括：
+要求身份暴露可能性高的用户执行新式强身份验证，例如 Azure AD MFA 或 Windows Hello。 身份暴露可能性高的用户的示例包括：
 
 * C 套件高管
 * 高级经理
@@ -255,7 +255,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 * 模拟攻击
 * 凭据盗窃攻击，例如按键日志记录、哈希传递和票证传递
 
-部署特权访问工作站可以降低管理员在未经过强化的桌面环境中输入凭据时遇到的风险。 有关详细信息，请参阅[特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)。
+部署特权访问工作站可以降低管理员在未经过强化的桌面环境中输入凭据时遇到的风险。 有关详细信息，请参阅[特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)。
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>查看美国国家标准与技术协会提供的有关如何处理事件的建议
 

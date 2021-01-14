@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 35b0ed8e8a7a8400388e7c31ef1a83a7ea6ece85
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 22654d49d02809460adc4013c2c92ac857805cf7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533604"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199795"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure 数据共享的 azure 安全基线
 
@@ -30,7 +30,7 @@ ms.locfileid: "96533604"
 
 **指南**：通过 Azure Monitor 引入与 Azure 数据共享相关的日志，以聚合由终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
-或者，你可以将此数据启用并将其提供给 Azure Sentinel 或第三方 SIEM。
+或者，可以启用此数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
@@ -46,7 +46,7 @@ ms.locfileid: "96533604"
 
 **指南**：自动可用的活动日志包含 Azure 数据共享资源的所有写入操作 (PUT、POST、DELETE) ，但读取操作 (获取) 。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
 
-为 Azure 数据共享启用诊断日志，尤其是 MicrosoftDataShareSentShareSnapshotsLog MicrosoftDataShareReceivedShareSnapshotsLog 的诊断日志 &amp; 。 使用这些日志可以捕获关键信息，例如同步开始时间、结束时间、状态和其他详细信息。 这些日志对于日后调查安全事件和执行鉴证演练可能至关重要。
+为 Azure 数据共享启用诊断日志，尤其是 MicrosoftDataShareSentShareSnapshotsLog MicrosoftDataShareReceivedShareSnapshotsLog 的诊断日志 &amp; 。 使用这些日志可以捕获关键信息，例如同步开始时间、结束时间、状态和其他详细信息。 这些日志可能对日后调查安全事件和执行取证演练至关重要。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 
@@ -130,7 +130,7 @@ ms.locfileid: "96533604"
 
 **指导**：对于需要提升的权限的管理任务，请使用安全的 Azure 托管工作站（也称为特权访问工作站，简称 PAW）。
 
-- [了解安全的 Azure 托管工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [了解安全的 Azure 托管工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
  
 
 - [如何启用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
@@ -247,7 +247,7 @@ ms.locfileid: "96533604"
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
-**指南**：将标记应用于 Azure 资源、资源组和订阅，以逻辑方式将它们组织到分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
+**指导**：将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
 **Azure 安全中心监视**：不适用
 
@@ -314,7 +314,7 @@ Azure 数据共享不会公开操作系统，也不允许你在其资源上安�
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
 
-**指南**：通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，使用 Azure 条件访问限制用户与 Azure 资源管理器的交互能力。
+**指导**：通过为“Microsoft Azure 管理”应用配置“阻止访问”，使用 Azure 条件访问来限制用户与 Azure 资源管理器交互的能力。
 
 - [如何配置条件访问来阻止对 Azure 资源管理器的访问](../role-based-access-control/conditional-access-azure-management.md) 
 
@@ -328,7 +328,7 @@ Azure 数据共享不会公开操作系统，也不允许你在其资源上安�
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
-**指南**：使用 Azure DevOps 来安全地存储和管理代码，如自定义 azure 策略定义、azure 资源管理器模板和所需状态配置脚本。 若要访问在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。
+**指导**：使用 Azure DevOps 安全地存储和管理代码，例如自定义 Azure Policy 定义、Azure 资源管理器模板和 Desired State Configuration 脚本。 若要访问在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。
 
 - [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 

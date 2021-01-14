@@ -1,18 +1,18 @@
 ---
-title: 对 Azure Blob 存储中的数据进行敏感标签报告
-description: 本操作方法指南介绍了如何在 Azure Blob 存储中查看和使用数据的监控范围敏感度标签报告。
+title: 使用监控范围 Insights 在 Azure 监控范围中报告数据的敏感度标签
+description: 本操作方法指南介绍如何查看和使用数据的监控范围敏感度标签报告。
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: e6a92282d2bcd316a771742048dacd9a7181de4f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: dffecb48a8faa869cb3df450cc220e86195bbc87
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746176"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199370"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>有关 Azure 监控范围中的数据的敏感度标签见解
 
@@ -27,6 +27,11 @@ ms.locfileid: "96746176"
 > - 查看对数据的敏感度标记见解
 > - 向下钻取有关数据的更多敏感度标记详细信息
 
+> [!NOTE]
+> 监控范围扫描的 [Power BI 资产](register-scan-power-bi-tenant.md) 上的敏感度标签当前未显示在敏感度标记见解报告中。 
+>
+> 若要查看 Power BI 资产上的敏感度标签，请查看 [监控范围数据目录](how-to-search-catalog.md)中的资产。
+> 
 ## <a name="prerequisites"></a>先决条件
 
 在开始利用监控范围 insights 之前，请确保已完成以下步骤：
@@ -37,6 +42,8 @@ ms.locfileid: "96746176"
 
 - 为每个数据源中的测试数据设置并完成扫描
 
+- 使用 [数据读取器或数据陈列角色](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)的帐户登录到监控范围。
+
 有关详细信息，请参阅 [在 azure 中管理数据源 (预览) ](manage-data-sources.md) 并 [自动在 azure 监控范围中标记数据](create-sensitivity-label.md)。
 
 ## <a name="use-purview-sensitivity-labeling-insights"></a>使用监控范围敏感度标记见解
@@ -45,9 +52,11 @@ ms.locfileid: "96746176"
 
 敏感性标签使你可以陈述组织中特定数据的敏感程度。 例如，特定的项目名称在你的组织中可能高度保密，而此同一术语对于其他组织不是机密的。 
 
-尽管分类直接匹配 (社会保障号码) **社会安全号码** 的分类，但当找到一个或多个分类和方案时，将应用敏感标签。 
+分类是直接匹配的，例如社会保障号，即社会 **保障号分类。** 
 
-监控范围使用与 Microsoft 365 相同的分类（也称为敏感信息类型）。 这使你能够在 Azure 监控范围资产之间扩展现有敏感度标签。
+相反，当找到一个或多个分类和条件时，将应用敏感度标签。 在这种情况下， [条件](/microsoft-365/compliance/apply-sensitivity-label-automatically) 是指可为非结构化数据定义的所有参数，如 **到其他分类的邻近度** 和 **置信度**。 
+
+监控范围使用与 Microsoft 365 相同的分类（也称为 [敏感信息类型](/microsoft-365/compliance/sensitive-information-type-entity-definitions)）。 这使你能够在 Azure 监控范围资产之间扩展现有敏感度标签。
 
 > [!NOTE]
 > 在扫描源类型后，请在几个小时内给予 **敏感度标记** ，以反映新资产。
@@ -94,7 +103,7 @@ ms.locfileid: "96746176"
 
 若要了解详细信息，请执行以下任一操作：
 
-|选项  |描述  |
+|选项  |说明  |
 |---------|---------|
 |**筛选数据**     |  使用网格上方的筛选器筛选显示的数据，包括标签名称、订阅名称或源类型。 <br><br>如果不确定确切的标签名称，可以在 " **按关键字筛选** " 框中输入部分或全部名称。       |
 |**对网格排序** |选择列标题可按该列对网格进行排序。 | 

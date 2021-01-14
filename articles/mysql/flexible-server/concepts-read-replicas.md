@@ -5,13 +5,13 @@ author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 3fe63deb8115c0043023301c6d0dc3731e97743f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/14/2021
+ms.openlocfilehash: ccae7b3f201e55af0e9e6b4ca9e7fd4ffb9c4897
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492619"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200968"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>读取 Azure Database for MySQL-灵活服务器中的副本
 
@@ -24,14 +24,14 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 
 使用只读副本功能可将数据从 Azure Database for MySQL 灵活服务器复制到只读服务器。 可以从源服务器复制到最多 **10 个** 副本。 使用 MySQL 引擎的基于本机二进制日志 (binlog) 文件位置的复制技术以异步方式更新副本。 若要了解有关 binlog 复制的详细信息，请参阅 [MySQL binlog 复制概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。
 
-副本是您管理的新服务器，它们与源 Azure Database for MySQL 灵活的服务器相同。 你将根据在 Vcore 中预配的计算和存储空间（GB/月）为每个读取副本产生帐单费用。 有关详细信息，请参阅 [定价](./concepts-compute-storage.md#pricing)。
+副本是您管理的新服务器，它们与源 Azure Database for MySQL 灵活的服务器相同。 你将根据在 Vcore 中预配的计算和存储空间（GB/月）为每个读取副本产生帐单费用。 有关详细信息，请参阅[定价](./concepts-compute-storage.md#pricing)。
 
 如需了解有关 MySQL 复制功能和问题的详细信息，请参阅 [MySQL 复制文档](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)。
 
 > [!NOTE]
 > 无偏差通信
 >
-> Microsoft 支持多样化的包容性环境。 本文包含对单词 slave 的引用。 Microsoft 的[无偏差通信风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)将其视为排他性单词。 本文使用该单词旨在保持一致性，因为目前软件中使用的是该单词。 如果软件更新后删除了该单词，则本文也将更新以保持一致。
+> Microsoft 支持多样化的包容性环境。 本文包含对关键字 _master_ 和 _从属_ 的引用。 [用于偏置通信的 Microsoft 风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)识别为 exclusionary 词。 本文中使用的词是为了保持一致，因为它们目前是软件中出现的单词。 当软件更新为删除字词时，本文将更新为对齐。
 >
 
 ## <a name="common-use-cases-for-read-replica"></a>读取副本的常见用例
@@ -93,24 +93,24 @@ Azure Database for MySQL 灵活的服务器在 Azure Monitor 中以 **秒为单�
 
 ## <a name="failover"></a>故障转移
 
-在源服务器和副本服务器之间无法自动进行故障转移。 
+在源服务器和副本服务器之间无法自动进行故障转移。
 
 读取副本适用于扩展读取密集型工作负荷，但并不用于满足服务器的高可用性需求。 在源服务器和副本服务器之间无法自动进行故障转移。 停止读取副本上的复制以使其在读写模式下处于联机状态，这就是执行手动故障转移的方式。
 
-由于复制是异步的，因此在源和副本之间存在滞后时间。 滞后时间量会受到多种因素影响，例如，在源服务器上运行的工作负荷有多大，以及数据中心之间的延迟有多严重。 大多数情况下，副本验证在几秒钟到几分钟之间。 可以使用“副本延迟”指标来跟踪实际的副本延迟，该指标适用于每个副本。 该指标显示的是自上次重播事务以来所经历的时间。 建议观察一段时间的副本延迟，以便确定平均延迟。 可以针对副本延迟设置警报，这样，当它超出预期范围时，你就可以采取行动。
+由于复制是异步的，因此在源和副本之间存在滞后时间。 延迟量可能会受到许多因素的影响，例如，源服务器上运行的工作负荷的大小和数据中心之间的延迟。 大多数情况下，副本验证在几秒钟到几分钟之间。 可以使用“副本延迟”指标来跟踪实际的副本延迟，该指标适用于每个副本。 该指标显示的是自上次重播事务以来所经历的时间。 建议观察一段时间的副本延迟，以便确定平均延迟。 可以针对副本延迟设置警报，这样，当它超出预期范围时，你就可以采取行动。
 
 > [!Tip]
 > 如果你故障转移到副本，在取消副本与源的链接时的滞后时间将表明会丢失多少数据。
 
-一旦决定要故障转移到某个副本， 
+确定要故障转移到副本后：
 
 1. 请停止将数据复制到副本<br/>
-   此步骤是使副本服务器能够接受写入所必需的。 作为此过程的一部分，将从源 delinked 副本服务器。 启动停止复制的操作后，后端进程通常需要大约 2 分钟才能完成。 请参阅本文的[停止复制](#stop-replication)部分，了解此操作的潜在影响。
-    
+   此步骤是使副本服务器能够接受写入所必需的。 作为此过程的一部分，将从源 delinked 副本服务器。 启动停止复制后，后端进程通常需要大约2分钟的时间才能完成。 请参阅本文的[停止复制](#stop-replication)部分，了解此操作的潜在影响。
+
 2. 将应用程序指向（以前的）副本<br/>
    每个服务器都有唯一的连接字符串。 更新应用程序，使之指向 (以前) 副本，而不是源。
-    
-如果应用程序成功处理了读取和写入操作，则表明故障转移已完成。 应用程序经历的停机时间取决于何时检测到问题并完成上面的步骤 1 和 2。
+
+应用程序成功处理读取和写入后，即已完成故障转移。 应用程序经历的停机时间取决于何时检测到问题并完成上面的步骤 1 和 2。
 
 ## <a name="considerations-and-limitations"></a>注意事项和限制
 
@@ -130,5 +130,5 @@ Azure Database for MySQL 灵活的服务器在 Azure Monitor 中以 **秒为单�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[使用 Azure 门户创建和管理只读副本](how-to-read-replicas-portal.md)
-- 了解如何[使用 Azure CLI 创建和管理只读副本](how-to-read-replicas-cli.md)
+* 了解如何[使用 Azure 门户创建和管理只读副本](how-to-read-replicas-portal.md)
+* 了解如何[使用 Azure CLI 创建和管理只读副本](how-to-read-replicas-cli.md)

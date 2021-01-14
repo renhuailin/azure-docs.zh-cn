@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d8f69f94c53227dc86fbbf9e9936a2fc3c97ec55
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: af248b4ee3ccd079d41317fdb1db3de82ad0f835
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967867"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199030"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>将 Azure VM 连接到 HANA 大型实例
 
@@ -41,7 +41,7 @@ ms.locfileid: "94967867"
 >[!Note]
 >必须使用 Azure 资源管理器部署模型为 HANA 大型实例创建 Azure 虚拟网络。 HANA 大型实例解决方案不支持旧式 Azure 部署模型（通常称为“经典部署模型”）。
 
-可以使用 Azure 门户、PowerShell、Azure 模板或 Azure CLI 创建虚拟网络。 （有关详细信息，请参阅[使用 Azure 门户创建虚拟网络](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)）。 以下示例演示如何使用 Azure 门户创建虚拟网络。
+可以使用 Azure 门户、PowerShell、Azure 模板或 Azure CLI 创建虚拟网络。 （有关详细信息，请参阅[使用 Azure 门户创建虚拟网络](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)）。 以下示例演示如何使用 Azure 门户创建虚拟网络。
 
 引用此文档中的 **地址空间** 时，可以使用 Azure 虚拟网络所允许的地址空间。 此地址空间也是虚拟网络用于 BGP 路由传播的地址范围。 可在此处查看此 **地址空间** ：
 

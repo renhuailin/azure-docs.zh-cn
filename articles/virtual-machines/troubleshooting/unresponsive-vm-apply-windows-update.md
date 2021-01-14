@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 76c3f729a8520c7bff7b49a1d2200d7950f8a9f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55dcd65e901a5ce8665ef8d3a2a29d7943581df9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074308"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200713"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>应用 Windows 更新时 VM 无响应并出现“C01A001D”错误
 
@@ -56,7 +56,7 @@ ms.locfileid: "87074308"
 
 如果磁盘空间尚不足 1 TB，必须调整其大小。 磁盘空间达到 1 TB 后，执行磁盘清理和驱动器碎片整理。
 
-1. 检查磁盘是否已满。 如果磁盘空间低于 1 TB，请[使用 PowerShell 将其扩展到最大 1 TB](../windows/expand-os-disk.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。
+1. 检查磁盘是否已满。 如果磁盘空间低于 1 TB，请[使用 PowerShell 将其扩展到最大 1 TB](../windows/expand-os-disk.md)。
 2. 磁盘空间达到 1 TB 后，执行磁盘清理。
     - [从损坏的 VM 中分离数据磁盘](../windows/detach-disk.md)。
     - [将数据磁盘附加到正常运行的 VM](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)。
