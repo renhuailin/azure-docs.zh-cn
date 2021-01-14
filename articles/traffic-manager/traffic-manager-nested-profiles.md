@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: duau
-ms.openlocfilehash: d96cd9b3c83357c2591edf4bbb09a82b897c6a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f2aa3d05d349880b5eb2d35a2c58af0741b9855
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826042"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185574"
 ---
 # <a name="nested-traffic-manager-profiles"></a>嵌套式流量管理器配置文件
 
@@ -97,23 +97,23 @@ ms.locfileid: "91826042"
 
 ## <a name="faqs"></a>常见问题
 
-* [如何配置嵌套式配置文件？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-nested-profiles)
+* [如何配置嵌套式配置文件？](./traffic-manager-faqs.md#traffic-manager-nested-profiles)
 
-* [流量管理器支持多少层嵌套？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+* [流量管理器支持多少层嵌套？](./traffic-manager-faqs.md#how-many-layers-of-nesting-does-traffic-manger-support)
 
-* [能否在同一流量管理器配置文件中将其他终结点类型与嵌套式子配置文件混合在一起使用？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+* [能否在同一流量管理器配置文件中将其他终结点类型与嵌套式子配置文件混合在一起使用？](./traffic-manager-faqs.md#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
 
-* [嵌套式配置文件如何应用计费模型？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+* [嵌套式配置文件如何应用计费模型？](./traffic-manager-faqs.md#how-does-the-billing-model-apply-for-nested-profiles)
 
-* [嵌套式配置文件是否会造成性能影响？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+* [嵌套式配置文件是否会造成性能影响？](./traffic-manager-faqs.md#is-there-a-performance-impact-for-nested-profiles)
 
-* [在父配置文件中，流量管理器如何计算嵌套式终结点的运行状况？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
+* [在父配置文件中，流量管理器如何计算嵌套式终结点的运行状况？](./traffic-manager-faqs.md#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>后续步骤
 
 深入了解[流量管理器配置文件](traffic-manager-overview.md)
 
-了解如何[创建流量管理器配置文件](traffic-manager-create-profile.md)
+了解如何[创建流量管理器配置文件](./quickstart-create-traffic-manager-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

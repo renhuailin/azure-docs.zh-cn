@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5de1188ee018e796f918d7559c0e2c24c77834f4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516964"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186186"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题解答
 
@@ -55,6 +55,10 @@ ms.locfileid: "92516964"
 
 使用符合要求的最小映像。 对于 Linux，可以使用 *runtime-alpine* .NET Core 映像，从 .NET Core 2.1 版本开始就已支持此映像。 对于 Windows，如果使用完整的 .NET Framework，则需要使用 Windows Server Core 映像（仅限运行时的映像，例如 *4.7.2-windowsservercore-ltsc2016*）。 仅限运行时的映像较小，但不支持需要 .NET SDK 的工作负荷。
 
+### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>哪些类型的容器注册表与 ACI 兼容？
+
+ACI 支持从 ACR 和其他第三方容器注册表（如 DockerHub）进行图像提取。 ACI 还支持从本地注册表进行的图像提取，只要它们是 OCR 兼容的，并且具有公开给 internet 的终结点。
+
 ## <a name="availability-and-quotas"></a>可用性和配额
 
 ### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>应为容器或容器组分配多少核心和内存？
@@ -90,7 +94,7 @@ Azure 容器实例旨在用作无服务器按需容器服务，因此，我们�
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>自定义 VNet 中运行的实例可以使用哪些功能？
 
-可以[在所选 Azure 虚拟网络中部署容器组](container-instances-vnet.md)，并将专用 IP 委托给容器组，以在 VNet 中跨 Azure 资源路由流量。 有关 Azure 容器实例的网络方案和限制，请参阅 [虚拟网络方案和资源](container-instances-virtual-network-concepts.md)。
+可以[在所选 Azure 虚拟网络中部署容器组](container-instances-vnet.md)，并将专用 IP 委托给容器组，以在 VNet 中跨 Azure 资源路由流量。 有关 Azure 容器实例的网络方案和限制，请参阅[虚拟网络方案和资源](container-instances-virtual-network-concepts.md)。
 
 ## <a name="pricing"></a>定价
 

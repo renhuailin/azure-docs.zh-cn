@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d4523319c04703c04a293471124329512e31a265
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5d5ecf95289bf7860363b7e97d834372ee6c2268
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964671"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185251"
 ---
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>适用于 Azure 流量管理器的 Azure 安全基线
 
@@ -76,7 +76,7 @@ ms.locfileid: "94964671"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -116,9 +116,9 @@ ms.locfileid: "94964671"
 
 - [使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 安全中心监视**：是
 
@@ -136,7 +136,7 @@ ms.locfileid: "94964671"
 
 还可以通过使用 Azure AD Privileged Identity Management 和 Azure 资源管理器来启用即时访问权限。 
 
-- [详细了解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [详细了解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 - [如何使用 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -170,7 +170,7 @@ ms.locfileid: "94964671"
 
 **指导**：对于需要提升的权限的管理任务，请使用安全的 Azure 托管工作站（也称为特权访问工作站，简称 PAW）。
 
-- [了解安全的 Azure 托管工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [了解安全的 Azure 托管工作站](/security/compass/concept-azure-managed-workstation)
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -182,11 +182,11 @@ ms.locfileid: "94964671"
 
 **指导**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 生成日志和警报。
 
-此外，使用 Azure AD 风险检测来查看警报和报告有风险的用户行为。
+此外，还可使用 Azure AD 风险检测来查看有关风险用户行为的警报和报告。
 
-- [如何部署 Privileged Identity Management](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [如何部署 Privileged Identity Management](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [了解 Azure AD 风险检测](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [了解 Azure AD 风险检测](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure 安全中心监视**：是
 
@@ -216,7 +216,7 @@ ms.locfileid: "94964671"
 
 **指南**：Azure AD 提供日志来帮助发现过时的帐户。 此外，请使用 Azure AD 标识和访问评审来有效管理组成员身份、对企业应用程序的访问以及角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。 
 
-- [了解 Azure AD 报告](/azure/active-directory/reports-monitoring/)
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -230,7 +230,7 @@ ms.locfileid: "94964671"
 
 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置所需的警报。
 
-- [如何将 Azure 活动日志与 Azure Monitor 集成](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何将 Azure 活动日志与 Azure Monitor 集成](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -240,7 +240,7 @@ ms.locfileid: "94964671"
 
 **指导**：使用 Azure AD 标识保护功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
 
-- [如何查看 Azure AD 风险登录](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -258,7 +258,7 @@ ms.locfileid: "94964671"
 
 **指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -270,15 +270,15 @@ ms.locfileid: "94964671"
 
 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。
 
-Azure 流量管理器具有一个名为 "流量管理器参与者" 的预定义 Azure 角色，可将其分配给用户。
+Azure 流量管理器具有一个名为“流量管理器参与者”的预定义 Azure 角色，该角色可以分配给用户。
 
 - [使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)
 
 - [流量管理器参与者角色](../role-based-access-control/built-in-roles.md#traffic-manager-contributor)
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 安全中心监视**：不适用
 
@@ -306,7 +306,7 @@ Azure 流量管理器具有一个名为 "流量管理器参与者" 的预定义 
 
 - [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -318,7 +318,7 @@ Azure 流量管理器具有一个名为 "流量管理器参与者" 的预定义 
 
 **指导**：使用“策略名称”、“描述”和“类别”可根据分类以符合逻辑的方式组织资产。
 
-- [有关标记资产的详细信息，请参阅资源命名和标记决策指南](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [有关标记资产的详细信息，请参阅资源命名和标记决策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 **Azure 安全中心监视**：不适用
 
@@ -335,11 +335,11 @@ Azure 流量管理器具有一个名为 "流量管理器参与者" 的预定义 
 
 还可以创建自定义 Azure Policy 定义，以限制更精细的资源设置。
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -378,7 +378,7 @@ Azure 流量管理器具有一个名为 "流量管理器参与者" 的预定义 
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：是
 
@@ -402,7 +402,7 @@ Azure 流量管理器具有一个名为 "流量管理器参与者" 的预定义 
 
 **指导**：使用 Azure Policy 为 Azure 流量管理器定义并实施标准安全配置。 在“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施恢复服务保管库的配置。
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -426,9 +426,9 @@ Azure 流量管理器具有一个名为 "流量管理器参与者" 的预定义 
 
 **指导**：如果使用自定义的 Azure Policy 定义，请使用 Azure DevOps 或 Azure Repos 安全地存储和管理代码。
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文档](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 安全中心监视**：不适用
 
@@ -494,7 +494,7 @@ Azure 流量管理器具有一个名为 "流量管理器参与者" 的预定义 
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
-- [使用标记整理 Azure 资源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：是
 
@@ -560,5 +560,5 @@ Azure 流量管理器具有一个名为 "流量管理器参与者" 的预定义 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

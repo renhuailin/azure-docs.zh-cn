@@ -3,12 +3,12 @@ title: 使用 Azure 托管标识在开发测试实验室中创建环境 |Microso
 description: 了解如何使用 Azure 中的托管标识在 Azure 开发测试实验室中的实验室部署环境。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e5bac4210afee6db1c7617dac1cd6d2ff9149439
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f3e4b4d7030eb26c25b291e03caaa430d1979c4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88718964"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185778"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>使用 Azure 托管标识在实验室中部署环境 
 
@@ -19,7 +19,7 @@ ms.locfileid: "88718964"
 
 ## <a name="prerequisites"></a>必备条件
 
-- [使用 Azure 门户创建、列出、删除用户分配的托管标识或为其分配角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 
+- [使用 Azure 门户创建、列出、删除或分配用户分配的托管标识的角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 
     
     确保你的托管标识是与实验室在同一区域和订阅中创建的。 托管标识不需要位于同一资源组中。
 
@@ -27,10 +27,10 @@ ms.locfileid: "88718964"
 
 在本部分中，你将作为实验室所有者，使用 Azure 门户向实验室添加用户管理的标识。 
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索 **开发测试实验室**。
 1. 从实验室列表中，选择所需的实验室。
-1. 选择 "**配置和策略**  ->  **标识" (预览 ") **。 
+1. 选择 "**配置和策略**  ->  **标识" (预览 ")**。 
 1. 若要添加用户分配的标识，请选择 " **用户分配** " 选项卡。
 1. 按 " **添加** "。
 1. 从下拉选择已创建和/或有权访问的现有用户。
@@ -42,7 +42,7 @@ ms.locfileid: "88718964"
 
 部署环境时，实验室所有者无需执行任何特殊操作，只要添加到实验室的标识有权访问环境需要访问的外部资源。 
 
-若要更改分配给实验室的用户托管标识，请首先删除附加到实验室的标识，然后将另一个标识添加到实验室。 若要删除附加到实验室的标识，请选择 " **..." (省略号) **，然后单击 " **删除**"。 
+若要更改分配给实验室的用户托管标识，请首先删除附加到实验室的标识，然后将另一个标识添加到实验室。 若要删除附加到实验室的标识，请选择 " **..." (省略号)**，然后单击 " **删除**"。 
 
 ## <a name="use-api"></a>使用 API
 

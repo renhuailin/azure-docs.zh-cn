@@ -5,12 +5,12 @@ description: 了解如何安装和配置 NGINX 入口控制器，该控制器使
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 88e2bdc1b516e55fb630b2fd31ff6a2977d57bfe
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 3cf7b069d6f010a4461b22c5326589ad3ec31204
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607902"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186254"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建 HTTPS 入口控制器
 
@@ -67,7 +67,7 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
 
 若要获取公共 IP 地址，请使用 `kubectl get service` 命令。 将 IP 地址分配给服务需要几分钟时间。
 
-```
+```console
 $ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
 NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
@@ -91,7 +91,7 @@ az network dns record-set a add-record \
 > [!NOTE]
 > （可选）可以为入口控制器 IP 地址而不是自定义域配置 FQDN。 请注意，此示例适用于 Bash shell。
 > 
-> ```azurecli-interactive
+> ```bash
 > # Public IP address of your ingress controller
 > IP="MY_EXTERNAL_IP"
 > 
@@ -265,7 +265,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 在以下示例中，到地址 *hello-world-ingress.MY_CUSTOM_DOMAIN* 的流量会路由到 *aks-helloworld* 服务。 到地址 *hello-world-ingress.MY_CUSTOM_DOMAIN/hello-world-two* 的流量会路由到 *aks-helloworld-two* 服务。 到 *hello-world-ingress.MY_CUSTOM_DOMAIN/static* 的流量会路由到静态资产的名为 *aks-helloworld* 的服务。
 
 > [!NOTE]
-> 如果为入口控制器 IP 地址（而不是自定义域）配置了 FQDN，请使用 FQDN 而不是 hello-world-ingress.MY_CUSTOM_DOMAIN。 例如，如果你的 FQDN 是 *demo-aks-ingress.eastus.cloudapp.azure.com*，则替换 *hello-world。MY_CUSTOM_DOMAIN* 中 *demo-aks-ingress.eastus.cloudapp.azure.com* 的 demo-aks-ingress.eastus.cloudapp.azure.com `hello-world-ingress.yaml` 。
+> 如果为入口控制器 IP 地址（而不是自定义域）配置了 FQDN，请使用 FQDN 而不是 hello-world-ingress.MY_CUSTOM_DOMAIN。 例如，如果你的 FQDN 是 *demo-aks-ingress.eastus.cloudapp.azure.com*，则替换 *hello-world。MY_CUSTOM_DOMAIN* 中的 demo-aks-ingress.eastus.cloudapp.azure.com `hello-world-ingress.yaml` 。
 
 使用下面的示例 YAML 创建名为 `hello-world-ingress.yaml` 的文件。 将 *hosts* 和 *host* 更新为在前面步骤中创建的 DNS 名称。
 
@@ -337,7 +337,7 @@ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 若要验证证书是否已成功创建，请使用 `kubectl get certificate --namespace ingress-basic` 命令，并验证 *READY* 是否为 *True*，这可能需要数分钟。
 
-```
+```console
 $ kubectl get certificate --namespace ingress-basic
 
 NAME         READY   SECRET       AGE
@@ -370,7 +370,7 @@ kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 
 使用 `helm list` 命令列出 Helm 版本。 查找名为“nginx”和“cert-manager”的图表，如以下示例输出中所示 ：
 
-```
+```console
 $ helm list --namespace ingress-basic
 
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
@@ -380,7 +380,7 @@ nginx                   ingress-basic   1               2020-01-15 10:09:45.9826
 
 使用 `helm uninstall` 命令卸载这些版本。 以下示例将卸载 NGINX 入口和证书管理器部署。
 
-```
+```console
 $ helm uninstall cert-manager nginx --namespace ingress-basic
 
 release "cert-manager" uninstalled
@@ -423,7 +423,7 @@ kubectl delete namespace ingress-basic
 - [创建一个使用 Let's Encrypt 的入口控制器，以自动生成具有静态公共 IP 地址的 TLS 证书][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
-[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
+[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/#az-network-dns-record-set-a-add-record
 [custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../dns/dns-getstarted-cli.md
 [helm]: https://helm.sh/

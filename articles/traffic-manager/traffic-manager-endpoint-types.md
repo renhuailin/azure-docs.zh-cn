@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: duau
-ms.openlocfilehash: 692c63849bc9e92ded43db3bf22ce14384f2b68d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e55c2115edef684f38aa53172596beffd101ef59
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401276"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184384"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理器终结点
 
@@ -24,9 +24,9 @@ ms.locfileid: "89401276"
 
 流量管理器支持三种类型的终结点：
 
-* **Azure 终结点**用于在 Azure 中托管的服务。
-* **外部终结点**用于 IPv4/IPv6 地址、FQDN，或用于在 Azure 外部托管的服务，这些服务可以在本地托管或通过其他托管提供商进行托管。
-* **嵌套终结点**用于组合流量管理器配置文件，以便创建更灵活的流量路由方案，从而满足更大、更复杂部署的需求。
+* **Azure 终结点** 用于在 Azure 中托管的服务。
+* **外部终结点** 用于 IPv4/IPv6 地址、FQDN，或用于在 Azure 外部托管的服务，这些服务可以在本地托管或通过其他托管提供商进行托管。
+* **嵌套终结点** 用于组合流量管理器配置文件，以便创建更灵活的流量路由方案，从而满足更大、更复杂部署的需求。
 
 可以不受限制地在单个流量管理器配置文件中通过各种方式组合不同类型的终结点。 每个配置文件都可以包含任何组合形式的终结点类型。
 
@@ -92,15 +92,15 @@ PublicIPAddress 资源属于 Azure 资源管理器资源。 经典部署模型�
 
 ## <a name="faqs"></a>常见问题解答
 
-* [能否将流量管理器用于多个订阅的终结点？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
+* [能否将流量管理器用于多个订阅的终结点？](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
 
-* [能否将流量管理器用于云服务的“过渡”槽？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-cloud-service-staging-slots)
+* [能否将流量管理器用于云服务的“过渡”槽？](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-cloud-service-staging-slots)
 
-* [流量管理器是否支持 IPv6 终结点？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-ipv6-endpoints)
+* [流量管理器是否支持 IPv6 终结点？](./traffic-manager-faqs.md#does-traffic-manager-support-ipv6-endpoints)
 
-* [流量管理器是否可用于同一区域中的多个 Web 应用？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
+* [流量管理器是否可用于同一区域中的多个 Web 应用？](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
 
-* [如何将流量管理器配置文件的 Azure 终结点移动到其他资源组？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
+* [如何将流量管理器配置文件的 Azure 终结点移动到其他资源组？](./traffic-manager-faqs.md#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: duau
-ms.openlocfilehash: 5c44e6c6a7a9af4edc2c711b17ec50aa2bf62c98
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e1ec175653316029932e0c03214f6f1e1d81e0f1
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202441"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185642"
 ---
 # <a name="about-expressroute-fastpath"></a>关于 ExpressRoute FastPath
 
@@ -33,7 +33,7 @@ FastPath 仍要求创建一个虚拟网络网关，以在虚拟网络和本地�
 * 超高性能
 * ErGw3AZ
 
-## <a name="supported-features"></a>支持的功能
+## <a name="limitations"></a>限制
 
 尽管 FastPath 支持大多数配置，但它不支持以下功能：
 

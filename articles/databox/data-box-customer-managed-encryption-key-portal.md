@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/19/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: f75907dc1fa079cebb3b80874090c658fd7b8174
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 80a6824edb92d8337481f592cbbf5eb23255b383
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302833"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185523"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>将 Azure 密钥保管库中的客户管理的密钥用于 Azure Data Box
 
@@ -57,7 +57,7 @@ Data Box 订单的客户托管的密钥必须满足以下要求：
 
       ![查看并创建 Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
-      查看密钥保管库的信息，并选择 " **创建**"。 等待几分钟，以便完成密钥保管库的创建。
+      查看密钥保管库的信息，然后选择“创建”。 等待几分钟，直到密钥保管库创建完成。
 
        ![创建具有设置的 Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
 
@@ -65,11 +65,11 @@ Data Box 订单的客户托管的密钥必须满足以下要求：
 
     ![从 Azure Key Vault 中选择密钥](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
 
-   如果要创建新密钥，请选择 " **新建**"。 必须使用 RSA 密钥。 大小可以是2048或更高。
+   如果要创建新的密钥，请选择“新建”。 必须使用 RSA 密钥。 大小可以是 2048 或更大。
 
     ![在 Azure Key Vault 中创建新密钥](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6-a.png)
 
-    输入新密钥的名称，接受其他默认值，然后选择 " **创建**"。 系统会通知你已在密钥保管库中创建密钥。
+    输入新密钥的名称，接受其他默认值，然后选择“创建”。 系统会通知你已在密钥保管库中创建密钥。
 
     ![命名新密钥](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
 
@@ -81,7 +81,7 @@ Data Box 订单的客户托管的密钥必须满足以下要求：
 
     ![打开用于创建新密钥版本的对话框](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8-a.png)
 
-    选择新密钥版本的 "设置"，然后选择 " **创建**"。
+    选择新密钥版本的设置，然后选择“创建”。
 
     ![创建新的密钥版本](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8-b.png)
 
@@ -91,11 +91,11 @@ Data Box 订单的客户托管的密钥必须满足以下要求：
 
     " **加密类型** " 设置显示所选的密钥保管库和密钥。
 
-    ![客户托管密钥的密钥和密钥保管库](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-9.png)
+    ![用于客户管理的密钥的密钥和密钥保管库](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-9.png)
 
 7. 选择要用于管理此资源的客户托管密钥的标识的类型。 您可以使用在创建订单时生成的 **系统分配** 的标识，也可以选择用户分配的标识。
 
-    用户分配的标识是一个独立的资源，可用于管理对资源的访问。 有关详细信息，请参阅 [托管标识类型](/azure/active-directory/managed-identities-azure-resources/overview)。
+    用户分配的标识是一个独立的资源，可用于管理对资源的访问。 有关详细信息，请参阅[托管标识类型](/azure/active-directory/managed-identities-azure-resources/overview)。
 
     ![选择标识类型](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-13.png)
 
@@ -107,7 +107,7 @@ Data Box 订单的客户托管的密钥必须满足以下要求：
 
     所选用户标识显示在 " **加密类型** " 设置中。
 
-    !["加密类型" 设置中所示的选定用户标识](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-15.png)
+    ![加密类型设置中显示的所选用户标识](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-15.png)
 
  9. 选择 " **保存** " 以保存更新的 **加密类型** 设置。
 

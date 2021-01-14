@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: fa83c51469636eb269aa5dc3192ff7e65b53ce89
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912693"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186135"
 ---
 # <a name="what-is-routing-preference-preview"></a>什么是路由首选项（预览版）？
 
@@ -74,7 +74,7 @@ Azure 路由首选项允许你选择流量在 Azure 和 Internet 之间的路由
 
 ## <a name="limitations"></a>限制
 
-* 路由首选项仅与公共 IP 地址的标准 SKU 兼容。 不支持公共 IP 地址的基本 SKU。
+* 路由首选项仅兼容公共 IP 地址的区域冗余标准 SKU。 不支持公共 IP 地址的基本 SKU。
 * 路由首选项目前仅支持 IPv4 公共 IP 地址。 不支持 IPv6 公共 IP 地址。
 * 具有多个 NIC 的虚拟机只能有一种类型的路由首选项。
 

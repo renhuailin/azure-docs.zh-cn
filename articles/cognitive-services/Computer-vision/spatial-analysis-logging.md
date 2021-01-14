@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014571"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186016"
 ---
 # <a name="telemetry-and-troubleshooting"></a>遥测和故障排除
 
@@ -68,7 +68,7 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-在 [Azure Stack 边缘设备](https://go.microsoft.com/fwlink/?linkid=2142179) 或其他 [台式计算机](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)的部署清单中，查找 *telegraf* 模块，并将以下值替换为上一步中的服务主体信息，然后重新部署。
+在 [Azure Stack Edge 设备](https://go.microsoft.com/fwlink/?linkid=2142179)、 [台式计算机](https://go.microsoft.com/fwlink/?linkid=2152270)或 [包含 GPU 的 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189)的部署清单中，查找 *telegraf* 模块，并将以下值替换为上一步中的服务主体信息，然后重新部署。
 
 ```json
 
@@ -129,7 +129,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>收集包含诊断容器的日志文件
 
-空间分析会生成 Docker 调试日志，您可以使用这些日志来诊断运行时问题或包含在支持票证中。 空间分析诊断模块在 Microsoft 容器注册表中提供，供你下载。 在 [Azure Stack 边缘设备](https://go.microsoft.com/fwlink/?linkid=2142179) 或其他 [台式计算机](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)的清单部署文件中，查找 " *诊断* " 模块。
+空间分析会生成 Docker 调试日志，您可以使用这些日志来诊断运行时问题或包含在支持票证中。 空间分析诊断模块在 Microsoft 容器注册表中提供，供你下载。 在 [Azure Stack Edge 设备](https://go.microsoft.com/fwlink/?linkid=2142179)、 [台式计算机](https://go.microsoft.com/fwlink/?linkid=2152270)或 [具有 GPU 的 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 的清单部署文件中，查找 *诊断* 模块。
 
 在 "env" 节中，添加以下配置：
 
@@ -188,13 +188,13 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 > 该 `diagnostics` 模块不影响日志记录内容，它只是帮助收集、筛选和上载现有日志。
 > 若要使用此模块，必须使用 Docker API 版本1.40 或更高版本。
 
-[Azure Stack 边缘设备](https://go.microsoft.com/fwlink/?linkid=2142179)或其他[桌面计算机](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)的示例部署清单文件中包含一个名为 `diagnostics` 的模块，该模块将收集和上载日志。 默认情况下，此模块处于禁用状态，并且应在需要访问日志时通过 IoT Edge 模块配置启用。 
+[Azure Stack 边缘设备](https://go.microsoft.com/fwlink/?linkid=2142179)、[台式计算机](https://go.microsoft.com/fwlink/?linkid=2152270)或[包含 GPU 的 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189)的示例部署清单文件包含一个名为的模块 `diagnostics` ，该模块将收集和上载日志。 默认情况下，此模块处于禁用状态，并且应在需要访问日志时通过 IoT Edge 模块配置启用。 
 
 `diagnostics`集合是按需进行的，并通过 IoT Edge 直接方法进行控制，可以将日志发送到 Azure Blob 存储。
 
 ### <a name="configure-diagnostics-upload-targets"></a>配置诊断上传目标
 
-在 IoT Edge 门户中，选择你的设备，然后选择 " **诊断** " 模块。 在 [Azure Stack 边缘设备](https://go.microsoft.com/fwlink/?linkid=2142179) 或其他 [桌面计算机](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)的示例部署清单文件中，查找 "用于诊断的 **环境变量** " 部分，名为 `env` ，并添加以下信息：
+在 IoT Edge 门户中，选择你的设备，然后选择 " **诊断** " 模块。 在 [Azure Stack Edge 设备](https://go.microsoft.com/fwlink/?linkid=2142179)、 [台式计算机](https://go.microsoft.com/fwlink/?linkid=2152270)或 [具有 GPU 的 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 的示例部署清单文件中，查找 "用于诊断的 **环境变量** " 部分，名为 `env` ，并添加以下信息：
 
 **配置上传到 Azure Blob 存储**
 
@@ -329,9 +329,9 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 > * [Linux 上也提供](/powershell/scripting/install/installing-powershell-core-on-linux)了 PowerShell。
 
 1. 以管理员身份运行 Windows PowerShell 会话。 
-    1. 请确保 Windows 远程管理服务在客户端上运行。 在命令提示符处，键入 `winrm quickconfig`。
+    1. 请确保 Windows 远程管理服务在客户端上运行。 在命令提示符下键入 `winrm quickconfig`。
 
-2. 为设备 IP 地址分配变量。 例如，`$ip = "<device-ip-address>"` 。
+2. 为设备 IP 地址分配变量。 例如，`$ip = "<device-ip-address>"`。
 
 3. 使用以下命令将设备的 IP 地址添加到客户端的受信任主机列表。 
 

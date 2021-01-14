@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 5e633b5e4b2ff2ce884bfaf99e3730968150cbed
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: e76086db36642664ca15acee26f4e0aca85ff272
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746365"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184453"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS 保护标准概述
 
@@ -45,6 +45,10 @@ Azure DDoS 保护不存储客户数据。
 - **成本保证：** 接收因 DDoS 攻击所产生的资源成本的数据传输和应用程序扩展服务信用额度。
 
 ## <a name="pricing"></a>定价
+
+DDoS 保护计划的每月固定费用为 $2944，涵盖最多100个公共 IP 地址。 对于其他资源的保护，每个资源每月附加 $30。
+
+在租户下，可以跨多个订阅使用单个 DDoS 防护计划，因此无需创建多个 DDoS 防护计划。
 
 若要了解有关 Azure DDoS 保护标准定价的信息，请参阅 [Azure Ddos 保护标准定价](https://azure.microsoft.com/pricing/details/ddos-protection/)。
 

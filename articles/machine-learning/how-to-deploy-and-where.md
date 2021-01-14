@@ -1,26 +1,26 @@
 ---
-title: 部署模型的方式和位置
+title: 如何部署机器学习模型
 titleSuffix: Azure Machine Learning
-description: 了解部署 Azure 机器学习模型（包括 Azure 容器实例、Azure Kubernetes 服务、Azure IoT Edge 和 FPGA）的方式和位置。
+description: 了解部署机器学习模型的方式和位置。 部署到 Azure 容器实例、Azure Kubernetes 服务、Azure IoT Edge 和 FPGA。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 195f1c527185fbd55450b6151f26525074db75f7
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: e9c691485eb0ec1a0b3c0564f9a8f9a5d2aa255d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070416"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185795"
 ---
-# <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
+# <a name="deploy-machine-learning-models-to-azure"></a>将机器学习模型部署到 Azure
 
-了解如何将机器学习模型作为 Web 服务部署在 Azure 云或 Azure IoT Edge 设备中。
+了解如何在 Azure 云中将机器学习或深度学习模型部署为 web 服务。 你还可以部署到 Azure IoT Edge 设备。
 
 无论你在何处部署模型，工作流都是类似的：
 
@@ -31,7 +31,7 @@ ms.locfileid: "98070416"
 1. 将模型部署到计算目标。
 1. 测试生成的 Web 服务。
 
-有关部署工作流涉及的概念的详细信息，请参阅[使用 Azure 机器学习管理、部署和监视模型](concept-model-management-and-deployment.md)。
+有关机器学习部署工作流中涉及的概念的详细信息，请参阅 [Azure 机器学习的管理、部署和监视模型](concept-model-management-and-deployment.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -197,7 +197,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 }
 ```
 
-这指定部署将使用 `./working_dir` 目录中的 `score.py` 文件来处理传入请求。
+这指定机器学习部署将使用 `score.py` 该目录中的文件 `./working_dir` 来处理传入的请求。
 
 有关推理配置的更详细讨论，[请参阅此文](./reference-azure-machine-learning-cli.md#inference-configuration-schema)。 
 
@@ -269,7 +269,7 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 ---
 
-## <a name="deploy-your-model"></a>部署模型
+## <a name="deploy-your-machine-learning-model"></a>部署机器学习模型
 
 现在已准备好部署模型。 
 

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 01/12/2021
 ms.author: yulili
 ms.custom: references_regions
-zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 1cc313daf0e76ddd14865959410b07d9bdc189d7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+zone_pivot_groups: programming-languages-speech-services-nomore-variant
+ms.openlocfilehash: 8602d43113f4ce21cdb430e1fa3e83f006c64753
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984915"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185557"
 ---
 # <a name="pronunciation-assessment"></a>发音评估
 
@@ -128,6 +128,26 @@ pronunciation_score = pronunciation_assessment_result.pronunciation_score
 
 ::: zone-end
 
+::: zone pivot="programming-language-javascript"
+
+```Javascript
+var pronunciationAssessmentConfig = new SpeechSDK.PronunciationAssessmentConfig("reference text",
+    PronunciationAssessmentGradingSystem.HundredMark,
+    PronunciationAssessmentGranularity.Word, true);
+var speechRecognizer = SpeechSDK.SpeechRecognizer.FromConfig(speechConfig, audioConfig);
+// apply the pronunciation assessment configuration to the speech recognizer
+pronunciationAssessmentConfig.applyTo(speechRecognizer);
+
+speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) => {
+        var pronunciationAssessmentResult = SpeechSDK.PronunciationAssessmentResult.fromResult(result);
+        var pronunciationScore = pronResult.pronunciationScore;
+        var wordLevelResult = pronResult.detailResult.Words;
+},
+{});
+```
+
+::: zone-end
+
 ::: zone pivot="programming-language-objectivec"
 
 ```Objective-C
@@ -157,7 +177,7 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 | 参数 | 说明 | 必需？ |
 |-----------|-------------|---------------------|
 | ReferenceText | 用来对发音进行评估的文本。 | 必须 |
-| GradingSystem | 用于分数校准的分数系统。 `FivePoint`系统给出0-5 浮点评分，并 `HundredMark` 提供0-100 浮点分数。 默认值：`FivePoint`。 | 可选 |
+| GradingSystem | 用于分数校准的分数系统。 `FivePoint` 系统给出 0-5 的浮点分数，而 `HundredMark` 系统给出 0-100 的浮点分数。 默认值：`FivePoint`。 | 可选 |
 | 粒度 | 评估粒度。 接受的值为 `Phoneme`（显示全文、单词和音素级别的分数）、`Word`（显示全文和单词级别的分数）、`FullText`（只显示全文级别的分数）。 默认值：`Phoneme`。 | 可选 |
 | EnableMiscue | 启用误读计算。 启用此功能后，系统会将发音单词与参考文本进行比较，并会根据比较结果将其标记为省略/插入。 接受的值为 `False` 和 `True`。 默认值：`False`。 | 可选 |
 | ScenarioId | 一个 GUID，表示自定义分数系统。 | 可选 |
@@ -176,26 +196,26 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 
 ## <a name="next-steps"></a>后续步骤
 
-<!-- TODO: update the sample links after release -->
+<!-- TODO: update JavaScript sample links after release -->
 
-<!-- ::: zone pivot="programming-language-csharp"
-* See the [sample code](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L741) on GitHub for automatic language detection
+::: zone pivot="programming-language-csharp"
+* 请参阅 GitHub 上的 [示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L949) 以获得发音评估。
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
-* See the [sample code](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L507) on GitHub for automatic language detection
+* 请参阅 GitHub 上的 [示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L633) 以获得发音评估。
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-* See the [sample code](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L521) on GitHub for automatic language detection
+* 请参阅 GitHub 上的 [示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L697) 以获得发音评估。
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-* See the [sample code](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_synthesis_sample.py#L434) on GitHub for automatic language detection
+* 请参阅 GitHub 上的 [示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py#L576) 以获得发音评估。
 ::: zone-end
 
 ::: zone pivot="programming-language-objectivec"
-* See the [sample code](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L494) on GitHub for automatic language detection
-::: zone-end -->
+* 请参阅 GitHub 上的 [示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L642) 以获得发音评估。
+::: zone-end
 
 * [语音 SDK 参考文档](speech-sdk.md)

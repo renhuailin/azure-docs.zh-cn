@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304282"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185472"
 ---
 # <a name="camera-placement-guide"></a>照相机位置指南
 
@@ -24,7 +24,7 @@ ms.locfileid: "91304282"
 > [!NOTE]
 > 本指南适用于 Axis M3045-V 相机。 此照相机将使用分辨率1920x1080、106度水平的视图、59度垂直的视图字段和固定的 2.8 mm 焦点。 以下原则适用于所有相机，但围绕相机高度和相机到点距离的特定准则需要进行调整，以便与其他相机一起使用。 
 
-## <a name="general-guidelines"></a>一般性指导
+## <a name="general-guidelines"></a>一般指南
 
 为空间分析定位照相机时，请考虑以下通用准则：
 
@@ -52,7 +52,7 @@ ms.locfileid: "91304282"
 
 ## <a name="camera-height"></a>相机高度
 
-通常，照相机应该从地面装入12-14 英尺。 在此范围内规划你的照相机安装时，请考虑障碍物 (例如：搁置、悬挂光源、悬挂式告示，并显示可能影响相机视图的) ，然后根据需要调整高度。
+通常，照相机应该从地面装入12-14 英尺。 对于面部面具检测，建议将相机从地面装入8-12 英尺。 在此范围内规划你的照相机安装时，请考虑障碍物 (例如：搁置、悬挂光源、悬挂式告示，并显示可能影响相机视图的) ，然后根据需要调整高度。
 
 ## <a name="camera-to-focal-point-distance"></a>照相机到点距离
 
@@ -68,7 +68,7 @@ ms.locfileid: "91304282"
 
 ![从上面测量相机到点距离的方式](./media/spatial-analysis/camera-focal-point-above.png)
 
-使用下表根据特定的安装高度确定相机与焦点的距离。 这些距离适用于最佳放置。 请注意，该表提供了低于 12 "-14" 建议的指导，因为某些上限可以限制高度。
+使用下表根据特定的安装高度确定相机与焦点的距离。 这些距离适用于最佳放置。 请注意，该表提供了低于 12 "-14" 建议的指导，因为某些上限可以限制高度。 对于面部掩码检测，推荐的 "相机到焦点距离" (最小/最大) 为 "相机高度" 介于 8 "到 12" 之间的 4 "-10"。
 
 | 相机高度 | 最小/最大 (的相机到焦距离)  |  
 | ------------- | ---------------------------------------- |  
@@ -91,7 +91,7 @@ ms.locfileid: "91304282"
 
 ### <a name="line-configuration"></a>线路配置
 
-下表显示针对 **cognitiveservices account-personcrossingline** 操作配置的照相机的建议。 
+下表显示针对 **cognitiveservices account-personcrossingline** 操作配置的照相机的建议。 对于面部掩码检测，+/-30 度是相机高度的最佳相机装入角度，介于 8 "到 12" 之间。
 
 | 相机高度 | 照相机到点距离 | 最佳相机装入角度 (最小/最大)  |  
 | ------------- | ------------------------------ | ------------------------------------------ |  
@@ -127,7 +127,7 @@ ms.locfileid: "91304282"
 
 #### <a name="queues"></a>队列
 
-**Cognitiveservices account-personcount**、 **cognitiveservices account**和**spatialanalysis** -persondistance-cognitiveservices account-spatialanalysis-personcrossingpolygon 的技能可用于监视队列。 为了最大限度地提高队列数据质量，最大程度地减少了队列中人员的封闭的 retractable，并确保队列位置在一段时间内保持一致。
+**Cognitiveservices account-personcount**、 **cognitiveservices account** 和 **spatialanalysis** -persondistance-cognitiveservices account-spatialanalysis-personcrossingpolygon 的技能可用于监视队列。 为了最大限度地提高队列数据质量，最大程度地减少了队列中人员的封闭的 retractable，并确保队列位置在一段时间内保持一致。
 
 ![Retractable 皮带队列](./media/spatial-analysis/retractable-belt-queue.png)
 

@@ -2,32 +2,37 @@
 title: Azure 服务总线重复消息检测 | Microsoft Docs
 description: 本文介绍如何检测 Azure 服务总线消息中的重复项。 可以忽略并丢弃重复消息。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.openlocfilehash: 29972f756c66f524cc2e4684fcb7afd1ca628820
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083882"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184673"
 ---
 # <a name="duplicate-detection"></a>重复检测
 
 如果应用程序在发送消息后立即由于致命错误而失败，并且重启的应用程序实例错误地认为先前的消息传递未成功，那么后续发送会导致同一消息在系统中出现两次。
 
-也有可能更早在客户端或网络一级出错，导致已发送的消息被提交到队列，可以确认的是消息没有成功返回到客户端。 在这种情况下，客户端就会对发送操作结果产生怀疑。
+在客户端或网络级别上发生错误时，还可能会出现一段较早的错误，并且对于已发送的消息，如果确认未成功返回到客户端，则会将该消息提交到队列中。 在这种情况下，客户端就会对发送操作结果产生怀疑。
 
 重复检测支持发送程序重新发送相同的消息，并让队列或主题放弃任何重复的副本，从而消除了这些情况下的各种怀疑。
 
+## <a name="how-it-works"></a>工作原理： 
 启用重复检测，有助于跟踪在指定时间范围内发送到队列或主题的所有消息的 MessageId（由应用程序控制）。 如果使用已在相应时间范围内记录的 MessageId 发送任何新消息，则将该消息报告为“已接受”（即发送操作成功），但将立即忽略和删除新发送的消息。 除了 MessageId 之外，不会检查消息的其他任何部分。
 
 应用程序控制的此标识符至关重要，因为只有它才能让应用程序将 MessageId 绑定到业务流程上下文，从中可以在发生故障时预见性地重新构造消息。
 
 如果业务流程是在处理某应用程序上下文的过程中发送多个消息，MessageId 可能会复合应用程序级上下文标识符，如采购订单号和消息主题；例如，12345.2017/payment。
 
-虽然 MessageId 可以始终是某 GUID，但将标识符绑定到业务流程可以预测重复消息，这更有利于有效使用重复检测功能。
+*MessageId* 始终可以是某一 GUID，但将标识符定位到业务流程将产生可预测的可重复性，这是有效使用重复检测功能所需要的。
 
-> [!NOTE]
-> 如果启用了重复检测，并且未设置会话 ID 或分区键，则消息 ID 将用作分区键。 如果消息 ID 也未设置，.NET 和 AMQP 库将自动为消息生成消息 ID。 有关详细信息，请参阅[使用分区键](service-bus-partitioning.md#use-of-partition-keys)。
+> [!IMPORTANT]
+>- 启用 **分区** 时， `MessageId+PartitionKey` 将使用来确定唯一性。 启用会话后，分区键和会话 ID 必须相同。 
+>- 如果 **禁用****分区** (默认) ，则仅 `MessageId` 使用来确定唯一性。
+>- 有关 SessionId、PartitionKey 和 MessageId 的信息，请参阅 [分区键的使用](service-bus-partitioning.md#use-of-partition-keys)。
+>- [Premier 层](service-bus-premium-messaging.md)不支持分区，因此建议你在应用程序中使用唯一的消息 id，而不是依赖于分区键进行重复检测。 
+
 
 ## <a name="enable-duplicate-detection"></a>启用重复检测
 
@@ -58,7 +63,7 @@ ms.locfileid: "87083882"
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-在客户端代码无法使用与以前相同的 MessageId 重新提交消息的场景中，设计能够安全地重新进行处理的消息非常重要。 这篇[关于幂等性的博客文章](https://particular.net/blog/what-does-idempotent-mean)介绍了如何实现这一点的各种技术。
+如果客户端代码无法使用与以前相同的 *MessageId* 重新提交消息，则必须设计可安全重新处理的消息，这一点很重要。 这篇[关于幂等性的博客文章](https://particular.net/blog/what-does-idempotent-mean)介绍了如何实现这一点的各种技术。
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

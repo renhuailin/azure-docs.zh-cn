@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f625b7dd68d4b5a5e1af68aeb53dac453ff8cbfd
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400822"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185761"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>创建 PowerShell 脚本以 .MSIX 应用附加 (预览) 
 
@@ -39,6 +39,17 @@ ms.locfileid: "97400822"
 6. 选择“将所有证书放入以下存储区”，然后选择“浏览” 。
 7. 当“选择证书存储”窗口出现时，选择“受信任的人员”，然后选择“确定” 。
 8. 选择 " **下一步** " 和 " **完成**"。
+
+## <a name="enable-microsoft-hyper-v"></a>启用 Microsoft Hyper-V
+
+必须启用 Microsoft Hyper-V，因为需要执行此 `Mount-VHD` 命令才能进行暂存并 `Dismount-VHD` 需要转储。
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+
+>[!NOTE]
+>此更改将需要你重新启动虚拟机。
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>为 MSIX 应用附加准备 PowerShell 脚本
 

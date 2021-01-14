@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: d6b3d60a44725869d68dd9f1158d2279f3cf3e86
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 483af51cbaeb8f7b295adb4231e65f742e3f53a1
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963974"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185455"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用托管标识来访问应用程序配置
 
@@ -82,7 +82,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 
 1. 添加对 Azure.Identity 包的引用：
 
-    ```cli
+    ```bash
     dotnet add package Azure.Identity
     ```
 
@@ -213,7 +213,7 @@ git add .
 git commit -m "Initial version"
 ```
 
-若要使用 Kudu 生成服务器为应用启用本地 Git 部署，请 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) 在 Cloud Shell 中运行。
+若要使用 Kudu 生成服务器为应用启用本地 Git 部署，请 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/#az-webapp-deployment-source-config-local-git) 在 Cloud Shell 中运行。
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>

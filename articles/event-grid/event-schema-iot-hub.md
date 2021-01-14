@@ -2,13 +2,13 @@
 title: 充当事件网格源的 Azure IoT 中心
 description: 本文提供 Azure IoT 中心事件的属性和架构。 它列出了可用的事件类型、示例事件和事件属性。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.openlocfilehash: 7e1c480bd2a662a2ee3418b35dc9c3b50d412a60
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113643"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185829"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>充当事件网格源的 Azure IoT 中心
 本文提供 Azure IoT 中心事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 
@@ -26,8 +26,6 @@ Azure IoT 中心发出以下事件类型：
 | Microsoft.Devices.DeviceConnected | 当设备连接到 IoT 中心时发布。 |
 | Microsoft.Devices.DeviceDisconnected | 当设备与 IoT 中心断开连接时发布。 | 
 | Microsoft.Devices.DeviceTelemetry | 当遥测消息发送到 IoT 中心时发布。 |
-
-除设备遥测事件外的所有设备事件在事件网格支持的所有区域中都已正式发布。 设备遥测事件处于公共预览阶段，在美国东部、美国西部、西欧、 [Azure 政府](../azure-government/documentation-government-welcome.md)版、 [Azure 中国世纪互联](/azure/china/china-welcome)和 [azure 德国](https://azure.microsoft.com/global-infrastructure/germany/)以外的所有区域提供。
 
 ### <a name="example-event"></a>示例事件
 
@@ -160,7 +158,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 
 每个事件发布者的数据对象内容是不同的。 
 
-对于**设备已连接**和**设备已断开连接** IoT 中心事件，数据对象包含以下属性：
+对于 **设备已连接** 和 **设备已断开连接** IoT 中心事件，数据对象包含以下属性：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
@@ -168,15 +166,15 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | deviceConnectionStateEventInfo | object | 设备连接状态事件信息
 | sequenceNumber | string | 一个数字，有助于指示设备已连接或设备已断开连接事件的顺序。 最新事件的序列号将大于上一个事件。 此数字可能会变化超过 1，但严格地说，是在增加。 请参阅[如何使用序列号](../iot-hub/iot-hub-how-to-order-connection-state-events.md)。 |
 
-对于**设备遥测** IoT 中心事件，数据对象包含 [IoT 中心消息格式](../iot-hub/iot-hub-devguide-messages-construct.md)的设备到云消息，并具有以下属性：
+对于 **设备遥测** IoT 中心事件，数据对象包含 [IoT 中心消息格式](../iot-hub/iot-hub-devguide-messages-construct.md)的设备到云消息，并具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | body | 字符串 | 来自设备的消息内容。 |
 | properties | 字符串 | 应用程序属性是用户定义的字符串，可以添加到消息。 这些字段是可选的。 |
 | 系统属性 | 字符串 | [系统属性](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) 有助于识别消息的内容和源。 设备遥测消息必须采用有效的 JSON 格式，并且在消息系统属性中将 contentType 设置为 JSON，将 contentEncoding 设置为 UTF-8。 如果未设置此项，则 IoT 中心将以 base 64 编码格式写入消息。  |
 
-对于**设备已创建**和**设备已删除** IoT 中心事件，数据对象包含以下属性：
+对于 **设备已创建** 和 **设备已删除** IoT 中心事件，数据对象包含以下属性：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |

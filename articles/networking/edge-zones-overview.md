@@ -2,17 +2,17 @@
 title: 关于 Azure Edge 区域预览
 description: 了解 Microsoft 的 edge 计算产品： Azure 边缘区域。
 services: vnf-manager
-author: ganesr
+author: cherylmc
 ms.service: vnf-manager
 ms.topic: article
-ms.date: 07/07/2020
-ms.author: ganesr
-ms.openlocfilehash: 68aa3342ab09be73a82f4f896ffdff99d15a5350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.author: cherylmc
+ms.openlocfilehash: 04555303d5128db6c183d27a0c5fcb69063fdc28
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329560"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185404"
 ---
 # <a name="about-azure-edge-zone-preview"></a>关于 Azure Edge 区域预览
 
@@ -38,7 +38,7 @@ Azure 边缘区域是 Microsoft Azure 中的一系列产品，可使数据处理
 
 ![Azure Edge Zone](./media/edge-zones-overview/edge-zones.png "Azure Edge Zone")
 
-Azure 边缘区域是位于离 Azure 区域远离的人口中心中的小型 Azure 扩展。 Azure 边缘区域支持 Vm、容器和所选的一组 Azure 服务，可让你对最终用户近时间运行与吞吐量相关的应用程序。 Azure 边缘区域是 Microsoft 全球网络的一部分。 它们在靠近用户的边缘区域中运行的应用程序之间提供安全、可靠、高带宽的连接。 它们提供了在 Azure 区域内运行的一整套 Azure 服务。 Azure 边缘区域由 Microsoft 拥有和操作。 可以使用相同的 Azure 工具集和相同的门户来管理和部署服务到边缘区域。
+Azure 边缘区域是位于离 Azure 区域远离的人口中心中的小型 Azure 扩展。 Azure 边缘区域支持 Vm、容器和所选的一组 Azure 服务，可让你对最终用户近时间运行与吞吐量相关的应用程序。 Azure 边缘区域是 Microsoft 全球网络的一部分。 它们在靠近用户的边缘区域中运行的应用程序之间提供安全、可靠、高带宽的连接。 Azure 边缘区域由 Microsoft 拥有和操作。 可以使用相同的 Azure 工具集和相同的门户来管理和部署服务到边缘区域。
 
 典型用例包括：
 
@@ -61,7 +61,7 @@ Azure 边缘区域是位于离 Azure 区域远离的人口中心中的小型 Azu
 
 带有电信公司的 azure 边缘区域是 Azure 的小型空间扩展，位于人口中心的移动运营商的数据中心。 与运营商基础结构一起提供的 Azure 边缘区域远离移动运营商的5G 网络。 此位置为移动设备中的应用程序提供不到10毫秒的延迟。
 
-带有电信公司的 Azure 边缘区域部署在移动运营商的数据中心中，并连接到 Microsoft 全球网络。 它们在运行接近用户的应用程序之间提供安全、可靠、高带宽的连接。 它们提供了在 Azure 区域内运行的一整套 Azure 服务。 开发人员可以使用一组熟悉的工具来构建服务并将其部署到边缘区域。
+带有电信公司的 Azure 边缘区域部署在移动运营商的数据中心中，并连接到 Microsoft 全球网络。 它们在运行接近用户的应用程序之间提供安全、可靠、高带宽的连接。 开发人员可以使用一组熟悉的工具来构建服务并将其部署到边缘区域。
 
 典型用例包括：
 

@@ -4,15 +4,15 @@ description: 本部分介绍发布者可以使用的市场推广服务 - Microso
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 01/13/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: ad86ebe1ca397004745e75dd279ea0a7cfe8348e
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 263c038cf5003d950cf500ccc13cf562ac71db0c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94746561"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184983"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商业市场权益
 
@@ -104,16 +104,16 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
 
 对于发布者的以下行为，Microsoft 保留撤销和终止 Marketplace Rewards 权益的权利：
 
-* 使用其 marketplace 列表参与非法活动。
-* 接收已知或认为是欺诈的购买。
-* 从商业应用商店中取消列出。
-* 使用其产品/服务可显示违反版权或商标法律的营销或其他内容。
-* 违反 [azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)的策略，包括但不限于使用 azure 赞助资金进行其自己的内部操作或 Bitcoin 挖掘。
+- 使用其 marketplace 列表参与非法活动。
+- 接收已知或认为是欺诈的购买。
+- 从商业应用商店中取消列出。
+- 使用其产品/服务可显示违反版权或商标法律的营销或其他内容。
+- 违反 [azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)的策略，包括但不限于使用 azure 赞助资金进行其自己的内部操作或 Bitcoin 挖掘。
 
 Microsoft 保留在以下情况中吊销和终止 Marketplace 奖励的权利：
 
-* 进行购买的客户意外，希望取消购买。
-* 客户在使用合作伙伴的产品之前取消。
+- 进行购买的客户意外，希望取消购买。
+- 客户在使用合作伙伴的产品之前取消。
 
 ### <a name="offer-availability"></a>产品可用性
 

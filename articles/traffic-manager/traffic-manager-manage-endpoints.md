@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: duau
-ms.openlocfilehash: fc6e8bcda17f9d788a430ed763bd9f8702eaf250
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3d5a888bf132725ff64c2a128b77f0257f435585
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003542"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184248"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>添加、禁用、启用或删除终结点
 
@@ -45,7 +45,7 @@ ms.locfileid: "96003542"
 7.  添加完这两个终结点后，这两个终结点会显示在“流量管理器配置文件”  边栏选项卡中，并且其监视状态为“联机”  。
 
 > [!NOTE]
-> 使用“故障转移”  流量路由方法在配置文件中添加或删除终结点后，故障转移优先级列表可能不会按所需的顺序列出。 可以在“配置”页上调整故障转移优先级列表的顺序。 有关详细信息，请参阅[配置故障转移流量路由](traffic-manager-configure-failover-routing-method.md)。
+> 使用“故障转移”  流量路由方法在配置文件中添加或删除终结点后，故障转移优先级列表可能不会按所需的顺序列出。 可以在“配置”页上调整故障转移优先级列表的顺序。 有关详细信息，请参阅[配置故障转移流量路由](./traffic-manager-configure-priority-routing-method.md)。
 
 ## <a name="to-disable-an-endpoint"></a>禁用终结点
 
@@ -77,8 +77,7 @@ ms.locfileid: "96003542"
 ## <a name="next-steps"></a>后续步骤
 
 * [管理流量管理器配置文件](traffic-manager-manage-profiles.md)
-* [配置路由方法](traffic-manager-configure-routing-method.md)
+* [配置路由方法](./traffic-manager-configure-priority-routing-method.md)
 * [流量管理器降级状态疑难解答](traffic-manager-troubleshooting-degraded.md)
 * [流量管理器性能注意事项](traffic-manager-performance-considerations.md)
-* [流量管理器上的操作（REST API 参考）](https://go.microsoft.com/fwlink/p/?LinkID=313584)
-
+* [流量管理器上的操作（REST API 参考）](/previous-versions/azure/reference/hh758255(v=azure.100))

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: '创建支持 Azure Arc 的加入服务主体 '
 keywords: Kubernetes、Arc、Azure、容器
-ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb38dbc04d964c0ab4869e801099ee9420d6ac2
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050071"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184690"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>创建支持 Azure Arc 的加入服务主体（预览）
 
@@ -82,7 +82,7 @@ az role assignment create \
 
 引用新创建的服务主体：
 
-```console
+```azurecli
 az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTenantID
 az connectedk8s connect -n myConnectedClusterName -g myResoureGroupName
 ```

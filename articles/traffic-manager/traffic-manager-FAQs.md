@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400171"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184571"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -96,7 +96,7 @@ ms.locfileid: "89400171"
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>进行地理路由时，流量管理器支持哪些区域？
 
-可在[此处](traffic-manager-geographic-regions.md)查找流量管理器使用的国家/地区层次结构。 更改会在此页进行更新，不过，也可以通过 [Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 以编程方式检索相同的信息。 
+可在[此处](traffic-manager-geographic-regions.md)查找流量管理器使用的国家/地区层次结构。 更改会在此页进行更新，不过，也可以通过 [Azure 流量管理器 REST API](/rest/api/trafficmanager/) 以编程方式检索相同的信息。 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>流量管理器如何确定用户从何处进行查询？
 
@@ -116,11 +116,11 @@ ms.locfileid: "89400171"
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>是否可以将地理区域分配给某个配置文件中的终结点，而该配置文件尚未进行地理路由所需的配置？
 
-可以；如果某个配置文件的路由方法不是地理路由，则可使用 [Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 将地理区域分配给该配置文件中的终结点。 如果是非地理路由类型的配置文件，则会忽略该配置。 如果在以后将此类配置文件更改为地理路由类型，流量管理器可以使用相应的映射。
+可以；如果某个配置文件的路由方法不是地理路由，则可使用 [Azure 流量管理器 REST API](/rest/api/trafficmanager/) 将地理区域分配给该配置文件中的终结点。 如果是非地理路由类型的配置文件，则会忽略该配置。 如果在以后将此类配置文件更改为地理路由类型，流量管理器可以使用相应的映射。
 
 ### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>尝试将现有配置文件的路由方法更改为地理路由时，为何会出现错误？
 
-使用地理路由时，配置文件中的所有终结点都至少需要将一个区域映射到其中。 要将现有配置文件转换为地理路由类型，首先需使用 [Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 将地理区域关联到所有终结点，此后再将路由类型更改为地理路由。 如果使用门户，请先删除终结点，将配置文件的路由方法更改为地理路由，然后再添加终结点及其地理区域映射。
+使用地理路由时，配置文件中的所有终结点都至少需要将一个区域映射到其中。 要将现有配置文件转换为地理路由类型，首先需使用 [Azure 流量管理器 REST API](/rest/api/trafficmanager/) 将地理区域关联到所有终结点，此后再将路由类型更改为地理路由。 如果使用门户，请先删除终结点，将配置文件的路由方法更改为地理路由，然后再添加终结点及其地理区域映射。
 
 ### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>为何强烈建议客户创建嵌套式配置文件，而不是将终结点直接置于启用了地理路由的配置文件中？
 
@@ -306,7 +306,7 @@ Azure 流量管理器提供的 DNS 查询考虑了 ECS 信息以提高路由的�
 
 不能对 Azure Web 应用使用多个订阅中的终结点。 Web 应用要求其所用的任何自定义域名只能在单个订阅中使用。 无法对多个订阅中的 Web 应用使用同一个域名。
 
-对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。 可使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) 添加其他订阅中的终结点。
+对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。 可使用 [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) 或 [Azure CLI](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) 添加其他订阅中的终结点。
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>能否将流量管理器用于云服务的“过渡”槽？
 
@@ -345,9 +345,9 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>如何确定每个终结点的当前运行状况？
 
-除了总体配置文件，每个终结点的当前监视状态也显示在 Azure 门户中。 此信息也可通过流量监视器 [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.trafficmanager) 和[跨平台 Azure CLI](../cli-install-nodejs.md) 获取。
+除了总体配置文件，每个终结点的当前监视状态也显示在 Azure 门户中。 此信息也可通过流量监视器 [REST API](/rest/api/trafficmanager/)、[PowerShell cmdlet](/powershell/module/az.trafficmanager) 和[跨平台 Azure CLI](/cli/azure/install-classic-cli) 获取。
 
-可以使用 Azure Monitor 来跟踪终结点的运行状况，并查看其可视表示形式。 有关使用 Azure Monitor 的详细信息，请参阅 [Azure 监视文档](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)。
+可以使用 Azure Monitor 来跟踪终结点的运行状况，并查看其可视表示形式。 有关使用 Azure Monitor 的详细信息，请参阅 [Azure 监视文档](../azure-monitor/platform/data-platform.md)。
 
 ### <a name="can-i-monitor-https-endpoints"></a>能否监视 HTTPS 终结点？
 
@@ -458,7 +458,7 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>如果我的终结点发生故障，我如何得到通知？
 
-流量管理器提供的指标之一是配置文件中的终结点的运行状况状态。 可以将此指标作为配置文件中所有终结点的聚合进行查看（例如，75% 的终结点正常运行），也可以在每终结点级别查看此指标。 流量管理器指标是通过 Azure Monitor 公开的，并且，当终结点的运行状况状态发生更改时，你可以使用其[警报功能](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)获得通知。 有关更多详细信息，请参阅[流量管理器指标和警报](traffic-manager-metrics-alerts.md)。  
+流量管理器提供的指标之一是配置文件中的终结点的运行状况状态。 可以将此指标作为配置文件中所有终结点的聚合进行查看（例如，75% 的终结点正常运行），也可以在每终结点级别查看此指标。 流量管理器指标是通过 Azure Monitor 公开的，并且，当终结点的运行状况状态发生更改时，你可以使用其[警报功能](../azure-monitor/platform/alerts-metric.md)获得通知。 有关更多详细信息，请参阅[流量管理器指标和警报](traffic-manager-metrics-alerts.md)。  
 
 ## <a name="traffic-manager-nested-profiles"></a>流量管理器嵌套式配置文件
 

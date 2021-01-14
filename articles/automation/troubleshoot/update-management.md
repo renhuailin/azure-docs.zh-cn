@@ -5,12 +5,12 @@ services: automation
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: c6d0f38eaa25f2fe033a5e2cf48ee6daa51fcbe6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f00002c7374e0c35c7bb91c28b2dd87ad71e3350
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929270"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184911"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -19,39 +19,39 @@ ms.locfileid: "96929270"
 >[!NOTE]
 >如果在 Windows 计算机上部署更新管理功能时遇到问题，请打开 Windows 事件查看器，查看本地计算机上“应用程序和服务日志”下的 Operations Manager 事件日志 。 查找事件 ID 为 4502 的事件和包含 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 的事件详细信息。
 
-## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a><a name="updates-linux-installed-different"></a>方案： Linux 更新显示为 "挂起"，并且安装的内容有所不同
+## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a><a name="updates-linux-installed-different"></a>场景：Linux 更新显示为挂起，已安装的更新并不相同
 
 ### <a name="issue"></a>问题
 
-对于 Linux 计算机，更新管理显示在分类 **安全性** 和 **其他** 级别下可用的特定更新。 但如果在计算机上运行更新计划（例如，仅安装与 **安全** 分类匹配的更新），则安装的更新将不同于或之前显示的与该分类匹配的一部分更新。
+对于 Linux 计算机，“更新管理”会在“安全性”和“其他”分类下显示可用的特定更新。 但是，在计算机上运行更新计划来安装特定更新（例如，仅安装与“安全性”分类匹配的更新）时，安装的更新将不同于之前显示的与该分类匹配的更新，或者将是那些更新的子集。
 
 ### <a name="cause"></a>原因
 
-完成 Linux 计算机的 OS 更新的评估后， (的) [漏洞和评估语言](https://oval.mitre.org/) 将由 Linux 发行版供应商提供的文件更新管理用于分类。 基于表示更新解决安全问题或漏洞的 OVAL 文件，以 **安全** 或 **其他** 方式为 Linux 更新进行分类。 但当更新计划运行时，它将使用适当的包管理器（如 YUM、APT 或 ZYPPER）在 Linux 计算机上执行安装。 适用于 Linux 发行版的包管理器可能会有不同的机制来对更新进行分类，其中的结果可能不同于通过更新管理从 OVAL 文件获取的结果。
+在评估 Linux 计算机的挂起的 OS 更新后，更新管理会使用 Linux 发行版供应商提供的[开放漏洞和评估语言](https://oval.mitre.org/) (OVAL) 文件进行分类。 基于 OVAL 文件的 Linux 更新分类为“安全性”或“其他”，其中指明了用于解决安全问题或漏洞的更新 。 但是，当运行更新计划时，它会使用适当的包管理器（例如 YUM、APT 或 ZYPPER）在 Linux 计算机上执行，以便进行安装。 Linux 发行版的包管理器可以通过不同的机制对更新进行分类，其结果可能不同于更新管理从 OVAL 文件获得的结果。
 
 ### <a name="resolution"></a>解决方法
 
-你可以根据发行版的包管理器，手动检查 Linux 计算机、适用的更新及其分类。 若要了解包管理器将哪些更新归类为 **安全** 更新，请运行以下命令。
+你可以根据发行版的包管理器，手动检查 Linux 计算机、适用的更新及其分类。 若要了解哪些更新被包管理器归类为“安全性”，请运行以下命令。
 
-对于 YUM，以下命令返回按 Red Hat 分类为 **安全性** 的非零更新列表。 请注意，对于 CentOS，它始终返回一个空列表，而不进行安全分类。
+对于 YUM，以下命令返回由 Red Hat 归类为“安全性”的非零数量的更新列表。 请注意，对于 CentOS，它始终返回一个空列表，而不进行安全性分类。
 
 ```bash
 sudo yum -q --security check-update
 ```
 
-对于 ZYPPER，以下命令将返回由 SUSE 归类为 **安全** 更新的非零列表。
+对于 ZYPPER，以下命令返回由 SUSE 归类为“安全性”的非零数量的更新列表。
 
 ```bash
 sudo LANG=en_US.UTF8 zypper --non-interactive patch --category security --dry-run
 ```
 
-对于 APT，下面的命令将返回一个非零的更新列表，该列表由 Ubuntu Linux 发行版的规范分类为 **安全** 更新。
+对于 APT，以下命令返回由 Canonical for Ubuntu Linux 发行版归类为“安全性”的非零数量的更新列表。
 
 ```bash
 sudo grep security /etc/apt/sources.list > /tmp/oms-update-security.list LANG=en_US.UTF8 sudo apt-get -s dist-upgrade -oDir::Etc::Sourcelist=/tmp/oms-update-security.list
 ```
 
-在此列表中，你可以运行命令 `grep ^Inst` 来获取所有挂起的安全更新。
+然后，你可以根据此列表运行命令 `grep ^Inst` 来获取所有挂起的安全更新。
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>场景：收到“无法启用更新解决方案”错误
 
@@ -425,7 +425,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 如果适用，请为更新部署使用[动态组](../update-management/configure-groups.md)。 此外，可以执行以下步骤。
 
-1. 验证计算机或服务器是否满足[要求](../update-management/overview.md#client-requirements)。
+1. 验证计算机或服务器是否满足[要求](../update-management/overview.md#system-requirements)。
 2. 使用混合 Runbook 辅助角色代理故障排除程序验证与混合 Runbook 辅助角色的连接。 若要了解有关故障排除程序的详细信息，请参阅[排查更新代理问题](update-agent-issues.md)。
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>场景：在没有部署的情况下安装更新

@@ -9,12 +9,12 @@ ms.author: mlearned
 description: 使用 Azure Arc 连接已启用 Azure Arc 的 Kubernetes 群集
 keywords: Kubernetes, Arc, Azure, K8s, 容器
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 8155ed709045626dee44fb499304ff5244a61b54
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 131ec014c9ac016a682bc4928f74910a3405a5da
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060242"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185999"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>连接已启用 Azure Arc 的 Kubernetes 群集（预览版）
 
@@ -35,19 +35,19 @@ ms.locfileid: "98060242"
   
   安装 `connectedk8s` 扩展，该扩展可帮助你将 Kubernetes 群集连接到 Azure：
   
-  ```console
+  ```azurecli
   az extension add --name connectedk8s
   ```
   
   安装 `k8sconfiguration` 扩展：
   
-  ```console
+  ```azurecli
   az extension add --name k8sconfiguration
   ```
   
   如果以后要更新这些扩展，请运行以下命令：
   
-  ```console
+  ```azurecli
   az extension update --name connectedk8s
   az extension update --name k8sconfiguration
   ```

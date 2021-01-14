@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad91c916a6134f2507e74df6e87478421a00f43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd4cccdfc3a2cf8dd3827776028a7738ae769673
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002998"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184824"
 ---
-# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>使用 Azure 门户创建、列出和删除用户分配的托管标识以及为其分配角色
+# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>使用 Azure 门户创建、列出、删除或分配用户分配的托管标识的角色
 
 Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供了一个托管标识。 此标识可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中输入凭据了。 
 
-本文介绍如何使用 Azure 门户创建、列出和删除用户分配的托管标识以及如何为其分配角色。
+本文介绍如何使用 Azure 门户创建、列出、删除或分配用户分配的托管标识的角色。
 
 ## <a name="prerequisites"></a>先决条件
 
