@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: duau
-ms.openlocfilehash: 7bb5559f21289a40b6c75a3481680ab5b2c1c269
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a39120b1305022739aaef3407aa6c2621a97e842
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392878"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184147"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>管理 Azure 流量管理器配置文件
 
@@ -32,11 +32,11 @@ ms.locfileid: "89392878"
 1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册[免费一个月试用版](https://azure.microsoft.com/free/)。 
 2. 单击“创建资源” > “网络” > “流量管理器配置文件” > “创建”     。
 4. 在“创建流量管理器配置文件”  中，按如下所示完成操作：
-    1. 在**名称**中，提供配置文件的名称。 此名称必须在 trafficmanager.net 区域中唯一，并将生成 DNS 名称（`<name>`,trafficmanager.net），该名称用于访问流量管理器配置文件。
-    2. 在**路由方法**中，选择“优先级”  路由方法。
-    3. 在**订阅**中，选择要创建此配置文件的订阅
-    4. 在**资源组**中，创建新的资源组，以在其下放置此配置文件。
-    5. 在**资源组位置**中，选择资源组的位置。 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。
+    1. 在 **名称** 中，提供配置文件的名称。 此名称必须在 trafficmanager.net 区域中唯一，并将生成 DNS 名称（`<name>`,trafficmanager.net），该名称用于访问流量管理器配置文件。
+    2. 在 **路由方法** 中，选择“优先级”  路由方法。
+    3. 在 **订阅** 中，选择要创建此配置文件的订阅
+    4. 在 **资源组** 中，创建新的资源组，以在其下放置此配置文件。
+    5. 在 **资源组位置** 中，选择资源组的位置。 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。
     6. 单击“创建”。 
     7. 流量管理器配置文件的全局部署完成后，它会在相应的资源组中作为资源之一列出。
 
@@ -70,7 +70,7 @@ ms.locfileid: "89392878"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [添加终结点](traffic-manager-endpoints.md)
+* [添加终结点](./traffic-manager-manage-endpoints.md)
 * [配置优先级路由方法](traffic-manager-configure-priority-routing-method.md)
 * [配置地域路由方法](traffic-manager-configure-geographic-routing-method.md) 
 * [配置加权路由方法](traffic-manager-configure-weighted-routing-method.md)

@@ -1,6 +1,6 @@
 ---
-title: 管理 Azure AD 多重身份验证的身份验证方法-Azure Active Directory
-description: 了解如何为 Azure AD 多重身份验证配置 Azure Active Directory 用户设置
+title: 管理 Azure AD 多重身份验证的身份验证方法 - Azure Active Directory
+description: 了解如何配置 Azure AD 多重身份验证的 Azure Active Directory 用户设置
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a96f01d38fb41f64336d0a2b1d2aa33a96ca9f1a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fc0be7e50c5cce511fafd7d8b407626bd57659bd
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742742"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183126"
 ---
 # <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>管理 Azure AD 多重身份验证的用户身份验证方法
 
@@ -44,8 +44,8 @@ Azure AD 中的用户有两组不同的联系信息：
 
 通过 Azure 门户添加用户的身份验证方法：  
 
-1. 登录 **Azure 门户**。 
-1. 浏览到 **Azure Active Directory**"  >  **Users**  >  **所有用户**"。 
+1. 登录到 **Azure 门户**。 
+1. 浏览到 **Azure Active Directory**"  >    >  **所有用户**"。 
 1. 选择要为其添加身份验证方法的用户，然后选择 " **身份验证方法**"。  
 1. 在窗口顶部，选择 " **+ 添加身份验证方法**"。
    1. 选择 (电话号码或电子邮件) 的方法。 电子邮件可用于自密码重置，但不能用于身份验证。 添加电话号码时，请选择电话号码，并输入有效格式 (例如 + 1 4255551234) 的电话号码。
@@ -73,7 +73,7 @@ Get-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com
 为特定用户创建手机身份验证方法。
 
 ```powershell
-New-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -phoneType “mobile” -phoneNumber "+1 7748933135"
+New-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -phoneType "mobile" -phoneNumber "+1 7748933135"
 ```
 
 删除用户的特定电话方法
@@ -103,7 +103,7 @@ Remove-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -PhoneAuthentic
 
 ## <a name="delete-users-existing-app-passwords"></a>删除用户的现有应用密码
 
-对于已定义应用密码的用户，管理员还可以选择删除这些密码，从而导致旧身份验证在这些应用程序中失败。 如果需要向用户提供帮助，或者需要重置其身份验证方法，则可能需要执行这些操作。 与这些应用密码关联的非浏览器应用将停止工作，直到创建新的应用密码。 
+对于已定义应用密码的用户，管理员还可以选择删除这些密码，使这些应用程序中的旧身份验证失败。 如果需要向用户提供帮助或需要重置其身份验证方法，可能需要执行这些操作。 与这些应用密码关联的非浏览器应用将会停止工作，直到创建新应用密码为止。 
 
 若要删除用户的应用密码，请完成以下步骤：
 
@@ -116,6 +116,6 @@ Remove-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -PhoneAuthentic
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何配置单个用户设置。 若要配置整体 Azure AD 多重身份验证服务设置，请参阅 [配置 Azure AD 多重身份验证设置](howto-mfa-mfasettings.md)。
+本文介绍了如何配置单个用户设置。 若要配置整体 Azure AD 多重身份验证服务设置，请参阅[配置 Azure AD 多重身份验证设置](howto-mfa-mfasettings.md)。
 
 如果用户需要帮助，请参阅 [Azure AD 多重身份验证的用户指南](../user-help/multi-factor-authentication-end-user-first-time.md)。

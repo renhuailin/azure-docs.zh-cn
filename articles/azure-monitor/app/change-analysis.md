@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 50e199d2d56016086bb409f8690e9828f1d19984
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 0cdb82bbf38244bc91ed54ffb7d7d734cefe9dd2
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881503"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183313"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>使用 Azure Monitor 中的应用程序更改分析（预览版）
 
@@ -194,6 +194,27 @@ foreach ($webapp in $webapp_list)
 ### <a name="azure-lighthouse-subscription-is-not-supported"></a>不支持 Azure Lighthouse 订阅
 
 - **无法查询 ChangeAnalysis 资源提供程序** *，因为不支持消息 Azure lighthouse 订阅，只能在订阅的 home 租户中使用这些更改*。 现在，对于不在 home 租户中的用户，将通过 Azure Lighthouse 订阅注册更改分析资源提供程序存在限制。 在不久的将来，我们预计会解决此限制。 如果这是你的阻塞问题，则有一种解决方法，涉及到创建服务主体，并显式分配角色以允许访问。  请联系 changeanalysishelp@microsoft.com 以了解更多相关信息。
+
+### <a name="an-error-occurred-while-getting-changes-please-refresh-this-page-or-come-back-later-to-view-changes"></a>获取更改时出错。 请刷新此页或稍后返回以查看更改
+
+这是应用程序更改分析服务在无法加载更改时显示的一般错误消息。 一些已知的原因是：
+- 来自客户端设备的 Internet 连接错误
+- 如果更改分析服务暂时不可用，则在几分钟后刷新页面通常会解决此问题。 如果错误仍然存在，请联系 changeanalysishelp@micorosoft.com
+
+### <a name="you-dont-have-enough-permissions-to-view-some-changes-contact-your-azure-subscription-administrator"></a>你的权限不足，无法查看某些更改。 联系你的 Azure 订阅管理员
+
+这是一般性的未授权错误消息，说明当前用户的权限不足，无法查看更改。 至少需要对资源具有读取者访问权限，才能查看 Azure 资源图和 Azure 资源管理器返回的基础结构更改。 对于 web 应用中的来宾文件更改和配置更改，必须至少具有 "参与者" 角色。
+
+### <a name="failed-to-register-microsoftchangeanalysis-resource-provider"></a>未能注册 ChangeAnalysis 资源提供程序
+ 
+**你的权限不足，无法注册 ChangeAnalysis 资源提供程序。请联系你的 Azure 订阅管理员。** 此错误消息表示当前订阅中的角色不具有与之关联的 **Microsoft. 支持/注册/操作** 范围。 如果你不是订阅的所有者，并且通过同事获取共享访问权限，则可能会发生这种情况。 即，查看对资源组的访问权限。 若要解决此问题，可以联系订阅所有者来注册 **ChangeAnalysis** 资源提供程序。 这可以通过订阅 Azure 门户来完成 **|资源提供程序** ，并 ```Microsoft.ChangeAnalysis``` 在 UI 中搜索和注册，或通过 Azure PowerShell 或 Azure CLI。
+
+通过 PowerShell 注册资源提供程序： 
+
+```PowerShell
+# Register resource provider
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
+```
 
 ## <a name="next-steps"></a>后续步骤
 

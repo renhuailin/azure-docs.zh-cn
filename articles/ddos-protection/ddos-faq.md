@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 4196515463611f51dddb79438b1d4e827f1b32c2
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: e87fd8724ab9a967bf3b75579eb0e375a324a7b1
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165393"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183092"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS 保护标准常见问题
 
@@ -32,6 +32,8 @@ Azure DDoS 保护标准与应用程序设计最佳做法相结合，提供增强
 DDoS 保护计划的每月固定费用为 $2944，涵盖最多100个公共 IP 地址。 对于其他资源的保护，每个资源每月附加 $30。 
 
 在租户下，可以跨多个订阅使用单个 DDoS 防护计划，因此无需创建多个 DDoS 防护计划。
+
+有关更多详细信息，请参阅 [Azure DDoS 保护标准定价](https://azure.microsoft.com/pricing/details/ddos-protection/) 。
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a> (第7层) ，服务层上的保护是怎样的？
 客户可将 Azure DDoS 保护服务与 Web 应用程序防火墙结合使用 (WAF) ，以保护 (第3层和第4层提供的网络层，第3层和第4层 () 提供此功能。 WAF 产品/服务包括 Azure [应用程序网关 WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 以及 [azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)中提供的第三方 web 应用程序防火墙产品。

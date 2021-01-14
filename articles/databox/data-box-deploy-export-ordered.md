@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: e822a2be200f701d65ab2080804d252f99589680
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: ac86dfba02b54730773a1d243981e85d563517e7
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680792"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183824"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>教程：创建 Azure Data Box 的出口订单
 
@@ -28,7 +28,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 > * 跟踪导出顺序
 > * 取消导出顺序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 对设备进行排序之前，请先完成 Data Box 服务和设备的以下配置先决条件。
 
@@ -58,7 +58,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    ![创建资源](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-resource.png)
 
-3. 选择“创建”  。
+3. 选择“创建” 。
 
    ![创建 Azure Data Box 资源](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-data-box-resource.png)
 
@@ -181,7 +181,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
     用户分配的托管标识是一个可用于管理多个资源的独立 Azure 资源。 有关详细信息，请参阅[托管标识类型](/azure/active-directory/managed-identities-azure-resources/overview)。  
 
-    如果需要创建新的托管标识，请按照[使用 Azure 门户创建、列出和删除用户分配的托管标识以及如何为其分配角色](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指南操作。
+    如果需要创建新的托管标识，请按照 [使用 Azure 门户创建、列出、删除或向用户分配的托管标识分配角色](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指南进行操作。
     
     ![选择用户标识](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
 
@@ -242,7 +242,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    ![选择导出选项，新建容器设置](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-container-settings.png)
 
-4. 选择“创建”  。
+4. 选择“创建” 。
 
    ![选择 "导出" 选项，然后单击 "新建容器"。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-create-container.png)
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/23/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c093dcff46676dc5f8a25974c3c38c74ae7666b7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a4c7612188043be070ead92c88838b567b22787d
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546681"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131264"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure 存储 
 
@@ -33,9 +33,6 @@ ms.locfileid: "92546681"
 > * 在存储帐户中创建 Blob 容器
 > * 向 Linux VM 的托管标识授予对 Azure 存储容器的访问权限
 > * 获取访问令牌并使用它来调用 Azure 存储
-
-> [!NOTE]
-> 适用于 Azure 存储的 Azure Active Directory 身份验证当前处于公共预览版。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -73,7 +70,7 @@ ms.locfileid: "92546681"
 5. 使用你选择的编辑器，在本地计算机上创建一个标题为 *hello world.txt* 的文件。  打开该文件并添加文本“Hello world! :）”（不包括引号），然后保存该文件。 
 
 6. 通过单击容器名称并单击“上传”，将该文件上传到新创建的容器。
-7. 在“上传 blob”窗格中，在“文件”下，单击文件夹图标并浏览到本地计算机上的文件 **hello_world.txt** ，选择该文件，然后单击“上传”。
+7. 在“上传 blob”窗格中，在“文件”下，单击文件夹图标并浏览到本地计算机上的文件 **hello_world.txt**，选择该文件，然后单击“上传”。
 
     ![上传文本文件](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 

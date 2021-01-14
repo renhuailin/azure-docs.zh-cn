@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/17/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 78e934a90b8d4e8feccf18a5cada3ec4920e1642
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 86e27c190b269763d8dd2f562a207b3f2020da29
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734441"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051065"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙
 
@@ -84,7 +84,7 @@ ms.locfileid: "94734441"
 现在创建 VNet：
 
 > [!NOTE]
-> AzureFirewallSubnet 子网的大小为 /26。 有关子网大小的详细信息，请参阅 [Azure 防火墙常见问题解答](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)。
+> AzureFirewallSubnet 子网的大小为 /26。 有关子网大小的详细信息，请参阅 [Azure 防火墙常见问题解答](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size)。
 
 1. 在 Azure 门户主页上，选择“创建资源”。
 2. 在“网络”下，选择“虚拟网络”。 
@@ -148,7 +148,7 @@ ms.locfileid: "94734441"
 2. 在左列中选择“网络”，然后搜索并选择“防火墙” 。
 4. 在“创建防火墙”页上，使用下表配置防火墙：
 
-   |设置  |值  |
+   |设置  |“值”  |
    |---------|---------|
    |订阅     |\<your subscription\>|
    |资源组     |**FW-Hybrid-Test** |
@@ -175,7 +175,7 @@ ms.locfileid: "94734441"
 5. 对于“优先级”，请键入 **100**。
 6. 对于“操作”，请选择“允许”。
 6. 在“规则”下，为“名称”键入 **AllowWeb**。 
-7. 对于“协议”，请选择“TCP”。  
+7. 对于“协议”，请选择“TCP”。 
 8. 对于 **源类型**，请选择“IP 地址”。
 9. 对于 **源**，请键入 **192.168.1.0/24**。
 10. 对于“目标类型”，请选择“IP 地址” 。
@@ -246,7 +246,7 @@ ms.locfileid: "94734441"
 5. 选择“VNet 到 VNet”作为“连接类型”。
 6. 对于“第二个虚拟网络网关”，请选择“GW-Onprem”。
 7. 对于“共享密钥(PSK)”，请键入 **AzureA1b2C3**。
-8. 选择“确定”。
+8. 选择“确定”  。
 
 创建本地到中心虚拟网络连接。 此步骤类似于前一步骤，但这次是创建从 VNet-Onprem 到 VNet-hub 的连接。 确保共享密钥匹配。 几分钟后会建立连接。
 
@@ -257,7 +257,7 @@ ms.locfileid: "94734441"
 5. 选择“VNet 到 VNet”作为“连接类型”。
 6. 对于“第二个虚拟网络网关”，请选择“GW-hub”。
 7. 对于“共享密钥(PSK)”，请键入 **AzureA1b2C3**。
-8. 选择“确定”。
+8. 选择“确定”  。
 
 
 #### <a name="verify-the-connection"></a>验证连接
@@ -322,7 +322,7 @@ ms.locfileid: "94734441"
 15. 键入 **10.6.0.0/16** 作为地址前缀。
 16. 选择“虚拟设备”作为下一跃点类型。
 17. 键入前面记下的防火墙专用 IP 地址作为下一跃点地址。
-18. 选择“确定”。
+18. 选择“确定”  。
 
 现在，将路由关联到子网。
 

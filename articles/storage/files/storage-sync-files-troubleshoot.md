@@ -4,15 +4,15 @@ description: 排查 Azure 文件同步上部署中的常见问题，你可以使
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 6/12/2020
+ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c7405ada800bd5fb9161e9d96bd4c8b0484be620
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b84256188cf5df3ddf389f763e669a2b2ca00852
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005299"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183330"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -199,10 +199,27 @@ Set-AzStorageSyncServerEndpoint `
 - 如果记录“GetNextJob 已完成，状态为：0”，则服务器可以与 Azure 文件同步服务通信。 
     - 在服务器上打开任务管理器，并验证存储同步监视器 (AzureStorageSyncMonitor.exe) 进程是否正在运行。 如果该进程未运行，请首先尝试重启服务器。 如果重启服务器无法解决此问题，请升级到最新的 Azure 文件同步[代理版本](./storage-files-release-notes.md)。 
 
-- 如果记录“GetNextJob 已完成，状态为：-2134347756”，则服务器由于防火墙或代理的限制而无法与 Azure 文件同步服务通信。 
+- 如果 **GetNextJob 已完成，状态为：-2134347756** ，则服务器无法与 Azure 文件同步服务通信，因为防火墙、代理或 TLS 密码套件顺序配置。 
     - 如果服务器位于防火墙后面，请验证端口 443 是否允许出站。 如果防火墙限制到特定域的流量，请确认可以访问防火墙[文档](./storage-sync-files-firewall-and-proxy.md#firewall)中列出的域。
     - 如果服务器位于代理后面，请按照代理[文档](./storage-sync-files-firewall-and-proxy.md#proxy)中的步骤配置适用于整个计算机或特定于应用的代理设置。
     - 使用 Test-StorageSyncNetworkConnectivity cmdlet 检查服务终结点的网络连接情况。 若要了解详细信息，请参阅[测试服务终结点的网络连接情况](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints)。
+    - 若要在服务器上添加密码套件，请使用组策略或 TLS cmdlet：
+        - 若要使用组策略，请参阅 [使用组策略配置 TLS 密码套件顺序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)。
+        - 若要使用 TLS cmdlet，请参阅 [使用 Tls PowerShell Cmdlet 配置 Tls 密码套件顺序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)。
+    
+        Azure 文件同步当前支持用于 TLS 1.2 协议的以下密码套件：  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256  
+        - TLS_RSA_WITH_AES_256_GCM_SHA384  
+        - TLS_RSA_WITH_AES_128_GCM_SHA256  
+        - TLS_RSA_WITH_AES_256_CBC_SHA256  
+        - TLS_RSA_WITH_AES_128_CBC_SHA256  
 
 - 如果记录“GetNextJob 已完成，状态为：-2134347764”，则服务器无法与 Azure 文件同步服务通信，原因是证书已过期或已删除。  
     - 在服务器上运行以下 PowerShell 命令，以重置用于进行身份验证的证书：

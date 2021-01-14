@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: duau
-ms.openlocfilehash: 83dc432a1f88b443d500bf9a977abfed69211156
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b76eab5771d724e4f0ec56b7d5acd5cf5f91edc0
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003848"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183449"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure 流量管理器上的降级状态故障排除
 
-本文介绍如何对显示降级状态的 Azure 流量管理器配置文件进行故障排除。 在排查 Azure 流量管理器状态降级问题时，第一步是启用日志记录。  有关详细信息，请参阅 [启用资源日志](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) 。 在此方案中，假设已配置了一个指向某些 cloudapp.net 托管服务的流量管理器配置文件。 如果流量管理器的运行状况显示“已降级”的状态，则一个或多个终结点的状态可能为“已降级”：
+本文介绍如何对显示降级状态的 Azure 流量管理器配置文件进行故障排除。 在排查 Azure 流量管理器状态降级问题时，第一步是启用日志记录。  有关详细信息，请参阅 [启用资源日志](./traffic-manager-diagnostic-logs.md) 。 在此方案中，假设已配置了一个指向某些 cloudapp.net 托管服务的流量管理器配置文件。 如果流量管理器的运行状况显示“已降级”的状态，则一个或多个终结点的状态可能为“已降级”：
 
 ![已降级终结点状态](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
@@ -31,8 +31,8 @@ ms.locfileid: "96003848"
 
 ## <a name="understanding-traffic-manager-probes"></a>了解流量管理器探测
 
-* 仅当探测从探测路径收到 HTTP 200 响应时，流量管理器才将终结点视为“联机”。 如果应用程序返回任何其他的 HTTP 响应代码，则应将该响应代码添加到流量管理器配置文件的[预期状态代码范围](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring)。
-* 应将 30x 重定向响应视为失败，除非已在流量管理器配置文件的[预期状态代码范围](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring)中将其指定为有效的响应代码。 流量管理器不探测重定向目标。
+* 仅当探测从探测路径收到 HTTP 200 响应时，流量管理器才将终结点视为“联机”。 如果应用程序返回任何其他的 HTTP 响应代码，则应将该响应代码添加到流量管理器配置文件的[预期状态代码范围](./traffic-manager-monitoring.md#configure-endpoint-monitoring)。
+* 应将 30x 重定向响应视为失败，除非已在流量管理器配置文件的[预期状态代码范围](./traffic-manager-monitoring.md#configure-endpoint-monitoring)中将其指定为有效的响应代码。 流量管理器不探测重定向目标。
 * 对于 HTTPS 探测器，证书错误会被忽略。
 * 只要返回 200，就无需在意探测器路径的实际内容。 常用的技巧是探测某些静态内容的 URL，例如“/favicon.ico”。 即使应用程序处于正常状态，ASP 页等动态内容也不一定会返回 200。
 * 最佳做法是将探测路径设置为某个值，该值具有足够逻辑来确定站点是已启动还是已关闭。 在上述示例中，如果将路径设置为“/favicon.ico”，则只会测试 w3wp.exe 是否有响应。 这种探测可能不会指示 Web 应用程序是否正常。 更好的做法是将路径设置为类似于“/Probe.aspx”的值，通过某个逻辑来确定站点的运行状况。 例如，可以使用性能计数器来查看 CPU 利用率，或者测量失败请求的数目。 或者，可以尝试访问数据库资源或会话状态，确保 Web 应用程序正常工作。
@@ -87,12 +87,12 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [什么是流量管理器](traffic-manager-overview.md)
 
-[云服务](https://go.microsoft.com/fwlink/?LinkId=314074)
+[云服务](/previous-versions/azure/jj155995(v=azure.100))
 
 [Azure 应用服务](https://azure.microsoft.com/documentation/services/app-service/web/)
 
-[流量管理器上的操作（REST API 参考）](https://go.microsoft.com/fwlink/?LinkId=313584)
+[流量管理器上的操作（REST API 参考）](/previous-versions/azure/reference/hh758255(v=azure.100))
 
 [Azure 流量管理器 Cmdlet][1]
 
-[1]: https://docs.microsoft.com/powershell/module/az.trafficmanager
+[1]: /powershell/module/az.trafficmanager

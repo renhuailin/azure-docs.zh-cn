@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 27cd35eba7320022ea9b137a7b8bb079a1226751
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427291"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131927"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>使用 PowerShell 创建弹性作业代理（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -123,14 +123,6 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>使用弹性作业
-
-若要使用弹性作业，请运行以下命令，在 Azure 订阅中注册此功能。 针对要在其中预配弹性作业代理的订阅运行此命令一次。 如果订阅只包含属于作业目标的数据库，则不需注册此类订阅。
-
-```powershell
-Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
-```
-
 ### <a name="create-the-elastic-job-agent"></a>创建弹性作业代理
 
 弹性作业代理是用于创建、运行和管理作业的 Azure 资源。 此代理执行的作业是按计划的，或者是一次性的。
@@ -205,7 +197,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 [目标组](job-automation-overview.md#target-group)定义可以在其上执行作业步骤的数据库集（包含一个或多个数据库）。
 
-以下代码片段创建两个目标组： *serverGroup* 和 *serverGroupExcludingDb2* 。 *serverGroup* 的目标是执行时存在于服务器上的所有数据库， *serverGroupExcludingDb2* 的目标是服务器上的所有数据库， *targetDb2* 除外：
+以下代码片段创建两个目标组：*serverGroup* 和 *serverGroupExcludingDb2*。 *serverGroup* 的目标是执行时存在于服务器上的所有数据库，*serverGroupExcludingDb2* 的目标是服务器上的所有数据库，*targetDb2* 除外：
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -221,7 +213,7 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 
 ### <a name="create-a-job-and-steps"></a>创建作业和步骤
 
-此示例为要运行的作业定义作业和两个作业步骤。 第一个作业步骤 ( *step1* ) 在目标组 *ServerGroup* 的每个数据库中创建新表 ( *Step1Table* )。 第二个作业步骤 ( *step2* ) 在除 *TargetDb2* 之外的每个数据库中创建新表 ( *Step2Table* )，因为之前定义的目标组已指定将其排除。
+此示例为要运行的作业定义作业和两个作业步骤。 第一个作业步骤 (*step1*) 在目标组 *ServerGroup* 的每个数据库中创建新表 (*Step1Table*)。 第二个作业步骤 (*step2*) 在除 *TargetDb2* 之外的每个数据库中创建新表 (*Step2Table*)，因为之前定义的目标组已指定将其排除。
 
 ```powershell
 Write-Output "Creating a new job..."

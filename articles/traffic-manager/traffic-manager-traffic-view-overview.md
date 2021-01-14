@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: f1a3cc5ccb326d6a198895f9f459e661f7805b1e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b20357413c62460aba55a2d354b90995a2aa4815
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003831"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183687"
 ---
 # <a name="traffic-manager-traffic-view"></a>流量管理器流量视图
 
@@ -72,29 +72,29 @@ ms.locfileid: "96003831"
 
 ## <a name="faqs"></a>常见问题解答
 
-* [流量视图有什么作用？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
+* [流量视图有什么作用？](./traffic-manager-faqs.md#what-does-traffic-view-do)
 
-* [如何从使用流量视图中受益？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
+* [如何从使用流量视图中受益？](./traffic-manager-faqs.md#how-can-i-benefit-from-using-traffic-view)
 
-* [流量视图与 Azure 监视器提供的流量管理器指标有何不同？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
+* [流量视图与 Azure 监视器提供的流量管理器指标有何不同？](./traffic-manager-faqs.md#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
 
-* [流量视图是否使用 EDNS 客户端子网信息？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
+* [流量视图是否使用 EDNS 客户端子网信息？](./traffic-manager-faqs.md#does-traffic-view-use-edns-client-subnet-information)
 
-* [流量视图使用多少天的数据？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
+* [流量视图使用多少天的数据？](./traffic-manager-faqs.md#how-many-days-of-data-does-traffic-view-use)
 
-* [流量视图如何处理外部终结点？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-handle-external-endpoints)
+* [流量视图如何处理外部终结点？](./traffic-manager-faqs.md#how-does-traffic-view-handle-external-endpoints)
 
-* [是否需要对我的订阅中的每个配置文件启用流量视图？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
+* [是否需要对我的订阅中的每个配置文件启用流量视图？](./traffic-manager-faqs.md#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
 
-* [如何关闭流量视图？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
+* [如何关闭流量视图？](./traffic-manager-faqs.md#how-can-i-turn-off-traffic-view)
 
-* [流量视图计费如何工作？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
+* [流量视图计费如何工作？](./traffic-manager-faqs.md#how-does-traffic-view-billing-work)
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[流量管理器的工作原理](traffic-manager-overview.md)
 - 详细了解流量管理器支持的[流量路由方法](traffic-manager-routing-methods.md)
-- 了解如何[创建流量管理器配置文件](traffic-manager-create-profile.md)
+- 了解如何[创建流量管理器配置文件](./quickstart-create-traffic-manager-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

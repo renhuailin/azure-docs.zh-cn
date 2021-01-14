@@ -3,12 +3,12 @@ title: 将资源部署到管理组
 description: 介绍如何通过 Azure 资源管理器模板在管理组范围部署资源。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: f847e481670d7f9afd4b40cfb8fcbec65d1e28c8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: d6c6b925ad1533fc1f3bf490a9b996280164bd57
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178919"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184010"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>使用 ARM 模板进行管理组部署
 
@@ -44,6 +44,8 @@ ms.locfileid: "98178919"
 若要管理资源，请使用：
 
 * [标记](/azure/templates/microsoft.resources/tags)
+
+管理组是租户级别资源。 但是，你可以通过将新管理组的作用域设置为租户，在管理组部署中创建管理组。 请参阅 [管理组](#management-group)。
 
 ## <a name="schema"></a>架构
 
@@ -168,9 +170,55 @@ New-AzManagementGroupDeployment `
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
-或者，可以将某些资源类型（如管理组）的 scope 设置为 `/`。
+或者，可将某些资源类型（如管理组）的范围设置为 `/`。 下一节将介绍如何创建新的管理组。
+
+## <a name="management-group"></a>管理组
+
+若要在管理组部署中创建管理组，则必须将管理组的作用域设置为 `/` 。
+
+下面的示例在根管理组中创建一个新管理组。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-create-mg.json" highlight="12,15":::
+
+下一个示例在指定为父级的管理组中创建一个新管理组。 请注意，范围设置为 `/` 。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string",
+            "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
+        },
+        "parentMG": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('mgName')]",
+            "type": "Microsoft.Management/managementGroups",
+            "apiVersion": "2020-05-01",
+            "scope": "/",
+            "location": "eastus",
+            "properties": {
+                "details": {
+                    "parent": {
+                        "id": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('parentMG'))]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "output": {
+            "type": "string",
+            "value": "[parameters('mgName')]"
+        }
+    }
+}
+```
 
 ## <a name="azure-policy"></a>Azure Policy
 
