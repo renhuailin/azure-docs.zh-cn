@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9386b154148cf5b5b6b7cd0b43f5a4b4aa741059
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3f56fc1b321396c5cc6aa93e3f47fcaafcbe4ae4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339687"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202328"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>事件中心的 Azure 安全基线
 
@@ -361,7 +361,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 **指导**：使用配置了多重身份验证 (MFA) 的特权访问工作站 (PAW) 进行登录并配置启用了事件中心的资源。
 
-了解特权访问工作站： https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+了解特权访问工作站： https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
 如何在 Azure 中启用 MFA： https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -369,7 +369,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 **责任**：客户
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录管理帐户的可疑活动并发出警报
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
 **指导**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。 使用 Azure AD 风险检测查看有关风险用户行为的警报和报告。 如需其他日志记录，请将 Azure 安全中心风险检测警报发送到 Azure Monitor 中，并使用操作组配置自定义警报/通知。
 

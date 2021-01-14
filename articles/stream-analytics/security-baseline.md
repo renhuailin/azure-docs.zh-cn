@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0a0756c0beeb752e69703119a300bf4cc85f621b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c1e61e9434d96148fbce840f4bad7f6a3b2ecb6b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485172"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202719"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>适用于流分析的 Azure 安全基线
 
@@ -292,7 +292,7 @@ ms.locfileid: "96485172"
 
 **指导**：使用配置了多重身份验证 (MFA) 的 PAW（特权访问工作站）登录和配置流分析资源。
 
-* [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -660,7 +660,7 @@ Microsoft 对支持 Azure 流分析的基础系统执行漏洞管理。
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的功能
 
-**指南**：不适用；此建议适用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -912,7 +912,7 @@ Azure 存储 blob 的软删除： https://docs.microsoft.com/azure/storage/blobs
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 * [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -926,9 +926,9 @@ Azure 存储 blob 的软删除： https://docs.microsoft.com/azure/storage/blobs
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 * [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 

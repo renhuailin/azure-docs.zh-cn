@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 271812320b60daa8f975ed31b328fa143ec0feb3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: ab4aa149672e77c3d67eef50b3814d61cd67c0bc
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094227"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202413"
 ---
 # <a name="azure-security-baseline-for-azure-migrate"></a>适用于 Azure Migrate 的 Azure 安全基线
 
@@ -27,7 +27,7 @@ ms.locfileid: "97094227"
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
-**指南**： Azure Migrate 使用 Azure Active Directory (Azure AD) 作为默认的标识和访问管理服务。 应将 Azure AD 标准化，以便在中管理组织的标识和访问管理：
+**指南**： Azure Migrate 使用 Azure Active Directory (Azure AD) 作为默认的标识和访问管理服务。 你应该使 Azure AD 标准化，以便控制组织在以下资源中的标识和访问管理：
 
 - Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机 (Linux 和 Windows) 、Azure Key Vault、PaaS 和 SaaS 应用程序。
 
@@ -35,7 +35,7 @@ ms.locfileid: "97094227"
 
 在组织的云安全做法中，应优先处理 Azure AD 保护事宜。 Azure AD 提供标识安全分数，帮助你评估与 Microsoft 的最佳做法建议相关的标识安全状况。 使用评分来估计你的配置与最佳做法建议的匹配程度，并改善你的安全状况。
 
-Azure AD 支持允许没有 Microsoft 帐户的用户使用其外部标识登录到其应用程序和资源的外部标识。
+Azure AD 支持外部标识，使没有 Microsoft 帐户的用户可以使用其外部标识登录到其应用程序和资源。
 
 - [Azure Active Directory 中的租赁](../active-directory/develop/single-and-multi-tenant-apps.md) 
 
@@ -63,9 +63,9 @@ Azure AD 支持允许没有 Microsoft 帐户的用户使用其外部标识登录
 
 **指南**： Azure Migrate 通过多重身份验证和强无密码方法使用支持强身份验证控件 Azure Active Directory。
 
-多重身份验证-启用 Azure AD 多重身份验证，并遵循 Azure 安全中心的标识和访问管理建议，以获取多重身份验证设置中的一些最佳实践。 多重身份验证可在所有用户上强制执行，根据登录条件和风险因素，选择用户或按用户级别。
+多重身份验证 - 启用 Azure AD 多重身份验证并遵循 Azure 安全中心标识和访问管理建议，以在多重身份验证设置中推行一些最佳做法。 可对所有用户或选定用户强制执行多重身份验证，也可根据登录条件和风险因素在每个用户级别这样做。
 
-无密码身份验证 - 有三个无密码身份验证选项可用：Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
+无密码身份验证 - 提供三个无密码身份验证选项：Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
 
 对于管理员和特权用户，请确保使用最高级别的强身份验证方法，然后将相应的强身份验证策略推广到其他用户。
 
@@ -93,7 +93,7 @@ Azure AD 支持允许没有 Microsoft 帐户的用户使用其外部标识登录
 
 - 已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-这些数据源可以与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
+这些数据源可与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
 
 Azure 安全中心还可针对某些可疑活动发出警报，例如，失败的身份验证尝试次数过多，使用了订阅中的已弃用帐户。
 
@@ -123,7 +123,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 **指南**： Azure Migrate 使用 Azure RBAC 来隔离对关键关键系统的访问权限，方法是限制授予对其所在订阅和管理组的特权访问权限的帐户。
 
-确保你还将访问权限限制为对业务关键访问具有管理访问权限的管理、标识和安全系统，如 Active Directory 域控制器 (DCs) 、安全工具和系统管理工具，以及安装在业务关键系统上的代理。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
+确保还限制了对管理、标识和安全系统的访问，因为这些系统对业务关键型资产具有管理访问权限，这些系统包括 Active Directory 域控制器 (DC)、安全工具以及在业务关键型系统上安装了代理的系统管理软件等。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
 
 所有类型的访问控制都应符合企业分段策略，确保访问控制保持一致。
 
@@ -139,11 +139,11 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3：定期审查和协调用户访问权限
 
-**指南**： Azure Migrate 使用 Azure Active Directory 帐户来管理其资源、定期查看用户帐户和访问分配，以确保帐户及其访问有效。 可使用 Azure AD 访问评审来审查组成员身份、对企业应用程序的访问权限和角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可以使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流，以便于审核过程。
+**指南**： Azure Migrate 使用 Azure Active Directory 帐户来管理其资源、定期查看用户帐户和访问分配，以确保帐户及其访问有效。 可使用 Azure AD 访问评审来审查组成员身份、对企业应用程序的访问权限和角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流以便于执行评审。
 
-此外，还可以将 Azure Privileged Identity Management 配置为在创建过多的管理员帐户时发出警报，并识别过时或配置不正确的管理员帐户。
+此外，Azure Privileged Identity Management 还可配置为在创建过多管理员帐户时发出警报，并识别过时或配置不正确的管理员帐户。
 
-某些 Azure 服务支持不通过 Azure AD 管理的本地用户和角色。 需要单独管理这些用户。
+某些 Azure 服务支持不通过 Azure AD 进行管理的本地用户和角色。 你需要单独管理这些用户。
 
 - [在 Privileged Identity Management (PIM) 中创建对 Azure 资源角色的访问评审](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
@@ -180,7 +180,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 **指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 使用高度安全的用户工作站和/或 Azure Bastion 执行管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可通过集中管理安全的工作站来强制实施安全配置，包括强身份验证、软件和硬件基线、受限的逻辑和网络访问。
 
-- [了解特权访问工作站](../active-directory/devices/concept-azure-managed-workstation.md) 
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [部署特权访问工作站](../active-directory/devices/howto-azure-managed-workstation.md)
 
@@ -250,7 +250,7 @@ Azure Migrate 中的服务器迁移工具将数据从迁移到存储帐户的服
 
 安全读取者权限可以广泛应用于整个租户（根管理组），也可以限制到管理组或特定订阅。 
 
-若要查看工作负荷和服务，可能需要其他权限。 
+若要了解工作负载和服务，可能需要更多权限。 
 
 - [安全读取者角色概述](../role-based-access-control/built-in-roles.md#security-reader)
 
@@ -262,7 +262,7 @@ Azure Migrate 中的服务器迁移工具将数据从迁移到存储帐户的服
 
 ### <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2：确保安全团队有权访问资产清单和元数据
 
-**指南**：将标记应用于 Azure 资源、资源组和订阅，以逻辑方式将它们组织到分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
+**指导**：将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
 Azure Migrate 不允许在其资源上运行应用程序或软件安装。 
 
@@ -278,7 +278,7 @@ Azure Migrate 不允许在其资源上运行应用程序或软件安装。
 
 ### <a name="am-3-use-only-approved-azure-services"></a>AM-3：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略审核和限制用户可在你的环境中预配的服务。 使用 Azure Resource Graph 查询和发现订阅中的资源。 你也可以使用 Azure Monitor 来创建规则，以便在检测到未经批准的服务时触发警报。
+**指导**：请使用 Azure Policy 来审核和限制用户可以在你的环境中预配哪些服务。 使用 Azure Resource Graph 查询和发现订阅中的资源。 你也可以使用 Azure Monitor 来创建规则，以便在检测到未经批准的服务时触发警报。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -292,7 +292,7 @@ Azure Migrate 不允许在其资源上运行应用程序或软件安装。
 
 ### <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5：限制用户与 Azure 资源管理器进行交互的能力
 
-**指南**：使用 Azure 条件访问可通过为“Microsoft Azure 管理”应用配置“阻止访问”，限制用户与 Azure 资源管理器进行交互的能力。
+**指导**：通过对“Microsoft Azure 管理”应用配置“阻止访问”，使用 Azure 条件访问来限制用户与 Azure 资源管理器交互的功能。
 
 配置方式
 - [用于阻止访问 Azure 资源管理器的条件性访问](../role-based-access-control/conditional-access-azure-management.md)
@@ -345,13 +345,13 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 ### <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5：集中管理和分析安全日志
 
-**指南**：集中记录存储和分析以启用关联。 对于每个日志源，请确保已分配数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
+**指导**：集中记录存储和分析来实现关联。 对于每个日志源，请确保已分配数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
 
 确保正在将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
-此外，启用数据并将数据集成到 Azure Sentinel 或第三方 SIEM。
+另外，请启用 Azure Sentinel 或第三方 SIEM 并将数据载入其中。
 
-许多组织选择使用 Azure Sentinel 作为 "热" 数据，这些数据经常使用，而 Azure 存储则用于不频繁使用的 "冷" 数据。
+许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 
@@ -393,7 +393,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 可以基于过去的事件经验、经验证的社区源以及旨在通过融合和关联各种信号源来生成和清理警报的工具构建高质量警报。 
 
-Azure 安全中心可跨多个 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
+Azure 安全中心可跨许多 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
 
 使用导出功能导出 Azure 安全中心警报和建议，以帮助识别 Azure 资源的风险。 手动导出或持续导出警报和建议。
 
@@ -439,7 +439,7 @@ Azure Sentinel 提供几乎针对任何日志源的广泛数据分析，并提�
 
 **指南**：根据警报严重性和资产敏感度，为分析人员提供上下文来确定应首要关注哪些事件。 
 
-Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心在查找或用于发出警报的分析中的置信度，以及导致警报的活动的恶意意图的置信度。
+Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心对调查结果或用于发出警报的分析的确信程度，以及对导致警报的活动背后存在恶意意图的确信程度。
 
 此外，使用标记来标记资源，并创建命名系统来对 Azure 资源进行标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 

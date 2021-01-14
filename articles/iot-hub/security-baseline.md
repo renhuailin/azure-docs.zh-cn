@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 891366060cddaf2a046de36fa9300432977ec903
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 862e8f07e321975ec5b673cfe5c86de85c9d160b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457725"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202294"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>适用于 Azure IoT 中心的 Azure 安全基线
 
@@ -181,7 +181,7 @@ Azure DDoS 防护基本版已作为 IoT 中心的一部分启用，使用时无�
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
-**指南**：在 azure 资源上启用 azure IoT 诊断设置，以便访问审核、安全和资源日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。
+**指导**：在 Azure 资源上启用 Azure IoT 诊断设置，以访问审核日志、安全日志和资源日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。
 
 - [设置 Azure IoT 中心日志](monitor-iot-hub-reference.md#resource-logs)
 
@@ -328,7 +328,7 @@ Azure DDoS 防护基本版已作为 IoT 中心的一部分启用，使用时无�
 
 **指导**：对于需要提升的权限的管理任务，请使用安全的 Azure 托管工作站（也称为特权访问工作站，简称 PAW）。
 
-- [了解安全的 Azure 托管工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [了解安全的 Azure 托管工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何启用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

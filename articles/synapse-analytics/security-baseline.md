@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 972788e04e12553e7c05f30cc246c6fb562031a4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 65985e05be1061bb69eb160cf5be559cb271d5cd
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461365"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202923"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的 azure 安全基线
 
@@ -125,7 +125,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：使用虚拟网络服务标记定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
-将服务终结点用于专用 SQL 池时，需要出站到 Azure SQL 数据库的公共 IP 地址：必须打开网络安全组 (Nsg) ，才能允许连接到 Azure SQL 数据库 Ip。 为此，可以使用适用于 Azure SQL 数据库的 NSG 服务标记。
+将服务终结点用于专用 SQL 池时，需要出站到 Azure SQL 数据库的公共 IP 地址：必须打开网络安全组 (Nsg) ，才能允许连接到 Azure SQL 数据库 Ip。 可以使用 Azure SQL 数据库的 NSG 服务标记执行此操作。
 
 * [了解 Azure SQL 数据库的服务终结点的服务标记](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
 
@@ -181,7 +181,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
-**指导**：由 Microsoft 维护 Azure 资源的时间源。 你可以为计算部署更新时间同步。
+**指导**：由 Microsoft 维护 Azure 资源的时间源。 可以为计算部署更新时间同步。
 
 * [如何为 Azure 计算资源配置时间同步](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
 
@@ -349,7 +349,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
-**指南**：围绕使用专用管理帐户创建策略和过程。 使用 Azure 安全中心的标识和访问管理来监视通过 Azure Active Directory 登录的管理帐户的数量。
+**指导**：围绕专用管理帐户的使用创建策略和过程。 使用 Azure 安全中心的标识和访问管理来监视通过 Azure Active Directory 登录的管理帐户的数量。
 
 若要确定数据库的管理员帐户，请打开 Azure 门户，然后导航到服务器或托管实例的“属性”选项卡。
 
@@ -393,7 +393,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：使用具有多重身份)  (验证的特权访问工作站 (PAW) 配置为登录和配置 Azure 资源。
 
-* [了解特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
@@ -425,7 +425,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
-**指南**：使用条件访问命名位置，仅允许从 IP 地址范围或国家/地区的特定逻辑分组访问门户和 Azure 资源管理。
+**指导**：使用条件访问命名位置，仅允许从 IP 地址范围或国家/地区的特定逻辑分组进行门户和 Azure 资源管理访问。
 
 * [如何在 Azure 中配置命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
@@ -525,7 +525,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 资源应由虚拟网络/子网分开、正确标记并在网络安全组或 Azure 防火墙内保护。 应该隔离存储或处理敏感数据的资源。 使用专用链接;在虚拟网络中部署 Azure SQL Server，并使用 "专用" 链接安全地连接。
+**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 资源应当按虚拟网络/子网进行分隔，相应地进行标记，并由网络安全组或 Azure 防火墙提供保护。 应当隔离用于存储或处理敏感数据的资源。 使用专用链接;在虚拟网络中部署 Azure SQL Server，并使用 "专用" 链接安全地连接。
 
 * [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -545,7 +545,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 此外，适用于 Azure SQL 数据库的高级威胁防护、Azure SQL 托管实例和 Azure Synapse 可检测异常活动，指示访问或利用数据库的异常和潜在有害尝试。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 * [如何配置 Private Link 和 Nsg 以防止 Azure SQL 数据库实例上的数据渗透](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)
 
@@ -559,7 +559,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
-**指南**： Azure SQL 数据库通过使用传输层安全性对活动中的数据进行加密来保护数据。 对于所有连接，SQL Server 都将对 SSL/TLS) 始终强制执行加密 (。 这样可以确保在客户端与服务器之间传输的所有数据经过加密，而不管连接字符串中的 Encrypt 或 TrustServerCertificate 设置如何。
+**指导**：Azure SQL 数据库通过使用传输层安全性加密动态数据来保护数据。 对于所有连接，SQL Server 都将对 SSL/TLS) 始终强制执行加密 (。 这样可以确保在客户端与服务器之间传输的所有数据经过加密，而不管连接字符串中的 Encrypt 或 TrustServerCertificate 设置如何。
 
 * [了解传输中的 Azure SQL 加密](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview#information-protection-and-encryption)
 
@@ -789,7 +789,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略对可在客户)  (订阅中创建的资源类型（使用以下内置策略定义）施加限制：
+**指导**：使用以下内置策略定义，通过 Azure Policy 对可以在客户订阅中创建的资源类型施加限制：
 - 不允许的资源类型
 - 允许的资源类型
 
@@ -805,7 +805,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护已获批软件的清单
 
-**指南**：不适用;此建议适用于在计算资源上运行的应用程序。
+**指导**：不适用；此建议适用于在计算资源上运行的应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -957,7 +957,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：使用托管标识，通过 AZURE ACTIVE DIRECTORY (AD) 中的自动托管标识提供 Azure 服务。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Azure Key Vault）进行身份验证，无需在代码中放入任何凭据。
 
-* [教程：使用 Windows VM 系统分配托管标识访问 Azure SQL](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql)
+* [教程：使用 Windows VM 系统分配的托管标识访问 Azure SQL](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql)
 
 * [如何配置托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
 
@@ -967,7 +967,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指南**：通过实现凭据扫描器来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
+**指导**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
 * [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 

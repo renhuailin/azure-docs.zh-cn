@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 228814db76ea14fa8b74c0c5d634e5afd6d54ac6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2726ba3b337dc785de58b06fb5e8372058f71879
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483039"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202090"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 模板中的虚拟机
 
@@ -282,7 +282,7 @@ ms.locfileid: "96483039"
 
 ## <a name="disks-and-images"></a>磁盘和映像
    
-在 Azure 中，vhd 文件可以表示[磁盘或映像](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 如果 vhd 文件中的操作系统专用于特定 VM，则该文件称为磁盘。 如果 vhd 文件中的操作系统经过通用化，用于创建多个 VM，则该文件称为映像。   
+在 Azure 中，vhd 文件可以表示[磁盘或映像](../managed-disks-overview.md)。 如果 vhd 文件中的操作系统专用于特定 VM，则该文件称为磁盘。 如果 vhd 文件中的操作系统经过通用化，用于创建多个 VM，则该文件称为映像。   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>从平台映像创建新虚拟机和新磁盘
 
@@ -453,5 +453,5 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 
 - 参考[创作 Azure Resource Manager 模板](../../azure-resource-manager/templates/template-syntax.md)创建自己的模板。
 - 参考[使用 Resource Manager 模板创建 Windows 虚拟机](ps-template.md)部署创建的模板。
-- 请参阅[使用 Azure PowerShell 模块创建并管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，了解如何管理创建的 VM。
+- 请参阅[使用 Azure PowerShell 模块创建并管理 Windows VM](tutorial-manage-vm.md)，了解如何管理创建的 VM。
 - 有关模板中资源类型的 JSON 语法和属性，请参阅 [Azure 资源管理器模板参考](/azure/templates/)。

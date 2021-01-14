@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 788c52490a97bb5d5aee0656bbdd09731d767d85
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8dd49125dc54403328fe53ae1aa0112ab2005501
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842594"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201121"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>适用于 Azure 公共 IP 的 Azure 安全基线
 
@@ -150,7 +150,7 @@ ms.locfileid: "94842594"
 
 **指南**：将特权访问工作站 (PAW) 与 Azure AD 多重身份验证 (MFA) 一起使用，以便登录和配置 Azure Sentinel 相关资源。
 
-- [特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [规划基于云的 Azure AD 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -402,7 +402,7 @@ ms.locfileid: "94842594"
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 

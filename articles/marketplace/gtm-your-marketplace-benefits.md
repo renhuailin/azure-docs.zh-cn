@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/13/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 263c038cf5003d950cf500ccc13cf562ac71db0c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8843bc803cdad07d8b66f9aeb87688c816158200
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184983"
+ms.locfileid: "98202262"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商业市场权益
 
@@ -65,7 +65,7 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
 
 下表总结了列表、试用和咨询服务的资格要求：
 
-![市场推广权益](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
+![市场推广权益](./media/marketplace-publishers-guide/go-to-market-gtm-eligibility-requirements.png)
 
 有关所有这些权益的详细说明，可查看 [Marketplace Rewards 计划系列](https://aka.ms/marketplacerewards)。
 

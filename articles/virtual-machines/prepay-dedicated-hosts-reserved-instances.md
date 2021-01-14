@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: d7af95b9fe2f6d31faa239985f8e8165fd968372
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: bd312f64bd04f4aff6623aa2b911d5e4bffe9f9a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978588"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201920"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>通过 Azure 专用主机预留节省成本
 
@@ -22,9 +22,9 @@ ms.locfileid: "91978588"
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>购买之前确定适当的专用主机 SKU
 
 
-在购买预订之前，应确定所需的专用主机。 为代表 VM 系列和类型的专用主机定义 SKU。 
+在购买预订之前，应确定所需的专用主机。 为代表 VM 系列和类型的专用主机定义 SKU。 
 
-首先，请使用 [Windows 虚拟机](./sizes.md) 或 [Linux](./sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 的支持大小来识别 VM 系列。
+首先，请使用 [Windows 虚拟机](./sizes.md) 或 [Linux](./sizes.md) 的支持大小来识别 VM 系列。
 
 接下来，请检查 Azure 专用主机上是否支持该选项。 [Azure 专用主机定价](https://aka.ms/ADHPricing) 页提供了专用主机 sku、其 CPU 信息和各种定价选项的完整列表， (包括) 的预订实例。
 
@@ -38,56 +38,56 @@ ms.locfileid: "91978588"
 
 预订折扣不适用于以下各项：
 
-- **云**  -预订不适用于德国或中国地区的购买。
+- **云** 预订不适用于德国或中国地区的购买。
 
-- **配额不足**  -作用域为单个订阅的保留必须在订阅中为新的保留实例提供 vCPU 配额。 例如，如果目标订阅的配额限制为10个 vcpu （对于 DSv3 系列），则不能购买保留支持此系列的专用主机。 保留配额检查包括已在订阅中部署的 Vm 和专用主机。 你可以 [创建配额增加请求](../azure-portal/supportability/resource-manager-core-quotas-request.md)   以解决此问题。
+- **配额不足** -作用于单个订阅的保留必须在订阅中为新的保留实例提供 vCPU 配额。 例如，如果目标订阅的配额限制为10个 vcpu （对于 DSv3 系列），则不能购买保留支持此系列的专用主机。 保留配额检查包括已在订阅中部署的 Vm 和专用主机。 你可以 [创建配额增加请求](../azure-portal/supportability/resource-manager-core-quotas-request.md) 以解决此问题。
 
-- **容量限制**  -在极少数情况下，Azure 会限制专用主机 Sku 子集的新保留购买，因为区域中的容量不足。
+- **容量限制** -在极少数情况下，Azure 会限制专用主机 sku 子集的新保留购买，因为区域中的容量不足。
 
 ## <a name="buy-a-reservation"></a>购买预留项
 
-可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中购买 Azure 专用主机实例的保留实例。
+可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中购买 Azure 专用主机实例的保留实例。
 
-提前支付预订费用， [按月](../cost-management-billing/reservations/prepare-buy-reservation.md)支付。 这些要求适用于购买保留的专用主机实例：
+通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 这些要求适用于购买保留的专用主机实例：
 
 - 对于至少一个 EA 订阅或具有即用即付费率的订阅，必须是所有者角色。
 
-- 对于 EA 订阅， **Add Reserved Instances**   必须在 [ea 门户](https://ea.azure.com/)中启用 "添加保留实例" 选项。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
+- 对于 EA 订阅，必须在 [ea 门户](https://ea.azure.com/)中启用 "**添加保留实例**" 选项。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 
 - 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理才能购买预留。
 
 若要购买实例，请执行以下操作：
 
-1. 登录  [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择 " **所有服务**   \>  **保留**"。
+2. 选择“所有服务”\>“预留”。
 
-3. 选择 " **添加**   " 购买新的预订，并单击 " **专用主机**"。
+3. 选择 " **添加** " 购买新的预订，并单击 " **专用主机**"。
 
 4. 输入必填字段。 运行与所选属性匹配的专用主机实例，以获得预订折扣。 获取折扣的专用主机实例的实际数目取决于所选的范围和数量。
 
-如果你有 EA 协议，则可以使用 " **添加更多" 选项**   快速添加其他实例。 选项不适用于其他订阅类型。
+如果你有 EA 协议，则可以使用 " **添加更多" 选项** 快速添加其他实例。 选项不适用于其他订阅类型。
 
 | **字段**           | **说明**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 订阅        | 用于支付预订费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须是企业协议 (产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 或 Microsoft 客户协议，或者使用即用即付费率 (产品/服务，产品/服务，) 。 从货币承诺余额中扣除费用（如果可用）或作为超额收取费用。 对于使用即用即付费率的订阅，将对订阅上的信用卡或发票付款方式收取费用。 |
 | 范围               | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择：                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| 区域              | 预订涵盖的 Azure 区域。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Region              | 预订涵盖的 Azure 区域。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | 专用主机大小 | 专用主机实例的大小。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | 术语                | 一年或三年。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | 数量            | 预订中购买的实例数。 数量是可以获得计费折扣的正在运行的专用主机实例数。                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-- **单个资源组作用域**  -仅将预订折扣应用于所选资源组中的匹配资源。
+- **单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。
 
-- **单个订阅范围**  -将预订折扣应用于所选订阅中的匹配资源。
+- **单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。
 
-- **共享作用域**  -将预订折扣应用于计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文为 "注册"。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
+- **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文为 "注册"。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
 
 ## <a name="usage-data-and-reservation-utilization"></a>使用情况数据和预订利用率
 
 对于获得预留折扣的使用量，使用数据的有效价格为零。 你可以看到哪个 VM 实例收到每个预订的预订折扣。
 
-有关如何在使用情况数据中显示预订折扣的详细信息，请参阅 [了解企业注册的 Azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)（   如果你是 EA 客户）。 如果有单独的订阅，请参阅 [了解即用即付订阅的 Azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
+有关如何在使用情况数据中显示预订折扣的详细信息，请参阅 [了解企业注册的 Azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) （如果你是 EA 客户）。 如果有单独的订阅，请参阅 [了解即用即付订阅的 Azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
 ## <a name="change-a-reservation-after-purchase"></a>在购买后更改保留
 
@@ -111,19 +111,19 @@ ms.locfileid: "91978588"
 
 - 持续时间
 
-不过，如果想要进行更改，则可以 *交换*   预订。
+不过，如果想要进行更改，则可以 *交换* 预订。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 
-可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预订的自助服务交换和退款](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
+可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如有任何疑问或需要帮助，请 [创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何管理预订，请参阅 [管理 Azure 预订](../cost-management-billing/reservations/manage-reserved-vm-instance.md)。
+若要了解如何管理预留，请参阅[管理 Azure 预留](../cost-management-billing/reservations/manage-reserved-vm-instance.md)。
 
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 

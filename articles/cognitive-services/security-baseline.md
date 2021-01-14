@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2f3849e052cfc73d3e6e0bafd8b87b088a08266d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 041de50fea6152aade706cc938a75bb70619ebf3
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019270"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202804"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>认知服务的 Azure 安全基线
 
@@ -221,7 +221,7 @@ ms.locfileid: "96019270"
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -281,7 +281,7 @@ ms.locfileid: "96019270"
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：启用命令行审核日志记录
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -362,7 +362,7 @@ ms.locfileid: "96019270"
 
 **指南**：使用配置了多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录并配置 Azure 资源。
 
-* [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -524,7 +524,7 @@ Microsoft 会管理 Azure 认知服务的底层基础结构，并实施严格的
 
 **指导**：数据标识、分类和丢失防护功能尚不适用于 Azure 认知服务。 同样地，标记包含敏感信息的实例；如果出于合规性目的需要，请实施第三方解决方案。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 * [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -590,7 +590,7 @@ Microsoft 会管理 Azure 认知服务的底层基础结构，并实施严格的
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -606,7 +606,7 @@ Microsoft 会管理 Azure 认知服务的底层基础结构，并实施严格的
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比较连续进行的漏洞扫描
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -694,7 +694,7 @@ Microsoft 会管理 Azure 认知服务的底层基础结构，并实施严格的
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -710,7 +710,7 @@ Microsoft 会管理 Azure 认知服务的底层基础结构，并实施严格的
 
 ### <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -750,7 +750,7 @@ Microsoft 会管理 Azure 认知服务的底层基础结构，并实施严格的
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的功能
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -822,7 +822,7 @@ Microsoft 会管理 Azure 认知服务的底层基础结构，并实施严格的
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -858,7 +858,7 @@ Microsoft 会管理 Azure 认知服务的底层基础结构，并实施严格的
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -1010,7 +1010,7 @@ Microsoft 反恶意软件已在支持 Azure 服务（例如 Azure 认知服务�
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 * [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 

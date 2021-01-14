@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 70e1e5d06ef025801322e15e589d26e31f116fc3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 82482b260233994672e603c16fe8cf919c92337f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535072"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201019"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>通过查询存储监视 Azure Database for MySQL 性能
 
@@ -36,12 +36,12 @@ Azure Database for MySQL 中的查询存储功能提供了一种方法来跟踪�
 1. 登录到 Azure 门户，选择你的 Azure Database for MySQL 服务器。
 1. 在菜单的“设置”部分中选择“服务器参数” 。
 1. 搜索 query_store_capture_mode 参数。
-1. 将值设置为 ALL，然后 **保存** 。
+1. 将值设置为 ALL，然后 **保存**。
 
 若要在查询存储中启用等待统计信息，请执行以下操作：
 
 1. 搜索 query_store_wait_sampling_capture_mode 参数。
-1. 将值设置为 ALL，然后 **保存** 。
+1. 将值设置为 ALL，然后 **保存**。
 
 留出最多 20 分钟以便第一批数据保存到 mysql 数据库中。
 
@@ -69,7 +69,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 ## <a name="finding-wait-queries"></a>查找等待查询
 
 > [!NOTE]
-> 不应该在工作负荷高峰时段启用等待统计信息，或者对于敏感的工作负荷无限期地启用等待统计信息。 <br>对于在 CPU 利用率较高的情况下运行的工作负荷，或在配置了较低 vCore 的服务器上运行的工作负荷，启用等待统计信息时请格外小心。 不应无限期地启用等待统计信息。 
+> 不应该在工作负荷高峰时段启用等待统计信息，或者对于敏感的工作负荷无限期地启用等待统计信息。 <br>对于在 CPU 利用率较高的情况下运行的工作负荷，或在配置了较低 vCore 的服务器上运行的工作负荷，启用等待统计信息时请格外小心。 不应无限期地启用等待统计信息。
 
 等待事件类型按相似性将不同的等待事件组合到存储桶中。 查询存储提供等待事件类型、特定等待事件名称和有争议的查询。 能将此等待信息与查询运行时统计信息相关联，意味着可更深入地了解有助于查询性能特征的因素。
 
@@ -79,7 +79,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 |---|---|
 |高锁定等待 | 检查受影响查询的查询文本，并确定目标实体。 在查询存储中查找修改同一实体的其他查询，这些查询经常执行和/或持续很长时间。 确定这些查询后，请考虑更改应用程序逻辑以提高并发性，或使用限制较少的隔离级别。 |
 |高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议。 |
-|高内存等待 | 在查询存储中查找消耗内存最多的查询。 这些查询可能会延迟受影响查询的进度。 检查门户中服务器的“性能建议”，以查看是否存在可优化这些查询的索引建议。|
+|高内存等待 | 在查询存储中查找消耗内存最多的查询。 这些查询可能会延迟受影响查询的进度。 检查门户中服务器的“性能建议”，以查看是否存在可优化这些查询的索引建议。 |
 
 ## <a name="configuration-options"></a>配置选项
 
@@ -102,13 +102,13 @@ SELECT * FROM mysql.query_store_wait_stats;
 | query_store_wait_sampling_frequency | 更改等待采样的频率，以秒为单位。 5 到 300 秒。 | 30 | 5-300 |
 
 > [!NOTE]
-> 目前， **query_store_capture_mode** 将取代此配置，这意味着， **query_store_capture_mode** 和 **query_store_wait_sampling_capture_mode** 都必须启用 ALL，才能正常查询等待统计信息。 如果关闭 **query_store_capture_mode** ，则等待统计信息也会关闭，因为等待统计信息利用已启用的 performance_schema，以及查询存储捕获的 query_text。
+> 目前，**query_store_capture_mode** 将取代此配置，这意味着，**query_store_capture_mode** 和 **query_store_wait_sampling_capture_mode** 都必须启用 ALL，才能正常查询等待统计信息。 如果关闭 **query_store_capture_mode**，则等待统计信息也会关闭，因为等待统计信息利用已启用的 performance_schema，以及查询存储捕获的 query_text。
 
 使用 [Azure 门户](howto-server-parameters.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 获取或设置参数的不同值。
 
 ## <a name="views-and-functions"></a>视图和函数
 
-使用以下视图和函数查看并管理查询存储。 具有[选择权限公共角色](howto-create-users.md#to-create-additional-admin-users-in-azure-database-for-mysql)的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 **mysql** 数据库中提供。
+使用以下视图和函数查看并管理查询存储。 具有[选择权限公共角色](howto-create-users.md#to-create-more-admin-users-in-azure-database-for-mysql)的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 **mysql** 数据库中提供。
 
 删除文本和常数后，通过查看查询的结构来规范化查询。 如果除文本值之外两个查询相同，则它们将具有相同的哈希值。
 
@@ -123,14 +123,14 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `timestamp_id` | timestamp| 是| 执行查询时的时间戳。 此值基于 query_store_interval 配置|
 | `query_digest_text`| longtext| 是| 删除所有文本后的规范化查询文本|
 | `query_sample_text` | longtext| 是| 首次出现的包含文本的实际查询|
-| `query_digest_truncated` | bit| YES| 查询文本是否已截断。 如果查询超过 1 KB，则值为 Yes|
+| `query_digest_truncated` | bit| 是| 查询文本是否已截断。 如果查询超过 1 KB，则值为 Yes|
 | `execution_count` | bigint(20)| 是| 针对此时间戳 ID/在配置的间隔时间段内执行该查询的次数|
 | `warning_count` | bigint(20)| 是| 此查询在该时间间隔内生成的警告数|
 | `error_count` | bigint(20)| 是| 此查询在该时间间隔内生成的错误数|
-| `sum_timer_wait` | Double| YES| 此查询在该时间间隔内的总执行时间|
-| `avg_timer_wait` | Double| YES| 此查询在该时间间隔内的平均执行时间|
-| `min_timer_wait` | Double| YES| 此查询的最小执行时间|
-| `max_timer_wait` | Double| YES| 最大执行时间|
+| `sum_timer_wait` | Double| 是| 此查询在该时间间隔内的总执行时间|
+| `avg_timer_wait` | Double| 是| 此查询在该时间间隔内的平均执行时间|
+| `min_timer_wait` | Double| 是| 此查询的最小执行时间|
+| `max_timer_wait` | Double| 是| 最大执行时间|
 | `sum_lock_time` | bigint(20)| 是| 在此时间范围内对此查询执行的所有锁花费的总时间|
 | `sum_rows_affected` | bigint(20)| 是| 受影响的行数|
 | `sum_rows_sent` | bigint(20)| 是| 发送到客户端的行数|

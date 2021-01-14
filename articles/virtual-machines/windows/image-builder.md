@@ -7,16 +7,16 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 62d80426dec6f5d63d8fa5d67d64d6aafb881110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca9f9ad0fb724884e865469ba118af4c7e6cea2f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320007"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202838"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>预览：使用 Azure 映像生成器创建 Windows VM
 
-本文介绍如何使用 Azure VM 映像生成器创建自定义的 Windows 映像。 本文中的示例使用 [定制](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) 程序自定义映像：
+本文介绍如何使用 Azure VM 映像生成器创建自定义的 Windows 映像。 本文中的示例使用 [定制](../linux/image-builder-json.md#properties-customize) 程序自定义映像：
 - PowerShell (ScriptUri) -下载并运行 [powershell 脚本](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)。
 - Windows 重新启动-重新启动 VM。
 - PowerShell (内联) -运行特定命令。 在此示例中，它使用在 VM 上创建一个目录 `mkdir c:\\buildActions` 。
@@ -237,7 +237,7 @@ dir c:\
 - buildActions
 - buildArtifacts
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 完成后，删除资源。
 
@@ -271,4 +271,4 @@ az group delete -n $imageResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解本文中使用的 json 文件的组件，请参阅 [图像生成器模板参考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要详细了解本文中使用的 json 文件的组件，请参阅 [图像生成器模板参考](../linux/image-builder-json.md)。

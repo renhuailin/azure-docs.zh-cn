@@ -1,5 +1,5 @@
 ---
-title: Azure 数据库迁移服务的 azure 安全基线
+title: 适用于 Azure 数据库迁移服务的 Azure 安全基线
 description: Azure 数据库迁移服务安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: dms
@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c36f09731bfb21473d8e8bc87c9cfd3316060ee6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: cee6f06588e340c03d6f2d7566d1af3627293118
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631136"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202481"
 ---
-# <a name="azure-security-baseline-for-azure-database-migration-service"></a>Azure 数据库迁移服务的 azure 安全基线
+# <a name="azure-security-baseline-for-azure-database-migration-service"></a>适用于 Azure 数据库迁移服务的 Azure 安全基线
 
-此安全基线将 [Azure 安全性基准2.0 版](../security/benchmarks/overview.md) 中的指南应用于 Azure 数据库迁移服务。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容由 Azure 安全基准定义的 **安全控制** 和适用于 Azure 数据库迁移服务的相关指南进行分组。 排除了不适用于 Azure 数据库迁移服务的 **控件**。
+此安全基线将 [Azure 安全基准 2.0 版](../security/benchmarks/overview.md)中的指南应用到 Azure 数据库迁移服务。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按“安全控制”分组，这些控制根据适用于 Azure 数据库迁移服务的 Azure 安全基准和相关指南定义。 排除了不适用于 Azure 数据库迁移服务的“控制”。
 
-若要查看 Azure 数据库迁移服务如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 数据库迁移服务安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+若要了解 Azure 数据库迁移服务如何完全映射到 Azure 安全基准，请参阅[完整的 Azure 数据库迁移服务安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="network-security"></a>网络安全
 
@@ -26,9 +26,9 @@ ms.locfileid: "97631136"
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1：实现内部流量的安全性
 
-**指南**：部署 Azure 数据库迁移服务资源时，必须创建或使用现有虚拟网络。 确保所有 Azure 虚拟网络都遵循与业务风险相匹配的企业分段原则。 任何可能会给组织带来更高风险的系统都应隔离在其自己的虚拟网络中，并通过网络安全组 (NSG) 和/或 Azure 防火墙进行充分保护。
+**指导**：部署 Azure 数据库迁移服务资源时，必须创建或使用现有虚拟网络。 确保所有 Azure 虚拟网络都遵循与业务风险相匹配的企业分段原则。 任何可能会给组织带来更高风险的系统都应隔离在其自己的虚拟网络中，并通过网络安全组 (NSG) 和/或 Azure 防火墙进行充分保护。
 
-默认情况下，Azure 数据库迁移服务使用 TLS 1.2。 如果要迁移的数据源需要向后兼容性，则可以在 Azure 数据库迁移服务的服务配置边栏选项卡中启用对 TLS 1.0 或 TLS 1.1 的支持。
+默认情况下，Azure 数据库迁移服务使用 TLS 1.2。 可以在 Azure 数据库迁移服务的服务配置边栏选项卡中启用对 TLS 1.0 或 TLS 1.1 的支持（如果这是要迁移的数据源实现后向兼容性所需的）。
 
 使用 Azure Sentinel 发现旧的不安全协议，如 SSL/TLSv1、SMBv1、LM/NTLMv1、wDigest、未签名的 LDAP 绑定和 Kerberos 中的弱密码。
 
@@ -38,7 +38,7 @@ ms.locfileid: "97631136"
 
 - [如何部署和配置 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md) 
 
-- [遵循在此处为 Azure 数据库迁移服务打开的端口的先决条件文档](pre-reqs.md#prerequisites-common-across-migration-scenarios)
+- [按此处提供的要为 Azure 数据库迁移服务打开的端口的先决条件文档操作](pre-reqs.md#prerequisites-common-across-migration-scenarios)
 
 - [Azure Sentinel 不安全协议工作簿](../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
 
@@ -48,7 +48,7 @@ ms.locfileid: "97631136"
 
 ### <a name="ns-2-connect-private-networks-together"></a>NS-2：将专用网络连接在一起
 
-**指南**：如果迁移用例涉及跨网络流量，则可以选择使用 azure ExpressRoute 或 azure 虚拟专用网络 (VPN) 在归置环境中的 azure 数据中心和本地基础结构之间创建专用连接。 ExpressRoute 连接并不通过公共 Internet，与典型的 Internet 连接相比，它们的可靠性更高、速度更快且延迟时间更短。 对于点到站点 VPN 和站点到站点 VPN，可使用这些 VPN 选项的任意组合以及 Azure ExpressRoute 将本地设备或网络连接到虚拟网络。 若要将 Azure 中的两个或更多虚拟网络连接在一起，请使用虚拟网络对等互连。 对等互连虚拟网络之间的网络流量是专用的，且保留在 Azure 主干网络上。
+**指导**：如果你的迁移用例涉及跨网络流量，则可选择在归置环境中使用 Azure ExpressRoute 或 Azure 虚拟专用网 (VPN) 在 Azure 数据中心与本地基础结构之间创建专用连接。 ExpressRoute 连接并不通过公共 Internet，与典型的 Internet 连接相比，它们的可靠性更高、速度更快且延迟时间更短。 对于点到站点 VPN 和站点到站点 VPN，可使用这些 VPN 选项的任意组合以及 Azure ExpressRoute 将本地设备或网络连接到虚拟网络。 若要将 Azure 中的两个或更多虚拟网络连接在一起，请使用虚拟网络对等互连。 对等互连虚拟网络之间的网络流量是专用的，且保留在 Azure 主干网络上。
 
 - [什么是 ExpressRoute 连接模型](../expressroute/expressroute-connectivity-models.md) 
 
@@ -62,9 +62,9 @@ ms.locfileid: "97631136"
 
 ### <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3：建立对 Azure 服务的专用网络访问
 
-**指南**：在适用情况下，使用 Azure 专用链接可以在迁移过程中启用对源和目标服务（如 Azure SQL Server 或其他所需服务）的专用访问。  在 Azure 专用链接尚不可用的情况下，请使用 Azure 虚拟网络服务终结点。  Azure 专用链接和服务终结点通过 Azure 主干网络上经过优化的路由，无需跨 internet 即可安全访问服务。  
+**指导**：在适用的情况下，使用 Azure 专用链接在迁移过程中启用对源和目标服务（例如 Azure SQL Server 或其他必需服务）的专用访问。  在 Azure 专用链接尚不可用的情况下，请使用 Azure 虚拟网络服务终结点。  借助 Azure 专用链接和服务终结点，可通过 Azure 主干网络上的优化路由对服务进行安全访问，不需要通过 Internet。  
 
-此外，在虚拟网络上预配 Azure 数据库迁移服务之前，请确保满足先决条件，其中包括需要允许的通信端口。 
+此外，在虚拟网络上预配 Azure 数据库迁移服务之前，请确保满足先决条件，包括需要启用的通信端口。 
 
 - [使用 Azure 数据库迁移服务的先决条件概述](pre-reqs.md)
 
@@ -84,7 +84,7 @@ ms.locfileid: "97631136"
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
-**指南**： Azure 数据库迁移服务使用 Azure Active Directory (Azure AD) 作为默认的标识和访问管理服务。 应将 Azure AD 标准化，以便在中管理组织的标识和访问管理： Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机 (Linux 和 Windows) 、Azure Key Vault、PaaS 和 SaaS 应用程序。
+**指导**：Azure 数据库迁移服务使用 Azure Active Directory (Azure AD) 作为默认标识和访问管理服务。 应将 Azure AD 标准化，以便在中管理组织的标识和访问管理： Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机 (Linux 和 Windows) 、Azure Key Vault、PaaS 和 SaaS 应用程序。
 
 你的组织的资源，例如 Azure 上的应用程序，或公司网络资源。
 
@@ -106,11 +106,11 @@ Azure AD 支持允许没有 Microsoft 帐户的用户使用其外部标识登录
 
 ### <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2：安全且自动地管理应用程序标识
 
-**指南**： Azure 数据库迁移服务要求用户在 Azure Active Directory (Azure AD) 中创建应用程序 ID (服务主体) 和身份验证密钥，以在 "联机" 模式下迁移 Azure SQL 数据库托管实例。 此应用程序 ID 要求订阅级别的 "参与者" 角色 (这是不建议的，因为由于过多的访问权限参与者角色，将授予) 或创建具有 Azure 数据库迁移服务所需特定权限的自定义角色。
+**指导**：Azure 数据库迁移服务要求用户在 Azure Active Directory (Azure AD) 中创建应用程序 ID（服务主体）和身份验证密钥，以便在“联机”模式下迁移到 Azure SQL 数据库托管实例。 此应用程序 ID 要求在订阅级别具有“参与者”角色（不建议这样做，因为这样会授予“参与者”角色过多的访问权限），或者要求创建自定义角色，这些角色具有的特定权限是 Azure 数据库迁移服务所要求的。
 
 建议在迁移完成后删除此应用程序 ID。
 
-- [如何在联机迁移模式下使用应用程序 ID](tutorial-sql-server-managed-instance-online.md)
+- [应用程序 ID 在联机迁移模式下如何使用](tutorial-sql-server-managed-instance-online.md)
 
 - [用于从 SQL Server 在线迁移到 Azure SQL 托管实例的自定义角色](resource-custom-roles-sql-db-managed-instance.md)
 
@@ -130,12 +130,12 @@ Azure AD 支持允许没有 Microsoft 帐户的用户使用其外部标识登录
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制
 
-**指南**： Azure 数据库迁移服务使用通过多重身份验证和无密码方法支持强身份验证控制的 Azure Active Directory。
-多重身份验证-启用 Azure AD 多重身份验证，并遵循 Azure 安全中心的标识和访问管理建议，以获取多重身份验证设置中的一些最佳实践。 多重身份验证可在所有用户上强制执行，根据登录条件和风险因素，选择用户或按用户级别。
+**指导**：Azure 数据库迁移服务使用 Azure Active Directory，后者支持通过多重身份验证进行的强身份验证控制，并且支持强无密码方法。
+多重身份验证 - 启用 Azure AD 多重身份验证并遵循 Azure 安全中心标识和访问管理建议，以在多重身份验证设置中推行一些最佳做法。 可对所有用户或选定用户强制执行多重身份验证，也可根据登录条件和风险因素在每个用户级别这样做。
 
 无密码身份验证 - 提供三个无密码身份验证选项：Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
 
-对于管理员和特权用户，请确保使用最强的身份验证级别，然后将相应的强身份验证策略推出给其他用户。
+对于管理员和特权用户，请确保使用最强级别的身份验证，然后将相应的强身份验证策略推广到其他用户。
 
 - [如何在 Azure 中启用多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md) 
 
@@ -151,7 +151,7 @@ Azure AD 支持允许没有 Microsoft 帐户的用户使用其外部标识登录
 
 ### <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：监视并提醒帐户异常
 
-**指南**： Azure 数据库迁移服务与提供以下数据源的 Azure Active Directory 集成：登录-登录报表提供有关托管应用程序和用户登录活动的使用情况的信息。
+**指导**：Azure 数据库迁移服务已与提供以下数据源的 Azure Active Directory 集成：登录 - 登录报告提供的信息涉及托管应用程序的使用情况和用户登录活动。
 
 审核日志 - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
 
@@ -159,7 +159,7 @@ Azure AD 支持允许没有 Microsoft 帐户的用户使用其外部标识登录
 
 已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-这些数据源可以与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
+这些数据源可与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
 
 Azure 安全中心还可针对某些可疑活动发出警报，例如，失败的身份验证尝试次数过多，使用了订阅中的已弃用帐户。
 
@@ -183,7 +183,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6：基于条件限制 Azure 资源访问
 
-**指南**： Azure 数据库迁移服务使用 Azure AD 进行身份验证，其中条件访问可用于基于用户定义的条件的更精细的访问控制，如来自特定 IP 范围的用户登录需要使用多重身份验证进行登录。 精细身份验证会话管理策略还可用于不同的用例。
+**指导**：Azure 数据库迁移服务使用 Azure AD 进行身份验证，其中的条件访问可用于根据用户定义的条件进行更细粒度的访问控制，例如，来自特定 IP 范围的用户登录名需要使用多重身份验证进行登录。 精细身份验证会话管理策略还可用于不同的用例。
 
 - [Azure 条件访问概述](../active-directory/conditional-access/overview.md) 
 
@@ -197,9 +197,9 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7：消除意外的凭据透露
 
-**指南**： Azure 数据库迁移服务允许客户部署/运行可能有标识/secretes 的代码或配置或持久保存的数据，建议实现凭据扫描器来识别代码中的凭据或配置或保存的数据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
+**指导**：Azure 数据库迁移服务允许客户部署/运行代码、配置或持久化数据（可能包含标识/机密）。建议你通过凭据扫描程序来识别代码、配置或持久化数据中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
-如果使用 GitHub，则可以使用本机密钥扫描功能标识代码中的凭据或其他形式的机密。
+如果使用 GitHub，你可以通过原生的机密扫描功能来识别代码中的凭据或其他形式的机密。
 
 - [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -215,9 +215,9 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3：定期审查和协调用户访问权限
 
-**指南**： Azure 数据库迁移服务要求用户在 Azure Active Directory (Azure AD) 中创建应用程序 ID (服务主体) 和身份验证密钥，以在 "联机" 模式下迁移 Azure SQL 数据库托管实例。 建议在迁移完成后删除此应用程序 ID。
+**指导**：Azure 数据库迁移服务要求用户在 Azure Active Directory (Azure AD) 中创建应用程序 ID（服务主体）和身份验证密钥，以便在“联机”模式下迁移到 Azure SQL 数据库托管实例。 建议在迁移完成后删除此应用程序 ID。
 
-- [如何在联机迁移模式下使用应用程序 ID](tutorial-sql-server-managed-instance-online.md)
+- [应用程序 ID 在联机迁移模式下如何使用](tutorial-sql-server-managed-instance-online.md)
 
 - [用于从 SQL Server 在线迁移到 Azure SQL 托管实例的自定义角色](resource-custom-roles-sql-db-managed-instance.md)
 
@@ -227,7 +227,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4：在 Azure AD 中设置紧急访问
 
-**指南**： Azure 数据库迁移服务外部，若要防止意外锁定 Azure AD 组织，请设置紧急访问帐户，以便在不能使用正常管理帐户的情况下进行访问。 紧急访问帐户通常拥有较高的权限，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。
+**指导**：为了防止被意外锁定在 Azure AD 组织外，常规做法是在 Azure 数据库迁移服务外部设置一个紧急访问帐户，以便在正常的管理帐户无法使用时进行访问。 紧急访问帐户通常拥有较高的权限，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。
 
 应确保妥善保管紧急访问帐户的凭据（例如密码、证书或智能卡），仅将其告诉只能在紧急情况下有权使用它们的个人。
 
@@ -239,7 +239,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-5-automate-entitlement-management"></a>PA-5：将权利管理自动化 
 
-**指南**： Azure 数据库迁移服务与 Azure Active Directory 集成，以管理其资源。 使用 Azure AD 的权利管理功能可自动执行访问请求工作流，包括访问权限分配、审查和过期。 还支持两阶段或多阶段审批。
+**指导**：Azure 数据库迁移服务已与 Azure Active Directory 集成来管理其资源。 使用 Azure AD 的权利管理功能可自动执行访问请求工作流，包括访问权限分配、审查和过期。 还支持两阶段或多阶段审批。
 
 - [什么是 Azure AD 访问评审](../active-directory/governance/access-reviews-overview.md) 
 
@@ -253,7 +253,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 **指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 使用高度安全的用户工作站和/或 Azure Bastion 执行管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可通过集中管理安全的工作站来强制实施安全配置，包括强身份验证、软件和硬件基线、受限的逻辑和网络访问。
 
-- [了解特权访问工作站](../active-directory/devices/concept-azure-managed-workstation.md) 
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/.md) 
 
 - [部署特权访问工作站](../active-directory/devices/howto-azure-managed-workstation.md)
 
@@ -263,7 +263,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循 Just Enough Administration（最小特权原则） 
 
-**指南**： Azure 数据库迁移服务集成了 azure 基于角色的访问控制 (RBAC) 来管理其资源。 使用 Azure RBAC，可通过角色分配来管理 Azure 资源访问。 可以将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 通过 Azure RBAC 分配给资源的特权应始终限制为角色所需的特权。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。
+**指导**：Azure 数据库迁移服务已与 Azure 基于角色的访问控制 (RBAC) 集成来管理其资源。 使用 Azure RBAC，可通过角色分配来管理 Azure 资源访问。 可以将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 通过 Azure RBAC 分配给资源的特权应始终限制为角色所需的特权。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。
 
 请使用内置角色来分配权限，仅在必要时创建自定义角色。
 
@@ -283,12 +283,12 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4：加密传输中的敏感信息
 
-**指南**： Azure 数据库迁移服务在默认情况下，使用 TLS 1.2 或更高版本将传输中的数据从客户配置的源加密到数据库迁移服务实例。 如果源服务器不支持 TLS 1.2 连接，则可以选择禁用它，尽管强烈建议不要这样做。 始终加密从数据库迁移服务实例到目标实例的数据传输。  
+**指导**：默认情况下，Azure 数据库迁移服务使用 TLS 1.2 或更高版本对从客户配置的源传输到数据库迁移服务实例的传输中数据进行加密。 如果源服务器不支持 TLS 1.2 连接，你可以选择禁用此功能，但强烈建议不要这样做。 从数据库迁移服务实例到目标实例的数据传输始终加密。  
 
-在 Azure 数据库迁移服务外部，你可以使用访问控制、传输中的数据应对 "带外" 攻击， (例如，流量捕获) 使用加密确保攻击者无法轻松读取或修改数据。 确保 HTTP 流量，连接到 Azure 资源的任何客户端都可以协商 TLS 1.2 或更高版本。
-对于远程管理，请使用适用于 Linux 的 SSH () 或适用于) Windows 的 RDP/TLS (，而不是使用未加密的协议。 应禁用已过时的 SSL/TLS/SSH 版本、协议和弱密码。
+在 Azure 数据库迁移服务外部，你可以使用访问控制、传输中的数据应对 "带外" 攻击， (例如，流量捕获) 使用加密确保攻击者无法轻松读取或修改数据。 对于 HTTP 流量，请确保连接到 Azure 资源的任何客户端都能协商 TLS v1.2 或更高版本。
+对于远程管理，请使用 SSH（适用于 Linux）或 RDP/TLS（适用于 Windows），而不是使用未加密的协议。 应当禁用已过时的 SSL/TLS/SSH 版本、协议以及弱密码。
 
-在底层基础结构中，Azure 默认为 Azure 数据中心之间的数据流量提供传输加密数据。
+在底层基础结构中，Azure 默认情况下为 Azure 数据中心之间的数据流量提供传输中数据加密。
 
 - [了解 Azure 传输中的加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
 
@@ -312,7 +312,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 安全读取者权限可以广泛应用于整个租户（根管理组），也可以限制到管理组或特定订阅。 
 
-若要查看工作负荷和服务，可能需要其他权限。 
+若要了解工作负载和服务，可能需要更多权限。 
 
 - [安全读取者角色概述](../role-based-access-control/built-in-roles.md#security-reader)
 
@@ -326,7 +326,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 **指导**：将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
-Azure 数据库迁移服务不允许在其资源上运行应用程序或软件安装。 
+Azure 数据库迁移服务不允许在其资源上运行应用程序或安装软件。 
 
 - [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md) 
 
@@ -378,7 +378,7 @@ Azure 数据库迁移服务不允许在其资源上运行应用程序或软件�
 
 已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-Azure 安全中心还可针对某些可疑活动发出警报，例如，失败的身份验证尝试次数过多，使用了订阅中的已弃用帐户。 除了基本的安全机制监视，Azure 安全中心的威胁防护模块还可从各个 Azure 计算资源（虚拟机、容器、应用服务）、数据资源（SQL 数据库和存储）和 Azure 服务层收集更深入的安全警报。 此功能可让你查看单个资源内的帐户异常情况。
+Azure 安全中心还可针对某些可疑活动发出警报，例如，失败的身份验证尝试次数过多，使用了订阅中的已弃用帐户。 除了基本的安全机制监视，Azure 安全中心的威胁防护模块还可从各个 Azure 计算资源（虚拟机、容器、应用服务）、数据资源（SQL 数据库和存储）和 Azure 服务层收集更深入的安全警报。 可通过此功能查看各个资源内的帐户异常情况。
 
 - [Azure Active Directory 中的“审核活动”报表](../active-directory/reports-monitoring/concept-audit-logs.md)
 
@@ -394,7 +394,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 **指南**：启用和收集网络安全组 (NSG) 资源日志、NSG 流日志、Azure 防火墙日志和 Web 应用程序防火墙 (WAF) 日志进行安全分析，以支持事件调查、威胁搜寻和安全警报生成。 可将流日志发送到 Azure Monitor Log Analytics 工作区，然后使用流量分析提供见解。
 
-Azure 数据库迁移服务不会生成或处理需要启用的 DNS 查询日志。
+Azure 数据库迁移服务不会生成或处理那些需要启用的 DNS 查询日志。
 
 - [如何启用网络安全组流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md) 
 
@@ -418,7 +418,7 @@ Azure 数据库迁移服务不会生成或处理需要启用的 DNS 查询日志
 
 确保正在将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
-此外，启用数据并将数据集成到 Azure Sentinel 或第三方 SIEM。
+另外，请启用 Azure Sentinel 或第三方 SIEM 并将数据载入其中。
 
 许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
@@ -462,7 +462,7 @@ Azure 数据库迁移服务不会生成或处理需要启用的 DNS 查询日志
 
 可以基于过去的事件经验、经验证的社区源以及旨在通过融合和关联各种信号源来生成和清理警报的工具构建高质量警报。 
 
-Azure 安全中心可跨多个 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
+Azure 安全中心可跨许多 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
 
 使用导出功能导出 Azure 安全中心警报和建议，以帮助识别 Azure 资源的风险。 手动导出或持续导出警报和建议。
 
@@ -508,7 +508,7 @@ Azure Sentinel 提供几乎针对任何日志源的广泛数据分析，并提�
 
 **指南**：根据警报严重性和资产敏感度，为分析人员提供上下文来确定应首要关注哪些事件。 
 
-Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心在查找或用于发出警报的分析中的置信度，以及导致警报的活动的恶意意图的置信度。
+Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心对调查结果或用于发出警报的分析的确信程度，以及对导致警报的活动背后存在恶意意图的确信程度。
 
 此外，使用标记来标记资源，并创建命名系统来对 Azure 资源进行标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 

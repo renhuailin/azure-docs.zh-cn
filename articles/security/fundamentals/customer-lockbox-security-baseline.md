@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6cf106f6d7aef4324eeeaf232a28cdd91a8a774b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c2595d75acfacf3d501b6efb83b383d9a56215a6
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843122"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203280"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>适用于 Microsoft Azure 的客户密码箱的 Azure 安全基线
 
@@ -22,7 +22,7 @@ ms.locfileid: "94843122"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 有关详细信息，请参阅[安全控制：网络安全](../benchmarks/security-control-network-security.md)。
 
@@ -238,7 +238,7 @@ ms.locfileid: "94843122"
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
-**指南**： Azure Active Directory 没有默认密码的概念。 其他需要密码的 Azure 资源会强制创建具有复杂性要求和最小密码长度的密码，该长度因服务而异。 你对可能使用默认密码的第三方应用程序和市场服务负责。
+**指导**：Azure Active Directory 没有默认密码的概念。 其他需要密码的 Azure 资源会强制创建具有复杂性要求和最小密码长度的密码，该长度因服务而异。 你对可能使用默认密码的第三方应用程序和市场服务负责。
 
 **Azure 安全中心监视**：不适用
 
@@ -285,7 +285,7 @@ ms.locfileid: "94843122"
 
 **指南**：将特权访问工作站 (PAW) 与 Azure AD 多重身份验证 (MFA) 一起使用，以便登录和配置客户密码箱请求。
 
-* [特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [规划基于云的 Azure AD 多重身份验证部署](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -293,7 +293,7 @@ ms.locfileid: "94843122"
 
 **责任**：客户
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录管理帐户的可疑活动并发出警报
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
 **指南**：在环境中发生可疑或不安全活动时，使用 AZURE ACTIVE DIRECTORY PRIVILEGED IDENTITY MANAGEMENT (PIM) 生成日志和警报。
 
@@ -339,7 +339,7 @@ ms.locfileid: "94843122"
 
 **责任**：客户
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视访问已停用帐户的企图
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视尝试访问已停用帐户的行为
 
 **指南**：使用 Azure Active Directory 作为中心身份验证和授权系统（如果适用）。 Azure Active Directory 通过对静态数据和传输中的数据使用强加密来保护数据。 还 Azure Active Directory salts、哈希和安全存储用户凭据。
 
@@ -853,7 +853,7 @@ ms.locfileid: "94843122"
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3b648168cd80920b8042f1edeacca893c21b98e2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0e4c749d875ab22f8cdf26adf6050e1fa0476b28
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498942"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202243"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Azure 安全中心安全基线
 
@@ -248,7 +248,7 @@ ms.locfileid: "96498942"
 
 **指导**：对于需要提升的权限的管理任务，请使用安全的 Azure 托管工作站（也称为特权访问工作站，简称 PAW）。
 
-- [了解安全的 Azure 托管工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [了解安全的 Azure 托管工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何启用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -392,7 +392,7 @@ ms.locfileid: "96498942"
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
-**指南**： Azure 安全中心使用配置的 Log Analytics 工作区来存储数据、警报和生成的建议。 为你为安全中心数据收集配置的工作区配置客户托管的密钥 (CMK) 。 CMK 使保存或发送到工作区的所有数据都可以使用由您创建并拥有的 Azure Key Vault 密钥进行加密。 
+**指导**：Azure 安全中心使用配置的 Log Analytics 工作区存储其生成的数据、警报和建议。 为已为安全中心数据集合配置的工作区配置客户管理的密钥 (CMK)。 CMK 支持使用由你创建和拥有的 Azure Key Vault 密钥对已保存或发送到工作区的所有数据进行加密。 
 
 - [Azure Monitor 客户管理的密钥](../azure-monitor/platform/customer-managed-keys.md)
 
@@ -560,7 +560,7 @@ ms.locfileid: "96498942"
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
-**指南**：使用 Azure DevOps 来安全地存储和管理代码，如自定义 azure 策略定义、azure 资源管理器模板和所需状态配置脚本。 若要访问在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。 
+**指导**：使用 Azure DevOps 安全地存储和管理代码，例如自定义 Azure Policy 定义、Azure 资源管理器模板和 Desired State Configuration 脚本。 若要访问在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。 
 
 - [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops) 
 
@@ -594,7 +594,7 @@ ms.locfileid: "96498942"
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全管理 Azure 机密
 
-**指南**： Azure 安全中心使用配置的 Log Analytics 工作区来存储数据、警报和生成的建议。 为你为安全中心数据收集配置的工作区配置客户托管的密钥 (CMK) 。 CMK 使保存或发送到工作区的所有数据都可以使用由您创建并拥有的 Azure Key Vault 密钥进行加密。 
+**指导**：Azure 安全中心使用配置的 Log Analytics 工作区存储其生成的数据、警报和建议。 为已为安全中心数据集合配置的工作区配置客户管理的密钥 (CMK)。 CMK 支持使用由你创建和拥有的 Azure Key Vault 密钥对已保存或发送到工作区的所有数据进行加密。 
 
 - [Azure Monitor 客户管理的密钥](../azure-monitor/platform/customer-managed-keys.md)
 
@@ -666,7 +666,7 @@ ms.locfileid: "96498942"
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：使用 Azure DevOps 安全地存储和管理你的代码，例如自定义 Azure Policy 定义和 Azure 资源管理器模板。 若要保护在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。 使用 Azure 基于角色的访问控制来保护客户管理的密钥。
+**指南**：使用 Azure DevOps 安全地存储和管理你的代码，例如自定义 Azure Policy 定义和 Azure 资源管理器模板。 若要保护在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。 使用 Azure 基于角色的访问控制保护客户管理的密钥。
 
 此外，在 Key Vault 中启用软删除和清除保护，以防止意外删除或恶意删除密钥。  如果将 Azure 存储用于存储 Azure 资源管理器模板备份，请启用软删除以在 blob 或 blob 快照被删除时保存和恢复数据。 
 

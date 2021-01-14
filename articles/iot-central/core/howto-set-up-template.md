@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 9e5e96d97494f4ba9aa28e84b046cd057fe8eba7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 236acc2ded3fcb651295e0342ab4e1e88174be46
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033402"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202957"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 设备类型
 
@@ -42,8 +42,16 @@ ms.locfileid: "97033402"
 
 - 在 IoT Central 中设计设备模板，然后 [在设备代码中实现其设备型号](concepts-telemetry-properties-commands.md)。
 - 从 [Azure IoT 认证设备目录](https://aka.ms/iotdevcat)导入设备模板。 按照 IoT Central 中的要求自定义设备模板。
+> [!NOTE]
+> IoT Central 要求在同一文件中包含所有引用接口的完整模型，则在从模型存储库导入模型时，使用关键字 "已扩展" 以获取完整版本。
+例如， https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json
+
 - 使用 [数字孪生定义语言 (DTDL) 版本 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)创建设备模型。 Visual Studio code 的扩展支持创作 DTDL 模型。 若要了解详细信息，请参阅[安装并使用 DTDL 创作工具](../../iot-pnp/howto-use-dtdl-authoring-tools.md)。 然后，将模型发布到公共模型存储库。 若要了解详细信息，请参阅 [设备型号存储库](../../iot-pnp/concepts-model-repository.md)。 实现模型中的设备代码，并将实际设备连接到 IoT Central 的应用程序。 IoT Central 在公共存储库中查找和导入设备模型，并生成设备模板。 然后，你可以将 IoT Central 应用程序所需的任何云属性、自定义和仪表板添加到设备模板中。
 - 使用 DTDL 创作设备型号。 基于模型实现设备代码。 手动将设备模型导入 IoT Central 应用程序，然后添加 IoT Central 应用程序所需的任何云属性、自定义项和仪表板。
+
+> [!TIP]
+> IoT Central 要求在同一文件中包含所有引用接口的完整模型。 从模型存储库中导入模型时，请使用 *扩展* 的关键字获取完整版本。
+> 例如， [https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json](https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json) 。
 
 你还可以使用 [REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) 或 [CLI](howto-manage-iot-central-from-cli.md)将设备模板添加到 IoT Central 应用程序。
 
@@ -119,7 +127,7 @@ ms.locfileid: "97033402"
 
 下表显示了遥测功能的配置设置：
 
-| 字段 | 描述 |
+| 字段 | 说明 |
 | ----- | ----------- |
 | 显示名称 | 仪表板和窗体上使用的遥测值的显示名称。 |
 | 名称 | 遥测消息中字段的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 此字段必须为字母数字。 |
@@ -131,7 +139,7 @@ ms.locfileid: "97033402"
 | 计价单位 | 遥测值的单位，例如 **mph**、 **%** 或 **&deg; C**。 |
 | 显示单位 | 仪表板和窗体上使用的显示单位。 |
 | 评论 | 有关遥测功能的任何注释。 |
-| 描述 | 遥测功能的说明。 |
+| 说明 | 遥测功能的说明。 |
 
 ### <a name="properties"></a>属性
 
@@ -139,7 +147,7 @@ ms.locfileid: "97033402"
 
 下表显示了属性功能的配置设置：
 
-| 字段 | 描述 |
+| 字段 | 说明 |
 | ----- | ----------- |
 | 显示名称 | 仪表板和窗体上使用的属性值的显示名称。 |
 | 名称 | 属性的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 此字段必须为字母数字。 |
@@ -152,7 +160,7 @@ ms.locfileid: "97033402"
 | 计价单位 | 属性值的单位，如 **mph**、 **%** 或 **&deg; C**。 |
 | 显示单位 | 仪表板和窗体上使用的显示单位。 |
 | 评论 | 有关属性功能的任何注释。 |
-| 描述 | 属性功能的说明。 |
+| 说明 | 属性功能的说明。 |
 
 ### <a name="commands"></a>命令
 
@@ -160,13 +168,13 @@ ms.locfileid: "97033402"
 
 下表显示了命令功能的配置设置：
 
-| 字段 | 描述 |
+| 字段 | 说明 |
 | ----- | ----------- |
 | 显示名称 | 仪表板和窗体上使用的命令的显示名称。 |
 | 名称 | 命令的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 此字段必须为字母数字。 |
 | 功能类型 | 命令。 |
 | 评论 | 有关命令功能的任何注释。 |
-| 描述 | 命令功能的说明。 |
+| 说明 | 命令功能的说明。 |
 | 请求 | 如果启用，则请求参数的定义包括：名称、显示名称、架构、单位和显示单位。 |
 | 响应 | 如果启用，则命令响应的定义包括：名称、显示名称、架构、单位和显示单位。 |
 
@@ -199,7 +207,7 @@ ms.locfileid: "97033402"
 
 下表显示了云属性的配置设置：
 
-| 字段 | 描述 |
+| 字段 | 说明 |
 | ----- | ----------- |
 | 显示名称 | 仪表板和窗体上使用的云属性值的显示名称。 |
 | 名称 | 云属性的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 |
@@ -208,7 +216,7 @@ ms.locfileid: "97033402"
 
 ## <a name="add-customizations"></a>添加自定义项
 
-需要修改导入的组件或向功能中添加特定于 IoT Central 的功能时，可使用自定义。 只能自定义不会中断组件兼容性的字段。 例如，你能够：
+需要修改导入的组件或向功能中添加特定于 IoT Central 的功能时，可使用自定义。 只能自定义不会中断组件兼容性的字段。 例如，可以：
 
 - 自定义功能的显示名称和单位。
 - 添加在图表上显示值时要使用的默认颜色。

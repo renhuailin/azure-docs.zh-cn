@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 100871ab2188aa638c4c9f2b058021706c7741bb
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: e6a42a39e55e379865332fce8a9aed8dfe78f57b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531898"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201325"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>适用于 Azure 云服务的 Azure 安全基线
 
@@ -345,7 +345,7 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 **指导**：对于需要提升的权限的管理任务，建议使用安全的 Azure 托管工作站（也称为特权访问工作站）。
 
-- [了解安全的 Azure 托管工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [了解安全的 Azure 托管工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何启用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -856,7 +856,7 @@ Azure 服务管理 API 允许以编程方式访问通过 Azure 门户提供的�
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 - [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 

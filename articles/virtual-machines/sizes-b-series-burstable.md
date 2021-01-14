@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 5ba5c6799db6a32bce64a730f4888f59080300dd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 14c8584699ddc981fc24cc29b78c187288c6fb57
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657169"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203382"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 
@@ -21,7 +21,7 @@ B 系列 VM 非常适合于并非持续需要 CPU 完全性能的工作负荷，
 
 B 系列有以下 VM 大小：
 
-[Azure 计算单元 (ACU)](./acu.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)：多种多样*<br>
+[Azure 计算单元 (ACU)](./acu.md)：多种多样*<br>
 [高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：不支持<br>
 [实时迁移](maintenance-and-updates.md)：支持<br>
@@ -112,7 +112,7 @@ B16 特征：
 
 **示例**：为小型时间和考勤数据库应用程序使用 B1ms 大小部署一个 VM。 此大小允许应用程序使用最多 20% 的 vCPU 作为基线，这是我每分钟可以使用或累积的 0.2 个积分。
 
-应用程序在员工工作日（在 7:00-9:00 AM 和 4:00 - 6:00PM 之间）的开始和结束时间处于繁忙状态。 在一天的其他 20 小时内，应用程序通常处于空闲状态，仅使用 10% 的 vCPU。 对于非高峰时段，我每分钟收到0.2 个信用额度，但每分钟仅消耗0.1 个信用额度，因此，我的 VM 将 bank 0.1 x 60 = 6 个小时。  对于非高峰的 20 小时，我将累积 120 个积分。  
+应用程序在员工工作日（在 7:00-9:00 AM 和 4:00 - 6:00PM 之间）的开始和结束时间处于繁忙状态。 在一天的其他 20 小时内，应用程序通常处于空闲状态，仅使用 10% 的 vCPU。 对于非高峰小时，我每分钟获得 0.2 个额度，但每分钟仅消耗 0.1 个额度，因此我的 VM 将每小时累积 0.1 x 60 = 6 个额度。  对于非高峰的 20 小时，我将累积 120 个积分。  
 
 在高峰小时内，应用程序的平均 vCPU 使用率为 60%，我仍每分钟获得 0.2 个积分，但我每分钟消耗 0.6 个积分，净成本为一分钟 0.4 个积分，或者每小时 0.4 x 60 = 24 个积分。 我每天有 4 小时的高峰使用期，因此我的高峰使用期成本为 4 x 24 = 96 个积分。
 
@@ -132,7 +132,7 @@ B16 特征：
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>问：重新部署或停止/启动后，剩余信用额度为什么设置为 0？
 
-**答** ：重新部署 VM 并且 vm 移到另一个节点时，累计的信用额度将丢失。 如果 VM 已停止/已启动，但仍保留在同一节点，VM 将保留累积的信用额度。 只要 VM 在节点上重新启动，它就会获取初始额度，对于 Standard_B8ms，该额度为 240。
+**答**：重新部署 VM 并将该 VM 移动到另一个节点后，累积的额度将丢失。 如果 VM 已停止/已启动，但仍保留在同一节点，VM 将保留累积的信用额度。 只要 VM 在节点上重新启动，它就会获取初始额度，对于 Standard_B8ms，该额度为 240。
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>问：如果在 B1ls 上部署不受支持的 OS 映像，会发生什么情况？
 

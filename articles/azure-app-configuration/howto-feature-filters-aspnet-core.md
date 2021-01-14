@@ -8,12 +8,12 @@ author: AlexandraKemperMS
 ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 9a6ae1581b3958495010b032980b0de2e267088b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 13857580d434736fbf0b12f52d39537ca864a497
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931871"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203112"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>使用功能筛选器启用条件功能标志
 
@@ -49,26 +49,26 @@ public void ConfigureServices(IServiceCollection services)
 
 1. 遵循[快速入门：将功能标志添加到 ASP.NET Core 应用](./quickstart-feature-flag-aspnet-core.md)中的说明，以创建具有功能标志的 Web 应用。
 
-1. 在 Azure 门户中，请切换到配置存储，并单击 " **功能管理器**"。
+1. 在 Azure 门户中，转到配置存储并单击“功能管理器”。
 
 1. 单击在快速入门中创建的 Beta 功能标志的上下文菜单。 单击 **“编辑”** 。
 
     > [!div class="mx-imgBorder"]
     > ![编辑 Beta 功能标志](./media/edit-beta-feature-flag.png)
 
-1. 在“编辑”屏幕上，选择“开”单选按钮（如果它尚未处于选中状态）。 然后单击“添加筛选器”按钮。 （“开”单选按钮的标签将更改为显示“条件”。） 
+1. 在 **编辑** 屏幕中，选择 " **启用功能标志** " 按钮（如果尚未选中）。 然后单击 " **使用功能筛选器** " 按钮，然后选择 " **自定义**"。 
 
 1. 在“键”字段中，输入“Microsoft.Percentage”。
 
     > [!div class="mx-imgBorder"]
     > ![添加功能筛选器](./media/feature-flag-add-filter.png)
 
-1. 单击功能筛选键旁边的上下文菜单。 单击“编辑参数”。
+1. 单击功能筛选键旁边的上下文菜单。 单击 " **编辑筛选器参数**"。
 
     > [!div class="mx-imgBorder"]
-    > ![编辑功能筛选器参数](./media/feature-flag-edit-filter-parameters.png)
+    > ![编辑功能筛选器参数](./media/feature-flags-edit-filter-parameters.png)
 
-1. 将鼠标悬停在“名称”标题上，使文本框显示在网格中。 输入“值”作为“名称”，并输入“50”作为“值”。 “值”字段指示要启用功能筛选器的请求的百分比。
+1. 输入“值”作为“名称”，并输入“50”作为“值”。 “值”字段指示要启用功能筛选器的请求的百分比。
 
     > [!div class="mx-imgBorder"]
     > ![设置功能筛选器参数](./media/feature-flag-set-filter-parameters.png)

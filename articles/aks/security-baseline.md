@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 29bcf2fdd3e20b28b1f2cb014137cfba37ccaf2e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 4cf623ed960fd2efe6fdf506751858796008cef4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931803"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202022"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>适用于 Azure Kubernetes 服务的 Azure 安全基线
 
@@ -22,7 +22,7 @@ Azure Kubernetes 服务的 Azure 安全基线包含有助于你改进部署安�
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
 [有关详细信息，请参阅 *Azure 安全基线：* 网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -304,7 +304,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 **指导**：将 Azure Kubernetes 服务 (AKS) 实例载入 Azure Monitor 并为群集配置诊断设置。 
 
-使用 Azure Monitor 的 Log Analytics 工作区查看日志并对日志数据执行查询。 Azure Monitor 日志在 Azure 门户中启用和管理，或通过 CLI 进行管理，并使用基于角色的访问控制 (Kubernetes RBAC) 、Azure RBAC 和非 RBAC 启用 AKS 群集。
+使用 Azure Monitor 的 Log Analytics 工作区查看日志并对日志数据执行查询。 Azure Monitor 日志通过 Azure 门户或 CLI 启用和管理，并与 Kubernetes 基于角色的访问控制 (Kubernetes RBAC)、Azure RBAC 和未启用 RBAC 的 AKS 群集一起使用。
 
 查看由 AKS 主组件（kube-apiserver 和 kube-controllermanager）生成的日志，以便对应用程序和服务进行故障排除。 启用数据并将其载入 Azure Sentinel 或第三方 SIEM，以进行集中的日志管理和监视。
 
@@ -404,7 +404,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
-**指导**：将 Azure Kubernetes 服务 (AKS) 群集的用户身份验证与 Azure Active Directory (Azure AD) 集成。 可以使用 Azure AD 身份验证令牌登录到 AKS 群集。 配置 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) ，用于对 Kubernetes 配置 (kubeconfig) 信息和权限、命名空间和群集资源的管理访问权限。 
+**指导**：将 Azure Kubernetes 服务 (AKS) 群集的用户身份验证与 Azure Active Directory (Azure AD) 集成。 可以使用 Azure AD 身份验证令牌登录到 AKS 群集。 配置 Kubernetes 基于角色的访问控制 (Kubernetes RBAC)，以便对 Kubernetes 配置 (kubeconfig) 信息和权限、命名空间和群集资源进行管理访问。 
 
 围绕专用管理帐户的使用创建策略和过程。 实现安全中心标识和访问管理建议。
 
@@ -445,7 +445,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
 **指导**：使用配置了多重身份验证 (MFA) 的特权访问工作站 (PAW) 登录到指定的 Azure Kubernetes 服务 (AKS) 群集和相关资源。
-- [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -585,7 +585,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 **指导**：使用 Azure 市场中有关网络外围的第三方解决方案，监视并阻止敏感信息的未授权传输，同时提醒信息安全专业人员。
 
-Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [AKS 功能所需端口、地址和域名的列表](limit-egress-traffic.md)
 
@@ -618,7 +618,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 **指导**：数据标识、分类和丢失防护功能尚不适用于 Azure 存储或计算资源。 如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
 Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 
 
-为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -643,7 +643,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
 **指导**：数据标识、分类和丢失防护功能尚不适用于 Azure 存储或计算资源。 如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
-Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -1297,7 +1297,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 - [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 

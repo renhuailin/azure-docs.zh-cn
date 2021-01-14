@@ -1,24 +1,24 @@
 ---
-title: Azure 堡垒的 azure 安全基线
-description: Azure 堡垒安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
+title: 适用于 Azure Bastion 的 Azure 安全基线
+description: Azure Bastion 安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7849027c704c8b8d7d36a33cd58c84566ce96da3
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 36542bc87163e2be800a8f6a4db31307ae7dedbb
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530946"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202515"
 ---
-# <a name="azure-security-baseline-for-azure-bastion"></a>Azure 堡垒的 azure 安全基线
+# <a name="azure-security-baseline-for-azure-bastion"></a>适用于 Azure Bastion 的 Azure 安全基线
 
-此安全基线将 [Azure 安全基准版本 2.0](../security/benchmarks/overview.md) 中的指南应用于 azure 堡垒。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按照 Azure 安全基准定义的 **安全控制措施** 进行分组，以及适用于 azure 堡垒的相关指南。 排除了不适用于 Azure 堡垒的 **控件**。
+此安全基线将 [Azure 安全基准版本 2.0](../security/benchmarks/overview.md) 中的指南应用于 Azure Bastion。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按“安全控制”分组，这些控制根据适用于 Azure Bastion 的 Azure 安全基准和相关指南定义。 排除了不适用于 Azure Bastion 的“控制”。
 
-若要查看 Azure 堡垒如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 堡垒安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+若要查看 Azure Bastion 如何完全映射到 Azure 安全基准，请参阅[完整的 Azure Bastion 安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="network-security"></a>网络安全
 
@@ -26,26 +26,26 @@ ms.locfileid: "96530946"
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1：实现内部流量的安全性
 
-**指南**：部署 Azure 堡垒资源时，必须创建或使用现有虚拟网络。 确保所有 Azure 虚拟网络都遵循与业务风险相匹配的企业分段原则。 任何可能会导致组织面临较高风险的系统都应在其自己的虚拟网络中隔离，并使用网络安全组 (NSG) 进行充分的保护。
+**指导**：部署 Azure Bastion 资源时，必须创建或使用现有虚拟网络。 确保所有 Azure 虚拟网络都遵循与业务风险相匹配的企业分段原则。 任何可能会给组织带来更高风险的系统都应隔离在其自己的虚拟网络中，并通过网络安全组 (NSG) 进行充分保护。
 
-需要打开以下端口才能使服务正常工作：
+Azure Bastion 服务需要打开以下端口才能正常运行：
 
 - 入口流量：
    - 来自公共 Internet 的入口流量： Azure Bastion 将创建一个公共 IP，需要在该公共 IP 上启用端口 443，用于入口流量。 不需要在 AzureBastionSubnet 上打开端口 3389/22。 
 
-   - 来自 Azure Bastion 控制平面的入口流量： 对于控制平面连接，请启用从 GatewayManager 服务标记进行的端口 443 入站。 这将启用控制平面，即网关管理器能够与 Azure 堡垒通信。
+   - 来自 Azure Bastion 控制平面的入口流量： 对于控制平面连接，请启用从 GatewayManager 服务标记进行的端口 443 入站。 这使控制平面（即网关管理器）能够与 Azure Bastion 通信。
 
 - 出口流量：
 
-   -  (Vm) 的目标虚拟机的出口流量： Azure 堡垒将通过专用 IP 访问目标 Vm。 NSG 需要允许端口 3389 和 22 的出口流量流向其他目标 VM 子网。
+   - 流向目标虚拟机 (VM) 的出口流量：Azure Bastion 将通过专用 IP 到达目标 VM。 NSG 需要允许端口 3389 和 22 的出口流量流向其他目标 VM 子网。
 
    - 流向 Azure 中其他公共终结点的出口流量： Azure Bastion 需要能够连接到 Azure 中的各种公共终结点，以便执行相应操作（例如，存储诊断日志和计量日志）。 因此，Azure Bastion 需要出站到 443，再到 AzureCloud 服务标记。
 
-与网关管理器和 Azure 服务标记的连接受到保护 (由 Azure 证书) 锁定。 外部实体（包括这些资源的使用者）无法在这些终结点上进行通信。 
+与网关管理器和 Azure 服务标记的连接受 Azure 证书的保护（锁定）。 外部实体（包括这些资源的使用者）无法在这些终结点上通信。 
 
 - [如何创建包含安全规则的网络安全组](../virtual-network/tutorial-filter-network-traffic.md)
 
-- [可在此处了解有关堡垒 NSG 要求的详细信息](bastion-nsg.md)
+- [可在此处详细了解 Bastion NSG 要求](bastion-nsg.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -53,9 +53,9 @@ ms.locfileid: "96530946"
 
 ### <a name="ns-2-connect-private-networks-together"></a>NS-2：将专用网络连接在一起
 
-**指南**： Azure 堡垒不公开可通过专用网络访问的任何终结点。 Azure 堡垒支持部署到对等互连网络，以集中你的堡垒部署并启用跨网络连接。
+**指导**：Azure Bastion 不公开可通过专用网络访问的任何终结点。 Azure Bastion 支持部署到对等互连网络，以集中你的 Bastion 部署并启用跨网络连接。
 
-- [Azure 堡垒和虚拟网络对等互连](vnet-peering.md)
+- [Azure Bastion 和虚拟网络对等互连](vnet-peering.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -67,18 +67,18 @@ ms.locfileid: "96530946"
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
-**指南**： azure 堡垒与 Azure Active Directory () Azure AD azure 的默认标识和访问管理服务集成。 用户可以使用 Azure AD 身份验证访问 Azure 门户来管理 Azure 堡垒服务， (创建、更新和删除堡垒资源) 。
+**指导**：Azure Bastion 与 Azure 的默认标识和访问管理服务 Azure Active Directory (Azure AD) 集成。 用户可以使用 Azure AD 身份验证来访问 Azure 门户，在门户中管理 Azure Bastion 服务（创建、更新和删除 Bastion 资源）。
 
-使用 Azure 堡垒连接到虚拟机的方式取决于 SSH 密钥或用户名/密码，当前不支持使用 Azure AD 凭据。
+使用 Azure Bastion 连接到虚拟机需要 SSH 密钥或用户名/密码，当前不支持使用 Azure AD 凭据。
 
-除 SSH 密钥或用户名/密码外，使用 Azure 堡垒连接到虚拟机时，用户将需要以下角色分配：
-- 目标虚拟机上的 "读取者" 角色
-- 具有目标虚拟机专用 IP 的 NIC 上的读者角色
+除 SSH 密钥或用户名/密码外，使用 Azure Bastion 连接到虚拟机时，用户还需要以下角色分配：
+- 目标虚拟机上的读者角色
+- NIC 上的读者角色（使用目标虚拟机的专用 IP）
 - Azure Bastion 资源上的读者角色
 
 有关详细信息，请参阅以下资源：
 
-- [使用 Azure 堡垒连接到 Linux 虚拟机](bastion-connect-vm-ssh.md)
+- [使用 Azure Bastion 连接到 Linux 虚拟机](bastion-connect-vm-ssh.md)
 
 - [使用 Azure Bastion 连接到 Windows 虚拟机](bastion-connect-vm-rdp.md)
 
@@ -90,13 +90,13 @@ ms.locfileid: "96530946"
 
 ### <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 单一登录 (SSO) 进行应用程序访问
 
-**指南**：对虚拟机资源进行身份验证时，Azure 堡垒不支持用于身份验证的 SSO，只支持 SSH 或用户名/密码。 但是，Azure 堡垒使用 Azure Active Directory (Azure AD) 来提供总体服务的标识和访问管理。 用户可以通过 Azure AD Connect 进行身份验证，以便 Azure AD 访问和管理其 Azure 堡垒资源，并体验通过其自己的同步企业标识实现无缝单一登录。 
+**指导**：向虚拟机资源进行身份验证时，Azure Bastion 不支持通过 SSO 进行身份验证，仅支持 SSH 或用户名/密码。 但是，Azure Bastion 使用 Azure Active Directory (Azure AD) 在整个服务中提供标识和访问管理。 用户可以通过向 Azure AD 进行身份验证来访问和管理其 Azure Bastion 资源，并通过 Azure AD Connect 使用自己的同步企业标识来体验无缝单一登录。 
 
 - [了解 Azure AD 的应用程序 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-- [Azure AD 连接](../active-directory/hybrid/whatis-azure-ad-connect.md)
+- [Azure AD Connect](../active-directory/hybrid/whatis-azure-ad-connect.md)
 
-- [使用 Azure 堡垒连接到 Linux 虚拟机](bastion-connect-vm-ssh.md)
+- [使用 Azure Bastion 连接到 Linux 虚拟机](bastion-connect-vm-ssh.md)
 
 - [使用 Azure Bastion 连接到 Windows 虚拟机](bastion-connect-vm-rdp.md)
 
@@ -106,7 +106,7 @@ ms.locfileid: "96530946"
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制
 
-**指南**： Azure 堡垒与 Azure AD 的 Azure Active Directory () 用于访问和管理服务。 为 Azure AD 租户配置 Azure 多重身份验证。 Azure AD 支持通过多重身份验证 (MFA) 和强无密码方法进行强身份验证控制。  
+**指导**：Azure Bastion 通过与 Azure Active Directory (Azure AD) 集成来实现服务的访问和管理。 为 Azure AD 租户配置 Azure 多重身份验证。 Azure AD 支持通过多重身份验证 (MFA) 和强无密码方法进行强身份验证控制。  
 - 多重身份验证：启用 Azure AD MFA，并遵循 Azure 安全中心标识和访问管理建议来设置你的 MFA。 可以基于登录条件和风险因素，对所有用户、特选用户或单个用户强制执行 MFA。 
 
 - 无密码身份验证：有三个无密码身份验证选项可用：Windows Hello for Business、Microsoft Authenticator 应用和本地身份验证方法（例如智能卡）。 
@@ -131,11 +131,11 @@ ms.locfileid: "96530946"
 
 ### <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6：基于条件限制 Azure 资源访问
 
-**指南**：只能通过 Azure 门户访问 Azure 堡垒服务，可以使用 Azure Active Directory (Azure AD) 条件访问来限制对 Azure 门户的访问。 基于用户定义的条件，使用 Azure AD 条件访问进行更精细的访问控制，例如，要求从特定 IP 范围登录的用户使用 MFA。
+**指导**：只能通过 Azure 门户访问 Azure Bastion 服务；可以使用 Azure Active Directory (Azure AD) 条件访问来限制对 Azure 门户的访问。 基于用户定义的条件，使用 Azure AD 条件访问进行更精细的访问控制，例如，要求从特定 IP 范围登录的用户使用 MFA。
 
-客户还可以在加入域的虚拟机级别上使用不同的基于角色的访问控制策略，进一步限制对虚拟机的访问。
+客户还可以在加入域的虚拟机级别使用其他基于角色的访问控制策略，进一步限制对虚拟机的访问。
 
-- [可在此处阅读有关 Azure AD 条件性访问的详细信息](../active-directory/conditional-access/overview.md)
+- [可在此处详细了解 Azure AD 条件访问](../active-directory/conditional-access/overview.md)
 
 - [Azure 条件访问概述](../active-directory/conditional-access/overview.md)
 
@@ -153,13 +153,13 @@ ms.locfileid: "96530946"
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制对关键业务型系统的管理访问权限
 
-**指南**： azure 堡垒使用 azure 基于角色的访问控制 (azure RBAC) 通过限制授予访问特定虚拟机的访问权限的帐户，隔离对关键系统的访问。 请确保遵循最低权限原则，使用户只有执行特定任务所需的权限。
+**指导**：Azure Bastion 使用 Azure 基于角色的访问控制 (Azure RBAC) 来隔离对业务关键型系统的访问，其原理是限制对某些帐户授予连接到某些虚拟机的访问权限。 请务必遵循最低权限原则，使用户仅具有完成特定任务所需的权限。
 
-确保你还将访问权限限制为对业务关键访问具有管理访问权限的管理、标识和安全系统，如 Active Directory 域控制器 (DCs) 、安全工具和系统管理工具，以及安装在业务关键系统上的代理。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
+确保还限制了对管理、标识和安全系统的访问，因为这些系统对业务关键型资产具有管理访问权限，这些系统包括 Active Directory 域控制器 (DC)、安全工具以及在业务关键型系统上安装了代理的系统管理软件等。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
 
 所有类型的访问控制都应符合企业分段策略，确保访问控制保持一致。
 
-- [使用 Azure 堡垒访问虚拟机所需的角色](bastion-faq.md#roles)
+- [使用 Azure Bastion 访问虚拟机所需的角色](bastion-faq.md#roles)
 
 - [Azure 组件和参考模型](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
 
@@ -173,11 +173,11 @@ ms.locfileid: "96530946"
 
 ### <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3：定期审查和协调用户访问权限
 
-**指南**： Azure 堡垒使用 Azure Active Directory (Azure AD) 帐户和 Azure RBAC 来管理其资源。 定期查看用户帐户和访问分配，以确保帐户及其访问有效。 可使用 Azure AD 访问评审来审查组成员身份、对企业应用程序的访问权限和角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可以使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流，以便于审核过程。
+**指导**：Azure Bastion 使用 Azure Active Directory (Azure AD) 帐户和 Azure RBAC 来管理其资源。 请定期审查用户帐户和访问权限分配，确保帐户及其访问权限有效。 可使用 Azure AD 访问评审来审查组成员身份、对企业应用程序的访问权限和角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流以便于执行评审。
 
-此外，还可以将 Azure Privileged Identity Management 配置为在创建过多的管理员帐户时发出警报，并识别过时或配置不正确的管理员帐户。
+此外，Azure Privileged Identity Management 还可配置为在创建过多管理员帐户时发出警报，并识别过时或配置不正确的管理员帐户。
 
-- [在 Privileged Identity Management (PIM 中创建 Azure 资源角色的访问评审) ](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
+- [在 Privileged Identity Management (PIM) 中创建对 Azure 资源角色的访问评审](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
 - [删除对委派的访问权限](../lighthouse/how-to/remove-delegation.md)
 
@@ -189,7 +189,7 @@ ms.locfileid: "96530946"
 
 ### <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4：在 Azure AD 中设置紧急访问
 
-**指南**： azure 堡垒与 Azure Active Directory 和 Azure RBAC 集成，以管理其资源。 为了防止意外退出 Azure AD 组织，请设置一个紧急访问帐户，以便在正常管理帐户无法使用时进行访问。 紧急访问帐户通常拥有较高的权限，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。
+**指导**：Azure Bastion 通过与 Azure Active Directory 和 Azure RBAC 集成来管理其资源。 为了防止意外退出 Azure AD 组织，请设置一个紧急访问帐户，以便在正常管理帐户无法使用时进行访问。 紧急访问帐户通常拥有较高的权限，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。
 
 应确保妥善保管紧急访问帐户的凭据（例如密码、证书或智能卡），仅将其告诉只能在紧急情况下有权使用它们的个人。
 
@@ -201,7 +201,7 @@ ms.locfileid: "96530946"
 
 ### <a name="pa-5-automate-entitlement-management"></a>PA-5：将权利管理自动化 
 
-**指南**： azure 堡垒与 Azure Active Directory (Azure AD) 和 Azure RBAC 集成，以管理其资源。 使用 Azure AD 的权利管理功能可自动执行访问请求工作流，包括访问权限分配、审查和过期。 还支持两阶段或多阶段审批。
+**指导**：Azure Bastion 通过与 Azure Active Directory (Azure AD) 和 Azure RBAC 集成来管理其资源。 使用 Azure AD 的权利管理功能可自动执行访问请求工作流，包括访问权限分配、审查和过期。 还支持两阶段或多阶段审批。
 
 - [什么是 Azure AD 访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -215,7 +215,7 @@ ms.locfileid: "96530946"
 
 **指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 根据你的要求，你可以使用高度安全的用户工作站在生产环境中执行 Azure 堡垒资源的管理管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可集中管理安全工作站，强制实施安全配置，包括强身份验证、软件和硬件基线，以及受限制的逻辑和网络访问。 
 
-- [了解特权访问工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [部署特权访问工作站](../active-directory/devices/howto-azure-managed-workstation.md)
 
@@ -225,16 +225,16 @@ ms.locfileid: "96530946"
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循 Just Enough Administration（最小特权原则） 
 
-**指南**： azure 堡垒集成了 azure 基于角色的访问控制 (RBAC) 来管理其资源。 使用 Azure RBAC，可通过角色分配来管理 Azure 资源访问。 可以将这些内置角色分配给用户、组、服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 通过 Azure RBAC 分配给资源的特权应始终限制为角色所需的特权。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。 使用内置角色分配权限，并在需要时仅创建自定义角色。
+**指导**：Azure Bastion 通过与 Azure 基于角色的访问控制 (RBAC) 集成来管理其资源。 使用 Azure RBAC，可通过角色分配来管理 Azure 资源访问。 可以将这些内置角色分配给用户、组、服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 通过 Azure RBAC 分配给资源的特权应始终限制为角色所需的特权。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。 请使用内置角色来分配权限，仅在必要时创建自定义角色。
 
-使用 Azure 堡垒连接到虚拟机时，用户将需要以下角色分配：
-- 目标虚拟机上的 "读取者" 角色
-- 具有目标虚拟机专用 IP 的 NIC 上的读者角色
+使用 Azure Bastion 连接到虚拟机时，用户需要以下角色分配：
+- 目标虚拟机上的读者角色
+- NIC 上的读者角色（使用目标虚拟机的专用 IP）
 - Azure Bastion 资源上的读者角色
 
 有关详细信息，请参阅以下资源：
 
-- [使用 Azure 堡垒连接到 Linux 虚拟机](bastion-connect-vm-ssh.md)
+- [使用 Azure Bastion 连接到 Linux 虚拟机](bastion-connect-vm-ssh.md)
 
 - [使用 Azure Bastion 连接到 Windows 虚拟机](bastion-connect-vm-rdp.md)
 
@@ -268,7 +268,7 @@ ms.locfileid: "96530946"
 
 ### <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2：确保安全团队有权访问资产清单和元数据
 
-**指南**：将标记应用于 Azure 堡垒资源、资源组和订阅，以逻辑方式将它们组织到分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。 确保安全团队有权访问 Azure 上持续更新的资产清单。 他们可以使用 Azure 资源关系图来查询和发现订阅中的所有资源，包括 Azure 服务、应用程序和网络资源。
+**指导**：向 Azure Bastion 资源、资源组和订阅应用标记，对它们进行符合逻辑的分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。 确保安全团队有权访问 Azure 上持续更新的资产清单。 他们可以使用 Azure Resource Graph 来查询和发现你订阅中的所有资源，包括 Azure 服务、应用程序和网络资源。
 
 - [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md)
 
@@ -282,7 +282,7 @@ ms.locfileid: "96530946"
 
 ### <a name="am-3-use-only-approved-azure-services"></a>AM-3：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略审核和限制用户可在你的环境中预配的服务，这包括能够允许或拒绝 Azure 堡垒资源的部署。 使用 Azure Resource Graph 查询和发现订阅中的资源。 你也可以使用 Azure Monitor 来创建规则，以便在检测到未经批准的服务时触发警报。
+**指导**：使用 Azure Policy 审核和限制用户可以在你的环境中预配的服务，这包括允许或拒绝 Azure Bastion 资源部署的权力。 使用 Azure Resource Graph 查询和发现订阅中的资源。 你也可以使用 Azure Monitor 来创建规则，以便在检测到未经批准的服务时触发警报。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -296,9 +296,9 @@ ms.locfileid: "96530946"
 
 ### <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4：确保资产生命周期管理的安全
 
-**指南**：删除已部署的 Azure 堡垒资源的访问权限，当不再需要这些资源来最大程度地减少攻击面时。 用户可以通过 Azure 门户、CLI 或 REST Api 来管理其 Azure 堡垒资源。 如果不再需要或将正在进行的远程会话确定为潜在的威胁，你还可以删除或强制断开正在进行的远程会话。
+**指导**：如果不再需要部署的 Azure Bastion 资源，请删除其访问权限，以尽量减少攻击面。 用户可以通过 Azure 门户、CLI 或 REST API 来管理其 Azure Bastion 资源。 如果不再需要正在进行的远程会话，或者将其确定为潜在威胁，可将其删除或强制断开。
 
-- [删除强制断开远程会话的连接](session-monitoring.md#view)
+- [删除或强制断开远程会话](session-monitoring.md#view)
 
 - [Azure 网络 CLI](/powershell/module/az.network/?preserve-view=true&view=azps-5.1.0#networking)
 
@@ -308,7 +308,7 @@ ms.locfileid: "96530946"
 
 ### <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5：限制用户与 Azure 资源管理器进行交互的能力
 
-**指南**： Azure 堡垒与 Azure Active Directory (Azure AD) 用于标识和身份验证。 可以通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，来限制用户与 Azure 资源管理器的交互能力。
+**指导**：Azure Bastion 通过与 Azure Active Directory (Azure AD) 集成来进行标识管理和身份验证。 你可以使用 Azure 条件访问来限制用户与 Azure 资源管理器交互的能力，操作方法：为“Microsoft Azure 管理”应用配置“阻止访问”。
 
 - [如何配置条件访问来阻止对 Azure 资源管理器的访问](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -322,9 +322,9 @@ ms.locfileid: "96530946"
 
 ### <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2：启用 Azure 标识和访问管理的威胁检测
 
-**指南**： Azure 堡垒与 Azure Active Directory (Azure AD) ，并通过 Azure 门户访问该服务。 默认情况下，对服务 (的管理操作（如创建、更新和删除) 通过 Azure 活动日志捕获。 用户还应启用 Azure 堡垒资源日志，例如 session BastionAuditLogs 来跟踪堡垒会话。
+**指导**：Azure Bastion 服务集成了 Azure Active Directory (Azure AD)，并且可通过 Azure 门户进行访问。 默认通过 Azure 活动日志捕获对服务的管理操作（如创建、更新和删除）。 用户还应启用 Azure Bastion 资源日志（例如会话 BastionAuditLogs）来跟踪 Bastion 会话。
 
-Azure AD 提供了以下用户日志，可以在报表中查看 Azure AD 报告或与 Azure Monitor、Azure Sentinel 或其他 SIEM/监视工具进行集成，以实现更复杂的监视和分析用例： 
+Azure AD 提供以下用户日志，可在 Azure AD 报表中进行查看，也可将这些日志与 Azure Monitor、Azure Sentinel 或其他 SIEM/监视工具集成，以用于更复杂的监视和分析用例： 
 -   登录 - 登录报告提供有关托管应用程序的使用情况和用户登录活动的信息。
 
 -   审核日志 - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
@@ -349,9 +349,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3：为 Azure 网络活动启用日志记录
 
-**指南**：启用 Azure 堡垒资源日志，使用这些诊断日志来查看哪些用户连接到哪些工作负载、在何处以及其他此类相关日志记录信息。 用户可以将这些日志配置为发送到存储帐户，以便长期保留和审核。
+**指导**：启用 Azure Bastion 资源日志后，你可以使用诊断来查看哪些用户在什么时间从哪里连接到哪些工作负载，以及其他此类相关的日志记录信息。 用户可以将这些日志配置为发送到存储帐户，以进行长期保留和审核。
 
-启用和收集网络安全组 (NSG) 资源日志和网络安全组上的 NSG 流日志，这些组将应用于已部署 Azure 堡垒资源的虚拟网络。 然后，这些日志可用于分析网络安全，并支持事件调查、威胁搜寻和安全警报生成。 可将流日志发送到 Azure Monitor Log Analytics 工作区，然后使用流量分析提供见解。
+在网络安全组上启用和收集网络安全组 (NSG) 资源日志和 NSG 流日志，这些组将应用于已部署 Azure Bastion 资源的虚拟网络。 然后，这些日志可用于分析网络安全，并支持事件调查、威胁搜寻和安全警报生成。 可将流日志发送到 Azure Monitor Log Analytics 工作区，然后使用流量分析提供见解。
 
 - [启用和使用 Azure 堡垒日志](diagnostic-logs.md)
 
@@ -369,7 +369,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4：为 Azure 资源启用日志记录
 
-**指南**：自动可用的活动日志包含 Azure 堡垒资源的所有写入操作 (PUT、POST、DELETE) ，但读取操作 (获取) 。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
+**指导**：自动可用的活动日志包含针对 Azure Bastion 服务资源的所有写入操作（PUT、POST、DELETE），但读取操作 (GET) 除外。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
 
@@ -383,13 +383,13 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ### <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5：集中管理和分析安全日志
 
-**指南**：集中记录存储和分析以启用关联。 对于每个日志源，请确保已分配数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
+**指导**：集中记录存储和分析来实现关联。 对于每个日志源，请确保已分配数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
 
 确保正在将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
-此外，启用数据并将数据集成到 Azure Sentinel 或第三方 SIEM。
+另外，请启用 Azure Sentinel 或第三方 SIEM 并将数据载入其中。
 
-许多组织选择使用 Azure Sentinel 作为 "热" 数据，这些数据经常使用，而 Azure 存储则用于不频繁使用的 "冷" 数据。
+许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
 
@@ -401,7 +401,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ### <a name="lt-6-configure-log-storage-retention"></a>LT-6：配置日志存储保留期
 
-**指南**：确保用于存储 Azure 堡垒日志的任何存储帐户或 Log Analytics 工作区都已根据组织的符合性法规设置了日志保持期。
+**指导**：确保用于存储 Azure Bastion 日志的所有存储帐户或 Log Analytics 工作区都根据组织的合规性规定设置了日志保留期。
 
 在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。
 
@@ -447,7 +447,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 可以基于过去的事件经验、经验证的社区源以及旨在通过融合和关联各种信号源来生成和清理警报的工具构建高质量警报。 
 
-Azure 安全中心可跨多个 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
+Azure 安全中心可跨许多 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
 
 使用导出功能导出 Azure 安全中心警报和建议，以帮助识别 Azure 资源的风险。 手动导出或持续导出警报和建议。
 
@@ -493,7 +493,7 @@ Azure Sentinel 提供几乎针对任何日志源的广泛数据分析，并提�
 
 **指南**：根据警报严重性和资产敏感度，为分析人员提供上下文来确定应首要关注哪些事件。 
 
-Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心在查找或用于发出警报的分析中的置信度，以及导致警报的活动的恶意意图的置信度。
+Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心对调查结果或用于发出警报的分析的确信程度，以及对导致警报的活动背后存在恶意意图的确信程度。
 
 此外，使用标记来标记资源，并创建命名系统来对 Azure 资源进行标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
@@ -525,7 +525,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="pv-1-establish-secure-configurations-for-azure-services"></a>PV-1：为所有 Azure 服务建立安全配置 
 
-**指南**：定义和实现 azure 堡垒与 azure 策略的标准安全配置。 使用 "Microsoft 网络" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制执行 Azure 堡垒的网络配置。 客户还可以利用 Azure 蓝图或 ARM 模板安全一致地部署堡垒资源，从而建立安全配置。
+**指导**：使用 Azure Policy 为 Azure Bastion 定义和实施标准安全配置。 在“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施 Azure Bastion 的网络配置。 客户还可以利用 Azure 蓝图或 ARM 模板来安全、一致地部署 Bastion 资源，从而建立安全配置。
 
 - [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
@@ -541,7 +541,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="pv-2-sustain-secure-configurations-for-azure-services"></a>PV-2：为所有 Azure 服务维护安全配置
 
-**指南**：定义和实现 azure 堡垒与 azure 策略的标准安全配置。 使用 "Microsoft 网络" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制实施堡垒资源的网络配置。
+**指导**：使用 Azure Policy 为 Azure Bastion 定义和实施标准安全配置。 在“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施 Bastion 资源的网络配置。
 
 - [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 

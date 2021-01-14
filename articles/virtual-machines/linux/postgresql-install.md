@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4052a9c8614a17c3b5cdd871ad78be8cc3258c5a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397090"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202583"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安装和配置 PostgreSQL
 PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库。 它包含许多企业级功能，比如完整的 ACID 合规性、可靠的事务处理和多版本并发控制。 它还支持 ANSI SQL 和 SQL/MED（包括 Oracle、MySQL、MongoDB 等等的外来数据包装器）等标准。 它具有高度的可扩展性，支持超过 12 种程序语言，并支持 GIN 和 GiST 索引、空间数据，以及面向 JSON 或基于键值的应用程序的多款类似于 NoSQL 的功能。
@@ -24,13 +24,13 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 ## <a name="install-postgresql"></a>安装 PostgreSQL
 > [!NOTE]
-> 你必须已经有一个运行 Linux 的 Azure 虚拟机，才能完成本教程。 在继续操作前，若要创建并设置 Linux VM，请参阅 [Azure Linux VM 教程](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> 你必须已经有一个运行 Linux 的 Azure 虚拟机，才能完成本教程。 在继续操作前，若要创建并设置 Linux VM，请参阅 [Azure Linux VM 教程](quick-create-cli.md)。
 > 
 > 
 
 在此示例中，使用端口 1999 作为 PostgreSQL 端口。  
 
-通过 PuTTY 连接到你创建的 Linux VM。 如果这是你首次使用 Azure Linux VM，请参阅[如何在 Azure 上将 SSH 用于 Linux](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，了解如何使用 PuTTY 连接到 Linux VM。
+通过 PuTTY 连接到你创建的 Linux VM。 如果这是你首次使用 Azure Linux VM，请参阅[如何在 Azure 上将 SSH 用于 Linux](mac-create-ssh-keys.md)，了解如何使用 PuTTY 连接到 Linux VM。
 
 1. 运行以下命令切换成根用户（管理员）：
 
@@ -164,7 +164,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
     你应该会收到以下输出：
 
-![在初始化数据库后显示输出的屏幕截图。](./media/postgresql-install/no1.png)
+![显示初始化数据库后的输出的屏幕截图。](./media/postgresql-install/no1.png)
 
 ## <a name="set-up-postgresql"></a>设置 PostgreSQL
 <!--    [postgres@ test ~]$ exit -->
@@ -185,7 +185,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
-![屏幕截图，显示安装前缀和数据目录。](./media/postgresql-install/no2.png)
+![显示安装前缀和数据目录的屏幕截图。](./media/postgresql-install/no2.png)
 
 更改文件以使其成为可执行文件：
 
@@ -207,7 +207,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 你应该会看到以下输出：
 
-![显示 PostgreSQL 终结点的屏幕截图。](./media/postgresql-install/no3.png)
+![显示 PostgreSQL 的终结点已打开的屏幕截图。](./media/postgresql-install/no3.png)
 
 ## <a name="connect-to-the-postgres-database"></a>连接到 Postgres 数据库
 再次切换成 postgres 用户：
@@ -261,7 +261,7 @@ INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Cassero
 
 你应该会看到以下输出：
 
-![屏幕截图，显示您添加的行信息。](./media/postgresql-install/no6.png)
+![显示你添加的行信息的屏幕截图。](./media/postgresql-install/no6.png)
 
 你也可以向表中多添加几个人。 下面是几个选项，你也可以自行创建：
 
@@ -282,7 +282,7 @@ select * from potluck;
 
 输出为：
 
-![显示用于显示表的命令输出的屏幕截图。](./media/postgresql-install/no7.png)
+![显示用于显示表的命令的输出的屏幕截图。](./media/postgresql-install/no7.png)
 
 ### <a name="delete-data-in-a-table"></a>删除表中的数据
 使用以下命令来删除表中的数据：

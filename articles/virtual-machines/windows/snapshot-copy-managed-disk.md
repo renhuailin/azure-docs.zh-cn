@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 255b34fc683628846d2776d9db7a0fbe8fe32a45
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014306"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202073"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>使用门户或 PowerShell 创建快照
 
@@ -82,4 +82,4 @@ ms.locfileid: "96014306"
 
 ## <a name="next-steps"></a>后续步骤
 
-通过从快照创建托管磁盘，然后将新的托管磁盘附加为 OS 磁盘，来从快照创建虚拟机。 有关详细信息，请参阅[使用 PowerShell 从快照创建 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json) 中的示例。
+通过从快照创建托管磁盘，然后将新的托管磁盘附加为 OS 磁盘，来从快照创建虚拟机。 有关详细信息，请参阅[使用 PowerShell 从快照创建 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md) 中的示例。

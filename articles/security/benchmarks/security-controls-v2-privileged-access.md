@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f6c990b3ce5edaab4d2ce6600c0291272058e092
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 7721100d902948364c9e4b1373f1fa805c680a50
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369287"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202209"
 ---
 # <a name="security-control-v2-privileged-access"></a>安全控制 V2：特权访问
 
@@ -157,7 +157,7 @@ ms.locfileid: "97369287"
 
 受保护的独立工作站对于机密角色（如管理员、开发人员和关键服务操作员）的安全性至关重要。 使用高度安全的用户工作站和/或 Azure Bastion 执行管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可集中管理安全工作站，强制实施安全配置，包括强身份验证、软件和硬件基线，以及受限制的逻辑和网络访问。 
 
-- [了解特权访问工作站](../../active-directory/devices/concept-azure-managed-workstation.md)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [部署特权访问工作站](../../active-directory/devices/howto-azure-managed-workstation.md)
 

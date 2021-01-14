@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/05/2021
 ms.author: abhishgu
 ms.reviewer: abhishgu
-ms.openlocfilehash: 24714b185b0f666770b306a7e80a97a3f8f868a3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0038219ee8c1721ff5ab2be76231d33d2bd9064d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052617"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203059"
 ---
 # <a name="migrate-data-from-postgresql-to-azure-cosmos-db-cassandra-api-account-using-apache-kafka"></a>使用 Apache Kafka 将数据从 PostgreSQL 迁移到 Azure Cosmos DB Cassandra API 帐户
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -107,7 +107,7 @@ bin/kafka-server-start.sh config/server.properties
 
 ### <a name="setup-connectors"></a>设置连接器
 
-安装 Debezium PostgreSQL 和 DataStax Apache Kafka 连接器。 下载 Debezium PostgreSQL 连接器插件存档。 例如，若要下载) 版本1.3.0 的 (连接器，请使用 [此链接](https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.3.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz)。 从此 [链接](https://downloads.datastax.com/#akc)下载 DataStax Apache Kafka 连接器。
+安装 Debezium PostgreSQL 和 DataStax Apache Kafka 连接器。 下载 Debezium PostgreSQL 连接器插件存档。 例如，若要下载) 版本1.3.0 的 (连接器，请使用 [此链接](https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.3.0.Final/debezium-connector-postgres-1.3.0.Final-plugin.tar.gz)。 从此 [链接](https://downloads.datastax.com/#akc)下载 DataStax Apache Kafka 连接器。
 
 解压缩连接器存档并将 JAR 文件复制到 [Kafka Connect 插件。路径](https://kafka.apache.org/documentation/#connectconfigs)。
 

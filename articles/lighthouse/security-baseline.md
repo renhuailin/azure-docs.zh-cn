@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a6a1b41dd4ede055ba81c069c2164bb36da99876
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 93d444d781edbcfe4ab171460668aeb328070bff
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602302"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201631"
 ---
 # <a name="azure-security-baseline-for-azure-lighthouse"></a>Azure Lighthouse 的 azure 安全基线
 
@@ -27,7 +27,7 @@ ms.locfileid: "96602302"
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
 **指南**： Azure Lighthouse 使用 Azure Active Directory (Azure AD) 作为默认的标识和访问管理服务。 标准化 Azure AD 来管理组织的标识和访问管理：
-- Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机 (Linux 和 Windows) 、Azure Key Vault、PaaS 和 SaaS 应用程序。
+- Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机（Linux 和 Windows）、Azure Key Vault、PaaS 和 SaaS 应用程序。
 - 你的组织的资源，例如 Azure 上的应用程序，或公司网络资源。
 
 使用 Azure Lighthouse，管理租户中的指定用户拥有 Azure 内置角色，使其能够访问客户租户中的委托订阅和/或资源组。 当前支持除所有者或具有 DataActions 权限的任何内置角色以外的所有内置角色。 仅在向托管标识分配角色时才支持使用用户访问管理员角色。 不支持自定义角色和经典订阅管理员角色。
@@ -84,7 +84,7 @@ ms.locfileid: "96602302"
 
 -   已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-这些数据源可以与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
+这些数据源可与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
 
 使用 Azure Lighthouse 的服务提供商可以将 Azure AD 日志转发到 Azure Sentinel，并跨租户查看/设置警报，以监视和发出有关帐户异常的警报。
 
@@ -138,9 +138,9 @@ ms.locfileid: "96602302"
 
 **指南**： azure Lighthouse 使用 azure RBAC) 的 azure 基于角色的访问控制 (azure RBAC 通过限制授予了对订阅和管理组的特权访问权限的帐户，隔离对关键系统的访问。
 
-请确保遵循最低权限原则，使用户只有执行特定任务所需的权限。
+请务必遵循最低权限原则，使用户仅具有完成特定任务所需的权限。
 
-确保你还将访问权限限制为对业务关键访问具有管理访问权限的管理、标识和安全系统，如 Active Directory 域控制器 (DCs) 、安全工具和系统管理工具，以及安装在业务关键系统上的代理。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
+确保还限制了对管理、标识和安全系统的访问，因为这些系统对业务关键型资产具有管理访问权限，这些系统包括 Active Directory 域控制器 (DC)、安全工具以及在业务关键型系统上安装了代理的系统管理软件等。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
 
 所有类型的访问控制都应符合企业分段策略，确保访问控制保持一致。
 
@@ -158,15 +158,15 @@ ms.locfileid: "96602302"
 
 ### <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3：定期审查和协调用户访问权限
 
-**指南**： Azure Lighthouse 使用 Azure Active Directory (Azure AD) 帐户来管理其资源、定期查看用户帐户和访问分配，以确保帐户及其访问有效。 可使用 Azure AD 访问评审来审查组成员身份、对企业应用程序的访问权限和角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可以使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流，以便于审核过程。
+**指南**： Azure Lighthouse 使用 Azure Active Directory (Azure AD) 帐户来管理其资源、定期查看用户帐户和访问分配，以确保帐户及其访问有效。 可使用 Azure AD 访问评审来审查组成员身份、对企业应用程序的访问权限和角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流以便于执行评审。
 
 客户可以在 Azure 门户中通过 Azure Lighthouse 查看向管理租户中的用户授予的访问级别。 他们可以随时删除此访问权限。
 
-此外，还可以将 Azure Privileged Identity Management 配置为在创建过多的管理员帐户时发出警报，并识别过时或配置不正确的管理员帐户。
+此外，Azure Privileged Identity Management 还可配置为在创建过多管理员帐户时发出警报，并识别过时或配置不正确的管理员帐户。
 
-注意：某些 Azure 服务支持不通过 Azure AD 管理的本地用户和角色。 需要单独管理这些用户。
+注意：某些 Azure 服务支持不通过 Azure AD 管理的本地用户和角色。 你需要单独管理这些用户。
 
-- [在 Privileged Identity Management (PIM 中创建 Azure 资源角色的访问评审) ](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
+- [在 Privileged Identity Management (PIM) 中创建对 Azure 资源角色的访问评审](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
 - [删除对委派的访问权限](how-to/remove-delegation.md)
 
@@ -206,7 +206,7 @@ ms.locfileid: "96602302"
 
 **指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 根据你的要求，你可以使用高度安全的用户工作站和/或 Azure 堡垒在生产环境中使用 Azure Lighthouse 执行管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可集中管理安全工作站，强制实施安全配置，包括强身份验证、软件和硬件基线，以及受限制的逻辑和网络访问。 
 
-- [了解特权访问工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [部署特权访问工作站](../active-directory/devices/howto-azure-managed-workstation.md)
 
@@ -216,7 +216,7 @@ ms.locfileid: "96602302"
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循 Just Enough Administration（最小特权原则） 
 
-**指南**： azure Lighthouse 与 azure 基于角色的访问控制集成 (RBAC) ，用于管理其资源。 使用 Azure RBAC，可通过角色分配来管理 Azure 资源访问。 可以将这些内置角色分配给用户、组、服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 通过 Azure RBAC 分配给资源的特权应始终限制为角色所需的特权。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。 使用内置角色分配权限，并在需要时仅创建自定义角色。
+**指南**： azure Lighthouse 与 azure 基于角色的访问控制集成 (RBAC) ，用于管理其资源。 使用 Azure RBAC，可通过角色分配来管理 Azure 资源访问。 可以将这些内置角色分配给用户、组、服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 通过 Azure RBAC 分配给资源的特权应始终限制为角色所需的特权。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。 请使用内置角色来分配权限，仅在必要时创建自定义角色。
 
 Azure Lighthouse 允许使用 Azure 内置角色访问委派的客户资源。 在大多数情况下，你需要将这些角色分配给一个组或服务主体，而不是分配给多个单独的用户帐户。 这样，便可添加或删除单位用户的访问权限，而无需在访问要求更改时更新和重新发布计划。
 
@@ -272,7 +272,7 @@ Azure Lighthouse 允许使用 Azure 内置角色访问委派的客户资源。 �
 
 ### <a name="am-3-use-only-approved-azure-services"></a>AM-3：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略审核和限制用户可在你的环境中预配的服务。 使用 Azure Resource Graph 查询和发现订阅中的资源。 你也可以使用 Azure Monitor 来创建规则，以便在检测到未经批准的服务时触发警报。
+**指导**：请使用 Azure Policy 来审核和限制用户可以在你的环境中预配哪些服务。 使用 Azure Resource Graph 查询和发现订阅中的资源。 你也可以使用 Azure Monitor 来创建规则，以便在检测到未经批准的服务时触发警报。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -296,7 +296,7 @@ Azure Lighthouse 允许使用 Azure 内置角色访问委派的客户资源。 �
 
 ### <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5：限制用户与 Azure 资源管理器进行交互的能力
 
-**指南**： Azure Lighthouse 与 Azure Active Directory (Azure AD 的) 用于标识和身份验证。 可以通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，来限制用户与 Azure 资源管理器的交互能力。
+**指南**： Azure Lighthouse 与 Azure Active Directory (Azure AD 的) 用于标识和身份验证。 你可以使用 Azure 条件访问来限制用户与 Azure 资源管理器交互的能力，操作方法：为“Microsoft Azure 管理”应用配置“阻止访问”。
 
 - [如何配置条件访问来阻止对 Azure 资源管理器的访问](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -310,7 +310,7 @@ Azure Lighthouse 允许使用 Azure 内置角色访问委派的客户资源。 �
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：为 Azure 资源启用威胁检测
 
-**指南**：通过 Azure Lighthouse，可以监视客户的 Azure 资源，以了解潜在的威胁和异常情况。 专注于获得高质量的警报，以减少对分析人员进行排序的误报。 警报可能源自日志数据、代理或其他数据。
+**指南**：通过 Azure Lighthouse，可以监视客户的 Azure 资源，以了解潜在的威胁和异常情况。 专注于获取高质量警报以减少误报，便于分析人员进行分类整理。 警报可能源自日志数据、代理或其他数据。
 
 使用 Azure 安全中心内置的威胁检测功能，该功能基于监视 Azure 服务遥测和分析服务日志。 数据是使用 Log Analytics 代理收集的，该代理从系统中读取各种与安全相关的配置和事件日志，然后将数据复制到工作区进行分析。 
 
@@ -374,17 +374,17 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 ### <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5：集中管理和分析安全日志
 
-**指南**：集中记录存储和分析以启用关联。 对于每个日志源，请确保已分配数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
+**指导**：集中记录存储和分析来实现关联。 对于每个日志源，请确保已分配数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
 
 确保将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
-此外，启用数据并将数据集成到 Azure Sentinel 或第三方 SIEM。
+另外，请启用 Azure Sentinel 或第三方 SIEM 并将数据载入其中。
 
 使用 Azure Lighthouse，你可以通过可缩放的方式在你管理的客户租户中使用 Azure Monitor 日志。 直接在客户租户中创建 Log Analytics 工作区，以便客户数据保留在其租户中，而不是导出到你的租户中。 这也允许对 Log Analytics 支持的任何资源或服务进行集中监视，从而更灵活地了解所监视的数据类型。
 
 已委派 Azure Lighthouse 订阅的客户可以查看 Azure 活动日志数据，查看所执行的所有操作。 这使客户能够全面了解服务提供商正在执行的操作，以及由用户自己 Azure Active Directory 中的用户 (Azure AD) 租户中的用户完成的操作。
 
-许多组织选择使用 Azure Sentinel 作为 "热" 数据，这些数据经常使用，而 Azure 存储则用于不频繁使用的 "冷" 数据。
+许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
 
@@ -402,7 +402,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 **指南**： Azure Lighthouse 当前不会生成任何与安全相关的日志。 要查看服务提供商活动的客户可以根据符合性、法规和业务要求配置日志保留。 
 
-在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 使用 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期和存档存储。
+在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期存储和存档存储。
 
 - [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -448,7 +448,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 可以基于过去的事件经验、经验证的社区源以及旨在通过融合和关联各种信号源来生成和清理警报的工具构建高质量警报。 
 
-Azure 安全中心可跨多个 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
+Azure 安全中心可跨许多 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
 
 使用导出功能导出 Azure 安全中心警报和建议，以帮助识别 Azure 资源的风险。 手动导出或持续导出警报和建议。
 

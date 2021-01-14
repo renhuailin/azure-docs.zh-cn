@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: a7117d30eb1774753f21e82ad5f812a7309d8386
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 15714405c683889c0f783359011a0f0f5f9f3f43
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483090"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201784"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 创建和管理 Windows VM
 
-[Azure 虚拟机](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Python 创建、管理和删除 VM 资源。 学习如何：
+[Azure 虚拟机](overview.md) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Python 创建、管理和删除 VM 资源。 学习如何：
 
 > [!div class="checklist"]
 > * 创建 Visual Studio 项目
@@ -342,7 +342,7 @@ compute_client = ComputeManagementClient(
     ```
 
     > [!NOTE]
-    > 本教程创建运行 Windows Server 操作系统版本的虚拟机。 若要详细了解如何选择其他映像，请参阅[使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+    > 本教程创建运行 Windows Server 操作系统版本的虚拟机。 若要详细了解如何选择其他映像，请参阅[使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像](../linux/cli-ps-findimage.md)。
     > 
     > 
 
@@ -492,7 +492,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="add-a-data-disk-to-the-vm"></a>将数据磁盘添加到 VM
 
-虚拟机可以有一个或多个存储为 VHD 的[数据磁盘](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+虚拟机可以有一个或多个存储为 VHD 的[数据磁盘](../managed-disks-overview.md)。
 
 1. 若要将数据磁盘添加到虚拟机，请在 .py 文件中将此函数添加在变量之后： 
 

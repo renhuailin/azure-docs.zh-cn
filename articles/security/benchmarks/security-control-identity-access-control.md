@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8d2901e71a3c638e25899803ff9b24e20fdf1969
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 08ba75b5160acb20cb5e2d172203ae48b546f17d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412657"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202226"
 ---
 # <a name="security-control-identity-and-access-control"></a>安全控制：标识和访问控制
 
@@ -80,7 +80,7 @@ Azure AD 没有默认密码。 其他需要密码的 Azure 资源会强制创建
 
 使用配置了 MFA 的 PAW（特权访问工作站）来登录并配置 Azure 资源。
 
-- [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中启用 MFA](../../active-directory/authentication/howto-mfa-getstarted.md)
 

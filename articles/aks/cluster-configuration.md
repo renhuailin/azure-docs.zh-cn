@@ -3,15 +3,15 @@ title: Azure Kubernetes 服务 (AKS) 中的群集配置
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置群集
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
+ms.date: 01/13/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: eacca50e00dfe8625d86362c444544e2fd5d5511
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606906"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201104"
 ---
 # <a name="configure-an-aks-cluster"></a>配置 AKS 群集
 
@@ -21,10 +21,52 @@ ms.locfileid: "97606906"
 
 AKS 现在支持 Ubuntu 18.04 作为节点操作系统 (操作系统) 在 kubernetes 版本高于1.18.8 中的群集。 对于小于 1.18. x 的版本，AKS Ubuntu 16.04 仍是默认的基本映像。 从 kubernetes v 1.18. x 开始，默认基是 AKS Ubuntu 18.04。
 
-> [!IMPORTANT]
-> 在 Kubernetes v 1.18 或更高版本上创建的节点池 `AKS Ubuntu 18.04` 。 在支持的 Kubernetes 版本上，节点池小于1.18 的接收 `AKS Ubuntu 16.04` 节点映像，但在将 `AKS Ubuntu 18.04` 节点池 Kubernetes 版本更新为 v 1.18 或更高版本后，将更新为。
-> 
-> 强烈建议在1.18 或更高版本上使用群集之前，在 AKS Ubuntu 18.04 节点池上测试工作负荷。 了解如何 [测试 Ubuntu 18.04 节点池](#use-aks-ubuntu-1804-existing-clusters-preview)。
+### <a name="use-aks-ubuntu-1804-generally-available-on-new-clusters"></a>使用新群集上的 AKS Ubuntu 18.04 公开发布
+
+在 Kubernetes v 1.18 或更高版本上创建的群集默认为 `AKS Ubuntu 18.04` 节点映像。 在支持的 Kubernetes 版本低于1.18 的节点池仍将 `AKS Ubuntu 16.04` 作为节点映像接收，但在 `AKS Ubuntu 18.04` 群集或节点池的 Kubernetes 版本更新为或更高版本后，将更新为。
+
+强烈建议在1.18 或更高版本上使用群集之前，在 AKS Ubuntu 18.04 节点池上测试工作负荷。 了解如何 [测试 Ubuntu 18.04 节点池](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)。
+
+若要使用 `AKS Ubuntu 18.04` 节点映像创建群集，只需创建一个运行 kubernetes v 1.18 或更高版本的群集，如下所示
+
+```azurecli
+az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>使用现有群集上的 AKS Ubuntu 18.04
+
+在 Kubernetes v 1.18 或更高版本上创建的群集默认为 `AKS Ubuntu 18.04` 节点映像。 在支持的 Kubernetes 版本低于1.18 的节点池仍将 `AKS Ubuntu 16.04` 作为节点映像接收，但在 `AKS Ubuntu 18.04` 群集或节点池的 Kubernetes 版本更新为或更高版本后，将更新为。
+
+强烈建议在1.18 或更高版本上使用群集之前，在 AKS Ubuntu 18.04 节点池上测试工作负荷。 了解如何 [测试 Ubuntu 18.04 节点池](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)。
+
+如果群集或节点池已准备好进行 `AKS Ubuntu 18.04` 节点映像，则只需将其升级到 v 1.18 或更高版本即可。
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+如果只想升级一个节点池：
+
+```azurecli
+az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="test-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>现有群集上的测试 AKS Ubuntu 18.04 已公开发布
+
+在 Kubernetes v 1.18 或更高版本上创建的节点池 `AKS Ubuntu 18.04` 。 在支持的 Kubernetes 版本低于1.18 的节点池仍将 `AKS Ubuntu 16.04` 作为节点映像接收，但在 `AKS Ubuntu 18.04` 节点池的 Kubernetes 版本更新为 v 1.18 或更高版本后，将更新为。
+
+强烈建议先在 AKS Ubuntu 18.04 节点池上测试工作负荷，然后再升级生产节点池。
+
+若要使用节点映像创建节点池 `AKS Ubuntu 18.04` ，只需创建一个运行 kubernetes （1.18 或更高版本）的节点池。 群集控制平面至少需要为中的 # 1.18 或更高版本，但其他节点池可能会保留在较旧的 kubernetes 版本上。
+下面我们首先升级控制平面，然后使用带有 v 1.18 的新节点池来接收新的节点映像操作系统版本。
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14 --control-plane-only
+
+az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>在新群集上使用 AKS Ubuntu 18.04 (预览) 
 
 以下部分将介绍在尚未使用 kubernetes 版本 1.18. x 或更高版本的群集上使用和测试 AKS Ubuntu 18.04 的情况，或在此功能正式发布之前，通过使用 OS 配置预览进行创建。
 
@@ -57,8 +99,6 @@ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/U
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
-
-### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>在新群集上使用 AKS Ubuntu 18.04 (预览) 
 
 配置群集，以便在创建群集时使用 Ubuntu 18.04。 使用 `--aks-custom-headers` 标记将 Ubuntu 18.04 设置为默认 OS。
 

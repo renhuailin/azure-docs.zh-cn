@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 836cf4600e353da61673ec8ee5df8f30fb4b9562
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 524a0cf5d5b48300879f8a8ad650971490e8c062
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629844"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202396"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模 (Citus) 
 
@@ -194,7 +194,7 @@ ms.locfileid: "97629844"
 
 **指南**：将特权访问工作站 (PAW) 与为登录和配置 Azure 资源而配置的多重身份验证 (MFA) 结合使用。
 
-- [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -248,9 +248,9 @@ ms.locfileid: "97629844"
 
 **指南**：查看和协调有权访问本地数据库的两个用户的访问权限，并通过 Azure Active Directory 来管理 PostgreSQL 资源。
 
-对于具有管理数据库 Azure 资源的访问权限的用户，请查看 Azure Active Directory (AD) 日志，以帮助发现陈旧的帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问可用于访问超大规模 (Citus) 和角色分配的企业应用程序。 应定期查看用户访问权限，如每90天，确保只有正确的用户才能继续访问。
+对于具有管理数据库 Azure 资源的访问权限的用户，请查看 Azure Active Directory (AD) 日志，以帮助发现陈旧的帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问可用于访问超大规模 (Citus) 和角色分配的企业应用程序。 应定期（例如每 90 天一次）评审用户访问权限，以确保正确用户持续拥有访问权限。
 
-- [查看 PostgreSQL 用户和分配的角色](https://www.postgresql.org/docs/current/database-roles.html)
+- [评审 PostgreSQL 用户和分配的角色](https://www.postgresql.org/docs/current/database-roles.html)
 
 - [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
@@ -315,7 +315,7 @@ ms.locfileid: "97629844"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 结合使用管理角色和防火墙规则，隔离和限制对 Azure Database for PostgreSQL 实例的网络访问。
+**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 结合使用管理角色和防火墙规则，隔离和限制对 Azure Database for PostgreSQL 实例的网络访问。
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
@@ -355,7 +355,7 @@ ms.locfileid: "97629844"
 
 - [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
-- [如何使用 SQL for Azure Database for PostgreSQL 配置用户访问权限](./howto-hyperscale-create-users.md)
+- [Azure 如何使用 SQL 为 Azure Database for PostgreSQL 配置用户访问权限](./howto-hyperscale-create-users.md)
 
 
 **Azure 安全中心监视**：是
@@ -393,7 +393,7 @@ ms.locfileid: "97629844"
 
 **指南**：当前不可用;Azure 安全中心尚不支持 Azure Database for PostgreSQL-超大规模 (Citus) 的漏洞评估。
 
-- [Azure 安全中心 Azure PaaS 服务的功能范围](../security-center/features-paas.md)
+- [Azure 安全中心内 Azure PaaS 服务的功能覆盖范围](../security-center/features-paas.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -494,7 +494,7 @@ ms.locfileid: "97629844"
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
 
-**指导**：使用 Azure 条件访问，通过为“Microsoft Azure 管理”应用配置“阻止访问”，限制用户与 Azure 资源管理器进行交互的能力。 这可以防止在高安全环境中创建和更改资源，如超大规模的实例 (Citus) 包含敏感信息。
+指南：使用 Azure 条件访问可通过为“Microsoft Azure 管理”应用配置“阻止访问”，来限制用户与 Azure 资源管理器进行交互的能力。 这可以防止在高安全环境中创建和更改资源，如超大规模的实例 (Citus) 包含敏感信息。
 
 - [如何配置条件访问以阻止访问 Azure 资源管理器](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -605,7 +605,7 @@ ms.locfileid: "97629844"
 
 有关详细信息，请参阅[安全控制：恶意软件防护](../security/benchmarks/security-control-malware-defense.md)。
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预扫描要上传到非计算 Azure 资源的文件
 
 **指南**：在支持 Azure 服务的底层主机上启用了 Microsoft 反恶意软件，例如，超大规模 (Citus) --但是，它不会在客户内容上运行。
 
@@ -670,7 +670,7 @@ ms.locfileid: "97629844"
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。 
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。 
 
 - [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md) 
 

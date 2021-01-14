@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3fcbc386c60611493912fdfb17226490549cdc53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52cc67b1160ae8c9a0120a0a10d0131b167d5776
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89396805"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202668"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure 容器注册表的 Azure 安全基线
 
@@ -135,7 +135,7 @@ Azure 市场： https://azuremarketplace.microsoft.com/marketplace/?term=Firewal
 
 **指导**：使用 Azure Policy 为与 Azure 容器注册表关联的网络资源定义和实施标准安全配置。 在“Microsoft.ContainerRegistry”和“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施你的容器注册表的网络配置。 
 
-可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure RBAC 控件和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅，并通过版本控制来微调控制措施和管理。
+你可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure RBAC 控制措施和策略），来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅，并通过版本控制来微调控制措施和管理。
 
 使用 Azure Policy 审核 Azure 容器注册表的合规性： https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
@@ -148,7 +148,7 @@ Azure 市场： https://azuremarketplace.microsoft.com/marketplace/?term=Firewal
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
-**指南**：客户可以使用 azure 蓝图通过在单个蓝图定义中打包关键环境项目（例如 azure 资源管理器模板、azure RBAC 控件和策略）来简化大规模的 azure 部署。 轻松将蓝图应用到新的订阅，并通过版本控制来微调控制措施和管理。
+**指导**：客户可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure RBAC 控制措施和策略），来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅，并通过版本控制来微调控制措施和管理。
 
 如何创建 Azure 蓝图： https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -220,7 +220,7 @@ Azure 市场： https://azuremarketplace.microsoft.com/marketplace/?term=Firewal
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
-**指南**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
+**指导**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
 如何为 Log Analytics 工作区设置日志保留参数： https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
@@ -366,7 +366,7 @@ Azure 容器注册表管理员帐户： https://docs.microsoft.com/azure/contain
 
 **指导**：使用配置了 MFA 的 PAW（特权访问工作站）来登录并配置 Azure 资源。
 
-了解特权访问工作站： https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+了解特权访问工作站： https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
 如何在 Azure 中启用 MFA： https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -556,9 +556,9 @@ https://docs.microsoft.com/azure/firewall/threat-intel
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对 azure 容器注册表中的数据和资源的访问。 
+**指导**：使用 Azure 基于角色的访问控制 (Azure RBAC) 来控制对 Azure 容器注册表中的数据和资源的访问。 
 
-如何配置 Azure RBAC：  https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+如何配置 Azure RBAC： https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
 Azure 容器注册表角色和权限： https://docs.microsoft.com/azure/container-registry/container-registry-roles
 
@@ -1015,7 +1015,7 @@ Azure Repos 文档：  https://docs.microsoft.com/azure/devops/repos/index?view=
 
 **指导**：使用适用于 Azure 云服务和虚拟机的 Microsoft Antimalware 来持续监视和保护资源。 对于 Linux，请使用第三方反恶意软件解决方案。
 
-如何为云服务和虚拟机配置 Microsoft 反恶意软件：  https://docs.microsoft.com/azure/security/fundamentals/antimalware
+如何为云服务和虚拟机配置 Microsoft Antimalware： https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 
 **Azure 安全中心监视**：不适用
@@ -1024,7 +1024,7 @@ Azure Repos 文档：  https://docs.microsoft.com/azure/devops/repos/index?view=
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
-**指南**：在支持 azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如，Azure 容器注册表) ，但是不会在客户内容上运行。
+**指导**：在支持 Azure 服务（例如 Azure 容器注册表）的底层主机上已启用 Microsoft Antimalware，但是，该软件不会针对客户内容运行。
 
 预扫描任何上传到非计算 Azure 资源（例如应用服务、Data Lake Storage、Blob 存储等）的文件。
 
@@ -1035,7 +1035,7 @@ Azure Repos 文档：  https://docs.microsoft.com/azure/devops/repos/index?view=
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
 
-**指导**：不适用。 基准适用于计算资源。 Microsoft 处理底层平台的反恶意软件。
+**指导**：不适用。 基准适用于计算资源。 Microsoft 会处理基础平台的反恶意软件。
 
 
 **Azure 安全中心监视**：不适用
@@ -1109,7 +1109,7 @@ Azure 容器注册表中的异地复制： https://docs.microsoft.com/azure/cont
 
 关于建立自己的安全事件响应流程的指南： https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-Microsoft 安全响应中心事件解析：  https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Microsoft 安全响应中心的事件剖析： https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
 客户还可以利用 NIST 的“计算机安全事件处理指南”来制定他们自己的事件响应计划： https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
@@ -1184,7 +1184,7 @@ Microsoft 安全响应中心事件解析：  https://msrc-blog.microsoft.com/201
 
 **指南**：遵循 Microsoft 订婚规则确保你的渗透测试不违反 Microsoft 政策：  https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-可在以下位置找到有关 Microsoft 管理的云基础结构、服务和应用程序的 Microsoft 策略、红组和实时站点渗透测试的详细信息：  https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+对于 Microsoft 红队演练策略和执行，以及针对 Microsoft 管理的云基础结构、服务和应用程序的实时站点渗透测试，可在此处找到详细信息： https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 
 

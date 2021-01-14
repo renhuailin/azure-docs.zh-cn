@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: cb1e2337d5a5214c4e748e5b0f45f223b8bcb445
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f75ad90a562a39f940e1006a2e4d9123eff2b47c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967986"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202175"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Log Analytics 虚拟机扩展
 
@@ -44,6 +44,7 @@ Azure Monitor 日志提供跨云和本地资产的监视、警报和警报修正
 
 | Log Analytics Linux VM 扩展版本 | Log Analytics 代理捆绑包版本 | 
 |--------------------------------|--------------------------|
+| 1.13.33 | [1.13.33](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.33-0) |
 | 1.13.27 | [1.13.27](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.27-0) |
 | 1.13.15 | [1.13.9-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.9-0) |
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
@@ -119,7 +120,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 ## <a name="template-deployment"></a>模板部署
 
 >[!NOTE]
->[诊断 vm 扩展](./diagnostics-linux.md)中也附带了 Log Analytics VM 扩展的某些组件。 由于此体系结构，如果在同一 ARM 模板中实例化两个扩展，则可能会发生冲突。 若要避免这些安装时冲突，请使用[ `dependsOn` 指令](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)确保按顺序安装扩展。 可以按任意顺序安装这些扩展。
+>[诊断 VM 扩展](./diagnostics-linux.md)中还随附了 Log Analytics VM 扩展的某些组件。 由于这种体系结构，如果在同一 ARM 模板中对两个扩展进行实例化，则可能会发生冲突。 为避免这些安装时冲突，请使用 [`dependsOn` 指令](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)，确保按顺序安装扩展。 可按任一顺序安装扩展。
 
 可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要进行部署后配置（例如，载入 Azure Monitor 日志）的一个或多个虚拟机时，模板是理想选择。 包含 Log Analytics 代理 VM 扩展的示例资源管理器模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)中找到。 
 

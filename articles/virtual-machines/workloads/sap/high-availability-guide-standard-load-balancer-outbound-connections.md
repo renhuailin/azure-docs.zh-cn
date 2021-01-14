@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: 9c9979699b5bcb3636adc0f9b58331568ea9cad1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 525c705db81dc0f152c8dbc55de5ebac841e5d57
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486296"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201733"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接
 
@@ -100,7 +100,7 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm，�
 2. 创建后端池 MyBackendPoolOfPublicILB，然后添加 VM。  
    1. 选择虚拟网络  
    1. 选择 VM 及其 IP 地址，然后将它们添加到后端池  
-3. [创建出站规则](../../../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard%3ftabs%3doption-1-create-load-balancer-standard#create-outbound-rule-configuration)。 暂无法在 Azure 门户中创建出站规则。 可以使用 [Azure CLI](../../../cloud-shell/overview.md?view=azure-cli-latest) 创建出站规则。  
+3. [创建出站规则](../../../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard%3ftabs%3doption-1-create-load-balancer-standard#create-outbound-rule-configuration)。 暂无法在 Azure 门户中创建出站规则。 可以使用 [Azure CLI](../../../cloud-shell/overview.md) 创建出站规则。  
 
    ```azurecli
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup

@@ -1,19 +1,19 @@
 ---
-title: 在 Azure Monitor 中使用客户托管的存储帐户 Log Analytics
+title: 在 Azure Monitor Log Analytics 中使用客户管理的存储帐户
 description: 为 Log Analytics 方案使用自己的存储帐户
 ms.subservice: logs
 ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: bb5c6439f2e0b919e422c7a72f98468f0efc01f1
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 706392d95e371fe303bb9f2c18f59e4a224d83c0
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901296"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201053"
 ---
-# <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>在 Azure Monitor 中使用客户托管的存储帐户 Log Analytics
+# <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>在 Azure Monitor Log Analytics 中使用客户管理的存储帐户
 
 Log Analytics 依赖于不同方案中的 Azure 存储。 此使用通常会自动管理。 但是，某些情况要求你提供和管理你自己的存储帐户，也称为客户管理的存储帐户。 本文档介绍了如何将客户管理的存储用于 WAD/LAD 日志、专用链接和客户托管的密钥 (CMK) 加密。 
 
@@ -23,7 +23,7 @@ Log Analytics 依赖于不同方案中的 Azure 存储。 此使用通常会自�
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>引入 Azure 诊断扩展日志 (WAD/LAD) 
 Azure 诊断扩展代理 (也分别称为 Windows 和 Linux 代理的 WAD 和 LAD，) 收集各种操作系统日志，并将它们存储在客户管理的存储帐户上。 然后，可以将这些日志引入 Log Analytics 来查看和分析这些日志。
 ### <a name="how-to-collect-azure-diagnostics-extension-logs-from-your-storage-account"></a>如何从存储帐户收集 Azure 诊断扩展日志
-使用 [Azure 门户](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) 或通过调用 [存储见解 API](/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate)将存储帐户作为存储数据源连接到 Log Analytics 工作区。
+使用 [Azure 门户](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) 或通过调用 [存储见解 API](/rest/api/loganalytics/storage%20insights/createorupdate)将存储帐户作为存储数据源连接到 Log Analytics 工作区。
 
 支持的数据类型：
 * Syslog

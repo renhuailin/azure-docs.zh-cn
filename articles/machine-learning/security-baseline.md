@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f3f66209b2d0a1bae18364e38790c237952e729f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 380aa826030df14b4b88b86ac2962c988796c0f9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458255"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202634"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure 机器学习的 Azure 安全基线
 
@@ -365,7 +365,7 @@ Azure 机器学习在 Azure 机器学习中为常见管理方案提供内置角�
 
 **指导**：对于需要提升的权限的管理任务，请使用安全的 Azure 托管工作站（也称为特权访问工作站，简称 PAW）。
 
-- [了解安全的 Azure 托管工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [了解安全的 Azure 托管工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何启用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -903,7 +903,7 @@ Azure 机器学习完全支持用于跟踪工作的 Git 存储库；你可以将
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指导**：Azure 机器学习为各种计算资源甚至为你自己的计算资源提供不同的支持。 对于你的组织拥有的计算资源，请使用 azure RBAC)  (Azure 基于角色的访问控制，以确保只有经过授权的用户可以访问你的自定义映像。 使用 Azure 共享映像库，可以将映像共享给组织内的不同用户、服务主体或 Azure AD 组。 将容器映像存储在 Azure 容器注册表中，并使用 Azure RBAC 确保只有获得授权的用户才有权访问。
+**指导**：Azure 机器学习为各种计算资源甚至为你自己的计算资源提供不同的支持。 对于你的组织拥有的计算资源，请使用 azure RBAC)  (Azure 基于角色的访问控制，以确保只有经过授权的用户可以访问你的自定义映像。 使用 Azure 共享映像库，可以将映像共享给组织内的不同用户、服务主体或 Azure AD 组。 将容器映像存储在 Azure 容器注册表中，并使用 Azure RBAC 来确保只有经过授权的用户才能进行访问。
 
 - [了解 Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 

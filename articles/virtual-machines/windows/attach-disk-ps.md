@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: baeeeae54829fad7378df597965eec5ba2039d20
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d2f283aa8b049602d25cf8969bc2327ebcfafe08
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972809"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202872"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>使用 PowerShell 将数据磁盘附加到 Windows VM
 
@@ -20,7 +20,7 @@ ms.locfileid: "91972809"
 
 首先，查看以下提示：
 
-* 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机的大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机的大小](../sizes.md)。
 * 若要使用高级 SSD，则需要使用[支持高级存储的 VM 类型](../sizes-memory.md)，例如 DS 系列或 GS 系列虚拟机。
 
 本文在 [Azure Cloud Shell](../../cloud-shell/overview.md)中使用 PowerShell，它不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”。

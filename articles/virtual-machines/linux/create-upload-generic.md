@@ -6,23 +6,23 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: ef4175d24cfd02bb5cb6470b6334fea190b5bec2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9888cde8bca9fb0646dbdc8bb601b0887908ad1d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500591"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203229"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>有关未认可分发版的信息
 
-仅当使用某个[认可的分发版](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)时，Azure 平台 SLA 才适用于运行 Linux OS 的虚拟机。 对于这些认可的分发版，Azure 市场中提供了预配置的 Linux 映像。
+仅当使用某个[认可的分发版](endorsed-distros.md)时，Azure 平台 SLA 才适用于运行 Linux OS 的虚拟机。 对于这些认可的分发版，Azure 市场中提供了预配置的 Linux 映像。
 
-* [Azure 上的 Linux - 认可的分发版](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure 上的 Linux - 认可的分发版](endorsed-distros.md)
 * [Microsoft Azure 中对 Linux 映像的支持](https://support.microsoft.com/kb/2941892)
 
 Azure 上运行的所有分发版都要满足一些先决条件。 本文的内容并不全面，因为每个分发版不同。 即使满足以下所有条件，但仍可能需要大幅调整 Linux 系统才能让其正常运行。
 
-我们建议从某个 [Azure 上的 Linux 认可的分发版](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)着手。 以下文章介绍了如何准备 Azure 上支持的各种认可的 Linux 分发版：
+我们建议从某个 [Azure 上的 Linux 认可的分发版](endorsed-distros.md)着手。 以下文章介绍了如何准备 Azure 上支持的各种认可的 Linux 分发版：
 
 - [基于 CentOS 的分发版](create-upload-centos.md)
 - [Debian Linux](debian-create-upload-vhd.md)
@@ -38,7 +38,7 @@ Azure 上运行的所有分发版都要满足一些先决条件。 本文的内�
 * Azure 不支持 Hyper-V 虚拟硬盘 (VHDX) 格式，仅支持固定大小的 VHD。  可使用 Hyper-V 管理器或 [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 将磁盘转换为 VHD 格式。 如果使用 VirtualBox，请在创建磁盘时选择“固定大小”，而不要选择默认（动态分配的）大小。
 * Azure 支持 Gen1（BIOS 引导）和Gen2（UEFI 引导）虚拟机。
 * VHD 允许的最大大小为 1,023 GB。
-* 在安装 Linux 系统时，建议使用标准分区而不是逻辑卷管理器 (LVM)，这是许多安装的默认设置。 使用标准分区可避免 LVM 名称与克隆的 VM 发生冲突，特别是在 OS 磁盘曾经连接到另一台相同的 VM 进行故障排除的情况下。 [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 可以在数据磁盘上使用。
+* 在安装 Linux 系统时，建议使用标准分区而不是逻辑卷管理器 (LVM)，这是许多安装的默认设置。 使用标准分区可避免 LVM 名称与克隆的 VM 发生冲突，特别是在 OS 磁盘曾经连接到另一台相同的 VM 进行故障排除的情况下。 [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) 或 [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) 可以在数据磁盘上使用。
 * 需要装载 UDF 文件系统的内核支持。 在 Azure 上首次启动时，预配配置将使用附加到来宾的 UDF 格式媒体传递到 Linux VM。 Azure Linux 代理必须装载 UDF 文件系统才能读取其配置和预配 VM。
 * 低于 2.6.37 的 Linux 内核版本不支持具有更大 VM 大小的 Hyper-V 上的 NUMA。 此问题主要影响使用上游 Red Hat 2.6.32 内核的旧分发版，在 Red Hat Enterprise Linux (RHEL) 6.6 (kernel-2.6.32-504) 中已解决。 运行版本低于 2.6.37 的自定义内核的系统，或者版本低于 2.6.32-504 的基于 RHEL 的内核必须在 grub.conf 中的内核命令行上设置启动参数 `numa=off`。 有关详细信息，请参阅 [Red Hat KB 436883](https://access.redhat.com/solutions/436883)。
 * 不要在 OS 磁盘上配置交换分区。 可根据以下步骤中所述配置 Linux 代理，并在临时资源磁盘上创建交换文件。
@@ -67,7 +67,7 @@ Azure 上的 VHD 映像必须已将虚拟大小调整为 1MB。  通常情况下
 
 * VHD http： \/ / \<mystorageaccount> . blob.core.windows.net/vhds/MyLinuxVM.vhd 的虚拟大小不受支持21475270656字节。 大小必须是整数（以 MB 为单位）。
 
-在这种情况下，可使用 Hyper-V 管理器控制台或 [Resize-VHD](/powershell/module/hyper-v/resize-vhd?view=win10-ps) PowerShell cmdlet 调整 VM 大小。  如果不是在 Windows 环境中运行，我们建议使用 `qemu-img` 转换（如果需要）并调整 VHD 大小。
+在这种情况下，可使用 Hyper-V 管理器控制台或 [Resize-VHD](/powershell/module/hyper-v/resize-vhd) PowerShell cmdlet 调整 VM 大小。  如果不是在 Windows 环境中运行，我们建议使用 `qemu-img` 转换（如果需要）并调整 VHD 大小。
 
 > [!NOTE]
 > 2.2.1 或更高版本的 qemu-img 存在一个[已知的 bug](https://bugs.launchpad.net/qemu/+bug/1490611)，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 我们建议使用 `qemu-img` 2.2.0 或更低版本，或者 2.6 或更高版本。
@@ -114,7 +114,7 @@ Azure 上的 VHD 映像必须已将虚拟大小调整为 1MB。  通常情况下
 
 ## <a name="linux-kernel-requirements"></a>Linux 内核要求
 
-Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游 Linux 内核。 包括最新 Linux 内核版本（例如 3.x）在内的许多分发版已提供这些驱动程序，或以其他方式为其内核提供了这些驱动程序的向后移植版本。  这些驱动程序会不断地在上游内核中使用新的修补程序和功能进行更新，因此，如果可能，建议运行包含这些修补程序和更新的[认可的分发版](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游 Linux 内核。 包括最新 Linux 内核版本（例如 3.x）在内的许多分发版已提供这些驱动程序，或以其他方式为其内核提供了这些驱动程序的向后移植版本。  这些驱动程序会不断地在上游内核中使用新的修补程序和功能进行更新，因此，如果可能，建议运行包含这些修补程序和更新的[认可的分发版](endorsed-distros.md)。
 
 如果你正在运行 Red Hat Enterprise Linux 版本 6.0 到 6.3 的一个变体，需要安装[适用于 Hyper-V 的最新 LIS 驱动程序](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)。 从 RHEL 6.4+（和派生产品）开始，LIS 驱动程序已包含在内核中，因此，无需其他安装包。
 

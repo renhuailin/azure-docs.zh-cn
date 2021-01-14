@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9e5f7d4e3c358c05713301ac1b1b896062f12bee
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 8c0fbc2c7830961ca8820e874daaffcf0c58faab
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914750"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202107"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure 安全基线
 
@@ -392,7 +392,7 @@ Azure 安全中心监视：不可用
 
 **指南**：将 PAW（特权访问工作站）与为登录和配置 Azure 资源而配置的 MFA 结合使用。
 
-* [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中启用 MFA](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -969,7 +969,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 **指导**：将托管服务标识与 Azure Key Vault 结合使用，以便简化和保护云应用程序的机密管理。
 
-* [如何与 Azure-Managed 标识集成](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
+* [如何与 Azure 托管标识集成](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
 * [如何创建 Key Vault](../../key-vault/general/quick-create-portal.md)
 

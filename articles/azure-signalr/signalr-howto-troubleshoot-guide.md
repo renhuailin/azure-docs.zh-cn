@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 505176758e1dbba1d6bf262554568edd8a197a4d
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: bdda89483661eb6f6d006c3d8ea42b46d162de05
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707667"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201648"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR 服务常见问题故障排除指南
 
@@ -158,7 +158,7 @@ JWT 令牌生存期的默认值目前为 1 小时。
 
 存在两种情况。
 
-### <a name="concurrent-connection-count-exceeds-limit"></a>**并发** 连接计数超过限制。
+### <a name="concurrent-connection-count-exceeds-limit"></a>并发连接计数超出限制。
 
 对于免费实例，并发连接计数限制为 20。对于标准实例，每个单位的并发连接计数限制为 1K，这意味着 100 个单位允许 100 K 个并发连接。    
 
@@ -368,7 +368,7 @@ finally
 
     * [ASP.NET Core C# 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample.CSharpClient/Program.cs#L64)
 
-    * [ASP.NET Core JavaScript 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample/wwwroot/index.html#L164)
+    * [ASP.NET Core JavaScript 客户端](https://github.com/Azure/azure-signalr/blob/release/1.0.0-preview1/samples/ChatSample/wwwroot/index.html#L164)
 
     * [ASP.NET C# 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 

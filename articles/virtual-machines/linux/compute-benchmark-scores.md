@@ -5,15 +5,15 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: efbd90eee8d072c1979565209c8c04a4ee5c55f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 939b5f6005dcb0b320852aece60db5bcf36dddbd
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87830523"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201172"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM 的计算基准测试分数
-以下 CoreMark 基准测试分数显示运行 Ubuntu 的 Azure 高性能 VM 产品阵容的计算性能。 此外，还提供了 [Windows VM](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)的计算基准测试分数。
+以下 CoreMark 基准测试分数显示运行 Ubuntu 的 Azure 高性能 VM 产品阵容的计算性能。 此外，还提供了 [Windows VM](../windows/compute-benchmark-scores.md)的计算基准测试分数。
 
 ## <a name="standard_das_v4"></a>Standard_Das_v4
  (12/11/2019 2:28:52 AM pbi 5851281) 
@@ -469,5 +469,5 @@ ms.locfileid: "87830523"
 Linux 分数是通过在 Ubuntu 上运行 [CoreMark](https://www.eembc.org/coremark/faq.php) 计算得出的。 CoreMark 中配置的线程数设置为虚拟 CPU 的数目，并发性设置为 PThreads。 目标迭代次数已根据预期性能进行调整，提供至少 20 秒（通常更长）的运行时。 最终分数表示已完成迭代次数除以运行测试所花费的秒数。 每项测试在每个 VM 上至少运行了七次。 测试运行日期如上所示。 于当天在支持 VM 的每个 Azure 公共区域中的多个 VM 上执行测试运行。 基本 A 和 B (Burstable) 系列未显示，因为其性能不稳定。 N 系列未显示，因为它们以 GPU 为中心，并且 Coremark 不测量 GPU 性能。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关存储容量、磁盘详细信息以及选择 VM 大小的注意事项，请参阅[虚拟机的大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 有关存储容量、磁盘详细信息以及选择 VM 大小的注意事项，请参阅[虚拟机的大小](../sizes.md)。
 * 若要在 Linux VM 上运行 CoreMark 脚本，请下载 [CoreMark 脚本包](https://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip)。

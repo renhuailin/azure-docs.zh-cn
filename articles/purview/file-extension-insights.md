@@ -1,18 +1,18 @@
 ---
-title: 使用监控范围 Insights 对你的数据进行报告的文件扩展名
-description: 本操作方法指南介绍如何查看和使用监控范围 Insights 文件扩展报告数据。
+title: 使用监控范围 Insights 在 Azure 监控范围中报告数据的文件扩展名
+description: 本操作方法指南介绍了如何查看和使用数据的监控范围文件扩展。
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 222106f5838a1eb237987afaa93924f1efe4a1f4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 246a9dcfa35498d99fd403f10e5c17d7707efe84
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746278"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202617"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>有关 Azure 监控范围中数据的文件扩展见解 
 
@@ -33,6 +33,9 @@ ms.locfileid: "96746278"
 - 设置 Azure 资源并用测试数据填充相关帐户
 
 - 为每个数据源中的测试数据设置并完成扫描
+
+- 使用 [数据读取器或数据陈列角色](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)的帐户登录到监控范围。
+
 
 有关详细信息，请参阅 [在 Azure 监控范围中管理数据源 (预览) ](manage-data-sources.md)。
 
@@ -82,7 +85,7 @@ ms.locfileid: "96746278"
 
 使用网格上方的筛选器筛选显示的数据：
 
-|选项  |描述  |
+|选项  |说明  |
 |---------|---------|
 |**按关键字筛选**     |    在 " **按关键字筛选**  " 框中输入文本，以查看按名称筛选文件类型。 例如，若要仅查看 Pdf，请输入 `PDF` 。     |
 |**时间**        | 选择此选择可按特定时间跨度筛选数据的创建时间。 <br>**默认值：** 30 天  |

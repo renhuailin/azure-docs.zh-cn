@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b19162636707b8d2cc8b7a9ef33c03738eb8e631
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: da3386692d2d02015c0d3f59c88ae78a6c84b9ab
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184427"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203093"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>适用于 Azure Monitor 的 Azure 安全基线
 
@@ -230,7 +230,7 @@ Azure Monitor 属于 Azure 核心服务，并且 Azure Monitor 服务不能单�
 
 **指导**：对于需要提升的权限的管理任务，请使用安全的 Azure 托管工作站（也称为特权访问工作站，简称 PAW）。
 
-- [了解安全的 Azure 托管工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [了解安全的 Azure 托管工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何启用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -351,7 +351,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 
 **指导**：数据标识、分类和丢失防护功能尚不适用于 Azure Monitor。 如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -361,7 +361,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
 
-**指导**：使用 azure RBAC)  (azure 基于角色的访问控制来管理对 Azure Monitor 的访问权限。
+**指导**：使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理对 Azure Monitor 的访问。
 
 - [Azure Monitor 中的角色、权限和安全性](platform/roles-permissions-security.md)
 
@@ -499,7 +499,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
 
-**指南**：通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，使用 Azure 条件访问限制用户与 Azure 资源管理器的交互能力。
+**指导**：通过为“Microsoft Azure 管理”应用配置“阻止访问”，使用 Azure 条件访问来限制用户与 Azure 资源管理器交互的能力。
 
 - [如何配置条件访问来阻止对 Azure 资源管理器的访问](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -685,7 +685,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：使用 Azure DevOps 安全地存储和管理代码，如自定义 Azure 策略、Azure 资源管理器模板。 若要保护在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。   使用 Azure 基于角色的访问控制来保护客户管理的密钥。 
+**指南**：使用 Azure DevOps 安全地存储和管理代码，如自定义 Azure 策略、Azure 资源管理器模板。 若要保护在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。   使用 Azure 基于角色的访问控制保护客户管理的密钥。 
 
 此外，在 Key Vault 中启用软删除和清除保护，以防止意外删除或恶意删除密钥。 如果将 Azure 存储用于存储 Azure 资源管理器模板备份，请启用软删除以在 blob 或 blob 快照被删除时保存和恢复数据。 
 
@@ -707,7 +707,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 - [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -723,7 +723,7 @@ Application Insights 和 Log Analytics 仍将允许引入 TLS 1.1 和 TLS 1.0 �
 
 **指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 

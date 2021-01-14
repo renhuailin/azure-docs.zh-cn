@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
-ms.openlocfilehash: 7515e0a39d1cf0da74d2a23457443e96716b4275
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ad463672660582f28e0fd758a2293ad4112a981
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335946"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201869"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>预览：使用 Windows 中的 Azure 映像生成器在现有映像版本中创建新的 VM 映像版本
 
@@ -107,7 +107,7 @@ imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, '
 
 
 ## <a name="modify-helloimage-example"></a>修改 helloImage 示例
-你可以通过在以下位置打开 json 文件来查看我们将要使用的示例：使用[图像生成器模板参考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) [helloImageTemplateforSIGfromSIG.js](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) 。 
+你可以通过在以下位置打开 json 文件来查看我们将要使用的示例：使用[图像生成器模板参考](../linux/image-builder-json.md) [helloImageTemplateforSIGfromSIG.js](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) 。 
 
 
 下载此 json 示例，并将其配置为你的变量。 
@@ -177,4 +177,4 @@ dir c:\
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解本文中使用的 json 文件的组件，请参阅 [图像生成器模板参考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要详细了解本文中使用的 json 文件的组件，请参阅 [图像生成器模板参考](../linux/image-builder-json.md)。

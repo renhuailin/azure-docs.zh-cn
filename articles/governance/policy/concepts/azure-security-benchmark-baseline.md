@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8b18da5e41e235b560918ad26117a0162078862c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8915e1c15972341befd176b412925f4e87c94f6
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540976"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201444"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure 安全基准的 Azure Policy 安全基准
 
@@ -59,7 +59,7 @@ Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解�
 
 **指南**：将 PAW（特权访问工作站）与为登录和配置 Azure 资源而配置的 MFA 结合使用。
 
-* [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中启用 MFA](../../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -76,7 +76,7 @@ Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解�
 
 **指导**：使用 Azure 基于角色的访问控制 (Azure RBAC) 来控制对 Azure Policy 的访问。
 
-* [Azure 策略中的 azure RBAC 权限](../overview.md#azure-rbac-permissions-in-azure-policy)
+* [Azure Policy 中的 Azure RBAC 权限](../overview.md#azure-rbac-permissions-in-azure-policy)
 
 * [如何配置 Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
 

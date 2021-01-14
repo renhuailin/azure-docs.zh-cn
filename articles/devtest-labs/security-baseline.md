@@ -3,12 +3,12 @@ title: Azure 开发测试实验室的 azure 安全基准
 description: Azure 开发测试实验室的 azure 安全基准
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 4ae3886e1c47b1d6835dc348b474e3d9e82a8f41
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eabb55956f97f40312c894ccabd7a341ecc5688c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348817"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202005"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure 开发测试实验室的 azure 安全基准
 
@@ -183,14 +183,14 @@ _ *责任：** Customer
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 **指南：** 使用特权访问工作站 (Paw) ，其配置为登录和配置 Azure 资源。
 
-- [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)  
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)  
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)  
 
 **Azure 安全中心监视：** 不适用
 
 **责任：** 面向
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录管理帐户的可疑活动并发出警报
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 **指南：** 当环境中发生可疑或不安全的活动时，使用 Azure Active Directory (Azure AD) 安全报告来生成日志和警报。 使用 Azure 安全中心监视标识和访问活动。
 
 - [如何确定标记为存在风险活动的 Azure AD 用户](../active-directory/identity-protection/overview-identity-protection.md)  
@@ -228,7 +228,7 @@ _ *责任：** Customer
 
 **责任：** 面向
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视访问已停用帐户的企图
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视尝试访问已停用帐户的行为
 **指南：** 你有权访问 Azure Active Directory (Azure AD) 登录活动、审核和风险事件日志源，这允许你与任何安全信息和事件管理 (SIEM) /Monitoring 工具集成。
 
 可以通过为 Azure Active Directory 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置警报。
@@ -701,7 +701,7 @@ _ *Azure 安全中心监视：** 不适用
 **责任：** 面向
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
-**指南：** 使用托管标识在 Azure AD 中通过自动管理的标识来提供 Azure 服务。 通过托管标识可向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。
+**指南：** 使用托管标识在 Azure AD 中通过自动管理的标识来提供 Azure 服务。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
 
 - [在开发测试实验室中配置托管标识以部署 Azure 资源管理器环境](use-managed-identities-environments.md)
 - [在开发测试实验室中配置托管标识以部署虚拟机](enable-managed-identities-lab-vms.md)
@@ -713,7 +713,7 @@ _ *Azure 安全中心监视：** 不适用
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 **指南：** 实现凭据扫描器来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
-- 如何设置凭据扫描器
+- 如何设置凭据扫描程序
 
 **Azure 安全中心监视：** 不适用
 
@@ -733,7 +733,7 @@ _ *Azure 安全中心监视：** 不适用
 
 **责任：** 面向
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预扫描要上传到非计算 Azure 资源的文件
 **指南：** 支持 Azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如，Azure App Service 托管在实验室) ，但它不会在内容上运行。
 预先扫描上传到非计算 Azure 资源的任何文件，例如应用服务、Data Lake Storage、Blob 存储等。
 
@@ -825,7 +825,7 @@ _ *Azure 安全中心监视：** 不适用
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 **指南：** Azure 安全中心为每个警报分配一个严重性，以帮助你确定应该首先调查的警报的优先级。 严重性取决于安全中心对调查结果或用于发出警报的分析的确信程度，以及对导致警报的活动背后存在恶意意图的确信程度。
 
-此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 - [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)

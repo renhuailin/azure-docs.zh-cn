@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9dda02e483f3437237837a9b3b8bdcbcf84fcd1d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 16320e3f667c413778e166bfaacf81347226f4b1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489592"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202736"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>服务总线的 Azure 安全基线
 
@@ -165,7 +165,7 @@ ms.locfileid: "96489592"
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [如何开始将 Azure Monitor 与第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
+- [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 **Azure 安全中心监视**：是
 
@@ -299,7 +299,7 @@ ms.locfileid: "96489592"
 
 **指导**：使用配置了多重身份验证 (MFA) 的特权访问工作站 (PAW) 进行登录并配置启用了服务总线的资源。
 
-- [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -459,7 +459,7 @@ Microsoft 管理 Azure 服务总线的底层基础结构，并实施了严格控
 
 **指导**：数据标识、分类和丢失防护功能尚不适用于 Azure 服务总线。 如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 

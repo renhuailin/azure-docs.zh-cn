@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: e1666b7e74ceefd7e7e4fe6e499667b09efa0ac7
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1e3934a8ff91d764a5148b3d490b44f30983a284
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963787"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202124"
 ---
 # <a name="use-spot-vms-in-azure"></a>使用 Azure 中的专色 Vm
 
@@ -121,4 +121,4 @@ Vm 可根据容量或设置的最大价格进行逐出。 创建点 VM 时，可
 
 你还可以 [使用点 VM 实例部署规模集](../virtual-machine-scale-sets/use-spot.md)。
 
-如果遇到错误，请参阅 [错误代码](./error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+如果遇到错误，请参阅 [错误代码](./error-codes-spot.md)。

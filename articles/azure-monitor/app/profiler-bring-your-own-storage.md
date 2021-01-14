@@ -4,21 +4,21 @@ description: 配置 BYOS (为探查器 & 自带存储) Snapshot Debugger
 ms.topic: conceptual
 author: renatosalas
 ms.author: regutier
-ms.date: 04/14/2020
+ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f82432c1dd8c66e8ce845831ff35d534a34e3e04
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87117383"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202532"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>配置自带存储 (BYOS) 用于 Application Insights Profiler 和 Snapshot Debugger
 
 ## <a name="what-is-bring-your-own-storage-byos-and-why-might-i-need-it"></a>什么是携带你自己的存储 (BYOS) ，为什么我需要它？ 
 当你使用 Application Insights Profiler 或 Snapshot Debugger 时，你的应用程序生成的项目将通过公共 Internet 上传到 Azure 存储帐户。 这些帐户由 Microsoft 付费和控制，以便进行处理和分析。 Microsoft 控制这些项目的静态加密和生存期管理策略。
 
-使用自带存储时，这些项目将被上传到您控制的存储帐户中。 这意味着，你可以控制 "静态加密" 策略、"生存期管理策略" 和 "网络访问"。 但是，你将负责与该存储帐户关联的成本。
+使用自带存储时，这些项目将被上传到您控制的存储帐户中。 这意味着，你可以控制 "静态加密" 策略、"生存期管理策略" 和 "网络访问"。 但需支付与该存储帐户相关的费用。
 
 > [!NOTE]
 > 如果启用 "专用" 链接，则需要自带存储。 有关 Application Insights 的专用链接的详细信息， [请参阅文档。](../platform/private-link-security.md)
@@ -30,7 +30,7 @@ ms.locfileid: "87117383"
 1. Application Insights Profiler 或 Snapshot Debugger 服务将分析传入的 blob，并将分析结果和日志文件写回 blob 存储。 根据可用计算能力，此过程可能在上载后随时发生。
 1. 查看探查器跟踪或快照调试器分析时，服务将从 blob 存储提取分析结果。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * 请确保在与 Application Insights 资源相同的位置中创建存储帐户。 例如： 如果你的 Application Insights 资源位于美国西部2，则你的存储帐户还必须在美国西部2中。 
 * 通过访问控制 (IAM) UI，将存储帐户中的 "存储 Blob 数据参与者" 角色授予 AAD 应用程序 "诊断服务可信存储访问
 * 如果启用了 "专用链接"，请配置其他设置，以允许从你的虚拟网络连接到受信任的 Microsoft 服务。 
@@ -53,11 +53,11 @@ BYOS 存储帐户将链接到 Application Insights 资源。 每个 Application 
 1. 搜索 & 选择 "诊断服务受信任的存储访问" 应用 
 1. 保存更改
 
-_ ![ 图 1.0](media/profiler-bring-your-own-storage/figure-10.png)_ 
+_![ 图 1.0](media/profiler-bring-your-own-storage/figure-10.png)_ 
  _图 1.0_ 
 
 添加角色后，它将显示在 "角色分配" 部分下，如下图1.1 所示。 
-_ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_ 
+_![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_ 
  _图 1.1_ 
 
 如果还使用的是专用链接，则需要使用另外一个配置，以允许从你的虚拟网络连接到受信任的 Microsoft 服务。 请参阅 [存储网络安全文档](../../storage/common/storage-network-security.md#trusted-microsoft-services)。
@@ -91,11 +91,11 @@ _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 
     模式：
     ```powershell
-    $appInsights = Get-AzApplicationInsights -ResourceGroupName "{resource_group_name}" -Name "{storage_account_name}"
+    $appInsights = Get-AzApplicationInsights -ResourceGroupName "{resource_group_name}" -Name "{application_insights_name}"
     Remove-AzApplicationInsightsLinkedStorageAccount -ResourceId $appInsights.Id
     ```
 
-    例如：
+    示例：
     ```powershell
     $appInsights = Get-AzApplicationInsights -ResourceGroupName "byos-test" -Name "byos-test-westus2-ai"
     Remove-AzApplicationInsightsLinkedStorageAccount -ResourceId $appInsights.Id
@@ -110,7 +110,7 @@ _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
     New-AzApplicationInsightsLinkedStorageAccount -ResourceId $appInsights.Id -LinkedStorageAccountResourceId $storageAccount.Id
     ```
 
-    例如：
+    示例：
     ```powershell
     $storageAccount = Get-AzStorageAccount -ResourceGroupName "byos-test" -Name "byosteststoragewestus2"
     $appInsights = Get-AzApplicationInsights -ResourceGroupName "byos-test" -Name "byos-test-westus2-ai"
@@ -135,7 +135,7 @@ _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
     az monitor app-insights component linked-storage link --resource-group "{resource_group_name}" --app "{application_insights_name}" --storage-account "{storage_account_name}"
     ```
     
-    例如：
+    示例：
     ```powershell
     az monitor app-insights component linked-storage link --resource-group "byos-test" --app "byos-test-westus2-ai" --storage-account "byosteststoragewestus2"
     ```
@@ -191,7 +191,7 @@ _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
     New-AzResourceGroupDeployment -ResourceGroupName "{your_resource_name}" -TemplateFile "{local_path_to_arm_template}"
     ```
 
-    例如：
+    示例：
     ```powershell
     New-AzResourceGroupDeployment -ResourceGroupName "byos-test" -TemplateFile "D:\Docs\byos.template.json"
     ```
@@ -226,7 +226,7 @@ _ ![ 图 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
     DeploymentDebugLogLevel :
     ```
 
-1. 启用代码级别诊断 (探查器/调试器) 通过 Azure 门户所需的工作负荷。  (应用服务 > Application Insights) _ ![ 图 2.0](media/profiler-bring-your-own-storage/figure-20.png)_ 
+1. 启用代码级别诊断 (探查器/调试器) 通过 Azure 门户所需的工作负荷。  (应用服务 > Application Insights) _![ 图 2.0](media/profiler-bring-your-own-storage/figure-20.png)_ 
  _图 2.0_
 
 ## <a name="troubleshooting"></a>疑难解答

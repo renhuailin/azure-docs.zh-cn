@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 335a977924c94fba82ec6113233a4585401527f3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: ca49e7c171d0b8903beccf0b1ca803f5b359951b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092765"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201699"
 ---
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>Azure 托管应用程序的 azure 安全基线
 
@@ -101,8 +101,8 @@ Azure 托管应用程序支持向应用程序授予两种类型的标识：
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制
 
 **指南**： Azure 托管应用程序使用通过多重身份验证和无密码方法支持强身份验证控制的 Azure Active Directory。
-- 多重身份验证-启用 Azure AD 多重身份验证，并遵循 Azure 安全中心的标识和访问管理建议，以获取多重身份验证设置中的一些最佳实践。 多重身份验证可在所有用户上强制执行，根据登录条件和风险因素，选择用户或按用户级别。
-- 无密码身份验证 - 有三个无密码身份验证选项可用：Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
+- 多重身份验证 - 启用 Azure AD 多重身份验证并遵循 Azure 安全中心标识和访问管理建议，以在多重身份验证设置中推行一些最佳做法。 多重身份验证可在所有用户上强制执行，根据登录条件和风险因素，选择用户或按用户级别。
+- 无密码身份验证 - 提供三个无密码身份验证选项：Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
 
 对于管理员和特权用户，请确保使用的是最高级别的强身份验证。
 
@@ -122,7 +122,7 @@ Azure 托管应用程序支持向应用程序授予两种类型的标识：
 - 风险登录 - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。
 - 已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-这些数据源可以与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
+这些数据源可与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
 
 Azure 安全中心还可针对某些可疑活动发出警报，例如，失败的身份验证尝试次数过多，使用了订阅中的已弃用帐户。
 
@@ -160,7 +160,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1：保护和限制具有较高权限的用户
 
-**指南**： Azure 托管应用程序使用 Azure Active Directory (Azure AD) 进行身份验证和访问。 最关键的内置角色 Azure AD 是全局管理员和特权角色管理员，因为分配给这两个角色的用户可以委派管理员角色：
+**指南**： Azure 托管应用程序使用 Azure Active Directory (Azure AD) 进行身份验证和访问。 Azure AD 中最重要的内置角色是全局管理员和特权角色管理员，因为分配到这两种角色的用户可以委托管理员角色：
 - 全局管理员/公司管理员：具有此角色的用户可访问 Azure AD 中的所有管理功能，还可访问使用 Azure AD 标识的服务。
 - 特权角色管理员：具有此角色的用户可管理 Azure AD 和 Azure AD Privileged Identity Management (PIM) 中的角色分配。 此外，该角色可管理 PIM 和管理单元的各个方面。
 
@@ -182,7 +182,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 **指南**： Azure 托管应用程序使用 azure RBAC 来隔离对关键业务系统的访问权限，方法是限制授予对这些订阅和管理组的特权访问权限的帐户。
 
-确保你还将访问权限限制为对业务关键访问具有管理访问权限的管理、标识和安全系统，如 Active Directory 域控制器 (DCs) 、安全工具和系统管理工具，以及安装在业务关键系统上的代理。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
+确保还限制了对管理、标识和安全系统的访问，因为这些系统对业务关键型资产具有管理访问权限，这些系统包括 Active Directory 域控制器 (DC)、安全工具以及在业务关键型系统上安装了代理的系统管理软件等。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
 
 所有类型的访问控制都应符合企业分段策略，确保访问控制保持一致。
 
@@ -198,13 +198,13 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3：定期审查和协调用户访问权限
 
-**指南**：定期查看用户帐户和访问分配，以确保帐户及其访问级别有效。
+**指导**：定期审查用户帐户和访问权限分配，确保帐户及其访问权限级别均有效。
 
-Azure 托管应用程序使用 Azure Active Directory (AAD) 帐户来管理其资源、定期查看用户帐户和访问分配，以确保帐户及其访问有效。 可使用 Azure AD 访问评审来审查组成员身份、对企业应用程序的访问权限和角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可以使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流，以便于审核过程。
+Azure 托管应用程序使用 Azure Active Directory (AAD) 帐户来管理其资源、定期查看用户帐户和访问分配，以确保帐户及其访问有效。 可使用 Azure AD 访问评审来审查组成员身份、对企业应用程序的访问权限和角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流以便于执行评审。
 
-此外，还可以将 Azure Privileged Identity Management 配置为在创建过多的管理员帐户时发出警报，并识别过时或配置不正确的管理员帐户。
+此外，Azure Privileged Identity Management 还可配置为在创建过多管理员帐户时发出警报，并识别过时或配置不正确的管理员帐户。
 
-注意：某些 Azure 服务支持不通过 Azure AD 管理的本地用户和角色。 需要单独管理这些用户。
+注意：某些 Azure 服务支持不通过 Azure AD 管理的本地用户和角色。 你需要单独管理这些用户。
 
 - [在 Privileged Identity Management (PIM) 中创建对 Azure 资源角色的访问评审](../../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
@@ -242,7 +242,7 @@ Azure 托管应用程序使用 Azure Active Directory (AAD) 帐户来管理其�
 
 **指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 使用高度安全的用户工作站和/或 Azure 堡垒执行与托管应用程序相关的管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可通过集中管理安全的工作站来强制实施安全配置，包括强身份验证、软件和硬件基线、受限的逻辑和网络访问。
 
-- [了解特权访问工作站](../../active-directory/devices/concept-azure-managed-workstation.md)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [部署特权访问工作站](../../active-directory/devices/howto-azure-managed-workstation.md)
 
@@ -340,7 +340,7 @@ Azure 提供以下 Azure 内置角色，用于使用 Azure AD 和 OAuth 授权�
 
 ### <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2：确保安全团队有权访问资产清单和元数据
 
-**指南**：将标记应用于 Azure 资源、资源组和订阅，以逻辑方式将它们组织到分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
+**指导**：将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
 在创建托管应用程序时提供的标记也适用于托管资源组。 应用程序的发布者可以在部署后提供自己的托管资源的其他标记。
 
@@ -380,7 +380,7 @@ Azure 提供以下 Azure 内置角色，用于使用 Azure AD 和 OAuth 授权�
 
 ### <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5：限制用户与 Azure 资源管理器进行交互的能力
 
-**指南**：通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，使用 Azure 条件访问限制用户与 Azure 资源管理器的交互能力。
+**指导**：通过为“Microsoft Azure 管理”应用配置“阻止访问”，使用 Azure 条件访问来限制用户与 Azure 资源管理器交互的能力。
 
 - [如何配置条件访问来阻止对 Azure 资源管理器的访问](../../role-based-access-control/conditional-access-azure-management.md)
 
@@ -399,7 +399,7 @@ Azure 提供以下 Azure 内置角色，用于使用 Azure AD 和 OAuth 授权�
 风险登录 - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。
 已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-Azure 安全中心还可针对某些可疑活动发出警报，例如，失败的身份验证尝试次数过多，使用了订阅中的已弃用帐户。 除了基本的安全机制监视，Azure 安全中心的威胁防护模块还可从各个 Azure 计算资源（虚拟机、容器、应用服务）、数据资源（SQL 数据库和存储）和 Azure 服务层收集更深入的安全警报。 此功能可让你查看单个资源内的帐户异常情况。
+Azure 安全中心还可针对某些可疑活动发出警报，例如，失败的身份验证尝试次数过多，使用了订阅中的已弃用帐户。 除了基本的安全机制监视，Azure 安全中心的威胁防护模块还可从各个 Azure 计算资源（虚拟机、容器、应用服务）、数据资源（SQL 数据库和存储）和 Azure 服务层收集更深入的安全警报。 可通过此功能查看各个资源内的帐户异常情况。
 
 - [Azure Active Directory 中的“审核活动”报表](../../active-directory/reports-monitoring/concept-audit-logs.md)
 
@@ -428,9 +428,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 **指南**：集中日志记录、存储和分析以启用关联。 对于每个日志源，请确保已分配数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
 确保正在将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
-此外，启用数据并将数据集成到 Azure Sentinel 或第三方 SIEM。
+另外，请启用 Azure Sentinel 或第三方 SIEM 并将数据载入其中。
 
-许多组织选择使用 Azure Sentinel 作为 "热" 数据，这些数据经常使用，而 Azure 存储则用于不频繁使用的 "冷" 数据。
+许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)
 
@@ -443,7 +443,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 ### <a name="lt-6-configure-log-storage-retention"></a>LT-6：配置日志存储保留期
 
 **指南**：确保用于存储托管应用程序资源所创建日志的任何存储帐户或 Log Analytics 工作区的日志保留期都已根据组织的符合性法规进行了设置。
-在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 使用 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期和存档存储。
+在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期存储和存档存储。
 
 - [如何配置 Log Analytics 工作区保留期](../../azure-monitor/platform/manage-cost-storage.md)
 
@@ -485,7 +485,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 可以基于过去的事件经验、经验证的社区源以及旨在通过融合和关联各种信号源来生成和清理警报的工具构建高质量警报。 
 
-Azure 安全中心可跨多个 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
+Azure 安全中心可跨许多 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
 
 使用导出功能导出 Azure 安全中心警报和建议，以帮助识别 Azure 资源的风险。 手动导出或持续导出警报和建议。
 
@@ -531,7 +531,7 @@ Azure Sentinel 提供几乎针对任何日志源的广泛数据分析，并提�
 
 **指南**：根据警报严重性和资产敏感度，为分析人员提供上下文来确定应首要关注哪些事件。 
 
-Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心在查找或用于发出警报的分析中的置信度，以及导致警报的活动的恶意意图的置信度。
+Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心对调查结果或用于发出警报的分析的确信程度，以及对导致警报的活动背后存在恶意意图的确信程度。
 
 此外，使用标记来标记资源，并创建命名系统来对 Azure 资源进行标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 

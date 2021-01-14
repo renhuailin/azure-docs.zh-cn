@@ -13,16 +13,20 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 91e5ca10e97e8fc1646367ac6d575d6813f3a291
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b801bac28b131ff43c47024649bfe0986f768c7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079853"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202889"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Azure 虚拟机对 32 位操作系统的支持
 
 Microsoft Azure 现在允许用户将其32位 Windows 操作系统带入 Azure。 仅支持专用 VHD，通用化映像在 Azure 中无效。 由于其中一些操作系统已达到其生命的可支持性协议的末尾，Microsoft 可能不会为其提供其他支持。 对于基于 Linux 或 Berkeley 的软件分发 (基于 BSD) 的操作系统（在 Microsoft Azure 虚拟机 (VM) 上运行），也不提供支持。
+
+> [!NOTE]
+> Azure 平台对运行32位操作系统的 Vm 施加了内存地址空间限制，在这种情况下，VM 只提供1GB 的内存，而 VM 的其余部分将在来宾 VM 中显示为保留内存。 这是一个已知问题，我们目前没有用于修复的 ETA。 建议移动到64位操作系统版本。
+> 
 
 ## <a name="more-information"></a>详细信息
 

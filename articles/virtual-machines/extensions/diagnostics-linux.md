@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: ffbafb76fd2c6dd06a88bfd79746557889039cd6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2e831b3c091b18a5c739275e4c932094ce088ba4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956018"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202600"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -42,7 +42,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM �
 可以使用 Azure PowerShell cmdlet、Azure CLI 脚本、ARM 模板或 Azure 门户启用此扩展。 有关详细信息，请参阅[扩展功能](features-linux.md)。
 
 >[!NOTE]
->诊断 VM 扩展的某些组件也随附在 [LOG ANALYTICS VM 扩展](./oms-linux.md)中。 由于此体系结构，如果在同一 ARM 模板中实例化两个扩展，则可能会发生冲突。 若要避免这些安装时冲突，请使用[ `dependsOn` 指令](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)确保按顺序安装扩展。 可以按任意顺序安装这些扩展。
+>[Log Analytics VM 扩展](./oms-linux.md)中还随附了诊断 VM 扩展的某些组件。 由于这种体系结构，如果在同一 ARM 模板中对两个扩展进行实例化，则可能会发生冲突。 为避免这些安装时冲突，请使用 [`dependsOn` 指令](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)，确保按顺序安装扩展。 可按任一顺序安装扩展。
 
 这些安装说明和[可下载示例配置](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)会将 LAD 3.0 配置为：
 
@@ -487,7 +487,7 @@ minSeverity | Syslog 严重性级别（例如“LOG\_ERR”或“LOG\_INFO”）
 元素 | 值
 ------- | -----
 命名空间 | （可选）应在其中执行查询的 OMI 命名空间。 如果未指定，则默认值为“root/scx”，由 [ System Center 跨平台提供程序](https://github.com/Microsoft/SCXcore)实现。
-query | 要执行的 OMI 查询。
+查询 | 要执行的 OMI 查询。
 表 | （可选）指定存储帐户中的 Azure 存储表（请参阅[受保护的设置](#protected-settings)）。
 频率 | （可选）两次执行查询之间的秒数。 默认值为 300 秒（5 分钟）；最小值为 15 秒。
 sinks | （可选）一个逗号分隔列表，包含应将原始样本指标结果发布到其中的附加接收器的名称。 扩展或 Azure Metrics 不计算这些原始样本的聚合。
@@ -636,7 +636,7 @@ WriteBytesPerSecond | 每秒写入的字节数
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-该命令假定你使用 Azure CLI 的 Azure 资源管理模式。 若要为经典部署模型 (ASM) VM 配置 LAD，请切换到“asm”模式 (`azure config mode asm`)，并在命令中省略资源组名称。 有关详细信息，请参阅[跨平台 CLI 文档](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
+该命令假定你使用 Azure CLI 的 Azure 资源管理模式。 若要为经典部署模型 (ASM) VM 配置 LAD，请切换到“asm”模式 (`azure config mode asm`)，并在命令中省略资源组名称。 有关详细信息，请参阅[跨平台 CLI 文档](/cli/azure/authenticate-azure-cli)。
 
 ### <a name="powershell"></a>PowerShell
 

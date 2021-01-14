@@ -1,5 +1,5 @@
 ---
-title: Azure 防火墙管理器的 azure 安全基线
+title: 适用于 Azure 防火墙管理器的 Azure 安全基线
 description: Azure 防火墙管理器安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: firewall-manager
@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d25fc8e0a42c8b79a5b1bfaa0d842c9927f58e43
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: eca243a9a83ad5d2bfa006b46499470cf06e808a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602795"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203025"
 ---
-# <a name="azure-security-baseline-for-azure-firewall-manager"></a>Azure 防火墙管理器的 azure 安全基线
+# <a name="azure-security-baseline-for-azure-firewall-manager"></a>适用于 Azure 防火墙管理器的 Azure 安全基线
 
-此安全基线将 [Azure 安全基准版本 2.0](../security/benchmarks/overview.md) 中的指南应用到 Azure 防火墙管理器。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容由 Azure 安全基准定义的 **安全控制** 和适用于 Azure 防火墙管理器的相关指南进行分组。 排除了不适用于 Azure 防火墙管理器的 **控件**。
+此安全基线将 [Azure 安全基准 2.0 版](../security/benchmarks/overview.md)中的指南应用于 Azure 防火墙管理器。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按“安全控制”分组，这些控制按适用于 Azure 防火墙管理器的 Azure 安全基准和相关指南定义。 排除了不适用于 Azure 防火墙管理器的“控制”。
 
-若要查看 Azure 防火墙管理器如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 防火墙管理器安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+若要查看 Azure 防火墙管理器如何完全映射到 Azure 安全基准，请参阅[完整的 Azure 防火墙管理器安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="identity-management"></a>标识管理
 
@@ -26,15 +26,15 @@ ms.locfileid: "96602795"
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
-**指南**： Azure 防火墙管理器使用 Azure Active Directory (Azure AD) 作为默认的标识和访问管理服务。 应将 Azure AD 标准化，以便在中管理组织的标识和访问管理：
+**指导**：Azure 防火墙管理器使用 Azure Active Directory (Azure AD) 作为默认标识和访问管理服务。 你应该使 Azure AD 标准化，以便控制组织在以下资源中的标识和访问管理：
 
-- Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机 (Linux 和 Windows) 、Azure Key Vault、PaaS 和 SaaS 应用程序。
+- Microsoft 云资源，如 Azure 门户、Azure 存储、Azure 虚拟机（Linux 和 Windows）、Azure Key Vault、PaaS 和 SaaS 应用程序。
 
 - 你的组织的资源，例如 Azure 上的应用程序，或公司网络资源。
 
 在组织的云安全做法中，应优先处理 Azure AD 保护事宜。 Azure AD 提供标识安全分数，帮助你评估与 Microsoft 的最佳做法建议相关的标识安全状况。 使用评分来估计你的配置与最佳做法建议的匹配程度，并改善你的安全状况。
 
-Azure AD 支持允许没有 Microsoft 帐户的用户使用其外部标识登录到其应用程序和资源的外部标识。
+Azure AD 支持外部标识，使没有 Microsoft 帐户的用户可以使用其外部标识登录到其应用程序和资源。
 
 - [Azure Active Directory 中的租赁](../active-directory/develop/single-and-multi-tenant-apps.md)
 
@@ -50,7 +50,7 @@ Azure AD 支持允许没有 Microsoft 帐户的用户使用其外部标识登录
 
 ### <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 单一登录 (SSO) 进行应用程序访问
 
-**指南**： Azure 防火墙管理器使用 Azure Active Directory 提供对 Azure 资源、云应用程序和本地应用程序的标识和访问管理。 此内容包括企业标识（例如员工）以及外部标识（如合作伙伴和供应商）。 这样，单一登录 (SSO) 便可以管理和保护对本地和云中的组织数据和资源的访问。 将所有用户、应用程序和设备连接到 Azure AD，实现无缝的安全访问和更好的可见性和控制。
+**指导**：Azure 防火墙管理器使用 Azure Active Directory 来提供对 Azure 资源、云应用程序和本地应用程序的标识和访问管理。 此内容包括企业标识（例如员工）以及外部标识（如合作伙伴和供应商）。 这样，单一登录 (SSO) 便可以管理和保护对本地和云中的组织数据和资源的访问。 将所有用户、应用程序和设备连接到 Azure AD，实现无缝的安全访问和更好的可见性和控制。
 
 - [了解 Azure AD 的应用程序 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -60,9 +60,9 @@ Azure AD 支持允许没有 Microsoft 帐户的用户使用其外部标识登录
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制
 
-**指南**： Azure 防火墙管理器使用 Azure Active Directory，它通过多重身份验证 (MFA) 和强无密码方法支持强身份验证控制。
+**指导**：Azure 防火墙管理器使用 Azure Active Directory，后者支持通过多重身份验证 (MFA) 进行的强身份验证控制，并且支持强无密码方法。
 - 多重身份验证 - 启用 Azure AD MFA，并遵循 Azure 安全中心标识和访问管理建议，以获得 MFA 设置中的一些最佳做法。 可基于登录条件和风险因素，对所有用户、精选用户或在每用户级别强制执行 MFA。
-- 无密码身份验证 - 有三个无密码身份验证选项可用：Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
+- 无密码身份验证 - 提供三个无密码身份验证选项：Windows Hello 企业版、Microsoft Authenticator 应用和本地身份验证方法（如智能卡）。
 
 对于管理员和特权用户，请确保使用最高级别的强身份验证方法，然后将相应的强身份验证策略推广到其他用户。
 
@@ -80,15 +80,15 @@ Azure AD 支持允许没有 Microsoft 帐户的用户使用其外部标识登录
 
 ### <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：监视并提醒帐户异常
 
-**指南**： Azure 防火墙管理器与提供以下数据源的 Azure Active Directory 集成：
+**指导**：Azure 防火墙管理器与提供以下数据源的 Azure Active Directory 集成：
 - 登录 - 在登录报告中，可了解托管应用程序的使用情况和用户登录活动。
 - 审核日志 - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
 - 风险登录 - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。
 - 已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-这些数据源可以与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
+这些数据源可与 Azure Monitor、Azure Sentinel 或第三方 SIEM 系统集成。
 
-活动日志当前不支持围绕防火墙策略规则收集组的操作，这是一个已知问题，在以后的更新中会解决此问题。
+活动日志当前不支持针对防火墙策略规则集合组的操作，这是一个已知问题，会在将来的更新中解决。
 
 Azure 安全中心还可针对某些可疑活动发出警报，例如，失败的身份验证尝试次数过多，使用了订阅中的已弃用帐户。
 
@@ -102,7 +102,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 - [如何将 Azure 活动日志集成到 Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
-- [Azure 防火墙管理器的已知问题](overview.md#known-issues)
+- [Azure 防火墙管理器已知问题](overview.md#known-issues)
 
 **Azure 安全中心监视**：是
 
@@ -110,7 +110,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6：基于条件限制 Azure 资源访问
 
-**指南**： Azure 防火墙管理器支持 Azure Active Directory () Azure AD 基于用户定义的条件进行更精细的访问控制的条件访问，例如，来自某些需要使用 MFA 进行登录的 IP 范围的用户登录名。 精细身份验证会话管理策略还可用于不同的用例。
+**指导**：Azure 防火墙管理器支持 Azure Active Directory (Azure AD) 条件访问，允许基于用户定义的条件进行更精细的访问控制，例如，从特定 IP 范围登录的用户需要使用 MFA 进行登录。 精细身份验证会话管理策略还可用于不同的用例。
 
 - [Azure 条件访问概述](../active-directory/conditional-access/overview.md)
 
@@ -128,11 +128,11 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1：保护和限制具有较高权限的用户
 
-**指南**： Azure 防火墙管理器使用 Azure Active Directory (Azure AD) 进行身份验证和访问。 最关键的内置角色 Azure AD 是全局管理员和特权角色管理员，因为分配给这两个角色的用户可以委派管理员角色：
+**指导**：Azure 防火墙管理器使用 Azure Active Directory (Azure AD) 进行标识和访问管理。 Azure AD 中最重要的内置角色是全局管理员和特权角色管理员，因为分配到这两种角色的用户可以委托管理员角色：
 - 全局管理员/公司管理员：具有此角色的用户可访问 Azure AD 中的所有管理功能，还可访问使用 Azure AD 标识的服务。
 - 特权角色管理员：具有此角色的用户可管理 Azure AD 和 Azure AD Privileged Identity Management (PIM) 中的角色分配。 此外，该角色可管理 PIM 和管理单元的各个方面。
 
-如果你使用的是分配了特定特权权限的自定义角色，则你可能需要控制其他关键角色。 此外，你可能还需要将类似的控制措施应用于关键业务资产的管理员帐户。
+如果你使用的是分配了某些特权的自定义角色，则可能有其他关键角色需要进行管理。 此外，你可能还需要将类似的控制措施应用于关键业务资产的管理员帐户。
 
 你可使用Azure AD Privileged Identity Management (PIM) 提供对 Azure 资源和 Azure AD 的实时 (JIT) 特权访问权限。 JIT 仅在用户需要执行特权任务时授予临时权限。 当 Azure AD 组织中存在可疑或不安全的活动时，PIM 还会生成安全警报。
 
@@ -148,13 +148,13 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制对关键业务型系统的管理访问权限
 
-**指南**：使用自定义 azure RBAC 角色隔离对 Azure 防火墙策略的规则收集组的访问权限。 使用 Azure 自定义角色定义可防止无意中删除策略，并提供对订阅或资源组中的规则收集组的选择性访问。
+**指导**：使用自定义 Azure RBAC 角色隔离对 Azure 防火墙策略的规则集合组的访问。 使用 Azure 自定义角色定义防止意外删除基本策略，并提供对订阅或资源组内规则集合组的选择性访问。
 
-确保你还限制对对业务关键系统具有管理访问权限的管理、标识和安全系统的访问权限。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
+同时，务必还要限制对那些对业务关键系统具有管理访问权限的管理、标识和安全系统的访问。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
 
 所有类型的访问控制都应符合企业分段策略，确保访问控制保持一致。
 
-- [使用 Azure 防火墙策略来定义规则 hierarch](rule-hierarchy.md)
+- [使用 Azure 防火墙策略来定义规则层次结构](rule-hierarchy.md)
 
 - [Azure 组件和参考模型](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
 
@@ -168,11 +168,11 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3：定期审查和协调用户访问权限
 
-**指南**： Azure 防火墙管理器使用 Azure Active Directory (Azure AD) 帐户来管理其资源。 定期查看用户帐户和访问分配，以确保帐户及其访问有效。 可使用 Azure AD 访问评审来审查组成员身份、对企业应用程序的访问权限和角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可以使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流，以便于审核过程。
+**指导**：Azure 防火墙管理器使用 Azure Active Directory (Azure AD) 帐户来管理其资源。 请定期审查用户帐户和访问权限分配，确保帐户及其访问权限有效。 可使用 Azure AD 访问评审来审查组成员身份、对企业应用程序的访问权限和角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。 你还可使用 Azure AD Privileged Identity Management 来创建访问评审报表工作流以便于执行评审。
 
-此外，还可以将 Azure Privileged Identity Management 配置为在创建过多的管理员帐户时发出警报，并识别过时或配置不正确的管理员帐户。
+此外，Azure Privileged Identity Management 还可配置为在创建过多管理员帐户时发出警报，并识别过时或配置不正确的管理员帐户。
 
-某些 Azure 服务支持不通过 Azure AD 管理的本地用户和角色。 需要单独管理这些用户。
+某些 Azure 服务支持不通过 Azure AD 进行管理的本地用户和角色。 你需要单独管理这些用户。
 
 - [在 Privileged Identity Management (PIM) 中创建对 Azure 资源角色的访问评审](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
@@ -184,7 +184,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4：在 Azure AD 中设置紧急访问
 
-**指南**： Azure 防火墙管理器使用 Azure Active Directory 对管理服务的用户进行身份验证。 为了防止意外退出 Azure AD 组织，请设置一个紧急访问帐户，以便在正常管理帐户无法使用时进行访问。 紧急访问帐户通常拥有较高的权限，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。
+**指导**：Azure 防火墙管理器使用 Azure Active Directory 对管理该服务的用户进行身份验证。 为了防止意外退出 Azure AD 组织，请设置一个紧急访问帐户，以便在正常管理帐户无法使用时进行访问。 紧急访问帐户通常拥有较高的权限，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。
 
 应确保妥善保管紧急访问帐户的凭据（例如密码、证书或智能卡），仅将其告诉只能在紧急情况下有权使用它们的个人。
 
@@ -196,7 +196,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-5-automate-entitlement-management"></a>PA-5：将权利管理自动化 
 
-**指南**： Azure 防火墙管理器与 Azure Active Directory 集成，以管理其资源。 使用 Azure AD 的权利管理功能可自动执行访问请求工作流，包括访问权限分配、审查和过期。 还支持两阶段或多阶段审批。
+**指导**：Azure 防火墙管理器集成了 Azure Active Directory 来管理其资源。 使用 Azure AD 的权利管理功能可自动执行访问请求工作流，包括访问权限分配、审查和过期。 还支持两阶段或多阶段审批。
 
 - [什么是 Azure AD 访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -208,9 +208,9 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-6-use-privileged-access-workstations"></a>PA-6：使用特权访问工作站
 
-**指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 在生产环境中，使用高度安全的用户工作站执行 Azure 防火墙管理器资源的管理管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可集中管理安全工作站，强制实施安全配置，包括强身份验证、软件和硬件基线，以及受限制的逻辑和网络访问。
+**指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 在生产环境中，请使用高度安全的用户工作站执行对 Azure 防火墙管理器资源的管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可集中管理安全工作站，强制实施安全配置，包括强身份验证、软件和硬件基线，以及受限制的逻辑和网络访问。
 
-- [了解特权访问工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [部署特权访问工作站](../active-directory/devices/howto-azure-managed-workstation.md)
 
@@ -220,7 +220,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循 Just Enough Administration（最小特权原则） 
 
-**指南**： Azure 防火墙管理器集成了 azure 基于角色的访问控制 (RBAC) 来管理其资源。 使用 Azure RBAC，可通过角色分配来管理 Azure 资源访问。 可以将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 通过 Azure RBAC 分配给资源的特权应始终限制为角色所需的特权。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。
+**指导**：Azure 防火墙管理器集成了 Azure 基于角色的访问控制 (RBAC) 来管理其资源。 使用 Azure RBAC，可通过角色分配来管理 Azure 资源访问。 可以将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 通过 Azure RBAC 分配给资源的特权应始终限制为角色所需的特权。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。
 
 请使用内置角色来分配权限，仅在必要时创建自定义角色。
 
@@ -238,7 +238,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="dp-2-protect-sensitive-data"></a>DP-2：保护敏感数据
 
-**指南**：通过使用 Azure 基于角色的访问 (控制（azure RBAC) 、基于网络的访问控制和 azure 服务中的特定控件）限制访问，来保护敏感数据（例如 Azure 防火墙策略的配置数据）。
+**指导**：使用 Azure 基于角色的访问控制 (Azure RBAC)、基于网络的访问控制以及 Azure 服务中的特定控制来限制访问，从而保护敏感数据，例如 Azure 防火墙策略的配置数据。
 
 为了确保一致的访问控制，所有类型的访问控制都应符合企业分段策略。 企业分段策略还应根据敏感的或业务关键型的数据和系统的位置来确定。
 
@@ -254,7 +254,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="dp-3-monitor-for-unauthorized-transfer-of-sensitive-data"></a>DP-3：监视未经授权的敏感数据传输
 
-**指南**： Azure 防火墙策略资源只能由经过身份验证的用户访问。 客户需要确保只有经过授权的用户才有权访问数据。
+**指导**：只有经过身份验证的用户才能访问 Azure 防火墙策略资源。 客户需要确保只有经过授权的用户才有权访问该数据。
 
 - [创建自定义角色以访问规则集合组](rule-hierarchy.md#create-custom-roles-to-access-the-rule-collection-groups)
 
@@ -264,9 +264,9 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4：加密传输中的敏感信息
 
-**指南**：若要对访问控制进行补充，应防止传输中的数据受到 "带外" 攻击 (例如，流量捕获) 使用加密确保攻击者无法轻松读取或修改数据。
+**指导**：为了对访问控制进行补充，应该对传输中的数据使用加密技术防止“带外”攻击（例如流量捕获），以确保攻击者无法轻松读取或修改数据。
 
-Azure 防火墙管理器支持传输中的数据加密（TLS 1.2 或更高版本）。
+Azure 防火墙管理器支持使用 TLS 1.2 或更高版本进行的传输中数据加密。
 
 虽然这对于专用网络上的流量来说是可选的，但对于外部和公共网络上的流量来说，这是至关重要的。 对于 HTTP 流量，请确保连接到 Azure 资源的任何客户端能够协商 TLS v1.2 或更高版本。 对于远程管理，请使用 SSH（适用于 Linux）或 RDP/TLS（适用于 Windows），而不是使用未加密的协议。 应当禁用已过时的 SSL、TLS 和 SSH 版本和协议，以及弱密码。
 
@@ -294,7 +294,7 @@ Azure 防火墙管理器支持传输中的数据加密（TLS 1.2 或更高版本
 
 安全读取者权限可以广泛应用于整个租户（根管理组），也可以限制到管理组或特定订阅。 
 
-若要查看工作负荷和服务，可能需要其他权限。 
+若要了解工作负载和服务，可能需要更多权限。 
 
 - [安全读取者角色概述](../role-based-access-control/built-in-roles.md#security-reader)
 
@@ -306,9 +306,9 @@ Azure 防火墙管理器支持传输中的数据加密（TLS 1.2 或更高版本
 
 ### <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2：确保安全团队有权访问资产清单和元数据
 
-**指南**：确保安全团队可以访问 azure 上的 Azure 防火墙管理器资产的连续更新清单。 他们可以使用 Azure 资源关系图来查询和发现订阅中的所有 Azure 防火墙资源，包括 Azure 服务、应用程序和网络资源。
+**指导**：确保安全团队有权访问你在 Azure 上的 Azure 防火墙管理器资产的持续更新清单。 他们可以使用 Azure Resource Graph 查询和发现你的订阅中的所有 Azure 防火墙资源，包括 Azure 服务、应用程序和网络资源。
 
-将标记应用于 Azure 资源、资源组和订阅，以逻辑方式将它们组织到分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
+将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
 - [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md) 
 
@@ -322,7 +322,7 @@ Azure 防火墙管理器支持传输中的数据加密（TLS 1.2 或更高版本
 
 ### <a name="am-3-use-only-approved-azure-services"></a>AM-3：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略审核和限制用户可在你的环境中预配的服务，这包括能够允许或拒绝 Azure 防火墙资源的部署。 使用 Azure Resource Graph 查询和发现订阅中的资源。 你也可以使用 Azure Monitor 来创建规则，以便在检测到未经批准的服务时触发警报。
+**指导**：使用 Azure Policy 审核和限制用户可以在你的环境中预配的服务，这包括允许或拒绝 Azure 防火墙资源部署的权力。 使用 Azure Resource Graph 查询和发现订阅中的资源。 你也可以使用 Azure Monitor 来创建规则，以便在检测到未经批准的服务时触发警报。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -336,7 +336,7 @@ Azure 防火墙管理器支持传输中的数据加密（TLS 1.2 或更高版本
 
 ### <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4：确保资产生命周期管理的安全
 
-**指南**：不再需要 Azure 防火墙管理器资源来最大程度地减少攻击面，请将其删除。 用户可以通过 Azure 门户、CLI 或 REST Api 来管理其 Azure 防火墙管理器资源。
+**指导**：当不再需要 Azure 防火墙管理器资源时，请将其删除以最大限度地减小攻击面。 用户可以通过 Azure 门户、CLI 或 REST API 来管理其 Azure 防火墙管理器资源。
 
 - [Azure 防火墙策略 CLI](https://docs.microsoft.com/cli/azure/ext/azure-firewall/network/firewall/policy?view=azure-cli-latest&amp;preserve-view=true)
 
@@ -348,7 +348,7 @@ Azure 防火墙管理器支持传输中的数据加密（TLS 1.2 或更高版本
 
 ### <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5：限制用户与 Azure 资源管理器进行交互的能力
 
-**指南**： Azure 防火墙管理器与 Azure Active Directory (Azure AD) 用于标识和身份验证。 可以通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，来限制用户与 Azure 资源管理器的交互能力。
+**指导**：Azure 防火墙管理器集成了 Azure Active Directory (Azure AD) 来进行标识和身份验证管理。 你可以通过为“Microsoft Azure 管理”应用配置“阻止访问”，使用 Azure 条件访问来限制用户与 Azure 资源管理器交互的能力。
 
 - [如何配置条件访问来阻止对 Azure 资源管理器的访问](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -362,7 +362,7 @@ Azure 防火墙管理器支持传输中的数据加密（TLS 1.2 或更高版本
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：为 Azure 资源启用威胁检测
 
-**指南**：向 SIEM （可用于设置自定义威胁检测）或与防火墙策略相关的转发活动日志。 确保正在监视不同类型的 Azure 资产，以发现潜在的威胁和异常情况。 专注于获得高质量的警报，以减少对分析人员进行排序的误报。 警报可能源自日志数据、代理或其他数据。
+**指导**：将由防火墙策略生成的或与之相关的活动日志转发到你的 SIEM，后者可用来设置自定义威胁检测。 确保正在监视不同类型的 Azure 资产，以发现潜在的威胁和异常情况。 专注于获取高质量警报以减少误报，便于分析人员进行分类整理。 警报可能源自日志数据、代理或其他数据。
 
 - [创建自定义分析规则以检测威胁](../sentinel/tutorial-detect-threats-custom.md) 
 
@@ -383,9 +383,9 @@ Azure 防火墙管理器支持传输中的数据加密（TLS 1.2 或更高版本
 - 风险登录 - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。
 - 已标记为存在风险的用户 - 风险用户是指可能已泄露的用户帐户。
 
-Azure 安全中心还可针对某些可疑活动发出警报，例如，失败的身份验证尝试次数过多，使用了订阅中的已弃用帐户。 除了基本的安全机制监视，Azure 安全中心的威胁防护模块还可从各个 Azure 计算资源（虚拟机、容器、应用服务）、数据资源（SQL 数据库和存储）和 Azure 服务层收集更深入的安全警报。 此功能可让你查看单个资源内的帐户异常情况。
+Azure 安全中心还可针对某些可疑活动发出警报，例如，失败的身份验证尝试次数过多，使用了订阅中的已弃用帐户。 除了基本的安全机制监视，Azure 安全中心的威胁防护模块还可从各个 Azure 计算资源（虚拟机、容器、应用服务）、数据资源（SQL 数据库和存储）和 Azure 服务层收集更深入的安全警报。 可通过此功能查看各个资源内的帐户异常情况。
 
-活动日志当前不支持围绕防火墙策略规则收集组的操作，这是一个已知问题，在以后的更新中会解决此问题。
+活动日志当前不支持针对防火墙策略规则集合组的操作，这是一个已知问题，会在将来的更新中解决。
 
 - [Azure Active Directory 中的“审核活动”报表](../active-directory/reports-monitoring/concept-audit-logs.md)
 
@@ -399,9 +399,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4：为 Azure 资源启用日志记录
 
-**指南**：自动可用的活动日志包含对防火墙策略资源 (PUT、POST、DELETE) 的所有写入操作，但读取操作 (获取) 。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
+**指导**：自动提供的活动日志包含用于防火墙策略资源的所有写入操作（PUT、POST、DELETE），但读取操作 (GET) 除外。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
 
-活动日志当前不支持围绕防火墙策略规则收集组的操作，这是一个已知问题，在以后的更新中会解决此问题。
+活动日志当前不支持针对防火墙策略规则集合组的操作，这是一个已知问题，会在将来的更新中解决。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
 
@@ -413,13 +413,13 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 ### <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5：集中管理和分析安全日志
 
-**指南**：集中记录存储和分析以启用关联。 对于每个日志源，请确保已分配数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
+**指导**：集中记录存储和分析来实现关联。 对于每个日志源，请确保已分配数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
 
 确保正在将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
-此外，还可以启用日志数据并将其载入 Azure Sentinel 或第三方 SIEM。
+另外，请启用 Azure Sentinel 或第三方 SIEM 并将你的日志数据载入其中。
 
-许多组织选择使用 Azure Sentinel 作为 "热" 数据，这些数据经常使用，而 Azure 存储则用于不频繁使用的 "冷" 数据。
+许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
 
@@ -431,9 +431,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 ### <a name="lt-6-configure-log-storage-retention"></a>LT-6：配置日志存储保留期
 
-**指南**：确保用于存储防火墙策略日志的任何存储帐户或 Log Analytics 工作区都已根据组织的符合性规定设置了日志保持期。
+**指导**：确保用于存储防火墙策略日志的任何存储帐户或 Log Analytics 工作区都具有根据组织的符合性规定设置的日志保留期。
 
-在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 使用 Azure 存储、Data Lake 或 Log Analytics 工作区帐户进行长期和存档存储。
+在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期存储和存档存储。
 
 - [如何配置 Log Analytics 工作区保留期](../azure-monitor/platform/manage-cost-storage.md)
 
@@ -475,7 +475,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 可以基于过去的事件经验、经验证的社区源以及旨在通过融合和关联各种信号源来生成和清理警报的工具构建高质量警报。 
 
-Azure 安全中心可跨多个 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
+Azure 安全中心可跨许多 Azure 资产提供高质量的警报。 可以使用 ASC 数据连接器将警报流式传输到 Azure Sentinel。 借助 Azure Sentinel，可创建高级警报规则来自动生成事件以进行调查。 
 
 使用导出功能导出 Azure 安全中心警报和建议，以帮助识别 Azure 资源的风险。 手动导出或持续导出警报和建议。
 
@@ -521,7 +521,7 @@ Azure Sentinel 提供几乎针对任何日志源的广泛数据分析，并提�
 
 **指南**：根据警报严重性和资产敏感度，为分析人员提供上下文来确定应首要关注哪些事件。 
 
-Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心在查找或用于发出警报的分析中的置信度，以及导致警报的活动的恶意意图的置信度。
+Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心对调查结果或用于发出警报的分析的确信程度，以及对导致警报的活动背后存在恶意意图的确信程度。
 
 此外，使用标记来标记资源，并创建命名系统来对 Azure 资源进行标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
@@ -553,7 +553,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="pv-1-establish-secure-configurations-for-azure-services"></a>PV-1：为所有 Azure 服务建立安全配置 
 
-**指南**：使用以下机制（例如 azure 资源管理器模板、azure RBAC 控件和 azure 策略）在环境中自动部署和配置 Azure 防火墙管理器资源。 在部署时定义 Azure 防火墙管理器资源的安全配置，通过使用 "Azure 网络" 命名空间中的别名定义自定义 Azure 策略定义来审核并强制实施这些配置。
+**指导**：使用以下机制在你的环境中自动化和保护 Azure 防火墙管理器资源的部署和配置：Azure 资源管理器模板、Azure RBAC 控制和 Azure Policy。 在部署时为你的 Azure 防火墙管理器资源定义安全的配置，通过使用“Azure.Network”命名空间中的别名来定义自定义 Azure Policy 定义，以审核和强制实施这些配置。
 
 - [Azure 防火墙策略模板参考](/azure/templates/microsoft.network/firewallpolicies)
 
@@ -569,7 +569,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="pv-2-sustain-secure-configurations-for-azure-services"></a>PV-2：为所有 Azure 服务维护安全配置
 
-**指南**： Azure 防火墙管理器通过 azure 策略支持基于 azure 资源管理器的模板和配置设置。 定义自定义 Azure 策略定义，以使用 "Azure 网络" 命名空间中的别名审核和强制执行 Azure 防火墙管理器资源配置。
+**指导**：Azure 防火墙管理器支持基于 Azure 资源管理器的模板，并支持通过 Azure Policy 强制实施配置设置。 请定义自定义 Azure Policy 定义，以使用“Azure.Network”命名空间中的别名审核和强制实施 Azure 防火墙管理器资源配置。
 
 - [了解 Azure Policy 效果](../governance/policy/concepts/effects.md)
 
@@ -585,7 +585,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3：为计算资源建立安全配置
 
-**指南**：不适用;Azure 防火墙管理器是防火墙控制平面管理服务，不会公开基础服务的计算基础结构供客户配置。
+**指导**：不适用；Azure 防火墙管理器是防火墙控制平面管理服务，没有公开基础服务的计算基础结构供客户进行配置。
 
 **Azure 安全中心监视**：目前不可用
 
@@ -612,11 +612,11 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="br-1-ensure-regular-automated-backups"></a>BR-1：确保定期执行自动备份
 
-**指南**： Azure 防火墙管理器没有面向客户的系统备份概念，基础结构由 Microsoft 处理。
+**指导**：Azure 防火墙管理器没有面向客户的系统备份的概念，底层基础结构由 Microsoft 进行处理。
 
-对于资源配置备份，请使用 Azure 资源管理器将防火墙策略和相关资源导出 JavaScript 对象表示法 (JSON) 模板，该模板可用作配置备份。 还可以从 Azure 门户使用 Azure 防火墙的 "导出模板" 功能导出防火墙策略配置。 使用 Azure 自动化运行任何自定义备份脚本，以自动捕获 Azure 防火墙管理器资源的资源配置。
+若要备份资源配置，请使用 Azure 资源管理器将防火墙策略和相关资源导出到 JavaScript 对象表示法 (JSON) 模板中，该模板可用作配置备份。 还可以从 Azure 门户使用 Azure 防火墙的“导出模板”功能导出防火墙策略配置。 使用 Azure 自动化运行任何自定义备份脚本，以自动捕获 Azure 防火墙管理器资源的资源配置。
 
-- [使用模板部署安全虚拟中心](quick-secure-virtual-hub.md)
+- [使用模板部署安全的虚拟中心](quick-secure-virtual-hub.md)
 
 - [Microsoft 防火墙策略模板参考](/azure/templates/microsoft.network/firewallpolicies)
 
@@ -628,9 +628,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ### <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3：验证所有备份，包括客户管理的密钥
 
-**指南**： Azure 防火墙管理器不具有面向客户的系统备份的概念。 对于任何导出的 Azure 防火墙管理器资源模板，会使用这些 Azure 资源管理器模板文件定期执行还原。
+**指导**：Azure 防火墙管理器没有面向客户的系统备份的概念。 对于任何导出的 Azure 防火墙管理器资源模板，请定期使用这些 Azure 资源管理器模板文件执行还原。
 
-- [使用 Azure 资源管理器模板部署安全虚拟中心](quick-secure-virtual-hub.md)
+- [使用 Azure 资源管理器模板部署安全的虚拟中心](quick-secure-virtual-hub.md)
 
 - [Microsoft 防火墙策略模板参考](/azure/templates/microsoft.network/firewallpolicies)
 

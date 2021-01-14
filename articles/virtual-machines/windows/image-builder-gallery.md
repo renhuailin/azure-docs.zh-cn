@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 96603d27f53161c72c9e81bb7b84fdc6ab5d1ca2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6699db280c4d82867d5559255eab08fd6b55b65a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320058"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201512"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>预览版：创建 Windows 映像并将其分发到共享映像库 
 
@@ -20,7 +20,7 @@ ms.locfileid: "91320058"
 
 我们将使用一个 .json 模板来配置映像。 我们将使用的 .json 文件位于：[armTemplateWinSIG](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json)。 我们将下载并编辑此模板的本地版本，因此本文是使用本地 PowerShell 会话撰写的。
 
-此模板使用 [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) 作为模板的 `distribute` 部分的值，以便将映像分发到共享映像库。
+此模板使用 [sharedImage](../linux/image-builder-json.md#distribute-sharedimage) 作为模板的 `distribute` 部分的值，以便将映像分发到共享映像库。
 
 Azure 映像生成器会自动运行 sysprep 来将映像通用化，这是一个通用的 sysprep 命令，如有必要你可以[重写](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully)它。 
 

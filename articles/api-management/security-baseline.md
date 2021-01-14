@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ab4ae6980af9556f973ece93634b614d01c615e9
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 1825767d8140421d4f0e22f9ebfde42f8262da5e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132658"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201070"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API 管理的 Azure 安全基线
 
@@ -446,7 +446,7 @@ Azure API 管理订阅是保护对 API 的访问的一种方法，但会附带�
 
 **指南**：使用配置了多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录并配置 Azure 资源。
 
-* [了解特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

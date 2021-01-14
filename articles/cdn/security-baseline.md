@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3b04deacce09e267bbf3c5b5b8fa51740a508082
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: e291ea091e5f2e55aa3987be468eb582adda6288
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530963"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202787"
 ---
 # <a name="azure-security-baseline-for-content-delivery-network"></a>内容交付网络的 Azure 安全基线
 
@@ -60,7 +60,7 @@ ms.locfileid: "96530963"
 
 **指导**：安全的独立工作站对于确保敏感角色（如管理员、开发人员和关键服务操作员）的安全至关重要。 使用高度安全的用户工作站和/或 Azure Bastion 执行管理任务。 使用 Azure Active Directory (Azure AD) ，Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 为管理任务部署安全的托管用户工作站。 可通过集中管理安全的工作站来强制实施安全配置，包括强身份验证、软件和硬件基线、受限的逻辑和网络访问。
 
-- [了解特权访问工作站](../active-directory/devices/concept-azure-managed-workstation.md) 
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [部署特权访问工作站](../active-directory/devices/howto-azure-managed-workstation.md)
 
@@ -70,7 +70,7 @@ ms.locfileid: "96530963"
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循 Just Enough Administration（最小特权原则） 
 
-**指南**：内容交付网络集成了 Azure 基于角色的访问控制 (RBAC) 来管理其资源。 使用 Azure RBAC 通过角色分配来管理 Azure 资源访问权限。 将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 
+**指南**：内容交付网络集成了 Azure 基于角色的访问控制 (RBAC) 来管理其资源。 使用 Azure RBAC 通过角色分配来管理 Azure 资源访问权限。 可将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 
 
 根据角色的需要，限制通过 Azure RBAC 分配给资源的权限。 这是对 Azure AD Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。 
 
@@ -110,7 +110,7 @@ ms.locfileid: "96530963"
 
 ### <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2：确保安全团队有权访问资产清单和元数据
 
-**指南**：将标记应用于 Azure 资源、资源组和订阅，以逻辑方式将它们组织到分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
+**指导**：将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
 - [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md) 
 
@@ -124,7 +124,7 @@ ms.locfileid: "96530963"
 
 ### <a name="am-3-use-only-approved-azure-services"></a>AM-3：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略审核和限制用户可在你的环境中预配的服务。 使用 Azure Resource Graph 查询和发现订阅中的资源。 你也可以使用 Azure Monitor 来创建规则，以便在检测到未经批准的服务时触发警报。
+**指导**：请使用 Azure Policy 来审核和限制用户可以在你的环境中预配哪些服务。 使用 Azure Resource Graph 查询和发现订阅中的资源。 你也可以使用 Azure Monitor 来创建规则，以便在检测到未经批准的服务时触发警报。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -180,7 +180,7 @@ ms.locfileid: "96530963"
 
 **指南**：自动可用的活动日志包含内容交付网络资源的所有写入操作 (PUT、POST、DELETE) ，但读取操作 (获取) 。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
 
-启用用于 CDN 的 Azure 资源日志，可以使用 Azure 安全中心和 Azure 策略来启用资源日志和日志数据收集。 这些日志对于日后调查安全事件和执行鉴证演练可能至关重要。
+启用用于 CDN 的 Azure 资源日志，可以使用 Azure 安全中心和 Azure 策略来启用资源日志和日志数据收集。 这些日志可能对日后调查安全事件和执行取证演练至关重要。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 

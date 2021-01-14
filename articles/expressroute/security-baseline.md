@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a92802f0b121a332afccf7f6c12e876b3263bd82
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3ffd5dc1caef6bd2a77ca7902a117ad2446c0265
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343937"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202311"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>ExpressRoute 的 Azure 安全基线
 
@@ -301,7 +301,7 @@ ExpressRoute 的 Azure 安全基线包含将帮助你改善部署安全状况的
 
 **指南**：将特权访问工作站 (PAW) 与 Azure AD 多重身份验证 (MFA) 一起使用，以便登录和配置 Azure Sentinel 相关资源。
 
-* [特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [规划基于云的 Azure AD 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -599,7 +599,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定义并维护已获批 Azure 资源的清单
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -921,7 +921,7 @@ Azure ExpressRoute 还具有线路所有者和线路用户角色。 线路用户
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 

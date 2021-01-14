@@ -9,12 +9,12 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: 2388d4be0f7d51f9d5897998049b445595648c0a
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: eac6201f45b11cae223e2293644bd9d0144e6e31
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763972"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203348"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
 
@@ -65,7 +65,7 @@ The entity was not found in this Azure location
 
 ## <a name="azure-cli"></a>Azure CLI
 
-以下示例使用 [az vm run-command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) 命令在 Azure Windows VM 上运行 shell 脚本。
+以下示例使用 [az vm run-command](/cli/azure/vm/run-command#az-vm-run-command-invoke) 命令在 Azure Windows VM 上运行 shell 脚本。
 
 ```azurecli-interactive
 # script.ps1
@@ -104,7 +104,7 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>限制对“运行命令”的访问
 
-若要列出运行命令或显示命令的详细信息，需要具有 `Microsoft.Compute/locations/runCommands/read` 订阅级别的权限。 内置[读者](../../role-based-access-control/built-in-roles.md#reader)角色和更高级别具有此权限。
+列出运行命令或显示命令详细信息需要订阅级别的 `Microsoft.Compute/locations/runCommands/read` 权限。 内置[读者](../../role-based-access-control/built-in-roles.md#reader)角色和更高级别具有此权限。
 
 运行命令需要 `Microsoft.Compute/virtualMachines/runCommand/action` 权限。 [虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和更高级别具有此权限。
 

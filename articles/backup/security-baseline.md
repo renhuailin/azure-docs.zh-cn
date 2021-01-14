@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a2cbd2dd4dd32be137e461985e9f10fd07ed8a60
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ee4c364012b32ff8ee938dec2a7446853c32ba0b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325632"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203076"
 ---
 # <a name="azure-security-baseline-for-backup"></a>备份的 Azure 安全基线
 
@@ -298,7 +298,7 @@ ms.locfileid: "96325632"
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
-**指导**：在 Azure 备份中执行关键操作时，必须输入 Azure 门户中提供的安全 PIN。 启用 Azure AD 多重身份验证会添加一个安全层。 只有获得授权、具有有效 Azure 凭据且通过第二台设备进行身份验证的用户能够访问 Azure 门户。
+**指导**：在 Azure 备份中执行关键操作时，必须输入 Azure 门户中提供的安全 PIN。 启用 Azure AD 多重身份验证相当于增加了一个安全层。 只有获得授权、具有有效 Azure 凭据且通过第二台设备进行身份验证的用户能够访问 Azure 门户。
 
 - [Azure 备份中的多重身份验证](./backup-azure-security-feature.md)
 
@@ -310,9 +310,9 @@ ms.locfileid: "96325632"
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
-**指南**：将特权访问工作站 (PAW) 与 Azure AD 多因素身份验证 (MFA) 配置为登录并配置支持 Azure 备份的资源。
+**指导**：使用配置了 Azure AD 多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录和配置启用了 Azure 备份的资源。
 
-- [特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [规划基于云的 Azure AD 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -320,7 +320,7 @@ ms.locfileid: "96325632"
 
 **责任**：客户
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录管理帐户的可疑活动并发出警报
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
 **指导**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。
 
@@ -680,7 +680,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="610-implement-approved-application-list"></a>6.10：实施已批准的应用程序列表
 
-**指南**：不适用；此建议适用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -952,7 +952,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 

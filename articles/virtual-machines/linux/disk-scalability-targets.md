@@ -7,18 +7,18 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: e986348c063626bd6a0b5a834854bad09d73c952
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a0bf27d44746ff9cf688df179ad3b602353907
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88814189"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201155"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Linux 上的 VM 磁盘的可伸缩性和性能目标
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-请参阅 [Linux VM 大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)了解其他详细信息。
+请参阅 [Linux VM 大小](../sizes.md)了解其他详细信息。
 
 ## <a name="managed-virtual-machine-disks"></a>托管虚拟机磁盘
 
