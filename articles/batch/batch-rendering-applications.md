@@ -3,14 +3,14 @@ title: 渲染应用程序
 description: 可以将任何渲染应用程序与 Azure Batch 配合使用。 不过，常见的预安装应用程序都提供了 Azure 市场 VM 映像。
 ms.date: 09/19/2019
 ms.topic: how-to
-ms.openlocfilehash: f876671c6ac16137c2c1cf8d40bd70860c06975b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4eefa287575d68acccb2697e1d262c7e48dab62
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85960480"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234403"
 ---
-# <a name="pre-installed-applications-on-rendering-vm-images"></a>在渲染 VM 映像上预安装的应用程序
+# <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>成批渲染 VM 映像上的预安装应用程序
 
 可以将任何渲染应用程序与 Azure Batch 配合使用。 不过，常见的预安装应用程序都提供了 Azure 市场 VM 映像。
 
@@ -87,4 +87,4 @@ ms.locfileid: "85960480"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要使用渲染 VM 映像，需要在创建池时在池配置中指定它们；请参阅 [Batch 池渲染功能](./batch-rendering-functionality.md#batch-pools)。
+若要使用渲染 VM 映像，需要在创建池时在池配置中指定它们；请参阅 [Batch 池渲染功能](./batch-rendering-functionality.md)。
