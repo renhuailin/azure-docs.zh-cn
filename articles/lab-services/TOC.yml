@@ -63,19 +63,8 @@
         - name: 使用 Teams 中的 Azure 实验室服务
           items:
             - name: 概述
+              displayName: labs within Teams
               href: lab-services-within-teams-overview.md
-            - name: 从 Teams 创建实验室
-              href: how-to-get-started-create-lab-within-teams.md
-            - name: 管理用户列表
-              href: how-to-manage-user-lists-within-teams.md
-            - name: 管理 VM 池
-              href: how-to-manage-vm-pool-within-teams.md
-            - name: 删除实验室
-              href: how-to-delete-lab-within-teams.md
-            - name: 日程安排和设置
-              href: how-to-create-schedules-within-teams.md
-            - name: 访问 VM（学生视图）
-              href: how-to-access-vm-for-students-within-teams.md
 - name: 操作指南
   items:
     - name: 管理员指南
@@ -164,6 +153,20 @@
           href: how-to-set-virtual-machine-passwords-student.md
         - name: 查看支持信息（学生）
           href: lab-user-support-information.md
+    - name: 在 Teams 中使用实验室
+      items:
+        - name: 从 Teams 创建实验室
+          href: how-to-get-started-create-lab-within-teams.md
+        - name: 管理用户列表
+          href: how-to-manage-user-lists-within-teams.md
+        - name: 管理 VM 池
+          href: how-to-manage-vm-pool-within-teams.md
+        - name: 删除实验室
+          href: how-to-delete-lab-within-teams.md
+        - name: 日程安排和设置
+          href: how-to-create-schedules-within-teams.md
+        - name: 访问 VM（学生视图）
+          href: how-to-access-vm-for-students-within-teams.md
 - name: 参考
   items:
     - name: REST API
