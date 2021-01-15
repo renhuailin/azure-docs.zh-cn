@@ -6,18 +6,18 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: a22dc6dc0c4fc199d3f262b18aeeae5090a06dce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11b0260eb6c1f5edfb246dcf97a43bdd874bf337
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84689310"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217271"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 网络安全组 (NSG) 移到另一个区域
 
 在多种情况下，可能需要将现有的 NSG 从一个区域移到另一个区域。 例如，可能需要创建一个具有相同配置和安全规则的 NSG，以便进行测试。 还可能需要按照灾难恢复规划将 NSG 移到另一个区域。
 
-Azure 安全组不能从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板来导出 NSG 的现有配置和安全规则。  然后，可以将资源暂存在另一区域，方法是：将 NSG 导出到模板，根据目标区域的情况修改参数，然后将模板部署到新区域。  有关资源管理器和模板的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+Azure 安全组不能从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板来导出 NSG 的现有配置和安全规则。  然后，可以将资源暂存在另一区域，方法是：将 NSG 导出到模板，根据目标区域的情况修改参数，然后将模板部署到新区域。  有关资源管理器和模板的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -32,7 +32,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
 - 验证 Azure 订阅是否允许在已使用的目标区域中创建 NSG。 请联系支持部门，启用所需配额。
 
-- 确保订阅提供足够的资源，以便为此过程添加 NSG。  请参阅 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
+- 确保订阅提供足够的资源，以便为此过程添加 NSG。  请参阅 [Azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 
 
 ## <a name="prepare-and-move"></a>准备并移动
@@ -84,7 +84,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
     ```
 
-11. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国中部**  =  **centralus**的区域名称。
+11. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国中部**  =  **centralus** 的区域名称。
 
 12. 也可选择更改模板中的其他参数，这些参数是可选的，具体取决于你的要求：
 
@@ -178,5 +178,5 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 在本教程中，我们将 Azure 网络安全组从一个区域移到了另一个区域，并清理了源资源。  若要详细了解如何在区域之间移动资源，以及如何在 Azure 中进行灾难恢复，请参阅：
 
 
-- [将资源移到新资源组或订阅中](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [将 Azure VM 移到另一区域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [将资源移到新资源组或订阅中](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [将 Azure VM 移到另一区域](../site-recovery/azure-to-azure-tutorial-migrate.md)

@@ -1,6 +1,6 @@
 ---
 title: 排查 Azure VM 间的连接问题 | Microsoft Docs
-description: 了解如何排查和解决在 Azure Vm 之间可能会遇到的连接问题。
+description: 了解如何排查和解决在 Azure VM 之间可能会遇到的连接问题。
 services: virtual-network
 documentationcenter: na
 author: chadmath
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286081"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219192"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>排查 Azure VM 间的连接问题
 
@@ -49,7 +49,7 @@ Azure 虚拟机 (VM) 间可能出现连接问题。 本文提供解决此问题�
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>步骤 1：检查 NIC 的配置是否不正确
 
-按照[如何为 Azure Windows VM 重置网络接口](../virtual-machines/windows/reset-network-interface.md)中的步骤进行操作。 
+按照[如何为 Azure Windows VM 重置网络接口](../virtual-machines/troubleshooting/reset-network-interface.md)中的步骤进行操作。 
 
 如果修改网络接口 (NIC) 后出现此问题，请按照下列步骤进行操作：
 
@@ -62,8 +62,8 @@ Azure 虚拟机 (VM) 间可能出现连接问题。 本文提供解决此问题�
 
 **单 NIC VM** 
 
-- [重新部署 Windows VM](../virtual-machines/windows/redeploy-to-new-node.md)
-- [重新部署 Linux VM](../virtual-machines/linux/redeploy-to-new-node.md)
+- [重新部署 Windows VM](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
+- [重新部署 Linux VM](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>步骤 2：检查网络流量是否被 NSG 或 UDR 阻止
 
@@ -103,7 +103,7 @@ netstat -l
 
 ### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>步骤 7：检查是否为经典 VM 创建了终结点
 
-在 Azure 中使用经典部署模型创建的所有 VM 都可以通过专用网络通道与同一云服务或虚拟网络中的其他虚拟机自动通信。 但是，其他虚拟网络上的计算机需要终结点才能定向虚拟机的入站网络流量。 有关详细信息，请参阅[如何设置终结点](../virtual-machines/windows/classic/setup-endpoints.md)。
+在 Azure 中使用经典部署模型创建的所有 VM 都可以通过专用网络通道与同一云服务或虚拟网络中的其他虚拟机自动通信。 但是，其他虚拟网络上的计算机需要终结点才能定向虚拟机的入站网络流量。 有关详细信息，请参阅[如何设置终结点](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints)。
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>步骤 8：尝试连接到 VM 网络共享
 

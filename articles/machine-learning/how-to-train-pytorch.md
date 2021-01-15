@@ -8,21 +8,21 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
-ms.date: 12/10/2020
+ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e3bf77406df302c4ba83cb7a8f1a30fba9f6339e
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 962054943a68aa61ac681de97eeebc10fe3f2b0a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795931"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216625"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 PyTorch 模型
 
 本文介绍了如何使用 Azure 机器学习在企业范围内运行 [PyTorch](https://pytorch.org/) 训练脚本。
 
-本文中的示例脚本用来对鸡和火鸡图像进行分类，以基于 PyTorch 的迁移学习[教程](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)构建深度学习神经网络 (DNN)。 传输学习是一项技术，可应用从解决一个问题到不同但相关的问题而获得的知识。 这会通过要求更少的数据、时间和计算资源而不是从头开始培训来对定型过程进行快捷处理。
+本文中的示例脚本用来对鸡和火鸡图像进行分类，以基于 PyTorch 的迁移学习[教程](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)构建深度学习神经网络 (DNN)。 传输学习是一项技术，可应用从解决一个问题到不同但相关的问题而获得的知识。 这会通过要求更少的数据、时间和计算资源而不是从头开始培训来对定型过程进行快捷处理。 若要详细了解传输学习，请参阅 [深度学习与机器学习](./concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning) 文章。
 
 无论是从头开始训练深度学习 PyTorch 模型，还是将现有模型引入云中，都可以通过 Azure 机器学习使用弹性云计算资源来横向扩展开源训练作业。 你可以通过 Azure 机器学习来构建、部署和监视生产级模型以及对其进行版本控制。 
 
@@ -32,7 +32,7 @@ ms.locfileid: "97795931"
 
 - Azure 机器学习计算实例 - 无需下载或安装
 
-    - 在开始本教程之前完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)以创建预先装载了 SDK 和示例存储库的专用笔记本服务器。
+    - 在开始本教程之前完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)创建预先加载了 SDK 和示例存储库的专用笔记本服务器。
     - 在笔记本服务器上的示例深度学习文件夹中，通过导航到以下目录，找到已完成且已展开的笔记本：**how-to-use-azureml > ml-frameworks > pytorch > train-hyperparameter-tune-deploy-with-pytorch** 文件夹。 
  
  - 你自己的 Jupyter 笔记本服务器

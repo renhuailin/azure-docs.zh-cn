@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 062bd41b0803cbb08f74fbcbcebb89bbddeb0d45
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4c58968cb6a38a10433915ec8fa00336ccad301e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559797"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216404"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
@@ -88,15 +88,13 @@ ms.locfileid: "97559797"
 
 ### <a name="bandwidth-charges"></a>带宽费用
 
-如果 Azure 数据源位于 Azure 认知搜索的不同区域，则使用 [索引器](search-indexer-overview.md) 可能会影响计费。 在此方案中，这是将出站数据从 Azure 数据源移到 Azure 认知搜索的成本。 
+如果 Azure 数据源位于 Azure 认知搜索的不同区域，则使用 [索引器](search-indexer-overview.md) 可能会影响计费。 在这种情况下，将出站数据从 Azure 数据源移到 Azure 认知搜索可能会产生费用。 有关详细信息，请参阅相关 Azure 数据平台的定价页。
 
 如果在数据所在的同一区域中创建 Azure 认知搜索服务，则可以完全消除数据流出费用。 下面是摘自[带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中的一些信息：
 
-+ Microsoft 不会向 Azure 上的任何服务收取任何入站数据的费用。
-+ Azure 认知搜索没有任何出站数据费用。 例如，如果搜索服务位于美国西部，而 Azure Web 应用位于美国东部，则 Microsoft 不会对来自美国西部的查询响应负载收费。
-+ 在多服务解决方案中，如果所有服务都位于同一区域，则不会对跨越网络的数据收费。
++ 入站数据： Microsoft 不会向 Azure 上的任何服务收取任何入站数据的费用。 
 
-如果服务在不同的区域中，则会针对出站数据收费。 这些费用实际上不是 Azure 认知搜索帐单的一部分。 此处之所以提到这些费用，是因为如果你使用数据或 AI 扩充索引器从不同的区域提取数据，将会在总体帐单中看到这些费用。
++ 出站数据：出站数据是指查询结果。 认知搜索不会对出站数据收费，但如果服务在不同区域中，则可能会产生来自 Azure 的出站费用。 这些费用实际上不是 Azure 认知搜索帐单的一部分。 之所以提到，是因为如果你要将结果发送到其他区域或非 Azure 应用，则可以看到反映在你的整体帐单中的这些成本。
 
 ### <a name="ai-enrichment-with-cognitive-services"></a>使用认知服务的 AI 扩充
 

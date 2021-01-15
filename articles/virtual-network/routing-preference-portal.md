@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: ef1e33a2e43f26dcaf794b2ed81f27d39639b52d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 2c6295db96f951abd1fd069535b98639e723d93a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533972"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217560"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>使用 Azure 门户配置公共 IP 地址的路由首选项
 
-本文介绍如何通过 ISP 网络为公共 IP 地址配置 [路由首](https://docs.microsoft.com/azure/virtual-network/routing-preference-overview) 选项 (**Internet** 选项) 。 创建公共 IP 地址后，可将其与以下 Azure 资源关联，以获得 Internet 的入站和出站流量：
+本文介绍如何通过 ISP 网络为公共 IP 地址配置 [路由首](./routing-preference-overview.md) 选项 (**Internet** 选项) 。 创建公共 IP 地址后，可将其与以下 Azure 资源关联，以获得 Internet 的入站和出站流量：
 
 * 虚拟机
 * 虚拟机规模集
@@ -56,5 +56,5 @@ ms.locfileid: "96533972"
 - 详细了解[具有路由首选项的公共 IP](routing-preference-overview.md)。
 - [为 VM 配置路由首选项](tutorial-routing-preference-virtual-machine-portal.md)。
 - [使用 PowerShell 配置公共 IP 地址的路由首选项](routing-preference-powershell.md)。
-- 详细了解 Azure 中的[公共 IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
+- 详细了解 Azure 中的[公共 IP 地址](./public-ip-addresses.md#public-ip-addresses)。
 - 详细了解所有[公共 IP 地址设置](virtual-network-public-ip-address.md#create-a-public-ip-address)。

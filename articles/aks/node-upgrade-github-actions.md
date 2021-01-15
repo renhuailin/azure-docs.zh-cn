@@ -5,12 +5,12 @@ description: 了解如何使用 GitHub 操作更新 AKS 节点
 services: container-service
 ms.topic: article
 ms.date: 11/27/2020
-ms.openlocfilehash: 504c99a7305a5010f8dbe56a30b53d6fc3a13c5b
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 6876cf1e5044246492e249d8a61060cbeac46f96
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607834"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217951"
 ---
 # <a name="apply-security-updates-to-azure-kubernetes-service-aks-nodes-automatically-using-github-actions"></a>使用 GitHub 操作自动将安全更新应用到 Azure Kubernetes Service (AKS) 节点
 
@@ -74,7 +74,7 @@ ms.locfileid: "96607834"
 下载并登录到 Azure CLI。
 
 1. 在 GitHub 操作屏幕的右侧，找到 *marketplace 搜索栏* ，然后键入 **"Azure Login"**。
-1. 结果就是一个名为 "azure 发布的 **Azure 登录** 名 **by Azure**" 的操作：
+1. 结果就是一个名为 "azure 发布的 **Azure 登录** 名" 的操作：
 
       :::image type="content" source="media/node-upgrade-github-actions/azure-login-search.png" alt-text="显示两行的搜索结果，第一个操作称为 &quot;Azure Login&quot;，第二个 &quot;Azure 容器注册表&quot; Login":::
 
@@ -157,7 +157,7 @@ ms.locfileid: "96607834"
           - name: Upgrade node images
             uses: Azure/cli@v1.0.0
             with:
-              inlineScript: az aks upgrade -g {resourceGroupName} -n {aksClusterName} --node-image-only
+              inlineScript: az aks upgrade -g {resourceGroupName} -n {aksClusterName} --node-image-only --yes
     ```
 
     > [!TIP]

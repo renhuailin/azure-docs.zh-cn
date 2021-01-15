@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 93feaef01b234eeb7ac363c18d8e9d8f52b009de
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004936"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216523"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -33,14 +33,14 @@ ms.locfileid: "96004936"
 - [Azure Synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (*Microsoft.Sql*)：在所有 Azure 区域已推出正式版。
 - **[Azure Database for PostgreSQL 服务器](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
 - **[Azure Database for MySQL 服务器](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
-- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.AzureCosmosDB)：在所有 Azure 区域已推出正式版。
+- **[Azure Database for MariaDB](../mariadb/concepts-data-access-security-vnet.md)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
+- **[Azure Cosmos DB](../cosmos-db/how-to-configure-vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.AzureCosmosDB)：在所有 Azure 区域已推出正式版。
 - **[Azure Key Vault](../key-vault/general/overview-vnet-service-endpoints.md)** (Microsoft.KeyVault)：在所有 Azure 区域已推出正式版。
 - **[Azure 服务总线](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.ServiceBus)：在所有 Azure 区域已推出正式版。
 - **[Azure 事件中心](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*的*) ：在所有 azure 区域公开发布。
 - **[Azure Data Lake Store 第 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*AzureActiveDirectory*) ：在所有可用的 Azure ADLS Gen1 区域中公开提供。
-- [Azure 应用服务](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) (*Microsoft.Web*)：通常可在应用服务可用的所有 Azure 区域中使用。
-- **[Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)** (*cognitiveservices account*) ：在所有支持认知服务的 Azure 区域公开发布。
+- [Azure 应用服务](../app-service/app-service-ip-restrictions.md) (*Microsoft.Web*)：通常可在应用服务可用的所有 Azure 区域中使用。
+- **[Azure 认知服务](../cognitive-services/cognitive-services-virtual-networks.md?tabs=portal)** (*cognitiveservices account*) ：在所有支持认知服务的 Azure 区域公开发布。
 
 **公共预览版**
 
@@ -98,7 +98,7 @@ ms.locfileid: "96004936"
 
 - 使用服务终结点的网络安全组 (NSG)：
   - 默认情况下，NSG 允许出站 Internet 流量，并允许来自 VNet 的流量发往 Azure 服务。 此流量继续按原有方式使用服务终结点。 
-  - 如果你想要拒绝所有出站 Internet 流量并只允许发往特定 Azure 服务的流量，可以在 NSG 中使用[服务标记](security-overview.md#service-tags)来实现此目的。 可以在 NSG 规则中将受支持的 Azure 服务指定为目标，Azure 还会对每个标记下面的 IP 地址提供维护。 有关详细信息，请参阅 [NSG 的 Azure 服务标记](security-overview.md#service-tags)。 
+  - 如果你想要拒绝所有出站 Internet 流量并只允许发往特定 Azure 服务的流量，可以在 NSG 中使用[服务标记](./network-security-groups-overview.md#service-tags)来实现此目的。 可以在 NSG 规则中将受支持的 Azure 服务指定为目标，Azure 还会对每个标记下面的 IP 地址提供维护。 有关详细信息，请参阅 [NSG 的 Azure 服务标记](./network-security-groups-overview.md#service-tags)。 
 
 ### <a name="scenarios"></a>方案
 
@@ -138,11 +138,11 @@ ms.locfileid: "96004936"
 
 ## <a name="vnet-service-endpoint-policies"></a>VNet 服务终结点策略 
 
-使用 VNet 服务终结点策略，你可以筛选到 Azure 服务的虚拟网络流量。 此筛选器仅允许在服务终结点上使用特定的 Azure 服务资源。 服务终结点策略针对发往 Azure 服务的虚拟网络流量提供精细的访问控制。 有关详细信息，请参阅[虚拟网络服务终结点策略](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)。
+使用 VNet 服务终结点策略，你可以筛选到 Azure 服务的虚拟网络流量。 此筛选器仅允许在服务终结点上使用特定的 Azure 服务资源。 服务终结点策略针对发往 Azure 服务的虚拟网络流量提供精细的访问控制。 有关详细信息，请参阅[虚拟网络服务终结点策略](./virtual-network-service-endpoint-policies-overview.md)。
 
 ## <a name="faqs"></a>常见问题
 
-有关常见问题的解答，请参阅[虚拟网络服务终结点常见问题解答](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)。
+有关常见问题的解答，请参阅[虚拟网络服务终结点常见问题解答](./virtual-networks-faq.md#virtual-network-service-endpoints)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -151,5 +151,5 @@ ms.locfileid: "96004936"
 - [在虚拟网络中保护 Azure SQL 数据库](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [在虚拟网络中保护 Azure Synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [虚拟网络中的 Azure 服务集成](virtual-network-for-azure-services.md)
-- [虚拟网络服务终结点策略](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [虚拟网络服务终结点策略](./virtual-network-service-endpoint-policies-overview.md)
 - [Azure Resource Manager 模板](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)

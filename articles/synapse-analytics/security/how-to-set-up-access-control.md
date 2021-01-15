@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7dbbe3afb2a5eb19b5c4893bd73eddbf11e788d4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109260"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218070"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>如何为 Synapse 工作区设置访问控制 
 
@@ -73,8 +73,8 @@ ms.locfileid: "97109260"
 对于基本设置，这五个组就足够了。 稍后，你可以添加安全组来处理需要更专业访问权限的用户，或仅向用户提供对特定资源的访问权限。
 
 > [!NOTE]
->- 通过[本文](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)了解如何创建安全组。
->- 通过[本文](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal)了解如何添加另一个安全组中的安全组。
+>- 通过[本文](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)了解如何创建安全组。
+>- 通过[本文](../../active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)了解如何添加另一个安全组中的安全组。
 
 >[!Tip]
 >单个 Synapse 用户可以使用 Azure 门户中 Azure Active Directory 来查看他们的组成员身份，以确定他们被授予了哪些角色。

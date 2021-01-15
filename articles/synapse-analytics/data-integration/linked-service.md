@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb3c7dd7b3d7e8e42e230eedcd0d1b43af104327
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452526"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220110"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>使用专用链接保护链接服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "96452526"
 ## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费 Azure 帐户](https://azure.microsoft.com/free/)。
-* **Azure 存储帐户**，使用 Azure Data Lake Gen 2 作为源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../../storage/blobs/data-lake-storage-quickstart-create-account.md)来了解创建步骤。 请确保存储帐户具有 Synapse Studio IP 筛选用于访问它，并且你只允许 **所选网络** 访问存储帐户。 边栏选项卡 **和虚拟网络** 下的设置应该如下图所示。
+* **Azure 存储帐户**，使用 Azure Data Lake Gen 2 作为源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)来了解创建步骤。 请确保存储帐户具有 Synapse Studio IP 筛选用于访问它，并且你只允许 **所选网络** 访问存储帐户。 边栏选项卡 **和虚拟网络** 下的设置应该如下图所示。
 
 ![安全存储帐户](./media/secure-storage-account.png)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 536a9641b68ccd2510a7891b46483a322fb6ecb7
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 6c065b7a7269c8da42493ede50466f44f7dd2658
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900920"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219940"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -139,7 +139,7 @@ ms.locfileid: "97900920"
 - 九封电子邮件 & 日历
 
 > [!NOTE]
-> Microsoft Kaizala、Microsoft Skype for Business 和 Microsoft Visio 不支持 **需要应用保护策略** 授予。 如果要求这些应用正常工作，请使用 "仅 **要求批准的应用** " 授权。 对于这三个应用程序，在两个授予之间使用或子句将不起作用。
+> Microsoft 团队、Microsoft Kaizala、Microsoft Skype for Business 和 Microsoft Visio 不支持必需的 **应用保护策略** 授予。 如果要求这些应用正常工作，请使用 "仅 **要求批准的应用** " 授权。 对于这三个应用程序，在两个授予之间使用或子句将不起作用。
 
 **备注**
 

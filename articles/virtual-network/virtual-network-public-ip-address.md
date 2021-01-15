@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 1d7ba163f05e827e9262215fd604fa175efa6fc8
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 36b7c5caf54001abba1f17500c680f96934657eb
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955597"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216761"
 ---
 # <a name="manage-public-ip-addresses"></a>管理公共 IP 地址
 
@@ -49,9 +49,9 @@ ms.locfileid: "97955597"
 
 有关如何使用门户、PowerShell 或 CLI 来创建公共 IP 地址的说明，请参阅以下页面：
 
- * [创建公共 IP 地址 - 门户](https://docs.microsoft.com/azure/virtual-network/create-public-ip-portal?tabs=option-create-public-ip-standard-zones)
- * [创建公共 IP 地址 - PowerShell](https://docs.microsoft.com/azure/virtual-network/create-public-ip-powershell?tabs=option-create-public-ip-standard-zones)
- * [创建公共 IP 地址 - Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-public-ip-cli?tabs=option-create-public-ip-standard-zones)
+ * [创建公共 IP 地址 - 门户](./create-public-ip-portal.md?tabs=option-create-public-ip-standard-zones)
+ * [创建公共 IP 地址 - PowerShell](./create-public-ip-powershell.md?tabs=option-create-public-ip-standard-zones)
+ * [创建公共 IP 地址 - Azure CLI](./create-public-ip-cli.md?tabs=option-create-public-ip-standard-zones)
 
 >[!NOTE]
 >虽然门户提供了用于创建两个公共 IP 地址资源（一个 IPv4 和一个 IPv6）的选项，但 PowerShell 和 CLI 命令可使用任一 IP 版本的地址创建一个资源。 如果需要两个公共 IP 地址资源（每个 IP 版本一个），必须运行此命令两次，为公共 IP 地址资源指定不同的名称和 IP 版本。
@@ -61,7 +61,7 @@ ms.locfileid: "97955597"
    |设置|必需？|详细信息|
    |---|---|---|
    |IP 版本|是| 选择 IPv4 或 IPv6 或“两者”。 选择“两者”将导致创建 2 个公共 IP 地址，1 个 IPv4 地址和 1个 IPv6 地址。 详细了解 [Azure VNET 中的 IPv6](../virtual-network/ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。|
-   |SKU|是|引入 SKU 之前创建的所有公共 IP 地址均为基本 SKU 公共 IP 地址。 创建公共 IP 地址后，无法更改此 SKU。 独立虚拟机、可用性集内的虚拟机或虚拟机规模集可使用基本 SKU 或标准 SKU。 不允许在可用性集或规模集或独立 VM 内的虚拟机之间混用 SKU。 基本 SKU：如果要在支持可用性区域的区域内创建公共 IP 地址，“可用性区域”设置默认设为“无”。 基本公共 Ip 不支持可用性区域。 **标准** SKU：标准 SKU 公共 IP 可关联到虚拟机或负载均衡器前端。 如果要在支持可用性区域的区域内创建公共 IP 地址，“可用性区域”设置默认设为“区域冗余”。 有关可用性区域的详细信息，请参阅“可用性区域”设置。 将地址关联到标准负载均衡器时需使用标准 SKU。 若要了解标准 负载均衡器的详细信息，请参阅 [Azure 负载均衡器标准 SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用 [网络安全组](security-overview.md#network-security-groups)显式允许预期流量。 创建并关联网络安全组且显式允许所需流量之后，才可与资源通信。|
+   |SKU|是|引入 SKU 之前创建的所有公共 IP 地址均为基本 SKU 公共 IP 地址。 创建公共 IP 地址后，无法更改此 SKU。 独立虚拟机、可用性集内的虚拟机或虚拟机规模集可使用基本 SKU 或标准 SKU。 不允许在可用性集或规模集或独立 VM 内的虚拟机之间混用 SKU。 基本 SKU：如果要在支持可用性区域的区域内创建公共 IP 地址，“可用性区域”设置默认设为“无”。 基本公共 Ip 不支持可用性区域。 **标准** SKU：标准 SKU 公共 IP 可关联到虚拟机或负载均衡器前端。 如果要在支持可用性区域的区域内创建公共 IP 地址，“可用性区域”设置默认设为“区域冗余”。 有关可用性区域的详细信息，请参阅“可用性区域”设置。 将地址关联到标准负载均衡器时需使用标准 SKU。 若要了解标准 负载均衡器的详细信息，请参阅 [Azure 负载均衡器标准 SKU](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用 [网络安全组](./network-security-groups-overview.md#network-security-groups)显式允许预期流量。 创建并关联网络安全组且显式允许所需流量之后，才可与资源通信。|
    |层|是|指示 IP 地址是与区域 (区域) ，还是从多 **个区域 (** **全局**) 进行 "随机广播"。 *请注意，"全局层" IP 是标准 ip 的预览功能，目前仅用于跨区域负载均衡器*。|
    |名称|是|名称在所选资源组中必须唯一。|
    |IP 地址分配|是|**动态：** 只有在将公共 IP 地址与 Azure 资源相关联并首次启动该资源时，才分配动态地址。 如果将动态地址分配给某个资源，例如虚拟机，并且虚拟机停止（解除分配）后又重启，则动态地址可能会更改。 如果虚拟机重启或停止（但未解除分配），该地址将保持不变。 当公共 IP 地址资源从它关联到的资源取消关联时，会释放动态地址。 **静态：** 静态地址是在创建公共 IP 地址时分配的。 删除公共 IP 地址资源之前，不会释放静态地址。 如果地址没有关联到资源，则在创建地址后可以更改分配方法。 如果地址已关联到资源，则无法更改分配方法。 如果选择 IPv6 作为“IP 版本”，则对于 Basic SKU，分配方法必须为“动态”。  对于 IPv4 和 IPv6，标准 SKU 地址均为“静态”。 |
@@ -77,7 +77,7 @@ ms.locfileid: "97955597"
 ## <a name="view-modify-settings-for-or-delete-a-public-ip-address"></a>查看、修改公共 IP 地址的设置或删除公共 IP 地址
 
    - 查看/列出：用于检查公共 IP 的设置，包括 SKU、地址、任何适用的关联（例如虚拟机 NIC、负载均衡器前端）。
-   - **修改**：用于使用 [创建公共 IP 地址](#create-a-public-ip-address)的第 4 步中的信息来修改设置，如空闲超时、DNS 名称标签或分配方法。   (将公共 IP SKU 从 "基本" 升级到 "标准"，请参阅 [升级 Azure 公共 ip 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address-upgrade)。 ) 
+   - **修改**：用于使用 [创建公共 IP 地址](#create-a-public-ip-address)的第 4 步中的信息来修改设置，如空闲超时、DNS 名称标签或分配方法。   (将公共 IP SKU 从 "基本" 升级到 "标准"，请参阅 [升级 Azure 公共 ip 地址](./virtual-network-public-ip-address-upgrade.md)。 ) 
    >[!WARNING]
    >若要将公共 IP 地址的分配从静态更改为动态，必须先从任何适用的 IP 配置中取消关联该地址 (参阅 **删除** 部分) 。  另外请注意，在将分配方法从静态更改为动态时，已分配给公共 IP 地址的 IP 地址会丢失。 尽管 Azure 公共 DNS 服务器会保留静态或动态地址与任何 DNS 名称标签（若已定义）之间的映射，但如果虚拟机在处于停止（解除分配）状态之后启动，动态 IP 地址可能更改。 为防止地址变化，请分配静态 IP 地址。
    
@@ -91,9 +91,9 @@ ms.locfileid: "97955597"
 
 |资源|Azure 门户|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|[虚拟机](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm)|选择“取消关联”，以将该 IP 地址与 NIC 配置取消关联，然后选择“删除” 。|使用 [Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) 来将该 IP 地址与 NIC 配置取消关联；使用 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 来删除|使用 [az network public-ip update --remove](/cli/azure/network/public-ip#az-network-public-ip-update) 来将该 IP 地址与 NIC 配置取消关联；使用 [az network public-ip delete](/cli/azure/network/public-ip#az-network-public-ip-delete) 来删除 |
+|[虚拟机](./remove-public-ip-address-vm.md)|选择“取消关联”，以将该 IP 地址与 NIC 配置取消关联，然后选择“删除” 。|使用 [Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) 来将该 IP 地址与 NIC 配置取消关联；使用 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 来删除|使用 [az network public-ip update --remove](/cli/azure/network/public-ip#az-network-public-ip-update) 来将该 IP 地址与 NIC 配置取消关联；使用 [az network public-ip delete](/cli/azure/network/public-ip#az-network-public-ip-delete) 来删除 |
 |负载均衡器前端 | 导航到未使用的公共 IP 地址并选择“关联”，然后选择具有相关的前端 IP 配置的负载均衡器来替换该地址（然后可使用与用于 VM 的同一方法来删除旧 IP）  | 使用 [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) 将新的前端 IP 配置关联到公共负载均衡器；使用 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 来删除；也可以使用 [Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) 来删除前端 IP 配置（如果有多个） |使用 [az network lb frontend-ip update](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_update) 将新的前端 IP 配置关联到公共负载均衡器；使用 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 来删除，也可以使用 [az network lb frontend-ip delete](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_delete) 来删除前端 IP 配置（如果有多个）|
-|防火墙|空值| 使用 [Deallocate()](https://docs.microsoft.com/azure/firewall/firewall-faq#how-can-i-stop-and-start-azure-firewall) 来解除分配防火墙并删除所有 IP 配置 | 使用 [az network firewall ip-config delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) 来删除 IP（但必须先使用 PowerShell 来解除分配）|
+|防火墙|空值| 使用 [Deallocate()](../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall) 来解除分配防火墙并删除所有 IP 配置 | 使用 [az network firewall ip-config delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) 来删除 IP（但必须先使用 PowerShell 来解除分配）|
 
 ## <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 
@@ -101,17 +101,17 @@ ms.locfileid: "97955597"
 
 若要列出虚拟机规模集上的公共 IP，可以使用 PowerShell ([Get-AzPublicIpAddress -VirtualMachineScaleSetName](/powershell/module/az.network/get-azpublicipaddress)) 或 CLI ([az vmss list-instance-public-ips](/cli/azure/vmss?view=azure-cli-latest#az_vmss_list_instance_public_ips))。
 
-有关详细信息，请参阅 [Azure 虚拟机规模集的网络](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking#public-ipv4-per-virtual-machine)。
+有关详细信息，请参阅 [Azure 虚拟机规模集的网络](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine)。
 
 ## <a name="assign-a-public-ip-address"></a>分配公共 IP 地址
 
 了解如何将公共 IP 地址分配给以下资源：
 
 - [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机（在创建时），或分配给[现有的虚拟机](virtual-network-network-interface-addresses.md#add-ip-addresses)
-- [公共负载均衡器](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [应用程序网关](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [使用 VPN 网关的站点到站点连接](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [公共负载均衡器](../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [应用程序网关](../application-gateway/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [使用 VPN 网关的站点到站点连接](../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [虚拟机规模集](../virtual-machine-scale-sets/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ## <a name="permissions"></a>权限
 
@@ -127,4 +127,4 @@ ms.locfileid: "97955597"
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 示例脚本或使用 Azure [资源管理器模板](template-samples.md)创建公共 IP 地址
-- 为公共 IP 地址创建和分配 [Azure Policy 定义](policy-samples.md)
+- 为公共 IP 地址创建和分配 [Azure Policy 定义](./policy-reference.md)

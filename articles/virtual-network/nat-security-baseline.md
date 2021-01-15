@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4ab71138f110df19ec84fa8707b480ad1bc6e72c
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 9276ce07c68afa6f229dbc32198bc624d8887ace
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255111"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217815"
 ---
 # <a name="azure-security-baseline-for-virtual-network-nat"></a>虚拟网络 NAT 的 Azure 安全基准
 
-此安全基线将 [Azure 安全基准版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview-v1) 中的指南应用到 Microsoft 虚拟网络 NAT。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。
+此安全基线将 [Azure 安全基准版本 1.0](../security/benchmarks/overview-v1.md) 中的指南应用到 Microsoft 虚拟网络 NAT。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。
 内容由 Azure 安全基准定义的 **安全控制** 和适用于虚拟网络 NAT 的相关指南进行分组。 排除了不适用于虚拟网络 NAT 的 **控件**。
 
  
@@ -24,7 +24,7 @@ ms.locfileid: "95255111"
 
 ## <a name="network-security"></a>网络安全
 
-[有关详细信息，请参阅 *Azure 安全基线：* 网络安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全性](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：监视和记录虚拟网络、子网和 NIC 的配置与流量
 
@@ -34,15 +34,15 @@ ms.locfileid: "95255111"
 
 使用 Azure 安全中心并按照网络保护建议来帮助保护 Azure 网络资源。 启用网络安全组流日志，并将日志发送到 Azure 存储帐户进行审核。 你还可以将流日志发送到 Log Analytics 工作区，然后使用流量分析来提供有关 Azure 云中流量模式的见解。 流量分析的优势包括能够可视化网络活动、识别热点和安全威胁、了解通信流模式，以及查明网络不当配置。 
 
-- [虚拟网络 NAT 概述](https://docs.microsoft.com/azure/virtual-network/nat-overview)
+- [虚拟网络 NAT 概述](./nat-overview.md)
 
-- [NAT 网关资源](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource)
+- [NAT 网关资源](./nat-gateway-resource.md)
 
-- [如何启用网络安全组流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal) 
+- [如何启用网络安全组流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md) 
 
-- [如何启用和使用流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [如何启用和使用流量分析](../network-watcher/traffic-analytics.md)
 
-- [了解 Azure 安全中心提供的网络安全性](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [了解 Azure 安全中心提供的网络安全性](../security-center/security-center-network-recommendations.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -52,7 +52,7 @@ ms.locfileid: "95255111"
 
 **指导**：启用网络观察程序数据包捕获来调查异常活动。 
 
-- [如何创建网络观察程序实例](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+- [如何创建网络观察程序实例](../network-watcher/network-watcher-create.md)
 
 **Azure 安全中心监视**：是
 
@@ -62,9 +62,9 @@ ms.locfileid: "95255111"
 
 **指南**：定义和实现使用内置或自定义 Azure 策略定义和分配的 NAT 网关资源配置的子网的标准安全配置。
 
-- [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [用于网络的 Azure Policy 示例](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [用于网络的 Azure Policy 示例](../governance/policy/samples/built-in-policies.md#network)
 
 **Azure 安全中心监视**：不适用
 
@@ -74,9 +74,9 @@ ms.locfileid: "95255111"
 
 **指南**：使用 Azure 活动日志监视资源配置，并检测 NAT 网关资源和虚拟网络资源的更改。 在 Azure Monitor 中创建警报，以便在关键资源发生更改时通知你。
 
-- [如何查看和检索 Azure 活动日志事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -84,17 +84,17 @@ ms.locfileid: "95255111"
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-[有关详细信息，请参阅 *Azure 安全基线：* 日志记录和监视](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。
+[有关详细信息，请参阅 *Azure 安全基线：* 日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
 **指南**：通过 Azure Monitor 引入与虚拟网络 NAT 相关的日志，以聚合由终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
-或者，你可以将此数据启用并将其提供给 Azure Sentinel 或第三方 SIEM。
+或者，可以启用此数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
-- [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard) 
+- [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [如何使用 Azure Monitor 收集平台日志和指标](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 
 - [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -106,9 +106,9 @@ ms.locfileid: "95255111"
 
 **指南**：自动可用的活动日志包含对 NAT 网关资源 (PUT、POST、DELETE) 的所有写入操作，但读取操作 (获取) 。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 
-- [了解 Azure 中的日志记录和不同的日志类型](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview) 
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md) 
 
 虚拟网络 NAT 目前不会生成任何其他用户可配置的诊断日志。
 
@@ -120,11 +120,11 @@ ms.locfileid: "95255111"
 
 **指导**：使用 Azure 安全中心和 Log Analytics 工作区监视安全日志和事件中的异常活动并发出警报。 相反，你可以将和机载数据启用到 Azure Sentinel。
 
-- [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard) 
+- [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [如何在 Azure 安全中心管理警报](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) 
+- [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [如何针对 Log Analytics 日志数据发出警报](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
 
 **Azure 安全中心监视**：是
 
@@ -132,7 +132,7 @@ ms.locfileid: "95255111"
 
 ## <a name="inventory-and-asset-management"></a>清单和资产管理
 
-[有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。
+[有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
@@ -142,7 +142,7 @@ ms.locfileid: "95255111"
 
 虽然可通过资源图发现经典 Azure 资源，但强烈建议创建并使用基于 Azure 资源管理器的资源。
 
-- [Azure 资源关系图查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Azure 资源关系图查询](../governance/resource-graph/first-query-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -150,7 +150,7 @@ ms.locfileid: "95255111"
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
-**指南**：将标记应用于 Azure 资源、资源组和订阅，以逻辑方式将它们组织到分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
+**指导**：将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
 **Azure 安全中心监视**：不适用
 
@@ -160,11 +160,11 @@ ms.locfileid: "95255111"
 
 **指南**：应用用于管理 Azure 资源的标记。
 
-- [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription) 
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md) 
 
-- [如何创建管理组](https://docs.microsoft.com/azure/governance/management-groups/create) 
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md) 
 
-- [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -183,8 +183,8 @@ ms.locfileid: "95255111"
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
 
-- [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
-- [如何使用 Azure Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
+- [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -194,9 +194,9 @@ ms.locfileid: "95255111"
 
 **指导**：使用 Azure Policy 限制可在环境中预配的服务。
 
-- [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/built-in-policies.md#general)
 
 **Azure 安全中心监视**：不适用
 
@@ -204,7 +204,7 @@ ms.locfileid: "95255111"
 
 ## <a name="secure-configuration"></a>安全配置
 
-[有关详细信息，请参阅 *Azure 安全基线：* 安全配置](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)。
+[有关详细信息，请参阅 *Azure 安全基线：* 安全配置](../security/benchmarks/security-control-secure-configuration.md)。
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
@@ -216,11 +216,11 @@ ms.locfileid: "95255111"
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
-**指南**：使用 Azure DevOps 来安全地存储和管理代码，如自定义 azure 策略定义、azure 资源管理器模板和所需状态配置脚本。 若要访问在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。 
+**指导**：使用 Azure DevOps 安全地存储和管理代码，例如自定义 Azure Policy 定义、Azure 资源管理器模板和 Desired State Configuration 脚本。 若要访问在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。 
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops) 
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops) 
 
-- [关于 Azure DevOps 中的权限和组](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+- [关于 Azure DevOps 中的权限和组](/azure/devops/organizations/security/about-permissions)
 
 **Azure 安全中心监视**：不适用
 
@@ -236,7 +236,7 @@ ms.locfileid: "95255111"
 
 ## <a name="incident-response"></a>事件响应
 
-[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。
+[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
@@ -288,7 +288,7 @@ ms.locfileid: "95255111"
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-[有关详细信息，请参阅 *Azure 安全基线：* 渗透测试和红队演练](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
+[有关详细信息，请参阅 *Azure 安全基线：* 渗透测试和红队演练](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
@@ -304,5 +304,5 @@ ms.locfileid: "95255111"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅 [Azure 安全基准 V2 概述](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 参阅 [Azure 安全基准 V2 概述](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

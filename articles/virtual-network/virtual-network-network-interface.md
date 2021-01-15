@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: 99905e58cbcd9d0a5c5397aee125675a70e799fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cf082aa33d2063982d85cf0c2fdd68d61072217
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657958"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216931"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>创建、更改或删除网络接口
 
@@ -53,7 +53,7 @@ ms.locfileid: "89657958"
     |虚拟网络|是|为网络接口选择虚拟网络。 只能将网络接口分配到与该接口位于相同订阅和位置的虚拟网络。 创建网络接口后，无法更改其分配到的虚拟网络。 将网络接口添加到的虚拟机也必须位于该接口所在的同一位置和订阅中。|
     |子网|是|在所选的虚拟网络中选择一个子网。 创建网络接口后，可更改它分配到的子网。|
     |专用 IP 地址分配|是| 在此设置中，会为 IPv4 地址选择分配方法。 从以下分配方法中选择：**动态：** 选择此选项时，Azure 将从所选子网的地址空间中自动分配下一个可用地址。 **静态：** 选择此选项时，必须手动从所选子网的地址空间中手动分配一个可用的 IP 地址。 静态地址和动态地址保持不变，除非手动更改或删除网络接口。 创建网络接口后，可更改分配方法。 Azure DHCP 服务器将此地址分配到虚拟机操作系统中的网络接口。|
-    |网络安全组|否| 保留设置为“无”，选择现有的[网络安全组](security-overview.md)，或[创建网络安全组](tutorial-filter-network-traffic.md)。 网络安全组可用于筛选进出网络接口的网络流量。 可向网络接口应用零个或一个网络安全组。 也可向网络接口分配到的子网应用零个或一个网络安全组。 将网络安全组应用到网络接口以及该接口分配到的子网时，有时会产生意外结果。 若要对应用到网络接口和子网的网络安全组进行故障排除，请参阅[网络安全组故障排除](diagnose-network-traffic-filter-problem.md)。|
+    |网络安全组|否| 保留设置为“无”，选择现有的[网络安全组](./network-security-groups-overview.md)，或[创建网络安全组](tutorial-filter-network-traffic.md)。 网络安全组可用于筛选进出网络接口的网络流量。 可向网络接口应用零个或一个网络安全组。 也可向网络接口分配到的子网应用零个或一个网络安全组。 将网络安全组应用到网络接口以及该接口分配到的子网时，有时会产生意外结果。 若要对应用到网络接口和子网的网络安全组进行故障排除，请参阅[网络安全组故障排除](diagnose-network-traffic-filter-problem.md)。|
     |订阅|是|选择一个 Azure [订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 网络接口附加到的虚拟机及其连接到的虚拟网络必须位于同一订阅中。|
     |专用 IP 地址 (IPv6)|否| 如果选中此复选框，除了分配到网络接口的 IPv4 地址外，还会分配一个 IPv6 地址到网络接口。 请参阅本文的 IPv6 部分，了解有关 IPv6 和网络接口搭配使用的重要信息。 无法为 IPv6 地址选择分配方法。 如果选择分配 IPv6 地址，则会使用动态方法分配它。
     |IPv6 名称（仅在选中“专用 IP 地址 (IPv6)”复选框时出现） |是，如果选中“专用 IP 地址 (IPv6)”复选框。| 此名称将分配给网络接口的辅助 IP 配置。 若要了解有关 IP 配置的详细信息，请参阅[查看网络接口设置](#view-network-interface-settings)。|
@@ -83,12 +83,12 @@ ms.locfileid: "89657958"
 3. 为所选网络接口列出了以下项：
    - **概述：** 提供网络接口的相关信息，例如分配给它的 IP 地址、网络接口分配到的虚拟网络/子网，以及网络接口附加到的虚拟机（若已附加到某虚拟机）。 下图显示名为 mywebserver256 的网络接口的概述设置：![网络接口概述](./media/virtual-network-network-interface/nic-overview.png)
 
-     可选择“资源组”或“订阅名称”旁边的“更改”，将网络接口移到其他资源组或订阅  。 如果将网络接口移动到新的订阅，则必须将与该网络接口相关的所有资源移动到该订阅。 例如，如果网络接口已附加到虚拟机，则还必须移动该虚拟机及其相关的其他资源。 若要移动网络接口，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-the-portal)。 该文章列出了先决条件，以及如何使用 Azure 门户、PowerShell 和 Azure CLI 移动资源。
+     可选择“资源组”或“订阅名称”旁边的“更改”，将网络接口移到其他资源组或订阅  。 如果将网络接口移到新订阅，必须同时移动与该网络接口相关的所有资源。 例如，如果网络接口已附加到虚拟机，则还必须移动该虚拟机及其相关的其他资源。 若要移动网络接口，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-the-portal)。 该文章列出了先决条件，以及如何使用 Azure 门户、PowerShell 和 Azure CLI 移动资源。
    - **IP 配置：** 此处列出分配到 IP 配置的公共和专用 IPv4 及 IPv6 地址。 如果向 IP 配置分配了 IPv6 地址，该地址不会显示。 若要详细了解 IP 配置以及如何添加和删除 IP 地址，请参阅[为 Azure 网络接口配置 IP 地址](virtual-network-network-interface-addresses.md)。 此部分还配置了 IP 转发和子网分配。 若要详细了解这些设置，请参阅[启用或禁用 IP 转发](#enable-or-disable-ip-forwarding)和[更改子网分配](#change-subnet-assignment)。
    - **DNS 服务器：** 可指定 Azure DHCP 服务器向网络接口分配哪个 DNS 服务器。 网络接口可从其连接到的虚拟网络继承设置，或使用自定义设置来替代其分配到的虚拟网络的设置。 若要修改显示的内容，请参阅[更改 DNS 服务器](#change-dns-servers)。
    - **网络安全组 (NSG)** ：显示与网络接口关联的 NSG（若有）。 NSG 包含用于筛选网络接口网络流量的入站和出站规则。 如果网络接口关联有 NSG，会显示关联的 NSG 的名称。 若要修改显示的内容，请参阅[关联或取消关联网络安全组](#associate-or-dissociate-a-network-security-group)。
    - **属性：** 显示有关网络接口的关键设置，包括其 MAC 地址（若网络接口未附加到虚拟机，则为空）及其所在的订阅。
-   - **有效的安全规则：**  如果网络接口已附加到正在运行的虚拟机，并且 NSG 关联到网络接口、它分配到的子网或两者均关联，则会列出安全规则。 若要了解有关显示内容的详细信息，请参阅[查看有效的安全规则](#view-effective-security-rules)。 若要了解有关 NSG 的详细信息，请参阅[网络安全组](security-overview.md)。
+   - **有效的安全规则：**  如果网络接口已附加到正在运行的虚拟机，并且 NSG 关联到网络接口、它分配到的子网或两者均关联，则会列出安全规则。 若要了解有关显示内容的详细信息，请参阅[查看有效的安全规则](#view-effective-security-rules)。 若要了解有关 NSG 的详细信息，请参阅[网络安全组](./network-security-groups-overview.md)。
    - **有效的路由：** 如果网络接口已附加到正在运行的虚拟机，则会列出路由。 路由是 Azure 默认路由、用户定义的任何路由以及网络接口分配到的子网可能存在的任何 BGP 路由的组合。 若要了解有关显示内容的详细信息，请参阅[查看有效的路由](#view-effective-routes)。 若要了解有关 Azure 默认路由和用户定义的路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)。
 常见的 Azure 资源管理器设置：若要详细了解常见的 Azure 资源管理器设置，请参阅[活动日志](../azure-monitor/platform/platform-logs-overview.md)、[访问控制 (IAM)](../role-based-access-control/overview.md)、[标记](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[锁定](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[自动化脚本](../azure-resource-manager/templates/export-template-portal.md)。
 
@@ -151,7 +151,7 @@ IP 转发使网络接口附加到的虚拟机能够：
 2. 选择要更改子网分配的网络接口。
 3. 在“设置”下选择“IP 配置”。 如果所列任何 IP 配置的任何专用 IP 地址旁边出现“(静态)”，则必须完成以下步骤，将 IP 地址分配方法更改为动态。 必须使用动态分配方法分配所有专用 IP 地址，以更改网络接口的子网分配。 如果使用动态方法分配地址，请转到步骤 5。 如果使用静态分配方法分配了任何 IPv4 地址，请完成以下步骤，将分配方法更改为动态：
    - 从 IP 配置列表中选择要更改 IPv4 地址分配方法的 IP 配置。
-   - 选择“动态”作为专用 IP 地址**分配**方法。 无法使用静态分配方法分配 IPv6 地址。
+   - 选择“动态”作为专用 IP 地址 **分配** 方法。 无法使用静态分配方法分配 IPv6 地址。
    - 选择“保存” 。
 4. 从“子网”下拉列表中选择要将网络接口移到的子网。
 5. 选择“保存” 。 新的动态地址是从新子网的子网地址范围中分配的。 将网络接口分配到新子网之后，可在需要时从新子网地址范围中分配静态 IPv4 地址。 若要详细了解如何添加、更改和删除网络接口的 IP 地址，请参阅[管理 IP 地址](virtual-network-network-interface-addresses.md)。
@@ -165,7 +165,7 @@ IP 转发使网络接口附加到的虚拟机能够：
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>添加到应用程序安全组或从中删除
 
-只有在网络接口连接到虚拟机的情况下，才可以使用门户将网络接口添加到应用程序安全组或从中删除。 无论网络接口是否连接到虚拟机，都可使用 PowerShell 或 Azure CLI 将网络接口添加到应用程序安全组或从中删除。 了解[应用程序安全组](security-overview.md#application-security-groups)以及如何[创建应用程序安全组](manage-network-security-group.md)。
+只有在网络接口连接到虚拟机的情况下，才可以使用门户将网络接口添加到应用程序安全组或从中删除。 无论网络接口是否连接到虚拟机，都可使用 PowerShell 或 Azure CLI 将网络接口添加到应用程序安全组或从中删除。 了解[应用程序安全组](./network-security-groups-overview.md#application-security-groups)以及如何[创建应用程序安全组](manage-network-security-group.md)。
 
 1. 在门户顶部的“搜索资源、服务和文档”框中，键入虚拟机的名称，该虚拟机具有要添加到应用程序安全组或要从应用程序安全组中删除的网络接口。 当 VM 名称显示在搜索结果中时，将其选中。
 2. 在“设置”下选择“网络” 。  依次选择“应用程序安全组”、“配置应用程序安全组”，选择要向其添加网络接口的应用程序安全组，或者取消选择要从中删除网络接口的应用程序安全组，然后选择“保存”。 只有位于同一虚拟网络的网络接口才能添加到同一应用程序安全组。 应用程序安全组必须与网络接口位于同一位置。
@@ -215,13 +215,13 @@ IP 转发使网络接口附加到的虚拟机能够：
 
 ### <a name="view-effective-security-rules"></a>查看有效的安全规则
 
-连接到虚拟机的每个网络接口的有效安全规则是网络安全组中已创建的规则和[默认安全规则](security-overview.md#default-security-rules)的组合。 理解网络接口的有效安全规则有助于确定无法与虚拟机进行通信的原因。 可查看连接到正在运行的虚拟机的任何网络接口的有效规则。
+连接到虚拟机的每个网络接口的有效安全规则是网络安全组中已创建的规则和[默认安全规则](./network-security-groups-overview.md#default-security-rules)的组合。 理解网络接口的有效安全规则有助于确定无法与虚拟机进行通信的原因。 可查看连接到正在运行的虚拟机的任何网络接口的有效规则。
 
 1. 在门户顶部的搜索框中，输入要查看其有效安全规则的虚拟机的名称。 如果不知道虚拟机的名称，请在搜索框中输入“虚拟机”。 当“虚拟机”出现在搜索结果中时，请选择它，然后从列表中选择一个虚拟机。
 2. 在“设置”下选择“网络” 。
 3. 选择网络接口的名称。
 4. 在“支持 + 疑难解答”下，选择“有效安全规则” 。
-5. 查看有效安全规则列表，确定所需入站和出站通信是否存在正确的规则。 在[网络安全组概述](security-overview.md)中了解有关列表中所看到内容的详细信息。
+5. 查看有效安全规则列表，确定所需入站和出站通信是否存在正确的规则。 在[网络安全组概述](./network-security-groups-overview.md)中了解有关列表中所看到内容的详细信息。
 
 Azure 网络观察程序的 IP 流验证功能还有助于确定安全规则是否阻止虚拟机与终结点之间的通信。 若要了解详细信息，请参阅 [IP 流验证](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
@@ -273,4 +273,4 @@ Azure 网络观察程序的下一个跃点功能还有助于确定路由是否�
 - 使用 [Azure CLI](virtual-network-multiple-ip-addresses-cli.md) 或 [PowerShell](virtual-network-multiple-ip-addresses-powershell.md) 创建具有多个 IPv4 地址的单个 NIC VM
 - 使用 [Azure CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Azure 资源管理器模板](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)创建具有专用 IPv6 地址的单个 NIC VM（在 Azure 负载均衡器的后面）
 - 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 示例脚本或使用 Azure [资源管理器模板](template-samples.md)创建网络接口
-- 为虚拟网络创建和分配 [Azure Policy 定义](policy-samples.md)
+- 为虚拟网络创建和分配 [Azure Policy 定义](./policy-reference.md)

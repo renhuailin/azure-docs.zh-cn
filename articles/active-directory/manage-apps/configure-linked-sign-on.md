@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 8fc26b00214106aa08e0e6e4c41f9f05aca9344d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b5d7cd303c8478f848ee89095d040030b702cde5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648032"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219804"
 ---
 # <a name="understand-linked-sign-on"></a>了解链接登录
 
@@ -31,7 +31,7 @@ Link 选项非常有用的一些常见方案包括：
  
  " **链接** " 选项不通过 Azure AD 凭据提供登录功能。 但你仍可以使用 **企业应用程序** 的某些其他功能。 例如，可以使用审核日志并添加自定义徽标和应用名称。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>在开始之前
 
 若要快速增加知识，请在应用程序管理中演练 [快速入门系列](view-applications-portal.md) 。 在快速入门中配置单一登录的情况下，你还会找到 **链接** 选项。 
 
@@ -40,7 +40,7 @@ Link 选项非常有用的一些常见方案包括：
 > [!IMPORTANT] 
 > 在某些情况下，" **单一登录** " 选项将不会出现在 " **企业应用** 程序" 中的应用程序的导航中。 
 >
-> 如果使用 **应用注册** 注册了应用程序，则默认情况下，单一登录功能将设置为使用 OIDC OAuth。 在这种情况下，"**企业应用程序**" 下的导航中将不会显示 "**单一登录**" 选项。 使用 **应用注册** 添加自定义应用时，将在清单文件中配置选项。 若要了解有关清单文件的详细信息，请参阅 [Azure Active Directory 应用程序清单](../develop/reference-app-manifest.md)。 若要了解有关 SSO 标准的详细信息，请参阅 [使用 Microsoft 标识平台进行身份验证和授权](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform)。 
+> 如果使用 **应用注册** 注册了应用程序，则默认情况下，单一登录功能将设置为使用 OIDC OAuth。 在这种情况下，"**企业应用程序**" 下的导航中将不会显示 "**单一登录**" 选项。 使用 **应用注册** 添加自定义应用时，将在清单文件中配置选项。 若要了解有关清单文件的详细信息，请参阅 [Azure Active Directory 应用程序清单](../develop/reference-app-manifest.md)。 若要了解有关 SSO 标准的详细信息，请参阅 [使用 Microsoft 标识平台进行身份验证和授权](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-the-microsoft-identity-platform)。 
 >
 > 当应用程序托管在另一个租户中，或者如果你的帐户没有服务主体) 的所需权限 (全局管理员、云应用程序管理员、应用程序管理员或所有者时，导航中将缺少 **单一登录** 。 权限还可能会导致出现这样的情况：你可以打开 **单一登录** 但无法保存。 若要详细了解 Azure AD 管理角色，请参阅 (https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 。
 

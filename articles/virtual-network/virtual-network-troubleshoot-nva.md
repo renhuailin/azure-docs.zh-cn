@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 3a8982b5626e3c19dbd49a3d2e20542d44b1a1da
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 18f2128b6869b4047cc6f35e1638aca81233a014
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368581"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219226"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure 中的网络虚拟设备问题
 
@@ -127,7 +127,7 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 ## <a name="advanced-network-administrator-troubleshooting"></a>高级网络管理员故障排除
 
 ### <a name="capture-network-trace"></a>捕获网络跟踪
-运行 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) 或 Nmap 时，请在源 VM、NVA 和目标 VM 上捕获同步网络跟踪，并停止跟踪。
+运行 [PsPing](/sysinternals/downloads/psping) 或 Nmap 时，请在源 VM、NVA 和目标 VM 上捕获同步网络跟踪，并停止跟踪。
 
 1. 若要捕获同步网络跟踪，请运行以下命令：
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004970"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216744"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -48,7 +48,7 @@ Azure 支持以下类型的对等互连：
 对等互连虚拟网络中虚拟机之间的流量直接通过 Microsoft 主干基础结构路由，而不通过网关或公共 Internet 路由。
 
 可以在虚拟网络中应用网络安全组，以阻止访问其他虚拟网络或子网。
-配置虚拟网络对等互连时，可以打开或关闭虚拟网络之间的网络安全组规则。 如果在对等互连的虚拟网络之间建立了完全连接，则可以应用网络安全组来阻止或拒绝特定的访问。 完全连接是默认选项。 若要详细了解网络安全组，请参阅[安全组](security-overview.md)。
+配置虚拟网络对等互连时，可以打开或关闭虚拟网络之间的网络安全组规则。 如果在对等互连的虚拟网络之间建立了完全连接，则可以应用网络安全组来阻止或拒绝特定的访问。 完全连接是默认选项。 若要详细了解网络安全组，请参阅[安全组](./network-security-groups-overview.md)。
 
 ## <a name="service-chaining"></a>服务链
 
@@ -58,7 +58,7 @@ Azure 支持以下类型的对等互连：
 
 可以部署中心辐射型网络，其中，中心虚拟网络托管网络虚拟设备或 VPN 网关等基础结构组件。 然后，可将所有分支虚拟网络对等互连到中心虚拟网络。 流量流经中心虚拟网络中的网络虚拟设备或 VPN 网关。
 
-通过虚拟网络对等互连，用户定义的路由中的下一个跃点可以成为对等虚拟网络中虚拟机或 VPN 网关的 IP 地址。 在使用一个将 Azure ExpressRoute 网关指定为下一跃点类型的用户定义路由的虚拟网络之间不能路由。 若要深入了解用户定义的路由，请参阅[用户定义的路由概述](virtual-networks-udr-overview.md#user-defined)。 若要了解如何创建中心和分支网络拓扑，请参阅 [Azure 中的中心辐射型网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+通过虚拟网络对等互连，用户定义的路由中的下一个跃点可以成为对等虚拟网络中虚拟机或 VPN 网关的 IP 地址。 在使用一个将 Azure ExpressRoute 网关指定为下一跃点类型的用户定义路由的虚拟网络之间不能路由。 若要深入了解用户定义的路由，请参阅[用户定义的路由概述](virtual-networks-udr-overview.md#user-defined)。 要了解如何创建中心辐射型网络拓扑，请参阅 [Azure 中的中心辐射型网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="gateways-and-on-premises-connectivity"></a>网关和本地连接
 
@@ -117,6 +117,6 @@ Azure 支持以下类型的对等互连：
     |一个是资源管理器模型，一个是经典模型  |[相同](create-peering-different-deployment-models.md)|
     |                                   |[不同](create-peering-different-deployment-models-subscriptions.md)|
 
-* 若要了解如何创建中心和分支网络拓扑，请参阅 [Azure 中的中心辐射型网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+* 要了解如何创建中心辐射型网络拓扑，请参阅 [Azure 中的中心辐射型网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 * 若要了解所有虚拟网络对等互连设置，请参阅[创建、更改或删除虚拟网络对等互连](virtual-network-manage-peering.md)。
 * 有关常见虚拟网络对等互连和全局虚拟网络对等互连问题的解答，请参阅 [VNet 对等互连](virtual-networks-faq.md#vnet-peering)。

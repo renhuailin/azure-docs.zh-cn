@@ -11,18 +11,18 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 04/19/2020
-ms.openlocfilehash: 480e9f9031481621ac9d568a7bd97b942f47b947
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493633"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219124"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>使用动态管理视图监视 Microsoft Azure SQL 数据库和 Azure SQL 托管实例性能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Microsoft Azure SQL 数据库和 Azure SQL 托管实例启用一小部分动态管理视图来诊断性能问题，这些问题可能是由阻塞的或长时间运行的查询、资源瓶颈、不良查询计划等引起的。 本主题提供有关如何通过使用动态管理视图检测常见性能问题的信息。
+Microsoft Azure SQL 数据库和 Azure SQL 托管实例启用一小部分动态管理视图来诊断性能问题，这些问题可能是由阻塞的或长时间运行的查询、资源瓶颈、不良查询计划等引起的。 本文提供了有关如何使用动态管理视图检测常见性能问题的信息。
 
 Microsoft Azure SQL 数据库和 Azure SQL 托管实例部分支持三种类别的动态管理视图：
 
@@ -254,12 +254,12 @@ GO
 
 识别 IO 性能问题时，与 `tempdb` 问题最相关的等待类型是 `PAGELATCH_*`（而不是 `PAGEIOLATCH_*`）。 但是，出现 `PAGELATCH_*` 等待并不总是意味着发生了 `tempdb` 争用。  这种等待可能还意味着，由于并发请求面向相同的数据页面，发生了用户对象数据页面争用。 若要进一步确认 `tempdb` 争用，请使用 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 确认 wait_resource 值是否以 `2:x:y` 开头，其中，`tempdb` 是数据库 ID，`x` 是文件 ID，`y` 是页 ID。  
 
-对于 tempdb 争用，常用的方法是减少依赖于 `tempdb` 的重写应用程序代码。  常见的 `tempdb` 使用区域包括：
+对于 tempdb 争用，一种常见方法是减少或重写依赖于的应用程序代码 `tempdb` 。  常见的 `tempdb` 使用区域包括：
 
 - 临时表
 - 表变量
 - 表值参数
-- 版本存储使用（特别是与长时间运行的事务关联的用法）
+- 与长时间运行的事务关联 (版本存储使用情况) 
 - 包含使用排序、哈希联接和 spool 的查询计划的查询
 
 ### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>使用表变量和临时表的最相关查询
@@ -563,14 +563,14 @@ SELECT resource_name, AVG(avg_cpu_percent) AS Average_Compute_Utilization
 FROM sys.server_resource_stats
 WHERE start_time BETWEEN @s AND @e  
 GROUP BY resource_name  
-HAVING AVG(avg_cpu_percent) >= 80
+HAVING AVG(avg_cpu_percent) >= 80;
 ```
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
 
 master 数据库中的 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 视图包含的信息可帮助监视数据库在特定服务层级和计算大小的性能。 每 5 分钟收集一次数据，并且会保留大约 14 天。 此视图可用于数据库使用资源的方式的长期历史分析。
 
-下图显示一周内每小时的 P2 计算大小高级数据库的 CPU 资源使用情况。 此图从星期一开始显示，先显示 5 个工作日，然后显示周末，应用程序在周末使用的资源要少得多。
+下图显示一周内每小时的 P2 计算大小高级数据库的 CPU 资源使用情况。 此图从星期一开始，显示5个工作日，然后显示周末，在应用程序上的执行时间很少。
 
 ![数据库资源使用情况](./media/monitoring-with-dmvs/sql_db_resource_utilization.png)
 
@@ -589,7 +589,7 @@ master 数据库中的 [sys.resource_stats](/sql/relational-databases/system-cat
 SELECT TOP 10 *
 FROM sys.resource_stats
 WHERE database_name = 'resource1'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 ```
 
 ![sys.resource_stats 目录视图](./media/monitoring-with-dmvs/sys_resource_stats.png)
@@ -624,7 +624,7 @@ ORDER BY start_time DESC
     WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-3. 使用每个资源指标的平均值和最大值信息，可以评估工作负荷与所选计算大小的适合程度。 通常情况下，**sys.resource_stats** 中的平均值可提供一个用于目标大小的良好基准。 它应该是主要测量标杆。 例如，你可能正在使用 S2 计算大小的“标准”服务层级。 CPU 和 IO 读写的平均使用百分比低于 40%，平均辅助角色数低于 50，平均会话数低于 200。 工作负荷可能适合 S1 计算大小。 很轻松就能判断数据库是否在辅助进程和会话限制范围内。 若要查看数据库是否适合 CPU 和读写数等更小的计算大小，请将更小计算大小的 DTU 数除以当前计算大小的 DTU 数，并将结果乘以 100：
+3. 使用每个资源指标的平均值和最大值信息，可以评估工作负荷与所选计算大小的适合程度。 通常情况下，**sys.resource_stats** 中的平均值可提供一个用于目标大小的良好基准。 它应该是主要测量标杆。 例如，你可能正在使用 S2 计算大小的“标准”服务层级。 CPU 和 IO 读写的平均使用百分比低于 40%，平均辅助角色数低于 50，平均会话数低于 200。 工作负荷可能适合 S1 计算大小。 很轻松就能判断数据库是否在辅助进程和会话限制范围内。 若要查看数据库是否适合与 CPU、读取和写入有关的计算大小，请将较低计算大小的 DTU 数除以当前计算大小的 DTU 数，然后将结果乘以100：
 
     `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
@@ -699,7 +699,7 @@ AND D.name = 'MyDatabase';
 
 ```sql
 SELECT COUNT(*) AS [Sessions]
-FROM sys.dm_exec_connections
+FROM sys.dm_exec_connections;
 ```
 
 若要分析 SQL Server 工作负荷，可以对查询进行修改，使之专注于特定的数据库。 此查询有助于确定数据库可能的会话需求（如果考虑将其移至 Azure）。
@@ -709,7 +709,7 @@ SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections C
 INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
 INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-WHERE D.name = 'MyDatabase'
+WHERE D.name = 'MyDatabase';
 ```
 
 同样，这些查询返回时间点计数。 如果在一段时间内收集多个样本，则可更好地了解会话使用情况。
@@ -743,7 +743,7 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-blocked-queries"></a>监视受阻的查询
 
-缓慢或长时间运行的查询会造成过多的资源消耗并会导致查询受阻。 受阻的原因可能是应用程序设计欠佳、查询计划不良、缺乏有用的索引等。 可以使用 sys.dm_tran_locks 视图来获取有关数据库中当前锁定活动的信息。 有关示例代码，请参阅 [sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)。
+缓慢或长时间运行的查询会造成过多的资源消耗并会导致查询受阻。 受阻的原因可能是应用程序设计欠佳、查询计划不良、缺乏有用的索引等。 可以使用 sys.dm_tran_locks 视图来获取有关数据库中当前锁定活动的信息。 有关示例代码，请参阅 [sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)。 有关故障排除疑难解答的详细信息，请参阅 [了解和解决 AZURE SQL 阻止问题](understand-resolve-blocking.md)。
 
 ### <a name="monitoring-query-plans"></a>监视查询计划
 

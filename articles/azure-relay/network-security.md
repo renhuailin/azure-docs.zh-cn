@@ -3,17 +3,17 @@ title: Azure 中继的网络安全性
 description: 本文介绍如何将 IP 防火墙规则和专用终结点用于 Azure 中继。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 608224f42fac8cd2d8ff06ab84989b1f675d418c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 735a0b7dc303ad63cb301151e3e14e4488c856b1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134460"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217237"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure 中继的网络安全性 
 本文介绍如何将以下安全功能与 Azure 中继配合使用： 
 
-- IP 防火墙规则（预览版）
+- IP 防火墙规则
 - 专用终结点 
 
 > [!NOTE]
@@ -28,9 +28,6 @@ ms.locfileid: "98134460"
 IP 防火墙规则应用于中继命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与中继命名空间的允许 IP 规则不匹配，系统会拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 
 有关详细信息，请参阅[如何为中继命名空间配置 IP 防火墙](ip-firewall-virtual-networks.md)
-
-> [!NOTE]
-> 此功能目前为预览版。 
 
 ## <a name="private-endpoints"></a>专用终结点
 

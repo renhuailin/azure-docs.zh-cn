@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 2526fd60d6e07ecf43864945f2b05858b41ca567
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 70aecc2613fbe21d34e36f9487d7ba383e140bc8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035200"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217356"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 
@@ -19,11 +19,6 @@ ms.locfileid: "98035200"
 函数应用中的各个函数一起部署并一起缩放。 同一函数应用中的所有函数在函数应用缩放时共享每个实例的资源。 
 
 将为每个函数应用单独定义连接字符串、环境变量以及其他应用程序设置。 必须在函数应用之间共享的任何数据都应该以外部方式存储在持久存储中。
-
-本文介绍如何配置和管理函数应用。 
-
-> [!TIP]  
-> 许多配置选项也可通过 [Azure CLI] 进行管理。 
 
 ## <a name="get-started-in-the-azure-portal"></a>在 Azure 门户中开始
 
@@ -37,15 +32,17 @@ ms.locfileid: "98035200"
 
 ## <a name="work-with-application-settings"></a><a name="settings"></a>使用应用程序设置
 
-“应用程序设置”选项卡维护函数应用使用的设置。 这些设置是加密存储的，必须选择“显示值”才能查看门户中的值。 也可使用 Azure CLI 访问应用程序设置。
+应用程序设置可以从 [Azure 门户](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) 管理，并且可以通过使用 [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) 和 [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings)来管理。 你还可以从 [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) 和 [Visual Studio](functions-develop-vs.md#function-app-settings)中管理应用程序设置。 
 
-### <a name="portal"></a>门户
+这些设置以加密的存储。 若要了解详细信息，请参阅 [应用程序设置安全性](security-concepts.md#application-settings)。
 
-若要在门户中添加设置，请选择“新建应用程序设置”并添加新的键值对。
+# <a name="portal"></a>[门户](#tab/portal)
+
+“应用程序设置”选项卡维护函数应用使用的设置。 你必须选择 " **显示值** " 才能在门户中查看值。 若要在门户中添加设置，请选择“新建应用程序设置”并添加新的键值对。
 
 ![Azure 门户中的函数应用设置。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-### <a name="azure-cli"></a>Azure CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) 命令返回现有的应用程序设置，如以下示例所示：
 
@@ -62,6 +59,22 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME> \
 --settings CUSTOM_FUNCTION_APP_SETTING=12345
 ```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+该 [`Get-AzFunctionAppSetting`](/powershell/module/az.functions/get-azfunctionappsetting) cmdlet 返回现有的应用程序设置，如以下示例中所示： 
+
+```azurepowershell-interactive
+Get-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME>
+```
+
+[`Update-AzFunctionAppSetting`](/powershell/module/az.functions/update-azfunctionappsetting) 命令添加或更新某个应用程序设置。 以下示例创建的设置包含的键其名称为 `CUSTOM_FUNCTION_APP_SETTING`，其值为 `12345`：
+
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"CUSTOM_FUNCTION_APP_SETTING" = "12345"}
+```
+
+---
 
 ### <a name="use-application-settings"></a>使用应用程序设置
 

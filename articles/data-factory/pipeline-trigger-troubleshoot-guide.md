@@ -1,52 +1,46 @@
 ---
-title: Azure 数据工厂中的管道业务流程和触发器疑难解答
-description: 使用不同方法来解决 Azure 数据工厂中的管道触发器问题。
+title: 对 Azure 数据工厂中的管道业务流程和触发器进行故障排除
+description: 使用不同方法排查 Azure 数据工厂中的管道触发器问题。
 author: ssabat
 ms.service: data-factory
 ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 0e67a316b012eda61607c84edfd8e10d6aa3318d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0ceee3c65e8c4df5d843bb441fb6426a0f4eb696
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589145"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220246"
 ---
-# <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道业务流程和触发器疑难解答
+# <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>对 Azure 数据工厂中的管道业务流程和触发器进行故障排除
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure 数据工厂中的“管道运行”用于定义管道执行实例。 例如，你有一个在凌晨8:00 点、9:00 AM 和 10:00 AM 执行的管道。 在这种情况下，将分三次单独运行管道，也即有三次管道运行。 每次管道运行都有唯一的管道运行 ID。 运行 ID 是 GUID (全局唯一标识符) ，用于定义特定的管道运行。
+Azure 数据工厂中的“管道运行”用于定义管道执行实例。 例如，假设有一个管道在凌晨8:00 点、9:00 AM 和 10:00 AM 运行。 在这种情况下，有三个单独的管道运行。 每次管道运行都有唯一的管道运行 ID。 运行 ID 是一个全局唯一标识符 (GUID) ，用于定义特定的管道运行。
 
-管道运行通常通过将自变量传递给管道中定义的参数进行实例化。 执行管道时，可以手动，也可以使用触发器。 有关详细信息，请参阅 [Azure 数据工厂中的管道执行和触发器](concepts-pipeline-execution-triggers.md) 。
+管道运行通常通过将自变量传递给管道中定义的参数进行实例化。 您可以手动运行管道，也可以通过使用触发器来运行管道。 有关详细信息，请参阅 [Azure 数据工厂中的管道执行和触发器](concepts-pipeline-execution-triggers.md) 。
 
 ## <a name="common-issues-causes-and-solutions"></a>常见问题、原因和解决方案
 
-### <a name="pipeline-with-azure-function-throws-error-with-private-end-point-connectivity"></a>带有 Azure 函数的管道引发了与私有终结点连接有关的错误
+### <a name="an-azure-functions-app-pipeline-throws-an-error-with-private-endpoint-connectivity"></a>Azure Functions 应用管道在专用终结点连接时引发错误
  
-#### <a name="issue"></a>问题
-对于某些上下文，你的数据工厂和 Azure Function App 在专用终结点上运行。 你正在尝试获取与 Azure Function App 进行交互的管道。 你已尝试三种不同的方法，但一个返回错误 `Bad Request` ，另两个方法返回 `103 Error Forbidden` 。
+你的数据工厂和 Azure function app 在专用终结点上运行。 正在尝试运行与 function app 交互的管道。 你已尝试三种不同的方法，但一个返回错误 "错误的请求"，另两个方法返回 "103 错误禁止"。
 
-#### <a name="cause"></a>原因 
-数据工厂当前不支持 Azure Function App 的专用终结点连接器。 这应该是 Azure Function App 拒绝调用的原因，因为它将被配置为仅允许来自专用链接的连接。
+**原因**：数据工厂当前不支持 function apps 的专用终结点连接器。 Azure Functions 拒绝调用，因为它已配置为仅允许来自专用链接的连接。
 
-#### <a name="resolution"></a>解决方法
-你可以创建 **PrivateLinkService** 类型的专用终结点并提供函数应用的 DNS，该连接应正常工作。
+**解决方法**：创建 **PrivateLinkService** 终结点并提供函数应用的 DNS。
 
-### <a name="pipeline-run-is-killed-but-the-monitor-still-shows-progress-status"></a>管道运行已终止，但监视器仍显示进度状态
+### <a name="a-pipeline-run-is-canceled-but-the-monitor-still-shows-progress-status"></a>管道运行已取消，但监视器仍显示进度状态
 
-#### <a name="issue"></a>问题
-通常在终止管道运行时，管道监视仍会显示进度状态。 出现这种情况是因为浏览器出现缓存问题，而您没有适当的筛选器进行监视。
+取消管道运行时，管道监视通常仍显示进度状态。 出现这种情况的原因是浏览器缓存出现问题。 您还可能没有正确的监视筛选器。
 
-#### <a name="resolution"></a>解决方法
-刷新浏览器，并应用合适的筛选器进行监视。
+**解决方法**：刷新浏览器，并应用正确的监视筛选器。
  
-### <a name="copy-pipeline-failure--found-more-columns-than-expected-column-count-delimitedtextmorecolumnsthandefined"></a>复制管道故障–找到的列数超出了预期的列计数 (DelimitedTextMoreColumnsThanDefined) 
-
-#### <a name="issue"></a>问题  
-如果要复制的特定文件夹下的文件包含具有不同架构（如可变列数、不同分隔符、引号字符设置或某些数据问题）的文件，则数据工厂管道最终会在此错误中运行：
+### <a name="you-see-a-delimitedtextmorecolumnsthandefined-error-when-copying-a-pipeline"></a>复制管道时出现 "DelimitedTextMoreColumnsThanDefined" 错误
+ 
+如果要复制的文件夹包含具有不同架构的文件，如列数、不同分隔符、引号字符设置或某些数据问题，数据工厂管道可能会引发此错误：
 
 `
 Operation on target Copy_sks  failed: Failure happened on 'Sink' side.
@@ -56,51 +50,41 @@ Message=Error found when processing 'Csv/Tsv Format Text' source '0_2020_11_09_1
 Source=Microsoft.DataTransfer.Common,'
 `
 
-#### <a name="resolution"></a>解决方法
-创建复制数据活动时，请选择 "二进制复制" 选项。 通过这种方式，可将数据从一个 Data Lake 大容量复制或迁移到另一（带有 **binary** 选项），数据工厂不会打开要读取架构的文件，而只是将每个文件视为二进制文件并将其复制到另一个位置。
+**解决方法**：在创建复制活动时选择 " **二进制复制** " 选项。 这样一来，就可以将数据从一个 data lake 大容量复制或迁移到另一个 data lake，数据工厂不会打开要读取架构的文件。 相反，数据工厂会将每个文件视为二进制文件并将其复制到其他位置。
 
-### <a name="pipeline-run-fails-when-capacity-limit-of-integration-runtime-is-reached"></a>当达到集成运行时的容量限制时，管道运行失败
+### <a name="a-pipeline-run-fails-when-you-reach-the-capacity-limit-of-the-integration-runtime"></a>达到 integration runtime 的容量限制时，管道运行失败
 
-#### <a name="issue"></a>问题
 错误消息：
 
 `
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-此错误表示每个 integration runtime 的限制，目前为50。 有关详细信息，请参阅 [限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) 。
+**原因**：已达到集成运行时的容量限制。 使用相同的集成运行时，您可能会运行大量数据流。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) 。
 
-如果同时使用同一集成运行时执行大量数据流，则可能导致这种错误。
+**解决方法**：
+ 
+- 在不同的触发器时间运行管道。
+- 创建新的集成运行时，并将管道拆分到多个集成运行时。
 
-#### <a name="resolution"></a>解决方法 
-- 为执行不同的触发器时间分离这些管道。
-- 创建新的集成运行时，并将这些管道拆分到多个集成运行时。
+### <a name="you-have-activity-level-errors-and-failures-in-pipelines"></a>管道中存在活动级别的错误和失败
 
-### <a name="how-to-monitor-pipeline-failures-on-regular-interval"></a>如何按固定间隔监视管道故障
+Azure 数据工厂业务流程允许条件逻辑，并使用户能够根据前一个活动的结果采用不同的路径。 它允许四个条件路径： **成功** 时 (默认传递) ，在 **失败** 时、 **完成** 时以及 **跳过**。 
 
-#### <a name="issue"></a>问题
-通常需要以5分钟为间隔监视数据工厂管道。 可以使用终结点从数据工厂查询和筛选管道运行。 
+Azure 数据工厂评估所有叶级活动的结果。 仅当所有叶都成功时，管道结果才会成功。 如果跳过了某个叶活动，则会改为评估其父活动。 
 
-#### <a name="recommendation"></a>建议
-1. 将 Azure 逻辑应用设置为每隔5分钟查询所有失败的管道。
-2. 然后，你可以根据 [QueryByFactory](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)将事件报告给票证系统。
+**分辨率**
 
-#### <a name="reference"></a>参考
-- [外部-从数据工厂发送通知](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)
+1. 按照 [如何处理管道故障和错误](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)来实现活动级别检查。
+1. 使用 Azure 逻辑应用 [通过工厂查询按](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)固定间隔来监视管道。
 
-### <a name="how-to-handle-activity-level-errors-and-failures-in-pipelines"></a>如何处理管道中的活动级错误和失败
+## <a name="monitor-pipeline-failures-in-regular-intervals"></a>按固定间隔监视管道故障
 
-#### <a name="issue"></a>问题
-Azure 数据工厂业务流程允许条件逻辑，并使用户能够根据上一活动的结果采取不同的路径。 它允许四个条件路径： "成功时 (默认传递) "、"失败时"、"完成时" 和 "跳过"。 允许使用不同的路径。
+可能需要按间隔5分钟监视失败的数据工厂管道。 可以使用终结点从数据工厂查询和筛选管道运行。 
 
-Azure 数据工厂定义管道运行成功和失败，如下所示：
+将 Azure 逻辑应用设置为每隔5分钟查询所有失败的管道，如 [工厂查询](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)中所述。 然后，你可以将事件报告给我们的票证系统。
 
-- 评估所有叶级活动的结果。 如果跳过了某个叶活动，则会改为评估其父活动。
-- 当且仅当所有叶都成功时，管道结果才会成功。
-
-#### <a name="recommendation"></a>建议
-- 实现活动级别检查遵循 [如何处理管道故障和错误](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)。
-- 使用 Azure 逻辑应用 [按 DataFactory 进行查询]( https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)，按固定间隔来监视管道。
+有关详细信息，请参阅 [从数据工厂发送通知，第2部分](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)。
 
 ## <a name="next-steps"></a>后续步骤
 

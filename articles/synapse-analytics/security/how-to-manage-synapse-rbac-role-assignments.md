@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: f26b54a18ff137575cac208d70e4693c0b9914a8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c88371eb450d5b0e2e8b821cdec0e87190e291f8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572280"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218189"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>如何在 Synapse Studio 中管理 Synapse RBAC 角色分配
 
@@ -65,7 +65,7 @@ Synapse RBAC 使用角色向用户、组和其他安全主体分配权限，以�
 
 ![添加工作区项角色分配-选择项类型](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-item-type.png) 
 
-选择要用作作用域的特定 **项目** ，然后从下拉范围中选择要分配的 **角色** 。  下拉列表仅列出对选定项类型有效的那些角色。 [了解详细信息](https://go.microsoft.com/fwlink/?linkid=2148306)。  
+选择要用作作用域的特定 **项目** ，然后从下拉范围中选择要分配的 **角色** 。  下拉列表仅列出对选定项类型有效的那些角色。 [了解详细信息](./synapse-workspace-synapse-rbac.md)。  
 
 ![添加工作区项角色分配-选择角色](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-role.png) 
  
@@ -81,4 +81,4 @@ Synapse RBAC 使用角色向用户、组和其他安全主体分配权限，以�
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解执行常见任务所需的 Synapse RBAC 角色](./synapse-workspace-understand-what-role-you-need.md) 
+[了解执行常见任务所需的 Synapse RBAC 角色](./synapse-workspace-understand-what-role-you-need.md)

@@ -8,20 +8,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 699a7321646167b0a9fb20a77a40999ec33b14f0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9782cce4165487b612c0295dc893d120ed043225
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461335"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218257"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>使用专用链接连接到 Azure Synapse 工作区
 
-本文介绍如何在 Azure Synapse 工作区中创建专用终结点。 有关详细信息，请参阅[专用链接和专用终结点](https://docs.microsoft.com/azure/private-link/)。
+本文介绍如何在 Azure Synapse 工作区中创建专用终结点。 有关详细信息，请参阅[专用链接和专用终结点](../../private-link/index.yml)。
 
 ## <a name="step-1-register-network-resource-provider"></a>步骤 1：注册网络资源提供程序
 
-注册网络资源提供程序（如果尚未这样做）。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 [注册](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)时，从资源提供程序列表中选择“Microsoft.Network”。 如果已注册网络资源提供程序，则继续执行步骤 2。
+注册网络资源提供程序（如果尚未这样做）。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 [注册](../../azure-resource-manager/management/resource-providers-and-types.md)时，从资源提供程序列表中选择“Microsoft.Network”。 如果已注册网络资源提供程序，则继续执行步骤 2。
 
 ## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>步骤 2：在 Azure 门户中打开 Azure Synapse 工作区
 

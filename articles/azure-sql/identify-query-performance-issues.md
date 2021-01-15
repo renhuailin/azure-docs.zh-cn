@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: 6ea17f04538e3444b1baddaa8862add2cfbbaa9c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: 4d0f5404a64eae99ced0dd797954ba042b50060f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493417"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217220"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL 数据库中可检测的查询性能瓶颈类型
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -90,7 +90,7 @@ SQL 查询优化器生成的欠佳计划可能是查询性能缓慢的原因。 
 ```sql
 SELECT *
 FROM t1 JOIN t2 ON t1.c1 = t2.c1
-WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
+WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F';
 ```
 
 在此示例中，`t1.c1` 采用 `@p1`，而 `t2.c2` 继续采用文本形式的 GUID。 在这种情况下，如果更改 `c2` 的值，该查询将被视为不同的查询，并且将进行新的编译。 若要减少此示例中的编译次数，也要参数化 GUID。
@@ -115,7 +115,7 @@ WHERE
   rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
   AND query_parameterization_type_desc IN ('User', 'None')
 GROUP BY q.query_hash
-ORDER BY count (distinct p.query_id) DESC
+ORDER BY count (distinct p.query_id) DESC;
 ```
 
 ### <a name="factors-that-affect-query-plan-changes"></a>影响查询计划更改的因素
@@ -187,7 +187,7 @@ ORDER BY count (distinct p.query_id) DESC
 
 - **阻塞**：
 
-  一个查询可能持有数据库中某些对象的锁，而其他查询正在尝试访问相同的对象。 可以使用 [DMV](database/monitoring-with-dmvs.md#monitoring-blocked-queries) 或[智能见解](database/intelligent-insights-troubleshoot-performance.md#locking)来识别阻塞的查询。
+  一个查询可能持有数据库中某些对象的锁，而其他查询正在尝试访问相同的对象。 可以使用 [DMV](database/monitoring-with-dmvs.md#monitoring-blocked-queries) 或[智能见解](database/intelligent-insights-troubleshoot-performance.md#locking)来识别阻塞的查询。 有关详细信息，请参阅 [了解和解决 AZURE SQL 阻止问题](database/understand-resolve-blocking.md)。
 - **IO 问题**
 
   查询可能正在等待将页面写入数据文件或日志文件。 在这种情况下，请检查 DMV 中的 `INSTANCE_LOG_RATE_GOVERNOR`、`WRITE_LOG` 或 `PAGEIOLATCH_*` 等待统计信息。 了解如何使用 DMV [识别 IO 性能问题](database/monitoring-with-dmvs.md#identify-io-performance-issues)。

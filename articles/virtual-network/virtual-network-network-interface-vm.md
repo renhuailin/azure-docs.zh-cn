@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b45bd2e2b9ad971891cbcb944286f40b4f66883
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480127"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216941"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>在虚拟机中添加或删除网络接口。
 
@@ -61,7 +61,7 @@ ms.locfileid: "85480127"
 
 1. 转到 [Azure 门户](https://portal.azure.com)来查找现有虚拟机。 搜索并选择“虚拟机”。
 
-2. 选择你的 VM 的名称。 该 VM 必须支持要添加的网络接口的数量。 若要了解每个 VM 大小支持的网络接口数量，请参阅 Azure 中适用于 [Linux VM](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows VM](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 的大小。
+2. 选择你的 VM 的名称。 该 VM 必须支持要添加的网络接口的数量。 若要了解每个 VM 大小支持的网络接口数量，请参阅 Azure 中适用于 [Linux VM](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows VM](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 的大小。
 
 3. 在 VM 命令栏中，选择“停止”，然后在确认对话框中选择“确定”。 然后，等待 VM 的“状态”更改为“已停止(已解除分配)” 。
 
@@ -133,7 +133,7 @@ ms.locfileid: "85480127"
 
 - VM 上必须至少附加一个网络接口。
 
-- VM 上附加的网络接口数量不能超过 VM 大小支持的数量。 若要详细了解每个 VM 大小支持的网络接口数量，请参阅 Azure 中适用于 [Linux VM](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows VM](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 的大小。 所有大小至少支持两个网络接口。
+- VM 上附加的网络接口数量不能超过 VM 大小支持的数量。 若要详细了解每个 VM 大小支持的网络接口数量，请参阅 Azure 中适用于 [Linux VM](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows VM](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 的大小。 所有大小至少支持两个网络接口。
 
 - 目前，添加到一个 VM 的网络接口不能附加到另一个 VM。 若要详细了解如何创建网络接口，请参阅[创建网络接口](virtual-network-network-interface.md#create-a-network-interface)。
 
@@ -143,7 +143,7 @@ ms.locfileid: "85480127"
 
 - 你可以控制要将出站流量发送到的网络接口。 但是，VM 默认情况下会将所有出站流量都发送到分配给主网络接口的主 IP 配置的 IP 地址。
 
-- 过去，同一个可用性集中的所有 VM 都需要有一个或多个网络接口。 现在，同一个可用性集中可以存在具有任意数目的网络接口的 VM，只要 VM 大小支持该数目。 只能在创建 VM 时将其添加到可用性集。 若要详细了解可用性集，请参阅[在 Azure 中管理 VM 的可用性](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。
+- 过去，同一个可用性集中的所有 VM 都需要有一个或多个网络接口。 现在，同一个可用性集中可以存在具有任意数目的网络接口的 VM，只要 VM 大小支持该数目。 只能在创建 VM 时将其添加到可用性集。 若要详细了解可用性集，请参阅[在 Azure 中管理 VM 的可用性](../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。
 
 - 可以将同一 VM 中的网络接口连接到虚拟网络中的不同子网。 但是，网络接口必须全部连接到同一个虚拟网络。
 

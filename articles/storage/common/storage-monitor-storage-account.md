@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: bfecae4775655f732df8fd6cffea613cd39fb828
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e5495b466bf9b16319b788ec32c7b3a03100f505
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782002"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218136"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
@@ -32,12 +32,14 @@ ms.locfileid: "92782002"
 > 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](storage-monitoring-diagnosing-troubleshooting.md)。
 >
 
+<a id="modify-retention-policy"></a>
+
 ## <a name="configure-monitoring-for-a-storage-account"></a>为存储帐户配置监视
 
 1. 在 [Azure 门户](https://portal.azure.com)中选择“存储帐户”，并单击存储帐户名称打开帐户仪表板。
 1. 在菜单边栏选项卡的“监视”部分选择“诊断”。
 
-    ![屏幕截图，突出显示了 "监视 (经典) " 部分下 (经典) "选项的诊断设置。](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
+    ![屏幕截图，突出显示了“监视(经典)”部分下的“诊断设置(经典)”选项。](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
 1. 选择要监视的每个服务的指标数据类型，以及数据的保留策略。 还可以通过将“状态”设置为“关闭”来禁用监视。
 
@@ -139,7 +141,7 @@ ms.locfileid: "92782002"
 1. 确保“状态”设置为“打开”，选择要为其启用日志记录的服务。
 
     ![在 Azure 门户中配置日志记录。](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. 单击“ **保存** ”。
+1. 单击“ **保存**”。
 
 诊断日志保存在存储帐户下名为 $logs 的 Blob 容器中。 可以使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com)等存储资源管理器来查看日志数据，也可以使用存储客户端库或 PowerShell 以编程方式这样做。
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fd0cfe644ad78059e25d5386cd1a01f56ad9fba
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710994"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216982"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>为 Azure 网络接口添加、更改或删除 IP 地址
 
@@ -48,14 +48,14 @@ ms.locfileid: "84710994"
 
 1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。  当“网络接口”出现在搜索结果中时，请选择它。
 2. 从列表中选择要为其添加 IPv4 地址的网络接口。
-3. 在“设置”**** 下选择“IP 配置”****。
-4. 在“IP 配置”**** 下选择“+ 添加”****。
-5. 指定以下内容，然后选择“确定”****：
+3. 在“设置”下选择“IP 配置”。
+4. 在“IP 配置”下选择“+ 添加”。
+5. 指定以下内容，然后选择“确定”：
 
    |设置|必需？|详细信息|
    |---|---|---|
    |名称|是|对于网络接口必须是唯一的|
-   |类型|是|由于要将 IP 配置添加到现有网络接口，并且每个网络接口都必须有一个[主要](#primary) IP 配置，因此，唯一选项是“辅助”。****|
+   |类型|是|由于要将 IP 配置添加到现有网络接口，并且每个网络接口都必须有一个[主要](#primary) IP 配置，因此，唯一选项是“辅助”。|
    |专用 IP 地址分配方法|是|[**动态**](#dynamic)：Azure 为在其中部署网络接口的子网地址范围分配下一可用地址。 [**静态**](#static)：为在其中部署网络接口的子网地址范围分配未使用的地址。|
    |公共 IP 地址|否|**禁用：** 当前没有公共 IP 地址资源关联到 IP 配置。 **启用：** 选择现有的 IPv4 公共 IP 地址，或新建一个。 若要了解如何创建公共 IP 地址，请参阅[公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)一文。|
 6. 可以遵循[将多个 IP 地址分配到虚拟机操作系统](virtual-network-multiple-ip-addresses-portal.md#os-config)一文中的说明，手动将辅助专用 IP 地址添加到虚拟机操作系统。 在手动向虚拟机操作系统添加 IP 地址之前，请参阅[专用](#private) IP 地址以了解特殊注意事项。 请不要向虚拟机操作系统添加任何公共 IP 地址。
@@ -73,7 +73,7 @@ ms.locfileid: "84710994"
 
 1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。  当“网络接口”出现在搜索结果中时，请选择它。
 2. 从列表中选择要查看或更改 IP 网络设置的网络接口。
-3. 在“设置”**** 下选择“IP 配置”****。
+3. 在“设置”下选择“IP 配置”。
 4. 从列表中选择想要修改的 IP 配置。
 5. 使用有关[添加 IP 配置](#add-ip-addresses)的步骤 5 中的设置的信息，根据需要更改设置。
 6. 选择“保存” 。
@@ -94,8 +94,8 @@ ms.locfileid: "84710994"
 
 1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。  当“网络接口”出现在搜索结果中时，请选择它。
 2. 从列表中选择要移除 IP 地址的网络接口。
-3. 在“设置”**** 下选择“IP 配置”****。
-4. 右键单击以选择要删除的[辅助](#secondary) IP 配置（无法删除[主要](#primary)配置），单击“删除”，然后选择“是”确认删除**** ****。 如果该配置关联了公共 IP 地址资源，则该资源将从 IP 配置中分离，但不会被删除。
+3. 在“设置”下选择“IP 配置”。
+4. 右键单击以选择要删除的[辅助](#secondary) IP 配置（无法删除[主要](#primary)配置），单击“删除”，然后选择“是”确认删除 。 如果该配置关联了公共 IP 地址资源，则该资源将从 IP 配置中分离，但不会被删除。
 
 命令
 
@@ -200,7 +200,7 @@ ms.locfileid: "84710994"
 公共 IP 地址是使用基本或标准 SKU 创建的。 有关 SKU 差异的详细信息，请参阅[管理公共 IP 地址](virtual-network-public-ip-address.md)。
 
 > [!NOTE]
-> 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用 [网络安全组](security-overview.md#network-security-groups)显式允许预期流量。 创建并关联网络安全组且显式允许所需流量之后，才可与资源通信。
+> 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用 [网络安全组](./network-security-groups-overview.md#network-security-groups)显式允许预期流量。 创建并关联网络安全组且显式允许所需流量之后，才可与资源通信。
 
 ## <a name="next-steps"></a>后续步骤
 若要创建具有不同 IP 配置的虚拟机，请阅读以下文章：

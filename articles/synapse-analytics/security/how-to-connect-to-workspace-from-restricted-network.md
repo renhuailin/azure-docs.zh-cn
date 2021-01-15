@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e96cbf0c1464e27b0a384e8a813118056103b91
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 41403a59be0395a6d9874c7369bfe59c22f5ac17
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296613"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218359"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>从受限网络连接到工作区资源
 
@@ -40,7 +40,7 @@ ms.locfileid: "96296613"
 
 创建其他三个规则时，请将 **目标服务标记** 的值替换为列表中的 **AzureFrontDoor**、 **AzureActiveDirectory** 或 **AzureMonitor** 。
 
-有关详细信息，请参阅 [服务标记概述](/azure/virtual-network/service-tags-overview)。
+有关详细信息，请参阅 [服务标记概述](../../virtual-network/service-tags-overview.md)。
 
 ## <a name="step-2-create-private-link-hubs"></a>步骤2：创建专用链接中心
 

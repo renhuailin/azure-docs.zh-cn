@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 221f7577b3181b1535ab9f544073dac4d031fe66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d06c251ce16aff56a3645f5032cce4e27d5fc9e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89319434"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216880"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>网络安全组的资源日志记录
 
@@ -26,7 +26,7 @@ ms.locfileid: "89319434"
 * **事件：** 根据 MAC 地址记录的与应用到 VM 的 NSG 规则相对应的条目。
 * **规则计数器：** 包含应用每个 NSG 规则以拒绝或允许流量的次数的条目。 每300秒收集一次这些规则的状态。
 
-资源日志仅适用于通过 Azure 资源管理器部署模型部署的 Nsg。 无法启用通过经典部署模型部署的 Nsg 的资源日志记录。 若要更好地了解这两种模型，请参阅[了解 Azure 部署模型](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+资源日志仅适用于通过 Azure 资源管理器部署模型部署的 Nsg。 无法启用通过经典部署模型部署的 Nsg 的资源日志记录。 若要更好地了解这两种模型，请参阅[了解 Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 对于要为其收集诊断数据的 *每个* NSG，将单独启用资源日志记录。 如果对活动 (操作) 日志感兴趣，请参阅 Azure [活动日志记录](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
@@ -37,18 +37,18 @@ ms.locfileid: "89319434"
 ### <a name="azure-portal"></a>Azure 门户
 
 1. 登录[门户](https://portal.azure.com)。
-2. 选择“所有服务”，然后键入“网络安全组”******。 “网络安全组”出现在搜索结果中时，将其选中****。
+2. 选择“所有服务”，然后键入“网络安全组”。 “网络安全组”出现在搜索结果中时，将其选中。
 3. 选择要为其启用日志记录的 NSG。
-4. 在“监视”下选择“诊断日志”，******** 然后选择“启用诊断”，如下图所示：****
+4. 在“监视”下选择“诊断日志”，然后选择“启用诊断”，如下图所示：
 
    ![启用诊断](./media/virtual-network-nsg-manage-log/turn-on-diagnostics.png)
 
-5. 在“诊断设置”下输入或选择以下信息，然后选择“保存”********：
+5. 在“诊断设置”下输入或选择以下信息，然后选择“保存”：
 
     | 设置                                                                                     | 值                                                          |
     | ---------                                                                                   |---------                                                       |
     | 名称                                                                                        | 所选名称。  例如：*myNsgDiagnostics*      |
-    | “存档到存储帐户”****、“流式传输到事件中心”****，然后“发送到 Log Analytics”**** | 可以随意选择多个目标。 若要详细了解每个目标，请参阅[日志目标](#log-destinations)。                                                                                                                                           |
+    | “存档到存储帐户”、“流式传输到事件中心”，然后“发送到 Log Analytics” | 可以随意选择多个目标。 若要详细了解每个目标，请参阅[日志目标](#log-destinations)。                                                                                                                                           |
     | LOG                                                                                         | 选择一个或两个日志类别。 若要详细了解为每个类别记录的数据，请参阅[日志类别](#log-categories)。                                                                                                                                             |
 6. 查看和分析日志。 有关详细信息，请参阅[查看和分析日志](#view-and-analyze-logs)。
 
@@ -87,7 +87,7 @@ Set-AzDiagnosticSetting `
   -Enabled $true
 ```
 
-若要记录其中一个类别的数据而不是两个类别都记录，请将 `-Categories` 选项添加到前一命令，后跟 *NetworkSecurityGroupEvent* 或 *NetworkSecurityGroupRuleCounter*。 若要记录到 Log Analytics 工作区之外的[目标](#log-destinations)，请使用适合 Azure [存储帐户](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或[事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的参数。
+若要记录其中一个类别的数据而不是两个类别都记录，请将 `-Categories` 选项添加到前一命令，后跟 *NetworkSecurityGroupEvent* 或 *NetworkSecurityGroupRuleCounter*。 若要记录到 Log Analytics 工作区之外的[目标](#log-destinations)，请使用适合 Azure [存储帐户](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)或[事件中心](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)的参数。
 
 查看和分析日志。 有关详细信息，请参阅[查看和分析日志](#view-and-analyze-logs)。
 
@@ -122,16 +122,16 @@ az monitor diagnostic-settings create \
 
 如果没有现成的工作区，则可以使用 [Azure 门户](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或 [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) 创建一个。 可以为日志启用两种类别的日志记录。
 
-如果只想记录一种类别或另一种类别的数据，请在上一个命令中删除不想记录其数据的类别。 若要记录到 Log Analytics 工作区之外的[目标](#log-destinations)，请使用适合 Azure [存储帐户](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或[事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的参数。
+如果只想记录一种类别或另一种类别的数据，请在上一个命令中删除不想记录其数据的类别。 若要记录到 Log Analytics 工作区之外的[目标](#log-destinations)，请使用适合 Azure [存储帐户](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)或[事件中心](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)的参数。
 
 查看和分析日志。 有关详细信息，请参阅[查看和分析日志](#view-and-analyze-logs)。
 
 ## <a name="log-destinations"></a>日志目标
 
 诊断数据可以：
-- [写入到 Azure 存储帐户](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以便进行审核或手动检查。 可以使用“资源诊断设置”指定保留时间（天）。
-- [流式传输到事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
-- [写入 Azure Monitor 日志](../azure-monitor/platform/resource-logs-collect-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- [写入到 Azure 存储帐户](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)，以便进行审核或手动检查。 可以使用“资源诊断设置”指定保留时间（天）。
+- [流式传输到事件中心](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
+- [写入 Azure Monitor 日志](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)。
 
 ## <a name="log-categories"></a>日志类别
 

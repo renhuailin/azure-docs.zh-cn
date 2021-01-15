@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 13535a82f8aca741a1e25755e5a2d971ce45514e
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739291"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216642"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure 存储的虚拟网络服务终结点策略
 
@@ -32,7 +32,7 @@ ms.locfileid: "97739291"
 
 - __改进了发往 Azure 存储的虚拟网络流量的安全性__
 
-  使用[网络安全组的 Azure 服务标记](https://aka.ms/servicetags)可以只允许将虚拟网络出站流量发往特定 Azure 存储区域。 但是，这允许向选定 Azure 存储区域内的任何帐户发送流量。
+  使用[网络安全组的 Azure 服务标记](./network-security-groups-overview.md)可以只允许将虚拟网络出站流量发往特定 Azure 存储区域。 但是，这允许向选定 Azure 存储区域内的任何帐户发送流量。
   
   使用终结点策略可以指定允许进行虚拟网络出站访问的 Azure 存储帐户，并限制所有其他存储帐户的访问。 这可以提供精细得多的安全控制，为虚拟网络中的数据外泄提供保护。
 

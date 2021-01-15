@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: f6c8272f736e2f83b4d33f3d61ce83356aa40e5d
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: c79367ca8cf9e4a4884c829c675d794b2e734737
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126750"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220259"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central
 
@@ -40,7 +40,7 @@ ms.locfileid: "92126750"
 
 | 设置 | 值 |
 | ------- | ----- |
-| 定价计划 | 标准 |
+| 定价计划 | Standard |
 | 应用程序模板 | 店内分析 – 条件监视 |
 | 应用程序名称 | 接受默认设置，或选择自己的名称 |
 | 代码 | 接受默认设置，或选择自己的唯一 URL 前缀 |
@@ -214,7 +214,7 @@ ms.locfileid: "92126750"
 
 ### <a name="test-the-function-works"></a>测试函数的运行情况
 
-若要在门户中测试函数，请先选择代码编辑器底部的“日志”。  然后选择代码编辑器右侧的“测试”。  使用以下 JSON 作为**请求正文**：
+若要在门户中测试函数，请先选择代码编辑器底部的“日志”。  然后选择代码编辑器右侧的“测试”。  使用以下 JSON 作为 **请求正文**：
 
 ```json
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
@@ -249,7 +249,7 @@ test-device-3    2019-05-02T14:24:28.919Z
     | 事件中心命名空间 | 事件中心命名空间 |
     | 事件中心名称 | 使用现有名称 - **centralexport** |
 
-1. 在“作业拓扑”下，依次选择“输出”、“+ 添加”、“Azure 函数”。    
+1. 在 " **作业拓扑**" 下，选择 " **输出**"，选择 " **+ 添加**"，然后选择 " **Azure 函数**"。
 1. 使用下表中的信息配置输出，然后选择“保存”： 
 
     | 设置 | 值 |
