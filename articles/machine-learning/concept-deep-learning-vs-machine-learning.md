@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 12/15/2020
+ms.date: 01/14/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 61305e4f9ba45cb7c13a96bee9d1aab81108bb4d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617113"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220688"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure 机器学习中的深度学习与机器学习
 
@@ -57,7 +57,7 @@ ms.locfileid: "97617113"
 |  **执行时间** | 花费几秒到几小时的相对较少时间进行训练。 | 通常需要很长的时间才能完成训练，因为深度学习算法涉及到许多层。 |
 |  **输出** | 输出通常是一个数值，例如评分或分类。 | 输出可以采用多种格式，例如文本、评分或声音。 |
 
-## <a name="transfer-learning"></a>迁移学习
+## <a name="what-is-transfer-learning"></a>什么是传输学习
 
 训练深度学习模型通常需要大量的培训数据、高端计算资源 (GPU、TPU) 和更长的培训时间。 在未提供任何这些功能的情况下，你可以使用称为 "*传输学习*" 的技术来为训练过程提供快捷方式。
 
@@ -65,7 +65,7 @@ ms.locfileid: "97617113"
 
 由于神经网络的结构，第一组层通常包含较低级别的功能，而最后一组层包含较高级别的功能，更接近于相关领域。 通过重新调整最终层的大小以在新域或问题中使用，可以显著减少训练新模型所需的时间、数据和计算资源。 例如，如果您已有识别汽车的模型，则可以使用传输学习来重新调整该模型的用途，从而识别卡车、摩托车和其他类型的汽车。
 
-了解如何使用 Azure 机器学习： [使用 Pytorch 模型对图像进行分类](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)，以使用开源框架对图像分类应用传输学习。
+了解如何在 Azure 机器学习中使用开源框架对图像分类应用传输学习： [使用传输学习训练深度学习 PyTorch 模型](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)。
 
 ## <a name="deep-learning-use-cases"></a>深度学习用例
 

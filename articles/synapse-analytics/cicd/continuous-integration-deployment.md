@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008073"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223680"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作区的持续集成和交付
 
@@ -21,7 +21,7 @@ ms.locfileid: "97008073"
 
 "持续集成" (CI) 是在团队成员每次将更改提交到版本控制时自动生成和测试代码的过程。 持续部署 (CD) 是从多个测试或过渡环境构建、测试、配置和部署到生产环境的过程。
 
-对于 Azure Synapse 工作区，持续集成和交付 (CI/CD) 将所有实体从一个环境 (开发、测试、生产) 移到另一个环境。 若要将工作区提升到其他工作区，请使用 [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview) 来创建或更新工作区资源 (池和工作区) ;通过 Azure DevOps 中的 Synapse CI/CD 工具， (SQL 脚本、笔记本、Spark 作业定义、管道、数据集、数据流等) 迁移项目。 
+对于 Azure Synapse 工作区，持续集成和交付 (CI/CD) 将所有实体从一个环境 (开发、测试、生产) 移到另一个环境。 若要将工作区提升到其他工作区，请使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/overview.md) 来创建或更新工作区资源 (池和工作区) ;通过 Azure DevOps 中的 Synapse CI/CD 工具， (SQL 脚本、笔记本、Spark 作业定义、管道、数据集、数据流等) 迁移项目。 
 
 本文概述如何使用 Azure release 管道将 Synapse 工作区自动部署到多个环境。
 
@@ -46,7 +46,7 @@ ms.locfileid: "97008073"
 
 1.  在“阶段名称”框中，输入环境的名称。
 
-1.  选择 " **添加项目**"，然后选择配置了开发 Synapse Studio 的 git 存储库。 选择用于管理池和工作区的 ARM 模板的 git 存储库。 如果使用 GitHub 作为源，则需要为 GitHub 帐户和请求存储库创建服务连接。 有关[服务连接](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints)的详细信息 
+1.  选择 " **添加项目**"，然后选择配置了开发 Synapse Studio 的 git 存储库。 选择用于管理池和工作区的 ARM 模板的 git 存储库。 如果使用 GitHub 作为源，则需要为 GitHub 帐户和请求存储库创建服务连接。 有关[服务连接](/azure/devops/pipelines/library/service-endpoints)的详细信息 
 
     ![添加发布分支](media/release-creation-github.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "97008073"
     ![授予权限](media/release-creation-grant-permission.png)
 
  > [!WARNING]
-> 在完整部署模式下，资源组中存在但在新资源管理器模板中未指定的资源将被 **删除**。 有关详细信息，请参阅 [Azure 资源管理器部署模式](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes)
+> 在完整部署模式下，资源组中存在但在新资源管理器模板中未指定的资源将被 **删除**。 有关详细信息，请参阅 [Azure 资源管理器部署模式](../../azure-resource-manager/templates/deployment-modes.md)
 
 ## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>为项目部署设置阶段任务 
 
@@ -122,7 +122,7 @@ ms.locfileid: "97008073"
 
 ## <a name="create-release-for-deployment"></a>创建部署发布 
 
-保存所有更改后，可以选择 " **创建发布** " 手动创建发布。 若要自动创建发布，请参阅 [Azure DevOps 发布触发器](https://docs.microsoft.com/azure/devops/pipelines/release/triggers)
+保存所有更改后，可以选择 " **创建发布** " 手动创建发布。 若要自动创建发布，请参阅 [Azure DevOps 发布触发器](/azure/devops/pipelines/release/triggers)
 
    ![选择“创建发布”](media/release-creation-manually.png)
 
@@ -133,6 +133,4 @@ ms.locfileid: "97008073"
 -   **Git 集成**。 仅配置带有 Git 集成的开发 Synapse 工作区。 对测试和生产工作区的更改是通过 CI/CD 部署的，无需 Git 集成。
 -   **在项目迁移之前准备池**。 如果已将 SQL 脚本或笔记本附加到开发工作区中的池，则需要在不同环境中使用相同的池名称。 
 -   **作为代码的基础结构 (IaC)**。 在描述性模型中管理基础结构 (网络、虚拟机、负载均衡器和连接) 拓扑，并使用与 DevOps 团队用于源代码的相同版本控制。 
--   **其他**。 请参阅 [ADF 项目的最佳实践](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)
-
-
+-   **其他**。 请参阅 [ADF 项目的最佳实践](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)

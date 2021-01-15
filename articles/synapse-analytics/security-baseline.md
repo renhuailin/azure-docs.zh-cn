@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 65985e05be1061bb69eb160cf5be559cb271d5cd
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 89a437504394797b8cbed5325210186248082c33
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202923"
+ms.locfileid: "98218224"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的 azure 安全基线
 
 Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全状况的建议。
 
-此服务的基线摘自 [Azure 安全基准版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
+此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
-有关详细信息，请参阅 [Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
 ## <a name="network-security"></a>网络安全性
 
-有关详细信息，请参阅[安全控制：网络安全](/azure/security/benchmarks/security-control-network-security)。
+有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
@@ -33,13 +33,13 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 或者，在连接到 Synapse SQL 池时，通过使用网络安全组缩小到 SQL 数据库的传出连接的范围。 通过将 "允许 Azure 服务" 设置为 "关闭"，禁用通过公共终结点将所有 Azure 服务流量发送到 SQL 数据库。 确保防火墙规则中不允许使用公共 IP 地址。
 
-* [了解 Azure 专用链接](https://docs.microsoft.com/azure/private-link/private-link-overview)
+* [了解 Azure 专用链接](../private-link/private-link-overview.md)
 
-* [了解 Azure Synapse SQL 的专用链接](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)
+* [了解 Azure Synapse SQL 的专用链接](../azure-sql/database/private-endpoint-overview.md)
 
-* [如何创建虚拟网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [如何创建虚拟网络](../virtual-network/quick-create-portal.md)
 
-* [如何创建采用安全配置的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [如何创建采用安全配置的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -51,13 +51,13 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
-* [如何启用 NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [如何启用 NSG 流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [了解 Azure 安全中心提供的网络安全](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [了解 Azure 安全中心提供的网络安全](../security-center/security-center-network-recommendations.md)
 
-* [如何启用和使用流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [如何启用和使用流量分析](../network-watcher/traffic-analytics.md)
 
-* [了解 Azure 安全中心提供的网络安全](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [了解 Azure 安全中心提供的网络安全](../security-center/security-center-network-recommendations.md)
 
 **Azure 安全中心监视**：是
 
@@ -77,15 +77,15 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 在与 Azure Synapse SQL 关联的虚拟网络上启用 DDoS 保护，以防止受到分布式拒绝服务攻击。 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。
 
-* [了解 Azure Synapse SQL 的 ATP](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [了解 Azure Synapse SQL 的 ATP](../azure-sql/database/threat-detection-overview.md)
 
-* [如何为 Azure SQL Database 启用高级数据安全性](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [如何为 Azure SQL Database 启用高级数据安全性](../azure-sql/database/azure-defender-for-sql.md)
 
-* [广告概述](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [广告概述](../azure-sql/database/azure-defender-for-sql.md)
 
-* [如何配置 DDoS 防护](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
-* [了解 Azure 安全中心集成的威胁情报](https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services)
+* [了解 Azure 安全中心集成的威胁情报](../security-center/azure-defender.md)
 
 **Azure 安全中心监视**：是
 
@@ -95,9 +95,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：连接到专用 SQL 池时，如果已启用网络安全组 (NSG) 流日志，请将日志发送到 Azure 存储帐户以进行流量审核。 你还可以将流日志发送到 Log Analytics 工作区，或将流日志流式传输到事件中心。 启用网络观察程序数据包捕获（如果调查异常活动时有此需要）。
 
-* [如何启用 NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [如何启用 NSG 流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [如何启用网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [如何启用网络观察程序](../network-watcher/network-watcher-create.md)
 
 **Azure 安全中心监视**：是
 
@@ -107,7 +107,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：将高级威胁防护 (ATP) 用于 AZURE Synapse SQL。 ATP 会检测异常活动，这些活动表明对访问或利用数据库的异常和潜在有害尝试，并且它可能会触发各种警报，如 "潜在的 SQL 注入" 和 "从异常位置访问"。 ATP 是) 产品/服务的高级数据安全 (的一部分，可通过中央 SQL 广告门户进行访问和管理。 ATP 还将警报与 Azure 安全中心集成。
 
-* [了解 Azure Synapse SQL 的 ATP](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [了解 Azure Synapse SQL 的 ATP](../azure-sql/database/threat-detection-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -127,9 +127,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 将服务终结点用于专用 SQL 池时，需要出站到 Azure SQL 数据库的公共 IP 地址：必须打开网络安全组 (Nsg) ，才能允许连接到 Azure SQL 数据库 Ip。 可以使用 Azure SQL 数据库的 NSG 服务标记执行此操作。
 
-* [了解 Azure SQL 数据库的服务终结点的服务标记](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
+* [了解 Azure SQL 数据库的服务终结点的服务标记](../azure-sql/database/vnet-service-endpoint-rule-overview.md#limitations)
 
-* [了解和使用服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [了解和使用服务标记](../virtual-network/service-tags-overview.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -141,9 +141,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 使用 Azure 蓝图可以通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理模板、基于 Azure 角色的访问控制 (Azure RBAC) 和策略）来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何创建 Azure 蓝图](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [如何创建 Azure 蓝图](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -157,7 +157,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 可以使用 Azure PowerShell 或 Azure CLI 基于其标记对资源进行查找或执行操作。
 
-* [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -167,9 +167,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：使用 Azure 活动日志监视网络资源配置，并检测与专用 SQL 池相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-* [如何查看和检索 Azure 活动日志事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -177,13 +177,13 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-有关详细信息，请参阅[安全控制：日志记录和监视](/azure/security/benchmarks/security-control-logging-monitoring)。
+有关详细信息，请参阅[安全控制：日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
 **指导**：由 Microsoft 维护 Azure 资源的时间源。 可以为计算部署更新时间同步。
 
-* [如何为 Azure 计算资源配置时间同步](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [如何为 Azure 计算资源配置时间同步](../virtual-machines/windows/time-sync.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -199,9 +199,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
-* [如何为 Azure SQL 资源设置审核](https://docs.microsoft.com/azure/azure-sql/database/auditing-overview#server-vs-database-level)
+* [如何为 Azure SQL 资源设置审核](../azure-sql/database/auditing-overview.md#server-vs-database-level)
 
-* [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure 安全中心监视**：是
 
@@ -213,11 +213,11 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 可以在数据库级别或服务器级别上启用审核，并且建议仅在服务器级别启用审核，除非你需要为特定数据库配置单独的数据接收器或保留期。
 
-* [如何为 Azure SQL 数据库启用审核](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)
+* [如何为 Azure SQL 数据库启用审核](../azure-sql/database/auditing-overview.md)
 
-* [如何为服务器启用审核](https://docs.microsoft.com/azure/azure-sql/database/auditing-overview#setup-auditing)
+* [如何为服务器启用审核](../azure-sql/database/auditing-overview.md#setup-auditing)
 
-* [服务器级和数据库级审核策略的差异](https://docs.microsoft.com/azure/sql-database/sql-database-auditing#server-vs-database-level)
+* [服务器级和数据库级审核策略的差异](../azure-sql/database/auditing-overview.md#server-vs-database-level)
 
 **Azure 安全中心监视**：是
 
@@ -235,11 +235,11 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：在存储帐户、Log Analytics 的工作区或事件中心中存储与专用 SQL 池相关的日志时，请根据组织的符合性法规设置日志保持期。
 
-* [管理 Azure Blob 存储生命周期](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
+* [管理 Azure Blob 存储生命周期](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
-* [如何在 Log Analytics 工作区中设置日志保留参数](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [如何在 Log Analytics 工作区中设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-* [捕获事件中心中的流式处理事件](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)
+* [捕获事件中心中的流式处理事件](../event-hubs/event-hubs-capture-overview.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -251,13 +251,13 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
-* [了解 Azure SQL 数据库的高级威胁防护和警报](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [了解 Azure SQL 数据库的高级威胁防护和警报](../azure-sql/database/threat-detection-overview.md)
 
-* [如何为 Azure SQL Database 启用高级数据安全性](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [如何为 Azure SQL Database 启用高级数据安全性](../azure-sql/database/azure-defender-for-sql.md)
 
-* [如何配置 Azure SQL 数据库的自定义警报](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal?view=azps-1.4.0&preserve-view=true)
+* [如何配置 Azure SQL 数据库的自定义警报](../azure-sql/database/alerts-insights-configure-portal.md?preserve-view=true&view=azps-1.4.0)
 
-* [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure 安全中心监视**：是
 
@@ -269,13 +269,13 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 或者，可以启用数据并将其载入 Azure Sentinel。
 
-* [了解 Azure SQL 数据库的高级威胁防护和警报](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [了解 Azure SQL 数据库的高级威胁防护和警报](../azure-sql/database/threat-detection-overview.md)
 
-* [如何为 Azure SQL Database 启用高级数据安全性](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [如何为 Azure SQL Database 启用高级数据安全性](../azure-sql/database/azure-defender-for-sql.md)
 
-* [如何在 Azure 安全中心管理警报](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure 安全中心监视**：是
 
@@ -307,7 +307,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-有关详细信息，请参阅[安全控制：标识和访问控制](/azure/security/benchmarks/security-control-identity-access-control)。
+有关详细信息，请参阅[安全控制：标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
@@ -317,19 +317,19 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 对于管理操作，请使用必须显式分配的 Azure 内置角色。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。
 
-* [SQL 数据库的身份验证](https://docs.microsoft.com/azure/azure-sql/database/security-overview#authentication)
+* [SQL 数据库的身份验证](../azure-sql/database/security-overview.md#authentication)
 
-* [为非管理用户创建帐户](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#create-accounts-for-non-administrator-users)
+* [为非管理用户创建帐户](../azure-sql/database/logins-create-manage.md#create-accounts-for-non-administrator-users)
 
-* [使用 Azure Active Directory 帐户进行身份验证](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#create-additional-logins-and-users-having-administrative-permissions)
+* [使用 Azure Active Directory 帐户进行身份验证](../azure-sql/database/logins-create-manage.md#create-additional-logins-and-users-having-administrative-permissions)
 
-* [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true)
+* [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-* [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true)
+* [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-* [如何管理 Azure SQL 中的现有登录名和管理员帐户](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
+* [如何管理 Azure SQL 中的现有登录名和管理员帐户](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Azure 内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
+* [Azure 内置角色](../role-based-access-control/built-in-roles.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -339,9 +339,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指导**：Azure Active Directory 没有默认密码的概念。 预配专用 SQL 池时，建议选择将身份验证与 Azure Active Directory 集成。 使用此身份验证方法时，用户将提交用户帐户名，并请求服务使用 Azure Active Directory (Azure AD) 中存储的凭据信息。
 
-* [如何配置和管理 Azure SQL Azure Active Directory 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#active-directory-password-authentication)
+* [如何配置和管理 Azure SQL Azure Active Directory 身份验证](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#active-directory-password-authentication)
 
-* [了解 Azure SQL 中的身份验证](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
+* [了解 Azure SQL 中的身份验证](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
 **Azure 安全中心监视**：不适用
 
@@ -353,9 +353,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 若要确定数据库的管理员帐户，请打开 Azure 门户，然后导航到服务器或托管实例的“属性”选项卡。
 
-* [了解 Azure 安全中心标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [了解 Azure 安全中心标识和访问](../security-center/security-center-identity-access.md)
 
-* [如何管理 Azure SQL 中的现有登录名和管理员帐户](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
+* [如何管理 Azure SQL 中的现有登录名和管理员帐户](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
 **Azure 安全中心监视**：不适用
 
@@ -365,11 +365,11 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：使用 Azure 应用注册 (服务主体) 来检索可用于在控制面与数据仓库交互的令牌 (通过 API 调用 Azure 门户) 。
 
-* [如何调用 Azure REST API](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
+* [如何调用 Azure REST API](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-* [如何将客户端应用程序（服务主体）注册到 Azure AD](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+* [如何将客户端应用程序（服务主体）注册到 Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-* [Azure Synapse SQL REST API 信息](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api)
+* [Azure Synapse SQL REST API 信息](./sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -379,11 +379,11 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：启用 Azure Active Directory (AD) 多重身份验证 (MFA)，并遵循 Azure 安全中心标识和访问管理的建议。
 
-* [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [如何在 Azure 安全中心监视标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何在 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
-* [了解 Azure SQL 中的 MFA](https://docs.microsoft.com/azure/azure-sql/database/authentication-mfa-ssms-overview)
+* [了解 Azure SQL 中的 MFA](../azure-sql/database/authentication-mfa-ssms-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -395,7 +395,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 * [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -409,15 +409,15 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 使用 SQL Server 审核可以创建服务器审核，其中可能包含服务器级事件的服务器审核规范，以及数据库级事件的数据库审核规范。 可将审核的事件写入事件日志或审核文件。
 
-* [如何确定标记为存在风险活动的 Azure AD 用户](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+* [如何确定标记为存在风险活动的 Azure AD 用户](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [如何在 Azure 安全中心监视用户的标识和访问活动](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何在 Azure 安全中心监视用户的标识和访问活动](../security-center/security-center-identity-access.md)
 
-* [查看高级威胁防护和潜在警报](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts)
+* [查看高级威胁防护和潜在警报](../azure-sql/database/threat-detection-overview.md#alerts)
 
-* [了解 Azure SQL 中的登录名和用户帐户](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [了解 Azure SQL 中的登录名和用户帐户](../azure-sql/database/logins-create-manage.md)
 
-* [了解 SQL Server 审核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-ver15&preserve-view=true)
+* [了解 SQL Server 审核](/sql/relational-databases/security/auditing/sql-server-audit-database-engine?preserve-view=true&view=sql-server-ver15)
 
 **Azure 安全中心监视**：是
 
@@ -427,7 +427,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指导**：使用条件访问命名位置，仅允许从 IP 地址范围或国家/地区的特定逻辑分组进行门户和 Azure 资源管理访问。
 
-* [如何在 Azure 中配置命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [如何在 Azure 中配置命名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -437,9 +437,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：为专用 SQL 池中的 Azure SQL 数据库服务器创建 AZURE ACTIVE DIRECTORY (AD) 管理员。
 
-* [如何配置和管理 Azure SQL Azure AD 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
+* [如何配置和管理 Azure SQL Azure AD 身份验证](../azure-sql/database/authentication-aad-configure.md)
 
-* [如何创建和配置 Azure AD 实例](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance)
+* [如何创建和配置 Azure AD 实例](../active-directory-domain-services/tutorial-create-instance.md)
 
 **Azure 安全中心监视**：是
 
@@ -451,9 +451,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 使用 SQL 身份验证时，请在数据库中创建包含的数据库用户。 确保将一个或多个数据库用户放入一个自定义数据库角色，该角色具有适用于该用户组的特定权限。
 
-* [如何使用访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [如何使用访问评审](../active-directory/governance/access-reviews-overview.md)
 
-* [了解 Azure SQL 中的登录名和用户帐户](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [了解 Azure SQL 中的登录名和用户帐户](../azure-sql/database/logins-create-manage.md)
 
 **Azure 安全中心监视**：是
 
@@ -465,13 +465,13 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 使用 SQL 身份验证时，请在数据库中创建包含的数据库用户。 确保将一个或多个数据库用户放入一个自定义数据库角色，该角色具有适用于该用户组的特定权限。
 
-* [如何使用访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [如何使用访问评审](../active-directory/governance/access-reviews-overview.md)
 
-* [如何配置和管理 Azure SQL 数据库的 Azure AD 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
+* [如何配置和管理 Azure SQL 数据库的 Azure AD 身份验证](../azure-sql/database/authentication-aad-configure.md)
 
-* [如何将 Azure 活动日志集成到 Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [了解 Azure SQL 中的登录名和用户帐户](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [了解 Azure SQL 中的登录名和用户帐户](../azure-sql/database/logins-create-manage.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -483,13 +483,13 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 使用 SQL 身份验证时，请在数据库中创建包含的数据库用户。 确保将一个或多个数据库用户放入一个自定义数据库角色，该角色具有适用于该用户组的特定权限。
 
-* [如何查看 Azure AD 风险登录](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [如何配置和启用标识保护风险策略](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
+* [如何加入 Azure Sentinel](../sentinel/connect-data-sources.md)
 
-* [了解 Azure SQL 中的登录名和用户帐户](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [了解 Azure SQL 中的登录名和用户帐户](../azure-sql/database/logins-create-manage.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -499,7 +499,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：在支持方案中，Microsoft 需要访问与专用 SQL 池中的 Azure SQL 数据库相关的数据，Azure 客户密码箱提供了一个用于查看和批准或拒绝数据访问请求的接口。
 
-* [了解客户密码箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+* [了解客户密码箱](../security/fundamentals/customer-lockbox-overview.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -507,7 +507,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ## <a name="data-protection"></a>数据保护
 
-有关详细信息，请参阅[安全控制：数据保护](/azure/security/benchmarks/security-control-data-protection)。
+有关详细信息，请参阅[安全控制：数据保护](../security/benchmarks/security-control-data-protection.md)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
@@ -515,9 +515,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 数据发现 &amp; 分类内置于 Azure SYNAPSE SQL 中。 它提供用于发现、分类、标记和报告数据库中的敏感数据的高级功能。
 
-* [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-* [了解数据发现 &amp; 分类](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview)
+* [了解数据发现 &amp; 分类](../azure-sql/database/data-discovery-and-classification-overview.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -527,13 +527,13 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指导**：为开发、测试和生产实施单独的订阅和/或管理组。 资源应当按虚拟网络/子网进行分隔，相应地进行标记，并由网络安全组或 Azure 防火墙提供保护。 应当隔离用于存储或处理敏感数据的资源。 使用专用链接;在虚拟网络中部署 Azure SQL Server，并使用 "专用" 链接安全地连接。
 
-* [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-* [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-* [如何设置 Azure SQL 数据库的专用链接](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview#how-to-set-up-private-link-for-azure-sql-database)
+* [如何设置 Azure SQL 数据库的专用链接](../azure-sql/database/private-endpoint-overview.md#how-to-set-up-private-link-for-azure-sql-database)
 
 **Azure 安全中心监视**：不适用
 
@@ -547,11 +547,11 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
-* [如何配置 Private Link 和 Nsg 以防止 Azure SQL 数据库实例上的数据渗透](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)
+* [如何配置 Private Link 和 Nsg 以防止 Azure SQL 数据库实例上的数据渗透](../azure-sql/database/private-endpoint-overview.md)
 
-* [了解 Azure SQL 数据库的高级威胁防护](https://docs.microsoft.com/azure/azure-sql/database/threat-detection-overview)
+* [了解 Azure SQL 数据库的高级威胁防护](../azure-sql/database/threat-detection-overview.md)
 
-* [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -561,7 +561,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指导**：Azure SQL 数据库通过使用传输层安全性加密动态数据来保护数据。 对于所有连接，SQL Server 都将对 SSL/TLS) 始终强制执行加密 (。 这样可以确保在客户端与服务器之间传输的所有数据经过加密，而不管连接字符串中的 Encrypt 或 TrustServerCertificate 设置如何。
 
-* [了解传输中的 Azure SQL 加密](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview#information-protection-and-encryption)
+* [了解传输中的 Azure SQL 加密](../azure-sql/database/security-overview.md#information-protection-and-encryption)
 
 **Azure 安全中心监视**：不适用
 
@@ -575,9 +575,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 此外，还可以在 Azure 门户中 (DDM) 策略设置动态数据掩码。 DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段，这可能是掩蔽的候选项。
 
-* [如何使用 Azure SQL Server 的数据发现和分类功能](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+* [如何使用 Azure SQL Server 的数据发现和分类功能](../azure-sql/database/data-discovery-and-classification-overview.md)
 
-* [了解 Azure Synapse SQL 的动态数据掩码](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)
+* [了解 Azure Synapse SQL 的动态数据掩码](../azure-sql/database/dynamic-data-masking-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -589,11 +589,11 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 授权是由用户帐户的数据库角色成员身份和对象级权限控制。 作为最佳实践，应向用户授予所需的最低权限。
 
-* [如何将 Azure SQL Server 与 Azure Active Directory 进行身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)
+* [如何将 Azure SQL Server 与 Azure Active Directory 进行身份验证](../azure-sql/database/authentication-aad-overview.md)
 
-* [如何在 Azure SQL Server 中控制访问权限](https://docs.microsoft.com/azure/sql-database/sql-database-control-access)
+* [如何在 Azure SQL Server 中控制访问权限](../azure-sql/database/logins-create-manage.md)
 
-* [了解 Azure SQL 中的授权和身份验证](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [了解 Azure SQL 中的授权和身份验证](../azure-sql/database/logins-create-manage.md)
 
 **Azure 安全中心监视**：是
 
@@ -603,7 +603,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：不适用;Microsoft 管理 Azure Synapse SQL 的底层基础结构，并实施了严格控制以防止客户数据丢失或泄露。
 
-* [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -613,11 +613,11 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：透明数据加密 (TDE) 通过加密静态数据，帮助保护 AZURE Synapse SQL 免受恶意脱机活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 在 Azure 中，TDE 的默认设置是 DEK 受内置服务器证书保护。 另外，还可以使用客户托管的 TDE （也称为创建自己的密钥 (BYOK) 对 TDE 的支持。 在此方案中，用于加密 DEK 的 TDE 保护器是客户管理的非对称密钥，该密钥存储在客户自有且自行管理的 Azure Key Vault（Azure 的基于云的外部密钥管理系统）中，并且永远不会离开该密钥保管库。
 
-* [了解服务托管的透明数据加密](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?tabs=azure-portal)
+* [了解服务托管的透明数据加密](../azure-sql/database/transparent-data-encryption-tde-overview.md?tabs=azure-portal)
 
-* [了解客户管理的透明数据加密](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key)
+* [了解客户管理的透明数据加密](../azure-sql/database/transparent-data-encryption-tde-overview.md?tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key)
 
-* [如何使用自己的密钥打开 TDE](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-byok-configure)
+* [如何使用自己的密钥打开 TDE](../azure-sql/database/transparent-data-encryption-byok-configure.md)
 
 **Azure 安全中心监视**：是
 
@@ -629,9 +629,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 此外，还可以使用 Azure 门户为 SQL Synapse 池中的数据库设置警报。 当某些指标（例如数据库大小或 CPU 使用率）达到阈值时，警报可以向你发送电子邮件或调用 Webhook。
 
-* [如何针对 Azure 活动日志事件创建警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
-* [如何为 Azure SQL Synapse 创建警报](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal)
+* [如何为 Azure SQL Synapse 创建警报](../azure-sql/database/alerts-insights-configure-portal.md)
 
 **Azure 安全中心监视**：是
 
@@ -639,17 +639,17 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-有关详细信息，请参阅[安全控制：漏洞管理](/azure/security/benchmarks/security-control-vulnerability-management)。
+有关详细信息，请参阅[安全控制：漏洞管理](../security/benchmarks/security-control-vulnerability-management.md)。
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
 **指南**：若要在 azure SQL 数据库上执行漏洞评估，请启用高级数据安全并遵循 Azure 安全中心提供的建议。
 
-* [如何对 Azure SQL 数据库运行漏洞评估](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [如何对 Azure SQL 数据库运行漏洞评估](../azure-sql/database/sql-vulnerability-assessment.md)
 
-* [如何启用高级数据安全](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [如何启用高级数据安全](../azure-sql/database/azure-defender-for-sql.md)
 
-* [如何实现 Azure 安全中心漏洞评估建议](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+* [如何实现 Azure 安全中心漏洞评估建议](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 安全中心监视**：是
 
@@ -675,7 +675,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：漏洞评估是内置于 AZURE Synapse SQL 中的扫描服务。 该服务采用一个可以标记安全漏洞的规则知识库。 它会重点列出违背最佳做法的情况，例如配置不当、权限过度分配以及敏感数据未受保护。 可以通过核心) 门户中的 SQL 高级数据安全 (广告访问和管理漏洞评估。
 
-* [在 SQL ADS 门户中管理和导出漏洞评估扫描](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [在 SQL ADS 门户中管理和导出漏洞评估扫描](../azure-sql/database/sql-vulnerability-assessment.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -687,9 +687,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 数据发现 &amp; 分类内置于 Azure SYNAPSE SQL 中。 它提供用于发现、分类、标记和报告数据库中的敏感数据的高级功能。
 
-* [了解 Azure 安全中心安全功能分数](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
+* [了解 Azure 安全中心安全功能分数](../security-center/secure-score-security-controls.md)
 
-* [了解数据发现 &amp; 分类](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview)
+* [了解数据发现 &amp; 分类](../azure-sql/database/data-discovery-and-classification-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -697,7 +697,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-有关详细信息，请参阅[安全控制：清单和资产管理](/azure/security/benchmarks/security-control-inventory-asset-management)。
+有关详细信息，请参阅[安全控制：清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
@@ -705,11 +705,11 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 尽管可以通过 Azure Resource Graph 发现经典 Azure 资源，但我们强烈建议今后创建并使用 Azure 资源管理器资源。
 
-* [如何使用 Azure Resource Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-* [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0&preserve-view=true)
+* [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-3.0.0)
 
-* [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [了解 Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -719,7 +719,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指导**：将标记应用到 Azure资源，以便有条理地将元数据组织成某种分类。
 
-* [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -729,11 +729,11 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指导**：在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-* [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-* [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -755,9 +755,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure Resource Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -795,9 +795,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure Policy 拒绝特定的资源类型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -815,7 +815,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：使用 Azure 条件访问可通过为“Microsoft Azure 管理”应用配置“阻止访问”，限制用户与 Azure 资源管理器进行交互的能力。
 
-* [如何配置条件访问以阻止访问 Azure 资源管理器](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [如何配置条件访问以阻止访问 Azure 资源管理器](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -833,9 +833,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：对于业务操作所需的与专用 SQL 池相关的任何资源，但可能会给组织带来更高的风险，应在其自己的虚拟机和/或虚拟网络中隔离，并使用 Azure 防火墙或网络安全组进行充分的保护。
 
-* [如何创建虚拟网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [如何创建虚拟网络](../virtual-network/quick-create-portal.md)
 
-* [如何创建采用安全配置的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [如何创建采用安全配置的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -843,7 +843,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ## <a name="secure-configuration"></a>安全配置
 
-有关详细信息，请参阅[安全控制：安全配置](/azure/security/benchmarks/security-control-secure-configuration)。
+有关详细信息，请参阅[安全控制：安全配置](../security/benchmarks/security-control-secure-configuration.md)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
@@ -851,9 +851,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 - 在 SQL 服务器上部署威胁检测
 - SQL Server 应使用虚拟网络服务终结点
 
-* [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0&preserve-view=true)
+* [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-3.3.0)
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 安全中心监视**：是
 
@@ -871,9 +871,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。
 
-* [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [了解 Azure Policy 效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [了解 Azure Policy 效果](../governance/policy/concepts/effects.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -891,9 +891,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指导**：如果使用自定义的 Azure Policy 定义，请使用 Azure DevOps 或 Azure Repos 安全地存储和管理代码。
 
-* [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
+* [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-* [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=true)
+* [Azure Repos 文档](/azure/devops/repos/index?preserve-view=true&view=azure-devops)
 
 **Azure 安全中心监视**：不适用
 
@@ -927,7 +927,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：利用 Azure 安全中心对与专用 SQL 池相关的任何资源执行基线扫描。
 
-* [如何在 Azure 安全中心修正建议](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+* [如何在 Azure 安全中心修正建议](../security-center/security-center-remediate-recommendations.md)
 
 **Azure 安全中心监视**：是
 
@@ -945,9 +945,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：透明数据加密 (TDE) 与客户托管密钥一起使用 Azure Key Vault 允许使用称为 TDE 保护器的客户托管非对称密钥 (DEK) 加密自动生成的数据库加密密钥。 这通常也称为透明数据加密的创建自己的密匙 (BYOK) 支持。 在 BYOK 方案中，TDE 保护程序存储在客户拥有和管理的 Azure Key Vault 中。 此外，请确保在 Azure Key Vault 中启用软删除。
 
-* [如何使用 Azure Key Vault 中的客户托管密钥启用 TDE](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-byok-configure?tabs=azure-powershell)
+* [如何使用 Azure Key Vault 中的客户托管密钥启用 TDE](../azure-sql/database/transparent-data-encryption-byok-configure.md?tabs=azure-powershell)
 
-* [如何在 Azure Key Vault 中启用软删除](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)
+* [如何在 Azure Key Vault 中启用软删除](../key-vault/general/key-vault-recovery.md)
 
 **Azure 安全中心监视**：是
 
@@ -957,9 +957,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：使用托管标识，通过 AZURE ACTIVE DIRECTORY (AD) 中的自动托管标识提供 Azure 服务。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Azure Key Vault）进行身份验证，无需在代码中放入任何凭据。
 
-* [教程：使用 Windows VM 系统分配的托管标识访问 Azure SQL](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql)
+* [教程：使用 Windows VM 系统分配的托管标识访问 Azure SQL](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md)
 
-* [如何配置托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+* [如何配置托管标识](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -977,7 +977,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-有关详细信息，请参阅[安全控制：恶意软件防护](/azure/security/benchmarks/security-control-malware-defense)。
+有关详细信息，请参阅[安全控制：恶意软件防护](../security/benchmarks/security-control-malware-defense.md)。
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
@@ -993,7 +993,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 预先扫描要上传到非计算 Azure 资源的任何内容，例如应用服务、Data Lake Storage、Blob 存储、Azure SQL Server 等。Microsoft 无法访问这些实例中的数据。
 
-* [了解适用于 Azure 云服务和虚拟机的 Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [了解适用于 Azure 云服务和虚拟机的 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1009,13 +1009,13 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ## <a name="data-recovery"></a>数据恢复
 
-有关详细信息，请参阅[安全控制：数据恢复](/azure/security/benchmarks/security-control-data-recovery)。
+有关详细信息，请参阅[安全控制：数据恢复](../security/benchmarks/security-control-data-recovery.md)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
 **指南**：在创建七天可用的还原点当天，会自动创建专用 SQL 池的快照。 无法更改此保留期。 专用 SQL 池支持 (RPO) 的8小时恢复点目标。 可以根据过去七天捕获的任意一个快照，还原主要区域中的数据仓库。 请注意，如果需要，还可以手动触发快照。
 
-* [在专用 SQL 池中备份和还原](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [在专用 SQL 池中备份和还原](./sql-data-warehouse/backup-and-restore.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1027,9 +1027,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 如果使用客户管理的密钥来加密数据库加密密钥，请确保密钥正在备份。
 
-* [在专用 SQL 池中备份和还原](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [在专用 SQL 池中备份和还原](./sql-data-warehouse/backup-and-restore.md)
 
-* [如何备份 Azure Key Vault 密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true)
+* [如何备份 Azure Key Vault 密钥](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?preserve-view=true&view=azurermps-6.13.0)
 
 **Azure 安全中心监视**：不适用
 
@@ -1039,11 +1039,11 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指南**：定期测试还原点以确保快照有效。 若要从还原点还原现有专用 SQL 池，可以使用 Azure 门户或 PowerShell。 测试对备份的客户管理的密钥进行还原。
 
-* [如何还原 Azure Key Vault 密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true)
+* [如何还原 Azure Key Vault 密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?preserve-view=true&view=azurermps-6.13.0)
 
-* [在专用 SQL 池中备份和还原](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [在专用 SQL 池中备份和还原](./sql-data-warehouse/backup-and-restore.md)
 
-* [如何还原现有专用 SQL 池](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw)
+* [如何还原现有专用 SQL 池](./sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1055,11 +1055,11 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 默认情况下，存储帐户中的数据使用 Microsoft 托管的密钥进行加密。 可以依赖于使用 Microsoft 托管的密钥来加密数据，也可以使用你自己的密钥来管理加密。 如果你正在用 Key Vault 管理自己的密钥，请确保已启用软删除。
 
-* [管理 Azure SQL 数据库长期备份保留](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure)
+* [管理 Azure SQL 数据库长期备份保留](../azure-sql/database/long-term-backup-retention-configure.md)
 
-* [适用于静态数据的 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+* [适用于静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)
 
-* [如何在 Key Vault 中启用软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [如何在 Key Vault 中启用软删除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：空值
 
@@ -1067,13 +1067,13 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ## <a name="incident-response"></a>事件响应
 
-有关详细信息，请参阅[安全控制：事件响应](/azure/security/benchmarks/security-control-incident-response)。
+有关详细信息，请参阅[安全控制：事件响应](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
 **指导**：确保在书面的事件响应计划中定义人员职责，以及事件处理/管理的各个阶段。
 
-* [如何在 Azure 安全中心配置工作流自动化](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [如何在 Azure 安全中心配置工作流自动化](../security-center/security-center-planning-and-operations-guide.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1083,7 +1083,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指导**：安全中心将为警报分配严重性来帮助你确定每条警报的处理优先顺序，以便在资源泄密时可以立即采取措施。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-* [Azure 安全中心中的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -1103,7 +1103,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指导**：如果 Microsoft 安全响应中心 (MSRC) 发现数据被某方非法访问或未经授权访问，Microsoft 会使用安全事件联系信息联系用户。
 
-* [如何设置 Azure 安全中心安全联系人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [如何设置 Azure 安全中心安全联系人](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 安全中心监视**：是
 
@@ -1113,9 +1113,9 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
 
-* [如何配置连续导出](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [如何配置连续导出](../security-center/continuous-export.md)
 
-* [如何将警报流式传输到 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [如何将警报流式传输到 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1125,7 +1125,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 **指导**：使用 Azure 安全中心内的工作流自动化功能可以通过“逻辑应用”针对安全警报和建议自动触发响应。
 
-* [如何配置工作流自动化和逻辑应用](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [如何配置工作流自动化和逻辑应用](../security-center/workflow-automation.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1133,7 +1133,7 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-有关详细信息，请参阅[安全控制：渗透测试和红队演练](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
+有关详细信息，请参阅[安全控制：渗透测试和红队演练](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
@@ -1147,5 +1147,5 @@ Azure Synapse Analytics 的 Azure 安全基准包含有助于改进部署安全�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: a0458264b6ea0c741244531fc104a7637108b06e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 4681039f60154b95eeb7e40196ca33055a192c74
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121339"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222099"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>使用 Azure Synapse 链接预览中的无服务器 SQL 池查询 Azure Cosmos DB 数据
 
@@ -206,6 +206,8 @@ FROM OPENROWSET(
 
 ## <a name="create-view"></a>创建视图
 
+不建议也不支持在 master 数据库或默认数据库中创建视图。 因此，您需要为视图创建用户数据库。
+
 确定架构后，可以在 Azure Cosmos DB 数据的基础上准备视图。 应将 Azure Cosmos DB 帐户密钥置于单独的凭据中，并从函数引用此凭据 `OPENROWSET` 。 不要在视图定义中保留你的帐户密钥。
 
 ```sql
@@ -337,7 +339,7 @@ Azure Cosmos DB SQL (Core) API 的帐户支持 number、string、Boolean、null�
 | --- | --- |
 | 布尔 | bit |
 | Integer | bigint |
-| 小数 | float |
+| 小数 | FLOAT |
 | 字符串 | varchar (UTF-8 数据库排序规则)  |
 |  (ISO 格式的字符串的日期时间)  | varchar (30)  |
 | UNIX 时间戳 (日期时间)  | bigint |

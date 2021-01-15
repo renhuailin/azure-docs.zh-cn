@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 09/15/2020
-ms.openlocfilehash: 9dfe70cf6c91a0c12604f91e583a9a4eb9b4e088
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 1/14/2021
+ms.openlocfilehash: e21a5a5be03ffa4ada362247c488ee7d12bd50f7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308823"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222218"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL 数据库和 Azure Synapse Analytics 服务器的资源限制
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,7 +80,7 @@ ms.locfileid: "93308823"
 - 提高数据库或弹性池的服务层级或计算大小。 请参阅[缩放单一数据库资源](single-database-scale.md)和[缩放弹性池资源](elastic-pool-scale.md)。
 - 如果争用计算资源造成了辅助角色使用率上升，请优化查询，以降低每项查询的资源使用率。 有关详细信息，请参阅[查询优化/提示](performance-guidance.md#query-tuning-and-hinting)。
 - 减小 [MAXDOP](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines)（最大并行度）设置。
-- 优化查询工作负荷，以减少查询受阻的发生次数和持续时间。
+- 优化查询工作负荷，以减少查询受阻的发生次数和持续时间。 有关详细信息，请参阅 [了解和解决 AZURE SQL 阻止问题](understand-resolve-blocking.md)。
 
 ### <a name="memory"></a>内存
 
@@ -158,7 +158,7 @@ Azure SQL 数据库资源调控本质上是分层的。 从上到下，将使用
 
 日志速率调控器流量造型通过以下等待类型出现， (在 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 视图中公开) ：
 
-| Wait 类型 | 说明 |
+| Wait 类型 | 备注 |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | 数据库限制 |
 | POOL_LOG_RATE_GOVERNOR | 池限制 |

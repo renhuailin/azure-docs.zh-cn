@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: a29454f09268406511730c63dcc3bc3063b909c6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882358"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218648"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>将 Azure 服务与虚拟网络集成以实现网络隔离
 
@@ -66,7 +66,7 @@ VNet 服务终结点通过 Azure 主干网络上的优化路由，提供与 Azur
 
 ## <a name="service-tags"></a>服务标记
 
-服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 使用服务标记，可以定义 [网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) 或 [Azure 防火墙](https://docs.microsoft.com/azure/firewall/service-tags)上的网络访问控制。 通过在规则的相应源字段或目标字段中指定服务标记名（例如，AzureEventGrid），可以允许或拒绝相应服务的流量。
+服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 使用服务标记，可以定义 [网络安全组](./network-security-groups-overview.md#security-rules) 或 [Azure 防火墙](../firewall/service-tags.md)上的网络访问控制。 通过在规则的相应源字段或目标字段中指定服务标记名（例如，AzureEventGrid），可以允许或拒绝相应服务的流量。
 
 ![使用服务标记允许或拒绝流量](./media/network-isolation/service-tags.png)
 
@@ -78,4 +78,4 @@ VNet 服务终结点通过 Azure 主干网络上的优化路由，提供与 Azur
 
 - 了解如何将 [应用与 Azure 网络集成](../app-service/web-sites-integrate-with-vnet.md)。
 - 了解如何 [使用服务标记来限制对资源的访问](tutorial-restrict-network-access-to-resources.md)。
-- 了解如何 [使用 Azure Private Link 将专用连接到 Azure Cosmos 帐户](../private-link/create-private-endpoint-cosmosdb-portal.md)。
+- 了解如何 [使用 Azure Private Link 将专用连接到 Azure Cosmos 帐户](../private-link/tutorial-private-endpoint-cosmosdb-portal.md)。

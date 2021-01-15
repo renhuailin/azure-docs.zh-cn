@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: a820fb4ec5d6c2053b1104b68dbda0ae70f624c0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 58f6c7a3b5d68d2825cead545ba1b683d1faf1af
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179191"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222796"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>将 Cloud Shell 部署到 Azure 虚拟网络
 
@@ -87,9 +87,6 @@ ResourceTypes                             RegistrationState
 如果你已有希望连接到的所需 VNET，请跳过此部分。
 
 在 Azure 门户中，或使用 Azure CLI、Azure PowerShell 等，在新资源组中创建资源组和虚拟网络， **资源组和虚拟网络必须位于同一区域**。
-
-> [!NOTE]
-> 在公共预览版中，资源组和虚拟网络必须位于 "WestCentralUS" 或 "WestUS"。
 
 ### <a name="arm-templates"></a>ARM 模板
 使用 [Azure 快速入门模板](https://aka.ms/cloudshell/docs/vnet/template) 在虚拟网络中创建 Cloud Shell 资源，并使用 [Azure 快速入门模板](https://aka.ms/cloudshell/docs/vnet/template/storage) 创建必要的存储。 记下资源名称，主要是文件共享名称。

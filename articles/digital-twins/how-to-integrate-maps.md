@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: e582415d9a83dc506b77d506f3e0803002129a07
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 24487d3028b90d28f302a6f259096ba68c964541
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180041"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222116"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 数字孪生更新 Azure Maps 室内地图
 
@@ -25,13 +25,13 @@ ms.locfileid: "98180041"
 2. 创建用于更新 Azure Maps 室内地图功能的函数 stateset。
 3. 如何在 Azure 数字孪生图中存储地图 ID 和功能 stateset ID。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 * 遵循 Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-end.md)。
     * 将使用其他终结点和路由扩展此克隆。 您还将从该教程向函数应用程序添加另一个函数。 
 * 按照 Azure Maps [*教程操作：使用 Azure Maps Creator 创建室内地图*](../azure-maps/tutorial-creator-indoor-maps.md) ，使用 *stateset 功能* 创建 Azure Maps 室内地图。
     * [功能 statesets](../azure-maps/creator-indoor-maps.md#feature-statesets) 是 (状态) 分配给数据集功能（如房间或设备）的动态属性的集合。 在上述 Azure Maps 教程中，功能 stateset 存储将在地图上显示的房间状态。
-    * 你将需要功能 *STATESET id* 和 AZURE MAPS *订阅 id*。
+    * 你将需要 *STATESET ID* 和 Azure Maps *订阅密钥*。
 
 ### <a name="topology"></a>拓扑
 
@@ -43,7 +43,7 @@ ms.locfileid: "98180041"
 
 首先，你将在 Azure 数字孪生中创建一个路由，以便将所有克隆的更新事件转发到事件网格主题。 然后，将使用函数读取这些更新消息，并更新 Azure Maps 中的功能 stateset。 
 
-## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>创建路由并筛选到克隆更新通知
+## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>对孪生体更新通知创建路由和筛选器
 
 每当更新了克隆的状态时，Azure 数字孪生实例就可以发出双子次更新事件。 Azure 数字孪生 [*教程：连接上面链接的端到端解决方案*](./tutorial-end-to-end.md) 演练，其中使用温度计来更新附加到房间克隆的温度属性。 你将通过订阅更新孪生的通知并使用该信息更新映射来扩展该解决方案。
 
@@ -59,7 +59,7 @@ ms.locfileid: "98180041"
     az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
     ```
 
-3. 在 Azure 数字孪生中创建路由，以将克隆更新事件发送到终结点。
+3. 在 Azure 数字孪生中创建路由，将孪生体更新事件发送到终结点。
 
     >[!NOTE]
     >目前，Cloud Shell 中存在一个已知问题，该问题会影响以下命令组：`az dt route`、`az dt model` 和 `az dt twin`。
@@ -72,7 +72,7 @@ ms.locfileid: "98180041"
 
 ## <a name="create-a-function-to-update-maps"></a>创建用于更新映射的函数
 
-从端到端教程 ([*教程：连接端到端解决方案*](./tutorial-end-to-end.md)) ，在函数应用中创建一个事件网格触发的函数。 此函数将解包这些通知，并将更新发送到 Azure Maps 功能 stateset，以更新一个房间的温度。 
+从端到端教程 ([*教程：连接端到端解决方案*](./tutorial-end-to-end.md)) ，在函数应用中创建一个 *事件网格触发的函数*。 此函数将解包这些通知，并将更新发送到 Azure Maps 功能 stateset，以更新一个房间的温度。 
 
 有关参考信息，请参阅以下文档： [*Azure Functions 的 Azure 事件网格触发器*](../azure-functions/functions-bindings-event-grid-trigger.md)。
 
@@ -83,8 +83,8 @@ ms.locfileid: "98180041"
 需要在 function app 中设置两个环境变量。 其中一项是你的 [Azure Maps 主要订阅密钥](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)，一个是你 [AZURE MAPS 的 stateset ID](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset)。
 
 ```azurecli-interactive
-az functionapp config appsettings set --settings "subscription-key=<your-Azure-Maps-primary-subscription-key> -g <your-resource-group> -n <your-App-Service-(function-app)-name>"
-az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-stateset-ID> -g <your-resource-group> -n <your-App-Service-(function-app)-name>
+az functionapp config appsettings set --name <your-App-Service-(function-app)-name> --resource-group <your-resource-group> --settings "subscription-key=<your-Azure-Maps-primary-subscription-key>"
+az functionapp config appsettings set --name <your-App-Service-(function-app)-name>  --resource-group <your-resource-group> --settings "statesetID=<your-Azure-Maps-stateset-ID>"
 ```
 
 ### <a name="view-live-updates-on-your-map"></a>查看地图上的实时更新
@@ -94,7 +94,7 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 1. 通过运行 Azure 数字孪生教程中的 **devicesimulator.exe** 项目，开始发送模拟 IoT 数据 [*：连接端到端解决方案*](tutorial-end-to-end.md)。 有关此操作的说明，请在 [*配置和运行模拟*](././tutorial-end-to-end.md#configure-and-run-the-simulation) 部分。
 2. 使用 [" **Azure Maps 室内** " 模块](../azure-maps/how-to-use-indoor-module.md) 呈现在 Azure Maps 创建者中创建的室内地图。
     1. 复制该示例中的 HTML：使用室内地图教程的 [*室内地图模块*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) 部分 [*：将 Azure Maps 室内地图模块*](../azure-maps/how-to-use-indoor-module.md) 用于本地文件。
-    1. 将本地 HTML 文件中的 *tilesetId* 和 *statesetID* 替换为你的值。
+    1. 将本地 HTML 文件中的 *订阅密钥*、 *tilesetId* 和 *statesetID*  替换为你的值。
     1. 在浏览器中打开该文件。
 
 这两个示例都发送兼容范围内的温度，因此，每隔30秒就会在地图上看到房间121更新的颜色。

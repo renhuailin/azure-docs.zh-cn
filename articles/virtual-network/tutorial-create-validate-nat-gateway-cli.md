@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0ec054d55432ad2680314b4ff91a067d37b629d4
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e99ee28460c1639a7f0b9dd989bbe5a287a9158c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734321"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221810"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>教程：使用 Azure CLI 创建 NAT 网关并测试 NAT 服务
 
@@ -34,7 +34,7 @@ ms.locfileid: "94734321"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+使用 [az group create](/cli/azure/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 以下示例在 **eastus2** 位置创建名为 **myResourceGroupNAT** 的资源组。
 
@@ -49,7 +49,7 @@ ms.locfileid: "94734321"
 
 ### <a name="create-a-public-ip-address"></a>创建公共 IP 地址
 
-若要访问公共 Internet，需要提供 NAT 网关的一个或多个公共 IP 地址。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPsource** 的公共 IP 地址资源。
+若要访问公共 Internet，需要提供 NAT 网关的一个或多个公共 IP 地址。 使用 [az network public-ip create](/cli/azure/network/public-ip) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPsource** 的公共 IP 地址资源。
 
 ```azurecli-interactive
   az network public-ip create \
@@ -77,7 +77,7 @@ ms.locfileid: "94734321"
   - 一个公共 IP 池和公共 IP 前缀，供 NAT 网关资源转换的出站流使用。
   - 将空闲超时从默认值 4 分钟更改为 10 分钟。
 
-使用 [az network nat gateway create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) 创建名为 **myNATgateway** 的全局 Azure NAT 网关。 该命令同时使用公共 IP 地址 **myPublicIP** 和公共 IP 前缀 **myPublicIPprefix**。 该命令还将空闲超时更改为 10 分钟。
+使用 [az network nat gateway create](/cli/azure/network/nat?view=azure-cli-latest) 创建名为 **myNATgateway** 的全局 Azure NAT 网关。 该命令同时使用公共 IP 地址 **myPublicIP** 和公共 IP 前缀 **myPublicIPprefix**。 该命令还将空闲超时更改为 10 分钟。
 
 ```azurecli-interactive
   az network nat gateway create \
@@ -99,7 +99,7 @@ ms.locfileid: "94734321"
 
 在部署 VM 并测试 NAT 网关之前，需要先创建虚拟网络。
 
-使用 [az network Microsoft Azure Virtual Network create](https://docs.microsoft.com/cli/azure/network/vnet)，在 **myResourceGroupNAT** 中创建名为 **myVnetsource** 的虚拟网络和名为 **mySubnetsource** 的子网。  虚拟网络的 IP 地址空间为 **192.168.0.0/16**。 虚拟网络中的子网为 **192.168.0.0/24**。
+使用 [az network Microsoft Azure Virtual Network create](/cli/azure/network/vnet)，在 **myResourceGroupNAT** 中创建名为 **myVnetsource** 的虚拟网络和名为 **mySubnetsource** 的子网。  虚拟网络的 IP 地址空间为 **192.168.0.0/16**。 虚拟网络中的子网为 **192.168.0.0/24**。
 
 ```azurecli-interactive
   az network vnet create \
@@ -113,7 +113,7 @@ ms.locfileid: "94734321"
 
 ### <a name="configure-nat-service-for-source-subnet"></a>配置源子网的 NAT 服务
 
-使用 [az network Microsoft Azure Virtual Network subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet)，将虚拟网络 **myVnetsource** 中的源子网 **mySubnetsource** 配置为使用特定的 NAT 网关资源 **myNATgateway**。 此命令将激活指定子网中的 NAT 服务。
+使用 [az network Microsoft Azure Virtual Network subnet update](/cli/azure/network/vnet/subnet)，将虚拟网络 **myVnetsource** 中的源子网 **mySubnetsource** 配置为使用特定的 NAT 网关资源 **myNATgateway**。 此命令将激活指定子网中的 NAT 服务。
 
 ```azurecli-interactive
     az network vnet subnet update \
@@ -132,7 +132,7 @@ ms.locfileid: "94734321"
 
 ### <a name="create-public-ip-for-source-vm"></a>创建源 VM 的公共 IP
 
-我们将创建一个用于访问源 VM 的公共 IP。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPsourceVM** 的公共 IP 地址资源。
+我们将创建一个用于访问源 VM 的公共 IP。 使用 [az network public-ip create](/cli/azure/network/public-ip) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPsourceVM** 的公共 IP 地址资源。
 
 ```azurecli-interactive
   az network public-ip create \
@@ -144,7 +144,7 @@ ms.locfileid: "94734321"
 
 ### <a name="create-an-nsg-for-source-vm"></a>创建源 VM 的 NSG
 
-由于标准公共 IP 地址是“默认安全的”，因此我们需要创建一个 NSG 来允许 SSH 入站访问。  Azure NAT 服务可以识别流的方向。 在同一子网中配置 NAT 网关后，此 NSG 不会用于出站连接。 使用 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) 在 **myResourceGroupNAT** 中创建名为 **myNSGsource** 的 NSG 资源。
+由于标准公共 IP 地址是“默认安全的”，因此我们需要创建一个 NSG 来允许 SSH 入站访问。  Azure NAT 服务可以识别流的方向。 在同一子网中配置 NAT 网关后，此 NSG 不会用于出站连接。 使用 [az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) 在 **myResourceGroupNAT** 中创建名为 **myNSGsource** 的 NSG 资源。
 
 ```azurecli-interactive
   az network nsg create \
@@ -155,7 +155,7 @@ ms.locfileid: "94734321"
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>在源 VM 上公开 SSH 终结点
 
-我们将在 NSG 中创建一个规则，以通过 SSH 访问源 VM。 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 创建名为 **ssh** 的 NSG 规则。 将在资源组 **myResourceGroupNAT** 中名为 **myNSGsource** 的 NSG 内创建此规则。
+我们将在 NSG 中创建一个规则，以通过 SSH 访问源 VM。 使用 [az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 创建名为 **ssh** 的 NSG 规则。 将在资源组 **myResourceGroupNAT** 中名为 **myNSGsource** 的 NSG 内创建此规则。
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -211,7 +211,7 @@ ms.locfileid: "94734321"
 
  我们需要创建一个虚拟网络，目标虚拟机将置于其中。  这些命令执行的步骤与针对源 VM 执行的步骤相同，只是需要做出轻微的更改来公开目标终结点。
 
-使用 [az network Microsoft Azure Virtual Network create](https://docs.microsoft.com/cli/azure/network/vnet)，在 **myResourceGroupNAT** 中创建名为 **myVnetdestination** 的虚拟网络和名为 **mySubnetdestination** 的子网。  虚拟网络的 IP 地址空间为 **192.168.0.0/16**。 虚拟网络中的子网为 **192.168.0.0/24**。
+使用 [az network Microsoft Azure Virtual Network create](/cli/azure/network/vnet)，在 **myResourceGroupNAT** 中创建名为 **myVnetdestination** 的虚拟网络和名为 **mySubnetdestination** 的子网。  虚拟网络的 IP 地址空间为 **192.168.0.0/16**。 虚拟网络中的子网为 **192.168.0.0/24**。
 
 ```azurecli-interactive
   az network vnet create \
@@ -225,7 +225,7 @@ ms.locfileid: "94734321"
 
 ### <a name="create-public-ip-for-destination-vm"></a>创建目标 VM 的公共 IP
 
-我们将创建一个用于访问源 VM 的公共 IP。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPdestinationVM** 的公共 IP 地址资源。 
+我们将创建一个用于访问源 VM 的公共 IP。 使用 [az network public-ip create](/cli/azure/network/public-ip) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPdestinationVM** 的公共 IP 地址资源。 
 
 ```azurecli-interactive
   az network public-ip create \
@@ -237,7 +237,7 @@ ms.locfileid: "94734321"
 
 ### <a name="create-an-nsg-for-destination-vm"></a>创建目标 VM 的 NSG
 
-标准公共 IP 地址是“默认安全的”，因此需要创建一个 NSG 来允许 SSH 入站访问。 Azure NAT 服务可以识别流的方向。 在同一子网中配置 NAT 网关后，此 NSG 不会用于出站连接。 使用 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) 在 **myResourceGroupNAT** 中创建名为 **myNSGdestination** 的 NSG 资源。
+标准公共 IP 地址是“默认安全的”，因此需要创建一个 NSG 来允许 SSH 入站访问。 Azure NAT 服务可以识别流的方向。 在同一子网中配置 NAT 网关后，此 NSG 不会用于出站连接。 使用 [az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) 在 **myResourceGroupNAT** 中创建名为 **myNSGdestination** 的 NSG 资源。
 
 ```azurecli-interactive
     az network nsg create \
@@ -248,7 +248,7 @@ ms.locfileid: "94734321"
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>在目标 VM 上公开 SSH 终结点
 
-我们将在 NSG 中创建一个规则，以通过 SSH 访问目标 VM。 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 创建名为 **ssh** 的 NSG 规则。 将在资源组 **myResourceGroupNAT** 中名为 **myNSGdestination** 的 NSG 内创建此规则。
+我们将在 NSG 中创建一个规则，以通过 SSH 访问目标 VM。 使用 [az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 创建名为 **ssh** 的 NSG 规则。 将在资源组 **myResourceGroupNAT** 中名为 **myNSGdestination** 的 NSG 内创建此规则。
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -266,7 +266,7 @@ ms.locfileid: "94734321"
 
 ### <a name="expose-http-endpoint-on-destination-vm"></a>在目标 VM 上公开 HTTP 终结点
 
-我们将在 NSG 中创建一个规则，以通过 HTTP 访问目标 VM。 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 在 **myResourceGroupNAT** 中名为 **myNSGdestination** 的 NSG 规则内创建名为 **http** 的 NSG 规则。
+我们将在 NSG 中创建一个规则，以通过 HTTP 访问目标 VM。 使用 [az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 在 **myResourceGroupNAT** 中名为 **myNSGdestination** 的 NSG 规则内创建名为 **http** 的 NSG 规则。
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -434,4 +434,3 @@ hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 - 有关[使用 Azure 门户部署 NAT 网关资源](./quickstart-create-nat-gateway-portal.md)的快速入门。
 
 > [!div class="nextstepaction"]
-

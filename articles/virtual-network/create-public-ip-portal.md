@@ -11,22 +11,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: bd35d3288591a01c14e306960601eef6dea7e761
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 02a6e934b517cdd118b6175d9cfef73bee4c996d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954135"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223000"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建公共 IP 地址
 
-本文介绍了如何使用 Azure 门户来创建公共 IP 地址资源。 若要详细了解这可能关联到哪些资源，以及基本 SKU 和标准 SKU 之间的差异和其他相关信息，请参阅[公共 IP 地址](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)。  对于此示例，我们只重点介绍 IPv4 地址；有关 IPv6 地址的详细信息，请参阅[适用于 Azure VNet 的 IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)。
+本文介绍了如何使用 Azure 门户来创建公共 IP 地址资源。 若要详细了解这可能关联到哪些资源，以及基本 SKU 和标准 SKU 之间的差异和其他相关信息，请参阅[公共 IP 地址](./public-ip-addresses.md)。  对于此示例，我们只重点介绍 IPv4 地址；有关 IPv6 地址的详细信息，请参阅[适用于 Azure VNet 的 IPv6](./ipv6-overview.md)。
 
 # <a name="standard-sku---using-zones"></a>[**标准 SKU-使用区域**](#tab/option-create-public-ip-standard-zones)
 
 使用以下步骤创建名为 **myStandardZRPublicIP** 的标准区域冗余公共 IP 地址。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 选择“创建资源”。 
 3. 在搜索框中键入“公共 IP 地址”。
 4. 在搜索结果中时，选择“公共 IP 地址”。 接下来，在“公共 IP 地址”页中，选择“创建”。
@@ -46,15 +46,15 @@ ms.locfileid: "97954135"
     | 位置                | 选择 **美国东部 2**      |
     | 可用性区域       | 选择 " **区域冗余** " 或 "选择特定区域" (参阅下面的注释)  |
 
-请注意，这些只是包含 [可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)的区域中的有效选择。   (你还可以在这些区域中选择特定的区域，但不能恢复范围故障。 ) 
+请注意，这些只是包含 [可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)的区域中的有效选择。   (你还可以在这些区域中选择特定的区域，但不能恢复范围故障。 ) 
 
-\* = 层关联于 [跨区域负载均衡器](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) 功能，目前为预览版。
+\* = 层关联于 [跨区域负载均衡器](../load-balancer/cross-region-overview.md) 功能，目前为预览版。
 
 # <a name="basic-sku"></a>[**基本 SKU**](#tab/option-create-public-ip-basic)
 
 使用以下步骤创建名为“myBasicPublicIP”的基本静态公共 IP 地址。  基本公共 IP 没有可用性区域的概念。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 选择“创建资源”。 
 3. 在搜索框中键入“公共 IP 地址”。
 4. 在搜索结果中时，选择“公共 IP 地址”。 接下来，在“公共 IP 地址”页中，选择“创建”。
@@ -78,9 +78,9 @@ ms.locfileid: "97954135"
 
 ## <a name="additional-information"></a>其他信息 
 
-若要详细了解上面列出的各个字段，请参阅[管理公共 IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address)。
+若要详细了解上面列出的各个字段，请参阅[管理公共 IP 地址](./virtual-network-public-ip-address.md#create-a-public-ip-address)。
 
 ## <a name="next-steps"></a>后续步骤
-- [将公共 IP 地址关联到虚拟机](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)
-- 详细了解 Azure 中的[公共 IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
+- [将公共 IP 地址关联到虚拟机](./associate-public-ip-address-vm.md#azure-portal)
+- 详细了解 Azure 中的[公共 IP 地址](./public-ip-addresses.md#public-ip-addresses)。
 - 详细了解所有[公共 IP 地址设置](virtual-network-public-ip-address.md#create-a-public-ip-address)。
