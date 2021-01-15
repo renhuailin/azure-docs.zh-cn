@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 06/12/2020
-ms.openlocfilehash: c42db1445c939069f334d04ea26d54cdb843c336
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: 3b57172daeffd1766da456e56cb5e445427a4858
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488821"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220382"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>使用智能见解排查 Azure SQL 数据库和 Azure SQL 托管实例的性能问题
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -128,7 +128,9 @@ Azure SQL 数据库上的资源通常称为 [DTU](service-tiers-dtu.md) 或 [vCo
 
 缓解问题的最简单安全方法是保持较短的事务运行时间，并减少开销最高的查询的锁占用时间。 可以将大批操作分成小批操作。 合理的做法是尽量提高查询效率，减少查询时的锁定时间。 减少大型扫描，因为这些扫描会增大死锁的可能性，并对数据库总体性能造成负面影响。 对于识别出的导致锁定的查询，可以通过创建新索引或将列添加到现有索引来避免表扫描。
 
-有关更多建议，请参阅 [How to resolve blocking problems that are caused by lock escalation in SQL Server](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)（如何解决 SQL Server 中的锁升级造成的阻塞问题）。
+有关更多建议，请参阅：
+- [了解和解决 Azure SQL 阻止问题](understand-resolve-blocking.md)
+- [如何解决 SQL Server 中的锁升级导致的阻塞问题](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)
 
 ## <a name="increased-maxdop"></a>增加的 MAXDOP
 

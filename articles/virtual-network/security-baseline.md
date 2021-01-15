@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d183edbe82d59b9d0c1ebe075dd2639137d5081c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 716491f1a82b82bec865d0ca719e0e2c10e4400a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200866"
+ms.locfileid: "98223442"
 ---
 # <a name="azure-security-baseline-for-virtual-network"></a>虚拟网络的 Azure 安全基线
 
@@ -54,11 +54,11 @@ ms.locfileid: "98200866"
 
 应用 Azure 安全中心针对网络安全组配置的自适应网络强化建议，这些配置基于实际流量和威胁情报限制端口和源 IP。 
 
-- [使用 Azure 门户管理 Azure DDoS 防护标准](manage-ddos-protection.md)
+- [使用 Azure 门户管理 Azure DDoS 防护标准](../ddos-protection/manage-ddos-protection.md)
 
 - [基于 Azure 防火墙威胁智能的筛选](../firewall/threat-intel.md)
 
-- [安全中心的威胁防护](/azure/security-center/threat-protection)
+- [安全中心的威胁防护](../security-center/azure-defender.md)
 
 - [Azure 安全中心内的自适应网络强化](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -106,7 +106,7 @@ ms.locfileid: "98200866"
 
 - [了解并使用服务标记](service-tags-overview.md)
 
-- [了解并使用应用程序安全组](/azure/virtual-network/security-overview#application-security-groups)
+- [了解并使用应用程序安全组](./network-security-groups-overview.md#application-security-groups)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -139,7 +139,7 @@ ms.locfileid: "98200866"
 
 选择 Azure PowerShell 或 Azure CLI，基于资源的标记查找资源或对其执行操作。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 - [如何创建虚拟网络](quick-create-portal.md)
 
@@ -153,7 +153,7 @@ ms.locfileid: "98200866"
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测虚拟网络的更改。 在 Azure Monitor 中创建当关键资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -174,7 +174,7 @@ ms.locfileid: "98200866"
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 
-- [查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)
+- [查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -188,7 +188,7 @@ ms.locfileid: "98200866"
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 
-- [查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)
+- [查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Azure 安全中心监视**：是
 
@@ -212,7 +212,7 @@ ms.locfileid: "98200866"
 
 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。 
 
-- [了解 Log Analytics 工作区](../azure-monitor/log-query/get-started-portal.md)
+- [了解 Log Analytics 工作区](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -258,9 +258,9 @@ ms.locfileid: "98200866"
 
 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组的成员的帐户。
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 安全中心监视**：是
 
@@ -272,7 +272,7 @@ ms.locfileid: "98200866"
 
 使用 Microsoft 服务和 Azure 资源管理器 Azure AD Privileged Identity Management 特权角色，启用实时/刚好足够的访问权限。 
 
-- [详细了解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [详细了解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure 安全中心监视**：是
 
@@ -320,7 +320,7 @@ ms.locfileid: "98200866"
 
 请将 Azure 安全中心风险检测警报引入 Azure Monitor 中，并使用操作组配置自定义警报/通知。
 
-- [了解安全中心风险检测 (可疑活动) ](/azure/active-directory/reports-monitoring/concept-risk-events) 
+- [了解安全中心风险检测 (可疑活动) ](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) 
 
@@ -356,7 +356,7 @@ ms.locfileid: "98200866"
 
 可以执行 Azure 标识访问评审来高效地管理组成员身份、对企业应用程序的访问和角色分配。 应定期评审用户的访问权限，确保只有活动用户才持续拥有访问权限。
 
-- [了解 Azure AD 报告](/azure/active-directory/reports-monitoring/)
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -380,7 +380,7 @@ ms.locfileid: "98200866"
 
 **指南**：使用 Azure Active Directory (Azure AD) 的风险和标识保护功能，配置对检测到的与虚拟网络用户标识相关的可疑操作的自动响应。 将数据引入 Azure Sentinel 以进行进一步调查。
 
-- [如何查看 Azure AD 风险登录](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -446,7 +446,7 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md) 
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -458,7 +458,7 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 **指导**：将标记应用于 Azure 资源，从而将元数据按逻辑组织到分类中。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -468,11 +468,11 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 **指导**：使用标记、管理组和单独订阅（如果适用）来组织和跟踪虚拟网络和相关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription) 
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md) 
 
-- [如何创建管理组](/azure/governance/management-groups/create) 
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md) 
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -499,7 +499,7 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](/azure/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -524,9 +524,9 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](/azure/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -554,11 +554,11 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 实现来自安全中心的建议作为 Azure 资源的安全配置基线。
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [教程：创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](/azure/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](./policy-reference.md)
 
 - [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -582,7 +582,7 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 - [适用于虚拟网络的 Azure 资源管理器模板示例](template-samples.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](/azure/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -594,7 +594,7 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 若要访问希望在 Azure DevOps 中管理的资源（例如代码、生成和工作跟踪），必须具有对这些资源的权限。 大多数权限通过内置安全组授予。 你可以向特定用户、内置安全组或者 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）或 Active Directory（如果与 Team Foundation Server 集成）中定义的组授予权限，或拒绝向其授予权限。
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops) 
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops) 
 
 - [关于 Azure DevOps 中的权限和组](/azure/devops/organizations/security/about-permissions)
 
@@ -610,7 +610,7 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 - [如何使用别名](../governance/policy/concepts/definition-structure.md#aliases)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](/azure/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -624,7 +624,7 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](/azure/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -636,9 +636,9 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 - [如何与 Azure 托管标识集成](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md) 
 
-- [如何创建 Key Vault](/azure/key-vault/quick-create-portal) 
+- [如何创建 Key Vault](../key-vault/secrets/quick-create-portal.md) 
 
-- [如何使用托管标识提供 Key Vault 身份验证](/azure/key-vault/managed-identity)
+- [如何使用托管标识提供 Key Vault 身份验证](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -690,7 +690,7 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 - [Azure 自动化简介](../automation/automation-intro.md)
 
-- [如何在 Azure 中备份密钥保管库密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中备份密钥保管库密钥](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 安全中心监视**：是
 
@@ -716,13 +716,13 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 在密钥保管库中启用软删除和清除保护，以防止意外删除或恶意删除密钥。  
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 - [关于 Azure DevOps 中的权限和组](/azure/devops/organizations/security/about-permissions)
 
-- [如何在密钥保管库中启用软删除和清除保护](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal) 
+- [如何在密钥保管库中启用软删除和清除保护](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal) 
 
-- [Azure 存储 Blob 的软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure 存储 Blob 的软删除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：不适用
 
@@ -754,7 +754,7 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 - [安全中心的“安全警报”](../security-center/security-center-alerts-overview.md)
 
-- [使用标记整理 Azure 资源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：是
 
@@ -822,5 +822,5 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

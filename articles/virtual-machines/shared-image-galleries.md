@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 4156308fa58ea1f02e6e3f2c5174839dc1cd381c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 2731a7f263db223c258ddfc434bc84f59632d1f5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841385"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223357"
 ---
 # <a name="shared-image-galleries-overview"></a>共享映像库概述
 
@@ -120,10 +120,10 @@ ms.locfileid: "96841385"
 ## <a name="scaling"></a>扩展
 使用共享映像库可以指定要让 Azure 保留的映像副本数。 这有助于实现多 VM 部署方案，因为可将 VM 部署分散到不同的副本，减少单个副本过载导致实例创建过程受到限制的可能性。
 
-现在，使用共享映像库，最多可在虚拟机规模集中部署 1,000 个 VM 实例（相比使用托管映像部署 600 个有所增加）。 映像副本可用于提高部署性能、可靠性和一致性。   可以在每个目标区域中设置不同的副本计数，具体视该区域的缩放需求而定。 由于每个副本都是映像的深层副本，这有助于使用每个额外的副本线性扩展部署。 我们知道了没有两个图像或区域是相同的，不过以下提供了有关如何在区域中使用副本的一般准则：
+现在，使用共享映像库，最多可在虚拟机规模集中部署 1,000 个 VM 实例（相比使用托管映像部署 600 个有所增加）。 映像副本可用于提高部署性能、可靠性和一致性。   可以在每个目标区域中设置不同的副本计数，具体视该区域的缩放需求而定。 由于每个副本是映像的深层复制，因此，这有助于使用每个额外的副本线性地缩放部署。 我们知道了没有两个图像或区域是相同的，不过以下提供了有关如何在区域中使用副本的一般准则：
 
-- 对于非虚拟机规模集部署-对于同时创建的每20个 Vm，我们建议你保留一个副本。 例如，如果使用某个区域中的同一映像同时创建 120 个 VM，我们建议你保留至少 6 个映像副本。 
-- 对于虚拟机规模集部署-对于每个规模集部署最多为600个实例，建议至少保留一个副本。 例如，如果同时创建 5 个规模集，每个规模集具有 600 个使用某个区域中的同一映像的 VM 实例，则建议至少保留 5 个映像副本。 
+- 对于非虚拟机规模集部署 - 建议为每 20 个同时创建的 VM 保留一个副本。 例如，如果使用某个区域中的同一映像同时创建 120 个 VM，我们建议你保留至少 6 个映像副本。 
+- 对于虚拟机规模集部署 - 建议为每个包含多达 600 个实例的规模集部署至少保留一个副本。 例如，如果同时创建 5 个规模集，每个规模集具有 600 个使用某个区域中的同一映像的 VM 实例，则建议至少保留 5 个映像副本。 
 
 鉴于映像大小、内容和 OS 类型等因素，我们始终建议保留的副本数应超出该副本数。
 
@@ -155,7 +155,7 @@ ms.locfileid: "96841385"
 
 建议在库级别共享以获得最佳体验。 我们建议不要共享单个映像版本。 有关 RBAC 的详细信息，请参阅[使用 RBAC 管理对 Azure 资源的访问权限](../role-based-access-control/role-assignments-portal.md)。
 
-此外，还可以使用多租户应用注册大规模共享映像，甚至是跨租户共享。 有关在租户之间共享映像的详细信息，请参阅使用 [Azure CLI](./linux/share-images-across-tenants.md) 或 [PowerShell](./windows/share-images-across-tenants.md)在 Azure 租户之间共享库 VM 映像。
+此外，还可以使用多租户应用注册大规模共享映像，甚至是跨租户共享。 有关在租户之间共享映像的详细信息，请参阅“如何使用 [Azure CLI](./linux/share-images-across-tenants.md) 或 [PowerShell](./windows/share-images-across-tenants.md) 在 Azure 租户之间共享库 VM 映像”。
 
 ## <a name="billing"></a>计费
 使用共享映像库服务不会产生额外的费用。 以下资源会产生费用：
@@ -317,7 +317,12 @@ ms.locfileid: "96841385"
 
 是的，你可以将规模集映像引用从托管映像更新为共享映像库映像，前提是这些映像之间的 OS 类型、Hyper-V 生成和数据磁盘布局均匹配。
 
+## <a name="troubleshoot-shared-image-gallery-issues"></a>排查共享图像库问题
+如果对共享映像库资源执行任何操作时遇到问题，请参阅 [故障排除指南](troubleshooting-shared-images.md)中的常见错误列表。
+
+此外，你还可以使用 `azure-virtual-machines-images` [Q&](/answers/topics/azure-virtual-machines-images.html)来发布和标记问题。
+
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用 [Azure CLI](shared-images-cli.md) 或 [PowerShell](shared-images-powershell.md)部署共享映像。
+了解如何使用 [Azure CLI](shared-images-cli.md) 或 [PowerShell](shared-images-powershell.md) 部署共享映像。
 

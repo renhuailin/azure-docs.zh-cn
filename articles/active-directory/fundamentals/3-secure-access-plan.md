@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd04d24e0e46b053381858be037a009b1987f8e9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 40738f8fcb14c48ccfe3bc7869e5176c4ab63165
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97932514"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222324"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. 创建外部访问安全计划 
 
@@ -159,7 +159,7 @@ Azure AD P2 和 Microsoft 365 E5 具有全套安全和管理工具。
 
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning-bolded-entries-are-preferred-methods"></a>预配、登录、查看访问和取消预配。 粗体条目为首选方法
 
-| 功能| 预配外部用户| 强制登录请求。| 评审访问权限| 取消设置访问权限 |
+| Feature| 预配外部用户| 强制登录请求。| 评审访问权限| 取消设置访问权限 |
 | - | - | - | - | - |
 | Azure AD B2B 协作| 通过电子邮件、OTP、自助服务邀请| | **每个合作伙伴的定期审查**| 删除帐户<br>限制登录 |
 | 权利管理| **通过分配或自助服务访问添加用户**| | 访问评审|**访问包的过期时间或从中删除**|
@@ -170,7 +170,7 @@ Azure AD P2 和 Microsoft 365 E5 具有全套安全和管理工具。
 
  ### <a name="access-to-resources-bolded-entries-are-preferred-methods"></a>对资源的访问权限。 粗体条目为首选方法
 
-|功能 | 应用 & 资源访问| SharePoint & OneDrive 访问权限| 团队访问| 电子邮件 & 文档安全性 |
+|Feature | 应用 & 资源访问| SharePoint & OneDrive 访问权限| 团队访问| 电子邮件 & 文档安全性 |
 | - |-|-|-|-|
 | 权利管理| **通过分配或自助服务访问添加用户**| **访问包**| **访问包**|  |
 | Office 365 组| | 访问站点 ()  (和关联的内容) 组中包含| ) 组中包含的对团队 (和关联内容的访问权限|  |
@@ -190,7 +190,7 @@ Azure AD P2 和 Microsoft 365 E5 具有全套安全和管理工具。
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning"></a>预配、登录、查看访问和取消预配
 
 
-|功能 | 预配外部用户| 强制登录要求| 评审访问权限| 取消设置访问权限 |
+|Feature | 预配外部用户| 强制登录要求| 评审访问权限| 取消设置访问权限 |
 | - |-|-|-|-|
 | Azure AD B2B 协作| **通过电子邮件、OTP、自助服务邀请**| 直接 B2B 联合| **每个合作伙伴的定期审查**| 删除帐户<br>限制登录 |
 | Microsoft 或 Office 365 组| | | | 组过期或删除。<br>从组中删除。 |
@@ -200,7 +200,7 @@ Azure AD P2 和 Microsoft 365 E5 具有全套安全和管理工具。
 
  ### <a name="access-to-resources"></a>对资源的访问权限。
 
-|功能 | 应用 & 资源访问| SharePoint & OneDrive 访问权限| 团队访问| 电子邮件 & 文档安全性 |
+|Feature | 应用 & 资源访问| SharePoint & OneDrive 访问权限| 团队访问| 电子邮件 & 文档安全性 |
 | - |-|-|-|-|
 | Microsoft 或 Office 365 组| | **) 组 (和关联的内容中包含对站点 (的访问)**|**Microsoft 365 组 (和关联的内容中包含的团队的访问权限)**|  |
 | 敏感度标签| | 手动分类和限制访问| 手动分类和限制访问。| 手动分类以限制和加密 |

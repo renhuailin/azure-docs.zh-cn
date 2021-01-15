@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deb1f74902fe28d53a5180e4f341547f339a83ac
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d0a082149d85736000b5bb6a91e2fc7132205a88
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741977"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220280"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>规划和部署本地 Azure Active Directory 密码保护
 
@@ -42,7 +42,7 @@ ms.locfileid: "96741977"
 * 用户经常使用不安全的密码。
 * 他们需要通知用户即将执行的安全强制更改、可能对这些更改的影响，以及如何选择更安全的密码。
 
-还可以通过更强的密码验证来影响现有 Active Directory 域控制器部署自动化。 建议在审核期评估过程中至少发生一次 DC 升级和一个 DC 降级，以帮助发现此类问题。 有关详细信息，请参阅下列文章：
+还可以通过更强的密码验证来影响现有 Active Directory 域控制器部署自动化。 建议在审核期评估过程中至少发生一次 DC 升级和一个 DC 降级，以帮助发现此类问题。 有关详细信息，请参阅以下文章：
 
 * [Ntdsutil.exe 无法设置弱目录服务修复模式密码](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [由于目录服务修复模式密码弱，域控制器副本升级失败](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
@@ -99,7 +99,7 @@ Azure AD 密码保护 DC 代理软件的设计可减轻与高可用性相关的�
 
 以下要求适用于 Azure AD 密码保护 DC 代理：
 
-* 将安装 Azure AD 密码保护 DC 代理软件的所有计算机都必须运行 Windows Server 2012 或更高版本。
+* 将安装 Azure AD 密码保护 DC 代理软件的所有计算机都必须运行 Windows Server 2012 或更高版本，包括 Windows Server Core 版本。
     * Active Directory 域或林不需要处于 Windows Server 2012 域功能级别 (DFL) 或林功能级别 (FFL) 。 如 [设计原则](concept-password-ban-bad-on-premises.md#design-principles)中所述，要运行 DC 代理或代理软件，无需最低的 DFL 或 FFL。
 * 运行 Azure AD 密码保护 DC 代理的所有计算机必须安装 .NET 4.5。
 * 运行 Azure AD 密码保护 DC 代理服务的任何 Active Directory 域都必须使用分布式文件系统复制 (DFSR 复制) DFSR。
@@ -116,7 +116,7 @@ Azure AD 密码保护 DC 代理软件的设计可减轻与高可用性相关的�
 
 以下要求适用于 Azure AD 密码保护代理服务：
 
-* 将安装 Azure AD 密码保护代理服务的所有计算机都必须运行 Windows Server 2012 R2 或更高版本。
+* 将安装 Azure AD 密码保护代理服务的所有计算机都必须运行 Windows Server 2012 R2 或更高版本，包括 Windows Server Core 版本。
 
     > [!NOTE]
     > Azure AD 密码保护代理服务部署是部署 Azure AD 密码保护的必需要求，即使域控制器可能有出站直接 internet 连接。

@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 3f9dd35959980eef4e1bec550bf7e9f583cf30d2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506260"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98225254"
 ---
 通过使用区域 VNet 集成，你的应用程序可以访问：
 
@@ -33,7 +33,7 @@ ms.locfileid: "97506260"
 
    ![提供应用程序设置][4]
 
-1. 选择“确定”  。
+1. 选择“确定”。
 1. 选择“保存”。
 
 > [!NOTE]
@@ -48,7 +48,6 @@ ms.locfileid: "97506260"
 * 此功能要求 Azure 资源管理器 VNet 中的未使用的子网为/28 或更大。
 * 应用和 VNet 必须位于同一区域。
 * 不能删除具有集成应用的 VNet。 请在删除 VNet 之前删除该集成。
-* 只能将与应用程序在同一订阅中的 Vnet 集成。
 * 对于每个应用服务计划，只能有一个区域 VNet 集成。 同一应用服务计划中的多个应用可以使用相同的 VNet。
 * 当存在使用区域 VNet 集成的应用时，不能更改应用或计划的订阅。
 * 应用无法在不进行配置更改的 Azure DNS 专用区域中解析地址

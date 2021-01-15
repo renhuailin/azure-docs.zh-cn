@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: dd5197f99f7187e21eb466bfa213f68a7638e24d
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 54001cde76bd89305eb77544c6e6858defda6096
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045336"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222541"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用关系管理数字孪生图
 
@@ -157,7 +157,7 @@ Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 
 > [!TIP]
 > 克隆图是在孪生之间创建关系的概念。 若要查看双子图形的可视化表示形式，请参阅本文的 " [*可视化*](how-to-manage-graph.md#visualization) " 部分。 
 
-### <a name="create-a-twin-graph-from-a-csv-file"></a>从 CSV 文件创建克隆图形
+## <a name="create-graph-from-a-csv-file"></a>从 CSV 文件创建关系图
 
 在实际使用案例中，会经常从存储在不同数据库中的数据创建克隆层次结构，也可以在电子表格或 CSV 文件中创建克隆层次结构。 本部分说明如何从 CSV 文件中读取数据并从中创建克隆图形。
 

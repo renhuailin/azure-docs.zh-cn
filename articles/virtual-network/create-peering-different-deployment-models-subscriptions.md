@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 88e576231e0231a105cd9ec303f63307b5eaff89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29a64931ac92eacf8948ae067118b6b25198c85d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87051619"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223459"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>创建虚拟网络对等互连 - 不同的部署模型和不同的订阅
 
@@ -91,11 +91,11 @@ ms.locfileid: "87051619"
     在任一虚拟网络中创建的任何 Azure 资源现在都可通过其 IP 地址相互通信。 如果为虚拟网络使用默认的 Azure 名称解析，则虚拟网络中的资源无法跨虚拟网络解析名称。 若要跨对等互连中的虚拟网络解析名称，必须创建自己的 DNS 服务器。 了解如何[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
 24. **可选**：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
-25. **可选**：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-portal)部分中所述的步骤。
+25. **可选**：若要删除在本教程中创建的资源，请完成本文的 [删除资源](#delete-portal)部分中所述的步骤。
 
 ## <a name="create-peering---azure-cli"></a><a name="cli"></a>创建对等互连 - Azure CLI
 
-本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，可跳过注销 Azure 的步骤，并删除创建用户角色分配的脚本行。 将以下所有脚本中的 UserA@azure.com 和 UserB@azure.com 替换为 UserA 和 UserB 使用的用户名。 使用 Azure 经典 CLI 和 Azure CLI 完成以下步骤。 可在 Azure Cloud Shell 中完成这些步骤，只需在以下任一步骤中选择“试用”按钮，或者安装[经典 CLI](/cli/azure/install-classic-cli) 和 [CLI](/cli/azure/install-azure-cli) 并在本地计算机上运行命令****。
+本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，可跳过注销 Azure 的步骤，并删除创建用户角色分配的脚本行。 将以下所有脚本中的 UserA@azure.com 和 UserB@azure.com 替换为 UserA 和 UserB 使用的用户名。 使用 Azure 经典 CLI 和 Azure CLI 完成以下步骤。 可在 Azure Cloud Shell 中完成这些步骤，只需在以下任一步骤中选择“试用”按钮，或者安装[经典 CLI](/cli/azure/install-classic-cli) 和 [CLI](/cli/azure/install-azure-cli) 并在本地计算机上运行命令。
 
 1. 如果使用 Cloud Shell，请跳到步骤 2，因为 Cloud Shell 会自动登录到 Azure。 使用 `azure login` 命令打开命令会话并登录 Azure。
 2. 输入 `azure config mode asm` 命令，在服务管理模式下运行经典 CLI。
@@ -177,7 +177,7 @@ ms.locfileid: "87051619"
     在任一虚拟网络中创建的任何 Azure 资源现在都可通过其 IP 地址相互通信。 如果为虚拟网络使用默认的 Azure 名称解析，则虚拟网络中的资源无法跨虚拟网络解析名称。 若要跨对等互连中的虚拟网络解析名称，必须创建自己的 DNS 服务器。 了解如何[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
 10. **可选**：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
-11. **可选**：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-cli)中所述步骤。
+11. **可选**：若要删除在本教程中创建的资源，请完成本文的 [删除资源](#delete-cli)中所述步骤。
 
 ## <a name="create-peering---powershell"></a><a name="powershell"></a>创建对等互连 - PowerShell
 
@@ -186,7 +186,7 @@ ms.locfileid: "87051619"
 1. 安装最新版本的 PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) 和 [Az](https://www.powershellgallery.com/packages/Az) 模块。 如果不熟悉 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 2. 启动 PowerShell 会话。
 3. 在 PowerShell 中输入 `Add-AzureAccount` 命令，以 UserB 的身份登录到 UserB 的订阅。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#permissions)。
-4. 若要通过 PowerShell 创建虚拟网络（经典），必须新建网络配置文件，或修改现有网络配置文件。 了解如何[导出、更新和导入网络配置文件](virtual-networks-using-network-configuration-file.md)。 该文件应包括本教程中使用的虚拟网络的以下 **VirtualNetworkSite** 元素：
+4. 若要通过 PowerShell 创建虚拟网络（经典），必须新建网络配置文件，或修改现有网络配置文件。 了解如何[导出、更新和导入网络配置文件](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file)。 该文件应包括本教程中使用的虚拟网络的以下 **VirtualNetworkSite** 元素：
 
     ```xml
     <VirtualNetworkSite name="myVnetB" Location="East US">
@@ -267,7 +267,7 @@ ms.locfileid: "87051619"
     在任一虚拟网络中创建的任何 Azure 资源现在都可通过其 IP 地址相互通信。 如果为虚拟网络使用默认的 Azure 名称解析，则虚拟网络中的资源无法跨虚拟网络解析名称。 若要跨对等互连中的虚拟网络解析名称，必须创建自己的 DNS 服务器。 了解如何[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
 12. **可选**：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
-13. **可选**：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-powershell)中所述步骤。
+13. **可选**：若要删除在本教程中创建的资源，请完成本文的 [删除资源](#delete-powershell)中所述步骤。
 
 ## <a name="delete-resources"></a><a name="delete"></a>删除资源
 完成本教程后，你可能想要删除本教程中创建的资源，以免产生使用费。 删除资源组会删除其中包含的所有资源。
@@ -305,7 +305,7 @@ ms.locfileid: "87051619"
    Remove-AzResourceGroup -Name myResourceGroupA -Force
    ```
 
-2. 若要通过 PowerShell 删除虚拟网络（经典），必须修改现有网络配置文件。 了解如何[导出、更新和导入网络配置文件](virtual-networks-using-network-configuration-file.md)。 删除本教程中使用的虚拟网络的以下 VirtualNetworkSite 元素：
+2. 若要通过 PowerShell 删除虚拟网络（经典），必须修改现有网络配置文件。 了解如何[导出、更新和导入网络配置文件](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file)。 删除本教程中使用的虚拟网络的以下 VirtualNetworkSite 元素：
 
    ```xml
    <VirtualNetworkSite name="myVnetB" Location="East US">

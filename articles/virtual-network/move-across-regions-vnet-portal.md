@@ -6,18 +6,18 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a80c731e4245b1a295364e5b8c87f90290f7f74
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711436"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223302"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>使用 Azure 门户将 Azure 虚拟网络移到另一个区域
 
 将现有 Azure 虚拟网络从一个区域移到另一个区域的方案有多种。 例如，可以创建一个与现有虚拟网络使用相同测试和可用性配置的虚拟网络。 或者，可以将生产虚拟网络移到另一个区域，作为灾难恢复计划的一部分。
 
-可以使用 Azure 资源管理器模板来完成将虚拟网络移到另一个区域的过程。 为此，可将虚拟网络导出到某个模板，根据目标区域修改参数，然后将该模板部署到新区域。 有关资源管理器模板的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+可以使用 Azure 资源管理器模板来完成将虚拟网络移到另一个区域的过程。 为此，可将虚拟网络导出到某个模板，根据目标区域修改参数，然后将该模板部署到新区域。 有关资源管理器模板的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -32,7 +32,7 @@ ms.locfileid: "84711436"
 
 - 验证 Azure 订阅是否允许在目标区域中创建虚拟网络。 若要启用所需配额，请联系支持部门。
 
-- 确保订阅提供足够的资源，以支持在此过程中添加虚拟网络。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
+- 确保订阅提供足够的资源，以支持在此过程中添加虚拟网络。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 
 
 ## <a name="prepare-for-the-move"></a>准备移动
@@ -209,5 +209,5 @@ ms.locfileid: "84711436"
 在本教程中，你已使用 Azure 门户将 Azure 虚拟网络从一个区域移到了另一个区域，然后清理了不再需要的源资源。 若要详细了解如何在区域之间移动资源，以及如何在 Azure 中进行灾难恢复，请参阅：
 
 
-- [将资源移到新资源组或订阅中](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [将 Azure 虚拟机移到另一个区域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [将资源移到新资源组或订阅中](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [将 Azure 虚拟机移到另一个区域](../site-recovery/azure-to-azure-tutorial-migrate.md)

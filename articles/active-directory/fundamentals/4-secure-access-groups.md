@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e28714e2557027a3f8f5504f7052973a77720b6
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: f83e5584f8f9c6823e1259cb5e6034d8b13ae3a6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743942"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222371"
 ---
 # <a name="securing-external-access-with-groups"></a>使用组保护外部访问 
 
@@ -104,7 +104,7 @@ Azure AD 安全组和 Microsoft 365 组都可以从 Azure AD 门户或 M365 管�
 | - | - | - |
 | 组可以包含哪些内容？| 用户<br>组<br>服务主体<br>设备| 仅用户 |
 | 组创建在何处？| Azure AD 门户<br>若要启用邮件，请 (M365 门户) <br>PowerShell<br>Microsoft Graph<br>最终用户门户| M365 门户<br>Azure AD 门户<br>PowerShell<br>Microsoft Graph<br>在 Microsoft 365 应用程序中 |
-| 谁默认创建？| 管理员 <br>最终用户| 管理员<br>最终用户 |
+| 谁默认创建？| Administrators <br>最终用户| Administrators<br>最终用户 |
 | 默认情况下，谁可以添加？| 内部用户 (成员) | 来自任何组织的租户成员和来宾 |
 | 它授予访问权限的内容是什么？| 仅分配给它的资源。| 所有组相关资源：<br> (组邮箱、站点、团队、聊天以及其他包含的 M365 资源) <br>向其中添加组的任何其他资源 |
 | 可用于| 条件性访问<br>权利管理<br>组许可| 条件性访问<br>权利管理<br>敏感度标签 |

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ccd04a43e6781e8d58234cc382b2739d800e5fe7
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d375b860c6b23fd6033e985e23c6f12dfe9a3c68
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510669"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223561"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>使用 Azure CLI 为 VM 配置路由首选项
 
@@ -58,7 +58,7 @@ az network public-ip create \
 
 ### <a name="create-a-network-security-group"></a>创建网络安全组
 
-使用 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) 为将要控制 VNet 中的入站和出站通信的规则创建网络安全组
+使用 [az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) 为将要控制 VNet 中的入站和出站通信的规则创建网络安全组
 
 ```azurecli
 az network nsg create \
@@ -69,7 +69,7 @@ az network nsg create \
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) 创建虚拟网络。 以下示例创建一个子网为“mySubNet”且名称为“myVNET”的虚拟网络：
+使用 [az network vnet create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) 创建虚拟网络。 以下示例创建一个子网为“mySubNet”且名称为“myVNET”的虚拟网络：
 
 ```azurecli
 # Create a virtual network
@@ -89,7 +89,7 @@ az network vnet subnet create \
 
 ### <a name="create-a-nic"></a>创建 NIC
 
-使用 [az network nic create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) 为 VM 创建虚拟 NIC。 以下示例创建一个虚拟 NIC（将附加到 VM）。
+使用 [az network nic create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) 为 VM 创建虚拟 NIC。 以下示例创建一个虚拟 NIC（将附加到 VM）。
 
 ```azurecli-interactive
 # Create a NIC
@@ -105,7 +105,7 @@ az network nic create \
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 以下示例创建 Windows Server 2019 VM 和所需的虚拟网络组件（如果它们尚不存在）。
+使用 [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 以下示例创建 Windows Server 2019 VM 和所需的虚拟网络组件（如果它们尚不存在）。
 
 ```azurecli
 az vm create \
@@ -128,5 +128,5 @@ az group delete --name myResourceGroup --yes
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[公共 IP 地址中的路由首选项](routing-preference-overview.md)。
-- 详细了解 Azure 中的[公共 IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
+- 详细了解 Azure 中的[公共 IP 地址](./public-ip-addresses.md#public-ip-addresses)。
 - 详细了解[公共 IP 地址设置](virtual-network-public-ip-address.md#create-a-public-ip-address)。

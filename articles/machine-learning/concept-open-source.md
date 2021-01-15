@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 12/16/2020
-ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/14/2020
+ms.openlocfilehash: 983e037376be48f497118b06cce8b23c430b1501
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914104"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223068"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>与 Azure 机器学习项目的开源集成
 
@@ -42,11 +42,11 @@ ms.locfileid: "97914104"
 
 开源深度学习框架和操作指南包括：
 
- *  [PyTorch](https://github.com/pytorch/pytorch)： [在 PyTorch 中使用传输学习训练深度学习图像分类模型](how-to-train-pytorch.md) 
+ *  [PyTorch](https://github.com/pytorch/pytorch)： [使用传输学习训练深度学习图像分类模型](how-to-train-pytorch.md) 
  *  [TensorFlow](https://github.com/tensorflow/tensorflow)： [使用 TensorFlow 识别手写数字](how-to-train-tensorflow.md)
  *  [Keras](https://github.com/keras-team/keras)： [使用 Keras 生成用于分析图像的神经网络](how-to-train-keras.md)
 
-从头开始训练深度学习模型通常需要大量的时间、数据和计算资源。 您可以通过使用 "传输学习" 来快捷训练过程。 传输学习是一项技术，可应用从解决一个问题到不同但相关的问题而获得的知识。 这意味着，可以使用现有模型来重新使用它。 有关传输学习的详细信息，请参阅 [深入了解一文](concept-deep-learning-vs-machine-learning.md#transfer-learning) 。
+从头开始训练深度学习模型通常需要大量的时间、数据和计算资源。 您可以通过使用 "传输学习" 来快捷训练过程。 传输学习是一项技术，可应用从解决一个问题到不同但相关的问题而获得的知识。 这意味着，可以使用现有模型来重新使用它。 若要详细了解传输学习，请参阅 [深度学习与机器学习文章](concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning) 。
 
 ### <a name="reinforcement-learning-ray-rllib"></a>强化学习： Ray RLLib
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 13688b73c0cd73e13e407f1b75beb8dda61a754f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36db885cab734c037b0032c714de28b905595ef0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84172252"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223255"
 ---
 # <a name="private-ip-addresses"></a>专用 IP 地址
 使用专用 IP 可在 Azure 中的资源之间进行通信。 
@@ -82,8 +82,8 @@ Azure 保留每个子网地址范围中的前四个地址。 不能将这些地�
 
 可以将专用 IP 地址分配到以下服务的前端配置：
 
-* [Azure 内部负载均衡器](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB)
-* [Azure 应用程序网关](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+* [Azure 内部负载均衡器](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB)
+* [Azure 应用程序网关](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 
 此专用 IP 地址将用作内部终结点。 内部终结点仅供其虚拟网络和连接到它的远程网络中的资源访问。 可以分配动态或静态 IP。
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff656887081681a804285e9a96352feef15fc675
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7557985b23991f1a53d45f6f2d2283500c0d73f3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743887"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222405"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>发现组织中外部协作的当前状态 
 
@@ -46,9 +46,9 @@ ms.locfileid: "97743887"
 
 ### <a name="use-allow-or-deny-lists"></a>使用允许或拒绝列表
 
-若要发现当前与谁合作，或与阻止协作的人员进行协作，可以查看是否已将任何组织添加到 [允许或拒绝列表](../external-identities/allow-deny-list.md)。
+考虑你的组织是否希望只允许与特定组织进行协作。 或者，如果你的组织想要阻止与特定组织的协作。  在租户级别，有一个 [允许或拒绝列表](../external-identities/allow-deny-list.md)，无论 (例如团队、SharePoint 和 Azure 门户) ，都可以使用该列表来控制总体 B2B 邀请和兑换次数。
+如果你使用的是权利管理，则还可以使用特定的 "已连接组织" 设置将访问包的范围限定为你的合作伙伴的子集，如下所示。
 
-考虑你的组织是否想要只允许与特定组织进行协作。 还要考虑你的组织是否想要阻止与特定组织的协作。 这些设置可适用于总体 B2B 兑换或仅适用于特定的访问包。
 
 ![创建新访问包时允许拒绝列表的屏幕截图。](media/secure-external-access/2-new-access-package.png)
 

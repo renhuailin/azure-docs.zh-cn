@@ -1,6 +1,6 @@
 ---
 title: 部署 Azure 虚拟网络容器网络 | Microsoft Docs
-description: 了解如何部署用于 Kubernetes 群集的 Azure 虚拟网络容器网络接口 (CNI) 插件。
+description: 了解如何为 Kubernetes 群集部署 Azure 虚拟网络容器网络接口 (CNI) 插件。
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b95b3cfdf8fea6e31015d945566803569b4ba064
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289590"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222915"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>部署 Azure 虚拟网络容器网络接口插件
 
-Azure 虚拟网络容器网络接口 (CNI) 插件安装在 Azure 的虚拟机中，并为 Kubernetes Pod 和 Docker 容器提供虚拟网络功能。 要了解有关该插件的详细信息，请参阅[启用容器以使用 Azure 虚拟网络功能](container-networking-overview.md)。 此外，通过选择[高级网络](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)选项，该插件可用于 Azure Kubernetes 服务 (AKS)，高级网络选项自动将 AKS 容器放置在虚拟网络中。
+Azure 虚拟网络容器网络接口 (CNI) 插件安装在 Azure 的虚拟机中，并为 Kubernetes Pod 和 Docker 容器提供虚拟网络功能。 要了解有关该插件的详细信息，请参阅[启用容器以使用 Azure 虚拟网络功能](container-networking-overview.md)。 此外，通过选择[高级网络](../aks/configure-azure-cni.md?toc=%2fazure%2fvirtual-network%2ftoc.json)选项，该插件可用于 Azure Kubernetes 服务 (AKS)，高级网络选项自动将 AKS 容器放置在虚拟网络中。
 
 ## <a name="deploy-plug-in-for-acs-engine-kubernetes-cluster"></a>为 ACS-Engine Kubernetes 群集部署插件
 
@@ -43,7 +43,7 @@ ACS-Engine 使用 Azure 资源管理器模板部署 Kubernetes 群集。 群集�
 
 下面的 json 示例适用于具有以下属性的群集：
 -   1 个主节点和 2 个代理节点 
--   部署在名为 KubeClusterSubnet (10.0.0.0/20) 的子网中，主节点和代理节点都驻留其中**。
+-   部署在名为 KubeClusterSubnet (10.0.0.0/20) 的子网中，主节点和代理节点都驻留其中。
 
 ```json
 {
@@ -93,20 +93,20 @@ ACS-Engine 使用 Azure 资源管理器模板部署 Kubernetes 群集。 群集�
 完成以下步骤以在 Kubernetes 群集中的每个 Azure 虚拟机上安装插件：
 
 1. [下载并安装插件](#download-and-install-the-plug-in)。
-2. 在每个虚拟机上预分配虚拟网络 IP 地址池，IP 地址从中分配给 Pod。 每个 Azure 虚拟机在每个网络接口上都附带一个主虚拟网络专用 IP 地址。 ** Pod 的 IP 地址池将作为辅助地址 (ipconfigs) 添加到虚拟机网络接口上，方法是使用以下某个选项：
+2. 在每个虚拟机上预分配虚拟网络 IP 地址池，IP 地址从中分配给 Pod。 每个 Azure 虚拟机在每个网络接口上都附带一个主虚拟网络专用 IP 地址。 Pod 的 IP 地址池将作为辅助地址 (ipconfigs) 添加到虚拟机网络接口上，方法是使用以下某个选项：
 
-   - **CLI**： [使用 Azure CLI 分配多个 IP 地址](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**： [使用 PowerShell 分配多个 IP 地址](virtual-network-multiple-ip-addresses-powershell.md)
-   - **门户**： [使用 Azure 门户分配多个 IP 地址](virtual-network-multiple-ip-addresses-portal.md)
-   - **Azure 资源管理器模板**： [使用模板分配多个 IP 地址](virtual-network-multiple-ip-addresses-template.md)
+   - **CLI**：[使用 Azure CLI 分配多个 IP 地址](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**：[使用 PowerShell 分配多个 IP 地址](virtual-network-multiple-ip-addresses-powershell.md)
+   - **门户**：[使用 Azure 门户分配多个 IP 地址](virtual-network-multiple-ip-addresses-portal.md)
+   - **Azure 资源管理器模板**：[使用模板分配多个 IP 地址](./template-samples.md)
 
    确保为你希望在虚拟机上出现的所有 Pod 添加足够的 IP 地址。
 
 3. 通过在群集创建期间向 Kubelet 传递 `–network-plugin=cni` 命令行选项，选择用于为群集提供网络的插件。 默认情况下，Kubernetes 在已安装插件和配置文件的目录中查找它们。
-4. 如果希望 Pod 可以访问互联网，请在 Linux 虚拟机上添加以下 iptables 规则，对 Internet 流量进行源 NAT**。 在以下示例中，指定的 IP 范围是 10.0.0.0/8。
+4. 如果希望 Pod 可以访问互联网，请在 Linux 虚拟机上添加以下 iptables 规则，对 Internet 流量进行源 NAT。 在以下示例中，指定的 IP 范围是 10.0.0.0/8。
 
    ```bash
-   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
+   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
    addrtype ! --dst-type local ! -d 10.0.0.0/8 -j MASQUERADE
    ```
 
@@ -157,12 +157,12 @@ CNI 网络配置文件以 JSON 格式描述。 默认情况下，它出现在 `/
 
 #### <a name="settings-explanation"></a>设置说明
 
-- **cniVersion**：Azure 虚拟网络 CNI 插件支持  [CNI 规范](https://github.com/containernetworking/cni/blob/master/SPEC.md)的 0.3.0 和 0.3.1版本。
+- **cniVersion**：Azure 虚拟网络 CNI 插件支持 [CNI 规范](https://github.com/containernetworking/cni/blob/master/SPEC.md)的 0.3.0 和 0.3.1版本。
 - **name**：网络的名称。 此属性可以设置为任何唯一值。
-- **类型**：网络插件的名称。 设置为 azure vnet**。
-- **模式**：操作模式。 此字段可选。 支持的唯一模式是“桥接”。 有关详细信息，请参阅 [操作模式](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md)。
+- **类型**：网络插件的名称。 设置为 azure vnet。
+- **模式**：操作模式。 此字段可选。 支持的唯一模式是“桥接”。 有关更多详细信息，请参阅[操作模式](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md)。
 - **桥**：将用于将容器连接到虚拟网络的桥的名称。 此字段可选。 如果省略，则插件会根据主接口索引自动选择唯一名称。
-- **ipam 类型**：IPAM 插件的名称。 始终设置为 azure vnet ipam**。
+- **ipam 类型**：IPAM 插件的名称。 始终设置为 azure vnet ipam。
 
 ## <a name="download-and-install-the-plug-in"></a>下载并安装插件
 
@@ -171,7 +171,7 @@ CNI 网络配置文件以 JSON 格式描述。 默认情况下，它出现在 `/
 - **Linux**：[azure-vnet-cni-linux-amd64-\<version no.\>.tgz](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-linux-amd64-v1.0.12-rc3.tgz)
 - **Windows**：[azure-vnet-cni-windows-amd64-\<version no.\>.zip](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-windows-amd64-v1.0.12-rc3.zip)
 
-将 [Linux](https://github.com/Azure/azure-container-networking/blob/master/scripts/install-cni-plugin.sh) 或 [Windows](https://github.com/Azure/azure-container-networking/blob/master/scripts/Install-CniPlugin.ps1) 的安装脚本复制到计算机。 将脚本保存到计算机上的 `scripts` 目录，对于 Linux，将文件命名为 `install-cni-plugin.sh`；对于 Windows，将文件命名为 `install-cni-plugin.ps1`。 要安装插件，请为你的平台运行相应的脚本，指定正在使用的插件的版本。 例如，可以指定 v1.0.12-rc3**：
+将 [Linux](https://github.com/Azure/azure-container-networking/blob/master/scripts/install-cni-plugin.sh) 或 [Windows](https://github.com/Azure/azure-container-networking/blob/master/scripts/Install-CniPlugin.ps1) 的安装脚本复制到计算机。 将脚本保存到计算机上的 `scripts` 目录，对于 Linux，将文件命名为 `install-cni-plugin.sh`；对于 Windows，将文件命名为 `install-cni-plugin.ps1`。 要安装插件，请为你的平台运行相应的脚本，指定正在使用的插件的版本。 例如，可以指定 v1.0.12-rc3：
 
    ```bash
    \$scripts/install-cni-plugin.sh [version]

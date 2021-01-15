@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70410e58acb30c7694e6fe4a6dcaff57bee98607
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836099"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223425"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>排查 Azure 虚拟网络 NAT 连接问题
 
@@ -68,10 +68,10 @@ _**解决方法：**_ 使用适当的模式和最佳做法
 底层应用程序中的其他反模式也会使 SNAT 耗尽问题变得严重。 请查看这些附加模式和最佳做法，以改善服务的可伸缩性和可靠性。
 
 - 了解将 [TCP 空闲超时](nat-gateway-resource.md#timers)减小到更小的值（包括默认的 4 分钟空闲超时）来提前释放 SNAT 端口库存所造成的影响。
-- 考虑对长时间运行的操作使用[异步轮询模式](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)，以释放连接资源供其他操作使用。
+- 考虑对长时间运行的操作使用[异步轮询模式](/azure/architecture/patterns/async-request-reply)，以释放连接资源供其他操作使用。
 - 生存期较长的流（例如重复使用的 TCP 连接）应使用 TCP Keepalive 或应用层 Keepalive，以避免中间系统超时。增大空闲超时是最终手段，不一定可以解决根本原因。 较长的超时可以在超时时间过去时降低失败的频率，同时也会造成延迟和不必要的失败。
-- 应使用正常[重试模式](https://docs.microsoft.com/azure/architecture/patterns/retry)，以避免在发生暂时性故障或故障恢复期间出现频繁重试/突发。
-为每个 HTTP 操作创建新 TCP 连接（也称为“原子连接”）是一种对立模式。  原子连接会阻止应用程序正常缩放，并且会浪费资源。  始终通过管道将多个操作输送到同一连接。  应用程序将对事务速度和资源开销有利。  当应用程序使用传输层加密（例如 TLS）时，处理新连接的开销会很大。  有关其他最佳做法模式，请查看 [Azure 云设计模式](https://docs.microsoft.com/azure/architecture/patterns/)。
+- 应使用正常[重试模式](/azure/architecture/patterns/retry)，以避免在发生暂时性故障或故障恢复期间出现频繁重试/突发。
+为每个 HTTP 操作创建新 TCP 连接（也称为“原子连接”）是一种对立模式。  原子连接会阻止应用程序正常缩放，并且会浪费资源。  始终通过管道将多个操作输送到同一连接。  应用程序将对事务速度和资源开销有利。  当应用程序使用传输层加密（例如 TLS）时，处理新连接的开销会很大。  有关其他最佳做法模式，请查看 [Azure 云设计模式](/azure/architecture/patterns/)。
 
 #### <a name="additional-possible-mitigations"></a>其他可能的缓解措施
 
@@ -96,7 +96,7 @@ _**解决方法：**_ 请改用 TCP 连接测试（例如“TCP ping”）和 UD
 | 操作系统 | 常规 TCP 连接测试 | TCP 应用层测试 | UDP |
 |---|---|---|---|
 | Linux | nc（常规连接测试） | curl（TCP 应用层测试） | 特定于应用程序 |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | 特定于应用程序 |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | 特定于应用程序 |
 
 ### <a name="connectivity-failures"></a>连接失败
 
@@ -113,7 +113,7 @@ _**解决方法：**_ 请改用 TCP 连接测试（例如“TCP ping”）和 UD
 | 操作系统 | 常规 TCP 连接测试 | TCP 应用层测试 | UDP |
 |---|---|---|---|
 | Linux | nc（常规连接测试） | curl（TCP 应用层测试） | 特定于应用程序 |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | 特定于应用程序 |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | 特定于应用程序 |
 
 #### <a name="configuration"></a>配置
 
@@ -202,4 +202,3 @@ _**解决方法：**_
 * 了解 [NAT 网关资源](nat-gateway-resource.md)
 * 了解 [NAT 网关资源的指标和警报](nat-metrics.md)。
 * [在 UserVoice 中告诉我们接下来想要为虚拟网络 NAT 开发什么功能](https://aka.ms/natuservoice)。
-

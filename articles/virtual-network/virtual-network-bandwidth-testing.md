@@ -1,7 +1,7 @@
 ---
 title: 测试 Azure VM 网络吞吐量
 titlesuffix: Azure Virtual Network
-description: 使用 NTTTCP 将网络定位到网络以进行测试，并最大限度地减少可能影响性能的其他资源的使用。
+description: 使用 NTTTCP 可以将网络作为测试目标，并尽量减少使用可能影响性能的其他资源。
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a2f6750a4d0a48c6971f60241976fb55410b65c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812278"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221436"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>带宽/吞吐量测试 (NTTTCP)
 
@@ -26,7 +26,7 @@ ms.locfileid: "91812278"
 将此工具复制到大小相同的两个 Azure VM 中。 一个 VM 充当发送方，另一个充当接收方。
 
 #### <a name="deploying-vms-for-testing"></a>部署 VM 以进行测试
-出于此测试的目的，两个 Vm 应位于相同的 [邻近位置组](../virtual-machines/windows/co-location.md) 或同一可用性集，以便我们可以使用其内部 ip 并从测试中排除负载均衡器。 也可以使用 VIP 进行测试，但这类测试不在本文档的讨论范围内。
+为了达到此测试的目的，两个 VM 应位于同一[邻近放置组](../virtual-machines/co-location.md)或同一可用性集中，这样便可使用其内部 IP 并从测试中排除负载均衡器。 也可以使用 VIP 进行测试，但这类测试不在本文档的讨论范围内。
 
 记下接收方的 IP 地址。 暂且将该 IP 称为“a.b.c.r”
 
@@ -37,7 +37,7 @@ ms.locfileid: "91812278"
 提示：第一次设置此测试时，可以尝试更短的测试时间，以更快地获取反馈。 在工具按预期工作后，将测试时间延长到 300 秒，以获取最准确的结果。
 
 > [!NOTE]
-> 发送方**和**接收方必须指定**相同的**测试持续时间参数 (-t)。
+> 发送方 **和** 接收方必须指定 **相同的** 测试持续时间参数 (-t)。
 
 测试单个 TCP 流 10 秒：
 
@@ -63,9 +63,9 @@ ms.locfileid: "91812278"
 
 允许 ntttcp 通过 Windows 防火墙，如下所示：
 
-netsh advfirewall firewall add rule program = \<PATH\> \\ntttcp.exe name = "ntttcp" protocol = any dir = in action = allow enable = yes PROFILE = any
+netsh advfirewall firewall add rule program=\<PATH\>\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
-例如，如果已将 ntttcp.exe 复制到“c:\\tools”文件夹中，则此命令为： 
+例如，如果已将 ntttcp.exe 复制到“c:\\tools”文件夹中，则此命令为： 
 
 netsh advfirewall firewall add rule program=c:\\tools\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
@@ -82,7 +82,7 @@ ntttcp -r –m 8,\*,10.0.0.4 -t 300
 
 在发送方上启动 NTTTCP（**从 CMD 运行**，而不是从 PowerShell 运行）：
 
-ntttcp -s –m 8,\*,10.0.0.4 -t 300 
+ntttcp -s –m 8,\*,10.0.0.4 -t 300 
 
 等待结果。
 
@@ -95,19 +95,19 @@ ntttcp -s –m 8,\*,10.0.0.4 -t 300 
 
 CentOS — 安装 Git：
 ``` bash
-  yum install gcc -y  
-  yum install git -y
+  yum install gcc -y  
+  yum install git -y
 ```
 Ubuntu — 安装 Git：
 ``` bash
- apt-get -y install build-essential  
- apt-get -y install git
+ apt-get -y install build-essential  
+ apt-get -y install git
 ```
-在这两者上生成并安装：
+获取并安装两者：
 ``` bash
- git clone https://github.com/Microsoft/ntttcp-for-linux
- cd ntttcp-for-linux/src
- make && make install
+ git clone https://github.com/Microsoft/ntttcp-for-linux
+ cd ntttcp-for-linux/src
+ make && make install
 ```
 
 如 Windows 示例中一样，假设 Linux 接收方的 IP 为 10.0.0.4
@@ -123,7 +123,7 @@ ntttcp -r -t 300
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
- 
+ 
 如果未给定时间参数，默认的测试持续时间为 60 秒
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>在运行 Windows 和 LINUX 的 VM 之间进行测试：

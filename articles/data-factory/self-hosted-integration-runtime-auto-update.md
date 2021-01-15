@@ -1,8 +1,6 @@
 ---
 title: 自承载集成运行时自动更新和过期通知
 description: 了解自承载集成运行时自动更新和过期通知
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
@@ -11,12 +9,12 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 12/25/2020
-ms.openlocfilehash: 6a6c897d92d469fd6247dd51f2bacb91032ac123
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8c51839e760dcca32bfc0d150c5e4d10767d95a4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122062"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222674"
 ---
 # <a name="self-hosted-integration-runtime-auto-update-and-expire-notification"></a>自承载集成运行时自动更新和过期通知
 
@@ -33,7 +31,7 @@ ms.locfileid: "98122062"
 
 你可以在自承载集成运行时客户端中检查上次更新日期时间。
 
-![启用自动更新](media/create-self-hosted-integration-runtime/shir-auto-update-2.png)
+![检查更新时间的屏幕截图](media/create-self-hosted-integration-runtime/shir-auto-update-2.png)
 
 > [!NOTE]
 > 为了确保自承载集成运行时的稳定性，尽管我们发布了两个版本，但我们每个月仅自动更新一次。 因此，有时会发现自动更新版本是实际最新版本的以前版本。 若要获取最新版本，可以转到 [下载中心](https://www.microsoft.com/download/details.aspx?id=39717)。

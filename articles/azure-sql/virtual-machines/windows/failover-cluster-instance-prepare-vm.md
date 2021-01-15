@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 52d6bc97245423a4add392ab05634d21bcf83a0d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1b8d88167dac6b2d0b1ba2afc90c443fd80b9e46
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358004"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223153"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>为 Azure Vm 上的 FCI (SQL Server 准备虚拟机) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 本文介绍如何 (Vm 准备 Azure 虚拟机，) 将其与 SQL Server 故障转移群集实例一起使用 (FCI) 。 根据 FCI 存储解决方案的不同，配置设置会有所不同，因此请验证是否选择了正确的配置以满足你的环境和业务的需要。 
 
-若要了解详细信息，请参阅 [有关 Azure vm 的 SQL Server FCI](failover-cluster-instance-overview.md) 和 [群集最佳实践](hadr-cluster-best-practices.md)的概述。 
+若要了解详细信息，请参阅对 [Azure VM 上的 SQL Server 的 FCI](failover-cluster-instance-overview.md) 和[群集最佳做法](hadr-cluster-best-practices.md)的概述。 
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -68,7 +68,7 @@ ms.locfileid: "97358004"
 将两个虚拟机放在以下位置：
 
 - 在可用性集所在的同一个 Azure 资源组中，如果要使用可用性集。
-- 在与域控制器相同的虚拟网络上。
+- 在与域控制器相同的虚拟网络上，或在与域控制器具有合适连接的虚拟网络上。
 - 能够为两个虚拟机提供足够 IP 地址空间的子网中，以及最终可能要在群集上使用的所有 FCI 中。
 - 在 Azure 可用性集或可用性区域中。
 
@@ -111,7 +111,7 @@ Azure Marketplace 中的 SQL Server VM 映像将自动注册到 SQL IaaS 代理�
 
 此表详细说明了可能需要打开的端口，具体取决于你的 FCI 配置： 
 
-   | 目标 | 端口 | 注释
+   | 目的 | Port | 注释
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | SQL Server 的默认实例正常使用的端口。 如果使用了库中的某个映像，此端口会自动打开。 </br> </br> **使用者**：所有 FCI 配置。 |
    | 运行状况探测 | TCP 59999 | 任何打开的 TCP 端口。 将负载均衡器 [运行状况探测](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) 和群集配置为使用此端口。 </br> </br> **使用者**： FCI 和负载均衡器。 |
