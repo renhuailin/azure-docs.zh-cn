@@ -27,7 +27,7 @@ Microsoft 商业市场有两个在线商店：[Microsoft AppSource](https://apps
 
 ### <a name="microsoft-appsource"></a>Microsoft AppSource
 
-Microsoft AppSource 适用于业务解决方案（例如软件即服务 [SaaS] 应用程序）以及直接扩展到 Dynamics 365、Microsoft 365 和 Microsoft Power Platform 的应用。 AppSource 咨询服务是专业的服务套餐，可以帮助客户实现 Dynamics 365 和 Power BI 使用入门或提高其使用速度。
+[Microsoft AppSource](https://appsource.microsoft.com/) 适用于业务解决方案（例如软件即服务 [SaaS] 应用程序）以及直接扩展到 Dynamics 365、Microsoft 365 和 Microsoft Power Platform 的应用。 AppSource 咨询服务是专业的服务套餐，可以帮助客户实现 Dynamics 365 和 Power BI 使用入门或提高其使用速度。
 
 以下是 AppSource 中的产品/服务列表页的示例：
 

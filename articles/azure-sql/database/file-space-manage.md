@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
-ms.date: 03/12/2019
-ms.openlocfilehash: 3a46e47d6e12d52113bf63342c84a58ca98743d0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 12/22/2020
+ms.openlocfilehash: 08cab806d6ad8b75821a92994dde0fa07db8b960
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789601"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233587"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的数据库的文件空间
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ Azure 门户和以下 API 中显示的大多数存储空间指标仅度量已用
 SELECT TOP 1 storage_in_megabytes AS DatabaseDataSpaceUsedInMB
 FROM sys.resource_stats
 WHERE database_name = 'db1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="database-data-space-allocated-and-unused-allocated-space"></a>已分配的，以及已分配但未使用的数据库数据空间
@@ -98,7 +98,7 @@ SELECT SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB,
 SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB
 FROM sys.database_files
 GROUP BY type_desc
-HAVING type_desc = 'ROWS'
+HAVING type_desc = 'ROWS';
 ```
 
 ### <a name="database-data-max-size"></a>数据库数据最大大小
@@ -108,7 +108,7 @@ HAVING type_desc = 'ROWS'
 ```sql
 -- Connect to database
 -- Database data max size in bytes
-SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
+SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes;
 ```
 
 ## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>了解弹性池存储空间的类型
@@ -121,6 +121,9 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 |**已分配的数据空间**|弹性池中所有数据库已分配的数据空间总和。||
 |**已分配但未使用的数据空间**|弹性池中所有数据库已分配的数据空间量与已使用的数据空间量之间的差值。|此数量表示弹性池通过收缩数据库数据文件可回收的最大空间量。|
 |**数据最大大小**|可由弹性池用于其所有数据库的最大数据空间量。|为弹性池分配的空间不应超过弹性池最大大小。  如果发生这种情况，可通过收缩数据库数据文件来回收未使用的空间。|
+
+> [!NOTE]
+> 错误消息 "弹性池已达到其存储限制" 表示数据库对象分配了足够的空间来满足弹性池存储限制，但数据空间分配中可能存在未使用的空间。 请考虑增加弹性池的存储限制或短期解决方案，使用下面的 [**回收未使用的已分配空间**](#reclaim-unused-allocated-space) 部分释放数据空间。 还应注意缩减数据库文件对性能产生负面影响的可能性，请参阅下面的 " [**重新生成索引**](#rebuild-indexes) " 一节。
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>查询弹性池的存储空间信息
 
@@ -136,7 +139,7 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 SELECT TOP 1 avg_storage_percent / 100.0 * elastic_pool_storage_limit_mb AS ElasticPoolDataSpaceUsedInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>已分配的，以及已分配但未使用的弹性池数据空间
@@ -187,7 +190,7 @@ Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocated
 
 ### <a name="elastic-pool-data-max-size"></a>弹性池数据最大大小
 
-修改以下 T-SQL 查询，返回弹性池数据最大大小。  查询结果以 MB 为单位。
+修改以下 T-sql 查询，返回上次记录的弹性池数据最大大小。  查询结果以 MB 为单位。
 
 ```sql
 -- Connect to master
@@ -195,13 +198,13 @@ Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocated
 SELECT TOP 1 elastic_pool_storage_limit_mb AS ElasticPoolMaxSizeInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ## <a name="reclaim-unused-allocated-space"></a>回收已分配但未使用的空间
 
 > [!NOTE]
-> 此命令在运行时可能会影响数据库的性能，请尽量在使用率较低的时候运行它。
+> 收缩命令在运行时影响数据库性能，如果可能，应在使用率较低的时间段内运行。
 
 ### <a name="dbcc-shrink"></a>DBCC 收缩
 
@@ -209,24 +212,28 @@ ORDER BY end_time DESC
 
 ```sql
 -- Shrink database data space allocated.
-DBCC SHRINKDATABASE (N'db1')
+DBCC SHRINKDATABASE (N'db1');
 ```
 
-此命令在运行时可能会影响数据库的性能，请尽量在使用率较低的时候运行它。  
+收缩命令在运行时影响数据库性能，如果可能，应在使用率较低的时间段内运行。  
 
-有关此命令的详细信息，请参阅 [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。
+还应注意缩减数据库文件对性能产生负面影响的可能性，请参阅下面的 " [**重新生成索引**](#rebuild-indexes) " 一节。
+
+有关此命令的详细信息，请参阅 [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql.md)。
 
 ### <a name="auto-shrink"></a>自动收缩
 
 或者，可以为数据库启用自动收缩。  自动收缩可降低文件管理的复杂性，并且与 `SHRINKDATABASE` 或 `SHRINKFILE` 相比，对数据库性能的影响更小。  在管理包含多个数据库的弹性池时，自动收缩可能特别有用。  但是，与 `SHRINKDATABASE` 和 `SHRINKFILE` 相比，自动收缩在回收文件空间方面的效率更低。
+默认情况下，按建议为大多数数据库禁用自动收缩。 有关详细信息，请参阅 [AUTO_SHRINK 注意事项](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink)。
+
 若要启用自动收缩，请修改以下命令中的数据库名称。
 
 ```sql
 -- Enable auto-shrink for the database.
-ALTER DATABASE [db1] SET AUTO_SHRINK ON
+ALTER DATABASE [db1] SET AUTO_SHRINK ON;
 ```
 
-有关此命令的详细信息，请参阅 [DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 选项。
+有关此命令的详细信息，请参阅 [DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options) 选项。
 
 ### <a name="rebuild-indexes"></a>重建索引
 

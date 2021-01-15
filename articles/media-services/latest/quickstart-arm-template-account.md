@@ -277,4 +277,4 @@ az group delete --name {name of the resource group}
 若要通过使用参数、变量等创建模板的过程来了解有关使用 ARM 模板的更多信息，请尝试
 
 > [!div class="nextstepaction"]
-> 创建和部署你的第一个 ARM 模板[
+> [创建并部署第一个 ARM 模板](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)

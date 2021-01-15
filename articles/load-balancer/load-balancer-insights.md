@@ -1,6 +1,6 @@
 ---
 title: Azure 负载均衡器的见解
-description: 使用负载均衡器见解来实现快速的故障本地化和明智的设计决策
+description: 利用负载均衡器的见解来实现快速的故障定位和制定明智的设计决策
 services: load-balancer
 documentationcenter: na
 author: erichrt
@@ -11,40 +11,40 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 63b91194c9ffb10fd8f4c5f1341eaf74bc81f5e1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694875"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232754"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>使用见解监视和配置 Azure 负载均衡器
 
-通过 Azure Monitor 网络，你可以为负载均衡器提供功能依赖关系可视化和预配置的度量值仪表板。 这些视觉对象可帮助您做出明智的设计决策，并快速地本地化、诊断和解决任何错误。
+通过用于网络的 Azure Monitor，可以获得适用于负载均衡器的函数依赖关系可视化和预配置的指标仪表板。 这些视觉对象有助于你制定明智的设计决策，并快速定位、诊断和解决任何故障。
 
 >[!NOTE] 
->请注意，此功能处于预览阶段，并且功能依赖关系视图和预配置的仪表板可能会更改以改善此体验
+>请注意，此功能为预览版，函数依赖关系视图和预配置的仪表板以后可能会改变以优化体验
 
 >[!IMPORTANT]
->若要查看预配置的指标仪表板中的负载平衡器命名空间中的指标，需要标准负载均衡器。 不过，你仍然能够查看 VM、虚拟机规模集和连接监视器命名空间中的指标，但我们建议 [升级到标准](./upgrade-basic-standard.md) ，以便为任何生产工作负荷利用一组强大的负载均衡器指标。
+>需要标准负载均衡器才能在预配置的指标仪表板中查看来自负载均衡器命名空间的指标。 你仍然可以从 VM、虚拟机规模集和连接监视器命名空间中看到指标，但是，对于任何生产工作负载，我们建议[升级到标准](./upgrade-basic-standard.md)，以充分利用可靠的负载均衡器指标集。
 
 ## <a name="functional-dependency-view"></a>函数依赖关系视图
 
-函数依赖关系视图可让你甚至最复杂的负载均衡器设置。 对于最新的负载均衡器配置的视觉反馈，你可以进行更新，同时确保配置的配置。
+借助函数依赖关系视图，甚至可以直观显示最复杂的负载均衡器设置。 通过负载均衡器最新配置的视觉反馈，你可以在更新的同时保留对配置的记忆。
 
-可以访问 Azure 中负载均衡器资源的 "Insights" 边栏选项卡来访问此视图。
+你可以通过访问 Azure 中的负载均衡器资源的“见解”边栏选项卡来访问此视图。
 
-:::image type="content" source="./media/load-balancer-insights/load-balancer-functional-dependency-visual.png" alt-text="函数依赖关系视图的 Depecition。负载均衡器的前端可通过配置的规则显示连接到后端池成员。对于标准负载均衡器，从负载均衡规则到后端池实例的线路是基于运行状况探测状态进行颜色编码的。" border="true":::
+:::image type="content" source="./media/load-balancer-insights/load-balancer-functional-dependency-visual.png" alt-text="函数依赖关系视图描述。可以看到，负载均衡器的前端通过配置的规则连接到后端池成员。对于标准负载均衡器，连接负载均衡规则与后端池实例的直线根据运行状况探测状态进行了颜色编码。" border="true":::
 
-对于标准负载均衡器，后端池资源用运行状况探测状态进行了颜色编码，表示后端池的当前可用性以提供流量。 除了上述拓扑，还会提供运行状况状态图，提供应用程序运行状况的快照视图。
+对于标准负载平衡器，后端池资源基于运行状况探测状态进行了颜色编码，指示用于提供流量的后端池的当前可用性。 除了上述拓扑外，还为你提供了运行状况的时间图，并提供了应用程序运行状况的快照视图。
 
 ## <a name="metrics-dashboard"></a>指标仪表板
 
-从负载均衡器的 "Insights" 边栏选项卡中，可以选择更详细的指标来查看预配置的 [Azure Monitor 工作簿，该工作簿](../azure-monitor/platform/workbooks-overview.md) 包含与负载均衡器的特定方面相关的指标视觉对象。 此仪表板会显示负载均衡器状态，并链接到页面顶部的相关文档。
+在负载均衡器的“见解”边栏选项卡中，可以选择“更多详细指标”，查看预配置的 [Azure Monitor 工作簿](../azure-monitor/platform/workbooks-overview.md)，其中包含与负载均衡器特定方面相关的指标视觉对象。 该仪表板显示负载均衡器状态，并在页面顶部显示相关文档的链接。
 
-首先，将显示 "概述" 选项卡。可以浏览可用的选项卡，每个选项卡都包含与负载均衡器的特定方面相关的视觉对象。 每个选项卡底部的仪表板中提供了每个选项卡的明确指导。
+首先会显示“概述”选项卡。可以在可用选项卡中导航，每个选项卡均包含与负载均衡器特定方面相关的视觉对象。 每个选项卡底部的仪表板中都提供针对每个选项的明确指导。
 
-当前可用的仪表板选项卡包括：
+当前可用的仪表板选项卡是：
 * 概述
 * 前端和后端可用性
 * 数据吞吐量
@@ -53,31 +53,31 @@ ms.locfileid: "94694875"
 * 指标定义 
 
 ### <a name="overview-tab"></a>概述选项卡
-"概述" 选项卡包含一个可搜索网格，其中包含每个连接到负载均衡器的前端 Ip 的总体数据路径可用性和运行状况探测状态。 这些度量值指示前端 IP 是否响应，后端池中的计算实例是否能够对入站连接进行单独的响应。
+“概述”选项卡包含一个可搜索的网格，其中包含连接到负载均衡器的每个前端 IP 的总体数据路径可用性和运行状况探测状态。 这些指标指示前端 IP 是否响应，并且后端池中的计算实例是否分别响应入站连接。
 
-你还可以在此页上查看每个前端 IP 的总体数据吞吐量，以了解你是要生成还是接收预期流量级别。 页面底部的指导会将您定向到适当的选项卡，应会看到任何不规则值。
+还可以在此页面上查看每个前端 IP 的总体数据吞吐量，了解是否正在产生和接收预期水平的流量。 如果看到任何不正常的值，可通过页面底部的指导进入正确的标签。
 
-### <a name="frontend-and-backend-availability-tab"></a>前端和后端可用性选项卡
-前端和后端可用性选项卡显示了几个有用视图中提供的数据路径吞吐量和运行状况探测状态指标。 第一个图表显示聚合值，以便您可以确定是否存在问题。 关系图的其余部分显示这些度量值由各种维度拆分，以便您可以进行故障排除并确定任何入站可用性问题的来源。
+### <a name="frontend-and-backend-availability-tab"></a>“前端和后端可用性”选项卡
+“前端和后端可用性”选项卡以一些有用的视图显示了数据路径吞吐量和运行状况探测状态指标。 第一张图显示了聚合值，因此你可以确定是否存在问题。 其余图显示这些指标按不同维度进行划分，以便你可以排除故障并确定任何入站可用性问题的根源。
 
-页面底部提供了查看这些图形的工作流，其中有各种症状的常见原因。 
+页面底部提供了用于查看这些图的工作流，其中包括各种症状的常见原因。 
 
-### <a name="data-throughput-tab"></a>数据吞吐量选项卡
-通过 "数据吞吐量" 选项卡，可以查看入站和出站吞吐量，以确定流量模式是否符合预期。 它将显示按前端 IP 和前端端口拆分的入站和出站数据吞吐量，以便您可以确定所运行的服务是如何单独执行的。
+### <a name="data-throughput-tab"></a>“数据吞吐量”选项卡
+“数据吞吐量”选项卡使你可以查看入站和出站吞吐量，确定流量模式是否符合预期。 它将显示按前端 IP 和前端端口划分的入站和出站数据吞吐量，以便你可以确定所运行的服务是否单独执行。
 
 ### <a name="flow-distribution"></a>流分发
-"流分布" 选项卡可帮助你可视化和管理后端实例正在接收和生成的流的数量。 它显示入站和出站流量的流创建速率和流计数，以及每个 VM 和虚拟机规模集实例接收的网络流量。 
+“流量分配”选项卡可帮助你直观了解和管理后端实例正在接收和产生的流量数量。 它显示入站和出站流量的流创建速率和流计数，以及每个 VM 和虚拟机规模集实例正在接收的网络流量。 
 
-这些视图可提供有关负载平衡器配置或流量模式是否导致不均衡流量的反馈。 例如，如果已配置会话相关性，并且单个客户端发出了不相称的请求数。 它还会让你知道你是否正在接近计算机大小的 [每个 VM 流限制](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) 。
+这些视图可为你提供有关负载均衡器配置或流量模式是否导致流量不平衡的反馈。 例如，是否已配置会话关联，以及某个客户端发出的请求数量是否不成比例。 它还会告知你的计算机大小是否已达到[每个 VM 流量限制](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations)。
 
 ### <a name="connection-monitors"></a>连接监视器
-"连接监视器" 选项卡将显示已配置的所有 [连接监视器](../network-watcher/connection-monitor.md)  在全局地图上的往返延迟。 这些视觉对象为具有严格延迟要求的服务提供了有用的信息。 为了满足您的需求，您可能需要添加更多区域部署或迁移到 [跨区域负载平衡](./cross-region-overview.md) 模型
+“连接监视器”选项卡会在全局地图上显示已配置的所有[连接监视器](../network-watcher/connection-monitor.md)的往返延迟。 这些视觉对象为具有严格延迟要求的服务提供有用的信息。 为了满足您的需求，您可能需要添加更多区域部署或迁移到 [跨区域负载平衡](./cross-region-overview.md) 模型
 
 ### <a name="metric-definitions"></a>指标定义
-"指标定义" 选项卡包含 [多维指标一文](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)中显示的所有信息。
+“指标定义”选项卡包含[“多维指标标准”文章](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)中显示的所有信息。
 
 ## <a name="next-steps"></a>后续步骤
-* 查看仪表板并使用以下链接提供反馈（如果有可以改进的内容）
-* [查看指标文档，确保了解每个度量值的计算方式](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
+* 查看仪表板，如果有任何需要改进的地方，请使用下面的链接提供反馈
+* [查看指标文档，以确保你了解如何计算每个指标](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
 * [为负载均衡器创建连接监视器](../network-watcher/connection-monitor.md)
-* [创建自己的工作簿](../azure-monitor/platform/workbooks-overview.md)，可以通过单击详细度量值仪表板中的 "编辑" 按钮来执行灵感
+* [创建自己的工作簿](../azure-monitor/platform/workbooks-overview.md)，你可以通过在详细指标仪表板中单击“编辑”按钮来汲取灵感

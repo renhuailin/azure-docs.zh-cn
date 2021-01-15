@@ -4,12 +4,12 @@ description: 了解如何排查 Azure Monitor 的 Java agent Application Insight
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 54bf2440dff20fc757f37e3f31a53c57ebd59120
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 2876abd3749c9e56cef462e41b8268135f82cd12
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133185"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232210"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>故障排除指南： Azure Monitor Java Application Insights
 
@@ -17,7 +17,7 @@ ms.locfileid: "98133185"
 
 ## <a name="check-the-self-diagnostic-log-file"></a>检查自诊断日志文件
 
-默认情况下，Application Insights 的 Java 3.0 代理 `applicationinsights.log` 会在保存文件的同一目录中生成一个名为的日志文件 `applicationinsights-agent-3.0.0.jar` 。
+默认情况下，Application Insights 的 Java 3.0 代理 `applicationinsights.log` 会在保存文件的同一目录中生成一个名为的日志文件 `applicationinsights-agent-3.0.1.jar` 。
 
 此日志文件是检查你可能遇到的任何问题的提示的第一个位置。
 

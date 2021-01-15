@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 36e41db6e1a3cff13f31f0abf2e83e872dfd7c49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a92c6789723dc42ac8f3a9c471e494079dc19328
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742326"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233434"
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
 
@@ -52,10 +52,10 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 有关详细信息，请查看以下文章：
 
 * [在 Azure Monitor 日志中配置网络性能监视器解决方案](../azure-monitor/insights/network-performance-monitor.md) 
-* [用例](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
+* [用例](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)
 * 产品更新：
-  * [2017 年 2 月](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
-  * [2017 年 8 月](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+  * [2017 年 2 月](/archive/blogs/msoms/oms-network-performance-monitor-is-now-generally-available)
+  * [2017 年 8 月](/archive/blogs/msoms/improvements-to-oms-network-performance-monitor)
 
 ## <a name="expressroute-monitor"></a>ExpressRoute 监视器
 
@@ -106,7 +106,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 ![显示跨区域的流量的地图](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 相关链接：
-* [博客文章](https://aka.ms/trafficanalytics)、[文档](https://aka.ms/trafficanalyticsdocs)、[常见问题解答](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+* [博客文章](https://aka.ms/trafficanalytics)、[文档](../network-watcher/traffic-analytics.md)、[常见问题解答](../network-watcher/traffic-analytics-faq.md)
 
 ## <a name="dns-analytics"></a>DNS Analytics
 此解决方案专为 DNS 管理员构建，可收集、分析和关联 DNS 日志，以提供与安全性、操作和性能相关的见解。  一些功能包括：
@@ -120,8 +120,8 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 ![DNS Analytics 仪表板](./media/network-monitoring-overview/dns-analytics-overview.png) 
 
 相关链接：
-* [博客文章](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/)、[文档](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
+* [博客文章](/archive/blogs/msoms/introducing-oms-dns-analytics)、[文档](../azure-monitor/insights/dns-analytics.md)
 
 ## <a name="miscellaneous"></a>杂项
 
-* [新定价](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)
+* [新定价](../azure-monitor/insights/network-performance-monitor-pricing-faq.md)

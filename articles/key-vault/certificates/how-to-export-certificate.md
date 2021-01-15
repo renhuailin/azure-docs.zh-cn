@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 0925b51ed960b8007d2df86115ea7e5cf627fe7e
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: b3c917c9652954783fcddd92b9a7370c358ab3cc
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826125"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233638"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>从 Azure Key Vault 中导出证书
 
-了解如何从 Azure Key Vault 中导出证书。 你可以使用 Azure CLI、Azure PowerShell 或 Azure 门户来导出证书。 还可以使用 Azure 门户来导出 Azure 应用服务证书。
+了解如何从 Azure Key Vault 中导出证书。 你可以使用 Azure CLI、Azure PowerShell 或 Azure 门户来导出证书。 
 
 ## <a name="about-azure-key-vault-certificates"></a>关于 Azure Key Vault 证书
 
@@ -114,7 +114,7 @@ $pfxFileByte = $x509Cert.Export($type, $password)
 
 **导出 Azure 应用服务证书**
 
-通过 Azure 应用服务证书可以方便地购买 SSL 证书。 你可以从门户中将它们分配给 Azure 应用。 你还可以从门户中将这些证书导出为 PFX 文件，以便在其他地方使用。 导入这些证书后，可以在机密下找到应用服务证书。
+通过 Azure 应用服务证书可以方便地购买 SSL 证书。 你可以从门户中将它们分配给 Azure 应用。 导入这些证书后，可以在机密下找到应用服务证书。
 
 有关详细信息，请参阅[导出 Azure 应用服务证书](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)的步骤。
 

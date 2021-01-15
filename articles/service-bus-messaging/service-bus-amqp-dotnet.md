@@ -3,16 +3,19 @@ title: .NET 和 AMQP 1.0 中的 Azure 服务总线 | Microsoft Docs
 description: 本文介绍如何使用 AMQP（高级消息队列协议）通过 .NET 应用程序使用 Azure 服务总线。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6d7d01a56d2e7068f9c4ccb8ec505914a31ecf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067097"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233927"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
 
 AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保使用最新版本，可以从 [NuGet][NuGet]下载服务总线安装包。
+
+> [!NOTE]
+> 可以使用适用于服务总线的 .NET 库高级消息队列协议 (AMQP) 或 Service Bus 消息传送协议 (SBMP) 。 AMQP 是 .NET 库使用的默认协议。 建议你使用 AMQP 协议 (这是默认) ，而不是将其重写。 
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>将 .NET 应用程序配置为使用 AMQP 1.0
 
@@ -41,6 +44,14 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 其中 `namespace` 和 `SAS key` 是在创建服务总线命名空间时从 [Azure 门户][Azure portal]获取的。 有关详细信息，请参阅[使用 Azure 门户创建服务总线命名空间][Create a Service Bus namespace using the Azure portal]。
 
 使用 AMQP 时，在连接字符串后面追加 `;TransportType=Amqp`。 此表示法指示客户端库使用 AMQP 1.0 连接到服务总线。
+
+### <a name="amqp-over-websockets"></a>基于 WebSockets 的 AMQP
+若要通过 Websocket 使用 AMQP，请 `TransportType` 在连接字符串中设置为 `AmqpWebSockets` 。 例如：`Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=AmqpWebSockets`。 
+
+如果使用的是 .NET ServiceBusConnection 库，请将 [TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype) 设置为 [TransportType 枚举](/dotnet/api/microsoft.azure.servicebus.transporttype)的 AmqpWebSockets。
+
+如果使用的是 .NET ServiceBusClient 库，请将 [TransportType](/dotnet/api/azure.messaging.servicebus.servicebusclient.transporttype) 设置为 [ServiceBusTransportType 枚举](/dotnet/api/azure.messaging.servicebus.servicebustransporttype)的 AmqpWebSockets。
+
 
 ## <a name="message-serialization"></a>消息序列化
 

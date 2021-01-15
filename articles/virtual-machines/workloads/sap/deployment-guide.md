@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 2eb3564153734ff70b7df69da568966e29747863
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: c70de186468eb3efacc82c1d5c8802612475fd4d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202430"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232788"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 
@@ -912,8 +912,8 @@ az --version
 ### <a name="configure-the-azure-extension-for-sap"></a><a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>配置适用于 SAP 的 Azure 扩展
 
 > [!NOTE]
-> 常规支持声明：若要支持适用于 SAP 的 Azure 扩展，请始终使用适用于 Windows 的 BC-OP-NT-AZR for Windows 或业务连续性-组件 BC-OP-LNX-AZR 创建-BC-OP-NT-AZR 在 SAP 上打开一个事件。
-> SAP 支持系统中有专门的 Microsoft 支持工程师，可帮助我们的共同客户。
+> 一般支持声明：  
+> Sap 支持渠道提供了对适用于 SAP 的 Azure 扩展的支持。 如果需要有关适用于 SAP 的 Azure 扩展的帮助，请打开支持案例，并提供 [Sap 支持](https://support.sap.com/)。 
 
 根据 [Azure 上的 SAP 的 VM 部署方案][deployment-guide-3]所述准备好 VM 之后，Azure VM 代理就已安装在虚拟机上了。 下一个步骤是部署 Azure 全球数据中心内的 Azure 扩展存储库中提供的适用于 SAP 的 Azure 扩展。 有关详细信息，请参阅 [SAP NetWeaver 的 Azure 虚拟机规划和实施指南][planning-guide-9.1]。
 

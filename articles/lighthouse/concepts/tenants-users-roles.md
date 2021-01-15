@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse 方案中的租户、用户和角色
 description: 了解 Azure Active Directory 租户、用户和角色的概念，以及如何在 Azure Lighthouse 方案中使用它们。
-ms.date: 10/29/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 411b9bae19166e1875011360aa011c05d590b237
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023936"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233910"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 方案中的租户、用户和角色
 
@@ -18,7 +18,10 @@ ms.locfileid: "96023936"
 
 若要实现此逻辑投影，客户租户中的订阅)  (或一个或多个资源组必须 *载入* Azure Lighthouse。 可以[通过 Azure 资源管理器模板](../how-to/onboard-customer.md)或[将公共或私有产品/服务发布到 Azure 市场](../how-to/publish-managed-services-offers.md)来完成此加入过程。
 
-无论选择哪种加入方法，都需要定义授权。 每个授权在管理租户中指定可以访问委派资源的用户帐户，还指定用于设置其中每个用户对这些资源的权限的内置角色。
+无论选择哪种加入方法，都需要定义授权。 每个授权都指定一个 **principalId** ，该用户将有权访问委派的资源，以及一个内置角色，用于设置这些用户对这些资源的权限。 此 **principalId** 在管理租户中定义 Azure AD 的用户、组或服务主体。
+
+> [!NOTE]
+> 除非显式指定，否则 Azure Lighthouse 文档中的 "用户" 引用将应用于授权中 Azure AD 的用户、组或服务主体。
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>定义用户和角色的最佳做法
 

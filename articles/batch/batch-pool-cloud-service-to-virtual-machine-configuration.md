@@ -3,12 +3,12 @@ title: 将 Batch 池配置从云服务迁移到虚拟机
 description: 了解如何将池配置更新为最新的和建议的配置
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: b6f4184f7c4f133f74cb3157638b1621dad25fda
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969021"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234301"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>将 Batch 池配置从云服务迁移到虚拟机
 
@@ -22,7 +22,7 @@ ms.locfileid: "97969021"
 
 无法将现有活动池从 "cloudServiceConfiguration" 更新为 "virtualMachineConfiguration"，必须创建新池。 所有 Batch Api、命令行工具、Azure 门户和 Batch Explorer UI 都支持使用 "virtualMachineConfiguration" 创建池。
 
-[.Net](tutorial-parallel-dotnet.md)和[Python](tutorial-parallel-python.md)教程提供了使用 "virtualMachineConfiguration" 创建池的示例。
+**[.Net](tutorial-parallel-dotnet.md)和 [Python](tutorial-parallel-python.md)教程提供了使用 "virtualMachineConfiguration" 创建池的示例。**
 
 ## <a name="pool-configuration-differences"></a>池配置差异
 

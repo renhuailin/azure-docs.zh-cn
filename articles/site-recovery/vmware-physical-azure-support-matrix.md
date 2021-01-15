@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 6cc67a6af9e11e5667479eadfe277d400c2d4947
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: eaf12a9799f834046bc3914816f38d672fcc931b
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492210"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234080"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -90,11 +90,11 @@ Linux：CentOS | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> </br> 7.0、7.1、7
 Ubuntu | Ubuntu 14.04* LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions)<br/>Ubuntu 16.04* LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions) </br> Ubuntu 18.04* LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions) </br> Ubuntu 20.04* LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions) </br> （包括对所有 14.04.x、16.04.x、18.04.x、20.04.x* 版本的支持）   
 Debian | Debian 7/Debian 8（包括对所有 7. x、8. x 版本）；Debian 9（包括对 9.1 到 9.13 的版本的支持。 Debian 9.0 不受支持。 ) [ (查看支持的内核版本) ](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4、[SP5](https://support.microsoft.com/help/4570609)[（查看支持的内核版本）](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15、15 SP1 [（查看支持的内核版本）](#suse-linux-enterprise-server-15-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 11 SP3。 [请确保在配置服务器上下载最新的移动代理安装程序](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)。 </br> SUSE Linux Enterprise Server 11 SP4 </br> **注意**：不支持将复制计算机从 SUSE Linux Enterprise Server 11 SP3 升级到 SP4。 若要升级，请禁用复制并在升级后重新启用它。 <br/>|
-Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、 [7.8、7.9](https://support.microsoft.com/help/4573888/) [、8.0](https://support.microsoft.com/help/4597409/) [、8.1](https://support.microsoft.com/help/4573888/) [、8.2](https://support.microsoft.com/help/4573888/)、 [8.3](https://support.microsoft.com/help/4597409/) [8.3](https://support.microsoft.com/help/4573888/)  <br/> 运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3、4 和 5（UEK3、UEK4、UEK5）<br/><br/>8.1<br/>[9.35](https://support.microsoft.com/help/4573888/) 支持在版本 <= 3.10.0-1062* 的所有 UEK 内核和 RedHat 内核上运行。[9.36](https://support.microsoft.com/help/4578241/) 提供了对其余 RedHat 内核的支持
+Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、 [7.8、7.9](https://support.microsoft.com/help/4573888/) [、8.0](https://support.microsoft.com/help/4597409/) [、8.1](https://support.microsoft.com/help/4573888/) [、8.2](https://support.microsoft.com/help/4573888/)、 [](https://support.microsoft.com/help/4597409/) [8.3](https://support.microsoft.com/help/4573888/)  <br/> 运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3、4 和 5（UEK3、UEK4、UEK5）<br/><br/>8.1<br/>[9.35](https://support.microsoft.com/help/4573888/) 支持在版本 <= 3.10.0-1062* 的所有 UEK 内核和 RedHat 内核上运行。[9.36](https://support.microsoft.com/help/4578241/) 提供了对其余 RedHat 内核的支持
 
 > [!Note]
 >- 对于每个 Windows 版本，Azure Site Recovery 仅支持[长期服务渠道 (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 生成。  目前不支持[半年渠道](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel)版本。
->- 请确保对于 Linux 版本，Azure Site Recovery 不支持自定义的操作系统映像。 仅支持属于分发次要版本发布/更新的常用内核。
+>- 请确保对于 Linux 版本，Azure Site Recovery 不支持自定义 OS 映像。 仅支持属于次要分发版本/更新的原版内核。
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu 内核版本
 
@@ -231,6 +231,7 @@ Docker 磁盘配置 | 否
 包含 > 4 TB 的条带化磁盘的来宾/服务器卷 | 是
 逻辑卷管理 (LVM)| 复杂预配 - 是 <br></br> 精简预配 - 否
 来宾/服务器 - 存储空间 | 否
+来宾/服务器-NVMe 接口 | 否
 来宾/服务器热添加/删除磁盘 | 否
 来宾/服务器 - 排除磁盘 | 是
 来宾/服务器多路径 (MPIO) | 否

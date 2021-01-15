@@ -4,14 +4,14 @@ description: Azure 逻辑应用和 Power Automate 的表达式中的函数参考
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 222f6ebacb6139ca26a6f1cdd0f896270c9b2fc2
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.topic: reference
+ms.date: 01/13/2021
+ms.openlocfilehash: fe40cbe84e8e3341b03c6c8e11701fe3db6bc3d0
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034289"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234216"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>有关在 Azure 逻辑应用和 Power Automate 的表达式中使用函数的参考指南
 
@@ -866,12 +866,12 @@ and(<expression1>, <expression2>, ...)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要检查的表达式 |
+| <*expression1*>, <*expression2*>, ... | 是 | 布尔 | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | -----| ----------- |
-| true 或 false | Boolean | 当所有表达式均为 true 时返回 true。 当至少一个表达式为 false 时返回 false。 |
+| true 或 false | 布尔 | 当所有表达式均为 true 时返回 true。 当至少一个表达式为 false 时返回 false。 |
 ||||
 
 *示例 1*
@@ -1134,9 +1134,9 @@ bool(<value>)
 
 如果使用的是 `bool()` 对象，则对象的值必须是可以转换为布尔值的字符串或整数。
 
-| 返回值 | 类型 | 描述 |
+| 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| `true` 或 `false` | Boolean | 指定值的布尔值。 |
+| `true` 或 `false` | 布尔 | 指定值的布尔值。 |
 ||||
 
 *输出*
@@ -1245,7 +1245,7 @@ contains([<collection>], '<value>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当找到该项时返回 true。 找不到时返回 false。 |
+| true 或 false | 布尔 | 当找到该项时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -1774,7 +1774,7 @@ empty([<collection>])
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当集合为空时返回 true。 不为空时返回 false。 |
+| true 或 false | 布尔 | 当集合为空时返回 true。 不为空时返回 false。 |
 ||||
 
 *示例*
@@ -1811,7 +1811,7 @@ endsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | Boolean | 当找到结尾子字符串时返回 true。 找不到时返回 false。 |
+| true 或 false  | 布尔 | 当找到结尾子字符串时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -1852,7 +1852,7 @@ equals('<object1>', '<object2>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当两者相等时返回 true。 不相等时返回 false。 |
+| true 或 false | 布尔 | 当两者相等时返回 true。 不相等时返回 false。 |
 ||||
 
 *示例*
@@ -2191,7 +2191,7 @@ greater('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 |
+| true 或 false | 布尔 | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2228,7 +2228,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 |
+| true 或 false | 布尔 | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2293,7 +2293,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | Boolean | 要检查的表达式 |
+| <*expression*> | 是 | 布尔 | 要检查的表达式 |
 | <*valueIfTrue*> | 是 | 任意 | 当表达式为 true 时要返回的值 |
 | <*valueIfFalse*> | 是 | 任意 | 当表达式为 false 时要返回的值 |
 |||||
@@ -2532,11 +2532,17 @@ iterationIndexes('<loopName>')
 
 ### <a name="json"></a>json
 
-返回字符串或 XML 的 JavaScript 对象表示法 (JSON) 类型的值或对象。
+返回字符串或 XML (JSON) 类型值、对象或对象数组的 JavaScript 对象表示法。
 
 ```
 json('<value>')
+json(xml('value'))
 ```
+
+> [!IMPORTANT]
+> 如果没有定义输出结构的 XML 架构，则函数可能会返回结果，其中结构与预期的格式大不相同，具体取决于输入。
+>  
+> 此行为使此功能不适用于输出必须符合定义良好的协定的方案，例如，在关键业务系统或解决方案中。
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
@@ -2545,12 +2551,12 @@ json('<value>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*JSON-result*> | JSON 本机类型或对象 | 指定的字符串或 XML 的 JSON 本机类型的值或对象。 如果字符串为 null，则此函数返回一个空对象。 |
+| <*JSON-result*> | JSON 本机类型、对象或数组 | 输入字符串或 XML 中的 JSON 本机类型值、对象或对象数组。 <p><p>-如果传入的 XML 具有根元素中的单个子元素，则该函数为该子元素返回单个 JSON 对象。 <p> -如果传入的 XML 包含根元素中的多个子元素，则函数将返回一个数组，其中包含这些子元素的 JSON 对象。 <p>-如果字符串为 null，则该函数返回空对象。 |
 ||||
 
 *示例 1*
 
-此示例将以下字符串转换为 JSON 值：
+此示例将此字符串转换为 JSON 值：
 
 ```
 json('[1, 2, 3]')
@@ -2560,7 +2566,7 @@ json('[1, 2, 3]')
 
 *示例 2*
 
-此示例将以下字符串转换为 JSON：
+此示例将此字符串转换为 JSON：
 
 ```
 json('{"fullName": "Sophia Owen"}')
@@ -2568,7 +2574,7 @@ json('{"fullName": "Sophia Owen"}')
 
 并返回以下结果：
 
-```
+```json
 {
   "fullName": "Sophia Owen"
 }
@@ -2576,23 +2582,53 @@ json('{"fullName": "Sophia Owen"}')
 
 *示例 3*
 
-此示例将以下 XML 转换为 JSON：
+此示例使用 `json()` 和 `xml()` 函数将根元素中具有一个子元素的 XML 转换为一个名 `person` 为的该子元素的 JSON 对象：
 
-```
-json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))
-```
+`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))`
 
 并返回以下结果：
 
 ```json
 {
-   "?xml": { "@version": "1.0" },
+   "?xml": { 
+      "@version": "1.0" 
+   },
    "root": {
-      "person": [ {
+      "person": {
          "@id": "1",
          "name": "Sophia Owen",
          "occupation": "Engineer"
-      } ]
+      }
+   }
+}
+```
+
+*示例 4*
+
+此示例使用 `json()` 和 `xml()` 函数将根元素中具有多个子元素的 XML 转换为一个名为的数组 `person` ，其中包含这些子元素的 JSON 对象：
+
+`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> <person id='2'> <name>John Doe</name> <occupation>Engineer</occupation> </person> </root>'))`
+
+并返回以下结果：
+
+```json
+{
+   "?xml": {
+      "@version": "1.0"
+   },
+   "root": {
+      "person": [
+         {
+            "@id": "1",
+            "name": "Sophia Owen",
+            "occupation": "Engineer"
+         },
+         {
+            "@id": "2",
+            "name": "John Doe",
+            "occupation": "Engineer"
+         }
+      ]
    }
 }
 ```
@@ -2791,7 +2827,7 @@ less('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 |
+| true 或 false | 布尔 | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2828,7 +2864,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | Boolean | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |
+| true 或 false  | 布尔 | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -3034,12 +3070,12 @@ not(<expression>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | Boolean | 要检查的表达式 |
+| <*expression*> | 是 | 布尔 | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |
+| true 或 false | 布尔 | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |
 ||||
 
 *示例 1*
@@ -3083,12 +3119,12 @@ or(<expression1>, <expression2>, ...)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要检查的表达式 |
+| <*expression1*>, <*expression2*>, ... | 是 | 布尔 | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当至少一个表达式为 true 时返回 true。 当所有表达式均为 false 时返回 false。 |
+| true 或 false | 布尔 | 当至少一个表达式为 true 时返回 true。 当所有表达式均为 false 时返回 false。 |
 ||||
 
 *示例 1*
@@ -3545,7 +3581,7 @@ setProperty(<object>, '<property>', <value>)
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | 是 | 对象 | 要设置其属性的 JSON 对象 |
-| <*property*> | 是 | 字符串 | 要设置的现有属性或新属性的名称 |
+| <*property*> | 是 | String | 要设置的现有属性或新属性的名称 |
 | <*value*> | 是 | 任意 | 要为指定属性设置的值 |
 |||||
 
@@ -3766,7 +3802,7 @@ startOfMonth('<timestamp>', '<format>'?)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | 字符串 | 指定的时间戳，但从该月第一天的零小时标记开始 |
+| <*updated-timestamp*> | String | 指定的时间戳，但从该月第一天的零小时标记开始 |
 ||||
 
 *示例 1*
@@ -3809,7 +3845,7 @@ startsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | Boolean | 当找到起始子字符串时返回 true。 找不到时返回 false。 |
+| true 或 false  | 布尔 | 当找到起始子字符串时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -4090,7 +4126,7 @@ toUpper('<text>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*uppercase-text*> | 字符串 | 采用大写格式的原始字符串 |
+| <*uppercase-text*> | String | 采用大写格式的原始字符串 |
 ||||
 
 *示例*
@@ -4185,7 +4221,7 @@ triggerFormDataValue('<key>')
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*key*> | 是 | 字符串 | 需要获取其值的键的名称 |
+| <*key*> | 是 | String | 需要获取其值的键的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4316,7 +4352,7 @@ uriComponent('<value>')
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 字符串 | 要转换为 URI 编码格式的字符串 |
+| <*value*> | 是 | String | 要转换为 URI 编码格式的字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4381,7 +4417,7 @@ uriComponentToString('<value>')
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 字符串 | 要解码的 URI 编码字符串 |
+| <*value*> | 是 | String | 要解码的 URI 编码字符串 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4411,7 +4447,7 @@ uriHost('<uri>')
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | 是 | 字符串 | 需要获取其 `host` 值的 URI |
+| <*uri*> | 是 | String | 需要获取其 `host` 值的 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4531,7 +4567,7 @@ uriQuery('<uri>')
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | 是 | 字符串 | 需要获取其 `query` 值的 URI |
+| <*uri*> | 是 | String | 需要获取其 `query` 值的 URI |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4592,14 +4628,14 @@ utcNow('<format>')
 另外，也可以使用 <*format*> 参数指定不同的格式。
 
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | 否 | 字符串 | [单一格式的说明符](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式是 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy yyyy-mm-ddthh： MM： ss'.'fffffffk) ，它符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 并保留时区信息。 |
+| <*format*> | 否 | String | [单一格式的说明符](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式是 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy yyyy-mm-ddthh： MM： ss'.'fffffffk) ，它符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 并保留时区信息。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*current-timestamp*> | String | 当前日期和时间 |
+| <*current-timestamp*> | 字符串 | 当前日期和时间 |
 ||||
 
 *示例 1*

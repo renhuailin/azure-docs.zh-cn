@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e2f0d62ae6882229cee3ee32e3b362f2b6593da7
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: a262c2b4351c96217001ba42e8c745f7d71c7d45
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199229"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233893"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -205,7 +205,7 @@ Set-AzStorageSyncServerEndpoint `
     - 如果服务器位于防火墙后面，请验证端口 443 是否允许出站。 如果防火墙限制到特定域的流量，请确认可以访问防火墙[文档](./storage-sync-files-firewall-and-proxy.md#firewall)中列出的域。
     - 如果服务器位于代理后面，请按照代理[文档](./storage-sync-files-firewall-and-proxy.md#proxy)中的步骤配置适用于整个计算机或特定于应用的代理设置。
     - 使用 Test-StorageSyncNetworkConnectivity cmdlet 检查服务终结点的网络连接情况。 若要了解详细信息，请参阅[测试服务终结点的网络连接情况](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints)。
-    - 若要在服务器上添加密码套件，请使用组策略或 TLS cmdlet：
+    - 如果在服务器上配置了 TLS 密码套件顺序，则可以使用组策略或 TLS cmdlet 来添加密码套件：
         - 若要使用组策略，请参阅 [使用组策略配置 TLS 密码套件顺序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)。
         - 若要使用 TLS cmdlet，请参阅 [使用 Tls PowerShell Cmdlet 配置 Tls 密码套件顺序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)。
     

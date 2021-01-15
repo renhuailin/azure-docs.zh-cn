@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 0b3c2f74edff661326e97da7b06860914468c43b
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: ec925ce165c1de98fe920381e1b51e3388c1e4ad
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059341"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232397"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 标识平台中可配置的令牌生存期 (预览) 
 
@@ -101,8 +101,7 @@ ID 令牌将传递给网站和本机客户端。 ID 令牌包含有关用户的�
 
 公共客户端无法安全地存储客户端密码（机密）。 例如，iOS/Android 应用不能对资源所有者的机密进行模糊处理，因此被视为公共客户端。 可以针对资源设置策略，防止使用公共客户端中超过指定期限的刷新令牌获取新的访问权限/刷新令牌对。 为此，请使用 " [刷新令牌最大非活动时间" 属性](#refresh-token-max-inactive-time) (`MaxInactiveTime`) 。 还可以使用策略设置一个时间段，超出该时间段后，刷新令牌不再被接受。 为此，请使用 " [单因素刷新令牌最大期限](#single-factor-session-token-max-age) " 或 " [多因素会话令牌最大期限](#multi-factor-refresh-token-max-age) " 属性。 可以调整刷新令牌的生存期，控制用户在使用公共客户端应用程序时，需要重新输入凭据而不是以无提示方式重新进行身份验证的时间和频率。
 
-> [!NOTE]
-> "最大期限" 属性是可以使用单个令牌的时间长度。 
+"最大期限" 属性是可以使用单个令牌的时间长度。 
 
 ### <a name="single-sign-on-session-tokens"></a>单一登录会话令牌
 当用户使用 Microsoft 标识平台进行身份验证时， (SSO) 的单一登录会话将与用户的浏览器和 Microsoft 标识平台建立在一起。 SSO 令牌采用 Cookie 形式，代表此会话。 SSO 会话令牌未绑定到特定的资源/客户端应用程序。 SSO 会话令牌可以吊销，每次使用它们时，系统都会检查其有效性。
@@ -127,7 +126,7 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 
 * <sup>1</sup>365 天是可针对这些属性设置的最大显式时间长短。
 
-#### <a name="exceptions"></a>异常
+#### <a name="exceptions"></a>例外
 | 属性 | 影响 | 默认 |
 | --- | --- | --- |
 | 刷新令牌最大期限（针对吊销信息不足的联合用户颁发<sup>1</sup>） |刷新令牌（针对吊销信息不足的联合用户颁发<sup>1</sup>） |12 小时 |

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: b11bdf9b82352c15b7f7236168494f32fe4a4f9f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 280b3cbef8307691b0d50c4a26f6dca18b7fb65b
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221504"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233859"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>虚拟机网络带宽
 
@@ -52,15 +52,13 @@ Azure 虚拟机必须有一个（但也可能有多个）连接的网络接口�
 
 ![通过转发设备进行的 TCP 对话的流计数](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
-## <a name="flow-limits-and-recommendations"></a>流限制和建议
+## <a name="flow-limits-and-active-connections-recommendations"></a>流限制和活动连接建议
 
-目前，Azure 网络堆栈支持网络流总计为 250K 且为 CPU 核心数大于 8 的 VM 提供良好性能的方案，以及网络流总计为 100k 且为 CPU 核心数小于 8 的 VM 提供良好性能的方案。 超过此限制后，由于超出的流量，网络性能会正常下降，直到达到 500K 总流量（250K 入站流量和 250K 出站流量）的硬限制，然后丢弃超出的流量。
+如今，Azure 网络堆栈支持 1M total flow (50 万个入站和50万个出站) 用于 VM。 VM 可以在不同方案中处理的活动连接总数如下所示。
+- 属于 VNET 的 Vm 可以 _*_在每个方向_*_ 上处理具有50万个活动流的所有 VM 大小的50万个 **_活动连接数_*。  
+- 如果 Vm 具有网络虚拟设备 (Nva) 例如网关、代理、防火墙，则可以 *_在每个方向_* 上处理与50万个 _ 活动流的 250k _*_活动连接_*_*，因为在新连接设置到下一跃点时，将会进行转发和其他新的流程创建。 
 
-| 性能级别 | CPU 核心数 <8 的 VM | CPU 核心数 >8 的 VM |
-| ----------------- | --------------------- | --------------------- |
-|<b>性能良好</b>|100K 流 |250K 流|
-|<b>性能下降</b>|大于 100k 流|大于 250K 流|
-|<b>流限制</b>|500K 流|500K 流|
+一旦达到此限制，就会删除其他连接。 连接建立速度和终止速度也可能影响网络性能，因为连接的建立和终止与包处理例程共享 CPU。 建议针对预期的流量模式对工作负荷进行基准测试，并根据性能需要对工作负荷进行相应的横向扩展。
 
 [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) 中提供的指标用于跟踪 VM 或 VMSS 实例上的网络流数和流创建速率。
 

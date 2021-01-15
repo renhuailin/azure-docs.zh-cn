@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 7be326e0f01ed6a00244c0f5b9ed6a960b2b6e0b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 50fd5641c61d08939eca1f2cbafb1d077254e37d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "86171850"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233264"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 后端连接功能中的互操作性：测试配置详细信息
 
@@ -33,7 +33,7 @@ ms.locfileid: "86171850"
 
 ## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>使用站点到站点 VPN 建立分支 VNet 连接
 
-使用 Azure VPN 网关中的 VPN 网关在中心与分支 VNet 之间建立站点到站点 VPN 连接。 默认情况下，VPN 网关和 Azure ExpressRoute 网关使用专用自治系统编号 (ASN) 值 **65515** 。 可在 VPN 网关中更改 ASN 值。 在测试设置中，分支 VNet VPN 网关的 ASN 值将更改为 **65516** ，以支持中心与分支 VNet 之间的 eBGP 路由。
+使用 Azure VPN 网关中的 VPN 网关在中心与分支 VNet 之间建立站点到站点 VPN 连接。 默认情况下，VPN 网关和 Azure ExpressRoute 网关使用专用自治系统编号 (ASN) 值 **65515**。 可在 VPN 网关中更改 ASN 值。 在测试设置中，分支 VNet VPN 网关的 ASN 值将更改为 **65516**，以支持中心与分支 VNet 之间的 eBGP 路由。
 
 
 [![3]][3]
@@ -217,18 +217,15 @@ ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的
 [8]: ./media/backend-interoperability/ExR2-Remote-Connection.png "ExpressRoute 2 到远程 VNet ExR 网关的连接配置"
 
 <!--Link References-->
-[Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface
-[ExpressRoute]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction
-[VPN]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways
-[VNet]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal
-[Configuration]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-configuration
-[Control-Analysis]:https://docs.microsoft.com/azure/networking/connectivty-interoperability-control-plane
-[Data-Analysis]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-data-plane
-[ExR-FAQ]: https://docs.microsoft.com/azure/expressroute/expressroute-faqs
-[S2S-Over-ExR]: https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering
-[ExR-S2S-CoEx]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager
-[Hub-n-Spoke]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
-[Deploy-NVA]: https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha
-[VNet-Config]: https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering
-
-
+[Setup]: ./connectivty-interoperability-preface.md
+[ExpressRoute]: ../expressroute/expressroute-introduction.md
+[VPN]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+[VNet]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+[Control-Analysis]: ./connectivty-interoperability-control-plane.md
+[Data-Analysis]: ./connectivty-interoperability-data-plane.md
+[ExR-FAQ]: ../expressroute/expressroute-faqs.md
+[S2S-Over-ExR]: ../expressroute/site-to-site-vpn-over-microsoft-peering.md
+[ExR-S2S-CoEx]: ../expressroute/expressroute-howto-coexist-resource-manager.md
+[Hub-n-Spoke]: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+[Deploy-NVA]: /azure/architecture/reference-architectures/dmz/nva-ha
+[VNet-Config]: ../virtual-network/virtual-network-manage-peering.md

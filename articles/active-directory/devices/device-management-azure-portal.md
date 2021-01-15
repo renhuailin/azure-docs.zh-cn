@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f142aa4ca203a65c45741f87853579ca60e1879
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 1a735817f59e43e1a9e5d2a513f1ad397f18aab8
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831748"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232312"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 门户管理设备标识
 
@@ -132,7 +132,7 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 - 相容状态
 - 联接类型 (Azure AD 联接，混合 Azure AD 联接，Azure AD 注册) 
 - 活动时间戳
-- 操作系统
+- OS
 - 设备类型 (打印机、安全 Vm、共享设备、已注册设备) 
 
 若要在 " **所有设备** " 视图中启用预览筛选功能：
@@ -165,10 +165,10 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 
 - **已加入 Azure AD 设备上的其他本地管理员** - 可选择具有此设备的本地管理员权限的用户。 将这些用户添加到 Azure AD 中的 " *设备管理员* " 角色。 默认情况下，Azure AD 中的全局管理员和设备所有者均具有本地管理员权限。 此选项属于高级版功能，通过 Azure AD Premium 或企业移动性套件 (EMS) 提供。
 - **用户可能将其设备注册到 Azure AD** -需要配置此设置，以允许向 Azure AD 注册 Windows 10 个人、IOS、Android 和 macOS 设备。 如果选择 " **无**"，则不允许设备注册 Azure AD。 注册 Microsoft Intune 或移动设备管理 (MDM) Microsoft 365 需要注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用。
-- **需要多重身份验证才能加入设备** -可以选择用户是否需要提供额外的身份验证因素来加入或注册其设备以 Azure AD。 默认值为 No。 建议在注册或加入设备时需要多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关不同 Azure AD 多重身份验证服务的详细信息，请参阅 [Azure AD 多重身份验证](../authentication/concept-mfa-howitworks.md)入门。 
+- **要 Azure AD 加入或 Azure AD 注册的设备需要多重身份验证** -你可以选择是否要求用户提供附加身份验证因素来加入或注册其设备到 Azure AD。 默认值为 No。 建议在注册或加入设备时需要多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关不同 Azure AD 多重身份验证服务的详细信息，请参阅 [Azure AD 多重身份验证](../authentication/concept-mfa-howitworks.md)入门。 
 
 > [!NOTE]
-> **需要多重身份验证加入设备** "设置适用于 Azure AD 联接 (的设备，) 或 Azure AD 注册了一些例外。 此设置不适用于混合 Azure AD 联接的设备、 [Azure AD 在 Azure 中加入的 vm](/azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows#enabling-azure-ad-login-in-for-windows-vm-in-azure) ，以及使用 [Windows Autopilot 自助部署模式](/mem/autopilot/self-deploying)Azure AD 加入的设备。
+> **要 Azure AD 加入或 Azure AD 注册的设备需要多重身份验证** 设置，适用于 Azure AD 联接 (但已注册的一些例外) 或 Azure AD 注册的设备。 此设置不适用于混合 Azure AD 联接的设备、 [Azure AD 在 Azure 中加入的 vm](/azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows#enabling-azure-ad-login-in-for-windows-vm-in-azure) ，以及使用 [Windows Autopilot 自助部署模式](/mem/autopilot/self-deploying)Azure AD 加入的设备。
 
 - **最大设备数** -通过此设置，可以选择用户可以在 Azure AD 中具有的 Azure AD 联接或 Azure AD 注册设备的最大数量。 如果用户达到此配额，则必须先删除一个或多个现有设备，然后才可添加其他设备。 默认值为 **50**。
 
@@ -202,7 +202,7 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 
 要将所报告数据的范围缩小到适当的级别，可以使用以下字段筛选审核数据：
 
-- Category
+- 类别
 - 活动资源类型
 - 活动
 - 日期范围

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: e8b1d985fcb2852df52382e005ec0f0266e23d9d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aea205bee41aed232b8453417dca521d2dfc83ab
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345638"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233774"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker 疑难解答
 
@@ -325,6 +325,29 @@ QnA 对在知识库中，可以编辑答案的 markdown 文本，使其包含可
 1. 访问知识库，验证它是否正常工作。
 
 </details>
+<details>
+<summary><b>为什么 Application Insights 不起作用？</b></summary>
+
+**回答**：请交叉检查并更新以下步骤来解决此问题：
+
+1. 在应用服务中-> 设置组-> 配置部分-> 应用程序设置-> 名称 "UserAppInsightsKey" 参数已正确配置，并将其设置为相应的 Application insights 概述选项卡 ( Guid。 
+
+1. 在应用服务中-> 设置组-> "Application Insights" 部分-> 确保已启用 App insights 并连接到相应的 Application insights 资源。
+
+</details>
+
+<details>
+<summary><b>已启用我的 Application Insights，但为什么它不能正常工作？</b></summary>
+
+**答案**：请按照以下给定步骤进行操作： 
+
+1.  如果其中已存在某个值，请通过重写将 "" APPINSIGHTS_INSTRUMENTATIONKEY "name" 的值复制到 "UserAppInsightsKey" 名称。 
+
+1.  如果 "UserAppInsightsKey" 项在应用设置中不存在，请使用该名称添加新密钥并复制值。
+
+1.  保存它，这将自动重启应用服务。 这应该会解决此问题。 
+
+</details>
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
@@ -383,7 +406,7 @@ QnA 对在知识库中，可以编辑答案的 markdown 文本，使其包含可
 **答**：您需要了解有关知识库的下列信息：
 
 * 知识库 ID。
-* 在发布后，在 "设置" 页上找到了知识库的已发布终结点自定义子域名称（称为 `host` ）。 **Settings**
+* 在发布后，在 "设置" 页上找到了知识库的已发布终结点自定义子域名称（称为 `host` ）。 
 * 知识库的已发布终结点项-发布后在 " **设置** " 页上找到。
 
 有关此信息，请在 Azure 门户中转到机器人的应用服务。 在 **设置-> 配置-> 应用程序设置** 中，更改这些值。
@@ -432,7 +455,7 @@ QnA 对在知识库中，可以编辑答案的 markdown 文本，使其包含可
 **答**：您需要了解有关知识库的下列信息：
 
 * 知识库 ID。
-* 在发布后，在 "设置" 页上找到了知识库的已发布终结点自定义子域名称（称为 `host` ）。 **Settings**
+* 在发布后，在 "设置" 页上找到了知识库的已发布终结点自定义子域名称（称为 `host` ）。 
 * 知识库的已发布终结点项-发布后在 " **设置** " 页上找到。
 
 有关此信息，请在 Azure 门户中转到机器人的应用服务。 在 **设置-> 配置-> 应用程序设置** 中，更改这些值。

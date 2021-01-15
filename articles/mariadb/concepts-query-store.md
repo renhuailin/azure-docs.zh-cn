@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bca995f8b2cea33266e032b543abb18ee7140f3f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/15/2021
+ms.openlocfilehash: 164285b1fea3dce18161066e643aa165e47cc496
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541175"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233980"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>使用查询存储监视 Azure Database for MariaDB 的性能
 
@@ -21,7 +21,7 @@ ms.locfileid: "94541175"
 
 ## <a name="common-scenarios-for-using-query-store"></a>使用查询存储的常见场景
 
-可以在许多场景中使用查询存储，包括：
+可以在许多情况下使用 Query store，其中包括：
 
 - 检测回归查询
 - 确定在给定时间范围内执行查询的次数
@@ -34,14 +34,14 @@ ms.locfileid: "94541175"
 ### <a name="enable-query-store-using-the-azure-portal"></a>使用 Azure 门户启用查询存储
 
 1. 登录到 Azure 门户，选择你的 Azure Database for MariaDB 服务器。
-1. 在菜单的“设置”部分中选择“服务器参数” 。
-1. 搜索 query_store_capture_mode 参数。
-1. 将值设置为 ALL，然后 **保存** 。
+2. 在菜单的“设置”部分中选择“服务器参数” 。
+3. 搜索 query_store_capture_mode 参数。
+4. 将值设置为 ALL，然后 **保存**。
 
 若要在查询存储中启用等待统计信息，请执行以下操作：
 
 1. 搜索 query_store_wait_sampling_capture_mode 参数。
-1. 将值设置为 ALL，然后 **保存** 。
+2. 将值设置为 ALL，然后 **保存**。
 
 留出最多 20 分钟以便第一批数据保存到 mysql 数据库中。
 
@@ -102,15 +102,15 @@ SELECT * FROM mysql.query_store_wait_stats;
 | query_store_wait_sampling_frequency | 更改等待采样的频率，以秒为单位。 5 到 300 秒。 | 30 | 5-300 |
 
 > [!NOTE]
-> 目前， **query_store_capture_mode** 将取代此配置，这意味着， **query_store_capture_mode** 和 **query_store_wait_sampling_capture_mode** 都必须启用 ALL，才能正常查询等待统计信息。 如果关闭 **query_store_capture_mode** ，则等待统计信息也会关闭，因为等待统计信息利用已启用的 performance_schema，以及查询存储捕获的 query_text。
+> 目前，**query_store_capture_mode** 将取代此配置，这意味着，**query_store_capture_mode** 和 **query_store_wait_sampling_capture_mode** 都必须启用 ALL，才能正常查询等待统计信息。 如果关闭 **query_store_capture_mode**，则等待统计信息也会关闭，因为等待统计信息利用已启用的 performance_schema，以及查询存储捕获的 query_text。
 
 使用 [Azure 门户](howto-server-parameters.md)获取或设置参数的不同值。
 
 ## <a name="views-and-functions"></a>视图和函数
 
-使用以下视图和函数查看并管理查询存储。 具有[选择权限公共角色](howto-create-users.md#create-additional-admin-users)的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 **mysql** 数据库中提供。
+使用以下视图和函数查看并管理查询存储。 具有[选择权限公共角色](howto-create-users.md#create-more-admin-users)的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 **mysql** 数据库中提供。
 
-删除文本和常数后，通过查看查询的结构来规范化查询。 如果除文本值之外两个查询相同，则它们将具有相同的哈希值。
+删除文本和常数后，通过查看查询的结构来规范化查询。 如果两个查询（文本值除外）相同，则它们具有相同的哈希。
 
 ### <a name="mysqlquery_store"></a>mysql.query_store
 
@@ -123,14 +123,14 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `timestamp_id` | timestamp| 是| 执行查询时的时间戳。 此值基于 query_store_interval 配置|
 | `query_digest_text`| longtext| 是| 删除所有文本后的规范化查询文本|
 | `query_sample_text` | longtext| 是| 首次出现的包含文本的实际查询|
-| `query_digest_truncated` | bit| YES| 查询文本是否已截断。 如果查询超过 1 KB，则值为 Yes|
+| `query_digest_truncated` | bit| 是| 查询文本是否已截断。 如果查询超过 1 KB，则值为 Yes|
 | `execution_count` | bigint(20)| 是| 针对此时间戳 ID/在配置的间隔时间段内执行该查询的次数|
 | `warning_count` | bigint(20)| 是| 此查询在该时间间隔内生成的警告数|
 | `error_count` | bigint(20)| 是| 此查询在该时间间隔内生成的错误数|
-| `sum_timer_wait` | Double| YES| 此查询在该时间间隔内的总执行时间|
-| `avg_timer_wait` | Double| YES| 此查询在该时间间隔内的平均执行时间|
-| `min_timer_wait` | Double| YES| 此查询的最小执行时间|
-| `max_timer_wait` | Double| YES| 最大执行时间|
+| `sum_timer_wait` | double| 是| 此查询在该时间间隔内的总执行时间|
+| `avg_timer_wait` | double| 是| 此查询在该时间间隔内的平均执行时间|
+| `min_timer_wait` | double| 是| 此查询的最小执行时间|
+| `max_timer_wait` | double| 是| 最大执行时间|
 | `sum_lock_time` | bigint(20)| 是| 在此时间范围内对此查询执行的所有锁花费的总时间|
 | `sum_rows_affected` | bigint(20)| 是| 受影响的行数|
 | `sum_rows_sent` | bigint(20)| 是| 发送到客户端的行数|
@@ -138,8 +138,8 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `sum_select_full_join` | bigint(20)| 是| 完整联接的数目|
 | `sum_select_scan` | bigint(20)| 是| select 扫描数 |
 | `sum_sort_rows` | bigint(20)| 是| 排序的行数|
-| `sum_no_index_used` | bigint(20)| 是| 查询未使用任何索引的次数|
-| `sum_no_good_index_used` | bigint(20)| 是| 查询执行引擎未使用任何适当索引的次数|
+| `sum_no_index_used` | bigint(20)| 是| 查询不使用任何索引的次数|
+| `sum_no_good_index_used` | bigint(20)| 是| 查询执行引擎未使用任何良好索引的次数|
 | `sum_created_tmp_tables` | bigint(20)| 是| 创建的临时表总数|
 | `sum_created_tmp_disk_tables` | bigint(20)| 是| 在磁盘中创建的临时表总数（生成 I/O）|
 | `first_seen` | timestamp| 是| 在聚合时段发生第一次查询的时间 (UTC)|
@@ -147,7 +147,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
-此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有一行。
+此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有对应的一行。
 
 | **名称**| **数据类型** | **IS_NULLABLE** | **说明** |
 |---|---|---|---|
@@ -159,7 +159,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `event_type` | varchar(32) | 是| 等待事件的类别 |
 | `event_name` | varchar(128) | 是| 等待事件的名称 |
 | `count_star` | bigint(20) | 是| 在查询间隔内采样的等待事件数 |
-| `sum_timer_wait_ms` | Double | 是| 此查询在该时间间隔内的总等待时间（以毫秒为单位） |
+| `sum_timer_wait_ms` | double | 是| 此查询在该时间间隔内的总等待时间（以毫秒为单位） |
 
 ### <a name="functions"></a>函数
 
@@ -171,7 +171,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="limitations-and-known-issues"></a>限制和已知问题
 
-- 如果 MariaDB 服务器启用了参数 `default_transaction_read_only`，查询存储将无法捕获数据。
+- 如果 MariaDB 服务器上有参数 `default_transaction_read_only` ，查询存储无法捕获数据。
 - 如果遇到较长的 Unicode 查询（\>= 6000 个字节），查询存储功能可能会中断。
 - 等待统计信息的保留期为 24 小时。
 - 等待统计信息使用样本来捕获一部分事件。 可以使用参数 `query_store_wait_sampling_frequency` 来修改频率。

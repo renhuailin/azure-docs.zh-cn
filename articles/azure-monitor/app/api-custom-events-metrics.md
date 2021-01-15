@@ -4,12 +4,12 @@ description: 在设备、桌面应用、网页或服务中插入几行代码，�
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ae64888669fb9a3c053802ee4f7ad7db6316265d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780495"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233740"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -146,7 +146,9 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Analytics 中的自定义事件
 
-[Application Insights Analytics](../log-query/log-query-overview.md) 的 `customEvents` 表格提供了遥测。 每行表示对应用中 `trackEvent(..)` 的调用。
+遥测数据在 `customEvents` [Application Insights 日志 "选项卡](../log-query/log-query-overview.md) 或 [使用体验](usage-overview.md)的表中可用。 事件可能来自 `trackEvent(..)` 或 [单击 "分析自动收集插件"](javascript-click-analytics-plugin.md)。
+
+ 
 
 如果正在进行[采样](./sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 若要获取自定义事件的正确计数，应使用 `customEvents | summarize sum(itemCount)` 之类的代码。
 
@@ -1122,4 +1124,3 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 * [搜索事件和日志](./diagnostic-search.md)
 * [故障排除](../faq.md)
-

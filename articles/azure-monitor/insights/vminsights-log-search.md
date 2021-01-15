@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 118bdcb6929abfc162ff05e91f1621f087b6c50c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ae0bc6ea35d5c6e3ebe0cd7f232e5c8b1e637d9d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186722"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234046"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>如何从用于 VM 的 Azure Monitor 查询日志
 
@@ -47,7 +47,7 @@ ms.locfileid: "96186722"
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内对以下属性共用相同值的物理网络连接聚合到 VMConnection 中的一个逻辑记录内。 
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--|:--|
 |方向 |连接方向，值为 *inbound* 或 *outbound* |
 |计算机 |计算机 FQDN |
@@ -59,7 +59,7 @@ ms.locfileid: "96186722"
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--|:--|
 |LinksEstablished |在报告时间范围内建立的物理网络连接数 |
 |LinksTerminated |在报告时间范围内终止的物理网络连接数 |
@@ -70,7 +70,7 @@ ms.locfileid: "96186722"
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--|:--|
 |BytesSent |在报告时间范围内发送的字节总数 |
 |BytesReceived |在报告时间范围内接收的字节总数 |
@@ -92,13 +92,13 @@ ms.locfileid: "96186722"
 
 #### <a name="naming-and-classification"></a>命名和分类
 
-为提供方便，RemoteIp 属性中包含了连接的远程端的 IP 地址。 对于入站连接，RemoteIp 与 SourceIp 相同；对于出站连接，RemoteIp 与 DestinationIp 相同。 RemoteDnsCanonicalNames 属性表示计算机针对 RemoteIp 报告的 DNS 规范名称。 RemoteDnsQuestions 和 RemoteClassification 属性保留供将来使用。 
+为提供方便，RemoteIp 属性中包含了连接的远程端的 IP 地址。 对于入站连接，RemoteIp 与 SourceIp 相同；对于出站连接，RemoteIp 与 DestinationIp 相同。 RemoteDnsCanonicalNames 属性表示计算机针对 RemoteIp 报告的 DNS 规范名称。 RemoteDnsQuestions 属性表示计算机为 RemoteIp 报告的 DNS 问题。 RemoveClassification 属性保留供将来使用。 
 
 #### <a name="geolocation"></a>地理位置
 
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--|:--|
 |RemoteCountry |托管 RemoteIp 的国家/地区的名称。  例如， *美国* |
 |RemoteLatitude |地理位置的纬度。 例如 *47.68* |
@@ -108,7 +108,7 @@ ms.locfileid: "96186722"
 
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--|:--|
 |MaliciousIp |RemoteIp 地址 |
 |IndicatorThreadType |检测到的威胁标志是以下值之一：Botnet、C2、CryptoMining、Darknet、DDos、MaliciousUrl、Malware、Phishing、Proxy、PUA 和 Watchlist。   |
@@ -128,7 +128,7 @@ ms.locfileid: "96186722"
 
 VMBoundPort 中的每个记录按以下字段标识： 
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--|:--|
 |进程 | 标识与端口关联的进程（或进程组）。|
 |Ip | 端口 IP 地址（可以是通配符 IP *0.0.0.0*） |
@@ -156,7 +156,7 @@ VMBoundPort 中的每个记录按以下字段标识：
 
 类型为 *VMComputer* 的记录具有具有依赖关系代理的服务器的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *Insights* | 
@@ -218,7 +218,7 @@ VMBoundPort 中的每个记录按以下字段标识：
 
 类型为 *VMProcess* 的记录具有具有依赖关系代理的服务器上的 TCP 连接进程的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *Insights* | 
@@ -230,7 +230,7 @@ VMBoundPort 中的每个记录按以下字段标识：
 |ExecutableName | 进程可执行文件的名称 | 
 |DisplayName | 进程显示名称 |
 |角色 | 进程角色： *web* 服务器、 *microsoft.windows.appserver.2008*、 *databaseServer*、 *ldapServer*、 *smbServer* |
-|组 | 进程组名称。 同一组中的进程在逻辑上是相关的，例如同一个产品或系统组件的一部分。 |
+|Group | 进程组名称。 同一组中的进程在逻辑上是相关的，例如同一个产品或系统组件的一部分。 |
 |StartTime | 进程池启动时间 |
 |FirstPid | 进程池中的第一个 PID |
 |说明 | 进程说明 |
@@ -434,7 +434,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 类型为 *InsightsMetrics* 的记录包含来自虚拟机的来宾操作系统的性能数据。 这些记录的属性在下表中列出：
 
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *Insights* | 

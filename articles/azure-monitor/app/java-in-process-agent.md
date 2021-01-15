@@ -1,27 +1,27 @@
 ---
 title: Azure Monitor Application Insights Java
-description: Java 应用程序的应用程序性能监视，无需修改代码即可在任何环境中运行。 分布式跟踪和应用程序映射。
+description: 无需修改代码即可监视在任何环境中运行的 Java 应用程序的应用程序性能。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
 ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 2011d013cce43eaf471d61936d5c34c318360381
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 32d906bf96a0ad5cf798f68bf83f2d6af1064361
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616637"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231734"
 ---
-# <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java 无代码置备应用程序监视 Azure Monitor Application Insights
+# <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java 无代码应用程序监视 Azure Monitor Application Insights
 
 Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，只需更改几个配置即可启用 Java 代理。
 
  Java 代理可在任何环境中正常工作，并允许你监视所有 Java 应用程序。 换句话说，无论你是在 VM 上、本地、AKS 中还是在 Windows、Linux 上运行 Java 应用，不管什么位置，Java 3.0 代理都可以监视你的应用。
 
-不再需要将 Application Insights Java SDK 添加到应用程序，因为3.0 代理会自动收集所有请求、依赖项和日志。
+不再需要将 Application Insights Java SDK 添加到你的应用程序，因为 3.0 代理会自动收集请求、依赖项并自行记录所有内容。
 
-你仍可以从应用程序发送自定义遥测。 3.0 agent 将跟踪该代理，并将其与所有自动收集的遥测数据相关联。
+你仍可以从应用程序发送自定义遥测。 3\.0 代理会跟踪它并将它与所有自动收集的遥测数据相关联。
 
 3\.0 代理支持 Java 8 及更高版本。
 
@@ -30,19 +30,19 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 **1.下载代理**
 
 > [!WARNING]
-> **如果要从3.0 预览版升级**
+> **如果要从 3.0 预览版升级**
 >
-> 请仔细检查所有 [配置选项](./java-standalone-config.md) ，因为 json 结构已完全更改，而文件名本身则以全部小写。
+> 请仔细检查所有的[配置选项](./java-standalone-config.md)，因为除了文件名本身全部变为小写外，json 结构也已完全改变。
 
-下载 [applicationinsights-agent-3.0.0](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0/applicationinsights-agent-3.0.0.jar)
+下载 [applicationinsights-agent-3.0.1 .jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.1/applicationinsights-agent-3.0.1.jar)
 
 **2.将 JVM 指向该代理**
 
-将 `-javaagent:path/to/applicationinsights-agent-3.0.0.jar` 添加到应用程序的 JVM 参数
+将 `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` 添加到应用程序的 JVM 参数
 
 典型的 JVM 参数包括 `-Xmx512m` 和 `-XX:+UseG1GC`。 如果你知道在何处添加这些参数，则你已知道要将此项添加到何处。
 
-有关配置应用程序的 JVM 参数的其他帮助，请参阅 [更新 JVM 参数的技巧](./java-standalone-arguments.md)。
+有关配置应用程序 JVM 参数的其他帮助，请参阅[更新 JVM 参数的技巧](./java-standalone-arguments.md)。
 
 **3.将代理指向 Application Insights 资源**
 
@@ -54,7 +54,7 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-另一种方法是创建一个名为 `applicationinsights.json` 的配置文件，并将其置于 `applicationinsights-agent-3.0.0.jar` 所在的目录中，该文件包含以下内容：
+另一种方法是创建一个名为 `applicationinsights.json` 的配置文件，并将其置于 `applicationinsights-agent-3.0.1.jar` 所在的目录中，该文件包含以下内容：
 
 ```json
 {
@@ -83,14 +83,14 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 * 采样
 * JMX 指标
 * 自定义维度
-*  (预览版的遥测处理器) 
+* 遥测处理器（预览版）
 * 自动收集的日志记录
-* 自动收集的 Micrometer 指标 (包括弹簧 Boot 制动器指标) 
+* 自动收集的 Micrometer 指标（包括 Spring Boot Actuator 指标）
 * 检测信号
 * HTTP 代理
 * 自我诊断
 
-有关完整详细信息，请参阅 [配置选项](./java-standalone-config.md) 。
+如需完整的详细信息，请参阅[配置选项](./java-standalone-config.md)。
 
 ## <a name="auto-collected-requests-dependencies-logs-and-metrics"></a>自动收集的请求、依赖项、日志和指标
 
@@ -255,7 +255,7 @@ try {
 ### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>使用 2.x SDK 添加请求自定义维度
 
 > [!NOTE]
-> 此功能仅在3.0.1 版和更高版本中
+> 此功能仅在3.0.1 和更高版本中
 
 将 `applicationinsights-web-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
 
@@ -279,7 +279,7 @@ requestTelemetry.getProperties().put("mydimension", "myvalue");
 ### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>使用 2.x SDK 设置请求遥测 user_Id
 
 > [!NOTE]
-> 此功能仅在3.0.1 版和更高版本中
+> 此功能仅在3.0.1 和更高版本中
 
 将 `applicationinsights-web-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
 
@@ -303,7 +303,7 @@ requestTelemetry.getContext().getUser().setId("myuser");
 ### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>使用 2.x SDK 替代请求遥测名称
 
 > [!NOTE]
-> 此功能仅在3.0.1 版和更高版本中
+> 此功能仅在3.0.1 和更高版本中
 
 将 `applicationinsights-web-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
 

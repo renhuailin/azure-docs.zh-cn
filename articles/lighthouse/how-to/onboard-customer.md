@@ -1,14 +1,14 @@
 ---
 title: 将客户加入 Azure Lighthouse
 description: 了解如何将客户加入 Azure Lighthouse，从而允许使用 Azure 委派的资源管理通过自己的租户访问和管理其资源。
-ms.date: 12/15/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516128"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232669"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>将客户加入 Azure Lighthouse
 
@@ -62,14 +62,17 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>定义角色和权限
 
-作为服务提供商，你可能想要为单个客户执行多个任务，这需要针对不同范围的不同访问权限。 你可以根据需要定义任意数量的授权，以便将适当的 [Azure 内置角色](../../role-based-access-control/built-in-roles.md) 分配给租户中的用户。
+作为服务提供商，你可能想要为单个客户执行多个任务，这需要针对不同范围的不同访问权限。 你可以根据需要定义任意数量的授权，以便分配适当的 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。 每个授权都包含一个 **principalId** ，它引用管理租户中的 Azure AD 用户、组或服务主体。
 
-为了更轻松地进行管理，我们建议为每个角色使用 Azure AD 用户组。 这样，你可以灵活地在组中添加或删除单个用户，这样就无需重复载入过程来进行用户更改。 可以将角色分配给服务主体，这对于自动化方案非常有用。
+> [!NOTE]
+> 除非显式指定，否则 Azure Lighthouse 文档中的 "用户" 引用将应用于授权中 Azure AD 的用户、组或服务主体。
+
+为了更轻松地进行管理，我们建议尽可能使用每个角色 Azure AD 用户组，而不是单个用户。 这样，你可以灵活地在组中添加或删除单个用户，这样就无需重复载入过程来进行用户更改。 你还可以将角色分配给服务主体，这对于自动化方案非常有用。
 
 > [!IMPORTANT]
 > 若要为 Azure AD 组添加权限，则必须将 " **组类型** " 设置为 " **安全**"。 此选项是在创建组时选择的。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-定义授权时，请确保遵循最低权限原则，使用户仅具有完成工作所需的权限。 有关支持的角色的指导和信息，请参阅 [Azure Lighthouse 方案中的租户、用户和角色](../concepts/tenants-users-roles.md)。
+定义授权时，请确保遵循最低权限原则，使用户仅具有完成工作所需的权限。 有关支持的角色和最佳做法的信息，请参阅 [Azure Lighthouse 方案中的租户、用户和角色](../concepts/tenants-users-roles.md)。
 
 若要定义授权，需要知道要向其授予访问权限的服务提供商租户中的每个用户、用户组或服务主体的 ID 值。 还需知道要分配的每个内置角色的角色定义 ID。 如果尚未获得这些 ID，可以从服务提供商租户内运行以下命令来检索它们。
 
@@ -195,7 +198,7 @@ az role definition list --name "<roleName>" | grep name
 }
 ```
 
-上面示例中的最后一个授权添加了具有用户访问管理员角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 principalId。 分配此角色时，必须包含 delegatedRoleDefinitionIds 属性和一个/多个内置角色。 在此授权中创建的用户能够将这些内置角色分配到客户租户中的 [托管标识](../../active-directory/managed-identities-azure-resources/overview.md) ，这是 [部署可修正的策略](deploy-policy-remediation.md)所必需的。  用户还可以创建支持事件。  通常与用户访问管理员角色关联的其他权限均不适用于此用户。
+上面示例中的最后一个授权添加了具有用户访问管理员角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 principalId。 分配此角色时，必须包含 **delegatedRoleDefinitionIds** 属性和一个或多个受支持的 Azure 内置角色。 在此授权中创建的用户能够将这些角色分配到客户租户中的 [托管标识](../../active-directory/managed-identities-azure-resources/overview.md) ，这是 [部署可修正的策略](deploy-policy-remediation.md)所必需的。  用户还可以创建支持事件。 通常，不会将任何其他与用户访问管理员角色关联的权限应用于此 **principalId**。
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>部署 Azure 资源管理器模板
 
@@ -278,7 +281,7 @@ az deployment sub create --name <deploymentName> \
 3. 确认可使用在资源管理器模板中提供的产品/服务名称查看订阅。
 
 > [!NOTE]
-> 部署完成后，可能需要几分钟时间才能在 Azure 门户中显示更新。
+> 完成部署后，可能需要长达15分钟的时间才能在 Azure 门户中反映更新。 如果通过刷新浏览器、登录和注销或请求新令牌来更新 Azure 资源管理器令牌，则可以更快地查看更新。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -303,7 +306,7 @@ az account list
 
 如果在载入客户后需要进行更改，则可以 [更新委派](update-delegation.md)。 你还可以完全 [删除对委派的访问权限](remove-delegation.md) 。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果无法成功加入你的客户，或者如果你的用户访问委派的资源时遇到问题，请查看以下提示和要求，然后重试。
 
@@ -312,6 +315,7 @@ az account list
 - 必须为委派的订阅注册 **ManagedServices** 资源提供程序。 这应该在部署期间自动发生，但如果不是，则可以 [手动注册](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
 - 授权不得包含具有 [所有者](../../role-based-access-control/built-in-roles.md#owner) 内置角色的任何用户或具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions)的任何内置角色。
 - 必须创建组，将 [**组类型**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) 设置为 **安全** 组，而不是 **Microsoft 365**。
+- 在对 [嵌套组](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)启用访问权限之前，可能会有额外的延迟。
 - 需要在 Azure 门户中查看资源的用户必须具有 (的 " [读取](../../role-based-access-control/built-in-roles.md#reader) 者" 角色或其他包含读者访问) 的内置角色。
 
 ## <a name="next-steps"></a>后续步骤

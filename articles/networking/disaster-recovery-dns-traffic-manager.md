@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cb1a490ac8edf2630253b45d99c3394bbe721b8
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74483538"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234148"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>使用 Azure DNS 和流量管理器进行灾难恢复
 
@@ -45,7 +45,7 @@ ms.locfileid: "74483538"
     
     图：使用热备用的主动/被动灾难恢复配置 
     
-若要详细了解故障转移和高可用性，请参阅 [Azure 应用程序灾难恢复](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications)。
+若要详细了解故障转移和高可用性，请参阅 [Azure 应用程序灾难恢复](/azure/architecture/resiliency/disaster-recovery-azure-applications)。
 
 
 ## <a name="planning-your-disaster-recovery-architecture"></a>规划灾难恢复体系结构
@@ -54,7 +54,7 @@ ms.locfileid: "74483538"
 -  使用部署机制在主环境和备用环境之间复制实例、数据和配置。 这种灾难恢复可通过 Microsoft Azure 合作伙伴设备/服务（如 Veritas 或 NetApp）使用 Azure Site Recovery 在本机完成。 
 - 开发一种将网络/Web 流量从主站点转移到备用站点的解决方案。 这种灾难恢复可通过 Azure DNS、Azure 流量管理器 (DNS) 或第三方全局负载均衡器实现。
 
-本文只介绍了网络和 Web 流量重定向方法。 若要了解如何设置 Azure Site Recovery，请参阅 [Azure Site Recovery 文档](https://docs.microsoft.com/azure/site-recovery/)。
+本文只介绍了网络和 Web 流量重定向方法。 若要了解如何设置 Azure Site Recovery，请参阅 [Azure Site Recovery 文档](../site-recovery/index.yml)。
 DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局的，位于数据中心外部，且不受任何区域级或可用性区域 (AZ) 级故障影响。 可以使用基于 DNS 的故障转移机制。在 Azure 中，有两个 DNS 服务可以某种方式完成相同任务，即 Azure DNS（权威 DNS）和 Azure 流量管理器（基于 DNS 的智能流量路由）。 
 
 请务必了解本文为介绍解决方案而广泛使用的一些 DNS 概念：
@@ -68,7 +68,7 @@ DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局�
 
 ![使用 Azure DNS 执行手动故障转移](./media/disaster-recovery-dns-traffic-manager/manual-failover-using-dns.png)
 
-图：使用 Azure DNS 执行手动故障转移**
+图：使用 Azure DNS 执行手动故障转移 
 
 为此解决方案做出了如下假设：
 - 主终结点和辅助终结点使用不经常变化的静态 IP。 假设主站点的 IP 为 100.168.124.44，辅助站点的 IP 为 100.168.124.43。
@@ -84,7 +84,7 @@ DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局�
 
 ![在 Azure 中创建 DNS 区域](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
-图：在 Azure 中创建 DNS 区域**
+图：在 Azure 中创建 DNS 区域 
 
 ### <a name="step-2-create-dns-zone-records"></a>第 2 步：创建 DNS 区域记录
 
@@ -92,7 +92,7 @@ DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局�
 
 ![创建 DNS 区域记录](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
-图：在 Azure 中创建 DNS 区域记录**
+图：在 Azure 中创建 DNS 区域记录 
 
 在此方案中，站点 www\.contoso.com 的 TTL 为 30 分钟，这远低于规定的 RTO，并且指向生产站点 prod.contoso.com。 此配置适用于常规业务操作。 prod.contoso.com 和 dr.contoso.com 的 TTL 已设置为 300 秒或 5 分钟。 可以使用 Azure 监视服务，如 Azure Monitor、Azure App Insights 或任何合作伙伴监视解决方案（如 Dynatrace）。甚至可以使用自行开发的解决方案来监视或检测应用程序级或虚拟基础结构级故障。
 
@@ -102,7 +102,7 @@ DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局�
        
 ![更新 CNAME 记录](./media/disaster-recovery-dns-traffic-manager/update-cname-record.png)
 
-图：在 Azure 中更新 CNAME 记录**
+图：在 Azure 中更新 CNAME 记录 
 
 在 30 分钟内，大多数解析程序都会刷新缓存的区域文件，任何指向 www\.contoso.com 的查询都会重定向到 dr.contoso.com。
 还可以运行下面的 Azure CLI 命令来更改 CNAME 值：
@@ -123,7 +123,7 @@ DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局�
 
 ![使用 Azure 流量管理器执行自动故障转移](./media/disaster-recovery-dns-traffic-manager/automatic-failover-using-traffic-manager.png)
 
-图：使用 Azure 流量管理器执行自动故障转移**
+图：使用 Azure 流量管理器执行自动故障转移 
 
 但是，只有主要区域在主动处理来自用户的网络请求。 只有当主要区域出现服务中断时，次要区域才会激活。 在这种情况下，会将所有新网络请求路由到次要区域。 由于数据库备份几乎是瞬间完成，因此两个负载均衡器都有可对其检查运行状况的 IP，并且实例始终正常运行。借助此拓扑，无需任何手动干预，即可执行低 RTO 的故障转移。 在主要区域发生故障后，次要故障转移区域必须可供立即投入使用。
 此方案非常适合使用 Azure 流量管理器完成，其中内置了可执行各种运行状况检查的探针，包括 http/https 和 TCP。 Azure 流量管理器还包含规则引擎，可以配置为在故障发生时执行故障转移，如下所述。 假设使用流量管理器执行以下解决方案：
@@ -146,36 +146,27 @@ Azure 流量管理器自动故障转移的配置步骤如下：
 
 ### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>第 2 步：在流量管理器配置文件中创建终结点
 
-在这一步，创建指向生产站点和灾难恢复站点的终结点。 此时，选择“类型”**** 作为外部终结点，但如果资源托管在 Azure 中，也可以选择“Azure 终结点”****。 如果选择“Azure 终结点”****，请选择 Azure 分配的“应用服务”**** 或“公共 IP”**** 作为“目标资源”****。 优先级设置为“1”****，因为它是区域 1 的主服务。
+在这一步，创建指向生产站点和灾难恢复站点的终结点。 此时，选择“类型”  作为外部终结点，但如果资源托管在 Azure 中，也可以选择“Azure 终结点”  。 如果选择“Azure 终结点”，请选择 Azure 分配的“应用服务”或“公共 IP”作为“目标资源”。 优先级设置为“1”  ，因为它是区域 1 的主服务。
 同样，也在流量管理器中创建灾难恢复终结点。
 
 ![创建灾难恢复终结点](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)
 
-图：创建灾难恢复终结点**
+图：创建灾难恢复终结点 
 
 ### <a name="step-3-set-up-health-check-and-failover-configuration"></a>第 3 步：设置运行状况检查和故障转移配置
 
-在这一步，将 DNS TTL 设置为 10 秒，大多数面向 Internet 的递归解析程序都采用此设置。 此配置意味着，没有 DNS 解析程序会缓存信息超过 10 秒。 对于终结点监视设置，“路径”当前设置为“/”或根路径，但也可以将终结点设置自定义为评估路径（例如，prod.contoso.com/index）。 下面的示例展示了使用 https**** 作为探测协议。 不过，也可以选用 http**** 或 tcp****。 协议选择取决于最终应用程序。 “探测时间间隔”设置为 10 秒（可启用快速探测），重试次数设置为 3 次。 因此，如果三个连续时间间隔的记录结果都为故障，流量管理器就会通过故障转移复原到第二个终结点。 自动故障转移总时间的计算公式如下：故障转移时间 = TTL + 重试次数 * 探测时间间隔。在此示例中，值为 10 + 3 * 10 = 40 秒（最大）。
-如果重试次数设置为 1 次，且 TTL 设置为 10 秒，那么故障转移时间为 10 + 1 * 10 = 20 秒。 请将重试次数设置为大于 1**** 的值，这样就不可能因误报或任何网络小跳点而执行故障转移。 
+在这一步，将 DNS TTL 设置为 10 秒，大多数面向 Internet 的递归解析程序都采用此设置。 此配置意味着，没有 DNS 解析程序会缓存信息超过 10 秒。 对于终结点监视设置，“路径”当前设置为“/”或根路径，但也可以将终结点设置自定义为评估路径（例如，prod.contoso.com/index）。 下面的示例展示了使用 https  作为探测协议。 不过，也可以选用 http  或 tcp  。 协议选择取决于最终应用程序。 “探测时间间隔”设置为 10 秒（可启用快速探测），重试次数设置为 3 次。 因此，如果三个连续时间间隔的记录结果都为故障，流量管理器就会通过故障转移复原到第二个终结点。 自动故障转移总时间的计算公式如下：故障转移时间 = TTL + 重试次数 * 探测时间间隔。在此示例中，值为 10 + 3 * 10 = 40 秒（最大）。
+如果重试次数设置为 1 次，且 TTL 设置为 10 秒，那么故障转移时间为 10 + 1 * 10 = 20 秒。 请将重试次数设置为大于 1  的值，这样就不可能因误报或任何网络小跳点而执行故障转移。 
 
 
 ![设置运行状况检查](./media/disaster-recovery-dns-traffic-manager/set-up-health-check.png)
 
-图：设置运行状况检查和故障转移配置**
+图：设置运行状况检查和故障转移配置 
 
 ### <a name="how-automatic-failover-works-using-traffic-manager"></a>流量管理器自动故障转移的工作原理
 
-灾难期间，将对主终结点进行探测，并将状态更改为“已降级”****，而灾难恢复站点的状态一直为“联机”****。 默认情况下，流量管理器将所有流量发送到主终结点（优先级最高）。 如果主终结点的状态显示为“已降级”，流量管理器会将流量路由到第二个终结点（只要它保持正常运行）。 可以视需要在流量管理器中配置更多终结点，以用作附加故障转移终结点，或用作负载均衡器在终结点之间共同均衡负载。
+灾难期间，将对主终结点进行探测，并将状态更改为“已降级”  ，而灾难恢复站点的状态一直为“联机”  。 默认情况下，流量管理器将所有流量发送到主终结点（优先级最高）。 如果主终结点的状态显示为“已降级”，流量管理器会将流量路由到第二个终结点（只要它保持正常运行）。 可以视需要在流量管理器中配置更多终结点，以用作附加故障转移终结点，或用作负载均衡器在终结点之间共同均衡负载。
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)。
 - 详细了解 [Azure DNS](../dns/dns-overview.md)。
-
-
-
-
-
-
-
-
-

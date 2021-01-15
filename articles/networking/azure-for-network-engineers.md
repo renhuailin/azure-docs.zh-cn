@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: e13dc868512dba15c5b335c1774aaa540eef8157
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 9a22e58e4407897fb9418cae0ba9f32408cda8e1
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861414"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234199"
 ---
 # <a name="azure-for-network-engineers"></a>面向网络工程师的 Azure
 作为传统网络工程师，你之前负责通过物理资产（例如路由器、交换机、电缆、防火墙）来构建基础设施。 在逻辑层上，你曾经配置过虚拟 LAN (VLAN)、跨树协议 (STP)、路由协议（RIP、OSPF、BGP）。 你曾经使用管理工具和 CLI 来管理你的网络。 云中的网络有所不同，其中的网络终结点是逻辑终结点，很少使用路由协议。 你将使用 Azure 资源管理器 API、Azure CLI 和 PowerShell 来配置和管理 Azure 中的资产。 你将首先了解 Azure 网络的基本租户，从而开始你在云中的网络探索旅程。 
@@ -88,7 +88,6 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 了解[网络安全组][network-security]。
 
 <!--Link References-->
-[VNet]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal
-[vnet-routing]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview
-[network-security]: https://docs.microsoft.com/azure/virtual-network/security-overview
-
+[VNet]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+[vnet-routing]: ../virtual-network/virtual-networks-udr-overview.md
+[network-security]: ../virtual-network/network-security-groups-overview.md

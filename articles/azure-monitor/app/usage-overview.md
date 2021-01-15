@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 进行使用情况分析 | Microsoft do
 description: 了解用户，以及他们将应用用于哪些目的。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532097"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233842"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -20,7 +20,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 通过在应用服务器代码和网页中安装 Application Insights 来获得最佳体验。 应用的客户端和服务器组件将遥测发送回 Azure 门户进行分析。
 
-1. **服务器代码：** 为 [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md) 或[其他](./platforms.md)应用安装适当的模块。
+1. **服务器代码：** 为 [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md) 或 [其他](./platforms.md)应用安装适当的模块。
 
     * 不想安装服务器代码？只需[创建 Azure Application Insights 资源](./create-new-resource.md)。
 
@@ -38,7 +38,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
     若要了解更多用于监视网站的高级配置，请查看 [JavaScript SDK 参考](./javascript.md)一文。
 
-3. **移动应用代码：** 通过[按照此指南操作](../learn/mobile-center-quickstart.md)，使用 App Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights 进行分析。
+3. **移动应用代码：** 通过 [按照此指南操作](../learn/mobile-center-quickstart.md)，使用 App Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights 进行分析。
 
 4. **获取遥测：** 在调试模式下运行项目几分钟，并在“Application Insights”中的“概述”边栏选项卡中查找结果。
 
@@ -54,7 +54,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 “用户和会话”报告按页面或自定义事件筛选数据，并按位置、环境和页面等属性将数据分段。 也可以添加自己的筛选器。
 
-![屏幕捕获显示虚构公司的 "用户概述" 页。](./media/usage-overview/users.png)  
+![屏幕截图，显示虚构公司的“用户概述”页。](./media/usage-overview/users.png)  
 
 右侧的见解指出了数据集中的相关模式。  
 
@@ -65,13 +65,13 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 ## <a name="retention---how-many-users-come-back"></a>保留 - 有多少个回头用户？
 
-保留可帮助你根据特定时间桶内执行某个业务操作的用户队列，了解用户回头使用其应用的频率。 
+保留可帮助你根据特定时间桶内执行某个业务操作的用户队列，了解用户回头使用其应用的频率。 
 
 - 了解哪些特定的功能导致某些用户比其他用户回来得更频繁 
 - 基于真实的用户数据构成假设 
 - 确定产品中是否存在保留问题 
 
-![屏幕捕获显示了 "保持期概述" 页，其中显示了有关用户返回使用其应用的频率的信息。](./media/usage-overview/retention.png) 
+![屏幕截图，显示“保留概述”页，其中显示了有关用户返回使用其应用的频率的信息。](./media/usage-overview/retention.png) 
 
 使用顶部的保留控件可以定义特定的事件和时间范围来计算保留。 中间的图表根据指定的时间范围提供总体保留百分比的视觉表示形式。 底部的图表显示给定时间段内的各个保留。 这种详细程度可让你更细致地了解用户正在做什么，以及哪些因素可能会影响用户回头。  
 
@@ -79,7 +79,9 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 ## <a name="custom-business-events"></a>自定义业务事件
 
-要明确了解用户将应用用于什么目的，可以插入代码行来记录自定义事件。 这些事件可以跟踪任何活动，包括详细的用户操作（例如单击特定的按钮），以及更重要的业务活动（例如购买活动或游戏获胜）。 
+要明确了解用户将应用用于什么目的，可以插入代码行来记录自定义事件。 这些事件可以跟踪任何活动，包括详细的用户操作（例如单击特定的按钮），以及更重要的业务活动（例如购买活动或游戏获胜）。
+
+你还可以使用 [单击分析自动收集插件](javascript-click-analytics-plugin.md) 来收集自定义事件。
 
 尽管在某些情况下页面视图可呈现有用的事件，但一般情况下这些事件并不真实。 用户无需购买产品即可打开产品页面。 
 
@@ -110,7 +112,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 ### <a name="slice-and-dice-events"></a>分解事件
 
 在“用户”、“会话”和“事件”工具中，可按用户、事件名称和属性分解自定义事件。
-![屏幕捕获显示虚构公司的 "用户概述" 页。](./media/usage-overview/users.png)  
+![屏幕截图，显示虚构公司的“用户概述”页。](./media/usage-overview/users.png)  
   
 ## <a name="design-the-telemetry-with-the-app"></a>在应用中设计遥测
 

@@ -1,14 +1,14 @@
 ---
 title: 部署可修正的策略
 description: 若要通过 Azure Lighthouse 部署使用更正任务的策略，需要在客户租户中创建托管标识。
-ms.date: 12/17/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: eb473fe2f589cf719e3944c887d46e75e9e7fdbf
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 01070133241117596bdf2b8e1e7c3fa101fc656c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97670485"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233876"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>部署可以在委派的订阅中修正的策略
 
@@ -19,9 +19,9 @@ ms.locfileid: "97670485"
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>创建一个可以在客户租户中将角色分配给托管标识的用户
 
-将客户加入 Azure Lighthouse 时，请使用 [azure 资源管理器模板](onboard-customer.md#create-an-azure-resource-manager-template) 以及用于定义管理租户中的用户、用户组和服务主体的参数文件，这些用户、用户组和服务主体将能够访问客户租户中的委派资源。 在参数文件中，将为每个此类用户 (**principalId**) 分配一个用于定义访问级别的 [内置角色](../../role-based-access-control/built-in-roles.md) (**roleDefinitionId**)。
+将客户登记到 Azure Lighthouse 时，请使用 [azure 资源管理器模板](onboard-customer.md#create-an-azure-resource-manager-template) 以及参数文件来定义授权，以便向客户租户中的委派资源授予访问权限。 每个授权都指定一个 **principalId** ，它对应于管理租户中的 Azure AD 用户、组或服务主体，以及与将授予的 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)对应的 **roleDefinitionId** 。
 
-若要允许 **principalId** 在客户租户中创建托管标识，必须将其 **roleDefinitionId** 设置为“用户访问管理员”。 虽然此角色通常不受支持，但可以将它用在此特定方案中，允许具有此权限的用户将一个或多个特定的内置角色分配给托管标识。 这些角色在 **delegatedRoleDefinitionIds** 属性中定义。 可以在此处包括任何内置角色，用户访问管理员或所有者除外。
+若要允许 **principalId** 在客户租户中创建托管标识，必须将其 **roleDefinitionId** 设置为“用户访问管理员”。 虽然通常不支持此角色，但可以在此特定方案中使用它，这允许具有此权限的用户帐户将一个或多个特定的内置角色分配给托管标识。 这些角色是在 **delegatedRoleDefinitionIds** 属性中定义的，并且可以包括除 "用户访问管理员" 或 "所有者" 之外的任何 [受支持的 Azure 内置角色](../concepts/tenants-users-roles.md#role-support-for-azure-lighthouse) 。
 
 将客户加入以后，在此授权中创建的 **principalId** 即可将这些内置角色分配给客户租户中的托管标识。 但是，他们不会有通常与“用户访问管理员”角色关联的任何其他权限。
 

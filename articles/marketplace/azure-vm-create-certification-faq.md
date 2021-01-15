@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: bc1ae4bc2cf64c3e2f996709c086eb23cb8b8385
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 61bd23c74fd7960317dff17175b355b473cd6dc7
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602591"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233825"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>排查虚拟机证书问题
 
@@ -29,13 +29,13 @@ ms.locfileid: "96602591"
 
 当使用属于另一发布服务器的基本映像并且已更新该映像时，将发生此错误。 在这种情况下，你将不能发布映像。
 
-若要解决此问题，请从 Azure Marketplace 检索映像，并对其进行更改。 有关详细信息，请参阅下列文章：
+若要解决此问题，请从 Azure Marketplace 检索映像，并对其进行更改。 有关详细信息，请参阅以下文章：
 
 - [Linux 映像](../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows 映像](azure-vm-create-using-approved-base.md)
 
 > [!Note]
-> 如果使用的是不是从 Azure Marketplace 获取的 Linux 基础映像，则可以将第一个分区偏移 2048 KB。 这允许使用未格式化的空间来添加新的计费信息，并允许 Azure 继续将 VM 发布到 Azure Marketplace。  
+> 如果使用的是不是从 Azure Marketplace 获取的 Linux 基础映像，请确保 VHD 上的第一个2048扇区 (每个扇区为512字节) ，以便 Azure 继续将 VM 发布到 Azure Marketplace。  
 
 ## <a name="vm-extension-failure"></a>VM 扩展失败
 
@@ -140,7 +140,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Linux 测试用例。 说明中说明了测试验证。
 
-|方案|测试用例|描述|
+|方案|测试用例|说明|
 |---|---|---|
 |1|Bash 历史记录|在创建 VM 映像之前，应清除 Bash 历史记录文件。|
 |2|Linux 代理版本|应安装 Azure Linux 代理2.2.41 或更高版本。|
@@ -169,7 +169,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Windows 测试用例，以及测试验证的说明：
 
-|方案 |测试事例|描述|
+|方案 |测试事例|说明|
 |---|---|---|---|
 |1|操作系统体系结构|Azure 仅支持64位操作系统。|
 |2|用户帐户依赖项|应用程序的执行不应依赖于管理员帐户。|
@@ -201,7 +201,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 有关操作系统磁盘大小的限制，请参阅以下规则。 提交任何请求时，验证 OS 磁盘大小是否在 Linux 或 Windows 的限制范围内。
 
-|操作系统|推荐的 VHD 大小|
+|OS|推荐的 VHD 大小|
 |---|---|
 |Linux|1 GB 到 1023 GB|
 |Windows|30 GB 到 250 GB|
@@ -210,7 +210,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 |VHD 大小|实际占用的大小|解决方案|
 |---|---|---|
-|>500 tib (TiB) |不适用|请联系支持团队以获取异常批准。|
+|>500 tib (TiB) |n/a|请联系支持团队以获取异常批准。|
 |250-500 TiB|>200 gb (GiB) 与 blob 大小的差异|请联系支持团队以获取异常批准。|
 
 > [!NOTE]
@@ -247,7 +247,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 - CVE-2019-11478 
 - CVE-2019-11479
 
-|OS 系列|版本|内核|
+|OS 系列|Version|内核|
 |---|---|---|
 |Ubuntu|14.04 LTS|4.4.0-151| 
 ||14.04 LTS|4.15.0-1049-*-azure|
@@ -328,14 +328,14 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 |6|HTTP 条件头|SAS URL 无效。|获取正确的 SAS URL。|
 |7|VHD 名称无效|检查 VHD 名称中是否存在任何特殊字符，如百分号 `%` 或引号 `"` 。|通过删除特殊字符来重命名 VHD 文件。|
 
-## <a name="first-mb-2048-kb-partition-linux-only"></a>第一 MB (2048 KB) 分区 (Linux) 
+## <a name="first-1mb-2048-sectors-each-sector-of-512-bytes-partition-linux-only"></a>第一个 1MB (2048 扇区，512字节的每个扇区) 分区 (Linux) 
 
-提交 VHD 时，请确保 VHD 的第一个 2048 KB 为空。 否则，你的请求将失败。
+提交 VHD 时，请确保 VHD 的第一个2048扇区 (1MB) 为空。 否则，你的请求将失败。请注意，这适用于启动/OS 磁盘，不适用于任何其他数据磁盘。
 
 >[!NOTE]
->对于某些特殊的映像，例如从 Azure Marketplace 获取的 Azure Windows 基准映像的基础，我们将检查计费标记，如果计费标记存在并且与我们的内部可用值匹配，则忽略 MB 分区。
+>对于某些特殊的映像，例如从 Azure Marketplace 获取的 Azure Windows 基本映像的基础，或确保 VHD 的第一个 1MB (2048 扇区) 为空。 
 
-### <a name="create-a-first-mb-2048-kb-partition-on-an-empty-vhd"></a>在空 VHD 上创建 1 MB (2048 KB) 分区
+### <a name="create-a-first-1mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>创建第一个 1MB (2048 扇区，512字节的每个扇区都) 分区的空 VHD 上
 
 这些步骤仅适用于 Linux。
 
@@ -361,7 +361,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
    1. 查找你的 VHD 存储帐户。
    1. 选择 " **容器** "，然后选择 VHD。
-   1. 选择“确定”  。
+   1. 选择“确定”。
 
       !["附加非托管磁盘" 页的屏幕截图。](./media/create-vm/vm-certification-issues-solutions-19.png)
 
@@ -386,7 +386,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
    1. 输入2048作为 _第一个扇区_ 值。 您可以将 _最后一个扇区_ 作为默认值。
 
       >[!IMPORTANT]
-      >所有现有数据都将被清除到 2048 KB 之间。 备份 VHD，然后再创建新的分区。
+      >所有现有数据都将被清除到2048个扇区 (每个扇区512字节) 。 备份 VHD，然后再创建新的分区。
 
       ![Putty 客户端命令行屏幕截图，显示已删除数据的命令和输出。](./media/create-vm/vm-certification-issues-solutions-22.png)
 
@@ -400,7 +400,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
 1. 从 VM 中分离 VHD 并删除 VM。
 
-### <a name="create-a-first-mb-2048-kb-partition-by-moving-existing-data-on-vhd"></a>通过移动 VHD 上的现有数据，创建前 MB (2048 KB) 分区
+### <a name="create-a-first-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>创建第一个 MB (2048 个扇区，每个扇区512字节) 分区，方法是移动 VHD 上的现有数据
 
 这些步骤仅适用于 Linux。
 
@@ -428,7 +428,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
    1. 查找你的 VHD 存储帐户。
    1. 选择 " **容器** "，然后选择 VHD。
-   1. 选择“确定”  。
+   1. 选择“确定”。
 
       !["附加非托管磁盘" 页的屏幕截图。](./media/create-vm/vm-certification-issues-solutions-19.png)
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7779730b98630d08af046e7cb402caca1d0c2fe6
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: a0f209e0ac17c62378d279a32f4a27f48a9f74bd
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653650"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232686"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Twitter 帐户注册与登录
 
@@ -35,16 +35,21 @@ ms.locfileid: "97653650"
 
 ## <a name="create-an-application"></a>创建应用程序
 
-若要将 Twitter 用作 Azure AD B2C 中的身份提供程序，则需要创建 Twitter 应用程序。 如果还没有 Twitter 帐户，可以在注册 [https://twitter.com/signup](https://twitter.com/signup) 。
+若要使用 Azure Active Directory B2C () Azure AD B2C 中的 Twitter 帐户登录用户，需要创建 Twitter 应用程序。 如果还没有 Twitter 帐户，可以在注册 [https://twitter.com/signup](https://twitter.com/signup) 。 还需要 [申请开发人员帐户](https://developer.twitter.com/en/apply/user.html)。 有关详细信息，请参阅 [应用访问权限](https://developer.twitter.com/en/apply-for-access)。
 
-1. 使用 Twitter 帐户凭据登录到 [Twitter 开发人员](https://developer.twitter.com/en/apps)网站。
-1. 选择 "  **创建应用**"。
-1. 输入“应用名称”和“应用程序说明”。
-1. 在“网站 URL”中，输入 `https://your-tenant.b2clogin.com`。 将 `your-tenant` 替换为租户的名称。 例如，`https://contosob2c.b2clogin.com`。
-1. 对于“回调 URL”，输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`。 将 `your-tenant` 替换为你的租户的名称，并将 `your-user-flow-Id` 替换为你的用户流的标识符。 例如，`b2c_1A_signup_signin_twitter`。 输入租户名称和用户流 id 时，必须使用所有小写字母，即使它们是在 Azure AD B2C 中使用大写字母定义的也是如此。
-1. 在页面底部，阅读并接受条款，然后选择“创建”。
-1. 在“应用详细信息”页上，选择“编辑”>“编辑详细信息”，勾选“启用 Twitter 登录”框，然后选择“保存”。
-1. 选择“密钥和令牌”并记录“使用者 API 密钥”和“使用者 API 密钥”的值，以便稍后使用。
+1. 用你的 Twitter 帐户凭据登录到 [Twitter 开发人员门户](https://developer.twitter.com/portal/projects-and-apps) 。
+1. 在 " **独立应用**" 下，选择 " **+ 创建应用**"。
+1. 输入 **应用名称**，然后选择 " **完成**"。
+1. 复制 " **应用程序密钥**" 和 " **API 密钥** 密钥" 的值。  同时使用这两种方法将 Twitter 配置为租户中的标识提供者。 
+1. 在 " **设置应用**" 下，选择 " **应用设置**"。
+1. 在 "**身份验证设置**" 下，选择 "**编辑**"
+    1. 选择 " **启用腿 OAuth** " 复选框。
+    1. 选中 " **从用户请求电子邮件地址** " 复选框。
+    1. 对于 **回调 url**，请输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` 。 将 `your-tenant` 替换为你的租户的名称，并将 `your-user-flow-Id` 替换为你的用户流的标识符。 例如，`b2c_1A_signup_signin_twitter`。 输入租户名称和用户流 id 时，必须使用所有小写字母，即使它们是在 Azure AD B2C 中使用大写字母定义的也是如此。
+    1. 对于 " **网站 URL**"，请输入 `https://your-tenant.b2clogin.com` 。 将 `your-tenant` 替换为租户的名称。 例如，`https://contosob2c.b2clogin.com`。
+    1. 输入 **服务条款** 的 URL，例如 `http://www.contoso.com/tos` 。 策略 URL 是你维护的一个页面，用于为你的应用程序提供条款和条件。
+    1. 输入 **隐私策略** 的 URL，例如 `http://www.contoso.com/privacy` 。 策略 URL 是继续提供应用程序的隐私信息的页面。
+    1. 选择“保存”。
 
 ::: zone pivot="b2c-user-flow"
 
@@ -55,9 +60,19 @@ ms.locfileid: "97653650"
 1. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
 1. 选择 " **标识提供者**"，然后选择 " **Twitter**"。
 1. 输入“名称”。 例如， *Twitter*。
-1. 对于 " **客户端 ID**"，请输入之前创建的 Twitter 应用程序的使用者 API 密钥。
-1. 对于 **客户端密码**，请输入你记录的使用者 API 密钥。
-1. 选择“保存”。 
+1. 对于 " **客户端 ID**"，请输入之前创建的 Twitter 应用程序的 *API 密钥* 。
+1. 对于 **客户端密码**，请输入你记录的 *API 密钥机密* 。
+1. 选择“保存”。
+
+## <a name="add-twitter-identity-provider-to-a-user-flow"></a>将 Twitter 标识提供者添加到用户流 
+
+1. 在 Azure AD B2C 租户中，选择“用户流”  。
+1. 选择要添加 Twitter 标识提供者的用户流。
+1. 在 **社交标识提供者** 下，选择 " **Twitter**"。
+1. 选择“保存”。
+1. 若要测试策略，请选择 " **运行用户流**"。
+1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 单击 "**运行用户流**"
 
 ::: zone-end
 
@@ -67,7 +82,7 @@ ms.locfileid: "97653650"
 
 你需要存储前面在 Azure AD B2C 租户中记录的机密密钥。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 4. 在“概述”页上选择“标识体验框架”。
@@ -103,7 +118,7 @@ ms.locfileid: "97653650"
             <Item Key="request_token_endpoint">https://api.twitter.com/oauth/request_token</Item>
             <Item Key="ClaimsEndpoint">https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true</Item>
             <Item Key="ClaimsResponseFormat">json</Item>
-            <Item Key="client_id">Your Twitter application consumer key</Item>
+            <Item Key="client_id">Your Twitter application API key</Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="client_secret" StorageReferenceId="B2C_1A_TwitterSecret" />
@@ -127,7 +142,7 @@ ms.locfileid: "97653650"
     </ClaimsProvider>
     ```
 
-4. 将 **client_id** 的值替换为你之前记录的使用者密钥。
+4. 将 **client_id** 的值替换为前面记录的 *API 密钥机密* 。
 5. 保存文件。
 
 ### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
@@ -173,24 +188,6 @@ ms.locfileid: "97653650"
     将 **TechnicalProfileReferenceId** 的值更新为之前创建的技术配置文件的 ID。 例如，`Twitter-OAUTH1`。
 
 3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-twitter-identity-provider-to-a-user-flow"></a>将 Twitter 标识提供者添加到用户流 
-
-1. 在 Azure AD B2C 租户中，选择“用户流”  。
-1. 单击你想要用于 Twitter 标识提供者的用户流。
-1. 在 **社交标识提供者** 下，选择 " **Twitter**"。
-1. 选择“保存”。 
-1. 若要测试策略，请选择 " **运行用户流**"。
-1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
-1. 单击 "**运行用户流**"
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
 

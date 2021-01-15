@@ -51,13 +51,13 @@ ms.locfileid: "92792236"
 
 1. 选择或输入以下值。
     - 订阅：选择一个 Azure 订阅。
-    - **资源组** ：选择“新建”，为资源组输入一个独一无二的名称，然后选择“确定”。 
+    - **资源组**：选择“新建”，为资源组输入一个独一无二的名称，然后选择“确定”。 
     - 区域：选择资源组的位置。 示例：“美国中部”。
-    - **发布服务器电子邮件** ：输入电子邮件地址以接收通知。
-    - **发布服务器名称** ：输入为 API 发布服务器选择的名称。
-    - **Sku** ：接受“开发人员”的默认值。
-    - **Sku 计数** ：接受默认值。
-    - **位置** ：接受 API 管理服务的生成位置。
+    - **发布服务器电子邮件**：输入电子邮件地址以接收通知。
+    - **发布服务器名称**：输入为 API 发布服务器选择的名称。
+    - **Sku**：接受“开发人员”的默认值。
+    - **Sku 计数**：接受默认值。
+    - **位置**：接受 API 管理服务的生成位置。
 
     :::image type="content" source="media/quickstart-arm-template/create-instance-template.png" alt-text="API 管理模板属性":::
 
@@ -68,7 +68,7 @@ ms.locfileid: "92792236"
 
 1. 成功创建实例后，你会收到通知：
 
-    :::image type="content" source="media/quickstart-arm-template/deployment-notification.png" alt-text="API 管理模板属性":::
+    :::image type="content" source="media/quickstart-arm-template/deployment-notification.png" alt-text="部署通知":::
 
  使用 Azure 门户部署模板。 除了 Azure 门户，还可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，请参阅[部署模板](../azure-resource-manager/templates/deploy-cli.md)。
 
@@ -79,7 +79,7 @@ ms.locfileid: "92792236"
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“API 管理服务”，然后选择所创建的服务实例。
 1. 在“概览”页上查看服务的属性。
 
-:::image type="content" source="media/quickstart-arm-template/service-instance-created.png" alt-text="API 管理模板属性":::
+:::image type="content" source="media/quickstart-arm-template/service-instance-created.png" alt-text="服务概述页":::
 
 当 API 管理服务实例处于联机状态时，便可以使用它了。 从教程开始[导入并发布](import-and-publish.md)你的第一个 API。
 
@@ -87,12 +87,12 @@ ms.locfileid: "92792236"
 
 如果打算继续使用后续的教程，你可能需要保留 API 管理实例。 如果不再需要资源组，可以将其删除，这将删除资源组中的资源。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“资源组”。 还可以在“主页”上选择“资源组”  。
-1. 在“资源组”页上，选择相应资源组  。
-1. 在资源组页上，选择“删除资源组”  。
+1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“资源组”。 还可以在“主页”上选择“资源组”。
+1. 在“资源组”页上，选择相应资源组。
+1. 在资源组页上，选择“删除资源组”。
 
-    删除资源组
-1. 键入资源组的名称，然后选择“删除”  。
+    :::image type="content" source="media/quickstart-arm-template/delete-resource-group.png" alt-text="删除资源组":::
+1. 键入资源组的名称，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

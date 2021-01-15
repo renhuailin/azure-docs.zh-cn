@@ -5,13 +5,14 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: b2dbaa932c01c96582cb038143fa7686707be67d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/15/2021
+ms.custom: references_regions
+ms.openlocfilehash: 576ff68961a68a8b54037d661a51a9d2de7a56df
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541158"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231785"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
@@ -24,7 +25,7 @@ ms.locfileid: "94541158"
 > [!NOTE]
 > 无偏差通信
 >
-> Microsoft 支持多样化的包容性环境。 本文包含对单词 slave 的引用。 Microsoft 的[无偏差通信风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)将其视为排他性单词。 本文使用该单词旨在保持一致性，因为目前软件中使用的是该单词。 如果软件更新后删除了该单词，则本文也将更新以保持一致。
+> Microsoft 支持多样化的包容性环境。 本文包含对关键字 _master_ 和 _从属_ 的引用。 [用于偏置通信的 Microsoft 风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)识别为 exclusionary 词。 本文中使用的词是为了保持一致，因为它们目前是软件中出现的单词。 当软件更新为删除字词时，本文将更新为对齐。
 >
 
 ## <a name="when-to-use-a-read-replica"></a>何时使用只读副本
@@ -38,11 +39,12 @@ ms.locfileid: "94541158"
 只读副本功能使用异步复制技术。 该功能不适用于同步复制方案。 源与副本之间将会存在明显的延迟。 副本上的数据最终将与主服务器上的数据保持一致。 对于能够适应这种延迟的工作负荷，可以使用此功能。
 
 ## <a name="cross-region-replication"></a>跨区域复制
+
 可以在与源服务器不同的区域中创建只读副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。
 
 可以在任何 [Azure Database for MariaDB 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)中拥有源服务器。  源服务器可以在其配对区域或通用副本区域中拥有副本。 下图显示了根据源区域可用的副本区域。
 
-[ ![只读副本区域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[![读取副本区域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>通用副本区域
 无论源服务器位于何处，都可以在以下任何区域中创建读取副本。 支持的通用副本区域包括：
@@ -81,7 +83,7 @@ ms.locfileid: "94541158"
 
 副本会从源服务器继承管理员帐户。 源服务器上的所有用户帐户都会复制到只读副本。 只能使用源服务器上可用的用户帐户连接到只读副本。
 
-可以使用主机名和有效的用户帐户连接到副本，就像在常规的 Azure Database for MariaDB 服务器上连接一样。 对于名称为 **myreplica** 、管理员用户名为 **myadmin** 的服务器，可以使用 mysql CLI 连接到副本：
+可以使用主机名和有效的用户帐户连接到副本，就像在常规的 Azure Database for MariaDB 服务器上连接一样。 对于名称为 **myreplica**、管理员用户名为 **myadmin** 的服务器，可以使用 mysql CLI 连接到副本：
 
 ```bash
 mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
@@ -118,15 +120,14 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 > [!Tip]
 > 如果你故障转移到副本，在取消副本与源的链接时的滞后时间将表明会丢失多少数据。
 
-一旦决定要故障转移到某个副本， 
+确定要故障转移到副本后，
 
 1. 请停止将数据复制到副本<br/>
-   此步骤是使副本服务器能够接受写入所必需的。 在此过程中，副本服务器会取消与主体的链接。 启动停止复制的操作后，后端进程通常需要大约 2 分钟才能完成。 请参阅本文的[停止复制](#stop-replication)部分，了解此操作的潜在影响。
-    
+   此步骤是使副本服务器能够接受写入所必需的。 在此过程中，副本服务器会取消与主体的链接。 启动停止复制后，后端进程通常需要大约2分钟的时间才能完成。 请参阅本文的[停止复制](#stop-replication)部分，了解此操作的潜在影响。
 2. 将应用程序指向（以前的）副本<br/>
    每个服务器都有唯一的连接字符串。 更新应用程序，使之指向（以前的）副本而不是主体。
-    
-如果应用程序成功处理了读取和写入操作，则表明故障转移已完成。 应用程序经历的停机时间取决于何时检测到问题并完成上面的步骤 1 和 2。
+
+应用程序成功处理读取和写入后，即已完成故障转移。 应用程序经历的停机时间取决于何时检测到问题并完成上面的步骤 1 和 2。
 
 ## <a name="considerations-and-limitations"></a>注意事项和限制
 

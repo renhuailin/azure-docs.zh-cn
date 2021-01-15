@@ -4,12 +4,12 @@ description: Azure Monitor 参考：了解 Azure 资源日志支持的服务和�
 ms.subservice: logs
 ms.topic: reference
 ms.date: 12/09/2020
-ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: aeac069b4e9382867664a82af62e29e72da7585e
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931222"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232240"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure 资源日志支持的类别
 
@@ -18,7 +18,7 @@ ms.locfileid: "96931222"
 
 [Azure Monitor 资源日志](./platform-logs-overview.md)是 Azure 服务发出的日志，用于描述这些服务或资源的操作。 通过 Azure Monitor 提供的所有资源日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。
 
-资源类型（为 `resourceId` 属性时可用）和 `category` 的组合唯一标识架构。 所有资源日志都有一个通用架构，其中包含特定于服务的字段，这些字段随后会针对不同的日志类别进行添加。 有关详细信息，请参阅 [Azure 资源日志的通用架构和特定于服务的架构]()
+资源类型（为 `resourceId` 属性时可用）和 `category` 的组合唯一标识架构。 对于具有服务特定字段的所有资源日志，并为不同的日志类别添加了通用架构。 有关详细信息，请参阅 [Azure 资源日志的通用和特定于服务的架构]()
 
 
 ## <a name="costs"></a>成本
@@ -34,7 +34,7 @@ ms.locfileid: "96931222"
 如果仍觉得缺少某些内容，可以在本文底部打开 GitHub 评论。
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -44,7 +44,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -53,7 +53,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -63,7 +63,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -74,7 +74,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -83,7 +83,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -94,7 +94,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -106,7 +106,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft.Blockchain/cordaMembers
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -115,7 +115,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -124,7 +124,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft.Cdn/profiles
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -133,7 +133,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft.Cdn/profiles/endpoints
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -142,7 +142,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft.ClassicNetwork/networksecuritygroups
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -151,7 +151,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -162,7 +162,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -172,7 +172,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -185,7 +185,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft.CustomProviders/resourceproviders
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -194,7 +194,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft.Databricks/workspaces
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -212,7 +212,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -223,7 +223,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -233,7 +233,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -245,7 +245,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -255,7 +255,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft.DBforMySQL/flexibleServers
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -265,7 +265,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -275,7 +275,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft.DBforPostgreSQL/flexibleServers
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -284,7 +284,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -295,7 +295,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft.DBforPostgreSQL/serversv2
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -304,7 +304,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft.DesktopVirtualization/applicationgroups
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -315,7 +315,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft.DesktopVirtualization/hostpools
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -328,7 +328,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft.DesktopVirtualization/workspaces
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -340,7 +340,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -362,7 +362,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -372,7 +372,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -388,7 +388,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domains
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -398,7 +398,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft.EventGrid/systemTopics
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -407,7 +407,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -417,7 +417,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -432,7 +432,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft.HealthcareApis/services
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -441,7 +441,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -451,7 +451,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -470,7 +470,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -479,7 +479,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -494,7 +494,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft.Logic/integrationAccounts
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -503,7 +503,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -512,7 +512,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -525,7 +525,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -534,7 +534,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -545,7 +545,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft.Network/azurefirewalls
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -555,7 +555,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft.Network/bastionHosts
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -564,7 +564,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -573,7 +573,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -583,7 +583,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -593,7 +593,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft.Network/networksecuritygroups
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -604,7 +604,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -615,7 +615,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.Network/trafficManagerProfiles
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -624,7 +624,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -637,7 +637,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -646,7 +646,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -655,7 +655,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/Vaults
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -677,7 +677,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -686,7 +686,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -695,7 +695,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -704,7 +704,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -713,7 +713,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -724,7 +724,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.Sql/managedInstances/databases
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -736,7 +736,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -760,7 +760,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
-成本： [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)的 "平台日志" 部分中所述付费。 
+导出成本：按照[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)的 "平台日志" 一节中所述付费。 
 
 |Category |类别显示名称|
 |---|---|
@@ -771,7 +771,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
 
-成本： [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)的 "平台日志" 部分中所述付费。 
+导出成本：按照[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)的 "平台日志" 一节中所述付费。 
 
 |Category |类别显示名称|
 |---|---|
@@ -782,7 +782,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
 
-成本： [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)的 "平台日志" 部分中所述付费。 
+导出成本：按照[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)的 "平台日志" 一节中所述付费。 
  
 |Category |类别显示名称|
 |---|---|
@@ -793,7 +793,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
 
-成本： [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)的 "平台日志" 部分中所述付费。 
+导出成本：按照[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)的 "平台日志" 一节中所述付费。 
  
 |Category |类别显示名称|
 |---|---|
@@ -804,7 +804,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -814,7 +814,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft.Synapse/workspaces
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -826,7 +826,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft.Synapse/workspaces/bigDataPools
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -835,7 +835,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -849,7 +849,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftwebhostingenvironments"></a>microsoft.web/hostingenvironments
 
-成本：免费 
+导出成本：免费 
 
 |Category |类别显示名称|
 |---|---|
@@ -858,7 +858,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftwebsites"></a>microsoft.web/sites
 
-成本：免费 
+导出成本：免费 
 
 
 |Category |类别显示名称|
@@ -873,7 +873,7 @@ ms.locfileid: "96931222"
 
 ## <a name="microsoftwebsitesslots"></a>microsoft.web/sites/slots
 
-成本：免费 
+导出成本：免费 
 
 
 |Category |类别显示名称|

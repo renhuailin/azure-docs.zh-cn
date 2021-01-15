@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce90ab160696e2c38d917a391eecb0d51a31282f
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 655a146ccde9c75629d0a991a6a3aafa91f40764
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740583"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233961"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>启用用于 VM 的 Azure Monitor 概述
 
@@ -52,6 +52,9 @@ ms.locfileid: "97740583"
 
 用于 VM 的 Azure Monitor 支持支持 Log Analytics 代理和依赖项代理的任何操作系统。 有关完整列表，请参阅 [Azure Monitor 代理概述 ](../platform/agents-overview.md#supported-operating-systems) 。
 
+> [!IMPORTANT]
+> 用于 VM 的 Azure Monitor 来宾健康功能在公共预览版中提供的操作系统支持更多。 有关详细列表，请参阅 [Enable 用于 VM 的 Azure Monitor guest health (preview) ](vminsights-health-enable.md) 。
+
 有关支持用于 VM 的 Azure Monitor 的依赖项代理的 Linux 支持，请参阅以下注意事项列表：
 
 - 仅默认版本和 SMP Linux 内核版本受支持。
@@ -63,7 +66,7 @@ ms.locfileid: "97740583"
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
 用于 VM 的 Azure Monitor 需要 Log Analytics 工作区。 有关此工作区的详细信息和要求，请参阅 [配置用于 VM 的 Azure Monitor Log Analytics 工作区](vminsights-configure-workspace.md) 。
 ## <a name="agents"></a>代理
-用于 VM 的 Azure Monitor 要求在要监视的每个虚拟机或虚拟机规模集上安装以下两个代理。 安装这些代理并将其连接到工作区是加入资源的唯一要求。
+用于 VM 的 Azure Monitor 要求在要监视的每个虚拟机或虚拟机规模集上安装以下两个代理。 若要载入资源，请安装这些代理并将其连接到工作区。  有关这些代理的网络要求，请参阅 [网络要求](../platform/log-analytics-agent.md#network-requirements) 。
 
 - [Log Analytics 代理](../platform/log-analytics-agent.md)。 从虚拟机或虚拟机规模集中收集事件和性能数据，并将其传送到 Log Analytics 工作区。 适用于 Azure 资源上的 Log Analytics 代理的部署方法使用适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 和 [Linux](../../virtual-machines/extensions/oms-linux.md)的 VM 扩展。
 - 依赖关系代理。 收集有关在虚拟机上运行的进程的已发现数据和外部进程依赖项，这些依赖关系由 [用于 VM 的 Azure Monitor 中的映射功能](vminsights-maps.md)使用。 依赖关系代理依赖于 Log Analytics 代理将其数据传递到 Azure Monitor。 适用于 Azure 资源上的依赖关系代理的部署方法使用适用于 [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) 和 [Linux](../../virtual-machines/extensions/agent-dependency-linux.md)的 VM 扩展。

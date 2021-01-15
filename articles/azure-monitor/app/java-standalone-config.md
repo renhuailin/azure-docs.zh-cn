@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 375f0a26006f1176174b335073709e45911d9921
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 953a9cfeed558291fba1cb517039f26860444904
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165801"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233655"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项-Azure Monitor Java Application Insights
 
@@ -39,14 +39,14 @@ ms.locfileid: "98165801"
 
 ## <a name="configuration-file-path"></a>配置文件路径
 
-默认情况下，Application Insights Java 3.0 要求将配置文件命名为 `applicationinsights.json` 并置于 `applicationinsights-agent-3.0.0.jar` 所在的目录中。
+默认情况下，Application Insights Java 3.0 要求将配置文件命名为 `applicationinsights.json` 并置于 `applicationinsights-agent-3.0.1.jar` 所在的目录中。
 
 可以使用以下任一方法指定你自己的配置文件路径：
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` 环境变量，或者
 * `applicationinsights.configuration.file` Java 系统属性
 
-如果你指定相对路径，系统会相对于 `applicationinsights-agent-3.0.0.jar` 所在的目录对其进行解析。
+如果你指定相对路径，系统会相对于 `applicationinsights-agent-3.0.1.jar` 所在的目录对其进行解析。
 
 ## <a name="connection-string"></a>连接字符串
 
@@ -170,7 +170,7 @@ ms.locfileid: "98165801"
 `${...}` 可用于在启动时从指定的环境变量中读取值。
 
 > [!NOTE]
-> 从3.0.1 版版开始，如果添加一个名为的自定义维度 `service.version` ，该值将存储在 `application_Version` Application Insights 日志 "表的列中，而不是作为自定义维度。
+> 从版本3.0.1 开始，如果添加一个名为的自定义维度 `service.version` ，该值将存储在 `application_Version` Application Insights 日志表的列中，而不是作为自定义维度。
 
 ## <a name="telemetry-processors-preview"></a>遥测处理器（预览版）
 
@@ -241,7 +241,7 @@ ms.locfileid: "98165801"
 
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>抑制特定的自动收集遥测
 
-从3.0.1 版开始，可使用以下配置选项禁止显示特定自动收集的遥测数据：
+从版本3.0.1 开始，可以使用以下配置选项禁止显示特定的自动收集遥测数据：
 
 ```json
 {
@@ -338,7 +338,7 @@ ms.locfileid: "98165801"
 
 `level` 可以为 `OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG` 或 `TRACE` 中的一个。
 
-`path` 可以是绝对或相对路径。 相对路径根据 `applicationinsights-agent-3.0.0.jar` 所在的目录进行解析。
+`path` 可以是绝对或相对路径。 相对路径根据 `applicationinsights-agent-3.0.1.jar` 所在的目录进行解析。
 
 `maxSizeMb` 是日志文件滚动更新之前的最大大小。
 

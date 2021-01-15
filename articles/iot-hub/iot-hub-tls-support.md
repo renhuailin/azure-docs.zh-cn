@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: jlian
-ms.openlocfilehash: e569cbe9030b2ac5a42bd99233b4fefc925a5662
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d36a7917693aef9063ade473759f2f451d3a677f
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220298"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234012"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>IoT 中心中的传输层安全性 (TLS) 支持
 
@@ -48,7 +48,7 @@ IoT 中心 ECC 服务器 TLS 证书提供公共预览版。 虽然为 RSA 证书
 * US Gov 亚利桑那州
 * US Gov 弗吉尼亚州 (TLS 1.0/1.1 支持在此区域中不可用，则必须启用 TLS 1.2 强制，否则 IoT 中心创建会失败) 
 
-若要启用 TLS 1.2 强制，请按照 [在 Azure 门户中创建 IoT 中心](/.iot-hub-create-through-portal.md)中的步骤操作，但
+若要启用 TLS 1.2 强制，请按照 [在 Azure 门户中创建 IoT 中心](iot-hub-create-through-portal.md)中的步骤操作，但
 
 - 从上述列表中选择一个 **区域** 。
 - 在 " **管理-> 高级-> 传输层安全 (tls) -> 最小 tls 版本**" 下，选择 **1.2**。 此设置仅在受支持的区域中创建的 IoT 中心出现。

@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: df4bd0ae0884feae8bd21e33f4d27b6ceb207337
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074176"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233978"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
@@ -65,7 +65,7 @@ ms.locfileid: "93074176"
     * 值 = *所需时区*
 3. 选择“保存” 。
 
-对于在 Windows 上运行的应用服务，请参阅 Windows 命令的输出 `tzutil /L` 。 使用每个项的第二行中的值。 例如： "汤加标准时间"。 其中的某些值也在 [默认时区](/windows-hardware/manufacture/desktop/default-time-zones)的 " **时区** " 列中列出。
+对于在 Windows 上运行的应用服务，请参阅 Windows 命令的输出 `tzutil /L` 。 使用每个项的第二行中的值。 例如： "汤加标准时间"。 其中的某些值也在 [默认时区](/windows-hardware/manufacture/desktop/default-time-zones)的 "**时区**" 列中列出。
 
 对于在 Linux 上运行的应用服务，请从 [IANA TZ 数据库](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)设置一个值。 例如： "美国/Adak"。
 
@@ -78,7 +78,7 @@ ms.locfileid: "93074176"
 获取 Web 应用出站 IP 地址列表：
 
 1. 在 Azure 门户中的 Web 应用边栏选项卡上，转到“属性”菜单。
-2. 搜索 **出站 IP 地址** 。
+2. 搜索 **出站 IP 地址**。
 
 随即显示出站 IP 地址列表。
 
@@ -284,7 +284,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>如何将默认的 *.azurewebsites.net 域重定向到我的 Azure Web 应用的自定义域？
 
-在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net  域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *. azurewebsites.net 域，则可以重定向默认的 URL。 若要了解如何将源自网站默认域的所有通信流重定向到自定义域，请参阅[将默认域重定向到 Azure Web 应用中的自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
+在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *. azurewebsites.net 域，则可以重定向默认的 URL。 若要了解如何将源自网站默认域的所有通信流重定向到自定义域，请参阅[将默认域重定向到 Azure Web 应用中的自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何确定应用服务中安装的 .NET 版本？
 
@@ -317,3 +317,8 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>如何从本地环境迁移到应用服务？
 
 若要将站点从 Windows 和 Linux Web 服务器迁移到应用服务，可以使用 Azure App Service 迁移助手。 该迁移工具会根据需要在 Azure 中创建 Web 应用和数据库，然后发布内容。 有关详细信息，请参阅 [Azure App Service 迁移助手](https://appmigration.microsoft.com/)。
+
+## <a name="why-is-my-certificate-issued-for-11-months-and-not-for-a-full-year"></a>为什么我的证书有效期为 11 个月，而不是一整年？
+
+对于 2020/9/1 之后颁发的所有证书，最大持续时间现在为 397天。 对于 2020/9/1 之前颁发的证书，最大有效期为 825 天，除非续订、重新生成密钥等。2020/9/1 之后续订的证书都将受此更改的影响，并且用户可能会注意到其续订证书的有效期会缩短。
+GoDaddy 已实现一个订阅服务，该服务既能满足新要求，又遵循现有客户证书。 新颁发的证书在到期前三十天，该服务会自动颁发第二个证书，将持续时间延长到原始到期日期。 应用服务正在与 GoDaddy 合作以解决此更改问题，确保客户获得其证书的完整持续时间。
