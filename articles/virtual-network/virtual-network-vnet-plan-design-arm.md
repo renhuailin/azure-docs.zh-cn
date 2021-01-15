@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 29ea65e94e97b69e24c6935328cc01c2295adc5a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9ed060c1f3fc47aa7050c0f9b25c757953fa22fe
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518630"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220331"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
 
@@ -49,7 +49,7 @@ ms.locfileid: "92518630"
 
 - 是否存在将流量隔离到单独的虚拟网络中的组织安全需求？ 可选择连接或不连接虚拟网络。 如果连接虚拟网络，则可实施网络虚拟设备（如防火墙）来控制虚拟网络之间的流量流。 有关详细信息，请参阅[安全性](#security)和[连接性](#connectivity)。
 - 是否存在将虚拟网络隔离到单独的[订阅](#subscriptions)或[区域](#regions)的组织需求？
-- [网络接口](virtual-network-network-interface.md)使 VM 能够与其他资源进行通信。 可为每个网络接口分配一个或多个专用 IP 地址。 虚拟网络中需要多少个网络接口和[专用 IP 地址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)？ 在虚拟网络中可以拥有的网络接口和专用 IP 地址数有[上限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)。
+- [网络接口](virtual-network-network-interface.md)使 VM 能够与其他资源进行通信。 可为每个网络接口分配一个或多个专用 IP 地址。 虚拟网络中需要多少个网络接口和[专用 IP 地址](./private-ip-addresses.md)？ 在虚拟网络中可以拥有的网络接口和专用 IP 地址数有[上限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)。
 - 是否要将虚拟网络连接到其他虚拟网络或本地网络？ 可选择将某些虚拟网络互相连接或连接到本地网络，而不是其他网络。 有关详细信息，请参阅[连接性](#connectivity)。 连接到另一个虚拟网络或本地网络的每个虚拟网络必须具有唯一的地址空间。 每个虚拟网络都向其地址空间分配了一个或多个公共和专用地址范围。 地址范围以无类别的 Internet 域路由 (CIDR) 格式指定，例如 10.0.0.0/16。 详细了解虚拟网络的[地址范围](manage-virtual-network.md#add-or-remove-an-address-range)。
 - 是否对不同虚拟网络中的资源有任何组织管理需求？ 如果有，可将资源分隔到单独的虚拟网络中，以简化组织中个体的[权限分配](#permissions)，或将不同的策略分配给不同的虚拟网络。
 - 将某些 Azure 服务资源部署到虚拟网络时，他们将创建自己的虚拟网络。 若要确定 Azure 服务是否创建自己的虚拟网络，请参阅每个[可部署到虚拟网络中的 Azure 服务](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)的信息。
@@ -72,8 +72,8 @@ ms.locfileid: "92518630"
 
 - 可使用网络安全组和/或筛选流量的 NVA 来筛选虚拟网络中资源之间的流量。 若要部署 NVA（如防火墙）来筛选流量，请参阅 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?subcategories=appliances&page=1)。 使用 NVA 时，还可以创建自定义路由将流量从子网路由到 NVA。 详细了解[流量路由](#traffic-routing)。
 - 网络安全组包含多个默认安全规则，允许或拒绝到达或来自资源的流量。 可将网络安全组关联到网络接口和/或网络接口所在的子网。 若要简化安全规则的管理，建议尽可能将网络安全组与单独的子网相关联，而不是与子网内单独的网络接口相关联。
-- 如果子网中不同 VM 需要应用不同的安全规则，则可将 VM 中的网络接口与一个或多个应用程序安全组相关联。 安全规则可以在其源和/或目标中指定应用程序安全组。 该规则仅适用于属于应用程序安全组成员的网络接口。 详细了解[网络安全组](security-overview.md)和[应用程序安全组](security-overview.md#application-security-groups)。
-- Azure 在每个网络安全组中创建了多个默认安全规则。 其中一个默认规则允许所有流量在虚拟网络中的所有资源之间流动。 若要替代此行为，可使用网络安全组和/或自定义路由将流量路由到 NVA。 建议熟悉 Azure 的所有[默认安全规则](security-overview.md#default-security-rules)，并了解网络安全组规则如何应用于资源。
+- 如果子网中不同 VM 需要应用不同的安全规则，则可将 VM 中的网络接口与一个或多个应用程序安全组相关联。 安全规则可以在其源和/或目标中指定应用程序安全组。 该规则仅适用于属于应用程序安全组成员的网络接口。 详细了解[网络安全组](./network-security-groups-overview.md)和[应用程序安全组](./network-security-groups-overview.md#application-security-groups)。
+- Azure 在每个网络安全组中创建了多个默认安全规则。 其中一个默认规则允许所有流量在虚拟网络中的所有资源之间流动。 若要替代此行为，可使用网络安全组和/或自定义路由将流量路由到 NVA。 建议熟悉 Azure 的所有[默认安全规则](./network-security-groups-overview.md#default-security-rules)，并了解网络安全组规则如何应用于资源。
 
 可以查看使用 [NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json)在 Azure 与 internet 之间实现外围网络 (也称为 DMZ) 的示例设计。
 
@@ -95,7 +95,7 @@ Azure 为子网中的出站流量创建多个默认路由。 可通过创建路�
 
 ### <a name="vpn-gateway"></a>VPN 网关
 
-可通过[站点到站点 VPN ](../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或与 Azure [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 的专用连接，使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)将虚拟网络连接到本地网络。
+可通过[站点到站点 VPN ](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或与 Azure [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 的专用连接，使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)将虚拟网络连接到本地网络。
 
 可以结合对等互连和 VPN 网关来创建 [中心和分支网络](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)，其中的辐射虚拟网络连接到中心虚拟网络，中心连接到本地网络，例如。
 
@@ -105,13 +105,13 @@ Azure 为子网中的出站流量创建多个默认路由。 可通过创建路�
 
 ## <a name="permissions"></a>权限
 
-Azure [使用基于 azure 角色的访问控制 (AZURE RBAC) ](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 资源。 权限将分配到以下层次结构中的[范围](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope)：管理组、订阅、资源组和单个资源。 若要了解层次结构的详细信息，请参阅[组织资源](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要使用 Azure 虚拟网络及其所有相关功能（例如对等、网络安全组、服务终结点和路由表），可将组织的成员分配到内置[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)或[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，然后将该角色分配到相应的范围。 如果要为虚拟网络功能的子集分配特定权限，请创建[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)并为该角色分配[虚拟网络](manage-virtual-network.md#permissions)、[子网和服务终结点](virtual-network-manage-subnet.md#permissions)、[网络接口](virtual-network-network-interface.md#permissions)[对等](virtual-network-manage-peering.md#permissions)、[网络和应用程序安全组](manage-network-security-group.md#permissions)或[路由表](manage-route-table.md#permissions)所需的特定权限。
+Azure 对资源使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 权限将分配到以下层次结构中的[范围](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope)：管理组、订阅、资源组和单个资源。 若要了解层次结构的详细信息，请参阅[组织资源](../governance/management-groups/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要使用 Azure 虚拟网络及其所有相关功能（例如对等、网络安全组、服务终结点和路由表），可将组织的成员分配到内置[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)或[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，然后将该角色分配到相应的范围。 如果要为虚拟网络功能的子集分配特定权限，请创建[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)并为该角色分配[虚拟网络](manage-virtual-network.md#permissions)、[子网和服务终结点](virtual-network-manage-subnet.md#permissions)、[网络接口](virtual-network-network-interface.md#permissions)[对等](virtual-network-manage-peering.md#permissions)、[网络和应用程序安全组](manage-network-security-group.md#permissions)或[路由表](manage-route-table.md#permissions)所需的特定权限。
 
 ## <a name="policy"></a>策略
 
 通过 Azure Policy，可创建、分配和管理策略定义。 策略定义将在整个资源中强制实施不同的规则，使资源符合组织标准和服务级别协议。 Azure Policy 对资源进行评估，扫描并找到与所定义策略不相符的资源。 例如，可以定义并应用只允许在特定资源组或区域中创建虚拟网络的策略。 另一个策略可能要求每个子网都有一个与之关联的网络安全组。 然后，在创建和更新资源时评估此策略。
 
-策略将应用于以下层次结构：管理组、订阅和资源组。 了解有关 [Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或部署某些虚拟网络 [Azure Policy 定义](policy-samples.md)的详细信息。
+策略将应用于以下层次结构：管理组、订阅和资源组。 了解有关 [Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或部署某些虚拟网络 [Azure Policy 定义](./policy-reference.md)的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

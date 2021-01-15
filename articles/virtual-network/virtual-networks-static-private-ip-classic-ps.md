@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 669b8427f13efcc55a69bc7c970b6658a6719cd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e798f81102017b4d34c4b1b219a9f23035b0359
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86134715"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222830"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>使用 PowerShell 为虚拟机（经典）配置专用 IP 地址
 
@@ -35,7 +35,7 @@ ms.locfileid: "86134715"
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-下面的示例 PowerShell 命令需要已创建简单的环境。 若要运行本文档中所显示的命令，请首先构建[创建 VNet](virtual-networks-create-vnet-classic-netcfg-ps.md) 中所述的测试环境。
+下面的示例 PowerShell 命令需要已创建简单的环境。 若要运行本文档中所显示的命令，请首先构建[创建 VNet](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-netcfg-ps) 中所述的测试环境。
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>如何验证特定 IP 地址是否可用：
 若要验证 IP 地址 *192.168.1.101* 在名为 *TestVNet* 的 VNet 中是否可用，请运行以下 PowerShell 命令并验证 *IsAvailable* 的值：
@@ -154,7 +154,6 @@ Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded
 我们建议，除非有必要，否则不要以静态方式在 VM 的操作系统中分配已分配给 Azure 虚拟机的专用 IP。 如果确实需要在操作系统中手动设置该专用 IP 地址，请确保它是分配给 Azure VM 的同一专用 IP 地址，否则可能会丢失与虚拟机的连接。 切勿在虚拟机的操作系统中手动分配已分配给 Azure 虚拟机的公共 IP 地址。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[保留公共 IP](virtual-networks-reserved-public-ip.md) 地址。
-* 了解[实例层级公共 IP (ILPIP) 地址](virtual-networks-instance-level-public-ip.md)。
-* 查阅[保留 IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
-
+* 了解[保留公共 IP](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) 地址。
+* 了解[实例层级公共 IP (ILPIP) 地址](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip)。
+* 查阅[保留 IP REST API](/previous-versions/azure/reference/dn722420(v=azure.100))。
