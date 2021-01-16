@@ -3,12 +3,12 @@ title: 使用顾问提高 Azure 应用的性能
 description: 使用 Azure 顾问中的性能建议可提高业务关键型应用程序的速度和响应能力。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 8937272f8b6ef945d80076732ea38523f7b475a1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: d7d4e87670ca529f38465e928c4067daec802b8f
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802535"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98248422"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -177,7 +177,7 @@ Azure 顾问会分析过去 7 天内的系统日志，并识别群集是否遇�
 
 ## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>通过更改最大会话限制，提高 VM 性能
 
-顾问检测到有一个主机池，该池的深度首先设置为负载平衡算法，并且该主机池的最大会话限制大于或等于99999。 深度优先负载均衡使用最大会话限制来确定可以在单个会话主机上进行并发会话的用户数量上限。 如果最大会话限制太高，则所有用户会话将定向到相同的会话主机，这将导致性能和可靠性问题。 因此，在将主机池设置为具有深度优先负载平衡时，必须根据部署的配置和 Vm 容量设置适当的最大会话限制。 
+顾问检测到有一个主机池，该池的深度首先设置为负载平衡算法，并且该主机池的最大会话限制大于或等于999999。 深度优先负载均衡使用最大会话限制来确定可以在单个会话主机上进行并发会话的用户数量上限。 如果最大会话限制太高，则所有用户会话将定向到相同的会话主机，这将导致性能和可靠性问题。 因此，在将主机池设置为具有深度优先负载平衡时，必须根据部署的配置和 Vm 容量设置适当的最大会话限制。 
 
 若要了解有关 Windows 虚拟桌面中的负载平衡的详细信息，请参阅 [配置 Windows 虚拟桌面负载平衡方法](/azure/virtual-desktop/troubleshoot-set-up-overview)。
 

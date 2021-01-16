@@ -4,12 +4,12 @@ description: 追查到 Service Fabric、虚拟机、Web 应用和云服务中使
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c4589acd17e76d1341d5aceada67e565c8f8c37
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979045"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251261"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>排查 Azure 自动缩放问题
  
@@ -47,15 +47,15 @@ Azure Monitor 自动缩放可帮助你运行适当数量的资源来处理应用
 
 让我们查看自动缩放服务提供的指标。
  
-![屏幕截图显示了虚拟机规模集百分比 CPU 示例。](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
+![屏幕截图显示了虚拟机规模集 CPU 利用率百分比示例。](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
 
 ![虚拟机规模集 CPU 利用率百分比示例](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
-图 1a - 虚拟机规模集的 CPU 利用率百分比指标，以及自动缩放设置的“观测到的指标值”指标
+_图 1a - 虚拟机规模集的 CPU 利用率百分比指标，以及自动缩放设置的“观测到的指标值”指标_*
 
 ![“指标阈值”和“观察到的容量”](media/autoscale-troubleshoot/autoscale-metric-threshold-capacity-ex-full.png)
 
-图 1b -“指标阈值”和“观察到的容量”
+_图 1b -“指标阈值”和“观察到的容量”_ 
 
 在图 1b 中，横向扩展规则的“指标阈值”（浅蓝色线条）为 70。  “观察到的容量”（深蓝色线条）显示活动实例数，当前为 3。 
 
@@ -72,11 +72,11 @@ Azure Monitor 自动缩放可帮助你运行适当数量的资源来处理应用
 
 在这种情况下，自动缩放引擎的“观察到的指标值”的计算方式是将实际指标值除以实例数。 如果观察到的指标值小于阈值，则不启动横向扩展操作。 
  
-![屏幕截图显示 "平均出站流" 页，其中包含虚拟机规模集自动缩放指标图表的示例。](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
+![屏幕截图显示了“平均出站流”页，其中包含虚拟机规模集自动缩放指标图表的示例。](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
 
 ![虚拟机规模集自动缩放指标图表示例](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 
-图 2 - 虚拟机规模集自动缩放指标图表示例
+_图 2 - 虚拟机规模集自动缩放指标图表示例_*
 
 在图 2 中可以看到两个指标图表。 
 
@@ -87,7 +87,7 @@ Azure Monitor 自动缩放可帮助你运行适当数量的资源来处理应用
  - “观察到的容量”（紫色）显示自动缩放引擎看到的实例计数。 
  - “指标阈值”（浅绿色）设置为 10。 
 
-如果有多个缩放操作规则，则可以使用指标资源管理器图表中的“拆分”或“添加筛选器”选项，按特定的源或规则查看指标。 有关拆分指标图表的详细信息，请参阅[指标图表的高级功能 - 拆分](metrics-charts.md#apply-splitting-to-a-chart)
+如果有多个缩放操作规则，则可以使用指标资源管理器图表中的“拆分”或“添加筛选器”选项，按特定的源或规则查看指标。 有关拆分指标图表的详细信息，请参阅[指标图表的高级功能 - 拆分](metrics-charts.md#apply-splitting)
 
 ## <a name="example-3---understanding-autoscale-events"></a>示例 3 - 了解自动缩放事件
 

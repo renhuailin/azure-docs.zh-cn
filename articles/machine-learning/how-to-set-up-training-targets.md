@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: ec4917aa378f746eb2caac6a7b4ce99d1c44db90
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 55e618a7e4e0d21f6d4afab270e257c26fa15634
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127645"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251108"
 ---
 # <a name="configure-and-submit-training-runs"></a>配置和提交训练运行
 
@@ -75,6 +75,9 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 选择要在其中运行训练脚本的计算目标。 如果 ScriptRunConfig 中未指定任何计算目标，或者 `compute_target='local'`，则 Azure ML 会在本地执行脚本。 
 
 本文中的示例代码假设你已创建了“先决条件”部分的计算目标 `my_compute_target`。
+
+>[!Note]
+>不支持将 Azure Databricks 用作模型定型的计算目标。 您可以使用 Azure Databricks 进行数据准备和部署任务。 
 
 ## <a name="create-an-environment"></a>创建环境
 Azure 机器学习[环境](concept-environments.md)是（机器学习训练发生于其中的）环境的封装。 此类学习环境会指定与训练和评分脚本有关的 Python 包、Docker 映像、环境变量和软件设置。 它们还指定运行时（Python、Spark 或 Docker）。
@@ -173,7 +176,7 @@ run.wait_for_completion(show_output=True)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 * **运行失败， `jwt.exceptions.DecodeError`** 出现错误：准确的错误消息： `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` 。 
     

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: de4e7959a5778c7275427450ead876338f052882
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9a6346a2b62c81dd74cf0ebe9a85df12d3488679
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196769"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251244"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中创建数据库和用户
 
@@ -20,9 +20,7 @@ ms.locfileid: "98196769"
 本文介绍如何在 Azure Database for MySQL 中创建用户。
 
 > [!NOTE]
-> 无偏差通信
->
-> Microsoft 支持多样化的包容性环境。 本文包含对关键字 _master_ 和 _从属_ 的引用。 [用于偏置通信的 Microsoft 风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)识别为 exclusionary 词。 本文中使用的词是为了保持一致，因为它们目前是软件中出现的单词。 当软件更新为删除字词时，本文将更新为对齐。
+> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 >
 
 首次创建 Azure Database for MySQL 服务器时，需要提供服务器管理员用户名和密码。 有关详细信息，请参阅此[快速入门](quickstart-create-mysql-server-database-using-azure-portal.md)。 你可以在 Azure 门户中确定你的服务器管理员用户名。

@@ -4,12 +4,12 @@ description: 获取指标警报功能的概述，以及它们在 Azure Monitor �
 ms.date: 01/13/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: d8e0621f88455a68ad0ee1b236f6b423c9d54b52
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ab80496784b5d86d270830546cec73aadbcc50a6
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179888"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251227"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -26,7 +26,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
 - 条件类型：静态
-- 时间聚合（基于原始指标值运行的统计信息。 [支持的时间聚合](metrics-charts.md#changing-aggregation)为最小值、最大值、平均值、总计、计数）：平均值
+- 时间聚合（基于原始指标值运行的统计信息。 [支持的时间聚合](metrics-charts.md#aggregation)为最小值、最大值、平均值、总计、计数）：平均值
 - 期限（检查指标值时所依据的回溯时段）：过去 5 分钟
 - 频率（指标警报检查是否符合条件的频率）：1 分钟
 - 运算符：大于
@@ -43,7 +43,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
 - 条件类型：动态
-- 时间聚合（基于原始指标值运行的统计信息。 [支持的时间聚合](metrics-charts.md#changing-aggregation)为最小值、最大值、平均值、总计、计数）：平均值
+- 时间聚合（基于原始指标值运行的统计信息。 [支持的时间聚合](metrics-charts.md#aggregation)为最小值、最大值、平均值、总计、计数）：平均值
 - 期限（检查指标值时所依据的回溯时段）：过去 5 分钟
 - 频率（指标警报检查是否符合条件的频率）：1 分钟
 - 运算符：大于
@@ -180,7 +180,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 ## <a name="next-steps"></a>后续步骤
 
 - [了解如何在 Azure 中创建、查看和管理指标警报](alerts-metric.md)
-- [了解如何在 Azure 监视器中创建警报指标资源管理器](./metrics-charts.md#create-alert-rules)
+- [了解如何在 Azure 监视器中创建警报指标资源管理器](./metrics-charts.md#alert-rules)
 - [了解如何使用 Azure 资源管理器模板部署指标警报](./alerts-metric-create-templates.md)
 - [详细了解操作组](action-groups.md)
 - [详细了解动态阈值条件类型](alerts-dynamic-thresholds.md)

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2b99d032b953caecfca2b34d5eadafe94f45f307
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ec3892c5e47c372d9f54d4a4224e94183e31f181
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009528"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251125"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>在 Azure 中管理 Durable Functions 中的实例
 
@@ -24,7 +24,7 @@ ms.locfileid: "96009528"
 
 必须能够启动业务流程的实例。 在另一个函数触发器中使用 Durable Functions 绑定时，通常会启动实例。
 
-`StartNewAsync` `startNew` 业务流程客户端绑定上的 ( .net) 、 (JavaScript) 或 `start_new` ([orchestration client binding](durable-functions-bindings.md#orchestration-client) Python) 方法将启动一个新实例。 在内部，此方法将消息排入控制队列，然后触发具有指定名称且使用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的函数的启动。
+`StartNewAsync` `startNew` 业务流程客户端绑定上的 ( .net) 、 (JavaScript) 或 `start_new` ([](durable-functions-bindings.md#orchestration-client) Python) 方法将启动一个新实例。 在内部，此方法将消息排入控制队列，然后触发具有指定名称且使用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的函数的启动。
 
 当业务流程成功计划时，此异步操作完成。
 
@@ -137,7 +137,7 @@ module.exports = async function(context, input) {
 > [!NOTE]
 > 此示例以 Durable Functions 2.x 版为目标。 在 1.x 版中，使用 `orchestrationClient` 而不是 `durableClient`。
 
-**__init__ py**
+**py**
 
 ```python
 import logging
@@ -177,7 +177,7 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 
 在管理业务流程的过程中，你很可能需要收集有关业务流程实例状态的信息（例如，该实例是正常完成还是失败）。
 
-`GetStatusAsync` `getStatus` 业务流程客户端绑定上的 ( .net) 、 (JavaScript) 或 `get_status` (Python [orchestration client binding](durable-functions-bindings.md#orchestration-client)) 方法查询业务流程实例的状态。
+`GetStatusAsync` `getStatus` 业务流程客户端绑定上的 ( .net) 、 (JavaScript) 或 `get_status` (Python [](durable-functions-bindings.md#orchestration-client)) 方法查询业务流程实例的状态。
 
 它采用 `instanceId`（必需）、`showHistory`（可选）、`showHistoryOutput`（可选）和 `showInput`（可选）作为参数。
 
@@ -300,6 +300,10 @@ public static async Task Run(
     {
         log.LogInformation(JsonConvert.SerializeObject(instance));
     }
+    
+    // Note: ListInstancesAsync only returns the first page of results.
+    // To request additional pages provide the result.ContinuationToken
+    // to the OrchestrationStatusQueryCondition's ContinuationToken property.
 }
 ```
 

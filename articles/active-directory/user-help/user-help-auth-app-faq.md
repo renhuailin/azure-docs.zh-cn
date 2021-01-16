@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 12/09/2020
+ms.date: 01/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: a1307aa19c66e3f6fcb71f677e6c67551d2a01f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f799ed5c18537b862a4971075ae9107b7a722fdd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928318"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251499"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>常见问题 (常见问题解答) Microsoft Authenticator 应用
 
@@ -33,13 +33,17 @@ Microsoft Authenticator 应用取代了 Azure Authenticator 应用，在使用 A
 
 **答**：注册设备将使你的设备能够访问你的组织的服务，而不允许你的组织访问你的设备。
 
-## <a name="too-many-app-permissions"></a>应用权限太多
+### <a name="too-many-app-permissions"></a>应用权限太多
 
 **问**：为什么应用程序请求如此多的权限？
 
-**答**：下面是可能需要的权限的完整列表，以及应用的使用方式。 所见到的特定权限将取决于所持有的电话类型。
+**答**：下面是可能需要的权限的完整列表，以及应用的使用方式。 所见到的特定权限将取决于所持有的电话类型。 有时，你的组织希望在允许访问特定资源之前了解你的 **位置** 。 仅当你的组织有需要位置的策略时，应用才会请求此权限。
 
-- **位置**。 有时，你的组织希望在允许访问特定资源之前了解你的位置。 仅当你的组织有需要位置的策略时，应用才会请求此权限。 
+### <a name="error-adding-account"></a>添加帐户时出错
+
+**问**：如果我尝试添加我的帐户，会收到一条错误消息，指出 "当前要添加的帐户无效。 请与管理员联系以解决此问题 () 的唯一性验证。 " 应采取何种操作？
+
+**答**：与管理员联系，让他们知道因为唯一性验证问题而无法将帐户添加到身份验证器。 你需要提供登录用户名，以便管理员能够在你的组织中查找。
 
 ### <a name="legacy-apns-support-deprecated"></a>旧 APNs 支持已弃用
 

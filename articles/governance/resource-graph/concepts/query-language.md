@@ -1,14 +1,14 @@
 ---
 title: 理解查询语言
 description: 介绍 Resource Graph 表以及可用于 Azure Resource Graph 的 Kusto 数据类型、运算符和函数。
-ms.date: 11/18/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3023991c76d94dc8aa87cfe950c18ab5d6a07ba9
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: f94023d47153dc64ca78e0386edd87a9821515be
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883055"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251720"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -26,16 +26,19 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每个运算�
 
 Resource Graph 为其存储的有关 Azure 资源管理器资源类型及其属性的数据提供多个表。 一些表可以与 `join` 或 `union` 运算符配合使用，以便从相关资源类型获取属性。 下面是 Resource Graph 中可用表的列表：
 
-|Resource Graph 表 |可以 `join`？ |说明 |
+|Resource Graph 表 |`join`其他表是否可以？ |说明 |
 |---|---|
 |资源 |是 |如果未在查询中定义，则为默认表。 此处显示了大多数资源管理器资源类型和属性。 |
 |ResourceContainers |是 |包括订阅（预览版 -- `Microsoft.Resources/subscriptions`）和资源组 (`Microsoft.Resources/subscriptions/resourcegroups`) 资源类型和数据。 |
-|AdvisorResources |否 |包括与 `Microsoft.Advisor` 相关的资源。 |
-|AlertsManagementResources |否 |包括与 `Microsoft.AlertsManagement` 相关的资源。 |
+|AdvisorResources |是（预览版） |包括与 `Microsoft.Advisor` 相关的资源。 |
+|AlertsManagementResources |是（预览版） |包括与 `Microsoft.AlertsManagement` 相关的资源。 |
 |GuestConfigurationResources |否 |包括与 `Microsoft.GuestConfiguration` 相关的资源。 |
-|MaintenanceResources |否 |包括与 `Microsoft.Maintenance` 相关的资源。 |
+|MaintenanceResources |Partial，仅联接 _到_ 。 （预览版） |包括与 `Microsoft.Maintenance` 相关的资源。 |
+|PatchAssessmentResources|否 |包括与 Azure 虚拟机修补程序评估 _相关_ 的资源。 |
+|PatchInstallationResources|否 |包括与 Azure 虚拟机修补程序安装 _相关_ 的资源。 |
 |PolicyResources |否 |包括与 `Microsoft.PolicyInsights` 相关的资源。 （**预览版**）|
-|SecurityResources |否 |包括与 `Microsoft.Security` 相关的资源。 |
+|RecoveryServicesResources |Partial，仅联接 _到_ 。 （预览版） |包含与和 _相关_ 的资源 `Microsoft.DataProtection` `Microsoft.RecoveryServices` 。 |
+|SecurityResources |Partial，仅联接 _到_ 。 （预览版） |包括与 `Microsoft.Security` 相关的资源。 |
 |ServiceHealthResources |否 |包括与 `Microsoft.ResourceHealth` 相关的资源。 |
 
 有关包含资源类型的完整列表，请参阅[参考：支持的表和资源类型](../reference/supported-tables-resources.md)。
@@ -45,7 +48,7 @@ Resource Graph 为其存储的有关 Azure 资源管理器资源类型及其属�
 
 使用门户中的 Resource Graph 资源管理器来发现每个表中有哪些可用的资源类型。 或者，使用查询（如 `<tableName> | distinct type`）来获取环境中存在的给定 Resource Graph 表所支持的资源类型的列表。
 
-以下查询显示了简单的 `join` 用法。 查询结果将列混合在一起，并且联接表中的所有重复列名称（在此示例中为 ResourceContainers）将附加 1。 由于 ResourceContainers 表具有订阅和资源组的类型，因此任何类型都可用于联接到 resources 表中的资源。
+以下查询显示了简单的 `join` 用法。 查询结果将列混合在一起，并且联接表中的所有重复列名称（在此示例中为 ResourceContainers）将附加 1。 由于 _ResourceContainers_ 表具有订阅和资源组的类型，因此可以使用 Type 从 _资源_ 表联接到资源。
 
 ```kusto
 Resources
@@ -53,13 +56,14 @@ Resources
 | limit 1
 ```
 
-以下查询显示了 `join` 的更复杂用法。 查询将联接表限制为订阅资源并具有 `project`，以仅包括原始字段 _SubscriptionId_ 和重命名为 _SubName_ 的 _name_ 字段。 字段重命名避免了 `join` 将其添加为 name1，因为该字段已存在于 Resources中。 原始表使用 `where` 进行筛选，以下 `project` 包括两个表中的列。 查询结果是单个密钥保管库，其中显示密钥保管库的类型、名称以及其所在的订阅的名称。
+以下查询显示了 `join` 的更复杂用法。 首先，查询使用 `project` 从 Azure Key Vault 保管库资源类型的 _资源_ 中获取字段。 下一步使用 `join` 将结果与 _ResourceContainers_ 合并，其中类型是 _对_ 第一个表 `project` 和联接表的属性的订阅 `project` 。 字段重命名避免 `join` 将其添加为 _name1_ ，因为该属性已从 _资源_ 中进行了投影。 查询结果是一个密钥保管库，其中显示密钥保管库的类型、名称、位置和资源组，以及该密钥保管库所在的订阅的名称。
 
 ```kusto
 Resources
 | where type == 'microsoft.keyvault/vaults'
+| project name, type, location, subscriptionId, resourceGroup
 | join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
-| project type, name, SubName
+| project type, name, location, resourceGroup, SubName
 | limit 1
 ```
 
@@ -125,7 +129,7 @@ Resource Graph 支持部分 KQL [数据类型](/azure/kusto/query/scalar-data-ty
 |[计数](/azure/kusto/query/countoperator) |[对密钥保管库进行计数](../samples/starter.md#count-keyvaults) | |
 |[distinct](/azure/kusto/query/distinctoperator) |[显示包含存储的资源](../samples/starter.md#show-storage) | |
 |[extend](/azure/kusto/query/extendoperator) |[按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os) | |
-|[join](/azure/kusto/query/joinoperator) |[具有订阅名称的密钥保管库](../samples/advanced.md#join) |支持的联接类型：[innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/kusto/query/joinoperator#inner-join)、[leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 单个查询中的 `join` 限制为 3。 不允许使用自定义联接策略，如广播联接。 对于可使用的表 `join` ，请参阅 [资源关系图表](#resource-graph-tables)。 |
+|[join](/azure/kusto/query/joinoperator) |[具有订阅名称的密钥保管库](../samples/advanced.md#join) |支持的联接类型：[innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/kusto/query/joinoperator#inner-join)、[leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 单个查询中的最大值为 3 `join` ，其中1可能是跨表 `join` 。 如果在 `join` _资源_ 与 _ResourceContainers_ 之间使用所有跨表，则允许3个跨表 `join` 。 不允许使用自定义联接策略，如广播联接。 对于可使用的表 `join` ，请参阅 [资源关系图表](#resource-graph-tables)。 |
 |[limit](/azure/kusto/query/limitoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |的同义词 `take` 。 不适用于 [Skip](./work-with-data.md#skipping-records)。 |
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | 旧运算符，请改用 `mv-expand`。 RowLimit 最大值为 400。 默认值为 128。 |
 |[mv-expand](/azure/kusto/query/mvexpandoperator) |[列出具有特定写入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |RowLimit 最大值为 400。 默认值为 128。 |

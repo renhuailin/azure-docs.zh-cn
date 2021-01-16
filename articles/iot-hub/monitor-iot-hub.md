@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 11/06/2020
-ms.openlocfilehash: 2fabf75f74ccf57f57e7b47720ceda8885420842
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 35134f3ee4946d294ba6c6f71bd3953823d6d138
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460910"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250022"
 ---
 # <a name="monitoring-azure-iot-hub"></a>监视 Azure IoT 中心
 
@@ -87,7 +87,7 @@ Azure IoT 中心收集的监视数据与[监视来自 Azure 资源的数据](../
 
 对于以计数单位收集的 IoT 中心平台指标，某些聚合可能不可用或无法使用。 若要了解详细信息，请参阅 [Azure IoT 中心监视数据参考中的“支持的聚合”](monitor-iot-hub-reference.md#supported-aggregations)。
 
-某些 IoT 中心指标（例如[路由指标](monitor-iot-hub-reference.md#routing-metrics)）是多维的。 对于这些指标，你可以基于某个维度对图表应用[筛选器](../azure-monitor/platform/metrics-charts.md#apply-filters-to-charts)和[拆分](../azure-monitor/platform/metrics-charts.md#apply-splitting-to-a-chart)。
+某些 IoT 中心指标（例如[路由指标](monitor-iot-hub-reference.md#routing-metrics)）是多维的。 对于这些指标，你可以基于某个维度对图表应用[筛选器](../azure-monitor/platform/metrics-charts.md#filters)和[拆分](../azure-monitor/platform/metrics-charts.md#apply-splitting)。
 
 ## <a name="analyzing-logs"></a>分析日志
 
@@ -292,13 +292,13 @@ class Program
 
 当基于平台指标创建警报规则时，请注意，对于以计数单位收集的 IoT 中心平台指标，某些聚合可能不可用或无法使用。 若要了解详细信息，请参阅 [Azure IoT 中心监视数据参考中的“支持的聚合”](monitor-iot-hub-reference.md#supported-aggregations)。
 
-## <a name="monitor-per-device-disconnects-with-event-grid"></a>监视每台设备与事件网格的连接
+## <a name="monitor-per-device-disconnects-with-event-grid"></a>使用事件网格监视每个设备的连接断开问题
 
-Azure Monitor 提供了一个指标的 *已连接设备*，可用于监视连接到 IoT 中心的设备数，并在连接的设备数降到阈值以下时触发警报。 虽然这在某些情况下可能已足够，但 [Azure 事件网格](../event-grid/index.yml) 提供低延迟的每设备监视解决方案，可用于跟踪关键设备和基础结构的设备连接。
+Azure Monitor 提供“连接的设备数”指标，可用于监视连接到 IoT 中心的设备数，并在连接的设备数低于阈值时触发警报。 尽管在某些情况下，仅使用该指标就足以达到目的，但 [Azure 事件网格](../event-grid/index.yml)还提供了一个低延迟、每设备监视解决方案，可用于跟踪关键设备和基础结构的设备连接。
 
-在事件网格中，你可以订阅 IoT 中心 [ **DeviceConnected** 和 **DeviceDisconnected** 事件](iot-hub-event-grid.md#event-types)以触发警报和监视设备连接状态。 与 Azure Monitor 相比，事件网格提供的事件延迟要低得多，并且可以按设备而不是连接的设备总数来监视。 这些因素使事件网格成为监视关键设备和基础结构的连接的首选方法。 强烈建议在生产环境中使用事件网格监视设备连接。
+借助事件网格，可以订阅 IoT 中心 [DeviceConnected 和 DeviceDisconnected 事件](iot-hub-event-grid.md#event-types)，以触发警报和监视设备连接状态 。 与 Azure Monitor 相比，事件网格提供的事件延迟要低得多，并且你可以监视每台设备，而不是已连接的设备总数。 这些因素使事件网格成为监视关键设备和基础结构的连接的首选方法。 强烈建议在生产环境中使用事件网格监视设备连接。
 
-有关通过 "事件网格" 和 "Azure Monitor 监视设备连接的详细信息，请参阅 [在 Azure IoT 中心断开连接时进行监视、诊断和故障排除](iot-hub-troubleshoot-connectivity.md)。
+有关通过事件网格和 Azure Monitor 监视设备连接的更多详细信息，请参阅[监视、诊断和排查 Azure IoT 中心的连接断开问题](iot-hub-troubleshoot-connectivity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

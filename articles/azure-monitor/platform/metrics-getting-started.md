@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 2bf56379a32bf8035ea2d0d3fe797776ec6ba40d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614571"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250394"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure 指标资源管理器入门
 
@@ -38,7 +38,7 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
     > ![选择指标](./media/metrics-getting-started/metrics-dropdown.png)
 
-4. （可选）可以[更改指标聚合](metrics-charts.md#changing-aggregation)。 例如，你可能希望图表显示指标的最小值、最大值或平均值。
+4. （可选）可以[更改指标聚合](metrics-charts.md#aggregation)。 例如，你可能希望图表显示指标的最小值、最大值或平均值。
 
 > [!TIP]
 > 如果要查看在同一图表中绘制的多个指标，请使用“添加指标”按钮，并重复这些步骤  。 若要在一个视图中添加多个图表，请选择顶部的“添加图表”按钮。 
@@ -57,7 +57,7 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 ## <a name="apply-dimension-filters-and-splitting"></a>应用维度筛选器和拆分
 
-[筛选](metrics-charts.md#apply-filters-to-charts)和[拆分](metrics-charts.md#apply-splitting-to-a-chart)是用于处理包含维度的指标的强大诊断工具。 这些功能会显示各种指标段（“维度值”）如何影响指标的整体值，并让你识别可能的离群值。
+[筛选](metrics-charts.md#filters)和[拆分](metrics-charts.md#apply-splitting)是用于处理包含维度的指标的强大诊断工具。 这些功能会显示各种指标段（“维度值”）如何影响指标的整体值，并让你识别可能的离群值。
 
 - 通过 **筛选** 可以选择要包含在图表中的维度值。 例如，在绘制“服务器响应时间”指标的图表时，你可能想要成功的请求。  需要对“请求成功”维度应用筛选器。  
 

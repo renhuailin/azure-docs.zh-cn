@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70b7042e4006cc59419d0ea6798fe7626a82c086
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 872a67d8d9f41c0c809df54304352b2a5f58e011
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621070"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251754"
 ---
 # <a name="required-url-list"></a>所需的 URL 列表
 
@@ -32,12 +32,13 @@ ms.locfileid: "96621070"
 |* xt.blob.core.windows.net|443|代理流量|AzureCloud|
 |* eh.servicebus.windows.net|443|代理流量|AzureCloud|
 |* xt.table.core.windows.net|443|代理流量|AzureCloud|
+|* xt.queue.core.windows.net|443|代理流量|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure 市场|AzureCloud|
 |kms.core.windows.net|1688|Windows 激活|Internet|
 |mrsglobalsteus2prod.blob.core.windows.net|443|代理和 SXS 堆栈更新|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 门户支持|AzureCloud|
-| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不可用 |
-| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 不可用 |
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 空值 |
+| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 空值 |
 
 >[!IMPORTANT]
 >Windows 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
@@ -58,8 +59,8 @@ ms.locfileid: "96621070"
 |Kms.core.usgovcloudapi.net|1688|Windows 激活|Internet|
 |mrsglobalstugviffx.blob.core.usgovcloudapi.net|443|代理和 SXS 堆栈更新|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure 门户支持|AzureCloud|
-| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不可用 |
-| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 不可用 |
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 空值 |
+| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 空值 |
 
 下表列出了 Azure 虚拟机可以访问的可选 URL：
 

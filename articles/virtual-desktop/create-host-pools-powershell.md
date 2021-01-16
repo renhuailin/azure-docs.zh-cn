@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ec900f0537030d3ed0d1c875e8125806159bd51
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667157"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251448"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>使用 PowerShell 创建 Windows 虚拟机主机池
 
@@ -124,7 +124,7 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 
 如果你在以下情况之一，则需要更新代理：
 
-- 要将以前注册的会话迁移到新的主机池
+- 要将以前注册的会话主机迁移到新的主机池
 - 更新后，会话主机不会显示在主机池中
 
 更新代理：

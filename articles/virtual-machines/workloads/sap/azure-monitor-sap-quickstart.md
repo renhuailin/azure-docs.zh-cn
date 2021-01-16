@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0bb0a7833e9ee3b499ae013b665ecf137c667005
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968581"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250989"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>通过 Azure 门户为 SAP 解决方案部署 Azure Monitor
 
@@ -46,7 +46,7 @@ ms.locfileid: "94968581"
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="显示 &quot;提供程序&quot; 选项卡，为 SAP 解决方案添加其他提供程序到 Azure Monitor。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
 
-2. 选择 " **添加提供程序** "，并从下拉菜单中选择 " **SAP HANA** "。 
+2. 选择 "**添加提供程序**"，然后从下拉 SAP HANA 中选择 "  "。 
 
    > [!IMPORTANT]
    > 确保为 SAP HANA "主" 节点配置 SAP HANA 提供程序。
@@ -59,13 +59,13 @@ ms.locfileid: "94968581"
 
 6. 输入要使用的数据库用户名。 确保数据库用户已分配 " **监视** " 和 " **目录读取** " 角色。 
 
-7. 完成后，选择 " **添加提供程序**"。 根据需要继续添加其他提供程序，或者选择 " **查看 + 创建** " 完成部署。
+7. 完成后，选择 " **添加提供程序**"。 继续根据需要添加更多提供程序，或者选择 " **查看 + 创建** " 完成部署。
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="添加提供程序信息时的配置选项图像。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
 ### <a name="high-availability-cluster-pacemaker-provider"></a>高可用性群集 (Pacemaker) 提供程序
 
-1. 从下拉菜单中选择 " **高可用性群集 (Pacemaker)** "。 
+1. 从下拉 (中选择 " **高可用性群集" ")** "。 
 
    > [!IMPORTANT]
    > 若要配置高可用性群集 (Pacemaker) 提供程序，请确保在每个节点中安装 ha_cluster_provider。 有关详细信息，请参阅[HA 群集导出](https://github.com/ClusterLabs/ha_cluster_exporter#installation)程序
@@ -74,9 +74,21 @@ ms.locfileid: "94968581"
  
 3. 输入系统 ID (SID) ，主机名和群集名称。
 
-4. 完成后，选择 " **添加提供程序**"。 根据需要继续添加其他提供程序，或者选择 " **查看 + 创建** " 完成部署。
+4. 完成后，选择 " **添加提供程序**"。 继续根据需要添加更多提供程序，或者选择 " **查看 + 创建** " 完成部署。
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Image 显示了与 HA 群集 Pacemaker 提供程序相关的选项。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
+
+
+### <a name="os-linux-provider"></a>操作系统 (Linux) 提供程序 
+
+1. 从下拉 (中选择 "OS Linux)  
+
+> [!IMPORTANT]
+> 若要配置 (Linux) 提供程序的 OS，请确保在每个 BareMetal 实例中安装 Node_Exporter。 有关详细信息，请参阅 [Node_Exporter](https://github.com/prometheus/node_exporter)
+
+2. 输入一个名称，该名称将是 BareMetal 实例的标识符。
+3. 以的形式输入节点导出程序终结点 http://IP:9100/metrics 。
+4. 完成后，选择 " **添加提供程序**"。 继续根据需要添加更多提供程序，或者选择 " **查看 + 创建**   " 完成部署。 
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server 提供程序
@@ -108,11 +120,11 @@ ms.locfileid: "94968581"
    GO
    ``` 
 
-2. 选择 " **添加提供程序** "，并从下拉菜单中选择 " **Microsoft SQL Server** "。 
+2. 选择 "**添加提供程序**"，然后从下拉 Microsoft SQL Server 中选择 "  "。 
 
 3. 使用与 Microsoft SQL Server 相关联的信息填写字段。 
 
-4. 完成后，选择 " **添加提供程序**"。 根据需要继续添加其他提供程序，或者选择 " **查看 + 创建** " 完成部署。
+4. 完成后，选择 " **添加提供程序**"。 继续根据需要添加更多提供程序，或者选择 " **查看 + 创建** " 完成部署。
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="图像显示与添加 Microsoft SQL Server 提供程序相关的信息。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 

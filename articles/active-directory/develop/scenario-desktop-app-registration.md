@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 08e07ac3a8079d725611f9b072e8d21dabb32867
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: c769fd86f432d135542c1f09b83ea5a01c6ab0a6
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011554"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250598"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>调用 Web API 的桌面应用：应用注册
 
@@ -42,7 +42,7 @@ ms.locfileid: "98011554"
 - 如果使用交互式身份验证或设备代码流，请使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`。 若要实现此配置，请在应用程序的“身份验证”部分中选择相应的 URL。 
 
   > [!IMPORTANT]
-  > 目前，默认情况下，MSAL.NET 会在 Windows 上运行的桌面应用程序中使用另一重定向 URI (`urn:ietf:wg:oauth:2.0:oob`)。 将来，我们需要更改此默认设置，因此建议你使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`。
+  > `https://login.microsoftonline.com/common/oauth2/nativeclient`建议使用作为重定向 URI 作为最佳安全方案。  如果未指定重定向 URI， `urn:ietf:wg:oauth:2.0:oob` 则默认情况下，MSAL.NET 将不会建议。  此默认值会在下一个主要版本中更新为重大更改。
 
 - 如果针对 macOS 构建本机 Objective-C 或 Swift 应用，请基于应用程序的捆绑包标识符采用以下格式注册重定向 URI：`msauth.<your.app.bundle.id>://auth`。 将 `<your.app.bundle.id>` 替换为应用程序的捆绑包标识符。
 - 如果你的应用仅使用集成 Windows 身份验证或用户名和密码，则不需要为应用程序注册重定向 URI。 这些流前往 Microsoft 标识平台 v2.0 终结点并返回。 不会在任何特定 URI 上调用你的应用程序。

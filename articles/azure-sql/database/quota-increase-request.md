@@ -9,17 +9,17 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 27719663acfbdbcd7293defc4b746153359adb61
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967695"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251840"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的请求配额增加
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-本文介绍如何针对 Azure SQL 数据库和 Azure SQL 托管实例请求增加配额。 它还说明了如何启用对区域的订阅访问。
+本文介绍如何针对 Azure SQL 数据库和 Azure SQL 托管实例请求增加配额。 它还说明了如何启用对某个区域的订阅访问以及如何请求在某个区域启用特定的硬件。
 
 ## <a name="create-a-new-support-request"></a><a id="newquota"></a> 创建新的支持请求
 
@@ -62,8 +62,7 @@ ms.locfileid: "97967695"
 
 - 每台服务器的数据库事务单位 (Dtu) 
 - 每个订阅的服务器数
-- M 系列区域访问
-- 区域访问
+- 订阅或特定硬件的区域访问
 
 ### <a name="database-transaction-units-dtus-per-server"></a>每台服务器的数据库事务单位 (Dtu) 
 
@@ -109,30 +108,15 @@ ms.locfileid: "97967695"
 
    ![请求区域访问](./media/quota-increase-request/quota-request.png)
 
-<!--
-### <a id="mseries"></a> Enable M-series access to a region
+### <a name="request-enabling-specific-hardware-in-a-region"></a>请求启用区域中的特定硬件
 
-To enable M-series hardware for a subscription and region, a support request must be opened.
+如果你想要使用的 [硬件生成](service-tiers-vcore.md#hardware-generations) 在你的区域中不可用 (请参阅 [硬件可用性](service-tiers-vcore.md#hardware-availability)) ，你可以使用以下步骤来请求它。
 
-1. Select the **M-series region access** quota type.
+1. 选择 **其他配额请求** 配额类型。
 
-1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
+1. 在 " **描述** " 字段中，陈述您的请求，包括硬件生成的名称以及您需要它的区域的名称。
 
-
-   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
--->
-
-## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> SQL 托管实例配额类型
-
-对于 " **SQL 托管实例** 配额类型，请使用以下步骤：
-
-1. 在 " **区域** " 列表中，选择要作为目标的 Azure 区域。
-
-1. 输入要为 **子网** 和 **vCore** 请求的新限制。
-
-   ![SQL 托管实例配额详细信息](./media/quota-increase-request/quota-details-managed-instance.png)
-
-有关详细信息，请参阅 [概述 AZURE SQL 托管实例资源限制](../managed-instance/resource-limits.md)。
+   ![请求新区域中的硬件](./media/quota-increase-request/hardware-in-new-region.png)
 
 ## <a name="submit-your-request"></a>提交请求
 

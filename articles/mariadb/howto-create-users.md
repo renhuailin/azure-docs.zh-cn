@@ -6,22 +6,20 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: 62aadb366fd216cb6dcefff6cdde24dc21b8483a
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 77975ae16ba6b66c55db5ef5927bfc49f9cecdc5
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231904"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251516"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中创建用户
 
 本文介绍如何在 Azure Database for MariaDB 中创建用户。
 
 > [!NOTE]
-> 无偏差通信
->
-> Microsoft 支持多样化的包容性环境。 本文包含对关键字 _master_ 和 _从属_ 的引用。 [用于偏置通信的 Microsoft 风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)识别为 exclusionary 词。 本文中使用的词是为了保持一致，因为它们目前是软件中出现的单词。 当软件更新为删除字词时，本文将更新为对齐。
->
+> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+
 
 首次创建 Azure Database for MariaDB 时，需要提供服务器管理员登录用户名和密码。 有关详细信息，可以参考[快速入门](quickstart-create-mariadb-server-database-using-azure-portal.md)。 你可以从 Azure 门户中找到你的服务器管理员登录用户名。
 

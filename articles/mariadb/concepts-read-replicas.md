@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: 576ff68961a68a8b54037d661a51a9d2de7a56df
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c91aab2bf59f93cf897f9a1b9109172523ae4e57
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231785"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251397"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
@@ -23,10 +23,7 @@ ms.locfileid: "98231785"
 若要详细了解 GTID 复制，请参阅 [MariaDB 复制文档](https://mariadb.com/kb/en/library/gtid/)。
 
 > [!NOTE]
-> 无偏差通信
->
-> Microsoft 支持多样化的包容性环境。 本文包含对关键字 _master_ 和 _从属_ 的引用。 [用于偏置通信的 Microsoft 风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)识别为 exclusionary 词。 本文中使用的词是为了保持一致，因为它们目前是软件中出现的单词。 当软件更新为删除字词时，本文将更新为对齐。
->
+> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ## <a name="when-to-use-a-read-replica"></a>何时使用只读副本
 
@@ -123,8 +120,11 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 确定要故障转移到副本后，
 
 1. 请停止将数据复制到副本<br/>
+
    此步骤是使副本服务器能够接受写入所必需的。 在此过程中，副本服务器会取消与主体的链接。 启动停止复制后，后端进程通常需要大约2分钟的时间才能完成。 请参阅本文的[停止复制](#stop-replication)部分，了解此操作的潜在影响。
-2. 将应用程序指向（以前的）副本<br/>
+
+2. 将应用程序指向（以前的）副本
+
    每个服务器都有唯一的连接字符串。 更新应用程序，使之指向（以前的）副本而不是主体。
 
 应用程序成功处理读取和写入后，即已完成故障转移。 应用程序经历的停机时间取决于何时检测到问题并完成上面的步骤 1 和 2。

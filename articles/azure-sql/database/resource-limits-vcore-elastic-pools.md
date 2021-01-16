@@ -10,13 +10,13 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 10/15/2020
-ms.openlocfilehash: e706f64a7caab6873a3eec86505eaee11374ae2c
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.date: 01/15/2021
+ms.openlocfilehash: 2daa07315be85e1fcd543480cd30a57c118d8547
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882274"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251482"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>使用 vCore 购买模型的弹性池的资源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -235,6 +235,39 @@ ms.locfileid: "97882274"
 
 <sup>3</sup> 对于任何单个数据库 (请求) 请求，请参阅 [单一数据库资源限制](resource-limits-vcore-single-databases.md)。 例如，如果弹性池使用 Gen5 且每个数据库的最大 vCore 数设置为 2，则最大并发辅助角色数目值为 200。  如果每个数据库的最大 vCore 数设置为 0.5，则最大并发辅助角色数目值为 50，因为 Gen5 上每个 vCore 的最大并发辅助角色数为 100。 对于每个数据库的最大 vCore 设置小于 1 个 vCore 或更少的其他情况，最大并发辅助角色数会相应重新缩放。
 
+
+## <a name="general-purpose---provisioned-compute---dc-series"></a>常规用途预配的计算-DC 系列
+
+|计算大小（服务目标）|GP_DC_2|GP_DC_4|GP_DC_6|GP_DC_8|
+|:--- | --: |--: |--: |--: |
+|计算的代|DC|DC|DC|DC|
+|vCore 数|2|4|6|8|
+|内存 (GB)|9|18|27|36|
+|每个池的最大数据库数 <sup>1</sup>|100|400|400|400|
+|列存储支持|是|是|是|是|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|
+|最大数据大小 (GB)|756|1536|2048|2048|
+|最大日志大小 (GB)|227|461|614|614|
+|TempDB 最大数据大小 (GB)|64|128|192|256|
+|存储类型|高级（远程）存储|高级（远程）存储|高级（远程）存储|高级（远程）存储|
+|IO 延迟（近似）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|
+|每个池的最大数据 IOPS <sup>2</sup>|800|1600|2400|3200|
+|每个池的最大日志速率 (MBps)|9.4|18.8|28.1|32.8|
+|每个池的最大并发辅助角色 (请求) <sup>3</sup>|168|336|504|672|
+|每个池的最大并发登录数 (请求) <sup>3</sup>|168|336|504|672|
+|最大并发会话数|30,000|30,000|30,000|30,000|
+|每个数据库的最小/最大弹性池 vCore 选项|2|2 ... 4|2 ... 6|2 ... 8|
+|副本数|1|1|1|1|
+|Multi-AZ|空值|空值|空值|空值|
+|读取横向扩展|空值|空值|空值|空值|
+|随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
+
+<sup>1</sup> 有关其他注意事项，请参阅 [密集弹性池中的资源管理](elastic-pool-resource-management.md) 。
+
+<sup>2</sup> IO 大小的最大值介于 8 kb 到 64 kb 之间。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+
+<sup>3</sup> 对于任何单个数据库 (请求) 请求，请参阅 [单一数据库资源限制](resource-limits-vcore-single-databases.md)。 例如，如果弹性池使用 Gen5 且每个数据库的最大 vCore 数设置为 2，则最大并发辅助角色数目值为 200。  如果每个数据库的最大 vCore 数设置为 0.5，则最大并发辅助角色数目值为 50，因为 Gen5 上每个 vCore 的最大并发辅助角色数为 100。 对于每个数据库的最大 vCore 设置小于 1 个 vCore 或更少的其他情况，最大并发辅助角色数会相应重新缩放。
+
 ## <a name="business-critical---provisioned-compute---gen4"></a>业务关键 - 预配的计算 - Gen4
 
 > [!IMPORTANT]
@@ -406,8 +439,6 @@ ms.locfileid: "97882274"
 
 如果弹性池的所有 vCore 繁忙，则池中的每个数据库将接收相同数量的计算资源来处理查询。 Azure SQL 数据库通过确保相等的计算时间片段，在数据库之间提供资源共享的公平性。 弹性池资源共享公平性是在将每个数据库的 vCore 最小值设为非零值时，对另外为每个数据库保证的任意资源量的补充。
 
-
-
 ### <a name="m-series-compute-generation-part-2"></a>M 系列计算生成 (第2部分) 
 
 |计算大小（服务目标）|BC_M_20|BC_M_24|BC_M_32|BC_M_64|BC_M_128|
@@ -441,6 +472,37 @@ ms.locfileid: "97882274"
 
 如果弹性池的所有 vCore 繁忙，则池中的每个数据库将接收相同数量的计算资源来处理查询。 Azure SQL 数据库通过确保相等的计算时间片段，在数据库之间提供资源共享的公平性。 弹性池资源共享公平性是在将每个数据库的 vCore 最小值设为非零值时，对另外为每个数据库保证的任意资源量的补充。
 
+## <a name="business-critical---provisioned-compute---dc-series"></a>关键业务预配的计算-DC 系列
+
+|计算大小（服务目标）|BC_DC_2|BC_DC_4|BC_DC_6|BC_DC_8|
+|:--- | --: |--: |--: |--: |
+|计算的代|DC|DC|DC|DC|
+|vCore 数|2|4|6|8|
+|内存 (GB)|9|18|27|36|
+|每个池的最大数据库数 <sup>1</sup>|50|100|100|100|
+|列存储支持|是|是|是|是|
+|内存中 OLTP 存储 (GB)|1.7|3.7|5.9|8.2|
+|最大数据大小 (GB)|768|768|768|768|
+|最大日志大小 (GB)|230|230|230|230|
+|TempDB 最大数据大小 (GB)|64|128|192|256|
+|存储类型|本地 SSD|本地 SSD|本地 SSD|本地 SSD|
+|IO 延迟（近似）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|
+|每个池的最大数据 IOPS <sup>2</sup>|15750|31500|47250|56000|
+|每个池的最大日志速率 (MBps)|20|60|90|120|
+|每个池的最大并发辅助角色 (请求) <sup>3</sup>|168|336|504|672|
+|每个池的最大并发登录数 (请求) <sup>3</sup>|168|336|504|672|
+|最大并发会话数|30,000|30,000|30,000|30,000|
+|每个数据库的最小/最大弹性池 vCore 选项|2|2 ... 4|2 ... 6|2 ... 8|
+|副本数|4|4|4|4|
+|Multi-AZ|否|否|否|否|
+|读取横向扩展|是|是|是|是|
+|随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
+
+<sup>1</sup> 有关其他注意事项，请参阅 [密集弹性池中的资源管理](elastic-pool-resource-management.md) 。
+
+<sup>2</sup> IO 大小的最大值介于 8 kb 到 64 kb 之间。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+
+<sup>3</sup> 对于任何单个数据库 (请求) 请求，请参阅 [单一数据库资源限制](resource-limits-vcore-single-databases.md)。 例如，如果弹性池使用 Gen5 且每个数据库的最大 vCore 数设置为 2，则最大并发辅助角色数目值为 200。  如果每个数据库的最大 vCore 数设置为 0.5，则最大并发辅助角色数目值为 50，因为 Gen5 上每个 vCore 的最大并发辅助角色数为 100。 对于每个数据库的最大 vCore 设置小于 1 个 vCore 或更少的其他情况，最大并发辅助角色数会相应重新缩放。
 
 ## <a name="database-properties-for-pooled-databases"></a>共用数据库的数据库属性
 

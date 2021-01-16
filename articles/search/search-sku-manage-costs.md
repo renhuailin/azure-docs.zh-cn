@@ -1,23 +1,94 @@
 ---
-title: 估计容量和成本
+title: 估算成本
 titleSuffix: Azure Cognitive Search
-description: 查看有关估计容量和管理搜索服务成本（包括 Azure 中的基础结构和工具）的指南，以及更有效地使用资源的最佳实践。
+description: 了解计费事件、定价模型以及用于管理运行认知搜索服务的成本的技巧。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
-ms.openlocfilehash: d48ae71a979a2d0f1457b0cefa8a98a02710dd96
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.date: 01/15/2021
+ms.openlocfilehash: a708fb76b5a3d0fd0683cdb8915d1a5e1824a57c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577614"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251662"
 ---
-# <a name="how-to-estimate-capacity-and-costs-of-an-azure-cognitive-search-service"></a>如何估算 Azure 认知搜索服务的容量和成本
+# <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>如何评估和管理 Azure 认知搜索服务的成本
 
-作为 Azure 认知搜索容量规划的一部分，以下指南可帮助你更有效地降低成本或管理成本：
+在本文中，了解定价模型、可计费事件以及用于管理运行 Azure 认知搜索服务的成本的技巧。
+
+## <a name="pricing-model"></a>定价模型
+
+Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活组合，因此，根据是否需要更多的查询或索引功能，你可以根据需要进行更多的查询或索引，并只为所需的内容付费。
+
+搜索服务使用的资源量乘以服务层所建立的计费费率，确定运行服务的成本。 成本和容量紧密绑定。 在估计成本时，若要了解运行索引和查询工作负荷所需的容量，可以获得预计成本。
+
+出于计费目的，认知搜索具有 *搜索单位* (SU) 的概念。 "SU" 是服务使用的 *副本* 和 *分区* 的产品： **(R x P = SU)**。 与搜索相关的成本的主要决定因素是，在 **SU * rate (SU * rate = 月度支出)** 的情况。 
+
+每个服务至少从 1 个 SU（1 个分区乘以 1 个副本）开始。 任何服务的最大 SU 值为 36。 可通过多种方式来实现此最大值：例如，6 个分区 x 6 个副本，或 3 个分区 x 12 个副本。 通常使用小于总容量的值（例如，3 副本、3 分区的服务按 9 个 SU 计费）。 有关有效的组合，请参阅[分区和副本组合](search-capacity-planning.md#chart)图表。
+
+费率按每个 SU、按小时计算。 每个层的费率渐进式提高。 层越高，分区越大且速度越快，因此，每小时的总费率更高。 可以在[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页上查看每个层的费率。
+
+大多数客户只是联机使用一部分总容量，将剩余的容器保持预留状态。 在计费方面，支付的每小时费用取决于联机的分区和副本数量（使用 SU 公式计算）。 
+
+## <a name="billable-events"></a>计费事件
+
+基于 Azure 认知搜索构建的解决方案可能会在以下方面产生成本：
+
++ [服务](#service-costs) 本身的成本，以最低配置 (一个分区和副本) 以基本速率运行。 可以将此视为运行服务的固定成本。
+
++ ) 增加容量 (副本或分区，其中成本会按计费费率的增量递增。 如果需要高可用性，则需要3个副本。
+
++ 带宽费用（出站数据传输）
+
++ 特定功能或特性所需的附加服务：
+
+  + AI 扩充（需要[认知服务](https://azure.microsoft.com/pricing/details/cognitive-services/)）
+  + 知识存储（需要 [Azure 存储](https://azure.microsoft.com/pricing/details/storage/)）
+  + 增量扩充（需要 [Azure 存储](https://azure.microsoft.com/pricing/details/storage/)，适用于 AI 扩充）
+  + 客户管理的密钥和双加密（需要 [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)）
+  + 无 internet 访问模型的专用终结点 (需要 [Azure 专用链接](https://azure.microsoft.com/pricing/details/private-link/)) 
+
+### <a name="service-costs"></a>服务成本
+
+与可以“暂停”以避免产生费用的虚拟机或其他资源不同，Azure 认知搜索服务在专门供你使用的硬件上始终可用。 因此，创建服务是一个计费事件，该事件在创建该服务时开始，在删除该服务时结束。 
+
+最低费用是采用计费费率的第一个搜索单位（1 个副本 x 1 个分区）。 在服务的整个生命周期内，此最低费用都是固定的，因为服务不能在低于此配置的组件上运行。 
+
+超出最低费用时，可以单独添加副本和分区。 通过副本和分区增加容量增加时，将基于以下公式增加你的帐单： **(副本 x 分区 x 计费费率)**，其中你所收取的费用取决于所选的定价层。
+
+估计搜索解决方案的成本时，请记住，定价和容量不是线性的 (双倍容量) 。 有关该公式的工作方式示例，请参阅[如何分配副本和分区](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)。
+
+### <a name="bandwidth-charges"></a>带宽费用
+
+如果 Azure 数据源位于 Azure 认知搜索的不同区域，则使用 [索引器](search-indexer-overview.md) 可能会影响计费。 在这种情况下，将出站数据从 Azure 数据源移到 Azure 认知搜索可能会产生费用。 有关详细信息，请参阅相关 Azure 数据平台的定价页。
+
+如果在数据所在的同一区域中创建 Azure 认知搜索服务，则可以完全消除数据流出费用。 下面是摘自[带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中的一些信息：
+
++ 入站数据： Microsoft 不会向 Azure 上的任何服务收取任何入站数据的费用。 
+
++ 出站数据：出站数据是指查询结果。 认知搜索不会对出站数据收费，但如果服务在不同区域中，则可能会产生来自 Azure 的出站费用。
+
+  这些费用实际上不是 Azure 认知搜索帐单的一部分。 之所以提到，是因为如果你要将结果发送到其他区域或非 Azure 应用，则可以看到反映在你的整体帐单中的这些成本。
+
+### <a name="ai-enrichment-with-cognitive-services"></a>使用认知服务的 AI 扩充
+
+对于 [AI 扩充](cognitive-search-concept-intro.md)，应该计划在 S0 定价层上的 Azure 认知搜索所在的同一区域中[附加一个计费的认知服务资源](cognitive-search-attach-cognitive-services.md)，用于即用即付处理。 附加认知服务不会产生固定的费用。 只需支付所需的处理费。
+
+| 操作 | 计费影响 |
+|-----------|----------------|
+| 文档破解、文本提取 | 免费 |
+| 文档破解、图像提取 | 根据从文档中提取的图像数计费。 在 [索引器配置](/rest/api/searchservice/create-indexer#indexer-parameters)中，**imageAction** 是触发图像提取的参数。 如果 **imageAction** 设置为“none”（默认值），则不收取图像提取费用。 Azure 认知搜索的[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页上阐述了图像提取费率。|
+| [内置认知技能](cognitive-search-predefined-skills.md) | 计费费率与直接使用认知服务执行任务的费率相同。 |
+| 自定义技能 | 自定义技能是你提供的功能。 使用自定义技能的费用完全取决于自定义代码是否调用其他计量的服务。 |
+
+可以利用[增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)功能来提供缓存，使得在未来修改技能组后只需运行必要的认知技能，从而使索引器更高效，为你节省时间和金钱。
+
+## <a name="tips-for-managing-costs"></a>管理成本的技巧
+
+以下指南可帮助你更有效地降低成本或管理成本：
 
 + 在同一区域或者在尽可能少的区域中创建所有资源，以最大程度地减少甚至消除带宽费用。
 
@@ -27,98 +98,15 @@ ms.locfileid: "97577614"
 
 + 针对索引编制等资源密集型操作纵向扩展，然后针对常规查询工作负荷向下重新调整。 首先对 Azure 认知搜索使用最低的配置（由一个分区和一个副本组成的一个 SU），然后监视用户活动，以识别指示需要更多容量的使用模式。 如果有可预测的模式，也许可以使用活动来同步规模（需要编写代码来自动化此过程）。
 
-" [选择定价层](search-sku-tier.md)" 中介绍了计费事件、计费公式和计费率。 此外，还可以访问与支出相关的内置工具和功能的 [计费和成本管理](../cost-management-billing/cost-management-billing-overview.md) 。
++ 成本管理内置于 Azure 基础结构中。 有关跟踪成本、工具和 Api 的详细信息，请查看 [计费和成本管理](../cost-management-billing/cost-management-billing-overview.md) 。
 
 不可能临时关闭搜索服务。 专用资源始终运行，是在服务的生存期内专门分配给你使用的。 删除服务这项操作是永久性的，也会删除其关联的数据。
 
 就服务本身而言，降低费用的唯一方法是将副本和分区数减少到一个较低的水平，但仍能提供可接受的性能并[遵从 SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)；或者在较低的层创建一个服务（S1 的每小时费率低于 S2 或 S3 的费率）。 假设你预配了一个面向低端负载预测的服务。若要扩充该服务，可以创建另一个具有较大层的服务，在该服务上重建索引，然后删除第一个服务。
 
-## <a name="how-to-evaluate-capacity-requirements"></a>如何评估容量要求
-
-在 Azure 认知搜索中，容量的结构包括副本和分区 。
-
-+ 副本是搜索服务的实例。 每个副本托管索引的一个负载均衡副本。 例如，包含 6 个副本的服务具有加载到服务中的每个索引的 6 个副本。
-
-+ 分区存储索引，并自动拆分可搜索的数据。 两个分区可将索引拆分成两半，三个分区可将索引拆分为三个部分，依次类推。 在容量方面，分区大小是各层级的主要区别特征。
-
-> [!NOTE]
-> 所有“标准”和“存储优化”层都支持[副本和分区的灵活组合](search-capacity-planning.md#chart)，因此你可以通过改变平衡方式来[优化系统以提高速度或存储](search-performance-optimization.md)。 “基本”层最多提供三个副本来实现高可用性，但只有一个分区。 “免费”层不提供专用资源：计算资源由多个订阅者共享。
-
-### <a name="evaluating-capacity"></a>评估容量
-
-容量与运行服务的成本密切相关。 层对两个级别施加限制：存储和内容 (索引数，例如) 。 应该同时考虑到此两者，因为首先达到的限制就是实施的限制。
-
-业务需求通常决定了所需的索引数。 例如，你可能需要对一个较大的文档存储库使用全局索引。 或者，你可能需要多个基于区域、应用或商业利基的索引。
-
-若要确定索引大小，必须[生成一个索引](search-what-is-an-index.md)。 其大小将基于导入的数据和索引配置，例如是否启用建议器、筛选和排序。
-
-对于全文搜索，主数据结构是一个 [反转索引](https://en.wikipedia.org/wiki/Inverted_index) 结构，其特征不同于源数据。 对于倒排索引，大小和复杂度由内容决定，不一定是输入的数据量。 具有高度冗余的大型数据源可能会导致比包含高度可变内容的较小数据集更小的索引。 因此，很难根据原始数据集的大小来推断索引大小。
-
-> [!NOTE] 
-> 即使估算将来的索引和存储需求类似于猜测，但也值得一试。 如果层级容量经证实过低，将需要在更高的层级上预配新服务，然后[重新加载索引](search-howto-reindex.md)。 不会将服务从一个层就地升级到另一个层。
->
-
-## <a name="estimate-with-the-free-tier"></a>使用“免费”层进行评估
-
-估算容量的一种方法是从“免费”层开始。 回想一下，“免费”服务最多提供 3 个索引、50 MB 存储和 2 分钟索引时间。 根据这些约束估算预计索引大小可能很有难度，具体步骤如下：
-
-+ [创建免费服务](search-create-service-portal.md)。
-+ 准备一个小型的有代表性的数据集。
-+ [在门户中生成初始索引](search-get-started-portal.md)并记下其大小。 功能和属性会影响存储。 例如，添加建议器（“边键入边搜索”查询）会提高存储要求。 可以使用同一个数据集尝试创建索引的多个版本，并在每个字段中使用不同的属性，以了解存储要求的变化。 有关详细信息，请参阅[“创建基本索引”中的“存储影响”](search-what-is-an-index.md#index-size)。
-
-估算出粗略的数字后，可将此数量增大一倍来得出两个索引（开发和生产）的预算，然后相应地选择层。
-
-## <a name="estimate-with-a-billable-tier"></a>使用计费层进行评估
-
-专用资源可以适应更大的采样和处理时间，并可以在开发期间对索引数量、大小和查询量进行更贴近实际的估算。 某些客户会直接选择计费层，然后在开发项目成熟后重新进行评估。
-
-1. [检查每个层级的服务限制](./search-limits-quotas-capacity.md#index-limits)以确定较低层级是否可以支持需要的索引数量。 在“基本”、“S1”和“S2”层中，索引数限制分别为 15、50 和 200。 “存储优化”层的索引数限制为 10 个，因为它旨在支持少量的极大型索引。
-
-1. [在可计费层中创建服务](search-create-service-portal.md)：
-
-    + 如果你不确定预计负载有多大，请从较低的“基本”或“S1”层着手。
-    + 如果你知道会出现较大的索引和查询负载，请从较高的“S2”甚至“S3”层着手。
-    + 如果你要为大量的数据编制索引并且查询负载相对较低（例如，使用与内部商务应用程序时），请从“优化存储”层 L1 或 L2 着手。
-
-1. [生成初始索引](search-what-is-an-index.md)以确定将源数据转换为索引的方式。 这是估计索引大小的唯一方法。
-
-1. 在门户中[监视存储、服务限制、查询量和延迟](search-monitor-usage.md)。 门户会显示每秒查询数、限制的查询数和搜索延迟。 所有这些值可帮助你确定是否选择了合适的层。 
-
-索引数量和大小对于分析而言同等重要。 这是因为，需要通过充分利用存储（分区）或通过最大化对资源（索引、索引器等）的限制来达到最大限制（以先发生者为准）。 门户可帮助你跟踪两者，并在“概述”页面上并排显示当前使用情况和最大限制。
-
-> [!NOTE]
-> 如果文档包含无关数据，存储要求可能会过高。 理想情况下，文档仅包含搜索体验所需的数据。 二进制数据不可搜索，因此应单独存储（也许可以存储在 Azure 表或 Blob 存储中）。 然后在索引中添加一个字段，用于保存对外部数据的 URL 引用。 单个文档的最大大小是 16 MB（如果在一次请求中批量上传了多个文档，则小于 16 MB）。 有关详细信息，请参阅 [Azure 认知搜索中的服务限制](search-limits-quotas-capacity.md)。
->
-
-**查询量注意事项**
-
-每秒查询数 (QPS) 在性能优化期间是一个重要的指标，但如果你预期查询量一开始就很高，则通常只需考虑到层。
-
-“标准”层可以提供平衡的副本数和分区数。 可以添加副本来实现负载均衡，或添加分区进行并行处理，以此增大查询周转时间。 然后，可以在预配服务后优化性能。
-
-如果你预期持续查询量一开始就很高，应考虑更高的由更强大硬件支持的“标准”层。 如果不会这些这种查询量，可以使分区和副本脱机，甚至切换到更低层的服务。 有关如何计算查询吞吐量的详细信息，请参阅 [Azure 认知搜索性能和优化](search-performance-optimization.md)。
-
-“存储优化”层可用于大数据工作负荷，当查询延迟要求不太重要时，可以支持更大的总体可用索引存储。 仍应使用更多的副本进行负载均衡，并使用更多的分区进行并行处理。 然后，可以在预配服务后优化性能。
-
-**服务级别协议**
-
-“免费”层和预览版功能不提供[服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。 对于所有可计费的层，SLA 将在用户为服务提供足够冗余时生效。 需要为查询（读取）SLA 提供两个或更多个副本。 需要为查询和索引（读写）SLA 提供三个或更多个副本。 分区数不影响 SLA。
-
-## <a name="tips-for-tier-evaluation"></a>层级评估提示
-
-+ 允许围绕查询生成指标，并围绕使用模式收集数据（在营业期间执行查询，在非高峰期执行索引编制）。 使用此数据做出明智的服务预配决策。 尽管这种做法不是在每小时或每日都可行，但可以动态调整分区和资源，以应对查询量的计划内变化。 此外，还可以应对计划外的但持续性的变化，前提是变化程度持续足够长的时间，以致有必要采取措施。
-
-+ 请记住，预配不足的唯一缺点是，如果实际需求超出预测，则可能必须关闭某项服务。 为避免服务中断，可以在更高层级创建新服务，并让其并排运行，直到所有应用和请求都指向新的终结点。
-
 ## <a name="next-steps"></a>后续步骤
 
-从“免费”层开始，使用数据子集生成初始索引以了解其特征。 Azure 认知搜索中的数据结构是一种倒排索引结构。 倒排索引的大小和复杂性由内容决定。 请记住，高度冗余的内容往往会导致比高度不规则的内容更小的索引。 因此，确定索引存储要求的是它的内容特征而不是数据集的大小。
+了解如何在 Azure 订阅中监视和管理成本。
 
-初始估算索引大小后，根据本文中所述的某个层[预配可计费的服务](search-create-service-portal.md)：“基本”、“标准”或“存储优化”。 放宽对数据大小的任何人为约束，并[重建索引](search-howto-reindex.md)以包含可搜索的所有数据。
-
-根据需要[分配分区和副本](search-capacity-planning.md)以获取所需性能和规模。
-
-如果性能和容量都合适，那么你已完成操作。 否则，请在与你的需求更接近的不同层级上重新创建搜索服务。
-
-> [!NOTE]
-> 如有问题，请在 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-search) 中发贴或[联系 Azure 支持部门](https://azure.microsoft.com/support/options/)。
+> [!div class="nextstepaction"]
+> [Azure 成本管理和计费文档](../cost-management-billing/cost-management-billing-overview.md)

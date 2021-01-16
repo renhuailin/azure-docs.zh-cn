@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 6942c3ecd631a141f1df741ff827a6889605e536
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 14e53efb7be9eef3ca388e6524e5ffd678671cd0
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498194"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251635"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>规划和管理 Azure Blob 存储的成本
 
@@ -75,16 +75,16 @@ ms.locfileid: "96498194"
 
 ## <a name="create-budgets"></a>创建预算
 
-可以创建[预算](../../cost-management-billing/costs/tutorial-acm-create-budgets.md)来管理成本，并创建警报以自动通知利益干系人支出异常和超支风险。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。 但是，它们可能会受到有限的功能来管理单个 Azure 服务成本（如 Azure 存储成本），因为它们旨在跟踪更高级别的成本。
+可以创建[预算](../../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本，并创建警报以自动通知利益干系人支出异常和超支风险。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。 但是，它们可能会受到有限的功能来管理单个 Azure 服务成本（如 Azure 存储成本），因为它们旨在跟踪更高级别的成本。
 
 ## <a name="monitor-costs"></a>监视成本
 
-在 Azure 存储中使用 Azure 资源时，会产生成本。 资源使用情况单位成本按时间间隔 (秒、分钟、小时和天) 或单位使用情况变化 (字节、mb 等）。开始使用 Azure 存储空间时，) 成本会立即产生。 您可以在 " [成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md) " 窗格的 "Azure 门户" 中查看成本。
+在 Azure 存储中使用 Azure 资源时，会产生成本。 资源使用情况单位成本按时间间隔 (秒、分钟、小时和天) 或单位使用情况变化 (字节、mb 等）。开始使用 Azure 存储空间时，) 成本会立即产生。 您可以在 " [成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) " 窗格的 "Azure 门户" 中查看成本。
 
 使用成本分析时，可以在关系图和表中查看不同时间间隔的 Azure 存储成本。 有些示例是按天、当前和上个月和年。 还可以对比预算和预测的成本来查看成本。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势并了解超支可能发生的位置。 如果您已经创建了预算，还可以轻松地查看他们超出的位置。
 
 >[!NOTE]
-> 成本分析支持各种 Azure 帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../../cost-management-billing/costs/understand-cost-mgt-data.md)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../../cost-management-billing/costs/assign-access-acm-data.md)。
+> 成本分析支持各种 Azure 帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 若要查看成本分析中的 Azure 存储成本：
 

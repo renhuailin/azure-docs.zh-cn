@@ -2,13 +2,13 @@
 title: 使用 PowerShell 和模板部署资源
 description: 使用 Azure Resource Manager 和 Azure PowerShell 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 40ee659f5892c983f84409a10634c6a8d6d78cc5
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.date: 01/15/2021
+ms.openlocfilehash: d895c6e029b0b4a70333dde987706549609c8bd3
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028483"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251006"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 模板和 Azure PowerShell 部署资源
 
@@ -135,7 +135,7 @@ $deploymentName="ExampleDeployment"+"$today"
 
 你可以创建 [模板规范](template-specs.md)，而不是部署本地或远程模板。模板规范是包含 ARM 模板的 Azure 订阅中的资源。 这使你可以轻松地与组织中的用户共享模板。 使用 azure RBAC)  (Azure 基于角色的访问控制来授予对模板规范的访问权限。此功能目前处于预览阶段。
 
-下面的示例演示如何创建和部署模板规范。只有 [注册了预览](https://aka.ms/templateSpecOnboarding)后，才可以使用这些命令。
+下面的示例演示如何创建和部署模板规范。
 
 首先，通过提供 ARM 模板创建模板规范。
 

@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: de55a708ab78844fd8e834db0bd88e12dd66885a
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: f92b766fc1122456fda70d2deff81fa80a02d159
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186454"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250105"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>规划和管理 Azure App Service 的成本
 
@@ -25,7 +25,7 @@ ms.locfileid: "98186454"
 
 <!-- Note for Azure service writer: Modify the following for your service. -->
 
-本文介绍了如何为 Azure App Service 规划和管理成本。 首先，使用 Azure 定价计算器来帮助规划应用服务成本，然后再添加任何服务资源来估算成本。 接下来，当你添加 Azure 资源时，请查看预估成本。 开始使用应用服务资源后，使用 [成本管理](https://docs.microsoft.com/azure/cost-management-billing/) 功能来设置预算和监视成本。 你还可以查看预测成本并确定支出趋势，以确定你可能想要采取的措施。Azure App Service 的成本仅是 Azure 帐单中每月费用的一部分。 尽管本文介绍了如何规划和管理应用服务的成本，但你需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。
+本文介绍了如何为 Azure App Service 规划和管理成本。 首先，使用 Azure 定价计算器来帮助规划应用服务成本，然后再添加任何服务资源来估算成本。 接下来，当你添加 Azure 资源时，请查看预估成本。 开始使用应用服务资源后，使用 [成本管理](https://docs.microsoft.com/azure/cost-management-billing/?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 功能来设置预算和监视成本。 你还可以查看预测成本并确定支出趋势，以确定你可能想要采取的措施。Azure App Service 的成本仅是 Azure 帐单中每月费用的一部分。 尽管本文介绍了如何规划和管理应用服务的成本，但你需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。
 
 ## <a name="relevant-costs-for-app-service"></a>应用服务的相关成本
 
@@ -84,7 +84,7 @@ ms.locfileid: "98186454"
 
     ![查看门户中每个定价层的预估成本](media/overview-manage-costs/pricing-estimates.png)
 
-如果你的 Azure 订阅有支出限制，Azure 将阻止你支出支出。 创建和使用 Azure 资源时，将使用信用额度。 达到信用额度限制时，将在该计费周期的剩余时间内禁用部署的资源。 你无法更改信用额度，但可以将其删除。 有关支出限制的详细信息，请参阅 [Azure 支出限制](../billing/billing-spending-limit.md)。
+如果你的 Azure 订阅有支出限制，Azure 将阻止你支出支出。 创建和使用 Azure 资源时，将使用信用额度。 达到信用额度限制时，将在该计费周期的剩余时间内禁用部署的资源。 你无法更改信用额度，但可以将其删除。 有关支出限制的详细信息，请参阅 [Azure 支出限制](../cost-management-billing/manage/spending-limit.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 ## <a name="optimize-costs"></a>优化成本
 
@@ -129,7 +129,7 @@ ms.locfileid: "98186454"
 
 ## <a name="monitor-costs"></a>监视成本
 
-在应用服务中使用 Azure 资源时，会产生成本。 Azure 资源使用情况单位成本因时间间隔 (秒、分钟、小时和天) 而异。 应用服务使用开始后，会立即产生成本，你可以在 [成本分析](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)中查看成本。
+在应用服务中使用 Azure 资源时，会产生成本。 Azure 资源使用情况单位成本因时间间隔 (秒、分钟、小时和天) 而异。 应用服务使用开始后，会立即产生成本，你可以在 [成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)中查看成本。
 
 使用成本分析时，可以在关系图和表中查看不同时间间隔的应用服务成本。 有些示例是按天、当前和上个月和年。 你还可以查看预算和预测成本的成本。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势。 你会看到超支可能发生的位置。 如果已创建预算，还可以轻松地查看超出的位置。
     
@@ -155,20 +155,20 @@ ms.locfileid: "98186454"
 
 <!-- Note to Azure service writer: Modify the following as needed for your service. -->
 
-你可以创建 [预算](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 来管理成本，并创建 [警报](https://docs.microsoft.com/azure/cost-management/cost-mgt-alerts-monitor-usage-spending?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) ，以自动通知利益干系人支出异常和超支风险的利益干系人。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。 
+你可以创建 [预算](../cost-management/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 来管理成本，并创建 [警报](../cost-management/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) ，以自动通知利益干系人支出异常和超支风险的利益干系人。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。 
 
-如果你希望在监视中出现更多粒度，则可以在 Azure 中创建针对特定资源或服务的筛选器。 筛选器可帮助确保不会意外地创建新的资源，从而降低额外的费用。 有关创建预算时可用的筛选器选项的详细信息，请参阅 [组和筛选选项](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+如果你希望在监视中出现更多粒度，则可以在 Azure 中创建针对特定资源或服务的筛选器。 筛选器可帮助确保不会意外地创建新的资源，从而降低额外的费用。 有关创建预算时可用的筛选器选项的详细信息，请参阅 [组和筛选选项](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 ## <a name="export-cost-data"></a>导出成本数据
 
-你还可以将 [成本数据导出](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 到存储帐户。 当你需要或其他人进行更多数据分析以获得成本时，这会很有帮助。 例如，财务团队可以使用 Excel 或 Power BI 来分析数据。 您可以按每天、每周或每月计划导出您的成本，并设置自定义的日期范围。 建议使用导出成本数据来检索成本数据集。
+你还可以将 [成本数据导出](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 到存储帐户。 当你需要或其他人进行更多数据分析以获得成本时，这会很有帮助。 例如，财务团队可以使用 Excel 或 Power BI 来分析数据。 您可以按每天、每周或每月计划导出您的成本，并设置自定义的日期范围。 建议使用导出成本数据来检索成本数据集。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解有关如何使用 Azure 存储的详细信息。 请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
-- 了解 [如何通过 Azure 成本管理优化云投资](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
-- 详细了解如何通过 [成本分析](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本。
-- 了解如何 [防止意外成本](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 了解 [如何通过 Azure 成本管理优化云投资](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 详细了解如何通过 [成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本。
+- 了解如何 [防止意外成本](../cost-management-billing/manage/getting-started.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 - 采用 [成本管理](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引导式学习课程。
 
 <!-- Insert links to other articles that might help users save and manage costs for you service here.

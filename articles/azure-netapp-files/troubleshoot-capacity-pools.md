@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/06/2020
+ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 759759b67582b241d0bab1e043dd15e54a804faf
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505454"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251533"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>排查容量池问题
 
@@ -34,9 +34,6 @@ ms.locfileid: "97505454"
 | 卷创建或修改失败，出现 `Requested throughput not available` 错误 | 卷的可用吞吐量取决于容量池的大小和服务级别。 如果没有足够的吞吐量，则应增加池大小或调整现有的卷吞吐量。 | 
 
 ## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>更改卷的容量池时遇到的问题 
-
-> [!IMPORTANT] 
-> [动态更改卷](dynamic-change-volume-service-level.md)公共预览注册的服务级别，直到进一步通知。
 
 |     添加状态    |     解决方法    |
 |-|-|

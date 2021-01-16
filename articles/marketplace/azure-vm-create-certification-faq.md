@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 61bd23c74fd7960317dff17175b355b473cd6dc7
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 921c05b76640935a1bd9e65d556933c23093e5b2
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233825"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251431"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>排查虚拟机证书问题
 
@@ -23,19 +23,6 @@ ms.locfileid: "98233825"
 > [!NOTE]
 > 如果你有关于本文或改进建议的问题，请联系 [合作伙伴中心支持](https://aka.ms/marketplacepublishersupport)部门。
 
-## <a name="approved-base-image"></a>批准的基本映像
-
-提交请求以重新发布包含更新的映像时，部件号验证测试用例可能会失败。 如果失败，则不会批准映像。
-
-当使用属于另一发布服务器的基本映像并且已更新该映像时，将发生此错误。 在这种情况下，你将不能发布映像。
-
-若要解决此问题，请从 Azure Marketplace 检索映像，并对其进行更改。 有关详细信息，请参阅以下文章：
-
-- [Linux 映像](../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
-- [Windows 映像](azure-vm-create-using-approved-base.md)
-
-> [!Note]
-> 如果使用的是不是从 Azure Marketplace 获取的 Linux 基础映像，请确保 VHD 上的第一个2048扇区 (每个扇区为512字节) ，以便 Azure 继续将 VM 发布到 Azure Marketplace。  
 
 ## <a name="vm-extension-failure"></a>VM 扩展失败
 
@@ -170,7 +157,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 下表列出了工具包将运行的 Windows 测试用例，以及测试验证的说明：
 
 |方案 |测试事例|说明|
-|---|---|---|---|
+|---|---|---|
 |1|操作系统体系结构|Azure 仅支持64位操作系统。|
 |2|用户帐户依赖项|应用程序的执行不应依赖于管理员帐户。|
 |3|故障转移群集|目前尚不支持 Windows Server 故障转移群集功能。 应用程序不应依赖于此功能。|
@@ -250,7 +237,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 |OS 系列|Version|内核|
 |---|---|---|
 |Ubuntu|14.04 LTS|4.4.0-151| 
-||14.04 LTS|4.15.0-1049-*-azure|
+||14.04 LTS|4.15.0-1049- \* -azure|
 ||16.04 LTS|4.15.0-1049|
 ||18.04 LTS|4.18.0-1023|
 ||18.04 LTS|5.0.0-1025|
@@ -283,9 +270,9 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 |Oracle|6.10|UEK2 2.6.39-400.312。2<br>UEK3 3.8.13-118.35。2<br>RHCK 2.6.32-754.15。3 
 ||7.0-7。5|UEK3 3.8.13-118.35。2<br>UEK4 4.1.12-124.28。3<br>RHCK 遵循 RHEL|
 ||7.6|RHCK 3.10.0-957.21。3<br>UEK5 4.14.35-1902.2.0|
-|CoreOS 稳定2079.6。0|4.19.43*|
-||Beta 2135.3。1|4.19.50*|
-||Alpha 2163.2。1|4.19.50*|
+|CoreOS 稳定2079.6。0|4.19.43\*|
+||Beta 2135.3。1|4.19.50\*|
+||Alpha 2163.2。1|4.19.50\*|
 |Debian|jessie (安全) |3.16.68-2|
 ||jessie precise-backports|4.9.168 + deb9u3|
 ||stretch (安全性) |4.9.168 + deb9u3|
@@ -328,14 +315,11 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 |6|HTTP 条件头|SAS URL 无效。|获取正确的 SAS URL。|
 |7|VHD 名称无效|检查 VHD 名称中是否存在任何特殊字符，如百分号 `%` 或引号 `"` 。|通过删除特殊字符来重命名 VHD 文件。|
 
-## <a name="first-1mb-2048-sectors-each-sector-of-512-bytes-partition-linux-only"></a>第一个 1MB (2048 扇区，512字节的每个扇区) 分区 (Linux) 
+## <a name="first-1-mb-partition-2048-sectors-each-sector-of-512-bytes"></a>第 1 MB 分区 (2048 扇区，每个扇区512字节) 
 
-提交 VHD 时，请确保 VHD 的第一个2048扇区 (1MB) 为空。 否则，你的请求将失败。请注意，这适用于启动/OS 磁盘，不适用于任何其他数据磁盘。
+如果要 [构建自己的映像](azure-vm-create-using-own-image.md)，请确保操作系统磁盘的前2048个扇区 (1 MB) 为空。 否则，你的发布将失败。 此要求仅适用于 OS 磁盘)  (到数据磁盘。 如果要 [从已批准的基准](azure-vm-create-using-approved-base.md)构建映像，则可以跳过这一要求。 
 
->[!NOTE]
->对于某些特殊的映像，例如从 Azure Marketplace 获取的 Azure Windows 基本映像的基础，或确保 VHD 的第一个 1MB (2048 扇区) 为空。 
-
-### <a name="create-a-first-1mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>创建第一个 1MB (2048 扇区，512字节的每个扇区都) 分区的空 VHD 上
+### <a name="create-a-1-mb-partition-2048-sectors-each-sector-of-512-bytes-on-an-empty-vhd-linux-only-steps"></a>创建一个 1 MB 的分区 (2048 个扇区，每个512字节的扇区)  (仅 Linux 步骤的空 VHD 上) 
 
 这些步骤仅适用于 Linux。
 
@@ -400,7 +384,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
 1. 从 VM 中分离 VHD 并删除 VM。
 
-### <a name="create-a-first-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>创建第一个 MB (2048 个扇区，每个扇区512字节) 分区，方法是移动 VHD 上的现有数据
+### <a name="create-a-first-1-mb-partition-2048-sectors-each-sector-of-512-bytes-by-moving-existing-data-on-vhd"></a>通过移动 VHD 上的现有数据，创建第一个 1 MB 的分区 (2048 个扇区，每个扇区512字节) 
 
 这些步骤仅适用于 Linux。
 

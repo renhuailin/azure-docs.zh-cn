@@ -7,13 +7,13 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/19/2019
-ms.openlocfilehash: 9a4b57f3813adfeee53891f733dd4d303dbbef8d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/15/2021
+ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497123"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249426"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>使用映射数据流安全地转换数据
 
@@ -34,6 +34,7 @@ ms.locfileid: "96497123"
 > * 监视数据流活动。
 
 ## <a name="prerequisites"></a>先决条件
+
 * **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * **Azure 存储帐户**。 将 Data Lake Storage 用作 *源* 和 *接收器* 数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal)以获取创建步骤。 *确保存储帐户仅允许来自选定的网络的访问。* 
 
@@ -52,7 +53,7 @@ ms.locfileid: "96497123"
 1. 选择要在其中创建数据工厂的 Azure **订阅**。
 1. 对于“资源组”，请执行以下步骤之一：
 
-    * 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+    * 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
     * 选择“新建”，并输入资源组的名称。 
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。 
@@ -64,12 +65,14 @@ ms.locfileid: "96497123"
 1. 选择“创作和监视”，在单独的选项卡中启动数据工厂 UI。
 
 ## <a name="create-an-azure-ir-in-data-factory-managed-virtual-network"></a>在数据工厂托管的虚拟网络中创建 Azure IR
+
 在此步骤中，将创建一个 Azure IR，并启用数据工厂托管的虚拟网络。
 
 1. 在数据工厂门户中，单击 " **管理**"，并选择 " **新建** " 创建新的 Azure IR。
 
    ![显示创建新 Azure IR 的屏幕截图。](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-1. 选择 " **Azure** IR" 选项。
+1. 在 " **集成运行时安装** " 页上，根据所需的功能选择要创建的集成运行时。 在本教程中，选择 **"Azure"，** 然后单击 " **继续**"。 
+1. 选择 " **azure** "，然后单击 " **继续** " 以创建 Azure 集成运行时。
 
    ![显示新 Azure IR 的屏幕截图。](./media/tutorial-copy-data-portal-private/azure-ir.png)
 
@@ -77,7 +80,7 @@ ms.locfileid: "96497123"
 
    ![显示启用新 Azure IR 的屏幕截图。](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
 
-1. 选择“创建”。
+1. 选择“创建” 。
 
 ## <a name="create-a-pipeline-with-a-data-flow-activity"></a>使用数据流活动创建管道
 
@@ -254,6 +257,6 @@ ms.locfileid: "96497123"
 
 如果已正确遵循本教程，则应将83行和2列写入接收器文件夹中。 可以通过检查 blob 存储来验证数据是否正确。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 在本教程中，你使用了数据工厂 UI 来创建一个管道，该管道将数据从 Data Lake Storage Gen2 源复制并转换到 Data Lake Storage Gen2 接收器 (通过使用 [数据工厂托管的虚拟网络](managed-virtual-network-private-endpoint.md)中的映射数据流，只允许访问所选网络) 。

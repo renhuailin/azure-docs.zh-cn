@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2021
 ms.custom: references_regions
-ms.openlocfilehash: f4a97f5534e4fd3847bf1cce6874de0f006cce38
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: c380a3edb556adb72d067cb2910c8afbf66b99a0
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201002"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250258"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -23,9 +23,7 @@ ms.locfileid: "98201002"
 如需了解有关 MySQL 复制功能和问题的详细信息，请参阅 [MySQL 复制文档](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)。
 
 > [!NOTE]
-> 无偏差通信
->
-> Microsoft 支持多样化的包容性环境。 本文包含对关键字 _master_ 和 _从属_ 的引用。 [用于偏置通信的 Microsoft 风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)识别为 exclusionary 词。 本文中使用的词是为了保持一致，因为它们目前是软件中出现的单词。 当软件更新为删除字词时，本文将更新为对齐。
+> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 >
 
 ## <a name="when-to-use-a-read-replica"></a>何时使用只读副本
@@ -94,7 +92,7 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 ## <a name="monitor-replication"></a>监视复制
 
-Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。 此指标仅适用于副本。 此指标是使用 MySQL 的 `SHOW SLAVE STATUS` 命令中可用的 `seconds_behind_master` 指标计算得出的。 请设置警报，以便在复制滞后时间达到工作负载不可接受的值时收到通知。
+Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。 此指标仅适用于副本。 此指标是使用 MySQL 的 `SHOW SLAVE STATUS` 命令中提供的 `seconds_behind_master` 指标计算的。 请设置警报，以便在复制滞后时间达到工作负荷不可接受的值时收到通知。
 
 如果发现复制滞后时间增加，请参阅[排查复制延迟问题](howto-troubleshoot-replication-latency.md)，以便排除故障并了解可能的原因。
 

@@ -3,12 +3,12 @@ title: Azure 中继常见问题 | Microsoft Docs
 description: 本文提供了一些有关 Azure 中继服务的常见问题解答 (FAQ)。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 77d3122942289654c0f651f9f648307123b23546
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 83cbc4b02bb8b63878abd046ed2314728546e87a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131825"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250039"
 ---
 # <a name="azure-relay-faqs"></a>Azure 中继常见问题解答
 
@@ -68,9 +68,9 @@ WCF 中继仅适用于标准层命名空间。 其他中继的定价和[连接�
 使用 **netTCPRelay** WCF 绑定打开的中继不将消息视为单条消息，而视为流经系统的数据流。 使用此绑定时，只有发送方和侦听器可以识别发送和接收的单条分帧消息。 对于使用 **netTCPRelay** 绑定的中继，所有数据都会被视为用于计算可计费消息的数据流。 在这种情况下，服务总线每隔 5 分钟计算一次通过单个中继发送或接收的数据总量。 然后会将该数据总量除以 64 KB，得出该中继在该时段的计费消息数。
 
 ## <a name="quotas"></a>配额
-| 配额名称 | 作用域 |  说明 | Value |
+| 配额名称 | 作用域 |  注释 | Value |
 | --- | --- | --- | --- |
-| 中继上的并发侦听器数 |实体 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |25 |
+| 中继上的并发侦听器数 |实体 (混合连接或 WCF 中继)  |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |25 |
 | 服务命名空间中所有中继终结点的并发中继连接数 |命名空间 |- |5,000 |
 | 每个服务命名空间的中继终结点数 |命名空间 |- |10,000 |
 | [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) 和 [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) 中继的消息大小 |命名空间 |会拒绝超过这些配额的传入消息，且调用代码会收到异常。 |64 KB |

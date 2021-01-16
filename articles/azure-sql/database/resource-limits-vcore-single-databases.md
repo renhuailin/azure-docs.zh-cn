@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/15/2020
-ms.openlocfilehash: 4ffe663c1a1651891af5f6e65ee231cbe3e8d650
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.date: 01/15/2021
+ms.openlocfilehash: db3b168826223e4eb958f7700e65623a115e5779
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882275"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251465"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>使用 vCore 购买模型的单一数据库的资源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -231,6 +231,37 @@ ms.locfileid: "97882275"
 
 **注释 2**：对于本地计算副本 SSD 上的数据，延迟为 1-2 ms，这缓存最常用的数据页。 从页面服务器检索数据的延迟更长。
 
+## <a name="hyperscale---provisioned-compute---dc-series"></a>超大规模预配的计算-DC 系列
+
+|计算大小（服务目标）|HS_DC_2|HS_DC_4|HS_DC_6|HS_DC_8|
+|:--- | --: |--: |--: |--: |---: | 
+|计算的代|DC 系列|DC 系列|DC 系列|DC 系列|
+|vCore 数|2|4|6|8|
+|内存 (GB)|9|18|27|36|
+|[RBPEX](service-tier-hyperscale.md#compute) 大小|3 倍内存|3 倍内存|3 倍内存|3 倍内存|
+|列存储支持|是|是|是|是|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|
+|最大数据大小 (TB)|100 |100 |100 |100 |
+|最大日志大小 (TB)|无限制 |无限制 |无限制 |无限制 |
+|TempDB 最大数据大小 (GB)|64|128|192|256|
+|存储类型| [注释 1](#notes) |[注释 1](#notes)|[注释 1](#notes) |[注释 1](#notes) |
+|最大本地 SSD IOPS *|8000 |16000 |24000 |32000 |
+|最大日志速率 (MBps)|100 |100 |100 |100 |
+|IO 延迟（近似）|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|[注释 2](#notes)|
+|最大并发工作线程数（请求数）|160|320|480|640|
+|最大并发会话数|30,000|30,000|30,000|30,000|
+|次要副本|0-4|0-4|0-4|0-4|
+|Multi-AZ|空值|空值|空值|空值|
+|读取横向扩展|是|是|是|是|
+|备份存储保留期|7 天|7 天|7 天|7 天|
+|||
+
+### <a name="notes"></a>注释
+
+**注释 1**：超大规模是具有单独计算和存储组件的多层体系结构：[“超大规模”服务层级体系结构](service-tier-hyperscale.md#distributed-functions-architecture)
+
+**注释 2**：对于本地计算副本 SSD 上的数据，延迟为 1-2 ms，这缓存最常用的数据页。 从页面服务器检索数据的延迟更长。
+
 ## <a name="general-purpose---provisioned-compute---gen4"></a>常规用途 - 预配的计算 - Gen4
 
 > [!IMPORTANT]
@@ -389,6 +420,32 @@ ms.locfileid: "97882275"
 |Multi-AZ|空值|空值|空值|空值|空值|空值|
 |读取横向扩展|空值|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
+
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+
+## <a name="general-purpose---provisioned-compute---dc-series"></a>常规用途预配的计算-DC 系列
+
+|计算大小（服务目标）|GP_DC_2|GP_DC_4|GP_DC_6|GP_DC_8| 
+|:---| ---:|---:|---:|---:|
+|计算的代|DC 系列|DC 系列|DC 系列|DC 系列|
+|vCore 数|2|4|6|8|
+|内存 (GB)|9|18|27|36|
+|列存储支持|是|是|是|是|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|
+|最大数据大小 (GB)|1024|1536|3072|3072|
+|最大日志大小 (GB)|307|461|922|922|
+|TempDB 最大数据大小 (GB)|64|128|192|256|
+|存储类型|远程 SSD|远程 SSD|远程 SSD|远程 SSD|
+|IO 延迟（近似）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|
+|最大数据 IOPS *|640|1280|1920|2560|
+|最大日志速率 (MBps)|9|18|27|36|
+|最大并发工作线程数（请求数）|160|320|480|640|
+|最大并发会话数|30,000|30,000|30,000|30,000|
+|副本数|1|1|1|1|
+|Multi-AZ|空值|空值|空值|空值|
+|读取横向扩展|空值|空值|空值|空值|
+|随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
+
 
 \* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -563,6 +620,31 @@ ms.locfileid: "97882275"
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)。
 
+## <a name="business-critical---provisioned-compute---dc-series"></a>关键业务预配的计算-DC 系列
+
+|计算大小（服务目标）|BC_DC_2|BC_DC_4|BC_DC_6|BC_DC_8|
+|:--- | --: |--: |--: |--: |
+|计算的代|DC 系列|DC 系列|DC 系列|DC 系列|
+|vCore 数|2|4|6|8|
+|内存 (GB)|9|18|27|36|
+|列存储支持|是|是|是|是|
+|内存中 OLTP 存储 (GB)|1.7|3.7|5.9|8.2|
+|最大数据大小 (GB)|768|768|768|768|
+|最大日志大小 (GB)|230|230|230|230|
+|TempDB 最大数据大小 (GB)|64|128|192|256|
+|存储类型|本地 SSD|本地 SSD|本地 SSD|本地 SSD|
+|IO 延迟（近似）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|
+|最大数据 IOPS *|14000|28000|42000|56000|
+|最大日志速率 (MBps)|24|48|72|96|
+|最大并发工作线程数（请求数）|200|400|600|800|
+|最大并发登录数|200|400|600|800|
+|最大并发会话数|30,000|30,000|30,000|30,000|
+|副本数|4|4|4|4|
+|Multi-AZ|否|否|否|否|
+|读取横向扩展|否|否|否|否|
+|随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
+
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 
 ## <a name="next-steps"></a>后续步骤

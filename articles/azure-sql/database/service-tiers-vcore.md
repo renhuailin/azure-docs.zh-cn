@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 09/30/2020
-ms.openlocfilehash: b4473ea304176615c35205494f342922869b71ea
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/15/2021
+ms.openlocfilehash: 6589f451d4db8f2ed77ce70a2bdfa9d76927c1e2
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793137"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251210"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型概述 - Azure SQL 数据库和 Azure SQL 托管实例 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,8 +34,8 @@ vCore 模型中的服务层级选项包括“常规用途”、“业务关键�
 |-|**常规用途**|**业务关键**|**超大规模**|
 |---|---|---|---|
 |最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。 |它使用多个独立副本为商业应用程序提供最高级别的故障恢复能力，为每个数据库副本提供最高的 I/O 性能。|具有很高的可缩放存储和读取缩放要求的大多数业务工作负荷。  允许配置多个独立的数据库副本，提供更高的故障恢复能力。 |
-|存储|使用远程存储。<br/>**SQL 数据库预配计算** ：<br/>5 GB – 4 TB<br/>**无服务器计算**<br/>5 GB - 3 TB<br/>**SQL 托管实例** ：32 GB - 8 TB |使用本地 SSD 存储。<br/>**SQL 数据库预配计算** ：<br/>5 GB – 4 TB<br/>**SQL 托管实例** ：<br/>32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 最多支持 100 TB 存储空间。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
-|IOPS 和吞吐量（近似值）|**SQL 数据库** ：请查看 [单一数据库](resource-limits-vcore-single-databases.md)和 [弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。<br/>**SQL 托管实例** ：请参阅 [Azure SQL 托管实例资源限制概述](../managed-instance/resource-limits.md#service-tier-characteristics)。|请查看[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。|超大规模是具有多个级别缓存的多层体系结构。 有效的 IOPS 和吞吐量将取决于工作负载。|
+|存储|使用远程存储。<br/>**SQL 数据库预配计算**：<br/>5 GB – 4 TB<br/>**无服务器计算**<br/>5 GB - 3 TB<br/>**SQL 托管实例**：32 GB - 8 TB |使用本地 SSD 存储。<br/>**SQL 数据库预配计算**：<br/>5 GB – 4 TB<br/>**SQL 托管实例**：<br/>32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 最多支持 100 TB 存储空间。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
+|IOPS 和吞吐量（近似值）|**SQL 数据库**：请查看 [单一数据库](resource-limits-vcore-single-databases.md)和 [弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。<br/>**SQL 托管实例**：请参阅 [Azure SQL 托管实例资源限制概述](../managed-instance/resource-limits.md#service-tier-characteristics)。|请查看[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。|超大规模是具有多个级别缓存的多层体系结构。 有效的 IOPS 和吞吐量将取决于工作负载。|
 |可用性|1 个副本，无读取缩放副本|3个副本，1 [个读取缩放副本](read-scale-out.md)，<br/>区域冗余高可用性 (HA)|1 个读写副本加 0-4 个[读取缩放副本](read-scale-out.md)|
 |备份|[读取访问异地冗余存储 (RA-GRS)](../../storage/common/geo-redundant-design.md)，7-35 天（默认为 7 天）|[RA-GRS](../..//storage/common/geo-redundant-design.md)，7-35 天（默认为 7 天）|Azure 远程存储中基于快照的备份。 还原使用这些快照进行快速恢复。 备份瞬间完成，不会影响计算 I/O 性能。 还原速度很快，不基于数据操作的大小（需要几分钟，而不是几小时或几天）。|
 |内存中|不支持|支持|不支持|
@@ -69,7 +69,7 @@ vCore 模型中的计算层级选项包括预配计算层级和无服务器计�
 
 ## <a name="hardware-generations"></a>硬件代系
 
-VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列和 Fsv2 系列。 硬件代系通常定义计算和内存限制，以及影响工作负荷性能的其他特征。
+VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列、Fsv2 系列和 DC 系列。 硬件代系通常定义计算和内存限制，以及影响工作负荷性能的其他特征。
 
 ### <a name="gen4gen5"></a>第 4 代/第 5 代
 
@@ -84,7 +84,6 @@ VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列和 Fsv2 系列。 
 - Fsv2 对每个 vCore 提供的内存和 tempdb 比其他硬件更少，因此，对这些限制敏感的工作负荷可能需要考虑 Gen5 或 M 系列。  
 
 仅常规用途层支持 Fsv2 系列。 对于 Fsv2 系列可用的区域，请参阅 [Fsv2 系列的可用性](#fsv2-series-1)。
-
 
 ### <a name="m-series"></a>M 系列
 
@@ -101,6 +100,22 @@ M 系列仅在业务关键层中受支持，不支持区域冗余。  对于 M �
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
 -->
 
+### <a name="dc-series"></a>DC 系列
+
+> [!NOTE]
+> DC 系列目前为 **公共预览版**。
+
+- DC 系列硬件使用带有软件防护扩展 (Intel SGX) 技术的 Intel 处理器。
+- 对于 [具有 secure enclaves 的 Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves)，需要 DC 系列，其他硬件配置不支持此项。
+- DC 系列适用于处理敏感数据和请求机密查询处理功能的工作负荷，Always Encrypted 通过安全 enclaves 提供。
+- DC 系列硬件提供均衡的计算和内存资源。
+
+DC 系列仅支持预配计算 (无服务器) 不支持无服务器，并且不支持区域冗余。 对于 DC 系列可用的区域，请参阅 [dc 系列的可用性](#dc-series-1)。
+
+#### <a name="azure-offer-types-supported-by-dc-series"></a>DC 系列支持的 Azure 产品/服务类型
+
+若要访问 DC 系列，订阅必须是付费产品/服务类型，包括即用即付或企业协议 (EA) 。  有关 DC 系列支持的 Azure 产品/服务类型的完整列表，请参阅 [当前产品/服务，无需支出限制](https://azure.microsoft.com/support/legal/offer-details)。
+
 ### <a name="compute-and-memory-specifications"></a>计算和内存规格
 
 
@@ -110,6 +125,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 |Gen5     |**预配计算**<br>- Intel® E5-2673 v4 (Broadwell) 2.3-GHz、Intel® SP-8160 (Skylake)\* 和 Intel® 8272CL (Cascade Lake) 2.5 GHz\* 处理器<br>- 最多预配 80 个 vCore（1 个 vCore = 1 个超线程）<br><br>**无服务器计算**<br>- Intel® E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel® SP-8160 (Skylake)* 处理器<br>- 自动扩展为 40 个 vCore（1 个 vCore = 1 个超线程）|**预配计算**<br>- 每个 vCore 5.1 GB<br>- 最多预配 408 GB<br><br>**无服务器计算**<br>- 自动扩展为每个vCore 24 GB<br>- 自动纵向扩展为最大 120 GB|
 |Fsv2 系列     |-Intel® 8168 (Skylake) 处理器<br>-将所有核心 turbo 时钟速度保持为 3.4 GHz，最大单一核心 turbo 时钟速度为 3.7 GHz。<br>-预配多达 72 Vcore (1 vCore = 1 超线程) |-1.9 GB/vCore<br>-预配高达 136 GB|
 |M 系列     |-Intel® E7-8890 v3 2.5 GHz 和 Intel® 8280M 2.7 GHz (级联 Lake) 处理器<br>-预配多达 128 Vcore (1 vCore = 1 超线程) |-每个 vCore 29 GB<br>-预配高达 3.7 TB|
+|DC 系列     | -Intel 2288G 处理器<br>- (Intel SGX) 的 Intel 软件防护扩展<br>-预配多达8个 Vcore (1 vCore = 1 个物理核心)  | 每 vCore 4.5 GB |
 
 \* 在 [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 动态管理视图中，使用 Intel® SP-8160 (Skylake) 处理器的数据库的硬件代系会显示为 Gen6，而使用 Intel® 8272CL (Cascade Lake) 的数据库的硬件代系会显示为 Gen7。 不管处理器类型如何（Broadwell、Skylake 或 Cascade Lake），所有 Gen5 数据库的资源限制都相同。
 
@@ -225,6 +241,15 @@ On the **Details** page, provide the following:
 
 Approved support requests are typically fulfilled within 5 business days.
 -->
+
+#### <a name="dc-series"></a>DC 系列
+
+> [!NOTE]
+> DC 系列目前为 **公共预览版**。
+
+DC 系列在以下区域中提供：加拿大中部、加拿大东部、美国东部、北欧、英国南部、西欧、美国西部。
+
+如果你需要当前不受支持的区域中的 DC 系列，请遵循[AZURE SQL 数据库和 SQL 托管实例的请求配额增加](quota-increase-request.md)中的说明[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: fb7d9f78ac5498affa10521e17cff4348eecb5eb
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 5ebae41e68633eb10959c56011dd71952f9564bd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231938"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250411"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中配置数据传入复制
 
@@ -23,12 +23,6 @@ ms.locfileid: "98231938"
 
 > [!NOTE]
 > 如果源服务器的版本为 10.2 或更高版本，我们建议使用[全局事务 ID](https://mariadb.com/kb/en/library/gtid/) 设置数据传入复制。
-
-> [!NOTE]
-> 无偏差通信
->
-> Microsoft 支持多样化的包容性环境。 本文包含对关键字 _master_ 和 _从属_ 的引用。 [用于偏置通信的 Microsoft 风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)识别为 exclusionary 词。 本文中使用的词是为了保持一致，因为它们目前是软件中出现的单词。 当软件更新为删除字词时，本文将更新为对齐。
->
 
 ## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>创建用作副本的 MariaDB 服务器
 
@@ -46,6 +40,10 @@ ms.locfileid: "98231938"
 3. 将源服务器的 IP 地址添加到副本的防火墙规则。 
 
    使用 [Azure 门户](howto-manage-firewall-portal.md)或 [Azure CLI](howto-manage-firewall-cli.md) 更新防火墙规则。
+
+> [!NOTE]
+> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+>
 
 ## <a name="configure-the-source-server"></a>配置源服务器
 

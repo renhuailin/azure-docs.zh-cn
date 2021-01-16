@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a2a385b2be4e1005a7aabd76261b3190ecd2a506
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: af8d0300b533d9f25cddf225f4ffbe78ca6bf2cb
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684213"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249629"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>使用 Azure RBAC 进行 Kubernetes 授权（预览）
 
@@ -21,7 +21,7 @@ ms.locfileid: "94684213"
 
 本文档介绍一种新的方法，允许跨 Azure 资源、AKS 和 Kubernetes 资源实现统一的管理和访问控制。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 通过 Azure 管理 Kubernetes 资源的 RBAC 功能，你可以选择使用 Azure 或本机 Kubernetes 机制管理群集资源的 RBAC。 启用后，将由 Azure RBAC 专门验证 Azure AD 主体，同时 Kubernetes RBAC 以独占方式验证常规 Kubernetes 用户和服务帐户。 有关 AKS 上的 RBAC 身份验证和授权的详细信息，请参阅 [此处](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)。
 
@@ -113,9 +113,9 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad --enable-azure
 AKS 提供下列四种内置角色：
 
 
-| 角色                                | 描述  |
+| 角色                                | 说明  |
 |-------------------------------------|--------------|
-| Azure Kubernetes 服务 RBAC 查看者  | 允许进行只读访问并查看命名空间中的大多数对象。 不允许查看角色或角色绑定。 此角色不允许查看 `Secrets` ，因为读取机密内容可以访问命名空间中的 ServiceAccount 凭据，这将允许 API 访问命名空间中的任何 ServiceAccount (一种形式的权限提升)   |
+| Azure Kubernetes 服务 RBAC 读取器  | 允许进行只读访问并查看命名空间中的大多数对象。 不允许查看角色或角色绑定。 此角色不允许查看 `Secrets` ，因为读取机密内容可以访问命名空间中的 ServiceAccount 凭据，这将允许 API 访问命名空间中的任何 ServiceAccount (一种形式的权限提升)   |
 | Azure Kubernetes 服务 RBAC 写入者 | 允许对命名空间中的大多数对象进行读/写访问。 此角色不允许查看或修改角色或角色绑定。 但是，此角色允许以命名空间中任何 ServiceAccount 的身份访问 `Secrets` 和运行 Pod，因此可用于获取命名空间中任何 ServiceAccount 的 API 访问级别。 |
 | Azure Kubernetes 服务 RBAC 管理员  | 允许要在命名空间内授予的管理员访问权限。 允许对命名空间（或群集范围）中的大多数资源进行读/写访问，包括在命名空间内创建角色和角色绑定。 此角色不允许对资源配额或命名空间本身进行写入访问。 |
 | Azure Kubernetes 服务 RBAC 群集管理员  | 允许超级用户访问权限（对任何资源执行任何操作）。 它提供对群集中每个资源和所有命名空间的完全控制。 |

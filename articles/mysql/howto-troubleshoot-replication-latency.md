@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
-ms.openlocfilehash: 34210d08ad5328f200f5b92c13bfcf85cfead3ec
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 92513a8c24b5106e3a59c8cfa4d743e900b957bf
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199472"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249765"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>排查 Azure Database for MySQL 中的复制延迟问题
 
@@ -32,9 +32,7 @@ ms.locfileid: "98199472"
 在本文中，你将了解如何排查 Azure Database for MySQL 中的复制延迟问题。 你还将了解副本服务器上复制延迟增加的一些常见原因。
 
 > [!NOTE]
-> 无偏差通信
->
-> Microsoft 支持多样化的包容性环境。 本文包含对关键字 _master_ 和 _从属_ 的引用。 [用于偏置通信的 Microsoft 风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)识别为 exclusionary 词。 本文中使用的词是为了保持一致，因为它们目前是软件中出现的单词。 当软件更新为删除字词时，本文将更新为对齐。
+> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 >
 
 ## <a name="replication-concepts"></a>复制概念

@@ -3,12 +3,12 @@ title: 使用用于容器的 Azure Monitor 监视 Kubernetes | Microsoft Docs
 description: 本文介绍如何使用用于容器的 Azure Monitor 查看和分析 Kubernetes 群集的性能。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: a1f661089b3a6357abb3eed584401e6a8ae2e2fb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 68d0ac03ae0f6029e0f984e296a89048536f4eb7
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905700"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251278"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 监视 Kubernetes 群集性能
 
@@ -130,7 +130,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 | insights.container/pods | |
 | | PodCount | Kubernetes 中的 Pod 计数。|
 
-可以[拆分](../platform/metrics-charts.md#apply-splitting-to-a-chart)指标，以便按维度来查看它，并以可视化方式表现其片段相互之间的不同之处。 对于节点，可以按主机维度将图表分段。 对于 Pod，可按以下维度将其分段：
+可以[拆分](../platform/metrics-charts.md#apply-splitting)指标，以便按维度来查看它，并以可视化方式表现其片段相互之间的不同之处。 对于节点，可以按主机维度将图表分段。 对于 Pod，可按以下维度将其分段：
 
 * 控制器
 * Kubernetes 命名空间

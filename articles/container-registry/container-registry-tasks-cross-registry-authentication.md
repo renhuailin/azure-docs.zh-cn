@@ -3,12 +3,12 @@ title: 从 ACR 任务中进行跨注册表身份验证
 description: 配置 Azure 容器注册表任务（ACR 任务）以使用 Azure 资源的托管标识访问其他专用 Azure 容器注册表
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 9a460102eafa5c1eda2f37330887d985387d5df5
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 0e8e2690113167ad68ef1fc0bbef322491997c76
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026252"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251142"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>使用 Azure 托管标识在 ACR 任务中进行跨注册表的身份验证 
 
@@ -39,12 +39,12 @@ ms.locfileid: "93026252"
 
 ## <a name="prepare-base-registry"></a>准备基础注册表
 
-为了便于演示，请运行 [az acr import] [az-import-module]，将公用 Node.js 映像从 Docker 中心导入到基本注册表。 实际上，组织中的另一个团队或进程可能会在基本注册表中维护映像。
+出于演示目的，以一次性操作的方式，运行 [az acr import][az-acr-import]，将公共 Node.js 映像从 Docker Hub 导入到基础注册表。 在实践中，组织中的另一个团队或流程可能会维护基础注册表中的映像。
 
 ```azurecli
 az acr import --name mybaseregistry \
-  --source docker.io/library/node:9-alpine \
-  --image baseimages/node:9-alpine 
+  --source docker.io/library/node:15-alpine \
+  --image baseimages/node:15-alpine 
 ```
 
 ## <a name="define-task-steps-in-yaml-file"></a>在 YAML 文件中定义任务步骤
@@ -101,7 +101,7 @@ az role assignment create \
   --role acrpull
 ```
 
-继续 [将目标注册表凭据添加到任务](#add-target-registry-credentials-to-task)。
+执行下一步，[将目标注册表凭据添加到任务](#add-target-registry-credentials-to-task)。
 
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>选项 2：创建具有系统分配的标识的任务
 
@@ -190,8 +190,8 @@ Waiting for an agent...
 2019/06/14 22:47:45 Launching container with name: acb_step_0
 Sending build context to Docker daemon   25.6kB
 Step 1/6 : ARG REGISTRY_NAME
-Step 2/6 : FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
-9-alpine: Pulling from baseimages/node
+Step 2/6 : FROM ${REGISTRY_NAME}/baseimages/node:15-alpine
+15-alpine: Pulling from baseimages/node
 [...]
 Successfully built 41b49a112663
 Successfully tagged myregistry.azurecr.io/hello-world:cf10
@@ -211,7 +211,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
   runtime-dependency:
     registry: mybaseregistry.azurecr.io
     repository: baseimages/node
-    tag: 9-alpine
+    tag: 15-alpine
     digest: sha256:e8e92cffd464fce3be9a3eefd1b65dc9cbe2484da31c11e813a4effc6105c00f
   git:
     git-head-revision: 0f988779c97fe0bfc7f2f74b88531617f4421643

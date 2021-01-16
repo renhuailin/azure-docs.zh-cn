@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 7c3af0865282475ded0172d18aecad1dfb61721b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 5219553fe300d607212af1ef6cedf72ce6506762
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814255"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250326"
 ---
 # <a name="troubleshooting-metrics-charts"></a>排查指标图表问题
 
@@ -48,7 +48,7 @@ ms.locfileid: "97814255"
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>所有指标值超过了已锁定的 y 轴范围
 
-[锁定图表 y 轴的边界](metrics-charts.md#lock-boundaries-of-chart-y-axis)时，你可能无意中造成图表显示区域不显示图表线条。 例如，如果 y 轴已锁定为 0% 到 50% 的范围，而指标包含 100% 的常量值，则线条始终会显示在可视区域的外部，使图表看上去是空白的。
+[锁定图表 y 轴的边界](metrics-charts.md#locking-the-range-of-the-y-axis)时，你可能无意中造成图表显示区域不显示图表线条。 例如，如果 y 轴已锁定为 0% 到 50% 的范围，而指标包含 100% 的常量值，则线条始终会显示在可视区域的外部，使图表看上去是空白的。
 
 **解决方案：** 确认图表的 y 轴边界是否未锁定在指标值的范围以外。 如果 y 轴边界已锁定，你可以暂时将其重置，以确保指标值不超过图表范围。 不建议使用 **sum**、**min** 和 **max** 聚合以自动粒度锁定图表的 y 轴范围，因为在调整浏览器窗口大小或者更改不同的屏幕分辨率时，图表值会随着粒度而变化。 切换粒度可能会使图表显示区域保持空白。
 

@@ -1,15 +1,15 @@
 ---
 title: 支持的 Azure 资源管理器资源类型
 description: 提供 Azure Resource Graph 和更改历史记录支持的 Azure 资源管理器资源类型的列表。
-ms.date: 11/20/2020
+ms.date: 01/06/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: fa5a5f5741f05e6f5f30a3d04958ba0b450a1bb7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 4198c60bc298eb6a1b9902bb92e3df44648b2c0b
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988334"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251771"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表格和资源类型参考
 
@@ -35,64 +35,89 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.maintenance/configurationassignments
 - microsoft.maintenance/updates
 
+## <a name="patchassessmentresources"></a>patchassessmentresources
+
+- virtualmachines/patchassessmentresults
+- virtualmachines/patchassessmentresults/softwarepatches
+- hybridcompute/计算机/patchassessmentresults
+- hybridcompute/patchassessmentresults/softwarepatches
+
+## <a name="patchinstallationresources"></a>patchinstallationresources
+
+- virtualmachines/patchinstallationresults
+- virtualmachines/patchinstallationresults/softwarepatches
+- hybridcompute/计算机/patchinstallationresults
+- hybridcompute/patchinstallationresults/softwarepatches
+
 ## <a name="policyresources"></a>policyresources
 
 - microsoft.policyinsights/policystates
 
+## <a name="recoveryservicesresources"></a>recoveryservicesresources
+
+- dataprotection/backupvaults/backupinstances
+- dataprotection/backupvaults/backupjobs
+- dataprotection/backupvaults/backuppolicies
+- microsoft.recoveryservices/保管库/警报
+- Microsoft.recoveryservices/保管库/backupFabrics/protectionContainers/protectedItems (备份项) 
+- microsoft.recoveryservices/保管库/backupjobs
+- microsoft.recoveryservices/保管库/backuppolicies
+
 ## <a name="resourcecontainers"></a>resourcecontainers
 
-- microsoft.resources/subscriptions
-- microsoft.resources/subscriptions/resourcegroups
+-  (订阅的 microsoft .resources/订阅) 
+- ResourceGroups (资源组) 
 
 ## <a name="resources"></a>resources
 
-- 84codes.cloudamqp/servers
-- citrix.services/xenappessentials
-- citrix.services/xendesktopessentials
-- conexlink.mycloudit/accounts
-- crypteron.datasecurity/apps
+- 84codes.CloudAMQP/server (CloudAMQP) 
+- Citrix (Citrix 虚拟应用概要) 
+- Citrix (Citrix 虚拟桌面 Essentials) 
+- Conexlink MyCloudIt/accounts (MyCloudIT) 
+- Crypteron DataSecurity/apps (Crypteron) 
 - gridpro.evops/accounts
 - gridpro.evops/accounts/eventrules
 - gridpro.evops/accounts/requesttemplates
 - gridpro.evops/accounts/views
-- hive.streaming/services
+- Hive. 流式处理/服务 (Hive 流式处理) 
 - incapsula.waf/accounts
-- livearena.broadcast/services
-- mailjet.email/services
-- microsoft.aad/domainservices
+- LiveArena 广播/服务 (LiveArena 广播) 
+- Mailjet (Mailjet Email Service) 
+- DomainServices (Azure AD 域服务) 
 - microsoft.aadiam/azureadmetrics
-- microsoft.aadiam/privatelinkforazuread
+- 用于 Azure AD 的 aadiam/privateLinkForAzureAD (专用链接) 
 - microsoft.aadiam/tenants
 - microsoft.agfoodplatform/farmbeats
 - microsoft.aisupercomputer/accounts
 - microsoft.aisupercomputer/accounts/jobgroups
 - microsoft.aisupercomputer/accounts/jobgroups/jobs
 - microsoft.alertsmanagement/actionrules
-- alertsmanagement/resourcehealthalertrules
+- microsoft.alertsmanagement/resourcehealthalertrules
 - microsoft.alertsmanagement/smartdetectoralertrules
-- microsoft.analysisservices/servers
-- microsoft.apimanagement/service
+- Microsoft.analysisservices.sharepoint.integration.dll/server (Analysis Services) 
+- anybuild/群集
+-  (API 管理服务) 的 ApiManagement/service
 - microsoft.appassessment/migrateprojects
-- microsoft.appconfiguration/configurationstores
-- microsoft.appplatform/spring
+- AppConfiguration/configurationStores (应用配置) 
+- AppPlatform/春季 (Azure 春季 Cloud) 
 - microsoft.archive/collections
-- microsoft.attestation/attestationproviders
-- microsoft.authorization/resourcemanagementprivatelinks
+- AttestationProviders (证明提供者) 
+- ResourceManagementPrivateLinks (资源管理专用链接) 
 - microsoft.automanage/accounts
 - microsoft.automanage/configurationprofilepreferences
-- microsoft.automation/automationaccounts
+-  (Automation 帐户) 的 AutomationAccounts
 - microsoft.automation/automationaccounts/configurations
-- microsoft.automation/automationaccounts/runbooks
+- AutomationAccounts/runbook (Runbook) 
 - microsoft.autonomousdevelopmentplatform/accounts
-- microsoft.autonomoussystems/workspaces
-- microsoft.avs/privateclouds
+- AutonomousSystems/工作区 (盆景) 
+- PrivateClouds (AVS 私有云) 
 - microsoft.azconfig/configurationstores
-- microsoft.azureactivedirectory/b2cdirectories
-- microsoft.azureactivedirectory/guestusages
-- azurearcdata/datacontrollers
-- azurearcdata/postgresinstances
-- azurearcdata/sqlmanagedinstances
-- azurearcdata/sqlserverinstances
+- AzureActiveDirectory/b2cDirectories (B2C 租户) 
+- AzureActiveDirectory/guestUsages (来宾使用情况) 
+- AzureArcData/dataControllers (Azure Arc 数据控制器) 
+- AzureArcData/postgresInstances (Azure Database for PostgreSQL 服务器组-Azure Arc) 
+-  (SQL 托管实例的 AzureArcData/sqlManagedInstances-Azure Arc) 
+- AzureArcData/sqlServerInstances (SQL Server-Azure Arc) 
 - microsoft.azuredata/datacontrollers
 - microsoft.azuredata/hybriddatamanagers
 - microsoft.azuredata/postgresinstances
@@ -100,318 +125,337 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.azuredata/sqlinstances
 - microsoft.azuredata/sqlmanagedinstances
 - microsoft.azuredata/sqlserverinstances
-- microsoft.azuredata/sqlserverregistrations
+- AzureData/sqlServerRegistrations (SQL Server 注册表) 
 - microsoft.azurestack/edgesubscriptions
 - microsoft.azurestack/linkedsubscriptions
-- microsoft.azurestack/registrations
-- microsoft.azurestackhci/clusters
+- Test-azurestack/注册 (Azure Stack 中心) 
+- AzureStackHCI/群集 (Azure Stack HCI) 
 - microsoft.baremetal/consoleconnections
-- microsoft.baremetal/crayservers
-- microsoft.baremetal/monitoringservers
-- baremetalinfrastructure/baremetalinstances
-- microsoft.batch/batchaccounts
+- BareMetal/crayServers (Cray 服务器) 
+- BareMetal/monitoringServers (监视服务器) 
+- BareMetalInfrastructure/bareMetalInstances (BareMetal 实例) 
+- Microsoft.Batch/batchAccounts (Batch 帐户) 
 - microsoft.batchai/clusters
 - microsoft.batchai/fileservers
 - microsoft.batchai/jobs
 - microsoft.batchai/workspaces
-- microsoft.bing/accounts
-- microsoft.bingmaps/mapapis
+- Microsoft bing/accounts (Bing 资源) 
+- BingMaps/mapApis (适用于企业的必应地图 API) 
 - microsoft.biztalkservices/biztalk
-- microsoft.blockchain/blockchainmembers
-- microsoft.blockchain/cordamembers
-- microsoft.blockchain/watchers
-- microsoft.botservice/botservices
-- microsoft.cache/redis
-- microsoft.cache/redisenterprise
-- microsoft.cdn/cdnwebapplicationfirewallpolicies
-- microsoft.cdn/profiles
-- microsoft.cdn/profiles/endpoints
-- microsoft.certificateregistration/certificateorders
+- 区块链/blockchainMembers (Azure 区块链 Service) 
+- 区块链/cordaMembers (Corda) 
+- 区块链/观察程序 (区块链数据管理器) 
+- BotService/botServices (机器人服务) 
+- 用于 Redis 的 Redis (Azure 缓存) 
+- RedisEnterprise (Redis Enterprise) 
+-  (Web 应用程序防火墙策略 (WAF) # A3
+-  (CDN 配置文件的 microsoft cdn/配置文件) 
+- microsoft cdn/配置文件/afdendpoints
+- microsoft (终结点的 cdn/配置文件/终结点) 
+- CertificateRegistration/Certificateorder (应用服务证书) 
 - microsoft.chaos/chaosexperiments
-- microsoft.classiccompute/domainnames
-- microsoft.classiccompute/virtualmachines
-- microsoft.classicnetwork/networksecuritygroups
-- microsoft.classicnetwork/reservedips
-- microsoft.classicnetwork/virtualnetworks
-- microsoft.classicstorage/storageaccounts
+- Microsoft.classiccompute/domainNames (云服务 (经典) # A3
+- Microsoft.classiccompute/VirtualMachines (虚拟机 (经典) # A3
+- Microsoft.classicnetwork/networkSecurityGroups (网络安全组 (经典) # A3
+- Microsoft.classicnetwork/Reservedip (保留 IP 地址 (经典) # A3
+- Microsoft.classicnetwork/virtualNetworks (虚拟网络 (经典) # A3
+- ClassicStorage/StorageAccounts (存储帐户 (经典) # A3
 - microsoft.cloudes/accounts
 - microsoft.cloudsearch/indexes
-- microsoft.cloudtest/accounts
-- cloudtest/hostedpools
-- microsoft.cloudtest/images
-- microsoft.cloudtest/pools
+- CloudTest/accounts (CloudTest 帐户) 
+- CloudTest/hostedpools (1ES 托管池) 
+- CloudTest/images (CloudTest 图像) 
+- CloudTest/pool (CloudTest 池) 
 - microsoft.codespaces/plans
-- microsoft.cognition/syntheticsaccounts
-- microsoft.cognitiveservices/accounts
-- microsoft.compute/availabilitysets
-- microsoft.compute/cloudservices
-- microsoft.compute/diskaccesses
-- microsoft.compute/diskencryptionsets
-- microsoft.compute/disks
-- microsoft.compute/galleries
+- 认知/syntheticsAccounts (Synthetics 帐户) 
+- Cognitiveservices account/accounts (认知服务) 
+- AvailabilitySets (可用性集) 
+- capacityreservationgroups/计算
+- capacityreservationgroups/capacityreservations
+- capacityreservations/计算
+-  (云服务 (扩展支持) 的 "计算/cloudServices"
+- DiskAccesses (磁盘访问) 
+- DiskEncryptionSets (Disk Encryption Sets) 
+-  (磁盘的) 计算/磁盘
+-  (共享图像库的计算/库) 
 - microsoft.compute/galleries/applications
 - microsoft.compute/galleries/applications/versions
-- microsoft.compute/galleries/images
-- microsoft.compute/galleries/images/versions
-- microsoft.compute/hostgroups
-- microsoft.compute/hostgroups/hosts
-- microsoft.compute/images
-- microsoft.compute/proximityplacementgroups
+-  (映像定义的 ") 计算/库/图像"
+- Microsoft (映像版本) 的计算/库/映像/版本
+- Hostgroups (主机组) 
+- Hostgroups/hosts (主机) 
+-  (映像的) 计算/映像
+- ProximityPlacementGroups (邻近组) 
 - microsoft.compute/restorepointcollections
 - microsoft.compute/sharedvmextensions
 - microsoft.compute/sharedvmextensions/versions
 - microsoft.compute/sharedvmimages
 - microsoft.compute/sharedvmimages/versions
-- microsoft.compute/snapshots
-- microsoft.compute/sshpublickeys
+- Microsoft. 计算/快照 (快照) 
+- SshPublicKeys (SSH 密钥) 
 - microsoft.compute/swiftlets
-- microsoft.compute/virtualmachines
+- VirtualMachines (虚拟机) 
 - microsoft.compute/virtualmachines/extensions
 - microsoft.compute/virtualmachines/runcommands
-- microsoft.compute/virtualmachinescalesets
-- microsoft.confluent/organizations
-- microsoft.connectedcache/cachenodes
-- microsoft.containerinstance/containergroups
-- microsoft.containerregistry/registries
+- VirtualMachineScaleSets (虚拟机规模集) 
+- Confluent/组织 (Confluent 组织) 
+- ConnectedCache/cacheNodes (连接缓存资源) 
+- connectedvehicle/platformaccounts
+- ContainerInstance/containerGroups (容器实例) 
+- Microsoft.containerregistry/注册表 (容器注册表) 
 - microsoft.containerregistry/registries/agentpools
 - microsoft.containerregistry/registries/buildtasks
-- microsoft.containerregistry/registries/replications
+- Microsoft.containerregistry/注册表 (容器注册表复制) 
 - microsoft.containerregistry/registries/taskruns
 - microsoft.containerregistry/registries/tasks
-- microsoft.containerregistry/registries/webhooks
-- microsoft.containerservice/containerservices
-- microsoft.containerservice/managedclusters
+- Microsoft.containerregistry//webhook (容器注册表 webhook) 
+- ContainerService/containerServices (容器服务 (弃用) # A3
+- ContainerService/managedClusters (Kubernetes services) 
 - microsoft.containerservice/openshiftmanagedclusters
 - microsoft.contoso/clusters
 - microsoft.contoso/employees
-- microsoft contoso/塔
+- microsoft.contoso/towers
 - microsoft.costmanagement/connectors
 - microsoft.customproviders/resourceproviders
 - microsoft.d365customerinsights/instances
-- microsoft.databox/jobs
-- microsoft.databoxedge/databoxedgedevices
-- microsoft.databricks/workspaces
-- microsoft.datacatalog/catalogs
+- DataBox/job (Data Box) 
+- DataBoxEdge/dataBoxEdgeDevices (Azure Stack Edge/Data Box Gateway) 
+-  (Azure Databricks 服务的 Databricks/工作区) 
+-  (数据目录的 Microsoft.datacatalog/目录) 
 - microsoft.datacatalog/datacatalogs
-- microsoft.datacollaboration/workspaces
-- microsoft.datadog/monitors
-- microsoft.datafactory/datafactories
-- microsoft.datafactory/factories
-- microsoft.datalakeanalytics/accounts
-- microsoft.datalakestore/accounts
-- microsoft.datamigration/services
-- microsoft.datamigration/services/projects
+-  (数据协作) 的 DataCollaboration/工作区
+- Datadog/monitor (Datadog) 
+- DataFactory/Microsoft.azure.management.datafactories (数据工厂) 
+- DataFactory/工厂 (数据工厂 (V2) # A3
+- DataLakeAnalytics/accounts (Data Lake Analytics) 
+- DataLakeStore/accounts (Data Lake Storage Gen1) 
+- microsoft.datamigration/控制器
+-  (Azure 数据库迁移服务的 Microsoft.datamigration/服务) 
+-  (Azure 数据库迁移项目的 Microsoft.datamigration/服务/项目) 
 - microsoft.datamigration/slots
-- microsoft.dataprotection/backupvaults
+- DataProtection/BackupVaults (备份保管库) 
 - microsoft.dataprotection/resourceoperationgatekeepers
-- microsoft.datashare/accounts
-- microsoft.dbformariadb/servers
-- microsoft.dbformysql/flexibleservers
-- microsoft.dbformysql/servers
-- microsoft.dbforpostgresql/flexibleservers
-- microsoft.dbforpostgresql/servergroups
-- microsoft.dbforpostgresql/servers
-- microsoft.dbforpostgresql/serversv2
+- DataShare/accounts (数据共享) 
+- DBforMariaDB/server (Azure Database for MariaDB 服务器) 
+- DBforMySQL/flexibleServers (Azure Database for MySQL 灵活的服务器) 
+- DBforMySQL/server (Azure Database for MySQL 服务器) 
+- DBforPostgreSQL/flexibleServers (Azure Database for PostgreSQL 灵活的服务器) 
+- DBforPostgreSQL/serverGroups (Azure Database for PostgreSQL 服务器组) 
+- DBforPostgreSQL/server (Azure Database for PostgreSQL 服务器) 
+- DBforPostgreSQL/serversv2 (Azure Database for PostgreSQL 服务器 v2) 
 - microsoft.dbforpostgresql/singleservers
-- delegatednetwork/控制器
+- microsoft.delegatednetwork/controller
 - microsoft.delegatednetwork/delegatedsubnets
 - microsoft.delegatednetwork/orchestratorinstances
 - microsoft.deploymentmanager/artifactsources
-- microsoft.deploymentmanager/rollouts
+- DeploymentManager/部署 (部署) 
 - microsoft.deploymentmanager/servicetopologies
 - microsoft.deploymentmanager/servicetopologies/services
 - microsoft.deploymentmanager/servicetopologies/services/serviceunits
 - microsoft.deploymentmanager/steps
-- microsoft.desktopvirtualization/applicationgroups
-- microsoft.desktopvirtualization/hostpools
-- microsoft.desktopvirtualization/workspaces
+- DesktopVirtualization/ApplicationGroups (应用程序组) 
+- DesktopVirtualization/HostPools (主机池) 
+- desktopvirtualization/scalingplans
+-  (工作区的 DesktopVirtualization/工作区) 
 - microsoft.devices/elasticpools
 - microsoft.devices/elasticpools/iothubtenants
-- microsoft.devices/iothubs
-- microsoft.devices/provisioningservices
-- microsoft.deviceupdate/accounts
+-  (IoT 中心) 的 IotHubs/设备
+-  (设备预配服务) 的 ProvisioningServices/设备
+- 用于 IoT 中心 (设备更新的 DeviceUpdate/帐户) 
 - microsoft.deviceupdate/accounts/instances
-- microsoft.devops/pipelines
+- devops/管道 (DevOps 入门) 
 - microsoft.devspaces/controllers
 - microsoft.devtestlab/labcenters
-- microsoft.devtestlab/labs
+- Microsoft.devtestlab/实验室 (开发测试实验室) 
 - microsoft.devtestlab/labs/servicerunners
-- microsoft.devtestlab/labs/virtualmachines
+- Microsoft.devtestlab/实验室/virtualMachines (虚拟机) 
 - microsoft.devtestlab/schedules
-- microsoft.digitaltwins/digitaltwinsinstances
-- microsoft.documentdb/databaseaccounts
-- microsoft.domainregistration/domains
+- DigitalTwins/digitalTwinsInstances (Azure 数字孪生) 
+- Azure Cosmos DB 帐户 (Microsoft.DocumentDb/databaseAccounts) 
+- DomainRegistration/域 (应用服务域) 
+-  (弹性) 的 Microsoft 弹性/监视器
 - microsoft.enterpriseknowledgegraph/services
-- microsoft.eventgrid/domains
-- microsoft.eventgrid/partnernamespaces
-- microsoft.eventgrid/partnerregistrations
-- microsoft.eventgrid/partnertopics
-- microsoft.eventgrid/systemtopics
-- microsoft.eventgrid/topics
-- microsoft.eventhub/clusters
-- microsoft.eventhub/namespaces
-- microsoft.experimentation/experimentworkspaces
-- microsoft.extendedlocation/customlocations
+- EventGrid/域 (事件网格域) 
+- EventGrid/partnerNamespaces (事件网格伙伴命名空间) 
+- EventGrid/partnerRegistrations (事件网格伙伴注册) 
+- EventGrid/partnerTopics (事件网格伙伴主题) 
+- EventGrid/systemTopics (事件网格系统主题) 
+- EventGrid/主题 (事件网格主题) 
+-  (事件中心群集的 node.js/群集) 
+- Microsoft EventHub/命名空间 (事件中心命名空间) 
+- ExperimentWorkspaces/ (试验工作区) 
+- ExtendedLocation/CustomLocations (自定义位置) 
 - microsoft.falcon/namespaces
 - microsoft.footprintmonitoring/profiles
 - microsoft.gaming/titles
-- microsoft.genomics/accounts
+- 基因组学/accounts (基因组学帐户) 
 - microsoft.guestconfiguration/automanagedaccounts
-- microsoft.hanaonazure/hanainstances
-- microsoft.hanaonazure/sapmonitors
+- Azure 上的 HanaOnAzure/hanaInstances (SAP HANA) 
+- HanaOnAzure/sapMonitors (适用于 SAP 解决方案的 Azure 监视器) 
 - microsoft.hardwaresecuritymodules/dedicatedhsms
-- microsoft.hdinsight/clusters
-- microsoft.healthcareapis/services
+- Microsoft hdinsight/群集 (HDInsight 群集) 
+- HealthBot/healthBots (Azure Health 机器人) 
+- HealthcareApis/services (用于 FHIR 的 Azure API) 
 - microsoft.healthcareapis/services/privateendpointconnections
-- microsoft.hybridcompute/machines
+- healthcareapis/工作区
+- healthcareapis/工作区/dicomservices
+- HybridCompute/计算机 (服务器-Azure Arc) 
 - microsoft.hybridcompute/machines/extensions
-- microsoft.hybridcompute/privatelinkscopes
-- microsoft.hybriddata/datamanagers
-- microsoft.hybridnetwork/devices
-- microsoft.hybridnetwork/networkfunctions
+- HybridCompute/privateLinkScopes (Azure Arc 专用链接范围) 
+- HybridData/dataManagers (StorSimple 数据管理器) 
+- HybridNetwork/设备 (Azure 网络函数管理器–设备) 
+- HybridNetwork/networkFunctions (Azure 网络函数管理器–网络函数) 
 - microsoft.hybridnetwork/virtualnetworkfunctions
-- microsoft.importexport/jobs
+-  (导入/导出作业的 ImportExport/作业) 
 - microsoft.industrydatalifecycle/basemodels
 - microsoft.industrydatalifecycle/custodiancollaboratives
 - microsoft.industrydatalifecycle/derivedmodels
 - microsoft.industrydatalifecycle/membercollaboratives
+- industrydatalifecycle/modelmappings
 - microsoft.industrydatalifecycle/pipelinesets
 - microsoft.insights/actiongroups
 - microsoft.insights/activitylogalerts
 - microsoft.insights/alertrules
 - microsoft.insights/autoscalesettings
-- microsoft.insights/components
-- microsoft.insights/datacollectionrules
+-  (Application Insights 的 microsoft insights/组件) 
+- datacollectionrules (数据收集规则) 
 - microsoft.insights/guestdiagnosticsettings
 - microsoft.insights/metricalerts
 - microsoft.insights/notificationgroups
 - microsoft.insights/notificationrules
-- microsoft.insights/privatelinkscopes
+- PrivateLinkScopes (Azure Monitor 私有链接范围) 
 - microsoft.insights/querypacks
 - microsoft.insights/scheduledqueryrules
-- microsoft.insights/webtests
-- microsoft.insights/workbooks
-- microsoft.insights/workbooktemplates
-- microsoft.intelligentitdigitaltwin/digitaltwins
-- microsoft.iotcentral/iotapps
-- microsoft.iotspaces/graph
+- webtest (可用性测试) 
+-  (Azure 工作簿的 microsoft insights/工作簿) 
+- workbooktemplates (Azure 工作簿模板) 
+- IntelligentITDigitalTwin/digitalTwins (Minervas) 
+- intelligentitdigitaltwin/digitaltwins/资产
+- IoT Central 应用程序的 IoTCentral/IoTApps () 
+- IoTSpaces/Graph (数字孪生 (弃用) # A3
 - microsoft.keyvault/hsmpools
 - microsoft.keyvault/managedhsms
-- microsoft.keyvault/vaults
-- microsoft.kubernetes/connectedclusters
-- microsoft.kusto/clusters
-- microsoft.kusto/clusters/databases
-- microsoft.labservices/labaccounts
-- microsoft.logic/integrationaccounts
-- microsoft.logic/integrationserviceenvironments
-- microsoft.logic/integrationserviceenvironments/managedapis
-- microsoft.logic/workflows
-- microsoft.machinelearning/commitmentplans
-- microsoft.machinelearning/webservices
-- microsoft.machinelearning/workspaces
+-  (Key vault) 的 KeyVault/保管库
+- Kubernetes/connectedClusters (Kubernetes-Azure Arc) 
+-  (Azure 数据资源管理器群集的 Kusto/群集) 
+-  (Azure 数据资源管理器数据库的 Kusto/群集/数据库) 
+- LabServices/labAccounts (实验室服务) 
+- LoadTestService/LoadTests (云本机负载测试) 
+- IntegrationAccounts (集成帐户) 
+- IntegrationServiceEnvironments (Integration Service 环境) 
+- IntegrationServiceEnvironments/managedApis (托管连接器) 
+- 逻辑应用 (逻辑应用) 
+- Logz/monitor (Logz 主帐户) 
+- Logz/monitor/accounts (Logz SubAccount) 
+- Default-machinelearning-southcentralus/commitmentPlans (机器学习 Studio (经典) web 服务计划) 
+- Default-machinelearning-southcentralus/webServices (机器学习 Studio (经典) web 服务) 
+- Default-machinelearning-southcentralus/工作区 (机器学习 Studio (经典) 工作区) 
 - microsoft.machinelearningcompute/operationalizationclusters
-- microsoft.machinelearningservices/workspaces
-- machinelearningservices/工作区/batchendpoints
+- machinelearningservices/modelinventories
+- machinelearningservices/modelinventory
+- MachineLearningServices/工作区 (机器学习) 
+- microsoft.machinelearningservices/workspaces/batchendpoints
+- machinelearningservices/工作区/batchendpoints/部署
 - microsoft.machinelearningservices/workspaces/inferenceendpoints
 - microsoft.machinelearningservices/workspaces/inferenceendpoints/deployments
-- microsoft.machinelearningservices/workspaces/onlineendpoints
-- microsoft.machinelearningservices/workspaces/onlineendpoints/deployments
-- microsoft.maintenance/maintenanceconfigurations
+-  (ML 应用) 的 MachineLearningServices/工作区/onlineEndpoints
+- MachineLearningServices/工作区/onlineEndpoints/部署 (ML 应用部署) 
+- MaintenanceConfigurations (维护配置) 
 - microsoft.maintenance/maintenancepolicies
 - microsoft.managedidentity/groups
-- microsoft.managedidentity/userassignedidentities
+- 对 microsoft.managedidentity/userAssignedIdentities (托管标识) 
 - microsoft.managednetwork/managednetworkgroups
 - microsoft.managednetwork/managednetworkpeeringpolicies
 - microsoft.managednetwork/managednetworks
 - microsoft.managednetwork/managednetworks/managednetworkgroups
 - microsoft.managednetwork/managednetworks/managednetworkpeeringpolicies
-- microsoft.maps/accounts
-- microsoft. maps/帐户/创建者
-- microsoft.maps/accounts/privateatlases
-- microsoft.marketplaceapps/classicdevservices
-- microsoft.media/mediaservices
-- microsoft.media/mediaservices/liveevents
-- microsoft.media/mediaservices/streamingendpoints
+-  (Azure Maps 帐户的 Microsoft Maps/帐户) 
+- microsoft.maps/accounts/creators
+-  (Azure Maps Creator 资源的 Microsoft Maps/accounts/privateAtlases) 
+- MarketplaceApps/classicDevServices (经典开发服务) 
+-  (Media Services) 的 "media/windowsazure.mediaservices"
+- windowsazure.mediaservices/liveevents (实时事件) 
+- windowsazure.mediaservices/Streamingendpoint (流式处理终结点) 
 - microsoft.media/mediaservices/transforms
 - microsoft.microservices4spring/appclusters
 - microsoft.migrate/assessmentprojects
 - microsoft.migrate/migrateprojects
 - microsoft.migrate/movecollections
-- microsoft.migrate/projects
-- microsoft.mixedreality/holographicsbroadcastaccounts
-- microsoft.mixedreality/objectunderstandingaccounts
-- microsoft.mixedreality/remoterenderingaccounts
-- microsoft.mixedreality/spatialanchorsaccounts
+-  (迁移项目的迁移/项目) 
+- MixedReality/holographicsBroadcastAccounts (Holographics 广播帐户) 
+- MixedReality/objectUnderstandingAccounts (对象了解帐户) 
+- MixedReality/remoteRenderingAccounts (远程呈现帐户) 
+- MixedReality/spatialAnchorsAccounts (空间锚定帐户) 
 - microsoft.mixedreality/surfacereconstructionaccounts
-- microsoft.netapp/netappaccounts
+- NetAppAccounts (NetApp 帐户) 
 - microsoft.netapp/netappaccounts/backuppolicies
-- microsoft.netapp/netappaccounts/capacitypools
-- microsoft.netapp/netappaccounts/capacitypools/volumes
+- NetAppAccounts/capacityPools (容量池) 
+- NetAppAccounts/capacityPools/卷 (卷) 
 - microsoft.netapp/netappaccounts/capacitypools/volumes/mounttargets
-- microsoft.netapp/netappaccounts/capacitypools/volumes/snapshots
-- microsoft.network/applicationgateways
-- microsoft.network/applicationgatewaywebapplicationfirewallpolicies
-- microsoft.network/applicationsecuritygroups
-- microsoft.network/azurefirewalls
-- microsoft.network/bastionhosts
-- microsoft.network/connections
+- NetAppAccounts/capacityPools/卷/快照 (快照) 
+- ApplicationGateways (应用程序网关) 
+-  (Web 应用程序防火墙策略 (WAF) # A3
+- ApplicationSecurityGroups (应用程序安全组) 
+- AzureFirewalls (防火墙) 
+- BastionHosts (堡垒) 
+-  (连接) 的网络/连接
 - microsoft.network/customipprefixes
 - microsoft.network/ddoscustompolicies
-- microsoft.network/ddosprotectionplans
-- microsoft.network/dnszones
+- DdosProtectionPlans (DDoS 防护计划) 
+- DnsZones (DNS 区域) 
 - microsoft.network/dscpconfigurations
-- microsoft.network/expressroutecircuits
+- ExpressRouteCircuits (ExpressRoute 线路) 
 - microsoft.network/expressroutecrossconnections
 - microsoft.network/expressroutegateways
-- microsoft.network/expressrouteports
-- microsoft.network/firewallpolicies
-- microsoft.network/frontdoors
-- microsoft.network/frontdoorwebapplicationfirewallpolicies
+-  (ExpressRoute 直接) 的 expressRoutePorts/网络
+- FirewallPolicies (防火墙策略) 
+- Frontdoors (前门) 
+-  (Web 应用程序防火墙策略 (WAF) # A3
 - microsoft.network/ipallocations
-- microsoft.network/ipgroups
-- microsoft.network/loadbalancers
-- microsoft.network/localnetworkgateways
+- IpGroups (IP 组) 
+-  (负载均衡器的 LoadBalancers/) 
+-  (本地网络网关的 localnetworkgateways/网络) 
 - microsoft.network/mastercustomipprefixes
-- microsoft.network/natgateways
-- microsoft.network/networkexperimentprofiles
+- NatGateways (NAT 网关) 
+- NetworkExperimentProfiles (Internet 分析器配置文件) 
 - microsoft.network/networkintentpolicies
-- microsoft.network/networkinterfaces
-- microsoft.network/networkmanagers
+-  (网络接口的 networkinterfaces/网络接口) 
+-  (网络管理器的 networkManagers/网络管理器) 
 - microsoft.network/networkprofiles
-- microsoft.network/networksecuritygroups
+- NetworkSecurityGroups (网络安全组) 
 - microsoft.network/networkvirtualappliances
-- microsoft.network/networkwatchers
+-  (网络观察程序) 的 networkwatchers/网络
 - microsoft.network/networkwatchers/connectionmonitors
-- microsoft.network/networkwatchers/flowlogs
+- networkwatchers/flowlogs (NSG Flow 日志) 
 - microsoft.network/networkwatchers/lenses
 - microsoft.network/networkwatchers/pingmeshes
 - microsoft.network/p2svpngateways
-- microsoft.network/privatednszones
+- PrivateDnsZones (专用 DNS 区域) 
 - microsoft.network/privatednszones/virtualnetworklinks
 - microsoft.network/privateendpointredirectmaps
-- microsoft.network/privateendpoints
-- microsoft.network/privatelinkservices
-- microsoft.network/publicipaddresses
-- microsoft.network/publicipprefixes
-- microsoft.network/routefilters
-- microsoft.network/routetables
+-  (专用终结点的 privateEndpoints/) 
+- PrivateLinkServices (私有链接服务) 
+- PublicIpAddresses (公共 IP 地址) 
+- PublicIpPrefixes (公共 IP 前缀) 
+- RouteFilters (路由筛选器) 
+-  (路由表的 routeTables/) 
 - microsoft.network/sampleresources
 - microsoft.network/securitypartnerproviders
-- microsoft.network/serviceendpointpolicies
-- microsoft.network/trafficmanagerprofiles
+- ServiceEndpointPolicies (服务终结点策略) 
+-  (流量管理器配置文件的 trafficmanagerprofiles/) 
 - microsoft.network/virtualhubs
-- virtualhubs/bgpconnections
-- virtualhubs/ipconfiguration
-- microsoft.network/virtualnetworkgateways
-- microsoft.network/virtualnetworks
+- microsoft.network/virtualhubs/bgpconnections
+- microsoft.network/virtualhubs/ipconfigurations
+-  (虚拟网络网关的 virtualNetworkGateways/网络) 
+-  (虚拟网络) 的 virtualNetworks/虚拟网络
 - microsoft.network/virtualnetworktaps
 - microsoft.network/virtualrouters
-- microsoft.network/virtualwans
+-  (虚拟 Wan) 的 virtualWans/虚拟网络
 - microsoft.network/vpngateways
 - microsoft.network/vpnserverconfigurations
 - microsoft.network/vpnsites
-- microsoft.notificationhubs/namespaces
-- microsoft.notificationhubs/namespaces/notificationhubs
+- NotificationHubs/命名空间 (通知中心命名空间) 
+- NotificationHubs/命名空间/notificationHubs (通知中心) 
 - microsoft.nutanix/interfaces
 - microsoft.nutanix/nodes
 - microsoft.objectstore/osnamespaces
@@ -420,161 +464,163 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.offazure/mastersites
 - microsoft.offazure/serversites
 - microsoft.offazure/vmwaresites
-- microsoft.openlogisticsplatform/workspaces
+- OpenLogisticsPlatform/工作区 (打开供应链平台) 
 - microsoft.operationalinsights/clusters
-- microsoft.operationalinsights/querypacks
-- microsoft.operationalinsights/workspaces
-- microsoft.operationsmanagement/solutions
+- Microsoft.operationalinsights/querypacks (Log Analytics 查询包) 
+- Microsoft.operationalinsights/工作区 (Log Analytics 工作区) 
+- 为 microsoft.operationsmanagement/解决方案 (解决方案) 
 - microsoft.operationsmanagement/views
 - microsoft.orbital/contactprofiles
 - microsoft.orbital/spacecrafts
-- microsoft.peering/peerings
-- microsoft.peering/peeringservices
-- microsoft.portal/dashboards
+- 对等互连 (对等互连) 
+- PeeringServices (对等互连服务) 
+-  (共享仪表板的 Microsoft 门户/仪表板) 
 - microsoft.portalsdk/rootresources
 - microsoft.powerbi/privatelinkservicesforpowerbi
 - microsoft.powerbi/tenants
 - microsoft.powerbi/workspacecollections
-- microsoft.powerbidedicated/capacities
-- microsoft.projectbabylon/accounts
-- 监控范围/帐户
-- microsoft.quantum/workspaces
-- microsoft.recoveryservices/vaults
-- microsoft.redhatopenshift/openshiftclusters
-- microsoft.relay/namespaces
+- PowerBIDedicated/容量 (Power BI Embedded) 
+- ProjectBabylon/Accounts (Babylon 帐户) 
+- 监控范围/Accounts (监控范围帐户) 
+-  (量子工作区的量子/工作区) 
+- Microsoft.recoveryservices/保管库 (恢复服务保管库) 
+- RedHatOpenShift/openShiftClusters (OpenShift 群集) 
+-  (中继) 的 Microsoft 中继/命名空间
 - microsoft.remoteapp/collections
 - microsoft.resiliency/chaosexperiments
-- microsoft.resourcegraph/queries
-- microsoft.resources/deploymentscripts
-- microsoft.resources/templatespecs
+- resourceconnector/设备
+- Resourcegraph/查询 (资源关系图查询) 
+- DeploymentScripts (部署脚本) 
+- TemplateSpecs (模板规格) 
 - microsoft.resources/templatespecs/versions
-- microsoft.saas/applications
-- microsoft.scheduler/jobcollections
+- Microsoft SaaS/应用程序 (软件即服务 (经典) # A3
+- 免费 (计划程序作业集合) 
 - microsoft.scvmm/clouds
-- microsoft.scvmm/virtualmachines
+- VirtualMachines (SCVMM 虚拟机-Azure Arc) 
 - microsoft.scvmm/virtualmachinetemplates
 - microsoft.scvmm/virtualnetworks
 - microsoft.scvmm/vmmservers
-- microsoft.search/searchservices
+- SearchServices (Search services) 
 - microsoft.security/automations
 - microsoft.security/iotsecuritysolutions
-- microsoft.securitydetonation/chambers
-- microsoft.servicebus/namespaces
-- microsoft.servicefabric/clusters
+- SecurityDetonation/商会联合会 (Security 引爆商会联合会) 
+-  (Service Bus 命名空间的 node.js/命名空间) 
+- ServiceFabric/群集 (Service Fabric 群集) 
 - microsoft.servicefabric/containergroupsets
-- microsoft.servicefabric/managedclusters
-- microsoft.servicefabricmesh/applications
+-  (托管 Service Fabric 群集的 ServiceFabric/managedclusters) 
+-  (网格应用程序的 ServiceFabricMesh/应用程序) 
 - microsoft.servicefabricmesh/gateways
 - microsoft.servicefabricmesh/networks
 - microsoft.servicefabricmesh/secrets
 - microsoft.servicefabricmesh/volumes
-- microsoft.serviceshub/connectors
-- microsoft.signalrservice/signalr
+- ServicesHub/连接器 (服务中心连接器) 
+- SignalRService/SignalR (SignalR) 
 - microsoft.singularity/accounts
 - microsoft.solutions/appliancedefinitions
 - microsoft.solutions/appliances
-- microsoft.solutions/applicationdefinitions
-- microsoft.solutions/applications
+- ApplicationDefinitions (服务目录托管应用程序定义) 
+-  (托管应用程序的 Microsoft. 解决方案/应用程序) 
 - microsoft.solutions/jitrequests
 - microsoft.spoolservice/spools
-- microsoft.sql/instancepools
-- microsoft.sql/managedinstances
-- microsoft.sql/managedinstances/databases
-- microsoft.sql/servers
-- microsoft.sql/servers/databases
-- microsoft.sql/servers/elasticpools
+- InstancePools (实例池) 
+-  (SQL 托管实例的 .sql/managedInstances) 
+- ManagedInstances/database (托管数据库) 
+- SQL server (sql server) 
+- SQL 数据库 (.sql/服务器/数据库) 
+-  (SQL 弹性池的 Sql/servers/elasticpools) 
 - microsoft.sql/servers/jobaccounts
-- microsoft.sql/servers/jobagents
-- microsoft.sql/virtualclusters
+-  (弹性作业代理的 Sql/servers/jobAgents) 
+- VirtualClusters (虚拟群集) 
 - microsoft.sqlvirtualmachine/sqlvirtualmachinegroups
-- microsoft.sqlvirtualmachine/sqlvirtualmachines
+-  (SQL 虚拟机的 SqlVirtualMachine/SqlVirtualMachines) 
 - microsoft.sqlvm/dwvm
-- microsoft.storage/storageaccounts
-- microsoft.storagecache/caches
-- microsoft.storagesync/storagesyncservices
-- microsoft.storagesyncdev/storagesyncservices
-- microsoft.storagesyncint/storagesyncservices
-- microsoft.storsimple/managers
-- microsoft.streamanalytics/clusters
-- microsoft.streamanalytics/streamingjobs
+-  (存储帐户) 的 StorageAccounts/存储帐户
+- StorageCache/cache (HPC 缓存) 
+- storagepool/diskpools
+-  (存储同步服务) 的 Storagesync.sys/storageSyncServices
+-  (存储同步服务) 的 StorageSyncDev/storageSyncServices
+-  (存储同步服务) 的 StorageSyncInt/storageSyncServices
+-  (StorSimple 设备管理器的 Microsoft StorSimple/经理) 
+- Streamanalytics-default-central-us/群集 (流分析群集) 
+- Streamanalytics-default-central-us/StreamingJobs (流分析作业) 
 - microsoft.swiftlet/virtualmachines
 - microsoft.swiftlet/virtualmachinesnapshots
-- microsoft.synapse/privatelinkhubs
-- microsoft.synapse/workspaces
-- microsoft.synapse/workspaces/bigdatapools
+- Synapse/privateLinkHubs (Azure Synapse 分析 (专用链接中心) # A3
+-  (Azure Synapse Analytics 的 Synapse/工作区) 
+-  (Apache Spark 池的 Synapse/工作区/bigDataPools) 
 - microsoft.synapse/workspaces/sqldatabases
-- microsoft.synapse/workspaces/sqlpools
+-  (专用 SQL 池) 的 Synapse/工作区/sqlPools
 - microsoft.terraformoss/providerregistrations
-- microsoft.timeseriesinsights/environments
-- microsoft.timeseriesinsights/environments/eventsources
-- microsoft.timeseriesinsights/environments/referencedatasets
+-  (时序见解环境的 Timeseriesinsights-environment-with-eventhub/环境) 
+- Timeseriesinsights-environment-with-eventhub/环境/eventsources (时序见解事件源) 
+- Timeseriesinsights-environment-with-eventhub/环境/referenceDataSets (时序见解引用数据集) 
 - microsoft.token/stores
 - microsoft.tokenvault/vaults
 - microsoft.virtualmachineimages/imagetemplates
-- microsoft.visualstudio/account
+- visualstudio/account (Azure DevOps 组织) 
 - microsoft.visualstudio/account/extension
-- microsoft.visualstudio/account/project
+- visualstudio/account/project (DevOps Starter) 
 - microsoft.vmware/arczones
 - microsoft.vmware/resourcepools
 - microsoft.vmware/vcenters
-- microsoft.vmware/virtualmachines
+- VirtualMachines (AVS 虚拟机) 
 - microsoft.vmware/virtualmachinetemplates
 - microsoft.vmware/virtualnetworks
-- microsoft.vmwarecloudsimple/dedicatedcloudnodes
-- microsoft.vmwarecloudsimple/dedicatedcloudservices
-- microsoft.vmwarecloudsimple/virtualmachines
+- VMwareCloudSimple/dedicatedCloudNodes (CloudSimple 节点) 
+- VMwareCloudSimple/dedicatedCloudServices (CloudSimple Services) 
+- VMwareCloudSimple/virtualMachines (CloudSimple 虚拟机) 
 - microsoft.vmwareonazure/privateclouds
 - microsoft.vmwarevirtustream/privateclouds
 - microsoft.vsonline/accounts
-- microsoft.vsonline/plans
+- VSOnline/计划 (Visual Studio Online 计划) 
 - microsoft.web/apimanagementaccounts
 - microsoft.web/apimanagementaccounts/apis
 - microsoft.web/certificates
-- microsoft.web/connectiongateways
-- microsoft.web/connections
-- microsoft.web/customapis
-- microsoft.web/hostingenvironments
-- microsoft.web/kubeenvironments
-- microsoft.web/serverfarms
-- microsoft.web/sites
+- ConnectionGateways/ (本地数据网关) 
+-  (API 连接的 Microsoft Web/连接) 
+- CustomApis/ (逻辑应用自定义连接器) 
+- HostingEnvironments (应用服务环境) 
+-  (应用服务 Kubernetes 环境的 Microsoft Web/KubeEnvironments) 
+- ServerFarms (应用服务计划) 
+-  (应用服务的 Microsoft 网站/站点) 
 - microsoft.web/sites/premieraddons
-- microsoft.web/sites/slots
-- microsoft.web/staticsites
-- microsoft.windowsesu/multipleactivationkeys
-- microsoft.windowsiot/deviceservices
+- Microsoft Web/站点/槽 (应用服务 (槽) # A3
+- StaticSites)  (静态 Web Apps (预览版 # A3
+- WindowsESU/multipleActivationKeys (Windows 多个激活密钥) 
+- WindowsIoT/DeviceServices (Windows 10 IoT Core Services) 
 - microsoft.workloadbuilder/workloads
-- myget.packagemanagement/services
-- paraleap.cloudmonix/services
-- pokitdok.platform/services
-- providers.test/statefulibizaengines
+- MyGet/services (MyGet 托管的 NuGet、NPM、Bower 和 Vsix) 
+- Paraleap CloudMonix/services (CloudMonix) 
+- Pokitdok) 平台/服务 (PokitDok 平台
+- Providers statefulIbizaEngines (应用程序评估) 
 - providers.test/statefulresources
 - providers.test/statefulresources/nestedresources
 - providers.test/statelessresources
-- ravenhq.db/databases
-- raygun.crashreporting/apps
-- sendgrid.email/accounts
-- sparkpost.basic/services
-- stackify.retrace/services
+- Ravenhq 目前/database (Ravenhq 目前) 
+- Raygun CrashReporting/apps (Raygun) 
+- Sendgrid (SendGrid 帐户的电子邮件/帐户) 
+- Sparkpost/services (SparkPost) 
+- stackify/services (Stackify) 
 - test.shoebox/testresources
 - test.shoebox/testresources2
-- trendmicro.deepsecurity/accounts
-- u2uconsult.theidentityhub/services
-- wandisco.fusion/fusiongroups
-- wandisco.fusion/fusiongroups/azurezones
-- wandisco.fusion/fusiongroups/azurezones/plugins
-- wandisco.fusion/fusiongroups/hivereplicationrules
-- wandisco.fusion/fusiongroups/managedonpremzones
+- TrendMicro DeepSecurity/accounts (Deep Security SaaS) 
+- U2uconsult TheIdentityHub/services (标识中心) 
+- Wandisco/fusionGroups (实时数据飞机) 
+- Wandisco/fusionGroups/azureZones (Azure 区域) 
+- Wandisco/fusionGroups/azureZones/插件 (插件) 
+- Wandisco/fusionGroups/hiveReplicationRules (Hive 复制规则) 
+- Wandisco/fusionGroups/managedOnPremZones (本地区域) 
 - wandisco.fusion/fusiongroups/onpremzones
-- wandisco.fusion/fusiongroups/replicationrules
-- wandisco.fusion/migrators
-- wandisco.fusion/migrators/livedatamigrations
-- wandisco.fusion/migrators/targets
+- Wandisco/fusionGroups/replicationRules (复制规则) 
+- Wandisco/migrators (实时数据 Migrators) 
+- Wandisco/migrators/liveDataMigrations (迁移) 
+- Wandisco/migrators/目标 (目标) 
 
 ## <a name="securityresources"></a>securityresources
 
 - microsoft.security/assessments
 - microsoft.security/assessments/subassessments
-- microsoft.security/locations/alerts
+-  (安全警报 (预览版的 microsoft 安全/位置/警报) # A3
 - microsoft.security/pricings
 - microsoft.security/regulatorycompliancestandards
 - microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols

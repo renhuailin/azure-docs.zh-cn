@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: a9a783333d8edd40556b7744eb7cf7dfb52953a7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4a6b3e4c6354c292d000a307bc25f8532aa9a096
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933976"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250785"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>通过软删除和清除保护 Azure Key Vault 恢复管理
 
@@ -29,6 +29,8 @@ ms.locfileid: "97933976"
 * [PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 * [Azure CLI](/cli/azure/install-azure-cli)
 * Key Vault - 可以使用 [Azure 门户](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md) 或 [Azure PowerShell](../general/quick-create-powershell.md) 进行创建
+* 用户需要在订阅级别 (以下权限，) 在软删除的保管库中执行操作： |KeyVault/位置/deletedVaults/read |查看软删除的密钥保管库的属性 | |KeyVault/位置/deletedVaults/清除/操作 |清除软删除的密钥保管库 |
+
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>什么是软删除和清除保护
 
