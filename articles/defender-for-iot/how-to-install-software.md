@@ -7,18 +7,18 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2bd994f14863715274e137bce2dd6873eeec1135
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 49a0129ff26d4a12392066aa6304317d71fdb0f1
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208754"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247584"
 ---
 # <a name="defender-for-iot-installation"></a>用于 IoT 安装的 Defender
 
 本文介绍如何安装用于 IoT 的 Azure Defender 的以下元素：
 
-- **传感器**：用于 IoT 传感器的 Defender 使用被动 (无代理) 监视收集 ICS 网络流量。 被动和产生干扰，传感器对 OT 网络和设备的影响不会有任何影响。 传感器连接到 SPAN 端口或网络分流，并立即开始监视网络。 检测会出现在传感器控制台中。 在这里，你可以在网络映射、设备清单和范围广泛的报表中查看、调查和分析它们。 示例包括风险评估报表、数据挖掘查询和攻击向量。 有关详细信息，请参阅有关适用于 [IoT 的 Defender 传感器用户指南 (直接下载) ](https://aka.ms/AzureDefenderforIoTUserGuide)。
+- **传感器**：用于 IoT 传感器的 Defender 使用被动 (无代理) 监视收集 ICS 网络流量。 被动和产生干扰，传感器对 OT 网络和设备的影响不会有任何影响。 传感器连接到 SPAN 端口或网络分流，并立即开始监视网络。 检测会出现在传感器控制台中。 在这里，你可以在网络映射、设备清单和范围广泛的报表中查看、调查和分析它们。 示例包括风险评估报表、数据挖掘查询和攻击向量。 有关详细信息，请参阅有关适用于 [IoT 的 Defender 传感器用户指南 (直接下载) ](./getting-started.md)。
 
 - **本地管理控制台**：本地管理控制台使你可以执行设备管理、风险管理和漏洞管理。 你还可以使用它在企业中执行威胁监视和事件响应。 它提供了一个统一的视图，显示了所有网络设备、关键 IoT，以及在部署传感器的设施中检测到的风险指标和警报。 使用本地管理控制台查看和管理有气流的网络中的传感器。
 
@@ -57,17 +57,17 @@ ms.locfileid: "98208754"
 
 | **部署类型** | **企业** | **SMB** | **Line** |
 |--|--|--|--|
-| **描述** | 适用于企业部署的虚拟设备 | 用于 SMB 部署的虚拟设备 | 用于行部署的虚拟设备 |
+| **说明** | 适用于企业部署的虚拟设备 | 用于 SMB 部署的虚拟设备 | 用于行部署的虚拟设备 |
 | **最大 \* 带宽* _ | 150 Mb/秒 | 每秒 15 Mb | 3 Mb/秒 |
 | _ *最大受保护设备** | 3,000 | 300 | 100 |
 | **部署类型** | Enterprise | SMB | 行 |
-| **描述** | 适用于企业部署的虚拟设备 | 用于 SMB 部署的虚拟设备 | 用于行部署的虚拟设备 |
+| **说明** | 适用于企业部署的虚拟设备 | 用于 SMB 部署的虚拟设备 | 用于行部署的虚拟设备 |
 
 * 最大带宽容量可能因协议分发而异。
 
 ### <a name="hardware-specifications-for-the-on-premises-management-console"></a>本地管理控制台的硬件规格
 
- | 项 | 描述 |
+ | 项 | 说明 |
  |----|--|
  **说明** | 在多层体系结构中，本地管理控制台跨地理上分散的站点提供可见性和控制能力。 它与 SOC 安全堆栈集成，其中包括 Siem、票证系统、下一代防火墙、安全远程访问平台和用于 IoT ICS 恶意软件沙箱的 Defender。 |
  **部署类型** | Enterprise |
@@ -245,7 +245,7 @@ Dell 设备由 (LC) 的集成 iDRAC 与生命周期控制器管理。 LC 嵌入�
 
    :::image type="content" source="media/tutorial-install-components/configuration-screen.png" alt-text="显示服务器配置文件配置的屏幕截图。":::
 
-   | 参数 | Configuration |
+   | 参数 | 配置 |
    |--|--|
    | 位置类型 | 选择 " **本地**"。 |
    | 文件路径 | 选择 " **选择文件** " 并添加配置 XML 文件。 |
@@ -338,7 +338,7 @@ Dell 设备由 (LC) 的集成 iDRAC 与生命周期控制器管理。 LC 嵌入�
 
    :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="显示设备配置文件的屏幕截图。":::   
 
-   | 参数 | Configuration |
+   | 参数 | 配置 |
    |--|--|
    | **硬件配置文件** | **版** |
    | **管理界面** | **eno1** |
@@ -478,7 +478,7 @@ Dell 设备由 (LC) 的集成 iDRAC 与生命周期控制器管理。 LC 嵌入�
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="显示安装向导的屏幕截图。":::
 
-    | 参数 | Configuration |
+    | 参数 | 配置 |
     | ----------| ------------- |
     | **硬件配置文件** | 为 SMB 部署选择 " **企业** " 或 " **Office** "。 |
     | **管理界面** | **eno2** |
@@ -562,7 +562,7 @@ Dell 设备由 (LC) 的集成 iDRAC 与生命周期控制器管理。 LC 嵌入�
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="显示安装向导的屏幕截图。":::
 
-    | 参数 | Configuration |
+    | 参数 | 配置 |
     | ----------| ------------- |
     | **硬件配置文件** | 选择 " **公司**"。 |
     | **管理界面** | **eno2** |
@@ -686,7 +686,7 @@ Dell 设备由 (LC) 的集成 iDRAC 与生命周期控制器管理。 LC 嵌入�
 
 4. 定义设备配置文件和网络属性：
 
-    | 参数 | Configuration |
+    | 参数 | 配置 |
     | ----------| ------------- |
     | **硬件配置文件** | &lt;所需体系结构&gt; |
     | **管理界面** | **ens192** |
@@ -881,7 +881,7 @@ Dell 设备由 (LC) 的集成 iDRAC 与生命周期控制器管理。 LC 嵌入�
 
 - **最长密钥**：显示可能会导致内存使用的最长的密钥。
 
-#### <a name="system"></a>System
+#### <a name="system"></a>系统
 
 - **核心日志**：提供核心日志的最后500行，使你能够查看最近的日志行，而无需导出整个系统日志。
 
@@ -923,7 +923,7 @@ Dell 设备由 (LC) 的集成 iDRAC 与生命周期控制器管理。 LC 嵌入�
 
 1. 通过 Linux 终端 (（例如，PuTTY) 和用户 **支持**）连接到 CLI。
 
-2. 输入 `system sanity`。
+2. 输入“`system sanity`”。
 
 3. 检查所有服务是否均为绿色 () 运行。
 
@@ -937,7 +937,7 @@ Dell 设备由 (LC) 的集成 iDRAC 与生命周期控制器管理。 LC 嵌入�
 
 1. 通过 Linux 终端 (（例如，PuTTY) 和用户 **支持**）连接到 CLI。
 
-2. 输入 `system version`。
+2. 输入“`system version`”。
 
 3. 检查是否显示了正确的版本。
 
@@ -973,7 +973,7 @@ Dell 设备由 (LC) 的集成 iDRAC 与生命周期控制器管理。 LC 嵌入�
 
    :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="显示对管理控制台的访问的屏幕截图。":::
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="you-cant-connect-by-using-a-web-interface"></a>不能使用 web 界面进行连接
 
@@ -1065,11 +1065,11 @@ VSwitch 没有镜像功能，但你可以使用一种简单的方法来实现 SP
 
 1. 通过 **CyberX** 登录到本地管理控制台的 CLI 或 **支持** 用户凭据。
 
-2. 输入 `sudo cyberx-management-tunnel-enable`。
+2. 输入“`sudo cyberx-management-tunnel-enable`”。
 
 3. 选择 **Enter**。
 
-4. 输入 `--port 10000`。
+4. 输入“`--port 10000`”。
 
 ### <a name="next-steps"></a>后续步骤
 

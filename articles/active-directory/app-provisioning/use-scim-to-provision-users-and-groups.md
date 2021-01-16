@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2cdd02ef6ff67f14dbf99e40a254f2c214e23afb
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 646c47920d87fe1d11bc991838ba767b8569a6c9
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165410"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246751"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教程 - 使用 Azure AD 生成 SCIM 终结点并配置用户预配
 
@@ -790,6 +790,7 @@ SCIM 服务必须具有 HTTP 地址和服务器身份验证证书，其中的根
 * Go Daddy
 * VeriSign
 * WoSign
+* DST 根 CA X3
 
 .NET Core SDK 包括可在开发过程中使用的 HTTPS 开发证书，该证书在首次运行体验中安装。 根据运行 ASP.NET Core Web 应用程序的方式，它将侦听其他端口：
 

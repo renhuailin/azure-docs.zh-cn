@@ -2,15 +2,15 @@
 title: 排查 Azure 自动化更新管理问题
 description: 本文介绍如何排查和解决 Azure 自动化更新管理的问题。
 services: automation
-ms.date: 12/04/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: f00002c7374e0c35c7bb91c28b2dd87ad71e3350
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 55e58c92004f4f4cf4ba6a96620b4f037c80cdb4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184911"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246258"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -144,13 +144,11 @@ Error details: Failed to enable the Update solution
    | summarize by Computer, Solutions
    ```
 
-4. 如果查询结果中未显示计算机，则表示该计算机最近尚未签入。 可能存在本地配置问题，因此应该[重新安装代理](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。
+    如果查询结果中未显示计算机，则表示该计算机最近尚未签入。 可能存在本地配置问题，因此应该[重新安装代理](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。
 
-5. 如果查询结果中显示了计算机，请检查作用域配置问题。 [作用域配置](../update-management/scope-configuration.md)决定为更新管理配置哪些计算机。
+    如果您的计算机在查询结果中列出，请在 " **解决方案** " 属性下验证是否列出了 **更新** 。 这会验证它是否已注册到更新管理。 如果不是，请检查作用域配置问题。 [作用域配置](../update-management/scope-configuration.md)决定为更新管理配置哪些计算机。 若要为计算机配置目标的作用域配置，请参阅 [在工作区中启用计算机](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace)。
 
-6. 如果工作区中显示了计算机，但更新管理中未显示，则必须将作用域配置配置为面向计算机。 若要了解如何执行此操作，请参阅[在工作区中启用计算机](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace)。
-
-7. 在工作区中运行此查询。
+4. 在工作区中运行此查询。
 
    ```kusto
    Operation
@@ -158,9 +156,9 @@ Error details: Failed to enable the Update solution
    | sort by TimeGenerated desc
    ```
 
-8. 如果结果为 `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota`，则表示工作区中定义的配额已满，这导致无法保存数据。 在工作区中，转到“使用情况和预估成本”下的“数据量管理”，然后更改或删除配额 。
+   如果结果为 `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota`，则表示工作区中定义的配额已满，这导致无法保存数据。 在工作区中，转到“使用情况和预估成本”下的“数据量管理”，然后更改或删除配额 。
 
-9. 如果问题仍未解决，请遵循[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)中的步骤来为 Windows 重新安装混合辅助角色。 对于 Linux，请按照[部署 Linux 混合 Runbook 辅助角色](../automation-linux-hrw-install.md)中的步骤操作。
+5. 如果问题仍未解决，请遵循[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)中的步骤来为 Windows 重新安装混合辅助角色。 对于 Linux，请按照[部署 Linux 混合 Runbook 辅助角色](../automation-linux-hrw-install.md)中的步骤操作。
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>场景：无法为订阅注册自动化资源提供程序
 

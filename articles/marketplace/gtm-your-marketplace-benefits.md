@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/13/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 8843bc803cdad07d8b66f9aeb87688c816158200
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 07535add495484abae06fc6ac8ac435d84bccc52
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202262"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246241"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商业市场权益
 
@@ -26,7 +26,7 @@ Marketplace Rewards 旨在在特定的发展阶段为你提供支持，从知名
 
 该计划创建了一个积极的反馈循环：每个发展阶段的优势旨在为进入下一阶段提供推动力，使你能够利用商业市场作为平台，从而在 Microsoft 领域通过 Microsoft 渠道将业务拓展到 Microsoft 客户。
 
-权益根据产品/服务属于以下哪种类型来区分：[列出、试用、事务处理](determine-your-listing-type.md#available-listing-options-by-offer-type)。
+权益根据产品/服务属于以下哪种类型来区分：[列出、试用、事务处理](determine-your-listing-type.md)。
 
 Rewards 团队成员将在产品/服务上线时联系你，具体取决于你的资格。
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b51be165d3d05ae753c7e0e5536a157fbbacf1ab
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b0d27cb2f941db374a144cbd5c026444730e24e8
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938624"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247482"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>了解 Azure Cosmos DB 帐单
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -105,7 +105,7 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对数据库�
 
 :::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="共享吞吐量计费示例":::
 
-## <a name="billing-examples-with-geo-replication"></a>通过异地复制计费示例  
+## <a name="billing-examples-with-geo-replication"></a>异地复制的计费示例  
 
 可随时随地向 Azure Cosmos 数据库帐户添加/删除 Azure 区域。 对于为不同 Azure Cosmos 数据库和容器配置的吞吐量，可在与 Azure Cosmos 数据库帐户关联的每个 Azure 区域中保留这些吞吐量。 如果在 Azure Cosmos 数据库帐户中的所有数据库和容器之间配置的预配吞吐量 (RU/秒) ， (每小时预配) 为 T，而与数据库帐户关联的 Azure 区域的数量为 N，则给定小时的总预配吞吐量等于 T x N RU/秒。预配的吞吐量 (单个写入区域) 成本 $ 0.008/每 100 RU/秒，并具有多个可写区域的预配吞吐量 (多区域写入配置) 成本 $ 0.016/每小时/每 100 RU/秒 (参见 [定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)) 。 无论是单个写入区域还是多个写入区域，Azure Cosmos DB 都支持从任何区域读取数据。
 
@@ -215,8 +215,12 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对数据库�
 | | |2 个其他区域的吞吐量帐单：美国东部、北欧（所有区域都可写入）  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |224 美元  |
 || |**每月总成本**  | |**38,688 美元**   |
 
-## <a name="billing-examples-with-free-tier-accounts"></a>免费层帐户计费示例
+## <a name="billing-examples-with-azure-cosmos-db-free-tier-accounts"></a><a id="azure-free-tier"></a>Azure Cosmos DB 免费层帐户的计费示例
+
 使用 Azure Cosmos DB 免费层，你将在帐户中获得前 400 RU/s 免费吞吐量和 5 GB 免费存储，并在帐户级别应用。 超过 400 RU/s 和 5 GB 的任何吞吐量和存储都将按定价页面的常规定价费率计费。 在账单上，你不会看到免费的 400 RU/s 和 5 GB 的费用或行项，而只会看到超过免费层涵盖范围的吞吐量和存储。 400 RU/秒适用于任何类型的吞吐量，包括预配吞吐量、自动缩放吞吐量和多区域写入吞吐量。  
+
+> [!NOTE]
+> Azure Cosmos DB 免费级别不同于 Azure 免费帐户。 在有限的时间里，Azure 免费帐户免费提供 Azure 信用额度和资源。 当使用 Azure Cosmos DB 作为此免费帐户的一部分时，将获得 10 GB 的存储和 400 RU/秒的预配吞吐量12个月。
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>计费示例 - 具有预配吞吐量的容器或数据库
 - 假设我们在免费层帐户中创建一个具有 400 RU/s 吞吐量和 5 GB 存储的数据库或容器。

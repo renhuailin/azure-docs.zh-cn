@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 4432178d5908d4360cda05a62b62d05687be4235
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 7797ee9d20b33a25c1b51289036651c7ad9f22a1
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541124"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247492"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的服务器参数
 
@@ -82,7 +82,7 @@ Azure Database for MariaDB 提供了通过 [Azure 门户](./howto-server-paramet
 
 MariaDB 根据你在创建表期间提供的配置，将 InnoDB 表存储在不同的表空间中。 [系统表空间](https://mariadb.com/kb/en/innodb-system-tablespaces/)是 InnoDB 数据字典的存储区域。 [file-per-table 表空间](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/)包含单个 InnoDB 表的数据和索引，并存储在文件系统内它自己的数据文件中。 此行为由 `innodb_file_per_table` 服务器参数控制。 将 `innodb_file_per_table` 设置为 `OFF` 会导致 InnoDB 在系统表空间中创建表。 否则，InnoDB 将在 file-per-table 表空间中创建表。
 
-在单个数据文件中，Azure Database for MariaDB 支持最大 **1 TB** 。 如果数据库大小超过 1 TB，应在 [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) 表空间中创建表。 如果单个表的大小超过 1 TB，应使用分区表。
+在单个数据文件中，Azure Database for MariaDB 支持最大 **1 TB**。 如果数据库大小超过 1 TB，应在 [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) 表空间中创建表。 如果单个表的大小超过 1 TB，应使用分区表。
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -159,7 +159,7 @@ MariaDB 根据你在创建表期间提供的配置，将 InnoDB 表存储在不�
 
 查看 [MariaDB 文档](https://mariadb.com/kb/en/server-system-variables/#query_cache_size)详细了解此参数。
 
-|**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值 **|
+|**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
 |基本|1|在基本层中不可配置|空值|空值|
 |基本|2|在基本层中不可配置|空值|空值|

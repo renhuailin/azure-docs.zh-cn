@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: 9d351bc945c08c82e96791059b00dc94eb94b918
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 793ff9eedb747da0edcbbf2df50b62f06f407892
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368730"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247417"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -44,46 +44,46 @@ ms.locfileid: "97368730"
 
 ### <a name="minimum-throughput-limits"></a>最小吞吐量限制
 
-Cosmos 容器（或共享吞吐量数据库）的最小吞吐量必须为 400 RU/秒。 容器增长时，Cosmos DB 要求最小的吞吐量，以确保数据库或容器具有足够的资源来执行其操作。
+Cosmos 容器（或共享吞吐量数据库）的最小吞吐量必须为 400 RU/秒。 随着容器的增长，Cosmos DB 需要一个最小吞吐量，以确保数据库或容器有足够的资源用于其运行。
 
 可以从 Azure 门户或 SDK 检索容器或数据库的当前和最小吞吐量。 有关详细信息，请参阅[对容器和数据库预配吞吐量](set-throughput.md)。 
 
 实际的最小 RU/s 可能因帐户配置而异。 可以使用 [Azure Monitor 指标](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db)来查看资源上预配吞吐量 (RU/s) 和存储的历史记录。 
 
-#### <a name="minimum-throughput-on-container"></a>容器上的最小吞吐量 
+#### <a name="minimum-throughput-on-container"></a>容器最小吞吐量 
 
-若要估计具有手动吞吐量的容器所需的最小吞吐量，请查找的最大吞吐量：
+若要估算具有手动吞吐量的容器所需的最小吞吐量，请找到以下项的最大值：
 
 * 400 RU/s 
 * 当前存储空间 (GB) * 10 RU/s
-* 在容器/100 上预配的最高 RU/秒
+* 容器中预配的最高 RU/s / 100
 
-示例：假设你有一个使用 400 RU/s 和 0 GB 存储设置的容器。 将吞吐量提高到 50000 RU/s，并导入 20 GB 数据。 最小 RU/秒现在 `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 RU/秒。 随着时间的推移，存储会增长到 200 GB。 最小 RU/秒现在 `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 RU/秒。 
+示例：假设你有一个预配了 400 RU/s 和 0 GB 存储的容器。 你将吞吐量提高到 50,000 RU/s，并导入 20 GB 数据。 现在，最小 RU/s 为 `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 RU/s。 随着时间的推移，存储会增长到 200 GB。 现在，最小 RU/s 为 `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 RU/s。 
 
-**注意：** 如果容器或数据库包含的数据超过 1 TB，你的帐户可能符合我们的 ["高存储/低吞吐量" 计划](set-throughput.md#high-storage-low-throughput-program)。
+注意：如果你的容器或数据库中有超过 1 TB 的数据，你的帐户可能有资格加入我们的[“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program)。
 
 #### <a name="minimum-throughput-on-shared-throughput-database"></a>共享吞吐量数据库的最小吞吐量 
-若要估计具有手动吞吐量的共享吞吐量数据库所需的最小吞吐量，请查找的最大吞吐量：
+若要估算具有手动吞吐量的共享吞吐量数据库所需的最小吞吐量，请找到以下项的最大值：
 
 * 400 RU/s 
 * 当前存储空间 (GB) * 10 RU/s
-* 在数据库上预配的最高 RU/秒/100
-* 400 + MAX (容器计数-25，0) * 100 RU/秒
+* 数据库上预配的最高 RU/s / 100
+* 400 + MAX(容器计数 - 25, 0) * 100 RU/s
 
-示例：假设你的数据库预配了 400 RU/s、15 GB 的存储空间和10个容器。 最小 RU/秒为 `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s。 如果数据库中有30个容器，则最小 RU/秒应为 `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s。 
+示例：假设你有一个预配了 400 RU/s、15 GB 存储和 10 个容器的数据库。 最小 RU/s 为 `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 RU/s。 如果数据库中有 30 个容器，则最小 RU/s 将为 `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 RU/s。 
 
-**注意：** 如果容器或数据库包含的数据超过 1 TB，你的帐户可能符合我们的 ["高存储/低吞吐量" 计划](set-throughput.md#high-storage-low-throughput-program)。
+注意：如果你的容器或数据库中有超过 1 TB 的数据，你的帐户可能有资格加入我们的[“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program)。
 
 总之，最小预配 RU 限制如下所示。 
 
 | 资源 | 默认限制 |
 | --- | --- |
-| 每个容器的最小 ru ([专用吞吐量预配模式](./account-databases-containers-items.md#azure-cosmos-containers))  | 400 |
-| 每个数据库的最小 ru ([共享吞吐量预配模式](./account-databases-containers-items.md#azure-cosmos-containers))  | 第25个容器为 400 RU/s。 此后每个容器的额外 100 RU/秒。 |
+| 每个容器的最小 RU 数（[专用吞吐量预配模式](./account-databases-containers-items.md#azure-cosmos-containers)） | 400 |
+| 每个数据库的最小 RU 数（[共享吞吐量预配模式](./account-databases-containers-items.md#azure-cosmos-containers)） | 前 25 个容器为 400 RU/s。 此后的每个容器增加 100 RU/s。 |
 
-Cosmos DB 支持通过 Sdk 或门户以编程方式缩放每个容器或数据库) 的吞吐量 (RU/秒。    
+Cosmos DB 支持通过 SDK 或门户以编程方式缩放每个容器或数据库的吞吐量 (RU/s)。    
 
-根据当前的 RU/s 预配和资源设置，每个资源都可以在最小 RU/秒之间同步和立即缩放到最小 ru/秒之间的100倍。 如果请求的吞吐量值超出范围，将以异步方式执行缩放。 完成异步缩放所需的时间为数分钟到数小时不等，具体取决于请求的吞吐量和容器中的数据存储大小。  
+根据当前的已预配 RU/s 和资源设置，每个资源可以立即以同步方式在最小 RU/s 到最小 RU/s 的 100 倍之间进行缩放。 如果请求的吞吐量值超出范围，将以异步方式执行缩放。 完成异步缩放所需的时间为数分钟到数小时不等，具体取决于请求的吞吐量和容器中的数据存储大小。  
 
 ### <a name="serverless"></a>无服务器
 
@@ -239,7 +239,7 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 | MongoDB 操作的最长执行时间| 30 秒 |
 | 导致服务器端连接关闭的空闲连接超时值* | 30 分钟 |
 
-\* 我们建议客户端应用程序将驱动程序设置中的空闲连接超时值设为 2-3 分钟，因为 [Azure LoadBalancer 的默认超时值为 4 分钟](../load-balancer/load-balancer-tcp-idle-timeout.md)。  此超时将确保客户端计算机与 Azure Cosmos DB 之间的中间负载均衡器不会关闭空闲连接。
+\* 我们建议客户端应用程序将驱动程序设置中的空闲连接超时值设为 2-3 分钟，因为 [Azure LoadBalancer 的默认超时值为 4 分钟](../load-balancer/load-balancer-tcp-idle-timeout.md)。  此超时值可确保客户端计算机与 Azure Cosmos DB 之间的中间负载均衡器不会关闭空闲连接。
 
 ## <a name="try-cosmos-db-free-limits"></a>免费试用 Cosmos DB 限制
 
@@ -256,7 +256,8 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 
 试用 Cosmos DB 仅支持美国中部、北欧和东南亚地区的全局分发。 无法为 Azure Cosmos DB 试用帐户创建 Azure 支持票证。 但是，为参与现有支持计划的订阅者提供了支持。
 
-## <a name="free-tier-account-limits"></a>免费层帐户限制
+## <a name="azure-cosmos-db-free-tier-account-limits"></a>Azure Cosmos DB 免费层帐户限制
+
 下表列出了 [Azure Cosmos DB 免费层帐户](optimize-dev-test.md#azure-cosmos-db-free-tier)的限制。
 
 | 资源 | 默认限制 |
@@ -268,7 +269,10 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 | 最大共享吞吐量数据库数 | 5 |
 | 共享吞吐量数据库中的最大容器数 | 25 <br>在免费层帐户中，最多包含 25 个容器的共享吞吐量数据库的最小 RU/s 为 400 RU/s。 |
 
-  除上述限制外，[每个帐户的限制](#per-account-limits)也适用于免费层帐户。
+除上述限制外，[每个帐户的限制](#per-account-limits)也适用于免费层帐户。
+
+> [!NOTE]
+> Azure Cosmos DB 免费级别不同于 Azure 免费帐户。 在有限的时间里，Azure 免费帐户免费提供 Azure 信用额度和资源。 当使用 Azure Cosmos DB 作为此免费帐户的一部分时，将获得 10 GB 的存储和 400 RU/秒的预配吞吐量12个月。
 
 ## <a name="next-steps"></a>后续步骤
 

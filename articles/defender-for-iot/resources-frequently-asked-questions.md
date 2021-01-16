@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 0c303adb4ee7c7551c6b389ec169d92a661a63bc
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 678b50ffb2df2cd16312548109b93f6f1a7f08ff
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835017"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247459"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Azure Defender for IoT 常见问题解答
 
@@ -38,7 +38,7 @@ Azure Defender for IoT 提供全面的协议支持。 除嵌入式协议支持�
 这是将协议作为插件进行开发的唯一解决方案，不需要专门的开发人员团队或版本来支持新的协议。 开发人员、合作伙伴和客户可以使用 Horizon 安全地开发协议，并分享见解和知识。 
 
 ## <a name="do-i-have-to-purchase-hardware-appliances-from-microsoft-partners"></a>我必须从 Microsoft 合作伙伴那里购买硬件设备吗？
-Azure Defender for IoT 传感器根据[硬件规范指南](https://aka.ms/AzureDefenderforIoTBareMetalAppliance)中所述的特定硬件规格运行，客户可以从 Microsoft 合作伙伴处购买经过认证的硬件，也可以使用提供的材料清单 (BOM) 自行购买。 
+Azure Defender for IoT 传感器根据[硬件规范指南](./how-to-identify-required-appliances.md)中所述的特定硬件规格运行，客户可以从 Microsoft 合作伙伴处购买经过认证的硬件，也可以使用提供的材料清单 (BOM) 自行购买。 
 
 经过认证的硬件已在实验室中测试了驱动程序稳定性、丢包情况和网络规模。
 

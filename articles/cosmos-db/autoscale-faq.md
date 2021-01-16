@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 31b96f03a8519b068eaa816443be0a0f374a4a8c
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368573"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247023"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 中自动缩放预配吞吐量的常见问题解答
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "97368573"
 对于自动缩放和标准 (手动) 预配的吞吐量，多写入区域保留容量相同。 请参阅 [Azure Cosmos DB 预留容量](cosmos-db-reserved-capacity.md)
 
 ### <a name="does-autoscale-work-with-free-tier"></a>自动缩放是否可用于免费层？
-是的。 在免费层，可以对容器使用自动缩放吞吐量。 尚不支持具有自定义最大 RU/s 的自动缩放共享吞吐量数据库。 查看[免费层计费与自动缩放一起工作](understand-your-bill.md#billing-examples-with-free-tier-accounts)的方式。
+是的。 在免费层，可以对容器使用自动缩放吞吐量。 尚不支持具有自定义最大 RU/s 的自动缩放共享吞吐量数据库。 查看[免费层计费与自动缩放一起工作](understand-your-bill.md#azure-free-tier)的方式。
 
 ### <a name="is-autoscale-supported-for-all-apis"></a>是否所有 API 都支持自动缩放？
 是的，所有 API 都支持自动缩放：Core (SQL)、Gremlin、Table、Cassandra 以及 MongoDB API。
@@ -139,7 +139,7 @@ Azure Cosmos DB 在一个共享吞吐量数据库中最多可实施 25 个容器
 ### <a name="is-it-still-possible-to-see-429s-throttlingrate-limiting-when-autoscale-is-enabled"></a><a id="autoscale-rate-limiting"></a> 启用自动缩放后，是否仍可看到 429s（限制/速率限制）？ 
 是的。 在两个情况下可能出现 429s。 第一种，当 RU/s 总使用量超过数据库或容器的最大 RU/s 时，服务将相应地限制请求。 
 
-第二种情况是，如果有一个热分区（即逻辑分区键值，该键值的请求数与其他分区键值的请求数相比过高），则基础物理分区可能超出其 RU/秒预算。 为避免出现热分区，最佳做法是[选择一个合适的分区键](partitioning-overview.md#choose-partitionkey)，以实现存储和吞吐量的均匀分配。 
+第二种情况是，如果有一个热分区（即逻辑分区键值，该键值的请求数与其他分区键值的请求数相比过高），则基础物理分区可能超出其 RU/秒预算。 为避免出现热分区，最佳做法是[选择良好的分区键](partitioning-overview.md#choose-partitionkey)，从而实现存储和吞吐量的均匀分布。 
 
 例如，如果选择 20,000 RU/s 的最大吞吐量选项，并具有 200 GB 的存储和四个物理分区，则每个物理分区最多可以自动扩展至 5000 RU/s。 如果特定逻辑分区键上有一个热分区，则当它所在的基础物理分区超过 5000 RU/s（即超过 100% 的标准化利用率）时，将显示 429 错误。
 

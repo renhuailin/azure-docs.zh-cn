@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
-ms.openlocfilehash: d79c52c05d09eedab2dd964acb544c9cdb405380
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b3e1bb3f418f21c75e29b5a1cad337c6f3c10145
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562593"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246632"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>将计算机视觉容器与 Kubernetes 和 Helm 配合使用
 
@@ -168,7 +168,7 @@ spec:
 还是在该模板文件夹中，将以下帮助程序函数复制粘贴到 `helpers.tpl` 中。 `helpers.tpl` 定义了一些实用函数，可帮助生成 Helm 模板。
 
 > [!NOTE]
-> 本文包含对字词从属的引用，这是 Microsoft 不再使用的术语。 从软件中删除该字词后，我们会将其从本文中删除。
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ```yaml
 {{- define "rabbitmq.hostname" -}}
@@ -258,6 +258,8 @@ replicaset.apps/read-57cb76bcf7   1         1         1       17s
 
 接收请求的容器可以将任务拆分为单一页面子任务，并将其添加到通用队列。 不太繁忙的容器中的任何识别工作人员都可以使用队列中的单页子任务，执行识别，然后将结果上传到存储。 根据所部署的容器的数量，吞吐量可以高达 `n` 倍。
 
+V3 容器公开路径下的活动探测 API `/ContainerLiveness` 。 使用以下部署示例为 Kubernetes 配置活动探测。 
+
 将以下 YAML 复制并粘贴到名为 `deployment.yaml` 的文件。 请将 `# {ENDPOINT_URI}` 和 `# {API_KEY}` 注释替换为自己的值。 将 `# {AZURE_STORAGE_CONNECTION_STRING}` 注释替换为 Azure 存储连接字符串。 配置 `replicas` 为你需要的数字， `3` 在以下示例中设置为。
 
 ```yaml
@@ -293,6 +295,13 @@ spec:
           value: # {AZURE_STORAGE_CONNECTION_STRING}
         - name: Queue__Azure__ConnectionString
           value: # {AZURE_STORAGE_CONNECTION_STRING}
+        livenessProbe:
+          httpGet:
+            path: /ContainerLiveness
+            port: 5000
+          initialDelaySeconds: 60
+          periodSeconds: 60
+          timeoutSeconds: 20
 --- 
 apiVersion: v1
 kind: Service

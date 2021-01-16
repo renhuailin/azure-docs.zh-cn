@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 01/11/2021
 ms.author: rohink
-ms.openlocfilehash: c468b1216670ce7e6b5d252a7f7fee807199d20c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: cb14cb95ec1362782a634b0e62cfa2f8237a5852
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131485"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246376"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
@@ -194,10 +194,6 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 国际域名 (IDN) 使用 [punycode](https://en.wikipedia.org/wiki/Punycode) 对每个 DNS 名称进行编码。 DNS 查询就是使用这些 punycode 编码名称构建的。
 
 若要在 Azure DNS 中配置 IDN，请将区域名称或记录集名称转换为 punycode。 目前，Azure DNS 原生并不支持与 punycode 之间的相互转换。
-
-### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Azure DNS 专用区域是否存储所有客户内容？
-
-不能，Azure DNS 专用区域不存储任何客户内容。
 
 ## <a name="next-steps"></a>后续步骤
 

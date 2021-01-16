@@ -1,20 +1,20 @@
 ---
-title: 确定所需的设备
+title: 确定所需设备
 description: 了解用于 IoT 传感器和本地管理控制台的经过认证的 Defender 的硬件和虚拟设备。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b22f880eee1b691b6b50b8151a64a2d501b891b3
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838293"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246564"
 ---
-# <a name="identify-required-appliances"></a>确定所需的设备
+# <a name="identify-required-appliances"></a>确定所需设备
 
 本文提供了有关 IoT 传感器设备的经过认证的 Defender 的信息。 可以在物理和虚拟设备上部署 Defender fort IoT。
 
@@ -40,8 +40,8 @@ ms.locfileid: "97838293"
 
 | 部署类型 | 企业 | Enterprise | SMB |
 |--|--|--|--|
-| 图像 | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="公司级别的模型。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="企业级模型。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="SMB 级别的模型。"::: |
-| 型号 | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 |
+| 映像 | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="公司级别的模型。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="企业级模型。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="SMB 级别的模型。"::: |
+| 建模 | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 |
 | 监视端口 | 最多15个 RJ45 或8个 OPT | 最多8个 RJ45 或 6 OPT | 4 RJ45 |
 | 最大带宽 [1](#anchortext) | 每秒 3 Gb | 每秒 1 Gb | 每秒 200 Mb |
 | 受保护的最大设备 | 30,000 | 15,000 | 1,000 |
@@ -50,7 +50,7 @@ ms.locfileid: "97838293"
 
 关于预配置传感器： Microsoft 已与箭头合作以提供预配置的传感器。 若要购买预配置的传感器，请在以下地址中使用联系人箭头： <hardware.sales@arrow.com>
 
-关于携带你自己的设备：查看此处所述的支持模型。 获取设备后，请跳到用于 **IoT**  >  **网络传感器 ISO**  >  **安装** 的 Defender 以下载软件。
+关于携带你自己的设备：请查看此处所述的支持模型。 获取设备后，请跳到用于 **IoT**  >  **网络传感器 ISO**  >  **安装** 的 Defender 以下载软件。
 
 :::image type="content" source="media/how-to-prepare-your-network/azure-defender-for-iot-sensor-download-software-screen.png" alt-text="网络传感器 ISO。":::
 
@@ -197,7 +197,7 @@ ms.locfileid: "97838293"
 
 ## <a name="virtual-appliance-specifications"></a>虚拟设备规范
 
-### <a name="sensors"></a>Sensors
+### <a name="sensors"></a>传感器
 
 | 类型 | 企业 | Enterprise | SMB |
 |--|--|--|--|
@@ -222,8 +222,8 @@ ms.locfileid: "97838293"
 
 | 部署类型 | Enterprise |
 |--|--|
-| 图像 | :::image type="content" source="media/how-to-prepare-your-network/deployment-type-enterprise-for-azure-defender-for-iot-v2.png" alt-text="企业部署类型。"::: |
-| 型号 | Dell PowerEdge R340 XL |
+| 映像 | :::image type="content" source="media/how-to-prepare-your-network/deployment-type-enterprise-for-azure-defender-for-iot-v2.png" alt-text="企业部署类型。"::: |
+| 建模 | Dell PowerEdge R340 XL |
 | 监视端口 | 最多9个 RJ45 或六个 OPT |
 | 最大带宽 [1](#anchortext2)| 1G Mb/秒 |
 | 最大受保护设备 | 10,000 |
@@ -255,30 +255,8 @@ ms.locfileid: "97838293"
 
 :::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340 BOM。":::
 
-## <a name="smb-deployment-neousys-nuvo-5006lp"></a>SMB 部署： Neousys Nuvo-5006LP
-
-| 组件 | 技术规范 |
-|--|--|
-| 建筑 | 铝、fanless 和灰尘考验设计 |
-| 维度 | 240 mm (W) x 225 mm (D) x 77 mm (H)  |
-| 重量 | 3.1 千克 (包括 CPU、内存和 HDD)  |
-| CPU | Intel Core i5-6500TE (6 分钟缓存，最高 3.30 GHz) S1151 |
-| 高速芯片组家族 | Intel Q170 Platform 控制器中心 |
-| 内存 | 8 GB DDR4 2133 MHz 宽温度 SODIMM |
-| 存储 | 128-GB 3ME3 宽温度 mSATA SSD |
-| 网络控制器 | 6倍千兆以太网端口（由 Intel I219） |
-| 设备访问 | 4 USBs：两个正面，两个 rears，一个内部 |
-| 电源适配器 | 120/240VAC-20VDC/6A |
-| 安装 | 安装套件，下导轨 |
-| 操作温度 | \-25° C ~ 70 ° C |
-| 存储温度 | \-40° C ~ 85 ° C |
-| 湿度 | 10% ~ 90%，非冷凝 |
-| 振动 | 操作，5 Grms，5-500 Hz，3个轴 <br>根据 IEC60068-2-64)  (w/SSD |
-| 撞击 | 按照 IEC60068-2-27) 操作，50 Grms，半正弦 11 ms duration (w/SSD |
-| EMC | CE/FCC 类 A，根据 EN 55022、EN 55024 和 EN 55032 |
-
 ## <a name="next-steps"></a>后续步骤
 
 [关于用于 IoT 安装的 Azure Defender](how-to-install-software.md)
 
-[关于用于 IoT 的 Azure Defender 网络设置](how-to-set-up-your-network.md)
+[关于 Azure Defender for IoT 网络设置](how-to-set-up-your-network.md)

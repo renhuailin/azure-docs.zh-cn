@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/10/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b61bef89d53da280961b818425d11a6f81bbf5ea
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 25f47be98b11f05ee6ac27018152ece05c0de4e4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210233"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246683"
 ---
 # <a name="manage-individual-sensors"></a>管理单个传感器
 
@@ -84,7 +84,7 @@ ms.locfileid: "98210233"
 
 - **对于本地连接的传感器**：激活文件无效。 如果文件无效，请前往 IoT 门户的 Defender。 在 " **传感器管理** " 页上，选择具有无效文件的传感器，并下载新的激活文件。
 
-- **对于已连接到云的传感器**：传感器无法连接到 internet。 查看传感器的网络配置。 如果你的传感器需要通过 web 代理进行连接以访问 internet，请验证是否已在 **传感器网络配置** 屏幕上正确配置代理服务器。 验证是否 \* 允许在防火墙和/或代理中使用 azure-devices.net:443。 如果不支持通配符，或者需要更多控制，则应在防火墙和/或代理中打开用于 IoT 中心的特定 Defender 的 FQDN。 有关详细信息，请参阅 [Reference-IoT 中心终结点](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints)。  
+- **对于已连接到云的传感器**：传感器无法连接到 internet。 查看传感器的网络配置。 如果你的传感器需要通过 web 代理进行连接以访问 internet，请验证是否已在 **传感器网络配置** 屏幕上正确配置代理服务器。 验证是否 \* 允许在防火墙和/或代理中使用 azure-devices.net:443。 如果不支持通配符，或者需要更多控制，则应在防火墙和/或代理中打开用于 IoT 中心的特定 Defender 的 FQDN。 有关详细信息，请参阅 [Reference-IoT 中心终结点](../iot-hub/iot-hub-devguide-endpoints.md)。  
 
 - **对于连接了云的传感器**：激活文件有效，但 IoT 拒绝了该激活。 如果你无法解决此问题，你可以从 IoT 门户的 Defender 的 " **传感器管理** " 页下载另一激活。 如果这不起作用，请联系 Microsoft 支持部门。
 
@@ -282,7 +282,7 @@ Pem (或很少使用其他扩展名) 格式的文件。 Windows 资源管理器�
 
 3. 按如下所示设置参数：
 
-    | 参数 | 描述 |
+    | 参数 | 说明 |
     |--|--|
     | IP 地址 | 传感器 IP 地址 |
     | 子网掩码 | 掩码地址 |
@@ -299,7 +299,7 @@ Pem (或很少使用其他扩展名) 格式的文件。 Windows 资源管理器�
 
 :::image type="content" source="media/how-to-manage-individual-sensors/time-and-region.png" alt-text="配置时间和区域。":::
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |--|--|
 | 时区 | 的时区定义：<br />-警报<br />-趋势和统计小组件<br />-数据挖掘报表<br />   -风险评估报表<br />-攻击向量 |
 | 日期格式 | 选择以下格式选项之一：<br />-dd/MM/yyyy HH： MM： ss<br />-MM/dd/yyyy HH： MM： ss<br />-yyyy/MM/dd HH： MM： ss |

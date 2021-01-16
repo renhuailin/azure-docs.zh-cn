@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 10/05/2019
+ms.date: 01/15/2021
 ms.author: rohink
-ms.openlocfilehash: 24f2ca238288854b99160a25c3d4dcedf8ce3368
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3272f4fea4169fd5e91b1ba2b97ad72dfbb49080
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952380"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247380"
 ---
 # <a name="azure-private-dns-faq"></a>Azure 专用 DNS 常见问题解答
 
@@ -88,6 +88,10 @@ ms.locfileid: "94952380"
 ## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>如何实现将现有的专用 DNS 区域迁移到新模型？
 
 强烈建议尽快迁移到新资源模型。 旧资源模型仍然受支持，但不会在此模型的基础上开发更多功能。 我们将在以后弃用旧资源模型，而使用新资源模型。 有关如何将现有专用 DNS 区域迁移到新资源模型的指导，请参阅 [Azure DNS 专用区域的迁移指南](private-dns-migration-guide.md)。
+
+### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Azure DNS 专用区域是否存储所有客户内容？
+
+不能，Azure DNS 专用区域不存储任何客户内容。
 
 ## <a name="next-steps"></a>后续步骤
 

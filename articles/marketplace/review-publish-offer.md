@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/27/2020
-ms.openlocfilehash: b038834df3889a8b4b7f4a749568635e99f8408e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8b63dfb015c7337e36dac3812e92ddc53914206d
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188745"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247159"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>如何查看产品并将其发布到商业应用商店
 
@@ -150,7 +150,7 @@ ms.locfileid: "96188745"
 ### <a name="previewing-and-approving-your-offer"></a>预览并批准你的产品/服务
 
 > [!IMPORTANT]
-> 若要验证端到端购买和设置流程，请在产品/服务处于预览阶段时购买产品。 首先向 Microsoft 通知一个 [支持票证](https://aka.ms/marketplacesupport) ，以确保不会处理费用。
+> 若要验证端到端购买和设置流程，请在产品/服务处于预览阶段时购买产品。 首先向 Microsoft 通知一个 [支持票证](https://aka.ms/marketplacesupport) ，以确保不会处理费用。 如果你的产品/服务是联系人列表，请在预览期间提供联系我的详细信息，测试是否按预期方式创建了潜在顾客。
 
 在 **产品/服务概述** 页上，你将在 **"上线" 按钮下** 看到 "预览" 链接。 根据创建产品/服务时选择的选项，可以使用 AppSource 预览版、Azure Marketplace 预览版或这两者的链接。 如果你选择通过 Microsoft 销售您的产品/服务，则已添加到预览版观众的任何人都可以测试您的产品/服务的购买和部署，以确保在此阶段满足您的要求。
 
@@ -197,7 +197,7 @@ ms.locfileid: "96188745"
 
 |事件    |说明    |
 |---------|---------------|
-|已创建产品/服务    |此产品/服务已在合作伙伴中心创建。 用户选择了产品/服务类型、产品/服务 ID 和 **商业市场** 概述中的产品/服务别名  >  **Overview**。    |
+|已创建产品/服务    |此产品/服务已在合作伙伴中心创建。 用户选择了产品/服务类型、产品/服务 ID 和 **商业市场** 概述中的产品/服务别名  >  。    |
 |已创建计划： *计划名称*    |用户通过在 " **计划概述** " 选项卡中输入计划 ID 和计划名称来创建新的计划。</br>*此事件仅适用于支持计划的产品/服务类型*。    |
 |删除的计划    |用户通过从 "**计划概述**" 页中选择 "**删除草稿**" 删除了尚未发布的草稿计划。</br>*此事件仅适用于支持计划的产品/服务类型*。    |
 |已启动计划停止销售： *计划名称*    |用户通过从 "**计划概述**" 页中选择 "**停止销售**" 来启动计划停止。</br>*此事件仅适用于支持计划的产品/服务类型*。    |
@@ -225,7 +225,7 @@ ms.locfileid: "96188745"
 有四种筛选器：
 * 事件
 * 用户
-* Date
+* 日期
 * 页面
 
 当你选择 " **页面** " 筛选器时，可以选择适用于你的产品/服务类型的任何合作伙伴中心页面。 在应用时，" **页面** " 筛选器会显示所有 **提交的产品/服务，以预览** 对所选页面所做的更改。
