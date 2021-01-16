@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.subservice: metrics
-ms.openlocfilehash: 79728e53c1d53a8a4463fc0bd1ddee5db89fc013
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 1d83ef07714e0ce69f01aa240cc3058195c7b1af
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234691"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251975"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Monitor 指标指标聚合和显示说明
 
@@ -125,7 +125,7 @@ ms.locfileid: "98234691"
 
 :::image type="content" source="media/metrics-aggregation-explained/split-filter-total-disk write-bytes-all-VMs.png" alt-text="显示 Contoso 酒店资源组中所有虚拟机的磁盘写入字节数的屏幕截图，按虚拟机名称进行拆分和筛选" border="true" lightbox="media/metrics-aggregation-explained/split-filter-total-disk write-bytes-all-VMs.png":::
 
-有关如何在指标资源管理器图表中显示拆分维度数据的详细信息，请参阅 [指标资源管理器的高级功能-筛选器和拆分](metrics-charts.md#apply-filters-to-charts)。
+有关如何在指标资源管理器图表中显示拆分维度数据的详细信息，请参阅 [指标资源管理器的高级功能-筛选器和拆分](metrics-charts.md#filters)。
 
 ### <a name="null-and-zero-values"></a>NULL 和零值
 
@@ -266,7 +266,7 @@ Azure Monitor 警报使用资源提供程序写入指标数据库的值，因此
 
 在上面的第6分钟，计算的1分钟聚合类型为： 
 
-| 聚合类型 | Value        | 注释 |
+| 聚合类型 | “值”        | 注释 |
 |------------------|--------------|-------|
 | Sum              | 53 + 20 = 73 | |
 | 计数            | 2            | 显示 Null 的效果。  如果服务器已联机，则值为3。  |

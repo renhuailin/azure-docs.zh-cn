@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: 3632c098f865b1e5c4e76709a83176035be7abc2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 07e165382608f4fde5433de0f4436cb86f5083af
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351821"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251890"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>规划和管理 Azure Cosmos DB 的成本
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Azure Cosmos DB 支持两种类型的容量模式： [预配吞吐量](set-throu
 
 如果打算在无服务器模式下使用 Azure Cosmos DB，则需要估计每月可能会消耗多少个 [请求单位](request-units.md) 和存储 GB 的存储。 您可以通过计算每月发出的数据库操作的数量来估算所需的请求单位数，并按相应的 RU 成本乘以它们的数量。 下表列出了常见数据库操作的估计 RU 费用：
 
-| 运算 | 估计成本 | 说明 |
+| 操作 | 估计成本 | 备注 |
 | --- | --- | --- |
 | 创建项 | 5 RU | 要编制索引的属性少于5的 1 KB 项的平均开销 |
 | 更新项 | 10 RU | 要编制索引的属性少于5的 1 KB 项的平均开销 |
@@ -71,7 +71,7 @@ Azure Cosmos DB 支持两种类型的容量模式： [预配吞吐量](set-throu
 
    :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Azure 门户中的成本估算":::
 
-如果你的 Azure 订阅有支出限制，Azure 将阻止你支出支出。 创建和使用 Azure 资源时，将使用信用额度。 达到信用额度限制时，将在该计费周期的剩余时间内禁用部署的资源。 你无法更改信用额度，但可以将其删除。 有关支出限制的详细信息，请参阅 [Azure 支出限制](../cost-management-billing/manage/spending-limit.md)。
+如果你的 Azure 订阅有支出限制，Azure 将阻止你支出支出。 创建和使用 Azure 资源时，将使用信用额度。 达到信用额度限制时，将在该计费周期的剩余时间内禁用部署的资源。 你无法更改信用额度，但可以将其删除。 有关支出限制的详细信息，请参阅 [Azure 支出限制](../cost-management-billing/manage/spending-limit.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 你可以通过 Azure 企业协议货币承诺信用额度支付 Azure Cosmos DB 费用。 但是，不能使用货币承诺信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
 

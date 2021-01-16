@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 5a06a0663601c221dd456b9cf4437cb9f32a18f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99bc49dfe7b3f7b6a9d49c2947d8d8c01ad98dac
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81399948"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256239"
 ---
 :::row:::
     :::column span="3":::
@@ -30,20 +30,6 @@ ms.locfileid: "81399948"
 ```powershell
 Install-Package Microsoft.CognitiveServices.Speech
 ```
-
-#### <a name="c-binaries-and-header-files"></a>C++ 二进制文件和头文件
-
-也可以从二进制文件安装 C++ 语音 SDK。 将 SDK 下载为 <a href="https://aka.ms/csspeech/linuxbinary" target="_blank">.tar 包 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，并将文件解压缩到所选的一个目录中。 此包的内容（包括 x86 和 x64 目标体系结构的头文件）的结构如下所示：
-
-  | `Path`                   | 说明                                          |
-  |------------------------|------------------------------------------------------|
-  | `license.md`           | 许可                                              |
-  | `ThirdPartyNotices.md` | 第三方声明                                  |
-  | `include`              | 用于 C++ 的头文件                                 |
-  | `lib/x64`              | 用于与应用程序链接的本机 x64 库 |
-  | `lib/x86`              | 用于与应用程序链接的本机 x86 库 |
-
-  要创建应用程序，请将必需的二进制文件（以及库）复制到开发环境中。 在生成过程中根据需要添加它们。
 
 #### <a name="additional-resources"></a>其他资源
 

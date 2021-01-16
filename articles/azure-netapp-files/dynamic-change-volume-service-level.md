@@ -12,20 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/12/2020
+ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: e5219e1c87221ade8da68c21209f41b4d6139be2
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 78cc68d2be600cec78c433ae3eae1de09d31ac94
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579073"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251805"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>动态更改卷的服务级别
 
 > [!IMPORTANT] 
-> * 此功能的公共预览版注册已暂停，直到进一步通知。 
-> * 当前不支持动态更改复制目标卷的服务级别。
+> 当前不支持动态更改复制目标卷的服务级别。
 
 可以通过将卷移到使用所需的 [服务级别](azure-netapp-files-service-levels.md) 的其他容量池来更改现有卷的服务级别。 这种针对卷的就地服务级别更改不需要迁移数据， 它也不会影响对卷的访问。  
 
@@ -37,31 +36,31 @@ ms.locfileid: "94579073"
 
 * 将卷移动到另一个容量池后，将无法再访问以前的卷活动日志和卷指标。 卷将从新的容量池下的新活动日志和指标开始。
 
-* 如果将卷移动到更高的服务级别的容量池 (例如，从 " *标准* " 层或 "高级" 服务级别) 移动到 "高级" 或 " *高级* " 服务级别时，必须等待至少7天，然后才能将该卷 *再次* 移到较低 *的服务级别* 的容量池 (例如，从 " *Ultra* *" 或 "* *标准* ") 移动。  
-<!-- 
-## Register the feature
+* 如果将卷移动到更高的服务级别的容量池 (例如，从 "*标准*" 层或 "高级" 服务级别) 移动到 "高级" 或 "*高级*" 服务级别时，必须等待至少7天，然后才能将该卷 *再次* 移到较低 *的服务级别* 的容量池 (例如，从 " *Ultra* *" 或 "* *标准*") 移动。  
 
-The feature to move a volume to another capacity pool is currently in preview. If you are using this feature for the first time, you need to register the feature first.
+## <a name="register-the-feature"></a>注册功能
 
-1. Register the feature: 
+将卷移动到另一个容量池的功能当前处于预览阶段。 如果你是首次使用此功能，则需要先注册该功能。
+
+1. 注册功能： 
 
     ```azurepowershell-interactive
     Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
 
-2. Check the status of the feature registration: 
+2. 检查功能注册的状态： 
 
     > [!NOTE]
-    > The **RegistrationState** may be in the `Registering` state for up to 60 minutes before changing to`Registered`. Wait until the status is **Registered** before continuing.
+    > 在将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态 **注册** 后再继续。
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
-You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` and `az feature show` to register the feature and display the registration status. 
---> 
+你还可以使用 [Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
+ 
 ## <a name="move-a-volume-to-another-capacity-pool"></a>将卷移动到另一个容量池
 
-1.  在 "卷" 页上，右键单击要更改其服务级别的卷。 选择 " **更改池** "。
+1.  在 "卷" 页上，右键单击要更改其服务级别的卷。 选择 " **更改池**"。
 
     ![右键单击 "卷"](../media/azure-netapp-files/right-click-volume.png)
 
@@ -76,3 +75,4 @@ You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view
 
 * [Azure NetApp 文件的服务级别](azure-netapp-files-service-levels.md)
 * [设置容量池](azure-netapp-files-set-up-capacity-pool.md)
+* [排查更改卷容量池的问题](troubleshoot-capacity-pools.md#issues-when-changing-the-capacity-pool-of-a-volume)

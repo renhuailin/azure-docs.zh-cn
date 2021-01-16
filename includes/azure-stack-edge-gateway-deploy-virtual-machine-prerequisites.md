@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 12/21/2020
+ms.date: 01/15/2021
 ms.author: alkohli
-ms.openlocfilehash: f2443765ecc9116193cefbc729ced25fa5657e59
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 56fc24966fa60c3a5e91f92b57332ae2f6a525ff
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763416"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256538"
 ---
 必须先将客户端配置为通过 Azure 资源管理器通过 Azure PowerShell 连接到设备，然后才能在 Azure Stack Edge 设备上部署 Vm。 有关详细步骤，请参阅 [连接到 Azure Stack Edge 设备上的 Azure 资源管理器](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)。
 
@@ -38,11 +38,3 @@ ms.locfileid: "97763416"
     > 如果创建 GPU Vm，请选择连接到 Internet 的网络接口。 这允许您在设备上安装 GPU 扩展。
 
 
-1. 从 Azure 门户启用 VM 角色。 此步骤为你的设备创建一个唯一的订阅，用于通过设备的本地 Api 创建 Vm。 
-
-    1. 若要启用 VM 角色，请在 Azure 门户中，在 Azure Stack Edge 设备上中转到 Azure Stack Edge 资源。 请参阅 **边缘计算 > 虚拟机**。
-
-        ![添加 VM 映像1](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
-
-    1. 选择 " **虚拟机** " 以切换到 " **概述** " 页。 **启用** 虚拟机云管理。
-        ![添加 VM 映像2](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-2.png)
