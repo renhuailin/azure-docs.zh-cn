@@ -1,68 +1,68 @@
 - name: Azure Data Box Gateway 文档
   href: /azure/databox-gateway/
-  expanded: true
-- name: Data Box Gateway
+- name: 概述
+  Expanded: true
   items:
-    - name: 概述
+    - name: 什么是 Data Box Gateway？
+      href: data-box-gateway-overview.md
+- name: 教程
+  items:
+    - name: 1 - 准备
+      href: data-box-gateway-deploy-prep.md
+    - name: 2A - 在 Hyper-V 中预配
+      href: data-box-gateway-deploy-provision-hyperv.md
+    - name: 2B - 在 VMware 中预配
+      href: data-box-gateway-deploy-provision-vmware.md
+    - name: 3 - 连接、设置、激活
+      href: data-box-gateway-deploy-connect-setup-activate.md
+    - name: 4 - 添加、连接到共享
+      href: data-box-gateway-deploy-add-shares.md
+- name: 概念
+  items:
+    - name: 审查要求
+      href: data-box-gateway-system-requirements.md
+    - name: 了解限制
+      href: data-box-gateway-limits.md
+    - name: 安全概述
+      href: data-box-gateway-security.md
+    - name: 查看用例
+      href: data-box-gateway-use-cases.md
+- name: 如何
+  items:
+    - name: 更新
+      href: data-box-gateway-apply-updates.md
+    - name: 管理
       items:
-        - name: 什么是 Data Box Gateway？
-          href: data-box-gateway-overview.md
-    - name: 教程
+        - name: 共享
+          href: data-box-gateway-manage-shares.md
+        - name: 用户
+          href: data-box-gateway-manage-users.md
+        - name: 带宽计划
+          href: data-box-gateway-manage-bandwidth-schedules.md
+        - name: 访问、开/关、连接
+          href: data-box-gateway-manage-access-power-connectivity-mode.md
+        - name: 通过 PowerShell
+          href: data-box-gateway-connect-powershell-interface.md
+    - name: 监视
+      href: data-box-gateway-monitor.md
+    - name: 疑难解答
       items:
-        - name: 1 - 准备
-          href: data-box-gateway-deploy-prep.md
-        - name: 2A - 在 Hyper-V 中预配
-          href: data-box-gateway-deploy-provision-hyperv.md
-        - name: 2B - 在 VMware 中预配
-          href: data-box-gateway-deploy-provision-vmware.md
-        - name: 3 - 连接、设置、激活
-          href: data-box-gateway-deploy-connect-setup-activate.md
-        - name: 4 - 添加、连接到共享
-          href: data-box-gateway-deploy-add-shares.md
-    - name: 概念
-      items:
-        - name: 审查要求
-          href: data-box-gateway-system-requirements.md
-        - name: 了解限制
-          href: data-box-gateway-limits.md
-        - name: 安全概述
-          href: data-box-gateway-security.md
-        - name: 查看用例
-          href: data-box-gateway-use-cases.md
-    - name: 如何
-      items:
-        - name: 更新
-          href: data-box-gateway-apply-updates.md
-        - name: 管理
-          items:
-            - name: 共享
-              href: data-box-gateway-manage-shares.md
-            - name: 用户
-              href: data-box-gateway-manage-users.md
-            - name: 带宽计划
-              href: data-box-gateway-manage-bandwidth-schedules.md
-            - name: 访问、开/关、连接
-              href: data-box-gateway-manage-access-power-connectivity-mode.md
-            - name: 通过 PowerShell
-              href: data-box-gateway-connect-powershell-interface.md
-        - name: 监视
-          href: data-box-gateway-monitor.md
         - name: 疑难解答
           href: data-box-gateway-troubleshoot.md
         - name: 请联系 Microsoft 支持部门
-          href: ../databox-online/azure-stack-edge-contact-microsoft-support.md
-    - name: 发行说明
-      items:
-        - name: 2007 - 最新版
-          href: data-box-gateway-2007-release-notes.md
-        - name: 1911
-          href: data-box-gateway-1911-release-notes.md
-        - name: 1906
-          href: data-box-gateway-1906-release-notes.md
-        - name: 1905
-          href: data-box-gateway-1905-release-notes.md
-        - name: 正式发布版 (GA)
-          href: data-box-gateway-release-notes.md
+          href: ../databox-online/azure-stack-edge-contact-microsoft-support.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-gateway/breadcrumb/toc.json
+- name: 发行说明
+  items:
+    - name: 2007 - 最新版
+      href: data-box-gateway-2007-release-notes.md
+    - name: 1911
+      href: data-box-gateway-1911-release-notes.md
+    - name: 1906
+      href: data-box-gateway-1906-release-notes.md
+    - name: 1905
+      href: data-box-gateway-1905-release-notes.md
+    - name: 正式发布版 (GA)
+      href: data-box-gateway-release-notes.md
 - name: 资源
   items:
     - name: 定价
