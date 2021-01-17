@@ -1,7 +1,7 @@
 ---
 title: 数据集版本控制
 titleSuffix: Azure Machine Learning
-description: 了解如何以最佳方式对数据集进行版本控制，以及如何使用机器学习管道。
+description: 了解如何对机器学习数据集进行版本控制，以及如何使用机器学习管道。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 7eb8010853ba370f4502b6bc155c6a098e64965b
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3290574b26abe544c8c749165e22bef41a83ecf3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133440"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538163"
 ---
-# <a name="version-and-track-datasets-in-experiments"></a>在试验中对数据集进行版本控制和跟踪
+# <a name="version-and-track-azure-machine-learning-datasets"></a>版本和跟踪 Azure 机器学习数据集
 
 在本文中，你将了解如何对 Azure 机器学习数据集进行版本控制和跟踪，以实现可再现性。 数据集版本控制是为数据状态设置书签的一种方法，方便为将来的试验应用数据集的特定版本。
 

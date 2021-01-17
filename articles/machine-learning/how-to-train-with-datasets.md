@@ -1,7 +1,7 @@
 ---
-title: 使用 azureml-datasets 进行训练
+title: 为机器学习数据集定型
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习数据集将数据提供给本地或远程计算用于 ML 模型的培训。
+description: 了解如何使用 Azure 机器学习数据集将数据提供给本地或远程计算模型定型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,15 +12,14 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 52b52c4c19b22fb1afd76d1e8dfa4163326c0244
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 2d6282c527293abdb8b21e0591548cb51e1339a9
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108584"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539678"
 ---
-# <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure 机器学习中的数据集进行训练
-
+# <a name="train-models-with-azure-machine-learning-datasets"></a>Azure 机器学习数据集定型模型 
 
 本文介绍如何使用 [Azure 机器学习数据集](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) 来训练机器学习模型。  可以在本地或远程计算目标中使用数据集，而不必考虑连接字符串或数据路径。 
 
@@ -34,14 +33,14 @@ Azure 机器学习数据集提供了与 Azure 机器学习训练功能（如 [Sc
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
-* [Azure 机器学习工作区](how-to-manage-workspace.md)。
+* 一个 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 * [安装的 Python AZURE 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) ( # B0 = 1.13.0) ，其中包括 `azureml-datasets` 包。
 
 > [!Note]
 > 某些数据集类依赖于 [azureml-dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) 包。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
 
-## <a name="use-datasets-directly-in-training-scripts"></a>直接在训练脚本中使用数据集
+## <a name="consume-datasets-in-machine-learning-training-scripts"></a>在机器学习训练脚本中使用数据集
 
 如果有尚未注册为数据集的结构化数据，请创建一个 TabularDataset，并在训练脚本中直接使用它进行本地或远程实验。
 
@@ -90,6 +89,7 @@ df = dataset.to_pandas_dataframe()
 ```
 
 ### <a name="configure-the-training-run"></a>配置训练运行
+
 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrun?preserve-view=true&view=azure-ml-py) 对象用于配置和提交训练运行。
 
 此代码创建 ScriptRunConfig 对象 `src`，该对象指定以下内容：
@@ -141,6 +141,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 ```
 
 ### <a name="configure-the-training-run"></a>配置训练运行
+
 建议在装载时通过 `ScriptRunConfig` 构造函数的 `arguments` 参数将该数据集作为参数传递。 这样，你就可以通过参数在训练脚本中获取数据路径（装入点）。 这样，可以在任何云平台上使用相同的训练脚本进行本地调试和远程训练。
 
 下面的示例创建一个 ScriptRunConfig，它通过 `arguments` 传入 FileDataset。 在提交该运行后，`mnist_ds` 数据集引用的数据文件将会装载到计算目标。
@@ -160,7 +161,7 @@ run = experiment.submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
-### <a name="retrieve-the-data-in-your-training-script"></a>在训练脚本中检索数据
+### <a name="retrieve-data-in-your-training-script"></a>在定型脚本中检索数据
 
 下面的代码展示了如何在脚本中检索数据。
 
@@ -222,10 +223,9 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
+## <a name="get-datasets-in-machine-learning-scripts"></a>获取机器学习脚本中的数据集
 
-## <a name="directly-access-datasets-in-your-script"></a>在脚本中直接访问数据集
-
-可以在本地以及在 Azure 机器学习计算等计算群集上远程访问已注册的数据集。 若要跨试验访问已注册的数据集，请使用以下代码按名称访问工作区和已注册的数据集。 默认情况下，`Dataset` 类中的 [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。
+可以在本地以及在 Azure 机器学习计算等计算群集上远程访问已注册的数据集。 若要跨试验访问已注册的数据集，请使用以下代码访问工作区，并获取以前提交的运行中使用的数据集。 默认情况下，`Dataset` 类中的 [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。
 
 ```Python
 %%writefile $script_folder/train.py
@@ -244,7 +244,7 @@ titanic_ds = Dataset.get_by_name(workspace=workspace, name=dataset_name)
 df = titanic_ds.to_pandas_dataframe()
 ```
 
-## <a name="accessing-source-code-during-training"></a>在训练期间访问源代码
+## <a name="access-source-code-during-training"></a>在定型期间访问源代码
 
 Azure Blob 存储具有比 Azure 文件共享更快的吞吐速度，并将扩展到大量并行启动的作业。 出于此原因，我们建议配置运行以使用 Blob 存储来传输源代码文件。
 
@@ -260,7 +260,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 + [数据集笔记本](https://aka.ms/dataset-tutorial)演示了本文中的概念并在其基础上进行了扩展。
 + 请参阅如何 [PARAMETRIZE ML 管道中的数据集](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 * **数据集初始化失败：正在等待装入点准备就绪**： 
   * 如果你没有任何出站 [网络安全组](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) 规则，而且使用 `azureml-sdk>=1.12.0` 、更新 `azureml-dataset-runtime` 及其依赖项是特定次要版本的最新规则，或者如果你在运行中使用它，请重新创建你的环境，以便它可以使用修补程序的最新修补程序。 

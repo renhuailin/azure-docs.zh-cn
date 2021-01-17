@@ -1,20 +1,20 @@
 ---
-title: 激活并设置本地管理控制台
+title: 激活和设置本地管理控制台
 description: 管理控制台激活和安装程序确保传感器注册到 Azure 并将信息发送到本地管理控制台，本地管理控制台在连接的传感器上执行管理任务。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/24/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56092d61e1eed4e4ebe4f8cb7f97d01e91e8543e
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838543"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538575"
 ---
-# <a name="activate-and-set-up-your-on-premises-management-console"></a>激活并设置本地管理控制台 
+# <a name="activate-and-set-up-your-on-premises-management-console"></a>激活和设置本地管理控制台 
 
 激活和设置本地管理控制台可确保：
 
@@ -51,7 +51,7 @@ ms.locfileid: "97838543"
 
 ## <a name="set-up-a-certificate"></a>设置证书
 
-在安装管理控制台后，将生成一个本地自签名证书并用于访问控制台。 管理员首次登录到管理控制台后，系统会提示该用户加入 SSL/TLS 证书。 建议使用受信任的 CA 签名证书，而不是使用本地生成的自签名证书。
+在安装管理控制台后，将生成一个本地自签名证书并用于访问控制台。 管理员首次登录到管理控制台后，系统会提示该用户加入 SSL/TLS 证书。 
 
 提供两个安全级别：
 
@@ -61,7 +61,9 @@ ms.locfileid: "97838543"
 控制台支持以下类型的证书：
 
 - 专用 PKI 和企业密钥基础结构 (专用 PKI) 
+
 - 公共密钥基础结构 (公共 PKI) 
+
 - 在设备上本地生成 (本地自签名)  
 
   > [!IMPORTANT]
@@ -77,7 +79,7 @@ ms.locfileid: "97838543"
 
 在管理控制台和连接的传感器之间禁用验证：
 
-1. 选择“**下一页**”。
+1. 选择“下一步”  。
 1. 关闭 " **启用系统范围的验证** " 切换。
 
 有关上传新证书、支持的证书文件和相关项目的信息，请参阅 [管理本地管理控制台](how-to-manage-the-on-premises-management-console.md)。
@@ -225,7 +227,7 @@ ms.locfileid: "97838543"
 |--|--|
 | 名称 | 传感器的名称。 只能从传感器更改此名称。 有关详细信息，请参阅用于 IoT 的 Defender 用户指南。 |
 | IP | 传感器 IP 地址。 |
-| 版本 | 传感器版本。 |
+| Version | 传感器版本。 |
 | 连接 | 传感器连接状态。 状态可以为 " **已连接** " 或 "已 **断开** 连接"。 |
 | 上次升级 | 上次升级的日期。 |
 | 升级进度 | 进度栏显示升级过程的状态，如下所示：<br />-正在上传包<br />-正在准备安装<br />-正在停止进程<br />-备份数据<br />-拍摄快照<br />-正在更新配置<br />-更新依赖项<br />-更新库<br />-修补数据库<br />-正在启动进程<br />-正在验证系统是否稳定<br />-验证成功<br />-成功<br />-失败<br />-升级已启动<br />-正在启动安装ogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >有关升级的详细信息，请参阅 [Microsoft 支持部门](https://support.microsoft.com/) 获取帮助。 |

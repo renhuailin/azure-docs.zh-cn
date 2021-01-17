@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 129809a83bcebdcf80b05a7300dd9acf862e5886
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 92c5850c3e8c6db63bb5f6287078d2b0345a051c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900393"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538035"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置使用 Salesforce 帐户的注册和登录
 
@@ -37,7 +37,7 @@ ms.locfileid: "97900393"
 
 ## <a name="create-a-salesforce-application"></a>创建 Salesforce 应用程序
 
-若要使用 Azure Active Directory B2C (Azure AD B2C) 中的 Salesforce 帐户，需要在 Salesforce **应用管理器** 中创建应用程序。 有关详细信息，请参阅 [配置基本连接的应用设置](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)和 [启用适用于 API 集成的 OAuth 设置](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
+若要使用 Azure Active Directory B2C (Azure AD B2C) 中的 Salesforce 帐户登录用户，需要在 Salesforce [应用管理器](https://login.salesforce.com/)中创建应用程序。 有关详细信息，请参阅 [配置基本连接的应用设置](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)和 [启用适用于 API 集成的 OAuth 设置](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
 
 1. [登录到 Salesforce](https://login.salesforce.com/)。
 1. 从菜单中选择 " **安装**"。
@@ -93,13 +93,13 @@ ms.locfileid: "97900393"
 
 你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 4. 在“概述”页上选择“标识体验框架”。
 5. 选择“策略密钥”，然后选择“添加”。
 6. 对于“选项”，请选择 `Manual`。
-7. 输入策略密钥的 **名称**。 例如，`SalesforceSecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+7. 输入策略密钥的 **名称**。 例如，`SalesforceSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 8. 在“机密”中，输入前面记录的应用程序机密。
 9. 在“密钥用法”处选择 `Signature`。
 10. 单击“创建”。
@@ -175,7 +175,7 @@ ms.locfileid: "97900393"
 2. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
 3. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
 4. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
-5. 重命名用户旅程的 ID。 例如，`SignUpSignInSalesforce` 。
+5. 重命名用户旅程的 ID。 例如，`SignUpSignInSalesforce`。
 
 ### <a name="display-the-button"></a>显示按钮
 
@@ -199,7 +199,7 @@ ms.locfileid: "97900393"
     <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="Salesforce-OIDC" />
     ```
 
-    将 **TechnicalProfileReferenceId** 的值更新为之前创建的技术配置文件的 ID。 例如，`Salesforce-OIDC` 。
+    将 **TechnicalProfileReferenceId** 的值更新为之前创建的技术配置文件的 ID。 例如，`Salesforce-OIDC`。
 
 3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 
@@ -210,7 +210,7 @@ ms.locfileid: "97900393"
 ## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>将 Salesforce 标识提供者添加到用户流 
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
-1. 单击要传递给 Salesforce 标识提供者的用户流。
+1. 单击要添加 Salesforce 标识提供者的用户流。
 1. 在 **社交标识提供者** 下，选择 " **Salesforce**"。
 1. 选择“保存”。
 1. 若要测试策略，请选择 " **运行用户流**"。
@@ -226,7 +226,7 @@ ms.locfileid: "97900393"
 更新用于启动创建的用户旅程的信赖方 (RP) 文件。
 
 1. 在工作目录中创建 *SignUpOrSignIn.xml* 的副本并将其重命名。 例如，将其重命名为 *SignUpSignInSalesforce.xml*。
-1. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如，`SignUpSignInSalesforce` 。
+1. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如，`SignUpSignInSalesforce`。
 1. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_Salesforce`
 1. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，使其与你 (SignUpSignSalesforce) 创建的新用户旅程的 ID 匹配。
 1. 保存更改，并上传文件。

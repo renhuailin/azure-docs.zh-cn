@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 6d8c04e48a3d0009a152830a4ee332cd706c4b2c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b73676adbb9aa12e6f3b42dd26bed94b22780a8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360167"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539889"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure 机器学习中的安全数据访问
 
@@ -42,15 +42,16 @@ Azure 机器学习使你可以轻松连接到云中的数据。  它在基础存
 
     1. 在自动化机器学习（自动化 ML）试验运行、机器学习管道或 [Azure 机器学习设计器](concept-designer.md)等 Azure 机器学习解决方案中直接使用该数据集。
 
-4. 针对模型输出数据集创建[数据集监视器](#data-drift)以检测数据偏移。 
+4. 针对模型输出数据集创建[数据集监视器](#drift)以检测数据偏移。 
 
 5. 如果检测到数据偏移，请更新输入数据集，并相应地重新训练模型。
 
 下图提供了此建议的工作流的直观演示。
 
-![关系图显示了流到数据存储中的 Azure 存储服务，该数据流入到数据集。 数据集流入模型定型，后者流到数据偏移，后者流回数据集。](./media/concept-data/data-concept-diagram.svg)
+![该图显示了流入数据存储和数据集的 Azure 存储服务。 数据集流入模型训练，模型训练流入数据漂移，而数据漂移又流回数据集。](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>数据存储
+<a name="datastores"></a>
+## <a name="connect-to-storage-with-datastores"></a>通过数据存储连接到存储
 
 Azure 机器学习数据存储可安全地将连接信息保存到 Azure 存储中，因此无需在脚本中对其进行编码。 [注册并创建一个数据存储](how-to-access-data.md)即可轻松连接到存储帐户，并访问底层 Azure 存储服务中的数据。 
 
@@ -65,9 +66,10 @@ Azure 中支持的基于云的存储服务，可注册为数据存储：
 + Databricks 文件系统
 + Azure Database for MySQL
 
-## <a name="datasets"></a>数据集
+<a name="datasets"></a>
+## <a name="reference-data-in-storage-with-datasets"></a>引用包含数据集的存储中的数据
 
-Azure 机器学习数据集不是你的数据的副本。 通过创建数据集，可以在存储服务中创建对数据的引用以及其元数据的副本。 
+Azure 机器学习数据集不是你的数据的副本。 创建数据集时，将会创建对其存储服务中的数据的引用及其元数据的副本。 
 
 由于数据集是延迟计算的，并且数据仍保留在其现有位置，因此
 
@@ -105,7 +107,7 @@ Azure 机器学习数据集不是你的数据的副本。 通过创建数据集�
 
 <a name="label"></a>
 
-## <a name="data-labeling"></a>数据标记
+## <a name="label-data-with-data-labeling-projects"></a>为数据添加标签项目标签
 
 在机器学习项目中，标记大量数据通常是一件很麻烦的事情。 这些包含计算机视觉组件（如图像分类或对象检测）的项目通常需要数千个图像和对应的标签。
 
@@ -115,7 +117,7 @@ Azure 机器学习提供了一个中心位置，用于创建、管理和监视�
 
 <a name="drift"></a>
 
-## <a name="data-drift"></a>数据偏移
+## <a name="monitor-model-performance-with-data-drift"></a>利用数据偏移监视模型性能
 
 在机器学习的上下文中，数据偏移是指模型输入数据中导致模型性能下降的变化。 这是模型准确度在一段时间后下降的最主要原因之一，因此，监视数据偏移有助于检测模型性能问题。
 

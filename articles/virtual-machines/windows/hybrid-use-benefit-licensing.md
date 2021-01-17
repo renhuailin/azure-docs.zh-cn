@@ -1,18 +1,18 @@
 ---
 title: Windows Server 的 Azure 混合权益
-description: 了解如何最大限度地利用 Windows 软件保障权益将本地许可证引入到 Azure。
+description: 了解如何充分利用 Windows 软件保障权益将本地许可证引入到 Azure 中。
 author: xujing-ms
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 43784fe2bb94d5abd012f22ed530e4631a304614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c13203c076378e1ff8f213971466eb5f63dfc4f4
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335980"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539167"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
 对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益部署 Windows OS 的新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
@@ -42,10 +42,9 @@ ms.locfileid: "91335980"
 Windows Server 的 Azure 混合权益支持所有基于 Windows Server OS 的映像。 可以使用 Azure 平台支持映像或上传自己的自定义 Windows Server 映像。 
 
 ### <a name="portal"></a>门户
-若要使用 Windows Server 的 Azure 混合权益创建 VM，请使用“节省资金”部分下的切换。
+若要使用 Windows Server Azure 混合权益创建 VM，请在创建过程中滚动到 " **基本** 信息" 选项卡的底部，在 " **授权** " 下，选中此复选框以使用现有的 windows server 许可证。 
 
 ### <a name="powershell"></a>PowerShell
-
 
 ```powershell
 New-AzVm `

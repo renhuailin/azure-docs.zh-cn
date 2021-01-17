@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 24e267b66d11cb3c5ca2b70ed09b7acb3653da99
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 36b7618fbacc18ec506f12eabc642246d3148ce0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653599"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537917"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过微博帐户注册与登录
 
@@ -32,7 +32,7 @@ ms.locfileid: "97653599"
 
 ## <a name="create-a-weibo-application"></a>创建 Weibo 应用程序
 
-要将微博帐户用作 Azure Active Directory B2C (Azure AD B2C) 中的标识提供者，需要在表示它的租户中创建一个应用程序。 如果还没有 Weibo 帐户，可以在注册 [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us) 。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中为具有 Weibo 帐户的用户登录，需要在 [Weibo 开发人员门户](https://open.weibo.com/)中创建应用程序。 如果还没有 Weibo 帐户，可以在注册 [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) 。
 
 1. 使用微博帐户凭据登录[微博开发人员门户](https://open.weibo.com/)。
 1. 登录后，选择右上角的显示名称。
@@ -76,7 +76,7 @@ ms.locfileid: "97653599"
 
 你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 4. 在“概述”页上选择“标识体验框架”。
@@ -263,9 +263,9 @@ GitHub 技术配置文件要求将 **CreateIssuerUserId** 声明转换添加到 
 ## <a name="add-weibo-identity-provider-to-a-user-flow"></a>将 Weibo 标识提供者添加到用户流 
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
-1. 单击要 Weibo 标识提供程序的用户流。
+1. 单击要添加 Weibo 标识提供程序的用户流。
 1. 在 **社交标识提供者** 下，选择 " **Weibo**"。
-1. 选择“保存”。 
+1. 选择“保存”。
 1. 若要测试策略，请选择 " **运行用户流**"。
 1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击 "**运行用户流**"

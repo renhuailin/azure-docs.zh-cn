@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6877a82d81b46ac2ffda8d0f0bf3fb0d7b337ff3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c7d43a55878a07e424ce1b6f55782502c244239c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663577"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537938"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置 ID.me 帐户的注册和登录
 
@@ -39,7 +39,7 @@ ms.locfileid: "97663577"
 
 ## <a name="create-an-idme-application"></a>创建 ID.me 应用程序
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中使用 ID.me 帐户作为标识提供者，需要在 [API & SDK 的 ID.me 开发人员资源](https://developers.id.me/)中创建应用程序。 如果还没有 ID.me 开发人员帐户，则可以在上注册 [https://developers.id.me/registration/new](https://developers.id.me/registration/new) 。
+若要使用 Azure Active Directory B2C (Azure AD B2C) 中的 ID.me 帐户登录用户，需要在 [API & SDK 的 ID.me 开发人员资源](https://developers.id.me/)中创建应用程序。 有关详细信息，请参阅 [OAuth 集成指南](https://developers.id.me/documentation/oauth/overview/kyc)。 如果还没有 ID.me 开发人员帐户，则可以在上注册 [https://developers.id.me/registration/new](https://developers.id.me/registration/new) 。
 
 1. 通过 ID.me 帐户凭据登录到 [API & SDK 的 ID.me 开发人员资源](https://developers.id.me/) 。
 1. 选择 " **查看我的应用程序**"，并选择 " **继续**"。
@@ -53,7 +53,7 @@ ms.locfileid: "97663577"
 
 你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 4. 在“概述”页上选择“标识体验框架”。

@@ -4,15 +4,15 @@ description: 排查 Azure 文件同步上部署中的常见问题，你可以使
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 1/13/2021
+ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a262c2b4351c96217001ba42e8c745f7d71c7d45
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233893"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539243"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -916,6 +916,22 @@ PerItemErrorCount: 1006.
 | **所需的补救措施** | 否 |
 
 数据引入操作超时可引发此错误。 如果正在进行同步（AppliedItemCount 大于 0），则可以忽略此错误。 请参阅[如何监视当前同步会话的进度？](#how-do-i-monitor-the-progress-of-a-current-sync-session)。
+
+<a id="-2134375814"></a>**由于在服务器上找不到服务器终结点路径，同步失败。**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8027a |
+| **HRESULT（十进制）** | -2134375814 |
+| **错误字符串** | ECS_E_SYNC_ROOT_DIRECTORY_NOT_FOUND |
+| **所需的补救措施** | 是 |
+
+如果已重命名或删除用作服务器终结点路径的目录，则会发生此错误。 如果目录已重命名，请将目录重命名回原始名称，并重新启动存储同步代理服务 (FileSyncSvc) 。
+
+如果已删除该目录，请执行以下步骤以删除现有的服务器终结点，并使用新路径创建新的服务器终结点：
+
+1. 按照 [删除服务器终结点](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint)中所述的步骤，在同步组中删除服务器终结点。
+2. 按照 [添加服务器终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint)中所述的步骤，在同步组中创建一个新的服务器终结点。
 
 ### <a name="common-troubleshooting-steps"></a>常见故障排除步骤
 <a id="troubleshoot-storage-account"></a>**验证存储帐户是否存在。**  

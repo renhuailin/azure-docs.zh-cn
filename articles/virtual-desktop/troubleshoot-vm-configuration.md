@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a49ea2f6ce4a5119af024ab3de67fa2b89c02e
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88005215"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539734"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>会话主机虚拟机配置
 
@@ -74,7 +74,7 @@ ms.locfileid: "88005215"
 
 **修复3：** 按照 [更改 DNS 服务器] 中的步骤操作，执行以下操作之一以解决此问题。
 - 将网络接口的 DNS 服务器设置更改为 " **自定义** "，并执行 " [更改 dns 服务器](../virtual-network/virtual-network-network-interface.md#change-dns-servers) " 和 "指定虚拟网络上 DNS 服务器的专用 IP 地址" 中的步骤。
-- 更改网络接口的 DNS 服务器设置，使其从 "[更改 dns 服务器](../virtual-network/virtual-network-network-interface.md#change-dns-servers)" 中的步骤**继承**，然后更改虚拟网络的 dns 服务器设置和 "[更改 dns 服务器](../virtual-network/manage-virtual-network.md#change-dns-servers)" 中的步骤。
+- 更改网络接口的 DNS 服务器设置，使其从 "[更改 dns 服务器](../virtual-network/virtual-network-network-interface.md#change-dns-servers)" 中的步骤 **继承**，然后更改虚拟网络的 dns 服务器设置和 "[更改 dns 服务器](../virtual-network/manage-virtual-network.md#change-dns-servers)" 中的步骤。
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>未安装 windows 虚拟桌面代理和 Windows 虚拟桌面启动加载程序
 
@@ -82,7 +82,7 @@ ms.locfileid: "88005215"
 
 按照以下说明确认是否已安装组件并检查是否有错误消息。
 
-1. 检查 "**控制面板" "程序" "** 程序  >  **Programs**  >  **和功能**"，确认是否已安装这两个组件。 如果 **Windows 虚拟桌面代理** 和 **Windows 虚拟桌面代理启动加载程序** 不可见，则不会在 VM 上安装它们。
+1. 检查 "**控制面板" "程序" "** 程序  >    >  **和功能**"，确认是否已安装这两个组件。 如果 **Windows 虚拟桌面代理** 和 **Windows 虚拟桌面代理启动加载程序** 不可见，则不会在 VM 上安装它们。
 2. 打开 **文件资源管理器** 并导航到 **C:\Windows\Temp\ScriptLog.log**。 如果缺少该文件，则表示安装了这两个组件的 PowerShell DSC 无法在提供的安全上下文中运行。
 3. 如果文件 **C:\Windows\Temp\ScriptLog.log** 存在，请将其打开，并检查错误消息。
 
@@ -178,7 +178,7 @@ ms.locfileid: "88005215"
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>排查 Windows 虚拟桌面并行堆栈问题
 
-Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Microsoft Installer (MSI) 在 Microsoft Windows Server 2016 或 Windows Server 2012 R2 上安装并行堆栈。 对于 Microsoft Windows 10，将使用 **enablesxstackrs.ps1**启用 Windows 虚拟桌面并行堆栈。
+Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Microsoft Installer (MSI) 在 Microsoft Windows Server 2016 或 Windows Server 2012 R2 上安装并行堆栈。 对于 Microsoft Windows 10，将使用 **enablesxstackrs.ps1** 启用 Windows 虚拟桌面并行堆栈。
 
 在会话主机池 Vm 上安装或启用并行堆栈的主要方式有三种：
 
@@ -310,7 +310,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>禁用 "远程桌面授权模式" 组策略设置
 
-通过在 VM 中打开组策略编辑器并导航到**管理模板**Windows 组件 "，然后导航到" 组策略 "设置  >  **Windows Components**  >  **远程桌面服务**  >  **远程桌面会话主机**  >  **Licensing**  >  **" 授权 "设置" 远程桌面授权 "模式**。 如果 "组策略" 设置已 **启用**，请将其更改为 " **已禁用**"。 如果已禁用，则将其保持原样。
+通过在 VM 中打开组策略编辑器并导航到 **管理模板** Windows 组件 "，然后导航到" 组策略 "设置  >    >  **远程桌面服务**  >  **远程桌面会话主机**  >    >  **" 授权 "设置" 远程桌面授权 "模式**。 如果 "组策略" 设置已 **启用**，请将其更改为 " **已禁用**"。 如果已禁用，则将其保持原样。
 
 >[!NOTE]
 >如果通过域设置组策略，则在面向这些 Windows 10 企业多会话 Vm 的策略上禁用此设置。
@@ -348,6 +348,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 - 如需简要了解如何排查 Windows 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
 - 若要在 Windows 虚拟桌面环境中创建主机池时排查问题，请参阅 [环境和主机池创建](troubleshoot-set-up-issues.md)。
 - 若要排查在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
+- 若要解决与 Windows 虚拟桌面代理或会话连接有关的问题，请参阅 [排查常见的 Windows 虚拟桌面代理问题](troubleshoot-agent.md)。
 - 若要解决 Windows 虚拟桌面客户端连接问题，请参阅 [Windows 虚拟桌面服务连接](troubleshoot-service-connection.md)。
 - 若要解决远程桌面客户端的问题，请参阅[排查远程桌面客户端](troubleshoot-client.md)问题
 - 若要排查将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅 [Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。

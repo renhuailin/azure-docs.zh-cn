@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b8be516051f8eed0649064ae0f7c29a4dde85675
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 8a0d69ea57eb5b8b2a074c37d4798a99c576ce95
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224433"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538170"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>使用其他 Azure AD B2C 租户中的 Azure AD B2C 帐户设置注册和登录
 
@@ -43,7 +43,7 @@ ms.locfileid: "98224433"
 
 ## <a name="create-an-azure-ad-b2c-application"></a>创建 Azure AD B2C 应用程序
 
-若要使用 Azure AD B2C 帐户作为 Azure AD B2C 租户中的 [标识提供者](openid-connect.md) (例如 Contoso) ，请在另一 Azure AD B2C (例如，Fabrikam) ：
+若要使用来自其他 Azure AD B2C (租户的帐户（例如 Fabrikam) ）为用户启用登录，请在 Azure AD B2C (例如 Contoso) ：
 
 1. 创建 [用户流](tutorial-create-user-flows.md)或 [自定义策略](custom-policy-get-started.md)。
 1. 然后，在 Azure AD B2C 中创建应用程序，如本节中所述。 
@@ -62,7 +62,7 @@ ms.locfileid: "98224433"
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
-    例如 `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
+    例如，`https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
 
 1. 在 "权限" 下，选中 "向 **管理员同意 openid 并 offline_access 权限** " 复选框。
 1. 选择“注册”。
@@ -184,8 +184,8 @@ ms.locfileid: "98224433"
     |ClaimsProvider\Domain  | 用于 [直接登录](direct-signin.md?pivots=b2c-custom-policy#redirect-sign-in-to-a-social-provider)的域名。 输入要在直接登录中使用的域名。 例如， *fabrikam.com*。 |
     |TechnicalProfile\DisplayName|此值会显示在登录屏幕中的登录按钮上。 例如， *Fabrikam*。 |
     |Metadata \ client_id|标识提供者的应用程序标识符。 用之前在另一个 Azure AD B2C 租户中创建的应用程序 ID 更新客户端 ID。|
-    |Metadata\METADATA|指向 OpenID Connect 标识提供者配置文档的 URL，也称为 OpenID 众所周知的配置终结点。 输入以下 URL `{tenant}` ，并将替换为其他 Azure AD B2C 租户 (Fabrikam) 的域名。 将替换为 `{tenant}` 你在另一个租户中配置的策略名称，并将替换为 `{policy]` 策略名称： `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/v2.0/.well-known/openid-configuration` 。 例如 `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/B2C_1_susi/v2.0/.well-known/openid-configuration`。|
-    |CryptographicKeys| 将 **StorageReferenceId** 的值更新为之前创建的策略密钥的名称。 例如 `B2C_1A_FabrikamAppSecret`。| 
+    |Metadata\METADATA|指向 OpenID Connect 标识提供者配置文档的 URL，也称为 OpenID 众所周知的配置终结点。 输入以下 URL `{tenant}` ，并将替换为其他 Azure AD B2C 租户 (Fabrikam) 的域名。 将替换为 `{tenant}` 你在另一个租户中配置的策略名称，并将替换为 `{policy]` 策略名称： `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/v2.0/.well-known/openid-configuration` 。 例如，`https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/B2C_1_susi/v2.0/.well-known/openid-configuration`。|
+    |CryptographicKeys| 将 **StorageReferenceId** 的值更新为之前创建的策略密钥的名称。 例如，`B2C_1A_FabrikamAppSecret`。| 
     
 
 ### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
@@ -258,7 +258,7 @@ ms.locfileid: "98224433"
 
 1. 在工作目录中创建 *SignUpOrSignIn.xml* 的副本并将其重命名。 例如，将其重命名为 *SignUpSignInFabrikam.xml*。
 1. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如，`SignUpSignInFabrikam`。
-1. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_fabrikam`。
+1. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如，`http://contoso.com/B2C_1A_signup_signin_fabrikam`。
 1. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，使其与之前创建的用户旅程的 ID 匹配。 例如， *SignUpSignInFabrikam*。
 1. 保存更改并上传文件。
 1. 在 " **自定义策略**" 下，选择列表中的新策略。

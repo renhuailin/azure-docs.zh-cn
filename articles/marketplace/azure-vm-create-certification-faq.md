@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/19/2020
-ms.openlocfilehash: 921c05b76640935a1bd9e65d556933c23093e5b2
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/15/2021
+ms.openlocfilehash: 8c2739503f00848b1515f2061c2a9aa250c091a3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251431"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539863"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>排查虚拟机证书问题
 
@@ -22,7 +22,6 @@ ms.locfileid: "98251431"
 
 > [!NOTE]
 > 如果你有关于本文或改进建议的问题，请联系 [合作伙伴中心支持](https://aka.ms/marketplacepublishersupport)部门。
-
 
 ## <a name="vm-extension-failure"></a>VM 扩展失败
 
@@ -60,12 +59,12 @@ ms.locfileid: "98251431"
 |1|虚拟硬盘 (VHD 无效) |如果 VHD 页脚中的指定 cookie 值不正确，则 VHD 将被视为无效。|重新创建映像并提交请求。|
 |2|无效的 blob 类型|VM 预配失败，因为使用的块是 blob 类型而不是页类型。|重新创建映像并提交请求。|
 |3|预配超时或未正确通用化|VM 通用化出现问题。|用通用化重新创建映像并提交请求。|
+|
 
 > [!NOTE]
 > 有关 VM 通用化的详细信息，请参阅：
 > - [Linux 文档](azure-vm-create-using-approved-base.md#generalize-the-image)
 > - [Windows 文档](../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
-
 
 ## <a name="vhd-specifications"></a>VHD 规范
 
@@ -93,7 +92,7 @@ Creator 主机操作系统|4
 唯一 ID|16
 已保存状态|1
 保留|427
-
+|
 
 ### <a name="vhd-specifications"></a>VHD 规范
 
@@ -139,6 +138,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 |8|客户端活动间隔|将 ClientAliveInterval 设置为180。 在应用程序需要时，可以将其从30设置为235。 如果要为最终用户启用 SSH，则必须按照说明设置此值。|
 |9|操作系统体系结构|仅支持 64 位操作系统。|
 |10|自动更新|确定是否启用 Linux 代理自动更新。|
+|
 
 ### <a name="common-test-case-errors"></a>常见的测试用例错误
 
@@ -150,7 +150,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 | 2 | Bash 历史记录测试用例 | 如果提交图像的 Bash 历史记录大小超过 1 kb (KB) ，则会发生错误。 大小限制为 1 KB，以确保 Bash 历史记录文件不包含任何可能的敏感信息。 | 通过将 VHD 安装到另一工作 VM 进行解析，并进行更改以将大小减小到 1 KB 或更少。 例如，删除 `.bash` 历史记录文件。 |
 | 3 | 必需的内核参数测试用例 | 当的值未设置为时，你将收到此错误 `console` `ttyS0` 。 通过运行以下命令进行检查： <br /> `cat /proc/cmdline` | 将的值设置 `console` 为 `ttyS0` ，然后重新提交请求。 |
 | 4 | ClientAlive 间隔测试用例 | 如果该工具包为此测试用例提供了失败的结果，则有一个不正确的值 `ClientAliveInterval` 。 | 将的值设置 `ClientAliveInterval` 为小于或等于235，然后重新提交请求。 |
-
+|
 
 ### <a name="windows-test-cases"></a>Windows 测试用例
 
@@ -175,8 +175,9 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 |15|SNMP 服务| (SNMP) Services 功能的简单网络管理协议目前尚不受支持。 应用程序不应依赖于此功能。|
 |16|Windows Internet 名称服务|Windows Internet 名称服务。 此服务器功能尚不受支持。 应用程序不应依赖于此功能。|
 |17|无线 LAN 服务|无线 LAN 服务。 此服务器功能尚不受支持。 应用程序不应依赖于此功能。|
+|
 
-如果前面的测试用例遇到任何故障，请参阅该解决方案的表中的 " **说明** " 列。 有关详细信息，请与支持团队联系。 
+如果前面的测试用例遇到任何故障，请参阅该解决方案的表中的 " **说明** " 列。 有关详细信息，请与支持团队联系。
 
 ## <a name="data-disk-size-verification"></a>数据磁盘大小验证
 
@@ -192,6 +193,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 |---|---|
 |Linux|1 GB 到 1023 GB|
 |Windows|30 GB 到 250 GB|
+|
 
 因为 Vm 允许访问基础操作系统，所以请确保 VHD 大小对于 VHD 而言足够大。 磁盘无需停机即可进行扩展。 使用磁盘大小从 30 GB 到 50 GB。
 
@@ -199,6 +201,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 |---|---|---|
 |>500 tib (TiB) |n/a|请联系支持团队以获取异常批准。|
 |250-500 TiB|>200 gb (GiB) 与 blob 大小的差异|请联系支持团队以获取异常批准。|
+|
 
 > [!NOTE]
 > 较大的磁盘大小会产生较高的成本，并将在设置和复制过程中产生延迟。 由于此延迟和成本，支持团队可能会寻找异常批准的理由。
@@ -209,7 +212,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 你可以从或验证映像文件版本 `C:\windows\system32\drivers\srv.sys` `srv2.sys` 。
 
-下表显示了 Windows Server 的最小修补版本： 
+下表显示了 Windows Server 的最小修补版本：
 
 |(OS)|Version|
 |---|---|
@@ -218,6 +221,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
 |Windows Server 2019|NA|
+|
 
 > [!NOTE]
 > Windows Server 2019 没有任何必需的版本要求。
@@ -230,8 +234,8 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 如果映像未与以下某个内核版本一起安装，请将其更新为正确的修补程序。 在用以下必需的修补程序更新映像后，请求支持团队提供必要的批准：
 
-- CVE-2019-11477 
-- CVE-2019-11478 
+- CVE-2019-11477
+- CVE-2019-11478
 - CVE-2019-11479
 
 |OS 系列|Version|内核|
@@ -278,6 +282,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 ||stretch (安全性) |4.9.168 + deb9u3|
 ||Debian GNU/Linux 10 (buster) |Debian 6.3.0-18 + deb9u1|
 ||buster、sid (stretch precise-backports) |4.19.37-5|
+|
 
 ## <a name="image-size-should-be-in-multiples-of-megabytes"></a>图像大小应为兆字节的倍数
 
@@ -303,7 +308,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 3. 重新提交证书请求。
 
 ## <a name="download-failure"></a>下载失败
-    
+
 请参阅下表，了解当你使用共享访问签名 (SAS) URL 下载 VM 映像时出现的任何问题。
 
 |方案|错误|Reason|解决方案|
@@ -314,12 +319,13 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 |4|签名无效|VHD 的关联 SAS URL 不正确。|获取正确的 SAS URL。|
 |6|HTTP 条件头|SAS URL 无效。|获取正确的 SAS URL。|
 |7|VHD 名称无效|检查 VHD 名称中是否存在任何特殊字符，如百分号 `%` 或引号 `"` 。|通过删除特殊字符来重命名 VHD 文件。|
+|
 
-## <a name="first-1-mb-partition-2048-sectors-each-sector-of-512-bytes"></a>第 1 MB 分区 (2048 扇区，每个扇区512字节) 
+## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>第 1 MB (2048 扇区，512字节的每个扇区) 分区
 
-如果要 [构建自己的映像](azure-vm-create-using-own-image.md)，请确保操作系统磁盘的前2048个扇区 (1 MB) 为空。 否则，你的发布将失败。 此要求仅适用于 OS 磁盘)  (到数据磁盘。 如果要 [从已批准的基准](azure-vm-create-using-approved-base.md)构建映像，则可以跳过这一要求。 
+如果要 [构建自己的映像](azure-vm-create-using-own-image.md)，请确保第一个2048扇区 (1 MB) 操作系统磁盘为空。 否则，你的发布将失败。 此要求仅适用于 OS 磁盘)  (不是数据磁盘。 如果要 [从已批准的基准](azure-vm-create-using-approved-base.md)构建映像，则可以跳过这一要求。
 
-### <a name="create-a-1-mb-partition-2048-sectors-each-sector-of-512-bytes-on-an-empty-vhd-linux-only-steps"></a>创建一个 1 MB 的分区 (2048 个扇区，每个512字节的扇区)  (仅 Linux 步骤的空 VHD 上) 
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>创建 1 MB (2048 扇区，512字节的每个扇区) 分区的空 VHD
 
 这些步骤仅适用于 Linux。
 
@@ -374,17 +380,17 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
       ![Putty 客户端命令行屏幕截图，显示已删除数据的命令和输出。](./media/create-vm/vm-certification-issues-solutions-22.png)
 
-   1. 键入 `w` 以确认分区的创建。 
+   1. 键入 `w` 以确认分区的创建。
 
       ![Putty 客户端命令行屏幕截图，其中显示了用于创建分区的命令。](./media/create-vm/vm-certification-issues-solutions-23.png)
 
-   1. 可以通过运行命令并键入来验证分区表 `n fdisk /dev/sdb` `p` 。 你会看到，分区是用 2048 offset 值创建的。 
+   1. 可以通过运行命令并键入来验证分区表 `n fdisk /dev/sdb` `p` 。 你会看到，分区是用 2048 offset 值创建的。
 
       ![Putty 客户端命令行屏幕截图，其中显示了用于创建2048偏移量的命令。](./media/create-vm/vm-certification-issues-solutions-24.png)
 
 1. 从 VM 中分离 VHD 并删除 VM。
 
-### <a name="create-a-first-1-mb-partition-2048-sectors-each-sector-of-512-bytes-by-moving-existing-data-on-vhd"></a>通过移动 VHD 上的现有数据，创建第一个 1 MB 的分区 (2048 个扇区，每个扇区512字节) 
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>创建 1 MB (2048 个扇区，每个扇区512字节) 分区，方法是移动 VHD 上的现有数据
 
 这些步骤仅适用于 Linux。
 
@@ -452,11 +458,11 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
 如果要重复使用从 Azure Marketplace 获取的所有映像，则必须通用化操作系统 VHD。
 
-* 对于 **linux**，以下过程通用化 linux vm，并将其重新部署为单独的 vm。
+- 对于 **linux**，以下过程通用化 linux vm，并将其重新部署为单独的 vm。
 
   在 SSH 窗口中，输入以下命令：`sudo waagent -deprovision+user`。
 
-* 对于 **windows**，你使用来通用化 windows 映像 `sysreptool` 。
+- 对于 **windows**，你使用来通用化 windows 映像 `sysreptool` 。
 
   有关该工具的详细信息 `sysreptool` ，请参阅 [系统准备 (Sysprep) 概述](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
 

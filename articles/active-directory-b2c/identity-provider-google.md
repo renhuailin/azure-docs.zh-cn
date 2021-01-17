@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c8b942e66a76bcc3a095f9bd3d40b44bf4217e50
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 286f4f5ca8a18a67da2ac24beb4c6935de35778d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584878"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538116"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Google 帐户注册与登录
 
@@ -37,7 +37,7 @@ ms.locfileid: "97584878"
 
 ## <a name="create-a-google-application"></a>创建 Google 应用程序
 
-若要使用 Google 帐户作为 Azure Active Directory B2C (Azure AD B2C) 中的 [标识提供者](authorization-code-flow.md) ，则需要在 Google 开发人员控制台中创建应用程序。 如果还没有 Google 帐户，可以在上注册 [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) 。
+若要使用 Azure Active Directory B2C (Azure AD B2C) 中的 Google 帐户登录用户，需要在 [Google 开发人员控制台](https://console.developers.google.com/)中创建应用程序。 有关详细信息，请参阅 [设置 OAuth 2.0](https://support.google.com/googleapi/answer/6158849)。 如果还没有 Google 帐户，可以在上注册 [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) 。
 
 1. 使用 Google 帐户凭据登录 [Google 开发人员控制台](https://console.developers.google.com/)。
 1. 在页面的左上角，选择 "项目" 列表，然后选择 " **新建项目**"。
@@ -72,7 +72,7 @@ ms.locfileid: "97584878"
 
 你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 4. 在“概述”页上选择“标识体验框架”。
@@ -189,7 +189,7 @@ ms.locfileid: "97584878"
 ## <a name="add-google-identity-provider-to-a-user-flow"></a>将 Google 标识提供者添加到用户流 
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
-1. 单击要传递给 Google 标识提供者的用户流。
+1. 单击要添加 Google 标识提供程序的用户流。
 1. 在 " **社交标识提供者**" 下，选择 " **Google**"。
 1. 选择“保存”。
 1. 若要测试策略，请选择 " **运行用户流**"。

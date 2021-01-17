@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 37fc33ae8084a2b4e99e7b5dc417eac70060eef5
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 02c3890a9aca03d9d79b55098297174401cab37d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516205"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537959"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Facebook 帐户注册与登录
 
@@ -36,7 +36,7 @@ ms.locfileid: "97516205"
 
 ## <a name="create-a-facebook-application"></a>创建 Facebook 应用程序
 
-若要使用 Facebook 帐户作为 Azure Active Directory B2C (Azure AD B2C) 中的 [标识提供者](authorization-code-flow.md) ，需要在租户中创建表示该帐户的应用程序。 如果还没有 Facebook 帐户，可以在 [https://www.facebook.com/](https://www.facebook.com/) 处注册。
+若要使用 Azure Active Directory B2C (Azure AD B2C) 中的 Facebook 帐户登录用户，需要在 [Facebook 应用仪表板](https://developers.facebook.com/)中创建应用程序。 有关详细信息，请参阅 [应用开发](https://developers.facebook.com/docs/development)。 如果还没有 Facebook 帐户，可以在 [https://www.facebook.com/](https://www.facebook.com/) 处注册。
 
 1. 使用 Facebook 帐户凭据登录 [Facebook 开发人员](https://developers.facebook.com/)。
 1. 如果以前没有登录过，需要注册为 Facebook 开发人员。 为此，请选择页面右上角的“开始使用”，接受 Facebook 的策略，然后完成注册步骤。
@@ -93,9 +93,9 @@ ms.locfileid: "97516205"
 ## <a name="add-facebook-identity-provider-to-a-user-flow"></a>将 Facebook 标识提供者添加到用户流 
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
-1. 单击要传递到 Facebook 标识提供程序的用户流。
+1. 单击要添加 Facebook 标识提供程序的用户流。
 1. 在 **社交标识提供者** 下，选择 **Facebook**。
-1. 选择“保存”。 
+1. 选择“保存”。
 1. 若要测试策略，请选择 " **运行用户流**"。
 1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击 "**运行用户流**"

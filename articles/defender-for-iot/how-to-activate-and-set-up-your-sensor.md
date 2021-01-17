@@ -1,20 +1,20 @@
 ---
-title: 激活并设置传感器
+title: 激活和设置传感器
 description: 本文介绍如何登录和激活传感器控制台。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/26/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9305609b624a96e4d785657dfb63af6639e132c4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838289"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538563"
 ---
-# <a name="activate-and-set-up-your-sensor"></a>激活并设置传感器
+# <a name="activate-and-set-up-your-sensor"></a>激活和设置传感器
 
 本文介绍如何激活传感器并执行初始设置。
 
@@ -65,10 +65,13 @@ ms.locfileid: "97838289"
 控制台支持以下证书类型：
 
 - 专用 PKI 和企业密钥基础结构 (专用 PKI) 
+
 - 公共密钥基础结构 (公共 PKI) 
+
 - 在设备上本地生成 (本地自签名)  
 
-  > 无关紧要建议你不要使用默认的自签名证书。 证书不安全，只应用于测试环境。 无法验证证书的所有者，并且无法维护系统的安全。 请勿将此选项用于生产网络。
+  > [!IMPORTANT]
+  > 建议你不要使用默认的自签名证书。 证书不安全，只应用于测试环境。 无法验证证书的所有者，并且无法维护系统的安全。 请勿将此选项用于生产网络。
 
 ### <a name="sign-in-and-activate-the-sensor"></a>登录并激活传感器
 
@@ -93,7 +96,7 @@ ms.locfileid: "97838289"
 1. 定义证书名称。
 1. 上传 CRT 和密钥文件。
 1. 如果需要，请输入通行短语并上传 PEM 文件。
-1. 选择“**下一页**”。 验证屏幕将打开。 默认情况下，会在管理控制台和连接的传感器之间启用验证。
+1. 选择“下一步”  。 验证屏幕将打开。 默认情况下，会在管理控制台和连接的传感器之间启用验证。
 1. 关闭 " **启用系统范围的验证** 切换" 以禁用验证。 建议启用验证。
 1. 选择“保存”。  
 
@@ -217,4 +220,4 @@ ms.locfileid: "97838289"
 
 [管理传感器激活文件](how-to-manage-individual-sensors.md#manage-sensor-activation-files)
 
-[控制所监视的流量](how-to-control-what-traffic-is-monitored.md)
+[控制要监视的流量](how-to-control-what-traffic-is-monitored.md)

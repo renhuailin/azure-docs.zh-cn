@@ -1,5 +1,5 @@
 ---
-title: 创建 Azure 机器学习数据集以访问数据
+title: 创建 Azure 机器学习数据集
 titleSuffix: Azure Machine Learning
 description: 了解如何创建 Azure 机器学习数据集以访问机器学习试验运行的数据。
 services: machine-learning
@@ -12,16 +12,14 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: fa6cdeaa47c7fdf9e90cdab96397473d8498afa0
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 8dac15f359d8ab6c7a84bbc30dba392322e84bb5
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108698"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538192"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
-
-
 
 本文介绍如何使用 Azure 机器学习 Python SDK 创建 Azure 机器学习数据集，以访问本地或远程试验的数据。 若要了解在 Azure 机器学习总体数据访问工作流中的哪些位置使用数据集，请参阅[安全地访问数据](concept-data.md#data-workflow)一文。
 
@@ -127,6 +125,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 > 在一个方法中使用公共预览版方法 [upload_directory()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-) 从本地目录上传文件，并创建一个 FileDataset。 此方法是一个[试验性](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental)预览功能，可能会随时更改。 
 > 
 >  此方法会将数据上传到基础存储，因此会产生存储费用。 
+
 ### <a name="create-a-tabulardataset"></a>创建 TabularDataset
 
 使用 `TabularDatasetFactory` 类中的 [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) 方法可以读取 .csv 或 .tsv 格式的文件，以及创建未注册的 TabularDataset。 如果从多个文件进行读取，结果将聚合为一种表格表示形式。 
@@ -176,7 +175,6 @@ titanic_ds.take(3).to_pandas_dataframe()
 2|3|True|3|Heikkinen, Miss. Laina|女|26.0|0|0|STON/O2. 3101282|7.9250||S
 
 若要在工作区的不同试验中重用和共享数据集，请[注册数据集](#register-datasets)。
-
 
 ## <a name="explore-data"></a>浏览数据
 

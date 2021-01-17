@@ -9,18 +9,18 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: yelevin
-ms.openlocfilehash: b5d98a834ed4f87fb95a13e666967a7b2d80975d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c54b5b785f6da1bb651d8b1f508da42ab0fb802d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656048"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538390"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>连接 Azure DDoS 保护的数据
 
 > [!IMPORTANT]
 > Azure Sentinel 中的 Azure DDoS 保护数据连接器目前为公共预览版。
-> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 分布式拒绝服务 (DDoS) 攻击尝试耗尽应用程序的资源，使应用程序对于合法用户不可用。 DDoS 攻击可能会将任何可通过 Internet 公开访问的终结点作为目标。 [Azure DDoS 保护](../ddos-protection/ddos-protection-overview.md)与应用程序设计最佳做法相结合，为防范 DDoS 攻击提供了强大的防御。 你可以将 Azure DDoS 保护日志连接到 Azure Sentinel，使你能够查看工作簿中的日志数据，使用它创建自定义警报，并将其合并以改善调查。 
 
@@ -38,7 +38,7 @@ ms.locfileid: "94656048"
 
 1. 从数据连接器库中选择 " **Azure DDoS 保护** "，并在预览窗格中选择 " **打开连接器** "。
 
-1. 在要连接其日志的所有防火墙上启用 **诊断日志** ：
+1. 在要连接其日志的所有公共 IP 地址上启用 **诊断日志** ：
 
     1. 选择 " **打开诊断设置" >** "链接"，然后从列表中选择 **公共 IP 地址** 资源。
 

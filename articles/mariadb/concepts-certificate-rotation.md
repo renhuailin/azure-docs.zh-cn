@@ -5,13 +5,13 @@ author: mksuni
 ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: b0f0ee9477a84dc198ea3fb48b2ed81be10ea9c5
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/18/2021
+ms.openlocfilehash: ac7019abab1aefaee95c155e34fbc0cb551b4d94
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251873"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538421"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>了解 Azure Database for MariaDB 的根 CA 更改中的更改
 
@@ -19,6 +19,9 @@ Azure Database for MariaDB 将更改通过 SSL 启用的客户端应用程序/�
 
 >[!NOTE]
 > 根据客户的反馈，我们已扩展了2020年2月15日到到2021的现有巴尔的摩根 CA 的根证书弃用。 如果用户受到影响，我们希望此次延长能为他们提供足够的提前期来实施客户端更改。
+
+> [!NOTE]
+> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ## <a name="what-update-is-going-to-happen"></a>打算进行什么样的更新？
 
@@ -69,7 +72,7 @@ Azure Database for MariaDB 将更改通过 SSL 启用的客户端应用程序/�
 
   - 对于 .NET (MariaDB Connector/NET，MariaDBConnector) 用户，请确保 **baltimorecybertrustroot.crt.pem** 和 **DigiCertGlobalRootG2** 都存在于 Windows 证书存储和受信任的根证书颁发机构中。 如果不存在任何证书，则导入缺少的证书。
 
-    ![Azure Database for MariaDB .net 证书](media/overview/netconnecter-cert.png)
+    [![Azure Database for MariaDB .net 证书](media/overview/netconnecter-cert.png)](media/overview/netconnecter-cert.png#lightbox)
 
   - 对于使用 SSL_CERT_DIR 的 Linux 上的 .NET 用户，请确保 SSL_CERT_DIR 中的 **baltimorecybertrustroot.crt.pem** 和 **DigiCertGlobalRootG2** 都存在于所指示的目录中。 如果任何证书不存在，请创建缺少的证书文件。
 
@@ -80,10 +83,10 @@ Azure Database for MariaDB 将更改通过 SSL 启用的客户端应用程序/�
    (Root CA1: BaltimoreCyberTrustRoot.crt.pem)
    -----END CERTIFICATE-----
    -----BEGIN CERTIFICATE-----
-    (Root CA2: DigiCertGlobalRootG2.crt.pem)
+   (Root CA2: DigiCertGlobalRootG2.crt.pem)
    -----END CERTIFICATE-----
    ```
-   
+
 - 将原始根 CA pem 文件替换为组合的根 CA 文件，然后重启应用程序/客户端。
 - 将来，在服务器端部署新证书后，可以将 CA pem 文件更改为 DigiCertGlobalRootG2.crt.pem。
 
@@ -150,11 +153,7 @@ Azure Database for MariaDB 使用的这些证书是由受信任的证书颁发�
 
 ### <a name="12-if-im-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. 如果我使用的是数据复制，是否需要执行任何操作？
 
-> [!NOTE]
-> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
->
-
-*   如果数据复制是从虚拟机（本地或 Azure 虚拟机）到 Azure Database for MySQL，则需要检查是否使用了 SSL 来创建副本。 运行 **SHOW SLAVE STATUS** 并检查以下设置。
+- 如果数据复制是从虚拟机（本地或 Azure 虚拟机）到 Azure Database for MySQL，则需要检查是否使用了 SSL 来创建副本。 运行 **SHOW SLAVE STATUS** 并检查以下设置。
 
     ```azurecli-interactive
     Master_SSL_Allowed            : Yes
@@ -177,6 +176,7 @@ Azure Database for MariaDB 使用的这些证书是由受信任的证书颁发�
   Master_SSL_Cipher             :
   Master_SSL_Key                : ~\azure_mysqlclient_key.pem
   ```
+
   如果你看到为 CA_file、SSL_Cert 和 SSL_Key 提供了证书，则需要通过添加[新证书](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)来更新文件。
 
 - 如果数据复制在两个 Azure Database for MySQL 之间，则需要通过执行 **调用 mysql.az_replication_change_master** 来重置副本，并将新的双重根证书作为最后一个参数 [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication)提供。

@@ -5,24 +5,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/13/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 97d89db17af9cde3afadee430b3d0c2a434e12c9
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 57192ab2ee1624cb18de832ac91c95290da727df
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210131"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539880"
 ---
 # <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>动态预配服务总线命名空间和实体 
 Azure 服务总线管理库可以动态预配服务总线命名空间和实体。 这样可以实现复杂的部署和消息方案，并能以编程方式确定要预配的实体。 这些库目前可用于 .NET。
 
-## <a name="supported-functionality"></a>受支持的功能
+## <a name="overview"></a>概述
+有三个可用于创建和管理服务总线实体的管理库。 它们是：
 
-* 创建、更新、删除命名空间
-* 创建、更新、删除队列
-* 创建、更新、删除主题
-* 创建、更新、删除订阅
+- [Azure. 消息传递. 管理](#azuremessagingservicebusadministration)
+- [Microsoft。](#microsoftazureservicebusmanagement)
+- [Microsoft.Azure.Management.ServiceBus](#microsoftazuremanagementservicebus)
 
-## <a name="azuremessagingservicebusadministration-recommended"></a>请 (建议) 
+所有这些包都支持对 **队列、主题和订阅** 创建、获取、列出、删除、更新、删除和更新操作。 但是 [，仅支持](#microsoftazuremanagementservicebus) 对 **命名空间** 进行创建、更新、列出、获取和删除操作、列出和重新生成 SAS 密钥等操作。 
+
+Microsoft Azure 管理库仅适用于 Azure Active Directory (Azure AD) 身份验证，并且不支持使用连接字符串。 另外两个库 () ，使用连接字符串将连接字符串用于向服务进行身份验证，并且更易于使用。 在这些库之间，Azure 传输是最新的，这就是我们建议使用的。
+
+以下各节提供了有关这些库的更多详细信息。 
+
+## <a name="azuremessagingservicebusadministration"></a>Azure. 消息传递. 管理
 可以使用 [ServiceBusAdministrationClient](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient) 命名空间中的类来管理 [命名空间、](/dotnet/api/azure.messaging.servicebus.administration) 队列、主题和订阅。 下面是示例代码。 有关完整示例，请参阅 [CRUD 示例](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/tests/Samples/Sample07_CrudOperations.cs)。
 
 ```csharp
@@ -89,7 +95,7 @@ namespace adminClientTrack2
 可以使用 [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) 命名空间中的类来管理 [命名空间、](/dotnet/api/microsoft.azure.servicebus.management) 队列、主题和订阅。 下面是示例代码： 
 
 > [!NOTE]
-> 建议使用库中的 `ServiceBusAdministrationClient` 类 `Azure.Messaging.ServiceBus.Administration` ，它是最新的 SDK。 有关详细信息，请参阅 [第一部分](#azuremessagingservicebusadministration-recommended)。 
+> 建议使用库中的 `ServiceBusAdministrationClient` 类 `Azure.Messaging.ServiceBus.Administration` ，它是最新的 SDK。 有关详细信息，请参阅 [第一部分](#azuremessagingservicebusadministration)。 
 
 ```csharp
 using System;
@@ -156,7 +162,7 @@ namespace SBusManagementClient
 
 * [使用 Azure 门户创建可访问资源的 Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)
 * [使用 Azure PowerShell 创建服务主体来访问资源](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [使用 Azure CLI 创建服务主体来访问资源](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+* [使用 Azure CLI 创建服务主体来访问资源](/cli/azure/create-an-azure-service-principal-azure-cli)
 
 这些教程提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都将用于管理库进行的身份验证。 对于用于运行的资源组，需要至少具有 [Azure 服务总线数据所有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)或[参与者](../role-based-access-control/built-in-roles.md#contributor)权限 。
 
