@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: a708fb76b5a3d0fd0683cdb8915d1a5e1824a57c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251662"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539549"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>如何评估和管理 Azure 认知搜索服务的成本
 
@@ -25,7 +25,12 @@ Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活�
 
 搜索服务使用的资源量乘以服务层所建立的计费费率，确定运行服务的成本。 成本和容量紧密绑定。 在估计成本时，若要了解运行索引和查询工作负荷所需的容量，可以获得预计成本。
 
-出于计费目的，认知搜索具有 *搜索单位* (SU) 的概念。 "SU" 是服务使用的 *副本* 和 *分区* 的产品： **(R x P = SU)**。 与搜索相关的成本的主要决定因素是，在 **SU * rate (SU * rate = 月度支出)** 的情况。 
+出于计费目的，有两个简单的公式需要注意：
+
+| 公式 | 说明 |
+|---------|-------------|
+| **R x P = SU** | 使用的副本数乘以使用的分区数，等于服务所使用 (SU) 的 *搜索单元* 数量。 SU 是资源单位，可以是分区或副本。 |
+| **SU * 计费率 = 每月支出** | SUs 的数量乘以你预配服务的层的计费费率，是总体月度帐单的主要决定因素。 某些功能或工作负载依赖于其他 Azure 服务，这可能会在订阅级别增加解决方案的成本。 以下计费事件部分确定了可添加到帐单中的功能。 |
 
 每个服务至少从 1 个 SU（1 个分区乘以 1 个副本）开始。 任何服务的最大 SU 值为 36。 可通过多种方式来实现此最大值：例如，6 个分区 x 6 个副本，或 3 个分区 x 12 个副本。 通常使用小于总容量的值（例如，3 副本、3 分区的服务按 9 个 SU 计费）。 有关有效的组合，请参阅[分区和副本组合](search-capacity-planning.md#chart)图表。
 
