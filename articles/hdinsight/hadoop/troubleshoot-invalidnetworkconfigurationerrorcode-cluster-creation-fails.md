@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/12/2021
-ms.openlocfilehash: 2478148f946ddc88e571b76396544b028455ec75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 82e1c6bdcd508bf1844223b331bf8363efa7b573
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132098"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555315"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>在 Azure HDInsight 中创建群集失败并出现 InvalidNetworkConfigurationErrorCode
 
@@ -38,7 +38,7 @@ ms.locfileid: "98132098"
 
 1. 如果以上命令未返回 IP 地址，请运行 `nslookup <host_fqdn> 168.63.129.16`（例如 `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`）。 如果此命令能够解析 IP，则表示 DNS 服务器未将查询转发到 Azure 的 DNS，或者它不是与群集处于同一虚拟网络中的 VM。
 
-1. 如果你没有任何可充当群集虚拟网络中的自定义 DNS 服务器的 Azure VM，则需要先添加此 VM。 在虚拟网络中创建一个要配置为 DNS 转发器的 VM。
+1. 如果 Azure VM 不能充当群集的虚拟网络中的自定义 DNS 服务器，则需要先添加此项。 在虚拟网络中创建一个要配置为 DNS 转发器的 VM。
 
 1. 在虚拟网络中部署 VM 后，在此 VM 上配置 DNS 转发规则。 将所有 iDNS 名称解析请求转发到 168.63.129.16，将剩余的请求转发到 DNS 服务器。 [此处](../hdinsight-plan-virtual-network-deployment.md)提供了一个示例来演示如何为自定义 DNS 服务器完成此设置。
 
@@ -46,11 +46,11 @@ ms.locfileid: "98132098"
 
 ---
 
-## <a name="failed-to-connect-to-azure-storage-account"></a>“无法连接到 Azure 存储帐户”
+## <a name="failed-to-connect-to-azure-storage-account"></a>"无法连接到 Azure 存储帐户"
 
 ### <a name="issue"></a>问题
 
-错误说明中包含“无法连接到 Azure 存储帐户”或“无法连接到 Azure SQL”。
+错误说明包含 "无法连接到 Azure 存储帐户" 或 "无法连接到 Azure SQL"。
 
 ### <a name="cause"></a>原因
 
@@ -153,7 +153,7 @@ dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4
 
 ### <a name="resolution"></a>解决方法
 
-使用的有效参数， `Get-AzVirtualNetwork` 如[AZ PowerShell SDK](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-5.3.0&viewFallbackFrom=azps-4.2.0)中所述
+使用的有效参数， `Get-AzVirtualNetwork` 如[AZ PowerShell SDK](/powershell/module/az.network/get-azvirtualnetwork)中所述
 
 ---
 

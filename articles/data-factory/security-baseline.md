@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4e82b4adbfde7623de9497c94e56a9ae303131ad
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ff777f079116942eba32e49f359c7f7e0b99f65d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202770"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555774"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>适用于 Azure 数据工厂的 Azure 安全基线
 
@@ -335,9 +335,9 @@ ms.locfileid: "98202770"
 
 * [有关 Privileged Identity Manager 的信息](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 * [本地帐户的信息](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
@@ -744,7 +744,7 @@ ms.locfileid: "98202770"
 
 * [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-* [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription)
 
 * [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -792,7 +792,7 @@ ms.locfileid: "98202770"
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
 
 * [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -880,7 +880,7 @@ ms.locfileid: "98202770"
 
 **指导**：如果在 Azure 虚拟机中运行 Runtime Integration，根据脚本类型，可以使用特定于操作系统的配置或第三方资源来限制用户在 Azure 计算资源中执行脚本的能力。 还可以利用 Azure 安全中心自适应应用程序控制来确保仅执行已授权软件，并阻止所有未授权软件在 Azure 虚拟机上执行。
 
-* [如何在 Windows 环境中控制 PowerShell 脚本的执行](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [如何在 Windows 环境中控制 PowerShell 脚本的执行](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [如何使用 Azure 安全中心自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
@@ -918,7 +918,7 @@ ms.locfileid: "98202770"
 
 **指导**：使用 Azure Policy 为 Azure 数据工厂定义和实施标准安全配置。 使用“Microsoft.DataFactory”命名空间中的 Azure Policy 别名创建自定义策略，以审核或强制实施 Azure 数据工厂实例的配置。
 
-* [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias)
 
 * [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -964,7 +964,7 @@ ms.locfileid: "98202770"
 
 * [有关创建 Azure 资源管理器模板的信息](../virtual-machines/windows/ps-template.md)
 
-* [如何将自定义 VM VHD 上传到 Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [如何将自定义 VM VHD 上传到 Azure](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure 安全中心监视**：是
 
@@ -974,9 +974,9 @@ ms.locfileid: "98202770"
 
 **指导**：如果使用自定义的 Azure Policy 定义，请使用 Azure DevOps 或 Azure Repos 安全地存储和管理代码。
 
-* [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow)
 
-* [Azure Repos 文档](/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos 文档](/azure/devops/repos/index)
 
 **Azure 安全中心监视**：不适用
 
@@ -1150,7 +1150,7 @@ ms.locfileid: "98202770"
 
 * [概要了解 Azure VM 备份](../backup/backup-azure-vms-introduction.md)
 
-* [如何在 Azure 中备份密钥保管库密钥](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何在 Azure 中备份密钥保管库密钥](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure 安全中心监视**：是
 
@@ -1164,7 +1164,7 @@ ms.locfileid: "98202770"
 
 * [如何从 Azure 虚拟机备份恢复文件](../backup/backup-azure-restore-files-from-vm.md)
 
-* [如何在 Azure 中还原密钥保管库密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何在 Azure 中还原密钥保管库密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Azure 安全中心监视**：不适用
 
@@ -1264,7 +1264,7 @@ ms.locfileid: "98202770"
 
 * [请遵循 Microsoft 互动规则，确保你的渗透测试不违反 Microsoft 政策](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [可在此处详细了解如何针对 Microsoft 托管云基础结构、服务和应用程序执行红队测试和实时站点渗透测试，以及 Microsoft 的相关策略](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [对于 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序的实时站点渗透测试，可在此处找到详细信息](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 安全中心监视**：不适用
 

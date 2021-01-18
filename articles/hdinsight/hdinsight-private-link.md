@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 9fe1b7a077142b00aaf2a8502faa0e166c4311c4
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 219f8728eb90101e7437cbb82b44a1f7124ef14d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915617"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556420"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>通过专用链接 (预览) 保护和隔离 Azure HDInsight 群集
 
@@ -60,7 +60,7 @@ ms.locfileid: "97915617"
 
 ### <a name="prepare-your-environment"></a>准备环境
 
-对于 successgfull 创建专用链接服务，必须显式 [禁用专用链接服务的网络策略](../private-link/disable-private-link-service-network-policy.md)。
+若要成功创建专用链接服务，必须显式 [禁用专用链接服务的网络策略](../private-link/disable-private-link-service-network-policy.md)。
 
 下图显示了创建群集之前所需的网络配置的示例。 在此示例中，在创建群集之前，将使用 UDR 将所有出站流量 [强制](../firewall/forced-tunneling.md) 发送到 Azure 防火墙，并将所需的出站依赖关系 "允许" 到防火墙上。 对于企业安全性套餐群集，可通过 VNet 对等互连提供与 Azure Active Directory 域服务的网络连接。
 
@@ -102,10 +102,10 @@ networkProperties: {
 
 ### <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
-若要使用 powershell，请参阅 [此处](/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)的示例。
+若要使用 PowerShell，请参阅 [此处](/powershell/module/az.hdinsight/new-azhdinsightcluster#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)的示例。
 
 ### <a name="use-azure-cli"></a>使用 Azure CLI
-若要使用 Azure CLI，请参阅 [此处](/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples)的示例。
+若要使用 Azure CLI，请参阅 [此处](/cli/azure/hdinsight#az_hdinsight_create-examples)的示例。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 9003366ec0d64057ca7426d5b6b99986bc21fc9d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d282ee805ac61ba17ceb3ecc6a3d8179ea7b319
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920297"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555893"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>注册并扫描本地 SQL server
 
@@ -32,9 +32,9 @@ SQL server 本地数据源支持：
 
 - 身份验证方法： SQL 身份验证
 
-### <a name="known-limitations"></a>已知的限制
+### <a name="known-limitations"></a>已知限制
 
-Azure 监控范围不支持对 SQL Server 中的 [视图](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) 进行扫描。 
+Azure 监控范围不支持对 SQL Server 中的 [视图](/sql/relational-databases/views/views) 进行扫描。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +42,7 @@ Azure 监控范围不支持对 SQL Server 中的 [视图](https://docs.microsoft
 
 - 设置 [自承载集成运行时](manage-integration-runtimes.md) 以扫描数据源。
 
-## <a name="setting-up-authentication-for-a-scan"></a>设置扫描的身份验证
+## <a name="setting-up-authentication-for-a-scan"></a>为扫描设置身份验证
 
 仅有一种方法可为本地 SQL server 设置身份验证：
 
@@ -80,7 +80,7 @@ SQL 标识必须有权访问主数据库。 此位置是存储的位置 `sys.dat
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping.png" alt-text="用户映射。":::
 
-4. 单击“确定”保存。
+4. 单击“确定”进行保存  。
 
 5. 通过右键单击并选择 " **属性**"，再次导航到所创建的用户。 输入新密码并进行确认。 选择 "指定旧密码"，然后输入旧密码。 **创建新的登录名后，需要更改密码。**
 
@@ -88,20 +88,20 @@ SQL 标识必须有权访问主数据库。 此位置是存储的位置 `sys.dat
 
 #### <a name="storing-your-sql-login-password-in-a-key-vault-and-creating-a-credential-in-purview"></a>在密钥保管库中存储 SQL 登录密码，并在监控范围中创建凭据
 
-1. 在 Azure 门户中导航到密钥保管库
-1. 选择 **设置 > 机密**
+1. 在 Azure 门户中，导航到密钥保管库
+1. 选择“设置”>“机密”
 1. 选择 " **+ 生成/导入**"，并输入 SQL Server 登录 **名** 和 **值** 作为 *密码*
-1. 选择 " **创建** " 完成
-1. 如果密钥保管库尚未连接到监控范围，则需要 [创建新的 key vault 连接](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
-1. 最后，使用 **用户名** 和 **密码**[创建新凭据](manage-credentials.md#create-a-new-credential)以设置扫描
+1. 选择“创建”以完成
+1. 如果密钥保管库尚未连接到 Purview，则需要[创建新的密钥保管库连接](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
+1. 最后，请使用用户名和密码[创建新凭据](manage-credentials.md#create-a-new-credential)以设置扫描 
 
 ## <a name="register-a-sql-server-data-source"></a>注册 SQL server 数据源
 
-1. 导航到你的监控范围帐户
+1. 导航到你的 Purview 帐户
 
-1. 在左侧导航栏中，选择 " **集成运行时**"。 请确保设置了自承载集成运行时。 如果未设置，请按照 [此处](manage-integration-runtimes.md) 所述的步骤创建自承载集成运行时，以便在可访问本地网络的本地或 Azure VM 上进行扫描。
+1. 在左侧导航栏中，选择 " **集成运行时**"。 确保设置了自承载集成运行时。 如果未设置，请按照 [此处](manage-integration-runtimes.md) 所述的步骤创建自承载集成运行时，以便在可访问本地网络的本地或 Azure VM 上进行扫描。
 
-1. 在左侧导航栏中选择 **源**
+1. 在左侧导航区域中选择“源”
 
 1. 选择“注册”
 
@@ -115,5 +115,5 @@ SQL 标识必须有权访问主数据库。 此位置是存储的位置 `sys.dat
 
 ## <a name="next-steps"></a>后续步骤
 
-- [浏览 Azure 监控范围数据目录](how-to-browse-catalog.md)
-- [搜索 Azure 监控范围数据目录](how-to-search-catalog.md)
+- [浏览 Azure Purview 数据目录](how-to-browse-catalog.md)
+- [搜索 Azure Purview 数据目录](how-to-search-catalog.md)

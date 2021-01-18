@@ -230,7 +230,7 @@
         - name: Azure 安全中心文档
           href: ../security-center/
         - name: Azure 安全文档
-          href: 'https://docs.microsoft.com/azure/security/'
+          href: ../security/index.yml
         - name: Stack Overflow 上的 Azure RTO 安全模块
           href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
         - name: Azure IoT 安全性、隐私性与合规性博客

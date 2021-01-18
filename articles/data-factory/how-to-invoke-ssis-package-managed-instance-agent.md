@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: 98484655dec069c3a284dce0ea83477faf75d9a8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5f8b18375c517ab5b620b2d6d897f5133b14705d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637745"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556454"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>使用 Azure SQL 托管实例代理运行 SSIS 包
 
@@ -24,7 +24,7 @@ ms.locfileid: "92637745"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用此功能，请[下载](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)并安装最新版 SQL Server Management Studio (SSMS)。 版本支持详细信息如下所示：
+若要使用此功能，请[下载](/sql/ssms/download-sql-server-management-studio-ssms)并安装最新版 SQL Server Management Studio (SSMS)。 版本支持详细信息如下所示：
 
 - 若要运行 SSISDB 或文件系统中的包，请安装 SSMS 版本 18.5 或更高版本。
 - 若要运行包存储中的包，请安装 SSMS 版本 18.6 或更高版本。

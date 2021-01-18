@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 244f8a446e33102e018881b3ec8f32ba9d8cbcc6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d624f2dd2c0c9b4c7e99d5628a1d47e4303da7f
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014139"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555587"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>使用托管标识从 Azure 流分析作业中访问 Azure SQL 数据库或 Azure Synapse Analytics (预览) 
 
@@ -123,7 +123,7 @@ Azure 流分析支持 Azure SQL 数据库和 Azure Synapse Analytics 输出接�
 
 按照上一部分中所述，在门户中创建了包含的数据库用户并向其授予了对 Azure 服务的访问权限后，流分析作业将拥有托管标识的权限，以通过托管标识 **连接** 到 Azure Synapse 数据库资源。 建议你进一步向流分析作业授予 SELECT、INSERT 和管理数据库大容量操作权限，因为稍后将在流分析工作流中需要这些权限。 **SELECT** 权限允许作业在 Azure Synapse 数据库中测试与表的连接。 在配置了输入和 Azure Synapse 数据库输出后，" **插入** 和 **管理数据库批量操作** " 权限允许测试端到端流分析查询。
 
-若要授予 "管理数据库大容量操作" 权限，你将需要向流分析作业授予在 [数据库权限中隐含](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest#remarks)为 **控制** 的所有权限。 你需要此权限，因为流分析作业执行 COPY 语句，该语句需要 [管理数据库大容量操作和插入](/sql/t-sql/statements/copy-into-transact-sql)。
+若要授予 "管理数据库大容量操作" 权限，你将需要向流分析作业授予在 [数据库权限中隐含](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest&preserve-view=true#remarks)为 **控制** 的所有权限。 你需要此权限，因为流分析作业执行 COPY 语句，该语句需要 [管理数据库大容量操作和插入](/sql/t-sql/statements/copy-into-transact-sql)。
 
 ---
 

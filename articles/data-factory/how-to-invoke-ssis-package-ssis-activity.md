@@ -14,12 +14,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/20/2020
-ms.openlocfilehash: 1bd983f7faeff456b04d4b2958236193a827a2cc
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: de9cd7e77e558c4d1a0aa62af17bc612eee5ec56
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635008"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555825"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 
@@ -115,7 +115,7 @@ ms.locfileid: "92635008"
    
    1. 如果在单独的文件中配置包，则还需要在“配置路径”框中提供配置文件（带扩展名 `.dtsConfig`）的 UNC 路径。 你可以通过选择“浏览文件存储”来浏览并选择配置，也可以手动输入其路径。 例如，如果将配置存储在 Azure 文件存储中，则其路径为 `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`。
 
-   1. 指定用于访问你的包和配置文件的凭据。 如果你先前已输入包执行凭据的值（对于 **Windows 身份验证** ），则可以通过选中“与包执行凭据相同”复选框来重复使用这些值。 否则，请在“域”、“用户名”和“密码”框中输入包访问凭据的值。   例如，如果你将包和配置存储在 Azure 文件存储中，则域为 `Azure`，用户名为 `<storage account name>`，密码为 `<storage account key>`。 
+   1. 指定用于访问你的包和配置文件的凭据。 如果你先前已输入包执行凭据的值（对于 **Windows 身份验证**），则可以通过选中“与包执行凭据相同”复选框来重复使用这些值。 否则，请在“域”、“用户名”和“密码”框中输入包访问凭据的值。   例如，如果你将包和配置存储在 Azure 文件存储中，则域为 `Azure`，用户名为 `<storage account name>`，密码为 `<storage account key>`。 
 
       另外，还可以将 Azure Key Vault 中存储的机密用作其值。 为此，请选中它们旁边的“AZURE KEY VAULT”复选框。 选择或编辑现有的 Key Vault 链接服务，或创建新的链接服务。 然后，针对你的值选择机密名称和版本。 创建或编辑 Key Vault 链接服务时，可以选择或编辑现有的 Key Vault，或创建新的 Key Vault。 请务必授予数据工厂托管标识对 Key Vault 的访问权限（如果尚未这样做）。 此外，还可以采用以下格式直接输入机密：`<key vault linked service name>/<secret name>/<secret version>`。 
 
@@ -143,7 +143,7 @@ ms.locfileid: "92635008"
 
    1. 通过在“项目路径”框中提供项目文件（带 `.ispac` 扩展名）的 UNC 路径，并在“包名称”框中提供项目中某个包文件（带 `.dtsx` 扩展名）的 UNC 路径，来指定要运行的包。  你可以通过选择“浏览文件存储”来浏览并选择项目，也可以手动输入其路径。 例如，如果将项目存储在 Azure 文件存储中，则其路径为 `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`。
 
-   1. 指定用于访问项目和包文件的凭据。 如果你先前已输入包执行凭据的值（对于 **Windows 身份验证** ），则可以通过选中“与包执行凭据相同”复选框来重复使用这些值。 否则，请在“域”、“用户名”和“密码”框中输入包访问凭据的值。   例如，如果你将项目和包存储在 Azure 文件存储中，则域为 `Azure`，用户名为 `<storage account name>`，密码为 `<storage account key>`。 
+   1. 指定用于访问项目和包文件的凭据。 如果你先前已输入包执行凭据的值（对于 **Windows 身份验证**），则可以通过选中“与包执行凭据相同”复选框来重复使用这些值。 否则，请在“域”、“用户名”和“密码”框中输入包访问凭据的值。   例如，如果你将项目和包存储在 Azure 文件存储中，则域为 `Azure`，用户名为 `<storage account name>`，密码为 `<storage account key>`。 
 
       另外，还可以将 Azure Key Vault 中存储的机密用作其值。 为此，请选中它们旁边的“AZURE KEY VAULT”复选框。 选择或编辑现有的 Key Vault 链接服务，或创建新的链接服务。 然后，针对你的值选择机密名称和版本。 创建或编辑 Key Vault 链接服务时，可以选择或编辑现有的 Key Vault，或创建新的 Key Vault。 请务必授予数据工厂托管标识对 Key Vault 的访问权限（如果尚未这样做）。 此外，还可以采用以下格式直接输入机密：`<key vault linked service name>/<secret name>/<secret version>`。 
 
@@ -199,13 +199,13 @@ ms.locfileid: "92635008"
    
    1. 对于“包存储名称”，请选择附加到你的 Azure-SSIS IR 的一个现有包存储。
 
-   1. 通过在“包路径”框中提供你的包在所选包存储中的路径（不带 `.dtsx` 扩展名），指定要运行的包。 如果所选包存储位于文件系统/Azure 文件存储上，则可以通过选择“浏览文件存储”来浏览并选择包，否则，可以采用 `<folder name>\<package name>` 格式输入其路径。 还可以通过 SQL Server Management Studio (SSMS) 将新包导入到所选的包存储中，这与[旧版 SSIS 包存储](/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)类似。 有关详细信息，请参阅[使用 Azure-SSIS IR 包存储管理 SSIS 包](./azure-ssis-integration-runtime-package-store.md)。
+   1. 通过在“包路径”框中提供你的包在所选包存储中的路径（不带 `.dtsx` 扩展名），指定要运行的包。 如果所选包存储位于文件系统/Azure 文件存储上，则可以通过选择“浏览文件存储”来浏览并选择包，否则，可以采用 `<folder name>\<package name>` 格式输入其路径。 还可以通过 SQL Server Management Studio (SSMS) 将新包导入到所选的包存储中，这与[旧版 SSIS 包存储](/sql/integration-services/service/package-management-ssis-service)类似。 有关详细信息，请参阅[使用 Azure-SSIS IR 包存储管理 SSIS 包](./azure-ssis-integration-runtime-package-store.md)。
 
    1. 如果在单独的文件中配置包，则需要在“配置路径”框中提供配置文件（带扩展名 `.dtsConfig`）的 UNC 路径。 你可以通过选择“浏览文件存储”来浏览并选择配置，也可以手动输入其路径。 例如，如果将配置存储在 Azure 文件存储中，则其路径为 `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`。
 
    1. 选中“配置访问凭据”复选框，以选择是否要单独指定用于访问配置文件的凭据。 当所选的包存储位于由 Azure SQL 托管实例承载的 SQL Server 数据库 (MSDB) 上或未同时存储你的配置文件时，需要进行此配置。
    
-      如果你先前已输入包执行凭据的值（对于 **Windows 身份验证** ），则可以通过选中“与包执行凭据相同”复选框来重复使用这些值。 否则，请在“域”、“用户名”和“密码”框中输入配置访问凭据的值。   例如，如果你将配置存储在 Azure 文件存储中，则域为 `Azure`，用户名为 `<storage account name>`，密码为 `<storage account key>`。 
+      如果你先前已输入包执行凭据的值（对于 **Windows 身份验证**），则可以通过选中“与包执行凭据相同”复选框来重复使用这些值。 否则，请在“域”、“用户名”和“密码”框中输入配置访问凭据的值。   例如，如果你将配置存储在 Azure 文件存储中，则域为 `Azure`，用户名为 `<storage account name>`，密码为 `<storage account key>`。 
 
       另外，还可以将 Azure Key Vault 中存储的机密用作其值。 为此，请选中它们旁边的“AZURE KEY VAULT”复选框。 选择或编辑现有的 Key Vault 链接服务，或创建新的链接服务。 然后，针对你的值选择机密名称和版本。 创建或编辑 Key Vault 链接服务时，可以选择或编辑现有的 Key Vault，或创建新的 Key Vault。 请务必授予数据工厂托管标识对 Key Vault 的访问权限（如果尚未这样做）。 此外，还可以采用以下格式直接输入机密：`<key vault linked service name>/<secret name>/<secret version>`。
 
@@ -249,9 +249,9 @@ ms.locfileid: "92635008"
 
       ![从 SSDT 获取连接管理器属性](media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png)
 
-      例如，如果不在 SSDT 上修改原始包，可以通过在运行时覆盖现有连接管理器中的 **ConnectByProxy** 、 **ConnectionString** 和 **ConnectUsingManagedIdentity** 属性的值，将 SQL Server 上运行的本地数据流数据流转换为在 ADF 中运行的本地到云的数据流。
+      例如，如果不在 SSDT 上修改原始包，可以通过在运行时覆盖现有连接管理器中的 **ConnectByProxy**、 **ConnectionString** 和 **ConnectUsingManagedIdentity** 属性的值，将 SQL Server 上运行的本地数据流数据流转换为在 ADF 中运行的本地到云的数据流。
       
-      这些运行时重写可以在本地访问数据时启用自承载 IR (SHIR) 作为 SSIS IR 的代理（请参阅[将 SHIR 配置为 SSIS IR 的代理](./self-hosted-integration-runtime-proxy-ssis.md)），以及启用使用最新 MSOLEDBSQL 驱动程序、进而允许使用 ADF 托管标识进行 Azure Active Directory (AAD) 身份验证的 Azure SQL 数据库/托管实例连接（请参阅[为 OLEDB 连接配置使用 ADF 托管标识的 AAD 身份验证](/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)）。
+      这些运行时重写可以在本地访问数据时启用自承载 IR (SHIR) 作为 SSIS IR 的代理（请参阅[将 SHIR 配置为 SSIS IR 的代理](./self-hosted-integration-runtime-proxy-ssis.md)），以及启用使用最新 MSOLEDBSQL 驱动程序、进而允许使用 ADF 托管标识进行 Azure Active Directory (AAD) 身份验证的 Azure SQL 数据库/托管实例连接（请参阅[为 OLEDB 连接配置使用 ADF 托管标识的 AAD 身份验证](/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)）。
 
       ![在“连接管理器”选项卡上通过 SSDT 设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
    
@@ -600,7 +600,7 @@ ms.locfileid: "92635008"
 
 2. 在 Azure PowerShell 中，切换到 `C:\ADF\RunSSISPackage` 文件夹。
 
-3. 若要创建管道 **RunSSISPackagePipeline** ，请运行 **Set-AzDataFactoryV2Pipeline** cmdlet。
+3. 若要创建管道 **RunSSISPackagePipeline**，请运行 **Set-AzDataFactoryV2Pipeline** cmdlet。
 
    ```powershell
    $DFPipeLine = Set-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `

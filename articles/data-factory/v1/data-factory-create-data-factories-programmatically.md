@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd1c7c20441d12600e2101f738904caf6260509e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0305094d3883fa6fc3254a682f9aa6f3202c9e48
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496000"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555519"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
 > [!NOTE]
@@ -27,7 +27,7 @@ ms.locfileid: "96496000"
 可使用数据工厂 .NET SDK 以编程方式创建、监视和管理 Azure 数据工厂。 可根据本文所含演练创建示例 .NET 控制台应用程序，从而创建和监视数据工厂。 
 
 > [!NOTE]
-> 本文不会介绍所有数据工厂 .NET API。 有关数据工厂 .NET API 的综合文档，请参阅 [Data Factory .NET API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)（数据工厂 .NET API 参考）。 
+> 本文不会介绍所有数据工厂 .NET API。 有关数据工厂 .NET API 的综合文档，请参阅 [Data Factory .NET API Reference](/dotnet/api/overview/azure/data-factory)（数据工厂 .NET API 参考）。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -93,7 +93,7 @@ ms.locfileid: "96496000"
 9. 获取应用程序 ID。
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication    
     ```
     记下输出中的应用程序 ID (applicationID)。
 

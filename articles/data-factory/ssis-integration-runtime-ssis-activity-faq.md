@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9609c382161514611ddc41af040e8fb438431fdf
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844176"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555995"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>排查 SSIS Integration Runtime 中的包执行问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "94844176"
 
 使用 Azure 数据工厂门户检查 SSIS 包执行活动的输出。 输出包括执行结果、错误消息和操作 ID。 有关详细信息，请参阅[监视管道](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline)。
 
-使用 SSIS 目录 (SSISDB) 检查执行活动的详细日志。 有关详细信息，请参阅[监视正在运行的包和其他操作](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017)。
+使用 SSIS 目录 (SSISDB) 检查执行活动的详细日志。 有关详细信息，请参阅[监视正在运行的包和其他操作](/sql/integration-services/performance/monitor-running-packages-and-other-operations)。
 
 ## <a name="common-errors-causes-and-solutions"></a>常见错误、原因和解决方法
 
@@ -91,7 +91,7 @@ ms.locfileid: "94844176"
 当包执行在 SSIS Integration Runtime 中的本地磁盘内找不到文件时，将发生此错误。 请尝试以下操作：
 * 不要在 SSIS Integration Runtime 中执行的包内使用绝对路径。 改用当前执行工作目录 (.) 或临时文件夹 (%TEMP%)。
 * 如果需要在 SSIS Integration Runtime 节点上保留某些文件，请根据[自定义安装](how-to-configure-azure-ssis-ir-custom-setup.md)中所述准备文件。 执行完成后，系统会清理工作目录中的所有文件。
-* 改用 Azure 文件来存储 SSIS Integration Runtime 节点中的文件。 有关详细信息，请参阅[使用 Azure文件共享](/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares)。
+* 改用 Azure 文件来存储 SSIS Integration Runtime 节点中的文件。 有关详细信息，请参阅[使用 Azure文件共享](/sql/integration-services/lift-shift/ssis-azure-files-file-shares#use-azure-file-shares)。
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>错误消息：“数据库 'SSISDB' 已达到大小配额”
 
@@ -121,7 +121,7 @@ ms.locfileid: "94844176"
 
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>错误消息：“Microsoft OLE DB Provider for Analysis Services。 ‘Hresult:0x80004005 说明:’COM 错误:COM 错误: mscorlib；某个调用的目标引发了异常”
 
-一个可能的原因是为启用了 Azure AD 多重身份验证的用户名或密码配置了 Azure Analysis Services 身份验证。 SSIS Integration Runtime 不支持这种身份验证。 尝试使用服务主体进行 Azure Analysis Services 身份验证：
+一种潜在原因是为 Azure Analysis Services 身份验证配置了已启用 Azure AD 多重身份验证的用户名或密码。 SSIS Integration Runtime 不支持这种身份验证。 尝试使用服务主体进行 Azure Analysis Services 身份验证：
 
 1. 请根据[使用服务主体进行自动化](../analysis-services/analysis-services-service-principal.md)中所述准备服务主体。
 2. 在连接管理器中，配置“使用特定的用户名和密码”：将“AppID”设为用户名，将“clientSecret”设为密码。  
@@ -154,7 +154,7 @@ ms.locfileid: "94844176"
 
 * 可能的原因和建议的操作：
   * 如果在执行日志中还出现警告消息“该组件不支持使用 ConnectByProxy 值设为 true 的连接管理器”，则意味着在尚不支持“ConnectByProxy”的组件上使用了连接管理器。 支持的组件可以在[在 ADF 中将自承载 IR 配置为 Azure-SSIS IR 的代理](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy)中找到
-  * 可以在 [SSMS 报告](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports)或在 SSIS 包执行活动中指定的日志文件夹中找到执行日志。
+  * 可以在 [SSMS 报告](/sql/integration-services/performance/monitor-running-packages-and-other-operations#reports)或在 SSIS 包执行活动中指定的日志文件夹中找到执行日志。
   * 作为替代方法，vNet 也可用于访问本地数据。 有关更多详细信息，请参阅[将 Azure-SSIS Integration Runtime 加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>错误消息：“暂存任务状态:已失败。 暂存任务错误:ErrorCode:2906, ErrorMessage:包执行失败，输出: {"OperationErrorMessages":"SSIS Executor exit code: -1.\n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }}"

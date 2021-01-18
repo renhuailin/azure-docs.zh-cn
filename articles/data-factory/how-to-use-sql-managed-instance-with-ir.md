@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 86bff161e29384b10030ed3d524301f6dea6037e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: fb622bdb1d7aa485c421122cdfbd2493a32cf5db
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634158"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555655"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure 数据工厂中结合使用 Azure SQL 托管实例和 SQL Server Integration Services (SSIS)
 
@@ -36,21 +36,21 @@ ms.locfileid: "92634158"
 
 1. 选择 Azure Active Directory 身份验证时，[在 Azure SQL 托管实例上启用 Azure Active Directory (Azure AD)](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)。
 
-1. 选择如何通过专用终结点或通过公共终结点连接 SQL 托管实例：
+1. 选择如何连接 SQL 托管实例，即是通过专用终结点进行连接，还是通过公共终结点进行连接：
 
     - 通过专用终结点（首选）
 
         1. 选择 Azure-SSIS IR 要联接到的虚拟网络：
-            - 在与托管实例相同的虚拟网络中，具有 **不同的子网** 。
-            - 在不同于托管实例的虚拟网络中，通过虚拟网络对等互连 (此限制为同一区域，因为存在全局 VNet 对等互连约束) 或从虚拟网络到虚拟网络的连接。
+            - 与托管实例位于相同的虚拟网络中，但位于不同的子网。
+            - 与托管实例位于不同的虚拟网络中，使用虚拟网络对等互连（由于全局 VNet 对等互联约束，这仅限于相同的区域）或从虚拟网络到虚拟网络的连接。
 
-            有关 SQL 托管实例连接的详细信息，请参阅 [将应用程序连接到 AZURE SQL 托管实例](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)。
+            若要详细了解 SQL 托管实例连接性，请参阅[将应用程序连接到 Azure SQL 托管实例](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)。
 
         1. [配置虚拟网络](#configure-virtual-network)。
 
     - 通过公共终结点
 
-        Azure SQL 托管实例可通过[公共终结点](../azure-sql/managed-instance/public-endpoint-configure.md)进行连接。 入站和出站要求需要满足才能允许 SQL 托管实例和 Azure-SSIS IR 之间的流量：
+        Azure SQL 托管实例可通过[公共终结点](../azure-sql/managed-instance/public-endpoint-configure.md)进行连接。 若要允许 SQL 托管实例和 Azure-SSIS IR 之间的流量，必须满足入站和出站要求：
 
         - 当 Azure-SSIS IR 不在虚拟网络中时（首选）
 
@@ -137,7 +137,7 @@ ms.locfileid: "92634158"
 
 1. 选择 SQL 托管实例专用终结点或公共终结点。
 
-    在 Azure 门户/ADF 应用中 [设置 Azure-SSIS IR](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime) 时，请在 "sql 设置" 页上，在创建 SSIS 目录 (SSISDB) 时使用 sql 托管实例 **专用终结点** 或 **公共终结点** 。
+    在 Azure 门户/ADF 应用中[预配 Azure-SSIS IR](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime) 时，请在“SQL 设置”页上使用创建 SSIS 目录 (SSISDB) 时涉及的 SQL 托管实例专用终结点或公共终结点。
 
     公共终结点主机名的格式为 <mi_name>.public.<dns_zone>.database.windows.net，用于连接的端口为 3342。  
 
@@ -163,7 +163,7 @@ ms.locfileid: "92634158"
 
 ## <a name="clean-up-ssisdb-logs"></a>清理 SSISDB 日志
 
-SSISDB 日志保留策略由 [catalog.catalog_properties](/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15) 中的以下属性定义：
+SSISDB 日志保留策略由 [catalog.catalog_properties](/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database) 中的以下属性定义：
 
 - OPERATION_CLEANUP_ENABLED
 

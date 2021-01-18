@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: 3591bfe046fa1c3e1e55aa49a0ae3ad698bc57b3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 274250fecdf69b6a488c33ff25df3728a1c90af0
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593665"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556369"
 ---
 #  <a name="data-consistency-verification-in-copy-activity"></a>复制活动中的数据一致性验证
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-当你将数据从源存储移动到目标存储时，Azure 数据工厂复制活动提供了一个选项，供你执行额外的数据一致性验证，以确保数据不仅成功地从源存储复制到目标存储，而且验证了源存储和目标存储之间的一致性。 在数据移动过程中发现不一致的文件后，可以中止复制活动，或者通过启用容错设置跳过不一致的文件来继续复制其余文件。 通过在复制活动中启用会话日志设置，可以获取跳过的文件名称。 有关更多详细信息，可以参阅 [复制活动中的会话日志](copy-activity-log.md) 。
+当你将数据从源存储移动到目标存储时，Azure 数据工厂复制活动提供了一个选项，供你执行额外的数据一致性验证，以确保数据不仅成功地从源存储复制到目标存储，而且验证了源存储和目标存储之间的一致性。 在数据移动过程中发现不一致的文件后，可以中止复制活动，或者通过启用容错设置跳过不一致的文件来继续复制其余文件。 通过在复制活动中启用会话日志设置，可以获取跳过的文件名称。 有关更多详细信息，可以参阅[复制活动中的会话日志](copy-activity-log.md)。
 
 ## <a name="supported-data-stores-and-scenarios"></a>支持的数据存储和方案
 
@@ -72,7 +72,7 @@ ms.locfileid: "94593665"
 } 
 ```
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | -------- 
 validateDataConsistency | 如果将此属性设置为 true，则在复制二进制文件时，复制活动将检查从源存储复制到目标存储的每个二进制文件的文件大小、lastModifiedDate 和 MD5 校验和，以确保源存储和目标存储之间的数据一致性。 复制表格数据时，复制活动将检查作业完成后的总行计数，以确保从源中读取的行数与复制到目标的行数和跳过的不兼容行数之和相同。 请注意，启用此选项会影响复制性能。  | True<br/>False（默认值） | 否
 dataInconsistency | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过不一致的文件。 <br/> -True：要通过跳过不一致的文件来复制其余文件。<br/> -False：找到不一致的文件后要中止复制活动。<br/>请注意，只有在你复制二进制文件并将 validateDataConsistency 设置为 True 时，此属性才有效。  | True<br/>False（默认值） | 否
@@ -81,7 +81,7 @@ linkedServiceName | [Azure Blob 存储](connector-azure-blob-storage.md#linked-s
 path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否
 
 >[!NOTE]
->- 从/向 Azure Blob 或 Azure Data Lake Storage Gen2 复制二进制文件时，ADF 会利用 [Azure Blob API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) 和 [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) 来进行块级 MD5 校验和验证。 如果 Azure Blob 或 Azure Data Lake Storage Gen2 上存在用作数据源的基于文件的 ContentMD5，则 ADF 在读取文件后也会进行文件级 MD5 校验和验证。 将文件复制到作为数据目标的 Azure Blob 或 Azure Data Lake Storage Gen2 之后，ADF 会将 ContentMD5 写入 Azure Blob 或 Azure Data Lake Storage Gen2，下游应用程序可以进一步使用 ContentMD5 进行数据一致性验证。
+>- 从/向 Azure Blob 或 Azure Data Lake Storage Gen2 复制二进制文件时，ADF 会利用 [Azure Blob API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy&preserve-view=true) 和 [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) 来进行块级 MD5 校验和验证。 如果 Azure Blob 或 Azure Data Lake Storage Gen2 上存在用作数据源的基于文件的 ContentMD5，则 ADF 在读取文件后也会进行文件级 MD5 校验和验证。 将文件复制到作为数据目标的 Azure Blob 或 Azure Data Lake Storage Gen2 之后，ADF 会将 ContentMD5 写入 Azure Blob 或 Azure Data Lake Storage Gen2，下游应用程序可以进一步使用 ContentMD5 进行数据一致性验证。
 >- ADF 在任何存储区存储之间复制二进制文件时，会进行文件大小验证。
 
 ## <a name="monitoring"></a>监视
@@ -109,14 +109,14 @@ path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如
 可以从“dataConsistencyVerification 属性”中查看数据一致性验证的详细信息。
 
 VerificationResult 的值： 
--   **已验证** ：已验证复制的数据在源存储和目标存储之间是否一致。 
--   **未验证** ：由于未在复制活动中启用 validateDataConsistency，因此尚未验证复制的数据是否一致。 
--   **不支持** ：尚未验证复制的数据是否一致，因为此特定副本对不支持数据一致性验证。 
+-   **已验证**：已验证复制的数据在源存储和目标存储之间是否一致。 
+-   **未验证**：由于未在复制活动中启用 validateDataConsistency，因此尚未验证复制的数据是否一致。 
+-   **不支持**：尚未验证复制的数据是否一致，因为此特定副本对不支持数据一致性验证。 
 
 InconsistentData 的值： 
--   **已发现** ：ADF 复制活动发现了不一致的数据。 
--   **已跳过** ：ADF 复制活动发现并跳过了不一致的数据。 
--   **无** ：ADF 复制活动未发现任何不一致的数据。 这可能是因为已验证你的数据在源存储和目标存储之间是一致的，也可能是因为你在复制活动中禁用了 validateDataConsistency。 
+-   **已发现**：ADF 复制活动发现了不一致的数据。 
+-   **已跳过**：ADF 复制活动发现并跳过了不一致的数据。 
+-   **无**：ADF 复制活动未发现任何不一致的数据。 这可能是因为已验证你的数据在源存储和目标存储之间是一致的，也可能是因为你在复制活动中禁用了 validateDataConsistency。 
 
 ### <a name="session-log-from-copy-activity"></a>复制活动的会话日志
 
@@ -126,8 +126,8 @@ InconsistentData 的值：
 
 列 | 说明 
 -------- | -----------  
-Timestamp | ADF 跳过不一致文件时的时间戳。
-级别 | 此项的日志级别。 对于显示文件跳过的项，它将处于“警告”级别。
+时间戳 | ADF 跳过不一致文件时的时间戳。
+Level | 此项的日志级别。 对于显示文件跳过的项，它将处于“警告”级别。
 OperationName | 每个文件上的 ADF 复制活动操作行为。 它将为“FileSkip”，以指定要跳过的文件。
 OperationItem | 要跳过的文件名。
 Message | 说明为何要跳过文件的详细信息。

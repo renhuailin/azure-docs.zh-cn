@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 29d072c513d9a75055d4bb486f44b17b00b7f0a9
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: c7fc1a6c6aa29bfbc074bfa797f31ca8ee4e8fec
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638340"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556394"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>使用 Azure-SSIS Integration Runtime 包存储来管理包
 
@@ -28,7 +28,7 @@ ms.locfileid: "92638340"
 - 运行部署在由 Azure SQL 数据库服务器/托管实例托管的 SSIS 目录 (SSISDB) 中的包（项目部署模型）
 - 运行部署在由 Azure SQL 托管实例托管的文件系统、Azure 文件存储或 SQL Server 数据库 (MSDB) 中的包（包部署模型）
 
-使用包部署模型时，可以选择是否要使用包存储来预配 Azure-SSIS IR。 它们在文件系统、Azure 文件或 Azure SQL 托管实例托管的 MSDB 之上提供了包管理层。 Azure-SSIS IR 包存储允许你通过 SQL Server Management Studio (SSMS) 导入/导出/删除/运行包以及监视/停止正在运行的包，类似于[旧版 SSIS 包存储](/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)。 
+使用包部署模型时，可以选择是否要使用包存储来预配 Azure-SSIS IR。 它们在文件系统、Azure 文件或 Azure SQL 托管实例托管的 MSDB 之上提供了包管理层。 Azure-SSIS IR 包存储允许你通过 SQL Server Management Studio (SSMS) 导入/导出/删除/运行包以及监视/停止正在运行的包，类似于[旧版 SSIS 包存储](/sql/integration-services/service/package-management-ssis-service)。 
 
 ## <a name="connect-to-azure-ssis-ir"></a>连接到 Azure-SSIS IR
 
@@ -61,7 +61,7 @@ ms.locfileid: "92638340"
       >
       > 此外，由于旧 SSIS 包存储绑定到特定的 SQL Server 版本并仅在 SSMS 上可访问该版本，因此需要先使用指定的 SSMS 版本将旧 SSIS 包存储中较低版本的包导出到文件系统中，然后才能使用 SSMS 2019 或更高版本将其导入 Azure-SSIS IR 包存储中。
       >
-      > 或者，若要在切换 SSIS 包的保护级别时将多个 SSIS 包导入 Azure-SSIS IR 包存储，可以使用 [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) 命令行实用工具，请参阅[使用 dtutil 部署多个包](#deploying-multiple-packages-with-dtutil)。
+      > 或者，若要在切换 SSIS 包的保护级别时将多个 SSIS 包导入 Azure-SSIS IR 包存储，可以使用 [dtutil](/sql/integration-services/dtutil-utility) 命令行实用工具，请参阅[使用 dtutil 部署多个包](#deploying-multiple-packages-with-dtutil)。
 
    *  选择“导出包”可将包从你的包存储导出到“文件系统”、“SQL Server (MSDB)”或旧版“SSIS 包存储”中。
 
@@ -74,7 +74,7 @@ ms.locfileid: "92638340"
       >
       > 由于 Azure-SSIS IR 当前基于 SQL Server 2017，因此在其上执行较低版本的包时，会在运行时将其升级为 SSIS 2017 包。 不支持执行更高版本的包。
       >
-      > 或者，若要在切换其保护级别时从 Azure-SSIS IR 包存储中导出多个 SSIS 包，可以使用 [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) 命令行实用工具，请参阅[使用 dtutil 部署多个包](#deploying-multiple-packages-with-dtutil)。
+      > 或者，若要在切换其保护级别时从 Azure-SSIS IR 包存储中导出多个 SSIS 包，可以使用 [dtutil](/sql/integration-services/dtutil-utility) 命令行实用工具，请参阅[使用 dtutil 部署多个包](#deploying-multiple-packages-with-dtutil)。
 
    *  选择“删除”可从包存储中删除现有文件夹/包。
 
@@ -122,7 +122,7 @@ ms.locfileid: "92638340"
 
 若要将本地 SSIS 工作负载提升并转移到 ADF 中的 SSIS 上，同时保持旧包部署模型，需要将包从文件系统、SQL Server 托管的 MSDB 或旧 SSIS 包存储部署到 Azure 文件存储、Azure SQL 托管实例托管的 MSDB 或 Azure-SSIS IR 包存储中。 同时，还应将其保护级别从用户密钥加密更改为未加密或密码加密（如果尚未这样做）。
 
-可以使用 SQL Server/SSIS 安装附带的 [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) 命令行实用工具来成批部署多个包。 该实用工具绑定到特定的 SSIS 版本，因此，如果使用该实用工具来部署较低版本的包而不切换其保护级别，则只需复制这些包并保留其 SSIS 版本。 如果使用该实用工具来部署这些包并同时切换其保护级别，则该工具会将这些包升级到其 SSIS 版本。
+可以使用 SQL Server/SSIS 安装附带的 [dtutil](/sql/integration-services/dtutil-utility) 命令行实用工具来成批部署多个包。 该实用工具绑定到特定的 SSIS 版本，因此，如果使用该实用工具来部署较低版本的包而不切换其保护级别，则只需复制这些包并保留其 SSIS 版本。 如果使用该实用工具来部署这些包并同时切换其保护级别，则该工具会将这些包升级到其 SSIS 版本。
 
  由于 Azure-SSIS IR 当前基于 SQL Server 2017，因此在其上执行较低版本的包时，会在运行时将其升级为 SSIS 2017 包。 不支持执行更高版本的包。
 
@@ -148,7 +148,7 @@ for %f in (*.dtsx) do dtutil.exe /FILE %f /ENCRYPT FILE;Z:\%f;2;YourEncryptionPa
 
 若要在批处理文件中运行上述命令，请将 `%f` 替换为 `%%f`。
 
-若要将来自文件系统顶部的旧 SSIS 包存储中的多个包部署到 Azure 文件存储并同时切换其保护级别，可以使用相同的命令，但请将 `YourLocalDrive:\...\YourPackageFolder` 替换为旧 SSIS 包存储使用的本地文件夹：`YourLocalDrive:\Program Files\Microsoft SQL Server\YourSQLServerDefaultCompatibilityLevel\DTS\Packages\YourPackageFolder`。 例如，如果旧 SSIS 包存储绑定到 SQL Server 2016，请转到 `YourLocalDrive:\Program Files\Microsoft SQL Server\130\DTS\Packages\YourPackageFolder`。  可以从 [SQL Server 默认兼容级别的列表](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#arguments)中找到 `YourSQLServerDefaultCompatibilityLevel` 的值。
+若要将来自文件系统顶部的旧 SSIS 包存储中的多个包部署到 Azure 文件存储并同时切换其保护级别，可以使用相同的命令，但请将 `YourLocalDrive:\...\YourPackageFolder` 替换为旧 SSIS 包存储使用的本地文件夹：`YourLocalDrive:\Program Files\Microsoft SQL Server\YourSQLServerDefaultCompatibilityLevel\DTS\Packages\YourPackageFolder`。 例如，如果旧 SSIS 包存储绑定到 SQL Server 2016，请转到 `YourLocalDrive:\Program Files\Microsoft SQL Server\130\DTS\Packages\YourPackageFolder`。  可以从 [SQL Server 默认兼容级别的列表](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#arguments)中找到 `YourSQLServerDefaultCompatibilityLevel` 的值。
 
 如果已在 Azure 文件存储顶部配置 Azure-SSIS IR 包存储，则在连接到 SSMS 2019 或更高版本上的 Azure-SSIS IR 时，已部署的包将显示在其中。
 
@@ -165,7 +165,7 @@ BEGIN
 END
 ```
 
-若要使用 Azure SQL 托管实例的专用/公共终结点，请 `YourSQLManagedInstanceEndpoint` 分别替换为 `YourSQLMIName.YourDNSPrefix.database.windows.net` / `YourSQLMIName.public.YourDNSPrefix.database.windows.net,3342` 。
+若要使用 Azure SQL 托管实例的专用/公共终结点，请分别将 `YourSQLManagedInstanceEndpoint` 替换为 `YourSQLMIName.YourDNSPrefix.database.windows.net`/`YourSQLMIName.public.YourDNSPrefix.database.windows.net,3342`。
 
 该脚本将为 MSDB 中的所有包生成 dtutil 命令行，你可以对其进行多重选择、复制和粘贴，然后在命令提示符下运行。
 

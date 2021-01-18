@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 35d2073dca21b4a0d48a43bed9933bb7549cf8f3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d1325ac1afbca8b30cc640f1f22cb598506a5c91
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497888"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555706"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>使用 Azure Monitor 监视数据工厂和发警报
 
@@ -583,7 +583,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 #### <a name="ssis-event-message-context-log-attributes"></a>SSIS 事件消息上下文日志特性
 
-下面是与 SSIS IR 上的 SSIS 包执行生成的事件消息相关的条件的日志特性。 它们传递的信息与显示许多 SSIS 包属性的运行时值的 [SSIS 目录 (SSISDB) 事件消息上下文表或视图](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15)类似。 这些日志在你选择“`Basic/Verbose`”日志记录级别时生成，可用于调试/合规性检查。
+下面是与 SSIS IR 上的 SSIS 包执行生成的事件消息相关的条件的日志特性。 它们传递的信息与显示许多 SSIS 包属性的运行时值的 [SSIS 目录 (SSISDB) 事件消息上下文表或视图](/sql/integration-services/system-views/catalog-event-message-context)类似。 这些日志在你选择“`Basic/Verbose`”日志记录级别时生成，可用于调试/合规性检查。
 
 ```json
 {
@@ -620,7 +620,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **operationId**            | String | 用于跟踪 SSISDB 中的特定操作的唯一 ID          | `1`（1 表示与未存储在 SSISDB 中的包/通过 T-SQL 调用的包相关的操作） |
 | **contextDepth**           | String | 事件消息上下文的深度                              | `0`（0 表示在包执行开始之前的上下文，1 表示发生错误时的上下文，该数字将随着上下文离错误的距离的增加而增大） |
 | **packagePath**            | String | 作为事件消息上下文源的包对象的路径      | `\Package` |
-| **contextType**            | String | 作为事件消息上下文源的包对象的类型      | `60`（请参阅[更多上下文类型](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)） |
+| **contextType**            | String | 作为事件消息上下文源的包对象的类型      | `60`（请参阅[更多上下文类型](/sql/integration-services/system-views/catalog-event-message-context#remarks)） |
 | **contextSourceName**      | String | 作为事件消息上下文源的包对象的名称      | `MyPackage` |
 | **contextSourceId**        | String | 作为事件消息上下文源的包对象的唯一 ID | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
 | **propertyName**           | String | 事件消息上下文源的包属性的名称   | `DelayValidation` |
@@ -629,7 +629,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 #### <a name="ssis-event-messages-log-attributes"></a>SSIS 事件消息日志属性
 
-下面是 SSIS IR 上的 SSIS 包执行生成的事件消息的日志属性。 它们将类似信息作为 [SSISDB 事件消息表或视图](/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15) 传达，显示事件消息的详细文本/元数据。 它们是在任何日志记录级别生成的，但除外 `None` 。
+下面是 SSIS IR 上的 SSIS 包执行生成的事件消息的日志属性。 它们将类似信息作为 [SSISDB 事件消息表或视图](/sql/integration-services/system-views/catalog-event-messages) 传达，显示事件消息的详细文本/元数据。 它们是在任何日志记录级别生成的，但除外 `None` 。
 
 ```json
 {
@@ -658,7 +658,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| properties                   | 类型   | 说明                                                        | 示例                        |
+| 属性                   | 类型   | 说明                                                        | 示例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                   | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | 此项设置为 `YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
@@ -669,8 +669,8 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **level**                  | String | 诊断日志的级别                                       | `Informational` |
 | **operationId**            | String | 用于跟踪 SSISDB 中的特定操作的唯一 ID        | `1`（1 表示与未存储在 SSISDB 中的包/通过 T-SQL 调用的包相关的操作） |
 | **messageTime**            | String | 以 UTC 格式创建事件消息的时间          | `2017-06-28T21:00:27.3534352Z` |
-| **messageType**            | String | 事件消息的类型                                     | `70` (查看 [更多消息类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks))  |
-| **messageSourceType**      | String | 事件消息源的类型                              | `20` (查看 [更多消息源类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks))  |
+| **messageType**            | String | 事件消息的类型                                     | `70` (查看 [更多消息类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks))  |
+| **messageSourceType**      | String | 事件消息源的类型                              | `20` (查看 [更多消息源类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks))  |
 | **message**                | String | 事件消息的文本                                     | `MyPackage:Validation has started.` |
 | **packageName**            | String | 已执行的包文件的名称                             | `MyPackage.dtsx` |
 | **eventName**              | String | 相关运行时事件的名称                                 | `OnPreValidate` |
@@ -683,7 +683,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>SSIS 可执行统计信息日志属性
 
-下面是 ssis IR 上的 SSIS 包执行生成的可执行统计信息的日志属性，其中可执行文件是包控制流中的容器或任务。 它们将类似信息作为 [SSISDB 可执行统计信息表或视图](/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15) 传达，其中每个正在运行的可执行文件（包括其迭代）都显示一行。 它们是在任何日志记录级别生成 `None` 的，除了用于识别任务级瓶颈/故障。
+下面是 ssis IR 上的 SSIS 包执行生成的可执行统计信息的日志属性，其中可执行文件是包控制流中的容器或任务。 它们将类似信息作为 [SSISDB 可执行统计信息表或视图](/sql/integration-services/system-views/catalog-executable-statistics) 传达，其中每个正在运行的可执行文件（包括其迭代）都显示一行。 它们是在任何日志记录级别生成 `None` 的，除了用于识别任务级瓶颈/故障。
 
 ```json
 {
@@ -707,7 +707,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| properties                   | 类型   | 说明                                                      | 示例                        |
+| 属性                   | 类型   | 说明                                                      | 示例                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | 此项设置为 `YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
@@ -727,7 +727,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 #### <a name="ssis-execution-component-phases-log-attributes"></a>SSIS 执行组件阶段日志属性
 
-下面是 SSIS IR 上的 SSIS 包执行生成的数据流组件的运行时统计信息的日志属性。 它们将类似信息视为 [SSISDB 执行组件阶段表或视图](/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15) ，显示数据流组件在所有执行阶段所花费的时间。 它们是在选择 `Performance/Verbose` 日志记录级别时生成的，用于捕获数据流执行统计信息。
+下面是 SSIS IR 上的 SSIS 包执行生成的数据流组件的运行时统计信息的日志属性。 它们将类似信息视为 [SSISDB 执行组件阶段表或视图](/sql/integration-services/system-views/catalog-execution-component-phases) ，显示数据流组件在所有执行阶段所花费的时间。 它们是在选择 `Performance/Verbose` 日志记录级别时生成的，用于捕获数据流执行统计信息。
 
 ```json
 {
@@ -752,7 +752,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| properties                   | 类型   | 说明                                                         | 示例                        |
+| 属性                   | 类型   | 说明                                                         | 示例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | 此项设置为 `YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
@@ -773,7 +773,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 #### <a name="ssis-execution-data-statistics-log-attributes"></a>SSIS 执行数据统计信息日志属性
 
-下面是在 SSIS IR 上的 SSIS 包执行生成的数据流管道的每个阶段（从上游到下游组件）的数据移动的日志属性。 它们将类似信息作为 [SSISDB 执行数据统计信息表或视图](/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15) 传达，显示通过数据流任务移动的数据的行计数。 它们是在选择 `Verbose` 日志记录级别时生成的，用于计算数据流吞吐量。
+下面是在 SSIS IR 上的 SSIS 包执行生成的数据流管道的每个阶段（从上游到下游组件）的数据移动的日志属性。 它们将类似信息作为 [SSISDB 执行数据统计信息表或视图](/sql/integration-services/system-views/catalog-execution-data-statistics) 传达，显示通过数据流任务移动的数据的行计数。 它们是在选择 `Verbose` 日志记录级别时生成的，用于计算数据流吞吐量。
 
 ```json
 {
@@ -800,7 +800,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| properties                     | 类型   | 说明                                                        | 示例                        |
+| 属性                     | 类型   | 说明                                                        | 示例                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                     | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**            | String | 此项设置为 `YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |

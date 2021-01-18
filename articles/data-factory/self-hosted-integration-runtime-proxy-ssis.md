@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/19/2020
-ms.openlocfilehash: 82cc58d46061ec7b623d062ab0b0e5a1fdae7ddd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bde8bc11a959bea4bd2c05c5ae75db81192aad6a
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352212"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555859"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>自承载 IR 配置为 Azure 数据工厂中 Azure-SSIS IR 的代理
 
@@ -43,18 +43,18 @@ ms.locfileid: "96352212"
 
 最后，按如下所述，在本地计算机或 Azure 虚拟机 (VM) 上下载并安装最新版本的自承载 IR 以及其他驱动程序和运行时：
 - 下载并安装最新版本的[自承载 IR](https://www.microsoft.com/download/details.aspx?id=39717)。
-- 如果 (OLEDB) 使用对象链接和嵌入数据库，请在包中打开数据库连接 (ODBC) 或 ADO.NET 连接器，在安装了自承载 IR 的同一台计算机上下载并安装相关的驱动程序（如果尚未这样做）。  
+- 如果使用包中的对象链接与嵌入数据库 (OLEDB)、开放式数据库连接 (ODBC) 或 ADO.NET 连接器，请在安装了自承载 IR 的同一台计算机上下载并安装相关驱动程序（如果尚未这样做）。  
 
   如果使用早期版本的用于 SQL Server 的 OLEDB 驱动程序 (SQL Server Native Client [SQLNCLI])，请[下载 64 位版本](https://www.microsoft.com/download/details.aspx?id=50402)。  
 
   如果使用最新版本的用于 SQL Server 的 OLEDB 驱动程序 (MSOLEDBSQL)，请[下载 64 位版本](https://www.microsoft.com/download/details.aspx?id=56730)。  
   
-  如果使用 OLEDB/ODBC/ADO .NET 驱动程序，则可从其网站下载64位版本的其他数据库系统，如 PostgreSQL、MySQL、Oracle 等。
+  如果使用用于其他数据库系统（例如 PostgreSQL、MySQL、Oracle 等）的 OLEDB/ODBC/ADO.NET 驱动程序，可以从其网站下载 64 位版本。
 - 如果尚未这样做，请在安装了自承载 IR 的同一台计算机上[下载并安装 64 位版本的 Visual C++ (VC) 运行时](https://www.microsoft.com/download/details.aspx?id=40784)。
 
-### <a name="enable-windows-authentication-for-on-premises-staging-tasks"></a>为本地临时任务启用 Windows 身份验证
+### <a name="enable-windows-authentication-for-on-premises-staging-tasks"></a>为本地暂存任务启用 Windows 身份验证
 
-如果自承载 IR 上的本地暂存任务需要 Windows 身份验证，请[将 SSIS 包配置为使用相同的 Windows 身份验证](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15)。 
+如果自承载 IR 上的本地暂存任务需要 Windows 身份验证，请[将 SSIS 包配置为使用相同的 Windows 身份验证](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)。 
 
 将使用自承载 IR 服务帐户（默认为 NT SERVICE\DIAHostService）调用本地暂存任务，将使用 Windows 身份验证帐户访问数据存储。 需要向这两个帐户分配特定的安全策略。 在自承载 IR 计算机上，转到“本地安全策略” > “本地策略” > “用户权限分配”，然后执行以下操作：   
 
@@ -64,13 +64,13 @@ ms.locfileid: "96352212"
 
 ## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>为暂存准备 Azure Blob 存储链接服务
 
-如果尚未执行此操作，请在设置了 Azure-SSIS IR 的同一数据工厂中创建 Azure Blob 存储链接服务。 为此，请参阅[创建 Azure 数据工厂链接服务](./quickstart-create-data-factory-portal.md#create-a-linked-service)。 确保执行以下操作：
+如果尚未在设置了 Azure-SSIS IR 的数据工厂中创建 Azure Blob 存储链接服务，请执行此操作。 为此，请参阅[创建 Azure 数据工厂链接服务](./quickstart-create-data-factory-portal.md#create-a-linked-service)。 确保执行以下操作：
 - 对于“数据存储”，请选择“Azure Blob 存储”。    
 - 对于“通过集成运行时连接”  ，请选择“AutoResolveIntegrationRuntime”  （而非你的 Azure-SSIS IR 或自承载 IR），因为我们使用默认的 Azure IR 来获取 Azure Blob 存储的访问凭据。
-- 对于 **身份验证方法**，请选择 **帐户密钥**、 **SAS URI**、 **服务主体** 或 **托管标识**。  
+- 对于“身份验证方法”，请选择“帐户密钥”、“SAS URI”、“服务主体”或“托管标识”。      
 
 >[!TIP]
->如果选择 **服务主体** 方法，请至少向服务主体授予 " *存储 Blob 数据参与者* " 角色。 有关详细信息，请参阅 [Azure Blob 存储连接器](connector-azure-blob-storage.md#linked-service-properties)。 如果选择 **托管标识** 方法，请向 ADF 托管标识授予适当的角色以访问 Azure Blob 存储。 有关详细信息，请参阅 [使用 Azure Active Directory 身份验证和 ADF 托管标识访问 Azure Blob 存储](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)。
+>如果选择“服务主体”方法，请至少为你的服务主体授予“存储 Blob 数据参与者”角色。 有关详细信息，请参阅 [Azure Blob 存储 连接器](connector-azure-blob-storage.md#linked-service-properties)。 如果选择“托管标识”方法，请向 ADF 托管标识授予访问 Azure Blob 存储所需的适当角色。 有关详细信息，请参阅[通过 ADF 托管标识使用 Azure Active Directory 身份验证以访问 Azure Blob 存储](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)。
 
 ![准备用于暂存的 Azure Blob 存储链接服务](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -132,7 +132,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 使用最新 SSDT 作为 Visual Studio 的 SSIS 项目扩展或独立安装程序，可以发现支持的数据流组件的连接管理器中已添加一个新的 `ConnectByProxy` 属性。
 * [下载适用于 Visual Studio 的 SSIS 项目扩展](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
-* [下载独立安装程序](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
+* [下载独立安装程序](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)   
 
 使用可在本地访问数据的组件设计包含数据流任务的新包时，可以通过在相关连接管理器的“属性”窗格中，将此属性设置为 True 来启用此属性。
 
@@ -157,11 +157,11 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="debug-the-on-premises-and-cloud-staging-tasks"></a>调试本地和云暂存任务
 
-在自承载 IR 上，可以在 C:\ProgramData\SSISTelemetry 文件夹中找到运行时日志，并在 C:\ProgramData\SSISTelemetry\ExecutionLog 文件夹中找到本地暂存任务的执行日志 。  你可以在 SSISDB、指定的日志文件路径或 Azure Monitor 中找到云暂存任务的执行日志，具体取决于你是在 SSISDB 中存储包、启用 [Azure Monitor 集成](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor)等。你还可以在云暂存任务的执行日志中找到本地临时任务的唯一 Id。 
+在自承载 IR 上，可以在 C:\ProgramData\SSISTelemetry 文件夹中找到运行时日志，并在 C:\ProgramData\SSISTelemetry\ExecutionLog 文件夹中找到本地暂存任务的执行日志 。  可以在 SSISDB、指定的日志路径或 Azure Monitor 中找到云暂存任务的执行日志，具体取决于是否将包存储在 SSISDB 中、是否启用 [Azure Monitor 监视](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor)等。还可以在云暂存任务的执行日志中找到本地暂存任务的唯一 ID。 
 
 ![第一个暂存任务的唯一 ID](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
-如果你提出了客户支持票证，则可以在自承载 IR 上安装的 **Microsoft Integration Runtime Configuration Manager** 的 "**诊断**" 选项卡上选择 "**发送日志**" 按钮，以便发送最近的操作/执行日志供我们调查。
+如果你已开具客户支持票证，可以在安装于自承载 IR 上的 Microsoft Integration Runtime Configuration Manager 的“诊断”选项卡上选择“发送日志”按钮，将最新操作/执行日志发送给我们以便调查。  
 
 ## <a name="billing-for-the-on-premises-and-cloud-staging-tasks"></a>本地暂存任务和云暂存任务的计费
 
@@ -171,23 +171,23 @@ Azure-SSIS IR 上运行的云暂存任务不单独计费，但是运行中的 Az
 
 ## <a name="enable-custom3rd-party-components"></a>启用自定义/第三方组件 
 
-若要使自定义/第三方组件可以使用自承载 IR 作为 Azure-SSIS IR 的代理来访问本地数据，请按照以下说明进行操作：
+若要启用自定义/第三方组件以使用自承载 IR 作为 Azure-SSIS IR 的代理来访问本地数据，请按照以下说明进行操作：
 
-1. 通过 [标准/快速自定义](./how-to-configure-azure-ssis-ir-custom-setup.md)安装，在 Azure-SSIS IR 上安装面向 SQL Server 2017 的自定义/第三方组件。
+1. 通过[标准/快速自定义设置](./how-to-configure-azure-ssis-ir-custom-setup.md)，在 Azure-SSIS IR 上安装面向 SQL Server 2017 的自定义/第三方组件。
 
 1. 在自承载 IR 上创建以下 DTSPath 注册表项（如果它们尚不存在）：
    1. 将 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` 设置为 `C:\Program Files\Microsoft SQL Server\140\DTS\`
    1. 将 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` 设置为 `C:\Program Files (x86)\Microsoft SQL Server\140\DTS\`
    
-1. 在上述 DTSPath 下，在自承载 IR 上安装面向 SQL Server 2017 的自定义/第三方组件，并确保安装过程：
+1. 在上述 DTSPath 下，在自承载 IR 上安装面向 SQL Server 2017 的自定义/第三方组件，并确保安装过程满足以下条件：
 
-   1. `<DTSPath>`如果尚未存在，则创建、、 `<DTSPath>/Connections` `<DTSPath>/PipelineComponents` 和 `<DTSPath>/UpgradeMappings` 文件夹。
+   1. 创建 `<DTSPath>`、`<DTSPath>/Connections`、`<DTSPath>/PipelineComponents` 和 `<DTSPath>/UpgradeMappings` 文件夹（如果它们尚不存在）。
    
-   1. 在文件夹中创建你自己的用于扩展映射的 XML 文件 `<DTSPath>/UpgradeMappings` 。
+   1. 在 `<DTSPath>/UpgradeMappings` 文件夹中创建你自己的用于扩展映射的 XML 文件。
    
-   1. 在全局程序集缓存 (GAC) 中安装自定义/第三方组件程序集所引用的所有程序集。
+   1. 在全局程序集缓存 (GAC) 中安装自定义/第三方组件程序集引用的所有程序集。
 
-下面是我们的合作伙伴、 [Theobald Software](https://kb.theobald-software.com/xtract-is/XIS-for-Azure-SHIR) 和 [Aecorsoft](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir)的示例，这些示例已改编其组件，以使用我们的快速自定义安装和自承载 IR 作为 Azure-SSIS IR 的代理。
+下面是我们的合作伙伴 [Theobald Software](https://kb.theobald-software.com/xtract-is/XIS-for-Azure-SHIR) 和 [Aecorsoft](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir) 提供的示例，他们已经改编了其组件，以使用我们的快速自定义设置和自承载 IR 作为 Azure-SSIS IR 的代理。
 
 ## <a name="enforce-tls-12"></a>执行 TLS 1.2
 
@@ -197,10 +197,10 @@ Azure-SSIS IR 上运行的云暂存任务不单独计费，但是运行中的 Az
 
 ## <a name="current-limitations"></a>当前限制
 
-- 目前仅支持内置/预安装在 Azure-SSIS IR Standard Edition 上的数据流组件，Hadoop/HDFS/DQS 组件除外，请参阅 [Azure-SSIS IR 上的所有内置/预安装组件](./built-in-preinstalled-components-ssis-integration-runtime.md)。
-- 目前仅支持用托管代码编写的自定义/第三方数据流组件 ( .NET Framework) ，当前不支持用本机代码编写的)  (代码。
-- 当前不支持在本地和云过渡任务中更改变量值。
-- 在本地过渡任务中更改 object 类型的变量值不会反映在其他任务中。
+- 目前仅支持在 Azure-SSIS IR 标准版中内置/预安装的数据流组件（Hadoop/HDFS/DQS 组件除外），请参阅 [Azure-SSIS IR 上的所有内置/预安装组件](./built-in-preinstalled-components-ssis-integration-runtime.md)。
+- 当前仅支持用托管代码 (.NET Framework) 编写的自定义/第三方数据流组件，而不支持用本机代码 (C++) 编写的组件。
+- 当前不支持在本地和云暂存任务中同时更改变量值。
+- 在本地暂存任务中更改 object 类型的变量值不会反映在其他任务中。
 - 目前不支持 OLEDB 源中的 ParameterMapping。 作为变通方法，请使用“变量中的 SQL 命令”作为“访问模式”，并使用“表达式”在 SQL 命令中插入变量/参数。    有关说明，请参阅 ParameterMappingSample.dtsx  包，它位于公共预览版容器的 SelfHostedIRProxy/Limitations  文件夹中。 使用 Azure 存储资源管理器，可以通过输入以上 SAS URI 连接到公共预览版容器。
 
 ## <a name="next-steps"></a>后续步骤

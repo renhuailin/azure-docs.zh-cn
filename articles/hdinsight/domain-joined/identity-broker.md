@@ -1,5 +1,5 @@
 ---
-title: 'Azure HDInsight ID 代理 (HIB) '
+title: Azure HDInsight ID 代理 (HIB)
 description: 了解 Azure HDInsight ID 代理如何简化已加入域的 Apache Hadoop 群集的身份验证。
 ms.service: hdinsight
 author: hrasheed-msft
@@ -7,14 +7,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: c6bc5ca748a35b17c61d314e96f7284d30e7fc3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b8dfe9a23e5c6697323142212156006cb65d2f9b
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338123"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556522"
 ---
-# <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID 代理 (HIB) 
+# <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID 代理 (HIB)
 
 本文介绍了如何设置和使用 Azure HDInsight ID 代理功能。 可以使用此功能获得对 Apache Ambari 的新式 OAuth 身份验证，同时执行多重身份验证，而无需在 Azure Active Directory 域服务 (Azure AD DS) 中使用旧密码哈希。
 
@@ -126,9 +126,9 @@ HDInsight ID 代理功能将向群集添加一个额外的 VM。 此 VM 是 HDIn
 
 在 HDInsight ID 代理设置中，可以更新连接到网关的自定义应用和客户端，以便首先获取所需的 OAuth 令牌。 请按照[此文档](../../storage/common/storage-auth-aad-app.md)中的步骤使用以下信息获取令牌：
 
-*   OAuth 资源 URI：`https://hib.azurehdinsight.net` 
+*    OAuth 资源 URI：`https://hib.azurehdinsight.net` 
 *   AppId：7865c1d2-f040-46cc-875f-831a1ef6a28a
-*   权限：（名称：Cluster.ReadWrite，id：8f89faa0-ffef-4007-974d-4989b39ad77d）
+*    权限：（名称：Cluster.ReadWrite，id：8f89faa0-ffef-4007-974d-4989b39ad77d）
 
 获取 OAuth 令牌后，将其在 HTTP 请求的授权标头中用于群集网关 (例如，https:// <clustername> -int.azurehdinsight.net) 。 Apache livy API 的示例 curl 命令可能如下例所示：
     
@@ -138,18 +138,18 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 
 若要使用 Beeline 和 Livy，还可以按照[此处](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples)提供的示例代码来设置客户端，以使用 OAuth 并连接到群集。
 
-## <a name="faq"></a>FAQ
-### <a name="what-app-is-created-by-hdinsight-in-aad"></a>HDInsight 在 AAD 中创建了哪些应用？
-对于每个群集，会在 AAD 中注册第三方应用程序，并将群集 uri 作为 identifierUri (如 `https://clustername.azurehdinsight.net`) 。
+## <a name="faq"></a>常见问题解答
+### <a name="what-app-is-created-by-hdinsight-in-aad"></a>AAD 中的 HDInsight 创建了什么应用？
+对于每个群集，会在 AAD 中注册第三方应用程序，并将群集 URI 作为 identifierUri（如 `https://clustername.azurehdinsight.net`）。
 
-### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>为什么在使用 HIB 启用群集之前，用户会收到许可提示？
-在 AAD 中，所有第三方应用程序都需要许可才能对用户进行身份验证或访问数据。
+### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>为什么在使用支持 HIB 的群集之前，用户会看到要求提供许可的提示？
+在 AAD 中，所有第三方应用程序都需要先获得用户许可才能对用户进行身份验证或访问数据。
 
-### <a name="can-the-consent-be-approved-programatically"></a>同意是否可以按编程方式获得批准？
-Microsoft Graph api 允许您自动进行许可，请参阅 [api 文档](/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) ，以自动执行许可的顺序：
+### <a name="can-the-consent-be-approved-programatically"></a>可否以编程方式提供许可？
+Microsoft Graph API 允许自动提供许可，请参阅 [API 文档](/graph/api/resources/oauth2permissiongrant)了解相关信息。自动提供许可的顺序为：
 
-* 注册应用并向应用程序授予对应用程序的所有权限，以访问 Microsoft Graph
-* 创建群集后，基于标识符 uri 查询群集应用
+* 注册应用并向应用授予 Application.ReadWrite.All 权限，以访问 Microsoft Graph
+* 创建群集后，基于标识符 URI 查询群集应用
 * 注册应用的许可
 
 删除群集后，HDInsight 会删除该应用，无需清除任何许可。
