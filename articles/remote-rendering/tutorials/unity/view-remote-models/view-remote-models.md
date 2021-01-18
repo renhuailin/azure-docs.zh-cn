@@ -78,7 +78,7 @@ ms.locfileid: "97724561"
 
 :::image type="content" source="./media/confirm-packages.png" alt-text="确认包导入":::
 
-如果包未加载，检查 Unity 控制台中是否存在错误。 如果没有任何错误，但在 Packages 文件夹下仍然看不到任何包，请检查包可见性切换按钮。
+如果包未加载，检查 Unity 控制台中是否存在错误。 如果没有任何错误，但在 Packages 文件夹下仍然看不到任何包，请检查包可见性切换按钮。\
 ![屏幕截图，其中箭头指向“包可见性”切换按钮。](./media/unity-package-visibility.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>确保已安装最新版本的包
@@ -87,10 +87,10 @@ ms.locfileid: "97724561"
 
 1. 在 Unity 编辑器的顶部菜单中，打开“窗口”->“包管理器”。
 1. 选择包“Microsoft Azure 远程渲染”。
-1. 在 Microsoft Azure 远程渲染包的包管理器页上，查看更新按钮是否可用 。 如果可用，请单击此按钮以将包更新到最新可用版本：
+1. 在 Microsoft Azure 远程渲染包的包管理器页上，查看更新按钮是否可用 。 如果可用，请单击此按钮以将包更新到最新可用版本：\
 ![包管理器中的 ARR 包](./media/package-manager.png)
 1. 更新包有时可能会导致控制台错误。 如果出错，请尝试关闭再重新打开项目。
-1. 当包为最新版本时，包管理器将显示“最新”而不是“更新”按钮。
+1. 当包为最新版本时，包管理器将显示“最新”而不是“更新”按钮。\
 ![最新包](./media/package-up-to-date.png)
 ## <a name="configure-the-camera"></a>配置相机
 
@@ -119,9 +119,9 @@ ms.locfileid: "97724561"
     ![更改项目质量设置](./media/settings-quality.png)
 
 1. 在左侧列表菜单中，选择“图形”
-1. 将“可编写脚本的渲染管道”设置更改为“HybridRenderingPipeline”。
+1. 将“可编写脚本的渲染管道”设置更改为“HybridRenderingPipeline”。\
     ![屏幕截图，指出了将可编写脚本的渲染管道设置更改为 HybridRenderingPipeline 的位置。](./media/settings-graphics-render-pipeline.png)\
-    有时 UI 不会填充包中可用的管道类型列表。 如果发生这种情况，需要将 HybridRenderingPipeline 资产手动拖动到该字段上：
+    有时 UI 不会填充包中可用的管道类型列表。 如果发生这种情况，需要将 HybridRenderingPipeline 资产手动拖动到该字段上：\
     ![更改项目图形设置](./media/hybrid-rendering-pipeline.png)
 
     > [!NOTE]
@@ -150,7 +150,7 @@ ms.locfileid: "97724561"
 1. 打开“文件”->“生成设置”
 1. 选择“通用 Windows 平台”
 1. 配置你的设置以匹配下面的设置
-1. 按“切换平台”按钮。
+1. 按“切换平台”按钮。\
 ![生成设置](./media/build-settings.png)
 1. Unity 更改平台后，请关闭生成面板。
 
@@ -545,7 +545,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 远程渲染协调器及其所需的脚本 (ARRServiceUnity) 都是必须附加到场景中的 GameObject 上的 MonoBehaviours。 ARR 提供了 ARRServiceUnity 脚本，用于公开 ARR 的许多功能，这些功能用于连接和管理远程会话。
 
 1. 在场景中创建一个新的 GameObject（Ctrl+Shift+N 或 GameObject -> Create Empty），并将其命名为 RemoteRenderingCoordinator。
-1. 将 RemoteRenderingCoordinator 脚本添加到 RemoteRenderingCoordinator GameObject 中。
+1. 将 RemoteRenderingCoordinator 脚本添加到 RemoteRenderingCoordinator GameObject 中。\
 ![添加 RemoteRenderingCoordinator 组件](./media/add-coordinator-script.png)
 1. 确认 ARRServiceUnity 脚本（在检查器中显示为 Service）已自动添加到 GameObject 中 。 这里解释一下，这是将 `[RequireComponent(typeof(ARRServiceUnity))]` 放在 RemoteRenderingCoordinator 脚本顶部所产生的效果。
 1. 将 Azure 远程渲染凭据、帐户身份验证域和帐户域添加到协调器脚本：\
@@ -602,9 +602,9 @@ public async void InitializeSessionService()
 1. 选择 RemoteRenderingCoordinator GameObject 并找到在 RemoteRenderingCoordinator 组件的检查器中公开的 OnRequestingAuthorization Unity 事件  。
 
 1. 按右下方的“+”添加新事件。
-1. 将组件拖到其自己的事件上，以引用其自身。
+1. 将组件拖到其自己的事件上，以引用其自身。\
 ![绕过身份验证](./media/bypass-authorization-add-event.png)\
-1. 在下拉列表中，选择“RemoteRenderingCoordinator”->“BypassAuthorization”。
+1. 在下拉列表中，选择“RemoteRenderingCoordinator”->“BypassAuthorization”。\
 ![屏幕截图，显示所选的“RemoteRenderingCoordinator.BypassAuthorization”选项。](./media/bypass-authorization-event.png)
 
 ## <a name="create-or-join-a-remote-session"></a>创建或加入远程会话
