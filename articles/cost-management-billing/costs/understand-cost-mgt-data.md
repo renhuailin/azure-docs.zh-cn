@@ -3,18 +3,18 @@ title: 了解 Azure 成本管理数据
 description: 本文帮助你更好地了解 Azure 成本管理中包含的数据、这些数据的处理频率以及收集、显示和关闭方式。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 97ae2ba26818bbc306da71af814d9b4f95858b6a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032569"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964144"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -114,11 +114,11 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
 - 某些部署的资源可能不支持标记，或者可能在使用情况数据中不包含标记。
 - 应用标记时，资源标记只包含在使用情况数据中 - 标记不应用于历史数据。
 - 资源标记只有在数据刷新后才可用于成本管理。
-- 仅当资源处于活动/运行状态并生成使用情况记录时（例如，在 VM 不处于解除分配的情况下），资源标记才可用于成本管理。
+- 仅当资源处于活动/运行状态并生成使用情况记录时，资源标记才可用于成本管理。 例如，在 VM 处于解除分配时。
 - 若要管理标记，必须有每个资源的参与者访问权限。
 - 若要管理标记策略，必须有管理组、订阅或资源组的所有者或策略参与者访问权限。
     
-如果在成本管理中看不到特定标记，请考虑以下事项：
+如果在成本管理中看不到特定标记，请考虑以下问题：
 
 - 是否已将标记直接应用到资源？
 - 标记的应用是否已超出 24 小时？
@@ -141,7 +141,6 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
 - 使用 Azure 策略将资源组标记复制到各个资源，并强制实施标记策略。
 - 将标记 API 与 Query 或 UsageDetails 结合使用，根据当前标记获取所有成本。
 
-
 ## <a name="cost-and-usage-data-updates-and-retention"></a>成本和使用情况数据更新和保留
 
 成本和使用情况数据通常在 Azure 门户上的“成本管理 + 账单”以及支持 API 中提供，8-24 小时内可用。 查看成本时，请记住以下几点：
@@ -151,6 +150,7 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
 - 由于用量会增大，当前计费周期的估算费用可能会更改。
 - 每次更新都是累积性的，包括前次更新的所有细目和信息。
 - Azure 在当前计费周期结束后的最多 72 小时（三个日历日）内终结或 _关闭_ 该计费周期。
+- 在开始月份（未开票）期间，成本管理数据应仅视为估算值。 在某些情况下，在实际使用后，系统可能会产生费用。
 
 以下示例演示计费周期的结束方式：
 
@@ -184,6 +184,6 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
 - MSDN (MS-AZR-0062P)
 - Visual Studio（MS-AZR-0029P、MS-AZR-0059P、MS-AZR-0060P、MS-AZR-0063P、MS-AZR-0064P）
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 - 如果尚未完成有关成本管理的第一个快速入门，请阅读[开始分析成本](./quick-acm-cost-analysis.md)。

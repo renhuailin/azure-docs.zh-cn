@@ -3,17 +3,17 @@ title: 通过自动化功能管理 Azure 成本
 description: 本文介绍如何通过自动化功能管理 Azure 成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 11/19/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 47d9c2838c5c806214e3be2f9ba7ce335bc0af67
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 02215bace693ac5ac36f9fc29758215d45b23eb1
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956086"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051779"
 ---
 # <a name="manage-costs-with-automation"></a>通过自动化功能管理成本
 
@@ -56,6 +56,22 @@ Power BI 用于引入和处理大量数据。 如果你是企业协议客户，�
 **无筛选的目标顶级范围**
 
 使用 API 在可用的最高级别范围内获取所需的所有数据。 请等到引入所有所需数据，再执行任何筛选、分组或聚合分析。 API 专门进行了优化，以提供大量未聚合的原始成本数据。 若要详细了解成本管理中提供的范围，请参阅[了解并使用范围](./understand-work-scopes.md)。 下载某个范围的所需数据后，便可使用 Excel 通过筛选器和透视表进一步分析数据。
+
+### <a name="notes-about-pricing"></a>有关定价的说明
+
+如果你要使用价目表或发票来核对使用情况和费用，请注意以下信息。
+
+价目表价格行为 - 价目表中显示的价格是从 Azure 收到的价格。 它们可缩放到特定度量单位。 遗憾的是，度量单位并不总是与实际的资源使用情况和费用的度量单位相符。
+
+使用情况详细信息价格行为 - 使用情况文件显示的缩放信息可能与价目表并不完全匹配。 具体而言：
+
+- 单价 - 缩放价格以匹配 Azure 资源实际产生费用的度量单位。 如果进行缩放，则价格与价目表中显示的价格不匹配。
+- 度量单位 - 表示 Azure 资源实际产生费用的度量单位。
+- 有效价格/资源费率 - 价格表示在考虑折扣后，最终按单位支付的实际费率。 这种价格应与数量一起使用，执行价格 * 数量计算以核对费用。 价格考虑到了以下方案以及文件中也存在的缩放单元价格。 因此，它可能与缩放单元价格不同。
+  - 分层定价 - 例如：前 100 个单元为 10 美元，后 100 个单元为 8 美元。
+  - 已包含数量 - 例如：前 100 个单元免费，之后的每个单元 10 美元。
+  - 预留
+  - 在计算过程中发生的舍入 - 舍入将考虑已耗用数量、分层/已包含数量定价和缩放单元价格。
 
 ## <a name="example-usage-details-api-requests"></a>示例使用情况详细信息 API 请求
 
@@ -325,7 +341,7 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 
 ## <a name="data-latency-and-rate-limits"></a>数据延迟和速率限制
 
-我们建议每天调用 API 的次数不超过一次。 从 Azure 资源提供程序接收新的使用情况数据时，每隔 4 小时刷新一次成本管理数据。 更频繁地调用不会提供任何其他数据。 相反，它会创建增加的负载。 若要详细了解数据更改的频率和数据延迟的处理方式的详细信息，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
+我们建议每天调用 API 的次数不超过一次。 从 Azure 资源提供程序接收新的使用情况数据时，每隔 4 小时刷新一次成本管理数据。 更频繁地调用并不会提供更多数据。 相反，它会导致负载增加。 若要详细了解数据更改的频率和数据延迟的处理方式的详细信息，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
 
 ### <a name="error-code-429---call-count-has-exceeded-rate-limits"></a>错误代码 429 - 调用计数超出了速率限制
 

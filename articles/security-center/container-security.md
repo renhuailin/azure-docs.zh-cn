@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7265195f9614928a2150a56a780ea7b36bc2e266
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: ea66bb5bcdd6132809804632919a120f5c93353f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030860"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132710"
 ---
 # <a name="container-security-in-security-center"></a>安全中心的容器安全性
 
@@ -48,7 +48,7 @@ Azure 安全中心是用于保护容器安全的 Azure 原生解决方案。
 
 若要监视基于 Azure 资源管理器的 Azure 容器注册表中的映像，请启用[适用于容器注册表的 Azure Defender](defender-for-container-registries-introduction.md)。 安全中心扫描在过去 30 天内拉取的、推送到注册表中或导入的任何映像。 集成扫描程序由业界领先的漏洞扫描供应商 Qualys 提供。
 
-当 Qualys 或安全中心发现问题时，你将在 [Azure Defender 仪表板](azure-defender-dashboard.md)中收到通知。 安全中心会针对每个漏洞提供可行的建议、严重性分类，以及有关如何修正问题的指南。 若要详细了解安全中心针对容器提供的建议，请参阅[建议的参考列表](recommendations-reference.md#recs-containers)。
+当 Qualys 或安全中心发现问题时，你将在 [Azure Defender 仪表板](azure-defender-dashboard.md)中收到通知。 安全中心会针对每个漏洞提供可行的建议、严重性分类，以及有关如何修正问题的指南。 若要详细了解安全中心针对容器提供的建议，请参阅[建议的参考列表](recommendations-reference.md#recs-compute)。
 
 安全中心会对扫描程序的扫描结果进行筛选和分类。 当映像正常运行时，安全中心会将其标为正常。 安全中心仅为存在待解决问题的映像生成安全建议。 安全中心仅在出现问题时发出通知，这样会降低发送不必要的信息警报的可能性。
 
@@ -60,7 +60,7 @@ Azure 安全中心会识别在 IaaS Linux VM 上或其他运行 Docker 容器的
 
 安全中心包含 CIS 的 Docker 基准的完整规则集，并会在容器不符合控件标准的情况下发出警报。 在发现错误配置时，安全中心会生成安全建议。 使用安全中心的建议页面来查看建议和修正问题。 不会对 AKS 托管的实例或 Databricks 托管的 VM 运行 CIS 基准检查。
 
-若要详细了解可能会针对此功能显示的相关的安全中心建议，请参阅建议参考表的[容器部分](recommendations-reference.md#recs-containers)。
+若要详细了解针对此功能可能出现的相关安全中心建议，请参阅建议参考表的[计算部分](recommendations-reference.md#recs-compute)。
 
 浏览 VM 的安全问题时，安全中心会提供计算机上有关容器的其他信息。 此类信息包括 Docker 版本以及主机上运行的映像数。 
 
@@ -74,7 +74,7 @@ AKS 提供安全控制，并且可用于了解群集的安全状况。 安全中
 * 持续监视 AKS 群集的配置
 * 生成符合行业标准的安全建议
 
-若要详细了解可能会针对此功能显示的相关的安全中心建议，请参阅建议参考表的[容器部分](recommendations-reference.md#recs-containers)。
+若要详细了解针对此功能可能出现的相关安全中心建议，请参阅建议参考表的[计算部分](recommendations-reference.md#recs-compute)。
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>使用 Kubernetes 准入控制实现工作负载保护最佳做法
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 643305057490cc550a5a8e39a892297b000cbc8e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c9aa73767fcb9d57ada11f5830fec00b10eee812
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169403"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017334"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入门：向 Node.js Web 应用添加使用 OpenID Connect 登录功能
 
@@ -29,38 +29,29 @@ ms.locfileid: "96169403"
 - [Node.js](https://nodejs.org/en/download/)。
 
 ## <a name="register-your-application"></a>注册应用程序
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com/)。
-1. 如果你的帐户在多个 Azure AD 租户中存在：
-    - 从页面右上角的菜单中选择你的个人资料，然后选择“切换目录”。
-    - 将会话切换到要在其中创建应用程序的 Azure AD 租户。
 
-1. 导航到[“Azure Active Directory”>“应用注册”](https://go.microsoft.com/fwlink/?linkid=2083908)以注册应用。
-
-1. 选择“新建注册”。
-
-1. “注册应用程序”页出现后，请输入应用的注册信息：
-    - 在“名称”部分，输入一个要向应用用户显示的有意义的名称。 例如：MyWebApp
-    - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)” 。
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+1. 搜索并选择“Azure Active Directory”  。
+1. 在“管理”下，选择“应用注册” > “新建注册”  。
+1. 输入应用程序的名称（例如 `MyWebApp`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+1. 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)” 。
 
     如果有多个重定向 URI，以后需要在成功创建应用后，从“身份验证”选项卡添加这些 URI。
 
 1. 选择“注册”以创建应用。
-
 1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值供稍后使用。  稍后需要在此项目中使用此值来配置应用程序。
+1. 在“管理”下，选择“身份验证”。 
+1. 选择“添加平台” > “Web”  
+1. 在“重定向 URI”部分中，输入 `http://localhost:3000/auth/openid/return`。
+1. 输入注销 URL `https://localhost:3000`。
+1. 在隐式授权部分，选中“ID 令牌”，因为该示例需要启用[隐式授权流](./v2-oauth2-implicit-grant-flow.md)才能让用户登录。
+1. 选择“配置” 。
+1. 在“管理”下，选择“证书和机密” > “新建客户端机密”  。
+1. 输入实例应用机密的密钥说明。
+1. 选择密钥持续时间“1 年”、“2 年”或“永不过期”。 
+1. 选择 **添加** 。 将显示密钥值。 将密钥值复制并保存在安全的位置，以备将来使用。
 
-1. 在应用的页面列表中，选择“身份验证”。
-    - 在“重定向 URI”部分，选择组合框中的“Web”并输入以下重定向 URI：`http://localhost:3000/auth/openid/return` 
-    - 在“高级设置”部分，将“注销 URL”设置为 `https://localhost:3000`。
-    - 在“高级设置”>“隐式授权”部分，选中“ID 令牌”，因为此示例需要启用“[隐式授权流](./v2-oauth2-implicit-grant-flow.md)”才能将用户登录。 
-
-1. 选择“保存” 。
-
-1. 在“证书和机密”页中的“客户端机密”部分，选择“新建客户端机密”。  
-    - 输入实例应用机密的密钥说明。
-    - 选择密钥持续时间“1 年”、“2 年”或“永不过期”。 
-    - 单击“添加”按钮时，将显示密钥值。 复制密钥值并将其保存在安全的位置。
-
-    稍后需要使用此密钥来配置应用程序。 此密钥值将不再显示，也无法通过其他任何方式检索，因此，在 Azure 门户中显示后，请尽快记下此值。
 
 ## <a name="download-the-sample-application-and-modules"></a>下载示例应用程序和模块
 

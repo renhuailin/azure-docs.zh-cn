@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析入门 - Azure
 description: 本快速入门演示如何开始使用 IoT Edge 上的实时视频分析。 了解如何检测实时视频流中的运动。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: db48183e918fcb1096734f912f02c091ddac1d74
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 276c2ceaa9e0bef254c70f91541a3a3db7c02d47
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511869"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060395"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入门：入门 - IoT Edge 上的实时视频分析
 
@@ -21,7 +21,7 @@ ms.locfileid: "97511869"
 
 可以查看以下视频，其中包含有关如何开始使用 IoT Edge 上的实时视频分析的详细步骤：
 
-<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,7 +43,7 @@ ms.locfileid: "97511869"
 
 在本快速入门中，我们建议你使用[实时视频分析资源设置脚本](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)在 Azure 订阅中部署所需资源。 为此，请执行下列步骤：
 
-1. 转到 [Azure Cloud Shell](https://shell.azure.com)。
+1. 转到 [Azure 门户](https://portal.azure.com)并选择 Cloud Shell 图标。
 1. 如果你是第一次使用 Cloud Shell，系统将提示你选择一个订阅以创建存储帐户和 Microsoft Azure 文件存储共享。 选择“创建存储”，创建用于存储 Cloud Shell 会话信息的存储帐户。 此存储帐户不同于脚本将要创建的与 Azure 媒体服务帐户配合使用的帐户。
 1. 在 Cloud Shell 窗口左侧的下拉菜单中，选择“Bash”作为环境。
 
@@ -55,9 +55,13 @@ ms.locfileid: "97511869"
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-如果脚本成功完成，你应该可在订阅中看到所有所需资源。 在脚本输出中，资源表会列出 IoT 中心名称。 查找资源类型 `Microsoft.Devices/IotHubs`，并记下名称。 下一步骤需要用到此名称。 
+在脚本成功完成后，你应可在订阅中看到所有所需资源。 在脚本输出中，资源表会列出 IoT 中心名称。 查找资源类型 `Microsoft.Devices/IotHubs`，并记下名称。 下一步骤需要用到此名称。  
 
-该脚本还会在 ~/clouddrive/lva-sample/ 目录中生成一些配置文件。 稍后在快速入门中需要用到这些文件。
+> [!NOTE]
+> 该脚本还会在  目录中生成一些配置文件。 稍后在快速入门中需要用到这些文件。
+
+> [!TIP]
+> 如果在创建 Azure 资源时遇到问题，请查看[故障排除指南](troubleshoot-how-to.md#common-error-resolutions)来解决一些常见问题。_*
 
 ## <a name="deploy-modules-on-your-edge-device"></a>在边缘设备上部署模块
 
@@ -417,8 +421,8 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 请注意，此有效负载：
 
 * 指定需要为其创建实例的拓扑名称 (`MotionDetection`)。
-* 包含 `rtspUrl`（它在图形拓扑有效负载中没有默认值）的参数值。
-
+* 包含 `rtspUrl`（它在图形拓扑有效负载中没有默认值）的参数值。 此值是指向以下示例视频的链接：
+    > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 几秒钟内，“输出”窗口中显示以下响应：
 
 ```

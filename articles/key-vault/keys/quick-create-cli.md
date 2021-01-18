@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3906de9cd94b4db3e675c2b822df2f061040c586
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 8da5e86362f41322102c3b5316df5743e0c2458f
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935285"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976975"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索密钥
 
@@ -59,7 +59,7 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 
 只需再执行几个步骤便可向保管库中添加密钥。 此密钥可供应用程序使用。 
 
-键入以下命令，创建名为 ExampleKey  的密钥：
+键入以下命令，创建名为 ExampleKey 的密钥：
 
 ```azurecli
 az keyvault key create --vault-name "Contoso-Vault2" -n ExampleKey --protection software

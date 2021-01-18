@@ -123,6 +123,8 @@
       items:
         - name: 注册或登录策略
           href: add-sign-up-and-sign-in-policy.md
+        - name: 登录策略
+          href: add-sign-in-policy.md
         - name: 密码重置策略
           href: add-password-reset-policy.md
         - name: 密码更改策略
@@ -148,6 +150,8 @@
           href: identity-provider-azure-ad-single-tenant.md
         - name: Azure AD（多租户）
           href: identity-provider-azure-ad-multi-tenant.md
+        - name: Azure AD B2C
+          href: identity-provider-azure-ad-b2c.md
         - name: Facebook
           href: identity-provider-facebook.md
         - name: 一般标识提供者
@@ -267,7 +271,7 @@
                 - name: ClaimsTransformations
                   href: claimstransformations.md
                   items:
-                    - name: Boolean
+                    - name: 布尔
                       href: boolean-transformations.md
                     - name: Date
                       href: date-transformations.md
@@ -283,7 +287,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: String
+                    - name: 字符串
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md

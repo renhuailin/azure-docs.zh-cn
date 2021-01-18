@@ -308,10 +308,10 @@
       items:
         - name: 选择层
           href: search-sku-tier.md
-        - name: 估计容量和成本
-          href: search-sku-manage-costs.md
-        - name: 调整容量
+        - name: 估计和管理容量
           href: search-capacity-planning.md
+        - name: 估算成本
+          href: search-sku-manage-costs.md
         - name: 服务限制
           href: search-limits-quotas-capacity.md
         - name: 性能规模

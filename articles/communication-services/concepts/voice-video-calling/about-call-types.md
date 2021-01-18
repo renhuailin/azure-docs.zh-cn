@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 11c20f3f79a4fceafaca9b1a948f1b4a425dad87
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 00aa24f0ff8c918c645239ca36888c6a214062c8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572705"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028754"
 ---
 # <a name="voice-and-video-concepts"></a>语音和视频概念
 
@@ -49,8 +49,8 @@ ms.locfileid: "96572705"
 我们在本机 (iOS, Android) SDK 上最多可支持全高清 1080p。 对于 Web (JS) SDK，我们支持标准 HD 720p。 质量取决于可用带宽。  
 
 ### <a name="rooms-concept"></a>房间概念
-房间是一组 API 和 SDK，使你可以轻松将音频、视频、屏幕共享、PSTN 和 SMS 交互添加到你的网站或本机应用程序中。
-在预览期间，你可以使用组 ID 来加入同一会话。 你可以根据需要创建任意多个组 ID，并按“房间”组织用户。 将来将引入更多与“房间”相关的控件 
+聊天室是一组 API 和 SDK，使你可以轻松将音频、视频、屏幕共享、PSTN 和 SMS 交互添加到你的网站或本机应用程序中。
+在预览期间，你可以使用组 ID 来加入同一会话。 你可以根据需要创建任意多个组 ID，并按“聊天室”组织用户。 将来将引入更多与“房间”相关的控件 
 
 ## <a name="next-steps"></a>后续步骤
 

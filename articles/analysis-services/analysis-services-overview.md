@@ -4,16 +4,16 @@ description: 了解 Azure Analysis Services，它是一种可在云中提供企�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 12/01/2020
+ms.date: 01/07/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: e70d02c02ba9a3f14d1659851919fbccf71776d1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c4a14ab1e5b52eb36a532c6d69713d588864d288
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487348"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019068"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -91,6 +91,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |美国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中部     |    S8v2、S9v2     |    1     |
 |美国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
+|美国中南部     |    S8v2、S9v2     |    1     |
 |美国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
 |美国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
 |美国西部     |    S8v2、S9v2   |    2  |
@@ -115,6 +116,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |澳大利亚东部     |    S8v2、S9v2    |    1     |
 |澳大利亚东南部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |日本东部     |   B1、B2、S0、S1、S2、S4、D1       |    1     |
+|日本东部     |    S8v2、S9v2    |    1     |
 |东南亚     |     B1、B2、S0、S1、S2、S4、D1     |   1      |
 |东南亚     |     S8v2、S9v2     |   1      |
 |印度西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
@@ -172,7 +174,7 @@ Azure Analysis Services 防火墙阻止所有客户端连接，规则中指定�
 
 用户身份验证由 [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) 处理。 登录时，用户需使用组织帐户标识对数据库进行基于角色的访问。 用户标识必须是服务器所在订阅的默认 Azure Active Directory 成员。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 
-### <a name="data-security"></a>数据安全性
+### <a name="data-security"></a>数据安全
 
 Azure Analysis Services 使用 Azure Blob 存储来持久保留 Analysis Services 数据库的存储和元数据。 使用 [Azure Blob 服务器端加密 (SSE)](../storage/common/storage-service-encryption.md) 加密 Blob 中的数据文件。 使用“直接查询”模式时，仅存储元数据。 查询时通过加密的协议从数据源访问实际数据。
 
@@ -184,7 +186,7 @@ Analysis Services 使用[基于角色的授权](/analysis-services/tabular-model
   
 通过数据库角色向查询数据的非管理最终用户授予访问权限。 数据库角色作为数据库中的单独对象创建，并且仅适用于创建该角色的数据库。 数据库角色按（数据库）“管理员”、“读取”与“读取和处理”权限来定义。 使用 SSMS 或 PowerShell 添加用户和组帐户。
 
-### <a name="row-level-security"></a>行级安全性
+### <a name="row-level-security"></a>行级别安全性
 
 所有兼容级别的表格模型都支持行级安全性。 行级安全性的定义方式如下：在模型中使用 DAX 表达式，这些表达式可在表中定义行，以及在用户可查询的相关表的许多方向定义任何行。 为“读取”与“读取和处理”权限定义使用 DAX 表达式的行筛选器。 
 

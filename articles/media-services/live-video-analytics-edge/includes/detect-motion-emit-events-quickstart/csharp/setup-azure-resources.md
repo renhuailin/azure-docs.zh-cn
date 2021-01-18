@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5fa8377b3cdddb2818c04c5a75e347ff73dc07d8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 40d2f957ce115b43a1dcc138b86e05ec9cc47384
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509375"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060554"
 ---
 本教程需要以下 Azure 资源：
 
@@ -26,12 +26,15 @@ ms.locfileid: "96509375"
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-    如果脚本成功完成，你应该可在订阅中看到所有所需资源。
+    在脚本成功完成后，你应可在订阅中看到所有所需资源。
 1. 脚本完成后，选择大括号即可公开文件夹结构。 你可在 ~/clouddrive/lva-sample 目录中看到几个文件。 与本快速入门相关的文件如下：
 
      * * **~/clouddrive/lva-sample/edge-deployment/.env** - 此文件包含 Visual Studio Code 用来将模块部署到边缘设备的属性。
-     ***~/clouddrive/lva-sample/appsetting.json*** - Visual Studio Code 使用此文件来运行示例代码。
+     * **~/clouddrive/lva-sample/appsetting.json** - Visual Studio Code 使用此文件来运行示例代码。
      
     在下一节的 Visual Studio Code 中设置开发环境时，你需要这些文件。 现在需要将它们复制到本地文件中。
     
     ![应用设置](../../../media/quickstarts/clouddrive.png)
+
+> [!TIP]
+> 如果在创建 Azure 资源时遇到问题，请查看[故障排除指南](../../../troubleshoot-how-to.md#common-error-resolutions)来解决一些常见问题。_*

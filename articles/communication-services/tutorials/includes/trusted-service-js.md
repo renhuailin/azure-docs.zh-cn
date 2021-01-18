@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: daf2d675bbbee324769b6e1e8d8d34587d37c72f
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 9755cebf66a8c468b29737262bc3c32ae9f5422f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886612"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024274"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -112,14 +112,8 @@ module.exports = async function (context, req) {
 
     const userToken = await tokenClient.issueToken(user, ["voip"]);
 
-    const response = {
-        "User" : userToken.user,
-        "Token": userToken.token,
-        "ExpiresOn": userToken.expiresOn
-    }
-
     context.res = {
-        body: response
+        body: userToken
     };
 }
 ```
@@ -130,7 +124,7 @@ module.exports = async function (context, req) {
 
 使用 `F5` 在本地运行 Azure 函数。 这会在本地初始化 Azure 函数并使其可通过以下方式进行访问：`http://localhost:7071/api/FUNCTION_NAME`。 查看有关[在本地运行](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-locally)的其他文档
 
-在浏览器中打开 URL，应会看到包含通信用户 Id、令牌和令牌过期时间的响应正文。
+在浏览器中打开 URL，应会看到包含通信用户 ID、令牌和令牌过期时间的响应正文。
 
 :::image type="content" source="../media/trusted-service-sample-response.png" alt-text="显示创建的 Azure 函数的响应示例的屏幕截图。":::
 

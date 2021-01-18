@@ -1,18 +1,18 @@
 ---
-title: 使用 Kotlin 和 Maven 在 Azure 中创建第一个函数
-description: 使用 Kotlin 和 Maven 创建一个 HTTP 触发的函数，并将其发布到 Azure。
+title: 在 Azure Functions 中使用 Maven 创建 Kotlin 函数
+description: 使用 Kotlin 和 Maven 创建一个 HTTP 触发的函数应用，并将其发布到 Azure Functions。
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 167e7c447fe43851255677a44043c508cbdc4239
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 6f7b79b6e3e72b34a27e5b4f0e1fb5426c539699
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934826"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035234"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>快速入门：使用 Kotlin 和 Maven 创建第一个函数
 
@@ -32,9 +32,9 @@ ms.locfileid: "97934826"
 > [!IMPORTANT]
 > JAVA_HOME 环境变量必须设置为 JDK 的安装位置，以完成本快速入门。
 
-## <a name="generate-a-new-functions-project"></a>生成新的 Functions 项目
+## <a name="generate-a-new-azure-functions-project"></a>生成新的 Azure Functions 项目
 
-在空的文件夹中，运行以下命令以从 [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) 生成 Functions 项目。
+在空的文件夹中，运行以下命令以从 [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) 生成 Azure Functions 项目。
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
@@ -173,7 +173,7 @@ az login
 mvn azure-functions:deploy
 ```
 
-部署完成后，将显示可用于访问你的 Azure 函数应用的 URL：
+部署完成后，将显示可用于访问你的函数应用的 URL：
 
 <pre>
 [INFO] Successfully deployed Function App with package.
@@ -231,7 +231,7 @@ Hi, AzureFunctionsTest
 
 ## <a name="reference-bindings"></a>引用绑定
 
-若要使用除 HTTP 触发器和计时器触发器以外的 [Functions 触发器和绑定](functions-triggers-bindings.md)，需要安装绑定扩展。 尽管本文中没有此项要求，但在使用其他绑定类型时，需要知道如何启用扩展。
+若要使用除 HTTP 触发器和计时器触发器以外的 [Azure Functions 触发器和绑定](functions-triggers-bindings.md)，需要安装绑定扩展。 尽管本文中没有此项要求，但在使用其他绑定类型时，需要知道如何启用扩展。
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -239,7 +239,7 @@ Hi, AzureFunctionsTest
 
 你已使用简单的 HTTP 触发器创建了 Kotlin 函数应用，并将其部署到了 Azure Functions。
 
-- 有关开发 Java 和 Kotlin 函数的详细信息，请查看 [Java 函数开发人员指南](functions-reference-java.md)。
+- 有关开发 Java 和 Kotlin 函数的详细信息，请查看 [Azure Functions Java 开发人员指南](functions-reference-java.md)。
 - 使用 `azure-functions:add` Maven 目标将具有不同触发器的其他函数添加到你的项目。
 - 使用 [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md) 和 [Eclipse](functions-create-maven-eclipse.md) 在本地编写并调试函数。 
 - 使用 Visual Studio Code 调试在 Azure 中部署的函数。 有关说明，请参阅 Visual Studio Code [无服务器 Java 应用程序](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)文档。

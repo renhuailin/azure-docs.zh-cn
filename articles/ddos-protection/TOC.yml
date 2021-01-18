@@ -12,6 +12,9 @@
       href: manage-ddos-protection-powershell.md
     - name: 创建 DDoS 防护计划 - CLI
       href: manage-ddos-protection-cli.md
+    - name: 创建 DDoS 保护计划 - ARM 模板
+      displayName: Resource Manager
+      href: manage-ddos-protection-template.md
 - name: 教程
   items:
     - name: 查看和配置 DDoS 防护遥测
@@ -60,7 +63,7 @@
       href: 'https://azure.microsoft.com/develop/python/'
     - name: REST
       href: /rest/api/virtualnetwork/ddosprotectionplans
-    - name: Azure Resource Manager
+    - name: Azure 资源管理器
       href: ../azure-resource-manager/management/overview.md
 - name: 资源
   items:

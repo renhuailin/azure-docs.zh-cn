@@ -179,6 +179,8 @@
               href: database/performance-guidance.md
             - name: 使用 DMV 监视性能
               href: database/monitoring-with-dmvs.md
+            - name: 了解和解决阻止问题
+              href: database/understand-resolve-blocking.md
             - name: 日志诊断遥测数据
               href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
             - name: 内存中 OLTP
@@ -645,7 +647,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
-        - name: Azure Resource Manager
+        - name: Azure 资源管理器
           href: database/arm-templates-content-guide.md?tabs=single-database
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
@@ -912,7 +914,7 @@
                       href: /sql/machine-learning/security/user-permission?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
         - name: 功能
           items:
-            - name: 链接服务器
+            - name: 链接的服务器
               href: /sql/relational-databases/linked-servers/linked-servers-database-engine?toc=%2fazure%2fazure-sql%2ftoc.json
             - name: Service Broker
               href: /sql/database-engine/configure-windows/sql-server-service-broker?toc=%2fazure%2fazure-sql%2ftoc.json
@@ -970,7 +972,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
-        - name: Azure Resource Manager
+        - name: Azure 资源管理器
           href: database/arm-templates-content-guide.md?tabs=managed-instance
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
@@ -1280,7 +1282,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 连接错误
           href: database/troubleshoot-common-errors-issues.md

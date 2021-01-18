@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 04/14/2020
+ms.date: 01/11/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: cf051d96651161658796689639b5d268230d4b5a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 78890c0596642b629482a6d24d17d83fb8ebc9a0
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95560517"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147332"
 ---
 | 资源 | 限制 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -33,7 +33,8 @@ ms.locfileid: "95560517"
 | 最大总请求持续时间<sup>8</sup> | 30 秒 |
 | 最大缓冲有效负载大小<sup>8</sup> | 2 MiB |
 | 最大请求 URL 大小<sup>9</sup> | 4096 字节 |
-| 最大自托管网关数目<sup>10</sup> | 25 |
+| URL 路径段的最大长度<sup>10</sup> | 260 个字符 |
+| 最大自托管网关数目<sup>11</sup> | 25 |
 
 <sup>1</sup>缩放限制取决于定价层。 若要查看定价层及其缩放限制的详细信息，请参阅 [API 管理定价](https://azure.microsoft.com/pricing/details/api-management/)。<br/>
 <sup>2</sup>每单位缓存大小取决于定价层。 若要查看定价层及其缩放限制，请参阅 [API 管理定价](https://azure.microsoft.com/pricing/details/api-management/)。<br/>
@@ -44,4 +45,5 @@ ms.locfileid: "95560517"
 <sup>7</sup>消耗层中不支持 CA 证书。<br/>
 <sup>8</sup>此限制仅适用于消耗层。 对于其他层，这些类别没有限制。<br/>
 <sup>9</sup>仅适用于消耗层。 包含最长 2048 字节的查询字符串。<br/>
-<sup>10</sup>仅开发人员层和高级层中支持自托管网关。 [自托管网关资源](/rest/api/apimanagement/2019-12-01/gateway)数量受此限制约束。 若要增大此限额，请联系[支持人员](https://azure.microsoft.com/support/options/)。 请注意，与自托管网关资源相关联的节点（或副本）的数量在高级层中是不受限的，而在开发人员层中则限为单个节点。
+<sup>10</sup> 若要增大此限额，请联系[支持人员](https://azure.microsoft.com/support/options/)。<br/>
+<sup>11</sup>仅开发人员层和高级层中支持自托管网关。 [自托管网关资源](/rest/api/apimanagement/2019-12-01/gateway)数量受此限制约束。 若要增大此限额，请联系[支持人员](https://azure.microsoft.com/support/options/)。 请注意，与自托管网关资源相关联的节点（或副本）的数量在高级层中是不受限的，而在开发人员层中则限为单个节点。

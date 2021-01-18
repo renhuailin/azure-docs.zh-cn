@@ -188,16 +188,6 @@
               href: manage/pay-by-invoice.md
             - name: 创建其他订阅
               href: manage/create-subscription.md
-            - name: 以编程方式创建 EA 订阅
-              href: manage/programmatically-create-subscription-enterprise-agreement.md
-            - name: 以编程方式创建 MCA 订阅
-              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
-            - name: 以编程方式创建 MPA 订阅
-              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: 创建订阅 - ARM 模板
-              href: manage/create-subscription-template.md
-            - name: 以编程方式创建订阅 - 预览
-              href: manage/programmatically-create-subscription-preview.md
             - name: 授予访问权限以创建 EA 订阅
               href: manage/grant-access-to-create-subscription.md
             - name: 导出订阅信息
@@ -214,6 +204,20 @@
               href: manage/transfer-subscriptions-subscribers-csp.md
             - name: 取消订阅
               href: manage/cancel-azure-subscription.md
+        - name: 以编程方式创建订阅
+          items:
+            - name: 以编程方式创建订阅
+              href: manage/programmatically-create-subscription.md
+            - name: 以编程方式创建 EA 订阅
+              href: manage/programmatically-create-subscription-enterprise-agreement.md
+            - name: 以编程方式创建 MCA 订阅
+              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
+            - name: 以编程方式创建 MPA 订阅
+              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
+            - name: 创建订阅 - ARM 模板
+              href: manage/create-subscription-template.md
+            - name: 以编程方式创建订阅 - 预览 API
+              href: manage/programmatically-create-subscription-preview.md
         - name: 管理企业协议订阅
           items:
             - name: Azure 中的 EA 角色

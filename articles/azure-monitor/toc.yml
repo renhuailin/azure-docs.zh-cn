@@ -8,6 +8,8 @@
       href: faq.md
     - name: 新增功能
       href: whats-new.md
+    - name: 从 Operations Manager 迁移
+      href: azure-monitor-operations-manager.md
 - name: 快速入门
   items:
     - name: 监视 Azure 资源
@@ -196,6 +198,8 @@
               href: platform/metric-chart-samples.md
             - name: 排查指标图表问题
               href: platform/metrics-troubleshoot.md
+            - name: 了解指标聚合
+              href: platform/metrics-aggregation-explained.md
     - name: Azure Monitor 日志
       items:
         - name: 概述
@@ -443,7 +447,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
@@ -457,7 +461,7 @@
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: 使用 Webhook 和电子邮件通知
           href: platform/autoscale-webhook-email.md
-        - name: 疑难解答
+        - name: 故障排除
           href: platform/autoscale-troubleshoot.md
         - name: 资源日志架构
           href: platform/autoscale-resource-log-schema.md
@@ -664,6 +668,8 @@
                       href: app/javascript-react-native-plugin.md
                     - name: Angular 插件
                       href: app/javascript-angular-plugin.md
+                    - name: 单击“分析自动收集”插件
+                      href: app/javascript-click-analytics-plugin.md
                 - name: 疑难解答
                   items:
                     - name: SDK 加载失败
@@ -721,7 +727,7 @@
                       href: app/status-monitor-v2-get-started.md
                     - name: 详细说明
                       href: app/status-monitor-v2-detailed-instructions.md
-                    - name: 疑难解答
+                    - name: 故障排除
                       href: app/status-monitor-v2-troubleshoot.md
                     - name: API 参考
                       href: app/status-monitor-v2-api-reference.md

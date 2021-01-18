@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 01/11/2021
 ms.author: banders
-ms.openlocfilehash: 7bec455b804d1f4b13ab7e13677092077214a121
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f0645115246995c9605563626d99bbf6a76784e1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965844"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133544"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>开始使用更新的 Azure 计费帐户
 
@@ -40,7 +40,7 @@ ms.locfileid: "94965844"
 
 帐户更新后，将自动为每个订阅创建一个计费配置文件。 订阅费用将按其各自的计费配置文件计费，并显示在其发票上。
 
-计费配置文件中的角色有权查看和管理发票和付款方式。 这些角色应分配给为发票付款的用户，例如组织中会计团队的成员。 有关详细信息，请参阅[计费配置文件角色和任务](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks)。 
+计费配置文件中的角色有权查看和管理发票和付款方式。 这些角色应分配给为发票付款的用户，例如组织中会计团队的成员。 有关详细信息，请参阅[计费配置文件角色和任务](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks)。
 
 帐户更新后，对于你已授予其他人[查看发票](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice)权限的每个订阅，具有所有者、参与者、读者或计费读者 Azure 角色的用户将在相应的计费对象信息中被赋予读者角色。
 
@@ -48,7 +48,7 @@ ms.locfileid: "94965844"
 
 发票科目用于组织发票中的成本。 例如，你可能需要单张发票，但同时需要按部门、团队或项目组织成本。 对于这种情况，可以设置单项计费配置文件，在其中为每个部门、团队或项目创建发票科目。
 
-帐户更新后，将为每个计费配置文件创建一个发票科目，并将相关订阅分配给该发票科目。 添加更多订阅后，可以创建额外的科目并将订阅分配给发票科目。 你将看到此计费配置文件发票上的这些科目反映了你分配给它们的每个订阅的使用情况。
+帐户更新后，将为每个计费配置文件创建一个发票科目，并将相关订阅分配给该发票科目。 添加更多订阅后，可以创建更多的科目并将订阅分配给发票科目。 你将看到此计费配置文件发票上的这些科目反映了你分配给它们的每个订阅的使用情况。
 
 发票科目的角色有权控制谁来创建 Azure 订阅。 这些角色应分配给在组织中为团队设置 Azure 环境的用户，例如工程主管和技术架构师。 有关详细信息，请参阅[发票科目角色和任务](../manage/understand-mca-roles.md#invoice-section-roles-and-tasks)。
 
@@ -82,7 +82,7 @@ ms.locfileid: "94965844"
 
 **分配多个管理员执行计费操作** - 将计费权限分配给多个用户以管理帐户的帐单。 通过向其他人提供读取和/或写入权限来获得灵活性。
 
-**在 Azure 门户中直接创建其他订阅** - 只需在 Azure 门户中单击一次即可创建所有订阅。
+**在 Azure 门户中直接创建更多订阅** - 只需在 Azure 门户中单次选择即可创建所有订阅。
 
 #### <a name="api-support"></a>API 支持
 
@@ -107,6 +107,57 @@ ms.locfileid: "94965844"
 |[计费帐户 - 列表](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | 在计费帐户 - 列表 API 中，你的旧计费帐户具有 agreementType“MicrosoftOnlineServiceProgram”，而你的新计费帐户具有 agreementType“MicrosoftCustomerAgreement” 。 如果你依赖于 agreementType，请进行更新。 |
 |[发票 - 按计费订阅列出](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | 此 API 将仅返回在更新帐户之前生成的发票。 必须使用[发票 - 按计费订阅列出](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API 才能获取在新计费帐户中生成的发票。 |
 
+## <a name="cost-management-updates-after-account-update"></a>帐户更新后的成本管理更新
+
+更新后的 Microsoft 客户协议 Azure 计费帐户可以让你在 Azure 门户中访问新的和扩展的成本管理经验，这是你的即用即付帐户所没有的。
+
+### <a name="new-capabilities"></a>新功能
+
+Azure 计费帐户提供以下新功能。
+
+#### <a name="new-billing-scopes"></a>新的计费范围
+
+作为已更新帐户的一部分，你在成本管理 + 计费方面有了新的范围。 除了有助于分层组织和开票，它们还是查看多个基础订阅的组合费用的一种方式。 有关计费范围的详细信息，请参阅 [Microsoft 客户协议范围](../costs/understand-work-scopes.md#microsoft-customer-agreement-scopes)。
+
+你还可以访问成本管理 API 以获得更高范围的组合成本视图。 所有使用订阅范围的成本管理 API 仍然可用，只是在架构中进行了一些细微更改。 有关 API 的详细信息，请参阅 [Azure 成本管理 API](/rest/api/cost-management/) 和 [Azure 消耗 API](/rest/api/consumption/)。
+
+#### <a name="cost-allocation"></a>成本分配
+
+使用更新的帐户，你可以使用成本分配功能来分摊组织中共享服务的成本。 有关分配成本的详细信息，请参阅[创建和管理 Azure 成本分配规则](../costs/allocate-costs.md)。
+
+#### <a name="power-bi"></a>Power BI
+
+适用于 Power BI Desktop 的 Azure 成本管理连接器可帮助你构建有关 Azure 使用情况和支出的自定义可视化效果和报表。 连接到更新的帐户后，你可以访问成本和使用情况数据。 有关适用于 Power BI Desktop 的 Azure 成本管理连接器的详细信息，请参阅[在 Power BI Desktop 中使用 Azure 成本管理连接器创建视觉对象和报表](/power-bi/connect-data/desktop-connect-azure-cost-management)。
+
+### <a name="updated-capabilities"></a>更新的功能
+
+Azure 计费帐户提供以下更新的功能。
+
+#### <a name="cost-analysis"></a>成本分析
+
+你可以继续查看和跟踪每月的消耗成本，现在你可以在成本分析中查看预留和市场购买成本。
+
+使用更新的帐户，你将收到适用于所有 Azure 费用的单个发票。 现在，你还拥有一个简化的单个月历视图，可以替换以前的“计费周期”视图。
+
+例如，如果你的旧帐户的计费周期为 11 月 24 日至 12 月 23 日，则升级后的周期将变为 11 月 1 日至 11 月 30 日、12 月 1 日至 12 月 31 日，依此类推。
+
+:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="显示新旧计费周期比较的图像" lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
+
+#### <a name="budgets"></a>预算
+
+现在，你可以为计费帐户创建预算，从而可以跨订阅跟踪成本。 也可使用预算来控制购买费用。 有关预算的详细信息，请参阅[创建和管理 Azure 预算](../costs/tutorial-acm-create-budgets.md)。
+
+#### <a name="exports"></a>导出
+
+新的计费帐户提供了改进的导出功能。 例如，可以为包括购买或摊销成本（整个购买周期的预留购买成本）的实际成本创建导出。 还可以为计费帐户创建导出，以获取计费帐户中所有订阅的使用情况和费用数据。 若要了解有关导出的详细信息，请参阅[创建和管理导出的数据](../costs/tutorial-export-acm-data.md)。
+
+> [!NOTE]
+> 使用“每月导出上月成本”类型更新帐户之前创建导出，将导出上一个日历月的数据，而不是上一个计费周期的数据。
+
+例如，对于从 12 月 23 日到 1 月 22 日的计费周期，导出的 CSV 文件将包含该周期的成本和使用情况数据。 更新后，导出将包含该日历月的数据。 例如，1 月 1 日至 1 月 31 日，以此类推。
+
+:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="显示新旧导出详细信息比较的图像" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
+
 ## <a name="additional-information"></a>其他信息
 
 以下部分提供有关新体验的其他信息。
@@ -117,7 +168,7 @@ ms.locfileid: "94965844"
 
 **过去的发票在新体验中可用** 更新帐户前生成的发票在 Azure 门户中仍然可用。
 
-**月中更新帐户的发票** 如果你的帐户在月中更新，则你将收到一张显示累计到帐户更新当天为止的费用的发票。 你将在该月的剩余时间内收到另一张发票。 例如，你的帐户有一个订阅，该订阅在 9 月 15 日更新。 你将收到一张显示累计到 9 月 15 日为止的费用的发票。 你将在 9 月 15 日到 9 月 30 日之间收到另一张发票。 9 月份以后，你每月均会收到一张发票。
+**月中更新帐户的发票** 如果你的帐户在月中更新，则你将收到一张显示累计到帐户更新当天为止的费用的发票。 你将收到另一张发票，其中包含该月的剩余时间内产生的费用。 例如，你的帐户有一个订阅，该订阅在 9 月 15 日更新。 你将收到一张显示累计到 9 月 15 日为止的费用的发票。 你将在 9 月 15 日到 9 月 30 日之间收到另一张发票。 9 月份以后，你每月均会收到一张发票。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 

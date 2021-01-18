@@ -8,23 +8,23 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: d1dc843ff676429f202c0b9077057d067294f738
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6996fdd9dce4314e9365177815d7d310ac80c7cb
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076158"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046067"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>快速入门：向 Azure Functions 应用添加功能标志
 
-在本快速入门中，你将使用 Azure 应用程序配置在 Azure Functions 应用中创建功能管理的实现。 你将使用应用程序配置服务集中存储所有功能标志并控制其状态。 
+在该快速入门中，你将创建一个 Azure Functions 应用并在其中使用功能标志。 可使用 Azure 应用程序配置中的功能管理集中存储所有功能标志并控制其状态。
 
 .NET 功能管理库使用功能标志支持扩展该框架。 这些库在 .NET 配置系统的基础上构建。 它们通过其 .NET 配置提供程序与应用程序配置集成。
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-- 包含 **Azure 开发**工作负载的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
+- 包含 **Azure 开发** 工作负载的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
 - [Azure Functions 工具](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
@@ -46,66 +46,113 @@ ms.locfileid: "92076158"
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索以下 NuGet 包并将其添加到项目中  。 查看 `Microsoft.Extensions.DependencyInjection`，验证你是否在使用最新的稳定版本。 
+此项目将[ .NET Azure Functions 中使用依赖项注入](/azure/azure-functions/functions-dotnet-dependency-injection)。 它将 Azure 应用程序配置添加为存储功能标志的额外配置源。
 
-    ```
-    Microsoft.Extensions.DependencyInjection
-    Microsoft.Extensions.Configuration
-    Microsoft.FeatureManagement
-    ```
+1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索以下 NuGet 包并将其添加到项目中。
+   - [Microsoft.Extensions.Configuration.AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) 版本 4.1.0 或更高版本
+   - [Microsoft.FeatureManagement](https://www.nuget.org/packages/Microsoft.FeatureManagement/) 版本 2.2.0 或更高版本
+   - [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) 版本 1.1.0 或更高版本 
 
-
-1. 打开 Function1.cs，并添加这些包的命名空间。
+2. 使用以下代码添加新文件 Startup.cs。 它定义了一个名为 `Startup` 的类，该类实现了 `FunctionsStartup` 抽象类。 程序集属性用于指定 Azure Functions 启动期间使用的类型名称。
 
     ```csharp
+    using System;
+    using Microsoft.Azure.Functions.Extensions.DependencyInjection;
     using Microsoft.Extensions.Configuration;
     using Microsoft.FeatureManagement;
-    using Microsoft.Extensions.DependencyInjection;
-    ```
 
-1. 添加下面的 `Function1` 静态构造函数，启动 Azure 应用程序配置提供程序。 接下来，添加两个 `static` 成员：一个名为 `ServiceProvider` 的字段用于创建 `ServiceProvider` 的单一实例，一个在 `Function1` 下名为 `FeatureManager` 的属性用于创建 `IFeatureManager` 的单一实例。 然后，通过调用 `AddAzureAppConfiguration()` 连接到 `Function1` 中的应用程序配置。 此过程将在应用程序启动时加载配置。 同一配置实例稍后将用于所有 Functions 调用。 
+    [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
 
-    ```csharp
-        // Implements IDisposable, cached for life time of function
-        private static ServiceProvider ServiceProvider; 
-
-        static Function1()
+    namespace FunctionApp
+    {
+        class Startup : FunctionsStartup
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddAzureAppConfiguration(options =>
-                {
-                    options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
-                           .UseFeatureFlags();
-                }).Build();
+            public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+            {
+            }
 
-            var services = new ServiceCollection();                                                                             
-            services.AddSingleton<IConfiguration>(configuration).AddFeatureManagement();
-
-            ServiceProvider = services.BuildServiceProvider(); 
+            public override void Configure(IFunctionsHostBuilder builder)
+            {
+            }
         }
-
-        private static IFeatureManager FeatureManager => ServiceProvider.GetRequiredService<IFeatureManager>();
+    }
     ```
 
-1. 更新 `Run` 方法，根据功能标志的状态更改显示的消息的值。
+
+3. 更新 `ConfigureAppConfiguration` 方法，并通过调用 `AddAzureAppConfiguration()` 将 Azure 应用程序配置提供程序添加为额外的配置源。 
+
+   `UseFeatureFlags()` 方法告知提供程序加载功能标志。 在重新检查更改之前，所有功能标志的默认缓存过期时间为 30 秒。 可以通过设置传递给 `UseFeatureFlags` 方法的 `FeatureFlagsOptions.CacheExpirationInterval` 属性来更新过期时间间隔。 
 
     ```csharp
-        [FunctionName("Function1")]
-        public static async Task<IActionResult> Run(
-                [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-                ILogger log)
-            {
-                string message = await FeatureManager.IsEnabledAsync("Beta")
-                     ? "The Feature Flag 'Beta' is turned ON"
-                     : "The Feature Flag 'Beta' is turned OFF";
-                
-                return (ActionResult)new OkObjectResult(message); 
-            }
+    public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+    {
+        builder.ConfigurationBuilder.AddAzureAppConfiguration(options =>
+        {
+            options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
+                   .Select("_")
+                   .UseFeatureFlags();
+        });
+    }
+    ```
+   > [!TIP]
+   > 如果不想将除功能标志以外的任何配置加载到应用程序中，可以调用 `Select("_")` 只加载不存在的伪键“_”。 默认情况下，如果未调用 `Select` 方法，则将加载应用程序配置存储中的所有配置键值。
+
+4. 更新 `Configure` 方法，通过依赖项注入使 Azure 应用程序配置服务和功能管理器可用。
+
+    ```csharp
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        builder.Services.AddAzureAppConfiguration();
+        builder.Services.AddFeatureManagement();
+    }
+    ```
+
+5. 打开 Function1.cs，并添加以下命名空间。
+
+    ```csharp
+    using System.Linq;
+    using Microsoft.FeatureManagement;
+    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
+
+   添加一个构造函数，用于通过依赖项注入获得 `_featureManagerSnapshot` 和 `IConfigurationRefresherProvider` 实例。 在 `IConfigurationRefresherProvider` 中，你可以获得 `IConfigurationRefresher` 的实例。
+
+    ```csharp
+    private readonly IFeatureManagerSnapshot _featureManagerSnapshot;
+    private readonly IConfigurationRefresher _configurationRefresher;
+
+    public Function1(IFeatureManagerSnapshot featureManagerSnapshot, IConfigurationRefresherProvider refresherProvider)
+    {
+        _featureManagerSnapshot = featureManagerSnapshot;
+        _configurationRefresher = refresherProvider.Refreshers.First();
+    }
+    ```
+
+6. 更新 `Run` 方法，根据功能标志的状态更改显示的消息的值。
+
+   在函数调用开始时调用 `TryRefreshAsync` 方法以刷新功能标志。 如果未到达缓存过期时间范围，则将是一个 no-op 操作。 如果希望在不阻止当前函数调用的情况下刷新功能标志，请删除 `await` 运算符。 在这种情况下，以后的函数调用将获得更新的值。
+
+    ```csharp
+    [FunctionName("Function1")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+        ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
+
+        await _configurationRefresher.TryRefreshAsync();
+
+        string message = await _featureManagerSnapshot.IsEnabledAsync("Beta")
+                ? "The Feature Flag 'Beta' is turned ON"
+                : "The Feature Flag 'Beta' is turned OFF";
+
+        return (ActionResult)new OkObjectResult(message);
+    }
     ```
 
 ## <a name="test-the-function-locally"></a>在本地测试函数
 
-1. 设置一个名为 ConnectionString 的环境变量，其中值是之前在“访问密钥”下的应用程序配置存储中检索到的访问密钥 。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
+1. 设置一个名为 ConnectionString 的环境变量，其中值是之前在“访问密钥”下的应用程序配置存储中检索到的连接字符串 。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
     ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
@@ -133,15 +180,16 @@ ms.locfileid: "92076158"
 
     ![已禁用快速入门函数功能标志](./media/quickstarts/functions-launch-ff-disabled.png)
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 选择“所有资源”，然后选择你创建的应用程序配置存储区实例。
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择“所有资源”，然后选择你创建的应用程序配置存储区。
 
-1. 选择“功能管理器”，将“Beta”密钥的状态更改为“启用”。   
+1. 选择“功能管理器”，将“Beta”密钥的状态更改为“启用”。
 
-1. 回到命令提示符，按 `Ctrl-C` 取消正在运行的进程。  按 F5 重启应用程序。 
-
-1. 按照步骤 3 中相同的流程，从 Azure Functions 运行时输出复制函数的 URL。 将 HTTP 请求的 URL 粘贴到浏览器的地址栏。 浏览器响应应该已更改，它现指示功能标志 `Beta` 已打开，如下图所示。
+1. 多次刷新浏览器。 当缓存的功能标志在 30 秒后过期时，页面应该已经更改，以指示功能标志 `Beta` 已打开，如下图所示。
  
     ![已启用快速入门函数功能标志](./media/quickstarts/functions-launch-ff-enabled.png)
+
+> [!NOTE]
+> 本教程中使用的示例代码可从 [Azure 应用程序配置 GitHub 存储库](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction)下载。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -149,8 +197,10 @@ ms.locfileid: "92076158"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个功能标志，并通过[应用程序配置提供程序](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)将它用于 Azure Functions 应用。
+在本快速入门中，你创建了一个功能标志，并通过 [Microsoft.FeatureManagement](/dotnet/api/microsoft.featuremanagement) 库将它用于 Azure Functions 应用。
 
-- 详细了解[功能管理](./concept-feature-management.md)。
-- [管理功能标志](./manage-feature-flags.md)。
+- 详细了解[功能管理](./concept-feature-management.md)
+- [管理功能标志](./manage-feature-flags.md)
+- [使用条件功能标志](./howto-feature-filters-aspnet-core.md)
+- [为目标受众启用分阶段推出功能](./howto-targetingfilter-aspnet-core.md)
 - [在 Azure Functions 应用中使用动态配置](./enable-dynamic-configuration-azure-functions-csharp.md)

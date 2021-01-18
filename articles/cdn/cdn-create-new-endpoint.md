@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: af90166b688dee104e7bda18a88a2fe7c98f657b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7a3c4bc2a0445a2821e212986b495993695652a6
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82996272"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165920"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>快速入门：创建 Azure CDN 配置文件和终结点
 
@@ -68,7 +68,7 @@ ms.locfileid: "82996272"
     
    ![CDN 终结点](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
-   终结点传播所用的时间取决于创建配置文件时选择的定价层。 “标准 Akamai”通常在一分钟内完成，“标准 Microsoft”通常在 10 分钟内完成，“标准 Verizon”和“高级 Verizon”通常在 90 分钟内完成。
+   终结点传播所用的时间取决于创建配置文件时选择的定价层。 “标准 Akamai”通常在一分钟内完成，“标准 Microsoft”通常在 10 分钟内完成，“标准 Verizon”和“高级 Verizon”通常在 30 分钟内完成   。
 
 ## <a name="clean-up-resources"></a>清理资源
 

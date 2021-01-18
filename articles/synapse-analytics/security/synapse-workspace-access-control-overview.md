@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 256fec97819cde0f6f62d59b34416c92e1edfd20
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 30cc917e2db3a7c4c6d5d6ebd5a8a47afff5d505
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109600"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133134"
 ---
 # <a name="synapse-access-control"></a>Synapse 访问控制 
 
@@ -30,7 +30,7 @@ Synapse 提供全面且精细的访问控制系统，该系统集成：
 
 Synapse 角色提供可应用于不同范围的权限集。 这种粒度使得向管理员、开发人员、安全人员和操作员授予适当的访问权限以计算资源和数据变得容易。
 
-通过使用符合人员的工作角色的安全组，可以简化访问控制。  只需从适当的安全组添加和删除用户即可管理访问权限。
+通过使用符合人员的工作角色的安全组，可以简化访问控制。 只需从适当的安全组添加和删除用户即可管理访问权限。
 
 ## <a name="access-control-elements"></a>访问控制元素
 
@@ -41,16 +41,16 @@ Azure 角色用于控制对以下项的管理：
 - Apache Spark 池和 
 - 集成运行时。 
 
-若要创建这些资源，需要成为资源组的 Azure 所有者或参与者。  若要在资源创建后对其进行管理，需要成为资源组或单个资源的 Azure 所有者或参与者。 
+若要创建这些资源，需要成为资源组的 Azure 所有者或参与者。 若要在资源创建后对其进行管理，需要成为资源组或单个资源的 Azure 所有者或参与者。 
 
 ### <a name="developing-and-executing-code-in-synapse"></a>在 Synapse 中开发和执行代码 
 
 Synapse 支持两种开发模型。
 
-- Synapse 实时开发。  在 Synapse Studio 中开发和调试代码，然后发布代码以保存和执行。  Synapse 服务是代码编辑和执行的事实来源。  关闭 Synapse Studio 时，任何未发布的工作将丢失。  
-- 启用 Git 的开发。 在 Synapse Studio 中开发和调试代码，并提交对 Git 存储库的工作分支的更改。 一个或多个分支的工作会集成到协作分支中，从该分支将工作发布到服务。  Git 存储库是代码编辑的事实来源，而服务是执行的事实来源。 必须在关闭 Synapse Studio 前，将更改提交到 Git 存储库或发布到服务。 [详细了解](https://go.microsoft.com/fwlink/?linkid=2150100)如何将 Synapse Analytics 和 Git 结合使用。
+- Synapse 实时开发。 在 Synapse Studio 中开发和调试代码，然后发布代码以保存和执行。  Synapse 服务是代码编辑和执行的事实来源。  关闭 Synapse Studio 时，任何未发布的工作将丢失。  
+- 启用 Git 的开发。 在 Synapse Studio 中开发和调试代码，并提交对 Git 存储库的工作分支的更改。 一个或多个分支的工作会集成到协作分支中，从该分支将工作发布到服务。 Git 存储库是代码编辑的事实来源，而服务是执行的事实来源。 必须在关闭 Synapse Studio 前，将更改提交到 Git 存储库或发布到服务。 [详细了解](../cicd/continuous-integration-deployment.md)如何将 Synapse Analytics 和 Git 结合使用。
 
-在这两种开发模型中，任何有权访问 Synapse Studio 的用户都可以创建代码项目。  但是，你需要其他权限来将项目发布到服务、读取已发布的项目、向 Git 提交更改、执行代码以及访问受凭据保护的关联数据。
+在这两种开发模型中，任何有权访问 Synapse Studio 的用户都可以创建代码项目。 但是，你需要其他权限来将项目发布到服务、读取已发布的项目、向 Git 提交更改、执行代码以及访问受凭据保护的关联数据。
 
 ### <a name="synapse-roles"></a>Synapse 角色
 
@@ -72,7 +72,7 @@ Synapse 角色可以在工作区范围内或在更精细的范围内分配，以
 
 使用专用和无服务器 SQL 池时，使用 SQL 权限控制数据平面访问。 
 
-工作区的创建者被指定为工作区上的“Active Directory 管理员”。  创建后，可以将此角色分配给其他用户或 Azure 门户中的安全组。
+工作区的创建者被指定为工作区上的“Active Directory 管理员”。 创建后，可以将此角色分配给其他用户或 Azure 门户中的安全组。
 
 **无服务器 SQL 池**：Synapse 管理员已被授予对无服务器 SQL 池“Built-in”的 `db_owner` (`DBO`) 权限。 若要授予其他用户访问无服务器 SQL 池的权限，Synapse 管理员需要在每个无服务器池上运行 SQL 脚本。  
 
@@ -82,7 +82,7 @@ Synapse 角色可以在工作区范围内或在更精细的范围内分配，以
 
  ### <a name="accessing-system-managed-data-in-storage"></a>访问存储中系统管理的数据
 
-无服务器 SQL 池和 Apache Spark 表将其数据存储在与工作区关联的 ADLS Gen2 容器中。用户安装的 Apache Spark 库也在同一存储帐户中进行管理。  若要启用这些用例，必须授予用户和工作区 MSI 对此工作区 ADLS Gen2 存储容器的存储 Blob 数据参与者访问权限。  
+无服务器 SQL 池和 Apache Spark 表将其数据存储在与工作区关联的 ADLS Gen2 容器中。 用户安装的 Apache Spark 库也由同一存储帐户进行管理。 若要启用这些用例，必须授予用户和工作区 MSI 对此工作区 ADLS Gen2 存储容器的存储 Blob 数据参与者访问权限。  
 
 ## <a name="using-security-groups-as-a-best-practice"></a>将安全组用作最佳做法
 
@@ -97,9 +97,9 @@ Synapse Studio 将根据你的权限和当前模式以不同的方式运行：
 - Synapse 实时模式：Synapse Studio 将阻止你查看已发布的内容、发布内容或采取其他操作（如果你没有所需的权限）。  在某些情况下，它会阻止你创建无法使用或保存的代码项目。 
 - Git 模式：如果你具有允许将更改提交到当前分支的 Git 权限，则即使你没有权限将更改发布到实时服务，提交操作也会被允许。  
 
-在某些情况下，即使没有发布或提交权限，也允许创建代码项目。  这允许你执行代码（通过使用所需的执行权限）[详细了解](./synapse-workspace-understand-what-role-you-need.md)常见任务所需的角色。 
+在某些情况下，即使没有发布或提交权限，也允许创建代码项目。 这允许你执行代码（具有所需的执行权限）。 [详细了解](./synapse-workspace-understand-what-role-you-need.md)常见任务所需的角色。 
 
-如果某项功能在 Synapse Studio 中被禁用，工具提示将指示所需的权限。  使用 [Synapse RBAC 角色指南](./synapse-workspace-synapse-rbac-roles.md#synapse-rbac-actions-and-the-roles-that-permit-them)查找提供缺少的权限所需的角色。
+如果某项功能在 Synapse Studio 中被禁用，工具提示将指示所需的权限。 使用 [Synapse RBAC 角色指南](./synapse-workspace-synapse-rbac-roles.md#synapse-rbac-actions-and-the-roles-that-permit-them)查找提供缺少的权限所需的角色。
 
 
 ## <a name="next-steps"></a>后续步骤

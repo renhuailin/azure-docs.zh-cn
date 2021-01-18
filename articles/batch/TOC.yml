@@ -223,14 +223,12 @@
           items:
             - name: 使用 Azure 进行渲染
               href: batch-rendering-service.md
-            - name: 渲染 VM 映像
+            - name: Batch 渲染 VM 映像
               href: batch-rendering-applications.md
             - name: Batch 渲染功能
               href: batch-rendering-functionality.md
             - name: 使用 Batch 渲染
               href: batch-rendering-using.md
-            - name: 使用渲染器管理器
-              href: batch-rendering-render-managers.md
             - name: 渲染应用程序参考
               href: batch-rendering-application-reference.md
             - name: 存储和数据移动

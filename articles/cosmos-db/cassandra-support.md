@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 8c51450fb6ce5c381784e6aaf9b1a66c3c4ff153
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 771cf97a5c938fb987c66555c92c23f42b302a10
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188541"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134222"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -84,10 +84,11 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
 | 标记 * | 是 |
 | ttl | 是 |
 | writetime | 是 |
-| 强制转换 | 否 |
+| cast ** | 是 |
 
-> [!NOTE]
-> \* Cassandra API 支持作为投影/选择器的标记，但只允许在 where 子句的左侧使用标记(pk)。 例如，支持 `WHERE token(pk) > 1024`，但不支持 `WHERE token(pk) > token(100)`。
+> [!NOTE] 
+> \* Cassandra API 支持作为投影/选择器的标记，但只允许在 where 子句的左侧使用标记(pk)。 例如，支持 `WHERE token(pk) > 1024`，但不支持 `WHERE token(pk) > token(100)`。  
+> \*\* `cast()` 函数不可嵌套在 Cassandra API 中。 例如，支持 `SELECT cast(count as double) FROM myTable`，但不支持 `SELECT avg(cast(count as double)) FROM myTable`。
 
 
 
@@ -95,7 +96,7 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
 
 |Command  |支持 |
 |---------|---------|
-| avg | 是 |
+| 平均值 | 是 |
 | count | 是 |
 | min | 是 |
 | max | 是 |
@@ -183,6 +184,30 @@ Azure Cosmos DB 在 Cassandra API 帐户上支持以下数据库命令。
 | UPDATE（使用 IF 条件的轻型事务）| 否 |
 | TRUNCATE | 否 |
 | USE | 是 |
+
+## <a name="cql-shell-commands"></a>CQL Shell 命令
+
+Azure Cosmos DB 在 Cassandra API 帐户上支持以下数据库命令。
+
+|Command  |支持 |
+|---------|---------|
+| 捕获 | 是 |
+| CLEAR | 是 |
+| CONSISTENCY * | 不适用 |
+| 复制 | 否 |
+| DESCRIBE | 是 |
+| cqlshExpand | 否 |
+| EXIT | 是 |
+| LOGIN | 不适用（不支持 CQL 函数 `USER`，因此 `LOGIN` 是冗余的） |
+| PAGING | 是 |
+| SERIAL CONSISTENCY * | 不适用 |
+| SHOW | 是 |
+| 源 | 是 |
+| TRACING | 不适用（Cassandra API 由 Azure Cosmos DB 提供支持 - 使用[诊断日志记录](cosmosdb-monitor-resource-logs.md)进行故障排除） |
+
+> [!NOTE] 
+> \* 一致性在 Azure Cosmos DB 中的工作方式不同，请参阅[此处](cassandra-consistency.md)获取详细信息。  
+
 
 ## <a name="json-support"></a>JSON 支持
 |Command  |支持 |
