@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: sideeksh
-ms.openlocfilehash: 599ad76f38833e06cc458fd0687921e6975e190b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f63021275574e294fa372357d6e62724f5efe0f7
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426361"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541184"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>自定义目标 Azure VM 的网络配置
 
@@ -44,7 +44,7 @@ ms.locfileid: "89426361"
 
      ![自定义故障转移网络配置](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. 选择一个测试故障转移虚拟网络。 你可以选择将其留空，并在测试故障转移时选择一个。
+4. 选择一个测试故障转移虚拟网络。
 5. 选择要配置的 NIC 旁边的“编辑”。  在接下来打开的边栏选项卡中，在测试故障转移和故障转移位置中选择已预先创建的相应资源。
 
     ![编辑 NIC 配置](media/azure-to-azure-customize-networking/nic-drilldown.png) 
@@ -69,7 +69,7 @@ ms.locfileid: "89426361"
 - 负载均衡器与目标 VM 应当具有相同的订阅和区域。
 - 与内部负载均衡器关联的虚拟网络应当与目标 VM 的虚拟网络相同。
 - 目标 VM 的公共 IP SKU 和内部负载均衡器的 SKU 应相同。
-- 如果将目标 VM 配置为放入可用性区域，请检查负载均衡器是区域冗余的还是任何可用性区域的一部分。 （基本 SKU 负载均衡器不支持区域，因此在这种情况下不会显示在下拉列表中。）
+- 如果将目标 VM 配置为放入可用性区域，请检查负载均衡器是区域冗余的还是任何可用性区域的一部分。  (基本 SKU 负载均衡器不支持区域，并且在此情况下下拉列表中不会显示。 ) 
 - 请确保内部负载均衡器上具有已预先创建的后端池和前端配置。
 
 公共 IP 地址：

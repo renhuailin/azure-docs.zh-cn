@@ -4,12 +4,12 @@ description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: e2cbea433d56d4c1290a5d1cdc54b56e81b4cd73
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: f0c7e23e45a84fa73c7e63b5aaa6280177cf8b27
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234318"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541302"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -44,13 +44,13 @@ ms.locfileid: "98234318"
 **地理群集** | **Azure 区域**
 -- | --
 美洲 | 加拿大东部、加拿大中部、美国中南部、美国中西部、美国东部、美国东部 2、美国西部、美国西部 2、美国中部、美国中北部
-欧洲 | 英国西部、英国南部、北欧、西欧、南非西部、南非北部、挪威东部、挪威西部、法国中部、瑞士北部
+欧洲 | 英国西部、英国南部、北欧、西欧、南非西部、南非北部、挪威东部、法国中部、瑞士北部
 亚洲 | 印度南部、印度中部、印度西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部
 澳大利亚    | 澳大利亚东部、澳大利亚东南部、澳大利亚中部、澳大利亚中部 2
 Azure Government    | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚利桑那州、US Gov 德克萨斯州、US DOD 东部、US DOD 中部
 德国    | 德国中部、德国东北部
 中国 | 中国东部、中国北部、中国北部 2、中国东部 2
-受限区域是为国家/地区内部的灾难恢复保留的 |德国北部是为德国中西部保留的，瑞士西部是为瑞士北部保留的，法国南部是为法国中部保留的，阿联酋中部仅限阿联酋北部客户使用
+受限区域是为国家/地区内部的灾难恢复保留的 |德国北部为德国中西部预留瑞士西部，为瑞士北部提供法国南部保留，为法国中部保留，阿拉伯联合酋长国中部阿拉伯联合酋长国北部客户，挪威西部用于挪威东部客户
 
 >[!NOTE]
 >
