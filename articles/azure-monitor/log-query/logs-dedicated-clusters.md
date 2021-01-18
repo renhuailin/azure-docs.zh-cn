@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 34524626cc213233c3db2ca438261b238eb18a2a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 93b05a5535b80d0e0d1a07c88aa9b19052f1b703
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831765"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562669"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
 
@@ -58,7 +58,7 @@ Log Analytics 专用群集使用产能预留定价模型，该模型至少为 10
 
 ## <a name="asynchronous-operations-and-status-check"></a>异步操作和状态检查
 
-某些配置步骤是异步运行的，因为它们无法快速完成。 响应中的状态可以是以下之一： "正在进行"、"更新"、"删除"、"已成功" 或 "失败" （包括错误代码）。 使用 REST 时，响应在被接受时最初返回 HTTP 状态代码 200 (OK) 和包含 Azure-AsyncOperation 属性的标头：
+某些配置步骤是异步运行的，因为它们无法快速完成。 响应中的状态可以是以下之一： "正在进行"、"更新"、"删除"、"已成功" 或 "失败" （包括错误代码）。 使用 REST 时，响应最初返回 HTTP 状态代码 202 (接受 Azure-AsyncOperation 属性的) 和标头：
 
 ```JSON
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
@@ -125,7 +125,7 @@ Content-type: application/json
 
 *响应*
 
-应为 200（正常）和一个标头。
+应为 202 (接受) 和标头。
 
 ### <a name="check-cluster-provisioning-status"></a>检查群集预配状态
 
@@ -229,7 +229,7 @@ Content-type: application/json
 
 *响应*
 
-200 OK 和标头。
+202 (接受) 和标头。
 
 ### <a name="check-workspace-link-status"></a>检查工作区链接状态
   

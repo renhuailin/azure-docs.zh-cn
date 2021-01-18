@@ -7,16 +7,16 @@ ms.author: shhazam
 ms.date: 12/27/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: a763d8b65049cd9f301379c2c038a1d799114653
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 427ea3884a3db6ba33405014435cf1f962670064
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838159"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562703"
 ---
 # <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>在用于 IoT 的 Defender 门户中载入和管理传感器
 
-本文介绍如何在用于 IoT 的 Defender 门户中载入、查看和管理传感器。
+本文介绍如何在 [用于 IoT 的 Defender 门户](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)中载入、查看和管理传感器。
 
 ## <a name="onboard-sensors"></a>加入传感器
 
@@ -26,9 +26,9 @@ ms.locfileid: "97838159"
 
 若要注册，请执行以下操作：
 
-1. 中转到 IoT 门户中的 " **欢迎** " 页。
+1. 中转到 [IoT 门户](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)中的 "**欢迎**" 页。
 1. 选择 " **板载传感器**"。
-1. 创建传感器名称。 建议你将安装的传感器的 IP 地址包括为名称的一部分，或者使用易于识别的名称。 这将确保在 IoT 门户的 Azure Defender 中注册名称与传感器控制台中显示的已部署传感器的 IP 之间更轻松地进行跟踪和一致的命名。
+1. 创建传感器名称。 建议你将安装的传感器的 IP 地址包括为名称的一部分，或者使用易于识别的名称。 这将确保在 [IoT 门户](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) 的 Azure Defender 中注册名称与传感器控制台中显示的已部署传感器的 IP 之间更轻松地进行跟踪和一致的命名。
 1. 将传感器与 Azure 订阅相关联。
 1. 使用 **云连接** 的切换器选择传感器管理模式。 如果开启切换，则传感器连接到云。 如果切换功能处于关闭状态，则传感器为本地管理。
 
@@ -52,7 +52,7 @@ ms.locfileid: "97838159"
 
 ## <a name="view-onboarded-sensors"></a>查看载入传感器
 
-在 IoT 门户上，可以查看有关载入传感器的基本信息。 
+在 [IoT 门户](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)上，可以查看有关载入传感器的基本信息。 
 
 1. 选择 **站点和传感器**。
 1. 在 " **站点和传感器** " 页上，使用筛选器和搜索工具查找所需的传感器信息。
@@ -66,7 +66,7 @@ ms.locfileid: "97838159"
 
 ## <a name="manage-onboarded-sensors"></a>管理载入传感器
 
-将 Defender 用于 IoT 门户，用于管理与传感器相关的任务。
+将 [Defender 用于 IoT 门户](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) ，用于管理与传感器相关的任务。
 
 ### <a name="export"></a>导出
 
@@ -89,7 +89,7 @@ ms.locfileid: "97838159"
 
 你可能想要更新传感器的管理模式。 例如：
 
-- **在云连接模式下工作，而不是本地托管模式**：若要执行此操作，请使用云连接传感器的激活文件更新本地连接的传感器的激活文件。 重新激活后，传感器检测会同时显示在传感器和 Defender 的 IoT 门户中。 成功上传重新激活文件后，会将新检测到的警报信息发送到 Azure。
+- **在云连接模式下工作，而不是本地托管模式**：若要执行此操作，请使用云连接传感器的激活文件更新本地连接的传感器的激活文件。 重新激活后，传感器检测会同时显示在传感器和 [Defender 的 IoT 门户](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)中。 成功上传重新激活文件后，会将新检测到的警报信息发送到 Azure。
 
 - **在本地连接模式下工作，而不是以云连接模式工作**：若要执行此操作，请使用本地托管传感器的激活文件更新与云连接的传感器的激活文件。 重新激活后，传感器检测信息只显示在传感器中。
 
@@ -97,7 +97,7 @@ ms.locfileid: "97838159"
 
 重新激活传感器：
 
-1. 在 IoT 门户的 Defender 上，请参阅 **站点和传感器** 页面。
+1. 在 [IoT 门户的 Defender](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)上，请参阅 **站点和传感器** 页面。
 
 2. 选择要为其上传新的激活文件的传感器。
 
@@ -119,4 +119,4 @@ ms.locfileid: "97838159"
 
 ## <a name="see-also"></a>另请参阅
 
-[激活并设置传感器](how-to-activate-and-set-up-your-sensor.md)
+[激活和设置传感器](how-to-activate-and-set-up-your-sensor.md)

@@ -4,12 +4,12 @@ description: 本文介绍了使用 Azure 备份来备份 Azure VM 上的 SAP HAN
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7f287206c40e4556db2ee4b38bb46ef8e5352102
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 5065f4cf3d9ab75c6e3b682b6a24387ce7449b0f
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072184"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562652"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>针对备份 Azure VM 上的 SAP HANA 数据库的支持矩阵
 
@@ -24,8 +24,8 @@ Azure 备份支持将 SAP HANA 数据库备份到 Azure。 本文总结了在使
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **拓扑**               | 仅在 Azure Linux VM 中运行的 SAP HANA                    | HANA 大型实例 (HLI)                                   |
 | **区域**                   | **GA：**<br> **美洲** - 美国中部、美国东部 2、美国东部、美国中北部、美国中南部、美国西部 2、美国中西部、美国西部、加拿大中部、加拿大东部、巴西南部 <br> **亚太** - 澳大利亚中部、澳大利亚中部 2、澳大利亚东部、澳大利亚东南部、日本东部、日本西部、韩国中部、韩国南部、东亚、东南亚、印度中部、印度南部、印度西部、中国东部、中国北部、中国东部 2、中国北部 2 <br> **欧洲** –西欧、北欧、法国中部、英国南部、英国西部、德国北部、德国中西部、瑞士北部、瑞士西部、集中瑞士北部、挪威东部、挪威西部 <br> **非洲/ME** - 南非北部、南非西部、阿拉伯联合酋长国北部、阿拉伯联合酋长国中部  <BR>  **Azure 政府区域** | 法国南部、德国中部、德国东北部、US Gov 爱荷华州 |
-| **OS 版本**            | SLES 12 SP2、SP3、SP4 和 SP5;SLES 15 with SP0、SP1、SP2 <br><br>  自 2020 年 8 月 1 日起，适用于 RHEL 的 SAP HANA 备份（7.4、7.6、7.7 和 8.1）已正式发布。                |                                             |
-| **HANA 版本**          | SDC on HANA 1.x、MDC on HANA 2.x <= SPS04 Rev 48、SPS05（尚未对启用了加密的方案进行验证）      |                                                            |
+| **OS 版本**            | 带 SP2、SP3、SP4 和 SP5 的 SLES 12；带 SP0、SP1 和 SP2 的 SLES 15 <br><br>  自 2020 年 8 月 1 日起，适用于 RHEL 的 SAP HANA 备份（7.4、7.6、7.7 和 8.1）已正式发布。                |                                             |
+| **HANA 版本**          | HANA 1.x 上的 SDC，HANA 2.x 上的 MDC <= SPS04 Rev 53，SPS05 (有待验证启用了加密方案)       |                                                            |
 | **HANA 部署**       | 基于单个 Azure VM 的 SAP HANA - 仅纵向扩展 <br><br> 进行高可用性部署时，两个不同计算机上的两个节点均被视为具有单独数据链的单个节点。               | 横向扩展 <br><br> 在高可用性部署中，备份不会自动故障转移到辅助节点。 应为每个节点单独进行备份配置。                                           |
 | **HANA 实例**         | 单个 Azure VM 上的单个 SAP HANA 实例 - 仅限纵向扩展 | 单个 VM 上的多个 SAP HANA 实例。 一次只能保护这两个实例中的一个。                  |
 | **HANA 数据库类型**    | 1\.x 上的单一数据库容器 (SDC)、2.x 上的多数据库容器 (MDC) | HANA 1.x 中的 MDC                                              |

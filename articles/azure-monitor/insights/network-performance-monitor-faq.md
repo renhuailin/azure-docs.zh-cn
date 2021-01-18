@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: dd6c6248fcdf30350daecaa4857a81447bbdb7a8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 8e26a4d996e4c1767856b3dd98ae318d8992a89b
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280325"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562686"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
@@ -19,7 +19,7 @@ ms.locfileid: "93280325"
 
 本文收集了有关 Azure 中网络性能监视器 (NPM) 的常见问题 (FAQ)
 
-[网络性能监视器](../../networking/network-monitoring-overview.md) 是一种基于云的 [混合网络监视](./network-performance-monitor-performance-monitor.md) 解决方案，它可以帮助你监视网络基础结构中不同点之间的网络性能。 它还可帮助你监视与 [服务和应用程序终结点](./network-performance-monitor-service-connectivity.md) 的网络连接，以及 [监视 Azure ExpressRoute 的性能](./network-performance-monitor-expressroute.md)。 
+[网络性能监视器](../../networking/network-monitoring-overview.md) 是一种基于云的 [混合网络监视](./network-performance-monitor-performance-monitor.md) 解决方案，它可以帮助你监视网络基础结构中不同点之间的网络性能。 它还可以监视到[服务和应用程序终结点](./network-performance-monitor-service-connectivity.md)的网络连接，以及[监视 Azure ExpressRoute 的性能](./network-performance-monitor-expressroute.md)。 
 
 网络性能监视器可检测诸如流量黑洞、路由错误之类的网络问题，以及传统网络监视方法无法检测到的问题。 只要突破网络链接的阈值，解决方案就会生成警报并进行通知。 它还可以确保及时检测到网络性能问题，然后确定问题根源所在的特定网络段或设备。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "93280325"
 - NPM 的 ExpressRoute 监视器功能仅支持 Windows Server（2008 SP1 或更高版本）操作系统。
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>是否可以使用 Linux 计算机作为 NPM 中的监视节点？
-使用基于 Linux 的节点监视网络的功能目前以预览版的形式提供。 在 [此处](../../virtual-machines/extensions/oms-linux.md)Acccess 代理。 请联系客户经理了解详细信息。 Linux 代理仅为 NPM 的性能监视器功能提供监视功能，不适用于服务连接监视器和 ExpressRoute 监视器功能
+使用基于 Linux 的节点监视网络的功能现已正式发布。 在 [此处](../../virtual-machines/extensions/oms-linux.md)Acccess 代理。 Linux 代理仅为 NPM 的性能监视器功能提供监视功能，不适用于服务连接监视器和 ExpressRoute 监视器功能
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM 进行监视所用的节点要满足哪些大小要求？
 要在节点 VM 上运行 NPM 解决方案以监视网络，节点应至少有 500 MB 内存和 1 个核心。 运行 NPM 不需要使用单独的节点。 该解决方案可以在运行了其他工作负荷的节点上运行。 在 CPU 使用率超过 5% 的情况下，该解决方案能够停止监视进程。
@@ -54,7 +54,7 @@ ms.locfileid: "93280325"
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>如何将节点配置为支持使用 TCP 协议进行监视？
 要使节点支持使用 TCP 协议进行监视： 
 * 请确保节点平台是 Windows Server（2008 SP1 或更高版本）。
-* 在节点上运行 [EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershell 脚本。 参阅[说明](./network-performance-monitor.md#configure-log-analytics-agents-for-monitoring)了解更多详细信息。
+* 在该节点上运行 [EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershell 脚本。 参阅[说明](./network-performance-monitor.md#configure-log-analytics-agents-for-monitoring)了解更多详细信息。
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>如何更改 NPM 用来监视的 TCP 端口？
@@ -95,7 +95,7 @@ NPM 使用基于跟踪路由的专属算法来发现源与目标之间的所有�
 NPM 根据每个网络路径、网段和构成网络跃点所属的不正常路径数，使用概率机制向它们分配故障概率。 随着网段和跃点属于越来越多的不正常路径，与之关联的故障概率将会增大。 如果有许多包含 NPM 代理的节点相互连接，因此增加了用于计算故障概率的数据点，则此算法的效果最佳。
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>如何在 NPM 中创建警报？
-由于已知问题，当前从 NPM UI 创建警报失败。 请 [手动创建警报](../platform/alerts-log.md)。
+由于已知问题，当前无法从 NPM UI 创建警报。 请[手动创建警报](../platform/alerts-log.md)。
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>哪个是针对警报的默认 Log Analytics 查询？
 性能监视器查询

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6c1f323828eb48b61b38370bc2fe56d4c93bf036
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127203"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562737"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -95,7 +95,7 @@ Azure Monitor 使用托管标识授予对 Azure Key Vault 的访问权限。 群
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-使用 REST 时，响应在被接受时最初返回 HTTP 状态代码 200 (OK) 和包含 Azure-AsyncOperation 属性的标头：
+使用 REST 时，响应最初返回 HTTP 状态代码 202 (接受的) 和标头与 *AsyncOperation* 属性一起使用：
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
@@ -200,7 +200,7 @@ Content-type: application/json
 1. 从响应中复制 Azure-AsyncOperation URL 值，并进行[异步操作状态检查](#asynchronous-operations-and-status-check)。
 2. 在群集上发送 GET 请求，然后查看 KeyVaultProperties 属性。 你最近更新的密钥应在响应中返回。
 
-完成密钥更新后，对 GET 请求的响应应如下所示： 200 OK 和 header
+完成密钥更新后，对 GET 请求的响应应如下所示： 202 (接受) 和标头
 ```json
 {
   "identity": {

@@ -3,12 +3,12 @@ title: 使用客户托管密钥加密备份数据
 description: 了解 Azure 备份如何允许使用客户管理的密钥加密备份数据， (CMK) 。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: cc6ad2f67b84bcd62bcc18566a4ac5d159ea32c4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197726"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562754"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
 
@@ -37,7 +37,10 @@ Azure 备份允许使用客户管理的密钥加密备份数据， (CMK) ，而�
 
 - 当前不支持跨资源组和订阅移动 CMK 加密恢复服务保管库。
 
-- 此功能当前仅可通过 Azure 门户进行配置。
+- 此功能可通过 Azure 门户和 PowerShell 进行配置。
+
+    >[!NOTE]
+    >使用 Az module 5.3.0 或更高版本，在恢复服务保管库中使用客户托管密钥进行备份。
 
 如果尚未创建和配置恢复服务保管库，则可以在 [此处阅读](backup-create-rs-vault.md)此内容。
 
@@ -62,6 +65,8 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 >[!NOTE]
 >启用后， **不** 能 (禁用托管标识，即使暂时) 也是如此。 禁用托管标识可能导致出现不一致的行为。
 
+**在门户中：**
+
 1. 请参阅恢复服务保管库-> **标识**
 
     ![标识设置](./media/encryption-at-rest-with-cmk/managed-identity.png)
@@ -70,9 +75,33 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 1. 系统将生成一个对象 ID，该 ID 是保管库的系统分配的托管标识。
 
+**对于 PowerShell：**
+
+使用 [AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) 命令对恢复服务保管库启用系统分配的托管标识。
+
+示例：
+
+```AzurePowerShell
+$vault=Get-AzRecoveryServicesVault -ResourceGroupName "testrg" -Name "testvault"
+
+Update-AzRecoveryServicesVault -IdentityType SystemAssigned -VaultId $vault.ID
+
+$vault.Identity | fl
+```
+
+输出：
+
+```output
+PrincipalId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Type        : SystemAssigned
+```
+
 ### <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>分配对恢复服务保管库的权限，以访问 Azure Key Vault 中的加密密钥
 
 你现在需要允许恢复服务保管库访问包含加密密钥的 Azure Key Vault。 这是通过允许恢复服务保管库的托管标识访问 Key Vault 来完成的。
+
+**在门户中**：
 
 1. 请访问 Azure Key Vault > **访问策略**。 继续执行 **+ 添加访问策略**。
 
@@ -89,6 +118,32 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 1. 完成后，选择 " **添加** " 以添加新的访问策略。
 
 1. 选择 " **保存** " 以保存对 Azure Key Vault 的访问策略所做的更改。
+
+**对于 PowerShell**：
+
+使用 [AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) 命令启用使用客户托管密钥的加密，并分配或更新要使用的加密密钥。
+
+示例：
+
+```azurepowershell
+$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
+$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
+
+
+$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+$enc.encryptionProperties | fl
+```
+
+输出：
+
+```output
+EncryptionAtRestType          : CustomerManaged
+KeyUri                        : testkey
+SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+LastUpdateStatus              : Succeeded
+InfrastructureEncryptionState : Disabled
+```
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>启用软删除和清除保护 Azure Key Vault
 
@@ -220,6 +275,8 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 #### <a name="select-a-disk-encryption-set-while-restoring-from-vault-recovery-point"></a>从保管库恢复点还原时选择磁盘加密集
 
+**在门户中**：
+
 磁盘加密集在 "还原" 窗格的 "加密设置" 下指定，如下所示：
 
 1. 在 " **使用你的密钥加密磁盘 ()** 中，选择 **" 是 "**。
@@ -230,6 +287,21 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 >如果正在还原使用 Azure 磁盘加密的 VM，则在还原时选择 DES 的功能不可用。
 
 ![使用密钥加密磁盘](./media/encryption-at-rest-with-cmk/encrypt-disk-using-your-key.png)
+
+**对于 PowerShell**：
+
+将 [AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) 命令与参数 [] 结合使用 `-DiskEncryptionSetId <string>` ，以 [指定](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset) 用于对还原的磁盘进行加密的 DES。 有关从 VM 备份还原磁盘的详细信息，请参阅 [此文](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm)。
+
+示例：
+
+```azurepowershell
+$namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $vault.ID
+$backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $vault.ID
+$startDate = (Get-Date).AddDays(-7)
+$endDate = Get-Date
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -VaultId $vault.ID
+$restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -DiskEncryptionSetId “testdes1” -VaultId $vault.ID
+```
 
 #### <a name="restoring-files"></a>还原文件
 

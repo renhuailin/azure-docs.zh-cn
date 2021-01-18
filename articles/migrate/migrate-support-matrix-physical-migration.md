@@ -6,16 +6,16 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: a1203133d8749b43a92d89e7251539a1e002bfd8
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: a3e8b19810a58031b4d11cc6e361215afbc85de2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968562"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562634"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>物理服务器迁移的支持矩阵
 
-本文总结了在 [Azure Migrate：服务器迁移](migrate-services-overview.md#azure-migrate-server-migration-tool) 的情况下迁移物理服务器的支持设置和限制。 如果你正在寻找有关评估要迁移到 Azure 的物理服务器的信息，请查看 [评估支持矩阵](migrate-support-matrix-physical.md)。
+本文汇总了 [Azure Migrate：服务器迁移](migrate-services-overview.md#azure-migrate-server-migration-tool) 将物理服务器迁移到 Azure 的支持设置和限制。 如果你正在寻找有关评估要迁移到 Azure 的物理服务器的信息，请查看 [评估支持矩阵](migrate-support-matrix-physical.md)。
 
 ## <a name="migrating-machines-as-physical"></a>将计算机作为物理计算机迁移
 
@@ -25,7 +25,7 @@ ms.locfileid: "97968562"
 - 虚拟机通过诸如 Xen、KVM 等平台虚拟化。
 - Hyper-v Vm 或 VMware Vm 如果出于某种原因，你不想使用标准 [hyper-v](tutorial-migrate-hyper-v.md) 或 [vmware](server-migrate-overview.md) 流。
 - 在私有云中运行的虚拟机。
-- 在公有云中运行的 Vm （例如 Amazon Web Services (AWS) 或 Google Cloud Platform (GCP) 。
+- 在公有云中运行的 Vm，包括 Amazon Web Services (AWS) 或 Google Cloud Platform (GCP) 。
 
 
 ## <a name="migration-limitations"></a>迁移限制
@@ -57,7 +57,6 @@ ms.locfileid: "97968562"
 **NFS** | 不会复制在计算机上作为卷装载的 NFS 卷。
 **iSCSI 目标** | 无代理迁移不支持具有 iSCSI 目标的计算机。
 **多路径 IO** | 不支持。
-**存储 vMotion** | 支持
 **成组 Nic** | 不支持。
 **IPv6** | 不支持。
 
