@@ -228,7 +228,7 @@
         - name: 磁盘存储预留
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md
         - name: 虚拟机和磁盘性能
-          href: disk-performance-windows.md
+          href: ../disks-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 为实现高性能而设计
           href: ../premium-storage-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 磁盘突发
@@ -655,7 +655,7 @@
                       href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: JSON Lines 资源日志格式
                       href: ../../azure-monitor/platform/resource-logs-blob-format.md
-                    - name: 疑难解答
+                    - name: 故障排除
                       href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Log Analytics 代理
               items:
@@ -814,10 +814,8 @@
           href: snapshot-copy-managed-disk.md
         - name: 预留磁盘存储
           href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: 创建增量快照 - PowerShell
-          href: disks-incremental-snapshots.md
-        - name: 创建增量快照 - 门户
-          href: disks-incremental-snapshots-portal.md
+        - name: 创建增量快照
+          href: ../disks-incremental-snapshots.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 备份非托管磁盘
           href: incremental-snapshots.md
         - name: 加密
@@ -851,7 +849,7 @@
             - name: 使用超级磁盘
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 对磁盘进行基准检验
-              href: disks-benchmarks.md
+              href: ../disks-benchmarks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 查找未附加的磁盘 - PowerShell
           href: find-unattached-disks.md
         - name: 查找未附加的磁盘 - 门户
