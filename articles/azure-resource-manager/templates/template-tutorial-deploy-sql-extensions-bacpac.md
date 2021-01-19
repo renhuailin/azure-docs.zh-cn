@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2d50903f464c03157ee393787af6ddfdad975aed
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1bd9f7408baf40791c31626ea9e87a73c65b999c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588016"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963991"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教程：使用 ARM 模板导入 SQL BACPAC 文件
 
@@ -55,7 +55,7 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 * 将 BACPAC 文件上传到该容器。
 * 显示存储帐户密钥和 blob URL。
 
-1. 选择“试用”以打开 Shell。 然后，将以下 PowerShell 脚本粘贴到 Shell 窗口中。
+1. 选择“试用”以打开 Azure Cloud Shell。 然后，将以下 PowerShell 脚本粘贴到 Shell 窗口中。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"

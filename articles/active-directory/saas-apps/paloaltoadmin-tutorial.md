@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 612576698d9eb40807b90e9d70f401aa6e9b864e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 57b1d47fa40c0af4bced1e4169fe60cd759ee2f3
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92512882"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963632"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>教程：Azure Active Directory 与 Palo Alto Networks - 管理 UI 的集成
 
@@ -72,13 +72,13 @@ ms.locfileid: "92512882"
 
 1. 在 Azure 门户中的“Palo Alto Networks - Admin UI”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<Customer Firewall FQDN>/php/login.php`。
+    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<Customer Firewall FQDN>/php/login.php`。
 
     b. 在“标识符”框中，使用以下模式键入 URL：`https://<Customer Firewall FQDN>:443/SAML20/SP`
 
@@ -163,7 +163,7 @@ ms.locfileid: "92512882"
 
     ![“SAML 标识提供者服务器配置文件导入”窗口](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp.png)
 
-    a. 在“配置文件名称”框中提供一个名称（例如 **AzureAD Admin UI** ）。
+    a. 在“配置文件名称”框中提供一个名称（例如 **AzureAD Admin UI**）。
 
     b. 在“标识提供者元数据”下面选择“浏览”，然后选择前面从 Azure 门户下载的 metadata.xml 文件。 
 
@@ -173,7 +173,7 @@ ms.locfileid: "92512882"
 
     e. 若要提交有关防火墙的配置，请选择“提交”。
 
-5. 在左窗格中选择“SAML 标识提供者”，然后选择在上一步骤中创建的 SAML 标识提供者配置文件（例如 **AzureAD Admin UI** ）。
+5. 在左窗格中选择“SAML 标识提供者”，然后选择在上一步骤中创建的 SAML 标识提供者配置文件（例如 **AzureAD Admin UI**）。
 
     ![SAML 标识提供者配置文件](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
 
@@ -189,7 +189,7 @@ ms.locfileid: "92512882"
 
 8. 选择“添加”按钮。
 
-9. 在“管理员角色配置文件”窗口中的“名称”框内，为管理员角色提供一个名称（例如 **fwadmin** ）。  此管理员角色名称应与标识提供者发送的 SAML 管理员角色属性名称匹配。 管理员角色名称和值是在 Azure 门户中的“用户属性”部分中创建的。
+9. 在“管理员角色配置文件”窗口中的“名称”框内，为管理员角色提供一个名称（例如 **fwadmin**）。  此管理员角色名称应与标识提供者发送的 SAML 管理员角色属性名称匹配。 管理员角色名称和值是在 Azure 门户中的“用户属性”部分中创建的。
 
     ![配置 Palo Alto 网络管理员角色](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
   
@@ -201,15 +201,15 @@ ms.locfileid: "92512882"
 
     ![“身份验证配置文件”窗口](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authentication_profile.png)
 
-    a. 在“名称”框中提供一个名称（例如 **AzureSAML_Admin_AuthProfile** ）。
+    a. 在“名称”框中提供一个名称（例如 **AzureSAML_Admin_AuthProfile**）。
 
     b. 在“类型”下拉列表中选择“SAML”。  
 
-    c. 在“IdP 服务器配置文件”下拉列表中，选择合适的 SAML 标识提供者服务器配置文件（例如 **AzureAD Admin UI** ）。
+    c. 在“IdP 服务器配置文件”下拉列表中，选择合适的 SAML 标识提供者服务器配置文件（例如 **AzureAD Admin UI**）。
 
     c. 选中“启用单一注销”复选框。
 
-    d. 在“管理员角色属性”框中输入属性名称（例如 **adminrole** ）。
+    d. 在“管理员角色属性”框中输入属性名称（例如 **adminrole**）。
 
     e. 选择“高级”选项卡，然后在“允许列表”下面选择“添加”。  
 
@@ -224,7 +224,7 @@ ms.locfileid: "92512882"
 
     ![“设置”按钮](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
 
-14. 选择在“身份验证配置文件”窗口中创建的 SAML 身份验证配置文件（例如 **AzureSAML_Admin_AuthProfile** ）。
+14. 选择在“身份验证配置文件”窗口中创建的 SAML 身份验证配置文件（例如 **AzureSAML_Admin_AuthProfile**）。
 
     ![“身份验证配置文件”字段](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
 
@@ -240,11 +240,11 @@ Palo Alto Networks - Admin UI 支持实时用户预配。 如果用户尚不存�
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Palo Alto Networks - Admin UI 登录 URL，你可以在其中启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Palo Alto Networks - Admin UI 登录 URL，你可以在其中启动登录流。 
 
-2. 直接转到 Palo Alto Networks - Admin UI 登录 URL，并在其中启动登录流。
+* 直接转到 Palo Alto Networks - Admin UI 登录 URL，并在其中启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 单击访问面板中的“Palo Alto Networks - Admin UI”磁贴时，应当会自动登录到已为其设置了 SSO 的 Palo Alto Networks - Admin UI。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Palo Alto Networks - Admin UI”磁贴时，应当会自动登录到已为其设置了 SSO 的 Palo Alto Networks - Admin UI。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

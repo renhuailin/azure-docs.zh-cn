@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3943caba5249432b3a0a4b7c2e63b2b818e2b7a1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575697"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968479"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>教程：准备部署 Azure Stack Edge Pro  
 
@@ -150,11 +150,11 @@ ms.locfileid: "96575697"
 
 在 Azure Stack Edge 资源启动并运行后，你需要获取激活密钥。 此密钥用于激活 Azure Stack Edge Pro 设备并将其连接到资源。 如果你仍在 Azure 门户中，则现在可以获取此密钥。
 
-1. 选择所创建的资源。 选择“概述”，然后选择“设备设置” 。
+1. 转到创建的资源，然后选择“概述”。 你将看到一个通知，指示你的订单正在处理中。
 
-    ![选择“设备设置”](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![选择“概述”](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 
-2. 在“激活”磁贴上，选择“生成密钥”以创建激活密钥。 选择复制图标复制密钥并将其保存供日后使用。
+2. 订单处理完毕并且设备就绪后，“概述”将更新。 接受默认的 Azure Key Vault 名称或输入新名称。 选择“生成激活密钥”。 选择复制图标复制密钥并将其保存供日后使用。
 
     ![获取激活密钥](media/azure-stack-edge-deploy-prep/get-activation-key.png)
 

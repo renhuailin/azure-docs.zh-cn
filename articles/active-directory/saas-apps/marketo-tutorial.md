@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/04/2020
+ms.date: 01/13/2021
 ms.author: jeedes
-ms.openlocfilehash: bd62855aef59439ed476a13770f79ce6d3cf68f8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d4f8e71a0afbb1b00313d5e100ba8b3fd2b4e2ce
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180784"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185744"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>教程：Azure Active Directory 与 Marketo 的集成
 
@@ -40,18 +40,21 @@ ms.locfileid: "96180784"
 
 * Marketo 支持 IDP 发起的 SSO 
 
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
+
 ## <a name="adding-marketo-from-the-gallery"></a>从库中添加 Marketo
 
 要配置 Marketo 与 Azure AD 的集成，需要从库中将 Marketo 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Marketo” 。
 1. 从结果面板中选择“Marketo”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
+## <a name="configure-and-test-azure-ad-sso-for-marketo"></a>配置并测试 Marketo 的 Azure AD SSO
 
 在本部分中，将基于名为“Britta Simon”的测试用户使用 Marketo 配置和测试 Azure AD 单一登录  。
 若要使单一登录有效，需要在 Azure AD 用户与 Marketo 相关用户之间建立链接关系。
@@ -59,10 +62,10 @@ ms.locfileid: "96180784"
 若要配置并测试 Marketo 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD SSO。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使用户 Britta Simon 能够使用 Azure AD SSO。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD SSO。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使用户 Britta Simon 能够使用 Azure AD SSO。
 2. **[配置 Marketo SSO](#configure-marketo-sso)** - 在应用程序端配置 SSO 设置。
-    * **[创建 Marketo 测试用户](#create-marketo-test-user)** - 在 Marketo 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    1. **[创建 Marketo 测试用户](#create-marketo-test-user)** - 在 Marketo 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 3. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -71,20 +74,20 @@ ms.locfileid: "96180784"
 
 1. 在 Azure 门户的“Marketo”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://saml.marketo.com/sp`
+    a. 在“标识符”文本框中键入 URL：`https://saml.marketo.com/sp`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://login.marketo.com/saml/assertion/\<munchkinid\>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://login.marketo.com/saml/assertion/\<munchkinid\>`
 
     c. 在“中继状态”文本框中，使用以下模式键入 URL：`https://<munchkinid>.marketo.com/`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符、回复 URL 和中继状态更新这些值。 请联系 [Marketo 客户端支持团队](https://investors.marketo.com/contactus.cfm)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际回复 URL 和中继状态更新这些值。 请联系 [Marketo 客户端支持团队](https://investors.marketo.com/contactus.cfm)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
@@ -120,7 +123,17 @@ ms.locfileid: "96180784"
 
 ## <a name="configure-marketo-sso"></a>配置 Marketo SSO
 
-1. 若要获取应用程序的 Munchkin ID，请使用管理员凭据登录到 Marketo 并执行以下操作：
+1. 若要在 Marketo 中自动执行配置，需要通过单击“安装扩展”来安装“我的应用安全登录浏览器扩展” 。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 Marketo”，此时会将你定向到 Marketo 应用程序。 在此处，提供管理员凭据以登录到 Marketo。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-6。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 Marketo，请在另一个 Web 浏览器窗口中，以管理员身份登录到 Marketo 公司站点。
+
+1. 若获取应用程序的 Munchkin ID，请执行以下操作：
    
     a. 使用管理员凭据登录到 Marketo 应用。
    
@@ -233,13 +246,13 @@ ms.locfileid: "96180784"
 
 8. 用户将收到电子邮件通知，且必须单击链接并更改密码以激活帐户。 
 
-### <a name="test-sso"></a>测试 SSO 
+### <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-1. 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Marketo
+* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Marketo
 
-1. 可以使用 Microsoft 访问面板。 在访问面板中单击 Marketo 磁贴时，应会自动登录到为其设置了 SSO 的 Marketo。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Marketo 磁贴时，应会自动登录到为其设置了 SSO 的 Marketo。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="next-steps"></a>后续步骤
 

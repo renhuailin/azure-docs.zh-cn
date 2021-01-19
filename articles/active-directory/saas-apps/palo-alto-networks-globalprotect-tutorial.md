@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: a0b76c21ee76731f78ecd7f482472908fe93a9ee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 72072feebfcf8dba249d2045a399e09714177698
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513307"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963666"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Palo Alto Networks - GlobalProtect 的集成
 
@@ -48,7 +48,7 @@ ms.locfileid: "92513307"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
-1. 在“从库中添加”部分的搜索框中，键入 **Palo Alto Networks - GlobalProtect** 。
+1. 在“从库中添加”部分的搜索框中，键入 **Palo Alto Networks - GlobalProtect**。
 1. 在结果面板中选择“Palo Alto Networks - GlobalProtect”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-sso-for-palo-alto-networks---globalprotect"></a>配置并测试 Palo Alto Networks - GlobalProtect 的 Azure AD SSO
@@ -70,20 +70,20 @@ ms.locfileid: "92513307"
 
 1. 在 Azure 门户中的“Palo Alto Networks - GlobalProtect”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<Customer Firewall URL>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<Customer Firewall URL>` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<Customer Firewall URL>/SAML20/SP`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请联系 [Palo Alto Networks - GlobalProtect 客户端支持团队](https://support.paloaltonetworks.com/support)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
@@ -145,11 +145,11 @@ ms.locfileid: "92513307"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Palo Alto Networks - GlobalProtect 登录 URL，你可以在其中启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Palo Alto Networks - GlobalProtect 登录 URL，你可以在其中启动登录流。 
 
-2. 直接转到 Palo Alto Networks - GlobalProtect 登录 URL，并在其中启动登录流。
+* 直接转到 Palo Alto Networks - GlobalProtect 登录 URL，并在其中启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击“Palo Alto Networks - GlobalProtect”磁贴时，应会自动登录到已为其设置了 SSO 的 Palo Alto Networks - GlobalProtect。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Palo Alto Networks - GlobalProtect”磁贴时，应会自动登录到已为其设置了 SSO 的 Palo Alto Networks - GlobalProtect。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

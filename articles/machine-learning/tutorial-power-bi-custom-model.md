@@ -1,7 +1,7 @@
 ---
-title: 教程：使用笔记本创建预测模型（第 1 部分，共 2 部分）
+title: Tutorial:使用 Notebook 创建预测模型（第 1 部分，共 2 部分）
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Jupyter Notebook 中的代码来构建和部署机器学习模型。 你可以使用该模型来预测 Microsoft Power BI 中的结果。
+description: 了解如何使用 Jupyter Notebook 中的代码来构建和部署机器学习模型。 另外，创建一个评分脚本，该脚本定义输入和输出，以便轻松集成到 Microsoft Power BI 中。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 29b340448f3ce3e18a649065bdcd0b335bab8b73
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814765"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108239"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>教程：Power BI 集成 - 使用 Jupyter Notebook 创建预测模型（第 1 部分，共 2 部分）
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>Tutorial:Power BI 集成 - 使用 Jupyter Notebook 创建预测模型（第 1 部分，共 2 部分）
 
-在本教程的第 1 部分中，你将使用 Jupyter Notebook 中的代码训练和部署预测机器学习模型。 在第 2 部分中，你将使用该模型来预测 Microsoft Power BI 中的结果。
+在本教程的第 1 部分中，你将使用 Jupyter Notebook 中的代码训练和部署预测机器学习模型。 你还将创建一个评分脚本，以定义模型的输入和输出架构以集成到 Power BI。  在第 2 部分中，你将使用该模型来预测 Microsoft Power BI 中的结果。
 
 在本教程中，你将了解：
 
@@ -27,6 +27,7 @@ ms.locfileid: "97814765"
 > * 创建 Jupyter Notebook。
 > * 创建 Azure 机器学习计算实例。
 > * 使用 scikit-learn 训练回归模型。
+> * 编写一个评分脚本，该脚本定义输入和输出，以便轻松集成到 Microsoft Power BI 中。
 > * 将模型部署到实时评分终结点。
 
 可以通过三种方法创建和部署要在 Power BI 中使用的模型。  本文介绍“选项 A：使用笔记本训练和部署模型。”  此选项是代码优先的创作体验。 这会使用 Azure 机器学习工作室中托管的 Jupyter Notebook。 
@@ -157,7 +158,7 @@ print('Version:', model.version)
 
 :::image type="content" source="media/tutorial-power-bi/model.png" alt-text="显示如何查看模型的屏幕截图。":::
 
-### <a name="define-the-scoring-script"></a>定义评分脚本
+## <a name="define-the-scoring-script"></a>定义评分脚本
 
 部署要集成到 Power BI 的模型时，需要定义 Python 评分脚本和自定义环境。 评分脚本包含两个函数：
 
@@ -165,7 +166,7 @@ print('Version:', model.version)
 - 当对服务的调用包含需要评分的输入数据时，`run(data)` 函数将运行。 
 
 >[!NOTE]
-> 本文使用 Python 修饰器来定义输入和输出数据的架构。 此设置对于 Power BI 集成非常重要。
+> 下方代码中的 Python 修饰器可定义输入和输出数据的架构，这对于到 Power BI 的集成非常重要。
 
 复制以下代码并将其粘贴到笔记本中的新“代码单元格”。 以下代码片段具有单元格 magic，可将代码写入名为 score.py 的文件中。
 

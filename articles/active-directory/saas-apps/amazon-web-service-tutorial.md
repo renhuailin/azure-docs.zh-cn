@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 237ed71f058ae099f19924481eb4dbeb2e2aba05
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 3db6fd2e6df96590d7d405157cbb33900c7d8531
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589417"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127798"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Amazon Web Services (AWS) 集成
 
@@ -388,7 +388,11 @@ ms.locfileid: "97589417"
 * 角色必须满足以下要求才有资格从 AWS 导入 Azure AD：
 
   * 角色必须仅有一个在 AWS 中定义的 saml-provider
-  * 角色的 ARN（Amazon 资源名称）和关联的 saml-provider 的 ARN 的组合长度必须小于 120 个字符
+  * 角色的 ARN（Amazon 资源名称）和关联的 saml-provider 的 ARN 的组合长度必须小于 240 个字符。
+
+## <a name="change-log"></a>更改日志
+
+* 2020/01/12 - 角色长度限制从 119 个字符增加到 239 个字符。 
 
 ## <a name="next-steps"></a>后续步骤
 

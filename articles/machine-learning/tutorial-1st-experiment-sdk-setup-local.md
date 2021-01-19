@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5df8b478c550522d4602398afd208c1e001c96a2
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 2f33fe4fafbe194238fcfbd4942807ed2fc4d6ff
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883293"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183534"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>教程：在你的开发环境中开始使用 Azure 机器学习（第 1 部分，共 4 部分）
 
@@ -32,30 +32,49 @@ ms.locfileid: "97883293"
 > * 设置计算群集。
 
 > [!NOTE]
-> 本教程系列重点介绍适用于 Python 基于作业的机器学习任务的 Azure 机器学习概念，这些任务是计算密集型的，并且/或者需要可再现性。 如果对探索性工作流更感兴趣，可以改用 [Azure 机器学习计算实例上的 Jupyter 或 RStudio](tutorial-1st-experiment-sdk-setup.md)。
+> 本教程系列重点介绍提交批处理作业所需的 Azure 机器学习概念（在批处理作业中，代码提交到云以在后台运行，而无需任何用户交互）。 这适用于要重复运行的已完成脚本或代码或者计算密集型机器学习任务。 如果对探索性工作流更感兴趣，可以改用 [Azure 机器学习计算实例上的 Jupyter 或 RStudio](tutorial-1st-experiment-sdk-setup.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 尝试 [Azure 机器学习](https://aka.ms/AMLFree)。
-- 熟悉 Python 和[机器学习概念](concept-azure-machine-learning-architecture.md)。 例如，环境、训练，以及评分。
-- 本地开发环境，如 Visual Studio Code、Jupyter 或 PyCharm。
-- Python（版本 3.5 至 3.7）。
-
+- [Anaconda](https://www.anaconda.com/download/) 或 [Miniconda](https://www.anaconda.com/download/)，用于管理 Python 虚拟环境并安装包。
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>安装 Azure 机器学习 SDK
 
-本教程从头到尾都将使用适用于 Python 的 Azure 机器学习 SDK。
+本教程从头到尾都将使用适用于 Python 的 Azure 机器学习 SDK。 为了避免 Python 依赖项问题，你将创建一个隔离的环境。 本教程系列使用 Conda 创建该环境。 如果你希望使用其他解决方案（如 `venv`、`virtualenv` 或 docker），请确保使用的 Python 版本 >=3.5 且 < 3.9。
 
-你可以使用自己最熟悉的工具（例如 Conda 和 pip）设置 Python 环境，以便在本教程中使用。 通过 pip 将适用于 Python 的 Azure 机器学习 SDK 安装到 Python 环境中：
+检查系统是否安装了 Conda：
+    
+```bash
+conda --version
+```
+    
+如果此命令返回 `conda not found` 错误，则[下载并安装 Miniconda](https://docs.conda.io/en/latest/miniconda.html)。 
+
+安装 Conda 后，使用终端或 Anaconda 提示符窗口创建新环境：
 
 ```bash
-pip install azureml-sdk
+conda create -n tutorial python=3.8
 ```
+
+接下来，将 Azure 机器学习 SDK 安装到已创建的 conda 环境中：
+
+```bash
+conda activate tutorial
+pip install azureml-core
+```
+    
+> [!NOTE]
+> 完成 Azure 机器学习 SDK 安装大约需要 2 分钟。
+>
+> 如果遇到超时错误，请改为尝试 `pip install --default-timeout=100 azureml-core`。
+
 
 > [!div class="nextstepaction"]
 > [我安装了 SDK](?success=install-sdk#dir) [我遇到了一个问题](https://www.research.net/r/7C8Z3DN?issue=install-sdk)
 
 ## <a name="create-a-directory-structure-for-code"></a><a name="dir"></a>创建代码的目录结构
+
 建议为本教程设置以下简单目录结构：
 
 ```markdown
@@ -68,8 +87,9 @@ tutorial
 
 > [!TIP]
 > 可在终端窗口中创建隐藏的 .azureml 子目录。  或使用以下方式：
+>
 > * 在 Mac 查找器窗口中使用 Command+Shift+. 来切换功能以查看和创建以点开头的目录。  
-> * 在 Windows 10 中，请参阅[如何查看隐藏的文件和文件夹](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5)。 
+> * 在 Windows 10 文件资源管理器中，请参阅[如何查看隐藏的文件和文件夹](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5)。 
 > * 在 Linux 图形界面中，使用 Ctrl+h 或“查看”菜单，并选中“显示隐藏的文件”复选框。  
 
 > [!div class="nextstepaction"]
@@ -104,7 +124,7 @@ ws = Workspace.create(name='<my_workspace_name>', # provide a name for your work
 ws.write_config(path='.azureml')
 ```
 
-从 `tutorial` 目录运行此代码：
+在已激活 tutorial1 conda 环境的窗口中，从 `tutorial` 目录运行此代码。
 
 ```bash
 cd <path/to/tutorial>
@@ -163,7 +183,7 @@ except ComputeTargetException:
 cpu_cluster.wait_for_completion(show_output=True)
 ```
 
-运行该 Python 文件：
+在已激活 tutorial1 conda 环境的窗口中，运行 Python 文件：
 
 ```bash
 python ./02-create-compute.py
@@ -185,6 +205,19 @@ tutorial
 
 > [!div class="nextstepaction"]
 > [我创建了计算群集](?success=create-compute-cluster#next-steps) [我遇到了一个问题](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
+
+## <a name="view-in-the-studio"></a>在工作室中查看
+
+登录到 [Azure 机器学习工作室](https://ml.azure.com)，查看已创建的工作区和计算实例。
+
+1. 选择曾经用于创建工作区的订阅。
+1. 选择已创建的机器学习工作区“tutorial-ws”。
+1. 加载工作区后，在左侧选择“计算”。
+1. 在顶部，选择“计算群集”选项卡。
+
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/compute-instance-in-studio.png" alt-text="屏幕截图：查看工作区中的计算实例。":::
+
+此视图显示预配的计算群集，以及空闲节点、忙碌节点和未预配节点的数量。  由于你尚未使用群集，因此所有节点当前都未预配。
 
 ## <a name="next-steps"></a>后续步骤
 

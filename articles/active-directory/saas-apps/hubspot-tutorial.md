@@ -9,26 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/14/2019
+ms.date: 12/27/2020
 ms.author: jeedes
-ms.openlocfilehash: c53b7fed17ba4ef2000b905b202286338cd461ed
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3b60ab21bb1e8f5270512d3f1e77aeab2baedc31
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442875"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968630"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>教程：Azure Active Directory 与 HubSpot 的集成
 
-在本教程中，了解如何将 HubSpot 与 Azure Active Directory (Azure AD) 集成。
+在本教程中，了解如何将 HubSpot 与 Azure Active Directory (Azure AD) 集成。 将 HubSpot 与 Azure AD 集成后，你可以：
 
-将 HubSpot 与 Azure AD 集成提供以下优势：
-
-* 可使用 Azure AD 控制谁有权访问 HubSpot。
-* 用户可使用其 Azure AD 帐户自动登录到 HubSpot（单一登录）。
-* 可在一个中心位置（即 Azure 门户）管理帐户。
-
-有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 的应用程序](../manage-apps/what-is-single-sign-on.md)。
+* 在 Azure AD 中控制谁有权访问 HubSpot。
+* 让用户能够使用其 Azure AD 帐户自动登录到 HubSpot。
+* 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,29 +42,18 @@ HubSpot 支持以下功能：
 * **SP 发起的单一登录**
 * **IDP 发起的单一登录**
 
-## <a name="add-hubspot-in-the-azure-portal"></a>在 Azure 门户中添加 HubSpot
+## <a name="adding-hubspot-from-the-gallery"></a>从库中添加 HubSpot
 
-若要将 HubSpot 与 Azure AD 集成，必须将 HubSpot 添加到托管 SaaS 应用列表中。
+要配置 HubSpot 与 Azure AD 的集成，需要从库中将 HubSpot 添加到托管 SaaS 应用列表。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 在“从库中添加”部分的搜索框中，键入“HubSpot” 。
+1. 从结果面板中选择“HubSpot”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-1. 在左侧菜单中，选择“Azure Active Directory”  。
-
-    ![“Azure Active Directory”选项](common/select-azuread.png)
-
-1. 选择“企业应用程序” > “所有应用程序”   。
-
-    ![“企业应用程序”窗格](common/enterprise-applications.png)
-
-1. 若要添加应用程序，请选择“新建应用程序”  。
-
-    ![“新建应用程序”选项](common/add-new-app.png)
-
-1. 在搜索框中，输入“HubSpot”  。 在搜索结果中选择“HubSpot”，然后选择“添加”   。
-
-    ![结果列表中的 HubSpot](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-hubspot"></a>配置并测试 HubSpot 的 Azure AD SSO
 
 在本部分中，将基于名为 **Britta Simon** 的测试用户配置和测试 HubSpot 的 Azure AD 单一登录。 若要运行单一登录，必须在 Azure AD 用户与 HubSpot 相关用户之间建立链接关系。
 
@@ -85,19 +70,11 @@ HubSpot 支持以下功能：
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中配置 HubSpot 的 Azure AD 单一登录。
+1. 在 Azure 门户中的 HubSpot 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML”   。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“HubSpot”应用程序集成页上，选择“单一登录”   。
-
-    ![配置单一登录选项](common/select-sso.png)
-
-1. 在“选择单一登录方法”窗格中，选择“SAML”或“SAML/WS-Fed”模式以启用单一登录    。
-
-    ![单一登录选择模式](common/select-saml-option.png)
-
-1. 在“设置 SAML 单一登录”窗格中，选择“编辑”（铅笔图标）以打开“基本 SAML 配置”窗格    。
-
-    ![编辑基本 SAML 配置](common/edit-urls.png)
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在“基本 SAML 配置”窗格中，若要配置“IDP 发起模式”，请完成以下步骤：  
 
@@ -164,53 +141,27 @@ HubSpot 支持以下功能：
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-在本部分中，会在 Azure 门户中创建名为“Britta Simon”的测试用户。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户中，选择“Azure Active Directory” > “用户” > “所有用户”。   
-
-    ![“用户”和“所有用户”选项](common/users.png)
-
-1. 选择“新建用户”。 
-
-    ![“新建用户”选项](common/new-user.png)
-
-1. 在“用户”窗格中完成以下步骤： 
-
-    1. 在“姓名”  框中，输入 **BrittaSimon** 。
-  
-    1. 在“用户名”框中，输入 brittasimon\@\<your-company-domain>.\<extension\> 。 例如，brittasimon\@contoso.com  。
-
-    1. 选中“显示密码”复选框  。 记下“密码”框中显示的值  。
-
-    1. 选择“创建”  。
-
-    ![“用户”窗格](common/user-properties.png)
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+    1. 在“名称”字段中，输入 `B.Simon`。  
+    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 HubSpot 的权限，允许其使用 Azure 单一登录。
+在本部分中，将授予 B.Simon 访问 HubSpot 的权限，以使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序” > “HubSpot”    。
-
-    ![“企业应用程序”窗格](common/enterprise-applications.png)
-
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“HubSpot”  。
-
-    ![应用程序列表中的 HubSpot](common/all-applications.png)
-
-1. 在菜单中选择“用户和组”  。
-
-    ![“用户和组”选项](common/users-groups-blade.png)
-
-1. 选择“添加用户”。  然后，在“添加分配”窗格中选择“用户和组”。  
-
-    ![“添加分配”窗格](common/add-assign-user.png)
-
-1. 在“用户和组”窗格中，在用户列表中选择“Britta Simon”   。 选择“选择”。 
-
-1. 如果希望在 SAML 断言中使用角色值，请在“选择角色”窗格中，从列表中为用户选择相关的角色  。 选择“选择”。 
-
-1. 在“添加分配”窗格中选择“分配”   。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ### <a name="create-a-hubspot-test-user"></a>创建 HubSpot 测试用户
 
@@ -249,14 +200,21 @@ HubSpot 支持以下功能：
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
-本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-设置单一登录后，如果在“我的应用”门户中选择“HubSpot”，将自动登录到 HubSpot  。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](../user-help/my-apps-portal-end-user-access.md)。
+#### <a name="sp-initiated"></a>SP 启动的：
+
+* 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 HubSpot 登录 URL，可以从那里启动登录流。  
+
+* 直接转到 HubSpot 登录 URL，并从那里启动登录流。
+
+#### <a name="idp-initiated"></a>IDP 启动的：
+
+* 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 HubSpot 
+
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 HubSpot 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 HubSpot。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解更多信息，请查看下列文章：
-
-- [用于将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
-- [单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+配置 HubSpot 后，可以强制实施会话控制，以实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

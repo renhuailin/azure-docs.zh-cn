@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: bc62590b9517b2c6d16fdf2637990b845248d2ec
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 74d77d8c81455116cec861bf6704c6cb96526561
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932347"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121084"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>教程：配置 IoT Edge 设备
 
@@ -81,7 +81,7 @@ ms.locfileid: "96932347"
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>将证书上传到 Azure Key Vault
 
-为安全存储证书并使其可通过多台设备访问，我们将证书上传到 Azure Key Vault 中。 如在上述列表中看到的那样，我们有两种类型的证书文件：PFX 和 PEM。 我们将 PFX 看作 Key Vault 证书，将其上传到 Key Vault。 PEM 文件是纯文本形式，我们将其视为 Key Vault 机密。 我们之前通过运行 [Azure Notebook](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks).创建了 Azure 机器学习工作区，现在我们将使用与该工作区关联的 Key Vault。
+为安全存储证书并使其可通过多台设备访问，我们将证书上传到 Azure Key Vault 中。 如在上述列表中看到的那样，我们有两种类型的证书文件：PFX 和 PEM。 我们将 PFX 看作 Key Vault 证书，将其上传到 Key Vault。 PEM 文件是纯文本形式，我们将其视为 Key Vault 机密。 我们之前通过运行 [Jupyter Notebook](tutorial-machine-learning-edge-04-train-model.md#run-jupyter-notebooks) 创建了 Azure 机器学习工作区，现在我们将使用与该工作区关联的 Key Vault。
 
 1. 从 [Azure 门户](https://portal.azure.com)导航到 Azure 机器学习工作区。
 

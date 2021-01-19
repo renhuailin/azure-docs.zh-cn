@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: a70d075ae25b0059e4e1ab75c44907f584e15350
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7b4c8ab55a9b2afc9c1a215236fa1276a630a5cf
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92512794"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963615"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>教程：Azure Active Directory 与 Palo Alto Networks - Aperture 集成
 
@@ -71,7 +71,7 @@ ms.locfileid: "92512794"
 
 1. 在 Azure 门户中的“Palo Alto Networks - Aperture”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "92512794"
 
     ![显示“基本 SAML 配置”的屏幕截图，其中突出显示了“标识符”和“回复 URL”文字框，并选择了“保存”操作。](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth`
 
@@ -96,7 +96,7 @@ ms.locfileid: "92512794"
 
     ![证书下载链接](common/certificatebase64.png)
 
-7. 在“设置 Palo Alto Networks - Aperture”  部分中，根据要求复制相应的 URL。
+7. 在“设置 Palo Alto Networks - Aperture”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "92512794"
 在本部分，我们将通过授予 B.Simon 访问 Palo Alto Networks - Aperture 的权限，使其能够使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Palo Alto Networks - Aperture”  。
+1. 在应用程序列表中，选择“Palo Alto Networks - Aperture”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
@@ -128,11 +128,11 @@ ms.locfileid: "92512794"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Palo Alto Networks - Aperture。
 
-2. 单击顶部菜单中的“设置”  。
+2. 单击顶部菜单中的“设置”。
 
     ![“设置”选项卡](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_settings.png)
 
-3. 导航到“应用程序”部分，单击菜单左侧的“身份验证”窗体。 
+3. 导航到“应用程序”部分，单击菜单左侧的“身份验证”窗体。
 
     ![“身份验证”选项卡](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_auth.png)
     
@@ -140,17 +140,17 @@ ms.locfileid: "92512794"
     
     ![身份验证选项卡](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_singlesignon.png)
 
-    a. 在“单一登录”字段中选中“启用单一登录(支持的 SSP 提供者为 Okta, One login)”。 
+    a. 在“单一登录”字段中选中“启用单一登录(支持的 SSP 提供者为 Okta, One login)”。
 
-    b. 在“标识提供者 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值  。
+    b. 在“标识提供者 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
 
-    c. 在“标识提供者证书”字段中单击“选择文件”  ，上传从 Azure AD 下载的证书。 
+    c. 在“标识提供者证书”字段中单击“选择文件”，上传从 Azure AD 下载的证书。
 
     d. 在“标识提供者 SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值 。
 
-    e. 查看“Aperture 信息”部分中的 IdP 信息，并从“Aperture 密钥”字段下载证书。 
+    e. 查看“Aperture 信息”部分中的 IdP 信息，并从“Aperture 密钥”字段下载证书。
 
-    f. 单击“保存”  。
+    f. 单击“ **保存**”。
 
 
 ### <a name="create-palo-alto-networks---aperture-test-user"></a>创建 Palo Alto Networks - Aperture 测试用户
@@ -171,7 +171,7 @@ ms.locfileid: "92512794"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Palo Alto Networks - Aperture 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 单击访问面板中的“Palo Alto Networks - Aperture”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，你会自动登录到为其设置了 SSO 的 Palo Alto Networks - Aperture。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“Palo Alto Networks - Aperture”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，你会自动登录到为其设置了 SSO 的 Palo Alto Networks - Aperture。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

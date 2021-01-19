@@ -3,12 +3,12 @@ title: 通过用于空间分析的计算机视觉分析实时视频 - Azure
 description: 本教程展示了如何结合使用实时视频分析和 Azure 认知服务中的计算机视觉空间分析 AI 功能，分析来自（模拟）IP 相机的实时视频源。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400500"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060174"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>通过用于空间分析的计算机视觉（预览版）分析实时视频
 
@@ -166,7 +166,7 @@ MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视
 请按照以下步骤从模板文件生成清单，然后将其部署到边缘设备。
 
 1. 打开 Visual Studio Code。
-1. 在“AZURE IOT 中心”窗格旁，选择“更多操作”图标以设置 IoT 中心连接字符串 。 可以复制 src/cloud-to-device-console-app/appsettings.json 文件中的字符串。
+1. 在“AZURE IOT 中心”窗格旁，选择“更多操作”图标以设置 IoT 中心连接字符串 。 可以从 `src/cloud-to-device-console-app/appsettings.json` 文件中复制字符串。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="空间分析：连接字符串":::
@@ -222,13 +222,13 @@ MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视
 
 在 operations.json 中：
 
-* 设置如下拓扑（topologyFile 用于本地拓扑，topologyUrl 用于联机拓扑）：
+* 设置拓扑，如下所示：
 
 ```json
 {
     "opName": "GraphTopologySet",
     "opParams": {
-        "topologyFile": "../edge/spatialAnalysisTopology.json"
+        "topologyUrl": "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/2.0/topology.json"
     }
 },
 ```
@@ -261,17 +261,6 @@ MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视
     }
 },
 ```
-* 将链接更改为图拓扑：
-
-`topologyUrl` : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/topology.json"
-
-在 GraphInstanceSet 下，编辑图形拓扑的名称以匹配前面链接中的值：
-
-`topologyName`：InferencingWithCVExtension
-
-在 GraphTopologyDelete 下，编辑名称：
-
-`name`：InferencingWithCVExtension
 
 >[!Note]
 查看是否使用 MediaGraphRealTimeComputerVisionExtension 连接到空间分析模块。 将 ${grpcUrl} 设置为 tcp://spatialAnalysis:<PORT_NUMBER>，如 tcp://spatialAnalysis:50051
@@ -281,29 +270,40 @@ MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视
     "@type": "#Microsoft.Media.MediaGraphCognitiveServicesVisionExtension",
     "name": "computerVisionExtension",
     "endpoint": {
-    "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
-    "url": "${grpcUrl}",
-    "credentials": {
-        "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
-        "username": "${spatialanalysisusername}",
-        "password": "${spatialanalysispassword}"
-    }
+        "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+        "url": "${grpcUrl}",
+        "credentials": {
+            "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+            "username": "${spatialanalysisusername}",
+            "password": "${spatialanalysispassword}"
+        }
     },
     "image": {
-    "scale": {
-        "mode": "pad",
-        "width": "1408",
-        "height": "786"
+        "scale": {
+            "mode": "pad",
+            "width": "1408",
+            "height": "786"
+        },
+        "format": {
+            "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
+            "pixelFormat": "bgr24"
+        }
     },
-    "format": {
-        "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
-        "pixelFormat": "bgr24"
-    }
+    "samplingOptions": {
+        "skipSamplesWithoutAnnotation": "false",
+        "maximumSamplesPerSecond": "20"
     },
     "inputs": [
-    {
-        "nodeName": "frameRateFilter"
-    }
+        {
+            "nodeName": "rtspSource",
+            "outputSelectors": [
+                {
+                    "property": "mediaType",
+                    "operator": "is",
+                    "value": "video"
+                }
+            ]
+        }
     ]
 }
 ```

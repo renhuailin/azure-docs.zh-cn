@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
-ms.openlocfilehash: b2a6b902f1c6b7e06b1a72b183007fbb9fe05c3c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5577b0cb480b372b64a9cb25f52617edfca3f2e0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515944"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108137"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Single Sign-on for Skytap 的集成
 
@@ -50,7 +50,7 @@ ms.locfileid: "92515944"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 转到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Single Sign-on for Skytap** 。 
+1. 在“从库中添加”部分的搜索框中，键入 **Single Sign-on for Skytap**。 
 1. 在结果面板中选择“Single Sign-on for Skytap”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-single-sign-on-for-skytap"></a>配置并测试 Single Sign-on for Skytap 的 Azure AD 单一登录
@@ -85,7 +85,7 @@ ms.locfileid: "92515944"
 
     b. 在“回复 URL”文本框中，键入使用以下模式的 URL：`https://sso.connect.pingidentity.com/sso/sp/ACS.saml2` 
 
-1. 若要在“SP”发起模式下配置应用程序，请选择“设置其他 URL”并执行以下步骤：  
+1. 若要在“SP”发起模式下配置应用程序，可以选择“设置其他 URL”并执行以下步骤： 
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
 

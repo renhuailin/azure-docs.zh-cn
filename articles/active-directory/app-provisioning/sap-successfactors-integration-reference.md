@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/20/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e97be7fef09287e6c4f8696e217702b97853fa6a
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969521"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569447"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory 预配如何与 SAP SuccessFactors 集成 
 
@@ -28,7 +28,7 @@ ms.locfileid: "90969521"
 本文介绍集成的工作原理，以及如何为不同的 HR 方案自定义设置行为。 
 
 ## <a name="establishing-connectivity"></a>建立连接 
-Azure AD 预配服务使用基本身份验证连接到员工中心 OData API 终结点。 设置 SuccessFactors 预配应用时，请使用 "*管理员凭据*" 部分中的 "*租户 URL* " 参数来配置[API 数据中心 URL](https://apps.support.sap.com/sap/support/knowledge/en/2215682)。 
+Azure AD 预配服务使用基本身份验证连接到员工中心 OData API 终结点。 设置 SuccessFactors 预配应用时，请使用 "*管理员凭据*" 部分中的 "*租户 URL* " 参数来配置 [API 数据中心 URL](https://apps.support.sap.com/sap/support/knowledge/en/2215682)。 
 
 若要进一步保护 Azure AD 预配服务和 SuccessFactors 之间的连接，可以使用下面所述的步骤，在 SuccessFactors IP 允许列表中添加 Azure AD IP 范围：
 
@@ -55,21 +55,22 @@ Azure AD 预配服务使用基本身份验证连接到员工中心 OData API 终
 | 6  | 用户                                   | employmentNav/userNav        | 始终           |
 | 7  | EmpJob                                 | employmentNav/jobInfoNav     | 始终           |
 | 8  | EmpEmploymentTermination               | activeEmploymentsCount       | 始终           |
-| 9  | FOCompany                              | employmentNav/jobInfoNav/companyNav | 仅当 `company` `companyId` 映射或特性时 |
-| 10 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | 仅当 `department` `departmentId` 映射或特性时 |
-| 11 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | 仅当 `businessUnit` `businessUnitId` 映射或特性时 |
-| 12 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | 仅当 `costCenter` `costCenterId` 映射或特性时 |
-| 13 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | 仅当 `division` `divisionId` 映射或特性时 |
-| 14 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | 仅当 `jobCode` `jobCodeId` 映射或特性时 |
-| 15 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | 仅当 `payGrade` 映射属性时 |
-| 16 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | 仅当 `location` 映射属性时 |
-| 17 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | 如果映射包含以下属性之一： `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
-| 18 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | 仅当 `eventReason` 映射属性时 |
-| 19 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | 仅当 `assignmentType` 映射时 |
-| 20 | EmploymentType 选择列表                | employmentNav/jobInfoNav/employmentTypeNav | 仅当 `employmentType` 映射时 |
-| 21 | EmployeeClass 选择列表                 | employmentNav/jobInfoNav/employeeClassNav | 仅当 `employeeClass` 映射时 |
-| 22 | EmplStatus 选择列表                    | employmentNav/jobInfoNav/emplStatusNav | 仅当 `emplStatus` 映射时 |
-| 23 | AssignmentType 选择列表                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | 仅当 `assignmentType` 映射时 |
+| 9  | 用户的经理                         | employmentNav/userNav/manager/empInfo | 始终  |
+| 10 | FOCompany                              | employmentNav/jobInfoNav/companyNav | 仅当 `company` `companyId` 映射或特性时 |
+| 11 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | 仅当 `department` `departmentId` 映射或特性时 |
+| 12 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | 仅当 `businessUnit` `businessUnitId` 映射或特性时 |
+| 13 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | 仅当 `costCenter` `costCenterId` 映射或特性时 |
+| 14 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | 仅当 `division` `divisionId` 映射或特性时 |
+| 15 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | 仅当 `jobCode` `jobCodeId` 映射或特性时 |
+| 16 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | 仅当 `payGrade` 映射属性时 |
+| 17 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | 仅当 `location` 映射属性时 |
+| 18 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | 如果映射包含以下属性之一： `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
+| 19 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | 仅当 `eventReason` 映射属性时 |
+| 20 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | 仅当 `assignmentType` 映射时 |
+| 21 | EmploymentType 选择列表                | employmentNav/jobInfoNav/employmentTypeNav | 仅当 `employmentType` 映射时 |
+| 22 | EmployeeClass 选择列表                 | employmentNav/jobInfoNav/employeeClassNav | 仅当 `employeeClass` 映射时 |
+| 23 | EmplStatus 选择列表                    | employmentNav/jobInfoNav/emplStatusNav | 仅当 `emplStatus` 映射时 |
+| 24 | AssignmentType 选择列表                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | 仅当 `assignmentType` 映射时 |
 
 ## <a name="how-full-sync-works"></a>完全同步的工作原理
 根据属性映射，在完全同步期间 Azure AD 预配服务将发送以下 "GET" OData API 查询，以提取所有活动用户的有效数据。 
@@ -115,10 +116,10 @@ Azure AD 预配服务查询 SuccessFactors 时，它将检索 JSON 结果集。 
     
 1. 浏览到 "**企业应用程序**" "  ->  **SuccessFactors 应用**  ->  **设置**" "  ->  **编辑预配**  ->  **属性-映射" 页**。
 1. 向下滚动，然后单击 " **显示高级选项**"。
-1. 单击 " **编辑 SuccessFactors 的属性列表**"。 
+1. 单击“编辑 SuccessFactors 属性列表”。 
 
    > [!NOTE] 
-   > 如果 Azure 门户中未显示 " **编辑属性的属性列表** " 选项，请使用 URL *https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true* 来访问该页面。 
+   > 如果“编辑 SuccessFactors 属性列表”选项未显示在 Azure 门户，则使用 URL https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true 来访问该页面。 
 
 1. 此视图中的 " **API 表达式** " 列显示连接器使用的 JSONPath 表达式。
 
@@ -181,19 +182,19 @@ JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 �
 
 假设你的员工中心实例中的 *customString35* *属性存储位置* 说明。 需要将此值流向 Active Directory *physicalDeliveryOfficeName* 属性。 若要为此方案配置属性映射，请使用下面给出的步骤： 
 
-1. 编辑 SuccessFactors 属性列表以添加名为 *empJobNavCustomString35*的新属性。
+1. 编辑 SuccessFactors 属性列表以添加名为 *empJobNavCustomString35* 的新属性。
 1. 为此属性设置 JSONPath API 表达式，如下所示： `$.employmentNav.results[0].jobInfoNav.results[0].customString35`
 1. 保存并重新加载 Azure 门户中的映射更改。  
 1. 在 "属性映射" 边栏选项卡中，将 *empJobNavCustomString35* 映射到 *physicalDeliveryOfficeName*。
 1. 保存映射。
 
 扩展此方案： 
-* 如果要从*用户*实体映射*custom35*属性，请使用 JSONPath`$.employmentNav.results[0].userNav.custom35`
-* 如果要从*EmpEmployment*实体映射*customString35*属性，请使用 JSONPath`$.employmentNav.results[0].customString35`
+* 如果要从 *用户* 实体映射 *custom35* 属性，请使用 JSONPath`$.employmentNav.results[0].userNav.custom35`
+* 如果要从 *EmpEmployment* 实体映射 *customString35* 属性，请使用 JSONPath`$.employmentNav.results[0].customString35`
 
 ### <a name="handling-worker-conversion-scenario"></a>处理工作线程转换方案
 
-工作人员转换是指将现有全职员工及时转换为承包商或合同工的过程。 在此方案中，员工中心为同一*人员*实体添加新的*EmpEmployment*实体和新*用户*实体。 在上一个*EmpEmployment*实体下嵌套的*用户*实体设置为 null。 若要处理这种情况，以便在进行转换时显示新的雇用数据，可以使用下面列出的步骤批量更新预配应用架构：  
+工作人员转换是指将现有全职员工及时转换为承包商或合同工的过程。 在此方案中，员工中心为同一 *人员* 实体添加新的 *EmpEmployment* 实体和新 *用户* 实体。 在上一个 *EmpEmployment* 实体下嵌套的 *用户* 实体设置为 null。 若要处理这种情况，以便在进行转换时显示新的雇用数据，可以使用下面列出的步骤批量更新预配应用架构：  
 
 1. 打开 SuccessFactors 预配应用程序的 "属性映射" 边栏选项卡。 
 1. 向下滚动，然后单击 " **显示高级选项**"。
@@ -221,7 +222,7 @@ JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 �
 * 选项1：在员工中心创建新的人员配置文件
 * 选项2：在员工中心重复使用现有人员配置文件
 
-如果 HR 进程使用选项1，则不需要对设置架构进行任何更改。 如果你的 HR 进程使用选项2，则 Employee Central 会为同一*Person*实体添加一个新的*EmpEmployment*实体和一个新的*用户*实体。 与转换方案不同，上一个*EmpEmployment*实体中的*用户*实体未设置为 null。 
+如果 HR 进程使用选项1，则不需要对设置架构进行任何更改。 如果你的 HR 进程使用选项2，则 Employee Central 会为同一 *Person* 实体添加一个新的 *EmpEmployment* 实体和一个新的 *用户* 实体。 与转换方案不同，上一个 *EmpEmployment* 实体中的 *用户* 实体未设置为 null。 
 
 若要处理此 rehire 方案 (选项 2) ，以便为 rehire 配置文件显示最新的雇用数据，可以使用下面列出的步骤批量更新预配应用架构：  
 
@@ -244,8 +245,8 @@ JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 �
 ### <a name="handling-global-assignment-scenario"></a>处理全局分配方案
 
 为全局分配处理 Employee Central 中的用户时，SuccessFactors 将添加新的 *EmpEmployment* 实体并将 *assignmentClass* 设置为 "GA"。 它还会创建新的 *用户* 实体。 因此，用户现在具有：
-* 对应于 home 赋值的一个*EmpEmployment*  +  *用户*实体， *assignmentClass*设置为 "ST" 和 
-* 与*EmpEmployment*  +  *assignmentClass*设置为 "GA" 的全局分配相对应的另一个 EmpEmployment*用户*实体
+* 对应于 home 赋值的一个 *EmpEmployment*  +  *用户* 实体， *assignmentClass* 设置为 "ST" 和 
+* 与  +  *assignmentClass* 设置为 "GA" 的全局分配相对应的另一个 EmpEmployment *用户* 实体
 
 若要提取属于标准分配和全局分配用户配置文件的属性，请使用下列步骤： 
 
@@ -263,7 +264,7 @@ JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 �
    * 新 JSONPath： `$.employmentNav.results[?(@.assignmentClass == 'ST')].jobInfoNav.results[0].departmentNav.name_localized`
 1. 重载应用的 "属性映射" 边栏选项卡。 
 1. 向下滚动，然后单击 " **显示高级选项**"。
-1. 单击 " **编辑 SuccessFactors 的属性列表**"。
+1. 单击“编辑 SuccessFactors 属性列表”。
 1. 添加新属性以提取全局分配数据。 例如：若要提取与全局分配配置文件关联的部门名称，可以添加属性 *globalAssignmentDepartment* ，并将 JSONPath 表达式设置为 `$.employmentNav.results[?(@.assignmentClass == 'GA')].jobInfoNav.results[0].departmentNav.name_localized` 。 
 1. 你现在可以将两个部门值都流动到 Active Directory 属性，或使用表达式映射有选择地流式传输值。 示例：下面的表达式将 AD *部门* 属性的值设置为 *globalAssignmentDepartment* （如果存在），否则它会将值设置为与标准分配关联的 *部门* 。 
    * `IIF(IsPresent([globalAssignmentDepartment]),[globalAssignmentDepartment],[department])`
@@ -277,7 +278,7 @@ JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 �
 
 1. 打开 SuccessFactors 预配应用程序的 "属性映射" 边栏选项卡。 
 1. 向下滚动，然后单击 " **显示高级选项**"。
-1. 单击 " **编辑 SuccessFactors 的属性列表**"。
+1. 单击“编辑 SuccessFactors 属性列表”。
 1. 假设你想要拉取与作业1和作业2关联的部门。 预定义的属性 *系* 已经获取第一个作业的部门值。 您可以定义一个名为 *secondJobDepartment* 的新属性，并将 JSONPath 表达式设置为 `$.employmentNav.results[1].jobInfoNav.results[0].departmentNav.name_localized`
 1. 你现在可以将两个部门值都流动到 Active Directory 属性，或使用表达式映射有选择地流式传输值。 
 1. 保存映射。 
@@ -294,7 +295,7 @@ JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 �
 | 1 | * 仅将业务电子邮件设置为主电子邮件。 <br> * 请勿设置电话号码。 | true | true | false | \[未设置\] | \[未设置\] | 
 | 2 | * 在 SuccessFactors 中，业务电子邮件和商务电话是主要的 <br> * 始终 Azure AD 电话号码传递到 business phone，并移动到手机。 | true | true | false | telephoneNumber | mobile | 
 | 3 | * 在 SuccessFactors 中，业务电子邮件和手机是主要的 <br> * 始终 Azure AD 电话号码传递到业务电话并移动到手机 | true | false | true |  telephoneNumber | mobile | 
-| 4 | * 在 SuccessFactors 中，业务电子邮件是主电子邮件 <br> * 在 Azure AD 中，检查是否存在工作电话号码（如果存在），然后检查是否还存在 "移动号码"，将 "工作电话号码" 标记为 "仅当移动电话号码不存在时"。 | true | 使用表达式映射： `IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | 使用表达式映射： `IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobile | 
+| 4 | * 在 SuccessFactors 中，业务电子邮件是主电子邮件 <br> * 在 Azure AD 中，检查是否存在工作电话号码（如果存在），然后检查是否还存在 "移动号码"，将 "工作电话号码" 标记为 "仅当移动电话号码不存在时"。 | 是 | 使用表达式映射： `IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | 使用表达式映射： `IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobile | 
 | 5 | * 在 SuccessFactors business email 和 business phone 中是主要的。 <br> * 在 Azure AD 中，如果移动可用，请将其设置为 business phone，否则请使用 telephoneNumber。 | true | true | false | `IIF(IsPresent([mobile]), [mobile], [telephoneNumber])` | \[未设置\] | 
 
 * 如果写回属性映射中没有电话号码的映射，则写回后仅包含电子邮件。
@@ -310,7 +311,7 @@ JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 �
 
 * [了解如何配置 SuccessFactors 以 Active Directory 预配](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
 * [了解如何配置写回 SuccessFactors](../saas-apps/sap-successfactors-writeback-tutorial.md)
-* [详细了解用于入站预配的支持 SuccessFactors 属性](sap-successfactors-attribute-reference.md)
+* [详细了解入站预配支持的 SuccessFactors 属性](sap-successfactors-attribute-reference.md)
 
 
 

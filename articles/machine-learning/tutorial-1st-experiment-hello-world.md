@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 43a483f49a9e9004a4f487e82195198f2600a919
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96570954"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071147"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>教程：运行“Hello world!” Python 脚本（第 2 部分，共 4 部分）
 
@@ -36,9 +36,6 @@ ms.locfileid: "96570954"
 ## <a name="prerequisites"></a>先决条件
 
 - 如果你还没有 Azure 机器学习工作区，请先完成[第 1 部分](tutorial-1st-experiment-sdk-setup-local.md)。
-- Python 语言和机器学习工作流的入门知识。
-- 本地开发环境，如 Visual Studio Code、Jupyter 或 PyCharm。
-- Python（版本 3.5 至 3.7）。
 
 ## <a name="create-and-run-a-python-script-locally"></a>在本地创建并运行一个 Python 脚本
 
@@ -64,7 +61,7 @@ tutorial
 
 ### <a name="test-your-script-locally"></a><a name="test"></a>在本地测试你的脚本
 
-你可以通过使用你常用的 IDE 或终端在本地运行代码。 在本地运行代码具有可对代码进行交互式调试的好处。
+你可以通过使用你常用的 IDE 或终端在本地运行代码。 在本地运行代码具有可对代码进行交互式调试的好处。  在已激活 tutorial1 conda 环境的窗口中，运行 Python 文件：
 
 ```bash
 cd <path/to/tutorial>
@@ -93,8 +90,6 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
-
-
 
 ### <a name="understand-the-code"></a>了解代码
 
@@ -148,13 +143,6 @@ print(aml_url)
 
 运行你的控制脚本，该脚本继而会在[设置教程](tutorial-1st-experiment-sdk-setup-local.md)中创建的计算群集上运行 `hello.py`。
 
-首次运行将需要 5 - 10 分钟才能完成。 这是因为发生了以下情况：
-
-* docker 映像在云中构建
-* 计算群集的大小从 0 个节点调整到 1 个节点
-* docker 映像被下载到该计算。 
-
-当 docker 映像缓存到该计算上时，后续的运行速度将快得多（约 15 秒），你可以通过在第一次运行完成后重新提交以下代码来进行测试。
 
 ```bash
 python 03-run-hello.py
@@ -168,9 +156,17 @@ python 03-run-hello.py
 
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>通过使用工作室在云中监视代码
 
-输出中将会包含一个指向工作室的链接，该链接类似于：`https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`。
+来自脚本的输出中将包含一个指向工作室的链接，该链接类似于：`https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`。
 
-单击该链接，转到“输出 + 日志”选项卡。在那里可以看到 `70_driver_log.txt` 文件，该文件的内容类似于：
+访问该链接。  首先，你会看到状态为“正在准备”。  首次运行将需要 5 - 10 分钟才能完成。 这是因为发生了以下情况：
+
+* docker 映像在云中构建
+* 计算群集的大小从 0 个节点调整到 1 个节点
+* docker 映像被下载到该计算。 
+
+由于 docker 映像已缓存在计算中，因此后续运行要快得多（约 15 秒）。 可以通过在第一次运行完成后重新提交以下代码来进行测试。
+
+作业完成后，转到“输出 + 日志”选项卡。在那里可以看到 `70_driver_log.txt` 文件，该文件的内容类似于：
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.

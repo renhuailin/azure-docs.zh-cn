@@ -8,30 +8,29 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 757e34fd45b7d3d9703aa09daa7f040c5f605637
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2cc96db88d9a2aec02de5e2fc4ed18b445972e7b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932381"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121120"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>教程：训练和部署 Azure 机器学习模型
 
 在本文中，我们将执行以下任务：
 
-* 使用 Azure Notebooks 训练机器学习模型。
+* 使用 Azure 机器学习工作室来训练机器学习模型。
 * 将训练的模型打包为容器映像。
 * 将容器映像部署为 Azure IoT Edge 模块。
 
-Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验、训练和部署机器学习模型的基块。
+Azure 机器学习工作室是用于试验、训练和部署机器学习模型的基块。
 
 本文中的步骤通常由数据科学家执行。
 
 本教程的此部分介绍了如何：
 
 > [!div class="checklist"]
->
-> * 创建 Azure Notebooks 项目以训练机器学习模型。
+> * 在 Azure 机器学习工作区中创建 Jupyter Notebook 以训练机器学习模型。
 > * 容器化经过训练的机器学习模型。
 > * 从容器化机器学习模型创建 Azure IoT Edge 模块。
 
@@ -39,49 +38,49 @@ Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验
 
 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 这一系列中的每篇文章都环环相扣，后一篇以前一篇为基础。 如果你是直接转到本文的，请访问本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)。
 
-## <a name="set-up-azure-notebooks"></a>设置 Azure Notebooks
+## <a name="set-up-azure-machine-learning"></a>设置 Azure 机器学习 
 
-我们将使用 Azure Notebooks 来托管两个 Jupyter Notebook 和支持文件。 在此处，我们将创建并配置一个 Azure Notebooks 项目。 如果你未曾用过 Jupyter Notebook 和/或 Azure Notebooks，请参阅下面的几篇简介文档：
+我们将使用 Azure 机器学习工作室来托管两个 Jupyter Notebook 和支持文件。 在此处，我们将创建并配置一个 Azure 机器学习项目。 如果你未曾用过 Jupyter 和/或 Azure 机器学习工作室，请参阅下面的几篇简介文档：
 
-* **快速入门：** [创建和共享笔记本](../notebooks/quickstart-create-share-jupyter-notebook.md)
-* **教程：** [使用 Python 创建并运行 Jupyter Notebook](../notebooks/tutorial-create-run-jupyter-notebook.md)
+* **Jupyter Notebook：** [在 Visual Studio Code 中使用 Jupyter Notebook](https://code.visualstudio.com/docs/python/jupyter-support)
+* **Azure 机器学习：** [在 Jupyter Notebook 中开始使用 Azure 机器学习](../machine-learning/tutorial-1st-experiment-sdk-setup.md)
 
-使用 Azure Notebooks 可以确保使用一致的环境来完成本练习。
 
 > [!NOTE]
-> 完成设置后，可以从任何计算机访问 Azure Notebooks 服务。 在设置期间应使用开发 VM，其中包含所需的全部文件。
+> 完成设置后，可以从任何计算机访问 Azure 机器学习服务。 在设置期间应使用开发 VM，其中包含所需的全部文件。
 
-### <a name="create-an-azure-notebooks-account"></a>创建 Azure Notebooks 帐户
+### <a name="install-azure-machine-learning-visual-studio-code-extension"></a>安装 Azure 机器学习 Visual Studio Code 扩展
+开发 VM 上的 VS Code 应安装此扩展。 如果正在其他实例上运行，请重新安装扩展，如[此处](../machine-learning/tutorial-setup-vscode-extension.md)所述。
 
-若要使用 Azure Notebooks，需要创建一个帐户。 Azure Notebooks 帐户独立于 Azure 订阅。
+### <a name="create-an-azure-machine-learning-account"></a>创建 Azure 机器学习帐户  
+若要在 Azure 上预配资源并运行工作负载，必须使用 Azure 帐户凭据登录。
 
-1. 导航到 [Azure Notebooks](https://notebooks.azure.com)。
+1. 在 Visual Studio Code 中，从菜单栏选择“视图” > “命令面板”，打开命令面板 。 
 
-1. 在页面右上角单击“登录”。 
+1. 在命令面板中输入命令 `Azure: Sign In`，以启动登录过程。 按照说明完成登录。 
 
-1. 使用工作或学校帐户 (Azure Active Directory) 或个人帐户（Microsoft 帐户）登录。
+1. 创建 Azure ML 计算实例以运行工作负载。 使用命令面板输入命令 `Azure ML: Create Compute`。 
+1. 选择 Azure 订阅
+1. 选择“+ 创建新的 Azure ML 工作区”，然后输入名称 `turbofandemo`。
+1. 选择用于此演示的资源组。
+1. 你应该能够在 VS Code 窗口的右下角看到工作区创建进度：“正在创建工作区:turobofandemo”（这可能需要一到两分钟）。 
+1. 请等待工作区创建成功。 它应显示“Azure ML 工作区 turbofandemo 已创建”。
 
-1. 如果你以前未曾用过 Azure Notebooks，系统会提示你为 Azure Notebooks 应用授予访问权限。
-
-1. 输入 Azure Notebooks 的用户 ID。
 
 ### <a name="upload-jupyter-notebook-files"></a>上传 Jupyter Notebook 文件
 
-我们将示例 Notebook 文件上传到新的 Azure Notebooks 项目中。
+我们将示例笔记本文件上传到新的 Azure ML 工作区中。
 
-1. 在新帐户的用户页上，从顶部菜单栏中选择“我的项目”。 
+1. 导航到 ml.azure.com 并登录。
+1. 选择 Microsoft 目录、Azure 订阅和新创建的 Azure ML 工作区。
 
-1. 通过选择 **+** 按钮添加新项目。
+    :::image type="content" source="media/tutorial-machine-learning-edge-04-train-model/select-studio-workspace.png" alt-text="选择 Azure ML 工作区。" :::
 
-1. 在“创建新项目”  对话框中，提供项目名称  。 
+1. 登录到 Azure ML 工作区后，使用左侧菜单导航到“Notebook”部分。
+1. 选择“我的文件”选项卡。
 
-1. 将“公开”和“自述文件”保留未选中状态，因为项目不需要公开，也不需要附带自述文件。  
+1. 选择“上传”（向上箭头图标） 
 
-1. 选择“创建”  。
-
-1. 选择“上传”（向上箭头图标），然后选择“从计算机”。  
-
-1. 选择“选择文件”。 
 
 1. 导航到 **C:\source\IoTEdgeAndMlSample\AzureNotebooks**。 选择列表中的所有文件，然后单击“打开”。 
 
@@ -89,9 +88,9 @@ Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验
 
 1. 选择“上传”开始上传。上传过程完成后，选择“完成”。  
 
-### <a name="azure-notebook-files"></a>Azure Notebook 文件
+### <a name="jupyter-notebook-files"></a>Jupyter Notebook 文件
 
-让我们查看已上传到 Azure Notebooks 项目的文件。 本教程部分中的活动跨越两个 Notebook 文件，这些文件使用几个支持文件。
+让我们查看已上传到 Azure ML 工作区的文件。 本教程部分中的活动跨越两个 Notebook 文件，这些文件使用几个支持文件。
 
 * **01-turbofan\_regression.ipynb：** 此 Notebook 使用机器学习服务工作区来创建并运行机器学习试验。 概括而言，该 Notebook 执行以下步骤：
 
@@ -115,13 +114,13 @@ Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验
 
 * **README.md：** 描述 Notebook 用法的自述文件。  
 
-## <a name="run-azure-notebooks"></a>运行 Azure Notebooks
+## <a name="run-jupyter-notebooks"></a>运行 Jupyter Notebook
 
-创建该项目后，可以运行 Notebook。 
+创建该工作区后，可以运行笔记本。 
 
-1. 在项目页中，选择“01-turbofan\_regression.ipynb”。 
+1. 在“我的文件”页中，选择“01-turbofan\_regression.ipynb” 。
 
-    ![选择要运行的第一个 Notebook](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
+    :::image type="content" source="media/tutorial-machine-learning-edge-04-train-model/select-turbofan-notebook.png" alt-text="选择要运行的第一个 Notebook。":::
 
 1. 如果该 Notebook 列为“不受信任”，请单击 Notebook 右上角的“不受信任”小组件。   对话框出现后，选择“信任”。 
 
@@ -162,7 +161,7 @@ Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验
 
 若要验证 Notebook 是否已成功完成，请验证是否创建了几个项。
 
-1. 在 Azure Notebooks 项目页上，选择“显示隐藏的项”，以显示以句点开头的项名称。 
+1. 在 Azure ML Notebooks“我的文件”选项卡上，选择“刷新” 。
 
 1. 验证是否已创建以下文件：
 
@@ -194,7 +193,7 @@ Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们已使用 Azure Notebooks 中运行的两个 Jupyter Notebook 基于 turbofan 设备中的数据训练剩余使用寿命 (RUL) 分类器、将该分类器保存为模型、创建容器映像，然后测试该映像并将其部署为 Web 服务。
+在本文中，我们已使用 Azure 机器学习工作室中运行的两个 Jupyter Notebook 基于 turbofan 设备中的数据训练剩余使用寿命 (RUL) 分类器、将该分类器保存为模型、创建容器映像，然后测试该映像并将其部署为 Web 服务。
 
 请继续学习下一篇文章了解如何创建 IoT Edge 设备。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 886d6ff1d3437a9d45bdabc68b2bf3ab8cdaa3ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5f49d2c918164fa529b12313e000aff5f8893a65
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349967"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201837"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>教程：为 Blink 配置自动用户预配
 
@@ -117,7 +117,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 9. 在“特性映射”部分中，查看从 Azure AD 同步到 Blink 的用户特性。 选为“匹配”属性的特性用于匹配 Blink 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改  。
 
-    ![Blink 用户特性](media/blink-provisioning-tutorial/user-attributes.png)
+    ![Blink 用户特性](media/blink-provisioning-tutorial/new-user-attributes.png)
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
@@ -136,6 +136,10 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 此操作会对“设置”部分的“范围”中定义的所有用户启动初始同步 。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，该报告描述了 Azure AD 预配服务对 Blink 执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
+
+## <a name="change-log"></a>更改日志
+
+* 2021/01/14 - 已添加自定义扩展属性 company、 description 和 location  。
 
 ## <a name="additional-resources"></a>其他资源
 

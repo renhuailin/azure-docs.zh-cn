@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 36fb54b4b6521d87c7461936c84a644bf22f7e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683497"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963957"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>教程：使用部署脚本创建自签名证书
 
@@ -329,12 +329,12 @@ ms.locfileid: "97683497"
 
     ![资源管理器模板部署脚本资源](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
-    这两个文件的后缀都是 **azscripts**。 一个是存储帐户，另一个是容器实例。
+    这两个文件的后缀都是 _azscripts_。 一个是存储帐户，另一个是容器实例。
 
     选择“显示隐藏的类型”来列出 `deploymentScripts` 资源。
 
-1. 选择带 **azscripts** 后缀的存储帐户。
-1. 选择“文件共享”磁贴。 你将看到一个 azscripts 文件夹。 该文件夹包含部署脚本执行文件。
+1. 选择带 _azscripts_ 后缀的存储帐户。
+1. 选择“文件共享”磁贴。 你将看到包含部署脚本执行文件的 azscripts 文件夹。
 1. 选择“azscripts”。 你将看到两个文件夹：azscriptinput 和 azscriptoutput 。 输入文件夹包含一个系统 PowerShell 脚本文件和一些用户部署脚本文件。 输出文件夹包含 _executionresult.json_ 和脚本输出文件。 可以在 _executionresult.json_ 中看到错误消息。 输出文件不在那里，因为执行失败。
 
 删除 `Write-Output1` 行并重新部署模板。

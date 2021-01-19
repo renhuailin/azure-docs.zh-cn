@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: 023c4d685804b2c6c201f44ab672139d56338cdb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c1798ca74493ba22d29cd9ce819d469c29cd5ec3
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979098"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059562"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - REST
 
@@ -170,21 +170,28 @@ ms.locfileid: "91979098"
         {
         "properties": {
             "description": "My Asset",
-            "alternateId" : "some GUID"
+            "alternateId" : "some GUID",
+            "storageAccountName": "<replace from environment file>",
+            "container": "<supply any valid container name of your choosing>"
          }
         }
         ```
 
+> [!NOTE]
+> 确保用环境文件中的名称或自己提供的名称替换存储帐户和容器的名称。
+>
+> 完成本文其余部分中描述的步骤后，请确保在请求正文中提供有效的参数。
+
 ### <a name="create-a-transform"></a>创建转换
 
-对媒体服务中的内容进行编码或处理时，一种常见的模式是将编码设置设为脚本。 然后，需提交**作业**，将该脚本应用于视频。 为每个新视频提交新作业后，可将该脚本应用到库中的所有视频。 媒体服务中的脚本称为**转换**。 有关详细信息，请参阅[转换和作业](./transforms-jobs-concept.md)。 本教程中的示例定义有关将视频进行编码以将其流式传输到各种 iOS 和 Android 设备的脚本。 
+对媒体服务中的内容进行编码或处理时，一种常见的模式是将编码设置设为脚本。 然后，需提交 **作业**，将该脚本应用于视频。 为每个新视频提交新作业后，可将该脚本应用到库中的所有视频。 媒体服务中的脚本称为 **转换**。 有关详细信息，请参阅[转换和作业](./transforms-jobs-concept.md)。 本教程中的示例定义有关将视频进行编码以将其流式传输到各种 iOS 和 Android 设备的脚本。 
 
 创建新实例时，需要指定希望生成的输出内容[转换](/rest/api/media/transforms)。 所需参数是 TransformOutput 对象。 每个 TransformOutput 包含一个预设 。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput 。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 有关此预设的信息，请参阅[自动生成比特率阶梯](autogen-bitrate-ladder.md)。
 
 可以使用内置 EncoderNamedPreset 或使用自定义预设。 
 
 > [!Note]
-> 在创建[转换](/rest/api/media/transforms)时，首先应检查是否已存在一个使用 **Get** 方法的转换。 本教程假定你使用唯一名称创建该转换。
+> 在创建 [转换](/rest/api/media/transforms)时，首先应检查是否已存在一个使用 **Get** 方法的转换。 本教程假定你使用唯一名称创建该转换。
 
 1. 在 Postman 应用的左侧窗口中，选择“编码和分析”。
 2. 然后选择“创建转换”。
@@ -217,7 +224,7 @@ ms.locfileid: "91979098"
 
 ### <a name="create-a-job"></a>创建作业
 
-[作业](/rest/api/media/jobs)是针对媒体服务的实际请求，目的是将创建的**转换**应用到给定的输入视频或音频内容。 作业指定输入视频位置和输出位置等信息。
+[作业](/rest/api/media/jobs)是针对媒体服务的实际请求，目的是将创建的 **转换** 应用到给定的输入视频或音频内容。 作业指定输入视频位置和输出位置等信息。
 
 在此示例中，作业的输入基于 HTTPS URL（“https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/”）。
 
@@ -254,7 +261,7 @@ ms.locfileid: "91979098"
 
 此作业需要一些时间才能完成，完成时可发出通知。 若要查看作业的进度，建议使用事件网格。 事件网格旨在实现高可用性、一致性能和动态缩放。 使用事件网格，应用可以侦听和响应来自几乎所有 Azure 服务和自定义源的事件。 处理基于 HTTP 的反应事件非常简单，这有助于通过对事件的智能筛选和路由生成高效的解决方案。  请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
 
-**作业**通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消” 。
+**作业** 通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态  。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消” 。
 
 #### <a name="job-error-codes"></a>作业错误代码
 
@@ -262,7 +269,7 @@ ms.locfileid: "91979098"
 
 ### <a name="create-a-streaming-locator"></a>创建流式处理定位符
 
-编码作业完成后，下一步是使输出**资产**中的视频可供客户端播放。 可通过两个步骤完成此操作：首先，创建 [StreamingLocator](/rest/api/media/streaminglocators)，然后，生成客户端可以使用的流式 URL。 
+编码作业完成后，下一步是使输出 **资产** 中的视频可供客户端播放。 可通过两个步骤完成此操作：首先，创建 [StreamingLocator](/rest/api/media/streaminglocators)，然后，生成客户端可以使用的流式 URL。 
 
 创建流定位符的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，流定位符立即生效，并持续到被删除为止。 
 
@@ -271,7 +278,7 @@ ms.locfileid: "91979098"
 > [!IMPORTANT]
 > 使用自定义的 [StreamingPolicy](/rest/api/media/streamingpolicies) 时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于 StreamingLocators。 
 
-媒体服务帐户具有对应于**流式处理策略**条目数的配额。 不应为每个流式处理定位符创建新的流式处理策略。
+媒体服务帐户具有对应于 **流式处理策略** 条目数的配额。 不应为每个流式处理定位符创建新的流式处理策略。
 
 1. 在 Postman 应用的左侧窗口中，选择“流式处理策略和定位符”。
 2. 然后选择“创建流式处理定位符(清除)”。
@@ -355,8 +362,9 @@ ms.locfileid: "91979098"
     若要获取主机名，可以使用以下 GET 操作：
     
     ```
-    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
+    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/default?api-version={{api-version}}
     ```
+    确保设置 `resourceGroupName` 和 `accountName` 参数以与环境文件相匹配。 
     
 3. 在前面的（列出路径）部分中获得的路径。  
 
@@ -370,7 +378,7 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 
 > [!NOTE]
-> 确保要从中进行流式传输的**流式处理终结点**正在运行。
+> 确保要从中进行流式传输的 **流式处理终结点** 正在运行。
 
 本文使用 Azure Media Player 测试流式传输。 
 
@@ -382,7 +390,7 @@ Azure Media Player 可用于测试，但不可在生产环境中使用。
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>清理媒体服务帐户中的资源
 
-通常情况下，除了打算重复使用的对象，应清理所有内容（通常会重复使用**转换**并保留**流式处理定位符**等）。 如果希望帐户在试验后保持干净状态，则应删除不打算重复使用的资源。  
+通常情况下，除了打算重复使用的对象，应清理所有内容（通常会重复使用 **转换** 并保留 **流式处理定位符** 等）。 如果希望帐户在试验后保持干净状态，则应删除不打算重复使用的资源。  
 
 若要删除资源，请在要删除的任意资源下选择“删除...”操作。
 

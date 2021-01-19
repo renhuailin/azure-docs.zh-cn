@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/11/2020
 ms.author: jeedes
-ms.openlocfilehash: a282e1be019c697ad15d86df56ad191043ab4ae9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b6b8dab3472473082562f1e4c0216886191e4a59
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935830"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962799"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SAP NetWeaver 的集成
 
@@ -138,7 +138,7 @@ ms.locfileid: "97935830"
 
 1. 在 Azure 门户中的 SAP NetWeaver 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -206,7 +206,7 @@ ms.locfileid: "97935830"
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-sap-netweaver-using-saml"></a>使用 SAML 配置 SAP NetWeaver
@@ -339,7 +339,7 @@ ms.locfileid: "97935830"
     ![配置 OAuth](./media/sapnetweaver-tutorial/oauth03.png)
 
     > [!NOTE]
-    > 消息 `soft state status is not supported` – 可以忽略，因为未出现问题。 有关更多详细信息，请参阅[此文](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true)
+    > 消息 `soft state status is not supported` – 可以忽略，因为未出现问题。 有关更多详细信息，请参阅[此文](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true)。
 
 ### <a name="create-a-service-user-for-the-oauth-20-client"></a>为 OAuth 2.0 客户端创建服务用户
 
@@ -348,7 +348,7 @@ ms.locfileid: "97935830"
 2. 注册 OAuth 客户端时，我们将使用 `SAML Bearer Grant type`。
 
     >[!NOTE]
-    >有关更多详细信息，请参阅 [SAML 持有者授权类型的 OAuth 2.0 客户端注册](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type)
+    >有关更多详细信息，请参阅 [SAML 持有者授权类型的 OAuth 2.0 客户端注册](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type)。
 
 3. tcod:SU01 / 创建 `System type` 的用户 CLIENT1 并分配密码，根据需要保存设置，以便为 API 程序员提供凭据。程序员应将凭据和用户名一起添加到调用代码。 不要分配配置文件或角色。
 

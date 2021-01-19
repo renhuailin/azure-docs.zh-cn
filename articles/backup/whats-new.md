@@ -3,12 +3,12 @@ title: Azure 备份中的新增功能
 description: 了解 Azure 备份中的新增功能。
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309658"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569413"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure 备份中的新增功能
 
@@ -18,6 +18,9 @@ Azure 备份不断改进和发布新功能，增强了 Azure 中数据的保护�
 
 ## <a name="updates-summary"></a>更新摘要
 
+- 2021 年 1 月
+  - [预览版中的 Azure 磁盘备份 () ](disk-backup-overview.md)
+  - [使用客户托管密钥的静态加密现已正式发布](encryption-at-rest-with-cmk.md)
 - 2020 年 11 月
   - [Azure 文件共享的 azure 资源管理器模板 (AFS) 备份](#azure-resource-manager-template-for-afs-backup)
   - [Azure Vm 上 SAP HANA 数据库的增量备份](#incremental-backups-for-sap-hana-databases)
@@ -32,9 +35,21 @@ Azure 备份不断改进和发布新功能，增强了 Azure 中数据的保护�
   - [用于备份数据的区域冗余存储 (ZRS) ](#zone-redundant-storage-zrs-for-backup-data)
   - [Azure Vm 中的 SQL Server 和 SAP HANA 工作负荷的软删除](#soft-delete-for-sql-server-and-sap-hana-workloads)
 
+## <a name="azure-disk-backup-in-preview"></a>预览版中的 Azure 磁盘备份 () 
+
+Azure 磁盘备份提供了一个全包式解决方案，该解决方案通过使用备份策略自动创建快照并将其保留为配置的持续时间，为 [Azure 托管磁盘](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) 提供快照生命周期管理。 你可以用零的基础结构成本管理磁盘快照，而无需自定义脚本处理或管理开销。 这是一个崩溃一致的备份解决方案，它使用 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) 获取托管磁盘的时间点备份，每日支持多个备份。 它也是一个无代理的解决方案，不会影响生产应用程序的性能。 它支持 (包括共享磁盘) 的操作系统和数据磁盘的备份和还原，无论它们当前是否已附加到正在运行的 Azure 虚拟机。
+
+有关详细信息，请参阅 [预览版) 中的 Azure 磁盘备份 (](disk-backup-overview.md)。
+
+## <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客户管理的密钥进行静态加密
+
+现在，使用客户管理的密钥对静态加密的支持现已正式发布。 这使你能够使用 Azure 密钥保管库中存储的密钥来加密恢复服务保管库中的备份数据。 用于对恢复服务保管库中的备份进行加密的加密密钥可能不同于用于对源进行加密的加密密钥。 使用基于 AES 256 的数据加密密钥保护数据 (DEK) ，进而使用存储在 Key Vault 中的密钥进行保护。 与使用平台托管密钥的加密相比 (默认情况下提供) ，这使你可以更好地控制密钥，并可帮助你更好地满足你的符合性需求。
+
+有关详细信息，请参阅 [使用客户管理的密钥加密备份数据](encryption-at-rest-with-cmk.md)。
+
 ## <a name="azure-resource-manager-template-for-afs-backup"></a>用于 AFS 备份的 Azure 资源管理器模板
 
-Azure 备份现在支持使用 Azure 资源管理器 (ARM) 模板为现有的 Azure 文件共享配置备份。 模板通过为恢复服务保管库和备份策略指定适当的详细信息，为现有的 Azure 文件共享配置保护。 它可以根据需要创建新的恢复服务保管库和备份策略，并向恢复服务保管库注册包含文件共享的存储帐户。
+Azure 备份现在支持使用 Azure 资源管理器 (ARM) 模板为现有的 Azure 文件共享配置备份。 模板通过为恢复服务保管库和备份策略指定适当的详细信息，为现有的 Azure 文件共享配置保护。 可以根据需要创建新的恢复服务保管库和备份策略，并将包含文件共享的存储帐户注册到恢复服务保管库。
 
 有关详细信息，请参阅 azure [备份的 azure 资源管理器模板](backup-rm-template-samples.md)。
 

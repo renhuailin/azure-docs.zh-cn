@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/20/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e99b3a8960eb49856e9a016eb054eed41eccde9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b4cf2e79acf4cd58ff94a2e90f07202341672a1d
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965249"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569430"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure 虚拟机 SAP 工作负荷的 Oracle DBMS 部署
 
@@ -445,15 +445,19 @@ SAP 应用程序使用 Oracle Database 的特定方案也受支持。 详细信�
 
 ### <a name="storage-configuration"></a>存储配置
 
-Azure 上的 Oracle Database 文件支持 ext4、xfs 或 Oracle ASM 的文件系统。 所有数据库文件都必须存储在基于 VHD 或托管磁盘的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)或 [Azure 托管磁盘](../../managed-disks-overview.md)。
+Ext4、xfs、NFSv 4.1 的文件系统仅在 Azure NetApp 文件 (和) # A3 或 Oracle (ASM 上 (，请参阅 SAP 说明 [#2039619](https://launchpad.support.sap.com/#/notes/2039619) ，了解 Azure 上的) 文件支持的发布/版本要求 Oracle Database。 所有数据库文件都必须存储在基于 Vhd、托管磁盘或和的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [azure 页 blob 存储](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)、 [azure 托管磁盘](../../managed-disks-overview.md)或 [azure NetApp 文件](https://azure.microsoft.com/services/netapp/)。
 
-对于 Oracle Linux UEK 内核，支持 [Azure 高级 SSD](../../premium-storage-performance.md#disk-caching) 至少需要 UEK 版本 4。
+最低要求列表，如下所示： 
+
+- 对于 Oracle Linux UEK 内核，支持 [Azure 高级 SSD](../../premium-storage-performance.md#disk-caching) 至少需要 UEK 版本 4。
+- 对于具有和的 Oracle，支持的最低 Oracle Linux 为8.2。
+- 对于具有和的 Oracle，受支持的最低 Oracle 版本为 19c (19.8.0.0) 
 
 若要查看适用于 DBMS 工作负荷的特定 Azure 块存储类型的详细信息，请查看 [有关 SAP 工作负荷的 Azure 存储类型](./planning-guide-storage.md) 一文。
 
-强烈建议使用 [Azure 托管磁盘](../../managed-disks-overview.md)。 另外，还强烈建议使用 [Azure 高级 SSD](../../disks-types.md) 进行 Oracle Database 部署。
+强烈建议使用 Azure 块存储，为 Oracle Database 部署使用 [azure 托管磁盘](../../managed-disks-overview.md) 和 [azure 高级 ssd](../../disks-types.md) 。
 
-Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文件。 有关详细信息，请参阅以下主题： 
+除 Azure NetApp 文件、其他共享磁盘、网络驱动器或远程共享（例如 Azure 文件服务）外，Oracle Database 文件不支持 (AFS) 。 有关详细信息，请参阅以下主题： 
 
 - [Microsoft Azure 文件服务简介](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -469,10 +473,10 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 | 组件 | 磁盘 | Caching | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA & mirrlogB | 高级或超磁盘 | 无 | 无需 |
-| /oracle/\<SID>/origlogaB & mirrlogA | 高级或超磁盘 | 无 | 无需 |
-| /oracle/\<SID>/sapdata1...n | 高级或超磁盘 | 只读 | 可用于高级 |
-| /oracle/\<SID>/oraarch | Standard | 无 | 无需 |
+| /oracle/\<SID>/origlogaA & mirrlogB | 高级、超级磁盘或和 | 无 | 无需 |
+| /oracle/\<SID>/origlogaB & mirrlogA | 高级、超级磁盘或和 | 无 | 无需 |
+| /oracle/\<SID>/sapdata1...n | 高级、超级磁盘或和 | 只读 | 可用于高级 |
+| /oracle/\<SID>/oraarch | Standard 或和 | 无 | 无需 |
 | Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM
@@ -483,13 +487,13 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 | 组件 | 磁盘 | Caching | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA | 高级或超磁盘 | 无 | 可用于高级  |
-| /oracle/\<SID>/origlogaB | 高级或超磁盘 | 无 | 可用于高级 |
-| /oracle/\<SID>/mirrlogAB | 高级或超磁盘 | 无 | 可用于高级 |
-| /oracle/\<SID>/mirrlogBA | 高级或超磁盘 | 无 | 可用于高级 |
-| /oracle/\<SID>/sapdata1...n | 高级或超磁盘 | 只读 | 建议用于高级  |
-| /oracle/\<SID>/sapdata(n+1)* | 高级或超磁盘 | 无 | 可用于高级 |
-| /oracle/\<SID>/oraarch* | 高级或超磁盘 | 无 | 无需 |
+| /oracle/\<SID>/origlogaA | 高级、超级磁盘或和 | 无 | 可用于高级  |
+| /oracle/\<SID>/origlogaB | 高级、超级磁盘或和 | 无 | 可用于高级 |
+| /oracle/\<SID>/mirrlogAB | 高级、超级磁盘或和 | 无 | 可用于高级 |
+| /oracle/\<SID>/mirrlogBA | 高级、超级磁盘或和 | 无 | 可用于高级 |
+| /oracle/\<SID>/sapdata1...n | 高级、超级磁盘或和 | 只读 | 建议用于高级  |
+| /oracle/\<SID>/sapdata(n+1)* | 高级、超级磁盘或和 | 无 | 可用于高级 |
+| /oracle/\<SID>/oraarch* | 高级、超级磁盘或和 | 无 | 无需 |
 | Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM
@@ -500,6 +504,10 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 
 使用 Azure 高级存储时，如果需要更多 IOPS，我们建议使用 LVM (逻辑卷管理器) 或 MDADM，通过多个已装载磁盘创建一个大型逻辑卷。 有关如何利用 LVM 或 MDADM 的准则和指针的详细信息，请参阅[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)。 这种方法可以简化磁盘空间的管理开销，帮助避免跨已装载的多个磁盘手动分发文件。
+
+如果计划使用 Azure NetApp 文件，请确保正确配置 dNFS 客户端。 使用 dNFS 是具有受支持的环境所必需的。 在 [直接 NFS 上创建 Oracle Database 一](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA)文中介绍了 dNFS 配置。
+
+此示例演示了用于 Oracle 数据库的基于 Azure NetApp 文件的 NFS 的使用情况，请在博客 [部署 SAP AnyDB (oracle 19c) 与 Azure NetApp 文件一起](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)介绍。
 
 
 #### <a name="write-accelerator"></a>写入加速器

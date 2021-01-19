@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 自定义视觉构建可检测玩具卡车
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 614c4e401579eda68d8030dc2d2a42b2c4736031
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: de788c337ce8030b73538565e4f374ffc7db55b8
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401689"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060484"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>教程：使用 IoT Edge 上的实时视频分析和 Azure 自定义视觉分析实时视频
 
@@ -61,8 +61,11 @@ ms.locfileid: "97401689"
 ::: zone-end
 ## <a name="review-the-sample-video"></a>观看示例视频
 
+本教程使用[玩具汽车推理视频](https://lvamedia.blob.core.windows.net/public/t2.mkv)文件来模拟实时流。 可以通过某个应用程序（例如 [VLC 媒体播放器](https://www.videolan.org/vlc/)）来观看视频。 选择“Ctrl+N”，然后粘贴[玩具汽车推理视频](https://lvamedia.blob.core.windows.net/public/t2.mkv)的链接开始播放。 观看视频时，请注意，在 36 秒标记处，玩具卡车出现在视频中。 自定义模型已经过训练，可以检测到这一特定玩具卡车。 
 
-本教程使用[玩具汽车推理视频](https://lvamedia.blob.core.windows.net/public/t2.mkv)文件来模拟实时流。 可以通过某个应用程序（例如 [VLC 媒体播放器](https://www.videolan.org/vlc/)）来观看视频。 选择“Ctrl+N”，然后粘贴[玩具汽车推理视频](https://lvamedia.blob.core.windows.net/public/t2.mkv)的链接开始播放。 观看视频时，请注意，在 36 秒标记处，玩具卡车出现在视频中。 自定义模型已经过训练，可以检测到这一特定玩具卡车。 在本教程中，你将使用 IoT Edge 上的实时视频分析来检测此类玩具卡车并将关联的推理事件发布到 IoT Edge 中心。
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LPwK]
+
+在本教程中，你将使用 IoT Edge 上的实时视频分析来检测此类玩具卡车并将关联的推理事件发布到 IoT Edge 中心。
 
 ## <a name="overview"></a>概述
 
@@ -127,7 +130,6 @@ HTTP 扩展节点扮演代理的角色。  它对使用 `samplingOptions` 字段
 
 ## <a name="examine-the-sample-files"></a>检查示例文件
 
-
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/csharp/examine-sample-files.md)]
 ::: zone-end
@@ -140,7 +142,7 @@ HTTP 扩展节点扮演代理的角色。  它对使用 `samplingOptions` 字段
 
 1. 在 Visual Studio Code 中，转到 src/cloud-to-device-console-app/operations.json。
 
-1. 在 `GraphTopologySet` 下，确保满足以下条件：<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+1. 在 `GraphTopologySet` 下，确保满足以下条件：<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/2.0/topology.json"`
 1. 在 `GraphInstanceSet` 下，确保：
     1. `"topologyName" : "InferencingWithHttpExtension"`
     1. 在 parameters 数组的顶部，添加以下内容：`{"name": "inferencingUrl","value": "http://cv:80/image"},`
@@ -261,7 +263,7 @@ HTTP 扩展节点扮演代理的角色。  它对使用 `samplingOptions` 字段
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished 事件
 
-对媒体图进行实例化后，RTSP 源节点尝试连接到在 rtspsim-live555 容器上运行的 RTSP 服务器。 如果连接成功，则打印以下事件。 事件类型为 `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished`。
+对媒体图进行实例化后，RTSP 源节点尝试连接到在 rtspsim-live555 容器上运行的 RTSP 服务器。 如果连接成功，则打印以下事件。 事件类型为 Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished。
 
 ```
 {

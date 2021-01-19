@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: df511e79b73256833ec54c5906bb6acbc852bc46
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: b1fa4d3e6c017232922e500352558e34726b90cc
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739614"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183075"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>教程：训练你的第一个机器学习模型（第 3 部分，共 4 部分）
 
@@ -40,10 +40,8 @@ ms.locfileid: "97739614"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 完成本系列的[第 2 部分](tutorial-1st-experiment-hello-world.md)。
-* Python 语言和机器学习工作流的入门知识。
-* 本地开发环境，如 Visual Studio Code、Jupyter 或 PyCharm。
-* Python（版本 3.5 至 3.7）。
+- [Anaconda](https://www.anaconda.com/download/) 或 [Miniconda](https://www.anaconda.com/download/)，用于管理 Python 虚拟环境并安装包。
+- 完成本系列的[第 1 部分](tutorial-1st-experiment-sdk-setup-local.md)和[第 2 部分](tutorial-1st-experiment-hello-world.md)。
 
 ## <a name="create-training-scripts"></a>创建训练脚本
 
@@ -77,9 +75,7 @@ tutorial
 > [!div class="nextstepaction"]
 > [我创建了训练脚本](?success=create-scripts#environment) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=create-scripts)
 
-## <a name="create-a-python-environment"></a><a name="environment"></a> 创建 Python 环境
-
-为了便于演示，我们将使用 Conda 环境。 （用于 pip 虚拟环境的步骤基本相同。）
+## <a name="create-a-new-python-environment"></a><a name="environment"></a> 创建新的 Python 环境
 
 在 `.azureml` 隐藏目录中创建名为 `pytorch-env.yml` 的文件：
 
@@ -92,18 +88,19 @@ tutorial
 
 ## <a name="test-locally"></a><a name="test-local"></a> 本地测试
 
-请使用以下代码在此环境中对脚本运行进行本地测试：
+在终端或 Anaconda 提示符窗口中，使用以下代码在新环境中本地测试脚本。  
 
 ```bash
-conda env create -f .azureml/pytorch-env.yml    # create conda environment
-conda activate pytorch-env                      # activate conda environment
+conda deactivate                                # If you are still using the tutorial environment, exit it
+conda env create -f .azureml/pytorch-env.yml    # create the new Conda environment
+conda activate pytorch-env                      # activate new Conda environment
 python src/train.py                             # train model
 ```
 
 运行此脚本后，你将会看到下载到名为 `tutorial/data` 的目录中的数据。
 
 > [!div class="nextstepaction"]
-> [我创建了环境文件](?success=test-local#create-local) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=test-local)
+> [我在本地运行代码](?success=test-local#create-local) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=test-local)
 
 ## <a name="create-the-control-script"></a><a name="create-local"></a> 创建控制脚本
 
@@ -163,11 +160,11 @@ if __name__ == "__main__":
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> 将该运行提交到 Azure 机器学习
 
-如果切换了本地环境，请确保切换回已安装了适用于 Python 的 Azure 机器学习 SDK 的环境。
-
-然后运行：
+切换回教程环境，该环境安装了适用于 Python 的 Azure 机器学习 SDK。 由于训练代码未在计算机上运行，因此无需安装 PyTorch。  但你确实需要教程环境中的 `azureml-sdk`。
 
 ```bash
+conda deactivate
+conda activate tutorial
 python 04-run-pytorch.py
 ```
 

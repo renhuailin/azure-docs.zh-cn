@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: bcad165f5d0ba2cf652cff35091e05b4414193c8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8946dfca9a416009effb45cad1e81348dd900f98
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951785"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968112"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>教程：使用 Azure Stack Edge Pro 转换用于高级部署流的数据
 
@@ -52,32 +52,34 @@ ms.locfileid: "91951785"
 
 若要在 Azure Stack Edge Pro 上配置计算，必须创建一个 IoT 中心资源。
 
-1. 在 Azure Stack Edge 资源的 Azure 门户中，转到“概览”。 在右窗格中的“计算”磁贴上，选择“开始”。 
+1. 在 Azure Stack Edge 资源的 Azure 门户中，转到“概览”。 在右窗格中，选择“IoT Edge”磁贴。
 
     ![开始使用计算](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-1.png)
 
-2. 在“配置 Edge 计算”磁贴上，选择“配置计算”。 
+2. 在“启用 IoT Edge 服务”磁贴中，选择“添加” 。 此操作将启用 IoT Edge 服务，通过该服务你可以在设备上本地部署 IoT Edge 模块。
 
     ![开始使用计算 2](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
 
-3. 在“配置 Edge 计算”边栏选项卡上输入以下内容：
+3. 在“创建 IoT Edge 服务”上，输入以下内容：
 
    
-    |字段  |值  |
+    |字段  |Value  |
     |---------|---------|
-    |IoT 中心     | 选择“新建”或“现有”。  <br> 默认会使用标准层 (S1) 来创建 IoT 资源。 若要使用免费层 IoT 资源，请创建一个资源，然后选择现有的资源。 <br> 在每种情况下，IoT 中心资源都会使用 Azure Stack Edge 资源所用的同一订阅和资源组。     |
-    |名称     |输入 IoT 中心资源的名称。         |
+    |订阅     |为 IoT 中心资源选择订阅。 可以选择 Azure Stack Edge 资源使用的同一订阅。        |
+    |资源组     |为 IoT 中心资源输入资源组的名称。 可以选择 Azure Stack Edge 资源使用的同一资源组。         |
+    |IoT 中心     | 选择“新建”或“现有”。  <br> 默认会使用标准层 (S1) 来创建 IoT 资源。 若要使用免费层 IoT 资源，请创建一个资源，然后选择现有的资源。      |
+    |名称     |接受默认值或输入 IoT 中心资源的名称。         |
 
     ![开始使用计算 3](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
-4. 选择“创建”。 创建 IoT 中心资源需要花费几分钟时间。 创建 IoT 中心资源后，“配置 Edge 计算”磁贴会更新，以显示计算配置。 若要确认已配置 Edge 计算角色，请在“配置计算”磁贴上选择“查看配置” 。
-    
+4. 选择“查看 + 创建”  。 创建 IoT 中心资源需要花费几分钟时间。 创建 IoT 中心资源后，“概述”将更新，以指示 IoT Edge 服务正在运行。 
+
+    如果在 Edge 设备上配置了 IoT Edge 服务，则会创建两个设备：一个 IoT 设备，一个 IoT Edge 设备。 可在 IoT 中心资源中查看这两个设备。 某个 IoT Edge 运行时也在此 IoT Edge 设备上运行。 目前，只有 Linux 平台适用于你的 IoT Edge 设备。
+
+    若要确认 Edge 计算角色已配置，请选择“IoT Edge 服务”>“属性”，然后查看 IoT 设备和 IoT Edge 设备。 
+
     ![开始使用计算 4](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
-
-    如果在 Edge 设备上设置了 Edge 计算角色，则会创建两个设备：一个 IoT 设备，一个 IoT Edge 设备。 可在 IoT 中心资源中查看这两个设备。 某个 IoT Edge 运行时也在此 IoT Edge 设备上运行。
-
-    目前，只有 Linux 平台适用于你的 IoT Edge 设备。
-
+    
 
 ## <a name="add-shares"></a>添加共享
 
@@ -85,19 +87,13 @@ ms.locfileid: "91951785"
 
 1. 执行以下步骤，在设备上添加 Edge 共享：
 
-    1. 在 Azure Stack Edge 资源中，转到“Edge 计算”>“开始”。
-    2. 在“添加共享”磁贴上选择“添加”。 
+    1. 在 Azure Stack Edge 资源中，转到“IoT Edge”>“共享”。
+    2. 在“共享”页上，从命令栏中选择“+ 添加共享” 。
     3. 在“添加共享”边栏选项卡上提供共享名称，然后选择共享类型。
     4. 若要装载 Edge 共享，请选中“将该共享用于 Edge 计算”复选框。
     5. 依次选择“存储帐户”、“存储服务”、某个现有用户、“创建”。  
 
         ![添加 Edge 共享](./media/azure-stack-edge-deploy-configure-compute-advanced/add-edge-share-1.png)
-
-    <!--If you created a local NFS share, use the following remote sync (rsync) command option to copy files onto the share:
-
-    `rsync <source file path> < destination file path>`
-
-    For more information about the rsync command, go to [Rsync documentation](https://www.computerhope.com/unix/rsync.htm).-->
 
     创建 Edge 共享后，将收到创建成功的通知。 共享列表会更新，以反映新的共享。
 
@@ -124,7 +120,7 @@ ms.locfileid: "91951785"
 
 ## <a name="add-a-trigger"></a>添加触发器
 
-1. 转到“Edge 计算”>“触发器”。 选择“+ 添加触发器”。
+1. 转到 Azure Stack Edge 资源，然后转到“IoT Edge”>“触发器”。 选择“+ 添加触发器”。
 
     ![添加触发器](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-1.png)
 
@@ -154,7 +150,7 @@ ms.locfileid: "91951785"
 
 在此部分中，我们将向[为 Azure Stack Edge Pro 开发 C# 模块](azure-stack-edge-create-iot-edge-module.md)中创建的 IoT Edge 设备添加一个自定义模块。 此自定义模块从 Edge 设备上的 Edge 本地共享提取文件，并将其移到设备上的 Edge（云）共享。 然后，云共享将文件推送到与该云共享相关联的 Azure 存储帐户。
 
-1. 转到“Edge 计算”>“开始”。 在“添加模块”磁贴上，选择“高级”作为方案类型 。 选择“转到 IoT 中心”。
+1. 转到 Azure Stack Edge 资源，然后转到“IoT Edge”>“概述”。 在“模块”磁贴上，选择“转到 Azure IoT 中心” 。
 
     ![选择高级部署](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-1.png)
 
@@ -181,7 +177,7 @@ ms.locfileid: "91951785"
  
     2. 指定 IoT Edge 自定义模块的设置。 输入以下值。
      
-        |字段  |值  |
+        |字段  |Value  |
         |---------|---------|
         |名称     | 模块的唯一名称。 此模块是一个 Docker 容器，可以部署到与 Azure Stack Edge Pro 关联的 IoT Edge 设备。        |
         |映像 URI     | 模块的对应容器映像的映像 URI。        |
@@ -219,7 +215,7 @@ ms.locfileid: "91951785"
    
    ![指定路由](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
 
-    可以使用之前复制的以下路由字符串替换*路由*。 在本示例中，请输入要将数据推送到云共享的本地共享的名称。 将 `modulename` 替换为模块的名称。 选择“**下一页**”。
+    可以使用之前复制的以下路由字符串替换 *路由*。 在本示例中，请输入要将数据推送到云共享的本地共享的名称。 将 `modulename` 替换为模块的名称。 选择“**下一页**”。
         
     ```
     "route": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/filemove/inputs/input1\")"

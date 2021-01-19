@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 5342c4505bd300d1287acba246ca59610f2697bd
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 0d0597c2df8731171505a090de6959d8a112c004
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858631"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569974"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
@@ -209,7 +209,9 @@ Elapsed Time            330 sec
 ```
 
 ## <a name="considerations"></a>注意事项 
+* 每个订阅一次只能运行一个故障排除操作。 若要运行其他故障排除操作，请等待前一个操作完成。 在上一个操作未完成的情况下触发更多操作将导致后续操作失败。 
 * CLI Bug：如果使用 Azure CLI 运行命令，则 VPN 网关和存储帐户必须位于同一资源组中。 具有不同资源组中的资源的客户可以改为使用 PowerShell 或 Azure 门户。  
+
 
 ## <a name="next-steps"></a>后续步骤
 

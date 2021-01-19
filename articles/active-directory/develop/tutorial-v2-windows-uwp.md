@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: dce2cd0d77ff0a98d4d68e1c99edb472e61ce8a5
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509455"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064413"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>教程：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -50,7 +50,7 @@ ms.locfileid: "97509455"
 
 |库|说明|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft 身份验证库|
+|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsoft 身份验证库|
 |[Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph 客户端库|
 
 ## <a name="set-up-your-project"></a>设置项目
@@ -71,7 +71,7 @@ ms.locfileid: "97509455"
 
    ![最低版本和目标版本](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
-### <a name="add-microsoft-authentication-library-to-your-project"></a>向项目添加 Microsoft 身份验证库
+### <a name="add-the-microsoft-authentication-library-to-your-project"></a>向项目添加 Microsoft 身份验证库
 
 1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器” > “包管理器控制台”  。
 1. 在“包管理器控制台”窗口中复制并粘贴以下命令：
@@ -103,7 +103,7 @@ Visual Studio 创建 *MainPage.xaml* 作为项目模板的一部分。 打开此
 </Grid>
 ```
 
-### <a name="use-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>使用 Microsoft 身份验证库获取用于 Microsoft Graph API 的令牌
+### <a name="use-the-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>使用 Microsoft 身份验证库获取用于 Microsoft Graph API 的令牌
 
 本部分介绍如何使用 Microsoft 身份验证库获取用于 Microsoft Graph API 的令牌。 更改 *MainPage.xaml.cs* 文件。
 
@@ -346,7 +346,7 @@ private async Task DisplayMessageAsync(string message)
 
 现在需注册应用程序：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -357,7 +357,7 @@ private async Task DisplayMessageAsync(string message)
 
 为应用程序配置身份验证：
 
-1. 返回 [Azure 门户](https://portal.azure.com)，在“管理”下，选择“身份验证” > “添加平台”，然后选择“移动和桌面应用程序”   。
+1. 返回 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>，在“管理”下，选择“身份验证” > “添加平台”，然后选择“移动和桌面应用程序”   。
 1. 在“重定向 URI”部分中，勾选 https://login.microsoftonline.com/common/oauth2/nativeclient 。
 1. 选择“配置” 。
 
@@ -469,7 +469,7 @@ private async Task DisplayMessageAsync(string message)
 |properties  |格式  |说明 |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |用于标识用户的用户名。|
-|`Token Expires` |`DateTime` |令牌的过期时间。 Microsoft 身份验证库通过根据需要续订令牌来延长到期日期。|
+|`Token Expires` |`DateTime` |令牌的过期时间。 Microsoft 身份验证库根据需要通过续订令牌来延长到期日期。|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>有关作用域和委派权限的详细信息
 

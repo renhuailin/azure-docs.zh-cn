@@ -3,16 +3,16 @@ title: 教程 - 在 Azure IoT Central 应用程序中创建和管理规则
 description: 本教程介绍如何通过 Azure IoT Central 规则以近实时方式监视设备并自动调用操作（例如在触发规则时发送电子邮件）。
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/16/2020
+ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6d49e3585460c95ca931f497a63cbc281aed1db1
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 6be49ec3777b4bcaa033a60546e95711090662a4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990945"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065280"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中创建规则并设置通知
 
@@ -38,6 +38,9 @@ ms.locfileid: "94990945"
 ## <a name="create-a-rule"></a>创建规则
 
 若要创建遥测规则，设备模板必须至少包含一个遥测值。 本教程使用模拟的传感器控制器设备来发送温度和湿度遥测数据。 在[将模拟设备添加到 IoT Central 应用程序](./quick-create-simulated-device.md)快速入门中，你已添加此设备模板并创建了模拟设备。 该规则监视设备报告的温度，并在温度超过 70 度时发送电子邮件。
+
+> [!NOTE]
+> 每个应用程序限制 50 条规则。
 
 1. 在左窗格中，选择“规则”  。
 
@@ -115,4 +118,4 @@ ms.locfileid: "94990945"
 现在，你已定义了基于阈值的规则，建议接下来学习如何：
 
 > [!div class="nextstepaction"]
-> [配置连续数据导出](./howto-export-data.md)。
+> [根据规则创建 Webhook](./howto-create-webhooks.md)。

@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 511801962d07e5fb99000b2fc19adce2489b46d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967476"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570076"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷
 
@@ -69,10 +69,10 @@ LIF 和单个 Linux 会话的最大吞吐量介于1.2 到 1.4 GB/秒之间。
 | 1 TB | 每秒 16 MB | 64 MB/秒 | 128 MB/秒 |
 | 2 TB | 32 MB/秒 | 128 MB/秒 | 256 MB/秒 |
 | 4 TB | 64 MB/秒 | 256 MB/秒 | 512 MB/秒 |
-| 10 TB | 160 MB/秒 | 640 MB/秒 | 1.280 MB/秒 |
-| 15 TB | 240 MB/秒 | 960 MB/秒 | 1.400 MB/秒 |
-| 20 TB | 320 MB/秒 | 1.280 MB/秒 | 1.400 MB/秒 |
-| 40 TB | 640 MB/秒 | 1.400 MB/秒 | 1.400 MB/秒 |
+| 10 TB | 160 MB/秒 | 640 MB/秒 | 1280 MB/秒 |
+| 15 TB | 240 MB/秒 | 960 MB/秒 | 1400 MB/秒 |
+| 20 TB | 320 MB/秒 | 1280 MB/秒 | 1400 MB/秒 |
+| 40 TB | 640 MB/秒 | 1400 MB/秒 | 1400 MB/秒 |
 
 必须了解的是，将数据写入存储后端中的相同 Ssd。 创建了容量池中的性能配额，以便能够管理该环境。
 存储 Kpi 对于所有 HANA 数据库大小都相等。 在几乎所有情况下，此假设并不反映事实和客户预期。 HANA 系统的大小并不一定意味着小系统需要较低的存储吞吐量–并且大型系统需要高存储吞吐量。 但一般情况下，对于较大的 HANA 数据库实例，我们可能需要更高的吞吐量要求。 由于 SAP 的底层硬件的大小调整规则的结果，较大的 HANA 实例还在实例重新启动后加载数据等任务中提供了更多的 CPU 资源和更高的并行性。 因此，应将卷大小采用为客户的期望和要求。 并且不仅由纯容量要求驱动。

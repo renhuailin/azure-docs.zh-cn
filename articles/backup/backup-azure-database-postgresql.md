@@ -4,12 +4,12 @@ description: '了解 Azure Database for PostgreSQL 具有长期保留 (预览版
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 32837e5bb871f7db5024569efc27940047aeacd7
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734634"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569481"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL 具有长期保留 (预览版的备份) 
 
@@ -135,7 +135,7 @@ Azure 备份和 Azure 数据库服务汇集了一个企业级备份解决方案�
 
 1. 定义 **保留** 设置。 您可以添加一个或多个保留规则。 每个保留规则都假定特定备份的输入，以及这些备份的数据存储和保留期。
 
-1. 你可以选择将备份存储在两个数据存储的其中一个 (或层) ： **(热** 层) 或 **存档数据存储** (在预览版) 中。 可以在 **两个分层选项** 之间进行选择，以定义在两个数据存储中分层备份的时间：
+1. 你可以选择 **将备份存储** 在两个数据存储的其中一个 (或层) ： (标准层) 或 **存档数据存储** (在预览版) 中。 可以在 **两个分层选项** 之间进行选择，以定义在两个数据存储中分层备份的时间：
 
     - 如果希望在备份和存档数据存储中同时使用备份副本，请选择 **立即** 复制。
     - 如果你希望在备份数据存储中将备份存储到存档数据存储，请选择 **在过期** 时将其移到 "过期"。

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 95993b35174b80dae8c878c22554ee60afeb8a14
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 57a9f6f11283e020efc25f55f1df473a6cb2d321
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206214"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569991"
 ---
 # <a name="server-side-performance-queries"></a>服务器端性能查询
 
@@ -65,9 +65,9 @@ void QueryFrameData(ApiHandle<AzureSession> session)
 | 成员 | 说明 |
 |:-|:-|
 | latencyPoseToReceive | 从客户端设备上的相机姿态估计一直到该姿态的服务器帧可完全用于客户端应用程序之间的延迟。 该值包括网络往返、服务器渲染、视频解码和抖动补偿时间。 请查看上图中的时间间隔 1。|
-| latencyReceiveToPresent | 从收到的远程帧可用一直到客户端应用在 CPU 上调用 PresentFrame 之间的延迟。 |
-| latencyPresentToDisplay  | 从在 CPU 上显示一个帧一直到显示屏亮起之间的延迟。 该值包括客户端 GPU 时间、操作系统执行的任何帧缓冲、硬件重新投影和与设备相关的显示屏扫描输出时间。 请查看上图中的时间间隔 2。|
-| timeSinceLastPresent | 在 CPU 上对 PresentFrame 进行后续调用之间的时间。 如果值大于显示持续时间（例如，在 60 Hz 客户端设备上为 16.6 毫秒），则表示存在客户端应用程序未及时完成其 CPU 工作负载所造成的问题。 请查看上图中的时间间隔 3。|
+| latencyReceiveToPresent | 从收到的远程帧可用一直到客户端应用在 CPU 上调用 PresentFrame 之间的延迟。 请查看上图中的时间间隔 2。|
+| latencyPresentToDisplay  | 从在 CPU 上显示一个帧一直到显示屏亮起之间的延迟。 该值包括客户端 GPU 时间、操作系统执行的任何帧缓冲、硬件重新投影和与设备相关的显示屏扫描输出时间。 请查看上图中的时间间隔 3。|
+| timeSinceLastPresent | 在 CPU 上对 PresentFrame 进行后续调用之间的时间。 如果值大于显示持续时间（例如，在 60 Hz 客户端设备上为 16.6 毫秒），则表示存在客户端应用程序未及时完成其 CPU 工作负载所造成的问题。|
 | videoFramesReceived | 最后一秒内从服务器接收的帧数。 |
 | videoFrameReusedCount | 最近一秒在设备上多次使用的已接收帧数。 如果值不是零，则表示由于网络抖动或服务器渲染时间过长，必须重新使用和重新投影帧。 |
 | videoFramesSkipped | 在最后一秒被解码但由于新帧到达而未显示的已接收帧数。 如果值不是零，则表示网络抖动导致多个帧延迟，然后以突发形式一起到达客户端设备。 |

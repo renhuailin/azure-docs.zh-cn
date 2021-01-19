@@ -11,16 +11,14 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: b0b415cce37e464abcba9fab5ad4c1196b1b2e1b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 8222f88f5118c4ac8f489bb05ee5ca2724dbf067
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033470"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184078"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教程：生成用于批量评分的 Azure 机器学习管道
-
-
 
 在本高级教程中，你将了解如何构建 [Azure 机器学习管道](concept-ml-pipelines.md)来运行批量评分作业。 机器学习管道可以优化工作流以提高其速度、可移植性和可重用性，使你能够将工作重心放在机器学习上，而不必关注基础结构和自动化。 生成并发布管道后，你将配置一个 REST 终结点，用于从任何平台上的任何 HTTP 库触发该管道。 
 
@@ -79,26 +77,24 @@ def_data_store = ws.get_default_datastore()
 
 ## <a name="create-dataset-objects"></a>创建数据集对象
 
-生成管道时，将使用 `Dataset` 对象从工作区数据存储读取数据，并使用 `PipelineData` 对象在管道步骤之间传输中间数据。
+生成管道时，将使用 `Dataset` 对象从工作区数据存储读取数据，并使用 `OutputFileDatasetConfig` 对象在管道步骤之间传输中间数据。
 
 > [!Important]
 > 本教程中的批量评分示例只使用一个管道步骤。 在包含多个步骤的用例中，典型流包括以下步骤：
 >
-> 1. 使用 `Dataset` 对象作为提取原始数据的输入，执行某种转换，然后输出 `PipelineData` 对象。 
+> 1. 使用 `Dataset` 对象作为提取原始数据的输入，执行某种转换，然后输出 `OutputFileDatasetConfig` 对象 。
 >
-> 2. 使用上一步骤中的 `PipelineData` 输出对象作为输入对象 。 针对后续步骤重复此过程。
+> 2. 使用上一步骤中的 `OutputFileDatasetConfig` 输出对象作为输入对象 。 针对后续步骤重复此过程。
 
-在此场景中，你将创建与输入图像和分类标签（y-test 值）的数据存储目录相对应的 `Dataset` 对象。 此外，将为批量评分输出数据创建一个 `PipelineData` 对象。
+在此场景中，你将创建与输入图像和分类标签（y-test 值）的数据存储目录相对应的 `Dataset` 对象。 还将为批量评分输出数据创建一个 `OutputFileDatasetConfig` 对象。
 
 ```python
 from azureml.core.dataset import Dataset
-from azureml.pipeline.core import PipelineData
+from azureml.data import OutputFileDatasetConfig
 
 input_images = Dataset.File.from_files((batchscore_blob, "batchscoring/images/"))
 label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/"))
-output_dir = PipelineData(name="scores", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="batchscoring/results")
+output_dir = OutputFileDatasetConfig(name="scores")
 ```
 
 如果以后要重用数据集，请将其注册到工作区。 此步骤是可选的。
@@ -345,7 +341,7 @@ from azureml.core import Experiment
 from azureml.pipeline.core import Pipeline
 
 pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
-pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline)
+pipeline_run = Experiment(ws, 'Tutorial-Batch-Scoring').submit(pipeline)
 pipeline_run.wait_for_completion(show_output=True)
 ```
 
@@ -409,7 +405,7 @@ import requests
 rest_endpoint = published_pipeline.endpoint
 response = requests.post(rest_endpoint, 
                          headers=auth_header, 
-                         json={"ExperimentName": "batch_scoring",
+                         json={"ExperimentName": "Tutorial-Batch-Scoring",
                                "ParameterAssignments": {"process_count_per_node": 6}})
 run_id = response.json()["Id"]
 ```
@@ -422,7 +418,7 @@ run_id = response.json()["Id"]
 from azureml.pipeline.core.run import PipelineRun
 from azureml.widgets import RunDetails
 
-published_pipeline_run = PipelineRun(ws.experiments["batch_scoring"], run_id)
+published_pipeline_run = PipelineRun(ws.experiments["Tutorial-Batch-Scoring"], run_id)
 RunDetails(published_pipeline_run).show()
 ```
 

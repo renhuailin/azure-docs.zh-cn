@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 621bbac6bc9ff3cb147110942060c8268fd86989
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4793cad25e34e2e318dd205ba5f474d4529d13d5
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511172"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183874"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>教程：Azure Active Directory 单一登录 (SSO) 与 JIRA SAML SSO by Microsoft 集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "97511172"
 * 在 Azure AD 中控制谁有权访问 JIRA SAML SSO by Microsoft。
 * 让用户使用其 Azure AD 帐户自动登录 JIRA SAML SSO by Microsoft。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="description"></a>说明
 
@@ -75,18 +73,18 @@ ms.locfileid: "97511172"
 
 若要配置 JIRA SAML SSO by Microsoft 与 Azure AD 的集成，需要从库中将 JIRA SAML SSO by Microsoft 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“JIRA SAML SSO by Microsoft”   。
 1. 从结果面板中选择“JIRA SAML SSO by Microsoft”，然后添加应用  。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-jira-saml-sso-by-microsoft"></a>配置和测试 JIRA SAML SSO by Microsoft 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-jira-saml-sso-by-microsoft"></a>配置和测试 JIRA SAML SSO by Microsoft 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置和测试 JIRA SAML SSO by Microsoft 的 Azure AD SSO  。 若要运行 SSO，需要在 Azure AD 用户与 JIRA SAML SSO by Microsoft 相关用户之间建立链接关系。
 
-若要配置和测试 JIRA SAML SSO by Microsoft 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 JIRA SAML SSO by Microsoft 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
@@ -99,15 +97,15 @@ ms.locfileid: "97511172"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“JIRA SAML SSO by Microsoft”应用程序集成页上，找到“管理”部分，然后选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在 Azure 门户的“JIRA SAML SSO by Microsoft”应用程序集成页上，找到“管理”部分，然后选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`。
+    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`。
 
     b. 在“标识符”框中，使用以下模式键入 URL：`https://<domain:port>/`
 
@@ -136,18 +134,12 @@ ms.locfileid: "97511172"
 
 在本部分中，通过授予 B.Simon 访问 JIRA SAML SSO by Microsoft 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“JIRA SAML SSO by Microsoft”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-jira-saml-sso-by-microsoft-sso"></a>配置 JIRA SAML SSO by Microsoft SSO
@@ -188,37 +180,37 @@ ms.locfileid: "97511172"
     > [!TIP]
     > 请确保一个应用仅映射一个证书，以免在解析元数据时出错。 如果有多个证书，则管理员会在解析元数据时收到错误。
 
-    1. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的 **应用联合元数据 URL** 值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
+    a. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的 **应用联合元数据 URL** 值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
 
-    1. 复制“标识符”、“回 URL”和“登录 URL”值，并将其分别粘贴到 Azure 门户中，“JIRA SAML SSO by Microsoft 域和 URL”部分下的“标识符、回复 URL 和登录 URL”文本框内    。
+    b. 复制“标识符”、“回 URL”和“登录 URL”值，并将其分别粘贴到 Azure 门户中，“JIRA SAML SSO by Microsoft 域和 URL”部分下的“标识符、回复 URL 和登录 URL”文本框内    。
 
-    1. 在“登录按钮名”中键入组织希望用户在登录屏幕上看到的按钮名称  。
+    c. 在“登录按钮名”中键入组织希望用户在登录屏幕上看到的按钮名称  。
     
-    1. 在 **登录按钮说明** 中，键入你的组织希望用户在登录屏幕上看到的按钮的说明。
+    d. 在 **登录按钮说明** 中，键入你的组织希望用户在登录屏幕上看到的按钮的说明。
 
-    1. 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”    。  此 ID 必须为 JIRA 用户 ID。 如果用户 ID 不匹配，系统将不允许用户登录。
+    e. 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”    。  此 ID 必须为 JIRA 用户 ID。 如果用户 ID 不匹配，系统将不允许用户登录。
 
-       > [!Note]
-       > 默认 SAML 用户 ID 位置是名称标识符。 可将其更改为属性选项，并输入适当的属性名称。
+    > [!Note]
+    > 默认 SAML 用户 ID 位置是名称标识符。 可将其更改为属性选项，并输入适当的属性名称。
 
-    1. 如果选择“用户 ID 位于属性元素之中”选项，则请在“属性名称”文本框内键入应该出现用户 ID 的属性名称 。
+    f. 如果选择“用户 ID 位于属性元素之中”选项，则请在“属性名称”文本框内键入应该出现用户 ID 的属性名称 。
 
-    1. 如果正在使用 Azure AD 的联合域（如 ADFS 等），请单击“启用主领域发现”选项，并配置“域名” 。
+    g. 如果正在使用 Azure AD 的联合域（如 ADFS 等），请单击“启用主领域发现”选项，并配置“域名” 。
 
-    1. 如果是基于 ADFS 的登录，请在“域名”中键入域名  。
+    h. 如果是基于 ADFS 的登录，请在“域名”中键入域名。
 
-    1. 当用户从 JIRA 注销时，如果要从 Azure AD 注销，请选择“启用单一注销”  。
+    i. 当用户从 JIRA 注销时，如果要从 Azure AD 注销，请选择“启用单一注销”  。
     
-    1. 如果希望仅通过 Azure AD 凭据登录，请选中“强制 Azure 登录”  复选框。
+    j. 如果希望仅通过 Azure AD 凭据登录，请选中“强制 Azure 登录”  复选框。
     
-       > [!Note]
-       > 若要在启用“强制 Azure 登录”时在登录页上启用管理员登录的默认登录表单，请在浏览器 URL 中添加查询参数。
-       > `https://<domain:port>/login.jsp?force_azure_login=false`
+    > [!Note]
+    > 若要在启用“强制 Azure 登录”时在登录页上启用管理员登录的默认登录表单，请在浏览器 URL 中添加查询参数。
+    > `https://<domain:port>/login.jsp?force_azure_login=false`
 
-    1. 单击“保存”按钮保存设置。
+    k. 单击“保存”按钮保存设置。
 
-       > [!NOTE]
-       > 有关安装和故障排除的详细信息，请访问 [MS JIRA SSO 连接器管理员指南](./ms-confluence-jira-plugin-adminguide.md)， 还可以参阅[常见问题解答](./ms-confluence-jira-plugin-adminguide.md)以获得帮助。
+    > [!NOTE]
+    > 有关安装和故障排除的详细信息，请访问 [MS JIRA SSO 连接器管理员指南](./ms-confluence-jira-plugin-adminguide.md)， 还可以参阅[常见问题解答](./ms-confluence-jira-plugin-adminguide.md)以获得帮助。
 
 ### <a name="create-jira-saml-sso-by-microsoft-test-user"></a>创建 JIRA SAML SSO by Microsoft 测试用户
 
@@ -256,16 +248,15 @@ ms.locfileid: "97511172"
 
 ## <a name="test-sso"></a>测试 SSO
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-单击访问面板中的“JIRA SAML SSO by Microsoft”磁贴时，应当会自动登录到已为其设置了 SSO 的 JIRA SAML SSO by Microsoft。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 JIRA SAML SSO by Microsoft 登录 URL，可以从那里启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+* 直接转到 JIRA SAML SSO by Microsoft 登录 URL，并从那里启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 你可使用 Microsoft 的“我的应用”。 当单击“我的应用”中 JIRA SAML SSO by Microsoft 磁贴时，这将通过 Microsoft 登录 URL 重定向到 JIRA SAML SSO。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+## <a name="next-steps"></a>后续步骤
 
-- [尝试在 Azure AD 中使用 JIRA SAML SSO by Microsoft](https://aad.portal.azure.com/)
+配置 JIRA SAML SSO by Microsoft 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
