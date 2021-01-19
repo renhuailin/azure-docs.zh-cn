@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d40d26e8fab0832a37a43c353e11189f8f193f14
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839939"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573320"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>具有 GPU 的 Azure Stack Edge Pro 的技术规格和符合性 
 
@@ -26,7 +26,7 @@ Azure Stack Edge Pro 设备具有以下计算和内存规范：
 | 规格           | 值                  |
 |-------------------------|----------------------------|
 | CPU                     | 2 X Intel 至强银色 4214 (级联 Lake) CPU            |
-| 内存                  | 128 (8x16 GB) GB RAM                     |
+| 内存                  | 128 (8x16 GB) GB RAM <br> Dell 兼容的 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2 v ECC 注册 RDIMM       |
 
 
 ## <a name="compute-acceleration-specifications"></a>计算加速规范
@@ -68,7 +68,7 @@ Azure Stack Edge Pro 设备具有以下网络硬件：
 | 参数           | 说明                 |
 |-------------------------|----------------------------|
 | 建模    | ConnectX®-4 Lx EN 网络接口卡                      |
-| 模型说明               | 25GbE 双端口 SFP28;PCIe 3.0 x8;ROHS R6                    |
+| 模型说明               | 25 GbE 双端口 SFP28;PCIe 3.0 x8;ROHS R6                    |
 | 设备部件号 (R640)  | MCX4121A-ACAT  |
 | PSID (R640)            | MT_2420110034                         |
 
@@ -88,11 +88,9 @@ Azure Stack Edge Pro 设备具有5个 2.5 "NVMe DC P4610 Ssd，每个具有 1.6 
 |    启动 SATA 固态驱动器 (SSD)       |    1                  |
 |    启动 SSD 容量                       |    240 GB             |
 |    总容量                          |    8.0 TB             |
-|    总可用容量*                  |    约 4.19 TB          |
+|    总可用容量                   |    约 4.19 TB          |
+|    RAID 配置                      |    使用镜像和奇偶校验的组合的存储空间直通  |
 |    SAS 控制器                          |    HBA330 12 Gbps     |
-
-
-**奇偶校验复原并保留空间供内部使用。*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
@@ -150,7 +148,8 @@ Your Azure Stack Edge Pro device also contains the following hardware:
 |     机箱                           |     操作规范                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    气流                              |    系统气流的方向是从前到后。 系统的操作环境必须是低压、后排气的安装方式。 <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
-|    最大海拔高度，可运行        |    3,048 米（10,000 英尺），最大额定操作温度的降级由[额定操作温度降级规格](#operating-temperature-de-rating-specifications)确定。                                                                                |
+| 入口保护 (IP)                  |    用于室内的这种架装设备通常不会测试入口保护 (针对电源箱) 的实体和 liquids 的保护。 制造商的安全评估显示 IPXO (无入口保护) 。  |
+|    最大海拔高度，可运行        |    3048米 (10000 英尺) ，其最高运行温度 de 已由 [操作温度 de 分级规范](#operating-temperature-de-rating-specifications)决定。                                                                                |
 |    最大海拔高度，不可运行    |    12,000 米（39,370 英尺）                                                                                                                                                                                         |
 |    撞击，可运行                   |    6 G/11 毫秒（6 个方向）                                                                                                                                                                         |
 |    撞击，不可运行               |    71 G/2 毫秒（6 个方向）                                                                                                                                                                           |

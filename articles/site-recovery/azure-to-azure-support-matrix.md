@@ -4,12 +4,12 @@ description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: fdd5b8f9cea549f64c4857d1c45b95b0d9b9ec53
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 2dbd7cd756e386b44c6933697ff50180021ac035
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569957"
+ms.locfileid: "98572300"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -198,7 +198,7 @@ Azure 库映像 - 由第三方发布 | 支持 | 如果 VM 在受支持的操作�
 Azure RBAC 策略 | 不支持 | VM 上的 Azure 基于角色的访问控制 (Azure RBAC) 策略不会复制到目标区域中的故障转移 VM。
 扩展 | 不支持 | 扩展不会复制到目标区域中的故障转移 VM。 需要在故障转移后手动进行安装。
 邻近放置组 | 支持 | 可使用 Site Recovery 保护位于邻近放置组内的虚拟机。
-标记  | 支持 | 应用于源虚拟机上的用户生成的标记会在测试故障转移或故障转移后转移到目标虚拟机上。
+Tags  | 支持 | 应用于源虚拟机上的用户生成的标记会在测试故障转移或故障转移后转移到目标虚拟机上。
 
 
 ## <a name="replicated-machines---disk-actions"></a>复制的计算机 - 磁盘操作
@@ -213,7 +213,7 @@ Azure RBAC 策略 | 不支持 | VM 上的 Azure 基于角色的访问控制 (Azu
 
 此表汇总了对 Azure VM OS 磁盘、数据磁盘和临时磁盘的支持。
 
-- 请务必遵循适用于 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 和 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁盘限制以及目标，以避免任何性能问题。
+- 务必要查看 [托管磁盘](../virtual-machines/disks-scalability-targets.md) 的 VM 磁盘限制和目标，以避免出现任何性能问题。
 - 如果使用默认设置进行部署，Site Recovery 会根据源设置自动创建磁盘和存储帐户。
 - 如果自定义，请确保遵循指南。
 
@@ -258,10 +258,10 @@ NVMe 磁盘 | 不支持
 Azure 共享磁盘 | 不支持
 安全传输选项 | 支持
 已启用写入加速器的磁盘 | 不支持
-标记  | 每24小时复制一次用户生成的标记。
+Tags  | 每24小时复制一次用户生成的标记。
 
 >[!IMPORTANT]
-> 为了避免出现性能问题，请务必遵守 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 或 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁盘可伸缩性和性能目标。 如果使用默认设置，Site Recovery 会基于源配置创建所需的磁盘和存储帐户。 如果自定义和选择自己的设置，请遵守源 VM 的磁盘可伸缩性和性能目标。
+> 若要避免性能问题，请确保遵循 [托管磁盘](../virtual-machines/disks-scalability-targets.md)的 VM 磁盘可伸缩性和性能目标。 如果使用默认设置，Site Recovery 会基于源配置创建所需的磁盘和存储帐户。 如果自定义和选择自己的设置，请遵守源 VM 的磁盘可伸缩性和性能目标。
 
 ## <a name="limits-and-data-change-rates"></a>限制和数据更改率
 
@@ -305,7 +305,7 @@ VNET 到 VNET 连接    | 支持 | [了解详细信息](./azure-to-azure-about-n
 Palo Alto 网络设备 | 不支持 | 使用第三方设备时，虚拟机内部通常存在提供商施加的一些限制。 要使 Azure Site Recovery 可用，需在其上安装代理、扩展并为其提供出站连接。 但是，该设备不允许在虚拟机内部配置任何出站活动。
 IPv6  | 不支持 | 此外，不支持同时包含 IPv4 和 IPv6 的混合配置。 请在执行任何 Site Recovery 操作之前释放 IPv6 范围的子网。
 对 Site Recovery 服务的专用链接访问 | 支持 | [了解详细信息](azure-to-azure-how-to-enable-replication-private-endpoints.md)
-标记  | 支持 | 每24小时复制一次 Nic 上的用户生成的标记。
+Tags  | 支持 | 每24小时复制一次 Nic 上的用户生成的标记。
 
 
 

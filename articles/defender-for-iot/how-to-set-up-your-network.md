@@ -4,17 +4,17 @@ description: 了解需要确保成功将网络设置为使用适用于 IoT 设�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/06/2020
+ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3e9380f067b091c4473b8c29bda3d31bb93cbc6d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838419"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573133"
 ---
-# <a name="about-azure-defender-for-iot-network-setup"></a>关于用于 IoT 的 Azure Defender 网络设置
+# <a name="about-azure-defender-for-iot-network-setup"></a>关于 Azure Defender for IoT 网络设置
 
 Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平台包括以下组件：
 
@@ -54,7 +54,7 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 
 - 配置工作站。
 
-- SSL 证书 (可选) 。
+- SSL 证书 (可选的，但建议) 。
 
 - SMTP 身份验证 (可选) 。 若要将 SMTP 服务器用于身份验证，请准备服务器所需的凭据。
 
@@ -94,7 +94,7 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 
 验证你的组织安全策略是否允许访问以下内容：
 
-| **用途** | 协议  | **Transport** | **入或出** | 端口  | **类别** |
+| **用途** | 协议 | **Transport** | **入或出** | 端口 | **类别** |
 | ----------- | ----------- | ------------ | ---------- | -------- | ------------ |
 | **访问 web 控制台** | HTTPS | TCP | 入或出 | 443 | 用于 IoT 平台的本地管理控制台 |
 | **访问 CLI** | SSH | TCP | 入或出 | 22 | CLI |
@@ -223,7 +223,7 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 
 下面是部署多个传感器的一些建议：
 
-| * * 数字 * *| **计量** | **依赖项** | **传感器数量** |
+| **数字** | **计量** | **依赖项** | **传感器数量** |
 |--|--|--|--|
 | 交换机之间的最大距离 | 80米 | 准备好的以太网电缆 | 超过1个 |
 | 网络的数目 | 超过1个 | 无物理连接 | 超过1个 |
@@ -363,7 +363,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 这些模型已测试兼容性。 其他供应商和型号也可能兼容。
 
-| 图像 | 型号 |
+| 映像 | 建模 |
 | -- | -- |
 | :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Garland P1GCCAS 的屏幕截图。":::  | Garland P1GCCAS  |
 | :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="IXIA TPA2-CU3 的屏幕截图。":::  | IXIA TPA2-CU3  |
@@ -569,7 +569,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
     > [!NOTE]
     > IoT 设备的 Defender 应连接到一个较低级别的交换机，该交换机查看交换机上端口间的流量。  
 
-2. 提供网络中设备的近似数目 (可选) 。
+2. 提供要监视的网络设备的近似数目。 在将订阅加入 Azure Defender for IoT 门户时，你将需要此信息。 在载入过程中，系统会提示输入设备数量，以1000为增量。
 
 3. 为生产网络提供子网列表，并提供 (可选) 的说明。 
 
@@ -632,7 +632,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 提供将在企业网络中连接的传感器 NIC 的地址详细信息： 
 
-|  Item               | 设备1 | 设备2 | 设备3 |
+|  项               | 设备1 | 设备2 | 设备3 |
 | --------------- | ------------- | ------------- | ------------- |
 | 设备 IP 地址    |               |               |               |
 | 子网          |               |               |               |
@@ -642,7 +642,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="idraciloserver-management"></a>iDRAC/iLO/服务器管理
 
-|       Item          | 设备1 | 设备2 | 设备3 |
+|       项          | 设备1 | 设备2 | 设备3 |
 | --------------- | ------------- | ------------- | ------------- |
 | 设备 IP 地址     |               |               |               |
 | 子网          |               |               |               |
@@ -651,7 +651,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="on-premises-management-console"></a>本地管理控制台  
 
-|       Item          | 可用 | 使用 HA) 时的被动 ( |
+|       项          | 可用 | 使用 HA) 时的被动 ( |
 | --------------- | ------ | ----------------------- |
 | IP 地址             |        |                         |
 | 子网          |        |                         |
@@ -660,7 +660,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="snmp"></a>SNMP  
 
-|   Item              | 详细信息 |
+|   项              | 详细信息 |
 | --------------- | ------ |
 | IP              |        |
 | IP 地址 | |

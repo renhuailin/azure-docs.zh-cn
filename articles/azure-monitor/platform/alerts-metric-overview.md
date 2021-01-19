@@ -1,15 +1,15 @@
 ---
 title: 了解指标警报在 Azure Monitor 中的工作原理。
 description: 获取指标警报功能的概述，以及它们在 Azure Monitor 中的工作原理。
-ms.date: 01/13/2021
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: ab80496784b5d86d270830546cec73aadbcc50a6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 031768b8a72fbe9498abd3c17e0f79fd157d4f52
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251227"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572725"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -26,9 +26,9 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
 - 条件类型：静态
-- 时间聚合（基于原始指标值运行的统计信息。 [支持的时间聚合](metrics-charts.md#aggregation)为最小值、最大值、平均值、总计、计数）：平均值
-- 期限（检查指标值时所依据的回溯时段）：过去 5 分钟
-- 频率（指标警报检查是否符合条件的频率）：1 分钟
+- 聚合类型 (在原始指标值上运行的统计信息。 [支持的聚合类型](./metrics-aggregation-explained.md#aggregation-types) 包括最小值、最大值、平均值、总计、计数) ：平均值
+- 期间 (检查指标值的 "查看" 窗口) ：过去5分钟
+- Frequency (在满足条件时指标警报检查的频率) ：1分钟
 - 运算符：大于
 - 阈值：70
 
@@ -43,9 +43,9 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
 - 条件类型：动态
-- 时间聚合（基于原始指标值运行的统计信息。 [支持的时间聚合](metrics-charts.md#aggregation)为最小值、最大值、平均值、总计、计数）：平均值
-- 期限（检查指标值时所依据的回溯时段）：过去 5 分钟
-- 频率（指标警报检查是否符合条件的频率）：1 分钟
+- 聚合类型 (在原始指标值上运行的统计信息。 [支持的聚合类型](./metrics-aggregation-explained.md#aggregation-types) 包括最小值、最大值、平均值、总计、计数) ：平均值
+- 期间 (检查指标值的 "查看" 窗口) ：过去5分钟
+- Frequency (在满足条件时指标警报检查的频率) ：1分钟
 - 运算符：大于
 - 敏感度：中型
 - 回溯时段：4
@@ -80,7 +80,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 - 条件类型：静态
 - 维度
   - 实例 = InstanceName1、InstanceName2
-- 时间聚合：平均值
+- 聚合类型：平均值
 - 时间段：过去 5 分钟
 - 频率：1 分钟
 - 运算符：GreaterThan
@@ -95,7 +95,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 - 条件类型：静态
 - 维度
   - 实例 = *
-- 时间聚合：平均值
+- 聚合类型：平均值
 - 时间段：过去 5 分钟
 - 频率：1 分钟
 - 运算符：GreaterThan
@@ -112,7 +112,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 - 条件类型：动态
 - 维度
   - 实例 = *
-- 时间聚合：平均值
+- 聚合类型：平均值
 - 时间段：过去 5 分钟
 - 频率：1 分钟
 - 运算符：GreaterThan

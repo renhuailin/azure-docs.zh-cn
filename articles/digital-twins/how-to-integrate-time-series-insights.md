@@ -4,21 +4,21 @@ titleSuffix: Azure Digital Twins
 description: 请参阅如何设置从 Azure 数字孪生到 Azure 时序见解的事件路由。
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 7/14/2020
+ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f776482c684004c8d661f69d8158ba9597c923b2
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 24b4f56e5798acc4d9bd0962be7059a359958645
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127022"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573235"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解集成
 
 本文介绍如何将 Azure 数字孪生与 [Azure 时序见解 (TSI) ](../time-series-insights/overview-what-is-tsi.md)集成。
 
-本文中所述的解决方案将允许你收集和分析有关 IoT 解决方案的历史数据。 Azure 数字孪生非常适合用于将数据送入时序见解，因为它允许你关联多个数据流，并在将信息发送到时序见解之前将其标准化。 
+本文中所述的解决方案将允许你收集和分析有关 IoT 解决方案的历史数据。 Azure 数字孪生非常适合用于将数据馈送到时序见解中，因为它支持关联多个数据流，并可在将信息发送到时序见解之前将信息标准化。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,31 +38,28 @@ ms.locfileid: "98127022"
     :::column-end:::
 :::row-end:::
 
-## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>创建路由并筛选到克隆更新通知
+## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>对孪生体更新通知创建路由和筛选器
 
 每当更新了克隆的状态时，Azure 数字孪生实例就可以发出 [双子次更新事件](how-to-interpret-event-data.md) 。 在本部分中，将创建一个 Azure 数字孪生 [**事件路由**](concepts-route-events.md) ，该路由会将这些更新事件定向到 Azure [事件中心](../event-hubs/event-hubs-about.md) 以供进一步处理。
 
 Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-end.md) 演练了这样一种方案：温度计用于更新代表房间的数字克隆上的温度属性。 此模式依赖于克隆的更新，而不是从 IoT 设备转发遥测，这使你可以灵活地更改基础数据源，而无需更新时序见解逻辑。
 
-1. 首先，创建一个事件中心命名空间，该命名空间将从你的 Azure 数字孪生实例接收事件。 你可以使用以下 Azure CLI 说明，或使用 Azure 门户： [*快速入门：使用 Azure 门户创建事件中心*](../event-hubs/event-hubs-create.md)。
+1. 首先，创建一个事件中心命名空间，该命名空间将从你的 Azure 数字孪生实例接收事件。 你可以使用以下 Azure CLI 说明，或使用 Azure 门户： [*快速入门：使用 Azure 门户创建事件中心*](../event-hubs/event-hubs-create.md)。 若要查看哪些区域支持事件中心，请访问 [*按区域提供的 Azure 产品*](https://azure.microsoft.com/global-infrastructure/services/?products=event-hubs)。
 
     ```azurecli-interactive
-    # Create an Event Hubs namespace. Specify a name for the Event Hubs namespace.
-    az eventhubs namespace create --name <name for your Event Hubs namespace> --resource-group <resource group name> -l <region, for example: East US>
+    az eventhubs namespace create --name <name for your Event Hubs namespace> --resource-group <resource group name> -l <region>
     ```
 
-2. 在命名空间中创建事件中心。
+2. 在命名空间中创建一个事件中心，用于接收克隆的更改事件。 指定事件中心的名称。
 
     ```azurecli-interactive
-    # Create an event hub to receive twin change events. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
-3. 使用发送和接收权限创建 [授权规则](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) 。
+3. 使用发送和接收权限创建 [授权规则](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) 。 指定规则的名称。
 
     ```azurecli-interactive
-    # Create an authorization rule. Specify a name for the rule.
-    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
+        az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
 
 4. 创建一个将事件中心链接到 Azure 数字孪生实例的 Azure 数字孪生 [终结点](concepts-route-events.md#create-an-endpoint) 。
@@ -71,7 +68,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
     az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
     ```
 
-5. 在 Azure 数字孪生中创建 [路由](concepts-route-events.md#create-an-event-route) ，以将克隆更新事件发送到终结点。 此路由中的筛选器将仅允许向您的终结点传递一条不成对的更新消息。
+5. 在 Azure 数字孪生中创建[路由](concepts-route-events.md#create-an-event-route)，将孪生体更新事件发送到终结点。 此路由中的筛选器将仅允许向您的终结点传递一条不成对的更新消息。
 
     >[!NOTE]
     >目前，Cloud Shell 中存在一个已知问题，该问题会影响以下命令组：`az dt route`、`az dt model` 和 `az dt twin`。
@@ -86,7 +83,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
 
 ## <a name="create-a-function-in-azure"></a>在 Azure 中创建一个函数
 
-接下来，你将使用 Azure Functions 在 function app 中创建事件中心触发的函数。 可以使用端到端教程中创建的函数应用 ([*教程：连接端到端解决方案*](./tutorial-end-to-end.md)) 或你自己的解决方案。 
+接下来，你将使用 Azure Functions 在 function app 中创建 **事件中心触发的函数** 。 可以使用端到端教程中创建的函数应用 ([*教程：连接端到端解决方案*](./tutorial-end-to-end.md)) 或你自己的解决方案。 
 
 此函数将这些克隆的更新事件从其原始格式转换为 json 对象，仅包含来自孪生的更新和添加的值。
 
@@ -100,7 +97,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
 
 稍后，你还将设置此函数将用于连接到你自己的事件中心的某些环境变量。
 
-## <a name="send-telemetry-to-an-event-hub"></a>将遥测发送到事件中心
+## <a name="send-telemetry-to-an-event-hub"></a>将遥测数据发送到事件中心
 
 现在，你将创建另一个事件中心，并将你的函数配置为将其输出流式传输到该事件中心。 此事件中心随后会连接到时序见解。
 
@@ -110,22 +107,22 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
 
 1. 从本文前面部分准备 *事件中心命名空间* 和 *资源组* 名称
 
-2. 创建新的事件中心
+2. 创建新的事件中心。 指定事件中心的名称。
+
     ```azurecli-interactive
-    # Create an event hub. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
-3. 使用发送和接收权限创建[授权规则](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create)
+3. 使用发送和接收权限创建 [授权规则](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) 。 指定规则的名称。
+
     ```azurecli-interactive
-    # Create an authorization rule. Specify a name for the rule.
-    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
+        az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
     ```
 
 ## <a name="configure-your-function"></a>配置函数
 
 接下来，需要在 function app 中设置环境变量，并在其中包含已创建的事件中心的连接字符串。
 
-### <a name="set-the-twins-event-hub-connection-string"></a>设置孪生事件中心连接字符串
+### <a name="set-the-twins-event-hub-connection-string"></a>设置孪生体事件中心连接字符串
 
 1. 使用前面为孪生中心创建的授权规则获取孪生 [事件中心连接字符串](../event-hubs/event-hubs-get-connection-string.md)。
 
@@ -133,7 +130,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
-2. 使用获得的连接字符串，以在函数应用中创建包含连接字符串的应用设置：
+2. 使用获得的连接字符串在函数应用中创建包含连接字符串的应用设置：
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string>" -g <resource group> -n <your App Service (function app) name>
@@ -147,7 +144,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <TSI event hub name> --name <TSI auth rule>
     ```
 
-2. 在函数应用中，创建一个包含连接字符串的应用设置：
+2. 在函数应用中，创建包含连接字符串的应用设置：
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string>" -g <resource group> -n <your App Service (function app) name>
@@ -173,7 +170,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
 
 如果你使用的是端到端教程 ([*教程：连接端到端解决方案*](tutorial-end-to-end.md)) 来帮助进行环境设置，你可以通过从示例运行 *devicesimulator.exe* 项目来开始发送模拟 IoT 数据。 本教程的 [*配置和运行模拟*](tutorial-end-to-end.md#configure-and-run-the-simulation) 部分介绍了相关说明。
 
-## <a name="visualize-your-data-in-time-series-insights"></a>直观显示时序见解中的数据
+## <a name="visualize-your-data-in-time-series-insights"></a>在时序见解中可视化数据
 
 现在，数据应流向时序见解实例，并准备好进行分析。 请按照以下步骤来浏览传入的数据。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 3fc6971c66d06ae9f25584f5be28b051075bfa49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afb63b76666f47217f9c19376d81aa4ed73991bf
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88921964"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572555"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR 服务内部
 
@@ -42,7 +42,7 @@ Azure SignalR 服务构建于 ASP.NET Core SignalR 框架的基础之上。 它�
 - 对于 ASP.NET Core SignalR，Azure SignalR 服务 SDK 将为 SignalR 服务开放每个中心的 5 个 WebSocket 连接。 
 - 对于 ASP.NET SignalR，Azure SignalR 服务 SDK 将为 SignalR 服务开放每个中心的 5 个 WebSocket 连接，并为每个应用程序开放一个 WebSocket 连接。
 
-5 个 WebSocket 连接是默认值，可在[配置](https://github.com/Azure/azure-signalr/blob/dev/docs/use-signalr-service.md#connectioncount)中更改。
+5 个 WebSocket 连接是默认值，可在[配置](https://github.com/Azure/azure-signalr/blob/dev/docs/run-asp-net-core.md#connectioncount)中更改。
 
 发往和发自客户端的消息将在这些连接中多路复用。
 

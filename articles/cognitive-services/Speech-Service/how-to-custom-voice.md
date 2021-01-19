@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 6ae164b1300119481e495e647dd491beafdd5241
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e48dfd224a9656c7d8327dd77f1b55e9a744f3af
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025072"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573082"
 ---
 # <a name="get-started-with-custom-voice"></a>自定义语音入门
 
@@ -39,10 +39,10 @@ ms.locfileid: "95025072"
 
 ## <a name="custom-neural-voices"></a>自定义神经语音
 
-神经语音自定义功能当前提供公共预览，仅向部分客户特供。 填写此[应用程序表单](https://go.microsoft.com/fwlink/?linkid=2108737)以开始使用。
+自定义语音当前同时支持标准层和神经层。 自定义的神经语音使用户能够生成更高质量的语音模型，同时需要较少的数据，并提供可帮助你部署 AI 责任的度量值。 我们建议你应使用自定义的神经语音为更自然的对话接口开发更逼真的声音，并使你的客户和最终用户能够以一种有责任的方式从最新的文本到语音技术中获益。 [详细了解自定义的神经声音](https://aka.ms/CNV-Transparency-Note)。 
 
 > [!NOTE]
-> Microsoft 承诺设计负责任的 AI，其中包括以保护个人和社会的权利、促进人机交互透明化为目标。 出于此原因，我们未向所有客户正式发布自定义神经语音。 仅当我们评审你的应用程序，并且你承诺在遵守我们的道德原则的条件下使用该应用程序后，你才会获得对该技术的访问权限。 详细了解我们的[应用程序把关流程](./concepts-gating-overview.md)。
+> 作为 Microsoft 对设计责任 AI 的承诺的一部分，我们限制了自定义的神经语音的使用。 只有在查看了应用程序并将其与我们的责任 AI 原则结合使用之后，才能获得技术的访问权限。 在[此处](https://aka.ms/customneural)了解有关[策略的](https://aka.ms/gating-overview)详细信息。 自定义语音的标准版本和神经版本支持的 [语言](language-support.md#customization) 和 [区域](regions.md#custom-voices) 是不同的。 在开始之前，请查看详细信息。  
 
 ## <a name="set-up-your-azure-account"></a>设置 Azure 帐户
 
@@ -56,7 +56,7 @@ ms.locfileid: "95025072"
 4. 若要切换到另一个语音订阅，请使用顶部导航栏中的齿轮图标。
 
 > [!NOTE]
-> 必须先在 Azure 中创建 F0 或 S0 密钥才能使用该服务。
+> 必须先在 Azure 中创建 F0 或 S0 语音服务密钥，然后才能使用该服务。 自定义的神经语音仅支持 S0 层。 
 
 ## <a name="how-to-create-a-project"></a>如何创建项目
 

@@ -3,12 +3,12 @@ title: 备份 Azure 托管磁盘
 description: 了解如何从 Azure 门户备份 Azure 托管磁盘。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: c4e2d4e649d59389ac3f8bd115e43acabc792eb2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 2169e2f44e3ffb2c05c674d633efabed2c531878
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557345"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573116"
 ---
 # <a name="back-up-azure-managed-disks-in-preview"></a>在预览版中备份 Azure 托管磁盘 () 
 
@@ -129,6 +129,8 @@ ms.locfileid: "98557345"
    >键入备份保管库名称以选择保管库的托管标识。
 
    ![添加磁盘快照参与者角色](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
+
+1. 如果要备份的磁盘使用 [客户管理的密钥加密 (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) 或者使用 [使用平台托管密钥和客户托管密钥的双加密](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)，则将 " **读取** 者角色" 权限分配给 " **磁盘加密集** " 资源上的备份保管库的托管标识。
 
 1. 验证备份保管库的托管标识是否在用作快照数据存储的源磁盘和资源组上有一组正确的角色分配。
 

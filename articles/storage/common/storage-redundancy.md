@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a09a2083c1258a3120f8696aa39a0252dbfcf2d
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 83a4a2aa8328a6e3de9eab44bbf19fc76921b128
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209674"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573339"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -35,11 +35,15 @@ Azure 存储帐户中的数据在主要区域中始终复制三次。 Azure 存�
 
 ### <a name="locally-redundant-storage"></a>本地冗余存储
 
-本地冗余存储 (LRS) 在主要区域中的单个物理位置内复制数据三次。 LRS 可在一年中提供至少 99.999999999%（11 个 9）的对象持久性。
+本地冗余存储 (LRS) 在主要区域中的单个数据中心内将数据复制三次。 LRS 可在一年中提供至少 99.999999999%（11 个 9）的对象持久性。
 
 与其他选项相比，LRS 是成本最低的冗余选项，但提供的持久性也最低。 LRS 可以保护数据，使其不受服务器机架和驱动器故障影响。 但是，如果数据中心内发生火灾或洪水等灾难，使用 LRS 的存储帐户的所有副本可能会丢失或无法恢复。 若要缓解此风险，Microsoft 建议使用[区域冗余存储](#zone-redundant-storage) (ZRS)、[异地冗余存储](#geo-redundant-storage) (GRS) 或[异地区域冗余存储](#geo-zone-redundant-storage) (GZRS)。
 
 会同步发生一个针对使用 LRS 的存储帐户的写入请求。 只有将数据写入到所有三个副本后，写入操作才会成功返回。
+
+下图显示了如何使用 LRS 在单个数据中心内复制数据：
+
+:::image type="content" source="media/storage-redundancy/locally-redundant-storage.png" alt-text="显示如何使用 LRS 在单个数据中心内复制数据的关系图":::
 
 对于以下场景，LRS 是不错的选项：
 
@@ -54,7 +58,11 @@ Azure 存储帐户中的数据在主要区域中始终复制三次。 Azure 存�
 
 会同步发生一个针对使用 ZRS 的存储帐户的写入请求。 写入操作仅在将数据写入三个可用性区域中的所有副本后才能成功返回。
 
-对于需要一致性、耐用性和高可用性的方案，Microsoft 建议在主要区域中使用 ZRS。 如果要将应用程序限制为仅在国家或地区内复制数据，则我们还建议使用 ZRS，因为数据治理要求。
+对于需要一致性、耐用性和高可用性的方案，Microsoft 建议在主要区域中使用 ZRS。 还建议将 ZRS 数据复制到国家/地区内部，以满足数据治理要求。
+
+下图显示了如何在主区域中的可用性区域之间通过 ZRS 复制数据：
+
+:::image type="content" source="media/storage-redundancy/zone-redundant-storage.png" alt-text="显示如何在主要区域中通过 ZRS 复制数据的关系图":::
 
 如果数据变为暂时不可用，ZRS 可提供出色的性能、低延迟和数据复原能力。 但是，如果多个区域永久受到影响，在发生区域性的灾难时，ZRS 本身可能无法保护数据。 为了防御区域灾难，Microsoft 建议使用[地理区域冗余存储](#geo-zone-redundant-storage) (GZRS)，该存储在主要区域中使用 ZRS，并将数据异地复制到次要区域。
 

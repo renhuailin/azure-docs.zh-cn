@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec605fd30252b9a0cfb80d0bc3ff145ed3b5a1d4
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526650"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573303"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>排查 Linux 或 Windows 上的 Azure 虚拟机性能问题
 
@@ -208,7 +208,7 @@ AverageE2ELatency 表示客户端延迟。 验证应用程序如何执行 IOPS�
 
 对于以标准存储提供的新磁盘产品/服务，IOPS 和吞吐量限制可能不同，但标准存储帐户的累积限制为 20000 IOPS（高级存储在帐户或磁盘级别实施不同的限制）。 详细了解不同的标准存储磁盘产品/服务和每个磁盘的限制：
 
-* [Windows 上的 VM 磁盘的可伸缩性和性能目标](../windows/disk-scalability-targets.md)。
+* [Windows 上的 VM 磁盘的可伸缩性和性能目标](../disks-scalability-targets.md)。
 
 #### <a name="references"></a>参考
 
@@ -224,7 +224,7 @@ AverageE2ELatency 表示客户端延迟。 验证应用程序如何执行 IOPS�
 
 以标准存储提供的新磁盘产品/服务实施不同的 IOPS 和吞吐量限制（IOPS 不会按 VHD 公开）。 查看数据，使用“磁盘读取和写入”来确定是否在 VM 级别达到了 VHD 合并吞吐量 (MB) 限制，然后优化 VM 存储配置来克服单个 VHD 的限制。 详细了解不同的标准存储磁盘产品/服务和每个磁盘的限制：
 
-* [Windows 上的 VM 磁盘的可伸缩性和性能目标](../windows/disk-scalability-targets.md)。
+* [Windows 上的 VM 磁盘的可伸缩性和性能目标](../disks-scalability-targets.md)。
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>修正磁盘利用率/延迟较高的问题
 

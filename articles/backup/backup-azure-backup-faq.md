@@ -3,12 +3,12 @@ title: 常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: d85866e490b2c56abb7de1e94cd0ffaa8f714615
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327145"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572521"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -60,7 +60,11 @@ ms.locfileid: "96327145"
 
 ### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>如何将数据从恢复服务保管库移到本地？
 
-不支持将数据直接从恢复服务保管库导出到本地使用 Data Box。 必须将数据还原到存储帐户，然后可以通过 [Data Box](../databox/data-box-overview.md) 或 [导入/导出](../storage/common/storage-import-export-service.md)将数据移动到本地。
+不支持使用 Data Box 直接将数据从恢复服务保管库导出到本地。 必须将数据还原到存储帐户，然后可以通过 [Data Box](../databox/data-box-overview.md) 或 [导入/导出](../storage/common/storage-import-export-service.md)将数据移动到本地。
+
+### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>异地冗余存储 (GRS) 保管库与/不使用跨区域还原 (启用 CRR) 功能之间的区别是什么？
+
+如果未启用[CRR](azure-backup-glossary.md#cross-region-restore-crr)功能的[GRS](azure-backup-glossary.md#grs)保管库，则在 Azure 声明主要区域中的灾难之前，不能访问辅助区域中的数据。 在这种情况下，将从次要区域进行还原。 启用 CRR 后，即使主要区域已启动并正在运行，也可以在次要区域中触发还原。
 
 ## <a name="azure-backup-agent"></a>Azure 备份代理
 

@@ -11,18 +11,18 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 2e26bfa484d573c0158e518b31087fb10bdcdfb9
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8e749e5f6ea6bcf76a1b4f143bce03ceb41cbb07
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185676"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573286"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自动化机器学习中配置数据拆分和交叉验证
 
 在本文中，你将了解用于配置培训/验证数据拆分和交叉验证的不同选项，这些选项用于配置自动机器学习、自动 ML、试验。
 
-在 Azure 机器学习中，当你使用自动 ML 来构建多个 ML 模型时，每个子运行都需要通过计算该模型的质量指标来验证相关的模型，例如准确性或 AUC 加权。 这些指标的计算方法是将每个模型所做的预测与验证数据中过去观察到的实际标签进行比较。 
+在 Azure 机器学习中，当你使用自动 ML 来构建多个 ML 模型时，每个子运行都需要通过计算该模型的质量指标来验证相关的模型，例如准确性或 AUC 加权。 这些指标的计算方法是将每个模型所做的预测与验证数据中过去观察到的实际标签进行比较。 [了解有关如何根据验证类型计算指标的详细信息](#metric-calculation-for-cross-validation-in-machine-learning)。 
 
 自动 ML 试验会自动执行模型验证。 下面的各个部分介绍了如何使用 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) 进一步自定义验证设置。 
 
@@ -43,9 +43,9 @@ ms.locfileid: "98185676"
 
     * [关于机器学习中的训练、验证和测试集](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
-    * [了解机器学习中的交叉验证](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
+    * [了解机器学习中的交叉验证](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
 
-## <a name="default-data-splits-and-cross-validation"></a>默认数据拆分和交叉验证
+## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>机器学习中的默认数据拆分和交叉验证
 
 使用 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) 对象定义试验和训练设置。 请注意，在下面的代码片段中，只定义了必需的参数，也就是说，**未** 包括 `n_cross_validation` 或 `validation_ data` 的参数。
 
@@ -155,6 +155,13 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 > [!NOTE]
 > 若要将 `cv_split_column_names` 与 `training_data` 和 `label_column_name` 一起使用，请升级到 Azure 机器学习 Python SDK 1.6.0 或更高版本。 对于以前的 SDK 版本，请参阅 `cv_splits_indices` 使用方面的内容，但请注意，它仅可与 `X` 和 `y` 数据集输入一起使用。 
+
+
+## <a name="metric-calculation-for-cross-validation-in-machine-learning"></a>机器学习中交叉验证的指标计算
+
+当使用 k 折叠或 Monte Carlo 交叉验证时，将对每个验证折叠计算度量值，然后对其进行聚合。 聚合运算是针对标量度量值的平均值和图表的总和。 交叉验证期间计算得出的度量值基于所有折叠，因此来自定型集的所有示例。 [在自动机器学习中了解有关指标的详细信息](how-to-understand-automated-ml.md)。
+
+当使用自定义验证集或自动选择的验证集时，只会从该验证集计算模型评估指标，而不是从定型数据中计算。
 
 ## <a name="next-steps"></a>后续步骤
 
