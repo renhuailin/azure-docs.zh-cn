@@ -1122,6 +1122,10 @@
           href: find-request-unit-charge-mongodb.md
         - name: 查询性能故障排除
           href: mongodb-troubleshoot-query.md
+        - name: 排查常见问题
+          href: mongodb-troubleshoot.md
+        - name: 防止速率限制错误
+          href: prevent-rate-limiting-errors.md
         - name: 存储和管理 Spring Data
           href: /azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: MongoDB 扩展命令
@@ -1134,8 +1138,6 @@
           href: powershell-samples-mongodb.md
         - name: 使用 Azure CLI 进行管理
           href: cli-samples-mongodb.md
-        - name: 排查常见问题
-          href: mongodb-troubleshoot.md
     - name: 参考
       items:
         - name: REST 资源提供程序

@@ -467,11 +467,19 @@
       displayName: SPX
       items:
         - name: 语音 CLI 概述
-          displayName: What is SPX?
+          displayName: 'What is SPX?, spx, spx overview'
           href: spx-overview.md
-        - name: 语音 CLI 基础知识
-          displayName: SPX basics
+        - name: 语音 CLI 快速入门
+          displayName: 'spx basics, spx quickstart, spx get started, speech cli get started'
           href: spx-basics.md
+        - name: 操作指南
+          items:
+            - name: 语音 CLI 配置选项
+              displayName: 'SPX configuration options, speech cli config, speech cli data store, data store, datastore, speech cli datastore'
+              href: spx-data-store-configuration.md
+            - name: 语音 CLI 批处理操作
+              displayName: 'spx batch, spx batch operations, speech batch, speech cli speech to text batch, speech cli tex to speech batch'
+              href: spx-batch-operations.md
     - name: Speech Studio
       items:
         - name: Speech Studio 概述

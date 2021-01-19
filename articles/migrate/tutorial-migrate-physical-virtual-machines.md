@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: aac949de0b0ae1f085187c1b5e1f3b64d8edad03
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c0f4f1d7f0213ad24d25d8d34235475bbdb0316a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233808"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567105"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>将计算机作为物理服务器迁移到 Azure
 
@@ -163,6 +163,8 @@ Azure Migrate:服务器迁移使用复制设备将计算机复制到 Azure。 �
     - 可在复制设备上获取通行短语。 在命令行中，运行 **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe -v** 查看当前的通行短语。
     - 不要重新生成通行短语。 否则会中断连接，并需要重新注册复制设备。
 
+> [!NOTE]
+> 在“/Platform”参数中，指定 VMware（如果你迁移 VMware VM）或物理计算机 。
 
 ### <a name="install-on-windows"></a>在 Windows 上安装
 
