@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 549b4e1e5e1aef3f6957fa52d69d252c55934286
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: 989520e079988e1821d8bb9a936f857e1f62c11a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541540"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567769"
 ---
 # <a name="connect-your-trend-micro-tippingpoint-solution-to-azure-sentinel"></a>将趋势微 TippingPoint 解决方案连接到 Azure Sentinel
 
@@ -48,15 +48,15 @@ ms.locfileid: "98541540"
 
 1. 按照 "**配置**" 下的 "**说明**" 选项卡中的说明进行操作：
 
-    1. **1. Linux Syslog 代理配置** -如果尚未运行日志转发器，或者如果需要其他日志转发器，请执行此步骤。 有关更详细的说明和说明，请参阅第1步：在 Azure Sentinel 文档中 [部署日志转发器](connect-cef-agent.md) 。
+    1. 小于 **1。Linux Syslog 代理配置** -如果你还没有运行日志转发器，或者如果你需要其他日志转发器，请执行此步骤。 有关更详细的说明和说明，请参阅第1步：在 Azure Sentinel 文档中 [部署日志转发器](connect-cef-agent.md) 。
 
-    1. **2. 将 SMS 日志转发到 Syslog 代理的 TippingPoint** -此配置应包含以下元素：
+    1. 低于 **2。向前走向微 TippingPoint 将 SMS 日志发送到 Syslog 代理** -此配置应包含以下元素：
         - 日志目标–日志转发服务器的主机名和/或 IP 地址
         - 协议和端口– **TCP 514** (否则，请确保在日志转发服务器上的 syslog 后台程序中进行并行更改) 
         - 日志格式– **ARCSIGHT CEF 格式 4.2**
         - 日志类型-所有可用
 
-    1. **3. 验证连接** -通过复制 "连接器" 页上的命令并在日志转发器上运行，验证数据引入。 有关更详细的说明和说明，请参阅 [第3步：验证](connect-cef-verify.md) Azure Sentinel 文档中的连接。
+    1. **3。验证连接**-通过复制 "连接器" 页上的命令并在日志转发器上运行，验证数据引入。 有关更详细的说明和说明，请参阅 [第3步：验证](connect-cef-verify.md) Azure Sentinel 文档中的连接。
 
         可能需要长达20分钟的时间，日志才会开始出现在 Log Analytics 中。
 

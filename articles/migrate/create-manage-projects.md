@@ -1,21 +1,21 @@
 ---
 title: 创建和管理 Azure Migrate 项目
 description: 在 Azure Migrate 中查找、创建、管理和删除项目。
-author: ms-psharma
-ms.author: panshar
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 445e08b255e5b4dd67dd1c6a47c8df6ce59df5bd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: de0c48bb775b96052fe16d60aa58049bfd58ca4d
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753818"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567778"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>创建和管理 Azure Migrate 项目
 
-本文介绍如何创建、管理和删除 [Azure Migrate](migrate-services-overview.md) 项目。
+本文介绍如何创建、管理和删除 [Azure Migrate](migrate-services-overview.md) 项目。 如果使用的是经典 Azure Migrate 项目，请删除这些项目，然后按照步骤创建新的 Azure Migrate 项目。 不能将经典 Azure Migrate 项目或组件升级到 Azure Migrate。
 
 Azure Migrate 项目用于存储从正在评估或迁移的环境中收集的发现、评估和迁移元数据。 在项目中，可以跟踪发现的资产，创建评估，并安排迁移到 Azure。  
 
@@ -46,7 +46,7 @@ Azure Migrate 项目用于存储从正在评估或迁移的环境中收集的发
     - 地理位置仅用于存储从本地计算机收集的元数据。 你可以选择任何要迁移的目标区域。 
     - 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
-8. 选择“创建”  。
+8. 选择“创建”。
 
    ![页面到输入项目设置](./media/create-manage-projects/project-details.png)
 

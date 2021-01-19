@@ -6,16 +6,16 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: c2a6a88e9f730e17c929cf7949352448903435f6
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 730d12558e413d96909914d06187d0d5f89ec661
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118449"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567533"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密
 
-Azure PostgreSQL 利用 [Azure 存储加密](../storage/common/storage-service-encryption.md) ，在默认情况下使用 Microsoft 托管密钥来加密静态数据。 对于 Azure PostgreSQL 用户而言，这与在其他数据库（例如 SQL Server）中) 的透明数据 Encruption (。 许多组织需要完全控制使用客户管理的密钥对数据的访问权限。 通过使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密，让你能够创建自己的密钥 (BYOK) 来保护静态数据。 通过它，组织还可在管理密钥和数据时实现职责分离。 通过客户托管的加密，密钥的生命周期、密钥使用权限以及对密钥操作的审核都由你负责和完全控制。
+Azure PostgreSQL 利用 [Azure 存储加密](../storage/common/storage-service-encryption.md) ，在默认情况下使用 Microsoft 托管密钥来加密静态数据。 对于 Azure PostgreSQL 用户，这与在其他数据库（例如 SQL Server）中 () 非常透明数据加密类似。 许多组织需要完全控制使用客户管理的密钥对数据的访问权限。 通过使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密，让你能够创建自己的密钥 (BYOK) 来保护静态数据。 通过它，组织还可在管理密钥和数据时实现职责分离。 通过客户托管的加密，密钥的生命周期、密钥使用权限以及对密钥操作的审核都由你负责和完全控制。
 
 在服务器级别使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密。 客户管理的密钥被称为密钥加密密钥 (KEK)，它在给定的服务器中用于对该服务使用的数据加密密钥 (DEK) 进行加密。 KEK 是一种非对称密钥，它存储在客户自有和客户管理的 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) 实例中。 本文稍后将更详细地描述密钥加密密钥 (KEK) 和数据加密密钥 (DEK)。
 

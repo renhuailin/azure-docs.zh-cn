@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e294423e3f078253984dc4fcd8695c2676abb236
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: cffc41264dfa30fd833aef465a13abc799334b2f
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541251"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567482"
 ---
 # <a name="connect-data-sources"></a>连接数据源
 
@@ -77,8 +77,10 @@ Azure Sentinel 支持以下数据连接方法：
     - [Okta SSO](connect-okta-single-sign-on.md)
     - [Orca Security](connect-orca-security-alerts.md)
     - [Perimeter 81 日志](connect-perimeter-81-logs.md)
+    - [Proofpoint on demand 点播 (POD) 电子邮件安全](connect-proofpoint-pod.md)
     - [Proofpoint TAP](connect-proofpoint-tap.md)
     - [Qualys VM](connect-qualys-vm.md)
+    - [Salesforce 服务云](connect-salesforce-service-cloud.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
     - [VMware Carbon Black Cloud Endpoint Standard](connect-vmware-carbon-black.md)
@@ -104,15 +106,19 @@ Azure Sentinel 支持以下数据连接方法：
         - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
         - [One Identity Safeguard](connect-one-identity.md)
         - [Palo Alto Networks](connect-paloalto.md)
+        - [Thycotic 密钥服务器](connect-thycotic-secret-server.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
         - [走向微 TippingPoint](connect-trend-micro-tippingpoint.md)
         - [WireX 网络取证平台](connect-wirex-systems.md)
         - [Zscaler](connect-zscaler.md)
         - [其他基于 CEF 的设备](connect-common-event-format.md)
     - **防火墙、代理和终结点-Syslog：**
+        - [Cisco 统一计算系统 (UCS) ](connect-cisco-ucs.md)
         - [Infoblox NIOS](connect-infoblox.md)
+        - [Juniper SRX](connect-juniper-srx.md)
         - [Pulse Connect Secure](connect-pulse-connect-secure.md)
         - [Sophos XG](connect-sophos-xg-firewall.md)
+        - [Squid 代理](connect-squid-proxy.md)
         - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
         - [Symantec VIP](connect-symantec-vip.md)
         - [其他基于 Syslog 的设备](connect-syslog.md)

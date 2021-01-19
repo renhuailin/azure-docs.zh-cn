@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: e6582443ddc56b315c1c666c81a596fa71b1d54f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 02757477ca4a07f4526df0339291122eda57c9b5
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753971"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567431"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 评估支持矩阵 
 
@@ -23,7 +23,7 @@ ms.locfileid: "96753971"
 
 ## <a name="limitations"></a>限制
 
-**支持** | **详细信息**
+**要求** | **详细信息**
 --- | ---
 **项目限制** | 可以在一个 Azure 订阅中创建多个项目。<br/><br/> 最多可以在一个[项目](migrate-support-matrix.md#azure-migrate-projects)中发现和评估 35,000 个 VMware VM。 项目中还可以包含物理服务器和 Hyper-V VM，只要不超过每个项目的评估限制即可。
 **发现** | Azure Migrate 设备最多可以在 vCenter Server 上发现 10,000 个 VMware VM。
@@ -81,9 +81,9 @@ Azure Migrate 使用 [Azure Migrate 设备](migrate-appliance.md)进行发现和
 
 ## <a name="dependency-analysis-requirements-agentless"></a>依赖关系分析要求 (无代理) 
 
-[依赖关系分析](concepts-dependency-visualization.md)有助于确定要评估并迁移到 Azure 的本地虚拟机之间的依赖关系。 下表总结了设置无代理依赖关系分析所需满足的要求。
+[依赖关系分析](concepts-dependency-visualization.md)有助于确定要评估并迁移到 Azure 的本地虚拟机之间的依赖关系。 下表总结了设置无代理依赖关系分析所需满足的要求。 
 
-要求 | **详细信息**
+**支持** | **详细信息**
 --- | --- 
 **支持的虚拟机** | 目前，只有 VMware VM 才支持。
 **Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2（64 位）。<br/>Microsoft Windows Server 2008 (32) 。 

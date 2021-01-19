@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 93d17ec2a4fb5c191ce02c73a7a3532e9c854b00
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: fb1ec55bc68ccc323f8dee90982a9169e3085219
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752067"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567638"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a> (AVS) 评估创建 Azure VMware 解决方案
 
@@ -58,27 +58,29 @@ ms.locfileid: "96752067"
 
     ![屏幕截图显示在 "评估工具" 下选择了评估的 Azure Migrate 服务器。](./media/how-to-create-assessment/assess.png)
 
-3. 在 " **评估服务器**" 中，选择 "Azure VMware 解决方案 (AVS) " 评估类型，选择 "发现源" 并指定评估名称。
+3. 在 " **评估服务器**" 中，选择 "Azure VMware 解决方案 (AVS) " 评估类型，并选择 "发现源"。
 
-    ![评估基本信息](./media/how-to-create-avs-assessment/assess-servers-avs.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/assess-servers-avs.png" alt-text="添加评估基础知识":::
 
-4. 单击“全部查看”查看评估属性。
+4. 单击 " **编辑** " 以查看评估属性。
 
-    ![AVS 评估属性](./media/how-to-create-avs-assessment/avs-view-all.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="用于查看评估属性的 &quot;编辑&quot; 按钮的位置":::
 
-5. 单击“下一步”以转到“选择要评估的计算机” 。 在“选择或创建组”中，选择“新建”并指定组名称。 组将要评估的一个或多个 VM 集合到一起。
+1. 在 "**选择要评估**  >  **评估名称** 的计算机" > 指定评估的名称。 
+ 
+1. 在 " **选择或创建组** " > 选择 " **新建** "，然后指定组名称。 组将要评估的一个或多个 VM 集合到一起。
+    
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="将 VM 添加到组":::
 
-6. 在“将计算机添加到组”中，选择要添加到该组的 VM。
+1. 在“将计算机添加到组”中，选择要添加到该组的 VM。
 
-7. 单击“下一步”以转到“查看 + 创建评估”以查看评估详细信息 。
+1. 单击“下一步”以转到“查看 + 创建评估”以查看评估详细信息 。
 
-8. 单击“创建评估”以创建该组，并运行评估。
+1. 单击“创建评估”以创建该组，并运行评估。
 
-    ![创建 AVS 评估](./media/how-to-create-avs-assessment/avs-assessment-create.png)
+1. 创建评估后，在“服务器” > “Azure Migrate: 服务器评估” > “评估”中查看它。
 
-9. 创建评估后，在“服务器” > “Azure Migrate: 服务器评估” > “评估”中查看它。
-
-10. 单击“导出评估”，将评估下载为 Excel 文件。
+1. 单击“导出评估”，将评估下载为 Excel 文件。
 
 
 ## <a name="review-an-azure-vmware-solution-avs-assessment"></a>查看 Azure VMware 解决方案 (AVS) 评估
@@ -88,6 +90,8 @@ Azure VMware 解决方案 (AVS) 评估介绍：
 - **Azure VMware 解决方案 (AVS) 准备情况**：本地 vm 是否适用于迁移到 Azure VMware 解决方案 (AVS) 。
 - **AVS 节点数**：运行 vm 所需的每个 avs 节点数估算。
 - **跨 AVS 节点的使用率**：在所有节点上预计的 CPU、内存和存储利用率。
+    - 利用率包括以下群集管理开销中的前期分解，如 vCenter Server、NSX Manager (大型) 、NSX 边缘，如果部署了 HCX，则 HCX Manager 和 IX 设备使用 ~ 44vCPU (11 CPU) ，在压缩和重复数据删除之前，需要 75GB RAM 和722GB 存储。
+    - 内存、重复项和压缩当前已设置为100% 的内存利用率和1.5 重复项和压缩，这将是以后版本中的用户定义输入，允许用户微调其所需的大小。
 - **每月成本估计**：运行本地 vm 的所有 Azure VMware 解决方案 (AVS) 节点的每月估算成本。
 
 
@@ -97,7 +101,7 @@ Azure VMware 解决方案 (AVS) 评估介绍：
 
 2. 在“评估”中，单击某项评估将其打开。
 
-    ![AVS 评估摘要](./media/how-to-create-avs-assessment/avs-assessment-summary.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/avs-assessment-summary.png" alt-text="AVS 评估摘要":::
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>查看 Azure VMware 解决方案 (AVS) 准备情况
 

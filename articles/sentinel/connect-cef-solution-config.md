@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 36c832e198d7b6e9a6c3f6ddc19ad87c87917f38
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: 80e5cc18888b0e014fc1f617ca27dee05146472e
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541268"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567675"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>步骤2：配置安全解决方案以发送 CEF 消息
 
@@ -41,6 +41,7 @@ ms.locfileid: "98541268"
 - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
 - [One Identity Safeguard](connect-one-identity.md)
 - [Palo Alto Networks](connect-paloalto.md)
+- [Thycotic 密钥服务器](connect-thycotic-secret-server.md)
 - [Trend Micro Deep Security](connect-trend-micro.md)
 - [走向微 TippingPoint](connect-trend-micro-tippingpoint.md)
 - [WireX 网络取证平台](connect-wirex-systems.md)
@@ -64,7 +65,7 @@ ms.locfileid: "98541268"
 > [!NOTE]
 > **更改 TimeGenerated 字段的源**
 >
-> - 默认情况下，Log Analytics 代理使用代理从 Syslog 守护程序收到事件的时间填充架构中的 *TimeGenerated* 字段。 因此，不会在 Azure Sentinel 中记录源系统上生成事件的时间。
+> - 默认情况下，Log Analytics 代理使用代理从 Syslog 守护程序收到事件的时间填充架构中的 *TimeGenerated* 字段。 因此，在源系统上生成事件的时间不会记录在 Azure Sentinel 中。
 >
 > - 但可以运行以下命令，该命令将下载并运行 `TimeGenerated.py` 脚本。 此脚本将 Log Analytics 代理配置为在其源系统上用事件的原始时间（而不是代理接收到的时间）填充 *TimeGenerated* 字段。
 >

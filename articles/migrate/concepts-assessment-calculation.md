@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: f8a4f29114f7e0a2ed7868f01e05e25c8a0d0ce1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 9bdf907ede2c09f7e314df619cd81059956f17dc
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752220"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567749"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>服务器评估概述 (迁移到 Azure Vm) 
 
@@ -157,7 +157,7 @@ ms.locfileid: "96752220"
 **核心数** | 每台计算机的核心数不得超过128个，这是 Azure VM 支持的最大数量。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内核数以进行比较。 如果评估设置指定了舒适的因素，则使用的内核数乘以舒适系数。<br/><br/> 如果没有性能历史记录，Azure Migrate 将使用已分配的内核来应用舒适因子。 | 如果内核数在限制范围内，则已准备就绪
 **RAM** | 每台计算机都必须具有超过 3892 GB 的 RAM，这是 Azure M 系列 Standard_M128m &nbsp; <sup>2</sup> VM 支持的最大大小。 [了解详细信息](../virtual-machines/sizes.md)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会将使用的 RAM 视为比较。 如果指定了舒适的因素，则使用的 RAM 将乘以舒适系数。<br/><br/> 如果没有历史记录，则使用分配的 RAM 来应用舒适的因素。<br/><br/> | 如果 RAM 量在限制范围内，则已准备就绪
 **存储磁盘** | 分配的磁盘大小不得超过 32 TB。 尽管 Azure 支持 64 TB 磁盘和 Azure 超级 SSD 磁盘，Azure Migrate：服务器评估目前检查 32 TB 作为磁盘大小限制，因为它尚不支持超级 SSD。 <br/><br/> 附加到计算机的磁盘数（包括 OS 磁盘）必须是65或更少。 | 如果磁盘大小和数量处于限制范围内，则已准备就绪
-**联网** | 计算机上的网络接口 (不能超过32个) 附加到它的 Nic。 | 如果 Nic 数在限制范围内，则已准备就绪
+**网络** | 计算机上的网络接口 (不能超过32个) 附加到它的 Nic。 | 如果 Nic 数在限制范围内，则已准备就绪
 
 ### <a name="guest-operating-system"></a>来宾操作系统
 
@@ -268,8 +268,14 @@ Azure Migrate 中的每个基于性能的 Azure VM 评估都与置信度分级�
 下面是评估降低置信度的几个原因：
 
 - 你未在创建评估的持续时间内分析环境。 例如，如果你创建了 "性能持续时间" 设置为一天的评估，则必须在开始发现所有数据点后等待至少一天。
-- 某些 Vm 在计算评估的时间内关闭。 如果任何 Vm 在某个持续时间内关闭，服务器评估将无法收集该时间段的性能数据。
-- 某些 Vm 是在计算评估期间创建的。 例如，假设你为上个月的性能历史记录创建了评估，但某些 Vm 只是在一周之前创建的。 新的 Vm 的性能历史记录不会存在于完整的持续时间。
+- 评估无法在评估期内收集部分或全部 Vm 的性能数据。 若要获得更高的置信度，请确保： 
+    - Vm 在评估期间开机
+    - 允许端口443上的出站连接
+    - 对于 Hyper-v Vm，已启用动态内存 
+    
+    请重新计算评估以反映置信度评级的最新更改。
+
+- 某些 Vm 是在计算评估期间创建的。 例如，假设你为上个月的性能历史记录创建了评估，但某些 Vm 只是在一周之前创建的。 在这种情况下，新 VM 的性能数据在整个过程中都不可用，并且置信度分级会较低。
 
 > [!NOTE]
 > 如果任何评估的置信度小于五星级，我们建议你等待至少一天，让设备对环境进行配置，然后重新计算评估。 否则，基于性能的大小调整可能不可靠。 在这种情况下，我们建议你将评估切换为本地大小调整。

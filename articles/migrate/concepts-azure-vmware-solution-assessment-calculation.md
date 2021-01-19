@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 67d4137a21753b221e17a1effde35bc1b89600d3
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f52c0296023098c755feb1bf0baba980f2988bd7
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753801"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567713"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>服务器评估概述 (迁移到 Azure VMware 解决方案) 
 
@@ -162,7 +162,7 @@ ms.locfileid: "96753801"
 服务器评估连同 VM 属性一起查看计算机的来宾操作系统，以确定它是否可在 Azure 上运行。
 
 
-## <a name="sizing"></a>大小调整
+## <a name="sizing"></a>调整大小
 
 将计算机标记为可供 AVS 使用后，服务器评估中的 AVS 评估会提供节点大小建议，这涉及到识别适当的本地 VM 要求并找到所需的 AVS 节点的总数。 根据指定的评估属性，这些建议会有所不同。
 
@@ -207,6 +207,8 @@ AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略为虚拟机定义存�
 
 如果使用 *作为本地大小调整*，则服务器评估不会考虑 vm 和磁盘的性能历史记录。 相反，它会根据本地分配的大小分配 AVS 节点。 默认存储类型为在 AVS 中的 vSAN。
 
+[了解](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware-azure-vmware-solution#review-an-assessment) 有关如何查看 Azure VMware 解决方案评估的详细信息。
+
 ## <a name="confidence-ratings"></a>置信度评级
 
 Azure Migrate 中的每个基于性能的评估都与置信度分级相关联，范围 (从最低) 到五星 (最高) 。
@@ -236,8 +238,14 @@ Azure Migrate 中的每个基于性能的评估都与置信度分级相关联，
 下面是评估降低置信度的几个原因：
 
 - 你未在创建评估的持续时间内分析环境。 例如，如果你创建了 "性能持续时间" 设置为一天的评估，则必须在开始发现所有数据点后等待至少一天。
-- 一些 VM 在进行评估计算期间关闭。 如果任何 Vm 在某个持续时间内关闭，服务器评估将无法收集该时间段的性能数据。
-- 某些 Vm 是在计算评估期间创建的。 例如，如果你为上个月的性能历史记录创建了评估，但某些 Vm 只是在一周前的环境中创建的，则新 Vm 的性能历史记录不会存在于完整的持续时间内。
+- 评估无法在评估期内收集部分或全部 Vm 的性能数据。 若要获得更高的置信度，请确保： 
+    - Vm 在评估期间开机
+    - 允许端口443上的出站连接
+    - 对于 Hyper-v Vm，已启用动态内存 
+    
+    请重新计算评估以反映置信度评级的最新更改。
+
+- 某些 Vm 是在计算评估期间创建的。 例如，假设你为上个月的性能历史记录创建了评估，但某些 Vm 只是在一周之前创建的。 在这种情况下，新 VM 的性能数据在整个过程中都不可用，并且置信度分级会较低。
 
 > [!NOTE]
 > 如果任何评估的置信度小于五星级，我们建议你等待至少一天的时间让设备对环境进行配置，然后重新计算评估。 如果不这样做，则基于性能的大小调整可能不可靠。 在这种情况下，我们建议你将评估切换为本地大小调整。

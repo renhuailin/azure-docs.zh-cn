@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: c95f8b9e4466b22519a4dea580a86a0dcda83857
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3ba43b83166b5548dee4ea4e52c7411db48d23f5
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555927"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567270"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>注册并扫描 Azure Synapse Analytics
 
@@ -34,7 +34,7 @@ Azure 监控范围不支持扫描 Azure Synapse Analytics 中的[视图](/sql/re
  
 ## <a name="setting-up-authentication-for-a-scan"></a>为扫描设置身份验证
 
-有三种方法可设置 Azure blob 存储的身份验证：
+有三种方法可为 Azure Synapse Analytics 设置身份验证：
 
 - 托管标识
 - SQL 身份验证

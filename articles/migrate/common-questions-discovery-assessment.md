@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 4531d68c2fbd0698c33d70a75bb82ac9c7f52f49
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 944d867ef888e70faa659adcc0e2d4c02f003c97
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752237"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567415"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>发现、评估和依赖关系分析-常见问题
 
@@ -46,7 +46,8 @@ ms.locfileid: "96752237"
 对于“基于性能”的评估，当 Azure Migrate 设备无法收集本地 VM 的性能数据时，评估报告导出会显示“PercentageOfCoresUtilizedMissing”或“PercentageOfMemoryUtilizedMissing”。 请检查：
 
 - 是否在创建评估期间启动了 VM
-- 如果只有内存计数器缺失，而你尝试评估 Hyper-V VM，则请检查是否在这些 VM 上启用了动态内存。 目前有一个已知问题，由于该问题的存在，Azure Migrate 设备无法收集此类 VM 的内存利用率。
+- 如果仅缺少内存计数器，则尝试评估 Hyper-v Vm。 在此方案中，请在 Vm 上启用动态内存，并通过 "重新计算" 评估来反映最新的更改。 仅当 VM 启用了动态内存时，设备才可以收集 Hyper-v Vm 的内存使用率值。
+
 - 如果所有性能计数器都丢失，请确保端口443上的出站连接 (允许使用 HTTPS) 。
 
 请注意，如果缺少任何性能计数器，则 Azure Migrate：服务器评估会回退到本地分配的核心/内存，并相应地建议一个 VM 大小。
@@ -57,7 +58,12 @@ ms.locfileid: "96752237"
 
 - 在创建评估的过程中，你没有对环境进行分析。 例如，如果创建性能持续时间设置为一周的评估，则在对所有数据点启用发现之后，需要等待至少一周才能收集。 如果无法等待这么久，请将性能持续时间缩短，并“重新计算”评估。
  
-- 服务器评估无法在评估期内收集部分或全部 Vm 的性能数据。 请检查是否已在评估期间启用 VM 且允许通过端口 443 进行出站连接。 对于 Hyper-V VM，如果已启用了动态内存，则内存计数器将缺失，导致置信度分级较低。 请重新计算评估以反映置信度评级的最新更改。 
+- 服务器评估无法在评估期内收集部分或全部 Vm 的性能数据。 若要获得更高的置信度，请确保： 
+    - Vm 在评估期间开机
+    - 允许端口443上的出站连接
+    - 对于 Hyper-v Vm，已启用动态内存 
+
+    请重新计算评估以反映置信度评级的最新更改。
 
 - 启动服务器评估中的发现之后，基本不再创建 VM。 例如，如果要针对最后一个月的性能历史记录创建评估，但仅仅在一周前，在环境中创建了一些 VM， 在这种情况下，新 VM 的性能数据在整个过程中都不可用，并且置信度分级会较低。
 
@@ -145,7 +151,7 @@ Azure Migrate 设备不断地收集有关本地环境的信息。  评估是本�
 --- | --- | ---
 支持 | 此选项目前为预览版，仅适用于 VMware Vm。 [查看](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) 支持的操作系统。 | 公开上市 (GA) 。
 Agent | 无需在要交叉检查的计算机上安装代理。 | 要在要分析的每台本地计算机上安装的代理： [Microsoft Monitoring agent (MMA) ](../azure-monitor/platform/agent-windows.md)和 [依赖关系代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。 
-必备知识 | [查看](concepts-dependency-visualization.md#agentless-analysis) 先决条件和部署要求。 | [查看](concepts-dependency-visualization.md#agent-based-analysis) 先决条件和部署要求。
+先决条件 | [查看](concepts-dependency-visualization.md#agentless-analysis) 先决条件和部署要求。 | [查看](concepts-dependency-visualization.md#agent-based-analysis) 先决条件和部署要求。
 Log Analytics | 不需要。 | Azure Migrate 在 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)中使用[服务映射](../azure-monitor/insights/service-map.md)解决方案来进行依赖关系可视化。 [了解详细信息](concepts-dependency-visualization.md#agent-based-analysis)。
 工作原理 | 捕获启用了依赖关系可视化的计算机上的 TCP 连接数据。 发现后，它会按五分钟的间隔收集数据。 | 计算机上安装的服务映射代理收集有关每个进程的 TCP 进程和入站/出站连接的数据。
 数据 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。<br/><br/> 为 Log Analytics 查询收集和提供连接、延迟和数据传输信息的数目。 

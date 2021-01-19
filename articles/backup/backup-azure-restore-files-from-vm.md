@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b4bd64fb00c2f341e474ecb96738fab47d717474
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831663"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567136"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -183,12 +183,12 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
   ![Linux 文件恢复菜单](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
 
-#### <a name="for-backed-up-vms-with-large-disks-linux"></a>对于具有大型磁盘的已备份 Vm (Linux) * *
+#### <a name="for-backed-up-vms-with-large-disks-linux"></a>对于包含大磁盘的备份 VM (Linux)**
 
 如果文件恢复进程在运行文件还原脚本后挂起（例如，如果磁盘从未装载或装载后未显示卷），请执行以下步骤：
 
 1. 在文件 /etc/iscsi/iscsid.conf 中，将设置从
-    - `node.conn[0].timeo.noop_out_timeout = 5` 更改为 `node.conn[0].timeo.noop_out_timeout = 30`
+    - `node.conn[0].timeo.noop_out_timeout = 5` 更改为 `node.conn[0].timeo.noop_out_timeout = 120`
 2. 进行上述更改之后，重新运行脚本。 如果发生暂时性故障，请确保等待 20 到 30 分钟再重新运行，以避免连续突发的请求影响目标准备。 重新运行之间的间隔时间可确保目标已准备好从脚本进行连接。
 3. 在执行文件恢复后，请务必返回门户并为无法装载卷的恢复点选择“卸载磁盘”。 从本质上来说，此步骤将清理所有现有进程/会话并提高恢复的可能性。
 

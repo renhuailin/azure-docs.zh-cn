@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 01/15/2021
-ms.openlocfilehash: 8c2739503f00848b1515f2061c2a9aa250c091a3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.date: 01/18/2021
+ms.openlocfilehash: f802292d9723179b36d5291993bd4e07487fe6a8
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539863"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567393"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>排查虚拟机证书问题
 
@@ -70,7 +70,7 @@ ms.locfileid: "98539863"
 
 ### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix cookie 和其他 VHD 规范
 
-"Conectix" 字符串是 VHD 规范的一部分。 它在 VHD 页脚中定义为8字节 cookie，用于标识文件创建者。 Microsoft 创建的所有 VHD 文件都有此 cookie。 
+"Conectix" 字符串是 VHD 规范的一部分。 它在 VHD 页脚中定义为8字节 cookie，用于标识文件创建者。 Microsoft 创建的所有 VHD 文件都有此 cookie。
 
 VHD 格式的 blob 的格式应为512字节的页脚，格式如下：
 
@@ -126,7 +126,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Linux 测试用例。 说明中说明了测试验证。
 
-|方案|测试用例|说明|
+|方案|测试用例|描述|
 |---|---|---|
 |1|Bash 历史记录|在创建 VM 映像之前，应清除 Bash 历史记录文件。|
 |2|Linux 代理版本|应安装 Azure Linux 代理2.2.41 或更高版本。|
@@ -156,7 +156,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Windows 测试用例，以及测试验证的说明：
 
-|方案 |测试事例|说明|
+|方案 |测试事例|描述|
 |---|---|---|
 |1|操作系统体系结构|Azure 仅支持64位操作系统。|
 |2|用户帐户依赖项|应用程序的执行不应依赖于管理员帐户。|
@@ -199,7 +199,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 |VHD 大小|实际占用的大小|解决方案|
 |---|---|---|
-|>500 tib (TiB) |n/a|请联系支持团队以获取异常批准。|
+|>500 tib (TiB) |不适用|请联系支持团队以获取异常批准。|
 |250-500 TiB|>200 gb (GiB) 与 blob 大小的差异|请联系支持团队以获取异常批准。|
 |
 
@@ -238,7 +238,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 - CVE-2019-11478
 - CVE-2019-11479
 
-|OS 系列|Version|内核|
+|OS 系列|版本|内核|
 |---|---|---|
 |Ubuntu|14.04 LTS|4.4.0-151| 
 ||14.04 LTS|4.15.0-1049- \* -azure|
@@ -311,14 +311,14 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
 请参阅下表，了解当你使用共享访问签名 (SAS) URL 下载 VM 映像时出现的任何问题。
 
-|方案|错误|Reason|解决方案|
-|---|---|---|---|
-|1|找不到 Blob|VHD 可以从指定位置删除或移动。|| 
-|2|Blob 正在使用中|VHD 由其他内部进程使用。|当你使用 SAS URL 下载时，VHD 应处于已使用状态。|
-|3|无效 SAS URL|VHD 的关联 SAS URL 不正确。|获取正确的 SAS URL。|
-|4|签名无效|VHD 的关联 SAS URL 不正确。|获取正确的 SAS URL。|
-|6|HTTP 条件头|SAS URL 无效。|获取正确的 SAS URL。|
-|7|VHD 名称无效|检查 VHD 名称中是否存在任何特殊字符，如百分号 `%` 或引号 `"` 。|通过删除特殊字符来重命名 VHD 文件。|
+|错误|Reason|解决方案|
+|---|---|---|
+|找不到 Blob|VHD 可以从指定位置删除或移动。|| 
+|Blob 正在使用中|VHD 由其他内部进程使用。|当你使用 SAS URL 下载时，VHD 应处于已使用状态。|
+|无效 SAS URL|VHD 的关联 SAS URL 不正确。|获取正确的 SAS URL。|
+|签名无效|VHD 的关联 SAS URL 不正确。|获取正确的 SAS URL。|
+|HTTP 条件头|SAS URL 无效。|获取正确的 SAS URL。|
+|VHD 名称无效|检查 VHD 名称中是否存在任何特殊字符，如百分号 `%` 或引号 `"` 。|通过删除特殊字符来重命名 VHD 文件。|
 |
 
 ## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>第 1 MB (2048 扇区，512字节的每个扇区) 分区
@@ -558,7 +558,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
 #### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>提供新的 VM 映像来解决安全漏洞或攻击
 
-若要完成这些步骤，请为要添加的 VM 映像准备技术资产。 有关详细信息，请参阅 [使用已批准的基础创建虚拟机](azure-vm-create-using-approved-base.md)或 [使用自己的映像创建虚拟机](azure-vm-create-using-own-image.md) 和 [生成 VM 映像的 SAS URI](azure-vm-get-sas-uri.md)。
+若要完成这些步骤，请为要添加的 VM 映像准备技术资产。 有关详细信息，请参阅 [使用已批准的基础创建虚拟机](azure-vm-create-using-approved-base.md) 或 [使用自己的映像创建虚拟机](azure-vm-create-using-own-image.md) 和 [生成 VM 映像的 SAS URI](azure-vm-get-sas-uri.md)。
 
 1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 1. 在左窗格中，选择 "**商业市场**  >  **概述**"。
