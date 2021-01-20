@@ -95,7 +95,7 @@
           href: ./scripts/powershell-sample-zone-redundant-scale-set.md
 - name: 概念
   items:
-    - name: Azure Resource Manager
+    - name: Azure 资源管理器
       href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: 区域
@@ -182,7 +182,7 @@
         - name: 临时 OS 磁盘
           href: ../virtual-machines/ephemeral-os-disks.md
         - name: 磁盘的可伸缩性目标
-          href: ../virtual-machines/windows/disk-scalability-targets.md
+          href: ../virtual-machines/disks-scalability-targets.md
           maintainContext: true
         - name: 磁盘的备份和灾难恢复
           href: ../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md

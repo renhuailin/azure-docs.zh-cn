@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 53707261070e8efbd014614ee700df63a0925ef8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ce48d87c6e04e6c349b681e953647feb5e7ddda5
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999699"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570110"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>教程：配置 SAP SuccessFactors 到 Active Directory 的用户预配 
 本教程旨在说明需要执行哪些步骤才能将用户从 SuccessFactors Employee Central 预配到 Active Directory (AD) 和 Azure AD，以及选择性地将电子邮件地址写回到 SuccessFactors。 
@@ -94,55 +94,61 @@ Azure AD 用户预配服务支持的 SuccessFactors 用户预配工作流可将�
 
 ### <a name="create-an-api-permissions-role"></a>创建 API 权限角色
 
-* 使用有权访问管理中心的用户帐户登录 SAP SuccessFactors。
-* 搜索“管理权限角色”，然后从搜索结果中选择“管理权限角色”。
+1. 使用有权访问管理中心的用户帐户登录 SAP SuccessFactors。
+1. 搜索“管理权限角色”，然后从搜索结果中选择“管理权限角色”。
   ![管理权限角色](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* 从权限角色列表中，单击“新建”。
-  > [!div class="mx-imgBorder"]
-  > ![创建新的权限角色](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
-* 为新的权限角色添加角色名称和说明 。 名称和说明应指出该角色针对的是 API 使用权限。
-  > [!div class="mx-imgBorder"]
-  > ![权限角色详细信息](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* 在“权限设置”下，单击“权限…”，然后向下滚动权限列表，并单击“管理集成工具” 。 选中“允许管理员通过基本身份验证访问 OData API”框。
-  > [!div class="mx-imgBorder"]
-  > ![管理集成工具](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* 还是在该框中向下滚动，然后选择“Employee Central API”。 如下所示添加权限，以使用 ODATA API 进行读取和编辑。 如果计划为“写回到 SuccessFactors”场景使用同一帐户，请选择“编辑”选项。 
-  > [!div class="mx-imgBorder"]
-  > ![读写权限](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+1. 从权限角色列表中，单击“新建”。
+    > [!div class="mx-imgBorder"]
+    > ![创建新的权限角色](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
+1. 为新的权限角色添加角色名称和说明 。 名称和说明应指出该角色针对的是 API 使用权限。
+    > [!div class="mx-imgBorder"]
+    > ![权限角色详细信息](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
+1. 在“权限设置”下，单击“权限…”，然后向下滚动权限列表，并单击“管理集成工具” 。 选中“允许管理员通过基本身份验证访问 OData API”框。
+    > [!div class="mx-imgBorder"]
+    > ![管理集成工具](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
+1. 还是在该框中向下滚动，然后选择“Employee Central API”。 如下所示添加权限，以使用 ODATA API 进行读取和编辑。 如果计划为“写回到 SuccessFactors”场景使用同一帐户，请选择“编辑”选项。 
+    > [!div class="mx-imgBorder"]
+    > ![读写权限](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
 
-  >[!NOTE]
-  >有关此预配应用检索到的特性的完整列表，请参阅 [SuccessFactors 特性参考](../app-provisioning/sap-successfactors-attribute-reference.md)
+1. 在相同的权限框中，转到“用户权限”->“员工数据”，并查看服务帐户可从 SuccessFactors 租户读取的属性。 例如，若要从 SuccessFactors 检索“用户名”属性，请确保针对此属性授予“查看”权限。 同样，查看每个属性的“查看”权限。 
 
-* 单击“完成”。 单击 **“保存更改”** 。
+    > [!div class="mx-imgBorder"]
+    > ![员工数据权限](./media/sap-successfactors-inbound-provisioning/review-employee-data-permissions.png)
+   
+
+    >[!NOTE]
+    >有关此预配应用检索到的特性的完整列表，请参阅 [SuccessFactors 特性参考](../app-provisioning/sap-successfactors-attribute-reference.md)
+
+1. 单击“完成”。 单击 **“保存更改”** 。
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>为 API 用户创建权限组
 
-* 在 SuccessFactors 管理中心，搜索“管理权限组”，然后从搜索结果中选择“管理权限组”。
-  > [!div class="mx-imgBorder"]
-  > ![管理权限组](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* 从“管理权限组”窗口中，单击“新建”。
-  > [!div class="mx-imgBorder"]
-  > ![添加新组](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
-* 为新组添加一个组名。 组名应指出该组用于 API 用户。
-  > [!div class="mx-imgBorder"]
-  > ![权限组名称](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
-* 向组添加成员。 例如，可从“人员池”下拉菜单中选择“用户名”，然后输入将用于集成的 API 帐户的用户名。 
-  > [!div class="mx-imgBorder"]
-  > ![添加组成员](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
-* 单击“完成”来完成权限组的创建。
+1. 在 SuccessFactors 管理中心，搜索“管理权限组”，然后从搜索结果中选择“管理权限组”。
+    > [!div class="mx-imgBorder"]
+    > ![管理权限组](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
+1. 从“管理权限组”窗口中，单击“新建”。
+    > [!div class="mx-imgBorder"]
+    > ![添加新组](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
+1. 为新组添加一个组名。 组名应指出该组用于 API 用户。
+    > [!div class="mx-imgBorder"]
+    > ![权限组名称](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
+1. 向组添加成员。 例如，可从“人员池”下拉菜单中选择“用户名”，然后输入将用于集成的 API 帐户的用户名。 
+    > [!div class="mx-imgBorder"]
+    > ![添加组成员](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
+1. 单击“完成”来完成权限组的创建。
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>向权限组授予权限角色
 
-* 在 SuccessFactors 管理中心，搜索“管理权限角色”，然后从搜索结果中选择“管理权限角色”。
-* 从“权限角色列表”中，选择为 API 使用权限创建的角色。
-* 在“将此角色授予…”中，单击“添加…”按钮 。
-* 从下拉菜单中选择“权限组…”，然后单击“选择…”，打开“组”窗口进行搜索并选择上面创建的组 。 
-  > [!div class="mx-imgBorder"]
-  > ![添加权限组](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
-* 查看“向权限组授予权限角色”。 
-  > [!div class="mx-imgBorder"]
-  > ![权限角色和组详细信息](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* 单击 **“保存更改”** 。
+1. 在 SuccessFactors 管理中心，搜索“管理权限角色”，然后从搜索结果中选择“管理权限角色”。
+1. 从“权限角色列表”中，选择为 API 使用权限创建的角色。
+1. 在“将此角色授予…”中，单击“添加…”按钮 。
+1. 从下拉菜单中选择“权限组…”，然后单击“选择…”，打开“组”窗口进行搜索并选择上面创建的组 。 
+    > [!div class="mx-imgBorder"]
+    > ![添加权限组](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
+1. 查看“向权限组授予权限角色”。 
+    > [!div class="mx-imgBorder"]
+    > ![权限角色和组详细信息](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
+1. 单击 **“保存更改”** 。
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-active-directory"></a>配置从 SuccessFactors 到 Active Directory 的用户预配
 
@@ -173,68 +179,14 @@ Azure AD 用户预配服务支持的 SuccessFactors 用户预配工作流可将�
 7. 将“预配模式”更改为“自动”  
 
 8. 单击显示的信息横幅以下载预配代理。 
-   > [!div class="mx-imgBorder"]
-   > ![下载代理](./media/sap-successfactors-inbound-provisioning/download-pa-agent.png "下载代理屏幕")
-
+   >[!div class="mx-imgBorder"]
+   >![下载代理](./media/workday-inbound-tutorial/pa-download-agent.png "下载代理屏幕")
 
 ### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>第 2 部分：安装和配置本地预配代理
 
-要预配到本地 Active Directory，必须在具有 .NET 4.7.1 Framework 或更高版本且可通过网络访问所需 Active Directory 域的服务器上安装预配代理。
+要预配到本地 Active Directory，必须在可通过网络访问所需 Active Directory 域的已加入域的服务器上安装预配代理。
 
-> [!TIP]
-> 可以使用[此处](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)提供的说明来检查服务器上的 .NET framework 版本。
-> 如果服务器未安装 .NET 4.7.1 或更高版本，可从[此处](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)下载。  
-
-将下载的代理安装程序传输到服务器主机，并按照以下步骤完成代理配置。
-
-1. 登录到要安装新代理的 Windows Server。
-
-1. 启动预配代理安装程序，同意条款并单击“安装”按钮。
-
-   ![安装屏幕](./media/workday-inbound-tutorial/pa_install_screen_1.png "安装屏幕")
-   
-1. 完成安装后，将启动向导并显示“连接 Azure AD”屏幕。 单击“身份验证”按钮以连接到 Azure AD 实例。
-
-   ![连接 Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "连接 Azure AD")
-   
-1. 使用全局管理员凭据对 Azure AD 实例进行身份验证。
-
-   ![管理员身份验证](./media/workday-inbound-tutorial/pa_install_screen_3.png "管理员身份验证")
-
-   > [!NOTE]
-   > Azure AD 管理员凭据仅用于连接到 Azure AD 租户。 代理不会将凭据存储在本地服务器上。
-
-1. 使用 Azure AD 成功进行身份验证后，将显示“连接 Active Directory 域服务”屏幕。 在此步骤中，请输入 AD 域名并单击“添加目录”按钮。
-
-   ![添加目录](./media/workday-inbound-tutorial/pa_install_screen_4.png "添加目录")
-  
-1. 系统现将提示输入连接到 AD 域所需的凭据。 在同一屏幕上，可以使用“选择域控制器优先级”以指定代理应用于发送预配请求的域控制器。
-
-   ![域凭据](./media/workday-inbound-tutorial/pa_install_screen_5.png)
-   
-1. 配置域之后，安装程序会显示已配置的域的列表。 在此屏幕上，可以重复步骤 #5 和 #6 以添加更多域，或单击“下一步”以继续执行代理注册。
-
-   ![配置的域](./media/workday-inbound-tutorial/pa_install_screen_6.png "配置的域")
-
-   > [!NOTE]
-   > 如果有多个 AD 域（例如 na.contoso.com、emea.contoso.com），请将每个域单独添加到列表中。
-   > 仅添加父域（如 contoso.com）是不够的。 必须向代理注册每个子域。
-   
-1. 查看配置详细信息，然后单击“确认”以注册该代理。
-  
-   ![确认屏幕](./media/workday-inbound-tutorial/pa_install_screen_7.png "确认屏幕")
-   
-1. 配置向导将显示代理注册的进度。
-  
-   ![代理注册](./media/workday-inbound-tutorial/pa_install_screen_8.png "代理注册")
-   
-1. 代理注册成功后，可以单击“退出”以退出向导。
-  
-   ![退出屏幕](./media/workday-inbound-tutorial/pa_install_screen_9.png "退出屏幕")
-   
-1. 请打开“服务”管理单元来验证是否已安装代理并确保其正在运行，并查找名为“Microsoft Azure AD Connect 预配代理”的服务
-  
-   ![正在服务中运行的 Microsoft Azure AD Connect 预配代理的屏幕截图。](./media/workday-inbound-tutorial/services.png)
+将下载的代理安装程序传输到服务器主机，并按照[安装代理部分](../cloud-provisioning/how-to-install.md)中列出的步骤完成代理配置。
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>第 3 部分：在预配应用中，配置与 SuccessFactors 和 Active Directory 的连接
 在此步骤中，我们将在 Azure 门户中建立与 SuccessFactors 和 Active Directory 的连接。 
@@ -331,24 +283,22 @@ Azure AD 用户预配服务支持的 SuccessFactors 用户预配工作流可将�
 
 1. 要保存映射，请单击“属性-映射”部分顶部的“保存”。
 
-属性映射配置完成后，即可[启用并启动用户预配服务](#enable-and-launch-user-provisioning)。
+完成属性映射配置后，可使用[按需预配预配](../app-provisioning/provision-on-demand.md)测试单个用户的预配，然后[启用并启动用户预配服务](#enable-and-launch-user-provisioning)。
 
 ## <a name="enable-and-launch-user-provisioning"></a>启用并启动用户预配
 
-SuccessFactors 预配应用配置完成后，可在 Azure 门户中启用预配服务。
+SuccessFactors 预配应用配置完成后，并且你已使用[按需预配](../app-provisioning/provision-on-demand.md)验证了单个用户的预配，则可在 Azure 门户中启用预配服务。
 
 > [!TIP]
-> 默认情况下，启用预配服务时，它会为范围中的所有用户启动预配操作。 如果映射出错或存在 SuccessFactors 数据问题，则预配作业可能会失败并转入隔离状态。 要避免这种情况，最佳做法是先配置“源对象范围”筛选器并使用少量测试用户来测试属性映射，然后再为所有用户启动完全同步。 验证确保映射正常工作且获得所需结果后，可删除筛选器或逐渐扩大范围以包含更多用户。
+> 默认情况下，启用预配服务时，它会为范围中的所有用户启动预配操作。 如果映射出错或存在 SuccessFactors 数据问题，则预配作业可能会失败并转入隔离状态。 要避免这种情况，最佳做法是先配置“源对象范围”筛选器并使用[按需预配](../app-provisioning/provision-on-demand.md)对少数测试用户测试你的属性映射，然后再为所有用户启动完全同步。 验证确保映射正常工作且获得所需结果后，可删除筛选器或逐渐扩大范围以包含更多用户。
 
-1. 在“预配”选项卡中，将“预配状态”设置为“打开”。  
+1. 转到“预配”边栏选项卡，单击“开始预配” 。
 
-2. 单击“ **保存**”。
+1. 此操作将启动初始同步；该过程会耗时数小时，具体时间取决于 SuccessFactors 租户中的用户数。 可检查进度条来跟踪同步周期的进度。 
 
-3. 此操作将启动初始同步；该过程会耗时数小时，具体时间取决于 SuccessFactors 租户中的用户数。 可检查进度条来跟踪同步周期的进度。 
+1. 无论何时，检查 Azure 门户中的“审核日志”选项卡都可以查看预配服务执行的操作。 审核日志列出预配服务执行的所有同步事件（例如正在从 SuccessFactors 中读出哪些用户），随后将其添加或更新到 Active Directory。 
 
-4. 无论何时，检查 Azure 门户中的“审核日志”选项卡都可以查看预配服务执行的操作。 审核日志列出预配服务执行的所有同步事件（例如正在从 SuccessFactors 中读出哪些用户），随后将其添加或更新到 Active Directory。 
-
-5. 完成初始同步后，系统会在“预配”选项卡中写入一份审核摘要报告，如下所示。
+1. 完成初始同步后，系统会在“预配”选项卡中写入一份审核摘要报告，如下所示。
 
    > [!div class="mx-imgBorder"]
    > ![预配进度条](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)

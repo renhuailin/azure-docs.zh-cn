@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5f49d2c918164fa529b12313e000aff5f8893a65
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d691807f673dcd6c8147c9ff18a95c6ce0c88ae6
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201837"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247414"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>教程：为 Blink 配置自动用户预配
 
@@ -50,7 +50,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 ## <a name="setup-blink-for-provisioning"></a>设置 Blink 以进行预配
 
-1. 记录[支持案例](https://support.joinblink.com)或通过电子邮件联系 Blink 支持部门 (support@joinblink.com)，以请求 SCIM 令牌。 .
+1. 记录[支持案例](https://support.joinblink.com)或通过电子邮件联系 Blink 支持部门 (support@joinblink.com)，以请求 SCIM 令牌。
 
 2.  复制 SCIM 身份验证令牌。 将在 Azure 门户中 Blink 应用程序“预配”选项卡的“机密令牌”字段输入此值。
 
@@ -97,7 +97,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
@@ -117,7 +117,23 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 9. 在“特性映射”部分中，查看从 Azure AD 同步到 Blink 的用户特性。 选为“匹配”属性的特性用于匹配 Blink 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改  。
 
-    ![Blink 用户特性](media/blink-provisioning-tutorial/new-user-attributes.png)
+   |Attribute|类型|支持筛选|
+   |---|---|---|
+   |userName|字符串|&check;|
+   |活动|Boolean|
+   |title|字符串|
+   |emails[type eq "work"].value|字符串|
+   |name.givenName|字符串|
+   |name.familyName|字符串|
+   |phoneNumbers[type eq "work"].value|字符串|
+   |phoneNumbers[type eq "mobile"].value|字符串|
+   |externalId|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
+   |urn:ietf:params:scim:schemas:extension:blink:2.0:User:company|字符串|
+   urn:ietf:params:scim:schemas:extension:blink:2.0:User:description|字符串|
+   urn:ietf:params:scim:schemas:extension:blink:2.0:User:location|字符串|
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
@@ -137,15 +153,23 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
+## <a name="step-6-monitor-your-deployment"></a>步骤 6. 监视部署
+配置预配后，请使用以下资源来监视部署：
+
+* 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
+* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+* 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)。  
+
+
 ## <a name="change-log"></a>更改日志
 
 * 2021/01/14 - 已添加自定义扩展属性 company、 description 和 location  。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: a62943c1a808424ded1a5e46ed115cda332bf7d5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a73ecf18a4bd89567dc603758d9ff8501267a1f
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020749"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570026"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>教程：配置 SAP SuccessFactors 到 Azure AD 的用户预配
 本教程旨在说明需要执行哪些步骤才能将工作人员数据从 SuccessFactors Employee Central 预配到 Azure Active Directory，以及选择性地将电子邮件地址写回到 SuccessFactors。 
@@ -91,51 +91,61 @@ Azure AD 用户预配服务支持的 SuccessFactors 用户预配工作流可将�
 
 ### <a name="create-an-api-permissions-role"></a>创建 API 权限角色
 
-* 使用有权访问管理中心的用户帐户登录 SAP SuccessFactors。
-* 搜索“管理权限角色”，然后从搜索结果中选择“管理权限角色”。
+1. 使用有权访问管理中心的用户帐户登录 SAP SuccessFactors。
+1. 搜索“管理权限角色”，然后从搜索结果中选择“管理权限角色”。
   ![管理权限角色](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* 从权限角色列表中，单击“新建”。
-  > [!div class="mx-imgBorder"]
-  > ![创建新的权限角色](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
-* 为新的权限角色添加角色名称和说明 。 名称和说明应指出该角色针对的是 API 使用权限。
-  > [!div class="mx-imgBorder"]
-  > ![权限角色详细信息](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* 在“权限设置”下，单击“权限…”，然后向下滚动权限列表，并单击“管理集成工具” 。 选中“允许管理员通过基本身份验证访问 OData API”框。
-  > [!div class="mx-imgBorder"]
-  > ![管理集成工具](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* 还是在该框中向下滚动，然后选择“Employee Central API”。 如下所示添加权限，以使用 ODATA API 进行读取和编辑。 如果计划为“写回到 SuccessFactors”场景使用同一帐户，请选择“编辑”选项。 
-  > [!div class="mx-imgBorder"]
-  > ![读写权限](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* 单击“完成”。 单击 **“保存更改”** 。
+1. 从权限角色列表中，单击“新建”。
+    > [!div class="mx-imgBorder"]
+    > ![创建新的权限角色](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
+1. 为新的权限角色添加角色名称和说明 。 名称和说明应指出该角色针对的是 API 使用权限。
+    > [!div class="mx-imgBorder"]
+    > ![权限角色详细信息](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
+1. 在“权限设置”下，单击“权限…”，然后向下滚动权限列表，并单击“管理集成工具” 。 选中“允许管理员通过基本身份验证访问 OData API”框。
+    > [!div class="mx-imgBorder"]
+    > ![管理集成工具](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
+1. 还是在该框中向下滚动，然后选择“Employee Central API”。 如下所示添加权限，以使用 ODATA API 进行读取和编辑。 如果计划为“写回到 SuccessFactors”场景使用同一帐户，请选择“编辑”选项。 
+    > [!div class="mx-imgBorder"]
+    > ![读写权限](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+
+1. 在相同的权限框中，转到“用户权限”->“员工数据”，并查看服务帐户可从 SuccessFactors 租户读取的属性。 例如，若要从 SuccessFactors 检索“用户名”属性，请确保针对此属性授予“查看”权限。 同样，查看每个属性的“查看”权限。 
+
+    > [!div class="mx-imgBorder"]
+    > ![员工数据权限](./media/sap-successfactors-inbound-provisioning/review-employee-data-permissions.png)
+   
+
+    >[!NOTE]
+    >有关此预配应用检索到的特性的完整列表，请参阅 [SuccessFactors 特性参考](../app-provisioning/sap-successfactors-attribute-reference.md)
+
+1. 单击“完成”。 单击 **“保存更改”** 。
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>为 API 用户创建权限组
 
-* 在 SuccessFactors 管理中心，搜索“管理权限组”，然后从搜索结果中选择“管理权限组”。
-  > [!div class="mx-imgBorder"]
-  > ![管理权限组](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* 从“管理权限组”窗口中，单击“新建”。
-  > [!div class="mx-imgBorder"]
-  > ![添加新组](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
-* 为新组添加一个组名。 组名应指出该组用于 API 用户。
-  > [!div class="mx-imgBorder"]
-  > ![权限组名称](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
-* 向组添加成员。 例如，可从“人员池”下拉菜单中选择“用户名”，然后输入将用于集成的 API 帐户的用户名。 
-  > [!div class="mx-imgBorder"]
-  > ![添加组成员](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
-* 单击“完成”来完成权限组的创建。
+1. 在 SuccessFactors 管理中心，搜索“管理权限组”，然后从搜索结果中选择“管理权限组”。
+    > [!div class="mx-imgBorder"]
+    > ![管理权限组](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
+1. 从“管理权限组”窗口中，单击“新建”。
+    > [!div class="mx-imgBorder"]
+    > ![添加新组](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
+1. 为新组添加一个组名。 组名应指出该组用于 API 用户。
+    > [!div class="mx-imgBorder"]
+    > ![权限组名称](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
+1. 向组添加成员。 例如，可从“人员池”下拉菜单中选择“用户名”，然后输入将用于集成的 API 帐户的用户名。 
+    > [!div class="mx-imgBorder"]
+    > ![添加组成员](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
+1. 单击“完成”来完成权限组的创建。
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>向权限组授予权限角色
 
-* 在 SuccessFactors 管理中心，搜索“管理权限角色”，然后从搜索结果中选择“管理权限角色”。
-* 从“权限角色列表”中，选择为 API 使用权限创建的角色。
-* 在“将此角色授予…”中，单击“添加…”按钮 。
-* 从下拉菜单中选择“权限组…”，然后单击“选择…”，打开“组”窗口进行搜索并选择上面创建的组 。 
-  > [!div class="mx-imgBorder"]
-  > ![添加权限组](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
-* 查看“向权限组授予权限角色”。 
-  > [!div class="mx-imgBorder"]
-  > ![权限角色和组详细信息](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* 单击 **“保存更改”** 。
+1. 在 SuccessFactors 管理中心，搜索“管理权限角色”，然后从搜索结果中选择“管理权限角色”。
+1. 从“权限角色列表”中，选择为 API 使用权限创建的角色。
+1. 在“将此角色授予…”中，单击“添加…”按钮 。
+1. 从下拉菜单中选择“权限组…”，然后单击“选择…”，打开“组”窗口进行搜索并选择上面创建的组 。 
+    > [!div class="mx-imgBorder"]
+    > ![添加权限组](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
+1. 查看“向权限组授予权限角色”。 
+    > [!div class="mx-imgBorder"]
+    > ![权限角色和组详细信息](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
+1. 单击 **“保存更改”** 。
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>配置从 SuccessFactors 到 Azure AD 的用户预配
 
