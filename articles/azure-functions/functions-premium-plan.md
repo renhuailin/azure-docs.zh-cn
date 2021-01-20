@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: d944512e5f6126920ab4fba99fb70513b93177ba
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 26dd3f7df5a71c687bfb4935f290e7a54b4e01fe
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936815"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610261"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
@@ -153,6 +153,8 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 在具有更多内存的计算机上运行并不一定意味着函数应用使用所有可用内存。
 
 例如，JavaScript 函数应用受 Node.js 中的默认内存限制约束。 若要增大此固定内存限制，请添加值为 `--max-old-space-size=<max memory in MB>` 的应用设置 `languageWorkers:node:arguments`。
+
+对于内存超过4GB 的计划，请确保将 "位数" 平台设置设置为 `64 Bit` " [常规设置](/azure/app-service/configure-common#configure-general-settings)" 下的设置。
 
 ## <a name="region-max-scale-out"></a>区域最大横向扩展
 

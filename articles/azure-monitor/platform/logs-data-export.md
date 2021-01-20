@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 8e310ea487818f6d82869fe1973c8e9ed0b04195
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: d9ae9cae1a0a8014f007cd7c4a3d1f97f27128bb
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797105"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610958"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -35,13 +35,16 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 
 ## <a name="current-limitations"></a>当前限制
 
-- 当前只能使用 CLI 或 REST 请求执行配置， 无法使用 Azure 门户或 PowerShell。
+- 当前可以使用 CLI 或 REST 请求执行配置。 尚不支持 Azure 门户或 PowerShell。
 - CLI 和 REST 中的 ```--export-all-tables``` 选项不受支持，将被删除。 你应在导出规则中显式提供表的列表。
-- 受支持的表当前仅限于下面[受支持的表](#supported-tables)部分中指定的那些。 如果数据导出规则包含不受支持的表，操作不会失败，但不会导出该表的任何数据。 如果数据导出规则包含不存在的表，操作会失败并出现错误 ```Table <tableName> does not exist in the workspace.```
+- 受支持的表当前仅限于下面[受支持的表](#supported-tables)部分中指定的那些。 
+- 如果数据导出规则包含不受支持的表，则该操作将会成功，但在支持 table 之前，将不会为该表导出任何数据。 
+- 如果数据导出规则包含不存在的表，则会失败并出现错误 ```Table <tableName> does not exist in the workspace``` 。
 - Log Analytics 工作区可以位于除以下区域外的任何区域：
   - 瑞士北部
   - 瑞士西部
   - Azure 政府区域
+- 你可以在工作区中创建两个导出规则--在中，可以是一个到事件中心的规则，一个规则到存储帐户。
 - 目标存储帐户或事件中心必须与 Log Analytics 工作区位于同一区域。
 - 对于存储帐户，要导出的表的名称不能超过 60 个字符，而对于事件中心，不能超过 47 个字符。 名称较长的表将不会被导出。
 
@@ -115,7 +118,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 
 
 ### <a name="create-or-update-data-export-rule"></a>创建或更新数据导出规则
-数据导出规则定义要为一组表导出到单个目标的数据。 可为每个目标创建一个规则。
+数据导出规则定义要为一组表导出到单个目标的数据。 可以为每个目标创建一个规则。
 
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
@@ -406,7 +409,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-空值
+不可用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6466647056535635b67cd53012d051f11e9b484c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f04e2aa97cafe2345918e433bcef5e719cee7483
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323305"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610159"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -43,11 +43,15 @@ public static async Task<IActionResult> Run(
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -100,11 +104,15 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -367,7 +375,7 @@ module.exports = function(context, req) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-下面的示例演示了文件 *function.js* 中的触发器绑定和 [PowerShell 函数](functions-reference-node.md)。 该函数在查询字符串或 HTTP 请求的正文中查找 `name` 参数。
+以下示例演示 function.json 文件中的一个触发器绑定和一个 [PowerShell 函数](functions-reference-node.md)。 该函数在查询字符串或 HTTP 请求的正文中查找 `name` 参数。
 
 ```json
 {
@@ -527,7 +535,7 @@ JavaScript 不支持特性。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell 不支持属性。
+PowerShell 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -537,11 +545,11 @@ Python 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json 文件和 `HttpTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `HttpTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| **type** | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
+| type  | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
 | **direction** | 不适用| 必需 - 必须设置为 `in`。 |
 | name | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
 | <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
@@ -676,7 +684,7 @@ module.exports = function (context, req) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-在文件 *function.js* 中声明的路由参数可作为对象的属性进行访问 `$Request.Params` 。
+可将 function.json 文件中声明的路由参数作为 `$Request.Params` 对象的属性进行访问。
 
 ```powershell
 $Category = $Request.Params.category

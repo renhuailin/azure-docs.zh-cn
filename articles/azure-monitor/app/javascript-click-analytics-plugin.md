@@ -8,20 +8,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: e69d5cc76f8f4b14ab87e13546c98859bb801418
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7af26be91ff129e4c968bcb131cc98290cd8d7b9
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234700"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610074"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>单击 "分析自动收集插件" Application Insights JavaScript SDK
 
-单击 "针对 Application Insights JavaScript SDK 的分析自动收集插件"，可基于 meta 标记自动跟踪网页上的单击事件 `data-*` 。 此插件使用 `data-*` 全局属性捕获单击事件，并填充遥测数据。
+此插件在网页上自动跟踪单击事件，并使用 HTML 元素上的 data-* 特性来填充事件遥测。
 
 ## <a name="getting-started"></a>入门
 
-用户可以通过 npm 设置单击分析自动收集插件。
+用户可以通过 npm 设置 Click Analytics 自动收集插件。
 
 ### <a name="npm-setup"></a>npm 安装程序
 
@@ -83,7 +83,7 @@ appInsights.loadAppInsights();
 | --------------------- | -----------------------------------| --------| ---------------------------------------------------------------------------------------------------------------------------------------- |
 | autoCapture           | boolean                            | 是    | 自动捕获配置。                                                                                                         |
 | 回调 (callback)              | [IValueCallback](#ivaluecallback)  | Null    | 回拨配置。                                                                                                                 |
-| pageTags              | 字符串                             | Null    | 页面标记。                                                                                                                               |
+| pageTags              | string                             | Null    | 页面标记。                                                                                                                               |
 | dataTags              | [ICustomDataTags](#icustomdatatags)| Null    | 提供的自定义数据标记用于覆盖用于捕获单击数据的默认标记。                                                           |
 | urlCollectHash        | boolean                            | false   | 启用 URL 的 "#" 字符后的值的日志记录。                                                                          |
 | urlCollectQuery       | boolean                            | false   | 启用 URL 查询字符串的日志记录。                                                                                      |
@@ -101,19 +101,19 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>ICustomDataTags
 
-| 名称                      | 类型    | 默认   | 说明                                                                                       |
-|---------------------------|---------|-----------|---------------------------------------------------------------------------------------------------|
-| useDefaultContentNameOrId | boolean | false     | 如果某个特定元素未使用默认的 customDataPrefix 或 customDataPrefix 进行标记，则用户不会提供此标志，用于收集 contentName 的标准 HTML 属性。 |
-| customDataPrefix          | 字符串  | `data-`   | 自动捕获用提供的前缀标记的元素的内容名称和值。       |
-| aiBlobAttributeTag        | 字符串  | `ai-blob` | 插件支持 JSON blob 内容元数据标记，而不是单个 `data-*` 属性。 |
-| metaDataPrefix            | 字符串  | Null      | 自动捕获 HTML 标头的元元素名称和包含所提供前缀的内容。 |
-| captureAllMetaDataContent | 字符串  | Null      | 自动捕获所有 HTML 标头的元元素名称和内容。 默认值为 false。 如果启用此参数，则将重写提供的 metaDataPrefix。 |
-| parentDataTag             | 字符串  | Null      | 当遇到此标记时，停止遍历 DOM 以捕获元素的内容名称和值。|
-| dntDataTag                | 字符串  | `ai-dnt`  | 用于捕获遥测数据的插件将忽略具有此属性的 HTML 元素。|
+| 名称                      | 类型    | 默认   | 要在 HTML 中使用的默认标记 |   说明                                                                                |
+|---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
+| useDefaultContentNameOrId | boolean | false     | 不适用         |当特定元素未标记为默认的 customDataPrefix 时，或用户未提供 customDataPrefix 时，收集 contentName 的标准 HTML 属性。 |
+| customDataPrefix          | string  | `data-`   | `data-*`| 自动捕获用提供的前缀标记的元素的内容名称和值。 例如， `data-*-id` `data-<yourcustomattribute>` 可以在 HTML 标记中使用。   |
+| aiBlobAttributeTag        | string  | `ai-blob` |  `data-ai-blob`| 插件支持 JSON blob 属性而不是单个 `data-*` 属性。 |
+| metaDataPrefix            | string  | Null      | N/A  | 捕获时，自动捕获 HTML Head 的元元素名称和内容并提供前缀。 例如， `custom-` 可以在 HTML meta 标记中使用。 |
+| captureAllMetaDataContent | boolean | false     | 不适用   | 自动捕获所有 HTML 标头的元元素名称和内容。 默认值为 false。 如果启用此参数，则将重写提供的 metaDataPrefix。 |
+| parentDataTag             | string  | Null      |  N/A  | 当遇到此标记时，停止遍历 DOM 以捕获元素的内容名称和值。 例如， `data-<yourparentDataTag>` 可以在 HTML 标记中使用。|
+| dntDataTag                | string  | `ai-dnt`  |  `data-ai-dnt`| 用于捕获遥测数据的插件将忽略具有此属性的 HTML 元素。|
 
 ### <a name="behaviorvalidator"></a>behaviorValidator
 
-如果要确保数据一致性，请使用 behaviorValidator 函数，以确保代码中标记的行为符合企业内的已知和接受分类的预定义列表。 这不是必需的，也不是预计大多数 Azure Monitor 客户将使用此功能，但它可用于高级方案。 有三个不同的 behaviorValidator 回调函数作为此扩展的一部分公开。 但是，如果公开的函数不能满足您的要求，则用户可以使用其自己的回调函数。 目的是引入自己的行为数据结构，该插件会在从数据标记提取行为时使用此验证程序函数。
+BehaviorValidator 函数会自动检查代码中标记的行为是否符合预定义的列表。 这可确保标记的行为与企业建立的分类一致。 这不是必需的，也不是预计大多数 Azure Monitor 客户将使用此功能，但它可用于高级方案。 有三个不同的 behaviorValidator 回调函数作为此扩展的一部分公开。 但是，如果公开的函数不能满足您的要求，则用户可以使用其自己的回调函数。 目的是引入自己的行为数据结构，该插件会在从数据标记提取行为时使用此验证程序函数。
 
 | 名称                   | 说明                                                                        |
 | ---------------------- | -----------------------------------------------------------------------------------|
@@ -312,6 +312,7 @@ appInsights.loadAppInsights();
 
 ## <a name="next-steps"></a>后续步骤
 
+- 查看适用于单击分析自动收集插件的 [GitHub 存储库](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) 和 [NPM 包](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) 。
 - 使用使用 [体验中的事件分析](usage-segmentation.md) ，按可用维度分析顶部单击和切片。
 - 在 [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)中，在 CustomEvents 表中的 "内容" 字段下查找 "内容" 字段下的数据。
 - 构建 [工作簿](../platform/workbooks-overview.md) 以创建单击数据的自定义可视化效果。

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ecea9dcd28aede92ef255bf002b9195ded43c68b
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 53093edb1d3c142336f06ec8544aaa7b55e37477
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296108"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611247"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -138,13 +138,14 @@ az aks get-versions --location eastus --output table
 
 |  K8s 版本 | 上游版本  | AKS 预览版  | AKS GA  | 生命周期结束 |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.16  | 2019 年 9 月 19 日  | 2019 年 1 月   | 2020 年 3 月  | 2021年1月 * | 
+| 1.16  | 2019 年 9 月 19 日  | 2019 年 1 月   | 2020 年 3 月  | 2021 年 1 月| 
 | 1.17  | 19-12-09  | 2019 年 1 月   | 2020 年 7 月  | 1.20 GA | 
 | 1.18  | 20-03-23  | 2020 年 5 月   | 2020 年 8 月  | 1.21 GA | 
 | 1.19  | 20-08-04  | 2020 年 9 月   | 2020 年 11 月  | 1.22 GA | 
 | 1.20  | 2020 年 12 月 8 日  | 2021 年 1 月   | 2021 年 3 月  | 1.23 GA |
+| 1.21  | Apr-08-21 * | 2021 年 5 月   | 7月2021  | 1.24 GA |
 
-\* 由于假日季节，AKS 延长了1.16 年11月2020到2021年1月的生活。 [了解详细信息](https://github.com/Azure/AKS/releases/tag/2020-10-12)。
+\* Kubernetes 1.21 上游版本可能会随上游日历的变化而改变。
 
 
 ## <a name="faq"></a>常见问题解答

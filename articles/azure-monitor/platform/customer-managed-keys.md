@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 6061980ec556fccde3de882a291bc390b88c5a24
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562737"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611077"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -386,15 +386,11 @@ Content-type: application/json
 
 ## <a name="limitations-and-constraints"></a>限制和约束
 
-- 客户托管的密钥在专用 Log Analytics 群集上受支持，适用于每天发送1TB 或更多的客户。
-
 - 每个区域和每个订阅的群集的最大数目为 2
 
-- 与群集链接的工作区的最大数目为 1000
+- 可以链接到群集的工作区的最大数目为1000
 
 - 你可以将工作区链接到群集，然后将其取消链接。 在 30 天内，工作区与特定工作区的链接数限制为 2。
-
-- 验证是否完成 Log Analytics 群集预配之后，工作区才能与群集链接。  完成预配之前发送到工作区的数据将被删除，并且无法恢复。
 
 - 在配置时间之后，客户托管的密钥加密适用于新的引入数据。 在配置前引入的数据仍将使用 Microsoft 密钥进行加密。 你可以在客户管理的密钥配置无缝地查询数据引入。
 
@@ -404,14 +400,12 @@ Content-type: application/json
 
 - 目前不支持将群集移动到另一个资源组或订阅。
 
-- Azure Key Vault、群集和链接的工作区必须位于同一区域和同一 Azure Active Directory (Azure AD) 租户，但可以位于不同订阅。
-
-- 将工作区链接到群集时，如果是链接到其他群集，则链接会失败。
+- Azure Key Vault、群集和工作区必须位于同一区域，并且在同一 Azure Active Directory 中 (Azure AD) 租户，但它们可以在不同的订阅中。
 
 - 当前不能在中国使用密码箱。 
 
-- 对于受支持区域中自 2020 年 10 月开始创建的群集，系统会自动为其配置[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以通过对群集执行 GET 请求并观察 `"isDoubleEncryptionEnabled"` 属性值来验证是否为你的群集配置了双重加密 - 对于启用了双重加密的群集，该属性值为 `true`。 
-  - 如果你创建群集并收到错误“<region-name> 不支持对群集进行双重加密。”，则你仍可在不使用双重加密的情况下创建群集。 `"properties": {"isDoubleEncryptionEnabled": false}`在 REST 请求正文中添加属性。
+- 对于受支持区域中自 2020 年 10 月开始创建的群集，系统会自动为其配置[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以通过在群集上发送 GET 请求来验证群集是否已配置为进行双重加密，并观察 `isDoubleEncryptionEnabled` 该值是否 `true` 适用于启用了双加密的群集。 
+  - 如果创建了一个群集并收到错误 "<region name> 不支持对群集进行双加密"，则仍可通过 `"properties": {"isDoubleEncryptionEnabled": false}` 在 REST 请求正文中添加来创建不带双重加密的群集。
   - 创建群集后，无法更改双重加密设置。
 
   - 如果你的群集是使用用户分配的托管标识设置的，则设置 `UserAssignedIdentities` `None` 会挂起群集并阻止对数据的访问，但不能在不打开支持请求的情况下还原吊销并激活群集。 此限制不会应用到系统分配的托管标识。
@@ -429,13 +423,15 @@ Content-type: application/json
 
   - Key Vault 访问速率 -- Azure Monitor 存储为实现包装和解包操作而访问 Key Vault 的频率介于 6 到 60 秒之间。
 
-- 如果创建群集并立即指定 KeyVaultProperties，则操作可能会失败，因为将系统标识分配给群集后才能定义访问策略。
-
-- 如果使用 KeyVaultProperties 更新现有的群集，并且 Key Vault 中缺少“Get”密钥访问策略，则该操作将失败。
+- 如果在群集处于预配或更新状态时更新群集，则更新将失败。
 
 - 如果在创建群集时出现冲突，则可能是你在过去14天内删除了群集，并且该群集位于软删除期间。 软删除期间，群集名称保持为预留，并且无法新建同名群集。 永久删除群集时，名称将在软删除期结束后释放。
 
-- 如果在操作过程中更新群集，则该操作将失败。
+- 将工作区链接到群集时，如果是链接到其他群集，则链接会失败。
+
+- 如果创建群集并立即指定 KeyVaultProperties，则操作可能会失败，因为将系统标识分配给群集后才能定义访问策略。
+
+- 如果使用 KeyVaultProperties 更新现有的群集，并且 Key Vault 中缺少“Get”密钥访问策略，则该操作将失败。
 
 - 如果无法部署群集，请验证 Azure Key Vault、群集和链接的 Log Analytics 工作区是否位于同一区域。 可以位于不同的订阅。
 

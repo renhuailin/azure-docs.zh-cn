@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 93b05a5535b80d0e0d1a07c88aa9b19052f1b703
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: a5cbbed3881433121f5ab811082969bc3c6c4f7f
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562669"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98609938"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
 
@@ -512,27 +512,25 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 - 你可以将工作区链接到群集，然后将其取消链接。 在 30 天内，工作区与特定工作区的链接数限制为 2。
 
-- 验证是否完成 Log Analytics 群集预配之后，工作区才能与群集链接。  完成预配之前发送到工作区的数据将被删除，并且无法恢复。
-
 - 目前不支持将群集移动到另一个资源组或订阅。
-
-- 将工作区链接到群集时，如果是链接到其他群集，则链接会失败。
 
 - 当前不能在中国使用密码箱。 
 
-- 对于受支持区域中自 2020 年 10 月开始创建的群集，系统会自动为其配置[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以通过对群集执行 GET 请求并观察 `"isDoubleEncryptionEnabled"` 属性值来验证是否为你的群集配置了双重加密 - 对于启用了双重加密的群集，该属性值为 `true`。 
-  - 如果你创建群集并收到错误“<region-name> 不支持对群集进行双重加密。”，则你仍可在不使用双重加密的情况下创建群集。 `"properties": {"isDoubleEncryptionEnabled": false}`在 REST 请求正文中添加属性。
+- 对于受支持区域中自 2020 年 10 月开始创建的群集，系统会自动为其配置[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以通过在群集上发送 GET 请求来验证群集是否已配置为进行双重加密，并观察 `isDoubleEncryptionEnabled` 该值是否 `true` 适用于启用了双加密的群集。 
+  - 如果创建了一个群集并收到错误 "<region name> 不支持对群集进行双加密"，则仍可通过 `"properties": {"isDoubleEncryptionEnabled": false}` 在 REST 请求正文中添加来创建不带双重加密的群集。
   - 创建群集后，无法更改双重加密设置。
 
 ## <a name="troubleshooting"></a>疑难解答
 
 - 如果在创建群集时出现冲突，则可能是你在过去14天内删除了群集，并且该群集处于软删除状态。 软删除期间，群集名称保持为预留，并且无法新建同名群集。 永久删除群集时，名称将在软删除期结束后释放。
 
-- 如果在操作过程中更新群集，则该操作将失败。
+- 如果在群集处于预配或更新状态时更新群集，则更新将失败。
 
 - 部分操作较为耗时，可能需要一段时间才能完成 - 包括群集创建、群集密钥更新和群集删除。 可以通过两种方式检查操作状态：
   - 使用 REST 时，从响应中复制 "Azure-AsyncOperation URL" 值并按照 [异步操作状态检查操作](#asynchronous-operations-and-status-check)。
   - 将 GET 请求发送到群集或工作区，然后观察响应。 例如，未链接的工作区在“功能”下没有 clusterResourceId 。
+
+- 将工作区链接到群集时，如果是链接到其他群集，则链接会失败。
 
 - 错误消息
   

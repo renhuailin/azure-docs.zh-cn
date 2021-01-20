@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/28/2020
 ms.author: juliako
-ms.openlocfilehash: 3a3ac3f2db4e23f03f83a98bee0aceaddef9f889
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b25341fb58c1e758d807e3c7b4345fd0ab1baa53
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433461"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610414"
 ---
 # <a name="add-video-clips-to-your-projects"></a>向项目中添加视频剪辑
 
-视频索引器网站使你可以使用视频深入见解来：查找正确的媒体内容，找到你感兴趣的部分，并使用结果创建全新的项目。 
+[视频索引器](https://www.videoindexer.ai/)网站使你可以使用视频深入见解：查找正确的媒体内容，找到你感兴趣的部分，并使用结果创建全新的项目。 
 
 创建后，可以从视频索引器呈现和下载项目，并在自己的编辑应用程序或下游工作流中使用。
 

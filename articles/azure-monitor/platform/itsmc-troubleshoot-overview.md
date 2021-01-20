@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 2ffe7c8994d32917a08896c7d25f20d4adf09066
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a4a7b7a4008d5cc4636e2d533c225a618f35af05
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601908"
+ms.locfileid: "98611179"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>排查 ITSM 连接器中的问题
 
@@ -57,7 +57,7 @@ ITSM 提供将警报发送到外部票证系统（如 ServiceNow）的选项。
    可以在表中查看有关消息的详细信息- [此处](itsmc-dashboard-errors.md)。
    - **日志搜索** 页：使用查询直接查看错误和相关信息 `*ServiceDeskLog_CL*` 。
 
-## <a name="common-symptoms---how-it-should-be-resolved"></a>常见症状-应如何解决此问题？
+## <a name="common-symptoms---how-should-it-be-resolved"></a>常见症状-应如何解决此问题？
 
 下面的列表包含常见问题以及如何解决此问题：
 

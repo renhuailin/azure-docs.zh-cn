@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 43d593a65fd08542eb2829fcebcea81ea0c99986
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: e10f45af89e19f6fe62ff729f96d870e008c96ec
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995451"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611094"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -69,7 +69,7 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 
 对于 Azure 文件同步，性能在两个阶段至关重要：
 
-1. **初始一次性预配**：若要优化初始预配的性能，请参阅[使用 Azure 文件同步进行载入](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync)来了解最佳部署详细信息。
+1. **初始一次性预配**：若要优化初始预配的性能，请参阅 [使用 Azure 文件同步进行载入](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync)来了解最佳部署详细信息。
 2. **持续同步**：在 Azure 文件同步中初次植入数据后，Azure 文件同步会使多个终结点保持同步。
 
 为帮助你计划每个阶段的部署，下面提供了在采用某个配置的系统上进行内部测试期间观察到的结果
@@ -78,7 +78,7 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 |-|-|
 | CPU | 64 个带 64 MiB L3 高速缓存的虚拟内核 |
 | 内存 | 128 GiB |
-| 磁盘 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
+| 磁盘和分区 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
 | 网络 | 1 Gbps 网络 |
 | 工作负荷 | 常规用途文件服务器|
 
@@ -87,16 +87,16 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 | 对象数 | 2500 万个对象 |
 | 数据集大小| ~ 4.7 TiB |
 | 平均文件大小 | ~ 200 KiB (最大文件： 100 GiB)  |
-| 初始云更改枚举 | 每秒7个对象  |
+| 初始云更改枚举 | 每秒 20 个对象  |
 | 上传吞吐量 | 每个同步组每秒20个对象 |
 | 命名空间下载吞吐量 | 每秒 400 个对象 |
 
 ### <a name="initial-one-time-provisioning"></a>初始的一次性预配
 
 **初始云更改枚举**：创建新的同步组后，初始云更改枚举是将执行的第一个步骤。 在此过程中，系统将枚举 Azure 文件共享中的所有项目。 在此过程中，将不会有任何同步活动，即，不会将任何项从云终结点下载到服务器终结点，并且不会将任何项从服务器终结点上传到云终结点。 初始云更改枚举完成后，同步活动将继续。
-性能速率为每秒7个对象。 客户可以通过确定云共享中的项目数并使用以下公式获取时间（以天为单位）来估计完成初始云更改枚举所需的时间。 
+性能速率为每秒20个对象。 客户可以通过确定云共享中的项目数并使用以下公式获取时间（以天为单位）来估计完成初始云更改枚举所需的时间。 
 
-   **初始云枚举的时间 (天)  (= 云终结点中的对象数) / (7 * 60 * 60 * 24) **
+   **初始云枚举的时间 (天)  (= 云终结点中的对象数) / (20 * 60 * 60 * 24)**
 
 **命名空间下载吞吐量** 将新服务器终结点添加到现有同步组时，Azure 文件同步代理不会从云终结点下载任何文件内容。 它将首先同步整个命名空间，然后触发后台调用来将文件整体下载，或者根据服务器终结点上设置的云分层策略进行下载（如果启用了云分层）。
 

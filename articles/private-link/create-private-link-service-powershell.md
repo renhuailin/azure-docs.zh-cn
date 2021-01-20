@@ -1,178 +1,190 @@
 ---
-title: 使用 Azure PowerShell 创建 Azure 专用链接服务 |Microsoft Docs
+title: 快速入门：使用 Azure PowerShell 创建 Azure 专用链接服务
 description: 了解如何使用 Azure PowerShell 创建 Azure 专用链接服务
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
 ms.topic: how-to
-ms.date: 09/16/2019
+ms.date: 01/20/2021
 ms.author: allensu
-ms.openlocfilehash: 3c808623269b8fabc32134a165b964a3b0747d4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66ad5aae9f8175d154bb07a8b112dada175a205a
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88505608"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610057"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 创建专用链接服务
-本文介绍了如何使用 Azure PowerShell 在 Azure 中创建专用链接服务。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+开始创建引用你的服务的专用链接服务。  向专用链接授予对 Azure 标准负载均衡器后面部署的服务或资源的访问权限。  服务的用户具有从其虚拟网络进行专用访问的权限。
 
-如果你选择在本地安装和使用 PowerShell，则本文要求使用最新的 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+## <a name="prerequisites"></a>先决条件
+
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 本地安装的 Azure PowerShell 或 Azure Cloud Shell
+
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-创建专用链接之前，必须使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在 " *WestCentralUS* " 位置创建名为 " *myResourceGroup* " 的资源组：
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-```azurepowershell
-$location = "westcentralus"
-$rgName = "myResourceGroup"
-New-AzResourceGroup `
-  -ResourceGroupName $rgName `
-  -Location $location
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组：
+
+```azurepowershell-interactive
+New-AzResourceGroup -Name 'CreatePrivLinkService-rg' -Location 'eastus2'
+
 ```
-## <a name="create-a-virtual-network"></a>创建虚拟网络
-使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 为专用链接创建虚拟网络。 以下示例创建名为 *myvnet* 的虚拟网络，以及前端子网 (*frontendSubnet*)、后端子网 (*backendSubnet*) 和专用链接 (*otherSubnet*)：
+---
+## <a name="create-an-internal-load-balancer"></a>创建内部负载均衡器
 
-```azurepowershell
-$virtualNetworkName = "myvnet"
+在本部分，创建一个虚拟网络和一个内部 Azure 负载均衡器。
 
+### <a name="virtual-network"></a>虚拟网络
 
-# Create subnet config
+在本部分，创建虚拟网络和子网来托管访问专用链接服务的负载均衡器。
 
-$frontendSubnet = New-AzVirtualNetworkSubnetConfig `
--Name frontendSubnet `
--AddressPrefix "10.0.1.0/24"
+* 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。
 
-$backendSubnet = New-AzVirtualNetworkSubnetConfig `
--Name backendSubnet `
--AddressPrefix "10.0.2.0/24"
+```azurepowershell-interactive
+## Create backend subnet config ##
+$subnet = @{
+    Name = 'mySubnet'
+    AddressPrefix = '10.1.0.0/24'
+    PrivateLinkServiceNetworkPolicies = 'Disabled'
+}
+$subnetConfig = New-AzVirtualNetworkSubnetConfig @subnet 
 
-$otherSubnet = New-AzVirtualNetworkSubnetConfig `
--Name otherSubnet `
--AddressPrefix "10.0.3.0/24" `
--PrivateLinkServiceNetworkPolicies "Disabled"
+## Create the virtual network ##
+$net = @{
+    Name = 'myVNet'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    AddressPrefix = '10.1.0.0/16'
+    Subnet = $subnetConfig
+}
+$vnet = New-AzVirtualNetwork @net
 
-# Create the virtual network
-$vnet = New-AzVirtualNetwork `
--Name $virtualNetworkName `
--ResourceGroupName $rgName `
--Location $location `
--AddressPrefix "10.0.0.0/16" `
--Subnet $frontendSubnet,$backendSubnet,$otherSubnet
 ```
-## <a name="create-internal-load-balancer"></a>创建内部负载均衡器
-使用 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) 创建内部标准负载均衡器。 以下示例使用在前面的步骤中创建的前端 IP 配置、探测、规则和后端池创建一个内部标准负载均衡器：
 
-```azurepowershell
+### <a name="create-standard-load-balancer"></a>创建标准负载均衡器
 
-$lbBackendName = "LB-backend"
-$lbFrontName = "LB-frontend"
-$lbName = "lb"
+本部分详细介绍如何创建和配置负载均衡器的以下组件：
 
-#Create Internal Load Balancer
-$frontendIP = New-AzLoadBalancerFrontendIpConfig -Name $lbFrontName -PrivateIpAddress 10.0.1.5 -SubnetId $vnet.subnets[0].Id
-$beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name $lbBackendName
-$probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Port 80 `
-  -RequestPath / -IntervalInSeconds 360 -ProbeCount 5
-$rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool  $beaddresspool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
-$NRPLB = New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $probe -LoadBalancingRule $rule -Sku Standard
+* 使用 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) 为前端 IP 池创建前端 IP。 此 IP 在负载均衡器上接收传入流量
+
+* 使用 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) 为负载均衡器前端发送的流量创建后端地址池。 此池是后端虚拟机部署到的位置。
+
+* 使用 [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) 创建运行状况探测，用于确定后端 VM 实例的运行状况。
+
+* 使用 [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) 创建负载均衡器规则，用于定义将流量分配给 VM 的方式。
+
+* 使用 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) 创建公共负载均衡器。
+
+
+```azurepowershell-interactive
+## Place virtual network created in previous step into a variable. ##
+$vnet = Get-AzVirtualNetwork -Name 'myVNet' -ResourceGroupName 'CreatePrivLinkService-rg'
+
+## Create load balancer frontend configuration and place in variable. ##
+$lbip = @{
+    Name = 'myFrontEnd'
+    PrivateIpAddress = '10.1.0.4'
+    SubnetId = $vnet.subnets[0].Id
+}
+$feip = New-AzLoadBalancerFrontendIpConfig @lbip
+
+## Create backend address pool configuration and place in variable. ##
+$bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
+
+## Create the health probe and place in variable. ##
+$probe = @{
+    Name = 'myHealthProbe'
+    Protocol = 'http'
+    Port = '80'
+    IntervalInSeconds = '360'
+    ProbeCount = '5'
+    RequestPath = '/'
+}
+$healthprobe = New-AzLoadBalancerProbeConfig @probe
+
+## Create the load balancer rule and place in variable. ##
+$lbrule = @{
+    Name = 'myHTTPRule'
+    Protocol = 'tcp'
+    FrontendPort = '80'
+    BackendPort = '80'
+    IdleTimeoutInMinutes = '15'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+}
+$rule = New-AzLoadBalancerRuleConfig @lbrule -EnableTcpReset
+
+## Create the load balancer resource. ##
+$loadbalancer = @{
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Name = 'myLoadBalancer'
+    Location = 'eastus2'
+    Sku = 'Standard'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+    LoadBalancingRule = $rule
+    Probe = $healthprobe
+}
+New-AzLoadBalancer @loadbalancer
+
 ```
+
 ## <a name="create-a-private-link-service"></a>创建专用链接服务
-使用 [AzPrivateLinkService](/powershell/module/az.network/new-azloadbalancer) 创建专用链接服务。  此示例使用 *myResourceGroup* 资源组中的标准负载均衡器创建名为 *myPLS* 的专用链接服务。
+
+在本部分中，创建使用上一步中创建的标准 Azure 负载均衡器的专用链接服务。
+
+* 通过 [AzPrivateLinkServiceIpConfig](/powershell/module/az.network/new-azprivatelinkserviceipconfig)创建专用链接服务 IP 配置。
+
+* 创建具有 [AzPrivateLinkService](/powershell/module/az.network/new-azprivatelinkservice)的私有链接服务。
+
 ```azurepowershell
+## Place the virtual network into a variable. ##
+$vnet = Get-AzVirtualNetwork -Name 'myVNet' -ResourceGroupName 'CreatePrivLinkService-rg'
 
-$plsIpConfigName = "PLS-ipconfig"
-$plsName = "pls"
-$peName = "pe"
- 
-$IPConfig = New-AzPrivateLinkServiceIpConfig `
--Name $plsIpConfigName `
--Subnet $vnet.subnets[2] `
--PrivateIpAddress 10.0.3.5
+## Create the IP configuration for the private link service. ##
+$ipsettings = @{
+    Name = 'myIPconfig'
+    PrivateIpAddress = '10.1.0.5'
+    Subnet = $vnet.subnets[0]
+}
+$ipconfig = New-AzPrivateLinkServiceIpConfig @ipsettings
 
-$fe = Get-AzLoadBalancer -Name $lbName | Get-AzLoadBalancerFrontendIpConfig
+## Place the load balancer frontend configuration into a variable. ##
+$fe = Get-AzLoadBalancer -Name 'myLoadBalancer' | Get-AzLoadBalancerFrontendIpConfig
 
-$privateLinkService = New-AzPrivateLinkService `
--ServiceName $plsName `
--ResourceGroupName $rgName `
--Location $location `
--LoadBalancerFrontendIpConfiguration $frontendIP `
--IpConfiguration $IPConfig
+## Create the private link service for the load balancer. ##
+$privlinksettings = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    LoadBalancerFrontendIpConfiguration = $fe
+    IpConfiguration = $ipconfig
+}
+New-AzPrivateLinkService @privlinksettings
 ```
 
-### <a name="get-private-link-service"></a>获取专用链接服务
-使用 [Get-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) 获取有关专用链接服务的详细信息，如下所示：
+## <a name="clean-up-resources"></a>清理资源
 
-```azurepowershell
-$pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName
-```
+如果不再需要资源组、负载均衡器和剩余资源，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令将其删除。
 
-在此阶段，专用链接服务已成功创建，并已准备好接收流量。 请注意，上面的示例仅演示了如何使用 PowerShell 创建专用链接服务。  我们尚未配置负载均衡器后端池，也未在后端池上配置任何应用程序来侦听流量。 如果你想查看端到端通信流，强烈建议你在标准负载均衡器后面配置应用程序。
-
-接下来，我们将演示如何使用 PowerShell 将此服务映射到不同 VNet 中的专用终结点。 同样，示例仅限于创建专用终结点并连接到上面创建的专用链接服务。 你可以在虚拟网络中创建虚拟机，来为用于构建你的方案的专用终结点发送/接收流量。
-
-## <a name="create-a-private-endpoint"></a>创建专用终结点
-### <a name="create-a-virtual-network"></a>创建虚拟网络
-使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 为专用终结点创建虚拟网络。 此示例在名为 *myResourceGroup* 的资源组中创建名为  *vnetPE*  的虚拟网络：
-
-```azurepowershell
-$virtualNetworkNamePE = "vnetPE"
-
-# Create VNet for private endpoint
-$peSubnet = New-AzVirtualNetworkSubnetConfig `
--Name peSubnet `
--AddressPrefix "11.0.1.0/24" `
--PrivateEndpointNetworkPolicies "Disabled"
-
-$vnetPE = New-AzVirtualNetwork `
--Name $virtualNetworkNamePE `
--ResourceGroupName $rgName `
--Location $location `
--AddressPrefix "11.0.0.0/16" `
--Subnet $peSubnet
-```
-
-### <a name="create-a-private-endpoint"></a>创建专用终结点
-创建一个专用终结点，用于使用上面在虚拟网络中创建的专用链接服务：
-
-```azurepowershell
-
-$plsConnection= New-AzPrivateLinkServiceConnection `
--Name plsConnection `
--PrivateLinkServiceId  $privateLinkService.Id
-
-$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
-```
-
-### <a name="get-private-endpoint"></a>获取专用终结点
-使用 `Get-AzPrivateEndpoint` 获取专用终结点的 IP 地址，如下所示：
-
-```azurepowershell
-# Get Private Endpoint and its IP Address
-$pe =  Get-AzPrivateEndpoint `
--Name $peName `
--ResourceGroupName $rgName  `
--ExpandResource networkinterfaces
-
-$pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
-
-```
-
-### <a name="approve-the-private-endpoint-connection"></a>批准专用终结点连接
-使用“AzPrivateEndpointConnection”批准到专用链接服务的专用终结点连接。
-
-```azurepowershell
-
-$pls = Get-AzPrivateLinkService `
--Name $plsName `
--ResourceGroupName $rgName
-
-Approve-AzPrivateEndpointConnection -ResourceId $pls.PrivateEndpointConnections[0].Id -Description "Approved"
-
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name 'CreatePrivLinkService-rg'
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解 [Azure 专用链接](private-link-overview.md)
+
+在本快速入门中，请执行以下操作：
+
+* 创建了虚拟网络和内部 Azure 负载均衡器。
+* 创建了专用链接服务
+
+若要详细了解 Azure 专用终结点，请继续学习：
+> [!div class="nextstepaction"]
+> [快速入门：使用 Azure powershell 创建专用终结点](create-private-endpoint-powershell.md)
 

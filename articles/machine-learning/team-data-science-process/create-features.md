@@ -1,5 +1,5 @@
 ---
-title: 数据科学中的特征工程 - Team Data Science Process
+title: 机器学习-团队数据科学过程中的特征工程
 description: 了解特征工程及其在机器学习数据增强过程中的作用。
 services: machine-learning
 author: marktab
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
-ms.openlocfilehash: 7cf97edcb2f2f7a23d5c899194d497deade1f507
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b20a6744644678879fedf44e960854f558eb0f03
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031855"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610431"
 ---
-# <a name="feature-engineering-in-data-science"></a>数据科学中的特征工程
+# <a name="feature-engineering-in-machine-learning"></a>机器学习中的特征工程
 
 在本文中，你将了解特征工程及其在机器学习增强数据中的作用。 从在 [Azure 机器学习工作室（经典）](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)试验中提取的说明性示例中学习。 
 

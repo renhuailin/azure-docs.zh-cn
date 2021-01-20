@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 434917c1cee26a4a8eeb7f27808e3fcb487f3f55
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aac0139e09866ce44d25989119b2eafb31e76961
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350035"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610448"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>访问 Azure Data Lake Storage Gen1 的诊断日志
 了解如何启用 Azure Data Lake Storage Gen1 帐户诊断日志记录以及如何查看为帐户收集的日志。
 
 组织可以为其 Azure Data Lake Storage Gen1 帐户启用诊断日志记录，以收集数据访问审核跟踪，以提供信息，如访问数据的用户列表、访问数据的频率、存储在帐户中的数据量等。启用后，会尽力记录诊断和/或请求。 仅在针对服务终结点发出请求时才会创建请求和诊断日志条目。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。
 
@@ -50,7 +50,7 @@ ms.locfileid: "96350035"
      
    * 指定是要获取审核日志还是请求日志，或者两者。
    * 指定数据必须保留的天数。 保留期仅在使用 Azure 存储帐户存档日志数据时才适用。
-   * 单击“保存”  。
+   * 单击“保存”。
 
 启用诊断设置后，可在“诊断日志”选项卡中查看日志。
 
@@ -124,11 +124,11 @@ ms.locfileid: "96350035"
 | resultType |字符串 |操作状态，例如，200。 |
 | callerIpAddress |字符串 |作出请求的客户端 的IP 地址 |
 | correlationId |字符串 |可用于将一组相关日志条目组合在一起的日志的 ID |
-| 标识 |Object |生成日志的标识 |
+| identity |对象 |生成日志的标识 |
 | properties |JSON |详细信息参见以下内容 |
 
 #### <a name="request-log-properties-schema"></a>请求日志属性架构
-| 名称 | 类型 | 描述 |
+| 名称 | 类型 | 说明 |
 | --- | --- | --- |
 | HttpMethod |字符串 |用于此操作的 HTTP 方法。 例如 GET。 |
 | `Path` |String |操作执行所在的路径 |
@@ -136,6 +136,8 @@ ms.locfileid: "96350035"
 | ClientRequestId |字符串 |唯一标识此请求的 ID |
 | StartTime |字符串 |服务器接收请求的时间 |
 | EndTime |字符串 |服务器发送响应的时间 |
+| StoreIngressSize |Long |要 Data Lake Store 的大小（以字节为单位）引入 |
+| StoreEgressSize |Long |Data Lake Store 的大小（以字节为单位）出口 |
 
 ### <a name="audit-logs"></a>审核日志
 此处是 JSON 格式的审核日志中的一个示例条目。 每个 Blob 具有一个名为 **records** 的根对象，该对象包含一组日志对象
@@ -173,11 +175,11 @@ ms.locfileid: "96350035"
 | resultType |字符串 |操作状态，例如，200。 |
 | resultSignature |字符串 |有关操作的其他详细信息。 |
 | correlationId |字符串 |可用于将一组相关日志条目组合在一起的日志的 ID |
-| 标识 |Object |生成日志的标识 |
+| identity |对象 |生成日志的标识 |
 | properties |JSON |详细信息参见以下内容 |
 
 #### <a name="audit-log-properties-schema"></a>审核日志属性架构
-| 名称 | 类型 | 描述 |
+| 名称 | 类型 | 说明 |
 | --- | --- | --- |
 | StreamName |字符串 |操作执行所在的路径 |
 
@@ -193,6 +195,6 @@ search *
 
 Azure Data Lake Storage Gen1 提供如何处理和分析日志数据的示例。 可以在中找到该示例 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) 。 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)

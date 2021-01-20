@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: e87c9efc910d08307d40d42e58f8272a01902a41
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b351be1e7212dc9923f701599dd951a73254afe0
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551748"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610363"
 ---
 # <a name="role-based-access-control-in-azure-purviews-data-plane"></a>Azure 监控范围的数据平面中基于角色的访问控制
 
@@ -31,9 +31,9 @@ Azure 监控范围定义一组预定义的数据平面角色，这些角色可�
 
 ## <a name="understanding-how-to-use-azure-purviews-data-plane-roles"></a>了解如何使用 Azure 监控范围的数据平面角色
 
-创建 Azure 监控范围帐户后，会将创建者视为监控范围 Data 陈列和监控范围数据源管理员角色中的角色。 但帐户创建者未分配到角色存储中的这些角色。 Azure 监控范围认识到，主体是该帐户的创建者，并根据用户的身份将这些功能扩展到它们。
+创建 Azure 监控范围帐户后，会将创建者视为监控范围 Data 陈列和监控范围数据源管理员角色中的角色。 但在角色存储中，未将这些角色分配给帐户创建者。 Azure Purview 认为帐户创建者是主体，并基于其标识向其赋予了这些功能。
 
-如果所有其他用户至少位于其中一个角色中，则可以使用 Azure 监控范围帐户。 这意味着，在创建 Azure 监控范围帐户后，不能访问帐户，也不能使用其 Api，直到将其放入一个或多个以前定义的角色中。
+其他所有用户只有在至少具有其中一个角色时才能使用 Azure Purview 帐户。 这意味着，在创建 Azure 监控范围帐户后，不能访问帐户，也不能使用其 Api，直到将其放入一个或多个以前定义的角色中。
 
 请注意，监控范围数据源管理员角色具有两种受支持的方案。 第一种方案适用于已监控范围数据读取器或监控范围数据 Curators 的用户，这些用户还需要能够创建扫描。 这些用户需要在两个角色中，至少有一个监控范围数据读取器或监控范围 Data 陈列，并将其放在监控范围数据源管理员角色中。
 
@@ -77,8 +77,8 @@ Azure 监控范围定义一组预定义的数据平面角色，这些角色可�
 |我需要启用服务主体或其他编程标识，以在 Azure 监控范围中设置和监视扫描，而不允许编程标识访问目录的信息 |监控范围数据源管理员角色|
 |我需要将用户放入 Azure 监控范围中的角色 | 所有者或用户访问管理员 |
 
-转到下一篇文章，了解如何将安全主体添加到角色。
+有关如何将安全主体添加到角色的详细信息，请参阅 [快速入门：创建 Azure 监控范围帐户](create-catalog-portal.md) 。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [快速入门：创建 Azure 监控范围帐户](create-catalog-portal.md)
+* [数据见解](concept-insights.md)

@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 32aa94c986c90b7bd46b9f5561021c34c0f142af
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 29f7f241f119ca7fab50409881b517961b00cf20
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492086"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610465"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 
@@ -51,6 +51,9 @@ Azure 文件同步部署有三个基本管理对象：
 
 同步组包含一个云终结点或 Azure 文件共享，以及至少一个服务器终结点。 服务器终结点对象包含用于配置云分层功能的设置，该功能可实现 Azure 文件同步的缓存功能。为了与 Azure 文件共享进行同步，包含 Azure 文件共享的存储帐户必须与存储同步服务位于同一 Azure 区域。
 
+> [!Important]  
+> 可对同步组中的任何云终结点或服务器终结点进行更改，并将文件同步到同步组中的其他终结点。 如果直接对云终结点（Azure 文件分享）进行更改，首先需要通过 Azure 文件同步更改检测作业来发现更改。 每 24 小时仅针对云终结点启动一次更改检测作业。 有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
+
 ### <a name="management-guidance"></a>管理指南
 部署 Azure 文件同步时，建议执行以下操作：
 
@@ -58,7 +61,7 @@ Azure 文件同步部署有三个基本管理对象：
 
 - 尽可能少地使用存储同步服务。 这在配置了包含多个服务器终结点的同步组的情况下可以简化管理，因为 Windows Server 一次只能注册一个存储同步服务。 
 
-- 部署 Azure 文件共享时，应注意存储帐户的 IOPS 限制。 理想情况下，会将文件共享与存储帐户以 1:1 的比例进行映射，但由于存在来自于你的组织和 Azure 的各种限制，这并非总是可能的。 如果无法做到在一个存储帐户中只部署一个文件共享，可以考虑哪些共享会非常活跃，哪些共享不会那么活跃，以此确保不会将使用率最高的那些文件共享放置在同一存储帐户中。
+- 部署 Azure 文件共享时，应注意存储帐户的 IOPS 限制。 理想情况下，应该以 1:1 的形式将文件共享与存储帐户相映射，但由于组织和 Azure 施加的各种限制和制约，不一定总能实现这种映射。 如果无法做到在一个存储帐户中只部署一个文件共享，可以考虑哪些共享会非常活跃，哪些共享不会那么活跃，以此确保不会将使用率最高的那些文件共享放置在同一存储帐户中。
 
 ## <a name="windows-file-server-considerations"></a>Windows 文件服务器注意事项
 若要在 Windows Server 上启用同步功能，需要安装可下载的 Azure 文件同步代理。 Azure 文件同步代理提供两个主要组件：`FileSyncSvc.exe`，这是负责监视服务器终结点上所做更改和启动同步会话的后台 Windows 服务，以及 `StorageSync.sys`，这是可实现云分层功能和快速灾难恢复的文件系统筛选器。  

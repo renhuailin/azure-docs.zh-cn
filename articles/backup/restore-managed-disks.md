@@ -3,12 +3,12 @@ title: 还原 Azure 托管磁盘
 description: 了解如何从 Azure 门户还原 Azure 托管磁盘。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 043a10a7359c95529ff1c4dcc181ea4aba75cb5f
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 848a7476b1c5095d4e4d3156d4c7ce33da777090
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557347"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611128"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a> (预览中还原 Azure 托管磁盘) 
 
@@ -65,6 +65,8 @@ ms.locfileid: "98557347"
     >虽然角色分配在门户上正确反映，但在备份保管库的托管标识上应用权限可能需要大约15分钟。
     >
     >在计划的备份或按需备份操作期间，Azure 备份会将磁盘增量快照存储在配置磁盘的备份过程中提供的快照资源组中。 在还原操作过程中，Azure 备份将使用这些增量快照。 如果快照已从快照资源组中删除或移动，或者快照资源组上的备份保管库角色分配已撤消，则还原操作将失败。
+
+1. 如果要还原的磁盘是使用客户管理的密钥加密的， [ (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) 或者使用 [使用平台托管密钥和客户托管密钥的双加密](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)，则将 " **读取** 者角色" 权限分配给 " **磁盘加密集** " 资源上的备份保管库的托管标识。
 
 满足先决条件后，请按照以下步骤执行还原操作。
 

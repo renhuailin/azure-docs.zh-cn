@@ -4,12 +4,12 @@ description: 使用 Application Insights 监视 Node.js 服务的性能并诊断
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7aea6c03b0ce35fa0e74c39ff5f94f714447ad6f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d414ce44a8d6ab308bd31f7372bb1c146fac9f5
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920577"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611009"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 监视 Node.js 服务和应用
 
@@ -334,6 +334,12 @@ server.on("listening", () => {
   appInsights.defaultClient.trackMetric({name: "server startup time", value: duration});
 });
 ```
+
+### <a name="flush"></a>刷新
+
+默认情况下，遥测在发送到摄取服务器之前缓冲15秒。 如果你的应用程序的生存期较短 (例如，CLI 工具) ，则可能需要在应用程序终止时手动刷新缓冲的遥测 `appInsights.defaultClient.flush()` 。
+
+如果 SDK 检测到应用程序崩溃，则会为你调用 flush `appInsights.defaultClient.flush({ isAppCrashing: true })` 。 使用 flush 选项 `isAppCrashing` 时，您的应用程序会处于异常状态，而不适合用于发送遥测数据。 相反，SDK 会将所有缓冲遥测保存到 [永久性存储](./data-retention-privacy.md#nodejs) ，并使应用程序终止。 当应用程序重新启动时，它会尝试发送保存到永久性存储中的任何遥测数据。
 
 ### <a name="preprocess-data-with-telemetry-processors"></a>使用遥测处理器预处理数据
 

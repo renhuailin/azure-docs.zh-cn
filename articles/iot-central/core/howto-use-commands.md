@@ -7,12 +7,12 @@ ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 52872175eb799785674c331ad4d687ff8ef427a4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e53bf377a7ef8f2293debd288ba25ef8f04ff4fc
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134273"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610992"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>如何在 Azure IoT Central 解决方案中使用命令
 
@@ -37,13 +37,13 @@ ms.locfileid: "98134273"
 
 下表显示了命令功能的配置设置：
 
-| 字段             |描述|
+| 字段             |说明|
 |-------------------|-----------|
 |显示名称       |仪表板和窗体上使用的命令值。|
 | 名称            | 命令的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 此字段必须为字母数字。 设备代码使用此 **名称** 值。|
 | 功能类型 | 命令。|
 | 脱机时排队 | 是否使此命令成为 *脱机* 命令。 |
-| 描述     | 命令功能的说明。|
+| 说明     | 命令功能的说明。|
 | 评论     | 有关命令功能的任何注释。|
 | 请求     | Device 命令的负载。|
 | 响应     | 设备命令响应的负载。|
@@ -248,6 +248,9 @@ client.on('message', function (msg) {
 Body: {"StartTime":"2021-01-06T06:00:00.000Z","Bank":2}
 Properties: {"propertyList":[{"key":"iothub-ack","value":"none"},{"key":"method-name","value":"GenerateDiagnostics"}]}
 ```
+
+> [!NOTE]
+> 脱机命令的默认生存时间为24小时，超过此时间后，消息将过期。
 
 ## <a name="next-steps"></a>后续步骤
 

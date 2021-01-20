@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/19/2020
-ms.openlocfilehash: 048068a74151bb986392b5cb27787385fc0f5363
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.date: 01/19/2021
+ms.openlocfilehash: 7013a4ab1becd6108d30d8369f1f72bcb3e55c37
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315526"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611060"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Monitor (预览版中的数据收集规则) 
 数据收集规则 (DCR) 定义传入 Azure Monitor 的数据，并指定应发送或存储数据的位置。 本文概述了数据收集规则，其中包括内容和结构，以及如何创建和使用它们。
@@ -53,10 +53,20 @@ ms.locfileid: "95315526"
 
 
 ## <a name="create-a-dcr"></a>创建 DCR
-目前有两种方法可用于创建 DCR：
+目前可以使用以下任何方法创建 DCR：
 
 - [使用 Azure 门户](data-collection-rule-azure-monitor-agent.md) 创建数据收集规则并将其与一个或多个虚拟机相关联。
 - 直接在 JSON 中编辑数据收集规则并 [使用 REST API 进行提交](/rest/api/monitor/datacollectionrules)。
+- 创建 DCR 并与 [Azure CLI](https://github.com/Azure/azure-cli-extensions/blob/master/src/monitor-control-service/README.md)关联。
+- 创建 DCR 并与 Azure PowerShell 关联。
+  - [AzDataCollectionRule](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Get-AzDataCollectionRule.md)
+  - [新-AzDataCollectionRule](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/New-AzDataCollectionRule.md)
+  - [AzDataCollectionRule](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Set-AzDataCollectionRule.md)
+  - [更新-AzDataCollectionRule](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Update-AzDataCollectionRule.md)
+  - [AzDataCollectionRule](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Remove-AzDataCollectionRule.md)
+  - [AzDataCollectionRuleAssociation](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Get-AzDataCollectionRuleAssociation.md)
+  - [新-AzDataCollectionRuleAssociation](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/New-AzDataCollectionRuleAssociation.md)
+  - [AzDataCollectionRuleAssociation](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Remove-AzDataCollectionRuleAssociation.md)
 
 ## <a name="sample-data-collection-rule"></a>示例数据收集规则
 下面的示例数据收集规则适用于具有 Azure 管理代理的虚拟机，并提供以下详细信息：

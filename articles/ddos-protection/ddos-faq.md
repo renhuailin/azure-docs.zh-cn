@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: b53501bf5aa4bafb0229158edfe0cb244116b909
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 89685d1b8c3a57fa142bbbfd1114f9aa0ff0c400
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600852"
+ms.locfileid: "98611111"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS 保护标准常见问题
 
@@ -79,4 +79,7 @@ DDoS 保护计划的每月固定费用为 $2944，涵盖最多100个公共 IP �
 
 ## <a name="how-long-does-it-take-for-the-metrics-to-load-on-portal"></a>在门户上加载指标需要多长时间？
 指标应在5分钟内显示在门户上。 如果资源受到攻击，其他度量值将在5-7 分钟内开始显示在门户上。 
+
+## <a name="does-the-service-store-customer-data"></a>服务是否存储客户数据？
+不，Azure DDoS 保护不存储客户数据。
     

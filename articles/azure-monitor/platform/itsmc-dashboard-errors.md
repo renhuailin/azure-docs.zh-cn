@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 7240c1b0f19dc49ab4130c5ee2516dcfefb2e2c2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9521c13b21317bb0a782b0bea0b08312ff24b113
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602195"
+ms.locfileid: "98610346"
 ---
 # <a name="errors-in-the-connector-status"></a>连接器状态中的错误
 
@@ -27,7 +27,7 @@ ms.locfileid: "98602195"
   * 在 ServiceNow 实例中部署的自定义脚本将导致事件被忽略。
   * 在 ServiceNow 端修改了 "OMS 集成器应用" 代码本身，例如 onBefore 脚本。
 
-    **解决方法**：禁用数据导入路径的所有自定义脚本或代码修改。
+  **解决方法**：禁用数据导入路径的所有自定义脚本或代码修改。
 
 * **错误**： "{" 错误 "： {" message "：" 操作失败 "，" 详细信息 "：" 由于安全约束，ACL 异常更新失败 "
 

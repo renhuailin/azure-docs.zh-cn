@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 30c13adfebb911e443fb042821e09628da3b9405
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968528"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610975"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Spark 和 Hive 工具
 
@@ -211,31 +211,30 @@ ms.locfileid: "97968528"
 
    ![已成功安装 PySpark](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. 请使用命令提示符运行 **pip install numpy = = 1.19.3**，然后重新加载 VSCode 窗口。
 
-8. 从菜单栏中，导航到“查看” > “命令面板...”或使用 Shift + Ctrl + P 键盘快捷键，然后输入“Python:选择解释器以启动 Jupyter 服务器”。
+7. 从菜单栏中，导航到“查看” > “命令面板...”或使用 Shift + Ctrl + P 键盘快捷键，然后输入“Python:选择解释器以启动 Jupyter 服务器”。
 
    ![选择解释器以启动 jupyter 服务器](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
-9. 选择下面的 python 选项。
+8. 选择下面的 python 选项。
 
    ![选择下面的选项](./media/hdinsight-for-vscode/choose-the-below-option.png)
     
-10. 从菜单栏中，导航到“查看” > “命令面板...”或使用 Shift + Ctrl + P 键盘快捷键，然后输入“开发人员:重载窗口”。
+9. 从菜单栏中，导航到“查看” > “命令面板...”或使用 Shift + Ctrl + P 键盘快捷键，然后输入“开发人员:重载窗口”。
 
     ![重载窗口](./media/hdinsight-for-vscode/reload-window.png)
 
-11. [连接](#connect-to-an-azure-account)到 Azure 帐户或链接某个群集（如果尚未这样做）。
+10. [连接](#connect-to-an-azure-account)到 Azure 帐户或链接某个群集（如果尚未这样做）。
 
-12. 选择所有代码，右键单击脚本编辑器，然后选择 " **Spark： PySpark interactive/Synapse： PySpark Interactive** " 以提交查询。 
+11. 选择所有代码，右键单击脚本编辑器，然后选择 " **Spark： PySpark interactive/Synapse： PySpark Interactive** " 以提交查询。 
 
     ![Pyspark Interactive 上下文菜单](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-13. 如果尚未指定默认群集，请选择群集。 不久之后，新选项卡中会显示“Python Interactive 结果”。单击 PySpark 可将内核切换到“PySpark/Synapse Pyspark”，代码会成功运行。 如果要切换到 Synapse Pyspark 内核，建议在 Azure 门户中禁用自动设置。 否则，首次使用时，可能需要很长时间才能唤醒群集和设置 synapse 内核。 如果工具还允许使用上下文菜单提交代码块而非整个脚本文件：
+12. 如果尚未指定默认群集，请选择群集。 不久之后，新选项卡中会显示“Python Interactive 结果”。单击 PySpark 可将内核切换到“PySpark/Synapse Pyspark”，代码会成功运行。 如果要切换到 Synapse Pyspark 内核，建议在 Azure 门户中禁用自动设置。 否则，首次使用时，可能需要很长时间才能唤醒群集和设置 synapse 内核。 如果工具还允许使用上下文菜单提交代码块而非整个脚本文件：
 
     ![pyspark interactive - python interactive 窗口](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-14. 输入 **%%info**，然后按 Shift+Enter 查看作业信息（可选）：
+13. 输入 **%%info**，然后按 Shift+Enter 查看作业信息（可选）：
 
     ![pyspark 交互查看作业信息](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -304,7 +303,7 @@ ms.locfileid: "97968528"
 
 5. 右键单击脚本编辑器，然后选择“Spark:PySpark Batch”或“Synapse:PySpark Batch”。
 
-6. 选择要将 PySpark 作业提交到的群集/spark 池：
+6. 选择要将 PySpark 作业提交到的群集/Spark 池：
 
    ![提交 Python 作业结果输出](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
@@ -489,7 +488,7 @@ ms.locfileid: "97968528"
 
 在菜单栏中，转到“视图” > “命令面板”，然后输入“Azure:  注销”。
 
-## <a name="issues-changed"></a>已更改问题
+## <a name="issues-changed"></a>改观的问题
 
 对于此问题 "ms-python >= 2020.5.78807 版本在此扩展上不受支持"，请立即将 **ms python** 更新到 **最新版本** 。
 
