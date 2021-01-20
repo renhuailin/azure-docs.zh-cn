@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a531692264a768e4f6cb8e6475807789df049d03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e257ab39257b23c52aaadbe32f0325e8d71a8409
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049140"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98597976"
 ---
 # <a name="conditional-access-block-access-by-location"></a>条件访问：按位置阻止访问
 
@@ -43,6 +43,8 @@ ms.locfileid: "89049140"
 1. 为策略指定一个名称。 建议组织创建一个有意义的策略名称标准。
 1. 在“分配”下，选择“用户和组”
    1. 在“包括”下，选择“所有用户”。
+   1. 在“排除”下选择“用户和组”，然后选择组织的紧急访问帐户或不受限帐户。 
+   1. 选择“完成”。
 1. 在“云应用或操作” > “包括”下，选择“所有云应用”。
 1. 在“条件” > “位置”下方。
    1. 将“配置”设置为“是” 
@@ -55,7 +57,7 @@ ms.locfileid: "89049140"
 
 ## <a name="next-steps"></a>后续步骤
 
-[条件访问常见策略](concept-conditional-access-policy-common.md)
+[常用条件访问策略](concept-conditional-access-policy-common.md)
 
 [使用条件访问仅限报告模式确定影响](howto-conditional-access-insights-reporting.md)
 

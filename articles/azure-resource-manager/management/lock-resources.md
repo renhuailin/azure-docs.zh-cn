@@ -1,19 +1,19 @@
 ---
 title: 锁定资源以防止更改
-description: 通过对所有用户和角色应用锁来防止用户更新或删除 Azure 资源。
+description: 通过对所有用户和角色应用锁，来防止用户更新或删除 Azure 资源。
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f1073d8c4a6902ea00a9b4098ef87bc411b3e6c0
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 7efeb8a073a04f78f77046c07c107abf0c7526f4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555662"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602206"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
 
-作为管理员，可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly** 。 在门户中，锁定分别称为 **删除** 和 **只读** 。
+作为管理员，可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为 **删除** 和 **只读**。
 
 * **CanNotDelete** 味着经授权的用户仍可读取和修改资源，但不能删除资源。
 * **ReadOnly** 意味着经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于“读者”角色授予的权限。
@@ -24,11 +24,11 @@ ms.locfileid: "94555662"
 
 与基于角色的访问控制不同，可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)。
 
-Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.azure.com`的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库逻辑服务器上的 ReadOnly 锁将阻止删除或修改服务器。 它不会阻止你在该服务器上的数据库中创建、更新或删除数据。 会允许数据事务，因为这些操作不会发送到 `https://management.azure.com`。
+Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.azure.com`的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库逻辑服务器上的 ReadOnly 锁会阻止你删除或修改该服务器。 它不会阻止你在该服务器上的数据库中创建、更新或删除数据。 会允许数据事务，因为这些操作不会发送到 `https://management.azure.com`。
 
 ## <a name="considerations-before-applying-locks"></a>应用锁之前的注意事项
 
-应用锁可能会导致意外结果，因为某些操作看似不会修改资源，但实际上需要执行被锁阻止的操作。 被锁阻止的一些常见操作的示例包括：
+应用锁可能会导致意外结果，因为某些操作看似不会修改资源，但实际上需要执行被锁阻止的操作。 锁定会阻止需要向 Azure 资源管理器 API 发出 POST 请求的任何操作。 被锁阻止的一些常见操作的示例包括：
 
 * **存储帐户** 上的只读锁将阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。
 
@@ -66,7 +66,7 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 ![删除服务](./media/lock-resources/delete-service.png)
 
-## <a name="configure-locks"></a>配置锁
+## <a name="configure-locks"></a>配置锁定
 
 ### <a name="portal"></a>门户
 
@@ -74,9 +74,9 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 ### <a name="arm-template"></a>ARM 模板
 
-使用 Azure 资源管理器模板 (ARM 模板) 部署锁时，需要知道锁的作用域和部署的范围。 若要在部署范围应用锁（如锁定资源组或订阅），请不要设置作用域属性。 锁定部署范围内的资源时，请设置作用域属性。
+使用 Azure 资源管理器模板（ARM 模板）部署锁定时，需要了解锁定的范围以及部署的范围。 若要在部署范围内应用锁定（例如锁定资源组或订阅），请不要设置 scope 属性。 锁定部署范围内的资源时，请设置 scope 属性。
 
-以下模板将对其部署到的资源组应用锁定。 请注意，锁资源上没有范围属性，因为锁的作用域与部署范围匹配。 此模板部署在资源组级别。
+以下模板会将锁应用于它部署到的资源组。 请注意，锁资源没有 scope 属性，因为锁定范围会与部署范围匹配。 此模板部署在资源组级别。
 
 ```json
 {
@@ -156,9 +156,9 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 }
 ```
 
-将锁定应用于资源组中的 **资源** 时，请添加作用域属性。 将范围设置为要锁定的资源的名称。
+对资源组中的资源应用锁时，请添加 scope 属性。 将 scope 设置为要锁定的资源的名称。
 
-以下示例演示可创建应用服务计划、网站和网站上的锁的模板。 锁定的范围设置为网站。
+以下示例演示可创建应用服务计划、网站和网站上的锁的模板。 锁定范围将设置为该网站。
 
 ```json
 {
@@ -312,7 +312,7 @@ az lock delete --ids $lockid
 PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 ```
 
-作用域可能是订阅、资源组或资源。 锁名称可以是要对该锁使用的任何称谓。 对于 api 版本，请使用 **2016-09-01** 。
+作用域可能是订阅、资源组或资源。 锁名称可以是要对该锁使用的任何称谓。 对于 api 版本，请使用 **2016-09-01**。
 
 在请求中，包括指定锁属性的 JSON 对象。
 

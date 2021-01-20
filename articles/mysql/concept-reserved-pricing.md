@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 33c2617a22945ecb11586bc282e7f9f61b6e49ca
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b1f51cd9e9f310c68834c16f83c182250a1a4eaf
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008542"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598019"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>为 Azure Database for MySQL 计算资源预付预留容量
 
@@ -50,7 +50,7 @@ ms.locfileid: "96008542"
 
 | 字段 | 说明 |
 | :------------ | :------- |
-| 订阅   | 用于支付 Azure Database for MySQL 预留容量预留的订阅。 订阅上的付款方式将收取 Azure Database for MySQL 预留容量预留的前期成本。 订阅类型必须是企业协议 (产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 或使用即用即付定价 (产品/服务的个人协议产品/服务) 。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于使用即用即付定价的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。
+| 订阅   | 用于支付 Azure Database for MySQL 预留容量预留的订阅。 订阅上的付款方式将收取 Azure Database for MySQL 预留容量预留的前期成本。 订阅类型必须是企业协议 (产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 或使用即用即付定价 (产品/服务的个人协议产品/服务) 。 对于企业订阅，将从注册的 Azure 预付款 (之前称为货币承诺) 余额或按超额支付收费。 对于使用即用即付定价的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。
 | 范围 | VCore 预订的范围可以包含一个订阅或多个订阅 (共享范围) 。 如果选择： </br></br> **共享**，vCore 预订折扣应用于计费上下文内任何订阅中运行的 Azure Database for MySQL 服务器。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> **单个订阅**，vCore 预订折扣将应用到此订阅中的 Azure Database for MySQL 服务器。 </br></br> **单个资源组**，预订折扣应用于所选订阅中的 Azure Database for MySQL 服务器，以及该订阅内的所选资源组。
 | 区域 | Azure Database for MySQL 保留容量保留所涵盖的 Azure 区域。
 | 部署类型 | 要为其购买预订的 Azure Database for MySQL 资源类型。

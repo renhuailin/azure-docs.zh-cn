@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: e8c7e21b0784aacc85bd02e3c1702e1a710e76ab
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 501a0e954efbdbc9a0396fd94c915efaf0fde9fc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021875"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601118"
 ---
 # <a name="what-is-direct-line-speech"></a>什么是 Direct Line 语音？
 
@@ -23,7 +23,7 @@ ms.locfileid: "95021875"
 
 [语音助手](voice-assistants.md) 会倾听用户的响应，并在响应时执行操作，这通常是一回谈话。 他们使用 [语音到文本](speech-to-text.md) 转录用户的语音，然后对文本的自然语言理解采取措施。 此操作通常包含用 [文本到语音功能](text-to-speech.md)生成的助手的语音输出。
 
-直接连线语音提供语音助手的最高级别的自定义和复杂程度。 它适用于使用任务完成或命令和控制使用的开放、自然或混合两种会话方案。 这种高度的灵活性带来了更大的复杂性，并且通过自然语言输入以定义完善的任务为作用域的方案，可能想要将 [自定义命令 (预览) ](custom-commands.md) ，以简化解决方案体验。
+直接连线语音提供语音助手的最高级别的自定义和复杂程度。 它适用于使用任务完成或命令和控制使用的开放、自然或混合两种会话方案。 这种高度的灵活性带来了更大的复杂性，并且通过自然语言输入以定义完善的任务为作用域的方案，可能需要考虑使用 [自定义命令](custom-commands.md) 来简化解决方案的体验。
 
 ## <a name="getting-started-with-direct-line-speech"></a>直接行语音入门
 
@@ -41,11 +41,11 @@ ms.locfileid: "95021875"
 | Java | Windows、macOS、Linux | [“浏览”](/java/api/com.microsoft.cognitiveservices.speech) |
 | Java | Android | [“浏览”](/java/api/com.microsoft.cognitiveservices.speech) |
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖了用几种常用编程语言连接到助手的客户端应用程序。
 
-* [语音助手示例 (SDK)](https://aka.ms/csspeech/samples)
+* [语音助手示例 (SDK)](https://aka.ms/csspeech/samples/#voice-assistants-quickstarts)
 * [教程：通过语音 SDK 使用语音启用助手，C#](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>自定义

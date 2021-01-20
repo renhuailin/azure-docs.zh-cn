@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: e87fd8724ab9a967bf3b75579eb0e375a324a7b1
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b53501bf5aa4bafb0229158edfe0cb244116b909
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183092"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600852"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS 保护标准常见问题
 
@@ -34,6 +34,12 @@ DDoS 保护计划的每月固定费用为 $2944，涵盖最多100个公共 IP �
 在租户下，可以跨多个订阅使用单个 DDoS 防护计划，因此无需创建多个 DDoS 防护计划。
 
 有关更多详细信息，请参阅 [Azure DDoS 保护标准定价](https://azure.microsoft.com/pricing/details/ddos-protection/) 。
+
+## <a name="is-the-service-zone-resilient"></a>服务区域是否能复原？
+是的。 Azure DDoS 保护默认情况下是区域复原保护。
+
+## <a name="how-do-i-configure-the-service-to-be-zone-resilient"></a>如何实现将服务配置为区域复原？
+客户无需配置即可启用区域复原能力。 Azure DDoS 保护资源的区域复原默认情况下提供，由服务自身管理。
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a> (第7层) ，服务层上的保护是怎样的？
 客户可将 Azure DDoS 保护服务与 Web 应用程序防火墙结合使用 (WAF) ，以保护 (第3层和第4层提供的网络层，第3层和第4层 () 提供此功能。 WAF 产品/服务包括 Azure [应用程序网关 WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 以及 [azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)中提供的第三方 web 应用程序防火墙产品。

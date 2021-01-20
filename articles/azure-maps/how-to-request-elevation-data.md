@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094193"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602436"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>使用 Azure Maps 提升服务 (预览版请求提升数据) 
 
@@ -471,7 +471,7 @@ Azure Maps 通过 CodePen 上的 () ，按<a href='https://codepen.io/azuremaps/
 
 ### <a name="get-elevation-data-by-polyline-path"></a>按折线路径获取提升数据
 
-下面的示例网页演示了如何使用地图控件沿路径显示提升数据。 用户通过单击 `PolyLine` 左上角的图标，并在地图上绘制折线来定义路径。 然后，地图控件将在右上角的键中指定的颜色呈现提升数据。
+下面的示例网页演示了如何使用地图控件沿路径显示提升数据。 用户通过单击 `Polyline` 左上角的图标，并在地图上绘制折线来定义路径。 然后，地图控件将在右上角的键中指定的颜色呈现提升数据。
 
 <br/>
 

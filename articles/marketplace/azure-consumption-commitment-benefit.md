@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 748b6c3506127de8fce153a77571664ea531ffa1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814425"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601361"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure 使用承诺权益
 
@@ -24,7 +24,7 @@ ms.locfileid: "97814425"
 
 我们会验证参与此计划的所有产品/服务，确保收到优质解决方案。
 
-若要利用此权益，只需使用与 Azure 协议相关的订阅在 Azure Marketplace 上购买合格提议。 Azure 预付款和资金承诺不适用于此权益。
+若要利用此权益，只需使用与 Azure 协议相关的订阅在 Azure Marketplace 上购买合格提议。 Azure 预付款 (以前称为货币承诺) 不符合此权益。
 
 > [!IMPORTANT]
 > 排除项可能适用于在此 marketplace 权益之前签名的 .Ctc 协议。 如果有关于资格的问题，请与 Microsoft 帐户 executive 人员联系。

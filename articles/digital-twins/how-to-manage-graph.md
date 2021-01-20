@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 54001cde76bd89305eb77544c6e6858defda6096
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 037e7fd13f55a0f5de939197f71324221392bd55
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222541"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601072"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用关系管理数字孪生图
 
@@ -137,9 +137,12 @@ Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 
 在运行该示例之前，请执行以下操作：
 1. 下载模型文件，将其放在您的项目中，并替换 `<path-to>` 以下代码中的占位符，告诉您的程序在何处查找它们。
 2. 将占位符替换 `<your-instance-hostname>` 为你的 Azure 数字孪生实例的主机名。
-3. 向项目添加两个依赖于 Azure 数字孪生所需的依赖项。 可以使用以下链接导航到 NuGet 上的包，在那里可以找到控制台命令（包括适用于 .NET CLI 的命令）将每个包的最新版本添加到项目中。
-    * [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 这是用于[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的包。
-    * [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). 该库提供可帮助进行 Azure 身份验证的工具。
+3. 向项目添加两个依赖于 Azure 数字孪生所需的依赖项。 第一个是适用于 .NET 的 [Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)的包，第二个包提供的工具可帮助进行 azure 身份验证。
+
+      ```cmd/sh
+      dotnet add package Azure.DigitalTwins.Core
+      dotnet add package Azure.Identity
+      ```
 
 如果要直接运行该示例，还需要设置本地凭据。 下一节将对此进行演练。
 [!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]

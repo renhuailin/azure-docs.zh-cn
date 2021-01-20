@@ -1,7 +1,7 @@
 ---
 title: 语音助手常见问题
 titleSuffix: Azure Cognitive Services
-description: 获取有关使用自定义命令 (预览 ") 或" 直接线路 "语音通道的语音助手的最常见问题的解答。
+description: 获取有关使用自定义命令或直接连线语音通道的语音助手最常见的问题的解答。
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: b43d446930d1f8c40c12e5d0aeba6eb202ef47ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4b0bbb982ed48dc052b1a15514ad36b1d69b62b5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353725"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599419"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>语音助手常见问题
 
@@ -25,11 +25,11 @@ ms.locfileid: "96353725"
 
 **问：什么是语音助手？**
 
-**答：** 与 Cortana 一样，语音助手是一种解决方案，可侦听用户的口头最谈话，分析这些最谈话的内容，以确定其含义，执行一个或多个操作来响应查询文本的意图，并为用户提供经常包含口述组件的响应。 这是与系统交互的 "语音" 的 "语音" 体验。 语音助手作者使用语音 SDK 中的来创建设备上应用程序 `DialogServiceConnector` ，以便与使用 [自定义命令 (预览) ](custom-commands.md) 或机器人框架的 [直接连线语音](direct-line-speech.md) 通道创建的助手通信。 这些助手可以使用自定义关键字、自定义语音和自定义语音，为你的品牌或产品提供定制体验。
+**答：** 与 Cortana 一样，语音助手是一种解决方案，可侦听用户的口头最谈话，分析这些最谈话的内容，以确定其含义，执行一个或多个操作来响应查询文本的意图，并为用户提供经常包含口述组件的响应。 这是与系统交互的 "语音" 的 "语音" 体验。 语音助手作者使用语音 SDK 中的来创建设备上应用程序 `DialogServiceConnector` ，以便与使用 [自定义命令](custom-commands.md) 或机器人框架的 [直接线路语音](direct-line-speech.md) 通道创建的助手通信。 这些助手可以使用自定义关键字、自定义语音和自定义语音，为你的品牌或产品提供定制体验。
 
-**问：我是否应使用自定义命令 (预览) 或直接语音语音？区别是什么？**
+**问：我是否应使用自定义命令或直接语音语音？区别是什么？**
 
-**答：** [ (预览版的自定义命令)](custom-commands.md) 是一组较低复杂性的工具，可以轻松创建和承载非常适合于任务完成方案的助手。 [直接线路语音](direct-line-speech.md) 提供功能更丰富且更复杂的功能，可实现强大的对话方案。 有关详细信息，请参阅 [助手解决方案的比较](voice-assistants.md#choosing-an-assistant-solution) 。
+**答：** [自定义命令](custom-commands.md) 是一组较低复杂性的工具，可以轻松创建和承载非常适合于任务完成方案的助手。 [直接线路语音](direct-line-speech.md) 提供功能更丰富且更复杂的功能，可实现强大的对话方案。 有关详细信息，请参阅 [助手解决方案的比较](voice-assistants.md#choosing-an-assistant-solution) 。
 
 **问：如何开始使用？**
 
@@ -61,7 +61,7 @@ ms.locfileid: "96353725"
 
 **答：** 此错误表示助手和语音助手服务之间存在通信问题。
 
-- 对于 (预览) 的自定义命令，请确保发布 (预览) 应用程序的自定义命令。
+- 对于自定义命令，请确保已发布自定义命令应用程序
 - 对于直接线路语音，请确保已将 [机器人连接到直接线路语音频道](/azure/bot-service/bot-service-channel-connect-directlinespeech)，并向机器人 ([添加了流式处理协议支持](/azure/bot-service/directline-speech-bot)) ，并检查机器人是否响应来自通道的传入请求。
 
 **问：此代码仍不起作用，并且/或者在使用时，我收到了不同的错误 `DialogServiceConnector` 。我该怎么办？**

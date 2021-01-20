@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: 25cc4dfaabee58a47cc33fe4be8dc7375bc804d2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d9d4ae746c192e8b4afd1781c1e072fc0dc70422
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491636"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599795"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySql 数据库搭配 Azure 应用服务的 FAQ
 此 FAQ 解答了为 Azure Web 应用使用和购买 ClearDB MySQL 数据库的常见问题。
@@ -42,7 +42,7 @@ ms.locfileid: "96491636"
 * [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)：需要信用卡，购买付费的 MySQL 数据库时会向信用卡收费。
 * [免费试用版](https://azure.microsoft.com/pricing/free-trial/)：包括可用于 Microsoft Azure 服务的信用额度，但不允许购买第三方资源。 若要购买第三方服务或付费的 MySQL 数据库，需使用支持信用卡的订阅。 对于 Web 应用，可以创建免费的 ClearDB MySQL 数据库。
 * [MSDN 订阅](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)和 **MSDN 即用即付开发/测试**：类似于免费试用版，MSDN 订阅需要用户使用信用卡从 ClearDB 购买付费的 MySQL 解决方案。
-* [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)：每季以单独的合并发票按照 EA 向客户从 Azure 市场（第三方）购买的所有商品收费。 针对任何市场购买，以货币承诺付款以外的方式收费。 请注意，Azure 应用商店目前无法供在阿塞拜疆、克罗地亚、挪威和波多黎各注册的客户使用。 
+* [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)：每季以单独的合并发票按照 EA 向客户从 Azure 市场（第三方）购买的所有商品收费。 对于任何 marketplace 购买，都将在 Azure 预付款之外支付 (之前称为货币承诺) 。 请注意，Azure 应用商店目前无法供在阿塞拜疆、克罗地亚、挪威和波多黎各注册的客户使用。 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>为什么我要为 Azure 市场中的 Web 应用和 MySQL 付 3.50 美元的费用？
 默认数据库选项是 Titan，需 3.50 美元。 创建数据库时我们不会显示成本，可能会错误地购买不想要的数据库。 我们正在设法改善此体验，但在那之前，需要先检查为 Web 应用和数据库选择的定价层，然后再单击“创建”并开始部署资源。
@@ -94,10 +94,10 @@ Azure 市场无法供在阿塞拜疆、克罗地亚、挪威或波多黎各注�
 * 更新应用程序以使用新数据库。
 * 删除旧的 ClearDB 数据库。
 
-使用 MySQL (ClearDB) 创建新 Web 应用或创建 MySQL 数据库 (ClearDB) 时，所选订阅决定服务的支付方式。 对于 EA 订阅，不会阻止用户在 Azure 门户采购 ClearDB 等第三方服务。 EA 订阅不按货币承诺付款计费，会在每季扣取相关费用和逾期欠款。 EA 客户必须设置付款方式，例如信用卡，才能支付任何第三方市场服务。
+使用 MySQL (ClearDB) 创建新 Web 应用或创建 MySQL 数据库 (ClearDB) 时，所选订阅决定服务的支付方式。 对于 EA 订阅，不会阻止用户在 Azure 门户采购 ClearDB 等第三方服务。 EA 订阅在 Azure 预付款之外计费，并按季度和欠款形式计费。 EA 客户必须设置付款方式，例如信用卡，才能支付任何第三方市场服务。
 
 ## <a name="where-can-i-see-the-charges-for-cleardb-resources-in-an-ea-subscription"></a>在何处可查看 EA 订阅中 ClearDB 资源的计费情况？
-直接 EA 客户可以在企业门户上看到 Azure 市场费用。 请注意，所有市场购买和使用均会在每季季末就货币承诺付款以外收费。 EA 客户需要直接付费给第三方服务提供商，或者通过启用其 EA 帐户的付款方式（例如信用卡）完成付费。
+直接 EA 客户可以在企业门户上看到 Azure 市场费用。 请注意，所有 marketplace 购买和消费都在 Azure 预付款之外计费，并按季度和欠款形式计费。 EA 客户需要直接付费给第三方服务提供商，或者通过启用其 EA 帐户的付款方式（例如信用卡）完成付费。
 
 间接 EA 客户可以在企业门户的“管理订阅”页上找到其 Azure 市场订阅，但定价处于隐藏状态。 客户应该联系其 LSP 以了解市场费用的相关信息。
 

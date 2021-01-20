@@ -9,22 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: ec7459a356221fb7b599cbbc02f1cb825920b5b3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b6fcf39e05c4649503f0b7a80aadaaa16df24674
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890660"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599563"
 ---
 # <a name="show-traffic-on-the-map"></a>在地图上显示交通信息
 
 Azure Maps 中提供了两种类型的交通数据：
 
 - 事件数据 - 由基于点和线的数据组成，针对诸如施工、道路封闭和事故等事项。
-- 流量数据 - 提供有关道路交通流量的指标。 通常，交通流量流数据用于为道路着色。 这些颜色基于相对于速度限制或其他指标而言，多大的交通会减慢流量。 Azure Maps 中的交通流量数据具有三个不同的度量指标：
-    - `relative` - 相对于道路的自由流量速度。
-    - `absolute` - 是道路中所有车辆的绝对速度。
-    - `relative-delay` - 显示比平均预期延迟更慢的区域。
+- 流量数据 - 提供有关道路交通流量的指标。 通常，交通流量流数据用于为道路着色。 这些颜色基于相对于速度限制或其他指标而言，多大的交通会减慢流量。 有四个可传递到映射的流量选项的值 `flow` 。
+
+    |流值 | 说明|
+    | :-- | :-- |
+    | `none` | 不显示地图上的流量数据 |
+    | `relative` | 显示相对于旅途的自由流动速度的流量数据 |
+    | `relative-delay` | 显示比平均预计延迟慢的区域 |
+    | `absolute` | 显示路上的所有车辆的绝对速度 |
 
 下面的代码演示如何在地图上显示交通数据。
 
@@ -71,7 +75,7 @@ map.controls.add(new atlas.control.TrafficLegendControl(), { position: 'bottom-l
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="流量控制" src="https://codepen.io/azuremaps/embed/ZEWaeLJ?height500&theme-id=0&default-tab=js,result&embed-version=2&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/ZEWaeLJ'>流量控制</a>" Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/ZEWaeLJ'>流量控制</a>" Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'></a>
 </iframe>
 
 

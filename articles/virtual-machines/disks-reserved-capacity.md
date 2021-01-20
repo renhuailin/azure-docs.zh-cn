@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: e3642a621253b79fdfcdd8cb2b648dee534c6758
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: db6575894904e6ced2d4be48fec5961f5b8b8a54
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968679"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602634"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>通过 Azure 磁盘预留降低成本
 
@@ -70,7 +70,7 @@ ms.locfileid: "91968679"
    |元素  |说明  |
    |---------|---------|
    |**范围**   |  多少订阅可以使用与预订相关的计费权益。 此值还指定如何将预订应用到特定订阅。 <br/><br/> 如果选择 " **共享**"，预订折扣将应用到计费上下文中每个订阅的 Azure 存储容量。 计费上下文基于 Azure 的注册方式。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围包含由帐户管理员创建的即用即付费率的所有订阅。  <br/><br/>  如果选择 " **单个订阅**"，则预订折扣将应用到所选订阅中的 Azure 存储容量。 <br/><br/> 如果选择 " **单个资源组**"，则预订折扣将应用到所选订阅和该订阅所选资源组中的 Azure 存储容量。 <br/><br/> 你可以在购买预订后更改保留范围。  |
-   |**订阅**  | 用于支付 Azure 存储预留的订阅。 所选订阅的付款方式用于对成本进行收费。 订阅必须是以下类型之一：<br/><ul><li> 企业协议 (BC-OP-NT-AZR-Ms-azr-0017p 和 BC-OP-NT-AZR-Ms-azr-0148p) 。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。</li><br/><li>采用即用即付费率的单个订阅 (提供数字 BC-OP-NT-AZR-Ms-azr-0003p 和 BC-OP-NT-AZR-0023P) 。 对于使用即用即付费率的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。</li></ul>    |
+   |**订阅**  | 用于支付 Azure 存储预留的订阅。 所选订阅的付款方式用于对成本进行收费。 订阅必须是以下类型之一：<br/><ul><li> 企业协议 (BC-OP-NT-AZR-Ms-azr-0017p 和 BC-OP-NT-AZR-Ms-azr-0148p) 。 对于企业订阅，将从注册的 Azure 预付款 (之前称为货币承诺) 余额或按超额支付收费。</li><br/><li>采用即用即付费率的单个订阅 (提供数字 BC-OP-NT-AZR-Ms-azr-0003p 和 BC-OP-NT-AZR-0023P) 。 对于使用即用即付费率的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。</li></ul>    |
    | **磁盘** | 要创建的 SKU。 |
    | **区域** | 预订有效的区域。 |
    | **计费频率** | 帐户按预订计费的频率。 选项包括 **每月** 和 **前期**。 |

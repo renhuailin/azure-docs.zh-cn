@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/28/2020
+ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 05a514debcf8036a296bbe66b2dd75c7dacacdc2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803521"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600739"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 门户中预配报表 (预览版) 
 
@@ -107,7 +107,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 
 “日期”筛选器用于定义已返回数据的时间范围。  
-可能的值为：
+可能的值有：
 
 - 1 个月
 - 7 天
@@ -215,8 +215,6 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - 如果你有一个免费版，Azure 门户会将报告的预配数据存储30天，如果你有一个免费版，则为7天。预配日志可发布到 [log analytics](../app-provisioning/application-provisioning-log-analytics.md) ，以便保留超过30天的保留期。 
 
 - 您可以使用 "更改 ID" 属性作为唯一标识符。 例如，当与产品支持交互时，这很有用。
-
-- 当前没有可用于下载 CSV 文件的预配数据的选项，但你可以使用 [Microsoft Graph](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta)来导出数据。
 
 - 对于不在作用域内的用户，可能会看到跳过的事件。 这是预期情况，特别是在同步作用域设置为 "所有用户和组" 时。 我们的服务将评估租户中的所有对象，即使是超出范围的对象。 
 

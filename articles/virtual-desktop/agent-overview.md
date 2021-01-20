@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 6450b44e5c7281f0a24fd5000c9feec6e61fa29c
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 325502255e84e38a39ca5b90ee4126354c0d425b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540517"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601236"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Windows 虚拟桌面代理入门
 
@@ -44,5 +44,4 @@ Windows 虚拟桌面代理最初以两种方式之一安装。 如果在 Azure �
 
 现在，你可以更好地了解 Windows 虚拟桌面代理，下面提供了一些可以帮助你：
 
-- 查看 [Windows 虚拟桌面代理更新](whats-new.md) 部分，查看每个月的新代理更新的相关信息。
 - 如果遇到与代理或连接相关的问题，请查看 [Windows 虚拟桌面代理问题疑难解答指南](troubleshoot-agent.md)。

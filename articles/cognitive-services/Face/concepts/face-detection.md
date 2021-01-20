@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 92b19941f34b9bf5656c9beb188a68d2cf01f674
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 68d1e9744d937cf80327c3f41cc69f4af97d3400
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504123"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600184"
 ---
 # <a name="face-detection-and-attributes"></a>人脸检测和属性
 
@@ -47,7 +47,7 @@ ms.locfileid: "92504123"
 * **Gender**： 给定人脸的估计性别。 可能的值为 male、female 和 genderless。
 * **Glasses**： 给定的人脸是否戴有眼镜。 可能的值为 NoGlasses、ReadingGlasses、Sunglasses 和 Swimming Goggles。
 * **Hair**： 人脸的发型。 此属性显示头发是否可见、是否检测到秃顶，以及检测到了哪种发色。
-* **Head pose**： 人脸在 3D 空间中的摆向。 此属性以俯仰角、翻滚角和偏航角（以度为单位）描述。 值范围为-90 度到90度，-90 度为90度，-90 度分别为90度。 有关角度映射，请参阅以下示意图：
+* **Head pose**： 人脸在 3D 空间中的摆向。 此属性以俯仰角、翻滚角和偏航角（以度为单位）描述。 值的范围分别为 -90 度到 90 度、-90 度到 90 度，以及 -90 度到 90 度。 有关角度映射，请参阅以下示意图：
 
     ![标有俯仰、翻滚和偏航轴的头部](../Images/headpose.1.jpg)
 * **Makeup**： 人脸是否有化妆。 此值返回 eyeMakeup 和 lipMakeup 的布尔值。
@@ -63,8 +63,10 @@ ms.locfileid: "92504123"
 使用以下提示来确保输入的图像提供最准确的检测结果：
 
 * 支持的输入图像格式为 JPEG、PNG、GIF（第一帧）和 BMP。
-* 图像文件大小不应大于 6 MB。
-* 可检测的人脸大小范围为 36 x 36 到 4096 x 4096 像素。 无法检测超出此范围的人脸。
+* 图像文件不得大于 6 MB。
+* 在不大于 1920 x 1080 像素的图像中，最小可检测的人脸大小为 36 x 36 像素。 大于 1920 x 1080 像素的图像的最小字体大小比例要大。 减小面部大小可能会导致无法检测到某些面，即使它们大于可检测到的最小字体大小。
+* 最大可检测的人脸大小为 4096 x 4096 像素。
+* 不会检测到 36 x 36 到 4096 x 4096 像素大小范围以外的人脸。
 * 某些人脸会因技术难题而检测不到。 极端的人脸角度（头部姿势）或人脸遮挡物（太阳镜或遮挡人脸部位的手等物体）可能会影响检测。 正面和接近正面的人脸可提供最佳结果。
 
 若要检测视频源中的人脸，则可通过调整视频摄像头上的某些设置来改进性能：
