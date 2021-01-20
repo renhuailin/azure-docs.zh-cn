@@ -4,12 +4,12 @@ ms.custom: devx-track-java
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
-ms.openlocfilehash: 0a0ae0659e13035bfb29a0628330339ede349b8a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b5884a7b1f271a88653779e46c461c29a85ab2ed
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582612"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256264"
 ---
 开始使用适用于 Java 的自定义视觉客户端库来构建图像分类模型。 请按照以下步骤安装程序包并试用基本任务的示例代码。 使用此示例作为模板来构建你自己的图像识别应用。
 
@@ -153,6 +153,9 @@ T## 创建新的自定义视觉项目
 ## <a name="upload-and-tag-images"></a>上传和标记图像
 
 首先，下载此项目的示例图像。 将[示例图像文件夹](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images)的内容保存到本地设备。
+
+> [!NOTE]
+> Trove 是一个 Microsoft Garage 项目，可用于收集和购买图像集以便进行训练。 收集图像后，可以通过一般方式下载映像，然后将其导入到自定义视觉项目。 若要了解详细信息，请访问 [Trove 页面](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3)。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_upload)]
 

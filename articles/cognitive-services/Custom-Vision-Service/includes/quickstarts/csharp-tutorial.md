@@ -4,12 +4,12 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1e6884b1eb342c55823414e92f679ddfcbe35f5f
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a1a32e4ddad3b0dca84bf2dd6016eb5a218cc2f3
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582465"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256247"
 ---
 适用于 .NET 的自定义视觉客户端库入门。 请按照以下步骤安装包并试用用于生成图像分类模型的示例代码。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 
@@ -147,6 +147,9 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Predict
 ## <a name="upload-and-tag-images"></a>上传和标记图像
 
 首先，下载此项目的示例图像。 将[示例图像文件夹](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images)的内容保存到本地设备。
+
+> [!NOTE]
+> Trove 是一个 Microsoft Garage 项目，可用于收集和购买图像集以便进行训练。 收集图像后，可以通过一般方式下载映像，然后将其导入到自定义视觉项目。 若要了解详细信息，请访问 [Trove 页面](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3)。
 
 然后定义一个 helper方法，以在此目录中上传图像。 可能需要编辑“GetFiles”参数，以指向保存图像的位置。
 

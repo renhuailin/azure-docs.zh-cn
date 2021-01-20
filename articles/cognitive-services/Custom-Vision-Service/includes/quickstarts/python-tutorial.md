@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: dde50986601a9e6412b81fe0c4faa9775784c6c8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: c7e40de2caec49bd0e4fed32ddd9f131c9649dcd
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582748"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256379"
 ---
 适用于 Python 的自定义视觉客户端库入门。 请按照以下步骤安装包并试用用于生成图像分类模型的示例代码。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 
@@ -108,6 +108,9 @@ pip install azure-cognitiveservices-vision-customvision
 ## <a name="upload-and-tag-images"></a>上传和标记图像
 
 首先，下载此项目的示例图像。 将[示例图像文件夹](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images)的内容保存到本地设备。
+
+> [!NOTE]
+> Trove 是一个 Microsoft Garage 项目，可用于收集和购买图像集以便进行训练。 收集图像后，可以通过一般方式下载映像，然后将其导入到自定义视觉项目。 若要了解详细信息，请访问 [Trove 页面](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3)。
 
 要将示例图像添加到项目，请在创建标记后插入以下代码。 此代码会上传具有相应标记的每个图像。 最多可以在单个批次中上传 64 个图像。
 
