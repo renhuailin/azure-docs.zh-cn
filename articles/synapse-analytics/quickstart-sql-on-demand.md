@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: e75bab664bdd0d6a4ac898905226c9956f62b4ff
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ffa9e7b5685f9a200f6a403045687626f67f66f4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450505"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218291"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>快速入门：使用无服务器 SQL 池
 
@@ -26,7 +26,7 @@ Synapse 无服务器 SQL 池是一个无服务器查询服务，可用于针对 
 
 选择用于发出查询的 SQL 客户端：
 
-- [Azure Synapse Studio](quickstart-synapse-studio.md) 是一个 Web 工具，可用于浏览存储中的文件以及创建 SQL 查询。
+- [Azure Synapse Studio](./get-started-create-workspace.md) 是一个 Web 工具，可用于浏览存储中的文件以及创建 SQL 查询。
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) 是一个客户端工具，可用于针对按需数据库运行 SQL 查询和笔记本。
 - [SQL Server Management Studio](sql/get-started-ssms.md) 是一个客户端工具，可用于针对按需数据库运行 SQL 查询。
 

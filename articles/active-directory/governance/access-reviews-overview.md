@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 08399c1b2d930abfdd5832cb102a789844931d61
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 22bfef17f68b2e83e4f7462d8e9af6fb8aacc284
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027690"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246734"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD 访问评审是什么？
 
@@ -97,13 +97,13 @@ Azure AD 来宾用户访问基于月度活跃用户 (MAU) 计费模型，此模�
 
 下面是一些许可证场景示例，可帮助你确定必须拥有的许可证数量。
 
-| 场景 | 计算 | 许可证数量 |
+| 方案 | 计算 | 许可证数量 |
 | --- | --- | --- |
 | 管理员创建组 A 的访问评审，该组包含 75 个用户和 1 个组所有者，并将该组所有者指定为审阅者。 | 作为审阅者的组所有者需要 1 个许可证 | 1 |
 | 管理员创建组 B 的访问评审，该组包含 500 个用户和 3 个组所有者，并将这 3 个组所有者指定为审阅者。 | 作为审阅者的各个组所有者共需 3 个许可证 | 3 |
 | 管理员创建具有 500 个用户的组 B 的访问评审。 并使其成为自我评审。 | 各个用户进行自我评审共需 500 个许可证 | 500 |
 | 管理员创建具有 50 个成员用户和 25 个来宾用户的组 C 的访问评审。 并使其成为自我评审。 | 50 名作为自我审阅者的用户各需 1 个许可证。* | 50 |
-| 管理员创建具有 6 个成员用户和 108 个来宾用户的组 D 的访问评审。 并使其成为自我评审。 | 6 名作为自我审阅者的用户各需 1 个证书。 来宾用户按月度活跃用户 (MAU) 计费。 不需要其他许可证。 *  | - |
+| 管理员创建具有 6 个成员用户和 108 个来宾用户的组 D 的访问评审。 并使其成为自我评审。 | 6 名作为自我审阅者的用户各需 1 个证书。 来宾用户按月度活跃用户 (MAU) 计费。 不需要其他许可证。 *  | 6 |
 
 \* Azure AD External Identities（来宾用户）定价基于月度活动用户数 (MAU)，这是对一个日历月内具有身份验证活动的独立用户的计数。 此模型将替换 1:5 比率计费模型，该模型允许租户中的每个 Azure AD Premium 许可证最多 5 个来宾用户。 当你的租户链接到订阅时，如果使用 External Identities 功能与来宾用户协作，则将使用基于 MAU 的计费模型自动计费。 有关详细信息，请参阅 Azure AD External Identities 的计费模型。
 

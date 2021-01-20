@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0d833c32000eb91511782184ef4455bc1973a714
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: a7ee4e205851a751f7a50ac0ddadfb4e4c7eb81a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97807903"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247397"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics 常见问题解答
 
@@ -138,11 +138,6 @@ Synapse RBAC 角色：
 ### <a name="q-what-is-the-default-deployment-of-dedicated-sql-pools-now"></a>问：专用 SQL 池现在的默认部署是什么？ 
 
 答：默认情况下，所有新的专用 SQL 池都将部署到工作区；但是如果有需要，仍然可以使用独立的外形规格创建专用 SQL 池（以前称为 SQL DW）。 
-
-
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>问：专用 SQL 池和无服务器 SQL 池之间有什么功能差异？
-
-答：可以在 [Synapse SQL 中的 T-SQL 功能差异](./sql/overview-features.md)中找到差异的完整列表。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
-ms.openlocfilehash: dfeb9c6bc3dbe33881fc51ccb08a776b827dfe9c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cc3ba3a0519400368e0cbfec7abe2d9bd1731b34
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86082431"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217628"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建虚拟网络
 
@@ -28,15 +28,15 @@ ms.locfileid: "86082431"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。 在 Azure 市场中，选择“网络” > “虚拟网络” 。
+1. 在 Azure 门户菜单中，选择“创建资源”。 在 Azure 市场中，选择“网络” > “虚拟网络” 。
 
 1. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | “值” |
     | ------- | ----- |
     | 订阅 | 选择订阅。|
     | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
@@ -63,7 +63,7 @@ ms.locfileid: "86082431"
 
 1. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -79,7 +79,7 @@ ms.locfileid: "86082431"
     | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     | 确认密码 | 重新输入密码。 |
     | **入站端口规则** |  |
-    | 公共入站端口 | 选择“允许所选端口”****。 |
+    | 公共入站端口 | 选择“允许所选端口”  。 |
     | 选择入站端口 | 输入 *HTTP (80)* 和 *RDP (3389)* 。 |
     | **节省资金** |  |
     | 已有 Windows 许可证？ | 默认设置为“否”。 |
@@ -90,7 +90,7 @@ ms.locfileid: "86082431"
 
 1. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 虚拟网络 | 默认设置为 **myVirtualNetwork**。 |
     | 子网 | 默认设置为 **myVirtualSubnet (10.1.0.0/24)** 。 |
@@ -105,7 +105,7 @@ ms.locfileid: "86082431"
 
 1. 在“创建存储帐户”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 myvmstorageaccount。 如果此名称已被使用，请创建唯一的名称。|
     | 帐户类型 | 默认设置为“存储(常规用途 v1)”。 |
@@ -139,14 +139,14 @@ ms.locfileid: "86082431"
 
 1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
-1. 打开该 RDP 文件。 出现提示时，选择“连接”  。
+1. 打开该 RDP 文件。 出现提示时，选择“连接”。
 
 1. 输入在创建 VM 时指定的用户名和密码。
 
     > [!NOTE]
     > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
-1. 选择“确定”  。
+1. 选择“确定”。
 
 1. 可能会在登录时收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 
@@ -183,7 +183,7 @@ ms.locfileid: "86082431"
 
 1. 关闭与 *myVm1* 的远程桌面连接。
 
-1. 再次完成[从 Internet 连接到 VM](#connect-to-a-vm-from-the-internet) 中的步骤，但这次连接到 *myVm2*。
+1. 再次完成 [从 Internet 连接到 VM](#connect-to-a-vm-from-the-internet) 中的步骤，但这次连接到 *myVm2*。
 
 1. 从命令提示符输入 `ping myvm1`。
 
@@ -225,4 +225,4 @@ ms.locfileid: "86082431"
 默认情况下，Azure 允许在 VM 之间进行安全通信。 Azure 只允许从 Internet 到 Windows VM 的入站远程桌面连接。 若要详细了解 VM 网络通信类型，请参阅[筛选网络流量](tutorial-filter-network-traffic.md)。
 
 > [!NOTE] 
-> Azure 服务是要花钱的。 Azure 成本管理有助于你设置预算并配置警报，使支出保持在控制范围之内。 使用成本管理分析、管理和优化 Azure 成本。 要了解详细信息，请参阅[分析成本快速入门](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+> Azure 服务是要花钱的。 Azure 成本管理有助于你设置预算并配置警报，使支出保持在控制范围之内。 使用成本管理分析、管理和优化 Azure 成本。 要了解详细信息，请参阅[分析成本快速入门](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 3c03a207e91ae969836e208f4e6bf4ea32086c7d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b3ca4f11b02f32e65cf80adc65ec12d25e6e7905
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121306"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573167"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。
@@ -66,7 +66,7 @@ Azure 专用链接提供以下优势：
 |Azure 事件网格| 所有公共区域<br/> 所有政府区域       |  | GA   <br/> [了解如何为 Azure 事件网格创建专用终结点。](../event-grid/network-security.md) |
 |Azure Web 应用 | 所有公共区域      | 支持 PremiumV2、PremiumV3 或 Function Premium 计划  | GA   <br/> [了解如何为 Azure Web 应用创建专用终结点。](./tutorial-private-endpoint-webapp-portal.md)   |
 |Azure 机器学习 | 所有公共区域    |  | GA   <br/> [了解如何为 Azure 机器学习创建专用终结点。](../machine-learning/how-to-configure-private-link.md)   |
-| Azure 自动化  | 所有公共区域 |  | 预览 </br> [了解如何为 Azure 自动化服务创建专用终结点。](../automation/how-to/private-link-security.md)| |
+| Azure 自动化  | 所有公共区域<br/> 所有政府区域 |  | 预览 </br> [了解如何为 Azure 自动化服务创建专用终结点。](../automation/how-to/private-link-security.md)| |
 | Azure IoT 中心 | 所有公共区域    |  | GA   <br/> [了解如何为 Azure IoT 中心创建专用终结点。](../iot-hub/virtual-network-support.md) |
 | Azure SignalR | 美国东部、美国中南部、<br/>美国西部 2、所有中国区域      |  | 预览   <br/> [了解如何为 Azure SignalR 创建专用终结点。](../azure-signalr/howto-private-endpoints.md)   |
 | Azure Monitor <br/>（Log Analytics 和 Application Insights） | 所有公共区域      |  | GA   <br/> [了解如何为 AAzure Monitor 创建专用终结点。](../azure-monitor/platform/private-link-security.md)   | 

@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: a5d84b936679cdd5ebd5bec4938d6db7fcb641e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 800cbf9b7a7fa415452f29b253347188c8917c52
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455499"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219447"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>快速入门：在 Synapse 中创建新的 Azure 机器学习链接服务
 
@@ -22,7 +22,7 @@ ms.locfileid: "96455499"
 
 例如，链接到 Azure 机器学习工作区可获得以下体验：
 
-- 将 Azure 机器学习管道作为 Synapse 管道中的一个步骤运行。 若要了解详细信息，请参阅[执行 Azure 机器学习管道](/azure/data-factory/transform-data-machine-learning-service)。
+- 将 Azure 机器学习管道作为 Synapse 管道中的一个步骤运行。 若要了解详细信息，请参阅[执行 Azure 机器学习管道](../../data-factory/transform-data-machine-learning-service.md)。
 
 - 通过从 Azure 机器学习模型注册表中引入机器学习模型，可使用预测来丰富数据，并在 Synapse SQL 池中对该模型进行评分。 有关更多详细信息，请参阅[教程：用于 Synapse SQL 池的机器学习模型评分向导](tutorial-sql-pool-model-scoring-wizard.md)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "96455499"
 
 - Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
 - [Synapse Analytics 工作区](../get-started-create-workspace.md)，其中 ADLS Gen2 存储帐户配置为默认存储。 你必须是所用 ADLS Gen2 文件系统的存储 Blob 数据参与者。
-- [Azure 机器学习工作区](/azure/machine-learning/how-to-manage-workspace)。
+- [Azure 机器学习工作区](../../machine-learning/how-to-manage-workspace.md)。
 - 你需要具有相应权限（或者由具有相应权限的人请求）来创建服务主体和密码，它们可用于创建链接服务。 请注意，需要为此服务主体分配 Azure 机器学习工作区中的参与者角色。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户

@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 005e3a3b717d4b1b8e5eb02b77a1d228908f8707
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0537d2353d6b372ed19127101c488b872bbc5224
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210559"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218852"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Azure Synapse 工作区
 
@@ -30,9 +30,9 @@ Azure PowerShell 是一组 cmdlet，用于直接从 PowerShell 管理 Azure 资�
 - [Azure Data Lake Storage Gen2 存储帐户](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
     > [!IMPORTANT]
-    > Azure Synapse 工作区需要能够读取所选 ADLS Gen2 帐户以及向其写入内容。 对于作为主存储帐户链接的任何存储帐户，在创建存储帐户时必须启用“分层命名空间”，如[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-powershell#create-a-storage-account)中所述。
+    > Azure Synapse 工作区需要能够读取所选 ADLS Gen2 帐户以及向其写入内容。 对于作为主存储帐户链接的任何存储帐户，在创建存储帐户时必须启用“分层命名空间”，如[创建存储帐户](../storage/common/storage-account-create.md?tabs=azure-powershell#create-a-storage-account)中所述。
 
-如果你选择使用 Cloud Shell，请参阅 [Azure Cloud Shell 概述](https://docs.microsoft.com/azure/cloud-shell/overview)来了解详细信息。
+如果你选择使用 Cloud Shell，请参阅 [Azure Cloud Shell 概述](../cloud-shell/overview.md)来了解详细信息。
 
 ### <a name="install-the-azure-powershell-module-locally"></a>在本地安装 Azure Powershell 模块
 

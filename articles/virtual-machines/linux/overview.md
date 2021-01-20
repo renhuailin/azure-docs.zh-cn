@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 54982189a5da584c7daf66855ffb655e403a455a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a2145c217c19e80c2ca70880e0f9b01ae2ba140e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500506"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202566"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure 中的 Linux 虚拟机
 
@@ -50,7 +50,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 | Azure 门户 |创建 VM 时，可从列表中选择位置。 |
 | Azure PowerShell |使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) 命令。 |
 | REST API |使用[列出位置](/rest/api/resources/subscriptions)操作。 |
-| Azure CLI |使用 [az account list-locations](/cli/azure/account?view=azure-cli-latest) 操作。 |
+| Azure CLI |使用 [az account list-locations](/cli/azure/account) 操作。 |
 
 ### <a name="singapore-data-residency"></a>新加坡数据驻留
 
@@ -60,7 +60,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 Azure 宣布了行业领先的单实例虚拟机服务级别协议：可用性达到 99.9%（前提是为所有磁盘使用高级存储部署 VM）。  为了使部署符合标准 99.95% 的 VM 服务级别协议，仍需要在可用性集中部署两个或更多个运行工作负荷的 VM。 可用性集可确保 VM 分布在 Azure 数据中心内的多个容错域，并使用不同的维护时段部署到主机。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
 
 ## <a name="vm-size"></a>VM 大小
-VM 的[大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)由所要运行的工作负荷决定。 然后，选择的大小决定了处理能力、内存和存储容量等因素。 Azure 提供各种大小来支持多种类型的用途。
+VM 的[大小](../sizes.md)由所要运行的工作负荷决定。 然后，选择的大小决定了处理能力、内存和存储容量等因素。 Azure 提供各种大小来支持多种类型的用途。
 
 Azure 根据 VM 的大小和操作系统按[小时价格](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)计费。 对于不足一小时的部分，Azure 仅根据使用的分钟数计费。 存储将另行定价和收费。
 
@@ -126,6 +126,6 @@ Azure 在支持它的大多数 Linux 发行版中支持 [cloud-init](https://clo
 
 创建第一个 VM！
 
-- [门户](quick-create-portal.md)
+- [Portal](quick-create-portal.md)
 - [Azure CLI](quick-create-cli.md)
 - [PowerShell](quick-create-powershell.md)

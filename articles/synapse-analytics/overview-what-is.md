@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: e5b12632a60ad5580325fbcda294e1a600bb2b6b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 5d2765787a4eb417f4aa86396e07a25f8157b8ce
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121696"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223051"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>什么是 Azure Synapse Analytics？
 
@@ -30,7 +30,7 @@ Azure Synapse 是一项集成式分析服务，可以缩短在数据仓库和大
 
 * Synapse SQL 提供无服务器和专用资源模型，并根据需求提供消耗和计费选项。  若要使性能和成本可预测，可以创建专用 SQL 池，以保留对 SQL 表中存储的数据进行处理的能力。 对于计划外或突发性的工作负荷，请使用始终可用的无服务器 SQL 终结点。
 * 使用内置的流式处理功能可将数据从云数据源载入到 SQL 表中
-* 通过使用机器学习模型并使用 [T-SQL PREDICT 函数](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)对数据进行评分，将 AI 与 SQL 集成
+* 通过使用机器学习模型并使用 [T-SQL PREDICT 函数](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)对数据进行评分，将 AI 与 SQL 集成
 
 ### <a name="industry-standard-apache-spark"></a>行业标准 Apache Spark
 
@@ -76,7 +76,7 @@ Synapse Studio 是一个 Web 原生的体验，它将数据工程师所需的全
 ## <a name="engage-with-the-synapse-engineering-team"></a>与 Synapse 工程团队合作
 
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse)：询问开发问题。
-- [Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)：询问技术问题。
+- [Microsoft 问答页](/answers/topics/azure-synapse-analytics.html)：询问技术问题。
 
 ## <a name="next-steps"></a>后续步骤
 

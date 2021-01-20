@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: duau
-ms.openlocfilehash: 830700fb4a5ac57405877364e9cc4828e5d1a5a4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e2a4db1404709dadb2500df29f3f7acf8787c2b2
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89392538"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185725"
 ---
 # <a name="what-is-traffic-manager"></a>什么是流量管理器？
 Azure 流量管理器是一种基于 DNS 的流量负载均衡器，可以在全球 Azure 区域内以最佳方式向服务分发流量，同时提供高可用性和响应性。
@@ -25,9 +25,9 @@ Azure 流量管理器是一种基于 DNS 的流量负载均衡器，可以在全
 流量管理器根据流量路由方法和终结点的运行状况，使用 DNS 将客户端请求定向到最合适的服务终结点。 终结点可以是托管在 Azure 内部或外部的任何面向 Internet 的服务。 流量管理器提供多种[流量路由方法](traffic-manager-routing-methods.md)和[终结点监视选项](traffic-manager-monitoring.md)来满足不同的应用程序需求和自动故障转移模型。 流量管理器能够灵活应对故障，包括整个 Azure 区域的故障。
 
 >[!NOTE]
-> Azure 为方案提供了一套完全托管的负载均衡解决方案。 若要寻求传输层安全性 (TLS) 协议终止（“SSL 卸载”）或每个 HTTP/HTTPS 请求的应用层处理，请查看[应用程序网关](../application-gateway/application-gateway-introduction.md)。 如果想要实现区域负载均衡，请查看[负载均衡器](../load-balancer/load-balancer-overview.md)。 端到端场景可从结合所需的解决方案中受益。
+> Azure 为方案提供了一套完全托管的负载均衡解决方案。 若要寻求传输层安全性 (TLS) 协议终止（“SSL 卸载”）或每个 HTTP/HTTPS 请求的应用层处理，请查看[应用程序网关](../application-gateway/overview.md)。 如果想要实现区域负载均衡，请查看[负载均衡器](../load-balancer/load-balancer-overview.md)。 端到端场景可从结合所需的解决方案中受益。
 >
-> 有关 Azure 负载平衡选项的比较，请参阅 [Overview of load-balancing options in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)（Azure 中的负载平衡选项概述）。
+> 有关 Azure 负载平衡选项的比较，请参阅 [Overview of load-balancing options in Azure](/azure/architecture/guide/technology-choices/load-balancing-overview)（Azure 中的负载平衡选项概述）。
 
 流量管理器提供了以下功能：
 
@@ -58,10 +58,6 @@ Azure 流量管理器是一种基于 DNS 的流量负载均衡器，可以在全
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[创建流量管理器配置文件](traffic-manager-create-profile.md)。
+- 了解如何[创建流量管理器配置文件](./quickstart-create-traffic-manager-profile.md)。
 - 了解[流量管理器工作原理](traffic-manager-how-it-works.md)。
 - 查看流量管理器[常见问题解答](traffic-manager-FAQs.md)。
-
-
-
-

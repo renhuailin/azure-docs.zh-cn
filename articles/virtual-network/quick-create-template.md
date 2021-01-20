@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: c9e9ea2e59537a1c0c8e372a766fba3aa9a1b9a0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bc0ac1a6e882f4197828bf79c7989c16b2eb16f7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88122148"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217662"
 ---
 # <a name="quickstart-create-a-virtual-network---resource-manager-template"></a>快速入门：创建虚拟网络 - 资源管理器模板
 
@@ -36,8 +36,8 @@ ms.locfileid: "88122148"
 :::code language="json" source="~/quickstart-templates/101-vnet-two-subnets/azuredeploy.json" range="001-96" highlight="56-92":::
 
 该模板中已定义了以下 Azure 资源：
-- [Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)：创建 Azure 虚拟网络。
--  [Microsoft.Network/virtualNetworks/subnets](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets)：创建子网。
+- [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)：创建 Azure 虚拟网络。
+-  [Microsoft.Network/virtualNetworks/subnets](/azure/templates/microsoft.network/virtualnetworks/subnets)：创建子网。
 
 ## <a name="deploy-the-template"></a>部署模板
 
@@ -56,7 +56,7 @@ ms.locfileid: "88122148"
 
 浏览使用虚拟网络创建的资源。
 
-若要了解模板中虚拟网络的 JSON 语法和属性，请参阅 [Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)。
+若要了解模板中虚拟网络的 JSON 语法和属性，请参阅 [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

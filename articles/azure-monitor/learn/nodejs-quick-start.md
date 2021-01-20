@@ -3,16 +3,16 @@ title: 快速入门：使用 Azure Monitor Application Insights 监视 Node.js
 description: 提供有关快速设置 Node.js Web 应用以使用 Azure Monitor Application Insights 进行监视的说明
 ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 550097272f90a2f7fa06af7f06810fd3fa0ed94f
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e5fc7c71c1ced4542f00fe862699442c6b43bc69
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173880"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210352"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>快速入门：使用 Azure Application Insights 开始监视 Node.js Web 应用程序
 
@@ -50,7 +50,7 @@ ms.locfileid: "92173880"
 
 ## <a name="configure-appinsights-sdk"></a>配置 AppInsights SDK
 
-1. 选择“概述”，然后复制应用程序的 **检测密钥** 。 
+1. 选择“概述”，然后复制应用程序的 **检测密钥**。 
 
    ![查看 Application Insights 检测密钥](./media/nodejs-quick-start/azure-app-insights-instrumentation-key.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "92173880"
 > 如果使用了现有资源组，以下说明将不起作用，只需删除单个 Application Insights 资源即可。 请记住，无论何时删除资源组，属于该组的所有底层资源都将被删除。
 
 1. 在 Azure 门户的左侧菜单中，选择“资源组”  ，然后选择“myResourceGroup”  。
-2. 在资源组页上选择“删除”  ，在文本框中输入 **myResourceGroup** ，然后选择“删除”  。
+2. 在资源组页上选择“删除”  ，在文本框中输入 **myResourceGroup**，然后选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.author: askaur
 ms.date: 12/08/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ea66e4295e8228aa382aa29a46fcca8147dcbc98
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1ad6b7241c7167c6da8952e7db2797fa275b7246
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577989"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251909"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>快速入门：将你的聊天应用连接到 Teams 会议
 
@@ -29,11 +29,7 @@ ms.locfileid: "97577989"
 
 以来宾用户身份加入 Teams 会议的通信服务用户仅在加入 Teams 会议通话后才能访问会议的聊天。 请参阅 [Teams 互操作](../voice-video-calling/get-started-teams-interop.md)文档，了解如何将通信服务用户添加到 Teams 会议通话。
 
-Teams 互操作性功能目前为个人预览版。 要为通信服务资源启用此功能，请向 acsfeedback@microsoft.com 发送电子邮件，并提供以下信息： 
-1. 包含通信服务资源的 Azure 订阅的订阅 ID。 
-2. 你的 Teams 租户 ID。 获取此信息的最简单方法是获取并共享指向团队的链接。 
-
-你需要是拥有这两个实体的组织的成员才能使用此功能。 
+你需要是拥有这两个实体的组织的成员才能使用此功能。
 
 [!INCLUDE [Join Teams meetings](./includes/meeting-interop-javascript.md)]
 

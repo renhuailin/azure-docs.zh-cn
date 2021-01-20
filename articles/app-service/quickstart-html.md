@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: ec3929219a6297bd4a3d8d3e0eff93d2ed847ba0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9b85f04ca507b5d40c091b52507d0fad2cd3e798
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835214"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185693"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 
@@ -62,7 +62,7 @@ az webapp up --location westeurope --name <app_name> --html
 
 此命令可能需要花费几分钟时间运行。 运行时，该命令会显示类似于以下示例的信息：
 
-<pre>
+```output
 {
   "app_url": "https://&lt;app_name&gt;.azurewebsites.net",
   "location": "westeurope",
@@ -74,7 +74,7 @@ az webapp up --location westeurope --name <app_name> --html
   "src_path": "/home/&lt;username&gt;/quickstart/html-docs-hello-world ",
   &lt; JSON data removed for brevity. &gt;
 }
-</pre>
+```
 
 记下 `resourceGroup` 值。 需要在[清理资源](#clean-up-resources)部分使用它。
 

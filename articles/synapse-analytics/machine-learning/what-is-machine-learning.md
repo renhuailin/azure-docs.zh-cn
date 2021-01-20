@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 906d3d28aabf8f6ecd6e04c38b4519937fa95c2b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 68b113de63cfefde805c1c46e9303829c4eb33a7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092153"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222133"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的机器学习功能
 
@@ -40,7 +40,7 @@ Azure Synapse Analytics 提供了各种机器学习功能。 本文概述了如�
 
 #### <a name="data-source-and-pipelines"></a>数据源和管道
 
-归功于 [Azure 数据工厂](/azure/data-factory/introduction)（Azure Synapse 的一个原生集成部分），有一组功能强大的工具可用于数据引入和数据业务流程管道。 这使你可以轻松地构建数据管道，以便访问数据并将其转换为可用于机器学习的格式。 [详细了解 Synapse 中的数据管道](/azure/data-factory/concepts-pipelines-activities?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 
+归功于 [Azure 数据工厂](../../data-factory/introduction.md)（Azure Synapse 的一个原生集成部分），有一组功能强大的工具可用于数据引入和数据业务流程管道。 这使你可以轻松地构建数据管道，以便访问数据并将其转换为可用于机器学习的格式。 [详细了解 Synapse 中的数据管道](../../data-factory/concepts-pipelines-activities.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)。 
 
 #### <a name="data-preparation-and-explorationvisualization"></a>数据准备和浏览/可视化
 
@@ -64,13 +64,13 @@ Azure Synapse Analytics 提供了各种机器学习功能。 本文概述了如�
 
 #### <a name="train-models-with-azure-machine-learning-automated-ml"></a>使用 Azure 机器学习自动化 ML 来训练模型
 
-训练机器学习模型的另一种方法是使用自动化 ML，这不需要花太多时间事先熟悉机器学习。 [自动化 ML](/azure/machine-learning/concept-automated-ml) 是一项可自动训练一组机器学习模型的功能，允许用户根据特定指标选择最佳模型。 借助从 Azure Synapse Notebooks 与 Azure 机器学习进行的无缝集成，用户可以轻松地在 Synapse 中通过 Azure Active Directory 传递身份验证来利用自动化 ML。  这意味着你只需指向 Azure 机器学习工作区，无需输入任何凭据。 这是一个[自动化 ML 教程](../spark/apache-spark-azure-machine-learning-tutorial.md)，介绍了如何在 Synapse Spark 池中使用 Azure 机器学习自动化 ML 来训练模型。
+训练机器学习模型的另一种方法是使用自动化 ML，这不需要花太多时间事先熟悉机器学习。 [自动化 ML](../../machine-learning/concept-automated-ml.md) 是一项可自动训练一组机器学习模型的功能，允许用户根据特定指标选择最佳模型。 借助从 Azure Synapse Notebooks 与 Azure 机器学习进行的无缝集成，用户可以轻松地在 Synapse 中通过 Azure Active Directory 传递身份验证来利用自动化 ML。  这意味着你只需指向 Azure 机器学习工作区，无需输入任何凭据。 这是一个[自动化 ML 教程](../spark/apache-spark-azure-machine-learning-tutorial.md)，介绍了如何在 Synapse Spark 池中使用 Azure 机器学习自动化 ML 来训练模型。
 
 ### <a name="model-deployment-and-scoring"></a>模型部署和评分
 
 可以轻松使用已在 Azure Synapse 中或 Azure Synapse 外部训练的模型进行批量评分。 在 Synapse 中，目前有两种方法可用于运行批量评分。
 
-* 可以使用 Synapse SQL 池中的 [TSQL PREDICT 函数](../sql-data-warehouse/sql-data-warehouse-predict.md)直接在数据所在的位置运行你的预测。 此强大的可缩放功能允许你在不将任何数据移出数据仓库的情况下扩充数据。 [Synapse Studio 中引入了一个新的引导式机器学习模型体验](https://aka.ms/synapse-ml-ui)。在其中，你可以从 Synapse SQL 池中的 Azure 机器学习模型注册表部署 ONNX 模型，以便使用 PREDICT 进行批量评分。
+* 可以使用 Synapse SQL 池中的 [TSQL PREDICT 函数](../sql-data-warehouse/sql-data-warehouse-predict.md)直接在数据所在的位置运行你的预测。 此强大的可缩放功能允许你在不将任何数据移出数据仓库的情况下扩充数据。 [Synapse Studio 中引入了一个新的引导式机器学习模型体验](./tutorial-sql-pool-model-scoring-wizard.md)。在其中，你可以从 Synapse SQL 池中的 Azure 机器学习模型注册表部署 ONNX 模型，以便使用 PREDICT 进行批量评分。
 
 * Azure Synapse 中用于对机器学习模型进行批量评分的另一个选项是利用 Azure Synapse 的 Apache Spark 池。 根据用来训练模型的库，你可以使用代码体验来运行批量评分。
 

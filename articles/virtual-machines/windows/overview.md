@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 26905b746efb0bfcc877e0fa8fad797672bb6447
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d0973682a62b17a21557727a8d5eb8fcb7ec7ef1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483209"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203365"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虚拟机
 
@@ -50,7 +50,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 | Azure 门户 |创建 VM 时，可从列表中选择位置。 |
 | Azure PowerShell |使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) 命令。 |
 | REST API |使用[列出位置](/rest/api/resources/subscriptions)操作。 |
-| Azure CLI |使用 [az account list-locations](/cli/azure/account?view=azure-cli-latest) 操作。 |
+| Azure CLI |使用 [az account list-locations](/cli/azure/account) 操作。 |
 
 ### <a name="singapore-data-residency"></a>新加坡数据驻留
 
@@ -61,7 +61,7 @@ Azure 宣布了行业领先的单实例虚拟机服务级别协议：可用性�
 
 
 ## <a name="vm-size"></a>VM 大小
-VM 的[大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)由所要运行的工作负荷决定。 然后，选择的大小决定了处理能力、内存和存储容量等因素。 Azure 提供各种大小来支持多种类型的用途。
+VM 的[大小](../sizes.md)由所要运行的工作负荷决定。 然后，选择的大小决定了处理能力、内存和存储容量等因素。 Azure 提供各种大小来支持多种类型的用途。
 
 Azure 根据 VM 的大小和操作系统按[小时价格](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)计费。 对于不足一小时的部分，Azure 仅根据使用的分钟数计费。 存储将另行定价和收费。
 
@@ -69,7 +69,7 @@ Azure 根据 VM 的大小和操作系统按[小时价格](https://azure.microsof
 订阅附带默认的[配额限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)，在为项目部署大量 VM 时，这些限制可能会造成影响。 每个订阅的当前限制是每区域 20 个 VM。 可以[开具支持票证](../../azure-portal/supportability/resource-manager-core-quotas-request.md)来请求提高限制
 
 ### <a name="operating-system-disks-and-images"></a>操作系统磁盘和映像
-虚拟机使用[虚拟硬盘 (VHD)](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 来存储其操作系统 (OS) 和数据。 VHD 还可用于存储映像，可以选择某个映像来安装 OS。 
+虚拟机使用[虚拟硬盘 (VHD)](../managed-disks-overview.md) 来存储其操作系统 (OS) 和数据。 VHD 还可用于存储映像，可以选择某个映像来安装 OS。 
 
 Azure 提供许多[市场映像](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images%3Bwindows&page=1)来配合各种版本和类型的 Windows Server 操作系统使用。 市场映像由映像发布者、产品、SKU 和版本（通常指定为最新版本）标识。 仅支持 64 位操作系统。 有关受支持的来宾操作系统、角色和功能的详细信息，请参阅 [Microsoft 服务器软件对 Microsoft Azure 虚拟机的支持](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)。
 
@@ -80,7 +80,7 @@ Azure 提供许多[市场映像](https://azuremarketplace.microsoft.com/marketpl
 | Azure 门户 |选择要使用的映像时，系统会自动指定值。 |
 | Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
 | REST API |[列出映像发布者](/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[列出映像产品](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[列出映像 SKU](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[az vm image list-publishers](/cli/azure/vm/image?view=azure-cli-latest) --location *location*<BR>[az vm image list-offers](/cli/azure/vm/image?view=azure-cli-latest) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](/cli/azure/vm?view=azure-cli-latest) --location *location* --publisher *publisherName* --offer *offerName*|
+| Azure CLI |[az vm image list-publishers](/cli/azure/vm/image) --location *location*<BR>[az vm image list-offers](/cli/azure/vm/image) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](/cli/azure/vm) --location *location* --publisher *publisherName* --offer *offerName*|
 
 可以选择[上传并使用自己的映像](upload-generalized-managed.md)，在这种情况下，无需使用发布者名称、产品和 SKU。
 
@@ -96,14 +96,14 @@ VM [扩展](../extensions/features-windows.md?toc=/azure/virtual-machines/window
 ### <a name="related-resources"></a>相关资源
 VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则要予以创建。
 
-| 资源 | 必选 | 说明 |
+| 资源 | 必须 | 说明 |
 | --- | --- | --- |
 | [资源组](../../azure-resource-manager/management/overview.md) |是 |VM 必须包含在资源组中。 |
 | [存储帐户](../../storage/common/storage-account-create.md) |是 |VM 需要使用存储帐户来存储其虚拟硬盘。 |
 | [虚拟网络](../../virtual-network/virtual-networks-overview.md) |是 |VM 必须是虚拟网络的成员。 |
 | [公共 IP 地址](../../virtual-network/public-ip-addresses.md) |否 |可以向 VM 分配一个公共 IP 地址，以便远程访问它。 |
 | [网络接口](../../virtual-network/virtual-network-network-interface.md) |是 |VM 需要使用网络接口在网络中通信。 |
-| [数据磁盘](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |否 |VM 可以包含数据磁盘，以便扩展存储功能。 |
+| [数据磁盘](attach-managed-disk-portal.md) |否 |VM 可以包含数据磁盘，以便扩展存储功能。 |
 
 
 ## <a name="data-residency"></a>数据驻留
@@ -115,6 +115,6 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 
 创建第一个 VM！
 
-- [门户](quick-create-portal.md)
+- [Portal](quick-create-portal.md)
 - [PowerShell](quick-create-powershell.md)
 - [Azure CLI](quick-create-cli.md)

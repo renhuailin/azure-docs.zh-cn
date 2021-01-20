@@ -5,26 +5,18 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c72083f205fae77de366125e666cee479fd46805
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: dbba87be839d7f172d42827698a8e485c2edddd8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97691926"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256343"
 ---
 ## <a name="prerequisites"></a>必备条件
 
 - 正在运行的[通信服务通话应用](../getting-started-with-calling.md)。
 - [Teams 部署](/deployoffice/teams-install)。
 
-## <a name="enable-teams-interoperability"></a>启用 Teams 互操作性
-
-Teams 互操作性功能目前为个人预览版。 要为通信服务资源启用此功能，请向 [acsfeedback@microsoft.com](mailto:acsfeedback@microsoft.com) 发送电子邮件，并提供以下信息：
-
-1. 包含通信服务资源的 Azure 订阅的订阅 ID。
-2. 你的 Teams 租户 ID。 获取此信息的最简单方法是[获取并共享指向团队的链接](https://support.microsoft.com/office/create-a-link-or-a-code-for-joining-a-team-11b0de3b-9288-4cb4-bc49-795e7028296f)。
-
-你需要是拥有这两个实体的组织的成员才能使用此功能。
 
 ## <a name="add-the-teams-ui-controls"></a>添加 Teams UI 控件
 
