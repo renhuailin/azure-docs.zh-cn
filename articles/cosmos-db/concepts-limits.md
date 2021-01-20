@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/19/2020
-ms.openlocfilehash: 793ff9eedb747da0edcbbf2df50b62f06f407892
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.date: 01/19/2021
+ms.openlocfilehash: 9ace9a319f4cc6bcc1545d6d1becce61b1892765
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247417"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598668"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -37,7 +37,7 @@ ms.locfileid: "98247417"
 | 每个容器的最大存储 | 无限制 |
 | 每个数据库的最大存储 | 无限制 |
 | 每个帐户的最大附件大小（附件功能即将弃用） | 2 GB |
-| 每 1 GB 需要的最小 RU 数 | 10 RU/秒<br>**注意：** 如果你的容器或数据库中有超过 1TB 的数据，你的帐户可能有资格加入我们的 [“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program) |
+| 每 1 GB 需要的最小 RU 数 | 10 RU/秒<br>**注意：** 如果你的帐户符合我们的 ["高存储/低吞吐量" 计划](set-throughput.md#high-storage-low-throughput-program)，则此最小值可降低 |
 
 > [!NOTE]
 > 若要了解有关管理其分区键需要更高存储或吞吐量限制的工作负荷的最佳做法，请参阅[创建合成分区键](synthetic-partition-keys.md)。
@@ -60,7 +60,7 @@ Cosmos 容器（或共享吞吐量数据库）的最小吞吐量必须为 400 RU
 
 示例：假设你有一个预配了 400 RU/s 和 0 GB 存储的容器。 你将吞吐量提高到 50,000 RU/s，并导入 20 GB 数据。 现在，最小 RU/s 为 `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 RU/s。 随着时间的推移，存储会增长到 200 GB。 现在，最小 RU/s 为 `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 RU/s。 
 
-注意：如果你的容器或数据库中有超过 1 TB 的数据，你的帐户可能有资格加入我们的[“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program)。
+**注意：** 如果你的帐户符合我们的 ["高存储/低吞吐量" 计划](set-throughput.md#high-storage-low-throughput-program)，则每 GB 存储的最小吞吐量为 10 RU/秒。
 
 #### <a name="minimum-throughput-on-shared-throughput-database"></a>共享吞吐量数据库的最小吞吐量 
 若要估算具有手动吞吐量的共享吞吐量数据库所需的最小吞吐量，请找到以下项的最大值：
@@ -72,7 +72,7 @@ Cosmos 容器（或共享吞吐量数据库）的最小吞吐量必须为 400 RU
 
 示例：假设你有一个预配了 400 RU/s、15 GB 存储和 10 个容器的数据库。 最小 RU/s 为 `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 RU/s。 如果数据库中有 30 个容器，则最小 RU/s 将为 `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 RU/s。 
 
-注意：如果你的容器或数据库中有超过 1 TB 的数据，你的帐户可能有资格加入我们的[“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program)。
+**注意：** 如果你的帐户符合我们的 ["高存储/低吞吐量" 计划](set-throughput.md#high-storage-low-throughput-program)，则每 GB 存储的最小吞吐量为 10 RU/秒。
 
 总之，最小预配 RU 限制如下所示。 
 
@@ -239,7 +239,7 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 | MongoDB 操作的最长执行时间| 30 秒 |
 | 导致服务器端连接关闭的空闲连接超时值* | 30 分钟 |
 
-\* 我们建议客户端应用程序将驱动程序设置中的空闲连接超时值设为 2-3 分钟，因为 [Azure LoadBalancer 的默认超时值为 4 分钟](../load-balancer/load-balancer-tcp-idle-timeout.md)。  此超时值可确保客户端计算机与 Azure Cosmos DB 之间的中间负载均衡器不会关闭空闲连接。
+\* 我们建议客户端应用程序将驱动程序设置中的空闲连接超时值设为 2-3 分钟，因为 [Azure LoadBalancer 的默认超时值为 4 分钟](../load-balancer/load-balancer-tcp-idle-timeout.md)。  此超时将确保客户端计算机与 Azure Cosmos DB 之间的中间负载均衡器不会关闭空闲连接。
 
 ## <a name="try-cosmos-db-free-limits"></a>免费试用 Cosmos DB 限制
 

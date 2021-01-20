@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: christopheranderson
 ms.author: chrande
-ms.openlocfilehash: 3f5996b281c1985747f754e3796e9fb84f90fdd3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0442d21aebe1cf577c50d14a5aeff40bd1f6cd9c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356954"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600528"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin 服务器响应标头
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -36,23 +36,23 @@ ms.locfileid: "93356954"
 
 ## <a name="status-codes"></a>状态代码
 
-下面列出了服务器返回的最常见状态代码。
+`x-ms-status-code`下面列出了服务器为状态属性返回的最常见代码。
 
 | 状态 | 说明 |
 | --- | --- |
 | **401** | 当身份验证密码与 Cosmos DB 帐户密钥不匹配时，将返回错误消息 `"Unauthorized: Invalid credentials provided"`。 在 Azure 门户中导航到你的 Cosmos DB Gremlin 帐户，并确认密钥正确。|
 | **404** | 尝试同时删除和更新相同的边或顶点的并发操作。 错误消息 `"Owner resource does not exist"` 指示，在 `/dbs/<database name>/colls/<collection or graph name>` 格式的连接参数中指定的数据库或集合不正确。|
-| **408** | `"Server timeout"` 表示遍历花费的时间超过 **30 秒** ，因此被服务器取消。 通过以下方式优化遍历，使之快速运行：在每个遍历跃点上筛选顶点或边缘，以缩小搜索范围。|
 | **409** | `"Conflicting request to resource has been attempted. Retry to avoid conflicts."` 如果图中已存在带标识符的顶点或边缘，通常会出现这种情况。| 
 | **412** | 状态代码带有补充性的错误消息 `"PreconditionFailedException": One of the specified pre-condition is not met`。 此错误表示在读取边缘或顶点与将它在修改后写回存储区这两个操作之间存在开放式并发控制冲突。 此错误通常发生在修改属性后，例如 `g.V('identifier').property('name','value')`。 Gremlin 引擎会读取顶点，修改顶点，然后将其写回。 如果另一个并行运行的遍历尝试写入同一顶点或边缘，该顶点或边缘将收到此错误。 应用程序应再次向服务器提交遍历。| 
-| **429** | 请求受到了限制，应在达到 x-ms-retry-after-ms 中的值后重试 | 
+| **429** | 请求受到了限制，应在达到 x-ms-retry-after-ms 中的值后重试| 
 | **500** | 包含 `"NotFoundException: Entity with the specified id does not exist in the system."` 的错误消息指示已使用相同的名称重新创建数据库和/或集合。 当更改传播并使不同 Cosmos DB 组件中的缓存失效时，此错误将在 5 分钟内消失。 若要避免此问题，请每次都使用唯一的数据库名称和集合名称。| 
 | **1000** | 当服务器成功分析了消息但无法执行时，将返回此状态代码。 这通常表示查询存在问题。| 
 | **1001** | 当服务器完成遍历执行但无法将响应序列化回到客户端时，将返回此代码。 当遍历生成太大或不符合 TinkerPop 协议规范的复杂结果时，可能会发生此错误。 应用程序在遇到此错误时应简化遍历。 | 
-| **1003** | 当遍历超过允许的内存限制时，将返回 `"Query exceeded memory limit. Bytes Consumed: XXX, Max: YYY"`。 每个遍历的内存限制为 **2 GB** 。| 
+| **1003** | 当遍历超过允许的内存限制时，将返回 `"Query exceeded memory limit. Bytes Consumed: XXX, Max: YYY"`。 每个遍历的内存限制为 **2 GB**。| 
 | **1004** | 此状态代码表示图形请求格式不正确。 如果请求反序列化失败、将非值类型反序列化为值类型，或请求了不受支持的 Gremlin 操作，则请求的格式可能不正确。 应用程序不应重试该请求，因为该请求不会成功。 | 
 | **1007** | 通常，此状态代码会连同错误消息 `"Could not process request. Underlying connection has been closed."` 一起返回。 如果客户端驱动程序尝试使用服务器正在关闭的连接，则可能会发生这种情况。 应用程序应在不同的连接上重试遍历。
 | **1008** | Cosmos DB Gremlin 服务器可以终止连接以重新平衡群集中的流量。 客户端驱动程序应处理这种情况，并仅使用活动的连接将请求发送到服务器。 客户端驱动程序偶尔检测不到该连接已关闭。 当应用程序遇到错误 `"Connection is too busy. Please retry after sometime or open more connections."` 时，应在另一个连接上重试遍历。
+| **1009** | 此操作未在分配的时间内完成，并已由服务器取消。 通过在每个遍历点上筛选顶点或边缘来缩小搜索范围，优化遍历以快速运行。 请求超时默认值为 **60 秒**。 |
 
 ## <a name="samples"></a>示例
 

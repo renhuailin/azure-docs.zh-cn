@@ -8,12 +8,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a4f7de0cacb17087e346123f53dad45ae1de357
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81759284"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602612"
 ---
 # <a name="prepay-for-azure-software-plans"></a>为 Azure 软件计划预付
 
@@ -32,7 +32,7 @@ ms.locfileid: "81759284"
 填写必填字段。 任何与所购买内容的属性相匹配的 SUSE Linux VM 或 RedHat VM 均可获得折扣。 实际获得折扣的部署数取决于所选范围和数量。
 3. 选择一个订阅。 它用于为计划付费。
 订阅支付方法将收取预订的前期成本。 订阅类型必须是企业协议 (产品/服务： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 或使用即用即付定价 (产品/服务定价的个人协议： MS-BC-OP-NT-AZR-Ms-azr-0003p 或 bc-op-nt-azr-0023P) 。
-    - 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。
+    - 对于企业订阅，将从注册的 Azure 预付款 (之前称为货币承诺) 余额或按超额支付收费。
     - 对于使用即用即付定价的单个订阅，将对订阅的信用卡或发票付款方式收取费用。
 4. 选择一个范围。 范围可以包含一个订阅或多个订阅（共享范围）。
     - 单个订阅-计划折扣应用于订阅中的匹配使用情况。

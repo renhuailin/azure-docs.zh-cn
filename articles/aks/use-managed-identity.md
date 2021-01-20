@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用托管标识
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 948a189e1c6e03efca046b6d43dddcaf3d141957
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fe11170b1cdf18aacf832f4c8171bfc082339395
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607280"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599610"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用托管标识
 
@@ -36,7 +36,7 @@ AKS 对内置服务和加载项使用多个托管标识。
 
 | 标识                       | 名称    | 使用案例 | 默认权限 | 自带标识
 |----------------------------|-----------|----------|
-| 控制面板 | 不可见 | 由 AKS 控制平面组件用于管理群集资源，包括入口负载均衡器和 AKS 托管的公共 Ip，以及群集自动缩放程序操作 | 节点资源组的参与者角色 | 受支持
+| 控制面板 | 不可见 | 由 AKS 控制平面组件用于管理群集资源，包括入口负载均衡器和 AKS 管理的公共 IP，以及群集自动缩放程序操作 | 节点资源组的参与者角色 | 受支持
 | Kubelet | AKS Cluster Name-agentpool | 向 Azure 容器注册表 (ACR) 进行身份验证 | NA（对于 kubernetes v1.15+） | 目前不支持
 | 加载项 | AzureNPM | 无需标识 | 不可用 | 否
 | 加载项 | AzureCNI 网络监视 | 无需标识 | 不可用 | 否
@@ -131,7 +131,7 @@ az feature register --namespace Microsoft.ContainerService -n UserAssignedIdenti
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
-> 系统分配的标识或用户分配的标识更新为托管标识后，请 `az nodepool upgrade --node-image-only` 在节点上执行，以完成对托管标识的更新。
+> 系统分配的标识或用户分配的标识更新为托管标识后，请 `az aks nodepool upgrade --node-image-only` 在节点上执行，以完成对托管标识的更新。
 
 ## <a name="bring-your-own-control-plane-mi"></a>自带控制平面 MI
 使用自定义控制平面标识，可以在创建群集之前将访问权限授予现有标识。 此功能启用了方案，例如，将自定义 VNET 或 outboundType UDR 与预先创建的托管标识结合使用。

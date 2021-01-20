@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 43bf70d66c42bc0ecd5e26e4cc724456bd4bf84e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f51b46efcaf9be4f51e96b038b93562d0e3eae0b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896916"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601151"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支持的浏览器
 
@@ -36,7 +36,7 @@ Azure Maps Web SDK 支持以下桌面浏览器：
 - Microsoft Edge (当前版本和以前版本) 
 - Google Chrome (当前版本和以前版本) 
 - Mozilla Firefox (当前版本和以前版本) 
-- Apple Safari (Mac OS X)  (当前版本和以前版本) 
+- Apple Safari (macOS X)  (当前版本和以前版本) 
 
 另请参阅本文后面的 [面向旧版浏览器](#Target-Legacy-Browsers) 。
 
@@ -63,14 +63,15 @@ Node.js 中还支持以下 Web SDK 模块：
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>定位旧版浏览器
 
-你可能想要面向不支持 WebGL 的旧版浏览器，或仅限对其的支持。 在这种情况下，我们建议你结合使用 Azure Maps 服务和开源地图控件，如 [Leaflet](https://leafletjs.com/)。 以下是一个示例：
+你可能想要面向不支持 WebGL 的旧版浏览器，或仅限对其的支持。 在这种情况下，我们建议你结合使用 Azure Maps 服务和开源地图控件，如 [Leaflet](https://leafletjs.com/)。 下面是使用开源 [Azure Maps Leaflet 插件](https://github.com/azure-samples/azure-maps-leaflet)的示例。
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps + Leaflet" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 " <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + Azure Maps Leaflet</a> " (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io'>CodePen</a>。
+请参阅 CodePen 上的 " <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + Azure Maps Leaflet</a> " (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io'></a>。
 </iframe>
 
+可在 [此处](https://azuremapscodesamples.azurewebsites.net/?search=leaflet)找到使用 Leaflet 中 Azure Maps 的其他代码示例。
 
 ## <a name="next-steps"></a>后续步骤
 

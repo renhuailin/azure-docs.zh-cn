@@ -2,20 +2,20 @@
 title: 使用共享访问签名进行 Azure 服务总线访问控制
 description: 根据如何使用共享访问签名进行服务总线访问控制，并详细介绍如何使用 Azure 服务总线进行 SAS 授权。
 ms.topic: article
-ms.date: 11/03/2020
+ms.date: 01/19/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f71320613682f7d4b9f3b706845e68f581b3dc10
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 6bdc167c437a79d609db25a2e3c48b71e0a748b2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339404"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598826"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
 
-共享访问签名  (SAS) 是服务总线消息传送的主要安全机制。 本文介绍 SAS、其工作原理以及如何以平台无关的方式使用它们。
+本文讨论 (SAS) 的 *共享访问签名* 、其工作原理以及如何以平台无关的方式使用它们。
 
-SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名空间或消息传递实体（中继、队列或主题）中配置这些保护。 授权规则具有与特定权限关联的名称，并包含一个加密密钥对。 通过服务总线 SDK 或者在自己的代码中使用规则名称和密钥可以生成 SAS 令牌。 然后，客户端可将令牌传递给服务总线，以证明请求的操作获得授权。
+SAS 可以根据授权规则来保护对服务总线的访问。 它们是在命名空间上配置的，或者是在消息实体 (队列或主题) 上配置的。 授权规则具有与特定权限关联的名称，并包含一个加密密钥对。 通过服务总线 SDK 或者在自己的代码中使用规则名称和密钥可以生成 SAS 令牌。 然后，客户端可将令牌传递给服务总线，以证明请求的操作获得授权。
 
 > [!NOTE]
 > Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授予对服务总线命名空间及其实体的访问权限。 使用 Azure AD 返回的 OAuth 2.0 令牌授权用户或应用程序可提供比共享访问签名 (SAS) 更高的安全性和易用性。 使用 Azure AD，不需要在代码中存储令牌，也不需要冒潜在的安全漏洞风险。
@@ -36,12 +36,12 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 
 每个服务总线命名空间和服务总线实体都有一个由规则构成的共享访问授权策略。 命名空间级别的策略应用到该命名空间中的所有实体，不管这些实体各自的策略配置如何。
 
-对于每个授权策略规则，需要确定三个信息片段： **名称** 、 **范围** 和 **权限** 。 **名称** 只是该范围内的唯一名称。 范围也很简单：它是相关资源的 URI。 对于服务总线命名空间，范围是完全限定的域名 (FQDN)，例如 `https://<yournamespace>.servicebus.windows.net/`。
+对于每个授权策略规则，需要确定三个信息片段：**名称**、**范围** 和 **权限**。 **名称** 只是该范围内的唯一名称。 范围也很简单：它是相关资源的 URI。 对于服务总线命名空间，范围是完全限定的域名 (FQDN)，例如 `https://<yournamespace>.servicebus.windows.net/`。
 
 策略规则授予的权限可以是以下各项的组合：
 
 * “发送”- 授予向实体发送消息的权限
-* “侦听”- 授予侦听（中继）或接收（队列、订阅）和所有相关消息处理的权限
+* "侦听"-授予接收 (队列、订阅) 和所有相关消息处理的权限
 * “管理”- 授予管理命名空间的拓扑的权限，包括创建和删除实体
 
 “管理”权限包括“发送”和“接收”权限。
@@ -55,16 +55,16 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 ## <a name="best-practices-when-using-sas"></a>使用 SAS 的最佳实践
 在应用程序中使用共享访问签名时，需要知道以下两个可能的风险：
 
-- 如果 SAS 泄露，则获取它的任何人都可以使用它，这可能会使事件中心资源遭到入侵。
+- 如果 SAS 泄露，则获取它的任何人都可以使用它，这可能会损害你的服务总线资源。
 - 如果提供给客户端应用程序的 SAS 到期并且应用程序无法从服务检索新 SAS，则可能会影响该应用程序的功能。
 
 下面这些针对使用共享访问签名的建议可帮助降低这些风险：
 
-- **如果需要，让客户端自动续订 sas** ：客户端应在过期之前续订 sas，以便在提供 SAS 的服务不可用时允许重试的时间。 如果 SAS 旨在用于少量即时的短期操作，这些操作应在到期时间内完成，则上述做法可能是不必要的，因为不应续订 SAS。 但是，如果客户端定期通过 SAS 发出请求，则有效期可能就会起作用。 需要考虑的主要方面就是在以下两者间进行权衡：对短期 SAS 的需求（如前文所述）以及确保客户端尽早请求续订（以免在成功续订前因 SAS 到期而中断）。
-- **请注意 sas 开始时间** ：如果将 sas 的开始时间设置为 " **现在** "，则由于时钟偏差 (当前时间中与不同计算机) 的差异，因此，在前几分钟可能会间歇地观察到失败。 通常，将开始时间至少设置为 15 分钟前。 或者根本不设置，这会使它在所有情况下都立即生效。 同样的原则也适用于过期时间。 请记住，对于任何请求，在任一方向你可能会观察到最多 15 分钟的时钟偏移。 
-- **特定于要访问的资源** ：最佳安全方案是向用户提供所需的最小权限。 如果某一用户仅需要对单个实体的读取访问权限，则向该用户授予对该单个实体的读取访问权限，而不要授予针对所有实体的读取/写入/删除访问权限。 如果 SAS 泄露，这也有助于降低损失，因为攻击者手中掌握的 SAS 的权限较为有限。
-- **请勿始终使用 sas** ：有时，与事件中心的特定操作相关的风险会超出 SAS 的优点。 对于此类操作，应创建一个中间层服务，该服务在执行业务规则验证、身份验证和审核后写入事件中心。
-- **始终使用 https** ：始终使用 https 创建或分发 SAS。 如果某一 SAS 通过 HTTP 传递并且被截取，则执行中间人攻击的攻击者将能够读取 SAS、并使用它，就像目标用户本可执行的操作一样，这可能会暴露敏感数据或者使恶意用户能够损坏数据。
+- **如果需要，让客户端自动续订 SAS**：客户端应在到期时间之前很久就续订 SAS，这样，即使提供 SAS 的服务不可用，客户端也有时间重试。 如果 SAS 旨在用于少量即时的短期操作，这些操作应在到期时间内完成，则上述做法可能是不必要的，因为不应续订 SAS。 但是，如果客户端定期通过 SAS 发出请求，则有效期可能就会起作用。 需要考虑的主要方面就是在以下两者间进行权衡：对短期 SAS 的需求（如前文所述）以及确保客户端尽早请求续订（以免在成功续订前因 SAS 到期而中断）。
+- **要注意 SAS 开始时间**：如果将 SAS 的开始时间设置为“现在”，则由于时钟偏移（根据不同计算机，当前时间的差异），在前几分钟将会间歇地观察到失败。 通常，将开始时间至少设置为 15 分钟前。 或者根本不设置，这会使它在所有情况下都立即生效。 同样的原则也适用于过期时间。 请记住，对于任何请求，在任一方向你可能会观察到最多 15 分钟的时钟偏移。 
+- **对要访问的资源要具体**：一种安全性最佳做法是向用户提供所需最小权限。 如果某一用户仅需要对单个实体的读取访问权限，则向该用户授予对该单个实体的读取访问权限，而不要授予针对所有实体的读取/写入/删除访问权限。 如果 SAS 泄露，这也有助于降低损失，因为攻击者手中掌握的 SAS 的权限较为有限。
+- **请勿始终使用 sas**：有时，与事件中心的特定操作相关的风险会超出 SAS 的优点。 对于此类操作，应创建一个中间层服务，该服务在执行业务规则验证、身份验证和审核后写入事件中心。
+- **始终使用 HTTPs**：始终使用 HTTPs 创建或分发 SAS。 如果某一 SAS 通过 HTTP 传递并且被截取，则执行中间人攻击的攻击者将能够读取 SAS、并使用它，就像目标用户本可执行的操作一样，这可能会暴露敏感数据或者使恶意用户能够损坏数据。
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>共享访问签名身份验证的配置
 
@@ -82,18 +82,34 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`** - 令牌即时过期时间。 一个整数，反映自 1970 年 1 月 1 日令牌过期的时期 `00:00:00 UTC`（UNIX 时期）以来的秒数。
-* **`skn`** - 授权规则的名称。
-* **`sr`** - 所访问资源的 URI。
-* **`sig`** - 签名。
+- `se` - 令牌即时过期时间。 一个整数，反映自 1970 年 1 月 1 日令牌过期的时期 `00:00:00 UTC`（UNIX 时期）以来的秒数。
+- `skn` - 授权规则的名称。
+- `sr` -要访问的资源的 URL 编码 URI。
+- `sig` -URL 编码的 HMACSHA256 签名。 哈希计算类似于以下伪代码，并返回原始二进制输出的 base64。
 
-`signature-string` 是基于资源 URI 计算的 SHA-256 哈希（上一部分中所述的 **范围** ），以及令牌即时过期时间的字符串表示形式，以 LF 分隔。
+    ```
+    urlencode(base64(hmacsha256(urlencode('https://<yournamespace>.servicebus.windows.net/') + "\n" + '<expiry instant>', '<signing key>')))
+    ```
 
-哈希计算方式如以下虚拟代码所示，返回 256 位/32 字节哈希值。
+下面是用于生成 SAS 令牌的示例 c # 代码：
 
+```csharp
+private static string createToken(string resourceUri, string keyName, string key)
+{
+    TimeSpan sinceEpoch = DateTime.UtcNow - new DateTime(1970, 1, 1);
+    var week = 60 * 60 * 24 * 7;
+    var expiry = Convert.ToString((int)sinceEpoch.TotalSeconds + week);
+    string stringToSign = HttpUtility.UrlEncode(resourceUri) + "\n" + expiry;
+    HMACSHA256 hmac = new HMACSHA256(Encoding.UTF8.GetBytes(key));
+    var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
+    var sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), expiry, keyName);
+    return sasToken;
+}
 ```
-SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
-```
+
+> [!IMPORTANT]
+> 有关使用不同编程语言生成 SAS 令牌的示例，请参阅[生成 SAS 令牌](/rest/api/eventhub/generate-sas-token)。 
+
 
 令牌包含非哈希值，使接收方可以使用相同的参数重新计算哈希，并验证颁发者是否拥有有效的签名密钥。
 
@@ -105,8 +121,6 @@ URI 必须采用[百分比编码格式](/dotnet/api/system.web.httputility.urlen
 
 SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的所有资源有效。
 
-> [!NOTE]
-> 有关使用不同编程语言生成 SAS 令牌的示例，请参阅[生成 SAS 令牌](/rest/api/eventhub/generate-sas-token)。 
 
 ## <a name="regenerating-keys"></a>重新生成密钥
 
@@ -174,7 +188,7 @@ sendClient.Send(helloMessage);
 
 此外，可以直接使用令牌提供程序来颁发要传递给其他客户端的令牌。
 
-连接字符串可以包含规则名称 ( *SharedAccessKeyName* ) 和规则密钥 ( *SharedAccessKey* ) 或以前颁发的令牌 ( *SharedAccessSignature* )。 如果传递给接受连接字符串的任何构造函数或工厂方法中包含这些参数，则系统会自动创建并填充 SAS 令牌提供程序。
+连接字符串可以包含规则名称 (*SharedAccessKeyName*) 和规则密钥 (*SharedAccessKey*) 或以前颁发的令牌 (*SharedAccessSignature*)。 如果传递给接受连接字符串的任何构造函数或工厂方法中包含这些参数，则系统会自动创建并填充 SAS 令牌提供程序。
 
 请注意，要使用服务总线中继的 SAS 授权，可以使用服务总线命名空间上配置的 SAS 密钥。 如果在命名空间上显式创建中继（[NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 与 [RelayDescription](/dotnet/api/microsoft.servicebus.messaging.relaydescription)）对象，可以只为该中继设置 SAS 规则。 要使用服务总线订阅的 SAS 授权，可以使用服务总线命名空间或主题上配置的 SAS 密钥。
 
@@ -261,7 +275,7 @@ private bool PutCbsToken(Connection connection, string sasToken)
 
 接下来，发布者将创建两个 AMQP 链接来发送 SAS 令牌和接收来自服务的回复（此令牌验证结果）。
 
-AMQP 消息包含一组属性，比简单消息包含更多信息。 SAS 令牌是消息的正文（使用其构造函数）。 “ReplyTo”属性设置为用于在接收方链接上接收验证结果的节点名称（可以根据需要更改其名称，该节点将由服务动态创建）。 服务使用最后三个应用程序/自定义属性来指示它需要执行哪种类型的操作。 如 CBS 草案规范中所述，这些属性必须是 **操作名称** ("put-token")、 **令牌类型** （在本例中为 `servicebus.windows.net:sastoken`），以及要应用令牌的 **受众的“名称”** （整个实体）。
+AMQP 消息包含一组属性，比简单消息包含更多信息。 SAS 令牌是消息的正文（使用其构造函数）。 “ReplyTo”属性设置为用于在接收方链接上接收验证结果的节点名称（可以根据需要更改其名称，该节点将由服务动态创建）。 服务使用最后三个应用程序/自定义属性来指示它需要执行哪种类型的操作。 如 CBS 草案规范中所述，这些属性必须是 **操作名称** ("put-token")、**令牌类型**（在本例中为 `servicebus.windows.net:sastoken`），以及要应用令牌的 **受众的“名称”** （整个实体）。
 
 在发送方链接上发送 SAS 令牌后，发布者必须在接收方链接上读取回复。 回复是一个简单的 AMQP 消息，其中包含一个名为 **"status-code"** 的应用程序属性，该属性可以包含与 HTTP 状态代码相同的值。
 

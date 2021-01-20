@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 01/18/2021
-ms.openlocfilehash: f802292d9723179b36d5291993bd4e07487fe6a8
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567393"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600991"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>排查虚拟机证书问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "98567393"
 1. 选择你的 Linux VM。
 1. 请参阅 " **诊断设置**"。
 1. 通过更新 **存储帐户** 启用基本矩阵。
-1. 选择“保存”。
+1. 选择“保存”。 
 
    ![显示如何启用来宾级别监视的屏幕截图。](./media/create-vm/vm-certification-issues-solutions-1.png)
 
@@ -126,7 +126,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Linux 测试用例。 说明中说明了测试验证。
 
-|方案|测试用例|描述|
+|方案|测试用例|说明|
 |---|---|---|
 |1|Bash 历史记录|在创建 VM 映像之前，应清除 Bash 历史记录文件。|
 |2|Linux 代理版本|应安装 Azure Linux 代理2.2.41 或更高版本。|
@@ -156,7 +156,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Windows 测试用例，以及测试验证的说明：
 
-|方案 |测试事例|描述|
+|方案 |测试事例|说明|
 |---|---|---|
 |1|操作系统体系结构|Azure 仅支持64位操作系统。|
 |2|用户帐户依赖项|应用程序的执行不应依赖于管理员帐户。|
@@ -321,7 +321,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 |VHD 名称无效|检查 VHD 名称中是否存在任何特殊字符，如百分号 `%` 或引号 `"` 。|通过删除特殊字符来重命名 VHD 文件。|
 |
 
-## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>第 1 MB (2048 扇区，512字节的每个扇区) 分区
+## <a name="first-partition-starts-at-1-mb-2048-sectors"></a>第一个分区从 1 MB 开始 (2048 扇区) 
 
 如果要 [构建自己的映像](azure-vm-create-using-own-image.md)，请确保第一个2048扇区 (1 MB) 操作系统磁盘为空。 否则，你的发布将失败。 此要求仅适用于 OS 磁盘)  (不是数据磁盘。 如果要 [从已批准的基准](azure-vm-create-using-approved-base.md)构建映像，则可以跳过这一要求。
 

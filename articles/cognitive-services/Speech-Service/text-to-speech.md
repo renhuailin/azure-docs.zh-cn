@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文本转语音
-ms.openlocfilehash: af0c9338cb9661402c3a76bab55f34b01304c7b6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 54db794d4e9cf0cd2a049a865f2e7bb52698a4bd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024511"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599531"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
@@ -31,15 +31,15 @@ ms.locfileid: "95024511"
 
 ## <a name="core-features"></a>核心功能
 
-* 语音合成-使用 [语音 SDK](./get-started-text-to-speech.md) 或 [REST API](rest-text-to-speech.md) 通过标准、神经或自定义语音转换文本到语音转换。
+* 语音合成 - 使用[语音 SDK](./get-started-text-to-speech.md) 或 [REST API](rest-text-to-speech.md) 通过标准语音、神经语音或自定义语音将文本转换为语音。
 
-* 长音频的异步合成 - 使用[长音频 API](long-audio-api.md) 异步合成 10 分钟以上的文本转语音文件（例如有声书籍或讲座）。 不同于使用语音 SDK 或语音转文本 REST API 执行的合成，响应不会实时返回。 预期会异步发送请求，以轮询的方式获取响应，并会下载合成音频（在服务提供该音频的情况下）。 仅支持自定义的神经声音。
+* 长音频的异步合成 - 使用[长音频 API](long-audio-api.md) 异步合成 10 分钟以上的文本转语音文件（例如有声书籍或讲座）。 不同于使用语音 SDK 或语音转文本 REST API 执行的合成，响应不会实时返回。 预期会异步发送请求，以轮询的方式获取响应，并会下载合成音频（在服务提供该音频的情况下）。 仅支持自定义神经语音。
 
 * 标准语音 - 使用统计参数合成和/或串联合成技术创建。 这些语音的辨识度很高，且听起来非常自然。 你可以轻松地让应用程序使用多种语音选项以 45 种以上的语言讲述。 这些声音提供较高的发音准确度，支持缩写、缩略词扩展、日期/时间解释、多音字等。 有关标准语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
 * 神经语音 - 深层神经网络用于克服有关口语中的重读和语调的传统语音合成限制。 韵律预测和语音合成以同步方式执行，使输出听起来更流畅且自然。 使用神经语音可使得与聊天机器人和语音助手的交流更加自然且富有吸引力、将数字文本（如电子书）转换为有声读物以及增强车载导航系统。 神经语音可以生成类人的自然韵律和清晰的字词发音，当你在与 AI 系统交互时，它可以显著减轻听力疲劳。 有关神经语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
-* 语音合成标记语言 (SSML) - 一种基于 XML 的标记语言，用于自定义语音转文本输出。 使用 SSML，你可以调整音调、添加暂停、改进发音、提高或降低语速、增加或减少音量，以及将多个语音赋予单个文档。 请参阅 [SSML](speech-synthesis-markup.md)。
+* 使用 SSML 语音合成标记语言 (SSML) 使用 ssml 样式调整说话样式，它是一种基于 XML 的标记语言，用于自定义语音到文本输出。 使用 SSML，你可以调整音调、添加暂停、改进发音、提高或降低语速、增加或减少音量，以及将多个语音赋予单个文档。 请参阅 [如何](speech-synthesis-markup.md) 调整讲述样式。
 
 ## <a name="get-started"></a>入门
 
@@ -54,7 +54,7 @@ GitHub 上提供了文本转语音的示例代码。 这些示例涵盖了最流
 
 ## <a name="customization"></a>自定义
 
-除了标准和神经声音外，还可以创建和微调产品或品牌独有的自定义语音。 只需准备好几个音频文件和关联的听录内容即可完全入门。 有关详细信息，请参阅 [自定义语音入门](how-to-custom-voice.md)
+除了标准语音和神经语音外，还可以创建和微调产品或品牌独有的自定义语音。 只需准备好几个音频文件和关联的听录内容即可完全入门。 有关详细信息，请参阅[自定义语音入门](how-to-custom-voice.md)
 
 ## <a name="pricing-note"></a>定价说明
 

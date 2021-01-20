@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/09/2020
-ms.openlocfilehash: ab772043c681684836e3c488419584d94dd0b45a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c7a0be6f1d402cc994532ab4bc5a5d0ea39bc8b7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220637"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599047"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>规划和管理 Azure Synapse Analytics 的成本
 
@@ -48,9 +48,9 @@ Azure Synapse 在 Azure 基础结构上运行，当你部署新资源时，会�
 
 - Data Lake Storage Gen2
 
-### <a name="using-monetary-credit-with-azure-synapse"></a>使用 Azure Synapse 的货币信用额度 
+### <a name="using-azure-prepayment-credit-with-azure-synapse"></a>使用 azure Synapse 的 Azure 预付款信用额度 
 
-可以通过 EA 货币承诺信用额度支付 Azure Synapse 费用。 但是，不能使用 EA 货币承诺信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
+你可以通过 Azure 预付款 (之前称为货币承诺) 信用额度来支付 Azure Synapse 费用。 但是，不能使用 Azure 预付款信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>在 Azure 门户中查看估计成本
 

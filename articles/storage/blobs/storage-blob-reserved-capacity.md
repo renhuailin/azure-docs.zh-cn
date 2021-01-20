@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1c957330fbd54660367fa350d6985929f0bbd3d1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 6fd791495602846b95e2dd3e99423db5505f5307
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95531383"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600909"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>借助预留容量优化 Blob 存储的成本
 
@@ -82,12 +82,12 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
    |字段  |说明  |
    |---------|---------|
    |**范围**   |  指示可以使用与预订关联的计费权益的订阅数。 它还控制将预留应用于特定订阅的方式。 <br/><br/> 如果选择 " **共享**"，则预订折扣将应用到计费上下文中任何订阅的 Azure 存储容量。 计费上下文基于 Azure 的注册方式。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围包含由帐户管理员创建的即用即付费率的所有订阅。  <br/><br/>  如果选择 " **单个订阅**"，则预订折扣将应用到所选订阅中的 Azure 存储容量。 <br/><br/> 如果选择 " **单个资源组**"，则预订折扣将应用到所选订阅中的 Azure 存储容量和该订阅内的所选资源组。 <br/><br/> 你可以在购买预订后更改保留范围。  |
-   |**订阅**  | 用于支付 Azure 存储预留的订阅。 所选订阅的付款方式用于对成本进行收费。 订阅必须是以下类型之一： <br/><br/>  企业协议 (产品/服务： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) ：对于企业订阅，将从注册的货币承诺余额中扣除费用，或者将费用作为超额支付。 <br/><br/> 使用即用即付费率的单个订阅 (产品/服务： BC-OP-NT-AZR-Ms-azr-0003p 或 BC-OP-NT-AZR-0023P) ：对于使用即用即付费率的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。    |
+   |**订阅**  | 用于支付 Azure 存储预留的订阅。 所选订阅的付款方式用于对成本进行收费。 订阅必须是以下类型之一： <br/><br/>  企业协议 (产品/服务： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) ：对于企业订阅，将从注册的 Azure 预付款中扣除费用， (之前称为货币承诺) 余额，或者作为超额费用收费。 <br/><br/> 使用即用即付费率的单个订阅 (产品/服务： BC-OP-NT-AZR-Ms-azr-0003p 或 BC-OP-NT-AZR-0023P) ：对于使用即用即付费率的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。    |
    | **区域** | 预订有效的区域。 |
    | **访问层** | 其中的预订生效的访问层。 选项包括 " *热*"、" *冷*" 或 " *存档*"。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](storage-blob-storage-tiers.md)。 |
    | **冗余** | 预订的冗余选项。 选项包括 *LRS*、 *ZRS*、 *GRS*、 *GZRS*、 *ra-GRS* 和 *ra-GZRS*。 有关冗余选项的详细信息，请参阅 [Azure 存储冗余](../common/storage-redundancy.md)。 |
    | **计费频率** | 指示帐户按预订计费的频率。 选项包括 " *每月* " 或 " *提前*"。 |
-   | **大小** | 要预留的容量量。 |
+   | **Size** | 要预留的容量量。 |
    |**条款**  | 一年或三年。   |
 
 1. 选择预订参数后，Azure 门户会显示成本。 该门户还显示 "即用即付" 计费的折扣百分比。

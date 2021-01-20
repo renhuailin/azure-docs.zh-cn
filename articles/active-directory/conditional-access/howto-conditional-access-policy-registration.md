@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61f655d459592022a2e34b87adc50e3d49b03dc9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0e99f7466bd3b7ed5517157ca3fa45e7c3241217
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935761"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599756"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>条件访问：保护安全信息注册
 
@@ -34,10 +34,12 @@ ms.locfileid: "97935761"
    > [!WARNING]
    > 必须为[合并注册](../authentication/howto-registration-mfa-sspr-combined.md)启用用户。
 
+   1. 在“排除”下选择“用户和组”，然后选择组织的紧急访问帐户或不受限帐户。 
+   1. 选择“完成”。
 1. 在“云应用或操作”下，选择“用户操作”，选中“注册安全信息”。
 1. 在“条件” > “位置”下。
    1. 配置“是”。
-   1. 包括任何位置。
+   1. 包括：“任何位置”。
    1. 排除所有受信任的位置。
    1. 在“位置”边栏选项卡上选择“完成”。
    1. 在“条件”边栏选项卡中，单击“完成”。

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 81d9a6bcbd910a60e1f659e430bbe527eb3077c6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 5be02ff698dac02d702e47f8929c6f8ddf2adbb7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251737"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602556"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>计划和管理 Azure 机器学习成本
 
@@ -70,7 +70,7 @@ Azure 机器学习在 Azure 基础结构上运行，该基础结构在部署新�
 
 * Azure 容器注册表
 * Azure 块 Blob 存储
-* 密钥保管库
+* Key Vault
 * Application Insights
 
 若要删除工作区以及这些从属资源，请使用 SDK：
@@ -81,9 +81,9 @@ ws.delete(delete_dependent_resources=True)
 
 如果在工作区中创建 Azure Kubernetes Service (AKS) ，或将任何计算资源附加到工作区，则必须在 [Azure 门户](https://portal.azure.com)中单独删除这些资源。
 
-### <a name="using-monetary-credit-with-azure-machine-learning"></a>使用货币信用额度 Azure 机器学习
+### <a name="using-azure-prepayment-credit-with-azure-machine-learning"></a>使用 Azure 预付款信用额度 Azure 机器学习
 
-你可以通过 EA 货币承诺信用额度支付 Azure 机器学习费用。 但是，不能使用 EA 货币承诺信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
+你可以通过 Azure 预付款支付 Azure 机器学习费用 (之前称为货币承诺) 信用额度。 但是，不能使用 Azure 预付款来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
 
 
 ## <a name="create-budgets"></a>创建预算

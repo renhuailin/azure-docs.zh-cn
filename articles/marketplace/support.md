@@ -1,18 +1,18 @@
 ---
-title: 在合作伙伴中心获取对商业 marketplace 门户的支持
-description: 了解合作伙伴中心的支持选项，包括如何提供支持请求。
+title: 在合作伙伴中心获取对商业市场计划的支持
+description: 了解合作伙伴中心内适用于商业市场计划的支持选项，其中包括如何发出支持请求。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 01/14/2020
-ms.openlocfilehash: 8979a94ee63ef50c0a3abacd5ab3515226200131
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.date: 01/19/2020
+ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183432"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602601"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>支持合作伙伴中心的商业市场计划
 
@@ -22,60 +22,43 @@ Microsoft 支持各种产品和服务。 找到正确的支持团队对于确保
 - 如果你是发布者，并且检测到在 Azure 上运行的应用程序存在安全问题，请参阅 [如何记录安全事件支持票证](/azure/security/fundamentals/event-support-ticket)。 发布者必须第一时间报告 Azure 市场软件和服务产品相关的可疑安全事件，包括安全事件和安全漏洞。
 - 如果你是发布者，并且有与你的应用或服务相关的问题，请查看以下支持选项。
 
-## <a name="support-options-for-publishers"></a>发布服务器的支持选项
+## <a name="get-help-or-open-a-support-ticket"></a>获取帮助或打开支持票证
 
-1. 使用工作帐户登录到 [合作伙伴中心的商用 marketplace 计划](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) (如果你尚未这样做，你将需要 [创建一个合作伙伴中心帐户](partner-center-portal/create-account.md)。
+1. 使用你的工作帐户登录。 如果尚未执行此操作，则需要 [创建合作伙伴中心帐户](partner-center-portal/create-account.md)。
 
-2. 在页面右侧的上部菜单中，选择 " **支持** " 图标。
+1. 在页面右上角的菜单中，选择 " **支持** " 图标。 " **帮助和支持** " 窗格出现在页面的右侧。
 
-3. " **帮助和支持** " 窗格将显示在页面的右侧。
+1. 若要获得商业应用商店帮助，请选择 " **商用 marketplace**"。
 
    ![支持下拉菜单](./media/support/commercial-marketplace-support-pane.png)
 
-    或中转到 **主页** 窗格，并选择 " **帮助和支持**"。
+1. 在 " **问题摘要** " 框中，输入问题的简要说明。
 
-   ![主页帮助和支持](./media/support/homepage-help-support.png)
+1. 在 " **问题类型** " 框中，执行下列操作之一：
 
-4. 选择 **[文档](../index.yml)** 以查看问题和资源的综合答案。
+    - **选项 1**：输入关键字，如： Marketplace、Azure 应用、SaaS 产品/服务、帐户管理、潜在客户管理、部署问题、付出或共同销售的产品/服务迁移。 然后从显示的建议列表中选择问题类型。
 
-5. 选择 " **[Marketplace 合作伙伴社区论坛](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** "，通过利用其他 Microsoft 发布者的知识来回答您的问题。
+    - **选项 2**：选择 "**类别**" 列表中的 "**浏览" 主题**，然后选择 "**商用 Marketplace**"。 然后选择适当的 **主题** 和 **子** 主题。
 
-6. 选择 **[其他帮助](https://aka.ms/marketplacepublishersupport)** 以打开 **新的支持请求** 票证。  
+1. 找到所选主题后，请选择 " **查看解决方案**"。
 
-## <a name="how-to-open-a-support-ticket"></a>如何开具支持票证
+    ![后续步骤](./media/support/next-step.png)
 
-现在，可以在 " **帮助和支持** " 屏幕上打开支持票证。
+显示以下选项：
 
-![帮助和支持](./media/support/help-and-support.png)
+- 若要选择不同的主题，请单击 " **选择另一个问题**"。
+- 若要帮助解决此问题，请查看推荐的步骤和文档（如果有）。
 
->[!Note]
->如果你登录到合作伙伴中心，你将获得更好的支持体验。
+    ![建议的解决方案](./media/support/recommended-solutions.png)
 
-**选项1：** 输入如下关键字： Marketplace、Azure 应用、SaaS 产品/服务、帐户管理、潜在客户管理、部署问题、付出，等等。
-
-**选项2：** 浏览主题-> 选择 **类别** = 商业市场-> 选择相应的 **主题** ，然后选择 " **副标题**"。
-
-找到所选主题后，请选择 " **查看解决方案**"。
-
-![后续步骤](./media/support/next-step.png)
-
-以下选项将变为可用：
-
-- 若要选择其他主题，请在 " **所选问题**" 下选择其他主题链接。
-- 查看此问题的说明（如果有）。  这是上面所示的 **建议步骤**。
-- 查看 **建议的步骤**（如果有）。
-- 查看 **建议的文档**（如果有）。
-
-![建议的解决方案](./media/support/recommended-solutions.png)
-
-如果在 **建议解决方案** 中找不到答案，请选择 " **提供问题详细信息**"。 填写所有必填字段以加速解决过程，然后选择 " **提交**"。
+如果在自助帮助中找不到答案，请选择 " **提供问题详细信息**"。 填写所有必填字段以加速解决过程，然后选择 " **提交**"。
 
 >[!Note]
->如果你尚未登录到合作伙伴中心，并且该主题要求身份验证，则会要求你登录，然后才能继续。  对于公共主题，无需进行身份验证。
+>如果尚未登录到合作伙伴中心，可能需要先登录，然后才能创建票证。
 
 ## <a name="track-your-existing-support-requests"></a>跟踪你的现有支持请求
 
-若要查看所有打开和关闭的票证，请在左侧导航栏中转到 " **商用 Marketplace** "，然后选择 " **支持**"。
+若要查看打开和关闭的票证，请在左侧导航菜单中，选择 "**商业 Marketplace**  >  **支持**"。
 
 ## <a name="record-issue-details-with-a-har-file"></a>使用 HAR 文件记录问题详细信息
 

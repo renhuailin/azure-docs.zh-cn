@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6f2dfdbb5833b34441b4abba7359ad70c4717d1d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025885"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602149"
 ---
 # <a name="set-up-web-endpoints"></a>设置 Web 终结点
 
@@ -23,7 +23,7 @@ ms.locfileid: "95025885"
 
 - 在自定义命令应用程序中设置 Web 终结点
 - 在自定义命令应用程序中调用 Web 终结点
-- 接收 Web 终结点响应 
+- 接收 Web 终结点响应
 - 将 Web 终结点响应集成到自定义 JSON 有效负载，从 C# UWP SPEECH SDK 客户端应用程序中发送和直观呈现该响应
 
 ## <a name="prerequisites"></a>先决条件
@@ -35,7 +35,7 @@ ms.locfileid: "95025885"
 
 ## <a name="setup-web-endpoints"></a>设置 Web 终结点
 
-1. 打开之前创建的自定义命令应用程序。 
+1. 打开之前创建的自定义命令应用程序。
 1. 转到“Web 终结点”，单击“新建 Web 终结点”。
 
    > [!div class="mx-imgBorder"]
@@ -61,7 +61,7 @@ ms.locfileid: "95025885"
 1. 转到“TurnOnOff”命令，选择完成规则下的“ConfirmationResponse”，然后选择“添加操作”  。
 1. 在“新建操作类型”下，选择“调用 Web 终结点” 
 1. 在“编辑操作 - 终结点”中，选择“UpdateDeviceState”，这是我们创建的 Web 终结点 。  
-1. 在“配置”中，使用以下值： 
+1. 在“配置”中，使用以下值：
    > [!div class="mx-imgBorder"]
    > ![调用 Web 终结点操作参数](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
 
@@ -75,16 +75,16 @@ ms.locfileid: "95025885"
     > - 建议的查询参数只是示例终结点需要而已
 
 1. 在“成功时 - 要执行的操作”中，选择“发送语音响应” 。
-    
+
     在“简单编辑器”中，输入 `{SubjectDevice} is {OnOff}`。
-   
+
    > [!div class="mx-imgBorder"]
    > ![显示 "成功时-执行操作" 屏幕的屏幕截图。](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | 设置 | 建议的值 | 说明 |
    | ------- | --------------- | ----------- |
    | 要执行的操作 | 发送语音响应 | 对 Web 终结点的请求成功时要执行的操作 |
-   
+
    > [!NOTE]
    > - 还可以使用 `{YourWebEndpointName.FieldName}` 直接访问 http 响应中的字段。 例如：`{UpdateDeviceState.TV}`
 
@@ -101,7 +101,7 @@ ms.locfileid: "95025885"
 
    > [!NOTE]
    > - `{WebEndpointErrorMessage}` 是可选项。 如果不希望公开任何错误消息，则可以随意将其删除。
-   > - 在示例终结点中，我们发送了带有详细错误消息的 http 响应，以返回常见错误（例如缺少标头参数）的错误消息。 
+   > - 在示例终结点中，我们发送了带有详细错误消息的 http 响应，以返回常见错误（例如缺少标头参数）的错误消息。
 
 ### <a name="try-it-out-in-test-portal"></a>在测试门户中试用
 - 成功时响应\
@@ -119,7 +119,7 @@ ms.locfileid: "95025885"
 但是，在大多数情况下，只有当调用 Web 终结点成功时才希望将活动发送到客户端应用程序。 本例中，这即为设备状态成功更新的时候。
 
 1. 删除之前添加的“向客户端发送活动”操作。
-1. 编辑调用 Web 终结点： 
+1. 编辑调用 Web 终结点：
     1. 在“配置”中，确保“查询参数”是 `item={SubjectDevice}&&value={OnOff}` 
     1. 在“成功时”中，更改“要执行的操作”，以向客户端发送活动  
     1. 将下面的 JSON 复制到“活动内容”
@@ -133,7 +133,6 @@ ms.locfileid: "95025885"
       }
     }
    ```
-   
 现在，只有当对 Web 终结点的请求成功时才向客户端发送活动。
 
 ### <a name="create-visuals-for-syncing-device-state"></a>创建同步设备状态的视觉对象
@@ -147,7 +146,7 @@ ms.locfileid: "95025885"
         .........../>
 ```
 
-### <a name="sync-device-state"></a>同步设备状态 
+### <a name="sync-device-state"></a>同步设备状态
 
 在 `MainPage.xaml.cs` 中，添加引用 `using Windows.Web.Http;`。 将以下代码添加到 `MainPage` 类。 此方法会向示例终结点发送 GET 请求，并提取应用的当前设备状态。 请务必将 `<your_app_name>` 更改为自定义命令 Web 终结点的标头中所使用的内容
 
@@ -157,7 +156,7 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
     //Create an HTTP client object
     var httpClient = new HttpClient();
 
-    //Add a user-agent header to the GET request. 
+    //Add a user-agent header to the GET request.
     var your_app_name = "<your-app-name>";
 
     Uri endpoint = new Uri("https://webendpointexample.azurewebsites.net/api/DeviceState");

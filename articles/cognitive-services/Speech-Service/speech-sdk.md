@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 9356cbb6eb210d6745d90e8ad001917e73592cd3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 597a7c3954912a3a86b5db9f92ba75e8aaee63f6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96021974"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601813"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -58,7 +58,7 @@ ms.locfileid: "96021974"
 
 ### <a name="voice-assistants"></a>语音助手
 
-使用语音 SDK 的[语音助手](voice-assistants.md)使开发人员可以为其应用程序和体验创建自然、人为的对话接口。 语音助手服务在设备和助手之间提供快速、可靠的交互。 实现使用 Bot 框架的直接线路语音通道或集成自定义命令 (预览) 服务完成任务。 此外，语音助手可以使用在 [自定义语音门户](https://aka.ms/customvoice) 中创建的自定义语音来添加独特的语音输出体验。
+使用语音 SDK 的[语音助手](voice-assistants.md)使开发人员可以为其应用程序和体验创建自然、人为的对话接口。 语音助手服务在设备和助手之间提供快速、可靠的交互。 实现使用 Bot 框架的直接线路语音通道或集成的自定义命令服务完成任务。 此外，语音助手可以使用在 [自定义语音门户](https://aka.ms/customvoice) 中创建的自定义语音来添加独特的语音输出体验。
 
 **语音助手** 适用于以下平台：
 

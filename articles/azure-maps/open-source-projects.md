@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0f0d94dbc7b2c720faa1da41a88e3c3313dac377
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: df82e76fa2e5a9ea70c447411beafb8a2df9b036
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680761"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601600"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps 社区-开源项目
 
@@ -65,6 +65,12 @@ ms.locfileid: "97680761"
 | [Azure Maps .NET UWP IoT 远程控制](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | 这是一个示例应用程序，演示如何使用 Azure Maps 和 IoT 中心服务构建远程控制的映射。 |
 | [使用 Azure Maps 实现 IoT 空间分析](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | 跟踪和捕获时空中发生的相关事件是一个常见的 IoT 应用场景。 |
 
+**第三方地图控制插件**
+
+| 项目名称 | 说明 |
+|-|-|
+| [Azure Maps Leaflet 插件](https://github.com/azure-samples/azure-maps-leaflet) | [Leaflet](https://leafletjs.com/) JavaScript 插件，可轻松地覆盖[Azure Maps 磁贴服务](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)中的图块层。 |
+ 
 **工具和资源**
 
 | 项目名称 | 说明 |
@@ -90,4 +96,4 @@ ms.locfileid: "97680761"
 查找更多开源 Azure Maps 项目。
 
 > [!div class="nextstepaction"]
-> [代码示例](/samples/browse/?products=azure-maps)
+> [示例代码](/samples/browse/?products=azure-maps)

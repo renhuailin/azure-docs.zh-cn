@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: c5f8be87e7ee95e1deff12cce09204b5fe8a0bb7
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 2cc37cc66c06dc9e6997c6a031a9c60ad050c01a
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694188"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601763"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>使用自定义命令创建语音助手
 
-本快速入门介绍如何使用 Speech Studio 创建和测试基本的自定义命令应用程序。 你还可以从 Windows 客户端应用程序访问此应用程序。 通过 **自定义命令**，可以轻松地构建经过优化的丰富语音命令应用程序，以实现语音首次交互体验。 它提供统一的创作体验、自动托管模型和相对较低的复杂性，从而帮助你集中精力为语音命令方案构建最佳解决方案。
+本快速入门介绍如何使用 Speech Studio 创建和测试基本的自定义命令应用程序。 你还可以从 Windows 客户端应用程序访问此应用程序。
 
 ## <a name="region-availability"></a>区域可用性
 目前，自定义命令支持在以下区域创建的语音订阅：
@@ -104,7 +104,7 @@ ms.locfileid: "97694188"
 
 1. 在左窗格中选择 " **设置** "，然后在中间窗格中选择 "  **LUIS 资源** "。
 1. 选择一个预测资源，或选择 " **创建新资源**" 创建一个。
-1. 选择“保存”。
+1. 选择“保存”。 
     
     > [!div class="mx-imgBorder"]
     > ![设置 LUIS 资源](media/custom-commands/set-luis-resources.png)

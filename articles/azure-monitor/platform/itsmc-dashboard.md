@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/15/2021
-ms.openlocfilehash: 9291689b362b5cbe651a72220196dd30b40745cf
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 9a43318ed935dd1e71b6da75c9f078fbebbd29eb
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540515"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599013"
 ---
 # <a name="error-investigation-using-the-dashboard"></a>使用仪表板进行错误调查
 
@@ -53,6 +53,9 @@ ms.locfileid: "98540515"
     ![显示受影响的计算机的屏幕截图。](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
 3. 连接器状态：下图和下表包含有关连接器状态的消息。 通过单击表中的行，可以获取有关连接器状态的消息的更多详细信息。
     表中包含的行数有限，若要查看所有列表，可单击 "查看全部"。
+
+    可以在表中查看有关消息的详细信息- [此处](itsmc-dashboard-errors.md)。
+
     ![显示连接器状态的屏幕截图。](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
 4. 警报规则：表包含有关检测到的警报规则数的信息。
     通过单击表中的行，可以获取有关检测到的规则的更多详细信息。

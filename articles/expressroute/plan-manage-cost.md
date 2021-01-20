@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 72068e5b0af35adce4188a8922cb2415d1f5f71f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 9b74f6e82e39955554c13f6ce3490bc3c22c2b98
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250720"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600453"
 ---
 # <a name="plan-and-manage-costs-for-azure-expressroute"></a>规划和管理 Azure ExpressRoute 的成本
 
@@ -76,9 +76,9 @@ ExpressRoute 有三个不同的线路 SKU： [*本地*](./expressroute-faqs.md#e
 
 如果在删除 ExpressRoute 线路后有 ExpressRoute 网关，则仍需支付费用，直到将其删除。
 
-### <a name="using-monetary-credit"></a>使用货币信用额度
+### <a name="using-azure-prepayment-credit"></a>使用 Azure 预付款信用额度
 
-可以通过 EA 货币承诺信用额度支付 ExpressRoute 费用。 但是，不能使用 EA 货币承诺信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
+你可以通过 Azure 预付款支付 ExpressRoute 费用 (以前称为货币承诺) 信用额度。 但是，不能使用 Azure 预付款信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
 
 ## <a name="monitor-costs"></a>监视成本
 

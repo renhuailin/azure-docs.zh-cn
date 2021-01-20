@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 14e53efb7be9eef3ca388e6524e5ffd678671cd0
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251635"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601310"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>规划和管理 Azure Blob 存储的成本
 
@@ -41,7 +41,7 @@ ms.locfileid: "98251635"
 4. 修改剩余的选项，查看其对估计值的影响。
 
    > [!NOTE]
-   > 你可以通过 Azure 企业协议货币承诺信用额度支付 Azure Blob 存储费用。 但是，不能使用货币承诺信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
+   > 你可以通过 Azure 预付款 (之前称为货币承诺) 信用额度来支付 Azure Blob 存储费用。 但是，不能使用 Azure 预付款信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
 
 ## <a name="optimize-costs"></a>优化成本
 

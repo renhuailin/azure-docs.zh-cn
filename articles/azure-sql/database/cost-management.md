@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: sql-database
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: 19531b9d0019fb000efe5aeb2d1b9fed34ce23f1
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 8d36166a67e683dd7f15eef18d589562b39ba568
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253310"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600620"
 ---
 # <a name="plan-and-manage-costs-for-azure-sql-database"></a>规划和管理 Azure SQL 数据库的成本
 
@@ -67,7 +67,7 @@ Azure SQL Database 在 Azure 基础结构上运行，在部署新资源时，会
 
 ### <a name="using-monetary-credit-with-azure-sql-database"></a>使用 Azure SQL 数据库的货币信用额度
 
-可以按 EA 货币承诺信用额度支付 Azure SQL Database 费用。 但是，不能使用 EA 货币承诺信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
+你可以通过 Azure 预付款 (之前称为货币承诺) 信用额度，为 Azure SQL 数据库收费付费。 但是，不能使用 Azure 预付款信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>在 Azure 门户中查看估计成本
 

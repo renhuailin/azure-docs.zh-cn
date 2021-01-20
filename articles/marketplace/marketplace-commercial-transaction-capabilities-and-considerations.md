@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: d602687ea623b90ea5dcae4ece09a1ccc438ea57
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 5a2a7abf0227812826428557b86c4468f7693c82
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822380"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600385"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商业市场交易功能
 
@@ -160,7 +160,7 @@ BYOL 的成本构成如下：
 
 **信用卡和每月发票** - 客户还可以使用信用卡和每月发票进行付款。 在这种情况下，将像企业协议方案一样对软件许可证进行计费：采用逐项列出费用的形式并与任何特定于 Azure 的使用费分开。
 
-**免费信用额度和货币承诺** - 某些客户选择通过企业协议中的货币承诺向 Azure 预付款，或者已向他们提供免费信用额度用于 Azure。 尽管可以这些信用额度可用于支付 Azure 使用情况，但它们不能用于支付发布者软件许可证费用。
+**免费信用额度和 Azure 预付款** –某些客户选择使用 azure 预付款预付 azure (之前称为货币承诺) 在企业协议中，或者提供免费信用额度用于 Azure。 尽管可以这些信用额度可用于支付 Azure 使用情况，但它们不能用于支付发布者软件许可证费用。
 
 **计费和集合** –发布者软件许可证计费使用客户选择的发票方法，并遵循发票时间线。 将对没有企业协议的客户就市场软件许可证按月计费。 通过每季度显示的发票对具有企业协议的客户按月计费。
 

@@ -13,12 +13,12 @@ ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: fd836afd6b8574be71ad22d26d67f49971834a88
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6616b0573019703f287d3be521569f5953aeb032
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064719"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600283"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>使用 MSAL.NET 初始化客户端应用程序
 本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 初始化公共客户端和机密客户端应用程序。  若要详细了解客户端应用程序类型和应用程序配置选项，请阅读[概述](msal-client-applications.md)。
@@ -166,3 +166,12 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .WithB2CAuthority("https://fabrikamb2c.b2clogin.com/tfp/{tenant}/{PolicySignInSignUp}")
         .Build();
 ```
+
+## <a name="next-steps"></a>后续步骤
+
+初始化客户端应用程序后，下一项任务是添加对用户登录和/或授权 API 访问的支持。
+
+我们的应用程序方案文档提供了有关在用户中签名和获取访问令牌以代表该用户访问 API 的指南：
+
+- [用于登录用户的 Web 应用：登录和注销](scenario-web-app-sign-user-sign-in.md)
+- [用于调用 web Api 的 web 应用：获取令牌](scenario-web-app-call-api-acquire-token.md)

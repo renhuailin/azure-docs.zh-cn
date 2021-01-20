@@ -4,16 +4,16 @@ description: 在对象 (Blob) 存储中创建存储帐户和容器。 随后，�
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 39b5a812c5f9b8e148b5180569af110c72e2c75b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b3bb8736eb7a8e24f47812fc4feecbf96628dfb6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544592"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599806"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>快速入门：使用 Java v8 SDK 管理 blob
 
@@ -201,5 +201,5 @@ sourceFile.deleteOnExit();
 本文介绍如何使用 Java 在本地磁盘和 Azure Blob 存储之间传输文件。 若要详细了解 Java 的用法，请转到 GitHub 源代码存储库。
 
 > [!div class="nextstepaction"]
-> [Java API 参考](/java/api/overview/azure/storage?view=azure-java-legacy)
+> [Java API 参考](/java/api/overview/azure/storage?view=azure-java-legacy&preserve-view=true)
 > [适用于 Java 的代码示例](../common/storage-samples-java.md)

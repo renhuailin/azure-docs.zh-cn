@@ -11,16 +11,16 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 8e749e5f6ea6bcf76a1b4f143bce03ceb41cbb07
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a781900534156e455c125dffe3b1334820fdf4d5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573286"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599062"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自动化机器学习中配置数据拆分和交叉验证
 
-在本文中，你将了解用于配置培训/验证数据拆分和交叉验证的不同选项，这些选项用于配置自动机器学习、自动 ML、试验。
+在本文中，你将了解用于配置训练数据和验证数据拆分的不同选项，以及用于自动化机器学习、自动 ML 试验、试验的交叉验证设置。
 
 在 Azure 机器学习中，当你使用自动 ML 来构建多个 ML 模型时，每个子运行都需要通过计算该模型的质量指标来验证相关的模型，例如准确性或 AUC 加权。 这些指标的计算方法是将每个模型所做的预测与验证数据中过去观察到的实际标签进行比较。 [了解有关如何根据验证类型计算指标的详细信息](#metric-calculation-for-cross-validation-in-machine-learning)。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "98573286"
 对于低代码或无代码体验，请参阅[在 Azure 机器学习工作室中创建自动化机器学习试验](how-to-use-automated-ml-for-ml-models.md)。 
 
 > [!NOTE]
-> 工作室当前支持训练/验证数据拆分和交叉验证选项，但它不支持为验证集指定单独的数据文件。 
+> Studio 当前支持定型和验证数据拆分以及交叉验证选项，但它不支持为验证集指定单独的数据文件。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "98573286"
 
 * 了解定型/验证数据拆分和交叉验证作为机器学习的概念。 有关概要说明，请参阅：
 
-    * [关于机器学习中的训练、验证和测试集](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
+    * [关于机器学习中的培训、验证和测试数据](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
     * [了解机器学习中的交叉验证](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
 
@@ -62,7 +62,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-如果未显式指定 `validation_data` 或 `n_cross_validation` 参数，则 AutoML 将根据提供的单个数据集 `training_data` 中的行数来应用默认技术：
+如果未显式指定 `validation_data` 或 `n_cross_validation` 参数，则自动 ML 会根据单个数据集中提供的行数应用默认方法 `training_data` ：
 
 |训练数据大小| 验证技术 |
 |---|-----|
@@ -71,7 +71,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="provide-validation-data"></a>提供验证数据
 
-在这种情况下，你可以从单个数据文件开始，将其拆分为训练集和验证集，也可以为验证集提供单独的数据文件。 无论采用哪种方式，`AutoMLConfig` 对象中的 `validation_data` 参数都将分配要用作验证集的数据。 此参数仅接受 [Azure 机器学习数据集](how-to-create-register-datasets.md) 或 pandas 数据帧格式的数据集。   
+在这种情况下，您可以从单个数据文件开始，将其拆分为定型数据和验证数据集，也可以为验证集提供单独的数据文件。 无论采用哪种方式，`AutoMLConfig` 对象中的 `validation_data` 参数都将分配要用作验证集的数据。 此参数仅接受 [Azure 机器学习数据集](how-to-create-register-datasets.md) 或 pandas 数据帧格式的数据集。   
 
 下面的代码示例显式定义了要将 `dataset` 中所提供数据的哪部分用于训练和验证。
 

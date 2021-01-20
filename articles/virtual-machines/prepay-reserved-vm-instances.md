@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: e513bdaa7efa2f1d0f18ff3548d9abfdc5e085d7
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: ffc9c8f3143824dd099aaad3e743398eea4e0f43
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007392"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602538"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances"></a>利用 Azure 保留 VM 实例节省成本
 
@@ -103,9 +103,9 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 如果你有 EA 协议，则可以使用 " **添加更多" 选项** 快速添加其他实例。 选项不适用于其他订阅类型。
 
 
-| 字段      | 描述|
+| 字段      | 说明|
 |------------|--------------|
-|订阅|用于支付预订费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须是企业协议 (产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 或 Microsoft 客户协议，或者使用即用即付费率 (产品/服务，产品/服务，) 。 从货币承诺余额中扣除费用（如果可用）或作为超额收取费用。 对于使用即用即付费率的订阅，将对订阅上的信用卡或发票付款方式收取费用。|    
+|订阅|用于支付预订费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须是企业协议 (产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 或 Microsoft 客户协议，或者使用即用即付费率 (产品/服务，产品/服务，) 。 从 Azure 预付款 (之前称为货币承诺) 余额（如果可用）或按超额支付收费。 对于使用即用即付费率的订阅，将对订阅上的信用卡或发票付款方式收取费用。|    
 |范围       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>**单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。</li><li>**单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。</li><li>**共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文为 "注册"。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>|
 |区域    |预订涵盖的 Azure 区域。|    
 |VM 大小     |VM 实例的大小。|

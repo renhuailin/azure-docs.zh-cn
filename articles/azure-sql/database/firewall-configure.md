@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 9fe0c79a2f65b27b35aa5029d0a53de62ef08078
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: e85c97df29bbbcc5d446d788cc190f3c90f24024
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251652"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602221"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL 数据库和 Azure Synapse IP 防火墙规则
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -43,6 +43,9 @@ ms.locfileid: "98251652"
 
 - 只有订阅所有者或订阅参与者才能使用门户或 PowerShell。
 - 若要使用 Transact-SQL，必须以服务器级别主体登录名或 Azure Active Directory 管理员的身份连接到 master 数据库。 （必须先由拥有 Azure 级权限的用户创建服务器级 IP 防火墙规则。）
+
+> [!NOTE]
+> 默认情况下，在从 Azure 门户创建新的逻辑 SQL server 的过程中，" **允许 Azure 服务和资源访问此服务器** " 设置设置为 " **否**"。
 
 ### <a name="database-level-ip-firewall-rules"></a>数据库级 IP 防火墙规则
 

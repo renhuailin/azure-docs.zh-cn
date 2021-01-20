@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 70aecc2613fbe21d34e36f9487d7ba383e140bc8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217356"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598490"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 
@@ -36,7 +36,7 @@ ms.locfileid: "98217356"
 
 这些设置以加密的存储。 若要了解详细信息，请参阅 [应用程序设置安全性](security-concepts.md#application-settings)。
 
-# <a name="portal"></a>[门户](#tab/portal)
+# <a name="portal"></a>[Portal](#tab/portal)
 
 “应用程序设置”选项卡维护函数应用使用的设置。 你必须选择 " **显示值** " 才能在门户中查看值。 若要在门户中添加设置，请选择“新建应用程序设置”并添加新的键值对。
 
@@ -84,7 +84,7 @@ Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOUR
 
 ## <a name="hosting-plan-type"></a>宿主计划类型
 
-创建 function app 时，还会创建应用服务托管计划，应用将在其中运行。 一个计划可以有一个或多个 function app。 函数的功能、缩放和定价取决于计划的类型。 若要了解详细信息，请参阅 [Azure Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)。
+创建 function app 时，还会创建一个运行应用的托管计划。 一个计划可以有一个或多个 function app。 函数的功能、缩放和定价取决于计划的类型。 若要了解详细信息，请参阅 [Azure Functions 宿主选项](functions-scale.md)。
 
 你可以从 Azure 门户或使用 Azure CLI 或 Azure PowerShell Api 确定 function app 使用的计划类型。 
 
@@ -96,7 +96,7 @@ Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOUR
 | [高级](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
 | [专用（应用服务）](dedicated-plan.md) | 各种 | 各种 |
 
-# <a name="portal"></a>[门户](#tab/portal)
+# <a name="portal"></a>[Portal](#tab/portal)
 
 若要确定 function app 使用的计划类型，请参阅 [Azure 门户](https://portal.azure.com)中函数应用的 "**概览**" 选项卡上的 "**应用服务计划**"。 若要查看定价层，请选择“应用服务计划”的名称，然后从左侧窗格中选择“属性” 。
 
@@ -131,6 +131,75 @@ $PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionAp
 
 ---
 
+## <a name="plan-migration"></a>计划迁移
+
+您可以使用 Azure CLI 命令在消耗计划和 Windows 上的高级计划之间迁移函数应用。 具体的命令取决于迁移的方向。 当前不支持直接迁移到专用 (应用服务) 计划。
+
+Linux 不支持这种迁移。
+
+### <a name="consumption-to-premium"></a>对高级版的消耗
+
+使用以下过程从消耗计划迁移到 Windows 上的高级计划：
+
+1. 运行以下命令，在与现有 function App 相同的区域和资源组中创建新的应用服务计划 (弹性高级) 。  
+
+    ```azurecli-interactive
+    az functionapp plan create --name <NEW_PREMIUM_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP> --location <REGION> --sku EP1
+    ```
+
+1. 运行以下命令，将现有函数应用迁移到新的高级计划
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_PREMIUM_PLAN>
+    ```
+
+1. 如果不再需要以前的消耗函数应用计划，请在确认已成功迁移到新计划后，删除原始 function app 计划。 运行以下命令，获取资源组中所有消耗计划的列表。
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='Y'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+    您可以安全地删除包含零个站点的计划，这是从迁移的站点。
+
+1. 运行以下命令以删除迁移的消耗计划。
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <CONSUMPTION_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+### <a name="premium-to-consumption"></a>高级到消耗
+
+使用以下过程从高级计划迁移到 Windows 上的消耗计划：
+
+1. 运行以下命令，在与现有 function app 相同的区域和资源组中创建新的 function app (消耗) 。 此命令还会创建函数应用运行的新消耗计划。
+
+    ```azurecli-interactive
+    az functionapp create --resource-group <MY_RESOURCE_GROUP> --name <NEW_CONSUMPTION_APP_NAME> --consumption-plan-location <REGION> --runtime dotnet --functions-version 3 --storage-account <STORAGE_NAME>
+    ```
+
+1. 运行以下命令，将现有函数应用迁移到新的消耗计划。
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_CONSUMPTION_PLAN>
+    ```
+
+1. 删除你在步骤1中创建的函数应用，因为你只需要为运行现有函数应用而创建的计划。
+
+    ```azurecli-interactive
+    az functionapp delete --name <NEW_CONSUMPTION_APP_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+1. 如果不再需要以前的高级函数应用计划，请在确认已成功迁移到新应用计划后，将其删除。 请注意，如果未删除该计划，则仍将按高级计划收费。 运行以下命令，获取资源组中所有高级计划的列表。
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='EP'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+1. 运行以下命令以删除迁移的高级计划。
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <PREMIUM_PLAN> --resource-group <MY_RESOURCE_GROUP>
+    ```
 
 ## <a name="platform-features"></a>平台功能
 

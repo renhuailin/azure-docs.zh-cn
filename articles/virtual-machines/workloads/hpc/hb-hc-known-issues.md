@@ -5,19 +5,24 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.topic: article
-ms.date: 10/19/2020
+ms.date: 1/19/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f4e93deb40799cbcc9c86aff454e250f1ab71712
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 777c78047ec9bf195c5e0c823aa0edfb287b3998
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963328"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598310"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H 系列和 N 系列 VM 的已知问题
 
 本文提供了使用 [H 系列](../../sizes-hpc.md) 和 [N 系列](../../sizes-gpu.md) HPC 和 GPU vm 时最常见的问题和解决方案。
+
+## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>HB-ACCT-WC、HC、HBv2 和 NDv2 上的加速网络
+
+[Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) 现已在 RDMA 和支持能力和启用 SR-IOV 的 VM 大小 [hb-acct-wc](../../hb-series.md)、 [HC](../../hc-series.md)、 [HBv2](../../hbv2-series.md) 和 [NDv2](../../ndv2-series.md)上提供。 此功能现在允许在 Azure 以太网网络上跨 (最多 30 Gbps) 和延迟进行增强。 尽管这不同于对不受影响网络的 RDMA 功能，但此功能的某些平台更改可能会影响某些 MPI 实现的行为，而不会影响受影响的作业。 特别是，某些 Vm 上的 "未使用" 接口的名称可能略有不同 (mlx5_1，而不是以前的 mlx5_0) ，并且这可能需要调整 MPI 命令行，尤其是使用 UCX 接口 (通常使用 OpenMPI 和 HPC-X) 时。
+有关此博客文章的详细信息，请访问此 [博客文章](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) ，其中提供了有关如何解决任何观察到的问题的说明。
 
 ## <a name="infiniband-driver-installation-on-n-series-vms"></a>N 系列虚拟机上的未感知驱动程序安装
 

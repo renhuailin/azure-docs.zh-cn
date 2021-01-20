@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 90449a29f58f31827e2a36b5f6c41563e88ac032
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 799ef33e78737bfd2e1c1a1cfa4991f44c8f5ec0
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251346"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599639"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>规划和管理 API 管理的成本
 
@@ -49,7 +49,7 @@ API 管理的成本仅是 Azure 帐单中每月成本的一部分。 尽管本�
 
 ### <a name="using-monetary-credit-with-api-management"></a>使用资金额度和 API 管理
 
-你可以通过 EA 货币承诺信用额度支付 API 管理费用。 但是，不能使用 EA 货币承诺信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
+你可以通过 Azure 预付款 (之前称为货币承诺) 来支付 API 管理费用。 但是，不能使用 Azure 预付款信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
 
 ## <a name="monitor-costs"></a>监视成本
 

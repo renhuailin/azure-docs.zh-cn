@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6c4f23406c97d647002fbb3ab4a3544866303cf4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6f74f973abc33d809624bd8abd5a514a52ccfe70
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051337"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602702"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>连接 Azure 中的函数应用以处理数据
 
@@ -63,24 +63,20 @@ ms.locfileid: "98051337"
 为此，可以在项目中右键选择，并从列表中选择 " _管理 NuGet 包_ "。 然后，在打开的窗口中，选择 " _浏览_ " 选项卡并搜索以下包。 选择 " _安装_ 并 _接受_ 许可协议" 以安装包。
 
 * `Azure.DigitalTwins.Core`
-* `Azure.Identity` 
-
-若要配置 Azure SDK 管道以便正确设置 Azure Functions，还需要以下包。 重复上述过程，以安装所有包。
-
+* `Azure.Identity`
 * `System.Net.Http`
-* `Azure.Core.Pipeline`
+* `Azure.Core`
 
 **选项2。使用 `dotnet` 命令行工具添加包：**
 
 或者，你可以 `dotnet add` 在命令行工具中使用以下命令：
-```cmd/sh
-dotnet add package System.Net.Http
-dotnet add package Azure.Core.Pipeline
-```
 
-然后，再向你的项目添加另外两个依赖项，以使用 Azure 数字孪生。 可以使用以下链接导航到 NuGet 上的包，在那里可以找到控制台命令（包括适用于 .NET CLI 的命令）将每个包的最新版本添加到项目中。
- * [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 这是用于[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的包。
- * [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). 该库提供可帮助进行 Azure 身份验证的工具。
+```cmd/sh
+dotnet add package Azure.DigitalTwins.Core
+dotnet add package Azure.Identity
+dotnet add package System.Net.Http
+dotnet add package Azure.Core
+```
 
 接下来，在 Visual Studio 解决方案资源管理器中，打开 _function.cs_ 文件，其中包含示例代码，并向函数添加以下 _using_ 语句。 
 
@@ -154,7 +150,7 @@ dotnet add package Azure.Core.Pipeline
 ```azurecli-interactive 
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
 ```
-使用以下命令中的 _principalId_ 值将 function app 的标识分配给 Azure 数字孪生实例的 _Azure 数字孪生数据所有者_ 角色。
+在以下命令中使用 principalId 值将函数应用的标识分配给 Azure 数字孪生实例的 Azure 数字孪生数据所有者角色。
 
 ```azurecli-interactive 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"

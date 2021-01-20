@@ -1,5 +1,5 @@
 ---
-title: 从 VM 创建映像（预览版）
+title: 从 VM 创建映像
 description: 了解如何使用 Azure PowerShell，在共享映像库中从 Azure 中的现有 VM 创建映像。
 author: cynthn
 ms.topic: how-to
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3a7ca8236307bbf8a419d2988e1a6dc1e4c40597
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964858"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601657"
 ---
-# <a name="preview-create-an-image-from-a-vm"></a>预览版：从 VM 创建映像
+# <a name="create-an-image-from-a-vm"></a>从 VM 创建映像
 
 如果要使用现有 VM 生成多个相同的 VM，你可以使用该 VM 在共享映像库中通过 Azure PowerShell 创建映像。 还可以使用 [Azure CLI](image-version-vm-cli.md) 从 VM 创建映像。
 

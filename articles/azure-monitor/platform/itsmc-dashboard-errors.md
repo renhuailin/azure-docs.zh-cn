@@ -6,26 +6,26 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 5e12ca3bf626ae212f44fe0378ccb6649738753c
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 7240c1b0f19dc49ab4130c5ee2516dcfefb2e2c2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562840"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602195"
 ---
 # <a name="errors-in-the-connector-status"></a>连接器状态中的错误
 
-在 "连接器状态" 列表中，可以找到可帮助你修复 ITSM 连接器的错误。
+在 "连接器状态" 列表中，可以找到可帮助解决 ITSM 连接器中的问题的错误。
 
 ## <a name="status-common-errors"></a>状态常见错误
 
-在本节中，您可以在 "状态" 列表中找到您可以找到的常见错误以及如何解决此错误：
+在本部分中，可以找到 "连接器状态" 部分中显示的常见错误以及应如何解决此错误：
 
-*  **错误**： "从 ServiceNow 发出意外响应，以及成功状态代码。 响应： {"import_set"： "{import_set_id}"、"staging_table"： "x_mioms_microsoft_oms_incident"、"result"： [{"transform_map"： "OMS 事件"、"表"： "事件"、"状态"： "错误"、"error_message"： "{找不到目标记录 |无效的表 |临时表 "}" 无效
+* **错误**： "从 ServiceNow 发出意外响应，以及成功状态代码。 响应： {"import_set"： "{import_set_id}"、"staging_table"： "x_mioms_microsoft_oms_incident"、"result"： [{"transform_map"： "OMS 事件"、"表"： "事件"、"状态"： "错误"、"error_message"： "{找不到目标记录 |无效的表 |临时表 "}" 无效
 
     **原因**：当以下情况时，ServiceNow 返回了此类错误：
-    * 在 ServiceNow 实例中部署的自定义脚本将导致事件被忽略。
-    * 在 ServiceNow 端修改了 "OMS 集成器应用" 代码本身，例如 onBefore 脚本。
+  * 在 ServiceNow 实例中部署的自定义脚本将导致事件被忽略。
+  * 在 ServiceNow 端修改了 "OMS 集成器应用" 代码本身，例如 onBefore 脚本。
 
     **解决方法**：禁用数据导入路径的所有自定义脚本或代码修改。
 
@@ -43,7 +43,7 @@ ms.locfileid: "98562840"
 
 * **错误**： "ServiceDeskHttpBadRequestException： StatusCode = 429"
 
-    **原因**： ServiceNow 速率限制太低。
+    **原因**： ServiceNow 速率限制太高/低。
 
     **解决方法**：在 ServiceNow 实例中增加或取消速率限制，如 [此处](https://docs.servicenow.com/bundle/london-application-development/page/integrate/inbound-rest/task/investigate-rate-limit-violations.html)所述。
 
@@ -57,14 +57,14 @@ ms.locfileid: "98562840"
 
     **原因**：已删除 ITSM 连接器。
 
-    **解决方法**：已删除 ITSM 连接器，但仍有定义使用 ITSM 的操作。 可以通过2个选项来解决此问题：
+    **解决方法**：已删除 ITSM 连接器，但定义了与之相关联的 ITSM 操作组。 可以通过2个选项来解决此问题：
   * 查找和禁用或删除此类操作
   * [重新配置操作组](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) 以使用现有 ITSM 连接器。
   * [创建新的 ITSM 连接器](./itsmc-definition.md#create-an-itsm-connection) ，并 [重新配置操作组以使用该](itsmc-definition.md#create-itsm-work-items-from-azure-alerts)连接器。
 
 ## <a name="ui-common-errors"></a>UI 常见错误
 
-* **错误**： "出现错误。 无法获取连接详细信息。 "
+* **错误**： "出现错误。 无法获取连接详细信息。 " 当客户定义 ITSM 操作组时，会出现此错误。
 
     **原因**：新创建的 ITSM 连接器尚未完成初始同步。
 

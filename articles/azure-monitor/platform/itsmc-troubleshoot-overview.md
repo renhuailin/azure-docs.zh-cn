@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 14f1056bf761eb7b591d04db34610468058bc255
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 2ffe7c8994d32917a08896c7d25f20d4adf09066
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562839"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601908"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>排查 ITSM 连接器中的问题
 
@@ -53,11 +53,36 @@ ITSM 提供将警报发送到外部票证系统（如 ServiceNow）的选项。
      - 确保已成功部署 web 应用并创建了混合连接。 若要验证是否已成功与本地 Service Manager 计算机建立连接，请按照建立 [混合连接](./itsmc-connections-scsm.md#configure-the-hybrid-connection)的文档中所述，参阅 WEB 应用 URL。  
 
 - 如果 Log Analytics 警报触发但未在 ITSM 产品中创建工作项，如果不创建或链接到工作项的配置项目或其他信息，请参阅以下资源：
-   -  ITSMC：此解决方案显示连接、工作项和计算机等的摘要。 选择具有 **连接器状态** 标签的磁贴。 这样做会使您使用相关查询来 **记录搜索** 。 `LogType_S`有关详细信息，请查看的日志记录 `ERROR` 。
+   -  ITSMC：此解决方案显示连接、工作项和计算机等的 [摘要](itsmc-dashboard.md)。 选择具有 **连接器状态** 标签的磁贴。 这样做会使您使用相关查询来 **记录搜索** 。 `LogType_S`有关详细信息，请查看的日志记录 `ERROR` 。
+   可以在表中查看有关消息的详细信息- [此处](itsmc-dashboard-errors.md)。
    - **日志搜索** 页：使用查询直接查看错误和相关信息 `*ServiceDeskLog_CL*` 。
 
-### <a name="troubleshoot-service-manager-web-app-deployment"></a>Web 应用部署 Service Manager 疑难解答
+## <a name="common-symptoms---how-it-should-be-resolved"></a>常见症状-应如何解决此问题？
 
--   如果你在使用 web 应用部署时遇到问题，请确保你有权在订阅中创建/部署资源。
--   如果在运行 [脚本](itsmc-service-manager-script.md)时，**未将对象引用设置为对象** 错误的实例，请确保在 "**用户配置**" 部分中输入了有效值。
--   如果无法创建服务总线中继命名空间，请确保在订阅中注册所需的资源提供程序。 如果未注册，请从 Azure 门户中手动创建 service bus 中继命名空间。 在 Azure 门户中 [创建混合连接](./itsmc-connections-scsm.md#configure-the-hybrid-connection) 时，还可以创建它。
+下面的列表包含常见问题以及如何解决此问题：
+
+* **症状**：创建了重复的工作项
+
+    **原因**：原因可以是以下两个选项之一：
+    * 为警报定义了多个 ITSM 操作。
+    * 已解决警报。
+
+    **解决方法**：可以有两个解决方案：
+    * 请确保每个警报都有一个 ITSM 操作组。
+    * 解决警报后，ITSM 连接器不支持匹配的工作项状态更新。 将创建新的已解决的工作项。
+* **症状**：未创建工作项
+
+    **原因**：此问题可能有几个原因：
+    * ServiceNow 端的代码修改
+    * 权限配置错误
+    * ServiceNow 速率限制太高/低
+    * 刷新令牌已过期
+    * 已删除 ITSM 连接器
+
+    **解决方法**：可以在 "连接器状态" 部分中查看 [仪表板](itsmc-dashboard.md) 并查看错误。 查看 [常见错误](itsmc-dashboard-errors.md) ，了解如何解决此错误。
+
+* **症状**：无法为操作组创建 ITSM 操作
+
+    **原因**：新创建的 ITSM 连接器尚未完成初始同步。
+
+    **解决方法**：你可以查看 [常见 UI 错误](itsmc-dashboard-errors.md#ui-common-errors) ，并查明如何解决此错误。

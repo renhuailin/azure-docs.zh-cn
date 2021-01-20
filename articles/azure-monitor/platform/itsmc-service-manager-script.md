@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: d620df0b55b024cd5d7c25ea17d9b09c5c5da8ff
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 3d9360b167a246e257d8c0b2ec4cb88f1ae39dcd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722872"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600158"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自动化脚本创建 Service Manager Web 应用
 
@@ -317,6 +317,11 @@ if(!$err)
 }
 ```
 
+## <a name="troubleshoot-service-manager-web-app-deployment"></a>Web 应用部署 Service Manager 疑难解答
+
+-   如果你在使用 web 应用部署时遇到问题，请确保你有权在订阅中创建/部署资源。
+-   如果在运行 [脚本](itsmc-service-manager-script.md)时，**未将对象引用设置为对象** 错误的实例，请确保在 "**用户配置**" 部分中输入了有效值。
+-   如果无法创建服务总线中继命名空间，请确保在订阅中注册所需的资源提供程序。 如果未注册，请从 Azure 门户中手动创建 service bus 中继命名空间。 在 Azure 门户中 [创建混合连接](./itsmc-connections-scsm.md#configure-the-hybrid-connection) 时，还可以创建它。
+
 ## <a name="next-steps"></a>后续步骤
 [配置混合连接](./itsmc-connections-scsm.md#configure-the-hybrid-connection)。
-

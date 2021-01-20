@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 4fe06edbb3e02f23ef56a3e7fff848682e36e3af
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 925a092eb67fa459213a37df0fc6b3f7a1b8a0fb
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251312"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602361"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>规划和管理 Azure 认知服务的成本
 
@@ -60,9 +60,9 @@ ms.locfileid: "98251312"
 - [运行时的 Azure App Service () ](https://azure.microsoft.com/pricing/details/app-service/)
 - [数据) 的 Azure 认知搜索 (](https://azure.microsoft.com/pricing/details/search/)
 
-### <a name="using-monetary-credit-with-cognitive-services"></a>将资金额度用于认知服务
+### <a name="using-azure-prepayment-credit-with-cognitive-services"></a>将 Azure 预付款信用额度用于认知服务
 
-你可以通过你的 EA 货币承诺信用额度支付认知服务费用。 但是，不能使用 EA 货币承诺信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
+你可以通过 Azure 预付款 (之前称为货币承诺) 信用额度来支付认知服务费用。 但是，不能使用 Azure 预付款信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
 
 ## <a name="create-budgets"></a>创建预算
 

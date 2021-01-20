@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d9e26b6388223ae252a5e85e6e9fb9783a3b8429
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628282"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600405"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>如何规划虚拟机产品/服务
 
@@ -73,7 +73,7 @@ VM 产品/服务需要至少一个计划。 计划定义解决方案范围和限
 Vm 完全启用了商务，使用即用即付或自带许可证 (BYOL) 许可模式。 Microsoft 托管商业事务并代你向客户计费。 可获得的好处是能够利用客户与 Microsoft 之间达成的首选付费关系（包括任何企业协议）。 有关详细信息，请参阅 [商业市场事务处理功能](./marketplace-commercial-transaction-capabilities-and-considerations.md)。
 
 > [!NOTE]
-> 与企业协议关联的货币承诺可用于 VM 的 Azure 使用情况，但不能用于你的软件许可费用。
+> Azure 预付款 (之前称为货币承诺的) 与企业协议相关联，可用于 VM 的 Azure 使用情况，而不是针对你的软件许可费用。
 
 ### <a name="licensing-options"></a>授权选项
 

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 35232f95bc18432db05775807d95f23ceab66aea
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 09148e65e446d723fbfe7a54602db59ee0739f83
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333760"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599354"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的关键字
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -107,6 +107,73 @@ FROM f
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
+
+## <a name="like"></a>LIKE
+
+返回一个布尔值，具体取决于特定字符串是否与指定的模式匹配。 模式可以包含常规字符和通配符。 您可以使用 `LIKE` 关键字或 [RegexMatch](sql-query-regexmatch.md) 系统函数编写逻辑上等效的查询。 无论选择哪一种，都将看到相同的索引利用率。 因此， `LIKE` 如果您更喜欢其语法比正则表达式更喜欢，则应使用。
+
+> [!NOTE]
+> 由于 `LIKE` 可以利用索引，因此应该为要使用比较的属性 [创建范围索引](indexing-policy.md) `LIKE` 。
+
+您可以将下列通配符用于 LIKE：
+
+| 通配符 | 描述                                                  | 示例                                     |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| %                    | 零个或多个字符的任意字符串                      | 其中 c. 说明（如 "%，% PS%"）      |
+| _ (下划线)      | 任何单个字符                                       | 其中，如 "% SO_PS%" 的描述      |
+| [ ]                  | 指定范围内的任何单个字符 ( [a-f] ) 或设置 ( [abcdef] ) 。 | 其中，如 "% SO [t-z] PS%" 的描述  |
+| [^]                  | 不在指定范围内的任何单个字符 ( [^ a-f] ) 或 ( [^ abcdef] ) 设置为 [^]。 | 其中，如 "% SO [^ abc] PS%" 的描述 |
+
+
+### <a name="using-like-with-the--wildcard-character"></a>使用带 % 通配符的 LIKE
+
+`%`字符与零个或多个字符的任何字符串匹配。 例如， `%` 在模式的开头和结尾处放置一个，下面的查询将返回包含以下说明的所有项 `fruit` ：
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "%fruit%"
+```
+
+如果只在 `%` 模式开头使用字符，则只会返回带有以开头的说明的项 `fruit` ：
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "fruit%"
+```
+
+
+### <a name="using-not-like"></a>使用 NOT LIKE
+
+下面的示例返回所有项，其说明不包含 `fruit` ：
+
+```sql
+SELECT *
+FROM c
+WHERE c.description NOT LIKE "%fruit%"
+```
+
+### <a name="using-the-escape-clause"></a>使用 escape 子句
+
+您可以使用 ESCAPE 子句搜索包含一个或多个通配符的模式。 例如，如果要搜索包含字符串的说明 `20-30%` ，则不需要将解释 `%` 为通配符。
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE '%20-30!%%' ESCAPE '!'
+```
+
+### <a name="using-wildcard-characters-as-literals"></a>使用通配符作为文本
+
+可以将通配符括在括号中，以便将它们视为文本字符。 将通配符放在方括号中时，将删除所有特殊属性。 下面是一些示例：
+
+| 模式           | 含义 |
+| ----------------- | ------- |
+| 如 "20-30 [%]" | 20-30%  |
+| 如 "[_] n"     | _n      |
+| 如 "[[]"    | [       |
+| 如 "]"        | ]       |
 
 ## <a name="in"></a>IN
 

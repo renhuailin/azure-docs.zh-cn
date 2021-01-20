@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 4703a76ff0a0b55a438f9f0d164cd7f2d3242a02
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ffc5bafca305086b0c524c76eb91b8aec2e2655d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842016"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602448"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -81,7 +81,7 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 
 如果组织使用实施直通身份验证或联合身份验证的混合标识解决方案，应该启用密码哈希同步，原因包括以下两点：
 
-* Azure AD 管理系统中的[凭据已泄漏的用户](../../active-directory/identity-protection/overview-identity-protection.md)报告会警告用户名和密码对已在“黑暗网络”中透露。 日后遭到攻击的第三方站点上出现的网络钓鱼、恶意软件和密码重用，导致大量的密码泄漏。 Microsoft 会检测其中的许多泄漏凭据，如果它们与你组织中的凭据匹配，则会告诉你 – 但前提是已[启用密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)！
+* Azure AD 管理系统中的[凭据已泄漏的用户](../../active-directory/identity-protection/overview-identity-protection.md)报告会警告用户名和密码对已在“黑暗网络”中透露。 日后遭到攻击的第三方站点上出现的网络钓鱼、恶意软件和密码重用，导致大量的密码泄漏。 Microsoft 发现其中许多泄露的凭据，并在此报表中通知你，如果它们与你组织中的凭据匹配–但仅当你 [启用了密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) 或具有仅限云的标识时才适用！
 * 如果发生本地中断 (例如，在勒索软件攻击) ，可以 [使用密码哈希同步切换到使用云身份验证](../../active-directory/hybrid/choose-ad-authn.md)。利用此备份身份验证方法，你可以继续访问配置为 Azure Active Directory 身份验证的应用，包括 Microsoft 365。 在这种情况下，解决本地服务中断之前，IT 人员无需采用个人电子邮件帐户来共享数据。
 
 详细了解[密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)的工作原理。

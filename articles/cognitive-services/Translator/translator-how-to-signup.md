@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6773c6b29ecfd8354c54a6214cfe0b4050edcd38
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88244306"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602642"
 ---
 # <a name="how-to-sign-up-for-translator"></a>如何注册翻译器
 
@@ -41,7 +41,7 @@ ms.locfileid: "88244306"
 注册翻译器时，将获得你的订阅所特有的个性化访问密钥。 每次调用翻译器时都需要此密钥。
 
 1. 通过先选择相应的订阅检索身份验证密钥。
-1. 在订阅详细信息的“资源管理”部分中选择“密钥” 。
+1. 在订阅详细信息的 "**资源管理**" 部分中选择 "**密钥和终结点**"。
 1. 复制订阅所列出的任一密钥。
 
 ## <a name="learn-test-and-get-support"></a>了解、测试和获取支持
