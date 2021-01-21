@@ -3,17 +3,19 @@ title: 将流从电源自动执行导出到 Azure 逻辑应用
 description: 通过导出为 Azure 资源管理器模板，将流从电源自动迁移到 Azure 逻辑应用
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/20/2021
+ms.openlocfilehash: 2192ae5f3de551cb8ff2b6c36e233804c3c56bf1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014408"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633241"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>从 Power Automate 导出流并将其部署到 Azure 逻辑应用
+
+> 对于10月2020日后创建的流，不能再从电源自动导出并将其部署到 Azure 逻辑应用。
 
 若要扩展和扩展流的功能，可以将该流从 [电源自动](https://flow.microsoft.com) 迁移到 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。 可以将流导出为逻辑应用的 Azure 资源管理器模板，将该逻辑应用模板部署到 Azure 资源组，然后在逻辑应用设计器中打开该逻辑应用。
 
@@ -24,7 +26,7 @@ ms.locfileid: "96014408"
 >
 > * 若要找出哪些逻辑应用连接器没有电源自动执行等效功能，请参阅 [逻辑应用连接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -82,7 +84,7 @@ ms.locfileid: "96014408"
 
    1. 完成后，请查看有关创建必要的 Azure 资源的 **条款和条件** ，并相应地计费 azure 订阅。
 
-   1. 准备就绪后，选择 **"我同意上述条款和条件"**  >  **Purchase**。
+   1. 准备就绪后，选择 **"我同意上述条款和条件"**  >  。
 
       Azure 会将模板作为逻辑应用部署到指定的资源组。
 

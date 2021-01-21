@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165784"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632574"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a> (预览版的遥测处理器) -Azure Monitor Application Insights Java
 
@@ -241,7 +241,7 @@ Span 处理器能够更新遥测名称。
 ### `extract`
 
 > [!NOTE]
-> 此功能仅在3.0.1 和更高版本中
+> 此功能仅在3.0.2 和更高版本中
 
 使用正则表达式规则从输入键到规则中指定的目标键提取值。 如果目标密钥已存在，则将其重写。 它的行为类似于 " [Span 处理器](#extract-attributes-from-span-name)" 设置，其 `toAttributes` 现有属性作为 "源"。
 
@@ -332,18 +332,18 @@ Span 处理器能够更新遥测名称。
 
 | Attribute  | 类型 | 说明 | 
 |---|---|---|
-| `http.method` | 字符串 | HTTP 请求方法。|
-| `http.url` | 字符串 | 完整的 HTTP 请求 URL，格式为 `scheme://host[:port]/path?query[#fragment]` 。 通常情况下，片段不通过 HTTP 传输，但如果已知，则它应包括在内。|
+| `http.method` | string | HTTP 请求方法。|
+| `http.url` | string | 完整的 HTTP 请求 URL，格式为 `scheme://host[:port]/path?query[#fragment]` 。 通常情况下，片段不通过 HTTP 传输，但如果已知，则它应包括在内。|
 | `http.status_code` | 数字 | [HTTP 响应状态代码](https://tools.ietf.org/html/rfc7231#section-6)。|
-| `http.flavor` | 字符串 | 使用的 HTTP 协议类型 |
-| `http.user_agent` | 字符串 | 客户端发送的 [HTTP 用户代理](https://tools.ietf.org/html/rfc7231#section-5.5.3) 标头的值。 |
+| `http.flavor` | string | 使用的 HTTP 协议类型 |
+| `http.user_agent` | string | 客户端发送的 [HTTP 用户代理](https://tools.ietf.org/html/rfc7231#section-5.5.3) 标头的值。 |
 
 ### <a name="jdbc-spans"></a>JDBC 跨越
 
 | Attribute  | 类型 | 说明  |
 |---|---|---|
-| `db.system` | 字符串 | 数据库管理系统的标识符 (要使用的 DBMS) 产品。 |
-| `db.connection_string` | 字符串 | 用于连接到数据库的连接字符串。 建议删除嵌入的凭据。|
-| `db.user` | 字符串 | 用于访问数据库的用户名。 |
-| `db.name` | 字符串 | 此属性用于报告正在访问的数据库的名称。 对于用于切换数据库的命令，应将其设置为目标数据库 (即使命令失败) 也是如此。|
-| `db.statement` | 字符串 | 正在执行的数据库语句。|
+| `db.system` | string | 数据库管理系统的标识符 (要使用的 DBMS) 产品。 |
+| `db.connection_string` | string | 用于连接到数据库的连接字符串。 建议删除嵌入的凭据。|
+| `db.user` | string | 用于访问数据库的用户名。 |
+| `db.name` | string | 此属性用于报告正在访问的数据库的名称。 对于用于切换数据库的命令，应将其设置为目标数据库 (即使命令失败) 也是如此。|
+| `db.statement` | string | 正在执行的数据库语句。|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f83f4871d5cde23194ff51a90a22031b526cf91
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526532"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632557"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows VM 因 Windows 启动管理器而无法启动
 
@@ -40,6 +40,9 @@ VM 一直在等待用户提示。除非用户手动进行指示，否则 VM 不�
 此错误是由 Windows 启动管理器中的 BCD 标志“displaybootmenu”  导致的。 启用该标志后，Windows 启动管理器会在启动过程中提示用户选择要运行的加载程序，导致启动延迟。 在 Azure 中，此功能可能会增加启动 VM 所需的时间。
 
 ## <a name="solution"></a>解决方案
+
+> [!TIP]
+> 如果你有 VM 的最新备份，则可以尝试 [从备份还原 vm](../../backup/backup-azure-arm-restore-vms.md) ，以解决启动问题。
 
 过程概述：
 

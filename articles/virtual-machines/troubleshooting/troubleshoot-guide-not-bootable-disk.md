@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14da41815e177ece64c72ac27a7cb126e69fdc62
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509029"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633182"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>启动错误-这不是可启动磁盘
 
@@ -40,6 +40,9 @@ ms.locfileid: "86509029"
 ## <a name="solution"></a>解决方案
 
 ### <a name="process-overview"></a>流程概述
+
+> [!TIP]
+> 如果你有 VM 的最新备份，则可以尝试 [从备份还原 vm](../../backup/backup-azure-arm-restore-vms.md) ，以解决启动问题。
 
 1. 创建并访问修复 VM。
 2. 将“分区状态”设置为“活动”。

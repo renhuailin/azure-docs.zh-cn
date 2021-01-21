@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f286542c91ba473d13595d8e8299b1bbd8c93856
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977946"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632599"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>在应用审核策略配置策略时，虚拟机无响应
 
@@ -27,7 +27,7 @@ ms.locfileid: "91977946"
 
 ## <a name="symptom"></a>症状
 
-使用 " [启动诊断](./boot-diagnostics.md) " 查看 VM 的屏幕截图时，你会看到屏幕截图显示操作系统 (操作系统) 在启动过程中无响应，并在消息中 **应用审核策略配置策略**。
+使用[启动诊断](./boot-diagnostics.md)查看 VM 的屏幕截图时，将看到屏幕截图显示操作系统 (OS) 在启动过程中无响应，并显示消息“应用审核策略配置策略”。
 
   ![操作系统启动时出现以下消息： "正在应用审核策略配置策略"](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 
@@ -45,6 +45,9 @@ ms.locfileid: "91977946"
 ## <a name="solution"></a>解决方案
 
 ### <a name="process-overview"></a>过程概述
+
+> [!TIP]
+> 如果你有 VM 的最新备份，则可以尝试 [从备份还原 vm](../../backup/backup-azure-arm-restore-vms.md) ，以解决启动问题。
 
 1. 创建和访问修复 VM。
 1. 禁用策略。

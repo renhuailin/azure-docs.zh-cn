@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 1131c8e79d9df2883dcf7e975af9732c21318a49
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e1462246b95da67591cbdfd1f9ed819220de5764
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621158"
+ms.locfileid: "98633055"
 ---
 # <a name="connect-your-barracuda-waf-appliance"></a>连接 Barracuda WAF 设备 
 
@@ -30,12 +30,16 @@ ms.locfileid: "98621158"
 > 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
 
 ## <a name="configure-and-connect-barracuda-waf"></a>配置并连接 Barracuda WAF
-Barracuda Web 应用程序防火墙可通过 Log Analytics 代理直接将日志集成到 Azure Sentinel 并将其导出。
-1. 请参阅 [BARRACUDA WAF configuration flow](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)，并按照说明使用以下参数设置连接：
-    - **工作区 id**：从 Azure Sentinel Barracuda connector 页面复制工作区 id 的值。
-    - **主键**：从 Azure Sentinel Barracuda connector 页面复制主密钥的值。
-1. 若要在 Barracuda 事件的 Log Analytics 中使用相关架构，请搜索 **CommonSecurityLog** 和 **barracuda_CL**。
 
+Barracuda Web 应用程序防火墙可通过 Log Analytics 代理直接将日志集成到 Azure Sentinel 并将其导出。
+
+1. 请参阅 [BARRACUDA WAF configuration flow](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)，并按照说明使用以下参数设置连接：
+
+    - **工作区 id**：从 Azure Sentinel Barracuda connector 页面复制工作区 id 的值。
+
+    - **主键**：从 Azure Sentinel Barracuda connector 页面复制主密钥的值。
+
+1. 若要在 Barracuda 事件的 Log Analytics 中使用相关架构，请搜索 **CommonSecurityLog** 和 **barracuda_CL**。
 
 ## <a name="validate-connectivity"></a>验证连接
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 01/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 7b664dcd1cb12808960ffacf91c6d02d58632c4e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 4a4fff18d21ccb0c729ecb1f79df17225c8086bc
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243131"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632667"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>使用跨区域复制的要求和注意事项 
 
@@ -31,6 +31,7 @@ ms.locfileid: "95243131"
 * Azure NetApp 文件复制仅适用于某些固定区域对。 请参阅 [支持的区域对](cross-region-replication-introduction.md#supported-region-pairs)。 
 * SMB 卷与 NFS 卷一起受支持。 复制 SMB 卷需要在源和目标 NetApp 帐户中建立 Active Directory 连接。 目标 AD 连接必须具有对 DNS 服务器的访问权限，或者添加可从目标区域中的委托子网访问的域控制器。 有关详细信息，请参阅 [Active Directory 连接的要求](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)。 
 * 目标帐户必须与源卷区域在不同的区域中。 你还可以在不同的区域中选择现有的 NetApp 帐户。  
+* 复制目标卷为只读状态，直到你 [故障转移到目标区域](cross-region-replication-manage-disaster-recovery.md#fail-over-to-destination-volume) 以启用目标卷以进行读写。 
 * Azure NetApp 文件复制当前不支持多个订阅;所有复制都必须在单个订阅下执行。
 * 最多可为每个区域的单个订阅中的复制设置五个卷。 你可以打开支持票证，请求在区域) 中 (每个订阅的5个复制目标卷的默认配额增加。 
 * 此接口可能会有最多五分钟的延迟，以反映源卷上新添加的快照。  

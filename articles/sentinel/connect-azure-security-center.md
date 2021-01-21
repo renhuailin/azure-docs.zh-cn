@@ -9,18 +9,18 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: b37675d46d501fc43446eafc83d6c0a02f238177
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bb188aa79015c2123b9d9d8b6baf277dfadf2f9c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655946"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633038"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>从 Azure 安全中心连接 Azure Defender 警报数据
 
 使用 Azure Defender 警报连接器从 [Azure 安全中心](../security-center/security-center-introduction.md) 引入 azure defender 警报，并将其流式传输到 azure Sentinel。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 你的用户必须在你所流式传输的日志的订阅中具有安全读者角色。
 
@@ -39,6 +39,8 @@ ms.locfileid: "94655946"
 1. 若要在 Azure Defender 警报 Log Analytics 中使用相关架构，请搜索 **SecurityAlert**。
 
 ## <a name="next-steps"></a>后续步骤
+
 本文档介绍了如何将 Azure Defender 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
+
 - 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。

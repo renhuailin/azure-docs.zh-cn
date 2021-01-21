@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cfeb040893ae2be5842959ed8458bd713bebe6ee
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d8d2ab2bb3f24e1faa4791ebdc1ce3852f6a790e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512131"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632684"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>操作系统启动-计算机意外重新启动或遇到意外错误
 
@@ -37,23 +37,26 @@ ms.locfileid: "96512131"
 
 ## <a name="cause"></a>原因
 
-计算机正在尝试初始启动 [通用化映像](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)，但由于自定义应答文件 ( # A0) 正在处理而遇到问题。 **Azure 中不支持自定义应答文件**。 
+虚拟机在尝试初次启动[通用映像](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)，但因正在处理的自定义应答文件 (Unattend.xml) 而遇到了问题。 Azure 中不支持自定义应答文件。 
 
 应答文件是一种特殊的 XML 文件，其中包含要在安装 Windows Server 操作系统的过程中自动完成的配置设置的设置定义和值。 配置选项包括有关以下内容的说明：如何对磁盘进行分区、在何处查找要安装的 Windows 映像、要应用的产品密钥，以及要运行的其他命令。
 
-同样，Azure 中不支持自定义应答文件。 因此，当映像已准备好在 Azure 中使用时，会发生这种情况，但你通过使用具有类似于以下命令的标志的 **SYSPREP** 指定了自定义 Unattend.xml 文件：
+同样，Azure 中不支持自定义应答文件。 因此，发生这种情况的场景是，已经准备了要在 Azure 中使用的映像，但你通过将 SYSPREP 与一个标志配合使用（类似于以下命令）指定了自定义 Unattend.xml 文件：
 
 `sysprep /oobe /generalize /unattend:<your file’s name> /shutdown`
 
-在 Azure 中，使用 " **输入系统全新体验" (** " **系统准备工具" GUI** 中的 "OOBE) " 选项，或使用 `sysprep /oobe` 而非 Unattend.xml 文件。
+在 Azure 中，请使用系统准备工具 GUI 中的“进入系统全新安装体验(OOBE)”选项，或者使用 `sysprep /oobe`，而不要使用 Unattend.xml 文件 。
 
-此问题通常是在将 sysprep 与本地 VM 一起使用以将通用 VM 上传到 Azure 时创建的。 在这种情况下，你可能还对如何正确上传通用 VM 感兴趣。
+此问题通常在你将 sysprep 与本地 VM 一起使用以将通用 VM 上传到 Azure 时发生。 在这种情况下，你可能还对如何正确上传通用 VM 感兴趣。
 
 ## <a name="solution"></a>解决方案
 
-### <a name="do-not-use-unattendxml"></a>不要使用 Unattend.xml
+### <a name="do-not-use-unattendxml"></a>请勿使用 Unattend.xml
 
-要修复此问题，请按照[有关准备/捕获映像的 Azure 指南](../windows/upload-generalized-managed.md)操作，并准备新的通用映像。 在 sysprep 期间，请不要 **使用 " `/unattend:<your file’s name>` 标志**"。 请改为仅使用下面的标志：
+> [!TIP]
+> 如果你有 VM 的最新备份，则可以尝试 [从备份还原 vm](../../backup/backup-azure-arm-restore-vms.md) ，以解决启动问题。
+
+要修复此问题，请按照[有关准备/捕获映像的 Azure 指南](../windows/upload-generalized-managed.md)操作，并准备新的通用映像。 在执行 sysprep 的过程中，请勿使用 `/unattend:<your file’s name>` 标志。 请改为仅使用下面的标志：
 
 `sysprep /oobe /generalize /shutdown`
 

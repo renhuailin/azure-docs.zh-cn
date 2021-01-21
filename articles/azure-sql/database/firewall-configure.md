@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: e85c97df29bbbcc5d446d788cc190f3c90f24024
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: bbad7dcaa1d92df4969c88e4ba86a62987509e39
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602221"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632793"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL 数据库和 Azure Synapse IP 防火墙规则
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -101,7 +101,9 @@ IP 地址用户是否需要访问所有数据库？
 
 ### <a name="connections-from-inside-azure"></a>从 Azure 内部连接
 
-若要允许 Azure 内部托管的应用程序连接到 SQL 服务器，必须启用 Azure 连接。 当 Azure 中的应用程序尝试连接到你的服务器时，防火墙将验证是否允许 Azure 连接。 若要直接从 Azure 门户边栏选项卡中将其打开，可以设置防火墙规则，也可以在“防火墙和虚拟网络”设置中将“允许 Azure 服务和资源访问此服务器”切换为“启用”。   如果不允许该连接，则该请求将不会访问服务器。
+若要允许 Azure 内部托管的应用程序连接到 SQL 服务器，必须启用 Azure 连接。 若要启用 Azure 连接，必须有一条防火墙规则，并将 "开始" 和 "结束" IP 地址设置为0.0.0.0。
+
+当 Azure 中的应用程序尝试连接到服务器时，防火墙将检查是否允许 Azure 连接，验证此防火墙规则是否存在。 可以通过在 "**防火墙和虚拟网络**"**设置中将**"**允许 Azure 服务和资源访问此服务器**" 设置为 "打开"，直接从 "Azure 门户" 边栏选项卡启用此选项。 在设置为 ON 时，将为 IP 0.0.0.0-0.0.0.0 创建一个名为 **AllowAllWindowsIP** 的入站防火墙规则。 如果使用的不是门户，请使用 PowerShell 或 Azure CLI 来创建一个 "开始" 和 "结束 IP 地址" 设置为0.0.0.0 的防火墙规则。 
 
 > [!IMPORTANT]
 > 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 如果选择此选项，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。

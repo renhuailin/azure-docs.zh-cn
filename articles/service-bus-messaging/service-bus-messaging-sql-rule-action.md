@@ -1,18 +1,18 @@
 ---
 title: Azure 服务总线订阅规则 SQL 操作语法 |Microsoft Docs
-description: 本文提供了有关 SQL 规则操作语法的参考。 操作用基于 SQL 语言的语法编写，该语法针对消息执行。
+description: 本文提供了有关 SQL 规则操作语法的参考。 这些操作是以针对消息执行的基于 SQL 语言的语法编写的。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 7ce3332fb1a2025e89135e5e42e72d4afe1e7a5e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 606281d42d5598d7f73312990d3a19775a202c08
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489388"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632805"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>订阅规则 SQL 操作语法
 
-在通过订阅规则筛选器选择消息后，将使用 *SQL 操作* 来操作消息元数据。 这是倾向标准的92子集上的文本表达式。 操作表达式与 `sqlExpression` Azure 资源管理器模板中的服务总线的 "action" 属性的元素 `Rule` 、Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` 命令的 [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) 参数以及允许管理订阅规则的多个 SDK 函数结合使用。
+“SQL 操作”用于在订阅规则的筛选器选择消息后操作消息元数据。 它是一个依赖于 SQL-92 标准子集的文本表达式。 操作表达式与 [Azure 资源管理器模板](service-bus-resource-manager-namespace-topic-with-rule.md)中服务总线 `Rule` 的“action”属性的 `sqlExpression` 元素一起使用，或者与 Azure CLI `az servicebus topic subscription rule create` 命令的 [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) 参数以及几个允许管理订阅规则的 SDK 函数一起使用。
   
   
 ```  
@@ -53,7 +53,7 @@ ms.locfileid: "96489388"
   
 ## <a name="arguments"></a>参数  
   
--   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` or `user`进行求值的基于 SQL 语言的筛选器表达式。 `sys`值指示系统范围，其中 `<property_name>` 是[BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 字典的键。 `user` 范围是默认范围（如果 `<scope>` 未指定）。  
+-   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` or `user`进行求值的基于 SQL 语言的筛选器表达式。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的项。 `user` 范围是默认范围（如果 `<scope>` 未指定）。  
   
 ### <a name="remarks"></a>备注  
 
@@ -210,9 +210,9 @@ ms.locfileid: "96489388"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [SQLRuleAction 类 ( .NET Framework) ](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-- [SQLRuleAction 类 ( .NET Standard) ](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
-- [SqlRuleAction 类 (Java) ](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
-- [SqlRuleAction (JavaScript) ](/javascript/api/@azure/service-bus/sqlruleaction)
-- [az](/cli/azure/servicebus/topic/subscription/rule)
-- [新-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)
+- [SQLRuleAction 类 (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SQLRuleAction 类 (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
+- [SqlRuleAction 类 (Java)](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
+- [SqlRuleAction (JavaScript)](/javascript/api/@azure/service-bus/sqlruleaction)
+- [az servicebus topic subscription rule](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

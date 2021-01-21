@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8279aee4a0df8155b23e6f984d259bf92555dc95
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509097"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632827"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows 停止错误 - #0x000000EF“关键进程已终止”
 
@@ -38,6 +38,9 @@ ms.locfileid: "86509097"
 ## <a name="solution"></a>解决方案
 
 ### <a name="process-overview"></a>过程概述：
+
+> [!TIP]
+> 如果你有 VM 的最新备份，则可以尝试 [从备份还原 vm](../../backup/backup-azure-arm-restore-vms.md) ，以解决启动问题。
 
 1. 创建并访问修复 VM。
 2. 修复任何 OS 损坏情况。

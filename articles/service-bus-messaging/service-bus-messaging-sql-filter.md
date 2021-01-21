@@ -3,18 +3,18 @@ title: Azure 服务总线订阅规则 SQL 筛选器语法 |Microsoft Docs
 description: 本文提供了有关 SQL 筛选器语法的详细信息。 SQL 筛选器支持 SQL-92 标准的子集。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 9bff18b2161e419d728c360c9ed950ac2867fea8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 60f3cb6e85cef7a166c353f78cfb50405b962bdd
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498670"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633165"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>订阅规则 SQL 筛选器语法
 
-*SQL 筛选器* 是服务总线主题订阅的一个可用筛选器类型。 这是倾向标准的92子集上的文本表达式。 筛选表达式与 `sqlExpression` Azure 资源管理器模板中的服务总线的 "sqlFilter" 属性的元素 `Rule` 、Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` 命令的 [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) 参数以及允许管理订阅规则的多个 SDK 函数结合使用。
+SQL 筛选器是服务总线主题订阅的某个可用筛选器类型。 它是一个依赖于 SQL-92 标准子集的文本表达式。 筛选表达式与 [Azure 资源管理器模板](service-bus-resource-manager-namespace-topic-with-rule.md)中服务总线 `Rule` 的“sqlFilter”属性的 `sqlExpression` 元素一起使用，或者与 Azure CLI `az servicebus topic subscription rule create` 命令的 [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) 参数以及几个允许管理订阅规则的 SDK 函数一起使用。
 
-服务总线高级版还支持通过 JMS 2.0 API 的 [JMS SQL 消息选择器语法](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) 。
+服务总线高级版还通过 JMS 2.0 API 支持 [JMS SQL 消息选择器语法](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html)。
 
   
 ``` 
@@ -50,11 +50,11 @@ ms.locfileid: "96498670"
   
 ## <a name="arguments"></a>参数  
   
--   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` or `user`进行求值的基于 SQL 语言的筛选器表达式。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的项。 `user` 如果未指定，则作用域为默认作用域 `<scope>` 。  
+-   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` or `user`进行求值的基于 SQL 语言的筛选器表达式。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的项。 `user` 范围是默认范围（如果 `<scope>` 未指定）。  
   
 ## <a name="remarks"></a>备注
 
-尝试访问不存在的系统属性是错误的，而尝试访问不存在的用户属性不是错误。 相反，不存在的用户属性在内部作为未知值进行求值。 运算符求值期间会对未知值进行特殊处理。  
+尝试访问不存在的系统属性属于错误，而尝试访问不存在的用户属性不属于错误。 相反，不存在的用户属性在内部作为未知值进行求值。 运算符求值期间会对未知值进行特殊处理。  
   
 ## <a name="property_name"></a>property_name  
   
@@ -82,7 +82,7 @@ ms.locfileid: "96498670"
   
 `[:IsDigit:]` 是指分类为十进制数字的任何 Unicode 字符。 `System.Char.IsDigit(c)` 返回 `true`（如果 `c` 为 Unicode 数字）。  
   
-`<regular_identifier>`不能是保留关键字。  
+`<regular_identifier>` 不能是保留关键字。  
   
 `<delimited_identifier>` 是用左/右方括号 ([]) 括起来的任何字符串。 右方括号以两个右方括号表示。 下面是 `<delimited_identifier>`的示例：  
   
@@ -92,7 +92,7 @@ ms.locfileid: "96498670"
   
 ```  
   
-`<quoted_identifier>` 是指使用双引号引起来的任何字符串。 标识符中的双引号以两个双引号表示。 不建议使用带引号的标识符，因为可以轻松地将其与字符串常量混淆。 如果可能，请使用分隔标识符。 下面是一个示例 `<quoted_identifier>` ：  
+`<quoted_identifier>` 是指使用双引号引起来的任何字符串。 标识符中的双引号以两个双引号表示。 不建议使用带引号的标识符，因为很容易将其与字符串常量混淆。 如果可能，请使用分隔标识符。 下面是 `<quoted_identifier>` 的示例：  
   
 ```  
 "Contoso & Northwind"  
@@ -135,7 +135,7 @@ ms.locfileid: "96498670"
   
 ### <a name="arguments"></a>参数  
   
--   `<integer_constant>` 不是用引号括起来并且不包含小数点的数字字符串。 这些值作为 `System.Int64` 在内部存储，并具有相同的作用域。  
+-   `<integer_constant>` 是指不使用引号引起来且不包含小数点的数字字符串。 这些值作为 `System.Int64` 在内部存储，并具有相同的作用域。  
   
      下面是长常量的示例：  
   
@@ -144,9 +144,9 @@ ms.locfileid: "96498670"
     2  
     ```  
   
--   `<decimal_constant>` 不是用引号括起来并且包含小数点的数字字符串。 这些值作为 `System.Double` 在内部存储，并具有相同的作用域/精度。  
+-   `<decimal_constant>` 是指不使用引号引起来但包含小数点的数字字符串。 这些值作为 `System.Double` 在内部存储，并具有相同的作用域/精度。  
   
-     在将来的版本中，此数字可能存储在不同的数据类型中以支持确切的数字语义，因此您不应依赖于的基础数据类型 `System.Double` `<decimal_constant>` 。  
+     在未来版本中，此数字可能以其他数据类型存储，目的是支持确切的数字语义，因此不应依赖于 `<decimal_constant>` 的基础数据类型为 `System.Double` 这一事实。  
   
      下面是十进制常量的示例：  
   
@@ -193,7 +193,7 @@ ms.locfileid: "96498670"
   
 ### <a name="remarks"></a>备注
   
-`newid()`函数返回 `System.Guid` 由方法生成的 `System.Guid.NewGuid()` 。  
+`newid()` 函数返回 `System.Guid.NewGuid()` 方法生成的 `System.Guid`。  
   
 `property(name)` 函数返回 `name` 所引用的属性的值。 `name` 值可以是返回字符串值的任何有效表达式。  
   
@@ -215,17 +215,17 @@ ms.locfileid: "96498670"
   
 - 尝试对不存在的系统属性求值会引发 [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) 异常。  
   
-- 不存在的属性在内部被视为 **未知**。  
+- 不存在的属性在内部作为未知进行求值。  
   
   算术运算符中的未知求值：  
   
-- 对于二元运算符，如果操作数的左侧或右侧的求值结果为 " **未知**"，则结果为 " **未知**"。  
+- 对于二元运算符，如果操作数的左侧或右侧的求值结果为未知，则结果为未知 。  
   
 - 对于一元运算符，如果操作数的求值结果为 **未知**，则结果为 **未知**。  
   
   二进制比较运算符中的未知求值：  
   
-- 如果操作数的左侧或右侧的求值结果为 " **未知**"，则结果为 " **未知**"。  
+- 如果操作数的左侧或右侧的求值结果为未知，则结果为未知 。  
   
   `[NOT] LIKE`中的未知求值：  
   
@@ -296,13 +296,13 @@ var filterActionRule = new RuleDescription
 await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
 ```
 
-### <a name="sql-filter-on-a-system-property"></a>系统属性上的 SQL 筛选器
+### <a name="sql-filter-on-a-system-property"></a>基于系统属性的 SQL 筛选器
 
 ```csharp
 sys.Label LIKE '%bus%'`
 ```
 
-### <a name="using-or"></a>使用或 
+### <a name="using-or"></a>使用 OR 
 
 ```csharp
  sys.Label LIKE '%bus%'` OR `user.tag IN ('queue', 'topic', 'subscription')
@@ -318,14 +318,14 @@ sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
 sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
 ```
 
-有关 c # 示例，请参阅 [GitHub 上的主题筛选器示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)。
+有关 C# 示例，请参阅 [GitHub 上的主题筛选器示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [SQLFilter 类 (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter 类 (.NET Framework)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
-- [SqlFilter 类 (Java) ](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
-- [SqlRuleFilter (JavaScript) ](/javascript/api/@azure/service-bus/sqlrulefilter)
-- [az](/cli/azure/servicebus/topic/subscription/rule)
-- [新-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)
+- [SqlFilter 类 (Java)](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
+- [SqlRuleFilter (JavaScript)](/javascript/api/@azure/service-bus/sqlrulefilter)
+- [az servicebus topic subscription rule](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

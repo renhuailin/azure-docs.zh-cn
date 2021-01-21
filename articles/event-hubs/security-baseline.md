@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3f56fc1b321396c5cc6aa93e3f47fcaafcbe4ae4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 0fbd7cda4723b62863d7d9bb0fe6aa2fac32dcd9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202328"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633097"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>事件中心的 Azure 安全基线
 
@@ -293,9 +293,9 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 **指导**：Azure Active Directory (AD) 具有必须显式分配且可查询的内置角色。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。 
 
-如何使用 PowerShell 获取 Azure AD 中的目录角色： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+如何使用 PowerShell 获取 Azure AD 中的目录角色： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole
 
-如何使用 PowerShell 获取 Azure AD 中目录角色的成员： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+如何使用 PowerShell 获取 Azure AD 中目录角色的成员： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember
 
 **Azure 安全中心监视**：是
 
@@ -633,7 +633,7 @@ Microsoft 会管理事件中心的底层基础结构，并实施严格的控制�
 
 如何使用 Azure Resource Graph 创建查询： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-如何查看 Azure 订阅： https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+如何查看 Azure 订阅： https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription
 
 了解 Azure RBAC： https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -779,7 +779,7 @@ Microsoft 会管理事件中心的底层基础结构，并实施严格的控制�
 
 适用于事件中心命名空间的 Azure 内置策略： https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
-如何查看可用的 Azure Policy 别名： https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+如何查看可用的 Azure Policy 别名： https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias
 
 如何配置和管理 Azure Policy： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -820,9 +820,9 @@ Microsoft 会管理事件中心的底层基础结构，并实施严格的控制�
 
 **指导**：如果对事件中心或相关资源使用自定义 Azure Policy 定义，请使用 Azure Repos 安全地存储和管理代码。
 
-如何在 Azure DevOps 中存储代码： https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+如何在 Azure DevOps 中存储代码： https://docs.microsoft.com/azure/devops/repos/git/gitworkflow
 
-Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index
 
 **Azure 安全中心监视**：不适用
 
@@ -986,7 +986,7 @@ Microsoft 反恶意软件已在支持 Azure 服务（例如 Azure Cache for Redi
 
  
 
-如何在 Azure 中还原密钥保管库密钥： https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+如何在 Azure 中还原密钥保管库密钥： https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey
 
 **Azure 安全中心监视**：不适用
 

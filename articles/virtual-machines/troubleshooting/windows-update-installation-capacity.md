@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: f83a1820eb931fa075681da7a9661b304059cd2a
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0c0ec45eee86031e1533b97ccf352de0ecf70e38
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635699"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633148"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>操作系统启动疑难解答 - Windows 更新安装容量
 
@@ -39,6 +39,9 @@ ms.locfileid: "94635699"
 
 ### <a name="process-overview"></a>流程概述：
 
+> [!TIP]
+> 如果你有 VM 的最新备份，则可以尝试 [从备份还原 vm](../../backup/backup-azure-arm-restore-vms.md) ，以解决启动问题。
+
 1. 创建和访问修复 VM。
 1. 释放磁盘上的空间。
 1. 启用串行控制台和内存转储集合。
@@ -49,7 +52,7 @@ ms.locfileid: "94635699"
 
 ### <a name="create-and-access-a-repair-vm"></a>创建和访问修复 VM
 
-1. 使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 的步骤 1-3 准备一个修复 VM。
+1. 使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)的步骤 1-3 来准备一个修复 VM。
 1. 使用远程桌面连接来连接到修复 VM。
 
 ### <a name="free-up-space-on-the-disk"></a>释放磁盘上的空间
@@ -73,12 +76,12 @@ ms.locfileid: "94635699"
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>启用串行控制台和内存转储集合
 
-**建议** ：在重新生成 VM 之前，通过运行以下脚本来启用串行控制台和内存转储收集：
+**建议**：在重新生成 VM 之前，通过运行以下脚本来启用串行控制台和内存转储收集：
 
 1. 以管理员身份打开权限提升的命令提示符会话。
 1. 运行以下命令：
 
-   **启用串行控制台** ：
+   **启用串行控制台**：
    
    ```
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
@@ -97,7 +100,7 @@ ms.locfileid: "94635699"
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM 
    ```
    
-   **在 ControlSet001 上启用** ：
+   **在 ControlSet001 上启用**：
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -105,7 +108,7 @@ ms.locfileid: "94635699"
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **在 ControlSet002 上启用** ：
+   **在 ControlSet002 上启用**：
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -113,7 +116,7 @@ ms.locfileid: "94635699"
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **卸载损坏的 OS 磁盘** ：
+   **卸载损坏的 OS 磁盘**：
 
    ```
    REG UNLOAD HKLM\BROKENSYSTEM

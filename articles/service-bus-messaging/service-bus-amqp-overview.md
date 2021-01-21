@@ -3,12 +3,12 @@ title: Azure 服务总线中 AMQP 1.0 的概述
 description: 了解 Azure 服务总线如何支持高级消息队列协议（AMQP，一种开放标准协议）。
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: 241a6b7fb9f9055ce610e44e5cd37dba87c77554
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 58c2cc8e9d92fff31a286b6e9bd63b63bee26aee
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709276"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632878"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服务总线的 AMQP 1.0 支持
 Azure 服务总线云服务使用[高级消息队列协议 (AMQP) 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) 作为其主要通信方式。 Microsoft 已与行业中的合作伙伴共同合作，共同的消息传递代理的客户和供应商在过去十年中开发和发展 AMQP，并在 [OASIS AMQP 技术委员会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)中开发新扩展。 AMQP 1.0 是 ISO 和 IEC 标准 ([ISO 19464:20149](https://www.iso.org/standard/64955.html))。 
@@ -42,7 +42,7 @@ AMQP 1.0 是一种国际标准，已通过 ISO 和 IEC 的认证，认证编号�
 * **技术供应商**：Axway Software、Huawei Technologies、IIT Software、INETCO Systems、Kaazing、Microsoft、Mitre Corporation、Primeton Technologies、Progress Software、Red Hat、SITA、Software AG、Solace Systems、VMware、WSO2、Zenika。
 * **企业用户**：Bank of America、Credit Suisse、Deutsche Boerse、Goldman Sachs、JPMorgan Chase。
 
-[OASIS AMQP 技术委员会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)的当前椅子代表 Red Hat 和 Microsoft。
+[OASIS AMQP 技术委员会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)的现任主席代表 Red Hat 和 Microsoft。
 
 开放标准的公认好处包括：
 
@@ -64,11 +64,11 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着可以通过一系列使用�
 
 通过 Azure SDK 提供的所有受支持的服务总线客户端库均使用 AMQP 1.0。
 
-- [适用于 .NET 的 Azure 服务总线](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
-- [适用于 Java 的 Azure 服务总线库](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
+- [适用于 .NET 的 Azure 服务总线](/dotnet/api/overview/azure/service-bus?preserve-view=true)
+- [适用于 Java 的 Azure 服务总线库](/java/api/overview/azure/servicebus?preserve-view=true)
 - [适用于 Java JMS 2.0 的 Azure 服务总线提供程序](how-to-use-java-message-service-20.md)
-- [适用于 JavaScript 和 TypeScript 的 Azure 服务总线模块](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [适用于 Python 的 Azure 服务总线库](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [适用于 JavaScript 和 TypeScript 的 Azure 服务总线模块](/javascript/api/overview/azure/service-bus?preserve-view=true)
+- [适用于 Python 的 Azure 服务总线库](/python/api/overview/azure/servicebus?preserve-view=true)
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 

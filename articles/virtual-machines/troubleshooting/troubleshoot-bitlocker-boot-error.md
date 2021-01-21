@@ -13,18 +13,16 @@ ms.workload: infrastructure
 ms.date: 11/20/2020
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 00095eed3fe6d143d9ed7a0c748c4702028f4632
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 87bf311b5199ec187c24c28a42314d9dc6787998
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832054"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633021"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
 
  本文介绍在 Microsoft Azure 中启动 Windows 虚拟机 (VM) 时可能遇到的 BitLocker 错误。
-
- 
 
 ## <a name="symptom"></a>症状
 
@@ -42,6 +40,9 @@ ms.locfileid: "97832054"
 如果 VM 找不到用于解密加密磁盘的 BitLocker 恢复密钥 (BEK) 文件，则可能会出现此问题。
 
 ## <a name="solution"></a>解决方案
+
+> [!TIP]
+> 如果你有 VM 的最新备份，则可以尝试 [从备份还原 vm](../../backup/backup-azure-arm-restore-vms.md) ，以解决启动问题。
 
 若要解决此问题，请停止 VM 并将它解除分配，然后再启动它。 此操作将强制 VM 从 Azure Key Vault 中检索 BEK 文件，然后将其放在加密磁盘上。 
 
@@ -92,7 +93,7 @@ ms.locfileid: "97832054"
                 @{Label ="DiskEncryptionKeyFileName"; Expression = {$_.Tags.DiskEncryptionKeyFileName}}
     ```
 
-    下面是输出的示例。 在这种情况下，我们假设文件名为 EF7B2F5A-50C6-4637-0001-7F599C12F85C。BEK.
+    下面是输出的示例。 在这种情况下，我们假设文件名为 EF7B2F5A-50C6-4637-0001-7F599C12F85C.BEK。
 
     ```
     Created               Content Type Volume MachineName DiskEncryptionKeyFileName
@@ -296,7 +297,7 @@ ms.locfileid: "97832054"
 
 **错误：无法加载文件或程序集**
 
-发出此错误是因为 ADAL 程序集的路径错误。 您可以搜索 `Az.Accounts` 文件夹以查找正确的路径。
+发出此错误是因为 ADAL 程序集的路径错误。 你可搜索 `Az.Accounts` 文件夹来查找正确的路径。
 
 **错误：Get-AzKeyVaultSecret 或 Get-AzKeyVaultSecret 无法识别为 cmdlet 的名称**
 

@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3fe87f94ce05efa4a784ba7e3f65e53abb00fd05
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 7ddc13306f4adb1730169c4811b9d2227dedca33
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914240"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632760"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>通过 SQL Server IaaS 代理扩展自动进行管理
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -115,7 +115,7 @@ SQL Server IaaS 代理扩展将为管理 SQL Server VM 提供多种功能优势�
 
 ### <a name="named-instance-support"></a>命名实例支持
 
-如果是虚拟机上唯一可用的 SQL Server 实例，则 SQL Server IaaS 代理扩展将与 SQL Server 的命名实例一起工作。 无法在具有多个 SQL Server 实例的 Vm 上安装扩展。 
+如果 SQL Server IaaS 代理扩展是虚拟机上唯一可用的 SQL Server 实例，则与 SQL Server 的命名实例一起工作。 如果 VM 上没有默认实例，则无法在具有多个命名 SQL Server 实例的 Vm 上安装扩展。 
 
 若要使用 SQL Server 的命名实例，请部署 Azure 虚拟机，将名 SQL Server 为的单个实例安装到该虚拟机，然后将其注册到 [SQL IaaS 扩展](sql-agent-extension-manually-register-single-vm.md)。
 
@@ -173,7 +173,7 @@ SQL IaaS 代理扩展仅支持：
 
 **SQL IaaS 代理扩展是否适用于所有客户？** 
 
-是。 如果客户不使用 Azure Marketplace 中的 SQL Server 映像，而是自行安装的 SQL Server，或者如果他们提供自定义 VHD，则他们应该向其注册其 SQL Server Vm。 所有订阅类型所拥有的 Vm (直接、企业协议和云解决方案提供商) 可以注册 SQL IaaS 代理扩展。
+是的。 如果客户不使用 Azure Marketplace 中的 SQL Server 映像，而是自行安装的 SQL Server，或者如果他们提供自定义 VHD，则他们应该向其注册其 SQL Server Vm。 所有订阅类型所拥有的 Vm (直接、企业协议和云解决方案提供商) 可以注册 SQL IaaS 代理扩展。
 
 **在 SQL IaaS 代理扩展中注册时，默认的管理模式是什么？**
 
@@ -228,15 +228,15 @@ NoAgent 模式需要客户设置 SQL Server 版本和版本属性。 轻型模�
 
 **如果有多个 SQL Server 实例，能否使用 SQL IaaS 代理扩展注册 VM？**
 
-是。 SQL IaaS 代理扩展将只注册一个 SQL Server (数据库引擎) 实例。 SQL IaaS 代理扩展将在多个实例的情况下注册默认 SQL Server 实例。 如果没有默认实例，则仅支持在轻型模式下注册。 若要从轻型升级到完整可管理性模式，应存在默认 SQL Server 实例，或者 VM 应只有一个命名 SQL Server 实例。
+是，前提是 VM 上有一个默认实例。 SQL IaaS 代理扩展将只注册一个 SQL Server (数据库引擎) 实例。 SQL IaaS 代理扩展将在多个实例的情况下注册默认 SQL Server 实例。
 
 **是否可以使用 SQL IaaS 代理扩展注册 SQL Server 故障转移群集实例？**
 
-是。 在 Azure VM 上 SQL Server 故障转移群集实例可以使用轻型模式下的 SQL IaaS 代理扩展进行注册。 但是，SQL Server 故障转移群集实例无法升级到完整可管理性模式。
+是的。 在 Azure VM 上 SQL Server 故障转移群集实例可以使用轻型模式下的 SQL IaaS 代理扩展进行注册。 但是，SQL Server 故障转移群集实例无法升级到完整可管理性模式。
 
 **如果配置了 Always On 可用性组，能否使用 SQL IaaS 代理扩展注册 VM？**
 
-是。 如果正在加入 Always On 可用性组配置，则不会限制使用 SQL IaaS 代理扩展在 Azure VM 上注册 SQL Server 实例。
+是的。 如果正在加入 Always On 可用性组配置，则不会限制使用 SQL IaaS 代理扩展在 Azure VM 上注册 SQL Server 实例。
 
 **在 SQL IaaS 代理扩展或升级到完全可管理性模式时，注册的成本是多少？**
 
