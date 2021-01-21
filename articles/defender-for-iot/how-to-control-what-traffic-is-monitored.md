@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97977060"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624678"
 ---
 # <a name="control-what-traffic-is-monitored"></a>控制要监视的流量
 
@@ -186,11 +186,11 @@ ms.locfileid: "97977060"
 
 ## <a name="configure-dns-servers-for-reverse-lookup-resolution"></a>为反向查找解析配置 DNS 服务器
 
-若要增强资产扩充，可以将多个 DNS 服务器配置为 carryout 反向查找。 可以解析与网络子网中检测到的 IP 地址相关联的主机名或 Fqdn。 例如，如果某个传感器发现 IP 地址，则它可能会查询多个 DNS 服务器来解析主机名。
+若要增强设备扩充，可将多个 DNS 服务器配置为 carryout 反向查找。 可以解析与网络子网中检测到的 IP 地址相关联的主机名或 Fqdn。 例如，如果某个传感器发现 IP 地址，则它可能会查询多个 DNS 服务器来解析主机名。
 
 支持所有的 CIDR 格式。
 
-主机名显示在 "资产清单" 和 "资产映射" 以及报表中。
+主机名显示在设备清单、设备映射和报表中。
 
 您可以计划每小时特定时间间隔的反向查找解析计划，例如每隔12小时。 或者，您可以计划特定的时间。
 
@@ -212,7 +212,7 @@ ms.locfileid: "97977060"
 
 5. 在 " **Dns 服务器端口** " 字段中，输入 dns 端口。
 
-6. 将网络 IP 地址解析为资产 Fqdn。 在 " **标签数** " 字段中，添加要显示的域标签的数目。 从左到右显示最多30个字符。
+6. 将网络 IP 地址解析为设备 Fqdn。 在 " **标签数** " 字段中，添加要显示的域标签的数目。 从左到右显示最多30个字符。
 
 7. 在 " **子网** " 字段中，输入希望 DNS 服务器查询的子网。
 
@@ -220,7 +220,7 @@ ms.locfileid: "97977060"
 
 ### <a name="test-the-dns-configuration"></a>测试 DNS 配置 
 
-通过使用测试资产，验证所定义的设置是否正常工作：
+通过使用测试设备，验证所定义的设置是否正常工作：
 
 1. 启用 **DNS 查找** 切换。
 
@@ -295,7 +295,7 @@ ms.locfileid: "97977060"
 
 1. 扫描完成后，在 " **操作** " 窗格中选择 " **查看扫描结果**"。 带有扫描结果的 CSV 文件将下载到您的计算机。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [调查设备清单](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
  中的传感器检测[在设备映射中调查传感器检测](how-to-work-with-the-sensor-device-map.md)

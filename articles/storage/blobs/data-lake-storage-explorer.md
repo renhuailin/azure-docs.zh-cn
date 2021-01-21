@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e46bb87788de27916860720284087643db7153dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a63c309c8e728e3f76ad904d479557b368388954
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913396"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624769"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
@@ -80,7 +80,7 @@ ms.locfileid: "95913396"
 
 可以在容器的根目录中设置权限。 为此，你必须使用有权执行此操作的个人帐户登录到 Azure 存储资源管理器（而不是使用连接字符串）。 右键单击容器，然后选择“管理权限”，打开“管理权限”对话框   。
 
-![Microsoft Azure 存储资源管理器 - 管理目录访问权限](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+![Microsoft Azure 存储资源管理器 - 管理目录访问权限](media/storage-quickstart-blobs-storage-explorer/manageperms.png)
 
 “管理权限”对话框可以管理所有者和所有者组的权限  。 它还可以将新用户和组添加访问控制列表中，然后你可以管理其权限。
 
@@ -105,6 +105,10 @@ ms.locfileid: "95913396"
 > 在此处进行选择不会对目录中任何当前存在的项设置权限。 如果文件已存在，则必须转到每个项并手动设置权限。
 
 由于可以管理各个目录以及各个文件的权限，因此可以实现细化访问控制。 管理目录和文件的权限的过程与上述过程相同。 右键单击要管理权限的文件或目录，然后按照相同的过程进行操作。
+
+## <a name="private-endpoints-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的专用终结点
+
+存储资源管理器在使用 Data Lake Storage Gen2 时，使用 Blob (blob) & () dfs Azure Data Lake Storage Gen2 [终结点](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage) 。 如果使用专用终结点配置对 Azure Data Lake Storage Gen2 的访问，请确保为存储帐户创建两个专用终结点：一个具有目标子资源 `blob` ，另一个具有目标子资源 `dfs` 。
 
 ## <a name="next-steps"></a>后续步骤
 

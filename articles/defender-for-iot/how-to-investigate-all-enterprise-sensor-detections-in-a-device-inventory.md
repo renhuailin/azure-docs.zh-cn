@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 47e3833fe9f35467c1d16945a9b336d4014b2efd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838151"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625458"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>调查设备清单中的所有企业传感器检测
 
@@ -26,12 +26,12 @@ ms.locfileid: "97838151"
 |--|--|
 | **未确认警报** | 与此设备关联的未处理警报数。 |
 | **业务部门** | 包含此设备的业务部门。 |
-| 区域 | 包含此设备的区域。 |
+| **区域** | 包含此设备的区域。 |
 | **站点** | 包含此设备的站点。 |
 | **区域** | 包含此设备的区域。 |
 | **设备** | 保护此设备的 Azure Defender for IoT 传感器。 |
 | **名称** | 此设备的名称，因为 IoT 已发现它。 |
-| 类型 | 设备的类型，例如 PLC 或 HMI。 |
+| **类型** | 设备的类型，例如 PLC 或 HMI。 |
 | **供应商** | 在 MAC 地址中定义的设备供应商的名称。 |
 | **操作系统** | 设备的操作系统。 |
 | **固件** | 设备的固件。 |
@@ -67,7 +67,7 @@ ms.locfileid: "97838151"
 
 - 登录到设备的用户
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="&quot;资产清单&quot; 屏幕上的数据表。":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="设备清单屏幕上的数据表。":::
 
 可以通过以下任一方法来集成数据：
 
@@ -131,13 +131,13 @@ ms.locfileid: "97838151"
 
 可以筛选设备清单以显示相关列。 例如，可以查看 PLC 设备信息。
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="资产清单的屏幕截图。":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="设备清单的屏幕截图。":::
 
 退出该窗口时，将清除该筛选器。
 
 若要多次使用同一筛选器，可以保存所需筛选器或筛选器的组合。 可以打开左窗格并查看已保存的筛选器：
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="资产清单屏幕。":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="设备清单屏幕。":::
 
 筛选设备清单：
 
@@ -187,7 +187,7 @@ ms.locfileid: "97838151"
 
 - **查看设备属性**：例如，监视设备和基本设备属性的传感器。 右键单击该设备可查看设备属性。
 
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="资产属性视图的屏幕截图。":::
+  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="设备属性视图的屏幕截图。":::
 
 - **与设备相关联的警报：** 右键单击该设备可查看相关警报。
 

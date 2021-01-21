@@ -1,22 +1,22 @@
 ---
 title: 用于部署的链接模板
-description: 介绍如何使用 Azure 资源管理器模板中的链接模板 (ARM 模板) 创建模块化模板解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
+description: 介绍如何使用 Azure 资源管理器模板（ARM 模板）中的链接模板创建一个模块化的模板解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: cac63ccdd13e245baf97695e9b138c29d3db4958
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/20/2021
+ms.openlocfilehash: dd810167e07f1bb23f9563936cb481652953ccd1
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760616"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624852"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
-若要部署复杂的解决方案，可以将 Azure 资源管理器模板 (ARM 模板) 拆分为多个相关模板，然后通过主模板将它们一起部署。 相关模板可以是嵌入在主模板内的单独文件或模板语法。 本文使用术语“链接模板”来指代一个通过主模板中的链接进行引用的单独模板文件。 它使用术语 **嵌套模板** 指代主模板内嵌套的模板语法。
+若要部署复杂的解决方案，可以将 Azure 资源管理器模板（ARM 模板）分解为许多相关模板，然后通过主模板将它们一起部署。 相关模板可以是嵌入在主模板内的单独文件或模板语法。 本文使用术语“链接模板”来指代一个通过主模板中的链接进行引用的单独模板文件。 它使用术语 **嵌套模板** 指代主模板内嵌套的模板语法。
 
 对于中小型解决方案，单个模板更易于理解和维护。 可以查看单个文件中的所有资源和值。 对于高级方案，使用链接模板可将解决方案分解为目标组件。 可以轻松地将这些模板重复用于其他方案。
 
-有关教程，请参阅 [教程：部署链接的模板](./deployment-tutorial-linked-template.md)。
+如需教程，请参阅[教程：部署链接模板](./deployment-tutorial-linked-template.md)。
 
 > [!NOTE]
 > 对于链接模板或嵌套模板，只能将部署模式设置为[增量](deployment-modes.md)。 但是，主模板可以在完整模式下进行部署。 如果在完整模式下部署主模板，并且链接模板或嵌套模板以相同的资源组为目标，则在链接模板或嵌套模板中部署的资源会包括在针对完整模式部署进行的评估中。 将在主模板和链接模板或嵌套模板中部署的资源的合并集合与资源组中的现有资源进行比较。 此合并集合中未包含的任何资源都会被删除。
@@ -162,7 +162,7 @@ ms.locfileid: "97760616"
 
 `exampleVar` 的值因 `expressionEvaluationOptions` 中 `scope` 属性的值而异。 下表显示了这两个作用域的结果。
 
-| `expressionEvaluationOptions` 作用域 | 输出 |
+| 评估范围 | 输出 |
 | ----- | ------ |
 | 内部 | from nested template |
 | outer（或默认值） | from parent template |
@@ -277,13 +277,136 @@ ms.locfileid: "97760616"
 }
 ```
 
+使用嵌套模板中的安全参数值时请小心。 如果将作用域设置为 "外部"，则安全值将在部署历史记录中存储为纯文本。 在部署历史记录中查看模板的用户可以看到安全值。 改为使用内部范围或向父模板添加需要安全值的资源。
+
+以下摘录显示了哪些值是安全的，哪些值是不安全的。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "Username for the Virtual Machine."
+      }
+    },
+    "adminPasswordOrKey": {
+      "type": "securestring",
+      "metadata": {
+        "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
+      }
+    }
+  },
+  ...
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2020-06-01",
+      "name": "mainTemplate",
+      "properties": {
+        ...
+        "osProfile": {
+          "computerName": "mainTemplate",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPasswordOrKey')]" // Yes, secure because resource is in parent template
+        }
+      }
+    },
+    {
+      "name": "outer",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "outer"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Compute/virtualMachines",
+              "apiVersion": "2020-06-01",
+              "name": "outer",
+              "properties": {
+                ...
+                "osProfile": {
+                  "computerName": "outer",
+                  "adminUsername": "[parameters('adminUsername')]",
+                  "adminPassword": "[parameters('adminPasswordOrKey')]" // No, not secure because resource is in nested template with outer scope
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "inner",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "adminPasswordOrKey": {
+              "value": "[parameters('adminPasswordOrKey')]"
+          },
+          "adminUsername": {
+              "value": "[parameters('adminUsername')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "adminUsername": {
+              "type": "string",
+              "metadata": {
+                "description": "Username for the Virtual Machine."
+              }
+            },
+            "adminPasswordOrKey": {
+              "type": "securestring",
+              "metadata": {
+                "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
+              }
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Compute/virtualMachines",
+              "apiVersion": "2020-06-01",
+              "name": "inner",
+              "properties": {
+                ...
+                "osProfile": {
+                  "computerName": "inner",
+                  "adminUsername": "[parameters('adminUsername')]",
+                  "adminPassword": "[parameters('adminPasswordOrKey')]" // Yes, secure because resource is in nested template and scope is inner
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
 > [!NOTE]
 >
 > 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请使用 `inner` 作用域或将嵌套模板转换为链接模板。
 
 ## <a name="linked-template"></a>链接的模板
 
-若要链接模板，请将 [部署资源](/azure/templates/microsoft.resources/deployments) 添加到主模板。 在 `templateLink` 属性中，指定要包含的模板的 URI。 以下示例链接到存储帐户中的模板。
+若要链接模板，请将 [部署资源](/azure/templates/microsoft.resources/deployments) 添加到主模板。 在 `templateLink` 属性中，指定要包括的模板的 URI。 以下示例链接到存储帐户中的模板。
 
 ```json
 {
@@ -310,9 +433,9 @@ ms.locfileid: "97760616"
 }
 ```
 
-引用链接模板时，`uri` 的值不能是本地文件或只能在本地网络上使用的文件。 Azure 资源管理器必须能够访问该模板。 提供可下载为 HTTP 或 HTTPS 的 URI 值。
+引用链接模板时，`uri` 的值不能是本地文件或只能在本地网络上使用的文件。 Azure 资源管理器必须能够访问该模板。 提供可下载的 HTTP 或 HTTPS 形式的 URI 值。
 
-你可以使用包含 HTTP 或 HTTPS 的参数引用模板。 例如，一种常见模式是使用 `_artifactsLocation` 参数。 可以使用如下所示的表达式来设置链接模板：
+可以使用包含 HTTP 或 HTTPS 的参数来引用模板。 例如，一种常见模式是使用 `_artifactsLocation` 参数。 可以使用如下所示的表达式来设置链接模板：
 
 ```json
 "uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]"
@@ -375,16 +498,16 @@ ms.locfileid: "97760616"
 
 ## <a name="template-specs"></a>模板规格
 
-您可以创建将主模板及其链接模板打包到可部署的单个实体的 [模板规范](template-specs.md) ，而不是在可访问的终结点上维护链接的模板。 模板规范是 Azure 订阅中的资源。 这使你可以轻松地与组织中的用户共享模板。 使用 azure RBAC)  (Azure 基于角色的访问控制来授予对模板规范的访问权限。此功能目前处于预览阶段。
+你可创建一个[模板规范](template-specs.md)，将主模板及其链接模板打包到可部署的单个实体中，而不是在可访问的终结点上维护链接模板。 模板规格是 Azure 订阅中的资源。 这使你可以轻松地与组织中的用户安全地共享模板。 可使用 Azure 基于角色的访问控制 (Azure RBAC) 来授予对模板规格的访问权限。此功能目前以预览版提供。
 
 有关详细信息，请参阅：
 
-- [教程：创建包含链接模板的模板规范](./template-specs-create-linked.md)。
-- [教程：将模板规范部署为链接模板](./template-specs-deploy-linked-template.md)。
+- [教程：创建具有链接模板的模板规格](./template-specs-create-linked.md)。
+- [教程：将模板规格部署为链接模板](./template-specs-deploy-linked-template.md)。
 
 ## <a name="dependencies"></a>依赖项
 
-与其他资源类型一样，可以在链接模板之间设置依赖关系。 如果一个链接模板中的资源必须部署在第二个链接模板中的资源之前，请设置第二个模板依赖于第一个模板。
+与其他资源类型一样，你可以在链接模板之间设置依赖关系。 如果某个链接模板中的资源必须在第二个链接模板中的资源之前部署，请设置第二个模板依赖于第一个模板。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/linked-dependency.json" highlight="10,22,24":::
 
@@ -396,7 +519,7 @@ ms.locfileid: "97760616"
 
 前面的示例演示了用于模板链接的硬编码 URL 值。 这种方法可能适用于某个简单的模板，但不适用于一组大型模块化模板。 相反，可以创建一个存储主模板的基 URL 的静态变量，并从基 URL 动态创建用于链接模板的 URL。 这种方法的好处是可以轻松地移动或派生模板，因为只需在主模板中更改静态变量。 主模板会在整个分解后的模板中传递正确的 URI。
 
-下面的示例演示如何使用基 URL 来创建两个 Url 用于链接模板 (`sharedTemplateUrl` 和 `vmTemplateUrl`) 。
+以下示例演示如何使用基 URL 来创建两个用于链接模板的 URL（`sharedTemplateUrl` 和 `vmTemplateUrl`）。
 
 ```json
 "variables": {
@@ -406,7 +529,7 @@ ms.locfileid: "97760616"
 }
 ```
 
-还可以使用 [deployment()](template-functions-deployment.md#deployment) 获取当前模板的基 URL，并使用该 URL 来获取同一位置其他模板的 URL。 如果模板位置发生变化或者想要避免对模板文件中的 URL 进行硬编码，则此方法非常有用。 `templateLink`仅当链接到带有 URL 的远程模板时才会返回属性。 如果使用的是本地模板，该属性不可用。
+还可以使用 [deployment()](template-functions-deployment.md#deployment) 获取当前模板的基 URL，并使用该 URL 来获取同一位置其他模板的 URL。 如果模板位置发生变化或者想要避免对模板文件中的 URL 进行硬编码，则此方法非常有用。 仅当链接到带有 URL 的远程模板时，才会返回 `templateLink` 属性。 如果使用的是本地模板，该属性不可用。
 
 ```json
 "variables": {
@@ -425,9 +548,9 @@ ms.locfileid: "97760616"
 
 ## <a name="using-copy"></a>使用副本
 
-若要使用嵌套模板创建资源的多个实例，请 `copy` 在资源级别添加元素 `Microsoft.Resources/deployments` 。 或者，如果范围是 `inner` ，则可以在嵌套模板中添加副本。
+若要使用嵌套的模板创建资源的多个实例，请在 `Microsoft.Resources/deployments` 资源的级别添加 `copy` 元素。 或者，如果范围为 `inner`，则可以在嵌套模板中添加副本。
 
-以下示例模板演示如何将 `copy` 与嵌套模板结合使用。
+以下示例模板展示了如何将 `copy` 与嵌套的模板配合使用。
 
 ```json
 "resources": [
@@ -606,7 +729,7 @@ done
 目前，无法链接到位于 [Azure 存储防火墙](../../storage/common/storage-network-security.md)后面的存储帐户中的模板。
 
 > [!IMPORTANT]
-> 请考虑创建 [模板规范](template-specs.md)，而不是使用 SAS 令牌保护链接模板。模板规范将主模板及其链接模板安全地存储为 Azure 订阅中的资源。 使用 Azure RBAC 向需要部署模板的用户授予访问权限。
+> 请考虑创建[模板规格](template-specs.md)，而不是使用 SAS 令牌保护链接模板。模板规格将主模板及其链接模板作为资源安全地存储在 Azure 订阅中。 使用 Azure RBAC 向需要部署模板的用户授予访问权限。
 
 以下示例演示在链接到模板时如何传递 SAS 令牌：
 
@@ -636,7 +759,7 @@ done
 }
 ```
 
-在 PowerShell 中，使用以下命令获取容器的令牌并部署模板。 请注意， `containerSasToken` 参数是在模板中定义的。 它不是命令中的参数 `New-AzResourceGroupDeployment` 。
+在 PowerShell 中，使用以下命令获取容器的令牌并部署模板。 注意，`containerSasToken` 参数是在模板中定义的。 它不是 `New-AzResourceGroupDeployment` 命令中的参数。
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -682,7 +805,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要学习教程，请参阅 [教程：部署链接的模板](./deployment-tutorial-linked-template.md)。
-* 若要了解如何为资源定义部署顺序，请参阅 [定义 ARM 模板中部署资源的顺序](define-resource-dependency.md)。
-* 若要了解如何定义一个资源而创建多个实例，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。
-* 有关在存储帐户中设置模板和生成 SAS 令牌的步骤，请参阅 [使用 arm 模板部署资源和 Azure PowerShell](deploy-powershell.md) 或 [使用 arm 模板部署资源和 Azure CLI](deploy-cli.md)。
+* 若要完成教程，请参阅[教程：部署链接模板](./deployment-tutorial-linked-template.md)。
+* 若要了解如何为资源定义部署顺序，请参阅[在 ARM 模板中定义资源的部署顺序](define-resource-dependency.md)。
+* 若要了解如何定义一个资源但要创建它的多个实例，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。
+* 有关在存储帐户中设置模板和生成 SAS 令牌的步骤，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)或[使用 ARM 模板和 Azure CLI 部署资源](deploy-cli.md)。

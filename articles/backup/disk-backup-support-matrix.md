@@ -4,12 +4,12 @@ description: 提供支持设置的摘要，并限制 Azure 磁盘备份。
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 950651148237c7b9374c378e27ef5cd76697ae9e
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 099e83d8a2fb109da862657265dad8be8143f608
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557356"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624928"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>预览版中的 Azure 磁盘备份支持矩阵 () 
 
@@ -55,6 +55,8 @@ Azure 磁盘备份在以下区域提供预览版：美国中部。
 - 目前不能修改备份策略，并且无法更改在配置磁盘备份时分配给备份实例的快照资源组。
 
 - 目前，配置磁盘备份的 Azure 门户体验最多只能有20个磁盘来自同一订阅。
+
+- 目前 (预览) 期间，不支持使用 PowerShell 和 Azure CLI 来配置磁盘的备份和还原。
 
 - 配置备份时，选择要备份的磁盘以及要存储快照的快照资源组必须属于同一订阅。 不能为该磁盘的订阅之外的特定磁盘创建增量快照。 详细了解托管磁盘的 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 。 有关如何选择快照资源组的详细信息，请参阅  [配置备份](backup-managed-disks.md#configure-backup)。
 

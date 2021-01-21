@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0a443ba7b41615fc62882bd8de6bf077c6b5a137
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7cb805f60ba9feb0ae2d1483b2ab2df4e03639d8
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838283"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625408"
 ---
 # <a name="import-device-information-to-a-sensor"></a>将设备信息导入传感器
 
@@ -67,7 +67,7 @@ ms.locfileid: "97838283"
 
 导入 IP 地址、OS 和修补程序级别：
 
-1. 从[帮助中心](https://cyberx-labs.zendesk.com/hc/en-us)下载[assets_info_2 的 up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data)文件，并按如下所示输入信息：
+1. 从[帮助中心](https://cyberx-labs.zendesk.com/hc/en-us)下载[devices_info_2 的 up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data)文件，并按如下所示输入信息：
 
    - **Ip 地址**：输入设备 IP 地址。
 
@@ -85,7 +85,7 @@ ms.locfileid: "97838283"
 
 导入授权状态：
 
-1. 从 "IoT 帮助中心" 下载并保存 [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) 文件。 验证是否已将文件保存为 CSV。
+1. 从 "IoT 帮助中心" 下载并保存 [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) 文件。 验证是否已将文件保存为 CSV。
 
 2. 输入如下所示的信息：
 
@@ -154,7 +154,7 @@ ms.locfileid: "97838283"
 
 导入 IP 地址、OS 和修补程序级别：
 
-1. 从[帮助中心](https://cyberx-labs.zendesk.com/hc/en-us)下载[assets_info_2 的 up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data)文件，并按如下所示输入信息：
+1. 从[帮助中心](https://cyberx-labs.zendesk.com/hc/en-us)下载[devices_info_2 的 up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data)文件，并按如下所示输入信息：
 
    - **Ip 地址**：设备 ip 地址。
 
@@ -172,7 +172,7 @@ ms.locfileid: "97838283"
 
 导入授权状态：
 
-1. 从 "IoT 帮助中心" 下载并保存 [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) 文件。 验证是否已将文件保存为 CSV。
+1. 从 "IoT 帮助中心" 下载并保存 [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) 文件。 验证是否已将文件保存为 CSV。
 
 2. 输入如下所示的信息：
 
@@ -190,6 +190,6 @@ ms.locfileid: "97838283"
 
 ## <a name="see-also"></a>另请参阅
 
-[控制所监视的流量](how-to-control-what-traffic-is-monitored.md)
+[控制要监视的流量](how-to-control-what-traffic-is-monitored.md)
 
 [调查设备清单中的传感器检测](how-to-investigate-sensor-detections-in-a-device-inventory.md)

@@ -150,7 +150,7 @@
               href: data-box-disk-limits.md
             - name: 检查安全性
               href: data-box-disk-security.md
-            - name: 常见问题
+            - name: 常见问题解答
               href: data-box-disk-faq.md
         - name: 如何
           items:
@@ -241,6 +241,9 @@
           href: /powershell/module/az.databox
         - name: .NET API
           href: /dotnet/api/overview/azure/databox/management
+        - name: Azure Policy 内置策略定义
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: 资源
       items:
         - name: Data Box 产品

@@ -4,12 +4,12 @@ description: 本文总结了 Azure 中继混合连接 .NET 标准 API 的一些�
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 44d5800c08b49118e99a678e31d02e5b7a1f550c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 724fb1a62b82036b4a0fa8b9f4f3608293f608a9
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935664"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625125"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 中继混合连接 .NET 标准 API 概述
 
@@ -83,7 +83,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>接收数据
 
-[HybridConnectionStream][HCStream] 类允许进行双向通信。 在大多数情况下，都会持续地从流接收信息。 如果正在从流读取文本，则还需使用 [StreamReader](/dotnet/api/system.io.streamreader?view=netcore-3.1) 对象，以便于分析数据。 例如，可以将数据读取为文本，而不能读取为 `byte[]`。
+[HybridConnectionStream][HCStream] 类允许进行双向通信。 在大多数情况下，都会持续地从流接收信息。 如果正在从流读取文本，则还需使用 [StreamReader](/dotnet/api/system.io.streamreader) 对象，以便于分析数据。 例如，可以将数据读取为文本，而不能读取为 `byte[]`。
 
 以下代码可从流中读取各行文本，直到请求取消为止：
 
@@ -110,14 +110,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>发送数据
 
-建立连接后，即可将消息发送到中继终结点。 由于连接对象继承 [Stream](/dotnet/api/system.io.stream?view=netcore-3.1)，因此以 `byte[]` 形式发送数据。 以下示例介绍如何执行此操作：
+建立连接后，即可将消息发送到中继终结点。 由于连接对象继承 [Stream](/dotnet/api/system.io.stream)，因此以 `byte[]` 形式发送数据。 以下示例介绍如何执行此操作：
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-但是，如果要直接发送文本，而无需每次都对字符串进行编码，则可以使用 [StreamWriter](/dotnet/api/system.io.streamwriter?view=netcore-3.1) 对象包装 `hybridConnectionStream` 对象。
+但是，如果要直接发送文本，而无需每次都对字符串进行编码，则可以使用 [StreamWriter](/dotnet/api/system.io.streamwriter) 对象包装 `hybridConnectionStream` 对象。
 
 ```csharp
 // The StreamWriter object only needs to be created once

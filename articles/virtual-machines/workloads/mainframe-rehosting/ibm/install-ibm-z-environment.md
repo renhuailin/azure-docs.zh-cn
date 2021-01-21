@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: c12a812f66345a26701b2a1623487fd262ede4be
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9958fa07d6e814cdf886c3f559d57ae1e397264a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968326"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625075"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>&Azure 上的开发/测试环境安装 IBM zD
 
@@ -40,7 +40,7 @@ Azure 和 Azure Stack 支持以下版本：
 
 本文介绍如何在 Azure 上设置 (zD&T) Enterprise Edition 的 Z 开发和测试环境。 然后，可以使用 zD&T Enterprise Edition web 服务器在 Azure 上创建和管理基于 Z 的环境。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 > [!NOTE]
 > IBM 只允许在开发/测试环境中安装 zD&T Enterprise Edition，*而不* 是在生产环境中安装。
@@ -96,12 +96,13 @@ Web 服务器的安装文件为 **ZDT \_ Install \_ \_ 12.0.0.1. tgz**。 它包
 
     ```
     cd ZDT
-    chmod 755 ZDT\_Install\_EE\_V12.0.0.0.tgz
+    tar zxvf ZDT\_Install\_EE\_V12.0.0.0.tgz
     ```
 
 2. 运行安装程序：
 
     ```
+    chmod 755 ZDT\_Install\_EE\_V12.0.0.0.x86_64
     ./ZDT_Install_EE_V12.0.0.0.x86_64
     ```
 

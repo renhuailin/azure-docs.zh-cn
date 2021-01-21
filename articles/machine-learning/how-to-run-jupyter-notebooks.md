@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: cdd8783daf9e1e1458f47e773eb3b6ccedfbae83
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599286"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624551"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作区中运行 Jupyter 笔记本
 
 了解如何直接在 Azure 机器学习 studio 中的工作区中运行 Jupyter 笔记本。 用户不但可以在工作区中启动 [Jupyter](https://jupyter.org/) 或 [JupyterLab](https://jupyterlab.readthedocs.io)，还可以直接编辑和运行笔记本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://aka.ms/AMLFree)。
 * 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
@@ -342,7 +342,14 @@ ms.locfileid: "98599286"
 
 有关计算实例的详细信息，可以访问[工作室](https://ml.azure.com)的“计算”页。
 
+## <a name="troubleshooting"></a>疑难解答
+
+* 如果无法连接到笔记本，请确保 **未** 禁用 web 套接字通信。 要使计算实例 Jupyter 功能正常工作，必须启用 web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。 
+
+* 在专用链接工作区中部署计算实例时，只能从虚拟网络内部访问。 如果使用的是自定义 DNS 或主机文件，请为 <实例名称> 添加一个条目 <region> 。具有工作区专用终结点专用 IP 地址的 instances.azureml.ms。 有关详细信息，请参阅[自定义 DNS](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns?tabs=azure-cli) 一文。
+    
 ## <a name="next-steps"></a>后续步骤
 
 * [运行第一个试验](tutorial-1st-experiment-sdk-train.md)
 * [使用快照备份文件存储](../storage/files/storage-snapshots-files.md)
+* [在安全环境中工作](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)

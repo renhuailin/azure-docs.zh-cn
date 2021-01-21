@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 8e26a4d996e4c1767856b3dd98ae318d8992a89b
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 8047e340f3262ba84484f5a8b57c17bf34a4af73
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562686"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625159"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
@@ -34,7 +34,7 @@ ms.locfileid: "98562686"
 - NPM 的 ExpressRoute 监视器功能仅支持 Windows Server（2008 SP1 或更高版本）操作系统。
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>是否可以使用 Linux 计算机作为 NPM 中的监视节点？
-使用基于 Linux 的节点监视网络的功能现已正式发布。 在 [此处](../../virtual-machines/extensions/oms-linux.md)Acccess 代理。 Linux 代理仅为 NPM 的性能监视器功能提供监视功能，不适用于服务连接监视器和 ExpressRoute 监视器功能
+使用基于 Linux 的节点监视网络的功能现已正式发布。 在 [此处](../../virtual-machines/extensions/oms-linux.md)Acccess 代理。 
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM 进行监视所用的节点要满足哪些大小要求？
 要在节点 VM 上运行 NPM 解决方案以监视网络，节点应至少有 500 MB 内存和 1 个核心。 运行 NPM 不需要使用单独的节点。 该解决方案可以在运行了其他工作负荷的节点上运行。 在 CPU 使用率超过 5% 的情况下，该解决方案能够停止监视进程。

@@ -1,5 +1,5 @@
 ---
-title: 使用用于 IoT Api 的 Defender
+title: 使用 Defender for IoT API
 description: 使用外部 REST API 访问传感器和管理控制台发现的数据，并对该数据执行操作。
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: d49aa50b1b8843dfb5c3d32983ff0bb129543bb0
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 44ea6e8343203a9cb18947f31f45aa0b023178b0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838516"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624568"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>用于 IoT 传感器和管理控制台 Api 的 Defender
 
@@ -44,7 +44,7 @@ ms.locfileid: "97838516"
 
 5. 选择“完成”。 你创建的令牌将出现在 " **访问令牌** " 对话框中。
    
-   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="带填写令牌的 &quot;资产标记&quot; 对话框的屏幕截图":::
+   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="带填写令牌的 &quot;设备令牌&quot; 对话框的屏幕截图":::
 
    **用于** 指示上次接收此令牌的外部调用的时间。
 
@@ -114,8 +114,8 @@ ms.locfileid: "97838516"
 |--|--|--|--|
 | **id** | Numeric | 否 | - |
 | **ipAddresses** | JSON 数组 | 是 | IP 地址 (可以为 internet 地址或具有双 Nic 的设备使用多个地址)  |
-| name | 字符串 | 否 | - |
-| type | 字符串 | 否 | 未知、工程工作站、PLC、HMI、Historian、域控制器、数据库服务器、无线访问点、路由器、交换机、服务器、工作站、IP 照相机、打印机、防火墙、终端工作站、VPN 网关、Internet 或多播和广播 |
+| name  | 字符串 | 否 | - |
+| type  | 字符串 | 否 | 未知、工程工作站、PLC、HMI、Historian、域控制器、数据库服务器、无线访问点、路由器、交换机、服务器、工作站、IP 照相机、打印机、防火墙、终端工作站、VPN 网关、Internet 或多播和广播 |
 | **macAddresses** | JSON 数组 | 是 | 对于具有双 Nic 的设备，MAC 地址 (可以是多个地址)  |
 | **operatingSystem** | 字符串 | 是 | - |
 | **engineeringStation** | 布尔 | 否 | True 或 False |
@@ -344,7 +344,7 @@ ms.locfileid: "97838516"
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| name | 字符串 | 否 | - |
+| name  | 字符串 | 否 | - |
 | **命令** | 字符串数组 | 否 | - |
 
 #### <a name="response-example"></a>响应示例
@@ -832,7 +832,7 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| name | 字符串 | 否 | - |
+| name  | 字符串 | 否 | - |
 | **ipAddresses** | JSON 数组 | 否 | - |
 | **securityScore** | Numeric | 否 | - |
 | **采购** | 字符串 | 是 |  |
@@ -848,7 +848,7 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 |--|--|--|--|
 | **名称** | 字符串 | 是 | - |
 | **类型** | 字符串 | 是 | - |
-| **Version** | 字符串 | 是 | - |
+| **版本** | 字符串 | 是 | - |
 | **latestVersion** | 字符串 | 是 | - |
 
 #### <a name="vulnerabilities-fields"></a>漏洞字段
@@ -1081,7 +1081,7 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
 | **address** | 字符串 | IP 地址 |
-| name | 字符串 | - |
+| name  | 字符串 | - |
 | **firstDetectionTime** | Numeric | Epoch (UTC)  |
 | lastSeen | Numeric | Epoch (UTC)  |
 
@@ -1109,7 +1109,7 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 | **macAddress** | 字符串 | MAC 地址 |
 | **采购** | 字符串 | 供应商名称 |
 | **地址** | 字符串 | IP 地址或 N/A |
-| name | 字符串 | 设备名称或 N/A |
+| name  | 字符串 | 设备名称或 N/A |
 | **无线** | 字符串 | 不，怀疑或是 |
 
 **connectionsBetweenSubnets**
@@ -1506,7 +1506,7 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 #### <a name="query-parameters"></a>查询参数
 
-| **名称** | 类型 | **可以为 Null** |
+| **名称** | **类型** | **可以为 Null** |
 |--|--|--|
 | **username** | 字符串 | 否 |
 | **password** | 字符串 | 否 |
@@ -1615,7 +1615,7 @@ response:
 
 #### <a name="device-fields"></a>设备字段
 
-| **名称** | 类型 | **可以为 Null** |
+| **名称** | **类型** | **可以为 Null** |
 |--|--|--|
 | **username** | 字符串 | 否 |
 | **password** | 字符串 | 否 |
@@ -1690,7 +1690,7 @@ response:
 
 #### <a name="device-fields"></a>设备字段
 
-| **名称** | 类型 | **可以为 Null** |
+| **名称** | **类型** | **可以为 Null** |
 |--|--|--|
 | **admin_username** | 字符串 | 否 |
 | **admin_password** | 字符串 | 否 |
@@ -1788,8 +1788,8 @@ response:
 | **zoneId** | Numeric | 是 | - |
 | **siteId** | Numeric | 是 | - |
 | **ipAddresses** | JSON 数组 | 是 | IP 地址 (可以为 internet 地址或具有双 Nic 的设备使用多个地址)  |
-| name | 字符串 | 否 | - |
-| type | 字符串 | 否 | 未知、工程工作站、PLC、HMI、Historian、域控制器、数据库服务器、无线访问点、路由器、交换机、服务器、工作站、IP 照相机、打印机、防火墙、终端工作站、VPN 网关、Internet 或多播和广播 |
+| name  | 字符串 | 否 | - |
+| type  | 字符串 | 否 | 未知、工程工作站、PLC、HMI、Historian、域控制器、数据库服务器、无线访问点、路由器、交换机、服务器、工作站、IP 照相机、打印机、防火墙、终端工作站、VPN 网关、Internet 或多播和广播 |
 | **macAddresses** | JSON 数组 | 是 | 对于具有双 Nic 的设备，MAC 地址 (可以是多个地址)  |
 | **operatingSystem** | 字符串 | 是 | - |
 | **engineeringStation** | 布尔 | 否 | True 或 False |
@@ -2409,7 +2409,7 @@ request:
 
 #### <a name="device-fields"></a>设备字段
 
-| **名称** | 类型 | **可以为 Null** |
+| **名称** | **类型** | **可以为 Null** |
 |--|--|--|
 | **username** | 字符串 | 否 |
 | **password** | 字符串 | 否 |
@@ -2490,7 +2490,7 @@ response:
 
 #### <a name="device-fields"></a>设备字段
 
-| **名称** | 类型 | **可以为 Null** |
+| **名称** | **类型** | **可以为 Null** |
 |--|--|--|
 | **username** | 字符串 | 否 |
 | **password** | 字符串 | 否 |
@@ -2565,7 +2565,7 @@ response:
 
 #### <a name="device-fields"></a>设备字段
 
-| **名称** | 类型 | **可以为 Null** |
+| **名称** | **类型** | **可以为 Null** |
 |--|--|--|
 | **admin_username** | 字符串 | 否 |
 | **admin_password** | 字符串 | 否 |

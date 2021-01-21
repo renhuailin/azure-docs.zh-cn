@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 16320e3f667c413778e166bfaacf81347226f4b1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 00d19d7b554e8a867412cfb982e1377fd90bd936
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202736"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624517"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>服务总线的 Azure 安全基线
 
@@ -231,9 +231,9 @@ ms.locfileid: "98202736"
 
 - [适用于 Azure 服务总线的内置角色](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole) 
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure 安全中心监视**：是
 
@@ -507,7 +507,7 @@ Microsoft 管理 Azure 服务总线的底层基础结构，并实施了严格控
 
 - [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -605,7 +605,7 @@ Microsoft 管理 Azure 服务总线的底层基础结构，并实施了严格控
 
 - [适用于服务总线的 Azure 内置策略](./policy-reference.md)
 
-- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -731,7 +731,7 @@ Microsoft 管理 Azure 服务总线的底层基础结构，并实施了严格控
 
 - [如何配置客户管理的密钥以加密静态 Azure 服务总线数据](configure-customer-managed-key.md)
 
-- [如何在 Azure 中还原密钥保管库密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中还原密钥保管库密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Azure 安全中心监视**：不适用
 

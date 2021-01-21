@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
-ms.date: 11/09/2020
+ms.date: 01/20/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 636f63b3f7e43bd8f27d1df58ab82d24bd19a616
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 8420aecbc160fa6df2640d2ba0ae8a8b77702b67
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033742"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624534"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 
 本文介绍了如何管理对 Azure 机器学习工作区的访问权限（授权）。 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 用于管理对 Azure 资源的访问权限，例如，创建新资源或使用现有资源的权限。 Azure Active Directory (Azure AD) 中的用户会获得特定角色，这些角色授予对资源的访问权限。 Azure 提供内置角色和创建自定义角色的功能。
 
 > [!TIP]
-> 虽然本文着重介绍的是 Azure 机器学习，但 Azure ML 依赖的单个服务也提供了它们自己的 RBAC 设置。 例如，使用本文中的信息，可以配置谁能向 Azure Kubernetes 服务上部署为 Web 服务的模型提交评分请求。 但 Azure Kubernetes 服务提供了其自己的 Azure 角色集。 有关对于 Azure 机器学习可能有用的服务特定的 RBAC 信息，请参阅以下链接：
+> 虽然本文着重介绍的是 Azure 机器学习，但 Azure ML 依赖的单个服务也提供了它们自己的 RBAC 设置。 例如，使用本文中的信息，可以配置谁能向 Azure Kubernetes 服务上部署为 Web 服务的模型提交评分请求。 但 Azure Kubernetes 服务具有它自己的一组 Azure 角色。 有关对于 Azure 机器学习可能有用的服务特定的 RBAC 信息，请参阅以下链接：
 >
 > * [控制对 Azure Kubernetes 群集资源的访问权限](../aks/azure-ad-rbac.md)
 > * [使用 Azure RBAC 进行 Kubernetes 授权](../aks/manage-azure-rbac.md)
@@ -128,7 +128,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 ### <a name="azure-machine-learning-operations"></a>Azure 机器学习操作
 
-有关可用于自定义角色的操作（Actions 和 NotActions）的详细信息，请参阅[资源提供程序操作](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)。 你还可以使用以下 Azure CLI 命令来列出操作：
+有关可用于自定义角色的操作（Actions 和 NotActions）的详细信息，请参阅[资源提供程序操作](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)。 还可以使用以下 Azure CLI 命令来列出操作：
 
 ```azurecli-interactive
 az provider operation show –n Microsoft.MachineLearningServices
@@ -161,6 +161,10 @@ az role definition update --role-definition update_def.json --subscription <sub-
 > [!NOTE]
 > 角色更新可能需要花费 15 分钟到一小时才能应用于该作用域中的所有角色分配。
 
+## <a name="use-azure-resource-manager-templates-for-repeatability"></a>使用适用于可重复性的 Azure 资源管理器模板
+
+如果预计需要重新创建复杂的角色分配，Azure 资源管理器模板可能会很大。 " [201-计算机-了解依赖关系-角色分配" 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) 显示了如何在源代码中指定角色分配以供重用。 
+
 ## <a name="common-scenarios"></a>常见方案
 
 下表汇总了 Azure 机器学习活动以及在最小作用域内执行它们所需的权限。 例如，如果可以使用某个工作区作用域（第 4 列）执行某个活动，自然也可以使用具有该权限的所有更高的作用域：
@@ -186,7 +190,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 ### <a name="user-assigned-managed-identity-with-azure-ml-compute-cluster"></a>用于 Azure ML 计算群集的用户分配的托管标识
 
-若要将用户分配的标识分配给 Azure 机器学习的计算群集，需要具有写入权限才能创建计算和 [托管标识操作员角色](../role-based-access-control/built-in-roles.md#managed-identity-operator)。 若要详细了解如何将 Azure RBAC 与托管标识配合使用，请阅读[如何管理用户分配的标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
+若要为 Azure 机器学习计算群集分配用户分配的标识，需要有写入权限来创建该计算，并且需要[托管标识操作员角色](../role-based-access-control/built-in-roles.md#managed-identity-operator)。 若要详细了解如何将 Azure RBAC 与托管标识配合使用，请阅读[如何管理用户分配的标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 ### <a name="mlflow-operations"></a>MLflow 操作
 

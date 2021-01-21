@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: f3058953e702f40fa1500441e382898b0314ddbb
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9c868685ad943c1ab9ab263a164111e46294c042
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838143"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625425"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>调查设备清单中的传感器检测
 
@@ -147,7 +147,7 @@ ms.locfileid: "97838143"
 
 - Windows Server 2003/2008/2012/2016
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>准备阶段
 
 若要使用该脚本，需要满足以下要求：
 

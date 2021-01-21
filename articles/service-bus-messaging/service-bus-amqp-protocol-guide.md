@@ -3,12 +3,12 @@ title: Azure 服务总线和事件中心内的 AMQP 1.0 协议指南 | Microsoft
 description: Azure 服务总线和事件中心内 AMQP 1.0 协议的表达与描述指南
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e001327c2c7da08cb9a3552f97fc9a7d8b7921a2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736708"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624483"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
 
@@ -18,11 +18,11 @@ AMQP 1.0 是中间件供应商（例如 Microsoft 和 Red Hat）与许多消息�
 
 ## <a name="goals"></a>目标
 
-本文总结了 AMQP 1.0 消息传送规范的核心概念，以及 [OASIS AMQP 技术委员会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) 开发的扩展规范，并说明了 Azure 服务总线如何根据这些规范进行实现和构建。
+本文总结了 AMQP 1.0 消息传递规范的核心概念以及由 [OASIS AMQP 技术委员会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)制定的扩展规范，并说明了 Azure 服务总线如何根据这些规范进行实现和构建。
 
 目的是要让在任何平台上使用任何现有 AMQP 1.0 客户端堆栈的开发人员通过 AMQP 1.0 与 Azure 服务总线交互。
 
-常见的通用 AMQP 1.0 堆栈，如 [Apache Qpid Proton](https://qpid.apache.org/proton/index.html) 或 [AMQP.NET Lite](https://github.com/Azure/amqpnetlite)，实现所有核心 AMQP 1.0 协议元素，如会话或链接。 这些基础元素有时使用较高级别的 API 包装;Apache Proton 甚至提供两个，命令式 Messenger API 和反应性反应器 API。
+常见的通用型 AMQP 1.0 堆栈（例如 [Apache Qpid Proton](https://qpid.apache.org/proton/index.html) 或 [AMQP.NET Lite](https://github.com/Azure/amqpnetlite)）会实现所有核心 AMQP 1.0 协议元素（如会话或链接）。 这些基本元素有时以更高级别的 API 进行包装；Apache Proton 甚至提供两个 API：命令式 Messenger API 和反应式 Reactor API。
 
 在以下介绍中，我们假设 AMQP 连接、会话和链接的管理以及帧传输和流量控制的处理都由相应的堆栈（例如 Apache Proton-C）处理，而不需要应用程序开发人员特别注意。 抽象假设存在一些 API 基元（例如连接能力）以及创建某种形式的 sender 和 receiver 抽象对象的能力，并分别具有 `send()` 和 `receive()` 的某种形式的操作   。
 
@@ -42,7 +42,7 @@ AMQP 1.0 协议被设计为可扩展，允许进一步规范以增强其功能�
 
 本部分说明 AMQP 1.0 与 Azure 服务总线的基本使用方式，其中包括创建连接、会话和链接，以及与服务总线实体（例如队列、主题和订阅）相互传输消息。
 
-了解 AMQP 工作原理的最权威来源是 [AMQP 1.0 规范](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html)，但规范是为了精确引导实现而不是教授协议而编写的。 本部分着重于尽可能介绍描述服务总线如何使用 AMQP 1.0 的术语。 有关 AMQP 的更完整介绍，以及 AMQP 1.0 的更广泛介绍，可查看[此视频课程][this video course]。
+若要了解 AMQP 工作原理，可参阅最权威的 [AMQP 1.0 规范](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html)，但此规范是为了精确引导实现而编写的，不是为了传授协议知识。 本部分着重于尽可能介绍描述服务总线如何使用 AMQP 1.0 的术语。 有关 AMQP 的更完整介绍，以及 AMQP 1.0 的更广泛介绍，可查看[此视频课程][this video course]。
 
 ### <a name="connections-and-sessions"></a>连接和会话
 
@@ -67,24 +67,24 @@ Azure 服务总线随时都需要使用 TLS。 它支持通过 TCP 端口 5671 �
 
 这种基于时段的模型大致类似于 TCP 基于时段的流量控制概念，但属于套接字内的会话级别。 协议具有允许多个并发会话的概念，因此高优先级的流量可能冲过限制的正常流量，就像高速公路上的快速车道一样。
 
-Azure 服务总线目前只对每个连接使用一个会话。 Service Bus 最大帧大小为262144字节， (256-K 字节) 用于服务总线标准。 对于服务总线高级和事件中心，1048576 (1 MB) 。 服务总线不强加任何特定会话级别限制时段，但是在链接级别流量控制中定期重置时段（请参阅[下一部分](#links)）。
+Azure 服务总线目前只对每个连接使用一个会话。 服务总线标准版的服务总线帧大小上限为 262,144 字节 (256 KB)。 服务总线高级版和事件中心的该上限为 1,048,576 (1 MB)。 服务总线不强加任何特定会话级别限制时段，但是在链接级别流量控制中定期重置时段（请参阅[下一部分](#links)）。
 
 连接、通道和会话是暂时性的。 如果基础连接失效，则必须重新创建连接、TLS 隧道、SASL 授权上下文和会话。
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP 出站端口要求
 
-通过 TCP 使用 AMQP 连接的客户端需要在本地防火墙中打开端口 5671 和 5672。 如果启用了 [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) 功能，除了这些端口，可能还需要打开其他端口。 `EnableLinkRedirect` 是一项新的消息传递功能，它可以在接收消息时跳过一个跃点，从而有助于提高吞吐量。 客户端将开始通过端口范围 104XX 直接与后端服务通信，如下图所示。 
+通过 TCP 使用 AMQP 连接的客户端需要在本地防火墙中打开端口 5671 和 5672。 如果启用了 [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect) 功能，除了这些端口，可能还需要打开其他端口。 `EnableLinkRedirect` 是一项新的消息传递功能，它可以在接收消息时跳过一个跃点，从而有助于提高吞吐量。 客户端将开始通过端口范围 104XX 直接与后端服务通信，如下图所示。 
 
 ![目标端口列表][4]
 
-如果防火墙阻止了这些端口，则 .NET 客户端将失败，并返回 SocketException（“试图以访问权限所禁止的方式访问套接字”）。 可以通过在连接字符串中设置来禁用该功能 `EnableAmqpLinkRedirect=false` ，这会强制客户端通过端口5671与远程服务进行通信。
+如果防火墙阻止了这些端口，则 .NET 客户端将失败，并返回 SocketException（“试图以访问权限所禁止的方式访问套接字”）。 可以通过在连接字符串中设置 `EnableAmqpLinkRedirect=false` 来禁用该功能，这将强制客户端通过端口 5671 与远程服务通信。
 
 
 ### <a name="links"></a>链接
 
 AMQP 通过链接传输消息。 链接是在能以单个方向传输消息的会话中创建的通信路径；传输状态协商通过链接在已连接方之间双向进行。
 
-![显示在两个容器之间具有链接连接的会话的屏幕截图。][2]
+![此屏幕截图显示了在两个容器之间进行链接连接的会话。][2]
 
 任一容器可以在现有的会话中随时创建链接，这使 AMQP 不同于其他许多协议（包括 HTTP 和 MQTT），其中启动传输和传输路径是创建套接字连接之一方的独占权限。
 
@@ -120,7 +120,7 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 
 除了以前介绍过的会话级别流量控制模型以外，每个链接都有自己的流量控制模型。 会话级别流量控制可防止容器必须一次处理太多帧，链接级别流量控制让应用程序负责控制它想要从链接处理的消息数目以及时机。
 
-![日志的屏幕截图，显示源、目标、源端口、目标端口和协议名称。 在第一行中，目标端口 10401 (0x28 1) 以黑色列出。][4]
+![日志的屏幕截图，显示源、目标、源端口、目标端口和协议名称。 在第一行中，目标端口 10401 (0x28 A 1) 带有黑色边框。][4]
 
 在链接上，传输只发生于发送者有足够的“链接信用额度”时。 链接信用额度是接收者使用 *流程* 行为原语所设置的计数器，其范围是链接。 将链接信用额度分配给发送者时，将通过传递消息来尝试用完该信用额度。 每个消息传递使剩余的链接信用额度减 1。 当链接信用额度用完时，便会停止传递。
 
@@ -240,14 +240,14 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 
 | 注释映射键 | 使用情况 | API 名称 |
 | --- | --- | --- |
-| x-opt-scheduled-enqueue-time | 声明消息应于何时出现在实体上 |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x-opt-partition-key | 应用程序定义的键，指示消息应进入哪个分区。 | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
-| x-opt-via-partition-key | 应用程序定义的分区键值，指示某个事务在何时用于通过传输队列发送消息。 | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
-| x-opt-enqueued-time | 服务定义的 UTC 时间，代表将消息加入队列的实际时间。 输入时忽略。 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
-| x-opt-sequence-number | 服务定义的唯一编号，用于分配给消息。 | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
-| x-opt-offset | 服务定义的消息的排队序列号。 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
-| x-opt-locked-until | 服务定义。 日期和时间，在此之前消息将在队列/订阅中被锁定。 | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
-| x-opt-deadletter-source | 服务定义。 原始消息的来源，前提是从死信队列中接收消息。 | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+| x-opt-scheduled-enqueue-time | 声明消息应于何时出现在实体上 |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc) |
+| x-opt-partition-key | 应用程序定义的键，指示消息应进入哪个分区。 | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey) |
+| x-opt-via-partition-key | 应用程序定义的分区键值，指示某个事务在何时用于通过传输队列发送消息。 | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey) |
+| x-opt-enqueued-time | 服务定义的 UTC 时间，代表将消息加入队列的实际时间。 输入时忽略。 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) |
+| x-opt-sequence-number | 服务定义的唯一编号，用于分配给消息。 | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) |
+| x-opt-offset | 服务定义的消息的排队序列号。 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber) |
+| x-opt-locked-until | 服务定义。 日期和时间，在此之前消息将在队列/订阅中被锁定。 | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc) |
+| x-opt-deadletter-source | 服务定义。 原始消息的来源，前提是从死信队列中接收消息。 | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
 
 ### <a name="transaction-capability"></a>事务功能
 

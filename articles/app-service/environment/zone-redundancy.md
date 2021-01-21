@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1e88aac4209f7960b2589cf43f59ead4bd129134
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 383b5bb5c7295fe54efda883e47b9b2338286de5
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605067"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624719"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>应用服务环境的可用性区域支持
 
@@ -30,14 +30,12 @@ ms.locfileid: "90605067"
 可以在以下任何区域中创建区域性 ILB ASE：
 
 - 澳大利亚东部
-- 巴西南部
 - 加拿大中部
 - 美国中部
 - 美国东部
 - 美国东部 2
 - 美国东部 2 (EUAP) 
 - 法国中部 
-- 德国中西部
 - 日本东部
 - 北欧
 - 西欧
@@ -51,9 +49,9 @@ ms.locfileid: "90605067"
 
 必须使用 ARM 模板创建区域性 ILB ASE。 通过 ARM 模板创建区域性 ILB ASE 后，可以通过 Azure 门户和 CLI 查看它以及与它进行交互。  仅在初次创建区域性 ILB ASE 时才需要使用 ARM 模板。
 
-在 ARM 模板中指定区域性 ILB ASE 时需要进行的唯一更改是新的 zones 属性。 zones 属性应当设置为值“1”、“2”或“3”，具体取决于 ILB ASE 应当固定到的逻辑可用性区域。
+ARM 模板中所需的唯一更改是指定一个区域性 ILB ASE。 " _*_区域_*_ " 属性应设置为 "1"、"2" 或 "3" 的值，具体取决于 ILB ASE 应固定到的逻辑可用性区域。
 
-下面的示例 ARM 模板代码片段显示了新的 zones 属性，该属性指定应将 ILB ASE 固定到区域 2。
+下面的示例 ARM 模板代码段显示了新 _*_区域_*_ 属性，该属性指定应将 ILB ASE 固定到区域2。
 
 ```
    "resources": [
@@ -91,6 +89,6 @@ ms.locfileid: "90605067"
 
 客户可以通过执行以下步骤来验证是否已正确配置应用服务环境将数据存储在单个区域中： 
 
-1. 使用 [资源浏览器](https://resources.azure.com)，导航到应用服务环境的 ARM 资源。  Ase */hostingEnvironments*下列出。
+1. 使用 [资源浏览器](https://resources.azure.com)，导航到应用服务环境的 ARM 资源。  Ase 在 "_providers/Microsoft.Web/hostingEnvironments *" 下列出。
 2. 如果 ARM JSON 语法的视图中存在 *区域* 属性，并且该属性包含一个值为 "1"、"2" 或 "3" 的单值 JSON 数组，则 ASE 将 zonally 部署，客户数据将保留在同一区域中。
 2. 如果 " *区域* " 属性不存在，或者属性没有前面指定的有效区域值，则不会对 ASE 进行 zonally 部署，并且不会以独占方式将客户数据存储在同一区域中。

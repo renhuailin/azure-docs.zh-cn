@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/08/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: de3ff6ead1f0dd86e07c86b992a720a676a2095c
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 399eee06d472204eaf6dbc333f15cee7c4373739
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838439"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624636"
 ---
 # <a name="define-global-access-control"></a>定义全局访问控制
 
@@ -20,7 +20,7 @@ ms.locfileid: "97838439"
 
 若要支持全局且更复杂的用户访问权限需求，可以创建基于业务部门、区域和站点的全局业务拓扑。 然后，可以定义有关这些实体的用户访问权限。
 
-使用适用于业务拓扑的访问工具，通过更好地控制用户在 Azure Defender for IoT 平台中管理和分析资产的位置，帮助组织实现零信任策略。
+使用适用于业务拓扑的访问工具，通过更好地控制用户在 Azure Defender for IoT 平台中管理和分析设备的位置，帮助组织实现零信任策略。
 
 ## <a name="about-access-groups"></a>关于访问组
 

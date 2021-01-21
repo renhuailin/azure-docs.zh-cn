@@ -3,12 +3,12 @@ title: 获取事件网格资源的访问密钥
 description: 本文介绍如何获取事件网格主题或域的访问密钥
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: e5694fe0b5f22f7f76285c344627005ea727ae3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e258cebe1652178a67c292d0cccab3a151eddf7
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105857"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624819"
 ---
 # <a name="get-access-keys-for-event-grid-resources-topics-or-domains"></a>获取事件网格资源（主题或域）的访问密钥
 访问密钥用于对将事件发布到 Azure 事件网格资源（主题和域）的应用程序进行身份验证。 我们建议定期重新生成密钥并安全地存储它们。 你拥有两个访问密钥，因此，在重新生成其中一个密钥时，可以使用另一个密钥来保持连接。
@@ -21,13 +21,13 @@ ms.locfileid: "86105857"
 :::image type="content" source="./media/get-access-keys/azure-portal.png" alt-text="“访问密钥”页":::
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-使用 [Get-AzEventGridTopicKey](/powershell/module/az.eventgrid/get-azeventgridtopickey?view=azps-4.3.0) 命令获取主题的访问密钥。 
+使用 [Get-AzEventGridTopicKey](/powershell/module/az.eventgrid/get-azeventgridtopickey) 命令获取主题的访问密钥。 
 
 ```azurepowershell-interactive
 Get-AzEventGridTopicKey -ResourceGroup <RESOURCE GROUP NAME> -Name <TOPIC NAME>
 ```
 
-使用 [Get-AzEventGridDomainKey](/powershell/module/az.eventgrid/get-azeventgriddomainkey?view=azps-4.3.0) 命令获取域的访问密钥。 
+使用 [Get-AzEventGridDomainKey](/powershell/module/az.eventgrid/get-azeventgriddomainkey) 命令获取域的访问密钥。 
 
 ```azurepowershell-interactive
 Get-AzEventGridDomainKey -ResourceGroup <RESOURCE GROUP NAME> -Name <DOMAIN NAME>

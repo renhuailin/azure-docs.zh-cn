@@ -3,12 +3,12 @@ title: 理解查询语言
 description: 介绍 Resource Graph 表以及可用于 Azure Resource Graph 的 Kusto 数据类型、运算符和函数。
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: f94023d47153dc64ca78e0386edd87a9821515be
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 137b5c40097d7de82e156b4a0869d7257d3e9964
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251720"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624752"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -27,7 +27,7 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每个运算�
 Resource Graph 为其存储的有关 Azure 资源管理器资源类型及其属性的数据提供多个表。 一些表可以与 `join` 或 `union` 运算符配合使用，以便从相关资源类型获取属性。 下面是 Resource Graph 中可用表的列表：
 
 |Resource Graph 表 |`join`其他表是否可以？ |说明 |
-|---|---|
+|---|---|---|
 |资源 |是 |如果未在查询中定义，则为默认表。 此处显示了大多数资源管理器资源类型和属性。 |
 |ResourceContainers |是 |包括订阅（预览版 -- `Microsoft.Resources/subscriptions`）和资源组 (`Microsoft.Resources/subscriptions/resourcegroups`) 资源类型和数据。 |
 |AdvisorResources |是（预览版） |包括与 `Microsoft.Advisor` 相关的资源。 |
@@ -41,7 +41,7 @@ Resource Graph 为其存储的有关 Azure 资源管理器资源类型及其属�
 |SecurityResources |Partial，仅联接 _到_ 。 （预览版） |包括与 `Microsoft.Security` 相关的资源。 |
 |ServiceHealthResources |否 |包括与 `Microsoft.ResourceHealth` 相关的资源。 |
 
-有关包含资源类型的完整列表，请参阅[参考：支持的表和资源类型](../reference/supported-tables-resources.md)。
+有关包含资源类型的完整列表，请参阅 [引用：支持的表和资源类型](../reference/supported-tables-resources.md)。
 
 > [!NOTE]
 >  Resources 是默认表。 查询 Resources 表时，无需提供表名称，除非使用 `join` 或 `union`。 但是，建议的做法是始终在查询中包含初始表。
@@ -132,7 +132,7 @@ Resource Graph 支持部分 KQL [数据类型](/azure/kusto/query/scalar-data-ty
 |[join](/azure/kusto/query/joinoperator) |[具有订阅名称的密钥保管库](../samples/advanced.md#join) |支持的联接类型：[innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/kusto/query/joinoperator#inner-join)、[leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 单个查询中的最大值为 3 `join` ，其中1可能是跨表 `join` 。 如果在 `join` _资源_ 与 _ResourceContainers_ 之间使用所有跨表，则允许3个跨表 `join` 。 不允许使用自定义联接策略，如广播联接。 对于可使用的表 `join` ，请参阅 [资源关系图表](#resource-graph-tables)。 |
 |[limit](/azure/kusto/query/limitoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |的同义词 `take` 。 不适用于 [Skip](./work-with-data.md#skipping-records)。 |
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | 旧运算符，请改用 `mv-expand`。 RowLimit 最大值为 400。 默认值为 128。 |
-|[mv-expand](/azure/kusto/query/mvexpandoperator) |[列出具有特定写入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |RowLimit 最大值为 400。 默认值为 128。 |
+|[mv-expand](/azure/kusto/query/mvexpandoperator) |[列出具有特定写入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |RowLimit 最大值为 400。 默认值为 128。 单个查询中的 `mv-expand` 限制为 3。|
 |[order](/azure/kusto/query/orderoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`sort` 的同义词 |
 |[project](/azure/kusto/query/projectoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) | |
 |[project-away](/azure/kusto/query/projectawayoperator) |[删除结果中的列](../samples/advanced.md#remove-column) | |
@@ -142,6 +142,10 @@ Resource Graph 支持部分 KQL [数据类型](/azure/kusto/query/scalar-data-ty
 |[返回页首](/azure/kusto/query/topoperator) |[按名称及其 OS 类型显示前五个虚拟机](../samples/starter.md#show-sorted) | |
 |[union](/azure/kusto/query/unionoperator) |[将两个查询的结果合并为单个结果](../samples/advanced.md#unionresults) |允许使用单个表：_T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`ColumnName\] Table。 单个查询中的 `union` 分支限制为 3。 不允许对 `union` 分支表进行模糊解析。 可以在单个表中使用，也可以在 Resources 和 ResourceContainers 表中使用。 |
 |[where](/azure/kusto/query/whereoperator) |[显示包含存储的资源](../samples/starter.md#show-storage) | |
+
+`join` `mv-expand` 单个资源图形 SDK 查询中默认限制为3和3个运算符。 可以通过 " **帮助 + 支持**" 为租户请求增加这些限制。
+
+若要支持 "打开查询" 门户体验，Azure 资源图资源管理器具有比资源图形 SDK 更高的全局限制。
 
 ## <a name="query-scope"></a>查询范围
 

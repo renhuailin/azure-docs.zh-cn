@@ -1,5 +1,5 @@
 ---
-title: 在本地管理控制台中管理传感器
+title: 通过本地管理控制台管理传感器
 description: 了解如何通过管理控制台管理传感器，包括更新传感器版本、将系统设置推送到传感器，以及启用和禁用传感器上的引擎。
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 36db1b23d8fb17cec4fe981c938f8c7003543b4d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838166"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624585"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>通过管理控制台管理传感器
 
@@ -150,7 +150,7 @@ ms.locfileid: "97838166"
 | 策略冲突引擎 | 发生策略冲突时，与已学习或已配置策略中定义的基线行为发生偏差。 | "未经授权的 HTTP 用户代理" 警报。 此警报表明，未学习或批准策略的应用程序将用作设备上的 HTTP 客户端。 这可能是该设备上的新 web 浏览器或应用程序。 |
 | 恶意软件引擎 | 恶意软件引擎会检测恶意网络活动。 | "怀疑恶意活动 (Stuxnet) " 警报。 此警报表明传感器发现可疑的网络活动与 Stuxnet 恶意软件相关，这是一个针对工业控制和 SCADA 网络的高级持久威胁。 |
 | 异常引擎 | 恶意软件引擎检测到网络行为中的异常。 | "通信通道中的定期行为"。 这是一个组件，它检查网络连接并查找数据传输的周期性或循环行为，这在工业网络中很常见。 |
-| 操作引擎 | 此引擎检测操作事件或无法正常工作的实体。 | "怀疑资产断开连接 (无响应) " 警报。 当设备不响应预定义时间段内的任何请求时，将触发此警报。 这可能表示设备关闭、断开或故障。
+| 操作引擎 | 此引擎检测操作事件或无法正常工作的实体。 | `Device is Suspected to be Disconnected (Unresponsive)` 发出. 当设备不响应预定义时间段内的任何请求时，将触发此警报。 这可能表示设备关闭、断开或故障。
 |
 
 启用或禁用连接传感器的引擎：
