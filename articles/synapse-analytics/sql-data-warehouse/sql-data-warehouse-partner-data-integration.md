@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 88e9d83d7d7f9a139702d2af8142a43edc065f0d
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f207509baba2499adf5d5d00df0ccd0503a25491
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249375"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665185"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics 数据集成合作伙伴
 
@@ -38,7 +38,7 @@ ms.locfileid: "98249375"
 | ![Incorta](./media/sql-data-warehouse-partner-data-integration/incorta-logo.png) |**Incorta**<br>Incorta 使组织可以从原始数据中转到在 Azure 中快速发现可操作的见解，方法是自动执行通常需要用于分析复杂数据的各种数据准备步骤。 （. 利用称为直接数据映射和 Incorta 蓝图的专有技术 (预先构建的内容库和从真实客户实现中捕获的最佳实践) ，客户在访问、组织和呈现数据以及深入了解关键业务决策方面获得了前所未有的速度和简易性。|[产品页面](https://www.incorta.com/solutions/microsoft-azure-synapse)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/incorta.incorta?tab=Overview)<br>|
 | ![Informatica](./media/sql-data-warehouse-partner-data-integration/informatica_logo.png) |**1. Informatica Cloud Services for Azure**<br> Informatica Cloud 提供同类最佳的解决方案来实现自助式数据迁移、集成和管理功能。 客户可从各种不同的来源快速可靠地将 PB 量级的数据导入和导出到 Azure。 适用于 Azure 的 Informatica 云服务为 Azure Synapse、SQL 数据库、Blob 存储、Data Lake Store 和 Azure Cosmos DB 提供大容量的高性能原生连接。 <br><br> **2. Informatica PowerCenter** PowerCenter 是一个元数据驱动的数据集成平台，可以直接启动和加速数据集成项目，以快于人工编程的速度将数据传送到业务平台。 它用作数据集成投资的基础 |**Informatica Cloud services for Azure**<br>[产品页面](https://www.informatica.com/products/cloud-integration.html)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.iics-winter)<br><br> **Informatica PowerCenter**<br>[产品页面](https://www.informatica.com/products/data-integration/powercenter.html)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.powercenter/)<br>|
 | ![Information Builders](./media/sql-data-warehouse-partner-data-integration/informationbuilders_logo.png) |**Information Builders（Omni-Gen 数据管理）**<br>Information Builder 的 Omni-Gen 数据管理平台提供了数据集成、数据质量和主数据管理解决方案。 无论格式、位置、数据量或延迟如何，都能通过它轻松访问、移动和混合各种数据。|[产品页面](https://www.informationbuilders.com/3i-platform)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm) |
-| ![Loome](./media/sql-data-warehouse-partner-data-integration/loome-logo.png) |**Loome**<br>Loome 提供与 Azure Synapse 无缝集成的唯一调控工作台。 它使你可以将数据快速加载到云中，并将整个数据源以 Parquet 格式加载到 ADLS 中。 你可以跨数据工程、数据科学和大型计算工作负荷（包括与 Azure 数据工厂、Python、SQL、Synapse Spark 和 Databricks 的本机集成）来协调数据管道。 Loome 使你能够轻松监视数据质量异常：启用 Synapse 作为你的战略数据质量中心，保留已解决问题的审核线索，并使用完全自动化的数据质量引擎主动管理数据质量，从而生成目标为目标的受众警报。| [产品页面](https://www.loomesoftware.com )<br> [Azure 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bizdataptyltd1592265042221.loome?tab=Overview) |
+| ![Loome](./media/sql-data-warehouse-partner-data-integration/loome-logo.png) |**Loome**<br>Loome 提供与 Azure Synapse 无缝集成的唯一调控工作台。 它使你可以将数据快速加载到云中，并将整个数据源以 Parquet 格式加载到 ADLS 中。 你可以跨数据工程、数据科学和 HPC 工作负荷（包括与 Azure 数据工厂、Python、SQL、Synapse Spark 和 Databricks 的本机集成）来协调数据管道。 Loome 使你能够轻松地监视数据质量异常，使 Synapse 成为你的战略数据质量中心。 Loome 保留已解决问题的审核线索，并使用完全自动化的数据质量引擎主动管理数据质量，同时生成面向公众的实时警报。| [产品页面](https://www.loomesoftware.com)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/bizdataptyltd1592265042221.loome?tab=Overview) |
 | ![Lyftron](./media/sql-data-warehouse-partner-data-integration/lyftron-logo.png) |**Lyftron**<br>Lyftron 新式数据中心将一个毫不费力的数据中心与数据源的敏捷访问相结合。 Lyftron 利用自动数据管道消除了传统的 ETL/ELT 瓶颈，并使 BI 用户能够立即通过 Azure Synapse、Spark & 雪花的新式云计算来访问数据。 Lyftron 连接器将任何源自动转换为规范化的、可查询的关系格式和复制。 它提供高级的安全、数据管理和转换功能，以及企业数据目录中的搜索功能。| [产品页面](https://lyftron.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/lyftron.lyftronapp?tab=Overview) |
 | ![Matillion](./media/sql-data-warehouse-partner-data-integration/matillion-logo.png) |**Matillion**<br>Matillion 是一款面向云数据仓库的数据转换软件。 只有 Matillion 才是专门为 Azure Synapse 构建的数据转换软件，它使企业能够将简单性、速度、缩放性和成本节省提升到新的水平。 Matillion 产品获得了各种规模的公司的很高评价和信任，可以满足它们的数据集成和转换需求。 详细了解如何使用 Matillion 的基于云的数据转换方法来解锁数据的潜力。| [产品页面](https://www.matillion.com/technology/cloud-data-warehouse/microsoft-azure-synapse/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/matillion.matillion-etl-azure-synapse?tab=Overview) |
 | ![oh22 HEDDA.IO](./media/sql-data-warehouse-partner-data-integration/heddaiowhitebg-logo.png) |**oh22 HEDDA <span></span>.IO**<br>oh22 HEDDA<span></span>.IO 是一款知识驱动型数据质量产品，它专为 Microsoft Azure 构建。 它使您可以生成知识库，并使用它来执行各种关键数据质量任务，包括数据的更正、扩充和标准化。 HEDDA <span></span> 。IO 还允许通过使用引用数据提供程序提供的基于云的引用数据服务进行数据清理，或由你开发和提供。| [产品页面](https://github.com/oh22is/HEDDA.IO)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/oh22.hedda-io) |

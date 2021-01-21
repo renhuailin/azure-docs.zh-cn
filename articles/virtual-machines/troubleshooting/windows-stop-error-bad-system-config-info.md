@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: cbfdb9a73f53e194b43010c0b2d84357aa3e2e5b
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 8d501bcc745ef19d15564951b8c0f29f9e2678ab
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631979"
+ms.locfileid: "98661300"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows 停止错误 - 0x00000074 错误系统配置信息
 
@@ -34,7 +34,7 @@ ms.locfileid: "98631979"
 如果致电支持人员，请向他们提供以下信息：
 停止代码*   *：BAD_SYSTEM_CONFIG_INFO*
 
-  ![Windows 停止代码 0x00000074，也显示为“BAD_SYSTEM_CONFIG_INFO”。 Windows 会通知用户其电脑遇到问题，需要重启。](./media/windows-stop-error-bad-system-config-info/1.png)
+  ![Windows 停止代码 0x00000074，也显示为“BAD_SYSTEM_CONFIG_INFO”。 Windows 会通知用户其电脑遇到问题，需要重启。](./media/windows-stop-error-bad-system-config-info/stop-code-0x00000074.png)
 
 ## <a name="cause"></a>原因
 
@@ -56,8 +56,8 @@ ms.locfileid: "98631979"
 1. 启用串行控制台和内存转储收集。
 1. 重新生成 VM。
 
-> [!NOTE]
-> 遇到此错误时，来宾操作系统 (OS) 无法正常运行。 将在脱机模式下进行故障排除才能解决此问题。
+   > [!NOTE]
+   > 遇到此错误时，来宾操作系统 (OS) 无法正常运行。 将在脱机模式下进行故障排除才能解决此问题。
 
 ### <a name="create-and-access-a-repair-vm"></a>创建和访问修复 VM
 
@@ -66,8 +66,8 @@ ms.locfileid: "98631979"
 1. 使用远程桌面连接来连接到修复 VM。
 1. 复制 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` 文件夹并将其保存在运行正常的磁盘分区或其他安全位置。 请备份此文件夹以防万一，因为你将编辑关键注册表文件。 
 
-> [!NOTE]
-> 复制 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` 文件夹作为备份，以备你需要回退对注册表所做的任何更改。
+   > [!NOTE]
+   > 复制 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` 文件夹作为备份，以备你需要回退对注册表所做的任何更改。
 
 ### <a name="check-for-hive-corruption"></a>检查配置单元损坏情况
 
@@ -80,7 +80,7 @@ ms.locfileid: "98631979"
 
    1. 如果配置单元未能打开，或者为空，则说明配置单元已损坏。 如果配置单元已损坏，请[开具支持工单](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
-     ![出现错误，指出注册表编辑器无法加载配置单元。](./media/windows-stop-error-bad-system-config-info/2.png)
+      ![出现错误，指出注册表编辑器无法加载配置单元。](./media/windows-stop-error-bad-system-config-info/cannot-load-hive-error.png)
 
    1. 如果配置单元正常打开，则 hive 未正确关闭。 继续执行步骤 5.
 
@@ -95,7 +95,7 @@ ms.locfileid: "98631979"
 
    **启用串行控制台**：
    
-   ```
+   ```ps
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
    ```
@@ -108,13 +108,13 @@ ms.locfileid: "98631979"
 
    **从损坏的 OS 磁盘加载注册表配置单元：**
 
-   ```
+   ```ps
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
    ```
 
    **在 ControlSet001 上启用：**
 
-   ```
+   ```ps
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -122,7 +122,7 @@ ms.locfileid: "98631979"
 
    **在 ControlSet002 上启用：**
 
-   ```
+   ```ps
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -130,7 +130,7 @@ ms.locfileid: "98631979"
 
    **卸载损坏的 OS 磁盘：**
 
-   ```
+   ```ps
    REG UNLOAD HKLM\BROKENSYSTEM
    ```
    

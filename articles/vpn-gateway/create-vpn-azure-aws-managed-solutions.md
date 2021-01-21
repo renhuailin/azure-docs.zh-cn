@@ -3,17 +3,17 @@ title: 使用托管解决方案在 Azure 和 AWS 之间创建 VPN
 description: 如何使用托管解决方案而不是 Vm 或设备在 Azure 与 AWS 之间创建 VPN 连接。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
-author: cherylmc
+author: ricmmartins
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.author: cherylmc
-ms.openlocfilehash: c1bc263ca67a7d05dbb0d40bb07ba1ae43c2db5c
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.author: ricmart
+ms.openlocfilehash: 3b9e60eb037182318e9d1ef7336565908a9c8f32
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605408"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664777"
 ---
 # <a name="create-a-vpn-connection-between-azure-and-aws-using-managed-solutions"></a>使用托管解决方案在 Azure 和 AWS 之间创建 VPN 连接
 

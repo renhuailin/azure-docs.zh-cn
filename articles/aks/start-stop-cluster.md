@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: bc756994cf0f6e12af1c1ad5a6c8db304b4253e3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 026da4237fe14726766b265e55930346293c71df
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968772"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662891"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>停止并启动 Azure Kubernetes 服务 (AKS) 群集 (预览) 
 
@@ -18,7 +18,7 @@ AKS 工作负荷可能不需要连续运行，例如仅在工作时间使用的�
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -28,14 +28,13 @@ AKS 工作负荷可能不需要连续运行，例如仅在工作时间使用的�
 使用群集启动/停止功能时，以下限制适用：
 
 - 只有虚拟机规模集支持的群集才支持此功能。
-- 预览期间，专用群集不支持此功能。
 - 已停止的 AKS 群集的群集状态将保留最多12个月。 如果群集停止了12个月以上，则无法恢复群集状态。 有关详细信息，请参阅 [AKS 支持策略](support-policies.md)。
 - 预览期间，在尝试停止群集之前，需要停止群集自动缩放程序 (CA) 。
 - 只能启动或删除已停止的 AKS 群集。 若要执行任何操作（例如缩放或升级），请先启动群集。
 
 ### <a name="install-the-aks-preview-azure-cli"></a>安装 `aks-preview` Azure CLI 
 
-还需要 *aks-preview* Azure CLI 扩展版本0.4.64 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展。 或使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
+还需要 *aks-preview* Azure CLI 扩展版本0.4.64 或更高版本。 使用 [az extension add][az-extension-add]命令安装 *aks-preview* Azure CLI 扩展。 或使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -55,13 +54,13 @@ az extension update --name aks-preview
 az feature register --namespace "Microsoft.ContainerService" --name "StartStopPreview"
 ```
 
-状态显示为“已注册”需要几分钟时间**。 使用 [az feature list][az-feature-list] 命令验证注册状态：
+状态显示为“已注册”需要几分钟时间。 使用 [az feature list][az-feature-list] 命令验证注册状态：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/StartStopPreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，请使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册：
+准备就绪后，请使用 [az provider register][az-provider-register]命令刷新 *ContainerService* 资源提供程序的注册：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -69,7 +68,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="stop-an-aks-cluster"></a>停止 AKS 群集
 
-可以使用 `az aks stop` 命令停止正在运行的 AKS 群集的节点和控制平面。 以下示例停止名为 *myAKSCluster*的群集：
+可以使用 `az aks stop` 命令停止正在运行的 AKS 群集的节点和控制平面。 以下示例停止名为 *myAKSCluster* 的群集：
 
 ```azurecli-interactive
 az aks stop --name myAKSCluster --resource-group myResourceGroup
@@ -100,7 +99,7 @@ az aks stop --name myAKSCluster --resource-group myResourceGroup
 ## <a name="start-an-aks-cluster"></a>启动 AKS 群集
 
 可以使用 `az aks start` 命令启动已停止的 AKS 群集的节点和控制平面。 重新启动群集，其中包含上一个控制面状态和代理节点数。  
-以下示例启动名为 *myAKSCluster*的群集：
+以下示例启动名为 *myAKSCluster* 的群集：
 
 ```azurecli-interactive
 az aks start --name myAKSCluster --resource-group myResourceGroup

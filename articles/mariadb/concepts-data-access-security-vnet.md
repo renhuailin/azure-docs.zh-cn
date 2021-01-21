@@ -3,15 +3,15 @@ title: VNet 服务终结点 - Azure Database for MariaDB
 description: 介绍了 VNet 服务终结点如何为 Azure Database for MariaDB 服务器工作。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: bd7d08e4f65612b9a76b63e8153603d043209ad3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0f90e64f2a20b6455d5a169025230b78e64287cc
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453378"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662672"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>对 Azure Database for MariaDB 使用虚拟网络服务终结点和规则
 
@@ -112,7 +112,7 @@ Azure RBAC 备用：
 
 - 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络，不适用于[经典部署模型][resource-manager-deployment-model-568f]网络。
 
-- 使用 Synapse 服务标记启用虚拟网络服务终结点 Azure Database for MariaDB，还可以为所有 **Azure 数据库服务** 启用终结点： Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL、Azure Sql 数据库和 Azure 分析。
+- 使用 **Microsoft.Sql** 服务标记为 Azure Database for MariaDB 启用虚拟网络服务终结点也会为以下所有 Azure 数据库服务启用终结点：Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL 数据库和 Azure Synapse Analytics。
 
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 

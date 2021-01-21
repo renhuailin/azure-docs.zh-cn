@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d6e738152e542617046834980d3e7c58e497093
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005899"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664675"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows 停止错误 - 状态无内存
 
@@ -45,6 +45,9 @@ ms.locfileid: "87005899"
 
 ### <a name="process-overview"></a>流程概述：
 
+> [!TIP]
+> 如果你有 VM 的最新备份，则可以尝试 [从备份还原 vm](../../backup/backup-azure-arm-restore-vms.md) ，以解决启动问题。
+
 1. 创建并访问修复 VM
 1. 释放磁盘上的空间
 1. 清除 BCD 存储中的错误内存
@@ -66,7 +69,7 @@ ms.locfileid: "87005899"
 
 1. 在 Windows Search 中，输入 `diskmgmt`，然后打开“磁盘管理”控制台。
 1. 确定附加到修复 VM 的受损磁盘。 通常，此磁盘列于控制台的最后，并且具有最大的数值。
-1. 请注意，如果在该磁盘中有一个保存 **EFI 系统分区**的分区，也没有为其分配字母值 (例如驱动器 *F：*) 。 如果所有分区都已分配驱动器号，你可跳过以释放磁盘上的空间。 否则，请继续向此磁盘分配一个驱动器号。
+1. 请注意，如果在该磁盘中有一个保存 **EFI 系统分区** 的分区，也没有为其分配字母值 (例如驱动器 *F：*) 。 如果所有分区都已分配驱动器号，你可跳过以释放磁盘上的空间。 否则，请继续向此磁盘分配一个驱动器号。
 
    ![磁盘管理控制台（附加磁盘为 "Disk 2"）以及未分配分区为 100 MB，为 "EFI 系统分区"。](./media/troubleshoot-windows-stop-error/3.png)
 

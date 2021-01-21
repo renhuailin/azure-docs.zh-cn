@@ -1,5 +1,5 @@
 ---
-title: 管理紧急访问管理员帐户 - Azure AD | Microsoft Docs
+title: 管理紧急访问管理帐户-Azure AD
 description: 本文介绍如何借助紧急访问帐户来防止意外地被锁在 Azure Active Directory (Azure AD) 组织之外的情况。
 services: active-directory
 author: markwahl-msft
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d93b92f3bb0adfe734ad439079afdfcaa6270e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6ef8e7ed662d8c0acfc7c43112d6d7edb1cb9a94
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834432"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660641"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问帐户
 
@@ -33,7 +33,7 @@ ms.locfileid: "94834432"
 在以下情况下，组织可能需要使用紧急访问帐户：
 
 - 用户帐户进行了联合，且由于手机网络中断或标识提供程序服务中断，联合身份验证当前不可用。 例如，如果在你的环境中的标识提供者主机停运，则当 Azure AD 重定向到其标识提供者时，用户可能无法登录。
-- 管理员通过 Azure AD 多重身份验证进行注册，其所有设备都不可用或服务不可用。 用户可能无法完成多重身份验证以激活角色。 例如，手机网络中断让用户无法应答电话呼叫或接收短信，而这是他们为其设备注册的仅有的两种身份验证机制。
+- 管理员通过 Azure AD 多重身份验证注册，而其单个设备或此服务都不可用。 用户可能无法完成多重身份验证以激活角色。 例如，手机网络中断让用户无法应答电话呼叫或接收短信，而这是他们为其设备注册的仅有的两种身份验证机制。
 - 具有最新全局管理访问权限的人员离开了组织。 Azure AD 将阻止删除最后一个全局管理员帐户，但它不会阻止从本地删除或禁用该帐户。 这两种情况都可能使组织无法恢复帐户。
 - 出现自然灾害等不可预见的紧急情况，导致手机或其他网络不可用。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "94834432"
 配置这些帐户时，必须满足以下要求：
 
 - 紧急访问帐户不应与组织中的任何单个用户相关联。 确保帐户未关联到任何员工提供的移动电话、会随单个员工流动的硬件令牌或其他特定于员工的凭据。 此预防措施介绍需要凭据而无法找到某个拥有凭据的员工时的情况。 请务必确保将任何已注册设备保存在与 Azure AD 有多种通信方式的已知安全位置。
-- 紧急访问帐户使用的身份验证机制应该不同于其他管理帐户（包括其他紧急访问帐户）使用的机制。  例如，如果你的常规管理员登录是通过本地 MFA 进行的，则 Azure AD MFA 将是一种不同的机制。  但是，如果 Azure AD MFA 是管理帐户身份验证的主要部分，则请考虑使用其他方法，例如通过自定义控件将条件访问与第三方 MFA 提供程序结合使用。
+- 紧急访问帐户使用的身份验证机制应该不同于其他管理帐户（包括其他紧急访问帐户）使用的机制。  例如，如果管理员可通过本地 MFA 正常登录，则 Azure AD MFA 是不同的机制。  但是，如果 Azure AD MFA 是管理帐户的主要身份验证部分，请考虑对这些帐户使用不同的方法，例如，通过自定义控件结合第三方 MFA 提供程序使用条件访问。
 - 设备或凭据不得过期，或者由于使用次数不多而划归到自动清理的范围内。  
 - 应将全局管理员角色分配设为紧急访问帐户的永久角色。 
 
@@ -60,7 +60,7 @@ ms.locfileid: "94834432"
 
 ## <a name="federation-guidance"></a>联合身份验证指南
 
-对于使用 AD 域服务和 ADFS 或类似标识提供者联合到 Azure AD 的组织，另一种做法是配置一个可由该标识提供者提供 MFA 声明的紧急访问帐户。  例如，紧急访问帐户可由证书和密钥对（例如，存储在智能卡上）提供安全保障。  当该用户在 AD 中进行身份验证时，ADFS 可向 Azure AD 提供声明，指示该用户满足 MFA 要求。  即使使用此方法，组织也仍需要提供基于云的紧急访问帐户，否则无法建立联合。 
+某些组织使用 AD 域服务和 ADFS 或类似的标识提供程序来联合 Azure AD。 [不应存在具有管理权限的本地帐户](../fundamentals/protect-m365-from-on-premises-attacks.md)。 在 Azure AD 外部对具有管理权限的帐户进行控制和或采购身份验证会在系统 () 出现中断或泄漏时增加不必要的风险。
 
 ## <a name="store-account-credentials-safely"></a>安全地存储帐户凭据
 

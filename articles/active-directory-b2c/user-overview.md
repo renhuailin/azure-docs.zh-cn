@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a8e08d0045d0520241341cc08fb800468ed6897
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: c3e6c1d6bfa83ef238ef38b25b189510cf142a38
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928607"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661079"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户帐户概述
 
@@ -38,7 +38,7 @@ ms.locfileid: "96928607"
 
 - “名称”和“用户名” - Name 属性包含用户的名和姓。 用户名是用户登录时输入的标识符。 用户名包括完整域。 用户名的域名部分必须是初始默认域名“your-domain.onmicrosoft.com”，或已验证的非联合[自定义域名](../active-directory/fundamentals/add-custom-domain.md)（例如“contoso.com”）。
 - 配置文件 - 通过用户数据的配置文件设置帐户。 可以输入名字、姓氏、职务和部门名称。 可以在创建帐户后编辑配置文件。
-- 组 - 使用组执行管理任务，例如一次为多个用户或设备分配许可证或权限。 可以将新帐户放入租户现有的[组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)中。
+- **组** -使用组来执行管理任务，例如将许可证或权限分配给多个用户或设备。 可以将新帐户放入租户现有的[组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)中。
 - 目录角色 - 需要指定用户帐户对租户中资源的访问级别。 可以使用以下权限级别：
 
     - 用户 - 用户可以访问分配的资源，但不能管理大多数租户资源。
@@ -70,7 +70,7 @@ ms.locfileid: "96928607"
 
 可以邀请外部用户作为来宾用户访问租户。 邀请来宾用户访问 Azure AD B2C 租户的典型方案是共享管理职责。 有关使用来宾帐户的示例，请参阅 [Azure Active Directory B2B 协作用户的属性](../active-directory/external-identities/user-properties.md)。
 
-在邀请来宾用户访问租户时，你需要提供收件人的电子邮件地址以及描述邀请的消息。 邀请链接会将用户转到同意页面，在该页面选中“开始使用”按钮并接受权限审核。 如果未将收件箱附加到电子邮件地址，则用户可以通过使用受邀凭据转到 Microsoft 页面来导航到同意页面。 然后，强制用户兑换邀请，方法就是单击电子邮件中的链接。 例如：`https://myapps.microsoft.com/B2CTENANTNAME`。
+在邀请来宾用户访问租户时，你需要提供收件人的电子邮件地址以及描述邀请的消息。 邀请链接使用户转到同意页。 如果未将收件箱附加到电子邮件地址，则用户可以通过使用受邀凭据转到 Microsoft 页面来导航到同意页面。 然后，强制用户兑换邀请，方法就是单击电子邮件中的链接。 例如：`https://myapps.microsoft.com/B2CTENANTNAME`。
 
 还可以使用 [Microsoft Graph API](/graph/api/invitation-post?view=graph-rest-beta) 来邀请来宾用户。
 
@@ -78,7 +78,7 @@ ms.locfileid: "96928607"
 
 使用者用户可以登录受 Azure AD B2C 保护的应用程序，但无法访问 Azure 门户等 Azure 资源。 使用者用户可以使用本地帐户或联合帐户，例如 Facebook 或 Twitter。 通过使用[注册或登录用户流](user-flow-overview.md)、使用 Microsoft Graph API 或使用 Azure 门户创建使用者帐户。
 
-可以指定使用自定义用户属性创建使用者用户帐户时收集的数据。 有关详细信息，请参阅在[在 Azure Active Directory B2C 中定义自定义属性](user-flow-custom-attributes.md)。
+你可以指定在创建使用者用户帐户时收集的数据。 有关详细信息，请参阅 " [添加用户属性" 和 "自定义用户输入](configure-user-input.md)"。
 
 有关管理使用者帐户的详细信息，请参阅[使用 Microsoft Graph 管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)。
 
