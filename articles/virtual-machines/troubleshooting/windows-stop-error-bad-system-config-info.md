@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cbfdb9a73f53e194b43010c0b2d84357aa3e2e5b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977025"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631979"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows 停止错误 - 0x00000074 错误系统配置信息
 
@@ -32,7 +32,7 @@ ms.locfileid: "91977025"
 你的电脑遇到问题，需要重启 *。你可以重启。
 有关此问题和可能的修补程序的详细信息，请访问 http://windows.com/stopcode
 如果致电支持人员，请向他们提供以下信息：
-停止代码* ** ** *：BAD_SYSTEM_CONFIG_INFO*
+停止代码*   *：BAD_SYSTEM_CONFIG_INFO*
 
   ![Windows 停止代码 0x00000074，也显示为“BAD_SYSTEM_CONFIG_INFO”。 Windows 会通知用户其电脑遇到问题，需要重启。](./media/windows-stop-error-bad-system-config-info/1.png)
 
@@ -47,6 +47,9 @@ ms.locfileid: "91977025"
 ## <a name="solution"></a>解决方案
 
 ### <a name="process-overview"></a>过程概述：
+
+> [!TIP]
+> 如果你有 VM 的最新备份，则可以尝试 [从备份还原 vm](../../backup/backup-azure-arm-restore-vms.md) ，以解决启动问题。
 
 1. 创建和访问修复 VM。
 1. 检查配置单元损坏情况。

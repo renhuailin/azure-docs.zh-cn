@@ -21,6 +21,8 @@
       href: author-sign-policy.md
     - name: 创建专用终结点 - PowerShell
       href: private-endpoint-powershell.md
+    - name: Azure 诊断监视器
+      href: azure-diagnostic-monitoring.md
     - name: SGX 证明代码示例
       href: /samples/browse/?expanded=azure&terms=attestation
 - name: 示例
@@ -43,7 +45,7 @@
       href: workflow.md
     - name: 查看审核日志
       href: audit-logs.md
-- name: 参考资料
+- name: 参考
   items:
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'

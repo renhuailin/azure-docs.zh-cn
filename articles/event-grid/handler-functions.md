@@ -3,12 +3,12 @@ title: 在 Azure 中将函数用作 Azure 事件网格事件的事件处理程�
 description: 描述如何使用在中创建的函数以及作为事件网格事件的事件处理程序由 Azure Functions 承载的函数。
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 5a1ec575b58829a422e4d263ae0324e0343d5ad3
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: beddc35f2dd8db974492d14aec27ce754a74737c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034962"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632506"
 ---
 # <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>将函数用作事件网格事件的事件处理程序
 
@@ -75,7 +75,7 @@ ms.locfileid: "98034962"
 可以在 Azure 资源管理器模板中设置 maxEventsPerBatch 和 preferredBatchSizeInKilobytes。 有关详细信息，请参阅 [Microsoft.EventGrid eventSubscriptions 模板参考](/azure/templates/microsoft.eventgrid/eventsubscriptions)。
 
 ### <a name="azure-cli"></a>Azure CLI
-可以使用 [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create&preserve-view=true) 或 [az eventgrid event-subscription update](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update&preserve-view=true) 命令，通过以下参数配置与批处理相关的设置：`--max-events-per-batch` 或 `--preferred-batch-size-in-kilobytes`。
+可以使用 [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create&preserve-view=true) 或 [az eventgrid event-subscription update](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_update&preserve-view=true) 命令，通过以下参数配置与批处理相关的设置：`--max-events-per-batch` 或 `--preferred-batch-size-in-kilobytes`。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 可以使用 [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription)  或 [Update-AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) cmdlet，通过以下参数配置与批处理相关的设置：`-MaxEventsPerBatch` 或 `-PreferredBatchSizeInKiloBytes`。

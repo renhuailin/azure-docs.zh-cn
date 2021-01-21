@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 03d52611c89012d1132b4a27820f7f47e6cdd512
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 83635b732318a4ada76d1d71c1ce419cae8b35e9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242018"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630134"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Azure Database for PostgreSQL 基础结构双加密
 
@@ -59,12 +59,6 @@ Azure Database for PostgreSQL 提供的加密功能可以一起使用。 下面�
 对于 Azure Database for PostgreSQL，使用服务托管密钥对基础结构进行双重加密的支持具有以下限制：
 
 * 对此功能的支持仅限于 **常规用途** 和 **内存优化** 定价层。
-* 可以在以下区域中创建具有基础结构双加密的 Azure Database for PostgreSQL：
-
-   * 美国东部
-   * 美国中南部
-   * 美国西部 2
-   
 * 此功能仅支持在支持存储高达 16 TB 的区域和服务器上。 有关支持存储高达 16 TB 的 Azure 区域列表，请参阅 [存储文档](concepts-pricing-tiers.md#storage)。
 
     > [!NOTE]

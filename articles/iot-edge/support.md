@@ -4,16 +4,16 @@ description: 了解可以运行 Azure IoT Edge 守护程序和运行时的操作
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/12/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b1bd437da50ae5989e46ac5c5f881b28b0e99703
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: b17f1f32a3e49e9161afe92d62b85a162affcd9f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539907"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630524"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
 
@@ -50,27 +50,46 @@ Azure IoT Edge 在大多数可以运行容器的操作系统上运行；但是�
 
 主机 OS 系列必须始终与模块容器内部使用的来宾 OS 系列相匹配。 换言之，在 Linux 上只能使用 Linux 容器，在 Windows 上只能使用 Windows 容器。 使用 Windows 时，仅支持进程隔离容器，而不支持 Hyper-V 隔离容器。  
 
-<br>
-<center>
-
-![主机 OS 与来宾 OS 相匹配](./media/support/edge-on-device.png)
-</center>
+Windows 上的 IoT Edge 适用于 windows 主机上运行的 Linux 虚拟机中的 IoT Edge。 通过这种方式，可以在 Windows 设备上运行 Linux 模块。
 
 ### <a name="tier-1"></a>第 1 层
 
-下表中列出的系统（不管是公开发布版还是公共预览版）受 Microsoft 的支持，并在每个新版本中进行了测试。 
+Microsoft 支持下表中列出的系统，该系统公开发布或公开预览版，并通过每个新版本进行测试。
+
+Azure IoT Edge 支持构建为 Linux 或 Windows 容器的模块。 可以将 linux 容器部署到 Linux 设备，或在 Windows 上使用适用于 Linux 的 IoT Edge 部署到 Windows 设备。 Windows 容器只能部署到 Windows 设备。
+
+#### <a name="linux-containers"></a>Linux 容器
+
+构建为 Linux 容器的模块可以部署到 Linux 或 Windows 设备。 对于 Linux 设备，IoT Edge 运行时直接安装在主机设备上。 对于 Windows 设备，使用 IoT Edge 运行时预生成的 Linux 虚拟机在主机设备上运行。
+
+Windows 上适用于 Windows 的 IoT Edge 目前为公共预览版，但建议在 Windows 设备上运行 IoT Edge。
 
 | 操作系统 | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | Raspberry Pi OS Stretch |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
-| [Ubuntu Server 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公共预览版  |
-| [Ubuntu Server 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公共预览版 |
-| [Windows 10 IoT 企业版](/windows/iot-core/windows-iot-enterprise)内部版本 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows 10 IoT 核心版](/windows/iot-core/windows-iot-core)内部版本 17763 | ![Windows IoT Core + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows Server 2019](/windows-server/get-started-19/rel-notes-19) 内部版本 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows Server IoT 2019](/windows/iot-core/windows-server) 内部版本 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Ubuntu Server 16.04 | ![Ubuntu Server 16.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公共预览版  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公共预览版 |
+| Windows 10 专业版 | 公共预览版 |  |  |
+| Windows 10 企业版 | 公共预览版 |  |  |
+| Windows 10 IoT 企业版 | 公共预览版 |  |  |
+| Windows Server 2019 | 公共预览版 |  |  |
 
-上面列出的 Windows 操作系统是在 Windows 上运行 Windows 容器的设备的要求，这是受支持的唯一生产配置。 适用于 Windows 的 Azure IoT Edge 安装包允许在 Windows 上使用 Linux 容器；但是，只能将此配置用于开发和测试。 
+所有 Windows 操作系统都必须是版本 1809 (版本 17763) 或更高版本。
+
+#### <a name="windows-containers"></a>Windows 容器
+
+构建为 Windows 容器的模块只能部署到 Windows 设备。
+
+| 操作系统 | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Windows 10 IoT 企业版 | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows 10 IoT Core<sup>1</sup><br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server 2019  | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server IoT 2019<br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+
+<sup>1</sup> 版本1.0.10 后将不支持 Windows 10 IoT Core
+
+所有 Windows 操作系统都必须是版本 1809 (版本 17763) 。 Windows 的特定内部版本是 IoT Edge Windows 所必需的，因为 Windows 容器的版本必须与主机 Windows 设备的版本完全匹配。 Windows 容器当前只使用版本17763。
 
 ### <a name="tier-2"></a>第 2 层
 

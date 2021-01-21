@@ -14,22 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 4d3e3615ede7406a3b581171ae759ec0ec53f13e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 05848eb2761284669e659b3875e96acdfa71f90f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655364"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632176"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>将 Office 365 日志连接到 Azure Sentinel
 
 [Office 365](/office/)日志连接器会在 **Exchange** 和 **SharePoint** (中提供有关正在进行的用户和管理活动的 Azure Sentinel 信息，包括 **OneDrive**) ，现在还在 **团队** 中。 此信息包括操作的详细信息，例如文件下载、发送的访问请求、对组事件的更改、邮箱操作、团队事件 (如聊天、团队、成员和频道事件) ，以及执行操作的用户的详细信息。 通过将 Office 365 日志连接到 Azure Sentinel，你可以查看和分析工作簿中的此数据，查询该数据以创建自定义警报，并将其结合起来以改进调查过程，从而更深入了解 Office 365 安全性。
 
-> [!IMPORTANT]
-> **Microsoft 团队日志** 的 Office 365 日志连接器扩展目前为公共预览版。
-> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 您必须对 Azure Sentinel 工作区具有读取和写入权限。
 

@@ -4,22 +4,22 @@ description: 了解如何解释 Azure 文件共享的预配和即用即付计费
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/1/2020
+ms.date: 01/20/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 880ec90ce1cf0efffce0cfd6800bdbaed23f8dd0
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 19ecbea70d9cb6b8cc31c72ed3c1294cd137ce93
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831459"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632472"
 ---
 # <a name="understanding-azure-files-billing"></a>了解 Azure 文件计费
 Azure 文件提供两种不同的计费模型：预配和即用即付。 预配的模型仅适用于高级文件共享，这是部署在 **FileStorage** 存储帐户类型中的文件共享。 即用即付模型仅适用于标准文件共享，标准文件共享是部署在 **常规用途版本 2** 中的文件共享 (GPv2) 存储帐户类型。 本文介绍如何使用这两个模型来帮助你了解每月的 Azure 文件帐单。
 
 Azure 文件的当前定价可在 [Azure 文件定价页](https://azure.microsoft.com/pricing/details/storage/files/)中找到。
 
-## <a name="provisioned-billing"></a>预配帐单
+## <a name="provisioned-model"></a>预配模型
 Azure 文件使用预配的高级文件共享模型。 在已设置的业务模型中，你主动指定了你的存储要求所需的 Azure 文件服务，而不是根据你使用的内容进行计费。 这类似于在本地购买硬件，在预配具有一定量的存储的 Azure 文件共享时，无论是否使用该存储，都需要支付此存储的费用，就像在开始使用空间时，不会开始支付本地物理媒体成本。 与购买本地物理媒体不同，预配的文件共享可根据存储和 IO 性能特征动态增加或缩减。
 
 预配高级文件共享时，需要指定工作负荷所需的 Gib 等数量。 你预配的每个 GiB 都可为你提供更高的 IOPS 和吞吐量。 除了可保证的基线 IOPS 之外，每个高级文件共享都支持最大程度的突发。 IOPS 和吞吐量的公式如下所示：
@@ -63,7 +63,7 @@ Azure 文件使用预配的高级文件共享模型。 在已设置的业务模�
 
 新文件共享最初在其突发桶中包含所有额度。 如果由于服务器的限制，导致共享 IOPS 低于基线 IOPS，则不会对突发额度进行应计。
 
-## <a name="pay-as-you-go-billing"></a>即用即付计费
+## <a name="pay-as-you-go-model"></a>即用即付模型
 Azure 文件使用标准文件共享的即用即付业务模式。 在即用即付业务模式中，你支付的金额取决于实际使用的数量，而不是基于预配量。 在较高级别上，你需要为存储在磁盘上的数据量支付费用，然后根据你对数据的使用情况支付额外的一组事务。 即用即付模型可能是经济高效的，因为无需考虑到未来的增长或性能要求，或者，如果工作负荷的数据占用量随时间而变化，则不需要 overprovision。 另一方面，即用即付模型也很难作为预算过程的一部分进行规划，因为即用即付计费模型由最终用户消耗驱动。）。
 
 ### <a name="differences-in-standard-tiers"></a>标准层之间的差异

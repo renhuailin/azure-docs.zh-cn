@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 0c06cb11d916b417cf577b7b8f3578749feddd62
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3d1e0eb90005abf69d90b46acc59e0258c9914c6
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092221"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630024"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录
 
@@ -78,7 +78,7 @@ ms.locfileid: "97092221"
 1. 选择“Azure Active Directory” > “应用注册” > “新建注册”。  
 1. 在“注册应用”页上的“名称”中，输入应用注册的名称。
 1. 在“重定向 URI”中，选择“Web”并键入 `<app-url>/.auth/login/aad/callback`。 例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback`。
-1. 选择“创建”  。
+1. 选择“注册”。
 1. 在应用注册创建后，复制“应用(客户端) ID”和“目录(租户) ID”，以供稍后使用。
 1. 选择“身份验证”。 在“隐式授权”下，启用“ID 令牌”以允许 OpenID Connect 用户从应用服务登录。
 1. （可选）选择“品牌”。 在“主页 URL”中，输入应用服务应用的 URL，然后选择“保存”。
@@ -87,7 +87,7 @@ ms.locfileid: "97092221"
    > [!NOTE]
    > 此值是应用注册的应用 ID URI。 如果 Web 应用需要访问云中的 API，则在配置云应用服务资源时，需要提供该 Web 应用的“应用程序 ID URI”。 例如，如果你希望云服务显式向该 Web 应用授予访问权限，则可以使用此 URI。
 
-1. 选择“添加范围”。 
+1. 选择“添加范围”。
    1. 在“范围名称”中输入 *user_impersonation*。
    1. 在文本框中，输入许可范围名称，以及希望在许可页上向用户显示的说明。 例如，输入“访问我的应用”。
    1. 选择“添加范围”。
@@ -99,7 +99,7 @@ ms.locfileid: "97092221"
 1. 在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。
 1. 在左窗格中的“设置”下，选择“身份验证/授权” > “启用”。  
 1. （可选）默认情况下，应用服务身份验证允许未经身份验证的用户访问你的应用。 若要强制执行用户身份验证，请将“请求未经验证时需执行的操作”设置为“使用 Azure Active Directory 登录”。
-1. 在“身份验证提供程序”下，选择“Azure Active Directory”。
+1. 在“验证提供程序”下，选择“Azure Active Directory” 。
 1. 在“管理模式”中，选择“高级”，然后根据下表来配置应用服务身份验证：
 
     |字段|说明|
@@ -123,7 +123,7 @@ ms.locfileid: "97092221"
 
     > [!NOTE]
     > 对于Microsoft Store 应用程序，请改用[包 SID](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) 作为 URI。
-1. 选择“创建”  。
+1. 选择“创建”。
 1. 创建应用注册后，复制“应用程序(客户端) ID”的值。
 1. 选择“API 权限” > “添加权限” > “我的 API”。  
 1. 选择前面为应用服务应用创建的应用注册。 如果未看到该应用注册，请确保在 [在 Azure AD 中为应用服务应用创建应用注册](#register)部分已添加 **user_impersonation** 范围。

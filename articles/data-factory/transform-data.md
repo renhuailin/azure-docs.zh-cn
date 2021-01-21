@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 37eac4acab7232e44f94e852b1c04c5549447b09
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 43a035662cc76dc6de1de3fa990e06f2e00cfd66
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637677"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632319"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "92637677"
 > * [Azure 机器学习工作室（经典）](transform-data-using-machine-learning.md) 
 > * [存储过程](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
-> * [Databricks 笔记本](transform-data-databricks-notebook.md)
+> * [Databricks Notebook](transform-data-databricks-notebook.md)
 > * [Databricks Jar](transform-data-databricks-jar.md)
 > * [Databricks Python](transform-data-databricks-python.md)
 > * [.NET 自定义](transform-data-using-dotnet-custom-activity.md)
@@ -37,7 +37,7 @@ ms.locfileid: "92637677"
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="overview"></a>概述
-本文介绍了 Azure 数据工厂中的数据转换活动，可利用这些活动将原始数据转换和处理为大规模预测和见解。 在计算环境（如 Azure Databricks 或 Azure HDInsight）中执行转换活动。 其提供了相关文章链接，内附各转换活动的详细信息。
+本文介绍了 Azure 数据工厂中的数据转换活动，可利用这些活动将原始数据转换和处理为大规模预测和见解。 转换活动在计算环境（例如 Azure Databricks 或 Azure HDInsight）中执行。 其提供了相关文章链接，内附各转换活动的详细信息。
 
 数据工厂支持以下数据转换活动，这些活动可单独添加到[管道](concepts-pipelines-activities.md)，还可与其他活动关联在一起。
 
@@ -47,9 +47,9 @@ ms.locfileid: "92637677"
 
 映射数据流是在 Azure 数据工厂中以可视方式设计的数据转换。 数据流允许数据工程师开发图形数据转换逻辑，而无需编写代码。 生成的数据流将作为使用扩展 Spark 群集的 Azure 数据工厂管道中的活动执行。 数据流活动可以通过现有的数据工厂计划、控制、流和监视功能来操作化。 有关详细信息，请参阅 [映射数据流](concepts-data-flow-overview.md)。
 
-### <a name="wrangling-data-flows"></a>整理数据流
+### <a name="data-wrangling"></a>数据整理
 
-通过 Azure 数据工厂中的整理数据流，可以在云规模上以迭代方式进行无代码的数据准备。 整理数据流与 [Power Query Online](/power-query/) 集成，并通过 spark 执行将 Power Query M 功能提供给云规模的数据整理。 有关详细信息，请参阅 [整理 data](wrangling-data-flow-overview.md)flow。
+Azure 数据工厂中的 Power Query 支持云规模的数据整理，使你能够以迭代方式进行云规模的无代码数据准备。 数据整理与 [Power Query Online](/power-query/) 集成，并通过 spark 执行将 Power Query M 功能提供给云规模的数据整理。 有关详细信息，请参阅 [整理中的数据](wrangling-overview.md)。
 
 ## <a name="external-transformations"></a>外部转换
 
@@ -78,14 +78,14 @@ ms.locfileid: "92637677"
 有关这些 Studio (经典) 活动的详细信息，请参阅 [使用 Azure 机器学习 studio (经典) 活动](transform-data-using-machine-learning.md) 。 
 
 ### <a name="stored-procedure-activity"></a>存储过程活动
-可使用数据工厂管道中的 SQL Server 存储过程活动调用以下数据存储之一中的存储过程：你的企业或 Azure VM 中的 Azure SQL 数据库、Azure Synapse Analytics（以前称为 SQL 数据仓库）、SQL Server 数据库。 有关详细信息，请参阅[存储过程活动](transform-data-using-stored-procedure.md)一文。  
+可使用数据工厂管道中的 SQL Server 存储过程活动调用以下数据存储之一中的存储过程：你的企业或 Azure VM 中的 Azure SQL 数据库、Azure Synapse Analytics、SQL Server 数据库。 有关详细信息，请参阅[存储过程活动](transform-data-using-stored-procedure.md)一文。  
 
 ### <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活动
 Data Lake Analytics U-SQL 活动在 Azure Data Lake Analytics 群集上运行 U-SQL 脚本。 有关详细信息，请参阅 [Data Analytics U-SQL 活动](transform-data-using-data-lake-analytics.md)一文。 
 
 ### <a name="databricks-notebook-activity"></a>Databricks Notebook 活动
 
-数据工厂管道中的 Azure Databricks 笔记本活动在 Azure Databricks 工作区中运行 Databricks 笔记本。 Azure Databricks 是一个用于运行 Apache Spark 的托管平台。 请参阅[通过运行 Databricks Notebook 转换数据](transform-data-databricks-notebook.md)。
+数据工厂管道中的 Azure Databricks Notebook 活动在 Azure Databricks 工作区中运行 Databricks Notebook。 Azure Databricks 是一个用于运行 Apache Spark 的托管平台。 请参阅[通过运行 Databricks Notebook 转换数据](transform-data-databricks-notebook.md)。
 
 ### <a name="databricks-jar-activity"></a>Databricks Jar 活动
 
@@ -103,8 +103,8 @@ Data Lake Analytics U-SQL 活动在 Azure Data Lake Analytics 群集上运行 U-
 ### <a name="compute-environments"></a>计算环境
 为计算环境创建链接服务，并在定义转换活动时使用该服务。 数据工厂支持两类计算环境。 
 
-- **按需** ：在这种情况下，计算环境由数据工厂完全托管。 作业提交到进程数据前，数据工厂服务会自动创建计算环境，作业完成后则自动将其删除。 针对作业执行、群集管理和启动操作，可以配置和控制按需计算环境的粒度设置。 
-- **自带** ：在这种情况下，可将自己的计算环境（例如 HDInsight 群集）注册为数据工厂中的链接服务。 计算环境由用户进行管理，数据工厂服务使用它执行活动。 
+- **按需**：在这种情况下，计算环境由数据工厂完全托管。 作业提交到进程数据前，数据工厂服务会自动创建计算环境，作业完成后则自动将其删除。 针对作业执行、群集管理和启动操作，可以配置和控制按需计算环境的粒度设置。 
+- **自带**：在这种情况下，可将自己的计算环境（例如 HDInsight 群集）注册为数据工厂中的链接服务。 计算环境由用户进行管理，数据工厂服务使用它执行活动。 
 
 有关数据工厂支持的计算服务列表，请参阅 [计算链接服务](compute-linked-services.md)文章。 
 

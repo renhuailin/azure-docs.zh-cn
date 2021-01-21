@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: d374043235d6c09243ea5ecdacccf141a2d4f8b4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 143c1a183ba697cbf5d9b19d7e0868a638650bc8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181322"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631972"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>教程：为 Webroot Security Awareness Training 配置自动用户预配
 
@@ -100,7 +100,7 @@ ms.locfileid: "96181322"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
@@ -120,7 +120,8 @@ ms.locfileid: "96181322"
 
    |Attribute|类型|支持筛选|
    |---|---|---|
-   |externalId|字符串|&check;|
+   |userName|字符串|&check;|
+   |externalId|字符串|
    |name.givenName|字符串|
    |name.familyName|字符串|
    |emails[type eq "work"].value|字符串|

@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析发行说明 - Azure
 description: 本主题提供 IoT Edge 上的实时视频分析版本的发行说明、改进、bug 修复和已知问题。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 328fe97c4e03f039a1224d13ce6712ccff06b3b7
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121237"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629770"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 上的实时视频分析发行说明
 
@@ -23,7 +23,7 @@ ms.locfileid: "98121237"
 
 <hr width=100%>
 
-## <a name="january-12-2021"></a>2021年1月12日
+## <a name="january-12-2021"></a>2021 年 1 月 12 日
 
 此版本标记适用于模块2021年1月的刷新：
 
@@ -40,23 +40,26 @@ mcr.microsoft.com/media/live-video-analytics:2.0.1
 
 <hr width=100%>
 
-## <a name="december-14-2020"></a>2020年12月14日
-此版本是 IoT Edge 上实时视频分析的公共预览版刷新版本。 发行标记为
+## <a name="december-14-2020"></a>2020 年 12 月 14 日
+此版本是 IoT Edge 上实时视频分析的公共预览刷新版本。 发行标记为
 
 ```
      mcr.microsoft.com/media/live-video-analytics:2.0.0
 ```
 ### <a name="module-updates"></a>模块更新
-* 添加了对使用多个 HTTP 扩展处理器和 gRPC 扩展处理器每个图形拓扑的支持。
+* 添加了对每个图形拓扑使用多个 HTTP 扩展处理器和 gRPC 扩展处理器的支持。
 * 添加了对接收器节点的磁盘空间管理的支持。
-* `MediaGraphGrpcExtension` 节点现在支持 [extensionConfiguration](grpc-extension-protocol.md) 属性，以便在单个 gRPC 服务器内使用多个 AI 模型。
+* `MediaGraphGrpcExtension` 节点现在支持 [extensionConfiguration](grpc-extension-protocol.md) 属性，允许在单个 gRPC 服务器中使用多个 AI 模型。
 * 添加了对以 [Prometheus 格式](https://prometheus.io/docs/practices/naming/)收集实时视频分析模块度量值的支持。 详细了解如何 [在 Azure Monitor 中收集指标和视图。](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
-* 帧速率筛选器处理器已 **弃用**。  
+* 添加了筛选输出选择的功能。 既可以将 **音频** 和 **视频、视频或****音频和视频** 传递 `outputSelectors` 到任何图形节点的帮助。 
+* 帧速率筛选器处理器已弃用。  
     * 帧速率管理现在在图形扩展处理器节点本身中可用。
 
+### <a name="visual-studio-code-extension"></a>Visual Studio Code 扩展
+* [IoT Edge 上发布的实时视频分析](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge)-一种 Visual Studio Code 扩展，可帮助你管理 LVA media graph。 此扩展适用于 **LVA 2.0 模块** ，提供了编辑和管理媒体图形的功能，并提供了一个精美易用的图形界面。
 ## <a name="september-22-2020"></a>2020 年 9 月 22 日
 
-此发布标记适用于2020年9月刷新的模块：
+此模块 2020 年 9 月刷新的此版本标记为：
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.4
@@ -79,7 +82,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ## <a name="august-19-2020"></a>2020 年 8 月 19 日
 
-此发布标记适用于8月2020的模块刷新：
+此模块 2020 年 8 月刷新的此版本标记为：
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.3
@@ -98,13 +101,13 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ### <a name="bug-fixes"></a>Bug 修复 
 
-* 在设置脚本中删除不推荐使用的 Azure 扩展
+* 在设置脚本中不再使用已弃用的 Azure 扩展
 
 <hr width=100%>
 
 ## <a name="july-13-2020"></a>2020 年 7 月 13 日
 
-此版本标记适用于2020年7月刷新的模块：
+此模块 2020 年 7 月刷新的此版本标记为：
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.2

@@ -4,12 +4,12 @@ description: 如何使用分区为 Azure 事件中心提供最大程度的可用
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bacd5507396352bb814310979498234ee35347
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7b97d76f29ee8b7e44373c865baa09ba5ea4dd23
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902895"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631913"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中心内的可用性和一致性
 
@@ -30,10 +30,10 @@ Brewer 的定理按如下所示定义一致性和可用性：
 开始使用事件中心的最简单方法是使用默认行为。 
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs（5.0.0 或更高版本）](#tab/latest)
-如果新建 [EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)  对象并使用 [SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)  方法，则事件将自动分布在事件中心的分区之间。 此行为可实现最大运行时间量。
+如果新建 [EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient)  对象并使用 [SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync)  方法，则事件将自动分布在事件中心的分区之间。 此行为可实现最大运行时间量。
 
 #### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs（4.1.0 或更早版本）](#tab/old)
-如果创建新的 **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** 对象并使用 **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** 方法，会自动在事件中心内的各个分区之间分发这些事件。 此行为可实现最大运行时间量。
+如果创建新的 **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** 对象并使用 **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** 方法，会自动在事件中心内的各个分区之间分发这些事件。 此行为可实现最大运行时间量。
 
 ---
 
@@ -42,7 +42,7 @@ Brewer 的定理按如下所示定义一致性和可用性：
 ## <a name="consistency"></a>一致性
 在某些方案中，事件的排序可能十分重要。 例如，可能希望后端系统先处理更新命令，再处理删除命令。 在这种情况下，可以在事件上设置分区键，也可以使用 `PartitionSender` 对象（如果使用的是旧 Microsoft.Azure.Messaging 库）仅将事件发送到某个分区。 这样做可确保从分区读取这些事件时，按顺序读取它们。 
 
-如果使用的是较新的 **EventHubs** 库，请参阅将 [代码从 PartitionSender 迁移到 EventHubProducerClient，将事件发布到分区](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)。
+如果使用的是较新的 Azure.Messaging.EventHubs 库，请参阅[将代码从 PartitionSender 迁移到 EventHubProducerClient，以便将事件发布到分区](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)。
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs（5.0.0 或更高版本）](#tab/latest)
 

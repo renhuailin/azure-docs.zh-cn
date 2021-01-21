@@ -140,10 +140,14 @@
           href: phone-authentication-user-flows.md
     - name: 标识提供者
       items:
+        - name: 本地帐户标识提供者
+          href: identity-provider-local.md
+          displayName: 'Username, Email, Phone authorization, Phone sing-in'
         - name: 添加标识提供程序
           href: add-identity-provider.md
         - name: AD FS
           href: identity-provider-adfs.md
+          displayName: 'AD-FS, ADFS'
         - name: Amazon
           href: identity-provider-amazon.md
         - name: Azure AD（单租户）
@@ -234,8 +238,10 @@
           items:
             - name: Mailjet
               href: custom-email-mailjet.md
+              displayName: 'Custom email, Custom verification email, Verification email'
             - name: SendGrid
               href: custom-email-sendgrid.md
+              displayName: 'Custom email, Custom verification email, Verification email'
           displayName: verification
         - name: 添加自己的业务逻辑
           items:
@@ -271,7 +277,7 @@
                 - name: ClaimsTransformations
                   href: claimstransformations.md
                   items:
-                    - name: 布尔
+                    - name: Boolean
                       href: boolean-transformations.md
                     - name: Date
                       href: date-transformations.md

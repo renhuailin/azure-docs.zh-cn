@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 0365a60317538ba31f39928cd30a57e2c969c832
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ea21a56249c8eaa7c6b329b755e96b21b91ebaa1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723026"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632302"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支持可用性区域的 Azure 服务
 
@@ -52,7 +52,7 @@ ms.locfileid: "97723026"
 
 | **产品** | 美国中部 | **美国东部** | **美国东部 2** | **美国西部 2** | **加拿大中部** |
 |--|--|--|--|--|--|
-| **计算** |  |  |  |  |  |
+| **Compute** |  |  |  |  |  |
 | [应用服务环境 (ILB) ](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -97,7 +97,7 @@ ms.locfileid: "97723026"
 
 | **产品** | **法国中部** | **北欧** | **英国南部** | “西欧” |
 |--|--|--|--|--|
-| **计算** |  |  |  |  |
+| **Compute** |  |  |  |  |
 | [应用服务环境 (ILB) ](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Kubernetes 服务 (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -124,7 +124,7 @@ ms.locfileid: "97723026"
 | [Azure 数据资源管理器](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for MySQL-灵活服务器](../mysql/flexible-server/concepts-high-availability.md) | :x: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for PostgreSQL 灵活服务器](../postgresql/flexible-server/overview.md) | :x: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [常规用途层的 Azure SQL 数据库 () ](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | :x: | ： heavy_check_mark： (预览版)  | :x: | ： heavy_check_mark： (预览版)  |
+| [常规用途层的 Azure SQL 数据库 () ](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | ： heavy_check_mark： (预览版)  | ： heavy_check_mark： (预览版)  | :x: | ： heavy_check_mark： (预览版)  |
 | [Azure SQL Database (高级 & 业务关键层) ](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **分析** |  |  |  |  |
 | [事件中心](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -142,7 +142,7 @@ ms.locfileid: "97723026"
 
 | **产品** | **Japan East** | **Southeast Asia** | **澳大利亚东部** |
 |--|--|--|--|
-| **计算** |  |  |  |
+| **Compute** |  |  |  |
 | [应用服务环境 (ILB) ](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Kubernetes 服务 (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -169,7 +169,7 @@ ms.locfileid: "97723026"
 | [Azure 数据资源管理器](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for MySQL-灵活服务器](../mysql/flexible-server/concepts-high-availability.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for PostgreSQL 灵活服务器](../postgresql/flexible-server/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [常规用途层的 Azure SQL 数据库 () ](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | :x: | ： heavy_check_mark： (预览版)  | ： heavy_check_mark： (预览版)  |
+| [常规用途层的 Azure SQL 数据库 () ](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | ： heavy_check_mark： (预览版)  | ： heavy_check_mark： (预览版)  | ： heavy_check_mark： (预览版)  |
 | [Azure SQL Database (高级 & 业务关键层) ](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **分析** |  |  |  |
 | [事件中心](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |

@@ -129,90 +129,92 @@
               href: troubleshoot-error-403.md
 - name: 参考
   items:
-    - name: 数字孪生服务限制
-      href: reference-service-limits.md
-    - name: 数字孪生定价
-      href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
-    - name: API 和 SDK
+    - name: REST API 参考
+      href: /rest/api/azure-digitaltwins/
+    - name: SDK
       items:
-        - name: REST API 参考
-          href: /rest/api/azure-digitaltwins/
         - name: 控制面板
           items:
-            - name: Swagger
+            - name: .NET (C#) SDK
+              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
+            - name: Java SDK
+              href: /azure/developer/java/sdk/
+        - name: 数据平面
+          items:
+            - name: .NET (C#) SDK
+              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
+            - name: Java SDK
+              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
+            - name: JavaScript SDK
+              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
+            - name: Python SDK
+              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
+    - name: 数字孪生 CLI
+      href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
+- name: 资源
+  items:
+    - name: API 和 SDK
+      items:
+        - name: 控制面板
+          items:
+            - name: 控制平面 Swagger
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable'
             - name: .NET (C#) SDK - NuGet
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/'
-            - name: .NET (C#) SDK - 参考
-              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
-            - name: .NET (C#) SDK - 源
+            - name: .NET (C#) SDK - 源代码
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins'
             - name: Java SDK - Maven
               href: 'https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar'
-            - name: Java SDK - 参考
-              href: /azure/developer/java/sdk/
-            - name: Java SDK - 源
+            - name: Java SDK - 源代码
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31'
-            - name: JavaScript SDK
+            - name: JavaScript SDK - NPM
               href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
-            - name: JavaScript SDK - 源
+            - name: JavaScript SDK - 源代码
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins'
             - name: Python SDK - PyPi
               href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
-            - name: Python SDK - 源
+            - name: Python SDK - 源代码
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
             - name: Go SDK - GoDoc
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
-            - name: Go - 源
+            - name: Go - 源代码
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
         - name: 数据平面
           items:
-            - name: Swagger
+            - name: 数据平面 Swagger
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins'
             - name: .NET (C#) SDK - NuGet
               href: 'https://www.nuget.org/packages/Azure.DigitalTwins.Core'
-            - name: .NET (C#) SDK - 参考
-              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
-            - name: .NET (C#) SDK - 源
+            - name: .NET (C#) SDK - 源代码
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
             - name: Java SDK - Maven
               href: 'https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar'
-            - name: Java SDK - 参考
-              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
-            - name: Java SDK - 源
+            - name: Java SDK - 源代码
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
-            - name: JavaScript SDK - npm
+            - name: JavaScript SDK - NPM
               href: 'https://www.npmjs.com/package/@azure/digital-twins-core'
-            - name: JavaScript SDK - 参考
-              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
-            - name: JavaScript SDK - 源
+            - name: JavaScript SDK - 源代码
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core'
             - name: Python SDK - PyPi
               href: 'https://pypi.org/project/azure-digitaltwins-core/'
-            - name: Python SDK - 参考
-              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
-            - name: Python SDK - 源
+            - name: Python SDK - 源代码
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
-    - name: 数字孪生 CLI
-      items:
-        - name: 数字孪生 CLI 参考
-          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
-        - name: CLI 包
-          href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
+    - name: 数字孪生 CLI 包
+      href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
     - name: 数字孪生 Azure PowerShell 模块
       href: 'https://www.powershellgallery.com/packages/Az.DigitalTwins/'
-    - name: DTDL
+    - name: Terraform 模块
       items:
-        - name: DTDL v2 规范
-          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
-        - name: 适用于 VS Code 的 DTDL 扩展
-          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
-        - name: DTDL 分析器库 - NuGet
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
-        - name: DTDL 验证器（示例）
-          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
-        - name: DTMI 规范
-          href: 'https://github.com/Azure/digital-twin-model-identifier'
+        - name: 数字孪生实例资源
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_instance'
+        - name: 数字孪生实例数据源
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/digital_twins_instance'
+        - name: 事件中心终结点资源
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventhub'
+        - name: 事件网格终结点资源
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventgrid'
+        - name: 服务总线终结点资源
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
     - name: 工具和示例项目
       items:
         - name: 设备模拟器服务
@@ -229,6 +231,34 @@
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
         - name: 逻辑应用连接器的自定义 Swagger
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+    - name: DTDL
+      items:
+        - name: DTDL v2 规范
+          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+        - name: 适用于 VS Code 的 DTDL 扩展
+          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
+        - name: DTDL 分析器库 - NuGet
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
+        - name: DTDL 验证器（示例）
+          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: DTMI 规范
+          href: 'https://github.com/Azure/digital-twin-model-identifier'
+        - name: 客户数据请求
+      href: resources-customer-data-requests.md
+    - name: 定价和可用性
+      items:
+        - name: 定价
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: SLA
+          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
+        - name: 区域和可用性
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+        - name: 数字孪生服务限制
+          href: reference-service-limits.md
+    - name: 客户案例
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Channel 9 视频
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
     - name: Azure 工具
       items:
         - name: Azure Cloud Shell
@@ -239,21 +269,5 @@
           href: 'https://portal.azure.com'
     - name: Azure RBAC 文档
       href: ../role-based-access-control/overview.md
-- name: 资源
-  items:
     - name: 支持和帮助选项
       href: ../iot-fundamentals/iot-support-help.md
-    - name: 客户案例
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
-    - name: Channel 9 视频
-      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
-    - name: 客户数据请求
-      href: resources-customer-data-requests.md
-    - name: 定价和可用性
-      items:
-        - name: 定价
-          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
-        - name: SLA
-          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
-        - name: 区域和可用性
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'

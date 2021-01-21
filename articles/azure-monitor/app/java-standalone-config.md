@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 98499961f55b55b15687d5742b4d593e3d461e49
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 397c650d1d7a593a855c8f26e61dbf12ec6360fa
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625324"
+ms.locfileid: "98631315"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项-Azure Monitor Java Application Insights
 
@@ -296,7 +296,9 @@ ms.locfileid: "98625324"
 }
 ```
 
-[//]: # "请注意，在我们支持 0.10.0 之前，不会播发 OpenTelemetry 支持，0.10.0 与 0.9.0 相比有巨大的突破性变化"
+Application Insights Java 3.0 还会遵守全局 `-Dhttps.proxyHost` `-Dhttps.proxyPort` 设置，如果设置了这些设置。
+
+[//]: # "请注意，OpenTelemetry 支持在个人预览版中，直到 OpenTelemetry API 达到1。0"
 
 [//]: # "## 对 OpenTelemetry API 1.0 之前的版本的支持"
 
@@ -343,6 +345,8 @@ ms.locfileid: "98625324"
 `maxSizeMb` 是日志文件滚动更新之前的最大大小。
 
 `maxHistory` 是保留的滚动更新日志文件的数目（除当前日志文件外）。
+
+从版本3.0.2 开始，还可以使用环境变量设置自我诊断 `level` `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` 。
 
 ## <a name="an-example"></a>示例
 

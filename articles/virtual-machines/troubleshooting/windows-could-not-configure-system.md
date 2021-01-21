@@ -1,7 +1,7 @@
 ---
 title: 排查 Windows 无法完成系统配置的问题
 titlesuffix: Azure Virtual Machines
-description: 本文提供了一些步骤，用于解决 Sysprep 进程阻止启动 Azure VM 的问题。
+description: 本文介绍了如何解决 Sysprep 进程阻止 Azure VM 启动的问题。
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: v-miegge
@@ -15,29 +15,32 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
-ms.openlocfilehash: bde091b4a4559c3574ee122d74574d1f9477f3fd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6cb3467fec99bd12810ed058a61de1be7b39cdd0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977042"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629583"
 ---
 # <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>排查 Windows 无法完成系统配置的问题
 
-本文提供了解决以下问题的步骤： Sysprep 进程阻止启动 Azure 虚拟机 (VM) 。
+本文介绍了如何解决 Sysprep 进程阻止 Azure 虚拟机 (VM) 启动的问题。
 
 ## <a name="symptom"></a>症状
 
-使用 " [启动诊断](./boot-diagnostics.md) " 查看 VM 的屏幕截图时，你会看到屏幕截图显示 windows 安装程序正在启动服务时出现 "安装 windows" 错误。 此错误将显示消息：
+使用[启动诊断](./boot-diagnostics.md)查看 VM 的屏幕截图时，你会看到 Windows 安装程序启动服务时，该屏幕截图显示“安装 Windows”错误。 此错误将显示消息：
 
 `Windows could not finish configuring the system. To attempt to resume configuration, restart the computer. Setup is starting services`
 
-  ![图1显示 "安装 Windows 错误" 错误消息： "Windows 无法完成系统的配置。 若要尝试恢复配置，请重新启动计算机。 安装程序正在启动服务 "](./media/windows-could-not-configure-system/1-windows-error-configure.png)
+  ![图1显示 "安装 Windows 错误" 错误消息： "Windows 无法完成系统的配置。 若要尝试恢复配置，请重启计算机。 安装程序正在启动服务 "](./media/windows-could-not-configure-system/1-windows-error-configure.png)
 
 ## <a name="cause"></a>原因
 
-当操作系统 (操作系统) 无法完成 [Sysprep 进程](/windows-hardware/manufacture/desktop/sysprep-process-overview)时，会导致此错误。 当你尝试初始启动通用化 VM 时，将发生此错误。 如果遇到此问题，请重新创建通用化映像，因为映像处于不可部署状态且无法恢复。
+当操作系统 (OS) 无法完成 [Sysprep 进程](/windows-hardware/manufacture/desktop/sysprep-process-overview)时，则会导致此错误。 尝试初次启动通用 VM 时，将发生此错误。 如果遇到此问题，请重新创建通用映像，因为该映像处于不可部署状态且无法恢复。
 
 ## <a name="solution"></a>解决方案
 
-若要解决此问题，请遵循 Azure 指南，了解如何 [准备/捕获映像](../windows/upload-generalized-managed.md) 并准备新的通用映像。
+> [!TIP]
+> 如果你有 VM 的最新备份，则可以尝试 [从备份还原 vm](../../backup/backup-azure-arm-restore-vms.md) ，以解决启动问题。
+
+要修复此问题，请按照[有关准备/捕获映像的 Azure 指南](../windows/upload-generalized-managed.md)操作，并准备新的通用映像。

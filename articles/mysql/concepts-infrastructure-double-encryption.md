@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 233dcbeee0bccc714e3b4fe93e7c8b19aa9f2df0
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e9182a2a0b88f85af5305f5794fec2ffe7935701
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242443"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631727"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL 基础结构双加密
 
@@ -20,7 +20,7 @@ Azure Database for MySQL 使用 Microsoft 的托管密钥对数据进行 [静态
 基础结构双加密使用服务托管密钥增加了另一层的加密。 它使用 FIPS 140-2 验证的加密模块，但使用不同的加密算法。 这为静态数据提供额外的保护层。 在基础结构双加密中使用的密钥也由 Azure Database for MySQL 服务管理。 默认情况下不启用基础结构双加密，因为其他加密层可能会影响性能。
 
 > [!NOTE]
-> 仅 Azure Database for PostgreSQL 中的 "常规用途" 和 "内存优化" 定价层支持此功能。
+> 仅 Azure Database for MySQL 中的 "常规用途" 和 "内存优化" 定价层支持此功能。
 
 基础结构层加密具有在离存储设备或网络线路最近的层实现的好处。 Azure Database for MySQL 使用服务托管密钥来实现两个加密层。 尽管从技术上讲，在服务层中，它非常接近存储静态数据的硬件。 你仍可以使用预配的 MySQL 服务器的 [客户托管密钥](concepts-data-encryption-mysql.md) 来启用静态数据加密。 
 
@@ -59,13 +59,7 @@ Azure Database for MySQL 提供的加密功能可以一起使用。 下面是可
 对于 Azure Database for MySQL，使用服务托管密钥对基础结构进行双重加密的支持具有以下限制：
 
 * 对此功能的支持仅限于 **常规用途** 和 **内存优化** 定价层。
-* 你可以创建在以下区域启用基础结构加密的 Azure Database for MySQL：
-
-   * 美国东部
-   * 美国中南部
-   * 美国西部 2
-   
-* * 此功能仅支持在支持存储高达 16 TB 的区域和服务器上。 有关支持存储高达 16 TB 的 Azure 区域列表，请参阅 [存储文档](concepts-pricing-tiers.md#storage)。
+* 此功能仅支持在支持存储高达 16 TB 的区域和服务器上。 有关支持存储高达 16 TB 的 Azure 区域列表，请参阅 [存储文档](concepts-pricing-tiers.md#storage)。
 
     > [!NOTE]
     > - 以上列出的区域中创建的所有 **新** MySQL 服务器还支持对客户管理器密钥进行数据加密。 在这种情况下，通过时间点还原创建的服务器 (PITR) 或读取副本不符合 "new"。

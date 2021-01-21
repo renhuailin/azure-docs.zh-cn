@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af448d5d28c5add39176500b988824b17f85b9fb
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 2027f713baf2b8039187e933ffc7bb0b68b5cc5f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861963"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631955"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
@@ -49,8 +49,10 @@ Azure Active Directory 提供了各种[报告](overview-reports.md)，其中包�
 
 用于审核日志的 Microsoft Graph API 终结点为 `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits`，用于登录的 Microsoft Graph API 终结点为 `https://graph.microsoft.com/v1.0/auditLogs/signIns`。 有关详细信息，请参阅[审核 API 参考](/graph/api/resources/directoryaudit)和[登录 API 参考](/graph/api/resources/signIn)。
 
-此外，还可以使用[“标识保护”风险检测 API](/graph/api/resources/identityriskevent?view=graph-rest-beta)，通过 Microsoft Graph 以编程方式访问安全检测。 有关详细信息，请参阅 [Azure Active Directory 标识保护和 Microsoft Graph 入门](../identity-protection/howto-identity-protection-graph-api.md)。 
+可以使用 [Identity Protection 风险检测 API](/graph/api/resources/identityriskevent?view=graph-rest-beta) ，通过 Microsoft Graph 获取对安全检测的编程访问。 有关详细信息，请参阅 [Azure Active Directory 标识保护和 Microsoft Graph 入门](../identity-protection/howto-identity-protection-graph-api.md)。 
   
+你还可以使用 [预配日志 API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) 来实现对租户中预配事件的编程访问。 
+
 ## <a name="apis-with-microsoft-graph-explorer"></a>Microsoft Graph 浏览器 API
 
 可以使用 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)来验证登录和审核 API 数据。 确保使用 Graph 浏览器 UI 中的两个登录按钮登录帐户，并为租户设置 **AuditLog.Read.All** 和 **Directory.Read.All** 权限，如下所示。   

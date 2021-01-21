@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: aac8e6e04b8bac7a1d27fefc780fb9fadb3122dc
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fa845e7c402073a64f51d75b1da51f56142eee2e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534171"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630492"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的审核日志
 
@@ -43,7 +43,7 @@ ms.locfileid: "94534171"
 | `DCL` | 类似“GRANT PERMISSION”的查询 |
 | `ADMIN` | 类似“SHOW STATUS”的查询 |
 | `GENERAL` | All in DML_SELECT, DML_NONSELECT, DML, DDL, DCL, and ADMIN |
-| `TABLE_ACCESS` | - 仅适用于 MySQL 5.7 <br> - 表读取语句，例如 SELECT 或 INSERT INTO ...SELECT <br> - 表删除语句，例如 DELETE 或 TRUNCATE TABLE <br> - 表插入语句，例如 INSERT 或 REPLACE <br> - 表更新语句，例如 UPDATE |
+| `TABLE_ACCESS` | -适用于 MySQL 5.7 和 MySQL 8。0 <br> - 表读取语句，例如 SELECT 或 INSERT INTO ...SELECT <br> - 表删除语句，例如 DELETE 或 TRUNCATE TABLE <br> - 表插入语句，例如 INSERT 或 REPLACE <br> - 表更新语句，例如 UPDATE |
 
 ## <a name="access-audit-logs"></a>访问审核日志
 

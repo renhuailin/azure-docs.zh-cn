@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: 0057a4671dbc63bf53bafa8d2d742d4edcda1e5e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 01/20/2021
+ms.openlocfilehash: d31fbd813f0c5d63ee9eddbff5b299209618626b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741042"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629668"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>设置客户管理的密钥，以便在 Azure 逻辑应用中 (ISEs) 为 integration service 环境加密静态数据
 
 Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../storage/common/storage-service-encryption.md)。 此加密可保护数据，并帮助你履行组织的安全性和符合性承诺。 默认情况下，Azure 存储使用 Microsoft 托管的密钥来加密数据。 有关 Azure 存储加密的工作原理的详细信息，请参阅 [静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md) 和 [静态数据加密](../security/fundamentals/encryption-atrest.md)。
 
-当你创建 [集成服务环境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 来托管逻辑应用，并且希望更好地控制 Azure 存储使用的加密密钥时，你可以使用 [Azure Key Vault](../key-vault/general/overview.md)设置、使用和管理你自己的密钥。 此功能也称为 "创建自己的密钥" (BYOK) ，密钥称为 "客户托管密钥"。
+当你创建 [集成服务环境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 来托管逻辑应用，并且希望更好地控制 Azure 存储使用的加密密钥时，你可以使用 [Azure Key Vault](../key-vault/general/overview.md)设置、使用和管理你自己的密钥。 此功能称为 "创建自己的密钥" (BYOK) ，密钥称为 "客户托管密钥"。 使用此功能，Azure 存储 [使用平台托管密钥来自动启用双加密或 *基础结构加密*](../security/fundamentals/double-encryption.md) 。 若要了解详细信息，请参阅 [双重加密数据与基础结构加密](../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。
 
 本主题说明如何设置和指定你自己的加密密钥，以便在你使用逻辑应用 REST API 创建 ISE 时使用。 有关通过逻辑应用创建 ISE REST API 的常规步骤，请参阅 [使用逻辑应用 REST API (ISE) 创建 integration service 环境](../logic-apps/create-integration-service-environment-rest-api.md)。
 
@@ -37,7 +37,7 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
   * **用户分配的托管标识**：发送用于创建 ISE 的 HTTPS PUT 请求之前，请 [为你的 ise 的托管标识指定密钥保管库访问权限](#identity-access-to-key-vault)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 为[ise 启用访问权限](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)的[先决条件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和要求与在 Azure 门户中创建 ise 时相同。
 
@@ -47,7 +47,7 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 * 在密钥保管库中，使用以下属性值创建的密钥：
 
-  | Property | 值 |
+  | 属性 | 值 |
   |----------|-------|
   | **键类型** | RSA |
   | **RSA 密钥大小** | 2048 |

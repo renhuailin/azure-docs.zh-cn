@@ -4,12 +4,12 @@ description: 介绍 Azure 服务总线中的死信队列。 服务总线队列�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 4dbd1216d3ff81e785f16ebed6ceabfa5d5897db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad62f946584071e7ce6fd55f48b5f7ee8db44a2f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91301017"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630092"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述
 
@@ -30,7 +30,7 @@ DLQ 不会自动执行清理操作。 消息将保留在 DLQ 中，直到显式�
 
 ![DLQ 消息计数](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
 
-还可以通过使用 Azure CLI 命令：[`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription?view=azure-cli-latest#az-servicebus-topic-subscription-show) 来获取 DLQ 消息的计数。 
+还可以通过使用 Azure CLI 命令：[`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az-servicebus-topic-subscription-show) 来获取 DLQ 消息的计数。 
 
 ## <a name="moving-messages-to-the-dlq"></a>将消息移到 DLQ
 
@@ -62,7 +62,7 @@ DLQ 不会自动执行清理操作。 消息将保留在 DLQ 中，直到显式�
 
 ## <a name="errors-while-processing-subscription-rules"></a>处理订阅规则时的错误
 
-为订阅启用了 [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) 属性时，会在 DLQ 中捕获执行订阅的 SQL 筛选器规则时出现的任何错误以及有问题的消息。 不要在生产环境中使用此选项，在这种环境中，并非所有消息类型都具有订阅服务器。
+为订阅启用了 [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) 属性时，会在 DLQ 中捕获执行订阅的 SQL 筛选器规则时出现的任何错误以及有问题的消息。 请勿在部分消息类型没有订阅服务器的生产环境中使用此选项。
 
 ## <a name="application-level-dead-lettering"></a>应用程序级死信
 

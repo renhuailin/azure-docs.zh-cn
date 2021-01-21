@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: 08f033cbe121135e281379a013e11a33ae962dfb
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 1e28c7767868904fb20ae6d27c6aea9e7077eb62
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703800"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630287"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中心支持具有专用链接和托管标识的虚拟网络
 
@@ -70,6 +70,9 @@ IoT 中心的功能，包括[消息路由](./iot-hub-devguide-messages-d2c.md)�
 
 :::image type="content" source="media/virtual-network-support/private-built-in-endpoint.png" alt-text="显示每个 IoT 中心专用链接的两个专用终结点的图像":::
 
+IoT 中心的 [IP 筛选器](iot-hub-ip-filtering.md) 可以选择控制对内置终结点的公共访问。 
+
+若要完全阻止公共网络对 IoT 中心的访问，请 [关闭 "公共网络访问](iot-hub-public-network-access.md) " 或 "使用 ip 筛选器" 以阻止所有 IP，并选择将规则应用到内置终结点的选项。
 
 ### <a name="pricing-for-private-link"></a>专用链接定价
 

@@ -55,6 +55,8 @@
               href: ./database/security-controls-policy.md
             - name: 安全基线
               href: database/security-baseline.md
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: Azure Defender for SQL
               href: database/azure-defender-for-sql.md
             - name: 高级威胁防护
@@ -255,6 +257,8 @@
               href: database/service-tier-hyperscale.md
             - name: “超大规模”常见问题解答
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+        - name: 计划和管理成本
+          href: database/cost-management.md
     - name: 快速入门
       href: database/quickstart-content-reference-guide.md
       items:
@@ -293,14 +297,16 @@
               href: database/active-geo-replication-configure-portal.md
         - name: 安全性
           items:
+            - name: 具有安全 Enclave 的 Always Encrypted
+              href: database/always-encrypted-enclaves-getting-started.md
             - name: 配置安全性
               href: database/secure-database-tutorial.md
+            - name: 使用服务主体创建用户
+              href: database/authentication-aad-service-principal-tutorial.md
             - name: 轮换 TDE BYOK 密钥
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: 删除 TDE 保护器
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
-            - name: 使用服务主体创建用户
-              href: database/authentication-aad-service-principal-tutorial.md
         - name: 移动数据
           items:
             - name: 使用 DMS 迁移
@@ -371,6 +377,19 @@
               href: database/sql-data-sync-troubleshoot.md
         - name: 安全性
           items:
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
+            - name: 具有安全 Enclave 的 Always Encrypted
+              href: database/always-encrypted-with-secure-enclaves-landing.yml
+              items:
+                - name: 配置和使用具有安全 enclave 的 Always Encrypted >
+                  href: /sql/relational-databases/security/encryption/configure-always-encrypted-enclaves
+                - name: 规划 Intel SGX enclave 和证明
+                  href: database/always-encrypted-enclaves-plan.md
+                - name: 启用 Intel SGX
+                  href: database/always-encrypted-enclaves-enable-sgx.md
+                - name: 配置 Azure 证明
+                  href: database/always-encrypted-enclaves-configure-attestation.md
             - name: Azure SQL 审核
               href: database/auditing-overview.md
             - name: 审核日志格式
@@ -914,7 +933,7 @@
                       href: /sql/machine-learning/security/user-permission?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
         - name: 功能
           items:
-            - name: 链接的服务器
+            - name: 链接服务器
               href: /sql/relational-databases/linked-servers/linked-servers-database-engine?toc=%2fazure%2fazure-sql%2ftoc.json
             - name: Service Broker
               href: /sql/database-engine/configure-windows/sql-server-service-broker?toc=%2fazure%2fazure-sql%2ftoc.json
@@ -922,10 +941,12 @@
               href: /sql/relational-databases/database-mail/database-mail?toc=%2fazure%2fazure-sql%2ftoc.json
         - name: 安全性
           items:
-            - name: 保护公共终结点
-              href: managed-instance/public-endpoint-overview.md
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: 审核
               href: managed-instance/auditing-configure.md
+            - name: 保护公共终结点
+              href: managed-instance/public-endpoint-overview.md
             - name: 服务器信任组
               href: managed-instance/server-trust-group-overview.md
     - name: 如何

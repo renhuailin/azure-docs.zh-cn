@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 08ed07adbfe0fc4b22d8a3d0afcfc9ab1312dba4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 76a244810042adf3cec64b15fe847c5b684527c2
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134341"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631178"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 和8600迁移到 Azure 文件同步
 
@@ -160,7 +160,7 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
 
 仍不确定？
 
-* 如果需要 [高级 Azure 文件共享的性能](understanding-billing.md#provisioned-billing)，请选择 "高级存储"。
+* 如果需要 [高级 Azure 文件共享的性能](understanding-billing.md#provisioned-model)，请选择 "高级存储"。
 * 为常规用途文件服务器工作负荷（包括热数据和存档数据）选择 "标准存储"。 如果在云中共享中的唯一工作负荷将 Azure 文件同步，请选择 "标准存储"。
 
 #### <a name="account-kind"></a>帐户种类
@@ -244,7 +244,7 @@ StorSimple 在卷级别上提供差异备份。 Azure 文件共享还具有这�
         ![StorSimple 8000 系列迁移作业。](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "数据转换服务作业的新作业创建窗体的屏幕截图。")
     :::column-end:::
     :::column:::
-        **作业定义名称**</br>此名称应指示你要移动的文件集。 为其提供类似于 Azure 文件共享的名称是一种很好的做法。 </br></br>**作业运行的位置**</br>选择区域时，必须选择与 StorSimple 存储帐户相同的区域，如果该帐户不可用，则必须选择该区域。 </br></br><h3>源</h3>**源订阅**</br>选择要在其中存储 StorSimple 设备管理器资源的订阅。 </br></br>**StorSimple 资源**</br>选择你的 StorSimple 设备管理器你的设备已注册到。 </br></br>**服务数据加密密钥**</br>请查看 [本文前面的部分](#storsimple-service-data-encryption-key) ，以防找不到记录中的密钥。 </br></br>**设备**</br>选择包含要迁移的卷的 StorSimple 设备。 </br></br>**Volume**</br>选择源卷。 稍后你将决定是否要将整个卷或子目录迁移到目标 Azure 文件共享中。 </br></br><h3>目标</h3>选择 "订阅"、"存储帐户" 和 "Azure 文件共享" 作为此迁移作业的目标。
+        **作业定义名称**</br>此名称应指示你要移动的文件集。 为其提供类似于 Azure 文件共享的名称是一种很好的做法。 </br></br>**作业运行的位置**</br>选择区域时，必须选择与 StorSimple 存储帐户相同的区域，如果该帐户不可用，则必须选择该区域。 </br></br><h3>源</h3>**源订阅**</br>选择要在其中存储 StorSimple Device Manager 资源的订阅。 </br></br>**StorSimple 资源**</br>选择你的 StorSimple Device Manager 你的设备已注册到。 </br></br>**服务数据加密密钥**</br>请查看 [本文前面的部分](#storsimple-service-data-encryption-key) ，以防找不到记录中的密钥。 </br></br>**设备**</br>选择包含要迁移的卷的 StorSimple 设备。 </br></br>**数据量(Volume)**</br>选择源卷。 稍后你将决定是否要将整个卷或子目录迁移到目标 Azure 文件共享中。 </br></br><h3>目标</h3>选择 "订阅"、"存储帐户" 和 "Azure 文件共享" 作为此迁移作业的目标。
     :::column-end:::
 :::row-end:::
 
@@ -567,7 +567,7 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <So
 
 1. 通过 Azure 门户取消预配 StorSimple 数据管理器资源。 所有 DTS 作业都将随之一起删除。 你将无法轻松地检索复制日志。 如果它们对你的记录很重要，请在取消预配前检索它们。
 1. 确保已迁移 StorSimple 物理设备，然后将其注销。 如果你不完全确定它们已迁移，请勿继续。 如果在这些资源仍是必需的情况下将其取消预配，则无法恢复数据或其配置。<br>或者，你可以首先取消预配 StorSimple 卷资源，这会清除设备上的数据。 这可能需要几天时间，并 **不会** 取证式设备上的数据。 如果这对你来说很重要，请分别从资源取消预配和根据策略处理磁盘清。
-1. 如果 StorSimple 设备管理器中没有剩余的已注册的设备，则可以继续删除设备管理器资源本身。
+1. 如果 StorSimple Device Manager 中没有剩余的已注册的设备，则可以继续删除 Device Manager 资源本身。
 1. 现在可以在 Azure 中删除 StorSimple 存储帐户。 同样，在继续操作之前，停止并确认迁移已完成，并且不会有任何内容依赖于此数据。
 1. 从数据中心拔出 StorSimple 物理设备。
 1. 如果你拥有 StorSimple 设备，则可以自由地将其回收。 如果设备已租用，请通知 lessor 并根据需要返回设备。

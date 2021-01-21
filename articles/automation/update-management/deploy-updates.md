@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 62793e0551c914b77310a0e9b72fea31ec621848
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 1b5ced7038f692046d1ce4ba2f4599cae3962510
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683382"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632455"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新和查看结果
 
@@ -146,4 +146,5 @@ ms.locfileid: "97683382"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何创建警报来就更新部署结果进行通知，请参阅[为更新管理创建警报](configure-alerts.md)。
+* 若要了解如何创建警报来就更新部署结果进行通知，请参阅[为更新管理创建警报](configure-alerts.md)。
+* 若要对常规更新管理错误进行故障排除，请参阅[排查更新管理问题](../troubleshoot/update-management.md)。

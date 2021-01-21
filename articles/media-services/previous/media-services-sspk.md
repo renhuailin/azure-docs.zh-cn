@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: cdb575d7b3884370e1a53f79f1184d40cd15d270
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: eb88d2cf96cc8557f2b8c729554106530cf6f956
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732387"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629617"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授权 Microsoft&reg; 平滑流式处理客户端移植工具包
 
@@ -128,12 +128,13 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * Hong Kong Konka Ltd
 * Innolux Corporation
 * Innopia Technologies, Inc
+* Jinpin 电气公司有限公司. Zhuhai
 * K-Tronics (Suzhou) Technology Co., Ltd. 
 * Kaonmedia Co., Ltd.
 * KDDI Corporation
 * Mega Fame Electronics Co. Limited
 * MIRC Electronics Limited
-* MOKA 国际有限
+* MOKA INTERNATIONAL LIMITED
 * Nintendo Co., Ltd.
 * ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
 * Panasonic Corporation
@@ -154,7 +155,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * Technicolor Delivery Technologies, SAS
 * Top Victory Investments, Ltd.
 * UMC Poland sp. z .o.o.
-* Vizio，Inc。
+* Vizio, Inc.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

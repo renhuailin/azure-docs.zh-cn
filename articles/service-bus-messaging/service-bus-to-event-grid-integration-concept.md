@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5cc112767b2204d019cb1b7bd23b1603cefdf416
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 71ee21c971b71c4000a123d1561e7e93d21203e1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882511"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629141"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
 
@@ -99,11 +99,11 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 }]
 ```
 
-#### <a name="active-messages-available-periodic-notifications"></a>可用消息定期通知
+#### <a name="active-messages-available-periodic-notifications"></a>活动消息可用定期通知
 
-如果特定队列或订阅上有活动消息，即使特定队列或订阅上有活动的侦听器，此事件也会定期生成。
+如果在特定队列或订阅上具有活动消息，即使该特定队列或订阅上有活动侦听器，也会定期生成此事件。
 
-此事件的架构如下所示。
+此事件的架构如下。
 
 ```json
 [{
@@ -127,9 +127,9 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 
 #### <a name="deadletter-messages-available-periodic-notifications"></a>死信消息可用定期通知
 
-如果在特定队列或订阅上有死信的消息，即使特定队列或订阅的死信实体上存在活动的侦听器，此事件也会定期生成。
+如果在特定队列或订阅上具有死信消息，即使该特定队列或订阅的死信实体上有活动侦听器，也会定期生成此事件。
 
-此事件的架构如下所示。
+此事件的架构如下。
 
 ```json
 [{
@@ -186,7 +186,7 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 
 ## <a name="azure-cli-instructions"></a>Azure CLI 说明
 
-首先，请确保已安装 Azure CLI 2.0 或更高版本。 [下载安装程序](/cli/azure/install-azure-cli?view=azure-cli-latest)。 按 **Windows + X**，然后使用管理员权限打开新的 PowerShell 控制台。 或者，也可以在 Azure 门户中使用命令外壳。
+首先，请确保已安装 Azure CLI 2.0 或更高版本。 [下载安装程序](/cli/azure/install-azure-cli)。 按 **Windows + X**，然后使用管理员权限打开新的 PowerShell 控制台。 或者，也可以在 Azure 门户中使用命令外壳。
 
 执行以下代码：
 

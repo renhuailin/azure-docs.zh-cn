@@ -1,74 +1,90 @@
 ---
-title: 主版本升级-Azure Database for MySQL-单服务器 Azure 门户
-description: 本文介绍如何使用 Azure 门户升级 Azure Database for MySQL 单服务器的主版本
+title: Azure Database for MySQL 中的主版本升级-单服务器
+description: 本文介绍如何升级 Azure Database for MySQL 单服务器的主版本
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
-ms.date: 11/16/2020
-ms.openlocfilehash: 080d7c09b180d5943216793119718eb6a2add79e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 1/13/2021
+ms.openlocfilehash: b62f4ebc61ac27478788d8b2bae5e4145f87ac8b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95753045"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630194"
 ---
-# <a name="major-version-upgrade-in-azure-database-for-mysql-single-server-using-the-azure-portal"></a>使用 Azure 门户 Azure Database for MySQL 单一服务器的主版本升级
+# <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Azure Database for MySQL 单一服务器的主版本升级
 
 > [!IMPORTANT]
-> 适用于 Azure database for MySQL 单一服务器的主要版本升级是公开预览版。
+> Azure Database for MySQL 单一服务器的主版本升级为公共预览版。
 
-本文介绍如何将 MySQL 主要版本就地升级 Azure Database for MySQL 单一服务器。
+本文介绍了如何就地升级 Azure Database for MySQL 单一服务器中的 MySQL 主版本。
 
-利用此功能，客户无需进行任何数据移动或需要更改任何应用程序连接字符串，即可将 MySQL 5.6 服务器就地升级到 MySQL 5.7。
+利用此功能，客户可以轻松地将 MySQL 5.6 服务器就地升级到 MySQL 5.7，无需移动任何数据，也无需更改应用程序连接字符串。
 
 > [!Note]
-> * 主版本升级仅适用于从 MySQL 5.6 到 MySQL 5.7 的主要版本升级<br>
-> * 副本服务器上尚不支持主要版本升级。
+> * 主版本升级仅适用于从 MySQL 5.6 到 MySQL 5.7 的升级<br>
+> * 副本服务器尚不支持主版本升级。
 > * 在整个升级操作过程中，服务器将不可用。 因此，建议在计划内维护时段执行升级。
 
-## <a name="prerequisites"></a>先决条件
-若要完成本操作指南，需要：
-- [单台服务器 Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
+## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57-using-azure-portal"></a>使用 Azure 门户执行从 MySQL 5.6 到 MySQL 5.7 的主要版本升级
 
-## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57"></a>执行从 MySQL 5.6 到 MySQL 5.7 的主要版本升级
-
-按照以下步骤为你的 Azure Database for MySQL 5.6 服务器执行主要版本升级
+请按照以下步骤使用 Azure 门户为 MySQL 5.6 服务器的 Azure 数据库执行主要版本升级
 
 > [!IMPORTANT]
-> 建议在服务器的还原副本上首先执行升级，而不是直接升级生产。 请参阅 [如何执行时间点还原](howto-restore-server-portal.md#point-in-time-restore)。 
+> 建议首先在还原后的服务器副本上执行升级，而不是直接升级生产服务器。 请参阅[如何执行时间点还原](howto-restore-server-portal.md#point-in-time-restore)。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择现有的 Azure Database for MySQL 5.6 服务器。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择你的现有 Azure Database for MySQL 5.6 服务器。
 
-2. 从 " **概述** " 页上，单击工具栏中的 " **升级** " 按钮。
+2. 从“概述”页上，单击工具栏中的“升级”按钮。
 
-3. 在 " **升级** " 部分，选择 **"确定"** 将 Azure database for MySQL 5.6 服务器升级到5.7 服务器。
+3. 在“升级”部分，选择“确定”以将 Azure database for MySQL 5.6 服务器升级为 5.7 服务器。
 
-    :::image type="content" source="./media/how-to-major-version-upgrade-portal/upgrade.png" alt-text="Azure Database for MySQL-概述-升级":::
+   :::image type="content" source="./media/how-to-major-version-upgrade-portal/upgrade.png" alt-text="Azure Database for MySQL - 概述 - 升级":::
 
-4. 通知会确认升级是否成功。
+4. 一条通知会确认升级是否成功。
+
+
+## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57-using-azure-cli"></a>使用 Azure CLI 执行从 MySQL 5.6 到 MySQL 5.7 的主要版本升级
+
+请按照以下步骤使用 Azure CLI 为 MySQL 5.6 服务器的 Azure 数据库执行主要版本升级
+
+> [!IMPORTANT]
+> 建议首先在还原后的服务器副本上执行升级，而不是直接升级生产服务器。 请参阅[如何执行时间点还原](howto-restore-server-cli.md#server-point-in-time-restore)。
+
+1. 安装 [适用于 Windows 的 Azure CLI](/cli/azure/install-azure-cli) ，或使用 [Azure Cloud Shell](../cloud-shell/overview.md) 中 Azure CLI 运行升级命令。 
+ 
+   此升级需要 Azure CLI 版本2.16.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。 运行 az version 以查找安装的版本和依赖库。 若要升级到最新版本，请运行 az upgrade。
+
+2. 登录后，运行 [az mysql server upgrade](https://docs.microsoft.com/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_upgrade&preserve-view=true) 命令：
+    
+   ```azurecli
+   az mysql server upgrade --name testsvr --resource-group testgroup --subscription MySubscription --target-server-version 5.7"
+   ```
+   
+   命令提示符显示 "-正在运行" 消息。 此消息不再显示后，版本升级已完成。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-**1. 在我们需要升级的生产环境中，此升级功能将在正式发布时发布到我们的 MySQL 5.6？**
+### <a name="when-will-this-upgrade-feature-be-ga-as-we-have-mysql-v56-in-our-production-environment-that-we-need-to-upgrade"></a>在我们需要升级的生产环境中，此升级功能在什么情况下将推出？
 
-在 MySQL 5.6 版停用之前计划此功能的 GA。 但是，该功能是 Azure 的生产就绪且完全受支持，因此你应该在环境中自信地运行它。 作为推荐的最佳做法，我们强烈建议你先在服务器的还原副本上运行并测试，以便可以在升级过程中估计停机时间，并在生产中运行应用程序兼容性测试。 有关详细信息，请参阅 [如何执行时间点还原](howto-restore-server-portal.md#point-in-time-restore) ，以创建服务器的时间点副本。 
+计划在 MySQL v5.6 停用之前正式发布此功能。 但是，此功能已准备好用于生产环境，并且由 Azure 提供完全支持，因此你应该可以放心地在你的环境中运行它。 强烈建议你首先在还原后的服务器副本上运行和测试它，以便你可以估计升级期间的停机时间，并执行应用程序兼容性测试，然后再在生产环境中运行应用程序。这是推荐的最佳做法。 有关详细信息，请参阅[如何执行时间点还原](howto-restore-server-portal.md#point-in-time-restore)（用于创建服务器的时间点副本）。 
 
-**2. 这会导致服务器停机，如果有多长时间？**
+### <a name="will-this-cause-downtime-of-the-server-and-if-so-how-long"></a>这会导致服务器停机，如果有多长时间？
 
-是的，此服务器在升级过程中将不可用，因此，我们建议你在计划的维护时段内执行此操作。 估计停机时间取决于数据库大小、预配的存储大小 (IOPs 预配) 以及数据库上的表数。 升级时间与服务器上的表数成正比。基本 SKU 服务器的升级预计需要更长时间，因为它在标准存储平台上。 为了估计服务器环境的停机时间，我们建议首先在服务器的还原副本上执行升级。  
+是的，服务器在升级过程中将不可用。因此，我们建议你在计划内维护时段执行此操作。 估计的停机时间取决于数据库大小、预配的存储大小（预配的 IOPS）以及数据库中的表的数量。 升级时间与服务器中表的数量成正比。基本 SKU 服务器的升级预计需要更长时间，因为它在标准存储平台上。 为了估计服务器环境的停机时间，建议你首先在还原后的服务器副本上执行升级。  
 
-**3. 注意到它在副本服务器上尚不受支持。这是什么意思？**
+### <a name="it-is-noted-that-it-is-not-supported-on-replica-server-yet-what-does-that-mean-concrete"></a>请注意，它在副本服务器上尚不受支持。 这是什么意思？
 
-目前，副本服务器不支持主要版本升级，这意味着不应为复制所涉及的服务器运行它， (源或副本服务器) 。 如果要在添加升级功能的副本支持之前测试复制中涉及的服务器的升级，我们建议执行以下步骤：
+当前，副本服务器不支持主版本升级，这意味着不应为复制所涉及的服务器（源服务器或副本服务器）运行主版本升级。 如果要在添加对升级功能的副本支持之前测试复制中涉及的服务器的升级，建议执行以下步骤：
 
-1. 在计划内维护期间，在捕获其名称和所有配置信息 (防火墙设置，如果服务器参数配置不同于源服务器) ，则 [停止复制和删除副本服务器](howto-read-replicas-portal.md) 。
+1. 在计划内维护期间，在捕获副本服务器的名称和所有配置信息（防火墙设置、服务器参数配置，如果它与源服务器不同）后[停止复制并删除副本服务器](howto-read-replicas-portal.md)。
 2. 执行源服务器的升级。
-3. 使用在步骤1中捕获的相同名称和配置设置来预配新的读取副本服务器。 将源服务器升级到 v2.0 后，新的副本服务器将自动在版本5.7 上。
+3. 使用在步骤 1 中捕获的名称和配置设置来预配新的只读副本服务器。 将源服务器升级到 v5.7 后，新的副本服务器会自动为 v5.7。
 
-**4. 如果未选择在2021年2月5日之前升级 MySQL 5.6 server，会发生什么情况？**
+### <a name="what-will-happen-if-we-do-not-choose-to-upgrade-our-mysql-v56-server-before-february-5-2021"></a>如果未选择在2021年2月5日之前升级 MySQL 5.6 server，会发生什么情况？
 
-你仍可像以前一样继续运行 MySQL 5.6 server。 Azure **决不会** 在你的服务器上执行强制升级。 但是，将应用 [Azure Database for MySQL 版本控制策略](concepts-version-policy.md) 中所述的限制。
+你仍可像以前一样继续运行 MySQL v5.6 服务器。 Azure 永远不会在服务器上执行强制升级。 但是，会应用 [Azure Database for MySQL 版本控制策略](concepts-version-policy.md)中所述的限制。
 
 ## <a name="next-steps"></a>后续步骤
 

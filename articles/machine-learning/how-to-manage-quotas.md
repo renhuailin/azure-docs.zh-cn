@@ -5,17 +5,18 @@ description: 了解 Azure 机器学习资源的配额和限制，以及如何请
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: nishankgu
-ms.author: nigup
+ms.reviewer: jmartens
+author: SimranArora904
+ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 3f08f401f24d95431bcd3bba48976641cebb28e9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 78cc0aa6beb9ab83fea2039b271b071de1662fc1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072201"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629174"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>管理和增大 Azure 机器学习资源的配额
 
@@ -57,7 +58,7 @@ Azure 使用限制和配额来防止由于欺诈导致的预算超支，并遵�
 
 
 ### <a name="azure-machine-learning-assets"></a>Azure 机器学习资产
-基于每个工作区的资产有以下限制。 
+每个工作区都适用以下资产限制。 
 
 | **资源** | **最大限制** |
 | --- | --- |
@@ -66,12 +67,12 @@ Azure 使用限制和配额来防止由于欺诈导致的预算超支，并遵�
 | 模型 | 1 千万|
 | Artifacts | 1 千万 |
 
-此外，最大 **运行时间** 为30天， **每次运行记录的度量** 值的最大数目为1000000。
+另外，最长运行时间为 30 天，每次运行记录的指标的最大数量为 1 百万 。
 
 ### <a name="azure-machine-learning-compute"></a>Azure 机器学习计算
-[Azure 机器学习计算](concept-compute-target.md#azure-machine-learning-compute-managed) 对于每个 VM 系列 (拆分的核心数) 和每个区域中每个区域允许的唯一计算资源的数量都有默认的配额限制。 此配额独立于上一部分中列出的 VM 核心配额，因为它仅适用于 Azure 机器学习的托管计算资源。
+[Azure 机器学习计算](concept-compute-target.md#azure-machine-learning-compute-managed)为订阅中每个区域所允许的核心数（按每个 VM 系列和累积总核心数拆分）和非重复计算资源数都设置了默认配额限制。 此配额与上一部分中列出的 VM 核心配额不同，因为它只适用于 Azure 机器学习的托管计算资源。
 
-[请求增加配额](#request-quota-increases) 以提高各种 VM 系列核心配额的限制、此部分中订阅核心配额和资源总数。
+[请求增加配额](#request-quota-increases)可提升适用于本部分中各种 VM 系列核心配额、订阅核心配额总量和资源的限额。
 
 可用资源：
 + **每个区域的专用核心数** 的默认限制为 24 到 300 个，具体取决于订阅套餐的类型。 可以为每个 VM 系列提高每个订阅的专用核心数。 专业化 VM 系列（例如 NCv2、NCv3 或 ND 系列）最初的默认限制为零个核心。
@@ -81,18 +82,18 @@ Azure 使用限制和配额来防止由于欺诈导致的预算超支，并遵�
 + **每个区域的群集数** 的默认限制为 200。 它们在训练群集和计算实例之间共享。 （就配额用途来说，可以将计算实例视为单节点群集。）
 
 > [!TIP]
-> 若要详细了解要求增加配额的 VM 系列，请查看 [Azure 中的虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/sizes)。 例如，GPU VM 系列在其家族名称中以 "N" 开头 (例如。 NCv3 系列) 
+> 若要详细了解要求增加配额的 VM 系列，请查看 [Azure 中的虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/sizes)。 例如，GPU VM 系列在其系列名称中以“N”开头（如 NCv3 系列）
 
-下表显示了平台中的其他限制。 请通过 **技术** 支持票证与 AzureML 产品团队联系，请求提供异常。
+下表显示了平台中的其他限制。 若要提出有关例外情况的请求，请通过技术支持票证与 AzureML 产品团队联系。
 
-| **资源或操作** | **最大限制** |
+| 资源或操作 | **最大限制** |
 | --- | --- |
 | 每个资源组的工作区数 | 800 |
-| 单个 Azure 机器学习中的节点会将 (AmlCompute) **群集** 设置计算为启用了非通信的池， (即无法运行 MPI 作业)  | 100节点，但可配置最多65000个节点 |
-| 单个并行运行步骤中的节点在 Azure 机器学习计算 (AmlCompute) 群集上 **运行** | 100节点，但如果群集设置为按以上进行缩放，则可配置最多65000个节点 |
-| 单个 Azure 机器学习中的节点会将 (AmlCompute) **群集** 设置计算为启用了通信的池 | 300节点，但可配置最多4000个节点 |
-| 单个 Azure 机器学习中的节点会将 (AmlCompute) **群集** 设置计算为启用 RDMA 的 VM 系列上启用通信的池 | 100 个节点 |
-| 单个 MPI 中的节点在 Azure 机器学习计算 (AmlCompute) 群集上 **运行** | 100节点，但可以增加到300节点 |
+| 设置为未启用通信的池（即无法运行 MPI 作业）的单个 Azure 机器学习计算 (AmlCompute) 群集中的节点 | 100 个节点，但最多可配置为 65000 个节点 |
+| 在 Azure 机器学习计算 (AmlCompute) 群集上运行的单个并行运行步骤中的节点 | 100 个节点，但如果将群集设置为按上述标准缩放，则最多可配置为 65000 个节点 |
+| 设置为已启用通信的池的单个 Azure 机器学习计算 (AmlCompute) 群集中的节点 | 300 个节点，但最多可配置为 4000 个节点 |
+| 在已启用 RDMA 的 VM 系列上设置为已启用通信的池的单个 Azure 机器学习计算 (AmlCompute) 群集中的节点 | 100 个节点 |
+| 在 Azure 机器学习计算 (AmlCompute) 群集上运行的单个 MPI 中的节点 | 100 个节点，但可以增加到 300 个节点 |
 | 每个节点的 GPU MPI 进程数 | 1-4 |
 | 每个节点的 GPU 辅助角色数 | 1-4 |
 | 作业生存期 | 21 天<sup>1</sup> |
@@ -211,4 +212,4 @@ Azure 存储的限制是每个订阅在每个区域中的存储帐户数不能�
 ## <a name="next-steps"></a>后续步骤
 
 + [计划和管理 Azure 机器学习成本](concept-plan-manage-cost.md)
-+ [Azure 机器学习中的服务限制](resource-limits-quotas-capacity.md)
++ [Azure 机器学习服务限制](resource-limits-quotas-capacity.md)

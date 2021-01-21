@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 9700e5d9179f7c1e33b2371eea89be9bb1c8d08f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e84484990725b0c39b132aead51e9b01dbb7e7ef
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621356"
+ms.locfileid: "98632285"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>将数据从 Azure Active Directory (Azure AD) 
 
@@ -28,7 +28,7 @@ ms.locfileid: "98621356"
 
 ## <a name="prerequisites"></a>必备条件
 
-- 必须具有 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 订阅才能将登录日志引入 Azure Sentinel。 对于 Azure Monitor (Log Analytics) 和 Azure Sentinel，可能会收取额外的每 gb 费用。
+- 任何 Azure AD 许可证 (免费/O365/P1/P2) 足以将登录日志引入 Azure Sentinel。 对于 Azure Monitor (Log Analytics) 和 Azure Sentinel，可能会收取额外的每 gb 费用。
 
 - 必须在工作区中为你的用户分配 Azure Sentinel 参与者角色。
 
@@ -42,11 +42,27 @@ ms.locfileid: "98621356"
 
 1. 从 "数据连接器" 库中，选择 " **Azure Active Directory** "，然后选择 " **打开连接器" 页面**。
 
-1. 将想要流式传输到 Azure 标记的日志旁边的复选框标记为，并单击 " **连接**"。
+1. 将想要流式传输到 Azure 标记的日志类型旁边的复选框标记为，并单击 " **连接**"。 下面是可以选择的日志类型：
 
-1. 你可以选择是否希望 Azure AD 中的警报在 Azure Sentinel 中自动生成事件。 在 " **创建事件** " 下，选择 " **启用** " 以启用从连接的安全服务中生成的警报自动创建事件的默认分析规则。 然后，可以在“分析”下的“活动规则”中编辑此规则。 
+    - 登录日志
+    - 审核日志
+    - 非交互式用户登录日志
+    - 服务主体登录日志
+    - 托管标识登录日志
+    - “预配”日志
 
-1. 若要使用 Log Analytics 中的相关架构查询 Azure AD 警报，请 `SigninLogs` `AuditLogs` 在查询窗口中键入或。
+## <a name="find-your-data"></a>查找数据
+
+成功建立连接后，数据将显示在 " **日志**" 的 " **LogManagement** " 部分的下表中：
+
+- `SigninLogs`
+- `AuditLogs`
+- `AADNonInteractiveUserSignInLogs`
+- `AADServicePrincipalSignInLogs`
+- `AADManagedIdentitySignInLogs`
+- `AADProvisioningLogs`
+
+若要查询 Azure AD 日志，请在 "查询" 窗口的顶部输入相关表名称。
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Azure Active Directory 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
