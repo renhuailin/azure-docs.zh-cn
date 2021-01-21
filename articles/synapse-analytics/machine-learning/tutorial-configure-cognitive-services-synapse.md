@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: cf76a3d09da83693791873feb9e6ab03c432e47f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: eef65db05ab94b5b8de5ff82c2c51dba0730f170
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463494"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222167"
 ---
 # <a name="tutorial-pre-requisites-for-using-cognitive-services-in-azure-synapse"></a>教程：在 Azure Synapse 中使用认知服务的先决条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "96463494"
 
 ## <a name="create-a-cognitive-services-resource"></a>创建认知服务资源
 
-[Azure 认知服务](https://go.microsoft.com/fwlink/?linkid=2147492)包含许多不同类型的服务。 下面是 Synapse 教程中使用的一些示例。
+[Azure 认知服务](../../cognitive-services/index.yml)包含许多不同类型的服务。 下面是 Synapse 教程中使用的一些示例。
 
 ### <a name="create-an-anomaly-detector-resource"></a>创建异常检测器资源
 在 Azure 门户中创建[异常检测器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)。
@@ -53,7 +53,7 @@ ms.locfileid: "96463494"
 ## <a name="create-key-vault-and-configure-secrets-and-access"></a>创建 Key Vault 并配置机密和访问权限
 
 1. 在 Azure 门户中创建 [Key Vault](https://ms.portal.azure.com/#create/Microsoft.KeyVault)。
-2. 请转到“Key Vault”->“访问策略”，并向 [Azure Synapse 工作区 MSI](https://docs.microsoft.com/azure/synapse-analytics/security/synapse-workspace-managed-identity) 授予从 Azure Key Vault 读取机密的权限。
+2. 请转到“Key Vault”->“访问策略”，并向 [Azure Synapse 工作区 MSI](../security/synapse-workspace-managed-identity.md) 授予从 Azure Key Vault 读取机密的权限。
 
 >请确保已保存策略更改。 此步骤很容易被忽略。
 

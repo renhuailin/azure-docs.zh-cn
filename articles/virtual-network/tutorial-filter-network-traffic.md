@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97690618de5d58fa4022d01fa36a872f9d220083
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75350139"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221674"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>教程：使用 Azure 门户通过网络安全组筛选网络流量
 
@@ -111,7 +111,7 @@ ms.locfileid: "75350139"
 
     | 设置                 | Value                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | 目标             | 选择“应用程序安全组”，然后选择 **myAsgWebServers** 作为**应用程序安全组**。  |
+    | 目标             | 选择“应用程序安全组”，然后选择 **myAsgWebServers** 作为 **应用程序安全组**。  |
     | 目标端口范围 | 输入 80,443                                                                                                    |
     | 协议                | 选择 TCP                                                                                                      |
     | 名称                    | Allow-Web-All                                                                                                   |
@@ -120,7 +120,7 @@ ms.locfileid: "75350139"
 
     | 设置                 | Value                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | 目标             | 选择“应用程序安全组”，然后选择 **myAsgMgmtServers** 作为**应用程序安全组**。 |
+    | 目标             | 选择“应用程序安全组”，然后选择 **myAsgMgmtServers** 作为 **应用程序安全组**。 |
     | 目标端口范围 | 输入 3389                                                                                                      |
     | 协议                | 选择 TCP                                                                                                      |
     | 优先级                | 输入 110                                                                                                       |
@@ -139,7 +139,7 @@ ms.locfileid: "75350139"
 ### <a name="create-the-first-vm"></a>创建第一个 VM
 
 1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。 
-2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。********
+2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。
 3. 输入或选择以下信息，并接受剩下的默认设置：
 
     |设置|Value|
@@ -173,7 +173,7 @@ ms.locfileid: "75350139"
 门户在创建 VM 时，已为每个 VM 创建一个网络接口，并将该网络接口附加到 VM。 请将每个 VM 的网络接口添加到以前创建的应用程序安全组：
 
 1. 在门户顶部的“搜索资源、服务和文档”框中，开始键入“myVmWeb”。 当“myVmWeb”VM 出现在搜索结果中时，请将其选中。
-2. 在“设置”下选择“网络” 。  选择“配置应用程序安全组”，然后选择 **myAsgWebServers** 作为**应用程序安全组**，最后选择“保存”，如下图所示： 
+2. 在“设置”下选择“网络” 。  选择“配置应用程序安全组”，然后选择 **myAsgWebServers** 作为 **应用程序安全组**，最后选择“保存”，如下图所示： 
 
     ![关联到 ASG](./media/tutorial-filter-network-traffic/associate-to-asg.png)
 
@@ -205,7 +205,7 @@ ms.locfileid: "75350139"
 
 8. 完成 IIS 安装后，从 *myVmWeb* VM 断开连接，从而保留 *myVmMgmt* 远程桌面连接。
 9. 从 *myVmMgmt* VM 断开连接。
-10. 在 Azure 门户顶部的“搜索资源、服务和文档”框中，开始在计算机中键入“myVmWeb”。 当“myVmWeb”出现在搜索结果中时，请选择它。 记下 VM 的**公共 IP 地址**。 下图所示地址为 137.135.84.74，但你的地址不同于此：
+10. 在 Azure 门户顶部的“搜索资源、服务和文档”框中，开始在计算机中键入“myVmWeb”。 当“myVmWeb”出现在搜索结果中时，请选择它。 记下 VM 的 **公共 IP 地址**。 下图所示地址为 137.135.84.74，但你的地址不同于此：
 
     ![公共 IP 地址](./media/tutorial-filter-network-traffic/public-ip-address.png)
   
@@ -221,7 +221,7 @@ ms.locfileid: "75350139"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已创建一个网络安全组并将其关联到虚拟网络子网。 若要详细了解网络安全组，请参阅[网络安全组概述](security-overview.md)和[管理网络安全组](manage-network-security-group.md)。
+在本教程中，你已创建一个网络安全组并将其关联到虚拟网络子网。 若要详细了解网络安全组，请参阅[网络安全组概述](./network-security-groups-overview.md)和[管理网络安全组](manage-network-security-group.md)。
 
 默认情况下，Azure 在子网之间路由流量。 你也可以选择通过某个 VM（例如，充当防火墙的 VM）在子网之间路由流量。 若要了解如何创建路由表，请继续学习下一教程。
 

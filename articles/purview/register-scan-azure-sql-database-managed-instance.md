@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 6eb17537fd64b192f64c36b38bab57e11d751328
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3513ba0cd1a894b55da604d54964affa79b6adf4
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400771"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555961"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>注册和扫描 Azure SQL 数据库托管实例
 
@@ -28,19 +28,19 @@ Azure SQL 数据库托管实例数据源支持以下功能：
 
 ### <a name="known-limitations"></a>已知的限制
 
-Azure Purview 不支持扫描 Azure SQL 托管实例中的[视图](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15)。
+Azure Purview 不支持扫描 Azure SQL 托管实例中的[视图](/sql/relational-databases/views/views?view=azuresqldb-mi-current&preserve-view=true)。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 创建新 Purview 帐户（如果还没有该帐户）。
 
-- [在 Azure SQL 托管实例中配置公共终结点](https://docs.microsoft.com/azure/azure-sql/managed-instance/public-endpoint-configure)
+- [在 Azure SQL 托管实例中配置公共终结点](/azure/azure-sql/managed-instance/public-endpoint-configure)
     > [!Note]
     > 你的组织必须能够允许公共终结点，因为 Purview 尚不支持专用终结点。 如果使用专用终结点，扫描将不会成功。
 
 ### <a name="setting-up-authentication-for-a-scan"></a>为扫描设置身份验证
 
-用于扫描 Azure SQL 数据库托管实例的身份验证。 如果需要创建新的身份验证，则需要[授予对 SQL 数据库托管实例的数据库访问权限](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)。 目前，Purview 支持三种身份验证方法：
+用于扫描 Azure SQL 数据库托管实例的身份验证。 如果需要创建新的身份验证，则需要[授予对 SQL 数据库托管实例的数据库访问权限](/azure/azure-sql/database/logins-create-manage)。 目前，Purview 支持三种身份验证方法：
 
 - SQL 身份验证
 - Service Principal
@@ -51,7 +51,7 @@ Azure Purview 不支持扫描 Azure SQL 托管实例中的[视图](https://docs.
 > [!Note]
 > 只有服务器级别主体登录（由预配过程创建）或 master 数据库中的 `loginmanager` 数据库角色成员可以创建新的登录。 授予权限后大约需要 15 分钟，Purview 帐户应具有适当的权限才能扫描资源。
 
-如果没有可用的登录名，则可以按照[创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)中的说明为 Azure SQL 数据库托管实例创建登录名。 后续步骤将用到该用户名和密码 。
+如果没有可用的登录名，则可以按照[创建登录名](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)中的说明为 Azure SQL 数据库托管实例创建登录名。 后续步骤将用到该用户名和密码 。
 
 1. 在 Azure 门户中，导航到密钥保管库
 1. 选择“设置”>“机密”
@@ -85,8 +85,8 @@ Purview 可以通过几个步骤使用服务主体扫描 Azure SQL 数据库托�
 ##### <a name="configure-azure-ad-authentication-in-the-database-account"></a>在数据库帐户中配置 Azure AD 身份验证
 
 服务主体或托管标识必须具有获取数据库、架构和表的元数据的权限。 它还必须能够查询表以进行采样分类。
-- [使用 Azure SQL 配置和管理 Azure AD 身份验证](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- 按照[创建映射到 Azure AD 标识的包含的用户](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities)的先决条件和教程，在 Azure SQL 数据库托管实例中创建 Azure AD 用户
+- [使用 Azure SQL 配置和管理 Azure AD 身份验证](/azure/azure-sql/database/authentication-aad-configure)
+- 按照[创建映射到 Azure AD 标识的包含的用户](/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities)的先决条件和教程，在 Azure SQL 数据库托管实例中创建 Azure AD 用户
 - 为该标识分配 `db_owner`（推荐）权限
 
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>将服务主体添加到密钥保管库和 Purview 的凭据

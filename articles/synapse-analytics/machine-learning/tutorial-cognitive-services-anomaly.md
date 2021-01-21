@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 4052d6a0773aa27e0a378ee04975c7946f1ffbfe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5e7b914d459d2452704f93987ce1bf91bfba988c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463506"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222201"
 ---
 # <a name="tutorial-anomaly-detection-with-cognitive-services-preview"></a>教程：使用认知服务进行异常情况检测（预览版）
 
-在本教程中，你将了解如何使用[认知服务](https://go.microsoft.com/fwlink/?linkid=2147492)在 Azure Synapse 中轻松扩充数据。 我们将使用[异常检测器](https://go.microsoft.com/fwlink/?linkid=2147493)进行异常情况检测。 Azure Synapse 中的用户可以直接选择某一个表进行扩充，以检测异常。
+在本教程中，你将了解如何使用[认知服务](../../cognitive-services/index.yml)在 Azure Synapse 中轻松扩充数据。 我们将使用[异常检测器](../../cognitive-services/anomaly-detector/index.yml)进行异常情况检测。 Azure Synapse 中的用户可以直接选择某一个表进行扩充，以检测异常。
 
 本教程涉及：
 
@@ -94,7 +94,7 @@ ms.locfileid: "96463506"
 
 你提供的 Azure Key Vault 详细信息可让你在不泄露它们的情况下安全地引用此体验中的机密。
 
-现在，可以“全部运行”单元格以执行异常情况检测。 详细了解[认知服务 - 异常检测器](https://go.microsoft.com/fwlink/?linkid=2147493)。
+现在，可以“全部运行”单元格以执行异常情况检测。 详细了解[认知服务 - 异常检测器](../../cognitive-services/anomaly-detector/index.yml)。
 
 ![运行“异常情况检测”](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00f.png)
 

@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 1b407cbee5218149f794ab125ac058e32b422558
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6a4833cf0d73939e01fd3e3e7263c6cba3c0a28a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463868"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222184"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>教程：使用认知服务进行情绪分析（预览版）
 
-在本教程中，你将了解如何使用[认知服务](https://go.microsoft.com/fwlink/?linkid=2147492)在 Azure Synapse 中轻松扩充数据。 我们将使用[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)功能来进行情绪分析。 Azure Synapse 中的用户可以直接选择包含文本列的表，以扩充情绪。 这些情绪可以是积极的、消极的、混杂的或中性的，系统还将返回概率。
+在本教程中，你将了解如何使用[认知服务](../../cognitive-services/index.yml)在 Azure Synapse 中轻松扩充数据。 我们将使用[文本分析](../../cognitive-services/text-analytics/index.yml)功能来进行情绪分析。 Azure Synapse 中的用户可以直接选择包含文本列的表，以扩充情绪。 这些情绪可以是积极的、消极的、混杂的或中性的，系统还将返回概率。
 
 本教程涉及：
 
@@ -98,7 +98,7 @@ df.write.mode("overwrite").saveAsTable("default.YourTableName")
 
 你提供的 Azure Key Vault 详细信息可让你在不泄露它们的情况下安全地引用此体验中的机密。
 
-现在，可以“全部运行”单元格，以使用情绪扩充数据。 情绪将返回为“积极”、“消极”、“中性”或“混杂”，还将返回每个情绪的概率。 详细了解[认知服务 - 情绪分析](https://go.microsoft.com/fwlink/?linkid=2147792)。
+现在，可以“全部运行”单元格，以使用情绪扩充数据。 情绪将返回为“积极”、“消极”、“中性”或“混杂”，还将返回每个情绪的概率。 详细了解[认知服务 - 情绪分析](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)。
 
 ![运行情绪分析](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
 

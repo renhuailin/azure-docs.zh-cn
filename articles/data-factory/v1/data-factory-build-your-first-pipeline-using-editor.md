@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 360fbc3e1bfe7890f1f3b05899eb95ce7a3a72c2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4e19991de20b130b878a230313d87ca09d31a84e
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496613"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556437"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教程：使用 Azure 门户生成第一个数据工厂
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "96496613"
 > 本文适用于 Azure 数据工厂第 1 版（即正式版）。 如果使用的是数据工厂服务的当前版本，请参阅[快速入门：使用数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
 
 > [!WARNING]
-> Azure 门户中用于创作和部署 ADF v1 管道的 JSON 编辑器将于 2019 年 7 月 31 日关闭。 2019 年 7 月 31 日之后，可以继续使用 [ADF v1 Powershell cmdlet](/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](/rest/api/datafactory/) 来创作和部署 ADF v1 管道。
+> Azure 门户中用于创作和部署 ADF v1 管道的 JSON 编辑器将于 2019 年 7 月 31 日关闭。 2019 年 7 月 31 日之后，可以继续使用 [ADF v1 Powershell cmdlet](/powershell/module/az.datafactory/)、[ADF v1 .Net SDK](/dotnet/api/microsoft.azure.management.datafactories.models)、[ADF v1 REST API](/rest/api/datafactory/) 来创作和部署 ADF v1 管道。
 
 本教程介绍如何使用 [Azure 门户](https://portal.azure.com/)创建第一个数据工厂。 若要使用其他工具/SDK 来完成教程，请从下拉列表中选择一个选项。 
 

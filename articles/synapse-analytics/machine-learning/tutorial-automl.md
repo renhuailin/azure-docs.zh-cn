@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: e219531a88787f19197a2e8c2a80040497c6dc1e
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: f3b0c5f1487951d05bc83973e5b4b9f3634a694b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901413"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222252"
 ---
 # <a name="tutorial-train-a-machine-learning-model-without-code"></a>教程：无代码训练机器学习模型
 
-可使用[自动化机器学习](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml)训练的新的机器学习模型轻松扩充 Spark 表中的数据。 在 Azure Synapse Analytics 中，可在工作区中选择 Spark 表作为训练数据集，用于在无代码体验中构建机器学习模型。
+可使用[自动化机器学习](../../machine-learning/concept-automated-ml.md)训练的新的机器学习模型轻松扩充 Spark 表中的数据。 在 Azure Synapse Analytics 中，可在工作区中选择 Spark 表作为训练数据集，用于在无代码体验中构建机器学习模型。
 
 本教程介绍如何使用 Azure Synapse Analytics 工作室中的无代码体验来训练机器学习模型。 在 Azure 机器学习中使用自动化机器学习，而不是手动对体验进行编码。 你训练的模型类型取决于你要解决的问题。
 

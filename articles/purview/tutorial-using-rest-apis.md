@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 06f738ea88093ea8de45efebea983fd7fa13216e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: fcc3e487d949a9450f792a6cc230b64e7dbe950a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387813"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202940"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>教程：使用 REST API
 
@@ -142,7 +142,7 @@ ms.locfileid: "97387813"
 
 
 
-1. [安装 Node.js](https://github.com/Azure/autorest/blob/master/docs/installing-autorest.md)。
+1. [安装 Node.js](https://github.com/Azure/autorest/blob/v2/docs/installing-autorest.md)。
 1. 打开 PowerShell 并运行以下命令：
 
    ```powershell
@@ -173,7 +173,7 @@ ms.locfileid: "97387813"
 1. 确保版本至少为 2.3.21，然后选择“安装”。
 1. 生成并运行应用程序。
 
-示例代码返回目录中 typedef 的计数，并显示如何处理角色分配。 有关详细信息，请参见示例代码中的 `DoRoleAssignmentOperations()`。 有关项目的详细信息，请参阅[项目设置](https://github.com/Azure/autorest/blob/master/docs/client/proj-setup.md)。
+示例代码返回目录中 typedef 的计数，并显示如何处理角色分配。 有关详细信息，请参见示例代码中的 `DoRoleAssignmentOperations()`。 有关项目的详细信息，请参阅[项目设置](https://github.com/Azure/autorest/blob/v2/docs/client/proj-setup.md)。
 
 ### <a name="sample-code-for-the-console-application"></a>控制台应用程序的示例代码
 

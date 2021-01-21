@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739784"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555944"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>注册并扫描 Azure SQL 数据库
 
@@ -28,7 +28,7 @@ Azure SQL 数据库数据源支持以下功能：
 
 ### <a name="known-limitations"></a>已知的限制
 
-Azure Purview 不支持扫描 Azure SQL 数据库中的[视图](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true)。 
+Azure Purview 不支持扫描 Azure SQL 数据库中的[视图](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,7 +50,7 @@ Azure Purview 不支持扫描 Azure SQL 数据库中的[视图](https://docs.mic
 > [!Note]
 > 只有服务器级别主体登录（由预配过程创建）或 master 数据库中的 `loginmanager` 数据库角色成员可以创建新的登录。 授予权限后大约需要 15 分钟，Purview 帐户应具有适当的权限才能扫描资源。
 
-如果没有可用的登录名，则可以按照[创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)中的说明为 Azure SQL 数据库创建登录名。 后续步骤将用到该用户名和密码 。
+如果没有可用的登录名，则可以按照[创建登录名](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)中的说明为 Azure SQL 数据库创建登录名。 后续步骤将用到该用户名和密码 。
 
 1. 在 Azure 门户中，导航到密钥保管库
 1. 选择“设置”>“机密”
@@ -100,7 +100,7 @@ Purview 可以通过几个步骤使用服务主体或自己的托管标识来扫
     ```
 
     > [!Note]
-    > `Username` 是你自己的服务主体或 Purview 的托管标识。 可以详细了解[固定数据库角色及其功能](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)。
+    > `Username` 是你自己的服务主体或 Purview 的托管标识。 可以详细了解[固定数据库角色及其功能](/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)。
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>将服务主体添加到密钥保管库和 Purview 的凭据
 

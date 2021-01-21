@@ -3,16 +3,16 @@ title: 在 Azure Application Insights 中了解客户 | Microsoft Docs
 description: 本教程介绍如何使用 Azure Application Insights 了解客户对应用程序的使用情况。
 ms.subservice: application-insights
 ms.topic: tutorial
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: ce9bf6fe6d130cf8511db2b2351c0de01b753d81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f6eeb5265d99a17ed18ace91fa5f2d2f744dbb2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318396"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210165"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>使用 Azure Application Insights 了解客户对应用程序的使用情况
 
@@ -83,7 +83,7 @@ Azure Application Insights 收集使用情况信息，帮助了解用户与应�
     ![会话时间线](media/tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>对类似用户进行分组
-**队列**是指一组按类似特征进行分组的用户。  可使用队列筛选其他面板中的数据，以便分析特定用户组。  例如，可能只想分析完成了购买的用户。
+**队列** 是指一组按类似特征进行分组的用户。  可使用队列筛选其他面板中的数据，以便分析特定用户组。  例如，可能只想分析完成了购买的用户。
 
 1.  在菜单中选择“队列”  。
 2.  单击“新建”  ，新建队列。
@@ -115,7 +115,7 @@ Azure Application Insights 收集使用情况信息，帮助了解用户与应�
 
 
 ## <a name="learn-which-customers-return"></a>了解哪些客户会返回
-**保留期**可帮助了解哪些用户会回到应用程序。  
+**保留期** 可帮助了解哪些用户会回到应用程序。  
 
 1. 在菜单中选择“保留期”。
 2. 默认情况下，经过分析的信息包含执行任何操作后，再返回应用程序执行操作的用户。  例如，可将此筛选器更改为仅包含完成购买后返回应用程序的用户。
@@ -127,7 +127,7 @@ Azure Application Insights 收集使用情况信息，帮助了解用户与应�
     ![显示与为保留筛选器设置的条件匹配的用户图形的屏幕截图。](media/tutorial-users/retentiongraph.png)
 
 ## <a name="analyze-user-navigation"></a>分析用户导航
-**用户流**可视化用户在应用程序的页面和功能之间导航的情况。  这有助于回答诸如用户通常从特定页面的哪个位置移动、用户通常如何退出应用程序以及是否存在任何定期重复的操作等问题。
+**用户流** 可视化用户在应用程序的页面和功能之间导航的情况。  这有助于回答诸如用户通常从特定页面的哪个位置移动、用户通常如何退出应用程序以及是否存在任何定期重复的操作等问题。
 
 1.  在菜单中选择“用户流”。
 2.  单击“新建”来新建用户流，然后单击“编辑”来编辑其详细信息。
@@ -144,7 +144,7 @@ Azure Application Insights 收集使用情况信息，帮助了解用户与应�
     ![显示用户流的排除事件列表的屏幕截图。](media/tutorial-users/flowsexclude.png)
 
 ## <a name="consolidate-usage-data"></a>整合使用情况数据
-**工作簿**可将数据可视化效果、Analytics 查询和文本合并到交互式文档中。  工作簿可用于对常见使用情况信息分组、整合来自特定事件的信息或向团队报告应用程序使用情况。
+**工作簿** 可将数据可视化效果、Analytics 查询和文本合并到交互式文档中。  工作簿可用于对常见使用情况信息分组、整合来自特定事件的信息或向团队报告应用程序使用情况。
 
 1.  在菜单中选择“工作簿”。
 2.  单击“新建”以新建工作簿。
