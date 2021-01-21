@@ -3,17 +3,17 @@ title: 快速入门：适用于 JavaScript 的 Azure Blob 存储客户端库 v10
 description: 使用适用于 JavaScript 的 Azure 存储客户端库 v10 在 Node.js 中创建、上传和删除 blob 与容器
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1f47c35997fe060fd3c318602bcad17de83b530c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2371c789b9e4a9fc70f4207fd8a634e419c97912
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249614"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599457"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>快速入门：在 Node.js 中使用 JavaScript v10 SDK 管理 blob
 
@@ -111,7 +111,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 ```
 
-在本地运行应用以进行调试时，*dotenv* 模块会加载环境变量。 值在名为 *.env* 的文件中定义，并加载到当前执行上下文中。 在生产环境中，服务器配置会提供这些值，这就是为什么此代码仅当脚本*不*在“生产”环境下运行时运行的原因。
+在本地运行应用以进行调试时，*dotenv* 模块会加载环境变量。 值在名为 *.env* 的文件中定义，并加载到当前执行上下文中。 在生产环境中，服务器配置会提供这些值，这就是为什么此代码仅当脚本 *不* 在“生产”环境下运行时运行的原因。
 
 导入下一批模块，以帮助与文件系统对接。
 
@@ -139,7 +139,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-该 API 发出的请求可以设置为在给定时间间隔后超时。 [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) 类负责管理请求超时的方式，而以下常量用于定义此示例中所使用的超时。
+该 API 发出的请求可以设置为在给定时间间隔后超时。 [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy&preserve-view=true) 类负责管理请求超时的方式，而以下常量用于定义此示例中所使用的超时。
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -178,13 +178,13 @@ const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.win
 
 此代码块中使用以下类：
 
-- [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy) 类负责包装存储帐户凭据，以将其提供给请求管道。
+- [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy&preserve-view=true) 类负责包装存储帐户凭据，以将其提供给请求管道。
 
-- [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy) 类负责创建新管道。
+- [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy&preserve-view=true) 类负责创建新管道。
 
-- [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy) 对 REST API 中使用的 URL 建模。 此类的实例允许执行列出容器等操作，并提供上下文信息以生成容器 URL。
+- [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy&preserve-view=true) 对 REST API 中使用的 URL 建模。 此类的实例允许执行列出容器等操作，并提供上下文信息以生成容器 URL。
 
-*ServiceURL* 的实例与 [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy) 和 [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy) 实例一起用于管理存储帐户中的容器和 blob。
+*ServiceURL* 的实例与 [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy&preserve-view=true) 和 [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy&preserve-view=true) 实例一起用于管理存储帐户中的容器和 blob。
 
 ```javascript
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
