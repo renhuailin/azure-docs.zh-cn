@@ -3,12 +3,12 @@ title: Azure 服务总线常见问题解答 (FAQ) | Microsoft Docs
 description: 本文提供了一些有关 Azure 服务总线的常见问题解答 (FAQ)。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: acd741101928f5a2dfd72eab1598af6e4556a3d1
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 576df12a9d53ec3585f8691016cd250bf1ba4be3
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022127"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623101"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服务总线 - 常见问题解答 (FAQ)
 
@@ -57,7 +57,7 @@ Azure 服务总线存储客户数据。 服务总线会自动将此数据存储�
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
-.NET Framework 的较旧 WindowsAzure.ServiceBus 包可选择使用旧的“服务总线消息传送协议”(SBMP)，也称为“NetMessaging”。 此协议使用 TCP 端口 9350-9354。 此包的默认模式用于自动检测这些端口是否可用于通信，如果不可用，将通过端口 443 切换到具有 TLS 的 WebSockets。 可以通过在 [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity?view=azure-dotnet) 设置上设置 `Https` [ConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) 来替代此设置并强制执行此模式，这将全局应用于应用程序。
+.NET Framework 的较旧 WindowsAzure.ServiceBus 包可选择使用旧的“服务总线消息传送协议”(SBMP)，也称为“NetMessaging”。 此协议使用 TCP 端口 9350-9354。 此包的默认模式用于自动检测这些端口是否可用于通信，如果不可用，将通过端口 443 切换到具有 TLS 的 WebSockets。 可以通过在 [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity) 设置上设置 `Https` [ConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode) 来替代此设置并强制执行此模式，这将全局应用于应用程序。
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>需要将哪些 IP 地址添加到允许列表？
 若要查找要添加到允许列表以进行连接的正确 IP 地址，请执行以下步骤：

@@ -17,19 +17,19 @@ ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a514debcf8036a296bbe66b2dd75c7dacacdc2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4c7d02b48d30fa558f8fd12f92705046dab74057
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600739"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624229"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 门户中预配报表 (预览版) 
 
 Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成：
 
 - **活动** 
-    - **登录** –有关托管应用程序和用户登录活动的使用情况的信息。
+    - **登录** –有关托管应用程序的使用情况和用户登录活动的信息。
     - **审核日志**  - [审核日志](concept-audit-logs.md)提供有关用户和组管理、托管应用程序和目录活动的系统活动信息。
     - **设置日志** -提供有关由 Azure AD 预配服务设置的用户、组和角色的系统活动。 
 
@@ -37,7 +37,11 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
     - 有 **风险的登录**-有 [风险登录](../identity-protection/overview-identity-protection.md)是指可能由不是用户帐户合法所有者执行的登录尝试的指示符。
     - **标记为存在风险的用户** -有 [风险的用户](../identity-protection/overview-identity-protection.md) 是可能已泄露的用户帐户的指示器。
 
-本主题简要介绍预配报表。
+本主题提供预配日志的概述。 它们提供以下问题的答案： 
+
+* 已成功在 ServiceNow 中创建哪些组？
+* 哪些用户已成功从 Adobe 删除？
+* 在 Active Directory 中，Workday 中的哪些用户已成功创建？ 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,14 +56,16 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看 "所有预配活动" 报表。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。 
 
-## <a name="provisioning-logs"></a>“预配”日志
 
-预配日志提供以下问题的答案：
+## <a name="ways-of-interacting-with-the-provisioning-logs"></a>与预配日志交互的方式 
+客户有四种方式与预配日志交互：
 
-* 已成功在 ServiceNow 中创建哪些组？
-* 哪些用户已成功从 Adobe 删除？
-* 在 DropBox 中未成功创建哪些用户？
+1. 按如下所述从 Azure 门户访问日志。
+1. 将预配日志流式传输到 [Azure Monitor](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)中，允许扩展的数据保留，生成自定义仪表板、警报和查询。
+1. 查询用于预配日志的 [MICROSOFT GRAPH API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) 。
+1. 下载 CSV 文件或 json 格式的设置日志。
 
+## <a name="access-the-logs-from-the-azure-portal"></a>从 Azure 门户访问日志
 可以通过在 [Azure 门户](https://portal.azure.com)中 **Azure Active Directory** 边栏选项卡的 "**监视**" 部分选择 "**设置日志**" 来访问设置日志。 某些预配记录可能需要长达两个小时才能在门户中显示。
 
 ![“预配”日志](./media/concept-provisioning-logs/access-provisioning-logs.png "“预配”日志")
@@ -205,10 +211,57 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 **修改后的属性** 显示旧值和新值。 在没有旧值的情况下，"旧值" 列为空白。 
 
-
 ### <a name="summary"></a>总结
 
 " **摘要** " 选项卡概述源系统和目标系统中的对象发生了什么情况和标识符。 
+
+## <a name="download-logs-as-csv-or-json"></a>下载 CSV 或 JSON 格式的日志
+
+可以通过导航到 Azure 门户中的日志并单击 "下载"，下载用于稍后使用的设置日志。 将根据所选的筛选条件筛选该文件。 你可能希望使筛选器尽可能具体，以减少下载所需的时间和下载大小。 CSV 下载分为三个文件：
+
+* ProvisioningLogs：下载除预配步骤和修改的属性之外的所有日志。
+* ProvisioningLogs_ProvisioningSteps：包含设置步骤和更改 ID。 更改 ID 可用于将事件与其他两个文件联接。
+* ProvisioningLogs_ModifiedProperties：包含已更改的属性和更改 ID。 更改 ID 可用于将事件与其他两个文件联接。
+
+#### <a name="opening-the-json-file"></a>打开 JSON 文件
+若要打开 Json 文件，请使用文本编辑器，如 [Microsoft Visual Studio 代码](https://aka.ms/vscode)。 Visual Studio Code 通过提供语法突出显示，使其更易于阅读。 此外，还可以使用浏览器以不可编辑的格式（例如[Microsoft Edge](https://aka.ms/msedge) ）打开 json 文件 
+
+#### <a name="prettifying-the-json-file"></a>Prettifying JSON 文件
+JSON 文件以缩小格式下载，以减少下载大小。 这进而会使有效负载难以读取。 查看以下两个选项以整理对 debug.log 文件：
+
+1. 使用 Visual Studio Code 设置 JSON 的格式
+
+按照 [此处](https://code.visualstudio.com/docs/languages/json#_formatting) 定义的说明使用 VISUAL STUDIO CODE 设置 JSON 文件的格式。
+
+2. 使用 PowerShell 设置 JSON 的格式
+
+此脚本将使用制表符和空格以仅格式输出 json。 
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+`$JSONContent | ConvertTo-Json > <PATH TO OUTPUT THE JSON FILE>`
+
+#### <a name="parsing-the-json-file"></a>分析 JSON 文件
+
+下面是使用 PowerShell 处理 JSON 文件的一些示例命令。 您可以使用任何您喜欢的编程语言。  
+
+首先，通过运行以下内容 [读取 JSON 文件](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) ：
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+现在，可以根据方案分析数据。 以下是几个示例： 
+
+1. 输出 JsonFile 中的所有 jobIDs
+
+`foreach ($provitem in $JSONContent) { $provitem.jobId }`
+
+2. 输出操作为 "create" 的事件的所有 changeIds
+
+`foreach ($provitem in $JSONContent) { `
+`   if ($provItem.action -eq 'Create') {`
+`       $provitem.changeId `
+`   }`
+`}`
 
 ## <a name="what-you-should-know"></a>要点
 
@@ -234,14 +287,14 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 |InsufficientRights，MethodNotAllowed，NotPermitted，未授权| Azure AD 能够向目标应用程序进行身份验证，但无权执行更新。 请查看目标应用程序提供的任何说明，并查看相应的应用程序 [教程](../saas-apps/tutorial-list.md)。|
 |UnprocessableEntity|目标应用程序返回了意外响应。 目标应用程序的配置可能不正确，或者目标应用程序可能存在导致此操作无法正常工作的服务问题。|
 |WebExceptionProtocolError |连接到目标应用程序时出现 HTTP 协议错误。 无需执行任何操作。 在40分钟后，此尝试将自动停用。|
-|InvalidAnchor|预配服务以前创建或匹配的用户已不存在。 检查以确保该用户存在。 若要强制重新匹配所有用户，请使用 MS 图形 API [重新启动作业](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)。 请注意，重新启动设置将触发初始周期，这可能需要一些时间才能完成。 它还会删除预配服务用于操作的缓存，这意味着租户中的所有用户和组都必须重新评估，并且某些预配事件可能会被删除。|
-|NotImplemented | 目标应用返回了意外响应。 应用的配置可能不正确，或者目标应用可能存在服务问题，导致无法正常工作。 请查看目标应用程序提供的任何说明，并查看相应的应用程序 [教程](../saas-apps/tutorial-list.md)。 |
+|InvalidAnchor|预配服务以前创建或匹配的用户已不存在。 检查以确保该用户存在。 若要强制重新匹配所有用户，请使用 MS 图形 API [重新启动作业](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)。 重新启动预配将触发初始周期，这可能需要一些时间才能完成。 它还会删除预配服务用于操作的缓存，这意味着租户中的所有用户和组都必须重新评估，并且某些预配事件可能会被删除。|
+|NotImplemented | 目标应用返回了意外响应。 应用的配置可能不正确，或者目标应用可能存在服务问题，导致无法正常工作。 请查看目标应用程序和相应的应用程序 [教程](../saas-apps/tutorial-list.md)提供的任何说明。 |
 |MandatoryFieldsMissing, MissingValues |无法创建用户，因为缺少所需的值。 更正源记录中缺少的属性值，或查看匹配的属性配置以确保不省略必填字段。 [详细了解](../app-provisioning/customize-application-attributes.md) 如何配置匹配属性。|
 |SchemaAttributeNotFound |无法执行该操作，因为指定的属性在目标应用程序中不存在。 请参阅有关属性自定义的 [文档](../app-provisioning/customize-application-attributes.md) ，并确保配置正确。|
 |InternalError |Azure AD 预配服务中发生内部服务错误。 无需执行任何操作。 此尝试将在40分钟内自动重试。|
 |InvalidDomain |由于包含无效域名的属性值，无法执行该操作。 更新用户的域名或将其添加到目标应用程序中的允许列表。 |
 |超时 |操作无法完成，因为目标应用程序的响应时间太长。 无需执行任何操作。 此尝试将在40分钟内自动重试。|
-|LicenseLimitExceeded|无法在目标应用程序中创建用户，因为没有此用户的可用许可证。 为目标应用程序购买其他许可证，或查看用户分配和属性映射配置，以确保为正确的属性分配正确的用户。|
+|LicenseLimitExceeded|无法在目标应用程序中创建用户，因为没有此用户的可用许可证。 为目标应用程序购买更多许可证，或查看用户分配和属性映射配置，以确保为正确的属性分配正确的用户。|
 |DuplicateTargetEntries  |操作无法完成，因为在目标应用程序中找到了多个具有配置的匹配属性的用户。 删除目标应用程序中的重复用户，或重新配置属性映射，如 [此处](../app-provisioning/customize-application-attributes.md)所述。|
 |DuplicateSourceEntries | 操作无法完成，因为找到多个具有配置的匹配属性的用户。 请删除重复的用户，或重新配置属性映射，如 [此处](../app-provisioning/customize-application-attributes.md)所述。|
 |ImportSkipped | 评估每个用户时，我们会尝试从源系统导入用户。 如果导入的用户缺少属性映射中定义的匹配属性，则通常会出现此错误。 如果在匹配属性的用户对象上不存在值，则无法计算范围、匹配或导出更改。 请注意，存在此错误并不表示用户处于范围内，因为我们尚未评估用户的范围。|

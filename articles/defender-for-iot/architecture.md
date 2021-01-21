@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/13/2021
 ms.author: shhazam
-ms.openlocfilehash: f3239434a7ba737bc9323bc4f383afd794800db1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 66b960bf874cc46985230e488c749663eff0b835
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201463"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621091"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender for IoT 体系结构
 
@@ -81,7 +81,7 @@ Azure Defender for IoT 包括以下组件：
 - Azure 门户
 
 ### <a name="sensor-console"></a>传感器控制台
-传感器检测结果显示在传感器控制台中，可以在该控制台中通过网络映射、资产库存和各种报表（例如风险评估报表、数据挖掘查询和攻击途径）来查看、调查和分析这些检测结果。 你还可以使用控制台来查看和处理传感器引擎检测到的威胁、将信息转发给合作伙伴系统、管理用户等。
+传感器检测显示在传感器控制台中，可以在网络图、设备清单和大量的报告中查看、调查和分析传感器，如风险评估报告、数据挖掘查询和攻击向量。 你还可以使用控制台来查看和处理传感器引擎检测到的威胁、将信息转发给合作伙伴系统、管理用户等。
 
 :::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="Defender for IoT 传感器控制台":::
 
@@ -96,7 +96,7 @@ Azure Defender for IoT 包括以下组件：
 
 它紧密集成了 SOC 工作流和 runbook，可轻松确定缓解活动的优先级和整个站点的威胁风险。
 
-- 集中统一 - 通过提供资产管理、风险和漏洞管理以及带事件响应的威胁监视功能的单个统一平台，降低复杂性。
+- 整体-通过用于设备管理、风险和漏洞管理的单个统一平台以及与事件响应的威胁监视，降低复杂性。
 
 - 聚合和关联–显示、聚合和分析从所有站点收集的数据和警报。
 

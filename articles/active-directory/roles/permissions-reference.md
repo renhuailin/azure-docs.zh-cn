@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62fb239fd9cb8c1817dea5ab5c22684a65955ed5
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3a66ad61afe1439a80d750097d3c90d010547539
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555723"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622402"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -98,7 +98,7 @@ ms.locfileid: "98555723"
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps 管理员](#azure-devops-administrator-permissions)
 
-具有此角色的用户可以管理 Azure DevOps 策略，这样就可以仅限一组可配置的用户或组新建 Azure DevOps 组织。 此角色中的用户可以通过由公司的 Azure AD 组织支持的任何 Azure DevOps 组织来管理此策略。 此角色不会授予任何其他特定于 Azure DevOps 的权限 (例如，项目集合管理员) 由公司 Azure AD 组织提供支持的任何 Azure DevOps 组织内部。
+具有此角色的用户可以管理 Azure DevOps 策略，这样就可以仅限一组可配置的用户或组新建 Azure DevOps 组织。 充当此角色的用户可以通过由公司 Azure AD 组织支持的任何 Azure DevOps 组织来管理此策略。 此角色不会授予该公司 Azure AD 组织支持的任何 Azure DevOps 组织内的任何其他 Azure DevOps 特定权限（例如，项目集合管理员）。
 
 充当此角色的用户可以管理所有企业 Azure DevOps 策略。
 
@@ -444,7 +444,7 @@ Windows Defender ATP 和 EDR | 安全读取者角色的所有权限<br>查看、
 In | 有权执行的操作
 --- | ---
 [Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务查看与安全相关的策略<br>查看安全威胁和警报<br>查看报表
-标识保护中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>Encryption<li>数据丢失防护<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
+标识保护中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>加密<li>数据丢失防护<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) | 以只读方式访问 Azure AD Privileged Identity Management 中显示的所有信息：Azure AD 角色分配的策略和报告以及安全评审。<br>**无法** 注册 Azure AD Privileged Identity Management 或对其进行任何更改。 充当此角色的人员可以在 Privileged Identity Management 门户中或通过 PowerShell 为符合条件的用户激活其他角色（例如，全局管理员或特权角色管理员）。
 [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 查看安全策略<br>查看并调查安全威胁<br>查看报表
 Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP 中启用基于角色的访问控制后，拥有只读权限的用户（例如 Azure AD 安全读取者角色）在被分配到 Windows Defender ATP 角色之前会失去访问权限。
@@ -1027,35 +1027,35 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.directory/groups/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.appRoleAssignments 属性。 |
-| microsoft. directory/groups/assignLicense | 管理 Azure Active Directory 中组的许可证。 |
+| microsoft.directory/groups/assignLicense | 在 Azure Active Directory 中管理组的许可证。 |
 | microsoft.directory/groups/basic/update | 更新 Azure Active Directory 中组的基本属性。  |
-| microsoft. 目录/组/分类/更新 | Azure Active Directory 中组的 "更新分类" 属性。 |
+| microsoft.directory/groups/classification/update | 在 Azure Active Directory 中更新组的 classification 属性。 |
 | microsoft.directory/groups/create | 在 Azure Active Directory 中创建组。 |
-| microsoft. directory/groups/groupType/update | 更新 Azure Active Directory 中组的 groupType 属性。 |
+| microsoft.directory/groups/groupType/update | 在 Azure Active Directory 中更新组的 groupType 属性。 |
 | microsoft.directory/groups/members/update | 更新 Azure Active Directory 中的 groups.members 属性。 |
 | microsoft.directory/groups/owners/update | 更新 Azure Active Directory 中的 groups.owners 属性。 |
-| microsoft. directory/groups/reprocessLicenseAssignment | 重新处理 Azure Active Directory 中组的许可证分配。 |
-| microsoft. directory/groups/securityEnabled/update | 更新 Azure Active Directory 中组的 secutiryEnabled 属性。 |
+| microsoft.directory/groups/reprocessLicenseAssignment | 在 Azure Active Directory 中重新处理组的许可证分配。 |
+| microsoft.directory/groups/securityEnabled/update | 在 Azure Active Directory 中更新组的 secutiryEnabled 属性。 |
 | microsoft.directory/groups/settings/update | 更新 Azure Active Directory 中的 groups.settings 属性。 |
-| microsoft. 目录/组/可见性/更新 | 组的更新可见性属性 |
+| microsoft.directory/groups/visibility/update | 更新组的 visibility 属性 |
 | microsoft.directory/groupSettings/basic/update | 更新 Azure Active Directory 中 groupSettings 的基本属性。 |
-| microsoft.directory/groupSettings/create | 在 Azure Active Directory 中创建 groupSettings。 |
+| microsoft.directory/groupSettings/create | 在 Azure Active Directory 中创建 groupSettings 属性。 |
 | microsoft.directory/groupSettings/delete | 删除 Azure Active Directory 中的 groupSettings。 |
-| oAuth2PermissionGrants/basic/update | 在 Azure Active Directory 中更新 oAuth2PermissionGrants 的基本属性。 |
-| oAuth2PermissionGrants/create | 在 Azure Active Directory 中创建 oAuth2PermissionGrants。 |
-| microsoft.directory/servicePrincipals/synchronizationCredentials/manage | 管理应用程序设置机密和凭据。 |
-| microsoft.directory/servicePrincipals/synchronizationJobs/manage | 启动、重新启动和暂停应用程序预配同步作业。 |
+| microsoft.directory/oAuth2PermissionGrants/basic/update | 在 Azure Active Directory 中更新 oAuth2PermissionGrants 的基本属性。 |
+| microsoft.directory/oAuth2PermissionGrants/create | 在 Azure Active Directory 中创建 oAuth2PermissionGrants。 |
+| microsoft.directory/servicePrincipals/synchronizationCredentials/manage | 管理应用程序预配机密和凭据。 |
+| microsoft.directory/servicePrincipals/synchronizationJobs/manage | 启动、重启和暂停应用程序预配同步作业。 |
 | microsoft.directory/servicePrincipals/synchronizationSchema/manage | 创建和管理应用程序预配同步作业和架构。 |
 | microsoft.directory/users/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
 | microsoft.directory/users/assignLicense | 管理 Azure Active Directory 中用户的许可证。 |
 | microsoft.directory/users/basic/update | 更新 Azure Active Directory 中用户的基本属性。 |
 | microsoft.directory/users/create | 在 Azure Active Directory 中创建用户。 |
-| microsoft. directory/users/disable | 禁用 Azure Active Directory 中的用户帐户。 |
-| microsoft. directory/users/enable | 在 Azure Active Directory 中启用用户帐户 |
+| microsoft.directory/users/disable | 在 Azure Active Directory 中禁用某个用户帐户。 |
+| microsoft.directory/users/enable | 在 Azure Active Directory 中启用某个用户帐户。 |
 | microsoft.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有用户刷新令牌无效，要求用户在下次登录时重新进行身份验证 |
 | microsoft.directory/users/manager/update | 更新 Azure Active Directory 中的 users.manager 属性。 |
-| microsoft. directory/users/reprocessLicenseAssignment | 重新处理 Azure Active Directory 中用户的许可证分配。 |
-| microsoft. directory/users/userPrincipalName/update | 更新 Azure Active Directory 中的 "用户" 属性。 |
+| microsoft.directory/users/reprocessLicenseAssignment | 在 Azure Active Directory 中重新处理用户的许可证分配。 |
+| microsoft.directory/users/userPrincipalName /update | 在 Azure Active Directory 中更新 users.userPrincipalName 属性。 |
 
 ### <a name="exchange-service-administrator-permissions"></a>Exchange Service Administrator permissions
 
@@ -1971,6 +1971,7 @@ Graph displayName | Azure 门户显示名称 | directoryRoleTemplateId
 身份验证管理员 | 身份验证管理员 | c4e39bd9-1100-46d3-8c65-fb160da0071f
 攻击负载作者 | 攻击负载作者 | 9c6df0f2-1e7c-4dc3-b195-66dfbd24aa8f
 攻击模拟管理员 | 攻击模拟管理员 | c430b396-e693-46cc-96f3-db01bf8bb62a
+Azure AD 联接的设备本地管理员 | Azure AD 联接的设备本地管理员 | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 Azure DevOps 管理员 | Azure DevOps 管理员 | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure 信息保护管理员 | Azure 信息保护管理员 | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C IEF 密钥集管理员 | B2C IEF 密钥集管理员 | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1978,24 +1979,23 @@ B2C IEF 策略管理员 | B2C IEF 策略管理员 | 3edaf663-341e-4475-9f94-5c39
 计费管理员 | 计费管理员 | b0f54661-2d74-4c50-afa3-1ec803f12efe
 云应用管理员 | 云应用程序管理员 | 158c047a-c907-4556-b7ef-446551a6b5f7
 云设备管理员 | 云设备管理员 | 7698a772-787b-4ac8-901f-60d6b08affd2
-公司管理员 | 全局管理员 | 62e90394-69f5-4237-9190-012177145e10
 符合性管理员 | 法规管理员 | 17315797-102d-40b4-93e0-432062caca18
 合规性数据管理员 | 合规性数据管理员 | e6d1a23a-da11-4be4-9570-befc86d067a7
 条件访问管理员 | 条件访问管理员 | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
-CRM 服务管理员 | Dynamics 365 管理员 | 44367163-eba1-44c3-98af-f5787879f96a
 客户密码箱访问审批者 | 客户密码箱访问审批者 | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 桌面分析管理员 | 桌面分析管理员 | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
-设备管理员 | 设备管理员 | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 设备联接 | 已放弃 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
 设备管理器 | 已放弃 | 2b499bcd-da44-4968-8aec-78e1674fa64d
 设备用户 | 已放弃 | d405c6df-0af8-4e3b-95e4-4d06e542189e
 目录读者 | 目录读者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 目录同步帐户 | 不显示，因为不应使用它 | d29b2b05-8046-44ba-8758-1e26182fcf32
 目录编写人员 | 目录编写人员 | 9360feb5-f418-4baa-8175-e2a00bac4301
-Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3e4de
+Dynamics 365 管理员 | Dynamics 365 管理员 | 44367163-eba1-44c3-98af-f5787879f96a
+Exchange 管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部 ID 用户流管理员 | 外部 ID 用户流管理员 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 外部 ID 用户流属性管理员 | 外部 ID 用户流属性管理员 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 外部标识提供者管理员 | 外部标识提供者管理员 | be2f45a1-457d-42af-a067-6ec1fa63bc45
+全局管理员角色 | 全局管理员 | 62e90394-69f5-4237-9190-012177145e10
 全局读取者 | 全局读取者 | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 组管理员 | 组管理员 | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 来宾邀请者 | 来宾邀请者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
@@ -2003,10 +2003,9 @@ Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3
 混合标识管理员 | 混合标识管理员 | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
 Insights 管理员 | Insights 管理员 | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c
 Insights 业务主管 | Insights 业务主管 | 31e939ad-9672-4796-9c2e-873181342d2d
-Intune 服务管理员 | Intune 管理员 | 3a2c62db-5318-420d-8d74-23affee5d9d5
+Intune 管理员 | Intune 管理员 | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala 管理员 | Kaizala 管理员 | 74ef975b-6605-40af-a5d2-b9539d836353
 许可证管理员 | 许可证管理员 | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
-Lync 服务管理员 | Skype for Business 管理员 | 75941009-915a-4869-abe7-691bff18279e
 消息中心隐私读取者 | 消息中心隐私读取者 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 消息中心读取者 | 消息中心读取者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 现代商业用户 | 现代商业用户 | d24aef57-1500-4070-84db-2666f29cf966
@@ -2015,7 +2014,7 @@ Office 应用管理员 | Office 应用管理员 | 2b745bdf-0803-4d80-aa65-822c44
 合作伙伴一线支持人员 | 不显示，因为不应使用它 | 4ba39ca4-527c-499a-b93d-d9b492c50246
 合作伙伴二线支持人员 | 不显示，因为不应使用它 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 密码管理员 | 密码管理员 | 966707d0-3269-4727-9be2-8c3a10f19b9d
-Power BI 服务管理员 | Power BI 管理员 | a9ea8996-122f-4c74-9520-8edcd192826c
+Power BI 管理员 | Power BI 管理员 | a9ea8996-122f-4c74-9520-8edcd192826c
 Power Platform 管理员 | Power Platform 管理员 | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
 打印机管理员 | 打印机管理员 | 644ef478-e28f-4e28-b9dc-3fdde9aa0b1f
 打印机技术人员 | 打印机技术人员 | e8cef6f1-e4bd-4ea8-bc07-4b8d950f4477
@@ -2028,15 +2027,16 @@ Power Platform 管理员 | Power Platform 管理员 | 11648597-926c-4cf3-9c36-bc
 安全操作员 | 安全操作员 | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 安全读取者 | 安全读取者 | 5d6b6bb7-de71-4623-b4af-96380a352509
 服务支持管理员 | 服务支持管理员 | f023fd81-a637-4b56-95fd-791ac0226033
-SharePoint 服务管理员 | SharePoint 管理员 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+SharePoint 管理员 | SharePoint 管理员 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+Skype for Business 管理员 | Skype for Business 管理员 | 75941009-915a-4869-abe7-691bff18279e
 Teams 通信管理员 | Teams 通信管理员 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Teams 通信支持工程师 | Teams 通信支持工程师 | f70938a0-fc10-4177-9e90-2178f8765737
 Teams 通信支持专家 | Teams 通信支持专家 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams 设备管理员 | Teams 设备管理员 | 3d762c5a-1b6c-493f-843e-55a3b42923d4
-Teams 服务管理员 | Teams 服务管理员 | 69091246-20e8-4a56-aa4d-066075b2a7a8
+Teams 管理员 | Teams 管理员 | 69091246-20e8-4a56-aa4d-066075b2a7a8
 使用情况摘要报表读者 | 使用情况摘要报表读者 | 75934031-6c7e-415a-99d7-48dbd49e875e
 用户 | 未显示，因为无法使用它 | a0b1b346-4d3e-4e8b-98f8-753987be4970
-用户帐户管理员 | 用户管理员 | fe930be7-5e62-47db-91af-98c3a49a38b1
+用户管理员 | 用户管理员 | fe930be7-5e62-47db-91af-98c3a49a38b1
 工作区设备联接 | 已放弃 | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>已弃用的角色
@@ -2055,21 +2055,17 @@ Teams 服务管理员 | Teams 服务管理员 | 69091246-20e8-4a56-aa4d-066075b2
 
 Azure 门户中不一定会显示 PowerShell 或 MS Graph API 返回的每个角色。 下表整理了这些差异。
 
-API 名称 | Azure 门户中的名称 | 说明
+API 名称 | Azure 门户中的名称 | 注释
 -------- | ------------------- | -------------
-公司管理员 | 全局管理员角色 | [为便于阅读，名称已更改](permissions-reference.md#role-template-ids)
-CRM 服务管理员 | Dynamics 365 管理员 | [反映当前产品品牌](permissions-reference.md#role-template-ids)
 设备联接 | 已放弃 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
 设备管理器 | 已放弃 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
 设备用户 | 已放弃 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
 目录同步帐户 | 未显示，因为不应使用它 | [目录同步帐户文档](permissions-reference.md#directory-synchronization-accounts)
-目录编写人员 | 未显示，因为不应使用它 | [目录写入者文档](permissions-reference.md#directory-writers)
-来宾用户 | 未显示，因为无法使用它  | 不可用
-Lync 服务管理员 | Skype for Business 管理员 | [反映当前产品品牌](permissions-reference.md#role-template-ids)
+来宾用户 | 未显示，因为无法使用它  | NA
 合作伙伴层 1 支持 | 未显示，因为不应使用它 | [合作伙伴一线支持人员文档](permissions-reference.md#partner-tier1-support)
 合作伙伴层 2 支持 | 未显示，因为不应使用它 | [合作伙伴二线支持人员文档](permissions-reference.md#partner-tier2-support)
-受限来宾用户 | 未显示，因为无法使用它 | 不可用
-用户 | 未显示，因为无法使用它 | 不可用
+受限来宾用户 | 未显示，因为无法使用它 | NA
+用户 | 未显示，因为无法使用它 | NA
 工作区设备联接 | 已放弃 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
 
 ## <a name="next-steps"></a>后续步骤

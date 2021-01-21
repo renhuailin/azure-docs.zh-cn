@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 94a1db30419e5d7e52f369392d94b817d0dc273a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538575"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623748"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>激活和设置本地管理控制台 
 
@@ -79,7 +79,7 @@ ms.locfileid: "98538575"
 
 在管理控制台和连接的传感器之间禁用验证：
 
-1. 选择“下一步”  。
+1. 选择“下一步”。
 1. 关闭 " **启用系统范围的验证** " 切换。
 
 有关上传新证书、支持的证书文件和相关项目的信息，请参阅 [管理本地管理控制台](how-to-manage-the-on-premises-management-console.md)。
@@ -147,13 +147,13 @@ ms.locfileid: "98538575"
 
 ## <a name="set-up-a-site"></a>设置站点
 
-默认的企业地图根据地理位置的多个级别提供资产的总体视图。
+默认的企业地图根据多个地理位置级别提供设备的总体视图。
 
-组织结构和用户权限非常复杂时，可能需要对资产进行查看。 在这些情况下，除了标准站点或区域结构之外，站点设置可能由全局组织结构确定。
+组织结构和用户权限非常复杂时，可能需要设备的视图。 在这些情况下，除了标准站点或区域结构之外，站点设置可能由全局组织结构确定。
 
 若要支持此环境，需要创建基于你的组织的业务部门、区域、站点和区域的全局业务拓扑。 还需要使用访问组来定义针对这些实体的用户访问权限。
 
-使用访问组可以更好地控制用户在 IoT 平台的 Defender 中管理和分析资产的位置。
+访问组可以更好地控制用户在 IoT 平台的 Defender 中管理和分析设备的位置。
 
 ### <a name="how-it-works"></a>工作原理
 
@@ -215,7 +215,7 @@ ms.locfileid: "98538575"
 
 ## <a name="create-enterprise-zones"></a>创建企业区域
 
-区域是逻辑实体，使你能够根据各种特征将站点中的资产划分为组。 例如，您可以为生产线、变电站、网站区域或资产类型创建组。 你可以根据适用于你的组织的任何特性来定义区域。
+区域是逻辑实体，使你能够根据各种特征将站点中的设备划分为组。 例如，你可以为生产线、变电站、站点区域或设备类型创建组。 你可以根据适用于你的组织的任何特性来定义区域。
 
 将区域配置为站点配置过程的一部分。
 
@@ -227,11 +227,11 @@ ms.locfileid: "98538575"
 |--|--|
 | 名称 | 传感器的名称。 只能从传感器更改此名称。 有关详细信息，请参阅用于 IoT 的 Defender 用户指南。 |
 | IP | 传感器 IP 地址。 |
-| Version | 传感器版本。 |
+| 版本 | 传感器版本。 |
 | 连接 | 传感器连接状态。 状态可以为 " **已连接** " 或 "已 **断开** 连接"。 |
 | 上次升级 | 上次升级的日期。 |
 | 升级进度 | 进度栏显示升级过程的状态，如下所示：<br />-正在上传包<br />-正在准备安装<br />-正在停止进程<br />-备份数据<br />-拍摄快照<br />-正在更新配置<br />-更新依赖项<br />-更新库<br />-修补数据库<br />-正在启动进程<br />-正在验证系统是否稳定<br />-验证成功<br />-成功<br />-失败<br />-升级已启动<br />-正在启动安装ogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >有关升级的详细信息，请参阅 [Microsoft 支持部门](https://support.microsoft.com/) 获取帮助。 |
-| 资产 | 传感器监视的 OT 资产数。 |
+| 设备 | 传感器监视的设备的数量。 |
 | 警报 | 传感器上的警报数。 |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: | 允许将传感器分配给区域。 |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false":::| 允许从站点中删除断开连接的传感器。 |

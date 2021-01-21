@@ -15,21 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: ae361c74b261bdd6a5673040f868392282b573ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e895640daeb3fbbba2f2708969ee4cf856bf1033
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588274"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621175"
 ---
 # <a name="connect-your-f5-big-ip-appliance"></a>连接 F5 大 IP 设备 
 
-> [!IMPORTANT]
-> Azure Sentinel 中的 F5 大 IP 数据连接器目前为公共预览版。
-> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 F5 大 IP 连接器可让你轻松地将所有 F5 大 IP 日志连接到 Azure Sentinel，查看工作簿，创建自定义警报，以及改进调查。 这样，你就可以更深入地了解组织的网络并改善安全操作功能。 F5 大 IP 和 Azure Sentinel 之间的集成利用 REST API。
-
 
 > [!NOTE]
 > 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
@@ -42,7 +37,7 @@ F5 大 IP 可以将日志直接集成到 Azure Sentinel 并将其导出。
 1. 若要连接 F5 大 IP，必须将 JSON 声明发送到系统的 API 终结点。 有关如何执行此操作的说明，请参阅 [将 F5 大 IP 与 Azure Sentinel 集成](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)。
 8. 在 "F5 大 IP 连接器" 页面上，复制 "工作区 ID" 和 "主密钥"，并按照 " [将数据流式传输到 Azure Log Analytics](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel#streaming-data-to-azure-log-analytics)中的说明进行粘贴。
 1. 完成 F5 大 IP 说明后，请在 Azure Sentinel 连接器页中看到连接的数据类型。
-1. 若要在 F5 大 IP 事件 Log Analytics 中使用相关架构，请搜索 **F5Telemetry_LTM_CL**、 **F5Telemetry_system_CL**和 **F5Telemetry_ASM_CL**。
+1. 若要在 F5 大 IP 事件 Log Analytics 中使用相关架构，请搜索 **F5Telemetry_LTM_CL**、 **F5Telemetry_system_CL** 和 **F5Telemetry_ASM_CL**。
 
 
 ## <a name="validate-connectivity"></a>验证连接

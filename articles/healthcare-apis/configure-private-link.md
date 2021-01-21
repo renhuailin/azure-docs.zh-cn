@@ -8,21 +8,18 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: cdb41f12e8f050e3c74fccddb392d7a816c15b2f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398209"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621872"
 ---
 # <a name="configure-private-link"></a>配置专用链接
 
-> [!IMPORTANT]
-> 此功能现为公共预览版，在提供时不附带服务级别协议，建议不要用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 专用链接使你可以通过专用终结点访问 Azure API for FHIR，这是一个网络接口，该接口通过你的虚拟网络从专用 IP 地址进行私下连接和安全连接。 借助专用链接，你可以从 Vnet 安全地将服务作为第一方服务来访问，而无需经过公共 DNS。 本文逐步讲解如何创建、测试和管理用于 FHIR 的 Azure API 的专用终结点。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 创建专用终结点之前，需要先创建一些 Azure 资源：
 
@@ -90,6 +87,6 @@ ms.locfileid: "93398209"
 
 ### <a name="delete"></a>删除
 
-只能通过 "概述" 边栏选项卡 (Azure 门户删除专用终结点，如下所示) 或通过 "网络 (预览) 的" 专用终结点连接 "选项卡下的" 删除 "选项。单击 "删除" 按钮将删除专用终结点和关联的 NIC。 如果删除了 FHIR 资源的所有专用终结点，并且已禁用公共网络访问，则不会请求将其提供给 FHIR 服务器。 必须先从 FHIR 资源中删除所有专用终结点，然后才能删除或移动 FHIR 资源。
+只能通过 "概述" 边栏选项卡 (Azure 门户删除专用终结点，如下所示) 或通过 "网络 (预览) 的" 专用终结点连接 "选项卡下的" 删除 "选项。单击 "删除" 按钮将删除专用终结点和关联的 NIC。 如果删除了 FHIR 资源的所有专用终结点，并且已禁用公共网络访问，则不会请求将其提供给 FHIR 服务器。
 
 ![删除专用终结点](media/private-link/private-link-delete.png)

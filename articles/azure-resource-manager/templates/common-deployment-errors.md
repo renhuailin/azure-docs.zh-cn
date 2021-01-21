@@ -3,13 +3,13 @@ title: 排查常见部署错误
 description: 说明如何解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误。
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 09/09/2020
-ms.openlocfilehash: 785a74184cae8523b99da7f647ca87fda53c8648
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/20/2021
+ms.openlocfilehash: bb701baf164cfd6ba1dd5c670a406343e83c5c70
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185821"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622805"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误
 
@@ -34,7 +34,7 @@ ms.locfileid: "96185821"
 | DeploymentNameLengthLimitExceeded | 部署名称限制为 64 个字符。  | |
 | DeploymentFailed | DeploymentFailed 错误为常规错误，未提供解决错误所需的详细信息。 请查看错误代码的错误详情，其中提供了详细信息。 | [查找错误代码](#find-error-code) |
 | DeploymentQuotaExceeded | 如果达到每个资源组的部署数限制 800，则会从历史记录中删除不再需要的部署。 | [解决部署计数超出 800 的错误](deployment-quota-exceeded.md) |
-| DeploymentSizeExceeded | 简化模板以减小大小。 | [解决模板大小错误](error-job-size-exceeded.md) |
+| DeploymentJobSizeExceeded | 简化模板以减小大小。 | [解决模板大小错误](error-job-size-exceeded.md) |
 | DnsRecordInUse | DNS 记录名称必须唯一。 输入不同的名称。 | |
 | ImageNotFound | 检查 VM 映像设置。 |  |
 | InUseSubnetCannotBeDeleted | 如果尝试更新资源，但已通过删除并创建资源处理了请求，则可能会出现此错误。 请确保指定所有未更改的值。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |

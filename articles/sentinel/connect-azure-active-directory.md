@@ -13,32 +13,28 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2020
+ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 279f54c3de964580cc37d1288a6e1b7726348e10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9700e5d9179f7c1e33b2371eea89be9bb1c8d08f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208620"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621356"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>将数据从 Azure Active Directory (Azure AD) 
-
-
 
 可以使用 Azure Sentinel 的内置连接器从 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 收集数据，并将其流式传输到 Azure Sentinel。 连接器允许流式传输 [登录日志](../active-directory/reports-monitoring/concept-sign-ins.md) 和 [审核日志](../active-directory/reports-monitoring/concept-audit-logs.md)。
 
 ## <a name="prerequisites"></a>必备条件
 
-
-- 任何 Azure AD 许可证 (免费/O365/P1/P2) 足以将登录日志引入 Azure Sentinel。 对于 Azure Monitor (Log Analytics) 和 Azure Sentinel，可能会收取额外的每 gb 费用。
+- 必须具有 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 订阅才能将登录日志引入 Azure Sentinel。 对于 Azure Monitor (Log Analytics) 和 Azure Sentinel，可能会收取额外的每 gb 费用。
 
 - 必须在工作区中为你的用户分配 Azure Sentinel 参与者角色。
 
 - 你的用户必须在你要从中流式传输日志的租户上向全局管理员或安全管理员角色分配。
 
 - 用户必须对 Azure AD 诊断设置具有读取和写入权限，才能查看连接状态。 
-
 
 ## <a name="connect-to-azure-active-directory"></a>连接到 Azure Active Directory
 

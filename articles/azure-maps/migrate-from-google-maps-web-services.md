@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 444e7c9ad06c6f2ad584c0701fa652b901a4c3e7
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 3bb0aadf81ba501070ce0c734847bb16c0378896
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680778"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624032"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>教程：从 Google Maps 迁移 Web 服务
 
@@ -22,6 +22,7 @@ Azure Maps 和 Google Maps 都通过 REST Web 服务提供对空间 API 的访�
 
 在本教程中，您将学习如何执行以下操作：
 
+> [!div class="checklist"]
 > * 正向/反向地理编码
 > * 搜索兴趣点
 > * 计算路线和方向

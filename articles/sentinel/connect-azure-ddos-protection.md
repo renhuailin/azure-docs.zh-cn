@@ -7,24 +7,20 @@ ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: c54b5b785f6da1bb651d8b1f508da42ab0fb802d
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 8089b1e74e88db81c1c15ad2cbf2072abcfff241
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538390"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621339"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>连接 Azure DDoS 保护的数据
 
-> [!IMPORTANT]
-> Azure Sentinel 中的 Azure DDoS 保护数据连接器目前为公共预览版。
-> 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 分布式拒绝服务 (DDoS) 攻击尝试耗尽应用程序的资源，使应用程序对于合法用户不可用。 DDoS 攻击可能会将任何可通过 Internet 公开访问的终结点作为目标。 [Azure DDoS 保护](../ddos-protection/ddos-protection-overview.md)与应用程序设计最佳做法相结合，为防范 DDoS 攻击提供了强大的防御。 你可以将 Azure DDoS 保护日志连接到 Azure Sentinel，使你能够查看工作簿中的日志数据，使用它创建自定义警报，并将其合并以改善调查。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 你必须具有 Azure Sentinel 工作区的读取和写入权限。
 

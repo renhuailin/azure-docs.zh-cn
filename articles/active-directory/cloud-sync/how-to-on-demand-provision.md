@@ -11,12 +11,12 @@ ms.date: 09/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0daca8b19f9a712253bc231cba9a0245553b0adb
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 6ac186d4b460165605ccf0fc53bdb0b691348bf3
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613124"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622518"
 ---
 # <a name="azure-ad-connect-cloud-sync-on-demand-provisioning"></a>Azure AD Connect 云同步按需预配
 
@@ -32,9 +32,9 @@ Azure AD Connect 云同步引入了一项新功能，通过将这些更改应用
 
 1.  在 Azure 门户中，选择“Azure Active Directory”。 
 2.  选择“Azure AD Connect”。
-3.  选择 " **管理设置**"。
+3.  选择 " **管理云同步**"。
 
-    ![管理预配](media/how-to-configure/manage-1.png)
+    ![管理预配](media/how-to-install/install-6.png)
 4. 在 " **配置**" 下，选择您的配置。
 5. 在 " **验证** " 下单击 " **设置用户** " 按钮。 
 

@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure .NET SDK 为 Azure 事件中心编�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 46bd0c3c1488d6dd7afbae5e88e0b83f56654bb8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a299813620ee90591d8c9491991237f75f2e9382
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131230"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623042"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中心的 .NET 编程指南（旧版 Microsoft.Azure.EventHubs 包）
 本文介绍使用 Azure 事件中心编写代码时的一些常见情况。 它假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](./event-hubs-about.md)。
@@ -97,7 +97,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>异步发送和按比例发送
 
-请通过异步方式将事件发送到事件中心。 以异步方式发送可以增大客户端发送事件的速率。 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 返回一个 [Task](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) 对象。 可以在客户端上使用 [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) 类来控制客户端重试选项。
+请通过异步方式将事件发送到事件中心。 以异步方式发送可以增大客户端发送事件的速率。 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 返回一个 [Task](/dotnet/api/system.threading.tasks.task) 对象。 可以在客户端上使用 [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) 类来控制客户端重试选项。
 
 ## <a name="event-consumers"></a>事件使用者
 [EventProcessorHost][] 类处理来自事件中心的数据。 在 .NET 平台上构建事件读取者时，应该使用此实现。 [EventProcessorHost][] 为事件处理器实现提供线程安全、多进程安全的运行时环境，该环境还能提供检查点和分区租用管理。

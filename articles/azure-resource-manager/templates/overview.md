@@ -1,14 +1,14 @@
 ---
 title: 模板概述
-description: 介绍使用 Azure 资源管理器模板 (ARM 模板) 部署资源的优点。
+description: 介绍使用 Azure 资源管理器模板（ARM 模板）部署资源的好处。
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 01/20/2021
+ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657305"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621833"
 ---
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
 
@@ -16,7 +16,7 @@ ms.locfileid: "97657305"
 
 为了解决这些难题，可将部署自动化，并运用基础结构即代码。 在代码中定义需要部署的基础结构。 基础结构代码将成为项目的一部分。 与应用程序代码一样，可将基础结构代码存储在源存储库中，并控制其版本。 团队中的任何人都可以运行该代码并部署类似的环境。
 
-若要实现 Azure 解决方案的基础结构代码，请使用 Azure 资源管理器模板 (ARM 模板) 。 该模板是一个定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 在该模板中，指定要部署的资源以及这些资源的属性。
+若要针对 Azure 解决方案实现基础结构即代码，请使用 Azure 资源管理器模板（ARM 模板）。 该模板是一个定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 在该模板中，指定要部署的资源以及这些资源的属性。
 
 ## <a name="why-choose-arm-templates"></a>为什么选择 ARM 模板？
 
@@ -38,7 +38,7 @@ ms.locfileid: "97657305"
 
 * **测试**：可以使用 ARM 模板工具包 (arm-ttk) 对模板进行测试，确保模板符合建议的准则。 此测试工具包是一个 PowerShell 脚本，可从 [GitHub](https://github.com/Azure/arm-ttk) 下载。 使用此工具包，可以更轻松地使用模板语言开发专门技术。
 
-* **预览更改**：可以使用 [模拟操作](template-deploy-what-if.md)在部署模板前预览更改。 对于-if，你会看到将创建、更新或删除的资源以及任何将更改的资源属性。 模拟操作会检查环境的当前状态，因此无需管理状态。
+* **预览更改**：可以使用 [模拟操作](template-deploy-what-if.md)在部署模板前预览更改。 通过 What-if，你可查看将创建、更新或删除的资源，以及将更改的任何资源属性。 模拟操作会检查环境的当前状态，因此无需管理状态。
 
 * **内置验证**：只有在通过验证后才会部署模板。 资源管理器在开始部署之前会检查模板，以确保部署成功。 部署不太可能会在半完成状态时停止。
 
@@ -108,7 +108,7 @@ REQUEST BODY
 }
 ```
 
-请注意，在该资源的模板中设置的 **apiVersion** 用作 REST 操作的 API 版本。 你可以重复部署模板并自信地使用它。 使用相同的 API 版本，你无需担心可能在更高版本中引入的重大更改。
+请注意，在资源模板中设置的 apiVersion 将用作 REST 操作的 API 版本。 你可以重复部署模板并可以相信它会继续工作。 通过使用相同的 API 版本，你就无需担心可能在更高版本中引入的中断性变更。
 
 ## <a name="template-design"></a>模板设计
 
@@ -126,10 +126,16 @@ REQUEST BODY
 
 有关嵌套模板的信息，请参阅[将链接模板与 Azure 资源管理器配合使用](linked-templates.md)。
 
+## <a name="share-templates"></a>共享模板
+
+创建模板后，你可能希望将其与组织中的其他用户共享。 [模板规范](template-specs.md) 可让你将模板存储为资源类型。 使用基于角色的访问控制来管理对模板规范的访问。具有对模板规范的读取访问权限的用户可以对其进行部署，但不能更改模板。
+
+此方法意味着可以安全地共享符合组织标准的模板。
+
 ## <a name="next-steps"></a>后续步骤
 
 * 有关引导你完成模板创建过程的分步教程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。
-* 若要通过 Microsoft Learn 上的一组指导性模板了解 ARM 模板，请参阅 [使用 ARM 模板在 Azure 中部署和管理资源](/learn/paths/deploy-manage-resource-manager-templates/)。
+* 要通过 Microsoft Learn 上的一组引导式模块了解 ARM 模板，请参阅[使用 ARM 模板在 Azure 中部署和管理资源](/learn/paths/deploy-manage-resource-manager-templates/)。
 * 有关模板文件中的属性的信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 若要了解如何导出模板，请参阅[快速入门：使用 Azure 门户创建和部署 ARM 模板](quickstart-create-templates-use-the-portal.md)。
 * 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](frequently-asked-questions.md)。

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 1ac87f98af555aae155a201cc20692c950fc7924
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 419e32a127947cde1d3761507f0df7a889528ff2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838124"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621922"
 ---
 # <a name="basic-concepts"></a>基本概念 
 
@@ -22,7 +22,7 @@ ms.locfileid: "97838124"
 
 用于 IoT 传感器的 Defender 连接到 SPAN 端口或网络分流点，并立即开始通过被动 (无代理) 监视收集 ICS 网络流量。 深层数据包检查 (DPI) 用于仔细分析来自串行和以太网控制网络设备的流量。 Defender for IoT 对每个网络不会有任何影响，因为它不会放置在数据路径中，也不会主动扫描 OT 设备。 
 
-若要提供详细资产信息的即时快照，适用于 IoT 传感器的 Defender 使用可选的活动组件补充被动监视。 此组件使用安全的供应商批准的命令来查询 Windows 和控制器设备的资产详细信息，通常情况下，或不经常需要。
+若要提供详细设备信息的即时快照，适用于 IoT 传感器的 Defender 使用可选的活动组件补充被动监视。 此组件使用安全的供应商批准的命令来查询 Windows 和控制器设备，以获取设备详细信息，无论所需频率如何。
 
 ## <a name="embedded-knowledge-of-ics-protocols-devices-and-applications"></a>ICS 协议、设备和应用程序的嵌入知识
 
@@ -34,7 +34,7 @@ ms.locfileid: "97838124"
 
 - **协议冲突检测**：标识违反 ICS 协议规范的数据包结构和字段值的使用情况。
 
-- **策略违规检测**：标识策略违规，如未经授权使用函数代码、对特定对象的访问权限或对资产配置的更改。
+- **策略违规检测**：标识策略违规，如未经授权使用函数代码、对特定对象的访问权限或对设备配置的更改。
 
 - **工业恶意软件检测**：标识指示存在已知恶意软件（如 Conficker、黑色能量、Havex、WannaCry 和 NotPetya）的行为。
 

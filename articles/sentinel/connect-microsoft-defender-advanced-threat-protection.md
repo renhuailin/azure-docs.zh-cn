@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 72b2ba0ea444fb14ef9fc1bc3ea6aea3654677df
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0db4e0fe0472c75f1eae392980ae697f53007244
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655521"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623360"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>连接 Microsoft Defender for Endpoint (以前的 Microsoft Defender ATP) 的警报
 
@@ -28,10 +28,6 @@ ms.locfileid: "94655521"
 > - **Microsoft defender For Endpoint** 以前称为 " **Microsoft Defender 高级威胁防护** " 或 **MDATP**。
 >
 >     你可能会看到产品中仍在使用旧名称 (将其数据连接器包含在 Azure Sentinel) 中一段时间。
->
-> - 为终结点警报引入当前提供公共预览版。
-> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 [Microsoft defender For endpoint](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)连接器允许你将来自 microsoft Defender for endpoint 的警报流式传输到 Azure Sentinel。 这样，你就可以更全面地分析组织中的安全事件，并构建行动手册以实现有效且即时的响应。
 
@@ -39,7 +35,7 @@ ms.locfileid: "94655521"
 >
 > 若要从 Microsoft Defender for Endpoint 的 [高级搜寻](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview)中引入新的原始数据日志，请使用新的连接器 Microsoft 365 Defender (以前的 Microsoft 威胁防护， [请参阅文档](./connect-microsoft-365-defender.md)) 。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 你必须具有 Microsoft Defender for Endpoint 的有效许可证，如为 [终结点部署设置 Microsoft defender](/windows/security/threat-protection/microsoft-defender-atp/licensing)中所述。 
 
@@ -51,7 +47,7 @@ ms.locfileid: "94655521"
 
 1. 在 Azure Sentinel 中，选择 " **数据连接器**"，选择 " **Microsoft defender for Endpoint** (仍会被从库中称为" *microsoft defender 高级威胁防护* ") ，然后选择" **打开连接器 "页面**。
 
-1. 单击“连接”。 
+1. 单击“连接”  。 
 
 1. 若要在 **日志** 中查询 Microsoft Defender for Endpoint 警报，请在查询窗口中输入 **SecurityAlert** ，并添加 **提供程序名称** 为 **MDATP** 的筛选器。
 

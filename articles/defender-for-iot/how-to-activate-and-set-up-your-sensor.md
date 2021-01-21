@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 908460bd0a034e21524b6ea6d3042f362cc810d4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538563"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623583"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>激活和设置传感器
 
@@ -96,7 +96,7 @@ ms.locfileid: "98538563"
 1. 定义证书名称。
 1. 上传 CRT 和密钥文件。
 1. 如果需要，请输入通行短语并上传 PEM 文件。
-1. 选择“下一步”  。 验证屏幕将打开。 默认情况下，会在管理控制台和连接的传感器之间启用验证。
+1. 选择“下一步”。 验证屏幕将打开。 默认情况下，会在管理控制台和连接的传感器之间启用验证。
 1. 关闭 " **启用系统范围的验证** 切换" 以禁用验证。 建议启用验证。
 1. 选择“保存”。  
 
@@ -134,9 +134,9 @@ ms.locfileid: "98538563"
 
 ## <a name="initial-setup-and-learning-for-administrators"></a>管理员) 的初始安装和学习 (
 
-首次登录后，Azure Defender for IoT 传感器将开始自动监视你的网络。 网络资产将显示在 "资产地图" 和 "资产库存" 部分中。 Azure Defender for IoT 将开始检测并提醒你网络中发生的所有安全和操作事件。 然后，你可以基于检测到的信息创建报表和查询。
+首次登录后，Azure Defender for IoT 传感器将开始自动监视你的网络。 网络设备将显示在设备映射和设备清单部分中。 Azure Defender for IoT 将开始检测并提醒你网络中发生的所有安全和操作事件。 然后，你可以基于检测到的信息创建报表和查询。
 
-最初，此活动是在学习模式下执行的，它指示传感器了解网络的常见活动。 例如，传感器了解网络中发现的资产、网络中检测到的协议以及特定资产之间发生的文件传输。 此活动将成为网络的基准活动。
+最初，此活动是在学习模式下执行的，它指示传感器了解网络的常见活动。 例如，传感器会了解网络中发现的设备、网络中检测到的协议以及特定设备之间发生的文件传输。 此活动将成为网络的基准活动。
 
 ### <a name="review-and-update-basic-system-settings"></a>查看并更新基本系统设置
 

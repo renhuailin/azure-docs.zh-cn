@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2020
-ms.openlocfilehash: 13f9e2271dd18121ba740c843e99fae86c76821d
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 5b4ab207462955be3876dc1a25fae491e48a9cd2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845402"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621704"
 ---
 # <a name="welcome-to-azure-defender-for-iot"></a>欢迎使用 Azure Defender for IoT
 
 操作技术 () 网络为我们的社会的许多最重要方面提供强大功能。 但其中的许多技术在设计上都没有考虑到安全性，无法通过传统的 IT 安全控制来保护。 同时，物联网 (IoT) 正在使用数十亿个连接的设备实现全新的创新，同时增加了攻击面和风险。  
 
-用于 IoT 的 Azure Defender 是一种统一的安全解决方案，用于识别 IoT/OT 资产、漏洞和威胁。 它使你能够保护整个 IoT/OT 环境，无论你是否需要保护现有的 IoT/OT 设备，或将安全性构建为新的 IoT 创新。  
+用于 IoT 的 Azure Defender 是一种统一的安全解决方案，用于识别 IoT/OT 设备、漏洞和威胁。 它使你能够保护整个 IoT/OT 环境，无论你是否需要保护现有的 IoT/OT 设备，或将安全性构建为新的 IoT 创新。  
 
 Azure Defender for IoT 提供了两组功能，以满足环境需求。
 
@@ -47,7 +47,7 @@ Azure Defender for IoT 中的无代理监视功能可为这些网络提供可见
 
 ### <a name="automatic-device-discovery"></a>自动设备发现  
 
-使用被动的无代理网络监视来获取所有 IoT/OT 资产、其详细信息以及通信方式的完整清单，而无需对 IoT/OT 网络产生任何影响。  
+使用被动的无代理网络监视来获取所有 IoT/OT 设备的完整清单、其详细信息以及它们的通信方式，而不会影响 IoT/OT 网络。  
 
 ### <a name="proactive-visibility-into-risk-and-vulnerabilities"></a>主动查看风险和漏洞
  

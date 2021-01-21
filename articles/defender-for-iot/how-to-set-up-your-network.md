@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a71ea75eb603b141c4b28cff5f2b4aa957583bcd
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573133"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621306"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>关于 Azure Defender for IoT 网络设置
 
@@ -94,35 +94,36 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 
 验证你的组织安全策略是否允许访问以下内容：
 
-| **用途** | 协议 | **Transport** | **入或出** | 端口 | **类别** |
-| ----------- | ----------- | ------------ | ---------- | -------- | ------------ |
-| **访问 web 控制台** | HTTPS | TCP | 入或出 | 443 | 用于 IoT 平台的本地管理控制台 |
-| **访问 CLI** | SSH | TCP | 入或出 | 22 | CLI |
-| **用于 IoT 平台和本地管理控制台的 Defender 之间的连接** | SSL | TCP | 入或出 | 443 | 传感器和本地管理控制台|
-| **用于传感器的本地管理控制台** | NTP | UDP| In 到 CM | 123 | 时间同步 | 
-| **如果相关) ，则传感器连接到外部 NTP 服务器 (** | NTP | UDP | 入或出| 123 | 时间同步 |
-| **用于 IoT 平台和管理平台的 Defender 与邮件服务器之间的连接 (如果相关)** | SMTP | TCP | 传感器管理 | 25 | 电子邮件 |
-| **从本地管理控制台发送到 Syslog 服务器的日志 (如果相关)** | Syslog | UDP | 传感器管理| 514 | LEEF |
-| **(相关的 DNS 服务器端口)** | DNS | 不适用 | 入或出| 53 | DNS |
-| **用于 IoT 平台和本地管理控制台的 Defender 之间的连接，用于 Active Directory (相关)** | LDAPS | TCP | 入或出 | 636 <br />389 | Active Directory |
-| **远程 SNMP 收集器 (相关)** | SNMP | UDP | 传感器管理| 161 | 监视 |
-| **Windows 终结点监视 (相关)** | WMI | UDP | 传感器管理| 135 | 监视 |
-| **Windows 终结点监视 (相关)** | WMI | TCP | 传感器管理| 1024及更高版本 | 监视 |
-| **如果相关) ，则为隧道 (** | 隧道 | TCP | IN 到 CM | 9000<br />除了端口443<br />从最终用户到本地管理控制台 <br />从传感器到本地管理控制台的端口22 | 监视 |
-| **用于 IoT 中心的 Defender 的出站** | HTTPS | TCP | 传感器管理| **URL**<br />*. azure-devices.net:443<br />或者，如果不支持通配符<br />{你的 IoT 中心名称}。 azure-devices.net:443 |
+| 协议 | Transport | 输入/输出 | Port | 已使用 | 目标 | 源 | 目标 |
+|--|--|--|--|--|--|--|--|
+| HTTPS | TCP | IN/OUT | 443 | 传感器和本地管理控制台 Web 控制台 | 访问 Web 控制台 | 客户端 | 传感器和本地管理控制台 |
+| SSH | TCP | IN/OUT | 22 | CLI | 访问 CLI | 客户端 | 传感器和本地管理控制台 |
+| SSL | TCP | IN/OUT | 443 | 传感器和本地管理控制台 | CyberX 平台与中央管理平台之间的连接 | 传感器 | 本地管理控制台 |
+| NTP | UDP | IN | 123 | 时间同步 | 本地管理控制台使用 as NTP 传感器 | 传感器 | 本地管理控制台 |
+| NTP | UDP | IN/OUT | 123 | 时间同步 | 未安装本地管理控制台时，连接到外部 NTP 服务器的传感器 | 传感器 | NTP |
+| SMTP | TCP | OUT | 25 | 电子邮件 | CyberX 平台与管理平台与邮件服务器之间的连接 | 传感器和本地管理控制台 | 电子邮件服务器 |
+| Syslog | UDP | OUT | 514 | LEEF | 从本地管理控制台发送到 Syslog 服务器的日志 | 本地管理控制台和传感器 | Syslog 服务器 |
+| DNS |  | IN/OUT | 53 | DNS | DNS 服务器端口 | 本地管理控制台和传感器 | DNS 服务器 |
+| LDAP | TCP | IN/OUT | 389 | Active Directory | 在 CyberX 平台和管理平台之间连接到 Active Directory | 本地管理控制台和传感器 | LDAP 服务器 |
+| LDAPS | TCP | IN/OUT | 636 | Active Directory | 在 CyberX 平台和管理平台之间连接到 Active Directory | 本地管理控制台和传感器 | LDAPS 服务器 |
+| SNMP | UDP | OUT | 161 | 监视 | 远程 SNMP 收集器。 | 本地管理控制台和传感器 | SNMP 服务器 |
+| WMI | UDP | OUT | 135 | 监视 | Windows 终结点监视 | 传感器 | 相关网络元素 |
+| 隧道 | TCP | IN | 9000 <br /><br />-在端口443之上 <br /><br />从最终用户到本地管理控制台。 <br /><br />-从传感器到本地管理控制台的端口22  | 监视 | 隧道 | 传感器 | 本地管理控制台 |
 
 ### <a name="planning-rack-installation"></a>规划机架安装
 
 规划机架安装：
 
 1. 为设备网络设置准备监视器和键盘。
-2. 为设备分配货架空间。
-3. 设备是否有可用的 AC 电源。
-4. 准备用于将管理连接到网络交换机的 LAN 电缆。
-5. 准备好用于连接交换机范围 (镜像的 LAN 电缆) 端口和或网络点击到 IoT 设备的 Defender。 
-6. 如体系结构审查会话中所述，配置、连接和验证镜像交换机中的 SPAN 端口。
-7. 将配置的 SPAN 端口连接到运行 Wireshark 的计算机，并验证是否正确配置了端口。
-8. 打开所有相关的防火墙端口。
+
+1. 为设备分配货架空间。
+
+1. 设备是否有可用的 AC 电源。
+1. 准备用于将管理连接到网络交换机的 LAN 电缆。
+1. 准备好用于连接交换机范围 (镜像的 LAN 电缆) 端口和或网络点击到 IoT 设备的 Defender。 
+1. 如体系结构审查会话中所述，配置、连接和验证镜像交换机中的 SPAN 端口。
+1. 将配置的 SPAN 端口连接到运行 Wireshark 的计算机，并验证是否正确配置了端口。
+1. 打开所有相关的防火墙端口。
 
 ## <a name="about-passive-network-monitoring"></a>关于被动网络监视
 
@@ -141,6 +142,7 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 级别0包含基本制造过程中涉及的各种传感器、传动装置和设备。 这些设备执行工业自动化和控制系统的基本功能，例如：
 
 - 驱动汽车。
+
 - 度量变量。
 - 设置输出。
 - 执行键功能，如绘制、焊接和蛇形。
@@ -227,7 +229,7 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 |--|--|--|--|
 | 交换机之间的最大距离 | 80米 | 准备好的以太网电缆 | 超过1个 |
 | 网络的数目 | 超过1个 | 无物理连接 | 超过1个 |
-| 开关数 | 可以使用 RSPAN 配置 | 最多8个交换机，其中本地范围接近传感器，通过布线距离 | 超过1个 |
+| 开关数 | 可以使用 RSPAN 配置 | 通过布线距离，最多可将本地跨度接近于传感器的8个交换机 | 超过1个 |
 
 #### <a name="traffic-mirroring"></a>流量镜像  
 
@@ -364,10 +366,10 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 这些模型已测试兼容性。 其他供应商和型号也可能兼容。
 
 | 映像 | 建模 |
-| -- | -- |
-| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Garland P1GCCAS 的屏幕截图。":::  | Garland P1GCCAS  |
-| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="IXIA TPA2-CU3 的屏幕截图。":::  | IXIA TPA2-CU3  |
-| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="美国机器人 USR 4503 的屏幕截图。":::  | 美国机器人 USR 4503  |
+|--|--|
+| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Garland P1GCCAS 的屏幕截图。"::: | Garland P1GCCAS |
+| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="IXIA TPA2-CU3 的屏幕截图。"::: | IXIA TPA2-CU3 |
+| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="美国机器人 USR 4503 的屏幕截图。"::: | 美国机器人 USR 4503 |
 
 ##### <a name="special-tap-configuration"></a>特殊点击配置
 
@@ -425,7 +427,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 - 如果 IoT 设备的 Defender 应连接到该交换机，该机柜中是否有可用的物理机架空间？
 
-#### <a name="additional-considerations"></a>其他注意事项
+#### <a name="other-considerations"></a>其他注意事项
 
 用于 IoT 设备的 Defender 的用途是监视来自第1层和第2层的流量。
 
@@ -671,7 +673,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 | 密钥 | |
 | SNMP v2 团体字符串 |
 
-### <a name="cm-ssl-certificate"></a>CM SSL 证书
+### <a name="on-premises-management-console-ssl-certificate"></a>本地管理控制台 SSL 证书
 
 你是否打算使用 SSL 证书？ 是或否
 

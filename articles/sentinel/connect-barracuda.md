@@ -15,19 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: f28243be6b4f998e8bdea0ce02da3ceedde23e02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1131c8e79d9df2883dcf7e975af9732c21318a49
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85559115"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621158"
 ---
-# <a name="connect-your-barracuda-appliance"></a>连接 Barracuda 设备 
-
-
+# <a name="connect-your-barracuda-waf-appliance"></a>连接 Barracuda WAF 设备 
 
 通过 Barracuda Web 应用程序防火墙 (WAF) 连接器，可以轻松地通过 Azure Sentinel 连接 Barracuda 日志、查看仪表板、创建自定义警报和改进调查。 这样，你就可以更深入地了解组织的网络并改善安全操作功能。 Azure Sentinel 充分利用 **Barracuda** 与 Log Analytics 代理之间的本机集成，提供无缝集成。 
-
 
 > [!NOTE]
 > 数据将存储在运行 Azure Sentinel 的工作区的地理位置。

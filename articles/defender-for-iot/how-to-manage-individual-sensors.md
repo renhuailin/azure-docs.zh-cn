@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 68fa3ea15199ec1d9cc99f92f497847fb029acd6
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539561"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621208"
 ---
 # <a name="manage-individual-sensors"></a>管理单个传感器
 
@@ -201,7 +201,7 @@ Azure Defender for IoT 使用 SSL/TLS 证书来执行以下操作：
 - 颁发服务器证书的 CA 证书应位于文件中，然后是所有其他证书，然后是根。 
 - 可以包含包属性。
 
-**密码**
+**通行短语**
 
 - 支持一个密钥。
 
@@ -315,7 +315,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 ## <a name="connect-a-sensor-to-the-management-console"></a>将传感器连接到管理控制台
 
-本部分介绍如何确保传感器与本地管理控制台之间的连接。 如果是在有气流的网络中工作，并且想要从传感器将资产和警报信息发送到管理控制台，请执行此操作。 此连接还允许管理控制台将系统设置推送到传感器，并在传感器上执行其他管理任务。
+本部分介绍如何确保传感器与本地管理控制台之间的连接。 如果使用的是有气流的网络，并且想要从传感器将设备和警报信息发送到管理控制台，则需要执行此操作。 此连接还允许管理控制台将系统设置推送到传感器，并在传感器上执行其他管理任务。
 
 若要连接：
 
