@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 0a73651b11c9ca6f7cb34deb755543c3b5a6d710
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f8e4925f721b307abd85a8b881caff3e5fc04fde
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042977"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685656"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大规模部署并监视 IoT Edge 模块
 
@@ -30,7 +30,7 @@ ms.locfileid: "92042977"
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。
 * 一个或多个 IoT Edge 设备。
 
-  如果未设置 IoT Edge 设备，则可以在 Azure 虚拟机中创建一个。 按照其中一篇快速入门文章中的步骤 [创建虚拟 Linux 设备](quickstart-linux.md) ，或 [创建虚拟 Windows 设备](quickstart.md)。
+  如果未设置 IoT Edge 设备，可在 Azure 虚拟机中创建一个。 按照[创建虚拟 Linux 设备](quickstart-linux.md)或[创建虚拟 Windows 设备](quickstart.md)快速入门文章（其中一篇）中的步骤进行操作。
 
 * 环境中的 [Azure CLI](/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.70 或更高版本。 请使用 `az --version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。
 * [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
@@ -44,7 +44,7 @@ ms.locfileid: "92042977"
 下面是一个基本的部署清单示例，其中有一个模块：
 
 >[!NOTE]
->此示例部署清单使用架构版本1.1 作为 IoT Edge 代理和中心。 架构版本1.1 与 IoT Edge 版本1.0.10 一起发布，并启用了模块启动顺序和路由优先级等功能。
+>此示例部署清单使用 IoT Edge 代理和中心的架构版本 1.1。 架构版本 1.1 随 IoT Edge 版本 1.0.10 一起发布，支持模块启动顺序和路由优先级等功能。
 
 ```json
 {
@@ -191,7 +191,7 @@ ms.locfileid: "92042977"
 
 使用 [az iot edge deployment create](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-create) 命令创建部署：
 
-```cli
+```azurecli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
 ```
 
@@ -204,7 +204,7 @@ deployment create 命令采用以下参数：
 * **--content** - 部署清单 JSON 的文件路径。 必需参数。
 * **--hub-name** - 将在其中创建部署的 IoT 中心的名称。 此中心必须在当前订阅中。 通过 `az account set -s [subscription name]` 命令更改当前订阅。
 * **--labels** - 添加用于跟踪部署的标签。 标签是描述部署的“名称, 值”对。 标签对名称和值采用 JSON 格式设置。 例如： `{"HostPlatform":"Linux", "Version:"3.0.1"}`
-* **--target-condition** - 输入一个目标条件，用于确定哪些设备会成为此部署的目标。 该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。 例如，`tags.environment='test' and properties.reported.devicemodel='4000x'` 。
+* **--target-condition** - 输入一个目标条件，用于确定哪些设备会成为此部署的目标。  该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。  例如，`tags.environment='test' and properties.reported.devicemodel='4000x'` 。
 * **--priority** - 一个正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。
 * --metrics - 创建查询 edgeHub 报告的属性以跟踪部署状态的指标。 指标采用 JSON 输入或 filepath。 例如，`'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`。
 
@@ -224,7 +224,7 @@ deployment create 命令采用以下参数：
 
 使用 [az iot edge deployment update](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-update) 命令更新部署：
 
-```cli
+```azurecli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
 ```
 
@@ -245,7 +245,7 @@ deployment update 命令采用以下参数：
 
 使用 [az iot edge deployment delete](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-delete) 命令删除部署：
 
-```cli
+```azurecli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]
 ```
 

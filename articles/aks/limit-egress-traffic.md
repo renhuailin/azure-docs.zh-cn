@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: a1d045e66771026d2b4cf7ad44fd6943d2d407f4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c6160d36240b59c60fafa955b916fb6167c2648e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701596"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685748"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes 服务 (AKS) 中群集节点的出口流量
 
@@ -128,7 +128,7 @@ _ IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 
 | 目标 FQDN                                                               | 端口          | 用途      |
 |--------------------------------------------------------------------------------|---------------|----------|
-| **`security.ubuntu.com`, `azure.archive.ubuntu.com`, `changelogs.ubuntu.com`** | **`HTTP:80`** | 此地址允许 Linux 群集节点下载必需的安全修补程序和更新。 |
+| **`security.ubuntu.com`、`azure.archive.ubuntu.com`、`changelogs.ubuntu.com`** | **`HTTP:80`** | 此地址允许 Linux 群集节点下载必需的安全修补程序和更新。 |
 
 如果选择阻止/不允许这些 FQDN，则仅当进行[节点映像升级](node-image-upgrade.md)或[群集升级](upgrade-cluster.md)时，节点才会接收 OS 更新。
 
@@ -209,8 +209,8 @@ _ IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 
 | FQDN                                          | 端口      | 用途      |
 |-----------------------------------------------|-----------|----------|
-| **`data.policy.core.windows.net`** | **`HTTPS:443`** | 此地址用于请求 Kubernetes 策略，并向策略服务报告群集相容性状态。 |
-| **`store.policy.core.windows.net`** | **`HTTPS:443`** | 此地址用于拉取内置策略的网关守卫项目。 |
+| **`data.policy.core.windows.net`** | **`HTTPS:443`** | 此地址用于拉取 Kubernetes 策略，并向策略服务报告群集合规性状态。 |
+| **`store.policy.core.windows.net`** | **`HTTPS:443`** | 此地址用于拉取内置策略的 Gatekeeper 项目。 |
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | 此地址用于正确操作 Azure Policy。  |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | 此地址用于从 GitHub 请求内置策略，以确保正确操作 Azure Policy。 |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy 加载项，用于向应用程序见解终结点发送遥测数据。 |
@@ -745,7 +745,7 @@ voting-storage     ClusterIP      10.41.221.201   <none>        3306/TCP       9
 
 运行以下内容来获取服务 IP：
 ```bash
-SERVICE_IP=$(k get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
+SERVICE_IP=$(kubectl get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
 ```
 
 运行以下内容来添加 NAT 规则：

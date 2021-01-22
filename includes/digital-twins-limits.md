@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 183d12b5e9d32c777c8acf01177c8cbbe1b6ca00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 08ae189253c6141a6b84035b71016ff5099ec162
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027192"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98690045"
 ---
 ### <a name="functional-limits"></a>功能限制
 
@@ -22,7 +22,7 @@ ms.locfileid: "96027192"
 | 数字孪生 | Azure 数字孪生实例中的孪生数 | 200,000 | 是 |
 | 数字孪生 | 与单个克隆的传入关系数 | 5,000 | 否 |
 | 数字孪生 | 单个克隆的传出关系数 | 5,000 | 否 |
-| 数字孪生 | 单个单元的最大大小 | 32 KB | 否 |
+| 数字孪生 | PUT 或 PATCH 请求中的 JSON 正文 (大小上限) 单个克隆的大小 | 32 KB | 否 |
 | 数字孪生 | 最大请求负载大小 | 32 KB | 否 | 
 | 路由 | 单个 Azure 数字孪生实例的终结点数 | 6 | 否 |
 | 路由 | 单个 Azure 数字孪生实例的路由数 | 6 | 是 |

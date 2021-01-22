@@ -11,16 +11,16 @@ ms.date: 01/12/2021
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: c492ec930cea000e45f7b6f09cc5e9c7a6a0db22
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: bd9d477ed20122b0706e7997ab8922dcce7a59ba
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134494"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685419"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教程：将数据加载到 Azure Synapse Analytics SQL 池
 
-本教程使用 PolyBase 将 WideWorldImportersDW 数据仓库从 Azure Blob 存储加载到 Azure Synapse Analytics SQL 池中的数据仓库。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) 执行以下操作：
+本教程使用 PolyBase 将 WideWorldImportersDW 数据仓库从 Azure Blob 存储加载到 Azure Synapse Analytics SQL 池中的数据仓库。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) 执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -35,7 +35,7 @@ ms.locfileid: "98134494"
 
 ## <a name="before-you-begin"></a>开始之前
 
-开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)。
+开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS)。
 
 本教程假设你已根据以下[教程](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)创建 SQL 专用池。 
 
@@ -87,7 +87,7 @@ ms.locfileid: "98134494"
 
 2. 输入完全限定的服务器名称，并输入 **LoaderRC60** 作为登录名。  输入 LoaderRC60 的密码。
 
-3. 单击“连接” 。
+3. 单击“连接”  。
 
 4. 当连接准备就绪时，对象资源管理器中出现两个服务器连接。 一个是作为 ServerAdmin 连接，另一个是作为 LoaderRC60 连接。
 
@@ -111,7 +111,7 @@ ms.locfileid: "98134494"
     CREATE MASTER KEY;
     ```
 
-4. 运行以下 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句，定义 Azure Blob 的位置。 这是外部全球进口商数据的位置。  要运行追加到查询窗口的命令，请突出显示要运行的命令，然后单击“执行”。
+4. 运行以下 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语句，定义 Azure Blob 的位置。 这是外部全球进口商数据的位置。  要运行追加到查询窗口的命令，请突出显示要运行的命令，然后单击“执行”。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -122,7 +122,7 @@ ms.locfileid: "98134494"
     );
     ```
 
-5. 运行以下 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 语句，指定外部数据文件的格式设置特征和选项。 此语句指定外部数据需存储为文本，且值由竖线（“|”）字符分隔。  
+5. 运行以下 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL 语句，指定外部数据文件的格式设置特征和选项。 此语句指定外部数据需存储为文本，且值由竖线（“|”）字符分隔。  
 
     ```sql
     CREATE EXTERNAL FILE FORMAT TextFileFormat
@@ -137,7 +137,7 @@ ms.locfileid: "98134494"
     );
     ```
 
-6. 运行以下 [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句，创建外部文件格式的架构。 ext 架构提供组织即将创建的外部表的方法。 wwi 架构组织要包含数据的标准表。
+6. 运行以下 [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语句，创建外部文件格式的架构。 ext 架构提供组织即将创建的外部表的方法。 wwi 架构组织要包含数据的标准表。
 
     ```sql
     CREATE SCHEMA ext;
@@ -431,7 +431,7 @@ ms.locfileid: "98134494"
 > [!NOTE]
 > 本教程直接将数据加载到最终表。 在生产环境中，通常使用 CREATE TABLE AS SELECT 将数据加载到临时表。 数据在临时表中时，可以执行任何必要的转换。 要将临时表中的数据追加到生产表，可以使用 INSERT...SELECT 语句。 有关详细信息，请参阅[将数据插入到生产表](guidance-for-loading-data.md#inserting-data-into-a-production-table)。
 
-下面的脚本使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 语句将数据从 Azure 存储 Blob 加载到数据仓库中的新表。 CTAS 基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。 当 select 语句从外部表进行选择时，数据将导入到数据仓库的关系表中。
+下面的脚本使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL 语句将数据从 Azure 存储 Blob 加载到数据仓库中的新表。 CTAS 基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。 当 select 语句从外部表进行选择时，数据将导入到数据仓库的关系表中。
 
 此脚本不会将数据载入 wwi.dimension_Date 和 wwi.fact_Sale 表。 稍后的步骤会生成这些表，使表中包含数目可调整的行。
 

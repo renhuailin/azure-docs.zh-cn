@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 165fb2937db5edfa4f51f62033afaf87cfff83ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9eb2b916bfe6c73a1535afb077b04fbb081dd5f1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353096"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685714"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB 中的唯一键约束
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "96353096"
 
 使用唯一键策略创建容器后，该策略会根据唯一键约束的指定，阻止在逻辑分区中执行会导致重复的创建新项或更新现有项的操作。 分区键与唯一键的组合可保证某个项在容器范围内的唯一性。
 
-例如，假设某个 Azure Cosmos 容器使用电子邮件地址作为唯一键约束，并使用 `CompanyID` 作为分区键。 将用户的电子邮件地址配置为唯一键后，每个项将在给定的 `CompanyID` 中获得唯一的电子邮件地址。 无法创建具有重复电子邮件地址和相同分区键值的两个项。 在 Azure Cosmos DB 的 SQL (Core) API 中，项存储为 JSON 值。 这些 JSON 值区分大小写。 选择某个属性作为唯一键时，可以为该属性插入区分大小写的值。 例如，如果在 name 属性上定义了唯一键，则“Gaby”与“gaby”有所不同，你可以将两者都插入容器。
+例如，假设有一个 `Email address` 作为 unique key 约束的 Azure Cosmos 容器和 `CompanyID` 作为分区键。 将用户的电子邮件地址配置为唯一键后，每个项将在给定的 `CompanyID` 中获得唯一的电子邮件地址。 无法创建具有重复电子邮件地址和相同分区键值的两个项。 在 Azure Cosmos DB 的 SQL (Core) API 中，项存储为 JSON 值。 这些 JSON 值区分大小写。 选择某个属性作为唯一键时，可以为该属性插入区分大小写的值。 例如，如果在 name 属性上定义了唯一键，则“Gaby”与“gaby”有所不同，你可以将两者都插入容器。
 
 若要创建具有相同电子邮件地址但不是相同名字、姓氏和电子邮件地址的项，请将其他路径添加到唯一键策略。 还可以使用名字、姓氏和电子邮件的组合创建唯一键，而不是仅根据电子邮件地址创建唯一键。 此键称为复合唯一键。 在这种情况下，给定的 `CompanyID` 中允许这三个值的每种唯一组合。 
 

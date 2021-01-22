@@ -4,15 +4,15 @@ description: 介绍 Azure Analysis Services 中的表格 1200 和更高版本数
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 01/21/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 61efc7719b071ff4e8e5c0e07534b72a2883aff1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b778cf55ea485d7b3b4d3730d3659750f27b2697
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458877"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685589"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -43,7 +43,7 @@ ms.locfileid: "96458877"
 
 ## <a name="other-data-sources"></a>其他数据源
 
-|数据源 | 内存中 | DirectQuery |说明   |
+|数据源 | 内存中 | DirectQuery |注释   |
 |  --- | --- | --- | --- |
 |Access 数据库     |  是 | 否 |  |
 |Active Directory     |  是 | 否 | <sup>[6](#tab1400b)</sup>  |
@@ -118,9 +118,17 @@ ms.locfileid: "96458877"
 
 * 如果使用 SQL 身份验证，则模拟应为服务帐户。
 
+## <a name="service-principal-authentication"></a>服务主体身份验证
+
+指定为 *提供程序* 数据源时，Azure Analysis Services 支持 Azure SQL 数据库和 azure Synapse 数据源的 Azure Active Directory [MSOLEDBSQL](/sql/connect/oledb/release-notes-for-oledb-driver-for-sql-server) 服务主体身份验证。
+
+`
+Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authentication=ActiveDirectoryServicePrincipal;User ID=[Application (client) ID];Password=[Application (client) secret];Use Encryption for Data=true
+`
+
 ## <a name="oauth-credentials"></a>OAuth 凭据
 
-对于1400和更高兼容级别的表格模型，使用内存中模式，Azure SQL 数据库、Azure Synapse、Dynamics 365 和 SharePoint List 支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 Power Query 设置凭据。
+对于在 1400 和更高兼容性级别下使用内存模式的表格模型，Azure SQL 数据库、Azure Synapse、Dynamics 365 和 SharePoint 列表支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 Power Query 设置凭据。
 
 OAuth 凭据不支持直接查询模式。
 

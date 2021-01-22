@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: b19fb3f86be46a5db60fb87f9c7f5c3e28ac6428
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 82c33c038a1f8eaba540c9906efcffa0a9214762
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965132"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689633"
 ---
 ## <a name="install-the-container"></a>安装容器
 
@@ -62,7 +62,7 @@ Logging:Disk:Format=json
 > [!NOTE]
 > 此演示仅适用于运行状况容器文本分析。
 
-容器提供了基于 REST 的查询预测终结点 API。  我们还在容器中提供了一个可视化工具，该工具可通过追加 `/demo` 到容器的终结点来访问。 例如：
+该容器提供基于 REST 的查询预测终结点 API。  我们还在容器中提供了一个可视化工具，该工具可通过追加 `/demo` 到容器的终结点来访问。 例如：
 
 ```
 http://<serverURL>:5000/demo
@@ -84,7 +84,7 @@ Azure [用于容器的 Web 应用](https://azure.microsoft.com/services/app-serv
 
 通过 HTTPS 使用订阅和容器映像，从而利用 Azure CLI 运行此 PowerShell 脚本来创建用于容器的 Web 应用。 等待脚本完成（大约 25-30 分钟），然后提交第一个请求。
 
-```bash
+```azurecli
 $subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
 $resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
                                            #    and AppSerivce to be attached to.
@@ -118,7 +118,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 > [!NOTE] 
 > Azure 容器实例不包括对内置域的 HTTPS 支持。 如果需要 HTTPS，则需要手动配置它，包括创建证书和注册域。 可以通过下面的 NGINX 查找有关如何执行此操作的说明。
 
-```bash
+```azurecli
 $subscription_name = ""                    # The name of the subscription you want you resource to be created on.
 $resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
                                            # and AppService to be attached to.

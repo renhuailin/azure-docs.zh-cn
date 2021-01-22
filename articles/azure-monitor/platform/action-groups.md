@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 72caeb60fc058b88158979d211a0bc38985975c7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 444b514dfb1798ff810e84fc4e9d50001dbaee1c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968851"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685782"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 
@@ -164,6 +164,7 @@ ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](./itsmc-overvi
 
 > [!NOTE]
 > 使用 webhook 操作要求目标 webhook 终结点不需要警报的详细信息即可成功运行，或者它能够分析作为 POST 操作的一部分提供的警报上下文信息。 如果 webhook 终结点不能自行处理警报上下文信息，则可以使用类似于 [逻辑应用操作](./action-groups-logic-app.md) 的解决方案，对警报上下文信息的自定义操作进行匹配，以匹配 webhook 的预期数据格式。
+> 用户应是 webhook 服务主体的 **所有者** ，以确保不违反安全性。 由于任何 azure 客户都可以通过门户访问所有对象 Id，而不检查所有者，因此，任何人都可以将安全 webhook 添加到其自己的 azure monitor 警报通知的操作组，这会违反安全性。
 
 操作组 Webhook 操作使你能够利用 Azure Active Directory 来保护操作组和受保护的 Web API（Webhook 终结点）之间的连接。 下面介绍了利用此功能的整个工作流。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](../../active-directory/develop/v2-overview.md)。
 
@@ -318,11 +319,7 @@ Write-Host $myApp.AppRoles
 ### <a name="webhook"></a>Webhook
 
 > [!NOTE]
-> 使用 webhook 操作要求目标 webhook 终结点不需要警报的详细信息即可成功运行，或者它能够分析作为 POST 操作的一部分提供的警报上下文信息。 
-
-> 用户应是 webhook 服务主体的 **所有者** ，以确保不违反安全性。 由于任何 azure 客户都可以通过门户访问所有对象 Id，而不检查所有者，因此，任何人都可以将安全 webhook 添加到其自己的 azure monitor 警报通知的操作组，这会违反安全性。
-
-> 如果 webhook 终结点不能自行处理警报上下文信息，则可以使用类似于 [逻辑应用操作](./action-groups-logic-app.md) 的解决方案，对警报上下文信息的自定义操作进行匹配，以匹配 webhook 的预期数据格式。
+> 使用 webhook 操作要求目标 webhook 终结点不需要警报的详细信息即可成功运行，或者它能够分析作为 POST 操作的一部分提供的警报上下文信息。 如果 webhook 终结点不能自行处理警报上下文信息，则可以使用类似于 [逻辑应用操作](./action-groups-logic-app.md) 的解决方案，对警报上下文信息的自定义操作进行匹配，以匹配 webhook 的预期数据格式。
 
 Webhook 使用以下规则进行处理
 - 最多尝试三次 Webhook 调用。
