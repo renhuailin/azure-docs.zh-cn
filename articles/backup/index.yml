@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: e2afc60f6fa67c1dc0582839e2d3f7480907facc
-  ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+  ms.openlocfilehash: ea54d6e4a08ff5baa2a46051a8ec342128175de3
+  ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/18/2021
-  ms.locfileid: "98556488"
+  ms.lasthandoff: 01/21/2021
+  ms.locfileid: "98624920"
 landingContent:
 - title: 了解 Azure 备份
   linkLists:
@@ -40,8 +40,6 @@ landingContent:
       url: quick-backup-vm-cli.md
     - text: 使用资源管理器模板备份 VM
       url: quick-backup-vm-template.md
-- title: 尝试这些分步教程
-  linkLists:
   - linkListType: tutorial
     links:
     - text: 备份 Azure VM
@@ -84,6 +82,20 @@ landingContent:
       url: backup-azure-vm-backup-faq.md
     - text: 管理 Azure VM 备份
       url: backup-azure-manage-vms.md
+- title: 备份 Azure 托管磁盘（预览版）
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 磁盘备份概述
+      url: disk-backup-overview.md
+    - text: Azure 磁盘备份的支持矩阵
+      url: disk-backup-support-matrix.md
+    - text: 备份 Azure 托管磁盘
+      url: backup-managed-disks.md
+    - text: 常见问题解答 - Azure 托管磁盘
+      url: disk-backup-faq.md
+    - text: Azure 托管磁盘备份排除故障
+      url: disk-backup-troubleshoot.md
 - title: 备份 Azure VM 上的 SQL Server
   linkLists:
   - linkListType: concept

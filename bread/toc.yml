@@ -268,6 +268,13 @@
         - name: Azure Custom Providers
           tocHref: /azure/azure-resource-manager/custom-providers/
           topicHref: /azure/azure-resource-manager/custom-providers/
+    - name: 合作伙伴解决方案
+      tocHref: /azure/partner-solutions/
+      topicHref: /azure/partner-solutions/
+      items:
+        - name: Apache Kafka for Confluent Cloud
+          tocHref: /azure/partner-solutions/apache-kafka-confluent-cloud
+          topicHref: /azure/partner-solutions/apache-kafka-confluent-cloud
     - name: SignalR 服务
       tocHref: /azure/azure-signalr/
       topicHref: /azure/azure-signalr/
