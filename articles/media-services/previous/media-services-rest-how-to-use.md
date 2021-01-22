@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f48a01bb81829ff2bc10b4db1ed543382f992b58
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264277"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696221"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 媒体服务操作 REST API 用于在媒体服务帐户中创建作业、资产、实时频道和其他资源  。 有关详细信息，请参阅 [Media Services Operations REST API reference](/rest/api/media/operations/azure-media-services-rest-api-reference)（媒体服务操作 REST API 参考）。
 
@@ -39,7 +39,7 @@ ms.locfileid: "89264277"
 
 使用 REST 时需考虑下列事项：
 
-* 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 需要使用[此 .NET 示例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)和[此 REST API 示例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)中所述的 **Skip** 和 **Take** (.NET)/ **top** (REST)。 
+* 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 需要使用 [此 .NET 示例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)和 [此 REST API 示例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)中所述的 **Skip** 和 **Take** (.NET)/ **top** (REST)。 
 * 使用 JSON 并指定在请求中使用 **__metadata** 关键字（例如，为了引用某个链接对象）时，必须将 **Accept** 标头设置为 [JSON 详细格式](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)（参阅以下示例）。 Odata 并不了解请求中的 **__metadata** 属性，除非将其设置为 verbose。  
 
     ```console

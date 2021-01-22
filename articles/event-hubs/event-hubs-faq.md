@@ -2,13 +2,13 @@
 title: 常见问题 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关 Azure 事件中心的常见问题 (FAQ) 和解答的列表。
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: e7a34fe0f2ef04fffeeddc5615d3ac1749467902
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.date: 01/20/2021
+ms.openlocfilehash: e6fd4814e771d03827e51f1cd5ee182c9e432cc5
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955410"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696102"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -55,8 +55,8 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 ### <a name="how-do-i-monitor-my-event-hubs"></a>如何监视事件中心？
 事件中心向 [Azure Monitor](../azure-monitor/overview.md) 发出详尽指标用于提供资源的状态。 此外，参考指标不仅可以在命名空间级别，而且还能在实体级别评估事件中心服务的总体运行状况。 了解 [Azure 事件中心](event-hubs-metrics-azure-monitor.md)提供哪些监视功能。
 
-### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Azure 事件中心将客户数据存储在何处？
-Azure 事件中心将存储客户数据。 事件中心会自动将此数据存储在单个区域中，因此此服务会自动满足区域内数据驻留要求，包括[信任中心](https://azuredatacentermap.azurewebsites.net/)内指定的要求。
+### <a name="where-does-azure-event-hubs-store-data"></a><a name="in-region-data-residency"></a>Azure 事件中心将数据存储在何处？
+Azure 事件中心标准和专用层在你选择的区域中存储元数据和数据。 为 Azure 事件中心命名空间设置异地灾难恢复时，会将元数据复制到所选的次要区域。 因此，此服务会自动满足区域数据派驻要求，其中包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)中指定的要求。
 
 [!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 

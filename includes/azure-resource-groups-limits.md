@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: tomfitz
-ms.openlocfilehash: f1e7b33630ea52bb0cb675b81fff9cc738f27980
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 543aa50d72de5a06a9a1c7ac88ac5ecae993bc9d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95560920"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98697975"
 ---
 | 资源 | 限制 |
 | --- | --- |
@@ -37,4 +37,4 @@ ms.locfileid: "95560920"
 | 模板大小 |4 MB |
 | 参数文件大小 |64 KB |
 
-通过使用嵌套模板，可超出某些模板限制。 有关详细信息，请参阅[部署 Azure 资源时使用链接的模板](../articles/azure-resource-manager/templates/linked-templates.md)。 若要减少参数、变量或输出的数量，可以将几个值合并为一个对象。 有关详细信息，请参阅[对象即参数](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)。
+通过使用嵌套模板，可超出某些模板限制。 有关详细信息，请参阅[部署 Azure 资源时使用链接的模板](../articles/azure-resource-manager/templates/linked-templates.md)。 若要减少参数、变量或输出的数量，可以将几个值合并为一个对象。 有关详细信息，请参阅[对象即参数](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters)。

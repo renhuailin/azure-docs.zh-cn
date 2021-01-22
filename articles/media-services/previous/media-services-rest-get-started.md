@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ddad462658465c07624f078e20c224750c5180c9
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fe35cd39af9b2fe7d547b463b6432b0b54344794
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019471"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696238"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>开始使用 REST 传送点播内容
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 本快速入门介绍了使用 Azure 媒体服务 (AMS) REST API 实现视频点播 (VoD) 内容传送应用程序的步骤。
 
@@ -68,7 +68,7 @@ ms.locfileid: "92019471"
 使用 Azure 媒体服务时，最常见的场景之一是通过自适应比特率流式处理传送视频。 媒体服务提供动态打包，可按媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）及时传送自适应比特率 MP4 编码内容，而无需存储上述各种流格式的预打包版本。
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
+>创建 AMS 帐户后，会将一个处于“已停止”状态的 **默认** 流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
 
 若要启动流式处理终结点，请执行以下操作：
 
@@ -87,7 +87,7 @@ ms.locfileid: "92019471"
 
 ## <a name="create-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>使用 REST API 创建新资产并上载视频文件
 
-在媒体服务中，可以将数字文件上传到资产中。 **资产**实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）将文件上传到资产后，相关内容即安全地存储在云中供后续处理和流式处理。
+在媒体服务中，可以将数字文件上传到资产中。 **资产** 实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）将文件上传到资产后，相关内容即安全地存储在云中供后续处理和流式处理。
 
 创建资产时必须提供的值之一是资产创建选项。 **Options** 属性是一个枚举值，描述可用于创建资产的加密选项。 有效值为以下列表中的某个值，而不是此列表中值的组合：
 
@@ -737,7 +737,7 @@ Date: Mon, 19 Jan 2015 08:28:13 GMT
 创建定位符后，可以创建用来流式处理或下载文件的 URL。
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
+>创建 AMS 帐户后，会将一个处于“已停止”状态的 **默认** 流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
 
 平滑流式处理的流式处理 URL 采用以下格式：
 

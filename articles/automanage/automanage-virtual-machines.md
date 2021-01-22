@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: ab056e0685264b03d35ee6b95afad7c6362f9db6
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 0d8ce501b951f3543e1baf54c8a52648b13f6e66
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695794"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695664"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>适用于虚拟机的 Azure Automanage
 
@@ -43,16 +43,16 @@ Azure Automanage 还自动监视是否有偏移，并在检测到它时纠正。
 
 - 仅限 Windows Server Vm
 - Vm 必须正在运行
-- Vm 必须位于受支持的区域
+- Vm 必须位于受支持的区域 (请参阅下一段落) 
 - 用户必须具有正确的权限 (请参阅下一段落) 
 - Automanage 目前不支持沙盒订阅
 
-必须对包含 Vm 的资源组具有 " **参与者** " 角色，才能使用现有的 Automanage 帐户在 vm 上启用 Automanage。 如果要使用新的 Automanage 帐户启用 Automanage，则需要对订阅拥有以下权限： **所有者** 角色或 **参与者** 以及 **用户访问管理员** 角色。 
+另外，请务必注意，Automanage 仅支持位于以下区域的 Windows Vm：西欧、美国东部、美国西部2、加拿大中部、美国西部、美国东部、日本东部。
+
+必须对包含 Vm 的资源组具有 " **参与者** " 角色，才能使用现有的 Automanage 帐户在 vm 上启用 Automanage。 如果要使用新的 Automanage 帐户启用 Automanage，则需要对订阅拥有以下权限： **所有者** 角色或 **参与者** 以及 **用户访问管理员** 角色。
 
 > [!NOTE]
 > 如果要在连接到不同订阅中的工作区的 VM 上使用 Automanage，则必须具有上述每个订阅的权限。
-
-另外，请务必注意，Automanage 仅支持位于以下区域的 Windows Vm：西欧、美国东部、美国西部2、加拿大中部、美国西部、美国东部、日本东部。
 
 ## <a name="participating-services"></a>参与服务
 
@@ -102,12 +102,20 @@ Azure Automanage 还自动监视是否有偏移，并在检测到它时纠正。
 
 ## <a name="automanage-account"></a>Automanage 帐户
 
-Automanage 帐户是安全上下文或用于执行自动操作的标识。 通常情况下，你无需选择 Automanage 帐户选项，但如果存在一个委托方案，在这种情况下，可能需要在两个系统管理员) 之间划分自动管理 (，此选项允许你为这些管理员定义 Azure 标识。
+Automanage 帐户是安全上下文或用于执行自动操作的标识。 通常情况下，你无需选择 Automanage 帐户选项，但如果存在一个委托方案，其中你要将资源的自动管理划分 (可能在两个系统管理员) 之间，则此选项允许你为这些管理员定义 Azure 标识。
 
 在 Azure 门户体验中，当你在 Vm 上启用 Automanage 时，" **启用 AZURE VM 最佳做法** " 边栏选项卡上提供了一个高级下拉列表，可用于分配或手动创建 Automanage 帐户。
 
+将向订阅 (的订阅授予 " **参与者** " 和 " **资源策略参与者** " 角色，) 包含已加入 Automanage) 的计算机 (。 你可以在多个订阅中的计算机上使用相同的 Automanage 帐户，这将授予该 Automanage 帐户 **参与者** 和对所有订阅的 **资源策略参与者** 权限。
+
+如果 VM 连接到其他订阅中的 Log Analytics 工作区，则还会向 Automanage 帐户授予该其他订阅中的 **参与者** 和 **资源策略参与者** 。
+
+如果要使用新的 Automanage 帐户启用 Automanage，则需要对订阅拥有以下权限： **所有者** 角色或 **参与者** 以及 **用户访问管理员** 角色。
+
+如果要使用现有的 Automanage 帐户启用 Automanage，则需要对包含 Vm 的资源组具有 " **参与者** " 角色。
+
 > [!NOTE]
-> 需要对包含 Vm 的资源组具有 " **参与者** " 角色，才能使用现有的 Automanage 帐户在 vm 上启用 Automanage。 如果要使用新的 Automanage 帐户启用 Automanage，则需要对订阅拥有以下权限： **所有者** 角色或 **参与者** 以及 **用户访问管理员** 角色。
+> 禁用 Automanage 最佳实践时，会保留 Automanage 帐户对任何关联订阅的权限。 请通过转到订阅的 IAM 页手动删除权限或删除 Automanage 帐户。 如果 Automanage 帐户仍在管理任何计算机，则无法将其删除。
 
 
 ## <a name="status-of-vms"></a>Vm 的状态
@@ -122,6 +130,7 @@ Automanage 帐户是安全上下文或用于执行自动操作的标识。 通�
 - *正在进行* -VM 刚启用并且正在配置
 - *已配置* -VM 已配置，未检测到偏移
 - *失败* -VM 有偏移，无法修正
+- *挂起* -vm 当前未在运行，并且 Automanage 将在下一次运行时尝试载入或修正 vm
 
 如果 **状态** 显示为 " *失败*"，则可以通过 VM 所在的资源组对部署进行故障排除。 中转到 " **资源组**"，选择资源组，单击 " **部署** "， *并在其中* 显示错误详细信息。
 
@@ -145,7 +154,6 @@ Automanage 帐户是安全上下文或用于执行自动操作的标识。 通�
 
 
 首先，我们不会将虚拟机从我们载入并配置的任何服务中脱离。 因此，这些服务产生的任何费用仍将继续计费。 如有必要，你将需要离开板。 任何 Automanage 行为将立即停止。 例如，我们将不再监视 VM 的偏差。
-
 
 ## <a name="next-steps"></a>后续步骤
 

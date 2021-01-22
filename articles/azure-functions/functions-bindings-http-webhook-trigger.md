@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f04e2aa97cafe2345918e433bcef5e719cee7483
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: eaba099725530f24dcd6aa5da7eb59cb233efd46
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610159"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695639"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -749,6 +749,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 }
 ```
 
+使用路由参数时，会 `invoke_URL_template` 自动为函数创建。 你的客户端可以使用 URL 模板来了解在使用 url 调用函数时需要在 URL 中传递的参数。 在 [Azure 门户](https://portal.azure.com) 中导航到某个 HTTP 触发的函数，然后选择 " **获取函数 URL**"。
+
+可以 `invoke_URL_template` 使用 Azure 资源管理器 api For [List](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions) [Function 或 Get Function](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction)以编程方式访问。
+
 ## <a name="working-with-client-identities"></a>使用客户端标识
 
 如果函数应用使用[应用服务身份验证/授权](../app-service/overview-authentication-authorization.md)，则可通过代码查看有关已验证身份的客户端的信息。 此信息以[平台注入的请求标头](../app-service/app-service-authentication-how-to.md#access-user-claims)的形式提供。
@@ -846,11 +850,17 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="obtaining-keys"></a>获取密钥
 
-密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看密钥，请创建新的密钥或将密钥滚动到新值，在 [Azure 门户](https://portal.azure.com)中导航到某个 HTTP 触发的函数，然后选择“管理”。
+密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看你的密钥、创建新的密钥或将密钥滚动到新值，请导航到 [Azure 门户](https://portal.azure.com) 中某个 HTTP 触发的函数，然后选择 " **功能键**"。
 
-![在门户中管理函数密钥。](./media/functions-bindings-http-webhook/manage-function-keys.png)
+你还可以管理主机密钥。 导航到 [Azure 门户](https://portal.azure.com) 中的函数应用，然后选择 " **应用密钥**"。
 
-可以使用[密钥管理 API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) 以编程方式获取函数密钥。
+可以使用 Azure 资源管理器 Api 以编程方式获取函数和主机密钥。 存在用于 [列出功能键](/rest/api/appservice/webapps/listfunctionkeys) 和 [列出主机密钥](/rest/api/appservice/webapps/listhostkeys)的 api，并且在使用部署槽位时，等效的 Api 为 [列出功能键槽](/rest/api/appservice/webapps/listfunctionkeysslot) 和 [列表主机密钥槽](/rest/api/appservice/webapps/listhostkeysslot)。
+
+你还可以使用 [Create 或 Update 函数机密](/rest/api/appservice/webapps/createorupdatefunctionsecret)、创建或更新 [函数机密槽](/rest/api/appservice/webapps/createorupdatefunctionsecretslot)、创建或更新 [主机密钥](/rest/api/appservice/webapps/createorupdatehostsecret) 以及 [创建或更新主机机密槽](/rest/api/appservice/webapps/createorupdatehostsecretslot) api，以编程方式创建新的函数和主机密钥。
+
+可以通过使用 [删除功能机密](/rest/api/appservice/webapps/deletefunctionsecret)、 [删除函数机密槽](/rest/api/appservice/webapps/deletefunctionsecretslot)、 [删除主机密钥](/rest/api/appservice/webapps/deletehostsecret)和 [删除主机机密槽](/rest/api/appservice/webapps/deletehostsecretslot) api，以编程方式删除函数和主机密钥。
+
+你还可以使用 [旧密钥管理 api 获取功能密钥](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)，但建议改为使用 Azure 资源管理器 api。
 
 ## <a name="api-key-authorization"></a>API 密钥的授权
 

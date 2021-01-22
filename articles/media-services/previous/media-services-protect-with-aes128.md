@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0e2f785bb3c097b7d2918198457a3f7baf6a39c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 91ed9482903d66ffcf1283c4024f89fc461bab1b
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96023442"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695063"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>使用 AES-128 动态加密和密钥传递服务
 
@@ -33,7 +33,7 @@ ms.locfileid: "96023442"
 >  
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 借助媒体服务，可以传送使用 AES 加密的 HTTP Live Streaming (HLS) 和平滑流（使用 128 位加密密钥）。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。 如果需要媒体服务来加密资产，则需要将加密密钥与资产相关联，并配置密钥的授权策略。 当播放器请求流时，媒体服务将使用指定的密钥通过 AES 加密来动态加密内容。 为了解密流，播放器将从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
@@ -63,11 +63,11 @@ ms.locfileid: "96023442"
 
     可以对同一资产上的不同协议应用不同的策略。 例如，可以将 PlayReady 加密应用到平滑流/DASH，将 AES 信封应用到 HLS。 将阻止流式处理传送策略中未定义的任何协议。 例如，如果添加了一个仅将 HLS 指定为协议的策略，则 (。如果根本没有定义任何资产传送策略，则 ) 例外。 此时，允许所有明文形式的协议。
 
-6. [创建 OnDemand 定位符](media-services-protect-with-aes128.md#create_locator)以获取流式处理 URL。
+6. [创建 OnDemand 定位符](media-services-protect-with-aes128.md#create_locator) 以获取流 URL。
 
 本文还说明了[客户端应用程序如何从密钥传送服务请求密钥](media-services-protect-with-aes128.md#client_request)。
 
-可以在文章末尾找到完整的 [.NET 示例](media-services-protect-with-aes128.md#example)。
+可以在文章末尾找到完整的 [.net 示例](media-services-protect-with-aes128.md#example) 。
 
 下图演示了上述工作流。 在图中，使用令牌进行了身份验证。
 
@@ -98,7 +98,7 @@ ms.locfileid: "96023442"
 
 有关详细信息，请参阅[创建内容密钥](media-services-dotnet-create-contentkey.md)。
 
-## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>配置内容密钥的授权策略
+## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>配置内容密钥授权策略
 媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 必须配置内容密钥授权策略。 客户端（播放器）必须符合该策略才能将密钥传送到客户端。 内容密钥授权策略可能受到一种或多种授权限制：开放、令牌限制或 IP 限制。
 
 有关详细信息，请参阅[配置内容密钥授权策略](media-services-dotnet-configure-content-key-auth-policy.md)。
@@ -245,7 +245,7 @@ Fragments(video=0,format=m3u8-aapl)
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-1. 设置开发环境，并在 app.config 文件中填充连接信息，如 [通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。
+1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。
 
 2. 将以下元素添加到 app.config 文件中定义的 appSettings：
 

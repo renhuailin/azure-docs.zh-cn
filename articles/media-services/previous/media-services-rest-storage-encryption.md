@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8a3a51644f61d4a1e118798986f9c6fb6c52d0e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ae1d19ee3da59c43722ca1ea720eb441f6dd484
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264158"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696204"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>通过存储加密来加密内容
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 >
 
 本文概述了 AMS 存储空间加密并演示了如何上传存储空间加密的内容：
@@ -64,7 +64,7 @@ ms.locfileid: "89264158"
 ## <a name="storage-encryption-overview"></a>存储空间加密概述
 AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR 模式是一分组加密，无需填充便可对任意长度的数据进行加密。 它采用 AES 算法加密计数器分组，并使用要加密或解密的数据对 AES 的输出执行异或运算。  通过将 InitializationVector 的值复制到计数器值的 0 到 7 字节来构造所用的计数器分组，而计数器值的 8 到 15 字节设置为零。 在长度为 16 字节的计数器分组中，8 到 15 字节（即，最少有效字节）用作简单的 64 位无符号整数，对于所处理数据的每个后续分组，该整数都会递增 1 并保留网络字节顺序。 如果此整数达到最大值 (0xFFFFFFFFFFFFFFFF)，则递增会将分组计数器重置为零（8 到 15 字节），且不会影响其他 64 位计数器（即 0 到 7 字节）。   为了维护 AES-CTR 模式加密的安全性，每个内容密钥的给定密钥标识符的 InitializationVector 值对每个文件必须是唯一的，且文件长度应小于 2^64 分组。  此值唯一是为了确保计数器值永远不会重复用于给定密钥。 有关 CTR 模式的详细信息，请参阅[此 wiki 页](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR)（此 wiki 文章使用术语“Nonce”取代“InitializationVector”）。
 
-使用**存储加密**通过 AES-256 位加密在本地加密明文内容，然后将其上传到 Azure 存储以加密形式静态存储相关内容。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
+使用 **存储加密** 通过 AES-256 位加密在本地加密明文内容，然后将其上传到 Azure 存储以加密形式静态存储相关内容。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
 
 要传送存储加密资产，必须配置资产的传送策略，以使媒体服务了解要如何传送内容。 在流式传输资产之前，流式处理服务器会删除存储加密，然后再使用指定的传传送策略（例如 AES、通用加密或无加密）流式传输内容。
 
@@ -336,7 +336,7 @@ HTTP/1.1 204 No Content
 
 **AssetFile** 实例和实际媒体文件是两个不同的对象。 AssetFile 实例包含有关媒体文件的元数据，而媒体文件包含实际媒体内容。
 
-将数字媒体文件上传到 blob 容器后，需要使用 MERGE HTTP 请求来更新 AssetFile 中有关媒体文件的信息（本文中未展示）****。 
+将数字媒体文件上传到 blob 容器后，需要使用 MERGE HTTP 请求来更新 AssetFile 中有关媒体文件的信息（本文中未展示）。 
 
 **HTTP 请求**
 

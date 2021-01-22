@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: e841d1922beb3f0276ff94cacbbdf566b23cdf6e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d6e64ed7476b3f9fd5427c2f3d26855bc4d5f97d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017278"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695757"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Azure 点播媒体编码器概述
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项。
 
@@ -34,13 +34,13 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 
 媒体服务所提供的动态打包允许以媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）传送自适应比特率 MP4 或平滑流式处理编码内容，而无须重新打包成这些流格式。
 
-创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 每当流式处理终结点处于“正在运行”**** 状态时，就会对该终结点进行计费。
+创建媒体服务帐户后，会将一个处于“已停止”状态的 **默认** 流式处理终结点添加到帐户。 若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 每当流式处理终结点处于“正在运行”状态时，就会对该终结点进行计费。
 
 媒体服务支持以下按需编码器：
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
 
-本文简要概述了按需媒体编码器，并提供了指向包含更多详细信息的文章的链接。
+本文简要概述了按需媒体编码器，并提供了指向介绍更多详细信息的文章的链接。
 
 默认情况下每个媒体服务帐户同时只能有一个活动的编码任务。 可以预留编码单元，使用它们可以同时运行多个编码任务，购买的每个编码预留单位对应一个任务。 有关信息，请参阅[缩放编码单位](media-services-scale-media-processing-overview.md)。
 

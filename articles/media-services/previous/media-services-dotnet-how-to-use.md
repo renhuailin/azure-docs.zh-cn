@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8eb45397b1941b9a6955066c22d6d9d00eeef4c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dda7849b6a5e22eea4891eacb2678b4c500dc1e1
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262084"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693657"
 ---
 # <a name="media-services-development-with-net"></a>使用 .NET 进行媒体服务开发
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 本文讨论如何使用 .NET 开始开发媒体服务应用程序。
 
-通过 **Azure 媒体服务 .NET SDK** 库，可基于使用 .NET 的媒体服务编程。 为了进一步方便使用 .NET 进行开发，提供了 **Azure 媒体服务 .NET SDK 扩展**库。 此库包含一组扩展方法和帮助器函数，可简化 .NET 代码。 这两个库都通过 **NuGet** 和 **GitHub** 提供。
+通过 **Azure 媒体服务 .NET SDK** 库，可基于使用 .NET 的媒体服务编程。 为了进一步方便使用 .NET 进行开发，提供了 **Azure 媒体服务 .NET SDK 扩展** 库。 此库包含一组扩展方法和帮助器函数，可简化 .NET 代码。 这两个库都通过 **NuGet** 和 **GitHub** 提供。
 
 ## <a name="prerequisites"></a>必备条件
 * 在新的或现有的 Azure 订阅中拥有一个媒体服务帐户。 请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)一文。

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 4b3b2b8c39b5b2552b5ce9f508bacd1ea86b2638
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dc21523d158330d70adfbc33734abe3d49535804
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006349"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696289"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>适用于 Android 的脱机 Widevine 流式处理
 
@@ -31,7 +31,7 @@ ms.locfileid: "96006349"
 > * [第 2 版](offline-widevine-for-android.md)
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 除了保护联机流式处理的内容之外，媒体内容订阅和租赁服务还提供可下载的内容，供用户在未连接到 Internet 时使用。 可以将内容下载到手机或平板电脑上，以便在飞行中与网络断开连接时，在飞行模式下播放。 可能需要下载内容的其他情况包括：
 

@@ -7,24 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 01/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ffb5a78c13413a46565a9c57c87dc8273742fd24
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 49364681f0c5b4b6cc4d5f20778edb61e9f6f5b3
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563443"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695774"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 认知搜索中的安全性 - 概述
 
-本文介绍 Azure 认知搜索中可以保护内容和操作的关键安全功能。
+本文介绍 Azure 认知搜索中保护内容和操作的安全功能。
 
-+ 在存储层，静态加密是为保存到磁盘的所有服务托管内容内置的，包括索引、同义词映射以及索引器、数据源和技能集的定义。 Azure 认知搜索还支持添加客户管理的密钥 (CMK)，以对索引内容进行双重加密。 对于 2020 年 8 月 1 日后创建的服务，CMK 加密延伸到临时磁盘上的数据，以对索引内容进行完全双重加密。
++ 在存储层，数据加密是为保存到磁盘的所有服务托管内容而内置的，其中包括索引、同义词映射以及索引器、数据源和技能集的定义。 （可选）可以添加客户托管的密钥 (CMK) 用于索引内容的补充加密。 对于8月 1 2020 日后创建的服务，CMK 加密扩展到临时磁盘上的数据，以获取索引内容的完整 "双加密"。
 
-+ 入站安全性通过不断提升的安全性级别来保护搜索服务终结点：从请求所使用的 API 密钥到防火墙中的入站规则，再到全面保护服务不受公共 Internet 影响的专用终结点。
++ 入站安全指的是搜索服务终结点上的保护，提高安全性：从请求上的 API 密钥到防火墙中的入站规则，到从公共 internet 完全防护服务的专用终结点。
 
-+ 出站安全适用于从外部源提取内容的索引器。 对于出站请求，请设置托管标识，使其在访问 Azure 存储、Azure SQL、Cosmos DB 或其他 Azure 数据源的数据时搜索受信任的服务。 托管标识用于替代连接上的凭据或访问密钥。 本文未介绍出站安全性。 有关此功能的详细信息，请参阅 [使用托管标识连接到数据源](search-howto-managed-identities-data-sources.md)。
++ 出站安全性与从外部源提取内容的索引器相关。 对于出站请求，请设置托管标识，使其在访问 Azure 存储、Azure SQL、Cosmos DB 或其他 Azure 数据源的数据时搜索受信任的服务。 托管标识用于替代连接上的凭据或访问密钥。 本文未介绍出站安全性。 有关此功能的详细信息，请参阅 [使用托管标识连接到数据源](search-howto-managed-identities-data-sources.md)。
 
 观看此快速进度的视频，大致了解安全体系结构和每个功能类别。
 
@@ -104,7 +104,7 @@ ms.locfileid: "97563443"
 
 Azure 认知搜索的 [专用终结点](../private-link/private-endpoint-overview.md) 允许 [虚拟网络](../virtual-network/virtual-networks-overview.md) 上的客户端通过 [专用链接](../private-link/private-link-overview.md)安全访问搜索索引中的数据。
 
-专用终结点使用虚拟网络地址空间中的 IP 地址来连接到搜索服务。 客户端与搜索服务之间的网络流量将在 Microsoft 主干网络上遍历虚拟网络和专用链接，从而消除了公共 internet 的泄露。 VNET 允许在资源之间通过本地网络和 Internet 进行安全通信。
+专用终结点使用虚拟网络地址空间中的 IP 地址来连接到搜索服务。 客户端与搜索服务之间的网络流量将穿过虚拟网络以及 Microsoft 主干网络上的专用链接，不会从公共 Internet 公开。 VNET 允许在资源之间通过本地网络和 Internet 进行安全通信。
 
 :::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="专用终结点访问的示例体系结构关系图":::
 

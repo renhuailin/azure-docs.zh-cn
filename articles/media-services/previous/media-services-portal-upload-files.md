@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 00035782a17936405b2b042035220dde87da12b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdb301cd719d98d806e2a9e539cd81e6778461bb
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89257052"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695298"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>在 Azure 门户中将文件上传到媒体服务帐户
 
@@ -32,7 +32,7 @@ ms.locfileid: "89257052"
 > 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 有关通过门户最新上传的文件，请参阅[使用门户上传、编码和流式传输内容](../latest/manage-assets-quickstart.md)。<br/>另请参阅：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 有关通过门户最新上传的文件，请参阅[使用门户上传、编码和流式传输内容](../latest/manage-assets-quickstart.md)。<br/>另请参阅：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 在 Azure 媒体服务中，可以将数字文件上传到资产。 资产可包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据）。 上传文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。
 

@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19451fb09919238a04ac953c9c38fc70b4744d16
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 986019ec4de2fc25b6d8714a8c687cc9342f47b8
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955291"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696053"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>使用创建 Azure Arc 数据控制器 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 有关概述信息，请参阅 [创建 Azure Arc 数据控制器](create-data-controller.md) 主题。
 
@@ -30,7 +30,7 @@ ms.locfileid: "97955291"
 
 无论选择哪个目标平台，都需要在创建数据控制器管理员用户之前设置以下环境变量。 您可以根据需要向需要管理员访问数据控制器的其他人员提供这些凭据。
 
-**AZDATA_USERNAME** -为数据控制器管理员用户选择的用户名。 示例： `arcadmin`
+**AZDATA_USERNAME** -为数据控制器管理员用户选择的用户名。 示例：`arcadmin`
 
 **AZDATA_PASSWORD** -为数据控制器管理员用户选择的密码。 密码长度必须至少为8个字符，并且包含以下四个集中的三个：大写字母、小写字母、数字和符号。
 
@@ -266,34 +266,11 @@ azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc
 
 ### <a name="create-on-azure-red-hat-openshift-aro"></a>在 Azure Red Hat 上创建 OpenShift (ARO) 
 
-#### <a name="apply-the-scc"></a>应用 SCC
+Azure Red Hat OpenShift 需要安全上下文约束。
 
-在 Azure Red Hat OpenShift 上创建数据控制器之前，需要 (SCC) 应用特定的安全上下文约束。 对于预览版本，它们放宽了安全约束。 未来版本将提供更新的 SCC。
+#### <a name="apply-the-security-context"></a>应用安全上下文
 
-1.  (SCC) 下载自定义安全上下文约束。 使用下列其中一个： 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   -  ([原始](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml)) 
-   - `curl` 以下命令将下载 yaml：
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. 创建 SCC。
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. 将 SCC 应用到服务帐户。
-
-   > [!NOTE]
-   > 在此处和下面的命令中使用相同的命名空间 `azdata arc dc create` 。 示例为 `arc` 。
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
-
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="create-custom-deployment-profile"></a>创建自定义部署配置文件
 
@@ -324,33 +301,11 @@ azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --
 > [!NOTE]
 > 如果在 Azure 上使用 Red Hat OpenShift 容器平台，建议使用最新的可用版本。
 
-#### <a name="apply-the-scc"></a>应用 SCC
+在 Red Hat OCP 上创建数据控制器之前，需要应用特定的安全上下文约束。 
 
-在 Red Hat OCP 上创建数据控制器之前，需 (SCC) 应用特定的安全上下文约束。 对于预览版本，它们放宽了安全约束。 未来版本将提供更新的 SCC。
+#### <a name="apply-the-security-context-constraint"></a>应用安全上下文约束
 
-1.  (SCC) 下载自定义安全上下文约束。 使用下列其中一个： 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   -  ([原始](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml)) 
-   - `curl` 以下命令将下载 yaml：
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. 创建 SCC。
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. 将 SCC 应用到服务帐户。
-
-   > [!NOTE]
-   > 在此处和下面的命令中使用相同的命名空间 `azdata arc dc create` 。 示例为 `arc` 。
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="determine-storage-class"></a>确定存储类
 

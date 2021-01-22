@@ -4,12 +4,12 @@ description: 说明如何解决使用 Azure Resource Manager 将资源部署到 
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
-ms.openlocfilehash: bb701baf164cfd6ba1dd5c670a406343e83c5c70
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 61a306cd36c55a005ee9ebd897fcfc9a6c88d7c9
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622805"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696390"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误
 
@@ -37,7 +37,7 @@ ms.locfileid: "98622805"
 | DeploymentJobSizeExceeded | 简化模板以减小大小。 | [解决模板大小错误](error-job-size-exceeded.md) |
 | DnsRecordInUse | DNS 记录名称必须唯一。 输入不同的名称。 | |
 | ImageNotFound | 检查 VM 映像设置。 |  |
-| InUseSubnetCannotBeDeleted | 如果尝试更新资源，但已通过删除并创建资源处理了请求，则可能会出现此错误。 请确保指定所有未更改的值。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| InUseSubnetCannotBeDeleted | 如果尝试更新资源，但已通过删除并创建资源处理了请求，则可能会出现此错误。 请确保指定所有未更改的值。 | [更新资源](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | 获取相应租户的访问令牌。 只能从帐户所属的租户获取该令牌。 | |
 | InvalidContentLink | 很可能尝试过链接到不可用的嵌套模板。 请仔细检查提供给嵌套模板的 URI。 如果模板在存储帐户中存在，请确保 URI 可访问。 可能需要传递 SAS 令牌。 目前，无法链接到位于 [Azure 存储防火墙](../../storage/common/storage-network-security.md)后面的存储帐户中的模板。 考虑将模板移到其他存储库，如 GitHub。 | [链接的模板](linked-templates.md) |
 | InvalidDeploymentLocation | 在订阅级别部署时，你为以前使用的部署名称提供了不同的位置。 | [订阅级别部署](deploy-to-subscription.md) |
@@ -64,7 +64,7 @@ ms.locfileid: "98622805"
 | PasswordTooLong | 你可能选择了包含太多字符的密码，或在将密码值作为参数传递之前将其转换成了一个安全字符串。 如果模板包括一个 **安全字符串** 参数，则不需要将值转换为安全字符串。 请以文本形式提供密码值。 |  |
 | PrivateIPAddressInReservedRange | 指定的 IP 地址包括 Azure 所需的地址范围。 请更改 IP 地址，避免使用保留的范围。 | [IP 地址](../../virtual-network/public-ip-addresses.md) |
 | PrivateIPAddressNotInSubnet | 指定的 IP 地址位于子网范围之外。 请更改 IP 地址，使之位于子网范围之内。 | [IP 地址](../../virtual-network/public-ip-addresses.md) |
-| PropertyChangeNotAllowed | 已部署资源上的某些属性不能更改。 更新资源时，请仅更改允许的属性。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| PropertyChangeNotAllowed | 已部署资源上的某些属性不能更改。 更新资源时，请仅更改允许的属性。 | [更新资源](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
 | RequestDisallowedByPolicy | 订阅中的某个资源策略阻止你在部署期间尝试执行的操作。 请找出阻止该操作的策略。 如果可能，请更改部署，使之符合策略的限制。 | [解决策略问题](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | 提供不包含保留名称的资源名称。 | [保留的资源名称](error-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | 等待删除操作完成。 | |

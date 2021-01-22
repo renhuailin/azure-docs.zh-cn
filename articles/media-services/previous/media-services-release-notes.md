@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bd4f50365ced61e35ae6d10a9763a0f9815098d7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: e1700489b4f3ee37d95b87b1bf026d47c9f1de4d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014097"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694876"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -28,7 +28,7 @@ ms.locfileid: "92014097"
 这些 Azure 媒体服务发行说明汇总了与以前版本相比的变更之处和已知的问题。
 
 > [!NOTE]
-> 媒体服务 v2 中未添加新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒体服务 v2 中未添加新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 我们希望能够倾听客户的心声，以便努力解决对客户造成影响的问题。 要报告问题或提出问题，请将在 [Azure 媒体服务 MSDN 论坛] 中提交问题。 
 
@@ -56,7 +56,7 @@ ms.locfileid: "92014097"
 * [HistoricalEvents](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
 * [PerfMessage](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
 
-若要获取任务历史记录，应通过 webhook 或使用通知终结点的队列消息使用 v2 作业通知。 有关详情，请参阅：
+若要获取任务历史记录，应通过 Webhook 使用 v2 作业通知或通过通知终结点使用队列消息。 有关详情，请参阅：
 
 * [使用 Azure 队列存储监视媒体服务作业通知](media-services-dotnet-check-job-progress-with-queues.md)
 * [使用 Azure Webhook 监视媒体服务作业通知](media-services-dotnet-check-job-progress-with-webhooks.md)
@@ -71,7 +71,7 @@ ms.locfileid: "92014097"
 
 我们宣布停用 Azure Media Indexer 和 Azure Media Indexer 2 预览版 。 [Azure 媒体服务视频索引器](../video-indexer/index.yml)取代了这些旧版媒体处理器。
 
-有关停用日期，请参阅此[旧版组件](legacy-components.md)主题。
+有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
 
 另请参阅[从 Azure Media Indexer 和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务区域可用性 |Microsoft Docs
+title: Azure 媒体服务区域可用性 | Microsoft Docs
 description: 本文概述 Microsoft Azure 媒体服务功能和服务区域可用性。
 services: media-services
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cf84e45ff43643c7e9a983b867194a7920aa1b57
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 458927afc78c46ad365d437a574d0b40b32fc11e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351867"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695791"
 ---
 # <a name="media-services-regional-availability"></a>媒体服务区域可用性
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 查看最新版本：[媒体服务 v3](../latest/media-services-overview.md)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 查看最新版本：[媒体服务 v3](../latest/media-services-overview.md)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 可以使用 Microsoft Azure 媒体服务 (AMS) 安全地上传、存储、编码和打包视频或音频内容，以便通过点播和实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
@@ -36,7 +36,7 @@ AMS 在世界各地的多个区域中运行，使你可以灵活地选择在何�
 
 ## <a name="ams-accounts"></a>AMS 帐户
 
-使用 [Azure 产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all) ）确定媒体服务是否在特定区域中可用。
+使用 [Azure 产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all)，确定媒体服务是否在特定区域可用。
 
 ## <a name="streaming-endpoints"></a>流式处理终结点
 
@@ -99,7 +99,7 @@ AMS 提供两个按需编码器：  Media Encoder Standard 和  Media Encoder Pr
 
 ## <a name="reserved-unit-ru-type"></a>预留单位 (RU) 类型
 
-媒体服务帐户与保留单位类型关联，后者决定了处理媒体处理任务的速度。 可以在以下保留单位类型之间进行选择： S1、S2 或 S3。
+媒体服务帐户与预留单位类型关联，后者决定了完成媒体处理任务的速度。 可以在以下预留单位类型中进行选择：S1、S2 或 S3。
 
 |RU 类型名称|状态|区域
 |---|---|---|

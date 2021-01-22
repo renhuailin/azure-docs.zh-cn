@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 2b15389ae35a63c71ac4cb9e167e578e7e1e690e
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b8f2b3e1ffde49c8df3c3a6d7c0b9b3751fda5fa
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695768"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696170"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Azure Automanage for Vm 常见问题
 
@@ -28,7 +28,6 @@ ms.locfileid: "97695768"
 
 若要启用 Azure Automanage，需要满足以下先决条件：
 - 仅限 Windows Server Vm
-- Vm 必须正在运行
 - Vm 必须位于受支持的区域
 - 用户必须具有正确的权限
 - 仅限非规模集 Vm

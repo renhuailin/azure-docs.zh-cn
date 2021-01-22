@@ -6,12 +6,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 9fe1aaed58d6069cd583f8607f7bd6332f97674e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0b4356c74b2e0c1494456d5d1082efd7b8953a15
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019884"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693369"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>使用 Azure 流分析 CI/CD NuGet 包进行集成和开发 
 本文介绍如何使用 Azure 流分析 CI/CD NuGet 包设置持续集成和部署过程。
@@ -51,7 +51,7 @@ parameters.json 文件中的默认参数来自 Visual Studio 项目中的设置�
       "value": null
     },
 ```
-深入了解如何[使用资源管理器模板文件和 Azure PowerShell 进行部署](../azure-resource-manager/templates/deploy-powershell.md)。 深入了解如何 [use an object as a parameter in a Resource Manager template](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)（将对象用作资源管理器模板中的参数）。
+深入了解如何[使用资源管理器模板文件和 Azure PowerShell 进行部署](../azure-resource-manager/templates/deploy-powershell.md)。 深入了解如何 [use an object as a parameter in a Resource Manager template](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters)（将对象用作资源管理器模板中的参数）。
 
 若要将 Azure Data Lake Store Gen1 的托管标识用作输出接收器，需要在部署到 Azure 之前使用 PowerShell 提供对服务主体的访问权限。 了解有关如何[使用资源管理器模板部署具有托管标识的 ADLS Gen1](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment) 的详细信息。
 

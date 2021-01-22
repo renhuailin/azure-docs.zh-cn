@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/3/2020
 ms.author: inhenkel
-ms.openlocfilehash: 001c535a2b39898673f2d587ee807d43b4d5f60a
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: d195ad6715c47b9b4c14dc2e65ba1d07ebf79ce8
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348536"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696255"
 ---
 # <a name="microsoft-azure-media-services-common-scenarios"></a>Microsoft Azure 媒体服务常见方案
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 查看最新版本：[媒体服务 v3](../latest/media-services-overview.md)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 查看最新版本：[媒体服务 v3](../latest/media-services-overview.md)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 可以使用 Microsoft Azure 媒体服务 (AMS) 安全地上传、存储、编码和打包视频或音频内容，以便通过点播和实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
-本文介绍了实时交付内容或按需交付内容的常见方案。
+本文演示了实时传递内容或点播传递内容的常见方案。
 
 ## <a name="overview"></a>概述
 
@@ -57,11 +57,11 @@ ms.locfileid: "93348536"
 
 1. 将优质媒体文件上传到资产中。
 
-    向资产应用存储加密选项，以在上传期间保护内容，并在存储中进行静态存储。
+    建议向资产应用存储加密选项，以便在内容上传期间和内容在存储中处于静态时，为其提供保护。
 
 1. 编码为一组自适应比特率 MP4 文件。
 
-    建议将存储加密选项应用到输出资产，以便保护静态内容。
+    建议向输出资产应用存储加密选项，以便保护静态内容。
 
 1. 配置资产传送策略（由动态打包使用）。
 
@@ -85,7 +85,7 @@ ms.locfileid: "93348536"
 
 1. 将优质媒体文件上传到资产中。
 1. 编码为单个 MP4 文件。
-1. 通过创建 OnDemand 或 SAS 定位符来发布资产。 如果使用 SAS 定位符，将从 Azure Blob 存储中下载内容。 不需要将流式处理终结点处于已启动状态。
+1. 通过创建 OnDemand 或 SAS 定位符来发布资产。 如果使用 SAS 定位符，将从 Azure Blob 存储中下载内容。 不需要让流式处理终结点处于已启动状态。
 1. 渐进式下载内容。
 
 ## <a name="delivering-live-streaming-events"></a>传送实时传送视频流事件
@@ -93,10 +93,10 @@ ms.locfileid: "93348536"
 1. 使用多种实时传送视频流协议（例如 RTMP 或平滑流式处理）引入实时内容。
 1. （可选）将流编码为自适应比特率流。
 1. 预览实时流。
-1. 通过以下内容传递内容：
+1. 通过以下方式传递内容：
     1. 常用流式处理协议 (例如，将 MPEG 破折号、平滑、HLS) 直接传递给客户，
     1.  (CDN) 的内容交付网络用于进一步分发，或
-    1. 记录并存储引入内容，以便以后 (视频点播) 进行流式处理。
+    1. 记录并存储引入的内容，以便稍后进行流式处理（视频点播）。
 
 执行实时传送视频流时，可以选择以下路由之一：
 
@@ -104,13 +104,13 @@ ms.locfileid: "93348536"
 
 下图显示的是直通工作流中涉及的 AMS 平台的主要组成部分  。
 
-![此图显示了 "传递" 工作流中所涉及的 M S 平台的主要部分。](./media/scenarios-and-availability/media-services-live-streaming-current.png)
+![显示“直通”工作流中涉及的 AMS 平台的主要组成部分的图示。](./media/scenarios-and-availability/media-services-live-streaming-current.png)
 
 有关详细信息，请参阅[使用从本地编码器接收多比特率实时流的频道](media-services-live-streaming-with-onprem-encoders.md)。
 
 ### <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>使用能够通过 Azure 媒体服务执行实时编码的频道
 
-下图显示了实时流式处理工作流中所涉及的 AMS 平台的主要组成部分，在此工作流中，通道可使用媒体服务执行实时编码。
+下图显示的是实时流式处理工作流中涉及的 AMS 平台的主要组成部分，该工作流中的频道能够通过媒体服务执行实时编码。
 
 ![实时工作流](./media/scenarios-and-availability/media-services-live-streaming-new.png)
 
@@ -132,7 +132,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
     “高级”  流式处理终结点适用于高级工作负荷，可提供专用且可缩放的带宽容量。 默认情况下，使用“高级”  流式处理终结点的客户会获得一个流式处理单位 (SU)。 可通过添加 SU 来缩放流式处理终结点。 每个 SU 为应用程序提供额外的带宽容量。 若要详细了解如何缩放“高级”  流式处理终结点，请参阅[缩放流式处理终结点](media-services-portal-scale-streaming-endpoints.md)主题。
 
-* 媒体服务帐户与预留单位类型关联，后者决定了编码处理任务的处理速度。 可以在以下预留单位类型中进行选择： **S1** 、 **S2** 或 **S3** 。 例如，与 **S1** 预留单位类型相比，使用 **S2** 预留单位类型时，同一编码作业运行速度更快。
+* 媒体服务帐户与预留单位类型关联，后者决定了编码处理任务的处理速度。 可以在以下预留单位类型中进行选择：**S1**、**S2** 或 **S3**。 例如，与 **S1** 预留单位类型相比，使用 **S2** 预留单位类型时，同一编码作业运行速度更快。
 
     除了指定预留单位类型，还可以指定为帐户预配预留单位  (RU)。 预配的 RU 数决定了给定帐户中可并发处理的媒体任务数。
 

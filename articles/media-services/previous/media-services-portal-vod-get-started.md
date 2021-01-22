@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: f8b2454bb0e39f5923af00502367f7b16bb040a4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0cc3e26895f6bd11ba4f2e5f0b04e4dd36a4fcab
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018978"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695283"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>使用 Azure 门户按需传送内容入门
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 本教程介绍了在 Azure 门户中使用 Azure 媒体服务应用程序实施基本的视频点播内容传送服务的步骤。
 

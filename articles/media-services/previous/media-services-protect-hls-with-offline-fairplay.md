@@ -16,12 +16,12 @@ ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e003e17490c2e35ef3f8adfdef6de0377cda7d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae1d4ef81d14d5adfb728cf7a59534cb376a0eb1
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259704"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695080"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>适用于 iOS 的脱机 FairPlay Streaming
 
@@ -32,7 +32,7 @@ ms.locfileid: "89259704"
 > * [第 2 版](media-services-protect-hls-with-offline-fairplay.md)
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Azure 媒体服务提供一套设计良好的[内容保护服务](https://azure.microsoft.com/services/media-services/content-protection/)，包括：
 
@@ -214,7 +214,7 @@ func requestApplicationCertificate() throws -> Data {
 - **FPS 脱机模式的以下 API 中最后一个参数代表什么？** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-    有关此 API 的文档，请参阅 [FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration 方法](/dotnet/api/microsoft.windowsazure.mediaservices.client.fairplay.fairplayconfiguration.createserializedfairplayoptionconfiguration?view=azure-dotnet)。 该参数代表脱机租赁的持续时间（秒）。
+    有关此 API 的文档，请参阅 [FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration 方法](/dotnet/api/microsoft.windowsazure.mediaservices.client.fairplay.fairplayconfiguration.createserializedfairplayoptionconfiguration)。 该参数代表脱机租赁的持续时间（秒）。
 - **iOS 设备上的已下载/脱机文件结构是什么？** iOS 设备上的已下载文件结构如下屏幕截图所示。 `_keys` 文件夹存储已下载的 FPS 许可证，每个许可证服务主机一个存储文件。 `.movpkg` 文件夹存储音频和视频内容。 第一个文件夹（文件名以破折号加数字结尾）包含视频内容。 数值是“PeakBandwidth”视频呈现形式。 第二个文件夹（文件名以破折号加 0 结尾）包含音频内容。 第三个文件夹（文件名为“Data”）包含 FPS 内容的主播放列表。 最后，boot.xml 提供 `.movpkg` 文件夹内容的完整说明。 
 
 ![脱机 FairPlay iOS 示例应用文件结构](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)

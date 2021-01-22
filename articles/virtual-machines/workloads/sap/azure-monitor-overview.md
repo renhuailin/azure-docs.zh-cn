@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: bcb912a24dfb2a5e78719cf9010fd23afe0df185
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1c33011d947d6dc9dd9ee4dd6331c24c06d99b38
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484390"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693818"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>适用于 SAP 解决方案的 Azure monitor (预览版) 
 
@@ -35,7 +35,7 @@ SAP 解决方案的 Azure Monitor 通过 Azure Marketplace 提供。 它提供�
 - SAP HANA 数据库
 - Microsoft SQL server
 
-SAP 解决方案的 Azure Monitor 利用现有 [Azure Monitor](../../../azure-monitor/overview.md) 功能（如 Log Analytics 和 [工作簿](../../../azure-monitor/platform/workbooks-overview.md) ）的强大功能来提供其他监视功能。 客户可以通过编辑 SAP 解决方案 Azure Monitor 提供的默认工作簿来创建 [自定义可视化效果](../../../azure-monitor/platform/workbooks-overview.md#getting-started) ，使用 Azure Log Analytics 工作区编写 [自定义查询](../../../azure-monitor/log-query/log-analytics-tutorial.md) 并创建 [自定义警报](../../../azure-monitor/learn/tutorial-response.md) ，利用 [灵活的保留期](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 并将监视数据与票证系统连接。
+SAP 解决方案的 Azure Monitor 使用现有 [Azure Monitor](../../../azure-monitor/overview.md) 功能（如 Log Analytics 和 [工作簿](../../../azure-monitor/platform/workbooks-overview.md) ）的强大功能来提供更多监视功能。 客户可以通过编辑 SAP 解决方案 Azure Monitor 提供的默认工作簿来创建 [自定义可视化效果](../../../azure-monitor/platform/workbooks-overview.md#getting-started) ，使用 Azure Log Analytics 工作区编写 [自定义查询](../../../azure-monitor/log-query/log-analytics-tutorial.md) 并创建 [自定义警报](../../../azure-monitor/learn/tutorial-response.md) ，利用 [灵活的保留期](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 并将监视数据与票证系统连接。
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>SAP 解决方案 Azure Monitor 收集哪些数据？
 
@@ -62,6 +62,15 @@ Microsoft SQL server 遥测：
 - SAP 系统中的最大12个表
 - SQL Server 错误日志中记录的问题
 - 阻塞进程以及一段时间内的 SQL 等待统计信息
+
+ (Linux) 的操作系统遥测 
+- CPU 利用率、分叉计数、正在运行和阻塞的进程。 
+- 利用率、缓存、缓冲的内存利用率和分布。 
+- 交换使用率、分页和交换速率。 
+- 文件系统利用率，每个块设备的读取和写入字节数。 
+- 每块设备的读取/写入延迟。 
+- 正在进行的 i/o 计数、永久性内存读取/写入字节数。 
+- 网络数据包传入/传出、网络字节传入/传出 
 
 ## <a name="data-sharing-with-microsoft"></a>与 Microsoft 共享数据
 
@@ -96,9 +105,9 @@ Microsoft SQL server 遥测：
 
 下面是体系结构的主要重点：
  - **多实例** -客户可以为给定组件类型的多个实例创建监视器 (例如，HANA DB、HA 群集、Microsoft SQL server) 跨 VNET 内多个 sap sid，其中包含 SAP 解决方案的单个 Azure Monitor 资源。
- - **多提供程序** -上述体系结构关系图以示例形式显示 SAP HANA 提供程序。 同样，客户也可以为相应的组件配置其他提供程序 (例如，HANA DB、HA 群集、Microsoft SQL server) 从这些组件收集数据。
+ - **多提供程序** -上述体系结构关系图以示例形式显示 SAP HANA 提供程序。 同样，客户可以为相应的组件配置更多的提供程序 (例如，HANA DB、HA 群集、Microsoft SQL server) 从这些组件收集数据。
  - **开放源代码** - [GitHub](https://github.com/Azure/AzureMonitorForSAPSolutions)中提供了适用于 SAP 解决方案的 Azure Monitor 的源代码。 客户可以参考提供商代码，并了解有关该产品、参与或共享反馈的详细信息。
- - **可扩展查询框架** -以 [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json)格式编写用于收集遥测数据的 SQL 查询。 可以轻松添加其他用于收集更多遥测数据的 SQL 查询。 客户可以通过本文档结尾处的链接来请求将特定遥测数据添加到 Azure Monitor 用于 SAP 解决方案，或联系其帐户团队。
+ - **可扩展查询框架** -以 [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json)格式编写用于收集遥测数据的 SQL 查询。 可以轻松添加更多用于收集更多遥测数据的 SQL 查询。 客户可以通过本文档结尾处的链接来请求将特定遥测数据添加到 Azure Monitor 用于 SAP 解决方案，或联系其帐户团队。
 
 ## <a name="pricing"></a>定价
 SAP 解决方案的 Azure Monitor 是免费的产品 (无许可费) 。 客户负责为托管资源组中的基础组件付费。

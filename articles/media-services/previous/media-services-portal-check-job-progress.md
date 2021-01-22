@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3ba8ccf3534cbb4a93983f81095b4ef2c20d6498
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: ec14e59e748e74709b909b0590bc750cf5f075b8
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042791"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695486"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>使用 Azure 门户监视编码作业进度
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 ## <a name="overview"></a>概述
 
@@ -34,7 +34,7 @@ ms.locfileid: "93042791"
 
 要监视编码作业的进度，请单击“设置”  （位于页面顶部），并选择“作业”  。
 
-![屏幕截图，显示从 "设置" 菜单中选择 "作业"。](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+![屏幕截图显示从“设置”菜单选择了“作业”。](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
 可通过单击作业查看更多详细信息。
 

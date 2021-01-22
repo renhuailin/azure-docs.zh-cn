@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: dc08e23b6ef040ba5833ffa97f71d8cd1da3bb8a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 3f9fc9fd1bacce8733949969b496dc03d6c10901
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019794"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695810"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -60,9 +60,9 @@ ms.locfileid: "92019794"
 
 ### <a name="pass-through"></a>直通
 
-![显示引入实时事件的视频和音频源如何进行和处理的关系图。](./media/live-streaming/pass-through.svg)
+![此图显示了如何引入和处理来自直通实时事件的视频和音频源。](./media/live-streaming/pass-through.svg)
 
-使用直通**实时事件**，可以依赖本地实时编码器生成多比特率视频流，并将其作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 输入协议）。 实时事件随后会通过传入视频流进入动态打包器（流式处理终结点），而无需经过进一步的转码。 此类直通实时事件已针对长时间运行的实时事件或 24x365 线性实时传送视频流进行优化。 
+使用直通 **实时事件**，可以依赖本地实时编码器生成多比特率视频流，并将其作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 输入协议）。 实时事件随后会通过传入视频流进入动态打包器（流式处理终结点），而无需经过进一步的转码。 此类直通实时事件已针对长时间运行的实时事件或 24x365 线性实时传送视频流进行优化。 
 
 ### <a name="live-encoding"></a>实时编码  
 
@@ -135,4 +135,4 @@ Live 脚本是一项功能，可将其用于传递或实时编码的实时事件
 
 * [实时传送视频流快速入门](live-events-wirecast-quickstart.md)
 * [实时传送视频流教程](stream-live-tutorial-with-api.md)
-* [有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md)
+* [有关从媒体服务 v2 迁移到 v3 的指导](migrate-v-2-v-3-migration-introduction.md)

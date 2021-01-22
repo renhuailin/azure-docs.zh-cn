@@ -1,18 +1,18 @@
 ---
 title: 模板最佳实践
-description: 介绍 (ARM 模板) 创作 Azure 资源管理器模板的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
+description: 介绍创作 Azure 资源管理器模板（ARM 模板）的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 85d58098508d5ac7cad6c1cb3cb68ad6c7f179f9
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: c0b26c300a9474cc5db0b1a7b732c4416a9e6f5f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724980"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696340"
 ---
 # <a name="arm-template-best-practices"></a>ARM 模板最佳做法
 
-本文介绍如何在构建 Azure 资源管理器模板 (ARM 模板) 时使用建议的做法。 这些建议有助于在使用 ARM 模板部署解决方案时避免出现常见问题。
+本文介绍了在构造 Azure 资源管理器模板（ARM 模板）时如何使用建议的做法。 这些建议有助于在使用 ARM 模板部署解决方案时避免出现常见问题。
 
 ## <a name="template-limits"></a>模板限制
 
@@ -26,7 +26,7 @@ ms.locfileid: "97724980"
 * 64 个输出值
 * 模板表达式中不超过 24,576 个字符
 
-通过使用嵌套模板，可超出某些模板限制。 有关详细信息，请参阅 [部署 Azure 资源时使用链接的模板和嵌套的模板](linked-templates.md)。 若要减少参数、变量或输出的数量，可以将几个值合并为一个对象。 有关详细信息，请参阅[对象即参数](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)。
+通过使用嵌套模板，可超出某些模板限制。 有关详细信息，请参阅[在部署 Azure 资源时使用链接模板和嵌套模板](linked-templates.md)。 若要减少参数、变量或输出的数量，可以将几个值合并为一个对象。 有关详细信息，请参阅[对象即参数](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters)。
 
 ## <a name="resource-group"></a>资源组
 
@@ -48,7 +48,7 @@ ms.locfileid: "97724980"
 
 * 为要指定的资源名使用参数以便于识别。
 
-* 提供元数据中每个参数的说明。
+* 在元数据中提供每个参数的说明。
 
     ```json
     "parameters": {
@@ -114,7 +114,7 @@ ms.locfileid: "97724980"
 
 ### <a name="location-recommendations-for-parameters"></a>有关参数的位置建议
 
-* 使用参数指定资源的位置，并将默认值设置为 `resourceGroup().location`。 提供 location 参数使模板的用户能够指定他们有权部署资源的位置。
+* 使用参数指定资源的位置，并将默认值设置为 `resourceGroup().location`。 提供位置参数可以使模板用户能够指定其有权部署资源的位置。
 
    ```json
    "parameters": {
@@ -142,9 +142,9 @@ ms.locfileid: "97724980"
 
 * 针对需要在模板中多次使用的值使用变量。 如果一次只使用一个值，则硬编码值可使模板更易于阅读。
 
-* 为从复杂的复合模板函数构造的值使用变量。 当复杂表达式仅出现在变量中时，模板更易于阅读。
+* 为从复杂的复合模板函数构造的值使用变量。 如果复杂的表达式仅出现在变量中，模板会更易读取。
 
-* 不能在模板的部分中使用 [reference](template-functions-resource.md#reference) 函数 `variables` 。 `reference`函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 `reference`在模板的或部分直接构造需要函数的值 `resources` `outputs` 。
+* 不能在模板的 `variables` 节中使用 [reference](template-functions-resource.md#reference) 函数。 `reference` 函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 直接在模板的 `resources` 或 `outputs` 节中构造需要 `reference` 函数的值。
 
 * 包括的变量适用于必须唯一的资源名称。
 
@@ -154,19 +154,19 @@ ms.locfileid: "97724980"
 
 ## <a name="api-version"></a>API 版本
 
-将 `apiVersion` 属性设置为资源类型的硬编码 API 版本。 创建新模板时，建议使用最新的 API 版本作为资源类型。 若要确定可用值，请参阅[模板参考](/azure/templates/)。
+将 `apiVersion` 属性设置为资源类型的硬编码 API 版本。 创建新模板时，建议使用资源类型的最新 API 版本。 若要确定可用值，请参阅[模板参考](/azure/templates/)。
 
-当模板按预期方式工作时，我们建议继续使用相同的 API 版本。 使用相同的 API 版本，你无需担心可能在更高版本中引入的重大更改。
+当模板按预期方式工作时，建议你继续使用同一个 API 版本。 使用同一个 API 版本，你无需担心可能会在更高版本中引入的中断性变更。
 
-不要对 API 版本使用参数。 资源属性和值可能因 API 版本而异。 如果将 API 版本设置为参数，代码编辑器中的 IntelliSense 无法确定正确架构。 如果传入的 API 版本与模板中的属性不匹配，则部署将失败。
+请勿对 API 版本使用参数。 资源的属性和值可能因 API 版本而异。 如果将 API 版本设置为参数，代码编辑器中的 IntelliSense 无法确定正确架构。 如果传入的 API 版本与模板中的属性不匹配，则部署会失败。
 
-不要对 API 版本使用变量。 特别是，不要使用 [providers 函数](template-functions-resource.md#providers) 在部署期间动态获取 API 版本。 动态检索到的 API 版本可能与模板中的属性不匹配。
+请勿对 API 版本使用变量。 特别是，不要使用 [providers 函数](template-functions-resource.md#providers)在部署期间动态获取 API 版本。 动态检索到的 API 版本可能与模板中的属性不匹配。
 
 ## <a name="resource-dependencies"></a>资源依赖关系
 
 在决定要设置的[依赖项](define-resource-dependency.md)时，请遵循以下准则：
 
-* 使用 `reference` 函数并传入资源名称，在需要共享属性的资源之间设置隐式依赖项。 在已定义隐式依赖项的情况下，请勿添加显式 `dependsOn` 元素。 此方法降低了设置不必要依赖项的风险。 有关设置隐式依赖项的示例，请参阅 [引用和列表函数](define-resource-dependency.md#reference-and-list-functions)。
+* 使用 `reference` 函数并传入资源名称以在需要共享属性的资源之间设置隐式依赖项。 在已定义隐式依赖项的情况下，请勿添加显式 `dependsOn` 元素。 此方法降低了设置不必要依赖项的风险。 有关设置隐式依赖项的示例，请参阅 [reference 和 list 函数](define-resource-dependency.md#reference-and-list-functions)。
 
 * 将子资源设置为依赖于其父资源。
 
@@ -180,7 +180,7 @@ ms.locfileid: "97724980"
 
 使用[资源](template-syntax.md#resources)时，以下信息可以提供帮助：
 
-* 为了帮助其他参与者理解该资源的用途，请 `comments` 为模板中的每个资源指定。
+* 为了帮助其他参与者理解该资源的用途，请为模板中的每个资源指定 `comments`。
 
     ```json
     "resources": [
@@ -195,7 +195,7 @@ ms.locfileid: "97724980"
     ]
     ```
 
-* 如果在模板中使用“公共终结点”（例如 Azure Blob 存储公共终结点），请不要将命名空间硬编码 。 使用 `reference` 函数可动态检索命名空间。 可以使用此方法将模板部署到不同的公共命名空间环境，而无需在模板中手动更改终结点。 在模板中将 API 版本设置为用于存储帐户的同一版本。
+* 如果在模板中使用“公共终结点”（例如 Azure Blob 存储公共终结点），请不要将命名空间硬编码 。 使用 `reference` 函数可动态检索命名空间。 可以使用此方法将模板部署到不同的公共命名空间环境，而无需在模板中手动更改终结点。 在模板中将 API 版本设置为用于存储帐户的版本。
 
     ```json
     "diagnosticsProfile": {
@@ -206,7 +206,7 @@ ms.locfileid: "97724980"
     }
     ```
 
-   如果在创建的同一模板中部署存储帐户，而不会与模板中的其他资源共享存储帐户的名称，则在 `apiVersion` 引用资源时不需要指定提供程序命名空间或。 下面的示例显示了简化的语法。
+   如果存储帐户部署在正在创建的模板中，并且存储帐户的名称未与模板中的其他资源共享，则在引用资源时不需要指定提供程序命名空间或 `apiVersion`。 以下示例显示了简化的语法。
 
     ```json
     "diagnosticsProfile": {
@@ -238,7 +238,7 @@ ms.locfileid: "97724980"
    * [使用 PowerShell 实现对 VM 的外部访问](../../virtual-machines/windows/nsg-quickstart-powershell.md)
    * [使用 Azure CLI 实现对 Linux VM 的外部访问](../../virtual-machines/linux/nsg-quickstart.md)
 
-* `domainNameLabel`公共 IP 地址的属性必须是唯一的。 `domainNameLabel`该值的长度必须介于3到63个字符之间，并遵循此正则表达式指定的规则： `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` 。 由于 `uniqueString` 函数会生成一个长度为13个字符的字符串，因此 `dnsPrefixString` 参数限制为50个字符。
+* 公共 IP 地址的 `domainNameLabel` 属性必须唯一。 `domainNameLabel` 值的长度必须为 3 到 63 个字符，并遵循正则表达式 `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` 指定的规则。 由于 `uniqueString` 函数生成长度为 13 个字符的字符串，因此 `dnsPrefixString` 参数限制为不超过 50 个字符。
 
     ```json
     "parameters": {
@@ -255,7 +255,7 @@ ms.locfileid: "97724980"
     }
     ```
 
-* 将密码添加到自定义脚本扩展时，请使用 `commandToExecute` 属性中的属性 `protectedSettings` 。
+* 将密码添加到自定义脚本扩展时，请在 `protectedSettings` 属性中使用 `commandToExecute` 属性。
 
     ```json
     "properties": {
@@ -275,13 +275,13 @@ ms.locfileid: "97724980"
     ```
 
    > [!NOTE]
-   > 若要确保在将机密作为参数传递给 Vm 和扩展时对其进行加密，请使用 `protectedSettings` 相关扩展的属性。
+   > 为了确保机密内容作为参数传递给 VM 和扩展时经过加密，请使用相关扩展的 `protectedSettings` 属性。
 
 ## <a name="use-test-toolkit"></a>使用测试工具包
 
 ARM 模板测试工具包是一个脚本，用于检查模板是否使用建议的做法。 如果模板不符合建议的做法，它将返回包含建议的更改的警告列表。 测试工具包可帮助你了解如何在模板中实施最佳做法。
 
-完成模板后，请运行测试工具包，查看是否有方法可以改善其实现。 有关详细信息，请参阅 [使用 ARM 模板测试工具包](test-toolkit.md)。
+完成模板后，请运行测试工具包，看是否有方法可以改进它的实现。 有关详细信息，请参阅[使用 ARM 模板测试工具包](test-toolkit.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

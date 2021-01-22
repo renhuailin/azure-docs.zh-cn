@@ -3,12 +3,12 @@ title: 用于实现高可用性的区域冗余注册表
 description: 了解如何在 Azure 容器注册表中启用区域冗余。 在 Azure 可用性区域中创建容器注册表或复制。 区域冗余是高级服务层的一项功能。
 ms.topic: article
 ms.date: 01/07/2021
-ms.openlocfilehash: 8c03b2bb093f8d0fa70ff5132f7448ce86e8779d
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 7de8ed101d2df9e491c475f522a56580798c49a9
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127340"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696272"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>启用 Azure 容器注册表中的区域冗余以实现复原和高可用性
 
@@ -39,7 +39,7 @@ Azure 容器注册表还支持 [异地复制](container-registry-geo-replication
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-如果需要，请运行 [az group create](/cli/az/group#az_group_create) 命令，创建用于注册表的资源组。
+如果需要，请运行 [az group create](/cli/azure/group#az_group_create) 命令，创建用于注册表的资源组。
 
 ```azurecli
 az group create --name <resource-group-name> --location <location>
@@ -47,7 +47,7 @@ az group create --name <resource-group-name> --location <location>
 
 ### <a name="create-zone-enabled-registry"></a>创建启用区域的注册表
 
-运行 [az acr create](/cli/az/acr#az_acr_create) 命令，在高级服务层中创建区域冗余注册表。 选择支持 Azure 容器注册表的 [可用性区域](../availability-zones/az-region.md) 的区域。 在以下示例中，在 *eastus* 区域中启用区域冗余。 `az acr create`有关更多注册表选项，请参阅命令帮助。
+运行 [az acr create](/cli/azure/acr?view=azure-cli-latest#az_acr_create) 命令，在高级服务层中创建区域冗余注册表。 选择支持 Azure 容器注册表的 [可用性区域](../availability-zones/az-region.md) 的区域。 在以下示例中，在 *eastus* 区域中启用区域冗余。 `az acr create`有关更多注册表选项，请参阅命令帮助。
 
 ```azurecli
 az acr create \
@@ -69,7 +69,7 @@ az acr create \
 
 ### <a name="create-zone-redundant-replication"></a>创建区域冗余复制
 
-运行 [az acr replication create](/cli/az/acr/replication#az_acr_replication_create)命令，以在支持 Azure 容器注册表（如 *westus2*）的 [可用性区域](../availability-zones/az-region.md)的区域中创建区域冗余的注册表副本。 
+运行 [az acr replication create](/cli/azure/acr/replication?view=azure-cli-latest#az_acr_replication_create)命令，以在支持 Azure 容器注册表（如 *westus2*）的 [可用性区域](../availability-zones/az-region.md)的区域中创建区域冗余的注册表副本。 
 
 ```azurecli
 az acr replication create \
@@ -113,7 +113,7 @@ az acr replication create \
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-如果需要，请运行 [az group create](/cli/az/group#az_group_create)命令，以在支持 Azure 容器注册表（如 *eastus*）的 [可用性区域](../availability-zones/az-region.md)的区域中为注册表创建资源组。 模板使用此区域设置注册表位置。
+如果需要，请运行 [az group create](/cli/azure/group#az_group_create)命令，以在支持 Azure 容器注册表（如 *eastus*）的 [可用性区域](../availability-zones/az-region.md)的区域中为注册表创建资源组。 模板使用此区域设置注册表位置。
 
 ```azurecli
 az group create --name <resource-group-name> --location eastus
@@ -219,7 +219,7 @@ az group create --name <resource-group-name> --location eastus
   }
 ```
 
-运行以下 [az deployment group create](/cli/az/deployment#az_group_deployment_create) 命令，以使用前面的模板文件创建注册表。 如果指示，请提供：
+运行以下 [az deployment group create](/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create) 命令，以使用前面的模板文件创建注册表。 如果指示，请提供：
 
 * 唯一的注册表名称，或者不使用参数部署模板，它将为你创建一个唯一的名称
 * 支持可用性区域的副本的位置，例如 *westus2*

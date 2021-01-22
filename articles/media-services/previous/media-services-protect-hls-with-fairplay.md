@@ -14,32 +14,32 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2f9b3cdd0b2080a26a9b1948263a7638dc66f2b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7290b5972bc81555bce102446923efd59ed2b34
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259738"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695131"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>使用 Apple FairPlay 或 Microsoft PlayReady 保护 HLS 内容
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 若要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 >
 
 使用 Azure 媒体服务，可使用以下格式动态加密 HTTP Live Streaming (HLS) 内容：  
 
 * **AES-128 信封明文密钥**
 
-    整个区块使用 **AES-128 CBC** 模式进行加密。 iOS 和 OS X 播放器本身支持解密流。 有关详细信息，请参阅 [使用 AES-128 动态加密和密钥传送服务](media-services-protect-with-aes128.md)。
+    整个区块使用 **AES-128 CBC** 模式进行加密。 iOS 和 OS X 播放器本身支持解密流。 有关详细信息，请参阅[使用 AES-128 动态加密和密钥传递服务](media-services-protect-with-aes128.md)。
 * **Apple FairPlay**
 
     各视频和音频示例都使用 **AES-128 CBC** 模式进行加密。 **FairPlay 流式处理** (FPS) 集成到设备操作系统，iOS 和 Apple TV 本身支持这项功能。 OS X 上的 Safari 使用加密媒体扩展 (EME) 接口支持启用 FPS。
 * **Microsoft PlayReady**
 
-下图显示了 **HLS + FairPlay 或 PlayReady 动态加密**工作流。
+下图显示了 **HLS + FairPlay 或 PlayReady 动态加密** 工作流。
 
 ![动态加密工作流的图示](./media/media-services-content-protection-overview/media-services-content-protection-with-FairPlay.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "89259738"
 >
 >
 
-## <a name="streaming-urls"></a>流式处理 URL
+## <a name="streaming-urls"></a>流 URL
 如果使用了多个 DRM 加密资产，则应在流式处理 URL 中使用加密标记：(format='m3u8-aapl', encryption='xxx')。
 
 请注意以下事项：
@@ -148,7 +148,7 @@ ms.locfileid: "89259738"
 * 可以指定以下加密类型：  
   * **cenc**：通用加密 (PlayReady 或 Widevine) 
   * **cbcs-aapl**：FairPlay
-  * **cbc**： AES 信封加密
+  * **cbc**：AES 信封加密
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
@@ -167,7 +167,7 @@ ms.locfileid: "89259738"
 使用本部分中所示的代码覆盖 Program.cs 文件中的代码。
 
 >[!NOTE]
->不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[本文](media-services-dotnet-manage-entities.md#limit-access-policies)。
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)文章。
 
 请务必将变量更新为指向输入文件所在的文件夹。
 

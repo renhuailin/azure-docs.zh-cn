@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 01/12/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 4146fbcf96b374167c466a3cb01b1099e4251680
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: cd1741730e964e134eb03ffc0ab4eb9d8d644a13
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133023"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98697950"
 ---
 这一类别有 98 条相关建议。
 
@@ -23,7 +23,7 @@ ms.locfileid: "98133023"
 |应在 Kubernetes 服务上定义经授权的 IP 范围 |通过仅向特定范围内的 IP 地址授予 API 访问权限，来限制对 Kubernetes 服务管理 API 的访问。 建议将访问权限限制给已获授权的 IP 范围，以确保只有受允许网络中的应用程序可以访问群集。<br />（相关策略：[应在 Kubernetes 服务上定义经授权的 IP 范围](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e246bcf-5f6f-4f87-bc6f-775d4712c7ea)） |高 |
 |自动化帐户变量应进行加密 |存储敏感数据时，请务必启用自动化帐户变量资产加密。<br />（相关策略：[应加密自动化帐户变量](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f3657f5a0-770e-44a3-b44e-9431ba1e9735)） |高 |
 |应为虚拟机启用 Azure 备份 |使用 Azure 备份来保护 Azure 虚拟机上的数据。<br>Azure 备份是一种 Azure 原生且经济高效的数据保护解决方案。<br>它可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。<br>从恢复点还原时，可以还原整个 VM，也可以仅还原特定的文件。<br />（相关策略：[应为虚拟机启用 Azure 备份](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f013e242c-8828-4970-87b3-ab247555486d)） |低 |
-|应启用适用于应用服务的 Azure Defender |适用于应用服务的 Azure Defender 利用云的规模以及 Azure 作为云提供商的可见性来监视常见的 Web 应用攻击。<br>适用于应用服务的 Azure Defender 可发现针对应用程序的攻击并确定新兴攻击。<br><br>重要说明：修正此建议将产生应用服务计划保护费用。 如果此订阅中没有任何应用服务计划，则不会产生任何费用。<br>如果以后在此订阅中创建任何应用服务计划，它们将自动受到保护，并从该时间点开始计费。<br> <a href='https://docs.microsoft.com/azure/security-center/security-center-app-services'>详细了解适用于应用服务的 Azure Defender。</a><br />（相关策略：[应启用适用于应用服务的 Azure Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)） |高 |
+|应启用适用于应用服务的 Azure Defender |适用于应用服务的 Azure Defender 利用云的规模以及 Azure 作为云提供商的可见性来监视常见的 Web 应用攻击。<br>适用于应用服务的 Azure Defender 可发现针对应用程序的攻击并确定新兴攻击。<br><br>重要说明：修正此建议将产生应用服务计划保护费用。 如果此订阅中没有任何应用服务计划，则不会产生任何费用。<br>如果以后在此订阅中创建任何应用服务计划，它们将自动受到保护，并从该时间点开始计费。<br> <a href='https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction'>详细了解适用于应用服务的 Azure Defender。</a><br />（相关策略：[应启用适用于应用服务的 Azure Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)） |高 |
 |应启用适用于容器注册表的 Azure Defender |若要生成安全的容器化工作负载，请确保它们所基于的映像不存在已知漏洞。<br>适用于容器注册表的 Azure Defender 会扫描注册表中每个推送的容器映像上是否有安全漏洞，并按映像显示详细的发现结果。<br>若要改进容器的安全状况并保护它们免受攻击，请启用适用于容器注册表的 Azure Defender。<br><br>重要说明：修正此建议将导致对容器注册表的保护产生费用。 如果此订阅中没有任何容器注册表，则不会产生任何费用。<br>如果将来在此订阅中创建任何容器注册表，它将自动受到保护，届时将开始计费。<br> <a href='https://docs.microsoft.com/azure/security-center/azure-container-registry-integration'>详细了解适用于容器注册表的 Azure Defender。</a><br />（相关策略：[应启用适用于容器注册表的 Azure Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)） |高 |
 |应启用 Azure Defender for Kubernetes |Azure Defender for Kubernetes 为容器化环境提供实时威胁防护，并针对可疑活动生成警报。<br>可以使用此信息快速补救安全问题，并提高容器的安全性。<br><br>重要说明：修正此建议将导致对 Kubernetes 群集的保护产生费用。 如果此订阅中没有任何 Kubernetes 群集，则不会产生任何费用。<br>如果将来在此订阅中创建任何 Kubernetes 群集，它将自动受到保护，届时将开始计费。<br> <a href='https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration'>详细了解 Azure Defender for Kubernetes。</a><br />（相关策略：[应启用 Azure Defender for Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)） |高 |
 |应启用适用于服务器的 Azure Defender |适用于服务器的 Azure Defender 可为服务器工作负载提供实时威胁防护，并生成强化建议以及有关可疑活动的警报。<br>可以使用此信息快速修复安全问题，并提高服务器的安全性。<br><br>重要说明：修正此建议将导致对服务器的保护产生费用。 如果此订阅中没有任何服务器，则不会产生任何费用。<br>如果将来在此订阅中创建任何服务器，它将自动受到保护，届时将开始计费。<br> <a href='https://docs.microsoft.com/azure/security-center/threat-protection'>详细了解适用于服务器的 Azure Defender。</a><br />（相关策略：[应启用适用于服务器的 Azure Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)） |高 |

@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6c1dcb0af500c47aabbd8e8193c066bb4a921c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 634b508ca15349152540aca90125575b17943929
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267762"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696424"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure 队列存储通过 .NET 监视媒体服务作业通知
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 运行编码作业时，通常需要采用某种方式来跟踪作业进度。 你可以配置媒体服务将通知传送到 [Azure 队列存储](../../storage/queues/storage-dotnet-how-to-use-queues.md)。 然后可以通过从队列存储获取通知来监视作业进度。 
 

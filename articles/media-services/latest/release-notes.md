@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 895b4529a8b99ecc66e3566b4696a0e61c337153
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 37e90eeaef9cb8c8e0bd927dd4d733a737c0c47f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881899"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693869"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -56,13 +56,13 @@ Azure 媒体服务现已在 Azure 门户的挪威东部区域提供。  此区�
 
 ### <a name="live-events"></a>直播活动
 
-当实时事件停止时，现在允许更新大多数属性。 此外，还允许用户为实时事件的输入和预览 Url 指定静态主机名的前缀。 现在调用 VanityUrl `useStaticHostName` ，以更好地反映属性的意图。
+现在允许实时事件停止时对大多数属性进行更新。 此外，允许用户为实时事件的输入和预览 URL 指定静态主机名的前缀。 VanityUrl 现在称为 `useStaticHostName`，以更好地反映属性的意向。
 
-实时事件现在具有待机状态。  请参阅 [媒体服务中的实时事件和实时输出](./live-events-outputs-concept.md)。
+实时事件现在具有等待状态。  请参阅[媒体服务中的实时事件和实时输出](./live-events-outputs-concept.md)。
 
-实时事件支持接收各种输入纵横比。 Stretch 模式允许客户为输出指定拉伸行为。
+实时事件支持接收各种输入纵横比。 通过拉伸模式，客户可以指定输出的拉伸行为。
 
-实时编码现在添加了将固定关键帧间隔碎片输出到0.5 到20秒的功能。
+实时编码现在增加了在 0.5 到 20 秒之间输出固定关键帧间隔片段的功能。
 
 ### <a name="accounts"></a>帐户
 
@@ -72,13 +72,13 @@ Azure 媒体服务现已在 Azure 门户的挪威东部区域提供。  此区�
 ## <a name="august-2020"></a>2020 年 8 月
 
 ### <a name="dynamic-encryption"></a>动态加密
- (PIFF 1.1) 加密的旧版 PlayReady 受保护的可互操作文件格式支持现在可在动态包装器中使用。 这为从 LG 发布的 Samsung 和提供对旧智能电视集的支持，这些版本实现了 Microsoft 发布的通用加密 standard (CENC) 的早期草案。  PIFF 1.1 格式也称为 Silverlight 客户端库以前支持的加密格式。 目前，这种加密格式的唯一用例方案是面向旧版智能电视市场，其中某些区域中的智能电视数在仅支持 PIFF 1.1 加密平滑流式处理。 
+动态打包程序中现在提供了对旧版 PlayReady 受保护互操作文件格式 (PIFF 1.1) 加密的支持。 这为 Samsung 和 LG 的传统智能电视机提供了支持，这些支持实现了 Microsoft 发布的通用加密标准 (CENC) 的早期草稿。  PIFF 1.1 格式也是 Silverlight 客户端库以前支持的加密格式。 如今，这种加密格式的唯一用例场景是针对传统的智能电视市场，对于该市场，在某些仅支持使用 PIFF 1.1 加密的平滑流式处理的区域，仍然存在数量不少的智能电视。 
 
-若要使用新的 PIFF 1.1 加密支持，请将流式处理定位符的 URL 路径中的加密值更改为 "PIFF"。 有关更多详细信息，请参阅 [内容保护概述。](content-protection-overview.md)
-例如： `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+若要使用新的 PIFF 1.1 加密支持，请将加密值更改为流式处理定位符的 URL 路径中的“piff”。 有关详细信息，请参阅[内容保护概述](content-protection-overview.md)。
+例如 `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
 
 > [!NOTE]
-> PIFF 1.1 支持作为智能电视（Samsung、LG）的后向兼容解决方案提供，实现了通用加密的早期“Silverlight”版本。 建议仅使用 PIFF 格式，以便支持在2009-2015 之间提供的传统 Samsung 或 LG 智能电视支持 PlayReady 加密的 PIFF 1.1 版本。 
+> PIFF 1.1 支持作为智能电视（Samsung、LG）的后向兼容解决方案提供，实现了通用加密的早期“Silverlight”版本。 建议仅在需要时使用 PIFF 格式：用于支持在 2009-2015 年间发布的、可支持 PIFF 1.1 版本的 PlayReady 加密的旧版 Samsung 或 LG 智能电视。 
 
 ## <a name="july-2020"></a>2020 年 7 月
 
@@ -96,11 +96,11 @@ Live 转录现在支持19个语言和8个区域。
 
 ## <a name="june-2020"></a>2020 年 6 月
 
-### <a name="live-video-analytics-on-iot-edge-preview-release"></a>IoT Edge 预览版的实时视频分析
+### <a name="live-video-analytics-on-iot-edge-preview-release"></a>IoT Edge 预览版上的实时视频分析
 
-IoT Edge 上的实时视频分析预览版现已公开发行。 有关详细信息，请参阅 [发行说明](../live-video-analytics-edge/release-notes.md)。
+IoT Edge 上的实时视频分析预览版现已公开发行。 有关详细信息，请参阅[发行说明](../live-video-analytics-edge/release-notes.md)。
 
-IoT Edge 上的实时视频分析是 Media Service 系列的扩展。 利用它，你可以在自己的边缘设备上分析你所选的 AI 模型的实时视频，还可以选择捕获并录制该视频。 你现在可以在边缘使用实时视频分析构建应用，而无需担心生成和操作实时视频管道的复杂性。
+IoT Edge 上的实时视频分析是媒体服务系列的扩展。 通过它，你能够在自己的边缘设备上使用所选择的 AI 模型分析实时视频，并可以选择捕获和录制该视频。 现在，你可以在边缘构建具有实时视频分析的应用，而不必担心构建和操作实时视频管道的复杂性。
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -436,7 +436,7 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 ## <a name="see-also"></a>另请参阅
 
-[从 Media Services V2 迁移到 v3 的迁移指南](migrate-from-v2-to-v3.md#known-issues)。
+[从 Media Services V2 迁移到 v3 的迁移指南](migrate-v-2-v-3-migration-introduction.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,16 +11,16 @@ author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43573b54be6884e01121e404370d2e1d85a3c4e8
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d9430066ad92b4d0b69bd07c763e3f7b5d6e889a
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660875"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693530"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>使用 Azure Active Directory 配置和启用基于 SMS 的身份验证的用户 
 
-若要简化和安全登录到应用程序和服务，Azure Active Directory (Azure AD) 提供多个身份验证选项。 通过基于 SMS 的身份验证，用户无需提供甚至知道自己的用户名和密码即可登录。 标识管理员创建帐户后，可以在登录提示中输入其电话号码。 它们通过可以提供以完成登录的短信来接收身份验证代码。 此身份验证方法简化了对应用程序和服务的访问，尤其是对于一线工作人员。
+若要简化和安全登录到应用程序和服务，Azure Active Directory (Azure AD) 提供多个身份验证选项。 通过基于 SMS 的身份验证，用户无需提供甚至知道自己的用户名和密码即可登录。 标识管理员创建帐户后，可以在登录提示中输入其电话号码。 它们通过可以提供以完成登录的短信来接收身份验证代码。 此身份验证方法可简化对应用程序和服务的访问，特别是对于前端工作线程。
 
 本文介绍如何在 Azure AD 中为选定的用户或组启用基于短信的身份验证。
 

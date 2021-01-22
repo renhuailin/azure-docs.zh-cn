@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2ca47e49af06ab0a6dffc1f4011d7dceb58830be
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 34546e74c9d066af20ece834275732d55b8d6277
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348502"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695452"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>使用 Azure 门户创建媒体服务帐户
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 使用 Azure 门户，可以快速创建 Azure 媒体服务 (AMS) 帐户。 可以使用自己的帐户访问媒体服务，这些服务使你能够在 Azure 中存储、加密、编码、管理和流式传输媒体内容。 创建媒体服务帐户时，还可以创建关联的存储帐户（或使用现有帐户）。 如果删除媒体服务帐户，相关存储帐户中的 Blob 不会被删除。
 
@@ -35,7 +35,7 @@ ms.locfileid: "93348502"
 本文展示了如何使用 Azure 门户创建媒体服务帐户。
 
 > [!NOTE]
-> 有关不同区域中的 Azure 媒体服务功能的可用性的信息，请参阅 [跨区域的 AMS 功能](availability-regions-v-2.md)。
+> 若要了解 Azure 媒体服务功能在不同区域的可用性，请参阅[跨区域的 AMS 功能](availability-regions-v-2.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

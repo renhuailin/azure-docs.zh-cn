@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24e4bf9940de0f7b0e851bdfdbd2d788757034e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e99d2c2676d05772106296d8b960dd55fd30501c
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267728"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696466"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure Webhook 通过 .NET 监视媒体服务作业通知
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 运行作业时，通常需要采用某种方式来跟踪作业进度。 可以使用 Azure Webhook 或 [Azure 队列存储](media-services-dotnet-check-job-progress-with-queues.md)监视媒体服务作业通知。 本文介绍如何使用 Webhook。
 
@@ -71,7 +71,7 @@ ms.locfileid: "89267728"
 
 ## <a name="create-a-function"></a>创建函数
 
-部署 Function App 后，可在**应用服务** Azure Functions 中找到它。
+部署 Function App 后，可在 **应用服务** Azure Functions 中找到它。
 
 1. 选择 Function App，然后单击“新建函数”。 
 2. 选择“C#”代码和“API 和 Webhook”方案   。 

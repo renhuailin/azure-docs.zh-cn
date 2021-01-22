@@ -6,12 +6,12 @@ ms.date: 12/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: b9ad5347e146fc94b513180c591b00c4f449619f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9b29c9611359c97c4097ad0b90ee2673bb28f37c
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98146432"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696306"
 ---
 # <a name="telemetry-processors-examples---azure-monitor-application-insights-for-java"></a>遥测处理器示例-Java 的 Azure Monitor Application Insights
 
@@ -330,7 +330,7 @@ ms.locfileid: "98146432"
 ### <a name="extract"></a>Extract
 
 下面的示例演示如何使用 regex 基于另一个属性的值创建新属性。
-例如，给定的 http. url = http://example.com/path?queryParam1=value1 ，queryParam2 = value2，将插入以下属性：
+例如，给定的 http. url = ' http://example.com/path?queryParam1=value1 ，queryParam2 = value2 ' 将插入以下属性：
 * httpProtocol： http
 * httpDomain： example.com
 * httpPath：路径

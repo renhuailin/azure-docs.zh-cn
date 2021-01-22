@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: inhenkel
-ms.openlocfilehash: c6f889963e87d900040d1fe77031f943ab368837
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 08a419f021e0315468cb6fa5917b30bb2977d958
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348737"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695503"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒体服务概述
 
@@ -29,7 +29,7 @@ ms.locfileid: "93348737"
 > * [第 2 版](media-services-overview.md)
 
 > [!NOTE]
-> 媒体服务 v2 中未添加新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒体服务 v2 中未添加新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使开发人员能够生成可缩放的媒体管理和传送应用程序。 媒体服务基于 REST API，使用这些 API 可以安全地上传、存储、编码和打包视频或音频内容，以供点播以及以实时传送视频流的形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
@@ -87,7 +87,7 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 ## <a name="supported-scenarios-and-availability-of-media-services-across-data-centers"></a>支持的媒体服务功能跨数据中心方案和可用性
 
 有关 Azure 常见方案的详细信息，请参阅 [AMS 方案](scenarios-and-availability.md)。
-有关区域可用性的信息，请参阅 [媒体服务可用性](availability-regions-v-2.md)。
+有关区域可用性的信息，请参阅[媒体服务可用性](availability-regions-v-2.md)。
 
 ## <a name="service-level-agreement-sla"></a>服务级别协议 (SLA)
 

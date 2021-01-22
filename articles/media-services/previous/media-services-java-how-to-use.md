@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-java
-ms.openlocfilehash: 3c86689681aa99f60c4345e92f7f5c426795a69e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f05b78c777fdfa633e07bc03266c862f9e85ee0c
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586697"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695715"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>用于 Azure 媒体服务的 Java 客户端 SDK 入门
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 本教程介绍了通过 Java 客户端 SDK 在 Azure 媒体服务中实施基本的视频内容传送服务的步骤。
 
@@ -51,7 +51,7 @@ ms.locfileid: "97586697"
 >自 `azure-media` 包的版本 `0.9.8` 开始，SDK 添加了对 Azure Active Directory (AAD) 身份验证的支持，删除了对 Azure 访问控制服务 (ACS) 身份验证的支持。 建议尽快迁移到 Azure AD 身份验证模型。 有关迁移的详细信息，请阅读[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md) 一文。
 
 >[!NOTE]
->可以在 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media)中找到 Azure 媒体服务的源代码。 请确保切换到0.9 分支，而不是主分支。 
+>可以在 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media)中找到 Azure 媒体服务的源代码。 请确保切换到 0.9 分支而非主分支。 
 
 ## <a name="how-to-use-azure-media-services-with-java"></a>如何：将 Azure 媒体服务与 Java 配合使用
 
@@ -314,7 +314,7 @@ ms.locfileid: "97586697"
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="additional-resources"></a>其他资源
-有关如何在 Azure 中开发 Java 应用的详细信息，请参阅 [Java 开发中心][Azure Java Developer Center]和[面向 Java 开发人员的 Azure][Azure for Java developers]。
+有关如何在 Azure 中开发 Java 应用的详细信息，请参阅 [Java 开发人员中心][Azure Java Developer Center]和[面向 Java 开发人员的 Azure][Azure for Java developers]。
 
 
 有关媒体服务 Javadoc 文档，请参阅[适用于 Java 的 Azure 库文档][适用于 Java 的 Azure 库文档]。

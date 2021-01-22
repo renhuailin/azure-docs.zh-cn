@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 50a0fe0fa5dece41ac9e343d5a8939e8d9dc634e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9e48d14419e2cd24251f1b00a09fd0289c50c55f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426892"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693801"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 常见问题解答
 
@@ -34,7 +34,7 @@ ms.locfileid: "92426892"
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure 角色可对 Azure 媒体服务资源执行哪些操作？ 
 
-请参阅 [azure RBAC)  (Media Services 帐户的 azure RBAC 访问控制](rbac-overview.md)。
+请参阅[媒体服务帐户的 Azure 基于角色的访问控制 (Azure RBAC)](rbac-overview.md)。
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>如何流式传输到 Apple iOS 设备？
 
@@ -60,7 +60,7 @@ ms.locfileid: "92426892"
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>目前有哪些功能在 Azure 媒体服务 v3 中不可用？
 
-有关详细信息，请参阅[与 v2 API 之间的功能差距](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)。
+有关详细信息，请参阅 [迁移指南](migrate-v-2-v-3-migration-introduction.md)。
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>如何在订阅之间移动媒体服务帐户？  
 
@@ -169,7 +169,7 @@ DRM 系统（如 PlayReady、Widevine 和 FairPlay）在用于解密内容的密
 
 已从媒体服务 API 中删除了 `AssetFile` 概念，以便将媒体服务与存储 SDK 依赖项分开。 现在由 Azure 存储而非媒体服务来保存属于存储 SDK 的信息。 
 
-有关详细信息，请参阅[迁移到媒体服务 v3](media-services-v2-vs-v3.md)。
+有关详细信息，请参阅[迁移到媒体服务 v3](migrate-v-2-v-3-migration-introduction.md)。
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>客户端存储加密在哪里进行？
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 9dcb1113bb37cb0f5f65c54ae9d6ca76a88330c1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c3674b6877438a0dd4fe53569cf6852e872334a7
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698659"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693606"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 
@@ -87,7 +87,7 @@ Azure AD 中还包括了整套[标识管理功能](./identity-management-overvie
 - 磁盘加密验证。
 - 基于网络的攻击。
 
-安全中心使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)。 Azure RBAC 提供可分配给 Azure 中的用户、组和服务的 [内置角色](../../role-based-access-control/built-in-roles.md) 。
+安全中心使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)。 Azure RBAC 提供的[内置角色](../../role-based-access-control/built-in-roles.md)可分配给 Azure 中的用户、组和服务。
 
 安全中心会评估资源的配置以识别安全问题和漏洞。 只有在分配有资源所属的订阅或资源组的“所有者”、“参与者”或“读取者”角色时，才会在安全中心看到与资源相关的信息。
 
@@ -171,21 +171,21 @@ Azure 诊断可在部署的应用程序上启用诊断数据收集功能。 可�
 
 ## <a name="devops"></a>DevOps
 
-在采用[ Developer Operations (DevOps)](https://www.visualstudio.com/learn/what-is-devops/) 应用程序开发前，团队需要负责收集软件程序的业务要求和编写代码。 然后由一个单独的 QA 团队在独立的开发环境中测试该程序。 如果满足要求，则 QA 团队发布要部署的操作代码。 部署团队进一步划分为小组，例如网络小组和数据库小组。 每次将软件程序投放到独立的团队时，就会增加一些瓶颈。
+在采用[ Developer Operations (DevOps)](https://azure.microsoft.com/overview/what-is-devops/) 应用程序开发前，团队需要负责收集软件程序的业务要求和编写代码。 然后由一个单独的 QA 团队在独立的开发环境中测试该程序。 如果满足要求，则 QA 团队发布要部署的操作代码。 部署团队进一步划分为小组，例如网络小组和数据库小组。 每次将软件程序投放到独立的团队时，就会增加一些瓶颈。
 
 DevOps 可让团队更快、更经济地交付更安全、更优质的解决方案。 使用软件和服务时，客户期望可以获得动态可靠的体验。 团队必须快速迭代软件更新并衡量更新的影响。 他们必须快速响应新的开发迭代，以解决问题或提供更多价值。  
 
 Microsoft Azure 等云平台消除了传统的瓶颈，帮助将基础结构商品化。 由于关键的优势以及在营收中的份量，软件在每家企业中都占据主导地位。 没有任何组织、开发人员或者 IT 工作人员可以或者应该避免 DevOps 的活动。
 
-成熟的 DevOps 从业者会采用以下多种做法。 这些做法涉及到基于业务方案构建策略的[人员](https://www.visualstudio.com/learn/what-is-devops-culture/)。 工具可以帮助自动完成各种做法。
+成熟的 DevOps 从业者会采用以下多种做法。 这些做法涉及到基于业务方案构建策略的[人员](/azure/devops/learn/what-is-devops-culture)。 工具可以帮助自动完成各种做法。
 
 - [敏捷的规划和项目管理](https://www.visualstudio.com/learn/what-is-agile/)技巧用于规划工作并将其划分到小组、管理团队效能，以及帮助团队快速适应不断变化的业务需求。
-- [版本控制（通常使用 Git 实现）](https://www.visualstudio.com/learn/what-is-git/)可让世界各地的团队共享资源，以及集成用于自动化发行管道的软件开发工具。
-- [持续集成](https://www.visualstudio.com/learn/what-is-continuous-integration/)能够推动代码的持续合并与测试，帮助提前发现缺陷。  其他优势包括减少应对合并问题所浪费的时间，以及快速获得开发团队的反馈。
-- 向开发和测试环境[持续交付](https://www.visualstudio.com/learn/what-is-continuous-delivery/)软件解决方案可帮助组织快速修复 bug，应对不断变化的业务要求。
-- 运行中应用程序的[监视](https://www.visualstudio.com/learn/what-is-monitoring/)（包括生产环境中应用程序的运行状况）以及客户使用情况信息可帮助组织建立假设，并快速验证或推翻策略。  以各种日志格式捕获和存储丰富的数据。
-- [基础结构即代码 (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) 实务可以自动化并验证网络和虚拟机的创建与解除流程，帮助交付安全、稳定的应用程序托管平台。
-- 利用[微服务](https://www.visualstudio.com/learn/what-are-microservices/)体系结构将业务用例隔离到小型可重用的服务。  此体系结构提高了可伸缩性和效率。
+- [版本控制（通常使用 Git 实现）](/azure/devops/learn/git/what-is-git)可让世界各地的团队共享资源，以及集成用于自动化发行管道的软件开发工具。
+- [持续集成](/azure/devops/learn/what-is-continuous-integration)能够推动代码的持续合并与测试，帮助提前发现缺陷。  其他优势包括减少应对合并问题所浪费的时间，以及快速获得开发团队的反馈。
+- 向开发和测试环境[持续交付](/azure/devops/learn/what-is-continuous-delivery)软件解决方案可帮助组织快速修复 bug，应对不断变化的业务要求。
+- 运行中应用程序的[监视](/azure/devops/learn/what-is-monitoring)（包括生产环境中应用程序的运行状况）以及客户使用情况信息可帮助组织建立假设，并快速验证或推翻策略。  以各种日志格式捕获和存储丰富的数据。
+- [基础结构即代码 (IaC)](/azure/devops/learn/what-is-infrastructure-as-code) 实务可以自动化并验证网络和虚拟机的创建与解除流程，帮助交付安全、稳定的应用程序托管平台。
+- 利用[微服务](/azure/devops/learn/what-are-microservices)体系结构将业务用例隔离到小型可重用的服务。  此体系结构提高了可伸缩性和效率。
 
 ## <a name="next-steps"></a>后续步骤
 

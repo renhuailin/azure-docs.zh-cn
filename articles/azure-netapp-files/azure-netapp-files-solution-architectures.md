@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: f50cde2fa67351552d1f31500da09a5f800b2bcc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4320222e02f3447dcdff280f04ad26115323e798
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600115"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696137"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文介绍了可帮助你了解使用 Azure NetApp 文件的解决方案体系结构的最佳做法。  
@@ -93,6 +93,10 @@ ms.locfileid: "98600115"
 * [使用 Azure NetApp 文件加快 SAP HANA 系统副本的速度](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [云卷 ONTAP 和 Azure NetApp 文件：简化 SAP HANA 系统迁移](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
 
+## <a name="azure-vmware-solutions"></a>Azure VMware 解决方案
+
+* [Azure NetApp 文件与 Azure VMware 解决方案-来宾操作系统装载](../azure-vmware/net-app-files-with-azure-vmware-solution.md)
+
 ## <a name="virtual-desktop-infrastructure-solutions"></a>虚拟桌面基础结构解决方案
 
 本部分提供了虚拟桌面基础结构解决方案的参考。
@@ -127,7 +131,7 @@ ms.locfileid: "98600115"
 * [Azure CycleCloud： EDA HPC 实验室与 Azure NetApp 文件](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
 * [适用于半导体行业的 Azure](https://azurecomcdn.azureedge.net/cvt-f40f39cd9de2d875ab0c198a8d7b186350cf0bca161e80d7896941389685d012/mediahandler/files/resourcefiles/azure-for-the-semiconductor-industry/Azure_for_the_Semiconductor_Industry.pdf)
 
-### <a name="analytics"></a>分析
+### <a name="analytics"></a>Analytics
 
 * [Azure NetApp 文件：用于 Microsoft Azure 上的 SAS 网格的共享文件系统](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192)
 * [将 Microsoft Azure 与 SAS®配合使用的最佳做法](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
@@ -143,6 +147,6 @@ ms.locfileid: "98600115"
 * [Trident-容器的存储 Orchestrator](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
 * [Azure Kubernetes 服务中的 Magento 电子商务平台 (AKS) ](/azure/architecture/example-scenario/magento/magento-azure)
 
-### <a name="azure-batch"></a>Azure Batch
+### <a name="azure-batch"></a>Azure 批处理
 
 * [Azure Batch 和 Azure NetApp 文件一起运行 MPI 工作负荷](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
