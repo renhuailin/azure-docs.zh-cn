@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/11/2021
-ms.openlocfilehash: a411f4ce261ee6d203e274efe3cf23ca23203453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.date: 01/22/2021
+ms.openlocfilehash: 48450218975f2c6ee14e12af8d722942e8db1347
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070875"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695842"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Synapse Analytics 中复制和转换数据
 
@@ -61,7 +61,7 @@ ms.locfileid: "98070875"
 
 Azure Synapse Analytics 链接服务支持以下属性：
 
-| 属性            | 描述                                                  | 必须                                                     |
+| properties            | 说明                                                  | 必需                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | type 属性必须设置为 **AzureSqlDW**。             | 是                                                          |
 | connectionString    | 为 **connectionString** 属性指定连接到 Azure Synapse Analytics 实例所需的信息。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将密码/服务主体密钥放在 Azure 密钥保管库中，如果是 SQL 身份验证，则从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅表下方的 JSON 示例和[将凭据存储在 Azure 密钥保管库中](store-credentials-in-key-vault.md)一文。 | 是                                                          |
@@ -76,6 +76,9 @@ Azure Synapse Analytics 链接服务支持以下属性：
 - [SQL 身份验证](#sql-authentication)
 - Azure AD 应用程序令牌身份验证：[服务主体](#service-principal-authentication)
 - Azure AD 应用程序令牌身份验证：[Azure 资源的托管标识](#managed-identity)
+
+>[!TIP]
+>在用户界面中创建 Azure Synapse **无服务器** SQL 池的链接服务时，请选择 "手动输入"，而不是从订阅浏览。
 
 >[!TIP]
 >如果遇到错误（错误代码为“UserErrorFailedToConnectToSqlServer”，且消息如“数据库的会话限制为 XXX 且已达到。”），请将 `Pooling=false` 添加到连接字符串中，然后重试。
@@ -222,7 +225,7 @@ Azure Synapse Analytics 链接服务支持以下属性：
 
 Azure Synapse Analytics 数据集支持以下属性：
 
-| 属性  | 描述                                                  | 必须                    |
+| properties  | 说明                                                  | 必需                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 数据集的 **type** 属性必须设置为 **AzureSqlDWTable**。 | 是                         |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -261,7 +264,7 @@ Azure Synapse Analytics 数据集支持以下属性：
 
 若要从 Azure Synapse Analytics 复制数据，请将复制活动源中的 **type** 属性设置为 **SqlDWSource**。 复制活动 **source** 节支持以下属性：
 
-| 属性                     | 描述                                                  | 必须 |
+| properties                     | 说明                                                  | 必需 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 复制活动源的 **type** 属性必须设置为 **SqlDWSource**。 | 是      |
 | sqlReaderQuery               | 使用自定义 SQL 查询读取数据。 示例：`select * from MyTable`。 | 否       |
@@ -380,15 +383,15 @@ Azure 数据工厂支持通过三种方式将数据加载到 Azure Synapse Analy
 
 要将数据复制到 Azure Synapse Analytics，请将复制活动中的接收器类型设置为 SqlDWSink。 复制活动 **sink** 节支持以下属性：
 
-| 属性          | 描述                                                  | 必须                                      |
+| properties          | 说明                                                  | 必需                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | 复制活动接收器的 **type** 属性必须设置为 **SqlDWSink**。 | 是                                           |
 | allowPolyBase     | 指示是否使用 PolyBase 将数据加载到 Azure Synapse Analytics。 `allowCopyCommand` 和 `allowPolyBase` 不能同时为 true。 <br/><br/>有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。 | 不是。<br/>使用 PolyBase 时适用。     |
-| polyBaseSettings  | `allowPolybase` 属性设置为 **true** 时可以指定的一组属性。 | 否。<br/>使用 PolyBase 时适用。 |
+| polyBaseSettings  | `allowPolybase` 属性设置为 **true** 时可以指定的一组属性。 | 不是。<br/>使用 PolyBase 时适用。 |
 | allowCopyCommand | 指示是否使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql)（预览版）将数据加载到 Azure Synapse Analytics。 `allowCopyCommand` 和 `allowPolyBase` 不能同时为 true。 <br/><br/>有关约束和详细信息，请参阅[使用 COPY 语句将数据加载到 Azure Synapse Analytics](#use-copy-statement) 部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。 | 不是。<br>使用 COPY 时适用。 |
-| copyCommandSettings | `allowCopyCommand` 属性设置为 TRUE 时可以指定的一组属性。 | 否。<br/>使用 COPY 时适用。 |
-| writeBatchSize    | **每批** 要插入到 SQL 表中的行数。<br/><br/>允许的值为 **integer**（行数）。 默认情况下，数据工厂根据行大小动态确定适当的批大小。 | 否。<br/>使用批量插入时适用。     |
-| writeBatchTimeout | 超时前等待批量插入操作完成的时间。<br/><br/>允许的值为 **timespan**。 示例："00:30:00"（30 分钟）。 | 否。<br/>使用批量插入时适用。        |
+| copyCommandSettings | `allowCopyCommand` 属性设置为 TRUE 时可以指定的一组属性。 | 不是。<br/>使用 COPY 时适用。 |
+| writeBatchSize    | **每批** 要插入到 SQL 表中的行数。<br/><br/>允许的值为 **integer**（行数）。 默认情况下，数据工厂根据行大小动态确定适当的批大小。 | 不是。<br/>使用批量插入时适用。     |
+| writeBatchTimeout | 超时前等待批量插入操作完成的时间。<br/><br/>允许的值为 **timespan**。 示例："00:30:00"（30 分钟）。 | 不是。<br/>使用批量插入时适用。        |
 | preCopyScript     | 指定在每次运行中将数据写入到 Azure Synapse Analytics 之前要由复制活动运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否                                            |
 | tableOption | 指定是否根据源架构[自动创建接收器表](copy-activity-overview.md#auto-create-sink-tables)（如果不存在）。 允许的值为：`none`（默认值）、`autoCreate`。 |否 |
 | disableMetricsCollection | 数据工厂收集指标，例如 Azure Synapse Analytics Dwu，以获取复制性能优化和建议，这会引入额外的主数据库访问权限。 如果你担心此行为，请指定 `true` 将其关闭。 | 否（默认值为 `false`） |
@@ -486,7 +489,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 
 在复制活动中的 `polyBaseSettings` 下支持以下 PolyBase 设置：
 
-| 属性          | 描述                                                  | 必须                                      |
+| properties          | 说明                                                  | 必需                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | rejectValue       | 指定在查询失败之前可以拒绝的行数或百分比。<br/><br/>有关 PolyBase 的拒绝选项的详细信息，请参阅 [CREATE EXTERNAL TABLE (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) 的“参数”部分。 <br/><br/>允许的值为 0（默认值）、1、2 等。 | 否                                            |
 | rejectType        | 指定 **rejectValue** 选项是文本值还是百分比。<br/><br/>允许的值为 **Value**（默认值）和 **Percentage**。 | 否                                            |
@@ -714,7 +717,7 @@ Azure Synapse Analytics [COPY 语句](/sql/t-sql/statements/copy-into-transact-s
 
 复制活动中的 `allowCopyCommand` 下支持以下 COPY 语句设置：
 
-| 属性          | 描述                                                  | 必须                                      |
+| properties          | 说明                                                  | 必需                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | defaultValues | 为 Azure Synapse Analytics 中的每个目标列指定默认值。  属性中的默认值将覆盖数据仓库中设置的 DEFAULT 约束，标识列不能有默认值。 | 否 |
 | additionalOptions | 将直接在 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql)的“With”子句中传递给 Azure Synapse Analytics COPY 语句的其他选项。 根据需要将值括在引号中，以符合 COPY 语句要求。 | 否 |
@@ -780,6 +783,7 @@ Azure Synapse Analytics [COPY 语句](/sql/t-sql/statements/copy-into-transact-s
 
 - 对存储链接服务使用托管标识身份验证时，请分别了解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 所需的配置。
 - 如果 Azure 存储配置了 VNet 服务终结点，则必须在存储帐户上启用“允许受信任的 Microsoft 服务”并使用托管标识身份验证，详见[将 VNet 服务终结点与 Azure 存储配合使用的影响](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)。
+- 使用 Azure Synapse **无服务器** SQL 池作为源时，不支持启用过渡。
 
 **查询**：如果在“输入”字段中选择“查询”，请为源输入 SQL 查询。 此设置会替代在数据集中选择的任何表。 此处不支持 Order By 子句，但你可以设置完整的 SELECT FROM 语句。 还可以使用用户定义的表函数。 select * from udfGetData() 是 SQL 中可返回表的 UDF。 此查询将生成可以在数据流中使用的源表。 使用查询也是减少进行测试或查找的行的好方法。
 
@@ -838,7 +842,7 @@ SQL 示例：```Select * from MyTable where customerId > 1000 and customerId < 2
 | :------------------------------------ | :----------------------------- |
 | bigint                                | Int64                          |
 | binary                                | Byte[]                         |
-| bit                                   | 布尔                        |
+| bit                                   | Boolean                        |
 | char                                  | String, Char[]                 |
 | date                                  | DateTime                       |
 | datetime                              | DateTime                       |
@@ -847,7 +851,7 @@ SQL 示例：```Select * from MyTable where customerId > 1000 and customerId < 2
 | 小数                               | 小数                        |
 | FILESTREAM attribute (varbinary(max)) | Byte[]                         |
 | Float                                 | Double                         |
-| 图像                                 | Byte[]                         |
+| image                                 | Byte[]                         |
 | int                                   | Int32                          |
 | money                                 | 小数                        |
 | nchar                                 | String, Char[]                 |

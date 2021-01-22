@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9dae3b1adc1f7fecf6a34fc51d2a35bf4c98ea65
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a26359c46caa8085384313f1c385c5740abc0b32
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425923"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694527"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>通过 Azure AD 身份验证访问 Azure 媒体服务 API 
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的客户端 SDK 对媒体资源执行操作。 Azure 媒体服务提供了适用于 Microsoft.NET 的媒体服务客户端 SDK。 若要有权访问媒体服务资源和媒体服务 API，必须先进行身份验证。 
 
-媒体服务支持[基于 Azure Active Directory (Azure AD) 的身份验证](../../active-directory/fundamentals/active-directory-whatis.md)。 Azure 媒体 REST 服务要求，发出 REST API 请求的用户或应用程序必须具有**参与者**或**所有者**角色，才能访问资源。 有关详细信息，请参阅 [什么是 AZURE RBAC) 的 azure 基于角色的访问控制 (](../../role-based-access-control/overview.md)。  
+媒体服务支持[基于 Azure Active Directory (Azure AD) 的身份验证](../../active-directory/fundamentals/active-directory-whatis.md)。 Azure 媒体 REST 服务要求，发出 REST API 请求的用户或应用程序必须具有 **参与者** 或 **所有者** 角色，才能访问资源。 有关详细信息，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。  
 
 本文档概述了如何使用 REST 或 .NET API 访问媒体服务 API。
 

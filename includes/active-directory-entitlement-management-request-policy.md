@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: b7029c5cdd004910caa83425536bbe481e4b01f3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 61858a478ead93b3709bb3e05c26335c9acbc24d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95558335"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98697963"
 ---
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
 
@@ -191,6 +191,8 @@ ms.locfileid: "95558335"
 1. 单击“添加后备审批者”，然后从列表中选择后备审批者。
 
     ![访问包 - 策略 - 添加后备审批者](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+
+    如果对于第一位审批者，选择“管理员”作为审批者，你将具有一个可在后备审批者字段中进行选择的额外选项“将二级管理员作为后备审批者”。 如果选择此选项，则需要添加后备审批者，以便在系统找不到二级管理员的情况下将请求转发给该审批者。
 
 1. 在“多少天后转发给后备审批者？”框中，输入审批者批准或拒绝请求的允许天数。 如果在请求持续期间没有审批者批准或拒绝请求，则请求将过期（超时），用户必须再提交一个访问包请求。 
 

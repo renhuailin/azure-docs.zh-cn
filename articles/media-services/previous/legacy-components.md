@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d85cbeb99264b5b730fe585fd39f658e6448467f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 495b6bc68e79e50a0bda773e7229225595236fac
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515757"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694336"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒体服务旧组件
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-随着时间的推移，我们将增强媒体服务组件并停用旧组件。 本文可帮助你将应用程序从旧组件迁移到当前组件。
+随着时间的推移，我们会增强媒体服务组件并停用旧组件。 本文可帮助你将应用程序从旧组件迁移到当前组件。
  
 ## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>旧组件的停用计划和迁移指南
 
-*Windows Azure 媒体编码器* (WAME) 和*Azure 媒体编码器* (AME) 媒体处理器已弃用。
+Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器已弃用。
 
 * [从 Windows Azure 媒体编码器迁移到 Media Encoder Standard](migrate-windows-azure-media-encoder.md)
 * [从 Azure 媒体编码器迁移到 Media Encoder Standard](migrate-azure-media-encoder.md)
@@ -49,4 +49,4 @@ ms.locfileid: "92515757"
 
 ## <a name="next-steps"></a>后续步骤
 
-[有关从媒体服务 v2 迁移到 v3 的指导](../latest/migrate-from-v2-to-v3.md)
+[有关从媒体服务 v2 迁移到 v3 的指导](../latest/migrate-v-2-v-3-migration-introduction.md)

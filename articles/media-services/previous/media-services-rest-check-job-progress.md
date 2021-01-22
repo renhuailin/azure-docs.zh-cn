@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 429e443ea0de665632cbacaee13a3ff3be443b9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 252495df8189f677ada66b67b8a845b320c81aca
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263393"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694901"
 ---
 # <a name="how-to-check-job-progress"></a>如何：检查作业进度
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 运行作业时，通常需要采用某种方式来跟踪作业进度。 可以使用作业的 State 属性来查看该作业的状态。 有关 State 属性的详细信息，请参阅[作业实体属性](/rest/api/media/operations/job#job_entity_properties)。
 
