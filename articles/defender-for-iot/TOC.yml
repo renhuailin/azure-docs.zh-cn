@@ -73,8 +73,6 @@
           href: concept-baseline.md
         - name: 事件聚合
           href: event-aggregation.md
-        - name: 定价和关联的成本
-          href: concept-pricing.md
 - name: 操作指南
   items:
     - name: 适用于组织的无代理解决方案
@@ -252,6 +250,6 @@
         - name: 区域可用性
           href: 'https://azure.microsoft.com/regions/services/'
         - name: 定价
-          href: 'https://azure.microsoft.com/pricing/details/security-center/'
+          href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
         - name: 视频
           href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

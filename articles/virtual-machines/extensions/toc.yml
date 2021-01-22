@@ -9,11 +9,11 @@
     - name: Windows VM 代理
       href: agent-windows.md
 - name: 快速入门
-  expanded: true
   items:
     - name: 使用自定义脚本扩展
       href: ../windows/tutorial-automate-vm-deployment.md
       maintainContext: true
+  expanded: true
 - name: 概念
   items:
     - name: Linux
@@ -120,13 +120,6 @@
         - name: Symantec
           href: symantec.md
     - name: 已弃用的扩展
-      items:
-        - name: 日志收集器
-          href: log-collector.md
-        - name: Trend Micro Deep Security
-          href: trend.md
-        - name: Linux - 版本 1 (OSTC)
-          href: custom-script-linuxOstc.md
     - name: 限制扩展安装
       items:
         - name: Linux
