@@ -6,16 +6,16 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 940b7ac90f85e0254d59459b70ccc15312cd69f4
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85855675"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700833"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>使用 Azure 导入/导出服务将数据脱机复制到 Data Lake Storage Gen1
 
-本文介绍如何使用脱机复制方法（例如 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)）将大型数据集（ ( # B0 200 GB) 复制到 Data Lake Storage Gen1 中。 具体而言，本文中用作示例的文件大小为 339,420,860,416 字节，即约 319GB 磁盘空间。 命名此文件为 319GB.tsv。
+本文介绍如何使用脱机复制方法（例如 [Azure 导入/导出服务](../import-export/storage-import-export-service.md)）将大型数据集（ ( # B0 200 GB) 复制到 Data Lake Storage Gen1 中。 具体而言，本文中用作示例的文件大小为 339,420,860,416 字节，即约 319GB 磁盘空间。 命名此文件为 319GB.tsv。
 
 使用 Azure 导入/导出服务，可以将硬盘驱动器传送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 存储。
 
@@ -29,7 +29,7 @@ ms.locfileid: "85855675"
 
 ## <a name="prepare-the-data"></a>准备数据
 
-使用导入/导入服务前，请将要传输的数据文件拆分为**小于 200GB 大小的副本**。 导入工具无法处理大于 200GB 的文件。 在本文中，我们将文件拆分为每个 100 GB 的区块。 可使用 [Cygwin](https://cygwin.com/install.html) 实现此目的。 Cygwin 支持 Linux 命令。 在这种情况下，使用以下命令：
+使用导入/导入服务前，请将要传输的数据文件拆分为 **小于 200GB 大小的副本**。 导入工具无法处理大于 200GB 的文件。 在本文中，我们将文件拆分为每个 100 GB 的区块。 可使用 [Cygwin](https://cygwin.com/install.html) 实现此目的。 Cygwin 支持 Linux 命令。 在这种情况下，使用以下命令：
 
 ```console
 split -b 100m 319GB.tsv
@@ -44,7 +44,7 @@ split -b 100m 319GB.tsv
 
 ## <a name="get-disks-ready-with-data"></a>准备好数据可使用的磁盘
 
-遵循[使用 Azure 导入/导出服务](../storage/common/storage-import-export-service.md)中的说明（“准备驱动器”**** 部分下面）准备硬盘。 下面是整个步骤：
+遵循[使用 Azure 导入/导出服务](../import-export/storage-import-export-service.md)中的说明（“准备驱动器”部分下面）准备硬盘。 下面是整个步骤：
 
 1. 购买满足用于 Auzre 导入/导出服务要求的硬盘。
 2. 数据发送到 Azure 数据中心后，确认数据要复制到的 Azure 存储帐户。
@@ -53,12 +53,12 @@ split -b 100m 319GB.tsv
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ```
-    请参阅[使用 Azure 导入/导出服务](../storage/common/storage-import-export-service.md)查看更多示例代码片段。
+    请参阅[使用 Azure 导入/导出服务](../import-export/storage-import-export-service.md)查看更多示例代码片段。
 4. 上面的命令会在指定位置创建日志文件。 使用此日志文件从 [Azure 门户](https://portal.azure.com)创建导入作业。
 
 ## <a name="create-an-import-job"></a>创建导入作业
 
-现在可按照使用 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)（**创建导入作业**部分之下）中的说明创建导入作业。 对于此导入作业，除其他详细信息外，还提供准备磁盘驱动器时创建的日志文件。
+现在可按照使用 [Azure 导入/导出服务](../import-export/storage-import-export-service.md)（**创建导入作业** 部分之下）中的说明创建导入作业。 对于此导入作业，除其他详细信息外，还提供准备磁盘驱动器时创建的日志文件。
 
 ## <a name="physically-ship-the-disks"></a>物理发送磁盘
 

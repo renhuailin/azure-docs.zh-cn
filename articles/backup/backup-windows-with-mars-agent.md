@@ -3,12 +3,12 @@ title: 使用 MARS 代理备份 Windows 计算机
 description: 使用 Microsoft Azure 恢复服务 (MARS) 代理来备份 Windows 计算机。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54932192d61633da55657e2ba57adf4e30c4fbc7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052216"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702762"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>将 Windows Server 文件和文件夹备份到 Azure
 
@@ -38,7 +38,7 @@ Azure 备份不会自动考虑夏令时 (DST)。 此默认设置可能会导致�
 
 创建备份策略：
 
-1. 下载并注册 MARS 代理后，打开代理控制台。 可以通过在计算机中搜索 **Microsoft Azure 备份**找到该代理。  
+1. 下载并注册 MARS 代理后，打开代理控制台。 可以通过在计算机中搜索 **Microsoft Azure 备份** 找到该代理。  
 
 1. 在“操作”下，选择“计划备份”。 
 
@@ -104,7 +104,7 @@ Azure 备份不会自动考虑夏令时 (DST)。 此默认设置可能会导致�
 1. 将备份数据写入暂存位置。
 1. 使用 AzureOfflineBackupDiskPrep 工具将暂存位置中的数据复制到一个或多个 SATA 磁盘。
 
-    该工具会创建 Azure 导入作业。 有关详细信息，请参阅[什么是 Azure 导入/导出服务](../storage/common/storage-import-export-service.md)。
+    该工具会创建 Azure 导入作业。 有关详细信息，请参阅[什么是 Azure 导入/导出服务](../import-export/storage-import-export-service.md)。
 1. 将 SATA 磁盘寄送到 Azure 数据中心。
 
     在数据中心，磁盘数据将复制到 Azure 存储帐户。 Azure 备份将数据从存储帐户复制到保管库，并计划增量备份。

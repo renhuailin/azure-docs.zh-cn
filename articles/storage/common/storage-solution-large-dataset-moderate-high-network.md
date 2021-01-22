@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: f1ded1ce87df1cb57960bbc99cd950ed7b3f97ee
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: cf0e423648db174433f0717f2e5971ac49697b42
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573929"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704617"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>具有中高速网络带宽的大型数据集的数据传输
  
@@ -95,7 +95,7 @@ ms.locfileid: "96573929"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解如何使用导入/导出转移数据](./storage-import-export-data-to-blobs.md)。
+- [了解如何使用导入/导出转移数据](../../import-export/storage-import-export-data-to-blobs.md)。
 - 了解如何
 
     - [使用 Data Box Disk 传输数据](../../databox/data-box-disk-quickstart-portal.md)。
