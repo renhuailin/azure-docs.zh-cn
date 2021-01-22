@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b82342ffb76f8bb58b8f6875751601094d6131ca
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b6dd2199452837d81c201cf4aef2bcd94b35cda3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461891"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677199"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>将资源类转换为工作负荷组
 
@@ -56,7 +56,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 
 ## <a name="create-the-classifier"></a>创建分类器
 
-以前，查询到资源类的映射是使用 [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class) 完成的。  要实现相同的功能并将请求映射到工作负荷组，请使用 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语法。  使用 sp_addrolemember 仅允许你根据登录名将资源映射到请求。  分类器提供登录名之外的其他选项，例如：
+以前，查询到资源类的映射是使用 [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class) 完成的。  要实现相同的功能并将请求映射到工作负荷组，请使用 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语法。  使用 sp_addrolemember 仅允许你根据登录名将资源映射到请求。  分类器提供登录名之外的其他选项，例如：
     - label
     - 会话
     - 时间。下面的示例分配来自 `AdfLogin` 登录名的查询（这些查询的 [OPTION LABEL](sql-data-warehouse-develop-label.md) 也设置为 `factloads`）分配到上面创建的工作负荷组 `wgDataLoads`。
@@ -91,4 +91,4 @@ SELECT request_id, [label], classifier_name, group_name, command
 - [工作负荷隔离](sql-data-warehouse-workload-isolation.md)
 - [如何创建工作负荷组](quickstart-configure-workload-isolation-tsql.md)
 - [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
-- [CREATE WORKLOAD GROUP (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [CREATE WORKLOAD GROUP (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest&preserve-view=true)

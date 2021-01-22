@@ -2,18 +2,21 @@
 title: 自动转发 Azure 服务总线消息实体
 description: 本文介绍如何将 Azure 服务总线队列或订阅链接到另一个队列或主题。
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/20/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f5f93f65871c0b9658a75264ab959dbae7fefe7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80bef52d568130fa800a1da661f4867abb3df02c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819570"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678982"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自动转发链接服务总线实体
 
 通过服务总线自动转发功能可将队列或订阅链接到作为相同命名空间组成部分的另一个队列或主题。 启用自动转发时，服务总线会自动删除放置在第一个队列或订阅（源）中的消息，并将其放入第二个队列或主题（目标）中。 仍可将消息直接发送到目标实体。
+
+> [!NOTE]
+> Service Bus 的基本层不支持自动转发功能。 标准层和高级层支持该功能。 有关这些层之间的差异，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
 ## <a name="using-autoforwarding"></a>使用自动转发
 
@@ -29,16 +32,16 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 可使用自动转发扩大单个主题。 服务总线将[给定主题的订阅数](service-bus-quotas.md)限制为 2,000。 可以通过创建二级主题来容纳其他订阅。 即使订阅数并未受到服务总线限制，添加二级主题也可以提高主题的整体吞吐量。
 
-![自动转发方案的关系图，显示通过订单主题处理的消息，该主题可分支到三个二级订单主题中的任意一个。][0]
+![自动转发方案示意图，显示了通过订单主题处理的消息，该消息可分支到三个二级订单主题中的任意一个。][0]
 
 自动转发还可用于分离消息发送方与接收方。 例如，考虑一个由以下三个模块组成的 ERP 系统：订单处理、库存管理和客户关系管理。 每个模块都会生成消息，这些消息将被排入相应的主题队。 Alice 和 Bob 是两名销售代表，他们想了解与其客户相关的所有消息。 要接收这些消息，Alice 和 Bob 各自创建一个个人队列和一个针对 ERP 主题的订阅，该订阅将所有消息自动转发给该队列。
 
-![自动转发方案示意图，其中显示了三个处理模块，通过三个相关主题将消息发送到两个单独的队列。][1]
+![自动转发方案示意图，显示了三个处理模块通过三个相应的主题将消息发送到两个单独的队列。][1]
 
 如果 Alice 去度假，则填充她的个人队列，而不是 ERP 主题。 在此方案中，由于销售代表没有接收到任何消息，所以所有 ERP 主题都没有达到配额。
 
 > [!NOTE]
-> 设置自动转发时，**源和目标**上的 AutoDeleteOnIdle 值自动设置为数据类型的最大值。
+> 设置自动转发时，**源和目标** 上的 AutoDeleteOnIdle 值自动设置为数据类型的最大值。
 > 
 >   - 在源端，自动转发充当接收操作。 因此，具有自动转发设置的源从未真正“空闲”。
 >   - 在目标端，这样做是为了确保始终有要将消息转发到的目标。
@@ -51,9 +54,9 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 服务总线对于每条转发的消息收取一个操作的费用。 例如，将一条消息发送到一个包含 20 个订阅（每个订阅配置为将消息自动转发到另一队列或主题）的主题，如果所有第一级别的订阅都接收到此消息的副本，则会作为 21 次操作进行计费。
 
-若要创建链接到另一个队列或主题的订阅，则订阅创建者必须具有源和目标实体的**管理**权限。 将消息发送到源主题仅需要源主题的**发送**权限。
+若要创建链接到另一个队列或主题的订阅，则订阅创建者必须具有源和目标实体的 **管理** 权限。 将消息发送到源主题仅需要源主题的 **发送** 权限。
 
-请勿创建超过4个跃点的链。 超过4个跃点的消息将死信。
+请不要创建超过 4 个跃点的链。 超过 4 个跃点的消息将为死信。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -65,7 +68,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 若要深入了解服务总线性能提升，请参阅 
 
-* [使用服务总线消息传递改进性能的最佳实践](service-bus-performance-improvements.md)
+* [使用服务总线消息传送改进性能的最佳做法](service-bus-performance-improvements.md)
 * [分区消息实体][Partitioned messaging entities]。
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo

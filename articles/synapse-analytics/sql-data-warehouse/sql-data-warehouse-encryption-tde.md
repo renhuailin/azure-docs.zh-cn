@@ -1,6 +1,6 @@
 ---
-title: '透明数据加密专用 SQL 池 (门户)  (以前的 SQL DW) '
-description: '在 Azure Synapse Analytics 中，透明数据加密专用 SQL 池的 (TDE)  (以前的 SQL DW) '
+title: 用于专用 SQL 池（以前称为 SQL DW）的透明数据加密（门户）
+description: 用于 Azure Synapse Analytics 中专用 SQL 池（以前称为 SQL DW）的透明数据加密 (TDE)
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 45c7b53d3bbe0c57e96fc5435650c4e86b0cb032
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: da4be6f4bc8335e0976a0a4a87c4d232b2a2285f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455270"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676300"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>开始处理透明数据加密 (TDE) 专用 SQL 池 (以前在 Azure Synapse Analytics 中的 SQL DW) 
+# <a name="get-started-with-transparent-data-encryption-tde-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>用于 Azure Synapse Analytics 中专用 SQL 池（以前称为 SQL DW）的透明数据加密 (TDE) 入门
 
 > [!div class="op_single_selector"]
 >
@@ -57,5 +57,5 @@ ms.locfileid: "96455270"
 
 可使用下列 DMV 来确认加密：
 
-* [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-* [sys.dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+* [sys.dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

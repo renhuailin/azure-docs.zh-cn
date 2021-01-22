@@ -1,6 +1,6 @@
 ---
-title: 专用 SQL 池 (以前的 SQL DW) 体系结构
-description: 了解专用 SQL 池 (以前的 SQL DW) 在 Azure Synapse 分析中如何将分布式查询处理功能与 Azure 存储结合起来，实现高性能和可伸缩性。
+title: 专用 SQL 池（以前称为 SQL DW）体系结构
+description: 了解 Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）如何将分布式查询处理功能与 Azure 存储结合，以实现高性能和可伸缩性。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,14 +10,14 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: c537d3109f770c1ce77be6495bdacd24270dad5f
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0e87451531750e502f67dc30e6fbd26c8c944d22
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119588"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678587"
 ---
-# <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中以前的 SQL DW) 体系结构的专用 SQL 池 (
+# <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）体系结构
 
 Azure Synapse Analytics 是一种分析服务，它将企业数据仓库和大数据分析结合在一起。 它使你可以自由地根据你的条件查询数据。
 
@@ -30,24 +30,24 @@ Azure Synapse Analytics 是一种分析服务，它将企业数据仓库和大�
 
 ## <a name="synapse-sql-architecture-components"></a>Synapse SQL 体系结构组件
 
-[专用的 sql DW (以前的 sql DW) ](sql-data-warehouse-overview-what-is.md) 利用扩展体系结构在多个节点之间分发数据的计算处理。 缩放单位是计算能力（称为[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)）的抽象概念。 计算与存储分离开来，以便用户能够独立于系统中的数据进行缩放计算。
+[专用 SQL 池（以前称为 SQL DW）](sql-data-warehouse-overview-what-is.md)利用横向扩展体系结构将数据的计算处理分布在多个节点上。 缩放单位是计算能力（称为[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)）的抽象概念。 计算与存储分离开来，以便用户能够独立于系统中的数据进行缩放计算。
 
-![专用 SQL 池 (以前的 SQL DW) 体系结构](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
+![专用 SQL 池（以前称为 SQL DW）体系结构](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-专用 SQL DW (以前的 SQL DW) 使用基于节点的体系结构。 应用程序将 T-sql 命令连接并颁发给控制节点。 控制节点托管分布式查询引擎（用于优化并行处理查询），然后将操作传递给计算节点以完成并行工作。
+专用 SQL 池（以前称为 SQL DW）使用基于节点的体系结构。 应用程序连接到控制节点并将 T-SQL 命令发送到控制节点。 控制节点托管分布式查询引擎（用于优化并行处理查询），然后将操作传递给计算节点以完成并行工作。
 
 计算节点将所有用户数据存储在 Azure 存储中并运行并行查询。 数据移动服务 (DMS) 是一项系统级内部服务，它根据需要在节点间移动数据以并行运行查询和返回准确的结果。
 
-使用分离的存储和计算，使用专用的 SQL 池 (以前的 SQL DW) 可以：
+使用分离的存储和计算，用户可以在使用专用 SQL 池（以前称为 SQL DW）时执行以下操作：
 
 - 无论存储需求如何，都可独立计算大小。
-- 在专用 SQL 仓库 (以前的 SQL DW) ，而无需移动数据，扩大或缩小计算能力。
+- 在专用 SQL 池（以前称为 SQL DW）中增加或减少计算能力，无需移动数据。
 - 在保持数据不受影响的情况下暂停计算容量，因此只需为存储付费。
 - 在操作期间恢复计算容量。
 
 ### <a name="azure-storage"></a>Azure 存储
 
-专用 SQL 池 SQL (以前的 SQL DW) 利用 Azure 存储空间来确保用户数据的安全。  由于数据通过 Azure 存储进行存储和管理，因此会对存储消耗单独收费。 将数据分片到“分布区”中来优化系统性能。 可选择在定义表时用于分布数据的分片模式。 支持以下分片模式：
+专用 SQL 池 SQL（以前称为 SQL DW）利用 Azure 存储来保持用户数据安全。  由于数据通过 Azure 存储进行存储和管理，因此会对存储消耗单独收费。 将数据分片到“分布区”中来优化系统性能。 可选择在定义表时用于分布数据的分片模式。 支持以下分片模式：
 
 - 哈希
 - 轮循机制
@@ -61,7 +61,7 @@ Azure Synapse Analytics 是一种分析服务，它将企业数据仓库和大�
 
 计算节点提供计算能力。 分布区映射到计算节点以进行处理。 当你为更多计算资源付费时，分布区将重新映射到可用的计算节点。 计算节点数的范围是 1 到 60，它由 Synapse SQL 的服务级别确定。
 
-每个计算节点均有一个节点 ID，该 ID 会显示在系统视图中。 在名称以 sys.pdw_nodes 开头的系统视图中找到 node_id 列即可查看计算节点 ID。 有关这些系统视图的列表，请参阅 [Synapse SQL 系统视图](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+每个计算节点均有一个节点 ID，该 ID 会显示在系统视图中。 在名称以 sys.pdw_nodes 开头的系统视图中找到 node_id 列即可查看计算节点 ID。 有关这些系统视图的列表，请参阅 [Synapse SQL 系统视图](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ### <a name="data-movement-service"></a>数据移动服务
 
@@ -71,7 +71,7 @@ Azure Synapse Analytics 是一种分析服务，它将企业数据仓库和大�
 
 分布区是存储和处理针对分布式数据运行的并行查询的基本单位。 Synapse SQL 运行查询时，工作会被分割成 60 个并行运行的小型查询。
 
-每个小型查询各在一个数据分布区上运行。 每个计算节点管理其中一个或多个分布区。 使用最大计算资源的专用 SQL DW)  (以前的 sql DW 每个计算节点都有一个分配。 专用 SQL 池 (以前具有最小计算资源的 SQL DW) 在一个计算节点上具有所有分布。  
+每个小型查询各在一个数据分布区上运行。 每个计算节点管理其中一个或多个分布区。 具有最多计算资源的专用 SQL 池（以前称为 SQL DW）的每个分布区占 1 个计算节点。 具有最小计算资源的专用 SQL 池（以前称为 SQL DW）的所有分布区都在 1 个计算节点上。  
 
 ## <a name="hash-distributed-tables"></a>哈希分布表
 
@@ -107,7 +107,7 @@ Azure Synapse Analytics 是一种分析服务，它将企业数据仓库和大�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解有关 Azure Synapse 的一点，接下来了解如何快速 [创建 (以前的 SQL DW) 的专用 sql 池 ](create-data-warehouse-portal.md) 并 [加载示例数据](./load-data-from-azure-blob-storage-using-copy.md)。 如果不熟悉 Azure，遇到新术语时，[Azure 词汇表](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 可以提供帮助。 或者，查看以下一些其他 Azure Synapse 资源。  
+对 Azure Synapse 有了初步的认识后，请学习如何快速[创建专用 SQL 池（以前称为 SQL DW）](create-data-warehouse-portal.md)和[加载示例数据](./load-data-from-azure-blob-storage-using-copy.md)。 如果不熟悉 Azure，遇到新术语时，[Azure 词汇表](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 可以提供帮助。 或者，查看以下一些其他 Azure Synapse 资源。  
 
 - [客户成功案例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [博客](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)

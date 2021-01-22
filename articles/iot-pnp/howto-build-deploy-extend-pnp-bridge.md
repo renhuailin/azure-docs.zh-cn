@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ece9f62e64eb64b1f34af46b42d57ec583f8f214
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 43c89b0fac08bf9f2c72f885fbf4788371876b17
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675814"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678570"
 ---
 # <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>构建、部署和扩展 IoT 即插即用 bridge
 
@@ -188,7 +188,7 @@ typedef struct _PNP_ADAPTER {
 
 将 [IoT 即插即用 bridge](https://github.com/Azure/iot-plug-and-play-bridge) 存储库克隆到本地计算机：
 
-```cmd/sh
+```console
 git clone https://github.com/Azure/iot-plug-and-play-bridge.git
 
 cd iot-plug-and-play-bridge
@@ -205,7 +205,7 @@ git submodule update --init --recursive
 
 打开 **VS 2019 的开发人员命令提示** ，导航到包含所克隆的存储库的文件夹，并运行以下命令：
 
-```cmd
+```console
 cd pnpbridge\scripts\windows
 
 build.cmd
@@ -279,7 +279,7 @@ cd scripts/linux
 
 通过在命令提示符下运行桥来启动桥接：
 
-```cmd
+```console
 cd iot-plug-and-play-bridge\pnpbridge\cmake\pnpbridge_x86\src\pnpbridge\samples\console
 
 Debug\pnpbridge_bin.exe
@@ -330,13 +330,13 @@ Debug\pnpbridge_bin.exe
 
 若要在 IoT 中心创建 IoT Edge 设备注册，请在 WSL 2 环境中运行以下命令。 使用 `az login` 命令登录到 Azure 订阅：
 
-```bash
+```azurecli
 az iot hub device-identity create --device-id bridge-edge-device --edge-enabled true --hub-name {your IoT hub name}
 ```
 
 若要创建安装了 IoT Edge 运行时的 Azure 虚拟机，请运行以下命令。 用适当的值更新占位符：
 
-```bash
+```azurecli
 az group create --name bridge-edge-resources --location eastus
 az deployment group create \
 --resource-group bridge-edge-resources \
@@ -350,7 +350,7 @@ az deployment group create \
 
 现在，你已在虚拟机中运行 IoT Edge 运行时。 你可以使用以下命令来验证 **$edgeAgent** 和 **$edgeHub** 是否正在设备上运行：
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -405,7 +405,7 @@ IoT Edge 设备从容器注册表下载其模块映像。 此示例使用 Azure 
 
 在 **网桥-资源** 资源组中创建 Azure 容器注册表。 然后，启用对容器注册表的管理员访问权限，并获取 IoT Edge 设备下载模块映像所需的凭据：
 
-```bash
+```azurecli
 az acr create -g bridge-edge-resources --sku Basic -n {your container registry name}
 az acr update --admin-enabled true -n {your container registry name}
 az acr credential show -n {your container registry name}
@@ -517,7 +517,7 @@ IoT Edge 部署清单指定要部署到 IoT Edge 设备的模块和配置值。
 
 若要查看设备上的模块的状态，请运行以下命令：
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -527,7 +527,7 @@ az iot hub module-identity list --device-id bridge-edge-device -o table --hub-na
 
 若要从 Azure 订阅中删除虚拟机和容器注册表，请运行以下命令：
 
-```bash
+```azurecli
 az group delete -n bridge-edge-resources
 ```
 

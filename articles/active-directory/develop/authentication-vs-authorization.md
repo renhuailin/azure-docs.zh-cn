@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d4abc9e1bba151f46adf71dd0185ddddad916a38
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5087278e5c89514cd43b7ca871a58f18e0fa98f2
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216455"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678140"
 ---
 # <a name="authentication-vs-authorization"></a>身份验证和授权
 
@@ -51,7 +51,7 @@ Microsoft 标识平台通过提供标识即服务简化了应用程序开发人�
 下面是 Microsoft 标识平台使用的协议的比较：
 
 * **Oauth 与 Openid connect**：平台使用 oauth 进行授权，并使用 OpenID CONNECT (OIDC) 进行身份验证。 OpenID Connect 构建在 OAuth 2.0 的基础之上，因此两者的术语和流很相似。 甚至可以通过 OpenID Connect) 对用户 (进行身份验证，并获取授权，以访问用户拥有的受保护资源 (通过 OAuth 2.0) 请求。 有关详细信息，请参阅 [OAuth 2.0 和 OpenID Connect 协议](active-directory-v2-protocols.md)和 [OpenID Connect 协议](v2-protocols-oidc.md)。
-* **Oauth 与 SAML**：平台使用 OAuth 2.0 进行授权，使用 saml 进行身份验证。 若要详细了解如何将这些协议一起使用来对用户进行身份验证并获得授权来访问受保护的资源，请参阅 [Microsoft 标识平台和 OAuth 2.0 SAML 持有者断言流](v2-saml-bearer-assertion.md)。
+* **Oauth 与 SAML**：平台使用 OAuth 2.0 进行授权，使用 saml 进行身份验证。 若要详细了解如何将这些协议一起使用来对用户进行身份验证并获得授权来访问受保护的资源，请参阅 [Microsoft 标识平台和 OAuth 2.0 SAML 持有者断言流](./scenario-token-exchange-saml-oauth.md)。
 * **Openid connect 与 saml**：平台使用 OpenID CONNECT 和 saml 对用户进行身份验证，并启用单一登录。 SAML 身份验证通常用于标识提供者（如 Active Directory 联合身份验证服务 (AD FS) 联合到 Azure AD），因此通常用于企业应用程序。 OpenID Connect 通常用于纯粹位于云中的应用程序，例如移动应用程序、网站和 web Api。
 
 ## <a name="next-steps"></a>后续步骤

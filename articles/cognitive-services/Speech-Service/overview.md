@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: 3b20773de62f036b507f1612f2b38d613d54ba2f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d3d9f41876cf1310fe25a275624f609031c05b00
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485189"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601887"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
@@ -36,7 +36,7 @@ ms.locfileid: "96485189"
 | [文本转语音](text-to-speech.md) | 文本转语音 | 文本转语音可使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 将输入文本转换为类似人类的合成语音。 可以选择标准语音或神经语音（请参阅[语言支持](language-support.md)）。 | [是](./speech-sdk.md) | [是](#reference-docs) |
 | | [创建自定义语音](#customize-your-speech-experience) | 创建专属于品牌或产品的自定义语音字体。 | 否 | [是](#reference-docs) |
 | [语音翻译](speech-translation.md) | 语音翻译 | 使用语音翻译可在应用程序、工具和设备中实现实时的多语言语音翻译。 进行语音转语音和语音转文本翻译时可以使用此服务。 | [是](./speech-sdk.md) | 否 |
-| [语音助手](voice-assistants.md) | 语音助手 | 语音助手使用语音服务为开发人员助力，使他们可为其应用程序和体验创建自然的、类似于人类的对话界面。 语音助手服务在设备和助手实现之间提供快速且可靠的交互。该实现使用 Bot Framework 的 Direct Line 语音通道或集成的自定义命令（预览版）服务来完成任务。 | [是](voice-assistants.md) | 否 |
+| [语音助手](voice-assistants.md) | 语音助手 | 语音助手使用语音服务为开发人员助力，使他们可为其应用程序和体验创建自然的、类似于人类的对话界面。 语音助理服务在设备与助理实现之间提供快速可靠的交互。该实现使用 Bot Framework 的 Direct Line Speech 通道或集成的自定义命令服务来完成任务。 | [是](voice-assistants.md) | 否 |
 | [说话人识别](speaker-recognition-overview.md) | 说话人验证和标识 | 说话人识别服务提供根据其独特的语音特征来验证和识别说话人的算法。 说话人识别用于回答“谁在说话？”的问题。 | 是 | [是](/rest/api/speakerrecognition/) |
 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: fd14c7911676768a61d2b2c0e366d2c227455be8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860297"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678198"
 ---
 # <a name="continuous-access-evaluation"></a>连续访问评估
 
@@ -28,7 +28,7 @@ ms.locfileid: "96860297"
 
 连续访问评估的初始实现侧重于 Exchange、Teams 和 SharePoint Online。
 
-若要准备应用程序以使用 CAE，请参阅 [如何在应用程序中使用启用了持续存取评估的 api](/azure/active-directory/develop/app-resilience-continuous-access-evaluation)。
+若要准备应用程序以使用 CAE，请参阅[如何在应用程序中使用启用了连续访问评估的 API](../develop/app-resilience-continuous-access-evaluation.md)。
 
 ### <a name="key-benefits"></a>主要优点
 
@@ -142,7 +142,7 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 对于 CAE，我们只了解基于命名 IP 的命名位置。 我们不了解其他位置设置，例如[受 MFA 信任的 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 或基于国家/地区的位置。 如果用户来自受 MFA 信任的 IP 或来自受信任的位置（其中包含受 MFA 信任的 IP 或国家/地区位置），则在用户移到其他位置之后，将不会强制执行 CAE。 在这些情况下，我们会颁发 1 小时 CAE 令牌，不进行即时 IP 强制检查。
 
 > [!IMPORTANT]
-> 在配置连续访问评估的位置时，请仅使用[基于 IP 的条件访问位置条件](../conditional-access/location-condition.md#preview-features)并配置所有 IP 地址（包括 IPv4 和 IPv6），这些地址可通过标识提供者和资源提供程序查看。 不要使用国家/地区位置条件或 Azure AD 多重身份验证的服务设置 "页中提供的受信任的 ip 功能。
+> 在配置连续访问评估的位置时，请仅使用[基于 IP 的条件访问位置条件](../conditional-access/location-condition.md#preview-features)并配置所有 IP 地址（包括 IPv4 和 IPv6），这些地址可通过标识提供者和资源提供程序查看。 不要使用国家/地区位置条件，也不要使用 Azure AD 多重身份验证的服务设置页中提供的受信任的 IP 功能。
 
 ### <a name="ip-address-configuration"></a>IP 地址配置
 

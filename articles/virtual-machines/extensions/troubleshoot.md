@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 343ddb109de41a0959533b16b11762841b5b1105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127135"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676753"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 扩展故障排除
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -85,7 +85,7 @@ Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomS
 - 右键单击并选择“结束任务”。 该进程将自动重启
 
 
-还可以通过执行 "VM 重新应用" 来触发到 VM 的新 GoalState。 VM [重新应用](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) 是一种在2020中引入的 API，用于重新应用 VM 的状态。 我们建议你一次执行此操作，这样可以容忍短暂的 VM 停机。 虽然重新应用本身不会导致 VM 重新启动，但大多数情况下调用 "重新应用" 不会重新启动 VM，但当重新应用触发新的目标状态时，将应用其他对 VM 模型的其他待定更新，并且其他更改可能需要重新启动。 
+还可以通过执行 "VM 重新应用" 来触发到 VM 的新 GoalState。 VM [重新应用](/rest/api/compute/virtualmachines/reapply) 是一种在2020中引入的 API，用于重新应用 VM 的状态。 我们建议你一次执行此操作，这样可以容忍短暂的 VM 停机。 虽然重新应用本身不会导致 VM 重新启动，但大多数情况下调用 "重新应用" 不会重新启动 VM，但当重新应用触发新的目标状态时，将应用其他对 VM 模型的其他待定更新，并且其他更改可能需要重新启动。 
 
 Azure 门户：
 

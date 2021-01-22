@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f881dcc0d26589c4029246019119fa0555dcd5d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0974e880b75cce69f2b5ac82e3c4b39de53e03ce
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117769"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677098"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>将数据从 Azure Data Lake Storage 加载到 Azure Synapse Analytics 中的专用 SQL 池
 
-本指南概述了如何使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) 从 Azure Data Lake Storage 中加载数据。 有关跨所有身份验证方法使用 COPY 语句的快速示例，请访问以下文档： [使用专用 SQL 池安全地加载数据](./quickstart-bulk-load-copy-tsql-examples.md)。
+本指南概述了如何使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) 从 Azure Data Lake Storage 中加载数据。 有关跨所有身份验证方法使用 COPY 语句的快速示例，请访问以下文档： [使用专用 SQL 池安全地加载数据](./quickstart-bulk-load-copy-tsql-examples.md)。
 
 > [!NOTE]  
 > 若要在 COPY 语句上提供反馈或报告问题，请将电子邮件发送到以下通讯组列表： sqldwcopypreview@service.microsoft.com 。
@@ -34,7 +34,7 @@ ms.locfileid: "98117769"
 
 ## <a name="before-you-begin"></a>开始之前
 
-开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)。
+开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS)。
 
 若要运行本教程，需要：
 
@@ -133,6 +133,6 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 > [了解如何为数据仓库开发表](sql-data-warehouse-tables-overview.md)
 
 有关加载示例和参考的详细信息，请查看以下文档：
-- [COPY 语句参考文档](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [COPY 语句参考文档](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
 - [每个身份验证方法的 COPY 示例](./quickstart-bulk-load-copy-tsql-examples.md)
 - [单个表的 COPY 快速入门](./quickstart-bulk-load-copy-tsql.md)

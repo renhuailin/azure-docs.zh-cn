@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b7726e4e8fee0044a7865c8c494ef6451425676
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9c8e971b4fda313ffede58455dd6d057d6848ce4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903864"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678123"
 ---
 # <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Azure Maps 天气服务 (预览版) 常见问题 (常见问题) 
 
 > [!IMPORTANT]
-> Azure Maps 天气服务目前为公共预览版。
+> Azure Maps 天气服务目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文解答了有关 Azure Maps [天气服务](https://docs.microsoft.com/rest/api/maps/weather) 数据和功能的常见问题。 包含以下主题：
+本文解答了有关 Azure Maps [天气服务](/rest/api/maps/weather) 数据和功能的常见问题。 包含以下主题：
 
 * 数据源和数据模型
 * 天气服务范围和可用性
@@ -59,7 +59,7 @@ AccuWeather 在世界各地都提供实时天气和环境信息，这在很大�
 
 **对于不同的国家/地区，我可以期望哪种覆盖范围？**
 
-天气服务范围因国家/地区而异。 所有功能在每个国家/地区不可用。 有关详细信息，请参阅 [覆盖范围文档](https://docs.microsoft.com/azure/azure-maps/weather-coverage)。
+天气服务范围因国家/地区而异。 所有功能在每个国家/地区不可用。 有关详细信息，请参阅 [覆盖范围文档](./weather-coverage.md)。
 
 ## <a name="data-update-frequency"></a>数据更新频率
 
@@ -79,7 +79,7 @@ Azure Maps 的预测 Api 缓存最多30分钟。 若要查看缓存的响应何�
 
 **Azure Maps Web SDK 是否以本机方式支持天气服务 (预览版) 集成？**
 
-Azure Maps Web SDK 提供服务模块。 服务模块是帮助程序库，可轻松地使用 web 或 Node.js 应用程序中 Azure Maps REST 服务。 使用 JavaScript 或 TypeScript。 若要开始，请参阅 [文档](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)。
+Azure Maps Web SDK 提供服务模块。 服务模块是帮助程序库，可轻松地使用 web 或 Node.js 应用程序中 Azure Maps REST 服务。 使用 JavaScript 或 TypeScript。 若要开始，请参阅 [文档](./how-to-use-services-module.md)。
 
 **Azure Maps Android SDK 以本机方式支持天气服务 (预览) 集成吗？**
 
@@ -91,26 +91,26 @@ Azure Maps Android Sdk 支持 Mercator 图块层，这些图块可以具有 x/y/
 
 **Azure Maps 天气磁贴 Power BI 视觉支持 Azure Maps 吗？**
 
-是的。 若要了解如何将雷达图和红外卫星磁贴迁移到 Microsoft Power BI 视觉对象，请参阅 [向 Power BI 视觉对象添加图块层](https://docs.microsoft.com/azure/azure-maps/power-bi-visual-add-tile-layer)。 
+是的。 若要了解如何将雷达图和红外卫星磁贴迁移到 Microsoft Power BI 视觉对象，请参阅 [向 Power BI 视觉对象添加图块层](./power-bi-visual-add-tile-layer.md)。 
 
 **如何实现解释用于雷达图和卫星磁贴的颜色？**
 
-Azure Maps [天气概念文章](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#radar-and-satellite-imagery-color-scale) 包含有助于解释用于雷达图和卫星磁贴的颜色的指南。 本文介绍了颜色样本和十六进制颜色代码。
+Azure Maps [天气概念文章](./weather-services-concepts.md#radar-and-satellite-imagery-color-scale) 包含有助于解释用于雷达图和卫星磁贴的颜色的指南。 本文介绍了颜色样本和十六进制颜色代码。
  
 **能否创建雷达和卫星磁贴动画？**
 
-是的。 除了实时雷达图和卫星磁贴外，Azure Maps 客户还可以请求过去和未来的磁贴，以利用地图叠加来增强数据可视化效果。 这可以通过直接调用 [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles ) 或通过 AZURE MAPS web SDK 来请求磁贴来完成。 雷达图最多提供1.5 小时，未来最多可达2小时。 磁贴和在5分钟间隔内可用。 红外磁贴过去最多可提供3小时，并可按10分钟间隔提供。 有关详细信息，请参阅开源天气磁贴动画 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)。  
+是的。 除了实时雷达图和卫星磁贴外，Azure Maps 客户还可以请求过去和未来的磁贴，以利用地图叠加来增强数据可视化效果。 这可以通过直接调用 [获取地图磁贴 V2 API](/rest/api/maps/renderv2/getmaptilepreview) 或通过 AZURE MAPS web SDK 来请求磁贴来完成。 雷达图最多提供1.5 小时，未来最多可达2小时。 磁贴和在5分钟间隔内可用。 红外磁贴过去最多可提供3小时，并可按10分钟间隔提供。 有关详细信息，请参阅开源天气磁贴动画 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)。  
 
 **是否为不同天气情况提供图标？**
 
-是的。 可在 [此处](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#weather-icons)找到图标及其相应的代码。 请注意，只有部分天气服务 (预览) Api，例如  [获取当前条件 API](https://aka.ms/azuremapsweathercurrentconditions)，返回响应中的 *iconCode* 。 有关详细信息，请参阅当前 WeatherConditions 开源 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location)。
+是的。 可在 [此处](./weather-services-concepts.md#weather-icons)找到图标及其相应的代码。 请注意，只有部分天气服务 (预览) Api，例如  [获取当前条件 API](/rest/api/maps/weather/getcurrentconditionspreview)，返回响应中的 *iconCode* 。 有关详细信息，请参阅当前 WeatherConditions 开源 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location)。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果此 FAQ 不能回答您的问题，您可以通过以下渠道 (与我们联系) ：
 
 * 本文评论部分。
-* [MSFT Q&Azure Maps 的页面](https://docs.microsoft.com/answers/topics/azure-maps.html)。
+* [MSFT Q&Azure Maps 的页面](/answers/topics/azure-maps.html)。
 * Microsoft 支持部门。 若要创建新的支持请求，请在 " [Azure 门户](https://portal.azure.com/)中的" 帮助 "选项卡上，选择" **帮助 +** 支持 "按钮，然后选择" **新建支持请求**"。
 * [Azure Maps UserVoice](https://feedback.azure.com/forums/909172-azure-maps) 提交功能请求。
 

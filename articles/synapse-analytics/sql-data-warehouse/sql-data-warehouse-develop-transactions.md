@@ -11,16 +11,16 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.custom: azure-synapse
 ms.reviewer: igorstan
-ms.openlocfilehash: 67cb4868ee8d4190c47e23315bf2a22e5c847ff1
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8144c588d4b6794cadc0577bf63dabc2cc3e0efd
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121169"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677280"
 ---
-# <a name="use-transactions-in-a-sql-pool-in-azure-synapse"></a>在 Azure Synapse 中的 SQL 池中使用事务 
+# <a name="use-transactions-in-a-sql-pool-in-azure-synapse"></a>在 Azure Synapse 的 SQL 池中使用事务 
 
-本文包含有关在 SQL 池中实现事务和开发解决方案的提示。
+本文包含有关在 SQL 池中实现事务和开发解决方案的技巧。
 
 ## <a name="what-to-expect"></a>期望
 
@@ -28,9 +28,9 @@ ms.locfileid: "98121169"
 
 ## <a name="transaction-isolation-levels"></a>事务隔离级别
 
-SQL 池实现了 ACID 事务。 事务支持的隔离级别默认为 READ UNCOMMITTED。  连接到 master 数据库时，可以通过为用户 SQL 池打开 READ_COMMITTED_SNAPSHOT 数据库选项，将其更改为读取已提交快照隔离。  
+SQL 池实现了 ACID 事务。 事务支持的隔离级别默认为 READ UNCOMMITTED。  在连接到 master 数据库时，可以通过打开用户 SQL 池的 READ_COMMITTED_SNAPSHOT 数据库选项，将其更改为 READ COMMITTED SNAPSHOT ISOLATION。  
 
-启用后，此数据库中的所有事务都将在 READ COMMITTED SNAPSHOT ISOLATION 下执行，并且将不接受在会话级别设置 READ UNCOMMITTED。 有关详细信息，请查看 [ALTER DATABASE SET 选项 (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+启用后，此数据库中的所有事务都将在 READ COMMITTED SNAPSHOT ISOLATION 下执行，并且将不接受在会话级别设置 READ UNCOMMITTED。 有关详细信息，请查看 [ALTER DATABASE SET 选项 (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="transaction-size"></a>事务大小
 

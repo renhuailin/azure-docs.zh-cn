@@ -7,12 +7,12 @@ ms.date: 05/06/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: f598ed3e2aef2f53b90b213d0bd1b002f56bd30c
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 19320b8b497202c473f72f4751daf2110a347080
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517744"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676744"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>使用 Azure CLI 配置 Azure 映像生成器服务权限
 
@@ -110,7 +110,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 以下示例根据前面部分中所述的操作创建 Azure 角色定义。 示例在资源组级别应用。 评估并测试示例是否精细满足你的要求。 对于你的方案，你可能需要将其优化到特定的共享映像库。
 
-图像操作允许进行读写。 确定适合您的环境的内容。 例如，创建角色以允许 Azure 映像生成器从资源组中读取映像 *示例-rg-1* 并将映像写入资源组 *示例-rg-2* 。
+图像操作允许进行读写。 确定适合您的环境的内容。 例如，创建角色以允许 Azure 映像生成器从资源组中读取映像 *示例-rg-1* 并将映像写入资源组 *示例-rg-2*。
 
 ### <a name="custom-image-azure-role-example"></a>自定义映像 Azure 角色示例
 
@@ -238,4 +238,4 @@ az role assignment create \
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [Azure 映像生成器概述](image-builder-overview.md)。
+有关详细信息，请参阅 [Azure 映像生成器概述](../image-builder-overview.md)。

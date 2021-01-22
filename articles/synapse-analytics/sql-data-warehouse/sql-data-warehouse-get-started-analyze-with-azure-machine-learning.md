@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 5348c0ed5d80e2738bb865ca3ec1ddf5aaed009a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 76a154d3a137017f374247308a3980d598698246
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118041"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678653"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>使用 Azure 机器学习分析数据
 
@@ -161,4 +161,4 @@ Azure Data Lake Storage 中提供数据后，Azure 机器学习中的数据存�
 
 若要详细了解 Azure 机器学习，请参阅 [Azure 上的机器学习简介](../../machine-learning/overview-what-is-azure-ml.md)。
 
-在 [此处](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)了解数据仓库的内置评分。
+在 [此处](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)了解数据仓库的内置评分。

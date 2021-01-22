@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 404103caf376b792d363996664a69f655d5bd202
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2ed19846209d098d9eba8dba991e08d1fc57f185
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326006"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678003"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>为 Azure Batch 帐户配置 Azure Key Vault 和托管标识的客户托管密钥
 
@@ -39,7 +39,7 @@ ms.locfileid: "96326006"
 
 创建新的 Batch 帐户时，请 `SystemAssigned` 为参数指定 `--identity` 。
 
-```powershell
+```azurecli
 resourceGroupName='myResourceGroup'
 accountName='mybatchaccount'
 
@@ -52,7 +52,7 @@ az batch account create \
 
 创建帐户后，你可以验证是否已在此帐户上启用系统分配的托管标识。 请务必注意 `PrincipalId` ，因为此值将需要授予此批处理帐户对 Key Vault 的访问权限。
 
-```powershell
+```azurecli
 az batch account show \
     -n $accountName \
     -g $resourceGroupName \
@@ -100,7 +100,7 @@ az batch account show \
 
 使用系统分配的托管标识创建批处理帐户并授予对 Key Vault 的访问权限后，请使用参数下的 URL 更新批处理帐户 `{Key Identifier}` `keyVaultProperties` 。 还将 **encryption_key_source** 设置为 `Microsoft.KeyVault` 。
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \
@@ -110,7 +110,7 @@ az batch account set \
 
 ## <a name="update-the-customer-managed-key-version"></a>更新客户托管的密钥版本
 
-当你创建密钥的新版本时，请更新 Batch 帐户以使用新版本。 执行以下步骤:
+当你创建密钥的新版本时，请更新 Batch 帐户以使用新版本。 请执行以下步骤：
 
 1. 在 Azure 门户中导航到 Batch 帐户，并显示加密设置。
 2. 输入新密钥版本的 URI。 或者，可以再次选择 Key Vault 和密钥以更新版本。
@@ -118,7 +118,7 @@ az batch account set \
 
 你还可以使用 Azure CLI 来更新版本。
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \
@@ -134,14 +134,14 @@ az batch account set \
 
 你还可以使用 Azure CLI 来使用不同的密钥。
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \
     --encryption_key_identifier {YourNewKeyIdentifier} 
 ```
 ## <a name="frequently-asked-questions"></a>常见问题
-  * **现有批处理帐户是否支持客户托管的密钥？** 否。 仅新的批处理帐户支持客户管理的密钥。
+  * **现有批处理帐户是否支持客户托管的密钥？** 不是。 仅新的批处理帐户支持客户管理的密钥。
   * **能否选择大于2048位的 RSA 密钥大小？** 是的，还支持 RSA 密钥大小 `3072` 和 `4096` 位数。
   * **吊销客户管理的密钥后可执行哪些操作？** 如果批处理失去了对客户管理的密钥的访问权限，则唯一允许的操作是帐户删除。
   * **如果意外删除了 Key Vault 的密钥，应该如何还原批处理帐户的访问权限？** 由于已启用清除保护和软删除，因此可以还原现有密钥。 有关详细信息，请参阅 [恢复 Azure Key Vault](../key-vault/general/key-vault-recovery.md)。
@@ -149,5 +149,5 @@ az batch account set \
   * **如何轮换密钥？** 客户管理的密钥不会自动轮替。 若要轮换密钥，请更新与帐户相关联的密钥标识符。
   * **还原访问权限后，批处理帐户再次工作需要多长时间？** 还原访问后，最多可能需要10分钟的时间才能访问该帐户。
   * **虽然批处理帐户不可用，但我的资源会发生什么情况呢？** 当 Batch 访问客户托管密钥时，正在运行的所有池将继续运行。 但是，节点将转换为不可用状态，并且任务将停止运行 (，并) 重新排队。 还原访问权限后，节点将再次变得可用，任务将重新启动。
-  * **此加密机制是否适用于批处理池中的 VM 磁盘？** 否。 对于云服务配置池，不对 OS 和临时磁盘应用加密。 对于虚拟机配置池，默认情况下，将使用 Microsoft 平台托管密钥对 OS 和任何指定的数据磁盘进行加密。 目前，不能为这些磁盘指定您自己的密钥。 若要使用 Microsoft 平台托管密钥为批处理池加密 Vm 的临时磁盘，必须在[虚拟机配置](/rest/api/batchservice/pool/add#virtualmachineconfiguration)池中启用[diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration)属性。 对于高度敏感的环境，我们建议启用临时磁盘加密，避免将敏感数据存储在 OS 和数据磁盘上。 有关详细信息，请参阅 [创建启用了磁盘加密的池](./disk-encryption.md)
-  * **系统分配的托管标识在计算节点上可用的批处理帐户上吗？** 否。 此托管标识目前仅用于访问客户托管的密钥的 Azure Key Vault。
+  * **此加密机制是否适用于批处理池中的 VM 磁盘？** 不是。 对于云服务配置池，不对 OS 和临时磁盘应用加密。 对于虚拟机配置池，默认情况下，将使用 Microsoft 平台托管密钥对 OS 和任何指定的数据磁盘进行加密。 目前，不能为这些磁盘指定您自己的密钥。 若要使用 Microsoft 平台托管密钥为批处理池加密 Vm 的临时磁盘，必须在[虚拟机配置](/rest/api/batchservice/pool/add#virtualmachineconfiguration)池中启用[diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration)属性。 对于高度敏感的环境，我们建议启用临时磁盘加密，避免将敏感数据存储在 OS 和数据磁盘上。 有关详细信息，请参阅 [创建启用了磁盘加密的池](./disk-encryption.md)
+  * **系统分配的托管标识在计算节点上可用的批处理帐户上吗？** 不是。 此托管标识目前仅用于访问客户托管的密钥的 Azure Key Vault。

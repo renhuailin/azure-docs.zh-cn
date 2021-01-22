@@ -8,23 +8,20 @@ ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c6b25fd3615fa76bc76e6d360f4c76a21a9ad02
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 817f9a88bd3536e9c0ec8a1057098e6b4a96716e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918103"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676351"
 ---
 # <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>使用 Azure 监控范围发现、连接和浏览 Synapse 中的数据 
 
-> [!IMPORTANT]
-> Azure Synapse Analytics 和 Azure 监控范围之间的集成目前处于预览阶段。 如果你有兴趣在 Synapse 中试用 Azure 监控范围，请与你的 Microsoft 销售代表联系。 
-
 在本文档中，你将了解在将 Azure 监控范围帐户注册到 Synapse 时可以执行的交互类型。 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备知识 
 
-- [Azure 监控范围帐户](../../purview/create-catalog-portal.md) 
+- [Azure Purview 帐户](../../purview/create-catalog-portal.md) 
 - [Synapse 工作区](../quickstart-create-workspace.md) 
 - [将 Azure 监控范围帐户连接到 Synapse](quickstart-connect-azure-purview.md) 
 
@@ -71,5 +68,5 @@ ms.locfileid: "97918103"
 
 ##  <a name="nextsteps"></a>后续步骤 
 
-- [注册并扫描 Azure 监控范围中的 Azure Synapse 资产](../../purview/register-scan-azure-synapse-analytics.md)
+- [在 Azure Purview 中注册并扫描 Azure Synapse 资产](../../purview/register-scan-azure-synapse-analytics.md)
 - [如何在 Azure 监控范围数据目录中搜索数据](../../purview/how-to-search-catalog.md)

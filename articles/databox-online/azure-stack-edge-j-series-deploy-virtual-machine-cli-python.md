@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 8ea0c27fdd64bae1e6fe9443df76c86e0eb89a75
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 54a4a938be18d39993652cecb87b3604e268fcef
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762906"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678947"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>使用 Azure CLI 和 Python 在 Azure Stack Edge Pro GPU 设备上部署 VM
 
@@ -123,7 +123,7 @@ ms.locfileid: "97762906"
 
     下面是上述命令的输出示例：
 
-    ```powershell
+    ```output
     PS C:\windows\system32> az --version
     azure-cli                         2.0.80
     
@@ -147,7 +147,7 @@ ms.locfileid: "97762906"
     PS C:\windows\system32>
     ```
 
-    如果没有 Azure CLI，请下载并[在 Windows 上安装 Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)。 可以使用 Windows 命令提示符或通过 Windows PowerShell 运行 Azure CLI。
+    如果没有 Azure CLI，请下载并[在 Windows 上安装 Azure CLI](/cli/azure/install-azure-cli-windows)。 可以使用 Windows 命令提示符或通过 Windows PowerShell 运行 Azure CLI。
 
 2. 记下 CLI 的 Python 位置。 需要使用该位置确定 Azure CLI 的受信任的根证书存储的位置。
 
@@ -171,7 +171,7 @@ ms.locfileid: "97762906"
 
     以下示例输出显示了 Haikunator 的安装：
 
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe -m pip install haikunator
 
     Collecting haikunator
@@ -187,7 +187,7 @@ ms.locfileid: "97762906"
 
     以下示例输出显示了 `msrestazure` 的 pip 安装： 
     
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe -m pip install msrestazure==0.6.2
     Requirement already satisfied: msrestazure==0.6.2 in c:\program files (x86)\microsoft sdks\azure\cli2\lib\site-packages (0.6.2)
     Requirement already satisfied: msrest<2.0.0,>=0.6.0 in c:\program files (x86)\microsoft sdks\azure\cli2\lib\site-packages (from msrestazure==0.6.2) (0.6.10)
@@ -211,7 +211,7 @@ ms.locfileid: "97762906"
     
     cmdlet 返回证书位置，如下所示：  
         
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python -c "import certifi; print(certifi.where())"
     C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
@@ -323,7 +323,7 @@ ms.locfileid: "97762906"
 
    下面显示了提供密码后成功登录的输出示例：  
    
-   ```powershell
+   ```output
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az login -u EdgeARMuser
    Password:
    [

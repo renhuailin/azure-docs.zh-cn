@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 531c423e42338b72b41c54466d5bfe8a89cd3c45
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e69781bf6d33c176d27c16a7f3cf38539ec28f07
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969631"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678232"
 ---
 # <a name="azure-image-builder-service-networking-options"></a>Azure 映像生成器服务网络选项
 
@@ -33,7 +33,7 @@ ms.locfileid: "91969631"
 
 ### <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？
 
-Azure 专用链接提供从虚拟网络到 Azure 平台即服务的专用连接， (PaaS) 、客户拥有或 Microsoft 合作伙伴服务。 它简化了网络体系结构，并通过消除公共 internet 的数据泄露来保护 Azure 中的终结点之间的连接。 有关详细信息，请参阅 [专用链接文档](../../private-link/index.yml)。
+Azure 专用链接提供从虚拟网络到 Azure 平台即服务的专用连接， (PaaS) 、客户拥有或 Microsoft 合作伙伴服务。 它简化了网络体系结构，并通过消除数据在公共 Internet 上的暴露来保护 Azure 中终结点之间的连接。 有关详细信息，请参阅 [专用链接文档](../../private-link/index.yml)。
 
 ### <a name="required-permissions-for-an-existing-vnet"></a>现有 VNET 的必需权限
 
@@ -89,4 +89,4 @@ Azure 映像生成器需要特定权限才能使用现有 VNET。 有关详细�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [Azure 映像生成器概述](image-builder-overview.md)。
+有关详细信息，请参阅 [Azure 映像生成器概述](../image-builder-overview.md)。

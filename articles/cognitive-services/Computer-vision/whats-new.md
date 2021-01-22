@@ -8,18 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 98b8cca95b8815b32fb5de6567adcf4f150551eb
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 33987be39258adc74cf4f88dbb0544f7026f6086
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561964"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183347"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
 了解服务中的新增功能。 这些内容可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
+
+## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="spatial-analysis-container-update"></a>空间分析容器更新
+
+已发布新版本的[空间分析容器](spatial-analysis-container.md)，它带有新的功能集。 借助此 Docker 容器，可分析实时流视频，了解人们与他们在物理环境中的移动之间的空间关系。 
+
+* 现可配置[空间分析操作](spatial-analysis-operations.md)来检测某人是否正戴着口罩等保护性面罩。 
+    * 可通过配置 `ENABLE_FACE_MASK_CLASSIFIER` 参数，为 `personcount`、`personcrossingline` 和 `personcrossingpolygon` 操作启用口罩分类器。
+    * 系统将以元数据的形式返回 `face_mask` 和 `face_noMask` 属性，其中有在视频流中检测到的每个人的置信度分数
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 

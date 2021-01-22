@@ -16,12 +16,12 @@ ms.subservice: hybrid
 ms.reviewer: chmutali
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4cdda52271bc7b9e9d854e0af181e2c8f22ad9a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 1f39ef611e2ea15ef3bc3dbfcf09e9624cbcf8b3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613132"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678215"
 ---
 # <a name="manage-agent-registry-options"></a>管理代理注册表选项
 
@@ -34,7 +34,7 @@ ms.locfileid: "98613132"
 System.DirectoryServices.Protocols.LdapException: The operation was aborted because the client side timeout limit was exceeded.
 `
 
-如果未为搜索属性编制索引，则 LDAP 搜索操作可能需要较长时间。 第一步，如果收到上述错误，请首先检查是否已为搜索/查找属性 [编制索引](https://docs.microsoft.com/windows/win32/ad/indexed-attributes)。 如果搜索属性已编制索引，并且错误仍然存在，则可以使用以下步骤提高 LDAP 连接超时值： 
+如果未为搜索属性编制索引，则 LDAP 搜索操作可能需要较长时间。 第一步，如果收到上述错误，请首先检查是否已为搜索/查找属性 [编制索引](/windows/win32/ad/indexed-attributes)。 如果搜索属性已编制索引，并且错误仍然存在，则可以使用以下步骤提高 LDAP 连接超时值： 
 
 1. 在运行 Azure AD Connect 设置代理的 Windows server 上以管理员身份登录。
 1. 使用 " *运行* " 菜单项打开注册表编辑器 ( # A0)  
@@ -48,7 +48,7 @@ System.DirectoryServices.Protocols.LdapException: The operation was aborted beca
 1. 如果已部署了多个设置代理，请将此注册表更改应用到所有代理以实现一致性。 
 
 ## <a name="configure-referral-chasing"></a>配置引用跟踪
-默认情况下，Azure AD Connect 预配代理不跟踪 [引用](https://docs.microsoft.com/windows/win32/ad/referrals)。 你可能想要启用检索跟踪，以支持某些 HR 入站预配方案，例如： 
+默认情况下，Azure AD Connect 预配代理不跟踪 [引用](/windows/win32/ad/referrals)。 你可能想要启用检索跟踪，以支持某些 HR 入站预配方案，例如： 
 * 跨多个域检查 UPN 的唯一性
 * 解析跨域管理器引用
 

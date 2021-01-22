@@ -10,26 +10,26 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick; azure-synapse
-ms.openlocfilehash: 902f0ac96349cf3e30ec12aeda02130afc2b800c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e137611809e2d2beefecfeaea11b4295bf6ba141
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460752"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678485"
 ---
 # <a name="performance-tune-with-materialized-views"></a>使用具体化视图优化性能
 
-Azure Synapse SQL 池中的具体化视图为复杂的分析查询提供一种低维护方法，以便无需任何查询更改即可实现快速性能。 本文讨论了使用具体化视图的一般指南。
+Azure Synapse SQL 池中的具体化视图为复杂的分析查询提供了一种维护工作少的方法，可以在不改变查询的情况下获得快速的性能。 本文讨论了使用具体化视图的一般指南。
 
 ## <a name="materialized-views-vs-standard-views"></a>具体化视图与标准视图
 
-Azure Synapse 中的 SQL 池支持标准和具体化视图。  两者都是用 SELECT 表达式创建并以逻辑表的形式呈现给查询的虚拟表。  视图封装了常见数据计算的复杂性，并为计算更改添加了一个抽象层，因此无需重写查询。  
+Azure Synapse 中的 SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式创建并以逻辑表的形式呈现给查询的虚拟表。  视图封装了常见数据计算的复杂性，并为计算更改添加了一个抽象层，因此无需重写查询。  
 
-每次使用标准视图时，该视图都会计算其数据。  磁盘上不存储任何数据。 用户通常将标准视图用作一种工具，可帮助组织 SQL 池中的逻辑对象和查询。  若要使用标准视图，查询需要直接引用它。
+每次使用标准视图时，该视图都会计算其数据。  磁盘上不存储任何数据。 用户通常使用标准视图作为一个有助于组织 SQL 池中的逻辑对象和查询的工具。  若要使用标准视图，查询需要直接引用它。
 
 具体化视图像表一样在 SQL 池中预先计算、存储和维护其数据。  每次使用具体化视图时都不需要重新计算。  这就是为什么使用具体化视图中的全部或部分数据的查询可以获得更快的性能。  更好的是，查询可以使用具体化视图，而无需直接引用它，因此无需更改应用程序代码。  
 
-标准视图上的大多数要求仍然适用于具体化视图。 有关具体化视图语法和其他要求的详细信息，请参阅 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+标准视图上的大多数要求仍然适用于具体化视图。 有关具体化视图语法和其他要求的详细信息，请参阅 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 | 比较                     | 查看                                         | 具体化视图
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -55,8 +55,8 @@ Azure Synapse 中的 SQL 池支持标准和具体化视图。  两者都是用 S
 与其他数据仓库提供程序相比，在 Azure Synapse Analytics 中实现的具体化视图还具有以下附加优势：
 
 - 根据基表中的数据更改，自动、同步刷新数据。 不需要任何用户操作。
-- 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
-- 支持查询特定的具体化视图建议。  请参阅 [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+- 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+- 支持查询特定的具体化视图建议。  请参阅 [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="common-scenarios"></a>常见方案  
 
@@ -97,11 +97,11 @@ Azure Synapse Analytics 是一种分布式查询处理系统。  SQL 表中的�
 
 **注意快速查询和成本之间的权衡**
 
-每个具体化视图都有相应的数据存储成本和视图维护成本。  当基表中的数据更改时，具体化视图的大小会增加，其物理结构也会改变。  为了避免查询性能下降，SQL 分析引擎单独维护每个具体化视图。  
+每个具体化视图都有相应的数据存储成本和视图维护成本。  当基表中的数据更改时，具体化视图的大小会增加，其物理结构也会改变。  为了避免查询性能下降，每个具体化视图会由 SQL Analytics 引擎单独维护。  
 
 当具体化视图和基表更改的数量增加时，维护工作负载会增加。   用户应该检查查询性能的提高是否可以弥补所有具体化视图所产生的成本。  
 
-你可以在 SQL 池中为具体化视图列表运行此查询：
+可以针对 SQL 池中的具体化视图列表运行此查询：
 
 ```sql
 SELECT V.name as materialized_view, V.object_id
@@ -141,7 +141,7 @@ GROUP BY A, C
 
 **并非所有性能优化都需要更改查询**
 
-SQL Analytics 优化器可以自动使用已部署的具体化视图来提高查询性能。  此支持透明地应用于不引用视图的查询和使用具体化视图创建中不支持的聚合的查询。  无需更改任何查询。 可以检查查询的预估执行计划，确认是否使用了具体化视图。  
+SQL Analytics 优化器可以自动使用部署的具体化视图来改善查询性能。  此支持透明地应用于不引用视图的查询和使用具体化视图创建中不支持的聚合的查询。  无需更改任何查询。 可以检查查询的预估执行计划，确认是否使用了具体化视图。  
 
 **监视具体化视图**
 
@@ -151,7 +151,7 @@ SQL Analytics 优化器可以自动使用已部署的具体化视图来提高查
 
 **具体化视图和结果集缓存**
 
-在 SQL 分析中，这两个功能在查询性能优化的同时推出。  结果集缓存用于从对静态数据的重复查询中获得高并发性和快速响应。  
+这两项优化查询性能的功能是在大致相同的时间引入 SQL Analytics 的。  结果集缓存用于从对静态数据的重复查询中获得高并发性和快速响应。  
 
 为使用缓存结果，请求缓存的查询的形式必须与生成缓存的查询匹配。  此外，缓存的结果必须应用于整个查询。  
 
