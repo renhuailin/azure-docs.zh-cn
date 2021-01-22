@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d39d72a79d4b273918986d0d350df4706592c77d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: c30d8a66cf9deffaa32e5ec0356a9067575b77e8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503175"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660696"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>基于标头的单一登录，适用于具有 Azure AD 应用 Proxy (预览版的本地应用) 
 
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) 应用程序代理在本地支持对使用标�
 
 2. 选择 " **Azure Active Directory**   " 作为 **预身份验证方法**。 
 3. 通过导航到 " **用户和组** " 并分配适当的用户和组来分配测试用户。 
-4. 打开浏览器并导航到 **External URL**   应用程序代理设置中的外部 URL。 
+4. 打开浏览器并导航到 ****   应用程序代理设置中的外部 URL。 
 5. 验证是否可以连接到应用程序。 即使你可以连接，但你仍无法访问该应用，因为标头未配置。 
 
 ## <a name="configure-single-sign-on"></a>配置单一登录 
@@ -85,9 +85,13 @@ Azure Active Directory (Azure AD) 应用程序代理在本地支持对使用标�
 ## <a name="test-your-app"></a>测试应用 
 
 完成所有这些步骤后，应用程序应运行并且可用。 测试应用： 
-1. 打开新的浏览器或专用浏览器窗口，确保清除以前缓存的标头。 然后导航到 **External URL**   应用程序代理设置中的外部 URL。
+1. 打开新的浏览器或专用浏览器窗口，确保清除以前缓存的标头。 然后导航到 ****   应用程序代理设置中的外部 URL。
 2. 使用分配给应用的测试帐户登录。 如果可以使用 SSO 加载并登录到应用程序，那就好了！ 
 
+## <a name="considerations"></a>注意事项
+
+- 应用程序代理用于提供本地或私有云上的应用程序的远程访问。 不建议使用应用程序代理来处理从公司网络内部发起的流量。
+- 应将对基于标头的身份验证应用程序的访问限制为仅限来自连接器或其他基于标头的基于标头的身份验证解决方案的流量。 这通常是通过在应用程序服务器上使用防火墙或 IP 限制限制对应用程序的网络访问来完成的。
 
 ## <a name="next-steps"></a>后续步骤
 

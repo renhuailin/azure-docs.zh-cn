@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 24b4f56e5798acc4d9bd0962be7059a359958645
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 97f1f5d0f1f351164e05d18b9f80c7f26450f31b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573235"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661581"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解集成
 
@@ -65,7 +65,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
 4. 创建一个将事件中心链接到 Azure 数字孪生实例的 Azure 数字孪生 [终结点](concepts-route-events.md#create-an-endpoint) 。
 
     ```azurecli-interactive
-    az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
+    az dt endpoint create eventhub -n <your Azure Digital Twins instance name> --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above>
     ```
 
 5. 在 Azure 数字孪生中创建[路由](concepts-route-events.md#create-an-event-route)，将孪生体更新事件发送到终结点。 此路由中的筛选器将仅允许向您的终结点传递一条不成对的更新消息。
@@ -89,11 +89,16 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
 
 有关将事件中心与 Azure Functions 一起使用的详细信息，请参阅 [*Azure Functions 的 Azure 事件中心触发器*](../azure-functions/functions-bindings-event-hubs-trigger.md)。
 
-在已发布的函数应用中，将函数代码替换为以下代码。
+在已发布的函数应用中，使用以下代码添加名为 **ProcessDTUpdatetoTSI** 的新函数。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateTSI.cs":::
 
-然后，该函数会将它创建的 JSON 对象发送到第二个事件中心，你将连接到时序见解。
+>[!NOTE]
+>可能需要使用 `dotnet add package` 命令或 Visual Studio NuGet 包管理器将包添加到项目。
+
+接下来， **发布** 新的 Azure 函数。 有关如何执行此操作的说明，请参阅 [*如何：设置用于处理数据的 Azure 函数*](how-to-create-azure-function.md#publish-the-function-app-to-azure)。
+
+在此之前，此函数会将它创建的 JSON 对象发送到第二个事件中心，您将连接到时序见解。 你将在下一节中创建该事件中心。
 
 稍后，你还将设置此函数将用于连接到你自己的事件中心的某些环境变量。
 
@@ -130,7 +135,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
-2. 使用获得的连接字符串在函数应用中创建包含连接字符串的应用设置：
+2. 使用结果中的 *primaryConnectionString* 值在 function app 中创建一个包含连接字符串的应用设置：
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string>" -g <resource group> -n <your App Service (function app) name>
@@ -152,15 +157,15 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>创建和连接时序见解实例
 
-接下来，您将设置一个时序见解实例，以便从第二个事件中心接收数据。 请按照以下步骤操作，有关此过程的更多详细信息，请参阅 [*教程：设置 Azure 时序见解 GEN2 PAYG 环境*](../time-series-insights/tutorials-set-up-tsi-environment.md)。
+接下来，你将设置一个时序见解实例，以便从第二个 (TSI) 事件中心接收数据。 请按照以下步骤操作，有关此过程的更多详细信息，请参阅 [*教程：设置 Azure 时序见解 GEN2 PAYG 环境*](../time-series-insights/tutorials-set-up-tsi-environment.md)。
 
-1. 在 Azure 门户中，开始创建时序见解资源。 
+1. 在 Azure 门户中，开始创建时序见解环境。 
     1. 选择 **Gen2 (L1)** 定价层。
     2. 需要为此环境选择 **时序 ID** 。 时序 ID 最多可以有三个值，你将使用这些值在时序见解中搜索数据。 对于本教程，可以使用 **$dtId**。 有关选择 [*时序 id 的最佳实践，*](../time-series-insights/how-to-select-tsid.md)请阅读有关选择 ID 值的详细信息。
     
         :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="时序见解环境的创建门户 UX。选择了 Gen2 (L1) 定价层，并且时序 ID 属性名称为 $dtId" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
 
-2. 选择 " **下一步：事件源** "，然后从上面选择事件中心信息。 还需要创建新的事件中心使用者组。
+2. 选择 " **下一步：事件源** "，然后从前面选择你的 TSI 事件中心信息。 还需要创建新的事件中心使用者组。
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="时序见解环境事件源的创建门户 UX。正在使用上面的事件中心信息创建事件源。你还将创建一个新的使用者组。" lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
 
@@ -174,7 +179,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
 
 现在，数据应流向时序见解实例，并准备好进行分析。 请按照以下步骤来浏览传入的数据。
 
-1. 在 [Azure 门户](https://portal.azure.com) 中打开时序见解实例 (可以在门户搜索栏) 中搜索实例的名称。 访问实例概述中所示的“时序见解资源管理器 URL”。
+1. 在 [Azure 门户](https://portal.azure.com) 中打开时序见解环境 (可以在门户搜索栏) 中搜索环境的名称。 访问实例概述中所示的“时序见解资源管理器 URL”。
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在时序见解环境的 &quot;概述&quot; 选项卡中选择 &quot;时序见解资源管理器 URL&quot;":::
 

@@ -3,21 +3,21 @@ title: 专用链接 - Azure 门户 - Azure Database for MariaDB
 description: 了解如何从 Azure 门户为 Azure Database for MariaDB 配置专用链接
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 79b3c3f8eca2fa4442a7845ca4aa3921d0302453
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 127a1c83525c4a9c457f551c05045a63a3c4347a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005038"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659618"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>使用门户创建和管理用于 Azure Database for MariaDB 的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。  在本文中，你将学习如何使用 Azure 门户在 Azure 虚拟网络和带有 Azure 专用终结点的 Azure Database for MariaDB 服务器中创建 VM。
 
-如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
 > 专用链接功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MariaDB 服务器。 请确保数据库服务器位于其中一个定价层中。
@@ -86,12 +86,12 @@ ms.locfileid: "96005038"
     | 地址空间 | 保留默认值“10.1.0.0/24”。|
     | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。|
     | 公共 IP | 保留默认值“(new) myVm-ip”。 |
-    | 公共入站端口 | 选择“允许所选端口”。 |
+    | 公共入站端口 | 选择“允许所选端口”  。 |
     | 选择入站端口 | 选择“HTTP”和“RDP”。 |
     |||
 
 
-1. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 1. 看到“验证通过”消息时，选择“创建” 。
 
@@ -118,7 +118,7 @@ ms.locfileid: "96005038"
     |||
 
 7. 选择“确定” 。 
-8. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
+8. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
 9. 当看到 验证通过的 消息时，选择“创建”。 
 10. 看到“验证通过”消息时选择“创建”。 
 
@@ -179,7 +179,7 @@ ms.locfileid: "96005038"
     ![创建的专用链接](media/concepts-data-access-and-security-private-link/show-mariadb-private-link.png)
 
     > [!NOTE] 
-    > 客户 DNS 设置中的 FQDN 未解析为配置的专用 IP。 必须为配置的 FQDN 设置一个 DNS 区域，如[此处](../dns/dns-operations-recordsets-portal.md)所示。
+    > 客户 DNS 设置中的 FQDN 未解析为配置的专用 IP。 你必须为已配置的 FQDN 设置一个 DNS 区域，如[此处](../dns/dns-operations-recordsets-portal.md)所示。
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>使用远程桌面 (RDP) 连接到 VM
 
@@ -194,7 +194,7 @@ ms.locfileid: "96005038"
 
 1. 打开 downloaded.rdp 文件。
 
-    1. 出现提示时，选择“连接”  。
+    1. 出现提示时，选择“连接”。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
@@ -227,7 +227,7 @@ ms.locfileid: "96005038"
 
 4. 在“新建连接”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 服务器类型| 选择“MariaDB”。|
     | 服务器名称| 选择 *mydemoserver.privatelink.mariadb.database.azure.com* |

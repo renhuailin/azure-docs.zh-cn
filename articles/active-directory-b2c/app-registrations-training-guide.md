@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7c9e3344ed819f607feeab88ac43a9dc286a61e0
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 430da23986fc36a0e94c049512ef716aff1fed5c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109090"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660244"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的新应用注册体验
 
@@ -66,9 +66,10 @@ Azure AD B2C 应用注册体验在适用于所有 Azure AD 租户的常规[应�
 还可以使用此选项，以便使用 Azure AD B2C 作为 SAML 服务提供程序。 [了解详细信息](identity-provider-adfs.md)。
 
 ## <a name="applications-for-devops-scenarios"></a>适用于 DevOps 方案的应用程序
+
 可使用其他帐户类型来创建用于管理 DevOps 方案（如使用 Microsoft Graph 上传 Identity Experience Framework 策略或预配用户）的应用。 了解[如何注册 Microsoft Graph 应用程序来管理 Azure AD B2C 资源](microsoft-graph-get-started.md)。
 
-你可能看不到所有 Microsoft Graph 权限，因为其中许多权限不适用于 Azure B2C 使用者用户。 [详细了解如何使用 Microsoft Graph 管理用户](manage-user-accounts-graph-api.md)。
+你可能看不到所有 Microsoft Graph 权限，因为其中许多权限不适用于 Azure B2C 使用者用户。 [详细了解如何使用 Microsoft Graph 管理用户](microsoft-graph-operations.md)。
 
 ## <a name="admin-consent-and-offline_accessopenid-scopes"></a>管理员同意和 offline_access+openid 范围
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->

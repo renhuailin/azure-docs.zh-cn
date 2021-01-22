@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 01/20/2021
 ms.author: justinha
-ms.openlocfilehash: c078117baf84d7dbfaaaa2b569abb8a5f5c67e6d
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 04c611b8a902d27f40893a05f301898c0111748f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619005"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660943"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 配置从 Azure AD 到 Azure Active Directory 域服务的作用域同步
 
@@ -41,15 +41,14 @@ ms.locfileid: "96619005"
 
 默认情况下，Azure AD 目录中的所有用户和组都同步到托管域。 如果只有几个用户需要访问托管域，则可以仅同步这些用户帐户。 此具有作用域的同步基于组。 配置基于组的具有作用域的同步时，只有属于指定组的用户帐户才会同步到托管域。 不同步嵌套组，只同步所选的特定组。
 
-可以在创建托管域时或完成部署后更改同步作用域。 现在还可以更改现有托管域上的同步作用域，而无需进行重新创建。
+您可以在创建托管域前后更改同步作用域。 同步范围由应用程序标识符为2565bd9d-da50-47d4-8b85-4c97f669dc36 的服务主体定义。 若要防止范围丢失，请不要删除或更改服务主体。 如果意外删除了它，则无法恢复同步作用域。 
+
+如果更改同步作用域，请记住以下注意事项：
+
+- 发生完全同步。
+- 托管域中不再需要的对象会被删除。 托管域中会新建对象。
 
 若要详细了解同步过程，请参阅[了解 Azure AD 域服务中的同步][concepts-sync]。
-
-> [!WARNING]
-> 更改同步作用域会导致托管域重新同步所有数据。 请注意以下事项：
->
->  * 如果你更改托管域的同步范围，便会发生完全重新同步。
->  * 托管域中不再需要的对象会被删除。 托管域中会新建对象。
 
 ## <a name="powershell-script-for-scoped-synchronization"></a>用于具有作用域的同步的 PowerShell 脚本
 

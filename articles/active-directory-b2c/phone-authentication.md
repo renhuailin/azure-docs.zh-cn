@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2600ea3488c643bcf215b058425de42cd439dcff
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178936"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660261"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>在 Azure AD B2C 中设置自定义策略的手机注册和登录
 
@@ -39,12 +39,12 @@ ms.locfileid: "98178936"
 >
 > *&lt;insert：隐私声明的链接&gt;*<br/>*&lt;insert：服务条款的链接&gt;*
 
-若要添加你自己的许可信息，请自定义以下示例，并将其包含在 LocalizedResources 中，其中包含自断言页面使用的 ContentDefinition 的 "" 和 "显示" 控件， ([电话注册和登录初学者包][starter-pack-phone]中的 *Phone_Email_Base.xml* 文件) ：
+若要添加您自己的许可信息，请自定义以下示例。 将该文件包含在 ContentDefinition 中的 "自断言" 页面所使用的 "" 中， `LocalizedResources` 并在 "[电话注册" 和 "登录" 初学者包][starter-pack-phone]中 (*Phone_Email_Base.xml* 文件) ：
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        
     <LocalizedStrings>
-    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard message and data rates may apply.</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
@@ -64,7 +64,7 @@ ms.locfileid: "98178936"
 
 ![用户在电话注册期间验证代码](media/phone-authentication/phone-signup-verify-code.png)
 
- 用户输入注册页上请求的任何其他信息，例如 **显示名称**、 **名字** 和 **姓氏** (国家/地区和电话号码保持) 。 如果用户想要使用其他电话号码，则他们可以选择 " **更改编号** " 以重新注册。 完成后，用户选择 " **继续**"。
+用户在注册页上输入所需的任何其他信息。 例如，" **显示名称**"、" **名字**" 和 " **姓氏** " ("国家/地区" 和 "电话号码" 保持) 。 如果用户想要使用其他电话号码，则他们可以选择 " **更改编号** " 以重新注册。 完成后，用户选择 " **继续**"。
 
 ![用户提供附加信息](media/phone-authentication/phone-signup-additional-info.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "98178936"
 
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在设置 OTP 之前，需要准备好以下资源。
 
@@ -99,8 +99,6 @@ ms.locfileid: "98178936"
 ## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>获取电话注册 & 登录初学者包
 
 首先更新电话注册和登录自定义策略文件，以便与 Azure AD B2C 租户配合使用。
-
-以下步骤假设已完成 [先决条件](#prerequisites) ，并已将 [自定义策略初学者包][starter-pack] 存储库克隆到本地计算机。
 
 1. 在 starter pack 存储库的本地克隆中查找 [电话注册和登录自定义策略文件][starter-pack-phone] ，或直接下载它们。 XML 策略文件位于以下目录中：
 
@@ -136,9 +134,9 @@ ms.locfileid: "98178936"
 
 ## <a name="get-user-account-by-phone-number"></a>按电话号码获取用户帐户
 
-使用电话号码注册但未提供恢复电子邮件地址的用户在 Azure AD B2C 目录中记录为其电话号码作为登录名。 如果用户希望更改其电话号码，则支持人员或支持团队必须首先查找其帐户，然后更新他们的电话号码。
+使用电话号码注册的用户（没有恢复电子邮件地址）将记录在 Azure AD B2C 目录中，并将其电话号码作为登录名。 若要更改电话号码，你的技术支持或支持团队必须首先查找其帐户，然后更新他们的电话号码。
 
-您可以使用 [Microsoft Graph](manage-user-accounts-graph-api.md) (登录名) 查找用户的电话号码：
+您可以使用 [Microsoft Graph](microsoft-graph-operations.md) (登录名) 查找用户的电话号码：
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')

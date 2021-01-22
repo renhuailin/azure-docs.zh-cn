@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68a129f38e9a94a7e381d11ffa3c3d02791b025b
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: e48fead4d4364fd84f178388dbfb9158296e687b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755763"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659965"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批量听录
 
-批量听录是一组 REST API 操作，可用于听录存储中的大量音频。 你可以使用典型的 URI 或 [共享访问签名 (SAS) ](../../storage/common/storage-sas-overview.md) URI 来指向音频文件，并异步接收脚本结果。 使用 v3.0 API，你可以听录一个或多个音频文件，或者处理整个存储容器。
+批量听录是一组 REST API 操作，可用于听录存储中的大量音频。 可以使用典型 URI 或[共享访问签名 (SAS)](../../storage/common/storage-sas-overview.md) URI 指向音频文件并异步接收听录结果。 使用 v3.0 API，你可以听录一个或多个音频文件，或者处理整个存储容器。
 
 可以使用批量听录 REST API 调用以下方法：
 
@@ -85,7 +85,7 @@ ms.locfileid: "97755763"
 }
 ```
 
-**正在处理整个存储容器。** 容器 [SAS](../../storage/common/storage-sas-overview.md) 应该包含 `r` (读取) 并 `l` (列表) 权限：
+**处理整个存储容器。** 容器 [SAS](../../storage/common/storage-sas-overview.md) 应包含 `r`（读取）和 `l`（列表）权限：
 
 ```json
 {
@@ -177,7 +177,7 @@ ms.locfileid: "97755763"
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      使用 [即席 SAS](../../storage/common/storage-sas-overview.md) 将可选 URL 附加到 Azure 中的可写容器。 结果存储在此容器中。 不支持具有存储访问策略的 SAS。 如果未指定，Microsoft 会将结果存储在由 Microsoft 管理的存储容器中。 当通过调用[删除听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)来删除听录时，结果数据也会被删除。
+      Azure 中可写容器的可选 URL（包含[临时 SAS](../../storage/common/storage-sas-overview.md)）。 结果存储在此容器中。 不支持具有存储访问策略的 SAS。 如果未指定，Microsoft 会将结果存储在由 Microsoft 管理的存储容器中。 当通过调用[删除听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)来删除听录时，结果数据也会被删除。
 :::row-end:::
 
 ### <a name="storage"></a>存储
@@ -208,7 +208,8 @@ ms.locfileid: "97755763"
   ],
   "recognizedPhrases": [                // results for each phrase and each channel individually
     {
-      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"
+      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"          
+      "speaker": 1,                     // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
       "channel": 0,                     // channel number of the result
       "offset": "PT0.07S",              // offset in audio of this phrase, ISO 8601 encoded duration 
       "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
@@ -219,7 +220,6 @@ ms.locfileid: "97755763"
       "nBest": [
         {
           "confidence": 0.898652852,    // confidence value for the recognition of the whole phrase
-          "speaker": 1,                 // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
           "lexical": "hello world",
           "itn": "hello world",
           "maskedITN": "hello world",

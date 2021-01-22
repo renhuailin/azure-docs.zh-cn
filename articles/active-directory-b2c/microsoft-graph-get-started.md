@@ -1,5 +1,5 @@
 ---
-title: 使用 Microsoft Graph 管理资源
+title: 注册 Microsoft Graph 应用程序
 titleSuffix: Azure AD B2C
 description: 通过注册向其授予了所需 Graph API 权限的应用程序，准备使用 Microsoft Graph 管理 Azure AD B2C 资源。
 services: B2C
@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 01/21/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61e32f50e02e45487830c5ea7ff476a0571960f6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1886a0308f32ed53a1c9f0974715f20823e8bdd5
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953995"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660346"
 ---
-# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
+# <a name="register-a-microsoft-graph-application"></a>注册 Microsoft Graph 应用程序
 
 利用 [Microsoft Graph][ms-graph]，你可以管理 Azure AD B2C 租户中的许多资源，包括客户用户帐户和自定义策略。 通过编写调用 [Microsoft Graph API][ms-graph-api] 的脚本或应用程序，你可以自动执行租户管理任务，例如：
 
@@ -83,12 +83,13 @@ ms.locfileid: "94953995"
 1. 选择“添加”  。 可能需要几分钟才能完全传播权限。
 
 ## <a name="next-steps"></a>后续步骤
+
 现在，你已注册了管理应用程序并向其授予了所需的权限，你的应用程序和服务（例如 Azure Pipelines）现在可以使用其凭据和权限与 Microsoft Graph API 进行交互。 
 
 * [从 Azure AD 获取访问令牌](/graph/auth-v2-service#4-get-an-access-token)
 * [使用访问令牌调用 Microsoft Graph](/graph/auth-v2-service#4-get-an-access-token)
 * [Microsoft Graph 支持的 B2C 操作](microsoft-graph-operations.md)
-* [使用 Microsoft Graph 管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)
+* [使用 Microsoft Graph 管理 Azure AD B2C 用户帐户](microsoft-graph-operations.md)
 * [使用 Azure AD 报告 API 获取审核日志](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)
 
 <!-- LINKS -->

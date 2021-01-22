@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c4db7bf989a0062f87a5c3e6303ba64224996554
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2956f0ffb562214477249da3198ebbe42ef9bb45
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224432"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660363"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录流
 
@@ -30,7 +30,7 @@ ms.locfileid: "98224432"
 * 用户可以使用 Azure AD B2C 本地帐户登录
 * 使用社交帐户注册或登录
 * 密码重置
-* 用户无法注册 Azure AD B2C 本地帐户-若要创建帐户，管理员可以使用 [MS 图形 API](manage-user-accounts-graph-api.md)。
+* 用户无法注册 Azure AD B2C 本地帐户-若要创建帐户，管理员可以使用 [MS 图形 API](microsoft-graph-operations.md)。
 
 ![配置文件编辑流](./media/add-sign-in-policy/sign-in-user-flow.png)
 

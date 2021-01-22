@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: 7af26be91ff129e4c968bcb131cc98290cd8d7b9
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: b2e9c267b0a3723c9ac7b3edd49e23b95741962f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610074"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660447"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>单击 "分析自动收集插件" Application Insights JavaScript SDK
 
@@ -69,7 +69,7 @@ appInsights.loadAppInsights();
     2. 为了提高效率，该插件会将此标记用作标志，当遇到此标记时，它会阻止自身进一步处理 DOM (文档对象模型) 向上处理。
     
     > [!CAUTION]
-    > `parentDataTag`使用后，它将在整个应用程序中产生持久效果，而不只是在中使用的 HTML 元素。
+    > 一旦 `parentDataTag` 使用，SDK 就会开始在整个应用程序中查找父标记，而不只是使用该应用程序的 HTML 元素。
 4. `customDataPrefix` 例如，用户提供的应始终以开头 `data-` `data-sample-` 。 在 HTML 中， `data-*` 全局特性构成了一类称为 "自定义数据属性" 的特性，这些特性允许通过脚本在 HTML 及其 DOM 表示形式之间交换专有信息。 旧版浏览器 (Internet Explorer，Safari) 会丢弃它不理解的属性，除非它们以开头 `data-` 。
 
     `*`在 `data-*` [XML 名称的生产规则](https://www.w3.org/TR/REC-xml/#NT-Name)之后，中的可能会被替换为任何名称，但有以下限制：
@@ -314,5 +314,5 @@ appInsights.loadAppInsights();
 
 - 查看适用于单击分析自动收集插件的 [GitHub 存储库](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) 和 [NPM 包](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) 。
 - 使用使用 [体验中的事件分析](usage-segmentation.md) ，按可用维度分析顶部单击和切片。
-- 在 [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)中，在 CustomEvents 表中的 "内容" 字段下查找 "内容" 字段下的数据。
+- 在 [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)中，在 CustomEvents 表中的 "内容" 字段下查找 "内容" 字段下的数据。 有关其他指南，请参阅 [示例应用](https://go.microsoft.com/fwlink/?linkid=2152871) 。
 - 构建 [工作簿](../platform/workbooks-overview.md) 以创建单击数据的自定义可视化效果。

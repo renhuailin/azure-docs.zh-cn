@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9759c1109c7be279520fa187bd3366bcac505d46
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 5552c93c1c65f08f70ed8929d81126035aa2a357
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503737"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661198"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中定义自定义属性
 
@@ -31,9 +31,9 @@ Azure AD B2C 目录附带了一 [组内置属性](user-profile-attributes.md)。
 * 标识提供程序具有必须保持的唯一用户标识符 **uniqueUserGUID**。
 * 自定义用户旅程需要保留用户的状态 **migrationStatus**，以供其他逻辑操作。
 
-Azure AD B2C 允许扩展存储在每个用户帐户上的属性集。 还可以使用 [Microsoft Graph API](manage-user-accounts-graph-api.md) 读写这些属性。
+Azure AD B2C 允许扩展存储在每个用户帐户上的属性集。 还可以使用 [Microsoft Graph API](microsoft-graph-operations.md) 读写这些属性。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -46,7 +46,7 @@ Azure AD B2C 允许扩展存储在每个用户帐户上的属性集。 还可以
 1. 提供自定义属性的“名称”（例如，“ShoeSize”）
 1. 选择“数据类型”。 仅“String”、“Boolean”和“Int”可供选择。
 1. （可选）输入“说明”以供参考。
-1. 单击 **创建**。
+1. 单击“创建”。
 
 自定义属性现已在 **用户属性** 列表中提供，并可用于用户流。 自定义属性仅在任何用户流中首次使用时创建，而不是在将其添加到 **用户属性** 列表中时创建。
 
@@ -56,9 +56,9 @@ Azure AD B2C 允许扩展存储在每个用户帐户上的属性集。 还可以
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 选择策略（例如，“B2C_1_SignupSignin”）将其打开。
-1. 选择“用户属性”，然后选择自定义属性（例如，“ShoeSize”）。 单击“保存” 。
+1. 选择“用户属性”，然后选择自定义属性（例如，“ShoeSize”）。 单击“保存”。
 1. 选择“应用程序声明”，然后选择自定义属性。
-1. 单击“保存” 。
+1. 单击“保存”。
 
 使用新创建的自定义属性创建新用户后，可在 [Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)中查询该对象。 或者，您也可以使用用户流上的 " [运行用户流](./tutorial-create-user-flows.md) " 功能来验证客户体验。 现在可以在注册期间收集的属性的列表中看到“ShoeSize”，并在发送回应用程序的令牌中看到它。
 
@@ -72,7 +72,7 @@ Azure AD B2C 允许扩展存储在每个用户帐户上的属性集。 还可以
 
 ## <a name="get-the-application-properties"></a>获取应用程序属性
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择 " **应用注册**"，然后选择 " **所有应用程序**"。
@@ -117,7 +117,7 @@ Microsoft Graph API 支持使用扩展特性创建和更新用户。 图形 API 
 
 ## <a name="upload-your-custom-policy"></a>上传自定义策略
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在顶部菜单中选择 " **目录 + 订阅** " 筛选器并选择包含 Azure AD B2C 租户的目录，确保使用的是包含 Azure AD 租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
 4. 选择“标识体验框架”。
@@ -135,7 +135,7 @@ Microsoft Graph API 支持使用扩展特性创建和更新用户。 图形 API 
 |名称     |适用范围 |
 |---------|---------|
 |`extension_loyaltyId`  | 自定义策略|
-|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft 图形 API](manage-user-accounts-graph-api.md)|
+|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft 图形 API](microsoft-graph-operations.md)|
 
 下面的示例演示如何在 Azure AD B2C 自定义策略声明定义中使用自定义特性。
 

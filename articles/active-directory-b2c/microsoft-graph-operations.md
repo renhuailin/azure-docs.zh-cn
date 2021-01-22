@@ -1,29 +1,31 @@
 ---
-title: 支持的 Microsoft Graph 操作
+title: 使用 Microsoft Graph 管理资源
 titleSuffix: Azure AD B2C
-description: 支持的用于管理 Azure AD B2C 资源（包括用户、用户流、标识提供者、自定义策略、策略密钥，等等）的 Microsoft Graph 操作的索引。
+description: 如何通过调用 Microsoft Graph API 并使用应用程序标识来自动处理 Azure AD B2C 租户中的资源。
 services: B2C
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
-ms.date: 10/15/2020
+ms.topic: how-to
+ms.date: 01/21/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.custom: fasttrack-edit
-ms.openlocfilehash: fed1e31380381b864530b3fa0b9e8c0886737d04
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 1dc5b8dc8930d75456f307324ef97bd60e78eca9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033602"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660151"
 ---
-# <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>可用于 Azure AD B2C 的 Microsoft Graph 操作
+# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
-支持用于管理 Azure AD B2C 资源（包括用户、标识提供者、用户流、自定义策略和策略密钥）的下列 Microsoft Graph API 操作。
+Microsoft Graph 允许管理 Azure AD B2C 目录中的资源。 支持用于管理 Azure AD B2C 资源（包括用户、标识提供者、用户流、自定义策略和策略密钥）的下列 Microsoft Graph API 操作。 以下各部分中的每个链接对应于 Microsoft Graph API 参考中该操作的相应页面。 
 
-以下各部分中的每个链接对应于 Microsoft Graph API 参考中该操作的相应页面。
+## <a name="perquisites"></a>必备
+
+若要使用 MS 图形 API，并与 Azure AD B2C 租户中的资源进行交互，你需要一个授予此操作权限的应用程序注册。 按照 [使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md) 一文中的步骤来创建管理应用程序可以使用的应用程序注册。 
 
 ## <a name="user-management"></a>用户管理
 
@@ -33,8 +35,6 @@ ms.locfileid: "98033602"
 - [更新用户](/graph/api/user-update)
 - [删除用户](/graph/api/user-delete)
 
-有关使用 Microsoft Graph API 管理 Azure AD B2C 用户帐户的详细信息，请参阅[使用 Microsoft Graph 管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)。
-
 ## <a name="user-phone-number-management"></a>用户电话号码管理
 
 - [添加](/graph/api/authentication-post-phonemethods)
@@ -42,7 +42,7 @@ ms.locfileid: "98033602"
 - [更新](/graph/api/b2cauthenticationmethodspolicy-update)
 - [删除](/graph/api/phoneauthenticationmethod-delete)
 
-有关使用 Microsoft Graph API 管理用户登录电话号码的详细信息，请参阅 [B2C 身份验证方法](/graph/api/resources/b2cauthenticationmethodspolicy)。
+有关管理用户的登录电话号码的详细信息，请参阅 [B2C 身份验证方法](/graph/api/resources/b2cauthenticationmethodspolicy)。
 
 ## <a name="identity-providers-user-flow"></a>标识提供者（用户流）
 
@@ -77,7 +77,7 @@ ms.locfileid: "98033602"
 
 Identity Experience Framework 存储着自定义策略中引用的机密，以在组件之间建立信任关系。 这些机密可以是对称或非对称密钥/值。 在 Azure 门户中，这些实体显示为 **策略密钥**。
 
-Microsoft Graph API 中策略密钥的顶层资源是[信任的框架密钥集](/graph/api/resources/trustframeworkkeyset)。 每个 **密钥集** 都包含至少一个 **密钥**。 若要创建密钥，请先创建一个空的密钥集，然后在密钥集中生成一个密钥。 你可以创建手动机密、上传证书或 PKCS12 密钥。 密钥可以是生成的机密、你定义的字符串 (如 Facebook 应用程序机密) 或上传的证书。 如果密钥集具有多个密钥，则只有其中一个密钥处于活动状态。
+Microsoft Graph API 中策略密钥的顶层资源是[信任的框架密钥集](/graph/api/resources/trustframeworkkeyset)。 每个 **密钥集** 都包含至少一个 **密钥**。 若要创建密钥，请先创建一个空的密钥集，然后在密钥集中生成一个密钥。 你可以创建手动机密、上传证书或 PKCS12 密钥。 密钥可以是生成的机密、字符串 (例如 Facebook 应用程序机密) 或上传的证书。 如果密钥集具有多个密钥，则只有其中一个密钥处于活动状态。
 
 ### <a name="trust-framework-policy-keyset"></a>信任框架策略密钥集
 
@@ -114,4 +114,93 @@ Azure AD B2C 提供一个目录，其中可以保存每个用户的 100 个自�
 
 - [列出审核日志](/graph/api/directoryaudit-list)
 
-有关通过 Microsoft Graph API 访问 Azure AD B2C 审核日志的详细信息，请参阅 [访问 Azure AD B2C 审核日志](view-audit-logs.md)。
+有关访问 Azure AD B2C 审核日志的详细信息，请参阅 [访问 Azure AD B2C 审核日志](view-audit-logs.md)。
+
+## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>代码示例：如何以编程方式管理用户帐户
+
+此代码示例是一个 .NET Core 控制台应用程序，它使用 [Microsoft Graph SDK](/graph/sdks/sdks-overview) 来与 Microsoft Graph API 交互。 其中的代码演示了如何调用 API 来以编程方式管理 Azure AD B2C 租户中的用户。
+可以[下载示例存档](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*.zip)，在 GitHub 中[浏览存储库](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management)，或克隆存储库：
+
+```cmd
+git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management.git
+```
+
+获取代码示例后，根据环境对其进行配置，然后生成项目：
+
+1. 在 [Visual Studio](https://visualstudio.microsoft.com) 或 [Visual Studio Code](https://code.visualstudio.com) 中打开项目。
+1. 打开 `src/appsettings.json`。
+1. 在 `appSettings` 部分中，将替换 `your-b2c-tenant` 为你的租户的名称，将替换为 `Application (client) ID` 你的 `Client secret` 管理应用程序注册值。 有关详细信息，请参阅 [注册 Microsoft Graph 应用程序](microsoft-graph-get-started.md)。
+1. 在存储库的本地克隆中打开控制台窗口，切换到 `src` 目录，然后生成项目：
+
+    ```console
+    cd src
+    dotnet build
+    ```
+    
+1. 使用 `dotnet` 命令运行应用程序：
+
+    ```console
+    dotnet bin/Debug/netcoreapp3.1/b2c-ms-graph.dll
+    ```
+
+应用程序将显示可执行的命令列表。 例如，获取所有用户、获取单个用户、删除用户、更新用户的密码和批量导入。
+
+### <a name="code-discussion"></a>代码探讨
+
+示例代码使用 [Microsoft Graph SDK](/graph/sdks/sdks-overview)，旨在简化可访问 Microsoft Graph 的优质、高效且可复原的应用程序的生成。
+
+对 Microsoft Graph API 发出的任何请求都需要使用访问令牌进行身份验证。 该解决方案利用 [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet 包，该包提供 Microsoft 身份验证库 (MSAL) 的基于身份验证方案的包装器，以便与 Microsoft Graph SDK 配合使用。
+
+_Program.cs_ 文件中的 `RunAsync` 方法：
+
+1. 从 _appsettings.json_ 文件读取应用程序设置
+1. 使用 [OAuth 2.0 客户端凭据授予](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)流初始化身份验证提供程序。 应用可以使用客户端凭据授予流获取用于调用 Microsoft Graph API 的访问令牌。
+1. 使用身份验证提供程序设置 Microsoft Graph 服务客户端：
+
+    ```csharp
+    // Read application settings from appsettings.json (tenant ID, app ID, client secret, etc.)
+    AppSettings config = AppSettingsFile.ReadFromJsonFile();
+
+    // Initialize the client credential auth provider
+    IConfidentialClientApplication confidentialClientApplication = ConfidentialClientApplicationBuilder
+        .Create(config.AppId)
+        .WithTenantId(config.TenantId)
+        .WithClientSecret(config.ClientSecret)
+        .Build();
+    ClientCredentialProvider authProvider = new ClientCredentialProvider(confidentialClientApplication);
+
+    // Set up the Microsoft Graph service client with client credentials
+    GraphServiceClient graphClient = new GraphServiceClient(authProvider);
+    ```
+
+然后，在 _UserService.cs_ 中使用初始化的 *GraphServiceClient* 来执行用户管理操作。 例如，获取租户中的用户帐户列表：
+
+```csharp
+public static async Task ListUsers(GraphServiceClient graphClient)
+{
+    Console.WriteLine("Getting list of users...");
+
+    // Get all users (one page)
+    var result = await graphClient.Users
+        .Request()
+        .Select(e => new
+        {
+            e.DisplayName,
+            e.Id,
+            e.Identities
+        })
+        .GetAsync();
+
+    foreach (var user in result.CurrentPage)
+    {
+        Console.WriteLine(JsonConvert.SerializeObject(user));
+    }
+}
+```
+
+[使用 Microsoft Graph SDK 发出 API 调用](/graph/sdks/create-requests)中介绍了如何在 Microsoft Graph 中读取和写入信息，使用 `$select` 控制返回的属性，提供自定义查询参数，以及使用 `$filter` 和 `$orderBy` 查询参数。
+
+<!-- LINK -->
+
+[graph-objectIdentity]: /graph/api/resources/objectidentity
+[graph-user]: (https://docs.microsoft.com/graph/api/resources/user)

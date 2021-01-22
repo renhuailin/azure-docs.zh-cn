@@ -1,5 +1,5 @@
 ---
-title: 使用电话号码进行短信登录的用户体验（预览版）- Azure AD
+title: 电话号码的 SMS 登录用户体验-Azure AD
 description: 详细了解使用新的或现有的电话号码进行短信登录的用户体验
 services: active-directory
 author: curtand
@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 04/14/2020
+ms.date: 01/21/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a4dcb6774990c03ce3d55fb6c519b0600a1086f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a50f2032a978a552205d1bba602249f34f0478a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536879"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661580"
 ---
-# <a name="use-your-phone-number-as-a-user-name-preview"></a>使用电话号码作为用户名（预览版）
+# <a name="use-your-phone-number-as-a-user-name"></a>使用你的电话号码作为用户名
 
 注册设备后，你可以通过手机访问你的组织的服务，而你的组织无法访问你的手机。 如果你是管理员，可以在[为用户配置和启用基于短信的身份验证](../authentication/howto-authentication-sms-signin.md)中找到详细信息。
 
@@ -36,7 +36,7 @@ ms.locfileid: "91536879"
 1. 随后会看到提示“已验证短信。 你的手机已成功注册。”
 
 > [!Important]
-> 由于预览版中的已知问题，在添加电话号码后的短时间内，不会注册这个用于短信登录的号码。 必须使用添加的号码登录，然后按照提示注册该号码，用于短信登录。
+> 由于已知问题，在短时间内添加电话号码将不会注册 SMS 登录号码。 必须使用添加的号码登录，然后按照提示注册该号码，用于短信登录。
 
 ### <a name="when-the-phone-number-is-in-use"></a>当电话号码已被使用时
 
