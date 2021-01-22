@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: allensu
-ms.openlocfilehash: a1d94166c6c56a3652dc0ad532bd481c6e792c52
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 0b5e8f28be9960a2bb4e1406a293ab5e03962681
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217084"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680563"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>使用 Azure CLI 将多个 IP 地址分配给虚拟机
 
@@ -38,7 +38,7 @@ ms.locfileid: "98217084"
 3. 从命令行界面使用命令 `az login` 登录，并选择要使用的订阅。
 4. 通过在 Linux 或 Mac 计算机上执行以下脚本创建 VM。 该脚本创建 1 个资源组、1 个虚拟网络 (VNet)、1 个具有 3 个 IP 配置的 NIC，以及附加 2 个 NIC 的 VM。 NIC、公共 IP 地址、虚拟网络和 VM 资源均必须位于同一位置和订阅。 虽然资源不必都存在于同一资源组中，但是在以下脚本中资源都存在于同一资源组中。
 
-```bash
+```azurecli
     
 #!/bin/sh
     

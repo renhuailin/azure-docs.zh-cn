@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13756be041f88883d84f9558308c7fe5c9be2d0e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: da21359b56b9e5b9d6e971032d06f8bae94efce0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116001"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682132"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>计划条件访问部署
 
@@ -485,4 +485,4 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 [详细了解标识保护](../identity-protection/overview-identity-protection.md)
 
-[使用 Microsoft Graph API 管理条件性访问策略](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy)
+[使用 Microsoft Graph API 管理条件性访问策略](/graph/api/resources/conditionalaccesspolicy)

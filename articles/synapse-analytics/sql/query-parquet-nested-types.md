@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 45e1ae5b8a1084334b7596f62c272e16294c4c14
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6df8c3238ed6dfeb37fd10d0a7e97aa839e7bf26
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118755"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681071"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的无服务器 SQL 池查询 Parquet 和 JSON 文件中的嵌套类型
 
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > 此示例使用 COVID-19 开放式研究数据集中的文件。 [请参阅此处的数据的许可和结构](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 第一步是创建将在其中创建数据源的数据库。 然后，您将通过在数据库上运行 [安装脚本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) 来初始化这些对象。 安装脚本将创建在示例中使用的数据源、数据库范围的凭据和外部文件格式。
 
@@ -147,7 +147,7 @@ FROM
 
 ## <a name="access-elements-from-repeated-columns"></a>访问重复列中的元素
 
-下面的查询读取 justSimpleArray parquet 文件，并使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 从重复列中检索标量元素，例如数组或映射：
+下面的查询读取 justSimpleArray parquet 文件，并使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 从重复列中检索标量元素，例如数组或映射：
 
 ```sql
 SELECT
@@ -172,7 +172,7 @@ FROM
 
 ## <a name="access-sub-objects-from-complex-columns"></a>从复杂列访问子对象
 
-下面的查询读取 mapExample parquet 文件，并使用 [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 从重复列（如数组或映射）中检索非标量元素：
+下面的查询读取 mapExample parquet 文件，并使用 [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 从重复列（如数组或映射）中检索非标量元素：
 
 ```sql
 SELECT

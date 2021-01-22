@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 9032fcaf35265c791913f5b69fb0972bada6885f
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: eb74137e515bff7a432367e75b4208490b1243c0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602455"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681381"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>将 Azure Monitor 与 Azure Synapse Analytics 工作区配合使用
 
@@ -103,7 +103,7 @@ Azure Monitor 提供了大多数 Azure 服务的基本基础结构指标、警�
 
 下面是 Azure Synapse Analytics 工作区发出的日志：
 
-| Log Analytics 表名称 | 日志类别名称                 | 描述 |
+| Log Analytics 表名称 | 日志类别名称                 | 说明 |
 |-------------------------------|-------------------------------------------------|-------------|
 | SynapseGatewayApiRequests     | GatewayApiRequests             | Azure Synapse 网关 API 请求。 |
 | SynapseRbacOperations         | SynapseRbacOperations          | Azure Synapse 基于角色的访问控制 (SRBAC) 操作。 |
@@ -112,7 +112,7 @@ Azure Monitor 提供了大多数 Azure 服务的基本基础结构指标、警�
 
 下面是由专用 SQL 池发出的日志：
 
-| Log Analytics 表名称        | 日志类别名称             | 描述 |
+| Log Analytics 表名称        | 日志类别名称             | 说明 |
 |----------------------|--------------------------------------|-------------|
 | SynapseSqlPoolExecRequests  | ExecRequests | Azure Synapse 专用 SQL 池中的 SQL 请求/查询的相关信息。
 | SynapseSqlPoolDmsWorkers    | DmsWorkers   | 有关在 Azure Synapse 专用 SQL 池中完成 DMS 步骤的工作线程的信息。
@@ -121,17 +121,17 @@ Azure Monitor 提供了大多数 Azure 服务的基本基础结构指标、警�
 | SynapseSqlPoolWaits         | 等待        | 有关在 Azure Synapse 专用 SQL 池中执行 SQL 请求/查询期间遇到的等待状态的信息，包括锁和等待传输队列。
 
 有关这些日志的详细信息，请参阅以下信息：
-- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 ### <a name="apache-spark-pool-log"></a>Apache Spark 池日志
 
 下面是 Apache Spark 池发出的日志：
 
-| Log Analytics 表名称               | 日志类别名称              | 描述                 |
+| Log Analytics 表名称               | 日志类别名称              | 说明                 |
 |-----------------------------|---------------------------------------|-----------------------------|
 | SynapseBigDataPoolApplicationsEnded | BigDataPoolAppsEnded | Apache Spark 应用程序已结束的相关信息 |
 
@@ -166,7 +166,7 @@ Azure Monitor 提供了大多数 Azure 服务的基本基础结构指标、警�
 
 1. 如果所选工作区中不存在任何诊断设置，系统将提示你创建设置。 选择“启用诊断”。
 
-   如果工作区中已有诊断设置，你将看到已在资源上配置的设置列表。 选择“添加诊断设置”。
+   如果工作区中已有诊断设置，你将看到已在资源上配置的设置列表。 选择“添加诊断设置”。 
 
 1. 为设置指定名称，选择 " **发送到 Log Analytics**"，然后从 **Log Analytics 工作** 区中选择一个工作区。
 

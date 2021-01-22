@@ -1,7 +1,7 @@
 ---
-title: '如何使用 SmartNoise 包 (预览保留数据隐私) '
+title: '差异隐私 SmartNoise (preview) '
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 SmartNoise 包将差异隐私最佳做法应用于 Azure 机器学习模型。
+description: 了解如何使用 SmartNoise 开放源代码库将差异保密最佳实践应用到 Azure 机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ ms.custom: how-to, responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 12/21/2020
-ms.openlocfilehash: ebc14d6c9d0ebaa6e0258578f94771c9f286bdb4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 01/21/2020
+ms.openlocfilehash: 62a002569696da4ef18e7bd967f027eb8247ef65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221929"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681398"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure 机器学习（预览版）中使用差分隐私
 
-了解如何使用 SmartNoise Python 包将差异隐私最佳做法应用于 Azure 机器学习模型。
+了解如何使用 SmartNoise Python 开源库将差异保密最佳实践应用到 Azure 机器学习模型。
 
-差分隐私是隐私的最高标准定义。 遵守此隐私定义的系统可针对各种数据重建和重新识别攻击（包括拥有辅助信息的攻击者发起的攻击）提供强大的防护保障。 详细了解[差分隐私的工作原理](./concept-differential-privacy.md)。
+差分隐私是隐私的最高标准定义。 遵守此隐私定义的系统可针对各种数据重建和重新识别攻击（包括拥有辅助信息的攻击者发起的攻击）提供强大的防护保障。 详细了解 [差分隐私的工作原理](./concept-differential-privacy.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -30,7 +30,7 @@ ms.locfileid: "98221929"
 - 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 - [Python 3](https://www.python.org/downloads/)
 
-## <a name="install-smartnoise-packages"></a>安装 SmartNoise 包
+## <a name="install-smartnoise-python-libraries"></a>安装 SmartNoise Python 库
 
 ### <a name="standalone-installation"></a>独立安装
 
@@ -51,9 +51,9 @@ import opendp.smartnoise.sql
 
 如果导入成功，则表示这些库已安装且可供使用。
 
-### <a name="docker-image"></a>Docker 映像
+### <a name="docker-image-installation"></a>Docker 映像安装
 
-你还可以将 SmartNoise 包与 Docker 配合使用。
+还可以将 SmartNoise 包与 Docker 配合使用。
 
 拉取 `opendp/smartnoise` 映像，以在包含 Spark、Jupyter 和示例代码的 Docker 容器中使用这些库。
 
@@ -216,7 +216,7 @@ with sn.Analysis() as analysis:
 
 ## <a name="generate-a-covariance-matrix"></a>生成协方差矩阵
 
-SmartNoise 提供了三种不同的功能及其 `dp_covariance` 功能：
+SmartNoise 通过其 `dp_covariance` 函数提供三种不同的功能：
 
 - 两个向量之间的协方差
 - 矩阵的协方差矩阵
@@ -247,4 +247,4 @@ https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analys
 
 ## <a name="next-steps"></a>后续步骤
 
-- 探索 [SmartNoise 示例笔记本](https://github.com/opendifferentialprivacy/smartnoise-samples/tree/master/analysis)。
+- 浏览 [SmartNoise 示例笔记本](https://github.com/opendifferentialprivacy/smartnoise-samples/tree/master/analysis)。

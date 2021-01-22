@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 040f9fa67617b058138926310706f4bc56c4ff62
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232295"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680967"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
@@ -183,7 +183,7 @@ catch(MsalUiRequiredException)
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-UI 非常重要，因为它是交互式的。 `AcquireTokenInteractive` 提供一个特定的可选参数，该参数可为支持它的平台指定父 UI。 在桌面应用程序中使用时，`.WithParentActivityOrWindow` 根据具体的平台采用不同的类型。 或者，如果您不想控制登录对话框在屏幕上的显示位置，则可以省略可选的父窗口参数以创建窗口。 这适用于基于命令行的应用程序，该应用程序用于将调用传递到任何其他后端服务，无需任何 windows 用户交互。
+UI 非常重要，因为它是交互式的。 `AcquireTokenInteractive` 提供一个特定的可选参数，该参数可为支持它的平台指定父 UI。 在桌面应用程序中使用时，`.WithParentActivityOrWindow` 根据具体的平台采用不同的类型。 或者，如果您不想控制登录对话框在屏幕上的显示位置，则可以省略可选的父窗口参数以创建窗口。 这适用于基于命令行、用于将调用传递到任何其他后端服务且不需要任何用于用户交互的窗口的应用程序。
 
 ```csharp
 // net45
@@ -1181,7 +1181,7 @@ if not result:
 
 ### <a name="simple-token-cache-serialization-msal-only"></a>简单令牌缓存序列化（仅限 MSAL）
 
-下面是适用于桌面应用程序的令牌缓存的自定义序列化的简单实现示例。 此处，用户令牌缓存位于与应用程序相同的文件夹中，或在应用是 [打包桌面应用程序](https://docs.microsoft.com/windows/msix/desktop/desktop-to-uwp-behind-the-scenes)的每个应用程序文件夹中的文件中。 有关完整代码，请参阅以下示例： [dotnet-msgraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2)。
+下面是适用于桌面应用程序的令牌缓存的自定义序列化的简单实现示例。 此处，用户令牌缓存位于与应用程序相同的文件夹中，或在应用是 [打包桌面应用程序](/windows/msix/desktop/desktop-to-uwp-behind-the-scenes)的每个应用程序文件夹中的文件中。 有关完整代码，请参阅以下示例： [dotnet-msgraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2)。
 
 生成应用程序后，通过调用 ``TokenCacheHelper.EnableSerialization()`` 并传递应用程序 `UserTokenCache` 来启用序列化。
 

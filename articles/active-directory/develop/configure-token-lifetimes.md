@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 4d6a7150c854ba89c3cd8eacd6b553c4b8e97343
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 883a06bdffcd0afcbc1be6f2c761d6a1c2c2ea2a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963343"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681869"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>配置令牌生存期策略（预览版）
 可以指定 Microsoft 标识平台颁发的 access、SAML 或 ID 令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。 有关详细信息，请参阅 [可配置的令牌生存期](active-directory-configurable-token-lifetimes.md)。
@@ -87,7 +87,7 @@ ms.locfileid: "97963343"
 > [!IMPORTANT]
 > 从5月2020，新租户不能配置刷新和会话令牌生存期。  具有现有配置的租户可以修改刷新和会话令牌策略，直至2021年1月30日。  在2021年1月30日后，Azure Active Directory 将停止在策略中遵守现有的刷新和会话令牌配置。 你仍可以在停用后配置访问、SAML 和 ID 令牌的生存期。
 >
-> 如果需要继续定义在要求用户重新登录之前的时间段，请在条件访问中配置登录频率。 若要了解有关条件性访问的详细信息，请参阅 [使用条件访问配置身份验证会话管理](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)。
+> 如果需要继续定义在要求用户重新登录之前的时间段，请在条件访问中配置登录频率。 若要了解有关条件性访问的详细信息，请参阅 [使用条件访问配置身份验证会话管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
 >
 > 如果你不想在停用日期后使用条件性访问，则你的刷新和会话令牌将设置为该日期的 [默认配置](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement) ，并且你将无法再更改其生存期。
 

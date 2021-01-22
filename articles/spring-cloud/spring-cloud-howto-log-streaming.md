@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fcfddce568be6c641a5bf5be70c2cd0ad368095f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1eeb291c7a058efd8905e95ebf1ea14fed046691
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843598"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680512"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>实时流式传输 Azure Spring Cloud 应用日志
 
@@ -31,7 +31,7 @@ Azure Spring Cloud 支持在 Azure CLI 中进行日志流式处理，以获取�
 ## <a name="use-cli-to-tail-logs"></a>使用 CLI 跟踪日志
 
 若要避免重复指定资源组和服务实例名称，请设置默认资源组名称和群集名称。
-```
+```azurecli
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
@@ -39,11 +39,11 @@ az configure --defaults spring-cloud=<service instance name>
 
 ### <a name="tail-log-for-app-with-single-instance"></a>跟踪具有单个实例的应用的日志
 如果名为 auth-service 的应用只有一个实例，则可以使用以下命令查看该应用实例的日志：
-```
+```azurecli
 az spring-cloud app logs -n auth-service
 ```
 这会返回以下日志：
-```
+```output
 ...
 2020-01-15 01:54:40.481  INFO [auth-service,,,] 1 --- [main] o.apache.catalina.core.StandardService  : Starting service [Tomcat]
 2020-01-15 01:54:40.482  INFO [auth-service,,,] 1 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
@@ -58,12 +58,12 @@ az spring-cloud app logs -n auth-service
 
 首先，可以通过以下命令获取应用实例名称。
 
-```
+```azurecli
 az spring-cloud app show -n auth-service --query properties.activeDeployment.properties.instances -o table
 ```
 结果如下：
 
-```
+```output
 Name                                         Status    DiscoveryStatus
 -------------------------------------------  --------  -----------------
 auth-service-default-12-75cc4577fc-pw7hb  Running   UP
@@ -72,7 +72,7 @@ auth-service-default-12-75cc4577fc-n25mh  Running   UP
 ``` 
 然后，可以使用 `-i/--instance` 选项来流式传输应用实例日志：
 
-```
+```azurecli
 az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
 
@@ -81,11 +81,11 @@ az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-p
 ### <a name="continuously-stream-new-logs"></a>连续流式传输新日志
 默认情况下，`az spring-cloud ap log tail` 仅打印流式传输到应用控制台的现有日志，然后退出。 如果要流式传输新日志，请添加 -f (--follow)：  
 
-```
+```azurecli
 az spring-cloud app logs -n auth-service -f
 ``` 
 查看支持的所有日志记录选项：
-``` 
+```azurecli
 az spring-cloud app logs -h 
 ```
 

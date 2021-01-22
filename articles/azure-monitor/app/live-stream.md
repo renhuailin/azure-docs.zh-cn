@@ -4,12 +4,12 @@ description: 通过自定义指标实时监视 Web 应用，使用实时失败�
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c50f7e57c520321d752d6d46e36c45c615b5e785
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 865de94f1d9b4012a908643bbf87f38aeb8594a0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803572"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679460"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
@@ -36,7 +36,7 @@ ms.locfileid: "97803572"
    * [ASP.NET Core](./asp-net-core.md) - 默认启用实时指标。
    * [.NET/.NET Core 控制台/辅助角色](./worker-service.md) - 默认启用实时指标。
    * [.NET 应用程序 - 使用代码启用](#enable-livemetrics-using-code-for-any-net-application)。
-    * 默认情况下启用[Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) -实时指标。
+    * 默认情况下启用[Java](./java-in-process-agent.md) -实时指标。
    * [Node.js](./nodejs.md#live-metrics)
 
 2. 在 [Azure 门户](https://portal.azure.com)中，打开应用的 Application Insights 资源，然后打开实时流。

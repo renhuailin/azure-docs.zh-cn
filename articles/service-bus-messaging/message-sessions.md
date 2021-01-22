@@ -2,13 +2,13 @@
 title: Azure 服务总线消息会话 | Microsoft Docs
 description: 本文说明了如何使用会话实现对无限的相关消息序列的连贯有序处理。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/20/2021
+ms.openlocfilehash: 6d316571d69d2e1e73ddca4ccca53c116ee8fa5f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511290"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680747"
 ---
 # <a name="message-sessions"></a>消息会话
 使用 Microsoft Azure 服务总线会话，能够以连贯有序的方式处理一系列无限多的相关消息。 可以在“先进先出 (FIFO)”和“请求-响应”模式下使用会话。 本文展示了如何在使用服务总线时使用会话来实现这些模式。 
@@ -34,9 +34,9 @@ ms.locfileid: "86511290"
 ![“创建队列”对话框的屏幕截图，其中的“启用会话”选项处于选中状态并用红色标出。][2]
 
 > [!NOTE]
-> 在队列或订阅上启用会话时，客户端应用程序可以***不再***发送/接收常规消息。 所有消息必须作为会话的一部分发送（通过设置会话 ID），并通过接收会话来接收。
+> 在队列或订阅上启用会话后，客户端应用程序可能不再发送/接收常规消息。 所有消息必须作为会话的一部分发送（通过设置会话 ID），并通过接收会话来接收。
 
-会话 API 存在于队列和订阅客户端上。 可以使用一个命令性模型，控制会话和消息的接收时间；还可以使用一个基于处理程序的模型（类似于 OnMessage），此模型简化了接收循环的管理操作。
+会话 API 存在于队列和订阅客户端上。 可以使用一个命令性模型来控制会话和消息的接收时间；还可以使用一个基于处理程序的模型（类似于 OnMessage）来简化接收循环的管理操作。
 
 ### <a name="session-features"></a>会话功能
 

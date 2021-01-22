@@ -13,12 +13,12 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: a8c7ae8de41a01cb07a4bbbcd5943fb6290eced8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: f87f2e79bd9439fddb52fad82c7ab4712fc68fb9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131638"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680359"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>将适用于 Android 的 MSAL 与 B2C 配合使用
 
@@ -36,7 +36,7 @@ Microsoft (MSAL) 的 Microsoft 身份验证库使应用程序开发人员能够�
 
 应用的配置文件将声明两个 `authorities`。 对每个策略各声明一个。 每个颁发机构的 `type` 属性为 `B2C`。
 
->注意： `account_mode` 对于 B2C 应用程序，必须设置为 " **多个** "。 有关 [多个帐户公用客户端应用](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account#multiple-account-public-client-application)的详细信息，请参阅文档。
+>注意： `account_mode` 对于 B2C 应用程序，必须设置为 " **多个** "。 有关 [多个帐户公用客户端应用](./single-multi-account.md#multiple-account-public-client-application)的详细信息，请参阅文档。
 
 ### `app/src/main/res/raw/msal_config.json`
 ```json

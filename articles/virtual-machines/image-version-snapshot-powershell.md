@@ -1,5 +1,5 @@
 ---
-title: PowerShell-从共享映像库中的快照或托管磁盘创建映像
+title: PowerShell - 从共享映像库中的快照或托管磁盘创建映像
 description: 了解如何使用 PowerShell 从共享映像库中的快照或托管磁盘创建映像。
 author: cynthn
 ms.topic: how-to
@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2ebff0d86c27bcdbc11d23e18116b33b4ea838a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4ca28efce28933eed9be5cca7bd412f2d9505aa
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300249"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679528"
 ---
-# <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>使用 PowerShell 从托管磁盘或共享映像库中的快照创建映像
+# <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>使用 PowerShell 从共享映像库中的托管磁盘或快照创建映像
 
-如果你有想要迁移到共享映像库中的现有快照或托管磁盘，则可以直接从托管磁盘或快照创建共享映像库映像。 测试新映像后，可以删除源托管磁盘或快照。 你还可以使用 [Azure CLI](image-version-snapshot-cli.md)在共享映像库中从托管磁盘或快照创建映像。
+如果想要将现有快照或托管磁盘迁移到共享映像库，可直接从该托管磁盘或快照创建共享映像库映像。 测试新映像后，可删除源托管磁盘或快照。 还可使用 [Azure CLI](image-version-snapshot-cli.md) 从共享映像库中的托管磁盘或快照创建映像。
 
 映像库中的映像具有两个组件，我们将在此示例中创建这两个组件：
 - “映像定义”包含有关映像及其使用要求的信息。 这包括该映像是 Windows 映像还是 Linux 映像、是专用映像还是通用映像，此外还包括发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 
@@ -27,7 +27,7 @@ ms.locfileid: "89300249"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-若要完成本文，必须拥有快照或托管磁盘。 
+若要完成本文中的操作，必须要有快照或托管磁盘。 
 
 如果要包含数据磁盘，则数据磁盘大小不能超过 1 TB。
 
@@ -50,13 +50,13 @@ $source = Get-AzSnapshot `
    -ResourceGroupName myResourceGroup
 ```
 
-你还可以使用托管磁盘而不是快照。 若要获取托管磁盘，请使用 [AzDisk](/powershell/module/az.compute/get-azdisk)。 
+还可使用托管磁盘代替快照。 若要获取托管磁盘，请使用 [Get-AzDisk](/powershell/module/az.compute/get-azdisk)。 
 
 ```azurepowershell-interactive
 Get-AzDisk | Format-Table -Property Name,ResourceGroupName
 ```
 
-然后获取托管磁盘并将其分配给 `$source` 变量。
+然后，获取托管磁盘并将其分配给 `$source` 变量。
 
 ```azurepowershell-interactive
 $source = Get-AzDisk `
@@ -88,9 +88,9 @@ $gallery = Get-AzGallery `
 
 映像定义为映像创建一个逻辑分组。 它们用于管理有关映像的信息。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 
 
-制作映像定义时，请确保它具有所有正确信息。 在此示例中，我们假设快照或托管磁盘来自正在使用的 VM，并且尚未通用化。 如果在运行适用于 Windows 或 [waagent](https://github.com/Azure/WALinuxAgent)或) Linux 的 Sysprep 后，托管磁盘或快照已被通用化 OS 占用 (， `-deprovision` `-deprovision+user` 请将更改 `-OsState` 为 `generalized` 。 
+制作映像定义时，请确保它具有所有正确信息。 在此示例中，我们假设快照或托管磁盘来自正在使用且尚未通用化的 VM。 如果托管磁盘或快照是从通用化的操作系统获取的（在 Windows 上运行 Sysprep 或在 Linux 上运行 [waagent](https://github.com/Azure/WALinuxAgent)、`-deprovision` 或 `-deprovision+user` 后），则将 `-OsState` 更改为 `generalized`。 
 
-有关可为映像定义指定的值的详细信息，请参阅[映像定义](./windows/shared-image-galleries.md#image-definitions)。
+有关可为映像定义指定的值的详细信息，请参阅[映像定义](./shared-image-galleries.md#image-definitions)。
 
 使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，映像定义名为 myImageDefinition，适用于通用化的 Windows OS。 若要使用 Linux OS 创建映像的定义，请使用 `-OsType Linux`。 
 
@@ -118,9 +118,9 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
 
-如果希望映像包含数据磁盘，则除了操作系统磁盘之外，还需要添加 `-DataDiskImage` 参数，并将其设置为数据磁盘快照或托管磁盘的 ID。
+如果希望映像除了包含操作系统磁盘之外还包含数据磁盘，请添加 `-DataDiskImage` 参数，并将其设置为数据磁盘快照或托管磁盘的 ID。
 
-在此示例中，映像版本为 1.0.0，该版本被复制到美国中西部和美国中南部数据中心******。 选择复制的目标区域时，请记住，你还需包括源区域作为复制的目标。
+在此示例中，映像版本为 1.0.0，该版本被复制到美国中西部和美国中南部数据中心。 选择复制的目标区域时，请记住，你还需包括源区域作为复制的目标。
 
 
 ```azurepowershell-interactive

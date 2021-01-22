@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.author: tisande
-ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 4d2ad9cf6b47d8307d9652419b82de8ffcbcb099
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019170"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681644"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,6 +35,17 @@ Azure Cosmos DB 支持两种索引模式：
 > Azure Cosmos DB 还支持延迟索引模式。 当引擎未执行任何其他工作时，延迟索引将以低得多的优先级对索引执行更新。 这可能导致查询结果 **不一致或不完整**。 如果计划查询 Cosmos 容器，则不应选择“延迟索引”。 新容器不能选择“延迟索引”。 可以通过联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来请求豁免（在不支持延迟索引的[无服务器](serverless.md)模式下使用 Azure Cosmos 帐户的情况除外）。
 
 默认情况下，索引策略设置为 `automatic`。 为此，可将索引策略中的 `automatic` 属性设置为 `true`。 将此属性设置为 `true` 可让 Azure CosmosDB 在写入文档时自动为文档编制索引。
+
+## <a name="index-size"></a><a id="index-size"></a>索引大小
+
+在 Azure Cosmos DB 中，所用存储空间总量是指数据大小和索引大小的总和。 下面是索引大小的一些功能：
+
+* 索引大小取决于索引策略。 如果为所有属性编制了索引，则索引大小可以大于数据大小。
+* 当删除数据时，索引将按近乎连续的方式压缩。 但是，对于较小的数据删除，你可能不会立即看到索引大小的减小。
+* 索引大小在下列情况下可能会增长：
+
+  * 分区拆分持续时间-索引空间在分区拆分完成后释放。
+  * 分区拆分后，索引空间将在分区拆分期间临时增加。 
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>包含和排除属性路径
 

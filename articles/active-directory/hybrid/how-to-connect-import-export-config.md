@@ -11,14 +11,14 @@ ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da80af9fe598186fa25d59601c9fa4faccb4286a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87447037"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681949"
 ---
-# <a name="import-and-export-azure-ad-connect-configuration-settings-public-preview"></a>导入和导出 Azure AD Connect 配置设置（公共预览版）
+# <a name="import-and-export-azure-ad-connect-configuration-settings"></a>导入和导出 Azure AD Connect 配置设置 
 
 Azure Active Directory (Azure AD) Connect 部署有多种变化，从单个林快捷模式安装到通过使用自定义同步规则跨多个林进行同步的复杂部署。 由于配置选项和机制数量巨大，因此了解哪些设置有效，且能够快速部署具有相同配置的服务器非常重要。 此功能引入了对给定同步服务器的配置进行分类并将设置导入到新部署中的功能。 可以比较不同的同步设置快照，以便轻松地直观显示两个服务器间的差异，或一段时间内同一服务器的差异。
 
@@ -77,10 +77,10 @@ Azure Active Directory (Azure AD) Connect 部署有多种变化，从单个林�
 
    ![显示 Azure AD Connect 目录的屏幕截图。](media/how-to-connect-import-export-config/migrate1.png)
 
-1. 运行如下所示的脚本，并保存整个下级服务器配置目录。 将该目录复制到新的暂存服务器。 必须将整个 Exported-ServerConfiguration-* 文件夹复制到新服务器。
+1. 运行如下所示的脚本，并保存整个下级服务器配置目录。 将该目录复制到新的暂存服务器。 必须将整个 **ServerConfiguration-** _ 文件夹复制到新服务器。
 
-   ![显示 Windows PowerShell 中的脚本的屏幕截图。](media/how-to-connect-import-export-config/migrate2.png)
-   ![显示如何复制 Exported-Exported-ServerConfiguration-* 文件夹的屏幕截图。](media/how-to-connect-import-export-config/migrate3.png)
+   ![在 Windows PowerShell 中显示脚本的屏幕截图。 ](media/how-to-connect-import-export-config/migrate2.png)
+    ![显示复制 ServerConfiguration-_ 文件夹的屏幕截图。](media/how-to-connect-import-export-config/migrate3.png)
 
 1. 通过双击桌面上的图标启动 Azure AD Connect。 接受 Microsoft 软件许可条款，然后在下一页上选择“自定义”。
 1. 选择“导入同步设置”复选框。 选择“浏览”以浏览复制的 Exported-ServerConfiguration-* 文件夹。 选择 MigratedPolicy.json 以导入迁移的设置。
@@ -91,7 +91,7 @@ Azure Active Directory (Azure AD) Connect 部署有多种变化，从单个林�
 
 将原始导入的设置文件与新部署的服务器的导出的设置文件进行比较，是了解预期部署与所得部署之间任何差异的必要步骤。 使用你喜欢的并排文本比较应用程序会产出可快速突出显示任何所需或意外的更改的即时可视化效果。
 
-尽管现在已经取消了许多先前的手动配置步骤，但你仍应遵循组织的认证过程，以确保无需进行其他配置。 如果你使用高级设置（其当前在公共预览版本的设置管理中尚未被捕获），则可能会发生此配置。
+尽管现在已经取消了许多先前的手动配置步骤，但你仍应遵循组织的认证过程，以确保无需进行其他配置。 如果你使用此版本的设置管理中当前未捕获的高级设置，则可能会发生此配置。
 
 以下是已知限制：
 - **同步规则**：自定义规则的优先顺序必须在 0 到 99 的保留范围内，以避免与 Microsoft 的标准规则发生冲突。 将自定义规则置于保留范围之外可能会导致自定义规则发生偏移，因为标准规则被添加到了配置。 如果配置包含修改后的标准规则，则会出现类似问题。 不鼓励修改标准规则，且规则放置可能不正确。

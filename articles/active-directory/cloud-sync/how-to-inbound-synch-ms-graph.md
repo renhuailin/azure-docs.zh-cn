@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65569cadd8f778a94f93aa22dd3924c52ff12f8
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 3796b3d86f647e38cf2ff018e8c0c903d9a64e41
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613173"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682032"
 ---
 # <a name="inbound-synchronization-for-cloud-sync-using-ms-graph-api"></a>使用 MS 图形 API 进行云同步的入站同步
 
@@ -31,7 +31,7 @@ ms.locfileid: "98613173"
 - [启动同步作业](#start-sync-job)
 - [查看状态](#review-status)
 
-使用这些 [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块](https://docs.microsoft.com/powershell/module/msonline/) 命令可为生产租户启用同步，这是为该租户调用管理 Web 服务的先决条件。
+使用这些 [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块](/powershell/module/msonline/) 命令可为生产租户启用同步，这是为该租户调用管理 Web 服务的先决条件。
 
 ## <a name="basic-setup"></a>基本设置
 
@@ -60,7 +60,7 @@ ms.locfileid: "98613173"
 ## <a name="create-sync-job"></a>创建同步作业
 上述命令的输出将返回已创建的服务主体的 objectId。 对于本示例，objectId 为614ac0e9-a59b-481f-bd8f-79a73d167e1c。  使用 Microsoft Graph 向该服务主体添加 synchronizationJob。  
 
-可在 [此处](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http)找到有关创建同步作业的文档。
+可在 [此处](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta)找到有关创建同步作业的文档。
 
 如果未记录上述 ID，可以通过运行以下 MS Graph 调用来查找服务主体。 你将需要读取目录。进行此调用的所有权限：
  
@@ -216,11 +216,11 @@ ObjectId： 8895955e-2e6c-4d79-8943-4d72ca36878f AppId： 00000014-0000-0000-c00
 
  `GET https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ ` 
 
-可在 [此处](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-list?view=graph-rest-beta&tabs=http)找到有关检索作业的文档。 
+可在 [此处](/graph/api/synchronization-synchronizationjob-list?tabs=http&view=graph-rest-beta)找到有关检索作业的文档。 
  
 若要启动作业，请使用第一步中创建的服务主体的 objectId 和从创建作业的请求中返回的作业标识符发出此请求。
 
-可在 [此处](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http)找到有关如何启动作业的文档。 
+可在 [此处](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta)找到有关如何启动作业的文档。 
 
  ```
  POST  https://graph.microsoft.com/beta/servicePrincipals/8895955e-2e6c-4d79-8943-4d72ca36878f/synchronization/jobs/AD2AADProvisioning.fc96887f36da47508c935c28a0c0b6da/start
@@ -228,7 +228,7 @@ ObjectId： 8895955e-2e6c-4d79-8943-4d72ca36878f AppId： 00000014-0000-0000-c00
 
 预期响应为 .。。 HTTP 204/无内容。
 
-[此处](https://docs.microsoft.com/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta)还介绍了用于控制作业的其他命令。
+[此处](/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta)还介绍了用于控制作业的其他命令。
  
 若要重新启动作业，可以使用 .。。
 
@@ -254,4 +254,4 @@ ObjectId： 8895955e-2e6c-4d79-8943-4d72ca36878f AppId： 00000014-0000-0000-c00
 
 - [什么是 Azure AD Connect 云同步？](what-is-cloud-sync.md)
 - [转换](how-to-transformation.md)
-- [Azure AD 同步 API](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Azure AD 同步 API](/graph/api/resources/synchronization-overview?view=graph-rest-beta)

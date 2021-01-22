@@ -1,6 +1,6 @@
 ---
 title: 不要使用 ETL，应使用设计 ETL
-description: 为 Azure Synapse 分析中的专用 SQL 池实现灵活的数据加载策略。
+description: 对 Azure Synapse Analytics 中的专用 SQL 池实施灵活的数据加载策略。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,27 +11,27 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 1a988dba52b36b1d27407316200bfa6897de7cf5
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b59e256f137bc8e1b13cb92d477e32bc01629ac5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120149"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679890"
 ---
-# <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的数据加载策略
+# <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>适用于 Azure Synapse Analytics 中的专用 SQL 池的数据加载策略
 
-传统 SMP 专用 SQL 池使用 "提取、转换和加载 (ETL) 过程来加载数据。 Azure Synapse Analytics 中的 Synapse SQL 池使用分布式查询处理体系结构，利用了计算和存储资源的可伸缩性和灵活性。
+传统的 SMP 专用 SQL 池通过提取、转换和加载 (ETL) 过程来加载数据。 Azure Synapse Analytics 中的 Synapse SQL 池使用分布式查询处理体系结构，利用了计算和存储资源的可伸缩性和灵活性。
 
 可以通过提取、加载和转换 (ELT) 过程来利用内置分布式查询处理功能，无需在加载数据之前投入资源来转换数据。
 
-尽管专用的 SQL 池支持多种加载方法（包括 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和 [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)等常用 SQL Server 选项），但通过 PolyBase 外部表和 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)可实现最快、最灵活的加载数据的方式。
+虽然专用 SQL 池支持包括常用 SQL Server 选项（例如 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 和 [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)）在内的许多加载方法，但最快且最具可伸缩性的数据加载方法是使用 PolyBase 外部表和 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 使用 PolyBase 和 COPY 语句，可以通过 T-SQL 语言访问存储在 Azure Blob 存储或 Azure Data Lake Store 中的外部数据。 为了在加载时获得最大的灵活性，建议使用 COPY 语句。
 
 
 ## <a name="what-is-elt"></a>什么是 ELT？
 
-提取、加载和转换 (ELT) 是一个过程，通过该过程从源系统中提取数据，将其加载到专用 SQL 池中，然后转换。
+提取、加载和转换 (ELT) 是指将数据从源系统提取并加载到专用 SQL 池然后再进行转换的过程。
 
 实现 ELT 的基本步骤如下：
 
@@ -52,17 +52,17 @@ ms.locfileid: "98120149"
 
 使用 PolyBase 和 COPY 语句，可以从 UTF-8 和 UTF-16 编码的带分隔符文本文件或 CSV 文件加载数据。 除了带分隔符文本文件或 CSV 文件以外，它还可以从 ORC 和 Parquet 等 Hadoop 文件格式加载数据。 PolyBase 和 COPY 语句还可以从 Gzip 和 Snappy 压缩文件加载数据。
 
-不支持扩展的 ASCII、固定宽度格式以及 WinZip 或 XML 等嵌套格式。 如果要从 SQL Server 中导出，可以使用 [bcp 命令行工具](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以将数据导出为带分隔符的文本文件。
+不支持扩展的 ASCII、固定宽度格式以及 WinZip 或 XML 等嵌套格式。 如果是从 SQL Server 导出，则可使用 [bcp 命令行工具](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)将数据导出到带分隔符的文本文件中。
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2.将数据移入 Azure Blob 存储或 Azure Data Lake Store
 
-若要将数据移入 Azure 存储，可将它移到 [Azure Blob 存储](../../storage/blobs/storage-blobs-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)或 [Azure Data Lake Store Gen2](../../data-lake-store/data-lake-store-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 应将数据存储在任一位置的文本文件中。 PolyBase 和 COPY 语句可从任一位置加载数据。
+若要将数据移入 Azure 存储，可将它移到 [Azure Blob 存储](../../storage/blobs/storage-blobs-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)或 [Azure Data Lake Store Gen2](../../data-lake-store/data-lake-store-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 不管什么位置，都应将数据存储在文本文件中。 PolyBase 和 COPY 语句可从任一位置加载数据。
 
 可使用以下工具和服务将数据移到 Azure 存储：
 
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 服务可以增强网络吞吐量、性能和可预测性。 ExpressRoute 是通过专用连接将数据路由到 Azure 的服务。 ExpressRoute 连接不通过公共 Internet 路由数据。 与基于公共 Internet 的典型连接相比，这些连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。
 - [AZCopy 实用工具](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)可以通过公共 Internet 将数据移到 Azure 存储。 如果数据小于 10 TB，则很适合使用此工具。 若要使用 AZCopy 定期执行加载操作，请测试网络速度是否在可接受的范围内。
-- [Azure 数据工厂 (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 提供一个可以安装在本地服务器上的网关。 然后，你可以创建管道，以便将数据从本地服务器移到 Azure 存储。 若要将数据工厂用于专用 SQL 池，请参阅 [加载专用 sql 池的数据](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+- [Azure 数据工厂 (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 提供一个可以安装在本地服务器上的网关。 然后，你可以创建管道，以便将数据从本地服务器移到 Azure 存储。 若要将数据工厂与专用 SQL 池配合使用，请参阅[为专用 SQL 池加载数据](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ## <a name="3-prepare-the-data-for-loading"></a>3.准备要加载的数据
 
@@ -70,15 +70,15 @@ ms.locfileid: "98120149"
 
 ### <a name="define-the-tables"></a>定义表
 
-使用 COPY 语句时，必须首先定义要加载到专用 SQL 池中的)  (s 表。
+使用 COPY 语句时，必须先在专用 SQL 池中定义要加载到的表。
 
-如果你使用的是 PolyBase，则需要先在专用 SQL 池中定义外部表，然后再加载。 PolyBase 使用外部表来定义和访问 Azure 存储中的数据。 外部表类似于数据库视图。 外部表包含表架构，并指向存储在专用 SQL 池外部的数据。
+如果使用 PolyBase，则需在加载之前在专用 SQL 池中定义外部表。 PolyBase 使用外部表来定义和访问 Azure 存储中的数据。 外部表类似于数据库视图。 外部表包含表架构，并指向在专用 SQL 池外部存储的数据。
 
 定义外部表涉及到指定数据源、文本文件的格式和表定义。 相关的 T-SQL 语法参考文章如下：
 
-- [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 加载 Parquet 文件时，使用以下 SQL 数据类型映射：
 
@@ -120,8 +120,8 @@ ms.locfileid: "98120149"
 
 >[!IMPORTANT] 
 >- SQL 专用池目前不支持 MICROS 和 NANOS 精度的 Parquet 数据类型。 
->- 如果在 Parquet 和 SQL 中的类型不匹配，或者如果你有不受支持的 Parquet 数据类型，则可能会遇到以下错误： **"HdfsBridge：： recordReaderFillBuffer-遇到填充记录读取器缓冲区时出现意外错误： ClassCastException： ..."**
->- 不支持将0-127 范围外的值加载到 Parquet 和 ORC 文件格式的 tinyint 列中。
+>- 如果 Parquet 与 SQL 之间的类型不匹配，或者如果你有不受支持的 Parquet 数据类型，则可能会遇到以下错误：“HdfsBridge::recordReaderFillBuffer - 填充记录读取器缓冲区时遇到意外错误:ClassCastException: …”
+>- 不支持将 0-127 范围外的值加载到 Parquet 和 ORC 文件格式的 tinyint 列中。
 
 有关创建外部对象的示例，请参阅[创建外部表](../sql/develop-tables-external-tables.md?tabs=sql-pool)。
 
@@ -131,26 +131,26 @@ ms.locfileid: "98120149"
 设置文本文件的格式：
 
 - 如果数据来自非关系源，则需要将其转换为行与列。 不管数据来自关系源还是非关系源，都必须转换数据，使之与数据预期要载入到的表的列定义相符。
-- 设置本文件中数据的格式，使之与目标表中的列和数据类型相符。 外部文本文件中的数据类型与专用 SQL 池表之间的不一致会导致在负载期间拒绝行。
-- 使用终止符分隔文本文件中的字段。  请务必使用源数据中不包含的字符或字符序列。 使用通过 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 指定的终止符。
+- 设置本文件中数据的格式，使之与目标表中的列和数据类型相符。 外部文本文件与专用 SQL 池表中的数据类型不相符会导致系统在加载期间拒绝行。
+- 使用终止符分隔文本文件中的字段。  请务必使用源数据中不包含的字符或字符序列。 使用通过 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 指定的终止符。
 
 ## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4.使用 PolyBase 或 COPY 语句加载数据
 
-最佳做法是将数据载入临时表。 使用临时表可以处理错误且不干扰生产表。 使用临时表，还可以在将数据插入生产表之前，使用专用的 SQL 池并行处理体系结构进行数据转换。
+最佳做法是将数据载入临时表。 使用临时表可以处理错误且不干扰生产表。 将数据插入生产表之前，还可以通过临时表使用专用 SQL 池并行处理体系结构进行数据转换。
 
 ### <a name="options-for-loading"></a>用于加载的选项
 
 若要加载数据，可以使用下列任一加载选项：
 
-- [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)是推荐使用的加载实用工具，因为它可以无缝且灵活地加载数据。 该语句具有许多 PolyBase 不提供的其他加载功能。 
+- [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)是推荐使用的加载实用工具，因为它可以无缝且灵活地加载数据。 该语句具有许多 PolyBase 不提供的其他加载功能。 
 - [具有 T-SQL 的 PolyBase](./load-data-from-azure-blob-storage-using-copy.md) 要求定义外部数据对象。
 - [Azure 数据工厂 (ADF) 的 PolyBase 和 COPY 语句](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)是另一个业务流程工具。  它定义管道并计划作业。
-- 源数据位于 SQL Server 时，[具有 SSIS 的 PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 运行良好。 SSIS 定义源到目标表的映射，同时可协调负载。 如果已有 SSIS 包，可将这些包修改为使用新的数据仓库目标。
+- 源数据位于 SQL Server 时，[具有 SSIS 的 PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 运行良好。 SSIS 定义源到目标表的映射，同时可协调负载。 如果已有 SSIS 包，可将这些包修改为使用新的数据仓库目标。
 - [将 PolyBase 与 Azure DataBricks 配合使用](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)，可使用 PolyBase 将数据从表传输到 Databricks 数据帧，并且/或者可将 Databricks 数据帧中的数据写入表。
 
 ### <a name="other-loading-options"></a>其他加载选项
 
-除 PolyBase 和 COPY 语句以外，还可以使用 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 或 [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 bcp 可将数据直接加载到数据库而无需经过 Azure Blob 存储，但此方法只适用于小规模的加载。
+除 PolyBase 和 COPY 语句以外，还可以使用 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 或 [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 bcp 可将数据直接加载到数据库而无需经过 Azure Blob 存储，但此方法只适用于小规模的加载。
 
 > [!NOTE]
 > 这些选项的加载性能低于 PolyBase 和 COPY 语句。
