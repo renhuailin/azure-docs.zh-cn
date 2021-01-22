@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 37d9c24d58e0dd9fb10db607ef1b96de0a44eb78
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 1f1100c27bb3c02e3d1a5040942509c24bab0e65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399360"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683982"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>将应用发布到 Azure AD 应用库
 
@@ -175,7 +175,7 @@ Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 若要了解有关 SCIM 标准和客户权益的详细信息，请参阅 [预配 SCIM-入门](https://aka.ms/scimoverview)。
 
 ### <a name="understand-the-azure-ad-scim-implementation"></a>了解 Azure AD SCIM 实现
-若要了解有关 Azure AD SCIM 实现的详细信息，请参阅 [生成 SCIM 终结点和使用 Azure AD 配置用户预配](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)。
+若要了解有关 Azure AD SCIM 实现的详细信息，请参阅 [生成 SCIM 终结点和使用 Azure AD 配置用户预配](../app-provisioning/use-scim-to-provision-users-and-groups.md)。
 
 ### <a name="implement-scim"></a>实现 SCIM
 Azure AD 提供了 [参考代码](https://aka.ms/scimoverview) ，可帮助您生成 SCIM 终结点。 在 GitHub 上还可以找到许多第三方库/参考。  
@@ -186,7 +186,7 @@ Azure AD 提供了 [参考代码](https://aka.ms/scimoverview) ，可帮助您�
 
 或者，Azure AD 租户附带每个 Microsoft 365 订阅。 若要设置免费 Microsoft 365 开发环境，请参阅 [加入 Microsoft 365 开发人员计划](/office/developer-program/microsoft-365-developer-program)。
 
-拥有租户后，需要测试单一登录和 [预配](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)。 
+拥有租户后，需要测试单一登录和 [预配](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)。 
 
 **对于 OIDC 或 Oath 应用** 程序，请将 [应用程序注册](quickstart-register-app.md) 为多租户应用程序。 在 "受支持的帐户类型" 中选择 "任何组织目录和个人 Microsoft 帐户中的帐户" 选项。
 
@@ -274,7 +274,7 @@ Azure AD 提供了 [参考代码](https://aka.ms/scimoverview) ，可帮助您�
 
 ![在库中列出密码 SSO 应用程序](./media/howto-app-gallery-listing/passwordsso.png)
 
-如果要实现用户预配的 [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 终结点，请选择相应的选项。 在载入请求中提供架构时，请按照 [此处](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration) 的说明下载你的架构。 在测试非库应用程序时，我们将使用配置的架构来构建库应用程序。 
+如果要实现用户预配的 [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 终结点，请选择相应的选项。 在载入请求中提供架构时，请按照 [此处](../app-provisioning/export-import-provisioning-configuration.md) 的说明下载你的架构。 在测试非库应用程序时，我们将使用配置的架构来构建库应用程序。 
 
    ![用户预配请求](./media/howto-app-gallery-listing/user-provisioning.png)
 

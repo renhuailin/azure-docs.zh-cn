@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: f32739b06920f6b20dc87b8e1fbd2884c323a859
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 3d43a532f57feab361c6a3de79269991f46fc55d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633829"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684016"
 ---
 # <a name="prepare-data-with-data-wrangling"></a>用 data 整理准备数据
 
@@ -33,9 +33,9 @@ ms.locfileid: "98633829"
 
 另一种方法是在管道画布的 "活动" 窗格中。 打开 **Power Query** 的可折叠面板，并将 **Power Query** 活动拖到画布上。
 
-![突出显示整理数据流选项的屏幕截图。](media/data-flow/power-query-activity.png)
+![突出显示 data 整理选项的屏幕截图。](media/data-flow/power-query-activity.png)
 
-## <a name="author-a-wrangling-data-flow"></a>创作整理数据流
+## <a name="author-a-power-query-data-wrangling-activity"></a>创作 Power Query data 整理活动
 
 为 Power Query 混合添加 **源数据集** 。 您可以选择现有数据集，也可以创建一个新数据集。 还可以选择接收器数据集。 你可以选择一个或多个源数据集，但此时只允许一个接收器。 选择接收器数据集是可选的，但至少需要一个源数据集。
 
@@ -45,19 +45,19 @@ ms.locfileid: "98633829"
 
 ![屏幕截图，显示用于打开 Power Query Online 混合编辑器的 "创建" 按钮。](media/wrangling-data-flow/tutorial5.png)
 
-使用无代码数据准备创作你的整理数据流。 有关可用函数的列表，请参阅 [转换函数](wrangling-functions.md)。 ADF 将 ```M``` 脚本转换为数据流脚本，以便可以使用 ADF 数据流 Spark 环境按比例执行 Power Query。
+使用无代码的数据准备创作整理 Power Query。 有关可用函数的列表，请参阅 [转换函数](wrangling-functions.md)。 ADF 将 M 脚本转换为数据流脚本，以便可以使用 Azure 数据工厂数据流 Spark 环境按比例执行 Power Query。
 
-![显示创作整理数据流的过程的屏幕截图。](media/wrangling-data-flow/tutorial6.png)
+![屏幕截图，显示用于创作数据整理 Power Query 的过程。](media/wrangling-data-flow/tutorial6.png)
 
-## <a name="running-and-monitoring-a-wrangling-data-flow"></a>运行和监视整理数据流
+## <a name="running-and-monitoring-a-power-query-data-wrangling-activity"></a>运行和监视 Power Query data 整理活动
 
-若要对整理数据流执行管道调试运行，请在管道画布中单击 " **调试** "。 发布数据流后， **Trigger 立即** 执行最后发布的管道的按需运行。 可以通过所有现有的 Azure 数据工厂触发器来计划整理数据流。
+若要执行 Power Query 活动的管道调试运行，请在管道画布中单击 " **调试** "。 一旦您发布管道， **触发器** 就会执行最后发布的管道的按需运行。 可以通过所有现有的 Azure 数据工厂触发器来计划 Power Query 管道。
 
-![显示如何添加整理数据流的屏幕截图。](media/wrangling-data-flow/tutorial3.png)
+![显示如何添加 Power Query data 整理 "活动" 的屏幕截图。](media/wrangling-data-flow/tutorial3.png)
 
-中转到 " **监视** " 选项卡，直观显示触发的整理数据流活动运行的输出。
+中转到 " **监视** " 选项卡，直观显示触发的 Power Query 活动运行的输出。
 
-![屏幕截图，显示触发的整理数据流活动运行的输出。](media/wrangling-data-flow/tutorial2.png)
+![屏幕截图，显示触发的整理 Power Query 活动运行的输出。](media/wrangling-data-flow/tutorial2.png)
 
 ## <a name="next-steps"></a>后续步骤
 

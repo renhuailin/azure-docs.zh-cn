@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 43447454b82b74c10b1d53c41c7883b0b9bef242
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196497"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684536"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure 映像生成器服务 DevOps 任务
 
@@ -71,10 +71,10 @@ ms.locfileid: "98196497"
  
 ### <a name="location"></a>位置
 
-此位置是将在其中运行映像生成器的区域。 仅支持一组数量的 [区域](../windows/image-builder-overview.md#regions) 。 源映像必须位于此位置。 例如，如果您使用的是共享映像库，则副本必须存在于该区域。
+此位置是将在其中运行映像生成器的区域。 仅支持一组数量的 [区域](../image-builder-overview.md#regions) 。 源映像必须位于此位置。 例如，如果您使用的是共享映像库，则副本必须存在于该区域。
 
 ### <a name="managed-identity-required"></a>需要 (托管标识) 
-映像生成器需要一个托管标识，该标识用于读取源自定义映像，连接到 Azure 存储，以及创建自定义映像。 请参阅[此处](./image-builder-overview.md#permissions)了解详细信息。
+映像生成器需要一个托管标识，该标识用于读取源自定义映像，连接到 Azure 存储，以及创建自定义映像。 请参阅[此处](../image-builder-overview.md#permissions)了解详细信息。
 
 ### <a name="vnet-support"></a>VNET 支持
 
@@ -335,4 +335,4 @@ template name:  t_1556938436xxx
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [Azure 映像生成器概述](image-builder-overview.md)。
+有关详细信息，请参阅 [Azure 映像生成器概述](../image-builder-overview.md)。

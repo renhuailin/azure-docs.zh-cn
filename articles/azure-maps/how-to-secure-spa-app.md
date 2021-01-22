@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: c39104912c99b199d38cf489bb61d64e83b89286
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895590"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684066"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>如何使用非交互式登录保护单页面应用程序
 
@@ -30,7 +30,7 @@ ms.locfileid: "92895590"
 
 创建安全的 web 服务应用程序，该应用程序负责 Azure AD 的身份验证。 
 
-1. 在 Azure 门户中创建函数。 有关详细信息，请参阅 [Create Azure Function](../azure-functions/functions-create-first-azure-function.md)。
+1. 在 Azure 门户中创建函数。 有关详细信息，请参阅 [Create Azure Function](../azure-functions/functions-get-started.md)。
 
 2. 在 Azure 函数上配置 CORS 策略，使其可供单个页面 web 应用程序访问。 这将使浏览器客户端安全地成为你的 web 应用程序的允许来源。 请参阅 [添加 CORS 功能](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality)。
 
@@ -102,14 +102,14 @@ ms.locfileid: "92895590"
 
 ## <a name="grant-role-based-access"></a>授予基于角色的访问权限
 
-可以通过将系统分配的标识分配给一个或多个 Azure 角色定义，将 *基于角色的访问控制授予 AZURE RBAC) access (* 。 若要查看可用于 Azure Maps 的 Azure 角色定义，请 **访问 (IAM) 的 "访问控制** "。 选择 " **角色** "，然后搜索以 *Azure Maps* 开头的角色。
+可以通过将系统分配的标识分配给一个或多个 Azure 角色定义，将 *基于角色的访问控制授予 AZURE RBAC) access (* 。 若要查看可用于 Azure Maps 的 Azure 角色定义，请 **访问 (IAM) 的 "访问控制**"。 选择 " **角色**"，然后搜索以 *Azure Maps* 开头的角色。
 
-1. 中转到你的 **Azure Maps 帐户** 。 **(IAM)**  >  **角色分配** 选择 "访问控制"。
+1. 中转到你的 **Azure Maps 帐户**。 **(IAM)**  >  **角色分配** 选择 "访问控制"。
 
     > [!div class="mx-imgBorder"]
     > ![使用 Azure RBAC 授予访问权限](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 " **角色分配** " 选项卡上的 " **角色** " 下，选择内置 Azure Maps 角色定义，如 **Azure Maps 数据读取器** 或 **Azure Maps 数据参与者** 。 在 " **分配访问权限** " 下，选择 **Function App** 。 按名称选择主体。 再选择“保存”。
+2. 在 " **角色分配** " 选项卡上的 " **角色**" 下，选择内置 Azure Maps 角色定义，如 **Azure Maps 数据读取器** 或 **Azure Maps 数据参与者**。 在 " **分配访问权限**" 下，选择 **Function App**。 按名称选择主体。 再选择“保存”。
 
    * 有关 [添加或删除角色分配](../role-based-access-control/role-assignments-portal.md)的详细信息，请参阅。
 

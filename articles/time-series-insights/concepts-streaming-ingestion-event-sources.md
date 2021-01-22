@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: ee13b2fbe4abbaf9bddf4975f8e25d746dc78f5e
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.date: 01/19/2021
+ms.openlocfilehash: 31398a49de871ad44499a796adfef1be618ccab9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232176"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685168"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure 时序见解第 2 代事件源
 
@@ -45,7 +45,7 @@ ms.locfileid: "98232176"
 
 - 请勿超出环境的[吞吐量速率限制](./concepts-streaming-ingress-throughput-limits.md)或每个分区的限制。
 
-- 配置一个当你的环境在处理数据的过程中遇到问题时要发送的延迟[警报](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)。 请参阅下面的 [生产工作负荷](./concepts-streaming-ingestion-event-sources.md#production-workloads) ，了解建议的警报条件。 
+- 配置一个当你的环境在处理数据的过程中遇到问题时要发送的延迟[警报](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)。 请参阅下面的 [生产工作负荷](./concepts-streaming-ingestion-event-sources.md#production-workloads) ，了解建议的警报条件。
 
 - 流式传输引入仅限用于近实时数据和最新数据，不支持流式传输历史数据。
 
@@ -55,14 +55,14 @@ ms.locfileid: "98232176"
 
 ## <a name="production-workloads"></a>生产工作负荷
 
-除了上述最佳做法，我们建议你为业务关键型工作负荷实现以下各项。 
+除了上述最佳做法，我们建议你为业务关键型工作负荷实现以下各项。
 
 - 将 IoT 中心或事件中心的数据保持时间增加到最多7天。
 
 - 在 Azure 门户中创建环境警报。 基于平台 [指标](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics) 的警报允许验证端到端管道行为。 [此处介绍](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)了如何创建和管理警报。 建议的警报条件：
 
-     - IngressReceivedMessagesTimeLag 大于5分钟
-     - IngressReceivedBytes 为0
+  - IngressReceivedMessagesTimeLag 大于5分钟
+  - IngressReceivedBytes 为0
 - 请在 IoT 中心或事件中心分区之间保持引入负载平衡。
 
 ### <a name="historical-data-ingestion"></a>历史数据引入

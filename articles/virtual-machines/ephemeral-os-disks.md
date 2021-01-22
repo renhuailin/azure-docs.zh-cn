@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510985"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684553"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>用于 Azure VM 的临时 OS 磁盘
 
@@ -26,7 +26,7 @@ ms.locfileid: "97510985"
 - 与临时磁盘一样降低延迟。 
 - 临时 OS 磁盘免费，因此不需为 OS 磁盘支付存储费用。
 - 它们在所有 Azure 区域中提供。 
-- [共享映像库](./linux/shared-image-galleries.md)支持临时 OS 磁盘。 
+- [共享映像库](./shared-image-galleries.md)支持临时 OS 磁盘。 
  
 
  

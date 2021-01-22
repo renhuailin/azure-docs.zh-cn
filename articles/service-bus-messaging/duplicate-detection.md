@@ -3,12 +3,12 @@ title: Azure 服务总线重复消息检测 | Microsoft Docs
 description: 本文介绍如何检测 Azure 服务总线消息中的重复项。 可以忽略并丢弃重复消息。
 ms.topic: article
 ms.date: 01/13/2021
-ms.openlocfilehash: 29972f756c66f524cc2e4684fcb7afd1ca628820
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8ff98b3a052be6004a2dc070f10d6f8c9ca0617f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184673"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684802"
 ---
 # <a name="duplicate-detection"></a>重复检测
 
@@ -17,6 +17,9 @@ ms.locfileid: "98184673"
 在客户端或网络级别上发生错误时，还可能会出现一段较早的错误，并且对于已发送的消息，如果确认未成功返回到客户端，则会将该消息提交到队列中。 在这种情况下，客户端就会对发送操作结果产生怀疑。
 
 重复检测支持发送程序重新发送相同的消息，并让队列或主题放弃任何重复的副本，从而消除了这些情况下的各种怀疑。
+
+> [!NOTE]
+> 服务总线的基本层不支持重复检测。 标准层和高级层支持重复检测。 有关这些层之间的差异，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
 ## <a name="how-it-works"></a>工作原理： 
 启用重复检测，有助于跟踪在指定时间范围内发送到队列或主题的所有消息的 MessageId（由应用程序控制）。 如果使用已在相应时间范围内记录的 MessageId 发送任何新消息，则将该消息报告为“已接受”（即发送操作成功），但将立即忽略和删除新发送的消息。 除了 MessageId 之外，不会检查消息的其他任何部分。

@@ -7,18 +7,18 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 33b30f29146e446c5525b1bbcfd76af71c557702
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fa699163fdf445624c918e714fda890a41a67f07
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045304"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682641"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>在 Azure 数字孪生中管理终结点和路由 (Api 和 CLI) 
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-在 Azure 数字孪生中，可以将 [事件通知](how-to-interpret-event-data.md) 路由到下游服务或连接的计算资源。 这是通过首先设置可接收事件的 **终结点** 来完成的。 然后，可以创建  [**事件路由**](concepts-route-events.md) ，用于指定由 Azure 数字孪生生成的哪些事件将传递到哪些终结点。
+在 Azure 数字孪生中，可以将 [事件通知](how-to-interpret-event-data.md) 路由到下游服务或连接的计算资源。 首先需要设置可接收事件的终结点。 然后，可以创建  [**事件路由**](concepts-route-events.md) ，用于指定由 Azure 数字孪生生成的哪些事件将传递到哪些终结点。
 
 本文逐步讲解如何使用 [事件路由 api](/rest/api/digital-twins/dataplane/eventroutes)、 [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)和 [Azure 数字孪生 CLI](how-to-use-cli.md)创建终结点和路由。
 
@@ -26,10 +26,12 @@ ms.locfileid: "98045304"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 你将需要一个 **Azure 帐户** (你可以在 [此处](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 免费设置一个帐户) 
-* 你将需要 Azure 订阅中的 **Azure 数字孪生实例** 。 如果尚未安装实例，则可以使用 [*操作方法：设置实例和身份验证*](how-to-set-up-instance-cli.md)中的步骤创建一个实例。 将安装程序中的以下值用于本文后面的内容：
+- 你将需要一个 **Azure 帐户** (你可以在 [此处](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 免费设置一个帐户) 
+- 你将需要 Azure 订阅中的 **Azure 数字孪生实例** 。 如果尚未安装实例，则可以使用 [*操作方法：设置实例和身份验证*](how-to-set-up-instance-cli.md)中的步骤创建一个实例。 将安装程序中的以下值用于本文后面的内容：
     - 实例名称
     - 资源组
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
     
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>为 Azure 数字孪生创建终结点
 
@@ -44,7 +46,7 @@ ms.locfileid: "98045304"
 
 ### <a name="create-an-event-grid-endpoint"></a>创建事件网格端点
 
-下面的示例演示如何使用 Azure CLI 创建事件网格类型终结点。 你可以使用 [Azure Cloud Shell](https://shell.azure.com)，或 [在本地安装 CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+下面的示例演示如何使用 Azure CLI 创建事件网格类型终结点。
 
 首先，创建一个事件网格主题。 可以使用以下命令，或通过访问事件网格 *自定义事件* 快速入门中 [的 *"创建自定义主题*" 部分](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)更详细地查看这些步骤。
 
@@ -185,7 +187,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 路由定义可包含以下元素：
 * 要使用的路由名称
 * 要使用的终结点的名称
-* 定义要发送到终结点的事件的筛选器 
+* 用于定义发送到终结点的事件的筛选器 
 
 如果没有路由名称，则不会在 Azure 数字孪生之外路由任何消息。 如果存在路由名称并且筛选器为，则 `true` 所有消息都将路由到该终结点。 如果存在路由名称并且添加了不同的筛选器，则将根据筛选器筛选消息。
 

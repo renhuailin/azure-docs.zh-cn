@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 78ce082c6e90cfc9c67ddcfa00926d292b9ed7ea
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 902bcaa97658802b35fb523a1213e6bbd47f357f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740464"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684502"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>启用用于 VM 的 Azure Monitor 来宾运行状况（预览）
 用于 VM 的 Azure Monitor 来宾健康状况允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何在你的订阅中启用此功能，以及如何为每个虚拟机启用来宾监视。
@@ -35,7 +35,7 @@ ms.locfileid: "97740464"
 
 - 澳大利亚中部
 - 澳大利亚东部
-- 澳大利亚东南部
+- Australia Southeast
 - 印度中部
 - 美国中部
 - 东亚
@@ -43,7 +43,7 @@ ms.locfileid: "97740464"
 - 美国东部 2
 - 美国东部 2 EUAP
 - 德国中西部
-- 日本东部
+- Japan East
 - 美国中北部
 - 北欧
 - 美国中南部
@@ -127,9 +127,9 @@ POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Micro
 New-AzResourceGroupDeployment -Name GuestHealthDataCollectionRule -ResourceGroupName my-resource-group -TemplateFile Health.DataCollectionRule.template.json -TemplateParameterFile Health.DataCollectionRule.template.parameters.json
 ```
 
-# <a name="cli"></a>[CLI](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```cli
+```azurecli
 az deployment group create --name GuestHealthDataCollectionRule --resource-group my-resource-group --template-file Health.DataCollectionRule.template.json --parameters Health.DataCollectionRule.template.parameters.json
 ```
 
@@ -267,9 +267,9 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 New-AzResourceGroupDeployment -Name GuestHealthDeployment -ResourceGroupName my-resource-group -TemplateFile azure-monitor-deploy.json -TemplateParameterFile azure-monitor-deploy.parameters.json
 ```
 
-# <a name="cli"></a>[CLI](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```cli
+```azurecli
 az deployment group create --name GuestHealthDeployment --resource-group my-resource-group --template-file Health.VirtualMachine.template.json --parameters Health.VirtualMachine.template.parameters.json
 ```
 

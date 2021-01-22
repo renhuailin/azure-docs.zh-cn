@@ -4,12 +4,12 @@ description: 了解如何将函数应用连接到 Application Insights 以进行
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 73ed679288d9d03b81a0b01670aa0f574a14839f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937274"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684702"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何为 Azure Functions 配置监视
 
@@ -40,7 +40,7 @@ Azure Functions 与 Application Insights 集成，从而使你能够更好地监
 | **`Worker`** | **traces** | 语言工作进程为非 .NET 语言生成的日志。 语言工作日志也可以记录在 `Microsoft.*` 类别中，例如 `Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcFunctionInvocationDispatcher`。 这些日志在 `Information` 级别写入。|
 
 > [!NOTE]
-> 对于 .NET 类库函数，这些类别假定您使用的是 `ILogger` 而不是 `ILogger<T>` 。 若要了解详细信息，请参阅 [函数 ILogger 文档](functions-dotnet-class-library.md#ilogger)。 
+> 对于 .NET 类库函数，这些类别假定你使用的是 `ILogger` 而不是 `ILogger<T>`。 若要了解详细信息，请参阅 [Functions ILogger 文档](functions-dotnet-class-library.md#ilogger)。 
 
 # <a name="v1x"></a>[v1.x](#tab/v1)
 
@@ -233,7 +233,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 对于将数据发送到 Application Insights 的函数应用，它需要知道 Application Insights 资源的检测密钥。 该密钥必须位于名为 **APPINSIGHTS_INSTRUMENTATIONKEY** 的应用设置中。
 
-[在 Azure 门户中](functions-create-first-azure-function.md)创建函数应用时，请在命令行中使用 [Azure Functions Core Tools](./create-first-function-cli-csharp.md) 或 [Visual Studio Code](./create-first-function-vs-code-csharp.md)，默认情况下会启用 Application Insights 集成。 Application Insights 资源的名称与函数应用的相同，并且在同一区域或最接近的区域中创建。
+[在 Azure 门户中](./functions-get-started.md)创建函数应用时，请在命令行中使用 [Azure Functions Core Tools](./create-first-function-cli-csharp.md) 或 [Visual Studio Code](./create-first-function-vs-code-csharp.md)，默认情况下会启用 Application Insights 集成。 Application Insights 资源的名称与函数应用的相同，并且在同一区域或最接近的区域中创建。
 
 ### <a name="new-function-app-in-the-portal"></a>门户中的新函数应用
 

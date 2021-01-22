@@ -1,7 +1,7 @@
 ---
-title: '将托管标识用于访问控制 (预览) '
+title: 将托管标识用于访问控制（预览版）
 titleSuffix: Azure Machine Learning
-description: 了解如何使用托管标识从 Azure 机器学习工作区控制对 Azure 资源的访问。
+description: 了解如何使用托管标识控制从 Azure 机器学习工作区对 Azure 资源的访问。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -10,56 +10,56 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b0b0c43039648737b229edc79dd4e0a3dc45f38e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311034"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683334"
 ---
-# <a name="use-managed-identities-with-azure-machine-learning-preview"></a>将托管标识与 Azure 机器学习 (预览版一起使用) 
+# <a name="use-managed-identities-with-azure-machine-learning-preview"></a>将托管标识与 Azure 机器学习结合使用（预览版）
 
-利用 [托管标识](../active-directory/managed-identities-azure-resources/overview.md)，你可以使用 *访问资源所需的最低权限* 配置工作区。 
+通过[托管标识](../active-directory/managed-identities-azure-resources/overview.md)，可以使用访问资源所需的最低权限配置工作区。 
 
-以可信方式配置 Azure 机器学习工作区时，务必确保与工作区关联的不同服务具有正确的访问级别。 例如，在机器学习工作流期间，工作区需要访问 Azure 容器注册表 (适用于 Docker 映像的 ACR) ，以及用于定型数据的存储帐户。 
+以可信方式配置 Azure 机器学习工作区时，务必确保与工作区关联的不同服务具有正确的访问级别。 例如，在机器学习工作流期间，工作区需要访问用于 Docker 映像的 Azure 容器注册表 (ACR) 和用于训练数据的存储帐户。 
 
-此外，托管标识允许对权限进行精细控制，例如，可以授予或撤消从特定的计算资源到特定 ACR 的访问权限。
+此外，托管标识支持对权限进行精细控制，例如，可以授予或撤消从特定的计算资源对特定 ACR 的访问权限。
 
 本文介绍如何使用托管标识执行以下操作：
 
  * 为 Azure 机器学习工作区配置和使用 ACR，无需让管理员用户访问 ACR。
- * 访问工作区外部的私有 ACR，以获取用于定型或推理的基本图像。
+ * 访问工作区外部的专有 ACR，以拉取用于训练或推理的基础映像。
 
 > [!IMPORTANT]
-> 使用托管标识控制对资源的访问，Azure 机器学习当前为预览版。 预览功能按 "原样" 提供，不保证支持或服务级别协议。 有关详细信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 通过 Azure 机器学习使用托管标识控制对资源的访问这一功能当前处于预览阶段。 预览功能按原样提供，不保证支持或服务级别协议。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
  
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
-- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)
+- [用于机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)
 - [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py)。
-- 若要分配角色，你的 Azure 订阅的登录名必须具有 [托管标识运算符](../role-based-access-control/built-in-roles.md#managed-identity-operator) 角色或授予所需操作的其他角色 (如 __所有者__ ) 。
-- 必须熟悉如何创建和使用 [托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
+- 若要分配角色，Azure 订阅登录名必须具有[托管标识操作员](../role-based-access-control/built-in-roles.md#managed-identity-operator)角色或授予所需操作的其他角色（如所有者）。
+- 必须熟悉如何创建和使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ## <a name="configure-managed-identities"></a>配置托管标识
 
-在某些情况下，必须禁止管理员用户对 Azure 容器注册表的访问权限。 例如，可以共享 ACR，你需要禁止其他用户进行管理访问。 或者，订阅级别策略不允许创建启用了管理员用户的 ACR。
+在某些情况下，必须禁止管理员用户对 Azure 容器注册表的访问。 例如，可能共享了 ACR，你需要禁止其他用户进行管理访问。 或者，订阅级别策略不允许创建启用了管理员用户的 ACR。
 
 > [!IMPORTANT]
-> 使用 Azure 机器学习对 Azure 容器实例上的推理 (ACI) ， __需要__ 在 ACR 上管理用户访问权限。 如果计划将模型部署到 ACI 进行推理，请不要禁用此功能。
+> 使用 Azure 机器学习在 Azure 容器实例 (ACI) 上进行推理时，需要 ACR 上的管理员用户访问权限。 如果计划将模型部署到 ACI 进行推理，请不要禁用此功能。
 
-在不启用管理员用户访问权限的情况下创建 ACR 时，将使用托管标识来访问 ACR 以生成和请求 Docker 映像。
+在不启用管理员用户访问权限的情况下创建 ACR 时，将使用托管标识来访问 ACR 以生成和拉取 Docker 映像。
 
-创建工作区时，可以将自己的 ACR 与管理员用户禁用。 或者，让 Azure 机器学习创建工作区 ACR，以后再禁用管理员用户。
+创建工作区时，可以在禁用管理员用户的情况下自带 ACR。 或者，让 Azure 机器学习创建工作区 ACR，以后再禁用管理员用户。
 
 ### <a name="bring-your-own-acr"></a>自带 ACR
 
-如果订阅策略不允许使用 ACR 管理员用户，则应首先创建无管理员用户的 ACR，然后将其与工作区关联。 此外，如果你有已禁用管理员用户的现有 ACR，你可以将其附加到工作区。
+如果订阅策略不允许使用 ACR 管理员用户，则应首先创建无管理员用户的 ACR，然后将其与工作区关联。 此外，如果有已禁用管理员用户的现有 ACR，可以将其附加到工作区。
 
-[从 Azure CLI 创建 ACR](../container-registry/container-registry-get-started-azure-cli.md) ，无需设置 ```--admin-enabled``` 参数，也不允许管理员用户 Azure 门户。 然后，在创建 Azure 机器学习工作区时，指定 ACR 的 Azure 资源 ID。 下面的示例演示如何创建使用现有 ACR 的新 Azure ML 工作区：
+[从 Azure CLI 创建 ACR](../container-registry/container-registry-get-started-azure-cli.md)，无需设置 ```--admin-enabled``` 参数，或从 Azure 门户创建，无需启用管理员用户。 然后，在创建 Azure 机器学习工作区时，指定 ACR 的 Azure 资源 ID。 下面的示例演示如何创建使用现有 ACR 的新 Azure ML 工作区：
 
 > [!TIP]
-> 若要获取参数的值 `--container-registry` ，请使用 [az acr show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) 命令显示 acr 的信息。 `id`字段包含 ACR 的资源 ID。
+> 若要获取 `--container-registry` 参数的值，请使用 [az acr show](/cli/azure/acr#az_acr_show) 命令显示 ACR 的信息。 `id` 字段包含 ACR 的资源 ID。
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -70,7 +70,7 @@ az ml workspace create -w <workspace name> \
 
 ### <a name="let-azure-machine-learning-service-create-workspace-acr"></a>让 Azure 机器学习服务创建工作区 ACR
 
-如果没有引入自己的 ACR，Azure 机器学习服务在执行需要的操作时，将为您创建一个。 例如，将训练运行提交到机器学习计算、构建环境或部署 web 服务终结点。 工作区创建的 ACR 将启用管理员用户，您需要手动禁用管理员用户。
+如果没有自带 ACR，Azure 机器学习服务将在执行需要 ACR 的操作时创建一个 ACR。 例如，将训练运行提交到机器学习计算、生成环境或部署 web 服务终结点。 工作区创建的 ACR 将启用管理员用户，你需要手动禁用管理员用户。
 
 1. 创建新的工作区
 
@@ -78,7 +78,7 @@ az ml workspace create -w <workspace name> \
     az ml workspace show -n <my workspace> -g <my resource group>
     ```
 
-1. 执行需要 ACR 的操作。 例如，有关 [定型模型的教程](tutorial-train-models-with-aml.md)。
+1. 执行需要 ACR 的操作。 例如，[训练模型教程](tutorial-train-models-with-aml.md)。
 
 1. 获取由群集创建的 ACR 名称：
 
@@ -90,7 +90,7 @@ az ml workspace create -w <workspace name> \
 
     此命令返回类似于以下文本的值。 只需要文本的最后一部分，即 ACR 实例名称：
 
-    ```text
+    ```output
     /subscriptions/<subscription id>/resourceGroups/<my resource group>/providers/MicrosoftContainerReggistry/registries/<ACR instance name>
     ```
 
@@ -100,13 +100,13 @@ az ml workspace create -w <workspace name> \
     az acr update --name <ACR instance name> --admin-enabled false
     ```
 
-### <a name="create-compute-with-managed-identity-to-access-docker-images-for-training"></a>使用托管标识创建计算以访问 Docker 映像以进行培训
+### <a name="create-compute-with-managed-identity-to-access-docker-images-for-training"></a>使用托管标识创建计算以访问用于训练的 Docker 映像
 
-若要访问工作区 ACR，请创建启用了系统分配的托管标识的机器学习计算群集。 创建计算时或 Azure CLI 使用，可以从 Azure 门户或工作室启用标识
+若要访问工作区 ACR，请创建启用了系统分配的托管标识的机器学习计算群集。 创建计算时可以从 Azure 门户或工作室启用标识，也可以使用以下方式从 Azure CLI 启用
 
 # <a name="python"></a>[Python](#tab/python)
 
-使用 [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py)创建计算群集时，请使用 `identity_type` 参数设置托管标识类型。
+使用 [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py) 创建计算群集时，请使用 `identity_type` 参数设置托管标识类型。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -116,40 +116,40 @@ az ml computetarget create amlcompute --name cpucluster -w <workspace> -g <resou
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-若要了解在工作室中创建计算群集时配置托管标识，请参阅 [设置托管标识](how-to-create-attach-compute-studio.md#managed-identity)。
+有关在工作室中创建计算群集时配置托管标识的信息，请参阅[设置托管标识](how-to-create-attach-compute-studio.md#managed-identity)。
 
 ---
 
-托管标识在工作区 ACR 上自动授予 ACRPull 角色，以允许拉取 Docker 映像以进行定型。
+托管标识在工作区 ACR 上自动被授予 ACRPull 角色，以允许拉取 Docker 映像进行训练。
 
 > [!NOTE]
-> 如果首先创建计算，则在创建工作区 ACR 之前，必须手动分配 ACRPull 角色。
+> 如果首先创建计算，则必须手动分配 ACRPull 角色，才能创建工作区 ACR。
 
-## <a name="access-base-images-from-private-acr"></a>从私有 ACR 访问基本映像
+## <a name="access-base-images-from-private-acr"></a>从专用 ACR 访问基础映像
 
-默认情况下，Azure 机器学习使用来自 Microsoft 托管的公共存储库的 Docker 基本映像。 然后，在这些映像上构建定型或推理环境。 有关详细信息，请参阅 [什么是 ML 环境？](concept-environments.md)。
+默认情况下，Azure 机器学习使用来自 Microsoft 托管的公共存储库中的 Docker 基础映像。 然后，在这些映像上生成训练或推理环境。 有关详细信息，请参阅[什么是 ML 环境？](concept-environments.md)。
 
-若要在企业内部使用自定义基本映像，可以使用托管标识访问私有 ACR。 下面是两个用例：
+若要在企业内部使用自定义基础映像，可以使用托管标识访问专用 ACR。 下面是两个用例：
 
- * 按原样使用基准映像进行定型。
- * 使用自定义映像作为基础构建 Azure 机器学习托管映像。
+ * 使用基础映像按原样进行训练。
+ * 使用自定义映像作为基础生成 Azure 机器学习托管映像。
 
-### <a name="pull-docker-base-image-to-machine-learning-compute-cluster-for-training-as-is"></a>按原样将 Docker 基本映像请求到机器学习计算群集
+### <a name="pull-docker-base-image-to-machine-learning-compute-cluster-for-training-as-is"></a>将 Docker 基础映像拉取到机器学习计算群集按原样进行训练
 
-如前面所述，按已启用系统分配的托管标识创建机器学习计算群集。 然后，确定托管标识的主体 ID。
+如前面所述，创建启用了系统分配的托管标识的机器学习计算群集。 然后，确定托管标识的主体 ID。
 
 ```azurecli-interactive
 az ml computetarget amlcompute identity show --name <cluster name> -w <workspace> -g <resource group>
 ```
 
-或者，你可以更新计算群集来分配用户分配的托管标识：
+或者，可以更新计算群集来分配用户分配的托管标识：
 
 ```azurecli-interactive
 az ml computetarget amlcompute identity assign --name cpucluster \
 -w $mlws -g $mlrg --identities <my-identity-id>
 ```
 
-若要允许计算群集拉取基本映像，请在私有 ACR 上授予托管服务标识 ACRPull 角色
+若要允许计算群集拉取基础映像，请在专用 ACR 上授予托管服务标识 ACRPull 角色
 
 ```azurecli-interactive
 az role assignment create --assignee <principal ID> \
@@ -157,7 +157,7 @@ az role assignment create --assignee <principal ID> \
 --scope "/subscriptions/<subscription ID>/resourceGroups/<private ACR resource group>/providers/Microsoft.ContainerRegistry/registries/<private ACR name>"
 ```
 
-最后，在提交训练运行时，在 [环境定义](how-to-use-environments.md#use-existing-environments)中指定基本映像位置。
+最后，在提交训练运行时，请在[环境定义](how-to-use-environments.md#use-existing-environments)中指定基础映像位置。
 
 ```python
 from azureml.core import Environment
@@ -167,14 +167,14 @@ env.python.user_managed_dependencies = True
 ```
 
 > [!IMPORTANT]
-> 若要确保基本映像直接拉取到计算资源，请设置 `user_managed_dependencies = True` ，并不要指定 Dockerfile。 否则 Azure 机器学习服务将尝试生成新的 Docker 映像并失败，因为只有计算群集才能从 ACR 中提取基本映像。
+> 若要确保基础映像直接拉取到计算资源，请设置 `user_managed_dependencies = True`，并且不要指定 Dockerfile。 否则 Azure 机器学习服务将尝试生成新的 Docker 映像并失败，因为只有计算群集才能从 ACR 中拉取基础映像。
 
-### <a name="build-azure-machine-learning-managed-environment-into-base-image-from-private-acr-for-training-or-inference"></a>从私有 ACR 构建 Azure 机器学习托管环境到基本映像以进行定型或推理
+### <a name="build-azure-machine-learning-managed-environment-into-base-image-from-private-acr-for-training-or-inference"></a>从专用 ACR 生成 Azure 机器学习托管环境到基础映像以进行训练或推理
 
-在此方案中，Azure 机器学习服务在从私有 ACR 提供的基本映像的顶层建立定型或推理环境。 由于图像生成任务在工作区 ACR 上使用 ACR 任务进行，因此您必须执行其他步骤以允许访问。
+在此场景中，Azure 机器学习服务在从专用 ACR 提供的基础映像之上生成训练或推理环境。 由于映像生成任务在工作区 ACR 上使用 ACR 任务进行，因此必须执行其他步骤以允许访问。
 
-1. 创建 __用户分配的托管标识__ ，并授予标识 ACRPull 访问 __私有 ACR__ 的权限。  
-1. 向工作区 __系统分配的托管__ 标识授予对上一步中 __用户分配的托管标识__ 的托管标识操作员角色。 此角色允许工作区将用户分配的托管标识分配给 ACR 任务用于构建托管环境。 
+1. 创建用户分配的托管标识并向该标识授予对专用 ACR 的 ACRPull 访问权限 。  
+1. 向工作区系统分配的托管标识授予上一步中用户分配的托管标识上的托管标识操作员角色 。 此角色允许工作区将用户分配的托管标识分配给 ACR 任务用于生成托管环境。 
 
     1. 获取工作区系统分配的托管标识的主体 ID：
 
@@ -188,9 +188,9 @@ env.python.user_managed_dependencies = True
         az role assignment create --assignee <principal ID> --role managedidentityoperator --scope <UAI resource ID>
         ```
 
-        UAI 资源 ID 是用户分配的标识的 Azure 资源 ID （格式为） `/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>` 。
+        UAI 资源 ID 是用户分配的标识的 Azure 资源 ID，格式为 `/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>`。
 
-1. 使用 [Workspace.set_connection 方法](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)在工作区连接中指定 __用户分配的托管标识__ 的外部 ACR 和客户端 ID：
+1. 使用 [ 方法](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)在工作区连接中指定用户分配的托管标识的外部 ACR 和客户端 ID：
 
     ```python
     workspace.set_connection(
@@ -201,7 +201,7 @@ env.python.user_managed_dependencies = True
         value={"ResourceId": "<UAI resource id>", "ClientId": "<UAI client ID>"})
     ```
 
-完成配置后，可以在生成定型或推理的环境时使用私有 ACR 中的基本映像。 下面的代码段演示如何在环境定义中指定基本映像 ACR 和映像名称：
+完成配置后，可以在生成用于训练或推理的环境时使用专用 ACR 中的基础映像。 下面的代码片段演示如何在环境定义中指定基础映像 ACR 和映像名称：
 
 ```python
 from azureml.core import Environment
@@ -210,7 +210,7 @@ env = Environment(name="my-env")
 env.docker.base_image = "<acr url>/my-repo/my-image:latest"
 ```
 
-或者，您可以使用 [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py)在环境定义本身中指定托管标识资源 URL 和客户端 ID。 如果显式使用注册表标识，则它会覆盖前面指定的任何工作区连接：
+或者，可以使用 [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py) 在环境定义本身中指定托管标识资源 URL 和客户端 ID。 如果显式使用注册表标识，则它会替代前面指定的任何工作区连接：
 
 ```python
 from azureml.core.container_registry import RegistryIdentity
@@ -224,11 +224,11 @@ env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 
 ## <a name="use-docker-images-for-inference"></a>使用 Docker 映像进行推理
 
-如前面所述，在没有管理员用户的情况下配置 ACR 后，可以使用 Azure Kubernetes 服务中没有管理密钥的用于推理的 Docker 映像 (AKS) 。 创建 AKS 并将其附加到工作区时，会自动为该群集的服务主体分配 ACRPull 访问工作区 ACR。
+如前面所述，在没有管理员用户的情况下配置 ACR 后，可以访问 Docker 映像进行推理，无需 Azure Kubernetes service (AKS) 中的管理密钥。 创建 AKS 或将其附加到工作区时，会自动为该群集的服务主体分配对工作区 ACR 的 ACRPull 访问权限。
 
 > [!NOTE]
-> 如果你自带 AKS 群集，则群集必须已启用服务主体而不是托管标识。
+> 如果自带 AKS 群集，则群集必须已启用服务主体而不是托管标识。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 [Azure 机器学习中的企业安全性](concept-enterprise-security.md)。
+* 详细了解 [Azure 机器学习的企业安全性](concept-enterprise-security.md)。

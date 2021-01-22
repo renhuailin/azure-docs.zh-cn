@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 27dba675f82c4d34ec793cf492c18b293a6c8c77
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7983a80da8a5ca9d900e44515b5e078cc9d70d79
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544252"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684180"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure 专用链接服务？
 
@@ -126,7 +126,7 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
 下面是使用专用链接服务时存在的已知限制：
 - 仅在标准负载均衡器上受支持 
 - 仅支持 IPv4 流量
-- 仅支持 TCP 流量
+- 仅支持 TCP 和 UDP 流量
 
 ## <a name="next-steps"></a>后续步骤
 - [使用 Azure PowerShell 创建专用链接服务](create-private-link-service-powershell.md)

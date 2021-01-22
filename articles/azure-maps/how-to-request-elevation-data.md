@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d14eda84144105bf2e04f1238284bc58a91c4c03
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602436"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684049"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>使用 Azure Maps 提升服务 (预览版请求提升数据) 
 
@@ -22,7 +22,7 @@ ms.locfileid: "98602436"
 > Azure Maps 提升服务目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Azure Maps [提升服务](https://docs.microsoft.com/rest/api/maps/elevation) 提供了 api，用于查询地球表面任意位置的提升数据。 您可以请求沿着路径、在定义的范围框中或在特定坐标内进行抽样提升数据。 此外，还可以使用 [呈现 V2-获取地图磁贴 API](https://docs.microsoft.com/rest/api/maps/renderv2) 来检索以磁贴格式的提升数据。 磁贴以 GeoTIFF 光栅格式提供。 本文介绍如何使用 Azure Maps 提升服务和获取地图磁贴 API 来请求提升数据。 可以通过 GeoJSON 和 GeoTiff 格式请求提升数据。
+Azure Maps [提升服务](/rest/api/maps/elevation) 提供了 api，用于查询地球表面任意位置的提升数据。 您可以请求沿着路径、在定义的范围框中或在特定坐标内进行抽样提升数据。 此外，还可以使用 [呈现 V2-获取地图磁贴 API](/rest/api/maps/renderv2) 来检索以磁贴格式的提升数据。 磁贴以 GeoTIFF 光栅格式提供。 本文介绍如何使用 Azure Maps 提升服务和获取地图磁贴 API 来请求提升数据。 可以通过 GeoJSON 和 GeoTiff 格式请求提升数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,7 +35,7 @@ Azure Maps [提升服务](https://docs.microsoft.com/rest/api/maps/elevation) �
 
 ## <a name="request-elevation-data-in-raster-tiled-format"></a>以光栅平铺格式请求提升数据
 
-若要以光栅磁贴格式请求提升数据，请使用 [呈现 V2-获取地图磁贴 API](https://docs.microsoft.com/rest/api/maps/renderv2)。 如果可以找到磁贴，API 会将磁贴作为 GeoTIFF 返回。 否则，API 将返回0。 所有光栅 DEM 磁贴都 (海平面) 地球模式使用 geoid。 在此示例中，我们将为 Mt 请求提升数据。 他.
+若要以光栅磁贴格式请求提升数据，请使用 [呈现 V2-获取地图磁贴 API](/rest/api/maps/renderv2)。 如果可以找到磁贴，API 会将磁贴作为 GeoTIFF 返回。 否则，API 将返回0。 所有光栅 DEM 磁贴都 (海平面) 地球模式使用 geoid。 在此示例中，我们将为 Mt 请求提升数据。 他.
 
 >[!TIP]
 >若要在世界地图上的特定区域检索磁贴，需要在适当的缩放级别找到正确的磁贴。 另请注意，WorldDEM 涵盖整个全局 landmass，但不涵盖海洋。  有关详细信息，请参阅[缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)。
@@ -58,9 +58,9 @@ Azure Maps [提升服务](https://docs.microsoft.com/rest/api/maps/elevation) �
 
 * [获取点数据](/rest/api/maps/elevation/getdataforpoints)
 * [为点发布数据](/rest/api/maps/elevation/postdataforpoints)
-* [获取折线的数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
-* [为折线发布数据](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
-* [获取边界框的数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+* [获取折线的数据](/rest/api/maps/elevation/getdataforpolyline)
+* [为折线发布数据](/rest/api/maps/elevation/postdataforpolyline)
+* [获取边界框的数据](/rest/api/maps/elevation/getdataforboundingbox)
 
 >[!IMPORTANT]
 > 当无法返回任何数据时，所有 Api 都将返回 `0` 。
@@ -126,11 +126,11 @@ Azure Maps [提升服务](https://docs.microsoft.com/rest/api/maps/elevation) �
 
 ### <a name="request-elevation-data-samples-along-a-polyline"></a>按折线请求提升数据示例
 
-在此示例中，我们将使用 " [获取折线的数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline) " 来请求5个均匀分布的样本，沿 Mt 坐标之间的直线。 他和 Chamlang 山上。 这两个坐标都必须以长/Lat 格式定义。 如果未指定参数的值，则 `samples` 示例数默认为10。 最大样本数为2000。
+在此示例中，我们将使用 " [获取折线的数据](/rest/api/maps/elevation/getdataforpolyline) " 来请求5个均匀分布的样本，沿 Mt 坐标之间的直线。 他和 Chamlang 山上。 这两个坐标都必须以长/Lat 格式定义。 如果未指定参数的值，则 `samples` 示例数默认为10。 最大样本数为2000。
 
 接下来，我们将使用 "获取折线数据" 来请求三个均匀间距的数据沿着路径进行提升。 我们将通过传递三个长/Lat 坐标对来定义示例的确切位置。
 
-最后，我们将使用用于 [折线 API 的 Post 数据](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) 在相同的三个相同的示例中请求提升数据。
+最后，我们将使用用于 [折线 API 的 Post 数据](/rest/api/maps/elevation/postdataforpolyline) 在相同的三个相同的示例中请求提升数据。
 
 URL 中的纬度和经度应处于 WGS84 (世界测量 System) 小数度。
 
@@ -229,7 +229,7 @@ URL 中的纬度和经度应处于 WGS84 (世界测量 System) 小数度。
     }
     ```
 
-7. 现在，我们将为 [折线 API 调用 Post 数据](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) ，以获取同三个点的提升数据。 在 "生成器" 选项卡中选择 **POST** HTTP 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
+7. 现在，我们将为 [折线 API 调用 Post 数据](/rest/api/maps/elevation/postdataforpolyline) ，以获取同三个点的提升数据。 在 "生成器" 选项卡中选择 **POST** HTTP 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
 
     ```http
     https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&samples=5
@@ -256,7 +256,7 @@ URL 中的纬度和经度应处于 WGS84 (世界测量 System) 小数度。
 
 ### <a name="request-elevation-data-by-bounding-box"></a>请求按边界框提升数据
 
-现在，我们将使用 " [获取数据" 边界框](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox) 来请求在 Mt 附近进行提升。 Rainier，WA。 提升数据将返回到边界框中等距的位置。  (2) 一组纬度/长坐标 (南部纬度、西经度 |"北部纬度"、"东部经度) " 分为行和列。 边界框帐户的两个 (2) 的边缘和两个 (2) 列。 为在行和列相交时创建的网格顶点返回提升。 在单个请求中，最多可以返回2000个提升。
+现在，我们将使用 " [获取数据" 边界框](/rest/api/maps/elevation/getdataforboundingbox) 来请求在 Mt 附近进行提升。 Rainier，WA。 提升数据将返回到边界框中等距的位置。  (2) 一组纬度/长坐标 (南部纬度、西经度 |"北部纬度"、"东部经度) " 分为行和列。 边界框帐户的两个 (2) 的边缘和两个 (2) 列。 为在行和列相交时创建的网格顶点返回提升。 在单个请求中，最多可以返回2000个提升。
 
 在此示例中，我们将指定 rows = 3，列 = 6。 在响应中返回18个提升值。 在下面的关系图中，提升值是从西南角开始排序的，然后将 "西" 和 "东南" 继续到 "中"。  提升点按其返回顺序进行编号。
 
@@ -488,15 +488,15 @@ Azure Maps 通过 CodePen 上的 () ，按<a href='https://codepen.io/azuremaps/
 > [提升 (预览) -获取 Lat 长坐标的数据](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
-> [提升 (预览) -获取边界框的数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+> [提升 (预览) -获取边界框的数据](/rest/api/maps/elevation/getdataforboundingbox)
 
 > [!div class="nextstepaction"]
-> [提升 (预览) -获取折线数据](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
+> [提升 (预览) -获取折线数据](/rest/api/maps/elevation/getdataforpolyline)
 
 > [!div class="nextstepaction"]
-> [Render V2 –获取地图磁贴](https://docs.microsoft.com/rest/api/maps/renderv2)
+> [Render V2 –获取地图磁贴](/rest/api/maps/renderv2)
 
 有关 Azure Maps REST API 的完整列表，请参阅：
 
 > [!div class="nextstepaction"]
-> [Azure Maps REST API](https://docs.microsoft.com/rest/api/maps/)
+> [Azure Maps REST API](/rest/api/maps/)

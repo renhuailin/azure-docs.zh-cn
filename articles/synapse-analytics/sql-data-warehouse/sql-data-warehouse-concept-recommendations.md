@@ -11,18 +11,18 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: bd32b9690f8a9aef92eb1f2fbcc4ec926a65584e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6510a7143e78c054130a1f1dddba78342a6785fe
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121186"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685270"
 ---
-# <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中针对专用 SQL 池的 azure 顾问建议
+# <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure 顾问针对 Azure Synapse Analytics 中专用 SQL 池的建议
 
 本文介绍 Azure 顾问中提供的专用 SQL 池建议。  
 
-专用的 SQL 池提供了一些建议，以确保数据仓库工作负荷的性能一致。 建议与 [Azure 顾问](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)紧密集成，直接在 [Azure 门户](https://aka.ms/Azureadvisor)中为你提供最佳做法。 专用 SQL 池为每日节奏的活动工作负荷收集遥测和曲面建议。 下面概述了支持的建议方案，以及如何应用建议的操作。
+专用 SQL 池提供建议，确保以一致的方式优化数据仓库工作负荷的性能。 建议与 [Azure 顾问](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)紧密集成，直接在 [Azure 门户](https://aka.ms/Azureadvisor)中为你提供最佳做法。 专用 SQL 池每天收集一次活动工作负荷的遥测和外围应用建议。 下面概述了支持的建议方案，以及如何应用建议的操作。
 
 可以立即[查看你的建议](https://aka.ms/Azureadvisor)！ 
 
@@ -73,4 +73,4 @@ ms.locfileid: "98121186"
 
 ## <a name="data-loading-misconfiguration"></a>数据加载配置错误
 
-应始终从与专用 SQL 池相同的区域中的存储帐户加载数据，以最大程度地减少延迟。 使用 [COPY 语句进行高吞吐量数据引入](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，并在存储帐户中拆分暂存文件以最大限度地提高吞吐量。 如果无法使用 COPY 语句，可以使用 SqlBulkCopy API 或批处理容量较高的 bcp 来提高吞吐量。 有关其他数据加载指南，请访问以下[文档](./guidance-for-loading-data.md)。
+应始终从与专用 SQL 池位于相同区域的存储帐户加载数据，以最大程度地减少延迟。 使用 [COPY 语句进行高吞吐量数据引入](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)，并在存储帐户中拆分暂存文件以最大限度地提高吞吐量。 如果无法使用 COPY 语句，可以使用 SqlBulkCopy API 或批处理容量较高的 bcp 来提高吞吐量。 有关其他数据加载指南，请访问以下[文档](./guidance-for-loading-data.md)。

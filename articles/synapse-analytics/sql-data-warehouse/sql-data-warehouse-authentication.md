@@ -1,6 +1,6 @@
 ---
-title: 专用 SQL 池 (以前的 SQL DW) 的身份验证
-description: 了解如何使用 Azure Active Directory (Azure AD) 或 SQL Server 身份验证，在 Azure Synapse Analytics 中 (以前的 SQL DW) 进行身份验证。
+title: 专用 SQL 池（之前称为 SQL DW）的身份验证
+description: 了解如何使用 Azure Active Directory (Azure AD) 或 SQL Server 身份验证向 Azure Synapse Analytics 中的专用 SQL 池（之前称为 SQL DW）进行身份验证。
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,24 +12,24 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: b2b5ca024046c5bc46fff756c55688d3ff0cfea1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 80bc9f6fc6af94ba2a5ade77cc1d53b3fc29f1ea
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451969"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685338"
 ---
-# <a name="authenticate-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中 (以前的 SQL DW) 进行身份验证
+# <a name="authenticate-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>向 Azure Synapse Analytics 中的专用 SQL 池（之前称为 SQL DW）进行身份验证
 
-了解如何使用 Azure Active Directory (Azure AD) 或 SQL Server 身份验证，在 Azure Synapse 中 (以前的 SQL DW) 进行身份验证。
+了解如何使用 Azure Active Directory (Azure AD) 或 SQL Server 身份验证向 Azure Synapse 中的专用 SQL 池（之前称为 SQL DW）进行身份验证。
 
-若要连接到专用 SQL 池 (以前的 SQL DW) ，必须传入安全凭据进行身份验证。 建立连接时，特定的连接设置已配置为建立查询会话的一部分。  
+若要连接到专用 SQL 池（之前称为 SQL DW），必须传入安全凭据进行身份验证。 建立连接时，特定的连接设置已配置为建立查询会话的一部分。  
 
-有关安全性以及如何启用到专用 SQL 池的连接 (以前的 SQL DW) 的详细信息，请参阅 [保护数据库文档](sql-data-warehouse-overview-manage-security.md)。
+若要详细了解安全性以及如何启用与专用 SQL 池（之前称为 SQL DW）的连接，请参阅[保护数据库文档](sql-data-warehouse-overview-manage-security.md)。
 
 ## <a name="sql-authentication"></a>SQL 身份验证
 
-若要连接到专用 SQL 池 (以前的 SQL DW) ，必须提供以下信息：
+若要连接到专用 SQL 池（之前称为 SQL DW），必须提供以下信息：
 
 * 完全限定的服务器名称
 * 指定 SQL 身份验证
@@ -47,7 +47,7 @@ ms.locfileid: "96451969"
 
 ## <a name="azure-active-directory-authentication"></a>Azure Active Directory 身份验证
 
-[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 身份验证是一种使用 Azure Active Directory (Azure AD) 中的标识连接到 SQL 池的机制。 通过 Azure Active Directory 身份验证，可以在一个中心位置中集中管理数据库用户和其他 Microsoft 服务的标识。 中央 ID 管理提供一个单一位置来管理 (以前的 SQL DW) 用户的专用 SQL 池，并简化权限管理。
+[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 身份验证是一种使用 Azure Active Directory (Azure AD) 中的标识连接到 SQL 池的机制。 通过 Azure Active Directory 身份验证，可以在一个中心位置中集中管理数据库用户和其他 Microsoft 服务的标识。 集中 ID 管理提供单一位置用于管理专用 SQL 池（之前称为 SQL DW）用户，并简化权限管理。
 
 ### <a name="benefits"></a>优点
 
@@ -60,7 +60,7 @@ Azure Active Directory 的优点包括：
 * 通过启用集成的 Windows 身份验证和 Azure Active Directory 支持的其他形式的身份验证来消除存储密码。
 * 使用包含的数据库用户在数据库级别对标识进行身份验证。
 * 支持对连接到 SQL 池的应用程序进行基于令牌的身份验证。
-* 通过对各种工具（包括 [SQL Server Management Studio](../../azure-sql/database/authentication-mfa-ssms-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 和 [SQL Server Data Tools](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）的 Active Directory 通用身份验证支持多重身份验证。
+* 通过对各种工具（包括 [SQL Server Management Studio](../../azure-sql/database/authentication-mfa-ssms-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 和 [SQL Server Data Tools](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)）的 Active Directory 通用身份验证支持多重身份验证。
 
 > [!NOTE]
 > Azure Active Directory 仍然相对较新，具有某些限制。 若要确保 Azure Active Directory 适用于环境，请参阅 [Azure AD features and limitations](../../azure-sql/database/authentication-aad-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations)（Azure AD 功能和限制），尤其是那些需要额外考虑的内容。
@@ -76,12 +76,12 @@ Azure Active Directory 的优点包括：
 5. 在映射到 Azure AD 标识的数据库中创建包含的数据库用户
 6. 使用 Azure AD 标识连接到 SQL 池
 
-目前，Azure Active Directory 用户不会显示在 SSDT 对象资源管理器中。 解决方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中查看这些用户。
+目前，Azure Active Directory 用户不会显示在 SSDT 对象资源管理器中。 解决方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中查看这些用户。
 
 ### <a name="find-the-details"></a>查看详细信息
 
 * 配置和使用 Azure Active Directory 身份验证的步骤与适用于 Azure SQL 数据库和 Azure Synapse 中的 Synapse SQL 的步骤几乎完全相同。 请遵循主题[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 池](../../azure-sql/database/authentication-aad-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中的详细步骤。
-* 创建自定义数据库角色，并向角色添加用户。 然后授予角色具体权限。 有关详细信息，请参阅 [数据库引擎权限入门](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+* 创建自定义数据库角色，并向角色添加用户。 然后授予角色具体权限。 有关详细信息，请参阅 [数据库引擎权限入门](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="next-steps"></a>后续步骤
 

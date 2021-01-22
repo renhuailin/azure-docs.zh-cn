@@ -3,12 +3,12 @@ title: 在 Azure VMware 解决方案上部署地平线
 description: 了解如何在 Azure VMware 解决方案上部署 VMware 地平线。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6d5d8e12e358e2289128af9840660be18f5f217a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 2cf6fc5cb7662188650365cb019774d6c778d405
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95537435"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684869"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>在 Azure VMware 解决方案上部署地平线 
 
@@ -130,15 +130,35 @@ Azure 私有云在概念上与 VMware SDDC 相同，后者通常用于地平线�
 
 ### <a name="sizing-tables"></a>调整表大小
 
-这些表显示了登录到 .VSI 知识工作者工作负荷和辅助工作负荷的常见工作负荷。
+适用于地平线虚拟桌面的特定 vCPU/vRAM 要求取决于客户的特定工作负载配置文件。   与 MSFT 和 VMware 销售团队合作，帮助确定虚拟机的 vCPU/vRAM 需求。 
 
-#### <a name="knowledge-worker-workloads"></a>知识工作者工作负荷
+| 每个 VM 的 vCPU | 每个 VM (GB) vRAM | 实例 | 100 Vm | 200 Vm | 300 Vm | 400 Vm | 500 Vm | 600 Vm | 700 Vm | 800 Vm | 900 Vm | 1000 Vm | 2000 Vm | 3000 Vm | 4000 Vm | 5000 Vm | 6000 Vm | 6400 Vm |
+|:-----------:|:----------------:|:--------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+|      2      |        3.5       |    AVS   |    3    |    3    |    4    |    4    |    5    |    6    |    6    |    7    |    8    |     9    |    17    |    25    |    33    |    41    |    49    |    53    |
+|      2      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    6    |    7    |    8    |    9    |     9    |    18    |    26    |    34    |    42    |    51    |    54    |
+|      2      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      2      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      2      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      2      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      4      |        3.5       |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      4      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      4      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      4      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      6      |        3.5       |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         4        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      6      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      6      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      8      |        3.5       |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         4        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         6        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      8      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      8      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
 
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="用于 VMware 的常用 VDI 配置文件的列表" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
-
-#### <a name="power-worker-workloads"></a>Power worker 工作负荷
-
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="用于 VMware 的常用 VDI 配置文件表" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
 ### <a name="horizon-sizing-inputs"></a>地平线大小调整输入
 
@@ -189,24 +209,9 @@ Azure 私有云在概念上与 VMware SDDC 相同，后者通常用于地平线�
 
 与 VMware EUC 销售团队合作，根据您的需求来确定所需的许可成本。
 
-### <a name="cost-of-the-horizon-infrastructure-vms-on-azure-virtual-network"></a>Azure 虚拟网络上的基础结构 Vm 的成本
+### <a name="azure-instance-types"></a>Azure 实例类型
 
-基于标准部署体系结构，地平线基础结构 Vm 由连接服务器、UAGs、应用程序卷管理器组成。 它们部署在客户的 Azure 虚拟网络中。 需要额外的 Azure 本机实例以支持 Azure 上的高可用性 (HA) 、Microsoft SQL 或 Microsoft Active Directory (AD) 服务。 该表根据2000桌面部署示例列出 Azure 实例。 
-
->[!NOTE]
->若要能够处理故障，请部署比 (n + 1) 的连接数更多的服务器。 推荐的连接服务器实例的最小数目为2，而所需的最小实例数将取决于环境将支持的用户数量。  单连接服务器最多支持4000个会话，但建议使用2000作为最佳做法。 每个 pod 最多支持7个连接服务器，每个 pod 建议12000活动会话。 有关最新数目的信息，请参阅 [Vmware 知识库文章 Vmware 地平线7大小限制和建议](https://kb.vmware.com/s/article/2150348)。
-
-| 地平线基础结构组件 | Azure 实例 | 2000 (所需的实例数)     | 评论  |
-|----------------------------------|----------------|----------------------------------------------------|----------|
-| 连接服务器                | D4sv3          | 2       | *请参阅上面的注释*                         |    
-| UAG                              | F2sv2          | 2       | *请参阅上面的注释*                         |
-| 应用程序卷管理器              | D4sv3          | 2       | *请参阅上面的注释*                         |
-| 云连接器                  | D4sv3          | 1       |                                          |
-| AD 控制器                    | D4sv3          | 2       | *用于在 Azure 上使用 MSFT AD 服务的选项* |
-| MS-SQL 数据库                  | D4sv3          | 2       | *使用 Azure 上的 SQL 服务的选项*     |
-| Windows 文件共享               | D4sv3          |         | *可选*                               |
-
-在上面的示例中，每个 \$ 用户每个用户每2000月0.36 的基础结构 VM 成本量为。 此示例使用美国东部 Azure instance 6 月2020定价。 根据区域、选择的选项和时间安排，定价可能会有所不同。
+若要了解要在其基础结构中需要的 Azure 虚拟机大小，请参阅可在 [此处](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution)找到的 VMware 指导原则。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure VMware 解决方案中 VMware 范围的详细信息，请阅读 [Vmware 地平线常见问题解答](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)。

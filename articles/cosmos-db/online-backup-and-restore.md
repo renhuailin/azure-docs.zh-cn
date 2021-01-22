@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 中的联机备份和按需数据还原
-description: 本文介绍了自动备份、按需数据还原的工作原理、如何配置备份间隔和保留，以及如何在 Azure Cosmos DB 中联系数据还原支持。
+description: 本文介绍了如何在 Azure Cosmos DB 中进行自动备份和按需数据还原、如何配置备份间隔和保留期、如何联系数据还原支持人员。
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 43625a80df76ff35b8bb1804df5f5fd1524326c5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ba66013e37c196c58291a6bcd979be7fb5fa0130
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097526"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684570"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联机备份和按需数据还原
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,11 +23,11 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 
 使用 Azure Cosmos DB，数据和数据备份都高度冗余，并且具有可复原性，能抵御区域性灾难。 以下步骤演示 Azure Cosmos DB 如何执行数据备份：
 
-* Azure Cosmos DB 每 4 小时自动完整备份数据库一次，默认情况下在任何时间点都只存储最新的 2 个备份。 如果默认间隔不足以满足工作负荷，则可以从 Azure 门户更改备份间隔和保持期。 可以在创建 Azure Cosmos 帐户期间或之后更改备份配置。 如果删除了容器或数据库，Azure Cosmos DB 会将给定容器或数据库中的现有快照保留 30 天。
+* Azure Cosmos DB 每 4 小时自动完整备份数据库一次，默认情况下在任何时间点都只存储最新的 2 个备份。 如果默认间隔不能满足工作负荷要求，则可以从 Azure 门户更改备份间隔和保留期。 可以在创建 Azure Cosmos 帐户期间或之后更改备份配置。 如果删除了容器或数据库，Azure Cosmos DB 会将给定容器或数据库中的现有快照保留 30 天。
 
 * Azure Cosmos DB 将这些备份存储在 Azure Blob 存储中，而实际数据以本地形式驻留在 Azure Cosmos DB 中。
 
-* 为了保证低延迟，你的备份快照存储在与当前写入区域相同的区域中的 Azure Blob 存储中 (或 **其中一个** 写入区域，以防具有多区域写入配置) 。 对于针对区域性灾难的恢复，Azure Blob 存储中备份数据的屏幕快照将通过异地冗余存储 (GRS) 再次复制到另一区域。 根据源区域以及与源区域关联的区域对确定备份复制的目标区域。 若要了解详细信息，请参阅 [Azure 区域的异地冗余对列表](../best-practices-availability-paired-regions.md)一文。 不能直接访问此数据库。 当你通过支持请求来请求还原后，Azure Cosmos DB 团队将还原你的备份。
+* 为保证低延迟，备份的快照将存储在 Azure Blob 存储中，且所在区域与当前写入区域（如果有多区域写入配置，则为其中一个写入区域）相同。 对于针对区域性灾难的恢复，Azure Blob 存储中备份数据的屏幕快照将通过异地冗余存储 (GRS) 再次复制到另一区域。 根据源区域以及与源区域关联的区域对确定备份复制的目标区域。 若要了解详细信息，请参阅 [Azure 区域的异地冗余对列表](../best-practices-availability-paired-regions.md)一文。 不能直接访问此数据库。 当你通过支持请求来请求还原后，Azure Cosmos DB 团队将还原你的备份。
 
    下图显示了如何在美国西部的远程 Azure Blob 存储帐户中备份 Azure Cosmos 容器（其三个主要物理分区全部位于美国西部），然后将其复制到美国东部：
 
@@ -52,11 +52,11 @@ Azure Cosmos DB 每 4 小时自动对数据库执行一次完整备份，而且�
 
    * 保留的数据副本 - 默认情况下，会免费提供数据的两个备份副本。 如果需要两个以上的副本，则需支付额外费用。 请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)中的“已用存储”部分，了解额外副本的确切价格。
 
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="GRS Azure 存储中所有 Cosmos DB 实体的定期完整备份" border="true":::
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="为现有 Azure Cosmos 帐户配置备份间隔和保留期" border="true":::
 
 如果在帐户创建过程中配置备份选项，则可以配置“备份策略”（是“定期”或“连续”）  。 定期策略使你可以配置备份间隔和备份保留期。 连续策略目前仅通过注册提供。 Azure Cosmos DB 团队会评估你的工作负载并审批你的请求。
 
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="GRS Azure 存储中所有 Cosmos DB 实体的定期完整备份" border="true":::
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="为新 Azure Cosmos 帐户配置定期或连续备份策略" border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a>请求从备份还原数据
 
@@ -81,7 +81,7 @@ Azure Cosmos DB 每 4 小时自动对数据库执行一次完整备份，而且�
 
 下面的屏幕截图说明如何为容器（集合/图/表）创建通过 Azure 门户还原数据的支持请求。 提供其他详细信息（例如数据类型、还原目的、删除数据的时间），以帮助我们设置请求的优先级。
 
-:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="GRS Azure 存储中所有 Cosmos DB 实体的定期完整备份":::
+:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="使用 Azure 门户创建备份支持请求":::
 
 ## <a name="considerations-for-restoring-the-data-from-a-backup"></a>从备份还原数据时的注意事项
 
@@ -103,17 +103,24 @@ Azure Cosmos DB 每 4 小时自动对数据库执行一次完整备份，而且�
 
 意外删除 Azure Cosmos 数据库后，我们可以还原整个数据库或该数据库中的容器子集。 还可以跨数据库选择特定容器并将它们还原到新的 Azure Cosmos 帐户中。
 
-如果意外删除或修改了容器中的一个或多个项（即数据损坏情况），需要指定还原到的时间。 如果数据损坏，则时间很重要。 由于容器是实时的，所以备份仍在运行，因此如果超过了保持期（默认值为 8 小时），备份将被覆盖。 若要防止备份被覆盖，请将帐户的备份保留至少增加7天。 最好在8小时内提高数据损坏的保留期。
+如果意外删除或修改了容器中的一个或多个项（即数据损坏情况），需要指定还原到的时间。 如果数据损坏，则时间很重要。 由于容器是实时的，所以备份仍在运行，因此如果超过了保持期（默认值为 8 小时），备份将被覆盖。 若要防止备份被覆盖，请将帐户的备份保留期增加到至少七天。 最好在8小时内提高数据损坏的保留期。
 
 如果意外删除或损坏了数据，则应在 8 小时内联系 [Azure 支持](https://azure.microsoft.com/support/options/)，以便 Azure Cosmos DB 团队帮助你从备份中还原数据。 这样，Azure Cosmos DB 支持团队才有足够的时间来还原你的帐户。
 
 > [!NOTE]
-> 还原数据后，并非所有源功能或设置都会传输到还原的帐户。 以下设置不会转移到新帐户：
+> 还原数据后，并非所有源功能或设置都会转移到还原的帐户。 以下设置不会转移到新帐户：
 > * VNET 访问控制列表
 > * 存储过程、触发器和用户定义的函数
 > * 多区域设置  
 
 如果在数据库级别预配吞吐量，那么在这种情况下，将对整个数据库，而不是单个容器进行备份和还原。 在这种情况下，无法选择还原容器子集。
+
+## <a name="required-permissions-to-change-retention-or-restore-from-the-portal"></a>更改门户保留或还原所需的权限
+允许属于角色 [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)、所有者或参与者的主体请求还原或更改保持期。
+
+## <a name="understanding-costs-of-extra-backups"></a>了解额外备份的成本
+2将提供2个备份，并根据 [备份存储定价](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/)中所述的备份存储的基于区域的定价来收费额外的备份。 例如，如果将备份保留配置为240小时，即10天，备份间隔为24小时。 这意味着备份数据有10个副本。 假设美国西部2的数据为 1 TB，则在给定的月份，将为 1000 * 0.12 ~ $120。 
+
 
 ## <a name="options-to-manage-your-own-backups"></a>管理自己的备份的选项
 
@@ -125,13 +132,13 @@ Azure Cosmos DB 每 4 小时自动对数据库执行一次完整备份，而且�
 
 ## <a name="post-restore-actions"></a>还原后的操作
 
-数据还原的主要目标是恢复意外删除或修改的数据。 因此，建议先检查已还原数据，确保其中包含所需内容。 如果一切正常，您可以将数据迁移回主帐户。 尽管可以使用已还原帐户作为新的活动帐户，但如果有生产工作负载则不建议这样做。 
+数据还原的主要目标是恢复意外删除或修改的数据。 因此，建议先检查已还原数据，确保其中包含所需内容。 如果一切正常，则可以将数据迁移回主帐户。 尽管可以使用已还原帐户作为新的活动帐户，但如果有生产工作负载则不建议这样做。 
 
 还原数据后，你会收到有关新帐户名（通常采用 `<original-name>-restored1` 格式）和帐户要还原到的时间的通知。 还原的帐户与原始帐户具有相同的预配吞吐量、索引策略，并且二者位于同一区域。 角色为订阅管理员或共同管理员的用户可以看到还原的帐户。
 
 ### <a name="migrate-data-to-the-original-account"></a>将数据迁移到原始帐户
 
-以下是将数据迁移回原始帐户的不同方法：
+可通过下述不同方式将数据迁移回原始帐户：
 
 * 使用 [Azure Cosmos DB 数据迁移工具](import-data.md)。
 * 使用 [Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)。
@@ -147,4 +154,3 @@ Azure Cosmos DB 每 4 小时自动对数据库执行一次完整备份，而且�
 * 若要提出还原请求，请联系 Azure 支持，并[从 Azure 门户提交票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
 * [使用 Cosmos DB 更改源](change-feed.md)将数据移动到 Azure Cosmos DB。
 * [使用 Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)将数据移动到 Azure Cosmos DB。
-

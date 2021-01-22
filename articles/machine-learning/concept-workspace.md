@@ -1,7 +1,7 @@
 ---
 title: 什么是工作区
 titleSuffix: Azure Machine Learning
-description: 工作区是 Azure 机器学习的顶级资源。 它保留所有定型运行的历史记录，包括日志、指标、输出和脚本的快照。
+description: 工作区是 Azure 机器学习的顶级资源。 它保留所有训练运行的历史记录，包括日志、指标、输出和脚本快照。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 7acb555ddde20d6512119af85a8db055bcd9eeed
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5211555102c0a8d29eb05abd7a680935d828f9dc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701647"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683434"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -114,7 +114,7 @@ ms.locfileid: "94701647"
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：存储计算目标使用的机密和工作区所需的其他敏感信息。
 
 > [!NOTE]
-> 使用 [PYTHON SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace)、 [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/create_workspace.html)或 [使用 ARM 模板](how-to-create-workspace-template.md)的 Azure 机器学习 CLI 创建工作区时，可以改为使用现有的 Azure 资源实例。
+> 使用 [Python SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace)、[R SDK](https://azure.github.io/azureml-sdk-for-r/reference/create_workspace.html) 或 Azure 机器学习 CLI [通过 ARM 模板](how-to-create-workspace-template.md)创建工作区时，可以改用现有的 Azure 资源实例。
 
 <a name="wheres-enterprise"></a>
 
@@ -132,8 +132,7 @@ ms.locfileid: "94701647"
 
 + [Azure 机器学习概述](overview-what-is-azure-ml.md)
 + [创建和管理工作区](how-to-manage-workspace.md)
-+ [教程：开发环境中的 Azure 机器学习入门](tutorial-1st-experiment-sdk-setup-local.md)
-+ [教程：开始在计算实例上创建你的首个 ML 试验](tutorial-1st-experiment-sdk-setup.md)
-+ [教程：通过 R SDK 开始使用 Azure 机器学习](tutorial-1st-r-experiment.md)
++ [教程：开始在开发环境中使用 Azure 机器学习](tutorial-1st-experiment-sdk-setup-local.md)
++ [教程：开始在计算实例上创建第一个 ML 试验](tutorial-1st-experiment-sdk-setup.md)
 + [教程：使用自动化机器学习创建第一个分类模型](tutorial-first-experiment-automated-ml.md) 
 + [教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)

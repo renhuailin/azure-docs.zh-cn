@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 07c9bd12664a94c64a0d0b37d638b5668cc7f61e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b4035e2039afb6fe66d2658ebfcd3206d46e1de5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605406"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682456"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>如何：在使用人脸服务时减少延迟
 
@@ -42,7 +42,11 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 然后，面部服务必须从远程服务器下载映像。 如果从人脸服务到远程服务器的连接速度较慢，将影响检测方法的响应时间。
 
-若要缓解此情况，请考虑 [将映像存储在 Azure 高级 Blob 存储中](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)。
+若要缓解此情况，请考虑 [将映像存储在 Azure 高级 Blob 存储中](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)。 例如：
+
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 
 ### <a name="large-upload-size"></a>大上载大小
 
@@ -58,7 +62,10 @@ System.Collections.Generic.IList<DetectedFace> faces = await client.Face.DetectW
 - 它需要更长的时间来处理文件，与文件大小成正比。
 
 缓解措施：
-- 请考虑 [在 Azure 高级 Blob 存储中存储图像](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)。
+- 请考虑 [在 Azure 高级 Blob 存储中存储图像](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)。 例如：
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 - 请考虑上载较小的文件。
     - 请参阅有关人 [脸检测的输入数据](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-detection#input-data) 和人 [脸识别的输入数据](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-recognition#input-data)的准则。
     - 对于面部检测，使用检测模型时 `DetectionModel.Detection01` ，减少图像文件大小会提高处理速度。 使用检测模型时 `DetectionModel.Detection02` ，如果图像文件小于1920x1080，则减小图像文件大小仅会提高处理速度。

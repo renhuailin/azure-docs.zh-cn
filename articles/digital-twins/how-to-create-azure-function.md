@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6f74f973abc33d809624bd8abd5a514a52ccfe70
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 04ca8d515dbc5a28a7d3a30369d97877928c9dc1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602702"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683831"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>连接 Azure 中的函数应用以处理数据
 
@@ -36,7 +36,7 @@ ms.locfileid: "98602702"
 
 ## <a name="create-a-function-app-in-visual-studio"></a>在 Visual Studio 中创建函数应用
 
-在 Visual Studio 2019 中，选择 " _文件" > 新建 > 项目_ "并搜索 _Azure Functions_ 模板，然后选择" _下一步_"。
+在 Visual Studio 2019 中，选择 " _文件" > 新建 > 项目_ "，然后搜索 _Azure Functions_ 模板。 选择“下一步”。
 
 :::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio： &quot;新建项目&quot; 对话框":::
 
@@ -44,11 +44,11 @@ ms.locfileid: "98602702"
 
 :::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio：配置新项目":::
 
-选择函数应用 *事件网格触发器* 的类型，然后选择 " _创建_"。
+选择 " *事件网格触发器* " 的 "函数应用类型"，然后选择 " _创建_"。
 
-:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio： Azure Functions 项目触发器 &quot;对话框":::
+:::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="Visual Studio： Azure Functions 项目触发器 &quot;对话框":::
 
-创建 function app 后，visual studio 将在项目文件夹中的 **function.cs** 文件中自动填充代码示例。 此 short 函数用于记录事件。
+创建 function app 后，Visual Studio 将在项目文件夹中的 **Function1.cs** 文件中生成代码示例。 此 short 函数用于记录事件。
 
 :::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio：包含示例代码的 &quot;项目&quot; 窗口":::
 
@@ -56,11 +56,11 @@ ms.locfileid: "98602702"
 
 可以通过将 SDK 添加到 function app 来编写函数。 函数应用使用 [用于 .net 的 Azure 数字孪生 SDK (c # ) ](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)与 Azure 数字孪生交互。 
 
-若要使用 SDK，需要在项目中包含以下包。 可以使用 visual studio NuGet 包管理器安装包，也可以使用 `dotnet` 命令行工具添加包。 选择以下方法之一： 
+若要使用 SDK，需要在项目中包含以下包。 可以使用 Visual Studio 的 NuGet 包管理器安装包，也可以 `dotnet` 在命令行工具中使用添加包。 请按照以下步骤操作，了解首选方法。
 
 **选项1。使用 Visual Studio 包管理器添加包：**
     
-为此，可以在项目中右键选择，并从列表中选择 " _管理 NuGet 包_ "。 然后，在打开的窗口中，选择 " _浏览_ " 选项卡并搜索以下包。 选择 " _安装_ 并 _接受_ 许可协议" 以安装包。
+右键选择项目，然后从列表中选择 " _管理 NuGet 包_ "。 然后，在打开的窗口中，选择 " _浏览_ " 选项卡，然后搜索下列包。 选择 " _安装_ 并 _接受_ 许可协议" 以安装包。
 
 * `Azure.DigitalTwins.Core`
 * `Azure.Identity`
@@ -78,15 +78,15 @@ dotnet add package System.Net.Http
 dotnet add package Azure.Core
 ```
 
-接下来，在 Visual Studio 解决方案资源管理器中，打开 _function.cs_ 文件，其中包含示例代码，并向函数添加以下 _using_ 语句。 
+接下来，在 Visual Studio 解决方案资源管理器中，打开 _Function1.cs_ 文件，其中包含示例代码，并将以下 `using` 语句添加到函数。 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
 ## <a name="add-authentication-code-to-the-function"></a>将身份验证代码添加到函数
 
-现在，你将声明类级别变量并添加允许函数访问 Azure 数字孪生的身份验证代码。 你将在 {你的函数名} .cs 文件中的函数中添加以下项。
+现在，你将声明类级别变量并添加允许函数访问 Azure 数字孪生的身份验证代码。 将以下项添加到 _Function1.cs_ 文件中的函数。
 
-* 读取 ADT service URL 作为环境变量。 最好从环境变量中读取服务 URL，而不是在函数中对其进行硬编码。
+* 用于读取 Azure 数字孪生服务 URL 作为环境变量的代码。 最好从环境变量中读取服务 URL，而不是在函数中对其进行硬编码。
 
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ADT_service_URL":::
 
@@ -97,43 +97,24 @@ dotnet add package Azure.Core
 * 可以在 Azure Functions 中使用托管标识凭据。
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ManagedIdentityCredential":::
 
-* 在函数中添加一个本地变量 _DigitalTwinsClient_ ，以将 Azure 数字孪生客户端实例保存到函数项目。 不要 *使此* 变量在类中是静态的。
+* 在函数内部添加一个本地变量 _DigitalTwinsClient_ ，用于保存 Azure 数字孪生客户端实例。 不要 *使此* 变量在类中是静态的。
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="DigitalTwinsClient":::
 
-* 为 _adtInstanceUrl_ 添加 null 检查，并在 try catch 块中包装函数逻辑以捕获任何异常。
+* 为 _adtInstanceUrl_ 添加 null 检查，并在 try/catch 块中包装函数逻辑以捕获任何异常。
 
 完成这些更改后，函数代码将类似于以下内容：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs":::
 
+现在，你的应用程序已编写，可以使用下一部分中的步骤将其发布到 Azure。
+
 ## <a name="publish-the-function-app-to-azure"></a>将函数应用发布到 Azure
 
-若要将项目发布到 Azure 中的函数应用，请在解决方案资源管理器中右键选择函数项目 (不是解决方案) ，然后选择 " **发布**"。
-
-> [!IMPORTANT] 
-> 如果发布到 Azure 中的函数应用，则会产生额外费用，与 Azure 数字孪生无关。
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio：将函数发布到 Azure":::
-
-选择 " **Azure** " 作为发布目标，然后选择 " **下一步**"。
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio：发布 Azure Functions &quot;对话框中，选择&quot; Azure &quot; ":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="&quot;Visual Studio：发布函数&quot; 对话框中，选择 &quot;Azure Function App (Windows) 或基于计算机 (Linux) ":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio：发布函数对话框，创建新的 Azure 函数":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio： &quot;发布函数&quot; 对话框，填写字段，然后选择 &quot;创建&quot;":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio： &quot;发布函数&quot; 对话框，从列表中选择函数应用，然后单击 &quot;完成&quot;":::
-
-在以下页面上，为新的 function app、资源组和其他详细信息输入所需的名称。
-为了使函数应用能够访问 Azure 数字孪生，它需要具有系统管理的标识并且有权访问 Azure 数字孪生实例。
-
-接下来，你可以使用 CLI 或 Azure 门户为函数设置安全访问权限。 选择以下方法之一：
+[!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
 ## <a name="set-up-security-access-for-the-function-app"></a>为 function app 设置安全访问
-你可以使用以下选项之一为函数应用设置安全访问权限：
+
+可以使用 Azure CLI 或 Azure 门户为函数应用设置安全访问权限。 按照以下首选选项的步骤进行操作。
 
 ### <a name="option-1-set-up-security-access-for-the-function-app-using-cli"></a>选项1：使用 CLI 为函数应用设置安全访问权限
 
@@ -169,7 +150,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 在 [Azure 门户](https://portal.azure.com/)中，在搜索栏中搜索 " _function app_ "，其中包含之前创建的函数应用名称。 从列表中选择 *Function App* 。 
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Azure 门户：搜索函数应用":::
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure 门户：搜索函数应用":::
 
 在 "函数应用" 窗口的左侧导航栏中选择 " _标识_ "，以启用托管标识。
 在 " _系统分配_ " 选项卡下，将 _状态_ 切换到 "打开" 并 _保存_ 。 你将看到一个弹出窗口，用于 _启用系统分配的托管标识_。
@@ -206,25 +187,23 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 通过设置环境变量，可以使你的函数能够访问 Azure 数字孪生实例的 URL。 有关此内容的详细信息，请参阅 [*环境变量*](/sandbox/functions-recipes/environment-variables)。 应用程序设置公开为环境变量以访问数字孪生实例。 
 
-需要 ADT_INSTANCE_URL 创建应用程序设置。
-
-可以通过将 **_https://_** 追加到实例主机名来获取 ADT_INSTANCE_URL。 在 Azure 门户中，可以通过在搜索栏中搜索实例来找到数字孪生实例主机名。 然后，在左侧导航栏中选择 " _概述_ " 以查看 _主机名_。 复制此值以创建应用程序设置。
+若要使用实例的 URL 设置环境变量，请首先通过查找 Azure 数字孪生实例的主机名来获取 URL。 在 [Azure 门户](https://portal.azure.com) 搜索栏中搜索实例。 然后，在左侧导航栏中选择 " _概述_ " 以查看 _主机名_。 复制此值。
 
 :::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure 门户：概述-> 副本主机名，以便在 _Value_ 字段中使用。":::
 
 你现在可以按照以下步骤创建应用程序设置：
 
-* 使用搜索栏中的函数应用名称搜索你的应用，并从列表中选择函数应用
-* 选择左侧导航栏上的 " _配置_ " 可创建新的应用程序设置
-* 在 "_应用程序设置_" 选项卡中，选择 " _+ 新建应用程序设置_"
+1. 使用搜索栏中的函数应用名称搜索你的应用，并从列表中选择函数应用
+1. 选择左侧导航栏上的 " _配置_ " 可创建新的应用程序设置
+1. 在 "_应用程序设置_" 选项卡中，选择 " _+ 新建应用程序设置_"
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure 门户：搜索现有函数应用":::
+:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure 门户：搜索现有函数应用" lightbox="media/how-to-create-azure-function/search-for-azure-function.png":::
 
 :::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure 门户：配置应用程序设置":::
 
-在打开的窗口中，使用从上面复制的值创建应用程序设置。 \
-_名称_  ： ADT_SERVICE_URL \
-_值_ ： https：//{孪生}
+在打开的窗口中，使用上面复制的 "主机名" 值创建应用程序设置。
+* _名称_ ： ADT_SERVICE_URL
+* _值_： https：//{你的-孪生}
 
 选择 _"确定"_ 以创建应用程序设置。
 
@@ -244,10 +223,7 @@ _值_ ： https：//{孪生}
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍如何在 Azure 中设置用于 Azure 数字孪生的函数应用。 接下来，你可以将函数订阅到事件网格，以侦听终结点。 此终结点可能是：
-* 附加到 Azure 数字孪生的事件网格终结点，用于处理来自 Azure 数字孪生本身的消息 (例如，属性更改消息、从整数图中的 [数字孪生](concepts-twins-graph.md) 生成的遥测消息或生命周期消息) 
-* IoT 中心用来发送遥测数据和其他设备事件的 IoT 系统主题
-* 接收来自其他服务的消息的事件网格端点
+本文介绍如何在 Azure 中设置用于 Azure 数字孪生的函数应用。
 
 接下来，请参阅如何构建基本函数以将 IoT 中心数据引入 Azure 数字孪生：
 * [*如何：从 IoT 中心引入遥测数据*](how-to-ingest-iot-hub-data.md)

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2448f5f778f19674aec63291acb72536c65ca6c9
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ac9a1b43ba4ffb537afd658c84edb48ed59a3694
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555883"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683476"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
@@ -31,9 +31,9 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 
 + [适用于 R 的 Azure 机器学习 SDK（预览版）](#r-sdk-preview)：适用于 R 的 SDK 使用 reticulate 包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问 Python SDK 中实现的核心对象和方法。
 
-+ **设计器** ：Azure 机器学习设计器提供了一个简单的进入机器学习的入口点，用于构建概念证明或供缺乏编码经验的用户使用。 它允许你使用拖放基于 Web 的 UI 来训练模型。 可以使用 Python 代码作为设计的一部分，或在不编写任何代码的情况下训练模型。
++ **设计器**：Azure 机器学习设计器提供了一个简单的进入机器学习的入口点，用于构建概念证明或供缺乏编码经验的用户使用。 它允许你使用拖放基于 Web 的 UI 来训练模型。 可以使用 Python 代码作为设计的一部分，或在不编写任何代码的情况下训练模型。
 
-+ **CLI** ：机器学习 CLI 为使用 Azure 机器学习的常见任务提供命令，通常用于脚本编写和自动化任务。 例如，在创建训练脚本或管道后，你可以使用 CLI 按计划启动训练运行，或在用于训练的数据文件更新时启动。 对于训练模型，它提供了提交训练作业的命令。 它可以使用运行配置或管道来提交作业。
++ **CLI**：机器学习 CLI 为使用 Azure 机器学习的常见任务提供命令，通常用于脚本编写和自动化任务。 例如，在创建训练脚本或管道后，你可以使用 CLI 按计划启动训练运行，或在用于训练的数据文件更新时启动。 对于训练模型，它提供了提交训练作业的命令。 它可以使用运行配置或管道来提交作业。
 
 其中每个训练方法均可使用不同类型的计算资源进行训练。 这些资源统称为[计算目标](concept-azure-machine-learning-architecture.md#compute-targets)。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。
 
@@ -53,7 +53,7 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 
 * [什么是运行配置？](concept-azure-machine-learning-architecture.md#run-configurations)
 * [教程：训练第一个 ML 模型](tutorial-1st-experiment-sdk-train.md)
-* [示例： Jupyter Notebook 和 Python 定型模型的示例](https://github.com/Azure/azureml-examples)
+* [示例：Jupyter Notebook 和 Python 训练模型示例](https://github.com/Azure/azureml-examples)
 * [如何：配置训练运行](how-to-set-up-training-targets.md)
 
 ### <a name="automated-machine-learning"></a>自动化机器学习
@@ -109,7 +109,6 @@ R SDK 使你能够将 R 语言与 Azure 机器学习结合使用。 SDK 使用�
 
 有关详细信息，请参阅以下文章：
 
-* [教程：创建逻辑回归模型](tutorial-1st-r-experiment.md)
 * [R 参考的 Azure 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/index.html)
 
 ## <a name="azure-machine-learning-designer"></a>Azure 机器学习设计器

@@ -10,18 +10,18 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa4a649115f8e89c27f435888b682b7de36e9894
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8aa2623722b5e75480e68324d76e4a1493501df
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533914"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685134"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>使用 Azure CLI 从 Azure 中的 VM 创建映像版本
 
 如果要使用现有 VM 生成多个相同的 VM，可以通过 Azure CLI 使用该 VM 在共享映像库中创建映像。 还可以使用 [Azure PowerShell](image-version-vm-powershell.md) 从 VM 创建映像。
 
-使用共享映像库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 在使用某个映像版本创建 VM 时，将使用该映像版本为新 VM 创建磁盘。 可以多次使用映像版本。
+使用共享映像库时，将使用 **映像版本** 来创建 VM。 可根据环境的需要创建多个映像版本。 在使用某个映像版本创建 VM 时，将使用该映像版本为新 VM 创建磁盘。 可以多次使用映像版本。
 
 
 ## <a name="before-you-begin"></a>准备阶段
@@ -57,11 +57,11 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 请确保映像定义的类型正确。 如果已通用化 VM（使用适用于 Windows 的 Sysprep，或适用于 Linux 的 waagent -deprovision），则应使用 `--os-state generalized` 创建通用化映像定义。 若要在不删除现有用户帐户的情况下使用 VM，请使用 `--os-state specialized` 创建专用化映像定义。
 
-若要详细了解可为映像定义指定的值，请参阅[映像定义](./linux/shared-image-galleries.md#image-definitions)。
+若要详细了解可为映像定义指定的值，请参阅[映像定义](./shared-image-galleries.md#image-definitions)。
 
 使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) 在库中创建一个映像定义。
 
-在此示例中，映像定义名为 myImageDefinition，适用于[专用化](./linux/shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 若要使用 Windows OS 创建映像的定义，请使用 `--os-type Windows`。 
+在此示例中，映像定义名为 myImageDefinition，适用于[专用化](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 若要使用 Windows OS 创建映像的定义，请使用 `--os-type Windows`。 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -107,4 +107,4 @@ az sig image-version create \
 
 使用 Azure CLI 从[通用化映像](vm-generalized-image-version-cli.md)创建 VM。
 
-若要了解如何提供购买计划信息，请参阅[创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。
+有关如何提供购买计划信息的信息，请参阅[在创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。

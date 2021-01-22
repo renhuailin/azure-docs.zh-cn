@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: d683ef92c4e8d11e9defbed5454e5849211bf8f7
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 7375a46245fbe523ddf0512bb5a55371adff64e9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104744"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683736"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>在 Azure Functions 中自定义 HTTP 终结点
 
@@ -31,7 +31,7 @@ ms.locfileid: "92104744"
 
 默认情况下，HTTP 触发器函数已配置为接受任何 HTTP 方法。 也可以使用默认 URL `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>`。 在本部分，需要修改函数，以便只响应包含 `/api/hello` 的 GET 请求。 
 
-1. 在 Azure 门户中导航到该函数。 在左侧菜单中选择“集成”****，然后在“触发器”**** 下选择“HTTP (请求)”****。
+1. 在 Azure 门户中导航到该函数。 在左侧菜单中选择“集成”，然后在“触发器”下选择“HTTP (请求)”。
 
     :::image type="content" source="./media/functions-create-serverless-api/customizing-http.png" alt-text="自定义 HTTP 函数":::
 
@@ -45,16 +45,16 @@ ms.locfileid: "92104744"
 
     未在路由模板中包含 `/api` 基路径前缀，因为其由某个全局设置处理。
 
-1. 选择“保存” ****。
+1. 选择“保存” 。
 
 有关自定义 HTTP 函数的详细信息，请参阅 [Azure Functions HTTP 绑定](./functions-bindings-http-webhook.md)。
 
 ### <a name="test-your-api"></a>测试 API
 
 接下来，请测试函数，了解它与新 API 外围应用的配合使用情况：
-1. 在“函数”页，从左侧菜单中选择“代码 + 测试”****。
+1. 在“函数”页，从左侧菜单中选择“代码 + 测试”。
 
-1. 从顶部菜单中选择“获取函数 URL”****，然后复制 URL。 确认它现在使用 `/api/hello` 路径。
+1. 从顶部菜单中选择“获取函数 URL”，然后复制 URL。 确认它现在使用 `/api/hello` 路径。
  
 1. 将 URL 复制到新的浏览器标签页或偏好的 REST 客户端中。 
 
@@ -64,7 +64,7 @@ ms.locfileid: "92104744"
 
    例如，`/api/hello/?name=John`。
  
-1. 按 Enter 确认其正常工作。 应当可以看到响应“Hello John”**。
+1. 按 Enter 确认其正常工作。 应当可以看到响应“Hello John”。
 
 1. 也可以尝试使用其他 HTTP 方法调用终结点，确认是否未执行该函数。 为此，请使用 REST 客户端，例如 cURL、Postman 或 Fiddler。
 
@@ -86,11 +86,11 @@ ms.locfileid: "92104744"
 
 ### <a name="setting-up-the-frontend-environment"></a>设置前端环境
 
-重复[创建 Function App](./functions-create-first-azure-function.md#create-a-function-app) 中的步骤，创建要在其中创建代理的新 Function App。 此新应用的 URL 将充当 API 的前端，之前编辑的函数应用将充当后端。
+重复[创建 Function App](./functions-get-started.md) 中的步骤，创建要在其中创建代理的新 Function App。 此新应用的 URL 将充当 API 的前端，之前编辑的函数应用将充当后端。
 
 1. 在门户中导航到新的前端 Function App。
-1. 选择“平台功能”，并选择“应用程序设置”**** ****。
-1. 向下滚动到存储键/值对的“应用程序设置”，然后使用键 `HELLO_HOST` 创建新设置****。 将其值设置为后端 Function App 的主机，例如 `<YourBackendApp>.azurewebsites.net`。 此值是前面在测试 HTTP 函数时复制的 URL 的一部分。 稍后会在配置中引用此设置。
+1. 选择“平台功能”，并选择“应用程序设置” 。
+1. 向下滚动到存储键/值对的“应用程序设置”，然后使用键 `HELLO_HOST` 创建新设置。 将其值设置为后端 Function App 的主机，例如 `<YourBackendApp>.azurewebsites.net`。 此值是前面在测试 HTTP 函数时复制的 URL 的一部分。 稍后会在配置中引用此设置。
 
     > [!NOTE] 
     > 建议在主机配置中使用应用设置，以防止对代理的环境依赖关系进行硬编码。 使用应用设置意味着可以在环境之间移动代理配置，并应用特定于环境的应用设置。
@@ -101,9 +101,9 @@ ms.locfileid: "92104744"
 
 1. 在门户中导航回到前端函数应用。
 
-1. 在左侧菜单中，选择“代理”****，然后选择“添加”****。 
+1. 在左侧菜单中，选择“代理”，然后选择“添加”。 
 
-1. 在“新建代理”**** 页，使用下表中的设置，然后选择“创建”****。
+1. 在“新建代理”页，使用下表中的设置，然后选择“创建”。
 
     | 字段 | 示例值 | 说明 |
     |---|---|---|
@@ -112,7 +112,7 @@ ms.locfileid: "92104744"
     | 后端 URL | https://%HELLO_HOST%/api/hello | 指定请求应代理的终结点 |
 
     
-    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="自定义 HTTP 函数":::
+    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="创建代理":::
 
     Azure Functions 代理不提供 `/api` 基路径前缀，该前缀必须包含在路由模板中。 `%HELLO_HOST%` 语法引用前面创建的应用设置。 解析的 URL 将指向原始函数。
 
@@ -124,7 +124,7 @@ ms.locfileid: "92104744"
 
 接下来，使用代理为解决方案创建模拟 API。 此代理让客户端开发可以继续进行，而无需完全实现后端。 在开发的稍后阶段，可以创建新的函数应用来支持此逻辑并将代理重定向到新的函数应用。
 
-为了创建此模拟 API，我们将创建一个新代理，但这一次使用的是[应用服务编辑器](https://github.com/projectkudu/kudu/wiki/App-Service-Editor)。 要开始，请在门户中导航到 Function App。 选择“平台功能”并在“开发工具”下找到“应用服务编辑器”**** **** ****。 应用服务编辑器在新选项卡中打开。
+为了创建此模拟 API，我们将创建一个新代理，但这一次使用的是[应用服务编辑器](https://github.com/projectkudu/kudu/wiki/App-Service-Editor)。 要开始，请在门户中导航到 Function App。 选择“平台功能”并在“开发工具”下找到“应用服务编辑器”  。 应用服务编辑器在新选项卡中打开。
 
 在左侧导航栏中选择 `proxies.json`。 此文件存储所有代理配置。 如果使用某个 [函数部署方法](./functions-continuous-deployment.md)，则在源代码管理中维护此文件。 若要详细了解此文件，请参阅[代理高级配置](./functions-proxies.md#advanced-configuration)。
 
@@ -195,5 +195,5 @@ ms.locfileid: "92104744"
 - [记录 Azure Functions API（预览版）](./functions-openapi-definition.md)
 
 
-[Create your first function]: ./functions-create-first-azure-function.md
+[Create your first function]: ./functions-get-started.md
 [使用 Azure Functions 代理]: ./functions-proxies.md

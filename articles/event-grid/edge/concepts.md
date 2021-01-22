@@ -7,12 +7,12 @@ ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: b3babfe93012fae15e79362ba34f3f48856bc833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8314447e7d5d282eb428ec9316c4eef6844a7423
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171731"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682373"
 ---
 # <a name="event-grid-concepts"></a>事件网格概念
 
@@ -48,7 +48,7 @@ ms.locfileid: "86171731"
 
 ## <a name="event-handlers"></a>事件处理程序
 
-从事件网格的角度看，事件处理程序是发送事件的位置。 处理程序采取进一步的操作来处理事件。 事件网格支持多个处理程序类型。 你可以使用受支持的 Azure 服务或你自己的 web 挂钩作为处理程序。 根据处理程序的类型，事件网格遵循不同机制，以保证事件的传递。 如果目标事件处理程序是 HTTP web 挂钩，则当处理程序返回状态代码时，将重试该事件 `200 – OK` 。 对于 edge 中心，如果在未发生任何异常的情况下传递事件，则认为该事件是成功的。
+从事件网格的角度看，事件处理程序是发送事件的位置。 处理程序采取进一步的操作来处理事件。 事件网格支持多个处理程序类型。 你可以使用受支持的 Azure 服务或你自己的 web 挂钩作为处理程序。 根据处理程序的类型，事件网格遵循不同机制，以保证事件的传递。 如果目标事件处理程序是 HTTP web 挂钩，则会重试该事件，直到处理程序返回状态代码 `200 – OK` 。 对于 edge 中心，如果在未发生任何异常的情况下传递事件，则认为该事件是成功的。
 
 ## <a name="security"></a>安全性
 

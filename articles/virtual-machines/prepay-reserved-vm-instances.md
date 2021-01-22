@@ -9,15 +9,14 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: ffc9c8f3143824dd099aaad3e743398eea4e0f43
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e6cf097e927c4606885dd3f885de6ab8235bf6be
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602538"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682576"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances"></a>利用 Azure 保留 VM 实例节省成本
-
 
 
 当你提交到 Azure 保留 VM 实例时，你可以节省资金。 预订折扣将自动应用于正在运行的与预订范围和属性匹配的虚拟机数量。 无需为虚拟机分配预订即可获取折扣。 购买的预订实例仅涵盖 VM 使用率的计算部分。 对于 Windows Vm，使用情况计量分为两个不同的计量器。 有一个计算计量器，与 Linux 计量和 Windows IP 指标相同。 进行购买时看到的费用仅适用于计算成本。 费用不包括 Windows 软件费用。 有关软件成本的详细信息，请参阅 [Azure 保留 VM 实例中未包含的软件成本](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)。
@@ -30,7 +29,7 @@ ms.locfileid: "98602538"
 
 你可以使用预订建议来帮助确定你应购买的预订。
 
-- 在 Azure 门户中购买 VM 预留实例时，将显示 "购买建议" 和 "推荐数量"。
+- 在 Azure 门户中购买 VM 预留实例时，将显示购买建议和推荐的数量。
 - Azure 顾问为各个订阅提供购买建议。  
 - 可以使用 Api 获取共享范围和单个订阅范围的购买建议。 有关详细信息，请参阅 [保留实例购买适用于企业客户的建议 api](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)。
 - 对于企业协议 (EA) 和 Microsoft 客户协议 (MCA) 客户，适用于共享和单一订阅范围的购买建议可通过 [Azure 使用见解 Power BI 内容包](/power-bi/service-connect-to-azure-consumption-insights)获得。

@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: ae113b5870fb5e9c85530b0c73cecb49fd16b216
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 13cdb444046fd8d3138e1c33ed65495e9bfe5e98
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196310"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685051"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>预览：使用 Linux 中的 Azure 映像生成器通过现有映像版本创建新的 VM 映像版本
 
-本文介绍如何使用 [共享映像库](shared-image-galleries.md)中的现有映像版本，对其进行更新，并将其作为新的映像版本发布到库。
+本文介绍如何使用 [共享映像库](../shared-image-galleries.md)中的现有映像版本，对其进行更新，并将其作为新的映像版本发布到库。
 
 我们将使用一个示例 .json 模板来配置映像。 此处使用的 json 文件是： [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json)。 
 

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: e6dc4656e33b55a2cc695874376baf1cd816a838
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 6fb17ead2546875c0f334aae322f8fb070e8f1ea
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796289"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684897"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -160,7 +160,7 @@ WITH PRIVATE KEY (<private_key_options>)
     - EXECUTE AS USER
     - EXECUTE AS LOGIN
 
-  - 若要使用 EXECUTE AS 语句模拟用户，用户需要直接映射到 Azure AD 服务器主体 (登录) 。 属于映射到 Azure AD 服务器主体的 Azure AD 组成员的用户不能通过 EXECUTE AS 语句有效模拟，即使调用方对指定的用户名具有模拟权限。
+  - 若要使用 EXECUTE AS 语句模拟用户，用户需要直接映射到 Azure AD 服务器主体（登录名）。 即使调用方对指定用户名具有模拟权限，也无法有效地使用 EXECUTE AS 语句模拟映射到 Azure AD 服务器主体中的 Azure AD 组中的用户。
 
 - SQL 托管实例中的 Azure AD 用户在使用 [SSMS V18.4 或更高版本](/sql/ssms/download-sql-server-management-studio-ssms)或 [SQLPackage.exe](/sql/tools/sqlpackage-download) 时，可以使用 bacpac 文件进行数据库导出/导入。
   - 使用数据库 bacpac 文件时，可以使用以下配置： 
@@ -277,6 +277,8 @@ WITH PRIVATE KEY (<private_key_options>)
 - `SINGLE_USER`
 - `WITNESS`
 
+某些 `ALTER DATABASE` 语句 (例如， [设置包含](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) 可能 transiently 失败，例如，在自动数据库备份期间或创建数据库后。 在此情况下， `ALTER DATABASE` 应重试语句。 有关相关错误消息的详细信息和信息，请参阅 " [备注" 部分](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2)。
+
 有关详细信息，请参阅 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options)。
 
 ### <a name="sql-server-agent"></a>SQL Server 代理
@@ -303,7 +305,7 @@ WITH PRIVATE KEY (<private_key_options>)
   - 尚不支持警报。
   - 不支持代理。
 - 不支持 EventLog。
-- 用户必须直接映射到 Azure AD 服务器主体 (登录) ，才能创建、修改或执行 SQL 代理作业。 未直接映射的用户（例如，属于具有创建、修改或执行 SQL 代理作业权限的 Azure AD 组的用户）将无法有效地执行这些操作。 这是因为托管实例模拟并 [执行为限制](#logins-and-users)。
+- 用户必须直接映射到 Azure AD 服务器主体（登录名），才能创建、修改或执行 SQL 代理作业。 未直接映射的用户（例如，具有创建、修改或执行 SQL 代理作业权限的 Azure AD 组中的用户）将无法有效地执行这些操作。 这是由于托管实例模拟和 [EXECUTE AS 限制](#logins-and-users)的缘故。
 
 目前不支持以下 SQL 代理功能：
 
@@ -411,7 +413,7 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 
 ### <a name="polybase"></a>PolyBase
 
-对于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse 池，公共预览版) 中唯一可用的外部源类型是 RDBMS (。 您可以使用 [外部表引用 Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 作为直接从 Azure 存储空间读取的 Polybase 外部表的解决方法。 在 Azure SQL 托管实例中，可以使用链接服务器连接到 [Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 或 SQL Server 来读取 Azure 存储数据。
+唯一可用的外部资源类型是 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse 池的 RDBMS（公共预览版）。 您可以使用 [外部表引用 Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 作为直接从 Azure 存储空间读取的 Polybase 外部表的解决方法。 在 Azure SQL 托管实例中，可以使用链接服务器连接到 [Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 或 SQL Server 来读取 Azure 存储数据。
 有关 PolyBase 的信息，请参阅 [PolyBase](/sql/relational-databases/polybase/polybase-guide)。
 
 ### <a name="replication"></a>复制
@@ -521,9 +523,9 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 
 ### <a name="tempdb"></a>TEMPDB
 - 在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 在“业务关键”层级上，最大 `tempdb` 大小根据 SQL 托管实例存储大小受到限制。 在“常规用途”层级上，`Tempdb` 日志文件大小限制为 120 GB。 如果某些查询需要在 `tempdb` 中为每个核心提供 24 GB 以上的空间，或者生成 120 GB 以上的日志数据，则这些查询可能会返回错误。
-- `Tempdb` 始终拆分为12个数据文件：1个主文件（也称为 master、数据文件和11个非主数据文件）。 无法更改文件结构，并且无法将新文件添加到 `tempdb` 。 
-- 不支持[内存优化的 `tempdb` 元数据](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata)（一个新的 SQL Server 2019 内存中数据库功能）。
-- 在模型数据库中创建的对象不能在 `tempdb` 重新启动或故障转移后在中自动创建，因为不 `tempdb` 会从模型数据库获取其初始对象列表。 必须在 `tempdb` 每次重新启动或故障转移后手动创建对象。
+- `Tempdb` 始终拆分为 12 个数据文件：1 个主要数据文件（也称为主文件）和 11 个非主要数据文件。 无法更改文件结构，并且无法将新文件添加到 `tempdb`。 
+- 不支持[内存优化的 `tempdb` 元数据](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata)（一种新的 SQL Server 2019 内存中数据库功能）。
+- 重启或故障转移后，无法在 `tempdb` 中自动创建在模型数据库中已创建的对象，因为 `tempdb` 不能从模型数据库中获取其初始对象列表。 每次重启或故障转移后，必须在 `tempdb` 中手动创建对象。
 
 ### <a name="msdb"></a>MSDB
 

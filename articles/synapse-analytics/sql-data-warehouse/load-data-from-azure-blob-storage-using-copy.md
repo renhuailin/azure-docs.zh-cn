@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: ec577e2a70e2b354b8d2013fe259aa9ea622c50e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b305a07997ccd2cbab0d963ced2bd23ab7a97690
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120132"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683401"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>教程：加载纽约出租车数据集
 
-本教程使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)从 Azure Blob 存储帐户加载纽约出租车数据。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) 执行以下操作：
+本教程使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)从 Azure Blob 存储帐户加载纽约出租车数据。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) 执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -33,7 +33,7 @@ ms.locfileid: "98120132"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)。  
+开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS)。  
 
 本教程假设你已根据以下[教程](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)创建 SQL 专用池。
 
@@ -251,7 +251,7 @@ ms.locfileid: "98120132"
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>将数据加载到数据仓库
 
-本部分使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)从 Azure 存储 Blob 加载示例数据。  
+本部分使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)从 Azure 存储 Blob 加载示例数据。  
 
 > [!NOTE]
 > 本教程直接将数据加载到最终表。 对于生产工作负载，通常要加载到临时表中。 数据在临时表中时，可以执行任何必要的转换。 
@@ -393,7 +393,7 @@ ms.locfileid: "98120132"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习了如何创建数据仓库以及用于加载数据的用户。 使用简单的 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples)将数据加载到数据仓库。
+在本教程中，已学习了如何创建数据仓库以及用于加载数据的用户。 使用简单的 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql&preserve-view=true?view=azure-sqldw-latest&preserve-view=true#examples)将数据加载到数据仓库。
 
 完成了以下操作：
 > [!div class="checklist"]
@@ -413,6 +413,6 @@ ms.locfileid: "98120132"
 
 有关加载示例和参考的详细信息，请查看以下文档：
 
-- [COPY 语句参考文档](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [COPY 语句参考文档](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
 - [每个身份验证方法的 COPY 示例](./quickstart-bulk-load-copy-tsql-examples.md)
 - [单个表的 COPY 快速入门](./quickstart-bulk-load-copy-tsql.md)

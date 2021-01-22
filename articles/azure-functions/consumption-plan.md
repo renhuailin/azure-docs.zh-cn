@@ -3,12 +3,12 @@ title: Azure Functions 消耗计划托管
 description: 了解 Azure 函数消耗计划托管如何使你能够在动态缩放的环境中运行代码，但只需为执行期间使用的资源付费。
 ms.date: 8/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: c0619def4687935cd9e403563966b35b84f13c7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: ffb556ce48f18702e06fcdb02dda84f41ae5f906
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937604"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684685"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Functions 消耗计划托管
 
@@ -33,10 +33,10 @@ ms.locfileid: "97937604"
 使用以下链接来了解如何在消耗计划中创建无服务器函数应用，无论是通过编程方式还是在 Azure 门户中：
 
 + [Azure CLI](./scripts/functions-cli-create-serverless.md)
-+ [Azure 门户](functions-create-first-azure-function.md)
++ [Azure 门户](./functions-get-started.md)
 + [Azure Resource Manager 模板](functions-create-first-function-resource-manager.md)
 
-你还可以在从 [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) 或 [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure)发布函数项目时，在消耗计划中创建 function app。
+你还可以在从 [Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) 或 [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure)发布函数项目时，在消耗计划中创建 function app。
 
 ## <a name="multiple-apps-in-the-same-plan"></a>同一计划中的多个应用
 

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: '使用 GitOps 配置启用了 Azure Arc 的 Kubernetes 群集 (预览) '
 keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes 服务、AKS、容器
-ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 751b274a9cae68f6bc9b1adc45804f2dd2ef4c72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955325"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684751"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在已启用 Arc 的 Kubernetes 群集上使用 GitOps 部署配置（预览版）
 
@@ -48,7 +48,7 @@ ConfigMap：`team-a/endpoints`
 
 使用的 Azure CLI 扩展将 `k8sconfiguration` 连接的群集链接到 [示例 Git 存储库](https://github.com/Azure/arc-k8s-demo)。 将此配置命名为 `cluster-config`，指示代理在 `cluster-config` 命名空间中部署运算符，并授予运算符 `cluster-admin` 权限。
 
-```console
+```azurecli
 az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
 ```
 
@@ -179,7 +179,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 使用 Azure CLI 验证是否已成功创建 `sourceControlConfiguration`。
 
-```console
+```azurecli
 az k8sconfiguration show --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
@@ -351,7 +351,7 @@ kubectl -n itops get all
 > 创建具有命名空间作用域的 sourceControlConfiguration 后，在命名空间上具有角色绑定的用户可以在 `edit` 此命名空间上部署工作负荷。 `sourceControlConfiguration`删除具有命名空间作用域的这一命名空间时，命名空间保持不变且不会被删除，以避免破坏这些其他工作负荷。  如果需要，可以通过 kubectl 手动删除该命名空间。
 > 删除后，不会删除对由跟踪的 Git 存储库中的部署所做的任何更改 `sourceControlConfiguration` 。
 
-```console
+```azurecli
 az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 

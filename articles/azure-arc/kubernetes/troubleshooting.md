@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 排查已启用 Arc 的 Kubernetes 群集的常见问题。
 keywords: Kubernetes, Arc, Azure, 容器
-ms.openlocfilehash: 42c90708854af6973ed1ef399b9867101a736b07
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0827386eb6ec089cf7951e8fa513a77fc78aef22
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586153"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684083"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>已启用 Azure Arc 的 Kubernetes 故障排除（预览版）
 
@@ -24,7 +24,7 @@ ms.locfileid: "97586153"
 ### <a name="azure-cli-set-up"></a>Azure CLI 设置
 使用 az connectedk8s 或 az k8sconfiguration CLI 命令之前，请确保将 az 设置为对应合适的 Azure 订阅。
 
-```console
+```azurecli
 az account set --subscription 'subscriptionId'
 az account show
 ```
@@ -79,7 +79,7 @@ pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 
 如果提供的 kubeconfig 文件没有足够的权限来安装 Azure Arc 代理，则 Azure CLI 命令在尝试调用 Kubernetes API 时将返回一个错误。
 
-```console
+```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
@@ -94,7 +94,7 @@ Error: list: failed to list: secrets is forbidden: User "myuser" cannot list res
 
 Azure Arc 代理安装需要在目标群集上运行一组容器。 如果群集在网速缓慢的 Internet 连接上运行，则容器映像请求可能需要比 Azure CLI 超时更长的时间。
 
-```console
+```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
