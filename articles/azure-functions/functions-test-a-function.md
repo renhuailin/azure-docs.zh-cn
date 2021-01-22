@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 2488a476fe40c2bf1f3e290b462babceff30a9b0
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601384"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674144"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -36,8 +36,8 @@ ms.locfileid: "96601384"
 
 若要设置环境，请创建一个函数和测试应用。 以下步骤可帮助你创建用于支持测试的应用和函数：
 
-1. [创建新函数应用](./functions-create-first-azure-function.md)并将其命名为 **Functions**
-2. [从模板创建 HTTP 函数](./functions-create-first-azure-function.md)并将其命名为“MyHttpTrigger”。
+1. [创建新函数应用](./functions-get-started.md)并将其命名为 **Functions**
+2. [从模板创建 HTTP 函数](./functions-get-started.md)并将其命名为“MyHttpTrigger”。
 3. [从模板创建计时器函数](./functions-create-scheduled-function.md)并将其命名为“MyTimerTrigger”。
 4. 在解决方案中[创建 xUnit 测试应用](https://xunit.net/docs/getting-started/netcore/cmdline)并将其命名为“Functions.Tests”。
 5. 使用 NuGet 从测试应用添加对 [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 的引用

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c271107b85e4903153c29b58aadadd37fb051b76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5161d8e169a7eb9e757dfbfa71fa697880e1806e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022558"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673681"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
@@ -67,7 +67,7 @@ uname -r
 
     在其他分发版上，请使用相应的包管理器，或[从源编译](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **最新版本的 Azure 命令行接口 (CLI)。** 若要详细了解如何安装 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 并选择操作系统。 如果你想要在 PowerShell 6+ 中使用 Azure PowerShell 模块，也可以使用，不过，下面的说明适用于 Azure CLI。
+* **最新版本的 Azure 命令行接口 (CLI)。** 若要详细了解如何安装 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli) 并选择操作系统。 如果你想要在 PowerShell 6+ 中使用 Azure PowerShell 模块，也可以使用，不过，下面的说明适用于 Azure CLI。
 
 * **确保端口 445 处于打开状态**：SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。  替换 `<your-resource-group>` 和 `<your-storage-account>`，然后运行以下脚本：
     ```bash
@@ -87,7 +87,7 @@ uname -r
 
     如果连接成功，应会看到如下所示的输出：
 
-    ```
+    ```ouput
     Connection to <your-storage-account> 445 port [tcp/microsoft-ds] succeeded!
     ```
 

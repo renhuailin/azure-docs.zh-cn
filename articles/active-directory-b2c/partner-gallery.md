@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 9aca01bae7911d2b6234d48bedc14b116e911a79
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070858"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675365"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作伙伴
 
@@ -40,6 +40,7 @@ ms.locfileid: "98070858"
 |![Experian 徽标的屏幕截图。](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) 是一种身份验证和校对提供程序，它根据用户属性执行风险评估，以防止欺诈。 |
 |![IDology 徽标的屏幕截图。](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) 是具有 ID 验证解决方案、欺诈防御解决方案、合规性解决方案和其他信息的身份验证和校对提供程序。|
 |![Jumio 徽标的屏幕截图。](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) 是一种 ID 验证服务，用于启用实时自动 ID 验证，从而保护客户数据。 |
+|![无键徽标的屏幕截图。](./media/partner-gallery/keyless-logo.png) | [无键](./partner-keyless.md) 是一种 ID 验证服务，以面部生物识别扫描的形式提供身份验证，并消除欺诈、网络钓鱼和凭据重用。
 | ![LexisNexis 徽标的屏幕截图。](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) 是一种分析和身份验证提供程序，用于验证用户标识，并根据用户设备提供全面的风险评估。 |
 | ![Onfido 徽标的屏幕截图](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) 是一个文档 ID 和面部生物识别验证解决方案，可让公司实时 *了解你的客户* 和标识要求。  |
 
@@ -78,9 +79,9 @@ Microsoft 合作伙伴，其中包含以下用于 MFA 和无密码 authenticatio
 
 ## <a name="additional-information"></a>其他信息
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)
 
 ## <a name="next-steps"></a>后续步骤
 

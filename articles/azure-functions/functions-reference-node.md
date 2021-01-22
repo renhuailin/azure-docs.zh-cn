@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0b32efe3738dedbe8178889b3e9008964d485b00
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 3e99b156d220b4c24a368886b1c0ca0813ffdc51
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034911"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674127"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -567,7 +567,7 @@ module.exports = function(context) {
 
 ### <a name="in-local-development-environment"></a>在本地开发环境中
 
-在本地运行时，函数项目包括一个 [`local.settings.json` 文件](/azure/azure-functions/functions-run-local)，你可以在其中将环境变量存储到 `Values` 对象中。 
+在本地运行时，函数项目包括一个 [`local.settings.json` 文件](./functions-run-local.md)，你可以在其中将环境变量存储到 `Values` 对象中。 
 
 ```json
 {

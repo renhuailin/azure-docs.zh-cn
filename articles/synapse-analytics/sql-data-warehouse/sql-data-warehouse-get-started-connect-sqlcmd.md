@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 00e20c33a386393d5e7cf6b8b78916b27b7de902
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 3d1d8d3ce3afece5a979aadc27cd82dc7ddaf0d5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117905"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676217"
 ---
-# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>通过 sqlcmd 连接到 Azure Synapse 分析中的 SQL 池
+# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>使用 sqlcmd 连接到 Azure Synapse Analytics 中的 SQL 池
 
 > [!div class="op_single_selector"]
 >
@@ -32,10 +32,10 @@ ms.locfileid: "98117905"
 
 ## <a name="1-connect"></a>1.连接
 
-若要开始使用 [sqlcmd] [sqlcmd]，请打开命令提示符并输入 **sqlcmd** ，后跟 SQL 池的连接字符串。 连接字符串需要以下参数：
+若要开始使用 [sqlcmd][sqlcmd]，请打开命令提示符并输入“sqlcmd”，后跟 SQL 池的连接字符串。 连接字符串需要以下参数：
 
 * **服务器 (-S)：** 采用 `<`Server Name`>`.database.windows.net 格式的服务器
-* **数据库 () ：** SQL 池名称。
+* **数据库 (-d)：** SQL 池名称。
 * **启用带引号的标识符 (-I)：** 必须启用带引号的标识符才能连接到 SQL 池实例。
 
 若要使用 SQL Server 身份验证，需添加用户名/密码参数：
@@ -85,4 +85,4 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 sqlcmd 中可用选项的详细信息，请参阅 [sqlcmd 文档](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+有关 sqlcmd 中可用选项的详细信息，请参阅 [sqlcmd 文档](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 01/21/2021
 ms.author: victorh
-ms.openlocfilehash: c56298d68bddd326ed2b32215f30a9057fa51e85
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dc1eb64b5cfb527c10967a1a46525a418fdc37e3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653107"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673991"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>Azure 防火墙中的 IP 组
 
@@ -26,6 +26,9 @@ IP 组允许通过以下方式对 Azure 防火墙规则的 IP 地址进行分组
 一个 IP 组可以有单个 IP 地址、多个 IP 地址，或者一个或多个 IP 地址范围。
 
 可以跨 Azure 中的区域和订阅在 Azure 防火墙 DNAT、网络和多个防火墙的应用程序规则中重复使用 IP 组。 组名称必须是唯一的。 可以在 Azure 门户、Azure CLI 或 REST API 中配置 IP 组。 提供有帮助你入门的一个示例模板。
+
+> [!NOTE]
+> IP 组目前在 Azure 国内云环境中不可用。
 
 ## <a name="sample-format"></a>示例格式
 
@@ -70,7 +73,7 @@ IP 组在所有公有云区域中均可用。
 
 ## <a name="ip-address-limits"></a>IP 地址限制
 
-每个防火墙最多可以有100个 IP 组，每个 IP 组最多可包含5000个单独 IP 地址或 IP 前缀。
+每个防火墙最多可以有 100 个 IP 组，每个 IP 组最多可包含 5000 个单独的 IP 地址或 IP 前缀。
 
 ## <a name="related-azure-powershell-cmdlets"></a>相关的 Azure PowerShell cmdlet
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 012038399796a0f2dc87acfb350043542268379a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: efdbec10c74a6b1892df13b8308538e61f42f679
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936975"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673495"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -115,7 +115,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 
 > [!NOTE]
-> 建议只让自定义了其应用程序和系统的架构，并且原本就知道自定义属性定义方式的管理员来编辑受支持属性的列表。 有时，需要熟悉应用程序或系统提供的 API 和开发人员工具才能执行此操作。 默认情况下，编辑受支持的属性列表的功能处于锁定状态，但客户可以通过导航到以下 URL 来启用该功能： https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true 。 然后，可以导航到应用程序以查看属性列表，如[上文](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes)所述。 
+> 建议只让自定义了其应用程序和系统的架构，并且原本就知道自定义属性定义方式的管理员来编辑受支持属性的列表。 有时，需要熟悉应用程序或系统提供的 API 和开发人员工具才能执行此操作。 默认情况下，编辑受支持的属性列表的功能处于锁定状态，但客户可以通过导航到以下 URL 来启用该功能： https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true 。 然后，可以导航到应用程序以查看属性列表，如[上文](#editing-the-list-of-supported-attributes)所述。 
 
 编辑受支持属性的列表时，将提供以下属性：
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 42880eed3c694029ef70ee29a00a9ade7f1d398f
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: f6b6fb18ce086c2eadc829f03460452deb0a12b9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98058984"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675146"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OpenID Connect 技术配置文件
 
@@ -94,7 +94,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false`（默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 | token_endpoint_auth_method | 否 | 指定 Azure AD B2C 如何向令牌终结点发送身份验证标头。 可能的值：`client_secret_post`（默认值）和 `client_secret_basic`（公共预览版）。 有关详细信息，请参阅 [OpenID Connect 客户端身份验证部分](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)。 |
 | token_signing_algorithm | 否 | 将 **token_endpoint_auth_method** 元数据设置为时用于客户端断言的签名算法 `private_key_jwt` 。 可能的值： `RS256` (默认) 。 |
-| SingleLogoutEnabled | 否 | 指示在登录时是否尝试从联合标识提供程序注销。 有关详细信息，请参阅 [Azure AD B2C 会话注销](session-overview.md#sign-out)。 可能的值： `true` (默认) 或 `false` 。 |
+| SingleLogoutEnabled | 否 | 指示在登录时是否尝试从联合标识提供程序注销。 有关详细信息，请参阅 [Azure AD B2C 会话注销](./session-behavior.md#sign-out)。 可能的值： `true` (默认) 或 `false` 。 |
 
 ```xml
 <Metadata>
@@ -132,7 +132,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 配置标识提供者的重定向 URI 时，请输入 `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`。 确保将 `{your-tenant-name}` 替换为你的租户名称。 重定向 URI 需要采用全小写形式。
 
-示例：
+示例:
 
 - [使用自定义策略添加 Microsoft Account (MSA) 作为标识提供者](identity-provider-microsoft-account.md)
 - [使用 Azure AD 帐户登录](identity-provider-azure-ad-single-tenant.md)

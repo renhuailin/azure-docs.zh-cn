@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 61ff5d05eb74804af69b90d839115a8468619275
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 64d66e1b9eab225b38ee21306fea6f9534a708f3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921720"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673836"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>配置 Azure 文件同步网络终结点
 Azure 文件存储和 Azure 文件同步提供两种主要类型的终结点用于访问 Azure 文件共享： 
@@ -52,13 +52,13 @@ Azure 文件存储和 Azure 文件同步提供两种主要类型的终结点用�
 
 如果你在虚拟网络中有一个虚拟机，或者已按[配置 Azure 文件存储的 DNS 转发](storage-files-networking-dns.md)所述配置了 DNS 转发，则可以通过在 PowerShell、命令行或终端（适用于 Windows、Linux 或 macOS）中运行以下命令，来测试是否已正确设置专用终结点。 必须将 `<storage-account-name>` 替换为相应的存储帐户名称：
 
-```
+```console
 nslookup <storage-account-name>.file.core.windows.net
 ```
 
 如果一切成功进行，则应会看到以下输出，其中 `192.168.0.5` 是虚拟网络中专用终结点的专用 IP 地址（Windows 中显示的输出）：
 
-```Output
+```output
 Server:  UnKnown
 Address:  10.2.4.4
 
@@ -73,7 +73,7 @@ Aliases:  storageaccount.file.core.windows.net
 
 如果你在虚拟网络中有一个虚拟机，或者已按[配置 Azure 文件存储的 DNS 转发](storage-files-networking-dns.md)所述配置了 DNS 转发，则可以使用以下命令测试是否已正确设置专用终结点：
 
-```PowerShell
+```powershell
 $storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.file) | `
     Select-Object -ExpandProperty Host
 
@@ -82,7 +82,7 @@ Resolve-DnsName -Name $storageAccountHostName
 
 如果一切成功进行，则应会看到以下输出，其中 `192.168.0.5` 是虚拟网络中专用终结点的专用 IP 地址：
 
-```Output
+```output
 Name                             Type   TTL   Section    NameHost
 ----                             ----   ---   -------    --------
 storageaccount.file.core.windows CNAME  60    Answer     storageaccount.privatelink.file.core.windows.net
@@ -113,7 +113,7 @@ nslookup $hostName
 
 如果一切成功进行，则应会看到以下输出，其中 `192.168.0.5` 是虚拟网络中专用终结点的专用 IP 地址：
 
-```Output
+```output
 Server:         127.0.0.53
 Address:        127.0.0.53#53
 
@@ -168,7 +168,7 @@ Get-AzPrivateEndpoint `
 
 如果一切设置正确，则应看到以下输出，其中 `192.168.1.4`、`192.168.1.5`、`192.168.1.6` 和 `192.168.1.7` 是分配给专用终结点的专用 IP 地址：
 
-```Output
+```output
 Name     : mysssmanagement.westus2.afs.azure.net
 Type     : CNAME
 TTL      : 60
@@ -244,7 +244,7 @@ if ($null -eq $storageSyncService) {
 
 若要创建专用终结点，必须与存储同步服务建立专用链接服务连接。 专用链接连接是创建专用终结点时使用的输入。
 
-```PowerShell 
+```powershell 
 # Disable private endpoint network policies
 $subnet.PrivateEndpointNetworkPolicies = "Disabled"
 $virtualNetwork = $virtualNetwork | `
@@ -325,7 +325,7 @@ if ($null -eq $dnsZone) {
 ```
 获取对专用 DNS 区域的引用后，接下来必须创建存储同步服务的 A 记录。
 
-```PowerShell 
+```powershell 
 $privateEndpointIpFqdnMappings = $privateEndpoint | `
     Select-Object -ExpandProperty NetworkInterfaces | `
     Select-Object -ExpandProperty Id | `
@@ -607,7 +607,8 @@ $storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Forc
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-<a name="azure-cli-does-not-support-setting-the-incomingtrafficpolicy-property-on-the-storage-sync-service-please-select-the-azure-powershell-tab-to-get-instructions-on-how-to-disable-the-storage-sync-service-public-endpoint"></a>Azure CLI 不支持在 `incomingTrafficPolicy` 存储同步服务上设置属性。 请选择 "Azure PowerShell" 选项卡，以获取有关如何禁用存储同步服务公共终结点的说明。
+Azure CLI 不支持在 `incomingTrafficPolicy` 存储同步服务上设置属性。 请选择 "Azure PowerShell" 选项卡，以获取有关如何禁用存储同步服务公共终结点的说明。
+
 ---
 
 ## <a name="see-also"></a>另请参阅

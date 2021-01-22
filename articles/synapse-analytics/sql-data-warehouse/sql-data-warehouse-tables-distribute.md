@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3b61df954e913671eafff4b739e0f53a4d420c28
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 5aefe869041d9fff8112b6aa380961ca6568ae0b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117293"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673563"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用专用 SQL 池设计分布式表的指南
 
@@ -44,7 +44,7 @@ ms.locfileid: "98117293"
 
 ![分布式表](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "分布式表")  
 
-由于相同的值始终哈希处理到相同的分布，因此 SQL Analytics 具有行位置的内置知识。 可以在专用 SQL 池中根据此信息最大程度地减少查询期间的数据移动，提高查询性能。
+由于相同的值始终哈希处理到相同的分布区，因此，SQL Analytics 本身就具有行位置方面的信息。 可以在专用 SQL 池中根据此信息最大程度地减少查询期间的数据移动，提高查询性能。
 
 哈希分布表适用于星型架构中的大型事实数据表。 它们可以包含大量行，但仍实现高性能。 当然，用户应该了解一些设计注意事项，它们有助于获得分布式系统本应具有的性能。 本文所述的选择合适的分布列就是其中之一。
 
@@ -96,7 +96,7 @@ WITH
 
 选择分布列是一个重要的设计决策，因为此列中的值确定行的分布方式。 最佳选择取决于多种因素，通常需要对各方面进行权衡。 选择分布列后，将无法对其进行更改。  
 
-如果第一次未选择最合适的列，可以使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 重新创建具有不同分布列的表。
+如果第一次未选择最合适的列，可以使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 重新创建具有不同分布列的表。
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>选择数据均衡分布的分布列
 
@@ -133,7 +133,7 @@ WITH
 
 ### <a name="determine-if-the-table-has-data-skew"></a>确定表是否有数据倾斜现象
 
-一种快速的数据倾斜检查方法是使用 [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 以下 SQL 代码返回 60 个分布区中每个分布区存储的表行数。 为了获得平衡的性能，分布式表中的行应该均衡分布在所有分布区中。
+一种快速的数据倾斜检查方法是使用 [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 以下 SQL 代码返回 60 个分布区中每个分布区存储的表行数。 为了获得平衡的性能，分布式表中的行应该均衡分布在所有分布区中。
 
 ```sql
 -- Find data skew for a distributed table
@@ -183,7 +183,7 @@ order by two_part_name, row_count
 
 ### <a name="re-create-the-table-with-a-new-distribution-column"></a>重新创建具有新分布列的表
 
-本示例使用 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 重新创建具有不同哈希分布列的表。
+本示例使用 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 重新创建具有不同哈希分布列的表。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_CustomerKey]
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 若要创建分布式表，请使用以下语句之一：
 
-- [CREATE TABLE（专用 SQL 池）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE AS SELECT（专用 SQL 池）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE（专用 SQL 池）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE TABLE AS SELECT（专用 SQL 池）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

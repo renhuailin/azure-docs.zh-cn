@@ -9,16 +9,16 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 25c692ea9a2dce4723472f6812ac46d82b2b318d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 1551e85bd45d4d64861b43bf53dd0c155520861f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120982"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673631"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>使用 Synapse SQL 安全地加载数据
 
-本文重点介绍 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)的安全身份验证机制，并提供示例。 COPY 语句是在 Synapse SQL 中批量加载数据的最灵活且安全的方法。
+本文重点介绍 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)的安全身份验证机制，并提供示例。 COPY 语句是在 Synapse SQL 中批量加载数据的最灵活且安全的方法。
 ## <a name="supported-authentication-mechanisms"></a>支持的身份验证机制
 
 下表介绍了每种文件类型和存储帐户所支持的身份验证方法。 这适用于源存储位置和错误文件位置。
@@ -176,5 +176,5 @@ WITH (
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解详细语法，请查看 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)一文
+- 若要了解详细语法，请查看 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)一文
 - 若要了解加载的最佳做法，请查看[数据加载概述](./design-elt-data-loading.md#what-is-elt)一文

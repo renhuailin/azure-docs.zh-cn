@@ -1,6 +1,6 @@
 ---
-title: 在表上创建和更新统计信息
-description: 有关创建和更新专用 SQL 池中的表的查询优化统计信息的建议和示例。
+title: 创建或更新表的统计信息
+description: 适用于创建和更新专用 SQL 池中有关表的查询优化统计信息的建议和示例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,42 +11,42 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e7fc89dcc0e7938ea2958d5c804abe82e20f186d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3ade41c51cbb8065734e8957cfc8b9f0c22b2df3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447934"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673360"
 ---
 # <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的表统计信息
 
-在本文中，你将找到有关创建和更新专用 SQL 池中的表的查询优化统计信息的建议和示例。
+本文提供的建议和示例适用于创建和更新专用 SQL 池中有关表的查询优化统计信息。
 
 ## <a name="why-use-statistics"></a>为何使用统计信息
 
-更为专用的 SQL 池知道您的数据，它对它执行查询的速度就越快。 在将数据加载到专用 SQL 池之后，收集数据的统计信息是优化查询时可以执行的最重要的操作之一。
+专用 SQL 池对数据了解得越多，其针对数据执行查询的速度就越快。 将数据载入专用 SQL 池之后，收集有关数据的统计信息是最重要的查询优化任务之一。
 
-专用的 SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，它会选择执行速度最快的计划。
+专用 SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，它会选择执行速度最快的计划。
 
 例如，如果优化器估计查询筛选的日期会返回一行数据，则它会选择一个计划。 如果优化器估计选定的日期会返回 1 百万行数据，则它会返回另一个计划。
 
 ## <a name="automatic-creation-of-statistic"></a>自动创建统计信息
 
-当数据库 AUTO_CREATE_STATISTICS 选项为 on 时，专用 SQL 池会分析传入的用户查询是否缺少统计信息。
+启用数据库的 AUTO_CREATE_STATISTICS 选项时，专用 SQL 池会分析传入的用户查询中是否缺少统计信息。
 
 如果缺少统计信息，查询优化器将在查询谓词或联接条件中各个列上创建统计信息，以改进查询计划的基数估计。
 
 > [!NOTE]
 > 默认情况下，自动创建统计信息目前处于开启状态。
 
-可以通过运行以下命令来检查专用 SQL 池是否 AUTO_CREATE_STATISTICS 配置：
+可运行以下命令来检查是否为专用 SQL 池配置了 AUTO_CREATE_STATISTICS：
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-如果专用 SQL 池未配置 AUTO_CREATE_STATISTICS，则建议通过运行以下命令启用此属性：
+如果专用 SQL 池未配置 AUTO_CREATE_STATISTICS，建议通过运行以下命令来启用此属性：
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
@@ -70,9 +70,9 @@ SET AUTO_CREATE_STATISTICS ON
 为了避免性能大幅下降，应确保在分析系统之前先通过执行基准检验工作负载来创建统计信息。
 
 > [!NOTE]
-> 统计信息的创建将记录在其他用户上下文中的 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中。
+> 统计信息的创建将记录在其他用户上下文中的 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中。
 
-在创建自动统计信息时，它们将采用以下格式：_WA_Sys_<以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 可以通过运行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令查看已创建的统计信息：
+在创建自动统计信息时，它们将采用以下格式：_WA_Sys_<以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 可以通过运行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 命令查看已创建的统计信息：
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -82,11 +82,11 @@ table_name 是包含要显示的统计信息的表的名称。 此表不能为�
 
 ## <a name="update-statistics"></a>更新统计信息
 
-最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次将新行加载到专用 SQL 池时，将添加新的加载日期或事务日期。 这些添加操作会更改数据分布情况并使统计信息过时。
+最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次有新行载入专用 SQL 池时，就会添加新的加载日期或事务日期。 这些添加操作会更改数据分布情况并使统计信息过时。
 
 有关客户表中的国家/地区列的统计信息可能永远不需要更新，因为值的分布通常不会变化。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
 
-但是，如果专用 SQL 池只包含一个国家/地区，并且引入了来自新国家/地区的数据，从而导致存储了多个国家/地区的数据，则需要更新 "国家/地区" 列中的统计信息。
+但是，如果专用 SQL 池只包含一个国家/地区，并且引入了来自新国家/地区的数据，导致存储了多个国家/地区的数据，那么，就需要更新有关国家/地区列的统计信息。
 
 下面是关于更新统计信息的建议：
 
@@ -182,13 +182,13 @@ WHERE
     st.[user_created] = 1;
 ```
 
-例如，专用 SQL 池中的 **日期列** 通常需要频繁统计信息更新。 每次将新行加载到专用 SQL 池时，将添加新的加载日期或事务日期。 这些添加操作会更改数据分布情况并使统计信息过时。
+例如，专用 SQL 池中的日期列往往需要经常更新统计信息。 每次有新行载入专用 SQL 池时，就会添加新的加载日期或事务日期。 这些添加操作会更改数据分布情况并使统计信息过时。
 
 相反地，客户表上性别列的统计信息可能永远不需要更新。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
 
-如果专用 SQL 池只包含一种性别，而新的要求导致了多个性别，则需要更新 "性别" 列中的统计信息。
+如果专用 SQL 池只包含一种性别，而新的要求会导致出现多种性别，则需更新性别列的统计信息。
 
-有关详细信息，请参阅[统计信息](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)的通用指南。
+有关详细信息，请参阅[统计信息](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)的通用指南。
 
 ## <a name="implementing-statistics-management"></a>实施统计信息管理
 
@@ -204,7 +204,7 @@ WHERE
 - 考虑较不经常更新静态分布列。
 - 请记住，每个统计信息对象是按顺序更新的。 仅实现 `UPDATE STATISTICS <TABLE_NAME>` 不一定总很理想 - 尤其是对包含许多统计信息对象的宽型表而言。
 
-有关详细信息，请参阅[基数估计](/sql/relational-databases/performance/cardinality-estimation-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+有关详细信息，请参阅[基数估计](/sql/relational-databases/performance/cardinality-estimation-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="examples-create-statistics"></a>示例：创建统计信息
 
@@ -214,7 +214,7 @@ WHERE
 
 若要基于某个列创建统计信息，需要提供统计信息对象的名称和列的名称。
 
-此语法使用所有默认选项。 默认情况下，在创建统计信息时对 **20%** 的表采样。
+此语法使用所有默认选项。 默认情况下，创建统计信息时会提取 20% 的表数据作为样本。
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
@@ -273,7 +273,7 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-有关完整参考，请参阅 [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+有关完整参考，请参阅 [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ### <a name="create-multi-column-statistics"></a>创建多列统计信息
 
@@ -312,11 +312,11 @@ CREATE STATISTICS stats_col2 on dbo.table2 (col2);
 CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
-### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-sql-pool"></a>使用存储过程创建 SQL 池中所有列的统计信息
+### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-sql-pool"></a>使用存储过程基于 SQL 池中的所有列创建统计信息
 
-专用 SQL 池没有与 SQL Server 中的 sp_create_stats 相同的系统存储过程。 此存储过程在 SQL 池中尚未包含统计信息的每个列上创建单个列统计信息对象。
+专用 SQL 池不提供相当于 SQL Server 中 sp_create_stats 的系统存储过程。 此存储过程基于 SQL 池中尚不包含统计信息的每一列创建单列统计信息对象。
 
-下面的示例将帮助你开始 SQL 池设计。 可以根据需要任意改写此存储过程。
+可参考下列开始进行 SQL 池设计。 可以根据需要任意改写此存储过程。
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
@@ -462,11 +462,11 @@ UPDATE STATISTICS dbo.table1;
 UPDATE STATISTICS 语句很容易使用。 只要记住，这会更新表中的所有统计信息，因此执行的工作可能会超过所需的数量。  如果性能不是一个考虑因素，这是保证拥有最新统计信息的最简单、最全面的操作方式。
 
 > [!NOTE]
-> 更新表中的所有统计信息时，专用 SQL 池会执行扫描，以针对每个统计信息对象的表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
+> 更新表中的所有统计信息时，专用 SQL 池会执行扫描，以便针对每个统计信息对象进行表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
 
 有关 `UPDATE STATISTICS` 过程的实现，请参阅[临时表](sql-data-warehouse-tables-temporary.md)。 实现方法与上述 `CREATE STATISTICS` 过程略有不同，但最终结果相同。
 
-有关完整语法，请参阅[更新统计信息](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+有关完整语法，请参阅[更新统计信息](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="statistics-metadata"></a>统计信息元数据
 
@@ -478,13 +478,13 @@ UPDATE STATISTICS 语句很容易使用。 只要记住，这会更新表中的�
 
 | 目录视图 | 说明 |
 |:--- |:--- |
-| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |针对每个列提供一行。 |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |针对数据库中的每个对象提供一行。 |
-| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |针对数据库中的每个架构提供一行。 |
-| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |针对每个统计信息对象提供一行。 |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |针对统计信息对象中的每个列提供一行。 链接回到 sys.columns。 |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |针对每个表（包括外部表）提供一行。 |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |针对每个数据类型提供一行。 |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对每个列提供一行。 |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对数据库中的每个对象提供一行。 |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对数据库中的每个架构提供一行。 |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对每个统计信息对象提供一行。 |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对统计信息对象中的每个列提供一行。 链接回到 sys.columns。 |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对每个表（包括外部表）提供一行。 |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对每个数据类型提供一行。 |
 
 ### <a name="system-functions-for-statistics"></a>统计信息的系统函数
 
@@ -492,8 +492,8 @@ UPDATE STATISTICS 语句很容易使用。 只要记住，这会更新表中的�
 
 | 系统函数 | 说明 |
 |:--- |:--- |
-| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |上次更新统计信息对象的日期。 |
-| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |有关统计信息对象识别的值分布的摘要级别和详细信息。 |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |上次更新统计信息对象的日期。 |
+| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |有关统计信息对象识别的值分布的摘要级别和详细信息。 |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>将统计信息列和函数合并成一个视图
 
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS() 显示统计信息对象中保存的数据。 这些数�
 有关统计信息的标头元数据。 直方图显示统计信息对象的第一个键列中的值分布。 密度向量可度量跨列相关性。
 
 > [!NOTE]
-> 专用 SQL 池用 statistics 对象中的任何数据来计算基数估计值。
+> 专用 SQL 池使用统计信息对象中的任何数据来计算基数估计值。
 
 ### <a name="show-header-density-and-histogram"></a>显示标头、密度和直方图
 
@@ -578,7 +578,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 
 ## <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() 差异
 
-与 SQL Server 相比，在专用的 SQL 池中，DBCC SHOW_STATISTICS ( # A1 更严格实现：
+相比于 SQL Server，在专用 SQL 池中，DBCC SHOW_STATISTICS() 的实现更加严格：
 
 - 未阐述的功能不受支持。
 - 不能使用 Stats_stream。

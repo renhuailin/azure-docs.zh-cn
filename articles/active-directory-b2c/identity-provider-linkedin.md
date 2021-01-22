@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/19/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e2c576c97d170726f5ec1b06e5a6d0d859a85e64
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: a378a95a28b1299502ef15cadca60f3807f99429
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538113"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674393"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 LinkedIn 帐户注册与登录
 
@@ -36,21 +36,21 @@ ms.locfileid: "98538113"
 
 ## <a name="create-a-linkedin-application"></a>创建 LinkedIn 应用程序
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中为具有 LinkedIn 帐户的用户登录，需要在 [LinkedIn 开发人员网站](https://www.developer.linkedin.com/)中创建应用程序。 有关详细信息，请参阅 [授权代码流](https://docs.microsoft.com/linkedin/shared/authentication/authorization-code-flow)。 如果还没有 LinkedIn 帐户，可以在注册 [https://www.linkedin.com/](https://www.linkedin.com/) 。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中为具有 LinkedIn 帐户的用户登录，需要在 [LinkedIn 开发人员网站](https://www.developer.linkedin.com/)中创建应用程序。 有关详细信息，请参阅 [授权代码流](/linkedin/shared/authentication/authorization-code-flow)。 如果还没有 LinkedIn 帐户，可以在注册 [https://www.linkedin.com/](https://www.linkedin.com/) 。
 
 1. 使用 LinkedIn 帐户凭据登录到 [LinkedIn 开发人员网站](https://www.developer.linkedin.com/)。
 1. 选择 **"我的应用**"，然后单击 " **创建应用**"。
 1. 输入 **应用名称**、 **LinkedIn 页**、 **隐私策略 URL** 和 **应用徽标**。
 1. 同意 LinkedIn **API 使用条款** ，并单击 " **创建应用**"。
 1. 选择 " **身份验证** " 选项卡。在 " **身份验证密钥**" 下，复制 " **客户端 ID** " 和 " **客户端密码**" 值。 你将需要这两个将 LinkedIn 配置为租户中的标识提供者。 “客户端密钥”是一个很重要的安全凭据。
-1. 选择 **应用的授权重定向 url** 旁边的 "编辑铅笔"，然后选择 " **添加重定向 URL**"。 输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ，将替换 `your-tenant-name` 为你的租户的名称。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。 选择“更新”。
+1. 选择 **应用的授权重定向 url** 旁边的 "编辑铅笔"，然后选择 " **添加重定向 URL**"。 输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ，将替换 `your-tenant-name` 为你的租户的名称。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。 选择“更新”  。
 2. 默认情况下，LinkedIn 应用未批准与登录相关的作用域。 若要请求复查，请选择 " **产品** " 选项卡，然后选择 " **使用 LinkedIn 登录**"。 评审完成后，所需范围将添加到你的应用程序。
    > [!NOTE]
    > 可以在 " **OAuth 2.0 作用域**" 部分的 "**身份验证**" 选项卡上查看应用当前允许的范围。
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>将 LinkedIn 帐户配置为标识提供者
+## <a name="configure-linkedin-as-an-identity-provider"></a>将 LinkedIn 配置为标识提供者
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
@@ -60,6 +60,16 @@ ms.locfileid: "98538113"
 1. 对于“客户端 ID”，请输入前面创建的 LinkedIn 应用程序的客户端 ID。
 1. 对于 **客户端密码**，请输入你记录的客户端密码。
 1. 选择“保存”。
+
+## <a name="add-linkedin-identity-provider-to-a-user-flow"></a>将 LinkedIn 标识提供者添加到用户流 
+
+1. 在 Azure AD B2C 租户中，选择“用户流”  。
+1. 单击要添加 LinkedIn 标识提供者的用户流。
+1. 在 " **社交标识提供者**" 下，选择 " **LinkedIn**"。
+1. 选择“保存”。
+1. 若要测试策略，请选择 " **运行用户流**"。
+1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 单击 "**运行用户流**"
 
 ::: zone-end
 
@@ -80,9 +90,9 @@ ms.locfileid: "98538113"
 9. 在“密钥用法”处选择 `Signature`。
 10. 单击“创建”。
 
-## <a name="add-a-claims-provider"></a>添加声明提供程序
+## <a name="configure-linkedin-as-an-identity-provider"></a>将 LinkedIn 配置为标识提供者
 
-如果希望用户使用 LinkedIn 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与其进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
+要使用户能够使用 LinkedIn 帐户登录，你需要将该帐户定义为声明提供程序，该提供程序 Azure AD B2C 可以通过终结点进行通信。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
 通过将 LinkedIn 帐户添加到策略扩展文件中的 **ClaimsProviders** 元素，将其定义为声明提供程序。
 
@@ -95,7 +105,7 @@ ms.locfileid: "98538113"
       <Domain>linkedin.com</Domain>
       <DisplayName>LinkedIn</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="LinkedIn-OAUTH">
+        <TechnicalProfile Id="LinkedIn-OAuth2">
           <DisplayName>LinkedIn</DisplayName>
           <Protocol Name="OAuth2" />
           <Metadata>
@@ -181,79 +191,27 @@ LinkedIn 技术配置文件需要将 **ExtractGivenNameFromLinkedInResponse** �
 </BuildingBlocks>
 ```
 
-### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-你现在已配置了一个策略，以便 Azure AD B2C 知道如何与 LinkedIn 帐户通信。 尝试上传策略的扩展文件，以确认它目前不会有任何问题。
 
-1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略” 。
-1. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
-1. 单击“上载” 。
-
-## <a name="register-the-claims-provider"></a>注册声明提供程序
-
-此时，标识提供者已设置，但在任何注册或登录屏幕上都不可用。 若要使其可用，需要创建现有模板用户旅程的副本，并对其进行修改，使其具有 LinkedIn 标识提供者。
-
-1. 打开初学者包中的 *TrustFrameworkBase.xml* 文件。
-1. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
-1. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
-1. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
-1. 重命名用户旅程的 ID。 例如，`SignUpSignInLinkedIn`。
-
-### <a name="display-the-button"></a>显示按钮
-
-**ClaimsProviderSelection** 元素类似于注册或登录屏幕上的标识提供者按钮。 如果为 LinkedIn 帐户添加 **ClaimsProviderSelection** 元素，则当用户进入页面时，会显示一个新按钮。
-
-1. 在创建的用户旅程中找到包含 `Order="1"` 的 **OrchestrationStep** 元素。
-2. 在 **ClaimsProviderSelections** 下，添加以下元素。 将 **TargetClaimsExchangeId** 设置为适当的值，例如 `LinkedInExchange`：
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>将按钮链接到操作
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAuth2" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 LinkedIn 帐户通信以接收令牌。
-
-1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
-1. 添加以下 **ClaimsExchange** 元素，确保在 ID 和 **TargetClaimsExchangeId** 处使用相同的值：
-
-    ```xml
-    <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
-    ```
-
-    将 **TechnicalProfileReferenceId** 的值更新为之前创建的技术配置文件的 ID。 例如，`LinkedIn-OAUTH`。
-
-1. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
-
-::: zone-end
-
-：： zone pivot = "b2c-用户-流"
-
-## <a name="add-linkedin-identity-provider-to-a-user-flow"></a>将 LinkedIn 标识提供者添加到用户流 
-
-1. 在 Azure AD B2C 租户中，选择“用户流”  。
-1. 单击要添加 LinkedIn 标识提供者的用户流。
-1. 在 " **社交标识提供者**" 下，选择 " **LinkedIn**"。
-1. 选择“保存”。
-1. 若要测试策略，请选择 " **运行用户流**"。
-1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
-1. 单击 "**运行用户流**"
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
-
-更新用于启动创建的用户旅程的信赖方 (RP) 文件。
-
-1. 在工作目录中创建 *SignUpOrSignIn.xml* 的副本并将其重命名。 例如，将其重命名为 *SignUpSignInLinkedIn.xml*。
-1. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如，`SignUpSignInLinkedIn`。
-1. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_linkedin`
-1. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，以匹配所创建的新用户旅程的 ID (SignUpSignLinkedIn)。
-1. 保存更改并上传文件，然后选择列表中的新策略。
-1. 确保在“选择应用程序”字段选择你创建的 Azure AD B2C 应用程序，然后单击“立即运行”对其进行测试 。
-
+[!INCLUDE [active-directory-b2c-create-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
 ## <a name="migration-from-v10-to-v20"></a>从 v1.0 迁移到 v2.0
 

@@ -1,6 +1,6 @@
 ---
-title: 通过 SSMS 连接到 (以前的 SQL DW) 的专用 SQL 池
-description: 使用 SQL Server Management Studio (SSMS) 连接到 Azure Synapse Analytics 中以前的 SQL DW) ，并在其中查询专用 SQL (池。
+title: 通过 SSMS 连接到专用 SQL 池（以前称为 SQL DW）
+description: 使用 SQL Server Management Studio (SSMS) 在 Azure Synapse Analytics 中连接并查询专用 SQL 池（以前称为 SQL DW）。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b213954dde6ca4eaa0a69ddf0e40398fc09b9063
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b142c88b0003281237dad125080930c0dd4d3bee
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115763"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673597"
 ---
-# <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio () SSMS，连接到 Azure Synapse Analytics (以前的 SQL DW) 
+# <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）
 
 > [!div class="op_single_selector"]
 >
@@ -28,17 +28,17 @@ ms.locfileid: "98115763"
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-使用 SQL Server Management Studio (SSMS) 连接到以前的 SQL DW) 专用 SQL (池并对其进行查询。
+使用 SQL Server Management Studio (SSMS) 连接并查询专用 SQL 池（以前称为 SQL DW）。
 
 ## <a name="prerequisites"></a>先决条件
 
 要使用本教程，需要：
 
-* 现有专用 SQL 池。 若要创建一个，请参阅 [创建专用 sql 池 (以前的 SQL DW) ](create-data-warehouse-portal.md)。
-* 安装了 SQL Server Management Studio (SSMS)。 免费[下载 SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)（如果尚未安装）。
-* 完全限定的 SQL Server 名称。 若要查找此信息，请参阅 [以前的 SQL DW) 专用 sql 池 (](sql-data-warehouse-connect-overview.md)。
+* 现有专用 SQL 池。 若要创建一个，请参阅[创建专用 SQL 池（以前称为 SQL DW）](create-data-warehouse-portal.md)。
+* 安装了 SQL Server Management Studio (SSMS)。 免费[下载 SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)（如果尚未安装）。
+* 完全限定的 SQL Server 名称。 若要查找此信息，请参阅[专用 SQL 池（以前称为 SQL DW）](sql-data-warehouse-connect-overview.md)。
 
-## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1. 连接到专用 SQL 池 (以前的 SQL DW) 
+## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1.连接到专用 SQL 池（以前称为 SQL DW）
 
 1. 打开 SSMS。
 2. 选择“文件”   > “连接对象资源管理器”  ，打开对象资源管理器。
@@ -61,7 +61,7 @@ ms.locfileid: "98115763"
 现在，已建立了与数据库的连接，接下来让我们编写查询。
 
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
-2. 选择“新建查询”。 此时将打开一个新的查询窗口。
+2. 选择“新建查询”  。 此时将打开一个新的查询窗口。
 
    ![新建查询](./media/sql-data-warehouse-query-ssms/new-query.png)
 3. 将以下 T-SQL 查询复制到查询窗口中：

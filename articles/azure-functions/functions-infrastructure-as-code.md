@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dbb380dca231f75f6d6e77676c9059ef3762dac5
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 4b649942a52c51aef0d6edd17b913f75e1fb247b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050929"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674161"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -135,7 +135,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 > [!IMPORTANT]
 > 如果你要显式定义托管计划，则 dependsOn 数组中可能将需要一个额外的项：`"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
 
-函数应用必须包含以下应用程序设置：
+函数应用必须包括以下应用程序设置：
 
 | 设置名                 | 说明                                                                               | 示例值                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
@@ -692,7 +692,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile
 
 * [Azure Functions 开发人员参考](functions-reference.md)
 * [如何配置 Azure 函数应用设置](functions-how-to-use-azure-function-app-settings.md)
-* [创建第一个 Azure 函数](functions-create-first-azure-function.md)
+* [创建第一个 Azure 函数](./functions-get-started.md)
 
 <!-- LINKS -->
 

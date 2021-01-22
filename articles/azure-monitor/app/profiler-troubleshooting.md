@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 47a452377c8fed9808957f45fcc4ec686fcef87d
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 05a2eaeb3b716988a8ae1eddcaa5a5a58cc3776a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561029"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675690"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
@@ -72,7 +72,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 * Web 应用必须已启用 Application Insights。
 * Web 应用必须具有以下应用设置：
 
-    |应用设置    | 值    |
+    |应用设置    | Value    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -124,7 +124,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 1. 将“Always On”设置为“打开” 。
 1. 创建以下应用设置：
 
-    |应用设置    | 值    |
+    |应用设置    | Value    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -214,7 +214,7 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 如果你的应用程序通过代理或防火墙连接到 Internet，则可能需要更新规则，以便与探查器服务进行通信。
 
-Application Insights Profiler 使用的 IP 包含在 Azure Monitor 服务标记中。 有关详细信息，请参阅 [服务标记文档](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)。
+Application Insights Profiler 使用的 IP 包含在 Azure Monitor 服务标记中。 有关详细信息，请参阅 [服务标记文档](../../virtual-network/service-tags-overview.md)。
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png

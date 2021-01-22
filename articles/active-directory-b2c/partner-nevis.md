@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 19aa847ce7ce1a6ba727a4733aefcdfad845e8c6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 282ec6a25dc381dc51f28534d272bae57d2e792e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629385"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674987"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>用于配置无密码 authentication Azure Active Directory B2C 的尼维斯的教程
 
@@ -30,9 +30,9 @@ ms.locfileid: "97629385"
 
 - 一个 Azure AD 订阅。 如果没有，请获取一个 [免费帐户](https://azure.microsoft.com/free/)。
 
-- 链接到 Azure 订阅的 [Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) 。
+- 链接到 Azure 订阅的 [Azure AD B2C 租户](./tutorial-create-tenant.md) 。
 
-- 配置了使用 [自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)Azure AD B2C 环境，如果你希望将尼维斯集成到注册策略流中。
+- 配置了使用 [自定义策略](./custom-policy-get-started.md)Azure AD B2C 环境，如果你希望将尼维斯集成到注册策略流中。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -134,9 +134,9 @@ ms.locfileid: "97629385"
 
 4. **保存** 对文件所做的更改。
 
-5. 按照 [说明](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#2-create-an-azure-blob-storage-account) 将 **nevis.html** 文件上传到 Azure blob 存储。
+5. 按照 [说明](./customize-ui-with-html.md#2-create-an-azure-blob-storage-account) 将 **nevis.html** 文件上传到 Azure blob 存储。
 
-6. 按照 [说明进行操作](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#3-configure-cors) ，并为此文件启用跨域资源共享 (CORS) 。
+6. 按照 [说明进行操作](./customize-ui-with-html.md#3-configure-cors) ，并为此文件启用跨域资源共享 (CORS) 。
 
 7. 上传完成并且 CORS 启用后，选择列表中的 **nevis.html** 文件。
 
@@ -228,7 +228,7 @@ ms.locfileid: "97629385"
 
 8. 从电子邮件复制验证代码。
 
-9. 选择“验证”。
+9. 选择“验证”  。
 
 10. 在表单中填写新密码和显示名称。
 
@@ -268,6 +268,6 @@ ms.locfileid: "97629385"
 
 有关其他信息，请查看以下文章
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)

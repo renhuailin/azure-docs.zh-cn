@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: a20c19c3da89801570ca4d74a646e3cf0d8434b6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197993"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675896"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中将基础结构自动化工具与虚拟机配合使用
 
@@ -57,7 +57,7 @@ ms.locfileid: "98197993"
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
+[Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 来安装程序包和写入文件，或者配置用户和安全性。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
 
 Cloud-init 还支持不同的发行版。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
 
@@ -87,8 +87,8 @@ DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 
 
 了解如何：
 
-- [通过 Azure CLI 创建 Linux VM 并使用自定义脚本扩展](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json)。
-- [通过 Azure PowerShell 创建 Windows VM 并使用自定义脚本扩展](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md)。
+- [通过 Azure CLI 创建 Linux VM 并使用自定义脚本扩展](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx?toc=%2fcli%2fazure%2ftoc.json)。
+- [通过 Azure PowerShell 创建 Windows VM 并使用自定义脚本扩展](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis)。
 
 
 ## <a name="packer"></a>Packer
@@ -144,7 +144,7 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 
 - [使用资源管理器模板部署专色 vm](./linux/spot-template.md)。
 - [通过资源管理器模板创建 Windows 虚拟机](./windows/ps-template.md)。
-- [下载 VM 模板](./windows/download-template.md)。
+- [下载 VM 模板](/previous-versions/azure/virtual-machines/windows/download-template)。
 - [创建 Azure 映像生成器模板](./linux/image-builder-json.md)。
 
 ## <a name="next-steps"></a>后续步骤

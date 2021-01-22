@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed477a931ed63c0db378ff84f85544072492ef96
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 644192de74a888daa0391b31dd42eb6028403fd8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387031"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674468"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C 自定义策略概述
 
@@ -53,7 +53,7 @@ Azure AD B2C 自定义策略 [初学者包](custom-policy-get-started.md#get-the
 
 ### <a name="customize-and-localize-your-ui"></a>自定义和本地化 UI
 
-如果希望通过在 web 浏览器中呈现页面来收集用户的信息，请使用 [自断言技术配置文件](self-asserted-technical-profile.md)。 您可以编辑您的自断言技术配置文件，以 [添加声明和自定义用户输入](custom-policy-configure-user-input.md)。
+如果希望通过在 web 浏览器中呈现页面来收集用户的信息，请使用 [自断言技术配置文件](self-asserted-technical-profile.md)。 您可以编辑您的自断言技术配置文件，以 [添加声明和自定义用户输入](./configure-user-input.md)。
 
 若要自定义自断言技术配置文件的 [用户界面](customize-ui-with-html.md) ，请在 [内容定义](contentdefinitions.md) 元素中使用自定义 HTML 内容指定 URL。 在自断言技术配置文件中，指向此内容定义 ID。
 
@@ -133,11 +133,11 @@ Azure AD B2C 自定义策略 [初学者包](custom-policy-get-started.md#get-the
 
 - 在 **扩展策略** 中创建逻辑，或在 **中继参与方策略** 中创建逻辑。 你可以添加新元素，这将通过引用相同的 ID 覆盖基本策略。 这样一来，你就可以在 Microsoft 发布新的初学者包时，扩展你的项目，并更轻松地升级基本策略。
 - 在 **基本策略** 中，强烈建议避免进行任何更改。  必要时，请在进行更改时发出注释。
-- 重写元素（例如技术配置文件元数据）时，请避免从基本策略复制整个技术配置文件。 相反，只复制元素的必需部分。 有关如何进行更改的示例，请参阅 [禁用电子邮件验证](custom-policy-disable-email-verification.md) 。
+- 重写元素（例如技术配置文件元数据）时，请避免从基本策略复制整个技术配置文件。 相反，只复制元素的必需部分。 有关如何进行更改的示例，请参阅 [禁用电子邮件验证](./disable-email-verification.md) 。
 - 若要减少技术配置文件的重复，其中核心功能是共享的，请使用 [技术配置文件包含](technicalprofiles.md#include-technical-profile)。
 - 在登录过程中避免写入 Azure AD 目录，这可能会导致阻止问题。
 - 如果策略具有外部依赖项（例如 REST API 确保它们高度可用）。
-- 为了获得更好的用户体验，请确保自定义 HTML 模板是使用 [联机内容传递](https://docs.microsoft.com/azure/cdn/)进行全局部署的。 Azure 内容分发网络 (CDN) 使你可以减少加载时间、节省带宽和加快响应速度。
+- 为了获得更好的用户体验，请确保自定义 HTML 模板是使用 [联机内容传递](../cdn/index.yml)进行全局部署的。 Azure 内容分发网络 (CDN) 使你可以减少加载时间、节省带宽和加快响应速度。
 - 如果要对用户旅程做出更改。 将整个用户旅程从基本策略复制到扩展策略。 向已复制的用户旅程提供唯一的用户旅程 ID。 然后在 [信赖方策略](relyingparty.md)中，将 [默认用户旅程](relyingparty.md#defaultuserjourney) 元素更改为指向新用户旅程。
 
 ## <a name="troubleshooting"></a>疑难解答
@@ -168,9 +168,9 @@ Azure AD B2C 自定义策略入门：
 
 设置并测试 Azure AD B2C 策略后，可以开始自定义策略。 阅读以下文章，了解如何：
 
-- [添加声明并使用自定义策略自定义用户输入](custom-policy-configure-user-input.md) 。 了解如何定义声明，通过自定义一些 starter pack 技术配置文件，将声明添加到用户界面。
+- [添加声明并使用自定义策略自定义用户输入](./configure-user-input.md) 。 了解如何定义声明，通过自定义一些 starter pack 技术配置文件，将声明添加到用户界面。
 - 使用自定义策略自定义应用程序的[用户界面](customize-ui-with-html.md)。 了解如何创建您自己的 HTML 内容并自定义内容定义。
-- 使用自定义策略本地化应用程序的[用户界面](custom-policy-localization.md)。 了解如何设置受支持语言的列表，并通过添加已本地化的资源元素提供特定于语言的标签。
-- 在策略的开发和测试期间，可以 [禁用电子邮件验证](custom-policy-disable-email-verification.md)。 了解如何覆盖技术配置文件元数据。
-- 使用自定义策略[设置使用 Google 帐户进行登录](identity-provider-google-custom.md)。 了解如何使用 OAuth2 技术配置文件创建新的声明提供程序。 然后自定义用户旅程以包含 Google 登录选项。
+- 使用自定义策略本地化应用程序的[用户界面](./language-customization.md)。 了解如何设置受支持语言的列表，并通过添加已本地化的资源元素提供特定于语言的标签。
+- 在策略的开发和测试期间，可以 [禁用电子邮件验证](./disable-email-verification.md)。 了解如何覆盖技术配置文件元数据。
+- 使用自定义策略[设置使用 Google 帐户进行登录](./identity-provider-google.md)。 了解如何使用 OAuth2 技术配置文件创建新的声明提供程序。 然后自定义用户旅程以包含 Google 登录选项。
 - 若要诊断自定义策略的问题，可以 [Application Insights 收集 Azure Active Directory B2C 日志](troubleshoot-with-application-insights.md)。 了解如何添加新的技术配置文件，以及如何配置中继方策略。

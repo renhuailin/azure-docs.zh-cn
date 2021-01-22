@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/2/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3af8ecb049717da789df96f7dcc4e46668938ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a42f963f5eb79ef5b430f6fc9d2a0144c370353a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84464950"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673835"
 ---
 若要仅限特定的虚拟网络使用服务终结点访问存储帐户的公共终结点，首先需要收集有关该存储帐户和虚拟网络的信息。 填写 `<storage-account-resource-group>`、`<storage-account-name>`、`<vnet-resource-group-name>`、`<vnet-name>` 和 `<subnet-name>` 以收集此信息。
 
@@ -84,7 +84,7 @@ fi
 
 限制发往存储帐户的流量的最后一步是创建网络规则并将其添加到存储帐户的网络规则集。
 
-```bash
+```azurecli
 az storage account network-rule add \
         --resource-group $storageAccountResourceGroupName \
         --account-name $storageAccountName \

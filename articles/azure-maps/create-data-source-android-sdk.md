@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 2f383876963e3e1d310e7d93f7dc99bb58b189d3
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 78b0cbbdccc7d6853d4ce2821bf659e888680a5f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681431"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674637"
 ---
 # <a name="create-a-data-source-android-sdk"></a> (Android SDK 创建数据源) 
 
@@ -136,7 +136,7 @@ Feature feature = Feature.fromJson(GeoJSON_STRING);
 String featureString = feature.toJson();
 ```
 
-### <a name="import-geojson-data-from-web-or-assets-folder"></a>从 web 或资产文件夹导入 GeoJSON 数据
+### <a name="import-geojson-data-from-web-or-assets-folder"></a>从 Web 或资产文件夹导入 GeoJSON 数据
 
 大多数 GeoJSON 文件都包含一个 FeatureCollection。 将 GeoJSON 文件作为字符串读取，并使用 `FeatureCollection.fromJson` 方法对其进行反序列化。
 
@@ -355,10 +355,10 @@ Utils.importData("URL_or_FilePath_to_GeoJSON_data",
 
 Azure Maps 遵循 [Mapbox Vector 磁贴规范](https://github.com/mapbox/vector-tile-spec)，即开放标准。 Azure Maps 在平台中提供以下矢量图块服务：
 
-- 路标磁贴[文档](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)  |  [数据格式详细信息](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
-- 流量事件[文档](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)  |  [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
-- 流量流[文档](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)  |  [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- Azure Maps Creator 还允许通过[获取磁贴呈现 V2](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)创建和访问自定义向量磁贴
+- 路标磁贴[文档](/rest/api/maps/renderv2/getmaptilepreview)  |  [数据格式详细信息](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- 流量事件[文档](/rest/api/maps/traffic/gettrafficincidenttile)  |  [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- 流量流[文档](/rest/api/maps/traffic/gettrafficflowtile)  |  [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
+- Azure Maps Creator 还允许通过[获取磁贴呈现 V2](/rest/api/maps/renderv2/getmaptilepreview)创建和访问自定义向量磁贴
 
 若要在地图上显示 vector 磁贴源中的数据，请将源连接到数据呈现层之一。 使用矢量源的所有层都必须 `sourceLayer` 在选项中指定一个值。 下面的代码将 Azure Maps 流量向量磁贴服务作为矢量图块源加载，然后使用线条层在地图上显示它。 此向量磁贴源在源层中具有一组称为 "流量流" 的数据。 此数据集中的行数据具有一个名为的属性，该属性 `traffic_level` 在此代码中用于选择颜色并缩放线条大小。
 
@@ -523,4 +523,4 @@ map.layers.add(new Layer[] { polygonLayer, lineLayer, bubbleLayer });
 > [添加热度地图](map-add-heat-map-layer-android.md)
 
 > [!div class="nextstepaction"]
-> [Web SDK 代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Web SDK 代码示例](/samples/browse/?products=azure-maps)

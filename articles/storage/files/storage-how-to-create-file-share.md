@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 7f72d703e5377f725addc4aa8c52e1cdb0fa571d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 3ff7b3cd29740461a4f94f3c1d433086db119a09
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630745"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673800"
 ---
 # <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 若要创建 Azure 文件共享，需要回答有关你将如何使用它的三个问题：
@@ -129,7 +129,7 @@ $storAcct = New-AzStorageAccount `
 
 为了简化存储帐户和后续文件共享的创建，我们将在变量中存储多个参数。 可将变量内容替换为所需的任何值，但请注意，存储帐户名称必须全局唯一。
 
-```bash
+```azurecli
 resourceGroupName="myResourceGroup"
 storageAccountName="mystorageacct$RANDOM"
 region="westus2"
@@ -137,7 +137,7 @@ region="westus2"
 
 我们将使用以下命令创建能够存储标准 Azure 文件共享的存储帐户。 `--sku`参数与所需的冗余类型相关; 如果需要异地冗余或地域冗余存储帐户，则还必须删除此 `--enable-large-file-share` 参数。
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -149,7 +149,7 @@ az storage account create \
 
 我们将使用以下命令创建能够存储高级 Azure 文件共享的存储帐户。 请注意，`--sku` 参数已更改为包含 `Premium` 和所需的冗余级别：本地冗余 (`LRS`)。 `--kind` 参数是 `FileStorage` 而不是 `StorageV2`，因为必须在 FileStorage 存储帐户（而不是 GPv2 存储帐户）中创建高级文件共享。
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -233,7 +233,7 @@ New-AzRmStorageShare `
 > [!Important]  
 > 对于高级文件共享，`--quota` 参数指的是文件共享的预配大小。 文件共享的预配大小是将要对你计费的数量，与使用情况无关。 标准文件共享按使用情况计费，而不是按预配大小计费。
 
-```bash
+```azurecli
 shareName="myshare"
 
 az storage share-rm create \
@@ -285,7 +285,7 @@ Update-AzRmStorageShare `
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 以下 Azure CLI 命令假设你已设置了 `$resourceGroupName` 、 `$storageAccountName` 和 `$shareName` 变量，如本文档前面部分所述。
 
-```bash
+```azurecli
 az storage share-rm update \
     --resource-group $resourceGroupName \
     --storage-account $storageAccountName \

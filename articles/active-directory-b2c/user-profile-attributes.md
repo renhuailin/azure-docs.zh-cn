@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7b134c4e9e980104a54f6a96d45445ee114556a5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: f76aecc80537e6db55c8c4f2e5a7a240be6b1415
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178715"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675740"
 ---
 # <a name="user-profile-attributes"></a>用户配置文件属性
 
@@ -160,7 +160,7 @@ Azure AD B2C 密码策略（对于本地帐户）基于 Azure Active Directory [
 
 ## <a name="mfa-phone-number-attribute"></a>MFA 电话号码属性
 
-使用手机进行多重身份验证 (MFA) 时，移动电话用于验证用户标识。 若要以编程方式 [添加](https://docs.microsoft.com/graph/api/authentication-post-phonemethods) 新的电话号码、 [更新](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)、 [获取](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)或 [删除](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete) 电话号码，请使用 MS 图形 API [手机身份验证方法](https://docs.microsoft.com/graph/api/resources/phoneauthenticationmethod)。
+使用手机进行多重身份验证 (MFA) 时，移动电话用于验证用户标识。 若要以编程方式 [添加](/graph/api/authentication-post-phonemethods) 新的电话号码、 [更新](/graph/api/b2cauthenticationmethodspolicy-update)、 [获取](/graph/api/b2cauthenticationmethodspolicy-get)或 [删除](/graph/api/phoneauthenticationmethod-delete) 电话号码，请使用 MS 图形 API [手机身份验证方法](/graph/api/resources/phoneauthenticationmethod)。
 
 在 Azure AD B2C [自定义策略](custom-policy-overview.md)中，电话号码可通过 `strongAuthenticationPhoneNumber` 声明类型提供。
 

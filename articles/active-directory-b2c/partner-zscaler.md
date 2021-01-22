@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 254f8da74a187e88cfb973da7100fe5654c84bb6
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: fe427150b15c6bccb97172ae751235d388c95c7b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732440"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675020"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 配置 Zscaler 专用访问
 
@@ -27,7 +27,7 @@ ms.locfileid: "97732440"
 在开始之前，需要：
 
 - Azure 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。  
-- 链接到 Azure 订阅的[Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。  
+- 链接到 Azure 订阅的[Azure AD B2C 租户](./tutorial-create-tenant.md)。  
 - [ZPA 订阅](https://azuremarketplace.microsoft.com/marketplace/apps/aad.zscalerprivateaccess?tab=Overview)。
 
 ## <a name="scenario-description"></a>方案描述
@@ -78,7 +78,7 @@ ZPA 集成包括以下组件：
    b. 在 " **单一登录**" 下，选择 " **用户**"。  
    c. 在 " **域** " 下拉列表中，选择要与此 IdP 相关联的身份验证域。
 
-1. 选择“**下一页**”。
+1. 选择“下一步”。
 
 1. 选择 " **SP 元数据** " 选项卡，然后执行以下操作：
 
@@ -96,15 +96,15 @@ ZPA 集成包括以下组件：
 >[!Note]
 >仅当尚未配置自定义策略时，才需要执行此步骤。 如果你已有一个或多个自定义策略，则可以跳过此步骤。
 
-若要在 Azure AD B2C 租户上配置自定义策略，请参阅 [Azure Active Directory B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)。
+若要在 Azure AD B2C 租户上配置自定义策略，请参阅 [Azure Active Directory B2C 中的自定义策略入门](./custom-policy-get-started.md)。
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>步骤3：在 Azure AD B2C 中将 ZPA 注册为 SAML 应用程序
 
-若要在 Azure AD B2C 中配置 SAML 应用程序，请参阅 [在 Azure AD B2C 中注册 saml 应用程序](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers)。 
+若要在 Azure AD B2C 中配置 SAML 应用程序，请参阅 [在 Azure AD B2C 中注册 saml 应用程序](./connect-with-saml-service-providers.md)。 
 
-在步骤 ["3.2 上传并测试策略元数据"](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#32-upload-and-test-your-policy-metadata)中，复制或记下 Azure AD B2C 使用的 IdP SAML 元数据 URL。 稍后需要用到此信息。
+在步骤 ["3.2 上传并测试策略元数据"](./connect-with-saml-service-providers.md#32-upload-and-test-your-policy-metadata)中，复制或记下 Azure AD B2C 使用的 IdP SAML 元数据 URL。 稍后需要用到此信息。
 
-按照说明步骤 ["4.2 更新应用程序清单"](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#42-update-the-app-manifest)。 在步骤4.2 中，按如下所示更新应用程序清单属性：
+按照说明步骤 ["4.2 更新应用程序清单"](./connect-with-saml-service-providers.md#42-update-the-app-manifest)。 在步骤4.2 中，按如下所示更新应用程序清单属性：
 
 - 对于 **identifierUris**：使用之前在 "步骤 1.6. b" 中复制或记录的服务提供程序实体 ID。  
 - 对于 **samlMetadataUrl**：跳过此属性，因为 ZPA 不托管 SAML 元数据 URL。  
@@ -149,7 +149,7 @@ ZPA 集成包括以下组件：
 
 有关详细信息，请查看以下文章：
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
-- [在 Azure AD B2C 中注册 SAML 应用程序](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md)
+- [在 Azure AD B2C 中注册 SAML 应用程序](./connect-with-saml-service-providers.md)
 - [ZPA 的分步配置指南](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
 - [配置 IdP 以进行单一登录](https://help.zscaler.com/zpa/configuring-idp-single-sign)

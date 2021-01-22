@@ -6,19 +6,16 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/13/2020
+ms.date: 01/21/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: dc8a704fd864fbb0e11da6cd062e0c5325679d8b
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 023aa086cdafc3ab1459c2f748b2181575c14191
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964214"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675330"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板添加 Azure 角色分配
 
@@ -109,7 +106,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 }
 ```
 
-下面是有关如何在名为 ExampleGroup 的资源组中启动部署的 [AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az 部署组](/cli/azure/deployment/group#az_deployment_group_create) 的示例。
+下面是 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) 命令示例，演示如何在名为 ExampleGroup 的资源组中启动部署。
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json
@@ -187,7 +184,7 @@ az deployment group create --resource-group ExampleGroup --template-file rbac-te
 > [!NOTE]
 > 此模板不是幂等的，除非将同一 `roleNameGuid` 值作为模板的每个部署的参数提供。 如果未提供 `roleNameGuid`，则默认情况下将在每个部署上生成新的 GUID，并且后续部署将失败并出现 `Conflict: RoleAssignmentExists` 错误。
 
-角色分配的范围是根据部署级别确定的。 下面是有关如何在资源组范围内启动部署的 [AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az 部署组](/cli/azure/deployment/group#az_deployment_group_create) 的示例。
+角色分配的范围是根据部署级别确定的。 下面是 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) 命令示例，演示如何在资源组范围启动部署。
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
@@ -197,7 +194,7 @@ New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac
 az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-下面是 [AzDeployment](/powershell/module/az.resources/new-azdeployment) 的示例，以及 [az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create) 命令，说明如何在订阅范围内启动部署并指定位置。
+下面是 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) 和 [az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create) 命令示例，演示如何在订阅范围启动部署并指定位置。
 
 ```azurepowershell
 New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
@@ -290,7 +287,7 @@ az deployment sub create --location centralus --template-file rbac-test.json --p
 }
 ```
 
-若要部署上一个模板，请使用资源组命令。 下面是有关如何在资源范围中启动部署的 [AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az 部署组](/cli/azure/deployment/group#az_deployment_group_create) 的示例。
+若要部署上一个模板，请使用资源组命令。 下面是 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) 命令示例，演示如何在资源范围启动部署。
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Contributor
@@ -352,7 +349,6 @@ az deployment group create --resource-group ExampleGroup --template-file rbac-te
             "properties": {
                 "roleDefinitionId": "[variables('contributorRoleDefinitionId')]",
                 "principalId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30').principalId]",
-                "scope": "[resourceGroup().id]",
                 "principalType": "ServicePrincipal"
             }
         }
@@ -360,7 +356,7 @@ az deployment group create --resource-group ExampleGroup --template-file rbac-te
 }
 ```
 
-下面是有关如何在资源组范围内启动部署的 [AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az 部署组](/cli/azure/deployment/group#az_deployment_group_create) 的示例。
+下面是 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) 命令示例，演示如何在资源组范围启动部署。
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup2 -TemplateFile rbac-test.json
