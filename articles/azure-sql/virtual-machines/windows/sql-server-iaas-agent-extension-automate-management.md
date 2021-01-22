@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7ddc13306f4adb1730169c4811b9d2227dedca33
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 481a4ff21c361e4cf82a21d9e98357a4c8b7b1b4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632760"
+ms.locfileid: "98663666"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>通过 SQL Server IaaS 代理扩展自动进行管理
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ SQL Server IaaS 代理扩展 (SqlIaasExtension) 在 Azure 虚拟机上的 SQL Se
 
 ## <a name="overview"></a>概述
 
-SQL Server IaaS 代理扩展为 Azure Vm 上的 SQL Server 提供了很多好处： 
+SQL Server IaaS 代理扩展允许与 Azure 门户集成，并且根据管理模式，可为 Azure Vm 上的 SQL Server 解锁多种功能权益： 
 
 - **功能优势**：扩展功能使你能够更好地利用一些自动化功能权益，例如门户管理、许可证灵活性、自动备份、自动修补等。 有关详细信息，请参阅本文后面的 [功能权益](#feature-benefits) 。 
 
@@ -74,12 +74,13 @@ SQL Server IaaS 代理扩展将为管理 SQL Server VM 提供多种功能优势�
 
 | 功能 | 说明 |
 | --- | --- |
-| **门户管理** | 在 [门户](manage-sql-vm-portal.md)中取消锁定管理，以便你可以在一个位置查看所有 SQL Server vm，以便可以直接从门户中启用和禁用 SQL 特定功能。 
-| **自动备份** |对 VM 中的 SQL Server 默认实例或已[正确安装](frequently-asked-questions-faq.md#administration)的命名实例自动执行所有数据库的备份计划。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动备份 (Resource Manager)](automated-backup-sql-2014.md)。 |
-| **自动修补** |配置维护时段，在这种情况下，可能会发生重要的 Windows 和 SQL Server VM 的安全更新，因此可以避免在工作负荷高峰时间进行更新。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)](automated-patching.md)。 |
-| **Azure 密钥保管库集成** |可让你在 SQL Server VM 上自动安装和配置 Azure 密钥保管库。 有关详细信息，请参阅 [为 Azure 虚拟机上的 SQL Server 配置 Azure 密钥保管库集成 (Resource Manager)](azure-key-vault-integration-configure.md)。 |
-| **灵活的许可** | [无缝地](licensing-model-azure-hybrid-benefit-ahb-change.md)从自带许可证 (（也称为 Azure 混合权益) ）过渡到 "即用即付" 许可模式，并再次返回。 | 
-| **灵活版本/版本** | 如果决定更改[SQL Server 的](change-sql-server-edition.md)[版本](change-sql-server-version.md)，则可以更新 Azure 门户中的元数据，而无需重新部署整个 SQL Server VM。  | 
+| **门户管理** | 在 [门户](manage-sql-vm-portal.md)中取消锁定管理，以便你可以在一个位置查看所有 SQL Server vm，以便可以直接从门户中启用和禁用 SQL 特定功能。 <br/> 管理模式：轻型 & full|  
+| **自动备份** |对 VM 中的 SQL Server 默认实例或已[正确安装](frequently-asked-questions-faq.md#administration)的命名实例自动执行所有数据库的备份计划。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动备份 (Resource Manager)](automated-backup-sql-2014.md)。 <br/> 管理模式：完整|
+| **自动修补** |配置维护时段，在这种情况下，可能会发生重要的 Windows 和 SQL Server VM 的安全更新，因此可以避免在工作负荷高峰时间进行更新。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)](automated-patching.md)。 <br/> 管理模式：完整|
+| **Azure 密钥保管库集成** |可让你在 SQL Server VM 上自动安装和配置 Azure 密钥保管库。 有关详细信息，请参阅 [为 Azure 虚拟机上的 SQL Server 配置 Azure 密钥保管库集成 (Resource Manager)](azure-key-vault-integration-configure.md)。 <br/> 管理模式：完整|
+| **在门户中查看磁盘使用率** | 允许您查看 Azure 门户中 SQL 数据文件的磁盘使用率的图形表示形式。  <br/> 管理模式：完整 | 
+| **灵活的许可** | [无缝地](licensing-model-azure-hybrid-benefit-ahb-change.md)从自带许可证 (（也称为 Azure 混合权益) ）过渡到 "即用即付" 许可模式，并再次返回。 <br/> 管理模式：轻型 & full| 
+| **灵活版本/版本** | 如果决定更改[SQL Server 的](change-sql-server-edition.md)[版本](change-sql-server-version.md)，则可以更新 Azure 门户中的元数据，而无需重新部署整个 SQL Server VM。  <br/> 管理模式：轻型 & full| 
 
 
 ## <a name="management-modes"></a>管理模式

@@ -3,15 +3,15 @@ title: 创建用户 - Azure Database for MariaDB
 description: 本文介绍如何创建新的用户帐户，以与 Azure Database for MariaDB 服务器进行交互。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 01/18/2021
-ms.openlocfilehash: 28ec060e95d09cb150fc699919dde6cc0e1eaf23
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 146495947ba06bd74fea6113e57d950d29e29286
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539972"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663700"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中创建用户
 

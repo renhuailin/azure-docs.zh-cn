@@ -3,15 +3,15 @@ title: 拒绝公用网络访问 - Azure 门户 - Azure Database for MariaDB
 description: 了解如何使用 Azure 门户为 Azure Database for MariaDB 配置拒绝公用网络访问
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 3117ebfd258c72bb97432871c2ea74d30c52f669
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 7925107f4334df7a844b3f3e029f3769eef51a9c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242184"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665066"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>使用 Azure 门户在 Azure Database for MariaDB 中拒绝公用网络访问
 
@@ -23,7 +23,7 @@ ms.locfileid: "93242184"
 
 * [Azure Database for MariaDB](quickstart-create-MariaDB-server-database-using-azure-portal.md)
 
-## <a name="set-deny-public-network-access"></a>设置“拒绝公用网络访问”
+## <a name="set-deny-public-network-access"></a>设置拒绝公用网络访问
 
 按照以下步骤设置 MariaDB 服务器的“拒绝公用网络访问”：
 

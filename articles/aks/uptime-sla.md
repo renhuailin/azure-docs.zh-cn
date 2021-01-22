@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 95728ca14b96adf7396ca13888107477d953b2a9
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 9f8f697da7499d370c96b77e7e543dec9fbafa3e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033330"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664089"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
 
@@ -43,7 +43,7 @@ ms.locfileid: "98033330"
 
 若要创建具有运行时间 SLA 的群集，请使用 Azure CLI。
 
-以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
 
 ```azurecli-interactive
 # Create a resource group
@@ -90,7 +90,7 @@ az group create --name myResourceGroup --location eastus
 az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
 ```
 
-使用 [`az aks update`][az-aks-nodepool-update] 命令更新现有群集：
+使用 [`az aks update`][az-aks-update] 命令更新现有群集：
 
 ```azurecli-interactive
 # Update an existing cluster to use Uptime SLA
@@ -135,6 +135,6 @@ az group delete --name myResourceGroup --yes --no-wait
 [limit-egress-traffic]: ./limit-egress-traffic.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool?#az-aks-nodepool-update
+[az-aks-update]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_update
 [az-group-delete]: /cli/azure/group#az-group-delete
 [private-clusters]: private-clusters.md

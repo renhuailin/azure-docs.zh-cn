@@ -3,15 +3,15 @@ title: 配置数据传入复制 - Azure Database for MariaDB
 description: 本文介绍如何在 Azure Database for MariaDB 中设置数据传入复制。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 01/18/2021
-ms.openlocfilehash: 67e4da13d6954342b9979eb57a35c812cb63bb3e
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: ed1031bd45ca4f1223de9c0bce2053a393e3a2c6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539986"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665117"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中配置数据传入复制
 
@@ -48,7 +48,7 @@ ms.locfileid: "98539986"
 
 以下步骤准备并配置本地、VM 或云数据库服务中托管的 MariaDB 服务器，以实现数据传入复制。 该 MariaDB 服务器是数据传入复制中的源服务器。
 
-1. 继续之前，请查看 [主服务器要求](concepts-data-in-replication.md#requirements) 。 
+1. 请先查看[主服务器要求](concepts-data-in-replication.md#requirements)，然后再继续。 
 
 2. 请确保源服务器允许端口 3306 上的入站和出站流量，并且源服务器具有公共 IP 地址，DNS 可公开访问，或者 DNS 具有完全限定的域名 (FQDN)。 
 
@@ -287,7 +287,7 @@ ms.locfileid: "98539986"
 
     由于 MariaDB 中的本机复制限制，在不使用 GTID 方案进行复制时，必须设置 [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) 和 [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) 变量。
 
-    请检查副本服务器 `sync_master_info` 和 `sync_relay_log_info` 变量，确保数据复制是稳定的，并将变量设置为 `1` 。
+    检查副本服务器的 `sync_master_info` 和 `sync_relay_log_info` 变量，确保数据传入复制稳定，并将这些变量设置为 `1`。
 
 ## <a name="other-stored-procedures"></a>其他存储过程
 

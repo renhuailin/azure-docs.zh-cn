@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 09/03/2020
-ms.openlocfilehash: 9c09a54daa482d738ded9f7aca1c95c2b640617e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/20/2021
+ms.openlocfilehash: 5f9e7e1c96db2b60e41fe0ded69ea562cf8fcea6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790264"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663979"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>使用只读副本卸载只读的查询工作负荷
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -115,12 +115,12 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>只读副本上的长时间运行的查询
 
-只读副本上运行的查询需要访问查询中引用的对象的元数据（表、索引、统计信息等）极少数情况下，如果在主要副本上修改元数据对象，而查询持有对只读副本上同一对象的锁定，则该查询可以[阻止](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK)将主要副本的更改应用到只读副本的过程。 如果此类查询长时间运行，会导致只读副本与主要副本明显不同步。 
+只读副本上运行的查询需要访问查询中引用的对象的元数据（表、索引、统计信息等）极少数情况下，如果在主要副本上修改元数据对象，而查询持有对只读副本上同一对象的锁定，则该查询可以[阻止](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK)将主要副本的更改应用到只读副本的过程。 如果此类查询长时间运行，会导致只读副本与主要副本明显不同步。
 
-如果只读副本上长时间运行的查询导致此类阻止，则自动终止它，并且会话收到错误 1219，“由于高优先级 DDL 操作，会话已断开连接”。
+如果针对只读副本的长时间运行的查询导致此类阻塞，则会自动终止。 此会话将收到错误 1219 "由于高优先级 DDL 操作，会话已断开连接" 或 "错误 3947"，导致事务中止，因为辅助计算未能弥补重做。 请重试该事务。 "
 
 > [!NOTE]
-> 如果针对只读副本运行查询时收到错误 3961 或错误 1219，则重试查询。
+> 如果在对只读副本运行查询时收到错误3961、1219或3947，请重试查询。
 
 > [!TIP]
 > 在“高级”和“业务关键”服务层级中，当连接到只读副本时，[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV 中的 `redo_queue_size` 和 `redo_rate` 列都可用于监视数据同步过程，作为只读副本上数据延迟的指示。

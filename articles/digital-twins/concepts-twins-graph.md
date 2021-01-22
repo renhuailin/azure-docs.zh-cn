@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d9a6eb572b1ab870fdb848f8b0989f88e6dbc3c0
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: a4875c2c75b133f0ab4046266d6aac36d5478fe4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045948"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664038"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>了解数字孪生及其克隆图形
 
@@ -25,7 +25,9 @@ ms.locfileid: "98045948"
 
 你需要将 *模型* 上传到服务，然后才能在 Azure 数字孪生实例中创建数字输出。 模型描述了一组属性、遥测消息和特定的非特定克隆可以具有的关系，等等。 有关在模型中定义的信息类型，请参阅 [*概念：自定义模型*](concepts-models.md)。
 
-创建和上载模型后，客户端应用可以创建类型的实例;这是一种数字克隆。 例如，在创建 *楼层* 模型后，可以创建一个或多个使用此 (类型的数字孪生，例如名为 *GroundFloor* 的 *楼层* 类型，另一个称为 *Floor2*，依此类推。 ) 。 
+创建和上载模型后，客户端应用可以创建类型的实例;这是一种数字克隆。 例如，在创建 *楼层* 模型后，可以创建一个或多个使用此 (类型的数字孪生，例如名为 *GroundFloor* 的 *楼层* 类型，另一个称为 *Floor2*，依此类推。 ) 。
+
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 ## <a name="relationships-a-graph-of-digital-twins"></a>关系：数字孪生图形
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1667c21b9a35b8e93feffb8cf1b37d4409da73c3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1552401953a8cba9dda787a0f0e461adb7972920
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044299"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664446"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>设置 Azure 数字孪生实例和身份验证 (脚本) 
 
@@ -29,11 +29,13 @@ ms.locfileid: "98044299"
 
 ## <a name="prerequisites-download-the-script"></a>必备组件：下载脚本
 
-示例脚本用 PowerShell 编写。 这是 [**Azure 数字孪生端到端示例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，可通过导航到此示例链接并选择标题下面的 " *下载 ZIP* " 按钮，将其下载到计算机。
+示例脚本用 PowerShell 编写。 这是 [**Azure 数字孪生端到端示例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，可通过导航到此示例链接并选择标题下面的 " *浏览代码* " 按钮，将其下载到计算机。 这会将你转到适用于示例的 GitHub 存储库，你可以下载这些示例 *。ZIP* ，方法是选择 " *代码* " 按钮并 *下载 zip*。
 
-这会将示例项目下载到你的计算机上 _**Azure_Digital_Twins_end_to_end_samples.zip**_。 导航到计算机上的文件夹并将其解压缩以提取文件。
+:::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub 上的孪生存储库的查看。选择 &quot;代码&quot; 按钮，生成一个小对话框，其中突出显示了 &quot;下载 ZIP&quot; 按钮。" lightbox="media/includes/download-repo-zip.png":::
 
-在解压缩文件夹中，部署脚本位于 _Azure_Digital_Twins_end_to_end_samples > 脚本 > **deploy.ps1**_。
+这将下载 *。* 作为 **digital-twins-samples-master.zip** 的计算机的 ZIP 文件夹。 导航到计算机上的文件夹并将其解压缩以提取文件。
+
+在解压缩文件夹中，部署脚本位于 _数字孪生-> 脚本 > **deploy.ps1**_。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -56,7 +58,7 @@ ms.locfileid: "98044299"
 
     :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="显示 &quot;上传&quot; 图标选择的 Cloud Shell 窗口":::
 
-    在计算机上导航到 _**deploy.ps1**_ 文件 (_Azure_Digital_Twins_end_to_end_samples > 脚本 > **deploy.ps1**_) 并单击 "打开"。 这会将文件上传到 Cloud Shell，以便可以在 "Cloud Shell" 窗口中运行该文件。
+    导航到计算机上的 _**deploy.ps1**_ 文件 (_孪生 > 脚本 > **deploy.ps1**_) 并单击 "打开"。 这会将文件上传到 Cloud Shell，以便可以在 "Cloud Shell" 窗口中运行该文件。
 
 4. 通过 `./deploy.ps1` 在 "Cloud Shell" 窗口中发送命令来运行该脚本。 你可以复制下面的命令 (回忆要粘贴到 Cloud Shell 中，可以在 Windows 和 Linux 上使用 **Ctrl + shift + v** ，或在 macOS 上使用 **Cmd + shift + v** 。 还可以使用右键单击菜单) 。
 

@@ -4,12 +4,12 @@ description: 了解如何启用和查看 Azure Kubernetes 服务 (AKS) 中 Kuber
 services: container-service
 ms.topic: article
 ms.date: 10/14/2020
-ms.openlocfilehash: 59e7259ae352491bddebe054f2c34bdc810ea48a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5f0a01adfabe59542fa999af3103a9394f4dd77b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183220"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664072"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -17,7 +17,7 @@ ms.locfileid: "96183220"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文要求在 Azure 帐户中运行一个现有的 AKS 群集。 如果还没有 AKS 群集，请使用 [Azure CLI][cli-quickstart] 或 [Azure 门户][portal-quickstart]创建一个。 Azure Monitor 日志适用于 Kubernetes RBAC、Azure RBAC 和启用非 RBAC 的 AKS 群集。
+本文要求在 Azure 帐户中运行一个现有的 AKS 群集。 如果还没有 AKS 群集，请使用 [Azure CLI][cli-quickstart] 或 [Azure 门户][portal-quickstart]创建一个。 Azure Monitor 日志适用于支持 Kubernetes RBAC、Azure RBAC 和非 RBAC 的 AKS 群集。
 
 ## <a name="enable-resource-logs"></a>启用资源日志
 
@@ -37,11 +37,11 @@ Azure Monitor 日志是在 Azure 门户中启用和管理的。 若要为 AKS �
 
 除了 Kubernetes 编写的条目，项目的审核日志还包含 来自 AKS 的条目。
 
-审核日志分为三个类别： *kube-audit*、 *kube* 和 *guard*。
+审核日志记录为三种类别：kube-audit、kube-audit-admin 和 guard  。
 
 - kube-audit 类别包含每个审核事件的所有审核日志数据，包括 get、list、create、update、delete、patch 和 post       。
 - kube-audit-admin 类别是 kube-audit 日志类别的子集 。 kube-audit-admin 通过从日志中排除 get 和 list 审核事件，大大减少了日志数量  。
-- *防护* 类别是托管 Azure AD 和 Azure RBAC 审核。 对于托管 Azure AD：中的标记，用户信息为 out。对于 Azure RBAC：向内和向外访问评审。
+- guard 类别是托管的 Azure AD 和 Azure RBAC 审核。 对于托管的 Azure AD：输入令牌，输出用户信息。对于 Azure RBAC：输入和输出访问评审。
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>在 AKS 群集上计划测试 pod
 
@@ -53,6 +53,8 @@ kind: Pod
 metadata:
   name: nginx
 spec:
+  nodeSelector:
+    "beta.kubernetes.io/os": linux
   containers:
   - name: mypod
     image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
@@ -77,7 +79,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>查看收集的日志
 
-启用并显示诊断日志可能需要长达10分钟的时间。
+可能需要等待长达 10 分钟，诊断日志才会启用并显示。
 
 > [!NOTE]
 > 如果需要将所有审核日志数据用于实现合规性或其他目的，请收集这些数据并将其存储在成本较低的存储（例如 blob 存储）中。 使用 kube-audit-admin 日志类别收集和保存有意义的审核日志数据集，以便进行监视和发出警报。

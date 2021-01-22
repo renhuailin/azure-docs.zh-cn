@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d84acc5501b3d40f6db85d0ee6ee369aec5a6aa4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 71e74789654d2df91d9a087eaaf8d8f2a2664f7b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051099"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664106"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>将 Azure 数字孪生与 Azure SignalR 服务集成
 
@@ -40,7 +40,11 @@ ms.locfileid: "98051099"
 
 首先，下载所需的示例应用。 你将需要以下两项内容：
 * [**Azure 数字孪生端到端示例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)：此示例包含一个 *AdtSampleApp* ，其中包含两个用于在 azure 数字孪生实例之间移动数据的 azure 函数 (你可以在 [*教程：连接端到端解决方案*](tutorial-end-to-end.md)) 中更详细地了解此方案。 它还包含一个 *devicesimulator.exe* 示例应用程序，该应用程序模拟 IoT 设备，每秒生成新的温度值。 
-    - 导航到示例链接并按 " *下载 ZIP* " 按钮，将示例副本下载到计算机，如 _**Azure_Digital_Twins_end_to_end_samples.zip**_。 解压缩文件夹。
+    - 如果尚未下载示例作为 [*必备组件*](#prerequisites)的一部分，请导航到 "示例" 链接，然后选择标题下面的 " *浏览代码* " 按钮。 这会将你转到适用于示例的 GitHub 存储库，你可以下载这些示例 *。ZIP* ，方法是选择 " *代码* " 按钮并 *下载 zip*。
+
+    :::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub 上的孪生存储库的查看。选择 &quot;代码&quot; 按钮，生成一个小对话框，其中突出显示了 &quot;下载 ZIP&quot; 按钮。" lightbox="media/includes/download-repo-zip.png":::
+
+    这会将示例存储库的副本下载到计算机， **digital-twins-samples-master.zip**。 解压缩文件夹。
 * [**SignalR integration web 应用示例**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/)：这是一个示例响应 web 应用，它将使用 azure SignalR 服务中的 Azure 数字孪生遥测数据。
     -  导航到示例链接并按 " *下载 ZIP* " 按钮，将示例副本下载到计算机，如 _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_。 解压缩文件夹。
 
@@ -63,7 +67,7 @@ ms.locfileid: "98051099"
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="显示 SignalR 实例的密钥页的 Azure 门户屏幕截图。主连接字符串旁边的 &quot;复制到剪贴板&quot; 图标将突出显示。" lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-接下来，启动 Visual Studio (或你选择的另一个代码编辑器) ，然后在 *Azure_Digital_Twins_end_to_end_samples > ADTSampleApp* 文件夹中打开代码解决方案。 然后执行以下步骤来创建函数：
+接下来，启动 Visual Studio (或你选择的另一个代码编辑器) ，然后在 " *孪生-master > ADTSampleApp* " 文件夹中打开代码解决方案。 然后执行以下步骤来创建函数：
 
 1. 在 *SampleFunctionsApp* 项目中创建一个名为 **SignalRFunctions.cs** 的新 c # 清晰类。
 
@@ -71,7 +75,7 @@ ms.locfileid: "98051099"
     
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/signalRFunction.cs":::
 
-1. 在 Visual Studio 的 " *包管理器控制台* " 窗口或计算机上 *Azure_Digital_Twins_end_to_end_samples \adtsampleapp\samplefunctionsapp* "文件夹中的任何命令窗口，运行以下命令将 `SignalRService` NuGet 包安装到项目中：
+1. 在 Visual Studio 的 " *包管理器控制台* " 窗口或计算机上的 *digital-twins-samples-master\AdtSampleApp\SampleFunctionsApp* 文件夹中，运行以下命令将 `SignalRService` NuGet 包安装到项目中：
     ```cmd
     dotnet add package Microsoft.Azure.WebJobs.Extensions.SignalRService --version 1.2.0
     ```
@@ -126,7 +130,7 @@ ms.locfileid: "98051099"
 
 在端到端教程必备条件中，已将 [设备模拟器配置](tutorial-end-to-end.md#configure-and-run-the-simulation) 为通过 IoT 中心和 Azure 数字孪生实例发送数据。
 
-现在，您只需启动模拟器项目，该项目位于 *Azure_Digital_Twins_end_to_end_samples > devicesimulator.exe > devicesimulator.exe* 中。 如果你使用的是 Visual Studio，则可以打开该项目，然后使用工具栏中的此按钮运行它：
+现在，您只需启动模拟器项目，该项目位于 *孪生-master > devicesimulator.exe > devicesimulator.exe* 中。 如果你使用的是 Visual Studio，则可以打开该项目，然后使用工具栏中的此按钮运行它：
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Visual Studio 开始按钮（DeviceSimulator 项目）":::
 
@@ -188,7 +192,7 @@ npm start
 az group delete --name <your-resource-group>
 ```
 
-最后，删除已下载到本地计算机的项目示例文件夹 (*Azure_Digital_Twins_end_to_end_samples.zip* 并 *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) 。
+最后，删除已下载到本地计算机的项目示例文件夹 (*digital-twins-samples-master.zip* 并 *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) 。
 
 ## <a name="next-steps"></a>后续步骤
 

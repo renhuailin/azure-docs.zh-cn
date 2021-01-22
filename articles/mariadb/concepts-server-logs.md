@@ -3,33 +3,33 @@ title: 慢查询日志 - Azure Database for MariaDB
 description: 介绍了 Azure Database for MariaDB 中提供的日志，以及用于启用不同日志记录级别的可用参数。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: a5acf3b6447b2e3722a27951700138f756a99251
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 2d3c3c92cc4d0da38f18c7895f4f7f3f3385c653
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541107"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664157"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的慢查询日志
 在 Azure Database for MariaDB 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。
 
 有关慢查询日志的详细信息，请参阅[慢查询日志](https://mariadb.com/kb/en/library/slow-query-log-overview/)的 MariaDB 文档。
 
-在服务器上启用 [查询存储](concepts-query-store.md) 时，可能会看到类似于 "" 的查询 `CALL mysql.az_procedure_collect_wait_stats (900, 30);` 记录在慢速查询日志中。 此行为是预期的行为，查询存储功能将收集有关查询的统计信息。 
+在服务器上启用[查询存储](concepts-query-store.md)时，你可能会看到记录在慢查询日志中的类似“`CALL mysql.az_procedure_collect_wait_stats (900, 30);`”的查询。 此行为是预期的行为，因为查询存储功能会收集有关查询的统计信息。 
 
 ## <a name="configure-slow-query-logging"></a>配置慢查询日志记录
 默认情况下，慢查询日志被禁用。 若要启用它，请将 `slow_query_log` 设置为 ON。 可以使用 Azure 门户或 Azure CLI 启用此功能。 
 
 可以调整的其他参数包括：
 
-- **long_query_time** ：如果某个查询花费的时间超过了 long_query_time（以秒为单位），则会记录该查询。 默认为 10 秒。
-- **log_slow_admin_statements** ：如果为 ON，则会在写入到 slow_query_log 的语句中包括管理性语句，例如 ALTER_TABLE 和 ANALYZE_TABLE。
-- **log_queries_not_using_indexes** ：确定是否将未使用索引的查询记录到 slow_query_log 中
-- **log_throttle_queries_not_using_indexes** ：此参数限制可以写入到慢查询日志的非索引查询的数目。 当 log_queries_not_using_indexes 设置为 ON 时，此参数生效。
-- **log_output** ：如果设置为“文件”，则允许将慢查询日志写入本地服务器存储和 Azure Monitor 诊断日志。 如果设置为“无”，则仅将慢查询日志写入 Azure Monitor 诊断日志。 
+- **long_query_time**：如果某个查询花费的时间超过了 long_query_time（以秒为单位），则会记录该查询。 默认为 10 秒。
+- **log_slow_admin_statements**：如果为 ON，则会在写入到 slow_query_log 的语句中包括管理性语句，例如 ALTER_TABLE 和 ANALYZE_TABLE。
+- **log_queries_not_using_indexes**：确定是否将未使用索引的查询记录到 slow_query_log 中
+- **log_throttle_queries_not_using_indexes**：此参数限制可以写入到慢查询日志的非索引查询的数目。 当 log_queries_not_using_indexes 设置为 ON 时，此参数生效。
+- **log_output**：如果设置为“文件”，则允许将慢查询日志写入本地服务器存储和 Azure Monitor 诊断日志。 如果设置为“无”，则仅将慢查询日志写入 Azure Monitor 诊断日志。 
 
 > [!IMPORTANT]
 > 如果表未编制索引，则将 `log_queries_not_using_indexes` 和 `log_throttle_queries_not_using_indexes` 参数设置为 ON 可能会影响 MariaDB 性能，因为对这些非索引表运行的所有查询都将写入到慢速查询日志。<br><br>

@@ -3,15 +3,15 @@ title: 选择适当的部署类型 - Azure Database for MariaDB
 description: 本文介绍将 Azure Database for MariaDB 部署为基础结构即服务 (IaaS) 或平台即服务 (PaaS) 之前应考虑的因素。
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: d8885e374142b3d916803fc472ae18351ca6d470
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 921ad8d187f6c2478bdf92aab0ee0ec3c9e75bce
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240267"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664512"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>在 Azure 中选择适当的 MariaDB 服务器选项
 

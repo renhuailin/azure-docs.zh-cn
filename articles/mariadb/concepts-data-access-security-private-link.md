@@ -3,15 +3,15 @@ title: 专用链接 - Azure Database for MariaDB
 description: 了解专用链接如何用于 Azure Database for MariaDB。
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: ec43fa995fc9772964db399baa0b6f8c2a7db1db
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 12f52cd497d606fda6bbea9b54f467522373eeb7
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241491"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665134"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 的专用链接
 

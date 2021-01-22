@@ -4,12 +4,12 @@ description: 了解如何创建专用 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 87966a9bd2f83916998a724fc6c1c26a91609665
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 2b0cc8a2fe9a45120bf0b74dbad5e107fd860845
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133389"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664361"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure Kubernetes 服务群集
 
@@ -66,23 +66,23 @@ az aks create \
 > [!NOTE]
 > 如果 Docker 桥地址 CIDR (172.17.0.1/16) 与子网 CIDR 冲突，请相应地更改 Docker 桥地址。
 
-### <a name="configure-private-dns-zone"></a>配置专用 DNS 区域
+## <a name="configure-private-dns-zone"></a>配置专用 DNS 区域
 
 可以利用以下参数配置专用 DNS 区域。
 
 1. "系统" 是默认值。 如果省略了--AKS 参数，则会在节点资源组中创建专用 DNS 区域。
 2. "无" 表示 AKS 不会创建专用 DNS 区域。  这要求你引入自己的 DNS 服务器，并为专用 FQDN 配置 DNS 解析。  如果未配置 DNS 解析，则仅可在代理节点内解析 DNS，并在部署后导致群集问题。
-3. Azure global cloud 的 "自定义专用 dns 区域名称" 格式应为： `privatelink.<region>.azmk8s.io` 。 用户分配的标识或服务主体必须至少授予 `private dns zone contributor` 自定义专用 dns 区域的角色。
+3. Azure global cloud 的 "自定义专用 dns 区域名称" 格式应为： `privatelink.<region>.azmk8s.io` 。 需要专用 DNS 区域的资源 Id。  此外，你将需要一个用户至少 `private dns zone contributor` 向自定义专用 dns 区域分配了角色的标识或服务主体。
 
-## <a name="no-private-dns-zone-prerequisites"></a>无专用 DNS 区域先决条件
+### <a name="prerequisites"></a>先决条件
 
-* Azure CLI 版本0.4.71 或更高版本
-* Api 版本2020-11-01 或更高版本
+* AKS 预览版0.4.71 或更高版本
+* API 2020-11-01 或更高版本
 
-## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>使用专用 DNS 区域创建专用 AKS 群集
+### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>创建具有专用 DNS 区域的专用 AKS 群集
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system|custom private dns zone]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>连接到专用群集的选项
 
@@ -121,7 +121,7 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 3. 在包含群集的 VNet 具有自定义 DNS 设置 (4) 的情况下，除非将专用 DNS 区域链接到包含自定义 DNS 解析程序的 VNet (5)，否则群集部署将失败。 可以在群集预配期间创建专用区域后手动创建此链接，也可以使用基于事件的部署机制（例如，Azure 事件网格和 Azure Functions）在检测到区域已创建后通过自动化来创建此链接。
 
 > [!NOTE]
-> 如果使用的是 [带 kubenet 的自己的路由表](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) ，并将自己的 DNS 用于专用群集，群集创建将会失败。 创建群集后，需要将节点资源组中的 [RouteTable](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) 关联到子网，以便成功创建。
+> 如果你[将自带路由表与 kubenet 配合使用](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet)，并且将自带 DNS 与专用群集配合使用，群集创建将会失败。 你需要在创建群集失败之后将节点资源组中的 [RouteTable](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) 关联到子网，以使创建能够成功。
 
 ## <a name="limitations"></a>限制 
 * IP 授权范围不能应用于专用 API 服务器终结点，它们仅适用于公共 API 服务器
@@ -131,8 +131,8 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 * 不支持将现有 AKS 群集转换为专用群集
 * 删除或修改客户子网中的专用终结点将导致群集停止运行。 
 * 当前不支持适用于容器的 Azure Monitor 实时数据。
-* 客户在其自己的 DNS 服务器上更新 A 记录后，在迁移后，这些 pod 仍会将 apiserver FQDN 解析到较旧的 IP，直到重新启动它们。 客户需要在控制面迁移后重启 hostNetwork pod 和 DNSPolicy pod。
-* 在控制平面上进行维护的情况下， [AKS IP](https://docs.microsoft.com/azure/aks/limit-egress-traffic#:~:text=By%20default%2C%20AKS%20clusters%20have%20unrestricted%20outbound%20%28egress%29,be%20accessible%20to%20maintain%20healthy%20cluster%20maintenance%20tasks.) 可能会更改。 在这种情况下，必须在自定义 DNS 服务器上更新指向 API 服务器专用 IP 的 A 记录，并使用 hostNetwork 重新启动任何自定义的 pod 或部署。
+* 客户在自己的 DNS 服务器上更新 A 记录后，这些 Pod 仍会在迁移后将 apiserver FQDN 解析到较旧的 IP，直到重启这些 Pod。 客户需要在控制平面迁移之后重启 hostNetwork Pod 和 default-DNSPolicy Pod。
+* 如果对控制平面进行维护，[AKS IP](https://docs.microsoft.com/azure/aks/limit-egress-traffic#:~:text=By%20default%2C%20AKS%20clusters%20have%20unrestricted%20outbound%20%28egress%29,be%20accessible%20to%20maintain%20healthy%20cluster%20maintenance%20tasks.) 可能会更改。 在这种情况下，你必须在自定义 DNS 服务器上更新指向 API 服务器专用 IP 的 A 记录，并重启使用 hostNetwork 的任何自定义 Pod 或部署。
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register

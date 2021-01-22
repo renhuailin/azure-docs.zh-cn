@@ -3,15 +3,15 @@ title: 备份和还原 - Azure 门户 - Azure Database for MariaDB
 description: 本文介绍如何使用 Azure 门户在 Azure Database for MariaDB 中还原服务器。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 4a5f2cc4cbf73f5c13533a94f1454022d3538880
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 06da58b5c82af39abbaa1cbc15a217c25d7808f9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539619"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664811"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中备份和还原服务器
 
@@ -41,7 +41,7 @@ Azure Database for MariaDB 服务器定期进行备份以便启用还原功能�
 
 2. 选择 Azure Database for MariaDB 服务器。 此操作将打开“概述”页。
 
-3. 在“设置”下，从菜单中选择“定价层”。 使用滑块可以根据需要更改 **备份保留期** （7 天到 35 天）。
+3. 在“设置”下，从菜单中选择“定价层”。 使用滑块可以根据需要更改 **备份保留期**（7 天到 35 天）。
 在下面的屏幕截图中，该项已增加到 35 天。
 ![增加的备份保留期](./media/howto-restore-server-portal/3-increase-backup-days.png)
 
@@ -64,10 +64,10 @@ Azure Database for MariaDB 服务器定期进行备份以便启用还原功能�
 3. 使用必需信息填写“还原”窗体：
 
    ![Azure Database for MariaDB - 还原信息](./media/howto-restore-server-portal/3-restore.png)
-   - **还原点** ：选择要还原到的时间点。
-   - **目标服务器** ：提供新服务器的名称。
-   - **位置** ：不可选择区域。 默认情况下，此值与源服务器相同。
-   - **定价层** ：执行时间点还原时，无法更改这些参数。 此值与源服务器相同。 
+   - **还原点**：选择要还原到的时间点。
+   - **目标服务器**：提供新服务器的名称。
+   - **位置**：不可选择区域。 默认情况下，此值与源服务器相同。
+   - **定价层**：执行时间点还原时，无法更改这些参数。 此值与源服务器相同。 
 
 4. 单击“确定”，将服务器还原到某个时间点。 
 
@@ -107,9 +107,9 @@ Azure Database for MariaDB 服务器定期进行备份以便启用还原功能�
    
    :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="继续进行备份。":::
 
-7. 根据需要填写窗体的其余部分。 可以选择任意 **位置** 。
+7. 根据需要填写窗体的其余部分。 可以选择任意 **位置**。
 
-    选择位置后，可以选择“配置服务器”以更新“计算代系”（如果在已选择的区域中可用）、“vCore 数”、“备份保留期”和“备份冗余选项”。 不支持在还原过程中更改 **定价层** （“基本”、“常规用途”或“内存优化”）或 **存储** 大小。
+    选择位置后，可以选择“配置服务器”以更新“计算代系”（如果在已选择的区域中可用）、“vCore 数”、“备份保留期”和“备份冗余选项”。 不支持在还原过程中更改 **定价层**（“基本”、“常规用途”或“内存优化”）或 **存储** 大小。
 
    :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="填写表单。"::: 
 

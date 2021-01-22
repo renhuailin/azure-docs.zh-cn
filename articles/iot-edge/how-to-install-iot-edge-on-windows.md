@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 68fdc29edfd41799e2628abf40efa6a9453a90b9
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: e603e99c1aa9c49d20bdb281bbfd96131ae2efdd
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633800"
+ms.locfileid: "98663615"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>在 Windows 设备上安装和设置适用于 Linux 的 Azure IoT Edge (预览版) 
 
@@ -28,7 +28,7 @@ Windows 上适用于 Linux 的 Azure IoT Edge 允许使用 Linux 虚拟机在 Wi
 >[!NOTE]
 >Windows 上适用于 Linux 的 IoT Edge 提供 [公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 含有效订阅的 Azure 帐户。 如果还没有 [Azure 订阅](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
@@ -61,6 +61,12 @@ Windows 上适用于 Linux 的 Azure IoT Edge 允许使用 Linux 虚拟机在 Wi
       ![选择仪表板右上方的齿轮图标以访问设置。](./media/how-to-install-iot-edge-on-windows/select-gear-icon.png)
 
    1. 在 " **设置** " 菜单的 " **网关**" 下，选择 " **扩展**"。
+
+   1. 选择 " **源** " 选项卡，然后选择 " **添加**"。
+
+   1. https://aka.ms/wac-insiders-feed在文本框中输入，然后选择 "**添加**"。
+
+   1. 添加该源后，导航到 " **可用扩展** " 选项卡。可能需要一段时间来更新扩展列表。
 
    1. 在 " **可用扩展** " 选项卡上，在扩展列表中查找 **Azure IoT Edge** 。 选择它，然后选择扩展列表上方的 **安装** 提示。
 

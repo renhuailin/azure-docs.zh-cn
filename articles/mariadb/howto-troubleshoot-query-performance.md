@@ -3,15 +3,15 @@ title: 查询性能故障排除 - Azure Database for MariaDB
 description: 了解如何使用 EXPLAIN 对 Azure Database for MariaDB 中的查询性能问题进行故障排除。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 2b7491723ffcff73e4b243fe54ef18608167d636
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8c996520a77a107017aecad30c221da9ec69137c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537231"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664709"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>如何使用 EXPLAIN 分析 Azure Database for MariaDB 中的查询性能
 **EXPLAIN** 是一个可用来优化查询的易用工具。 可以使用 EXPLAIN 语句来获取有关 SQL 语句执行情况的信息。 下面的输出显示了 EXPLAIN 语句的一个执行示例。
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-如此示例中所示， *key* 的值为 NULL。 此输出表明，MariaDB 找不到针对查询优化的任何索引，并且它执行全表扫描。 让我们通过添加一个基于 **ID** 列的索引来优化此查询。
+如此示例中所示，*key* 的值为 NULL。 此输出表明，MariaDB 找不到针对查询优化的任何索引，并且它执行全表扫描。 让我们通过添加一个基于 **ID** 列的索引来优化此查询。
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -75,7 +75,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-如输出所示，MariaDB 未使用任何索引，因为没有正确的索引可用。 它还显示了 *Using temporary; Using file sort* ，这意味着 MariaDB 创建一个临时表来满足 **GROUP BY** 子句。
+如输出所示，MariaDB 未使用任何索引，因为没有正确的索引可用。 它还显示了 *Using temporary; Using file sort*，这意味着 MariaDB 创建一个临时表来满足 **GROUP BY** 子句。
  
 单独基于 **c2** 列创建索引没有任何区别，并且 MariaDB 仍然需要创建一个临时表：
 
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-在本例中，可以同时基于 **c1** 和 **c2** 创建一个 **涵盖索引** ，从而将 **c2** 的值直接添加到索引中以避免进一步的数据查找。
+在本例中，可以同时基于 **c1** 和 **c2** 创建一个 **涵盖索引**，从而将 **c2** 的值直接添加到索引中以避免进一步的数据查找。
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);

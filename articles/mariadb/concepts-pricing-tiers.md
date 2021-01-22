@@ -3,15 +3,15 @@ title: 定价层 - Azure Database for MariaDB
 description: 了解 Azure Database for MariaDB 的各种定价层，包括计算代系、存储类型、存储大小、vCore 数、内存和备份保留期。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: b5b5a506b2f932d20a617634ace7ebf02093fbfa
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 6c786ea80ecbe2f174d8c3b701316791e1b6104f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536279"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664242"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB 定价层
 
@@ -59,21 +59,21 @@ ms.locfileid: "94536279"
 
 可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标是[存储上限、存储百分比、已用存储和 IO 百分比](concepts-monitoring.md)。
 
-### <a name="large-storage-preview"></a>大型存储 (预览) 
+### <a name="large-storage-preview"></a>大型存储（预览版）
 
-我们正在增加常规用途和内存优化层中的存储限制。 选择加入预览版的新创建的服务器可以预配高达 16 TB 的存储空间。 IOPS 按3:1 的比率缩放，最高可达 20000 IOPS。 与当前的已正式发布的存储一样，你可以在创建服务器后添加额外的存储容量，并允许系统根据工作负荷的存储使用量自动增长存储。
+我们正在提高“常规用途”和“内存优化”层中的存储上限。 选择加入预览版的新建服务器可以预配高达 16 TB 的存储。 IOPS 按 3:1 的比率缩放，最高可达 20,000 IOPS。 与使用当前已正式发布的存储一样，在创建服务器之后，可以添加更多的存储容量，这样系统就可以根据工作负荷的存储使用情况自动增加存储。
 
 | 存储属性 | 常规用途 | 内存优化 |
 |:-------------|:--------------------|:---------------------|
 | 存储类型 | Azure 高级存储 | Azure 高级存储 |
-| 存储大小 | 32 GB 到 16 TB| 32到 16 TB |
+| 存储大小 | 32 GB 到 16 TB| 32 到 16 TB |
 | 存储增量大小 | 1 GB | 1 GB |
 | IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS| 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS |
 
 > [!IMPORTANT]
 > 大型存储目前在以下区域中处于公共预览阶段：美国东部、美国东部2、巴西南部、美国中部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东南部、日本东部、澳大利亚东部、澳大利亚东部、加拿大东部、美国西部和加拿大中部。
 >
-> 所有其他区域支持最大4TB 的存储，最高可达 6000 IOPS。
+> 其他所有区域支持最大 4TB 的存储，最高可达 6000 IOPS。
 >
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制

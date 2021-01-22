@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e19277aa3639031371e0e8dd28f4dd849efd4597
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 24fef1680c5660a70a20ae727833b045f6c5aa88
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933925"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664344"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>如何使用资源管理器模板创建 Azure 密钥保管库和保管库访问策略
 
@@ -150,7 +150,7 @@ ms.locfileid: "97933925"
             "permissions": {
               "keys": "[parameters('keysPermissions')]",
               "secrets": "[parameters('secretsPermissions')]",
-              "certificates": [parameters('certificatesPermissions')]
+              "certificates": "[parameters('certificatesPermissions')]"
             }
           }
         ]
@@ -160,6 +160,7 @@ ms.locfileid: "97933925"
 }
 
 ```
+
 有关 Key Vault 模板设置的详细信息，请参阅 [Key Vault ARM 模板参考](/azure/templates/microsoft.keyvault/vaults/accesspolicies)。
 
 ## <a name="more-key-vault-resource-manager-templates"></a>更多 Key Vault 资源管理器模板
@@ -213,7 +214,7 @@ Write-Host "Press [ENTER] to continue..."
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)。
 - 了解有关 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 的详细信息。
-- 查看 [Azure Key Vault 安全概述](security-overview.md)
+- 请参阅 [Azure Key Vault 安全性概述](security-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 

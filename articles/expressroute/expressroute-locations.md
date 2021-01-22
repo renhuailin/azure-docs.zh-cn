@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 01/05/2021
+ms.date: 01/21/2021
 ms.author: duau
-ms.openlocfilehash: c68d9654c673b75742205853ec186caa5d6a3ce5
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 589f8bef7e5023a3667ce0ebf9a14637b007223d
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916144"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664055"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 连接合作伙伴和对等互连位置
 
@@ -93,7 +93,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Chief Telecom](https://www.chief.com.tw/)** |支持 |支持 |香港、台北 |
 | **中国移动国际** |支持 |支持 | 香港特别行政区，香港 Kong2，新加坡 |
 | **China Telecom Global** |支持 |支持 |香港、香港 2 |
-| **中国联通全球** |支持 |支持 | 新加坡 2 |
+| **中国联通全球** |支持 |支持 | 香港特别行政区，新加坡2 |
 | **[Chunghwa Telecom](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |支持 |支持 |台北 |
 | **[Claro](https://www.usclaro.com/enterprise-mnc/connectivity/mpls/)** |支持 |支持 |迈阿密 |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |支持 |支持 |芝加哥，达拉斯，明尼阿波利斯，蒙特利尔，多伦多，范特区，华盛顿特区 |
@@ -121,6 +121,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Internet Initiative Japan Inc. - IIJ](https://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |支持 |支持 |大坂、东京 |
 | **[Internet Solutions - Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |支持 |支持 |开普敦、约翰内斯堡、伦敦 |
 | **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |支持 |支持 |阿姆斯特丹、阿姆斯特丹 2、哥本哈根、都柏林、法兰克福、伦敦、马赛、巴黎、苏黎世 |
+| **[IRIDEOS](https://irideos.it/)** |支持 |支持 |Milan |
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|支持 |支持 | 阿姆斯特丹、伦敦 2、硅谷、多伦多、华盛顿特区 |
 | **Jaguar Network** |支持 |支持 |马赛，巴黎 |
 | **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |支持 |支持 |伦敦、纽波特 (威尔士)  |
@@ -159,7 +160,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/cloud-data-center/microsoft-cloud-services/microsoft-azure-von-swisscom.html)** | 支持 | 支持 | 苏黎世 |
 | **[Tata Communications](https://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |支持 |支持 |阿姆斯特丹、金奈、香港特别行政区、伦敦、孟买、圣保罗、硅谷、新加坡、华盛顿特区 |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |支持 |支持 |阿姆斯特丹、圣保罗 |
-| **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |支持 |支持 |伦敦、伦敦 2 |
+| **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |支持 |支持 |伦敦、London2、新加坡2 |
 | **Telenor** |支持 |支持 |阿姆斯特丹、伦敦、奥斯陆 |
 | **[Telia Carrier](https://www.teliacarrier.com/)** | 支持 | 支持 |阿姆斯特丹、芝加哥、达拉斯、法兰克福、香港特别行政区、伦敦、奥斯陆、巴黎、硅谷、斯德哥尔摩、华盛顿特区 |
 | **[Telin](https://www.telin.net/)** | 支持 | 支持 |雅加达 |

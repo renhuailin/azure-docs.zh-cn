@@ -3,15 +3,15 @@ title: 配置指标警报 - Azure 门户 - Azure Database for MariaDB
 description: 本文介绍了如何通过 Azure 门户配置和访问针对 Azure Database for MariaDB 的指标警报。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: e108ca3aa346af20b31ff446130014e1250f49c0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1e7dafaba6b6792afdec1f1866629fac9ba5a577
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541073"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664412"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>使用 Azure 门户设置针对 Azure Database for MariaDB 指标的警报
 
@@ -48,7 +48,7 @@ ms.locfileid: "94541073"
    
    ![选择指标](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   "过去30分钟" ) 和 **频率** 。
+7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   “过去的 30 分钟”）、以及“频率”。
    
    完成后选择“完成”  。
 
