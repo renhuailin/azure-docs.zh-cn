@@ -16,18 +16,18 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65fc0e84582c005c5796ceac86ee28fc46b2e1d8
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 36b7fce2e2ccb6f331e42e8052ef4fb75d35e831
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094210"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729984"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：从以前版本升级到最新版本
 本主题介绍可将 Azure Active Directory (Azure AD) Connect 安装升级到最新版本的不同方法。  进行重大配置更改时，也可以使用[交叉迁移](#swing-migration)部分所述的步骤。
 
 >[!NOTE]
-> 务必使服务器保持最新版本的 Azure AD Connect，这一点很重要。 我们不断升级到 AADConnect，这些升级包括安全问题和 bug 的修复，以及可维护性、性能和可扩展性的改进。 若要查看最新版本是什么，并了解版本之间发生了哪些更改，请参阅 [发布版本历史记录](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history)
+> 让服务器与最新版本的 Azure AD Connect 保持同步非常重要。 我们会不断地对 AADConnect 升级，这些升级包括对安全问题和 bug 的修复，以及对可维护性、性能和可伸缩性的改进。 若要查看最新版本是什么，并了解版本之间发生了哪些更改，请参阅 [发布版本历史记录](./reference-connect-version-history.md)
 
 >[!NOTE]
 > 当前支持从任何版本的 Azure AD Connect 升级到当前版本。 不支持 DirSync 或 ADSync 的就地升级，必须进行交叉迁移。  如果要从 DirSync 升级，请参阅[从 Azure AD 同步工具 (DirSync) 升级](how-to-dirsync-upgrade-get-started.md)或[交叉迁移](#swing-migration)部分。  </br>实际上，极旧版本的客户可能会遇到不是与 Azure AD Connect 直接相关的问题。 已经投入生产多年的服务器通常都应用了几个修补程序，并非所有这些都能解释清楚。  通常情况下，在 12-18 个月内未升级过的客户应考虑交叉升级，因为这是最保守且风险最低的选项。

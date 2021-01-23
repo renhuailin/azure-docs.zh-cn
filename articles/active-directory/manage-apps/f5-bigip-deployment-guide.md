@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095179"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730650"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>在 Azure IaaS 中部署 F5 大 IP 虚拟版 VM 以实现安全混合访问的教程
 
@@ -71,7 +71,7 @@ VM 部署和基本系统配置需要大约30分钟，此时你的大 IP 平台�
 
 5. 选择 " **F5 大 ip 虚拟版 (BYOL")**  >  **选择软件计划**  >  **F5 大 ip VE (BYOL，2个启动位置)**
 
-6. 选择“创建”  。
+6. 选择“创建”。
 
 ![此图显示了选择软件计划的步骤](./media/f5ve-deployment-plan/software-plan.png)
 
@@ -243,13 +243,13 @@ VM 公共 IP 与专用 IP 之间的1到1个映射允许外部流量访问 VM。 
 
  |     字段   |   值        |
  |:------------|:------------|
- |Source| 任意|
+ |源| 任意|
  |源端口范围| *|
  |目标 IP 地址|所有大 IP VM 辅助专用 Ip 的逗号分隔列表|
  |目标端口| 80,443|
  |协议| TCP |
  |操作| Allow|
- |优先度|最小可用值介于 100-4096 之间|
+ |优先级|最小可用值介于 100-4096 之间|
  |名称 | 一个描述性名称，例如： `BIG-IP-VM_Web_Services_80_443`|
 
 3. 选择 " **添加** " 以提交更改，并关闭 " **网络** " 菜单。
@@ -264,7 +264,7 @@ VM 公共 IP 与专用 IP 之间的1到1个映射允许外部流量访问 VM。 
 
 - 从连接到大 IP VM 内部网络的 VPN 客户端
 
-- 通过[Azure AD 应用程序代理](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)发布
+- 通过[Azure AD 应用程序代理](./application-proxy-add-on-premises-application.md)发布
 
 你需要确定最适合的方法，然后才能继续进行其他配置。 如有必要，你可以通过使用公共 IP 配置大 IP 的主 IP，从 internet 直接连接到 web 配置。 然后添加 NSG 规则，以允许将8443流量发送到该主 IP。 请确保将源限制为你自己的受信任 IP，否则任何人都可以连接。
 
@@ -276,7 +276,7 @@ VM 公共 IP 与专用 IP 之间的1到1个映射允许外部流量访问 VM。 
 
 还可以通过其底层 SSH 环境管理大 IP 系统，该环境通常用于命令行 (CLI) 任务和根级别访问。 有几个选项可用于连接到 CLI，其中包括：
 
-- [Azure 堡垒服务](https://docs.microsoft.com/azure/bastion/bastion-overview)：允许从任何位置快速安全地连接到 vNET 中的任何 VM
+- [Azure 堡垒服务](../../bastion/bastion-overview.md)：允许从任何位置快速安全地连接到 vNET 中的任何 VM
 
 - 通过 JIT 方法直接通过 SSH 客户端（如 PuTTY）进行连接
 
@@ -423,7 +423,7 @@ VM 公共 IP 与专用 IP 之间的1到1个映射允许外部流量访问 VM。 
 
 6. 通过选择该备份的链接并选择 " **下载**"，将用户配置集 (UCS) 存档保存在本地。
 
-作为可选步骤，你还可以使用 [Azure 快照](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)来执行整个系统磁盘的备份，这不同于 web 配置备份将在 TMOS 版本之间提供一些应急措施，或者回滚到新系统。
+作为可选步骤，你还可以使用 [Azure 快照](../../virtual-machines/windows/snapshot-copy-managed-disk.md)来执行整个系统磁盘的备份，这不同于 web 配置备份将在 TMOS 版本之间提供一些应急措施，或者回滚到新系统。
 
 ```PowerShell
 # Install modules

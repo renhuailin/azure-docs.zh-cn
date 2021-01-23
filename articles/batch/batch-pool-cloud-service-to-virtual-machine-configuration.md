@@ -3,16 +3,16 @@ title: 将 Batch 池配置从云服务迁移到虚拟机
 description: 了解如何将池配置更新为最新的和建议的配置
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 417738be2c69101129079b8ff3a3d80634f9f99c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234301"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731493"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>将 Batch 池配置从云服务迁移到虚拟机
 
-可以使用 [cloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) 或 [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)创建批处理池。 "virtualMachineConfiguration" 是推荐的配置，因为它支持所有批处理功能。 "cloudServiceConfiguration" 池不支持所有功能，并且未计划任何新功能。
+可以使用 [cloudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) 或 [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)创建批处理池。 "virtualMachineConfiguration" 是推荐的配置，因为它支持所有批处理功能。 "cloudServiceConfiguration" 池不支持所有功能，并且未计划任何新功能。
 
 如果使用 "cloudServiceConfiguration" 池，强烈建议移动到使用 "virtualMachineConfiguration" 池。 这使你可以受益于所有批处理功能，如 [VM 系列](batch-pool-vm-sizes.md)、Linux vm、 [容器](batch-docker-container-workloads.md)、 [Azure 资源管理器虚拟网络](batch-virtual-network.md)和 [节点磁盘加密](disk-encryption.md)的扩展选择。
 
@@ -41,4 +41,4 @@ ms.locfileid: "98234301"
 
 - 了解有关 [池配置](nodes-and-pools.md#configurations)的详细信息。
 - 了解有关 [池最佳实践](best-practices.md#pools)的详细信息。
-- REST API 的 [池添加](https://docs.microsoft.com/rest/api/batchservice/pool/add) 和 [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)参考。
+- REST API 的 [池添加](/rest/api/batchservice/pool/add) 和 [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)参考。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: c34ca08ae2ede9430804f6b8bb33f2bfcb0b39ab
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 70e1823b30814d7dc29fef69215fcb53a2a2ab96
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632578"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730864"
 ---
 # <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool-preview"></a>使用 Azure 应用程序一致性快照工具进行灾难恢复 (预览版) 
 
@@ -40,7 +40,7 @@ Azure 大型实例平台还可以有一个配置为可以将存储卷快照复�
 - 你的存储复制工作正常。 Microsoft 运营团队会自动在 DR 预配时执行存储复制设置。 你可以使用 DR 站点上的命令监视存储复制 `azacsnap -c details --details replication` 。
 - 已在主位置设置并配置了存储快照。
 - 你在 DR 站点上安装了一个 HANA 实例，该实例具有与主实例相同的 SID。
-- 阅读并了解在[Azure 上 SAP HANA 大型实例高可用性和灾难恢复](/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)中所述的 DR 故障转移过程
+- 阅读并了解在[Azure 上 SAP HANA 大型实例高可用性和灾难恢复](../virtual-machines/workloads/sap/hana-failover-procedure.md)中所述的 DR 故障转移过程
 - 已在 DR 位置设置和配置了存储快照。
 - 配置文件 (例如， `DR.json` 使用 dr 服务器上的 dr 存储卷和相关信息创建) 。
 - 你已完成灾难恢复站点中的步骤，以便：

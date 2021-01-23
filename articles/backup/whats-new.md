@@ -3,12 +3,12 @@ title: Azure 备份中的新增功能
 description: 了解 Azure 备份中的新增功能。
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 935c2a806ed3b08f19e680bf1522d98a9ad67666
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569413"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730283"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure 备份中的新增功能
 
@@ -37,7 +37,7 @@ Azure 备份不断改进和发布新功能，增强了 Azure 中数据的保护�
 
 ## <a name="azure-disk-backup-in-preview"></a>预览版中的 Azure 磁盘备份 () 
 
-Azure 磁盘备份提供了一个全包式解决方案，该解决方案通过使用备份策略自动创建快照并将其保留为配置的持续时间，为 [Azure 托管磁盘](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) 提供快照生命周期管理。 你可以用零的基础结构成本管理磁盘快照，而无需自定义脚本处理或管理开销。 这是一个崩溃一致的备份解决方案，它使用 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) 获取托管磁盘的时间点备份，每日支持多个备份。 它也是一个无代理的解决方案，不会影响生产应用程序的性能。 它支持 (包括共享磁盘) 的操作系统和数据磁盘的备份和还原，无论它们当前是否已附加到正在运行的 Azure 虚拟机。
+Azure 磁盘备份提供了一个全包式解决方案，该解决方案通过使用备份策略自动创建快照并将其保留为配置的持续时间，为 [Azure 托管磁盘](../virtual-machines/managed-disks-overview.md) 提供快照生命周期管理。 你可以用零的基础结构成本管理磁盘快照，而无需自定义脚本处理或管理开销。 这是一个崩溃一致的备份解决方案，它使用 [增量快照](../virtual-machines/disks-incremental-snapshots.md) 获取托管磁盘的时间点备份，每日支持多个备份。 它也是一个无代理的解决方案，不会影响生产应用程序的性能。 它支持 (包括共享磁盘) 的操作系统和数据磁盘的备份和还原，无论它们当前是否已附加到正在运行的 Azure 虚拟机。
 
 有关详细信息，请参阅 [预览版) 中的 Azure 磁盘备份 (](disk-backup-overview.md)。
 

@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 2da0407f848b0795414b071b9e082c7ed60a633d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 7ebe56b95b0c4b938c31c0ece04d27fd1b234b05
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861878"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729906"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -48,7 +48,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] |
 | 用户分配 | ![可用][check] | ![可用][check]  | 不可用  | ![可用][check] |
 
-请参阅以下列表，为可用) 的区域中的 Azure 应用配置 (配置托管标识：
+请参阅以下列表来配置 Azure 应用配置的托管标识（在可用的区域中）：
 
 - [Azure CLI](../../azure-app-configuration/overview-managed-identity.md)
 
@@ -278,7 +278,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
 
-有关详细信息，请参阅 [如何为 Azure 弹簧 Cloud 应用程序启用系统分配的托管标识](~/articles/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity.md)。
+有关详细信息，请参阅[如何为 Azure Spring Cloud 应用程序启用系统分配的托管标识](~/articles/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity.md)。
 
 ### <a name="azure-stack-edge"></a>Azure Stack Edge
 
@@ -326,9 +326,9 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
 | 系统分配 | 不可用 | 不可用 | 不可用 | 不可用 |
-| 用户分配 | [在支持的区域中可用](../../virtual-machines/windows/image-builder-overview.md#regions) | 不可用 | 不可用 | 不可用 |
+| 用户分配 | [在支持的区域中可用](../../virtual-machines/image-builder-overview.md#regions) | 不可用 | 不可用 | 不可用 |
 
-若要了解如何在可用) 的区域中为 Azure VM 映像生成器 (配置托管标识，请参阅 [映像生成器概述](../../virtual-machines/windows/image-builder-overview.md#permissions)。
+若要了解如何在可用) 的区域中为 Azure VM 映像生成器 (配置托管标识，请参阅 [映像生成器概述](../../virtual-machines/image-builder-overview.md#permissions)。
 ### <a name="azure-signalr-service"></a>Azure SignalR 服务
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |

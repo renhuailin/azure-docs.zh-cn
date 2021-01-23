@@ -7,17 +7,17 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: e60f77495cdb822a0c50be936c2b0d3ac31348f3
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 2b68afcb9d200970ca4ea29b13175223f52c77e0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116703"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730983"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>跨服务查询-Azure Monitor 和 Azure 数据资源管理器 (预览) 
-在 [Azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/)、 [Application Insights](/azure/azure-monitor/app/app-insights-overview)和 [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)之间创建跨服务查询。
+在 [Azure 数据资源管理器](/azure/data-explorer/)、 [Application Insights](../app/app-insights-overview.md)和 [Log Analytics](./data-platform-logs.md)之间创建跨服务查询。
 ## <a name="azure-monitor-and-azure-data-explorer-cross-service-querying"></a>Azure Monitor 和 Azure 数据资源管理器跨服务查询
-利用这种体验，你可以在 [Azure 数据资源管理器和 Azure Monitor 之间创建跨服务查询](https://docs.microsoft.com/azure/data-explorer/query-monitor-data) ，以及在 [Azure Monitor 与 Azure 数据资源管理器之间创建跨服务查询](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy)。
+利用这种体验，你可以在 [Azure 数据资源管理器和 Azure Monitor 之间创建跨服务查询](/azure/data-explorer/query-monitor-data) ，以及在 [Azure Monitor 与 Azure 数据资源管理器之间创建跨服务查询](./azure-monitor-data-explorer-proxy.md)。
 
 例如，从 Log Analytics) 查询 Azure 数据资源管理器 (：
 ```kusto
@@ -34,15 +34,15 @@ CustomEvents | where aField == 1
 
 将数据从 Azure Monitor 导出到 Azure 存储帐户可以实现低成本保留，并能够将日志重新分配到不同的区域。
 
-使用 Azure 数据资源管理器可查询从 Log Analytics 工作区导出的数据。 配置后，从你的工作区发送到 Azure 存储帐户的受支持的表将可用作 Azure 数据资源管理器的数据源。 [使用 Azure 数据资源管理器 (预览) 从 Azure Monitor 中查询导出的数据 ](https://docs.microsoft.com/azure/azure-monitor/platform/azure-data-explorer-query-storage)。
+使用 Azure 数据资源管理器可查询从 Log Analytics 工作区导出的数据。 配置后，从你的工作区发送到 Azure 存储帐户的受支持的表将可用作 Azure 数据资源管理器的数据源。 [使用 Azure 数据资源管理器 (预览) 从 Azure Monitor 中查询导出的数据 ](./azure-data-explorer-query-storage.md)。
 
 :::image type="content" source="media\azure-data-explorer-query-storage\exported-data-query.png" alt-text="Azure 数据资源管理器从存储流查询。":::
 
 >[!tip] 
-> * 若要将所有数据从 Log Analytics 工作区导出到 Azure 存储帐户或事件中心，请使用 Azure Monitor 日志的 Log Analytics 工作区数据导出功能。 [请参阅 Azure Monitor (预览) 中 Log Analytics 工作区数据导出 ](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)。
+> * 若要将所有数据从 Log Analytics 工作区导出到 Azure 存储帐户或事件中心，请使用 Azure Monitor 日志的 Log Analytics 工作区数据导出功能。 [请参阅 Azure Monitor (预览) 中 Log Analytics 工作区数据导出 ](/azure/data-explorer/query-monitor-data)。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关以下方面的详细信息：
-* [在 Azure 数据资源管理器和 Azure Monitor 之间创建跨服务查询](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)。 从 Azure 数据资源管理器查询 Azure Monitor 数据
-* [在 Azure Monitor 和 Azure 数据资源管理器之间创建跨服务查询](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy)。 从 Azure Monitor 中查询 Azure 数据资源管理器数据
-* [ (预览) Azure Monitor Log Analytics 工作区数据导出 ](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)。 链接和查询具有 Log Analytics 导出数据的 Azure Blob 存储帐户。
+* [在 Azure 数据资源管理器和 Azure Monitor 之间创建跨服务查询](/azure/data-explorer/query-monitor-data)。 从 Azure 数据资源管理器查询 Azure Monitor 数据
+* [在 Azure Monitor 和 Azure 数据资源管理器之间创建跨服务查询](./azure-monitor-data-explorer-proxy.md)。 从 Azure Monitor 中查询 Azure 数据资源管理器数据
+* [ (预览) Azure Monitor Log Analytics 工作区数据导出 ](/azure/data-explorer/query-monitor-data)。 链接和查询具有 Log Analytics 导出数据的 Azure Blob 存储帐户。

@@ -4,16 +4,16 @@ description: 自定义映像池是配置计算节点以运行 Batch 工作负载
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: eb21a9e0d355274142e34fbb5c90a4d293c88ef1
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 98dbb965d77da43d937dccbc0f99abf12c195929
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327298"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731355"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共享映像库创建自定义映像池
 
-使用虚拟机配置创建 Azure Batch 池时，需指定一个虚拟机 (VM) 映像，为池中每个计算节点提供操作系统。 可以使用受支持的 Azure 市场映像创建虚拟机池，也可以使用[共享映像库映像](../virtual-machines/windows/shared-image-galleries.md)创建自定义映像。
+使用虚拟机配置创建 Azure Batch 池时，需指定一个虚拟机 (VM) 映像，为池中每个计算节点提供操作系统。 可以使用受支持的 Azure 市场映像创建虚拟机池，也可以使用[共享映像库映像](../virtual-machines/shared-image-galleries.md)创建自定义映像。
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>共享映像库的优势
 
@@ -31,7 +31,7 @@ ms.locfileid: "96327298"
 - **一次复制大量的数据。** 将静态数据复制到托管映像的数据磁盘，使这些数据成为托管的共享映像的一部分。 只需执行此操作一次，然后，数据可供池的每个节点使用。
 - **扩大池的大小。** 利用共享映像库，可以通过自定义映像和更多的共享映像副本创建更大的池。
 - **性能优于仅使用托管映像作为自定义映像的情况。** 对于共享映像自定义映像池，达到稳定状态所需的时间最多可以缩短 25%，VM 空闲延迟最多可以缩短 30%。
-- **进行映像版本控制和分组，以便于管理。** 映像分组定义包含的信息涉及创建映像的原因、它适用于哪个 OS，以及映像的用法。 对映像分组可以方便映像的管理。 有关详细信息，请参阅[映像定义](../virtual-machines/windows/shared-image-galleries.md#image-definitions)。
+- **进行映像版本控制和分组，以便于管理。** 映像分组定义包含的信息涉及创建映像的原因、它适用于哪个 OS，以及映像的用法。 对映像分组可以方便映像的管理。 有关详细信息，请参阅[映像定义](../virtual-machines/shared-image-galleries.md#image-definitions)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +58,7 @@ ms.locfileid: "96327298"
 - 已上传到云的通用本地 VHD
 
 > [!NOTE]
-> Batch 仅支持通用共享映像;专用共享映像不能用于创建池。
+> Batch 仅支持通用共享映像；专用共享映像无法用于创建池。
 
 以下步骤展示了如何准备 VM、创建快照，然后基于该快照创建映像。
 
@@ -219,11 +219,11 @@ client.pool.add(new_pool)
 
 如果打算使用共享映像创建包含数百或数千 VM 或更多 VM 的池，请按以下指南操作。
 
-- **共享映像库副本数目。**  对于每个具有多达300实例的池，建议至少保留一个副本。 例如，如果要创建包含 3000 Vm 的池，则应保留映像的至少10个副本。 我们始终建议保留比最低要求更多的副本，以便获得更好的性能。
+- **共享映像库副本数目。**  对于实例数多达 300 的每个池，我们建议至少保留一个副本。 例如，如果创建的池包含 3000 个 VM，则应保留至少 10 个映像副本。 我们始终建议保留比最低要求更多的副本，以便获得更好的性能。
 
 - **调整超时。** 如果池包含固定数目的节点（如果池不会自动缩放），请根据池大小增大池的 `resizeTimeout` 属性的值。 对于每 1000 个 VM，建议的调整超时值至少为 15 分钟。 例如，如果池包含 2000 个 VM，建议将重设大小超时设置为至少 30 分钟。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 Batch 的详细概述，请参阅 [Batch 服务工作流和资源](batch-service-workflow-features.md)。
-- 了解[共享映像库](../virtual-machines/windows/shared-image-galleries.md)。
+- 了解[共享映像库](../virtual-machines/shared-image-galleries.md)。

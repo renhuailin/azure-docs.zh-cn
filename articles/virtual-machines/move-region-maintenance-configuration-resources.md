@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 7c4d9f3a5f73e5832e9ff22ed2cd4c215811c845
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 88082c441dafdc7571f2b9775bfc07ebe3ca5aa4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197551"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730500"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>将维护控制配置中的资源移到另一区域
 
@@ -49,7 +49,7 @@ ms.locfileid: "98197551"
     $adh | 专用主机名 | "myHost"
     $adhParentName | 父资源名称 | "HostGroup"
     
-2. 使用 PowerShell [Get-AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment?view=azps-3.5.0) 命令检索维护配置：
+2. 使用 PowerShell [Get-AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment) 命令检索维护配置：
 
     - 对于 Azure 专用主机，请运行：
         ```

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: ad3a2ae9fd9a99398b384ef4e4a44820faccf8c7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1155b4274b97f540fd97bf39e51fd41c37bc9627
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675879"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730615"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
 
@@ -21,7 +21,7 @@ ms.locfileid: "98675879"
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>将新磁盘附加到 VM
 
-如果只需要在 VM 上添加新的空数据磁盘，请使用 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) 命令以及 `--new` 参数。 如果 VM 位于某个可用性区域中，则会自动在与 VM 相同的区域中创建磁盘。 有关详细信息，请参阅[可用性区域概述](../../availability-zones/az-overview.md)。 以下示例创建一个名为“myDataDisk”且大小为 50 GB 的磁盘：
+如果只需要在 VM 上添加新的空数据磁盘，请使用 [az vm disk attach](/cli/azure/vm/disk) 命令以及 `--new` 参数。 如果 VM 位于某个可用性区域中，则会自动在与 VM 相同的区域中创建磁盘。 有关详细信息，请参阅[可用性区域概述](../../availability-zones/az-overview.md)。 以下示例创建一个名为“myDataDisk”且大小为 50 GB 的磁盘：
 
 ```azurecli
 az vm disk attach \
@@ -34,7 +34,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>附加现有磁盘
 
-若要附加现有磁盘，请查找磁盘 ID 并将该 ID 传递到 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) 命令。 以下示例查询 *myResourceGroup* 中名为 *myDataDisk* 的磁盘，然后将其附加到名为 *myVM* 的 VM：
+若要附加现有磁盘，请查找磁盘 ID 并将该 ID 传递到 [az vm disk attach](/cli/azure/vm/disk) 命令。 以下示例查询 *myResourceGroup* 中名为 *myDataDisk* 的磁盘，然后将其附加到名为 *myVM* 的 VM：
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)

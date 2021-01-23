@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5c960c7fbcc29d0aaea7511ba2187c916e84ab3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f8210e00824d7680f4eecde2f0b299dfcdc93b90
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935234"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730565"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 大 IP 访问策略管理器和 Azure Active Directory 集成以实现安全的混合访问
 
@@ -29,19 +29,20 @@ SHA 通过使组织能够继续将其 F5 投资用于高级网络和应用程序
 
 让 Azure AD 对大 IP 已发布服务进行预身份验证访问具有很多好处：
 
-- 通过[Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-overview)、 [MS 身份](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)验证器、[快速标识在线 (FIDO) 密钥](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key)和[基于证书的身份验证](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started)进行密码不太验证
+- 通过[Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)、 [MS 身份](../user-help/user-help-auth-app-download-install.md)验证器、[快速标识在线 (FIDO) 密钥](../authentication/howto-authentication-passwordless-security-key.md)和[基于证书的身份验证](../authentication/active-directory-certificate-based-authentication-get-started.md)进行密码不太验证
 
-- 抢先 [条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) 和 [多重身份验证 (MFA) ](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)
+- 抢先 [条件访问](../conditional-access/overview.md) 和 [多重身份验证 (MFA) ](../authentication/concept-mfa-howitworks.md)
 
-- [标识保护](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection#:~:text=Identity%20Protection%20is%20a%20tool%20that%20allows%20organizations,detection%20data%20to%20third-party%20utilities%20for%20further%20analysis) -通过用户和会话风险分析进行自适应控制
+- [标识保护](../identity-protection/overview-identity-protection.md) -通过用户和会话风险分析进行自适应控制
 
-- [泄漏的凭据检测](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)
 
-- [自助服务密码重置 (SSPR) ](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr)
+- [泄漏的凭据检测](../identity-protection/concept-identity-protection-risks.md)
 
-- [合作伙伴协作](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users) -受管辖的来宾访问权限管理
+- [自助服务密码重置 (SSPR) ](../authentication/tutorial-enable-sspr.md)
 
-- [Cloud App Security (CASB) ](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) -用于完整应用发现和控制
+- [合作伙伴协作](../governance/entitlement-management-external-users.md) -受管辖的来宾访问权限管理
+
+- [Cloud App Security (CASB) ](/cloud-app-security/what-is-cloud-app-security) -用于完整应用发现和控制
 
 - 威胁监视-用于高级威胁分析的[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)
 
@@ -61,7 +62,7 @@ SHA 通过使组织能够继续将其 F5 投资用于高级网络和应用程序
 
 此集成基于 APM 与 Azure AD （包括 [SSL VPN 方案](f5-aad-password-less-vpn.md)的大多数 SHA 用例共有）之间的标准联合身份验证信任。 安全断言标记语言 (SAML) 、OAuth 和 Open ID Connect (OIDC) 资源也不例外，因为它们也可以安全地进行远程访问。 还可能会出现这样的情况：大 IP 变为不能访问所有服务（包括 SaaS 应用）的不受信任点。
 
-与 Azure AD 进行集成的大 IP 能力可以实现协议转换，以使用新式控件（例如无 [密码身份验证](https://www.microsoft.com/security/business/identity/passwordless) 和 [条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)）保护旧式或非 Azure AD 集成的服务。 在这种情况下，大 IP 会继续将其角色作为反向代理来实现，同时根据每个服务，将预身份验证和授权提交到 Azure AD。
+与 Azure AD 进行集成的大 IP 能力可以实现协议转换，以使用新式控件（例如无 [密码身份验证](https://www.microsoft.com/security/business/identity/passwordless) 和 [条件性访问](../conditional-access/overview.md)）保护旧式或非 Azure AD 集成的服务。 在这种情况下，大 IP 会继续将其角色作为反向代理来实现，同时根据每个服务，将预身份验证和授权提交到 Azure AD。
 
 此图中的步骤1-4 说明了在服务提供商启动的流中，用户、大 IP 和 Azure AD 之间的前端预身份验证交换。 步骤5-6 将后续的 APM 会话扩充和 SSO 显示给单个后端服务。
 
@@ -71,16 +72,16 @@ SHA 通过使组织能够继续将其 F5 投资用于高级网络和应用程序
 |:------|:-----------|
 | 1. | 用户在门户中选择一个应用程序图标，将 URL 解析为 SAML SP (大 IP)  |
 | 2. | 大 IP 将用户重定向到 SAML IDP (Azure AD) 进行预身份验证|
-| 3. | Azure AD 处理身份验证的条件性访问策略和[会话控制](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session)|
+| 3. | Azure AD 处理身份验证的条件性访问策略和[会话控制](../conditional-access/concept-conditional-access-session.md)|
 | 4. | 用户重定向回大 IP，以显示 Azure AD 颁发的 SAML 声明 |
-| 5. | 大 IP 请求任何附加的会话信息，包括在 [SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) 和 [基于角色的访问控制 (RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/overview) 发布到服务 |
+| 5. | 大 IP 请求任何附加的会话信息，包括在 [SSO](../hybrid/how-to-connect-sso.md) 和 [基于角色的访问控制 (RBAC) ](../../role-based-access-control/overview.md) 发布到服务 |
 | 6. | 大 IP 将客户端请求转发到后端服务
 
 ## <a name="user-experience"></a>用户体验
 
 无论是直接员工、附属人员还是消费者，大多数用户都已经熟悉 Office 365 登录体验，因此通过 SHA 访问大 IP 服务仍非常熟悉。
 
-用户现在可以在  [MyApps](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) 或 [O365 launchpads](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf) 中整合其大 IP 已发布服务，还可以将自助服务功能合并到更广泛的一组服务，不管设备类型或位置如何。 如果首选，用户甚至可以通过 BIG-IPs 专有的 Webtop 门户继续直接访问已发布的服务。 注销时，SHA 确保用户的会话在两个端（即大 IP 和 Azure AD）都能终止，确保服务能够完全受到未经授权的访问。  
+用户现在可以在  [MyApps](../user-help/my-apps-portal-end-user-access.md) 或 [O365 launchpads](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf) 中整合其大 IP 已发布服务，还可以将自助服务功能合并到更广泛的一组服务，不管设备类型或位置如何。 如果首选，用户甚至可以通过 BIG-IPs 专有的 Webtop 门户继续直接访问已发布的服务。 注销时，SHA 确保用户的会话在两个端（即大 IP 和 Azure AD）都能终止，确保服务能够完全受到未经授权的访问。  
 
 提供的屏幕截图来自 Azure AD 应用门户，用户可以通过安全的方式进行访问，查找其大 IP 已发布服务并管理其帐户属性。  
 
@@ -92,7 +93,7 @@ SHA 通过使组织能够继续将其 F5 投资用于高级网络和应用程序
 
 大 IP 角色对于任何企业而言都是至关重要的，因此，应监视已部署的大 IP 实例，以确保已发布的服务高度可用，同时在 SHA 级别和操作上操作。
 
-有多个选项可用于以本地方式记录事件，或者通过安全信息和事件管理以远程方式 (SIEM) 解决方案，从而实现了脱机存储和遥测处理。 用于监视 Azure AD 和特定于 SHA 的活动的一种非常有效的解决方案是使用 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) 和 [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/overview)，同时提供：
+有多个选项可用于以本地方式记录事件，或者通过安全信息和事件管理以远程方式 (SIEM) 解决方案，从而实现了脱机存储和遥测处理。 用于监视 Azure AD 和特定于 SHA 的活动的一种非常有效的解决方案是使用 [Azure Monitor](../../azure-monitor/overview.md) 和 [Azure Sentinel](../../sentinel/overview.md)，同时提供：
 
 - 组织的详细概述，可能跨多个云以及本地位置（包括大 IP 基础结构）
 
@@ -126,9 +127,9 @@ SHA 通过使组织能够继续将其 F5 投资用于高级网络和应用程序
 
 - 通过以下任一选项 Azure AD 许可：
 
-   - Azure AD [免费订阅](https://docs.microsoft.com/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20) 提供了通过无密码身份验证实现 SHA 的最低核心要求
+   - Azure AD [免费订阅](/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20) 提供了通过无密码身份验证实现 SHA 的最低核心要求
 
-   - [高级订阅](https://azure.microsoft.com/pricing/details/active-directory/)提供了前言中概括的所有附加值，包括条件性[访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)、 [MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)和[标识保护](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)
+   - [高级订阅](https://azure.microsoft.com/pricing/details/active-directory/)提供了前言中概括的所有附加值，包括条件性[访问](../conditional-access/overview.md)、 [MFA](../authentication/concept-mfa-howitworks.md)和[标识保护](../identity-protection/overview-identity-protection.md)
 
 若要实现 SHA，无需任何以前的经验或 F5 大 IP 知识，但我们建议你自行熟悉。 F5 bigip 丰富的 [知识库](https://www.f5.com/services/resources/glossary) 也是开始构建大 IP 知识的好地方。
 
@@ -138,9 +139,9 @@ SHA 通过使组织能够继续将其 F5 投资用于高级网络和应用程序
 
 - [在 Azure 部署演练中按 F5 大 IP](f5-bigip-deployment-guide.md)
 
-- [F5 大 IP APM 并 Azure AD SSO 应用程序](https://docs.microsoft.com/azure/active-directory/saas-apps/kerbf5-tutorial#configure-f5-single-sign-on-for-kerberos-application)
+- [F5 大 IP APM 并 Azure AD SSO 应用程序](../saas-apps/kerbf5-tutorial.md#configure-f5-single-sign-on-for-kerberos-application)
 
-- [F5 大 IP APM 和 Azure AD SSO 到基于标头的应用程序](https://docs.microsoft.com/azure/active-directory/saas-apps/headerf5-tutorial#configure-f5-single-sign-on-for-header-based-application)
+- [F5 大 IP APM 和 Azure AD SSO 到基于标头的应用程序](../saas-apps/headerf5-tutorial.md#configure-f5-single-sign-on-for-header-based-application)
 
 - [通过 Azure AD SHA 保护 F5 大 IP SSL VPN](f5-aad-password-less-vpn.md)
 

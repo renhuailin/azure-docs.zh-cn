@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2961f3f01f6ea4398fab6144b34fcb4409cdd96f
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 84e177f1ce55d803f54bb2553078441557e5c191
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317872"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730881"
 ---
 # <a name="tutorial-for-azure-active-directory-single-sign-on-integration-with-f5-big-ip-for-password-less-vpn"></a>有关采用无密码 VPN 的 F5 大 IP Azure Active Directory 单一登录集成的教程
 
@@ -24,13 +24,13 @@ ms.locfileid: "96317872"
 
 将 IP SSL 的大 VPN 与 Azure AD 集成提供了 [许多重要优势](f5-aad-integration.md)，包括：
 
-- 通过[Azure AD 预身份验证和授权](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)提高了零信任管理
+- 通过[Azure AD 预身份验证和授权](../../app-service/overview-authentication-authorization.md)提高了零信任管理
 
 - [对 VPN 服务的无密码身份验证](https://www.microsoft.com/security/business/identity/passwordless)
 
 - 从单个控制平面管理标识和访问- [Azure 门户](https://portal.azure.com/#home)
 
-尽管这些极佳的价值增加，但经典 VPN 仍会依据网络外围的概念，其中受信任的是内部的，不受信任。 由于公司资产不再局限于企业数据中心的墙纸，而是在无固定边界的多云环境中，因此此模型不再有效。 出于此原因，我们鼓励客户考虑在 [按应用程序管理访问权限](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad)时，转向更多标识驱动的方法。
+尽管这些极佳的价值增加，但经典 VPN 仍会依据网络外围的概念，其中受信任的是内部的，不受信任。 由于公司资产不再局限于企业数据中心的墙纸，而是在无固定边界的多云环境中，因此此模型不再有效。 出于此原因，我们鼓励客户考虑在 [按应用程序管理访问权限](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md)时，转向更多标识驱动的方法。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -47,9 +47,9 @@ ms.locfileid: "96317872"
 
 - Azure AD [免费订阅](https://azure.microsoft.com/trial/get-started-active-directory/) 或更高版本
 
-- 应将用户标识 [从其本地目录同步](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) 到 Azure AD。
+- 应将用户标识 [从其本地目录同步](../hybrid/how-to-connect-sync-whatis.md) 到 Azure AD。
 
-- 具有 Azure AD 的应用程序管理员[权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#application-administrator)的帐户
+- 具有 Azure AD 的应用程序管理员[权限](../roles/permissions-reference.md#application-administrator)的帐户
 
 - 一个现有的大 IP 基础结构，其中包含进出大 IP 的客户端流量，或将 [大 Ip 虚拟版部署到 Azure](f5-bigip-deployment-guide.md)中。
 
@@ -64,7 +64,7 @@ ms.locfileid: "96317872"
 
 ## <a name="add-f5-big-ip-from-the-azure-ad-gallery"></a>从 Azure AD 库添加 F5 大 IP
 
-设置大 IP 之间的 SAML 联合身份验证信任允许 Azure AD 大 IP 在授予对发布的 VPN 服务的访问权限之前，将预身份验证和 [条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) 移交给 Azure AD。
+设置大 IP 之间的 SAML 联合身份验证信任允许 Azure AD 大 IP 在授予对发布的 VPN 服务的访问权限之前，将预身份验证和 [条件访问](../conditional-access/overview.md) 移交给 Azure AD。
 
 1. 使用具有应用程序管理员权限的帐户登录到 Azure AD 门户
 
@@ -84,13 +84,13 @@ ms.locfileid: "96317872"
 
 3. 在 " **设置 SAML 的单一登录** " 菜单上，选择 " **基本 SAML 配置** " 的 "笔" 图标以提供以下详细信息：
 
-   - 将预定义的 **标识符 url** 替换为大 IP 发布服务的 url。 例如 `https://ssl-vpn.contoso.com`
+   - 将预定义的 **标识符 url** 替换为大 IP 发布服务的 url。 例如： `https://ssl-vpn.contoso.com`
 
-   - 对 " **回复 URL** " 文本框执行相同操作，包括 SAML 终结点路径。 例如 `https://ssl-vpn.contoso.com/saml/sp/profile/post/acs`
+   - 对 " **回复 URL** " 文本框执行相同操作，包括 SAML 终结点路径。 例如： `https://ssl-vpn.contoso.com/saml/sp/profile/post/acs`
 
-   - 在此配置中，应用程序将在 IDP 发起的模式下运行，其中 Azure AD 在重定向到大 IP SAML 服务之前，使用 SAML 断言颁发用户。 对于不支持 IDP 启动模式的应用，请指定大 IP SAML 服务的 **登录 URL** 。 例如 `https://ssl-vpn.contoso.com`。
+   - 在此配置中，应用程序将在 IDP 发起的模式下运行，其中 Azure AD 在重定向到大 IP SAML 服务之前，使用 SAML 断言颁发用户。 对于不支持 IDP 启动模式的应用，请指定大 IP SAML 服务的 **登录 URL** 。 例如，`https://ssl-vpn.contoso.com`。
 
-   - 对于 "注销 Url"，输入要发布的服务的主机标头预先挂起的大 IP APM 单一注销 (SLO) 终结点。 例如 `https://ssl-vpn.contoso.com/saml/sp/profile/redirect/slr`
+   - 对于 "注销 Url"，输入要发布的服务的主机标头预先挂起的大 IP APM 单一注销 (SLO) 终结点。 例如： `https://ssl-vpn.contoso.com/saml/sp/profile/redirect/slr`
 
    提供 SLO URL 可确保用户在用户注销后，在两个端（即大 IP 和 Azure AD）终止用户会话。大 IP APM 还提供了一个 [选项](https://support.f5.com/csp/article/K12056) ，用于在调用特定的应用程序 URL 时终止所有会话。
 
@@ -105,7 +105,7 @@ ms.locfileid: "96317872"
 
 ![图像显示用户属性声明](media/f5-sso-vpn/user-attributes-claims.png)
 
-可以随意添加大 IP 已发布服务所需的任何其他特定声明，同时请注意，除默认集外定义的任何声明都将仅在 Azure AD 中存在，作为填充的属性。 同样，目录 [角色或组](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims) 成员身份还需要针对 Azure AD 中的用户对象进行定义，然后才能将其作为声明发出。
+可以随意添加大 IP 已发布服务所需的任何其他特定声明，同时请注意，除默认集外定义的任何声明都将仅在 Azure AD 中存在，作为填充的属性。 同样，目录 [角色或组](../hybrid/how-to-connect-fed-group-claims.md) 成员身份还需要针对 Azure AD 中的用户对象进行定义，然后才能将其作为声明发出。
 
 ![图像显示联合元数据下载链接](media/f5-sso-vpn/saml-signing-certificate.png)
 
@@ -165,7 +165,7 @@ Azure AD 创建的 SAML 签名证书的生命周期为三年，因此将需要�
 
 1. 请 **访问**  >  **Webtops**  >  **Webtop 列表**，并选择 "**创建**"。
 
-2. 为门户指定名称并将类型设置为 " **完整**"。 例如 `Contoso_webtop`。
+2. 为门户指定名称并将类型设置为 " **完整**"。 例如，`Contoso_webtop`。
 
 3. 调整其余首选项，然后选择 " **完成**"。
 
@@ -299,11 +299,11 @@ F5 bigip [文档](https://techdocs.f5.com/kb/en-us/bigip-edge-apps.html) 提供�
 
 - [密码结束，请无密码](https://www.microsoft.com/security/business/identity/passwordless)
 
-- [什么是条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是条件访问？](../conditional-access/overview.md)
 
 - [用于启用远程工作的 Microsoft 零信任框架](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)
 
-- [与 Azure AD 完全应用程序集成的五个步骤](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad)
+- [与 Azure AD 完全应用程序集成的五个步骤](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -312,4 +312,4 @@ F5 bigip [文档](https://techdocs.f5.com/kb/en-us/bigip-edge-apps.html) 提供�
 ![图像显示 vpn 启动器](media/f5-sso-vpn/vpn-launcher.png)
 
 选择 VPN 磁贴将安装大 IP 边缘客户端，并建立为 SHA 配置的 VPN 连接。
-F5 VPN 应用程序还应在 Azure AD 条件访问中作为目标资源可见。 请参阅我们的 [指南](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies) ，了解如何构建条件性访问策略，以及如何使用户能够 Azure AD 无 [密码身份验证](https://www.microsoft.com/security/business/identity/passwordless)。
+F5 VPN 应用程序还应在 Azure AD 条件访问中作为目标资源可见。 请参阅我们的 [指南](../conditional-access/concept-conditional-access-policies.md) ，了解如何构建条件性访问策略，以及如何使用户能够 Azure AD 无 [密码身份验证](https://www.microsoft.com/security/business/identity/passwordless)。

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: 49c28d59573f491b0aa80f1de1ecbd20528ce1ec
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 902bd46fcf6efc20c81992e29fd463781fecc15e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181810"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731371"
 ---
 # <a name="tutorial-configure-parsable-for-automatic-user-provisioning"></a>教程：为自动用户预配配置分析
 
-本教程介绍了在可分析和 Azure Active Directory (Azure AD) 配置自动用户预配时需要执行的步骤。 配置时，Azure AD 会自动预配和取消预配用户和组，以使用 Azure AD 预配服务进行 [分析](https://www.parsable.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了在可分析和 Azure Active Directory (Azure AD) 配置自动用户预配时需要执行的步骤。 配置时，Azure AD 会自动预配和取消预配用户和组，以使用 Azure AD 预配服务进行 [分析](https://www.parsable.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -37,15 +37,15 @@ ms.locfileid: "96181810"
 
 本教程中概述的方案假定你已具有以下先决条件：
 
-* [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* 具有配置预配[权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
+* [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
+* 具有配置预配[权限](../roles/permissions-reference.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
 * ) 的租户 (团队。
 * 使用管理员权限的用户帐户。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
-1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
-2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
-3. 确定要 [在 Azure AD 和可分析之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
+1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
+2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
+3. 确定要 [在 Azure AD 和可分析之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
 ## <a name="step-2-configure-parsable-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置可分析以支持设置 Azure AD
 
@@ -53,17 +53,17 @@ ms.locfileid: "96181810"
 2. 他们将进一步帮助你提出支持票证，以获取所需的 **持有者令牌** (机密令牌) 。
 3. 复制并保存“持有者令牌”。 此值将在 Azure 门户中可分析应用程序的 "预配" 选项卡的 " **机密令牌** " 字段中输入。
 
-## <a name="step-3-add-parsable-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加分析
+## <a name="step-3-add-parsable-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加分析
 
-添加 Azure AD 应用程序库中的可分析，开始管理预配以进行分析。 如果以前为 SSO 安装了可分析的，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。 
+添加 Azure AD 应用程序库中的可分析，开始管理预配以进行分析。 如果以前为 SSO 安装了可分析的，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
-使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
+使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
-* 将用户和组分配到可分析时，必须选择 "默认" **访问权限** 以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+* 将用户和组分配到可分析时，必须选择 "默认" **访问权限** 以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
 
-* 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
+* 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-parsable"></a>步骤 5。 配置自动用户预配以进行可分析 
@@ -100,14 +100,14 @@ ms.locfileid: "96181810"
 
 8. 在 " **映射** " 部分下，选择 " **同步 Azure Active Directory 用户进行分析**"。
 
-9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到可分析的用户属性。 选为 " **匹配** " 属性的属性用于匹配可分析的中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保可分析的 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改  。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到可分析的用户属性。 选为“匹配”属性的特性用于匹配 Parsable 中的用户帐户以执行更新操作。 如果选择更改[匹配目标属性](../app-provisioning/customize-application-attributes.md)，则需要确保 Parsable Suite API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|支持筛选|
    |---|---|---|
    |userName|字符串|&check;|
    |displayName|字符串|
 
-10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
 11. 若要为可分析启用 Azure AD 预配服务，请在 "**设置**" 部分中将 **预配状态** 更改为 **"打开**"。
 
@@ -126,15 +126,15 @@ ms.locfileid: "96181810"
 ## <a name="step-6-monitor-your-deployment"></a>步骤 6. 监视部署
 配置预配后，请使用以下资源来监视部署：
 
-1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
-3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
+1. 通过[预配日志](../reports-monitoring/concept-provisioning-logs.md)来确定哪些用户已预配成功或失败
+2. 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)来查看预配周期的状态以及完成进度
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](../app-provisioning/application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。  
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)

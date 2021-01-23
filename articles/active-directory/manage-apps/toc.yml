@@ -51,8 +51,6 @@
           href: non-gallery-apps.md
         - name: 计划“我的应用”部署
           href: access-panel-deployment-plan.md
-        - name: 开发人员指南
-          href: developer-guidance-for-integrating-applications.md
     - name: 单一登录
       items:
         - name: 计划单一登录部署
