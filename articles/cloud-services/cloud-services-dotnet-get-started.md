@@ -1,26 +1,27 @@
 ---
-title: Azure 云服务和 ASP.NET 入门 | Microsoft Docs
+title: " (经典) 和 ASP.NET 的 Azure 云服务入门 |Microsoft Docs"
 description: 了解如何使用 ASP.NET MVC 和 Azure 创建多层应用程序。 该应用程序运行在云服务中，带有 web 角色和辅助角色。 它使用实体框架、SQL 数据库和 Azure 存储队列和 Blob。
-services: cloud-services, storage
-documentationcenter: .net
-author: tgore03
-manager: carmonm
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-csharp
-ms.topic: conceptual
-ms.date: 05/15/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: a875c036c79419357f1134c32f62fdb060fec7c6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ae7fd5a7c9bc858cb18473374e7bd5589717eac6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562287"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742074"
 ---
-# <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
+# <a name="get-started-with-azure-cloud-services-classic-and-aspnet"></a> (经典) 和 ASP.NET 的 Azure 云服务入门
 
 ## <a name="overview"></a>概述
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+
 本教程演示如何使用 ASP.NET MVC 前端创建多层 .NET 应用程序，并将其部署到 [Azure 云服务](cloud-services-choose-me.md)。 应用程序使用 [Azure SQL 数据库](/previous-versions/azure/ee336279(v=azure.100))、[Azure Blob 服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)和 [Azure 队列服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)。 可以从 MSDN 代码库 [下载 Visual Studio 项目](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)。
 
 本教程介绍如何在本地生成并运行应用程序、如何将其部署到 Azure 并在云中运行，以及如何从头构建。 用户可以从头构建并进行测试，之后根据用户的喜好部署步骤。
@@ -28,7 +29,7 @@ ms.locfileid: "97562287"
 ## <a name="contoso-ads-application"></a>Contoso 广告应用程序
 该应用程序是广告公告板。 用户通过输入文本和上传图像创建一个广告。 用户可以通过缩略图查看广告列表，并在选择一个广告以查看其详细信息时，查看完整尺寸的图像。
 
-![广告列表](./media/cloud-services-dotnet-get-started/list.png)
+![图像显示广告列表](./media/cloud-services-dotnet-get-started/list.png)
 
 应用程序使用 [以队列为中心的工作模式](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 来减轻创建缩略图到后端进程的 CPU 密集型工作。
 
@@ -60,7 +61,7 @@ ms.locfileid: "97562287"
 ## <a name="application-architecture"></a>应用程序体系结构
 该应用程序将广告存储在 SQL 数据库中，通过使用实体框架 Code First 创建表和访问数据。 对于每个广告，数据库存储两个 URL：一个用于全尺寸图像，另一个用于缩略图。
 
-![广告表](./media/cloud-services-dotnet-get-started/adtable.png)
+![这是一个广告表的图像](./media/cloud-services-dotnet-get-started/adtable.png)
 
 当用户上传一个图像时，Web 角色中运行的前端在 [Azure Blob](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) 中存储图像，并将广告信息存储在带有指向 Blob 的 URL 的数据库中。 同时，它将一条消息写入 Azure 队列。 在辅助角色中定期运行的后端进程轮询队列是否有新消息。 显示新消息时，辅助角色会创建该图像的缩略图，并为该广告更新缩略图 URL 数据库字段。 下图演示了应用程序各部分之间如何交互：
 
@@ -83,11 +84,11 @@ ms.locfileid: "97562287"
 
     首次运行云服务项目时，模拟器会花费大约一分钟来启动。 模拟器完成启动后，默认浏览器中会打开应用程序的主页。
 
-    ![Contoso 广告体系结构](./media/cloud-services-dotnet-get-started/home.png)
+    ![Contoso Ad 体系结构1](./media/cloud-services-dotnet-get-started/home.png)
 8. 单击“创建广告”。
 9. 输入一些测试数据并选择一个要上传的 *.jpg* 图像，并单击“创建”。
 
-    ![创建页面](./media/cloud-services-dotnet-get-started/create.png)
+    ![图像显示 "创建" 页](./media/cloud-services-dotnet-get-started/create.png)
 
     该应用程序转到索引页，但它不显示新广告的缩略图，因为该处理尚未发生。
 10. 稍等片刻，并刷新该索引页查看缩略图。
@@ -129,7 +130,7 @@ Azure 云服务是该应用程序的运行环境。
 
     在下图中，使用 URL CSvccontosoads.cloudapp.net 创建了一个云服务。
 
-    ![新的云服务](./media/cloud-services-dotnet-get-started/newcs.png)
+    ![图像显示新的云服务](./media/cloud-services-dotnet-get-started/newcs.png)
 
 ### <a name="create-a-database-in-azure-sql-database"></a>在 Azure SQL 数据库中创建数据库
 在云中运行应用程序时，它会使用基于云的数据库。
@@ -230,7 +231,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
 1. 在“解决方案资源管理器”中，右键单击“ContosoAdsCloudService”项目中“角色”下的“ContosoAdsWeb”，并单击“属性”。
 
-    ![角色属性](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![图像显示角色属性](./media/cloud-services-dotnet-get-started/roleproperties.png)
 2. 单击“设置”选项卡 。在“服务配置”下拉列表框中，选择“云”。
 
     ![云配置](./media/cloud-services-dotnet-get-started/sccloud.png)
@@ -378,7 +379,8 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 2. 保存所做更改。
 3. 在 ContosoAdsCloudService 项目中，右键单击“角色”下的 ContosoAdsWeb，并单击“属性”。
 
-    ![突出显示“角色”下的“属性”菜单选项的屏幕截图。](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![角色属性图像](./media/cloud-services-dotnet-get-started/roleproperties.png)
+
 4. 在“ContosoAdsWeb [角色]”属性窗口中，单击“设置”选项卡，并单击“添加设置”。
 
     将“服务配置”保留设置为“所有配置”。
@@ -744,7 +746,7 @@ private void ProcessQueueMessage(CloudQueueMessage msg)
 按本教程中的说明操作时，如果出现异常现象，请参考如下常见错误信息和解决方法。
 
 ### <a name="serviceruntimeroleenvironmentexception"></a>ServiceRuntime.RoleEnvironmentException
-`RoleEnvironment`当你在 azure 中运行应用程序或使用 Azure 计算仿真程序在本地运行时，对象由 azure 提供。  如果您在本地运行时收到此错误，请确保您已将 ContosoAdsCloudService 项目设为启动项目。 这会将项目设置为使用 Azure 计算仿真程序运行。
+在 Azure 中运行应用程序或使用 Azure 计算模拟器在本地运行时，`RoleEnvironment` 对象由 Azure 提供。  如果您在本地运行时收到此错误，请确保您已将 ContosoAdsCloudService 项目设为启动项目。 这会将项目设置为使用 Azure 计算模拟器运行。
 
 应用程序使用 Azure RoleEnvironment 的内容之一是获取 *.cscfg* 文件中存储的连接字符串值，所以此异常的另一个原因是丢失连接字符串。 确保在 ContosoAdsWeb 项目中为云和本地配置创建 StorageConnectionString 设置，并且您会在 ContosoAdsWorker 项目中为两个配置创建两个连接字符串。 如果为整个解决方案中的 StorageConnectionString 进行 **查找全部** 搜索，应在 6 个文件中看到它 9 次。
 
@@ -754,7 +756,7 @@ private void ProcessQueueMessage(CloudQueueMessage msg)
 有关可能解决该问题的另一种方法，请参阅下一节。
 
 ### <a name="other-errors-when-running-locally"></a>在本地运行时出现其他错误
-默认情况下，新的云服务项目使用 Azure 计算模拟器 express 来模拟 Azure 环境。 这是完整计算仿真程序的轻型版本，在某些情况下完整仿真程序会在没有 express 版时工作。  
+默认情况下新的云服务项目使用 Azure 计算模拟器 Express 版来模拟 Azure 环境。 这是完整计算仿真程序的轻型版本，在某些情况下完整仿真程序会在没有 express 版时工作。  
 
 如果要更改项目以使用完整模拟器，请右键单击 ContosoAdsCloudService 项目中，并单击“属性”。 在“属性”窗口中，单击“Web”选项卡，并单击“使用完整模拟器”单选按钮。
 

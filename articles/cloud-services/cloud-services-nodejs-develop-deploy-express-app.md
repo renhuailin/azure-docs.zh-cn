@@ -1,24 +1,24 @@
 ---
-title: 构建 Node.js Express 应用并将其部署到 Azure 云服务
-titleSuffix: Azure Cloud Services
-description: 本教程介绍如何使用 Express 模块创建一个新的应用程序，该模块提供用于创建 Node.js web 应用程序的 MVC 框架。
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
+title: " (经典) 构建 Node.js Express 应用并将其部署到 Azure 云服务"
+description: 使用本教程通过 Express 模块新建一个应用程序，该模块提供了用于创建 Node.js Web 应用程序的 MVC 框架。
 ms.topic: article
-ms.date: 08/17/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: 7ecaccf36988e94d0cb1114bd04c5d571d4fe86d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: e15af589b3a3c496738c97c0c2c6429ba708ba7e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071857"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743332"
 ---
-# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>使用 Express 在 Azure 云服务中构建并部署 Node.js Web 应用程序
+# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services-classic"></a>使用 Express 在 Azure 云服务上构建和部署 Node.js web 应用程序 (经典) 
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
 
 Node.js 包含核心运行时中最小的一个功能集。
 开发人员在开发 Node.js 应用程序时经常会使用第三方模块来提供额外功能。 本教程使用 [Express](https://github.com/expressjs/express) 模块新建一个应用程序，该模块提供了用于创建 Node.js Web 应用程序的 MVC 框架。
@@ -114,7 +114,7 @@ Node.js 包含核心运行时中最小的一个功能集。
    ![index.jade 文件的内容。](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
 
    Jade 是 Express 应用程序使用的默认视图引擎。 有关 Jade 视图引擎的详细信息，请参阅 [http://jade-lang.com][http://jade-lang.com]。
-2. 通过追加 **in Azure**来修改最后一行文本。
+2. 通过追加 **in Azure** 来修改最后一行文本。
 
    ![index.jade 文件，最后一行的内容为：p Welcome to \#{title} in Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
 3. 保存文件并退出记事本。

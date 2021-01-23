@@ -1,27 +1,30 @@
 ---
-title: 监视 Azure 云服务 | Microsoft Docs
+title: 监视 (经典) 的 Azure 云服务 |Microsoft Docs
 description: 介绍监视 Azure 云服务需要涉及到哪些操作，以及可以选择哪些选项。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 01/29/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 60f320f86860cca482cdf25c7d93f84dae8c4e5f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847243"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743366"
 ---
-# <a name="introduction-to-cloud-service-monitoring"></a>云服务监视简介
+# <a name="introduction-to-cloud-service-classic-monitoring"></a>云服务 (经典) 监视简介
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
 
 可以监视任何云服务的关键性能指标。 每个云服务角色收集极少量的数据：CPU 使用率、网络使用率和磁盘利用率。 如果云服务已将 `Microsoft.Azure.Diagnostics` 扩展应用到某个角色，则该角色可以收集其他数据点。 本文介绍适用于云服务的 Azure 诊断。
 
 使用基本监视时，默认情况下，将每隔 3 分钟从角色实例中采样和收集性能计数器数据。 此基本监视数据不会存储在存储帐户中，并且不会产生相关的额外费用。
 
-使用高级监视时，将每隔 5 分钟、1 小时和 12 小时采样和收集其他指标。 聚合的数据存储在存储帐户的表中，将在 10 天后予以清除。 使用的存储帐户是按角色配置的；可以对不同的角色使用不同的存储帐户。 这种配置是使用 [.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 和 [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) 文件中的连接字符串完成的。
+使用高级监视时，将每隔 5 分钟、1 小时和 12 小时采样和收集其他指标。 聚合的数据存储在存储帐户的表中，将在 10 天后予以清除。 使用的存储帐户是按角色配置的；可以对不同的角色使用不同的存储帐户。 此配置是通过在 [.](cloud-services-model-and-package.md#servicedefinitioncsdef) 文件和 [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) 文件中的连接字符串进行配置的。
 
 
 ## <a name="basic-monitoring"></a>基本监视
@@ -34,7 +37,7 @@ ms.locfileid: "85847243"
 
 ## <a name="advanced-monitoring"></a>高级监视
 
-高级监视涉及到对想要监视的角色使用 **Azure 诊断**扩展（和可选的 Application Insights SDK）。 该诊断扩展使用名为 **diagnostics.wadcfgx** 的配置文件（按角色）来配置所监视的诊断指标。 Azure 诊断扩展收集数据，并将数据存储在 Azure 存储帐户中。 在 **.wadcfgx**、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 和 [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) 文件中配置这些设置。 这意味着，高级监视会产生额外的成本。
+高级监视涉及到对想要监视的角色使用 **Azure 诊断** 扩展（和可选的 Application Insights SDK）。 诊断扩展使用名为 **diagnostics.wadcfgx** 的每个角色)  (配置文件来配置监视的诊断指标。 Azure 诊断扩展收集数据，并将数据存储在 Azure 存储帐户中。 这些设置在 **. diagnostics.wadcfgx、**[和](cloud-services-model-and-package.md#servicedefinitioncsdef) [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg)文件中进行配置。 这意味着，高级监视会产生额外的成本。
 
 创建每个角色时，Visual Studio 会将 Azure 诊断扩展添加到其中。 此诊断扩展可收集以下类型的信息：
 
@@ -48,13 +51,13 @@ ms.locfileid: "85847243"
 * 客户错误日志
 
 > [!IMPORTANT]
-> 尽管所有这些数据都会聚合到存储帐户中，但门户**不**提供绘制数据图表的本机方法。 强烈建议你将另一个服务（如 Application Insights）集成到应用程序中。
+> 尽管所有这些数据都会聚合到存储帐户中，但门户 **不** 提供绘制数据图表的本机方法。 强烈建议你将另一个服务（如 Application Insights）集成到应用程序中。
 
 ## <a name="setup-diagnostics-extension"></a>设置诊断扩展
 
-首先，如果你没有**经典**存储帐户，请[创建一个](../storage/common/storage-account-create.md)。 确保为创建的存储帐户指定**经典部署模型**。
+首先，如果你没有 **经典** 存储帐户，请 [创建一个](../storage/common/storage-account-create.md)。 确保为创建的存储帐户指定 **经典部署模型**。
 
-接下来，导航到“存储帐户(经典)”资源。  选择“设置” > “访问密钥”，并复制“主连接字符串”值。 云服务需要此值。 
+接下来，导航到“存储帐户(经典)”资源。 选择 "**设置**" "  >  **访问密钥**"，并复制 "**主连接字符串**" 值。 云服务需要此值。 
 
 必须更改两个配置文件才能启用高级诊断：**ServiceDefinition.csdef** 和 **ServiceConfiguration.cscfg**。
 
@@ -71,7 +74,7 @@ ms.locfileid: "85847243"
 
 此代码定义必须添加到每个 **ServiceConfiguration.cscfg** 文件的新设置。 
 
-很可能有两个 **.cscfg** 文件，一个名为 **ServiceConfiguration.cloud.cscfg**，用于部署到 Azure；另一个名为 **ServiceConfiguration.local.cscfg**，用于在模拟环境中进行本地部署。 打开并更改每个 **.cscfg** 文件。 添加名为 `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` 的设置。 将值设置为经典存储帐户的**主连接字符串**。 如果想要在开发计算机上使用本地存储，请使用 `UseDevelopmentStorage=true`。
+很可能有两个 **.cscfg** 文件，一个名为 **ServiceConfiguration.cloud.cscfg**，用于部署到 Azure；另一个名为 **ServiceConfiguration.local.cscfg**，用于在模拟环境中进行本地部署。 打开并更改每个 **.cscfg** 文件。 添加名为 `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` 的设置。 将值设置为经典存储帐户的 **主连接字符串**。 如果想要在开发计算机上使用本地存储，请使用 `UseDevelopmentStorage=true`。
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">

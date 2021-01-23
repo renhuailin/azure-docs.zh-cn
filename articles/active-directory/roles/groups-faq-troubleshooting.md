@@ -2,23 +2,23 @@
 title: 分配给云组的角色疑难解答常见问题解答- Azure Active Directory | Microsoft Docs
 description: 了解有关在 Azure Active Directory 中将角色分配给组的一些常见问题和疑难解答提示。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8735a0d34b9fcf5b86b6592980ffc5c7c3e3073c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 0ff906654dc91c7b1980292efd2a737503e684e9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861929"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742907"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>分配给云组的角色疑难解答
 

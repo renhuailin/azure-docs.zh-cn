@@ -1,21 +1,24 @@
 ---
 title: 为云服务配置 TLS | Microsoft Docs
 description: 了解如何为 Web 角色指定 HTTPS 终结点以及如何上传 TLS/SSL 证书来保护应用程序。 这些示例使用 Azure 门户。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/26/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 33aa088efd7768153d4a17472d82e0826f4ffa6b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82024840"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742635"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>为 Azure 中的应用程序配置 TLS
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
 
 传输层安全性 (TLS) 以前称为安全套接字层 (SSL) 加密，是用于保护通过 Internet 发送的数据的最常见方法。 此常见任务讨论了如何为 Web 角色指定 HTTPS 终结点以及如何上传 TLS/SSL 证书来保护应用程序。
 
@@ -34,7 +37,7 @@ ms.locfileid: "82024840"
 
 * 证书必须包含公钥。
 * 必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
-* 证书的使用者名称必须与用于访问云服务的域匹配。 无法从证书颁发机构获取 cloudapp.net 域 (CA) 的 TLS/SSL 证书。 必须获取在访问服务时要使用的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果自定义域名为 contoso.com，则续从 CA 请求用于 *.contoso.com 或 www\.contoso.com 的证书。
+* 证书的使用者名称必须与用于访问云服务的域匹配。 无法从证书颁发机构获取 cloudapp.net 域 (CA) 的 TLS/SSL 证书。 必须获取在访问服务时要使用的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果自定义域名为 **contoso.com** ，则需要从 CA 申请一个证书用于 **_. contoso.com_* 或 **www \. contoso.com**。
 * 该证书必须使用至少 2048 位加密。
 
 出于测试目的，可以[创建](cloud-services-certs-create.md)和使用自签名的证书。 自签名证书不通过 CA 进行身份验证并可使用 cloudapp.net 域作为网站 URL。 例如，以下任务使用其公用名 (CN) 为 **sslexample.cloudapp.net** 的自签名证书。

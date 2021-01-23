@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 2f242de3bfa6a2bc95dc46b4ca5c10222b755a2f
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 720d25079e1350315c9f403a8215f650db49ceb7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200917"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743077"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>重置远程桌面服务或其在 Windows VM 中的管理员密码
 如果无法连接到 Windows 虚拟机 (VM)，可以重置本地管理员密码或远程桌面服务配置（Windows 域控制器不支持此操作）。 若要重置密码，可以使用 Azure 门户或 Azure PowerShell 中的 VM 访问扩展。 登录到 VM 后，重置该本地管理员的密码。  
@@ -90,10 +90,14 @@ ms.locfileid: "98200917"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果 Azure VM 访问扩展无响应，并且密码无法重置，可以[脱机重置本地 Windows 密码](reset-local-password-without-agent.md)。 这是一个较高级的方法，需要将有问题的 VM 的虚拟硬盘连接到另一个 VM。 请先遵循本文中所述的步骤，仅当这些步骤不起作用时，才尝试脱机重置密码的方法。
 
-- [了解 Azure VM 扩展和功能](../extensions/features-windows.md)。
+- 如果 Azure VM 访问扩展无法安装，你可以 [排查 VM 扩展问题](../extensions/troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+
+- 如果无法使用 VM 访问扩展重置密码，可以 [脱机重置本地 Windows 密码](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 这是一个较高级的方法，需要将有问题的 VM 的虚拟硬盘连接到另一个 VM。 请先遵循本文中所述的步骤，仅当这些步骤不起作用时，才尝试脱机重置密码的方法。
+
+- [了解 AZURE VM 扩展和功能](../extensions/features-windows.md)。
 
 - [使用 RDP 或 SSH 连接到 Azure 虚拟机](/previous-versions/azure/dn535788(v=azure.100))。
 
-- [对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](troubleshoot-rdp-connection.md)。
+
+- [排查远程桌面连接到基于 Windows 的 Azure 虚拟机的问题](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

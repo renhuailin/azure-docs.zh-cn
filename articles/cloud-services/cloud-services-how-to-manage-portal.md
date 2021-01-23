@@ -1,21 +1,25 @@
 ---
 title: 常见的云服务管理任务 | Microsoft Docs
 description: 了解如何在 Azure 门户中管理云服务。 这些示例使用 Azure 门户。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 84e450a55f9482c3a713943adfcc4d7940ab873f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 306da8dae31c2bbdb487e7128e3a2e24424c239d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076702"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743383"
 ---
-# <a name="manage-cloud-services-in-the-azure-portal"></a>在 Azure 门户中管理云服务
+# <a name="manage-cloud-services-classic-in-the-azure-portal"></a>管理 Azure 门户中 (经典) 的云服务
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+
 在 Azure 门户的“云服务”  区域中，可以：
 
 * 更新服务角色或部署。
@@ -77,7 +81,7 @@ ms.locfileid: "92076702"
 
 - 如果想要将静态 IP 地址用于生产槽，还必须为过渡槽保留一个静态 IP 地址。 否则，交换将失败。
 
-- 在执行交换之前，角色的所有实例必须都在运行。 可在 Azure 门户的“概述”  边栏选项卡中检查实例的状态。 或者，可以在 Windows PowerShell 中使用 [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0) 命令。
+- 在执行交换之前，角色的所有实例必须都在运行。 可在 Azure 门户的“概述”  边栏选项卡中检查实例的状态。 或者，可以在 Windows PowerShell 中使用 [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0&preserve-view=true) 命令。
 
 请注意，来宾 OS 更新和服务修复操作也会导致部署交换失败。 有关详细信息，请参阅[排查云服务部署问题](cloud-services-troubleshoot-deployment-problems.md)。
 

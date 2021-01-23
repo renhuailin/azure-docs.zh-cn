@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85026092e513ecc9ec3c23e292a416297774a2e4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217832"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743111"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>在 Windows 虚拟桌面上使用 Microsoft 团队
 
@@ -146,6 +146,7 @@ Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体
 - Windows 虚拟桌面上的团队每次仅支持一个传入视频输入。 这意味着每当有人尝试共享其屏幕时，都会显示其屏幕，而不是会议主持人的屏幕。
 - 由于 WebRTC 限制，传入和传出视频流解析仅限于720p。
 - 团队应用不支持对其他设备进行 HID 按钮或 LED 控件。
+- VDI 环境当前不支持 (NME) 的新会议体验。
 
 对于与虚拟化环境无关的已知问题，请参阅 [组织中的支持团队](/microsoftteams/known-issues)
 

@@ -3,23 +3,23 @@ title: 按管理任务委派角色 - Azure Active Directory | Microsoft Docs
 description: 在 Azure Active Directory 中为标识任务委托角色
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e83ff37140369cb073f4bdc2bd24ac08ee9b1ab
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 3ad48141c69d78096981b89758afd56089093021
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379088"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742924"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -351,7 +351,7 @@ ms.locfileid: "93379088"
 更新受限管理员的用户主体名称（请参阅文档） | 用户管理员 | 
 更新特权管理员的用户主体名称属性（请参阅文档） | 全局管理员角色 | 
 更新用户设置 | 全局管理员角色 | 
-更新身份验证方法 | 身份验证管理员 | 特权身份验证管理员，全局管理员
+更新身份验证方法 | 身份验证管理员 | 特权身份验证管理员、全局管理员
 
 
 ## <a name="support"></a>支持

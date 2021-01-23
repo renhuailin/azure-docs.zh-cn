@@ -3,27 +3,27 @@ title: 针对 Microsoft 365 服务的管理角色文档 - Azure AD |Microsoft Do
 description: 在 Azure Active Directory 中查找针对 Microsoft 365 服务的管理员角色的内容和 API 参考
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b1798646281ef4e78c9950e9931332cde373ed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5579e0d2094c3dc596e8e50992ae6bc31818ff87
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499163"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743060"
 ---
-# <a name="roles-for-microsoft-365-services-in-azure-active-directory"></a>Azure Active Directory 中的 Microsoft 365 服务的角色
+# <a name="roles-for-microsoft-365-services-in-azure-active-directory"></a>Azure Active Directory 中 Microsoft 365 服务的角色
 
-Microsoft 365 中的所有产品都可以通过 Azure Active Directory (Azure AD) 中的管理角色进行管理。 某些产品还提供特定于该产品的其他角色。 有关每个产品所支持角色的信息，请参阅下表。 有关委派问题的常规讨论，请参阅 [Azure Active Directory 中的角色委派计划](concept-delegation.md)。
+在 Azure Active Directory (Azure AD) 中，可以使用管理角色管理 Microsoft 365 中的所有产品。 某些产品还提供特定于该产品的其他角色。 有关每个产品所支持角色的信息，请参阅下表。 有关委派问题的常规讨论，请参阅 [Azure Active Directory 中的角色委派计划](concept-delegation.md)。
 
 ## <a name="where-to-find-content"></a>查找内容位置
 

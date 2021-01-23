@@ -2,23 +2,23 @@
 title: 查看和分配管理员角色权限 - Azure AD | Microsoft Docs
 description: 现在，你可以在门户中查看和管理 Azure AD 管理员角色的成员。 本文面向经常需要管理角色分配的人员。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9330c6d34dcf5a799d65ebba176565ff031cb956
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 26217930b79b958ae86d976d06a28ba4a4852ab6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376776"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742006"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中查看和分配管理员角色
 
@@ -55,7 +55,7 @@ ms.locfileid: "93376776"
 
 查看某个角色的成员时，选择“说明”可以查看角色分配授予的权限的完整列表。 该页包含相关文档的链接，引导你对目录角色进行管理。
 
-![显示 "全局管理员描述" 页面的屏幕截图。](./media/manage-roles-portal/role-description.png)
+![显示“全局管理员 - 说明”页面的屏幕截图。](./media/manage-roles-portal/role-description.png)
 
 ## <a name="download-role-assignments"></a>下载角色分配
 
@@ -71,7 +71,7 @@ ms.locfileid: "93376776"
 
 1. 选择一个角色，查看其分配情况。
 
-    ![显示 "用户管理员-分配" 页面并选择 "在 PIM 中管理" 操作的屏幕截图。](./media/manage-roles-portal/member-list.png)
+    ![显示已选择“使用 PIM 管理”操作的“用户管理员 - 分配”页面的屏幕截图。](./media/manage-roles-portal/member-list.png)
 
 1. 选择“添加分配”，然后选择要分配的角色。 可选择“在 PIM 中管理”以查看其他管理功能。 如果你看到与下图不同的内容，请阅读[查看特权角色的分配](#view-assignments-for-privileged-roles)中的“说明”，以验证你是否在 PIM 中。
 

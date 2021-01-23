@@ -1,27 +1,25 @@
 ---
 title: 对未能启动的角色进行故障排除 | Microsoft Docs
 description: 以下是云服务角色无法启动的一些常见原因。 此外还提供了这些问题的解决方案。
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: bedf4dd2a955a8ffe648b47c1691e77ac1fdb8f5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2453fa2d9b4e78b60d4922e09347799266a84cff
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187793"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743213"
 ---
-# <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>对无法启动的云服务角色进行故障排除
+# <a name="troubleshoot-azure-cloud-service-classic-roles-that-fail-to-start"></a>排查未能启动的 Azure 云服务 (经典) 角色
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+
 以下是一些与无法启动的 Azure 云服务角色相关的常见问题和解决方案。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -86,7 +84,7 @@ DLL 或程序集缺失的症状可能为：
 
 为了在使用此诊断方法时获得最佳结果，应使用包含 Windows 的干净安装的计算机或虚拟机。 若要以最佳效果模拟 Azure 环境，请使用 Windows Server 2008 R2 x64。
 
-1. 安装独立版本的 [Azure SDK](https://azure.microsoft.com/downloads/)。
+1. 安装独立版本的 [AZURE SDK](https://azure.microsoft.com/downloads/)。
 2. 在开发计算机上生成云服务项目。
 3. 在 Windows 资源管理器中，导航到云服务项目的 bin\debug 文件夹。
 4. 将 .csx 文件夹和 .cscfg 文件复制到用来调试问题的计算机。

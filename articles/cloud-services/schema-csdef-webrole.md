@@ -1,26 +1,25 @@
 ---
-title: Azure 云服务定义WebRole 架构 | Microsoft Docs
+title: Azure 云服务 (经典) WebRole 架构 |Microsoft Docs
 description: Azure web 角色是为支持 ASP.NET、PHP、WCF 和 FastCGI 的 web 应用程序编程而自定义的。 了解 web 角色的服务定义元素。
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
-ms.reviewer: ''
+ms.topic: article
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
-ms.topic: reference
-ms.assetid: 85368e4e-a0db-4c02-8dbc-8e2928fa6091
-caps.latest.revision: 60
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 4368bb38a280461fdd77348de60a0e5793ee9582
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 3c5811649d7d6c0aa1e90ed34c61be6a7f9339f8
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011313"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743145"
 ---
-# <a name="azure-cloud-services-definition-webrole-schema"></a>Azure 云服务定义 WebRole 架构
+# <a name="azure-cloud-services-classic-definition-webrole-schema"></a>Azure 云服务 (经典) 定义 WebRole 架构
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+
 Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP.NET、PHP、Windows Communication Foundation 和 FastCGI）自定义的角色。
 
 服务定义文件的默认扩展名为 .csdef。
@@ -106,7 +105,7 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 
 [LocalStorage](#LocalStorage)
 
-[Endpoints](#Endpoints)
+[终结点](#Endpoints)
 
 [InternalEndpoint](#InternalEndpoint)
 
@@ -136,7 +135,7 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 
 [NetFxEntryPoint](#NetFxEntryPoint)
 
-[节点](#Sites)
+[站点](#Sites)
 
 [站点](#Site)
 
@@ -167,7 +166,7 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 | --------- | ---- | ----------- |  
 |name|字符串|必需。 Web 角色的名称。 该角色的名称必须唯一。|  
 |enableNativeCodeExecution|布尔值|可选。 默认值是 `true`默认启用本机代码执行和完全信任。 将此属性设置为 `false` 可禁用 Web 角色的本机代码执行，并改为使用 Azure 部分信任。|  
-|vmsize|字符串|可选。 设置此值可更改分配给角色的虚拟机的大小。 默认值是 `Small`。 有关详细信息，请参阅[云服务的虚拟机大小](cloud-services-sizes-specs.md)。|  
+|vmsize|字符串|可选。 设置此值可更改分配给角色的虚拟机的大小。 默认值为 `Small`。 有关详细信息，请参阅[云服务的虚拟机大小](cloud-services-sizes-specs.md)。|  
 
 ##  <a name="configurationsettings"></a><a name="ConfigurationSettings"></a> ConfigurationSettings  
 `ConfigurationSettings` 元素描述 Web 角色的配置设置集合。 此元素是 `Setting` 元素的父级。
@@ -219,12 +218,12 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 
 | Attribute | 类型 | 说明 |  
 | --------- | ---- | ----------- |  
-|name|字符串|必需。 外部终结点的唯一名称。|  
+|name|string|必需。 外部终结点的唯一名称。|  
 |protocol|字符串|必需。 外部终结点的传输协议。 对于 Web 角色，可能的值为 `HTTP`、`HTTPS`、`UDP` 或 `TCP`。|  
 |port|int|必需。 外部终结点的端口。 可以指定所选的任意端口号，但为服务中每个角色指定的端口号必须唯一。<br /><br /> 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。|  
-|证书 (certificate)|字符串|HTTPS 终结点需要。 由 `Certificate` 元素定义的证书的名称。|  
+|证书 (certificate)|string|HTTPS 终结点需要。 由 `Certificate` 元素定义的证书的名称。|  
 |localPort|int|可选。 指定用于终结点上内部连接的端口。 `localPort` 属性将终结点上的外部端口映射到角色上的内部端口。 这在以下情况下非常有用：角色必须与端口上的内部组件而非为外部公开的组件进行通信。<br /><br /> 如果未指定，则 `localPort` 的值与 `port` 属性相同。 将 `localPort` 的值设置为“*”会自动分配可使用运行时 API 发现的未分配端口。<br /><br /> 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。<br /><br /> 仅当使用 Azure SDK 1.3 或更高版本时，才提供 `localPort` 属性。|  
-|ignoreRoleInstanceStatus|布尔值|可选。 当此属性的值设置为 `true` 时，会忽略服务的状态，并且负载均衡器不会删除该终结点。 此值设置为 `true` 对调试服务的繁忙实例非常有用。 默认值是 `false`。 **注意：**  即使角色不处于就绪状态，终结点仍可接收流量。|  
+|ignoreRoleInstanceStatus|布尔值|可选。 当此属性的值设置为 `true` 时，会忽略服务的状态，并且负载均衡器不会删除该终结点。 此值设置为 `true` 对调试服务的繁忙实例非常有用。 默认值为 `false`。 **注意：**  即使角色不处于就绪状态，终结点仍可接收流量。|  
 |loadBalancerProbe|字符串|可选。 与输入终结点关联的负载均衡器探测的名称。 有关详细信息，请参阅 [LoadBalancerProbe 架构](schema-csdef-loadbalancerprobe.md)。|  
 
 ##  <a name="internalendpoint"></a><a name="InternalEndpoint"></a> InternalEndpoint  
@@ -234,7 +233,7 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 
 | Attribute | 类型 | 说明 |  
 | --------- | ---- | ----------- |  
-|name|字符串|必需。 内部终结点的唯一名称。|  
+|name|string|必需。 内部终结点的唯一名称。|  
 |protocol|字符串|必需。 内部终结点的传输协议。 可能的值为 `HTTP`、`TCP`、`UDP` 或 `ANY`。<br /><br /> `ANY` 的值指定允许任何协议、任何端口。|  
 |port|int|可选。 用于终结点上内部负载均衡连接的端口。 负载均衡的终结点使用两个端口。 用于公共 IP 地址的端口，以及用于专用 IP 地址的端口。 通常这些端口的设置相同，但可以选择使用不同的端口。<br /><br /> 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。<br /><br /> 仅当使用 Azure SDK 1.3 或更高版本时，才提供 `Port` 属性。|  
 
@@ -292,10 +291,10 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 
 | Attribute | 类型 | 说明 |  
 | --------- | ---- | ----------- |  
-|name|字符串|必需。 此证书的名称，用于与 HTTPS `InputEndpoint` 元素关联时进行引用。|  
-|storeLocation|字符串|必需。 本地计算机上的证书存储位置，可在其中找到此证书。 可能的值为 `CurrentUser` 和 `LocalMachine`。|  
+|name|string|必需。 此证书的名称，用于与 HTTPS `InputEndpoint` 元素关联时进行引用。|  
+|storeLocation|字符串|必需。 本地计算机上的证书存储位置，可在其中找到此证书。 可能值为 `CurrentUser` 和 `LocalMachine`。|  
 |storeName|字符串|必需。 本地计算机上此证书所在的证书存储的名称。 可能的值包括内置存储名称 `My`、`Root`、`CA`、`Trust`、`Disallowed`、`TrustedPeople`、`TrustedPublisher`、`AuthRoot`、`AddressBook`，或任何自定义存储名称。 如果指定了自定义存储名称，则会自动创建存储。|  
-|permissionLevel|字符串|可选。 指定授予角色进程的访问权限。 如果只希望提升的进程访问私钥，则指定 `elevated` 权限。 `limitedOrElevated` 权限允许所有角色进程访问私钥。 可能的值包括 `limitedOrElevated` 或 `elevated`。 默认值是 `limitedOrElevated`。|  
+|permissionLevel|字符串|可选。 指定授予角色进程的访问权限。 如果只希望提升的进程访问私钥，则指定 `elevated` 权限。 `limitedOrElevated` 权限允许所有角色进程访问私钥。 可能的值包括 `limitedOrElevated` 或 `elevated`。 默认值为 `limitedOrElevated`。|  
 
 ##  <a name="imports"></a><a name="Imports"></a> 导  
 `Imports` 元素描述向来宾操作系统添加组件的 Web 角色的导入模块集合。 此元素是 `Import` 元素的父级。 此元素是可选的，一个角色只能有一个 imports 块。 
@@ -311,7 +310,7 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 
 | Attribute | 类型 | 说明 |  
 | --------- | ---- | ----------- |  
-|moduleName|字符串|必需。 要导入的模块的名称。 有效的导入模块为：<br /><br /> -   RemoteAccess<br />-   RemoteForwarder<br />-   Diagnostics<br /><br /> 借助 RemoteAccess 和 RemoteForwarder 模块，可配置远程桌面连接的角色实例。 有关详细信息，请参阅[启用远程桌面连接](cloud-services-role-enable-remote-desktop-new-portal.md)。<br /><br /> 借助 Diagnostics 模块，可收集角色实例的诊断数据。|  
+|moduleName|string|必需。 要导入的模块的名称。 有效的导入模块为：<br /><br /> -   RemoteAccess<br />-   RemoteForwarder<br />-   Diagnostics<br /><br /> 借助 RemoteAccess 和 RemoteForwarder 模块，可配置远程桌面连接的角色实例。 有关详细信息，请参阅[启用远程桌面连接](cloud-services-role-enable-remote-desktop-new-portal.md)。<br /><br /> 借助 Diagnostics 模块，可收集角色实例的诊断数据。|  
 
 ##  <a name="runtime"></a><a name="Runtime"></a> 时会  
 `Runtime` 元素描述 Web 角色的环境变量设置集合，这些设置控制 Azure 主机进程的运行时环境。 此元素是 `Environment` 元素的父级。 此元素是可选的，一个角色只能有一个运行时块。
@@ -336,7 +335,7 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 
 | Attribute | 类型 | 说明 |  
 | --------- | ---- | ----------- |  
-|name|字符串|必需。 要设置的环境变量的名称。|  
+|name|string|必需。 要设置的环境变量的名称。|  
 |值|字符串|可选。 要为环境变量设置的值。 必须包含 value 属性或 `RoleInstanceValue` 元素。|  
 
 ##  <a name="roleinstancevalue"></a><a name="RoleInstanceValue"></a> RoleInstanceValue  
@@ -364,7 +363,7 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 | Attribute | 类型 | 说明 |  
 | --------- | ---- | ----------- |  
 |assemblyName|字符串|必需。 包含入口点的程序集的路径和文件名称。 路径相对于文件夹 **\\ %ROLEROOT%\Approot** (未在中指定 **\\ %ROLEROOT%\Approot** `commandLine` ，则假定为) 。 **%ROLEROOT%** 是由 Azure 维护的环境变量，表示角色的根文件夹位置。 **\\ %ROLEROOT%\Approot** 文件夹表示角色的应用程序文件夹。<br /><br /> 对于 HWC 角色，路径始终相对于 **\\ %ROLEROOT%\Approot\bin** 文件夹。<br /><br /> 对于完整 IIS 和 IIS Express web 角色，如果找不到相对于 **\\ %ROLEROOT%\Approot** 文件夹的程序集，则会搜索 **\\ %ROLEROOT%\Approot\bin** 。<br /><br /> 完整版 IIS 的这种回退行为并不是建议的最佳做法，在以后的版本中可能被删除。|  
-|targetFrameworkVersion|字符串|必需。 在其上生成程序集的 .NET Framework 的版本。 例如 `targetFrameworkVersion="v4.0"`。|  
+|targetFrameworkVersion|字符串|必需。 在其上生成程序集的 .NET Framework 的版本。 例如，`targetFrameworkVersion="v4.0"`。|  
 
 ##  <a name="sites"></a><a name="Sites"></a> 节点  
 `Sites` 元素描述 Web 角色中托管的网站和 Web 应用程序的集合。 此元素是 `Site` 元素的父级。 如果不指定 `Sites` 元素，则会以传统 Web 角色的形式托管 Web 角色，并且 Web 角色中只能托管一个网站。 此元素是可选的，一个角色只能有一个 sites 块。
@@ -380,8 +379,8 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 
 | Attribute | 类型 | 说明 |  
 | --------- | ---- | ----------- |  
-|name|字符串|必需。 网站或应用程序的名称。|  
-|physicalDirectory|字符串|站点根的内容目录的位置。 可将该位置指定为绝对路径或相对于 .csdef 位置。|  
+|name|string|必需。 网站或应用程序的名称。|  
+|physicalDirectory|string|站点根的内容目录的位置。 可将该位置指定为绝对路径或相对于 .csdef 位置。|  
 
 ##  <a name="virtualapplication"></a><a name="VirtualApplication"></a> VirtualApplication  
 `VirtualApplication` 元素定义 Internet Information Services (IIS) 7 中的某个应用程序是通过 HTTP 等协议交付内容或提供服务的文件组。 在 IIS 7 中创建应用程序时，该应用程序的路径将成为站点 URL 的一部分。
@@ -392,7 +391,7 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 
 | Attribute | 类型 | 说明 |  
 | --------- | ---- | ----------- |  
-|name|字符串|必需。 指定用于标识虚拟应用程序的名称。|  
+|name|string|必需。 指定用于标识虚拟应用程序的名称。|  
 |physicalDirectory|字符串|必需。 指定包含虚拟应用程序的开发计算机上的路径。 在计算模拟器中，IIS 已配置为从此位置检索内容。 部署到 Azure 时，物理目录的内容会连同服务的余下部分一起打包。 将服务包部署到 Azure 后，会使用未打包内容的位置配置 IIS。|  
 
 ##  <a name="virtualdirectory"></a><a name="VirtualDirectory"></a> VirtualDirectory  
@@ -419,8 +418,8 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 
 | Attribute | 类型 | 说明 |  
 | --------- | ---- | ----------- |  
-|name|字符串|必需。 指定用于标识绑定的名称。|  
-|endpointName|字符串|必需。 指定要绑定到的终结点名称。|  
+|name|string|必需。 指定用于标识绑定的名称。|  
+|endpointName|string|必需。 指定要绑定到的终结点名称。|  
 |hostHeader|字符串|可选。 指定允许在单个 IP 地址/端口号组合中托管多个具有不同主机名的站点的主机名。|  
 
 ##  <a name="startup"></a><a name="Startup"></a> 阶段  
@@ -442,8 +441,8 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 | Attribute | 类型 | 说明 |  
 | --------- | ---- | ----------- |  
 |commandLine|字符串|必需。 包含要运行的命令的脚本（如 CMD 文件）。 启动命令和批处理文件必须以 ANSI 格式保存。 在文件开头设置字节顺序标记的文件格式无法得到正确处理。|  
-|executionContext|字符串|指定在其中运行脚本的上下文。<br /><br /> -   `limited` [默认] – 使用与托管进程的角色相同的特权运行。<br />-   `elevated` – 使用管理员特权运行。|  
-|taskType|字符串|指定命令的执行行为。<br /><br /> -   `simple` [默认] – 系统等待任务退出，然后再启动其他所有任务。<br />-   `background` – 系统不会等待任务退出。<br />-   `foreground` – 与后台相似，但所有前台任务全部退出之前，不会重启角色。|  
+|executionContext|string|指定在其中运行脚本的上下文。<br /><br /> -   `limited` [默认] – 使用与托管进程的角色相同的特权运行。<br />-   `elevated` – 使用管理员特权运行。|  
+|taskType|string|指定命令的执行行为。<br /><br /> -   `simple` [默认] – 系统等待任务退出，然后再启动其他所有任务。<br />-   `background` – 系统不会等待任务退出。<br />-   `foreground` – 与后台相似，但所有前台任务全部退出之前，不会重启角色。|  
 
 ##  <a name="contents"></a><a name="Contents"></a> 内容  
 `Contents` 元素描述 Web 角色的内容集合。 此元素是 `Content` 元素的父级。
@@ -472,7 +471,7 @@ Azure Web 角色是针对 IIS 7 所支持的 Web 应用程序编程（例如 ASP
 
 | Attribute | 类型 | 描述 |  
 | --------- | ---- | ----------- |  
-|path|字符串|必需。 内容将复制到 Azure 虚拟机的本地目录的相对或绝对路径。 支持扩展目录路径中的环境变量。|  
+|path|string|必需。 内容将复制到 Azure 虚拟机的本地目录的相对或绝对路径。 支持扩展目录路径中的环境变量。|  
   
 ## <a name="see-also"></a>另请参阅
 [云服务（经典）定义架构](schema-csdef-file.md)

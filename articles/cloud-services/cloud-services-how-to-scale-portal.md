@@ -1,20 +1,24 @@
 ---
-title: 在门户中自动缩放云服务 | Microsoft Docs
+title: 在门户中自动缩放云服务 (经典) |Microsoft Docs
 description: 了解如何使用门户在 Azure 中为云服务 Web 角色或辅助角色配置自动缩放规则。
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 06a0209c2bbd0982054d33c199685d016f405b0c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a3e7f72dbe16c51280b922da2b5fc6550dee1d34
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165479"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743349"
 ---
-# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在门户中为云服务配置自动缩放
+# <a name="how-to-configure-auto-scaling-for-a-cloud-service-classic-in-the-portal"></a>如何在门户中为云服务 (经典) 配置自动缩放
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
 
 针对云服务辅助角色设置条件，以触发横向缩减或扩展操作。 针对角色的条件可以基于 CPU、磁盘或角色的网络负载。 也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置条件。
 
@@ -34,7 +38,7 @@ ms.locfileid: "92165479"
 
 * 若要使应用程序具有高可用性，应确保为其部署两个或更多角色实例。 有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
 
-* 仅当所有角色都处于“就绪”状态时才能自动缩放  。  
+* 仅当所有角色都处于“就绪”状态时才能自动缩放  。  
 
 
 ## <a name="where-scale-is-located"></a>缩放位置
@@ -44,24 +48,24 @@ ms.locfileid: "92165479"
    **重要说明**：请务必单击云服务角色，而不是角色下面的角色实例。
 
     ![“角色和实例”磁贴的屏幕截图，其中“WorkerRoleWithSBQueue1”选项以红框标出。](./media/cloud-services-how-to-scale-portal/roles-instances.png)
-2. 选择“缩放”**** 磁贴。
+2. 选择“缩放”磁贴。
 
     ![“操作”页的屏幕截图，其中“缩放”磁贴以红框标出。](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>自动缩放
-可以使用**手动**或**自动**模式来配置角色的缩放设置。 顾名思义，“手动”模式可以设置实例的绝对计数。 但是，“自动”模式可让你设置规则来控制缩放的方式和程度。
+可以使用 **手动** 或 **自动** 模式来配置角色的缩放设置。 顾名思义，“手动”模式可以设置实例的绝对计数。 但是，“自动”模式可让你设置规则来控制缩放的方式和程度。
 
-将“缩放方式”**** 选项设置为“计划和性能规则”****。
+将“缩放方式”选项设置为“计划和性能规则”。
 
-![显示 "计划和性能规则" 选项的屏幕截图。](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![具有配置文件和规则的映像云服务缩放设置](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
 1. 现有的配置文件。
 2. 添加父配置文件的规则。
 3. 添加另一个配置文件。
 
-选择“添加配置文件”****。 配置文件确定了用于缩放的模式：**始终**、**定期**和**固定日期**。
+选择“添加配置文件”。 配置文件确定了用于缩放的模式：**始终**、**定期** 和 **固定日期**。
 
-配置了配置文件和规则之后，请选择顶部的“保存”**** 图标。
+配置了配置文件和规则之后，请选择顶部的“保存”图标。
 
 #### <a name="profile"></a>配置文件
 配置文件可设置缩放的实例数下限和上限，以及此缩放范围生效的时间。
@@ -82,7 +86,7 @@ ms.locfileid: "92165479"
 
     ![使用固定日期的云服务缩放](./media/cloud-services-how-to-scale-portal/select-fixed.png)
 
-配置了配置文件之后，请选择配置文件边栏选项卡底部的“确定”**** 按钮。
+配置了配置文件之后，请选择配置文件边栏选项卡底部的“确定”按钮。
 
 #### <a name="rule"></a>规则
 规则将添加到配置文件，代表触发缩放的条件。
@@ -91,7 +95,7 @@ ms.locfileid: "92165479"
 
 ![“规则”对话框的屏幕截图，其中“指标名称”选项以红框标出。](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
-配置规则之后，请选择规则边栏选项卡底部的“确定”**** 按钮。
+配置规则之后，请选择规则边栏选项卡底部的“确定”按钮。
 
 ## <a name="back-to-manual-scale"></a>返回到手动缩放
 导航到 [缩放设置](#where-scale-is-located)，并将 **缩放方式** 选项设置为 **手动输入的实例计数**。

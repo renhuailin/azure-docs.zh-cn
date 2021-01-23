@@ -1,25 +1,26 @@
 ---
-title: 如何将 Azure 诊断 (.NET) 与云服务配合使用 | Microsoft Docs
+title: 如何将 Azure 诊断 ( .NET) 与云服务 (经典) |Microsoft Docs
 description: 使用 Azure 诊断从 Azure 云服务收集数据，以用于调试、衡量性能、监视和流量分析等目的。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-csharp
 ms.topic: article
-ms.date: 05/22/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6a015a8d56cf3991d04b212db73d5b752c13a793
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 89ba50b91e8ff2e2d7a05d59f2b738a1f87a5fd2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077535"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742142"
 ---
-# <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>在 Azure 云服务中启用 Azure 诊断
-有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../azure-monitor/platform/diagnostics-extension-overview.md)。
+# <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>在 Azure 云服务中启用 Azure 诊断 (经典) 
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+
+有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../azure-diagnostics.md)。
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>如何在辅助角色中启用诊断
 本演练介绍如何实现使用 .NET EventSource 类发出遥测数据的 Azure 辅助角色。 Azure Diagnostics 用于收集遥测数据，并将其存储在一个 Azure 存储帐户中。 创建辅助角色时，Visual Studio 将在适用于 .NET 2.4 和更低版本的 Azure SDK 中，自动启用 Diagnostics 1.0 作为解决方案的一部分。 以下说明介绍了创建辅助角色、从解决方案禁用 Diagnostics 1.0，以及在辅助角色中部署 Diagnostics 1.2 或 1.3 的过程。
@@ -125,7 +126,7 @@ namespace WorkerRole1
 
 1. 通过选择解决方案资源管理器中的 WadExample 项目，然后在“生成”菜单中选择“发布”，在 Visual Studio 中将辅助角色部署到 Azure    。
 2. 选择订阅。
-3. 在“Microsoft Azure 发布设置”对话框中，选择“新建...”********。
+3. 在“Microsoft Azure 发布设置”对话框中，选择“新建...”。
 4. 在“创建云服务和存储帐户”对话框中输入一个“名称”（例如“WadExample”），然后选择区域或地缘组   。
 5. 将“环境”设置为“暂存”   。
 6. 适当地修改任何其他设置，然后单击“发布”   。

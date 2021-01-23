@@ -9,14 +9,15 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 6de03969a22c5b699fdfd2be17a6ba65905d23e6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7f6d3feee95d4cce654b2cc1547b8bd7f4eb45d2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073387"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743009"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>来宾 OS 系列 1 停用通知
+
 我们已在 2013 年 6 月 1 日宣布停用 OS 系列 1。
 
 **2014 年 9 月 2 日** - 基于 Windows Server 2008 操作系统的 Azure 来宾操作系统（来宾 OS）系列 1.x 正式停用。 所有使用系列 1 部署新服务或升级现有服务的尝试均会失败，并显示错误消息“来宾 OS 系列 1 已停用“。
@@ -49,17 +50,17 @@ foreach($subscription in Get-AzureSubscription) {
 ## <a name="recommendations-if-you-are-affected"></a>如果受到影响，请遵循以下建议
 建议将云服务角色迁移到支持的来宾 OS 系列之一：
 
-基于 Windows Server 2012 R2 的**来宾 OS 系列 4.x** *（建议）*
+基于 Windows Server 2012 R2 的 **来宾 OS 系列 4.x** *（建议）*
 
 1. 确保应用程序使用了 SDK 2.1 或更高版本以及 .NET framework 4.0、4.5 或 4.5.1。
 2. 在 ServiceConfiguration.cscfg 文件中将 osFamily 特性设置为“4”，然后重新部署云服务。
 
-基于 Windows Server 2012 的**来宾 OS 系列 3.x**
+基于 Windows Server 2012 的 **来宾 OS 系列 3.x**
 
 1. 确保应用程序使用了 SDK 1.8 或更高版本以及 .NET framework 4.0 或 4.5。
 2. 在 ServiceConfiguration.cscfg 文件中将 osFamily 特性设置为“3”，然后重新部署云服务。
 
-基于 Windows Server 2008 R2 的**来宾 OS 系列 2.x**
+基于 Windows Server 2008 R2 的 **来宾 OS 系列 2.x**
 
 1. 确保应用程序使用了 SDK 1.3 和更高版本以及 .NET framework 3.5 或 4.0。
 2. 在 ServiceConfiguration.cscfg 文件中将 osFamily 特性设置为“2”，并重新部署云服务。

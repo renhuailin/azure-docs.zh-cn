@@ -1,21 +1,24 @@
 ---
-title: 如何配置云服务（门户）| Microsoft Docs
+title: 如何配置云服务 (经典) 门户 |Microsoft Docs
 description: 了解如何在 Azure 中配置云服务。 了解如何更新云服务配置以及配置对角色实例的远程访问。 这些示例使用 Azure 门户。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/07/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 4f2b5716e253f2810ff953a10c879574c6a6c342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: f16fcfe227663958279281659b09929a4cd2d386
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576653"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743417"
 ---
-# <a name="how-to-configure-cloud-services"></a>如何配置云服务
+# <a name="how-to-configure-and-azure-cloud-service-classic"></a>如何配置和 Azure 云服务 (经典) 
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
 
 可以在 Azure 门户中配置最常使用的云服务设置。 或者，如果希望直接更新配置文件，可下载要更新的服务配置文件，并上传更新文件并通过配置更改更新云服务。 无论使用哪种方法，配置更新都会应用于所有角色实例。
 
@@ -48,7 +51,7 @@ ms.locfileid: "91576653"
 
 可将警报添加到云服务。 单击“设置”   > “警报规则”   > “添加警报”  。
 
-![设置平移的屏幕截图，其中突出显示了 "警报规则" 选项，以红色突出显示了 "添加警报" 选项，以红色列出。](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
+![“设置”窗格的屏幕截图，其中“警报规则”选项突出显示并以红框标出，“添加警报”选项以红框标出。](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
 可以在此处设置警报。 使用“指标”  下拉框，可以针对以下类型的数据设置警报。
 

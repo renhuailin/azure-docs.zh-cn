@@ -1,18 +1,18 @@
 ---
 title: Azure 服务总线订阅规则 SQL 操作语法 |Microsoft Docs
-description: 本文提供了有关 SQL 规则操作语法的参考。 这些操作是以针对消息执行的基于 SQL 语言的语法编写的。
+description: 本文提供了有关 SQL 规则操作语法的参考。 操作用基于 SQL 语言的语法编写，该语法针对消息执行。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 606281d42d5598d7f73312990d3a19775a202c08
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f7b8cdfcccc22508b98a42391d2a0ef9955232d0
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632805"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742670"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>订阅规则 SQL 操作语法
 
-“SQL 操作”用于在订阅规则的筛选器选择消息后操作消息元数据。 它是一个依赖于 SQL-92 标准子集的文本表达式。 操作表达式与 [Azure 资源管理器模板](service-bus-resource-manager-namespace-topic-with-rule.md)中服务总线 `Rule` 的“action”属性的 `sqlExpression` 元素一起使用，或者与 Azure CLI `az servicebus topic subscription rule create` 命令的 [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) 参数以及几个允许管理订阅规则的 SDK 函数一起使用。
+“SQL 操作”用于在订阅规则的筛选器选择消息后操作消息元数据。 这是一种文本表达式，可倾向标准的92一部分。 操作表达式与 [Azure 资源管理器模板](service-bus-resource-manager-namespace-topic-with-rule.md)中服务总线 `Rule` 的“action”属性的 `sqlExpression` 元素一起使用，或者与 Azure CLI `az servicebus topic subscription rule create` 命令的 [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) 参数以及几个允许管理订阅规则的 SDK 函数一起使用。
   
   
 ```  
@@ -57,7 +57,7 @@ ms.locfileid: "98632805"
   
 ### <a name="remarks"></a>备注  
 
-访问不存在的系统属性的尝试是错误，访问不存在的用户属性的尝试不是错误。 相反，不存在的用户属性在内部作为未知值进行求值。 运算符求值期间会对未知值进行特殊处理。  
+尝试访问不存在的系统属性属于错误，而尝试访问不存在的用户属性不属于错误。 相反，不存在的用户属性在内部作为未知值进行求值。 运算符求值期间会对未知值进行特殊处理。  
   
 ## <a name="property_name"></a>property_name  
   
@@ -195,9 +195,11 @@ ms.locfileid: "98632805"
   
 ### <a name="remarks"></a>备注  
 
-`newid()` 函数返回 `System.Guid.NewGuid()` 方法生成的 **System.Guid**。  
+`newid()` 函数返回 `System.Guid.NewGuid()` 方法生成的 `System.Guid`。  
   
 `property(name)` 函数返回 `name` 所引用的属性的值。 `name` 值可以是返回字符串值的任何有效表达式。  
+
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
   
 ## <a name="considerations"></a>注意事项
 
@@ -214,5 +216,5 @@ ms.locfileid: "98632805"
 - [SQLRuleAction 类 (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
 - [SqlRuleAction 类 (Java)](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
 - [SqlRuleAction (JavaScript)](/javascript/api/@azure/service-bus/sqlruleaction)
-- [az servicebus topic subscription rule](/cli/azure/servicebus/topic/subscription/rule)
+- [`az servicebus topic subscription rule`](/cli/azure/servicebus/topic/subscription/rule)
 - [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

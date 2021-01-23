@@ -2,23 +2,23 @@
 title: 将角色分配到 Azure Active Directory 中的云组 | Microsoft Docs
 description: 将 Azure AD 角色分配给 Azure 门户、PowerShell 或图形 API 中可分配角色的组。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb81b5dc98bf75a17e55abafdebfbeca68774a99
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 816009abb688525cd7663311c79300a6d12cf146
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379139"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742941"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>将角色分配到 Azure Active Directory 中的云组
 
@@ -32,7 +32,7 @@ ms.locfileid: "93379139"
 
 1. 选择“Azure Active Directory” > “角色和管理员”，然后选择要分配的角色 。
 
-1. 在 " **_角色名称_ " *页上，选择 ">* " "添加分配** "。
+1. 在“角色名称”页上，选择 >“添加分配”。
 
    ![添加新的角色分配](./media/groups-assign-role/add-assignment.png)
 
