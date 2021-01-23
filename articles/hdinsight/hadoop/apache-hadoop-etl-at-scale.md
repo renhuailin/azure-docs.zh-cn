@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: d6c3dbc28da7bee0bc24a6dc24608c78e480c20e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e7a8a72d0669f39cc27c997d83af1e6272d045a6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462168"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704146"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大规模提取、转换和加载 (ETL)
 
@@ -82,11 +82,11 @@ Data Lake Storage 已针对使用 Azure 事件中心或 Apache Storm 运行的�
 
 - **Azure ExpressRoute：** 在 Azure 数据中心与本地基础结构之间创建专用连接。 这些连接为传输大量数据提供了可靠选项。 有关详细信息，请参阅[ Azure ExpressRoute 文档](../../expressroute/expressroute-introduction.md)。
 
-- **从硬盘驱动器上传数据：** 可以使用 [Azure 导入/导出服务](../../storage/common/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure Blob 存储。 然后可使用 Azure 数据工厂或 AdlCopy 工具从 Azure Blob 存储将数据复制到 Data Lake Storage。
+- **从硬盘驱动器上传数据：** 可以使用 [Azure 导入/导出服务](../../import-export/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure Blob 存储。 然后可使用 Azure 数据工厂或 AdlCopy 工具从 Azure Blob 存储将数据复制到 Data Lake Storage。
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure Synapse Analytics 是一种用于存储已准备结果的合适选择。 可以使用 Azure HDInsight 为 Azure Synapse Analytics 执行这些服务。
+Azure Synapse Analytics 是存储准备好的结果的合适选择。 可以使用 Azure HDInsight 为 Azure Synapse Analytics 执行这些服务。
 
 Azure Synapse Analytics 是已针对分析工作负荷进行优化的关系数据库存储。 它根据分区表进行缩放。 表可以跨多个节点分区。 在创建节点时便选择了节点。 可以在事后缩放节点，但是，该主动过程可能需要移动数据。 有关详细信息，请参阅[管理 Azure Synapse Analytics 中的计算资源](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 

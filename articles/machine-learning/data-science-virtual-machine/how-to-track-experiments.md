@@ -1,7 +1,7 @@
 ---
 title: 试验跟踪和部署模型
 titleSuffix: Azure Data Science Virtual Machine
-description: 了解如何在 Azure 机器学习和/或 MLFlow 的 Data Science Virtual Machine 中跟踪和记录试验。
+description: 了解如何通过 Azure 机器学习和/或 MLFlow 从 Data Science Virtual Machine 跟踪和记录试验。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 17418b0255182934045acc9174b34cff2aefff99
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7726fce7ac69ebfaabf44049abc49c53f8175718
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307449"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704534"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>在 Azure 机器学习中跟踪试验和部署模型
 
@@ -30,7 +30,7 @@ ms.locfileid: "93307449"
 
 ## <a name="create-a-new-notebook"></a>创建新的 Notebook
 
-Azure 机器学习和 MLFlow SDK 预安装在 Data Science VM 上，并可在 * *azureml_py36_ \** _ conda 环境中访问。 在 Jupyterlab 中，单击启动器，并选择以下内核：
+Azure 机器学习和 MLFlow SDK 已预安装在 Data Science VM 上，并可在 *azureml_py36_\*_ conda 环境中访问。 在 JupyterLab 中，单击 "启动程序"，并选择以下内核：
 
 ![内核选择](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -131,11 +131,11 @@ with mlflow.start_run():
 
 ### <a name="step-1-create-inference-compute"></a>步骤 1：创建推理计算
 
-在 [AzureML Studio](https://ml.azure.com) 的左侧菜单中，单击 " __计算__ "，然后单击 " __推理群集__ " 选项卡。接下来，单击 " __+ 新建__ "，如下所述：
+在 [AzureML 工作室](https://ml.azure.com)的左侧菜单上，单击“计算”，然后单击“推理群集”选项卡。 接下来，单击“+ 新建”，如下所述：
 
 ![创建推理计算](./media/how-to-track-experiments/mlflow-experiments-6.png)
 
-在 __新的推理群集__ 窗格中填写以下内容的详细信息：
+在“新建推理群集”窗格中填写以下内容的详细信息：
 
 _ 计算名称
 * Kubernetes 服务 - 选择“新建”
@@ -167,7 +167,7 @@ _ 计算名称
 
 ![部署](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
-我们会将模型部署到在步骤 1 中创建的推理群集（Azure Kubernetes 服务）。 填写以下详细信息：提供服务的名称，并在步骤 1)  (创建的 AKS 计算群集的名称。 我们还建议你将 __CPU 预留容量__ 增加到 1 (从 0.1) ，将 __内存预留容量__ 增加到 0.5) 中的1个 (-可以通过单击 " __高级__ " 并填入详细信息来提高这一增长。 然后单击“部署”。
+我们会将模型部署到在步骤 1 中创建的推理群集（Azure Kubernetes 服务）。 提供服务的名称和 AKS 计算群集的名称（在步骤 1 中创建），填写以下详细信息。 还建议将 CPU 保留容量（从 0.1）增加到 1，并将内存保留容量（从 0.5）增加到 1 - 可以通过单击“高级”并填写详细信息来实现此增加  。 然后单击“部署”。
 
 ![部署详细信息](./media/how-to-track-experiments/mlflow-experiments-5.png)
 
@@ -177,9 +177,9 @@ _ 计算名称
 
 ![使用模型](./media/how-to-track-experiments/mlflow-experiments-8.png)
 
-应会看到部署状态从 __转换__ 到 __正常__ 。 此外，此详细信息部分提供了 REST 终结点和 Swagger Url，应用程序开发人员可以使用它将 ML 模型集成到其应用程序中。
+你应会看到，部署状态从“正在转换”转为“正常” 。 此外，此详细信息部分提供了 REST 终结点和 Swagger URL，应用程序开发人员可以使用它们将 ML 模型集成到其应用中。
 
-可以使用 [Postman](https://www.postman.com/)测试终结点，也可以使用 AzureML SDK：
+你可以使用 [Postman](https://www.postman.com/) 测试终结点，也可以使用 AzureML SDK 测试终结点：
 
 ```python
 from azureml.core import Webservice
@@ -200,7 +200,7 @@ print(output)
 
 ### <a name="step-4-clean-up"></a>步骤 4：清理
 
-删除在步骤1中创建的推理计算，以便不会产生正在进行的计算费用。 在 Azure 机器学习 Studio 中的左侧菜单中，单击 "计算" > 推理群集 > 选择 "计算" > "删除"。
+删除在步骤 1 中创建的推理计算，以免产生持续的计算费用。 在 Azure 机器学习工作室的左侧菜单中，单击“计算”>“推理群集”>“选择计算”>“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

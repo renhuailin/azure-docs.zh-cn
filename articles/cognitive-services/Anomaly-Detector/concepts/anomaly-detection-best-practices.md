@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: b0869335c386712e6b759bb0ced459ebd1bf383c
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705143"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702720"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>使用异常探测器 API 的最佳实践
 
@@ -54,7 +54,7 @@ ms.locfileid: "97705143"
 
 异常探测器 API 接受格式设置为 JSON 请求对象的时序数据。 时序可以是在一段时间内按顺序进行记录的任何数值数据。 可以将时序数据的 windows 发送到异常检测程序 API 终结点，以提高 API 的性能。 可以发送的数据点数的最小数目为12，最大值为8640点。 [粒度](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) 定义为对数据进行采样的速率。 
 
-发送到异常探测器 API 的数据点必须具有有效的协调世界时 (UTC) 时间戳和数字值。 
+发送到异常探测器 API 的数据点必须具有有效的协调世界时 (UTC) 时间戳和数值。 
 
 ```json
 {
@@ -95,7 +95,7 @@ ms.locfileid: "97705143"
 
 在 `period` 构造 JSON 请求时指定，可将异常检测滞后时间降低到50%。 `period`是一个整数，该整数指定时序用来重复模式的数据点的数量。 例如，每日包含一个数据点的时间序列的数据点 `period` 为 `7` ，而每小时有一个点的时序 (具有相同的周模式) 将具有 `period` 的  `7*24` 。 如果你不确定数据的模式，则无需指定此参数。
 
-为获得最佳结果，请提供4个 `period` 值得的数据点，再加上一个额外的数据点。 例如，上述按周模式列出的每小时数据应在请求正文中提供 673 () 的数据点 `7 * 24 * 4 + 1` 。
+为获得最佳结果，请提供四个值得用的 `period` 数据点，另外再加上一个。 例如，上述按周模式列出的每小时数据应在请求正文中提供 673 () 的数据点 `7 * 24 * 4 + 1` 。
 
 ### <a name="sampling-data-for-real-time-monitoring"></a>为实时监视采样数据
 
@@ -104,4 +104,4 @@ ms.locfileid: "97705143"
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是异常检测器 API？](../overview.md)
-* [快速入门：使用异常探测器检测时序数据中的异常](../quickstarts/client-libraries.md)
+* [快速入门：使用异常检测器检测时序数据中的异常](../quickstarts/client-libraries.md)

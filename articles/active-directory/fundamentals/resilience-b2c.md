@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure AD B2C 在客户标识和访问管理中构建复原能力 |Microsoft Docs
-description: 使用 Azure AD B2C 在客户标识和访问管理中构建复原能力的方法
+title: 在使用 Azure Active Directory B2C 的客户标识和访问管理中构建复原能力 | Microsoft Docs
+description: 在使用 Azure Active Directory B2C 的客户标识和访问管理中构建复原能力的方法
 services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,39 +13,42 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba7b8ff2555fd7014cf16f66745721c6425ff868
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: b40918db03c260f899c36d306c892b787cc6371c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029517"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724885"
 ---
-# <a name="build-resilience-in-your-customer-identity-and-access-management-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 在客户标识和访问管理中构建复原能力
+# <a name="build-resilience-in-your-customer-identity-and-access-management-with-azure-active-directory-b2c"></a>在使用 Azure Active Directory B2C 的客户标识和访问管理中构建复原能力
 
-[Azure Active Directory (AD) B2C](https://docs.microsoft.com/azure/active-directory-b2c/overview) 是一个客户标识和访问管理 (CIAM) 平台，旨在帮助你成功启动关键客户应用程序。 我们提供了许多用于 [复原](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/) 的内置功能，旨在帮助我们的服务满足你的需求，并在面临潜在中断情况时提高恢复能力。 此外，在启动任务关键型应用程序时，请务必考虑应用程序中的各种设计和配置元素，以及如何在 Azure AD B2C 中配置应用程序，以确保获得可复原的行为，以响应中断或故障情况。 本文介绍一些最佳实践，以帮助提高复原能力。
+[Azure Active Directory (AD) B2C](../../active-directory-b2c/overview.md) 是一个客户标识和访问管理 (CIAM) 平台，旨在帮助你成功发布面向客户的关键应用程序。 我们有很多内置功能来实现[复原能力](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/)，它们旨在帮助我们的服务根据你的需求进行缩放，并提高在遇到潜在服务中断情况时的复原能力。 此外，在发布任务关键型应用程序时，有必要考虑到你的应用程序中的各种设计和配置元素，还要考虑如何在 Azure AD B2C 中配置应用程序，确保你在响应服务中断或故障情况时获得可复原的行为。 在本文中，我们将介绍一些可帮助你提高复原能力的最佳做法。
 
-复原服务可继续正常运行，而不会发生中断。 你可以通过以下方式帮助提高你的服务的复原能力：
+可复原的服务是指遇到中断也能继续正常运行的服务。 你可通过以下方式，帮助提高服务中的复原能力：
 
 - 了解所有组件
 
 - 消除单点故障
 
-- 隔离故障组件以限制其影响
+- 隔离故障组件来限制其影响
 
 - 通过快速故障转移机制和恢复路径提供冗余
 
-开发应用程序时，我们建议考虑如何在应用程序中利用解决方案的标识组件 [提高身份验证和授权的复原能力](resilience-app-development-overview.md) 。 本文尝试解决特定于 Azure AD B2C 应用程序的复原能力的增强功能。 我们的建议按 CIAM 函数分组。
+开发应用程序时，建议考虑如何使用解决方案的标识组件来[提高应用程序中身份验证和授权的复原能力](resilience-app-development-overview.md)。 本文尝试介绍 Azure AD B2C 应用程序特定的复原能力的强化。 建议按 CIAM 函数进行分组。
 
-![Image 显示了 ](media/resilience-b2c/high-level-components.png) 后续部分中的 CIAM 组件，我们将指导你在以下方面构建复原能力：
+![图像显示 CIAM 组件](media/resilience-b2c/high-level-components.png) 在后续部分，我们将指导你在以下方面构建复原能力：
 
-- [最终用户体验](resilient-end-user-experience.md)：为身份验证流启用后备计划，并缓解 Azure AD B2C 身份验证服务中断造成的潜在影响。
+- [最终用户体验](resilient-end-user-experience.md)：为身份验证流启用回退计划，缓解因 Azure AD B2C 身份验证服务中断而造成的潜在影响。
 
-- [与外部进程的接口](resilient-external-processes.md)：通过从错误中恢复来在应用程序和接口中生成复原能力。  
+- [与外部进程的接口](resilient-external-processes.md)：通过从错误中恢复，在应用程序和接口中构建复原能力。  
 
-- [开发人员最佳做法](resilience-b2c-developer-best-practices.md)：避免脆弱性，因为存在常见的自定义策略问题，并改进与声明验证程序、第三方应用程序和 REST api 的交互等领域的错误处理。
+- [开发人员最佳做法](resilience-b2c-developer-best-practices.md)：避免因常见自定义策略问题而导致服务不畅，提高在与声明验证程序互动、第三方应用程序和 REST API 等方面的错误处理能力。
 
-- [监视和分析](resilience-with-monitoring-alerting.md)：通过监视关键指示器并通过警报检测故障和性能中断来评估服务的运行状况。
+- [监视和分析](resilience-with-monitoring-alerting.md)：通过监视关键指标来评估服务的运行状况，通过警报来检测故障和性能中断问题。
 
 - [在身份验证基础结构中构建复原能力](resilience-in-infrastructure.md)
 
-- [在应用程序中提高身份验证和授权的复原能力](resilience-app-development-overview.md)
+- [提高应用程序中身份验证和授权的复原能力](resilience-app-development-overview.md)
+
+观看此视频，了解如何使用 Azure AD B2C 构建可复原和可缩放的流。
+>[!Video https://www.youtube.com/embed/8f_Ozpw9yTs]

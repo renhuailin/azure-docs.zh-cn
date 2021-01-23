@@ -3,12 +3,12 @@ title: 常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: dbe6ce95427b559c037e38525f9f48195a2a76a4
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572521"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703413"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -39,7 +39,7 @@ ms.locfileid: "98572521"
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>是否可以在订阅之间移动我的保管库？
 
-是的。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
+是。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>是否可以将备份数据移动到另一个保管库？
 
@@ -60,7 +60,7 @@ ms.locfileid: "98572521"
 
 ### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>如何将数据从恢复服务保管库移到本地？
 
-不支持使用 Data Box 直接将数据从恢复服务保管库导出到本地。 必须将数据还原到存储帐户，然后可以通过 [Data Box](../databox/data-box-overview.md) 或 [导入/导出](../storage/common/storage-import-export-service.md)将数据移动到本地。
+不支持使用 Data Box 直接将数据从恢复服务保管库导出到本地。 必须将数据还原到存储帐户，然后可以通过 [Data Box](../databox/data-box-overview.md) 或 [导入/导出](../import-export/storage-import-export-service.md)将数据移动到本地。
 
 ### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>异地冗余存储 (GRS) 保管库与/不使用跨区域还原 (启用 CRR) 功能之间的区别是什么？
 

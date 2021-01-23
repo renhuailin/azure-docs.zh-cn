@@ -3,18 +3,18 @@ title: 创建和部署 Visual Studio 资源组项目
 description: 使用 Visual Studio 创建 Azure 资源组项目，并将资源部署到 Azure。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1a06a3e89c5fd2ea8906ff9a438c170f135d6ec
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372640"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704408"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
 
 使用 Visual Studio 可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，可以部署 Web 主机、网站和网站代码。 Visual Studio 许多不同的入门模板用于部署常见方案。 本文中将部署一个 Web 应用。
 
-本文介绍如何使用[装有 Azure 开发和 ASP.NET 工作负荷的 Visual Studio 2019 或更高版本](/visualstudio/install/install-visual-studio?view=vs-2019)。 如果使用 Visual Studio 2017，体验将大体相同。
+本文介绍如何使用[装有 Azure 开发和 ASP.NET 工作负荷的 Visual Studio 2019 或更高版本](/visualstudio/install/install-visual-studio)。 如果使用 Visual Studio 2017，体验将大体相同。
 
 ## <a name="create-azure-resource-group-project"></a>创建 Azure 资源组项目
 
@@ -23,7 +23,7 @@ ms.locfileid: "91372640"
 1. 在 Visual Studio 中，选择“文件”>“新建”>“项目”。
 1. 选择“Azure 资源组”项目模板和“下一步”   。
 
-    ![屏幕截图显示 "使用 Azure 资源组创建新的项目" 窗口，并突出显示 "下一步" 按钮。](./media/create-visual-studio-deployment-project/create-project.png)
+    ![屏幕截图显示了“创建新项目”窗口，其中突出显示了“Azure 资源组”和“下一步”按钮。](./media/create-visual-studio-deployment-project/create-project.png)
 
 1. 为你的项目命名。 其他默认设置可能没问题，但请查看它们，使它们适用于你的环境。 完成后，选择“创建”。 
 
@@ -65,7 +65,7 @@ ms.locfileid: "91372640"
 
 1. 可以通过选择“JSON 大纲”窗口顶部的“添加资源”  按钮，或右键单击“资源”  ，并选择“添加新资源”  ，来添加资源。
 
-   ![屏幕截图显示 "JSON 大纲" 窗口，其中突出显示了 "添加新资源" 选项。](./media/create-visual-studio-deployment-project/add-resource.png)
+   ![屏幕截图显示了“JSON 大纲”窗口，其中突出显示了“添加新资源”选项。](./media/create-visual-studio-deployment-project/add-resource.png)
 
 1. 选择“存储帐户”  并为其命名。 提供一个名称，该名称不超过 11 个字符，并且只包含数字和小写字母。
 
@@ -189,7 +189,7 @@ ms.locfileid: "91372640"
 
 1. 现在，需要确保资源组项目与此新项目之间建立链接。 返回到资源组项目 (ExampleAppDeploy)。 右键单击“引用”  ，选择“添加引用”  。
 
-    ![屏幕截图显示 "ExampleAppDeploy" 菜单，其中突出显示了 "添加引用" 选项。](./media/create-visual-studio-deployment-project/add-new-reference.png)
+    ![屏幕截图显示了“ExampleAppDeploy”菜单，其中突出显示了“添加引用”选项。](./media/create-visual-studio-deployment-project/add-new-reference.png)
 
 1. 选择创建的 Web 应用项目。
 
@@ -364,13 +364,13 @@ ms.locfileid: "91372640"
 
 1. 部署完成后，请在门户中查看你的仪表板。 选择“仪表板”  并选择你部署的仪表板。
 
-   ![屏幕截图显示 "仪表板" 页，其中突出显示了一个自定义仪表板。](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
+   ![屏幕截图显示了“仪表板”页，其中突出显示了示例自定义仪表板。](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
 
 1. 可看到自定义的仪表板。
 
    ![自定义仪表板](./media/create-visual-studio-deployment-project/Ops-DemoSiteGroup-dashboard.png)
 
-可以使用 Azure RBAC)  (azure 基于角色的访问控制来管理仪表板的访问权限。 部署后，还可以自定义仪表板的外观。 但是，如果重新部署资源组，则模板中的仪表板将重置为其默认状态。 有关创建仪表板的详细信息，请参阅[以编程方式创建 Azure 仪表板](../../azure-portal/azure-portal-dashboards-create-programmatically.md)。
+可以使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理对仪表板的访问权限。 部署后，还可以自定义仪表板的外观。 但是，如果重新部署资源组，则模板中的仪表板将重置为其默认状态。 有关创建仪表板的详细信息，请参阅[以编程方式创建 Azure 仪表板](../../azure-portal/azure-portal-dashboards-create-programmatically.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 9dcabe10822fd09c8f7a0da6259d81a089c1a042
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4a817f386d68c144968540dd05f3fa6859bb0acc
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936288"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704163"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -57,7 +57,7 @@ ms.locfileid: "97936288"
 |Azure 数据工厂|[从数据工厂获取 Key Vault 中的数据存储凭据](https://go.microsoft.com/fwlink/?linkid=2109491)|
 |Azure 事件中心|[允许访问客户托管密钥方案的密钥保管库](../../event-hubs/configure-customer-managed-key.md)|
 |Azure 服务总线|[允许访问客户托管密钥方案的密钥保管库](../../service-bus-messaging/configure-customer-managed-key.md)|
-|Azure 导入/导出| [将 Azure Key Vault 中的客户管理的密钥用于导入/导出服务](../../storage/common/storage-import-export-encryption-key-portal.md)
+|Azure 导入/导出| [将 Azure Key Vault 中的客户管理的密钥用于导入/导出服务](../../import-export/storage-import-export-encryption-key-portal.md)
 |Azure 容器注册表|[使用客户管理的密钥进行注册表加密](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]

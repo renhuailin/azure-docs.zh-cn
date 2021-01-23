@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e991fb0c60e8f08eb43cb7799027d4200263c9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bac3f53def6db1038a6dd7e45d7933daa22df9f0
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659540"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703846"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>为混合标识解决方案定义数据保护策略
 在此任务中，会根据规定的业务要求，为混合标识解决方案定义数据保护策略。
@@ -37,7 +37,7 @@ ms.locfileid: "89659540"
 
 完成身份验证后，将从身份验证令牌中读取用户主体名称 (UPN)。 然后，授权系统将确定对应于用户域的复制分区和容器。 授权系统借助有关用户存在性、已启用状态和角色的信息，确定此用户在此会话中对目标租户的访问权限是否已获授权。 特定的已授权操作（具体而言，指创建用户和重置密码）将创建可供租户管理员用来管理法规遵从工作或调查的审核线索。
 
-由于数据量、带宽可用性或其他考虑因素，通过 Internet 连接将数据从本地数据中心转到 Azure 存储并不一定始终可行。 [Azure 存储导入/导出服务](../../storage/common/storage-import-export-service.md)提供基于硬件的选项用于在 Blob 存储中放置/检索大量数据。 使用该服务可将 [BitLocker 加密的](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2)硬盘直接发送到 Azure 数据中心，云操作员可在数据中心将内容上传到存储帐户，或者将 Azure 数据下载到驱动器并返还给你。 在此过程中只能使用加密磁盘（使用服务本身在作业设置期间生成的 BitLocker 密钥）。 BitLocker 密钥单独提供给 Azure，以此提供带外密钥共享。
+由于数据量、带宽可用性或其他考虑因素，通过 Internet 连接将数据从本地数据中心转到 Azure 存储并不一定始终可行。 [Azure 存储导入/导出服务](../../import-export/storage-import-export-service.md)提供基于硬件的选项用于在 Blob 存储中放置/检索大量数据。 使用该服务可将 [BitLocker 加密的](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2)硬盘直接发送到 Azure 数据中心，云操作员可在数据中心将内容上传到存储帐户，或者将 Azure 数据下载到驱动器并返还给你。 在此过程中只能使用加密磁盘（使用服务本身在作业设置期间生成的 BitLocker 密钥）。 BitLocker 密钥单独提供给 Azure，以此提供带外密钥共享。
 
 由于数据传输可能在不同的情况下进行，因此还需要了解 Microsoft Azure 使用[虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)隔离租户彼此之间的流量，它所采用的机制有可能是主机和来宾级别防火墙、IP 数据包筛选、端口阻止和 HTTPS 终结点等。 但是，Azure 的内部通信大多也已加密，包括基础结构到基础结构和基础结构到客户（本地）的通信。 另一个重要的方案是 Azure 数据中心内的通信；Microsoft 管理网络，确保没有 VM 可以模拟或窃听其他 VM 的 IP 地址。 访问 Azure 存储或 SQL 数据库，或者在连接到云服务时，将使用 TLS/SSL。 在此情况下，客户的管理员负责获取 TLS/SSL 证书，并将其部署到其租户基础结构。 通过 Microsoft Azure 虚拟网络在相同部署中的虚拟机之间或单个部署中的租户之间移动的数据流量，可通过加密的协议（例如 HTTPS、SSL/TLS 或其他协议）受到保护。
 

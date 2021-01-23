@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 36c12fa7dd37ce1ffebde16cf6ca856d9fcdca0a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 607b588d3371b20c2b3fa9854e27a7ccdfe2e551
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93391970"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703761"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例中的新增功能有哪些？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -78,7 +78,7 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 ### <a name="sql-managed-instance-h2-2019-updates"></a>SQL 托管实例 H2 2019 更新
 
 - [服务辅助子网配置](https://azure.microsoft.com/updates/service-aided-subnet-configuration-for-managed-instance-in-azure-sql-database-available/)是一种用来管理子网配置的安全而方便的方法。使用此方法，你可以控制数据流量，而托管实例可确保管理流量不断流。
-- [自带密钥 (BYOK) 的透明数据加密 (TDE)](https://azure.microsoft.com/updates/general-avilability-transparent-data-encryption-with-customer-managed-keys-for-azure-sql-database-managed-instance/) 为静态数据保护实现了自带密钥 (BYOK) 方案，并使组织能够在密钥管理和数据管理方面实现职责分离。
+- [透明数据加密 (TDE) 与创建自己的密钥 (BYOK) ](https://azure.microsoft.com/updates/general-avilability-transparent-data-encryption-with-customer-managed-keys-for-azure-sql-database-managed-instance/) 为静态数据保护启用了自带密钥 (BYOK) 方案，并使组织能够分隔密钥和数据的管理职责。
 - 使用[自动故障转移组](https://azure.microsoft.com/updates/azure-sql-database-auto-failover-groups-feature-now-available-in-all-regions/)可以将主实例中的所有数据库复制到另一个区域中的辅助实例。
 - 使用[全局跟踪标志](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/)，可以配置 SQL 托管实例行为。
 
@@ -92,15 +92,16 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
   - 配置 SQL 托管实例以使用[公共终结点](../managed-instance/public-endpoint-configure.md)、[代理覆盖](connectivity-architecture.md#connection-policy)连接以获得更好的网络性能，<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 硬件代系有 4 个 vCore</a> 或<a href="/azure/azure-sql/database/automated-backups-overview">将备份保留期配置为最多 35 天</a>以便进行时间点还原。 [长期备份保留](long-term-retention-overview.md#sql-managed-instance-support)（最长 10 年）目前处于有限公共预览版状态。  
   - 利用新功能，可以<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">使用 PowerShell 将数据库异地还原到另一个数据中心</a>、[重命名数据库](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)、[删除虚拟群集](../managed-instance/virtual-cluster-delete.md)。
   - 新的内置[实例参与者角色](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)使职责分离 (SoD) 遵从安全原则并符合企业标准。
-  - 以下 Azure 政府版中提供了 SQL 托管实例 (US Gov 德克萨斯州、US Gov 亚利桑那州) ，以及中国北部2和中国东部2。 它还在以下公共区域中提供：澳大利亚中部、澳大利亚中部2、巴西南部、法国南部、阿拉伯联合酋长国中部、阿拉伯联合酋长国北部、南非北部、南非西北部。
+  - 以下 Azure 政府版中提供了 SQL 托管实例 (US Gov 德克萨斯州，US Gov 亚利桑那州) 和中国北部2和中国东部2。 它还在以下公共区域中提供：澳大利亚中部、澳大利亚中部2、巴西南部、法国南部、阿拉伯联合酋长国中部、阿拉伯联合酋长国北部、南非北部、南非西北部。
 
 ## <a name="known-issues"></a>已知问题
 
 |问题  |发现日期  |状态  |解决日期  |
 |---------|---------|---------|---------|
+|[使用参数时，Procedure sp_send_dbmail transiently 可能失败 @query](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|2021 年 1 月|具有解决方法||
 |[从服务器信任组删除托管实例后，可以执行分布式事务](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|2020 年 10 月|具有解决方法||
 |[执行托管实例缩放操作后无法执行分布式事务](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|2020 年 10 月|具有解决方法||
-|[BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) /Azure SQL 中的[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15)和 `BACKUP` / `RESTORE` 托管实例中的语句无法使用 Azure AD 管理标识向 Azure 存储进行身份验证|2020 年 9 月|具有解决方法||
+|Azure SQL 中的 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql)/[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15) 和托管实例中的 `BACKUP`/`RESTORE` 语句无法使用 Azure AD 托管标识对 Azure 存储进行身份验证|2020 年 9 月|具有解决方法||
 |[服务主体无法访问 Azure AD 和 AKV](#service-principal-cannot-access-azure-ad-and-akv)|2020 年 8 月|具有解决方法||
 |[没有使用 CHECKSUM 的手动备份可能无法还原](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|已解决|2020 年 6 月|
 |[在修改、禁用或启用现有作业后代理无响应](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|已解决|2020 年 6 月|
@@ -115,7 +116,7 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 |[故障转移后，可能需要重新配置“业务关键”服务层级上的 Resource Governor](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|2019 年 9 月|具有解决方法||
 |[升级服务层级后必须重新初始化跨数据库 Service Broker 对话](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade)|2019 年 8 月|具有解决方法||
 |[不支持模拟 Azure AD 登录类型](#impersonation-of-azure-ad-login-types-is-not-supported)|2019 年 7 月|无解决方法||
-|[sp_send_db_mail 中不支持 @query 参数](#-parameter-not-supported-in-sp_send_db_mail)|2019 年 4 月|无解决方法||
+|[sp_send_db_mail 中不支持 @query 参数](#-parameter-not-supported-in-sp_send_db_mail)|2019 年 4 月|已解决|2021 年 1 月|
 |[异地故障转移之后，必须重新配置事务复制](#transactional-replication-must-be-reconfigured-after-geo-failover)|2019 年 3 月|无解决方法||
 |[在还原操作过程中使用临时数据库](#temporary-database-is-used-during-restore-operation)||具有解决方法||
 |[将重新创建 TEMPDB 结构和内容](#tempdb-structure-and-content-is-re-created)||无解决方法||
@@ -129,6 +130,29 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 |使用具有安全连接的外部（非 Azure）邮件服务器时出现数据库邮件功能问题||已解决|2019 年 10 月|
 |SQL 托管实例不支持包含的数据库||已解决|2019 年 8 月|
 
+### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>使用参数时，Procedure sp_send_dbmail transiently 可能失败 @query
+
+使用参数时，Procedure sp_send_dbmail transiently 可能会失败 `@query` 。 发生此问题时，每次执行过程 sp_send_dbmail 都将失败并出现错误 `Msg 22050, Level 16, State 1` 和消息 `Failed to initialize sqlcmd library with error number -2147467259` 。 若要能够正确地看到此错误，应在参数的默认值为0的情况下调用该过程 `@exclude_query_output` ，否则将不会传播此错误。
+此问题是由与 sp_send_dbmail 使用模拟和连接池的方式相关的已知 bug 引起的。
+若要解决此问题，请将电子邮件发送到依赖于 output 参数的重试逻辑 `@mailitem_id` 。 如果执行失败，则参数值将为 NULL，指示应再次调用 sp_send_dbmail 以成功发送电子邮件。 下面是此重试逻辑的示例。
+```sql
+CREATE PROCEDURE send_dbmail_with_retry AS
+BEGIN
+    DECLARE @miid INT
+    EXEC msdb.dbo.sp_send_dbmail
+        @recipients = 'name@mail.com', @subject = 'Subject', @query = 'select * from dbo.test_table',
+        @profile_name ='AzureManagedInstance_dbmail_profile', @execute_query_database = 'testdb',
+        @mailitem_id = @miid OUTPUT
+
+    -- If sp_send_dbmail returned NULL @mailidem_id then retry sending email.
+    --
+    IF (@miid is NULL)
+    EXEC msdb.dbo.sp_send_dbmail
+        @recipients = 'name@mail.com', @subject = 'Subject', @query = 'select * from dbo.test_table',
+        @profile_name ='AzureManagedInstance_dbmail_profile', @execute_query_database = 'testdb',
+END
+```
+
 ### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>从服务器信任组删除托管实例后，可以执行分布式事务
 
 [服务器信任组](../managed-instance/server-trust-group-overview.md)用于在托管实例之间建立信任，这是执行[分布式事务](./elastic-transactions-overview.md)的先决条件。 从服务器信任组中删除托管实例后或删除该组后，仍可以执行分布式事务。 若要确保禁用分布式事务，可以使用一种解决方法，即[用户发起的手动故障转移](../managed-instance/user-initiated-failover.md)（在托管实例上应用）。
@@ -139,7 +163,7 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 
 ### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>BULK INSERT 和 BACKUP/RESTORE 语句无法使用托管标识访问 Azure 存储
 
-Bulk insert、BACKUP 和 RESTORE 语句以及 OPENROWSET 函数无法 `DATABASE SCOPED CREDENTIAL` 与托管标识一起使用来向 Azure 存储进行身份验证。 解决方法是切换到“共享访问签名”身份验证。 以下示例不适用于 Azure SQL（数据库和托管实例）：
+BULK INSERT、BACKUP 和 RESTORE 语句以及 OPENROWSET 函数无法使用 `DATABASE SCOPED CREDENTIAL` 和托管标识来对 Azure 存储进行身份验证。 解决方法是切换到“共享访问签名”身份验证。 以下示例不适用于 Azure SQL（数据库和托管实例）：
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Identity';
@@ -150,19 +174,19 @@ GO
 BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-**解决方法** ：使用 [共享访问签名向存储进行身份验证](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)。
+**解决方法**：使用 [共享访问签名向存储进行身份验证](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)。
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>服务主体无法访问 Azure AD 和 AKV
 
 在某些情况下，用于访问 Azure AD 和 Azure Key Vault (AKV) 服务的服务主体可能存在问题。 此问题最终会对使用 Azure AD 身份验证和 SQL 托管实例的透明数据库加密 (TDE) 产生影响。 这可能是一个间歇性连接问题，或者无法运行诸如 CREATE LOGIN/USER FROM EXTERNAL PROVIDER 或 EXECUTE AS LOGIN/USER 之类的语句。 在某些情况下，在新的 Azure SQL 托管实例上使用客户托管密钥设置 TDE 也可能不起作用。
 
-**解决方法** ：若要防止托管实例在执行任何更新命令之前出现此问题，或在更新命令后遇到此问题 Azure 门户，请访问 sql 托管实例 [Active Directory 管理边栏选项卡](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal)。 验证是否可以看到错误消息“托管实例需要服务主体才能访问 Azure Active Directory。 单击此处创建服务主体”。 如果看到此错误消息，请单击它，然后按照提供的分步说明操作，直到解决此错误为止。
+**解决方法**：为了防止在执行任何更新命令之前 SQL 托管实例出现此问题，或者你已在更新命令后遇到此问题，请转到 Azure 门户，访问 SQL 托管实例 [“Active Directory 管理员”边栏选项卡](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal)。 验证是否可以看到错误消息“托管实例需要服务主体才能访问 Azure Active Directory。 单击此处创建服务主体”。 如果你遇到此错误消息，请单击它，然后按照提供的分步说明操作，直到此错误得以解决。
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>没有使用 CHECKSUM 的手动备份可能无法还原
 
 在某些情况下，没有使用 CHECKSUM 在托管实例上进行的数据库手动备份可能无法还原。 在这种情况下，请重试还原备份，直到成功为止。
 
-**解决方法** ：在启用了 CHECKSUM 的情况下在托管实例上手动备份数据库。
+**解决方法**：在启用了 CHECKSUM 的情况下在托管实例上手动备份数据库。
 
 ### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>在修改、禁用或启用现有作业后代理无响应
 
@@ -172,19 +196,19 @@ BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzur
 
 将 SQL 托管实例参与者 Azure 角色应用于资源组 (RG) 时，该角色不应用于 SQL 托管实例，因此不起作用。
 
-**解决方法** ：在订阅级别为用户设置“SQL 托管实例参与者”角色。
+**解决方法**：在订阅级别为用户设置“SQL 托管实例参与者”角色。
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>通过门户对故障转移组进行手动故障转移的限制
 
 如果故障转移组跨不同 Azure 订阅或资源组中的实例，则无法从故障转移组中的主实例启动手动故障转移。
 
-**解决方法** ：通过门户从异地辅助实例启动故障转移。
+**解决方法**：通过门户从异地辅助实例启动故障转移。
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL 代理角色需要拥有对非 sysadmin 登录名的显式 EXECUTE 权限
 
 如果将非 sysadmin 登录名添加到任何 [SQL 代理固定数据库角色](/sql/ssms/agent/sql-server-agent-fixed-database-roles)，则会出现以下问题：需要向主存储过程授予显式 EXECUTE 权限才能使这些登录名正常工作。 如果遇到此问题，将显示错误消息“在对象 <object_name> 中拒绝了 EXECUTE 权限(Microsoft SQL Server，错误:229)”。
 
-**解决方法** ：将登录名添加到 SQL 代理固定数据库角色（SQLAgentUserRole、SQLAgentReaderRole 或 SQLAgentOperatorRole）后，对于添加到这些角色的每个登录名，请执行以下 T-SQL 脚本，向列出的存储过程显式授予 EXECUTE 权限。
+**解决方法**：将登录名添加到 SQL 代理固定数据库角色（SQLAgentUserRole、SQLAgentReaderRole 或 SQLAgentOperatorRole）后，对于添加到这些角色的每个登录名，请执行以下 T-SQL 脚本，向列出的存储过程显式授予 EXECUTE 权限。
 
 ```tsql
 USE [master]
@@ -204,33 +228,33 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 在某些情况下，业务关键服务无法正确应用[内存优化对象的最大内存限制](../managed-instance/resource-limits.md#in-memory-oltp-available-space)。 SQL 托管实例可以让工作负荷使用更多的内存进行内存中 OLTP 操作，这可能影响实例的可用性和稳定性。 达到限制的内存中 OLTP 查询可能不会立即失败。 此问题即将得到解决。 使用较多内存中 OLTP 内存的查询在达到[限制](../managed-instance/resource-limits.md#in-memory-oltp-available-space)的情况下会更快地失败。
 
-**解决方法** ：使用 [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) [监视内存中 OLTP 存储使用情况](../in-memory-oltp-monitor-space.md)，确保工作负荷不会使用比提供的内存更多的内存。 提高基于 vCore 数的内存限制，或者优化工作负荷，让其使用较少的内存。
+**解决方法**：使用 [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) [监视内存中 OLTP 存储使用情况](../in-memory-oltp-monitor-space.md)，确保工作负荷不会使用比提供的内存更多的内存。 提高基于 vCore 数的内存限制，或者优化工作负荷，让其使用较少的内存。
  
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>尝试删除不为空的文件时，返回了错误的错误
 
 SQL Server 和 SQL 托管实例[不允许用户删除不为空的文件](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)。 如果尝试使用 `ALTER DATABASE REMOVE FILE` 语句删除非空数据文件，系统会立即返回 `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` 错误。 SQL 托管实例会继续尝试删除该文件，操作会在 30 分钟后失败并显示 `Internal server error`。
 
-**解决方法** ：使用 `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` 命令删除文件的内容。 如果这是文件组中的唯一文件，则需从与此文件组关联的表或分区中删除数据，然后才能收缩文件并选择将该数据加载到另一表/分区中。
+**解决方法**：使用 `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` 命令删除文件的内容。 如果这是文件组中的唯一文件，则需从与此文件组关联的表或分区中删除数据，然后才能收缩文件并选择将该数据加载到另一表/分区中。
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>更改服务层级和创建实例的操作会被正在进行的数据库还原操作阻止
 
 正在运行的 `RESTORE` 语句、数据迁移服务的迁移过程以及内置的时间点还原都会阻止对服务层的更新操作或者对现有实例的重设大小操作以及创建新实例的操作，直至还原过程完成为止。 
 
-还原过程会阻止其运行时所在的子网的托管实例和实例池中的这些操作。 实例池中的实例不受影响。 服务层创建或更改操作不会失败或超时。还原过程完成或取消后，将继续执行这些操作。
+还原过程会阻止其运行时所在的子网的托管实例和实例池中的这些操作。 实例池中的实例不受影响。 创建或更改服务层操作不会失败或超时。还原过程完成或取消后，它们将继续进行。
 
-**解决方法** ：请等待还原过程完成，或者，如果创建或更新服务层级的操作的优先级更高，可取消还原过程。
+**解决方法**：请等待还原过程完成，或者，如果创建或更新服务层级的操作的优先级更高，可取消还原过程。
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>故障转移后，可能需要重新配置“业务关键”服务层级上的 Resource Governor
 
 利用 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 功能，你可以限制分配给用户工作负荷的资源，在故障转移后可能会错误地分类某些用户工作负荷，或者在用户启动的服务层更改 (例如，更改 max vCore 或最大实例存储大小) 。
 
-**解决方法** ： `ALTER RESOURCE GOVERNOR RECONFIGURE` 如果使用 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)，则在启动实例时，将定期运行或作为 sql 代理作业的一部分执行 sql 任务。
+**解决方法**： `ALTER RESOURCE GOVERNOR RECONFIGURE` 如果使用 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)，则在启动实例时，将定期运行或作为 sql 代理作业的一部分执行 sql 任务。
 
 ### <a name="cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade"></a>升级服务层级后必须重新初始化跨数据库 Service Broker 对话
 
 完成更改服务层级的操作后，跨数据库 Service Broker 对话会停止向其他数据库中的服务传递消息。 这些消息没有丢失，可以在发送方队列中找到它们。 在 SQL 托管实例中对 vCore 或实例存储大小进行任何更改都会导致 [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) 视图中所有数据库的 `service_broke_guid` 值发生更改。 使用 [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) 语句创建的、引用其他数据库中的 Service Broker 的任何 `DIALOG` 将停止向目标服务传递消息。
 
-**解决方法** ：先停止使用跨数据库 Service Broker 对话的任何活动，再更新服务层级，然后重新初始化这些活动。 如果在更改服务层级后存在任何未传递的剩余消息，请从源队列中读取消息，然后将其重新发送到目标队列。
+**解决方法**：先停止使用跨数据库 Service Broker 对话的任何活动，再更新服务层级，然后重新初始化这些活动。 如果在更改服务层级后存在任何未传递的剩余消息，请从源队列中读取消息，然后将其重新发送到目标队列。
 
 ### <a name="impersonation-of-azure-ad-login-types-is-not-supported"></a>不支持模拟 Azure AD 登录类型
 
@@ -258,7 +282,7 @@ SQL Server Data Tools 不完全支持 Azure AD 登录名和用户。
 
 在初始阶段，用户可以访问空数据库，甚至可以在此数据库中创建表或加载数据。 当还原服务启动第二个阶段时，将删除此临时数据库。
 
-**解决方法** ：在看到还原完成之前，请不要访问正在还原的数据库。
+**解决方法**：在看到还原完成之前，请不要访问正在还原的数据库。
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>将重新创建 TEMPDB 结构和内容
 
@@ -285,7 +309,7 @@ SQL Server Data Tools 不完全支持 Azure AD 登录名和用户。
 
 多个系统视图、性能计数器、错误消息、XEvent 和错误日志条目显示了 GUID 数据库标识符而非实际的数据库名称。 不要依赖这些 GUID 标识符，因为将来它们会被替换为实际的数据库名称。
 
-**解决方法** ：使用 sys.databases 视图通过物理数据库名称（以 GUID 数据库标识符的形式指定）解析实际数据库名称：
+**解决方法**：使用 sys.databases 视图通过物理数据库名称（以 GUID 数据库标识符的形式指定）解析实际数据库名称：
 
 ```tsql
 SELECT name as ActualDatabaseName, physical_database_name as GUIDDatabaseIdentifier 
@@ -330,7 +354,7 @@ using (var scope = new TransactionScope())
 
 放在 SQL 托管实例中的 CLR 模块以及引用当前实例的链接服务器或分布式查询有时可能无法解析本地实例的 IP。 此错误是暂时性问题。
 
-**解决方法** ：如果可能，请在 CLR 模块中使用上下文连接。
+**解决方法**：如果可能，请在 CLR 模块中使用上下文连接。
 
 ## <a name="updates"></a>更新
 

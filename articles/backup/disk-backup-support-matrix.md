@@ -4,12 +4,12 @@ description: 提供支持设置的摘要，并限制 Azure 磁盘备份。
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 099e83d8a2fb109da862657265dad8be8143f608
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 447283ba1d63267722e4167e0727a827e63d2e0d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624928"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732973"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>预览版中的 Azure 磁盘备份支持矩阵 () 
 
@@ -18,7 +18,7 @@ ms.locfileid: "98624928"
 >
 >[填写此窗体](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) 以便注册预览版。
 
-可以使用 [Azure 备份](https://docs.microsoft.com/azure/backup/backup-overview) 来保护 azure 磁盘。 本文总结了区域可用性、支持的方案和限制。
+可以使用 [Azure 备份](./backup-overview.md) 来保护 azure 磁盘。 本文总结了区域可用性、支持的方案和限制。
 
 ## <a name="supported-regions"></a>支持的区域
 
@@ -36,9 +36,9 @@ Azure 磁盘备份在以下区域提供预览版：美国中部。
 
 - 目前，Original-Location 恢复 (OLR) 选项，通过替换从其执行备份的现有源磁盘来还原。 你可以从恢复点还原，以便在同一资源组中创建一个新磁盘，与从中进行备份的源磁盘或任何其他资源组中的磁盘相同。 这称为 Alternate-Location 恢复 (ALR) 。
 
-- 托管磁盘的 Azure 备份使用增量快照，每个磁盘的快照数限制为200个。 为了允许除计划备份之外的按需备份，备份策略会将备份总数限制为180。 详细了解托管磁盘的 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 。
+- 托管磁盘的 Azure 备份使用增量快照，每个磁盘的快照数限制为200个。 为了允许除计划备份之外的按需备份，备份策略会将备份总数限制为180。 详细了解托管磁盘的 [增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions) 。
 
-- Azure [订阅和服务限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-disk-limits) 适用于每个订阅每个区域的磁盘快照总数。
+- Azure [订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machine-disk-limits) 适用于每个订阅每个区域的磁盘快照总数。
 
 - 不支持附加到虚拟机的多个磁盘的时间点快照。
 
@@ -58,13 +58,13 @@ Azure 磁盘备份在以下区域提供预览版：美国中部。
 
 - 目前 (预览) 期间，不支持使用 PowerShell 和 Azure CLI 来配置磁盘的备份和还原。
 
-- 配置备份时，选择要备份的磁盘以及要存储快照的快照资源组必须属于同一订阅。 不能为该磁盘的订阅之外的特定磁盘创建增量快照。 详细了解托管磁盘的 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 。 有关如何选择快照资源组的详细信息，请参阅  [配置备份](backup-managed-disks.md#configure-backup)。
+- 配置备份时，选择要备份的磁盘以及要存储快照的快照资源组必须属于同一订阅。 不能为该磁盘的订阅之外的特定磁盘创建增量快照。 详细了解托管磁盘的 [增量快照](../virtual-machines/windows/disks-incremental-snapshots-portal.md#restrictions) 。 有关如何选择快照资源组的详细信息，请参阅  [配置备份](backup-managed-disks.md#configure-backup)。
 
 - 对于成功的备份和还原操作，备份保管库的托管标识需要角色分配。 仅使用文档中提供的角色定义。 不支持使用其他角色，如 "所有者"、"参与者" 等。 如果在分配角色后立即开始配置备份或还原操作，则可能会遇到权限问题。 这是因为角色分配需要几分钟才能生效。
 
-- 托管磁盘允许在部署时或之后更改性能层，而无需更改磁盘大小。 Azure 磁盘备份解决方案支持对要备份的源磁盘进行性能层更改。 在还原过程中，还原磁盘的性能层将与备份时源磁盘的性能层相同。 执行还原操作后，请按照 [此处](https://docs.microsoft.com/azure/virtual-machines/disks-performance-tiers-portal) 的文档更改磁盘的性能层。
+- 托管磁盘允许在部署时或之后更改性能层，而无需更改磁盘大小。 Azure 磁盘备份解决方案支持对要备份的源磁盘进行性能层更改。 在还原过程中，还原磁盘的性能层将与备份时源磁盘的性能层相同。 执行还原操作后，请按照 [此处](../virtual-machines/disks-performance-tiers-portal.md) 的文档更改磁盘的性能层。
 
-- 通过对托管磁盘的[私有链接](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal)支持，你可以限制导出和导入托管磁盘，使其仅出现在 Azure 虚拟网络中。 Azure 磁盘备份支持备份启用了专用终结点的磁盘。 这不包括可通过专用终结点访问的备份数据或快照。
+- 通过对托管磁盘的[私有链接](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)支持，你可以限制导出和导入托管磁盘，使其仅出现在 Azure 虚拟网络中。 Azure 磁盘备份支持备份启用了专用终结点的磁盘。 这不包括可通过专用终结点访问的备份数据或快照。
 
 ## <a name="next-steps"></a>后续步骤
 

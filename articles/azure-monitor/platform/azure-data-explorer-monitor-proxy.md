@@ -7,16 +7,16 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8942735ed65f8aa0cf6d315568e00412adcb353a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: a31ef69d84f64e4bcaa46adac26a29d2cc367351
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060531"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731694"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 数据资源管理器（预览版）查询 Azure Monitor 中的数据
 
-Azure 数据资源管理器支持 Azure 数据资源管理器、 [Application Insights (AI) ](/azure/azure-monitor/app/app-insights-overview)和 [Log Analytics (LA) ](/azure/azure-monitor/platform/data-platform-logs)之间的跨服务查询。 然后，你可以使用 Azure 数据资源管理器工具查询 Log Analytics/Application Insights 工作区，并在跨服务查询中进行引用。 本文介绍如何进行交叉服务查询，以及如何将 Log Analytics/Application Insights 工作区添加到 Azure 数据资源管理器 Web UI。
+Azure 数据资源管理器支持 Azure 数据资源管理器、 [Application Insights (AI) ](../app/app-insights-overview.md)和 [Log Analytics (LA) ](./data-platform-logs.md)之间的跨服务查询。 然后，你可以使用 Azure 数据资源管理器工具查询 Log Analytics/Application Insights 工作区，并在跨服务查询中进行引用。 本文介绍如何进行交叉服务查询，以及如何将 Log Analytics/Application Insights 工作区添加到 Azure 数据资源管理器 Web UI。
 
 Azure 数据资源管理器跨服务查询流： :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="azure 数据资源管理器代理流。":::
 
@@ -62,7 +62,7 @@ Azure 数据资源管理器跨服务查询流： :::image type="content" source=
 > * 数据库名称的名称应与跨服务查询中指定的资源的名称相同。 名称区分大小写。
 > * 在跨群集查询中，请确保 Application Insights 应用和 Log Analytics 工作区的命名正确。
 > * 如果名称包含特殊字符，则它们将在跨服务查询中由 URL 编码替代。
-> * 如果名称包含的字符不符合 [KQL 标识符命名规则](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/entity-names)，这些字符将由短划线 **-** 字符替换。
+> * 如果名称包含的字符不符合 [KQL 标识符命名规则](/azure/data-explorer/kusto/query/schema-entities/entity-names)，这些字符将由短划线 **-** 字符替换。
 
 ### <a name="direct-query-on-your-log-analytics-or-application-insights-workspaces-from-azure-data-explorer-client-tools"></a>通过 Azure 数据资源管理器客户端工具直接查询 Log Analytics 或 Application Insights 工作区
 
@@ -90,7 +90,7 @@ union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<tabl
 
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-cross-query-proxy.png" alt-text="Azure 数据资源管理器中的服务查询。":::
 
-如果使用 [`join` 运算符](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator)而不是 union，那么可能需要 [`hint`](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator#join-hints) 才能在 Azure 数据资源管理器本机群集上运行它。
+如果使用 [`join` 运算符](/azure/data-explorer/kusto/query/joinoperator)而不是 union，那么可能需要 [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) 才能在 Azure 数据资源管理器本机群集上运行它。
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>将一个租户的 Azure 数据资源管理器群集中的数据与另一个租户的 Azure Monitor 资源联接
 
@@ -98,9 +98,9 @@ union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<tabl
 
 如果 Azure 数据资源管理器资源位于租户“A”中，Log Analytics 工作区位于租户“B”中，那么请使用下述两种方法之一：
 
-1. 通过 Azure 数据资源管理器，可以为不同租户中的主体添加角色。 在 Azure 数据资源管理器群集上将用户 ID 作为授权用户添加到租户“B”中。 验证 Azure 数据资源管理器群集上的[“TrustedExternalTenant”](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)属性是否包含租户“B”。 在租户“B”中完全运行交叉查询。
+1. 通过 Azure 数据资源管理器，可以为不同租户中的主体添加角色。 在 Azure 数据资源管理器群集上将用户 ID 作为授权用户添加到租户“B”中。 验证 Azure 数据资源管理器群集上的[“TrustedExternalTenant”](/powershell/module/az.kusto/update-azkustocluster)属性是否包含租户“B”。 在租户“B”中完全运行交叉查询。
 
-2. 使用 [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) 将 Azure Monitor 资源投射到租户“A”。
+2. 使用 [Lighthouse](../../lighthouse/index.yml) 将 Azure Monitor 资源投射到租户“A”。
 ### <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>从不同租户连接到 Azure 数据资源管理器群集
 
 Kusto Explorer 会自动将你登录到用户帐户最初所属的租户。 若要使用同一用户帐户访问其他租户中的资源，必须在以下连接字符串中显式指定 `tenantId`：`Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=`TenantId
@@ -134,4 +134,4 @@ Azure 数据资源管理器跨服务查询支持 Application Insights 和 Log An
 ## <a name="next-steps"></a>后续步骤
 
 - 请参阅有关 [Log Analytics 工作区和 Application Insights 的数据结构](data-platform-logs.md)的详细信息。
-- 了解如何[在 Azure 数据资源管理器中编写查询](https://docs.microsoft.com/azure/data-explorer/write-queries)。
+- 了解如何[在 Azure 数据资源管理器中编写查询](/azure/data-explorer/write-queries)。

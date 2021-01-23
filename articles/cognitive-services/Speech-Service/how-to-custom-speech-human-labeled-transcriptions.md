@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: eafdebc795d5bede7fa52a3562d33c806035697f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126880"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704425"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>如何创建人为标记的听录
 
@@ -32,7 +32,7 @@ ms.locfileid: "98126880"
 
 以下是一些示例：
 
-| 要避免的字符 | 替换 | 备注 |
+| 要避免的字符 | 替换 | 注意 |
 | ------------------- | ------------ | ----- |
 | “Hello world” | “Hello world” | 左引号和右引号都已替换为相应的 ASCII 字符。 |
 | John’s day | John's day | 撇号已替换为相应的 ASCII 字符。 |
@@ -47,6 +47,8 @@ ms.locfileid: "98126880"
 - 应按照发音听录非字母字符或混合字母数字字符。
 - 不应编辑可以作为字词发音的缩写（例如，“radar”、“laser”、“RAM”或“NATO”）。
 - 将发音的缩写写成单独的字母，每个字母用单个空格分开。
+- 如果使用音频，转录数字作为与音频 (匹配的单词（例如 "101"），则可能会被视为 "1 0 1" 或 "101" ) 。
+- 避免重复字符、单词或单词组超过三次，如 "是" 是 "是"。 语音服务可能会删除具有此重复的行。
 
 下面是应该对听录执行的规范化的一些示例：
 
@@ -87,7 +89,7 @@ ms.locfileid: "98126880"
 
 以下是一些示例：
 
-| 要避免的字符 | 替换   | 备注 |
+| 要避免的字符 | 替换   | 注意 |
 | ------------------- | -------------- | ----- |
 | "你好" | "你好" | 左引号和右引号都已替换为相应的字符。 |
 | 需要什么帮助? | 需要什么帮助？| 问号已替换为相应的字符。 |

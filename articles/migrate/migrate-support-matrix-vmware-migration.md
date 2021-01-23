@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: b263d3e62ae97914fc8e06580486bddd0cb9b3b7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0b671fbdfe16848012ac94671ce68e8a33a8b3e8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968443"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703863"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移支持矩阵
 
@@ -58,7 +58,7 @@ ms.locfileid: "97968443"
 **Azure 中的 Windows Vm** | 在迁移之前，你可能需要对 Vm [进行一些更改](prepare-for-migration.md#verify-required-changes-before-migrating) 。 
 **Azure 中的 Linux Vm** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对这些操作系统进行更改：<br/> -Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、1。x<br/> -O o 7.7，7.6，7.5，7.4，1。x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19.04、19.10、14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> 对于其他操作系统，请手动进行 [所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating) 。
 **Linux 启动** | 如果/boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不会分布在多个磁盘上。<br/> 如果/boot 是根 (/) 分区的一部分，则 "/" 分区应在 OS 磁盘上，而不是在其他磁盘上。
-**UEFI 启动** | 。 基于 UEFI 的 Vm 将迁移到 Azure 第2代 Vm。 
+**UEFI 启动** | 支持。 基于 UEFI 的 Vm 将迁移到 Azure 第2代 Vm。 
 **磁盘大小** | 2 TB 操作系统磁盘; 数据磁盘为 32 TB。
 **磁盘限制** |  每个虚拟机最多60个磁盘。
 **加密磁盘/卷** | 不支持对具有加密磁盘/卷的 Vm 进行迁移。
@@ -119,17 +119,17 @@ vSphere/ESXI 主机 | TCP 端口902上的入站，用于从快照复制数据。
 **网络/存储** | 有关最新信息，请查看 Site Recovery 的 [网络](../site-recovery/vmware-physical-azure-support-matrix.md#network) 和 [存储](../site-recovery/vmware-physical-azure-support-matrix.md#storage) 必备组件。 Azure Migrate 提供完全相同的网络/存储要求。
 **Azure 要求** | 有关最新信息，请查看 Site Recovery 的 [Azure 网络](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、 [存储](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)和 [计算](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) 要求。 对于 VMware 迁移，Azure Migrate 具有相同的要求。
 **移动服务** | 必须在要迁移的每个 VM 上安装移动服务代理。
-**UEFI 启动** | 。 基于 UEFI 的 Vm 将迁移到 Azure 第2代 Vm。 
+**UEFI 启动** | 支持。 基于 UEFI 的 Vm 将迁移到 Azure 第2代 Vm。 
 **UEFI-安全启动**         | 不支持迁移。
 **目标磁盘** | Vm 只能迁移到 Azure 中 (标准 HDD、标准 SSD、高级 SSD) 的托管磁盘。
 **磁盘大小** | 2 TB 操作系统磁盘;数据磁盘为 32 TB。
 **磁盘限制** |  每个虚拟机最多63个磁盘。
 **加密磁盘/卷** | 不支持对具有加密磁盘/卷的 Vm 进行迁移。
 **共享磁盘群集** | 不支持。
-**独立磁盘** | 。
-**传递磁盘** | 。
+**独立磁盘** | 支持。
+**传递磁盘** | 支持。
 **NFS** | 不会复制装载为 Vm 上的卷的 NFS 卷。
-**iSCSI 目标** | 。
+**iSCSI 目标** | 支持。
 **多路径 IO** | 不支持。
 **存储 vMotion** | 支持
 **成组 Nic** | 不支持。
@@ -166,7 +166,7 @@ VM | Vm 上运行的移动服务与本地复制设备通信， (配置) 服务�
 操作系统磁盘大小 | 最大 2,048 GB。 
 操作系统磁盘计数 | 1 
 数据磁盘计数 | 64 或更少。 
-数据磁盘大小 | 最大 8095 GB
+数据磁盘大小 | 最大 32 TB
 网络适配器 | 支持多个适配器。
 共享 VHD | 不支持。 
 FC 磁盘 | 不支持。 

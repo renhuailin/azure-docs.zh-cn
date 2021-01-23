@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4cd37128893309be5a1e362671b9e28dcc436b1b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: f6e9009040d2d02702f8a71c352716491d07d1f7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356202"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704298"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-on-an-azure-virtual-machine"></a>将 SQL Server 数据库迁移到 Azure 虚拟机中的 SQL Server
 
@@ -67,8 +67,8 @@ ms.locfileid: "97356202"
 | [使用压缩功能执行本地备份并将备份文件手动复制到 Azure 虚拟机](#back-up-and-restore) |SQL Server 2005 或更高版本 |SQL Server 2005 或更高版本 |[Azure VM 存储限制](../../../index.yml) | 这是一项很简单且经过严格测试的技术，适用于跨计算机移动数据库。 |
 | [执行“备份到 URL”并从该 URL 还原到 Azure 虚拟机](#backup-to-url-and-restore-from-url) |SQL Server 2012 SP1 CU2 或更高版本 | SQL Server 2012 SP1 CU2 或更高版本 | 小于 12.8 TB 用于 SQL Server 2016，否则大于 1 TB | 此方法是通过另一种方式使用 Azure 存储将备份文件移至 VM。 |
 | [分离后，将数据和日志文件复制到 Azure Blob 存储，然后从 URL 附加到 Azure 虚拟机中的 SQL Server](#detach-and-attach-from-a-url) | SQL Server 2005 或更高版本 |SQL Server 2014 或更高版本 | [Azure VM 存储限制](../../../index.yml) | 如果计划[使用 Azure Blob 存储服务存储这些文件](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)并将它们附加到 Azure VM 中运行的 SQL Server，尤其是对于非常大的数据库，可以使用此方法。 |
-| [将本地计算机转换为 Hyper-V VHD，上传到 Azure Blob 存储，并使用上传的 VHD 部署一个新虚拟机](#convert-to-a-vm-upload-to-a-url-and-deploy-as-a-new-vm) |SQL Server 2005 或更高版本 |SQL Server 2005 或更高版本 |[Azure VM 存储限制](../../../index.yml) |当 [你使用自己的 SQL Server 许可证](../../../azure-sql/azure-sql-iaas-vs-paas-what-is-overview.md)时，请在迁移你将在较旧版本的 SQL Server 上运行的数据库时，或者在迁移系统和用户数据库时，将其作为依赖于其他用户数据库和/或系统数据库的数据库迁移的一部分一起使用。 |
-| [使用 Windows 导入/导出服务运送硬盘驱动器](#ship-a-hard-drive) |SQL Server 2005 或更高版本 |SQL Server 2005 或更高版本 |[Azure VM 存储限制](../../../index.yml) |当手动复制方法速度太慢时使用 [Windows 导入/导出服务](../../../storage/common/storage-import-export-service.md)，比如复制非常大的数据库 |
+| [将本地计算机转换为 Hyper-V VHD，上传到 Azure Blob 存储，并使用上传的 VHD 部署一个新虚拟机](#convert-to-a-vm-upload-to-a-url-and-deploy-as-a-new-vm) |SQL Server 2005 或更高版本 |SQL Server 2005 或更高版本 |[Azure VM 存储限制](../../../index.yml) |在以下场合使用：[使用自己的 SQL Server 许可证时](../../../azure-sql/azure-sql-iaas-vs-paas-what-is-overview.md)；迁移的数据库会在较旧版本的 SQL Server 上运行时；或者将系统数据库和用户数据库一起作为依赖于其他用户数据库和/或系统数据库的数据库的一部分进行迁移时。 |
+| [使用 Windows 导入/导出服务运送硬盘驱动器](#ship-a-hard-drive) |SQL Server 2005 或更高版本 |SQL Server 2005 或更高版本 |[Azure VM 存储限制](../../../index.yml) |当手动复制方法速度太慢时使用 [Windows 导入/导出服务](../../../import-export/storage-import-export-service.md)，比如复制非常大的数据库 |
 | [使用“添加 Azure 副本”向导](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-onprem-availability) |SQL Server 2012 或更高版本 |SQL Server 2012 或更高版本 |[Azure VM 存储限制](../../../index.yml) |最大程度减少故障时间，在具有 AlwaysOn 本地部署时使用 |
 | [使用 SQL Server 事务复制](/sql/relational-databases/replication/transactional/transactional-replication) |SQL Server 2005 或更高版本 |SQL Server 2005 或更高版本 |[Azure VM 存储限制](../../../index.yml) |在需要尽量减少故障时间且不具备 Always On 本地部署时使用 |
 
@@ -83,7 +83,7 @@ ms.locfileid: "97356202"
 
 ## <a name="backup-to-url-and-restore-from-url"></a>备份到 URL 并从 URL 还原
 
-可以使用[备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) 的方式，并从 URL 还原到 VM，而不必备份到本地文件。 SQL Server 2016 支持条带化备份集。 建议将它们用于性能，并在超过每个 blob 的大小限制时是必需的。 对于非常大的数据库，建议使用 [Windows 导入/导出服务](../../../storage/common/storage-import-export-service.md)。
+可以使用[备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) 的方式，并从 URL 还原到 VM，而不必备份到本地文件。 SQL Server 2016 支持条带化备份集。 建议将它们用于性能，并在超过每个 blob 的大小限制时是必需的。 对于非常大的数据库，建议使用 [Windows 导入/导出服务](../../../import-export/storage-import-export-service.md)。
 
 ## <a name="detach-and-attach-from-a-url"></a>拆离和从 URL 附加
 
@@ -106,7 +106,7 @@ ms.locfileid: "97356202"
 
 ## <a name="ship-a-hard-drive"></a>运送硬盘驱动器
 
-在通过网络上传成本过高或不可行时，可以使用 [Windows 导入/导出服务方法](../../../storage/common/storage-import-export-service.md)将大量文件数据传输到 Azure Blob 存储中。 借助此服务，可以将包含这些数据的一个或多个硬盘驱动器运送到 Azure 数据中心，在那里，数据将上传到存储帐户中。
+在通过网络上传成本过高或不可行时，可以使用 [Windows 导入/导出服务方法](../../../import-export/storage-import-export-service.md)将大量文件数据传输到 Azure Blob 存储中。 借助此服务，可以将包含这些数据的一个或多个硬盘驱动器运送到 Azure 数据中心，在那里，数据将上传到存储帐户中。
 
 ## <a name="next-steps"></a>后续步骤
 

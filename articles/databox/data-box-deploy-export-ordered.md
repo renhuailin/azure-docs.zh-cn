@@ -8,18 +8,18 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: ac86dfba02b54730773a1d243981e85d563517e7
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: aac1fb8e2da7a3c84b3abff47c8f476b9fb9049c
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183824"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704332"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>教程：创建 Azure Data Box 的出口订单
 
 Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移到你的位置。 本教程介绍如何创建 Azure Data Box 的出口订单。 创建导出顺序的主要原因是为了进行灾难恢复，并且在本地存储区被泄露并且需要还原备份。
 
-在本教程中，你将学习：
+本教程的介绍内容包括：
 
 > [!div class="checklist"]
 >
@@ -28,7 +28,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 > * 跟踪导出顺序
 > * 取消导出顺序
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 对设备进行排序之前，请先完成 Data Box 服务和设备的以下配置先决条件。
 
@@ -58,7 +58,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    ![创建资源](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-resource.png)
 
-3. 选择“创建” 。
+3. 选择“创建”。
 
    ![创建 Azure Data Box 资源](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-data-box-resource.png)
 
@@ -80,7 +80,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
 6. 在 " **顺序**" 中，指定 **基本** 订单详细信息。 输入或选择以下信息。
 
-    |设置  |Value  |
+    |设置  |值  |
     |---------|---------|
     |订阅     | 系统会根据前面所做的选择自动填充此订阅。|
     |资源组 | 之前选择的资源组。 |
@@ -100,7 +100,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
     |---------|---------|
     |存储帐户     | 要从中导出数据的 Azure 存储帐户。 |
     |导出类型     | 指定要从 **所有对象** 导出并 **使用 XML 文件** 的数据类型。<ul><li> **所有对象** -指定作业根据你选择的 **传输选项** 导出所有数据。</li><li> **使用 xml 文件** –指定一个 XML 文件，其中包含要从存储帐户导出的 blob 和/或文件的一组路径和前缀。 该 XML 文件需要位于所选存储帐户的容器中，并且当前不支持从文件共享中进行选择。 文件必须为非空 .xml 文件。</li></ul>        |
-    |传输选项     |  指定 "全 **选**"、" **所有 blob**" 和 " **所有文件**" 中的数据传输选项。 <ul><li> **全选** -指定导出所有 Blob 和 Azure 文件。 如果你使用的存储帐户仅支持 blob (Blob 存储帐户) ，则 " **所有文件** " 选项将不可选择。</li><li> **所有 blob** -指定仅导出块和页 blob。</li><li> **所有文件** -指定导出所有文件时不包括 blob。 已 (GPv1 和 GPv2、高级存储或 blob 存储的存储帐户类型) 确定可导出的数据类型。 有关详细信息，请参阅 [支持的存储帐户导出](../storage/common/storage-import-export-requirements.md#supported-storage-types)。</li></ul>         |
+    |传输选项     |  指定 "全 **选**"、" **所有 blob**" 和 " **所有文件**" 中的数据传输选项。 <ul><li> **全选** -指定导出所有 Blob 和 Azure 文件。 如果你使用的存储帐户仅支持 blob (Blob 存储帐户) ，则 " **所有文件** " 选项将不可选择。</li><li> **所有 blob** -指定仅导出块和页 blob。</li><li> **所有文件** -指定导出所有文件时不包括 blob。 已 (GPv1 和 GPv2、高级存储或 blob 存储的存储帐户类型) 确定可导出的数据类型。 有关详细信息，请参阅 [支持的存储帐户导出](../import-export/storage-import-export-requirements.md#supported-storage-types)。</li></ul>         |
     |包括详细日志     | 指示是否需要一个详细日志文件，其中包含已成功导出的所有文件的列表。        |
 
     > [!NOTE]
@@ -181,7 +181,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
     用户分配的托管标识是一个可用于管理多个资源的独立 Azure 资源。 有关详细信息，请参阅[托管标识类型](/azure/active-directory/managed-identities-azure-resources/overview)。  
 
-    如果需要创建新的托管标识，请按照 [使用 Azure 门户创建、列出、删除或向用户分配的托管标识分配角色](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指南进行操作。
+    如果需要创建新的托管标识，请按照[使用 Azure 门户创建、列出和删除用户分配的托管标识以及如何为其分配角色](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指南操作。
     
     ![选择用户标识](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
 
@@ -242,7 +242,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    ![选择导出选项，新建容器设置](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-container-settings.png)
 
-4. 选择“创建” 。
+4. 选择“创建”。
 
    ![选择 "导出" 选项，然后单击 "新建容器"。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-create-container.png)
 

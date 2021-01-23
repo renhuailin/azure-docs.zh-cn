@@ -3,12 +3,12 @@ title: 设置 Azure VMware 解决方案的 Azure 备份服务器
 description: 使用 Azure 备份服务器设置 Azure VMware 解决方案环境以备份虚拟机。
 ms.topic: how-to
 ms.date: 10/23/2020
-ms.openlocfilehash: e71ec19402d22643d51f1435d1abcf56b20a290b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7885c0bc73bd5f7cd802e76ed9db470f77eda30d
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517372"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703396"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>设置 Azure VMware 解决方案的 Azure 备份服务器
 
@@ -107,7 +107,7 @@ Azure 备份服务器要求安装磁盘。
 将备份数据存储在 Azure 中会减少 Azure 备份服务器 VM 上的备份基础结构。 对于操作恢复 (备份) ，Azure 备份服务器将备份数据存储在附加到 VM 的 Azure 磁盘上。 磁盘和存储空间附加到 VM 后，Azure 备份服务器会为你管理存储。 存储量取决于连接到每个 Azure VM 的磁盘数量和大小。 Azure VM 的每个大小都有最多可附加的磁盘数。 例如，A2 为四个磁盘，A3 为8个磁盘，A4 为16个磁盘。 同样，磁盘的大小和数量决定了备份存储池的总容量。
 
 > [!IMPORTANT]
-> *不*应在超过5天的 Azure 备份服务器连接的磁盘上保留操作恢复数据。 如果数据超过五天，请将数据存储在恢复服务保管库中。
+> *不* 应在超过5天的 Azure 备份服务器连接的磁盘上保留操作恢复数据。 如果数据超过五天，请将数据存储在恢复服务保管库中。
 
 若要将备份数据存储在 Azure 中，请创建或使用恢复服务保管库。 准备备份 Azure 备份服务器工作负荷时，将 [配置恢复服务保管库](#create-a-recovery-services-vault)。 配置完成后，每次运行联机备份作业时，都会在保管库中创建恢复点。 每个恢复服务保管库最多可容纳9999个恢复点。 根据创建的恢复点数和保留的时间，可以将备份数据保留多年。 例如，可以创建每月恢复点，并将其保留5年。
 
@@ -122,7 +122,7 @@ Azure 备份服务器要求安装磁盘。
 - **卸载数据**：将较旧的数据发送到 Azure 并仅保留连接到 Azure 备份服务器计算机的存储中的最新数据。
 - **横向扩展**：添加更多 Azure 备份服务器计算机来保护工作负荷。
 
-### <a name="net-framework"></a>.NET framework
+### <a name="net-framework"></a>.NET Framework
 
 VM 必须安装 .NET Framework 3.5 SP1 或更高版本。
 
@@ -140,7 +140,7 @@ Azure 备份服务器 VM 必须加入域。 具有 VM 上的管理员权限的�
 
 1. 在左侧菜单中，选择“所有服务”。
 
-   ![在左侧菜单中，选择 "所有服务"。](../backup/media/backup-create-rs-vault/click-all-services.png)
+   ![在左侧菜单中，选择“所有服务”。](../backup/media/backup-create-rs-vault/click-all-services.png)
 
 1. 在 " **所有服务** " 对话框中，输入 **恢复服务** ，并从列表中选择 " **恢复服务保管库** "。
 
@@ -190,7 +190,7 @@ Azure 备份服务器 VM 必须加入域。 具有 VM 上的管理员权限的�
 
 ### <a name="download-the-software-package"></a>下载软件包
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 如果已打开恢复服务保管库，则继续执行下一步。 如果未打开恢复服务保管库，并且位于 Azure 门户中，请在主菜单上选择 " **浏览**"。
 
@@ -218,15 +218,23 @@ Azure 备份服务器 VM 必须加入域。 具有 VM 上的管理员权限的�
 
    1. 从 " **工作负荷的运行位置"** 菜单中选择 **"本地**"。
 
-      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-on-premises-workload.png" alt-text="Azure 备份服务器部署为 Azure 基础结构即服务 (IaaS) VM 来保护 Azure VMware 解决方案 Vm。" **准备基础结构** "，下载并安装 Azure 备份服务器和保管库凭据。
+      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-on-premises-workload.png" alt-text="你的工作负载在哪里运行？":::
 
-      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure.png" alt-text="Azure 备份服务器部署为 Azure 基础结构即服务 (IaaS) VM 来保护 Azure VMware 解决方案 Vm。" 窗口中：
+   1. 从 " **要备份的内容？** " 菜单中，选择要使用 Azure 备份服务器保护的工作负荷。
+
+   1. 选择 " **准备基础结构** "，下载并安装 Azure 备份服务器和保管库凭据。
+
+      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure.png" alt-text="准备基础结构":::
+
+1. 在打开的 " **准备基础结构** " 窗口中：
 
    1. 选择要安装 Azure 备份服务器的 **下载** 链接。
 
-   1. 1. 选择 **已下载或正在使用最新 Azure 备份服务器安装** ，然后 **下载** 以下载保管库凭据。 向恢复服务保管库注册 Azure 备份服务器时，将使用这些凭据。 这些链接会将你转到下载中心，你可以在其中下载软件包。
+   1. 选择 **已下载或正在使用最新 Azure 备份服务器安装** ，然后 **下载** 以下载保管库凭据。 向恢复服务保管库注册 Azure 备份服务器时，将使用这些凭据。 这些链接会将你转到下载中心，你可以在其中下载软件包。
 
-   :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure2.png" alt-text="Azure 备份服务器部署为 Azure 基础结构即服务 (IaaS) VM 来保护 Azure VMware 解决方案 Vm。" **下一步**"。
+   :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure2.png" alt-text="准备基础结构-Azure 备份服务器":::
+
+1. 在下载页上，选择 "所有文件"，然后选择 " **下一步**"。
 
    > [!NOTE]
    > 您必须将所有文件下载到同一个文件夹。 由于文件的下载大小一起大于 3 GB，下载完成可能需要长达60分钟的时间。 
@@ -270,7 +278,7 @@ Azure 备份服务器 VM 必须加入域。 具有 VM 上的管理员权限的�
    ![Azure 备份服务器安装包与所需的相应 SQL Server 二进制文件捆绑在一起。](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
 
    > [!NOTE]
-   > 如果要使用自己的 SQL Server 实例，则支持的 SQL Server 版本 SQL Server 2014 SP1 或更高版本、2016和2017。 所有 SQL Server 版本都应当是 Standard 或 Enterprise 64 位。 Azure 备份服务器使用的实例必须仅用于本地;它不能是远程的。 如果对 Azure 备份服务器使用现有 SQL Server 实例，则安装程序仅支持 SQL Server 的 *命名实例* 的使用。
+   > 如果要使用自己的 SQL Server 实例，则支持的 SQL Server 版本 SQL Server 2014 SP1 或更高版本、2016和2017。 所有 SQL Server 版本应为标准版或企业版 64 位。 Azure 备份服务器使用的实例必须仅用于本地;它不能是远程的。 如果对 Azure 备份服务器使用现有 SQL Server 实例，则安装程序仅支持 SQL Server 的 *命名实例* 的使用。
 
    如果出现故障，并建议重新启动计算机，请执行此操作，然后选择 " **再次检查**"。 对于任何 SQL Server 配置问题，请根据 SQL Server 准则重新配置 SQL Server。 然后，使用 SQL Server 的现有实例重试安装或升级 Azure 备份服务器。
 
@@ -280,7 +288,7 @@ Azure 备份服务器 VM 必须加入域。 具有 VM 上的管理员权限的�
 
    **配置 reporting services 与 SQL Server 2017**
 
-   如果使用 SQL Server 2017 的实例，则必须手动配置 SQL Server 2017 Reporting Services (SSRS) 。 配置 SSRS 后，请确保将 SSRS 的 **IsInitialized** 属性设置为 **True**。 当设置为 **True**时，Azure 备份服务器假设已配置 ssrs，并跳过 ssrs 配置。
+   如果使用 SQL Server 2017 的实例，则必须手动配置 SQL Server 2017 Reporting Services (SSRS) 。 配置 SSRS 后，请确保将 SSRS 的 **IsInitialized** 属性设置为 **True**。 当设置为 **True** 时，Azure 备份服务器假设已配置 ssrs，并跳过 ssrs 配置。
 
    若要检查 SSRS 配置状态，请运行：
 
@@ -295,9 +303,9 @@ Azure 备份服务器 VM 必须加入域。 具有 VM 上的管理员权限的�
    对 SSRS 配置使用以下值：
 
    * **服务帐户**： **使用内置帐户** 应为 **Network Service**。
-   * **Web 服务 URL**：应**ReportServer_ \<SQLInstanceName> ****虚拟目录**。
-   * **数据库**： **DatabaseName**应为**ReportServer $ \<SQLInstanceName> **。
-   * **Web 门户 URL**：应**Reports_ \<SQLInstanceName> ****虚拟目录**。
+   * **Web 服务 URL**：应 **ReportServer_ \<SQLInstanceName>****虚拟目录**。
+   * **数据库**： **DatabaseName** 应为 **ReportServer $ \<SQLInstanceName>**。
+   * **Web 门户 URL**：应 **Reports_ \<SQLInstanceName>****虚拟目录**。
 
    [详细了解](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode) SSRS 配置。
 

@@ -3,12 +3,12 @@ title: Azure 磁盘备份概述
 description: 了解 Azure 磁盘备份解决方案。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: fea0dd9d01bdc7c31d724cedd89d1fe6891c650a
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: d73c431fdc2b2906dc1d3d9485bded9449b2f2ba
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557358"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733024"
 ---
 # <a name="overview-of-azure-disk-backup-in-preview"></a>预览版中的 Azure 磁盘备份 (概述) 
 
@@ -19,15 +19,15 @@ ms.locfileid: "98557358"
 
 Azure 磁盘备份是一种基于云的本机备份解决方案，可保护托管磁盘中的数据。 这是一个简单、安全且经济高效的解决方案，使你可以通过几个步骤配置对托管磁盘的保护。 它确保你可以在灾难情况下恢复数据。
 
-Azure 磁盘备份提供了一个全包式解决方案，该解决方案通过使用备份策略自动创建快照并将其保留为配置的持续时间，为托管磁盘提供快照生命周期管理。 你可以用零的基础结构成本管理磁盘快照，而无需自定义脚本处理或管理开销。 这是一个崩溃一致的备份解决方案，它使用 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) 获取托管磁盘的时间点备份，每日支持多个备份。 它也是一个无代理的解决方案，不会影响生产应用程序的性能。 它支持 (包括共享磁盘) 的操作系统和数据磁盘的备份和还原，无论它们当前是否已附加到正在运行的 Azure 虚拟机。
+Azure 磁盘备份提供了一个全包式解决方案，该解决方案通过使用备份策略自动创建快照并将其保留为配置的持续时间，为托管磁盘提供快照生命周期管理。 你可以用零的基础结构成本管理磁盘快照，而无需自定义脚本处理或管理开销。 这是一个崩溃一致的备份解决方案，它使用 [增量快照](../virtual-machines/disks-incremental-snapshots.md) 获取托管磁盘的时间点备份，每日支持多个备份。 它也是一个无代理的解决方案，不会影响生产应用程序的性能。 它支持 (包括共享磁盘) 的操作系统和数据磁盘的备份和还原，无论它们当前是否已附加到正在运行的 Azure 虚拟机。
 
-如果需要包含数据磁盘的虚拟机的应用程序一致性备份，或者是从备份中还原整个虚拟机的选项，请还原文件或文件夹，或还原到次要区域，然后使用 [AZURE VM 备份](backup-azure-vms-introduction.md) 解决方案。 Azure 备份除了 [AZURE VM 备份](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) 解决方案外，还提供了使用磁盘备份对托管磁盘进行备份的并行支持。 当你需要一天的虚拟机的应用程序一致性备份，还需要更频繁地备份 OS 磁盘或处于崩溃一致性的特定数据磁盘时，此方法非常有用，并且不会影响生产应用程序的性能。
+如果需要包含数据磁盘的虚拟机的应用程序一致性备份，或者是从备份中还原整个虚拟机的选项，请还原文件或文件夹，或还原到次要区域，然后使用 [AZURE VM 备份](backup-azure-vms-introduction.md) 解决方案。 Azure 备份除了 [AZURE VM 备份](./backup-azure-vms-introduction.md) 解决方案外，还提供了使用磁盘备份对托管磁盘进行备份的并行支持。 当你需要一天的虚拟机的应用程序一致性备份，还需要更频繁地备份 OS 磁盘或处于崩溃一致性的特定数据磁盘时，此方法非常有用，并且不会影响生产应用程序的性能。
 
 Azure 磁盘备份集成到了备份中心，在 Azure 中提供了一种 **统一的管理体验** ，使企业能够大规模控制、监视、操作和分析备份。
 
 ## <a name="key-benefits-of-disk-backup"></a>磁盘备份的主要优点
 
-Azure 磁盘备份是无代理和崩溃一致的解决方案，它使用 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) 并提供以下优点：
+Azure 磁盘备份是无代理和崩溃一致的解决方案，它使用 [增量快照](../virtual-machines/disks-incremental-snapshots.md) 并提供以下优点：
 
 - 更频繁、更快速地备份，而不会中断虚拟机。
 - 不会影响生产应用程序的性能。
@@ -59,13 +59,13 @@ Azure 磁盘备份解决方案在以下情况下很有用：
 
 - 若要配置备份，请前往备份保管库，分配备份策略，选择需要备份的托管磁盘，并提供要在其中存储和管理快照的资源组。 Azure 备份会自动触发计划的备份作业，这些作业根据备份频率创建磁盘的增量快照。 根据备份策略指定的保持期，删除较旧的快照。
 
-- Azure 备份使用托管磁盘的 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 。 增量快照是托管磁盘的一种经济高效的时间点备份，对自上一次快照以来磁盘的增量更改计费。 它们始终存储在最经济高效的存储中，而不考虑父磁盘的存储类型。 磁盘的第一个快照将占用磁盘的已用空间，而连续增量快照则在自上次拍摄快照后，将对磁盘进行增量更改。
+- Azure 备份使用托管磁盘的 [增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions) 。 增量快照是托管磁盘的一种经济高效的时间点备份，对自上一次快照以来磁盘的增量更改计费。 它们始终存储在最经济高效的存储中，而不考虑父磁盘的存储类型。 磁盘的第一个快照将占用磁盘的已用空间，而连续增量快照则在自上次拍摄快照后，将对磁盘进行增量更改。
 
 - 配置托管磁盘的备份后，将在备份保管库中创建一个备份实例。 通过使用备份实例，可以查找备份操作的运行状况，触发按需备份，并执行还原操作。 你还可以通过使用备份中心来查看跨多个保管库和备份实例的备份的运行状况，这提供了单个窗格的玻璃视图。
 
 - 若要还原，只需选择要从中还原磁盘的恢复点。 提供要从快照创建已还原磁盘的资源组。 Azure 备份提供即时还原体验，因为快照本地存储在订阅中。
 
-- 备份保管库使用托管标识来访问其他 Azure 资源。 若要配置托管磁盘的备份并从过去的备份进行还原，备份保管库的托管标识需要一组对源磁盘的权限，创建和管理快照的快照资源组，以及要在其中还原备份的目标资源组。 可以使用 Azure RBAC)  (基于角色的访问控制向托管标识授予权限。 托管标识是特定类型的服务主体，只能与 Azure 资源一起使用。 了解有关 [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)的详细信息。
+- 备份保管库使用托管标识来访问其他 Azure 资源。 若要配置托管磁盘的备份并从过去的备份进行还原，备份保管库的托管标识需要一组对源磁盘的权限，创建和管理快照的快照资源组，以及要在其中还原备份的目标资源组。 可以使用 Azure RBAC)  (基于角色的访问控制向托管标识授予权限。 托管标识是特定类型的服务主体，只能与 Azure 资源一起使用。 了解有关 [托管标识](../active-directory/managed-identities-azure-resources/overview.md)的详细信息。
 
 - 当前，Azure 磁盘备份支持托管磁盘的操作备份，不会将备份复制到备份保管库存储中。 有关支持的和不支持的方案以及区域可用性的详细列表，请参阅 [支持矩阵](disk-backup-support-matrix.md)。
 

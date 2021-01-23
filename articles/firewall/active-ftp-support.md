@@ -5,20 +5,23 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 01/22/2021
 ms.author: victorh
-ms.openlocfilehash: 2ff61d06885c182454c99ee7e982a3a1a1f5013c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2c89eb19025212490d29c97a061da52e779ecf42
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690332"
+ms.locfileid: "98704391"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Azure 防火墙 Active FTP 支持
 
 对于 Active FTP，FTP 服务器启动到指定 FTP 客户端数据端口的数据连接。 客户端网络上的防火墙通常会阻止对内部客户端端口的外部连接请求。 有关详细信息，请参阅 [ACTIVE ftp 与被动 ftp 的详细说明](https://slacksite.com/other/ftp.html)。
 
 默认情况下，Azure 防火墙上禁用活动 FTP 支持，以防止使用 FTP 命令的 FTP 弹跳攻击 `PORT` 。 但是，可以在使用 Azure PowerShell、Azure CLI 或 Azure ARM 模板进行部署时启用 Active FTP。
+
+> [!NOTE]
+> 目前，只有在虚拟网络中部署的防火墙才支持活动 FTP。 稍后将添加虚拟 WAN 支持。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
