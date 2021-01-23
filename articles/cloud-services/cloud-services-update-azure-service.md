@@ -1,20 +1,24 @@
 ---
-title: 如何更新云服务 | Microsoft Docs
+title: 如何 (经典) 中更新云服务 |Microsoft Docs
 description: 了解如何在 Azure 中更新云服务。 了解如何云服务上进行更新以确保可用性。
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 5d85003ca7b4307c308914484502ae03269f66ac
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075036"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741105"
 ---
-# <a name="how-to-update-a-cloud-service"></a>如何更新云服务
+# <a name="how-to-update-an-azure-cloud-service-classic"></a>如何更新 (经典) 的 Azure 云服务
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
 
 三步操作进行云服务更新（包括其角色和来宾 OS）。 首先，必须上传新云服务或 OS 版本的二进制文件和配置文件。 其次，Azure 会根据新云服务版本的要求，保留云服务的计算资源和网络资源。 最后，Azure 执行滚动升级，以增量方式将租户更新到新版本或来宾 OS，同时保留可用性。 本文介绍最后一个步骤 - 滚动升级的详细信息。
 
@@ -117,7 +121,7 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
 在 Azure 结构控制器接受初始更新请求后，Azure 允许用户对服务启动额外的操作，从而提高了在更新期间管理服务方面的灵活性。 只有当更新（配置更改）或升级在部署上处于“进行中”状态时，才能执行回滚  。 只要至少有一个服务实例尚未更新为新版本，就认为更新或升级处于进行中状态。 要测试是否允许回滚，请检查[获取部署](/previous-versions/azure/reference/ee460804(v=azure.100))和[获取云服务属性](/previous-versions/azure/reference/ee460806(v=azure.100))操作返回的 RollbackAllowed 标志值是否设置为 true。
 
 > [!NOTE]
-> 这仅对在**就地**更新或升级上调用 Rollback 有意义，因为 VIP 交换升级涉及将服务的一个完整运行实例替换为另一个实例。
+> 这仅对在 **就地** 更新或升级上调用 Rollback 有意义，因为 VIP 交换升级涉及将服务的一个完整运行实例替换为另一个实例。
 >
 >
 
@@ -149,7 +153,7 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
 <a name="multiplemutatingoperations"></a>
 
 ## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>在进行的部署上启动多个变动操作
-在某些情况下，可能需要在进行的部署上启动多个同时的变动操作。 例如，你可能执行一个服务更新，并在服务中部署该更新的同时希望进行一些更改，例如，回滚更新，应用不同的更新，甚至删除部署。 一种可能需要执行此操作的情况是，服务升级包含错误的代码，而导致升级的角色实例反复崩溃。 在这种情况下，Azure 结构控制器无法继续应用该升级，因为升级域中的正常实例数不足。 这种状态称为*卡住的部署*。 可以回滚更新或应用全新的更新以覆盖失败的更新，从而纠正卡住的部署状态。
+在某些情况下，可能需要在进行的部署上启动多个同时的变动操作。 例如，你可能执行一个服务更新，并在服务中部署该更新的同时希望进行一些更改，例如，回滚更新，应用不同的更新，甚至删除部署。 一种可能需要执行此操作的情况是，服务升级包含错误的代码，而导致升级的角色实例反复崩溃。 在这种情况下，Azure 结构控制器无法继续应用该升级，因为升级域中的正常实例数不足。 这种状态称为 *卡住的部署*。 可以回滚更新或应用全新的更新以覆盖失败的更新，从而纠正卡住的部署状态。
 
 在 Azure 结构控制器收到更新或升级服务的初始请求后，可以启动后续的变动操作。 也就是说，不必等待初始操作完成，即可启动其他变动操作。
 

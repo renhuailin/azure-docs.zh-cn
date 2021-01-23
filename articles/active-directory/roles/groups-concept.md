@@ -2,23 +2,23 @@
 title: 使用云组来管理 Azure Active Directory 中的角色分配 | Microsoft Docs
 description: 预览用于委托标识管理的自定义 Azure AD 角色。 在 Azure 门户、PowerShell 或图形 API 中管理 Azure 角色分配。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54988c8bbc4a9c3d448ac35f31e97e2d20228209
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: a4a35bafd2c5dc78f0d9d1debbf21babb6279545
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007562"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740085"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>使用云组来管理 Azure Active Directory（预览版）中的角色分配
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) 即将引入公共预览，可在其中向 Azu
 我们设计了如何将组分配给角色，以防止出现这种潜在的漏洞：
 
 - 只有全局管理员和特权角色管理员才能创建可分配角色的组（启用“isAssignableToRole”属性）。
-- 它不能是 Azure AD 动态组;也就是说，它必须具有成员资格类型 "已分配"。 自动填充动态组可能会导致向组添加不需要的帐户，从而将其分配给该角色。
+- 它不能是 Azure AD 动态组；也就是说，其成员身份类型必须为“已分配”。 自动填充动态组可能会导致将不需要的帐户添加到该组，从而将其分配给该角色。
 - 默认情况下，只有全局管理员和特权角色管理员可以管理可分配角色组的成员资格，但你可以通过添加组所有者来委派对可分配角色的组的管理。
 - 为了防止特权提升，只能由特权身份验证管理员或全局管理员更改可分配角色组的成员和所有者的凭据。
 - 无嵌套。 不能将组添加为角色可分配的组的成员。

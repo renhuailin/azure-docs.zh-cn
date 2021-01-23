@@ -3,22 +3,22 @@ title: 使用我的员工将用户管理委托 (预览) -Azure AD |Microsoft Doc
 description: 使用我的员工和管理单元委托用户管理
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.date: 05/08/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 927d1f6dff9a24fb8427bb9c353e6cc61ac6a1f0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 304d88dfcf0c72769f27911186df04c66224419e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374505"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740136"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>通过我的员工 (预览版来管理用户) 
 
@@ -32,7 +32,7 @@ ms.locfileid: "92374505"
 
 我的员工基于管理单元 (澳大利亚) ，这是资源的容器，可用于限制角色分配的管理控制的作用域。 在我的工作人员中，使用了澳大利亚来定义组织用户（如商店或部门）的子集。 例如，可以将团队经理分配到其作用域为一个或多个澳大利亚的角色。 在以下示例中，用户已被授予身份验证管理角色，这三个澳大利亚是角色的作用域。 有关管理单元的详细信息，请参阅 [Azure Active Directory 中的管理单元管理](administrative-units.md)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 需有以下资源和特权才能完成本文：
 
@@ -54,7 +54,7 @@ ms.locfileid: "92374505"
 配置了澳大利亚后，可以将此作用域应用于访问我的员工的用户。 只有分配有管理角色的用户才可以访问我的员工。 若要启用我的员工，请完成以下步骤：
 
 1. 以用户管理员身份登录到 Azure 门户。
-2. 浏览到**Azure Active Directory**  >  **用户设置**  >  **用户功能预览**  >  **管理用户功能预览设置**。
+2. 浏览到 **Azure Active Directory**  >  **用户设置**  >  **用户功能预览**  >  **管理用户功能预览设置**。
 3. 在 " **管理员可以访问我的人员**" 下，您可以选择为所有用户、选定用户或没有用户访问启用。
 
 > [!Note]
@@ -94,7 +94,7 @@ ms.locfileid: "92374505"
 - [用户管理员](permissions-reference.md#user-administrator)
 - [密码管理员](permissions-reference.md#password-administrator)
 
-在 **我**的工作人员中，打开用户的配置文件。 选择“重置密码”。
+在 **我** 的工作人员中，打开用户的配置文件。 选择“重置密码”。
 
 - 如果用户是仅限云的，你可以看到可向用户分配的临时密码。
 - 如果用户是从本地 Active Directory 同步，则可以输入符合本地 AD 策略的密码。 然后，可以将该密码给用户。
@@ -105,7 +105,7 @@ ms.locfileid: "92374505"
 
 ## <a name="manage-a-phone-number"></a>管理电话号码
 
-在 **我**的工作人员中，打开用户的配置文件。
+在 **我** 的工作人员中，打开用户的配置文件。
 
 - 选择 " **添加电话号码** " 部分以添加用户的电话号码
 - 选择 " **编辑电话号码** " 以更改电话号码

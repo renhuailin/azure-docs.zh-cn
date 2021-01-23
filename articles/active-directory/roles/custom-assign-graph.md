@@ -2,23 +2,23 @@
 title: 向 Microsoft Graph API 分配 Azure AD 管理员角色 |Microsoft Docs
 description: 在 Azure Active Directory 中使用图形 API 分配和移除 Azure AD 管理员角色
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a3f6fab4d3e1a4c2b73c2fe4ab0df3447b75480
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 0bec789d8ef79e221007b172550100b80b76197a
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378337"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740272"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>在 Azure Active Directory 中使用 Microsoft 图形 API 分配自定义管理员角色 
 
@@ -30,7 +30,7 @@ ms.locfileid: "93378337"
 
 ## <a name="post-operations-on-roleassignment"></a>RoleAssignment 上的 POST 操作
 
-### <a name="example-1-create-a-role-assignment-between-a-user-and-a-role-definition"></a>示例1：创建用户和角色定义之间的角色分配
+### <a name="example-1-create-a-role-assignment-between-a-user-and-a-role-definition"></a>示例 1：创建用户和角色定义之间的角色分配
 
 POST
 
@@ -304,6 +304,6 @@ HTTP/1.1 400 Bad Request
 
 ## <a name="next-steps"></a>后续步骤
 
-* 欢迎在[Azure AD 管理角色论坛](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上与我们分享
-* 有关角色和管理员角色分配的详细信息，请参阅 [分配管理员角色](permissions-reference.md)
-* 有关默认用户权限，请参阅 [默认来宾和成员用户权限的比较](../fundamentals/users-default-permissions.md)
+* 欢迎在 [Azure AD 管理角色论坛](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上与我们分享你的观点
+* 有关角色以及管理员角色分配的详细信息，请参阅[分配管理员角色](permissions-reference.md)
+* 有关默认用户权限，请参阅[默认来宾和成员用户权限的比较](../fundamentals/users-default-permissions.md)

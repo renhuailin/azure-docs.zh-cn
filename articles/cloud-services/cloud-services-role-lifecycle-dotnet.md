@@ -1,22 +1,25 @@
 ---
-title: 处理云服务生命周期事件 | Microsoft Docs
+title: 处理云服务 (经典) 生命周期事件 |Microsoft Docs
 description: 了解如何在 .NET 中使用云服务角色的生命周期方法，包括 RoleEntryPoint，它提供了用于响应生命周期事件的方法。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
-ms.custom: devx-track-csharp
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: d64414abfbc62e52b172a2c42796ec8d89d1719f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: b5aa4bd061647f63ebcc70109f0ba21b39e814cc
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930054"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741326"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>在 .NET 中自定义 Web 角色或辅助角色的生命周期
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+
 在创建辅助角色时，需要扩展 [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) 类，重写该类提供的方法可以响应生命周期事件。 此类对于 Web 角色而言是可选的，因此，必须将它用于响应生命周期事件。
 
 ## <a name="extend-the-roleentrypoint-class"></a>扩展 RoleEntryPoint 类

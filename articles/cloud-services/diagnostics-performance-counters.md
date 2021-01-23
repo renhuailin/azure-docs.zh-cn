@@ -1,21 +1,24 @@
 ---
-title: 在 Azure 云服务中收集性能计数器 | Microsoft Docs
+title: " (经典) 在 Azure 云服务中收集性能计数器 |Microsoft Docs"
 description: 了解如何使用 Azure 诊断和 Application Insights 在云服务中发现、使用和创建性能计数器。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 02/02/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 39843ad83830a72b5d6b01cc00ecd65269c02e12
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 16b54e8a59eb42c6e2351d37ec0a29d775161493
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078589"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739830"
 ---
-# <a name="collect-performance-counters-for-your-azure-cloud-service"></a>收集 Azure 云服务的性能计数器
+# <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a> (经典) 收集 Azure 云服务的性能计数器
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
 
 使用性能计数器可以跟踪应用程序和主机的运行情况。 Windows Server 提供与硬件、应用程序、操作系统等相关的许多不同性能计数器。 通过收集性能计数器并将其发送到 Azure，可以分析此信息以帮助做出更明智的决策。 
 
@@ -115,7 +118,7 @@ Application Insights 会自动收集以下性能计数器：
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
 > [!IMPORTANT]
-> 尽管所有这些数据都会聚合到存储帐户中，但门户**不**提供绘制数据图表的本机方法。 我们强烈建议将另一个诊断服务（如 Application Insights）集成到应用程序中。
+> 尽管所有这些数据都会聚合到存储帐户中，但门户 **不** 提供绘制数据图表的本机方法。 我们强烈建议将另一个诊断服务（如 Application Insights）集成到应用程序中。
 
 使用适用于云服务的 Azure 诊断扩展可以指定要收集的性能计数器。 若要设置 Azure 诊断，请参阅[云服务监视概述](cloud-services-how-to-monitor.md#setup-diagnostics-extension)。
 
@@ -125,7 +128,7 @@ Application Insights 会自动收集以下性能计数器：
 
 `sampleRate` 属性定义的时间段使用 XML 持续时间数据类型来指示轮询性能计数器的频率。 在以下示例中，频率设置为 `PT3M`，表示 `[P]eriod[T]ime[3][M]inutes`：每隔 3 分钟。
 
-有关 `sampleRate` 和 `scheduledTransferPeriod` 定义方式的详细信息，请参阅 [W3 XML 日期和时间日期类型](https://www.w3schools.com/XML/schema_dtypes_date.asp)教程中的“持续时间数据类型”部分。****
+有关 `sampleRate` 和 `scheduledTransferPeriod` 定义方式的详细信息，请参阅 [W3 XML 日期和时间日期类型](https://www.w3schools.com/XML/schema_dtypes_date.asp)教程中的“持续时间数据类型”部分。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

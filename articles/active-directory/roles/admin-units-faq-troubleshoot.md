@@ -3,27 +3,27 @@ title: 管理单元故障排除和常见问题解答 - Azure Active Directory | 
 description: 在 Azure Active Directory 中调查管理单元以授予作用域有限的权限。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f585be2057bda19038fff1066e7864c6796576c0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 0fb61388b13b912166c9c07b9ee28b365c4a63b9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394673"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740374"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD 管理单元：故障排除和常见问题解答
 
-为了 Azure Active Directory (Azure AD) 中提供更精细的管理控制，可以将用户分配到一个范围限制为一个或多个管理单元的 Azure AD 角色。 有关常见任务的 PowerShell 脚本示例，请参阅 [使用管理单元](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)。
+若要在 Azure Active Directory (Azure AD) 中实现更精细的管理控制，可将用户分配到范围限定为一个或多个管理单元的 Azure AD 角色。 有关常见任务的 PowerShell 脚本示例，请参阅 [使用管理单元](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)。
 
 ## <a name="frequently-asked-questions"></a>常见问题解答
 
@@ -31,17 +31,17 @@ ms.locfileid: "93394673"
 
 **答:** 只有“全局管理员”或“特权角色管理员”能够在 Azure AD 中创建管理单元。 请进行检查以确保尝试创建管理单元的用户分配有“全局管理员”或“特权角色管理员”角色。
 
-**问：我向管理单元添加了组。为什么组成员仍无法显示？**
+**问：我向管理单元中添加了一个组。为什么组成员仍然没有显示在其中？**
 
-**答：** 向管理单元添加组时，不会导致将组的所有成员添加到该管理单元。 用户必须直接分配到管理单元。
+**答:** 向管理单元中添加组时，不会导致将组的所有成员添加到该管理单元。 用户必须直接分配到管理单元。
 
-**问：我只是添加了 (或删除了) 管理单元的成员。为什么成员不显示 (或仍显示用户界面) ？**
+**问：我刚刚添加（或删除）了管理单元的成员。为什么成员未显示（或仍然显示）在用户界面中？**
 
-**答：** 有时，可能需要几分钟才能在 " **管理** 单元" 窗格中添加或删除管理单元的一个或多个成员。 此外，你可以直接访问关联资源的属性，查看该操作是否已完成。 有关管理单元中的用户和组的详细信息，请参阅 [查看用户的管理单元列表](admin-units-add-manage-users.md) 和 [查看组的管理单元列表](admin-units-add-manage-groups.md)。
+**答:** 有时候，添加或删除管理单元的一个或多个成员的操作可能需要几分钟才能反映在“管理单元”窗格上。 此外，你可以直接访问关联资源的属性，查看该操作是否已完成。 有关管理单元中用户和组的详细信息，请参阅[查看用户的管理单元列表](admin-units-add-manage-users.md)和[查看组的管理单元列表](admin-units-add-manage-groups.md)。
 
 **问：我是某个管理单元上的委托密码管理员。我为何无法重置特定用户的密码？**
 
-**答:** 作为管理单元的管理员，你只能为分配到你的管理单元的用户重置密码。 请确保其密码重置失败的用户属于已分配给你的管理单元。 如果用户属于相同的管理单元，但仍不能重置用户的密码，请检查分配给该用户的角色。 
+**答:** 作为管理单元的管理员，你只能为分配到你的管理单元的用户重置密码。 请确保其密码重置失败的用户属于已分配给你的管理单元。 如果用户属于同一管理单元，但你仍无法重置其密码，请检查分配给该用户的角色。 
 
 为了防止特权提升，其权限范围为某个管理单元的管理员不能重置其角色权限范围为组织的用户的密码。
 
@@ -53,7 +53,7 @@ ms.locfileid: "93394673"
 
 **问：向管理单元添加组意味着什么？**
 
-**答:** 向管理单元添加组会将组本身引入到其权限范围也限定为该管理单元的任何用户管理员的管理范围中。 管理单元的用户管理员可以管理组本身的名称和成员身份。 它不会授予 *用户管理员* 管理组用户的权限 (例如，将其密码重置) 。 若要向用户管理员授予管理用户的权限，用户必须是管理单元的直接成员。
+**答:** 向管理单元添加组会将组本身引入到其权限范围也限定为该管理单元的任何用户管理员的管理范围中。 管理单元的用户管理员可以管理组本身的名称和成员身份。 它不会向用户管理员授予管理组用户（例如，重置其密码）所需的权限。 若要向用户管理员授予管理用户的权限，用户必须是管理单元的直接成员。
 
 **问：一个资源（用户或组）是否可以是多个管理单元的成员？**
 

@@ -3,23 +3,23 @@ title: 委托应用程序管理管理员权限 - Azure AD | Microsoft Docs
 description: 在 Azure Active Directory 中授予应用程序访问管理权限
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ad21e15d33dabba74d338b339e4b2fdc25df52e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: e36a29048d97798c2e1621fbdc957bde51b5a383
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379207"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740595"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中委托应用注册权限
 
@@ -41,8 +41,8 @@ ms.locfileid: "93379207"
 1. 使用符合 Azure AD 组织中“全局管理员”角色条件的帐户登录到 Azure AD 组织。
 1. 设置下列一项或两项：
 
-    - 在组织的 " [用户设置" 页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)上，将 " **用户可以注册应用程序** " 设置设置为 "否"。 这会禁用用户用来创建应用程序注册的默认权限。
-    - 在 " [企业应用程序的用户设置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)" 中，将 " **用户可以同意应用程序访问公司数据"** 设置为 "否"。 这会禁用用户用来许可代表其访问公司数据的应用程序的默认权限。
+    - 在[组织的“用户设置”页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)上，将“用户可以注册应用程序”设置为“否”。 这会禁用用户用来创建应用程序注册的默认权限。
+    - 在[企业应用程序的用户设置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)中，将“用户可以许可代表其访问公司数据的应用程序”设置为“否”。 这会禁用用户用来许可代表其访问公司数据的应用程序的默认权限。
 
 ### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>禁用默认权限时授予创建和许可应用程序的单个权限
 
@@ -60,8 +60,8 @@ ms.locfileid: "93379207"
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>向企业应用程序分配所有者
 
-1. 使用有资格用于组织的应用程序管理员或云应用程序管理员的帐户登录到 [Azure AD 组织](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
-1. 在组织的 " [应用注册" 页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) 上，选择一个应用以打开该应用的 "概述" 页。
+1. 使用符合组织中应用程序管理员或云应用程序管理员条件的帐户登录到 [Azure AD 组织](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
+1. 在组织的[应用注册页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)上，选择某个应用以打开该应用的“概述”页。
 1. 选择“所有者”，以查看应用所有者列表。
 1. 选择“添加”，以选择一个或多个要添加到应用的所有者。
 
@@ -77,7 +77,7 @@ Azure AD 提供一组内置的管理员角色，用于授予 Azure AD 中所有�
 - 应用程序管理员：此角色中的用户可以创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。 此角色还授予同意委派权限和应用程序权限（不包括 Microsoft Graph）的能力。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 - 云应用程序管理员：此角色中的用户具有与应用程序管理员角色相同的权限，但不包括管理应用程序代理的权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 
-有关详细信息以及查看这些角色的说明，请参阅 [可用角色](permissions-reference.md#available-roles)。
+有关详细信息以及如何查看这些角色的说明，请参阅[可用的角色](permissions-reference.md#available-roles)。
 
 遵照[使用 Azure Active Directory 向用户分配角色](../fundamentals/active-directory-users-assign-role-azure-portal.md)操作指南中的说明分配“应用程序管理员”或“云应用程序管理员”角色。
 

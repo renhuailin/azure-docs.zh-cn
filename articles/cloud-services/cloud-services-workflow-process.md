@@ -1,27 +1,25 @@
 ---
 title: Windows Azure VM 体系结构的工作流 | Microsoft Docs
 description: 本文概述部署服务时的工作流过程。
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 04/08/2019
-ms.author: kwill
-ms.openlocfilehash: d29c98ecbbb6c9da18e6356a0e38122e253a34b6
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: bda066dd50d2f95776981eafc01e3ddd04d33e54
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026456"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741054"
 ---
-#    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure 经典 VM 体系结构的工作流 
+# <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure 经典 VM 体系结构的工作流 
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+
 本文概述当你部署或更新虚拟机等 Azure 资源时发生的工作流过程。 
 
 > [!NOTE]
@@ -29,49 +27,49 @@ ms.locfileid: "93026456"
 
 下图显示了 Azure 资源的体系结构。
 
-:::image type="content" source="./media/cloud-services-workflow-process/workflow.jpg" alt-text="<alt Azure 工作流的图像>":::
+:::image type="content" source="./media/cloud-services-workflow-process/workflow.jpg" alt-text="<alt 关于 Azure 工作流的图像>":::
 
 ## <a name="workflow-basics"></a>工作流基础知识
    
-**答** ： RDFE/FFE 是从用户到结构的通信路径。 RDFE（RedDog 前端）是公开的 API，它是管理门户以及 Visual Studio、Azure MMC 等服务管理 API 的前端。  来自用户的所有请求都会通过 RDFE。 FFE（结构前端）是将请求从 RDFE 转换为结构命令的层。 来自 RDFE 的所有请求都会通过 FFE 抵达结构控制器。
+**答**： RDFE/FFE 是从用户到结构的通信路径。 RDFE（RedDog 前端）是公开的 API，它是管理门户以及 Visual Studio、Azure MMC 等服务管理 API 的前端。  来自用户的所有请求都会通过 RDFE。 FFE（结构前端）是将请求从 RDFE 转换为结构命令的层。 来自 RDFE 的所有请求都会通过 FFE 抵达结构控制器。
 
-**B** . 结构控制器负责维护和监视数据中心内的所有资源。 它与结构 OS 上的、发送来宾 OS 版本、服务包、服务配置和服务状态等信息的结构主机代理通信。
+**B**. 结构控制器负责维护和监视数据中心内的所有资源。 它与结构 OS 上的、发送来宾 OS 版本、服务包、服务配置和服务状态等信息的结构主机代理通信。
 
-**C** . 主机代理驻留在主机 OS 上，负责设置来宾 OS，并与来宾代理 (WindowsAzureGuestAgent) 通信，以便将角色更新到预期的目标状态，并使用来宾代理执行检测信号检查。 如果主机代理有 10 分钟未收到检测信号响应，则主机代理会重启来宾 OS。
+**C**. 主机代理驻留在主机 OS 上，负责设置来宾 OS，并与来宾代理 (WindowsAzureGuestAgent) 通信，以便将角色更新到预期的目标状态，并使用来宾代理执行检测信号检查。 如果主机代理有 10 分钟未收到检测信号响应，则主机代理会重启来宾 OS。
 
-**C2** . WaAppAgent 负责安装、配置和更新 WindowsAzureGuestAgent.exe。
+**C2**. WaAppAgent 负责安装、配置和更新 WindowsAzureGuestAgent.exe。
 
-**D** .  WindowsAzureGuestAgent 负责：
+**D**.  WindowsAzureGuestAgent 负责：
 
-1. 配置来宾 OS，包括防火墙、Acl、LocalStorage 资源、服务包和配置以及证书。
+1. 配置来宾 OS，包括防火墙、ACL、LocalStorage 资源、服务包和配置，以及证书。
 2. 为角色将在其下运行的用户帐户设置 SID。
 3. 向结构传达角色状态。
 4. 启动并监视 WaHostBootstrapper，以确保角色处于目标状态。
 
-**E** . WaHostBootstrapper 负责：
+**E**. WaHostBootstrapper 负责：
 
 1. 读取角色配置，并启动所有相应的任务与进程来配置和运行角色。
 2. 监视其所有子进程。
 3. 针对角色主机进程引发 StatusCheck 事件。
 
-**F** . 如果将角色配置为完整的 IIS web 角色，则 IISConfigurator 运行。 它负责：
+**F**. 如果角色配置为完整的 IIS Web 角色，则 IISConfigurator 会运行。 它负责：
 
 1. 启动标准的 IIS 服务
 2. 在 Web 配置中配置重写模块
 3. 为服务模型中配置的角色设置 AppPool
 4. 将 IIS 日志记录设置为指向 DiagnosticStore LocalStorage 文件夹
 5. 配置权限和 ACL
-6. 网站位于% roleroot%： \sitesroot\0 中，AppPool 指向此位置以运行 IIS。 
+6. 网站驻留在 %roleroot%:\sitesroot\0 中，AppPool 指向此位置以运行 IIS。 
 
-**G** . 启动任务由角色模型定义，由 WaHostBootstrapper 启动。 启动任务可配置为以异步方式在后台运行，主机启动程序将启动启动任务，然后继续启动其他启动任务。 启动任务还可以配置为以简单（默认）模式运行，在此模式下，主机启动程序将等待启动任务完成运行，然后返回成功 (0) 退出代码，接着继续启动下一个启动任务。
+**G**. 启动任务由角色模型定义，由 WaHostBootstrapper 启动。 启动任务可配置为以异步方式在后台运行，主机启动程序将启动启动任务，然后继续启动其他启动任务。 启动任务还可以配置为以简单（默认）模式运行，在此模式下，主机启动程序将等待启动任务完成运行，然后返回成功 (0) 退出代码，接着继续启动下一个启动任务。
 
-**H** . 这些任务是 SDK 的一部分，在角色的服务定义 (.csdef) 中定义为插件。 展开到启动任务， **DiagnosticsAgent** 和 **RemoteAccessAgent** 的独特之处在于它们各自定义两个启动任务：一个常规启动任务，一个带有 **/blockStartup** 参数的启动任务。 正常的启动任务定义为后台启动任务，当角色本身正在运行时，该启动任务可在后台运行。 **/blockStartup** 启动任务定义为简单启动任务，WaHostBootstrapper 会先等待它退出，然后才继续。 **/blockStartup** 任务等待常规任务完成初始化，然后退出，并允许主机启动程序继续。 这样，便可以在角色进程启动（通过 /blockStartup 任务来实现）之前配置诊断和 RDP 访问。 同时，允许在主机启动程序完成启动任务（通过普通任务来实现）之后继续运行诊断和 RDP 访问。
+**H**. 这些任务是 SDK 的一部分，在角色的服务定义 (.csdef) 中定义为插件。 展开到启动任务，**DiagnosticsAgent** 和 **RemoteAccessAgent** 的独特之处在于它们各自定义两个启动任务：一个常规启动任务，一个带有 **/blockStartup** 参数的启动任务。 正常的启动任务定义为后台启动任务，当角色本身正在运行时，该启动任务可在后台运行。 **/blockStartup** 启动任务定义为简单启动任务，WaHostBootstrapper 会先等待它退出，然后才继续。 **/blockStartup** 任务等待常规任务完成初始化，然后退出，并允许主机启动程序继续。 这样，便可以在角色进程启动（通过 /blockStartup 任务来实现）之前配置诊断和 RDP 访问。 同时，允许在主机启动程序完成启动任务（通过普通任务来实现）之后继续运行诊断和 RDP 访问。
 
-**I** . WaWorkerHost 是正常辅助角色的标准主机进程。 此主机进程托管角色的所有 DLL 以及入口点代码，例如 OnStart 和 Run。
+**I**. WaWorkerHost 是正常辅助角色的标准主机进程。 此主机进程托管角色的所有 DLL 以及入口点代码，例如 OnStart 和 Run。
 
-**J** . WaIISHost 是使用完整 IIS 的 Web 角色的角色入口点代码的主机进程。 此进程加载找到的第一个 DLL，该 DLL 使用 **RoleEntryPoint** 类并从此类执行代码（OnStart、Run、OnStop）。 在 RoleEntryPoint 类中创建的任何 **RoleEnvironment** 事件（例如 StatusCheck 和 Changed）将在此进程中引发。
+**J**. WaIISHost 是使用完整 IIS 的 Web 角色的角色入口点代码的主机进程。 此进程加载找到的第一个 DLL，该 DLL 使用 **RoleEntryPoint** 类并从此类执行代码（OnStart、Run、OnStop）。 在 RoleEntryPoint 类中创建的任何 **RoleEnvironment** 事件（例如 StatusCheck 和 Changed）将在此进程中引发。
 
-**K** 。 W3WP 是标准的 IIS 工作进程，如果角色配置为使用完整 IIS，将使用该进程。 它运行从 IISConfigurator 配置的 AppPool。 此处创建的任何 RoleEnvironment 事件（例如 StatusCheck 和 Changed）将在此进程中引发。 请注意，如果你订阅了这两个进程中的事件，则 RoleEnvironment 事件将在这两个位置（WaIISHost 和 w3wp.exe）激发。
+**K**. W3WP 是标准的 IIS 工作进程，如果角色配置为使用完整 IIS，将使用该进程。 它运行从 IISConfigurator 配置的 AppPool。 此处创建的任何 RoleEnvironment 事件（例如 StatusCheck 和 Changed）将在此进程中引发。 请注意，如果你订阅了这两个进程中的事件，则 RoleEnvironment 事件将在这两个位置（WaIISHost 和 w3wp.exe）激发。
 
 ## <a name="workflow-processes"></a>工作流过程
 
@@ -84,8 +82,8 @@ ms.locfileid: "93026456"
 7. WaHostBootstrapper 从 E:\RoleModel.xml 读取 **启动** 任务，并开始执行启动任务。 WaHostBootstrapper 等到所有简单启动任务已完成并返回了“成功”消息。
 8. 对于完整 IIS Web 角色，WaHostBootstrapper 将告知 IISConfigurator 配置 IIS AppPool 并将站点指向 `E:\Sitesroot\<index>`，其中，`<index>` 是为服务定义的 `<Sites>` 元素数目的从 0 开始的索引。
 9. WaHostBootstrapper 将根据角色类型启动主机进程：
-    1. **辅助角色** ：开始 WaWorkerHost.exe。 WaHostBootstrapper 执行 OnStart() 方法。 返回后，Wahostbootstrapper.exe 开始执行运行 ( # A1 方法，然后将该角色同时标记为 "就绪"，并将其放入负载均衡器旋转 (如果) 定义了 InputEndpoints。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
-    2. **完整 IIS Web 角色** ：aIISHost 已启动。 WaHostBootstrapper 执行 OnStart() 方法。 返回后，它开始执行 Run() 方法，同时将角色标记为 Ready，并将其放入负载均衡器轮换阵容。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
+    1. **辅助角色**：WaWorkerHost.exe 已启动。 WaHostBootstrapper 执行 OnStart() 方法。 当它返回后，WaHostBootstrapper 开始执行 Run() 方法，同时将角色标记为 Ready，并将其放入负载均衡器轮换阵容（如果定义了 InputEndpoints）。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
+    2. **完整 IIS Web 角色**：aIISHost 已启动。 WaHostBootstrapper 执行 OnStart() 方法。 返回后，它开始执行 Run() 方法，同时将角色标记为 Ready，并将其放入负载均衡器轮换阵容。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
 10. 将 Web 请求传入完整 IIS Web 角色会触发 IIS 来启动 W3WP 进程并为请求提供服务，像在本地 IIS 环境中一样。
 
 ## <a name="log-file-locations"></a>日志文件位置

@@ -1,27 +1,25 @@
 ---
-title: 排除云服务分配故障 | Microsoft Docs
-description: 排查部署 Azure 云服务时的分配失败问题。 了解分配的工作原理以及分配失败的原因。
-services: azure-service-management, cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 529157eb-e4a1-4388-aa2b-09e8b923af74
+title: 排查云服务 (经典) 分配失败 |Microsoft Docs
+description: 对部署 Azure 云服务时的分配失败进行故障排除。 了解分配的工作原理以及分配失败的原因。
+ms.topic: article
 ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: ibiza
-ms.topic: troubleshooting
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 1d82b7223c2b392e6b9aebffdc545dc38b38ca2f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 0c172add9aa49b2ca64d2fb2281d326256e3aec7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074220"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741581"
 ---
-# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>对在 Azure 中部署云服务时的分配失败进行故障排除
+# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-classic-in-azure"></a>排查在 Azure 中部署云服务时的分配失败 (经典) 
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+
 ## <a name="summary"></a>总结
 将实例部署到云服务或者添加新的 Web 角色或辅助角色实例时，Microsoft Azure 会分配计算资源。 在执行这些操作时，甚至在达到 Azure 订阅限制之前，有时可能会收到错误。 本文说明一些常见分配故障的原因，并建议可能的补救方法。 规划服务的部署时，本信息可能也有用。
 
@@ -48,7 +46,7 @@ Azure 数据中心的服务器分区成群集。 会在多个群集中尝试新�
 
 * 部署到过渡槽 - 如果某个云服务在任一槽中存在部署，则会将整个云服务固定到特定的群集。  这意味着，如果生产槽中已存在部署，则只能将新的过渡部署分配到与生产槽相同的群集中。 如果群集已接近容量，则请求可能失败。
 * 缩放 - 将新实例添加到现有云服务时，必须在同一群集中进行分配。  通常可分配小型缩放请求，但情况并非总是如此。 如果群集已接近容量，则请求可能失败。
-* 地缘组 - 进行新的目标为空云服务的部署时，可以通过该区域任何群集中的结构对部署进行分配，除非已将云服务固定到地缘组。 将会在相同的群集中尝试部署到相同的地缘组。 如果群集已接近容量，则请求可能失败。
+* 地缘组 - 进行新的目标为空云服务的部署时，可以通过该区域任何群集中的结构对部署进行分配，除非已将云服务固定到地缘组。 将会在相同的群集中尝试部署到相同的地缘组。 如果群集已接近容量限制，则请求可能失败。
 * 地缘组 vNet - 旧式虚拟网络已绑定到地缘组而不是区域，而这些虚拟网络中的云服务则会固定到地缘组群集。 将会在固定的群集中尝试部署到此类虚拟网络。 如果群集已接近容量限制，则请求可能失败。
 
 ## <a name="solutions"></a>解决方案

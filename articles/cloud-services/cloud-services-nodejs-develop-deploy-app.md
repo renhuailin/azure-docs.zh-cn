@@ -1,23 +1,24 @@
 ---
 title: Node.js 入门指南
 description: 了解如何创建简单的 Node.js Web 应用程序并将其部署到 Azure 云服务。
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: nodejs
-ms.topic: conceptual
-ms.date: 08/17/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: 86bc968c922bcfb90da9ae2babd456ce4db81cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 9889e0e95db84b4dbc5856ba6425f0f303161068
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327470"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741615"
 ---
-# <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务
+# <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service-classic"></a>构建 Node.js 应用程序并将其部署到 Azure 云服务 (经典) 
+
+> [!IMPORTANT]
+> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
 
 本教程演示如何创建在 Azure 云服务中运行的简单 Node.js 应用程序。 云服务是 Azure 中可缩放的云应用程序构建基块。 它们允许进行单独且独立的管理，并允许横向扩展应用程序的前端和后端组件。  云服务为可靠托管每个角色提供强大的专用虚拟机。
 

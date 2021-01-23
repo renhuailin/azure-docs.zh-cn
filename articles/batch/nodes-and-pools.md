@@ -3,12 +3,12 @@ title: Azure Batch 中的节点和池
 description: 从开发的角度来了解计算节点和池及其在 Azure Batch 工作流中的运用。
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: c229381ba1019a5a40a4ca6b7db88f534f57de29
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e55be57968eae2a371a21b214dbd15921641e31f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934639"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741768"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的节点和池
 
@@ -114,7 +114,7 @@ Batch 中提供了两种类型的池配置。
 
 ## <a name="node-size"></a>节点大小
 
-创建 Azure Batch 池时，可以在 Azure 提供的几乎所有 VM 系列和大小中进行选择。 Azure 提供一系列适用于不同工作负荷的 VM 大小，包括专用 [HPC](../virtual-machines/sizes-hpc.md) 或[启用了 GPU](../virtual-machines/sizes-gpu.md) 的 VM 大小。 
+创建 Azure Batch 池时，可以在 Azure 提供的几乎所有 VM 系列和大小中进行选择。 Azure 提供一系列适用于不同工作负荷的 VM 大小，包括专用 [HPC](../virtual-machines/sizes-hpc.md) 或[启用了 GPU](../virtual-machines/sizes-gpu.md) 的 VM 大小。 请注意，只能在创建池时选择节点大小。 换句话说，创建池后，无法更改其节点大小。
 
 有关详细信息，请参阅[在 Azure Batch 池中选择适用于计算节点的 VM 大小](batch-pool-vm-sizes.md)。
 
