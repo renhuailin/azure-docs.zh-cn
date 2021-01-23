@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: e8d0dcae81944d5799841c22093585b942934b79
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 5008da99b63cabba41dade9a745fbd5853345737
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732098"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734960"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 专用链接将网络安全地连接到 Azure Monitor
 
@@ -149,7 +149,7 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
  
    b.    针对“与专用 DNS 区域集成”选择“是”，让它自动新建一个专用 DNS 区域 。 实际 DNS 区域可能不同于下面屏幕截图中显示的内容。 
    > [!NOTE]
-   > 如果你选择 " **否** "，并且喜欢手动管理 DNS 记录，请首先完成设置专用链接-包括此专用终结点和 AMPLS 配置。 然后，根据 [Azure 专用终结点 DNS 配置](../../private-link/private-endpoint-dns.md)中的说明配置 DNS。 请确保不要将空记录创建为准备专用链接设置。 你创建的 DNS 记录可以覆盖现有设置，并影响与 Azure Monitor 的连接。
+   > 如果你选择 " **否** "，并且喜欢手动管理 DNS 记录，请首先完成设置专用链接-包括此专用终结点和 AMPLS 配置。 然后，根据 [Azure 专用终结点 DNS 配置](../../private-link/private-endpoint-dns.md)中的说明配置 DNS。 切勿在准备专用链接设置时创建空记录。 你创建的 DNS 记录会替代现有设置，并且会影响与 Azure Monitor 的连接。
  
    c.    单击“查看 + 创建”。
  
@@ -173,7 +173,7 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 ### <a name="access-from-outside-of-private-links-scopes"></a>从专用链接范围之外的访问权限
 此页面底部的设置控制从公共网络访问，这意味着网络未通过上面列出的作用域进行连接。 如果将“允许公用网络访问以便执行引入”设置为“否”，则已连接的范围之外的计算机无法将数据上传到此工作区中 。 如果将 " **允许对查询的公共网络访问** " 设置为 " **否**"，则范围之外的计算机将无法访问此工作区中的数据，这意味着它将无法查询工作区数据。 这包括工作簿中的查询、面板、基于 API 的客户端体验、Azure 门户中的见解等。 在 Azure 门户外运行的体验，还必须在专用链接的 VNET 中运行查询 Log Analytics 数据。
 
-### <a name="exceptions"></a>异常
+### <a name="exceptions"></a>例外
 如上所述的限制访问不适用于 Azure 资源管理器，因此具有以下限制：
 * 对数据的访问-同时阻止/允许来自公共网络的查询适用于大多数 Log Analytics 体验，一些经验通过 Azure 资源管理器查询数据，因此将无法查询数据，除非资源管理器) 不久就会将专用链接设置应用到 (。 例如，Azure Monitor 解决方案、工作簿和见解以及逻辑应用连接器。
 * 工作区管理-工作区设置和配置更改 (包括打开或关闭这些访问设置) 由 Azure 资源管理器管理。 使用适当的角色、权限、网络控制和审核限制对工作区管理的访问。 有关详细信息，请参阅 [Azure Monitor 角色、权限和安全性](roles-permissions-security.md)。
@@ -217,7 +217,7 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 
 可以使用 Azure 资源管理器模板、REST 和命令行接口来自动执行前面所述的过程。
 
-若要创建和管理专用链接范围，请使用 [REST API](https://docs.microsoft.com/rest/api/monitor/private%20link%20scopes%20(preview)) 或 [Azure CLI (az 监视器专用链接范围) ](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。
+若要创建和管理专用链接范围，请使用 [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) 或 [Azure CLI (az 监视器专用链接范围) ](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。
 
 要管理网络访问，请在 [Log Analytics 工作区](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest)或 [Application Insights 组件](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 标志。
 

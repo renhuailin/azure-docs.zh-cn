@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
-ms.openlocfilehash: bf0cfd70c9850cc6a5ff4482b494d68700022ad8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8a4c1b2ac53679153c8d9485443a231b817df77a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790621"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734573"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL 托管实例中的时区
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "92790621"
 
 支持的时区集继承自托管实例的底层操作系统。 定期更新以获取新的时区定义，并反映对现有时区的更改。
 
-[夏时制/时区更改策略](https://aka.ms/time)保证了 2010 年以来的历史记录的准确性。
+[夏时制/时区更改策略](/troubleshoot/windows-client/system-management-components/daylight-saving-time-help-support)保证了 2010 年以来的历史记录的准确性。
 
 包含受支持时区名称的列表通过 [sys.time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) 系统视图公开。
 
@@ -95,7 +95,7 @@ ms.locfileid: "92790621"
 
 ## <a name="limitations"></a>限制
 
-- 无法更改现有托管实例的时区。 一种解决方法是，使用正确的时区创建新的托管实例，然后执行手动备份和还原，或执行我们建议的执行 [跨实例时间点还原](./point-in-time-restore.md?tabs=azure-portal#restore-an-existing-database)。
+- 无法更改现有托管实例的时区。 一种方法是，使用适当的时区创建新的托管实例，然后执行手动备份和还原，我们建议执行[跨实例时间点还原](./point-in-time-restore.md?tabs=azure-portal#restore-an-existing-database)。
 - 从 SQL Server 代理作业启动的外部进程不会观察实例的时区。
 
 ## <a name="list-of-supported-time-zones"></a>支持的时区的列表

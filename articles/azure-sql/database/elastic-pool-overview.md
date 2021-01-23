@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
-ms.openlocfilehash: d1ba9445441f38c55b40a8f8ca55471ea8b0a06d
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: f50042caf21630c5054ead76825e49b820405c5b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008582"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732688"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>弹性池有助于在 Azure SQL 数据库中管理和缩放多个数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -74,18 +74,18 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 - 每个数据库的高峰使用量在不同时间点发生。
 - eDTU 会在多个数据库之间共享。
 
-在 DTU 购买模型中，池的价格是池 Edtu 的一项功能。 尽管池的 eDTU 单位价格比单一数据库的 DTU 单位价格多 1.5 倍，但 **池 eDTU 可由多个数据库共享，因而所需的 eDTU 总数更少**。 定价方面和 eDTU 共享的这些差异是池可以提供成本节省可能性的基础。
+在 DTU 购买模型中，池的价格取决于池的 eDTU。 尽管池的 eDTU 单位价格比单一数据库的 DTU 单位价格多 1.5 倍，但 **池 eDTU 可由多个数据库共享，因而所需的 eDTU 总数更少**。 定价方面和 eDTU 共享的这些差异是池可以提供成本节省可能性的基础。
 
-在 vCore 购买模型中，弹性池的 vCore 单位价格与单一数据库的 vCore 单位价格相同。
+在 vCore 购买模型中，弹性池的 vCore 单价与单一数据库的 vCore 单价相同。
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>如何选择正确的池大小
 
 池的最佳大小取决于聚合池中所有数据库所需的资源。 这涉及到决定以下项：
 
-- 池中所有数据库使用的最大计算资源。  计算资源按 Edtu 或 Vcore 索引，具体取决于你选择的购买模型。
+- 池中所有数据库使用的最大计算资源。  计算资源由 eDTU 或 vCore 编制索引，具体取决于所选的购买模型。
 - 池中所有数据库使用的最大存储字节。
 
-对于每个购买模型中的服务层和资源限制，请参阅 [基于 DTU 的购买模型](service-tiers-dtu.md) 或 [基于 vCore 的购买模型](service-tiers-vcore.md)。
+有关每种购买模型中的服务层级和资源限制，请参阅[基于 DTU 的购买模型](service-tiers-dtu.md)或[基于 vCore 的购买模型](service-tiers-vcore.md)。
 
 以下步骤可帮助你评估池是否比单一数据库更具成本效益：
 
@@ -99,10 +99,10 @@ MAX(<数据库的总数目 X 每一数据库的平均 DTU 使用率>, <并发峰
 
 MAX(<数据库的总数目 X 每一数据库的平均 vCore 使用率>, <并发峰值数据库数目 X 每一数据库的峰值 vCore 使用率>)   
 
-2. 通过添加池中所有数据库所需的数据大小来估算池所需的总存储空间。 对于 DTU 购买模型，确定提供此存储量的 eDTU 池大小。
+2. 通过添加池中所有数据库所需的数据大小，估计池所需的总存储空间。 对于 DTU 购买模型，确定提供此存储量的 eDTU 池大小。
 3. 对于基于 DTU 的购买模型，请取步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。 对于基于 vCore 的购买模型，请取步骤 1 中的 vCore 估算值。
 4. 请参阅 [SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/)，找到大于步骤 3 中估算值的最小池大小。
-5. 将步骤4中的池价格与单一数据库的适当计算大小进行比较。
+5. 将步骤 4 的池价格与使用单一数据库适当计算大小的价格相比较。
 
 > [!IMPORTANT]
 > 如果池中数据库的数量接近支持的最大值，请确保 [在密集弹性池中考虑资源管理](elastic-pool-resource-management.md)。
@@ -156,7 +156,7 @@ MAX(<数据库的总数目 X 每一数据库的平均 vCore 使用率>, <并发�
 
 在 Azure 门户中，可以监视弹性池和该池中的数据库的利用率。 还可以对弹性池进行一组更改，并同时提交所有更改。 这些更改包括添加或删除数据库、更改弹性池设置或更改数据库设置。
 
-你可以使用内置 [性能监视](https://docs.microsoft.com/azure/azure-sql/database/performance-guidance) 和 [警报工具](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal)与性能等级结合使用。  此外，SQL 数据库可[发出指标和资源日志](https://docs.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure?tabs=azure-portal)，以方便进行监视。
+可以将内置的[性能监视](./performance-guidance.md)和[警报工具](./alerts-insights-configure-portal.md)与性能等级组合使用。  此外，SQL 数据库可[发出指标和资源日志](./metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-portal)，以方便进行监视。
 
 ## <a name="customer-case-studies"></a>客户案例研究
 

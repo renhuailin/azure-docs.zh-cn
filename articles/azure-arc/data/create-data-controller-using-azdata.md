@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 986019ec4de2fc25b6d8714a8c687cc9342f47b8
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 3d2652d2f6c1bb56dd009a9e4de375c42786986d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696053"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734993"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>使用创建 Azure Arc 数据控制器 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 有关概述信息，请参阅 [创建 Azure Arc 数据控制器](create-data-controller.md) 主题。
 
@@ -59,7 +59,7 @@ kubectl config current-context
 
 ### <a name="connectivity-modes"></a>连接模式
 
-如 [连接模式和要求](https://docs.microsoft.com/azure/azure-arc/data/connectivity)中所述，Azure Arc 数据控制器可以通过 `direct` 或 `indirect` 连接模式进行部署。 使用 `direct` 连接模式时，自动将使用情况数据发送到 Azure。 在此文章中，示例指定 `direct` 连接模式，如下所示：
+如 [连接模式和要求](./connectivity.md)中所述，Azure Arc 数据控制器可以通过 `direct` 或 `indirect` 连接模式进行部署。 使用 `direct` 连接模式时，自动将使用情况数据发送到 Azure。 在此文章中，示例指定 `direct` 连接模式，如下所示：
 
    ```console
    --connectivity-mode direct

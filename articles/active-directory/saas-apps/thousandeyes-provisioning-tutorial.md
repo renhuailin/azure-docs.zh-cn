@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: 885ee993748a0a571f396cc0dc28f2c0c1a4a0c3
-ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
+ms.openlocfilehash: fcb53dc22cfb4bf7308b92ee76e5aaaf3bb0dead
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2020
-ms.locfileid: "97792511"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735077"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>教程：为 ThousandEyes 配置自动用户预配
 
@@ -86,7 +86,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 ThousandEyes”。
 
-10. 在“属性映射”部分中，查看从 Azure AD 同步到 ThousandEyes 的用户属性。 选为“匹配”属性的特性用于匹配 Parsable 中的用户帐户以执行更新操作。 如果选择更改[匹配目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，则需要确保 Parsable Suite API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
+10. 在“属性映射”部分中，查看从 Azure AD 同步到 ThousandEyes 的用户属性。 选为“匹配”属性的特性用于匹配 Parsable 中的用户帐户以执行更新操作。 如果选择更改[匹配目标属性](../app-provisioning/customize-application-attributes.md)，则需要确保 Parsable Suite API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
      |Attribute|类型|支持筛选|
      |---|---|---|
@@ -98,7 +98,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
      |name.formatted|字符串|
 
 
-11. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+11. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
 12. 若要为 ThousandEyes 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”  。
 
@@ -117,15 +117,15 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="step-6-monitor-your-deployment"></a>步骤 6. 监视部署
 配置预配后，请使用以下资源来监视部署：
 
-1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
-3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
+1. 通过[预配日志](../reports-monitoring/concept-provisioning-logs.md)来确定哪些用户已预配成功或失败
+2. 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)来查看预配周期的状态以及完成进度
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](../app-provisioning/application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。  
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)

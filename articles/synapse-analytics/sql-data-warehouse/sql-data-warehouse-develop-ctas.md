@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 6750f010e3992a2b76cc688449ad44efa7ec76d0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 68bab754142538fc6067cf2593ae6244a03a48d1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683267"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734808"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS)
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-merge"></a>替换 MERGE 的 ANSI Join 
 
-在 Azure Synapse Analytics 中，带有 NOT MATCHED BY TARGET 的 [MERGE](/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15)（预览版）要求目标是哈希分布式表。  一种解决方法是，用户可以使用带有 [UPDATE](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) 或 [DELETE](/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver15) 的 ANSI JOIN，以根据与另一个表的联接结果修改目标表数据。  示例如下。
+在 Azure Synapse Analytics 中，带有 NOT MATCHED BY TARGET 的 [MERGE](/sql/t-sql/statements/merge-transact-sql?view=azure-sqldw-latest&preserve-view=true)（预览版）要求目标是哈希分布式表。  一种解决方法是，用户可以使用带有 [UPDATE](/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest&preserve-view=true) 或 [DELETE](/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest&preserve-view=true) 的 ANSI JOIN，以根据与另一个表的联接结果修改目标表数据。  示例如下。
 
 ```sql
 CREATE TABLE dbo.Table1   

@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3e45b5a48f9a7fb66d7539e83f385203ae371ad7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673546"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732721"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 排查启用 Application Insights Snapshot Debugger 或查看快照时遇到的问题
 如果为应用程序启用了 Application Insights Snapshot Debugger，但没有看到异常的快照，则可以使用这些说明进行故障排除。
@@ -272,4 +272,4 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 
 如果你的应用程序通过代理或防火墙连接到 Internet，你可能需要更新规则以与 Snapshot Debugger 服务进行通信。
 
-Azure Monitor 服务标记中包含 Application Insights Snapshot Debugger 使用的 Ip。 有关详细信息，请参阅 [服务标记文档](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)。
+Azure Monitor 服务标记中包含 Application Insights Snapshot Debugger 使用的 Ip。 有关详细信息，请参阅 [服务标记文档](../../virtual-network/service-tags-overview.md)。

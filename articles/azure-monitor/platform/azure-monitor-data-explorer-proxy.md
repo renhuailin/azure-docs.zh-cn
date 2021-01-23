@@ -7,15 +7,15 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 5671ec68901be289a87c23b6883160f9cda2b651
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060446"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733177"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>使用 Azure Monitor 跨资源查询 Azure 数据资源管理器
-Azure Monitor 支持 Azure 数据资源管理器、 [Application Insights](/azure/azure-monitor/app/app-insights-overview)和 [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)之间的跨服务查询。 然后，你可以使用 Log Analytics/Application Insights 工具查询 Azure 数据资源管理器群集，并在跨服务查询中引用它。 本文介绍如何进行跨服务查询。
+Azure Monitor 支持 Azure 数据资源管理器、 [Application Insights](../app/app-insights-overview.md)和 [Log Analytics](./data-platform-logs.md)之间的跨服务查询。 然后，你可以使用 Log Analytics/Application Insights 工具查询 Azure 数据资源管理器群集，并在跨服务查询中引用它。 本文介绍如何进行跨服务查询。
 
 下图显示了 Azure Monitor 跨服务流：
 
@@ -62,8 +62,8 @@ union customEvents, CL1 | take 10
 
 如果 Azure 数据资源管理器资源在租户 A 中，而 Log Analytics 工作区在租户 B 中，则使用以下方法之一：
 
-*  通过 Azure 数据资源管理器，可以为不同租户中的主体添加角色。 将租户 B 中的用户 ID 添加为 Azure 数据资源管理器群集上的授权用户。 验证 Azure 数据资源管理器群集上的 [TrustedExternalTenant](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster) 属性包含租户 b. 完全在租户 b 中运行交叉查询。
-*  使用 [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) 将 Azure Monitor 资源投影到租户 A。
+*  通过 Azure 数据资源管理器，可以为不同租户中的主体添加角色。 将租户 B 中的用户 ID 添加为 Azure 数据资源管理器群集上的授权用户。 验证 Azure 数据资源管理器群集上的 [TrustedExternalTenant](/powershell/module/az.kusto/update-azkustocluster) 属性包含租户 b. 完全在租户 b 中运行交叉查询。
+*  使用 [Lighthouse](../../lighthouse/index.yml) 将 Azure Monitor 资源投影到租户 A。
 
 ## <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>从不同租户连接到 Azure 数据资源管理器群集
 
@@ -72,6 +72,6 @@ Kusto 资源管理器会自动登录到用户帐户最初所属的租户。 若�
 `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=TenantId`
 
 ## <a name="next-steps"></a>后续步骤
-* [编写查询](https://docs.microsoft.com/azure/data-explorer/write-queries)
-* [使用 Azure 数据资源管理器查询 Azure Monitor 中的数据](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
-* [在 Azure Monitor 中执行跨资源日志查询](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)
+* [编写查询](/azure/data-explorer/write-queries)
+* [使用 Azure 数据资源管理器查询 Azure Monitor 中的数据](/azure/data-explorer/query-monitor-data)
+* [在 Azure Monitor 中执行跨资源日志查询](../log-query/cross-workspace-query.md)

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: b530fc320f6c29dd7a86a39c5a7019265bb6b724
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: d19190723ebc415e9cf3053b929788dff68aeb0e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624416"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734533"
 ---
 # <a name="spatial-analysis-operations"></a>空间分析操作
 
@@ -61,7 +61,7 @@ ms.locfileid: "98624416"
 |---------|---------|
 | Operation ID | 上表中的操作标识符。|
 | enabled | 布尔值： true 或 false|
-| VIDEO_URL| 照相机设备 (的 RTSP url 示例： `rtsp://username:password@url`) 。 空间分析通过 RTSP、http 或硬件支持-264 编码流。 Video_URL 可以使用 AES 加密作为经过模糊处理的 base64 字符串值提供，如果视频 URL 经过模糊处理 `KEY_ENV` 并且 `IV_ENV` 需要作为环境变量提供，则为。 可在 [此处](https://docs.microsoft.com/dotnet/api/system.security.cryptography.aesmanaged?view=net-5.0&preserve-view=true)找到用于生成密钥和加密的示例实用工具。 |
+| VIDEO_URL| 照相机设备 (的 RTSP url 示例： `rtsp://username:password@url`) 。 空间分析通过 RTSP、http 或硬件支持-264 编码流。 Video_URL 可以使用 AES 加密作为经过模糊处理的 base64 字符串值提供，如果视频 URL 经过模糊处理 `KEY_ENV` 并且 `IV_ENV` 需要作为环境变量提供，则为。 可在 [此处](/dotnet/api/system.security.cryptography.aesmanaged?preserve-view=true&view=net-5.0)找到用于生成密钥和加密的示例实用工具。 |
 | VIDEO_SOURCE_ID | 照相机设备或视频流的友好名称。 这将随事件 JSON 输出一起返回。|
 | VIDEO_IS_LIVE| 对于照相机设备为 True;对于录制的视频为 false。|
 | VIDEO_DECODE_GPU_INDEX| 用于解码视频帧的 GPU。 默认情况下，它是0。 应与 `gpu_index` 其他节点配置（如）中的相同 `VICA_NODE_CONFIG` `DETECTOR_NODE_CONFIG` 。|

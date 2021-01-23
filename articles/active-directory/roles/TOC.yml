@@ -11,9 +11,10 @@
     - name: 创建无限次应用注册
       href: quickstart-app-registration-limits.md
 - name: 教程
+  expanded: true
   items:
-    - name: 创建动态组
-      href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: 将用户分配到管理员角色
+      href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: 概念
   expanded: true
   items:
@@ -28,18 +29,6 @@
 - name: 操作指南
   expanded: true
   items:
-    - name: 用户和角色
-      items:
-        - name: 将用户分配到管理员角色
-          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: 撤消用户的访问权限
-          href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: 向来宾用户分配角色
-          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: 限制来宾用户访问权限
-          href: ../enterprise-users/users-restrict-guest-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: 动态组和来宾
-          href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: 角色和权限
       expanded: true
       items:
@@ -119,7 +108,7 @@
     - name: Microsoft 365 角色文档
       href: m365-workload-docs.md
     - name: 图形 API
-      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
+      href: /graph/api/resources/directoryrole?view=graph-rest-1.0
     - name: Azure AD CLI
       href: /cli/azure/ad
     - name: 用于 Graph 的 Azure AD PowerShell

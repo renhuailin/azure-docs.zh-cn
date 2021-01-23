@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: b2cac7a8310482305467a1cb3ed3127eb18ae416
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 2d48c767b836771600b3491299e0bdb33aacb75b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915770"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733143"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>为 Azure 上的微聚焦企业开发人员4.0 设置微焦点 CICS BankDemo
 
@@ -28,7 +28,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
 - [SQL Server 2017 Express edition](https://www.microsoft.com/sql-server/sql-server-editions-express)。 下载并将其安装在企业开发人员 VM 上。 企业服务器要求使用数据库来管理 CICS 区域，BankDemo 应用程序还使用名为 BANKDEMO 的 SQL Server 数据库。 此演示假设您对这两个数据库都使用 SQL Server Express。 安装时，请选择 "基本" 安装。
 
--  (SSMS) [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) 。 SSMS 用于管理数据库和运行 T-sql 脚本。 下载并将其安装在企业开发人员 VM 上。
+-  (SSMS) [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 。 SSMS 用于管理数据库和运行 T-sql 脚本。 下载并将其安装在企业开发人员 VM 上。
 
 - [Visual studio 2019](https://azure.microsoft.com/downloads/) ，其中包含最新的 Service Pack 或 [visual studio 社区](https://visualstudio.microsoft.com/vs/community/)，可以免费下载。
 
@@ -185,7 +185,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
      ![定义区域区域名称： BANKDEMO](media/08-demo-cics.png)
 
-7. 单击“完成”。
+7. 单击 **“完成”** 。
 
 ## <a name="create-xa-resource-definitions"></a>创建 XA 资源定义
 

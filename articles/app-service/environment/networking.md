@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0a1221a8de10fd18768a1a0f0ac08277dc2901d6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013476"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735027"
 ---
 # <a name="app-service-environment-networking"></a>应用服务环境网络
 
@@ -52,7 +52,7 @@ ASE 接收端口80和443上的应用程序流量。  ASE 没有入站或出站�
 
 ## <a name="dns"></a>DNS
 
-ASE 中的应用将使用配置了 VNet 的 DNS。 按照 [使用应用服务环境](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration) 将 DNS 服务器配置为指向 ASE 中的说明进行操作。 如果你希望某些应用使用与你的 VNet 配置的 DNS 服务器不同的 DNS 服务器，则可以使用应用设置 WEBSITE_DNS_SERVER 和 WEBSITE_DNS_ALT_SERVER 手动设置每个应用。 应用设置 WEBSITE_DNS_ALT_SERVER 配置辅助 DNS 服务器。 仅当主 DNS 服务器没有响应时，才使用辅助 DNS 服务器。 
+ASE 中的应用将使用配置了 VNet 的 DNS。 按照 [使用应用服务环境](./using.md#dns-configuration) 将 DNS 服务器配置为指向 ASE 中的说明进行操作。 如果你希望某些应用使用与你的 VNet 配置的 DNS 服务器不同的 DNS 服务器，则可以使用应用设置 WEBSITE_DNS_SERVER 和 WEBSITE_DNS_ALT_SERVER 手动设置每个应用。 应用设置 WEBSITE_DNS_ALT_SERVER 配置辅助 DNS 服务器。 仅当主 DNS 服务器没有响应时，才使用辅助 DNS 服务器。 
 
 ## <a name="preview-limitation"></a>预览限制
 
@@ -61,4 +61,3 @@ ASEv3 未提供某些网络功能。  ASEv3 中不可用的内容包括：
 • FTP •远程调试•外部负载平衡器部署•能够为容器部署访问专用容器注册表•能够通过服务终结点或私有终结点保护的存储对全局对等互连 Vnet 进行备份/还原的能力帐户•能够在服务终结点或私有终结点保护的 keyvault 帐户上 keyvault 引用，因此可以使用 BYOS 到服务终结点或专用终结点保护的存储帐户•在出站流量中使用网络观察程序或 NSG 流
     
     
-

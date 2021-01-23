@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 12/09/2020
 ms.topic: how-to
-ms.openlocfilehash: 0c599f17ab37ca30ea9ef3681ea3c75dd0c2648e
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 22ad2d65710a3fc149f5a83fb511244ac3be2203
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693462"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733233"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>在 Azure Data Studio 中创建数据控制器
 
@@ -22,7 +22,7 @@ ms.locfileid: "98693462"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 需要访问 Kubernetes 群集，并将 kubeconfig 文件配置为指向要部署到的 Kubernetes 群集。
 - 需要 [安装客户端工具](install-client-tools.md) ，包括 **Azure Data Studio** 称为 **Azure Arc** 和的 Azure Data Studio 扩展 **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** 。

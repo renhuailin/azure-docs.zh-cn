@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 01ac59ec435b19f5da56ca345840628964263a47
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f66395b1e0f45f1e80cd0ac93bf8c9ae8674a0f2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147022"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732939"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>在 Azure API 管理中将 Azure Function App 作为 API 导入
 
@@ -38,7 +38,7 @@ Azure API 管理支持将 Azure Function App 作为新 API 导入或将其追加
 ## <a name="prerequisites"></a>先决条件
 
 * 完成快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
-* 确保订阅中有 Azure Functions 应用。 有关详细信息，请参阅[创建 Azure Function App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)。 它必须包含 Functions 并将 HTTP 触发器和授权级别设置设为“匿名”或“函数”。 
+* 确保订阅中有 Azure Functions 应用。 有关详细信息，请参阅[创建 Azure Function App](../azure-functions/functions-get-started.md)。 它必须包含 Functions 并将 HTTP 触发器和授权级别设置设为“匿名”或“函数”。 
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -72,7 +72,7 @@ Azure API 管理支持将 Azure Function App 作为新 API 导入或将其追加
     > 可以只导入基于 HTTP 触发器的 Functions，并将授权级别设置设为“匿名”或“函数”。 
 
 7. 切换到“完整”视图并将“产品”分配到新 API 。 如果需要，请在创建过程中指定其他字段，也可以稍后转到“设置”选项卡来配置这些字段。在[导入和发布第一个 API](import-and-publish.md#import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
-8. 单击 **创建** 。
+8. 单击 **创建**。
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> 将 Azure Function App 追加到现有 API
 
@@ -112,8 +112,8 @@ Azure API 管理支持将 Azure Function App 作为新 API 导入或将其追加
 
 导入 Azure Function App 会自动生成：
 
-* 主机密钥，该密钥位于 Function App 中，其名称为 apim-{ *你的 Azure API 管理服务实例名称* }；
-* 命名值，该值位于 Azure API 管理实例中，其名称为 { *你的 Azure Function App 实例名称* }-key，其中包含创建的主机密钥。
+* 主机密钥，该密钥位于 Function App 中，其名称为 apim-{*你的 Azure API 管理服务实例名称*}；
+* 命名值，该值位于 Azure API 管理实例中，其名称为 {*你的 Azure Function App 实例名称*}-key，其中包含创建的主机密钥。
 
 对于 2019 年 4 月 4 日以后创建的 API，主机密钥将通过 HTTP 请求从 API 管理传递到标头中的 Function App。 较旧的 API 将主机密钥作为[查询参数](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)传递。 可以通过对与 Function App 关联的 *后端* 实体进行 `PATCH Backend` [REST API 调用](/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract)来更改此行为。
 
@@ -150,7 +150,7 @@ Azure API 管理支持将 Azure Function App 作为新 API 导入或将其追加
 
 3. 选择操作。
 
-    该页将显示查询参数的字段和标头的字段。 其中一个标头是 **Ocp-Apim-Subscription-Key** ，适用于和此 API 关联的产品订阅密钥。 如果创建了 API 管理实例，那么你已是管理员，因此会自动填充该密钥。 
+    该页将显示查询参数的字段和标头的字段。 其中一个标头是 **Ocp-Apim-Subscription-Key**，适用于和此 API 关联的产品订阅密钥。 如果创建了 API 管理实例，那么你已是管理员，因此会自动填充该密钥。 
 
 4. 选择“发送”。
 

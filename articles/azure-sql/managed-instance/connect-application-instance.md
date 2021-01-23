@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: dd5c6527cd6a0beea291dce94ff0e5949ba00671
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 965e765e22a4da8f2ac3b7151337cf62b65be4fe
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791250"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732605"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>将应用程序连接到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,10 +45,10 @@ ms.locfileid: "92791250"
 - [Azure VNet 对等互连](../../virtual-network/virtual-network-peering-overview.md)
 - VNet 到 VNet VPN 网关（[Azure 门户](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)、[PowerShell](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)、[Azure CLI](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md)）
 
-对等互连使用 Microsoft 主干网络，因此是首选；这样的话，从连接角度来看，对等互连虚拟网络中的虚拟机与同一虚拟网络中虚拟机之间的延迟没有明显差别。 同一区域中的网络之间支持虚拟网络对等互连。 还支持全局虚拟网络对等互连，同时提供以下说明中所述的限制。  
+对等互连使用 Microsoft 主干网络，因此是首选；这样的话，从连接角度来看，对等互连虚拟网络中的虚拟机与同一虚拟网络中虚拟机之间的延迟没有明显差别。 支持同一区域中的网络之间的虚拟网络对等互连。 此外还支持全局虚拟网络对等互连，但有如下说明所述的限制。  
 
 > [!IMPORTANT]
-> [在9/22/2020 中，我们为新创建的虚拟群集宣布了全局虚拟网络对等互连](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 这意味着，对于在公告日期之后在空子网中创建的 SQL 托管实例，以及在这些子网中创建的所有后续托管实例，都支持全局虚拟网络对等互连。 对于所有其他 SQL 托管实例的对等互连，都将限制为同一区域的网络，因为 [全局虚拟网络对等互连的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 有关更多详细信息，另请参阅 [Azure 虚拟网络常见问题解答](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)一文的相关部分。 
+> [2020 年 9 月 22 日，我们宣布为新建的虚拟群集建立全局虚拟网络对等互连](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 这意味着，自公告日期之后在空子网中创建的 SQL 托管实例以及在这些子网中随后创建的所有托管实例，都支持全局虚拟网络对等互连。 对于所有其他 SQL 托管实例，由于[全局虚拟网络对等互连的约束](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)，对等互连支持仅限于同一区域中的网络。 有关更多详细信息，另请参阅 [Azure 虚拟网络常见问题解答](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)一文的相关部分。 
 
 ## <a name="connect-from-on-premises"></a>从本地连接 
 
@@ -56,7 +56,7 @@ ms.locfileid: "92791250"
 
 可使用两个选项从本地连接到 Azure 虚拟网络：
 
-- 站点到站点 VPN 连接（[Azure 门户](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)、[PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)、[Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)）
+- 站点到站点 VPN 连接（[Azure 门户](../../vpn-gateway/tutorial-site-to-site-portal.md)、[PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)、[Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)）
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) 连接  
 
 如果已成功建立本地到 Azure 的连接，但无法与 SQL 托管实例建立连接，请检查防火墙中是否在 SQL 端口 1433 上打开了出站连接，并确认已打开 11000-11999 范围的端口来进行重定向。

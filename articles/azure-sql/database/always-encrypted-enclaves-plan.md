@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: c41856c394166f2e3b8fd3bde794f0f294ef6af9
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4448ce051b0c9e73865e8057cc4f224c9cbeb571
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253333"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732738"
 ---
 # <a name="plan-for-intel-sgx-enclaves-and-attestation-in-azure-sql-database"></a>在 Azure SQL 数据库中规划 Intel SGX enclaves 和证明
 
@@ -25,7 +25,7 @@ ms.locfileid: "98253333"
 > [!NOTE]
 > 对于 Azure SQL 数据库，具有 secure enclaves 的 Always Encrypted 当前提供 **公共预览版**。
 
-在 Azure SQL 数据库中[使用 secure enclaves Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves)使用 intel [SGX) Enclaves (Intel 软件防护扩展](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/)，并需要[Microsoft Azure 证明](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves#secure-enclave-attestation)。
+在 Azure SQL 数据库中[使用 secure enclaves Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves)使用 intel [SGX) Enclaves (Intel 软件防护扩展](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/)，并需要[Microsoft Azure 证明](/sql/relational-databases/security/encryption/always-encrypted-enclaves#secure-enclave-attestation)。
 
 ## <a name="plan-for-intel-sgx-in-azure-sql-database"></a>在 Azure SQL 数据库中规划 Intel SGX
 
@@ -49,13 +49,13 @@ Intel SGX 是基于硬件的受信任执行环境技术。 Intel SGX 适用于�
 
 ## <a name="roles-and-responsibilities-when-configuring-sgx-enclaves-and-attestation"></a>配置 SGX enclaves 和证明时的角色和职责
 
-在 Azure SQL 数据库中配置你的环境以支持 Intel SGX enclaves 和认证 Always Encrypted 涉及到设置不同类型的组件： Microsoft Azure 证明、Azure SQL 数据库和触发 enclave 证明的应用程序。 每种类型的组件都是由用户执行的，假定以下不同的角色之一：
+在 Azure SQL 数据库中配置你的环境以支持 Intel SGX enclaves 和认证 Always Encrypted 涉及到设置不同类型的组件： Microsoft Azure 证明、Azure SQL 数据库和触发 enclave 证明的应用程序。 具有以下角色之一的用户配置每种类型的组件：
 
 - 证明管理员-在 Microsoft Azure 证明，创建证明提供者，编写证明策略，授予 Azure SQL 逻辑服务器对证明提供程序的访问权限，并将指向策略的证明 URL 共享到应用程序管理员。
 - Azure SQL 数据库管理员-在数据库中通过选择 DC 系列硬件生成来启用 SGX enclaves，并向证明管理员提供需要访问证明提供者的 Azure SQL 逻辑服务器的标识。
 - 应用程序管理员-用从证明管理员获得的证明 URL 配置应用程序。
 
-在生产环境中 (处理) 的敏感数据的情况下，你的组织必须在配置证明时遵守角色分离，其中每个不同的角色都是由不同的人员来假定的。 具体而言，如果在你的组织中部署 Always Encrypted 的目标是通过确保 Azure SQL 数据库管理员无法访问敏感数据来减小攻击面，则 Azure SQL 数据库管理员不应控制证明策略。
+在生产环境中（处理真实的敏感数据），组织在配置证明时务必遵守角色分离，在这种情况下，不同人员具有不同角色。 具体而言，如果在你的组织中部署 Always Encrypted 的目标是通过确保 Azure SQL 数据库管理员无法访问敏感数据来减小攻击面，则 Azure SQL 数据库管理员不应控制证明策略。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -63,4 +63,4 @@ Intel SGX 是基于硬件的受信任执行环境技术。 Intel SGX 适用于�
 
 ## <a name="see-also"></a>另请参阅
 
-- [教程：在 Azure SQL 数据库中利用安全 enclaves 入门 Always Encrypted](always-encrypted-enclaves-getting-started.md)
+- [教程：在 Azure SQL 数据库中开始使用具有安全 enclave 的 Always Encrypted](always-encrypted-enclaves-getting-started.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: cc88712dd686983baed858de47e11dfa44e85350
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 9190585face277d92ef86c9bfa045d6d8c05b01c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955512"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734859"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>教程：为 Snowflake 配置自动用户预配
 
@@ -164,7 +164,7 @@ ms.locfileid: "97955512"
 
 * **IP 范围** 
 
-   Azure AD 预配服务当前在特定 IP 范围下运行。 因此，如果需要，可以限制其他 IP 范围，并将这些特定 IP 范围添加到应用程序的允许列表中，以允许流量从 Azure AD 预配服务流向应用程序。请参阅 [IP 范围](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges)处的文档。
+   Azure AD 预配服务当前在特定 IP 范围下运行。 因此，如果需要，可以限制其他 IP 范围，并将这些特定 IP 范围添加到应用程序的允许列表中，以允许流量从 Azure AD 预配服务流向应用程序。请参阅 [IP 范围](../app-provisioning/use-scim-to-provision-users-and-groups.md#ip-ranges)处的文档。
 
 ## <a name="change-log"></a>更改日志
 

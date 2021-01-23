@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 444b514dfb1798ff810e84fc4e9d50001dbaee1c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 8e260ae8310807ef9e0dad7d4fe21df8caad9b48
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685782"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735287"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 
@@ -148,7 +148,7 @@ ms.locfileid: "98685782"
 操作组中的电子邮件操作数可能有限。 请参阅[速率限制信息](./alerts-rate-limiting.md)一文。
 
 ### <a name="function"></a>函数
-调用 [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) 中的现有 HTTP 触发器终结点。
+调用 [Azure Functions](../../azure-functions/functions-get-started.md) 中的现有 HTTP 触发器终结点。
 
 操作组中的函数操作数可能有限。
 

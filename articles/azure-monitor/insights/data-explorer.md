@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 6f25ff02dee16812898d77d0e801f927b354dc78
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 11e21f376ea3b5cf580d54780509529b4536718b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918089"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734168"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure 数据资源管理器 (预览版的 Azure Monitor) 
 
@@ -49,7 +49,7 @@ Azure 数据资源管理器 (预览) Azure Monitor 提供群集性能、操作�
 
 下拉列表下的 "计数器" 磁贴汇总了所选订阅中的 Azure 数据资源管理器群集总数，并反映了所选的数目。 列有条件颜色 codings：保持活动、CPU、引入利用率和缓存利用率。 橙色编码的单元具有的值对于群集来说不是可持续的。 
 
-为了更好地了解每个指标表示的内容，建议通读有关 [Azure 数据资源管理器指标](https://docs.microsoft.com/azure/data-explorer/using-metrics#cluster-metrics)的文档。
+为了更好地了解每个指标表示的内容，建议通读有关 [Azure 数据资源管理器指标](/azure/data-explorer/using-metrics#cluster-metrics)的文档。
 
 ### <a name="query-performance-tab"></a>查询性能选项卡
 
@@ -81,7 +81,7 @@ Azure 数据资源管理器 (预览) Azure Monitor 提供群集性能、操作�
 
 还可以通过从 Azure Monitor insights 视图中选择 Azure 数据资源管理器群集的资源名称来访问这些视图。
 
-Azure 数据资源管理器 Azure Monitor 结合了日志和指标来提供全局监视解决方案。 包含基于日志的可视化效果要求用户[启用其 Azure 数据资源管理器群集的诊断日志记录，并将其发送到 Log Analytics 工作区。](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) 应启用的诊断日志包括： **命令**、 **查询**、 **TableDetails** 和 **TableUsageStatistics**。
+Azure 数据资源管理器 Azure Monitor 结合了日志和指标来提供全局监视解决方案。 包含基于日志的可视化效果要求用户[启用其 Azure 数据资源管理器群集的诊断日志记录，并将其发送到 Log Analytics 工作区。](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) 应启用的诊断日志包括： **命令**、 **查询**、 **TableDetails** 和 **TableUsageStatistics**。
 
 ![显示文本 "为监视启用日志" 的蓝色按钮屏幕截图](./media/data-explorer/enable-logs.png)
 
@@ -90,7 +90,7 @@ Azure 数据资源管理器 Azure Monitor 结合了日志和指标来提供全�
 
 - 度量值磁贴突出显示群集的可用性和总体状态，以便快速评估其运行状况。
 
-- 活动 [顾问建议](https://docs.microsoft.com/azure/data-explorer/azure-advisor) 和 [资源运行状况](https://docs.microsoft.com/azure/data-explorer/monitor-with-resource-health) 状态的摘要。
+- 活动 [顾问建议](/azure/data-explorer/azure-advisor) 和 [资源运行状况](/azure/data-explorer/monitor-with-resource-health) 状态的摘要。
 
 - 显示一段时间内最常见的 CPU 和内存使用者以及唯一用户数的图表。
 
@@ -114,7 +114,7 @@ Azure 数据资源管理器 Azure Monitor 结合了日志和指标来提供全�
 
 " **表** " 选项卡显示群集中表的最新属性和历史属性。 你可以看到哪些表消耗的空间最多，并按表大小、热数据和行数随时间推移跟踪增长历史记录。
 
-" **缓存** " 选项卡允许用户分析其实际查询的 "查看" 模式，并将其与每个表)  (配置的缓存策略进行比较。 您可以确定大多数查询和表所使用的表，这些表根本不会进行查询，并相应地调整缓存策略。 你可能会在 Azure 顾问中的特定表上获得特定的缓存策略建议 (当前情况下，缓存建议仅在过去30天内 [) 的实际查询的](https://docs.microsoft.com/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) 情况下，在过去30天内查看缓存建议，对于至少95% 的查询，缓存建议仅可用于% 的查询。 Azure 顾问中的缓存缩减建议适用于 "受数据限制" 的群集 (这意味着群集的 CPU 利用率较低，但引入利用率较低，但由于数据量较高，群集无法向下扩展或向下缩放) 。
+" **缓存** " 选项卡允许用户分析其实际查询的 "查看" 模式，并将其与每个表)  (配置的缓存策略进行比较。 您可以确定大多数查询和表所使用的表，这些表根本不会进行查询，并相应地调整缓存策略。 你可能会在 Azure 顾问中的特定表上获得特定的缓存策略建议 (当前情况下，缓存建议仅在过去30天内 [) 的实际查询的](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) 情况下，在过去30天内查看缓存建议，对于至少95% 的查询，缓存建议仅可用于% 的查询。 Azure 顾问中的缓存缩减建议适用于 "受数据限制" 的群集 (这意味着群集的 CPU 利用率较低，但引入利用率较低，但由于数据量较高，群集无法向下扩展或向下缩放) 。
 
 [![缓存详细信息的屏幕截图](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
@@ -153,7 +153,7 @@ Azure 数据资源管理器 Azure Monitor 结合了日志和指标来提供全�
 
 ### <a name="why-do-i-not-see-any-data-for-my-azure-data-explorer-cluster-under-the-usage-tables-or-cache-sections"></a>为什么在 "使用情况"、"表" 或 "缓存" 部分下看不到 Azure 数据资源管理器群集的任何数据？
 
-若要查看基于日志的数据，需要为要监视的每个 Azure 数据资源管理器群集 [启用诊断日志](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) 。 这可以在每个群集的诊断设置下完成。 需要将数据发送到 Log Analytics 工作区。 应启用的诊断日志包括：命令、查询、TableDetails 和 TableUsageStatistics。
+若要查看基于日志的数据，需要为要监视的每个 Azure 数据资源管理器群集 [启用诊断日志](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) 。 这可以在每个群集的诊断设置下完成。 需要将数据发送到 Log Analytics 工作区。 应启用的诊断日志包括：命令、查询、TableDetails 和 TableUsageStatistics。
 
 ### <a name="i-have-already-enabled-logs-for-my-azure-data-explorer-cluster-why-am-i-still-unable-to-see-my-data-under-commands-and-queries"></a>我已经为 Azure 数据资源管理器群集启用了日志，为什么我在命令和查询下看不到我的数据？
 

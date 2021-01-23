@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: e4b555f4727d2d1fb5b64814ae07aa15b78da42c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4a273170a1f3842a9a11a61d41d4150eb98eace4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510917"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734134"
 ---
 # <a name="azure-monitor-for-networks"></a>用于网络的 Azure Monitor
 
-Azure 网络监视器为已部署的所有网络资源提供[运行状况](../../service-health/resource-health-checks-resource-types.md)和[指标](../platform/metrics-supported.md)的全面视图，并且无需任何配置。 它还提供对网络监视功能的访问，如[连接监视器](../../network-watcher/connection-monitor-preview.md)、[网络安全组的流日志记录 (NSG)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) 和[流量分析](../../network-watcher/traffic-analytics.md)。 它还提供其他网络[诊断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)功能。
+Azure 网络监视器为已部署的所有网络资源提供[运行状况](../../service-health/resource-health-checks-resource-types.md)和[指标](../platform/metrics-supported.md)的全面视图，并且无需任何配置。 它还提供对网络监视功能的访问，如[连接监视器](../../network-watcher/connection-monitor-overview.md)、[网络安全组的流日志记录 (NSG)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) 和[流量分析](../../network-watcher/traffic-analytics.md)。 它还提供其他网络[诊断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)功能。
 
 Azure 网络监视器是围绕以下关键监视组件构建的：
 - [网络运行状况和指标](#networkhealth)
@@ -74,7 +74,7 @@ Azure 网络监视器的“概览”页面提供了一种轻松的方法来可�
 
 ## <a name="connectivity"></a><a name="connectivity"></a>连接
 
-" **连接** " 选项卡提供了一种简单的方法，可通过 [连接监视器](../../network-watcher/connection-monitor-overview.md) 和连接监视器 (经典) 为所选的订阅集直观显示所有测试。
+“连接”选项卡提供了一种简单的方法来为选定的一组订阅直观显示通过连接监视器和[连接监视器（经典版）](../../network-watcher/connection-monitor-overview.md)配置的所有测试。
 
 ![屏幕截图显示 Azure 网络监视器中的“连接”选项卡。](media/network-insights-overview/azure-monitor-for-networks-connectivity-tab.png)
 

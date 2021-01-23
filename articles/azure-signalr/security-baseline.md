@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8b17a4718f5ef985c5b03cacec4b688163380a5a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b750d4cc911dc72b60974171dd884b373921fad5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201682"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734590"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>适用于 Azure SignalR 服务的 Azure 安全基线
 
@@ -24,7 +24,7 @@ ms.locfileid: "98201682"
 
 ## <a name="network-security"></a>网络安全
 
-[有关详细信息，请参阅 *Azure 安全基线：* 网络安全性](/azure/security/benchmarks/security-controls-v2-network-security)。
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全性](../security/benchmarks/security-controls-v2-network-security.md)。
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1：实现内部流量的安全性
 
@@ -94,7 +94,7 @@ ExpressRoute 连接并不通过公共 Internet，与典型的 Internet 连接相
 
 ## <a name="identity-management"></a>标识管理
 
-有关详细信息，请参阅 [Azure 安全基准：标识管理](/azure/security/benchmarks/security-controls-v2-identity-management)。
+有关详细信息，请参阅 [Azure 安全基准：标识管理](../security/benchmarks/security-controls-v2-identity-management.md)。
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
@@ -116,7 +116,7 @@ Azure AD 支持外部标识，以使没有 Microsoft 帐户的用户可以使用
 
 - [如何创建和配置 Azure AD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [使用应用程序的外部标识提供者](/azure/active-directory/b2b/identity-providers)
+- [使用应用程序的外部标识提供者](../active-directory/external-identities/identity-providers.md)
 
 - [Azure Active Directory 中的标识安全分数是什么](../active-directory/fundamentals/identity-secure-score.md)
 
@@ -214,7 +214,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ## <a name="privileged-access"></a>特权访问
 
-有关详细信息，请参阅 [Azure 安全基准：特权访问](/azure/security/benchmarks/security-controls-v2-privileged-access)。
+有关详细信息，请参阅 [Azure 安全基准：特权访问](../security/benchmarks/security-controls-v2-privileged-access.md)。
 
 ### <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1：保护和限制具有较高权限的用户
 
@@ -230,11 +230,11 @@ Azure SignalR 服务具有内置的高特权角色。 请限制高特权帐户�
 
 - [SignalR 参与者](../role-based-access-control/built-in-roles.md#signalr-contributor)
 
-- [Azure AD 中的管理角色权限](/azure/active-directory/users-groups-roles/directory-assign-admin-roles)
+- [Azure AD 中的管理角色权限](../active-directory/roles/permissions-reference.md)
 
 - [使用 Azure Privileged Identity Management 安全警报](../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
-- [确保 Azure AD 中混合部署和云部署的特权访问安全性](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)
+- [确保 Azure AD 中混合部署和云部署的特权访问安全性](../active-directory/roles/security-planning.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -291,7 +291,7 @@ Azure SignalR 服务中的内置角色包括：
 
 应确保妥善保管紧急访问帐户的凭据（例如密码、证书或智能卡），仅将其告诉只能在紧急情况下有权使用它们的个人。
 
-- [在 Azure AD 中管理紧急访问帐户](/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [在 Azure AD 中管理紧急访问帐户](../active-directory/roles/security-emergency-access.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -315,7 +315,7 @@ Azure SignalR 服务中的内置角色包括：
 
 - [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [部署特权访问工作站](../active-directory/devices/howto-azure-managed-workstation.md)
+- [部署特权访问工作站](/security/compass/privileged-access-deployment)
 
 **Azure 安全中心监视**：不适用
 
@@ -346,7 +346,7 @@ SignalR 服务中的内置角色：
 
 ## <a name="data-protection"></a>数据保护
 
-[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](/azure/security/benchmarks/security-controls-v2-data-protection)。
+[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](../security/benchmarks/security-controls-v2-data-protection.md)。
 
 ### <a name="dp-2-protect-sensitive-data"></a>DP-2：保护敏感数据
 
@@ -366,7 +366,7 @@ SignalR 服务中的内置角色：
 
 ## <a name="asset-management"></a>资产管理
 
-有关详细信息，请参阅 [Azure 安全基准：资产管理](/azure/security/benchmarks/security-controls-v2-asset-management)。
+有关详细信息，请参阅 [Azure 安全基准：资产管理](../security/benchmarks/security-controls-v2-asset-management.md)。
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1：确保安全团队可以了解与资产相关的风险
 
@@ -394,7 +394,7 @@ SignalR 服务中的内置角色：
 
 - [Azure 安全中心资产库存管理](../security-center/asset-inventory.md)
 
-- [有关标记资产的详细信息，请参阅资源命名和标记决策指南](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [有关标记资产的详细信息，请参阅资源命名和标记决策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 **Azure 安全中心监视**：是
 
@@ -438,7 +438,7 @@ SignalR 服务中的内置角色：
 
 ## <a name="logging-and-threat-detection"></a>日志记录和威胁检测
 
-有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)。
+有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](../security/benchmarks/security-controls-v2-logging-threat-detection.md)。
 
 ### <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2：启用 Azure 标识和访问管理的威胁检测
 
@@ -457,7 +457,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 - [启用 Azure 标识保护](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Azure 安全中心的威胁防护](/azure/security-center/threat-protection)
+- [Azure 安全中心的威胁防护](../security-center/azure-defender.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -513,7 +513,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 ## <a name="incident-response"></a>事件响应
 
-[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](/azure/security/benchmarks/security-controls-v2-incident-response)。
+[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](../security/benchmarks/security-controls-v2-incident-response.md)。
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1：准备 - 更新 Azure 的事件响应流程
 
@@ -595,7 +595,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
-- [使用标记整理 Azure 资源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -617,7 +617,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ## <a name="posture-and-vulnerability-management"></a>安全状况和漏洞管理
 
-有关详细信息，请参阅 [Azure 安全基准：安全状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。
+有关详细信息，请参阅 [Azure 安全基准：安全状况和漏洞管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)。
 
 ### <a name="pv-1-establish-secure-configurations-for-azure-services"></a>PV-1：为所有 Azure 服务建立安全配置 
 
@@ -682,13 +682,13 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ## <a name="backup-and-recovery"></a>备份和恢复
 
-有关详细信息，请参阅 [Azure 安全基准：备份和恢复](/azure/security/benchmarks/security-controls-v2-backup-recovery)。
+有关详细信息，请参阅 [Azure 安全基准：备份和恢复](../security/benchmarks/security-controls-v2-backup-recovery.md)。
 
 ### <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4：减少密钥丢失风险
 
 **指导**：确保你有适当的措施来防止和恢复丢失的密钥。 在 Azure Key Vault 中启用软删除和清除保护，以防止意外删除或恶意删除密钥。
 
-- [如何在 Key Vault 中启用软删除和清除保护](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何在 Key Vault 中启用软删除和清除保护](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：不适用
 
@@ -696,7 +696,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ## <a name="governance-and-strategy"></a>治理和策略
 
-有关详细信息，请参阅 [Azure 安全基准：治理和策略](/azure/security/benchmarks/security-controls-v2-governance-strategy)。
+有关详细信息，请参阅 [Azure 安全基准：治理和策略](../security/benchmarks/security-controls-v2-governance-strategy.md)。
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定义资产管理和数据保护策略 
 
@@ -722,15 +722,15 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 有关详细信息，请参阅引用的链接。
 
-- [Azure 安全体系结构建议 - 存储、数据和加密](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Azure 安全体系结构建议 - 存储、数据和加密](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Azure 安全基础知识 - Azure 数据安全、加密和存储](../security/fundamentals/encryption-overview.md)
 
-- [云采用框架 - Azure 数据安全和加密最佳做法](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [云采用框架 - Azure 数据安全和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure 安全基准 - 资产管理](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure 安全基准 - 资产管理](../security/benchmarks/security-controls-v2-asset-management.md)
 
-- [Azure 安全基准 - 数据保护](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure 安全基准 - 数据保护](../security/benchmarks/security-controls-v2-data-protection.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -758,7 +758,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 **指导**：持续衡量并缓解你的个人资产及其托管环境的风险。 确定高价值资产和暴露程度高的受攻击面（例如已发布的应用程序、网络入口和出口点、用户和管理员终结点等）的优先级。
 
-- [Azure 安全基准 - 状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure 安全基准 - 状况和漏洞管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -799,7 +799,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 有关详细信息，请参阅以下资源：
 - [Azure 安全最佳做法 11 - 体系结构。单一的统一安全策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure 安全基准 - 网络安全](/azure/security/benchmarks/security-controls-v2-network-security)
+- [Azure 安全基准 - 网络安全](../security/benchmarks/security-controls-v2-network-security.md)
 
 - [Azure 网络安全概述](../security/fundamentals/network-overview.md)
 
@@ -827,9 +827,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准 - 标识管理](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure 安全基准 - 标识管理](../security/benchmarks/security-controls-v2-identity-management.md)
 
-- [Azure 安全基准 - 特权访问](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure 安全基准 - 特权访问](../security/benchmarks/security-controls-v2-privileged-access.md)
 
 - [Azure 安全最佳做法 11 - 体系结构。单一的统一安全策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -861,9 +861,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准 - 日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure 安全基准 - 日志记录和威胁检测](../security/benchmarks/security-controls-v2-logging-threat-detection.md)
 
-- [Azure 安全基准 - 事件响应](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure 安全基准 - 事件响应](../security/benchmarks/security-controls-v2-incident-response.md)
 
 - [Azure 安全最佳做法 4 - 流程。更新云的事件响应流程](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
@@ -877,5 +877,5 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅 [Azure 安全基准 V2 概述](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 参阅 [Azure 安全基准 V2 概述](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

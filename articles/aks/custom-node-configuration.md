@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1e9d65baacb9c712b92ef6f00abda169031b47e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d60a241506dbcf3e038f79c99830ef1a81c06b88
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581644"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735258"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>自定义 Azure Kubernetes Service (AKS) 节点池的节点配置 (预览) 
 
@@ -59,10 +59,10 @@ az extension update --name aks-preview
 
 下面列出了支持的 Kubelet 参数和接受的值。
 
-| 参数 | 允许的值/间隔 | 默认 | 描述 |
+| 参数 | 允许的值/间隔 | 默认 | 说明 |
 | --------- | ----------------------- | ------- | ----------- |
 | `cpuManagerPolicy` | 无、静态 | 无 | 静态策略允许具有整数 CPU 请求的可 [保证盒箱](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/) 中的容器访问节点上的独占 cpu。 |
-| `cpuCfsQuota` | true、false | true |  对于指定 CPU 限制的容器，启用/禁用 CPU CFS 配额强制。 | 
+| `cpuCfsQuota` | true、false | 是 |  对于指定 CPU 限制的容器，启用/禁用 CPU CFS 配额强制。 | 
 | `cpuCfsQuotaPeriod` | 以毫秒为单位的间隔 (毫秒)  | `100ms` | 设置 CPU CFS 配额周期值。 | 
 | `imageGcHighThreshold` | 0-100 | 85 | 始终运行映像垃圾回收后的磁盘使用百分比。 **将** 触发垃圾回收的最小磁盘使用量。 若要禁用映像垃圾回收，请将设置为100。 | 
 | `imageGcLowThreshold` | 0-100，无高于 `imageGcHighThreshold` | 80 | 从不运行映像垃圾回收之前磁盘使用量的百分比。 **可** 触发垃圾回收的最小磁盘使用情况。 |
@@ -77,7 +77,7 @@ az extension update --name aks-preview
 
 在为大量流量提供服务时，所提供的流量通常来自大量的本地文件。 你可以调整以下内核设置和内置限制，使你能够以某些系统内存为代价来处理更多的情况。
 
-| 设置 | 允许的值/间隔 | 默认 | 描述 |
+| 设置 | 允许的值/间隔 | 默认 | 说明 |
 | ------- | ----------------------- | ------- | ----------- |
 | `fs.file-max` | 8192-12000500 | 709620 | Linux 内核将分配的文件句柄的最大数目通过增加此值，可以增加允许的最大打开文件数。 |
 | `fs.inotify.max_user_watches` | 781250-2097152 | 1048576 | 系统允许的最大文件监视次数。 每个 *监视* 在32位内核上约为90字节，而在64内核上约160个字节。 | 
@@ -89,7 +89,7 @@ az extension update --name aks-preview
 
 对于预期会处理大量并发会话的代理节点，你可以使用下面的 TCP 和网络选项子集，你可以根据节点池进行调整。 
 
-| 设置 | 允许的值/间隔 | 默认 | 描述 |
+| 设置 | 允许的值/间隔 | 默认 | 说明 |
 | ------- | ----------------------- | ------- | ----------- |
 | `net.core.somaxconn` | 4096-3240000 | 16384 | 可为任何给定侦听套接字排队的最大连接请求数。 传递给 [侦听 (2) ](http://man7.org/linux/man-pages/man2/listen.2.html) 函数的积压工作（backlog）参数值的上限。 如果积压工作参数大于 `somaxconn` ，则它会以静默方式截断到此限制。
 | `net.core.netdev_max_backlog` | 1000-3240000 | 1000 | 当接口接收数据包时，在输入端排队的最大数据包数量可以处理这些数据包。 |
@@ -114,7 +114,7 @@ az extension update --name aks-preview
 
 与文件描述符限制一样，进程可以创建的辅助角色或线程的数量受内核设置和用户限制的限制。 AKS 上的用户限制是不受限制的。 
 
-| 设置 | 允许的值/间隔 | 默认 | 描述 |
+| 设置 | 允许的值/间隔 | 默认 | 说明 |
 | ------- | ----------------------- | ------- | ----------- |
 | `kernel.threads-max` | 20 - 513785 | 55601 | 进程可以加速工作线程。 可创建的所有线程的最大数目均设置为 "内核" 设置 `kernel.threads-max` 。 | 
 
@@ -122,7 +122,7 @@ az extension update --name aks-preview
 
 以下设置可用于优化 Linux 内核 (VM) 子系统的虚拟内存和 `writeout` 磁盘的脏数据的操作。
 
-| 设置 | 允许的值/间隔 | 默认 | 描述 |
+| 设置 | 允许的值/间隔 | 默认 | 说明 |
 | ------- | ----------------------- | ------- | ----------- |
 | `vm.max_map_count` |  65530-262144 | 65530 | 此文件包含进程可能具有的最大内存映射区域数。 内存映射区域用作直接调用、和的副作用， `malloc` `mmap` 也是 `mprotect` `madvise` 在加载共享库时。 | 
 | `vm.vfs_cache_pressure` | 1 - 500 | 100 | 此百分比值控制内核回收内存的趋势，该内存用于缓存目录和 inode 对象。 |
@@ -132,7 +132,7 @@ az extension update --name aks-preview
 | `transparentHugePageDefrag` | `always`, `defer`, `defer+madvise`, `madvise`, `never` | `madvise` | 此值控制内核是否应充分利用内存压缩以提高其 `hugepages` 可用性。 | 
 
 > [!IMPORTANT]
-> 为了便于搜索和可读性，OS 设置按名称显示在此文档中，但应使用 [camelCase 的大小写约定](https://docs.microsoft.com/dotnet/standard/design-guidelines/capitalization-conventions)添加到配置 json 文件或 AKS API。
+> 为了便于搜索和可读性，OS 设置按名称显示在此文档中，但应使用 [camelCase 的大小写约定](/dotnet/standard/design-guidelines/capitalization-conventions)添加到配置 json 文件或 AKS API。
 
 创建 `kubeletconfig.json` 具有以下内容的文件：
 

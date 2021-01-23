@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: e8cb423d4d700c4b6b6caa30a02eac3e7ef10cb6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253341"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733805"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>配置 Azure SQL 逻辑服务器的 Azure 证明
 
@@ -27,7 +27,7 @@ ms.locfileid: "98253341"
 
 [Microsoft Azure 认证](../../attestation/overview.md) 是一种解决方案，适用于证明受信任的执行环境 (TEEs) ，包括 intel SGX) Enclaves (Intel 软件防护扩展。 
 
-若要将 Azure 证明用于证明 Intel SGX enclaves，Always Encrypted 用于在 Azure SQL 数据库中使用 [安全 enclaves](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) ，需执行以下操作：
+若要将 Azure 证明用于证明 Intel SGX enclaves，Always Encrypted 用于在 Azure SQL 数据库中使用 [安全 enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) ，需执行以下操作：
 
 1. 创建一个 [证明提供者](../../attestation/basic-concepts.md#attestation-provider) ，并使用建议的证明策略进行配置。
 
@@ -114,7 +114,7 @@ Write-Host "Your attestation URL is: " $attestationUrl
 
 ### <a name="use-azure-portal-to-assign-permission"></a>使用 Azure 门户分配权限
 
-若要将 Azure SQL server 的标识分配给证明提供者的证明读者角色，请遵循 [使用 Azure 门户添加或删除 Azure 角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)中的常规说明。 在 " **添加角色分配** " 窗格中：
+若要将 Azure SQL server 的标识分配给证明提供者的证明读者角色，请遵循 [使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)中的常规说明。 在 " **添加角色分配** " 窗格中：
 
 1. 在 " **角色** " 下拉端中，选择 " **证明读者** " 角色。
 1. 在 " **选择** " 字段中，输入要搜索的 Azure SQL server 的名称。
@@ -143,12 +143,12 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-有关详细信息，请参阅[使用 Azure PowerShell 添加或删除 Azure 角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#add-a-role-assignment)。
+有关详细信息，请参阅[使用 Azure PowerShell 添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [管理具有安全 enclave 的 Always Encrypted 的密钥](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
+- [管理具有安全 enclave 的 Always Encrypted 的密钥](/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
 
 ## <a name="see-also"></a>另请参阅
 
-- [教程：在 Azure SQL 数据库中利用安全 enclaves 入门 Always Encrypted](always-encrypted-enclaves-getting-started.md)
+- [教程：在 Azure SQL 数据库中开始使用具有安全 enclave 的 Always Encrypted](always-encrypted-enclaves-getting-started.md)

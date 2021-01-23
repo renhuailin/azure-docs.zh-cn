@@ -1,16 +1,16 @@
 ---
-title: 模板规格概述
+title: 创建和部署模板规格
 description: 介绍如何创建模板规格并与组织中的其他用户共享。
 ms.topic: conceptual
-ms.date: 11/25/2020
+ms.date: 01/14/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: dd7616bdc07aee86ac56a2f2fe0ac282838c58b4
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 762c483883d391c436065b13b54f127f1618d7f9
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518849"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734909"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure 资源管理器模板规格（预览版）
 
@@ -21,7 +21,7 @@ Microsoft.Resources/templateSpecs 是模板规格的资源类型。 它包含一
 若要部署模板规格，请使用标准 Azure 工具（如 PowerShell）、Azure CLI、Azure 门户、REST 和其他受支持的 SDK 和客户端。 请使用针对模板使用的相同命令。
 
 > [!NOTE]
-> 模板规格当前提供预览版。 若要将其与 Azure PowerShell 一起使用，必须安装 [版本5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用 [2.14.2 或更高版本](/cli/azure/install-azure-cli)。
+> 模板规格当前提供预览版。 若要将其与 Azure PowerShell 一起使用，必须安装[版本 5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用[版本 2.14.2 或更高版本](/cli/azure/install-azure-cli)。
 
 ## <a name="why-use-template-specs"></a>为什么使用模板规格？
 
@@ -134,7 +134,7 @@ az ts show \
 
 /subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Resources/templateSpecs/{template-spec-name}/versions/{template-spec-version}
 
-请注意，资源 ID 包括模板规范的版本名称。
+请注意，资源 ID 包括模板规格的版本名称。
 
 例如，可以使用以下命令部署模板规格。
 
@@ -160,7 +160,7 @@ az deployment group create \
 
 ---
 
-在实践中，您通常会运行 `Get-AzTemplateSpec` 或 `az ts show` 以获取您要部署的模板规范的 ID。
+实际上，通常需要运行 `Get-AzTemplateSpec` 或 `az ts show` 来获取要部署的模板规格的 ID。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -334,7 +334,7 @@ az deployment group create \
 
 ## <a name="versioning"></a>版本控制
 
-创建模板规范时，为其提供版本名称。 循环访问模板代码时，可以更新现有版本（获取修补程序）或发布新版本。 版本是文本字符串。 可以选择遵循任意版本控制系统，包括语义化版本控制。 模板规范的用户可以提供要在部署时使用的版本名称。
+创建模板规格时，需要为其提供版本名称。 循环访问模板代码时，可以更新现有版本（获取修补程序）或发布新版本。 版本是文本字符串。 可以选择遵循任意版本控制系统，包括语义化版本控制。 模板规格的用户可提供部署模板规格时要使用的版本名称。
 
 ## <a name="next-steps"></a>后续步骤
 

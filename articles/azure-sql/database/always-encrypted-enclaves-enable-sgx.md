@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 4c77103dbb043ef9d6af9a4078b3e574ab5f953f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: ded1406c47bb3f00c366da7a5b28319f3712f8a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253336"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733750"
 ---
 # <a name="enable-intel-sgx-for-your-azure-sql-database"></a>为 Azure SQL 数据库启用 Intel SGX 
 
@@ -25,7 +25,7 @@ ms.locfileid: "98253336"
 > [!NOTE]
 > 对于 Azure SQL 数据库，具有 secure enclaves 的 Always Encrypted 当前提供 **公共预览版**。
 
-在 Azure SQL 数据库中[使用 secure enclaves Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves)使用 intel [SGX) Enclaves (Intel 软件防护扩展](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/)。 要使 Intel SGX 可用，数据库必须使用 [vCore 模型](service-tiers-vcore.md) 和 [DC 系列](service-tiers-vcore.md#dc-series) 硬件生成。
+在 Azure SQL 数据库中[使用 secure enclaves Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves)使用 intel [SGX) Enclaves (Intel 软件防护扩展](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/)。 要使 Intel SGX 可用，数据库必须使用 [vCore 模型](service-tiers-vcore.md) 和 [DC 系列](service-tiers-vcore.md#dc-series) 硬件生成。
 
 配置 DC 系列硬件生成以启用 Intel SGX enclaves 是 Azure SQL 数据库管理员的责任。 请参阅 [配置 SGX enclaves 和证明时的角色和职责](always-encrypted-enclaves-plan.md#roles-and-responsibilities-when-configuring-sgx-enclaves-and-attestation)。
 
@@ -43,4 +43,4 @@ ms.locfileid: "98253336"
 
 ## <a name="see-also"></a>另请参阅
 
-- [教程：在 Azure SQL 数据库中利用安全 enclaves 入门 Always Encrypted](always-encrypted-enclaves-getting-started.md)
+- [教程：在 Azure SQL 数据库中开始使用具有安全 enclave 的 Always Encrypted](always-encrypted-enclaves-getting-started.md)

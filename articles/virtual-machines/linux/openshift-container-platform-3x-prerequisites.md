@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 51f6a2ac4f524ac2a504fb8e0c3dd90ec25c9f93
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016023"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734724"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台3.11 的常见先决条件
 
@@ -63,7 +63,7 @@ az login
 az group create --name keyvaultrg --location eastus
 ```
 
-## <a name="create-a-key-vault"></a>创建密钥保管库
+## <a name="create-a-key-vault"></a>创建 Key Vault
 使用 [az keyvault create](/cli/azure/keyvault) 命令创建一个 Key Vault 用于管理群集的 SSH 密钥。 Key vault 名称必须全局唯一，并且必须启用模板部署，否则部署将失败并出现 "KeyVaultParameterReferenceSecretRetrieveFailed" 错误。
 
 以下示例在 *keyvaultrg* 资源组中创建一个名为 *keyvault* 的 Key Vault：
@@ -134,7 +134,7 @@ az ad sp create-for-rbac --name openshiftsp \
  > [!WARNING] 
  > 请确保记下安全密码，因为它不能再次检索此密码。
 
-有关服务主体的详细信息，请参阅[使用 Azure CLI 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)。
+有关服务主体的详细信息，请参阅[使用 Azure CLI 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)。
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>仅适用于资源管理器模板的先决条件
 

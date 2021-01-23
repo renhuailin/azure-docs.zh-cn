@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 9a4c331d82695aecb53990fd604ade82f3361959
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ad663b345d3d150b55e0e018afd1430775d77162
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452924"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733463"
 ---
 # <a name="features"></a>功能
 
@@ -53,13 +53,13 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 
 支持所有搜索参数类型。 
 
-| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 备注 |
+| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
 |-----------------------|-----------|-----------|-----------|---------|
 | Number                | 是       | 是       | 是       |         |
 | Date/DateTime         | 是       | 是       | 是       |         |
-| String                | 是       | 是       | 是       |         |
+| 字符串                | 是       | 是       | 是       |         |
 | 令牌                 | 是       | 是       | 是       |         |
-| 参考             | 是       | 是       | 是       |         |
+| 引用             | 是       | 是       | 是       |         |
 | 合成             | 是       | 是       | 是       |         |
 | 数量              | 是       | 是       | 是       |         |
 | URI                   | 是       | 是       | 是       |         |
@@ -86,7 +86,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 | `_id`                   | 是       | 是       | 是       |         |
 | `_lastUpdated`          | 是       | 是       | 是       |         |
 | `_tag`                  | 是       | 是       | 是       |         |
-| `_profile`              | 是       | 是       | 是       |         |
+| `_profile`              | 部分   | 部分   | 部分   | 仅在 STU3 中受支持，在 R4 中不支持 |
 | `_security`             | 是       | 是       | 是       |         |
 | `_text`                 | 否        | 否        | 否        |         |
 | `_content`              | 否        | 否        | 否        |         |
@@ -96,7 +96,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 | `_query`                | 否        | 否        | 否        |         |
 | `_filter`               | 否        | 否        | 否        |         |
 
-| 搜索结果参数 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 备注 |
+| 搜索结果参数 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_sort`                 | 部分        | 部分   | 部分        |   支持 `_sort=_lastUpdated`       |
 | `_count`                | 是       | 是       | 是       | `_count` 限制为100个字符。 如果设置为高于100，则仅返回100，并在捆绑包中返回警告。 |
@@ -113,7 +113,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 
 支持扩展 RESTful API 的所有操作。
 
-| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 备注 |
+| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
 |------------------------|-----------|-----------|-----------|---------|
 |  (整个系统的 $export)  | 是       | 是       | 是       |         |
 | 患者/$export        | 是       | 是       | 是       |         |
@@ -137,7 +137,7 @@ FHIR 服务器使用 [Azure Active Directory](https://azure.microsoft.com/servic
 
 * [**请求单位 (ru)**](../cosmos-db/concepts-limits.md) -可在门户中为 FHIR 的 Azure API 配置最多10000个 ru。 你将需要至少 400 ru 或10个 ru/GB，取两者中较大者。 如果你需要10000个多个 ru，则可以将其放在支持票证中，以增加此项。 可用的最大值为1000000。
 
-* **并发连接** 和 **实例** -通过 dafault，群集中的两个实例上有五个并发连接 (，总共10个并发请求) 。 如果你认为你需要更多的并发请求，请打开支持票证，详细了解你的需求。
+* **并发连接** 和 **实例** -默认情况下，在群集中的两个实例上有5个并发连接 (总计10个并发请求) 。 如果你认为你需要更多的并发请求，请打开支持票证，详细了解你的需求。
 
 * **束大小** -每个束限制为500个项目。
 

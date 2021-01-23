@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9500d682a99e6345289a83b4b3b2fc29ffe18457
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b5025aa322ae26f9dd7c683d0e54762fd33eb355
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676878"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735375"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池查询存储文件
 
@@ -184,7 +184,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 - 对于不在“嵌套类型”组中的所有 Parquet 类型，函数将返回指定元素以及指定路径中的某个标量值，例如 int、decimal 和 varchar。
 - 如果该路径指向嵌套类型的元素，则函数将返回指定路径中从顶部元素开始的 JSON 片段。 JSON 片段的类型为 varchar (8000)。
 - 如果在指定的 column_name 中找不到该属性，则函数将返回错误。
-- 如果在指定的 column_path 中找不到该属性，则函数将根据[路径模式](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)返回结果：在严格模式下返回错误，在宽松模式下返回 null。
+- 如果在指定的 column_path 中找不到该属性，则函数将根据[路径模式](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#PATHMODE)返回结果：在严格模式下返回错误，在宽松模式下返回 null。
 
 有关查询示例，请查看[查询 Parquet 嵌套类型](query-parquet-nested-types.md#read-properties-from-nested-object-columns)一文中的“访问嵌套列中的元素”部分。
 

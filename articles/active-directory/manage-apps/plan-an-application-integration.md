@@ -1,26 +1,22 @@
 ---
-title: 将 Azure AD 与应用集成入门 | Microsoft 文档
+title: 将 Azure AD 与应用集成入门
 description: 本文是一篇入门指南，介绍如何将 Azure Active Directory (AD) 与本地应用程序和云应用程序集成。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
-ms.subservice: app-mgmt
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
 ms.author: kenwith
 ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 913b7975de4598bba7240647c1d9e8c81cd1cec9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: db3d3623e175d582a2fe271d73aa452ca07b8e8d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659091"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735060"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>将 Azure Active Directory 与应用程序集成入门指南
 
@@ -77,9 +73,7 @@ ms.locfileid: "94659091"
 使用 Microsoft Azure AD 应用程序代理，可以从任何位置和任何设备安全访问专用网络中的应用程序。 在环境中安装应用程序代理连接器后，可以使用 Azure AD 轻松配置该连接器。
 
 ### <a name="integrating-custom-applications"></a>集成自定义应用程序
-如果正在编写新应用程序，并希望帮助开发人员利用 Azure AD 的强大功能，请参阅 [指导开发人员](./developer-guidance-for-integrating-applications.md)。
-
-如果想要将自定义应用程序添加到 Azure 应用程序库，请参阅[使用 Azure AD 自助 SAML 配置加入自己的应用](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)。
+如果要将自定义应用程序添加到 Azure 应用程序库，请参阅将 [应用发布到 Azure AD 应用库](../develop/v2-howto-app-gallery-listing.md)。
 
 ## <a name="managing-access-to-applications"></a>管理对应用程序的访问
 以下文章介绍了在使用 Azure AD 连接器和 Azure AD 将应用程序与 Azure AD 集成之后，如何管理对应用程序的访问。
@@ -95,7 +89,7 @@ ms.locfileid: "94659091"
 
 若要从 Azure 门户下载部署计划，请执行以下操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择 "**企业应用程序**" "选择  |  **应用**  |  **部署计划**"。
 
 通过完成[部署计划调查](https://aka.ms/DeploymentPlanFeedback)来提供有关部署计划的反馈。

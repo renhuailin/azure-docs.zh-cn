@@ -3,12 +3,12 @@ title: Azure 中的 BareMetal 实例单元
 description: 了解如何通过 Azure 门户确定 BareMetal 实例单位并与其交互。
 ms.topic: how-to
 ms.date: 1/4/2021
-ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b089b45c35ff05f10ae59f8ce793645361be1e9b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861040"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733257"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>通过 Azure 门户管理 BareMetal 实例
  
@@ -39,7 +39,7 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
  
 你需要在 Azure 门户中列出你的订阅，然后双击用于部署 BareMetal 实例单位的订阅。
  
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户菜单上，选择“所有服务”。
 
@@ -50,7 +50,7 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
 1. 选择 " **资源提供程序** "，并在搜索中输入 **BareMetalInfrastructure** 。 应 **注册** 资源提供程序，如图所示。
  
 >[!NOTE]
->如果未注册资源提供程序，请选择 " **注册**"。
+>如果未注册资源提供程序，请选择“注册”。
  
 :::image type="content" source="media/baremetal-infrastructure-portal/register-resource-provider-azure-portal.png" alt-text="显示已注册的 BareMetal 实例单元的屏幕截图":::
  
@@ -97,7 +97,7 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
 >[!NOTE]
 >修订版4.2 是使用现有 Rev 4 体系结构的最新更名 BareMetal 基础结构。 修订版4更接近于 Azure 虚拟机 (VM) 主机。 它显著改进了在修订版4戳记或 rows 中部署的 Azure Vm 和 BareMetal 实例单位之间的网络延迟。 可以通过 Azure 门户访问和管理 BareMetal 实例。 有关详细信息，请参阅 [Azure 上的 BareMetal 基础结构](baremetal-overview-architecture.md)。
  
-此外，在右侧，你会发现 [Azure 邻近性放置组的](../../../virtual-machines/linux/co-location.md) 名称，该名称是自动为每个已部署的 BareMetal 实例单元创建的。 部署承载应用程序层的 Azure Vm 时，引用邻近位置组。 使用与 BareMetal 实例单元关联的邻近性放置组时，请确保将 Azure Vm 部署到靠近 BareMetal 实例单元的位置。
+此外，在右侧，你会发现 [Azure 邻近性放置组的](../../../virtual-machines/co-location.md) 名称，该名称是自动为每个已部署的 BareMetal 实例单元创建的。 部署承载应用程序层的 Azure Vm 时，引用邻近位置组。 使用与 BareMetal 实例单元关联的邻近性放置组时，请确保将 Azure Vm 部署到靠近 BareMetal 实例单元的位置。
  
 >[!TIP]
 >若要在与修订版4.x 相同的 Azure 数据中心中查找应用程序层，请参阅 [azure 邻近性放置组以获得最佳网络延迟](../../../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md)。

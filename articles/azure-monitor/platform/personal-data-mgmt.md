@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 40ea367c1298a916df541d362b85e8d485d193f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505267"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734926"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>存储在 Log Analytics 和 Application Insights 中的个人数据指南
 
@@ -91,7 +91,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 我们已在隐私处理中提供 *清除* API 路径。 使用此路径会带来一定的风险和潜在的性能影响，并有可能导致 Log Analytics 数据的所有聚合、度量和其他方面发生偏差，因此应谨慎使用。 有关处理私人数据的替代方法，请参阅[个人数据处理策略](#strategy-for-personal-data-handling)部分。
 
 > [!NOTE]
-> 执行清除操作后，在 [清除操作状态](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) 为 " *挂起*" 时，无法访问数据。 
+> 执行清除操作后，在 [清除操作状态](/rest/api/loganalytics/workspacepurge/getpurgestatus) 为 " *挂起*" 时，无法访问数据。 
 
 清除是一项高特权操作，如果未向 Azure 中的应用或用户显式授予 Azure 资源管理器中的某个角色，则任何应用或用户（甚至包括资源所有者）都无权执行该操作。 此角色为 _数据清除程序_，由于可能会丢失数据，应谨慎委托。 
 
@@ -129,4 +129,3 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 ## <a name="next-steps"></a>后续步骤
 - 若要详细了解如何收集、处理和保护 Log Analytics 数据，请参阅 [Log Analytics 数据安全性](./data-security.md)。
 - 若要详细了解如何收集、处理和保护 Application Insights 数据，请参阅 [Application Insights 数据安全性](../app/data-retention-privacy.md)。
-
