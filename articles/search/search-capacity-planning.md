@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 4a9a6b61e392ed2efd68cdcb1cf7e53d6bde5ccd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 8d984a303234a24423ceae100bd139cb484d6495
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249671"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702779"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>估计和管理 Azure 认知搜索服务的容量
 
 在[预配搜索服务](search-create-service-portal.md)和锁定特定的定价层之前，请花几分钟时间来了解容量如何工作以及如何调整副本和分区来适应工作负荷波动。
 
-容量是 [服务层](search-sku-tier.md)的一个功能。 层由最大存储、每个分区的存储以及可创建的对象数的最大限制来区分。 基本层适用于具有适度存储要求的应用 (仅) 一个分区，但可以在高可用性配置 (3 个副本) 中运行。 其他层专用于特定的工作负荷或模式，例如多租户。 在内部，在这些层上创建的服务将从可帮助这些方案的硬件中获益。
+容量是 [服务层](search-sku-tier.md)的一种功能，它为每个服务创建最大的存储空间，每个分区建立最大的存储空间，以及可创建的对象数的最大限制。 基本层适用于具有适度存储要求的应用 (仅) 一个分区，但可以在高可用性配置 (3 个副本) 中运行。 其他层专用于特定的工作负荷或模式，例如多租户。 在内部，在这些层上创建的服务将从可帮助这些方案的硬件中获益。
 
 Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活组合，因此，根据是否需要更多的查询或索引功能，可以改变容量。 创建服务后，可以单独增加或减少副本或分区数。 每增加一个物理资源就会产生成本，但一旦大型工作负荷完成，你可以减少规模以降低你的帐单。 增加或减少容量所需的时间为 15 分钟到几个小时，具体取决于调整的层和大小。
 
@@ -146,7 +146,7 @@ Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活�
 
    :::image type="content" source="media/search-capacity-planning/1-initial-values.png" alt-text="显示当前值的“规模”页" border="true":::
 
-1. 使用滑块增加或减少分区数。 底部的公式指示正在使用多少个搜索单位。 选择“保存”。
+1. 使用滑块增加或减少分区数。 底部的公式指示正在使用多少个搜索单位。 选择“保存” 。
 
    此示例将添加第二个副本和分区。 请注意搜索单位计数；现在有 4 个搜索单位，因为计费公式是副本数乘以分区数 (2 x 2)。 将容量翻倍不仅仅会使运行服务的成本翻倍。 如果搜索单位的成本是 $100，则新的每月费用将是 $400。
 

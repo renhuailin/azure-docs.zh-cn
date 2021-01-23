@@ -3,12 +3,12 @@ title: DPM 和 Azure 备份服务器的脱机备份
 description: 借助 Azure 备份，可以使用 Azure 导入/导出服务在网外发送数据。 本文说明 DPM 和 Azure 备份服务器的脱机备份工作流。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 368ae846a24ec04ee4b7da9b5971c00180be611d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 006c0fa4d67c9a85426d7a007912df65876313da
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378451"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701807"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM 和 Azure 备份服务器 (MABS) 的脱机备份工作流
 
@@ -17,7 +17,7 @@ ms.locfileid: "89378451"
 
 System Center Data Protection Manager 和 Azure 备份服务器 (MABS) 与 Azure 备份集成，并使用多个内置效率，在将数据初始完整备份到 Azure 期间节省网络和存储成本。 与仅传输增量/增量的后续备份相比，初始完整备份通常传输大量数据，并且需要更多的网络带宽。 Azure 备份会压缩初始备份。 通过脱机种子设定过程，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上传到 Azure。
 
-Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)紧密集成。 可以借助此服务使用磁盘将数据传输到 Azure。 如果要通过高延迟、低带宽网络传输 TB 计的初始备份数据，可以使用脱机种子设定工作流将一个或多个硬盘驱动器中的初始备份副本传送到 Azure 数据中心。 本文将会概述如何对 System Center Data Protection Manager (DPM) 和 Azure 备份服务器 (MABS) 完成此工作流，并提供其他相关步骤。
+Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../import-export/storage-import-export-service.md)紧密集成。 可以借助此服务使用磁盘将数据传输到 Azure。 如果要通过高延迟、低带宽网络传输 TB 计的初始备份数据，可以使用脱机种子设定工作流将一个或多个硬盘驱动器中的初始备份副本传送到 Azure 数据中心。 本文将会概述如何对 System Center Data Protection Manager (DPM) 和 Azure 备份服务器 (MABS) 完成此工作流，并提供其他相关步骤。
 
 > [!NOTE]
 > Microsoft Azure 恢复服务 (MARS) 代理的脱机备份过程不同于 DPM 和 MABS。 有关使用 MARS 代理进行脱机备份的信息，请参阅 [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md)。 使用 Azure 备份代理完成的系统状态备份不支持脱机备份。
@@ -59,12 +59,12 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
        ![注册资源提供程序](./media/backup-azure-backup-server-import-export/register-import-export.png)
 
 * 创建了一个暂存位置，它可以是计算机上的网络共享或任何其他内部或外部驱动器，并且有足够的磁盘空间来保存初始副本。 例如，若要备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少）。
-* 对于发送到 Azure 的磁盘，请确保仅使用 2.5 英寸 SSD 或 2.5 英寸或 3.5 英寸 SATA II/III 内部硬盘驱动器。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../storage/common/storage-import-export-requirements.md#supported-hardware)，了解服务支持的最新驱动器集。
+* 对于发送到 Azure 的磁盘，请确保仅使用 2.5 英寸 SSD 或 2.5 英寸或 3.5 英寸 SATA II/III 内部硬盘驱动器。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../import-export/storage-import-export-requirements.md#supported-hardware)，了解服务支持的最新驱动器集。
 * SATA 驱动器必须连接到一台计算机（称为“副本计算机”），将在这台计算机上完成将备份数据从暂存位置复制到 SATA 驱动器的过程。 请确保已在副本计算机上启用 BitLocker。
 
 ## <a name="workflow"></a>工作流
 
-本部分中的信息有助于完成“脱机备份工作流”，以便可以将你的数据传输到 Azure 数据中心并上转到 Azure 存储。 如果你对导入服务或该过程的任何方面有疑问，请参阅上面引用的[导入服务概述](../storage/common/storage-import-export-service.md)。
+本部分中的信息有助于完成“脱机备份工作流”，以便可以将你的数据传输到 Azure 数据中心并上转到 Azure 存储。 如果你对导入服务或该过程的任何方面有疑问，请参阅上面引用的[导入服务概述](../import-export/storage-import-export-service.md)。
 
 ## <a name="initiate-offline-backup"></a>启动脱机备份
 
@@ -188,7 +188,7 @@ AzureOfflineBackupDiskPrep 实用工具准备好要发送到最近的 Azure 数�
 
 ### <a name="monitor-azure-import-job-status"></a>监视 Azure 导入作业状态
 
-可以通过导航到“导入/导出作业”页面并选中你的作业，从 Azure 门户监视导入作业的状态。 有关导入作业状态的详细信息，请参阅[存储导入导出服务](../storage/common/storage-import-export-service.md)一文。
+可以通过导航到“导入/导出作业”页面并选中你的作业，从 Azure 门户监视导入作业的状态。 有关导入作业状态的详细信息，请参阅[存储导入导出服务](../import-export/storage-import-export-service.md)一文。
 
 ### <a name="complete-the-workflow"></a>完成工作流
 
@@ -198,4 +198,4 @@ AzureOfflineBackupDiskPrep 实用工具准备好要发送到最近的 Azure 数�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 如果遇到任何有关 Azure 导入/导出服务工作流的问题，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储](../storage/common/storage-import-export-service.md)。
+* 如果遇到任何有关 Azure 导入/导出服务工作流的问题，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储](../import-export/storage-import-export-service.md)。

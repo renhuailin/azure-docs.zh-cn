@@ -1,23 +1,23 @@
 ---
 title: 脱机备份 Data Protection Manager (DPM) 和 Microsoft Azure 备份 Server (MABS) -早期版本
-description: 借助 Azure 备份，可以使用 Azure 导入/导出服务在网外发送数据。 本文介绍以前版本的 DPM 和 Azure 备份服务器的脱机备份工作流。
+description: 借助 Azure 备份，可以使用 Azure 导入/导出服务在网外发送数据。 本文介绍了早期版本的 DPM 和 Azure 备份服务器的脱机备份工作流。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0405ab66b7714f00349419e94bb064267ca711a6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88890087"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702179"
 ---
-# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM 和 Azure 备份服务器 (早期版本的脱机备份工作流) 
+# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM 和 Azure 备份服务器（早期版本）的脱机备份工作流
 
 >[!IMPORTANT]
->这些步骤适用于 DPM 2019 RTM 及更早版本以及 MABS v3 RTM 和更早版本。
+>这些步骤适用于 DPM 2019 RTM（及更低版本）和 MABS v3 RTM（及更低版本）。
 
 Azure 备份有多个可提升效率的内置功能，可在将数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常会传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输差异/增量部分。 Azure 备份会压缩初始备份。 通过脱机种子设定过程，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上传到 Azure。
 
-Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)紧密集成。 可以借助此服务使用磁盘将数据传输到 Azure。 如果要通过高延迟、低带宽网络传输 TB 计的初始备份数据，可以使用脱机种子设定工作流将一个或多个硬盘驱动器中的初始备份副本传送到 Azure 数据中心。 本文将会概述如何对 System Center Data Protection Manager (DPM) 和 Azure 备份服务器 (MABS) 完成此工作流，并提供其他相关步骤。
+Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../import-export/storage-import-export-service.md)紧密集成。 可以借助此服务使用磁盘将数据传输到 Azure。 如果要通过高延迟、低带宽网络传输 TB 计的初始备份数据，可以使用脱机种子设定工作流将一个或多个硬盘驱动器中的初始备份副本传送到 Azure 数据中心。 本文将会概述如何对 System Center Data Protection Manager (DPM) 和 Azure 备份服务器 (MABS) 完成此工作流，并提供其他相关步骤。
 
 > [!NOTE]
 > Microsoft Azure 恢复服务 (MARS) 代理的脱机备份过程不同于 DPM 和 MABS。 有关使用 MARS 代理进行脱机备份的信息，请参阅 [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md)。 使用 Azure 备份代理完成的系统状态备份不支持脱机备份。
@@ -46,7 +46,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 > * 使用 MABS 备份所有工作负荷和文件。
 
 >[!NOTE]
->Azure CSP 订阅不支持用于 DPM 2019 RTM 和更早版本的脱机种子设定以及 MABS v3 RTM 和更早版本。 仍支持通过网络进行联机备份。
+>不支持将 Azure CSP 订阅用于 DPM 2019 RTM（及更低版本）和 MABS v3 RTM（及更低版本）的脱机种子设定。 仍支持通过网络进行联机备份。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -61,18 +61,18 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
     | 美国 | [链接](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)。 |
     | 中国 | [链接](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)。 |
 
-* 在下载发布设置文件的订阅中已创建了采用资源管理器部署模型的 Azure 存储帐户。 在存储帐户中，创建一个新的 blob 容器，该容器将用作目标。
+* 在下载发布设置文件的订阅中已创建了采用资源管理器部署模型的 Azure 存储帐户。 在存储帐户中，创建一个新的 Blob 容器，该容器将用作目标。
 
   ![创建采用资源管理器开发模式的存储帐户](./media/offline-backup-dpm-mabs-previous-versions/storage-account-resource-manager.png)
 
 * 创建了一个暂存位置，它可以是计算机上的网络共享或任何其他内部或外部驱动器，并且有足够的磁盘空间来保存初始副本。 例如，若要备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少）。
-* 对于发送到 Azure 的磁盘，请确保仅使用 2.5 英寸 SSD 或 2.5 英寸或 3.5 英寸 SATA II/III 内部硬盘驱动器。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../storage/common/storage-import-export-requirements.md#supported-hardware)，了解服务支持的最新驱动器集。
+* 对于发送到 Azure 的磁盘，请确保仅使用 2.5 英寸 SSD 或 2.5 英寸或 3.5 英寸 SATA II/III 内部硬盘驱动器。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../import-export/storage-import-export-requirements.md#supported-hardware)，了解服务支持的最新驱动器集。
 * SATA 驱动器必须连接到一台计算机（称为“副本计算机”），将在这台计算机上完成将备份数据从暂存位置复制到 SATA 驱动器的过程。 确保已在副本计算机上启用 BitLocker。
 
 ## <a name="prepare-the-server-for-the-offline-backup-process"></a>为脱机备份过程准备服务器
 
 >[!NOTE]
-> 如果你找不到列出的实用程序（如 *AzureOfflineBackupCertGen.exe*），则在安装 MARS 代理的过程中，将写入以 AskAzureBackupTeam@microsoft.com 获取对它们的访问权限。
+> 如果在 MARS 代理安装中找不到列出的实用工具（例如 *AzureOfflineBackupCertGen.exe*），请写入 AskAzureBackupTeam@microsoft.com 以获取对这些实用工具的访问权限。
 
 * 在服务器上打开权限提升的命令提示符，并运行以下命令：
 
@@ -84,7 +84,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
     如果已存在所需的应用程序，此可执行文件会要求你手动将证书上传到租户中的应用程序。 遵循[此部分](#manually-upload-an-offline-backup-certificate)中的步骤将证书手动上传到应用程序。
 
-* *AzureOfflineBackupCertGen.exe*工具生成*OfflineApplicationParams.xml*文件。 使用 MABS 或 DPM 将此文件复制到服务器。
+* AzureOfflineBackupCertGen.exe 工具将生成 OfflineApplicationParams.xml 文件 。 使用 MABS 或 DPM 将此文件复制到服务器。
 * 在 DPM 实例或 Azure 备份服务器上安装[最新的 MARS 代理](https://aka.ms/azurebackup_agent)。
 * 将服务器注册到 Azure。
 * 运行以下命令：
@@ -106,7 +106,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
     ![在“拥有的应用程序”选项卡上找到应用程序](./media/offline-backup-dpm-mabs-previous-versions/owned-applications.png)
 
 1. 选择应用程序。 在左侧窗格中的“管理”下，转到“证书和机密”。 
-1. 检查预先存在的证书或公钥。 如果没有证书或公钥，可以选择应用程序“概述”页上的“删除”按钮安全删除该应用程序。  然后，可以重试[为脱机备份准备服务器](#prepare-the-server-for-the-offline-backup-process)过程中的步骤，并跳过后面的步骤。 否则，请在要配置脱机备份的 DPM 实例或 Azure 备份服务器服务器中继续执行以下步骤。
+1. 检查现有的证书或公钥。 如果没有证书或公钥，可以选择应用程序“概述”页上的“删除”按钮安全删除该应用程序。  然后，可以重试[为脱机备份准备服务器](#prepare-the-server-for-the-offline-backup-process)过程中的步骤，并跳过后面的步骤。 否则，请在要配置脱机备份的 DPM 实例或 Azure 备份服务器服务器中继续执行以下步骤。
 1. 从 " **开始** " – " **运行**"，键入 *certlm.msc*。 在 "**证书-本地计算机**" 窗口中，选择 "**证书–本地计算机**  >  **个人**" 选项卡。查找名称为的证书 `CB_AzureADCertforOfflineSeeding_<ResourceId>` 。
 1. 选择该证书，右键单击“所有任务”并选择“导出”，以导出 .cer 格式的不包含私钥的证书。 
 1. 在 Azure 门户中转到 Azure 脱机备份应用程序。
@@ -133,7 +133,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
 ## <a name="workflow"></a>工作流
 
-本部分中的信息可帮助你完成脱机备份工作流，将数据传递到 Azure 数据中心，并上传到 Azure 存储。 如果遇到有关导入服务或任何过程方面的问题，请参阅上面提到的[导入服务概述文档](../storage/common/storage-import-export-service.md)。
+本部分中的信息可帮助你完成脱机备份工作流，将数据传递到 Azure 数据中心，并上传到 Azure 存储。 如果遇到有关导入服务或任何过程方面的问题，请参阅上面提到的[导入服务概述文档](../import-export/storage-import-export-service.md)。
 
 ### <a name="initiate-offline-backup"></a>启动脱机备份
 
@@ -271,7 +271,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
     ![检查导入作业状态](./media/offline-backup-dpm-mabs-previous-versions/import-job-status-reporting.png)<br/>
 
-有关 Azure 导入作业的各种状态的详细信息，请参阅[查看 Azure 导入/导出作业的状态](../storage/common/storage-import-export-view-drive-status.md)。
+有关 Azure 导入作业的各种状态的详细信息，请参阅[查看 Azure 导入/导出作业的状态](../import-export/storage-import-export-view-drive-status.md)。
 
 ### <a name="finish-the-workflow"></a>完成工作流
 
@@ -283,4 +283,4 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
 ## <a name="next-steps"></a>后续步骤
 
-* 如果遇到任何有关 Azure 导入/导出服务工作流的问题，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储](../storage/common/storage-import-export-service.md)。
+* 如果遇到任何有关 Azure 导入/导出服务工作流的问题，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储](../import-export/storage-import-export-service.md)。

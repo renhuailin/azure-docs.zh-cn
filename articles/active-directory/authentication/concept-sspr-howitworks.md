@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779356"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703269"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
@@ -137,7 +137,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 用户通过 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) 注册自助式密码重置时，无法选择注册其移动应用。 用户可以在中注册其移动应用 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) ，或者在中的组合安全信息注册中注册 [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) 。
 
 > [!IMPORTANT]
-> 当只要求使用一种方法时，不能选择 Authenticator 应用作为唯一的身份验证方法。 同样，如果要求使用两种方法，则不能选择 Authenticator 应用和另一种额外的方法。
+> 当只需要一个方法时，无法选择身份验证器应用作为唯一的身份验证方法。 同样，如果要求使用两种方法，则不能选择 Authenticator 应用和另一种额外的方法。
 >
 > 在配置将 Authenticator 应用作为一种方法的 SSPR 策略时，如果要求在使用一种方法时应选择至少一种额外的方法，则当要求配置两种方法时，应选择至少两种额外的方法。
 >

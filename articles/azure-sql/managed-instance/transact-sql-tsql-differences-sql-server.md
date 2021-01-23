@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 6fb17ead2546875c0f334aae322f8fb070e8f1ea
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6634ab3521fee3062ecee465eaf6dcda80ee6ff8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684897"
+ms.locfileid: "98699508"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -168,7 +168,7 @@ WITH PRIVATE KEY (<private_key_options>)
     - 在同一 Azure AD 域中将数据库从 SQL 托管实例导出以及将其导入 SQL 数据库。 
     - 在同一 Azure AD 域中从 SQL 数据库导出数据库以及将其导入 SQL 托管实例。
     - 将数据库从 SQL 托管实例导出以及将其导入 SQL Server（2012 或更高版本）。
-      - 在此配置中，所有 Azure AD 用户都创建为没有登录名的 SQL Server 数据库主体（用户）。 用户类型列为 `SQL`，在 sys.database_principals 中以 `SQL_USER` 的形式呈现。 其权限和角色保留在 SQL Server 数据库元数据中，可以用于模拟。 但是，它们不能用来通过其凭据访问和登录 SQL Server。
+      - 在此配置中，所有 Azure AD 用户都作为 SQL Server 数据库主体 (用户) 无需登录名创建。 用户的类型列为 `SQL` ，并 `SQL_USER` 在 sys.database_principals) 中可见。 其权限和角色保留在 SQL Server 数据库元数据中，可以用于模拟。 但是，它们不能用来通过其凭据访问和登录 SQL Server。
 
 - 只有服务器级主体登录名（由 SQL 托管实例预配进程创建）、服务器角色的成员（例如 `securityadmin` 或 `sysadmin`）或者在服务器级别拥有 ALTER ANY LOGIN 权限的其他登录名可以在 SQL 托管实例的 master 数据库中创建 Azure AD 服务器主体（登录名）。
 - 如果登录名是 SQL 主体，则只有属于 `sysadmin` 角色的登录名才能使用 create 命令来为 Azure AD 帐户创建登录名。
@@ -277,7 +277,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - `SINGLE_USER`
 - `WITNESS`
 
-某些 `ALTER DATABASE` 语句 (例如， [设置包含](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) 可能 transiently 失败，例如，在自动数据库备份期间或创建数据库后。 在此情况下， `ALTER DATABASE` 应重试语句。 有关相关错误消息的详细信息和信息，请参阅 " [备注" 部分](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2)。
+某些 `ALTER DATABASE` 语句 (例如，在数据库创建后， [设置包含](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) 可能 transiently 失败（例如，在自动数据库备份期间）。 在此情况下， `ALTER DATABASE` 应重试语句。 有关相关错误消息的详细信息，请参阅 " [备注" 部分](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2)。
 
 有关详细信息，请参阅 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options)。
 
@@ -305,7 +305,7 @@ WITH PRIVATE KEY (<private_key_options>)
   - 尚不支持警报。
   - 不支持代理。
 - 不支持 EventLog。
-- 用户必须直接映射到 Azure AD 服务器主体（登录名），才能创建、修改或执行 SQL 代理作业。 未直接映射的用户（例如，具有创建、修改或执行 SQL 代理作业权限的 Azure AD 组中的用户）将无法有效地执行这些操作。 这是由于托管实例模拟和 [EXECUTE AS 限制](#logins-and-users)的缘故。
+- 用户必须直接映射到 Azure AD 服务器主体 (登录) ，以便创建、修改或执行 SQL 代理作业。 如果用户不是直接映射的用户（例如，属于具有创建、修改或执行 SQL 代理作业权限的 Azure AD 组的用户），则将无法有效地执行这些操作。 这是由于托管实例模拟和 [EXECUTE AS 限制](#logins-and-users)的缘故。
 
 目前不支持以下 SQL 代理功能：
 
@@ -400,12 +400,12 @@ Azure SQL 托管实例当前不支持本地或 Azure 虚拟机中的 MSDTC 通�
 SQL 托管实例中的链接服务器支持有限数量的目标：
 
 - 支持的目标为 SQL 托管实例、SQL 数据库、Azure Synapse SQL [无服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 和专用池，以及 SQL Server 实例。 
-- 链接服务器不支持分布式可写事务 (MS DTC)。
+- 分布式可写事务仅在托管实例之间可用。 有关详细信息，请参阅 [分布式事务](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)。 但是，不支持 MS DTC。
 - 不支持的目标为文件、Analysis Services 和其他 RDBMS。 尝试使用 `BULK INSERT` 或 `OPENROWSET` 作为文件导入的替代方法，或使用 [azure Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)加载文件。
 
 操作： 
 
-- 不支持跨实例写入事务。
+- 仅托管实例支持[跨实例](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)写入事务。
 - 支持使用 `sp_dropserver` 删除链接服务器。 请参阅 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql)。
 - `OPENROWSET` 函数只能用于在 SQL Server 实例上执行查询。 它们可以是托管的、位于本地或位于虚拟机中。 请参阅 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)。
 - `OPENDATASOURCE` 函数只能用于在 SQL Server 实例上执行查询。 它们可以是托管的、位于本地或位于虚拟机中。 仅支持将 `SQLNCLI`、`SQLNCLI11` 和 `SQLOLEDB` 值用作提供程序。 例如 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 请参阅 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql)。
@@ -413,7 +413,7 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 
 ### <a name="polybase"></a>PolyBase
 
-唯一可用的外部资源类型是 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse 池的 RDBMS（公共预览版）。 您可以使用 [外部表引用 Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 作为直接从 Azure 存储空间读取的 Polybase 外部表的解决方法。 在 Azure SQL 托管实例中，可以使用链接服务器连接到 [Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 或 SQL Server 来读取 Azure 存储数据。
+唯一可用的外部源类型是公共预览版中的 RDBMS () Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse 池。 您可以使用 [外部表引用 Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 作为直接从 Azure 存储空间读取的 Polybase 外部表的解决方法。 在 Azure SQL 托管实例中，可以使用链接服务器连接到 [Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 或 SQL Server 来读取 Azure 存储数据。
 有关 PolyBase 的信息，请参阅 [PolyBase](/sql/relational-databases/polybase/polybase-guide)。
 
 ### <a name="replication"></a>复制

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: 36f266a8402721dffecc9e80c4f769bd51b0e172
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: a521623447f4415e35a06c5c60e3723a69b4aa15
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539097"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700595"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 资源提供程序操作
 
@@ -1464,7 +1464,7 @@ Azure 服务：[Azure Data Box](../databox/index.yml)
 
 ### <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
-Azure 服务：[Azure 导入/导出](../storage/common/storage-import-export-service.md)
+Azure 服务：[Azure 导入/导出](../import-export/storage-import-export-service.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |

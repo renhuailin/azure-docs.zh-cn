@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: afcc7ad34807b74fa0b1ddaaa29223d8a6e25584
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968868"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702213"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>复制活动中的架构和数据类型映射
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -185,6 +185,9 @@ ms.locfileid: "97968868"
 2. 选择要从中遍历和提取数据的数组。 它将自动填充为“集合引用”。 请注意，此类操作只支持单个数组。
 
 3. 将所需字段映射到接收器。 数据工厂自动确定分层端对应的 JSON 路径。
+
+> [!NOTE]
+> 对于标记为集合引用的数组为空且选中此复选框的记录，将跳过整个记录。
 
 ![使用 UI 从分层映射到表格](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
 

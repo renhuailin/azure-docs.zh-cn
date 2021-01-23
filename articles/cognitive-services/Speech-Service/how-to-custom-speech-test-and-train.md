@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: ed79d9fb3be192d300587eda5198d9b153109241
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 605bae706bbc1db2e008b8d050cbba9eacd16933
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209774"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702196"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音识别的数据
 
@@ -174,7 +174,7 @@ speech03.wav    the lazy dog was not amused
 
 此外，还需要考虑以下限制：
 
-* 避免重复字符四次以上。 例如：“aaaa”或“uuuu”。
+* 避免重复字符、单词或单词组三次以上。 例如： "aaaa"、"是"、"是" 或 "这就是它"。 语音服务可能会删除太多重复的行。
 * 请勿使用特殊字符或编码在 `U+00A1` 以后的 UTF-8 字符。
 * 将会拒绝 URI。
 

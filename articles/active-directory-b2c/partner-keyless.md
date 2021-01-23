@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 7e6f19e03eee6fb6ddf946ea79d197a231f5f113
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ab1b5ae87cee6265c965c45b706c7fbf10dfe3f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690308"
+ms.locfileid: "98702948"
 ---
-# <a name="tutorial-for-configuring-keyless-with-azure-active-directory-b2c"></a>有关配置无键与 Azure Active Directory B2C 的教程
+# <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>教程：配置无键与 Azure Active Directory B2C
 
 在此示例教程中，我们提供了有关如何配置 [无键](https://keyless.io/) (AD) B2C Azure Active Directory 的指导。 使用 Azure AD B2C 作为标识提供者，你可以将无键与任何客户应用程序集成，为用户提供真正的无密码身份验证。
 
@@ -83,7 +83,7 @@ ms.locfileid: "98690308"
 1. 选择 **标识提供者类型**  >  **OpenID connect (预览)**
 2. 填写表单以设置标识提供者：
 
-   |属性 | Value |
+   |properties | 值 |
    |:-----| :-----------|
    | 名称   | 无键 |
    | 元数据 URL | 插入托管无键 Authentication 应用程序的 URI，后跟特定路径，例如 https://keyless.auth/.well-known/openid-configuration |
@@ -99,7 +99,7 @@ ms.locfileid: "98690308"
 
 5. 填写表单以映射标识提供者：
 
-   |属性 | Value |
+   |properties | 值 |
    |:-----| :-----------|
    | UserID    | 从订阅中 |
    | 显示名称 | 从订阅中 |
