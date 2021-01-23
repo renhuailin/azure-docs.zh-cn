@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 1/14/2020
-ms.openlocfilehash: d3bd63566daaf6e1d3e3343b5956d8a8d5fc8ea5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: b73e72969a851428034499d447ecb162a61aa9ab
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224452"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725780"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>了解和解决 Azure SQL 数据库阻塞问题
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -185,7 +185,7 @@ AND object_name(p.object_id) = '<table_name>';
     -   Sql_batch_completed
     -   Sql_batch_starting
 
--   锁定
+-   Lock
     -   Lock_deadlock
 
 -   会话
@@ -282,12 +282,12 @@ AND object_name(p.object_id) = '<table_name>';
 
 `wait_type`、 `open_transaction_count` 和 `status` 列引用[sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)返回的信息， [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql)可能返回其他列。 "解决？" 列指示阻塞是否会自行解析，或是否应通过命令终止会话 `KILL` 。 有关详细信息，请参阅 [KILL (transact-sql) ](/sql/t-sql/language-elements/kill-transact-sql)。
 
-| 方案 | Waittype | Open_Tran | 状态 | 解析? | 其他症状 |  
+| 场景 | Waittype | Open_Tran | 状态 | 解析? | 其他症状 |  
 |:-|:-|:-|:-|:-|:-|--|
 | 1 | NOT NULL | >= 0 | 运行 | 是，当查询完成时。 | 在 sys.dm_exec_sessions 中， **读取**、 **cpu_time** 和/或 **memory_usage** 列将随着时间的推移而增加。 完成后，查询的持续时间将较高。 |
 | 2 | Null | \>0 | 正在睡眠 | 不可以，但可以终止 SPID。 | 此 SPID 的扩展事件会话中可能出现了注意信号，指示发生了查询超时或取消。 |
-| 3 | Null | \>= 0 | 运行 | 不是。 在客户端提取所有行或关闭连接之前，将无法解析。 可以终止 SPID，但可能最多需要30秒。 | 如果 open_transaction_count = 0，并且 SPID 持有锁，而事务隔离级别为默认值 (READ COMMMITTED) ，则可能是这种情况。 |  
-| 4 | 多种多样 | \>= 0 | 运行 | 不是。 在客户端取消查询或关闭连接之前，将不会解析。 可以终止 Spid，但可能最多需要30秒。 | 阻塞链开头的 SPID sys.dm_exec_sessions 中的 " **主机名** " 列将与它阻止的一个 spid 相同。 |  
+| 3 | Null | \>= 0 | 运行 | 不能。 在客户端提取所有行或关闭连接之前，将无法解析。 可以终止 SPID，但可能最多需要30秒。 | 如果 open_transaction_count = 0，并且 SPID 持有锁，而事务隔离级别为默认值 (READ COMMMITTED) ，则可能是这种情况。 |  
+| 4 | 多种多样 | \>= 0 | 运行 | 不能。 在客户端取消查询或关闭连接之前，将不会解析。 可以终止 Spid，但可能最多需要30秒。 | 阻塞链开头的 SPID sys.dm_exec_sessions 中的 " **主机名** " 列将与它阻止的一个 spid 相同。 |  
 | 5 | Null | \>0 | 回滚 | 是。 | 此 SPID 的扩展事件会话中可能出现了注意信号，指示已发生查询超时或取消，或者只是发出了 rollback 语句。 |  
 | 6 | Null | \>0 | 正在睡眠 | 最终. 当 Windows NT 确定会话不再处于活动状态时，Azure SQL 数据库连接将中断。 | `last_request_start_time`Sys.dm_exec_sessions 中的值早于当前时间。 |
 
@@ -345,7 +345,7 @@ AND object_name(p.object_id) = '<table_name>';
     将查询发送到服务器后，所有应用程序都必须立即提取所有结果行完成。 如果应用程序不能提取所有结果行，则可以对表进行锁定，阻止其他用户。 如果你使用的应用程序以透明方式向服务器提交 SQL 语句，则应用程序必须提取所有结果行。 如果未 (并且无法将其配置为) ，则可能无法解决阻止性问题。 若要避免此问题，可以将性能不佳的应用程序限制在报告或决策支持数据库中。
     
     > [!NOTE]
-    > 请参阅连接到 Azure SQL 数据库的应用程序的 [重试逻辑指南](/azure/azure-sql/database/troubleshoot-common-connectivity-issues#retry-logic-for-transient-errors) 。 
+    > 请参阅连接到 Azure SQL 数据库的应用程序的 [重试逻辑指南](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) 。 
     
     **解决方法**：必须重新编写应用程序，以获取结果的所有行完成。 这不会排除 [在查询的 ORDER BY 子句中使用 OFFSET 和 FETCH](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) 以执行服务器端分页。
 
@@ -378,7 +378,7 @@ AND object_name(p.object_id) = '<table_name>';
 * [快速入门：SQL Server 中的扩展事件](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)
 * [智能见解：使用 AI 监视数据库性能并对其进行故障排除](intelligent-insights-overview.md)
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>了解详细信息
 
 * [Azure SQL 数据库：通过自动优化改善性能优化](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Improving-Performance-Tuning-with-Automatic-Tuning)
 * [利用自动优化提高 Azure SQL 数据库性能](https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning)

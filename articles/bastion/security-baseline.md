@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 36542bc87163e2be800a8f6a4db31307ae7dedbb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 92c57c863cf09fee500b3ea7392757a4f729e4a5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202515"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723925"
 ---
 # <a name="azure-security-baseline-for-azure-bastion"></a>适用于 Azure Bastion 的 Azure 安全基线
 
@@ -217,7 +217,7 @@ Azure Bastion 服务需要打开以下端口才能正常运行：
 
 - [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [部署特权访问工作站](../active-directory/devices/howto-azure-managed-workstation.md)
+- [部署特权访问工作站](/security/compass/privileged-access-deployment)
 
 **Azure 安全中心监视**：不适用
 
@@ -318,7 +318,7 @@ Azure Bastion 服务需要打开以下端口才能正常运行：
 
 ## <a name="logging-and-threat-detection"></a>日志记录和威胁检测
 
-有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-data-protection)。
+有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](../security/benchmarks/security-controls-v2-data-protection.md)。
 
 ### <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2：启用 Azure 标识和访问管理的威胁检测
 
@@ -521,7 +521,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ## <a name="posture-and-vulnerability-management"></a>安全状况和漏洞管理
 
-有关详细信息，请参阅 [Azure 安全基准：安全状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。
+有关详细信息，请参阅 [Azure 安全基准：安全状况和漏洞管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)。
 
 ### <a name="pv-1-establish-secure-configurations-for-azure-services"></a>PV-1：为所有 Azure 服务建立安全配置 
 
@@ -600,9 +600,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 - [云采用框架 - Azure 数据安全和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure 安全基准 - 资产管理](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure 安全基准 - 资产管理](../security/benchmarks/security-controls-v2-asset-management.md)
 
-- [Azure 安全基准 - 数据保护](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure 安全基准 - 数据保护](../security/benchmarks/security-controls-v2-data-protection.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -630,7 +630,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 **指导**：持续衡量并缓解你的个人资产及其托管环境的风险。 确定高价值资产和暴露程度高的受攻击面（例如已发布的应用程序、网络入口和出口点、用户和管理员终结点等）的优先级。
 
-- [Azure 安全基准 - 状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure 安全基准 - 状况和漏洞管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -671,7 +671,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 有关详细信息，请参阅以下资源：
 - [Azure 安全最佳做法 11 - 体系结构。单一的统一安全策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure 安全基准 - 网络安全](/azure/security/benchmarks/security-controls-v2-network-security)
+- [Azure 安全基准 - 网络安全](../security/benchmarks/security-controls-v2-network-security.md)
 
 - [Azure 网络安全概述](../security/fundamentals/network-overview.md)
 
@@ -699,9 +699,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准 - 标识管理](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure 安全基准 - 标识管理](../security/benchmarks/security-controls-v2-identity-management.md)
 
-- [Azure 安全基准 - 特权访问](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure 安全基准 - 特权访问](../security/benchmarks/security-controls-v2-privileged-access.md)
 
 - [Azure 安全最佳做法 11 - 体系结构。单一的统一安全策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -733,9 +733,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准 - 日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure 安全基准 - 日志记录和威胁检测](../security/benchmarks/security-controls-v2-logging-threat-detection.md)
 
-- [Azure 安全基准 - 事件响应](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure 安全基准 - 事件响应](../security/benchmarks/security-controls-v2-incident-response.md)
 
 - [Azure 安全最佳做法 4 - 流程。更新云的事件响应流程](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

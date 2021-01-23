@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: be966a651df0c896ac7e1973d7783bb7fb686be3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676499"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724146"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>导入或导出 Azure SQL 数据库但不允许 Azure 服务访问服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,7 +77,7 @@ ms.locfileid: "92676499"
 
 以下步骤针对虚拟机的公共 IP 地址创建服务器级 IP 防火墙规则，并启用从虚拟机的连接。
 
-1. 在左侧菜单中选择“SQL 数据库”，然后在“SQL 数据库”页上选择你的数据库。  此时会打开数据库的 "概述" 页，其中显示了完全限定的服务器名称 (例如 **servername.database.windows.net** ) 并提供了进一步配置的选项。
+1. 在左侧菜单中选择“SQL 数据库”，然后在“SQL 数据库”页上选择你的数据库。  此时会打开数据库的 "概述" 页，其中显示了完全限定的服务器名称 (例如 **servername.database.windows.net**) 并提供了进一步配置的选项。
 
 2. 请复制此完全限定的服务器名称，以便在连接到服务器及其数据库时使用。
 
@@ -147,7 +147,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 
 若要降低成本，请使用成本低于高级 Azure 文件共享的 Azure Blob。 但是，如果使用 Azure Blob，在执行导入或导出操作之前，需要在 Blob 与本地文件系统之间复制 [.BACPAC 文件](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac)。 因此，该过程需要更长的时间。
 
-若要上传或下载 .BACPAC 文件，请参阅[使用 AzCopy 和 Blob 存储传输数据](../../storage/common/storage-use-azcopy-blobs.md)以及[使用 AzCopy 和文件存储传输数据](../../storage/common/storage-use-azcopy-files.md)。
+若要上传或下载 .BACPAC 文件，请参阅[使用 AzCopy 和 Blob 存储传输数据](../../storage/common/storage-use-azcopy-v10.md#transfer-data)以及[使用 AzCopy 和文件存储传输数据](../../storage/common/storage-use-azcopy-files.md)。
 
 根据具体的环境，可能需要[配置 Azure 存储防火墙和虚拟网络](../../storage/common/storage-network-security.md)。
 

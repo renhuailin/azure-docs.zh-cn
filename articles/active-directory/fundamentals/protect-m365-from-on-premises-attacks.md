@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ecddb950c06c9f8e61f31e104051f5e3b3640ae5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201342"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725004"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>保护 Microsoft 365 免受本地攻击
 
@@ -60,7 +60,7 @@ Microsoft 365 云环境从广泛的监视和安全基础结构中获益。 使�
 
      *  仅使用 Azure 托管工作站进行访问。
 
-这些是受限使用帐户。 **Microsoft 365 中不应有具有管理权限的本地帐户。** 有关详细信息，请参阅 [Microsoft 365 管理员角色的概述](https://docs.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)。
+这些是受限使用帐户。 **Microsoft 365 中不应有具有管理权限的本地帐户。** 有关详细信息，请参阅 [Microsoft 365 管理员角色的概述](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)。
 另请参阅 [Azure Active Directory 中 Microsoft 365 的角色](../roles/m365-workload-docs.md)。
 
 *  **从 Microsoft 365 管理设备。** 使用 Azure AD 联接和基于云的移动设备管理 (MDM) 消除本地设备管理基础结构上的依赖关系，这会损害设备和安全控制。
@@ -82,7 +82,7 @@ Microsoft 365 云环境从广泛的监视和安全基础结构中获益。 使�
 
 * 对 Azure AD 和 Microsoft 365 特权角色使用仅限云的帐户。 d
 
-* 部署 [特权访问设备](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) 以进行特权访问以管理 Microsoft 365 和 Azure AD。
+* 部署 [特权访问设备](/security/compass/privileged-access-devices#device-roles-and-profiles) 以进行特权访问以管理 Microsoft 365 和 Azure AD。
 
 *  将 [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) 部署到实时 (JIT) 对具有特权角色的所有人为权限的访问，并要求强身份验证来激活角色。
 
@@ -92,7 +92,7 @@ Microsoft 365 云环境从广泛的监视和安全基础结构中获益。 使�
 
 * 部署 [紧急访问帐户](../roles/security-emergency-access.md) ，而不使用本地密码保管库来存储凭据。
 
-有关详细信息，请参阅 [保护特权访问](https://aka.ms/SPA)，其中包含有关本主题的详细指导。 另请参阅 [Azure AD 中管理员的安全访问做法](../roles/security-planning.md)。
+有关详细信息，请参阅 [保护特权访问](/security/compass/overview)，其中包含有关本主题的详细指导。 另请参阅 [Azure AD 中管理员的安全访问做法](../roles/security-planning.md)。
 
 ### <a name="use-cloud-authentication"></a>使用云身份验证 
 
@@ -100,15 +100,15 @@ Microsoft 365 云环境从广泛的监视和安全基础结构中获益。 使�
 
 * [部署无密码 authentication](../authentication/howto-authentication-passwordless-deployment.md)：部署无密码凭据，尽可能减少密码的使用。 这些凭据在云中以本机方式进行管理和验证。 选择：
 
-   * [Windows Hello 企业版](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/passwordless-strategy)
+   * [Windows Hello 企业版](/windows/security/identity-protection/hello-for-business/passwordless-strategy)
 
    * [Authenticator 应用](../authentication/howto-authentication-passwordless-phone.md)
 
    * [FIDO2 安全密钥](../authentication/howto-authentication-passwordless-security-key-windows.md)
 
-* [部署多重身份验证](https://aka.ms/deploymentplans/mfa)： [使用 Azure AD MFA 预配多个强凭据](../fundamentals/resilience-in-credentials.md)。 这样一来，对云资源的访问权限还需要在 Azure AD 中管理的凭据以及可操作的本地密码。
+* [部署多重身份验证](../authentication/howto-mfa-getstarted.md)： [使用 Azure AD MFA 预配多个强凭据](../fundamentals/resilience-in-credentials.md)。 这样一来，对云资源的访问权限还需要在 Azure AD 中管理的凭据以及可操作的本地密码。
 
-   * 有关详细信息，请参阅 [使用 Azure Active Directory 创建弹性访问控制管理策略](https://aka.ms/resilientaad)。
+   * 有关详细信息，请参阅 [使用 Azure Active Directory 创建弹性访问控制管理策略](./resilience-overview.md)。
 
 **限制和折衷**
 
@@ -131,7 +131,7 @@ Microsoft 365 云环境从广泛的监视和安全基础结构中获益。 使�
 
    *  限制来宾访问目录中的浏览组和其他属性。 使用外部协作设置来限制来宾读取其不是其成员的组的能力。 
 
-    *   阻止对 Azure 门户的访问。 您可以做出极少的必要例外。  创建包括所有来宾和外部用户的条件性访问策略，然后 [实施策略来阻止访问](/azure/role-based-access-control/conditional-access-azure-management)。 
+    *   阻止对 Azure 门户的访问。 您可以做出极少的必要例外。  创建包括所有来宾和外部用户的条件性访问策略，然后 [实施策略来阻止访问](../../role-based-access-control/conditional-access-azure-management.md)。 
 
 * **断开连接的林：** 使用 [Azure AD 云设置](../cloud-provisioning/what-is-cloud-provisioning.md)。 这使你能够连接到断开连接的林，无需建立跨林连接或信任，从而扩大了本地入侵的影响。 * 
  
@@ -143,7 +143,7 @@ Microsoft 365 云环境从广泛的监视和安全基础结构中获益。 使�
 
 利用云组，你可以从本地基础结构中分离协作和访问权限。
 
-* **协作：** 使用 Microsoft 365 组和 Microsoft 团队进行新式协作。 取消本地通讯组列表，并 [将分发列表升级到 Outlook 中的 Microsoft 365 组](https://docs.microsoft.com/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide)。
+* **协作：** 使用 Microsoft 365 组和 Microsoft 团队进行新式协作。 取消本地通讯组列表，并 [将分发列表升级到 Outlook 中的 Microsoft 365 组](/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide)。
 
 * **访问：** 使用 Azure AD 安全组或 Microsoft 365 组来授予 Azure AD 中的应用程序的访问权限。
 * **Office 365 许可：** 使用基于组的许可预配到使用仅限云的组的 Office 365。 这将控制本地基础结构中的组成员身份。
@@ -156,7 +156,7 @@ Microsoft 365 云环境从广泛的监视和安全基础结构中获益。 使�
 
 使用 Azure AD 功能安全管理设备。
 
--   **使用 Windows 10 工作站：** [部署 AZURE AD 已加入](../devices/azureadjoin-plan.md) MDM 策略的设备。 为 [Windows Autopilot](https://docs.microsoft.com/mem/autopilot/windows-autopilot) 实现完全自动化的预配体验。
+-   **使用 Windows 10 工作站：** [部署 AZURE AD 已加入](../devices/azureadjoin-plan.md) MDM 策略的设备。 为 [Windows Autopilot](/mem/autopilot/windows-autopilot) 实现完全自动化的预配体验。
 
     -   弃用 Windows 8.1 和更早的计算机。
 
@@ -164,7 +164,7 @@ Microsoft 365 云环境从广泛的监视和安全基础结构中获益。 使�
 
     -   将 [Microsoft Intune](https://www.microsoft.com/en/microsoft-365/enterprise-mobility-security/microsoft-intune) 用作所有设备管理工作负荷的权威来源。
 
--   [**部署特权访问设备**](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) 以进行特权访问以管理 Microsoft 365 和 Azure AD。
+-   [**部署特权访问设备**](/security/compass/privileged-access-devices#device-roles-and-profiles) 以进行特权访问以管理 Microsoft 365 和 Azure AD。
 
  ## <a name="workloads-applications-and-resources"></a>工作负载、应用程序和资源 
 
@@ -181,19 +181,19 @@ Microsoft 365 云环境从广泛的监视和安全基础结构中获益。 使�
 
 *  **应用程序和工作负荷服务器**
 
-   * 需要服务器的应用程序或资源可以迁移到 Azure IaaS，并使用 [Azure AD 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/overview) (Azure AD DS) 以将信任和依赖项与本地 AD 分离。 为了实现这种分离，用于 Azure AD DS 的虚拟网络不应连接到公司网络。
+   * 需要服务器的应用程序或资源可以迁移到 Azure IaaS，并使用 [Azure AD 域服务](../../active-directory-domain-services/overview.md) (Azure AD DS) 以将信任和依赖项与本地 AD 分离。 为了实现这种分离，用于 Azure AD DS 的虚拟网络不应连接到公司网络。
 
-   * 遵循 [凭据分层](https://aka.ms/TierModel)指导。 通常将应用程序服务器视为第1层资产。
+   * 遵循 [凭据分层](/security/compass/privileged-access-access-model#ADATM_BM)指导。 通常将应用程序服务器视为第1层资产。
 
  ## <a name="conditional-access-policies"></a>条件访问策略
 
-使用 Azure AD 的条件访问来解释信号，并基于它们做出身份验证决策。 有关详细信息，请参阅 [条件性访问部署计划。](https://aka.ms/deploymentplans/ca)
+使用 Azure AD 的条件访问来解释信号，并基于它们做出身份验证决策。 有关详细信息，请参阅 [条件性访问部署计划。](../conditional-access/plan-conditional-access.md)
 
 * [旧身份验证协议](../fundamentals/auth-sync-overview.md)：尽可能使用条件访问来 [阻止旧的身份验证](../conditional-access/howto-conditional-access-policy-block-legacy.md) 协议。 此外，使用特定于应用程序的配置在应用程序级别禁用旧的身份验证协议。
 
-   * 请参阅 [Exchange online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) 和 [SharePoint online](https://docs.microsoft.com/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)的特定详细信息。
+   * 请参阅 [Exchange online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) 和 [SharePoint online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)的特定详细信息。
 
-* 实施推荐的 [标识和设备访问配置。](https://docs.microsoft.com/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)
+* 实施推荐的 [标识和设备访问配置。](/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)
 
 * 如果你使用的是不包含条件性访问的 Azure AD 版本，请确保使用 [Azure AD 安全默认值](../fundamentals/concept-fundamentals-security-defaults.md)。
 
@@ -206,13 +206,13 @@ Microsoft 365 云环境从广泛的监视和安全基础结构中获益。 使�
 
 除了特定于组织的任何方案外，还可以监视以下关键方案。 例如，你应该主动监视对关键业务应用程序和资源的访问权限。
 
-* **可疑活动**：应监视所有 [Azure AD 风险事件](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection#risk-detection-and-remediation) ，以了解是否存在可疑活动。 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) 与 Azure 安全中心本机集成。
+* **可疑活动**：应监视所有 [Azure AD 风险事件](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation) ，以了解是否存在可疑活动。 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) 与 Azure 安全中心本机集成。
 
    * 定义网络 [命名位置](../reports-monitoring/quickstart-configure-named-locations.md) ，以避免在基于位置的信号上检测到干扰。 
 *  **用户实体行为分析 (UEBA) 警报** 使用 UEBA 获取有关异常情况检测的见解。
-   * Microsoft 云应用发现 (MCAS) [在云中提供 UEBA](https://docs.microsoft.com/cloud-app-security/tutorial-ueba)。
+   * Microsoft 云应用发现 (MCAS) [在云中提供 UEBA](/cloud-app-security/tutorial-ueba)。
 
-   * 可 [从 AZURE ATP 集成本地 UEBA](https://docs.microsoft.com/defender-for-identity/install-step2)。 MCAS 读取 Azure AD Identity Protection 的信号。 
+   * 可 [从 AZURE ATP 集成本地 UEBA](/defender-for-identity/install-step2)。 MCAS 读取 Azure AD Identity Protection 的信号。 
 
 * **紧急访问帐户活动**：应监视使用 [紧急访问帐户](../roles/security-emergency-access.md) 的任何访问权限并为调查创建警报。 此监视必须包括： 
 
@@ -223,7 +223,7 @@ Microsoft 365 云环境从广泛的监视和安全基础结构中获益。 使�
    * 对组成员身份的任何更新。 
 
    *    应用程序分配。 
-* **特权角色活动**：配置和查看 [Azure AD PIM 生成的安全警报](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-configure-security-alerts?tabs=new#security-alerts)。
+* **特权角色活动**：配置和查看 [Azure AD PIM 生成的安全警报](../privileged-identity-management/pim-how-to-configure-security-alerts.md?tabs=new#security-alerts)。
     通过在用户直接分配时生成警报，监视在 PIM 外直接分配特权角色。
 * **Azure AD 租户范围的配置**：对租户范围的配置所做的任何更改都应在系统中生成警报。 其中包括但不限于
   *  更新自定义域  
@@ -254,11 +254,11 @@ Microsoft 365 云环境从广泛的监视和安全基础结构中获益。 使�
 
    * 风险事件 
 
-Azure AD 为登录活动日志和审核日志提供 [Azure Monitor 集成](../reports-monitoring/concept-activity-logs-azure-monitor.md) 。 风险事件可通过 [MICROSOFT GRAPH API](https://aka.ms/AzureADSecuredAzure/32b)来引入。 可以 [将 Azure AD 日志流式传输到 Azure monitor 日志](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。
+Azure AD 为登录活动日志和审核日志提供 [Azure Monitor 集成](../reports-monitoring/concept-activity-logs-azure-monitor.md) 。 风险事件可通过 [MICROSOFT GRAPH API](/graph/api/resources/identityriskevent)来引入。 可以 [将 Azure AD 日志流式传输到 Azure monitor 日志](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。
 
 * **混合基础结构操作系统安全日志。** 应将所有混合标识基础结构操作系统日志存档并进行认真监视 <br>第0层系统，假设外围应用隐含。 这包括： 
 
-   *  Azure AD Connect。 必须部署[Azure AD Connect Health](https://aka.ms/AzureADSecuredAzure/32e)来监视标识同步。
+   *  Azure AD Connect。 必须部署[Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md)来监视标识同步。
 
    *  应用程序代理 
 

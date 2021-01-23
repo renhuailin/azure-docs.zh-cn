@@ -3,12 +3,12 @@ title: Azure 备份术语表
 description: 本文定义了有助于 Azure 备份使用的术语。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 121258665ab275fdcffd618e7c0cf1b3e0537e70
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661470"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723908"
 ---
 # <a name="azure-backup-glossary"></a>Azure 备份术语表
 
@@ -21,7 +21,7 @@ ms.locfileid: "98661470"
 
 ## <a name="afs-azure-file-shares"></a> (Azure 文件共享的 AFS) 
 
-请参阅 [Azure 文件文档](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)。
+请参阅 [Azure 文件文档](../storage/files/storage-files-introduction.md)。
 
 ## <a name="alternate-location-recovery"></a>备用位置恢复
 
@@ -35,7 +35,7 @@ ms.locfileid: "98661470"
 
 ## <a name="azure-resource-manager-arm-templates"></a>Azure 资源管理器 (ARM) 模板
 
-请参阅 [ARM 模板文档](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)。
+请参阅 [ARM 模板文档](../azure-resource-manager/templates/overview.md)。
 
 ## <a name="autoprotection-for-databases"></a>自动保护（用于数据库）
 
@@ -49,38 +49,38 @@ Azure 备份提供了三种类型的复制来保持存储和数据的高可用�
 
 ### <a name="lrs"></a>LRS
 
-[本地冗余存储 (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#locally-redundant-storage) 将数据中心的存储缩放单元中的备份数据复制三次（创建三个备份数据副本）。 备份数据的所有副本都存在于同一区域。 LRS 是一种低成本选择，可在本地硬件故障时保护备份数据。
+[本地冗余存储 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) 将数据中心的存储缩放单元中的备份数据复制三次（创建三个备份数据副本）。 备份数据的所有副本都存在于同一区域。 LRS 是一种低成本选择，可在本地硬件故障时保护备份数据。
 
 ### <a name="grs"></a>GRS
 
-[异地冗余存储 (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#geo-redundant-storage) 是默认的和推荐的复制选项。 GRS 将备份数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 提供更高的备份数据持久度，即使出现区域性服务中断也是如此。
+[异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) 是默认的和推荐的复制选项。 GRS 将备份数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 提供更高的备份数据持久度，即使出现区域性服务中断也是如此。
 
 >[!NOTE]
 >对于启用了跨区域还原功能的 GRS 保管库，备份存储将从 GRS 升级到 GRS (读访问 Geo-Redundant 存储) 。
 
 ### <a name="zrs"></a>ZRS
 
-[区域冗余存储 (ZRS) ](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage) 复制 [可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)中的备份数据，从而在同一区域中确保备份数据的驻留和复原能力。 因此，可以在 ZRS 中备份需要 [数据驻留](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) 的关键工作负荷。
+[区域冗余存储 (ZRS) ](../storage/common/storage-redundancy.md#zone-redundant-storage) 复制 [可用性区域](../availability-zones/az-overview.md#availability-zones)中的备份数据，从而在同一区域中确保备份数据的驻留和复原能力。 因此，可以在 ZRS 中备份需要 [数据驻留](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) 的关键工作负荷。
 
 ## <a name="azure-command-line-interface-cli"></a>Azure 命令行界面 (CLI)
 
-请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/what-is-azure-cli)。
+请参阅 [Azure CLI 文档](/cli/azure/what-is-azure-cli)。
 
 ## <a name="azure-policy"></a>Azure Policy
 
-请参阅 [Azure Policy 文档](https://docs.microsoft.com/azure/governance/policy/overview)。
+请参阅 [Azure Policy 文档](../governance/policy/overview.md)。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/)。
+请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 ## <a name="azure-resource-manager-arm"></a>Azure 资源管理器 (ARM)
 
-请参阅 [Azure 资源管理器文档](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)。
+请参阅 [Azure 资源管理器文档](../azure-resource-manager/management/overview.md)。
 
 ## <a name="azure-disk-encryption-ade"></a>Azure 磁盘加密 (ADE)
 
-请参阅 [Azure 磁盘加密文档](https://docs.microsoft.com/azure/security/fundamentals/azure-disk-encryption-vms-vmss)。
+请参阅 [Azure 磁盘加密文档](../security/fundamentals/azure-disk-encryption-vms-vmss.md)。
 
 ## <a name="backend-storage--cloud-storage--backup-storage"></a>后端存储/云存储/备份存储
 
@@ -124,11 +124,11 @@ BCDR 涉及组织必须采用的一组流程，以确保应用和工作负载在
 
 ## <a name="cross-region-restore-crr"></a>跨区域还原 (CRR) 
 
-作为 [还原选项](backup-azure-arm-restore-vms.md#restore-options)之一，跨区域还原 (CRR) 使你能够还原次要区域（即 [Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions)）中的备份项。
+作为 [还原选项](backup-azure-arm-restore-vms.md#restore-options)之一，跨区域还原 (CRR) 使你能够还原次要区域（即 [Azure 配对区域](../best-practices-availability-paired-regions.md#what-are-paired-regions)）中的备份项。
 
 ## <a name="data-box"></a>Data box
 
-请参阅 [Azure Data Box 文档](https://docs.microsoft.com/azure/databox/data-box-overview)。
+请参阅 [Azure Data Box 文档](../databox/data-box-overview.md)。
 
 ## <a name="datasource"></a>数据源
 
@@ -138,11 +138,11 @@ BCDR 涉及组织必须采用的一组流程，以确保应用和工作负载在
 
 （特定于工作负载的术语）
 
-请参阅 [DPM 文档](https://docs.microsoft.com/system-center/dpm/dpm-overview)。
+请参阅 [DPM 文档](/system-center/dpm/dpm-overview)。
 
 ## <a name="expressroute"></a>ExpressRoute
 
-请参阅 [ExpressRoute 文档](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)。
+请参阅 [ExpressRoute 文档](../expressroute/expressroute-introduction.md)。
 
 ## <a name="file-system-consistent-backup"></a>文件系统一致性备份
 
@@ -164,7 +164,7 @@ GFS（祖父-父-子）备份策略使你能够定义每周、每月和每年的
 
 ## <a name="iaas-vms--azure-vms"></a>IaaS VM/Azure VM
 
-请参阅 [Azure VM 文档](https://docs.microsoft.com/azure/virtual-machines/)。
+请参阅 [Azure VM 文档](../virtual-machines/index.yml)。
 
 ## <a name="incremental-backup"></a>增量备份
 
@@ -196,7 +196,7 @@ GFS（祖父-父-子）备份策略使你能够定义每周、每月和每年的
 
 ## <a name="managed-disks"></a>托管磁盘
 
-请参阅[托管磁盘文档](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview)。
+请参阅[托管磁盘文档](../virtual-machines/managed-disks-overview.md)。
 
 ## <a name="mars-agent"></a>MARS 代理
 
@@ -206,7 +206,7 @@ GFS（祖父-父-子）备份策略使你能够定义每周、每月和每年的
 
 ## <a name="nsg-network-security-group"></a>NSG（网络安全组）
 
-请参阅 [NSG 文档](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)。
+请参阅 [NSG 文档](../virtual-network/network-security-groups-overview.md)。
 
 ## <a name="offline-seeding"></a>脱机种子设定
 
@@ -228,7 +228,7 @@ GFS（祖父-父-子）备份策略使你能够定义每周、每月和每年的
 
 ## <a name="private-endpoint"></a>专用终结点
 
-请参阅 [私有终结点文档](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)。
+请参阅 [私有终结点文档](../private-link/private-endpoint-overview.md)。
 
 ## <a name="protected-instance"></a>受保护的实例
 
@@ -236,7 +236,7 @@ GFS（祖父-父-子）备份策略使你能够定义每周、每月和每年的
 
 ## <a name="rbac-role-based-access-control"></a>RBAC（基于角色的访问控制）
 
-请参阅 [RBAC 文档](https://docs.microsoft.com/azure/role-based-access-control/overview)。
+请参阅 [RBAC 文档](../role-based-access-control/overview.md)。
 
 ## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>恢复点/还原点/保留点/时间点 (PIT) 
 
@@ -248,11 +248,11 @@ GFS（祖父-父-子）备份策略使你能够定义每周、每月和每年的
 
 ## <a name="resource-group"></a>资源组
 
-请参阅 [Azure 资源管理器文档](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group)。
+请参阅 [Azure 资源管理器文档](../azure-resource-manager/management/manage-resource-groups-portal.md#what-is-a-resource-group)。
 
 ## <a name="rest-api"></a>REST API
 
-请参阅 [Azure REST API 文档](https://docs.microsoft.com/rest/api/azure/)。
+请参阅 [Azure REST API 文档](/rest/api/azure/)。
 
 ## <a name="retention-rule"></a>保留规则
 
@@ -272,7 +272,7 @@ RTO 表示数据丢失方案后，可以将数据还原到上一个可用时间�
 
 ## <a name="secondary-region--paired-region"></a>次要区域/配对区域
 
-区域对由同一地理位置中的两个区域组成。 一个是主要区域，另一个是次要区域。 某些 Azure 服务（包括具有 GRS 设置的 Azure 备份）使用配对区域，以确保业务连续性并防止数据丢失。 [了解详细信息](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+区域对由同一地理位置中的两个区域组成。 一个是主要区域，另一个是次要区域。 某些 Azure 服务（包括具有 GRS 设置的 Azure 备份）使用配对区域，以确保业务连续性并防止数据丢失。 [了解详细信息](../best-practices-availability-paired-regions.md)。
 
 ## <a name="soft-delete"></a>软删除
 
@@ -280,11 +280,11 @@ RTO 表示数据丢失方案后，可以将数据还原到上一个可用时间�
 
 ## <a name="snapshot"></a>快照
 
-快照是虚拟硬盘驱动器 (VHD) 或 Azure 文件共享的完整只读副本。 了解有关 [磁盘快照](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) 和 [文件快照](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)的详细信息。
+快照是虚拟硬盘驱动器 (VHD) 或 Azure 文件共享的完整只读副本。 了解有关 [磁盘快照](../virtual-machines/windows/snapshot-copy-managed-disk.md) 和 [文件快照](../storage/files/storage-snapshots-files.md)的详细信息。
 
 ## <a name="storage-account"></a>存储帐户
 
-请参阅[存储帐户文档](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
+请参阅[存储帐户文档](../storage/common/storage-account-overview.md)。
 
 ## <a name="subscription"></a>订阅
 
@@ -302,7 +302,7 @@ Azure 订阅是用于在 Azure 中预置资源的逻辑容器。 它保存所有
 
 ## <a name="unmanaged-disk"></a>非托管磁盘
 
-请参阅[非托管磁盘文档](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance#azure-unmanaged-disks)。
+请参阅[非托管磁盘文档](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks)。
 
 ## <a name="vault"></a>保管库
 
@@ -314,11 +314,11 @@ Azure 中包含备份数据的存储实体。 也是 RBAC 和计费的单位。 
 
 ## <a name="vnet-virtual-network"></a>VNET（虚拟网络）
 
-请参阅 [VNET 文档](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。
+请参阅 [VNET 文档](../virtual-network/virtual-networks-overview.md)。
 
 ## <a name="vss-windows-volume-shadow-copy-service"></a>VSS（Windows 卷影复制服务）
 
-请参阅 [VSS 文档](https://docs.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service)。
+请参阅 [VSS 文档](/windows-server/storage/file-server/volume-shadow-copy-service)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 01/12/2021
+ms.date: 01/22/2021
 ms.author: b-juche
-ms.openlocfilehash: 0ae7e8f745a91e080d12a47271057ed90f9bc835
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: fb4233a87231dddb1e3cb2777ac2ef53a61f833e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134324"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726609"
 ---
 # <a name="troubleshoot-dual-protocol-volumes"></a>双重协议卷故障排除
 
@@ -29,7 +29,7 @@ ms.locfileid: "98134324"
 
 |     错误条件    |     解决方法    |
 |-|-|
-| 双重协议卷创建失败并出现错误 `This Active Directory has no Server root CA Certificate` 。    |     如果在创建双协议卷时发生此错误，请确保在 NetApp 帐户中上传根 CA 证书。    |
+| 启用 LDAP over TLS，并且双重协议卷创建失败并出现错误 `This Active Directory has no Server root CA Certificate` 。    |     如果在创建双协议卷时发生此错误，请确保在 NetApp 帐户中上传根 CA 证书。    |
 | 双重协议卷创建失败并出现错误 `Failed to validate LDAP configuration, try again after correcting LDAP configuration` 。    |  DNS 服务器上可能缺少 AD 主机计算机 (PTR) 记录的指针。 需要在 DNS 服务器上创建反向查找区域，然后在该反向查找区域中添加 AD 主机计算机的 PTR 记录。 <br> 例如，假设 AD 计算机的 IP 地址为 `1.1.1.1` ，使用命令)  (找到的 ad 计算机的主机名 `hostname` `AD1` ，并且域名为 `contoso.com` 。  添加到反向查找区域中的 PTR 记录应该是 `1.1.1.1`  ->  `contoso.com` 。   |
 | 双重协议卷创建失败并出现错误 `Failed to create the Active Directory machine account \\\"TESTAD-C8DD\\\". Reason: Kerberos Error: Pre-authentication information was invalid Details: Error: Machine account creation procedure failed\\n [ 434] Loaded the preliminary configuration.\\n [ 537] Successfully connected to ip 1.1.1.1, port 88 using TCP\\n**[ 950] FAILURE` 。 |  此错误表明 Active Directory 加入到 NetApp 帐户时 AD 密码不正确。 请用正确的密码更新 AD 连接，然后重试。 |
 | 双重协议卷创建失败并出现错误 `Could not query DNS server. Verify that the network configuration is correct and that DNS servers are available` 。 |   此错误表明 DNS 不可访问。 原因可能是 DNS IP 不正确，或者存在网络问题。 检查在 AD 连接中输入的 DNS IP，并确保 IP 正确。 <br> 此外，请确保 AD 和卷位于同一区域和同一 VNet 中。 如果它们在不同的 Vnet 中，请确保在两个 Vnet 之间建立 VNet 对等互连。|

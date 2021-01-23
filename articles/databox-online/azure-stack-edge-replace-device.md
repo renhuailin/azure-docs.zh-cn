@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/07/2021
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 501136c6f5015dc8c68a1aba004432900675b11c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 91cb446da31f353162f90778d855056a9697d455
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017963"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726560"
 ---
 # <a name="replace-your-azure-stack-edge-pro-device"></a>替换 Azure Stack Edge Pro 设备
 
-本文介绍如何获取 Azure Stack Edge Pro 设备的替换。 如果现有设备有硬件故障或需要升级，则需要替换设备。 
+本文介绍如何替换 Azure Stack Edge Pro 设备。 如果现有设备有硬件故障或需要升级，则需要替换设备。 
 
 
 在本文中，学习如何：
@@ -25,41 +25,32 @@ ms.locfileid: "98017963"
 > [!div class="checklist"]
 >
 > * 为硬件问题打开支持票证
-> * 在 Azure 门户中为替换设备创建新资源
+> * 在 Azure 门户中为更换设备创建新订单
 > * 安装，激活更换设备
 > * 返回原始设备
 
 ## <a name="open-a-support-ticket"></a>打开支持票证
 
-如果现有设备有硬件故障，请打开支持票证。 Microsoft 支持部门将确定现场可替换装置 (FRU) 不适用于此情况，或设备需要硬件升级。 无论是哪种情况，支持部门都将订购替换设备。
+如果现有设备有硬件故障，请按照以下步骤操作以打开支持票证：
 
-1. 向 Microsoft 支持部门打开支持票证，表示你希望退回设备。 选择 "问题类型" 作为 **Azure Stack Edge Pro 硬件**"。
+1. 向 Microsoft 支持部门打开支持票证，表示你希望退回设备。 选择 **Azure Stack Edge Pro 硬件** 问题类型，并选择 " **硬件问题** " 子类型。  
 
     ![创建支持票证](media/azure-stack-edge-replace-device/open-support-ticket-1.png)  
 
-2. Microsoft 支持部门的工程师将与你联系。 提供发货详细信息。
-<!--3. If you need a return shipping box, you can request it. Answer **Yes** to the question **Need an empty box to return**.-->
+2. Microsoft 支持部门工程师将与你联系，以确定 (FRU) 的现场更换单元是否可以解决该问题并可用于此实例。 如果 FRU 不可用或设备需要硬件升级，则支持人员会指导你设置新订单并返回旧设备。
 
+## <a name="create-a-new-order"></a>创建新订单
 
-## <a name="create-a-resource-for-replacement-device"></a>为替代设备创建资源
+按照 [创建新资源](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource)中的步骤，创建用于激活替代设备的新资源。
 
 > [!NOTE]
-> 创建用于激活替换设备的新资源。 不支持对现有资源激活替代设备。
-
-按照以下步骤创建资源。
-
-1. 按照 [创建新资源](azure-stack-edge-deploy-prep.md#create-a-new-resource) 中的步骤为替代设备创建资源。 
-
-2. 请确保选中此复选框，使其 **具有 Azure Stack Edge Pro 设备**。 
-
-    ![替换设备的资源](media/azure-stack-edge-replace-device/replace-resource-1.png)  
+> 不支持对现有资源激活替代设备。 新资源被视为新的订单。 你将在设备寄送到你后开始支付14天的费用。
 
 ## <a name="install-and-activate-the-replacement-device"></a>安装并激活更换设备
 
 请按照以下步骤安装和激活更换设备：
 
 1. [安装设备](azure-stack-edge-deploy-install.md)。
-
 2. 针对之前创建的新资源[激活设备](azure-stack-edge-deploy-connect-setup-activate.md)。
 
 ## <a name="return-your-existing-device"></a>返回现有设备
@@ -69,7 +60,7 @@ ms.locfileid: "98017963"
 1. [清除设备上的数据](azure-stack-edge-return-device.md#erase-data-from-the-device)。
 2. 启动原始设备的[设备返回](azure-stack-edge-return-device.md#initiate-device-return)。
 3. [安排取件](azure-stack-edge-return-device.md#schedule-a-pickup)。
-4. [删除](azure-stack-edge-return-device.md#delete-the-resource)与退回的设备相关联的资源。
+4. 在 Microsoft 接收到设备后，可以删除与返回的设备关联 [的资源](azure-stack-edge-return-device.md#delete-the-resource) 。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928760"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723874"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure 监控范围
 
@@ -99,9 +99,9 @@ Azure 监控范围从以下 Azure 数据工厂活动中捕获运行时沿袭：
 
 | 数据存储系统 | 支持用作源 | 支持用作接收器 |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 (不支持 JSON)  | 是 | 是 (仅限非二进制副本)  |
-| ADLS Gen2 (不支持 JSON)  | 是 | 是 |
-| Azure Blob (不支持 JSON)  | 是 | 是 |
+| ADLS Gen1 | 是 | 是 (仅限非二进制副本)  |
+| ADLS Gen2 | 是 | 是 |
+| Azure Blob | 是 | 是 |
 | Azure Cosmos DB (SQL API) | 是 | 是 |
 | Azure Cosmos DB (Mongo API)  | 是 | 是 |
 | Azure 认知搜索 | 是 | 是 |

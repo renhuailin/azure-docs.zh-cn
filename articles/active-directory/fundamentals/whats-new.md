@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6da9f27e25fa5543f949716824f54af2b9f1ad1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 12b5c95b67f8fada29914d3a8de559280e6145f8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132539"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724214"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -100,7 +100,7 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
 - [Bizagi Studio for Digital Process Automation](../saas-apps/bizagi-studio-for-digital-process-automation-provisioning-tutorial.md)
 - [CybSafe](../saas-apps/cybsafe-provisioning-tutorial.md)
 - [GroupTalk](../saas-apps/grouptalk-provisioning-tutorial.md)
-- [PaperCut 云打印管理](/azure/active-directory/saas-apps/papercut-cloud-print-management-provisioning-tutorial)
+- [PaperCut 云打印管理](../saas-apps/papercut-cloud-print-management-provisioning-tutorial.md)
 - [可解析](../saas-apps/parsable-provisioning-tutorial.md)
 - [Shopify Plus](../saas-apps/shopify-plus-provisioning-tutorial.md)
 
@@ -141,7 +141,7 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
 **服务类别：** 用户访问管理  
 **产品功能：** 权利管理
 
-在授权管理的审批流程中现在提供了一个附加选项。 如果为第一个审批者选择了经理作为审批者，你将有一个额外的选项，即第二级经理作为备用审批者，可在备用审批者字段中进行选择。 如果选择此选项，则需要添加后备审批者，以便在系统找不到第二层管理器的情况下将请求转发到。
+在授权管理的审批流程中现在提供了一个附加选项。 如果为第一个审批者选择了经理作为审批者，你将有一个额外的选项，即第二级经理作为备用审批者，可在备用审批者字段中进行选择。 如果选择此选项，则需要添加后备审批者，以便在系统找不到二级管理员的情况下将请求转发给该审批者。
 
 有关详细信息，请转到 [Azure AD 授权管理中的访问包的 "更改批准设置](../governance/entitlement-management-access-package-approval-policy.md#alternate-approvers)"。
 
@@ -191,7 +191,7 @@ Azure Active Directory 将在2021年6月30日之前 Azure Active Directory 全�
 **服务类别：** RBAC  
 **产品功能：** 访问控制
  
- [用于委派的企业应用程序管理的自定义 RBAC 角色现提供](../users-groups-roles/roles-custom-available-permissions.md) 公共预览版。 这些新权限建立在应用注册管理的自定义角色之上，这允许对管理员拥有的访问权限进行精细控制。 随着时间的推移，将发布对 Azure AD 的委派管理的其他权限。
+ [用于委派的企业应用程序管理的自定义 RBAC 角色现提供](../roles/custom-available-permissions.md) 公共预览版。 这些新权限建立在应用注册管理的自定义角色之上，这允许对管理员拥有的访问权限进行精细控制。 随着时间的推移，将发布对 Azure AD 的委派管理的其他权限。
 
 一些常见委托方案：
 - 分配可访问基于 SAML 的单一登录应用程序的用户和组
@@ -247,7 +247,7 @@ Azure Active Directory (Azure AD) 应用程序代理在本地支持对使用标�
 - [票-Tac Mobile](../saas-apps/tic-tac-mobile-provisioning-tutorial.md)
 - [Visibly](../saas-apps/visibly-provisioning-tutorial.md)
 
-有关详细信息，请参阅 [通过 Azure AD 自动完成用户预配到 SaaS 应用程序](../manage-apps/user-provisioning.md)。
+有关详细信息，请参阅 [通过 Azure AD 自动完成用户预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
  
 ---
 
@@ -301,7 +301,7 @@ Azure Active Directory (Azure AD) 应用程序代理在本地支持对使用标�
  
 以前，你可以通过/bitlocker 终结点恢复 BitLocker 密钥。 最终，我们将弃用此终结点，客户应该开始使用现在属于/informationProtection. 的 API。 
 
-有关文档更新的详细说明，请参阅 [BitLocker 恢复 API](https://docs.microsoft.com/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) 。
+有关文档更新的详细说明，请参阅 [BitLocker 恢复 API](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) 。
 
 ---
 
@@ -1126,4 +1126,3 @@ Azure 多重身份验证软件开发 (Azure MFA SDK) 已于2018年11月14日结�
 
 ---
 
- 

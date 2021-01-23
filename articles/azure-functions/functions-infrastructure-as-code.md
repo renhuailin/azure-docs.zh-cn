@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4b649942a52c51aef0d6edd17b913f75e1fb247b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a1b621b5d5601e6d8bffef48e23d217e0eee1d6a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674161"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725813"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -212,9 +212,11 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
+在消耗计划中运行的函数应用所需的设置在 Windows 和 Linux 之间延迟。 
+
 #### <a name="windows"></a>Windows
 
-在 Windows 上，消耗计划还需要站点配置中的两个附加设置：`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
+在 Windows 上，消耗计划需要在站点配置中使用额外的设置： [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) 。 此属性配置用于存储函数应用代码和配置的存储帐户。
 
 ```json
 {
@@ -238,10 +240,6 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -259,9 +257,12 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
+> [!IMPORTANT]
+> 不要设置在 [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 首次创建站点时为您生成的设置。  
+
 #### <a name="linux"></a>Linux
 
-在 Linux 上，函数应用必须将其 `kind` 设置为 `functionapp,linux` ，并且它必须将 `reserved` 属性设置为 `true` ：
+在 Linux 上，函数应用必须将其 `kind` 设置为 `functionapp,linux` ，并且它的属性必须 `reserved` 设置为 `true` 。 
 
 ```json
 {
@@ -299,8 +300,9 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-<a name="premium"></a>
+[`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) Linux 不支持和设置。
 
+<a name="premium"></a>
 ## <a name="deploy-on-premium-plan"></a>在高级计划上部署
 
 高级计划提供与消耗计划相同的缩放，但包括专用资源和附加功能。 若要了解详细信息，请参阅 [Azure Functions 高级计划](./functions-premium-plan.md)。
@@ -332,7 +334,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
-高级计划的函数应用必须将 `serverFarmId` 属性设置为之前创建的计划的资源 ID。 此外，高级计划还需要站点配置中的两个附加设置：`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
+高级计划的函数应用必须将 `serverFarmId` 属性设置为之前创建的计划的资源 ID。 此外，高级计划还需要在站点配置中使用额外的设置： [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) 。 此属性配置用于存储函数应用代码和配置的存储帐户。
 
 ```json
 {
@@ -358,10 +360,6 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -378,6 +376,8 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
     }
 }
 ```
+> [!IMPORTANT]
+> 不要设置在 [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 首次创建站点时为您生成的设置。  
 
 <a name="app-service-plan"></a>
 

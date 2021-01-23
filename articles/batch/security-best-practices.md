@@ -3,12 +3,12 @@ title: 批处理安全性和符合性最佳实践
 description: 了解利用您的 Azure Batch 解决方案提高安全性的最佳做法和有用提示。
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b9732ffb810a1038a6f402a46fa8b809f180f0a8
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 6ec4a1d89ebaa9318986fc0d51e832652ba51683
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802280"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723806"
 ---
 # <a name="batch-security-and-compliance-best-practices"></a>批处理安全性和符合性最佳实践
 
@@ -53,7 +53,7 @@ Batch 帐户访问支持两种身份验证方法：共享密钥和 [Azure Active
 
  创建批处理帐户时，将创建一个公共终结点，用于使用 [REST API](/rest/api/batchservice/)为该帐户调用大多数操作。 帐户终结点具有一个使用格式的基 URL `https://{account-name}.{region-id}.batch.azure.com` 。 对批处理帐户的访问是安全的，它与使用 HTTPS 加密的帐户终结点进行通信，并使用共享密钥或 Azure Active Directory (Azure AD) 身份验证对每个请求进行身份验证。
 
-### <a name="azure-resource-manager"></a>Azure Resource Manager
+### <a name="azure-resource-manager"></a>Azure 资源管理器
 
 除了特定于批处理帐户的操作外， [管理操作](/rest/api/batchmanagement/) 还适用于单个和多个批处理帐户。 可以通过 Azure 资源管理器访问这些管理操作。
 
@@ -137,8 +137,8 @@ Batch Api 中指定的某些信息（例如帐户证书、作业和任务元数�
 
 为了获得额外的安全性，请使用以下 Azure 磁盘加密功能之一加密这些磁盘：
 
-- [使用平台管理的密钥进行托管磁盘静态加密](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)
-- [使用平台托管密钥在主机上加密](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+- [使用平台管理的密钥进行托管磁盘静态加密](../virtual-machines/disk-encryption.md#platform-managed-keys)
+- [使用平台托管密钥在主机上加密](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 - [Azure 磁盘加密](disk-encryption.md)
 
 ## <a name="securely-access-services-from-compute-nodes"></a>从计算节点安全访问服务

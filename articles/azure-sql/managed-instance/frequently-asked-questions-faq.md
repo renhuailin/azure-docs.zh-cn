@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 6b217e77310224779ea3ea840e613e28da6c86a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5d15947254d80d97b6a241a717fb7d33a3d5ccb5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779860"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724010"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题解答 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,7 +82,7 @@ SQL 托管实例部署是否有配额限制？
 
 如何预配 SQL 托管实例？
 
-可以通过 [Azure 门户](instance-create-quickstart.md)、 [PowerShell](scripts/create-configure-managed-instance-powershell.md)、 [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) 和 [ARM 模板](/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)设置实例。
+可以通过 [Azure 门户](instance-create-quickstart.md)、[PowerShell](scripts/create-configure-managed-instance-powershell.md)、[Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) 和 [ARM 模板](/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)来预配实例。
 
 是否可以在现有订阅中预配托管实例？
 
@@ -94,7 +94,7 @@ SQL 托管实例部署是否有配额限制？
 
 如何缩放托管实例？
 
-可以从 [Azure 门户](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、 [PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、 [Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) 或 [ARM 模板](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)缩放托管实例。
+可以通过 [Azure 门户](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、[PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、[Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) 或 [ARM 模板](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)来缩放托管实例。
 
 是否可以将托管实例从一个区域移动到另一个区域？
 
@@ -102,7 +102,7 @@ SQL 托管实例部署是否有配额限制？
 
 如何删除托管实例？
 
-可以通过 Azure 门户 [PowerShell](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0)、 [AZURE CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) 或 [资源管理器 REST api](/rest/api/sql/managedinstances/delete)删除托管实例。
+可以通过 Azure 门户、[PowerShell](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0)、[Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) 或[资源管理器 REST API](/rest/api/sql/managedinstances/delete) 来删除托管实例。
 
 创建或更新实例或还原数据库需要多长时间？
 
@@ -316,7 +316,7 @@ SQL 托管实例负责对管理端口设置规则。 这通过名为[服务辅�
 
 托管实例是否具有公共终结点？
 
-是的。 托管实例具有一个公共终结点，该终结点默认仅用于服务管理，但客户也可以启用它来访问数据。 有关更多详细信息，请参阅[将 SQL 托管实例与公共终结点一起使用](./public-endpoint-overview.md)。 若要配置公共终结点，请转到[在 SQL 托管实例中配置公共终结点](public-endpoint-configure.md)。
+是的。 托管实例具有一个公共终结点，它在默认情况下仅用于服务管理，但客户也可以启用它来访问数据。 有关更多详细信息，请参阅[将 SQL 托管实例与公共终结点一起使用](./public-endpoint-overview.md)。 若要配置公共终结点，请转到[在 SQL 托管实例中配置公共终结点](public-endpoint-configure.md)。
 
 托管实例如何控制对公共终结点的访问？
 
@@ -326,20 +326,20 @@ SQL 托管实例负责对管理端口设置规则。 这通过名为[服务辅�
 
 是否可以使用公共终结点访问托管实例数据库中的数据？
 
-是的。 客户需要从[Azure 门户](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)PowerShell/ARM 启用公共终结点数据访问  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) ，并将 NSG 配置为锁定对数据端口（ (端口号 3342) ）的访问。 有关详细信息，请参阅[在 Azure SQL 托管实例中配置公共终结点](public-endpoint-configure.md)和[安全地将 Azure SQL 托管实例与公共终结点结合使用](public-endpoint-overview.md)。 
+是的。 客户需要通过 [Azure 门户](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal) / [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) / ARM 来启用公共终结点数据访问，并将 NSG 配置为锁定对数据端口（端口号 3342）的访问。 有关详细信息，请参阅[在 Azure SQL 托管实例中配置公共终结点](public-endpoint-configure.md)和[安全地将 Azure SQL 托管实例与公共终结点结合使用](public-endpoint-overview.md)。 
 
 是否可以为 SQL 数据终结点指定自定义端口？
 
-不可以，此选项不可用。  对于专用数据终结点，托管实例使用默认端口号1433，对于公共数据终结点，托管实例使用默认端口号3342。
+不可以，此选项不可用。  对于专用数据终结点，托管实例使用默认端口号 1433；对于公共数据终结点，托管实例使用默认端口号 3342。
 
 连接放置在不同区域中的托管实例的建议方法是什么？
 
-快速路由线路对等互连是执行该操作的首选方式。 支持全局虚拟网络对等互连，其限制如下所述。  
+快速路由线路对等互连是执行该操作的首选方式。 支持全局虚拟网络对等互连，但有以下说明所述的限制。  
 
 > [!IMPORTANT]
-> [在9/22/2020 中，我们为新创建的虚拟群集宣布了全局虚拟网络对等互连](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 这意味着，对于在公告日期之后在空子网中创建的 SQL 托管实例，以及在这些子网中创建的所有后续托管实例，都支持全局虚拟网络对等互连。 对于所有其他 SQL 托管实例的对等互连，都将限制为同一区域的网络，因为 [全局虚拟网络对等互连的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 有关更多详细信息，另请参阅 [Azure 虚拟网络常见问题解答](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)一文的相关部分。 
+> [2020 年 9 月 22 日，我们宣布了为新建的虚拟群集建立全局虚拟网络对等互连](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 这意味着，自公告日期之后在空子网中创建的 SQL 托管实例以及在这些子网中随后创建的所有托管实例，都支持全局虚拟网络对等互连。 对于所有其他 SQL 托管实例，由于[全局虚拟网络对等互连的约束](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)，对等互连支持仅限于同一区域中的网络。 有关更多详细信息，另请参阅 [Azure 虚拟网络常见问题解答](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)一文的相关部分。 
 
-如果无法实现快速路由线路对等互连和全局虚拟网络对等互连，则唯一的另一种方法是创建站点到站点 VPN 连接 ([Azure 门户](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)， [PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)， [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) 。
+如果无法实现 Express Route 线路对等互连和全局虚拟网络对等互连，那么唯一的选择就是创建站点到站点 VPN 连接（[Azure 门户](../../vpn-gateway/tutorial-site-to-site-portal.md)、[PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)、[Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)）。
 
 ## <a name="mitigate-data-exfiltration-risks"></a>缓解数据透露风险  
 
@@ -443,7 +443,7 @@ SQL 托管实例定价选项有哪些？
 
 **如何跟踪托管实例的计费成本？**
 
-可以使用 [Azure 成本管理解决方案](../../cost-management-billing/index.yml)实现此目的。 导航到 [Azure 门户](https://portal.azure.com)中的 " **订阅** "，然后选择 " **成本分析** "。 
+可以使用 [Azure 成本管理解决方案](../../cost-management-billing/index.yml)实现此目的。 导航到 [Azure 门户](https://portal.azure.com)中的 "**订阅**"，然后选择 "**成本分析**"。 
 
 使用 **累积成本** 选项，并按 **资源类型** 筛选 `microsoft.sql/managedinstances` 。
 

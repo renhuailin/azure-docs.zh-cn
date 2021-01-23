@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1aebfaa176992b7e20824518bc214a6688ae493
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a9a0668b3ea651d129dc076e5f2247e38f5ab7d0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703579"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725489"
 ---
 # <a name="email-one-time-passcode-authentication"></a>电子邮件一次性密码身份验证
 
@@ -94,7 +94,7 @@ ms.locfileid: "97703579"
    >
    >![启用选择的电子邮件一次性密码](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-5. 选择“保存”。
+5. 选择“保存” 。
 
 ## <a name="note-for-public-preview-customers"></a>公共预览版客户注意事项
 
@@ -102,7 +102,7 @@ ms.locfileid: "97703579"
 
 ![启用选择的电子邮件一次性密码](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-但是，如果想要选择退出功能，并允许在2021年3月自动启用此功能，则可以使用 Microsoft Graph API [电子邮件身份验证方法配置资源类型](https://aka.ms/exid-graphemailauth)，恢复到默认设置。 恢复到默认设置后，以下选项将在 " **来宾的电子邮件一次性密码**" 下提供：
+但是，如果想要选择退出功能，并允许在2021年3月自动启用此功能，则可以使用 Microsoft Graph API [电子邮件身份验证方法配置资源类型](/graph/api/resources/emailauthenticationmethodconfiguration)，恢复到默认设置。 恢复到默认设置后，以下选项将在 " **来宾的电子邮件一次性密码**" 下提供：
 
 - **2021 年3月自动为来宾启用电子邮件一次性密码**。  (默认值) 如果尚未为你的租户启用电子邮件一次性密码功能，则会在3月2021自动启用。 如果要在此时启用此功能，则无需执行任何其他操作。 如果已启用或禁用该功能，则此选项将不可用。
 

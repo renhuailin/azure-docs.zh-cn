@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c556940ace02f2e7bf0354e67d32df7c5c6714e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: eb01a3e0fc5bc11a4d3de62b16aafb7dd308e34a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032756"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724265"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限是什么？
 在 Azure Active Directory (Azure AD) 中，所有用户都被授予一组默认权限。 用户的访问权限由用户的类型、其[角色分配](active-directory-users-assign-role-azure-portal.md)及其对单个对象的所有权构成。 本文将会介绍这些默认权限，并将成员和来宾用户的默认权限进行比较。 只能在 Azure AD 的用户设置中更改默认用户权限。
@@ -32,7 +32,7 @@ ms.locfileid: "97032756"
 
 **区域** | **成员用户权限** | 默认来宾用户权限 | 受限来宾用户权限（预览）
 ------------ | --------- | ---------- | ----------
-用户和联系人 | <ul><li>枚举所有用户和联系人的列表<li>读取用户和联系人的所有公共属性</li><li>邀请来宾<li>更改自己的密码<li>管理自己的手机号码<li>管理自己的照片<li>使自己的刷新令牌失效</li></ul> | <ul><li>读取自己的属性<li>读取其他用户和联系人的显示名称、电子邮件、登录名、照片、用户主体名称和用户类型属性<li>更改自己的密码<li>如果允许，则通过 ObjectId (搜索其他用户) <li>读取其他用户的管理员信息和直接报表信息</li></ul> | <ul><li>读取自己的属性<li>更改自己的密码</li></ul>
+用户和联系人 | <ul><li>枚举所有用户和联系人的列表<li>读取用户和联系人的所有公共属性</li><li>邀请来宾<li>更改自己的密码<li>管理自己的手机号码<li>管理自己的照片<li>使自己的刷新令牌失效</li></ul> | <ul><li>读取自己的属性<li>读取其他用户和联系人的显示名称、电子邮件、登录名、照片、用户主体名称和用户类型属性<li>更改自己的密码<li>按 ObjectId 搜索其他用户（如果允许）<li>读取其他用户的管理员信息和直接报表信息</li></ul> | <ul><li>读取自己的属性<li>更改自己的密码</li></ul>
 组 | <ul><li>创建安全组<li>创建 Microsoft 365 组<li>枚举所有组的列表<li>读取组的所有属性<li>读取非隐藏的组成员身份<li>读取加入的组的隐藏 Microsoft 365 组成员身份<li>管理用户拥有的组的属性、所有权和成员身份<li>将来宾添加到拥有的组<li>管理动态成员身份设置<li>删除拥有的组<li>还原拥有的 Microsoft 365 组</li></ul> | <ul><li>读取非隐藏组的属性，包括成员身份和所有权（甚至是未加入的组）<li>读取加入的组的隐藏 Microsoft 365 组成员身份<li>按显示名称或 ObjectId（如果允许）搜索组</li></ul> | <ul><li>读取加入的组的对象 ID<li>在某些 Microsoft 365 应用中读取加入的组的成员身份和所有权（如果允许）</li></ul>
 应用程序 | <ul><li>注册（创建）新应用程序<li>枚举所有应用程序的列表<li>读取已注册的应用程序和企业应用程序的属性<li>管理拥有的应用程序的应用程序属性、分配和凭据<li>创建或删除用户的应用程序密码<li>删除拥有的应用程序<li>还原拥有的应用程序</li></ul> | <ul><li>读取已注册的应用程序和企业应用程序的属性</li></ul> | <ul><li>读取已注册的应用程序和企业应用程序的属性
 设备</li></ul> | <ul><li>枚举所有设备的列表<li>读取设备的所有属性<li>管理拥有的设备的所有属性</li></ul> | 无权限 | 无权限
@@ -63,7 +63,7 @@ Directory | <ul><li>读取所有公司信息<li>读取所有域<li>读取所有�
 
 权限 | 设置说明
 ---------- | ------------
-来宾用户访问限制（预览） | 如果将此选项设置为“来宾用户与成员用户具有相同访问权限”，则默认向来宾用户授予所有成员用户权限。<p>如果将此选项设置为“来宾用户仅能访问自己的目录对象的属性和成员身份”，则默认将来宾用户限制为仅可访问自己的用户配置文件。 即使按用户主体名称、ObjectId 或显示名称进行搜索，也不再允许访问其他用户。 同样也不再允许访问组信息，包括组成员身份。<p>**注意**：此设置不会阻止对某些 Microsoft 365 服务（例如 Microsoft Teams）中已加入的组的访问。 有关详细信息，请参阅 [Microsoft Teams 来宾访问](https://docs.microsoft.com/MicrosoftTeams/guest-access)。<p>无论此权限设置如何，仍可将来宾用户添加到管理员角色。
+来宾用户访问限制（预览） | 如果将此选项设置为“来宾用户与成员用户具有相同访问权限”，则默认向来宾用户授予所有成员用户权限。<p>如果将此选项设置为“来宾用户仅能访问自己的目录对象的属性和成员身份”，则默认将来宾用户限制为仅可访问自己的用户配置文件。 即使按用户主体名称、ObjectId 或显示名称进行搜索，也不再允许访问其他用户。 同样也不再允许访问组信息，包括组成员身份。<p>**注意**：此设置不会阻止对某些 Microsoft 365 服务（例如 Microsoft Teams）中已加入的组的访问。 有关详细信息，请参阅 [Microsoft Teams 来宾访问](/MicrosoftTeams/guest-access)。<p>无论此权限设置如何，仍可将来宾用户添加到管理员角色。
 来宾可发出邀请 | 如果将此选项设置为“是”，则允许来宾邀请其他来宾。 有关详细信息，请参阅[委托 B2B 协作邀请](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings)。
 成员可发出邀请 | 如果将此选项设置为“是”，则允许目录的非管理员成员邀请来宾。 有关详细信息，请参阅[委托 B2B 协作邀请](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings)。
 拥有来宾邀请者角色的管理员和用户可发出邀请 | 如果将此选项设置为“是”，则允许管理员和具有“来宾邀请者”角色的用户邀请来宾。 如果设置为“是”，则无论“成员可发出邀请”设置如何，具有“来宾邀请者”角色的用户仍可以邀请来宾。 有关详细信息，请参阅[委托 B2B 协作邀请](../external-identities/delegate-invitations.md#assign-the-guest-inviter-role-to-a-user)。

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bed64df921326ad4d219f934f7a7bc6860bfc7d8
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 541f76ad825f492679530902c571096ca4b01902
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861895"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726225"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>如何在 Azure VM 上使用 Azure 资源的托管标识获取访问令牌 
 
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>使用用于 .NET 的 Microsoft.Azure.Services.AppAuthentication 库获取令牌
 
-对于 .NET 应用程序和函数，使用 Azure 资源的托管标识的最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 有关此库的本地开发选项的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考](../../key-vault/general/service-to-service-authentication.md)。 本部分演示如何开始在代码中使用此库。
+对于 .NET 应用程序和函数，使用 Azure 资源的托管标识的最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 有关此库的本地开发选项的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考](/dotnet/api/overview/azure/service-to-service-authentication)。 本部分演示如何开始在代码中使用此库。
 
 1. 向应用程序添加对 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 包的引用。
 
@@ -141,7 +141,7 @@ Content-Type: application/json
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-若要了解有关 Microsoft.Azure.Services.AppAuthentication 及其公开的操作的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考](../../key-vault/general/service-to-service-authentication.md)以及[将应用服务和 KeyVault 与 Azure 资源的托管标识配合使用的 .NET 示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
+若要了解有关 Microsoft.Azure.Services.AppAuthentication 及其公开的操作的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考](/dotnet/api/overview/azure/service-to-service-authentication)以及[将应用服务和 KeyVault 与 Azure 资源的托管标识配合使用的 .NET 示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
 
 ## <a name="get-a-token-using-c"></a>使用 C# 获取令牌
 

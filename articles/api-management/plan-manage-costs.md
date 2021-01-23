@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 799ef33e78737bfd2e1c1a1cfa4991f44c8f5ec0
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e171e642440b7c6c99353169e426a722885f1bcf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599639"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725931"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>规划和管理 API 管理的成本
 
@@ -108,7 +108,7 @@ API 管理的成本仅是 Azure 帐单中每月成本的一部分。 尽管本�
 
 - 了解 [如何通过 Azure 成本管理优化云投资](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 - 详细了解如何通过 [成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本。
-- 了解如何 [防止意外成本](../cost-management-billing/manage/getting-started.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
-- 采用 [成本管理](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引导式学习课程。
+- 了解如何 [防止意外成本](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 采用 [成本管理](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引导式学习课程。
 - 了解 API 管理 [容量](api-management-capacity.md)。
 - 请参阅使用 [Azure 门户](upgrade-and-scale.md)缩放和升级 API 管理的步骤，并了解自动 [缩放](api-management-howto-autoscale.md)。

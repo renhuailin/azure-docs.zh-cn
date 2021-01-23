@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdff7e62753e75a14d6711b77dd451603353dae5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 6a5e8b933f617d767f017f73fb6778a45b5a1ce3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012829"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725583"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory 电话选项中的身份验证方法
 
-对于使用文本消息的直接身份验证，可以[为用户配置和启用基于 SMS 的身份验证（预览）](howto-authentication-sms-signin.md)。 基于 SMS 的登录方式对于一线工作人员来说非常适合。 使用基于 SMS 的登录，用户无需知道用户名和密码即可访问应用程序和服务。 用户的验证方式改为：输入其注册的手机号码，收到带有验证码的短信，并在登录界面中输入该验证码。
+对于使用短信的直接身份验证，您可以 [为基于 SMS 的身份验证配置和启用用户](howto-authentication-sms-signin.md)。 基于 SMS 的登录非常适合前端工作人员。 使用基于 SMS 的登录，用户无需知道用户名和密码即可访问应用程序和服务。 用户的验证方式改为：输入其注册的手机号码，收到带有验证码的短信，并在登录界面中输入该验证码。
 
 用户还可以使用移动电话或办公电话来验证自己的身份，作为 Azure AD 多重身份验证或自助服务密码重置 (SSPR) 期间使用的辅助身份验证。
 
