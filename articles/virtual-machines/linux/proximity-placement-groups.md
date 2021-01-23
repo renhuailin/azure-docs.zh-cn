@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: ee172203d6aa54b4b539356835f8a6bf2d21bad3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea50d0fdc5a772cae449951901af36eed4e93771
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288422"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737619"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>使用 Azure CLI 将 VM 部署到邻近放置组
 
@@ -67,7 +67,7 @@ az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 
 ## <a name="scale-sets"></a>规模集
 
-还可以在邻近放置组中创建规模集。 将同一 `--ppg` 参数与 [az vmss create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) 一起使用来创建规模集，并且将在同一邻近放置组中创建所有实例。
+还可以在邻近放置组中创建规模集。 将同一 `--ppg` 参数与 [az vmss create](/cli/azure/vmss#az_vmss_create) 一起使用来创建规模集，并且将在同一邻近放置组中创建所有实例。
 
 ## <a name="next-steps"></a>后续步骤
 

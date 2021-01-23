@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e409211c167f7b29128faf9fdfc02aa5c0a7d0e3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976176"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736248"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -350,7 +350,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 
 ### <a name="install-windows-updates"></a>安装 Windows 更新
 
-理想情况下，应将计算机更新为 *修补程序级别*，如果无法做到这一点，请确保安装以下更新。 若要获取最新的更新，请参阅 Windows 更新历史记录页： [windows 10 和 Windows server 2019](https://support.microsoft.com/help/4000825)、 [Windows 8.1 以及 Windows server 2012 r2](https://support.microsoft.com/help/4009470) 和 Windows [7 SP1 以及 windows server 2008 R2 SP1](https://support.microsoft.com/help/4009469)。
+理想情况下，应将计算机更新为补丁级别；如果无法实现，请确保已安装下列更新。 若要获取最新的更新，请查看 Windows 更新历史记录页：[Windows 10 和 Windows Server 2019](https://support.microsoft.com/help/4000825)、[Windows 8.1 和 Windows Server 2012 R2](https://support.microsoft.com/help/4009470)，以及 [Windows 7 SP1 和 Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469)。
 
 <br />
 
@@ -423,7 +423,7 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 1. 以管理员身份运行 PowerShell 会话。
 1. 删除 panther 目录 (C:\Windows\Panther)。
 1. 将目录切换到 `%windir%\system32\sysprep`。 然后运行 `sysprep.exe`。
-1. 在 " **系统准备工具** " 对话框中，选择 " **进入系统全新体验 (OOBE) **，并确保已选中" **通用化** "复选框。
+1. 在 " **系统准备工具** " 对话框中，选择 " **进入系统全新体验 (OOBE)**，并确保已选中" **通用化** "复选框。
 
     ![系统准备工具](media/prepare-for-upload-vhd-image/syspre.png)
 1. 在“关机选项”中选择“关机”。
@@ -433,7 +433,7 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 现在，VHD 已准备就绪，可以上传了。 有关如何从通用化磁盘创建 VM 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized)。
 
 >[!NOTE]
-> 不支持自定义的 *unattend.xml* 文件。 尽管我们确实支持 additionalUnattendContent 属性，但针对向 Azure 预配代理使用的 unattention.xml 文件添加 [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) 选项，它只提供有限的支持。 例如，可以使用 [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) 添加 FirstLogonCommands 和 LogonCommands。 有关详细信息，请参阅 [additionalUnattendContent FirstLogonCommands 示例](https://github.com/Azure/azure-quickstart-templates/issues/1407)。
+> 不支持自定义的 *unattend.xml* 文件。 尽管我们确实支持 additionalUnattendContent 属性，但针对向 Azure 预配代理使用的 unattention.xml 文件添加 [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) 选项，它只提供有限的支持。 例如，可以使用 [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent) 添加 FirstLogonCommands 和 LogonCommands。 有关详细信息，请参阅 [additionalUnattendContent FirstLogonCommands 示例](https://github.com/Azure/azure-quickstart-templates/issues/1407)。
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>将虚拟磁盘转换为固定大小的 VHD
 
@@ -447,7 +447,7 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 
 1. 调整虚拟磁盘的大小以满足 Azure 要求：
 
-   1. Azure 上的磁盘必须已将虚拟大小调整为 1 MiB。 如果 VHD 是 1 MiB 的一部分，则需要将磁盘大小调整为 1 MiB 的倍数。 基于上传的 VHD 创建映像时，不到 1 MiB 的磁盘将导致错误。 若要验证大小，你可以使用 PowerShell [获取 VHD](/powershell/module/hyper-v/get-vhd) cmdlet 显示 "大小"，该大小必须是 Azure 中 1 MiB 的倍数，"FileSize" 将等于 VHD 页脚的 "size" 加上512字节。
+   1. Azure 上的磁盘必须已将虚拟大小调整为 1 MiB。 如果 VHD 的大小不是 1 MiB 的整数倍，需要将磁盘大小调整为 1 MiB 的倍数。 基于上传的 VHD 创建映像时，不到 1 MiB 的磁盘将导致错误。 若要验证该大小，可使用 PowerShell [Get-VHD](/powershell/module/hyper-v/get-vhd) comdlet 来显示“大小”和“文件大小”，其中大小在 Azure 中必须是 1 MiB 的倍数，而文件大小将等于“大小”加上 VHD 页脚的 512 字节。
    
    1. 第 1 代 VM 的 OS VHD 允许的最大大小为 2,048 GiB (2 TiB)， 
    1. 数据磁盘的最大大小为 32,767 GiB (32 TiB)。
@@ -468,7 +468,7 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 
 ### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 转换磁盘
 
-可以使用 PowerShell 中的 [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 转换虚拟磁盘。 如果需要有关安装此 cmdlet 的信息，请参阅 [安装 hyper-v 角色](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+可以使用 PowerShell 中的 [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 转换虚拟磁盘。 如需了解如何安装此 cmdlet，请参阅[安装 Hyper-V 角色](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
 
 以下示例将磁盘从 VHDX 转换为 VHD。 该示例还会将动态扩展磁盘转换为固定大小的磁盘。
 
@@ -488,7 +488,7 @@ Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDTyp
 
 ### <a name="use-powershell-to-resize-the-disk"></a>使用 PowerShell 调整磁盘大小
 
-可以使用 PowerShell 中的 [Resize-VHD](/powershell/module/hyper-v/resize-vhd) cmdlet 调整虚拟磁盘的大小。 如果需要有关安装此 cmdlet 的信息，请参阅 [安装 hyper-v 角色](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+可以使用 PowerShell 中的 [Resize-VHD](/powershell/module/hyper-v/resize-vhd) cmdlet 调整虚拟磁盘的大小。 如需了解如何安装此 cmdlet，请参阅[安装 Hyper-V 角色](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
 
 下面的示例将磁盘大小从 100.5 MiB 调整到 101 MiB，以满足 Azure 的一致性要求。
 

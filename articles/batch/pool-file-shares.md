@@ -3,12 +3,12 @@ title: Azure Batch 池的 Azure 文件共享
 description: 如何在 Azure Batch 中从 Linux 或 Windows 池中的计算节点装载 Azure 文件共享。
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 6bbaba20512a17de563e74ba095057c5c3f71f6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5682e7ba853973592c3a650a06ce72615cec7b6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986417"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735488"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>将 Batch 池与 Azure 文件共享配合使用
 
@@ -20,7 +20,7 @@ ms.locfileid: "87986417"
 
 * Azure 文件共享非常[经济高效](https://azure.microsoft.com/pricing/details/storage/files/)，可以使用数据复制将其配置到另一个区域，以实现全局冗余。 
 
-* 可从本地计算机并行装载 Azure 文件共享。 但是，请务必了解[并发性影响](../storage/common/storage-concurrency.md)，尤其是在使用 REST API 的情况下。
+* 可从本地计算机并行装载 Azure 文件共享。 但是，请务必了解[并发性影响](../storage/blobs/concurrency-manage.md)，尤其是在使用 REST API 的情况下。
 
 * 另请参阅 Azure 文件共享的一般[规划注意事项](../storage/files/storage-files-planning.md)。
 

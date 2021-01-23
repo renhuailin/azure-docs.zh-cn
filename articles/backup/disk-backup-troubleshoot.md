@@ -3,12 +3,12 @@ title: 排查 Azure 磁盘备份中的备份故障
 description: 了解如何对 Azure 磁盘备份中的备份失败进行故障排除
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 3e7c81d70fc898528532a841a484bf6fff8b83a7
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611230"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737721"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>排查 Azure 磁盘备份中的备份失败 (预览) 
 
@@ -115,7 +115,7 @@ ms.locfileid: "98611230"
 
 错误消息：操作失败，因为已达到订阅的磁盘配额最大限制。
 
-建议的操作：请参阅 [Azure 订阅和服务限制和配额文档](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) ，或联系 Microsoft 支持部门获取进一步指导。
+建议的操作：请参阅 [Azure 订阅和服务限制和配额文档](../azure-resource-manager/management/azure-subscription-service-limits.md) ，或联系 Microsoft 支持部门获取进一步指导。
 
 ### <a name="error-code-usererrordiskbackuprestorergormsipermissionsnotpresent"></a>错误代码： UserErrorDiskBackupRestoreRGOrMSIPermissionsNotPresent
 

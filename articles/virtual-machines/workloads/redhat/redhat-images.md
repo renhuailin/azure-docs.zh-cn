@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: dbff136ac5787ef9549cca9dc8f946c56a138986
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 293245d6778a40e234cdca177905c15dc88dd04f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900495"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737755"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映像的概述
 
@@ -60,8 +60,8 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 ```
 
 >[!NOTE]
-> 一般情况下，通过比较版本来确定最新版本时应遵循 [CompareTo 方法](/dotnet/api/system.version.compareto?view=netcore-3.1#system_version_compareto_system_version_)的规则。
-此映像版本比较是通过将值作为 [版本](/dotnet/api/system.version.-ctor?view=netframework-4.8) 对象而不是字符串进行比较来完成的。
+> 一般情况下，通过比较版本来确定最新版本时应遵循 [CompareTo 方法](/dotnet/api/system.version.compareto#system_version_compareto_system_version_)的规则。
+此映像版本比较是通过将值作为 [版本](/dotnet/api/system.version.-ctor) 对象而不是字符串进行比较来完成的。
 
 ## <a name="rhel-6-image-types"></a>RHEL 6 映像类型
 
@@ -146,7 +146,7 @@ RedHat:RHEL:7.6:7.6.2019102813
 RHEL 7.4      |RedHat： RHEL：7.4：7.4.2019041718 | 默认情况下，EUS 2019 及更高版本发布的映像。|
 RHEL 7.5      |RedHat： RHEL：7.5：7.5.2019060305 | 默认情况下，EUS 2019 及更高版本发布的映像。 |
 RHEL 7.6      |RedHat： RHEL：7.6：7.6.2019052206 | 默认情况下，发布的映像可能为2019和更高版本 EUS。 |
-RHEL 8。0      |不适用                            | Red Hat 中没有可用的 EUS。                               |
+RHEL 8。0      |空值                            | Red Hat 中没有可用的 EUS。                               |
 
 ### <a name="update-services-for-sap"></a>更新 SAP 服务
 
@@ -161,7 +161,7 @@ RHEL 8。0      |不适用                            | Red Hat 中没有可用�
 
 ## <a name="other-available-offers-and-skus"></a>其他可用产品和 Sku
 
-可用产品/服务和 Sku 的完整列表可能包括上表中列出的其他映像。 示例为 `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`。 这些产品/服务可用于为特定 marketplace 解决方案提供支持。 也可以将其发布以供预览和测试之用。 它们可能会随时更改或删除，而不会出现警告。 除非 Microsoft 或 Red Hat 公开记录了这些文件，否则不要使用它们。
+可用产品/服务和 Sku 的完整列表可能包括上表中列出的其他映像。 例如 `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`。 这些产品/服务可用于为特定 marketplace 解决方案提供支持。 也可以将其发布以供预览和测试之用。 它们可能会随时更改或删除，而不会出现警告。 除非 Microsoft 或 Red Hat 公开记录了这些文件，否则不要使用它们。
 
 ## <a name="publishing-policy"></a>发布策略
 

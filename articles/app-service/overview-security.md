@@ -5,12 +5,12 @@ keywords: azure 应用服务, web 应用, 移动应用, api 应用, 函数应用
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55ffb2d03a42809a41583e6be25066b0b8e104b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61bffcfa8b98ed666e450c344023258b752e4880
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961493"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736099"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
 
@@ -43,7 +43,7 @@ ms.locfileid: "88961493"
 
 默认情况下，应用服务应用接受来自 Internet 的所有 IP 地址的请求，但你可以将该访问权限限定于一小部分 IP 地址。 通过 Windows 上的应用服务，可定义允许访问应用的 IP 地址的列表。 允许列表可包括单个 IP 地址或由子网掩码定义的 IP 地址范围。 有关详细信息，请参阅 [Azure 应用服务静态 IP 限制](app-service-ip-restrictions.md)。
 
-对于 Windows 上的应用服务，还可以通过配置 _web.config_ 来动态限制 IP 地址。有关详细信息，请参阅[动态 IP 安全性\<dynamicIpSecurity>](/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
+对于 Windows 上的应用服务，还可以通过配置 _web.config_ 来动态限制 IP 地址。有关详细信息，请参阅 [动态 IP 安全性\<dynamicIpSecurity>](/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
 
 ## <a name="client-authentication-and-authorization"></a>客户端身份验证和授权
 
@@ -85,8 +85,8 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 可通过三种方式安全地访问本地资源（如数据库）： 
 
 - [混合连接](app-service-hybrid-connections.md)：通过 TCP 隧道建立到远程资源的点到点连接。 TCP 隧道是使用 TLS 1.2 通过共享访问签名 (SAS) 密钥建立的。
-- 通过站点到站点 VPN 建立的[虚拟网络集成](web-sites-integrate-with-vnet.md)：如 [Azure 虚拟网络中的资源](#resources-inside-an-azure-virtual-network)中所述，但虚拟网络可通过[站点到站点 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 连接到本地网络。 在这种网络拓扑中，应用可以像连接到虚拟网络中的其他资源一样连接到本地资源。
-- 带有站点到站点 VPN 的[应用服务环境](environment/intro.md)：如 [Azure 虚拟网络中的资源](#resources-inside-an-azure-virtual-network)中所述，但虚拟网络可通过[站点到站点 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 连接到本地网络。 在这种网络拓扑中，应用可以像连接到虚拟网络中的其他资源一样连接到本地资源。
+- 通过站点到站点 VPN 建立的[虚拟网络集成](web-sites-integrate-with-vnet.md)：如 [Azure 虚拟网络中的资源](#resources-inside-an-azure-virtual-network)中所述，但虚拟网络可通过[站点到站点 VPN](../vpn-gateway/tutorial-site-to-site-portal.md) 连接到本地网络。 在这种网络拓扑中，应用可以像连接到虚拟网络中的其他资源一样连接到本地资源。
+- 带有站点到站点 VPN 的[应用服务环境](environment/intro.md)：如 [Azure 虚拟网络中的资源](#resources-inside-an-azure-virtual-network)中所述，但虚拟网络可通过[站点到站点 VPN](../vpn-gateway/tutorial-site-to-site-portal.md) 连接到本地网络。 在这种网络拓扑中，应用可以像连接到虚拟网络中的其他资源一样连接到本地资源。
 
 ## <a name="application-secrets"></a>应用程序密钥
 
@@ -96,7 +96,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 
 ## <a name="network-isolation"></a>网络隔离
 
-除了**独立**定价层，所有层都在应用服务的共享网络基础结构上运行应用。 例如，公共 IP 地址和前端负载均衡器与其他租户共享。 通过在专用的[应用服务环境](environment/intro.md)中运行应用，**独立**层可提供完整的网络隔离。 应用服务环境在你自己的 [Azure 虚拟网络](../virtual-network/index.yml)实例中运行。 它允许： 
+除了 **独立** 定价层，所有层都在应用服务的共享网络基础结构上运行应用。 例如，公共 IP 地址和前端负载均衡器与其他租户共享。 通过在专用的 [应用服务环境](environment/intro.md)中运行应用，**独立** 层可提供完整的网络隔离。 应用服务环境在你自己的 [Azure 虚拟网络](../virtual-network/index.yml)实例中运行。 它允许： 
 
 - 通过专用的公共终结点为应用提供专用前端。
 - 使用内部负载均衡器 (ILB) 为内部应用程序提供服务，该内部负载均衡器仅允许从 Azure 虚拟网络内部进行访问。 ILB 有一个来自专用子网的 IP 地址，它可以让应用与 Internet 完全隔离。

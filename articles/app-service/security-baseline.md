@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1ea8f3bccd97e1aaa15a21ae605a163b11c8ae39
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 758f7de46c524406f31a40072250eb7d59745d42
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197925"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736082"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>适用于应用服务的 Azure 安全基准
 
@@ -71,7 +71,7 @@ ms.locfileid: "98197925"
 
 - [了解 Azure 安全中心提供的网络安全](../security-center/security-center-network-recommendations.md)
 
-- [如何启用应用服务的监视和保护](/azure/security-center/defender-for-app-service-introduction)
+- [如何启用应用服务的监视和保护](../security-center/defender-for-app-service-introduction.md)
 
 **Azure 安全中心监视**：是
 
@@ -168,7 +168,7 @@ ms.locfileid: "98197925"
 
 - [如何通过门户使用应用程序网关配置端到端 TLS](../application-gateway/end-to-end-ssl-portal.md)
 
-- [如锁定应用服务中所述，保护 ASE](/azure/app-service/environment/firewall-integration)
+- [如锁定应用服务中所述，保护 ASE](./environment/firewall-integration.md)
 
 **Azure 安全中心监视**：是
 
@@ -205,7 +205,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何通过门户使用应用程序网关配置端到端 TLS](../application-gateway/end-to-end-ssl-portal.md)
 
-- [如锁定应用服务中所述，保护 ASE](/azure/app-service/environment/firewall-integration)
+- [如锁定应用服务中所述，保护 ASE](./environment/firewall-integration.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -221,7 +221,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure 应用服务访问限制](/azure/app-service/app-service-ip-restrictions)
+- [Azure 应用服务访问限制](./app-service-ip-restrictions.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -737,7 +737,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure 资源关系图可以在其订阅中查询或发现资源。  确保环境中的所有 Azure 资源均已获得批准。 
+使用 Azure 资源关系图可以在其订阅中查询或发现资源。  确保环境中存在的所有 Azure 资源已获得批准。 
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -795,7 +795,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 **指南**：创建一个流程以定期查看未经授权的 azure 服务，以确保仅在订阅中使用已授权的 azure 服务。
 
-使用此过程中的 Azure 资源关系图来查询或发现其订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
+使用此过程中的 Azure 资源关系图来查询或发现其订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
 
 使用以下内置策略定义，将 Azure 策略配置为对可在订阅中创建的资源类型施加限制：
 
@@ -1025,7 +1025,7 @@ Microsoft 管理底层平台，并将所有客户数据视为敏感数据，并�
 
 - [加密模型和密钥管理表](../security/fundamentals/encryption-atrest.md)
 
-- [使用客户托管密钥进行静态加密](configure-encrypt-at-rest-using-cmk.md)
+- [使用客户管理的密钥进行静态加密](configure-encrypt-at-rest-using-cmk.md)
 
 **Azure 安全中心监视**：不适用
 

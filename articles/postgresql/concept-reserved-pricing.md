@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 8343c06992c896986ba26a90171e25f9c8c4f2f8
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9b8dafa4a69358b3f6f09551ac426b908750e2f4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600101"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735466"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>预付 Azure Database for PostgreSQL-具有保留容量的单一服务器计算资源
 
@@ -35,7 +35,7 @@ ms.locfileid: "98600101"
 
 保留的大小应基于特定区域中现有或即将部署的服务器使用的计算总量，并使用相同的性能层和硬件生成。</br>
 
-例如，假设你正在运行一个通用 Gen5 – 32 vCore PostgreSQL 数据库和两个内存优化 Gen5 – 16 vCore PostgreSQL 数据库。 接下来，假设你计划在下个月中部署一个额外的常规用途 Gen5 – 32 vCore 数据库服务器和一个内存优化的 Gen5 – 16 vCore 数据库服务器。 假设你知道至少需要一年的时间。 在这种情况下，你应该购买 64 (2x32) Vcore，为单一数据库使用为期一年的保留-Gen5 和 48 (2x16 + 16) vCore 单一数据库内存的保留期-Gen5
+例如，假设你正在运行一个通用 Gen5 – 32 vCore PostgreSQL 数据库和两个内存优化 Gen5 – 16 vCore PostgreSQL 数据库。 接下来，假设你计划在下个月中部署一个额外的常规用途 Gen5 – 8 vCore 数据库服务器和一个内存优化的 Gen5 – 32 vCore 数据库服务器。 假设你知道至少需要一年的时间。 在这种情况下，你应该购买 40 (32 + 8) Vcore，一年为单一数据库保留一年的保留期-Gen5 和 64 (2x16 + 32) vCore 单个数据库内存的保留期-Gen5
 
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>购买 Azure Database for PostgreSQL 保留的容量
@@ -67,7 +67,8 @@ ms.locfileid: "98600101"
 
 ## <a name="vcore-size-flexibility"></a>vCore 大小灵活性
 
-vCore 大小灵活性有助于在同一性能层和区域内纵向扩展或收缩，且不会丢失预留容量权益。 
+vCore 大小灵活性有助于在同一性能层和区域内纵向扩展或收缩，且不会丢失预留容量权益。 如果缩放到高于保留容量的更高 Vcore，将使用即用即付定价支付额外 Vcore 的费用。
+
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 

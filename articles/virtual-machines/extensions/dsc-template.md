@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 01a41e9acccdb40bf198031d13c3ea3f13c079ce
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8b862238c0c04fae72659d644dbaf882d00cca19
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180143"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735684"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration 扩展与 Azure 资源管理器模板
 
@@ -32,7 +32,7 @@ ms.locfileid: "98180143"
 
 将以下代码片段放入模板的 **Resource** 节。
 DSC 扩展继承默认扩展属性。
-有关详细信息，请参阅 [VirtualMachineExtension 类](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet)。
+有关详细信息，请参阅 [VirtualMachineExtension 类](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension)。
 
 ```json
 {
@@ -85,7 +85,7 @@ DSC 扩展继承默认扩展属性。
 在“扩展”下，添加 DSC 扩展的详细信息。
 
 DSC 扩展继承默认扩展属性。
-有关详细信息，请参阅 [VirtualMachineScaleSetExtension 类](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet)。
+有关详细信息，请参阅 [VirtualMachineScaleSetExtension 类](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension)。
 
 ```json
 "extensionProfile": {

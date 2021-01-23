@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 83da8cbf3a87570cfb967e0a6c8da3f0f2ed1766
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bbaf34c977546891c6ac05fbd4b5feb15f333e04
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486736"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737806"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上的 Oracle Database Enterprise Edition 的参考体系结构
 
@@ -207,7 +207,7 @@ Oracle 数据防护可用于分片与系统管理的用户定义的分片方法�
 
 将 Oracle 工作负荷部署到 Azure 时，Microsoft 将负责所有主机操作系统级修补。 任何计划的操作系统级别的维护将提前传达给客户，以允许客户进行此计划内维护。 从不同时修补两个不同可用性区域的两个服务器。 有关 VM 维护和修补的详细信息，请参阅 [管理虚拟机的可用性](../../manage-availability.md) 。 
 
-可以使用 [Azure 自动化更新管理](../../../automation/update-management/overview.md)来自动修补虚拟机操作系统。 修补和维护 Oracle 数据库可以使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 或 [Azure 自动化更新管理](../../../automation/update-management/overview.md) 自动执行和计划，以最大程度地减少停机时间。 若要了解如何在 Oracle 数据库的上下文中使用，请参阅 [持续交付和蓝色/绿色部署](/azure/devops/learn/what-is-continuous-delivery) 。
+可以使用 [Azure 自动化更新管理](../../../automation/update-management/overview.md)来自动修补虚拟机操作系统。 修补和维护 Oracle 数据库可以使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) 或 [Azure 自动化更新管理](../../../automation/update-management/overview.md) 自动执行和计划，以最大程度地减少停机时间。 若要了解如何在 Oracle 数据库的上下文中使用，请参阅 [持续交付和蓝色/绿色部署](/azure/devops/learn/what-is-continuous-delivery) 。
 
 ## <a name="architecture-and-design-considerations"></a>体系结构和设计注意事项
 

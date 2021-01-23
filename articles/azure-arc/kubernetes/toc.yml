@@ -38,4 +38,4 @@
 - name: 资源
   items:
     - name: Azure Arc 快速入门
-      href: 'https://github.com/microsoft/azure_arc'
+      href: 'https://azurearcjumpstart.io'

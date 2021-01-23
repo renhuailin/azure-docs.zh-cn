@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 4c7ba5806707e818f0ef13717d5f00b542c37614
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 16cd4685f513eb628372802cc158195b81bce72a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092731"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736165"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -308,7 +308,7 @@ principalId 是用于 Azure AD 管理的标识的唯一标识符。 clientId 是
 可能需要配置目标资源，允许从应用程序进行访问。 例如，如果请求用于访问 Key Vault 的令牌，需要确保已添加包含应用程序标识的访问策略。 否则，对 Key Vault 的调用将被拒绝，即使其中包含令牌。 若要详细了解支持 Azure Active Directory 令牌的资源，请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
 > [!IMPORTANT]
-> 托管标识的后端服务会在24小时内维护每个资源 URI 的缓存。 如果你更新特定目标资源的访问策略并立即检索该资源的令牌，则可以继续获取具有过时权限的缓存令牌，直到该令牌过期。 目前无法强制刷新令牌。
+> 用于托管标识的后端服务将为每个资源 URI 维护缓存约 24 小时。 如果你更新特定目标资源的访问策略并立即检索该资源的令牌，则可以继续获取具有过时权限的缓存令牌，直到该令牌过期。 目前无法强制刷新令牌。
 
 在应用服务和 Azure Functions 中，使用简单的 REST 协议获取令牌。 此协议可用于所有应用程序和语言。 对于 .NET 和 Java，Azure SDK 提供了对此协议的抽象，并有助于本地开发体验。
 
@@ -523,7 +523,7 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 ## <a name="next-steps"></a>后续步骤
 
 - [使用托管标识安全地访问 SQL 数据库](app-service-web-tutorial-connect-msi.md)
-- [使用托管标识安全访问 Azure 存储](scenario-secure-app-access-storage.md)
+- [使用托管标识安全地访问 Azure 存储](scenario-secure-app-access-storage.md)
 - [使用托管标识安全调用 Microsoft Graph](scenario-secure-app-access-microsoft-graph-as-app.md)
 
-[Microsoft.Azure.Services.AppAuthentication 参考]: ../key-vault/general/service-to-service-authentication.md
+[Microsoft.Azure.Services.AppAuthentication 参考]: /dotnet/api/overview/azure/service-to-service-authentication

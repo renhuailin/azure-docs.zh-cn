@@ -3,12 +3,12 @@ title: 使用客户托管密钥加密备份数据
 description: 了解 Azure 备份如何允许使用客户管理的密钥加密备份数据， (CMK) 。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: d5daa88475e3becde6e513391c555471f80396c5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562754"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735854"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
 
@@ -77,7 +77,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 **对于 PowerShell：**
 
-使用 [AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) 命令对恢复服务保管库启用系统分配的托管标识。
+使用 [AzRecoveryServicesVault](/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) 命令对恢复服务保管库启用系统分配的托管标识。
 
 示例：
 
@@ -121,7 +121,7 @@ Type        : SystemAssigned
 
 **对于 PowerShell**：
 
-使用 [AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) 命令启用使用客户托管密钥的加密，并分配或更新要使用的加密密钥。
+使用 [AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) 命令启用使用客户托管密钥的加密，并分配或更新要使用的加密密钥。
 
 示例：
 
@@ -221,7 +221,7 @@ InfrastructureEncryptionState : Disabled
 
         ![从密钥保管库中选择密钥](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. 选择“保存”。
+1. 选择“保存” 。
 
 1. **跟踪加密密钥更新的进度和状态**：可以使用左侧导航栏上的 " **备份作业** " 视图跟踪加密密钥分配的进度和状态。 状态应更改为 " **已完成**"。 现在，保管库会将具有指定密钥的所有数据加密为 KEK。
 
@@ -290,7 +290,7 @@ InfrastructureEncryptionState : Disabled
 
 **对于 PowerShell**：
 
-将 [AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) 命令与参数 [] 结合使用 `-DiskEncryptionSetId <string>` ，以 [指定](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset) 用于对还原的磁盘进行加密的 DES。 有关从 VM 备份还原磁盘的详细信息，请参阅 [此文](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm)。
+将 [AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) 命令与参数 [] 结合使用 `-DiskEncryptionSetId <string>` ，以 [指定](/powershell/module/az.compute/get-azdiskencryptionset) 用于对还原的磁盘进行加密的 DES。 有关从 VM 备份还原磁盘的详细信息，请参阅 [此文](./backup-azure-vms-automation.md#restore-an-azure-vm)。
 
 示例：
 
@@ -311,7 +311,7 @@ $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -Storag
 
 从在 Azure VM 中运行的备份 SAP HANA/SQL 数据库还原时，还原的数据将使用目标存储位置中使用的加密密钥进行加密。 它可以是客户托管的密钥或用于加密 VM 磁盘的平台托管密钥。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 ### <a name="can-i-encrypt-an-existing-backup-vault-with-customer-managed-keys"></a>是否可以使用客户管理的密钥加密现有的备份保管库？
 

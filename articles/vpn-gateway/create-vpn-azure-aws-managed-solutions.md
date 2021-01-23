@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: ricmmartins
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/22/2021
 ms.author: ricmart
-ms.openlocfilehash: 3b9e60eb037182318e9d1ef7336565908a9c8f32
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a0655ce1d2e9939981bb4fd3280af80e359ea1e1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664777"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737738"
 ---
 # <a name="create-a-vpn-connection-between-azure-and-aws-using-managed-solutions"></a>使用托管解决方案在 Azure 和 AWS 之间创建 VPN 连接
 
@@ -42,6 +42,8 @@ ms.locfileid: "98664777"
 
 本文使用以下示例值和设置：
 
+* **网关名称：** vpn-aws
+* **区域：** 美国东部
 * **网关类型：** VPN
 * **VPN 类型：** 基于路由
 * **SKU：** VpnGw1
@@ -173,15 +175,13 @@ ms.locfileid: "98664777"
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-tunnels.png" alt-text="Azure 连接状态":::
 
-1. 查看 AWS 连接。
+1. 查看 AWS 连接。 在此示例中，可以看到现在已建立连接。
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-tunnels.png" alt-text="AWS 连接状态":::
 
-现在已建立连接。
+## <a name="to-test-connections"></a>测试连接
 
-## <a name="test-connections"></a>测试连接
-
-1. 向 AWS 上的 VPC 添加 Internet 网关。 Internet 网关是 Amazon VPN 与 Internet 之间的逻辑连接。 此资源可让你通过 Internet 从 AWS 公共 IP 进行连接。 VPN 连接不需要此资源。 我们仅用于测试。
+1. 向 AWS 上的 VPC 添加 **internet 网关** 。 Internet 网关是 Amazon VPN 与 Internet 之间的逻辑连接。 此资源可让你通过 Internet 从 AWS 公共 IP 进行连接。 VPN 连接不需要此资源。 我们仅用于测试。
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/create-igw.png" alt-text="创建 Internet 网关":::
 
@@ -189,11 +189,11 @@ ms.locfileid: "98664777"
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/attach-igw.png" alt-text="将 Internet 网关附加到 VPC":::
 
-1. 选择 VPC 并 **连接 Internet 网关**。
+1. 选择 VPC 并 **连接 internet 网关**。
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/attach-igw-2.png" alt-text="连接网关":::
 
-1. 创建路由，以允许连接到 **0.0.0.0/0** (internet) 通过 Internet 网关。
+1. 创建路由，以允许连接到 **0.0.0.0/0** (internet) 通过 internet 网关。
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/allow-internet-igw.png" alt-text="通过网关配置路由":::
 
@@ -201,11 +201,11 @@ ms.locfileid: "98664777"
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-effective-routes.png" alt-text="检查有效路由":::
 
-1. 从 Azure 上的 Linux VM，环境类似于以下示例。
+1. 可从 Azure 上的 Linux VM 进行测试。 结果将显示为类似于下面的示例。
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-overview.png" alt-text="Linux VM 的 Azure 概述":::
 
-1. 从 AWS 上的 Linux VM，环境类似于以下示例。
+1. 还可以从 AWS 上的 Linux VM 进行测试。 结果将显示为类似于下面的示例。
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-overview.png" alt-text="Linux VM 的 AWS 概述":::
 

@@ -4,12 +4,12 @@ description: 查找有关使用 Azure 备份在 Azure VM 上备份 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7518fc49f7d6d728bd8faa0de4cf0edc1c6d5831
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 56dcf29a5c703a72fd137a5f1bf129f568a03b4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734107"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735803"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
 
@@ -68,7 +68,7 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>成功的备份作业是否会创建警报？
 
-不是。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果希望在作业成功的情况下也收到警报，可以[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
+否。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果希望在作业成功的情况下也收到警报，可以[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>“备份作业”菜单中是否会显示计划的备份作业？
 
@@ -108,8 +108,8 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 ## <a name="does-azure-backup-perform-a-checksum-operation-on-the-data-stream"></a>Azure 备份是否对数据流执行校验和操作？
 
-对数据流执行校验和操作。 但这并不会与 [SQL 校验和](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)混淆。
-Azure 工作负荷备份计算数据流上的校验和，并在备份操作过程中将其显式存储。 然后，在还原操作过程中，将此校验和流视为引用并交叉验证数据流的校验和，以确保数据保持一致。
+我们的确对数据流执行校验和操作。 但这并不会与 [SQL 校验和](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)混淆。
+Azure 工作负载备份对数据流计算校验和，并在备份操作过程中将其显式存储。 然后，在还原操作过程中，将此校验和流视为引用并与数据流的校验和进行交叉验证，以确保数据保持一致。
 
 ## <a name="next-steps"></a>后续步骤
 

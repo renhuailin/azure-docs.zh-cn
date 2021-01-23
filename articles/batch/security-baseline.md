@@ -1,26 +1,26 @@
 ---
-title: 适用于 Batch 的 Azure 安全基线
-description: 批处理安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
+title: Batch 的 Azure 安全基线
+description: Batch 安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: batch
 ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c27ef1af3e439b22f00f9247b5270118bbe9ca89
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3678ead9f3e1ba2556fde3c2fbe30df4e7dc2225
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197704"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737229"
 ---
-# <a name="azure-security-baseline-for-batch"></a>适用于 Batch 的 Azure 安全基线
+# <a name="azure-security-baseline-for-batch"></a>Batch 的 Azure 安全基线
 
 此安全基线将 [Azure 安全基准版本 1.0](../security/benchmarks/overview-v1.md) 中的指南应用于 Batch。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。
-内容由 Azure 安全基准定义的 **安全控制** 和适用于 Batch 的相关指南进行分组。 排除了不适用于 Batch 的 **控件**。
+内容按“安全控制”分组，这些控制由适用于 Batch 的 Azure 安全基准和相关指南定义。 排除了不适用于 Batch 的控制。
 
  
-若要查看 Batch 如何完全映射到 Azure 安全基准，请参阅 [完整的批处理安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+若要查看 Batch 到 Azure 安全基准的完整映射，请参阅[完整的 Batch 安全基准映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="network-security"></a>网络安全
 
@@ -28,9 +28,9 @@ ms.locfileid: "98197704"
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
-**指南**：在虚拟网络中部署 Azure Batch 池 (s) 。 若要允许池计算节点安全地与其他虚拟机或本地网络进行通信，可以在 Azure 虚拟网络的子网中预配该池。 此外，在虚拟网络中部署池可以控制用于保护各个节点的网络接口 (NIC) 和子网的网络安全组 (NSG)。 请将 NSG 配置为仅允许来自 Internet 上的受信任 IP/位置的流量。
+**指导**：在虚拟网络中部署 Azure Batch 池。 若要允许池计算节点安全地与其他虚拟机或本地网络进行通信，可以在 Azure 虚拟网络的子网中预配该池。 此外，在虚拟网络中部署池可以控制用于保护各个节点的网络接口 (NIC) 和子网的网络安全组 (NSG)。 请将 NSG 配置为仅允许来自 Internet 上的受信任 IP/位置的流量。
 
-如果适用，请使用 Azure Private Link 禁用公共网络访问，通过专用终结点连接到 Azure Batch 帐户。 Azure 专用链接服务是安全的，仅接受来自经过身份验证和授权的专用终结点的连接。 你还可以通过为批处理池中的计算节点禁用公开的 RDP/SSH 终结点，从而限制连接性和可发现性。
+如果适用，请使用 Azure 专用链接禁用公用网络访问，以通过专用终结点连接到 Azure Batch 帐户。 Azure 专用链接服务是受保护的，并且仅接受来自经过身份验证和授权的专用终结点的连接。 还可以通过对 Batch 池中的计算节点禁用公开的 RDP/SSH 终结点来额外限制连接性和可发现性。
 
 - [如何在虚拟网络中创建 Azure Batch 池](batch-virtual-network.md)
 
@@ -62,9 +62,9 @@ ms.locfileid: "98197704"
 
 **指导**：在虚拟网络上启用 Azure DDoS（分布式拒绝服务）标准保护，防止 Azure Batch 池受到 DDoS 攻击。 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。
 
-- [如何配置 DDoS 防护](/azure/virtual-network/manage-ddos-protection)
+- [如何配置 DDoS 防护](../ddos-protection/manage-ddos-protection.md)
 
-- [了解 Azure 安全中心集成的威胁情报](/azure/security-center/security-center-alerts-service-layer)
+- [了解 Azure 安全中心集成的威胁情报](../security-center/azure-defender.md)
 
 **Azure 安全中心监视**：是
 
@@ -86,7 +86,7 @@ ms.locfileid: "98197704"
 
 如果不需要使用基于有效负载检查的入侵检测和/或防护，则可以使用包含威胁情报功能的 Azure 防火墙。 使用基于 Azure 防火墙威胁情报的筛选功能，可以发出警报并拒绝进出已知的恶意 IP 地址和域的流量。 IP 地址和域源自 Microsoft 威胁智能源。
 
-在 Azure Batch 池节点所在的虚拟网络中部署采用公共 IP 地址的 Azure 防火墙。 在 Internet 上的可信位置与各个池节点的专用 IP 地址之间配置网络地址转换 (NAT) 规则。 在 Azure 防火墙的“威胁情报”下，将“发出警报并拒绝”配置为发出警报并阻止进出已知的恶意 IP 地址和域的流量。 IP 地址和域来源于 Microsoft 威胁智能源，只包含最高置信度记录。 
+在 Azure Batch 池节点所在的虚拟网络中部署采用公共 IP 地址的 Azure 防火墙。 在 Internet 上的可信位置与各个池节点的专用 IP 地址之间配置网络地址转换 (NAT) 规则。 在 Azure 防火墙的“威胁情报”下，将“发出警报并拒绝”配置为发出警报并阻止进出已知的恶意 IP 地址和域的流量。 IP 地址和域来自 Microsoft 威胁情报源，只包含置信度最高的记录。 
 
 - [如何在虚拟网络中创建 Azure Batch 池](batch-virtual-network.md)
 
@@ -102,7 +102,7 @@ ms.locfileid: "98197704"
 
 **指导**：在与 Azure Batch 池关联的网络安全组或 Azure 防火墙中使用虚拟网络服务标记来定义网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
-- [了解和使用服务标记](../virtual-network/service-tags-overview.md)
+- [了解并使用服务标记](../virtual-network/service-tags-overview.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -110,7 +110,7 @@ ms.locfileid: "98197704"
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
-**指导**：使用 Azure Policy 为与 Azure Batch 池关联的网络资源定义和实施标准安全配置。 使用 "Microsoft.Batch" 和 "Microsoft 网络" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制执行 Azure Batch 池的网络配置。
+**指导**：使用 Azure Policy 为与 Azure Batch 池关联的网络资源定义和实施标准安全配置。 在“Microsoft.Batch”和“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施 Azure Batch 池的网络配置。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -126,7 +126,7 @@ ms.locfileid: "98197704"
 
 可以使用 Azure PowerShell 或 Azure CLI 基于其标记对资源进行查找或执行操作。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 - [如何创建虚拟网络](../virtual-network/quick-create-portal.md)
 
@@ -140,7 +140,7 @@ ms.locfileid: "98197704"
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure Batch 池相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view) 
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
 
 - [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -156,7 +156,7 @@ ms.locfileid: "98197704"
 
 **指导**：将 Azure Batch 帐户加入 Azure Monitor，以聚合群集设备生成的安全数据。 利用自定义查询来检测和应对环境中的威胁。  对于 Azure Batch 资源级别的监视，请使用 Batch API 来监视或查询资源（包括作业、任务、节点和池）的状态。
 
-- [如何将 Azure Batch 帐户集成到 Azure Monitor](batch-diagnostics.md)
+- [如何将 Azure Batch 帐户加入 Azure Monitor](batch-diagnostics.md)
 
 **Azure 安全中心监视**：是
 
@@ -170,13 +170,13 @@ ms.locfileid: "98197704"
 
 - [如何配置 Azure Batch 帐户级别的监视和日志记录](monitoring-overview.md)
 
-- [了解批处理资源级监视](monitoring-overview.md#batch-resource-monitoring)
+- [了解 Batch 资源级别的监视](monitoring-overview.md#batch-resource-monitoring)
 
 **Azure 安全中心监视**：是
 
 **责任**：客户
 
-#### <a name="azure-policy-built-in-definitions"></a>Azure 策略内置定义
+#### <a name="azure-policy-built-in-definitions"></a>Azure Policy 内置定义
 
 [!INCLUDE [microsoft.batch-2-3](../../includes/policy/standards/asb/rp-controls/microsoft.batch-2-3.md)]
 
@@ -188,7 +188,7 @@ ms.locfileid: "98197704"
 
 - [如何从 Azure Batch 帐户收集诊断日志](batch-diagnostics.md#batch-diagnostics)
 
-- [如何远程连接到 Azure Batch 池节点](/azure/batch/batch-api-basics#error-handling)
+- [如何远程连接到 Azure Batch 池节点](./batch-service-workflow-features.md#basic-workflow)
 
 **Azure 安全中心监视**：是
 
@@ -196,11 +196,11 @@ ms.locfileid: "98197704"
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
-**指导**：将 Azure Batch 帐户加入 Azure Monitor。 确保所用 Azure Log Analytics 工作区的日志保留期已根据组织的符合性法规设置
+**指导**：将 Azure Batch 帐户加入 Azure Monitor。 确保根据组织的合规性规章为使用的 Azure Log Analytics 工作区设置日志保留期
 
-- [如何配置 Azure Batch 监视和日志记录](monitoring-overview.md)
+- [如何配置 Azure Batch 的监视和日志记录功能](monitoring-overview.md)
 
-- [如何配置 Azure Log Analytics 工作区保持期](../azure-monitor/platform/manage-cost-storage.md)
+- [如何配置 Azure Log Analytics 工作区保留期](../azure-monitor/platform/manage-cost-storage.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -236,7 +236,7 @@ ms.locfileid: "98197704"
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：启用 DNS 查询日志记录
 
-**指南**：实现 DNS 日志记录的第三方解决方案。
+**指导**：实施用于 DNS 日志记录的第三方解决方案。
 
 **Azure 安全中心监视**：目前不可用
 
@@ -256,13 +256,13 @@ ms.locfileid: "98197704"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指导**：维护预配 Azure Batch 池期间创建的本地管理帐户以及创建的任何其他帐户的记录。 此外，如果使用 Azure Active Directory 集成，Azure AD 具有必须显式分配的内置角色，因此可查询。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组的成员的帐户。
+**指导**：维护预配 Azure Batch 池期间创建的本地管理帐户以及创建的任何其他帐户的记录。 此外，如果使用了 Azure Active Directory 集成，必须显式分配 Azure AD 的内置角色，使之可供查询。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组的成员的帐户。
 
 此外，可以使用 Azure 安全中心标识和访问管理建议。
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [如何使用 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
@@ -274,7 +274,7 @@ ms.locfileid: "98197704"
 
 **指导**：预配 Azure Batch 池时，可以选择创建本地计算机帐户。 没有要更改的默认密码，但可指定不同的密码，分别用于访问安全外壳 (SSH) 和远程桌面协议 (RDP)。 配置 Azure Batch 池之后，可以通过 Azure 门户或 Azure 资源管理器 API 为各个节点生成随机用户。
 
-- [如何将用户添加到特定计算节点](/rest/api/batchservice/computenode/adduser)
+- [如何向特定计算节点添加用户](/rest/api/batchservice/computenode/adduser)
 
 **Azure 安全中心监视**：不适用
 
@@ -286,7 +286,7 @@ ms.locfileid: "98197704"
 
 此外，可以使用 Azure 安全中心标识和访问管理建议。
 
-- [如何对批处理应用程序进行身份验证 Azure Active Directory](batch-aad-auth.md)
+- [如何通过 Azure Active Directory 对 Batch 应用程序进行验证](batch-aad-auth.md)
 
 - [如何使用 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
@@ -296,7 +296,7 @@ ms.locfileid: "98197704"
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
-**指导**：将 Azure Batch 应用程序身份验证与 Azure Active Directory 集成。 启用 Azure AD 多重身份验证，并遵循 Azure 安全中心的标识和访问管理建议。
+**指导**：将 Azure Batch 应用程序身份验证与 Azure Active Directory 集成。 启用 Azure AD 多重身份验证，并遵循 Azure 安全中心标识和访问管理建议。
 
  
 
@@ -310,7 +310,7 @@ ms.locfileid: "98197704"
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用由 Azure 管理的安全工作站执行管理任务
 
-**指南**：通过配置为登录和配置 Azure Batch 资源的多重身份验证，使用 paw (特权访问工作站) 。
+**指导**：使用配置了多重身份验证的 PAW（特权访问工作站）来登录和配置 Azure Batch 资源。
 
 - [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
@@ -322,9 +322,9 @@ ms.locfileid: "98197704"
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指南**：如果你已使用 Azure Active Directory 的 Azure Batch 应用程序集成了身份验证，则在环境中发生可疑或不安全活动时，请使用 Azure Active Directory 安全报告生成日志和警报。 使用 Azure 安全中心监视标识和访问活动。
+**指导**：如果已将 Azure Batch 应用程序身份验证与 Azure Active Directory 集成，则当环境中出现可疑或不安全的活动时，请使用 Azure Active Directory 安全报告来生成日志和警报。 使用 Azure 安全中心监视标识和访问活动。
 
-- [如何确定标记为存在风险活动的 Azure AD 用户](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何确定标记为存在风险活动的 Azure AD 用户](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何在 Azure 安全中心监视用户的标识和访问活动](../security-center/security-center-identity-access.md)
 
@@ -344,11 +344,11 @@ ms.locfileid: "98197704"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**：使用 Azure Active Directory 作为中心身份验证和授权系统，并将 Azure Batch 应用程序的身份验证与 Azure AD 集成。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
+**指导**：使用 Azure Active Directory 作为中心身份验证和授权系统，并将 Azure Batch 应用程序身份验证与 Azure AD 集成。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
 - [如何创建和配置 Azure AD 实例](../active-directory-domain-services/tutorial-create-instance.md)
 
-- [如何对批处理应用程序进行身份验证 Azure AD](batch-aad-auth.md)
+- [如何通过 Azure AD 对 Batch 应用程序进行验证](batch-aad-auth.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -378,7 +378,7 @@ ms.locfileid: "98197704"
 
 **指南**：使用 Azure Active Directory 风险检测和标识保护功能配置对检测到的与用户标识相关的可疑操作的自动响应。 此外，可将数据引入 Azure Sentinel 以做进一步调查。
 
-- [如何查看 Azure AD 风险登录](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -406,7 +406,7 @@ ms.locfileid: "98197704"
 
 **指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -418,7 +418,7 @@ ms.locfileid: "98197704"
 
 - [如何在虚拟网络中创建 Azure Batch 池](batch-virtual-network.md)
 
-- [如何保护 Azure 存储帐户](/azure/storage/common/storage-security-guide)
+- [如何保护 Azure 存储帐户](../storage/blobs/security-recommendations.md)
 
 **Azure 安全中心监视**：是
 
@@ -434,7 +434,7 @@ ms.locfileid: "98197704"
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-- [如何保护 Azure 存储帐户](/azure/storage/common/storage-security-guide)
+- [如何保护 Azure 存储帐户](../storage/blobs/security-recommendations.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -446,7 +446,7 @@ ms.locfileid: "98197704"
 
 确保访问包含你的 Azure Batch 数据的存储帐户时要求使用 HTTPS。
 
-- [了解传输中的 Azure 存储帐户加密](../storage/blobs/security-recommendations.md)
+- [了解 Azure 存储帐户的传输中加密](../storage/blobs/security-recommendations.md)
 
 **Azure 安全中心监视**：是
 
@@ -462,7 +462,7 @@ ms.locfileid: "98197704"
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-- [如何保护 Azure 存储帐户](/azure/storage/common/storage-security-guide)
+- [如何保护 Azure 存储帐户](../storage/blobs/security-recommendations.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -498,11 +498,11 @@ ms.locfileid: "98197704"
 
 可以使用 Azure 磁盘加密来帮助保护数据，以满足组织的安全性和符合性承诺。 写入到现有磁盘的所有托管磁盘、快照、映像和数据都将通过平台管理的密钥自动进行静态加密。
 
-- [如何管理 Azure 存储帐户的加密密钥](/azure/storage/common/storage-encryption-keys-portal)
+- [如何管理 Azure 存储帐户的加密密钥](../storage/common/customer-managed-keys-configure-key-vault.md)
 
-- [如何配置客户管理的加密密钥](/azure/storage/common/storage-encryption-keys-portal)
+- [如何配置客户管理的加密密钥](../storage/common/customer-managed-keys-configure-key-vault.md)
 
-- [如何创建启用了磁盘加密的池](disk-encryption.md)
+- [如何在启用磁盘加密的情况下创建池](disk-encryption.md)
 
 **Azure 安全中心监视**：是
 
@@ -516,7 +516,7 @@ ms.locfileid: "98197704"
 
 - [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
-- [如何对 Azure 存储帐户启用其他日志记录/审核](../storage/common/storage-monitor-storage-account.md)
+- [如何为 Azure 存储帐户启用其他日志记录/审核](../storage/common/storage-monitor-storage-account.md)
 
 **Azure 安全中心监视**：是
 
@@ -524,7 +524,7 @@ ms.locfileid: "98197704"
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-*有关详细信息，请参阅 [Azure 安全基准：漏洞管理](../security/benchmarks/security-control-vulnerability-management.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 漏洞管理。](../security/benchmarks/security-control-vulnerability-management.md)
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
@@ -538,7 +538,7 @@ ms.locfileid: "98197704"
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
-**指南**： Microsoft 维护和更新基本 Azure Batch 池节点映像。 确保 Azure Batch 池节点的操作系统在群集生存期内保持修补，这可能需要启用自动更新、监视节点或定期执行重启。
+**指南**： Microsoft 维护和更新基本 Azure Batch 池节点映像。 确保 Azure Batch 池节点操作系统在群集生存期内始终得到修补，这可能需要启用自动更新、对节点进行监视或执行定期重启。
 
 **Azure 安全中心监视**：是
 
@@ -580,7 +580,7 @@ ms.locfileid: "98197704"
 
 - [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -592,7 +592,7 @@ ms.locfileid: "98197704"
 
 **指导**：将标记应用到 Azure资源，以便有条理地将元数据组织成某种分类。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -602,11 +602,11 @@ ms.locfileid: "98197704"
 
 **指导**：在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -701,7 +701,7 @@ ms.locfileid: "98197704"
 
 **指导**：使用“Microsoft.Batch”命名空间中的 Azure Policy 别名创建自定义策略，以审核或强制实施 Azure Batch 帐户和池的配置。
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -747,9 +747,9 @@ ms.locfileid: "98197704"
 
 **指南**：如果将自定义 Azure 策略定义用于 Azure Batch 帐户、池或相关资源，请使用 Azure Repos 安全地存储和管理你的代码。
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos 文档](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure 安全中心监视**：不适用
 
@@ -788,10 +788,10 @@ ms.locfileid: "98197704"
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
 **指导**：使用“Microsoft.Batch”命名空间中的 Azure Policy 别名创建自定义策略，以审核或强制实施 Azure Batch 实例的配置。 还可以使用专为 Azure Batch 或专为 Azure Batch 使用的资源创建的任何内置策略，例如：
-- 子网应与网络安全组关联-存储帐户应使用虚拟网络服务终结点
+- 子网应与网络安全组关联 - 存储帐户应使用虚拟网络服务终结点
 - 应启用 Batch 帐户中的诊断日志
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -872,7 +872,7 @@ ms.locfileid: "98197704"
 
 **指导**：将 Azure 存储帐户用于 Azure Batch 池数据存储时，请选择适当的冗余选项（LRS、ZRS、GRS、RA-GRS）。 
 
-- [如何配置 Azure 存储帐户的存储冗余](../storage/common/storage-redundancy.md)
+- [如何为 Azure 存储帐户配置存储冗余](../storage/common/storage-redundancy.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -882,9 +882,9 @@ ms.locfileid: "98197704"
 
 **指导**：将 Azure 存储帐户用于 Azure Batch 池数据存储时，请选择适当的冗余选项（LRS、ZRS、GRS、RA-GRS）。 如果在任何 Azure Batch 部署环节中使用 Azure Key Vault，请确保备份你的密钥。
 
-- [如何配置 Azure 存储帐户的存储冗余](../storage/common/storage-redundancy.md)
+- [如何为 Azure 存储帐户配置存储冗余](../storage/common/storage-redundancy.md)
 
-- [如何在 Azure 中备份密钥保管库密钥](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [如何在 Azure 中备份密钥保管库密钥](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure 安全中心监视**：是
 
@@ -894,9 +894,9 @@ ms.locfileid: "98197704"
 
 **指导**：如果你要自己为 Azure 存储帐户或与 Azure Batch 实现相关的任何其他资源管理密钥，请定期对已备份的密钥进行测试性还原。
 
-- [如何在 Azure 中备份密钥保管库密钥](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [如何在 Azure 中备份密钥保管库密钥](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
-- [如何使用 PowerShell 还原客户托管的密钥](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [如何使用 PowerShell 还原客户管理的密钥](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure 安全中心监视**：不适用
 
@@ -906,7 +906,7 @@ ms.locfileid: "98197704"
 
 **指导**：如果使用 Azure Key Vault 保存与 Azure Batch 池存储帐户相关的任何密钥，请在 Azure Key Vault 中启用“软删除”，以防止密钥被意外删除或恶意删除。
 
-- [如何在 Azure Key Vault 中启用软删除](/azure/key-vault/key-vault-soft-delete-powershell)
+- [如何在 Azure Key Vault 中启用“软删除”](../key-vault/general/key-vault-recovery.md)
 
 **Azure 安全中心监视**：是
 
@@ -982,7 +982,7 @@ ms.locfileid: "98197704"
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-**指南**： [请遵循 Microsoft 交往规则，以确保你的渗透测试不违反 Microsoft 策略](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.)
+**指导**：[请遵循 Microsoft 互动规则，确保你的渗透测试不违反 Microsoft 政策](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.)
 
 你可以在以下位置找到有关 Microsoft 管理的云基础结构、服务和应用程序的 Microsoft 策略和执行情况的详细信息。 
 
@@ -994,5 +994,5 @@ ms.locfileid: "98197704"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅 [Azure 安全基准 V2 概述](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 参阅 [Azure 安全基准 V2 概述](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

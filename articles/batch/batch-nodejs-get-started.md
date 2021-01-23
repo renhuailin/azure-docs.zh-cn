@@ -3,12 +3,12 @@ title: 使用用于 Node.js 的 Azure Batch 客户端库
 description: 了解 Azure Batch 的基本概念，并使用 Node.js 构建简单的解决方案。
 ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: 8d34d5bbb302e3781aabdd697de11d3d492b879a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 36a127a20014e87554f0d3e3927b05679b6f72f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106693"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737280"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>用于 Node.js 的 Batch SDK 入门
 
@@ -38,7 +38,7 @@ node.js 客户端通过一个准备任务（稍后详细介绍）和一系列其
 
 > [!TIP]
 > 指定链接中的 Node.js 客户端不包含可部署为 Azure Function App 的特定代码。 如需创建该应用的说明，可参阅以下链接。
-> - [创建 Function App](../azure-functions/functions-create-first-azure-function.md)
+> - [创建 Function App](../azure-functions/functions-get-started.md)
 > - [创建计时器触发器函数](../azure-functions/functions-bindings-timer.md)
 
 ## <a name="build-the-application"></a>构建应用程序

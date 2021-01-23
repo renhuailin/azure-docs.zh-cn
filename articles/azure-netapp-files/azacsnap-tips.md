@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 86d7b1a6d361ebbc0d8419d184f9a11d390a37f1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 08edd86fd19e7698a791e411f42a2a89084a91f7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803181"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737127"
 ---
 # <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool-preview"></a>有关使用 Azure 应用程序一致性快照工具的提示和技巧 (预览版) 
 
@@ -27,7 +27,7 @@ ms.locfileid: "97803181"
 
 ## <a name="limit-service-principal-permissions"></a>限制服务主体权限
 
-可能需要限制 AzAcSnap 服务主体的作用域。  查看 [AZURE RBAC 文档](https://docs.microsoft.com/azure/role-based-access-control/) ，详细了解 azure 资源的精细访问管理。  
+可能需要限制 AzAcSnap 服务主体的作用域。  查看 [AZURE RBAC 文档](../role-based-access-control/index.yml) ，详细了解 azure 资源的精细访问管理。  
 
 下面是使用 AzAcSnap 所需的最少所需操作所需的角色定义的示例。
 

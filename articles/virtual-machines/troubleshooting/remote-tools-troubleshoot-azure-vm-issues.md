@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 0681346252f840173d5cd7d4cfe5ef40076f0068
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ac785d43a71039ce52f0c8cd4315149a11e91cfc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912591"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737347"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用远程工具排查 Azure VM 问题
 
@@ -125,21 +125,21 @@ Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $
 >[!NOTE]
 >必须打开 TCP 端口 5986 (HTTPS)，以便能够使用此选项。
 >
->对于 Azure 资源管理器 Vm，必须在网络安全组 (NSG) 上打开端口5986。 有关详细信息，请参阅“安全组”。 
+>对于 Azure 资源管理器 VM，必须在网络安全组 (NSG) 上打开端口 5986。 有关详细信息，请参阅“安全组”。 
 >
->对于 RDFE VM，必须有一个配备专用端口 (5986) 和公共端口的终结点。 然后，还必须在 NSG 上打开该面向公众的端口。
+>对于 RDFE VM，必须有一个配备专用端口 (5986) 和公共端口的终结点。 然后，还必须在 NSG 中打开该公共端口。
 
 ### <a name="set-up-the-client-computer"></a>设置客户端计算机
 
 若要使用 PowerShell 远程连接到 VM，首先需要设置客户端计算机，以允许建立连接。 为此，请相应地运行以下命令，将 VM 添加到 PowerShell 信任的主机列表。
 
-将一个 VM 添加到受信任的主机列表：
+若要将一个 VM 添加到受信任主机列表，请运行：
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName>
 ```
 
-将多个 Vm 添加到受信任的主机列表：
+若要将多个 VM 添加到受信任主机列表，请运行：
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName1>,<ComputerName2>
@@ -153,7 +153,7 @@ Set-Item wsman:\localhost\Client\TrustedHosts -value *
 
 ### <a name="enable-remoteps-on-the-vm"></a>在 VM 上启用 RemotePS
 
-对于使用经典部署模型创建的 Vm，请使用自定义脚本扩展运行以下脚本：
+对于使用经典部署模型创建的 VM，请使用自定义脚本扩展来运行以下脚本：
 
 ```powershell
 Enable-PSRemoting -Force
@@ -163,15 +163,15 @@ $command = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostn
 cmd.exe /C $command
 ```
 
-对于 Azure 资源管理器 Vm，请使用门户中的 "运行命令" 运行 EnableRemotePS 脚本：
+对于 Azure 资源管理器 VM，请从门户中使用运行命令来运行 EnableRemotePS 脚本：
 
 ![运行命令](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
 
 ### <a name="connect-to-the-vm"></a>连接到 VM
 
-根据客户端计算机位置运行以下命令：
+根据客户端计算机的位置运行以下命令：
 
-* 在虚拟网络或部署外部
+* 在虚拟网络或部署之外
 
   * 对于使用经典部署模型创建的 VM，请运行以下命令：
 
@@ -180,14 +180,14 @@ cmd.exe /C $command
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * 对于 Azure 资源管理器 VM，请首先将 DNS 名称添加到公共 IP 地址。 有关详细步骤，请参阅[在 Azure 门户中创建 Windows VM 的完全限定域名](../create-fqdn.md)。 然后，运行以下命令：
+  * 对于 Azure 资源管理器 VM，请先为公共 IP 地址添加 DNS 名称。 有关详细步骤，请参阅[在 Azure 门户中创建 Windows VM 的完全限定域名](../create-fqdn.md)。 然后，运行以下命令：
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName "<<DNSname.DataCenter.cloudapp.azure.com>>" -port "5986" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-* 在虚拟网络或部署中运行以下命令：
+* 在虚拟网络或部署之内，请运行以下命令：
   
   ```powershell
   $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -197,7 +197,7 @@ cmd.exe /C $command
 >[!NOTE] 
 >如果设置 SkipCaCheck 标志，则启动会话时无需将证书导入 VM。
 
-你还可以使用 Invoke-Command cmdlet 远程在 VM 上运行脚本。
+也可以使用 Invoke-Command cmdlet 在 VM 上远程运行脚本。
 
 ```powershell
 Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
@@ -251,7 +251,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Enter-PSSession cmdlet 的详细信息，请参阅 [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1&preserve-view=true)。
+- 有关 Enter-PSSession cmdlet 的详细信息，请参阅 [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession)。
 - 若要详细了解使用经典部署模型完成的适用于 Windows 的自定义脚本扩展，请参阅[适用于 Windows 的自定义脚本扩展](../extensions/custom-script-windows.md)。
 - PsExec 包含在 [PSTools Suite](https://download.sysinternals.com/files/PSTools.zip) 中。
 - 有关 PSTools Suite 的详细信息，请参阅 [PSTools](/sysinternals/downloads/pstools)。

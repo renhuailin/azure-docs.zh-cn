@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 990c396c859477c83e0ef421659a299920ee0c35
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 44d78d9a47f86520a3a4778806c4ddc0f96eec94
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209128"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737891"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>如何将 Azure 混合权益适用于 Linux 虚拟机
 
@@ -177,7 +177,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 若要为 SLES Vm 使用 Azure 混合权益，以及从 SLES PAYG 迁移到 BYOS 或从 SLES BYOS 迁移到 PAYG 的信息，请参阅 [SUSE Linux Enterprise and Azure 混合权益](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/)。 
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 *问：我能否将许可证类型用于 `RHEL_BYOS` SLES 映像，反之亦然？*
 
 答：不可以。 尝试输入不正确地匹配 VM 上运行的分发的许可证类型将不会更新任何计费元数据。 但如果你意外地输入了错误的许可证类型，则再次将 VM 更新为正确的许可证类型将仍然会启用此权益。
@@ -222,9 +222,9 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 ## <a name="common-problems"></a>常见问题
 本部分列出了你可能会遇到的常见问题和缓解措施。
 
-| 错误 | 缓解措施 |
+| 错误 | 缓解操作 |
 | ----- | ---------- |
 | "该操作无法完成，因为我们的记录显示你尚未在 Azure 订阅上成功启用 Red Hat 云访问 ..." | 若要将此权益用于 RHEL Vm，必须先 [使用 Red Hat 云访问权限注册 Azure 订阅](https://access.redhat.com/management/cloud)。
 
 ## <a name="next-steps"></a>后续步骤
-* [了解如何使用 Azure 混合权益创建和更新 Vm，并 (RHEL_BYOS，SLES_BYOS) Azure CLI](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)
+* [了解如何使用 Azure 混合权益创建和更新 Vm，并 (RHEL_BYOS，SLES_BYOS) Azure CLI](/cli/azure/vm)

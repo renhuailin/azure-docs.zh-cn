@@ -5,19 +5,19 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 85035ff894127df4e9eb8334702fd9546d7a63c3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9d742606435f62d48446bb8ad56ece7a31b76e47
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598702"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736215"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>规划和管理 Azure App Service 的成本
 
 <!-- Check out the following published examples:
-- [https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs](https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs)
-- [https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs](https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs)
-- [https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost](https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost)
+- [https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs](../cosmos-db/plan-manage-costs.md)
+- [https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs](../storage/common/storage-plan-manage-costs.md)
+- [https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost](../machine-learning/concept-plan-manage-cost.md)
 -->
 
 <!-- Note for Azure service writer: Links to Cost Management articles are full URLS with the ?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn campaign suffix. Leave those URLs intact. They're used to measure traffic to Cost Management articles.
@@ -25,7 +25,7 @@ ms.locfileid: "98598702"
 
 <!-- Note for Azure service writer: Modify the following for your service. -->
 
-本文介绍了如何为 Azure App Service 规划和管理成本。 首先，使用 Azure 定价计算器来帮助规划应用服务成本，然后再添加任何服务资源来估算成本。 接下来，当你添加 Azure 资源时，请查看预估成本。 开始使用应用服务资源后，使用 [成本管理](https://docs.microsoft.com/azure/cost-management-billing/?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 功能来设置预算和监视成本。 你还可以查看预测成本并确定支出趋势，以确定你可能想要采取的措施。Azure App Service 的成本仅是 Azure 帐单中每月费用的一部分。 尽管本文介绍了如何规划和管理应用服务的成本，但你需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。
+本文介绍了如何为 Azure App Service 规划和管理成本。 首先，使用 Azure 定价计算器来帮助规划应用服务成本，然后再添加任何服务资源来估算成本。 接下来，当你添加 Azure 资源时，请查看预估成本。 开始使用应用服务资源后，使用 [成本管理](../cost-management-billing/index.yml?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 功能来设置预算和监视成本。 你还可以查看预测成本并确定支出趋势，以确定你可能想要采取的措施。Azure App Service 的成本仅是 Azure 帐单中每月费用的一部分。 尽管本文介绍了如何规划和管理应用服务的成本，但你需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。
 
 ## <a name="relevant-costs-for-app-service"></a>应用服务的相关成本
 
@@ -36,10 +36,10 @@ ms.locfileid: "98598702"
 根据你在应用服务中使用的功能，可能会创建以下经济资源的资源：
 
 - **应用服务计划**  承载应用服务应用程序所必需的。
-- **隔离层**  应用服务环境需要 [虚拟网络](/azure/virtual-network/) 。
-- **备份**  需要一个 [存储帐户](/azure/storage/) 才能进行备份。
-- **诊断日志**  你可以选择 [存储帐户](/azure/storage/) 作为日志记录选项，或与 [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)集成。
-- **应用服务证书**  在 Azure 中购买的证书必须在 [Azure Key Vault](/azure/key-vault/)维护。
+- **隔离层**  应用服务环境需要 [虚拟网络](../virtual-network/index.yml) 。
+- **备份**  需要一个 [存储帐户](../storage/index.yml) 才能进行备份。
+- **诊断日志**  你可以选择 [存储帐户](../storage/index.yml) 作为日志记录选项，或与 [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)集成。
+- **应用服务证书**  在 Azure 中购买的证书必须在 [Azure Key Vault](../key-vault/index.yml)维护。
 
 应用服务的其他成本资源 (参阅 [应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)) 详细信息：
 
@@ -155,7 +155,7 @@ ms.locfileid: "98598702"
 
 <!-- Note to Azure service writer: Modify the following as needed for your service. -->
 
-你可以创建 [预算](../cost-management/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 来管理成本，并创建 [警报](../cost-management/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) ，以自动通知利益干系人支出异常和超支风险的利益干系人。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。 
+你可以创建 [预算](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 来管理成本，并创建 [警报](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) ，以自动通知利益干系人支出异常和超支风险的利益干系人。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。 
 
 如果你希望在监视中出现更多粒度，则可以在 Azure 中创建针对特定资源或服务的筛选器。 筛选器可帮助确保不会意外地创建新的资源，从而降低额外的费用。 有关创建预算时可用的筛选器选项的详细信息，请参阅 [组和筛选选项](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
@@ -168,8 +168,8 @@ ms.locfileid: "98598702"
 - 了解有关如何使用 Azure 存储的详细信息。 请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
 - 了解 [如何通过 Azure 成本管理优化云投资](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 - 详细了解如何通过 [成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本。
-- 了解如何 [防止意外成本](../cost-management-billing/manage/getting-started.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
-- 采用 [成本管理](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引导式学习课程。
+- 了解如何 [防止意外成本](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 采用 [成本管理](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引导式学习课程。
 
 <!-- Insert links to other articles that might help users save and manage costs for you service here.
 

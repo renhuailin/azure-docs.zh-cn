@@ -3,12 +3,12 @@ title: Azure Service Fabric 中支持的群集版本
 description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中最新版本的链接。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: c2ea2b53649cf148a19df46835c8936345aa20e5
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 82b90d6b0acf5d83f9509abd9ee4b34cb74d1b48
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234335"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736778"
 ---
 # <a name="supported-service-fabric-versions"></a>支持的 Service Fabric 版本
 
@@ -39,7 +39,7 @@ ms.locfileid: "98234335"
   ###### <a name="supported-service-fabric-runtime-versions"></a>支持的 Service Fabric 运行时版本
    如果你不在下面列出的支持的 Service Fabric 版本中，请升级到这些版本中的一个，这些版本已经包含必要的更改，以防止群集中断。 **注意：** 7.2 的所有发行版本都包含必要的更改。
   
-  | OS | 群集中的当前 Service Fabric 运行时 | CU/修补程序版本  | 
+  | (OS) | 群集中的当前 Service Fabric 运行时 | CU/修补程序版本  | 
   | --- | --- |--- | 
   | Windows | 7.0. * | 7.0.478.9590 |
   | Windows | 7.1. * | 7.1.503.9590 |
@@ -56,17 +56,20 @@ ms.locfileid: "98234335"
  #### <a name="impact-if-not-upgraded-to-supported-versions"></a>如果未升级到受支持的版本则产生影响
   如果 Azure Service Fabric 群集 **使用 [开放网络功能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) for 容器的 "容器" 功能，而在大于6.3 的版本上运行** ，则不包含更改的功能可能会导致功能丢失或服务中断（如果未升级到2021的以下受支持版本之一 **）**。
  
-  - **对于运行版本高于6.3 的 Service Fabric 的群集**，该群集将保持不变，但对于容器群集的开放网络功能，将停止运行，这可能会导致工作负荷的服务中断。
+  - **对于运行版本高于6.3 的 Service Fabric 的群集**，该群集将保持不变。
 
  - **对于运行版本高于6.3 的 Service Fabric 的群集，并为 [容器使用开放网络功能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** ，群集可能变为不可用，并将停止运行，这可能会导致工作负荷的服务中断。
-  
+ 
+ -   **对于运行 [7.0 和7.0.466 之间的 Windows 版本的群集 () 包含的两个版本](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) ，并且 windows OS 已启用 windows 容器功能。注意： Linux 版本7.0.457、7.0.464 和7.0.465 不受影响**。
+    - **影响**：群集将停止运行，这可能会导致工作负荷的服务中断。
+       
 #### <a name="required-action"></a>所需的操作
 升级到下面列出的 Service Fabric 支持的版本，以防止与此更改相关的停机时间或功能丢失。 请确保群集至少运行这些版本，以防环境出现问题。 
  
  ###### <a name="supported-service-fabric-runtime-versions"></a>支持的 Service Fabric 运行时版本
  如果你不在下面列出的支持 Service Fabric 版本中，请升级到这些版本中的一个，这些版本已经包含必要的更改，以防止功能丢失。  **注意：** 7.2 的所有发行版本都包含必要的更改。
  
-  | OS | 群集中的当前 Service Fabric 运行时 | CU/修补程序版本  | 
+  | (OS) | 群集中的当前 Service Fabric 运行时 | CU/修补程序版本  | 
   | --- | --- |--- | 
   | Windows | 7.0. * | 7.0.478.9590 |
   | Windows | 7.1. * | 7.1.503.9590 |

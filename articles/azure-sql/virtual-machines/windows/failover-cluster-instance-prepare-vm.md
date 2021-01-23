@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b8d88167dac6b2d0b1ba2afc90c443fd80b9e46
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 10f01fd5943928eda1f1e4518f30c8e3ccf56b46
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223153"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737789"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>为 Azure Vm 上的 FCI (SQL Server 准备虚拟机) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "98223153"
 
 ## <a name="configure-vm-availability"></a>配置 VM 可用性 
 
-故障转移群集功能要求将虚拟机放置在 [可用性集](../../../virtual-machines/linux/tutorial-availability-sets.md) 或 [可用性区域](../../../availability-zones/az-overview.md#availability-zones)中。 如果选择 "可用性集"，则可以使用 [邻近的放置组](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) 来更近地定位 vm。 事实上，近程放置组是使用 Azure 共享磁盘的先决条件。 
+故障转移群集功能要求将虚拟机放置在 [可用性集](../../../virtual-machines/linux/tutorial-availability-sets.md) 或 [可用性区域](../../../availability-zones/az-overview.md#availability-zones)中。 如果选择 "可用性集"，则可以使用 [邻近的放置组](../../../virtual-machines/co-location.md#proximity-placement-groups) 来更近地定位 vm。 事实上，近程放置组是使用 Azure 共享磁盘的先决条件。 
 
 请仔细选择与预期群集配置匹配的 VM 可用性选项： 
 
@@ -111,7 +111,7 @@ Azure Marketplace 中的 SQL Server VM 映像将自动注册到 SQL IaaS 代理�
 
 此表详细说明了可能需要打开的端口，具体取决于你的 FCI 配置： 
 
-   | 目的 | Port | 注释
+   | 用途 | Port | 注释
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | SQL Server 的默认实例正常使用的端口。 如果使用了库中的某个映像，此端口会自动打开。 </br> </br> **使用者**：所有 FCI 配置。 |
    | 运行状况探测 | TCP 59999 | 任何打开的 TCP 端口。 将负载均衡器 [运行状况探测](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) 和群集配置为使用此端口。 </br> </br> **使用者**： FCI 和负载均衡器。 |

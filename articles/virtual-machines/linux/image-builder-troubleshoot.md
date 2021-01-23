@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73984694d764234e9e1ec11e6b189a9ad85d97a8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969970"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737398"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>排查 Azure 映像生成器服务问题
 
@@ -152,11 +152,11 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 当映像生成运行时，将创建日志并将其存储在存储帐户中。 创建映像模板项目时，Azure 映像生成器会在临时资源组中创建存储帐户。
 
-存储帐户名称使用以下模式： **IT_ \<ImageResourceGroupName\> _\<TemplateName\>_ \<GUID\> **
+存储帐户名称使用以下模式： **IT_ \<ImageResourceGroupName\> _\<TemplateName\>_ \<GUID\>**
 
 例如， *IT_aibmdi_helloImageTemplateLinux01*。
 
-可以通过选择**存储帐户**  >  **blob**来查看资源组中的自定义。  >  `packerlogs`  然后选择 " **目录 > 自定义日志**"。
+可以通过选择 **存储帐户**  >  **blob** 来查看资源组中的自定义。  >  `packerlogs`  然后选择 " **目录 > 自定义日志**"。
 
 
 ### <a name="understanding-the-customization-log"></a>了解自定义日志
@@ -194,7 +194,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
     PACKER OUT ==> azure-arm: Connected to SSH!
     ```
 
-4. 运行自定义阶段。 自定义运行时，可以通过查看自定义日志来识别它们。 搜索 * (遥测) *。
+4. 运行自定义阶段。 自定义运行时，可以通过查看自定义日志来识别它们。 搜索 *(遥测)*。
     ```text
     (telemetry) Starting provisioner windows-update
     (telemetry) ending windows-update
@@ -245,7 +245,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 #### <a name="solution"></a>解决方案
 
-查看日志以查找定制员失败。 搜索 * (遥测) *。 
+查看日志以查找定制员失败。 搜索 *(遥测)*。 
 
 例如：
 ```text
@@ -320,7 +320,7 @@ Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in dis
 
 #### <a name="cause"></a>原因
 
-图像生成器等待添加图像并将其复制到共享映像库 (SIG) 超时。 如果将图像注入到 SIG 中，则可以假定映像生成成功。 但是，整个进程失败，因为映像生成器正在等待共享映像库完成复制。 即使生成失败，也会继续复制。 可以通过检查分发 *runOutput*来获取映像版本的属性。
+图像生成器等待添加图像并将其复制到共享映像库 (SIG) 超时。 如果将图像注入到 SIG 中，则可以假定映像生成成功。 但是，整个进程失败，因为映像生成器正在等待共享映像库完成复制。 即使生成失败，也会继续复制。 可以通过检查分发 *runOutput* 来获取映像版本的属性。
 
 ```bash
 $runOutputName=<distributionRunOutput>
@@ -586,7 +586,7 @@ template name:  t_1556938436xxx
 
 如果用户未取消此生成，则 Azure DevOps 用户代理已将其取消。 由于 Azure DevOps 功能，最有可能的超时时间为1小时。 如果你使用的是专用项目和代理，则会收到60分钟的生成时间。 如果生成超过超时时间，DevOps 将取消正在运行的任务。
 
-有关 Azure DevOps 功能和限制的详细信息，请参阅 [Microsoft 托管的代理](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
+有关 Azure DevOps 功能和限制的详细信息，请参阅 [Microsoft 托管的代理](/azure/devops/pipelines/agents/hosted#capabilities-and-limitations)
  
 #### <a name="solution"></a>解决方案
 

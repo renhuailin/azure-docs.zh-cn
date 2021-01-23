@@ -4,12 +4,12 @@ description: '了解 Azure Database for PostgreSQL 具有长期保留 (预览版
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569481"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737566"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL 具有长期保留 (预览版的备份) 
 
@@ -31,7 +31,7 @@ Azure 备份和 Azure 数据库服务汇集了一个企业级备份解决方案�
 
 |支持  |详细信息  |
 |---------|---------|
-|支持的部署   |  [Azure Database for PostgreSQL - 单一服务器](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)     |
+|支持的部署   |  [Azure Database for PostgreSQL - 单一服务器](../postgresql/overview.md#azure-database-for-postgresql---single-server)     |
 |支持的 Azure 区域 |  美国东部、美国东部2、美国中部、美国中南部、美国西部、美国西部2、美国中部、巴西南部、加拿大中部、北欧、西欧、英国南部、英国西部、德国中西部、瑞士北部、瑞士西部、东亚、南部东亚、日本东部、日本西部、韩国中部、澳大利亚中部、澳大利亚中部、澳大利亚东部、澳大利亚中部、澳大利亚中部  |
 |支持的 Azure PostgreSQL 版本    |   9.5、9.6、10、11      |
 

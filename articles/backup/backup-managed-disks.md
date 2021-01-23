@@ -3,21 +3,21 @@ title: 备份 Azure 托管磁盘
 description: 了解如何从 Azure 门户备份 Azure 托管磁盘。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 2169e2f44e3ffb2c05c674d633efabed2c531878
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573116"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738146"
 ---
-# <a name="back-up-azure-managed-disks-in-preview"></a>在预览版中备份 Azure 托管磁盘 () 
+# <a name="back-up-azure-managed-disks-in-preview"></a>备份 Azure 托管磁盘（预览版）
 
 >[!IMPORTANT]
 >Azure 磁盘备份没有服务级别协议，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关区域可用性，请参阅 [支持矩阵](disk-backup-support-matrix.md)。
 >
 >[填写此窗体](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) 以便注册预览版。
 
-本文介绍如何从 Azure 门户备份 [Azure 托管磁盘](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) 。
+本文介绍如何从 Azure 门户备份 [Azure 托管磁盘](../virtual-machines/managed-disks-overview.md) 。
 
 本文介绍如何执行以下操作：
 
@@ -46,7 +46,7 @@ ms.locfileid: "98573116"
 
    ![启动：创建保管库](./media/backup-managed-disks/initiate-create-vault.png)
 
-1. 在 " **基本** 信息" 选项卡中，提供订阅、资源组、备份保管库名称、区域和备份存储冗余。 选择 " **查看 + 创建**" 继续。 了解有关 [创建备份保管库的](https://docs.microsoft.com/azure/backup/backup-vault-overview#create-a-backup-vault)详细信息。
+1. 在 " **基本** 信息" 选项卡中，提供订阅、资源组、备份保管库名称、区域和备份存储冗余。 选择 " **查看 + 创建**" 继续。 了解有关 [创建备份保管库的](./backup-vault-overview.md#create-a-backup-vault)详细信息。
 
    ![查看并创建保管库](./media/backup-managed-disks/review-and-create.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "98573116"
 
    ![选择备份计划频率](./media/backup-managed-disks/backup-schedule-frequency.png)
 
-   Azure 磁盘备份每天提供多次备份。 如果需要更频繁地进行备份，请选择 "每 **小时** " 备份频率，并以每隔4、6、8或12小时的间隔进行备份。 根据所选的 **时间** 间隔，计划备份。 例如，如果 **每隔4小时选择一** 次，则会在每隔4小时的时间间隔内执行备份，以便在一天中平均分布备份。 如果每天备份一次，则选择 **每日** 备份频率。 在每天的备份频率中，可以指定备份的时间。 请注意，这一天的时间指示备份开始时间，而不是备份完成的时间。 完成备份操作所需的时间取决于各种因素，包括磁盘大小和连续备份之间的变动率。 但是，Azure 磁盘备份是使用 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal)的无代理备份，不会影响生产应用程序的性能。
+   Azure 磁盘备份每天提供多次备份。 如果需要更频繁地进行备份，请选择 "每 **小时** " 备份频率，并以每隔4、6、8或12小时的间隔进行备份。 根据所选的 **时间** 间隔，计划备份。 例如，如果 **每隔4小时选择一** 次，则会在每隔4小时的时间间隔内执行备份，以便在一天中平均分布备份。 如果每天备份一次，则选择 **每日** 备份频率。 在每天的备份频率中，可以指定备份的时间。 请注意，这一天的时间指示备份开始时间，而不是备份完成的时间。 完成备份操作所需的时间取决于各种因素，包括磁盘大小和连续备份之间的变动率。 但是，Azure 磁盘备份是使用 [增量快照](../virtual-machines/disks-incremental-snapshots.md)的无代理备份，不会影响生产应用程序的性能。
 
 1. 在 " **备份策略** " 选项卡中，选择满足恢复点目标的保留设置 (RPO) 要求。
 
@@ -80,7 +80,7 @@ ms.locfileid: "98573116"
    ![保留设置](./media/backup-managed-disks/retention-settings.png)
 
    >[!NOTE]
-   >托管磁盘的 Azure 备份使用限制为每个磁盘200快照的增量快照。 为了允许除计划备份外的按需备份，备份策略会将备份总数限制为180。 详细了解托管磁盘的 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 。
+   >托管磁盘的 Azure 备份使用限制为每个磁盘200快照的增量快照。 为了允许除计划备份外的按需备份，备份策略会将备份总数限制为180。 详细了解托管磁盘的 [增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions) 。
 
 1. 通过选择 " **查看 + 创建**" 完成备份策略创建。
 
@@ -88,7 +88,7 @@ ms.locfileid: "98573116"
 
 备份保管库使用托管标识来访问其他 Azure 资源。 若要配置托管磁盘的备份，备份保管库的托管标识需要对创建和管理快照的源磁盘和资源组具有一组权限。
 
-系统分配的托管标识限制为每个资源一个，并绑定到此资源的生命周期。 可以使用 Azure RBAC)  (基于角色的访问控制向托管标识授予权限。 托管标识是特定类型的服务主体，只能与 Azure 资源一起使用。 了解有关 [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)的详细信息。
+系统分配的托管标识限制为每个资源一个，并绑定到此资源的生命周期。 可以使用 Azure RBAC)  (基于角色的访问控制向托管标识授予权限。 托管标识是特定类型的服务主体，只能与 Azure 资源一起使用。 了解有关 [托管标识](../active-directory/managed-identities-azure-resources/overview.md)的详细信息。
 
 若要配置托管磁盘的备份，需要满足以下先决条件：
 
@@ -115,7 +115,7 @@ ms.locfileid: "98573116"
 
    - 可以使用此资源组在要 (或计划) 备份的多个磁盘上存储快照。  
 
-   - 不能为该磁盘的订阅之外的特定磁盘创建增量快照。 因此，请选择与要备份的磁盘相同的订阅中的资源组。 详细了解托管磁盘的 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 。
+   - 不能为该磁盘的订阅之外的特定磁盘创建增量快照。 因此，请选择与要备份的磁盘相同的订阅中的资源组。 详细了解托管磁盘的 [增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions) 。
 
    若要分配角色，请执行以下步骤：
 
@@ -129,8 +129,6 @@ ms.locfileid: "98573116"
    >键入备份保管库名称以选择保管库的托管标识。
 
    ![添加磁盘快照参与者角色](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
-
-1. 如果要备份的磁盘使用 [客户管理的密钥加密 (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) 或者使用 [使用平台托管密钥和客户托管密钥的双加密](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)，则将 " **读取** 者角色" 权限分配给 " **磁盘加密集** " 资源上的备份保管库的托管标识。
 
 1. 验证备份保管库的托管标识是否在用作快照数据存储的源磁盘和资源组上有一组正确的角色分配。
 
@@ -154,7 +152,7 @@ ms.locfileid: "98573116"
    ![选择 Azure 磁盘](./media/backup-managed-disks/select-azure-disk.png)
 
    >[!NOTE]
-   >Azure 备份使用托管磁盘的 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) ，这些快照仅存储自上一次快照到标准 HDD 存储以来磁盘的增量更改，而不考虑父磁盘的存储类型。 为了提高可靠性，默认情况下，增量快照存储在区域冗余存储 (ZRS) 在支持 ZRS 的区域中。 目前，Azure 磁盘备份支持不将备份复制到备份保管库存储的托管磁盘的操作备份。 因此备份保管库的备份存储冗余设置不适用于恢复点。
+   >Azure 备份使用托管磁盘的 [增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions) ，这些快照仅存储自上一次快照到标准 HDD 存储以来磁盘的增量更改，而不考虑父磁盘的存储类型。 为了提高可靠性，默认情况下，增量快照存储在区域冗余存储 (ZRS) 在支持 ZRS 的区域中。 目前，Azure 磁盘备份支持不将备份复制到备份保管库存储的托管磁盘的操作备份。 因此备份保管库的备份存储冗余设置不适用于恢复点。
 
 1. 在 " **备份策略** " 选项卡中，选择备份策略。
 

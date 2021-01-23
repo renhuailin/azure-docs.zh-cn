@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 3ae300ca2746ab9e3478d3fe14fd6fc49c95a93d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: dc9f7dfdf33411f11d51734b48105be200874d02
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071725"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738112"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure 启动诊断
 
@@ -45,7 +45,7 @@ ms.locfileid: "98071725"
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-enable-portal.png" alt-text="屏幕截图显示了如何在创建 VM 期间启用托管启动诊断。":::
 
 ### <a name="enable-managed-boot-diagnostics-using-cli"></a>使用 CLI 启用托管启动诊断
-Azure CLI 2.12.0 及更高版本支持启动诊断使用托管存储帐户。 如果不输入存储帐户的名称或 URI，则会使用托管帐户。 有关详细信息和代码示例，请参阅[适用于启动诊断的 CLI 文档](/cli/azure/vm/boot-diagnostics?preserve-view=true&view=azure-cli-latest)。
+Azure CLI 2.12.0 及更高版本支持启动诊断使用托管存储帐户。 如果不输入存储帐户的名称或 URI，则会使用托管帐户。 有关详细信息和代码示例，请参阅[适用于启动诊断的 CLI 文档](/cli/azure/vm/boot-diagnostics)。
 
 ### <a name="enable-managed-boot-diagnostics-using-azure-resource-manager-arm-templates"></a>使用 Azure 资源管理器 (ARM) 模板启用托管启动诊断
 API 版本 2020-06-01 后的所有内容都支持托管启动诊断。 有关详细信息，请参阅[启动诊断实例视图](/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics)。

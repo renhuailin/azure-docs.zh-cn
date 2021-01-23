@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: '使用 GitOps 配置启用了 Azure Arc 的 Kubernetes 群集 (预览) '
 keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes 服务、AKS、容器
-ms.openlocfilehash: 751b274a9cae68f6bc9b1adc45804f2dd2ef4c72
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684751"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737178"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在已启用 Arc 的 Kubernetes 群集上使用 GitOps 部署配置（预览版）
 
@@ -97,7 +97,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>使用带有 SSH 和 Flux 密钥的专用 Git 存储库
 
-| 参数 | 格式 | 备注
+| 参数 | 格式 | 注意
 | ------------- | ------------- | ------------- |
 | --存储库-url | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能替换为 `user@`
 
@@ -106,7 +106,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>使用带有 SSH 和用户提供的密钥的专用 Git 存储库
 
-| 参数 | 格式 | 备注 |
+| 参数 | 格式 | 注意 |
 | ------------- | ------------- | ------------- |
 | --存储库-url  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能替换为 `user@` |
 | --ssh-私钥 | [PEM 格式](https://aka.ms/PEMformat)的 base64 编码的密钥 | 直接提供密钥 |
@@ -117,7 +117,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-host-with-ssh-and-user-provided-known-hosts"></a>使用带有 SSH 和用户提供的已知主机的专用 Git 主机
 
-| 参数 | 格式 | 备注 |
+| 参数 | 格式 | 注意 |
 | ------------- | ------------- | ------------- |
 | --存储库-url  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能替换为 `user@` |
 | --基于 ssh 的主机 | base64 编码 | 直接提供的已知主机内容 |
@@ -129,7 +129,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-https"></a>使用具有 HTTPS 的专用 Git 存储库
 
-| 参数 | 格式 | 备注 |
+| 参数 | 格式 | 注意 |
 | ------------- | ------------- | ------------- |
 | --存储库-url | https://server/repo[git] | HTTPS 与基本身份验证 |
 | --https-用户 | raw 或 base64 编码 | HTTPS 用户名 |
@@ -138,7 +138,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 > [!NOTE]
 > HTTPS Helm release 专用身份验证仅支持 Helm 运算符图表版本 >= 1.2.0。  默认情况下使用版本1.2.0。
 > 目前，Azure Kubernetes Services 托管群集不支持 HTTPS Helm release 专用身份验证。
-> 如果需要 Flux 通过代理访问 Git 存储库，则需要使用代理设置更新 Azure Arc 代理。 [详细信息](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#connect-using-an-outbound-proxy-server)
+> 如果需要 Flux 通过代理访问 Git 存储库，则需要使用代理设置更新 Azure Arc 代理。 [详细信息](./connect-cluster.md#connect-using-an-outbound-proxy-server)
 
 #### <a name="additional-parameters"></a>附加参数
 

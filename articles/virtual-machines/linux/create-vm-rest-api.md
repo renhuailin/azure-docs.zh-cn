@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3eeaf5f343b6026e02d17e4d3bd90dba4b991c4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373396"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737039"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>使用 REST API 创建使用 SSH 身份验证的 Linux 虚拟机
 
@@ -26,7 +26,7 @@ Azure 中的 Linux 虚拟机 (VM) 包含各种资源（例如磁盘和网络接�
 在创建并提交请求之前，你需要具有以下项：
 
 * 你的订阅的 `{subscription-id}`
-  * 如果你有多个订阅，请参阅[使用多个订阅](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
+  * 如果你有多个订阅，请参阅[使用多个订阅](/cli/azure/manage-azure-subscriptions-azure-cli)
 * 提前创建的 `{resourceGroupName}`
 * 位于同一资源组中的[虚拟网络接口](../../virtual-network/virtual-network-network-interface.md)
 * SSH 密钥对（如果还没有，可以[生成一个新的](mac-create-ssh-keys.md)）

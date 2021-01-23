@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: bb40586a93a40c2aaa3f0f884a0e747f168c324b
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: db21f1170dacbfa1e4367e7f22143ec3d0b0f6e4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186040"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737330"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a> (预览中安装并运行空间分析容器) 
 
@@ -62,7 +62,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 * [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 运行时。
 
 #### <a name="azure-vm-with-gpu"></a>[带有 GPU 的 Azure VM](#tab/virtual-machine)
-在我们的示例中，我们将使用具有一个 K80 GPU 的 [NC 系列 VM](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) 。
+在我们的示例中，我们将使用具有一个 K80 GPU 的 [NC 系列 VM](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 。
 
 ---
 
@@ -114,7 +114,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 
 在 " **配置边缘计算**"   页上，选择现有的 IoT 中心，或选择创建一个新的 IoT 中心。 默认情况下，将使用标准 (S1) 定价层创建 IoT 中心资源。 若要使用免费层 IoT 中心资源，请创建一个，然后选择它。 IoT 中心资源使用的订阅和资源组与 Azure Stack Edge 资源使用的相同 
 
-单击“创建”。 IoT 中心资源创建可能需要几分钟的时间。 创建 IoT 中心资源后，" **配置边缘计算** " 磁贴将更新以显示新的配置。 若要确认已配置边缘计算角色，请选择 " **配置计算**" 磁贴上的 " **查看配置**"   。
+单击 **“创建”** 。 IoT 中心资源创建可能需要几分钟的时间。 创建 IoT 中心资源后，" **配置边缘计算** " 磁贴将更新以显示新的配置。 若要确认已配置边缘计算角色，请选择 " **配置计算**" 磁贴上的 " **查看配置**"   。
 
 如果在 Edge 设备上设置了 Edge 计算角色，则会创建两个设备：一个 IoT 设备，一个 IoT Edge 设备。 可在 IoT 中心资源中查看这两个设备。 Azure IoT Edge 运行时将已在 IoT Edge 设备上运行。
 
@@ -309,13 +309,13 @@ sudo az iot hub device-identity show-connection-string --device-id my-edge-devic
 sudo systemctl restart iotedge
 ```
 
-将空间分析容器作为 IoT 模块部署在主计算机上，无论是从 [Azure 门户](../../iot-edge/how-to-deploy-modules-portal.md) 还是 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)。 如果使用的是门户，请将映像 URI 设置为 Azure 容器注册表的位置。 
+将空间分析容器作为 IoT 模块部署在主计算机上，无论是从 [Azure 门户](../../iot-edge/how-to-deploy-modules-portal.md) 还是 [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows)。 如果使用的是门户，请将映像 URI 设置为 Azure 容器注册表的位置。 
 
 使用以下步骤使用 Azure CLI 部署容器。
 
 #### <a name="azure-vm-with-gpu"></a>[带有 GPU 的 Azure VM](#tab/virtual-machine)
 
-带有 GPU 的 Azure 虚拟机也可以用于运行空间分析。 下面的示例将使用具有一个 K80 GPU 的 [NC 系列](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) VM。
+带有 GPU 的 Azure 虚拟机也可以用于运行空间分析。 下面的示例将使用具有一个 K80 GPU 的 [NC 系列](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VM。
 
 #### <a name="create-the-vm"></a>创建 VM
 
@@ -335,7 +335,7 @@ sudo systemctl restart iotedge
 
 接下来，创建 VM。 创建后，导航到 Azure 门户中的 VM 资源，然后 `Extensions` 从左窗格中选择。 "扩展" 窗口将显示所有可用的扩展。 选择 `NVIDIA GPU Driver Extension` ，单击 "创建"，并完成向导。
 
-成功应用扩展后，请导航到 Azure 门户中的 VM 主页，并单击 `Connect` 。 可以通过 SSH 或 RDP 访问 VM。 RDP 将会很有帮助，因为它将允许查看可视化工具窗口 (稍后将对此进行介绍) 。 按照以下 [步骤进行操作](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop) ，并打开到 VM 的远程桌面连接来配置 RDP 访问。
+成功应用扩展后，请导航到 Azure 门户中的 VM 主页，并单击 `Connect` 。 可以通过 SSH 或 RDP 访问 VM。 RDP 将会很有帮助，因为它将允许查看可视化工具窗口 (稍后将对此进行介绍) 。 按照以下 [步骤进行操作](../../virtual-machines/linux/use-remote-desktop.md) ，并打开到 VM 的远程桌面连接来配置 RDP 访问。
 
 ### <a name="verify-graphics-drivers-are-installed"></a>验证是否安装了图形驱动程序
 
@@ -406,7 +406,7 @@ sudo systemctl restart docker
 
 下表显示 IoT Edge 模块使用的各种环境变量。 你还可以使用中的属性在上面链接的部署清单中设置它们 `env` `spatialanalysis` ：
 
-| 设置名称 | Value | 说明|
+| 设置名称 | 值 | 说明|
 |---------|---------|---------|
 | ARCHON_LOG_LEVEL | 信息详细 | 日志记录级别，请选择以下两个值之一|
 | ARCHON_SHARED_BUFFER_LIMIT | 377487360 | 不修改|
@@ -426,7 +426,7 @@ sudo systemctl restart docker
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](#billing)。
 
-更新 [Azure Stack Edge 设备](https://go.microsoft.com/fwlink/?linkid=2142179)的部署清单（带有 GPU 的 [桌面计算机](https://go.microsoft.com/fwlink/?linkid=2152270) 或 [Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) ，其中包含你自己的设置和操作选择）后，你可以使用以下 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) 命令在主计算机上部署容器，如 IoT Edge 模块。
+更新 [Azure Stack Edge 设备](https://go.microsoft.com/fwlink/?linkid=2142179)的部署清单（带有 GPU 的 [桌面计算机](https://go.microsoft.com/fwlink/?linkid=2152270) 或 [Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) ，其中包含你自己的设置和操作选择）后，你可以使用以下 [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) 命令在主计算机上部署容器，如 IoT Edge 模块。
 
 ```azurecli
 sudo az login
@@ -457,7 +457,7 @@ sudo az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge 
 
 ## <a name="redeploy-or-delete-the-deployment"></a>重新部署或删除部署
 
-如果需要更新部署，需要确保已成功部署以前的部署，或者需要删除未完成 IoT Edge 设备部署。 否则，这些部署将继续，使系统处于错误的状态。 您可以使用 Azure 门户或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)。
+如果需要更新部署，需要确保已成功部署以前的部署，或者需要删除未完成 IoT Edge 设备部署。 否则，这些部署将继续，使系统处于错误的状态。 您可以使用 Azure 门户或 [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows)。
 
 ## <a name="use-the-output-generated-by-the-container"></a>使用容器生成的输出
 

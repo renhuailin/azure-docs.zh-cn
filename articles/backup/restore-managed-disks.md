@@ -3,12 +3,12 @@ title: 还原 Azure 托管磁盘
 description: 了解如何从 Azure 门户还原 Azure 托管磁盘。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 848a7476b1c5095d4e4d3156d4c7ce33da777090
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: b9c9a22f25a8003151217bec15b618e3c380e67e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611128"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737370"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a> (预览中还原 Azure 托管磁盘) 
 
@@ -17,7 +17,7 @@ ms.locfileid: "98611128"
 >
 >[填写此窗体](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) 以便注册预览版。
 
-本文介绍如何从 Azure 备份创建的还原点还原 [Azure 托管磁盘](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) 。
+本文介绍如何从 Azure 备份创建的还原点还原 [Azure 托管磁盘](../virtual-machines/managed-disks-overview.md) 。
 
 目前，Original-Location 恢复 (OLR) 选项，通过替换从其执行备份的现有源磁盘来进行还原。 你可以从恢复点还原，以便在同一资源组中创建一个新磁盘，该磁盘与从中进行备份的源磁盘或任何其他资源组中的源磁盘相同。 这称为 Alternate-Location 恢复 (ALR) ，这有助于将源磁盘和还原 (的新) 磁盘保留下来。
 
@@ -31,7 +31,7 @@ ms.locfileid: "98611128"
 
 备份保管库使用托管标识来访问其他 Azure 资源。 若要从备份还原，备份保管库的托管标识需要对要在其中还原磁盘的资源组拥有一组权限。
 
-备份保管库使用系统分配的托管标识，该标识限制为每个资源一个，并与此资源的生命周期相关联。 可以使用 Azure RBAC)  (基于角色的访问控制向托管标识授予权限。 托管标识是特定类型的服务主体，只能与 Azure 资源一起使用。 了解有关 [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)的详细信息。
+备份保管库使用系统分配的托管标识，该标识限制为每个资源一个，并与此资源的生命周期相关联。 可以使用 Azure RBAC)  (基于角色的访问控制向托管标识授予权限。 托管标识是特定类型的服务主体，只能与 Azure 资源一起使用。 了解有关 [托管标识](../active-directory/managed-identities-azure-resources/overview.md)的详细信息。
 
 执行还原操作需要以下必备项：
 
@@ -89,7 +89,7 @@ ms.locfileid: "98611128"
     ![还原参数](./media/restore-managed-disks/restore-parameters.png)
 
     >[!TIP]
-    >Azure 备份使用磁盘备份解决方案备份的磁盘也可以通过 azure VM 备份解决方案，通过恢复服务保管库进行备份。 如果已配置此磁盘附加到的 Azure VM 的保护，还可以使用 Azure VM 还原操作。 你可以选择从相应的 Azure VM 备份实例的恢复点还原 VM、磁盘和文件或文件夹。 有关详细信息，请参阅 [AZURE VM 备份](https://docs.microsoft.com/azure/backup/about-azure-vm-restore)。
+    >Azure 备份使用磁盘备份解决方案备份的磁盘也可以通过 azure VM 备份解决方案，通过恢复服务保管库进行备份。 如果已配置此磁盘附加到的 Azure VM 的保护，还可以使用 Azure VM 还原操作。 你可以选择从相应的 Azure VM 备份实例的恢复点还原 VM、磁盘和文件或文件夹。 有关详细信息，请参阅 [AZURE VM 备份](./about-azure-vm-restore.md)。
 
 1. 验证成功后，选择 " **还原** " 以启动还原操作。
 
@@ -109,9 +109,9 @@ ms.locfileid: "98611128"
 
     ![交换 OS 磁盘](./media/restore-managed-disks/swap-os-disks.png)
 
-- 对于 Windows 虚拟机，如果还原的磁盘是数据磁盘，请按照说明从虚拟机中 [分离原始数据磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-the-portal) 。 然后， [将还原的磁盘附加](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) 到虚拟机。 按照说明将虚拟机 [的 OS 磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/os-disk-swap) 与还原的磁盘交换。
+- 对于 Windows 虚拟机，如果还原的磁盘是数据磁盘，请按照说明从虚拟机中 [分离原始数据磁盘](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-the-portal) 。 然后， [将还原的磁盘附加](../virtual-machines/windows/attach-managed-disk-portal.md) 到虚拟机。 按照说明将虚拟机 [的 OS 磁盘](../virtual-machines/windows/os-disk-swap.md) 与还原的磁盘交换。
 
-- 对于 Linux 虚拟机，如果还原的磁盘是数据磁盘，请按照说明从虚拟机中 [分离原始数据磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/detach-disk#detach-a-data-disk-using-the-portal) 。 然后， [将还原的磁盘附加](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#attach-an-existing-disk) 到虚拟机。 按照说明将虚拟机 [的 OS 磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/os-disk-swap) 与还原的磁盘交换。
+- 对于 Linux 虚拟机，如果还原的磁盘是数据磁盘，请按照说明从虚拟机中 [分离原始数据磁盘](../virtual-machines/linux/detach-disk.md#detach-a-data-disk-using-the-portal) 。 然后， [将还原的磁盘附加](../virtual-machines/linux/attach-disk-portal.md#attach-an-existing-disk) 到虚拟机。 按照说明将虚拟机 [的 OS 磁盘](../virtual-machines/linux/os-disk-swap.md) 与还原的磁盘交换。
 
 在成功完成还原操作后，建议从 **目标资源组** 上的备份保管库的托管标识撤消 **磁盘还原操作员** 角色分配。
 

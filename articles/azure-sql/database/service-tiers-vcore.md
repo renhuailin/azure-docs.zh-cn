@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/15/2021
-ms.openlocfilehash: 6589f451d4db8f2ed77ce70a2bdfa9d76927c1e2
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 35cdfdbdc04d0c88bc49c024ea7465537583e0d7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251210"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735505"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型概述 - Azure SQL 数据库和 Azure SQL 托管实例 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -106,7 +106,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 > DC 系列目前为 **公共预览版**。
 
 - DC 系列硬件使用带有软件防护扩展 (Intel SGX) 技术的 Intel 处理器。
-- 对于 [具有 secure enclaves 的 Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves)，需要 DC 系列，其他硬件配置不支持此项。
+- 对于 [具有 secure enclaves 的 Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves)，需要 DC 系列，其他硬件配置不支持此项。
 - DC 系列适用于处理敏感数据和请求机密查询处理功能的工作负荷，Always Encrypted 通过安全 enclaves 提供。
 - DC 系列硬件提供均衡的计算和内存资源。
 

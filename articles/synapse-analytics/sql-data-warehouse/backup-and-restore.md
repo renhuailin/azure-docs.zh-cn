@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: d8c680ec30dcecc56c064f08e4690cbbde9c2377
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 842f2f92133664f58ca60d6d30181d48d63271eb
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679907"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736299"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure Synapse 专用 SQL 池中的备份和还原
 
@@ -71,8 +71,16 @@ order by run_id desc
 
 每日在[配对的数据中心](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)创建一次异地备份。 异地还原的 RPO 为 24 小时。 可以将异地备份还原到支持专用 SQL 池的任何其他区域的服务器。 使用异地备份可在无法访问主要区域中的还原点时还原数据仓库。
 
+如果你不需要专用 SQL 池的异地备份，则可以禁用它们并节省灾难恢复存储成本。 为此，请参阅 [操作方法指南：禁用专用 sql 池的异地备份 (以前的 SQL DW) ](disable-geo-backup.md)。 请注意，如果禁用异地备份，则在主 Azure 数据中心不可用时，将无法将专用 SQL 池恢复到配对的 Azure 区域。 
+
 > [!NOTE]
 > 如果希望异地备份的 RPO 更短，请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse)为此功能投票。 此外，可以创建用户定义的还原点，然后从新建的还原点还原到其他区域中的新数据仓库。 还原后，数据仓库将会联机，可以无限期将其暂停，以节省计算成本。 暂停的数据库按 Azure 高级存储费率收取存储费用。 如需数据仓库的活动副本，可以执行恢复，只需花费几分钟时间。
+
+## <a name="data-residency"></a>数据驻留 
+
+如果配对的数据中心位于地理边界之外，则可以通过在异地冗余存储中进行选择来确保你的数据保留在地理边界内。 此操作可通过异地冗余存储选项 (以前的 sql DW) 预配到 (以前的 SQL DW) 创建或还原专用 sql DW 时完成。 
+
+若要确认配对的数据中心是否在不同的国家/地区，请参阅 [Azure 配对区域](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ## <a name="backup-and-restore-costs"></a>备份和还原成本
 

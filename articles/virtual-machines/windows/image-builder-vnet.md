@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 94e3b95e5e1d3c65550046c5db56e0f783fd60c3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8ae41167b642be75c7bb99042bca829fd8c1728e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976277"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736341"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>使用适用于 Windows Vm 的 Azure 映像生成器，允许访问现有的 Azure VNET
 
@@ -258,7 +258,7 @@ $runOutJsonStatus
 ```
 ## <a name="create-a-vm"></a>创建 VM
 
-生成完成后，可以从映像生成 VM。 使用 [PowerShell New-AzVM 文档](/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)中的示例。
+生成完成后，可以从映像生成 VM。 使用 [PowerShell New-AzVM 文档](/powershell/module/az.compute/new-azvm#description)中的示例。
 
 ## <a name="clean-up"></a>清理
 

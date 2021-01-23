@@ -3,12 +3,12 @@ title: 排查 Azure VM 文件恢复问题
 description: 排查从 Azure VM 备份恢复文件和文件夹时遇到的问题。
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: aec69b91ad1dae5864e5e8fba61c53e6d15887f4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c4d0d233237cb477d72efea0b91d4e5288e2a302
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624500"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735871"
 ---
 # <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>排查 Azure VM 备份的文件恢复问题
 
@@ -46,7 +46,7 @@ ms.locfileid: "98624500"
 
 ### <a name="you-cant-download-the-script"></a>无法下载该脚本
 
-1. 确保你具有 [下载该脚本所需的权限](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#select-recovery-point-who-can-generate-script)。
+1. 确保你具有 [下载该脚本所需的权限](./backup-azure-restore-files-from-vm.md#select-recovery-point-who-can-generate-script)。
 1. 验证与 Azure 目标 Ip 的连接。 在提升的命令提示符下运行以下命令之一：
 
    `nslookup download.microsoft.com`
@@ -67,7 +67,7 @@ ms.locfileid: "98624500"
 
 你可能会看到 "连接到目标时捕获到异常" 错误消息。
 
-1. 确保运行脚本的计算机满足 [访问要求](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script)。
+1. 确保运行脚本的计算机满足 [访问要求](./backup-azure-restore-files-from-vm.md#step-4-access-requirements-to-successfully-run-the-script)。
 1. 验证与 Azure 目标 Ip 的连接。 在提升的命令提示符下运行以下命令之一：
 
    `nslookup download.microsoft.com`

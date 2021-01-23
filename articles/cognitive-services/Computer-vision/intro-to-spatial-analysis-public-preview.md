@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 402ee6d5efdd489914cb7d283c7c46d4f7d175f6
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: f90e4e5e187977f0ee77a565ff9143902ea3a10d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968052"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736829"
 ---
 # <a name="introduction-to-computer-vision-spatial-analysis"></a>计算机视觉空间分析简介
 
-计算机视觉空间分析是 Azure 认知服务计算机视觉的一项新功能，通过了解人员在给定领域的变动和状态，帮助组织最大限度地提高其物理空间的价值。 利用它，您可以从 CCTV 或监视摄像机中引入视频，运行 AI 技能从视频流中提取见解，并生成其他系统所使用的事件。 使用摄像流输入时，AI 技能可以执行一些操作，例如，计算输入空间的人员数或与社会 distancing 准则的符合性。
+计算机视觉空间分析是 Azure 认知服务计算机视觉的一项新功能，通过了解人员在给定领域的变动和状态，帮助组织最大限度地提高其物理空间的价值。 它允许从 CCTV 或监视摄像机中引入视频，运行 AI 操作以从视频流中提取见解，并生成由其他系统使用的事件。 使用摄像流输入时，AI 操作可以执行一些操作，例如，计算输入空间的人员数，或度量与人脸掩码和社会 distancing 准则的符合性。
 
 ## <a name="the-basics-of-spatial-analysis"></a>空间分析的基础知识
 
@@ -30,9 +30,10 @@ ms.locfileid: "97968052"
 | 术语 | 定义 |
 |------|------------|
 | 人员检测 | 此组件回答的问题是 "此图像中的人在哪里"？ 它在图像中找到人，并传递一个范围框，指示每个用户的位置和人员跟踪组件。 |
-| 人员跟踪 | 当人们在照相机的前方四处移动时，此组件会随着时间的推移连接人员检测。 它使用临时逻辑来了解人们通常如何移动，并使用有关用户整体外观的基本信息来实现此目的。 它无法跟踪多个照相机或 reidentify 的人，超过大约一分钟的时间已消失。 跟踪不使用任何生物识别标记，如人脸识别或 gait 跟踪。 |
-| 感兴趣区域 | 这是配置过程中在输入视频中定义的区域或行。 当某个人与视频的区域交互时，系统将生成一个事件。 例如，对于 PersonCrossingLine 技能，会在视频中定义线条。 当某个人越过该行时，将生成一个事件。 |
-| 事件 | 事件是空间分析的主输出。 每项技能定期 (ex 发出特定事件。 每分钟一次) 或发生特定的触发器。 此事件包括有关输入视频中发生的内容的信息，但不包括任何图像或视频。 例如，PeopleCount 技能每次更改 (触发器) 或每分钟 (定期) 时，都可以发出包含更新的计数的事件。 |
+| 人员跟踪 | 当人们在照相机的前方四处移动时，此组件会随着时间的推移连接人员检测。 它使用临时逻辑来了解人们通常如何移动，并使用有关用户整体外观的基本信息来实现此目的。 它不跟踪跨多个照相机的人。 如果某个人将相机中的视图的字段作为大约一分钟的时间，然后重新进入相机视图，系统会将此视为一个新用户。 跟踪不能跨相机唯一地标识个人。 它不使用面部识别或 gait 跟踪。 |
+| 面部掩码检测 | 此组件检测人脸在相机视图中的位置，并确定是否存在面部掩码。 为此，AI 操作会扫描视频中的图像;检测到人脸时，该服务在人脸周围提供一个边界框。 使用对象检测功能，它确定边界框中是否存在人脸掩码。 面部面具检测不涉及到不同人脸、预测或分类面部特性或执行面部识别。 |
+| 感兴趣区域 | 这是配置过程中在输入视频中定义的区域或行。 当某个人与视频的区域交互时，系统将生成一个事件。 例如，对于 PersonCrossingLine 操作，会在视频中定义一行。 当某个人越过该行时，将生成一个事件。 |
+| 事件 | 事件是空间分析的主输出。 每个操作都会定期 (ex 发出特定事件。 每分钟一次) 或发生特定的触发器。 此事件包括有关输入视频中发生的内容的信息，但不包括任何图像或视频。 例如，PeopleCount 操作可以在每次更改用户计数 (触发器时，每分钟) 或每 (定期) 发出包含更新计数的事件。 |
 
 ## <a name="example-use-cases-for-spatial-analysis"></a>空间分析的示例用例
 
@@ -43,6 +44,8 @@ ms.locfileid: "97968052"
 **购物者分析** -杂货商店使用位于产品显示器上的照相机来度量商品更改对商店流量的影响。 系统允许商店经理识别哪些新产品会对订婚进行最大的更改。
 
 **队列管理** -当等待时间太长，使其能够打开更多行时，位于结帐队列的照相机会向经理提供警报。 队列放弃上的历史数据可提供对使用者行为的见解。
+
+人 **脸掩码合规性**–零售商店可以使用指向商店正面的照相机来检查客户是否正在穿到商店，以检查客户是否正在戴上人脸的面具来维护安全合规性和分析聚合统计信息，以获得关于掩码使用趋势的信息。 
 
 **构建占有 & 分析** -办公室建筑使用侧重于进入的相机来度量 footfall，以及用户如何使用工作区。 Insights 允许建筑经理调整服务和布局，以便更好地为 occupants 提供服务。
 
@@ -73,4 +76,4 @@ ms.locfileid: "97968052"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [空间分析的特征和限制](https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext)
+> [空间分析的特征和限制](/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext)

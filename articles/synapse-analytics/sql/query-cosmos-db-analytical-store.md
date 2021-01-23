@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4681039f60154b95eeb7e40196ca33055a192c74
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2059608faa8ce148e5823e48eff6abf9e71c9b01
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222099"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735427"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>使用 Azure Synapse 链接预览中的无服务器 SQL 池查询 Azure Cosmos DB 数据
 
@@ -24,7 +24,7 @@ ms.locfileid: "98222099"
 
 无服务器 SQL 池允许分析 Azure Cosmos DB 容器中的数据，这些数据可以近乎实时地使用 [Azure Synapse 链接](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 启用，而不会影响事务工作负荷的性能。 它提供了一种熟悉的 T-sql 语法，用于查询 [分析存储](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 中的数据，以及通过 t-sql 接口将集成连接到各种商业智能 (BI) 和即席查询工具。
 
-对于查询 Azure Cosmos DB，可通过[OPENROWSET](develop-openrowset.md)函数支持完整的[SELECT](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) surface area，其中包括大多数[SQL 函数和运算符](overview-features.md)。 还可以存储从 Azure Cosmos DB 读取数据的查询的结果，以及 Azure Blob 存储中的数据，或使用 [create external table as select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) 来 Azure Data Lake Storage。 当前无法使用 CETAS 将无服务器 SQL 池查询结果存储到 Azure Cosmos DB。
+对于查询 Azure Cosmos DB，可通过[OPENROWSET](develop-openrowset.md)函数支持完整的[SELECT](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) surface area，其中包括大多数[SQL 函数和运算符](overview-features.md)。 还可以存储从 Azure Cosmos DB 读取数据的查询的结果，以及 Azure Blob 存储中的数据，或使用 [create external table as select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) 来 Azure Data Lake Storage。 当前无法使用 CETAS 将无服务器 SQL 池查询结果存储到 Azure Cosmos DB。
 
 在本文中，你将学习如何编写包含无服务器 SQL 池的查询，该查询将从使用 Azure Synapse 链接启用的 Azure Cosmos DB 容器中查询数据。 然后，你可以在 [本教程](./tutorial-data-analyst.md)中详细了解如何通过 Azure Cosmos DB 容器构建无服务器 SQL 池视图并将其连接到 Power BI 模型。
 
@@ -339,7 +339,7 @@ Azure Cosmos DB SQL (Core) API 的帐户支持 number、string、Boolean、null�
 | --- | --- |
 | 布尔 | bit |
 | Integer | bigint |
-| 小数 | FLOAT |
+| 小数 | float |
 | 字符串 | varchar (UTF-8 数据库排序规则)  |
 |  (ISO 格式的字符串的日期时间)  | varchar (30)  |
 | UNIX 时间戳 (日期时间)  | bigint |

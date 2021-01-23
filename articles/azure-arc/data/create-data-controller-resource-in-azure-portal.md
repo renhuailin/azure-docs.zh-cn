@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 297efa83fb1563e3a360f652a6ac1bc2b1679998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd8c079e91a6765dff8ad347085c44d0aa2f8d82
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934637"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737297"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>在 Azure 门户中创建 Azure Arc 数据控制器
 
@@ -40,12 +40,16 @@ ms.locfileid: "90934637"
 6. 单击 " **数据控制器详细信息** " 按钮。
 7. 选择订阅、资源组和 Azure 位置，就像对在 Azure 门户中创建的任何其他资源一样。 在这种情况下，你选择的 Azure 位置将是存储资源元数据的位置。  将在所选的任何基础结构上创建资源本身。 不需要在 Azure 基础结构上。
 8. 输入数据控制器的名称。
-9. 目前，预览版仅支持间接连接模式。
-10. 选择部署配置文件。
-11. 单击 " **在 Azure Studio 中打开** " 按钮。
-12. 在下一个屏幕上，你将看到所选内容的摘要和生成的笔记本。  可以单击 " **下载预配笔记本** " 按钮下载笔记本。
-13. 在 Azure Data Studio 中打开笔记本，并单击顶部的 " **全部运行** " 按钮。
-14. 按照笔记本中的提示和说明完成数据控制器创建。
+9. 选择数据控制器的连接模式。 详细了解 [连接模式和要求](./connectivity.md)。 
+
+   > [!NOTE] 
+   > 如果选择 " **直接** 连接模式"，请确保通过环境变量设置服务主体凭据，如 [创建服务主体](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)中所述。 
+
+1. 选择部署配置文件。
+1. 单击 " **在 Azure Studio 中打开** " 按钮。
+1. 在下一个屏幕上，你将看到所选内容的摘要和生成的笔记本。  可以单击 " **下载预配笔记本** " 按钮下载笔记本。
+1. 在 Azure Data Studio 中打开笔记本，并单击顶部的 " **全部运行** " 按钮。
+1. 按照笔记本中的提示和说明完成数据控制器创建。
 
 ## <a name="monitoring-the-creation-status"></a>监视创建状态
 

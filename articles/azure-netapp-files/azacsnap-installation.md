@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 5c2182fc80c3745e0238c378c1cade0530393181
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632579"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737161"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a> (预览版安装 Azure 应用程序一致性快照工具) 
 
@@ -34,9 +34,9 @@ ms.locfileid: "97632579"
 
 按照准则设置和执行快照和灾难恢复命令。 建议在安装和使用快照工具之前，以 root 身份完成以下步骤。
 
-1. **操作系统已修补**：请参阅 [如何在 Azure 上) 安装和配置 SAP HANA (大型实例](/azure/virtual-machines/workloads/sap/hana-installation#setting-up-smt-server-for-suse-linux)。
+1. **操作系统已修补**：请参阅 [如何在 Azure 上) 安装和配置 SAP HANA (大型实例](../virtual-machines/workloads/sap/hana-installation.md#operating-system)。
 1. **已设置时间同步**。 客户需要提供 NTP 兼容时间服务器，并相应地配置操作系统。
-1. **已安装 hana** ：请参阅 hana [数据库上的 SAP NetWeaver 安装](https://blogs.msdn.microsoft.com/saponsqlserver/2017/11/21/sap-netweaver-installation-on-hana-database/)中的 hana 安装说明。
+1. **已安装 hana** ：请参阅 hana [数据库上的 SAP NetWeaver 安装](/archive/blogs/saponsqlserver/sap-netweaver-installation-on-hana-database)中的 hana 安装说明。
 1. 有关更多) 详细信息，请 **[与存储](#enable-communication-with-storage)** (有关的详细信息，请参阅单独的部分：客户必须使用私钥/公钥对设置 SSH，并为在存储后端安装的快照工具的每个节点提供公共密钥。
    1. **对于 Azure NetApp 文件 (请参阅单独的部分了解详细信息)**：客户必须生成服务主体身份验证文件。
    1. **对于 Azure 大型实例 (请参阅单独的部分以了解详细信息)**：客户必须使用私钥/公钥对设置 SSH，并为每个节点提供公钥，以便在存储后端将快照工具的计划执行到 Microsoft 操作。

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 117bc71ba304445e3186b4e633f5888647be9223
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 38f37ff2fe150a9e1998fbe5e963b8737a6e1533
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685623"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737959"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -36,6 +36,7 @@ ms.locfileid: "98685623"
     + 已修复有关服务的问题。请重新加载 ( # A1，在本地部署中选择 score.py 上的更改。
     + `run.get_details()` 具有一个名为 "提交者" 的额外字段，该字段显示该运行的作者名称。
     + 已编辑的模型。注册方法文档，以了解如何直接从运行中注册模型
+    + 修复了 IOT-Server 连接状态更改处理问题。
    
 
 ## <a name="2020-12-31"></a>2020-12-31

@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f5aaf4bbff4c093872228d647d3850667fb9777
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d7a570fb322d24bf0d32efcb6f1a2ee515862755
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656401"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736963"
 ---
 # <a name="application-management-best-practices"></a>应用程序管理最佳做法
 
@@ -33,9 +33,9 @@ ms.locfileid: "94656401"
 | 检查应用的 Azure AD 应用程序库  | Azure AD 包含了包含数千个预先集成的应用程序的库，这些应用程序通过企业单一登录 (SSO) 启用。 有关特定于应用的安装指南，请参阅 [SaaS 应用教程的列表](../saas-apps/tutorial-list.md)。  | 
 | 使用基于 SAML 的联合 SSO  | 当应用程序支持该应用程序时，将基于 SAML 的联合 SSO 与 Azure AD 而不是基于密码的 SSO 和 ADFS 结合使用。  | 
 | 使用 SHA-256 进行证书签名  | 默认情况下，Azure AD 使用 SHA-256 算法为 SAML 响应签名。 使用 SHA-256，除非应用程序需要 SHA-1 (参阅 [证书签名选项](certificate-signing-options.md) 和 [应用程序登录问题](application-sign-in-problem-application-error.md)。 )   | 
-| 需要用户分配  | 默认情况下，用户可以访问你的企业应用程序，而无需将其分配给他们。 但是，如果应用程序公开角色或者希望应用程序出现在用户的 "我的应用" 中，则需要用户分配。  (请参阅 [开发应用程序的开发人员指南](developer-guidance-for-integrating-applications.md)。 )   | 
+| 需要用户分配  | 默认情况下，用户可以访问你的企业应用程序，而无需将其分配给他们。 但是，如果应用程序公开角色或者希望应用程序出现在用户的 "我的应用" 中，则需要用户分配。  | 
 | 将我的应用部署到用户 | [我的应用程序](end-user-experiences.md) `https://myapps.microsoft.com` 是一个基于 web 的门户，它为用户提供分配给基于云的应用程序的单一入口点。 添加了组管理和自助密码重置等附加功能后，用户可以在 "我的应用" 中找到它们。 请参阅 [计划应用部署](access-panel-deployment-plan.md)。
-| 使用组分配  | 如果订阅中包含组，则将组分配给应用程序，以便可以将正在进行的访问管理委派给组所有者。  (请参阅 [开发应用程序的开发人员指南](developer-guidance-for-integrating-applications.md)。 )    | 
+| 使用组分配  | 如果订阅中包含组，则将组分配给应用程序，以便可以将正在进行的访问管理委派给组所有者。  | 
 | 建立管理证书的过程 | 签名证书的最长生存期为三年。 若要防止或最大程度地减少因证书过期而导致的故障，请使用角色和电子邮件通讯组列表，以确保密切监视与证书相关的更改通知。 |
 
 ## <a name="provisioning-recommendations"></a>预配建议

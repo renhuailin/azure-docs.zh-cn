@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 6e603442bdecf9a627172e24390b06cef573f475
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 10c1680afd6cd6673efe3fe9d2397a0dc6a04859
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026947"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738479"
 ---
 远程连接到设备的过程不同，具体取决于客户端的操作系统。
 
@@ -23,6 +23,8 @@ ms.locfileid: "96026947"
 2. 请确保 Windows 远程管理服务在客户端上运行。 在命令提示符处，键入：
 
     `winrm quickconfig`
+
+    有关详细信息，请参阅 [Windows 远程管理的安装和配置](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#quick-default-configuration)。
 
 3. 将变量分配给设备 IP 地址。
 

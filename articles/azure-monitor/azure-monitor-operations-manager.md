@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 877251ba7e0c1f3c33cab37e20d609479b69520c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: c213a38286de05df5c3be8e3498bcca4ab6e1fbf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251822"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736138"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>现有 Operations Manager 客户 Azure Monitor
-本文为当前使用 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) ，并在将业务应用程序和其他资源迁移到 Azure 时计划过渡到 [Azure Monitor](overview.md) 的客户提供指导。 它假定您的最终目标是完全转换到云，使用 Azure Monitor 尽可能多地替换 Operations Manager 功能，而不会影响业务和 IT 操作要求。 
+本文为当前使用 [System Center Operations Manager](/system-center/scom/welcome) ，并在将业务应用程序和其他资源迁移到 Azure 时计划过渡到 [Azure Monitor](overview.md) 的客户提供指导。 它假定您的最终目标是完全转换到云，使用 Azure Monitor 尽可能多地替换 Operations Manager 功能，而不会影响业务和 IT 操作要求。 
 
 本文中所述的具体建议将随着 Azure Monitor 和 Operations Manager 添加功能而更改。 不过，基本策略会保持一致。
 
@@ -22,13 +22,13 @@ ms.locfileid: "98251822"
 > 实现此处所述的几个 Azure Monitor 功能是一项收费，因此在整个环境中进行部署之前，应评估其价值。
 
 ## <a name="prerequisites"></a>先决条件
-本文假设你已使用 [Operations Manager](https://docs.microsoft.com/system-center/scom) ，并且至少对 [Azure Monitor](overview.md)有基本的了解。 有关这两者之间的完整比较，请参阅 [云监视指南：监视平台概述](/azure/cloud-adoption-framework/manage/monitor/platform-overview)。 本文详细介绍了与这两者之间的特定功能差异，以帮助你了解此处所述的一些建议。 
+本文假设你已使用 [Operations Manager](/system-center/scom) ，并且至少对 [Azure Monitor](overview.md)有基本的了解。 有关这两者之间的完整比较，请参阅 [云监视指南：监视平台概述](/azure/cloud-adoption-framework/manage/monitor/platform-overview)。 本文详细介绍了与这两者之间的特定功能差异，以帮助你了解此处所述的一些建议。 
 
 
 ## <a name="general-strategy"></a>常规策略
 没有用于将资产从 Operations Manager 转换为 Azure Monitor 的迁移工具，因为这些平台在本质上是不同的。 当你继续使用 Operations Manager 时，迁移将改为构成 [标准 Azure Monitor 实现](deploy.md) 。 当你自定义 Azure Monitor 以满足针对不同应用程序和组件的要求，并且在获得更多功能时，你可以开始在 Operations Manager 中停用不同的管理包和代理。
 
-本文中建议的常规策略与 [云监视指南](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/)中所述的相同，后者建议使用 [混合云监视](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) 策略，以逐步转换到云。 尽管某些功能可能会重叠，但当你更熟悉新平台时，此策略可让你维护现有的业务流程。 只是离开 Operations Manager 功能，您可以将其替换为 Azure Monitor。 使用多种监视工具增加了复杂性，但它使你能够利用 Azure Monitor 功能来监视下一代云工作负载，同时保持 Operations Manager 监视本地或其他云中的服务器软件和基础结构组件的能力。 
+本文中建议的常规策略与 [云监视指南](/azure/cloud-adoption-framework/manage/monitor/)中所述的相同，后者建议使用 [混合云监视](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) 策略，以逐步转换到云。 尽管某些功能可能会重叠，但当你更熟悉新平台时，此策略可让你维护现有的业务流程。 只是离开 Operations Manager 功能，您可以将其替换为 Azure Monitor。 使用多种监视工具增加了复杂性，但它使你能够利用 Azure Monitor 功能来监视下一代云工作负载，同时保持 Operations Manager 监视本地或其他云中的服务器软件和基础结构组件的能力。 
 
 
 ## <a name="components-to-monitor"></a>要监视的组件
@@ -37,7 +37,7 @@ ms.locfileid: "98251822"
 在云之前，你使用 Operations Manager 来监视所有层。 当你开始使用基础结构即服务 (IaaS) 进行转换时，你将继续为虚拟机使用 Operations Manager，但会开始将 Azure Monitor 用于云资源。 随着你使用平台即服务 (PaaS) 进一步过渡到新式应用程序，你可以将更多精力放在 Azure Monitor 上，并开始停用 Operations Manager 功能。
 
 
-![云模型](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
+![云模型](/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
 
 这些层可以简化为以下类别，详见本文的其余部分。 虽然您的环境中的每个监视工作负荷可能不会整齐地纳入其中一种类别，但每个监视工作负荷都应该接近特定的类别，以便满足一般建议。
 

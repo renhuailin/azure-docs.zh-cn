@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1626ee074d51048dbf45c629f261a550822d746c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ea984e527eb526e49c87ce5385ba5715803cc72d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200832"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737246"
 ---
 # <a name="azure-security-baseline-for-automation"></a>适用于自动化的 Azure 安全基线
 
@@ -556,7 +556,7 @@ ms.locfileid: "98200832"
 
 * [了解 Azure 传输中的加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Azure 自动化 TLS 1.2 强制实施](/azure/active-directory/hybrid/reference-connect-tls-enforcement)
+* [Azure 自动化 TLS 1.2 强制实施](../active-directory/hybrid/reference-connect-tls-enforcement.md)
 
 **Azure 安全中心监视**：是
 
@@ -938,7 +938,7 @@ ms.locfileid: "98200832"
 
 对于大部分方案，Microsoft 基本 VM 模板与 Azure Automation State Configuration 相结合可以帮助满足和维护安全要求。
 
-* [有关如何下载 VM 模板的信息](../virtual-machines/windows/download-template.md)
+* [有关如何下载 VM 模板的信息](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [有关创建 ARM 模板的信息](../virtual-machines/windows/ps-template.md)
 

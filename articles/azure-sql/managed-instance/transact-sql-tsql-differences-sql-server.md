@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 6634ab3521fee3062ecee465eaf6dcda80ee6ff8
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0a462c7d713ea9285096db48b4a3bb5c5b0d9874
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98699508"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737364"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -508,15 +508,14 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 
 ### <a name="subnet"></a>子网
 -  在部署 SQL 托管实例的子网中，无法放置其他任何资源（例如虚拟机）。 请使用其他子网部署这些资源。
-- 子网必须有足够数量的可用 [IP 地址](connectivity-architecture-overview.md#network-requirements)。 至少为 16 个，但建议在子网中至少有 32 个 IP 地址。
-- [不能将服务终结点与 SQL 托管实例的子网相关联](connectivity-architecture-overview.md#network-requirements)。 创建虚拟网络时，请务必禁用“服务终结点”选项。
+- 子网必须有足够数量的可用 [IP 地址](connectivity-architecture-overview.md#network-requirements)。 最小值为在子网中至少具有 32 IP 地址。
 - 可以在某个区域部署的 vCore 数和实例类型存在一些[约束和限制](resource-limits.md#regional-resource-limitations)。
-- 存在一些[必须在子网上应用的安全规则](connectivity-architecture-overview.md#network-requirements)。
+- 必须在子网中应用 [网络配置](connectivity-architecture-overview.md#network-requirements) 。
 
 ### <a name="vnet"></a>VNET
 - VNet 可以使用资源模型进行部署 - 不支持适用于 VNet 的经典模型。
 - 创建 SQL 托管实例后，不支持将 SQL 托管实例或 VNet 移到另一个资源组或订阅。
-- 应用服务环境、逻辑应用和 SQL 托管实例之类的某些服务（用于异地复制、事务复制，或者通过链接服务器来使用）在其 VNet 是通过[全局对等互连](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)进行连接的情况下不能访问不同区域中的 SQL 托管实例。 可以通过 VNet 网关经由 ExpressRoute 或 VNet-to-VNet 连接到这些资源。
+- 对于在 9/22/2020 [全局对等](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) 之前创建的虚拟群集中托管的 SQL 托管实例，不支持。 可以通过 VNet 网关经由 ExpressRoute 或 VNet-to-VNet 连接到这些资源。
 
 ### <a name="failover-groups"></a>故障转移组
 系统数据库不会复制到故障转移组中的辅助实例。 因此，除非在辅助实例上手动创建系统数据库中的对象，否则依赖于该对象的方案将不可能在辅助实例上出现。

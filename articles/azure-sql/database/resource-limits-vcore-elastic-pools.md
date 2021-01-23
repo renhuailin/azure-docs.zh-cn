@@ -10,13 +10,13 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 01/15/2021
-ms.openlocfilehash: 2daa07315be85e1fcd543480cd30a57c118d8547
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/22/2021
+ms.openlocfilehash: 619f4deee81c97f2d7a0b4359e2b999c476b1ae2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251482"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737551"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>使用 vCore 购买模型的弹性池的资源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -218,7 +218,7 @@ ms.locfileid: "98251482"
 |TempDB 最大数据大小 (GB)|83.25|92.5|111|148|166.5|333|
 |存储类型|远程 SSD|远程 SSD|远程 SSD|远程 SSD|远程 SSD|远程 SSD|
 |IO 延迟（近似）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|
-|每个池的最大数据 IOPS <sup>2</sup>|5760|6400|7680|10240|11520|23040|
+|每个池的最大数据 IOPS <sup>2</sup>|5760|6400|7680|10240|11520|12800|
 |每个池的最大日志速率 (MBps)|48|48|48|48|48|48|
 |每个池的最大并发辅助角色 (请求) <sup>3</sup>|900|1000|1200|1600|1800|3600|
 |每个池的最大并发登录数 (请求) <sup>3</sup>|1800|2000|2400|3200|3600|7200|
