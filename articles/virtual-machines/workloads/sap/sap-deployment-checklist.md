@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 601f268f81c222ada5a4f99b05ae8ffcdfc13a23
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ca2a844364d11dbb5ac2a244945e07d8ca725c1c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916280"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728434"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
 
@@ -66,7 +66,7 @@ ms.locfileid: "97916280"
     - 高可用性和灾难恢复体系结构。
         - 根据 RTO 和 RPO，定义高可用性和灾难恢复体系结构的外观。
         - 若要在区域中实现高可用性，请检查所需的 DBMS 在 Azure 中提供的功能。 大多数 DBMS 包提供同步热备用的同步方法，我们建议将其用于生产系统。 还要查看不同数据库的 SAP 相关文档，从 [Azure 虚拟机 DBMS 部署适用于 sap 工作负荷](./dbms_guide_general.md) 和相关文档的注意事项开始。
-           不支持将 Windows Server 故障转移群集与 DBMS 层的共享磁盘配置一起使用，例如 [SQL Server 所述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017&preserve-view=true)。 相反，请使用如下所示的解决方案：
+           不支持将 Windows Server 故障转移群集与 DBMS 层的共享磁盘配置一起使用，例如 [SQL Server 所述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)。 相反，请使用如下所示的解决方案：
            - [SQL Server AlwaysOn](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle 数据防护](../oracle/configure-oracle-dataguard.md)
            - [HANA 系统复制](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)

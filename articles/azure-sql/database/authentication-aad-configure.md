@@ -12,18 +12,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 2c7db937905baed94c6fe81adeb44c8b3f5be52b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e19bf5b4ee5b6c48f002ca79711646cca7b0ec5f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936067"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729108"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文介绍如何创建和填充 Azure Active Directory (Azure AD) 实例，然后将 Azure AD 用于 [AZURE Sql 数据库](sql-database-paas-overview.md)、 [azure Sql 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 有关概述，请参阅 [Azure Active Directory 身份验证](authentication-aad-overview.md)。
+本文介绍如何创建和填充 Azure Active Directory (Azure AD) 实例，然后将 Azure AD 与 [Azure SQL 数据库](sql-database-paas-overview.md)、[Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 配合使用。 有关概述，请参阅 [Azure Active Directory 身份验证](authentication-aad-overview.md)。
 
 ## <a name="azure-ad-authentication-methods"></a>Azure AD 身份验证方法
 
@@ -105,7 +105,7 @@ SQL 托管实例需要权限来读取 Azure AD，以成功完成通过安全组�
 
 7. 在“Azure AD 管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。
 
-   “Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 请参阅 [Azure AD 功能和限制](authentication-aad-overview.md#azure-ad-features-and-limitations)中受支持的管理员列表。 Azure RBAC)  (基于角色的访问控制仅适用于 Azure 门户，不会传播到 SQL 数据库、SQL 托管实例或 Azure Synapse。
+   “Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 请参阅 [Azure AD 功能和限制](authentication-aad-overview.md#azure-ad-features-and-limitations)中受支持的管理员列表。 Azure 基于角色的访问控制 (Azure RBAC) 仅适用于 Azure 门户，不会传播到 SQL 数据库、SQL 托管实例或 Azure Synapse。
 
     ![添加 Azure Active Directory 管理员](./media/authentication-aad-configure/add-azure-active-directory-admin.png)
 
@@ -253,7 +253,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
     ![SQL Server 的“设置 Active Directory 管理员”](./media/authentication-aad-configure/sql-servers-set-active-directory-admin.png)  
 
-5. 在“添加管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。  (在 [使用 SQL 数据库或 Azure Synapse 进行身份验证 Azure Active Directory 身份](authentication-aad-overview.md)验证的 " **Azure AD 功能和限制**" 部分中，查看受支持的管理员列表。 ) azure 基于角色的访问控制 (azure RBAC) 仅适用于该门户，不会传播到 SQL Server。
+5. 在“添加管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 （请参阅[将 Azure Active Directory 身份验证与使用 SQL 数据库或 Azure Synapse 进行身份验证结合使用](authentication-aad-overview.md)的“Azure AD 功能和限制”部分中支持的管理员列表。）Azure 基于角色的访问控制 (Azure RBAC) 仅适用于该门户，不会传播到 SQL Server。
 
     ![选择 Azure Active Directory 管理员](./media/authentication-aad-configure/select-azure-active-directory-admin.png)  
 

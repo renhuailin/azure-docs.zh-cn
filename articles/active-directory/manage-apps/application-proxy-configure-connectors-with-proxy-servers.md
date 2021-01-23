@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 808357b95f4de904ead0741d848480d548a2e26a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b6ecea10c884bffb10c936ca7c619d70d2449467
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030070"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728485"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用现有的本地代理服务器
 
@@ -169,7 +169,7 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 可以使用自选的监视工具。 本文使用了 Microsoft 消息分析器。
 
 > [!NOTE]
-> [Microsoft Message Analyzer (MMA) 已停](https://docs.microsoft.com/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) 用，并且其下载包已从11月 25 2019 上的 microsoft.com 站点中删除。  目前，开发中目前不会替换 Microsoft Message Analyzer。  对于类似的功能，请考虑使用第三方网络协议分析器工具，例如 Wireshark。
+> [Microsoft Message Analyzer (MMA) 已停](/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) 用，并且其下载包已从11月 25 2019 上的 microsoft.com 站点中删除。  目前，开发中目前不会替换 Microsoft Message Analyzer。  对于类似的功能，请考虑使用第三方网络协议分析器工具，例如 Wireshark。
 
 以下示例特定于消息分析器，但其原理适用于任何分析工具。
 

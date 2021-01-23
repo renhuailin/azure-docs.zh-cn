@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2020
 ms.author: jeedes
-ms.openlocfilehash: f6066997b5a63a9ffefc1371851c7200d7655c9c
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1a1e155974b66dce9a036a20cdebe19ded81fed5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962561"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>教程：将 Azure Active Directory 与 SAP HANA 集成
 
@@ -212,7 +212,7 @@ SAP HANA 支持默认启用的“实时预配”  。
 
 * 在 Azure 门户中单击“测试此应用程序”后，应该会自动登录到为其设置了 SSO 的 SAP HANA
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 SAP HANA 磁贴时，应会自动登录到为其设置了 SSO 的 SAP HANA。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 SAP HANA 磁贴时，应会自动登录到为其设置了 SSO 的 SAP HANA。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

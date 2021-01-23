@@ -3,12 +3,12 @@ title: Azure Functions 中的 IP 地址
 description: 了解如何查找函数应用的入站和出站 IP 地址，以及这些地址发生更改的原因。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 291a1cda7b8a2acc5426ea255519e1c2e58a2d7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: fcc92e61e180d25bc67d5ca3f9e2bff4af01fd3f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936713"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726725"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions 中的 IP 地址
 
@@ -27,8 +27,7 @@ IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到函数应用。
-3. 选择“平台功能”。
-4. 选择“属性”，然后选择“虚拟 IP 地址”下面显示的入站 IP 地址。 
+3. 在“设置”下，选择“属性”   。 入站 IP 地址显示在 " **虚拟 IP 地址**" 下。
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>函数应用的出站 IP 地址
 

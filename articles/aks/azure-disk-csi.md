@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2dba9fbcbddbc7a66763636986f3d98f4f95332c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b75f4c85831fe66158da875c21af60ee73531026
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683125"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728250"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>使用 azure Kubernetes Service 中的 Azure 磁盘容器存储接口 (CSI) 驱动程序 (AKS)  (预览版) 
 Azure 磁盘容器存储接口 (CSI) 驱动程序是一个符合 [CSI 规范](https://github.com/container-storage-interface/spec/blob/master/spec.md)的驱动程序，由 Azure Kubernetes SERVICE (AKS) 用于管理 azure 磁盘的生命周期。
@@ -101,7 +101,7 @@ storageclass.storage.k8s.io/azuredisk-csi-waitforfirstconsumer created
 
 ## <a name="volume-snapshots"></a>卷快照
 
-Azure 磁盘 CSI 驱动程序支持创建 [持久卷的快照](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html)。 作为此功能的一部分，驱动程序可以执行 *完全* 或 [*增量* 快照](../virtual-machines/windows/disks-incremental-snapshots.md) ，具体取决于参数 (中设置的值 `incremental` 默认情况下为 true) 。
+Azure 磁盘 CSI 驱动程序支持创建 [持久卷的快照](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html)。 作为此功能的一部分，驱动程序可以执行 *完全* 或 [*增量* 快照](../virtual-machines/disks-incremental-snapshots.md) ，具体取决于参数 (中设置的值 `incremental` 默认情况下为 true) 。
 
 有关所有参数的详细信息，请参阅 [卷快照类参数](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md#volumesnapshotclass)。
 

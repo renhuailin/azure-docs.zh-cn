@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 3ea6318ff4a1f99218caea83c2d83ee1f62ef697
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 04a3fa79a6940a5b7a4bb98d08aa8be48a442903
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679629"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728594"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure Synapse Analytics – 工作负荷管理门户监视
 
@@ -29,7 +29,7 @@ ms.locfileid: "98679629"
 |标准名称                    |说明  |聚合类型 |
 |-------------------------------|-------------|-----------------|
 |有效的资源百分比上限 | “有效的资源百分比上限”是对工作负荷组可访问的资源百分比的硬性限制，它考虑到了为其他工作负荷组分配的“有效的最小资源百分比”。 使用 [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语法中的 `CAP_PERCENTAGE_RESOURCE` 参数配置“有效的资源百分比上限”指标。  此处描述了有效值。<br><br>例如，如果一个工作负荷组 `DataLoads` 是使用 `CAP_PERCENTAGE_RESOURCE` = 100 创建的，而另一个工作负荷组是使用 25% 的有效最小资源百分比创建的，则 `DataLoads` 工作负荷组的“有效的资源百分比上限”为 75%。<br><br>“有效的资源百分比上限”确定了工作负荷组可以实现的并发上限（以及可能的吞吐量）。  除了“有效的资源百分比上限”指标当前报告的数量外，如果还需要更多吞吐量，要么增加 `CAP_PERCENTAGE_RESOURCE`，减少其他工作负荷组的 `MIN_PERCENTAGE_RESOURCE`，要么扩展实例以添加更多资源。  降低 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 会提升并发性，但可能不会提高整体吞吐量。| 最小值、平均值、最大值 |
-|有效的最小资源百分比 |“有效的最小资源百分比”是指针对最低服务级别为工作负荷组预留和隔离的资源的最小百分比。  使用 [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语法中的 `MIN_PERCENTAGE_RESOURCE` 参数配置“有效的最小资源百分比”指标。  [此处](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values)描述了有效值。<br><br>如果未筛选和拆分此指标，使用 Sum 聚合类型可监视系统上配置的总工作负荷隔离情况。<br><br>“有效的最小资源百分比”确定了工作负荷组可以实现的保证并发下限（以及保证的吞吐量）。  除了“有效的最小资源百分比”指标当前报告的数量外，如果还需要更多保证资源，请增加为工作负荷组配置的 `MIN_PERCENTAGE_RESOURCE` 参数。  降低 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 会提升并发性，但可能不会提高整体吞吐量。 |最小值、平均值、最大值|
+|有效的最小资源百分比 |“有效的最小资源百分比”是指针对最低服务级别为工作负荷组预留和隔离的资源的最小百分比。  使用 [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语法中的 `MIN_PERCENTAGE_RESOURCE` 参数配置“有效的最小资源百分比”指标。  [此处](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json?view=azure-sqldw-latest&preserve-view=true#effective-values)描述了有效值。<br><br>如果未筛选和拆分此指标，使用 Sum 聚合类型可监视系统上配置的总工作负荷隔离情况。<br><br>“有效的最小资源百分比”确定了工作负荷组可以实现的保证并发下限（以及保证的吞吐量）。  除了“有效的最小资源百分比”指标当前报告的数量外，如果还需要更多保证资源，请增加为工作负荷组配置的 `MIN_PERCENTAGE_RESOURCE` 参数。  降低 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 会提升并发性，但可能不会提高整体吞吐量。 |最小值、平均值、最大值|
 |工作负荷组活动查询  |此指标用于报告工作负荷组内的活动查询。  在取消筛选和拆分的情况下，此指标会显示系统上运行的所有活动查询。|SUM         |
 |按最大资源百分比列出的工作负荷组分配 |此指标显示了每个工作负荷组相对于“有效的资源百分比上限”的资源分配百分比。  该指标提供了工作负荷组的有效利用率。<br><br>假设工作负荷组 `DataLoads`的“有效的资源百分比上限”为 75%，`REQUEST_MIN_RESOURCE_GRANT_PERCENT` 配置为 25%。  如果在此工作负荷组中运行单个查询，则为 `DataLoads`“按最大资源百分比列出的工作负荷组分配”筛选的值将为 33% (25%/75%)。<br><br>使用此指标可标识工作负荷组的利用率。  值接近 100% 表示正在使用的工作负荷组拥有所有可用资源。  此外，对于同一工作负荷组，如果“工作负荷组排队查询”指标显示的值大于零，则表示此工作负荷组将利用其他资源（如果已分配）。  相反，如果此指标持续较低，“工作负荷组活动查询”也较低，则说明当前未使用该工作负荷组。  如果“有效的资源百分比上限”大于零，则这种情况尤其有问题，因为这表示[工作负荷隔离利用不足](#underutilized-workload-isolation)。|最小值、平均值、最大值 |
 |按系统百分比列出的工作负荷组分配 | 此指标显示相对于整个系统的资源分配百分比。<br><br>假设工作负荷组 `DataLoads` 配置有 25% 的 `REQUEST_MIN_RESOURCE_GRANT_PERCENT`。  如果在此工作负荷组中运行单个查询，则“按系统百分比列出的工作负荷组分配”为 `DataLoads` 筛选的值将为 25% (25%/100%)。|最小值、平均值、最大值 |

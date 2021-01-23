@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a618a5d94513f7d648d118ae3bebdb34e4f5b1c4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094329"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728853"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
 本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](https://www.microsoft.com/en-us/trust-center?rtc=1)的信息。  
@@ -27,7 +27,7 @@ Log Analytics 服务使用以下方法安全地管理你基于云的数据：
 * 合规性
 * 安全标准认证
 
-你还可以使用 Azure Monitor 和 Log Analytics 中内置的其他安全功能。 这些功能需要更多的管理员管理。 
+还可以使用 Azure Monitor 和 Log Analytics 中内置的附加安全功能。 这些功能需要更多的管理员管理工作。 
 * 客户管理的 (安全) 密钥
 * Azure 专用存储
 * 专用链接网络 
@@ -178,16 +178,15 @@ Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性�
 若要访问 Log Analytics 工作区，请使用组织帐户或先前设置的 Microsoft 帐户登录到 Azure 门户。 门户与 Log Analytics 服务之间的所有流量通过安全 HTTPS 通道发送。 使用门户时，会在用户客户端（Web 浏览器）上生成会话 ID，会将数据存储在本地缓存中，直到该会话终止。 终止后，会删除该缓存。 不会自动删除不包含个人身份信息的客户端 Cookie。 会话 Cookie 标记为 HTTPOnly，并且受到保护。 在预先确定的空闲期过后，会终止 Azure 门户会话。
 
 
-## <a name="additional-security-features"></a>其他安全功能
-可以使用这些其他安全功能来进一步保护 Azure Monitor/Log Analytics 环境。 这些功能需要更多的管理员管理。 
-- [客户管理 (安全) 密钥](customer-managed-keys.md) -可以使用客户管理的密钥来加密发送到 Log Analytics 工作区的数据。 它需要使用 Azure Key Vault。 
+## <a name="additional-security-features"></a>附加安全功能
+可以使用这些附加安全功能来进一步保护 Azure Monitor/Log Analytics 环境。 这些功能需要更多的管理员管理工作。 
+- [客户管理的（安全）密钥](customer-managed-keys.md) - 可以使用客户管理的密钥来加密发送到 Log Analytics 工作区的数据。 它需要使用 Azure Key Vault。 
 - [专用/客户管理的存储](private-storage.md) -管理个人加密的存储帐户，并告诉 Log Analytics 使用它来存储监视数据 
 - [专用链接网络](private-link-security.md) -Azure 专用链接允许你安全地将 azure PaaS 服务链接 (包括使用专用终结点 Azure Monitor) 到你的虚拟网络。 
-- [Azure 客户密码箱](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview) -用于 Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批准或拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此功能。
+- [Azure 客户密码箱](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) -用于 Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批准或拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此功能。
 
 
 ## <a name="next-steps"></a>后续步骤
 * 遵循 [Azure VM 快速入门](../learn/quick-collect-azurevm.md)，了解如何使用 Log Analytics 收集 Azure VM 的数据。  
 
 *  如果想要从环境中的 Windows 或 Linux 物理机或虚拟机收集数据，请参阅[适用于 Linux 计算机的快速入门](../learn/quick-collect-linux-computer.md)或[适用于 Windows 计算机的快速入门](../learn/quick-collect-windows-computer.md)
-

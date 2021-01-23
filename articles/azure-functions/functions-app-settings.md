@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 80b2daebbd64f08dd4f5d728b2a9a4ee04b8952f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937104"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728986"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -229,11 +229,13 @@ _此设置当前处于预览状态。_
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE\_CONTENTAZUREFILECONNECTIONSTRING
 
-仅用于消耗计划和高级计划。 存储函数应用代码和配置的存储帐户的连接字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#create-a-function-app)。
+存储帐户的连接字符串，在 Windows 上运行的事件驱动的缩放计划中存储函数应用代码和配置。 有关详细信息，请参阅 [创建函数应用](functions-infrastructure-as-code.md#windows)。
 
 |键|示例值|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
+
+仅在部署到在 Windows 上运行的消耗或高级计划时使用。 Linux 不支持。 更改或删除此设置可能导致函数应用无法启动。 若要了解详细信息，请参阅 [此故障排除一文](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。 
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
@@ -245,11 +247,15 @@ _此设置当前处于预览状态。_
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 
-仅用于消耗计划和高级计划。 函数应用代码和配置的文件路径。 与 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING 结合使用。 默认值是以函数应用名称开头的唯一字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#create-a-function-app)。
+Windows 上事件驱动的缩放计划中的函数应用代码和配置的文件路径。 与 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING 结合使用。 默认值是以函数应用名称开头的唯一字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#windows)。
 
 |键|示例值|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
+
+仅适用于在 Windows 上运行的消耗或高级计划的函数应用。 Linux 不支持。 更改或删除此设置可能导致函数应用无法启动。 若要了解详细信息，请参阅 [此故障排除一文](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。
+
+在部署期间使用 Azure 资源管理器创建函数应用时，请不要在模板中包括 WEBSITE_CONTENTSHARE。 此应用程序设置是在部署过程中生成的。 若要了解详细信息，请参阅 [自动部署函数应用的资源](functions-infrastructure-as-code.md#windows)。   
 
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 

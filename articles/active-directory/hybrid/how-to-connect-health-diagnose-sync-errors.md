@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5942d208fa3859d0a4a80de5f072f2e798fe040f
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 4fe6af43c9ca44095c328356e8171da10717875e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028924"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728231"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>诊断并修正重复的属性同步错误
 
@@ -139,7 +139,7 @@ ms.locfileid: "98028924"
 Azure AD 中基于云的用户不应当具有源定位点。 在这种情况下不支持更新源定位点。 需要从本地手动进行修复。 
 
 **修复过程无法更新这些值。**
-[Azure AD Connect 中](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-preview#user-writeback)的特定设置（如 UserWriteback）不受支持。 请在设置中禁用。 
+[Azure AD Connect 中](./how-to-connect-preview.md#user-writeback)的特定设置（如 UserWriteback）不受支持。 请在设置中禁用。 
 
 ## <a name="faq"></a>常见问题解答
 **Q.** 如果“应用修复”操作执行失败，会发生什么情况？  
