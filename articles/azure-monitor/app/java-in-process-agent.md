@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 931189a6740009bd26472c186057fa0e6ef5fddf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 249afa361946e85a8c8ff241f07d7aae608949ae
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624886"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745694"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java 无代码应用程序监视 Azure Monitor Application Insights
 
@@ -242,7 +242,7 @@ try {
 telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-##### <a name="exceptions"></a>异常
+##### <a name="exceptions"></a>例外
 
 ```java
 try {
@@ -323,8 +323,3 @@ import com.microsoft.applicationinsights.web.internal.ThreadContext;
 RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
 requestTelemetry.setName("myname");
 ```
-
-> [!NOTE]
-> 除了上面所述的之外，对的检索到的所有其他操作 `RequestTelemetry` `ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry()` 都将失败，并引发异常，以使你知道在3.0 代理下未定义的行为。
->
-> 如果需要对任何其他方法执行互操作， `RequestTelemetry` 请通过提出问题告诉我们 https://github.com/microsoft/ApplicationInsights-Java/issues 。

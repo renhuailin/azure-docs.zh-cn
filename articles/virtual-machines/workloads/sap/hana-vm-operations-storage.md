@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/26/2020
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c4aa608e892867daaf954284a9dfce997a9ae1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 01c6a2eb53e82965dd96deaa1a09afb1e70dda24
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484271"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746741"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -63,10 +63,22 @@ Azure 为 Azure 标准和高级存储上的 Vhd 提供了两种部署方法。 �
 - 根据 [SAP 工作负荷的 Azure 存储类型](./planning-guide-storage.md) 决定存储类型，并 [选择磁盘类型](../../disks-types.md)
 - 调整或确定 VM 时的总体 VM i/o 吞吐量和 IOPS 限制。 [内存优化虚拟机大小](../../sizes-memory.md)一文中记录了总体 VM 存储吞吐量
 - 在确定存储配置时，请尝试将 VM 的总体吞吐量保持在 **/hana/data** 卷配置的下方。 写入保存点，SAP HANA 可以是主动的、发出的 i/o。 写入保存点时，可以轻松地将 **/hana/data** 卷的吞吐量限制增加到最大值。 如果) 生成 **/hana/data** 卷的 (磁盘的吞吐量比 VM 允许的吞吐量更高，则可能会出现以下情况：保存点写入利用的吞吐量与重做日志写入操作的吞吐量要求产生了干扰。 可能影响应用程序吞吐量的情况
-- 如果你使用的是 Azure 高级存储，开销最少的配置是使用逻辑卷管理器来构建带区集以生成 **/hana/data** 和 **/hana/log** 卷
+
 
 > [!IMPORTANT]
 > 存储配置的建议旨在作为开始的指导。 运行工作负荷和分析存储利用率模式，你可能会意识到未利用所有提供的存储带宽或 IOPS。 可以考虑在存储上缩小。 相反，工作负荷可能需要比这些配置所建议的更多的存储吞吐量。 因此，你可能需要部署更多的容量、IOPS 或吞吐量。 在所需的存储容量、需要的存储延迟、所需的存储吞吐量和 IOPS 之间，Azure 提供了足够多的不同存储类型，具有不同的功能和不同的价格，可以为你和 HANA 工作负荷查找并调整到适当的折衷。
+
+
+## <a name="stripe-sets-versus-sap-hana-data-volume-partitioning"></a>条带集与 SAP HANA 数据卷分区
+使用 Azure 高级存储时，可能会在将 **/hana/data** 和/或 **/hana/log** 卷条带化到多个 Azure 磁盘上时达到最佳性价比。 而不是部署更多的磁盘卷，以提供所需的 IOPS 或吞吐量。 到目前为止，此操作是通过 LVM 和 MDADM 卷管理器实现的，这是 Linux 中的一部分。 条带化磁盘的方法是数十年以前，众所周知的。 由于这些条带化卷要达到所需的 IOPS 或吞吐量功能，因此增加了管理这些带区卷的复杂性。 尤其是在卷需要扩展容量的情况下。 至少对于 **/hana/data**，SAP 引入了一种可实现与多个 Azure 磁盘上的条带化相同的目标的替代方法。 由于 SAP HANA 2.0 SPS03，因此 HANA indexserver 可以将其 i/o 活动条带化到位于不同 Azure 磁盘上的多个 HANA 数据文件中。 优点在于，无需负责创建和管理不同 Azure 磁盘上的带区卷。 中详细说明了数据卷分区的 SAP HANA 功能：
+
+- [HANA 管理员指南](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [有关 SAP HANA 的博客–分区数据卷](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP 说明 #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP 说明 #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
+通读详细信息后，利用此功能会使基于卷管理器的带区集变得更加复杂。 你还会认识到，HANA 数据卷分区不仅适用于 Azure 数据块存储，如 Azure 高级存储。 如果这些共享的 IOPS 或吞吐量有限制，则可以使用此功能在 NFS 共享间划分。  
+
 
 ## <a name="linux-io-scheduler-mode"></a>Linux I/O 计划程序模式
 Linux 提供多种不同的 I/O 计划模式。 Linux 供应商和 SAP 的常见建议是重新配置磁盘卷的 I/O 调度程序模式，即从“mq-deadline”或“kyber”模式配置为“noop”(non-multiqueue) 或“none”(multiqueue) 模式   。 请参考 [SAP 说明 #1984787](https://launchpad.support.sap.com/#/notes/1984787) 中的详细信息。 

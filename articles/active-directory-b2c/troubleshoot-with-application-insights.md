@@ -12,12 +12,12 @@ ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1628d78c9d1e4db1f59982d696dcc886646fe604
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 33504487b6175023e18893812c533950305cb1d3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132051"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745996"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>利用 Application Insights 收集 Azure Active Directory B2C 日志
 
@@ -26,13 +26,13 @@ ms.locfileid: "92132051"
 此处所述的详细活动日志 **只** 应在开发自定义策略时启用。
 
 > [!WARNING]
-> 不要 `DeploymentMode` `Developer` 在生产环境中将设置为。 日志收集发送到标识提供程序的所有声明。 作为开发人员，您需要负责在 Application Insights 日志中收集的任何个人数据。 仅当策略处于 **开发人员模式下**时，才收集这些详细日志。
+> 不要 `DeploymentMode` `Development` 在生产环境中将设置为。 日志收集发送到标识提供程序的所有声明。 作为开发人员，您需要负责在 Application Insights 日志中收集的任何个人数据。 仅当策略处于 **开发人员模式下** 时，才收集这些详细日志。
 
 ## <a name="set-up-application-insights"></a>设置 Application Insights
 
 如果还没有，请在订阅中创建 Application Insights 的实例。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择 " **目录 + 订阅** " 筛选器，然后选择包含 Azure 订阅的目录 (不是 Azure AD B2C 目录) 。
 1. 选择左侧导航菜单中的 " **创建资源** "。
 1. 搜索并选择 " **Application Insights**"，然后选择 " **创建**"。
@@ -59,7 +59,7 @@ ms.locfileid: "92132051"
     ```
 
     * `DeveloperMode="true"` 告诉 Applicationinsights.config 通过处理管道加速遥测。 适用于开发，但在较大的卷上受到限制。 在生产环境中，将设置 `DeveloperMode` 为 `false` 。
-    * `ClientEnabled="true"` 发送用于跟踪页面视图和客户端错误的 Applicationinsights.config 客户端脚本。 可以在 Application Insights 门户中的 **browserTimings** 表中查看这些项。 通过设置 `ClientEnabled= "true"` ，你可以将 Application Insights 添加到页面脚本，并获取页面加载和 ajax 调用、计数、浏览器异常和 ajax 失败的详细信息以及用户和会话计数的计时。 此字段是 **可选**的， `false` 默认情况下，设置为。
+    * `ClientEnabled="true"` 发送用于跟踪页面视图和客户端错误的 Applicationinsights.config 客户端脚本。 可以在 Application Insights 门户中的 **browserTimings** 表中查看这些项。 通过设置 `ClientEnabled= "true"` ，你可以将 Application Insights 添加到页面脚本，并获取页面加载和 ajax 调用、计数、浏览器异常和 ajax 失败的详细信息以及用户和会话计数的计时。 此字段是 **可选** 的， `false` 默认情况下，设置为。
     * `ServerEnabled="true"` 将现有 UserJourneyRecorder JSON 作为自定义事件发送到 Application Insights。
 
     例如：

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cd41f740d3cdb8130199a5dda6e73209637d5142
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608776"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745928"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>创建 Azure Arc 数据控制器
 
@@ -54,7 +54,7 @@ ms.locfileid: "97608776"
 - **数据控制器用户名** -数据控制器管理员用户的任何用户名。
 - **数据控制器密码** -数据控制器管理员用户的密码。
 - **Kubernetes 命名空间的名称** -要在其中创建数据控制器的 Kubernetes 命名空间的名称。
-- **连接模式** -群集的 [连接模式](./connectivity.md) 。 目前仅支持 "间接"。
+- **连接模式** -连接模式确定从支持 azure Arc 的数据服务环境到 azure 的连接度。 预览版目前仅支持间接连接的和直接连接的模式。  有关信息，请参阅 [连接模式](./connectivity.md)。 
 - **Azure 订阅 ID** -你希望在 azure 中创建数据控制器资源的 AZURE 订阅 GUID。
 - **Azure 资源组名称** -要在 Azure 中创建数据控制器资源的资源组的名称。
 - **Azure location** -数据控制器资源元数据将存储在 azure 中的 azure 位置。 有关可用区域的列表，请参阅 [Azure 全球基础结构/产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)）。

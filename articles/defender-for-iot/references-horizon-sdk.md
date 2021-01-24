@@ -1,5 +1,5 @@
 ---
-title: 范围 SDK
+title: Horizon SDK
 titleSuffix: Azure Defender for IoT
 description: 使用地平线 SDK，适用于 IoT 开发人员的 Azure Defender 会设计 dissector 的插件，以便对网络流量进行解码，使其能够由 IoT 网络分析程序自动 Defender 处理。
 author: shhazam-ms
@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: d6105f65508eff59164246020d9a3f286b68c5a1
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210522"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746013"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>地平线专用协议 dissector
 
@@ -85,7 +85,7 @@ SDK 支持各种自定义选项，包括：
 
 用于 IoT 的 Defender 为常见协议提供了基本 dissectors。 你可以在这些协议之上构建你的 dissectors。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 ## <a name="what-this-sdk-contains"></a>此 SDK 包含的内容 
 
@@ -313,7 +313,7 @@ JSON 配置文件必须另存为 `config.json` 。
 
 本部分介绍基本参数。
 
-| 参数标签 | 描述 | 类型 |
+| 参数标签 | 说明 | 类型 |
 |--|--|--|
 | **ID** | 协议的名称。 删除默认值，并在显示的同时添加协议名称。 | 字符串 |
 | **endianess** | 定义如何对多字节数据进行编码。 请仅使用 "小" 或 "大" 这一术语。 取自协议规范或流量记录 | 字符串 |
@@ -326,7 +326,7 @@ JSON 配置文件必须另存为 `config.json` 。
 
 本部分介绍其他字段。
 
-| 参数标签 | 描述 |
+| 参数标签 | 说明 |
 |-----------------|--------|
 | **允许列表** | 您可以为协议值编制索引并将其显示在数据挖掘报表中。 这些报告反映了你的网络基线。 :::image type="content" source="media/references-horizon-sdk/data-mining.png" alt-text="数据挖掘视图的示例。"::: <br /> 有关详细信息，请参阅 [连接到索引服务 (基准) ](#connect-to-an-indexing-service-baseline) 以获取详细信息。 |
 | **固件** | 可以提取固件信息、定义索引值，并触发插件协议的固件警报。 有关详细信息，请参阅 [提取固件数据](#extract-firmware-data) 获取详细信息。 |
@@ -885,7 +885,7 @@ extern "C" {
 
 例如，对于基于 TCP 的值，可以使用 IPv4 层中的值。 在此层中，可以提取值，如数据包的源和目标。
 
-若要实现此目的，需要使用属性更新 JSON 配置文件 `whitelist` 。
+若要实现此目的，需要使用属性更新 JSON 配置文件 `whitelists` 。
 
 ## <a name="allow-list-data-mining-fields"></a>允许列表 (数据挖掘) 字段
 
@@ -982,7 +982,7 @@ extern "C" {
 
 本部分介绍 JSON 固件配置字段。
 
-- name
+- name 
   
   指示如何在传感器控制台中显示字段。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 7336078d1f04b9dcb6c2f229654f1c36d9b3114b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: bc229974cf14ba364e5e7111dc1d2704e03c3635
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919968"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746792"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -345,7 +345,9 @@ WireData
 
 **所有** 八进制数的客户端 web 地址始终设置为 0，查找异地位置属性。
 
-### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>可在网页源中查看检测密钥。 
+默认情况下， [Application Insights JAVASCRIPT SDK](app/javascript.md) 不会在其自动完成中包含任何个人数据。 不过，SDK 可能会获取应用程序中使用的某些个人数据 (例如，中的全名 `window.title` 或 XHR URL 查询参数) 中的帐户 id。 对于自定义个人数据掩码，请添加 [遥测初始值设定项](app/api-filtering-sampling.md#javascript-web-applications)。
+
+### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>可在网页源中查看检测密钥。
 
 * 这是监视解决方案的常见做法。
 * 它不能用于窃取数据。
@@ -405,7 +407,7 @@ WireData
 
 当前不支持将现有 Application Insights 资源从一个区域移动到另一个区域。 你收集的历史数据无法迁移到新区域。 唯一的部分解决方法是：
 
-1. 在新区域中创建全新 Application Insights 资源 ([经典](app/create-new-resource.md) 或 [基于工作区的](./app/create-workspace-resource.md)) 。
+1. 在新区域中创建全新的 Application Insights 资源（[经典](app/create-new-resource.md)或[基于工作区](./app/create-workspace-resource.md)）。
 2. 重新创建特定于新资源中原始资源的所有唯一自定义项。
 3. 修改应用程序以使用新区域资源的[检测密钥](app/create-new-resource.md#copy-the-instrumentation-key)或[连接字符串](app/sdk-connection-string.md)。  
 4. 测试以确认所有内容是否都按预期处理新的 Application Insights 资源。 
@@ -416,14 +418,14 @@ WireData
 - 重新创建自定义仪表板和工作簿。 
 - 重新创建或更新任何自定义日志/指标警报的范围。 
 - 重新创建可用性警报。
-- 重新创建任何自定义 Azure 基于角色的访问控制， (用户访问新资源所需的 Azure RBAC) 设置。 
+- 重新创建用户访问新资源所需的任何 Azure 基于角色的访问控制 (Azure RBAC) 自定义设置。 
 - 复制涉及引入采样、数据保留、每日上限和自定义指标启用的设置。 可通过“使用情况和预估成本”窗格控制这些设置。
 - 依赖 API 密钥（如[版本注释](./app/annotations.md)、[实时指标安全控制通道](app/live-stream.md#secure-the-control-channel)等）的任何集成。你将需要生成新的 API 密钥并更新关联的集成。 
 - 需要重新配置经典资源中的连续导出。
 - 需要重新配置基于工作区资源中的诊断设置。
 
 > [!NOTE]
-> 如果要在新区域中创建的资源取代了经典资源，我们建议探索 [创建基于工作区的新资源](app/create-workspace-resource.md) 或将 [现有资源迁移到基于工作区](app/convert-classic-resource.md)的好处。 
+> 如果在新区域中创建的资源要用于替换经典资源，我们建议探索[创建基于工作区的新资源](app/create-workspace-resource.md)或[将现有资源迁移至基于工作区的资源](app/convert-classic-resource.md)的好处。 
 
 ### <a name="automation"></a>自动化
 
@@ -555,46 +557,46 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 ### <a name="what-is-opentelemetry"></a>什么是 OpenTelemetry
 
-可观察性的新开源标准。 更多信息请访问 [https://opentelemetry.io/](https://opentelemetry.io/)。
+一种新的可观测性开源标准。 更多信息请访问 [https://opentelemetry.io/](https://opentelemetry.io/)。
 
-### <a name="why-is-microsoft--azure-monitor-investing-in-opentelemetry"></a>为什么 Microsoft/Azure Monitor 投资 OpenTelemetry？
+### <a name="why-is-microsoft--azure-monitor-investing-in-opentelemetry"></a>Microsoft/Azure Monitor 为什么要对 OpenTelemetry 进行投资？
 
-由于以下三个原因，我们认为它更好地为我们的客户提供服务：
-   1. 启用对更多客户方案的支持。
-   2. 检测，无需担心供应商锁定。
-   3. 提高客户的透明性和合作度。
+我们基于以下三个原因认为它可以更好地为客户服务：
+   1. 实现对更多客户方案的支持。
+   2. 工具无需担心供应商锁定。
+   3. 提高客户透明度和参与度。
 
 它还与 Microsoft 用于 [接纳开源](https://opensource.microsoft.com/)的策略相符。
 
-### <a name="what-additional-value-does-opentelemetry-give-me"></a>OpenTelemetry 给出了哪些额外的价值？
+### <a name="what-additional-value-does-opentelemetry-give-me"></a>OpenTelemetry 可以给我带来哪些附加价值？
 
-除了上述原因之外，OpenTelemetry 更有效地进行缩放，并跨语言提供一致的设计/配置。
+除上述原因外，OpenTelemetry 在大规模部署方面更为高效，并提供跨语言的一致设计/配置。
 
-### <a name="how-can-i-test-out-opentelemetry"></a>如何对 OpenTelemetry 进行测试？
+### <a name="how-can-i-test-out-opentelemetry"></a>如何测试 OpenTelemetry？
 
-注册即可加入我们的 Azure Monitor Application Insights 早期采用者社区 [https://aka.ms/AzMonOtel](https://aka.ms/AzMonOtel) 。
+在 [https://aka.ms/AzMonOtel](https://aka.ms/AzMonOtel) 注册，加入我们的 Azure Monitor Application Insights 早期采用者社区。
 
-### <a name="what-does-ga-mean-in-the-context-of-opentelemetry"></a>GA 在 OpenTelemetry 的上下文中是什么意思？
+### <a name="what-does-ga-mean-in-the-context-of-opentelemetry"></a>在 OpenTelemetry 中，GA 意味着什么？
 
-OpenTelemetry 社区定义 ([GA) 的](https://medium.com/opentelemetry/ga-planning-f0f6d7b5302)公开上市。 但是，OpenTelemetry "GA" 并不意味着与现有 Application Insights Sdk 之间存在功能的奇偶校验。 Azure Monitor 将继续为需要某些功能（例如 [预聚合度量值](app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)、 [实时指标](app/live-stream.md)、 [自适应采样](app/sampling.md#adaptive-sampling)、 [探查器](app/profiler-overview.md)和 [快照调试器](app/snapshot-debugger.md) ）的客户建议当前 Application Insights sdk，直到 OpenTelemetry sdk 达到功能成熟度。
+OpenTelemetry 社区在[此处](https://medium.com/opentelemetry/ga-planning-f0f6d7b5302)定义了正式发布 (GA)。 但是，OpenTelemetry "GA" 并不意味着与现有 Application Insights Sdk 之间存在功能的奇偶校验。 Azure Monitor 将继续向需要[预聚合指标](app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)、[实时指标](app/live-stream.md)、[自适应采样](app/sampling.md#adaptive-sampling)、[探查器](app/profiler-overview.md)和[快照调试程序](app/snapshot-debugger.md)功能的客户推荐我们当前的 Application Insights SDK，直到 OpenTelemetry SDK 达到功能成熟。
 
-### <a name="can-i-use-preview-builds-in-production-environments"></a>能否在生产环境中使用预览版？
+### <a name="can-i-use-preview-builds-in-production-environments"></a>我是否可以在生产环境中使用预览版？
 
 不建议使用此方法。 有关详细信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 。
 
 ### <a name="whats-the-difference-between-opentelemetry-sdk-and-auto-instrumentation"></a>OpenTelemetry SDK 与自动检测之间有何区别？
 
-OpenTelemetry 规范定义 [SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#telemetry-sdk)。 简而言之，"SDK" 是特定于语言的包，它在应用程序的各个组件之间收集遥测数据，并通过导出程序将数据发送到 Azure Monitor。
+OpenTelemetry 规范定义了 [SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#telemetry-sdk)。 简而言之，"SDK" 是特定于语言的包，它在应用程序的各个组件之间收集遥测数据，并通过导出程序将数据发送到 Azure Monitor。
 
-自动检测 (的概念有时称为 "字节码注入"、"无代码置备" 或 "基于代理的) " 是指在不更改代码的情况下检测应用程序的功能。 例如，有关详细信息，请参阅 [OpenTelemetry Java 自动检测自述文件](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/master/README.md) 。
+自动检测（有时称为字节码注入、无代码或基于代理）的概念指在不更改代码的情况下检测应用程序的功能。 例如，查看 [OpenTelemetry Java 自动检测自述文件](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/master/README.md)了解详细信息。
 
 ### <a name="whats-the-opentelemetry-collector"></a>什么是 OpenTelemetry 收集器？
 
-OpenTelemetry 收集器在其 [GitHub 自述文件](https://github.com/open-telemetry/opentelemetry-collector#opentelemetry-collector)中进行了介绍。 目前，Microsoft 不使用 OpenTelemetry 收集器，它依赖于发送到 Azure Monitor Application Insights 的直接导出程序。
+相应 [GitHub 自述文件](https://github.com/open-telemetry/opentelemetry-collector#opentelemetry-collector)中介绍了 OpenTelemetry Collector。 目前，Microsoft 不使用 OpenTelemetry 收集器，它依赖于发送到 Azure Monitor Application Insights 的直接导出程序。
 
 ### <a name="whats-the-difference-between-opencensus-and-opentelemetry"></a>OpenCensus 和 OpenTelemetry 之间的区别是什么？
 
-[OpenCensus](https://opencensus.io/) 是 [OpenTelemetry](https://opentelemetry.io/)的前提。 Microsoft 帮助将 [OpenTracing](https://opentracing.io/) 和 OpenCensus 结合起来，创建 OpenTelemetry，这是世界上单个可观察性标准。 Azure Monitor 的当前 [生产环境-建议的 PYTHON SDK](app/opencensus-python.md) 基于 OpenCensus，但最终所有 Azure Monitor 的 sdk 都基于 OpenTelemetry。
+[OpenCensus](https://opencensus.io/) 是 [OpenTelemetry](https://opentelemetry.io/) 的前身。 Microsoft 帮助整合 [OpenTracing](https://opentracing.io/) 和 OpenCensus 用于创建 OpenTelemetry，OpenTelemetry 是全球唯一的可观测性标准。 Azure Monitor 的当前 [生产环境-建议的 PYTHON SDK](app/opencensus-python.md) 基于 OpenCensus，但最终所有 Azure Monitor 的 sdk 都基于 OpenTelemetry。
 
 
 ## <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
@@ -684,9 +686,9 @@ ContainerInventory 表包含已停止和正在运行的容器的信息。 此表
 
 如果收到“缺少 Microsoft.OperationsManagement 的订阅注册”错误，可通过在定义工作区的订阅中注册资源提供程序 Microsoft.OperationsManagement 来解决它 。 可以在[此处](../azure-resource-manager/templates/error-register-resource-provider.md)找到介绍如何执行此操作的文档。
 
-### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>是否支持 Kubernetes RBAC 启用 AKS 群集？
+### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>是否支持启用了 Kubernetes RBAC 的 AKS 群集？
 
-容器监视解决方案不支持 Kubernetes RBAC，但对于容器 Azure Monitor 支持。 在显示这些群集的数据的边栏选项卡上，解决方案详细信息页可能不会显示正确的信息。
+容器监视解决方案不支持 Kubernetes RBAC，但用于容器的 Azure Monitor 支持 Kubernetes RBAC。 在显示这些群集的数据的边栏选项卡上，解决方案详细信息页可能不会显示正确的信息。
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>如何通过 Helm 为 kube-system 命名空间中的容器启用日志收集？
 

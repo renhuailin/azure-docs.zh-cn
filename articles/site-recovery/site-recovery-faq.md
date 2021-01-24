@@ -4,12 +4,12 @@ description: 本文讨论有关 Azure Site Recovery 的常见问题。
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ca30f9ba190dfa3c7e224e47b90be4d3bc5d47ae
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109549"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746469"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>有关 Azure Site Recovery 的一般问题
 
@@ -274,7 +274,7 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。
 由于包含额外内容，因此应用一致性快照涉及最多且耗时最长。 我们建议对数据库操作系统以及 SQL Server 等应用程序使用应用程序一致性恢复点。
 
 >[!Note]
->如果 Windows 计算机上的卷超过64个，则在 Windows 计算机上创建与应用程序一致的恢复点将失败。
+>如果 Windows 计算机上的卷超过 64 个，则在该计算机上创建应用程序一致性恢复点将失败。
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>应用程序一致性恢复点对应用程序性能有何影响？
 
@@ -344,6 +344,14 @@ Azure 具有复原能力。 Site Recovery 已能够根据 Azure SLA 故障转移
 
 * [对于 VMware 虚拟机](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [针对 Hyper-V 虚拟机](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
+
+### <a name="what-is-the-difference-between-complete-migration-commit-and-disable-replication"></a>完成迁移、提交和禁用复制之间有何区别？
+
+一旦从源位置将计算机故障转移到目标位置，就可以选择三个选项。 这三种服务都不同，
+
+1.  "**完成迁移**" 意味着你将不再返回到源位置。 你已迁移到目标区域，现在你已经完成了。 单击 "完成迁移" 时，将在内部提交并禁用复制。 
+2.  **Commit** 表示这不是复制过程的结束。 将保留复制项和所有配置，并且你可以在以后的某个时间点进行 **重新保护** ，以便将你的计算机复制回源区域。 
+3.  **禁用复制** 将禁用复制并删除所有相关配置。 它不会影响目标区域中已有的计算机。
 
 ## <a name="automation"></a>自动化
 

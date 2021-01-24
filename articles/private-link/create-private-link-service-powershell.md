@@ -5,14 +5,14 @@ services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: how-to
-ms.date: 01/20/2021
+ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: 66ad5aae9f8175d154bb07a8b112dada175a205a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: e8d76e12dea27338e965d8e77871427e9dfabf23
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610057"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746673"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 创建专用链接服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "98610057"
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 本地安装的 Azure PowerShell 或 Azure Cloud Shell
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -156,7 +156,11 @@ $ipsettings = @{
 $ipconfig = New-AzPrivateLinkServiceIpConfig @ipsettings
 
 ## Place the load balancer frontend configuration into a variable. ##
-$fe = Get-AzLoadBalancer -Name 'myLoadBalancer' | Get-AzLoadBalancerFrontendIpConfig
+$par = @{
+    Name = 'myLoadBalancer'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$fe = Get-AzLoadBalancer @par | Get-AzLoadBalancerFrontendIpConfig
 
 ## Create the private link service for the load balancer. ##
 $privlinksettings = @{
@@ -167,6 +171,129 @@ $privlinksettings = @{
     IpConfiguration = $ipconfig
 }
 New-AzPrivateLinkService @privlinksettings
+
+```
+
+专用链接服务已创建，可接收流量。 若要查看流量流，请将应用程序配置到标准负载均衡器的后面。
+
+## <a name="create-private-endpoint"></a>创建专用终结点
+
+在本部分中，将专用链接服务映射到专用终结点。 虚拟网络包含专用链接服务的专用终结点。 此虚拟网络包含将访问专用链接服务的资源。
+
+### <a name="create-private-endpoint-virtual-network"></a>创建专用终结点虚拟网络
+
+* 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。
+
+```azurepowershell-interactive
+## Create backend subnet config ##
+$subnet = @{
+    Name = 'mySubnetPE'
+    AddressPrefix = '11.1.0.0/24'
+    PrivateEndpointNetworkPolicies = 'Disabled'
+}
+$subnetConfig = New-AzVirtualNetworkSubnetConfig @subnet 
+
+## Create the virtual network ##
+$net = @{
+    Name = 'myVNetPE'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    AddressPrefix = '11.1.0.0/16'
+    Subnet = $subnetConfig
+}
+$vnetpe = New-AzVirtualNetwork @net
+
+```
+
+### <a name="create-endpoint-and-connection"></a>创建终结点和连接
+
+* 使用 [AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) 将您之前创建的私有链接服务的配置置于变量中供以后使用。
+
+* 使用 [AzPrivateLinkServiceConnection](/powershell/module/az.network/new-azprivatelinkserviceconnection) 创建连接配置。
+
+* 使用 [AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) 创建终结点。
+
+
+
+```azurepowershell-interactive
+## Place the private link service configuration into variable. ##
+$par1 = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$pls = Get-AzPrivateLinkService @par1
+
+## Create the private link configuration and place in variable. ##
+$par2 = @{
+    Name = 'myPrivateLinkConnection'
+    PrivateLinkServiceId = $pls.Id
+}
+$plsConnection = New-AzPrivateLinkServiceConnection @par2
+
+## Place the virtual network into a variable. ##
+$par3 = @{
+    Name = 'myVNetPE'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$vnetpe = Get-AzVirtualNetwork @par3
+
+## Create private endpoint ##
+$par4 = @{
+    Name = 'MyPrivateEndpoint'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    Subnet = $vnetpe.subnets[0]
+    PrivateLinkServiceConnection = $plsConnection
+}
+New-AzPrivateEndpoint @par4 -ByManualRequest
+```
+
+### <a name="approve-the-private-endpoint-connection"></a>批准专用终结点连接
+
+在本部分中，你将批准在之前步骤中创建的连接。
+
+* 使用 [AzPrivateEndpointConnection](/powershell/module/az.network/approve-azprivateendpointconnnection) 批准连接。
+
+```azurepowershell-interactive
+## Place the private link service configuration into variable. ##
+$par1 = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$pls = Get-AzPrivateLinkService @par1
+
+$par2 = @{
+    Name = $pls.PrivateEndpointConnections[0].Name
+    ServiceName = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Description = 'Approved'
+}
+Approve-AzPrivateEndpointConnection @par2
+
+```
+
+### <a name="ip-address-of-private-endpoint"></a>专用终结点的 IP 地址
+
+在本部分中，你将找到与负载均衡器和专用链接服务对应的专用终结点的 IP 地址。
+
+* 使用 [AzPrivateEndpoint](/powershell/module/az.network/get-azprivateendpoint) 检索 IP 地址。
+
+```azurepowershell-interactive
+## Get private endpoint and the IP address and place in a variable for display. ##
+$par1 = @{
+    Name = 'myPrivateEndpoint'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    ExpandResource = 'networkinterfaces'
+}
+$pe = Get-AzPrivateEndpoint @par1
+
+## Display the IP address by expanding the variable. ##
+$pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
+```
+
+```bash
+❯ $pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
+11.1.0.4
 ```
 
 ## <a name="clean-up-resources"></a>清理资源

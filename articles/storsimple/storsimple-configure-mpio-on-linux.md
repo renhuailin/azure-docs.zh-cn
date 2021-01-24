@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 6584b2ecc54efd257bb30c479fd0f22150e8d9e1
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 2b7ddf6423db4c471ee2065635f4e3e89f7eb7b2
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608582"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745727"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
 本文说明在 Centos 6.6 主机服务器上配置多路径 IO (MPIO) 所要执行的步骤。 主机服务器已连接到 Microsoft Azure StorSimple 设备，以通过 iSCSI 发起程序获得高可用性。 本文详细描述多路径设备的自动发现，以及仅适用于 StorSimple 卷的特定设置。
@@ -21,10 +21,6 @@ ms.locfileid: "96608582"
 
 > [!NOTE]
 > 此过程不可用于 StorSimple 云设备。 有关详细信息，请参阅“如何为云设备配置主机服务器”。
-
-> [!NOTE]
-> 本文包含对字词 *黑名单* 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
-
 
 ## <a name="about-multipathing"></a>关于多路径
 使用多路径功能可在主机服务器与存储设备之间配置多个 I/O 路径。 这些 I/O 路径是可以包含不同电缆、交换机、网络接口和控制器的物理 SAN 连接。 多路径聚合了 I/O 路径，可配置与所有聚合路径关联的新设备。
@@ -54,7 +50,7 @@ multipath.conf 包括五个节：
 
 - **系统级默认值** *(defaults)*：可以覆盖系统级默认值。
 - **列入方块列表的设备** *(blacklist)*：可以指定不应受 device-mapper 控制的设备列表。
-- **方块列表异常** *(blacklist_exceptions)*：可以识别要被视为多路径设备的特定设备，即使这些设备已列入方块列表。
+- *Blacklist_exceptions) 中 (***黑名单例外**：你可以确定要视为多路径设备的特定设备，即使阻止列表中列出。
 - **存储控制器特定的设置** *(devices)*：可以指定要应用到设备的配置设置（包含供应商和产品信息）。
 - **设备特定的设置** *(multipaths)*：可以使用此节微调单个 LUN 的配置设置。
 
@@ -215,12 +211,12 @@ StorSimple 设备应该：
     ```
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>步骤 2：为 StorSimple 卷配置多路径
-默认情况下，所有设备都已列入 multipath.conf 文件中的方块列表，因而会被绕过。 必须创建方块列表例外，允许 StorSimple 设备中的卷启动多路径。
+默认情况下，所有设备都在列入阻止列表文件中进行了设置，并且将被绕过。 需要创建阻止列表例外，以允许 StorSimple 设备中的卷具有多路径。
 
 1. 编辑 `/etc/mulitpath.conf` 文件。 类型：
    
     `vi /etc/multipath.conf`
-1. 在 multipath.conf 文件中找到 blacklist_exceptions 节。 在此节中，需要将 StorSimple 设备列为方块列表例外。 可按如下所示在此文件中取消注释相关行，以修改此文件（仅使用所用设备的特定型号）：
+1. 在 multipath.conf 文件中找到 blacklist_exceptions 节。 StorSimple 设备需要在此部分中作为阻止列表异常列出。 可按如下所示在此文件中取消注释相关行，以修改此文件（仅使用所用设备的特定型号）：
    
     ```config
     blacklist_exceptions {
@@ -337,17 +333,17 @@ StorSimple 设备应该：
 ## <a name="troubleshoot-multipathing"></a>排查多路径问题
 如果在配置多路径期间遇到任何问题，请参阅本部分提供的一些有用提示。
 
-问： `multipath.conf` 文件中的更改未生效。
+Q. `multipath.conf` 文件中的更改未生效。
 
 A. 对 `multipath.conf` 文件进行任何更改后，需要重新启动多路径服务。 键入以下命令：
 
 `service multipathd restart`
 
-问： 我在 StorSimple 设备上启用了两个网络接口并在主机上启用了两个网络接口。 但列出可用路径时，只看到两个路径。 我原本以为能够看到四个可用路径。
+Q. 我在 StorSimple 设备上启用了两个网络接口并在主机上启用了两个网络接口。 但列出可用路径时，只看到两个路径。 我原本以为能够看到四个可用路径。
 
 A. 请确保这两个路径位于同一子网且可路由。 如果网络接口位于不同的 vLAN 且不可路由，则只会显示两个路径。 验证方法之一是确定是否可从 StorSimple 设备上的网络接口访问这两个主机接口。 需要[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)，因为这种验证只能通过支持会话完成。
 
-问： 列出可用路径时，未看到任何输出。
+Q. 列出可用路径时，未看到任何输出。
 
 A. 通常情况下，不会看到任何多路径路径会给出有关多路径后台程序的问题，很有可能是该文件中存在问题 `multipath.conf` 。
 
@@ -380,7 +376,7 @@ A. 通常情况下，不会看到任何多路径路径会给出有关多路径�
 `iscsiadm -m node --login -T <TARGET_IQN>`
 
 
-问： 我不确定是否允许设备。
+Q. 我不确定是否允许设备。
 
 A. 若要验证是否允许您的设备，请使用以下疑难解答交互式命令：
 
@@ -426,7 +422,7 @@ dm-3 devnode blacklisted, unmonitored
 有关详细信息，请参阅多 [路径故障排除](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)。
 
 ## <a name="list-of-useful-commands"></a>有用命令列表
-| 类型 | 命令 | 描述 |
+| 类型 | 命令 | 说明 |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |启动 iSCSI 服务 |
 | &nbsp; |`service iscsid stop` |停止 iSCSI 服务 |

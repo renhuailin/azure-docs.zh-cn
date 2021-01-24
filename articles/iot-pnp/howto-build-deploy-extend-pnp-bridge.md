@@ -1,27 +1,26 @@
 ---
-title: 如何即插即用 bridge 构建、部署和扩展 IoT |Microsoft Docs
-description: 标识 IoT 即插即用 bridge 组件。 了解如何扩展桥，以及如何在 IoT 设备、网关和 IoT Edge 模块上运行它。
+title: 如何生成和部署 IoT 即插即用 bridge |Microsoft Docs
+description: 标识 IoT 即插即用 bridge 组件。 了解如何在 IoT 设备、网关和 IoT Edge 模块上运行它。
 author: usivagna
 ms.author: ugans
-ms.date: 12/11/2020
+ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 43c89b0fac08bf9f2c72f885fbf4788371876b17
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b7947eab93ebc8e523e163af601893522132e06a
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678570"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745661"
 ---
-# <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>构建、部署和扩展 IoT 即插即用 bridge
+# <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>生成并部署 IoT 即插即用 bridge
 
-IoT 即插即用桥允许将连接到网关的现有设备连接到 IoT 中心。 使用桥将 IoT 即插即用接口映射到连接的设备。 IoT 即插即用接口定义设备发送的遥测、设备与云之间同步的属性，以及设备所响应的命令。 可以在 Windows 或 Linux 网关上安装和配置开源桥接应用程序。
+[Iot 即插即用桥](concepts-iot-pnp-bridge.md#iot-plug-and-play-bridge-architecture)允许将连接到网关的现有设备连接到 IoT 中心。 使用桥将 IoT 即插即用接口映射到连接的设备。 IoT 即插即用接口定义设备发送的遥测、设备与云之间同步的属性，以及设备所响应的命令。 可以在 Windows 或 Linux 网关上安装和配置开源桥接应用程序。 此外，桥可以作为 Azure IoT Edge 运行时模块运行。
 
 本文详细说明如何执行以下操作：
 
 - 配置桥。
-- 通过创建新的适配器来扩展桥。
 - 如何在各种环境中生成并运行桥接。
 
 有关演示如何使用桥的简单示例，请参阅 [如何将在 Linux 或 Windows 上运行的 IoT 即插即用 bridge 示例连接到 Iot 中心](howto-use-iot-pnp-bridge.md)。
@@ -77,97 +76,6 @@ GitHub 存储库中提供了 [配置文件架构](https://github.com/Azure/iot-p
 ### <a name="iot-edge-module-configuration"></a>IoT Edge 模块配置
 
 当桥作为 IoT Edge 运行时的 IoT Edge 模块运行时，将从云中发送配置文件作为 `PnpBridgeConfig` 所需属性的更新。 桥在配置适配器和组件之前，会等待此属性更新。
-
-## <a name="extend-the-bridge"></a>扩展桥
-
-若要扩展桥的功能，可以创作自己的桥接适配器。
-
-桥使用适配器执行以下操作：
-
-- 建立设备和云之间的连接。
-- 启用设备和云之间的数据流。
-- 从云中启用设备管理。
-
-每个桥接适配器必须：
-
-- 创建数字孪生接口。
-- 使用接口可将设备端功能绑定到基于云的功能，如遥测、属性和命令。
-- 与设备硬件或固件建立控制和数据通信。
-
-每个桥接适配器都可以根据适配器连接到设备以及与设备交互的方式与特定类型的设备进行交互。 即使与设备的通信使用握手协议，桥适配器也可以通过多种方式来解释设备中的数据。 在这种情况下，桥适配器使用配置文件中的适配器信息来确定适配器用于分析数据的 *接口配置* 。
-
-若要与设备交互，桥接适配器使用由基础操作系统或设备供应商提供的设备和 Api 所支持的通信协议。
-
-为了与云交互，桥接适配器使用 Azure IoT 设备 C SDK 提供的 Api 发送遥测数据，创建数字克隆接口，发送属性更新，并为属性更新和命令创建回调函数。
-
-### <a name="create-a-bridge-adapter"></a>创建桥适配器
-
-桥需要桥接适配器来实现 [_PNP_ADAPTER](https://github.com/Azure/iot-plug-and-play-bridge/blob/9964f7f9f77ecbf4db3b60960b69af57fd83a871/pnpbridge/src/pnpbridge/inc/pnpadapter_api.h#L296) 接口中定义的 api：
-
-```c
-typedef struct _PNP_ADAPTER {
-  // Identity of the IoT Plug and Play adapter that is retrieved from the config
-  const char* identity;
-
-  PNPBRIDGE_ADAPTER_CREATE createAdapter;
-  PNPBRIDGE_COMPONENT_CREATE createPnpComponent;
-  PNPBRIDGE_COMPONENT_START startPnpComponent;
-  PNPBRIDGE_COMPONENT_STOP stopPnpComponent;
-  PNPBRIDGE_COMPONENT_DESTROY destroyPnpComponent;
-  PNPBRIDGE_ADAPTER_DESTOY destroyAdapter;
-} PNP_ADAPTER, * PPNP_ADAPTER;
-```
-
-在此界面中：
-
-- `PNPBRIDGE_ADAPTER_CREATE` 创建适配器并设置接口管理资源。 适配器还可以依赖于全局适配器参数来创建适配器。 对于单个适配器，将调用此函数一次。
-- `PNPBRIDGE_COMPONENT_CREATE` 创建数字克隆客户端接口并绑定回调函数。 适配器启动到设备的通信通道。 适配器可以设置资源来启用遥测流，但在调用之前，不会开始报告遥测 `PNPBRIDGE_COMPONENT_START` 。 为配置文件中的每个接口组件调用一次此函数。
-- `PNPBRIDGE_COMPONENT_START` 调用以让桥接适配器开始将遥测数据从设备转发到数字克隆客户端。 为配置文件中的每个接口组件调用一次此函数。
-- `PNPBRIDGE_COMPONENT_STOP` 停止遥测流。
-- `PNPBRIDGE_COMPONENT_DESTROY` 销毁数字克隆客户端和关联的接口资源。 当桥断开或发生错误时，将为配置文件中的每个接口组件调用一次此函数。
-- `PNPBRIDGE_ADAPTER_DESTROY` 清理桥适配器资源。
-
-### <a name="bridge-core-interaction-with-bridge-adapters"></a>桥接与桥接适配器的内核交互
-
-以下列表概述了桥启动时将发生的情况：
-
-1. 桥启动后，桥接程序管理器将查找配置文件中定义的每个接口组件，并 `PNPBRIDGE_ADAPTER_CREATE` 在相应的适配器上调用。 适配器可以使用全局适配器配置参数设置资源来支持各种 *接口配置*。
-1. 对于配置文件中的每个设备，桥管理器会通过 `PNPBRIDGE_COMPONENT_CREATE` 在相应的桥接适配器中调用来启动接口创建。
-1. 适配器接收接口组件的任何可选适配器配置设置，并使用此信息设置与设备的连接。
-1. 适配器将创建数字克隆客户端接口，并将回调函数绑定到属性更新和命令。 建立设备连接应在数字克隆接口创建成功后阻止回调的返回。 活动设备连接独立于桥创建的活动接口客户端。 如果连接失败，适配器将假定设备处于非活动状态。 桥适配器可以选择重新尝试建立此连接。
-1. 桥接适配器管理器创建了配置文件中指定的所有接口组件后，它会将所有接口注册到 Azure IoT 中心。 注册是一种阻止的异步调用。 当调用完成时，它会触发桥接程序中的回调，然后即可开始处理云中的属性和命令回调。
-1. 然后，桥接适配器管理器对 `PNPBRIDGE_INTERFACE_START` 每个组件调用，桥接适配器开始向数字克隆客户端报告遥测数据。
-
-### <a name="design-guidelines"></a>设计准则
-
-开发新的桥接适配器时，请遵循以下准则：
-
-- 确定支持哪些设备功能，以及使用此适配器的组件的接口定义。
-- 确定适配器需要在配置文件中定义的接口和全局参数。
-- 确定支持组件属性和命令所需的低级设备通信。
-- 确定适配器应如何分析设备中的原始数据，并将其转换为 IoT 即插即用接口定义指定的遥测类型。
-- 实现前面所述的桥适配器接口。
-- 将新适配器添加到适配器清单并构建桥。
-
-### <a name="enable-a-new-bridge-adapter"></a>启用新的桥接适配器
-
-通过在 [adapter_manifest](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/shared/adapter_manifest.c)中添加引用来启用桥中的适配器：
-
-```c
-  extern PNP_ADAPTER MyPnpAdapter;
-  PPNP_ADAPTER PNP_ADAPTER_MANIFEST[] = {
-    .
-    .
-    &MyPnpAdapter
-  }
-```
-
-> [!IMPORTANT]
-> 桥接适配器回调按顺序调用。 适配器不应阻止回调，因为这会阻止桥接核心进行进度。
-
-### <a name="sample-camera-adapter"></a>照相机适配器示例
-
-[照相机适配器自述文件](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/Camera/readme.md)介绍了可以启用的示例照相机适配器。
 
 ## <a name="build-and-run-the-bridge-on-an-iot-device-or-gateway"></a>在 IoT 设备或网关上构建并运行桥
 
@@ -378,7 +286,6 @@ git submodule update --init --recursive
 打开 *pnpbridge\Dockerfile.amd64* 文件。 编辑环境变量定义，如下所示：
 
 ```dockerfile
-ENV IOTHUB_DEVICE_CONNECTION_STRING="{Add your device connection string here}"
 ENV PNP_BRIDGE_ROOT_MODEL_ID="dtmi:com:example:RootPnpBridgeSampleDevice;1"
 ENV PNP_BRIDGE_HUB_TRACING_ENABLED="false"
 ENV IOTEDGE_WORKLOADURI="something"

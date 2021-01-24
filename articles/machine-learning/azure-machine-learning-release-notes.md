@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 38f37ff2fe150a9e1998fbe5e963b8737a6e1533
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 11aa739beeb07c3de056d8a2430b556fcc40b178
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737959"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746724"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -493,8 +493,8 @@ ms.locfileid: "98737959"
     + 用户现在可以使用 `freq` 参数指定一个用于预测任务的时序频率。
   + **azureml-train-automl-runtime**
     + 改进了最佳模型解释失败时的控制台输出。
-    + 已将“blacklist_models”输入参数重命名为“blocked_models”。
-      + 已将“whitelist_models”输入参数重命名为“allowed_models”。
+    + 已将输入参数重命名为 "blocked_models" 以删除敏感术语。
+      + 已将输入参数重命名为 "allowed_models" 以删除敏感术语。
     + 用户现在可以使用 `freq` 参数指定一个用于预测任务的时序频率。
 
   

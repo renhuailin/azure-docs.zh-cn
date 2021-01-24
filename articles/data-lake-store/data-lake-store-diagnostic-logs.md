@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: aac0139e09866ce44d25989119b2eafb31e76961
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 07bf22cfc683d8c6f2c765364334ed1594e2fdaa
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610448"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745878"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>访问 Azure Data Lake Storage Gen1 的诊断日志
 了解如何启用 Azure Data Lake Storage Gen1 帐户诊断日志记录以及如何查看为帐户收集的日志。
 
 组织可以为其 Azure Data Lake Storage Gen1 帐户启用诊断日志记录，以收集数据访问审核跟踪，以提供信息，如访问数据的用户列表、访问数据的频率、存储在帐户中的数据量等。启用后，会尽力记录诊断和/或请求。 仅在针对服务终结点发出请求时才会创建请求和诊断日志条目。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。
 
@@ -50,7 +50,7 @@ ms.locfileid: "98610448"
      
    * 指定是要获取审核日志还是请求日志，或者两者。
    * 指定数据必须保留的天数。 保留期仅在使用 Azure 存储帐户存档日志数据时才适用。
-   * 单击“保存”。
+   * 单击“保存” 。
 
 启用诊断设置后，可在“诊断日志”选项卡中查看日志。
 
@@ -106,7 +106,7 @@ ms.locfileid: "98610448"
         "callerIpAddress": "::ffff:1.1.1.1",
         "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
         "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
+        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"StoreIngressSize":0 ,"StoreEgressSize":4096,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z","QueryParameters":"api-version=<version>&op=<operationName>"}
     }
     ,
     . . . .
@@ -138,6 +138,7 @@ ms.locfileid: "98610448"
 | EndTime |字符串 |服务器发送响应的时间 |
 | StoreIngressSize |Long |要 Data Lake Store 的大小（以字节为单位）引入 |
 | StoreEgressSize |Long |Data Lake Store 的大小（以字节为单位）出口 |
+| QueryParameters |字符串 |说明： http 查询参数。 示例1： api 版本 = 2014-01-01&op = getfilestatus 示例2： op = APPEND&append = true&syncFlag = DATA&filesessionid = bee3355a-4925-4435-bb4d-ceea52811aeb&leaseid = bee3355a-4925-4435-bb4d ceea52811aeb&偏移 = 28313319&api 版本 = 2017-08-01 |
 
 ### <a name="audit-logs"></a>审核日志
 此处是 JSON 格式的审核日志中的一个示例条目。 每个 Blob 具有一个名为 **records** 的根对象，该对象包含一组日志对象

@@ -2,18 +2,18 @@
 title: 有关 Azure 中的 FHIR 服务的常见问题解答 - Azure API for FHIR
 description: 获取有关 Azure API for FHIR 的常见问题（例如 FHIR API 后面的数据的存储位置以及版本支持）的解答。
 services: healthcare-apis
-author: matjazl
+author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 08/03/2020
-ms.author: matjazl
-ms.openlocfilehash: bd6f32213a511987c0508dcc954252b2fd4e48f6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 1/21/2021
+ms.author: cavoeg
+ms.openlocfilehash: 4d071af6f72bfe6136296185e65007d2413ed2c4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737585"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746707"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>有关 Azure API for FHIR 的常见问题解答
 

@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2021
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 906879c44a2d7a3248f3d3ac0c9fec7ced7f2a4f
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570076"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746537"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷
 
@@ -62,7 +62,13 @@ Azure NetApp 卷的吞吐量是卷大小和服务级别的函数，如 [Azure Ne
 
 下表说明了创建大的 "标准" 卷来存储备份，并且创建大于 12 TB 的 "超" 卷是有意义的，因为将会超出单个 LIF 的物理带宽容量。 
 
-LIF 和单个 Linux 会话的最大吞吐量介于1.2 到 1.4 GB/秒之间。 
+LIF 和单个 Linux 会话的最大吞吐量介于1.2 到 1.4 GB/秒之间。 如果需要更大的/hana/data 吞吐量，可以使用 SAP HANA 数据量分区在多个 NFS 共享上跨多个 HANA 数据文件进行数据重载或 HANA 保存点操作，从而将 i/o 活动条带化。 有关 HANA 数据卷条带化的更多详细信息，请阅读以下文章：
+
+- [HANA 管理员指南](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [有关 SAP HANA 的博客–分区数据卷](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP 说明 #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP 说明 #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
 
 | 大小  | 吞吐量标准 | 吞吐量高级 | 超吞吐量 |
 | --- | --- | --- | --- |

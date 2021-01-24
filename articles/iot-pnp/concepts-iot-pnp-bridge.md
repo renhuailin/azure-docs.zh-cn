@@ -3,17 +3,17 @@ title: IoT 即插即用 bridge |Microsoft Docs
 description: 了解 IoT 即插即用 bridge 以及如何使用它将连接到 Windows 或 Linux 网关的现有设备连接为 IoT 即插即用设备。
 author: usivagna
 ms.author: ugans
-ms.date: 09/22/2020
+ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 34af380d057ad47811e394da1e7a29198e102920
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 05b9df2c5083d24ae6a78212bdd29cd1c740e1d1
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672774"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746486"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT 即插即用桥接
 
@@ -36,7 +36,7 @@ IoT 即插即用 bridge 可以作为独立的可执行文件部署在运行 Wind
 |[SerialPnP 适配器](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/serialpnp/Readme.md) 连接通过串行连接进行通信的设备。               |是|是|
 |[WINDOWS USB 外设](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/coredevicehealth_adapter.md) 使用适配器支持的设备接口类的列表来连接具有特定硬件 ID 的设备。  |是|不适用|
 
-若要了解如何扩展 IoT 即插即用 bridge 以支持其他设备协议，请参阅 [生成、部署和扩展 iot 即插即用 bridge](howto-build-deploy-extend-pnp-bridge.md)。
+若要了解如何扩展 IoT 即插即用 bridge 以支持其他设备协议，请参阅 [扩展 iot 即插即用 bridge](howto-author-pnp-bridge-adapter.md)。 若要了解如何生成和部署 IoT 即插即用 bridge，请参阅 [生成和部署 iot 即插即用 bridge](howto-build-deploy-extend-pnp-bridge.md)。
 
 ## <a name="iot-plug-and-play-bridge-architecture"></a>IoT 即插即用 bridge 体系结构
 
@@ -148,6 +148,7 @@ IoT 即插即用 bridge 使用基于 JSON 的配置文件，该文件指定：
 
 现在，你已大致了解 IoT 即插即用 bridge 的体系结构，接下来的步骤是详细了解以下内容：
 
-- [如何使用 IoT 即插即用 bridge](./howto-use-iot-pnp-bridge.md)
-- [构建、部署和扩展 IoT 即插即用 bridge](howto-build-deploy-extend-pnp-bridge.md)
+- [如何将在 Linux 或 Windows 上运行的 IoT 即插即用 bridge 示例连接到 IoT 中心](./howto-use-iot-pnp-bridge.md)
+- [构建和部署 IoT 即插即用 bridge](howto-build-deploy-extend-pnp-bridge.md)
+- [扩展 IoT 即插即用 bridge](howto-build-deploy-extend-pnp-bridge.md)
 - [GitHub 上的 IoT 即插即用桥](https://github.com/Azure/iot-plug-and-play-bridge)
