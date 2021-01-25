@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 01/22/2021
+ms.openlocfilehash: a4d1543c5c4ce7a44825a879b838e7829b8c84fd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936118"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760637"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>概述： Azure 逻辑应用预览
 
@@ -108,7 +108,7 @@ Azure 逻辑应用预览运行时使用 [Azure Functions](../azure-functions/fun
 |-----------------|----------------|----------------|
 | 有状态 | 有状态 | 带有设置的异步或同步 `"operationOptions": "DisableAsyncPattern"` |
 | 有状态 | 无状态 | 触发器并等待 |
-| 无状态 | 有状态 | Synchronous |
+| 无状态 | 有状态 | 同步 |
 | 无状态 | 无状态 | 触发器并等待 |
 ||||
 
@@ -138,6 +138,8 @@ Azure 逻辑应用预览包括许多当前功能和其他功能，例如：
 * 直接将逻辑应用及其工作流从 Visual Studio Code 发布或部署到各种宿主环境，例如 Azure 和 [Docker 容器](/dotnet/core/docker/introduction)。
 
 * 当你的 Azure 订阅和逻辑应用设置支持时，通过使用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 为逻辑应用启用诊断日志记录和跟踪功能。
+
+* 为 **逻辑应用 (预览)** 资源中的各个工作流使用的托管连接重新生成访问密钥。 对于此任务，请 [遵循 **逻辑应用** 资源的相同步骤，但在单独的工作流级别](logic-apps-securing-a-logic-app.md#regenerate-access-keys)，而不是逻辑应用资源级别。
 
 > [!NOTE]
 > 有关当前已知问题的信息，请查看 [GitHub 中的逻辑应用公共预览版已知问题页](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)。

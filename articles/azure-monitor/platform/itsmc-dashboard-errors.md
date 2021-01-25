@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 9521c13b21317bb0a782b0bea0b08312ff24b113
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610346"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762756"
 ---
-# <a name="errors-in-the-connector-status"></a>连接器状态中的错误
+# <a name="errors-in-the-connector-status-section"></a>"连接器状态" 部分中的错误
 
-在 "连接器状态" 列表中，可以找到可帮助解决 ITSM 连接器中的问题的错误。
+在仪表板的 "连接器状态列表" 部分中，可以找到可帮助解决 ITSM 连接器中的问题的错误。
 
 ## <a name="status-common-errors"></a>状态常见错误
 
-在本部分中，可以找到 "连接器状态" 部分中显示的常见错误以及应如何解决此错误：
+在本部分中，可以找到 "连接器状态" 部分中显示的常见错误以及如何解决这些错误：
 
 * **错误**： "从 ServiceNow 发出意外响应，以及成功状态代码。 响应： {"import_set"： "{import_set_id}"、"staging_table"： "x_mioms_microsoft_oms_incident"、"result"： [{"transform_map"： "OMS 事件"、"表"： "事件"、"状态"： "错误"、"error_message"： "{找不到目标记录 |无效的表 |临时表 "}" 无效
 
@@ -27,7 +27,7 @@ ms.locfileid: "98610346"
   * 在 ServiceNow 实例中部署的自定义脚本将导致事件被忽略。
   * 在 ServiceNow 端修改了 "OMS 集成器应用" 代码本身，例如 onBefore 脚本。
 
-  **解决方法**：禁用数据导入路径的所有自定义脚本或代码修改。
+  **解决方法**：禁用所有自定义脚本或代码修改。
 
 * **错误**： "{" 错误 "： {" message "：" 操作失败 "，" 详细信息 "：" 由于安全约束，ACL 异常更新失败 "
 
@@ -58,7 +58,7 @@ ms.locfileid: "98610346"
     **原因**：已删除 ITSM 连接器。
 
     **解决方法**：已删除 ITSM 连接器，但定义了与之相关联的 ITSM 操作组。 可以通过2个选项来解决此问题：
-  * 查找和禁用或删除此类操作
+  * 查找和禁用或删除此类操作组
   * [重新配置操作组](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) 以使用现有 ITSM 连接器。
   * [创建新的 ITSM 连接器](./itsmc-definition.md#create-an-itsm-connection) ，并 [重新配置操作组以使用该](itsmc-definition.md#create-itsm-work-items-from-azure-alerts)连接器。
 

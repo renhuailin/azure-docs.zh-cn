@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 群集中配置基�
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 14ec39272bf2f434aaa57217a90667a62e82901a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6b23bf285d89a5f3285825feef849b3d168ed62f
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183288"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762038"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service 上基于主机的加密 (AKS)  (预览) 
 
@@ -26,34 +26,32 @@ ms.locfileid: "96183288"
 ### <a name="prerequisites"></a>先决条件
 
 - 确保已 `aks-preview` 安装 CLI extension v 0.4.55 或更高版本
-- 确保 `EncryptionAtHost` 功能标志处于 `Microsoft.Compute` 启用状态。
 - 确保 `EnableEncryptionAtHostPreview` 功能标志处于 `Microsoft.ContainerService` 启用状态。
 
+为了能够为 VM 或虚拟机规模集使用主机加密，必须在订阅上启用该功能。 使用你的订阅 Id 向发送电子邮件 encryptionAtHost@microsoft.com ，以便为你的订阅启用该功能。
+
 ### <a name="register-encryptionathost--preview-features"></a>注册 `EncryptionAtHost`  预览功能
+
+> [!IMPORTANT]
+> encryptionAtHost@microsoft若要为计算资源启用该功能，必须通过电子邮件发送包含订阅 id 的电子邮件。 不能自行为这些资源启用此类资源。 你可以自行在容器服务上启用它。
 
 若要创建使用基于主机的加密的 AKS 群集，必须 `EnableEncryptionAtHostPreview` `EncryptionAtHost` 在订阅上启用和功能标志。
 
 `EncryptionAtHost`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
 
 ```azurecli-interactive
-az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
-
 az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
-
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 准备就绪后， `Microsoft.ContainerService` `Microsoft.Compute` 使用 [az provider register][az-provider-register] 命令刷新和资源提供程序的注册：
 
 ```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-
 az provider register --namespace Microsoft.ContainerService
 ```
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: a53857061110d5a77ac3d166277e7076f4f7f9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b006932aace3149dd94e136e334c1b6e5bfcef
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541367"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762714"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>训练 LUIS 应用的有效版本
 
@@ -40,9 +40,15 @@ ms.locfileid: "91541367"
 
 ## <a name="train-with-all-data"></a>使用所有数据进行训练
 
-训练使用一小部分负采样。 如果要使用所有数据而不是一小部分负采样，请使用 [API](#version-settings-api-use-of-usealltrainingdata)。
+训练使用一小部分负采样。 可以使用门户或 API 来使用所有可用的数据。 
 
-### <a name="version-settings-api-use-of-usealltrainingdata"></a>使用 UseAllTrainingData 的版本设置 API
+### <a name="using-the-luis-portal"></a>使用 LUIS 门户
+
+登录到 [LUIS 门户](https://www.luis.ai/) 并单击你的应用程序。 在屏幕顶部选择 " **管理** "，然后选择 " **设置** " 并启用或禁用 " **使用确定性培训** " 选项。 禁用后，训练将使用所有可用的数据。
+
+![用于启用或禁用非确定性定型的按钮](./media/non-determinstic-training.png)
+
+### <a name="using-the-version-settings-api"></a>使用版本设置 API
 
 使用[版本设置 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) 并将 `UseAllTrainingData` 设置为 true 可关闭此功能。
 
@@ -52,7 +58,7 @@ ms.locfileid: "91541367"
 
 ## <a name="training-with-the-rest-apis"></a>使用 REST API 进行训练
 
-在 LUIS 门户中进行训练是单个步骤，只需按下“训练”  按钮。 使用 REST API 进行训练是一个两步过程。 第一个步骤是通过 HTTP POST [请求训练](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)。 然后通过 HTTP Get 请求[训练状态](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46)。
+在 LUIS 门户中进行训练是单个步骤，只需按下“训练”按钮。 使用 REST API 进行训练是一个两步过程。 第一个步骤是通过 HTTP POST [请求训练](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)。 然后通过 HTTP Get 请求[训练状态](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46)。
 
 若要了解训练是何时完成的，必须对状态进行轮询，直至所有模型都成功训练。
 

@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 12ba8526be68d2cb15e37510e66f959ab65c6e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5118fa22a198ee6871a4cfb455e88d345d6a44e0
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85802011"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760854"
 ---
 # <a name="about-your-application"></a>关于你的应用程序
 
@@ -29,14 +29,16 @@ ms.locfileid: "85802011"
 
 1. 选择顶部菜单上的 " **帮助** " 链接。
 
-1. 选择 **应用**的 "关于"。
+1. 选择 **应用** 的 "关于"。
 
 1. " **关于应用** 程序" 页显示有关应用程序的信息：  
 
-    :::image type="content" source="media/howto-get-app-info/about-your-app.png" alt-text="关于应用屏幕截图&quot;:::
+    :::image type="content" source="media/howto-get-app-info/about-your-app.png" alt-text="关于应用屏幕截图":::
 
-    使用 &quot; **复制信息** " 按钮将信息复制到剪贴板。
+    使用 " **复制信息** " 按钮将信息复制到剪贴板。
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，你已经了解了如何查找 IoT Central 应用程序的版本，接下来建议的下一步是继续浏览管理员的操作方法文章： [更改 IoT Central 应用程序设置](howto-administer.md)。
+
+如果有 V2 应用程序，请参阅将 [V2 IoT Central 应用程序迁移到 V3](howto-migrate.md)。

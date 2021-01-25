@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: cd2a293ebcc35d4884211f50783738a502dcc7de
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 48ee05eebd91c60fa2cfecc80898d3be54367269
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854819"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762682"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -74,7 +74,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议
 
     关于 AD 站点和服务，请参阅[设计站点拓扑](/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
     
-* 可以通过选中 "[联接 Active Directory](#create-an-active-directory-connection) " 窗口中的 " **aes 加密**" 框为 SMB 卷启用 aes 加密。 Azure NetApp 文件支持从最低到最安全的)  (DES、Kerberos AES 128 和 Kerberos AES 256 加密类型。 如果启用 AES 加密，则用于联接 Active Directory 的用户凭据必须具有与为 Active Directory 启用的功能匹配的最高对应帐户选项。    
+* 可以通过选中 "[联接 Active Directory](#create-an-active-directory-connection) " 窗口中的 " **aes 加密**" 框为 AD 身份验证启用 aes 加密。 Azure NetApp 文件支持从最低到最安全的)  (DES、Kerberos AES 128 和 Kerberos AES 256 加密类型。 如果启用 AES 加密，则用于联接 Active Directory 的用户凭据必须具有与为 Active Directory 启用的功能匹配的最高对应帐户选项。    
 
     例如，如果 Active Directory 只有 AES-128 功能，则必须为用户凭据启用 AES-128 帐户选项。 如果 Active Directory 具有 256 AES 功能，则必须启用 "AES-256 帐户" 选项，该选项也支持 AES 128)  (。 如果 Active Directory 没有任何 Kerberos 加密功能，则默认情况下，Azure NetApp 文件使用 DES。  
 
@@ -178,7 +178,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
         检查功能注册的状态： 
 
         > [!NOTE]
-        > 在 **RegistrationState** 将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态 **注册** 后再继续。
+        > 在将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态 **注册** 后再继续。
 
         ```azurepowershell-interactive
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
@@ -200,7 +200,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
         检查功能注册的状态： 
 
         > [!NOTE]
-        > 在 **RegistrationState** 将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态 **注册** 后再继续。
+        > 在将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态 **注册** 后再继续。
 
         ```azurepowershell-interactive
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
@@ -222,7 +222,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
         检查功能注册的状态： 
 
         > [!NOTE]
-        > 在 **RegistrationState** 将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态 **注册** 后再继续。
+        > 在将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态 **注册** 后再继续。
 
         ```azurepowershell-interactive
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator

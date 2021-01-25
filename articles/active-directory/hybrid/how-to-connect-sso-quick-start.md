@@ -16,21 +16,18 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eadb20bc570545356508d82c05e1746424a14b71
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504383"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762253"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory 无缝单一登录：快速入门
 
 ## <a name="deploy-seamless-single-sign-on"></a>部署无缝单一登录
 
 Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录连接到企业网络的企业台式机的用户自动登录。 无缝 SSO 可让用户轻松访问基于云的应用程序，而无需使用其他任何本地组件。
-
-> [!NOTE]
-> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 要部署无缝 SSO，需要遵循以下步骤。
 
@@ -40,7 +37,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 * **设置 Azure AD Connect 服务器**：如果使用 [直通身份验证](how-to-connect-pta.md) 作为登录方法，则无需进行其他先决条件检查。 如果使用 [密码哈希同步](how-to-connect-password-hash-synchronization.md) 作为登录方法，并且 Azure AD Connect 和 Azure AD 之间存在防火墙，请确保：
    - 使用 Azure AD Connect 版本 1.1.644.0 或更高版本。 
-   - 如果你的防火墙或代理允许，则通过端口443将连接添加到 **\* msappproxy.net** url 的允许列表。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此先决条件仅适用于启用了该功能的情况。 无需用户实际登录。
+   - 如果你的防火墙或代理允许，则通过端口443将连接添加到 **\* msappproxy.net** url 的允许列表。 如果需要特定的 URL 而不是通配符来配置代理，则可以配置 **tenantid.registration.msappproxy.net**，其中 tenantid 是要在其中配置功能的租户的 GUID。 如果组织中不能使用基于 URL 的代理例外，则可以改为允许访问 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)，每周更新一次。 此先决条件仅适用于启用了该功能的情况。 无需用户实际登录。
 
     >[!NOTE]
     >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有密码哈希同步相关问题。 如果 _不_ 打算将密码哈希同步与直通身份验证结合使用，请阅读 [Azure AD Connect 发行说明](./reference-connect-version-history.md) 以了解详细信息。

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 01/21/2021
 ms.author: alkohli
-ms.openlocfilehash: f668136713024ba57d72bf5a457cd249742a3b11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09325289dd5cb83bfc26dd26b266d50b622fe098
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742020"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763088"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>排查 Azure Stack Edge Pro 问题
 
@@ -26,12 +26,13 @@ ms.locfileid: "91742020"
 > * 运行诊断
 > * 收集支持包
 > * 使用日志进行故障排除
+> * 排查 IoT Edge 错误
 
 ## <a name="run-diagnostics"></a>运行诊断
 
 若要诊断和排查任何设备错误，可以运行诊断测试。 在设备的本地 Web UI 中执行以下步骤，以运行诊断测试。
 
-1. 在本地 Web UI 中，转到“故障排除”>“诊断测试”。**** 选择要运行的测试，然后选择 " **运行测试**"。 这会运行测试来诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 系统会通知你设备正在运行测试。
+1. 在本地 Web UI 中，转到“故障排除”>“诊断测试”。 选择要运行的测试，然后选择 " **运行测试**"。 这会运行测试来诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 系统会通知你设备正在运行测试。
 
     ![选择测试](media/azure-stack-edge-troubleshoot/run-diag-1.png)
 
@@ -49,7 +50,7 @@ ms.locfileid: "91742020"
 
 执行以下步骤收集支持包。
 
-1. 在本地 Web UI 中，转到“故障排除”>“支持”。**** 选择 " **创建支持包**"。 系统随即开始收集支持包。 收集包可能需要几分钟时间。
+1. 在本地 Web UI 中，转到“故障排除”>“支持”。 选择 " **创建支持包**"。 系统随即开始收集支持包。 收集包可能需要几分钟时间。
 
     ![单击“添加用户”](media/azure-stack-edge-troubleshoot/collect-logs-1.png)
 
@@ -81,6 +82,10 @@ ms.locfileid: "91742020"
 3. 如果在示例) 中突出显示了此文件中的错误 (，请记下错误代码，在本例中为16001。 根据以下错误参考查找此错误代码的说明。
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
+
+## <a name="troubleshoot-iot-edge-errors"></a>排查 IoT Edge 错误
+
+[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

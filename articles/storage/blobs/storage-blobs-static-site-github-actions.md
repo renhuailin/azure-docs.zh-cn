@@ -9,22 +9,22 @@ ms.reviewer: dineshm
 ms.date: 01/11/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: d8727bd747ef6d035cabbccf2ad42b80937a06a8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: d3aa0ca83b28708fde81cba12993ac6e79e79a88
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180194"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760619"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>在 Azure 存储中设置 GitHub Actions 工作流以部署静态网站
 
-通过使用工作流将静态站点部署到 Azure 存储帐户，开始使用 [GitHub 操作](https://docs.github.com/en/free-pro-team@latest/actions) 。 设置 GitHub 操作工作流后，可以在更改网站的代码时，从 GitHub 自动将网站部署到 Azure。
+通过使用工作流将静态站点部署到 Azure 存储帐户，开始使用 [GitHub 操作](https://docs.github.com/en/actions) 。 设置 GitHub 操作工作流后，可以在更改网站的代码时，从 GitHub 自动将网站部署到 Azure。
 
 > [!NOTE]
 > 如果你使用的是 [Azure 静态 Web 应用](../../static-web-apps/index.yml)，则无需手动设置 GitHub 操作工作流。
 > Azure 静态 Web 应用会自动为你创建 GitHub 操作工作流。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 Azure 订阅和 GitHub 帐户。 
 
@@ -58,11 +58,11 @@ Azure 订阅和 GitHub 帐户。
 ```
 
 > [!IMPORTANT]
-> 始终应授予最小访问权限。 上一示例中的范围限制为特定的应用服务应用，而不是整个资源组。
+> 始终应授予最小访问权限。 上一个示例中的范围仅限于特定的应用服务应用而不是整个资源组。
 
 ## <a name="configure-the-github-secret"></a>配置 GitHub 机密
 
-1. 在 [GitHub](https://github.com/) 中，浏览存储库。
+1. 在 [GitHub](https://github.com/) 中，浏览你的存储库。
 
 1. 选择“设置”>“机密”>“新的机密”。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: a4a7b7a4008d5cc4636e2d533c225a618f35af05
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: e43c5fb36c5395e12fd0b9c2c67b787a1137f5d0
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611179"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761988"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>排查 ITSM 连接器中的问题
 
@@ -43,24 +43,23 @@ ITSM 提供将警报发送到外部票证系统（如 ServiceNow）的选项。
 
 ![显示 Log Analytics 屏幕的屏幕截图。](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="troubleshoot-itsm-connections"></a>排查 ITSM 连接问题
-
-- 如果连接未能连接到 ITSM 系统，但 **在保存连接消息时出现错误** ，请执行以下步骤：
-   - 对于 ServiceNow、Cherwell 和 Provance 连接：  
-     - 确保为每个连接正确输入了用户名、密码、客户端 ID 和客户端密码。  
-     - 确保在相应的 ITSM 产品中具有足够的权限来建立连接。  
-   - 对于 Service Manager 连接：  
-     - 确保已成功部署 web 应用并创建了混合连接。 若要验证是否已成功与本地 Service Manager 计算机建立连接，请按照建立 [混合连接](./itsmc-connections-scsm.md#configure-the-hybrid-connection)的文档中所述，参阅 WEB 应用 URL。  
-
-- 如果 Log Analytics 警报触发但未在 ITSM 产品中创建工作项，如果不创建或链接到工作项的配置项目或其他信息，请参阅以下资源：
-   -  ITSMC：此解决方案显示连接、工作项和计算机等的 [摘要](itsmc-dashboard.md)。 选择具有 **连接器状态** 标签的磁贴。 这样做会使您使用相关查询来 **记录搜索** 。 `LogType_S`有关详细信息，请查看的日志记录 `ERROR` 。
-   可以在表中查看有关消息的详细信息- [此处](itsmc-dashboard-errors.md)。
-   - **日志搜索** 页：使用查询直接查看错误和相关信息 `*ServiceDeskLog_CL*` 。
-
 ## <a name="common-symptoms---how-should-it-be-resolved"></a>常见症状-应如何解决此问题？
 
 下面的列表包含常见问题以及如何解决此问题：
 
+* **症状**：如果连接无法连接到 ITSM 系统，但在 **保存连接消息时出现错误** 。
+
+    **原因**：原因可以是以下选项之一：
+    * 凭据不正确
+     * 权限不足
+     * 应正确部署 Web 应用
+
+    **解决方法**：
+    * 对于 ServiceNow、Cherwell 和 Provance 连接：
+        * 确保为每个连接正确输入了用户名、密码、客户端 ID 和客户端密码。  
+        * 对于 ServiceNow：确保在相应的 ITSM 产品中具有足够的权限，以便按 [指定](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role)进行连接。
+  * 对于 Service Manager 连接：  
+      * 确保已成功部署 web 应用并创建了混合连接。 若要验证是否已成功与本地 Service Manager 计算机建立连接，请按照建立 [混合连接](./itsmc-connections-scsm.md#configure-the-hybrid-connection)的文档中所述，参阅 WEB 应用 URL。  
 * **症状**：创建了重复的工作项
 
     **原因**：原因可以是以下两个选项之一：

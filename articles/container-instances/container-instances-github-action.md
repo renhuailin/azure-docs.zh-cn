@@ -4,16 +4,16 @@ description: 配置一个 GitHub 操作，用于自动执行生成容器映像�
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: c6c030e05953dc98c82c573704018c3b482d2fea
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 1409d8fc1430cd9bf67bd735d9826a74979d495b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814272"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762959"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>配置 GitHub 操作以创建容器实例
 
-[Github 操作](https://docs.github.com/en/free-pro-team@latest/actions)是 GitHub 中的一个功能套件，可以在存储代码的同一位置自动执行软件开发工作流，并针对拉取请求和问题进行协作。
+[Github 操作](https://docs.github.com/en/actions)是 GitHub 中的一个功能套件，可以在存储代码的同一位置自动执行软件开发工作流，并针对拉取请求和问题进行协作。
 
 使用 GitHub 操作[部署到 Azure 容器实例](https://github.com/azure/aci-deploy)可以自动将单个容器部署到 Azure 容器实例。 该操作可为容器实例设置属性（类似于在 [az container create][az-container-create] 命令中设置的属性）。
 
@@ -177,7 +177,7 @@ jobs:
 
 ![查看工作流进度](./media/container-instances-github-action/github-action-progress.png)
 
-有关查看工作流中每个步骤的状态和结果的信息，请参阅 [查看工作流运行历史记录](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history) 。 如果工作流未完成，请参阅[查看日志以诊断故障](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures)。
+若要了解如何查看工作流中每个步骤的状态和结果，请参阅[查看工作流运行历史记录](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history)。 如果工作流未完成，请参阅[查看日志以诊断故障](https://docs.github.com/en/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures)。
 
 工作流成功完成后，运行 [az container show][az-container-show] 命令获取有关名为 *aci-sampleapp* 的容器实例的信息。 替换为你的资源组名称： 
 
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>命令进度
 
-* 出现提示时，请提供你的 GitHub 凭据，或提供具有“存储库”和“用户”作用域的 [GitHub 个人访问令牌](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) (PAT)，以便向 GitHub 帐户进行身份验证 。 如果提供了 GitHub 凭据，该命令将为你创建一个 PAT。 按照附加提示配置工作流。
+* 出现提示时，请提供你的 GitHub 凭据，或提供具有“存储库”和“用户”作用域的 [GitHub 个人访问令牌](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) (PAT)，以便向 GitHub 帐户进行身份验证 。 如果提供了 GitHub 凭据，该命令将为你创建一个 PAT。 按照附加提示配置工作流。
 
 * 该命令将为工作流创建存储库机密：
 
@@ -258,7 +258,7 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
-若要查看 GitHub UI 中每个步骤的工作流状态和结果，请参阅 [查看工作流运行历史记录](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history)。
+若要在 GitHub UI 中查看每个步骤的工作流状态和结果，请参阅[查看工作流运行历史记录](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history)。
 
 ### <a name="validate-workflow"></a>验证工作流
 

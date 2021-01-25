@@ -13,22 +13,22 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9ec8a5fe5de751e40ebaa17629ff72c5f6b2adca
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979975"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761369"
 ---
 # <a name="application-configuration-options"></a>应用程序配置选项
 
-若要对令牌进行身份验证和获取，请在代码中初始化新的公共或机密客户端应用程序。 在 Microsoft 身份验证库中初始化客户端应用时，可以设置多个配置选项， (MSAL) 。 这些选项划分为两组：
+若要进行身份验证并获取令牌，请在代码中初始化新的公共或机密客户端应用程序。 在 Microsoft 身份验证库 (MSAL) 中初始化客户端应用时，可以设置多个配置选项。 这些选项划分为两组：
 
 - 注册选项，包括：
-  - [颁发机构](#authority) (由标识提供者 [实例](#cloud-instance) 和应用的登录 [受众](#application-audience) ，还可能是租户 ID) 
+  - [颁发机构](#authority)（由标识提供者[实例](#cloud-instance)、应用的登录[受众](#application-audience)以及可能的租户 ID 构成）
   - [客户端 ID](#client-id)
   - [重定向 URI](#redirect-uri)
-  - 机密客户端应用程序的[客户端机密](#client-secret) () 
+  - [客户端机密](#client-secret)（用于机密客户端应用程序）
 - [日志记录选项](#logging)，包括日志级别、个人数据的控制以及使用库的组件名称
 
 ## <a name="authority"></a>颁发机构
@@ -37,14 +37,14 @@ ms.locfileid: "94979975"
 
 常见的颁发机构包括：
 
-| 公共授权 Url | 何时使用 |
+| 常见的颁发机构 URL | 何时使用 |
 |--|--|
-| `https://login.microsoftonline.com/<tenant>/` | 仅登录特定组织的用户。 `<tenant>`URL 中的 Azure Active Directory (Azure AD) 租户 (GUID) 或其租户域的租户 ID。 |
+| `https://login.microsoftonline.com/<tenant>/` | 仅允许特定组织的用户登录。 URL 中的 `<tenant>` 是 Azure Active Directory (Azure AD) 租户 (GUID) 或其租户域的租户 ID。 |
 | `https://login.microsoftonline.com/common/` | 使用工作或学校帐户或个人 Microsoft 帐户登录用户。 |
 | `https://login.microsoftonline.com/organizations/` | 使用工作和学校帐户登录用户。 |
 | `https://login.microsoftonline.com/consumers/` | 仅 (MSA) 的个人 Microsoft 帐户登录用户。 |
 
-你在代码中指定的机构需要与你在 Azure 门户中 **应用注册** 中为应用指定的 **支持的帐户类型** 一致。
+在代码中指定的机构需要与在 Azure 门户中为“应用注册”中的应用指定的支持帐户类型一致 。
 
 颁发机构可以是：
 
@@ -147,9 +147,21 @@ Azure AD 云颁发机构有两个组成部分：
 此选项指定机密客户端应用的客户端机密。 此机密 (应用程序密码) 由应用程序注册门户提供，或在应用程序注册过程中通过 PowerShell AzureAD、PowerShell AzureRM 或 Azure CLI 提供给 Azure AD。
 
 ## <a name="logging"></a>日志记录
+为了帮助调试和身份验证故障排除方案，Microsoft 身份验证库提供了内置日志记录支持。 日志记录是以下文章中介绍的每个库：
 
-其他配置选项可用于日志记录和故障排除。 有关其用法的详细信息，请参阅[日志记录](msal-logging.md)一文。
+:::row:::
+    :::column:::
+        - [在 MSAL.NET 中进行日志记录](msal-logging-dotnet.md)
+        - [MSAL for Android 中的日志记录](msal-logging-android.md)
+        - [MSAL.js 中的日志记录](msal-logging-js.md)
+    :::column-end:::
+    :::column:::
+        - [MSAL for iOS/macOS 中的日志记录](msal-logging-ios.md)
+        - [MSAL for Java 中的日志记录](msal-logging-java.md)
+        - [MSAL for Python 中的日志记录](msal-logging-python.md)
+    :::column-end:::
+:::row-end:::
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何 [使用 MSAL.NET 实例化客户端应用程序](msal-net-initializing-client-applications.md) ，并 [使用 MSAL.js来实例化客户端应用程序 ](msal-js-initializing-client-applications.md)。
+了解如何[使用 MSAL.NET 初始化客户端应用程序](msal-net-initializing-client-applications.md)和[使用 MSAL.js 初始化客户端应用程序](msal-js-initializing-client-applications.md)。

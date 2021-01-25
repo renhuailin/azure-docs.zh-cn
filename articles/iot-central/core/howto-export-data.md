@@ -8,12 +8,12 @@ ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 3079b8384a24642322d6f6eb86e2ca7f0927db15
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 74de0481bf6786d245fb96f5d102ab72a00031c8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065382"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760905"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用数据导出将 IoT 数据导出到云目标
 
@@ -22,7 +22,7 @@ ms.locfileid: "98065382"
 
 本文介绍如何使用 Azure 中的新数据导出功能 IoT Central。 使用此功能可以从您的 IoT Central 应用程序持续导出已筛选和增加的 IoT 数据。 数据导出会将接近实时的更改推送到云解决方案的其他部分，以获取热路径见解、分析和存储。
 
-例如，可以：
+例如，你可以：
 
 - 以近乎实时的顺序连续导出 JSON 格式的遥测数据和属性更改。
 - 筛选数据流以导出与自定义条件匹配的数据。
@@ -35,6 +35,8 @@ ms.locfileid: "98065382"
 ## <a name="prerequisites"></a>先决条件
 
 若要使用数据导出功能，您必须具有 [V3 应用程序](howto-get-app-info.md)，并且您必须具有 [数据导出](howto-manage-users-roles.md) 权限。
+
+如果有 V2 应用程序，请参阅将 [V2 IoT Central 应用程序迁移到 V3](howto-migrate.md)。
 
 ## <a name="set-up-export-destination"></a>设置导出目标
 
@@ -158,7 +160,7 @@ ms.locfileid: "98065382"
     - 对于 Webhook，请粘贴 webhook 终结点的回调 URL。 你可以选择配置 webhook 授权 (OAuth 2.0 和授权令牌) 并添加自定义标头。 
         - 对于 OAuth 2.0，仅支持客户端凭据流。 保存目标后，IoT Central 将与 OAuth 提供程序进行通信以检索授权令牌。 对于发送到此目标的每个消息，此标记将附加到 "Authorization" 标头。
         - 对于 "授权令牌"，可以为发送到此目标的每个消息指定将直接附加到 "Authorization" 标头的令牌值。
-    - 选择“创建” 。
+    - 选择“创建”。
 
 1. 选择 " **+ 目标** "，然后从下拉列表中选择一个目标。 最多可以向单个导出添加5个目标。
 
@@ -278,7 +280,7 @@ ms.locfileid: "98065382"
 | 可用数据类型 | 遥测、设备、设备模板 | 遥测，属性更改 |
 | 筛选 | 无 | 取决于导出的数据类型。 对于遥测，按遥测、消息属性和属性值进行筛选 |
 | 根据 | 无 | 使用自定义字符串或设备上的属性值丰富 |
-| 目标 | Azure 事件中心、Azure 服务总线队列和主题、Azure Blob 存储 | 与旧数据导出和 webhook 相同|
+| Destinations | Azure 事件中心、Azure 服务总线队列和主题、Azure Blob 存储 | 与旧数据导出和 webhook 相同|
 | 支持的应用程序版本 | V2、V3 | 仅 V3 |
 | 明显限制 | 每个应用导出5个，每个导出1个目标 | 10个导出-每个应用的目标连接 |
 

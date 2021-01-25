@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 25356e7101293fc27d4107b3a618cfc481aee969
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779577"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762402"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
@@ -221,8 +221,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ## <a name="what-is-not-backed-up"></a>不备份的内容
 -   用于创建分析报表的 **用法数据** **不包括** 在备份中。 使用 [Azure API 管理 REST API][azure api management rest api] 定期检索分析报表以保证安全。
--   [自定义域 TLS/SSL](configure-custom-domain.md) 证书
--   [自定义 CA 证书](api-management-howto-ca-certificates.md)，包括客户上传的中间或根证书
+-   [自定义域 TLS/SSL](configure-custom-domain.md) 证书。
+-   [自定义 CA 证书](api-management-howto-ca-certificates.md)，包括客户上传的中间或根证书。
 -   [虚拟网络](api-management-using-with-vnet.md)集成设置。
 -   [托管的标识](api-management-howto-use-managed-service-identity.md)配置。
 -   [Azure Monitor 诊断](api-management-howto-use-azure-monitor.md)配置。

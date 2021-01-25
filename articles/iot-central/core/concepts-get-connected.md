@@ -1,9 +1,9 @@
 ---
 title: Azure IoT Central 中的设备连接 | Microsoft Docs
 description: 本文介绍与 Azure IoT Central 中的设备连接相关的重要概念
-author: dominicbetts
-ms.author: dobett
-ms.date: 10/22/2020
+author: TheJasonAndrew
+ms.author: v-anjaso@microsoft.com
+ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 90246459663980de25e301817f651e7719e8f380
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a0ba695adb25adb6d339535bb9496630eaec70bb
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033166"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762803"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -215,7 +215,7 @@ IoT Central 应用程序使用设备发送的模型 ID [将注册的设备与设
 
     操作员可以使用 "**迁移**" 按钮，将设备从 "**设备**" 页关联到设备模板。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 第一次连接设备时，请勿保留或缓存 DPS 返回的设备连接字符串。 若要重新连接设备，请执行标准设备注册流以获取正确的设备连接字符串。 如果设备缓存连接字符串，则设备软件面临具有陈旧连接字符串的风险。 如果 IoT Central 更新其使用的基础 Azure IoT 中心，则具有陈旧连接字符串的设备将无法连接。
 
@@ -234,14 +234,19 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 与 IoT 中心进行的所有设备通信都使用以下 IoT 中心连接选项：
 
 - [设备到云的消息传送](../../iot-hub/iot-hub-devguide-messages-d2c.md)
+- [云到设备的消息传送](../../iot-hub/iot-hub-csharp-csharp-c2d.md)
 - [设备孪生](../../iot-hub/iot-hub-devguide-device-twins.md)
+
+> [!NOTE]
+> Azure 现在支持
 
 下表对 Azure IoT Central 设备功能映射到 IoT 中心功能的具体情况进行了汇总：
 
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
 | 遥测 | 设备到云的消息传送 |
-| 属性 | 设备孪生报告属性 |
+| 脱机命令 | 云到设备的消息传送 |
+| properties | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
 | 命令 | 直接方法 |
 

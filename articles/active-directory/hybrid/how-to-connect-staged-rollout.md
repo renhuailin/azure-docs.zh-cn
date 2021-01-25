@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d348b8c2325c7bc2cdaa28356151647a9430684f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 10fe3b895ea5084247822f1c35275e68d80b73fa
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247040"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762979"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分阶段推出迁移到云身份验证（预览）
 
@@ -61,7 +61,10 @@ ms.locfileid: "98247040"
 - 使用 Azure AD Connect 预配到 Azure AD 的用户。 它不适用于仅限云的用户。
 
 - 浏览器和新式身份验证客户端上的用户登录流量。 使用旧身份验证的应用程序或云服务将回退到联合身份验证流。 例如关闭了新式身份验证的 Exchange Online，或不支持新式身份验证的 Outlook 2010。
+
 - 组大小当前限制为 50,000 个用户。  如果你拥有超过 50,000 个用户的组，建议将此组拆分为多个组以便分阶段推出。
+
+- 如果用户的 UPN 是可路由的，并且在 Azure AD 中验证了域后缀，则 windows 10 混合加入或 Azure AD 会将主刷新令牌获取不会向 Windows 10 版本1903和更高版本的联合服务器提供。
 
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
@@ -87,6 +90,10 @@ ms.locfileid: "98247040"
 - 首次为分阶段推出添加安全组时，限制于 200 个用户，以避免 UX 超时。添加组后，可以根据需要直接向其添加更多用户。
 
 - 当用户处于分阶段推出时，启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers 时，密码过期策略设置为90天，无选项可对其进行自定义。 
+
+- Windows 10 混合联接或 Azure AD 加入早于1903的 Windows 10 版本的主刷新令牌获取。 此方案将回退到联合服务器的 WS-Trust 终结点，即使用户登录正在进行分阶段推出。
+
+- 如果用户的本地 UPN 不可路由，Windows 10 混合加入或 Azure AD 会为所有版本加入主刷新令牌获取。 此方案将在分阶段推出模式下回退到 WS-Trust 终结点，但当分阶段迁移完成并且用户登录不再依赖于联合服务器时，将停止工作。
 
 
 ## <a name="get-started-with-staged-rollout"></a>分阶段推出入门

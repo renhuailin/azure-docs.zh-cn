@@ -6,29 +6,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 004c84387c51233542b1bbbf11d33cdff42259af
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 7db2d2721359d9796b19b3fd6abe32ff16beaec2
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359143"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761840"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>更新 Azure Stack Edge Pro GPU 
 
-本文介绍通过本地 web UI 和 Azure 门户在 Azure Stack Edge Pro 上安装更新所需的步骤。 应用软件更新或修补程序，使 Azure Stack Edge Pro 设备和设备上关联的 Kubernetes 群集保持最新。 
+本文介绍通过本地 web UI 和 Azure 门户在 Azure Stack Edge Pro 上安装更新所需的步骤。 应用软件更新或修补程序，使 Azure Stack Edge Pro 设备和设备上关联的 Kubernetes 群集保持最新。
 
 本文中所述的过程是使用不同版本的软件执行的，但该过程对于当前软件版本保持不变。
 
 > [!IMPORTANT]
-> - 更新 **2012** 是当前更新并且对应于：
->   - 设备软件版本- **2.2.1438.2470**
+> - 更新 **2101** 是当前更新并且对应于：
+>   - 设备软件版本- **2.2.1473.2521**
 >   - Kubernetes 服务器版本- **v 1.17.3**
 >   - IoT Edge 版本： **0.1.0-beta10**
 >    
->    有关此更新中的新增功能的信息，请参阅 [发行说明](azure-stack-edge-gpu-2012-release-notes.md)。
-> - 若要应用2012更新，设备必须运行2010。
+>    有关此更新中的新增功能的信息，请参阅 [发行说明](azure-stack-edge-gpu-2101-release-notes.md)。
+> - 若要应用2101更新，设备必须运行2010。
 > - 请记住，安装更新或修补程序会重新启动设备。 此更新包含设备软件更新和 Kubernetes 更新。 假设 Azure Stack Edge Pro 是单节点设备，则正在进行的任何 i/o 都将中断，并且你的设备在更新时遇到长达1.5 小时的停机时间。
 
 若要在设备上安装更新，首先需要配置更新服务器的位置。 配置更新服务器后，可以通过 Azure 门户 UI 或本地 web UI 应用更新。
@@ -37,7 +37,7 @@ ms.locfileid: "97359143"
 
 ## <a name="configure-update-server"></a>配置更新服务器
 
-1. 在本地 web UI 中，请参阅 **配置**  >  **更新服务器**。 
+1. 在本地 web UI 中，请参阅 **配置**  >  **更新服务器**。
    
     ![配置更新1](./media/azure-stack-edge-gpu-install-update/configure-update-server-1.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "97359143"
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
-建议通过 Azure 门户安装更新。 设备每天自动扫描一次更新。 更新可用后，门户中会显示一条通知。 然后可以下载并安装更新。 
+建议通过 Azure 门户安装更新。 设备每天自动扫描一次更新。 更新可用后，门户中会显示一条通知。 然后可以下载并安装更新。
 
 > [!NOTE]
 > 在继续安装更新之前，请确保设备运行正常并且状态显示为 " **联机** "。
@@ -66,23 +66,23 @@ ms.locfileid: "97359143"
 
     您可以选择 **下载和安装更新，** 或仅 **下载** 更新。 然后可以选择以后安装这些更新。
 
-    ![更新2之后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-2a.png)    
+    ![更新2之后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-2-a.png)    
 
     如果要下载和安装更新，请选中 "下载完成后自动安装更新" 选项。
 
-    ![Update 3 之后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-2b.png)
+    ![Update 3 之后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-2-b.png)
 
 3. 更新的下载开始。 你会看到一条通知，指出下载正在进行中。
 
     ![更新4之后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-3.png)
 
-    通知横幅也会显示在 Azure 门户中。 这表明下载进度。 
+    通知横幅也会显示在 Azure 门户中。 这表明下载进度。
 
     ![Update 5 之后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-4.png)
 
     你可以选择此通知或选择 " **更新设备** " 来查看更新的详细状态。
 
-    ![Update 6 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-5.png)   
+    ![Update 6 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-5.png)
 
 
 4. 下载完成后，通知横幅会更新以指示完成。 如果选择下载并安装更新，则将自动开始安装。
@@ -93,7 +93,7 @@ ms.locfileid: "97359143"
   
     ![更新8后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
 
-5. 你会看到安装正在进行的通知。 
+5. 你会看到安装正在进行的通知。
 
     ![更新9之后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
  
@@ -166,11 +166,11 @@ ms.locfileid: "97359143"
 
 2. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 号。 例如，输入 **Azure Stack Edge Pro**"，然后单击" **搜索**"。
    
-    更新列表显示为 **Azure Stack Edge 更新 2012**。
+    更新列表显示为 **Azure Stack Edge 更新 2101**。
    
-    <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
+    <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2-b.png)-->
 
-4. 选择“下载”  。 有两个文件可供下载，其中 *SoftwareUpdatePackage.exe* 和分别对应于设备软件更新和 Kubernetes 更新的 *Kubernetes_Package.exe* 后缀。 将文件下载到本地系统上的文件夹。 也可以将该文件夹复制到可通过设备访问的网络共享。
+4. 选择“下载”。 有两个文件可供下载，其中 *SoftwareUpdatePackage.exe* 和分别对应于设备软件更新和 Kubernetes 更新的 *Kubernetes_Package.exe* 后缀。 将文件下载到本地系统上的文件夹。 也可以将该文件夹复制到可通过设备访问的网络共享。
 
 ### <a name="install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
@@ -179,7 +179,7 @@ ms.locfileid: "97359143"
  - 更新或修补程序已本地下载到主机上，或可通过网络共享访问。
  - 你的设备状态为 "正常"，如本地 web UI 的 " **概述** " 页中所示。
 
-   ![更新设备](./media/azure-stack-edge-gpu-install-update/local-ui-update-1.png) 
+   ![更新设备](./media/azure-stack-edge-gpu-install-update/local-ui-update-1.png)
 
 此过程大约需要20分钟才能完成。 执行以下步骤，安装更新或修补程序。
 
@@ -189,9 +189,9 @@ ms.locfileid: "97359143"
 
 2. 提供更新文件的路径。 如果放置在网络共享上，也可以浏览到更新安装文件。 选择包含 *SoftwareUpdatePackage.exe* 后缀的软件更新文件。
 
-   ![更新设备3](./media/azure-stack-edge-gpu-install-update/local-ui-update-3a.png)
+   ![更新设备3](./media/azure-stack-edge-gpu-install-update/local-ui-update-3-a.png)
 
-3. 选择“应用”。 
+3. 选择“应用”。
 
    ![更新设备4](./media/azure-stack-edge-gpu-install-update/local-ui-update-4.png)
 
@@ -201,21 +201,21 @@ ms.locfileid: "97359143"
 
 5. 更新开始。 成功更新设备后，该设备将重新启动。 本地 UI 在此期间不可访问。
    
-6. 重新启动完成后，会转到“登录”页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅 **维护**  >  **软件更新**。 对于当前版本，显示的软件版本应 **Azure Stack 缘 2012**。
+6. 重新启动完成后，会转到“登录”页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅 **维护**  >  **软件更新**。 对于当前版本，显示的软件版本应 **Azure Stack 缘 2101**。 
 
-   <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
+   <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)-->
 
 7. 现在，你将更新 Kubernetes 软件版本。 重复上述步骤。 提供包含 *Kubernetes_Package.exe* 后缀的 Kubernetes 更新文件的路径。  
 
-   <!--![update device](./media/azure-stack-edge-gpu-install-update/local-ui-update-7.png)--> 
+   <!--![update device](./media/azure-stack-edge-gpu-install-update/local-ui-update-7.png)-->
 
-8. 选择“应用”。 
+8. 选择 " **应用更新**"。
 
    ![更新设备7](./media/azure-stack-edge-gpu-install-update/local-ui-update-8.png)
 
-9. 出现确认提示时，请选择 **"是"** 以继续。 
+9. 出现确认提示时，请选择 **"是"** 以继续。
 
-10. 成功安装 Kubernetes 更新后，对 **维护**  >  **软件更新** 中显示的软件不做任何更改。 
+10. 成功安装 Kubernetes 更新后，对 **维护**  >  **软件更新** 中显示的软件不做任何更改。
 
 
 ## <a name="next-steps"></a>后续步骤

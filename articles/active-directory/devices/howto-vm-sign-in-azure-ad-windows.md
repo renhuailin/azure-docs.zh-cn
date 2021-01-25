@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22a4bdc92ea2a91425c1070a5837c672307de665
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3e22e5fc4bc7211d905dbe8775b0ef6e893bd2cc
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683770"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761002"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -350,7 +350,9 @@ AADLoginForWindows 扩展必须成功安装，VM 才能完成 Azure AD 联接过
 > [!NOTE]
 > Windows 10 版本 20H1 添加了对已注册 Azure AD 电脑的支持来启动到 VM 的 RDP 连接。 在使用已注册 Azure AD（而不是已建立 Azure AD 联接或已建立混合 Azure AD 联接）的电脑作为 RDP 客户端来启动与 VM 的连接时，必须采用 AzureAD\UPn 格式（例如 AzureAD\john@contoso.com）输入凭据。
 
-此外，请验证在 Azure AD 联接建立完成后是否尚未卸载 AADLoginForWindows 扩展。
+验证 Azure AD 联接完成后，未卸载 AADLoginForWindows 扩展。
+
+此外，请确保在服务器 *和* 客户端上启用安全策略 "网络安全：允许对此计算机使用联机标识的 PKU2U authentication 请求"。
  
 #### <a name="mfa-sign-in-method-required"></a>需要 MFA 登录方法
 

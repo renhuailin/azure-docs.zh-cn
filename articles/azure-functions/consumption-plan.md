@@ -1,24 +1,24 @@
 ---
 title: Azure Functions 消耗计划托管
-description: 了解 Azure 函数消耗计划托管如何使你能够在动态缩放的环境中运行代码，但只需为执行期间使用的资源付费。
+description: 了解 Azure Functions 消耗计划托管如何支持在动态缩放的环境中运行代码，但你只需为执行期间使用的资源付费。
 ms.date: 8/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: ffb556ce48f18702e06fcdb02dda84f41ae5f906
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: d292a70a8dfaa4cebdb99f2bcb5420c8b8ab9cd8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684685"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760548"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Functions 消耗计划托管
 
-使用消耗计划时，会根据传入事件数自动添加和删除 Azure Functions 主机实例。 消耗计划是 Azure Functions 的完全 <em>无服务器</em> 宿主选项。
+使用消耗计划时，会根据传入事件数自动添加和删除 Azure Functions 主机实例。 消耗计划是 Azure Functions 的完全<em>无服务器</em>托管选项。
 
 ## <a name="benefits"></a>优点
 
-即使在高负载期间，消耗计划也会自动缩放。 在消耗计划中运行函数时，仅当函数正在运行时才为计算资源付费。 在消耗计划中，函数执行在可配置的时间段后超时。
+即使在高负载期间，消耗计划也会自动缩放。 如果在消耗计划中运行函数，仅当函数运行时，计算资源才会产生费用。 在消耗计划中，函数执行在可配置的时间段后超时。
 
-有关消耗计划与其他计划和托管类型的比较，请参阅 [函数缩放和宿主选项](functions-scale.md)。
+有关消耗计划与其他计划和托管类型的比较，请参阅[函数缩放和托管选项](functions-scale.md)。
 
 ## <a name="billing"></a>计费
 
@@ -28,15 +28,15 @@ ms.locfileid: "98684685"
 
 ## <a name="create-a-consumption-plan-function-app"></a>创建消耗计划函数应用
 
-在 Azure 门户中创建函数应用时，消耗计划为默认值。 使用 Api 创建 function app 时，无需先创建应用服务计划，就像高级和专用计划一样。
+在 Azure 门户中创建函数应用时，消耗计划为默认设置。 使用 API 创建函数应用时，不必像使用高级计划和专用计划那样首先创建应用服务计划。
 
-使用以下链接来了解如何在消耗计划中创建无服务器函数应用，无论是通过编程方式还是在 Azure 门户中：
+使用以下链接了解如何在消耗计划中以编程方式或通过 Azure 门户创建无服务器函数应用：
 
 + [Azure CLI](./scripts/functions-cli-create-serverless.md)
 + [Azure 门户](./functions-get-started.md)
 + [Azure Resource Manager 模板](functions-create-first-function-resource-manager.md)
 
-你还可以在从 [Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) 或 [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure)发布函数项目时，在消耗计划中创建 function app。
+从 [Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) 或 [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure) 发布 Functions 项目时，还可以在消耗计划中创建函数应用。
 
 ## <a name="multiple-apps-in-the-same-plan"></a>同一计划中的多个应用
 
@@ -44,5 +44,5 @@ ms.locfileid: "98684685"
 
 ## <a name="next-steps"></a>后续步骤
 
-+ [Azure Functions 宿主选项](functions-scale.md)
-+ [Azure Functions 中的事件驱动的缩放](event-driven-scaling.md)
++ [Azure Functions 主机选项](functions-scale.md)
++ [Azure Functions 中的事件驱动缩放](event-driven-scaling.md)

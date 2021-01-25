@@ -10,12 +10,12 @@ ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e7fa6b1ee7c92f82c3e15335991f5a240c7acc52
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178970"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762871"
 ---
 # <a name="object-replication-for-block-blobs"></a>块 blob 的对象复制
 
@@ -88,7 +88,9 @@ ms.locfileid: "98178970"
 
 也可以将一个或多个筛选器指定为复制规则的一部分，以按前缀筛选块 blob。 指定前缀时，只会将源容器中与该前缀匹配的 blob 复制到目标容器。
 
-源和目标容器必须都存在，然后才能在规则中指定它们。 创建复制策略后，目标容器变为只读。 任何尝试写入目标容器的操作都会失败，错误代码为 409（冲突）。 但是，可以对目标容器中的 blob 调用 " [设置 Blob 层](/rest/api/storageservices/set-blob-tier) " 操作，以将其移动到 "存档" 层。 有关存档层的详细信息，请参阅 [Azure Blob 存储： "热"、"冷" 和 "存档" 访问层](storage-blob-storage-tiers.md#archive-access-tier)。
+源和目标容器必须都存在，然后才能在规则中指定它们。 创建复制策略后，不允许将操作写入目标容器。 任何尝试写入目标容器的操作都会失败，错误代码为 409（冲突）。 若要写入为其配置了复制规则的目标容器，你必须删除为该容器配置的规则，或者删除复制策略。 当复制策略处于活动状态时，允许对目标容器执行读取和删除操作。
+
+您可以对目标容器中的 blob 调用 " [设置 Blob 层](/rest/api/storageservices/set-blob-tier) " 操作，以将其移到 "存档" 层中。 有关存档层的详细信息，请参阅 [Azure Blob 存储： "热"、"冷" 和 "存档" 访问层](storage-blob-storage-tiers.md#archive-access-tier)。
 
 ## <a name="replication-status"></a>复制状态
 

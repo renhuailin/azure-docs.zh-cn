@@ -1,27 +1,27 @@
 ---
 title: 使用 GitHub Actions 部署资源管理器模板
-description: 介绍如何使用 GitHub 操作 (ARM 模板) 部署 Azure 资源管理器模板。
+description: 介绍如何使用 GitHub Actions 部署资源管理器模板（ARM 模板）。
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 4c1f59e9a18e7359ae543b0311baea0c2a4ab8d6
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 67d4ac51e3e1f84f6a9acd0fc94d5818355d3954
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674326"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762085"
 ---
-# <a name="deploy-arm-templates-by-using-github-actions"></a>使用 GitHub 操作部署 ARM 模板
+# <a name="deploy-arm-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 ARM 模板
 
-[Github 操作](https://docs.github.com/en/free-pro-team@latest/actions)是 GitHub 中的一个功能套件，可以在存储代码的同一位置自动执行软件开发工作流，并针对拉取请求和问题进行协作。
+[Github 操作](https://docs.github.com/en/actions)是 GitHub 中的一个功能套件，可以在存储代码的同一位置自动执行软件开发工作流，并针对拉取请求和问题进行协作。
 
-使用 " [部署 azure 资源管理器模板" 操作](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) ，将 azure 资源管理器模板 (ARM 模板) 自动部署到 azure。
+使用[“部署 Azure 资源管理器模板”操作](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template)将 Azure 资源管理器模板（ARM 模板）自动部署到 Azure。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 一个 GitHub 帐户。 如果没有该帐户，请注册[免费版](https://github.com/join)。
-    - GitHub 存储库，用于存储资源管理器模板和工作流文件。 若要创建一个存储库，请参阅[创建新存储库](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)。
+    - GitHub 存储库，用于存储资源管理器模板和工作流文件。 若要创建一个存储库，请参阅[创建新存储库](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)。
 
 
 ## <a name="workflow-file-overview"></a>工作流文件概述
@@ -38,7 +38,7 @@ ms.locfileid: "97674326"
 ## <a name="generate-deployment-credentials"></a>生成部署凭据
 
 
-可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) 命令创建[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 请使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
+可以在 [Azure CLI](/cli/azure/) 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) 命令创建[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 请使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
 
 如果没有资源组，请创建一个。
 
@@ -137,10 +137,10 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
     工作流文件的第一部分包含：
 
     - **name**：工作流的名称。
-    - 事件：触发工作流的 GitHub 事件的名称。 如果主分支上有推送事件，则会触发工作流，这会修改指定的两个文件中的至少一个。 这两个文件分别是工作流文件和模板文件。
+    - 事件：触发工作流的 GitHub 事件的名称。 当主分支上有推送事件时，会触发工作流，修改所指定的两个文件中的至少一个。 这两个文件分别是工作流文件和模板文件。
 
 1. 选择“开始提交”。
-1. 选择 **"直接提交到主分支"**。
+1. 选择“直接提交到主分支”。
 1. 选择“提交新文件”（或“提交更改”）。 
 
 由于工作流配置为由要更新的工作流文件或模板文件触发，因此在提交更改后，工作流将立即启动。

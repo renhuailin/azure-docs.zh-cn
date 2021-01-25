@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cf7c4b881697b664403d8c817c3b9e48fb48944d
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 969f60cd92e8c1cbe93f1646cccd08c942ad9923
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746758"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762832"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>关于 Azure 云服务 (扩展支持) 
 
@@ -27,9 +27,11 @@ ms.locfileid: "98746758"
 
 ## <a name="what-does-not-change"></a>什么不更改 
 - 创建代码，定义配置，并将其部署到 Azure。 Azure 设置计算环境，运行你的代码，然后监视并维护它。
-- 云服务 (扩展支持) 还支持两种类型的角色： [web 和辅助](../cloud-services/cloud-services-choose-me.md)角色。 
-- 这三个组件、服务定义 ( 的) 、服务配置 ( .cscfg) 以及云服务的服务包 (，它们的 [格式](cloud-services-model-and-package.md)不会有任何变化。 
-- 不需要对运行时代码进行任何更改，因为数据平面是相同的，并且控件平面只更改。  
+- 云服务 (扩展支持) 还支持两种类型的角色： [web 和辅助](../cloud-services/cloud-services-choose-me.md)角色。 Web 角色和辅助角色的设计、体系结构或组件不会有任何变化。 
+- 云服务的三个组件：服务定义 () ，服务配置 ( .cscfg) ，并且服务包的 .cspkg ( 在其 [格式](cloud-services-model-and-package.md)中不会有任何变化。 
+- 不需要对运行时代码进行任何更改，因为数据平面是相同的，并且控件平面只更改。 
+- Azure GuestOS 发行版和相关更新与云服务 (经典) 
+- 与更新域相关的基础更新过程，升级如何继续，回滚和允许的服务更改在更新过程中不会发生变化
 
 ## <a name="changes-in-deployment-model"></a>部署模型中的更改
 

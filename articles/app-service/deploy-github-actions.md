@@ -7,27 +7,27 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 0c10cc683d8c8c2496ca8fdbd00f0e5065e2db35
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 59eb56dd188edf258c3631cde957c0864454ad76
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97604917"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762655"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到应用服务
 
-通过 [Github 操作](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions) 开始，可自动执行工作流，并从 GitHub 部署到 [Azure App Service](overview.md) 。 
+开始使用 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions) 以自动执行工作流，并将其从 GitHub 部署到 [Azure 应用服务](overview.md)。 
 
 ## <a name="prerequisites"></a>先决条件 
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 一个 GitHub 帐户。 如果没有该帐户，请注册[免费版](https://github.com/join)。  
-- 有效 Azure App Service 应用。 
-    - .NET： [在 Azure 中创建 ASP.NET Core web 应用](quickstart-dotnetcore.md)
-    - ASP.NET： [在 Azure 中创建 ASP.NET Framework web 应用](quickstart-dotnet-framework.md)
-    - JavaScript： [在 Azure App Service 中创建 Node.js web 应用](quickstart-nodejs.md)  
-    - Java： [在 Azure App Service 上创建 Java 应用](quickstart-java.md)
-    - Python： [在 Azure App Service 中创建 Python 应用](quickstart-python.md)
+- 运行正常的 Azure 应用服务应用。 
+    - .NET:[在 Azure 中创建 ASP.NET Core Web 应用](quickstart-dotnetcore.md)
+    - ASP.NET：[在 Azure 中创建 ASP.NET Framework Web 应用](quickstart-dotnet-framework.md)
+    - JavaScript：[在 Azure 应用服务中创建 Node.js Web 应用](quickstart-nodejs.md)  
+    - Java:[在 Azure 应用服务中创建 Java 应用](quickstart-java.md)
+    - Python:[在 Azure 应用服务中创建 Python 应用](quickstart-python.md)
 
 ## <a name="workflow-file-overview"></a>工作流文件概述
 
@@ -37,46 +37,46 @@ ms.locfileid: "97604917"
 
 |部分  |任务  |
 |---------|---------|
-|**身份验证** | 1. 定义服务主体或发布配置文件。 <br /> 2.创建 GitHub 机密。 |
-|**生成** | 1. 设置环境。 <br /> 2. 生成 web 应用。 |
-|**部署** | 1. 部署 web 应用。 |
+|**身份验证** | 1.定义服务主体或发布配置文件。 <br /> 2.创建 GitHub 机密。 |
+|**生成** | 1.设置环境。 <br /> 2.构建 Web 应用。 |
+|**部署** | 1.部署 Web 应用。 |
 
 ## <a name="use-the-deployment-center"></a>使用部署中心
 
-你可以使用应用服务部署中心快速开始使用 GitHub 操作。 这会根据应用程序堆栈自动生成工作流文件，并将其提交到正确目录中的 GitHub 存储库。
+可以使用应用服务部署中心快速开始使用 GitHub Actions。 这将自动生成基于应用程序堆栈的工作流文件，并将它提交到正确的目录中的 GitHub 存储库。
 
-1. 导航到 Azure 门户中的 webapp
-1. 在左侧，单击 "**部署中心**"
-1. 在 " **连续部署 (CI/CD")** 中，选择 **GitHub**
-1. 接下来，选择 **GitHub 操作**
-1. 使用 dropdown 选择 GitHub 存储库、分支和应用程序堆栈
-    - 如果所选分支受到保护，则仍可继续添加工作流文件。 继续操作之前，请务必查看分支保护。
-1. 在最后一个屏幕上，可以查看所选内容并预览将提交到存储库的工作流文件。 如果选择正确，请单击 "**完成**"
+1. 在 Azure 门户中导航到 Web 应用
+1. 在左侧，单击“部署中心”
+1. 在“持续部署(CI / CD)”下，选择“GitHub” 
+1. 接下来，选择“GitHub Actions”
+1. 使用下拉列表选择 GitHub 存储库、分支和应用程序堆栈
+    - 如果所选分支受到保护，你仍然可以继续添加工作流文件。 在继续之前，请务必检查你的分支保护。
+1. 在最后一个屏幕上，可以查看所选内容并预览将提交到存储库的工作流文件。 如果所选内容正确，则单击“完成”
 
-这会将工作流文件提交到存储库。 用于生成和部署应用的工作流将立即启动。
+这会将工作流文件提交到存储库。 要生成和部署应用的工作流将立即开始。
 
 ## <a name="set-up-a-workflow-manually"></a>手动设置工作流
 
-你还可以在不使用部署中心的情况下部署工作流。 为此，需要首先生成部署凭据。 
+也可以在不使用部署中心的情况下部署工作流。 为此，需要首先生成部署凭据。 
 
 ## <a name="generate-deployment-credentials"></a>生成部署凭据
 
-使用 GitHub 操作 Azure 应用服务进行身份验证的建议方法是使用发布配置文件。 也可以使用服务主体进行身份验证，但该过程需要更多步骤。 
+对于 GitHub Actions，若要通过 Azure 应用服务进行身份验证，建议使用发布配置文件。 也可以使用服务主体进行身份验证，但该过程需要更多步骤。 
 
-将发布配置文件凭据或服务主体另存为 [GitHub 机密](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)，以便使用 Azure 进行身份验证。 你将在工作流中访问机密。 
+将发布配置文件凭据或服务主体另存为 [GitHub 机密](https://docs.github.com/en/actions/reference/encrypted-secrets)，以便使用 Azure 进行身份验证。 你将在工作流中访问机密。 
 
 # <a name="publish-profile"></a>[发布配置文件](#tab/applevel)
 
 发布配置文件是应用级凭据。 将发布配置文件设置为 GitHub 机密。 
 
-1. 在 Azure 门户中，请参阅应用服务。 
+1. 在 Azure 门户中转到应用服务。 
 
-1. 在 " **概述** " 页上，选择 " **获取发布配置文件**"。
+1. 在“概述”页上，选择“获取发布配置文件” 。
 
 1. 保存下载的文件。 你将使用该文件的内容来创建 GitHub 机密。
 
 > [!NOTE]
-> 从2020年10月起，Linux web 应用在 `WEBSITE_WEBDEPLOY_USE_SCM` `true` **下载发布配置文件之前**，需要将应用设置设置为。 此要求将在将来删除。
+> 从 2020 年 10 月起，Linux Web 应用在下载发布配置文件之前，需要将应用设置 `WEBSITE_WEBDEPLOY_USE_SCM` 设置为 `true`。 未来将删除此要求。
 
 # <a name="service-principal"></a>[服务主体](#tab/userlevel)
 
@@ -101,7 +101,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 ```
 
 > [!IMPORTANT]
-> 始终应授予最小访问权限。 上一示例中的范围限制为特定的应用服务应用，而不是整个资源组。
+> 始终应授予最小访问权限。 上一个示例中的范围仅限于特定的应用服务应用而不是整个资源组。
 
 ---
 
@@ -112,9 +112,9 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 在 [GitHub](https://github.com/) 中，浏览存储库，选择“设置”>“机密”>“添加新机密”。
 
-若要使用 [应用级凭据](#generate-deployment-credentials)，请将下载的发布配置文件的内容粘贴到机密的值字段中。 命名机密 `AZURE_WEBAPP_PUBLISH_PROFILE` 。
+若要使用[应用级凭据](#generate-deployment-credentials)，请将下载的发布配置文件的内容粘贴到机密的值字段中。 将机密命名为 `AZURE_WEBAPP_PUBLISH_PROFILE`。
 
-配置 GitHub 工作流时，请 `AZURE_WEBAPP_PUBLISH_PROFILE` 在部署 Azure Web 应用操作中使用。 例如：
+配置 GitHub 工作流时，在部署 Azure Web 应用操作中使用 `AZURE_WEBAPP_PUBLISH_PROFILE`。 例如：
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -126,7 +126,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 在 [GitHub](https://github.com/) 中，浏览存储库，选择“设置”>“机密”>“添加新机密”。
 
-要使用 [用户级凭据](#generate-deployment-credentials)，请将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 为机密指定名称 `AZURE_CREDENTIALS`。
+若要使用[用户级凭据](#generate-deployment-credentials)，请将 Azure CLI 命令的整个 JSON 输出粘贴到机密的“值”字段中。 为机密指定名称 `AZURE_CREDENTIALS`。
 
 以后配置工作流文件时，请使用该机密作为 Azure 登录操作的输入 `creds`。 例如：
 
@@ -150,7 +150,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 |**JavaScript** | `actions/setup-node` |
 |**Python**     | `actions/setup-python` |
 
-以下示例演示了如何为不同的受支持语言设置环境：
+以下示例演示如何为不同受支持的语言设置环境：
 
 **.NET**
 
@@ -209,15 +209,15 @@ jobs:
 
 ## <a name="build-the-web-app"></a>构建 Web 应用
 
-构建 web 应用并部署到 Azure App Service 更改的过程，具体取决于语言。 
+生成 Web 应用并部署到 Azure 应用服务的过程会根据语言而变化。 
 
-下面的示例显示了以不同支持的语言构建 web 应用的工作流部分。
+以下示例显示了以不同受支持的语言生成 Web 应用的工作流部分。
 
-对于所有语言，你可以将 web 应用根目录设置为 `working-directory` 。 
+对于所有语言，可以使用 `working-directory` 设置 Web 应用根目录。 
 
 **.NET**
 
-环境变量 `AZURE_WEBAPP_PACKAGE_PATH` 设置 web 应用项目的路径。 
+环境变量 `AZURE_WEBAPP_PACKAGE_PATH` 设置 Web 应用项目的路径。 
 
 ```yaml
 - name: dotnet build and publish
@@ -228,7 +228,7 @@ jobs:
 ```
 **ASP.NET**
 
-您可以还原 NuGet 依赖项并通过运行 msbuild `run` 。 
+可以还原 NuGet 依赖项，然后使用 `run` 运行 msbuild。 
 
 ```yaml
 - name: NuGet to restore dependencies as well as project-specific tools that are specified in the project file
@@ -250,7 +250,7 @@ jobs:
 
 **JavaScript**
 
-对于 Node.js，你可以 `working-directory` 在中设置或更改 npm 目录 `pushd` 。 
+对于 Node.js，可以设置 `working-directory` 或在 `pushd` 中更改为 npm 目录。 
 
 ```yaml
 - name: npm install, build, and test
@@ -279,15 +279,15 @@ jobs:
 |---------|---------|
 | **app-name** | （必需）应用服务应用的名称 | 
 | **publish-profile** | （可选）具有 Web 部署机密的发布配置文件内容 |
-| **package** | （可选）包或文件夹的路径。 路径可以包含 * .zip、* war、* .jar 或要部署的文件夹 |
-| **slot-name** |  (可选) 输入生产[槽](deploy-staging-slots.md)以外的现有槽 |
+| **package** | （可选）包或文件夹的路径。 路径可包括 *.zip、*.war、*.jar 或要部署的文件夹 |
+| **slot-name** | （可选）输入生产[槽](deploy-staging-slots.md)以外的现有槽 |
 
 
 # <a name="publish-profile"></a>[发布配置文件](#tab/applevel)
 
 ### <a name="net-core"></a>.NET Core
 
-使用 Azure 发布配置文件生成 .NET Core 应用并将其部署到 Azure。 `publish-profile`输入将引用 `AZURE_WEBAPP_PUBLISH_PROFILE` 前面创建的机密。
+使用 Azure 发布配置文件生成 .NET Core 应用并将其部署到 Azure。 `publish-profile` 输入引用之前创建的 `AZURE_WEBAPP_PUBLISH_PROFILE` 机密。
 
 ```yaml
 name: .NET Core CI
@@ -331,7 +331,7 @@ jobs:
 
 ### <a name="aspnet"></a>ASP.NET
 
-生成并部署使用 NuGet 和身份验证的 ASP.NET MVC 应用 `publish-profile` 。 
+生成并部署使用 NuGet 和 `publish-profile` 进行身份验证的 ASP.NET MVC 应用。 
 
 
 ```yaml
@@ -374,7 +374,7 @@ jobs:
 
 ### <a name="java"></a>Java
 
-使用 Azure 发布配置文件构建 Java 弹簧应用并将其部署到 Azure。 `publish-profile`输入将引用 `AZURE_WEBAPP_PUBLISH_PROFILE` 前面创建的机密。
+使用 Azure 发布配置文件生成 Java Spring 应用并将其部署到 Azure。 `publish-profile` 输入引用之前创建的 `AZURE_WEBAPP_PUBLISH_PROFILE` 机密。
 
 ```yaml
 name: Java CI with Maven
@@ -403,7 +403,7 @@ jobs:
         package: my/target/*.jar
 ```
 
-若要部署 `war` 而不是 `jar` ，请更改 `package` 值。 
+若要部署 `war` 而不是 `jar`，请更改 `package` 值。 
 
 
 ```yaml
@@ -415,9 +415,9 @@ jobs:
         package: my/target/*.war
 ```
 
-### <a name="javascript"></a>Javascript 
+### <a name="javascript"></a>JavaScript 
 
-使用应用的发布配置文件构建 Node.js 应用并将其部署到 Azure。 `publish-profile`输入将引用 `AZURE_WEBAPP_PUBLISH_PROFILE` 前面创建的机密。
+使用应用的发布配置文件生成 Node.js 应用并将其部署到 Azure。 `publish-profile` 输入引用之前创建的 `AZURE_WEBAPP_PUBLISH_PROFILE` 机密。
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -458,7 +458,7 @@ jobs:
 
 ### <a name="python"></a>Python 
 
-使用应用的发布配置文件构建 Python 应用并将其部署到 Azure。 请注意 `publish-profile` 输入如何引用 `AZURE_WEBAPP_PUBLISH_PROFILE` 前面创建的机密。
+使用应用的发布配置文件生成 Python 应用并将其部署到 Azure。 请注意 `publish-profile` 输入如何引用之前创建的 `AZURE_WEBAPP_PUBLISH_PROFILE` 机密。
 
 ```yaml
 name: Python CI
@@ -497,7 +497,7 @@ jobs:
 
 ### <a name="net-core"></a>.NET Core 
 
-使用 Azure 服务主体生成 .NET Core 应用并将其部署到 Azure。 请注意 `creds` 输入如何引用 `AZURE_CREDENTIALS` 前面创建的机密。
+使用 Azure 服务主体生成 .NET Core 应用并将其部署到 Azure。 请注意 `creds` 输入如何引用之前创建的 `AZURE_CREDENTIALS` 机密。
 
 
 ```yaml
@@ -549,7 +549,7 @@ jobs:
 
 ### <a name="aspnet"></a>ASP.NET
 
-使用 Azure 服务主体生成 ASP.NET MVC 应用并将其部署到 Azure。 请注意 `creds` 输入如何引用 `AZURE_CREDENTIALS` 前面创建的机密。
+使用 Azure 服务主体生成 ASP.NET MVC 应用并将其部署到 Azure。 请注意 `creds` 输入如何引用之前创建的 `AZURE_CREDENTIALS` 机密。
 
 ```yaml
 name: Deploy ASP.NET MVC App deploy to Azure Web App
@@ -600,7 +600,7 @@ jobs:
 
 ### <a name="java"></a>Java 
 
-使用 Azure 服务主体生成 Java 弹簧应用并将其部署到 Azure。 请注意 `creds` 输入如何引用 `AZURE_CREDENTIALS` 前面创建的机密。
+使用 Azure 服务主体生成 Java Spring 应用并将其部署到 Azure。 请注意 `creds` 输入如何引用之前创建的 `AZURE_CREDENTIALS` 机密。
 
 ```yaml
 name: Java CI with Maven
@@ -636,9 +636,9 @@ jobs:
         az logout
 ```
 
-### <a name="javascript"></a>Javascript 
+### <a name="javascript"></a>JavaScript 
 
-使用 Azure 服务主体构建 Node.js 应用并将其部署到 Azure。 请注意 `creds` 输入如何引用 `AZURE_CREDENTIALS` 前面创建的机密。
+使用 Azure 服务主体生成 Node.js 应用并将其部署到 Azure。 请注意 `creds` 输入如何引用之前创建的 `AZURE_CREDENTIALS` 机密。
 
 ```yaml
 name: JavaScript CI
@@ -689,7 +689,7 @@ jobs:
 
 ### <a name="python"></a>Python 
 
-使用 Azure 服务主体构建 Python 应用并将其部署到 Azure。 请注意 `creds` 输入如何引用 `AZURE_CREDENTIALS` 前面创建的机密。
+使用 Azure 服务主体生成 Python 应用并将其部署到 Azure。 请注意 `creds` 输入如何引用之前创建的 `AZURE_CREDENTIALS` 机密。
 
 ```yaml
 name: Python application
@@ -746,7 +746,7 @@ jobs:
 
 - [Docker 登录/注销](https://github.com/Azure/docker-login)
 
-- [触发工作流的事件](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+- [触发工作流的事件](https://docs.github.com/en/actions/reference/events-that-trigger-workflows)
 
 - [K8s 部署](https://github.com/Azure/k8s-deploy)
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 10/07/2020
+ms.date: 01/21/2021
 ms.author: alkohli
-ms.openlocfilehash: d07d9dccb0aa273f79b251f2ffb4a920f3cac2e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0976dd9f3c4d0228ec0f170a755ec13800da435b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447622"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761535"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>排查 Azure Stack Edge Pro GPU 设备上的问题 
 
@@ -26,7 +26,7 @@ ms.locfileid: "96447622"
 
 若要诊断和排查任何设备错误，可以运行诊断测试。 在设备的本地 Web UI 中执行以下步骤，以运行诊断测试。
 
-1. 在本地 Web UI 中，转到“故障排除”>“诊断测试”。 选择要运行的测试，然后选择 " **运行测试**"。 这会运行测试来诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 你将收到设备正在运行测试的通知。
+1. 在本地 Web UI 中，转到“故障排除”>“诊断测试”。 选择要运行的测试，然后选择 " **运行测试**"。 测试诊断网络、设备、web 代理、时间或云设置的任何可能问题。 你将收到设备正在运行测试的通知。
 
     ![选择测试 ](media/azure-stack-edge-gpu-troubleshoot/run-diag-1.png)
  
@@ -97,7 +97,7 @@ ms.locfileid: "96447622"
 
 - 使用 cmdlet 读取设备的系统事件日志 `racadm` 。 然后，将这些事件筛选为文件中与机箱相关的事件 `HWIntrusion.txt` 。
 
-- 若要仅获取支持包中的硬件入侵日志，请 `-Include HWSelLog` 在创建支持包时使用选项。 
+- 若要仅获取支持包中的硬件入侵日志，请在 `-Include HWSelLog` 创建支持包时使用选项。 
 
 - 如果未提供任何特定的包含选项，则会在支持包中将硬件入侵日志作为默认值提供。
 
@@ -143,7 +143,7 @@ ms.locfileid: "96447622"
 | **问题/错误** |  **分辨率** | 
 |------------|-----------------|
 |常规问题|<li>[验证边缘设备是否已正确配置](#verify-the-device-is-configured-properly)。<li> [验证是否正确配置了客户端](#verify-the-client-is-configured-properly)|
-|Add-AzureRmEnvironment：发送请求时出错。<br>行：1个字符：1<br>+ Add-AzureRmEnvironment-Name Az3-ARMEndpoint " https://management.dbe .。。|此错误表示 Azure Stack Edge Pro 设备无法访问或配置不正确。 验证是否正确配置了边缘设备和客户端。 有关指南，请参阅此表中的 **常规问题** 行。|
+|Get-azurermenvironment：发送请求时出错。<br>行：1个字符：1<br>+ Add-AzureRmEnvironment-Name Az3-ARMEndpoint " https://management.dbe .。。|此错误表示 Azure Stack Edge Pro 设备无法访问或配置不正确。 验证是否正确配置了边缘设备和客户端。 有关指南，请参阅此表中的 **常规问题** 行。|
 |服务返回了错误。 有关更多详细信息，请检查 InnerException：基础连接已关闭：无法为 SSL/TLS 安全通道建立信任关系。 |   此错误的原因可能是一个或多个自带证书步骤未正确执行。 可在 [此处](./azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)找到相关指导。 |
 |操作返回了无效的状态代码 "ServiceUnavailable" <br> 响应状态代码不表示成功： 503 (服务不可用) 。 | 此错误可能是任何这些条件的结果。<li>ArmStsPool 处于停止状态。</li><li>Azure 资源管理器/安全令牌服务网站均已关闭。</li><li>Azure 资源管理器群集资源已关闭。</li><br><strong>注意：</strong> 重新启动设备可能会解决问题，但你应收集支持包，以便进一步调试。|
 |AADSTS50126：用户名或密码无效。<br>跟踪 ID：29317da9-52fc-4ba0-9778-446ae5625e5a<br>相关 ID： 1b9752c4-8cbf-4304-a714-8a16527410f4<br>时间戳： 2019-11-15 09：21：57Z：远程服务器返回错误： (400) 错误的请求。<br>行：1个字符：1 |此错误可能是任何这些条件的结果。<li>对于无效的用户名和密码，请按照 [此处](./azure-stack-edge-j-series-set-azure-resource-manager-password.md) 的步骤操作，然后使用正确的密码来验证客户是否已更改了 Azure 门户密码。<li>如果租户 ID 无效，则租户 ID 是固定 GUID 并且应设置为 `c0257de7-538f-415c-993a-1b87a031879d`</li>|
@@ -187,7 +187,7 @@ ms.locfileid: "96447622"
 | **问题/错误** |  **分辨率** | 
 |--------------------|-----------------|
 |无法检索子资源。 其中一个 HTTP 标头的值的格式不正确。| 在“编辑”菜单中，选择“目标 Azure Stack API”。  然后，重新启动 Azure 存储资源管理器。|
-|getaddrinfo ENOTFOUND <accountname> . <serialnumber>microsoftdatabox.com|检查是否已将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到主机文件中的以下路径： `C:\Windows\System32\drivers\etc\hosts` Windows 或 `/etc/hosts` Linux。|
+|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com`|检查是否已将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到主机文件中的以下路径： `C:\Windows\System32\drivers\etc\hosts` Windows 或 `/etc/hosts` Linux。|
 |无法检索子资源。<br> 详细信息：自签名证书 |将设备的 SSL 证书导入 Azure 存储资源管理器： <ol><li>从 Azure 门户下载证书。 有关详细信息，请参阅 [下载证书](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate)。</li><li>在 " **编辑** " 菜单中，选择 "SSL 证书"，然后选择 " **导入证书**"。</li></ol>|
 |AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达一分钟：<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|检查是否已在 `C:\Windows\System32\drivers\etc\hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到 hosts 文件。|
 |AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达一分钟：<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |将你的设备的 SSL 证书导入到系统的证书存储中。 有关详细信息，请参阅 [下载证书](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate)。|
@@ -197,8 +197,11 @@ ms.locfileid: "96447622"
 |显示此错误之前，AzCopy 命令似乎停止响应20分钟： `Error parsing source location… The SSL connection could not be established` 。|将你的设备的 SSL 证书导入到系统的证书存储中。 有关详细信息，请参阅 [下载证书](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate)。|
 |其中一个 HTTP 标头的值的格式不正确。|Data Box 不支持用于 Python 的 Microsoft Azure 存储库的已安装版本。 请查看 Azure Data Box Blob 存储要求，了解支持的版本。|
 |… [SSL:CERTIFICATE_VERIFY_FAILED] …| 在运行 Python 之前，将 REQUESTS_CA_BUNDLE 环境变量设置为 Base64 编码的 SSL 证书文件的路径 (参阅如何 [下载证书](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate)。 例如：<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>或者，将证书添加到系统的证书存储中，然后将此环境变量设置为该存储区的路径。 例如，在 Ubuntu 上为：<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
-|连接超时。|登录到 Azure Stack Edge Pro，并检查它是否已解锁。 设备在重启后会保持锁定状态，直到有人登录为止。|
+|连接超时。|登录到 Azure Stack Edge Pro，并检查它是否已解锁。 设备重新启动时，它将一直保持锁定状态，直到有人登录。|
 
+## <a name="troubleshoot-iot-edge-errors"></a>排查 IoT Edge 错误
+
+[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
 
 
 ## <a name="next-steps"></a>后续步骤
