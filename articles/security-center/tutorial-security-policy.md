@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 88af554faab9479a402dd393b0a7eed0835ce59e
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 7ea871428fffe685cc9d43dd698bfefb8d8a511a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814340"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756678"
 ---
 # <a name="manage-security-policies"></a>管理安全策略
 
@@ -33,7 +33,7 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 
 安全中心提供以下选项来让用户使用安全策略：
 
-* **查看和编辑内置默认策略** - 启用安全中心时，会将一个名为“ASC default”的内置计划自动分配到所有已在安全中心注册的订阅。 若要自定义此计划，可在其中启用或禁用单个策略。 要了解现成可用的选项，请参阅[内置安全策略](./policy-reference.md)列表。
+* **查看和编辑内置默认策略** -启用安全中心时，名为 "Azure 安全基准测试" 的计划会自动分配到所有安全中心注册的订阅。 若要自定义此计划，可在其中启用或禁用单个策略。 要了解现成可用的选项，请参阅[内置安全策略](./policy-reference.md)列表。
 
 * **添加自己的自定义策略** - 如果希望自定义要应用到自己的订阅的安全计划，可以在安全中心执行此操作。 如果计算机不遵循创建的策略，则你会收到建议。 有关生成和分配自定义策略的说明，请参阅[使用自定义安全策略](custom-security-policies.md)。
 

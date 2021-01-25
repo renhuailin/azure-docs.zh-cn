@@ -12,16 +12,16 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 35499810ae13a8ddc5b7bb6306deafef0ef24e0f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: aa8c00d1ee2a0dc3d019cc75b4e411ede984e74a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246785"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756046"
 ---
-# <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
+# <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft 标识平台中的权限和许可
 
-与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 已更新 Microsoft 标识平台终结点上的授权模型的实现。 它会更改应用必须与 Microsoft 标识平台交互的方式。 本文介绍此授权模型的基本概念，包括范围、权限和许可。
+与 Microsoft 标识平台集成的应用程序遵循授权模型，该模型可让用户和管理员控制数据的访问方式。 已在 Microsoft 标识平台上更新授权模型的实现。 它会更改应用必须与 Microsoft 标识平台交互的方式。 本文介绍此授权模型的基本概念，包括范围、权限和许可。
 
 ## <a name="scopes-and-permissions"></a>范围和权限
 
@@ -53,7 +53,7 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 
 ## <a name="permission-types"></a>权限类型
 
-Microsoft 标识平台支持两种类型的权限：*委托的权限* 和 *应用程序权限*。
+Microsoft 标识平台支持两种类型的权限： *委托的权限* 和 *应用程序权限*。
 
 * **委托的权限** 由包含登录用户的应用使用。 对于这些应用程序，用户或管理员同意应用程序所请求的权限。 当应用程序调用目标资源时，该应用程序将委派权限作为已登录用户。 
 
@@ -128,7 +128,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 `scope` 参数是应用程序所请求的委托权限列表（以空格分隔）。 每个权限都是通过将权限值追加到 (应用程序 ID URI) 的资源标识符来表示的。 在该请求示例中，应用需要相应的权限来读取用户的日历，以及以用户身分发送邮件。
 
-在用户输入其凭据之后，Microsoft 标识平台终结点将检查是否有匹配的 *用户许可* 记录。 如果用户尚未同意过去的任何请求权限，并且管理员尚未代表整个组织同意这些权限，则 Microsoft 标识平台终结点会要求用户授予请求的权限。
+用户输入其凭据后，Microsoft 标识平台会检查 *用户同意* 的匹配记录。 如果用户过去没有同意任何请求的权限，并且管理员没有代表整个组织同意这些权限，则 Microsoft 标识平台会要求用户授予所请求的权限。
 
 目前，在首次 `offline_access` 同意应用程序时， ( "维持对你向其授予访问权限的数据的访问权限" ) 权限和 `user.read` ( "登录并读取你的配置文件" ) 权限。  这些权限通常是适当的应用程序功能所必需的。 `offline_access`权限允许应用访问，以便刷新对本机应用和 web 应用至关重要的令牌。 `user.read`权限提供对声明的访问 `sub` 。 它允许客户端或应用程序在一段时间内正确地确定用户身份并访问基本的用户信息。
 
@@ -335,7 +335,7 @@ response_type=token            //Code or a hybrid flow is also possible here
 
 此代码示例将为所有已注册的权限（如果前面的同意说明并适用于方案）生成许可页 `/.default` 。 然后，代码将返回 `id_token` ，而不是访问令牌。  
 
-此行为适用于从 Azure AD 身份验证库 (ADAL) 迁移到 Microsoft 身份验证库 (MSAL) 的旧客户端。 面向 Microsoft 标识平台终结点的新客户 *端不应* 使用此设置。
+此行为适用于从 Azure AD 身份验证库 (ADAL) 迁移到 Microsoft 身份验证库 (MSAL) 的一些旧客户端。 面向 Microsoft 标识平台的新客户 *端不应* 使用此设置。
 
 ### <a name="client-credentials-grant-flow-and-default"></a>客户端凭据授权流和“/.default”  
 

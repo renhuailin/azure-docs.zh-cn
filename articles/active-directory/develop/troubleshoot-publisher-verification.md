@@ -1,5 +1,6 @@
 ---
-title: 发布者验证故障排除 - Microsoft 标识平台 | Azure
+title: 发行者验证疑难解答 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 介绍如何通过调用 Microsoft Graph Api 来解决 Microsoft 标识平台的发行者验证问题。
 services: active-directory
 author: rwike77
@@ -12,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 857659cdd97666dba585c1ec22c750e29bf28879
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 10609f2706d257dbe5d8f43b85da5f06cb986cae
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169165"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756184"
 ---
 # <a name="troubleshoot-publisher-verification"></a>排查发布者验证问题
 如果无法完成该过程或在 [发布服务器验证](publisher-verification-overview.md)时遇到意外行为，则应首先执行以下操作（如果接收到错误或看到意外行为）： 

@@ -1,5 +1,6 @@
 ---
-title: 从桌面应用调用 Web API - Microsoft 标识平台 | Azure
+title: 从桌面应用程序调用 web Api |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何生成调用 Web API 的桌面应用
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 274dc731b69686a67a9ac5dba25a5d9c98581652
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 51619fe049d580c21b338af2f86b2afea6765b04
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444038"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756521"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>用于调用 Web API 的桌面应用：调用 Web API
 
@@ -92,7 +93,7 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>调用多个 Api：增量许可和条件访问
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>调用多个 API：增量同意和条件访问
 
 若要为同一用户调用多个 API，请在获得第一个 API 的令牌后调用 `AcquireTokenSilent`。 大多数情况下，你会以静默方式获得其他 API 的令牌。
 
@@ -129,4 +130,4 @@ catch(MsalUiRequiredException ex)
 
 ## <a name="next-steps"></a>后续步骤
 
-转到本方案中的下一篇文章， [转到 "生产](scenario-desktop-production.md)"。
+转到此方案中的下一篇文章：[移到生产环境](scenario-desktop-production.md)。

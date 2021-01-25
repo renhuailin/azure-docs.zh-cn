@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 22d6cacc36363b17f9bc32d354982eb71974b31d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 4f87c3fd0cfda2db535b2c8f7f7330a273e6b767
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779747"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755347"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
@@ -52,7 +52,7 @@ Azure AD 中的 Web 应用/API 注册默认为单租户。 通过在 [Azure 门�
 
 使用多租户应用程序时，应用程序事先并不知道用户来自哪个租户，因此无法将请求发送到租户的终结点。 取而代之的是，请求将发送到在所有 Azure AD 租户之间多路复用的终结点：`https://login.microsoftonline.com/common`
 
-当 Microsoft 标识平台在 /common 终结点上收到请求时，会使用户登录，因而可以发现用户来自哪个租户。 /common 终结点可与 Azure AD 支持的所有身份验证协议配合使用：OpenID Connect、OAuth 2.0、SAML 2.0 和 WS 联合身份验证。
+当 Microsoft 标识平台在/common 终结点上收到请求时，它会在中对用户进行签名，因此，会发现用户来自哪个租户。 /common 终结点可与 Azure AD 支持的所有身份验证协议配合使用：OpenID Connect、OAuth 2.0、SAML 2.0 和 WS 联合身份验证。
 
 然后，对应用程序做出的登录响应会包含代表该用户的令牌。 令牌中的颁发者值告知应用程序该用户来自哪个租户。 从 /common 终结点返回响应时，令牌中的颁发者值将与用户的租户相对应。
 

@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: marsma, rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 213184409c9f5ee21ac9f61be1ad138fbbaa3590
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 42ffc7ffba20868b23675fd8613fd3ef11b0924a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107849"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755054"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>适用于 Python 的 ADAL 到 MSAL 迁移指南
 
@@ -38,19 +38,19 @@ ADAL 适用于 Azure Active Directory (Azure AD) v1.0 终结点。 Microsoft 身
   - OAuth v2.0
   - OpenID Connect (OIDC)
 
-有关更多详细信息，请参阅 [Microsoft 标识平台 (v2.0) 终结点有何不同？](../azuread-dev/azure-ad-endpoint-comparison.md)。
+有关更多详细信息，请参阅 [Microsoft 标识平台的不同之处](../azuread-dev/azure-ad-endpoint-comparison.md) 。
 
 ### <a name="scopes-not-resources"></a>范围不是资源
 
 ADAL Python 获取资源的令牌，而 MSAL Python 则是获取范围的令牌。 MSAL Python 中的 API 面不再包含资源参数。 可能需要以字符串列表的形式提供范围，这些字符串声明所需的权限和请求的资源。 若要查看一些示例范围，请参阅 [Microsoft Graph 的范围](/graph/permissions-reference)。
 
-可以将 `/.default` 作用域后缀添加到资源中，帮助将应用从 v1.0 终结点 (ADAL) 迁移到 Microsoft 标识平台终结点 (MSAL)。 例如，对于 `https://graph.microsoft.com` 的资源值，等效的作用域值为 `https://graph.microsoft.com/.default`。  如果资源未采用 URL 形式，但资源 ID 采用 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` 形式，则仍可以使用作用域值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`。
+可以将 `/.default` 范围后缀添加到资源中，以帮助将应用从 v2.0 终结点 (ADAL) 迁移到 Microsoft 标识平台 (MSAL) 。 例如，对于 `https://graph.microsoft.com` 的资源值，等效的作用域值为 `https://graph.microsoft.com/.default`。  如果资源未采用 URL 形式，但资源 ID 采用 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` 形式，则仍可以使用作用域值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`。
 
 有关不同类型作用域的更多详细信息，请参阅 [Microsoft 标识平台中的权限和许可](./v2-permissions-and-consent.md)以及[接受 v1.0 令牌的 Web API 的作用域](./msal-v1-app-scopes.md)两篇文章。
 
 ### <a name="error-handling"></a>错误处理。
 
-适用于 Python 的 Azure Active Directory 身份验证库 (ADAL) 使用异常 `AdalError` 来指示问题。 而适用于 Python 的 MSAL 通常使用错误代码。 有关详细信息，请参阅 [MSAL For Python 错误处理](msal-error-handling-python.md)。
+适用于 Python 的 Azure Active Directory 身份验证库 (ADAL) 使用异常 `AdalError` 来指示问题。 而适用于 Python 的 MSAL 通常使用错误代码。 有关详细信息，请参阅[适用于 Python 的 MSAL 错误处理](msal-error-handling-python.md)。
 
 ### <a name="api-changes"></a>API 更改
 
@@ -92,7 +92,7 @@ def get_preexisting_rt_and_their_scopes_from_elsewhere():
     # You may be able to append "/.default" to your v1 resource to form a scope
     # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-    # Or maybe you have an app already talking to Microsoft identity platform v2,
+    # Or maybe you have an app already talking to the Microsoft identity platform,
     # powered by some 3rd-party auth library, and persist its tokens somehow.
 
     # Either way, you need to extract RTs from there, and return them like this.

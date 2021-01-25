@@ -1,6 +1,7 @@
 ---
-title: ADAL 应用与 MSAL 应用 (iOS/macOS) 之间的 SSO - Microsoft 标识平台 | Azure
-description: ''
+title: ADAL & MSAL apps (iOS/macOS) 的 SSOMicrosoft
+titleSuffix: Microsoft identity platform
+description: 了解如何在 ADAL 和 MSAL 应用之间共享 SSO
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 7a8a1667ba1ca2a99c053c6941e3ba778299fd53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60189b8ba952bc3315bf514c5d0786601840665a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80880744"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756196"
 ---
-# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>如何：macOS 和 iOS 上的 ADAL 与 MSAL 应用之间的 SSO
+# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上，在 ADAL 和 MSAL 应用之间 SSO
 
 适用于 iOS 的 Microsoft 身份验证库 (MSAL) 可与 [ADAL Objective-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc) 共享应用程序之间的 SSO 状态。 你可以按照自己的步调将应用迁移到 MSAL，确保用户仍可受益于跨应用 SSO - 即使混用基于 ADAL 和基于 MSAL 的应用。
 
@@ -48,8 +49,8 @@ MSAL 和 ADAL 使用不同的帐户标识符。 ADAL 使用 UPN 作为主要帐�
 | 帐户标识符                | MSAL                                                         | ADAL 2.7.x      | 旧版 ADAL（ADAL 2.7.x 以前的版本） |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | 可显示的标识符            | `username`                                                   | `userId`        | `userId`                       |
-| 不可显示的唯一标识符 | `identifier`                                                 | `homeAccountId` | 不适用                            |
-| 没有任何已知的帐户 ID               | 通过 `allAccounts:` 中的 `MSALPublicClientApplication` API 查询所有帐户 | 空值             | 不适用                            |
+| 不可显示的唯一标识符 | `identifier`                                                 | `homeAccountId` | 空值                            |
+| 没有任何已知的帐户 ID               | 通过 `allAccounts:` 中的 `MSALPublicClientApplication` API 查询所有帐户 | 不适用             | 空值                            |
 
 这是提供这些标识符的 `MSALAccount` 接口：
 

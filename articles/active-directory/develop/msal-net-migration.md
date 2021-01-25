@@ -13,18 +13,18 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: c6049bf55e379a2629e8cd4ef1427f91fc31d2cd
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b437efcfa2b0bb2a725929ae0253f48d97d11552
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063597"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754814"
 ---
 # <a name="migrating-applications-to-msalnet"></a>将应用程序迁移到 MSAL.NET
 
 适用于 .net 的 Microsoft 身份验证库 (MSAL.NET) 和适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 用于对 Azure AD 的实体进行身份验证和请求令牌。 截止目前，大多数开发人员都是通过 Azure AD 身份验证库 (ADAL) 来请求令牌，使用面向开发人员的 Azure AD 平台 (v1.0) 来对 Azure AD 标识（工作和学校帐户）进行身份验证。 使用 MSAL：
 
-- 你可以通过 Azure AD B2C) 来验证更广泛的一组 Microsoft 标识 (Azure AD 标识和 Microsoft 帐户，以及社交和本地帐户，因为它使用 Microsoft 标识平台终结点，
+- 你可以通过 Azure AD B2C) 来验证更广泛的一组 Microsoft 标识 (Azure AD 标识和 Microsoft 帐户，以及社交和本地帐户，因为它使用 Microsoft 标识平台。
 - 你的用户将获得最佳单一登录体验。
 - 应用程序可以启用增量许可，可以更轻松地为条件访问提供支持
 - 你将从创新中受益。
@@ -35,9 +35,9 @@ ms.locfileid: "98063597"
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL 与 MSAL 应用之间的差异
 
-在大多数情况下都可以使用 MSAL.NET 和 Microsoft 标识平台终结点，这是最新一代的 Microsoft 身份验证库。 使用 MSAL.NET 可以获取通过 Azure AD（工作和学校帐户）、Microsoft（个人）帐户 (MSA) 或 Azure AD B2C 登录到应用程序的用户的令牌。
+在大多数情况下，你想要使用 MSAL.NET 和 Microsoft 标识平台，这是最新一代的 Microsoft 身份验证库。 使用 MSAL.NET 可以获取通过 Azure AD（工作和学校帐户）、Microsoft（个人）帐户 (MSA) 或 Azure AD B2C 登录到应用程序的用户的令牌。
 
-如果你已熟悉面向开发人员的 Azure AD (v1.0) 终结点（和 ADAL.NET），请阅读[ Microsoft 标识平台 (v2.0) 终结点有何不同？](../azuread-dev/azure-ad-endpoint-comparison.md)
+如果你已熟悉 (v1.0) endpoint (和 ADAL.NET) 开发人员的 Azure AD，则可能需要阅读 [Microsoft 标识平台的不同之处？](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 但是，如果应用程序需要使用早期版本的 [Active Directory 联合身份验证服务 (ADFS)](/windows-server/identity/active-directory-federation-services) 将用户登录，则你仍然需要使用 ADAL.NET。 有关详细信息，请参阅 [ADFS 支持](https://aka.ms/msal-net-adfs-support)。
 
@@ -266,4 +266,4 @@ AuthenticationResult result = await appRt.AcquireTokenByRefreshToken(null, rt)
 
 ## <a name="next-steps"></a>后续步骤
 
-可以[ Microsoft 标识平台终结点中的范围、权限和许可](v2-permissions-and-consent.md)中找到有关范围的详细信息
+你可以在[Microsoft 标识平台的范围、权限和同意](v2-permissions-and-consent.md)中找到有关范围的详细信息

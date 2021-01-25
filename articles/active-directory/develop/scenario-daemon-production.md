@@ -1,5 +1,6 @@
 ---
-title: 将调用 Web API 的守护程序应用移到生产环境 - Microsoft 标识平台 | Azure
+title: 将用于调用 web Api 的守护程序应用移动到生产环境 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何将调用 Web API 的守护程序应用移到生产环境
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 72e6d0a8677f7a8175223b80541c99026a9eb16f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99fd79fb6c51f577d9b62d15ac006b068a685bcf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119158"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756542"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>调用 Web API 的守护程序应用 - 移到生产环境
 

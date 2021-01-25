@@ -1,7 +1,7 @@
 ---
 title: 应用程序模型 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解注册应用程序以便它可以与 Microsoft 标识平台 (v2.0) 集成的过程。
+description: 了解注册应用程序的过程，使其能够与 Microsoft 标识平台集成。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 04/28/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ba41e36d12b58da2e572cf870195716eacaddef
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88117475"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755678"
 ---
 # <a name="application-model"></a>应用程序模型
 
@@ -32,9 +32,9 @@ ms.locfileid: "88117475"
 * 确定是否只允许属于你的组织的用户登录。 这是一个单租户应用程序。 或者允许用户使用任何工作或学校帐户登录。 这是一个多租户应用程序。 你还可以允许个人 Microsoft 帐户，或来自 LinkedIn、Google 的社交帐户，等等。
 * 请求范围权限。 例如，可以请求“user.read”范围，该授予读取已登录用户的个人资料的权限。
 * 定义范围，以便定义对 Web API 的访问权限。 通常，当某个应用想要访问你的 API 时，它需要请求对你所定义的范围的权限。
-* 与 Microsoft 标识平台共享机密，以证明应用的标识。  这适用于应用是机密客户端应用程序的情况。 机密客户端应用程序是可以安全保存凭据的应用程序。 它们需要使用受信任的后端服务器来存储凭据。
+* 与 Microsoft 标识平台共享机密，该平台证明了应用的标识。  这适用于应用是机密客户端应用程序的情况。 机密客户端应用程序是可以安全保存凭据的应用程序。 它们需要使用受信任的后端服务器来存储凭据。
 
-注册后，将为应用程序提供一个唯一标识符，应用在请求令牌时将与 Microsoft 标识平台共享该标识符。 如果应用是[机密客户端应用程序](developer-glossary.md#client-application)，它还会根据使用的是证书还是机密，来共享机密或公钥。
+注册后，将为应用程序提供一个唯一的标识符，该标识符在请求令牌时与 Microsoft 标识平台共享。 如果应用是[机密客户端应用程序](developer-glossary.md#client-application)，它还会根据使用的是证书还是机密，来共享机密或公钥。
 
 Microsoft 标识平台使用实现以下两项主要功能的模型来表示应用程序：
 
@@ -55,7 +55,7 @@ Microsoft 标识平台：
 
 ## <a name="multi-tenant-apps"></a>多租户应用
 
-在 Microsoft 标识平台中，[应用程序对象](developer-glossary.md#application-object)对应用程序进行描述。 在部署时，Microsoft 标识平台使用应用程序对象作为蓝图来创建[服务主体](developer-glossary.md#service-principal-object)，它表示目录或租户中应用程序的具体实例。 该服务主体定义应用在特定目标目录中可以实际执行的操作、使用者是谁、以及可以访问哪些资源等。 Microsoft 标识平台通过[许可](developer-glossary.md#consent)使用应用程序对象创建服务主体。
+在 Microsoft 标识平台中，[应用程序对象](developer-glossary.md#application-object)对应用程序进行描述。 在部署时，Microsoft 标识平台使用应用程序对象作为蓝图来创建[服务主体](developer-glossary.md#service-principal-object)，它表示目录或租户中的应用程序的具体实例。 该服务主体定义应用在特定目标目录中可以实际执行的操作、使用者是谁、以及可以访问哪些资源等。 Microsoft 标识平台通过[许可](developer-glossary.md#consent)使用应用程序对象创建服务主体。
 
 下图显示了征得同意后经过简化的 Microsoft 标识平台预配流程。 它显示了两个租户：A 和 B 。
 

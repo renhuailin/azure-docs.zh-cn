@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 0183471db274bb7fca59ed8f24aa87b2bf997fb6
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 1d1512447b5d0474f8fabe92dbc7a36259f4618c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063733"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754977"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>适用于 Java 的 ADAL 到 MSAL 迁移指南
 
@@ -29,7 +29,7 @@ ms.locfileid: "98063733"
 
 MSAL 提供以下优势：
 
-- 由于它使用较新的 Microsoft 标识平台终结点，因此你可以通过 Azure AD Business to 消费品 (B2C) ，对一组更广泛的 Microsoft 标识进行身份验证，如 Azure AD 标识、Microsoft 帐户以及社交和本地帐户。
+- 由于它使用较新的 Microsoft 标识平台，因此你可以通过 Azure AD Business to 消费品 (B2C) ，对一组更广泛的 Microsoft 标识进行身份验证，例如 Azure AD 标识、Microsoft 帐户和社交和本地帐户。
 - 用户将获得最佳单一登录体验。
 - 应用程序可以启用增量许可，更轻松地为条件访问提供支持。
 
@@ -37,13 +37,13 @@ MSAL for Java 是我们建议用于 Microsoft 标识平台的身份验证库。 
 
 ## <a name="differences"></a>差异
 
-如果你一直在使用面向开发人员的 Azure AD (v1.0) 终结点（和 ADAL4J），请阅读[ Microsoft 标识平台 (v2.0) 终结点有何不同？](../azuread-dev/azure-ad-endpoint-comparison.md)
+如果你使用的是 Azure AD for 开发人员 (v1.0) endpoint (和 ADAL4J) ，你可能需要阅读 [Microsoft 标识平台的不同之处？](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 ## <a name="scopes-not-resources"></a>范围不是资源
 
 ADAL4J 获取资源的令牌，而 MSAL for Java 则是获取范围的令牌。 许多 MSAL for Java 类需要 scopes 参数。 此参数是一个字符串列表，这些字符串声明所需的权限和请求的资源。 请参阅 [Microsoft Graph 的范围](/graph/permissions-reference)查看示例范围。
 
-可以将 `/.default` 作用域后缀添加到资源中，帮助将应用从 v1.0 终结点 (ADAL) 迁移到 Microsoft 标识平台终结点 (MSAL)。 例如，对于 `https://graph.microsoft.com` 的资源值，等效的作用域值为 `https://graph.microsoft.com/.default`。  如果资源未采用 URL 形式，但资源 ID 采用 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` 形式，则仍可以使用作用域值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`。
+可以将 `/.default` 范围后缀添加到资源，帮助将应用从 ADAL 迁移到 MSAL。 例如，对于 `https://graph.microsoft.com` 的资源值，等效的作用域值为 `https://graph.microsoft.com/.default`。  如果资源未采用 URL 形式，但资源 ID 采用 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` 形式，则仍可以使用作用域值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`。
 
 有关不同类型作用域的更多详细信息，请参阅 [Microsoft 标识平台中的权限和许可](./v2-permissions-and-consent.md)以及[接受 v1.0 令牌的 Web API 的作用域](./msal-v1-app-scopes.md)两篇文章。
 

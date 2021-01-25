@@ -11,30 +11,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/25/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: dbda0aecdadd81da0f7681a5fc9b140157d5e8f3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795968"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756818"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 安全中心的安全建议 
+
 本主题说明如何查看和了解 Azure 安全中心内的建议，以帮助你保护 Azure 资源。
 
 
 ## <a name="what-are-security-recommendations"></a>安全建议是什么？
 
-建议是为了保护资源而要采取的措施。
-
 安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后会提供有关如何消除这些安全漏洞的建议。
+
+建议是为了保护和强化资源而要采取的措施。 
 
 每项建议都提供：
 
 - 问题的简短说明
 - 为实施建议而要执行的修正步骤
 - 受影响的资源
+
+## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Microsoft 如何决定需要保护和强化哪些内容？
+
+安全中心的建议基于 Azure 安全基准。 
+
+Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，适用于基于常见合规框架的安全与合规最佳做法。 这一广泛遵从的基准是从 [中心针对 Internet 安全 (CIS) ](https://www.cisecurity.org/benchmark/azure/) 和 [美国国家标准与技术研究院 (NIST) ](https://www.nist.gov/) ，重点介绍以云为中心的安全性。
+
+详细了解 [Azure 安全基准](../security/benchmarks/introduction.md)。
 
 ## <a name="monitor-recommendations"></a>监视建议 <a name="monitor-recommendations"></a>
 

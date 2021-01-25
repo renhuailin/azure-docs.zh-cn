@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a4e7389952b81df13dae929dc1aec664fcc0b7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705990"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755647"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 标识平台开发人员术语表
 
@@ -34,7 +34,7 @@ ms.locfileid: "90705990"
 * 使用[“授权代码”授权](#authorization-grant)，则最终用户先以资源所有者的身份进行身份验证，将授权委托给客户端来访问资源。 然后，客户端在获取访问令牌时进行身份验证。 令牌有时可以更具体地称为“用户+应用”令牌，因为它同时代表授权客户端应用程序的用户，以及应用程序。
 * 使用[“客户端凭据”授权](#authorization-grant)，则客户端提供唯一的身份验证，在没有资源所有者身份验证/授权的情况下运行，因此该令牌有时可以称为“仅限应用”令牌。
 
-有关更多详细信息，请参阅 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims]。
+有关更多详细信息，请参阅 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims] 。
 
 ## <a name="application-id-client-id"></a>应用程序 ID（客户端 ID）
 
@@ -89,13 +89,13 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 根据 [OAuth2 授权框架][OAuth2-Role-Def]的定义，这是在成功验证[资源所有者](#resource-owner)身份并获取其授权之后，负责向[客户端](#client-application)颁发访问令牌的服务器。 [客户端应用程序](#client-application)在运行时根据 OAuth2 定义的[权限授予](#authorization-grant)，通过其[权限](#authorization-endpoint)和[令牌](#token-endpoint)终结点来与授权服务器交互。
 
-对于 Microsoft 标识平台应用程序集成，Microsoft 标识平台为 Azure AD 应用程序和 Microsoft 服务 API（例如 [Microsoft Graph API][Microsoft-Graph]）实现授权服务器角色。
+对于 Microsoft 标识平台应用程序集成，Microsoft 标识平台为 Azure AD 应用程序和 Microsoft 服务 Api （例如 [Microsoft Graph api][Microsoft-Graph]）实现授权服务器角色。
 
 ## <a name="claim"></a>声明
 
 [安全令牌](#security-token)包含声明，声明将有关某个实体（例如[客户端应用程序](#client-application)或[资源所有者](#resource-owner)）的断言提供给另一个实体（例如[资源服务器](#resource-server)）。 声明是中继令牌主体（例如，由[授权服务器](#authorization-server)进行身份验证的安全主体）相关事实的名称/值对。 给定令牌中的声明依赖于几个变量，包括令牌类型、用于验证主体身份的凭据类型和应用程序配置等。
 
-有关更多详细信息，请参阅 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims]。
+有关更多详细信息，请参阅 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims] 。
 
 ## <a name="client-application"></a>客户端应用程序
 
@@ -113,11 +113,11 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 [授权服务器](#authorization-server)的[授权终结点](#authorization-endpoint)提供的 [OpenID Connect][OpenIDConnect-ID-Token] [安全令牌](#security-token)，其中包含与最终用户[资源所有者](#resource-owner)的身份验证相关的[声明](#claim)。 与访问令牌一样，ID 令牌也以数字签名的 [JSON Web 令牌 (JWT)][JWT] 形式来表示。 不过，与访问令牌不同的是，ID 令牌的声明并不用于与资源访问相关的用途（具体地说，是访问控制）。
 
-有关更多详细信息，请参阅 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims]。
+有关更多详细信息，请参阅 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims] 。
 
 ## <a name="microsoft-identity-platform"></a>Microsoft 标识平台
 
-Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开发人员平台的一种演变。 开发人员可以通过它来生成应用程序，以便进行所有 Microsoft 标识的登录，以及获取令牌来调用 Microsoft Graph、其他 Microsoft API 或者开发人员生成的 API。 它是一种全功能的平台，包含身份验证服务、库、应用程序注册和配置、完整的开发人员文档、代码示例，以及其他开发人员内容。 Microsoft 标识平台支持行业标准协议，例如 OAuth 2.0 和 OpenID Connect。
+Microsoft 标识平台是 Azure Active Directory (Azure AD 的发展) 标识服务和开发人员平台。 开发人员可以通过它来生成应用程序，以便进行所有 Microsoft 标识的登录，以及获取令牌来调用 Microsoft Graph、其他 Microsoft API 或者开发人员生成的 API。 它是一种全功能的平台，包含身份验证服务、库、应用程序注册和配置、完整的开发人员文档、代码示例，以及其他开发人员内容。 Microsoft 标识平台支持行业标准协议，例如 OAuth 2.0 和 OpenID Connect。
 
 ## <a name="multi-tenant-application"></a>多租户应用程序
 
@@ -154,7 +154,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 根据 [OAuth2 授权框架][OAuth2-Role-Def]的定义，这是托管受保护资源的服务器，该服务器能够接受并响应出示[访问令牌](#access-token)的[客户端应用程序](#client-application)发出的受保护资源请求。 它也称为受保护的资源服务器或资源应用程序。
 
-资源服务器使用 OAuth 2.0 授权框架公开 API，并通过[范围](#scopes)和[角色](#roles)强制实施其受保护资源的访问权限。 示例包括 [Microsoft Graph API][Microsoft-Graph] ，该 api 提供对 Azure AD 租户数据的访问，以及提供对诸如邮件和日历等数据的访问的 Microsoft 365 api。
+资源服务器使用 OAuth 2.0 授权框架公开 API，并通过[范围](#scopes)和[角色](#roles)强制实施其受保护资源的访问权限。 示例包括可访问 Azure AD 租户数据的 [Microsoft Graph API][Microsoft-Graph]，以及可访问邮件和日历等数据的 Microsoft 365 API。
 
 与客户端应用程序一样，资源应用程序的标识配置是通过 Azure AD 租户中的 [注册](#application-registration) 来建立的，可提供应用程序和服务主体对象。 Microsoft 提供的某些 API（例如 Microsoft Graph API）在预配期间将预先注册的服务主体设置为在所有租户中可用。
 
@@ -172,7 +172,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 范围是资源定义的字符串（例如“Mail.Read”、“Directory.ReadWrite.All”），在 [Azure 门户][AZURE-portal]中通过资源的[应用程序清单](#application-manifest)进行管理，并且存储在资源的 [oauth2Permissions 属性][Graph-Sp-Resource]中。 也可通过 Azure 门户配置用于访问范围的客户端应用程序[委托权限](#permissions)。
 
-命名约定最佳实践是使用“resource.operation.constraint”格式。 有关 Microsoft Graph API 公开的范围的详细讨论，请参阅 [Graph API 权限范围][Graph-Perm-Scopes]。 Microsoft 365 services 公开的作用域，请参阅 [MICROSOFT 365 API 权限参考][O365-Perm-Ref]。
+命名约定最佳实践是使用“resource.operation.constraint”格式。 有关 Microsoft Graph API 公开的范围的详细讨论，请参阅 [Graph API 权限范围][Graph-Perm-Scopes]。 有关 Microsoft 365 服务公开的范围，请参阅 [Microsoft 365 API 访问权限参考][O365-Perm-Ref]。
 
 ## <a name="security-token"></a>安全令牌
 
@@ -180,7 +180,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 ## <a name="service-principal-object"></a>应用程序对象
 
-当你在 [Azure 门户][AZURE-portal]中注册/更新应用程序时，该门户将为此租户创建/更新[应用程序对象](#application-object)和对应的服务主体对象。 应用程序对象可全局（在关联的应用程序已获授予访问权限的所有租户中）*定义*应用程序的标识配置，并可作为模板来*派生*出其对应的服务主体对象，以便在运行时于本地（在特定租户）使用。
+当你在 [Azure 门户][AZURE-portal]中注册/更新应用程序时，该门户将为此租户创建/更新[应用程序对象](#application-object)和对应的服务主体对象。 应用程序对象可全局（在关联的应用程序已获授予访问权限的所有租户中）*定义* 应用程序的标识配置，并可作为模板来 *派生* 出其对应的服务主体对象，以便在运行时于本地（在特定租户）使用。
 
 有关详细信息，请参阅[应用程序和服务主体对象][AAD-App-SP-Objects]。
 
@@ -202,7 +202,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 * 对用户帐户和已注册应用程序进行身份验证
 * 为各种协议（包括 OAuth2 和 SAML）提供支持所需的 REST 终结点，包括[授权终结点](#authorization-endpoint)、[令牌终结点](#token-endpoint)以及[多租户应用程序](#multi-tenant-application)使用的“通用”终结点。
 
-在注册期间，会创建 Azure AD 租户，并将其与 Azure 关联 Microsoft 365 订阅，为订阅提供标识 & 访问管理功能。 Azure 订阅管理员还可通过 Azure 门户创建其他 Azure AD 租户。 有关可访问租户的各种方式的详细信息，请参阅[如何获取 Azure Active Directory 租户][AAD-How-To-Tenant]。 若要详细了解订阅和 Azure AD 租户之间的关系，以及如何向 Azure AD 租户关联或添加订阅的说明，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户][AAD-How-Subscriptions-Assoc]。
+在注册期间创建 Azure AD 租户/将 Azure AD 租户与 Azure 和 Microsoft 365 订阅相关联，以便为该订阅提供标识和访问管理功能。 Azure 订阅管理员还可通过 Azure 门户创建其他 Azure AD 租户。 有关可访问租户的各种方式的详细信息，请参阅[如何获取 Azure Active Directory 租户][AAD-How-To-Tenant]。 若要详细了解订阅和 Azure AD 租户之间的关系，以及如何向 Azure AD 租户关联或添加订阅的说明，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户][AAD-How-Subscriptions-Assoc]。
 
 ## <a name="token-endpoint"></a>令牌终结点
 
@@ -222,7 +222,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 
 ## <a name="next-steps"></a>后续步骤
 
-[Microsoft 标识平台开发人员指南][AAD-Dev-Guide]是用于所有 Microsoft 标识平台开发相关主题的登陆页，包括[应用程序集成][AAD-How-To-Integrate]的概述和 [Microsoft 标识平台身份验证与支持的身份验证方案][AAD-Auth-Scenarios]基础知识。 另外，还可在 [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) 上找到关于如何快速启动和运行的代码示例及教程。
+[Microsoft 标识平台开发人员指南][AAD-Dev-Guide]是用于所有 Microsoft 标识平台开发相关主题的登陆页，包括[应用程序集成][AAD-How-To-Integrate]概述以及[microsoft 标识平台身份验证和支持的身份验证方案][AAD-Auth-Scenarios]的基本知识。 另外，还可在 [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) 上找到关于如何快速启动和运行的代码示例及教程。
 
 请使用以下评论部分提供反馈，帮助我们改进和编写此内容，包括有关新建定义或更新现有定义的请求！
 
@@ -235,7 +235,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [Graph-Perm-Scopes]: /graph/permissions-reference
 [Graph-App-Resource]: /graph/api/resources/application
-[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta&preserve-view=true
 [Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md

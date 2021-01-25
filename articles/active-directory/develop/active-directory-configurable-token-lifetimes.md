@@ -13,14 +13,14 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 33dffa40e0236483d641c2e2bbe318bb62a7724d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f4ae26a489b823e2347841cf72690d6cd8462611
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678181"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755302"
 ---
-# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 标识平台中可配置的令牌生存期 (预览) 
+# <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Microsoft 标识平台中可配置的令牌生存期 (预览) 
 
 可以指定 Microsoft 标识平台颁发的 access、ID 或 SAML 令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。 但是，我们目前不支持为 [托管标识服务主体](../managed-identities-azure-resources/overview.md)配置令牌生存期。
 
@@ -50,7 +50,7 @@ ms.locfileid: "98678181"
 
 ### <a name="saml-tokens"></a>SAML 令牌
 
-SAML 令牌由许多基于 web 的 SAAS 应用程序使用，并使用 Azure Active Directory 的 SAML2 协议终结点获得。 使用 WS 联合身份验证的应用程序也使用它们。 令牌的默认生存期为1小时。 从应用程序的角度来看，令牌的有效期由标记中元素的 NotOnOrAfter 值指定 `<conditions …>` 。 令牌的有效期结束后，客户端必须启动新的身份验证请求，此请求通常在未通过单一登录 (SSO) 会话令牌的情况下进行交互式登录时得到满足。
+SAML 令牌由许多基于 web 的 SaaS 应用程序使用，并使用 Azure Active Directory 的 SAML2 协议终结点获得。 使用 WS 联合身份验证的应用程序也使用它们。 令牌的默认生存期为1小时。 从应用程序的角度来看，令牌的有效期由标记中元素的 NotOnOrAfter 值指定 `<conditions …>` 。 令牌的有效期结束后，客户端必须启动新的身份验证请求，此请求通常在未通过单一登录 (SSO) 会话令牌的情况下进行交互式登录时得到满足。
 
 可以使用中的参数更改 NotOnOrAfter 的值 `AccessTokenLifetime` `TokenLifetimePolicy` 。 它将设置为策略中配置的生存期（如果有）加上5分钟的时钟偏差系数。
 
@@ -58,7 +58,7 @@ SAML 令牌由许多基于 web 的 SAAS 应用程序使用，并使用 Azure Act
 
 ### <a name="id-tokens"></a>ID 令牌
 
-ID 令牌将传递给网站和本机客户端。 ID 令牌包含有关用户的配置文件信息。 ID 令牌绑定到用户和客户端的特定组合。 在过期日期之前，ID 令牌保持有效。 通常，Web 应用程序会将应用程序中用户的会话生存期与针对该用户颁发的 ID 令牌的生存期进行匹配。 可以调整 ID 令牌的生存期，控制 web 应用程序应用程序会话过期的频率，以及要求用户在无提示或以交互方式) 的情况下重新通过 Microsoft 标识 (平台重新进行身份验证的频率。
+ID 令牌将传递给网站和本机客户端。 ID 令牌包含有关用户的配置文件信息。 ID 令牌绑定到用户和客户端的特定组合。 在过期日期之前，ID 令牌保持有效。 通常，Web 应用程序会将应用程序中用户的会话生存期与针对该用户颁发的 ID 令牌的生存期进行匹配。 可以调整 ID 令牌的生存期，控制 web 应用程序应用程序会话过期的频率，以及要求用户使用 Microsoft 标识平台重新进行身份验证的频率， (以无提示方式或交互方式) 。
 
 ### <a name="token-lifetime-policy-properties"></a>令牌生存期策略属性
 
@@ -80,9 +80,9 @@ ID 令牌将传递给网站和本机客户端。 ID 令牌包含有关用户的�
 可为刷新令牌和会话令牌设置令牌生存期策略。
 
 > [!IMPORTANT]
-> 从5月2020，新租户不能配置刷新和会话令牌生存期。  具有现有配置的租户可以修改刷新和会话令牌策略，直至2021年1月30日。   在2021年1月30日后，Azure Active Directory 将停止在策略中遵守现有的刷新和会话令牌配置。 你仍可以在停用后配置访问、SAML 和 ID 令牌的生存期。
+> 自 2020 年 5 月起，新租户无法配置刷新和会话令牌生存期。  具有现有配置的租户可以在 2021 年 1 月 30 之前修改刷新和会话令牌策略。   Azure Active Directory 将在 2021 年 1 月 30 日之后停止执行策略中的现有刷新和会话令牌配置。 在停用之后，你仍然可以配置访问、SAML 和 ID 令牌生存期。
 >
-> 如果需要继续定义在要求用户重新登录之前的时间段，请在条件访问中配置登录频率。 若要了解有关条件性访问的详细信息，请参阅 [使用条件访问配置身份验证会话管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
+> 如果需要继续定义要求用户再次登录之前的时间段，请配置条件访问中的登录频率。 若要了解有关条件性访问的详细信息，请参阅 [使用条件访问配置身份验证会话管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
 >
 > 如果你不想在停用日期后使用条件性访问，则你的刷新和会话令牌将设置为该日期的 [默认配置](#configurable-token-lifetime-properties-after-the-retirement) ，并且你将无法再更改其生存期。
 >
@@ -128,7 +128,7 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 
 * <sup>1</sup>365 天是可针对这些属性设置的最大显式时间长短。
 
-#### <a name="exceptions"></a>例外
+#### <a name="exceptions"></a>异常
 | 属性 | 影响 | 默认 |
 | --- | --- | --- |
 | 刷新令牌最大期限（针对吊销信息不足的联合用户颁发<sup>1</sup>） |刷新令牌（针对吊销信息不足的联合用户颁发<sup>1</sup>） |12 小时 |
@@ -232,7 +232,7 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 * Web 应用程序 A 是一个常规用途的 Web 应用程序，未链接到任何策略。
 * Web 应用程序 B 用于高度敏感的流程。 该应用程序的服务主体已链接到会话令牌最大期限为 30 分钟的令牌生存期策略 2。
 
-在下午12:00，用户将启动一个新的浏览器会话，尝试访问 Web 应用程序 A。用户被重定向到 Microsoft 标识平台，并要求登录。 这会在浏览器中创建一个包含会话令牌的 Cookie。 用户使用可用于访问应用程序的 ID 令牌重定向回到 Web 应用程序 A。
+在下午12:00，用户将启动一个新的浏览器会话，尝试访问 Web 应用程序 A。用户将被重定向到 Microsoft 标识平台，并要求登录。 这会在浏览器中创建一个包含会话令牌的 Cookie。 用户使用可用于访问应用程序的 ID 令牌重定向回到 Web 应用程序 A。
 
 在下午12:15，用户尝试访问 Web 应用程序 B。浏览器重定向到用于检测会话 cookie 的 Microsoft 标识平台。 Web 应用程序 B 的服务主体已链接到令牌生存期策略 2，但同时也属于使用默认令牌生存期策略 1 的父组织。 由于链接到服务主体的策略优先级高于组织默认策略，因此令牌生存期策略 2 生效。 会话令牌最初是在过去 30 分钟内颁发的，因此被视为有效。 用户使用授予权限的 ID 令牌重定向回到 Web 应用程序 B。
 

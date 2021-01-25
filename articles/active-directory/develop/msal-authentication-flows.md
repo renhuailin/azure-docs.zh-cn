@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/08/2020
+ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78932e5852453fe996e26a278f8a1859a8ecf546
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89437864"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755015"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
@@ -223,7 +223,7 @@ IWA 不会绕过多重身份验证。 如果配置了多重身份验证，需要
 - 你已提供某种方式让用户同意应用程序（请参阅[请求个人用户同意](v2-permissions-and-consent.md#requesting-individual-user-consent)）。
 - 你已提供某种方式让租户管理员同意应用程序（请参阅[管理员同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)）。
 
-已针对 .NET Desktop、.NET Core 和 Windows 通用平台应用启用 IWA 流。 在 .NET Core 上，必须向 IWA 提供用户名，因为 .NET Core 无法从操作系统获取用户名。
+已针对 .NET Desktop、.NET Core 和 Windows 通用平台应用启用 IWA 流。
 
 有关同意的详细信息，请参阅 [v2.0 权限和同意](v2-permissions-and-consent.md)。
 

@@ -13,16 +13,16 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f3222c790ccd0cee936b246253a16b5c434c61c8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 50a2f56824db67b73199439922e662339ff30872
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602200"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755289"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 标识平台应用程序身份验证证书凭据
 
-Microsoft 标识平台允许应用程序在任何可以使用客户端机密的地方使用其自己的凭据进行身份验证，例如，在 OAuth 2.0 [客户端凭据授权](v2-oauth2-client-creds-grant-flow.md)流和[代理](v2-oauth2-on-behalf-of-flow.md) (OBO) 流中。
+Microsoft 标识平台允许应用程序使用自己的凭据进行身份验证，以便在使用客户端密钥的任何位置进行身份验证，例如，在 OAuth 2.0  [客户端凭据授予](v2-oauth2-client-creds-grant-flow.md) 流和 [代表](v2-oauth2-on-behalf-of-flow.md) (OBO) 流中。
 
 应用程序可用于身份验证的一种凭据形式是使用应用程序拥有的证书签名的 [JSON Web 令牌](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT) 断言。
 
@@ -36,7 +36,7 @@ Microsoft 标识平台允许应用程序在任何可以使用客户端机密的�
 | --- | --- |
 | `alg` | 应为 **RS256** |
 | `typ` | 应为 **JWT** |
-| `x5t` | X.509 证书哈希的 (也称为证书的 SHA-1 *指纹*) 十六进制表示形式（编码为 Base64url 字符串值）。 例如，给定 (Hex) 的 x.509 证书哈希 `84E05C1D98BCE3A5421D225B140B36E86A3D5534` ，该 `x5t` 声明将 `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64url) 。 |
+| `x5t` | 编码为 Base64url 字符串值的 x.509 证书哈希（也称为证书的 SHA-1 指纹）的十六进制表示形式。 例如，如果 x.509 证书哈希为 `84E05C1D98BCE3A5421D225B140B36E86A3D5534`（十六进制），`x5t` 声明就会是 `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64url)。 |
 
 ### <a name="claims-payload"></a>声明（有效负载）
 
@@ -89,7 +89,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 ## <a name="register-your-certificate-with-microsoft-identity-platform"></a>向 Microsoft 标识平台注册证书
 
-可以使用以下任意方法通过 Azure 门户将证书凭据与 Microsoft 标识平台中的客户端应用程序相关联：
+可以通过使用以下任一方法，将证书凭据与 Microsoft 标识平台中的客户端应用程序相关联 Azure 门户：
 
 ### <a name="uploading-the-certificate-file"></a>上传证书文件
 
@@ -131,7 +131,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 客户端断言可以在任何使用客户端机密的地方使用。  例如，在[授权代码流](v2-oauth2-auth-code-flow.md)中，你可以传入一个 `client_secret` 来证明请求来自你的应用。 可以用 `client_assertion` 和 `client_assertion_type` 参数替换它。 
 
-| 参数 | 值 | 说明|
+| 参数 | Value | 说明|
 |-----------|-------|------------|
 |`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| 这是一个固定值，表示你正在使用证书凭据。 |
 |`client_assertion`| JWT |这是上面创建的 JWT。 |

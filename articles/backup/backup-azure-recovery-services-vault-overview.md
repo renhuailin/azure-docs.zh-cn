@@ -3,12 +3,12 @@ title: 恢复服务保管库概述
 description: 恢复服务保管库概述。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0ed37446e1ccf0780f924143c8f063964adf0004
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017315"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755126"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
@@ -18,11 +18,11 @@ ms.locfileid: "96017315"
 
 - **针对混合 IT 环境进行集中监视**：使用恢复服务保管库时，可以通过中心门户监视 [Azure IaaS VM](backup-azure-manage-vms.md) 和 [本地资产](backup-azure-manage-windows-server.md#manage-backup-items)。 [了解详细信息](backup-azure-monitoring-built-in-monitor.md)
 
-- Azure **rbac) 的 azure 基于角色的访问控制 (**： azure Rbac 在 azure 中提供精细的访问管理控制。 [Azure 提供各种内置角色](../role-based-access-control/built-in-roles.md)，而 Azure 备份具有三个[用于管理恢复点的内置角色](backup-rbac-rs-vault.md)。 恢复服务保管库与 Azure RBAC 兼容，后者会限制对已定义用户角色集的备份和还原访问权限。 [了解详细信息](backup-rbac-rs-vault.md)
+- **Azure 基于角色的访问控制 (Azure RBAC)** ：Azure RBAC 在 Azure 中提供精细的访问管理控制。 [Azure 提供各种内置角色](../role-based-access-control/built-in-roles.md)，而 Azure 备份具有三个[用于管理恢复点的内置角色](backup-rbac-rs-vault.md)。 恢复服务保管库与 Azure RBAC 兼容，后者会限制对已定义用户角色集的备份和还原访问权限。 [了解详细信息](backup-rbac-rs-vault.md)
 
 - 软删除：在使用软删除的情况下，即使恶意行动者删除了备份（或用户意外删除了备份数据），备份数据也仍会保留 14 天，因此可以恢复该备份项，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会向你收取任何费用。 [了解详细信息](backup-azure-security-feature-cloud.md)。
 
-- **跨区域还原**：跨区域还原 (CRR) 使你可以在辅助区域（即 Azure 配对区域）中还原 azure vm。 如果 Azure 在主要区域中声明灾难，则辅助区域中复制的数据可以在次要区域中进行还原，以减轻其环境的主要区域中的实时停机灾难。 [了解详细信息](backup-azure-arm-restore-vms.md#cross-region-restore)。
+- **跨区域还原**：跨区域还原 (CRR) 使你可以在辅助区域（即 Azure 配对区域）中还原 azure vm。 通过在 [保管库级别](backup-create-rs-vault.md#set-cross-region-restore)启用此功能，你可以在选择时随时还原次要区域中的复制数据。 这使你能够在不等待 Azure 声明灾难 (与保管库的 GRS 设置) 的情况下，还原辅助区域数据以实现审核合规性和中断方案。 [了解详细信息](backup-azure-arm-restore-vms.md#cross-region-restore)。
 
 ## <a name="storage-settings-in-the-recovery-services-vault"></a>恢复服务保管库中的存储设置
 

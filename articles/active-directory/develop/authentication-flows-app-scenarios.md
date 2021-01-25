@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 383bdaebaa8a1795a9bfddb7da23e172aea111a0
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: c441d8e9fa5a3375b1ec4cd3e68d92e92738261d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762928"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755775"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>身份验证流和应用程序方案
 
-Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结构的身份验证。 所有这些体系结构基于行业标准协议 [OAuth 2.0 和 OpenID Connect](active-directory-v2-protocols.md)。 使用 [Microsoft 标识平台的身份验证库](reference-v2-libraries.md)，应用程序可以对标识进行身份验证并获得令牌，以便访问受保护的 API。
+Microsoft 标识平台支持对不同种类的新式应用程序体系结构进行身份验证。 所有这些体系结构基于行业标准协议 [OAuth 2.0 和 OpenID Connect](active-directory-v2-protocols.md)。 使用 [Microsoft 标识平台的身份验证库](reference-v2-libraries.md)，应用程序可以对标识进行身份验证并获得令牌，以便访问受保护的 API。
 
 本文介绍身份验证流及其应用方案。
 
@@ -79,7 +79,7 @@ Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结�
 
 ## <a name="application-scenarios"></a>应用程序方案
 
-Microsoft 标识平台终结点支持对以下应用体系结构进行身份验证：
+Microsoft 标识平台支持以下应用体系结构的身份验证：
 
 - 单页应用
 - Web 应用
@@ -95,7 +95,7 @@ Microsoft 标识平台终结点支持对以下应用体系结构进行身份验�
 
 许多新式 Web 应用都是作为客户端单页应用程序构建的。 这些应用程序使用 JavaScript 或框架（例如 Angular、Vue 和 React）。 这些应用程序在 Web 浏览器中运行。
 
-单页应用程序在身份验证特征方面与传统的服务器端 Web 应用不同。 单页应用程序可以使用 Microsoft 标识平台将用户登录，并获取用于访问后端服务或 Web API 的令牌。 Microsoft 标识平台为 JavaScript 应用程序提供了两种授权类型： 
+单页应用程序在身份验证特征方面与传统的服务器端 Web 应用不同。 单页应用程序可以使用 Microsoft 标识平台将用户登录，并获取用于访问后端服务或 Web API 的令牌。 Microsoft 标识平台为 JavaScript 应用程序提供了两种授予类型： 
 
 | MSAL.js (2.x) | MSAL.js (1.x) |
 |---|---|
@@ -160,7 +160,7 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
 
 ### <a name="protected-web-api"></a>受保护的 Web API
 
-可以使用 Microsoft 标识平台终结点来保护 Web 服务，例如应用的 RESTful Web API。 通过访问令牌调用受保护的 Web API。 该令牌帮助保护 API 的数据并对传入请求进行身份验证。 Web API 调用方会在 HTTP 请求的授权标头中追加一个访问令牌。
+可以使用 Microsoft 标识平台来保护 web 服务，例如应用的 RESTful web API。 通过访问令牌调用受保护的 Web API。 该令牌帮助保护 API 的数据并对传入请求进行身份验证。 Web API 调用方会在 HTTP 请求的授权标头中追加一个访问令牌。
 
 若要保护 ASP.NET 或 ASP.NET Core Web API，需要验证访问令牌。 可以使用 ASP.NET JWT 中间件进行这种验证。 验证是由[适用于.NET 的 IdentityModel 扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki)库而不是 MSAL.NET 完成的。
 

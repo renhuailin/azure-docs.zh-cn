@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2b6266f308fce75f136aa4a2482c5b1be6eedb8e
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: c16eb2af5dfb103541c2eac207eb8ee5c303168f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063359"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754717"
 ---
-# <a name="overview-of-the-microsoft-authentication-library-msal"></a>Microsoft 身份验证库概述 (MSAL) 
-Microsoft (MSAL) 的 Microsoft 身份验证库使开发人员能够从 Microsoft 标识平台终结点获取 [令牌](developer-glossary.md#security-token) ，以便对用户进行身份验证并访问受保护的 web api。 它可用于提供对 Microsoft Graph、其他 Microsoft API、第三方 Web API 或你自己的 Web API 的安全访问。 MSAL 支持许多不同的应用程序体系结构和平台，包括 .NET、JavaScript、Java、Python、Android 和 iOS。
+# <a name="overview-of-the-microsoft-authentication-library-msal"></a>Microsoft 身份验证库 (MSAL) 的概述
+利用 Microsoft 身份验证库 (MSAL) ，开发人员可从 Microsoft 标识平台获取 [令牌](developer-glossary.md#security-token) ，以便对用户进行身份验证并访问受保护的 web api。 它可用于提供对 Microsoft Graph、其他 Microsoft API、第三方 Web API 或你自己的 Web API 的安全访问。 MSAL 支持许多不同的应用程序体系结构和平台，包括 .NET、JavaScript、Java、Python、Android 和 iOS。
 
 MSAL 为你提供了许多获取令牌的方法，将一致的 API 用于许多平台。 使用 MSAL 具有以下好处：
 
@@ -59,6 +59,6 @@ MSAL 为你提供了许多获取令牌的方法，将一致的 API 用于许多�
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL 和 MSAL 之间的差异
 
-Active Directory 身份验证库 (ADAL) 与适用于开发人员的 Azure AD (v1.0) 终结点集成，其中 MSAL 与 Microsoft 标识平台 (v2.0) 终结点集成。 V1.0 终结点支持工作帐户，但不支持个人帐户。 V2.0 终结点将 Microsoft 个人帐户和工作帐户统一到单个身份验证系统。 此外，借助 MSAL，还可以获取 Azure AD B2C 的身份验证。
+Active Directory 身份验证库 (ADAL) 与开发人员 (1.0 版) 终结点的 Azure AD 集成，其中 MSAL 与 Microsoft 标识平台集成。 V1.0 终结点支持工作帐户，但不支持个人帐户。 V2.0 终结点将 Microsoft 个人帐户和工作帐户统一到单个身份验证系统。 此外，借助 MSAL，还可以获取 Azure AD B2C 的身份验证。
 
 有关更多具体信息，请参阅[从 ADAL.NET 迁移到 MSAL.NET](msal-net-migration.md) 和[从 ADAL.js 迁移到 MSAL.js](msal-compare-msal-js-and-adal-js.md)。

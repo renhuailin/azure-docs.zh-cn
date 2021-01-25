@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e8301a1961479f57528802e6d8c0f10ceb0569d5
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 9f9758ec765ad34e5ef5d8b4d4e0a420a6701b6e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558260"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756398"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>调用 Web API 的 Web API：获取应用的令牌
 
@@ -89,7 +89,7 @@ public class ApiController {
  
 Python Web API 需要借助中间件来验证从客户端接收的持有者令牌。 然后，Web API 可通过调用 [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) 方法，使用 MSAL Python 库获取下游 API 的访问令牌。
  
-下面的代码示例使用 `acquire_token_on_behalf_of` 方法和 Flask 框架获取访问令牌。 它调用下游 API-Azure 管理订阅终结点。
+下面是使用 `acquire_token_on_behalf_of` 方法和 Flask 框架获取访问令牌的代码示例。 它调用下游 API - Azure 管理订阅终结点。
  
 ```python
 def get(self):
@@ -118,7 +118,7 @@ def get(self):
         return jsonify(subscriptions_list)
 ```
 
-## <a name="advanced-accessing-the-signed-in-users-token-cache-from-background-apps-apis-and-services"></a> (高级) 从后台应用、Api 和服务访问登录用户的令牌缓存
+## <a name="advanced-accessing-the-signed-in-users-token-cache-from-background-apps-apis-and-services"></a>（高级）从后台应用、API 和服务访问已登录用户的令牌缓存
 
 [!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
@@ -126,4 +126,4 @@ def get(self):
 
 ## <a name="next-steps"></a>后续步骤
 
-转到本方案中的下一篇文章， [调用 API](scenario-web-api-call-api-call-api.md)。
+转到此方案中的下一篇文章：[调用 API](scenario-web-api-call-api-call-api.md)。

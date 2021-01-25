@@ -1,5 +1,6 @@
 ---
-title: 配置调用 Web API 的桌面应用 - Microsoft 标识平台 | Azure
+title: 配置用于调用 web Api 的桌面应用 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何配置调用 Web API 的桌面应用的代码
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 27c9f2ab8b02c96d016fea66acd2b3840d79d09d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b74c817a974378a7fefc71e4eed67e6564765be
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444108"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756558"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的桌面应用：代码配置
 
@@ -261,4 +262,4 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ## <a name="next-steps"></a>后续步骤
 
-转到本方案中的下一篇文章， [获取桌面应用的令牌](scenario-desktop-acquire-token.md)。
+转到此方案中的下一篇文章：[获取桌面应用的令牌](scenario-desktop-acquire-token.md)。

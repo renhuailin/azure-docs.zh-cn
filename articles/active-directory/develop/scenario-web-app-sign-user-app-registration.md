@@ -1,5 +1,6 @@
 ---
-title: 注册用于登录用户的 Web 应用 - Microsoft 标识平台 | Azure
+title: 注册登录用户的 web 应用 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何注册用于登录用户的 Web 应用
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7ca294d3d7764737d4e2be55aae25bc8ff08a8d1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: b6240f88d309cbf4f26375c5f961d716b472755d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011520"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756279"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>用于登录用户的 Web 应用：应用注册
 
@@ -41,7 +42,7 @@ ms.locfileid: "98011520"
 > 要使用的门户不同，具体取决于你的应用程序是在 Microsoft Azure 公有云还是在全国或主权云中运行。 有关详细信息，请参阅[国家云](./authentication-national-cloud.md#app-registration-endpoints)。
 
 
-1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -53,9 +54,9 @@ ms.locfileid: "98011520"
    1. 为应用程序选择支持的帐户类型。 （请参阅[支持的帐户类型](./v2-supported-account-types.md)。）
    1. 在“重定向 URI”中，添加将在成功进行身份验证后接受返回的令牌响应的应用程序类型和 URI 目标。  例如，输入 `https://localhost:44321`。
    1. 选择“注册”。
-1. 在 " **管理**" 下选择 " **身份验证** "，并添加以下信息：
-   1. 在 " **Web** " 部分中，添加 `https://localhost:44321/signin-oidc` 作为 **重定向 URI**。
-   1. 添加 `https://localhost:44321/signout-oidc` 为 **注销 URL**。
+1. 在“管理”下，选择“身份验证”，然后添加以下信息：
+   1. 在“Web”部分，添加 `https://localhost:44321/signin-oidc` 作为“重定向 URI” 。
+   1. 添加 `https://localhost:44321/signout-oidc` 作为“注销 URL”。
    1. 选择“隐式授权”下的“ID 令牌”。
    1. 选择“保存”。
    
@@ -67,7 +68,7 @@ ms.locfileid: "98011520"
    1. 在“重定向 URI (可选)”部分，选择组合框中的“Web”并输入以下重定向 URI： **https://localhost:44326/** 。 
    1. 选择“注册”以创建应用程序。
 1. 在“管理”下，选择“身份验证”。 
-1. 在 " **隐式授权** " 部分中，选择 " **ID 令牌**"。 本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)才能将用户登录。
+1. 在“隐式授权”部分，选择“ID 令牌”。 本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)才能将用户登录。
 1. 选择“保存”。
 
 # <a name="java"></a>[Java](#tab/java)
@@ -78,9 +79,9 @@ ms.locfileid: "98011520"
     1. 选择“注册”以注册应用程序。
 1. 在“管理”下，选择“身份验证” > “添加平台”  。
 1. 选择“Web”。
-1. 对于 " **重定向 URI**"，请输入相同的主机和端口号，后跟 `/msal4jsample/secure/aad` 登录页。 
+1. 对于“重定向 URI”，请输入同一主机和端口号，后跟 `/msal4jsample/secure/aad` 作为登录页。 
 1. 选择“配置” 。
-1. 在 " **Web** " 部分中，使用主机和端口号，后跟 **/msal4jsample/graph/me** 作为用户信息页的 **重定向 URI** 。
+1. 在“Web”部分，使用主机和端口号，后跟“/msal4jsample/graph/me”作为用户信息页的“重定向 URI”。
 默认情况下，该示例使用：
    - **http://localhost:8080/msal4jsample/secure/aad**
    - **http://localhost:8080/msal4jsample/graph/me**

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 0050eb61aac53b69c74306b9aaab797d8adfa915
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d4189e466d5e9b41247723165ce2a5c14c4a8dfa
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016994"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756408"
 ---
 # <a name="single-page-application-app-registration"></a>单页应用程序：应用注册
 
@@ -27,12 +27,12 @@ ms.locfileid: "98016994"
 
 对于基于 MSAL 1.0 和 2.0 的应用程序，请先完成以下步骤以创建初始应用注册。
 
-1. 登录到<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
-1. 为应用程序选择 **支持的帐户类型** 。 请勿输入“重定向 URI”。 有关不同帐户类型的说明，请参阅 [注册应用程序](quickstart-register-app.md)。
+1. 选择应用程序支持的帐户类型。 请勿输入“重定向 URI”。 有关不同帐户类型的说明，请参阅[注册应用程序](quickstart-register-app.md)。
 1. 选择“注册”以创建应用注册。
 
 接下来，使用“重定向 URI”配置应用注册，以指定 Microsoft 标识平台应将客户端与任何安全令牌重定向到的位置。 按照适用于将在应用程序中使用的 MSAL.js 版本的步骤操作：
@@ -81,4 +81,4 @@ ms.locfileid: "98016994"
 
 ## <a name="next-steps"></a>后续步骤
 
-将你的应用程序的代码配置为使用你在前面的步骤中创建的应用注册： [应用的代码配置](scenario-spa-app-configuration.md)。
+配置应用代码，以使用在先前步骤中创建的应用注册：[应用的代码配置](scenario-spa-app-configuration.md)。

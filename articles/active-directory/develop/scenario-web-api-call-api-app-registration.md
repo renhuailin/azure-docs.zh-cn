@@ -1,5 +1,6 @@
 ---
-title: 注册调用 Web API 的 Web API - Microsoft 标识平台 | Azure
+title: 注册一个用于调用 web Api 的 web API |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何构建调用下游 Web API 的 Web API（应用注册）。
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 790580160ec236d1923dc28b9990d2675c253b44
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8349b7a53eb7b03b27c695bb24c8cb9bc665a1ac
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442678"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756362"
 ---
 # <a name="a-web-api-that-calls-web-apis-app-registration"></a>调用 Web API 的 Web API：应用注册
 
@@ -32,4 +33,4 @@ Web 应用代表收到持有者令牌的用户调用 API。 Web 应用需要请�
 
 ## <a name="next-steps"></a>后续步骤
 
-转到本方案中的下一篇文章 [应用代码配置](scenario-web-api-call-api-app-configuration.md)。
+转到此方案中的下一篇文章：[应用代码配置](scenario-web-api-call-api-app-configuration.md)。

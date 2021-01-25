@@ -1,5 +1,6 @@
 ---
-title: JavaScript 单页应用方案 - Microsoft 标识平台 | Azure
+title: JavaScript 单页应用方案
+titleSuffix: Microsoft identity platform
 description: 了解如何使用 Microsoft 标识平台构建单页应用程序（方案概述）。
 services: active-directory
 author: navyasric
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 17acb2bc5e96a136f31371c0be912c2c758c0f76
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 47b8c8c074a5e0ce3ed73a2a9a4b06aa307cdff3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443851"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756419"
 ---
 # <a name="scenario-single-page-application"></a>方案：单页应用程序
 
@@ -38,7 +39,7 @@ Microsoft 标识平台提供了 **两个** 选项来允许单页应用程序登�
 
 ![单页应用程序 - 授权](./media/scenarios/spa-app-auth.svg)
 
-- [OAuth 2.0 隐式流](./v2-oauth2-implicit-grant-flow.md)。 隐式授权流允许应用程序获取 **ID** 和 **访问** 令牌。 与授权代码流不同，隐式授权流不会返回 **刷新令牌** 。
+- [OAuth 2.0 隐式流](./v2-oauth2-implicit-grant-flow.md)。 隐式授权流允许应用程序获取 **ID** 和 **访问** 令牌。 与授权代码流不同，隐式授权流不会返回 **刷新令牌**。
 
 ![单页应用程序 - 隐式](./media/scenarios/spa-app.svg)
 
@@ -58,4 +59,4 @@ Microsoft 标识平台提供了 **两个** 选项来允许单页应用程序登�
 
 ## <a name="next-steps"></a>后续步骤
 
-转到本方案中的下一篇文章 " [应用注册](scenario-spa-app-registration.md)"。
+转到此方案中的下一篇文章：[应用注册](scenario-spa-app-registration.md)。

@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: fc32b4f583aea2fa9a34ab8b235f3f99fe4def9d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 85f8b340635354d4bb0f28f2b3d79b617bd897f8
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562162"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754882"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>适用于 Android 设备的共享设备模式
 
@@ -40,9 +40,9 @@ ms.locfileid: "94562162"
 
 ## <a name="single-vs-multiple-account-applications"></a>单帐户与多帐户应用程序
 
-使用 Microsoft 身份验证库 SDK (MSAL) 编写的应用程序可以管理一个或多个帐户。 有关详细信息，请参阅[单帐户模式或多帐户模式](single-multi-account.md)。 适用于应用的 Microsoft 标识平台功能根据应用程序是在单帐户模式还是多帐户模式下运行而异。
+使用 Microsoft 身份验证库 SDK (MSAL) 编写的应用程序可以管理一个或多个帐户。 有关详细信息，请参阅[单帐户模式或多帐户模式](single-multi-account.md)。 适用于你的应用程序的 Microsoft 标识平台功能会有所不同，具体取决于应用程序是在单帐户模式下运行还是在多帐户模式下运行。
 
-**共享设备模式应用只能在单帐户模式下工作** 。
+**共享设备模式应用只能在单帐户模式下工作**。
 
 > [!IMPORTANT]
 > 仅支持多帐户模式的应用程序无法在共享设备上运行。 如果员工加载不支持单帐户模式的应用，该应用不会在共享设备上运行。

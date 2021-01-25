@@ -1,5 +1,6 @@
 ---
-title: 单页应用登录和注销 - Microsoft 标识平台 | Azure
+title: 单页应用登录 & 注销
+titleSuffix: Microsoft identity platform
 description: 了解如何生成单页应用程序（登录）
 services: active-directory
 author: navyasric
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2a73af0a0488043d31722b4dc46ca19530cf34ac
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 60ecb60d2fe90f190963255adff7a0bb1df15da4
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443766"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756378"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>单页应用程序：登录和注销
 
@@ -306,4 +307,4 @@ this.authService.logout();
 
 ## <a name="next-steps"></a>后续步骤
 
-转到本方案中的下一篇文章， [获取应用的令牌](scenario-spa-acquire-token.md)。
+转到此方案中的下一篇文章：[获取应用的令牌](scenario-spa-acquire-token.md)。

@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 61d07c1ba912a0e24b2f4e5fa67243b4525db367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b35b39d7072b22d9cc3f7b4f4ef8886431b06f69
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81536176"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754672"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
 
@@ -64,7 +64,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 下面是 Azure AD 使用的逻辑：
 
 - 对于使用 v1.0 访问令牌（只能使用此类令牌）的 ADAL (Azure AD v1.0) 终结点，aud=resource
-- 对于要求资源访问令牌接受 v2.0 令牌的 MSAL（Microsoft 标识平台 (v2.0)）终结点，`aud=resource.AppId`
+- 对于 MSAL (Microsoft 标识平台) 为接受 v2.0 令牌的资源请求访问令牌。 `aud=resource.AppId`
 - 对于要求资源访问令牌接受 v1.0 令牌的 MSAL（v2.0 终结点）（与上面的情况相同），Azure AD 将提取最后一个斜杠前面的所有内容并将其用作资源标识符，以分析请求的范围中的所需受众。 因此，如果 https： \/ /database.windows.net 需要 "https： \/ /database.windows.net/" 的受众，则需要请求 "https：/database.windows.net//.default" 的作用域 \/ 。 另请参阅 GitHub 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的所有权限

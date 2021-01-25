@@ -12,16 +12,16 @@ ms.date: 10/05/2018
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 06f80f94be25e42c9e8f0270e6cb15aca086ae18
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4e9d63b8fe7fc281a87deb27ddadd794e14fa04d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994394"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755634"
 ---
-# <a name="how-microsoft-identity-platform-uses-the-saml-protocol"></a>Microsoft 标识平台如何使用 SAML 协议
+# <a name="how-the-microsoft-identity-platform-uses-the-saml-protocol"></a>Microsoft 标识平台如何使用 SAML 协议
 
-Microsoft 标识平台使用 SAML 2.0 协议使应用程序能够为其用户提供单一登录体验。 Azure AD 的[单一登录](single-sign-on-saml-protocol.md)和[单一注销](single-sign-out-saml-protocol.md) SAML 配置文件说明了如何在标识提供者服务中使用 SAML 断言、协议和绑定。
+Microsoft 标识平台使用 SAML 2.0 协议，使应用程序能够为其用户提供单一登录体验。 Azure AD 的[单一登录](single-sign-on-saml-protocol.md)和[单一注销](single-sign-out-saml-protocol.md) SAML 配置文件说明了如何在标识提供者服务中使用 SAML 断言、协议和绑定。
 
 SAML 协议要求 (Microsoft 标识平台) 的标识提供者和服务提供商 (应用程序) 来交换有关自身的信息。
 

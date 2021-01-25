@@ -1,5 +1,6 @@
 ---
-title: 将调用 Web API 的桌面应用移到生产环境 - Microsoft 标识平台 | Azure
+title: 将桌面应用程序调用 web Api 移动到生产环境 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何将调用 Web API 的桌面应用移到生产环境
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 325f95f2830ef021a4ac79de48695dda570f7817
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 05b93848bff66adc49d2855ee98fff6c9b7a2d3d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629776"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756502"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>用于调用 Web API 的桌面应用：移到生产环境
 
@@ -24,14 +25,14 @@ ms.locfileid: "97629776"
 
 ## <a name="handle-errors-in-desktop-applications"></a>在桌面应用程序中处理错误
 
-你已了解，在不同的流中如何处理静默流的错误，如代码片段所示。 你还发现存在需要交互的情况，如增量许可和条件访问。
+你已了解，在不同的流中如何处理静默流的错误，如代码片段所示。 你还了解，有些情况下需要交互（与增量许可和条件访问中的情况一样）。
 
 ## <a name="have-the-user-consent-upfront-for-several-resources"></a>让用户提前许可多个资源
 
 > [!NOTE]
-> 获得多个资源的同意适用于 Microsoft 标识平台，但不适用于 Azure Active Directory (Azure AD) B2C。 Azure AD B2C 仅支持管理员同意，不支持用户同意。
+> 向 Microsoft 标识平台（而不是 Azure Active Directory (Azure AD) B2C）获取多个资源的同意。 Azure AD B2C 仅支持管理员同意，不支持用户同意。
 
-不能使用 Microsoft 标识平台 (v2.0) 终结点一次获取多个资源的令牌。 `scopes` 参数只能包含单个资源的范围。 可以使用 `extraScopesToConsent` 参数确保用户预先同意多个资源。
+你不能同时使用 Microsoft 标识平台为多个资源获取令牌。 `scopes` 参数只能包含单个资源的范围。 可以使用 `extraScopesToConsent` 参数确保用户预先同意多个资源。
 
 例如，你可能有两个资源（每个资源有两个范围）：
 

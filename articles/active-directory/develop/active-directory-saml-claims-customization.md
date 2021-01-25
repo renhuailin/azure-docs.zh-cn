@@ -13,20 +13,20 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 9fb5e229882532fed076f2e0d800f32acfcdbf4c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0ded249a55e5a59bdcad7407694cbd5ed4cf2352
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013781"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756063"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
-如今，Microsoft 标识平台支持与大多数企业应用程序 (SSO) 的单一登录，包括 Azure AD 应用程序库中预先集成的应用程序以及自定义应用程序。 当用户使用 SAML 2.0 协议通过 Microsoft 标识平台向应用程序进行身份验证时，Microsoft 标识平台通过 HTTP POST) 将令牌发送到应用程序 (。 然后，应用程序验证并使用该令牌将用户登录，而不是提示输入用户名和密码。 这些 SAML 令牌包含有关用户已知的“声明”的信息片段。
+如今，Microsoft 标识平台支持与大多数企业应用程序 (SSO) 的单一登录，包括 Azure AD 应用库中预先集成的应用程序以及自定义应用程序。 当用户使用 SAML 2.0 协议通过 Microsoft 标识平台向应用程序进行身份验证时，Microsoft 标识平台通过 HTTP POST) 将令牌发送到应用程序 (。 然后，应用程序验证并使用该令牌将用户登录，而不是提示输入用户名和密码。 这些 SAML 令牌包含有关用户已知的“声明”的信息片段。
 
 “声明”是标识提供者在为某个用户颁发的令牌中陈述的有关该用户的信息。 在 [SAML 令牌](https://en.wikipedia.org/wiki/SAML_2.0)中，此数据通常包含在 SAML 属性语句中。 用户的唯一 ID（也称为名称标识符）通常显示在 SAML 主题中。
 
-默认情况下，Microsoft 标识平台向应用程序颁发 SAML 令牌，其中包含一个声明，其中包含 `NameIdentifier` 用户的用户名值 (也称为用户主体名称) 在 Azure AD 中，后者可以唯一地标识用户。 SAML 令牌还含有其他声明，其中包含用户的电子邮件地址、名字和姓氏。
+默认情况下，Microsoft 标识平台向应用程序颁发 SAML 令牌，其中包含一个声明，其中包含 `NameIdentifier` 用户用户名的值 (也称为用户主体名称) 在 Azure AD 中，后者可以唯一地标识用户。 SAML 令牌还含有其他声明，其中包含用户的电子邮件地址、名字和姓氏。
 
 若要查看或编辑 SAML 令牌中颁发给应用程序的声明，请在 Azure 门户中打开应用程序。 然后打开“用户属性和声明”部分。
 
@@ -170,7 +170,7 @@ ms.locfileid: "98013781"
 
 例如，Britta Simon 是 Contoso 租户中的来宾用户。 她属于另一个也使用 Azure AD 的组织。 对于 Fabrikam 应用程序的以下配置，当 Britta 尝试登录到 Fabrikam 时，Microsoft 标识平台将按以下方式计算条件。
 
-首先，Microsoft 标识平台验证 Britta 的用户类型是否为 `All guests` 。 由于，此值为 true，因此 Microsoft 标识平台会将声明的源分配给 `user.extensionattribute1` 。 其次，Microsoft 标识平台验证 Britta 的用户类型是否为 `AAD guests` ，因为这也是如此，因此 microsoft 标识平台会将声明的源分配给 `user.mail` 。 最后，使用值 `user.mail` 为 Britta 发出声明。
+首先，Microsoft 标识平台验证 Britta 的用户类型是否为 `All guests` 。 由于，此值为 true，因此 Microsoft 标识平台会将声明的源分配给 `user.extensionattribute1` 。 其次，Microsoft 标识平台验证 Britta 的用户类型是否为 `AAD guests` ，因为这也是 true，因此 microsoft 标识平台会将声明的源分配给 `user.mail` 。 最后，使用值 `user.mail` 为 Britta 发出声明。
 
 ![声明条件配置](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

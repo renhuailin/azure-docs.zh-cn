@@ -1,5 +1,6 @@
 ---
-title: 将用于登录用户的 Web 应用移到生产环境 - Microsoft 标识平台 | Azure
+title: 将登录用户的 web 应用移到生产 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何构建用于登录用户的 Web 应用（移到生产环境）
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fd9890cb94bf6bb4b82ebbb585ab8bbb9d5ba46a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c7abad31c9936729b8d9c19ed2efcb841ac103ca
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169284"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756230"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>用于登录用户的 Web 应用：移到生产环境
 
@@ -35,7 +36,7 @@ ms.locfileid: "96169284"
 
 ## <a name="same-site"></a>同一站点
 
-请确保了解 Chrome 浏览器的新版本可能存在的问题： [如何在 chrome 浏览器中处理 SameSite cookie 更改](howto-handle-samesite-cookie-changes-chrome-browser.md)。
+请确保了解 Chrome 浏览器的新版本可能存在的问题：[如何在 Chrome 浏览器中处理 SameSite Cookie 更改](howto-handle-samesite-cookie-changes-chrome-browser.md)。
 
 Microsoft.Identity.Web NuGet 包处理最常见的 SameSite 问题。
 
@@ -61,4 +62,4 @@ Microsoft.Identity.Web NuGet 包处理最常见的 SameSite 问题。
 
 ## <a name="next-steps"></a>后续步骤
 
-Web 应用登录用户后，它就可以代表已登录用户调用 Web API。 从 web 应用调用 web Api 是以下方案的对象： [调用 Web api 的 web 应用](scenario-web-app-call-api-overview.md)。
+Web 应用登录用户后，它就可以代表已登录用户调用 Web API。 从 Web 应用调用 Web API 是以下方案的目标：[调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)。

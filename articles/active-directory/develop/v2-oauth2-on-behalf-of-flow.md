@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8c8167142876dfac0ae0aeff51e85b66c65c607b
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: ff8e03b813e2cb890192667e3466d920eaabc72c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208842"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756080"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 标识平台和 OAuth 2.0 代理流
 
@@ -130,7 +130,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 | 参数 | 说明 |
 | --- | --- |
-| `token_type` | 指示令牌类型值。 Microsoft 标识平台支持的唯一类型是 `Bearer`。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
+| `token_type` | 指示令牌类型值。 Microsoft 标识平台支持的唯一类型是 `Bearer` 。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | `scope` | 令牌中授予的访问权限的范围。 |
 | `expires_in` | 访问令牌有效的时间长度（以秒为单位）。 |
 | `access_token` | 请求的访问令牌。 调用方服务可以使用此令牌向接收方服务进行身份验证。 |
@@ -151,7 +151,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 }
 ```
 
-上述访问令牌是 v1.0 格式的 Microsoft Graph 令牌。 这是因为令牌格式基于所访问的资源，而与请求它时使用的终结点无关。 Microsoft Graph 设置为接受 v1.0 令牌，因此当客户端请求 Microsoft Graph 的令牌时，Microsoft 标识平台会生成 v1.0 访问令牌。 其他应用可能指示它们需要 v2.0 格式的令牌、1.0 格式的令牌甚至专用或加密格式的令牌。  v1.0 和 v2.0 终结点都可以发出任意一种令牌格式，这样资源就可以始终获得正确的令牌格式，而不管客户端如何或在何处请求令牌。 
+上述访问令牌是 v1.0 格式的 Microsoft Graph 令牌。 这是因为令牌格式基于所访问的资源，而与请求它时使用的终结点无关。 设置 Microsoft Graph 以接受1.0 版令牌，因此，当客户端请求 Microsoft Graph 的令牌时，Microsoft 标识平台会生成1.0 版的访问令牌。 其他应用可能指示它们需要 v2.0 格式的令牌、1.0 格式的令牌甚至专用或加密格式的令牌。  v1.0 和 v2.0 终结点都可以发出任意一种令牌格式，这样资源就可以始终获得正确的令牌格式，而不管客户端如何或在何处请求令牌。 
 
 只有应用程序才能查看访问令牌。 客户端 **不得** 检查它们。 在代码中检查其他应用的访问令牌会导致应用在该应用更改其令牌的格式或开始对令牌进行加密时意外中断。 
 
@@ -201,7 +201,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 ### <a name="default-and-combined-consent"></a>/.default 和组合同意
 
-中间层应用程序将客户端添加到其清单中的已知客户端应用程序列表中，然后，客户端可以为自身和中间层应用程序触发组合同意流。 在 Microsoft 标识平台终结点上，可以使用 [`/.default` 范围](v2-permissions-and-consent.md#the-default-scope)来完成此操作。 当使用已知的客户端应用程序和 `/.default` 触发同意屏幕时，同意屏幕将显示客户端到中间层 API 的权限，同时还会请求中间层 API 所需的任何权限。 用户同意这两个应用程序，接着 OBO 流便开始工作。
+中间层应用程序将客户端添加到其清单中的已知客户端应用程序列表中，然后，客户端可以为自身和中间层应用程序触发组合同意流。 在 Microsoft 标识平台上，使用[ `/.default` 范围](v2-permissions-and-consent.md#the-default-scope)来完成此操作。 当使用已知的客户端应用程序和 `/.default` 触发同意屏幕时，同意屏幕将显示客户端到中间层 API 的权限，同时还会请求中间层 API 所需的任何权限。 用户同意这两个应用程序，接着 OBO 流便开始工作。
 
 ### <a name="pre-authorized-applications"></a>预授权应用程序
 

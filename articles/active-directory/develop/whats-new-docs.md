@@ -1,5 +1,5 @@
 ---
-title: Microsoft 标识平台文档中的新内容
+title: Microsoft 标识平台文档中的新增功能
 titleSuffix: Microsoft identity platform
 description: Microsoft 标识平台的新文档和更新的文档。
 services: active-directory
@@ -11,16 +11,16 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 1ab79c32bfc28f6b4582d5a7d7177d5a9c04d682
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0beaef9162f4bdb540764a100243c579b40d1324
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702669"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755955"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft 标识平台文档：新增功能
 
-欢迎查看 Microsoft 标识平台文档中的新内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。
+欢迎使用 Microsoft 标识平台文档中的新增功能。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。
 
 ## <a name="january-2021"></a>2021 年 1 月
 

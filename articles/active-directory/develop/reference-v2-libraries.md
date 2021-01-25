@@ -1,6 +1,6 @@
 ---
 title: Microsoft 标识平台身份验证库
-description: Microsoft 标识平台终结点的兼容客户端库和服务器中间件库，以及相关的库、源代码和示例链接。
+description: 兼容的客户端库和服务器中间件库，以及相关的库、源代码和示例链接，适用于 Microsoft 标识平台。
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a7792e989444c87ba80088f8a850cacb4aa0dc3c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 51b60d7b81d7402f69415b79cd575f51915dc38f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064532"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756669"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft 标识平台身份验证库
 
-[Microsoft 标识平台终结点](../azuread-dev/azure-ad-endpoint-comparison.md)支持行业标准协议 OAuth 2.0 和 OpenID Connect 1.0。 Microsoft 身份验证库 (MSAL) 设计为适用于 Microsoft 标识平台终结点。 还可以使用支持 OAuth 2.0 和 OpenID Connect 1.0 的开放源代码库。
+[Microsoft 标识平台](../azuread-dev/azure-ad-endpoint-comparison.md)支持行业标准 OAuth 2.0 和 OpenID connect 1.0 协议。 Microsoft 身份验证库 (MSAL) 设计为与 Microsoft 标识平台结合使用。 还可以使用支持 OAuth 2.0 和 OpenID Connect 1.0 的开放源代码库。
 
 建议使用协议领域的专家根据安全开发生命周期 (SDL) 方法编写的库。 此类方法包括 [Microsoft 遵循的方法][Microsoft-SDL]。 如果手动编写协议代码，应遵循 Microsoft SDL 之类的方法。 请认真对待每个协议的标准规范中的安全注意事项。
 
@@ -30,7 +30,7 @@ ms.locfileid: "98064532"
 
 ## <a name="types-of-libraries"></a>库的类型
 
-Microsoft 标识平台终结点使用两种类型的库：
+Microsoft 标识平台适用于两种类型的库：
 
 * **客户端库**：本机客户端和服务器使用客户端库获取用于调用某个资源（例如 Microsoft Graph）的访问令牌。
 * **服务器中间件库**：Web 应用使用服务器中间件库进行用户登录。 Web API 使用服务器中间件库验证本机客户端或其他服务器发送的令牌。
@@ -40,9 +40,9 @@ Microsoft 标识平台终结点使用两种类型的库：
 库的支持类型有两种：
 
 * **Microsoft 支持**：Microsoft 为这些库提供修补程序，并对这些库进行 SDL 审慎调查。
-* **兼容**：Microsoft 已在基本方案中测试这些库并确认它们适用于 Microsoft 标识平台终结点。 Microsoft 不提供这些库的修复程序，且尚未审查这些库。 问题和功能请求应重定向到库的开源项目。
+* **兼容**： Microsoft 已在基本方案中测试这些库，并已确认它们适用于 Microsoft 标识平台。 Microsoft 不提供这些库的修复程序，且尚未审查这些库。 问题和功能请求应重定向到库的开源项目。
 
-有关适用于 Microsoft 标识平台终结点的库列表，请参阅以下部分。
+有关使用 Microsoft 标识平台的库的列表，请参阅以下各节。
 
 ## <a name="microsoft-supported-client-libraries"></a>Microsoft 支持的客户端库
 
@@ -98,16 +98,16 @@ Microsoft 标识平台终结点使用两种类型的库：
 | ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth：1.3.1<br />omniauth-oauth2：1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 | iOS、macOS 和 Android  | [React Native 应用身份验证](https://github.com/FormidableLabs/react-native-app-auth) | [版本 4.2.0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [React Native 应用身份验证](https://github.com/FormidableLabs/react-native-app-auth) | |
 
-对于任何符合标准的库，都可以使用 Microsoft 标识平台终结点。 了解去哪里寻求支持非常重要：
+对于任何符合标准的库，可以使用 Microsoft 标识平台。 了解去哪里寻求支持非常重要：
 
 * 有关库代码中的问题和新功能请求，请联系库所有者。
 * 有关服务端协议实现中的问题和新功能请求，请联系 Microsoft。
 * 若要在协议中看到其他功能，请[提出功能请求](https://feedback.azure.com/forums/169401-azure-active-directory)。
-* 如果发现 Microsoft 标识平台终结点不符合 OAuth 2.0 或 OpenID Connect 1.0，请[创建支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
+* 如果找不到 Microsoft 标识平台与 OAuth 2.0 或 OpenID Connect 1.0 兼容的问题，请[创建支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
-## <a name="related-content"></a>相关内容
+## <a name="related-content"></a>相关的内容
 
-有关 Microsoft 标识平台终结点的详细信息，请参阅 [Microsoft 标识平台概述][AAD-App-Model-V2-Overview]。
+有关 Microsoft 标识平台的详细信息，请参阅 [microsoft 标识平台概述][AAD-App-Model-V2-Overview]。
 
 <!--Image references-->
 
