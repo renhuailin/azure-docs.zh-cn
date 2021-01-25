@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6061980ec556fccde3de882a291bc390b88c5a24
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: f2807501b1e18d4cbffaa34d70bccf8d70565266
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611077"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747217"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -125,11 +125,53 @@ Authorization: Bearer <token>
 
 ## <a name="create-cluster"></a>创建群集
 
-> [!NOTE]
-> 群集支持两种 [托管的标识类型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)：系统分配的和用户分配的类型，每种类型都可以根据方案来确定。 系统分配的托管标识更简单，并且在将标识设置为 "SystemAssigned" 时，会自动创建群集， `type` 此标识稍后可用于授予群集对 Key Vault 的访问权限。 如果你想要在创建群集时创建客户管理的密钥，则应事先在 Key Vault 中为其定义了密钥和用户分配的标识，然后使用以下设置创建群集：标识 `type` 为 "*UserAssigned*"， `UserAssignedIdentities` 其中包含标识的资源 ID 和 `keyVaultProperties` 密钥详细信息。
+群集支持两个 [托管的标识类型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)：系统分配的和用户分配的标识类型，而单个标识可以在群集中定义，具体取决于你的方案。 
+- 当 "标识 `type` " 设置为 "*SystemAssigned*" 时，系统分配的托管标识更简单，并通过群集创建自动生成。 此标识稍后可用于授予群集对 Key Vault 的访问权限。 
+  
+  为系统分配的托管标识在群集中的标识设置
+  ```json
+  {
+    "identity": {
+      "type": "SystemAssigned"
+      }
+  }
+  ```
+
+- 如果要在创建群集时配置客户托管的密钥，则应事先在 Key Vault 中授予密钥和用户分配的标识，然后使用以下设置创建群集：标识 `type` 为 "*UserAssigned*"， `UserAssignedIdentities` 具有标识的资源 ID。
+
+  群集中用户分配的托管标识的标识设置
+  ```json
+  {
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
+      }
+  }
+  ```
 
 > [!IMPORTANT]
-> 如果 Key Vault 位于 Private-Link (vNet) ，并且你可以使用系统分配的托管标识，则当前无法使用用户分配的托管标识定义客户管理的密钥。
+> 如果 Key Vault Private-Link (vNet) ，则不能将客户托管的密钥用于用户分配的托管标识。 在此方案中，可以使用系统分配的托管标识。
+
+```json
+{
+  "identity": {
+    "type": "SystemAssigned"
+}
+```
+ 
+替换为：
+
+```json
+{
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<user-assigned-managed-identity-name>"
+      }
+}
+```
+
 
 请遵循[“专用群集”一文](../log-query/logs-dedicated-clusters.md#creating-a-cluster)中说明的过程。 
 
@@ -243,15 +285,13 @@ Content-type: application/json
 
 ## <a name="key-revocation"></a>密钥吊销
 
-可以通过禁用密钥，或删除 Key Vault 中的群集访问策略来撤销对数据的访问。 
-
 > [!IMPORTANT]
-> - 如果你的群集是使用用户分配的托管标识设置的，则设置 `UserAssignedIdentities` `None` 会挂起群集并阻止对数据的访问，但不能在不打开支持请求的情况下还原吊销并激活群集。 此限制不适用于系统分配的托管标识。
-> - 建议的密钥吊销操作是在 Key Vault 中禁用你的密钥。
+> - 撤消对数据的访问权限的推荐方法是禁用密钥，或删除 Key Vault 中的访问策略。
+> - 如果将群集的设置 `identity` `type` 为 "无"，则还会撤消对数据的访问权限，但不建议使用此方法，因为在重述群集中的时，如果 `identity` 没有打开支持请求，则无法还原吊销。
 
-群集存储在一小时或更短时间内将始终遵循关键权限的更改，并且存储将变得不可用。 与群集链接的工作区的任何新数据引入会被删除且不可恢复，数据将无法访问，对这些工作区的查询会失败。 只要不删除群集和工作区，之前引入的数据就会保留在存储中。 不可访问的数据由数据保留策略管理，并在保留期截止时被清除。 过去 14 天内引入的数据也保存在热缓存（SSD 提供支持）中，以实现高效的查询引擎操作。 它将在进行密钥吊销操作后被删除，并且也变得不可访问。
+群集存储在一小时或更短时间内将始终遵循关键权限的更改，并且存储将变得不可用。 与群集链接的工作区的任何新数据引入会被删除且不可恢复，数据将无法访问，对这些工作区的查询会失败。 只要不删除群集和工作区，之前引入的数据就会保留在存储中。 不可访问的数据由数据保留策略管理，并在保留期截止时被清除。 过去 14 天内引入的数据也保存在热缓存（SSD 提供支持）中，以实现高效的查询引擎操作。 这会在密钥吊销操作中被删除，并且无法访问。
 
-群集的存储会定期轮询 Key Vault，尝试解包加密密钥，一旦访问，数据引入和查询将在30分钟内恢复。
+群集的存储会定期检查 Key Vault，尝试解包加密密钥，并在访问后，在30分钟内恢复数据引入和查询。
 
 ## <a name="key-rotation"></a>密钥轮换
 
@@ -259,7 +299,7 @@ Content-type: application/json
 
 进行密钥轮换操作后，所有数据都将保持可访问，因为数据始终使用帐户加密密钥 (AEK) 进行加密，而 AEK 目前使用 Key Vault 中的新密钥加密密钥 (KEK) 版本进行加密。
 
-## <a name="customer-managed-key-for-queries"></a>用于查询的客户托管的密钥
+## <a name="customer-managed-key-for-saved-queries"></a>已保存查询的客户托管密钥
 
 Log Analytics 中使用的查询语言可以实现丰富的表达，并且可以在添加到查询的注释中或查询语法中包含敏感信息。 某些组织要求将此类信息保留在客户管理的密钥策略下，并且需要保存用密钥加密的查询。 使用 Azure Monitor 可以在连接到工作区时将采用密钥加密的已存搜索查询和日志警报查询存储到你自己的存储帐户 。 
 
@@ -410,7 +450,7 @@ Content-type: application/json
 
   - 如果你的群集是使用用户分配的托管标识设置的，则设置 `UserAssignedIdentities` `None` 会挂起群集并阻止对数据的访问，但不能在不打开支持请求的情况下还原吊销并激活群集。 此限制不会应用到系统分配的托管标识。
 
-  - 如果 Key Vault 位于 Private-Link (vNet) ，并且你可以使用系统分配的托管标识，则当前无法使用用户分配的托管标识定义客户管理的密钥。
+  - 如果 Key Vault Private-Link (vNet) ，则不能将客户托管的密钥用于用户分配的托管标识。 在此方案中，可以使用系统分配的托管标识。
 
 ## <a name="troubleshooting"></a>疑难解答
 

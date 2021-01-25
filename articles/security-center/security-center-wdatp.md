@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 553151aebeadf4ad4764e747b1bf6dcd8c552721
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 9fde0ecd8b6670e43aa3970b2df27a402b9c1a5c
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126846"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747234"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>利用安全中心的集成 EDR 解决方案保护终结点： Microsoft Defender for Endpoint
 
@@ -118,20 +118,22 @@ Microsoft Defender for Endpoint 提供：
 1. 若要在安全中心查看该警报，请转到“安全警报” > “可疑的 PowerShell 命令行” 。
 1. 从调查窗口中，选择要前往 Microsoft Defender for Endpoint 门户的链接。
 
+    > [!TIP]
+    > 此警报由 **信息** 严重性触发。
 
 ## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>安全中心集成的 Microsoft Defender for Endpoint 常见问题解答
 
 - [Microsoft Defender for Endpoint 有哪些许可要求？](#what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint)
-- [如果我已有适用于终结点的 Microsoft Defender 许可证，是否可以获得 Azure Defender 的折扣？](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
+- [如果我已有 Microsoft Defender for Endpoint 许可证，能否获得 Azure Defender 的折扣？](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
 - [如何实现从第三方 EDR 工具切换？](#how-do-i-switch-from-a-third-party-edr-tool)
 
 ### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Microsoft Defender for Endpoint 有哪些许可要求？
 **Azure defender for server** 附带的 Defender for Endpoint 无需额外付费。 或者，可以单独为50或更多计算机购买。
 
-### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>如果我已有适用于终结点的 Microsoft Defender 许可证，是否可以获得 Azure Defender 的折扣？
-如果你已经获得了 Microsoft Defender for Endpoint 的许可证，则无需为 Azure Defender 许可证的此部分付费。
+### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>如果我已有 Microsoft Defender for Endpoint 许可证，能否获得 Azure Defender 的折扣？
+如果你已获得 Microsoft Defender for Endpoint 的许可证，则无需为 Azure Defender 许可证的相应部分付费。
 
-若要确认折扣，请联系安全中心的支持团队，并为每个相关许可证提供相关的工作区 ID、区域和许可信息。
+若要确认折扣，请联系安全中心的支持团队，并提供相关工作区 ID、区域和每个相关许可证的许可证信息。
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>如何实现从第三方 EDR 工具切换？
 Microsoft Defender for Endpoint 文档中提供了有关从非 Microsoft 终结点解决方案切换的完整说明： [迁移概述](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration)。

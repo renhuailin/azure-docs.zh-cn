@@ -1,6 +1,6 @@
 ---
 title: 将 Syslog 数据连接到 Azure Sentinel |Microsoft Docs
-description: 使用设备和 Sentinel 之间 Linux 计算机上的代理将支持 Syslog 的任何计算机或设备连接到 Azure Sentinel。 
+description: 使用设备和 Sentinel 之间 Linux 计算机上的代理将支持 Syslog 的任何计算机或设备连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c3cf4c3c135b3f275542af4f531d1071e180ebe
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88566142"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747184"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>使用 Syslog 从基于 Linux 的源收集数据
 
@@ -32,7 +32,7 @@ ms.locfileid: "88566142"
 
 ## <a name="how-it-works"></a>工作原理
 
-**Syslog** 是 Linux 通用的事件日志记录协议。 如果在 VM 或设备上安装了 **适用于 Linux 的 Log Analytics 代理** ，则安装例程会将本地 Syslog 守护程序配置为将消息转发到 TCP 端口25224上的代理。 然后，代理通过 HTTPS 将消息发送到 Log Analytics 工作区，在该工作区中，该消息将被解析为 **Azure Sentinel > 日志**的 Syslog 表中的事件日志条目。
+**Syslog** 是 Linux 通用的事件日志记录协议。 如果在 VM 或设备上安装了 **适用于 Linux 的 Log Analytics 代理** ，则安装例程会将本地 Syslog 守护程序配置为将消息转发到 TCP 端口25224上的代理。 然后，代理通过 HTTPS 将消息发送到 Log Analytics 工作区，在该工作区中，该消息将被解析为 **Azure Sentinel > 日志** 的 Syslog 表中的事件日志条目。
 
 有关详细信息，请参阅 [中的 Syslog 数据源 Azure Monitor](../azure-monitor/platform/data-sources-syslog.md)。
 
@@ -77,11 +77,11 @@ ms.locfileid: "88566142"
 
 1. 如果已添加要监视的所有设备，并调整每个设备的任何严重性选项，请选中 " **将下面的配置应用到我的计算机**" 复选框。
 
-1. 选择“保存”。 
+1. 选择“保存” 。 
 
 1. 在 VM 或设备上，请确保正在发送指定的设施。
 
-1. 若要在 **日志**中查询 syslog 日志数据，请 `Syslog` 在 "查询" 窗口中键入。
+1. 若要在 **日志** 中查询 syslog 日志数据，请 `Syslog` 在 "查询" 窗口中键入。
 
 1. 您可以使用 [Azure Monitor 日志查询中的函数中](../azure-monitor/log-query/functions.md) 所述的查询参数来分析 Syslog 消息。 然后，可以将查询另存为新的 Log Analytics 函数，并将其用作新的数据类型。
 
@@ -103,7 +103,7 @@ ms.locfileid: "88566142"
 
 > [!IMPORTANT]
 > 异常 SSH 登录检测目前为公共预览版。
-> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。
+> 此功能不附带服务级别协议，不建议将其用于生产工作负载。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure Sentinel 可以将机器学习 (ML) 应用到 syslog 数据，以确定安全外壳 (SSH) 登录活动的异常情况。 方案包括：
@@ -120,15 +120,19 @@ Azure Sentinel 可以将机器学习 (ML) 应用到 syslog 数据，以确定安
 
 2. 留出足够的时间来收集 syslog 信息。 然后，导航到 " **Azure Sentinel 日志**"，复制并粘贴以下查询：
     
-    ```console
-    Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```kusto
+    Syslog
+    | where Facility in ("authpriv","auth")
+    | extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)
+    | where isnotempty(c)
+    | count 
     ```
     
     更改 **时间范围** （如果需要），然后选择 " **运行**"。
     
     如果生成的计数为零，请确认连接器的配置，并且被监视的计算机在您为查询指定的时间段内具有成功的登录活动。
     
-    如果生成的计数大于零，则 syslog 数据适用于异常 SSH 登录检测。 可以通过**分析**  >   **规则模板**  >  ** (预览) 异常 SSH 登录检测**来启用此检测。
+    如果生成的计数大于零，则 syslog 数据适用于异常 SSH 登录检测。 可以通过 **分析**  >   **规则模板**  >  **(预览) 异常 SSH 登录检测** 来启用此检测。
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Syslog 本地设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：

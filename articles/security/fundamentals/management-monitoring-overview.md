@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
+ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d85b1fdd433c372bb41adec6e3d33013f19363f0
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842747"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747167"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全管理和监视概述
 本文概述了 Azure 提供的安全功能和服务，以帮助管理和监视 Azure 云服务和虚拟机。
 
 ## <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 
-Azure RBAC) 的 azure 基于角色的访问控制 (提供 Azure 资源的详细访问管理。 使用 Azure RBAC，可以仅向用户授予执行作业所需的访问权限。 Azure RBAC 还可以帮助你确保当用户离开组织时，他们将失去对云中资源的访问权限。
+Azure 基于角色的访问控制 (Azure RBAC) 为 Azure 资源提供详细的访问管理。 使用 Azure RBAC，可以仅授予用户执行其作业所需的访问权限。 Azure RBAC 还有助于确保用户离开组织后无法访问云中的资源。
 
 了解详细信息：
 
@@ -54,7 +54,7 @@ Azure RBAC) 的 azure 基于角色的访问控制 (提供 Azure 资源的详细�
 
 ## <a name="multi-factor-authentication"></a>多重身份验证
 
-Azure AD 多重身份验证是一种需要使用多个验证方法的身份验证方法。 它为用户登录和事务添加了关键的附加安全层。
+Azure AD 多重身份验证是一种需要使用多种验证方法的身份验证方法。 它为用户登录和事务添加了关键的附加安全层。
 
 多重身份验证可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。 它通过各种验证选项（例如电话、短信、移动应用通知或验证码）和第三方 OATH 令牌来提供强大的身份验证。
 
@@ -117,15 +117,18 @@ Azure AD 标识保护提供了可疑登录活动和潜在漏洞的统一视图�
 
 ## <a name="security-center"></a>安全中心
 
-Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心可提高对 Azure 资源安全性的可见性和控制力度。 它为 Azure 订阅提供集成的安全监控和策略管理。 它有助于检测可能会被忽视的威胁，适用于各种安全解决方案生态系统。
+Azure 安全中心可帮助防范、检测和应对威胁。 利用安全中心，你可以更深入地了解 Azure 资源以及混合云环境中的资源的安全性。 
+
+安全中心对已连接的资源执行持续的安全评估，并将其配置和部署与 [Azure 安全基准](../benchmarks/introduction.md) 进行比较，以提供针对你的环境定制的详细安全建议。
 
 安全中心通过以下方式帮助优化和监视 Azure 资源的安全：
 
-* 你可根据以下内容为 Azure 订阅资源定义策略：
-  * 公司的安全需求。
-  * 应用程序的类型或每个订阅中数据的敏感度。
-* 监视 Azure 虚拟机、网络和应用程序的状态。
-* 提供按优先级排列的安全警报列表，包括集成的合作伙伴解决方案中的警报。 它还提供了快速调查攻击所需的信息以及如何修复攻击的建议。
+- 你可根据以下内容为 Azure 订阅资源定义策略：
+    - 组织的安全需求。
+    - 应用程序的类型或每个订阅中数据的敏感度。
+    - 适用于你的订阅的任何行业或法规标准或基准。 
+- 监视 Azure 虚拟机、网络和应用程序的状态。
+- 提供按优先级排列的安全警报列表，包括集成的合作伙伴解决方案中的警报。 它还提供了快速调查攻击所需的信息以及如何修复攻击的建议。
 
 了解详细信息：
 

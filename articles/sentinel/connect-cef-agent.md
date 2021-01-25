@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 617599e3eb6dcca74324a7bdfd51e604904a2fa1
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 8261856598a155e97f90ea350cedcd4c10e6893c
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897495"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747300"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>步骤1：部署日志转发器
 
@@ -42,6 +42,11 @@ ms.locfileid: "97897495"
 
 - 安装 Log Analytics 代理之前，Linux 计算机不得连接到任何 Azure 工作区。
 
+- Linux 计算机至少必须有 **4 个 CPU 核心和 8 GB RAM**。
+
+    > [!NOTE]
+    > - 使用 **rsyslog** 守护程序的单个日志转发器计算机的 **最大容量为每秒8500个事件 (EPS)** 收集。
+
 - 在此过程中的某个时间点，可能需要工作区 ID 和工作区主键。 可以在工作区资源的 " **代理管理**" 下找到它们。
 
 ## <a name="run-the-deployment-script"></a>运行部署脚本
@@ -51,7 +56,7 @@ ms.locfileid: "97897495"
 1. **1.2 在 Linux 计算机上安装 CEF 收集器** 后，复制 "**运行以下脚本以安装和应用 CEF 收集器**" 下提供的链接，或从下面的文本中 (应用工作区 ID 和主密钥来替换占位符) ：
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
+    sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
     ```
 
 1. 脚本运行时，请检查以确保没有收到任何错误或警告消息。
@@ -73,7 +78,7 @@ ms.locfileid: "97897495"
 > [!NOTE]
 > **更改 TimeGenerated 字段的源**
 >
-> - 默认情况下，Log Analytics 代理使用代理从 Syslog 守护程序收到事件的时间填充架构中的 *TimeGenerated* 字段。 因此，不会在 Azure Sentinel 中记录源系统上生成事件的时间。
+> - 默认情况下，Log Analytics 代理使用代理从 Syslog 守护程序收到事件的时间填充架构中的 *TimeGenerated* 字段。 因此，在源系统上生成事件的时间不会记录在 Azure Sentinel 中。
 >
 > - 但可以运行以下命令，该命令将下载并运行 `TimeGenerated.py` 脚本。 此脚本将 Log Analytics 代理配置为在其源系统上用事件的原始时间（而不是代理接收到的时间）填充 *TimeGenerated* 字段。
 >
@@ -94,8 +99,8 @@ ms.locfileid: "97897495"
     - 下载 Log Analytics (OMS) Linux 代理的安装脚本。
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - 安装 Log Analytics 代理。
@@ -160,8 +165,8 @@ ms.locfileid: "97897495"
     - 下载 Log Analytics (OMS) Linux 代理的安装脚本。
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - 安装 Log Analytics 代理。

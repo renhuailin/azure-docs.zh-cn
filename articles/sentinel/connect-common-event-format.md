@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 4b34477a40530a0e6f26b59dd9707c019418b2a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6010242e7fbd14aa117c481dee0d05e92928ef1b
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655844"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747485"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用通用事件格式连接外部解决方案
 
@@ -77,6 +77,12 @@ ms.locfileid: "94655844"
   - Syslog RFC 5424
  
 请确保您的计算机还满足以下要求： 
+
+- 容量
+  - 计算机必须具有至少 **4 个 CPU 核心和 8 GB RAM**。
+
+    > [!NOTE]
+    > - 使用 **rsyslog** 守护程序的单个日志转发器计算机的 **最大容量为每秒8500个事件 (EPS)** 收集。
 
 - 权限
   - 你的计算机上必须具有提升的权限 (sudo) 。 

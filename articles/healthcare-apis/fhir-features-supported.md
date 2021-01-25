@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 43372eb0a9f7c08f6957627950769c1941580bd8
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 28c01e99c0e8708750341b445b4a31f6eaeab3ce
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745861"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747519"
 ---
 # <a name="features"></a>功能
 
@@ -147,12 +147,14 @@ FHIR 服务器使用 [Azure Active Directory](https://azure.microsoft.com/servic
 
 系统的性能取决于多个 ru、并发连接以及您正在执行的操作的类型 (Put、Post 等 ) 。 下面是你可以基于已配置的 ru 获得的一些常规范围。 通常，性能会随 RUs 的增加而线性缩放：
 
-| Ru 数 | 资源数/秒 |
-|----------|---------------|
-| 400      | 5-10          |
-| 1,000    | 100-150       |
-| 10,000   | 225-400       |
-| 100,000  | 2500-4000   |
+| Ru 数 | 资源数/秒 |    最大存储 (GB) *    |
+|----------|---------------|--------|                 
+| 400      | 5-10          |     40   |
+| 1,000    | 100-150       |      100  |
+| 10,000   | 225-400       |      1,000  |
+| 100,000  | 2500-4000   |      10,000  |
+
+注意：根据 Cosmos DB 要求，每 GB 存储要求的最小吞吐量为 10 RU/秒。 有关详细信息，请查看 [Cosmos DB 的服务配额](../cosmos-db/concepts-limits.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
