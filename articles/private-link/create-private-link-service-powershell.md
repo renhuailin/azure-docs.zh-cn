@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: e8d76e12dea27338e965d8e77871427e9dfabf23
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: d48903a05a4e9b530dcd3e83e0c14c37dcc74797
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746673"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757519"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 创建专用链接服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "98746673"
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 本地安装的 Azure PowerShell 或 Azure Cloud Shell
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -35,7 +35,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 New-AzResourceGroup -Name 'CreatePrivLinkService-rg' -Location 'eastus2'
 
 ```
----
+
 ## <a name="create-an-internal-load-balancer"></a>创建内部负载均衡器
 
 在本部分，创建一个虚拟网络和一个内部 Azure 负载均衡器。
@@ -252,7 +252,7 @@ New-AzPrivateEndpoint @par4 -ByManualRequest
 
 在本部分中，你将批准在之前步骤中创建的连接。
 
-* 使用 [AzPrivateEndpointConnection](/powershell/module/az.network/approve-azprivateendpointconnnection) 批准连接。
+* 使用 [AzPrivateEndpointConnection](/powershell/module/az.network/approve-azprivateendpointconnection) 批准连接。
 
 ```azurepowershell-interactive
 ## Place the private link service configuration into variable. ##
@@ -313,5 +313,5 @@ Remove-AzResourceGroup -Name 'CreatePrivLinkService-rg'
 
 若要详细了解 Azure 专用终结点，请继续学习：
 > [!div class="nextstepaction"]
-> [快速入门：使用 Azure powershell 创建专用终结点](create-private-endpoint-powershell.md)
+> [快速入门：使用 Azure Powershell 创建专用终结点](create-private-endpoint-powershell.md)
 

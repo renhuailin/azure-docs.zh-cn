@@ -3,12 +3,12 @@ title: 常见问题解答 - 备份 Azure VM
 description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常见问题。
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: ba2779305302e91f68cb2664c90f53fdf9a9ca55
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: edc48aaf0a05867de81bd7d5f64f8be4e54ddb8a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008344"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757502"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -86,11 +86,11 @@ Azure 备份以 `AzureBackupRG_<geo>_<number>` 格式创建一个单独的资源
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>可使用支持写入加速器 (WA) 的磁盘备份 VM 吗？
 
-只能对已启用 WA 而不是 OS 磁盘的数据磁盘执行快照。 因此只能保护已启用 WA 的数据磁盘。
+快照只能在已启用 WA 的数据磁盘上拍摄，而不能在 OS 磁盘上拍摄。 因此只能保护已启用 WA 的数据磁盘。
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>我有一个安装了写入加速器 (WA) 磁盘和 SAP HANA 的 VM。 我该如何备份？
 
-Azure 备份可以备份启用了 WA 的数据磁盘。 但备份不会提供数据库一致性。
+Azure 备份可以备份已启用 WA 的数据磁盘。 但是，备份不会提供数据库一致性。
 
 Azure 备份为 SAP HANA 数据库提供了流式备份解决方案，其 RPO 为 15 分钟。 其通过 SAP 进行了 Backint 认证，利用 SAP HANA 的本机 API 提供本机备份支持。 了解[有关在 Azure VM 中备份 SAP HANA 数据库](./sap-hana-db-about.md)的详细信息。
 
@@ -113,6 +113,10 @@ Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性�
 ### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>如果在备份过程中发生租户更改，是否保留托管标识？
 
 如果发生[租户更改](/azure/devops/organizations/accounts/change-azure-ad-connection)，则需要禁用并重新启用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)才能重新运行备份。
+
+### <a name="does-azure-backup-support-backing-up-nfs-files-mounted-from-storage"></a>Azure 备份是否支持备份从存储装入的 NFS 文件？
+
+Azure 备份不支持将从存储装载的 NFS 文件或从任何其他 NFS 服务器备份到 Linux 或 Windows 计算机。 它仅备份本地附加到 VM 的磁盘。
 
 ## <a name="restore"></a>还原
 
@@ -171,9 +175,9 @@ Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性�
 
 总还原时间取决于存储帐户的每秒输入/输出操作次数 (IOPS) 和吞吐量。 如果目标存储帐户加载了其他应用程序读写操作，则总还原时间可能会受到影响。 若要改进还原操作，请选择未加载其他应用程序数据的存储帐户。
 
-### <a name="how-do-we-handle-create-new-virtual-machine-restore-type-conflicts-with-governance-policies"></a>如何处理 "创建新的虚拟机"-还原类型与调控策略冲突？
+### <a name="how-do-we-handle-create-new-virtual-machine-restore-type-conflicts-with-governance-policies"></a>如何处理“创建新虚拟机”-还原类型与治理策略的冲突？
 
-Azure 备份使用从恢复点 "附加" 磁盘，而不查看映像引用或库。 因此，在策略中，可以选中 "osDisk 作为附加"，脚本条件将为：
+Azure 备份使用恢复点中的“附加”磁盘，而不查看你的映像引用或库。 因此，在策略中，可以选中“storageProfile.osDisk.createOption as Attach”，脚本条件将为：
 
 `if (storageProfile.osDisk.createOption == "Attach") then { exclude <Policy> }`
 

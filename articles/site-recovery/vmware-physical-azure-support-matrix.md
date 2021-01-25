@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 4bf0227cf11b21d7cde2807d465385bfc2b998b5
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a3c339213d0fa9a39995b1109fa72f49b466d277
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573048"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757739"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -78,10 +78,10 @@ Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。
 Windows Server 2019 | 从[更新汇总 34](https://support.microsoft.com/help/4490016) 开始受支持（移动服务版本 9.22 和更高版本）。
 Windows Server 2016 64 位 | 支持服务器核心、带桌面体验的服务器。
 Windows Server 2012 R2/Windows Server 2012 | 。
-Windows Server 2008 R2 SP1 及更高版本。 | 。<br/><br/> 在移动服务代理的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版本中，需要在运行 Windows 2008 R2 SP1 或更高版本的计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
-Windows Server 2008 SP2 或更高版本（64 位/32 位） |  仅支持迁移。 [了解详细信息](migrate-tutorial-windows-server-2008.md)。<br/><br/> 在移动服务代理的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版本中，需要在 Windows 2008 SP2 计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4493730) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)。
+Windows Server 2008 R2 SP1 及更高版本。 | 。<br/><br/> 在移动服务代理的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版本中，需要在运行 Windows 2008 R2 SP1 或更高版本的计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1。如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339)。
+Windows Server 2008 SP2 或更高版本（64 位/32 位） |  仅支持迁移。 [了解详细信息](migrate-tutorial-windows-server-2008.md)。<br/><br/> 在移动服务代理的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版本中，需要在 Windows 2008 SP2 计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4493730) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1。如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339)。
 Windows 10、Windows 8.1 和 Windows 8 | 仅支持 64 位系统。 不支持 32 位系统。
-包含 SP1 的 Windows 7 64 位 | 从[更新汇总 36](https://support.microsoft.com/help/4503156) 开始受支持（移动服务版本 9.22 和更高版本）。 </br></br> 在移动服务代理的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 中，需要在 Windows 7 SP1 计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)。
+包含 SP1 的 Windows 7 64 位 | 从[更新汇总 36](https://support.microsoft.com/help/4503156) 开始受支持（移动服务版本 9.22 和更高版本）。 </br></br> 在移动服务代理的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 中，需要在 Windows 7 SP1 计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339)。
 
 ### <a name="for-linux"></a>对于 Linux
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: f2807501b1e18d4cbffaa34d70bccf8d70565266
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747217"
+ms.locfileid: "98757536"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -126,7 +126,7 @@ Authorization: Bearer <token>
 ## <a name="create-cluster"></a>创建群集
 
 群集支持两个 [托管的标识类型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)：系统分配的和用户分配的标识类型，而单个标识可以在群集中定义，具体取决于你的方案。 
-- 当 "标识 `type` " 设置为 "*SystemAssigned*" 时，系统分配的托管标识更简单，并通过群集创建自动生成。 此标识稍后可用于授予群集对 Key Vault 的访问权限。 
+- 当 "标识 `type` " 设置为 "*SystemAssigned*" 时，系统分配的托管标识更简单，并通过群集创建自动生成。 此标识稍后可用于授予对 Key Vault 进行包装和解包操作的存储访问权限。 
   
   为系统分配的托管标识在群集中的标识设置
   ```json
@@ -137,7 +137,7 @@ Authorization: Bearer <token>
   }
   ```
 
-- 如果要在创建群集时配置客户托管的密钥，则应事先在 Key Vault 中授予密钥和用户分配的标识，然后使用以下设置创建群集：标识 `type` 为 "*UserAssigned*"， `UserAssignedIdentities` 具有标识的资源 ID。
+- 如果你想要在创建群集时配置客户托管的密钥，你应该事先在 Key Vault 中授予密钥和用户分配的标识，然后使用以下设置创建群集：标识 `type` 为 "*UserAssigned*"， `UserAssignedIdentities` 其中包含标识的 *资源 ID* 。
 
   群集中用户分配的托管标识的标识设置
   ```json
@@ -151,27 +151,7 @@ Authorization: Bearer <token>
   ```
 
 > [!IMPORTANT]
-> 如果 Key Vault Private-Link (vNet) ，则不能将客户托管的密钥用于用户分配的托管标识。 在此方案中，可以使用系统分配的托管标识。
-
-```json
-{
-  "identity": {
-    "type": "SystemAssigned"
-}
-```
- 
-替换为：
-
-```json
-{
-  "identity": {
-  "type": "UserAssigned",
-    "userAssignedIdentities": {
-      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<user-assigned-managed-identity-name>"
-      }
-}
-```
-
+> 如果 Key Vault Private-Link (vNet) ，则不能使用用户分配的托管标识。 在此方案中，可以使用系统分配的托管标识。
 
 请遵循[“专用群集”一文](../log-query/logs-dedicated-clusters.md#creating-a-cluster)中说明的过程。 
 
@@ -421,7 +401,7 @@ Content-type: application/json
 - 获取订阅中的所有群集
 - 更新群集中的 *容量预留*
 - 更新群集中的 *billingType*
-- 从群集取消链接工作区
+- 从群集中取消与工作区的链接
 - 删除群集
 
 ## <a name="limitations-and-constraints"></a>限制和约束

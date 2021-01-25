@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: e84484990725b0c39b132aead51e9b01dbb7e7ef
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 409a316bd9c4222dd9b8ff30e42e37d23805c38b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632285"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757756"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>将数据从 Azure Active Directory (Azure AD) 
 
 可以使用 Azure Sentinel 的内置连接器从 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 收集数据，并将其流式传输到 Azure Sentinel。 连接器允许流式传输 [登录日志](../active-directory/reports-monitoring/concept-sign-ins.md) 和 [审核日志](../active-directory/reports-monitoring/concept-audit-logs.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 任何 Azure AD 许可证 (免费/O365/P1/P2) 足以将登录日志引入 Azure Sentinel。 对于 Azure Monitor (Log Analytics) 和 Azure Sentinel，可能会收取额外的每 gb 费用。
 
@@ -44,12 +44,12 @@ ms.locfileid: "98632285"
 
 1. 将想要流式传输到 Azure 标记的日志类型旁边的复选框标记为，并单击 " **连接**"。 下面是可以选择的日志类型：
 
-    - 登录日志
-    - 审核日志
-    - 非交互式用户登录日志
-    - 服务主体登录日志
-    - 托管标识登录日志
-    - “预配”日志
+    - **登录日志**：有关托管应用程序和用户登录活动的使用情况的信息。
+    - **审核日志**：有关用户和组管理、托管应用程序和目录活动的系统活动信息。
+    - **非交互式用户登录日志**：有关客户端代表用户执行的登录信息，无需用户进行任何交互或身份验证。
+    - **服务主体登录日志**：有关不涉及任何用户的应用程序和服务主体登录的信息。 在此类登录中，应用或服务代表自己提供对资源进行身份验证或访问所需的凭据。
+    - **托管标识登录日志**： azure 资源的登录，具有由 azure 管理的机密。
+    - **预配日志**：有关 Azure AD 预配服务预配的用户、组和角色的系统活动信息。
 
 ## <a name="find-your-data"></a>查找数据
 

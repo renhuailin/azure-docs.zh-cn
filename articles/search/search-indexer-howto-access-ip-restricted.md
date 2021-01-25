@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 12943d5d22a9e81c7e99522fa4728f4798549682
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 01a88be9c54a2701130daace26c44159ee364e4c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499945"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757237"
 ---
 # <a name="configure-ip-firewall-rules-to-allow-indexer-connections-azure-cognitive-search"></a>配置 IP 防火墙规则以允许 (Azure 认知搜索的索引器连接) 
 
@@ -30,7 +30,7 @@ Azure 资源上的 IP 防火墙规则（例如存储帐户、Cosmos DB 帐户和
 
    ![获取服务 FQDN](media\search-indexer-howto-secure-access\search-service-portal.png "获取服务 FQDN")
 
-可以通过执行 `nslookup` (或 FQDN) 来获取搜索服务的 IP 地址 `ping` 。 在下面的示例中，将 "10.50.10.50" 添加到 Azure 存储防火墙上的入站规则。
+可以通过执行 `nslookup` (或 FQDN) 来获取搜索服务的 IP 地址 `ping` 。 在下面的示例中，将 "150.0.0.1" 添加到 Azure 存储防火墙上的入站规则。 更新防火墙设置后，可能需要长达15分钟的时间，搜索服务索引器才能访问 Azure 存储帐户。
 
 ```azurepowershell
 

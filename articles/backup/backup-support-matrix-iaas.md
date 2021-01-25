@@ -4,12 +4,12 @@ description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: ade92e445897e36139e74353fa703ddf50d3f9b3
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: d3329d9cac9547fbe9ec971bb8944f50971732b5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562720"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757400"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -81,6 +81,7 @@ Azure 备份不支持 32 位操作系统。
 - Azure 备份不支持 32 位操作系统。
 - 只要 VM 上装有[适用于 Linux 的 Azure VM 代理](../virtual-machines/extensions/agent-linux.md)且支持 Python，其他自带 Linux 分发版也能正常运行。
 - Azure 备份不支持未安装 Python 版本 2.7 且配置了代理的 Linux VM。
+- Azure 备份不支持将从存储装载的 NFS 文件或从任何其他 NFS 服务器备份到 Linux 或 Windows 计算机。 它仅备份本地附加到 VM 的磁盘。
 
 ## <a name="backup-frequency-and-retention"></a>备份频率和保留期
 
@@ -144,10 +145,11 @@ VM 大小 |至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小。<b
 备份已迁移到 Azure 的 VM| 。<br/><br/> 若要备份 VM，必须在迁移的计算机上安装 VM 代理。
 备份多 VM 一致性 | Azure 备份不提供跨多个 VM 的数据和应用程序一致性。
 备份包含[诊断设置](../azure-monitor/platform/platform-logs-overview.md)的 VM  | 不支持。 <br/><br/> 如果使用[新建](backup-azure-arm-restore-vms.md#create-a-vm)选项触发包含诊断设置的 Azure VM 的还原，还原将会失败。
-还原区域固定 VM | 支持 (，适用于在2019年1月和 [可用性区域](https://azure.microsoft.com/global-infrastructure/availability-zones/) 可用) 备份的 VM。<br/><br/>目前支持还原到 Vm 中固定的同一区域。 但是，如果该区域不可用，则还原将失败。
+还原区域固定 VM | 支持 (，适用于在2019年1月和 [可用性区域](https://azure.microsoft.com/global-infrastructure/availability-zones/) 可用) 备份的 VM。<br/><br/>目前支持还原到 Vm 中固定的同一区域。 但是，如果由于故障而导致区域不可用，则还原将失败。
 Gen2 VM | 支持 <br> Azure 备份支持备份和还原 [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。 从恢复点还原这些 VM 时，它们作为 [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) 还原。
 带锁的 Azure VM 的备份 | 非托管 VM 不支持。 <br><br> 托管 VM 支持。
-[点 VM](../virtual-machines/spot-vms.md) | 不支持。 Azure 备份会将专色 Vm 恢复为常规 Azure Vm。
+[点 VM](../virtual-machines/spot-vms.md) | 不受支持。 Azure 备份会将专色 Vm 恢复为常规 Azure Vm。
+[Azure 专用主机](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | 支持
 
 ## <a name="vm-storage-support"></a>VM 存储支持
 
@@ -165,6 +167,7 @@ Azure VM 数据磁盘 | 支持备份最多包含 32 个磁盘的 Azure VM。<br>
 共享存储| 不支持使用群集共享卷 (CSV) 或横向扩展文件服务器备份 VM。 在备份过程中，CSV 写入器可能会失败。 还原时，包含 CSV 卷的磁盘可能不会启动。
 [共享磁盘](../virtual-machines/disks-shared-enable.md) | 不支持。
 超级 SSD 磁盘 | 不支持。 有关更多详细信息，请参阅[这些限制](selective-disk-backup-restore.md#limitations)。
+[临时磁盘](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview#temporary-disk) | 临时磁盘不会由 Azure 备份进行备份。
 
 ## <a name="vm-network-support"></a>VM 网络支持
 

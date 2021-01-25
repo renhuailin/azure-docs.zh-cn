@@ -4,12 +4,12 @@ description: 提供支持设置的摘要，并限制 Azure 磁盘备份。
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 2030ee3f098317da9cda8b15fec1562f31cae7ee
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 5281a5f0b833759c2594b6748cf06f2e12c03822
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746030"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757468"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>预览版中的 Azure 磁盘备份支持矩阵 () 
 
@@ -22,7 +22,7 @@ ms.locfileid: "98746030"
 
 ## <a name="supported-regions"></a>支持的区域
 
-Azure 磁盘备份在以下区域提供预览版：美国中部、韩国中部、韩国南部。 
+Azure 磁盘备份在以下区域提供预览版：美国中部、东部2、韩国中部、韩国南部、日本西部阿拉伯联合酋长国北部。 
 
 当更多区域可用时，将公布这些区域。
 

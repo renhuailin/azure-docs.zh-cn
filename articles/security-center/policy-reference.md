@@ -1,25 +1,25 @@
 ---
 title: Azure 安全中心的内置策略定义
 description: 列出 Azure 安全中心的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 01/21/2021
+ms.date: 01/24/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3f667ed48a5188ce63665025786e990c47a9690b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 1192e765dc3cc001f8d1a1c6a28fe1a5cf4c9ecc
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700768"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757265"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Azure 安全中心的 Azure Policy 内置定义
 
-该页面是与 Azure 安全中心相关的 [Azure Policy](../governance/policy/overview.md) 内置策略定义的索引。 策略定义进行下列分组：
+此页是与 Azure 安全中心相关的 [Azure 策略](../governance/policy/overview.md) 内置策略定义的索引。 策略定义进行下列分组：
 
 - [计划](#azure-security-center-initiatives)组在“安全中心”类别中列出 Azure Policy 计划定义。
-- [默认计划](#azure-security-center-initiatives)组列出属于 [Azure 安全中心](./index.yml)默认计划的所有 Azure Policy 定义。
+- [默认计划](#azure-security-center-initiatives)组列出作为安全中心默认计划（ [azure 安全基准](../security/benchmarks/introduction.md)）一部分的所有 Azure 策略定义。 此 Microsoft 创作的、广泛遵从的基准是从 [中心针对 Internet 安全 (CIS) ](https://www.cisecurity.org/benchmark/azure/) 和 [美国国家标准与技术研究院 (NIST) ](https://www.nist.gov/) ，重点介绍以云为中心的安全性。
 - [类别](#azure-security-center-category)组列出“安全中心”类别中的所有 Azure Policy 定义。
 
 有关安全策略的详细信息，请参阅[使用安全策略](./tutorial-security-policy.md)。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../governance/policy/samples/built-in-policies.md)。
