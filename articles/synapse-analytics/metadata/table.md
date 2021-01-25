@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b93addfe659847187dffe61f12f5a2bfac9dca21
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461382"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209621"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共享元数据表
 
@@ -32,7 +32,7 @@ Spark 创建的表、托管表和外部表还可以使用相同名称在无服�
 
 使用 Spark 管理 Spark 创建的数据库。 例如，通过无服务器 Apache Spark 池作业删除数据库，通过 Spark 在数据库中创建表。
 
-如果通过无服务器 SQL 池在此类数据库中创建对象，或者尝试删除数据库，则该操作将会成功，但原始 Spark 数据库不会更改。
+如果在无服务器 SQL 池的此类数据库中创建对象，或尝试删除数据库，该操作会失败。 不能通过无服务器 SQL 池更改原始 Spark 数据库。
 
 ## <a name="expose-a-spark-table-in-sql"></a>使用 SQL 公开 Spark 表
 

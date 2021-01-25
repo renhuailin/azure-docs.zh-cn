@@ -19,6 +19,8 @@
       href: virtual-machines-custom-preferences.md
     - name: 通过 Azure Policy 在 VM 上启用
       href: virtual-machines-policy-enable.md
+    - name: 排查加入错误
+      href: common-errors.md
     - name: 修复损坏的 Automanage 帐户
       href: repair-automanage-account.md
 - name: 资源

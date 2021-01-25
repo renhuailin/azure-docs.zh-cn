@@ -1,5 +1,6 @@
 ---
-title: 将调用 Web API 的 Web 应用移到生产环境 - Microsoft 标识平台 | Azure
+title: 转到生产调用 web Api 的 web 应用 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何将调用 Web API 的 Web 应用移到生产环境。
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f38755e669a62e9fe74aa6281daccdf39e1f117c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6252e33631fb07a61ed3c1ac2be65762b290600b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443562"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753217"
 ---
 # <a name="a-web-app-that-calls-web-apis-move-to-production"></a>调用 Web API 的 Web 应用：移到生产环境
 

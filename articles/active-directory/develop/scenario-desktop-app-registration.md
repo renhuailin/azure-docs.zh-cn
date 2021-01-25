@@ -1,5 +1,6 @@
 ---
-title: 注册用于调用 Web API 的桌面应用 - Microsoft 标识平台 | Azure
+title: 注册用于调用 web Api 的桌面应用 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 Web API 的桌面应用（应用注册）
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c769fd86f432d135542c1f09b83ea5a01c6ab0a6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 46c8127a93cef8f662930fffd07a2fa3d22b8871
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250598"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753704"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>调用 Web API 的桌面应用：应用注册
 
@@ -49,7 +50,7 @@ ms.locfileid: "98250598"
 - 若要使用[守护程序应用程序](scenario-daemon-overview.md)中使用的客户端凭据流将[设备代码流](scenario-desktop-acquire-token.md#device-code-flow)、[集成 Windows 身份验证](scenario-desktop-acquire-token.md#integrated-windows-authentication)以及[用户名和密码](scenario-desktop-acquire-token.md#username-and-password)与机密的客户端应用程序（它们都不要求重定向 URI）区分开来，需要将应用程序配置为公共客户端应用程序。 为了实现该配置：
 
     1. 在 " <a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span></a>中，选择"**应用注册** 中的应用，然后选择 "**身份验证**"。
-    1. 在 "**高级设置**  >  " "**允许公用客户端流**  >  **"** 中，选择 **"是"**。
+    1. 在“高级设置” > “允许公共客户端流” > “启用以下移动和桌面流:”中，选择“是”。
 
         :::image type="content" source="media/scenarios/default-client-type.png" alt-text="在 Azure 门户中的“身份验证”窗格上启用公共客户端设置":::
 

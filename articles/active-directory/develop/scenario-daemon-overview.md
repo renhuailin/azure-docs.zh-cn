@@ -1,5 +1,6 @@
 ---
-title: 构建调用 Web API 的守护程序应用 - Microsoft 标识平台 | Azure
+title: 构建一个可调用 web Api 的后台应用程序 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何构建用于调用 Web API 的守护程序应用
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e63a948260863c93a92e4241044be5e0baf8afca
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45af940382a261f1793583e471871b9cceed0a57
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443256"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753831"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>方案：用于调用 Web API 的守护程序应用程序
 
@@ -45,7 +46,7 @@ ms.locfileid: "94443256"
 
 > [!IMPORTANT]
 >
-> - 用户无法与守护程序应用程序进行交互。 守护程序应用程序需要其自己的标识 此类型的应用程序通过以下方式来请求访问令牌：使用其应用程序标识并向 Azure AD 提供其应用程序 ID、凭据（密码或证书）以及应用程序 ID URI。 在身份验证成功后，守护程序应用程序会从 Microsoft 标识平台终结点收到一个访问令牌（和一个刷新令牌）。 然后，将使用该令牌来调用 Web API（将会根据需要刷新该令牌）。
+> - 用户无法与守护程序应用程序进行交互。 守护程序应用程序需要其自己的标识 此类型的应用程序通过以下方式来请求访问令牌：使用其应用程序标识并向 Azure AD 提供其应用程序 ID、凭据（密码或证书）以及应用程序 ID URI。 身份验证成功后，后台程序会收到一个访问令牌 (和一个刷新令牌) 来自 Microsoft 标识平台。 然后，将使用该令牌来调用 Web API（将会根据需要刷新该令牌）。
 > - 由于用户无法与守护程序应用程序进行交互，因此无法进行增量许可。 所有必需的 API 权限都需要在注册应用程序时配置。 应用程序的代码只请求静态定义的权限。 这也意味着守护程序应用程序不会支持增量许可。
 
 对于开发人员来说，此方案的端到端体验具有以下特点：
@@ -61,4 +62,4 @@ ms.locfileid: "94443256"
 
 ## <a name="next-steps"></a>后续步骤
 
-转到本方案中的下一篇文章 " [应用注册](./scenario-daemon-app-registration.md)"。
+转到此方案中的下一篇文章：[应用注册](./scenario-daemon-app-registration.md)。

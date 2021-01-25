@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d6d0d0a4c4b3328fa50777b5106bac202c9972ef
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ea1ee2311d8655ce17017c73309bc69e89f4b5f4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151506"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599116"
 ---
 # <a name="save-on-sap-hana-large-instances-with-an-azure-reservation"></a>使用 Azure 预留节省 SAP HANA 大型实例
 
@@ -224,7 +224,7 @@ armclient get /providers/microsoft.capacity/reservationOrders/22222222-2222-2222
 
   **保留的资源类型** `SapHana`
 
-  订阅：用于支付预留费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须为企业协议（套餐编号：MS-AZR-0017P or MS-AZR-0148P）或 Microsoft 客户协议。 从货币承诺余额中扣除费用（如果可用）或作为超额收取费用。
+  订阅：用于支付预留费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须为企业协议（套餐编号：MS-AZR-0017P or MS-AZR-0148P）或 Microsoft 客户协议。 从 Azure 预付款（以前称为货币承诺）余额中扣除费用（如果可用）或按超额收取费用。
 
   范围：预留范围应为单一范围。
 

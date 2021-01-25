@@ -383,6 +383,8 @@
           href: partner-itsme.md
         - name: Jumio
           href: partner-jumio.md
+        - name: Keyless
+          href: partner-keyless.md
         - name: LexisNexis
           href: partner-lexisnexis.md
         - name: N8 Identity
@@ -417,9 +419,9 @@
         - name: Azure Monitor
           href: azure-monitor.md
           displayName: 'log, logs, logging, usage, events'
-        - name: 管理用户 - Microsoft Graph
-          href: manage-user-accounts-graph-api.md
-          displayName: 'account, accounts'
+        - name: Microsoft Graph API
+          href: microsoft-graph-operations.md
+          displayName: 'account, accounts, msgraph, ms graph, graph'
         - name: 使用 Azure Pipelines 进行部署
           href: deploy-custom-policies-devops.md
           displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
@@ -463,8 +465,6 @@
       href: extensions-app.md
     - name: 自定义策略 (IEF) 发行说明
       href: custom-policy-developer-notes.md
-    - name: Microsoft Graph API 操作
-      href: microsoft-graph-operations.md
     - name: 页面布局版本
       href: page-layout.md
     - name: 上市区域和数据驻留

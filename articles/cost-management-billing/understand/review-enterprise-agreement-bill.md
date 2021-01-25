@@ -9,18 +9,18 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d707051e20b4ce9d1289557aec6f8256c2e6bfba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 643aac7927cc7b14693387fbb5765bdcd0214dc2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150078"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598247"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解 Azure 企业协议帐单
 
 当签署企业协议的 Azure 客户超出组织的信用额度或使用信用额度未涵盖的服务时，将会收到发票。
 
-组织的信用额度包括货币承诺。 货币承诺是组织提前支付的 Azure 服务使用费。 可以联系 Microsoft 客户经理或经销商，将货币承诺资金添加到企业协议。
+组织的额度包括你的 Azure 预付款（以前称为货币承诺）。 Azure 预付款是组织提前支付的 Azure 服务使用费。 可以联系 Microsoft 客户经理或经销商，将 Azure 预付款资金添加到企业协议。
 
 本教程仅适用于签订了 Azure 企业协议的 Azure 客户。
 
@@ -64,7 +64,7 @@ ms.locfileid: "92150078"
 
 ![显示“使用情况摘要”中“M + C”选项的屏幕截图。](./media/review-enterprise-agreement-bill/ea-portal-usage-sumary-cm-option.png)
 
-**总使用量**和 **Azure 市场**的合计金额应与发票上的**总应收金额**相匹配。 若要获取有关费用的详细信息，请转到**下载使用情况**。  
+**总使用量** 和 **Azure 市场** 的合计金额应与发票上的 **总应收金额** 相匹配。 若要获取有关费用的详细信息，请转到 **下载使用情况**。  
 
 ![显示“下载使用情况”选项卡的屏幕截图](./media/review-enterprise-agreement-bill/ea-portal-download-usage.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "92150078"
 
 本部分仅适用于你在澳大利亚、日本或新加坡的情况。
 
-将企业门户的“报告” > “使用情况摘要”中的 Azure 市场总额与市场发票进行比较。  市场发票仅适用于 Azure 市场采购和使用。 **使用情况摘要**上的金额已包含由发布者确定的税款。
+将企业门户的“报告” > “使用情况摘要”中的 Azure 市场总额与市场发票进行比较。  市场发票仅适用于 Azure 市场采购和使用。 **使用情况摘要** 上的金额已包含由发布者确定的税款。
 
 登录到[企业门户](https://ea.azure.com)，然后选择“报告”。 在选项卡的右上角，将视图从“M”切换到“C”，然后匹配发票上的周期。   
 
@@ -155,7 +155,7 @@ ms.locfileid: "92150078"
 
 ## <a name="request-detailed-usage-information"></a>请求详细的使用情况信息
 
-企业管理员可以查看对其使用情况数据、使用的货币承诺以及与 Azure Enterprise 门户中其他使用量相关的费用的摘要。 费用以摘要形式显示，适用于所有帐户和订阅。
+企业管理员可以查看对其使用情况数据、使用的 Azure 预付款以及与 Azure Enterprise 门户中其他使用量相关的费用的摘要。 费用以摘要形式显示，适用于所有帐户和订阅。
 
 若要查看特定帐户中的详细使用情况，请转到“报表” > “下载使用情况”来下载使用情况详细信息报表。 
 
@@ -166,7 +166,7 @@ ms.locfileid: "92150078"
 
 ## <a name="reports"></a>报表
 
-企业管理员可以查看对其使用情况数据、使用的货币承诺以及与 Azure Enterprise 门户中其他使用量相关的费用的摘要。 费用以摘要形式显示，适用于所有帐户和订阅。
+企业管理员可以查看对其使用情况数据、使用的 Azure 预付款以及与 Azure Enterprise 门户中其他使用量相关的费用的摘要。 费用以摘要形式显示，适用于所有帐户和订阅。
 
 ### <a name="azure-enterprise-reports"></a>Azure Enterprise 报表
 
@@ -296,8 +296,8 @@ Azure 市场费用有以下两种类型：
 
 若要在 Azure Enterprise 门户中查看不同的费用：
 
-- **使用情况摘要报表**：显示基于用量的费用**和**每月 Azure 市场费用。
-- **市场费用报表**：**仅**显示基于用量的 Azure 市场费用。  不显示一次性费用。
+- **使用情况摘要报表**：显示基于用量的费用 **和** 每月 Azure 市场费用。
+- **市场费用报表**：**仅** 显示基于用量的 Azure 市场费用。  不显示一次性费用。
 
 > [!NOTE]
 > Azure 市场不适用于 MPSA 注册。
@@ -403,7 +403,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 
 ### <a name="why-is-my-cost-showing-as-0"></a>为什么我的成本显示为 $0？
 
-对于**直接注册**客户，企业管理员可以向帐户所有者和部门管理员提供对使用情况报表中费用/定价信息的访问权限。 执行以下步骤:
+对于 **直接注册** 客户，企业管理员可以向帐户所有者和部门管理员提供对使用情况报表中费用/定价信息的访问权限。 执行以下步骤:
 
 1. 在 Azure Enterprise 门户的左侧导航区域中，选择“管理”。
 1. 选择 DA（部门管理员）查看费用旁边的蓝色铅笔图标。
@@ -414,7 +414,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 > [!NOTE]
 > 如果你是帐户所有者或部门管理员，请联系企业管理员启用定价功能。
 
-对于**间接注册**客户，请联系合作伙伴来检查他们是否已为你启用了定价功能。 此操作只能由合作伙伴完成。 为你启用此功能后，你就能以企业管理员身份查看注册的费用和定价。
+对于 **间接注册** 客户，请联系合作伙伴来检查他们是否已为你启用了定价功能。 此操作只能由合作伙伴完成。 为你启用此功能后，你就能以企业管理员身份查看注册的费用和定价。
 
 如果合作伙伴想要为帐户所有者和部门管理员启用“查看费用”的功能，请按照“直接注册”下的步骤操作。
 

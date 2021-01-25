@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fb8b0f12844ce1057bd3cfc4716a32ee64ec5586
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: df1064128d6a4eca8497ebf3ea0c6ae8cd42255c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937213"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208431"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>快速入门：使用 Azure CLI 设置 Azure 证明
 
-通过使用 Azure CLI 设置证明，开始使用 Azure 证明。
+[通过使用 Azure CLI 开始使用 Azure 证明](/cli/azure/ext/attestation/attestation?view=azure-cli-latest)。
 
 ## <a name="get-started"></a>入门
 
@@ -65,7 +65,7 @@ ms.locfileid: "96937213"
 
 可使用以下命令创建和管理证明提供程序：
 
-1. 运行 [az attestation create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) 命令创建证明提供程序：
+1. 运行 [az attestation create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) 命令，创建没有策略签名要求的证明提供程序：
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
@@ -128,7 +128,7 @@ az attestation policy set --name testatt1 --resource-group testrg --attestation-
 
 ```azurecli
 az attestation policy set --name "myattestationprovider" --resource-group "MyResourceGroup" \
---attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}" --policy-format JWT
+--attestation-type SGX-IntelSDK -f "{file_path}" --policy-format JWT
 ```
 
 ## <a name="next-steps"></a>后续步骤

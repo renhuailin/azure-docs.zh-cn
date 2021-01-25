@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: overview
 ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: b79bde204d82b069b3314855a45a680b863c3f69
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0e45e9741e92bb9e1fe23af79695cae06e64e871
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560485"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602055"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -56,7 +56,7 @@ Azure 预留项通过承诺多种产品的一年期或三年期计划，帮助�
 
 ## <a name="how-is-a-reservation-billed"></a>预留如何计费？ 
 
-预留通过与订阅绑定的付款方式付款。 预留成本将从货币承诺余额中扣除（如果可用）。 如果货币承诺余额不足以支付虚拟机预留实例的费用，则还会向你收取所欠费用。 如果你的订阅来自采用即用即付费率的单个计划，将立即从你帐户中的信用卡提前扣取购买费。 每月付款额将显示在发票上，并且每月将从你的信用卡扣费。 如果采用按发票计费的方式，则费用将显示在下一份发票上。 
+预留通过与订阅绑定的付款方式付款。 预留成本将从 Azure 预付款（以前称为货币承诺）余额中扣除（如果可用）。 如果 Azure 预付款余额不足以支付预留的费用，则还会向你收取超额费用。 如果你的订阅来自采用即用即付费率的单个计划，将立即从你帐户中的信用卡提前扣取购买费。 每月付款额将显示在发票上，并且每月将从你的信用卡扣费。 如果采用按发票计费的方式，则费用将显示在下一份发票上。 
 
 ## <a name="who-can-manage-a-reservation-by-default"></a>默认情况下谁可以管理预留
 

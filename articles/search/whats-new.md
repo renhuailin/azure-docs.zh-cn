@@ -8,16 +8,16 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 73902cf53d9995f7dfc1991e3b7ed7c7c469bf2a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f38725f4f00b4b21edc1f564654d1d5137aa2915
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026655"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201971"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
-了解服务中的新增功能。 请将本页加入书签，以随时了解该服务的最新信息。
+了解服务中的新增功能。 请将本页加入书签，以随时了解该服务的最新信息。 查看[预览功能列表](search-api-preview.md)，以查看公共预览版中的功能。
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -57,7 +57,7 @@ ms.locfileid: "95026655"
 |---------|------------------|-------------|---------------|
 [知识存储](knowledge-store-concept-intro.md) | AI 扩充 | AI 扩充索引器的输出，将内容存储在 Azure 存储中以供其他应用和进程使用。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](/rest/api/searchservice/) 或更高版本，或门户。 |
 | [搜索 REST API 2020-06-30](/rest/api/searchservice/) | REST | REST API 的新稳定版本。 除了知识存储，此版本还包括搜索相关性和评分的增强功能。 | 正式发布。 |
-| [Okapi BM25 相关性算法](https://en.wikipedia.org/wiki/Okapi_BM25) | 查询 | 新的相关性排名算法自动用于 7 月 15 日之后创建的所有新搜索服务。 对于先前创建的服务，可以通过在索引字段上设置 `similarity` 属性来选择加入。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](/rest/api/searchservice/) 或更高版本，或 REST API 2019-05-06。 |
+| [Okapi BM25 相关性算法](index-ranking-similarity.md) | 查询 | 新的相关性排名算法自动用于 7 月 15 日之后创建的所有新搜索服务。 对于先前创建的服务，可以通过在索引字段上设置 `similarity` 属性来选择加入。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](/rest/api/searchservice/) 或更高版本，或 REST API 2019-05-06。 |
 | **executionEnvironment** | 安全性（索引器） | 显式地将此索引器配置属性设置为 `private`，以强制通过专用终结点连接到外部数据源。 仅适用于使用 Azure 专用链接的搜索服务。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](/rest/api/searchservice/) 设置此常规配置参数。 |
 
 ## <a name="may-2020-microsoft-build"></a>2020 年 5 月（Microsoft Build 大会）
@@ -65,11 +65,11 @@ ms.locfileid: "95026655"
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
 | [调试会话](cognitive-search-debug-session.md) | AI 扩充 | 调试会话提供基于门户的接口来调查和解决现有技能组的问题。 在调试会话中创建的修补程序可以保存到生产技能集。 请先查看[此教程](cognitive-search-tutorial-debug-sessions.md)。 | 门户中的公共预览版。 |
-| [**适用于入站防火墙支持的 IP 规则**](service-configure-firewall.md) | 安全性 | 将对搜索服务终结点的访问限制为特定的 IP 地址。 | 正式发布。 </br> 使用[管理 REST API 2020-03-13](/rest/api/searchmanagement/) 或更高版本，或门户。 |
+| [适用于入站防火墙支持的 IP 规则](service-configure-firewall.md) | 安全性 | 将对搜索服务终结点的访问限制为特定的 IP 地址。 | 正式发布。 </br> 使用[管理 REST API 2020-03-13](/rest/api/searchmanagement/) 或更高版本，或门户。 |
 | [专用搜索终结点的 Azure 专用链接](service-create-private-endpoint.md) | 安全性| 通过将搜索服务作为专用链接资源（仅可供同一虚拟网络上的客户端应用和其他 Azure 服务访问）运行，使其不受公共 Internet 的影响。 | 正式发布。 </br> 使用[管理 REST API 2020-03-13](/rest/api/searchmanagement/) 或更高版本，或门户。 |
 | [系统托管的标识（预览版）](search-howto-managed-identities-data-sources.md) | 安全性（索引器） | 在 Azure Active Directory 中将搜索服务注册为受信任的服务，以设置到受支持的 Azure 数据源的连接，以编制索引。 适用于从 Azure 数据源（例如 Azure SQL 数据库、Azure Cosmos DB 和 Azure 存储）引入内容的[索引器](search-indexer-overview.md)。 | 公共预览版。 </br> 使用门户注册搜索服务。 |
-| [**sessionId 查询参数**](index-similarity-and-scoring.md)，[scoringStatistics=global parameter](index-similarity-and-scoring.md#scoring-statistics) | 查询（相关性） | 将 sessionID 添加到查询中，以建立一个用于计算搜索分数的会话，scoringStatistics=global 用于从所有分区收集分数，以实现更一致的搜索分数计算。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](/rest/api/searchservice/) 或更高版本，或 REST API 2019-05-06。 |
-| [featuresMode（预览版）](index-similarity-and-scoring.md#featuresMode-param) | 查询 | 添加此查询参数，展开相关性分数以显示详细信息：每个字段相似度得分、每个字段术语频率和每个字段匹配的唯一标记数。 你可以在自定义评分算法中使用这些数据点。 有关演示此功能的示例，请参阅[添加机器学习 (LearnToRank) 以搜索相关性](https://github.com/Azure-Samples/search-ranking-tutorial)。 | 公共预览版。 </br> 使用[搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
+| [sessionId 查询参数](index-similarity-and-scoring.md)，[scoringStatistics=global parameter](index-similarity-and-scoring.md#scoring-statistics) | 查询（相关性） | 将 sessionID 添加到查询中，以建立一个用于计算搜索分数的会话，scoringStatistics=global 用于从所有分区收集分数，以实现更一致的搜索分数计算。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](/rest/api/searchservice/) 或更高版本，或 REST API 2019-05-06。 |
+| [featuresMode 相关性分数扩展（预览版）](index-similarity-and-scoring.md#featuresMode-param) | 查询 | 添加此查询参数，展开相关性分数以显示详细信息：每个字段相似度得分、每个字段术语频率和每个字段匹配的唯一标记数。 <br/><br/>自定义评分算法可以使用此信息。 “学习排序”算法是一种高级的自定义评分功能，通过提供相关性分数详细信息即可实现该功能。 有关演示此功能的示例，请参阅[添加机器学习 (LearnToRank) 以搜索相关性](https://github.com/Azure-Samples/search-ranking-tutorial)。 | 公共预览版。 </br> 使用[搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
 
 ## <a name="march-2020"></a>2020 年 3 月
 
@@ -89,11 +89,11 @@ ms.locfileid: "95026655"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [客户管理的加密密钥](search-security-manage-encryption-keys.md) |安全性 | 除了平台的内置加密外，还添加了额外的加密层。 使用你创建和管理的加密密钥，可以在有效负载到达搜索服务之前对索引内容和同义词映射进行加密。 | 正式发布。 </br> 使用 Search REST API 2019-05-06 或更高版本。 对于托管代码，即使该功能现在不再以预览版提供，但正确的包仍是 [.NET SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md)。 |
+| [客户托管的加密密钥](search-security-manage-encryption-keys.md) |安全性 | 除了平台的内置加密外，还添加了额外的加密层。 使用你创建和管理的加密密钥，可以在有效负载到达搜索服务之前对索引内容和同义词映射进行加密。 | 正式发布。 </br> 使用 Search REST API 2019-05-06 或更高版本。 对于托管代码，即使该功能现在不再以预览版提供，但正确的包仍是 [.NET SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md)。 |
 | [适用于入站防火墙支持的 IP 规则（预览版）](service-configure-firewall.md) | 安全性 | 将对搜索服务终结点的访问限制为特定的 IP 地址。 预览版 API 在 [CreateOrUpdate API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 中提供 **IpRule** 和 **NetworkRuleSet** 属性。 此预览版功能可在选定的区域中使用。 |  使用 api-version=2019-10-01-Preview 的公共预览版。  |
 | [专用搜索终结点的 Azure 专用链接（预览版）](service-create-private-endpoint.md) | 安全性| 通过将搜索服务作为专用链接资源（仅可供同一虚拟网络上的客户端应用和其他 Azure 服务访问）运行，使其不受公共 Internet 的影响。 | 使用 api-version=2019-10-01-Preview 的公共预览版。  |
 
-## <a name="features-in-2019"></a>2019 版中的功能
+## <a name="2019-feature-announcements"></a>2019 功能公告
 
 ### <a name="december-2019"></a>2019 年 12 月
 

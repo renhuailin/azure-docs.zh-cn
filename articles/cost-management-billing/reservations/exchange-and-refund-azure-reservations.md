@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: b0f17149eb646b6108dc6a81922e6e5b00f143d6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 045ab35a35aa4caefb1e1bcbbf7bf78b726c09f7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560536"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601460"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 预留的自助交换和退款
 
@@ -47,7 +47,7 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
 
 ### <a name="enterprise-agreement-customers"></a>企业协议客户
 
-款项将添加到进行交换和退款的货币承诺，前提是原始购买是使用其中一个进行的。 如果通过预留购买的货币承诺期限不再有效，则会将额度添加到当前的企业协议货币承诺期限。 此额度自退款之日起 90 天内有效。 未使用的额度在 90 天结束之时过期。
+款项将添加到进行交换和退款的 Azure 预付款（以前称为货币承诺），前提是原始购买是使用其中一个进行的。 如果通过预留购买的 Azure 预付款期限不再有效，则会将额度添加到当前的企业协议 Azure 预付款期限。 此额度自退款之日起 90 天内有效。 未使用的额度在 90 天结束之时过期。
 
 如果原始购买是以超额形式完成的，则购买预留的原始发票和所有后续发票都会重新开具和重新调整。 Microsoft 针对退款发出贷项凭单。
 

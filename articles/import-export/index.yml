@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: Azure 导入/导出文档
+summary: 通过将磁盘驱动器寄送到 Azure 数据中心，使用 Azure 导入/导出服务将大量数据安全地导入到 Azure Blob 存储和 Azure 文件存储中。
+metadata:
+  title: Azure 导入/导出文档
+  description: Azure 导入/导出文档，通过寄送物理磁盘将大量数据安全地导入/导出 Azure 数据中心。
+  services: storage
+  ms.service: storage
+  ms.subservice: storage
+  ms.topic: landing-page
+  ms.collection: collection
+  author: v-dalc
+  ms.author: alkohli
+  ms.date: 01/08/201
+  ms.openlocfilehash: fe86eab66b0f03cb23072a7a34c4be161ca4fb38
+  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98725731"
+landingContent:
+- title: 关于 Azure 导入/导出
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是导入/导出服务？
+      url: storage-import-export-service.md
+  - linkListType: architecture
+    links:
+    - text: 选择数据传输选项
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: 使用网络或脱机传输
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+- title: 要求
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 要求
+      url: storage-import-export-requirements.md
+    - text: 常见问题解答
+      url: storage-import-export-service-faq.md
+- title: 部署
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 将数据导入 Blob
+      url: storage-import-export-data-to-blobs.md
+    - text: 将数据导入文件
+      url: storage-import-export-data-to-files.md
+    - text: 从 Blob 导出数据
+      url: storage-import-export-data-from-blobs.md
+  - linkListType: learn
+    links:
+    - text: 使用导入/导出服务脱机导出数据
+      url: /learn/modules/export-data-with-azure-import-export/
+- title: 监视
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 查看驱动器状态
+      url: storage-import-export-view-drive-status.md
+    - text: 查看作业状态
+      url: storage-import-export-tool-reviewing-job-status-v1.md
+- title: 疑难解答
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 疑难解答
+      url: storage-import-export-contact-microsoft-support.md
+    - text: 联系支持人员
+      url: storage-import-export-contact-microsoft-support.md

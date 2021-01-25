@@ -9,34 +9,34 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 12/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 1814555f738f37523c5b23ae729bf20bff62e1f9
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 3f62ab20359273aec6743c27ab46b33027e82b55
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679529"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598405"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure 认知搜索是什么？
 
 Azure 认知搜索（[以前称为“Azure 搜索”](whats-new.md#new-service-name)）是一种云搜索服务，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容构建丰富的搜索体验。 
 
-创建认知搜索服务时，将获得：
+搜索服务具有以下组件：
 
-+ 执行索引和查询执行的搜索引擎
-+ 创建和管理的搜索索引的持久存储
++ 用于索引和查询执行的搜索引擎
++ 用户拥有的搜索索引的持久存储
 + 用于编写简单到复杂查询的查询语言
-+ [AI 驱动的扩充](cognitive-search-concept-intro.md)，可从图像、原始文本、应用程序文件中创建可搜索的内容
-+ 与其他 Azure 服务集成以实现数据、机器学习/AI 和安全性
++ 可选的[基于 AI 的扩充](cognitive-search-concept-intro.md)，可从图像、原始文本、应用程序文件中创建可搜索的内容
++ 可选择与其他 Azure 服务集成以实现数据、机器学习/AI 和安全性
 
 从体系结构方面来讲，搜索服务位于外部数据存储（包含未索引数据）与客户端应用（向搜索索引发送查询请求并处理响应）之间。
 
 ![Azure 认知搜索体系结构](media/search-what-is-azure-search/azure-search-diagram.svg "Azure 认知搜索体系结构")
 
-表面上，搜索服务以“索引器”（自动从 Azure 数据源引入/检索数据）和“技能组”（引入认知服务（例如图像和文本分析）中的可消耗 AI，或者引入你在 Azure 机器学习中创建的或在 Azure Functions 内包装的自定义 AI）的形式与其他 Azure 服务集成 。
+表面上，搜索可以以“索引器”（自动从 Azure 数据源引入/检索数据）和“技能组”（引入认知服务（例如图像和文本分析）中的可消耗 AI，或者引入你在 Azure 机器学习中创建的或在 Azure Functions 内包装的自定义 AI）的形式与其他 Azure 服务集成 。
 
 在搜索服务本身，两个主要工作负荷是索引编制和查询 。 
 
-+ 索引编制将文本插入到搜索服务中，并使其可供搜索。 在内部，将入站文本处理到令牌中，并将其存储在逆选索引中，以便快速扫描。 
++ 索引编制将文本引入搜索服务中，并使其可供搜索。 在内部，将入站文本处理到令牌中，并将其存储在逆选索引中，以便快速扫描。 可上传 JSON 文档格式的任何内容。
 
   在编制索引期间，可选择通过[认知技能](cognitive-search-working-with-skillsets.md)添加 AI 扩充：来自 Microsoft 的预定义技能，或者你创建的自定义技能。 后续的分析和转换可能会导致生成以前不存在的新信息和结构，为许多搜索和知识挖掘方案提供高实用性。
 
@@ -48,13 +48,13 @@ Azure 认知搜索（[以前称为“Azure 搜索”](whats-new.md#new-service-n
 
 Azure 认知搜索非常适合以下应用程序方案：
 
-+ 将异构内容整合成专用的用户定义的搜索索引。 可以在搜索索引中填充来自任何源的 JSON 文档流。 对于 Azure 上支持的源，请使用索引器来自动编制索引。 对索引架构和刷新计划进行控制是使用认知搜索的主要原因。
++ 将异构内容整合成专用的用户定义的搜索索引。
 
-+ 轻松实现搜索相关的功能。 搜索 API 简化了查询构造、分面导航、筛选器（包括地理空间搜索）、同义词映射、自动完成和相关性优化。 使用内置功能可以满足最终用户对搜索体验的预期，使其觉得该体验类似于商用 Web 搜索引擎。
++ 轻松实现搜索相关的功能：相关性优化、分面导航、筛选器（包括地理空间搜索）、同义词映射和自动完成。
 
-+ 原始内容是 Azure Blob 存储或 Cosmos DB 中存储的大型无差别文本、图像文件或应用程序文件。 在索引编制期间，你可以应用[认知技能](cognitive-search-concept-intro.md)来识别和提取文本、创建结构或创建新信息（例如已翻译的文本或实体）。
++ 将 Azure Blob 存储或 Cosmos DB 中存储的大型无差别文本、图像文件或应用程序文件转换为可搜索的 JSON 文档。 这是通过[添加外部处理](cognitive-search-concept-intro.md)的认知技能在编制索引期间实现的。
 
-+ 内容需要语言分析或自定义文本分析。 如果你使用非英语内容，Azure 认知搜索支持 Lucene 分析器和 Microsoft 的自然语言处理器。 还可以配置分析器以实现原始内容的专业处理，例如筛选出标注字符，或识别并保留字符串中的模式。
++ 添加语言或自定义文本分析。 如果你使用非英语内容，Azure 认知搜索支持 Lucene 分析器和 Microsoft 的自然语言处理器。 还可以配置分析器以实现原始内容的专业处理，例如筛选出标注字符，或识别并保留字符串中的模式。
 
 有关特定功能的详细信息，请参阅 [Azure 认知搜索的 功能](search-features-list.md)
 
@@ -62,11 +62,11 @@ Azure 认知搜索非常适合以下应用程序方案：
 
 可以通过以下四个步骤来实现核心搜索功能的端到端探索：
 
-1. 在与其他订阅者共享的免费层上[创建搜索服务](search-create-service-portal.md)，也可以创建一个[付费层](https://azure.microsoft.com/pricing/details/search/)，其中的资源专供你的服务使用。 所有快速入门和教程都可以通过免费服务完成。
+1. 在共享的免费层或[付费层](https://azure.microsoft.com/pricing/details/search/)（其中的资源专供你的服务使用）上[创建搜索服务](search-create-service-portal.md)。 所有快速入门和教程都可以通过共享服务完成。
 
-1. 使用门户 [REST API](/rest/api/searchservice/create-index) [创建搜索索引](search-what-is-an-index.md)。 [.NET SDK](search-howto-dotnet-sdk.md) 或其他 SDK。 索引架构决定了可搜索内容的结构。
+1. 使用门户、[REST API](/rest/api/searchservice/create-index)、[.NET SDK](search-howto-dotnet-sdk.md) 或其他 SDK[创建搜索索引](search-what-is-an-index.md)。 索引架构决定了可搜索内容的结构。
 
-1. [将内容上传](search-what-is-data-import.md)到索引。 使用[“推送”模型](tutorial-optimize-indexing-push-api.md)从任意源推送 JSON 文档，或如果源数据位于 Azure 上，则使用[“拉取”模型（索引器）](search-indexer-overview.md)。
+1. 使用[“推送”模型](tutorial-optimize-indexing-push-api.md)[上传内容](search-what-is-data-import.md)，以从任意源推送 JSON 文档，如果数据源在 Azure 上，则使用[“拉取”模型（索引器）](search-indexer-overview.md)。
 
 1. 使用门户 [REST API](search-get-started-rest.md)、[.NET SDK](/dotnet/api/azure.search.documents.searchclient.search) 或其他 SDK 中的[搜索资源管理器](search-explorer.md)[查询索引](search-query-overview.md)。
 

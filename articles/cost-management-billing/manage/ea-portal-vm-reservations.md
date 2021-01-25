@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 7c8a35e7c8ecd0952f8e02b66c5071253d9b0445
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348919"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98597953"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA 虚拟机预留实例
 
@@ -25,7 +25,7 @@ ms.locfileid: "96348919"
 
 ### <a name="partial-refunds"></a>部分退款
 
-当 EA 客户退还使用超额（而不是货币承诺）购买的预留时，我们将发放部分退款。
+当 EA 客户退还使用超额而不是 Azure 预付款（以前称为货币承诺）购买的预留时，我们将发放部分退款。
 
 此退款将在 EA 门户中显示为上个月的负调整和当月的正调整。 它的显示方式类似于预留交换。 贷项凭单将引用原始发票号；因此，若要将初始购买与贷项凭单进行核对，请参考原始发票号。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 204cdc689d5a117df428bb314a81a35081f7b13c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 8e155a253910cc5ee3f4fc71cf9ea66ced5cb46f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357634"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742108"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>教程：为 BlueJeans 配置自动用户预配
 
@@ -91,49 +91,51 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 3. 选择“预配”  选项卡。
 
-    ![突出显示并调出了“预配”选项的 BlueJeans 企业应用程序边栏的屏幕截图。](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
+    ![“预配”选项卡](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
-    ![调出了“预配模式”和“管理员凭据”部分的“预配”页的屏幕截图。](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
+    ![“预配”选项卡“自动”](common/provisioning-automatic.png)
 
-5. 在“管理员凭据”部分下，输入 BlueJeans 帐户的“管理员用户名”和“管理员密码”。 这些值的示例如下：
+5. 在“管理员凭据”部分下，输入 BlueJeans 租户 URL 和机密令牌。 单击“测试连接”，确保 Azure AD 可连接到 BlueJeans。 如果连接失败，请确保 BlueJeans 帐户具有管理员权限，然后重试。
 
-   * 在“管理员用户名”字段中，填入 BlueJeans 租户上管理员帐户的用户名。 示例：admin@contoso.com。
+    ![标记](common/provisioning-testconnection-tenanturltoken.png)
 
-   * 在“管理员密码”字段中，填入管理员用户名所对应的密码。
 
-6. 填入步骤 5 中所示的字段后，请单击“测试连接”以确保 Azure AD 可以连接到 BlueJeans。 如果连接失败，请确保 BlueJeans 帐户具有管理员权限，然后重试。
+6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”   。
 
-    ![调出了“测试连接”选项的“管理员凭据”部分的屏幕截图。](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
+    ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”   。
+7. 单击“ **保存**”。
 
-    ![“通知电子邮件”文本框的屏幕截图。](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
+8. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 BlueJeans”。
 
-8. 单击“ **保存**”。
+9. 在“属性映射”部分中，查看从 Azure AD 同步到 BlueJeans 的用户属性。 选为“匹配”属性的特性用于匹配 BlueJeans 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改  。
 
-9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 BlueJeans”。
+|Attribute|类型|支持筛选|
+|---|---|---|
+|userName|字符串|&check;|
+|活动|Boolean|
+|title|字符串|
+|emails[type eq "work"].value|字符串|
+|name.givenName|字符串|
+|name.familyName|字符串|
+|phoneNumbers[type eq "work"].value|字符串|
+|urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|字符串|
 
-    ![突出显示了“将 Azure Active Directory 用户同步到 BlueJeans”选项的“映射”部分的屏幕截图。](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
+10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-10. 在“属性映射”部分中，查看从 Azure AD 同步到 BlueJeans 的用户属性。 选为“匹配”属性的特性用于匹配 BlueJeans 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改  。
+11. 若要为 BlueJeans 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”。
 
-    ![显示了 7 个映射的“属性映射”部分的屏幕截图。](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
+    ![预配状态已打开](common/provisioning-toggle-on.png)
 
-11. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+12. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 BlueJeans 的用户和/或组。
 
-12. 若要为 BlueJeans 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”。
+    ![预配范围](common/provisioning-scope.png)
 
-    ![将“预配状态”选项设为“开启”的“设置”部分的屏幕截图。](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
+13. 已准备好预配时，单击“保存”  。
 
-13. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 BlueJeans 的用户和/或组。
-
-    ![突出显示了“仅同步分配的用户和组”选项的“范围”设置的屏幕截图。](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
-
-14. 已准备好预配时，单击“保存”  。
-
-    ![调出了“保存”选项的 BlueJeans 企业应用程序边栏的屏幕截图。](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
+    ![保存预配配置](common/provisioning-configuration-save.png)
 
 此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步   。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了 Azure AD 预配服务对 BlueJeans 执行的所有操作。
 
@@ -141,7 +143,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ## <a name="connector-limitations"></a>连接器限制
 
-* Bluejeans 不允许超过 30 个字符的用户名。
+* Bluejeans 禁止使用超过 30 个字符的 userName。
 
 ## <a name="additional-resources"></a>其他资源
 

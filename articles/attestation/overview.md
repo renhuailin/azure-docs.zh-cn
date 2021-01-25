@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 6a587ecbe7ff67908b22d4f2429cfdd0c511e07d
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 0d1b2bd039f3e110c83d7ad4bf32f1e53e4c7a79
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748767"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610142"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure 证明（预览版）
 
@@ -39,6 +39,12 @@ SGX 指硬件级隔离，这只在一些英特尔 CPU 型号上受支持。 SGX 
 [开放式 Enclave](https://openenclave.io/sdk/) (OE) 是一系列库，旨在创建一个统一的 enclaving 抽象，供开发人员生成基于 TEE 的应用程序。 它提供了一个可最大程度降低平台特异性的通用安全应用模型。 Microsoft 将其视为普及基于硬件的 enclave 技术（例如 SGX）和增加它们在 Azure 上的使用的方法。
 
 OE 使 enclave 证据的特定验证要求实现了标准化。 因此，OE 有资格作为非常适合 Azure 证明的证明使用者。
+
+### <a name="tpm-attestation"></a>TPM 证明 
+
+基于受信任的平台模块 (TPM) 的证明对于证明平台状态至关重要。 TPM 用作信任根和安全协处理器，为指标（证据）提供加密有效性。 具有 TPM 的设备可以依靠证明来证明启动完整性未受损害，并且可以使用声明来检测启动期间的功能启用状态。 
+
+客户端应用程序可设计为利用 TPM 认证，方法是将安全敏感的任务指定为仅在验证平台安全后才执行。 这样，此类应用程序就可以利用 Azure 证明定期在平台中建立信任并访问敏感数据。
 
 ## <a name="azure-attestation-can-run-in-a-tee"></a>Azure 证明可以在 TEE 中运行
 

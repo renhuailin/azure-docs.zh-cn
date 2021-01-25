@@ -58,6 +58,8 @@
       href: fqdn-filtering-network-rules.md
     - name: 安全基线
       href: security-baseline.md
+    - name: 主动 FTP 支持
+      href: active-ftp-support.md
 - name: 操作指南
   items:
     - name: 使用 Azure PowerShell 进行部署
@@ -109,7 +111,7 @@
       href: ../azure-resource-manager/management/overview.md
 - name: 资源
   items:
-    - name: 常见问题解答
+    - name: 常见问题
       href: firewall-faq.yml
     - name: 创作模板
       href: ../azure-resource-manager/templates/template-syntax.md

@@ -1,5 +1,6 @@
 ---
-title: 配置用于用户登录的 Web 应用 - Microsoft 标识平台 | Azure
+title: 配置登录用户的 web 应用 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何构建用于登录用户的 Web 应用（代码配置）
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: dad7b0563fd1ca0dbf60403bc6172e7616e278b2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45f3a066283a921f60909a4aa3cfdc76f3faad06
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443647"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753267"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>可将用户登录的 Web 应用：代码配置
 
@@ -202,7 +203,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 ## <a name="initialization-code"></a>初始化代码
 
-初始化代码因平台而异。 对于 ASP.NET Core 和 ASP.NET，用户登录将委托给 OpenID Connect 中间件来完成。 ASP.NET 或 ASP.NET Core 模板可为 Azure Active Directory (Azure AD) v1.0 终结点生成 Web 应用程序。 只需进行一些配置就能使这些应用程序适应 Microsoft 标识平台 (v2.0) 终结点。 对于 Java，初始化由 Spring 在应用程序的配合下进行处理。
+初始化代码因平台而异。 对于 ASP.NET Core 和 ASP.NET，用户登录将委托给 OpenID Connect 中间件来完成。 ASP.NET 或 ASP.NET Core 模板可为 Azure Active Directory (Azure AD) v1.0 终结点生成 Web 应用程序。 需要进行一些配置才能适应 Microsoft 标识平台。 对于 Java，初始化由 Spring 在应用程序的配合下进行处理。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -262,7 +263,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 - `AddMicrosoftIdentityWebAppAuthentication` 扩展方法在 Microsoft.Identity.Web 中进行定义。 该方法：
   - 添加身份验证服务。
   - 配置用于读取配置文件的选项（此处来自“AzureAD”部分）
-  - 配置 OpenID Connect 选项，使颁发机构是 Microsoft 标识平台终结点。
+  - 配置 OpenID Connect 选项，使其成为 Microsoft 标识平台。
   - 验证令牌的颁发者。
   - 确保从 ID 令牌中的 `preferred_username` 声明映射与名称对应的声明。
 
@@ -291,7 +292,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // `Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
+     // Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
      // `Scope` describes the initial permissions that your app will need.
      //  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/.
      ClientId = clientId,
@@ -344,18 +345,18 @@ Session(app)
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-转到此方案中的下一篇文章， [登录和](./scenario-web-app-sign-user-sign-in.md?tabs=aspnetcore)注销。
+转到此方案中的下一篇文章：[登录和注销](./scenario-web-app-sign-user-sign-in.md?tabs=aspnetcore)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-转到此方案中的下一篇文章， [登录和](./scenario-web-app-sign-user-sign-in.md?tabs=aspnet)注销。
+转到此方案中的下一篇文章：[登录和注销](./scenario-web-app-sign-user-sign-in.md?tabs=aspnet)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-转到此方案中的下一篇文章， [登录和](./scenario-web-app-sign-user-sign-in.md?tabs=java)注销。
+转到此方案中的下一篇文章：[登录和注销](./scenario-web-app-sign-user-sign-in.md?tabs=java)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-转到此方案中的下一篇文章， [登录和](./scenario-web-app-sign-user-sign-in.md?tabs=python)注销。
+转到此方案中的下一篇文章：[登录和注销](./scenario-web-app-sign-user-sign-in.md?tabs=python)。
 
 ---

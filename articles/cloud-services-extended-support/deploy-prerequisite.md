@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 45f2b75be9a0090b883c5cc62a0886366e81a302
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 28c7f2c0a61150b2014f669f37ac84ee3a94aebf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744213"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752150"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>部署 Azure 云服务 (扩展支持) 的先决条件
 
@@ -42,12 +42,12 @@ CloudServices           Microsoft.Compute    Registered
 ## <a name="required-service-configuration-cscfg-file-updates"></a>所需的服务配置 ( .cscfg) 文件更新
 
 ### <a name="1-virtual-network"></a>1) 虚拟网络
-云服务 (扩展支持) 部署必须位于虚拟网络中。 可以通过 [Azure 门户](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) [PowerShell](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell)、 [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) 或 [ARM 模板](https://docs.microsoft.com/azure/virtual-network/quick-create-template)创建虚拟网络。 还必须在 "服务配置" ( 中) "部分下引用虚拟网络和子网。 `NetworkConfiguration` 
+云服务 (扩展支持) 部署必须位于虚拟网络中。 可以通过 [Azure 门户](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) [PowerShell](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell)、 [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) 或 [ARM 模板](https://docs.microsoft.com/azure/virtual-network/quick-create-template)创建虚拟网络。 还必须在 [NetworkConfiguration](schema-cscfg-networkconfiguration.md) 节下的服务配置 ( .cscfg) 中引用虚拟网络和子网。 
 
 对于属于与云服务相同资源组的虚拟网络，只引用服务配置 ( .cscfg) 文件中的虚拟网络名称。 如果虚拟网络和云服务位于两个不同的资源组中，则需要在服务配置 ( .cscfg) 文件中指定虚拟网络的完整 Azure 资源管理器 ID。
  
 #### <a name="virtual-network-located-in-same-resource-group"></a>位于同一资源组中的虚拟网络
-```json
+```xml
 <VirtualNetworkSite name="<vnet-name>"/> 
 <AddressAssignments> 
 <InstanceAddress roleName="<role-name>"> 
@@ -58,8 +58,8 @@ CloudServices           Microsoft.Compute    Registered
 ```
 
 #### <a name="virtual-network-located-in-different-resource-group"></a>位于不同资源组中的虚拟网络
-```json
-“/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/> 
+```xml
+<VirtualNetworkSite name="/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>"/> 
 <AddressAssignments> 
 <InstanceAddress roleName="<role-name>"> 
 <Subnets> 

@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 8cef36cf26231758eb839379d0c020484cbe09fb
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e0a7553269e1223a5e744db967d65814877878ab
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132595"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598263"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>计费和成本管理自动化方案
 
@@ -103,7 +103,7 @@ ms.locfileid: "92132595"
 ### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>企业报告 API 与消耗 API 有何区别？ 何时应使用其中的哪一个？
 这些 API 具有类似的功能集，都可以解答计费和成本管理方面的各种相同问题。 不同之处在于，它们面向不同的受众：
 
-- 企业报告 API 适用于与 Microsoft 签署了企业协议、有权访问协商的货币承诺付款和自定义定价的客户。 这些 API 需要密钥，可通过 [Enterprise Portal](https://ea.azure.com) 获取这些密钥。 有关这些 API 的说明，请参阅[面向企业客户的报告 API 概述](enterprise-api.md)。
+- 企业报告 API 适用于与 Microsoft 签署了企业协议、有权访问协商的 Azure 预付款（以前称为货币承诺付款）和自定义定价的客户。 这些 API 需要密钥，可通过 [Enterprise Portal](https://ea.azure.com) 获取这些密钥。 有关这些 API 的说明，请参阅[面向企业客户的报告 API 概述](enterprise-api.md)。
 
 - 消耗 API 适用于所有客户，但存在几种例外情况。 有关详细信息，请参阅 [Azure 消耗 API 概述](consumption-api-overview.md)和 [Azure 消耗 API 参考](/rest/api/consumption/)。 建议将提供的 API 用作最新开发方案的解决方案。
 
@@ -112,7 +112,7 @@ ms.locfileid: "92132595"
 
 - [使用情况详细信息 API](/rest/api/consumption/usagedetails) 提供每个计量实例的 Azure 使用情况和成本信息。 提供的数据已通过 Azure 成本计量系统进行传递，其中已应用费用和其他可能的更改：
 
-   - 用于预付货币承诺款项的帐户的更改
+   - 用于预付 Azure 预付款的帐户的更改
    - Azure 发现的用量差异帐户的更改
 
 - [使用情况 API](/previous-versions/azure/reference/mt219003(v=azure.100)) 提供通过 Azure 成本计量系统传递前的原始 Azure 使用情况信息。 此数据可能与通过 Azure 成本计量系统传递后显示的使用情况或费用金额没有任何关联。

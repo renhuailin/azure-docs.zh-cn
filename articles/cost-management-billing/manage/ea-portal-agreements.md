@@ -3,17 +3,17 @@ title: Azure EA 协议和修正合同
 description: 本文介绍 Azure EA 协议和修订如何影响 Azure EA 门户的使用。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9e6750bd8404b4f9b910dda93859a0ca3fd268d4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c2c3636e98d67616826b03cca9657b806c5bd653
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442524"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598005"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 协议和修正合同
 
@@ -21,7 +21,7 @@ ms.locfileid: "89442524"
 
 ## <a name="enrollment-provisioning-status"></a>注册预配状态
 
-新 Azure 预付款的开始日期按区域运营中心处理该事务的日期定义。 Azure EA 门户中的 Azure 预付款订单是在 UTC 时区中处理的，因此如果在不同的区域处理 Azure 预付款采购订单，可能会遇到延迟。 采购订单中的履行开始日期显示 Azure 预付款的开始日期。 履行开始日期是指在 Azure EA 门户中显示 Azure 预付款的时间。
+新 Azure 预付款（以前称为货币承诺）的开始日期定义为区域运营中心处理该预付款的日期。 Azure EA 门户中的 Azure 预付款订单是在 UTC 时区中处理的，因此如果在不同的区域处理 Azure 预付款采购订单，可能会遇到延迟。 采购订单中的履行开始日期显示 Azure 预付款的开始日期。 履行开始日期是指在 Azure EA 门户中显示 Azure 预付款的时间。
 
 ## <a name="support-for-enterprise-customers"></a>对企业客户的支持
 
@@ -60,7 +60,7 @@ ms.locfileid: "89442524"
 
 ### <a name="how-the-calculation-works"></a>计算原理
 
-LSP 在 EA 门户中提供一个百分数。  门户中的所有商业信息都将受到 LSP 提供的百分数的影响。 示例：
+LSP 在 EA 门户中提供一个百分数。    门户中的所有商业信息都将受到 LSP 提供的百分数的影响。 示例：
 
 - 客户通过 100,000 美元的 Azure 预付款签订了 EA。
 - 服务 A 的计量费率为 10 美元/小时。
@@ -101,13 +101,14 @@ LSP 在 EA 门户中提供一个百分数。  门户中的所有商业信息都
 在客户视图的“使用情况摘要”中查看适用于预付款期的加成价格。 仍可在合作伙伴视图中查看 Microsoft 价格。 可使用右上角的合作伙伴加价“人员”切换开关来切换视图。
 
 1. 查看价目表中的价格。
-1. 发布前在“查看使用情况摘要”>“客户视图”选项卡上选择“编辑”，就能进行更改。 
-  对服务价格和预付款余额应用相同的加价率。 如果对货币余额和计量费率使用不同的加价率，或者为不同服务使用不同的加价率，则不要使用此功能。
+1. 发布前在“查看使用情况摘要”>“客户视图”选项卡上选择“编辑”，就能进行更改。
+   
+对服务价格和预付款余额应用相同的加价率。 如果对货币余额和计量费率使用不同的加价率，或者为不同服务使用不同的加价率，则不要使用此功能。
 
 **第三步： 发布**
 
 查看并验证定价后，单击“发布”。
-  
+  
 选择发布后，企业管理员立即可使用带加价的定价。 无法对编辑加价。 必须禁用加价，然后从第一步重新开始。
 
 ### <a name="which-enrollments-have-a-markup-enabled"></a>哪些合约已启用了加价？

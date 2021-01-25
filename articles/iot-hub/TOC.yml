@@ -481,6 +481,8 @@
           href: iot-hub-migrate-to-diagnostics-settings.md
         - name: TLS 1.0 和 1.1 弃用
           href: iot-hub-tls-deprecating-1-0-and-1-1.md
+        - name: 经典 IP 筛选器
+          href: iot-hub-ip-filter-classic.md
 - name: 资源
   items:
     - name: 支持和帮助选项

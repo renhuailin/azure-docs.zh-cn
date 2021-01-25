@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 989520e079988e1821d8bb9a936f857e1f62c11a
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 5c7491a0e0ba2a3bf604988c613e1fd8937f277d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567769"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752170"
 ---
 # <a name="connect-your-trend-micro-tippingpoint-solution-to-azure-sentinel"></a>将趋势微 TippingPoint 解决方案连接到 Azure Sentinel
 
 > [!IMPORTANT]
 > 走向微 TippingPoint 连接器目前为 **预览版**。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，了解适用于 Azure 功能的其他法律条款，这些功能适用于 beta 版、预览版或其他情况下尚未公开上市。
 
-本文介绍如何将走向微 TippingPoint 威胁防护系统解决方案连接到 Azure Sentinel。 走向微 TippingPoint 数据连接器可让你轻松地将 TippingPoint 安全管理系统与 Azure Sentinel 连接 (SMS) 日志，以便查看工作簿中的数据、使用它创建自定义警报并将其合并以改善调查。 
+本文介绍如何将走向微 TippingPoint 威胁防护系统解决方案连接到 Azure Sentinel。 走向微 TippingPoint 数据连接器可让你轻松地将 TippingPoint 安全管理系统与 Azure Sentinel 连接 (SMS) 日志，以便查看工作簿中的数据、使用它创建自定义警报并将其合并以改善调查。
 
 > [!NOTE]
 > 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
@@ -40,7 +40,7 @@ ms.locfileid: "98567769"
 
 ## <a name="send-trend-micro-tippingpoint-logs-to-azure-sentinel"></a>向 Azure Sentinel 发送走向微 TippingPoint 日志
 
-若要将其日志导入 Azure Sentinel，请将 TippingPoint TPS 解决方案配置为以 CEF 格式将 Syslog 消息发送到运行 rsyslog 或 Syslog-ng)  (基于 Linux 的日志转发服务器。 此服务器上安装了 Log Analytics 代理，代理将日志转发到 Azure Sentinel 工作区。
+若要将其日志导入 Azure Sentinel，请将 TippingPoint TPS 解决方案配置为以 CEF 格式将 Syslog 消息发送到运行 rsyslog 或 Syslog-ng)  (基于 Linux 的日志转发服务器。 此服务器上安装了 Log Analytics 代理，代理将日志转发到 Azure Sentinel 工作区。 连接器使用分析器函数将其接收的数据转换为规范化的架构。 
 
 1. 在 Azure Sentinel 导航菜单中，选择 " **数据连接器**"。
 
@@ -64,11 +64,11 @@ ms.locfileid: "98567769"
 
 成功建立连接后，数据将显示在 "**日志**" 的 " *CommonSecurityLog* " 表中的 " **Azure Sentinel** " 部分下。
 
-若要在 Log Analytics 中查询 TrendMicro TippingPoint 数据，请将以下内容复制到查询窗口中，并在选择时应用其他筛选器：
+若要获取 Log Analytics 中的走向微 TippingPoint 数据，请查询分析器函数而不是表。 将以下内容复制到查询窗口，并在选择时应用其他筛选器：
 
 ```kusto
-CommonSecurityLog 
-| where DeviceVendor == "TrendMicroTippingPoint"
+TrendMicroTippingPoint
+| sort by TimeGenerated
 ```
 
 有关更多查询示例，请参阅连接器页中的 " **后续步骤** " 选项卡。
@@ -76,6 +76,7 @@ CommonSecurityLog
 ## <a name="next-steps"></a>后续步骤
 
 本文档介绍了如何将走向微 TippingPoint 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
+
 - 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
 - [使用工作簿](tutorial-monitor-your-data.md)监视数据。

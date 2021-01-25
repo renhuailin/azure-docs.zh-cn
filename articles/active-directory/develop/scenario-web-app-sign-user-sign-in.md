@@ -1,5 +1,6 @@
 ---
-title: 编写可使用户登录/注销用户的 Web 应用 - Microsoft 标识平台 | Azure
+title: 编写用于登录/注销用户的 web 应用 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何生成可使用户登录/注销用户的 Web 应用
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e7397f6d02d71a6344953b8210b0349b9ee26360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b0b86321f7f2b320c3fea8e7c5bfa45bd936b77
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443545"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752994"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>用于登录用户的 Web 应用：登录和注销
 
@@ -213,7 +214,7 @@ def _get_token_from_cache(scope=None):
 从 Web 应用注销不仅仅涉及到从 Web 应用的状态中删除有关已登录帐户的信息。
 该 Web 应用还必须将用户重定向到 Microsoft 标识平台 `logout` 终结点才能注销。
 
-当 Web 应用将用户重定向到 `logout` 终结点时，此终结点将从浏览器中清除用户的会话。 如果应用尚未进入 `logout` 终结点，则用户不需要再次输入凭据就能重新通过应用的身份验证。 原因是他们与 Microsoft 标识平台终结点之间建立了有效的单一登录会话。
+当 Web 应用将用户重定向到 `logout` 终结点时，此终结点将从浏览器中清除用户的会话。 如果应用尚未进入 `logout` 终结点，则用户不需要再次输入凭据就能重新通过应用的身份验证。 原因是它们将具有 Microsoft 标识平台的有效单一登录会话。
 
 有关详细信息，请参阅 [Microsoft 标识平台和 OpenID Connect 协议](v2-protocols-oidc.md)文档中的[发送注销请求](v2-protocols-oidc.md#send-a-sign-out-request)部分。
 
@@ -432,4 +433,4 @@ public class AccountController : Controller
 
 ## <a name="next-steps"></a>后续步骤
 
-转到本方案中的下一篇文章， [转到 "生产](scenario-web-app-sign-user-production.md)"。
+转到此方案中的下一篇文章：[转向生产](scenario-web-app-sign-user-production.md)。

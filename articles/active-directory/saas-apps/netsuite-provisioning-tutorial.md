@@ -10,21 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a5b995fd273fcfa231e101bc77b11d268be728fb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359129"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696483"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>教程：为 NetSuite 配置自动用户预配
 
 本教程旨在介绍为从 Azure AD 自动将用户帐户预配到 NetSuite 以及取消其预配而需要在 NetSuite OneWorld 和 Azure AD 中执行的步骤。
 
-> [!NOTE]
-> 此集成目前使用基础身份验证（用户名和密码）进行身份验证。 NetSuite 实施了多重身份验证要求，可阻止客户使用此集成，除非他们可以豁免而不必遵循此要求。 我们正在处理 NetSuite，将此集成更新为较新的身份验证方法，以使没有豁免的客户能再次使用它。 新方法可用后，我们将通过 ETA 更新此文档。
-
-建议的操作：请等到我们发布此集成的身份验证行为更新，或联系 NetSuite 支持部门以咨询多重身份验证要求的豁免信息。
+> [!WARNING]
+> 由于 Microsoft 用来将用户预配到 NetSuite 的 NetSuite API 出现更改，此预配集成将在 2020 年 2 月停止工作。 结果是，Azure Active Directory 企业应用库中 NetSuite 应用程序的预配功能很快就会被删除。 应用程序的 SSO 功能将保持不变。 Microsoft 正在与 NetSuite 合作来构建一种新的现代化预配集成，但在这完成之前，目前没有启用 ETA。
 
 ## <a name="prerequisites"></a>先决条件
 

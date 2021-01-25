@@ -1,5 +1,6 @@
 ---
-title: 按受支持帐户类型列出的验证差异 - Microsoft 标识平台 | Azure
+title: 按支持的帐户类型的验证差异 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解向 Microsoft 标识平台注册应用时，不同受支持帐户类型的各种属性的验证差异。
 author: SureshJa
 ms.author: sureshja
@@ -10,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: e794e277f6731c7b6e57a4710eea437f65be0340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77521150e73014c5568003597059a9d32f6e80ee
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87336338"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752969"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>按受支持帐户类型列出的验证差异 (signInAudience)
 
@@ -27,7 +28,7 @@ ms.locfileid: "87336338"
 - *AzureADMultipleOrgs*：任何组织目录中的帐户（多租户）
 - *AzureADandPersonalMicrosoftAccount*：任何组织目录中的帐户 (多租户) 和个人 Microsoft 帐户 (例如，Skype、Xbox 和 Outlook.com) 
 
-对于已注册的应用程序，可以在应用程序的“身份验证”  部分找到受支持帐户类型值。 也可以在**清单**中的 `signInAudience` 属性下找到它。
+对于已注册的应用程序，可以在应用程序的“身份验证”  部分找到受支持帐户类型值。 也可以在 **清单** 中的 `signInAudience` 属性下找到它。
 
 为此属性选择的值已影响其他应用对象属性。 因此，如果更改此属性，则可能需要先更改其他属性。
 

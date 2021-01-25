@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4a888c3ad771e4a7edbd7110ba584050fe68e810
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: b8360a22c815fa28626bb07a1518bd82ba6e3e46
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443783"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753508"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web API：代码配置
 
@@ -256,4 +256,4 @@ Python Web API 需要使用一些中间件来验证从客户端接收的持有�
 
 ## <a name="next-steps"></a>后续步骤
 
-转到此方案中的下一篇文章， [获取该应用的令牌](scenario-web-api-call-api-acquire-token.md)。
+转到此方案中的下一篇文章：[获取应用的令牌](scenario-web-api-call-api-acquire-token.md)。

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2021
+ms.date: 01/18/2021
 ms.author: memildin
-ms.openlocfilehash: 0656000a1d6449306e8afe538f846c55c79a31a2
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ba9a640c2231c7098e58ad6e29bbfa196436a7f9
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915280"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562312"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -31,8 +31,37 @@ ms.locfileid: "97915280"
 
 ## <a name="planned-changes"></a>计划的更改
 
+- [“应用系统更新”安全控制中的两项建议将被弃用](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
+- [SQL 数据分类建议的增强](#enhancements-to-sql-data-classification-recommendation)
 - [在 Azure Policy 评估中将“不适用”资源报告为“合规”](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
 - [添加了 35 条预览建议，以扩大 Azure 安全基准的覆盖范围](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
+
+
+### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>“应用系统更新”安全控制中的两项建议将被弃用 
+
+**预计更改日期：** 2021 年 2 月
+
+以下两项建议计划在 2021 年 2 月弃用：
+
+- **应重启计算机来应用系统更新**。 这可能会对安全功能分数造成轻微影响。
+- **应在计算机上安装监视代理**。 此建议仅与本地计算机相关，其中某些逻辑将转移到另一个建议“应在计算机上解决 Log Analytics 代理运行状况问题”。 这可能会对安全功能分数造成轻微影响。
+
+建议检查连续导出和工作流自动化配置，以查看这些建议是否包括在其中。 此外，任何仪表板或其他可能使用它们的监视工具都应该相应地进行更新。
+
+有关这些建议的详细信息，请参阅[安全建议参考页面](recommendations-reference.md)。
+
+
+### <a name="enhancements-to-sql-data-classification-recommendation"></a>SQL 数据分类建议的增强
+
+**预计更改日期：** 2021 年第 2 季度
+
+“应用数据分类”安全控制中“应对 SQL 数据库中的敏感数据进行分类”建议的当前版本将被弃用，并替换为更符合 Microsoft 的数据分类策略的新版本 。 因此：
+
+- 该建议将不再影响安全功能分数
+- 安全控制（“应用数据分类”）将不再影响安全功能分数
+- 建议的 ID 也将更改（当前为 b0df6f56-862d-4730-8597-38c0fd4ebd59）
+
+
 
 ### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>在 Azure Policy 评估中将“不适用”资源报告为“合规”
 

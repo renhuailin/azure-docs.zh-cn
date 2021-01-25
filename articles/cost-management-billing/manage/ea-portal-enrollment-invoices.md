@@ -3,18 +3,18 @@ title: Azure Enterprise 注册发票
 description: 本文介绍如何管理和处理 Azure 企业发票。
 author: bandersmsft
 ms.author: banders
-ms.date: 12/09/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c64127f7ebbb416d9dfebb5e417cd27d51697665
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030716"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598081"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Enterprise 注册发票
 
@@ -238,7 +238,7 @@ Microsoft 每年在注册生效日期对 Microsoft Azure 服务的任何预付�
 
 ### <a name="enterprise-agreement-units-of-measure"></a>企业协议度量单位
 
-企业协议的度量单位通常不同于其他计划，例如 Microsoft Online Services 协议计划 (MOSA)。 这种区分意味着，对于许多服务而言，合计度量单位是为了提供规范化的定价。 Azure Enterprise 门户的“使用情况摘要”视图中显示的度量单位始终为 Enterprise 度量。 [友好服务名称](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) Excel 文件中提供了每项服务的当前度量单位和换算的完整列表。
+企业协议的度量单位通常不同于其他计划，例如 Microsoft Online Services 协议计划 (MOSA)。 这种区分意味着，对于许多服务而言，合计度量单位是为了提供规范化的定价。 Azure Enterprise 门户的“使用情况摘要”视图中显示的度量单位始终为 Enterprise 度量。 通过提交[支持请求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，可提供每项服务的当前度量单位和换算的完整列表。
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>使用情况详细信息报表与使用情况摘要页之间的转换
 
@@ -324,13 +324,6 @@ Azure 预付款是提前为 Azure 服务支付的金额。 使用服务时会消
 发票将在计费周期结束后的一个月发出。 如果按月计费，则会在 10 月为两个合作伙伴发出 9 月份的发票。 如果计费周期为一季或一年，则客户应收到一份针对上一个关联合作伙伴的使用情况的发票，以及其余针对新合作伙伴使用情况的发票，收到发票的时间取决于计费频率。
 
 ## <a name="next-steps"></a>后续步骤
-
-- 以下 Excel 文件提供了有关 Azure 服务的详细信息，并会在每个月的 6 日和 20 日更新：
-
-   | 标题 | 说明 | 文件名 |
-   | --- | --- | --- |
-   | [友好服务名称](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | 列出所有有效服务，包括： <br>  <ul><li>服务类别</li>   <li>友好服务名称</li>   <li>预付款名称和构成部分编号</li> <li>消耗计划名称和构成部分编号</li>   <li>度量单位</li>   <li>报告的用量与显示的 Enterprise 门户用量之间的转换系数</li></ul> | Friendly\_Service\_Names.xlsx |
-   | [服务下载字段](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | 此电子表格提供使用情况下载报表中服务相关字段的所有可能的组合的一览。 | Service\_Download\_Fields.xlsx |
 
 - 有关发票和费用的信息，请参阅[了解 Azure 企业协议帐单](../understand/review-enterprise-agreement-bill.md)。
 - 若要开始使用 Azure Enterprise 门户，请参阅 [Azure EA 门户入门](ea-portal-get-started.md)。

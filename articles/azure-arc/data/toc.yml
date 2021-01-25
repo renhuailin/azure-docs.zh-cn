@@ -50,6 +50,8 @@
           href: create-data-controller-using-azdata.md
         - name: Kubernetes 工具
           href: create-data-controller-using-kubernetes-native-tools.md
+        - name: 应用 SCC (OpenShift)
+          href: how-to-apply-security-context-constraint.md
     - name: 在已启用 Azure Arc 的数据服务中的常见体验
       items:
         - name: 使用仪表板进行监视 (Azure Data Studio)
@@ -233,4 +235,4 @@
 - name: 资源
   items:
     - name: Azure Arc 快速入门
-      href: 'https://github.com/microsoft/azure_arc'
+      href: 'https://azurearcjumpstart.io'

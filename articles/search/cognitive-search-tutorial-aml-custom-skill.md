@@ -1,23 +1,23 @@
 ---
-title: 教程：使用 Azure 机器学习创建和部署自定义技能
+title: 示例：使用 Azure 机器学习创建和部署自定义技能
 titleSuffix: Azure Cognitive Search
-description: 本教程演示如何使用 Azure 机器学习为 Azure 认知搜索的 AI 扩充管道构建和部署自定义技能。
+description: 本示例演示如何使用 Azure 机器学习为 Azure 认知搜索的 AI 扩充管道构建和部署自定义技能。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: fa961a5a6d3a3b827a082fbac2acc3431ac40949
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057597"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745628"
 ---
-# <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>教程：使用 Azure 机器学习构建和部署自定义技能 
+# <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>示例：使用 Azure 机器学习构建和部署自定义技能 
 
-在本教程中，你将使用[酒店评论数据集](https://www.kaggle.com/datafiniti/hotel-reviews)（在 Creative Commons 许可证 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt) 下分发）通过 Azure 机器学习创建[自定义技能](./cognitive-search-aml-skill.md)，以从评论中提取基于方面的情绪。 这样一来，就可以将同一评论中的正面和负面情绪正确归因于已标识的实体，例如员工、客房、大厅或游泳池。
+在本示例中，你将使用[酒店评论数据集](https://www.kaggle.com/datafiniti/hotel-reviews)（在 Creative Commons 许可证 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt) 下分发）通过 Azure 机器学习创建[自定义技能](./cognitive-search-aml-skill.md)，以从评论中提取基于方面的情绪。 这样一来，就可以将同一评论中的正面和负面情绪正确归因于已标识的实体，例如员工、客房、大厅或游泳池。
 
 为了在 Azure 机器学习中训练基于方面的情绪模型，你将使用 [nlp recipes 存储库](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)。 然后，你会将该模型部署为 Azure Kubernetes 群集上的终结点。 部署后，该终结点将作为 AML 技能添加到扩充管道中，供认知搜索服务使用。
 

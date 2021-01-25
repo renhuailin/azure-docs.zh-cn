@@ -8,14 +8,14 @@ tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/13/2021
 ms.author: banders
-ms.openlocfilehash: 2983f870d6ab20dac4da487ba03ebf84905f8dcc
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 8117f3ca70f51f2d9b11c479803ac33b49f416e7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680309"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540040"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>如何支付 Microsoft Azure 帐单
 
@@ -24,6 +24,8 @@ ms.locfileid: "97680309"
 [检查对 Microsoft 客户协议的访问权限](#check-access-to-a-microsoft-customer-agreement)。
 
 可通过两种方式支付 Azure 帐单。 可使用计费对象信息的默认付款方式进行支付，也可使用名为“立即付款”的一次性支付。
+
+如果你已通过 Microsoft 代表注册了 Azure，则默认付款方式将始终设置为“支票或电汇”。
 
 如果你有 Azure 赠金，这些赠金将在每个计费周期自动应用于你的帐单。
 

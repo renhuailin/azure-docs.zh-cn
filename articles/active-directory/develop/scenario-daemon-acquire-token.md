@@ -1,5 +1,5 @@
 ---
-title: 获取用于调用 Web API（守护程序应用）的令牌 - Microsoft 标识平台 | Azure
+title: 获取用于调用 web API 的令牌 (后台应用) -Microsoft 标识平台 |Microsoft
 description: 了解如何构建调用 Web API 的守护程序应用（获取令牌）
 services: active-directory
 author: jmprieur
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9416005c708cafe5adbad2b09ce70c41fae66fd7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 295897be03a7dd8e397e8202ff1cf10e6d59cdfb
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936016"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753872"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>用于调用 Web API 的守护程序应用 - 获取令牌
 
@@ -231,9 +231,9 @@ Content: {
 
 ### <a name="are-you-calling-your-own-api"></a>是否在调用自己的 API？
 
-如果调用你自己的 web API，但无法将应用权限添加到后台应用程序的应用注册中，你是否在 web API 中公开了应用角色？
+如果你调用自己的 Web API，并且无法向守护程序应用的应用注册添加应用权限，则你是否公开了 Web API 中的应用角色？
 
-有关详细信息，请参阅 [公开应用程序权限 (应用角色) ](scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles) 和（尤其 [是确保 Azure AD 只向允许的客户端颁发 web API 的令牌](scenario-protected-web-api-app-registration.md#ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients)）。
+有关详细信息，请参阅[公开应用程序权限（应用角色）](scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles)，尤其是[确保 Azure AD 仅向允许的客户端颁发 Web API 的令牌](scenario-protected-web-api-app-registration.md#ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients)。
 
 ## <a name="next-steps"></a>后续步骤
 

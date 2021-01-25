@@ -1,5 +1,6 @@
 ---
-title: 调用 Web API 的 Web API - Microsoft 标识平台 | Azure
+title: 用于调用 web Api 的 web API |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 Web API 的 Web API。
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b8eb737752741dc55da24ad6b605b081053b8a11
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2c69cea7055476bcc4c4a28cea0a0cf8c8f66f88
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443695"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753463"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>调用 Web API 的 Web API：调用 API
 
@@ -117,7 +118,7 @@ ms.locfileid: "94443695"
 
 #### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>选项 3：在不使用帮助程序类的情况下调用下游 Web API
 
-如果已决定使用 `ITokenAcquisition` 服务手动获取令牌，现在需要使用令牌。 在这种情况下，以下代码继续演示[调用 Web API 的 Web API：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)中显示的示例代码。 该代码在 API 控制器的操作中调用。 它调用下游 API（名为 *todolist* ）。
+如果已决定使用 `ITokenAcquisition` 服务手动获取令牌，现在需要使用令牌。 在这种情况下，以下代码继续演示[调用 Web API 的 Web API：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)中显示的示例代码。 该代码在 API 控制器的操作中调用。 它调用下游 API（名为 *todolist*）。
 
  获取令牌后，将其用作持有者令牌以调用下游 API。
 
@@ -164,4 +165,4 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 
 ## <a name="next-steps"></a>后续步骤
 
-转到本方案中的下一篇文章， [转到 "生产](scenario-web-api-call-api-production.md)"。
+转到此方案中的下一篇文章：[转向生产](scenario-web-api-call-api-production.md)。

@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: feb7be6ad5dbd0dfbd04b05836842d0476780d40
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: fb463d80e8cb980505df825d6f22d75f8a5c5f5a
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151536"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599197"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>通过预留容量节省 Azure 独立应用服务印花费
 
@@ -48,7 +48,7 @@ ms.locfileid: "92151536"
 
 1. 转到 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D)。
 1. 选择一个订阅。 使用“订阅”列表，选择用于支付预留容量费用的订阅。  将向订阅的付款方式收取预留容量的费用。 订阅类型必须为企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P），或即用即付（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）或 CSP 订阅。
-    - 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。
+    - 对于企业订阅，从注册的 Azure 预付款（以前称为货币承诺）余额中扣除费用或按超额收取费用。
     - 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。
 1. 选择“范围”，以便选择订阅范围。 
     - **单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。

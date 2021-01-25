@@ -1,23 +1,25 @@
 ---
 title: 按发票为 Azure 订阅付款
-description: 了解如何按发票为 Azure 订阅付款。 请参阅常见问题解答并查看其他资源。
+description: 了解如何按发票为 Azure 订阅付款。 请参阅常见问题解答以查看详细信息。
 author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/13/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 028f5898c995463df502b314682b6cf054ff288f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a5c95ca2e1fbe00f410c0a5015f8ce695783b27b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028846"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538201"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按发票为 Azure 订阅付款
+
+本文适用于通过 Azure 网站注册 Azure 且签订了 Microsoft 客户协议 (MCA) 的客户。 [检查对 Microsoft 客户协议的访问权限](#check-access-to-a-microsoft-customer-agreement)。 如果你已通过 Microsoft 代表注册了 Azure，则默认付款方式已设置为“支票或电汇”。
 
 如果切换到按发票付款，这意味着需要在开票日期后的 30 天内以支票/电汇方式支付账单费用。 必须向 Azure 支持部门提交请求，才能按发票支付 Azure 订阅费用。 请求获批后，可以在 Azure 门户中切换到发票付款（支票/电汇）。
 
@@ -28,49 +30,37 @@ ms.locfileid: "97028846"
 
 ## <a name="request-to-pay-by-invoice"></a>请求按发票付款
 
-1. 若要提交支持请求，请转到 Azure 门户。 搜索并选择“帮助 + 支持”。
-
+1. 要提交支持请求，请登录到 Azure 门户。 搜索并选择“帮助 + 支持”。  
     ![搜索“帮助和支持”、Microsoft Azure 门户](./media/pay-by-invoice/search-for-help-and-support.png)
-
-2. 选择“新建支持请求”。
-
+1. 选择“新建支持请求”。  
     ![“新建支持请求”链接、“帮助和支持”屏幕、Microsoft Azure 门户](./media/pay-by-invoice/help-and-support.png)
-
-2. 选择“计费”作为“问题类型”。  问题类型是支持请求类别。 选择要按发票付款的订阅，选择支持计划，然后选择“下一步”。
-
-3. 选择“付款”作为“问题类型”。  问题类型是支持请求子类别。
-
-4. 选择“切换到按发票付款”作为“问题子类型” 。
-
-5. 在“详细信息”框中输入以下信息，并选择“下一步”。
-
-     新客户或现有客户：<br>
-     如果是现有客户，当前付款方式为：<br>
-     订单 ID（请求发票选项）：<br>
-     帐户管理员 Live ID（或组织 ID）（应为公司域）：<br>
-     商务帐户 ID：<br>
-     公司名称（与在 VAT 或政府网站上注册的相同）：<br>
-     公司地址（与在 VAT 或政府网站上注册的相同）：<br>
-     公司网站：<br>
-     国家/地区：<br>
-     税务 ID/增值税 ID：<br>
-     公司成立时间（年）：<br>
-     以前是否与 Microsoft 有业务往来：<br>
-     联系人姓名：<br>
-     联系人电话：<br>
-     联系人电子邮件：<br>
-     你更青睐于发票选项而非信用卡的理由：<br>
-
-     对于核心增加情况，请提供以下附加信息：<br>
-
-     （旧配额）现有核心数：<br>
-     （新配额）请求的核心数：<br>
-     特定区域和系列的订阅：<br>
-
+1. 选择“计费”作为“问题类型”。  问题类型是支持请求类别。 选择要按发票付款的订阅，选择支持计划，然后选择“下一步”。
+1. 选择“付款”作为“问题类型”。  问题类型是支持请求子类别。
+1. 选择“切换到按发票付款”作为“问题子类型” 。
+1. 在“详细信息”框中输入以下信息，并选择“下一步”。
+    - 新客户或现有客户：
+    - 如果是现有客户，当前付款方式为：
+    - 订单 ID（请求发票选项）：
+    - 帐户管理员 Live ID（或组织 ID）（应为公司域）：
+    - 商务帐户 ID：
+    - 公司名称（与在 VAT 或政府网站上注册的相同）：
+    - 公司地址（与在 VAT 或政府网站上注册的相同）：
+    - 公司网站：
+    - 国家/地区：
+    - 税务 ID/增值税 ID：
+    - 公司成立时间（年）：
+    - 以前是否与 Microsoft 有业务往来：
+    - 联系人姓名：
+    - 联系人电话：
+    - 联系人电子邮件：
+    - 有关为何需要发票选项而不是信用卡的理由：
+    - 对于核心增加情况，请提供以下附加信息：
+        - （旧配额）现有核心数：
+        - （新配额）请求的核心数：
+        - 特定区域和系列的订阅：
     - “公司名称”和“公司地址”应与你为 Azure 帐户提供的信息匹配。  若要查看或更新信息，请参阅[更改 Azure 帐户个人资料信息](change-azure-account-profile.md)。
     - 请在 Azure 门户中添加计费联系人信息，然后额度限制才会获得批准。 联系人详细信息应该与公司的应付账款或财务部门相关。
-
-6. 验证联系人信息和首选联系方法，并选择“创建”。
+1. 验证联系人信息和首选联系方法，并选择“创建”。
 
 如果由于所需的信用额度，我们需要运行信用检查，我们会发送给你信用检查应用程序。 我们可能会要求你提供经过审核的公司财务报表。 如果未提供任何财务信息，或者这些信息不足以支持所需的信用额度，我们可能会要求你提供保证金或备用信用证，以批准你的信用检查请求。
 
@@ -84,14 +74,11 @@ ms.locfileid: "97028846"
 
 执行以下步骤，将 Azure 订阅切换为发票付款（支票/电汇）。 *切换为按发票付款（支票/电汇）后，无法切换回信用卡付款*。
 
-1. 转到 Azure 门户，以帐户管理员身份登录。 搜索并选择“成本管理 + 计费”。
-
+1. 转到 Azure 门户，以帐户管理员身份登录。 搜索并选择“成本管理 + 计费”。  
     ![屏幕截图显示在 Azure 门户中搜索“成本管理 + 计费”。](./media/pay-by-invoice/search.png)
-
 1. 选择要切换为发票付款的订阅。
 1. 选择“付款方式”。
-1. 在命令栏中，选择“按发票付款”按钮。
-
+1. 在命令栏中，选择“按发票付款”按钮。  
     ![“按发票付款”按钮、付款方式、Microsoft Azure 门户](./media/pay-by-invoice/pay-by-invoice.png)
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>将计费对象信息切换为支票/电汇
@@ -99,17 +86,12 @@ ms.locfileid: "97028846"
 执行以下步骤，将计费对象信息切换为支票/电汇。 只有注册 Azure 的人才能更改计费对象信息的默认付款方式。
 
 1. 转到 Azure 门户，查看计费信息。 搜索并选择“成本管理 + 计费”。
-1. 在菜单中，选择“计费对象信息”。
-
+1. 在菜单中，选择“计费对象信息”。  
     ![计费对象信息菜单项、成本管理和计费、Microsoft Azure 门户](./media/pay-by-invoice/billing-profile.png)
-
 1. 选择计费对象信息。
-1. 在“计费对象信息”菜单中，选择“付款方式”。
-
+1. 在“计费对象信息”菜单中，选择“付款方式”。  
    ![付款方式菜单项、计费对象信息、成本管理、Microsoft Azure 门户](./media/pay-by-invoice/billing-profile-payment-methods.png)
-
-1. 选择指出你有资格用支票/电汇付款的横幅。
-
+1. 选择指出你有资格用支票/电汇付款的横幅。  
     ![用于切换到支票/电汇的横幅、付款方式、Microsoft Azure 门户](./media/pay-by-invoice/customer-led-switch-to-invoice.png)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限

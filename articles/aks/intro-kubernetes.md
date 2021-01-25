@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 75f4602be15ef2487272ed5790d92c4c884c551f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4115ab2140cd3bf67135e494e16fb8121c040ff6
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681544"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246190"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
@@ -58,7 +58,7 @@ Azure Kubernetes 服务提供多个 Kubernetes 版本。 新版本在 AKS 中可
 
 若要详细了解生命周期版本，请参阅 [AKS 中支持的 Kubernetes 版本][aks-supported versions]。 有关升级步骤，请参阅[升级 Azure Kubernetes 服务 (AKS) 群集][aks-upgrade]。
 
-### <a name="gpu-enabled-nodes"></a>启用 GPU 的节点
+### <a name="gpu-enabled-nodes"></a>启用了 GPU 的节点
 
 AKS 支持创建启用了 GPU 的节点池。 Azure 目前提供单个或多个启用了 GPU 的 VM。 启用了 GPU 的 VM 是针对计算密集型、图形密集型和可视化工作负荷设计的。
 
@@ -66,9 +66,9 @@ AKS 支持创建启用了 GPU 的节点池。 Azure 目前提供单个或多个�
 
 ### <a name="confidential-computing-nodes-public-preview"></a>机密计算节点（公共预览版）
 
-AKS 支持创建基于 Intel SGX 的机密计算节点池 (DCSv2 VM)。 机密计算节点允许容器在基于硬件的受信任隔离执行环境 (enclave) 中运行。 通过证明合并代码完整性的容器之间的隔离可提供深层防御容器安全策略方面的帮助。 机密计算节点支持机密容器（现有 docker 应用）和 enclave 感知容器。
+AKS 支持创建基于 Intel SGX 的机密计算节点池 (DCSv2 VM)。 机密计算节点允许容器在基于硬件的受信任执行环境 (enclave) 中运行。 通过证明合并代码完整性的容器之间的隔离可提供深层防御容器安全策略方面的帮助。 机密计算节点支持机密容器（现有 docker 应用）和 enclave 感知容器。
 
-有关详细信息，请参阅 [AKS 上的机密计算节点][conf-com-node]
+有关详细信息，请参阅 [AKS 上的机密计算节点][conf-com-node]。
 
 ### <a name="storage-volume-support"></a>存储卷支持
 
@@ -80,7 +80,7 @@ AKS 支持创建基于 Intel SGX 的机密计算节点池 (DCSv2 VM)。 机密�
 
 ## <a name="virtual-networks-and-ingress"></a>虚拟网络和入口
 
-AKS 群集可以部署到现有的虚拟网络中。 在此配置中，群集中的每个 Pod 在虚拟网络中分配有一个 IP 地址，并可直接与群集中的其他 Pod 以及虚拟网络中的其他节点通信。 Pod 也可通过 ExpressRoute 或站点到站点 (S2S) VPN 连接与对等互连虚拟网络中的其他服务和本地网络建立连接。
+AKS 群集可以部署到现有的虚拟网络中。 在此配置中，群集中的每个 Pod 在虚拟网络中分配有一个 IP 地址，并可直接与群集中的其他 Pod 以及虚拟网络中的其他节点通信。 Pod 还可以连接到对等互连虚拟网络中的其他服务，通过 ExpressRoute 或站点到站点 (S2S) VPN 连接连接到本地网络。
 
 有关详细信息，请参阅 [AKS 中应用程序的网络概念][aks-networking]。
 
@@ -98,15 +98,15 @@ Kubernetes 有丰富的生态系统，其中包含各种开发和管理工具，
 
 另外，Azure Dev Spaces 为团队提供快速、迭代的 Kubernetes 开发体验。 只需最少的配置，即可直接在 AKS 中运行和调试容器。 若要开始使用，请参阅 [Azure Dev Spaces][azure-dev-spaces]。
 
-Azure DevOps 项目允许通过简单的解决方案将现有的代码和 Git 存储库带到 Azure 中。 DevOps 项目自动创建 Azure 资源（例如 AKS，Azure DevOps Services 中的一种发布管道，其中包括用于 CI 的生成管道），为 CD 设置发布管道，然后创建适用于监视的 Azure Application Insights 资源。
+DevOps Starter 提供简单的解决方案，用于将现有代码和 Git 存储库带到 Azure 中。 DevOps Starter 自动创建 Azure 资源（例如 AKS，Azure DevOps Services 中的一种发布管道，其中包括用于 CI 的生成管道），为 CD 设置发布管道，然后创建适用于监视的 Azure Application Insights 资源。
 
-有关详细信息，请参阅 [Azure DevOps 项目][azure-devops]。
+有关详细信息，请参阅 [DevOps Starter][azure-devops]。
 
 ## <a name="docker-image-support-and-private-container-registry"></a>Docker 映像支持和专用容器注册表
 
 AKS 支持 Docker 映像格式。 若要对 Docker 映像进行专用存储，可以将 AKS 与 Azure 容器注册表 (ACR) 集成。
 
-若要创建专用映像存储，请参阅 [Azure 容器注册表][acr-docs]。
+要创建专用映像存储，请参阅 [Azure 容器注册表][acr-docs]。
 
 ## <a name="kubernetes-certification"></a>Kubernetes 认证
 

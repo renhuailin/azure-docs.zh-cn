@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: d1546ef92d923b9d72c4aca0ddf61d2b93646656
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131898"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602345"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>通过成本警报监视使用情况和支出
 
@@ -29,7 +29,7 @@ ms.locfileid: "92131898"
 
 ## <a name="credit-alerts"></a>额度警报
 
-额度警报会在使用 Azure 额度货币承诺时通知你。 货币承诺适用于具有企业协议的组织。 在使用 90% 和 100% 的 Azure 额度余额时，会自动生成额度警报。 每当生成警报时，它都会反映在成本警报和发送给帐户所有者的电子邮件中。
+使用 Azure 预付款（以前称为货币承诺）时，信用警报会通知你。 Azure 预付款适用于签署了企业协议的组织。 当 Azure 预付款额度余额使用了 90% 和 100% 时，会自动生成额度警报。 每当生成警报时，它都会反映在成本警报和发送给帐户所有者的电子邮件中。
 
 ## <a name="department-spending-quota-alerts"></a>部门支出配额警报
 

@@ -3,12 +3,12 @@ title: Azure Batch 在云中运行大型并行作业
 description: 了解如何使用 Azure Batch 服务执行大规模并发工作负荷与 HPC 工作负荷
 ms.topic: overview
 ms.date: 07/30/2020
-ms.openlocfilehash: 93dcf19b3b6af0f369fe19b7823bf43d597a9c21
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106642"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743094"
 ---
 # <a name="what-is-azure-batch"></a>什么是 Azure Batch？
 
@@ -74,6 +74,9 @@ Batch 的常用方案涉及在计算节点池中横向扩展本质并行工作�
 请记住，上述工作流只是使用 Batch 的其中一种方式，还有许多其他功能和选项。 例如，可以在每个计算节点上执行[多个并行任务](batch-parallel-node-tasks.md)。 或者，也可使用[作业准备和完成任务](batch-job-prep-release.md)为作业准备节点，用完后进行清理。
 
 有关池、节点、作业和任务等功能的概述，请参阅 [Batch 服务工作流和资源](batch-service-workflow-features.md)。 另请参阅最新的 [Batch 服务更新](https://azure.microsoft.com/updates/?product=batch)。
+
+## <a name="in-region-data-residency"></a>区域内数据驻留
+Azure Batch 不会将客户数据移出部署它的区域，也不会将其存储在该区域之外。 
 
 ## <a name="next-steps"></a>后续步骤
 

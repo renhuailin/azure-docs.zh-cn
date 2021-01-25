@@ -258,8 +258,49 @@
               href: job-error-codes.md
         - name: 重置帐户凭据
           href: cli-reset-account-credentials.md
-    - name: 从 v2 迁移到 v3
+    - name: 迁移指南
+      displayName: migration
       items:
+        - name: 迁移指南简介
+          href: migrate-v-2-v-3-migration-introduction.md
+          displayName: migration
+        - name: 步骤 1 - 优势
+          href: migrate-v-2-v-3-migration-benefits.md
+          displayName: 'migration, benefits'
+        - name: 步骤 2 - 区别
+          items:
+            - name: API 访问
+              href: migrate-v-2-v-3-differences-api-access.md
+              displayName: 'migration, api'
+            - name: 功能差异
+              href: migrate-v-2-v-3-differences-feature-gaps.md
+              displayName: 'migration, features'
+            - name: 术语和实体更改
+              href: migrate-v-2-v-3-differences-terminology.md
+              displayName: 'migration, entity, api'
+        - name: 步骤 3 - SDK 设置
+          href: migrate-v-2-v-3-migration-setup.md
+          displayName: 'migration, SDK`'
+        - name: 步骤 4 - 基于方案的迁移指南
+          items:
+            - name: 编码
+              href: migrate-v-2-v-3-migration-scenario-based-encoding.md
+              displayName: 'migration, encoding'
+            - name: 实时传送视频流
+              href: migrate-v-2-v-3-migration-scenario-based-live-streaming.md
+              displayName: 'migration, live streaming'
+            - name: 打包和交付
+              href: migrate-v-2-v-3-migration-scenario-based-publishing.md
+              displayName: 'migration, packaging, delivery, publishing'
+            - name: 内容保护
+              href: migrate-v-2-v-3-migration-scenario-based-content-protection.md
+              displayName: 'migration, content protection, DRM, digital rights management'
+            - name: 媒体保留单位 (MRU)
+              href: migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md
+              displayName: 'migration, media reserved units'
+        - name: 示例比较
+          href: migrate-v-2-v-3-migration-samples.md
+          displayName: 'migration, samples'
         - name: v2 与 v3
           displayName: 'migrate, v2 to v3'
           href: media-services-v2-vs-v3.md

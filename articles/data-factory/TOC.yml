@@ -109,8 +109,8 @@
               href: tutorial-data-flow.md
             - name: 映射数据流视频教程
               href: data-flow-tutorials.md
-        - name: 使用整理数据流准备数据
-          href: wrangling-data-flow-tutorial.md
+        - name: 使用整理功能准备数据
+          href: wrangling-tutorial.md
         - name: 使用外部服务
           items:
             - name: HDInsight Spark
@@ -197,12 +197,12 @@
               href: concepts-data-flow-expression-builder.md
             - name: 表达式语言
               href: data-flow-expression-functions.md
-        - name: 使用整理数据流准备数据
+        - name: 使用 Power Query 数据整理功能准备数据
           items:
-            - name: 整理数据流概述
-              href: wrangling-data-flow-overview.md
+            - name: 数据整理概述
+              href: wrangling-overview.md
             - name: 支持的函数
-              href: wrangling-data-flow-functions.md
+              href: wrangling-functions.md
     - name: 角色和权限
       href: concepts-roles-permissions.md
     - name: 命名规则
@@ -259,7 +259,7 @@
           href: connector-azure-databricks-delta-lake.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL 数据库
+        - name: Azure SQL Database
           href: connector-azure-sql-database.md
         - name: Azure SQL 托管实例
           href: connector-azure-sql-managed-instance.md
@@ -464,6 +464,8 @@
       items:
         - name: 执行数据流活动
           href: control-flow-execute-data-flow-activity.md
+        - name: 执行 Power Query 活动
+          href: control-flow-power-query-activity.md
         - name: Azure 函数活动
           href: control-flow-azure-function-activity.md
         - name: 自定义活动

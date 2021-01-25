@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02194bd6122cc97ac9dfd6887c6ae2161182c13a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0fbf5c07b2d8fd5d754a46484d6b072cc9b682d6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120421"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599837"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>通过 Synapse SQL 使用外部表
 
@@ -381,7 +381,7 @@ SELECT TOP 1 * FROM census_external_table
 
 ## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>从 Azure Data Lake 中的文件创建和查询外部表
 
-现在可使用 Data Lake 浏览功能，通过简单的右键单击文件操作，使用专用 SQL 池或无服务器 SQL 池创建和查询外部表。
+现在可使用 Data Lake 浏览功能，通过简单的右键单击文件操作，使用专用 SQL 池或无服务器 SQL 池创建和查询外部表。 仅 Parquet 文件支持通过单击手势从 ADLS Gen2 存储帐户创建外部表。 
 
 ### <a name="prerequisites"></a>先决条件
 

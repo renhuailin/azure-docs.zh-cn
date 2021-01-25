@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: ff97aa6c6f04ad41ba6e1b986f3cc0734ec7a326
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4c7c68bf690097004f2f3310a8d89ce954d7f87f
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92526086"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612954"
 ---
 | 资源 | 限制 | 注意 |
 | --- | --- | --- |
@@ -32,6 +32,9 @@ ms.locfileid: "92526086"
 | 每个侦听器的 URL 映射数 |1 | |
 | 每个 URL 映射基于路径的最大规则数|100||
 | 重定向配置数 |100<sup>1</sup>| |
+| 重写规则集的数目 |400| |
+| 每个重写规则集的标头数或 URL 配置数|40| |
+| 每个重写规则集的条件数|40| |
 | 并发的 WebSocket 连接数 |中型网关 20k<br> 大型网关 50k| |
 | 最大 URL 长度|32KB| |
 | 适用于 HTTP/2 的最大标头大小 |4KB| |

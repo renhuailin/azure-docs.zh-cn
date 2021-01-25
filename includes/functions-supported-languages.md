@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 11/27/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 78b94dad03200d25bd29861acc92b10037a81238
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: e63d5140fd68f9210aa54315b75e4b2fd4c0099b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309693"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738480"
 ---
 |语言                                 |1.x         |2.x| 3.x |
 |-----------------------------------------|------------|---| --- |
@@ -23,7 +23,7 @@ ms.locfileid: "96309693"
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|GA (.NET Framework 4.7)|GA (.NET Core 2.2)| GA (.NET Core 3.1) |
 |[Java](../articles/azure-functions/functions-reference-java.md)|空值|GA (Java 8)| GA（Java 11 和 8）|
 |[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |空值|GA (PowerShell Core 6)| GA（PowerShell 7 和 Core 6）|
-|[Python](../articles/azure-functions/functions-reference-python.md#python-version)|不适用|GA（Python 3.7 和 3.6）| GA（Python 3.8、3.7 和 3.6）|
+|[Python](../articles/azure-functions/functions-reference-python.md#python-version)|不适用|GA（Python 3.7 和 3.6）| GA（Python 3.8、3.7 和 3.6） <br/> 预览版 (Python 3.9)|
 |[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |不适用|GA<sup>*</sup>| GA<sup>*</sup> |
 
 <sup>*</sup> 转译为 JavaScript 后支持。

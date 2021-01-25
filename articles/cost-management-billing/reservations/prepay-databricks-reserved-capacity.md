@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b7d7380114046fbeaaf4b6eb2660997d64168715
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 390a8b421a7b34391bde689e4b968fa98cdbaf76
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368560"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599170"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>通过预购优化 Azure Databricks 成本
 
@@ -48,7 +48,7 @@ Databricks 预购适用于所有 Databricks 工作负荷和层。 可以将预�
 **若要进行购买，请执行以下操作：**
 
 1. 转到 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D)。
-1. 选择一个订阅。 使用“订阅”列表，选择用于支付预留容量费用的订阅。  将向订阅的付款方式收取预留容量的前期成本。 从注册的货币承诺余额中扣除费用或作为超额收取费用。
+1. 选择一个订阅。 使用“订阅”列表，选择用于支付预留容量费用的订阅。  将向订阅的付款方式收取预留容量的前期成本。 从注册的 Azure 预付款（以前称为货币承诺）余额中扣除费用或按超额收取费用。
 1. 选择一个范围。 使用“范围”列表来选择订阅范围： 
     - **单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。
     - **单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。

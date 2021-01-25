@@ -1,5 +1,6 @@
 ---
-title: 从 Web 应用登录用户 - Microsoft 标识平台 | Azure
+title: 从 Web 应用登录用户 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何构建用于登录用户的 Web 应用（概述）
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 38ed7fb2930463e6657422e851a73f2b3b011f35
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a7e33f950bc5f13372962694abc8e3e40d8ad5c0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443579"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753232"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>方案：用于登录用户的 Web 应用
 
@@ -77,18 +78,18 @@ Web 应用可对 Web 浏览器中的用户进行身份验证。 在此方案中�
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-转到本方案中的下一篇文章 " [应用注册](./scenario-web-app-sign-user-app-registration.md?tabs=aspnetcore)"。
+转到此方案中的下一篇文章：[应用注册](./scenario-web-app-sign-user-app-registration.md?tabs=aspnetcore)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-转到本方案中的下一篇文章 " [应用注册](./scenario-web-app-sign-user-app-registration.md?tabs=aspnet)"。
+转到此方案中的下一篇文章：[应用注册](./scenario-web-app-sign-user-app-registration.md?tabs=aspnet)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-转到本方案中的下一篇文章 " [应用注册](./scenario-web-app-sign-user-app-registration.md?tabs=java)"。
+转到此方案中的下一篇文章：[应用注册](./scenario-web-app-sign-user-app-registration.md?tabs=java)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-转到本方案中的下一篇文章 " [应用注册](./scenario-web-app-sign-user-app-registration.md?tabs=python)"。
+转到此方案中的下一篇文章：[应用注册](./scenario-web-app-sign-user-app-registration.md?tabs=python)。
 
 ---

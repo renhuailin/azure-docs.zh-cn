@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d37225f988cc906bdd92467afcf3f286220eebda
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027860"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601529"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 
@@ -72,6 +72,18 @@ Visual Studio 和 Microsoft 合作伙伴网络订阅具有关联的每月定期 
    1. 存储空间等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../../storage/common/storage-account-create.md)
    1. Azure 虚拟机等服务的远程访问凭据。
 1. 若正与合作伙伴合作，请考虑更新此订阅的合作伙伴 ID。 可以在 [Azure 门户](https://portal.azure.com)中更新合作伙伴 ID。 有关详细信息，请参阅[将合作伙伴 ID 链接到 Azure 帐户](link-partner-id.md)。
+
+## <a name="cancel-a-transfer-request"></a>取消转移请求
+
+一次只有一个转移请求处于活动状态。 转移请求的有效期为 15 天。 15 天后，转移请求将过期。
+
+取消转移请求：
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 导航到“订阅”> 选择你为其发送了转移请求的订阅 > 选择“转移计费所有权” 。
+1. 在页面底部，选择“取消转移请求”。
+
+:::image type="content" source="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" alt-text="示例显示具有“取消转移请求”选项的“转移计费所有权”窗口" lightbox="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" :::
 
 ## <a name="troubleshooting"></a>疑难解答
 

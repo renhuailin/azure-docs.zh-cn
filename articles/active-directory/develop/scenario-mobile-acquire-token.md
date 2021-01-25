@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 946908bf28a50bc8b523c4efd853e8720b115c7b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063070"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753622"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>获取调用 Web API 的移动应用的令牌
 
@@ -28,7 +28,7 @@ ms.locfileid: "98063070"
 
 请求令牌时，需定义作用域。 作用域决定了应用能够访问哪些数据。
 
-定义范围的最简单方法是将所需 Web API 的 `App ID URI` 与范围 `.default` 组合在一起。 此定义告知 Microsoft 标识平台，应用需要在门户中设置的所有范围。
+定义范围的最简单方法是将所需 Web API 的 `App ID URI` 与范围 `.default` 组合在一起。 此定义告知 Microsoft 标识平台，你的应用程序需要门户中设置的所有作用域。
 
 ### <a name="android"></a>Android
 ```Java
@@ -243,7 +243,7 @@ catch(MsalUiRequiredException)
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-在你希望用户提前许可多个资源的高级方案中使用 `WithExtraScopeToConsent` 修饰符。 如果你不想要使用增量许可（这种许可通常与 MSAL.NET 或 Microsoft 标识平台 2.0 配合使用），可以使用此修饰符。 有关详细信息，请参阅[让用户提前许可多个资源](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)。
+在你希望用户提前许可多个资源的高级方案中使用 `WithExtraScopeToConsent` 修饰符。 如果你不希望使用通常与 MSAL.NET 或 Microsoft 标识平台一起使用的增量许可，则可以使用此修饰符。 有关详细信息，请参阅[让用户提前许可多个资源](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)。
 
 下面是代码示例：
 

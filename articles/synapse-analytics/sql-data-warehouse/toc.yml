@@ -12,7 +12,7 @@
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: 备忘单
       href: cheat-sheet.md
-    - name: 最佳实践
+    - name: 最佳做法
       href: sql-data-warehouse-best-practices.md
     - name: 容量限制
       href: sql-data-warehouse-service-capacity-limits.md
@@ -120,7 +120,7 @@
               href: ../../azure-sql/database/logins-create-manage.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: 行级别安全性
               href: column-level-security.md
-            - name: 行级安全性
+            - name: 行级别安全性
               href: /sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
         - name: 数据保护
           items:
@@ -134,7 +134,7 @@
       items:
         - name: 概述
           href: design-elt-data-loading.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: guidance-for-loading-data.md
         - name: 列存储压缩
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
@@ -142,7 +142,7 @@
       items:
         - name: 概述
           href: sql-data-warehouse-overview-develop.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: sql-data-warehouse-best-practices-development.md
         - name: JSON
           items:
@@ -366,6 +366,8 @@
           href: sql-data-warehouse-restore-deleted-dw.md
         - name: 从异地备份进行还原
           href: sql-data-warehouse-restore-from-geo-backup.md
+        - name: 禁用异地备份
+          href: disable-geo-backup.md
     - name: 集成
       items:
         - name: 使用机器学习

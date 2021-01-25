@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8ae5bcf103bbb2d2b952fa647ba591e49002f2ff
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: c6c09dc771692cb2fc2f36840e729874cfaf2d09
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921614"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572810"
 ---
 # <a name="basic-concepts"></a>基本概念
 
@@ -28,9 +28,7 @@ ms.locfileid: "96921614"
 
 ## <a name="attestation-provider"></a>证明提供程序
 
-证明提供程序属于名为 Microsoft.Attestation 的 Azure 资源提供程序。 资源提供程序是提供 Azure 证明 REST 协定的服务终结点，并使用 [Azure 资源管理器](../azure-resource-manager/management/overview.md)进行部署。 每个证明提供程序都遵循特定的可发现策略。 
-
-证明提供程序是使用每种证明类型的默认策略创建的（请注意，VBS enclave 没有默认策略）。 有关 SGX 的默认策略的更多详细信息，请参阅[证明策略的示例](policy-examples.md)。
+证明提供程序属于名为 Microsoft.Attestation 的 Azure 资源提供程序。 资源提供程序是提供 Azure 证明 REST 协定的服务终结点，并使用 [Azure 资源管理器](../azure-resource-manager/management/overview.md)进行部署。 每个证明提供程序都遵循特定的可发现策略。 证明提供程序是使用每种证明类型的默认策略创建的（请注意，VBS enclave 没有默认策略）。 有关 SGX 的默认策略的更多详细信息，请参阅[证明策略的示例](policy-examples.md)。
 
 ### <a name="regional-default-provider"></a>区域默认提供程序
 
@@ -38,11 +36,16 @@ Azure 证明在每个区域中提供了默认提供程序。 客户可以选择�
 
 | 区域 | 证明 Uri | 
 |--|--|
+| 美国东部 | `https://sharedeus.eus.attest.azure.net` | 
+| 美国西部 | `https://sharedwus.wus.attest.azure.net` | 
 | 英国南部 | `https://shareduks.uks.attest.azure.net` | 
+| 英国西部| `https://sharedukw.ukw.attest.azure.net  ` | 
+| 加拿大东部 | `https://sharedcae.cae.attest.azure.net` | 
+| 加拿大中部 | `https://sharedcac.cac.attest.azure.net` | 
+| 北欧 | `https://sharedneu.neu.attest.azure.net` | 
+| 西欧| `https://sharedweu.weu.attest.azure.net` | 
 | 美国东部 2 | `https://sharedeus2.eus2.attest.azure.net` | 
 | 美国中部 | `https://sharedcus.cus.attest.azure.net` | 
-| 美国东部| `https://sharedeus.eus.attest.azure.net` | 
-| 加拿大中部 | `https://sharedcac.cac.attest.azure.net` | 
 
 ## <a name="attestation-request"></a>证明请求
 
@@ -58,7 +61,7 @@ Azure 证明将验证提供的“Quote”，然后确保所提供的 Enclave Hel
 
 如果证明提供程序中的默认策略不能满足需要，客户将能够在 Azure 证明支持的任何区域创建自定义策略。 策略管理是 Azure 证明向客户提供的一项重要功能。 策略特定于证明类型，可用于标识 enclave，或将声明添加到输出令牌或修改输出令牌中的声明。 
 
-有关默认策略内容和示例，请参阅[证明策略的示例](policy-examples.md)。
+有关策略示例，请参阅[证明策略的示例](policy-examples.md)。
 
 ## <a name="benefits-of-policy-signing"></a>策略签名的优点
 
@@ -80,25 +83,55 @@ Get OpenID Metadata API 返回 [OpenID Connect 发现协议](https://openid.net/
 
 ```
 {
-  “alg”: “RS256”,
-  “jku”: “https://tradewinds.us.attest.azure.net/certs”,
-  “kid”: “f1lIjBlb6jUHEUp1/Nh6BNUHc6vwiUyMKKhReZeEpGc=”,
-  “typ”: “JWT”
+  "alg": "RS256",
+  "jku": "https://tradewinds.us.attest.azure.net/certs",
+  "kid": <self signed certificate reference to perform signature verification of attestation token,
+  "typ": "JWT"
 }.{
-  “maa-ehd”: <input enclave held data>,
-  “exp”: 1568187398,
-  “iat”: 1568158598,
-  “is-debuggable”: false,
-  “iss”: “https://tradewinds.us.attest.azure.net”,
-  “nbf”: 1568158598,
-  “product-id”: 4639,
-  “sgx-mrenclave”: “”,
-  “sgx-mrsigner”: “”,
-  “svn”: 0,
-  “tee”: “sgx”
+  "aas-ehd": <input enclave held data>,
+  "exp": 1568187398,
+  "iat": 1568158598,
+  "is-debuggable": false,
+  "iss": "https://tradewinds.us.attest.azure.net",
+  "maa-attestationcollateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "maa-ehd": <input enclave held data>,
+  "nbf": 1568158598,
+  "product-id": 4639,
+  "sgx-mrenclave": <SGX enclave mrenclave value>,
+  "sgx-mrsigner": <SGX enclave msrigner value>,
+  "svn": 0,
+  "tee": "sgx"
+  "x-ms-attestation-type": "sgx", 
+  "x-ms-policy-hash": <>,
+  "x-ms-sgx-collateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "x-ms-sgx-ehd": <>, 
+  "x-ms-sgx-is-debuggable": true,
+  "x-ms-sgx-mrenclave": <SGX enclave mrenclave value>,
+  "x-ms-sgx-mrsigner": <SGX enclave msrigner value>, 
+  "x-ms-sgx-product-id": 1, 
+  "x-ms-sgx-svn": 1,
+  "x-ms-ver": "1.0"
 }.[Signature]
 ```
-“exp”、“iat”、“iss”、“nbf”之类的声明由 [JWT RFC](https://tools.ietf.org/html/rfc7517) 定义，其余由 Azure 证明生成。 有关详细信息，请参阅[由 Azure 证明颁发的声明](claim-sets.md)。
+上面使用的某些声明被视为已弃用，但完全受支持。  建议将来所有的代码和工具都使用未弃用的声明名称。 有关详细信息，请参阅[由 Azure 证明颁发的声明](claim-sets.md)。
 
 ## <a name="encryption-of-data-at-rest"></a>静态数据加密
 

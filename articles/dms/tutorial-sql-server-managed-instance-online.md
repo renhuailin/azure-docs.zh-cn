@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 0041779abcd97901fb9315125a287a1d45cff133
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 02adb6f47b907fea402f8b312b3f4e8e117927ed
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350103"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693674"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 托管实例
 
@@ -116,7 +116,7 @@ ms.locfileid: "96350103"
 
     ![创建 Azure 数据库迁移服务实例](media/tutorial-sql-server-to-managed-instance-online/dms-create1.png)
 
-3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称  。
+3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称。
 
 4. 选择要在其中创建 DMS 实例的位置。
 
@@ -211,7 +211,7 @@ ms.locfileid: "96350103"
 
     | | |
     |--------|---------|
-    |**SMB 网络位置共享** | 本地 SMB 网络共享或 Azure 文件共享，其中包含可由 Azure 数据库迁移服务用来执行迁移的完整数据库备份文件和事务日志备份文件。 运行源 SQL Server 实例的服务帐户必须对此网络共享拥有读/写特权。 在网络共享中提供服务器的 FQDN 或 IP 地址，例如“'\\\servername.domainname.com\backupfolder”或“\\\IP address\backupfolder”。 为提高性能，建议为每个要迁移的数据库使用单独的文件夹。 可以使用“高级设置”选项提供数据库级文件共享路径。 |
+    |**SMB 网络位置共享** | 本地 SMB 网络共享或 Azure 文件共享，其中包含可由 Azure 数据库迁移服务用来执行迁移的完整数据库备份文件和事务日志备份文件。 运行源 SQL Server 实例的服务帐户必须对此网络共享拥有读/写特权。 在网络共享中提供服务器的 FQDN 或 IP 地址，例如“'\\\servername.domainname.com\backupfolder”或“\\\IP address\backupfolder”。 为提高性能，建议为每个要迁移的数据库使用单独的文件夹。 可以使用“高级设置”选项提供数据库级文件共享路径。 如果在连接到 SMB 共享时遇到问题，请查看 [SMB 共享](known-issues-azure-sql-db-managed-instance-online.md#smb-file-share-connectivity)。 |
     |**用户名** | 确保 Windows 用户具有对上面提供的网络共享的完全控制权限。 Azure 数据库迁移服务将模拟用户凭据，将备份文件上传到 Azure 存储容器，以执行还原操作。 如果使用 Azure 文件共享，请将带 AZURE\ 前缀的存储帐户名称用作用户名。 |
     |**密码** | 用户密码。 如果使用 Azure 文件共享，请将存储帐户密钥用作密码。 |
     |**Azure 存储帐户的订阅** | 选择包含 Azure 存储帐户的订阅。 |

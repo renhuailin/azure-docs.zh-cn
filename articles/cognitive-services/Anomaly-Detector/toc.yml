@@ -38,7 +38,7 @@
           href: ../containers/index.yml
 - name: 概念
   items:
-    - name: 异常情况检测 API 最佳做法
+    - name: 异常检测器 API 最佳做法
       href: concepts/anomaly-detection-best-practices.md
 - name: 参考
   items:

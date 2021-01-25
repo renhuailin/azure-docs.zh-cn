@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 01/13/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0cdd25b2937dd1fb2cc70ef7b1c5a9e9ddaef375
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: bd155ea3c98231cf20fa7c62325e3c2ecfb89920
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780597"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185914"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>通过最新的 API 以编程方式创建 Azure 企业协议订阅
 
@@ -31,7 +31,9 @@ ms.locfileid: "96780597"
 必须在注册帐户上具有所有者角色才能创建订阅。 可通过两种方式获取角色：
 
 * 注册的企业管理员可以[将你设为帐户所有者](https://ea.azure.com/helpdocs/addNewAccount)（需要登录），这使得你成为注册帐户的所有者。
-* 注册帐户的现有所有者可以[向你授予访问权限](grant-access-to-create-subscription.md)。 类似地，若要使用服务主体来创建 EA 订阅，则必须[向该服务主体授予创建订阅的权限](grant-access-to-create-subscription.md)。
+* 注册帐户的现有所有者可以[向你授予访问权限](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)。 类似地，若要使用服务主体来创建 EA 订阅，则必须[向该服务主体授予创建订阅的权限](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)。 
+  > [!NOTE]
+  > 确保使用正确的 API 版本为注册帐户授予所有者权限。 对于本文以及其中所述的 API，请使用 [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) API。 如果要迁移到使用较新的 API，则必须使用 [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) 再次授予所有者权限。 以前使用 [2015-07-01 版本](grant-access-to-create-subscription.md)进行的配置不会自动转换为使用较新的 API。
 
 ## <a name="find-accounts-you-have-access-to"></a>查找有访问权限的帐户
 

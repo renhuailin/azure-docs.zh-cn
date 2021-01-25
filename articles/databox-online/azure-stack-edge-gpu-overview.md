@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/23/2020
+ms.date: 01/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 059aad8b45aa449f5cd28c97f4ba55e2204c04ce
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 31947ca4d5eb632998f5c50257c12ef9a52dfc66
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937060"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570093"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>什么是 Azure Stack Edge Pro with GPU？
 
@@ -71,7 +71,7 @@ Azure Stack Edge Pro 解决方案包括 Azure Stack Edge 资源、Azure Stack Ed
 
 将数据传输到其中的 Azure Stack Edge Pro 物理设备、Azure 资源和目标存储帐户不一定非要位于同一区域。
 
-- **资源可用性** - 对于此预览版，美国东部、欧洲西部和东南亚地区中可使用此资源。
+- **资源可用性** - 对于此版本，美国东部、欧洲西部和东南亚地区中可使用此资源。
 
 - **设备可用性** - 有关 Azure Stack Edge Pro 设备可用的所有国家/地区的列表，请转到 [Azure Stack Edge Pro 定价](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)的“Azure Stack Edge Pro”选项卡中的“可用性”部分 。
     

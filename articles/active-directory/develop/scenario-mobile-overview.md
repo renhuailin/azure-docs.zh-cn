@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f60e21f98092df65ef01e68fe9c2e64833a24855
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a678e8545f761e98abbdf026886afa624f9d2b4e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063206"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753638"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>方案：用于调用 Web API 的移动应用程序
 
@@ -34,7 +34,7 @@ ms.locfileid: "98063206"
 
 ## <a name="overview"></a>概述
 
-个性化无缝用户体验对于移动应用很重要。  移动开发人员可以通过 Microsoft 标识平台为 iOS 和 Android 用户创建该体验。 应用程序可以 Azure Active Directory (Azure AD) 用户、个人 Microsoft 帐户用户和 Azure AD B2C 用户进行登录。 它还可以获取令牌，代表这些用户来调用 Web API。 为了实现这些流程，我们将使用 Microsoft 身份验证库 (MSAL) 。 MSAL 用于实现行业标准 [OAuth2.0 授权代码流](v2-oauth2-auth-code-flow.md)。
+个性化无缝用户体验对于移动应用很重要。 Microsoft 标识平台使移动开发人员能够创建适用于 iOS 和 Android 用户的体验。 应用程序可以 Azure Active Directory (Azure AD) 用户、个人 Microsoft 帐户用户和 Azure AD B2C 用户进行登录。 它还可以获取令牌，代表这些用户来调用 Web API。 为了实现这些流程，我们将使用 Microsoft 身份验证库 (MSAL) 。 MSAL 用于实现行业标准 [OAuth2.0 授权代码流](v2-oauth2-auth-code-flow.md)。
 
 ![守护程序应用](./media/scenarios/mobile-app.svg)
 

@@ -3,18 +3,18 @@ title: 面向合作伙伴的 Azure 成本管理入门
 description: 本文介绍合作伙伴如何使用 Azure 成本管理功能，以及如何为客户启用成本管理访问。
 author: bandersmsft
 ms.author: banders
-ms.date: 11/16/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 8a04cb2c590bc4f0104a93ac7c7c2cf7b71a4662
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905666"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602166"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>面向合作伙伴的 Azure 成本管理入门
 
@@ -71,9 +71,9 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 使用计费帐户范围可以查看所有客户和计费配置文件中的税前成本。 仅显示 Microsoft 客户协议中客户的基于消耗量的产品的发票成本。 但是，会显示 Microsoft 客户协议和 CSP 套餐中客户的基于购买项的产品的发票成本。 目前，在范围中查看成本的默认货币为美元。 为范围设置的预算也以美元为货币。
 
-无论使用何种不同的客户计费货币，合作伙伴都可以使用计费帐户范围以美元为货币来为其各个客户、订阅、资源和资源组设置预算和管理成本。
+无论使用何种不同的计费货币，合作伙伴都可以使用计费帐户范围以美元为货币来为其各个客户、订阅、资源和资源组设置预算和管理成本。
 
-合作伙伴还可以在成本分析视图中，筛选各个客户的采用特定计费货币的成本。 选择“实际成本”列表可以查看采用受支持客户计费货币的成本。
+合作伙伴还可以在成本分析视图中，筛选各个客户的采用特定计费货币的成本。 选择“实际成本”列表可以查看采用受支持计费货币的成本。
 
 ![显示货币的“实际成本”选项的示例](./media/get-started-partners/actual-cost-selector.png)
 
@@ -83,7 +83,7 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 使用计费配置文件范围可以查看所有客户的、包含在发票中的所有产品和订阅的采用计费货币的税前成本。 可以使用 **InvoiceID** 筛选器筛选特定发票的计费配置文件中的成本。 该筛选器显示特定发票的消耗和产品购买成本。 还可以筛选发票中特定客户的成本，以查看税前成本。
 
-将客户加入 Microsoft 客户协议后，你将收到一份发票，其中包含 Microsoft 客户协议中这些客户的所有产品（消耗、购买和权利）的所有费用。 以相同的货币计费时，这些发票还包含仍在 CSP 套餐中的客户的权利和购买产品（例如 SaaS、Azure 市场和预留项）的费用。
+将客户加入 Microsoft 客户协议后，你将收到一份发票，其中包含 Microsoft 客户协议中这些客户的所有产品（消耗、购买和权利）的所有费用。 以相同的货币计费时，这些发票还包含仍在经典 CSP 套餐（而不是在 Azure 计划）中的客户的权利和购买产品（例如 SaaS、Azure 市场和预留项）的费用。
 
 为了帮助根据客户发票核对费用，可以使用计费配置文件范围来查看客户发票的所有累积成本。 与发票一样，该范围将显示新 Microsoft 客户协议中每个客户的成本。 该范围还显示了仍在当前 CSP 套餐中的客户权利产品的每笔费用。
 
@@ -91,7 +91,7 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 计费配置文件定义发票中包含的订阅。 计费配置文件在功能上等同于企业协议注册。 计费配置文件是生成发票的范围。
 
-目前，在查看计费配置文件范围中的成本时，客户的计费货币是默认货币。 在计费配置文件范围设置的预算采用计费货币。
+目前，在查看计费配置文件范围中的成本时，计费货币是默认货币。 在计费配置文件范围设置的预算采用计费货币。
 
 合作伙伴可以使用范围来核对发票。 此外，他们可以使用范围以计费货币为以下各项设置预算：
 
@@ -220,7 +220,7 @@ Azure RBAC 范围内的预留实例的摊销视图和实际成本将显示零费
 | 数量 | 购买或消耗的度量数量。 计费周期内使用的计量器数量。 | 单位数量。 请确保它与对帐期间计费系统中的信息相匹配。 |
 | unitOfMeasure | 指明服务的计价单位。 例如，GB 和小时。 | 指明服务的计价单位。 例如，GB、小时和 10,000 秒。 |
 | pricingCurrency | 定义单价的货币。 | 价目表中的货币。|
-| billingCurrency | 定义计费成本的货币。 | 客户地理区域的货币。 |
+| billingCurrency | 定义计费成本的货币。 | 定义为发票上的计费货币的货币。 |
 | chargeType | 定义成本在 Azure 成本管理中所代表的费用类型，例如购买和退款。 | 费用或调整的类型。 不适用于当前活动。 |
 | costinBillingCurrency | 采用计费货币的 ExtendedCost 或混合税前成本。 | 空值 |
 | costinPricingCurrency | 与价格关联的采用定价货币的 ExtendedCost 或混合税前成本。 | 空值 |

@@ -13,23 +13,23 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0282e4f52db8557364cdabe197fa0da63204e42
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812533"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752640"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
 
-Microsoft 标识平台支持 [OAuth 2.0 资源所有者密码凭据 (ROPC) 授权](https://tools.ietf.org/html/rfc6749#section-4.3)，后者允许应用程序通过直接处理用户的密码来登录用户。  本文介绍如何在应用程序中直接针对协议进行编程。  如果可能，建议你改用受支持的 Microsoft 身份验证库 (MSAL) 来[获取令牌并调用受保护的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另请参阅[使用 MSAL 的示例应用](sample-v2-code.md)。
+Microsoft 标识平台支持 [OAuth 2.0 资源所有者密码凭据 (ROPC) grant](https://tools.ietf.org/html/rfc6749#section-4.3)，这允许应用程序通过直接处理密码来登录用户。  本文介绍如何在应用程序中直接针对协议进行编程。  如果可能，建议你改用受支持的 Microsoft 身份验证库 (MSAL) 来[获取令牌并调用受保护的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另请参阅[使用 MSAL 的示例应用](sample-v2-code.md)。
 
 > [!WARNING]
 > Microsoft 建议不要使用 ROPC 流。 在大多数情况下，可以使用我们建议的更安全的替代方案。 此流需要应用程序中存在很高程度的信任，并且带有在其他流中不存在的风险。 仅当无法使用其他更安全的流时，才使用此流。
 
 > [!IMPORTANT]
 >
-> * Microsoft 标识平台终结点仅支持将 ROPC 用于 Azure AD 租户而非个人帐户。 这意味着，必须使用特定于租户的终结点 (`https://login.microsoftonline.com/{TenantId_or_Name}`) 或 `organizations` 终结点。
+> * Microsoft 标识平台仅支持 Azure AD 租户而不是个人帐户的 ROPC。 这意味着，必须使用特定于租户的终结点 (`https://login.microsoftonline.com/{TenantId_or_Name}`) 或 `organizations` 终结点。
 > * 受邀加入 Azure AD 租户的个人帐户不能使用 ROPC。
 > * 没有密码的帐户不能通过 ROPC 登录。 对于这种情况，建议改用适合应用的其他流。
 > * 如果用户需使用[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md) 来登录应用程序，则系统会改为阻止用户。
@@ -112,4 +112,4 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ## <a name="learn-more"></a>了解详细信息
 
-有关使用 ROPC 的示例，请参阅 GitHub 上的 [.Net Core 控制台应用程序](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) 代码示例。
+有关使用 ROPC 的示例，请参阅 GitHub 上的 [.NET 核心控制台应用程序](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)代码示例。

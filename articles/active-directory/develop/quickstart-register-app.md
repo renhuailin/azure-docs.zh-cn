@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: cc0d908f479fe5bdf14abb2ace0e6c046fd6d7d5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 45280ec41a9fd9423e4184b2e1ce593720ab6488
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011943"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232346"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入门：将应用程序注册到 Microsoft 标识平台
 
@@ -97,7 +97,7 @@ ms.locfileid: "98011943"
 
 ## <a name="add-credentials"></a>添加凭据
 
-凭据供访问 Web API 的机密客户端应用程序使用。 Web 应用、其他 Web API 或服务类型和守护程序类型的应用程序都是机密客户端。 通过凭据，应用程序可以自己的身份进行身份验证，无需用户在运行时进行任何交互。
+凭据供访问 Web API 的[机密客户端应用程序](msal-client-applications.md)使用。 [Web 应用](scenario-web-app-call-api-overview.md)、其他 [Web API](scenario-protected-web-api-overview.md) 或[服务类型和守护程序类型的应用程序](scenario-daemon-overview.md)都是机密客户端。 通过凭据，应用程序可以自己的身份进行身份验证，无需用户在运行时进行任何交互。 
 
 可将证书和客户端密码（字符串）作为凭据添加到机密客户端应用注册。
 
@@ -105,7 +105,7 @@ ms.locfileid: "98011943"
 
 ### <a name="add-a-certificate"></a>添加证书
 
-证书有时被称为公钥，它们是推荐的凭据类型，因为它们提供的保证级别比客户端密码高。
+证书有时被称为公钥，它们是推荐的凭据类型，因为它们提供的保证级别比客户端密码高。 有关在应用程序中使用证书作为身份验证方法的详细信息，请参阅 [Microsoft 标识平台应用程序身份验证证书凭据](active-directory-certificate-credentials.md)
 
 1. 在 Azure 门户中的“应用注册”中选择你的应用程序。
 1. 选择“证书和密码” > “上传证书” 。
@@ -114,7 +114,7 @@ ms.locfileid: "98011943"
 
 ### <a name="add-a-client-secret"></a>添加客户端密码
 
-客户端密码（也称为应用程序密码）是应用可用于代替证书来标识自身的字符串。 这是两种凭证类型中更容易使用的一种，而且通常在开发过程中使用，但它不如证书安全。 应在生产环境中运行的应用程序中使用证书。
+客户端密码（也称为应用程序密码）是应用可用于代替证书来标识自身的字符串。 这是两种凭证类型中更容易使用的一种，而且通常在开发过程中使用，但它不如证书安全。 应在生产环境中运行的应用程序中使用证书。 有关应用程序安全建议的详细信息，请参阅 [Microsoft 标识平台最佳做法和建议](identity-platform-integration-checklist.md#security)
 
 1. 在 Azure 门户中的“应用注册”中选择你的应用程序。
 1. 选择“证书和密码” >  “新建客户端密码” 。
@@ -122,6 +122,8 @@ ms.locfileid: "98011943"
 1. 选择持续时间。
 1. 选择 **添加** 。
 1. “记录密码的值”，以便在客户端应用程序中使用 - 离开此页面后，它将不再显示。
+
+**注意：** 连同机密值一起生成的 ID 是机密的 ID，该 ID 不同于应用程序 ID。
 
 ## <a name="next-steps"></a>后续步骤
 

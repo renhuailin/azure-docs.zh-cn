@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 064c9a00e1cd7c139f3f42a053dcf8a5db13f161
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: eed4e919684575bb2c63170d91517b661fac4acf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104574"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753973"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>在 Safari 和其他阻止第三方 Cookie 的浏览器中处理 ITP
 
@@ -26,7 +26,7 @@ ms.locfileid: "92104574"
 
 ## <a name="what-is-intelligent-tracking-protection-itp"></a>什么是智能跟踪保护 (ITP)？
 
-Apple Safari 提供默认已启用的隐私保护功能，称为[智能跟踪保护](https://webkit.org/tracking-prevention-policy/) (*ITP*)。 ITP 会阻止“第三方”Cookie - 包含在跨域请求中的 Cookie。
+Apple Safari 提供默认已启用的隐私保护功能，称为 [智能跟踪保护](https://webkit.org/tracking-prevention-policy/) (*ITP*)。 ITP 会阻止“第三方”Cookie - 包含在跨域请求中的 Cookie。
 
 常见的用户跟踪形式是，在后台将一个 iframe 加载到第三方站点，并使用 Cookie 在整个 Internet 中关联用户。 遗憾的是，此模式也是单页应用 (SPA) 中实现[隐式流](v2-oauth2-implicit-grant-flow.md)的标准方式。 当浏览器阻止第三方 Cookie 以阻止用户跟踪时，SPA 也会中断。
 
@@ -49,7 +49,7 @@ SPA 有两个额外的限制：
 * [必须将重定向 URI 标记为类型 `spa`](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps) 才能在登录终结点上启用 CORS。
 * 通过授权代码流颁发给 `spa` 重定向 URI 的刷新令牌的生存期为 24 小时，而不是 90 天。
 
-:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="显示单页面应用与 security token service 终结点之间的 OAuth 2 授权代码流的关系图。" border="false":::
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="显示单页应用和安全令牌服务终结点之间 OAuth 2 授权代码流的图表。" border="false":::
 
 ## <a name="performance-and-ux-implications"></a>性能和 UX 影响
 
@@ -77,7 +77,7 @@ Web 应用中的一种常见模式是使用 iframe 将一个应用嵌入到另�
 
 向浏览器颁发刷新令牌被认为是一个安全问题。 跨站点脚本 (XSS) 攻击或已遭入侵的 JS 包可能会盗取并在远程使用刷新令牌，直到该令牌过期或吊销。 为了最大程度地降低刷新令牌被盗的风险，将为 SPA 颁发有效期仅为 24 小时的令牌。 24 小时后，应用必须通过顶级框架访问登录页，以获取新的授权代码。
 
-选择这种生存期受限的刷新令牌模式是为了在安全性与 UX 降级之间实现平衡。 如果不使用刷新令牌或第三方 Cookie，在需要新令牌或其他令牌时，授权代码流（根据 [OAuth 安全最佳做法当前草案](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14)中的建议）会变得很繁琐。 每当令牌过期时（对于 Microsoft 标识平台令牌，通常每隔一小时就会过期），都需要为获取一个令牌而执行完整页面重定向或显示弹出窗口。
+选择这种生存期受限的刷新令牌模式是为了在安全性与 UX 降级之间实现平衡。 如果不使用刷新令牌或第三方 Cookie，在需要新令牌或其他令牌时，授权代码流（根据 [OAuth 安全最佳做法当前草案](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14)中的建议）会变得很繁琐。 每个单个令牌都需要完全页重定向或弹出窗口，每次令牌每小时过期 (通常为 Microsoft 标识平台令牌) 。
 
 ## <a name="next-steps"></a>后续步骤
 
