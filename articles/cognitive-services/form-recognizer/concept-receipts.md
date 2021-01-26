@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 7173efd3dab0e8d2fd3c948a3a9bac07641e78f3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131436"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792076"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>窗体识别器预生成接收模型
 
-Azure 窗体识别器可以使用其预生成的接收模型分析和提取销售回执的信息。 它结合了强大的 [光学字符识别功能 (OCR) ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) 功能，并具有接收了解深度学习模型的信息，以从采用英语的收据中提取关键信息。 接收方 API 从销售收据提取关键信息，如商家名称、交易日期、交易总计、行项等。 
+Azure 窗体识别器可以使用其预生成的接收模型分析和提取销售回执的信息。 它结合了强大的 [光学字符识别功能 (OCR) ](../computer-vision/concept-recognizing-text.md) 功能，并具有接收了解深度学习模型的信息，以从采用英语的收据中提取关键信息。 接收方 API 从销售收据提取关键信息，如商家名称、交易日期、交易总计、行项等。 
 
 ## <a name="understanding-receipts"></a>了解回执 
 
@@ -40,21 +40,21 @@ Azure 窗体识别器可以使用其预生成的接收模型分析和提取销�
 
 |名称| 类型 | 说明 | 文本 | 值 (标准化输出)  |
 |:-----|:----|:----|:----| :----|
-| ReceiptType | 字符串 | 销售收据类型 | 经费 |  |
-| MerchantName | 字符串 | 发出收据的商家的名称 | Contoso |  |
+| ReceiptType | string | 销售收据类型 | 经费 |  |
+| MerchantName | string | 发出收据的商家的名称 | Contoso |  |
 | MerchantPhoneNumber | phoneNumber | 商家列出的电话号码 | 987-654-3210 | + 19876543210 |
-| MerchantAddress | 字符串 | 商家的已列出地址 | 123主要 St Redmond WA 98052 |  |
+| MerchantAddress | string | 商家的已列出地址 | 123主要 St Redmond WA 98052 |  |
 | TransactionDate | date | 发出回执的日期 | 6月6日，2019 | 2019-06-26  |
 | TransactionTime | time | 发出回执的时间 | 4:49 PM | 16:49:00  |
-| 总计 | 数字 | 全部交易总计（接收） | $14.34 | 14.34 |
-| 小计 | 数字 | 收据小计，通常在应用税款之前 | $12.34 | 12.34 |
-| 税款 | 数字 | 收据上的税金，通常为销售税或等效 | $2.00 | 2.00 |
-| 提示 | 数字 | 买家包含的提示 | $1.00 | 1.00 |
-| 项目 | 对象数组 | 提取的行项，其中包含名称、数量、单价和提取的总价格 | |
+| 总计 | number | 全部交易总计（接收） | $14.34 | 14.34 |
+| 小计 | number | 收据小计，通常在应用税款之前 | $12.34 | 12.34 |
+| 税款 | number | 收据上的税金，通常为销售税或等效 | $2.00 | 2.00 |
+| 提示 | number | 买家包含的提示 | $1.00 | 1.00 |
+| Items | 对象数组 | 提取的行项，其中包含名称、数量、单价和提取的总价格 | |
 | 名称 | 字符串 | 项名称 | Surface Pro 6 | |
-| 数量 | 数字 | 每个项的数量 | 1 | |
-| 价格 | 数字 | 每个物料单位的单独价格 | $999.00 | 999.00 |
-| 总价 | 数字 | 行项总价格 | $999.00 | 999.00 |
+| 数量 | number | 每个项的数量 | 1 | |
+| 价格 | number | 每个物料单位的单独价格 | $999.00 | 999.00 |
+| 总价 | number | 行项总价格 | $999.00 | 999.00 |
 
 ### <a name="additional-features"></a>其他功能
 
@@ -104,7 +104,7 @@ Azure 窗体识别器可以使用其预生成的接收模型分析和提取销�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|status | 字符串 | notStarted：分析操作尚未开始。 |
+|状态 | string | notStarted：分析操作尚未开始。 |
 | |  | 正在运行：分析操作正在进行。 |
 | |  | 失败：分析操作失败。 |
 | |  | succeeded：分析操作成功。 |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: 0a487f778693e87e680033edd0d80c55d1a85f66
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34d2e8116b7b914803d1bb68b350c9aadd78439f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013779"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792059"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure 安全中心中的 SQL 信息保护策略
  
@@ -58,7 +58,7 @@ SQL 信息保护的 [数据发现和分类机制](../azure-sql/database/data-dis
 在安全中心的 " **定价和设置** " 页中，选择 " **SQL 信息保护**"。
 
 > [!NOTE]
-> 此选项仅对具有租户级别权限的用户显示。 
+> 此选项仅对具有租户级别权限的用户显示。 [向自己授予租户范围的权限](https://docs.microsoft.com/azure/security-center/security-center-management-groups#grant-tenant-wide-permissions-to-yourself)。
 
 :::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="从 Azure 安全中心的 &quot;定价和设置&quot; 页访问 SQL 信息保护策略":::
 

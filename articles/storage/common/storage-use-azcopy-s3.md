@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 07a8d2b394e8ca690925c677af676643064a9ba8
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: b94cb6d6302cd92816fe25f6e672b1ce3bb9398d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901824"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791991"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
-AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 或文件。 本文介绍如何使用 AzCopy 将对象、目录和桶从 Amazon Web Services (AWS) S3 复制到 Azure Blob 存储。
+AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 或文件。 本文介绍如何使用 AzCopy 将对象、目录和存储桶从 Amazon Web Services (AWS) S3 复制到 Azure Blob 存储。
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>选择如何提供授权凭据
 
@@ -38,7 +38,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 ### <a name="authorize-with-aws-s3"></a>对 AWS S3 授权
 
-收集 AWS 访问密钥和密钥访问密钥，然后设置以下环境变量：
+收集 AWS 访问密钥和机密访问密钥，然后设置以下环境变量：
 
 | 操作系统 | 命令  |
 |--------|-----------|
@@ -159,7 +159,7 @@ AzCopy 执行以下步骤：
 
 3. 将字符串 `rename_key_` 添加到新的有效键的开头。
    此键将用于保存原始元数据的无效 **键**。
-   你可以使用此密钥来尝试恢复 Azure 中的元数据，因为元数据密钥会保留为 Blob 存储服务中的值。
+   可以使用此键在 Azure 端尝试恢复元数据，因为元数据键作为值保留在 Blob 存储服务中。
 
 ## <a name="next-steps"></a>后续步骤
 

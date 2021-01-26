@@ -4,12 +4,12 @@ description: 本文逐步指导使用 PowerShell 部署 Service Fabric 应用程
 ms.topic: conceptual
 ms.date: 8/5/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ee040916ae1ce6ac931abc1fc07021b08cdbf895
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4b038f4a41ee02960a02c4445b65eb2360a75761
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309074"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792025"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>使用 PowerShell 升级 Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "92309074"
 使用 Service Fabric 监视的滚动升级，应用程序管理员可以配置 Service Fabric 用于确定应用程序运行状况是否正常的运行状况评估策略。 此外，管理员还可以配置当运行状况评估失败时要采取的措施（例如，执行自动回滚）。本部分演练使用 PowerShell 对其中一个 SDK 示例进行受监视的升级。 
 
 > [!NOTE]
-> 在应用程序升级期间，不会保留 [ApplicationParameters](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)。 为了保留当前的应用程序参数，用户应首先获取参数，然后将它们传递到升级 API 调用中，如下所示：
+> 在应用程序升级期间，不会保留 [ApplicationParameters](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters#System_Fabric_Description_ApplicationDescription_ApplicationParameters)。 为了保留当前的应用程序参数，用户应首先获取参数，然后将它们传递到升级 API 调用中，如下所示：
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -49,9 +49,9 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/myApplication -Ap
 > 
 > 
 
-在 Visual Studio 中构建项目后，可以使用 PowerShell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) 将应用程序包复制到 ImageStore。 如果要在本地验证应用包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) cmdlet。 下一个步骤是使用 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) cmdlet 将应用程序注册到 Service Fabric 运行时。 接下来的一步骤是使用 [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 启动应用程序实例。  这三个步骤类似于使用 Visual Studio 中的“**部署**”菜单项。  完成预配后，应从映像存储区中清除复制的应用程序包以减少占用的资源。  如果不再需要某一应用程序类型，它应出于同样的原因将其注销。 有关详细信息，请按照[使用 PowerShell 部署和删除应用程序](service-fabric-application-upgrade-tutorial-powershell.md)。
+在 Visual Studio 中构建项目后，可以使用 PowerShell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) 将应用程序包复制到 ImageStore。 如果要在本地验证应用包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) cmdlet。 下一个步骤是使用 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) cmdlet 将应用程序注册到 Service Fabric 运行时。 接下来的一步骤是使用 [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication) cmdlet 启动应用程序实例。  这三个步骤类似于使用 Visual Studio 中的“**部署**”菜单项。  完成预配后，应从映像存储区中清除复制的应用程序包以减少占用的资源。  如果不再需要某一应用程序类型，它应出于同样的原因将其注销。 有关详细信息，请按照[使用 PowerShell 部署和删除应用程序](service-fabric-application-upgrade-tutorial-powershell.md)。
 
-现在可以使用 [Service Fabric Explorer 查看群集和应用程序](service-fabric-visualizing-your-cluster.md)。 应用程序具有一个 Web 服务，可通过在 Internet Explorer 地址栏中键入 `http://localhost:8081/visualobjects` 导航到该 Web 服务。  应在屏幕上看到一些四处移动的浮动视觉对象。  此外，可使用 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) 检查应用程序状态。
+现在可以使用 [Service Fabric Explorer 查看群集和应用程序](service-fabric-visualizing-your-cluster.md)。 应用程序具有一个 Web 服务，可通过在 Internet Explorer 地址栏中键入 `http://localhost:8081/visualobjects` 导航到该 Web 服务。  应在屏幕上看到一些四处移动的浮动视觉对象。  此外，可使用 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication) 检查应用程序状态。
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>步骤 2：更新视觉对象示例
 你可能会注意到，使用步骤 1 中部署的版本，视觉对象不会旋转。 让我们将此应用程序升级到视觉对象也会旋转的版本。
@@ -77,10 +77,10 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/myApplication -Ap
  <ServiceManifestRefServiceManifestName="VisualObjects.ActorService" ServiceManifestVersion="2.0" />
 ```
 
-现在请生成项目，方法是选择 **ActorService** 项目，并单击右键并选择 Visual Studio 中的“**生成**”选项。 如果选择“**全部重新生成**”，应该更新所有项目的版本，因为代码已更改。 接下来，将更新的应用程序打包，方法是右键单击“***VisualObjectsApplication***”，选择 Service Fabric 菜单，并选择“**打包**”。 此操作创建可部署的应用程序包。  更新的应用程序已准备就绪，可供部署。
+现在请生成项目，方法是选择 **ActorService** 项目，并单击右键并选择 Visual Studio 中的“**生成**”选项。 如果选择“**全部重新生成**”，应该更新所有项目的版本，因为代码已更改。 接下来，将更新的应用程序打包，方法是：右键单击“VisualObjectsApplication”***，选择 Service Fabric 菜单，并选择“打包”***。 此操作创建可部署的应用程序包。  更新的应用程序已准备就绪，可供部署。
 
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>步骤 3：确定运行状况策略和升级参数
-请熟悉[应用程序升级参数](service-fabric-application-upgrade-parameters.md)和[升级过程](service-fabric-application-upgrade.md)，充分了解所应用的各种升级参数、超时和运行状况条件。 对于本演练，服务运行状况评估条件设置为默认值（即推荐值），这意味着在升级后所有服务和实例均应为*运行状况正常*。  
+请熟悉[应用程序升级参数](service-fabric-application-upgrade-parameters.md)和[升级过程](service-fabric-application-upgrade.md)，充分了解所应用的各种升级参数、超时和运行状况条件。 对于本演练，服务运行状况评估条件设置为默认值（即推荐值），这意味着在升级后所有服务和实例均应为 *运行状况正常*。  
 
 但是，让我们将 *HealthCheckStableDuration* 增加到 180 秒（这样该服务在进行下一个更新域的升级之前将至少保持 120 秒的运行状况正常）。  我们还将 *UpgradeDomainTimeout* 设置为 1200 秒，将 *UpgradeTimeout* 设置为 3000 秒。
 
@@ -95,7 +95,7 @@ UpgradeDomainTimeoutSec = 1200
 UpgradeTimeout = 3000
 
 ## <a name="step-4-prepare-application-for-upgrade"></a>步骤 4：为升级准备应用程序
-现在，应用程序已生成并准备好进行升级。 如果以管理员身份打开 PowerShell 窗口并键入 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps)，会看到已部署好的 1.0.0.0 应用程序类型的名为 **VisualObjects** 的应用程序。  
+现在，应用程序已生成并准备好进行升级。 如果以管理员身份打开 PowerShell 窗口并键入 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication)，会看到已部署好的 1.0.0.0 应用程序类型的名为 **VisualObjects** 的应用程序。  
 
 应用程序包存储在解压 Service Fabric SDK 的位置，其相对路径为 *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*。 该目录中应会出现一个“Package”文件夹，这是存储应用程序包的位置。 请检查时间戳，确保它是最新版本（可能还需要相应地修改路径）。
 
@@ -105,7 +105,7 @@ UpgradeTimeout = 3000
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"
 ```
 
-下一步是将此应用程序注册到 Service Fabric，这可以使用 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 命令来执行：
+下一步是将此应用程序注册到 Service Fabric，这可以使用 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) 命令来执行：
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObjects\_V2"
@@ -120,7 +120,7 @@ Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore "Visu
 ```
 
 ## <a name="step-5-start-the-application-upgrade"></a>步骤 5：启动应用程序升级
-现在可以使用 [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) 命令开始升级应用程序：
+现在可以使用 [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) 命令开始升级应用程序：
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -ApplicationTypeVersion 2.0.0.0 -HealthCheckStableDurationSec 60 -UpgradeDomainTimeoutSec 1200 -UpgradeTimeout 3000   -FailureAction Rollback -Monitored
@@ -129,7 +129,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 应用程序名称与 *ApplicationManifest.xml* 文件中所述的相同。 Service Fabric 使用此名称来确定升级的应用程序。 如果设置的超时太短，则可能遇到一条说明该问题的失败消息。 请参阅故障排除部分，或增加超时值。
 
-现在，在应用程序升级进行时，可以使用 Service Fabric Explorer 或 PowerShell 命令 [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) 对其进行监视： 
+现在，在应用程序升级进行时，可以使用 Service Fabric Explorer 或 PowerShell 命令 [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade) 对其进行监视： 
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects

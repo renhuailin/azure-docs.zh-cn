@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 386e0051a64f73b18c1ff76ed33af5f9eebe8aa0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 90443a898ffdebf33a0c967719ba25a2ccc6f9a7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121407"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792093"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>通过指标、警报和资源运行状况进行标准负载均衡器诊断
 
@@ -239,8 +239,8 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
 | 资源运行状况 | 说明 |
 | --- | --- |
 | 可用 | 标准负载均衡器资源正常且可用。 |
-| 已降级 | 标准负载均衡器具有平台或用户启动的影响性能的事件。 “数据路径可用性”指标至少有两分钟报告了低于 90% 但高于 25% 的运行状况。 你将遇到中等到严重程度的性能影响。 [按照故障排除 RHC 指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) 来确定是否存在导致影响可用性的用户启动的事件。
-| 不可用 | 标准负载均衡器资源不正常。 “数据路径可用性”指标至少有两分钟报告了低于 25% 的运行状况。 你会遇到严重的性能影响，或者入站连接不可用。 可能存在导致不可用的用户或平台事件。 [按照故障排除 RHC 指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) 来确定是否有用户启动的事件影响了可用性。 |
+| 已降级 | 标准负载均衡器具有平台或用户启动的影响性能的事件。 “数据路径可用性”指标至少有两分钟报告了低于 90% 但高于 25% 的运行状况。 你将遇到中等到严重程度的性能影响。 [按照 RHC 故障排除指南](./troubleshoot-rhc.md)确定是否存在用户发起的且会影响你的可用性的事件。
+| 不可用 | 标准负载均衡器资源不正常。 “数据路径可用性”指标至少有两分钟报告了低于 25% 的运行状况。 你会遇到严重的性能影响，或者入站连接不可用。 可能存在导致不可用的用户或平台事件。 [按照 RHC 故障排除指南](./troubleshoot-rhc.md)确定是否存在用户发起的且会影响你的可用性的事件。 |
 | Unknown | 标准负载均衡器资源的资源运行状况状态尚未更新，或者最近 10 分钟内未收到数据路径可用性信息。 此状态应该是暂时性的，系统在收到数据后会立即反映正确的状态。 |
 
 若要查看公共标准负载均衡器资源的运行状况，请执行以下步骤：
