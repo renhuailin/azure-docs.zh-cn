@@ -3,12 +3,12 @@ title: 从 Azure 备份服务器恢复数据
 description: 将所保护的数据从任意 Azure 备份服务器恢复到恢复服务保管库，前提是服务器已注册到该保管库。
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ed8c937f97ec7a74662a8b46a354b0a6db39a2b0
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002964"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806024"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>从 Azure 备份服务器恢复数据
 
@@ -89,5 +89,5 @@ ms.locfileid: "96002964"
 
 阅读其他常见问题：
 
-* 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.md)
+* 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.yml)
 * 有关 Azure 备份代理的[常见问题](backup-azure-file-folder-backup-faq.md)

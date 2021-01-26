@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2020
+ms.date: 01/26/2021
 ms.author: memildin
-ms.openlocfilehash: ce95106c56e919fa0fcc7d7553a3f0cc0dc77f98
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9e537bfa782569fb8fa2a7957c6874bda69d8c06
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121288"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805352"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure 安全中心定价
 Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络风险的智能检测功能。

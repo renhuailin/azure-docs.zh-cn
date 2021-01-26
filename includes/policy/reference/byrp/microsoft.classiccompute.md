@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 0f7ab53dae8023f49161aba6120fee30ce24227f
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: cc9be2fadbfd209ebf31d3a8b6c00522a2dcf5bf
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704030"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802643"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -32,4 +32,3 @@ ms.locfileid: "98704030"
 |[应将虚拟机迁移到新的 Azure 资源管理器资源](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |对虚拟机使用新的 Azure 资源管理器以提供安全增强功能，例如：更强的访问控制 (RBAC)、更佳审核功能、基于 Azure 资源管理器的部署和治理、对托管标识的访问、访问密钥保管库以获取机密、基于 Azure AD 的身份验证以及支持使用标记和资源组简化安全管理 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json) |
 |[应修正容器安全配置中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe8cbc669-f12d-49eb-93e7-9273119e9933) |在安装了 Docker 的计算机上审核安全配置中的漏洞，并在 Azure 安全中心显示为建议。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ContainerBenchmark_Audit.json) |
 |[应修复计算机上安全配置中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15) |建议通过 Azure 安全中心监视不满足配置的基线的服务器 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_OSVulnerabilities_Audit.json) |
-|[应通过漏洞评估解决方案修复漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F760a85ff-6162-42b3-8d70-698e268f648c) |建议在 Azure 安全中心监视漏洞评估解决方案检测到的漏洞和没有漏洞评估解决方案的 VM。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VMVulnerabilities_Audit.json) |

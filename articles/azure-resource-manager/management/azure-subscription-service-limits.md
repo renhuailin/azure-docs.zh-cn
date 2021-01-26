@@ -3,12 +3,12 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 20de08ee30deae74954f2857b4de756b8cf46f08
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: baef641a741d12185029436e5a74039427c69f68
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964179"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802904"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -402,7 +402,7 @@ ms.locfileid: "97964179"
 
 #### <a name="disk-encryption-sets"></a>磁盘加密集
 
-每个区域、每个订阅有 50 个磁盘加密集的限制。 有关更多信息，请参阅 [Linux](../../virtual-machines/disk-encryption.md#restrictions) 或 [Windows](../../virtual-machines/disk-encryption.md#restrictions) 虚拟机的加密文档。 如果需要增加配额，请与 Azure 支持部门联系。
+每个区域每个订阅的磁盘加密集限制为1000。 有关更多信息，请参阅 [Linux](../../virtual-machines/disk-encryption.md#restrictions) 或 [Windows](../../virtual-machines/disk-encryption.md#restrictions) 虚拟机的加密文档。 如果需要增加配额，请与 Azure 支持部门联系。
 
 ### <a name="managed-virtual-machine-disks"></a>托管虚拟机磁盘
 

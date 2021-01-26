@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 01/25/2021
-ms.openlocfilehash: c12e1f4b01b0e2dd7fa21808cf33f45f9a5be59b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 01/26/2021
+ms.openlocfilehash: 7588ce055ce0df89a7dca87a75a38c8acccf6d46
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789966"
+ms.locfileid: "98806091"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 托管实例上用户启动的手动故障转移
 
@@ -125,7 +125,7 @@ API 响应将为以下两项之一：
 
 ## <a name="monitor-the-failover"></a>监视故障转移
 
-若要监视用户启动的手动故障转移的进度，请在你喜欢的客户端（例如 SSMS）中对 SQL 托管实例执行以下 T-SQL 查询。 它将读取系统视图 sys.dm_hadr_fabric_replica_states 并报告实例上可用的副本。 启动手动故障转移后刷新相同的查询。
+若要监视用户启动的 BC 实例故障转移的进度，请在喜欢的客户端中执行以下 T-sql 查询 (例如，在 SQL 托管实例上运行 SSMS) 。 它将读取系统视图 sys.dm_hadr_fabric_replica_states 并报告实例上可用的副本。 启动手动故障转移后刷新相同的查询。
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states
@@ -133,7 +133,13 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 启动故障转移之前，你的输出将指示 BC 服务层上的当前主副本，其中包含 AlwaysOn 可用性组中的一个主副本和三个次要副本。 执行故障转移后，再次运行此查询将需要指示主节点的更改。
 
-在 GP 服务层中，你将无法看到与上面所示的 BC 的输出相同的输出。 这是因为 GP 服务层只基于单个节点。 GP 服务层的 T-SQL 查询输出将仅在故障转移前后显示单个节点。 在故障转移过程中，客户端丢失的连接（通常持续不到一分钟）将作为故障转移执行的指示。
+在 GP 服务层中，你将无法看到与上面所示的 BC 的输出相同的输出。 这是因为 GP 服务层只基于单个节点。 可以使用其他 T-sql 查询，该查询显示在 GP 服务层实例的节点上启动 SQL 进程的时间：
+
+```T-SQL
+SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_info
+```
+
+在故障转移过程中，客户端从客户端进行的短暂断开连接通常持续一分钟，而不考虑服务层。
 
 > [!NOTE]
 > 在高强度工作负载的情况下，完成故障转移过程（不是实际的短暂不可用性）可能需要几分钟的时间。 这是因为实例引擎在能够进行故障转移之前正在处理主节点上的所有当前事务，并跟进辅助节点。

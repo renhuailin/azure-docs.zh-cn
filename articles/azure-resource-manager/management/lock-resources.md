@@ -4,12 +4,12 @@ description: 通过对所有用户和角色应用锁，来防止用户更新或�
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 53054f89c992139fbbd4f087d2a0344e26d97efc
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0e8fc74b2da0c253ec9c5bf34ec7543398aea48f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610193"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802447"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
 
@@ -38,7 +38,7 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 * 资源组上的不可删除锁可防止 Azure 资源管理器[自动删除历史记录中的部署](../templates/deployment-history-deletions.md)。 如果历史记录中达到 800 个部署，则部署会失败。
 
-* **Azure 备份服务** 创建的 **资源组** 上的“不能删除”锁会导致备份失败。 该服务最多支持 18 个还原点。 锁定后，备份服务无法清理还原点。 有关详细信息，请参阅[常见问题解答 - 备份 Azure VM](../../backup/backup-azure-vm-backup-faq.md)。
+* **Azure 备份服务** 创建的 **资源组** 上的“不能删除”锁会导致备份失败。 该服务最多支持 18 个还原点。 锁定后，备份服务无法清理还原点。 有关详细信息，请参阅[常见问题解答 - 备份 Azure VM](../../backup/backup-azure-vm-backup-faq.yml)。
 
 * **订阅** 上的只读锁会导致 **Azure 顾问** 无法正常运行。 顾问将无法存储其查询的结果。
 

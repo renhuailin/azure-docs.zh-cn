@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 409a316bd9c4222dd9b8ff30e42e37d23805c38b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: eb89d2a4e719e34ad5ea31656dc9e3c02472b07d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757756"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802255"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>将数据从 Azure Active Directory (Azure AD) 
 
@@ -28,7 +28,7 @@ ms.locfileid: "98757756"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 任何 Azure AD 许可证 (免费/O365/P1/P2) 足以将登录日志引入 Azure Sentinel。 对于 Azure Monitor (Log Analytics) 和 Azure Sentinel，可能会收取额外的每 gb 费用。
+- 必须具有 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 订阅才能将登录日志引入 Azure Sentinel。 对于 Azure Monitor (Log Analytics) 和 Azure Sentinel，可能会收取额外的每 gb 费用。
 
 - 必须在工作区中为你的用户分配 Azure Sentinel 参与者角色。
 
@@ -46,10 +46,6 @@ ms.locfileid: "98757756"
 
     - **登录日志**：有关托管应用程序和用户登录活动的使用情况的信息。
     - **审核日志**：有关用户和组管理、托管应用程序和目录活动的系统活动信息。
-    - **非交互式用户登录日志**：有关客户端代表用户执行的登录信息，无需用户进行任何交互或身份验证。
-    - **服务主体登录日志**：有关不涉及任何用户的应用程序和服务主体登录的信息。 在此类登录中，应用或服务代表自己提供对资源进行身份验证或访问所需的凭据。
-    - **托管标识登录日志**： azure 资源的登录，具有由 azure 管理的机密。
-    - **预配日志**：有关 Azure AD 预配服务预配的用户、组和角色的系统活动信息。
 
 ## <a name="find-your-data"></a>查找数据
 
@@ -57,10 +53,6 @@ ms.locfileid: "98757756"
 
 - `SigninLogs`
 - `AuditLogs`
-- `AADNonInteractiveUserSignInLogs`
-- `AADServicePrincipalSignInLogs`
-- `AADManagedIdentitySignInLogs`
-- `AADProvisioningLogs`
 
 若要查询 Azure AD 日志，请在 "查询" 窗口的顶部输入相关表名称。
 

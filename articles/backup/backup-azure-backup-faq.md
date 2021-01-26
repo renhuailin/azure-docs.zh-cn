@@ -3,12 +3,12 @@ title: 常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: dbe6ce95427b559c037e38525f9f48195a2a76a4
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: f819440001180a3c446f366e61e3ac0f983fa67f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703413"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806643"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -39,7 +39,7 @@ ms.locfileid: "98703413"
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>是否可以在订阅之间移动我的保管库？
 
-是。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
+是的。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>是否可以将备份数据移动到另一个保管库？
 
@@ -70,7 +70,7 @@ ms.locfileid: "98703413"
 
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>在哪里可以找到有关 Azure VM 备份的 Azure 备份代理的常见问题？
 
-- 有关在 Azure VM 上运行的代理，请阅读此[常见问题解答](backup-azure-vm-backup-faq.md)。
+- 有关在 Azure VM 上运行的代理，请阅读此[常见问题解答](backup-azure-vm-backup-faq.yml)。
 - 如需用于备份 Azure 文件夹的代理，请阅读此[常见问题解答](backup-azure-file-folder-backup-faq.md)。
 
 ## <a name="general-backup"></a>常规备份
@@ -236,5 +236,5 @@ Microsoft Azure 恢复服务 (MARS) 代理使用的加密密钥派生自密码�
 
 阅读其他常见问题：
 
-- 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.md)。
+- 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.yml)。
 - 有关 Azure 备份代理的[常见问题](backup-azure-file-folder-backup-faq.md)
