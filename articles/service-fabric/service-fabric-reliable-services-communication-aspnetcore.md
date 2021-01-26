@@ -4,12 +4,12 @@ description: 了解如何在无状态和有状态 Azure Service Fabric Reliable 
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba5626d477bbd6aa07d89703cc37b157f4cfd4d5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a125c6a1972b51f518175a4c69248119f71ada7c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576785"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791588"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services 中的 ASP.NET Core
 
@@ -190,7 +190,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ## <a name="kestrel-in-reliable-services"></a>Reliable Services 中的 Kestrel
 可以通过导入 **Microsoft.ServiceFabric.AspNetCore.Kestrel** NuGet 包来使用 Reliable Services 中的 Kestrel。 此包包含 `KestrelCommunicationListener`（`ICommunicationListener` 的实现）。 `KestrelCommunicationListener` 允许使用 Kestrel 作为 Web 服务器在 Reliable Service 内部创建 ASP.NET Core WebHost。
 
-Kestrel 是一个用于 ASP.NET Core 的跨平台 Web 服务器。 与 HTTP.sys 不同，Kestrel 不使用集中式终结点管理器。 与 HTTP.sys 的另一个区别在于，Kestrel 不支持在多个进程之间共享端口。 Kestrel 的每个实例必须使用唯一端口。 有关 Kestrel 的详细信息，请参阅[实现详细信息](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)。
+Kestrel 是一个用于 ASP.NET Core 的跨平台 Web 服务器。 与 HTTP.sys 不同，Kestrel 不使用集中式终结点管理器。 与 HTTP.sys 的另一个区别在于，Kestrel 不支持在多个进程之间共享端口。 Kestrel 的每个实例必须使用唯一端口。 有关 Kestrel 的详细信息，请参阅[实现详细信息](/aspnet/core/fundamentals/servers/kestrel)。
 
 ![Kestrel 示意图][4]
 

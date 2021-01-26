@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 1d3a7be429f730dd4dbd71bade1e3e51ea73c10f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1ff20ab19390dcdadb9a4aa79822f7ace3d31989
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188643"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791166"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标?
 
@@ -106,24 +106,24 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 | DSv2 | 无。 | 
 | DSv3 | 无。|
 | FSv2 | 无。 | 
-| HBv2 | 需要批准。 |  
-| HCS | 需要批准。 |  
-| M | 需要批准。 |
+| HBv2 | 需要审批。 |  
+| HCS | 需要审批。 |  
+| M | 需要审批。 |
 | NC | 无。 |    
-| NCsv2 | 需要批准。 |
-| NCsv3 | 需要批准。 |  
-| NDs | 需要批准。 |
-| NDv2 | 需要批准。 |
+| NCsv2 | 需要审批。 |
+| NCsv3 | 需要审批。 |  
+| NDs | 需要审批。 |
+| NDv2 | 需要审批。 |
 | NV | 无。 |
-| NVv3 | 需要批准。 | 
+| NVv3 | 需要审批。 | 
 
 
 虽然 Azure 机器学习支持这些 VM 系列，但它们可能并非在所有 Azure 区域中均可用。 若要检查 VM 系列是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。
 
 > [!NOTE]
-> Azure 机器学习不支持 Azure 计算支持的所有 VM 大小。 若要列出可用的 VM 大小，请使用以下方法之一：
+> Azure 机器学习不支持 Azure 计算支持的所有 VM 大小。 若要列出可用的 VM 大小，请使用以下某种方法：
 > * [REST API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2020-08-01/examples/ListVMSizesResult.json)
-> * [Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py.md#supported-vmsizes-workspace--location-none-)
+> * [Python SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py.md#supported-vmsizes-workspace--location-none-)
 >
 
 ### <a name="compute-isolation"></a>计算隔离

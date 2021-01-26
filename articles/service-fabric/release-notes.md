@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: bb7708514de6a1d68ecad0c142d68c321293d728
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 41aa7f251bc12fd889a71f65da83c4730ebda9a7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219617"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789627"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric 版本
 
@@ -117,7 +117,7 @@ Azure Service Fabric 7.0 现已推出！ 你可以通过 Azure 门户或 Azure �
 #### <a name="key-announcements"></a>重要公告
  - [**对应用程序机密的 KeyVaultReference 支持（预览版）**](./service-fabric-keyvault-references.md)：已启用 [托管标识](./concepts-managed-identity.md)的 Service Fabric 应用程序现在可以直接将 Key Vault 机密 URL 引用为环境变量、应用程序参数或容器存储库凭据。 Service Fabric 会使用应用程序的托管标识自动解析机密。 
      
-- **改进了无状态服务的升级安全性**：为了保证应用程序升级期间的可用性，我们引入了新的配置来定义视为可用的 [无状态服务的最小实例数](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet)。 以前，对于所有服务，此值都是 1，且不可更改。 凭借这项全新的每个服务安全检查，你可以确保服务在应用程序升级、群集升级和其他维护（依赖于 Service Fabric 的健康和安全检查）期间保留最少的实例数。
+- **改进了无状态服务的升级安全性**：为了保证应用程序升级期间的可用性，我们引入了新的配置来定义视为可用的 [无状态服务的最小实例数](/dotnet/api/system.fabric.description.statelessservicedescription)。 以前，对于所有服务，此值都是 1，且不可更改。 凭借这项全新的每个服务安全检查，你可以确保服务在应用程序升级、群集升级和其他维护（依赖于 Service Fabric 的健康和安全检查）期间保留最少的实例数。
   
 - [**用户服务的资源限制**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services)：用户可以为节点上的用户服务设置资源限制，以防止诸如 Service Fabric 系统服务资源耗尽之类的情况。 
   

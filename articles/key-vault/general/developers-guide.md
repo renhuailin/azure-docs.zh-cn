@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e92b17a5743e983ca3e77ad18c0973b9f056dfbd
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 40ce5f55b4109fee0099110c17f02b33c3eff808
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611162"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791418"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -39,7 +39,7 @@ ms.locfileid: "98611162"
 
 **用于密钥保管库管理的 API 和 Sdk：**
 
-| Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | Javascript |  
+| Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
 |[引用](/cli/azure/keyvault)<br>[快速入门](quick-create-cli.md)|[引用](/powershell/module/az.keyvault)<br>[快速入门](quick-create-powershell.md)|[引用](/rest/api/keyvault/)|[引用](/azure/templates/microsoft.keyvault/vaults)<br>[快速入门](https://docs.microsoft.com/azure/key-vault/general/vault-create-template)|[引用](/dotnet/api/microsoft.azure.management.keyvault)|[引用](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[引用](/java/api/com.microsoft.azure.management.keyvault)|[引用](/javascript/api/@azure/arm-keyvault)|
 
@@ -69,12 +69,12 @@ Key Vault 正在使用要求 Azure AD 安全主体授予访问权限 Azure AD �
 
 **Azure 标识客户端库**
 
-| .NET | Python | Java | Javascript |
+| .NET | Python | Java | JavaScript |
 |--|--|--|--|
 |[Azure Identity SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](/python/api/overview/azure/identity-readme)|[Azure 标识 SDK Java](/java/api/overview/azure/identity-readme)|[Azure 标识 SDK JavaScript](/javascript/api/overview/azure/identity-readme)|     
 
 >[!Note]
-> 建议用于 Key Vault .NET SDK 版本3（当前为弃用）的[应用身份验证库](https://docs.microsoft.com/dotnet/api/overview/azure/service-to-service-authentication)。 请按照 [microsoft.azure.services.appauthentication To Azure](https://docs.microsoft.com/dotnet/api/overview/azure/app-auth-migration) （将迁移到 KEY VAULT .Net SDK 版本4）进行迁移。
+> 建议用于 Key Vault .NET SDK 版本3（当前为弃用）的[应用身份验证库](/dotnet/api/overview/azure/service-to-service-authentication)。 请按照 [microsoft.azure.services.appauthentication To Azure](/dotnet/api/overview/azure/app-auth-migration) （将迁移到 KEY VAULT .Net SDK 版本4）进行迁移。
 
 有关如何在应用程序中 Key Vault 进行身份验证的教程，请参阅：
 - [在 .NET 中的虚拟机中托管的应用程序中 Key Vault 进行身份验证](./tutorial-net-virtual-machine.md)
@@ -87,19 +87,19 @@ Key Vault 正在使用要求 Azure AD 安全主体授予访问权限 Azure AD �
 
 **密钥 API 和 Sdk**
 
-| Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | Javascript |  
+| Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[引用](/cli/azure/keyvault/key)<br>[快速入门](../keys/quick-create-cli.md)|[引用](/powershell/module/az.keyvault/)<br>[快速入门](../keys/quick-create-powershell.md)|[引用](/rest/api/keyvault/#key-operations)|[引用](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/keys)<br>[快速入门](../keys/quick-create-template.md)|[引用](/dotnet/api/azure.security.keyvault.keys)<br>[快速入门](../keys/quick-create-net.md)|[引用](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[快速入门](../keys/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[快速入门](../keys/quick-create-java.md)|[引用](/javascript/api/@azure/keyvault-keys/)<br>[快速入门](../keys/quick-create-node.md)|
+|[引用](/cli/azure/keyvault/key)<br>[快速入门](../keys/quick-create-cli.md)|[引用](/powershell/module/az.keyvault/)<br>[快速入门](../keys/quick-create-powershell.md)|[引用](/rest/api/keyvault/#key-operations)|[引用](/azure/templates/microsoft.keyvault/vaults/keys)<br>[快速入门](../keys/quick-create-template.md)|[引用](/dotnet/api/azure.security.keyvault.keys)<br>[快速入门](../keys/quick-create-net.md)|[引用](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[快速入门](../keys/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[快速入门](../keys/quick-create-java.md)|[引用](/javascript/api/@azure/keyvault-keys/)<br>[快速入门](../keys/quick-create-node.md)|
 
 **证书 API 和 Sdk**
 
-| Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | Javascript |  
+| Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
 |[引用](/cli/azure/keyvault/certificate)<br>[快速入门](../certificates/quick-create-cli.md)|[引用](/powershell/module/az.keyvault)<br>[快速入门](../certificates/quick-create-powershell.md)|[引用](/rest/api/keyvault/#certificate-operations)|空值|[引用](/dotnet/api/azure.security.keyvault.certificates)<br>[快速入门](../certificates/quick-create-net.md)|[引用](/python/api/overview/azure/keyvault-certificates-readme)<br>[快速入门](../certificates/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)<br>[快速入门](../certificates/quick-create-java.md)|[引用](/javascript/api/@azure/keyvault-certificates/)<br>[快速入门](../certificates/quick-create-node.md)|
 
 **机密 API 和 Sdk**
 
-| Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | Javascript |  
+| Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
 |[引用](/cli/azure/keyvault/secret)<br>[快速入门](../secrets/quick-create-cli.md)|[引用](/powershell/module/az.keyvault/)<br>[快速入门](../secrets/quick-create-powershell.md)|[引用](/rest/api/keyvault/#secret-operations)|[引用](/azure/templates/microsoft.keyvault/vaults/secrets)<br>[快速入门](../secrets/quick-create-template.md)|[引用](/dotnet/api/azure.security.keyvault.secrets)<br>[快速入门](../secrets/quick-create-net.md)|[引用](/python/api/overview/azure/keyvault-secrets-readme)<br>[快速入门](../secrets/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-secrets/4.2.0/index.html)<br>[快速入门](../secrets/quick-create-java.md)|[引用](/javascript/api/@azure/keyvault-secrets/)<br>[快速入门](../secrets/quick-create-node.md)|
 

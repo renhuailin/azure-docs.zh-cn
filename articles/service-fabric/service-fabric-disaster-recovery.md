@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d99b4d1fbf227d850de387b7ca24dcd3fd40646
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257519"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791149"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric 中的灾难恢复
 提供高可用性的关键一环是确保服务能够经受各种不同类型的故障。 对于计划外和不受控制的故障，这一点尤其重要。 
@@ -172,7 +172,7 @@ Service Fabric 的目标是自动管理故障。 但是，若要处理某些类�
 >
 
 - 使用 `Repair-ServiceFabricPartition -PartitionId` 或 `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API。 使用此 API 可以指定分区 ID，使其从仲裁丢失转为潜在的数据丢失。
-- 如果你的群集遇到导致服务进入仲裁丢失状态的频繁故障，而且可能会 _丢失数据，则_指定适当的 [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) 值可帮助你的服务自动恢复。 在执行恢复之前，Service Fabric 会等待提供的 `QuorumLossWaitDuration` 值（默认为 infinite）。 我们不建议使用此方法，因为它可能导致意外的数据丢失  。
+- 如果你的群集遇到导致服务进入仲裁丢失状态的频繁故障，而且可能会 _丢失数据，则_ 指定适当的 [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice) 值可帮助你的服务自动恢复。 在执行恢复之前，Service Fabric 会等待提供的 `QuorumLossWaitDuration` 值（默认为 infinite）。 我们不建议使用此方法，因为它可能导致意外的数据丢失  。
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Service Fabric 群集的可用性
 一般情况下，Service Fabric 群集是一个分散程度很高的环境，没有任何单一故障点。 任何一个节点发生故障不会给群集造成可用性或可靠性问题，主要是因为 Service Fabric 系统服务遵循前面提供的准则。 即，默认情况下，它们始终运行三个或三个以上的副本，并且无状态系统服务在所有节点上运行。 
@@ -182,7 +182,7 @@ Service Fabric 的目标是自动管理故障。 但是，若要处理某些类�
 运行中群集上的服务会继续在这些情况下运行，除非它们要求将数据写入系统服务才能继续运行。 例如，如果故障转移管理器处于仲裁丢失状态，则所有服务会继续运行。 但是，发生故障的任何服务无法自动重启，因为这需要故障转移管理器的介入。 
 
 ### <a name="failures-of-a-datacenter-or-an-azure-region"></a>数据中心或 Azure 区域的故障
-在极少数情况下，物理数据中心可能会由于电源或网络连接中断而变得暂时不可用。 在这些情况下，Service Fabric 群集和该数据中心或 Azure 区域中的服务不可用。 但会保留你的数据__。 
+在极少数情况下，物理数据中心可能会由于电源或网络连接中断而变得暂时不可用。 在这些情况下，Service Fabric 群集和该数据中心或 Azure 区域中的服务不可用。 但会保留你的数据。 
 
 对于在 Azure 中运行的群集，可以在 [Azure 状态页][azure-status-dashboard]上查看有关中断的最新信息。 物理数据中心遭到部分或完全损坏（这种情况很少见）时，托管在此处的任何 Service Fabric 群集或其中的服务可能会丢失。 这种丢失包括未在该数据中心或区域外部备份的任何状态。
 

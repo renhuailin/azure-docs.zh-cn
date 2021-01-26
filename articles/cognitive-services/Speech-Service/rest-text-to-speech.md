@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d858474eca34243a007d0d0ac1e023a4a0fab8ec
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 53be2f6795593bf44cafde149242b13ed4fdfe50
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572334"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790471"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -56,15 +56,13 @@ ms.locfileid: "98572334"
 | 美国东部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 法国中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 印度中部 | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Japan East | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 日本东部 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 韩国中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 北欧 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 南非北部 | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 东南亚 | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 英国南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 美国中西部 | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 西欧 | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -213,10 +211,10 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 
 | 标头 | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必需 |
-| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必需 |
-| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必需 |
-| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必需 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必须 |
+| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必须 |
+| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必须 |
+| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必须 |
 
 ### <a name="audio-outputs"></a>音频输出
 
@@ -279,5 +277,5 @@ Authorization: Bearer [Base64 access_token]
 ## <a name="next-steps"></a>后续步骤
 
 - [创建免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
-- [用于长格式音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [用于长格式音频的异步合成](./long-audio-api.md)
 - [自定义语音入门](how-to-custom-voice.md)

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e36d5ab98f1177b5a0b89ee10b3e6bd22560c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83655085"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791453"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>基于 Azure 防火墙威胁智能的筛选
 
@@ -27,7 +27,7 @@ ms.locfileid: "83655085"
 
 默认情况下，基于威胁智能的筛选在警报模式下启用。 门户界面在你的区域可用之前，无法关闭此功能或更改模式。
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="防火墙威胁智能":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="基于威胁智能的筛选门户界面":::
 
 ## <a name="logs"></a>日志
 
@@ -53,6 +53,6 @@ ms.locfileid: "83655085"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 防火墙 Log Analytics 示例](log-analytics-samples.md)
+- 请参阅 [Azure 防火墙 Log Analytics 示例](./firewall-workbook.md)
 - 了解如何[部署和配置 Azure 防火墙](tutorial-firewall-deploy-portal.md)
 - 查看 [Microsoft 安全智能报告](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)

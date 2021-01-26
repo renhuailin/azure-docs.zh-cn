@@ -3,15 +3,15 @@ title: 在 Azure 实验室服务中使用共享映像库 | Microsoft Docs
 description: 了解如何将实验室帐户配置为使用共享映像库，以便用户可以与其他用户共享映像，其他用户可以使用该映像在实验室中创建模板 VM。
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: d9f4e75163f591680cc8f85ac42c1b6ada5f2365
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 984cb4c47099928ffab327895a728cbe8a8f9604
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647760"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791384"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure 实验室服务中使用共享映像库
-本文介绍教师/实验室管理员如何将模板虚拟机映像保存到[共享映像库](../virtual-machines/windows/shared-image-galleries.md)，以便其他人可以使用它来创建实验室。 
+本文介绍教师/实验室管理员如何将模板虚拟机映像保存到[共享映像库](../virtual-machines/shared-image-galleries.md)，以便其他人可以使用它来创建实验室。 
 
 > [!IMPORTANT]
 > 使用共享映像库时，Azure 实验室服务仅支持少于 128 GB 操作系统磁盘空间的映像。 在创建实验室的过程中，将不会在虚拟机映像列表中显示超过 128 GB 磁盘空间或多个磁盘的映像。
@@ -48,7 +48,7 @@ ms.locfileid: "94647760"
     将映像保存到共享映像库后，可以在创建其他实验室时从库中使用该映像。 还可以将映像上传到实验室上下文之外的共享映像库。 有关详细信息，请参阅[共享映像库概述](../virtual-machines/shared-images-powershell.md)。 
 
     > [!IMPORTANT]
-    > 将 Azure 实验室服务中的 [实验室模板映像保存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) 到共享映像库时，会将该映像作为 **专用映像** 上载到库。 [专用映像](../virtual-machines/windows/shared-image-galleries.md#generalized-and-specialized-images) 保留计算机特定的信息和用户配置文件。 你仍可以直接将通用化映像上传到 Azure 实验室服务之外的库。    
+    > 将 Azure 实验室服务中的 [实验室模板映像保存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) 到共享映像库时，会将该映像作为 **专用映像** 上载到库。 [专用映像](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) 保留计算机特定的信息和用户配置文件。 你仍可以直接将通用化映像上传到 Azure 实验室服务之外的库。    
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>使用共享映像库中的映像
 在创建新的实验室时，教师可以在该模板的共享映像库中选择可用的自定义映像。
@@ -60,4 +60,4 @@ ms.locfileid: "94647760"
 
 
 ## <a name="next-steps"></a>后续步骤
-有关共享映像库的详细信息，请参阅[共享映像库](../virtual-machines/windows/shared-image-galleries.md)。
+有关共享映像库的详细信息，请参阅[共享映像库](../virtual-machines/shared-image-galleries.md)。

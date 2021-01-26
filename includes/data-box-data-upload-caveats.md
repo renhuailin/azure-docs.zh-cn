@@ -5,12 +5,12 @@ ms.subservice: heavy
 ms.topic: include
 ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 80411ac191d0385ddafd4a3cc490d322ce039689
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80e34c117c02c2126b46297c4219effa85e9caa6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91643369"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792287"
 ---
 - 不要直接将文件复制到任何预创建的共享。 需要在共享下创建文件夹，然后将文件复制到该文件夹。
 - StorageAccount_BlockBlob 和 StorageAccount_PageBlob 下的文件夹为容器   。 例如，容器创建为 StorageAccount_BlockBlob/container 和 StorageAccount_PageBlob/container   。

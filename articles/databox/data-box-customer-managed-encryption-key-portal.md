@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/19/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 80a6824edb92d8337481f592cbbf5eb23255b383
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e6b588ddea5bf4b4c92e89d9cebb37b09b9a86af
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185523"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791538"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>将 Azure 密钥保管库中的客户管理的密钥用于 Azure Data Box
 
@@ -95,7 +95,7 @@ Data Box 订单的客户托管的密钥必须满足以下要求：
 
 7. 选择要用于管理此资源的客户托管密钥的标识的类型。 您可以使用在创建订单时生成的 **系统分配** 的标识，也可以选择用户分配的标识。
 
-    用户分配的标识是一个独立的资源，可用于管理对资源的访问。 有关详细信息，请参阅[托管标识类型](/azure/active-directory/managed-identities-azure-resources/overview)。
+    用户分配的标识是一个独立的资源，可用于管理对资源的访问。 有关详细信息，请参阅[托管标识类型](../active-directory/managed-identities-azure-resources/overview.md)。
 
     ![选择标识类型](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-13.png)
 
@@ -103,7 +103,7 @@ Data Box 订单的客户托管的密钥必须满足以下要求：
 
     ![选择要使用的标识](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-14.png)
 
-    你无法在此处创建新的用户标识。 若要了解如何创建一个角色，请参阅 [使用 Azure 门户创建、列出、删除或分配用户分配的托管标识](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)。
+    你无法在此处创建新的用户标识。 若要了解如何创建一个角色，请参阅 [使用 Azure 门户创建、列出、删除或分配用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
 
     所选用户标识显示在 " **加密类型** " 设置中。
 
@@ -141,7 +141,7 @@ Data Box 订单的客户托管的密钥必须满足以下要求：
 
     ![选择加密选项-2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-17.png)
 
-4. 选择“保存”。
+4. 选择“保存”。 
 
     ![保存更新的加密设置-1](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-17-a.png)
 
@@ -161,7 +161,7 @@ Data Box 订单的客户托管的密钥必须满足以下要求：
 
      ![更改为客户托管密钥的系统分配选项](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-19.png)
 
-3. 选择“保存”。
+3. 选择“保存”。 
 
     ![保存更新的加密设置-2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-17-a.png)
 
@@ -175,7 +175,7 @@ Data Box 订单的客户托管的密钥必须满足以下要求：
 
     ![Data Box 顺序的概述屏幕-5](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-20.png)
 
-3. 选择“保存”。
+3. 选择“保存”。 
 
     ![为 Microsoft 托管密钥保存更新的加密设置](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-21.png)
 
@@ -187,9 +187,9 @@ Data Box 订单的客户托管的密钥必须满足以下要求：
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| 无法提取密钥，因为客户管理的密钥已被禁用。| 是，通过启用密钥版本。|
 | SsemUserErrorEncryptionKeyExpired| 无法提取密钥，因为客户管理的密钥已到期。| 是，通过启用密钥版本。|
-| SsemUserErrorKeyDetailsNotFound| 无法提取密钥，因为无法找客户管理的密钥。| 如果删除了密钥保管库，则无法恢复客户管理的密钥。  如果将密钥保管库迁移到了其他租户，请参阅[订阅移动后更改密钥保管库租户 ID](../key-vault/general/move-subscription.md)。 如果删除了密钥保管库：<ol><li>是，如果它处于清除保护期内，请使用[恢复密钥保管库](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)中的步骤。</li><li>否，如果超出了清除保护期。</li></ol><br>如果密钥保管库进行了租户迁移，则可以使用以下步骤之一进行恢复： <ol><li>将密钥保管库还原回旧租户。</li><li>设置 `Identity = None`，然后将值设置回 `Identity = SystemAssigned`。 这将在新标识创建后删除并重新创建该标识。 在密钥保管库的“访问策略”中为新标识启用 `Get`、`Wrap` 和 `Unwrap` 权限。</li></ol> |
+| SsemUserErrorKeyDetailsNotFound| 无法提取密钥，因为无法找客户管理的密钥。| 如果删除了密钥保管库，则无法恢复客户管理的密钥。  如果将密钥保管库迁移到了其他租户，请参阅[订阅移动后更改密钥保管库租户 ID](../key-vault/general/move-subscription.md)。 如果删除了密钥保管库：<ol><li>是，如果它处于清除保护期内，请使用[恢复密钥保管库](../key-vault/general/key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)中的步骤。</li><li>否，如果超出了清除保护期。</li></ol><br>如果密钥保管库进行了租户迁移，则可以使用以下步骤之一进行恢复： <ol><li>将密钥保管库还原回旧租户。</li><li>设置 `Identity = None`，然后将值设置回 `Identity = SystemAssigned`。 这将在新标识创建后删除并重新创建该标识。 在密钥保管库的“访问策略”中为新标识启用 `Get`、`Wrap` 和 `Unwrap` 权限。</li></ol> |
 | SsemUserErrorKeyVaultBadRequestException | 应用了客户管理的密钥，但密钥访问权限尚未授予或已被吊销，或者无法访问密钥保管库，因为启用了防火墙。 | 将所选标识添加到密钥保管库，以启用对客户托管密钥的访问权限。 如果 key vault 启用了防火墙，请切换到系统分配的标识，然后添加客户管理的密钥。 有关详细信息，请参阅如何 [启用密钥](#enable-key)。 |
-| SsemUserErrorKeyVaultDetailsNotFound| 无法提取密钥，因为找不到与客户管理的密钥关联的密钥保管库。 | 如果删除了密钥保管库，则无法恢复客户管理的密钥。  如果将密钥保管库迁移到了其他租户，请参阅[订阅移动后更改密钥保管库租户 ID](../key-vault/general/move-subscription.md)。 如果删除了密钥保管库：<ol><li>是，如果它处于清除保护期内，请使用[恢复密钥保管库](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)中的步骤。</li><li>否，如果超出了清除保护期。</li></ol><br>如果密钥保管库进行了租户迁移，则可以使用以下步骤之一进行恢复： <ol><li>将密钥保管库还原回旧租户。</li><li>设置 `Identity = None`，然后将值设置回 `Identity = SystemAssigned`。 这将在新标识创建后删除并重新创建该标识。 在密钥保管库的“访问策略”中为新标识启用 `Get`、`Wrap` 和 `Unwrap` 权限。</li></ol> |
+| SsemUserErrorKeyVaultDetailsNotFound| 无法提取密钥，因为找不到与客户管理的密钥关联的密钥保管库。 | 如果删除了密钥保管库，则无法恢复客户管理的密钥。  如果将密钥保管库迁移到了其他租户，请参阅[订阅移动后更改密钥保管库租户 ID](../key-vault/general/move-subscription.md)。 如果删除了密钥保管库：<ol><li>是，如果它处于清除保护期内，请使用[恢复密钥保管库](../key-vault/general/key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)中的步骤。</li><li>否，如果超出了清除保护期。</li></ol><br>如果密钥保管库进行了租户迁移，则可以使用以下步骤之一进行恢复： <ol><li>将密钥保管库还原回旧租户。</li><li>设置 `Identity = None`，然后将值设置回 `Identity = SystemAssigned`。 这将在新标识创建后删除并重新创建该标识。 在密钥保管库的“访问策略”中为新标识启用 `Get`、`Wrap` 和 `Unwrap` 权限。</li></ol> |
 | SsemUserErrorSystemAssignedIdentityAbsent  | 无法提取密钥，因为无法找客户管理的密钥。| 是，检查以下事项： <ol><li>密钥保管库在访问策略中是否仍具有 MSI。</li><li>标识的类型为“系统分配”。</li><li>对密钥保管库的访问策略中的标识启用获取、包装和解包权限。</li></ol>|
 | SsemUserErrorUserAssignedLimitReached | 添加新的用户分配的标识失败，因为已达到可添加的用户分配标识总数限制。 | 请用更少的用户标识重试该操作，或在重试之前从资源中删除一些用户分配的标识。 |
 | SsemUserErrorCrossTenantIdentityAccessForbidden | 托管标识访问操作失败。 <br> 注意：这适用于将订阅移到不同租户的情况。 客户必须手动将标识移动到新租户。 PFA mail 了解更多详细信息。 | 请将所选标识移动到订阅所在的新租户。 有关详细信息，请参阅如何 [启用密钥](#enable-key)。 |

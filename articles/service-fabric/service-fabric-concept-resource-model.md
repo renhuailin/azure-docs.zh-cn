@@ -3,12 +3,12 @@ title: Azure Service Fabric 应用程序资源模型
 description: 本文概述如何使用 Azure 资源管理器管理 Azure Service Fabric 应用程序。
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: f4fbd775ab479437c350dc24b9b5511f7a614c8b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0019f154f301d2b688d4c16c9adb36ec386adef2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576088"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790717"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric 应用程序资源模型
 
@@ -54,7 +54,7 @@ ms.locfileid: "96576088"
 可以通过将公共访问级别设置为“专用”来保护群集中的资源。 可以通过多种方式授予访问权限：
 
 * 使用 [Azure Active Directory](../storage/common/storage-auth-aad-app.md) 授予对 Blob 和队列的访问权限。
-* [在 Azure 门户中使用 AZURE RBAC](../storage/common/storage-auth-aad-rbac-portal.md)授予对 azure blob 和队列数据的访问权限。
+* [在 Azure 门户中使用 Azure RBAC](../storage/common/storage-auth-aad-rbac-portal.md) 授予对 Azure Blob 和队列数据的访问权限。
 * 使用[共享访问签名](/rest/api/storageservices/delegate-access-with-shared-access-signature)委派访问权限。
 
 以下屏幕截图中的示例使用对 Blob 的匿名读取访问。
@@ -140,7 +140,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 
 > [!IMPORTANT]
-> 必须从相应 ApplicationManifest.xml 文件的 DefaultServices 节中删除通过 ARM JSON 定义部署的任何服务。
+> 必须从相应 ApplicationManifest.xml 文件的“DefaultServices”部分删除通过 ARM JSON 定义部署的任何服务。
 
 
 你可能会出于以下某一原因升级已部署到 Service Fabric 群集的应用程序：
@@ -171,13 +171,13 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 若要删除使用资源管理器中的应用程序资源模型部署的应用程序，请执行以下操作：
 
-1. 使用 [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) cmdlet 获取应用程序的资源 ID：
+1. 使用 [Get-AzResource](/powershell/module/az.resources/get-azresource) cmdlet 获取应用程序的资源 ID：
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. 使用 [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) cmdlet 删除应用程序资源：
+1. 使用 [Remove-AzResource](/powershell/module/az.resources/remove-azresource) cmdlet 删除应用程序资源：
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]

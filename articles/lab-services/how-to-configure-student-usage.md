@@ -3,18 +3,18 @@ title: 在 Azure 实验室服务实验室中配置使用设置
 description: 了解如何配置实验室的学生数量，如何将学生注册到实验室，控制他们可使用 VM 的小时数，等等。
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 3b05246445aea708312891ec631a35da3bc1eb8e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 380a587eecb276c457b93ca3c3f3ac08b2239275
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602625"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791957"
 ---
 # <a name="add-and-manage-lab-users"></a>添加和管理实验室用户
 
 本文介绍如何将学生用户添加到实验室、向实验室注册这些用户、控制他们可使用虚拟机 (VM) 等其他小时数。 
 
-添加用户时，默认情况下会打开 " **限制访问** " 选项，除非他们在用户列表中，否则学生无法注册到实验室，即使他们具有注册链接。 只有列出的用户才能使用发送的注册链接注册到实验室。 你可以关闭 " **限制访问**"，它允许学生注册到实验室，前提是他们具有注册链接。 
+添加用户时，默认情况下，“限制访问”选项处于打开状态，除非他们在用户列表中，否则即使学生有注册链接，他们也无法注册到实验室。 只有列出的用户可以使用你发送的注册链接注册到实验室。 你可以关闭“限制访问”，这样一来，学生只要有注册链接就可以注册到实验室。 
 
 本文介绍如何将用户添加到实验室。
 
@@ -24,73 +24,73 @@ ms.locfileid: "96602625"
 
 你现在可以将实验室用户列表同步到现有 Azure Active Directory (Azure AD) 组，这样就不必手动添加或删除用户。 
 
-可以在组织的 Azure Active Directory 中创建 Azure AD 组，以管理对组织资源和基于云的应用的访问。 若要了解详细信息，请参阅 [Azure AD 组](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)。 如果你的组织使用 Microsoft Office 365 或 Azure 服务，则你的组织已有管理你的 Azure Active Directory 的管理员。 
+可以在组织的 Azure Active Directory 中创建 Azure AD 组，以管理对组织资源和基于云的应用的访问。 若要了解详细信息，请参阅 [Azure AD 组](../active-directory/fundamentals/active-directory-manage-groups.md)。 如果组织使用 Microsoft Office 365 或 Azure 服务，则组织已有管理 Azure Active Directory 的管理员。 
 
 ### <a name="sync-users-with-azure-ad-group"></a>将用户与 Azure AD 组同步
 
 > [!IMPORTANT]
-> 请确保 "用户" 列表为空。 如果手动添加的实验室中有现有用户或通过导入 CSV 文件，则不会显示用于将实验室同步到现有组的选项。 
+> 确保用户列表为空。 如果实验室中存在手动添加或通过导入 CSV 文件添加的现有用户，则不会显示用于将实验室同步到现有组的选项。 
 
 1. 登录到 [Azure 实验室服务网站](https://labs.azure.com/)。
 1. 选择要使用的实验室。
 1. 在左窗格中，选择“用户”。 
-1. 单击 " **从组同步**"。 
+1. 单击“从组同步”。 
 
     :::image type="content" source="./media/how-to-configure-student-usage/add-users-sync-group.png" alt-text="通过从 Azure AD 组同步来添加用户":::
     
-1. 系统将提示选取要将实验室同步到的现有 Azure AD 组。 
+1. 系统将提示你选择要将实验室同步到的现有 Azure AD 组。 
     
     如果在列表中看不到 Azure AD 组，可能是由于以下原因造成的：
 
-    -   如果你是 Azure Active Directory 的来宾用户 (通常情况下，如果你在拥有 Azure AD) 的组织之外，并且不能在 Azure AD 内搜索组。 在这种情况下，在这种情况下，你将无法向实验室添加 Azure AD 组。 
-    -   通过团队创建 Azure AD 组不会显示在此列表中。 你可以在团队内添加 Azure 实验室服务应用，以便直接从该应用中创建和管理实验室。 请参阅有关 [从团队内部管理实验室的用户列表](how-to-manage-user-lists-within-teams.md)的详细信息。 
-1. 选择要将实验室同步到 Azure AD 组后，单击 " **添加**"。
-1. 一旦实验室同步，它就会将 Azure AD 组内的所有人拉入实验室，作为用户，你将看到用户列表已更新。 只有此 Azure AD 组中的人员才能访问你的实验室。 用户列表将每24小时刷新一次，以与 Azure AD 组的最新成员身份匹配。 还可以单击 "用户" 选项卡中的 "同步" 按钮，手动同步到 Azure AD 组中的最新更改。
-1. 单击 " **全部邀请** " 按钮将用户邀请到实验室，该按钮将向所有用户发送一封电子邮件，其中包含实验室的注册链接。 
+    -   如果你是 Azure Active Directory 的来宾用户（通常是在拥有 Azure AD 的组织之外），你将无法在 Azure AD 内搜索组。 在这种情况下，你将无法向实验室添加 Azure AD 组。 
+    -   通过 Teams 创建 Azure AD 组不会显示在此列表中。 你可以在 Teams 内添加 Azure 实验室服务应用，以便直接从中创建和管理实验室。 请参阅有关[从 Teams 内部管理实验室用户列表](how-to-manage-user-lists-within-teams.md)的详细信息。 
+1. 选择要将实验室同步到 Azure AD 组后，单击“添加”。
+1. 同步实验室后，它会将 Azure AD 组内的所有人作为用户拉入实验室，你将看到更新的用户列表。 只有此 Azure AD 组中的人员才能访问你的实验室。 用户列表将每 24 小时刷新一次，以与 Azure AD 组的最新成员身份匹配。 还可以单击“用户”选项卡中的“同步”按钮，手动同步到 Azure AD 组中的最新更改。
+1. 单击“全部邀请”按钮邀请用户加入实验室，这将向所有用户发送一封电子邮件，其中包含实验室的注册链接。 
 
 ### <a name="automatic-management-of-virtual-machines-based-on-changes-to-the-azure-ad-group"></a>基于对 Azure AD 组的更改自动管理虚拟机 
 
 实验室同步到 Azure AD 组后，实验室中的虚拟机数将自动与组中的用户数相匹配。 你将不再能够手动更新实验室容量。 将用户添加到 Azure AD 组后，实验室会自动为该用户添加虚拟机。 从 Azure AD 组中删除用户时，实验室会自动从实验室删除用户的虚拟机。 
 
-## <a name="add-users-manually-from-emails-or-csv-file"></a>从电子邮件 (s) 或 CSV 文件中手动添加用户
+## <a name="add-users-manually-from-emails-or-csv-file"></a>从电子邮件或 CSV 文件中手动添加用户
 
-在本部分中，你将手动添加学生 (通过电子邮件地址或) 上传 CSV 文件。 
+在本部分中，你将手动添加学生（通过电子邮件地址或上传 CSV 文件）。 
 
 ### <a name="add-users-by-email-address"></a>按电子邮件地址添加用户
 
 1. 在左窗格中，选择“用户”。 
-1. 单击 " **手动添加用户**"。 
+1. 单击“手动添加用户”。 
 
     :::image type="content" source="./media/how-to-configure-student-usage/add-users-manually.png" alt-text="手动添加用户":::
-1. 选择 " **通过电子邮件地址添加** (默认值) ，在单独的行或以分号分隔的单个行上输入学生的电子邮件地址。 
+1. 选择“按电子邮件地址添加”（默认），在单独的行或用分号分隔的单个行上输入学生的电子邮件地址。 
 
     :::image type="content" source="./media/how-to-configure-student-usage/add-users-email-addresses.png" alt-text="添加用户的电子邮件地址":::
 1. 选择“保存”。 
 
-    该列表显示当前用户的电子邮件地址和状态，无论它们是否已注册到实验室。 
+    该列表显示当前用户的电子邮件地址和状态，无论他们是否已注册到实验室。 
 
     :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="用户列表":::
 
     > [!NOTE]
-    > 学生注册到实验室后，列表将显示其名称。 列表中显示的名称是使用 Azure Active Directory 中学生的名字和姓氏来构造的。 
+    > 学生注册到实验室后，列表将显示其名称。 列表中显示的名称是按 Azure Active Directory 中学生的名字和姓氏构造的。 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>通过上传 CSV 文件添加用户
 
-你还可以通过上载包含其电子邮件地址的 CSV 文件来添加用户。 
+还可以通过上载包含其电子邮件地址的 CSV 文件来添加用户。 
 
-CSV 文本文件用于存储逗号分隔 (CSV) 表格数据 (数字和文本) 。 CSV 文件存储以逗号分隔的信息，而不是将信息存储在列字段 (如电子表格) 中。 CSV 文件中的每一行都具有与逗号分隔的 "字段数" 相同的值。 您可以使用 Excel 轻松创建和编辑 CSV 文件。
+CSV 文本文件用于存储以逗号分隔 (CSV) 的表格数据（数字和文本）。 CSV 文件存储以逗号分隔的信息，而不是将信息存储在列字段中（如电子表格中）。 CSV 文件中的每一行都相同数量的以逗号分隔的“字段”。 可以使用 Excel 轻松创建和编辑 CSV 文件。
 
 1. 在 Microsoft Excel 中，创建一个在一列中列出学生电子邮件地址的 CSV 文件。
 
     :::image type="content" source="./media/how-to-configure-student-usage/csv-file-with-users.png" alt-text="CSV 文件中的用户列表":::
-1. 在 " **用户** " 窗格的顶部，选择 " **添加用户**"，然后选择 " **上载 CSV**"。
-1. 选择包含学生电子邮件地址的 CSV 文件，然后选择 " **打开**"。
+1. 在“用户”窗格的顶部，选择“添加用户”，然后选择“上传 CSV”  。
+1. 选择包含学生电子邮件地址的 CSV 文件，然后选择“打开”。
 
-    " **添加用户** " 窗口将显示 CSV 文件中的电子邮件地址列表。 
+    “添加用户”窗口显示 CSV 文件中的电子邮件地址列表。 
 1. 选择“保存”。 
-1. 在 " **用户** " 窗格中，查看添加的学生列表。 
+1. 在“用户”窗格中，查看添加的学生列表。 
 
-    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="&quot;用户&quot; 窗格中已添加用户的列表":::
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="用户”窗格中已添加用户的列表":::
 
 ## <a name="send-invitations-to-users"></a>向用户发送邀请
 

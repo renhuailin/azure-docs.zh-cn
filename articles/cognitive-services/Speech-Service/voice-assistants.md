@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 09859be61029242e987603e01b5c3fba8dffb2ca
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fc85eec008ef099d63d538e4871a1a84573f5a18
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483880"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790439"
 ---
 # <a name="what-is-a-voice-assistant"></a>什么是语音助手？
 
@@ -47,10 +47,10 @@ ms.locfileid: "96483880"
 
 无论你选择 " [直接行语音](direct-line-speech.md) " 还是 " [自定义命令](custom-commands.md) " 来创建助手交互，你都可以使用一组丰富的自定义功能来自定义你的助理、产品和个性。
 
-| 类别 | 功能 |
+| Category | 功能 |
 |----------|----------|
 |[Custom 关键字](./custom-keyword-basics.md) | 用户可以使用 "你好 Contoso" 等自定义关键字开始与助手对话。 应用使用 Speech SDK 中的自定义关键字引擎来完成此工作，可以使用 [可在此处生成](./custom-keyword-basics.md)的自定义关键字对其进行配置。 语音助手可以使用服务端关键字验证来提高关键字激活 (与独立) 设备的准确性。
-|[语音到文本](speech-to-text.md) | 语音助手使用语音服务的 [语音到文本](speech-to-text.md) 将实时音频转换为识别的文本。 此文本在助手实现和客户端应用程序中转录。
+|[语音转文本](speech-to-text.md) | 语音助手使用语音服务的 [语音到文本](speech-to-text.md) 将实时音频转换为识别的文本。 此文本在助手实现和客户端应用程序中转录。
 |[文本到语音转换](text-to-speech.md) | 使用来自语音服务的 [文本到语音转换](text-to-speech.md) ，来自助手的文本响应。 然后，此合成将作为音频流提供给客户端应用程序。 Microsoft 提供了构建你自己的自定义优质神经 TTS 声音的功能，可为你的品牌提供一种语音。 若要了解详细[信息，请联系我们。](mailto:mstts@microsoft.com)
 
 ## <a name="getting-started-with-voice-assistants"></a>语音助手入门
@@ -66,7 +66,7 @@ GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖
 
 * [GitHub 上的语音助手示例](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
 * [教程：使用 c # 语音 SDK，通过语音启用使用 Azure 机器人服务生成的助手](tutorial-voice-enable-your-bot-speech-sdk.md)
-* [教程：使用简单的语音命令创建自定义命令应用程序](how-to-custom-commands-create-application-with-simple-commands.md)
+* [教程：使用简单的语音命令创建自定义命令应用程序](./how-to-develop-custom-commands-application.md)
 
 ## <a name="customization"></a>自定义
 

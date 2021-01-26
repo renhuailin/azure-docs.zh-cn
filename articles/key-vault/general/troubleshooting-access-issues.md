@@ -7,19 +7,19 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 8e4e64cd872794354479c29d4aaa000cee45c5a3
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: c5fab8b856ff9c82a0de887dc9c322dbf541348b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901209"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791401"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>排查 Azure 密钥保管库访问策略问题
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="i-am-not-able-to-list-or-get-secretskeyscertificate-i-am-seeing-something-went-wrong-error"></a>我无法列出或获取机密/密钥/证书。 我看到“出现了问题。”错误。
-如果在列出/获取/创建或访问机密时遇到问题，请确保已定义访问策略来执行该操作：[密钥保管库访问策略](https://docs.microsoft.com/azure/key-vault/general/group-permissions-for-apps)
+如果在列出/获取/创建或访问机密时遇到问题，请确保已定义访问策略来执行该操作：[密钥保管库访问策略](./assign-access-policy-cli.md)
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>如何确定访问密钥保管库的方式和时间？
 

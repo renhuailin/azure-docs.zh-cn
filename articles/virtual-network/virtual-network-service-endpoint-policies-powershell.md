@@ -17,16 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 1d4fcc280ba2e34d2fa81584846441ad6fe81431
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8e300c9be8f3e59dc9443bf1f1806e4228992ad
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708189"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790348"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>使用 Azure PowerShell 的虚拟网络服务终结点策略管理数据渗透到 Azure 存储帐户
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 利用虚拟网络服务终结点策略，你可以通过服务终结点在虚拟网络中应用对 Azure 存储帐户的访问控制。 这是保护工作负荷的关键，管理允许的存储帐户和允许数据渗透的位置。
 在本文中，学习如何：
@@ -38,6 +36,8 @@ ms.locfileid: "84708189"
 * 将 (VM) 的虚拟机部署到子网。
 * 从子网确认对允许的存储帐户的访问权限。
 * 确认拒绝从子网到不允许的存储帐户的访问。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -303,7 +303,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 若要测试对存储帐户的网络访问，请在子网中部署 VM。
 
-使用[new-azvm](/powershell/module/az.compute/new-azvm)在*专用*子网中创建虚拟机。 运行以下命令时，会提示输入凭据。 输入的值将配置为用于 VM 的用户名和密码。 `-AsJob` 选项会在后台创建 VM，因此可继续执行下一步。
+使用 [new-azvm](/powershell/module/az.compute/new-azvm)在 *专用* 子网中创建虚拟机。 运行以下命令时，会提示输入凭据。 输入的值将配置为用于 VM 的用户名和密码。 `-AsJob` 选项会在后台创建 VM，因此可继续执行下一步。
 
 ```azurepowershell-interactive
 New-AzVm -ResourceGroupName myresourcegroup `
@@ -338,7 +338,7 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-此时会创建远程桌面协议 (.rdp) 文件，并下载到计算机。 打开下载的 rdp 文件。 出现提示时，选择“连接”  。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”  ，然后选择“使用其他帐户”  ，以指定在创建 VM 时输入的凭据。 选择“确定” 。 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。  
+此时会创建远程桌面协议 (.rdp) 文件，并下载到计算机。 打开下载的 rdp 文件。 出现提示时，选择“连接”。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”  ，然后选择“使用其他帐户”  ，以指定在创建 VM 时输入的凭据。 选择“确定” 。 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。 
 
 在 *myVmPrivate* VM 上，使用 PowerShell 将 Azure 文件共享从允许的存储帐户映射到驱动器 Z。 
 

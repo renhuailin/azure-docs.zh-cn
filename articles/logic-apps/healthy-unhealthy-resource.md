@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 7d43c128f0f587a32cc4b8673727579043f268eb
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ed1fe2885b1be28a03251bcfcecd08bdbd35adcf
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629589"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790066"
 ---
 # <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>设置日志记录，以便在 Azure 安全中心监视逻辑应用
 
@@ -24,7 +24,7 @@ ms.locfileid: "97629589"
 
 * Azure 订阅。 如果没有订阅，请在开始之前 [创建一个免费的 Azure 帐户](https://azure.microsoft.com/free/) 。
 * [已启用诊断日志记录](#enable-diagnostic-logging)的现有逻辑应用。
-* 为逻辑应用启用日志记录所需的 Log Analytics 工作区。 如果没有工作区，请首先 [创建工作区](/azure/azure-monitor/learn/quick-create-workspace)。
+* 为逻辑应用启用日志记录所需的 Log Analytics 工作区。 如果没有工作区，请首先 [创建工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
 ## <a name="enable-diagnostic-logging"></a>启用诊断记录
 
@@ -37,7 +37,7 @@ ms.locfileid: "97629589"
 
 如果不确定逻辑应用是否启用了诊断日志记录，可以在安全中心内查看：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在搜索栏中，输入并选择 " **安全中心**"。
 1. 在 "安全中心" 仪表板菜单的 " **常规**" 下，选择 " **建议**"。
 1. 在安全建议表中，查找并选择 "在逻辑应用中 **启用审核和日志记录** &gt; **诊断日志" 应** 在安全控件表中启用。
@@ -47,7 +47,7 @@ ms.locfileid: "97629589"
 
 [启用诊断日志记录](#enable-diagnostic-logging)后，可以在安全中心看到逻辑应用的运行状况状态。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在搜索栏中，输入并选择 " **安全中心**"。
 1. 在安全中心仪表板菜单的 " **常规**" 下，选择 " **清点**"。
 1. 在 "清单" 页上，筛选资产列表以仅显示逻辑应用资源。 在 "页面" 菜单中，选择 " **资源类型**" " &gt; **逻辑应用**"。

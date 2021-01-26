@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: 3314053e5b81c597d6d29015a5ebda6e171731d1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: c0ad769ceba4fc3fa7f602d70188ea1942ca73aa
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633851"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791688"
 ---
 # <a name="power-query-activity-in-data-factory"></a>数据工厂中的 Power query 活动
 
@@ -22,6 +22,8 @@ Power Query 活动允许生成和执行 Power Query 混合，以在数据工厂�
 ![显示工厂资源窗格 Power Query 的屏幕截图。](media/data-flow/power-query-wrangling.png)
 
 以前，Azure 数据工厂中的数据整理是从 "数据流" 菜单选项中编写的。 此操作已更改为使用新的 Power Query 活动进行创作。 可以直接在 Power Query 混合编辑器中进行操作，以执行交互式数据浏览，并保存工作。 完成后，可以获取 Power Query 活动，并将其添加到管道。 Azure 数据工厂将使用 Azure 数据工厂的数据流 Spark 环境自动扩展并操作数据整理。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4MFYn]
 
 ## <a name="translation-to-data-flow-script"></a>转换为数据流脚本
 

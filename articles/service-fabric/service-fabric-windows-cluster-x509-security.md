@@ -3,12 +3,12 @@ title: 使用证书在 Windows 上保护群集
 description: 保护 Azure Service Fabric 独立群集或本地群集内部的通信，以及客户端与群集之间的通信。
 ms.topic: conceptual
 ms.date: 10/15/2017
-ms.openlocfilehash: 34ba457ce0f39705393962d5c5ec8fa11668f413
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d75c644be47ea44f6a8a6ccac91b785af0132833
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686117"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791031"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>使用 X.509 证书在 Windows 上保护独立群集
 本文介绍如何保护独立 Windows 群集的不同节点之间的通信。 此外，还介绍如何使用 X.509 证书针对连接到此群集的客户端进行身份验证。 身份验证可确保只有经过授权的用户才能访问该群集和部署的应用程序，以及执行管理任务。 创建群集时，应在该群集上启用证书安全性。  
@@ -122,7 +122,7 @@ ms.locfileid: "94686117"
 | ServerCertificate |建议用于测试环境。 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 为方便起见，可以选择对 ClusterCertificate 和 ServerCertificate 使用相同的证书。 可以使用两个不同的服务器证书（一个主证书和一个辅助证书）进行升级。 在 Thumbprint 部分设置主证书的指纹，在 ThumbprintSecondary 变量中设置辅助证书的指纹。 |
 | ServerCertificateCommonNames |建议用于生产环境。 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 CertificateIssuerThumbprint 对应此证书的颁发者的指纹。 如果要使用具有相同常见名称的多个证书，可以指定多个颁发者指纹。 为方便起见，可以选择对 ClusterCertificateCommonNames 和 ServerCertificateCommonNames 使用相同的证书。 可以使用一个或两个服务器证书公用名称。 |
 | ServerCertificateIssuerStores |建议用于生产环境。 此证书与服务器证书的颁发者相对应。 可以在此节下提供颁发者公用名称和相应的存储名称，而不是在 ServerCertificateCommonNames 下指定颁发者指纹。  这样可以轻松滚动更新服务器颁发者证书。 如果使用多个服务器证书，可以指定多个颁发者。 空的 IssuerCommonName 允许 X509StoreNames 下指定的相应存储中的所有证书。|
-| ClientCertificateThumbprints |在经过身份验证的客户端上安装这一组证书。 可以在想要允许其访问群集的计算机上安装许多不同的客户端证书。 在 CertificateThumbprint 变量中设置每个证书的指纹。 如果将 IsAdmin 设置为 *true*，则安装了此证书的客户端可以针对群集执行管理员管理活动。 如果 IsAdmin 设置为 *false*，则使用此证书的客户端只能执行用户有权执行的操作（通常为只读）。 有关角色的详细信息，请参阅 [Service Fabric 基于角色的访问控制](service-fabric-cluster-security.md#service-fabric-role-based-access-control)。 |
+| ClientCertificateThumbprints |在经过身份验证的客户端上安装这一组证书。 可以在想要允许其访问群集的计算机上安装许多不同的客户端证书。 在 CertificateThumbprint 变量中设置每个证书的指纹。 如果将 IsAdmin 设置为 *true*，则安装了此证书的客户端可以针对群集执行管理员管理活动。 如果 IsAdmin 设置为 *false*，则使用此证书的客户端只能执行用户有权执行的操作（通常为只读）。 有关角色的详细信息，请阅读 [Service Fabric 基于角色的访问控制](service-fabric-cluster-security.md#service-fabric-role-based-access-control)。 |
 | ClientCertificateCommonNames |在 CertificateCommonName 中设置第一个客户端证书的通用名称。 CertificateIssuerThumbprint 是此证书的颁发者的指纹。 若要详细了解公用名称和颁发者，请阅读[使用证书](/dotnet/framework/wcf/feature-details/working-with-certificates)。 |
 | ClientCertificateIssuerStores |建议用于生产环境。 此证书与客户端证书的颁发者（管理员和非管理员角色）相对应。 可以在此节下提供颁发者公用名称和相应的存储名称，而不是在 ClientCertificateCommonNames 下指定颁发者指纹。  这样可以轻松滚动更新客户端颁发者证书。 如果使用多个客户端证书，可以指定多个颁发者。 空的 IssuerCommonName 允许 X509StoreNames 下指定的相应存储中的所有证书。|
 | ReverseProxyCertificate |建议用于测试环境。 如果想要保护[反向代理](service-fabric-reverseproxy.md)，可以选择指定此证书。 若要使用此证书，请确保已在 nodeTypes 中设置了 reverseProxyEndpointPort。 |
@@ -355,7 +355,7 @@ $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $Tru
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-然后可运行其他 PowerShell 命令处理此群集。 例如，可以运行 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) 显示此安全群集上的节点列表。
+然后可运行其他 PowerShell 命令处理此群集。 例如，可以运行 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) 显示此安全群集上的节点列表。
 
 
 若要删除群集，请连接到已下载 Service Fabric 包的群集上的节点、打开命令行，并转到包文件夹。 现在，运行以下命令：

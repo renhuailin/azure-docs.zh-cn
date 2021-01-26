@@ -3,12 +3,12 @@ title: 独立群集部署准备
 description: 在部署专用于处理生产工作负荷的群集之前要考虑的与准备环境和创建群集配置相关的文档。
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.openlocfilehash: 277c7e047815b3b4171f7cced203ecbe5b68b155
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 18b8b0ce8c0e877bf9dd274596b19f85b1febe12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509166"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790946"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>规划和准备 Service Fabric 独立群集部署
 
@@ -57,7 +57,7 @@ ms.locfileid: "97509166"
 * 与所有计算机的安全网络建立连接
 * 已安装 Windows Server 操作系统（有效版本：2012 R2、2016、1709 或 1803）。 Service Fabric 版本 6.4.654.9590 及更高版本还支持 Server 2019 和 1809。
 * [.NET Framework 4.5.1 或更高版本](https://www.microsoft.com/download/details.aspx?id=40773)的完整安装版
-* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell)
 * 应在所有计算机上运行 [RemoteRegistry 服务](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11))
 * **Service Fabric 安装驱动器必须是 NTFS 文件系统**
 * **Windows 服务 *性能日志和警报* 以及 *Windows 事件日志* 必须 [启用](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))** 。

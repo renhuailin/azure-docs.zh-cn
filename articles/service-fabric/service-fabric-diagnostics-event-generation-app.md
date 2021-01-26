@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: e1871df962a26def8c12000f8b8bc0cf31bae9a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1df5d033701195f4fe5f6b7174f3883b84393ab
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247653"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791267"
 ---
 # <a name="application-logging"></a>应用程序日志记录
 
@@ -22,11 +22,11 @@ ms.locfileid: "86247653"
 
 ## <a name="application-insights-sdk"></a>Application Insights SDK
 
-Application Insights 具有现成的与 Service Fabric 的丰富集成。 用户可以添加 AI Service Fabric nuget 包并接收可以在 Azure 门户中查看的已创建和收集的数据和日志。 另外，建议用户添加其自己的遥测数据，以便诊断和调试其应用程序并跟踪哪些服务及其应用程序的哪些部分使用得最多。 该 SDK 中的 [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) 类提供了许多方式来用于在应用程序中跟踪遥测数据。 请在我们提供的有关[监视和诊断 .NET 应用程序](service-fabric-tutorial-monitoring-aspnet.md)的教程中查看有关如何进行检测以及向应用程序添加 Application Insights 的示例。
+Application Insights 具有现成的与 Service Fabric 的丰富集成。 用户可以添加 AI Service Fabric nuget 包并接收可以在 Azure 门户中查看的已创建和收集的数据和日志。 另外，建议用户添加其自己的遥测数据，以便诊断和调试其应用程序并跟踪哪些服务及其应用程序的哪些部分使用得最多。 该 SDK 中的 [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient) 类提供了许多方式来用于在应用程序中跟踪遥测数据。 请在我们提供的有关[监视和诊断 .NET 应用程序](service-fabric-tutorial-monitoring-aspnet.md)的教程中查看有关如何进行检测以及向应用程序添加 Application Insights 的示例。
 
 ## <a name="eventsource"></a>EventSource
 
-在 Visual Studio 中通过模板创建 Service Fabric 解决方案时，将生成 **EventSource** 派生类（**ServiceEventSource** 或 **ActorEventSource**）。 会创建一个模板，可将应用程序或服务的事件添加到其中。 **EventSource** 名称**必须**唯一，应该将它重命名，不要使用默认的模板字符串 MyCompany-&lt;solution&gt;-&lt;project&gt;。 使用多个同名的 **EventSource** 定义会导致运行时出现问题。 每个定义的事件必须具有唯一标识符。 如果标识符不唯一，将发生运行时失败。 某些组织为标识符预先分配了值范围，避免不同的开发团队之间发生冲突。 有关详细信息，请参阅 [Vance 的博客](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)或 [MSDN 文档](/previous-versions/msp-n-p/dn774985(v=pandp.20))。
+在 Visual Studio 中通过模板创建 Service Fabric 解决方案时，将生成 **EventSource** 派生类（**ServiceEventSource** 或 **ActorEventSource**）。 会创建一个模板，可将应用程序或服务的事件添加到其中。 **EventSource** 名称 **必须** 唯一，应该将它重命名，不要使用默认的模板字符串 MyCompany-&lt;solution&gt;-&lt;project&gt;。 使用多个同名的 **EventSource** 定义会导致运行时出现问题。 每个定义的事件必须具有唯一标识符。 如果标识符不唯一，将发生运行时失败。 某些组织为标识符预先分配了值范围，避免不同的开发团队之间发生冲突。 有关详细信息，请参阅 [Vance 的博客](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)或 [MSDN 文档](/previous-versions/msp-n-p/dn774985(v=pandp.20))。
 
 ## <a name="aspnet-core-logging"></a>ASP.NET Core 日志记录
 

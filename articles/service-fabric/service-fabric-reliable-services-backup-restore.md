@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a60ebff06562c12415b2a106a9a11127feb94dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2674d1285544e4bc9b6fcb3d0b2e6f4b607786a2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021980"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791605"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>备份和还原 Reliable Services 及 Reliable Actors
 Azure Service Fabric 是一个高可用性平台，用于复制多个节点中的状态以维护此高可用性。  因此，即使群集中的一个节点出现故障，服务也将继续可用。 尽管此平台提供的此内置冗余对某些情况来说可能已足够用了，但在特定情况下，仍需要服务备份数据（到外部存储）。
@@ -150,7 +150,7 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 > 
 
 ## <a name="deleted-or-lost-service"></a>删除或丢失服务
-如果删除了一个服务，则在还原数据之前必须首先重新创建此服务。  请务必创建具有相同配置的服务，例如，相同的分区方案，以便可以无缝地还原数据。  一旦启动服务，就必须在此服务的每个分区上调用用于还原数据的 API（上面的 `OnDataLossAsync`）。 实现此操作的一种方法是在每个分区上使用 [FabricClient.TestManagementClient.StartPartitionDataLossAsync](/dotnet/api/system.fabric.fabricclient.testmanagementclient?view=azure-dotnet#System_Fabric_FabricClient_TestManagementClient_StartPartitionDataLossAsync_System_Guid_System_Fabric_PartitionSelector_System_Fabric_DataLossMode_)。  
+如果删除了一个服务，则在还原数据之前必须首先重新创建此服务。  请务必创建具有相同配置的服务，例如，相同的分区方案，以便可以无缝地还原数据。  一旦启动服务，就必须在此服务的每个分区上调用用于还原数据的 API（上面的 `OnDataLossAsync`）。 实现此操作的一种方法是在每个分区上使用 [FabricClient.TestManagementClient.StartPartitionDataLossAsync](/dotnet/api/system.fabric.fabricclient.testmanagementclient#System_Fabric_FabricClient_TestManagementClient_StartPartitionDataLossAsync_System_Guid_System_Fabric_PartitionSelector_System_Fabric_DataLossMode_)。  
 
 从这个角度来看，实现操作与上述情况相同。 每个分区需要从外部存储中还原最新的相关备份。 值得注意的一点是，分区 ID 现在可能已更改，因为运行时是动态创建分区 ID。 因此，此服务需要还原相应的分区信息和服务名称来标识每个分区要还原的正确的最新备份。
 
@@ -259,5 +259,5 @@ class MyCustomActorService : ActorService
   - [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
   - [Reliable Services 通知](service-fabric-reliable-services-notifications.md)
   - [Reliable Services 配置](service-fabric-reliable-services-configuration.md)
-  - [Reliable Collections 的开发人员参考](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  - [Reliable Collections 的开发人员参考](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
   - [在 Azure Service Fabric 中定期备份和还原](service-fabric-backuprestoreservice-quickstart-azurecluster.md)

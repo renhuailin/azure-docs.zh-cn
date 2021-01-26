@@ -4,12 +4,12 @@ description: 在规划 Service Fabric 群集时要考虑节点类型、持久性
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 731dcfdf25efc4b2f44669dacd8a400037ed47f4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 03ec9b411f13f22a74b864a745acfed922e78b12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576326"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790692"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 
@@ -146,7 +146,7 @@ _ ***群集是否跨越可用性区域？** _
 | 7 或 8 | Gold |
 | 9 及以上 | Platinum |
 
-当增大或减小群集的大小（所有节点类型中的 VM 实例的总数）时，请考虑提升群集的可靠性层级。 这样做会触发更改系统服务副本集计数所需的群集升级。 等待升级完成，然后对群集做出其他任何更改，例如添加节点。  可以在 Service Fabric Explorer 中运行 [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) 来监视升级进度
+当增大或减小群集的大小（所有节点类型中的 VM 实例的总数）时，请考虑提升群集的可靠性层级。 这样做会触发更改系统服务副本集计数所需的群集升级。 等待升级完成，然后对群集做出其他任何更改，例如添加节点。  可以在 Service Fabric Explorer 中运行 [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade) 来监视升级进度
 
 ### <a name="capacity-planning-for-reliability"></a>保障可靠性的容量计划
 

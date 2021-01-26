@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 12bcb54f4bfdf17209324febeba380ff7789fc0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec7ecb77d37ed1cdf1d13aa7191f5d50e0008c20
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998979"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790793"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教程：在云中发布、订阅事件
 
@@ -21,7 +21,7 @@ ms.locfileid: "88998979"
 
 在继续之前，请参阅 [事件网格概念](concepts.md) ，以了解什么是事件网格主题和订阅。
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 若要完成本教程，您需要：
 
 * **Azure 订阅** -如果你还没有帐户，请创建一个 [免费帐户](https://azure.microsoft.com/free) 。 
@@ -31,7 +31,7 @@ ms.locfileid: "88998979"
 
 ## <a name="create-an-azure-function-in-the-azure-portal"></a>在 Azure 门户中创建 Azure 函数
 
-按照 [教程](../../azure-functions/functions-create-first-azure-function.md) 中所述的步骤创建 Azure 功能。 
+按照 [教程](../../azure-functions/functions-get-started.md) 中所述的步骤创建 Azure 功能。 
 
 将代码片段替换为以下代码：
 
@@ -125,7 +125,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     ```
 
    >[!NOTE]
-   > **EndpointType**指定订阅服务器是 Webhook。  **EndpointUrl**指定订阅服务器侦听事件的 URL。 此 URL 对应于你之前设置的 Azure Function 示例。
+   > **EndpointType** 指定订阅服务器是 Webhook。  **EndpointUrl** 指定订阅服务器侦听事件的 URL。 此 URL 对应于你之前设置的 Azure Function 示例。
 2. 运行以下命令以创建订阅。 应返回 HTTP 状态代码 200 OK。
 
     ```sh

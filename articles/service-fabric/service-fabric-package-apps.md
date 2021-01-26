@@ -4,12 +4,12 @@ description: 了解如何打包 Azure Service Fabric 应用程序以及如何准
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 168e6d6dc7ab5bfeccc4e1dabc7bd50efcbe8f34
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021055"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789696"
 ---
 # <a name="package-an-application"></a>打包应用程序
 
@@ -75,7 +75,7 @@ D:\Temp> msbuild HelloWorld.sfproj /t:Package
 
 ## <a name="test-the-package"></a>测试包
 
-可以使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) 命令，通过 PowerShell 在本地验证包结构。
+可以使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) 命令，通过 PowerShell 在本地验证包结构。
 此命令会检查是否存在清单分析问题，并验证所有引用。 此命令只验证包中目录与文件结构的正确性。
 它不验证任何代码或数据包内容，而只检查所有必要的文件是否存在。
 
@@ -121,7 +121,7 @@ Test-ServiceFabricApplicationPackage .\MyApplicationType
 True
 ```
 
-如果应用程序已定义[应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)，则可以将参数传递到 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) 中进行适当验证。
+如果应用程序已定义[应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)，则可以将参数传递到 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) 中进行适当验证。
 
 如果知道要在其中部署应用程序的群集，则建议传入 `ImageStoreConnectionString` 参数。 在这种情况下，还需要针对已在群集中运行的前一应用程序版本对包进行验证。 例如，验证可检测是否部署了版本相同但内容不同的包。  
 
@@ -135,9 +135,9 @@ True
 压缩包和未压缩包的部署机制相同。 如果为压缩包，则存储在群集映像存储等位置，并且在应用程序运行前在节点上解压缩。
 压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩将不会产生任何更改。
 
-可以通过使用 `CompressPackage` 开关运行 Powershell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
+可以通过使用 `CompressPackage` 开关运行 Powershell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
 
-以下命令可压缩包，但不会将包复制到映像存储区。 通过使用不带 `SkipCopy` 标志的 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 将压缩的包复制到一个或多个 Service Fabric 群集中。
+以下命令可压缩包，但不会将包复制到映像存储区。 通过使用不带 `SkipCopy` 标志的 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) 将压缩的包复制到一个或多个 Service Fabric 群集中。
 包中现在包括 `code`、`config` 和 `data` 包的压缩文件。 应用程序清单和服务清单不会被压缩，因为它们是许多内部操作所必需的。 例如，进行某些验证时的包共享、应用程序类型名称和版本提取都需要访问清单。 压缩清单会使这些操作无效。
 
 ```
@@ -179,7 +179,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ```
 
-或者，也可以使用 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 一步压缩并复制包。
+或者，也可以使用 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) 一步压缩并复制包。
 如果包较大，请提供足够的超时时间，以为包压缩和上传到群集预留时间。
 
 ```powershell
@@ -212,7 +212,7 @@ Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType
 `sfpkg` 文件是一个 zip 文件，其中包含初始应用程序包并具有扩展名“.sfpkg”。
 在此 zip 文件内，应用程序包可以是压缩的，也可以是未压缩的。 如[前文所述](service-fabric-package-apps.md#compress-a-package)，zip 文件内应用程序包的压缩是在代码、配置和数据包级别执行的。
 
-若要创建 `sfpkg`，请首先创建包含原始应用程序包（压缩的或未压缩的）的文件夹。 然后，使用任何实用程序以扩展名“.sfpkg”压缩该文件夹。 例如，使用 [ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory?view=netcore-3.1#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_)。
+若要创建 `sfpkg`，请首先创建包含原始应用程序包（压缩的或未压缩的）的文件夹。 然后，使用任何实用程序以扩展名“.sfpkg”压缩该文件夹。 例如，使用 [ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_)。
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

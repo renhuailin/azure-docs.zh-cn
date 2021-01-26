@@ -4,12 +4,12 @@ description: 介绍如何创建具有无状态服务和有状态服务的 Micros
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev, devx-track-csharp
-ms.openlocfilehash: 1de77f870bce5766ab704249034d6d7b6c8b098e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45341c98a40cbcabfa8b96f2016f02f1755fe2b3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012732"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791521"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
 
@@ -42,7 +42,7 @@ Azure Service Fabric 应用程序包含一个或多个运行代码的服务。 �
 
 解决方案现在包含两个项目：
 
-* *HelloWorld*。 这是包含*服务*的*应用程序*项目。 它还包含应用程序清单，用于描述该应用程序以及一些帮助你部署应用程序的 PowerShell 脚本。
+* *HelloWorld*。 这是包含 *服务* 的 *应用程序* 项目。 它还包含应用程序清单，用于描述该应用程序以及一些帮助你部署应用程序的 PowerShell 脚本。
 * *HelloWorldStateless*。 这是服务项目。 其中包含无状态服务实现。
 
 ## <a name="implement-the-service"></a>实现服务
@@ -125,7 +125,7 @@ Service Fabric 引入了一种新的有状态服务。 有状态服务能够可�
 
 应用程序现在应该有两个服务：无状态服务 *HelloWorldStateless* 和有状态服务 *HelloWorldStateful*。
 
-有状态服务具有与无状态服务相同的入口点。 主要区别是是否有能够可靠地存储状态的*状态提供程序*。 Service Fabric 附带名为[可靠集合](service-fabric-reliable-services-reliable-collections.md)的状态提供程序实现，可让你通过可靠状态管理器创建复制的数据结构。 有状态可靠服务默认使用此状态提供程序。
+有状态服务具有与无状态服务相同的入口点。 主要区别是是否有能够可靠地存储状态的 *状态提供程序*。 Service Fabric 附带名为[可靠集合](service-fabric-reliable-services-reliable-collections.md)的状态提供程序实现，可让你通过可靠状态管理器创建复制的数据结构。 有状态可靠服务默认使用此状态提供程序。
 
 打开 *HelloWorldStateful* 中的 **HelloWorldStateful.cs**，该文件包含以下 RunAsync 方法：
 
@@ -169,14 +169,14 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) 是一种字典实现，可用于将状态可靠地存储在服务中。 利用 Service Fabric 和可靠集合，可以将数据直接存储在服务中而无需外部持久性存储。 可靠集合可让数据具备高可用性。 Service Fabric 通过创建和管理服务的多个*副本*来实现此目的。 它还提供一个抽象 API，消除了管理这些副本及其状态转换所存在的复杂性。
+[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2#microsoft_servicefabric_data_collections_ireliabledictionary_2) 是一种字典实现，可用于将状态可靠地存储在服务中。 利用 Service Fabric 和可靠集合，可以将数据直接存储在服务中而无需外部持久性存储。 可靠集合可让数据具备高可用性。 Service Fabric 通过创建和管理服务的多个 *副本* 来实现此目的。 它还提供一个抽象 API，消除了管理这些副本及其状态转换所存在的复杂性。
 
 可靠集合可以存储任何 .NET 类型（包括自定义类型），但需要注意以下几点：
 
-* Service Fabric 通过跨节点*复制*状态，使状态具备高可用性；而可靠集合会将数据存储到每个副本上的本地磁盘中。 这意味着可靠集合中存储的所有内容都必须*可序列化*。 默认情况下，可靠集合使用 [DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute?view=netcore-3.1) 进行序列化，因此，在使用默认序列化程序时，务必确保类型[受数据协定序列化程序的支持](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)。
+* Service Fabric 通过跨节点 *复制* 状态，使状态具备高可用性；而可靠集合会将数据存储到每个副本上的本地磁盘中。 这意味着可靠集合中存储的所有内容都必须 *可序列化*。 默认情况下，可靠集合使用 [DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute) 进行序列化，因此，在使用默认序列化程序时，务必确保类型[受数据协定序列化程序的支持](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)。
 * 在可靠集合上提交事务时，将复制对象以实现高可用性。 存储在可靠集合中的对象保留在服务的本地内存中。 这意味着你有对象的本地引用。
   
-   切勿转变这些对象的本地实例而不在事务中的可靠集合上执行更新操作。 这是因为对对象的本地实例的更改将不会自动复制。 必须将对象重新插回字典中，或在字典上使用其中一个*更新*方法。
+   切勿转变这些对象的本地实例而不在事务中的可靠集合上执行更新操作。 这是因为对对象的本地实例的更改将不会自动复制。 必须将对象重新插回字典中，或在字典上使用其中一个 *更新* 方法。
 
 可靠状态管理器管理可靠集合。 无论何时何地，都可以根据名称向可靠状态管理器请求服务中的某个可靠集合。 可靠状态管理器可确保能取回引用。 不建议将可靠集合实例的引用存储在类成员变量或属性中。 请特别小心，确保在服务生命周期中随时会引用设置为某个实例。 可靠状态管理器将处理此工作，并已针对重复访问进行优化。
 
@@ -195,7 +195,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 
 可靠集合具有与其 `System.Collections.Generic` 和 `System.Collections.Concurrent` 对应项相同的许多操作，但语言集成查询 (LINQ) 除外。 可靠集合上的操作是异步的。 这是因为可靠集合的写入操作执行 I/O 操作，以将数据复制并保存到磁盘。
 
-可靠集合操作是*事务性的*，因此可以跨多个可靠集合和操作保持状态的一致。 例如，可以在单个事务中，将工作项从 Reliable Queue 取消排队、对其执行操作并将结果保存在 Reliable Dictionary 中。 这被视为原子操作，它可以保证整个操作要么成功，要么回滚。 如果将项取消排队之后、保存结果之前发生错误，则会回滚整个事务，并且项将保留在队列中以供处理。
+可靠集合操作是 *事务性的*，因此可以跨多个可靠集合和操作保持状态的一致。 例如，可以在单个事务中，将工作项从 Reliable Queue 取消排队、对其执行操作并将结果保存在 Reliable Dictionary 中。 这被视为原子操作，它可以保证整个操作要么成功，要么回滚。 如果将项取消排队之后、保存结果之前发生错误，则会回滚整个事务，并且项将保留在队列中以供处理。
 
 ## <a name="run-the-application"></a>运行应用程序
 现在，我们返回到 *HelloWorld* 应用程序。 现在，可以生成并部署服务。 按 **F5** 即可生成应用程序并部署到本地群集。

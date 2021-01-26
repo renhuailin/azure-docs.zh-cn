@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: ce7568f346773f6b50f5601462bba479b457edce
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: d0b7f871b2ea62c810a6d20f6e20a5e8d3f6306e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763377"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791907"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 发行说明
 
@@ -59,7 +59,7 @@ Azure Stack Edge 2101 版中提供了以下新功能。
 
 | 否。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
-| **1.** |Azure Stack Edge Pro + Azure SQL | 创建 SQL 数据库需要管理员访问权限。   |执行以下步骤，而不是中的步骤 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) 。 <ul><li>在设备的本地 UI 中，启用 "计算接口"。 选择 **计算 > 端口号 > 启用计算 > 应用。**</li><li>`sqlcmd`从下载客户端计算机https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>连接到计算接口 IP 地址 () 启用的端口，并将 "，1401" 添加到地址的末尾。</li><li>最终命令如下所示： sqlcmd-S {Interface IP}，1401-U SA-P "强！Passw0rd "。</li>完成此操作后，当前文档中的步骤3-4 应相同。 </li></ul> |
+| **1.** |Azure Stack Edge Pro + Azure SQL | 创建 SQL 数据库需要管理员访问权限。   |执行以下步骤，而不是中的步骤 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) 。 <ul><li>在设备的本地 UI 中，启用 "计算接口"。 选择 **计算 > 端口号 > 启用计算 > 应用。**</li><li>`sqlcmd`从下载客户端计算机https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>连接到计算接口 IP 地址 () 启用的端口，并将 "，1401" 添加到地址的末尾。</li><li>最终命令如下所示： sqlcmd-S {Interface IP}，1401-U SA-P "强！Passw0rd "。</li>完成此操作后，当前文档中的步骤3-4 应相同。 </li></ul> |
 | **2.** |刷新| 不支持对通过 **刷新** 还原的 blob 进行增量更改 |对于 Blob 终结点，刷新后对 blob 进行部分更新可能导致更新不会上载到云中。 例如，一系列操作，例如：<ul><li>在云中创建 blob。 或从设备中删除之前上传的 blob。</li><li>使用刷新功能，将 blob 从云中刷新到设备中。</li><li>使用 Azure SDK REST Api 仅更新部分 blob。</li></ul>这些操作可能导致 blob 的更新部分不在云中更新。 <br>**解决方法**：使用 robocopy 等工具或通过资源管理器或命令行的常规文件复制来替换整个 blob。|
 |**3.**|限制|在限制期间，如果不允许新写入设备，则 NFS 客户端写入会失败并出现 "权限被拒绝" 错误。| 错误如下所示：<br>`hcsuser@ubuntu-vm:~/nfstest$ mkdir test`<br>mkdir：无法创建目录 "test"：权限被拒绝|
 |**4.**|Blob 存储引入|使用 AzCopy 版本10进行 Blob 存储引入时，请使用以下参数运行 AzCopy： `Azcopy <other arguments> --cap-mbps 2000`| 如果没有为 AzCopy 提供这些限制，则可能会将大量请求发送到设备，导致服务出现问题。|

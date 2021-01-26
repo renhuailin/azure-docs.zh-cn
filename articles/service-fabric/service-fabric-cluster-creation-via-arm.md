@@ -3,12 +3,12 @@ title: 创建 Azure Service Fabric 群集
 description: 了解如何使用 Azure 资源管理器在 Azure 中设置安全的 Service Fabric 群集。  可以使用默认模板或自己的群集模板创建群集。
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4daa75fd9383bc19da1b09104ebddff5712c5b4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008661"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791805"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "96008661"
 
 以下为关于 Service Fabric 模块的参考文档：
 * [Az.ServiceFabric](/powershell/module/az.servicefabric)
-* [az SF CLI 模块](/cli/azure/sf?view=azure-cli-latest)
+* [az SF CLI 模块](/cli/azure/sf)
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -285,6 +285,6 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-Az-ps
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-create-template.md

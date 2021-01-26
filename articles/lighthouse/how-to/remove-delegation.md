@@ -3,12 +3,12 @@ title: 删除对委派的访问权限
 description: 了解如何删除已委派给 Azure Lighthouse 服务提供商的资源的访问权限。
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: d3442bb9fd2f6e7423fd4bf28cace1f7fd91ad80
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 7218c8829c9b2500e8311fbb3d5e9ff4eb986529
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608446"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791350"
 ---
 # <a name="remove-access-to-a-delegation"></a>删除对委派的访问权限
 
@@ -41,7 +41,7 @@ ms.locfileid: "96608446"
     ] 
 ```
 
-[创建托管服务产品/服务](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization)以发布到 Azure Marketplace 时，还可以在 **授权** 中选择此角色。
+[创建托管服务产品/服务](../../marketplace/plan-managed-service-offer.md)以发布到 Azure Marketplace 时，还可以在 **授权** 中选择此角色。
 
 具有此权限的用户可以通过以下的一种方法删除委托。
 

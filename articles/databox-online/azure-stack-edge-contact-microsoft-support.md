@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 5bbd02f9e15a4ee29e244b2a0307accd151ba487
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 411757f4ef4e33ccbc8a69ca2b40598b51c6d13b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033942"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790827"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>为 Azure Stack Edge Pro 和 Azure Data Box Gateway 开支持票证
 
@@ -99,4 +99,4 @@ ms.locfileid: "98033942"
 ## <a name="next-steps"></a>后续步骤
 
 了解如何 [解决与 Azure Stack Edge Pro 相关的问题](azure-stack-edge-troubleshoot.md)。
-了解如何[排查 Data Box Gateway 相关问题](data-box-gateway-troubleshoot.md)。
+了解如何[排查 Data Box Gateway 相关问题](../databox-gateway/data-box-gateway-troubleshoot.md)。

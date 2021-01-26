@@ -12,20 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: aa9160f01ed0040123bd8ac932cfd2443f557bb6
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511723"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790980"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教程：通过 Azure Sentinel 调查事件
 
 > [!IMPORTANT]
-> 调查关系图目前处于 **预览阶段**。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，了解适用于 Azure 功能的其他法律条款，这些功能适用于 beta 版、预览版或其他情况下尚未公开上市。
-
+> 调查关系图现已 **公开上市**。 
 
 本教程帮助你通过 Azure Sentinel 调查事件。 将数据源连接到 Azure Sentinel 后，需要在出现可疑情况时收到通知。 为了使你能够执行此操作，Azure Sentinel 允许你创建高级警报规则，以生成可分配和调查的事件。
 
@@ -113,11 +112,11 @@ ms.locfileid: "96511723"
 
 解决特定事件之后 (例如，当调查达到其结论) 时，应将事件的状态设置为 " **已关闭**"。 当你执行此操作时，系统将要求你通过指定关闭事件来对事件进行分类。 此步骤是必需的。 单击 " **选择分类** "，然后从下拉列表中选择以下各项之一：
 
-- True-可疑活动
-- 良性-可疑但应为
-- 误报-错误警报逻辑
-- 错误的错误数据
-- 确定
+- 真正 - 可疑活动
+- 良性 - 可疑但符合预期
+- 假正 - 错误警报逻辑
+- 假正 - 错误数据
+- 未确定
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="用于突出显示 &quot;选择分类&quot; 列表中可用分类的屏幕截图。":::
 

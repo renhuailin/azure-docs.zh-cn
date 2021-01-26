@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/02/2020
-ms.openlocfilehash: b6fcc294c2b8c131d9a4a058c653ae1f64652ccf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31885eba16d59e2e48a08f84c56271b84e6c565f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324852"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790912"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
 
@@ -67,25 +67,25 @@ ms.locfileid: "91324852"
 
 ## <a name="disable-required-features"></a>禁用所需的功能
 
-此切换可帮助你确定经过训练的应用是否根据所需功能正确预测你的实体。 默认设置是在预测过程中应用该功能。 如果子实体的功能不是必需的，则选择此开关可以查看预测的情况。
+此切换按钮可帮助你确定经过训练的应用是否根据所需功能正确预测你的实体。 默认设置是在预测过程中按需应用该功能。 如果子实体的功能不是必需的，则选择此开关可以查看预测的情况。
 
 ### <a name="when-to-disable-required-features"></a>何时禁用所需的功能
 
-训练的应用可能会根据以下其中一项误预测计算机学习的实体：
-* 示例最谈话的标记错误。
+经过训练的应用可能会基于以下某种情况对机器学习实体做出错误预测：
+* 示例言语的标记错误。
 * 所需的功能与文本不匹配。
 
-例如，具有人员姓名子实体的机器学习的实体。
+例如，一个机器学习实体具有一个子实体，该子实体是某个人的姓名。
 
-:::image type="content" source="media/luis-how-to-interactive-test/disable-required-feature.png" alt-text="具有所需功能的 LUIS 门户计算机学习实体架构的屏幕截图&quot;:::
+:::image type="content" source="media/luis-how-to-interactive-test/disable-required-feature.png" alt-text="具有所需功能的 LUIS 门户机器学习实体架构的屏幕截图":::
 
-此计算机了解的实体的示例查询文本为： `Assign Bob Jones to work on the new security feature` 。
+此机器学习实体的示例言语为：`Assign Bob Jones to work on the new security feature`。
 
-提取应 `security feature` 作为票据说明 `Bob Jones` ，并作为工程师，两子实体 `Assign ticket` 实体。
+提取应是 `security feature` 作为票证说明，`Bob Jones` 作为工程师，它们是 `Assign ticket` 实体的两个子实体。
 
-为了帮助子实体成功预测，请将预生成的实体 [PersonName](luis-reference-prebuilt-person.md) aa a 功能添加到 `engineer` 子实体。 如果你设置了所需的功能，这意味着，如果为文本预测了 PersonName 预生成的实体，则子实体将被提取。 这意味着文本中不使用 PersonName 子实体进行预测的任何名称都不会作为标记的子实体返回 `engineer` 。
+为了帮助子实体成功预测，请将预生成实体 [PersonName](luis-reference-prebuilt-person.md) 作为功能添加到 `engineer` 子实体。 如果你将该功能设为必需，这意味着只有在为文本预测 PersonName 预生成实体时，才会提取子实体。 这意味着文本中未使用 PersonName 子实体预测的任何姓名都不会作为标记的子实体 `engineer` 返回。
 
-使用 &quot;交互式测试" 窗格，并查看具有所需功能的子实体，不会进行预测，请切换此设置，以查看是否预测子实体，而不需要该功能。 由于示例最谈话的正确标记，子实体可以在不需要功能的情况下正确预测。
+使用交互式测试窗格，并看到具有所需功能的子实体未进行预测时，请切换此设置，查看是否可以在不需要该功能的情况下预测子实体。 由于对示例言语进行了正确标记，可能能够在没有所需功能的情况下正确预测子实体。
 
 ## <a name="view-sentiment-results"></a>查看情绪结果
 
@@ -119,7 +119,7 @@ ms.locfileid: "91324852"
 
 
 ## <a name="batch-testing"></a>批处理测试
-请参阅批处理测试[概念](luis-concept-batch-test.md)并了解陈述批量测试的[方法](luis-how-to-batch-test.md)。
+请参阅批处理测试[概念](./luis-how-to-batch-test.md)并了解陈述批量测试的[方法](luis-how-to-batch-test.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

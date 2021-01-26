@@ -4,12 +4,12 @@ description: 如何使用分区为 Azure 事件中心提供最大程度的可用
 ms.topic: article
 ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5ffa2df992eb0c22aafbbb7436250405998d8073
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 884fe878b9524dcf8d97d1123dce35e02af34a24
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762817"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790743"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中心内的可用性和一致性
 
@@ -26,7 +26,7 @@ Brewer 的定理按如下所示定义一致性和可用性：
 > [!NOTE]
 > 术语 **partition** 用于事件中心和 CAP 定理中的不同上下文。 
 > - **事件中心** 将事件组织到一个或多个分区中。 分区是独立的，包含其自身的数据序列，它们通常以不同的速率增长。 有关详细信息，请参阅[分区](event-hubs-features.md#partitions)。
-> - 在 **CAP 定理** 中，分区是指分布式系统中节点之间的通信中断。
+> - 在 **CAP 定理** 中，分区是分布式系统中节点之间的通信中断。
 
 ## <a name="partition-tolerance"></a>分区容差
 事件中心在分区数据模型的基础上构建。 可以在设置过程中配置事件中心内的分区数，但以后无法更改此值。 由于必须对事件中心使用分区，因此需要在应用程序的可用性和一致性方面进行决策。

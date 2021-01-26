@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: d881394391b7967fe602155eefc9844e013de34e
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 23be8e667d435c2d91d32ebeac30b1e96b45a77e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724742"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790285"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>将 Azure Key Vault 移动到另一个订阅
 
@@ -29,7 +29,7 @@ ms.locfileid: "97724742"
 > 在决定将密钥保管库移动到新订阅之前，请确保你了解此变更的影响，并仔细遵循本文中的指导。
 > 如果使用的是托管服务标识 (MSI)，请阅读此文档末尾的移动后说明。 
 
-[Azure Key Vault](overview.md) 自动绑定到用于创建该订阅的订阅的默认 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 租户 ID。 可以按照本 [指南](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)来查找与订阅关联的租户 ID。 所有访问策略条目和角色分配还与此租户 ID 相关联。  如果将 Azure 订阅从租户 A 移到租户 B，租户 B 中的服务主体（用户和应用程序）将无法访问现有的密钥保管库。若要解决此问题，需执行以下操作：
+[Azure Key Vault](overview.md) 自动绑定到用于创建该订阅的订阅的默认 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 租户 ID。 可以按照本 [指南](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)来查找与订阅关联的租户 ID。 所有访问策略条目和角色分配还与此租户 ID 相关联。  如果将 Azure 订阅从租户 A 移到租户 B，租户 B 中的服务主体（用户和应用程序）将无法访问现有的密钥保管库。若要解决此问题，需执行以下操作：
 
 * 将与订阅中所有现有密钥保管库关联的租户 ID 更改到租户 B。
 * 删除所有现有的访问策略条目。
@@ -37,8 +37,8 @@ ms.locfileid: "97724742"
 
 有关 Azure Key Vault 和 Azure Active Directory 的详细信息，请参阅
 - [关于 Azure Key Vault](overview.md)
-- [什么是 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
-- [如何查找租户 ID](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)
+- [什么是 Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
+- [如何查找租户 ID](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)
 
 ## <a name="limitations"></a>限制
 
@@ -49,11 +49,11 @@ ms.locfileid: "97724742"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) 级别的访问权限或更高级别，用于在密钥保管库所在的当前订阅。 你可以使用 [Azure 门户](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)、 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)或 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)分配角色。
-* [参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) 级别访问权限或更高级别，用于要移动密钥保管库的订阅。你可以使用 [Azure 门户](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)、 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)或 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)分配角色。
-* 新订阅中有一个资源组。 可以使用 [Azure 门户](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)、 [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-powershell)或 [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-cli)创建一个。
+* [参与者](../../role-based-access-control/built-in-roles.md#contributor) 级别的访问权限或更高级别，用于在密钥保管库所在的当前订阅。 你可以使用 [Azure 门户](../../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)或 [PowerShell](../../role-based-access-control/role-assignments-powershell.md)分配角色。
+* [参与者](../../role-based-access-control/built-in-roles.md#contributor) 级别访问权限或更高级别，用于要移动密钥保管库的订阅。你可以使用 [Azure 门户](../../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)或 [PowerShell](../../role-based-access-control/role-assignments-powershell.md)分配角色。
+* 新订阅中有一个资源组。 可以使用 [Azure 门户](../../azure-resource-manager/management/manage-resource-groups-portal.md)、 [PowerShell](../../azure-resource-manager/management/manage-resource-groups-powershell.md)或 [Azure CLI](../../azure-resource-manager/management/manage-resource-groups-cli.md)创建一个。
 
-你可以使用 [Azure 门户](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal)、 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell)、 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-cli)或 [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-rest)检查现有角色。
+你可以使用 [Azure 门户](../../role-based-access-control/role-assignments-list-portal.md)、 [PowerShell](../../role-based-access-control/role-assignments-list-powershell.md)、 [Azure CLI](../../role-based-access-control/role-assignments-list-cli.md)或 [REST API](../../role-based-access-control/role-assignments-list-rest.md)检查现有角色。
 
 
 ## <a name="moving-a-key-vault-to-a-new-subscription"></a>将密钥保管库移动到新的订阅
@@ -96,7 +96,7 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 ### <a name="update-access-policies-and-role-assignments"></a>更新访问策略和角色分配
 
 > [!NOTE]
-> 如果 Key Vault 使用 [AZURE RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) 权限模型。 还需要删除密钥保管库角色分配。 可以使用 [Azure 门户](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)、 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)或 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)删除角色分配。 
+> 如果 Key Vault 使用 [AZURE RBAC](../../role-based-access-control/overview.md) 权限模型。 还需要删除密钥保管库角色分配。 可以使用 [Azure 门户](../../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)或 [PowerShell](../../role-based-access-control/role-assignments-powershell.md)删除角色分配。 
 
 你的保管库已与正确的租户 ID 关联，并且已删除旧的访问策略项或角色分配，则设置新的访问策略项或角色分配。
 
@@ -106,9 +106,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 - [使用 PowerShell 分配访问策略](assign-access-policy-powershell.md)
 
 有关添加角色分配，请参阅：
-- [使用门户添加角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-- [使用 Azure CLI 添加角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
-- [使用 PowerShell 添加角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)
+- [使用门户添加角色分配](../../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure CLI 添加角色分配](../../role-based-access-control/role-assignments-cli.md)
+- [使用 PowerShell 添加角色分配](../../role-based-access-control/role-assignments-powershell.md)
 
 
 ### <a name="update-managed-identities"></a>更新托管标识

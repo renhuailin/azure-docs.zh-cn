@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9e9127d9776169131c2ed7f4778052646e84f8b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34ec43593d50e359f09059cd3d51522df62cf567
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013106"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789645"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>在 Service Fabric 群集中引入受控的混沌测试
 大规模分布式系统，例如云基础结构，在本质上都是不可靠的。 Azure Service Fabric 可让开发人员在不可靠的基础结构之上编写可靠的分布式服务。 若要在不可靠的基础结构之上编写可靠的分布式服务，开发人员应能够在不可靠的底层基础结构因故障而进行复杂的状态转换时，测试其服务的稳定性。
 
-[故障注入和群集分析服务](./service-fabric-testability-overview.md)（也称为故障分析服务）使开发人员能够引入故障来测试其服务。 这些定向模拟故障（如[重新启动分区](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)）可以帮助执行最常见的状态转换。 但是，定向模拟故障易被定义左右，因此可能会漏掉仅在一系列难以预测、持续时间长且复杂的状态转换中出现的 bug。 若要进行无偏测试，可以使用混沌测试。
+[故障注入和群集分析服务](./service-fabric-testability-overview.md)（也称为故障分析服务）使开发人员能够引入故障来测试其服务。 这些定向模拟故障（如[重新启动分区](/powershell/module/servicefabric/start-servicefabricpartitionrestart)）可以帮助执行最常见的状态转换。 但是，定向模拟故障易被定义左右，因此可能会漏掉仅在一系列难以预测、持续时间长且复杂的状态转换中出现的 bug。 若要进行无偏测试，可以使用混沌测试。
 
 混沌测试在整个群集模拟定期交叉出现的故障，包括常规故障和非常规故障，时间跨度很长。 常规故障由一组 Service Fabric API 调用组成，例如，重启副本故障是常规故障，因为这次关闭后接着副本打开。 删除副本、移动主要副本和移动次要副本是混沌测试执行的其他常规故障。 非常规故障是进程退出，例如重启节点和重启代码包。 
 

@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 12/16/2020
-ms.openlocfilehash: 4b1c98d8621267b300a82b697bce66a6b94e82f3
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/25/2021
+ms.openlocfilehash: c12e1f4b01b0e2dd7fa21808cf33f45f9a5be59b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825901"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789966"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 托管实例上用户启动的手动故障转移
 
@@ -37,9 +37,9 @@ ms.locfileid: "97825901"
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>在 SQL 托管实例上启动手动故障转移
 
-### <a name="azure-rbac-permissions-required"></a>需要 Azure RBAC 权限
+### <a name="azure-rbac-permissions-required"></a>所需的 Azure RBAC 权限
 
-启动故障转移的用户需要具有以下 Azure 角色之一：
+启动故障转移的用户需要具有下列 Azure 角色之一：
 
 - “订阅所有者”角色或
 - “托管实例参与者”角色或
@@ -140,9 +140,10 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 > [!IMPORTANT]
 > 用户启动的手动故障转移的功能限制如下：
-> - 在同一托管实例上，每 **15 分钟** 可能会启动一次 (1) 故障转移。
+> - 每 15 分钟在同一托管实例上可能会启动一次 (1) 故障转移。
 > - 对于 BC 实例，若要使故障转移请求得到接受，必须存在仲裁副本。
 > - 对于 BC 实例，不能指定要在其上启动故障转移的可读辅助副本。
+> - 在自动备份系统完成新数据库的第一次完整备份之前，将不允许进行故障转移。
 
 ## <a name="next-steps"></a>后续步骤
 

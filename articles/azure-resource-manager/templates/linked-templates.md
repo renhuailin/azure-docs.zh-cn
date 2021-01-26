@@ -2,13 +2,13 @@
 title: 用于部署的链接模板
 description: 介绍如何使用 Azure 资源管理器模板（ARM 模板）中的链接模板创建一个模块化的模板解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: dd810167e07f1bb23f9563936cb481652953ccd1
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 01/25/2021
+ms.openlocfilehash: 7d4df67b7f69b3e58799f45ad72bd9ed68540dc2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624852"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790929"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -111,6 +111,10 @@ ms.locfileid: "98624852"
   },
   ...
 ```
+
+> [!NOTE]
+>
+> 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请使用 `inner` 作用域或将嵌套模板转换为链接模板。
 
 以下模板演示了如何根据作用域对模板表达式进行求解。 它包含一个名为 `exampleVar` 的变量，父模板和嵌套模板中都定义了此变量。 它返回此变量的值。
 
@@ -399,10 +403,6 @@ ms.locfileid: "98624852"
   ]
 }
 ```
-
-> [!NOTE]
->
-> 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请使用 `inner` 作用域或将嵌套模板转换为链接模板。
 
 ## <a name="linked-template"></a>链接的模板
 

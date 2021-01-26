@@ -3,30 +3,22 @@ title: 在 Azure IoT 中心设备预配服务中重新预配设备
 description: 了解如何使用设备预配服务 (DPS) 实例重新预配设备，以及可能需要执行此操作的原因。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: e5cc5b557aa4dff793f7e87093eeb65028da4f8c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d704e8f9687f3987d80018d84b41c0fd519da172
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010939"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791890"
 ---
 # <a name="how-to-reprovision-devices"></a>如何重新预配设备
 
-在 IoT 解决方案的生命周期中，设备在 IoT 中心之间频繁移动。 此项移动的原因可能包括以下情况：
+在 IoT 解决方案的生命周期中，设备在 IoT 中心之间频繁移动。 本主题旨在帮助解决方案运营商配置重新设置策略。
 
-* **地理位置**：当设备在两个位置之间移动时，通过将设备迁移到离每个位置更近的 IoT 中心来改善网络延迟。
-
-* **多租户**：可在同一 IoT 解决方案中使用设备，但将其重新分配或租赁给新的客户或客户站点。 可使用不同的 IoT 中心为这位新客户提供服务。
-
-* **解决方案更改**：可将设备移到新版或更新后的 IoT 解决方案中。 这种重新分配可能需要设备与连接到其他后端组件的新 IoT 中心通信。 
-
-* **隔离**：类似于解决方案更改。 出现故障、被盗用或已过时的设备可能会重新分配到 IoT 中心，该设备只能在此处进行更新并恢复其符合性。 一旦设备正常运行，它就会迁移回主中心。
-
-有关更详细的重新预配概述，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md)。
+有关重新设置方案的更详细概述，请参阅 [IoT 中心设备重新设置概念](concepts-device-reprovision.md)。
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>配置注册分配策略

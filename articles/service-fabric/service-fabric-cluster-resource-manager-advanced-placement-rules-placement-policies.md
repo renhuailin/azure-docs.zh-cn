@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a4586c9c1be51b0ebbdebcf0c23289fc39f9eda
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 263e45928642aa74d682fc490e424a24deeb8076
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485495"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790675"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric 服务的放置策略
 放置策略是可用于在某些不常见的特定情况下控制服务位置的附加规则。 这些情况的一些示例包括：
@@ -150,7 +150,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> 目前，仅处于 ExclusiveProcess [服务包激活模式](/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)下的无状态服务支持该策略。
+> 目前，仅处于 ExclusiveProcess [服务包激活模式](/dotnet/api/system.fabric.description.servicepackageactivationmode)下的无状态服务支持该策略。
 >
 
 > [!WARNING]
@@ -158,7 +158,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> 将高值 [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) 与此放置策略一起使用可能导致应用程序升级停滞。 例如，如果有五个节点的群集并且设置 InstanceCount = 10，则每个节点上都有两个实例。 如果设置 MinInstanceCount = 9，尝试的应用升级可能会停滞;对于 MinInstanceCount = 8，可以避免这种情况。
+> 将高值 [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount) 与此放置策略一起使用可能导致应用程序升级停滞。 例如，如果有五个节点的群集并且设置 InstanceCount = 10，则每个节点上都有两个实例。 如果设置 MinInstanceCount = 9，尝试的应用升级可能会停滞;对于 MinInstanceCount = 8，可以避免这种情况。
 >
 
 ## <a name="next-steps"></a>后续步骤

@@ -3,12 +3,12 @@ title: 跨多个实验室和订阅的 Azure 开发测试实验室使用情况
 description: 了解如何跨多个实验室和订阅报告 Azure 开发测试实验室的使用情况。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9640dc3fd74095a737f382994201dc5610af921a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d789b9849ec798a396e99420649792937422470f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152199"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789932"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>跨多个实验室和订阅报告 Azure 开发测试实验室的使用情况
 
@@ -82,5 +82,5 @@ Azure 函数应将数据推送到长期存储。 导出多个实验室的数据�
     选择高性能的用户是否 (更昂贵) VM 大小？
 -   正在使用哪些 Marketplace 映像？
 
-    为自定义映像最常见的 VM 基准，应生成类似于 [共享映像库](../virtual-machines/windows/shared-image-galleries.md) 或 [映像工厂](image-factory-create.md)的通用映像存储。
+    为自定义映像最常见的 VM 基准，应生成类似于 [共享映像库](../virtual-machines/shared-image-galleries.md) 或 [映像工厂](image-factory-create.md)的通用映像存储。
 -   正在使用或未使用哪些自定义映像？

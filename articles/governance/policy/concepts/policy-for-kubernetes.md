@@ -3,12 +3,12 @@ title: 了解适用于 Kubernetes 的 Azure 策略
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: e2b9253d8ce60d5dc77d406e3c9d0469539f2c77
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: f25b64bc28535d125c7883f16c9e747d6250ca96
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511325"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789732"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解用于 Kubernetes 群集的 Azure Policy
 
@@ -62,7 +62,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 以下限制仅适用于 AKS 的 Azure 策略外接程序：
 
 - [AKS Pod 安全策略](../../../aks/use-pod-security-policies.md) 和用于 AKS 的 Azure 策略外接程序不能同时启用。 有关详细信息，请参阅 [AKS pod 安全限制](../../../aks/use-pod-security-on-azure-policy.md#limitations)。
-- 用于评估的 Azure 策略外接程序自动排除的命名空间： _kube_、 _gatekeeper-system_ _aks 和 periscope_。
+- 用于评估的 Azure 策略外接程序自动排除的命名空间： _kube_、  _aks 和 periscope_。
 
 ## <a name="recommendations"></a>建议
 
@@ -463,7 +463,7 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 
 ## <a name="troubleshooting-the-add-on"></a>外接程序故障排除
 
-有关排查 Kubernetes 的外接程序问题的详细信息，请参阅 Azure 策略疑难解答一文的 [Kubernetes 部分](/azure/governance/policy/troubleshoot/general#add-on-for-kubernetes-general-errors) 。
+有关排查 Kubernetes 的外接程序问题的详细信息，请参阅 Azure 策略疑难解答一文的 [Kubernetes 部分](../troubleshoot/general.md#add-on-for-kubernetes-general-errors) 。
 
 ## <a name="remove-the-add-on"></a>删除加载项
 

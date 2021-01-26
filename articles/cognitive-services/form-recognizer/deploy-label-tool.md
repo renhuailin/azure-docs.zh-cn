@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 084ca039e7f388a11e15b29c579606c6ed3086db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359840"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790421"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署示例标记工具
 
@@ -101,7 +101,7 @@ ms.locfileid: "97359840"
 > 创建 web 应用时，还可以配置授权/身份验证。 这并不是必需的。 
 
 > [!IMPORTANT]
-> 可能需要为 web 应用启用 TLS，才能在其地址上查看 `https` 。 按照 [启用 tls 终结点](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl) 中的说明设置挎斗容器，而不是为 web 应用启用 TLS/SSL。
+> 可能需要为 web 应用启用 TLS，才能在其地址上查看 `https` 。 按照 [启用 tls 终结点](../../container-instances/container-instances-container-group-ssl.md) 中的说明设置挎斗容器，而不是为 web 应用启用 TLS/SSL。
 
 ### <a name="azure-cli"></a>Azure CLI
 

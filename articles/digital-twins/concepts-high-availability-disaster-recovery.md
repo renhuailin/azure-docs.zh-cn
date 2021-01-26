@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 35f4aae246f105d832aaf92c5c5797c8a65b44f1
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 3336a086fbe8f4291f752836a610cd80b773ec2d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938525"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790810"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure 数字孪生高可用性和灾难恢复
 
@@ -41,7 +41,7 @@ Microsoft 在少数情况下执行的 **故障转移** 会将受影响区域的�
 
 ## <a name="monitor-service-health"></a>监视服务运行状况
 
-当 Azure 数字孪生实例进行故障转移和恢复时，可以使用 [Azure 服务运行状况](https://docs.microsoft.com/azure/service-health/service-health-overview) 工具监视此过程。 服务运行状况跨不同的区域和订阅跟踪 Azure 服务的运行状况，并共享服务影响有关中断和停机时间的通信。
+当 Azure 数字孪生实例进行故障转移和恢复时，可以使用 [Azure 服务运行状况](../service-health/service-health-overview.md) 工具监视此过程。 服务运行状况跨不同的区域和订阅跟踪 Azure 服务的运行状况，并共享服务影响有关中断和停机时间的通信。
 
 在故障转移事件期间，服务运行状况可提供服务关闭的时间和备份时间。
 
@@ -62,7 +62,7 @@ Microsoft 在少数情况下执行的 **故障转移** 会将受影响区域的�
 
 请注意，此工具中显示的信息并不特定于一个 Azure 数字实例。 使用服务运行状况了解在某个区域或订阅中使用 Azure 数字孪生服务时，你可以通过使用 [资源运行状况工具](troubleshoot-resource-health.md) 向下钻取到特定实例并查看这些实例是否受影响，进一步监视某个步骤。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 有关 HA/DR 的最佳实践，请参阅本主题中的以下 Azure 指南： 
 * [*Azure 业务连续性技术指南*](/azure/architecture/framework/resiliency/overview)一文介绍了可帮助你考虑业务连续性和灾难恢复的通用框架。 

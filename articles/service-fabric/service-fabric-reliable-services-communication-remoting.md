@@ -4,12 +4,12 @@ description: Service Fabric 远程处理允许客户端和服务使用远程过�
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3659fea73abae3c9c5264f227b90d0af95a93e7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a0486a27d76c978a65c4a3cfd81df52a12e4ea1d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576649"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791571"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>通过 Reliable Services 使用 C# 进行服务远程处理
 
@@ -160,7 +160,7 @@ string message = await helloWorldClient.HelloWorldAsync();
    </Resources>
    ```
 
-2. 使用 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 命名空间中的 [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。
+2. 使用 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 命名空间中的 [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener)。
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -176,7 +176,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
    ```
 
-3. 使用 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 命名空间中的 [FabricTransportServiceRemotingClientFactory ](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) 创建客户端。
+3. 使用 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 命名空间中的 [FabricTransportServiceRemotingClientFactory ](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory) 创建客户端。
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -255,7 +255,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
    ```
 
-3. 在远程处理接口上添加[程序集属性](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet)。
+3. 在远程处理接口上添加[程序集属性](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute)。
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -279,7 +279,7 @@ string message = await helloWorldClient.HelloWorldAsync();
    </Resources>
    ```
 
-2. 使用[远程处理 V2 侦听器](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。 使用的默认服务终结点资源名称为“ServiceEndpointV2_1”。 必须在服务清单中定义该名称。
+2. 使用[远程处理 V2 侦听器](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener)。 使用的默认服务终结点资源名称为“ServiceEndpointV2_1”。 必须在服务清单中定义该名称。
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -297,7 +297,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
    ```
 
-3. 使用 V2 [客户端工厂](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)。
+3. 使用 V2 [客户端工厂](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory)。
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {

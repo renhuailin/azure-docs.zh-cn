@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f3f6238bb72704d13fef4a7171aeaebee5f9141
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9932c11332a616928d59c213d4f4806feb81cfe2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708690"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791639"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric 托管模型
-本文概述 Azure Service Fabric 提供的应用程序托管模型，并介绍**共享进程**模型和**独占进程**模型之间的差异。 本文介绍已部署的应用程序在 Service Fabric 节点上的外观，以及服务和服务主机进程的副本（或实例）之间的关系。
+本文概述 Azure Service Fabric 提供的应用程序托管模型，并介绍 **共享进程** 模型和 **独占进程** 模型之间的差异。 本文介绍已部署的应用程序在 Service Fabric 节点上的外观，以及服务和服务主机进程的副本（或实例）之间的关系。
 
 在继续阅读之前，请确保了解[在 Service Fabric 中为应用程序建模][a1]中所述的各种概念及其相互关系。 
 
@@ -30,7 +30,7 @@ ms.locfileid: "91708690"
 假设有三个节点群集，创建“MyAppType”类型的应用程序 fabric:/App1。 在此应用程序 **fabric:/App1** 中创建“MyServiceType”类型的服务 **fabric:/App1/ServiceA**。 该服务有 2 个分区（例如 **P1** 和 **P2**），每个分区有 3 个副本。 下图显示了此应用程序部署在节点后的视图。
 
 
-![显示此应用程序在节点上已部署的视图的关系图。][node-view-one]
+![显示了此应用程序部署在节点后的视图的关系图。][node-view-one]
 
 
 Service Fabric 已激活启动了“MyServicePackage”的“MyCodePackage”，“MyServicePackage”正在托管两个分区中的副本。 群集中的所有节点将都具有相同的视图，因为每个分区中选择的副本数与群集中的节点数相等。 在应用程序 **fabric:/App1** 中创建另一个服务 **fabric:/App1/ServiceB**。 该服务有 1 个分区（例如 **P3**），每个分区有 3 个副本。 下图显示节点上的新视图：
@@ -42,7 +42,7 @@ Service Fabric 已激活启动了“MyServicePackage”的“MyCodePackage”，
 Service Fabric 将服务 **fabric:/App1/ServiceB** 的 **P3** 分区的新副本放置在“MyServicePackage”的现有激活中。 现在， 创建另一个“MyAppType”类型的应用程序 **fabric:/App2**。 在 **fabric:/App2** 内部创建服务 **fabric:/App2/ServiceA**。 该服务有 2 个分区（**P4** 和 **P5**），每个分区有 3 个副本。 下图显示了新的节点视图：
 
 
-![显示新的节点视图的关系图。][node-view-three]
+![显示了新的节点视图的关系图。][node-view-three]
 
 
 Service Fabric 激活了“MyServicePackage”的新副本，此“MyServicePackage”启动“MyCodePackage”的新副本。 服务 **fabric:/App2/ServiceA** 两个分区（**P4** 和 **P5**）中的副本均放置在“MyCodePackage”的此新副本中。
@@ -157,7 +157,7 @@ Service Fabric 将[来宾可执行文件][a2]和[容器][a3]应用程序视为�
 在给定节点上，两个服务将分别有两个副本。 由于使用独占进程模型创建了服务，Service Fabric 将为每个复本激活一个新“MyServicePackage”副本。 每次激活“MultiTypeServicePackage”将启动“MyCodePackageA”和“MyCodePackageB”的一个副本。 但是，“MyCodePackageA”或“MyCodePackageB”中只有一个将托管副本（为此副本激活了“MultiTypeServicePackage”）。 下图显示了节点视图：
 
 
-![显示节点视图的关系图。][node-view-five]
+![显示了节点视图的关系图。][node-view-five]
 
 
 为服务 **fabric:/SpecialApp/ServiceA** 的 **P1** 分区的副本激活“MultiTypeServicePackage”时，“MyCodePackageA”将托管该副本。 “MyCodePackageB”正在运行。 类似地，为服务 **fabric:/SpecialApp/ServiceB** 的 **P3** 分区的副本激活“MultiTypeServicePackage”时，“MyCodePackageB”将托管该副本。 “MyCodePackageA”正在运行。 因此，每个 *ServicePackage* 的 *CodePackage*（注册不同的 *ServiceType*）数量越多，冗余资源使用率就越高。 
@@ -172,7 +172,7 @@ Service Fabric 将[来宾可执行文件][a2]和[容器][a3]应用程序视为�
 
 ### <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services 和执行组件分支子进程
 
-服务结构不支持 Reliable Services，因此也不支持 Reliable Actors 分支子进程。 这里举例说明其不受支持的原因：[CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) 不能用于注册不受支持的子过程，并且取消令牌仅发送到已注册过程；若子过程在父过程收到取消令牌后未关闭，会导致各种问题，例如升级失败。
+服务结构不支持 Reliable Services，因此也不支持 Reliable Actors 分支子进程。 这里举例说明其不受支持的原因：[CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext) 不能用于注册不受支持的子过程，并且取消令牌仅发送到已注册过程；若子过程在父过程收到取消令牌后未关闭，会导致各种问题，例如升级失败。
 
 ## <a name="next-steps"></a>后续步骤
 [打包应用程序][a4]并准备好进行部署。

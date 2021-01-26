@@ -3,12 +3,12 @@ title: Azure 开发测试实验室的 azure 安全基准
 description: Azure 开发测试实验室的 azure 安全基准
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: eabb55956f97f40312c894ccabd7a341ecc5688c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202005"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789898"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure 开发测试实验室的 azure 安全基准
 
@@ -619,7 +619,7 @@ _ *Azure 安全中心监视：** 不适用
 
 - [如何实现 Azure 安全中心漏洞评估建议](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Azure Automation State Configuration 概述](../automation/automation-dsc-overview.md)
-- [将 VHD 上传到 Azure 并创建新的 VM 的示例脚本](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [将 VHD 上传到 Azure 并创建新的 VM 的示例脚本](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 - [如何在开发测试实验室中创建映像工厂](image-factory-create.md)
 
 **Azure 安全中心监视：** 是的
@@ -733,7 +733,7 @@ _ *Azure 安全中心监视：** 不适用
 
 **责任：** 面向
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预扫描要上传到非计算 Azure 资源的文件
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 **指南：** 支持 Azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如，Azure App Service 托管在实验室) ，但它不会在内容上运行。
 预先扫描上传到非计算 Azure 资源的任何文件，例如应用服务、Data Lake Storage、Blob 存储等。
 
@@ -825,7 +825,7 @@ _ *Azure 安全中心监视：** 不适用
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 **指南：** Azure 安全中心为每个警报分配一个严重性，以帮助你确定应该首先调查的警报的优先级。 严重性取决于安全中心对调查结果或用于发出警报的分析的确信程度，以及对导致警报的活动背后存在恶意意图的确信程度。
 
-此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 - [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)

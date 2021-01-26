@@ -5,15 +5,15 @@ author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: a38a11d9cf062cd0a45890d43afe9b2530b2b7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebaedb5369f3b39372262bfde526706e8d069418
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258466"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789610"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors 的诊断和性能监视
-Reliable Actors 运行时发出 [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) 事件和[性能计数器](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)。 这些有助于深入了解运行时的运行状况以及进行故障排除和性能监视。
+Reliable Actors 运行时发出 [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) 事件和[性能计数器](/dotnet/api/system.diagnostics.performancecounter)。 这些有助于深入了解运行时的运行状况以及进行故障排除和性能监视。
 
 ## <a name="eventsource-events"></a>EventSource 事件
 Reliable Actors 运行时的 EventSource 提供程序名称为“Microsoft-ServiceFabric-Actors”。 [在 Visual Studio 中调试](service-fabric-debugging-your-application.md)执行组件应用程序时，来自此事件源的事件显示在“[诊断事件](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)”窗口中。
@@ -50,7 +50,7 @@ Windows 操作系统中默认可用的 [Windows 性能监视器](/previous-versi
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*ServiceFabricPartitionID* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示。 分区 ID 是 GUID，并且其字符串表示是通过使用格式说明符“D”的 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 方法生成的。
+*ServiceFabricPartitionID* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示。 分区 ID 是 GUID，并且其字符串表示是通过使用格式说明符“D”的 [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) 方法生成的。
 
 *ActorRuntimeInternalID* 是由 Fabric 执行组件运行时生成的供内部使用的 64 位整数的字符串表示。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
 
@@ -69,7 +69,7 @@ Windows 操作系统中默认可用的 [Windows 性能监视器](/previous-versi
 
 *ActorsRuntimeMethodId* 是由 Fabric 执行组件运行时生成的供内部使用的 32 位整数的字符串表示。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
 
-*ServiceFabricPartitionID* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示。 分区 ID 是 GUID，并且其字符串表示是通过使用格式说明符“D”的 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 方法生成的。
+*ServiceFabricPartitionID* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示。 分区 ID 是 GUID，并且其字符串表示是通过使用格式说明符“D”的 [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) 方法生成的。
 
 *ActorRuntimeInternalID* 是由 Fabric 执行组件运行时生成的供内部使用的 64 位整数的字符串表示。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 09325289dd5cb83bfc26dd26b266d50b622fe098
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: e6fd69d7016a364d92e1873e0df1521a27612b79
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763088"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791470"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>排查 Azure Stack Edge Pro 问题
 
@@ -89,4 +89,4 @@ ms.locfileid: "98763088"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[此版本中的已知问题](data-box-gateway-release-notes.md)。
+* 详细了解[此版本中的已知问题](../databox-gateway/data-box-gateway-release-notes.md)。

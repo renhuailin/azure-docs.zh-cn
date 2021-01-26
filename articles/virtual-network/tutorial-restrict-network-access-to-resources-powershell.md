@@ -17,16 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 92a5ce539cdd61feb57722756ec8722916f346de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6770486158b9c5f2e896951d91ff41643b6c8813
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072377"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790134"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>使用 PowerShell 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 通过虚拟网络服务终结点，可将某些 Azure 服务资源限制为仅允许某个虚拟网络子网通过网络进行访问。 还可以删除对资源的 Internet 访问。 服务终结点提供从虚拟网络到受支持 Azure 服务的直接连接，使你能够使用虚拟网络的专用地址空间访问 Azure 服务。 通过服务终结点发往 Azure 资源的流量始终保留在 Microsoft Azure 主干网络上。 在本文中，学习如何：
 
@@ -344,7 +342,7 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-在 *myVmPublic* VM 上，尝试将 Azure 文件共享映射到驱动器 Z。在运行下面的命令之前，将 `<storage-account-key>` 和 `<storage-account-name>` 替换为在[创建存储帐户](#create-a-storage-account)中提供或检索的值。
+在 *myVmPublic* VM 上，尝试将 Azure 文件共享映射到驱动器 Z。在运行下面的命令之前，将 `<storage-account-key>` 和 `<storage-account-name>` 替换为在 [创建存储帐户](#create-a-storage-account)中提供或检索的值。
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force

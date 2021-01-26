@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: fd04e5a7f084de7a95f20b54b99a9e4590f10cd7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 7df9f7d072af7c5f6523fd1be0432ce51954fa10
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034758"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791873"
 ---
 # <a name="call-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用函数
 
@@ -31,7 +31,7 @@ ms.locfileid: "98034758"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 函数应用，它是在 Azure Functions 中创建的函数的容器，以及你创建的函数。 若没有函数应用，请先[创建函数应用](../azure-functions/functions-create-first-azure-function.md)。 然后才可以在逻辑应用外部（在 Azure 门户中）或[逻辑应用内部](#create-function-designer)（在逻辑应用设计器中）创建函数。
+* 函数应用，它是在 Azure Functions 中创建的函数的容器，以及你创建的函数。 若没有函数应用，请先[创建函数应用](../azure-functions/functions-get-started.md)。 然后才可以在逻辑应用外部（在 Azure 门户中）或[逻辑应用内部](#create-function-designer)（在逻辑应用设计器中）创建函数。
 
 * 使用逻辑应用时，同样的要求适用于函数应用和函数，不管它们是现有的还是全新的：
 
@@ -102,9 +102,9 @@ function convertToDateString(request, response){
 
 ## <a name="create-functions-inside-logic-apps"></a>在逻辑应用内部创建函数
 
-可以使用逻辑应用设计器中的内置 Azure Functions 操作直接从逻辑应用的工作流创建函数，但只能对用 JavaScript 编写的函数使用此方法。 对于其他语言，可以通过 Azure 门户中的 Azure Functions 体验创建函数。 有关详细信息，请参阅[在 Azure 门户中创建首个函数](../azure-functions/functions-create-first-azure-function.md)。
+可以使用逻辑应用设计器中的内置 Azure Functions 操作直接从逻辑应用的工作流创建函数，但只能对用 JavaScript 编写的函数使用此方法。 对于其他语言，可以通过 Azure 门户中的 Azure Functions 体验创建函数。 有关详细信息，请参阅[在 Azure 门户中创建首个函数](../azure-functions/functions-get-started.md)。
 
-但是，在 Azure 中创建函数之前，必须已有一个函数应用，它是函数的容器。 若没有函数应用，请先创建一个。 请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-create-first-azure-function.md)。
+但是，在 Azure 中创建函数之前，必须已有一个函数应用，它是函数的容器。 若没有函数应用，请先创建一个。 请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-get-started.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
