@@ -10,14 +10,17 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: fd3c8a08e5512d15be4dfb26ca3eff151d08386f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e31128687cfcc1f4e32879328ad3227182efb9ce
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651356"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797364"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>使用 Azure Sentinel watchlists
+
+> [!IMPORTANT]
+> Watchlists 功能目前处于 **预览阶段**。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，了解适用于 Azure 功能的其他法律条款，这些功能适用于 beta 版、预览版或其他情况下尚未公开上市。
 
 Azure Sentinel watchlists 允许从外部数据源收集数据，以便与 Azure Sentinel 环境中的事件相关。 创建后，可以在搜索、检测规则、威胁搜寻和响应行动手册中使用 watchlists。 Watchlists 以名称-值对的形式存储在 Azure Sentinel 工作区中，并缓存以获得最佳查询性能和低延迟。
 
@@ -73,11 +76,43 @@ Azure Sentinel watchlists 允许从外部数据源收集数据，以便与 Azure
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-fields.png" alt-text="用播放列表字段进行查询" lightbox="./media/watchlists/sentinel-watchlist-queries-fields.png":::
     
+1. 您可以通过将播放列表作为表进行联接和查找，来根据播放列表中的数据查询任何表中的数据。
+
+    ```kusto
+    Heartbeat
+    | lookup kind=leftouter _GetWatchlist('IPlist') 
+     on $left.ComputerIP == $right.IPAddress
+    ```
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-join.png" alt-text="针对播放列表的查询作为查找":::
+
 ## <a name="use-watchlists-in-analytics-rules"></a>在分析规则中使用 watchlists
 
 若要在分析规则中使用 watchlists，请在 Azure 门户中导航到 **Azure Sentinel**  >  **Configuration**  >  **analytics**，并使用 `_GetWatchlist('<watchlist>')` 查询中的函数创建规则。
 
-:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="在分析规则中使用 watchlists" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
+1. 在此示例中，创建一个名为 "ipwatchlist" 的播放列表，其中包含以下值：
+
+    :::image type="content" source="./media/watchlists/create-watchlist.png" alt-text="播放列表的四个项的列表":::
+
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-new-2.png" alt-text="创建包含四个项目的播放列表":::
+
+1. 接下来，创建分析规则。  在此示例中，我们仅在播放列表中包含来自 IP 地址的事件：
+
+    ```kusto
+    //Watchlist as a variable
+    let watchlist = (_GetWatchlist('ipwatchlist') | project IPAddress);
+    Heartbeat
+    | where ComputerIP in (watchlist)
+    ```
+    ```kusto
+    //Watchlist inline with the query
+    Heartbeat
+    | where ComputerIP in ( 
+        (_GetWatchlist('ipwatchlist')
+        | project IPAddress)
+    )
+    ```
+
+:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule-2.png" alt-text="在分析规则中使用 watchlists":::
 
 ## <a name="view-list-of-watchlists-aliases"></a>查看 watchlists 别名列表
 

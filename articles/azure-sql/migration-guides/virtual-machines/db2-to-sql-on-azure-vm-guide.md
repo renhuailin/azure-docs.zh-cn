@@ -1,26 +1,26 @@
 ---
-title: '在 Azure Vm 上 SQL Server DB2 到 (迁移指南) '
-description: 遵循本指南，将 DB2 服务器迁移到 Azure Vm 上的 SQL Server。
+title: DB2 到 Azure VM 上的 SQL Server（迁移指南）
+description: 请按照本指南的说明将 DB2 服务器迁移到 Azure VM 上的 SQL Server。
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 5312ee08bad9d0b84e13c53fe4b1de59fad896f1
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: c3f3af6a1c114d6587992f79e95dcc0c1ccb41e6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326040"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797470"
 ---
-# <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>迁移指南：在 Azure Vm 上执行 DB2 到 SQL Server
+# <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>迁移指南：DB2 到 Azure VM 上的 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
 
-此迁移指南介绍了如何使用 DB2 的 SQL Server 迁移助手将用户数据库从 DB2 迁移到 Azure Vm 上的 SQL Server。 
+本迁移指南介绍了如何使用适用于 DB2 的 SQL Server 迁移助手将用户数据库从 DB2 迁移到 Azure VM 上的 SQL Server。 
 
 有关其他迁移指南，请参阅[数据库迁移](https://datamigration.microsoft.com/)。 
 
@@ -31,7 +31,7 @@ ms.locfileid: "96326040"
 
 - 验证源环境是否受支持。
 - [DB2 SQL Server 迁移助手 (SSMA)](https://www.microsoft.com/download/details.aspx?id=54254)。
-- 源环境与 Azure 中的 SQL Server VM 之间的[连接](../../virtual-machines/windows/ways-to-connect-to-sql.md)。 
+- 源环境与 Azure 中 SQL Server VM 之间的[连接](../../virtual-machines/windows/ways-to-connect-to-sql.md)。 
 
 
 
@@ -86,7 +86,7 @@ ms.locfileid: "96326040"
 
 1. （可选）向语句中添加动态或临时查询。 右键单击节点，然后选择“添加语句”。 
 1. 选择“连接到 SQL Server”。 
-    1. 输入连接详细信息以连接到 Azure VM 上的 SQL Server 实例。 
+    1. 输入连接详细信息，以连接到 Azure VM 上的 SQL Server 实例。 
     1. 选择连接到目标服务器上的现有数据库，或提供新名称以在目标服务器上创建新数据库。 
     1. 选择“连接”  。 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b4feb177abbdbfb9666be0ea0746c8316acdf5ae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 2f8dc9f53c36f59a152fc34361b3726ea2cc001c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250751"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797063"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
 
@@ -23,7 +23,7 @@ ms.locfileid: "98250751"
 
 标准指标由 Azure 平台提供。 它们反映了 Azure 资源的运行状况和使用情况统计信息。 
 
-## <a name="resource-scope-picker"></a>资源作用域选取器
+## <a name="resource-scope-picker"></a>资源范围选取器
 资源范围选取器允许你查看单个资源和多个资源的指标。 以下各节介绍如何使用资源范围选取器。 
 
 ### <a name="select-a-single-resource"></a>选择单个资源
@@ -88,7 +88,7 @@ ms.locfileid: "98250751"
 
 使用指标资源管理器的 [时间选取器面板](metrics-getting-started.md#select-a-time-range)选择时间粒度的大小。 如果未显式选择时间粒度，则默认情况下将使用当前选定的时间范围。 确定了时间粒度后，在每个时间粒度捕获的指标值将在图表上聚合，每个时间粒度一个数据点。
 
-例如，假设某个图表显示 *服务器响应时间* 指标。 它在 *过去24小时* 内使用一段时间内的 *平均* 聚合。 在此示例中：
+例如，假设某个图表显示 *服务器响应时间* 指标。 它在 *过去24小时* 内使用一段时间内的 *平均* 聚合。 在本示例中：
 
 - 如果将时间粒度设置为30分钟，则会从48个聚合数据点绘制图表。 也就是说，折线图将图表绘图区中的48点连接 (每小时24小时 x 2 个数据点) 。 每个数据点都表示在每个相关的30分钟时间段内发生的服务器请求的所有捕获响应时间的 *平均值* 。
 - 如果将时间粒度切换到15分钟，则会获得96个聚合数据点。  也就是说，每小时获取24小时 x 4 个数据点。
@@ -129,16 +129,19 @@ ms.locfileid: "98250751"
 
    ![该屏幕截图显示了可筛选的维度（属性）。](./media/metrics-charts/028.png)
 
-3. 选择在绘制图表时要包括的维度值。 下面的示例筛选出成功的存储事务：
+3. 选择要应用于维度 (属性) 的运算符。 默认运算符为 = (等于) 
+
+   ![显示可与筛选器一起使用的运算符的屏幕截图。](./media/metrics-charts/filter-operator.png)
+
+4. 选择要在绘制图表时应用于筛选器的维度值 (此示例显示筛选出成功的存储事务) ：
 
    ![显示成功筛选的存储事务的屏幕截图。](./media/metrics-charts/029.png)
 
-4. 在 **筛选器** 选择器外选择以将其关闭。 现在图表将显示失败的存储事务数：
+5. 选择筛选值后，在“筛选选择器”之外单击将其关闭。 现在图表将显示失败的存储事务数：
 
    ![显示失败的存储事务数的屏幕截图。](./media/metrics-charts/030.png)
 
-可以重复这些步骤，将多个筛选器应用于相同的图表。
-
+6. 您可以重复步骤1-5，将多个筛选器应用于相同的图表。
 
 
 ## <a name="metric-splitting"></a>度量值拆分
@@ -158,9 +161,18 @@ ms.locfileid: "98250751"
 
    现在，图表会显示多个行，每个维度段一个行：
 
-   ![显示每个维度段线条的屏幕截图。](./media/metrics-charts/032.png)
+   ![该屏幕截图显示了多个折线图，每个维度部分均有一个。](./media/metrics-charts/segment-dimension.png)
+   
+3. 选择按选定维度拆分后要显示的值的数量限制。 默认限制为10，如上图所示。 限制范围为 1-50。
+   
+   ![显示拆分限制的屏幕截图，用于限制拆分后的值数。](./media/metrics-charts/segment-dimension-limit.png)
+   
+4. 选择段上的排序顺序：升序或降序。 默认选择为 "降序"。
+   
+   ![显示拆分值的排序顺序的屏幕截图。](./media/metrics-charts/segment-dimension-sort.png)
 
-3. 在分组选择 **器** 外选择以将其关闭。
+5. 在“分组选择器”之外单击以将其关闭。
+   
 
    > [!NOTE]
    > 若要隐藏与方案无关的段并使图表更易于阅读，请在同一维度上同时使用筛选和拆分。
@@ -218,7 +230,7 @@ ms.locfileid: "98250751"
 
 有关详细信息，请参阅 [创建、查看和管理指标警报](alerts-metric.md)。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果看不到图表上的任何数据，请查看以下疑难解答信息：
 

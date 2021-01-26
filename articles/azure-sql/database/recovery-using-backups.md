@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: a70571dcf380fc2186565a40778991ac70a218d6
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797207"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795332"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自动数据库备份进行恢复 - Azure SQL 托管实例和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -53,8 +53,8 @@ ms.locfileid: "97797207"
 
 | **部署选项** | **处理的并发请求数最多为 #** | **提交的并发请求数最多为 #** |
 | :--- | --: | --: |
-|**单个数据库（每个订阅）**|10|60|
-|**弹性池（每个池）**|4|200|
+|**单个数据库（每个订阅）**|30|100|
+|**弹性池（每个池）**|4|2000|
 
 
 没有任何内置的方法可以还原整个服务器。 有关如何完成此任务的示例，请参阅 [Azure SQL 数据库：完整服务器恢复](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)。
@@ -95,7 +95,7 @@ ms.locfileid: "97797207"
   ![SQL 托管实例的数据库还原选项的屏幕截图。](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
 
 > [!TIP]
-> 若要以编程方式从备份还原数据库，请参阅 [使用自动备份进行编程恢复](recovery-using-backups.md)。
+> 若要以编程方式从备份还原数据库，请参阅[使用自动备份以编程方式恢复](recovery-using-backups.md)。
 
 ## <a name="deleted-database-restore"></a>已删除的数据库还原
 
@@ -109,7 +109,7 @@ ms.locfileid: "97797207"
 通过 Azure 门户还原在服务器或托管实例资源中删除的数据库。
 
 > [!TIP]
-> 最近删除的数据库可能需要几分钟的时间才会出现在 Azure 门户中的 " **已删除数据库** " 页上，或 [以编程方式](#programmatic-recovery-using-automated-backups)显示删除的数据库时。
+> 最近删除的数据库可能需要几分钟的时间才会出现在 Azure 门户的“删除的数据库”页上，[以编程方式](#programmatic-recovery-using-automated-backups)显示删除的数据库时也会出现这种情况。
 
 #### <a name="sql-database"></a>SQL 数据库
 
@@ -251,7 +251,7 @@ ms.locfileid: "97797207"
 
 #### <a name="sql-managed-instance"></a>SQL 托管实例
 
-若要使用 Azure CLI 恢复托管实例数据库，请参阅 [az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)。
+若要使用 Azure CLI 还原托管实例数据库，请参阅 [az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)。
 
 ## <a name="summary"></a>摘要
 

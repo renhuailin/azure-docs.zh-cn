@@ -10,12 +10,13 @@ ms.date: 05/12/2020
 ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
-ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 9afe58434d60280f635deab75b763077bc76b93c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514197"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797635"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>为 Azure 存储配置网络路由首选项（预览）
 
@@ -65,9 +66,36 @@ ms.locfileid: "85514197"
 
 Azure 存储的路由首选项在以下区域提供：
 
-- 法国南部
-- 美国中北部
+- 美国中部 
+- 美国中部 EUAP
+- 美国东部 
+- 美国东部 2
+- 美国东部 2 
+- 美国东部 2 EUAP
+- 美国中南部
 - 美国中西部
+- 美国西部 
+- 美国西部 2 
+- 法国中部 
+- 法国南部 
+- 德国北部 
+- 德国中西部 
+- 美国中北部
+- 北欧 
+- 挪威东部 
+- 瑞士北部
+- 瑞士西部
+- 英国南部 
+- 英国西部 
+- 西欧 
+- 阿联酋中部
+- 东亚 
+- Southeast Asia 
+- Japan East 
+- 日本西部 
+- 印度西部
+- 澳大利亚东部 
+- 澳大利亚东南部 
 
 以下已知问题会影响 Azure 存储的路由首选项预览：
 

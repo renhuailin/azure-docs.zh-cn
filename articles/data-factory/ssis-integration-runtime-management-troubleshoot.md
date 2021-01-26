@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 5f1332255ae83a32f9b71d24d812b00fad9b7fa1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 34fd595a03f67201b303c94764668bf86a6c244b
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637915"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796893"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>在 Azure 数据工厂中排查 SSIS Integration Runtime 管理问题
 
@@ -151,7 +151,7 @@ SSIS IR 将定期自动更新。 升级期间将创建一个新的 Azure Batch �
 
 如果 SSIS IR 预配失败，则会删除创建的所有资源。 但是，如果订阅或资源组级别存在资源删除锁定，则不会按预期删除虚拟网络资源。 若要修复此错误，请删除删除锁定并重启 IR。
 
-### <a name="vnetresourcegrouplockedduringstop"></a>VNetResourceGroupLockedDuringStop
+### <a name="vnetresourcegrouplockedduringstopvnetdeletelock"></a>VNetResourceGroupLockedDuringStop/VNetDeleteLock
 
 停止 SSIS IR 时，删除所有与虚拟网络相关的资源。 但如果在订阅或资源组级别存在资源删除锁定，删除可能会失败。 此处，该删除锁定也由客户控制和设置。 因此，他们必须删除该删除锁定，然后再次停止 SSIS IR。
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: troubleshooting
-ms.date: 04/19/2019
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17b8d6de198746a79a50c4fbda805b364212e3c4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85558557"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796054"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>排查与 Azure Data Box Blob 存储相关的问题
 
@@ -65,6 +65,7 @@ ms.locfileid: "85558557"
 |错误消息  |建议的操作 |
 |---------|---------|
 |连接超时。 |登录到 Data Box 设备，检查其是否已解锁。 设备在重启后会保持锁定状态，直到有人登录为止。|
+|REST API 身份验证失败，错误为：服务器无法对请求进行身份验证。 请确保授权标头的值格式正确（包括签名）。 错误代码： AuthenticationFailed。 |出现这种情况的原因之一是设备时间与 Azure 不同步。 如果存在较大的时间偏差，则当您尝试通过 REST API 将数据复制到 Data Box 时，REST API 身份验证将中断。 在这种情况下，你可以打开出站 UDP 123 端口以允许访问 `time.windows.com` 。 一旦设备时间与 Azure 的时间同步，身份验证就会成功。 |
 
 ## <a name="next-steps"></a>后续步骤
 

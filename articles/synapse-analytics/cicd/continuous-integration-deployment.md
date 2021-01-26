@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ba5286b16b6e640e968b50174e39a05328e750a4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223680"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797296"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作区的持续集成和交付
 
@@ -134,3 +134,13 @@ ms.locfileid: "98223680"
 -   **在项目迁移之前准备池**。 如果已将 SQL 脚本或笔记本附加到开发工作区中的池，则需要在不同环境中使用相同的池名称。 
 -   **作为代码的基础结构 (IaC)**。 在描述性模型中管理基础结构 (网络、虚拟机、负载均衡器和连接) 拓扑，并使用与 DevOps 团队用于源代码的相同版本控制。 
 -   **其他**。 请参阅 [ADF 项目的最佳实践](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)
+
+## <a name="troubleshooting-artifacts-deployment"></a>项目部署疑难解答 
+
+### <a name="use-the-synapse-workspace-deployment-task"></a>使用 Synapse 工作区部署任务
+
+在 Synapse 中，所有类型的项目都不是 ARM 资源，不同于 ADF。 不能使用 ARM 模板部署任务来部署 Synapse 项目
+ 
+### <a name="unexpected-token-error-in-release"></a>发布中出现意外的标记错误
+
+如果参数文件包含未转义的参数值，则发布管道将无法分析文件，并出现意外标记错误。 建议你重写参数或 KeyVault 以获取参数。 你还可以将其作为一种解决方法。

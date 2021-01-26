@@ -8,22 +8,18 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 1f1a74f3a26a079039e68eb8e59fac4c18ff0c32
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3564609d869bef090f0a3db5e6040ba0f5ad80b0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219736"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796959"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio 中的源代码管理
 
-默认情况下，Azure Synapse Studio 作者直接针对 Synapse 服务。 但是，这种体验存在以下限制：
+默认情况下，Azure Synapse Studio 作者直接针对 Synapse 服务。 如果需要使用 Git 进行源代码管理，则可以使用 Synapse Studio 将工作区与 Git 存储库、Azure DevOps 或 GitHub 相关联。 
 
-- Synapse studio 不包括用于存储更改的临时存储。 保存和共享更改的唯一方法是通过 **发布** ，并将所有更改直接发布到 Synapse 服务。
-
-- Synapse Studio 未针对协作和版本控制进行优化。
-
-为了提供源代码管理功能，Synapse Studio 允许你将工作区与 Git 存储库、Azure DevOps 或 GitHub 关联。 本文概述如何在启用了 git 存储库的 Synapse 工作区中配置和工作。 此外，我们还重点介绍了一些最佳做法和故障排除指南。
+本文概述如何在启用了 git 存储库的 Synapse 工作区中配置和工作。 此外，我们还重点介绍了一些最佳做法和故障排除指南。
 
 > [!NOTE]
 > Azure Synapse Studio git 集成在 Azure 政府版云中不可用。
@@ -61,7 +57,7 @@ ms.locfileid: "98219736"
 
 "配置" 窗格显示以下 Azure DevOps git 设置：
 
-| 设置 | 描述 | 值 |
+| 设置 | 说明 | 值 |
 |:--- |:--- |:--- |
 | **存储库类型** | Azure Repos 代码存储库的类型。<br/> | Azure DevOps Git 或 GitHub |
 | **Azure Active Directory** | Azure AD 租户的名称。 | `<your tenant name>` |

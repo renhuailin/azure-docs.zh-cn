@@ -7,16 +7,14 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d9c8df4fe296bcd40f26847233fcd49bcab573c0
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 23d00acc03ee879036a823f0c3d7fe2f67902e31
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709435"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797015"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 简介
-
-[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Azure 安全中心的功能涵盖了云安全性的两大重要领域：
 
@@ -101,4 +99,4 @@ Azure Defender 为你的虚拟机和容器注册表提供漏洞扫描，且无�
 本文介绍了 Azure Defender 的优点。 
 
 > [!div class="nextstepaction"]
-> [启用 Azure Defender](security-center-pricing.md)
+> [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)
