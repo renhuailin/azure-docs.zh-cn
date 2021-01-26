@@ -3,12 +3,12 @@ title: 创建独立 Azure Service Fabric 群集
 description: 在运行 Windows Server 的任何本地或任意云计算机（物理或虚拟）上创建 Azure Service Fabric 群集。
 ms.topic: conceptual
 ms.date: 2/21/2019
-ms.openlocfilehash: 36883f2c8b09fa3f8f013e0267dafa2a8220e5d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41af655be07ccae2b66e75f5bfe87629cdb54924
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843186"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785678"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>创建在 Windows Server 上运行的独立群集
 可以使用 Azure Service Fabric 在运行 Windows Server 的任何虚拟机或计算机上创建 Service Fabric 群集。 这意味着，可以在包含一组相互连接的 Windows Server 计算机的任何环境（无论是本地环境还是任何云提供商所提供的环境）中部署和运行 Service Fabric 应用程序。 Service Fabric 提供了一个安装程序包，用于创建名为“Windows Server 独立包”的 Service Fabric 群集。 Azure 上的传统 Service Fabric 群集作为托管服务提供，而独立的 Service Fabric 群集是自助服务。 有关差异的详细信息，请参阅[比较 Azure 和独立 Service Fabric 群集](./service-fabric-deploy-anywhere.md)。
@@ -46,14 +46,14 @@ ms.locfileid: "91843186"
 <a id="createcluster"></a>
 
 ## <a name="create-the-cluster"></a>创建群集
-可以通过安装包安装多个示例性的群集配置文件。 *ClusterConfig.Unsecure.DevCluster.json* 是最简单的群集配置：在单台计算机上运行一个不受保护的三节点群集。  其他配置文件描述的是受 X.509 证书或 Windows 安全措施保护的单机或多机群集。  就本教程来说，无需修改任何默认的配置设置，但仍请查看配置文件，熟悉一下这些设置。  **nodes** 节描述了群集中的三个节点：名称、IP 地址、[节点类型、容错域和升级域](service-fabric-cluster-manifest.md#nodes-on-the-cluster)。  **properties** 节定义群集的[安全性、可靠级别、诊断集合和节点类型](service-fabric-cluster-manifest.md#cluster-properties)。
+可以通过安装包安装多个示例性的群集配置文件。 *ClusterConfig.Unsecure.DevCluster.json* 是最简单的群集配置：在单台计算机上运行一个不受保护的三节点群集。  其他配置文件描述的是受 X.509 证书或 Windows 安全措施保护的单机或多机群集。  就本教程来说，无需修改任何默认的配置设置，但仍请查看配置文件，熟悉一下这些设置。  **nodes** 节描述了群集中的三个节点：名称、IP 地址、[节点类型、容错域和升级域](service-fabric-cluster-manifest.md#nodes-on-the-cluster)。  **properties** 节定义群集的 [安全性、可靠级别、诊断集合和节点类型](service-fabric-cluster-manifest.md#cluster-properties)。
 
 本文中创建的群集是不安全的。  任何人都可以进行匿名连接并执行管理操作，因此生产型群集应始终使用 X.509 证书或 Windows 安全措施来确保安全性。  安全性只能在群集创建时配置，不能在创建群集以后启用安全性。 更新配置文件以启用[证书安全性](service-fabric-windows-cluster-x509-security.md)或 [Windows 安全性](service-fabric-windows-cluster-windows-security.md)。 请阅读[保护群集](service-fabric-cluster-security.md)，详细了解 Service Fabric 群集安全性。
 
 ### <a name="step-1-create-the-cluster"></a>步骤 1：创建群集
 
 #### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>方案 A：创建不受保护的本地开发群集
-可以使用*示例*中包含的 [ClusterConfig.Unsecure.DevCluster.json](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples) 文件将 Service Fabric 部署到单机开发群集。
+可以使用 *示例* 中包含的 [ClusterConfig.Unsecure.DevCluster.json](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples) 文件将 Service Fabric 部署到单机开发群集。
 
 将独立包解压缩到计算机，将示例配置文件复制到本地计算机，然后通过管理员 PowerShell 会话从独立包文件夹中运行 *CreateServiceFabricCluster.ps1* 脚本。
 
@@ -101,7 +101,7 @@ ms.locfileid: "91843186"
     ```
 
 > [!NOTE]
-> 部署跟踪已写入运行 CreateServiceFabricCluster.ps1 PowerShell 脚本的 VM/计算机。 可在运行脚本的目录中的子文件夹 DeploymentTraces 中找到这些信息。 要确定是否已将 Service Fabric 正确部署到计算机，请根据群集配置文件 FabricSettings 部分中的详述找到 FabricDataRoot 目录（默认为 c:\ProgramData\SF）中安装的文件。 在任务管理器中也可以看到 FabricHost.exe 和 Fabric.exe 进程正在运行。
+> 部署跟踪被写入到运行 CreateServiceFabricCluster.ps1 PowerShell 脚本的 VM/计算机上。 这些信息可以从运行脚本的目录中的子文件夹 DeploymentTraces 中找到。 按照群集配置文件 FabricSettings 部分中的详述，要查看是否已将 Service Fabric 正确部署到计算机，请查找 FabricDataRoot 目录（默认为 c:\ProgramData\SF）中的已安装文件。 同样，可以看到 FabricHost.exe 和 Fabric.exe 进程在任务管理器中运行。
 > 
 > 
 
@@ -116,7 +116,7 @@ ms.locfileid: "91843186"
 *.\ClusterConfig.json* 和 *.\MicrosoftAzureServiceFabric.cab* 分别是群集配置和运行时 .cab 文件的路径。
 
 ### <a name="step-2-connect-to-the-cluster"></a>步骤 2：连接至群集
-连接到群集以验证群集是否正在运行且可用。 ServiceFabric PowerShell 模块与运行时一起安装。  可以从其中一个群集节点或使用 Service Fabric 运行时从远程计算机连接到群集。  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 可建立到群集的连接。
+连接到群集以验证群集是否正在运行且可用。 ServiceFabric PowerShell 模块与运行时一起安装。  可以从其中一个群集节点或使用 Service Fabric 运行时从远程计算机连接到群集。  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) cmdlet 可建立到群集的连接。
 
 若要连接到非安全群集，请运行以下 PowerShell 命令：
 
@@ -129,7 +129,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.234:19000
 ```
 
-有关如何连接到群集的其他示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md)。 连接到群集以后，请使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) cmdlet 显示群集中节点的列表，以及每个节点的状态信息。 每个节点的 **HealthState** 应该为“正常”。
+有关如何连接到群集的其他示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md)。 连接到群集以后，请使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) cmdlet 显示群集中节点的列表，以及每个节点的状态信息。 每个节点的 **HealthState** 应该为“正常”。
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table
@@ -196,7 +196,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 * ServiceFabricVersion
 * 从其上传遥测数据的虚拟机或计算机的 IP 地址
 
-若要禁用遥测，请将以下内容添加到群集配置中的*属性*：*enableTelemetry: false*。
+若要禁用遥测，请将以下内容添加到群集配置中的 *属性*：*enableTelemetry: false*。
 
 <a id="previewfeatures" name="previewfeatures_anchor"></a>
 

@@ -3,15 +3,15 @@ title: Azure Service Fabric 中的可靠并发队列
 description: ReliableConcurrentQueue 是一个高吞吐量队列，它允许并行排队和取消排队。
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d6852982621d3efd3f4a8597a2959fceb13abd12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997114"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784285"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric 中的可靠并发队列简介
-可靠并发队列是一种异步的、事务性的已复制队列，其特点是排队和取消排队操作的高并发性。 它旨在降低[可靠队列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)提供的严格的 FIFO 排序要求，代之以“尽力排序”要求，从而提高吞吐量并降低延迟。
+可靠并发队列是一种异步的、事务性的已复制队列，其特点是排队和取消排队操作的高并发性。 它旨在降低[可靠队列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1)提供的严格的 FIFO 排序要求，代之以“尽力排序”要求，从而提高吞吐量并降低延迟。
 
 ## <a name="apis"></a>API
 
@@ -21,11 +21,11 @@ ms.locfileid: "95997114"
 | bool TryDequeue(out T result)  | Task< ConditionalValue < T > > TryDequeueAsync(ITransaction tx)  |
 | int Count()                    | long Count()                                                     |
 
-## <a name="comparison-with-reliable-queue"></a>与[可靠队列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)比较
+## <a name="comparison-with-reliable-queue"></a>与[可靠队列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1)比较
 
-可靠并发队列作为[可靠队列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)的替代推出， 其使用范围局限于不需要严格 FIFO 排序的情况，这种情况下，在尽量保证 FIFO 的同时，还需要考虑到并发性。  [可靠队列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)以锁定方式强制实施 FIFO 排序，一次只允许一个事务排队，一个事务取消排队。 相对而言，可靠并发队列对排序的要求较松，允许任意数目的并发事务交叉进行排队和取消排队操作。 可靠并发队列的原则是“尽力排序”，但无法保证两个值的相对顺序。
+可靠并发队列作为[可靠队列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1)的替代推出， 其使用范围局限于不需要严格 FIFO 排序的情况，这种情况下，在尽量保证 FIFO 的同时，还需要考虑到并发性。  [可靠队列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1)以锁定方式强制实施 FIFO 排序，一次只允许一个事务排队，一个事务取消排队。 相对而言，可靠并发队列对排序的要求较松，允许任意数目的并发事务交叉进行排队和取消排队操作。 可靠并发队列的原则是“尽力排序”，但无法保证两个值的相对顺序。
 
-在有多个并发事务需要执行排队和/或取消排队操作的情况下，可靠并发队列相对于[可靠队列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)而言可以提高吞吐量并降低延迟。
+在有多个并发事务需要执行排队和/或取消排队操作的情况下，可靠并发队列相对于[可靠队列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1)而言可以提高吞吐量并降低延迟。
 
 可靠并发队列的一个使用示例是[消息队列](https://en.wikipedia.org/wiki/Message_queue)方案。 在该方案中，一个或多个消息生成者会创建项并将其添加到队列中，同时还会有一个或多个消息使用者从队列拉取消息并对其进行处理。 多个生成者和使用者可以独立操作，使用并发事务来处理队列。
 
@@ -340,4 +340,4 @@ using (var txn = this.StateManager.CreateTransaction())
 * [可靠状态管理器配置](service-fabric-reliable-services-configuration.md)
 * [Service Fabric Web API 服务入门](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Reliable Services 编程模型的高级用法](./service-fabric-reliable-services-lifecycle.md)
-* [可靠集合的开发人员参考](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [可靠集合的开发人员参考](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

@@ -4,12 +4,12 @@ description: 在 Linux 群集上使用 Service Fabric 运行时配置应用的�
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: pepogors
-ms.openlocfilehash: a97c8b8315fe3be405aed9c6570004afb8fafd1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70f9cc38d84681f68c10882889214648a4dd2624
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258662"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785560"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux 群集上的证书和安全性
 
@@ -21,7 +21,7 @@ Service Fabric 通常要求在 Linux 群集节点上的 */var/lib/sfcerts* 目�
 
 对于 Linux 群集，Service Fabric 要求以包含证书和私钥的 .pem 文件形式提供证书，或者以包含证书的 .crt 文件和包含私钥的 .key 文件形式提供证书。 所有文件应采用 PEM 格式。 
 
-如果使用[资源管理器模板](./service-fabric-cluster-creation-create-template.md)或 [PowerShell](/powershell/module/az.servicefabric/?view=azps-2.6.0) 命令从 Azure Key Vault 安装证书，证书将以正确的格式安装在每个节点上的 */var/lib/sfcerts* 目录中。 如果通过其他方法安装证书，必须确保在群集节点上正确安装证书。
+如果使用 [资源管理器模板](./service-fabric-cluster-creation-create-template.md)或 [PowerShell](/powershell/module/az.servicefabric/) 命令从 Azure Key Vault 安装证书，证书将以正确的格式安装在每个节点上的 */var/lib/sfcerts* 目录中。 如果通过其他方法安装证书，必须确保在群集节点上正确安装证书。
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>应用程序清单中引用的证书
 

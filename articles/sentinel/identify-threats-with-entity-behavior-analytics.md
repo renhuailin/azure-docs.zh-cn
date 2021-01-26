@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2020
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 7944ea48feaca1eb8312e01d876bf9627af429d1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900886"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784789"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中通过用户和实体行为分析来识别高级威胁 (UEBA) 
 
 > [!IMPORTANT]
 >
-> - UEBA 和实体页功能现已在以下 Azure Sentinel 地理位置和区域 **公开上市** ：
->    - 美国地域
->    - 西欧地区
->    - 澳大利亚地区
->
-> - 在所有其他地理位置和区域，这些功能在 **预览** 阶段仍保留下来。 请参阅 [**Microsoft Azure 预览版的补充使用条款**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，了解适用于 Azure 功能的其他法律条款，这些功能适用于 beta 版、预览版或其他情况下尚未公开上市。
+> - "UEBA" 和 "实体" 页功能现已 **公开上市** ，其中包括：*_所有_* _ Azure Sentinel 地域和区域。
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>什么是用户和实体行为分析 (UEBA) ？
 
@@ -50,7 +45,7 @@ Azure Sentinel 中的 UEBA 功能从分析师的工作负载和不确定性中�
 
 根据 Gartner 的 UEBA 解决方案，Azure Sentinel 根据三个参考框架提供了 "外接程序" 方法：
 
-- **用例：** 根据与 MITRE ATT&CK 框架的策略、技术和子方法的相关攻击向量和方案的优先级，它们将各种实体用作 kill 链中的受害者、perpetrators 或枢点;Azure Sentinel 专门针对每个数据源可以提供的最有价值的日志。
+- _ *用例：** 按与 MITRE ATT&CK 框架的策略、技术和子技术（将各种实体作为中的受害者、perpetrators 或透视点）进行排序，从而确定相关攻击向量和方案的优先级;Azure Sentinel 专门针对每个数据源可以提供的最有价值的日志。
 
 - **数据源：** 虽然首先支持 Azure 数据源，但 Azure Sentinel 周全选择第三方数据源来提供与我们的威胁方案相匹配的数据。
 
@@ -163,7 +158,7 @@ Azure Sentinel 提供的项目可帮助您的安全分析人员清楚地了解�
 | TimeProcessed             | EBA 引擎处理活动的时间戳            |
 | ActivityType              | 活动的高级类别                                 |
 | ActionType                | 活动的规范化名称                                     |
-| 用户名                  | 发起活动的用户的用户名                    |
+| UserName                  | 发起活动的用户的用户名                    |
 | UserPrincipalName         | 启动活动的用户的完整用户名               |
 | EventSource               | 提供原始事件的数据源                        |
 | SourceIPAddress           | 从中启动活动的 IP 地址                        |

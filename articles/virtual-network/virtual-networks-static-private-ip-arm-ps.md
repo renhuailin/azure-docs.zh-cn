@@ -4,7 +4,6 @@ description: 了解如何使用 PowerShell 创建具有专用 IP 地址的虚拟
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d5f18929-15e3-40a2-9ee3-8188bc248ed8
@@ -17,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 2825d8d9f8be7c56d7beea767a1afb7a290eafa2
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 43c2e2c8905ca60e59caed3fdf1b4920f509fd88
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222592"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98783778"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>使用 PowerShell 创建具有静态专用 IP 地址的虚拟机
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 可以创建具有静态专用 IP 地址的虚拟机 (VM)。 若要从子网中选择分配给 VM 的具体地址，请分配静态专用 IP 地址而非动态地址。 详细了解[静态专用 IP 地址](./public-ip-addresses.md#allocation-method)。 若要将分配给现有 VM 的专用 IP 地址从动态更改为静态，或者要使用公共 IP 地址，请参阅[添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 

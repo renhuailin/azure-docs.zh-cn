@@ -7,12 +7,12 @@ ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b7947eab93ebc8e523e163af601893522132e06a
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 4612e1236af5fbe47db9a3569e2f4da2378017e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745661"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784891"
 ---
 # <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>生成并部署 IoT 即插即用 bridge
 
@@ -212,7 +212,7 @@ Debug\pnpbridge_bin.exe
 
 本部分中的步骤假定在 Windows 10 计算机上安装了以下开发环境。 这些工具可让你构建 IoT Edge 模块并将其部署到 IoT Edge 设备：
 
-- 适用于 Linux 的 Windows 子系统 (WSL) 2 运行 Ubuntu 18.04 LTS。 若要了解详细信息，请参阅 [适用于 windows 10 的适用于 Linux 的 Windows 子系统安装指南](https://docs.microsoft.com/windows/wsl/install-win10)。
+- 适用于 Linux 的 Windows 子系统 (WSL) 2 运行 Ubuntu 18.04 LTS。 若要了解详细信息，请参阅 [适用于 windows 10 的适用于 Linux 的 Windows 子系统安装指南](/windows/wsl/install-win10)。
 - 适用于 Windows 的 Docker Desktop 配置为使用 WSL 2。 若要了解详细信息，请参阅 [Docker DESKTOP WSL 2 后端](https://docs.docker.com/docker-for-windows/wsl/)。
 - 安装在安装了以下三个扩展的[Windows 环境中 Visual Studio Code](https://code.visualstudio.com/docs/setup/windows) ：
 

@@ -7,12 +7,12 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7df9ba1318f40de8af392cfaedbe51d7a5df755
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000328"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784926"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>使用 Azure Functions 和 Azure 服务总线调用或触发逻辑应用
 
@@ -24,7 +24,7 @@ ms.locfileid: "96000328"
 
 * Azure 服务总线命名空间。 若没有命名空间，请[先创建命名空间](../service-bus-messaging/service-bus-create-namespace-portal.md)。
 
-* 函数应用，它是函数的容器。 若没有函数应用，请[先创建函数应用](../azure-functions/functions-create-first-azure-function.md)，并确保选择 .NET 作为运行时堆栈。
+* 函数应用，它是函数的容器。 若没有函数应用，请[先创建函数应用](../azure-functions/functions-get-started.md)，并确保选择 .NET 作为运行时堆栈。
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 

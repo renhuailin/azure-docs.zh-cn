@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7423f8d8f2a566801048457ad5f5c44f3c1097ec
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920057"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784302"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>有关 Azure 逻辑应用中触发器和操作类型的架构参考指南
 
@@ -1126,7 +1126,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 ### <a name="function-action"></a>函数操作
 
-此操作调用先前创建的 [Azure 函数](../azure-functions/functions-create-first-azure-function.md)。
+此操作调用先前创建的 [Azure 函数](../azure-functions/functions-get-started.md)。
 
 ```json
 "<Azure-function-name>": {
@@ -1506,7 +1506,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 * 工作流可在任意位置使用 Response 操作，但 Foreach 循环和 Until 循环（包括序列循环和并行分支）内除外 。 
 
-* 仅当 **响应** 操作所需的所有操作在 [HTTP 超时限制](../logic-apps/logic-apps-limits-and-config.md#http-limits)内完成时，原始请求才会获得工作流的响应。
+* 仅当 Response 操作所需的所有操作都在 [HTTP 超时限制](../logic-apps/logic-apps-limits-and-config.md#http-limits)内完成时，原始请求才会获取工作流的响应。
 
   但是，如果工作流调用另一个逻辑应用作为嵌套工作流，则父级工作流在嵌套工作流完成之前将处于等待状态，而不管嵌套工作流完成需要多久时间。
 

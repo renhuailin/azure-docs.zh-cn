@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: a2048a509bdbe11c948ac8eb2daa6e78013c2fa5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753774"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785119"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
@@ -451,7 +451,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-通常只需要一个参数 (`scopes`)。 根据 Windows 管理员设置策略的方式，有可能不允许 Windows 计算机上的应用程序查找已登录的用户。 在这种情况下，请使用另一个方法 `.WithUsername()`，并以 UPN 格式（例如 `joe@contoso.com`）传入已登录用户的用户名。 在 .NET Core 上，只有采用用户名的重载可用，因为 .NET Core 平台无法请求用于登录 OS 的用户名。
+通常只需要一个参数 (`scopes`)。 根据 Windows 管理员设置策略的方式，有可能不允许 Windows 计算机上的应用程序查找已登录的用户。 在这种情况下，请使用另一个方法 `.WithUsername()`，并以 UPN 格式（例如 `joe@contoso.com`）传入已登录用户的用户名。
 
 下面的示例展示了最新的情况，并说明了可获取的异常类型以及缓解措施。
 

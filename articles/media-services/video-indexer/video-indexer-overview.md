@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: 6b5a228c12cfc874673dda854de6d4dcc25f28c1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 06f5e19718445f44dd2302faf280f083cce0774f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014529"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98783795"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>什么是 Azure 媒体服务视频索引器？
 
@@ -115,6 +115,21 @@ ms.locfileid: "98014529"
     有关详细信息，请参阅 [将视觉小组件嵌入应用程序](video-indexer-embed-widgets.md)。
 
 如果使用的是网站，则见解会添加为元数据，并在门户中可见。 如果使用的是 API，则见解可用作 JSON 文件。
+
+## <a name="supported-browsers"></a>支持的浏览器
+
+以下列表显示了可用于视频索引器网站和嵌入小组件的应用的受支持的浏览器。 此列表还显示支持的最低浏览器版本：
+
+- Edge，版本：16
+- Firefox，版本：54
+- Chrome，版本：58
+- Safari，版本：11
+- Opera，版本：44
+- Opera Mobile，版本：59
+- Android 浏览器，版本：81
+- Samsung 浏览器，版本：7
+- 适用于 Android 的 Chrome，版本：87
+- 适用于 Android 的 Firefox，版本：83
 
 ## <a name="next-steps"></a>后续步骤
 

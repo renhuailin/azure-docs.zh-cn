@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 11122b57a1971f328a8a83c3dea136813426c060
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 13d3809611714992f24a66a96c22074e69fba9bd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581663"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786650"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway 安全和数据保护
 
@@ -55,7 +55,7 @@ Data Box Gateway 设备是在你提供的本地系统的虚拟机监控程序中
 
 密码确保只有经过授权的用户才能访问数据。 Data Box Gateway 设备启动时处于锁定状态。
 
-可以执行以下操作：
+方法：
 
 - 通过浏览器连接到设备的本地 web UI，然后提供用于登录设备的密码。
 - 通过 HTTP 远程连接到设备的 PowerShell 接口。 默认情况下启用远程管理。 然后，你可以提供用于登录设备的设备密码。 有关详细信息，请参阅 [远程连接到 Data Box Gateway 设备](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface)。
@@ -67,7 +67,7 @@ Data Box Gateway 设备是在你提供的本地系统的虚拟机监控程序中
 
 本节介绍保护传输中数据和存储数据的 Data Box Gateway 安全功能。
 
-### <a name="protect-data-at-rest"></a>保护静态数据
+### <a name="protect-data-at-rest"></a>保护静止的数据
 
 [!INCLUDE [data-box-gateway-data-rest](../../includes/data-box-gateway-data-rest.md)]
 
@@ -85,7 +85,7 @@ Data Box Gateway 设备是在你提供的本地系统的虚拟机监控程序中
 
 若要保护 Data Box Gateway 虚拟机上的虚拟磁盘，建议启用 BitLocker。 默认情况下，不启用 BitLocker。 有关详细信息，请参阅：
 
-- [Hyper-V 管理器中的加密支持设置](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [Hyper-V 管理器中的加密支持设置](/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
 - [虚拟机中的 BitLocker 支持](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>管理个人信息

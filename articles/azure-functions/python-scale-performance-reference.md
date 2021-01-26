@@ -4,12 +4,12 @@ description: 了解如何使用在负载下非常高性能和缩放良好的 Pyt
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e3bbdb8819062d45d071633e0208fb58a003da54
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935863"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786100"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>在 Azure Functions 中提高 Python 应用的吞吐量性能
 
@@ -22,10 +22,10 @@ ms.locfileid: "97935863"
 
 默认配置适用于大多数 Azure Functions 应用程序。 不过，你可以通过基于工作负荷配置文件使用配置来提高应用程序吞吐量的性能。 第一步是了解正在运行的工作负荷的类型。
 
-|| I/o 绑定的工作负荷 | CPU 绑定工作负荷 |
-|--| -- | -- |
-|函数应用特征| <ul><li>应用需要处理多个并发调用。</li> <li> 应用处理大量 i/o 事件，例如网络调用和磁盘读/写。</li> </ul>| <ul><li>应用执行长时间运行的计算，例如调整图像大小。</li> <li>应用进行数据转换。</li> </ul> |
-|示例| <ul><li>Web API</li><ul> | <ul><li>数据处理</li><li> 机器学习推理</li><ul>|
+| 工作负荷类型 | 函数应用特征       | 示例                                          |
+| ------------- | ---------------------------------- | ------------------------------------------------- |
+| **I/o 绑定**     | •应用程序需要处理多个并发调用。<br>•应用程序处理大量 i/o 事件，例如网络调用和磁盘读/写。 | • Web Api                                          |
+| **CPU 绑定**     | •应用程序执行长时间运行的计算，例如调整图像大小。<br>•应用执行数据转换。                                                | •数据处理<br>•机器学习推理<br> |
 
  
 由于现实世界的工作负荷通常是 i/o 和 CPU 的混合，因此应在实际的生产负载下分析应用。
@@ -43,7 +43,7 @@ ms.locfileid: "97935863"
 
 
 
-#### <a name="async"></a>Async
+#### <a name="async"></a>异步
 
 由于 [python 是单线程运行时](https://wiki.python.org/moin/GlobalInterpreterLock)，因此默认情况下，用于 python 的主机实例一次只能处理一个函数调用。 对于处理大量 i/o 事件和/或 i/o 绑定的应用程序，你可以通过异步运行函数来显著提高性能。
 

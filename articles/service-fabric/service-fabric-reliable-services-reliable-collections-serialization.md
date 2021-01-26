@@ -4,12 +4,12 @@ description: 了解 Azure Service Fabric 可靠集合对象序列化，包括默
 ms.topic: conceptual
 ms.date: 5/8/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1d29f5d3391bdea0b21997a392d4d2e053b7ec65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29bb9a2dfb028d223d63559b35735e78d7e6bcf8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018614"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784353"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric 中的 Reliable Collection 对象序列化
 Reliable Collections 通过复制和保留项目，确保这些项目在机器故障和电力中断时能够持久。
@@ -20,7 +20,7 @@ Reliable Collections 从可靠状态管理器获取与给定类型对应的串�
 
 ## <a name="built-in-serializers"></a>内置串行化程序
 
-可靠状态管理器包含针对一些常见类型的内置串行化程序，以便在默认情况下对其进行高效串行化。 对于其他类型，可靠状态管理器回退为使用 [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1)。
+可靠状态管理器包含针对一些常见类型的内置串行化程序，以便在默认情况下对其进行高效串行化。 对于其他类型，可靠状态管理器回退为使用 [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer)。
 内置串行化程序更高效，因为它们知道其类型无法更改，且它们无需包含类型名称等有关类型的信息。
 
 可靠状态管理器拥有针对以下类型的内置串行化程序： 
@@ -140,7 +140,7 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 
 ## <a name="next-steps"></a>后续步骤
   * [序列化和升级](service-fabric-application-upgrade-data-serialization.md)
-  * [Reliable Collections 的开发人员参考](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Reliable Collections 的开发人员参考](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
   * [使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
   * [使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
   * 使用[升级参数](service-fabric-application-upgrade-parameters.md)来控制应用程序的升级方式。

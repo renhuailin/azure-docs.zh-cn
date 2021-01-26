@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: f6daee6d4cfc3c074e004fb3835f62218e48d9ff
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3bf137f968082e677f45c20947793232b9181220
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581901"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786606"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway 的用例
 
@@ -40,7 +40,7 @@ Data Box Gateway 的主要优势之一就是，无论数据大小如何，都能
 
 若要在云中长期保留数据，请使用 Data Box Gateway。 可以使用存储的存档层长期保留数据。
 
-存档层经过优化，可存储不太常访问的数据，至少180天。 存档层的存储成本最低，但访问成本最高。 有关详细信息，请转到[存档访问层](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier)。
+存档层经过优化，可存储不太常访问的数据，至少180天。 存档层的存储成本最低，但访问成本最高。 有关详细信息，请转到[存档访问层](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)。
 
 ### <a name="move-data-to-the-archive-tier"></a>将数据移到存档层
 
@@ -48,14 +48,14 @@ Data Box Gateway 的主要优势之一就是，无论数据大小如何，都能
 
 - 如[通过 Data Box Gateway 传输数据](data-box-gateway-deploy-add-shares.md)中所述，使用 Data Box Gateway 设备通过常规传输过程将数据上传到 Azure。
 - 上传数据后，需要将其移至存档层。 可以通过两种方式设置 blob 层：使用 Azure PowerShell 脚本或 Azure 存储生命周期管理策略。  
-    - 如果使用 Azure PowerShell，请按照以下 [步骤](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) 将数据移动到存档层。
+    - 如果使用 Azure PowerShell，请按照以下 [步骤](../databox/data-box-how-to-set-data-tier.md#use-azure-powershell-to-set-the-blob-tier) 将数据移动到存档层。
     - 如果使用 Azure 生命周期管理，请按照以下步骤将数据移动到存档层。
-        - [注册](/azure/storage/common/storage-lifecycle-management-concepts) 以获取 Blob 生命周期管理服务的预览，以使用存档层。
-        - 使用以下策略[在引入时存档数据](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest)。
+        - [注册](../storage/blobs/storage-lifecycle-management-concepts.md) 以获取 Blob 生命周期管理服务的预览，以使用存档层。
+        - 使用以下策略[在引入时存档数据](../storage/blobs/storage-lifecycle-management-concepts.md#archive-data-after-ingest)。
 - 将 blob 标记为存档后，网关将无法再对其进行修改，除非将它们移动到热层或冷层。 如果文件在本地存储中，则对本地副本所做的任何更改 (包括删除) 不会上载到存档层。
 - 若要读取存档存储中的数据，必须通过将 blob 层更改为 "热" 或 "冷" 来解除冻结数据。 在网关上[刷新共享](data-box-gateway-manage-shares.md#refresh-shares)不会将 Blob 解除冻结。
 
-有关详细信息，请详细了解如何[管理 Azure Blob 存储生命周期](/azure/storage/common/storage-lifecycle-management-concepts)。
+有关详细信息，请详细了解如何[管理 Azure Blob 存储生命周期](../storage/blobs/storage-lifecycle-management-concepts.md)。
 
 ## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>初始批量传输后进行增量传输
 
@@ -65,10 +65,10 @@ Data Box Gateway 的主要优势之一就是，无论数据大小如何，都能
 
 按照以下步骤将数据复制到 Data Box 并上传到 Azure 存储。
 
-1. [订购 Data Box](/azure/databox/data-box-deploy-ordered)。
-2. [设置 Data Box](/azure/databox/data-box-deploy-set-up)。
-3. [通过 SMB 将数据复制到 Data Box](/azure/databox/data-box-deploy-copy-data)。
-4. [寄回 Data Box 并验证上传到 Azure 的数据](/azure/databox/data-box-deploy-picked-up)。
+1. [订购 Data Box](../databox/data-box-deploy-ordered.md)。
+2. [设置 Data Box](../databox/data-box-deploy-set-up.md)。
+3. [通过 SMB 将数据复制到 Data Box](../databox/data-box-deploy-copy-data.md)。
+4. [寄回 Data Box 并验证上传到 Azure 的数据](../databox/data-box-deploy-picked-up.md)。
 5. 向 Azure 上传完数据后，所有数据都应位于 Azure 存储容器中。 在 Data Box 的存储帐户中，转到 Blob（和文件）容器以确保复制所有数据。 记下容器名称，因为稍后将使用此名称。 例如，在以下屏幕截图中，`databox` 容器将用于增量传输。
 
     ![包含 Data Box 上的数据的容器](media/data-box-gateway-use-cases/data-container.png)

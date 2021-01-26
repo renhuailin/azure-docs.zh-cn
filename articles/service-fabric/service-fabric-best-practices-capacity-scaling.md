@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 41cfff11e44a3d052614aa3c81a4623f59bbbbf5
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: d7d9ed8fa695c636e7aaf36fd034babb4de012d9
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095281"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784674"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量规划和缩放
 
@@ -50,9 +50,9 @@ ms.locfileid: "97095281"
 > [!NOTE]
 > 托管有状态 Service Fabric 系统服务的主节点类型必须具有银级或更高级别的持久性。 启用银级持久性后，升级、添加或删除节点等群集操作将会变慢，因为系统优化的目标是保护数据安全，而不是加快操作速度。
 
-垂直缩放虚拟机规模集只需更改其资源 SKU 就会成为一项破坏性操作，因为它会对主机重新进行映像，从而删除所有本地保存的状态。 相反，您需要通过使用所需 SKU 添加新的规模集，然后将您的服务迁移到新的规模集来完成安全的垂直缩放操作，以水平缩放群集。
+通过简单地更改虚拟机规模集的资源 SKU 来垂直缩放虚拟机规模集是一项破坏性操作，因为它会重置主机映像，从而删除所有本地持久化状态。 而你则需要通过添加具有所需 SKU 的新规模集来水平缩放群集，然后将服务迁移到新规模集以完成安全的垂直缩放操作。
 
-群集使用 Service Fabric [节点属性和位置约束](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)来确定要将应用程序服务托管在哪个位置。 垂直缩放主节点类型时，将部署第二个主节点类型，然后 `"isPrimary": false` 在原始主节点类型上设置 () ，然后继续禁用其节点并删除其规模集及其相关资源。 有关详细信息，请参阅 [向上缩放 Service Fabric 群集主节点类型](service-fabric-scale-up-primary-node-type.md)。
+群集使用 Service Fabric [节点属性和位置约束](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)来确定要将应用程序服务托管在哪个位置。 垂直缩放主节点类型时，需部署第二个主节点类型，然后在原始主节点类型上设置 (`"isPrimary": false`)，开始禁用其节点并删除其规模集及其相关资源。 有关详细信息，请参阅[纵向扩展 Service Fabric 群集主节点类型](service-fabric-scale-up-primary-node-type.md)。
 
 > [!NOTE]
 > 在尝试进行生产环境更改之前，始终在测试环境中验证操作。 默认情况下，Service Fabric 群集系统服务提供仅针对主节点类型的位置约束。
@@ -161,7 +161,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 > [!NOTE]
 > 横向缩减群集时，你会发现已删除的节点/VM 实例以不正常状态显示在 Service Fabric Explorer 中。 有关此行为的说明，请参阅[可能会在 Service Fabric Explorer 中观察到的行为](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer)。 方法：
-> * 结合相应的节点名称调用 [Remove-ServiceFabricNodeState 命令](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true)。
+> * 结合相应的节点名称调用 [Remove-ServiceFabricNodeState 命令](/powershell/module/servicefabric/remove-servicefabricnodestate)。
 > * 在群集上部署 [Service Fabric 自动缩放帮助应用程序](https://github.com/Azure/service-fabric-autoscale-helper/)。 此应用程序可确保从 Service Fabric Explorer 中清除已缩减的节点。
 
 ## <a name="reliability-levels"></a>可靠性级别

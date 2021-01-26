@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c1c30e4651136ada7264cad8ff4d3921c3aeeb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 894a90c50f968c892a76160a7375f11fe09390d6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547910"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784993"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中对 Microsoft 365 组强制执行命名策略
 
@@ -48,7 +48,7 @@ ms.locfileid: "96547910"
 
 #### <a name="fixed-strings"></a>固定字符串
 
-使用字符串，可更轻松地扫描和区分全局地址列表和左侧组工作负荷导航链接中的组。 某些常见前缀为关键字，如 "Grp \_ Name"、" \# name"、" \_ name"
+使用字符串，可更轻松地扫描和区分全局地址列表和左侧组工作负荷导航链接中的组。 一些常见的前缀是类似“Grp\_Name”、“\#Name”、“\_Name”的关键字
 
 #### <a name="user-attributes"></a>用户属性
 
@@ -72,6 +72,7 @@ ms.locfileid: "96547910"
 若要配置命名策略，需要以下角色之一：
 - 全局管理员
 - 组管理员
+- 目录写入者
 
 
 选定的管理员可跨所有组工作负荷和终结点得到这些策略的豁免，因此可以使用阻止的字词及其自己的命名约定创建组。 下面列出了可得到组命名策略豁免的管理员角色。

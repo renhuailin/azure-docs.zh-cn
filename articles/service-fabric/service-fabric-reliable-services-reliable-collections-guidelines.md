@@ -3,17 +3,17 @@ title: 有关可靠集合的指导原则
 description: 在 Azure Service Fabric 应用程序中使用 Service Fabric 可靠集合的相关指导原则和建议。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f12db76f324d07c178b49150d4e574476e7d9929
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260919"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784319"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collections 的相关指导原则和建议
 本部分提供有关使用可靠状态管理器和 Reliable Collections 的指导原则。 目的是帮助用户避免常见错误。
 
-这些指导原则被归纳整理成简单的建议，冠以*务必*、*请考虑*、*避免*和*切勿*等提示语。
+这些指导原则被归纳整理成简单的建议，冠以 *务必*、*请考虑*、*避免* 和 *切勿* 等提示语。
 
 * 切勿修改读取操作（例如 `TryPeekAsync` 或 `TryGetValueAsync`）返回的自定义类型的对象。 Reliable Collections 与 Concurrent Collections 一样，返回对这些对象的引用，而非副本。
 * 在修改返回的自定义类型的对象之前，务必对其进行深层复制。 由于结构和内置类型均按值传递，因此无需对其进行深层复制，除非它们包含要修改的引用类型字段或属性。
@@ -64,4 +64,4 @@ ms.locfileid: "86260919"
   * [可靠状态管理器和配置](service-fabric-reliable-services-configuration.md)
 * 其他
   * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
-  * [Reliable Collections 的开发人员参考](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Reliable Collections 的开发人员参考](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

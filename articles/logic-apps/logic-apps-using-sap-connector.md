@@ -7,221 +7,245 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 01/25/2021
 tags: connectors
-ms.openlocfilehash: 4afd6f0cc3b4b5e135d80b420d8260c50d9ca46c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93e705eea39443ffc15fbdd079e1376ec46cb51c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488841"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786684"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
-> [!IMPORTANT]
-> 早于2020年2月29日的 SAP 应用程序服务器和 SAP 消息服务器连接器已弃用。 当前的 SAP 连接器具有以下特点：合并了这些以前的 SAP 连接器，使你不必更改连接类型；与以前的连接器完全兼容；提供许多其他的功能；继续使用 SAP .Net 连接器 (SAP NCo) 库。
->
-> 对于使用较旧连接器的逻辑应用，请在弃用日期之前[迁移到最新连接器](#migrate)。 否则，这些逻辑应用会遇到执行故障，无法将消息发送到 SAP 系统。
-
-本文介绍如何使用 SAP 连接器在逻辑应用内部访问本地 SAP 资源。 该连接器适用于 SAP 的经典版本，例如 R/3 和ECC 本地系统。 该连接器还支持与 SAP 的较新的基于 HANA 的 SAP 系统（例如 S/4 HANA）集成，不管它们是在本地还是在云中托管。 SAP 连接器支持通过中间文档 (IDoc)、业务应用程序编程接口 (BAPI) 或远程函数调用 (RFC) 与基于 SAP NetWeaver 的系统相互进行消息或数据集成。
-
-SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/product/connectors/msnet.html)，并提供以下操作：
-
-* **将消息发送到 SAP**：在 SAP 系统中通过 tRFC 发送 IDoc、通过 RFC 调用 BAPI 函数，或调用 RFC/tRFC。
-
-* **从 SAP 收到消息时**：在 SAP 系统中通过 tRFC 接收 IDoc、通过 tRFC 调用 BAPI 函数，或调用 RFC/tRFC。
-
-* **生成架构**：为 IDoc、BAPI 或 RFC 生成 SAP 项目的架构。
-
-对于这些操作，SAP 连接器支持通过用户名和密码进行基本身份验证。 该连接器还支持[安全网络通信 (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true)。 SNC 可用于 SAP NetWeaver 单一登录 (SSO) 或外部安全产品提供的其他安全功能。
-
-本文介绍如何创建与 SAP 集成的示例逻辑应用，并阐述以前已介绍过的集成方案。 本文针对使用较旧 SAP 连接器的逻辑应用，介绍如何将逻辑应用迁移到最新的 SAP 连接器。
-
-<a name="pre-reqs"></a>
+本文介绍如何使用 [sap 连接器](https://docs.microsoft.com/connectors/sap/)从逻辑应用访问 SAP 资源。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要按本文中的步骤操作，需准备好以下各项：
-
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 要从中访问 SAP 系统的逻辑应用，以及用于启动逻辑应用工作流的触发器。 如果你不熟悉逻辑应用，请参阅[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 要从中访问 SAP 资源的逻辑应用。 如果你不熟悉逻辑应用，请参阅 [逻辑应用服务概述](../logic-apps/logic-apps-overview.md) 和在 [Azure 门户中创建第一个逻辑应用的快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-* [SAP 应用程序服务器](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server)或 [SAP 消息服务器](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm)。
+    * 如果你使用的是以前版本的 SAP 连接器，则必须先 [迁移到当前连接器](#migrate-to-current-connector) ，然后才能连接到 sap 服务器。
 
-* 发送到 SAP 服务器的消息内容（例如示例 IDoc 文件）必须为 XML 格式，并包括要使用的 SAP 操作的命名空间。
+    * 如果要在多租户 Azure 中运行逻辑应用，请参阅 [多租户必备组件](#multi-tenant-azure-prerequisites)。
 
-* 若要在 **从 SAP 触发器收到消息时** 使用，还需要执行以下设置步骤：
-  
-  > [!NOTE]
-  > 此触发器使用同一 URI 位置来续订和取消订阅 webhook 订阅。 续订操作使用 HTTP `PATCH` 方法，而取消订阅操作使用 http `DELETE` 方法。 此行为可能会使续订操作在触发器历史记录中显示为取消订阅操作，但该操作仍是续订，因为触发器使用 `PATCH` 作为 HTTP 方法，而不是 `DELETE` 。
+    * 如果你正在[ (ise) 的高级集成服务环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中运行逻辑应用，请参阅 [ise 必备组件](#ise-prerequisites)。
 
-  * 通过此设置设置 SAP 网关安全权限：
+* 要从逻辑应用访问的 [sap 应用程序服务器](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) 或 [sap 消息服务器](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm) 。 有关可用于连接器的 SAP 服务器和 SAP 操作的详细信息，请参阅 [sap 兼容性](#sap-compatibility)。
 
-    `"TP=Microsoft.PowerBI.EnterpriseGateway HOST=<gateway-server-IP-address> ACCESS=*"`
+* 要发送到 SAP 服务器的消息内容，如示例 IDoc 文件。 此内容必须为 XML 格式，并包括要使用的 SAP 操作的命名空间。 可以 [通过将 idoc 包装在 XML 信封中来向其发送平面文件架构](#send-flat-file-idocs)。
 
-  * 设置 SAP 网关安全日志记录，以帮助查找访问控制列表 (ACL) 错误，默认情况下不启用。 否则，你将收到以下错误：
+* 如果要在 **从 SAP 触发器收到消息时** 使用，则还必须执行以下操作：
 
-    `"Registration of tp Microsoft.PowerBI.EnterpriseGateway from host <host-name> not allowed"`
+    * 通过此设置设置 SAP 网关安全权限： `"TP=Microsoft.PowerBI.EnterpriseGateway HOST=<gateway-server-IP-address> ACCESS=*"`
 
-    有关详细信息，请参阅 SAP 帮助主题 [设置网关日志记录](https://help.sap.com/erp_hcm_ias2_2015_02/helpdata/en/48/b2a710ca1c3079e10000000a42189b/frameset.htm)。
+    * 设置 SAP 网关安全性日志记录，以帮助查找 (ACL) 的访问控制列表。 有关详细信息，请参阅 [设置网关日志记录的 SAP 帮助主题](https://help.sap.com/erp_hcm_ias2_2015_02/helpdata/en/48/b2a710ca1c3079e10000000a42189b/frameset.htm)。 否则，你将收到此错误： `"Registration of tp Microsoft.PowerBI.EnterpriseGateway from host <host-name> not allowed"`
 
-<a name="multi-tenant"></a>
+    > [!NOTE]
+    > 此触发器使用同一 URI 位置来续订和取消订阅 webhook 订阅。 续订操作使用 HTTP `PATCH` 方法，而取消订阅操作使用 http `DELETE` 方法。 此行为可能会使续订操作在触发器历史记录中显示为取消订阅操作，但该操作仍是续订，因为触发器使用 `PATCH` 作为 HTTP 方法，而不是 `DELETE` 。
 
-### <a name="multi-tenant-azure-prerequisites"></a>多租户 Azure 必备组件
+### <a name="sap-compatibility"></a>SAP 兼容性
 
-当你的逻辑应用在多租户 Azure 中运行，并且你想要使用托管 SAP 连接器时，这些前提条件适用于 [ (ISE) 在 integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中以本机方式运行。 否则，如果使用的是高级 ISE 并想要使用 ISE 中本机运行的 SAP 连接器，请参阅 [Integration service 环境 (ise) 必备组件](#sap-ise)。
+SAP 连接器与以下类型的 SAP 系统兼容：
 
-托管 (非 ISE) SAP 连接器通过 [本地数据网关](../logic-apps/logic-apps-gateway-connection.md)与本地 SAP 系统集成。 例如，在 "发送消息" 方案中，将消息从逻辑应用发送到 SAP 系统时，数据网关充当 RFC 客户端，并将从逻辑应用接收的请求转发到 SAP。 同样，在接收消息的情况下，数据网关将充当接收来自 SAP 的请求并将其转发给逻辑应用的 RFC 服务器。
+* 本地和基于云的 HANA SAP 系统，例如 S/4 HANA。
 
-* 在本地计算机上[下载并安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 然后，在 Azure 门户中为该网关 [创建 Azure 网关资源](../logic-apps/logic-apps-gateway-connection.md#create-azure-gateway-resource) 。 网关有助于安全访问本地数据和资源。
+* 经典本地 SAP 系统，例如 R/3 和 ECC。
 
-  最佳做法是确保使用本地数据网关支持的版本。 Microsoft 每个月都会发布一个新版本。 目前，Microsoft 支持最后六个版本。 如果网关遇到问题，请尝试 [升级到最新版本](https://aka.ms/on-premises-data-gateway-installer)，其中可能包括用于解决问题的更新。
+SAP 连接器支持基于 SAP NetWeaver 的系统中的以下消息和数据集成类型：
 
-* [下载最新的 SAP 客户端库并](#sap-client-library-prerequisites) 将其安装到本地数据网关所在的同一台计算机上。
+* 中间文档 (IDoc) 
 
-<a name="sap-ise"></a>
+*  (BAPI 的业务应用程序编程接口) 
 
-### <a name="integration-service-environment-ise-prerequisites"></a>Integration service 环境 (ISE) 必备组件
+* 远程函数调用 (RFC) 和事务 RFC (tRFC) 
 
-当你的逻辑应用在高级别的 (而不是开发人员级) [integration service 环境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中运行，并且你想要使用 ise 中本机运行的 SAP 连接器时，这些前提条件适用。 ISE 提供对受 Azure 虚拟网络保护的资源的访问权限，并提供其他 ISE 本地连接器，让逻辑应用可以直接访问本地资源，而无需使用本地数据网关。
+SAP 连接器使用 [ (NCo) 库的 sap .Net 连接器](https://support.sap.com/en/product/connectors/msnet.html)。 你可以使用以下 SAP 操作并使用连接器触发：
+
+* 向 **SAP 发送消息**，以 [通过 TRFC 操作发送 idoc](#send-idoc-action) ，可以使用该操作执行以下操作：
+
+    * [调用 BAPI 函数 over RFC](#call-bapi-action)
+
+    * 在 SAP 系统中调用 RFC/tRFC
+
+    * 创建或关闭有状态会话
+
+    * 提交或回滚 BAPI 事务
+
+    * 确认事务标识符
+
+    * 发送 Idoc，从其编号获取 IDoc 的状态，并获取事务的 Idoc 列表
+
+    * 读取 SAP 表
+
+* **从 SAP 触发器收到消息时** ，可以使用该消息执行以下操作：
+
+    * 通过 tRFC 接收 Idoc
+
+    * 通过 tRFC 调用 BAPI 函数
+
+    * 在 SAP 系统中调用 RFC/tRFC
+
+* "**生成架构**" 操作，可用于为 IDOC、BAPI 或 RFC 的 SAP 项目生成架构。
+
+若要使用这些 SAP 操作，需要首先使用用户名和密码对连接进行身份验证。 SAP 连接器还支持 [ (SNC) 的安全网络通信 ](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true)。 你可以使用 SNC for SAP NetWeaver 单一登录 (SSO) 或外部产品的其他安全功能。 如果使用 SNC，请参阅 [SNC 必备组件](#snc-prerequisites)。
+
+### <a name="migrate-to-current-connector"></a>迁移到最新连接器
+
+以前的 SAP 应用程序服务器和 SAP 消息服务器连接器已不推荐使用2020年2月29日。 若要迁移到当前 SAP 连接器，请执行以下步骤：
+
+1. 将 [本地数据网关](https://www.microsoft.com/download/details.aspx?id=53127) 更新到最新版本。 有关详细信息，请参阅[为 Azure 逻辑应用安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。
+
+1. 在使用已弃用的 SAP 连接器的逻辑应用中，删除 " **发送到 SAP** " 操作。
+
+1. 从当前 SAP 连接器向 SAP 操作添加 **发送消息** 。
+
+1. 重新连接到新操作中的 SAP 系统。
+
+1. 保存逻辑应用。
+
+### <a name="multi-tenant-azure-prerequisites"></a>多租户 Azure 先决条件
+
+如果逻辑应用在多租户 Azure 中运行，则这些必备组件适用。 托管 SAP 连接器不会以本机方式在 [ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中运行。
+
+> [!TIP]
+> 如果你使用的是高级 ISE，则可以使用 SAP ISE 连接器，而不是托管 SAP 连接器。 有关详细信息，请参阅 [ISE 必备组件](#ise-prerequisites)。
+
+托管 SAP 连接器通过 [本地数据网关](../logic-apps/logic-apps-gateway-connection.md)与 SAP 系统集成。 例如，在 "发送消息" 方案中，将消息从逻辑应用发送到 SAP 系统时，数据网关充当 RFC 客户端，并将从逻辑应用接收的请求转发到 SAP。 同样，在接收消息的情况下，数据网关将充当接收来自 SAP 的请求并将其转发给逻辑应用的 RFC 服务器。
+
+* [下载本地数据网关并](../logic-apps/logic-apps-gateway-install.md) 将其安装到与要连接到的 SAP 系统位于同一虚拟网络中的主计算机或虚拟机上。
+
+* 在 Azure 门户中为本地数据网关[创建 Azure 网关资源](../logic-apps/logic-apps-gateway-connection.md#create-azure-gateway-resource)。 此网关可帮助你安全地访问本地数据和资源。 请确保使用支持的网关版本。
+
+    * 如果网关遇到问题，请尝试 [升级到最新版本](https://aka.ms/on-premises-data-gateway-installer)，其中可能包括用于解决问题的更新。
+
+* [下载并安装最新的 SAP 客户端库，并](#sap-client-library-prerequisites) 将其安装在本地数据网关所在的本地计算机上。
+
+### <a name="ise-prerequisites"></a>ISE 必备组件
+
+如果在高级 ISE ISE 中运行逻辑应用，则会应用这些先决条件。 但是，它们不适用于开发人员级 ISE 中运行的逻辑应用。 ISE 提供对受 Azure 虚拟网络保护的资源的访问权限，并提供其他 ISE 本地连接器，让逻辑应用可以直接访问本地资源，而无需使用本地数据网关。
 
 > [!NOTE]
 > 尽管 SAP ISE 连接器在开发人员级 ISE 内可见，但尝试安装连接器不会成功。
 
-1. 如果还没有 Azure 存储帐户和 blob 容器，请使用 [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md) 或 [Azure 存储资源管理器](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)来创建该容器。
+1. 如果还没有 Azure 存储帐户和 blob 容器，请使用 [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md) 或 [Azure 存储资源管理器](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)创建容器。
 
 1. 在本地计算机上[下载并安装最新的 SAP 客户端库](#sap-client-library-prerequisites)。 应具有以下程序集文件：
 
    * libicudecnumber.dll
+
    * rscp4n.dll
+
    * sapnco.dll
+
    * sapnco_utils.dll
 
-1. 创建一个 .zip 文件，其中包含这些程序集，并将此包上传到 Azure 存储中的 blob 容器。
+1. 创建一个包含这些程序集文件的 .zip 文件。 将包上传到 Azure 存储中的 blob 容器。
 
 1. 在 Azure 门户或 Azure 存储资源管理器中，浏览到你上传 .zip 文件的容器位置。
 
-1. 复制该位置的 URL，确保包含共享访问签名 (SAS) 令牌。
+1. 复制容器位置的 URL。 请确保 (SAS) 令牌中包含共享访问签名，因此会授权 SAS 令牌。 否则，SAP ISE 连接器的部署将失败。
 
-   否则，SAS 令牌不会获得授权，SAP ISE 连接器的部署将失败。
-
-1. 你需要在 ISE 中安装并部署连接器，然后才能使用 SAP ISE 连接器。
+1. 在 ISE 中安装并部署 SAP 连接器。 有关详细信息，请参阅 [添加 ISE 连接器](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment)。
 
    1. 在 [Azure 门户](https://portal.azure.com)中，找到并打开 ISE。
-   
-   1. 在 ISE 菜单上，选择 "**托管连接器**" "  >  **添加**"。 在 "连接器" 列表中，找到并选择 " **SAP**"。
-   
-   1. 在 " **添加新的托管连接器** " 窗格中的 " **sap 包** " 框中，粘贴包含 SAP 程序集的 .zip 文件的 URL。 *请确保包含 SAS 令牌。*
 
-   1. 完成操作后，选择“创建”。
+   1. 在 ISE 菜单上，选择 " **托管连接器**" " &gt; **添加**"。 在 "连接器" 列表中，找到并选择 " **SAP**"。
 
-   有关详细信息，请参阅 [添加 ISE 连接器](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment)。
+   1. 在 " **添加新的托管连接器** " 窗格中的 " **sap 包** " 框中，粘贴包含 SAP 程序集的 .zip 文件的 URL。 同样，请确保包含 SAS 令牌。
+ 
+  1. 选择 " **创建** " 以完成创建 ISE 连接器。
 
-1. 如果 SAP 实例和 ISE 位于不同的虚拟网络中，则还需要 [对这些网络进行对等](../virtual-network/tutorial-connect-virtual-networks-portal.md) 互连，以便 ISE 的虚拟网络连接到 SAP 实例的虚拟网络。
-
-<a name="sap-client-library-prerequisites"></a>
+1. 如果 SAP 实例和 ISE 位于不同的虚拟网络中，则还需要 [对这些网络对等](../virtual-network/tutorial-connect-virtual-networks-portal.md) 互连。
 
 ### <a name="sap-client-library-prerequisites"></a>SAP 客户端库必备组件
 
-* 请确保安装了最新版本， [SAP 连接器 (NCo 3.0) ，用于 Microsoft .NET 用 .NET Framework 4.0-Windows 64 位 (x64) 编译的 3.0.22.0 ](https://support.sap.com/en/product/connectors/msnet.html)。 早期版本可能会导致兼容性问题。 有关详细信息，请参阅 [SAP 客户端库版本](#sap-library-versions)。
+下面是与连接器一起使用的 SAP 客户端库的先决条件。
 
-* 默认情况下，SAP 安装程序将程序集文件放在默认安装文件夹中。 你需要根据你的方案将这些程序集文件复制到另一个位置，如下所示：
+* 请确保安装了最新版本， [SAP 连接器 (NCo 3.0) ，用于 Microsoft .NET 用 .NET Framework 4.0-Windows 64 位 (x64) 编译的 3.0.22.0 ](https://support.sap.com/en/product/connectors/msnet.html)。 当同时发送多个 IDoc 消息时，SAP NCo 的早期版本可能会遇到问题。 此条件会阻止发送到 SAP 目标的所有后续消息，这会导致消息超时。
 
-  * 对于在 ISE 中运行的逻辑应用，请按照 [integration service 环境先决条件](#sap-ise)中所述的步骤进行操作。 对于在多租户 Azure 中运行并使用本地数据网关的逻辑应用，将程序集文件从默认安装文件夹复制到数据网关安装文件夹中。 如果在数据网关遇到问题，请查看以下问题：
+* 你必须安装了64位版本的 SAP 客户端库，因为 data gateway 仅在64位系统上运行。 安装不受支持的32位版本会导致 "错误映像" 错误。
 
-  * 必须为 SAP 客户端库安装64位版本，因为数据网关仅在64位系统上运行。 否则，会收到“错误的映像”错误，因为数据网关主机服务不支持 32 位程序集。
+* 根据你的方案，将默认安装文件夹中的程序集文件复制到另一个位置，如下所示。
 
-  * 如果 SAP 连接失败，并出现错误消息 "请检查你的帐户信息和/或权限，然后重试"，则可能是因为程序集文件位于错误的位置。 请确保已将程序集文件复制到数据网关安装文件夹中。
+    * 对于在 ISE 中运行的逻辑应用，请改用 [ise 必备组件](#ise-prerequisites) 。
 
-    为了帮助你进行故障排除，请 [使用 .net 程序集绑定日志查看器，该查看器](/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer)允许你检查程序集文件是否在正确的位置。 或者，你可以在安装 SAP 客户端库时选择 **全局程序集缓存注册** 选项。
+    * 对于在多租户 Azure 中运行的逻辑应用和使用本地数据网关，请将程序集文件复制到数据网关安装文件夹中。 
 
-<a name="sap-library-versions"></a>
+        
+        * 如果 SAP 连接失败并出现错误消息， **请检查你的帐户信息和/或权限，然后重试**，确保已将程序集文件复制到数据网关安装文件夹中。
+        
+        * 使用 [.net 程序集绑定日志查看器](/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer)排除进一步的问题。 此工具可让你检查程序集文件是否在正确的位置。 
+        
+        * 或者，在安装 SAP 客户端库时选择 " **全局程序集缓存注册** " 选项。
 
-#### <a name="sap-client-library-versions"></a>SAP 客户端库版本
+请注意 SAP 客户端库、.NET Framework、.NET 运行时和网关之间的以下关系：
 
-如果同时发送多个 IDoc 消息，早期的 SAP NCo 版本可能死锁。 这种状态会阻止向 SAP 目标发送所有后续消息，从而导致消息超时。
+* Microsoft SAP 适配器和网关主机服务都使用 .NET Framework 4.7.2。
 
-下面是 SAP 客户端库、.NET Framework、.NET 运行时和网关之间的关系：
-
-* Microsoft SAP 适配器和网关主机服务都使用 .NET Framework 4.5。
-
-* SAP NCo for .NET Framework 4.0 适用于使用 .NET 运行时 4.0 到 4.7.1 的进程。
+* 适用于 .NET Framework 4.0 的 SAP NCo 适用于使用 .NET 运行时4.0 到4.8 的进程。
 
 * 适用于 .NET Framework 2.0 的 SAP NCo 适用于使用 .NET 运行时2.0 到3.5 的进程，但不再适用于最新的网关。
 
-### <a name="secure-network-communications-prerequisites"></a>安全网络通信先决条件
+### <a name="snc-prerequisites"></a>SNC 先决条件
 
-如果将本地数据网关与可选的安全网络通信 (SNC) （仅在多租户 Azure 中受支持），则还需要配置这些设置：
+如果将本地数据网关与可选的 SNC （仅在多租户 Azure 中受支持）一起使用，则必须配置这些附加设置。
 
-* 如果将 SNC 与 (SSO) 的单一登录一起使用，请确保数据网关是以与 SAP 用户对应的用户身份运行的。 若要更改默认帐户，请选择“更改帐户”并输入用户凭据。 
+如果将 SNC 与 SSO 结合使用，请确保将数据网关服务作为映射到 SAP 用户的用户运行。 若要更改默认帐户，请选择“更改帐户”并输入用户凭据。 
 
-  ![更改数据网关帐户](./media/logic-apps-using-sap-connector/gateway-account.png)
+![Azure 门户中的本地数据网关设置的屏幕截图，其中显示了 "服务设置" 页，其中包含用于更改所选网关服务帐户的按钮。](./media/logic-apps-using-sap-connector/gateway-account.png)
 
-* 如果对外部安全产品启用 SNC，请将 SNC 库或文件复制到安装了数据网关的同一台计算机上。 SNC 产品的部分示例包括 [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm)、Kerberos 和 NTLM。
+如果要通过外部安全产品启用 SNC，请将 SNC 库或文件复制到安装数据网关的同一台计算机上。 SNC 产品的部分示例包括 [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm)、Kerberos 和 NTLM。 有关为数据网关启用 SNC 的详细信息，请参阅 [启用安全网络通信](#enable-secure-network-communications)。
 
-有关为数据网关启用 SNC 的详细信息，请参阅 [启用安全网络通信](#secure-network-communications)。
+## <a name="send-idoc-messages-to-sap-server"></a>将 IDoc 消息发送到 SAP 服务器
 
-<a name="migrate"></a>
+按照以下示例创建一个逻辑应用，以便将 IDoc 消息发送到 SAP 服务器并返回响应：
 
-## <a name="migrate-to-current-connector"></a>迁移到最新连接器
+1. [创建由 HTTP 请求触发的逻辑应用。](#create-http-request-trigger)
 
-要从以前的托管 (非 ISE) SAP 连接器迁移到当前托管 SAP 连接器，请执行以下步骤：
+1. [在工作流中创建操作，以将消息发送到 SAP。](#create-sap-action-to-send-message)
 
-1. 更新[本地数据网关](https://www.microsoft.com/download/details.aspx?id=53127)（如果尚未这样做），使自己的版本为最新版本。 有关详细信息，请参阅[为 Azure 逻辑应用安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。
+1. [在工作流中创建 HTTP 响应操作。](#create-http-response-action)
 
-1. 在使用较旧 SAP 连接器的逻辑应用中，删除“发送到 SAP”操作。 
+1. [如果要使用 RFC 接收来自 SAP ABAP 的回复，请 (RFC) 请求-响应模式创建远程函数调用。](#create-rfc-request-response)
 
-1. 在最新的 SAP 连接器中，添加“将消息发送到 SAP”操作。  在使用此操作之前，必须重新创建到 SAP 系统的连接。
+1. [测试逻辑应用。](#test-logic-app)
 
-1. 完成后，保存逻辑应用。
-
-<a name="add-trigger"></a>
-
-## <a name="send-message-to-sap"></a>将消息发送到 SAP
-
-本示例使用可通过 HTTP 请求触发的逻辑应用。 该逻辑应用将一个 IDoc 发送到 SAP 服务器，并向调用逻辑应用的请求方返回响应。
-
-### <a name="add-an-http-request-trigger"></a>添加 HTTP 请求触发器
-
-在 Azure 逻辑应用中，每个逻辑应用都必须从[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)开始，该触发器在发生特定事件或特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例并开始运行应用的工作流。
+### <a name="create-http-request-trigger"></a>创建 HTTP 请求触发器
 
 > [!NOTE]
-> 逻辑应用接收来自 SAP 的 IDoc 数据包时， [request 触发器](../connectors/connectors-native-reqres.md) 不支持 SAP 的 WE60 IDoc 文档生成的 "纯文本" XML 架构。 但是，将消息从逻辑应用发送 *到* SAP 的方案支持 "纯文本" XML 架构。 可以将请求触发器与 SAP 的 IDoc XML 一起使用，但不能使用 IDoc over RFC。 或者，您可以将 XML 转换为所需的格式。 
+> 逻辑应用从 SAP 接收到 Idoc 时， [请求触发器](../connectors/connectors-native-reqres.md) 现在支持 SAP 纯 XML 格式。 若要以纯 XML 的形式接收 Idoc，请 **在从 SAP 接收到消息时** 使用触发器。 将参数 **IDOC 的格式** 设置为 **SapPlainXml**。
 
-本示例创建一个包含 Azure 中的终结点的逻辑应用，方便将  HTTP POST 请求发送到逻辑应用。 当逻辑应用程序收到这些 HTTP 请求时，触发器将会触发，并运行工作流中的下一个步骤。
+首先，在 Azure 中创建包含终结点的逻辑应用，将 *HTTP POST* 请求发送到逻辑应用。 逻辑应用收到这些 HTTP 请求时， [触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts) 将触发，并在工作流中运行下一步。
 
-1. 在 [Azure 门户](https://portal.azure.com)中创建一个空白的逻辑应用。此时会打开逻辑应用设计器。
+1. 在 [Azure 门户](https://portal.azure.com)中，创建一个空白逻辑应用，用于打开 **逻辑应用设计器**。
 
 1. 在搜索框中，输入 `http request` 作为筛选器。 在触发器列表中，选择“当收到 HTTP 请求时”。  
 
-   ![添加 HTTP 请求触发器](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
+   ![逻辑应用设计器的屏幕截图，显示要添加到逻辑应用的新 HTTP 请求触发器。](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
-1. 现在请保存逻辑应用，以便为逻辑应用生成终结点 URL。 在设计器工具栏上选择“保存”。 
+1. 保存逻辑应用，以便可以为逻辑应用生成终结点 URL。 在设计器工具栏上选择“保存”。  终结点 URL 现在会出现在触发器中。 
 
-   终结点 URL 现在会显示在触发器中，例如：
+   ![逻辑应用设计器的屏幕截图，其中显示了复制生成的 POST URL 时发出 HTTP 请求触发器。](./media/logic-apps-using-sap-connector/generate-http-endpoint-url.png)
 
-   ![生成终结点的 URL](./media/logic-apps-using-sap-connector/generate-http-endpoint-url.png)
+### <a name="create-sap-action-to-send-message"></a>创建 SAP 操作以发送消息
 
-<a name="add-action"></a>
+接下来，创建一个操作，以便在 [HTTP 请求触发器](#create-http-request-trigger) 触发时向 SAP 发送 IDoc 消息。
 
-### <a name="add-an-sap-action"></a>添加 SAP 操作
+1. 在逻辑应用设计器中的触发器下，选择 " **新建步骤**"。
 
-在 Azure 逻辑应用中，[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)是指工作流中紧跟在某个触发器或另一操作后面执行的一个步骤。 如果尚未将触发器添加到逻辑应用，但需要遵循本示例，请[添加此部分所述的触发器](#add-trigger)。
-
-1. 在逻辑应用设计器中的触发器下，选择“新建步骤”。 
-
-   ![向逻辑应用添加新步骤](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
+   ![逻辑应用设计器的屏幕截图，显示要编辑的逻辑应用，以添加新步骤。](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
 1. 在搜索框中，输入 `sap` 作为筛选器。 在“操作”列表中选择“将消息发送到 SAP”。  
   
-   ![选择“向 SAP 发送消息”操作](media/logic-apps-using-sap-connector/select-sap-send-action.png)
+   ![逻辑应用设计器的屏幕截图，显示 "向 SAP 发送消息" 操作的选择。](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
    也可以选择“企业”选项卡，然后选择 SAP 操作。 
 
-   ![从“企业”选项卡选择“向 SAP 发送消息”操作](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
+   ![逻辑应用设计器的屏幕截图，显示 "企业" 选项卡下的 "向 SAP 发送消息" 操作的选择。](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
 
-1. 如果连接已存在，请继续下一步，以便可以设置 SAP 操作。 但是，如果系统提示你提供连接详细信息，请提供此信息，以便你可以创建到本地 SAP 服务器的连接。
+1. 如果连接已存在，则继续执行下一步。 如果系统提示你创建新的连接，请提供以下信息以连接到你的本地 SAP 服务器。
 
    1. 为连接提供一个名称。
 
@@ -231,7 +255,7 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
    
       1. 在 " **连接网关**" 下，在 Azure 中选择数据网关资源。
 
-   1. 继续提供有关连接的信息。 对于“登录类型”属性，请根据该属性是设置为“应用程序服务器”还是“组”来执行相关步骤：   
+   1. 继续提供连接信息。 对于“登录类型”属性，请根据该属性是设置为“应用程序服务器”还是“组”来执行相关步骤：   
    
       * 对于“应用程序服务器”，必须指定以下属性（通常显示为可选）： 
 
@@ -246,6 +270,14 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
    1. 完成后，选择“创建”  。
 
       逻辑应用会设置并测试连接，确保连接正常工作。
+
+    > [!NOTE]
+
+    > 如果收到以下错误，则说明 SAP NCo 客户端库的安装有问题： 
+    >
+    > **测试连接失败。错误 "处理请求失败。错误详细信息：无法加载文件或程序集 "sapnco，Version = 3.0.0.42，Culture = 中立，PublicKeyToken 50436dca5c7f7d23" 或其依赖项之一。系统找不到指定的文件。**
+    >
+    > 请确保 [安装所需版本的 SAP NCo 客户端库，并满足所有其他先决条件](#sap-client-library-prerequisites)。
 
 1. 现在，请找到并选择 SAP 服务器中的某个操作。
 
@@ -276,13 +308,44 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
 
 1. 保存逻辑应用。 在设计器工具栏上选择“保存”。 
 
-<a name="add-response"></a>
+#### <a name="send-flat-file-idocs"></a>发送平面文件 Idoc
 
-### <a name="add-an-http-response-action"></a>添加 HTTP 响应操作
+如果将 Idoc 包装在 XML 信封中，则可以将其与平面文件架构一起使用。 若要发送平面文件 IDoc，请使用一般说明 [创建 SAP 操作，以便使用以下更改发送 IDoc 消息](#create-sap-action-to-send-message) 。
+
+1. 对于 "向 **Sap 发送消息** " 操作，请使用 SAP 操作 URI `http://microsoft.lobservices.sap/2007/03/Idoc/SendIdoc` 。
+
+1. 使用 XML 信封设置输入消息的格式。 有关示例，请参阅下面的示例消息：
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<SendIdoc xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/">
+  <idocData>EDI_DC    300                      ORDERS052SAPMSS    LIMSFTABCSWI                                                                                           ED  93AORDERSOLP     VLTRFC    KUMSFTABCSWI                                                                                           13561                       231054476                                                                           20190523085430ORDERSORDERS05          US
+E2EDK01005300                1     E2EDK010050     1       USD                                                                        Z4O14506907554
+E2EDK03   300                2     E2EDK03   0     2   02220190523
+E2EDKA1   300                3     E2EDKA1   0     2   RE                  MSFTASWI
+E2EDKA1   300                4     E2EDKA1   0     2   US                  MSFTASWI
+E2EDKA1   300                5     E2EDKA1   0     2   WE                  MSFTASWILIC
+E2EDKA1   300                6     E2EDKA1   0     2   Z1 KKKKKKK                           ABC YYYYYYYYYYY ZZ                                                                                                                          BBBBBBBBBBBBBBBB 11                                                                                      ttttttttttt                                 6666              US                                                                                                999 999 99 99                                                                                                                SSSSSSS SSS SSSSSS                                                                                                                                SSSSSSS SSS SSSSSS
+E2EDKA1   300                7     E2EDKA1   0     2   Z2 KKKKKKK                           BBBBBBBBBBBBBBBB DDDDDDDD ZZ                                                                                                                EEEEEEEEEEE 86                                                                                           rrrrrrrr                                    8888              US                                                                                                999 999 99 99                                                                                                                NNNNNN NNNNNN                                                                                                                                     NNNNNN NNNNNN
+E2EDK02   300                8     E2EDK02   0     2   901Z
+E2EDK02   300                9     E2EDK02   0     2   90399680096ZZS2002
+E2EDK02   300                10    E2EDK02   0     2   902S
+E2EDKT1   300                11    E2EDKT1   0     2   Z1EME
+E2EDKT2   300                12    E2EDKT2   0     3   xxx@xxx-xx.xx
+E2EDKT1   300                13    E2EDKT1   0     2   Z2EME
+E2EDKT2   300                14    E2EDKT2   0     3   x.xxxxxx@xxxxxxxx-xxxxxxxxxx.xx
+E2EDP01001300                15    E2EDP010010     2   10         1              EA                          999.9
+E2EDP19   300                16    E2EDP19   0     3   00AAAA-11111</idocData>
+</SendIdoc>
+```
+
+
+
+### <a name="create-http-response-action"></a>创建 HTTP 响应操作
 
 现在，请将响应操作添加到逻辑应用的工作流，并包括来自 SAP 操作的输出。 这样，逻辑应用便可将来自 SAP 服务器的结果返回到原始请求方。
 
-1. 在逻辑应用设计器中的 SAP 操作下，选择“新建步骤”。 
+1. 在逻辑应用设计器中的 "SAP 操作" 下，选择 " **新建步骤**"。
 
 1. 在搜索框中，输入 `response` 作为筛选器。 在“操作”列表中选择“响应”。  
 
@@ -292,7 +355,7 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
 
 1. 保存逻辑应用。
 
-#### <a name="add-rfc-request-response"></a>添加 RFC 请求-响应
+#### <a name="create-rfc-request-response"></a>创建 RFC 请求-响应
 
 > [!NOTE]
 > SAP 触发器通过 tRFC 接收 Idoc，这不会有设计的响应参数。 
@@ -302,6 +365,7 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
 若要实现请求和响应模式，必须首先使用[ `generate schema` 命令](#generate-schemas-for-artifacts-in-sap)发现 RFC 架构。 生成的架构包含两个可能的根节点： 
 
 1. 请求节点，它是从 SAP 接收的呼叫。
+
 1. 响应节点，可回复到 SAP。
 
 在下面的示例中，将从 RFC 模块生成请求和响应模式 `STFC_CONNECTION` 。 解析请求 XML 以提取 SAP 请求的节点值 `<ECHOTEXT>` 。 响应将当前时间戳插入为动态值。 从逻辑应用向 SAP 发送 RFC 时，会收到类似的响应 `STFC_CONNECTION` 。
@@ -315,7 +379,7 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
 
 ```
 
-### <a name="test-your-logic-app"></a>测试逻辑应用
+### <a name="test-logic-app"></a>测试逻辑应用
 
 1. 如果尚未启用逻辑应用，请在逻辑应用菜单中选择“概览”。  在工具栏中选择“启用”。 
 
@@ -342,15 +406,13 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
 
 现已创建一个可与 SAP 服务器通信的逻辑应用。 为逻辑应用设置 SAP 连接后，可以探索其他可用的 SAP 操作，例如 BAPI 和 RFC。
 
-<a name="receive-from-sap"></a>
-
 ## <a name="receive-message-from-sap"></a>从 SAP 接收消息
 
 此示例使用当应用从 SAP 系统收到消息时触发的逻辑应用。
 
 ### <a name="add-an-sap-trigger"></a>添加 SAP 触发器
 
-1. 在 Azure 门户中创建一个空白的逻辑应用，以便打开逻辑应用设计器。
+1. 在 Azure 门户中，创建一个空白逻辑应用，用于打开逻辑应用设计器。
 
 1. 在搜索框中，输入 `sap` 作为筛选器。 在“触发器”列表中选择“从 SAP 收到消息时”。  
 
@@ -411,17 +473,15 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
 > [!NOTE]
 > SAP 触发器不是轮询触发器，而是基于 Webhook 的触发器。 如果使用的是数据网关，则只有当消息存在时，才从数据网关中调用触发器，因此不需要进行轮询。
 
-<a name="parameters"></a>
-
 #### <a name="parameters"></a>参数
 
 SAP 连接器除了简单的字符串和数字输入以外，还接受以下表参数 (`Type=ITAB` 输入) ：
 
 * 适用于较早 SAP 版本的表方向参数（输入和输出）。
-* 更改参数，用于替换更新的 SAP 版本的表方向参数。
-* 分层表参数
 
-<a name="filter-with-sap-actions"></a>
+* 更改参数，用于替换更新的 SAP 版本的表方向参数。
+
+* 分层表参数
 
 #### <a name="filter-with-sap-actions"></a>筛选 SAP 操作
 
@@ -429,7 +489,7 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 
 设置阵列筛选器时，触发器仅接收来自指定 SAP 操作类型的消息，并拒绝来自 SAP 服务器的所有其他消息。 但是，此筛选器不会影响输入的有效负载是否为弱或强类型。
 
-任何 SAP 操作筛选均发生在本地数据网关的 SAP 适配器级别。 有关详细信息，请参阅 [如何将 Test idoc 发送到 SAP 中的逻辑应用](#send-idocs-from-sap)。
+任何 SAP 操作筛选均发生在本地数据网关的 SAP 适配器级别。 有关详细信息，请参阅 [如何将 Test idoc 发送到 SAP 中的逻辑应用](#test-sending-idocs-from-sap)。
 
 如果无法将 IDoc 数据包从 SAP 发送到逻辑应用的触发器，请参阅 "SAP tRFC" 对话框中的 "事务 RFC (tRFC) 调用拒绝消息" (T-sql SM58) 。 在 SAP 接口中，你可能会收到以下错误消息，这些错误消息是由于 " **状态" 文本** 字段的子字符串限制引起的。
 
@@ -442,34 +502,67 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 * `The segment or group definition E2EDK36001 was not found in the IDoc meta`：预期的失败与其他错误发生，例如由于 SAP 未释放 IDoc XML 负载而导致无法生成该负载，因此缺少转换所需的段类型元数据。 
 
   * 若要将这些段发布到 SAP，请联系 SAP 系统的 ABAP 工程师。
+### <a name="asynchronous-request-reply-for-triggers"></a>异步请求应答触发器
 
-<a name="find-extended-error-logs"></a>
+SAP 连接器支持逻辑应用触发器的 Azure [异步请求-答复模式](/azure/architecture/patterns/async-request-reply.md) 。 您可以使用此模式创建成功的请求，否则会失败，并使用默认的同步请求-答复模式。 
+
+> [!TIP]
+> 在具有多个响应操作的逻辑应用中，所有响应操作必须使用相同的请求-答复模式。 例如，如果逻辑应用使用具有多个可能的响应操作的 switch 控件，则必须将所有响应操作配置为使用相同的请求-答复模式，无论是同步还是异步。 
+
+启用响应操作的异步响应后，逻辑应用就可以 `202 Accepted` 在请求被接受处理时，使用答复来响应。 回复包含位置标头，可用于检索请求的最终状态。
+
+使用 SAP 连接器为逻辑应用配置异步请求-答复模式：
+
+1. 在 **逻辑应用设计器** 中打开逻辑应用。
+
+1. 确认 SAP 连接器是逻辑应用的触发器。
+
+1. 打开逻辑应用的 **响应** 操作。 在操作的标题栏中，选择 " (**...** " 菜单) " &gt; **设置**"。
+
+1. 在 "响应" 操作的 " **设置** " 中，启用 " **异步响应**" 下的切换。 选择 "完成"。
+
+1. 保存对逻辑应用所做的更改。
 
 ## <a name="find-extended-error-logs"></a>查找扩展错误日志
 
-有关完整的错误消息，请检查 SAP 适配器的扩展日志。 
+有关完整的错误消息，请检查 SAP 适配器的扩展日志。 你还可以 [为 SAP 连接器启用扩展日志文件](#extended-sap-logging-in-on-premises-data-gateway)。
 
-对于本地数据网关2020年6月版和更高版本，你可以 [在应用程序设置中启用网关日志](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app)。
+对于本地数据网关2020年6月版和更高版本，你可以 [在应用程序设置中启用网关日志](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app)。 
 
-对于本地数据网关版本2020及更早版本，默认禁用日志。 若要检索扩展日志，请执行以下步骤：
+对于本地数据网关版本2020及更早版本，默认禁用日志。
 
-1. 在本地数据网关安装文件夹中，打开 `Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config` 文件。 
+### <a name="extended-sap-logging-in-on-premises-data-gateway"></a>本地数据网关上的扩展 SAP 日志记录
 
-1. 对于 **SapExtendedTracing** 设置，将值从 **False** 更改为 **True**。
+如果 [为逻辑应用使用本地数据网关](../logic-apps/logic-apps-gateway-install.md)，则可以为 SAP 连接器配置扩展日志文件。 你可以使用本地数据网关将 Windows (ETW) 事件的事件跟踪重定向到你的网关的日志记录 .zip 文件中包含的循环日志文件。 
 
-1. （可选）对于更少的事件，请将 **SapTracingLevel** 值从 **信息** (默认) 更改为 **错误** 或 **警告**。 或者，若要获取更多事件，请将 **信息性** 更改为 **Verbose**。
+你可以从网关应用的设置中将 [所有网关的配置和服务日志导出](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) 到中的 .zip 文件。
 
-1. 保存此配置文件。
+> [!NOTE]
+> 当始终启用时，扩展日志记录可能会影响逻辑应用的性能。 完成分析并解决问题后，最佳做法是关闭扩展日志文件。
 
-1. 重新启动你的数据网关。 打开本地数据网关安装程序应用，并中转到 " **服务设置** " 菜单。 在 " **重新启动网关**" 下，选择 " **立即重新启动**"。
+#### <a name="capture-etw-events"></a>捕获 ETW 事件
 
-1. 重现遇到的问题。
+或者，高级用户可以直接捕获 ETW 事件。 然后，你可以 [在事件中心的 Azure 诊断中使用数据](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs) ，或将 [数据收集到 Azure Monitor 日志](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs)。 有关详细信息，请参阅 [收集和存储数据的最佳做法](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#collecting-and-storing-data)。 可以使用 [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) 来处理生成的 ETL 文件，也可以编写自己的程序。 本演练使用 PerfView：
 
-1. 导出网关日志。 在数据网关安装程序应用程序中，请参阅 " **诊断** " 菜单。 在“网关日志”下，选择“导出日志”。******** 这些文件包括按日期组织的 SAP 日志。 根据日志大小，一个日期可能有多个日志文件。
+1. 在 PerfView 菜单中，选择 " **收集** &gt; **收集** " 以捕获事件。
 
-1. 在配置文件中，将 **SapExtendedTracing** 设置还原为 **False**。
+1. 在 " **其他提供程序** " 字段中，输入 `*Microsoft-LobAdapter` 以指定 sap 提供程序来捕获 sap 适配器事件。 如果未指定此信息，则跟踪只包含常规 ETW 事件。
 
-1. 重新启动网关服务。
+1. 保留其他默认设置。 如果需要，可以更改 " **数据文件** " 字段中的文件名或位置。
+
+1. 选择 " **开始收集** " 以开始跟踪。
+
+1. 重现问题或收集了足够的分析数据后，选择 " **停止收集**"。
+
+若要与另一方（如 Azure 支持工程师）共享你的数据，请压缩 ETL 文件。
+
+查看跟踪的内容：
+
+1. 在 PerfView 中，选择 " **文件** &gt; " " **打开** "，然后选择刚刚生成的 ETL 文件。
+
+1. 在 PerfView 侧栏中，ETL 文件下的 " **事件** " 部分。
+
+1. 在 " **筛选**" 下，按筛选， `Microsoft-LobAdapter` 仅查看相关事件和网关进程。
 
 ### <a name="test-your-logic-app"></a>测试逻辑应用
 
@@ -478,8 +571,6 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 1. 在逻辑应用菜单中，选择“概述”  。 查看逻辑应用的所有新运行的“运行历史记录”。 
 
 1. 打开最近的运行，触发器输出部分会显示从 SAP 系统发送的消息。
-
-<a name="send-idocs-from-sap"></a>
 
 ### <a name="test-sending-idocs-from-sap"></a>测试从 SAP 发送 Idoc
 
@@ -520,11 +611,11 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 
 1. 将新 **程序 ID** 注册到 Azure 逻辑应用。
 
-1. 若要测试连接，请在 SAP 接口中的新 **RFC 目标**下，选择 " **连接测试**"。
+1. 若要测试连接，请在 SAP 接口中的新 **RFC 目标** 下，选择 " **连接测试**"。
 
 #### <a name="create-abap-connection"></a>创建 ABAP 连接
 
-1. 若要打开 **RFC 连接** 设置的配置，请将 **sm59*** transaction 代码与 **/N** 前缀一起使用 (T 代码) 。
+1. 若要打开 **RFC 连接** 设置的配置，请在 SAP 接口中使用 **sm59** _ transaction 代码 (包含 _ */n** 前缀的 T 代码) 。
 
 1. 选择 " **ABAP 连接**" "  >  **创建**"。
 
@@ -536,7 +627,7 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 
 #### <a name="create-receiver-port"></a>创建接收方端口
 
-1. 若要在**IDOC 处理**设置中打开端口，请在 SAP 接口中使用具有 **/N**前缀 (T 代码) 的**we21**事务代码。
+1. 若要在 **IDOC 处理** 设置中打开端口，请在 SAP 接口中使用具有 **/N** 前缀 (T 代码) 的 **we21** 事务代码。
 
 1. 选择 **"**  >  **事务 RFC**  >  **创建**"。
 
@@ -548,11 +639,11 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 
 #### <a name="create-sender-port"></a>创建发送方端口
 
-1.  若要在**IDOC 处理**设置中打开端口，请在 SAP 接口中使用具有 **/N**前缀 (T 代码) 的**we21**事务代码。
+1.  若要在 **IDOC 处理** 设置中打开端口，请在 SAP 接口中使用具有 **/N** 前缀 (T 代码) 的 **we21** 事务代码。
 
 1. 选择 **"**  >  **事务 RFC**  >  **创建**"。
 
-1. 在打开的 "设置" 框中，选择 " **拥有端口名称**"。 对于测试端口，请输入一个以**SAP**开头的**名称**。 所有发送程序端口名称必须以字母 **SAP**开头，例如， **SAPTEST**。 保存所做更改。
+1. 在打开的 "设置" 框中，选择 " **拥有端口名称**"。 对于测试端口，请输入一个以 **SAP** 开头的 **名称**。 所有发送程序端口名称必须以字母 **SAP** 开头，例如， **SAPTEST**。 保存所做更改。
 
 1. 在新发送方端口的 "设置" 中，为 " **RFC 目标**" 输入 [ABAP 连接](#create-abap-connection)的标识符。
 
@@ -606,7 +697,7 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 
 1. 若要打开 **IDoc 处理设置的测试工具** ，请在 SAP 接口中将 **we19** 事务代码与 **/N** 前缀一起使用 (T 代码) 。
 
-1. 在 " **测试模板**" 下，选择 " **Via 消息类型**"，然后输入消息类型，例如 " **CREMAS**"。 选择“创建”  。
+1. 在 " **测试模板**" 下，选择 " **Via 消息类型**"，然后输入消息类型，例如 " **CREMAS**"。 选择“创建”。
 
 1. 通过选择 "**继续**" 确认 "**哪个 IDoc 类型？"** 消息。
 
@@ -624,7 +715,7 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 
 下面是一个示例，演示如何使用[ `xpath()` 函数](./workflow-definition-language-functions-reference.md#xpath)从包中提取单个 idoc：
 
-1. 在开始之前，需要一个带 SAP 触发器的逻辑应用。 如果还没有此逻辑应用，请按照本主题中前面的步骤 [使用 SAP 触发器设置逻辑应用](#receive-from-sap)。
+1. 在开始之前，需要一个带 SAP 触发器的逻辑应用。 如果还没有此逻辑应用，请按照本主题中前面的步骤 [使用 SAP 触发器设置逻辑应用](#receive-message-from-sap)。
 
    例如：
 
@@ -648,7 +739,7 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 
    每个 IDoc 都必须包含根命名空间，这是 `<Receive></Receive` 在这种情况下，在将 IDoc 发送到下游应用或 SFTP 服务器之前，文件内容与根命名空间一起包装在元素内的原因。
 
-可以将快速入门模板用于此模式，只需在创建新逻辑应用时在逻辑应用设计器中选择此模板即可。
+创建新的逻辑应用时，可以通过在逻辑应用设计器中选择此模板来使用此模式的快速入门模板。
 
 ![选择批处理逻辑应用模板](./media/logic-apps-using-sap-connector/select-batch-logic-app-template.png)
 
@@ -659,6 +750,7 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 此 SAP 操作返回 [xml 架构](#sample-xml-schemas)，而不是 xml 文档本身的内容或数据。 在响应中返回的架构使用 Azure 资源管理器连接器上传到集成帐户。 架构包含以下部分：
 
 * 请求消息的结构。 使用此信息来形成你的 BAPI `get` 列表。
+
 * 响应消息的结构。 使用此信息来分析响应。 
 
 若要发送请求消息，请使用一般 SAP 操作向 **SAP 发送消息**，或使用目标 **调用 BAPI** 操作。
@@ -668,10 +760,15 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 如果要了解如何生成用于创建示例文档的 XML 架构，请参阅以下示例。 这些示例演示了如何使用多种类型的负载，包括：
 
 * [RFC 请求](#xml-samples-for-rfc-requests)
+
 * [BAPI 请求](#xml-samples-for-bapi-requests)
+
 * [IDoc 请求](#xml-samples-for-idoc-requests)
+
 * 简单或复杂的 XML 架构数据类型
+
 * 表参数
+
 * 可选的 XML 行为
 
 可以使用可选的 XML 序言开始 XML 架构。 SAP 连接器适用于或不使用 XML prolog。
@@ -750,14 +847,11 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 
 #### <a name="xml-samples-for-bapi-requests"></a>BAPI 请求的 XML 示例
 
-> [!TIP]
-> 如果使用逻辑应用设计器编辑 BAPI 请求，则可以使用以下搜索功能： 
-> 
-> * 在设计器中选择一个对象可查看可用方法的下拉菜单。
-> * 使用 BAPI API 调用提供的可搜索列表按关键字筛选业务对象类型。
+下面的 XML 示例是用于 [调用 BAPI 方法的](#call-bapi-action)示例请求。
 
 > [!NOTE]
 > SAP 使业务对象可用于外部系统，方法是对其进行描述，以响应 RFC `RPY_BOR_TREE_INIT` ，哪些逻辑应用在没有输入筛选器时出现问题。 逻辑应用检查输出表 `BOR_TREE` 。 此 `SHORT_TEXT` 字段用于业务对象的名称。 逻辑应用无法访问输出表中 SAP 返回的业务对象。
+> 
 > 如果使用自定义业务对象，则必须确保在 SAP 中发布和发布这些业务对象。 否则，SAP 不会在输出表中列出自定义业务对象 `BOR_TREE` 。 在从 SAP 公开业务对象之前，无法访问逻辑应用中的自定义业务对象。 
 
 下面的示例使用 BAPI 方法获取银行列表 `GETLIST` 。 此示例包含银行的业务对象 `BUS1011` 。 
@@ -918,7 +1012,7 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 
 ### <a name="add-an-http-request-trigger"></a>添加 HTTP 请求触发器
 
-1. 在 Azure 门户中创建一个空白的逻辑应用，以便打开逻辑应用设计器。
+1. 在 Azure 门户中，创建一个空白逻辑应用，用于打开逻辑应用设计器。
 
 1. 在搜索框中，输入 `http request` 作为筛选器。 在触发器列表中，选择“当收到 HTTP 请求时”。  
 
@@ -933,7 +1027,7 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 
 ### <a name="add-an-sap-action-to-generate-schemas"></a>添加 SAP 操作以生成架构
 
-1. 在逻辑应用设计器中的触发器下，选择“新建步骤”。 
+1. 在逻辑应用设计器中的触发器下，选择 " **新建步骤**"。
 
    ![向逻辑应用添加新步骤](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
@@ -1001,7 +1095,7 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 
 （可选）可以下载生成的架构，或将其存储在 Blob、存储或集成帐户等存储库中。 集成帐户为其他 XML 操作提供一流的体验。本示例演示如何使用 Azure 资源管理器连接器将架构上传到同一逻辑应用的集成帐户。
 
-1. 在逻辑应用设计器中的触发器下，选择“新建步骤”。 
+1. 在逻辑应用设计器中的触发器下，选择 " **新建步骤**"。
 
 1. 在搜索框中，输入 `Resource Manager` 作为筛选器。 选择“创建或更新资源”。 
 
@@ -1038,15 +1132,13 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 
 1. 成功运行后，转到集成帐户，并检查生成的架构是否存在。
 
-<a name="secure-network-communications"></a>
-
 ## <a name="enable-secure-network-communications"></a>启用安全网络通信
 
-在开始之前，请确保满足前面列出的 [先决条件](#pre-reqs)，这仅适用于使用数据网关和逻辑应用在多租户 Azure 中运行的情况：
+在开始之前，请确保满足前面列出的 [先决条件](#prerequisites)，这仅适用于使用数据网关和逻辑应用在多租户 Azure 中运行的情况：
 
 * 请确保将本地数据网关安装在与 SAP 系统位于同一网络中的计算机上。
 
-* 为了 (SSO) 进行单一登录，数据网关作为映射到 SAP 用户的用户运行。
+* 对于 SSO，数据网关以映射到 SAP 用户的用户身份运行。
 
 * 提供其他安全功能的 SNC 库已安装在数据网关所在的同一台计算机上。 部分示例包括 [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm)、Kerberos 和 NTLM。
 
@@ -1066,13 +1158,11 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
    > [!NOTE]
    > 不要在装有数据网关和 SNC 库的计算机上设置 SNC_LIB 和 SNC_LIB_64 环境变量。 如果已设置这些环境变量，它们会优先于通过连接器传递的 SNC 库值。
 
-<a name="safe-typing"></a>
-
 ## <a name="safe-typing"></a>安全类型化
 
 创建 SAP 连接时，默认会使用强类型化通过针对架构执行 XML 验证来检查无效值。 此行为可帮助提前检测问题。 “安全类型化”选项用于实现后向兼容，它只会检查字符串长度。  如果选择“安全类型化”，则 SAP 中的 DATS 类型和 TIMS 类型将被视为字符串而不是其 XML 等效形式 `xs:date` 和 `xs:time`，其中 `xmlns:xs="http://www.w3.org/2001/XMLSchema"`。  安全类型化会影响所有架构生成操作、“被发送”有效负载和“被接收”响应的发送消息，以及触发器的行为。 
 
-使用强类型化时（未启用**安全类型化**），架构会将 DATS 和 TIMS 类型映射到更简单的 XML 类型：
+使用强类型化时（未启用 **安全类型化**），架构会将 DATS 和 TIMS 类型映射到更简单的 XML 类型：
 
 ```xml
 <xs:element minOccurs="0" maxOccurs="1" name="UPDDAT" nillable="true" type="xs:date"/>
@@ -1086,7 +1176,7 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 <TIME>23:59:59</TIME>
 ```
 
-启用**安全类型化**时，架构会将 DATS 和 TIMS 类型映射到只施加长度限制的 XML 字符串字段，例如：
+启用 **安全类型化** 时，架构会将 DATS 和 TIMS 类型映射到只施加长度限制的 XML 字符串字段，例如：
 
 ```xml
 <xs:element minOccurs="0" maxOccurs="1" name="UPDDAT" nillable="true">
@@ -1105,7 +1195,7 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 </xs:element>
 ```
 
-在启用**安全类型化**的情况下发送消息时，DATS 和 TIMS 响应如以下示例所示：
+在启用 **安全类型化** 的情况下发送消息时，DATS 和 TIMS 响应如以下示例所示：
 
 ```xml
 <DATE>99991231</DATE>
@@ -1159,21 +1249,38 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 > 如果事务标识符的确认失败，则表明与 SAP 系统之间的通信失败，SAP 才能确认确认。
 
 1. 在逻辑应用设计器中，将操作 **Initialize 变量** 添加到逻辑应用。 
+
 1. 在 "操作 **初始化变量**" 的编辑器中，配置以下设置。 然后，保存所做的更改。
+
     1. 对于 " **名称**"，请输入变量的名称。 例如，`IDOCtransferID`。
-    2. 对于 " **类型**"，选择 " **字符串** " 作为变量类型。
-    3. 对于 " **值**"，请选择 " **输入初始值** " 文本框，以打开 "动态内容" 菜单。 选择 " **表达式** " 选项卡。在函数列表中，输入函数 `guid()` 。 然后，选择 **"确定"** 保存更改。 现在，" **值** " 字段设置为 `guid()` 函数，该函数将生成 GUID。
+
+    1. 对于 " **类型**"，选择 " **字符串** " 作为变量类型。
+
+    1. 对于 " **值**"，请选择 " **输入初始值** " 文本框，以打开 "动态内容" 菜单。 选择 " **表达式** " 选项卡。在函数列表中，输入函数 `guid()` 。 然后，选择 **"确定"** 保存更改。 现在，" **值** " 字段设置为 `guid()` 函数，该函数将生成 GUID。
+
 1. 在 " **初始化变量** " 操作后，添加 " **发送 IDOC**" 操作。
-1. 在操作 **发送 IDOC**的编辑器中，配置以下设置。 然后，保存所做的更改。
+
+1. 在操作 **发送 IDOC** 的编辑器中，配置以下设置。 然后，保存所做的更改。
+
     1. 对于 " **IDOC 类型** "，选择 "消息类型"，并为 " **输入 IDOC 消息**" 指定消息。
+
     1. 对于 " **sap 发行版本**"，请选择 sap 配置的值。
+
     1. 对于 " **记录类型" 版本**，请选择 SAP 配置的值。
+
     1. 对于 " **确认 TID**"，请选择 " **否**"。
+
     1. 选择 "**添加新参数列表**  >  **事务 ID GUID**"。 选择该文本框以打开 "动态内容" 菜单。 在 " **变量** " 选项卡下，选择所创建的变量的名称。 例如，`IDOCtransferID`。
-1. 在操作的标题栏上 **，选择** **Send IDOC**  >  "发送 IDOC"**设置**。 对于 "**重试策略**"，请选择 "**无**"  >  **Done**。
-1. 在操作 **发送 IDOC**后，添加操作 **确认事务 ID**。
+
+1. 在操作的标题栏上 **，选择**   >  "发送 IDOC"**设置**。 对于 **重试策略**，建议选择 " **默认** &gt; **完成**"。 不过，你可以根据自己的特定需求来配置自定义策略。 对于自定义策略，建议至少配置一次重试，以克服暂时的网络故障。
+
+1. 在操作 **发送 IDOC** 后，添加操作 **确认事务 ID**。
+
 1. 在 "操作 **确认事务 ID**" 的编辑器中，配置以下设置。 然后，保存所做的更改。
+
     1. 对于 " **事务 ID**"，请再次输入变量的名称。 例如，`IDOCtransferID`。
+
+1. （可选）在测试环境中验证重复数据删除。 使用在上一步中使用的相同 **事务 ID** GUID 重复 **Send IDOC** 操作。 当你同时发送相同的 IDoc 时，可以验证 SAP 是否能够识别 tRFC 调用的重复项，并将两次调用解析为单个入站 IDoc 消息。
 
 ## <a name="known-issues-and-limitations"></a>已知问题和限制
 
@@ -1185,13 +1292,56 @@ SAP 连接器除了简单的字符串和数字输入以外，还接受以下表�
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/sap/)。
+有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/sap/)。 为以下操作提供了适用于逻辑应用的其他文档：
+
+* [调用 BAPI](#call-bapi-action)
+
+* [发送 IDOC](#send-idoc-action)
 
 > [!NOTE]
 > 对于 [integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用 (ISE) ，此连接器的基于 ise 标记的版本改为使用 [ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
 
+### <a name="call-bapi-action"></a>调用 BAPI 操作
+
+[ `CallBapi`) 操作 (调用 BAPI](
+https://docs.microsoft.com/connectors/sap/#call-bapi-(preview))在 SAP 服务器上调用 BAPI 方法。 
+
+你必须在调用中使用以下参数： 
+
+* **Business Object** (`businessObject`) ，它是一个可搜索的下拉菜单。
+
+* **方法** (`method`) ，它在你选择 **业务对象** 之后填充可用方法。 可用的方法根据所选 **业务对象** 的不同而异。
+
+* **输入 BAPI 参数** (`body`) ，在这种情况下，你可以调用包含调用的 BAPI 方法输入参数值的 XML 文档，或包含 BAPI 参数的存储 blob 的 URI。
+
+有关如何使用 Call BAPI 操作的详细示例，请参阅 [BAPI 请求的 XML 示例](#xml-samples-for-bapi-requests)。
+
+> [!TIP]
+> 如果使用逻辑应用设计器编辑 BAPI 请求，则可以使用以下搜索功能： 
+> 
+> * 在设计器中选择一个对象可查看可用方法的下拉菜单。
+> * 使用 BAPI API 调用提供的可搜索列表按关键字筛选业务对象类型。
+
+### <a name="send-idoc-action"></a>发送 IDoc 操作
+
+[Send IDoc (`SendIDoc`) ](https://docs.microsoft.com/connectors/sap/#send-idoc-(preview))操作会将 IDoc 消息发送到 SAP 服务器。
+
+你必须在调用中使用以下参数： 
+
+* **具有可选扩展的 IDOC 类型** (`idocType`) ，这是一个可搜索的下拉菜单。
+
+    * 可选参数 **SAP release 版本** (`releaseVersion`) 在选择 IDoc 类型后填充值，并依赖于所选的 IDoc 类型。
+
+* **输入 IDOC message** (`body`) ，你可以在其中调用包含 IDOC 负载的 XML 文档或包含 IDOC XML 文档的存储 blob 的 URI。 本文档必须符合 WE60 IDoc 文档中的 SAP IDOC XML 架构或匹配的 SAP IDoc 操作 URI 生成的架构。
+
+有关如何使用 Send IDoc 操作的详细示例，请参阅将 [IDoc 消息发送到 SAP 服务器的演练](#send-idoc-messages-to-sap-server)。
+
+有关如何使用可选参数 **确认 TID** () 的详细说明 `confirmTid` ，请参阅 [显式确认事务的演练](#confirm-transaction-explicitly)。
+
 ## <a name="next-steps"></a>后续步骤
 
 * 从 Azure 逻辑应用[连接到本地系统](../logic-apps/logic-apps-gateway-connection.md)。
+
 * 了解如何使用 [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)验证、转换和使用其他消息操作。
+
 * 了解其他 [逻辑应用连接器](../connectors/apis-list.md)。

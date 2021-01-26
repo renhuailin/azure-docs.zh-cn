@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7af0a4c26a47644973e936eb37e221853d74c03
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257593"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784657"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
@@ -56,7 +56,7 @@ ms.locfileid: "86257593"
 
 ## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>将访问控制列表 (ACL) 应用到 Service Fabric 群集的证书
 
-[虚拟机规模集扩展](/cli/azure/vmss/extension?view=azure-cli-latest)发布服务器 Microsoft.Azure.ServiceFabric 用于配置节点安全性。
+[虚拟机规模集扩展](/cli/azure/vmss/extension)发布服务器 Microsoft.Azure.ServiceFabric 用于配置节点安全性。
 若要将 ACL 应用到 Service Fabric 群集过程的证书，请使用以下资源管理器模板属性：
 
 ```json

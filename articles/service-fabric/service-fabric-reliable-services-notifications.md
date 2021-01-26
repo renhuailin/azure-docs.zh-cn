@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a336daf9bd7400d049233a22a04d64d561b42c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5b48cc6cca2e143c48ed7bdfc99de936be2a227
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021946"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784573"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services 通知
 通知可让客户端跟踪对它们感兴趣的对象所进行的更改。 有两种类型的对象支持通知：可靠状态管理器  和可靠字典  。
@@ -195,9 +195,9 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 ```
 
 ## <a name="recommendations"></a>建议
-* 尽快*完成*通知事件。
-* *不要*执行任何耗费资源的操作（例如 I/O 操作）作为同步事件的一部分。
-* 处理事件之前，先*检查*操作类型。 未来可能会添加新的操作类型。
+* 尽快 *完成* 通知事件。
+* *不要* 执行任何耗费资源的操作（例如 I/O 操作）作为同步事件的一部分。
+* 处理事件之前，先 *检查* 操作类型。 未来可能会添加新的操作类型。
 
 需谨记以下几点：
 
@@ -211,4 +211,4 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
 * [Reliable Services 备份和还原（灾难恢复）](service-fabric-reliable-services-backup-restore.md)
-* [Reliable Collections 的开发人员参考](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Reliable Collections 的开发人员参考](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

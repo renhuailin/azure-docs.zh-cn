@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903671"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784471"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>返回 Azure Stack Edge Pro 设备
 
@@ -101,7 +101,7 @@ ms.locfileid: "90903671"
 若要计划分拣，请执行以下步骤。
 
 1. 关闭设备。 在本地 Web UI 中，转到“维护”>“电源设置”。
-2. 选择“关闭”。 出现确认提示时，请单击“是”以继续。 有关详细信息，请参阅[管理电源](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)。
+2. 选择“关闭”。 出现确认提示时，请单击“是”以继续。 有关详细信息，请参阅[管理电源](../databox-gateway/data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)。
 3. 拔下电源线，并拔下设备的所有网络电缆。
 4. 准备发货包装：使用自己的箱子或从 Azure 收到的空箱子。 将设备和设备附带的电源线放置在箱中。
 5. 将从 Azure 收到的发货标签贴到包装上。

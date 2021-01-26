@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: b1a732350c69d366458af6e388102e1f67395abf
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9c79a1ab46513da54d61f1da5c1ba3a6dd480a95
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120488"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785357"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库
 
-可以使用 Azure 数据库迁移服务将数据库从 SQL Server 实例迁移到 [Azure SQL 数据库](/azure/sql-database/)。 在本教程中，将通过使用 Azure 数据库迁移服务，将还原到 SQL Server 2016（或更高版本）本地实例的 [Adventureworks2016](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-ver15&tabs=ssms#download-backup-files) 数据库迁移到 Azure SQL 数据库中的单一数据库或共用数据库。
+可以使用 Azure 数据库迁移服务将数据库从 SQL Server 实例迁移到 [Azure SQL 数据库](/azure/sql-database/)。 在本教程中，将通过使用 Azure 数据库迁移服务，将还原到 SQL Server 2016（或更高版本）本地实例的 [Adventureworks2016](/sql/samples/adventureworks-install-configure?tabs=ssms&view=sql-server-ver15#download-backup-files) 数据库迁移到 Azure SQL 数据库中的单一数据库或共用数据库。
 
 将了解如何执行以下操作：
 > [!div class="checklist"]

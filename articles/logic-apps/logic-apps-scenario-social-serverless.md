@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22e0c7304f7a53a86bc5c6739a2061352d738d29
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86520743"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784806"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板
 
@@ -32,7 +32,7 @@ Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨�
 
    如果你不熟悉逻辑应用，请查看 [Azure 门户的快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md) 或 [Visual Studio 的快速入门](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
 
-2. 在逻辑应用设计器中，找到并添加可执行以下操作的 Twitter 触发器：“发布新推文时”****
+2. 在逻辑应用设计器中，找到并添加可执行以下操作的 Twitter 触发器：“发布新推文时”
 
 3. 将此触发器设置为根据关键字或井号标签侦听推文。
 
@@ -67,7 +67,7 @@ Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨�
 
 ## <a name="process-data-with-azure-functions"></a>使用 Azure Functions 处理数据
 
-在创建函数之前，请在 Azure 订阅中创建一个函数应用。 此外，要让逻辑应用直接调用某个函数，该函数必须具有 HTTP 触发器绑定，例如，使用 **HttpTrigger** 模板。 了解[如何在 Azure 门户中创建第一个函数应用和函数](../azure-functions/functions-create-first-azure-function.md)。
+在创建函数之前，请在 Azure 订阅中创建一个函数应用。 此外，要让逻辑应用直接调用某个函数，该函数必须具有 HTTP 触发器绑定，例如，使用 **HttpTrigger** 模板。 了解[如何在 Azure 门户中创建第一个函数应用和函数](../azure-functions/functions-get-started.md)。
 
 对于此场景，请使用推文文本作为 Azure 函数的请求正文。 在函数代码中，定义用于确定推文文本是否包含某个关键字或短语的逻辑。 可以根据场景的需要来决定函数的简单或复杂程度。
 在函数末尾，使用一些数据为逻辑应用返回响应，例如，该响应可以是简单的布尔值（如 `containsKeyword`）或复杂的对象。

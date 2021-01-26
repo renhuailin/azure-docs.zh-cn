@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: a193ccd060c75cf4031449ddf3318af6e4691436
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165053"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786463"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -84,7 +84,7 @@ Azure 提供了支持应用程序开发和托管需求的服务。 Azure 还提�
 
 > **何时使用**：在你具有由其他 Azure 服务、基于 Web 的事件，或按计划触发的代码的情况下，可以使用 Azure Functions。 此外，当你不需要完整托管项目的开销或者只想支付代码运行时间时，也可以使用 Functions。 有关详细信息，请参阅 [Azure Functions 概览](../../azure-functions/functions-overview.md)。
 >
-> **开始使用**：按照 Functions 快速入门教程，从门户 [创建你的第一个函数](../../azure-functions/functions-create-first-azure-function.md)。
+> **开始使用**：按照 Functions 快速入门教程，从门户 [创建你的第一个函数](../../azure-functions/functions-get-started.md)。
 >
 > **立即试用**：Azure Functions 可让你运行代码而无需注册 Azure 帐户。 立即试用并[创建你的第一个 Azure Function](https://tryappservice.azure.com/)。
 
@@ -173,7 +173,7 @@ Azure 提供了多种方式以便在应用程序中使用容器。
   >
   > **开始使用**：[在 Linux 上使用应用服务的自定义 Docker 映像](../../app-service/quickstart-custom-container.md?pivots=platform-linux%253fpivots%253dplatform-linux)。
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 重要的是：不仅要知道谁在使用你的应用程序，而且还要防止对资源的未授权访问。 Azure 提供了多种方式来对你的应用客户端进行身份验证。
 
@@ -322,7 +322,7 @@ Azure 资源浏览器是一款非常出色的工具，可用于可视化已在�
 
   > **何时使用**：当你以编程方式管理 Azure 资源或授予应用程序访问权限时。 有关详细信息，请参阅[创建 Active Directory 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
-#### <a name="tags"></a>标记
+#### <a name="tags"></a>Tags
 
 通过 Azure 资源管理器，你可以将自定义标记分配给单个资源。 标记为键值对，在出于计费或监视目的而需要组织资源时，标记可能会十分有用。 标记提供了一种跨多个资源组跟踪的资源方法。 可以通过以下方式分配标记：
 
