@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2502fdd14acae206b8440fe602639aa49be55f4e
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: eba3958ae5dd307b80b04371d3659a129d5acf89
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045914"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797866"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用身份验证代码
 
 [设置 Azure 数字孪生实例和身份验证](how-to-set-up-instance-portal.md)后，可以创建将用于与实例进行交互的客户端应用程序。 设置入门客户端项目后，需要 **在该客户端应用程序中编写代码，以** 对 Azure 数字孪生实例进行身份验证。
 
-Azure 数字孪生使用 [基于 OAUTH 2.0 Azure AD 安全令牌](../active-directory/develop/security-tokens.md#json-web-tokens-jwts-and-claims)执行身份验证。 若要对你的 SDK 进行身份验证，你将需要获取具有 Azure 数字孪生权限的持有者令牌，并将其传递给你的 API 调用。 
+Azure 数字孪生使用 [基于 OAUTH 2.0 Azure AD 安全令牌](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)执行身份验证。 若要对你的 SDK 进行身份验证，你将需要获取具有 Azure 数字孪生权限的持有者令牌，并将其传递给你的 API 调用。 
 
 本文介绍如何使用 `Azure.Identity` 客户端库获取凭据。 尽管本文介绍了 c # 中的代码示例（如你编写的 [.net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)），但你可以使用版本的，无论你使用的是 `Azure.Identity` 何种 sdk (有关可用于 Azure 数字孪生的 sdk 的详细信息，请参阅 [*如何：使用 azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)) 。
 

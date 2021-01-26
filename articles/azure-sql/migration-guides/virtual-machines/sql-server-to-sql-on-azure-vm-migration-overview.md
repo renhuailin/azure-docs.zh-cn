@@ -3,33 +3,33 @@ title: '在 Azure VM 上 SQL Server 的 SQL Server (迁移概述) '
 description: 若要将 SQL Server 迁移到 Azure Vm SQL Server，请参阅不同的迁移策略。
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: d08cb2761a8d8010c455ff959d6c247e8b64ef20
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 0eabb48aabcb50557b342385068807eb67a9b165
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746569"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797853"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>迁移概述：在 Azure Vm 上 SQL Server SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
 
 了解将 SQL Server 迁移到 Azure 虚拟机 (Vm) SQL Server 的不同迁移策略。 
 
-你可以迁移 SQL Server 本地或上运行的：
+你可以迁移在本地或以下位置运行的 SQL Server：
 
 - 虚拟机上的 SQL Server  
 - Amazon Web Services (AWS) EC2 
-- Amazon 关系数据库服务 (AWS RDS)  
-- 计算引擎 (Google Cloud Platform GCP) 
+- Amazon 关系数据库服务 (AWS RDS) 
+- 计算引擎 (Google Cloud Platform - GCP)
 
-对于其他方案，请参阅 [数据库迁移指南](https://datamigration.microsoft.com/)。 
+有关其他方案，请参阅[数据库迁移指南](https://datamigration.microsoft.com/)。 
 
 ## <a name="overview"></a>概述
 
@@ -38,7 +38,7 @@ ms.locfileid: "97746569"
 通过使用 [Azure 混合权益许可模式](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md) 提供自己的许可证，或通过获取 [免费安全更新](../../virtual-machines/windows/sql-server-2008-extend-end-of-support.md)扩展 SQL Server 2008 和 SQL Server 2008 R2 的支持，从而节省成本。 
 
 
-## <a name="choosing-appropriate-target"></a>选择适当的目标
+## <a name="choose-appropriate-target"></a>选择适当的目标
 
 Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算机大小](../../../virtual-machines/sizes.md) 和 [存储选项](../../../virtual-machines/disks-types.md)。 确定 SQL Server 工作负荷的 VM 和存储的正确大小时，请参阅 [Azure 虚拟机上 SQL Server 的性能准则](../../virtual-machines/windows/performance-guidelines-best-practices.md#vm-size-guidance)。 确定工作负荷的 VM 大小和存储要求。 建议通过 Performance-Based [Azure Migrate 评估](../../../migrate/concepts-assessment-calculation.md#types-of-assessments)调整这些大小。 如果这不是可用选项，请参阅以下文章，了解如何创建自己 [的性能基准](https://azure.microsoft.com/services/virtual-machines/sql-server/)。
 
@@ -129,12 +129,12 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
 
 ## <a name="migration-assets"></a>迁移资产 
 
-有关更多帮助，请参阅为实际迁移项目开发的以下资源。
+如需更多帮助，请参阅以下资源，这些资源是为支持实际迁移项目而开发的。
 
 |资产  |说明  |
 |---------|---------|
 |[数据工作负荷评估模型和工具](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
-|[使用 Logman 的 Perfmon 数据收集自动化](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|一种工具，用于收集执行数据以了解有助于迁移目标建议的基线性能。 此工具使用 logman.exe 创建命令，该命令将创建、启动、停止和删除在远程 SQL Server 上设置的性能计数器。|
+|[使用 Logman 自动执行 Perfmon 数据收集](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|用于收集 Perfmon 数据以了解基线性能的工具，该工具可帮助推荐迁移目标。 该工具使用 logman.exe 创建命令，该命令可创建、启动、停止和删除远程 SQL Server 上设置的性能计数器。|
 |[在 Azure 中 SQL Server 部署](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/SQL%20Server%20Deployment%20in%20Azure%20.pdf)|本指南白皮书有助于查看将 SQL Server 工作负荷迁移到 Azure 的各种选项，包括功能比较、高可用性和备份/存储注意事项。 |
 |[Azure 虚拟机的本地 SQL Server](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/OnPremise%20SQL%20Server%20to%20Azure%20VM.pdf)|本白皮书概述了使用示例脚本在 Azure 虚拟机上备份和还原数据库 SQL Server 到 SQL Server 的步骤。|
 |[多 SQL-ILB](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/ARM%20Templates/Multiple-SQL-VM-VNet-ILB)|本白皮书概述了在 SQL Server Always On 可用性组配置中设置多个 Azure 虚拟机的步骤。|
@@ -154,14 +154,14 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种 [计算�
    - [Azure 总拥有成本计算器](https://azure.microsoft.com/pricing/tco/calculator/) 
 
 
-- 若要了解有关云迁移的框架和采用周期的详细信息，请参阅
+- 有关云迁移的框架和采用周期的详细信息，请参阅
    -  [适用于 Azure 的云采用框架](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [成本调整和大小调整工作负荷迁移到 Azure 的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [为迁移到 Azure 的工作负载计算成本和调整大小的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
 - 有关许可的信息，请参阅
    - [通过 Azure 混合权益自带许可证](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md)
    - [获取 SQL Server 2008 和 SQL Server 2008 R2 的免费扩展支持](../../virtual-machines/windows/sql-server-2008-extend-end-of-support.md)
 
 
-- 若要评估应用程序访问层，请参阅 [数据访问迁移工具包 (预览) ](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
-- 有关如何执行数据访问层 A/B 测试的详细信息，请参阅 [数据库实验助手](/sql/dea/database-experimentation-assistant-overview)。
+- 若要评估应用程序访问层，请参阅 [Data Access Migration Toolkit（预览版）](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
+- 若要详细了解如何执行数据访问层 A/B 测试，请参阅[数据库实验助手](/sql/dea/database-experimentation-assistant-overview)。

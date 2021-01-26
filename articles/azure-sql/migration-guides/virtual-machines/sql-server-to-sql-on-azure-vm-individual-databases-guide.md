@@ -3,35 +3,35 @@ title: '在 Azure Vm 上 SQL Server 的 SQL Server (迁移指南) '
 description: 遵循本指南，将你的单个 SQL Server 数据库迁移到 Azure 虚拟机 (Vm) 中的 SQL Server。
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 3b0fdccd3eaf6e6bd94b595107022f738bdd8382
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: cc2a641cb017edace24db5df69bc4adf3a607524
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325905"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797878"
 ---
-# <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>迁移指南：在 Azure Vm 上 SQL Server SQL Server 
+# <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>迁移指南：SQL Server 到 Azure VM 上的 SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
 
 本迁移指南介绍了如何通过使用备份和还原和日志传送 (Vm) ，使用备份和还原和日志 [迁移助手](/sql/dma/dma-overview)传送将用户数据库从 SQL Server 中 **发现**、**评估** 和 **迁移** 到 Azure 虚拟机上 SQL Server。 
 
-你可以迁移 SQL Server 本地或上运行的：
+你可以迁移在本地或以下位置运行的 SQL Server：
 
 - 虚拟机上的 SQL Server  
 - Amazon Web Services (AWS) EC2 
-- Amazon 关系数据库服务 (AWS RDS)  
-- 计算引擎 (Google Cloud Platform GCP) 
+- Amazon 关系数据库服务 (AWS RDS) 
+- 计算引擎 (Google Cloud Platform - GCP)
 
 有关其他迁移策略的详细信息，请参阅 [SQL Server VM 迁移概述](sql-server-to-sql-on-azure-vm-migration-overview.md)。
 
-:::image type="content" source="media/sql-server-to-sql-on-azure-vm-migration-overview/migration-process-flow-small.png" alt-text="迁移过程":::
+:::image type="content" source="media/sql-server-to-sql-on-azure-vm-migration-overview/migration-process-flow-small.png" alt-text="迁移流程":::
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,7 +43,7 @@ ms.locfileid: "96325905"
 - [Azure 与本地之间的连接](/azure/architecture/reference-architectures/hybrid-networking)。
 - [选择适当的迁移策略](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate)。
 
-## <a name="pre-migration"></a>预迁移
+## <a name="pre-migration"></a>迁移前
 
 在开始迁移之前，请先了解 SQL 环境的拓扑，并评估所需迁移的可行性。 
 
@@ -74,10 +74,10 @@ Azure Migrate 评估本地计算机的迁移适用性，执行基于性能的大
 
 
 > [!IMPORTANT]
->根据评估类型，SQL Server 源上所需的权限可能有所不同。 
+>根据评估类型，源 SQL Server 上所需的权限可能有所不同。 
    > - 对于 **功能奇偶校验** 顾问，提供的用于连接到源 SQL Server 数据库的凭据必须是 *sysadmin* 服务器角色的成员。
    > - 对于兼容性问题顾问，提供的凭据必须至少具有 `CONNECT SQL` `VIEW SERVER STATE` 和 `VIEW ANY DEFINITION` 权限。
-   > - 在运行评估之前，DMA 将突出显示所选顾问所需的权限。
+   > - 在运行评估之前，DMA 会突出显示所选顾问所需的权限。
 
 
 #### <a name="assess-applications"></a>评估应用程序
@@ -217,14 +217,14 @@ Azure Migrate 评估本地计算机的迁移适用性，执行基于性能的大
    - [Azure 总拥有成本计算器](https://azure.microsoft.com/pricing/tco/calculator/) 
 
 
-- 若要了解有关云迁移的框架和采用周期的详细信息，请参阅
+- 有关云迁移的框架和采用周期的详细信息，请参阅
    -  [适用于 Azure 的云采用框架](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [成本调整和大小调整工作负荷迁移到 Azure 的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [为迁移到 Azure 的工作负载计算成本和调整大小的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
 - 有关许可的信息，请参阅
    - [通过 Azure 混合权益自带许可证](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md)
    - [获取 SQL Server 2008 和 SQL Server 2008 R2 的免费扩展支持](../../virtual-machines/windows/sql-server-2008-extend-end-of-support.md)
 
 
-- 若要评估应用程序访问层，请参阅 [数据访问迁移工具包 (预览) ](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
-- 有关如何执行数据访问层 A/B 测试的详细信息，请参阅 [数据库实验助手](/sql/dea/database-experimentation-assistant-overview)。
+- 若要评估应用程序访问层，请参阅 [Data Access Migration Toolkit（预览版）](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
+- 若要详细了解如何执行数据访问层 A/B 测试，请参阅[数据库实验助手](/sql/dea/database-experimentation-assistant-overview)。

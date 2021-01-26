@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 711963a60d5c75031ff676a9c7f1db47f20fe895
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7457e258cf8a9936e9a63ab9eec9edc0b54d3eb
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275248"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797727"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>适用于服务器的 Azure Defender 简介
 
@@ -20,14 +20,14 @@ ms.locfileid: "92275248"
 
 针对 Windows，Azure Defender 与 Azure 服务集成，可以监视和保护基于 Windows 的计算机。 安全中心以易用的格式提供来自所有这些服务的警报和修正建议。
 
-安全中心使用 **auditd** （最常见的 Linux 审核框架之一）从 Linux 计算机收集审核记录。 auditd 驻留在主线内核中。 
+安全中心使用 **auditd**（最常见的 Linux 审核框架之一）从 Linux 计算机收集审核记录。 auditd 驻留在主线内核中。 
 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-servers"></a>适用于服务器的 Azure Defender 有哪些优点？
 
 适用于服务器的 Azure Defender 提供的威胁检测和保护功能包括：
 
-- **用于终结点的 Microsoft Defender 的集成许可证（仅限 Windows）** - 适用于服务器的 Azure Defender 包括[用于终结点的 Microsoft Defender](https://www.microsoft.com/microsoft-365/security/endpoint-defender)。 两者共同提供全面的终结点检测和响应 (EDR) 功能。 [了解详细信息](security-center-wdatp.md)。
+- **用于终结点的 Microsoft Defender 的集成许可证（仅限 Windows）** - 适用于服务器的 Azure Defender 包括 [用于终结点的 Microsoft Defender](https://www.microsoft.com/microsoft-365/security/endpoint-defender)。 两者共同提供全面的终结点检测和响应 (EDR) 功能。 [了解详细信息](security-center-wdatp.md)。
 
     用于终结点的 Defender 在检测到威胁时会触发警报。 警报在安全中心显示。 在安全中心，还可以透视用于终结点的 Defender 控制台，并执行详细调查来发现攻击范围。 了解有关用于终结点的 Microsoft Defender 的详细信息。
 
@@ -97,4 +97,4 @@ ms.locfileid: "92275248"
 - 无论警报是由安全中心生成，还是由安全中心从其他安全产品接收，你都可以导出该警报。 若要将警报导出到 Azure Sentinel、任何第三方 SIEM 或任何其他外部工具，请按照[将警报导出到 SIEM](continuous-export.md) 中的说明操作。
 
 - > [!div class="nextstepaction"]
-    > [启用 Azure Defender](security-center-pricing.md)
+    > [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)
