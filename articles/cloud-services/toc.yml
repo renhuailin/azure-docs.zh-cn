@@ -1,8 +1,8 @@
-- name: 云服务文档
+- name: 云服务（经典）文档
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是云服务？
+    - name: 什么是 Azure 云服务（经典）？
       href: cloud-services-choose-me.md
     - name: 云服务配置文件和打包
       href: cloud-services-model-and-package.md

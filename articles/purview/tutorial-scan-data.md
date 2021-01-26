@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: eafa2187308c0324b85596ce25e8310fd8506a97
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559958"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249596"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>教程：使用 Azure Purview（预览版）扫描数据
 
@@ -189,6 +189,8 @@ PowerShell 安装所需的模块可能最多需要一分钟时间。
 1. 对 Azure Data Lake Storage Gen2 重复前面的步骤。
 
 ### <a name="scan-your-data-sources"></a>扫描数据源
+
+1. 在 [Azure 门户](https://portal.azure.com)中导航到 Azure Purview 资源，然后选择“打开 Purview Studio”。 你将自动转到 Purview Studio 的主页。
 
 1. 在目录的网页上选择“源”，然后选择“注册” 。 然后依次选择“Azure Blob 存储”、“继续” 。
 

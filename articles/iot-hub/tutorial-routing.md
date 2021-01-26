@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 892dad3963e9da3560acc2c782c3d14db246ea78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13130a7ea473b260ddc4f0ebca2ef5b496b34c66
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500583"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202976"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>教程：使用 Azure CLI 和 Azure 门户配置 IoT 中心消息路由
 
@@ -140,22 +140,22 @@ az servicebus queue create --name $sbQueueName \
 
 2. 在资源列表下选择“IoT 中心”。 本教程使用 ContosoTestHub  。
 
-3. 选择“消息路由”  。 在“消息路由”窗格中，选择“+添加”   。 在“添加路由”窗格中，选择“终结点”字段旁边的“+添加”以显示支持的终结点，如下图所示   ：
+3. 选择“消息路由”  。 在“消息路由”窗格中，选择“+添加”   。 在“添加路由”窗格中，选择“终结点”字段旁边的“+添加终结点”以显示支持的终结点，如下图所示 ：
 
-   ![开始添加路由的终结点](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
+   ![开始添加路由的终结点](./media/tutorial-routing/message-routing-add-a-route-with-storage-endpoint-ver2.png)
 
-4. 选择“Blob 存储”  。 此时会显示“添加存储终结点”窗格  。
+4. 选择“存储”。 此时会显示“添加存储终结点”窗格  。
 
-   ![添加终结点](./media/tutorial-routing/message-routing-add-storage-ep.png)
+   ![添加终结点](./media/tutorial-routing/message-routing-add-storage-endpoint-ver2.png)
 
 5. 为终结点输入名称。 本教程使用 **ContosoStorageEndpoint**。
 
-6. 选择“选取容器”  。 将转到存储帐户列表。 选择在准备步骤中设置的存储账户。 本教程使用 **contosostorage**。 它显示该存储帐户中的容器列表。 **选择**在准备步骤中设置的容器。 本教程使用 contosoresults  。 返回到“添加存储终结点”窗格并查看所做的选择。 
+6. 选择“选取容器”  。 将转到存储帐户列表。 选择在准备步骤中设置的存储账户。 本教程使用 **contosostorage**。 它显示该存储帐户中的容器列表。 **选择** 在准备步骤中设置的容器。 本教程使用 contosoresults  。 返回到“添加存储终结点”窗格并查看所做的选择。 
 
 7. 将编码设置为 AVRO 或 JSON。 在本教程中，其余字段使用默认值。 如果所选的区域不支持 JSON 编码，则此字段将会灰显。
 
    > [!NOTE]
-   > 可以使用 **Blob 文件名格式**设置 Blob 名称的格式。 默认为 `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`。 格式必须包含 {iothub}、{partition}、{YYYY}、{MM}、{DD}、{HH} 和 {mm}，顺序不限。
+   > 可以使用 **Blob 文件名格式** 设置 Blob 名称的格式。 默认为 `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`。 格式必须包含 {iothub}、{partition}、{YYYY}、{MM}、{DD}、{HH} 和 {mm}，顺序不限。
    >
    > 例如，使用默认 Blob 文件名格式时，如果中心名称为 ContosoTestHub，日期/时间为 2018 年 10 月 30 日上午 10:56，则 Blob 名称将类似于：`ContosoTestHub/0/2018/10/30/10/56`。
    > 

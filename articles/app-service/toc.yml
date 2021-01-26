@@ -259,6 +259,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: 获取资源事件
           href: get-resource-events.md
+        - name: 运行状况检查
+          href: monitor-instances-health-check.md
         - name: 打开到 Linux 容器的 SSH 会话
           href: configure-linux-open-ssh-session.md
     - name: 管理应用

@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: 5e3fbd1868cc1216cb7b9d02b2aa8e690af33952
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 12/31/2020
+ms.openlocfilehash: ad16b63360364acd88ab12fb4715d1fd3115c0fb
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917675"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209366"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>分析存储帐户中的数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "94917675"
 
 ### <a name="create-csv-and-parquet-files-in-your-storage-account"></a>在存储帐户中创建 CSV 和 Parquet 文件
 
-在笔记本中运行以下代码。 这会在存储帐户中创建 CSV 文件和 parquet 文件。
+在新的代码单元的笔记本中运行以下代码。 这会在存储帐户中创建 CSV 文件和 parquet 文件。
 
 ```py
 %%pyspark
@@ -48,26 +48,27 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 1. 转到“存储帐户” > “myworkspace (主 - contosolake)” 。
 1. 选择“用户(主)”。 应会看到 NYCTaxi 文件夹。 在内部应会看到名为 PassengerCountStats_csvformat 和 PassengerCountStats_parquetformat 的两个文件夹 。
 1. 打开 PassengerCountStats_parquetformat 文件夹。 在文件夹内，你将看到名称类似于 `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` 的 Parquet 文件。
-1. 右键单击“.parquet”，然后选择“新建笔记本” 。 它会创建一个包含如下所示的单元的笔记本：
+1. 右键单击“.parquet”，选择“新建笔记本”，然后选择“加载到数据帧”  。 将使用如下所示的单元创建新笔记本：
 
     ```py
     %%pyspark
-    data_path = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet', format='parquet')
-    data_path.show(100)
+    df = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet', format='parquet')
+    display(df.limit(10))
     ```
 
-1. 运行该单元。
-1. 右键单击内部的 parquet 文件，然后选择“新建 SQL 脚本” > “选择前 100 行” 。 它会创建如下所示的 SQL 脚本：
+1. 附加到名为 Spark1 的 Spark 池。 运行该单元。
+1. 单击返回到 users 文件夹。 再次右键单击 .parquet 文件，然后选择“新建 SQL 脚本” > “选择前 100 行”  。 它会创建如下所示的 SQL 脚本：
 
     ```sql
-    SELECT TOP 100 *
+    SELECT 
+        TOP 100 *
     FROM OPENROWSET(
         BULK 'https://contosolake.dfs.core.windows.net/users/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet',
         FORMAT='PARQUET'
-    ) AS [r];
+    ) AS [result]
     ```
 
-    在脚本窗口中，“连接到”字段将设置为“无服务器 SQL 池” 。
+    在脚本窗口中，请确保“连接到”字段设置为“内置”无服务器 SQL 池 。
 
 1. 运行该脚本。
 

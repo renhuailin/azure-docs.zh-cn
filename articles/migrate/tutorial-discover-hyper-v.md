@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 90532a88e145507b09de9d36f704bc5c88899e95
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: eb10001436d3184b89aa064ec82fcd1f56bea931
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861892"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98566924"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>教程：使用服务器评估发现 Hyper-V VM
 
@@ -42,16 +42,14 @@ ms.locfileid: "97861892"
 **要求** | **详细信息**
 --- | ---
 **Hyper-V 主机** | VM 所在的 Hyper-V 主机可以是独立的，也可以在群集中。<br/><br/> 主机必须运行 Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/><br/> 验证 WinRM 端口 5985 (HTTP) 上是否允许入站连接，使设备可以使用通用信息模型 (CIM) 会话连接到拉取 VM 元数据和性能数据。
-**设备部署** | Hyper-V 主机需要资源来为设备分配 VM：<br/><br/> - Windows Server 2016<br/><br/> -16 GB RAM<br/><br/> - 8 个 vCPU<br/><br/> - 约 80 GB 磁盘存储。<br/><br/> - 外部虚拟交换机。<br/><br/> - VM 直接或通过代理进行 Internet 访问。
+**设备部署** | Hyper-V 主机需要资源来为设备分配 VM：<br/><br/> - 16 GB RAM、8 个 vCPU 以及约 80 GB 的磁盘存储。<br/><br/> - 外部虚拟交换机，以及设备 VM 上的的直接或通过代理实现的 Internet 访问。
 **VM** | VM 可以运行任何 Windows 或 Linux 操作系统。 
-
-开始之前，可以[查看设备在发现期间收集的数据](migrate-appliance.md#collected-data---hyper-v)。
 
 ## <a name="prepare-an-azure-user-account"></a>准备 Azure 用户帐户
 
 若要创建 Azure Migrate 项目并注册 Azure Migrate 设备，需要一个具有以下权限的帐户：
 - Azure 订阅的参与者或所有者权限。
-- 用于注册 Azure Active Directory 应用的权限。
+- 用于注册 Azure Active Directory (AAD) 应用的权限。
 
 如果你刚刚创建了免费的 Azure 帐户，那么你就是订阅的所有者。 如果你不是订阅所有者，请让所有者分配权限，如下所示：
 
@@ -71,20 +69,51 @@ ms.locfileid: "97861892"
 
     ![打开“添加角色分配”页，将角色分配给帐户](./media/tutorial-discover-hyper-v/assign-role.png)
 
-7. 在门户中搜索用户，然后在“服务”下，选择“用户” 。
-8. 在“用户设置”中，验证 Azure AD 用户是否可以注册应用程序（默认情况下设置为“是”） 。
+1. 若要注册设备，你的 Azure 帐户需要具有注册 AAD 应用的权限。
+1. 在 Azure 门户中，导航到“Azure Active Directory” > “用户” > “用户设置”  。
+1. 在“用户设置”中，验证 Azure AD 用户是否可以注册应用程序（默认情况下设置为“是”） 。
 
     ![在用户设置中，验证用户是否可以注册 Active Directory 应用](./media/tutorial-discover-hyper-v/register-apps.png)
 
-9. 或者，租户/全局管理员可将“应用程序开发人员”角色分配给帐户，以允许注册 AAD 应用。 [了解详细信息](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
+9. 如果“应用注册”设置设置为“否”，请请求租户/全局管理员分配所需的权限。 或者，租户/全局管理员可将“应用程序开发人员”角色分配给帐户，以允许注册 AAD 应用。 [了解详细信息](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-hyper-v-hosts"></a>准备 Hyper-V 主机
 
-在 Hyper-V 主机上设置具有管理员访问权限的帐户。 设备使用此帐户进行发现。
+可以手动或使用脚本来准备 Hyper-V 主机。 准备步骤汇总在下表中。 脚本会自动进行这些准备。
 
-- 选项 1：准备一个具有对 Hyper-V 主机的管理员访问权限的帐户。
-- 选项 2：准备一个本地管理员帐户或域管理员帐户，并将该帐户添加到这些组中：远程管理用户、Hyper-V 管理员和性能监视器用户。
+**步骤** | **脚本** | **手动**
+--- | --- | ---
+验证主机要求 | 检查主机是否正在运行受支持的 Hyper-V 版本，并检查 Hyper-V 角色。<br/><br/>启用 WinRM 服务，并在主机上打开端口 5985 (HTTP) 和 5986 (HTTPS)（收集元数据时需要使用这些端口）。 | 主机必须运行 Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/><br/> 验证 WinRM 端口 5985 (HTTP) 上是否允许入站连接，使设备可以使用通用信息模型 (CIM) 会话连接到拉取 VM 元数据和性能数据。
+验证 PowerShell 版本 | 检查你是否在受支持的 PowerShell 版本中运行该脚本。 | 检查是否正在 Hyper-V 主机上运行 PowerShell 版本 4.0 或更高版本。
+创建帐户 | 验证你在 Hyper-V 主机上是否具有正确的权限。<br/><br/> 使你可以创建具有正确权限的本地用户帐户。 | 选项 1：准备一个具有对 Hyper-V 主机的管理员访问权限的帐户。<br/><br/> 选项 2：准备一个本地管理员帐户或域管理员帐户，并将该帐户添加到这些组中：远程管理用户、Hyper-V 管理员和性能监视器用户。
+启用 PowerShell 远程处理 | 在每台主机上启用 PowerShell 远程控制，使 Azure Migrate 设备能够通过 WinRM 连接在主机上运行 PowerShell 命令。 | 若要设置，请在每台主机上，以管理员身份打开 PowerShell 控制台，然后运行以下命令：``` powershell Enable-PSRemoting -force ```
+设置 Hyper-V 集成服务 | 检查主机管理的所有 VM 上是否已启用 Hyper-V Integration Services。 | 在每个 VM 上[启用 Hyper-V 集成服务](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md)。<br/><br/> 如果运行的是 Windows Server 2003，请[遵循这些说明](prepare-windows-server-2003-migration.md)。
+如果 VM 磁盘位于远程 SMB 共享上，则委派凭据 | 委托凭据 | 运行以下命令，以使 CredSSP 可以在运行 Hyper-V VM 且具有 SMB 共享上的磁盘的主机上委派凭据：```powershell Enable-WSManCredSSP -Role Server -Force ```<br/><br/> 可在所有 Hyper-v 主机上远程运行此命令。<br/><br/> 如果在群集中添加了新的主机节点，则会自动添加这些节点以供发现，但需要手动启用 CredSSP。<br/><br/> 设置设备时，[在设备上启用 CredSSP](#delegate-credentials-for-smb-vhds) 即可完成 CredSSP 的设置。 
 
+### <a name="run-the-script"></a>运行脚本
+
+1. 从 [Microsoft 下载中心](https://aka.ms/migrate/script/hyperv)下载脚本。 该脚本已由 Microsoft 加密签名。
+2. 使用 MD5 或 SHA256 哈希文件验证脚本完整性。 井号标签值如下。 运行以下命令生成脚本的哈希：
+
+    ```powershell
+    C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
+    ```
+    用法示例：
+
+    ```powershell
+    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
+    ```
+3. 验证脚本完整性后，在每台 Hyper-V 主机上结合以下 PowerShell 命令运行该脚本：
+
+    ```powershell
+    PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
+    ```
+哈希值为:
+
+**哈希** |  **值**
+--- | ---
+MD5 | 0ef418f31915d01f896ac42a80dc414e
+SHA256 | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
 
 ## <a name="set-up-a-project"></a>设置项目
 
@@ -99,26 +128,28 @@ ms.locfileid: "97861892"
    ![用于项目名称和区域的框](./media/tutorial-discover-hyper-v/new-project.png)
 
 7. 选择“创建”。
-8. 等待几分钟，让 Azure Migrate 项目部署完成。
-
-默认会将“Azure Migrate:服务器评估”工具添加到新项目。
+8. 等待几分钟，让 Azure Migrate 项目部署完成。“Azure Migrate:服务器评估”工具添加到新项目。
 
 ![显示默认情况下已添加的服务器评估工具的页面](./media/tutorial-discover-hyper-v/added-tool.png)
 
+> [!NOTE]
+> 如果你已经创建了一个项目，则可以使用同一个项目注册其他设备，以发现和评估更多 VM。[了解更多](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>设置设备
 
+“Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执行 VM 发现并将 VM 配置和性能元数据发送到 Azure Migrate。 可以通过部署 VHD 文件来设置设备，该文件可从 Azure Migrate 项目下载。
+
+> [!NOTE]
+> 如果由于某种原因而无法使用模板设置设备，则可以在现有的 Windows Server 2016 服务器上使用 PowerShell 脚本进行设置。 [了解详细信息](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。
+
 本教程在 Hyper-V VM 上设置设备，如下所示：
 
-- 提供设备名称，并在门户中生成 Azure Migrate 项目密钥。
-- 从 Azure 门户下载压缩的 Hyper-V VHD。
-- 创建设备，并检查它是否可以连接到 Azure Migrate 服务器评估。
-- 完成设备的首次配置，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
-> [!NOTE]
-> 如果由于某种原因而无法使用模板设置设备，则可以使用 PowerShell 脚本进行设置。 [了解详细信息](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。
+1. 提供设备名称，并在门户中生成 Azure Migrate 项目密钥。
+1. 从 Azure 门户下载压缩的 Hyper-V VHD。
+1. 创建设备，并检查它是否可以连接到 Azure Migrate 服务器评估。
+1. 完成设备的首次配置，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
 
-
-### <a name="generate-the-azure-migrate-project-key"></a>生成 Azure Migrate 项目密钥
+### <a name="1-generate-the-azure-migrate-project-key"></a>1.生成 Azure Migrate 项目密钥
 
 1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，选择“发现”。
 2. 在“发现计算机” > “计算机是否已虚拟化?”中，选择“是，使用 Hyper-V”。  
@@ -127,10 +158,9 @@ ms.locfileid: "97861892"
 1. 成功创建 Azure 资源后，会生成一个 Azure Migrate 项目密钥。
 1. 复制密钥，因为配置设备时需要输入该密钥才能完成设备注册。
 
-### <a name="download-the-vhd"></a>下载 VHD
+### <a name="2-download-the-vhd"></a>2.下载 VHD
 
-在“2: 下载 Azure Migrate 设备”中，选择 .VHD 文件，然后单击“下载”。 
-
+在“2: 下载 Azure Migrate 设备”中，选择 .VHD 文件，然后单击“下载”。
 
 ### <a name="verify-security"></a>验证安全性
 
@@ -156,7 +186,7 @@ ms.locfileid: "97861892"
         --- | --- | ---
         Hyper-V (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
 
-### <a name="create-the-appliance-vm"></a>创建设备 VM
+### <a name="3-create-the-appliance-vm"></a>3.创建设备 VM
 
 导入下载的文件，然后创建 VM。
 
@@ -177,7 +207,7 @@ ms.locfileid: "97861892"
 
 确保设备 VM 可以连接到[公有云](migrate-appliance.md#public-cloud-urls)和[政府云](migrate-appliance.md#government-cloud-urls)的 Azure URL。
 
-### <a name="configure-the-appliance"></a>配置设备
+### <a name="4-configure-the-appliance"></a>4.配置设备
 
 首次设置设备。
 
@@ -214,8 +244,6 @@ ms.locfileid: "97861892"
 1. 成功登录后，使用设备配置管理器返回到上一个选项卡。
 4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的权限，会启动设备注册。
 1. 成功注册设备后，可以通过单击“查看详细信息”来查看注册详细信息。
-
-
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>为 SMB VHD 委托凭据
 

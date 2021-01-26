@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: f0699ed065da4c63bc88945d75a866abcfbb9053
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f4981036ca92f6efe2d3e23ea1f507a3a1f3c70a
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121356"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234250"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教程：为 Kubernetes 上的机密存储 CSI 驱动程序配置并运行 Azure Key Vault 提供程序
 
@@ -37,6 +37,8 @@ ms.locfileid: "98121356"
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 * 在开始学习本教程之前，请安装 [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)。
+
+本教程假定你在 Linux 节点上运行 Azure Kubernetes 服务。
 
 ## <a name="use-managed-identities"></a>使用托管标识
 
@@ -77,6 +79,8 @@ ms.locfileid: "98121356"
     ![突出显示 principalId 和 clientId 值的 Azure CLI 屏幕截图](../media/kubernetes-key-vault-2.png)![突出显示 subscriptionId 和 nodeResourceGroup 值的 Azure CLI 屏幕截图](../media/kubernetes-key-vault-3.png)
     
 ## <a name="install-helm-and-the-secrets-store-csi-driver"></a>安装 Helm 和机密存储 CSI 驱动程序
+> [!NOTE]
+> 以下安装仅适用于 Linux 上的 AKS。 有关机密存储 CSI 驱动程序安装的详细信息，请参阅[适用于机密存储 CSI 驱动程序的 Azure Key Vault 提供程序](https://github.com/Azure/secrets-store-csi-driver-provider-azure) 
 
 若要安装机密存储 CSI 驱动程序，首先需要安装 [Helm](https://helm.sh/docs/intro/install/)。
 

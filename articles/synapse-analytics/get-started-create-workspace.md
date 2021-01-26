@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 11/21/2020
-ms.openlocfilehash: c9b7d796612981f0e8194be84b0ed141721f644d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.date: 12/31/2020
+ms.openlocfilehash: 3a2636ec73d20f3011d8413c794e68ef41b1829c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862371"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209179"
 ---
 # <a name="creating-a-synapse-workspace"></a>创建 Synapse 工作区
 
@@ -30,11 +30,12 @@ ms.locfileid: "96862371"
 1. 打开 [Azure 门户](https://portal.azure.com)，然后在顶部搜索“Synapse”。
 1. 在“服务”下的搜索结果中，选择“Azure Synapse Analytics” 。
 1. 选择“添加”以创建工作区。
-1. 在“基本信息”中，输入首选的“订阅”、“资源组”和“区域”，然后选择工作区名称   。 在本教程中，我们将使用 myworkspace。
-1. 导航到“选择 Data Lake Storage Gen 2”。 
-1. 单击“新建”进行创建，并将其命名为 contosolake 。
-1. 单击“文件系统”并将其命名为 users 。 这将创建一个名为 users 的容器
+1. 在“项目详细信息”下的“基本信息”选项卡中，输入首选的“订阅”、“资源组”和“区域”，然后选择工作区名称   。 在本教程中，我们将使用 myworkspace。
+1. 对于“选择 Data Lake Storage Gen 2”，单击“从订阅”按钮 。
+1. 对于“帐户名称”，单击“新建”，然后将新存储帐户命名为 contosolake 或类似名称，因为此名称必须是唯一的  。
+1. 对于“文件系统名称”，单击“新建”，然后将其命名为 users  。 这将创建一个名为 users 的存储容器
 1. 工作区将使用此存储帐户作为 Spark 表和 Spark 应用程序日志的“主要”存储帐户。
+1. 选中“在 Data Lake Storage Gen2 帐户上自行分配存储 Blob 数据参与者角色”框。 
 1. 选择“查看 + 创建” > “创建”。 你的工作区将在几分钟内准备就绪。
 
 > [!NOTE]
@@ -45,8 +46,14 @@ ms.locfileid: "96862371"
 
 创建 Azure Synapse 工作区后，可以通过两种方式打开 Synapse Studio：
 
-* 在 [Azure 门户](https://portal.azure.com)中打开 Synapse 工作区。 在“概述”部分的顶部，选择“打开 Synapse Studio” 。
+* 在 [Azure 门户](https://portal.azure.com)中打开 Synapse 工作区，在 Synapse 工作区的“概述”部分中，在“打开 Synapse Studio”框中选择“打开” 。
 * 转到 `https://web.azuresynapse.net`，然后登录到工作区。
+
+
+## <a name="the-built-in-serverless-sql-pool"></a>内置无服务器 SQL 池
+
+每个工作区都具有名为“内置”的预构建无服务器 SQL 池。 无法删除该池。 通过无服务器 SQL 池，你可以使用 SQL，而无需预留专用 SQL 池的容量。 与专用 SQL 池不同，无服务器 SQL 池的计费基于运行查询所扫描的数据量，而不是分配到池的容量。
+
 
 ## <a name="create-a-dedicated-sql-pool"></a>创建专用 SQL 池
 
@@ -61,6 +68,7 @@ ms.locfileid: "96862371"
 > [!NOTE] 
 > 在工作区中新建专用 SQL 池（之前称为 SQL DW）时，将打开专用 SQL 池预配页面。 预配将在逻辑 SQL 服务器上进行。
 
+
 ## <a name="create-a-serverless-apache-spark-pool"></a>创建无服务器 Apache Spark 池
 
 1. 在 Synapse Studio 的左侧窗格中，选择“管理” > “Apache Spark 池” 。
@@ -72,9 +80,6 @@ ms.locfileid: "96862371"
 
 Spark 池告知 Azure Synapse 要使用的 Spark 资源数量。 只需支付所用资源的费用。 主动停止使用该池时，资源将自动超时并进行回收。
 
-## <a name="the-built-in-serverless-sql-pool"></a>内置无服务器 SQL 池
-
-每个工作区都具有名为“内置”的预构建无服务器 SQL 池。 无法删除该池。 通过无服务器 SQL 池，你可以使用 SQL，而无需预留专用 SQL 池的容量。 与专用 SQL 池不同，无服务器 SQL 池的计费基于运行查询所扫描的数据量，而不是分配到池的容量。
 
 ## <a name="next-steps"></a>后续步骤
 

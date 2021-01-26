@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: a27e18d9b6f6307f1cc8ed48ca897dd4d1f0f1f3
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4d594115139321c8a4ad2b3aa6b065474bd426fa
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555492"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556165"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>用于 Azure 机器学习设计器的管道和数据集示例
 
@@ -72,7 +72,7 @@ ms.locfileid: "94555492"
 
 ## <a name="classification"></a>分类
 
-探索这些内置的分类示例。 对于未提供文档链接的示例，可将其打开并查看模块注释来详细了解这些示例。
+探索这些内置的分类示例。 可以通过打开示例并在设计器中查看模块注释来了解有关这些示例的详细信息。
 
 | 标题示例 | 说明 | 
 | --- | --- |
@@ -84,13 +84,15 @@ ms.locfileid: "94555492"
 
 ## <a name="computer-vision"></a>计算机视觉
 
-探索这些内置的计算机视觉示例。 对于未提供文档链接的示例，可将其打开并查看模块注释来详细了解这些示例。
+探索这些内置的计算机视觉示例。 可以通过打开示例并在设计器中查看模块注释来了解有关这些示例的详细信息。
 
-| 使用 DenseNet 的印象分类 | 使用计算机视觉模块基于 PyTorch DenseNet 构建图像分类模型。| 
+| 标题示例 | 说明 | 
+| --- | --- |
+| 使用 DenseNet 进行的图像分类 | 使用计算机视觉模块基于 PyTorch DenseNet 构建图像分类模型。| 
 
 ## <a name="recommender"></a>推荐器
 
-探索这些内置的推荐器示例。 对于未提供文档链接的示例，可将其打开并查看模块注释来详细了解这些示例。
+探索这些内置的推荐器示例。 可以通过打开示例并在设计器中查看模块注释来了解有关这些示例的详细信息。
 
 | 标题示例 | 说明 | 
 | --- | --- |
@@ -99,7 +101,7 @@ ms.locfileid: "94555492"
 
 ## <a name="utility"></a>实用工具
 
-详细了解用于演示机器学习实用工具和功能的示例。 对于未提供文档链接的示例，可将其打开并查看模块注释来详细了解这些示例。
+详细了解用于演示机器学习实用工具和功能的示例。 可以通过打开示例并在设计器中查看模块注释来了解有关这些示例的详细信息。
 
 | 标题示例 | 说明 | 
 | --- | --- |

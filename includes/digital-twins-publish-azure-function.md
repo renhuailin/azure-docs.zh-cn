@@ -5,31 +5,31 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/21/2021
 ms.author: baanders
-ms.openlocfilehash: 069a29f49172cf3bad6b7f7b6aca28f32f5d63b3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: 63b393f519ad29baa05fef046ee1e8ba9e5330d8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683829"
+ms.locfileid: "98701147"
 ---
 若要在 Azure 中将项目发布到函数应用，请在解决方案资源管理器中右键选择该项目，然后选择“发布”。
 
 > [!IMPORTANT] 
 > 在 Azure 中发布到函数应用将对订阅产生额外的费用，这与 Azure 数字孪生无关。
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Visual Studio：发布项目":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="显示右键选择解决方案菜单的 Visual Studio 屏幕截图。菜单中突出显示了“发布”。":::
 
 在接下来的“发布”页中，保留选择的默认 Azure 目标，然后点击“下一步”。 
 
 对于特定目标，请选择“Azure 函数应用(Windows)”，然后点击“下一步”。
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="在 Visual Studio 中发布 Azure 函数：特定目标":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="“发布 Azure 函数”对话中的 Visual Studio 屏幕截图。“特定目标”页面上选中了“Azure 函数应用(Windows)”。":::
 
 在“Functions 实例”页上，选择你的订阅。 这应该会使订阅中资源组填入方框。
 
 选择实例的资源组，然后点击 + 来创建新的 Azure 函数。
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="在 Visual Studio 中发布 Azure 函数：Functions 实例（在函数应用之前）":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="“发布 Azure 函数”对话中的 Visual Studio 屏幕截图。“函数实例”页上突出显示了用于创建新函数的“+”按钮。":::
 
 在“函数应用(Windows) - 新建”窗口中，按如下所示填写字段：
 * “名称”是 Azure 将用于托管 Azure Functions 应用的消耗计划的名称。 这也将成为保存实际函数的函数应用的名称。 你可以选择自己的唯一值，也可以保留默认建议。
@@ -39,7 +39,7 @@ ms.locfileid: "98683829"
 * 在“位置”中，选择符合资源组位置的位置
 * 使用“新建…”链接创建新的 Azure 存储资源。 设置与资源组相匹配的位置，使用其他默认值，然后点击“确定”。
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="在 Visual Studio 中发布 Azure 函数：函数应用(Windows) - 新建":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="“发布 Azure 函数”对话中的 Visual Studio 屏幕截图。正在填写新函数应用的详细信息，包括名称、订阅、资源组、计划类型、位置和 Azure 存储。":::
 
 然后选择“创建”。
 
@@ -49,10 +49,10 @@ ms.locfileid: "98683829"
 
 在 Visual Studio 主窗口重新打开的“发布”窗格中，检查所有信息是否都正确无误，然后选择“发布”。
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="在 Visual Studio 中发布 Azure 函数：发布":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="“发布 Azure 函数”对话中的 Visual Studio 屏幕截图。新函数应用显示在函数应用列表中，有一个“完成”按钮。":::
 
 > [!NOTE]
-> 如果看到如下所示的弹出窗口：:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="在 Visual Studio 中发布 Azure 函数：发布凭据" border="false":::
+> 如果看到如下所示的弹出窗口：:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="名为“发布凭据”的 Visual Studio 弹出窗口的屏幕截图。它包含用户名和密码的字段，以及用于尝试从 Azure 检索凭据的按钮。" border="false":::
 > 依次选择“尝试从 Azure 检索凭据”和“保存” 。
 >
 > 若看到“升级 Azure 上的 Functions 版本”或“你的 Functions 运行时版本与在 Azure 中运行的版本不匹配”警告 ：

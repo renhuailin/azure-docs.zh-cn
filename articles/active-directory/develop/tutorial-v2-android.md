@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1282c27378e6a088a600a3ab3105f3f548984d03
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 7bdb36566d7c501dc5ca5604f8c6963258aa951c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063138"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208533"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>教程：从 Android 应用程序登录用户并调用 Microsoft Graph API
 
@@ -57,8 +57,7 @@ ms.locfileid: "98063138"
 
 MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录 (SSO)，并管理帐户。
 
-> [!NOTE]
-> 本教程演示简化的示例，介绍如何使用适用于 Android 的 MSAL。 为简单起见，本教程仅使用“单帐户模式”。 若要探索更复杂的场景，请参阅 GitHub 上已完成的[工作代码示例](https://github.com/Azure-Samples/ms-identity-android-java/)。
+本教程演示简化的示例，介绍如何使用适用于 Android 的 MSAL。 为简单起见，本教程仅使用“单帐户模式”。 若要探索更复杂的场景，请参阅 GitHub 上已完成的[工作代码示例](https://github.com/Azure-Samples/ms-identity-android-java/)。
 
 ## <a name="create-a-project"></a>创建一个项目
 如果你还没有 Android 应用程序，请按照以下步骤设置新项目。
@@ -85,8 +84,8 @@ MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录
 1. 输入项目的包名称。 如果下载了代码，则该值为 `com.azuresamples.msalandroidapp`。
 1. 在“配置 Android 应用”页的“签名哈希”部分，选择“生成开发签名哈希”。   然后复制用于平台的 KeyTool 命令。
 
-   > [!Note]
-   > 安装 KeyTool.exe，使其作为 Java 开发工具包 (JDK) 的一部分。 还必须安装 OpenSSL 工具才能执行 KeyTool 命令。 有关详细信息，请参阅[有关如何生成密钥的 Android 文档](https://developer.android.com/studio/publish/app-signing#generate-key)。
+
+     安装 KeyTool.exe，使其作为 Java 开发工具包 (JDK) 的一部分。 还必须安装 OpenSSL 工具才能执行 KeyTool 命令。 有关详细信息，请参阅[有关如何生成密钥的 Android 文档](https://developer.android.com/studio/publish/app-signing#generate-key)。
 
 1. 生成由 KeyTool 生成的 **签名哈希**。
 1. 选择“配置”并保存出现在“Android 配置”页中的“MSAL 配置”，以便在稍后配置应用时输入它  。  
@@ -122,8 +121,7 @@ MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录
     }
    ```
 
-   >[!NOTE]
-   >本教程仅演示如何在单帐户模式下配置应用。 查看文档，详细了解[单帐户模式与多帐户模式](./single-multi-account.md)以及[配置应用](./msal-configuration.md)
+     本教程仅演示如何在单帐户模式下配置应用。 查看文档，详细了解[单帐户模式与多帐户模式](./single-multi-account.md)以及[配置应用](./msal-configuration.md)
 
 4. 在 **app** > **src** > **main** > **AndroidManifest.xml** 中，将以下 `BrowserTabActivity` 活动添加到应用程序主体。 该条目允许 Microsoft 在完成身份验证后回调应用程序：
 
@@ -144,8 +142,11 @@ MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录
 
     将 `android:host=` 值替换为在 Azure 门户中注册的包名称。
     将 `android:path=` 值替换为在 Azure 门户中注册的密钥哈希。 签名哈希不应进行 URL 编码  。 确保签名哈希的开头有前导 `/`。
-    >[!NOTE]
-    >将替换 `android:host` 值的“包名称”应如下所示：“com.azuresamples.msalandroidapp”将替换 `android:path` 值的“签名哈希”应如下所示：“/1wIqXSqBj7w+h11ZifsnqwgyKrY=”还可以在应用注册的“身份验证”边栏选项卡中找到这些值。 请注意，重定向 URI 将如下所示：“msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D”。 尽管签名哈希会在此值末尾进行 URL 编码，但签名哈希不应在 `android:path` 值中进行 URL 编码  。
+    
+    将用来替换 `android:host` 值的“包名称”应类似于：“com.azuresamples.msalandroidapp”。
+    将用来替换 `android:path` 值的“签名哈希”应类似于：“/1wIqXSqBj7w+h11ZifsnqwgyKrY=”。
+    
+    还可以在应用注册的“身份验证”边栏选项卡中找到这些值。 请注意，重定向 URI 将如下所示：“msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D”。 尽管签名哈希会在此值末尾进行 URL 编码，但签名哈希不应在 `android:path` 值中进行 URL 编码  。
 
 ## <a name="use-msal"></a>使用 MSAL
 

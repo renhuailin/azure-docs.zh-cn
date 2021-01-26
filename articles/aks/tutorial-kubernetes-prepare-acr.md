@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教程 - 创建容器注册表
 description: 在本 Azure Kubernetes 服务 (AKS) 教程中，请创建 Azure 容器注册表实例并上传示例应用程序容器映像。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b0f78c3969f3d02c19824fdb6d1e3b786dceb43c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d1dce1c59c4bf40eaead89e4a8a088e9a8ea4f76
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747066"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250615"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>教程：部署并使用 Azure 容器注册表
 
@@ -22,7 +22,7 @@ Azure 容器注册表 (ACR) 是容器映像的专用注册表。 可以通过专
 > * 向 ACR 上传映像
 > * 查看注册表中的映像
 
-在其他教程中，此 ACR 实例将与 AKS 中的 Kubernetes 群集集成，而应用程序则通过映像进行部署。
+在后面的教程中，此 ACR 实例将与 AKS 中的 Kubernetes 群集集成，而应用程序则通过映像进行部署。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -60,12 +60,12 @@ az acr login --name <acrName>
 
 若要查看当前的本地映像的列表，请使用 [docker images][docker-images] 命令：
 
-```azurecli
+```console
 $ docker images
 ```
 上述命令输出显示当前本地图像的列表：
 
-```
+```output
 REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
 mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        7 minutes ago       944MB
 mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
@@ -74,7 +74,7 @@ tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863 
 
 若要将 *azure-vote-front* 容器映像与 ACR 配合使用，需使用注册表的登录服务器地址对映像进行标记。 在将容器映像推送到映像注册表时，使用此标记进行路由。
 
-若要获取登录服务器地址，请使用 [az acr list][az-acr-list] 命令并查询是否存在 *loginServer* ，如下所示：
+若要获取登录服务器地址，请使用 [az acr list][az-acr-list] 命令并查询是否存在 *loginServer*，如下所示：
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -122,7 +122,7 @@ az acr repository list --name <acrName> --output table
 
 以下示例输出将 *azure-vote-front* 映像列为在注册表中可用：
 
-```
+```output
 Result
 ----------------
 azure-vote-front
@@ -136,7 +136,7 @@ az acr repository show-tags --name <acrName> --repository azure-vote-front --out
 
 以下示例输出显示在上一步标记的 *v1* 映像：
 
-```
+```output
 Result
 --------
 v1

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: dcb8675350442274418920bb9439b65643f1b046
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8b12df62a7080e57e47b52cb79ed8a67e12bd526
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178239"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753093"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>教程：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -119,7 +119,7 @@ ms.locfileid: "98178239"
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed of the Microsoft identity platform and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -406,14 +406,13 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 <br/><br/>
 ![登录 Microsoft 帐户](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
-
-与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 在用户向 Microsoft 标识平台进行身份验证以访问此应用程序后，系统会提示他们许可应用程序请求的权限（“查看你的基本个人资料”和“保留你已授权访问的数据的访问权限”）。 接受这些权限后，用户将转到应用程序结果。 但是，如果出现以下情况之一，则系统可能会向用户提示“需要管理员许可”页：
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft 标识平台中的权限和许可
+与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 在用户对 Microsoft 标识平台进行身份验证以访问此应用程序后，系统会提示他们许可应用程序请求的权限（“查看你的基本个人资料”和“保留你已授权访问的数据的访问权限”）。 接受这些权限后，用户将转到应用程序结果。 但是，如果出现以下情况之一，则系统可能会向用户提示“需要管理员许可”页：
 
 - 应用程序开发人员添加了任何需要“管理员许可”的附加权限。
 - 或者，在配置的租户（“企业应用程序”->“用户设置”）中，用户无法许可代表他们访问公司数据的应用。
 
-有关详细信息，请参阅 [Microsoft 标识平台终结点中的权限和许可](./v2-permissions-and-consent.md)。
+有关详细信息，请参阅 [Microsoft 标识平台中的权限和许可](./v2-permissions-and-consent.md)。
 
 ### <a name="view-application-results"></a>查看应用程序结果
 

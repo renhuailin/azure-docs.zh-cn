@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 935aa8297e8b244bfd05483f07aad3eadb485f1b
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 8fb17dc880b74da3ca4e96df10946878fde31909
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797071"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541404"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>教程：使用服务器评估发现 AWS 实例
 
@@ -40,7 +40,7 @@ ms.locfileid: "97797071"
 
 **要求** | **详细信息**
 --- | ---
-**设备** | 需要一台运行 Azure Migrate 设备的 EC2 VM。 计算机应：<br/><br/> - 已安装 Windows Server 2016。 不支持在具有 Windows Server 2019 的计算机上运行设备。<br/><br/> - 具有 16-GB RAM、8 个 vCPU、约 80 GB 的磁盘存储和外部虚拟交换机。<br/><br/> - 静态或动态 IP 地址，可直接访问或通过代理访问 Internet。
+**设备** | 需要一台运行 Azure Migrate 设备的 EC2 VM。 计算机应：<br/><br/> - 已安装 Windows Server 2016。<br/> 不支持在具有 Windows Server 2019 的计算机上运行设备。<br/><br/> - 16 GB RAM、8 个 vCPU、约 80 GB 的磁盘存储和外部虚拟交换机。<br/><br/> - 静态或动态 IP 地址，可直接访问或通过代理访问 Internet。
 **Windows 实例** | 允许 WinRM 端口 5985 (HTTP) 上的入站连接，使设备可以拉取配置和性能元数据。
 **Linux 实例** | 允许端口 22 (TCP) 上的入站连接。<br/><br/> 实例应使用 `bash` 作为默认 shell，否则发现将失败。
 
@@ -48,7 +48,7 @@ ms.locfileid: "97797071"
 
 若要创建 Azure Migrate 项目并注册 Azure Migrate 设备，需要一个具有以下权限的帐户：
 - Azure 订阅的参与者或所有者权限。
-- 用于注册 Azure Active Directory 应用的权限。
+- 用于注册 Azure Active Directory (AAD) 应用的权限。
 
 如果你刚刚创建了免费的 Azure 帐户，那么你就是订阅的所有者。 如果你不是订阅所有者，请让所有者分配权限，如下所示：
 
@@ -67,18 +67,20 @@ ms.locfileid: "97797071"
 
     ![打开“添加角色分配”页，将角色分配给帐户](./media/tutorial-discover-aws/assign-role.png)
 
-7. 在门户中搜索用户，然后在“服务”下，选择“用户” 。
-8. 在“用户设置”中，验证 Azure AD 用户是否可以注册应用程序（默认情况下设置为“是”） 。
+1. 若要注册设备，你的 Azure 帐户需要具有注册 AAD 应用的权限。
+1. 在 Azure 门户中，导航到“Azure Active Directory” > “用户” > “用户设置”  。
+1. 在“用户设置”中，验证 Azure AD 用户是否可以注册应用程序（默认情况下设置为“是”） 。
 
     ![在用户设置中，验证用户是否可以注册 Active Directory 应用](./media/tutorial-discover-aws/register-apps.png)
 
+1. 如果“应用注册”设置设置为“否”，请请求租户/全局管理员分配所需的权限。 或者，租户/全局管理员可将“应用程序开发人员”角色分配给帐户，以允许注册 AAD 应用。 [了解详细信息](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-aws-instances"></a>准备 AWS 实例
 
 设置设备可用于访问 AWS 实例的帐户。
 
 - 对于 Windows 服务器，在要包括在发现中的所有 Windows 服务器上设置一个本地用户帐户。 将该用户帐户添加到以下组：- 远程管理用户 - 性能监视器用户 - 性能日志用户。
- - 对于 Linux 服务器，需要在要发现的 Linux 服务器上拥有根帐户。
+ - 对于 Linux 服务器，需要在要发现的 Linux 服务器上拥有根帐户。 有关替代方法，请参阅[支持矩阵](migrate-support-matrix-physical.md#physical-server-requirements)中的说明。
 - Azure Migrate 在发现 AWS 实例时使用密码验证。 AWS 实例默认不支持密码验证。 需要先启用密码验证，才能发现实例。
     - 对于 Windows 计算机，请允许 WinRM 端口 5985 (HTTP)。 这将允许 WMI 调用。
     - 对于 Linux 计算机：
@@ -105,11 +107,12 @@ ms.locfileid: "97797071"
    ![用于项目名称和区域的框](./media/tutorial-discover-aws/new-project.png)
 
 7. 选择“创建”。
-8. 等待几分钟，让 Azure Migrate 项目部署完成。
-
-默认会将“Azure Migrate:服务器评估”工具添加到新项目。
+8. 等待几分钟，让 Azure Migrate 项目部署完成。 默认会将“Azure Migrate:服务器评估”工具添加到新项目。
 
 ![显示默认情况下已添加的服务器评估工具的页面](./media/tutorial-discover-aws/added-tool.png)
+
+> [!NOTE]
+> 如果你已经创建了一个项目，则可以使用同一个项目注册其他设备，以发现和评估更多服务器。[了解更多](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>设置设备
 
@@ -120,17 +123,14 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 
 [详细了解](migrate-appliance.md) Azure Migrate 设备。
 
-
-## <a name="appliance-deployment-steps"></a>设备部署步骤
-
 若要设置该设备，请执行以下操作：
-- 提供设备名称，并在门户中生成 Azure Migrate 项目密钥。
-- 从 Azure 门户下载带有 Azure Migrate 安装程序脚本的压缩文件。
-- 从压缩文件中提取内容。 使用管理权限启动 PowerShell 控制台。
-- 执行 PowerShell 脚本以启动设备 Web 应用程序。
-- 完成设备的首次配置，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
+1. 提供设备名称，并在门户中生成 Azure Migrate 项目密钥。
+1. 从 Azure 门户下载带有 Azure Migrate 安装程序脚本的压缩文件。
+1. 从压缩文件中提取内容。 使用管理权限启动 PowerShell 控制台。
+1. 执行 PowerShell 脚本以启动设备 Web 应用程序。
+1. 完成设备的首次配置，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
 
-### <a name="generate-the-azure-migrate-project-key"></a>生成 Azure Migrate 项目密钥
+### <a name="1-generate-the-azure-migrate-project-key"></a>1.生成 Azure Migrate 项目密钥
 
 1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，选择“发现”。
 2. 在“发现计算机” > “计算机是否已虚拟化?”中，选择“物理或其他(AWS、GCP 和 Xen 等)”  。
@@ -139,10 +139,9 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 1. 成功创建 Azure 资源后，会生成一个 Azure Migrate 项目密钥。
 1. 复制密钥，因为配置设备时需要输入该密钥才能完成设备注册。
 
-### <a name="download-the-installer-script"></a>下载安装程序脚本
+### <a name="2-download-the-installer-script"></a>2.下载安装程序脚本
 
 在“2:下载 Azure Migrate 设备”中，单击“下载”。
-
 
 ### <a name="verify-security"></a>验证安全性
 
@@ -167,7 +166,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
         物理 (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>运行 Azure Migrate 安装程序脚本
+### <a name="3-run-the-azure-migrate-installer-script"></a>3.运行 Azure Migrate 安装程序脚本
 此安装程序脚本执行以下操作：
 
 - 安装用于物理服务器发现和评估的代理和 Web 应用程序。
@@ -196,13 +195,11 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 
 如果遇到任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志来进行故障排除。
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 
 确保设备 VM 可以连接到[公有云](migrate-appliance.md#public-cloud-urls)和[政府云](migrate-appliance.md#government-cloud-urls)的 Azure URL。
 
-### <a name="configure-the-appliance"></a>配置设备
+### <a name="4-configure-the-appliance"></a>4.配置设备
 
 首次设置设备。
 

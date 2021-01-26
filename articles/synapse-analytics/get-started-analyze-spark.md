@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: 3b5f5d64498922e9fc35942ff4570d801aa6c516
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 12/31/2020
+ms.openlocfilehash: 2feabda5ea3f0c0748b92de9fcb7ef05abbdcf4c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118874"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209434"
 ---
 # <a name="analyze-with-apache-spark"></a>使用 Apache Spark 进行分析
 
@@ -23,25 +23,25 @@ ms.locfileid: "98118874"
 
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>使用 Spark 分析 Blob 存储中的纽约市出租车数据
 
-1. 在“数据”中心，选择“添加新资源”（“已链接”的上方的加号按钮）>“浏览库”   。
-1. 选择“纽约市出租车和豪华轿车委员会 - 黄色出租车行程记录”。
-1. 在页面底部，选择“继续” > “添加数据集” 。
-1. 在“链接”下的“数据”中心中，右键单击“Azure Blob 存储”，然后选择“示例数据集” > “nyc_tlc_yellow”    。
-1. 选择“新建笔记本”以使用以下代码创建新笔记本：
+1. 在“数据”中心中，单击“+”按钮以添加新资源，然后单击 >>“浏览库”   。 
+1. 找到“纽约市出租车和豪华轿车委员会 - 黄色出租车行程记录”，然后单击它。 
+1. 在页面底部按“继续”，然后按“添加数据集” 。 
+1. 片刻之后，在“链接”下的“数据”中心中，右键单击“Azure Blob 存储”>>“示例数据集”>>“nyc_tlc_yellow”，然后选择“新建笔记本”和“加载到数据帧”    。
+1. 这将会使用以下代码创建新笔记本：
+    ```
 
-    ```py
     from azureml.opendatasets import NycTlcYellow
 
     data = NycTlcYellow()
     data_df = data.to_spark_dataframe()
+    # Display 10 rows
     display(data_df.limit(10))
     ```
-
-1. 在笔记本中，在“附加到”菜单中选择无服务器 Spark 池。
-1. 选择单元上的“运行”。
+1. 在笔记本的“附加到”菜单中，选择之前创建的 Spark1 无服务器 Spark 池 。
+1. 选择单元上的“运行”
 1. 如果只想查看数据帧的架构，请通过以下代码运行单元：
+    ```
 
-    ```py
     data_df.printSchema()
     ```
 
@@ -52,7 +52,8 @@ SQLPOOL1 的表中提供数据。 将其加载到名为 nyctaxi 的 Spark 数据
 1. 在 Synapse Studio 中，转到“开发”中心。
 1. 选择 + > “笔记本” 。
 1. 在笔记本顶部，将“附加到”值设置为 Spark1 。
-1. 选择“添加代码”以添加笔记本代码单元，并输入以下文本：
+1. 在新笔记本的第一个代码单元中，输入以下代码：
+
 
     ```scala
     %%spark
@@ -61,16 +62,16 @@ SQLPOOL1 的表中提供数据。 将其加载到名为 nyctaxi 的 Spark 数据
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 
-1. 选择单元上的“运行”。
-1. 在“数据”中心上，右键单击“数据库”，然后选择“刷新”  。 应看到以下数据库：
 
-    - SQLPOOL1 (SQL)
-    - nyctaxi (Spark)
+1. 运行该脚本。 可能需要 2-3 分钟。
+1. 在“数据”中心的“工作区”选项卡中，右键单击“数据库”，然后选择“刷新”   。 现在，应会在列表中看到数据库 nyctaxi (Spark)。
+
 
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>使用 Spark 和笔记本分析纽约市出租车数据
 
 1. 返回到笔记本。
-1. 创建新代码单元并输入以下文本。
+1. 创建新代码单元并输入以下代码。 
+
 
    ```py
    %%pyspark
@@ -78,8 +79,9 @@ SQLPOOL1 的表中提供数据。 将其加载到名为 nyctaxi 的 Spark 数据
    display(df)
    ```
 
-1. 运行该单元以显示你加载到 nyctaxi Spark 数据库中的纽约市出租车数据。
-1. 运行以下代码，执行之前在专用 SQL 池 SQLPOOL1 中所做的相同分析。 此代码显示分析结果并将分析结果保存到名为 nyctaxi.passengercountstats 的表中。
+1. 运行该单元以显示我们加载到 nyctaxi Spark 数据库中的纽约市出租车数据。
+1. 创建新代码单元并输入以下代码。 然后运行该单元，执行之前在专用 SQL 池 SQLPOOL1 中所做的相同分析。 此代码显示分析结果并将分析结果保存到名为 nyctaxi.passengercountstats 的表中。
+
 
    ```py
    %%pyspark
@@ -100,9 +102,9 @@ SQLPOOL1 的表中提供数据。 将其加载到名为 nyctaxi 的 Spark 数据
 
 ## <a name="load-data-from-a-spark-table-into-a-dedicated-sql-pool-table"></a>将 Spark 表中的数据加载到专用 SQL 池表
 
-之前你将数据从专用 SQL 池表 SQLPOOL1.dbo.Trip 复制到了 Spark 表 nyctaxi.trip 中 。 然后，你将数据聚合到了 Spark 表 nyctaxi.passengercountstats。 现在，你将数据从 nyctaxi.passengercountstats 复制到名为 SQLPOOL1.dbo.PassengerCountStats 的专用 SQL 池表中 。
+之前我们将数据从专用 SQL 池表 SQLPOOL1.dbo.Trip 复制到了 Spark 表 nyctaxi.trip 中 。 然后，你将数据聚合到了 Spark 表 nyctaxi.passengercountstats。 现在，将数据从 nyctaxi.passengercountstats 复制到名为 SQLPOOL1.dbo.PassengerCountStats 的专用 SQL 池表中 。
 
-在笔记本中运行以下单元。 此操作会将聚合的 Spark 表复制回专用 SQL 池表。
+1. 创建新代码单元并输入以下代码。 在笔记本中运行该单元。 此操作会将聚合的 Spark 表复制回专用 SQL 池表。
 
 ```scala
 %%spark

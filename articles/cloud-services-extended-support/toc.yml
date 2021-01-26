@@ -1,0 +1,97 @@
+- name: 云服务（外延支持）文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于云服务（外延支持）
+      href: overview.md
+    - name: 部署的先决条件
+      href: deploy-prerequisite.md
+    - name: 配置文件和打包
+      href: cloud-services-model-and-package.md
+- name: 教程
+  items:
+    - name: 部署云服务 - 门户
+      href: deploy-portal.md
+    - name: 部署云服务 - PowerShell
+      href: deploy-powershell.md
+    - name: 部署云服务 - 模板
+      href: deploy-template.md
+    - name: 部署云服务 - Visual Studio
+      href: deploy-visual-studio.md
+  expanded: true
+- name: 概念
+  items:
+    - name: 可用的 VM 大小
+      href: available-sizes.md
+    - name: 常见问题
+      href: faq.md
+    - name: 来宾 OS 修补程序
+      href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: 来宾 OS 停用
+      href: ../cloud-services/cloud-services-guestos-retirement-policy.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: 来宾 OS 发行动态
+      href: ../cloud-services/cloud-services-guestos-update-matrix.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: XML 架构
+      items:
+        - name: Csdef XML 架构
+          href: schema-csdef-file.md
+        - name: LoadBalancerProbe 架构
+          href: schema-csdef-loadbalancerprobe.md
+        - name: WebRole 架构
+          href: schema-csdef-webrole.md
+        - name: WorkerRole 架构
+          href: schema-csdef-workerrole.md
+        - name: NetworkTrafficRules 架构
+          href: schema-csdef-networktrafficrules.md
+        - name: Cscfg XML 架构
+          href: schema-cscfg-file.md
+        - name: Role 架构
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration 架构
+          href: schema-cscfg-networkconfiguration.md
+- name: 操作方式
+  items:
+    - name: 扩展概述
+      href: extensions.md
+    - name: 应用远程桌面扩展
+      href: enable-rdp.md
+    - name: 应用 WAD 扩展
+      href: enable-wad.md
+    - name: 启用警报
+      href: enable-alerts.md
+    - name: 配置缩放
+      href: configure-scaling.md
+    - name: 证书
+      href: certificates-and-key-vault.md
+- name: 示例
+  items:
+    - name: 创建新的云服务
+      href: sample-create-cloud-service.md
+    - name: 获取云服务详细信息
+      href: sample-get-cloud-service.md
+    - name: 重置云服务
+      href: sample-reset-cloud-service.md
+- name: 引用
+  items:
+    - name: Az.CloudService 模块
+      href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
+    - name: PowerShell cmdlet
+      href: 'https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice'
+    - name: ARM 模板参考
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: 学习路径
+      href: /learn/paths/azure-fundamentals/
+    - name: Microsoft 问答
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='

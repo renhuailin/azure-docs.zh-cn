@@ -329,7 +329,7 @@
               href: msal-error-handling-dotnet.md
               displayName: 'handling, catch'
             - name: 在 MSAL.NET 中进行日志记录
-              href: msal-logging.md?tabs=dotnet
+              href: msal-logging-dotnet.md
             - name: 从缓存获取令牌
               href: msal-net-acquire-token-silently.md
             - name: 令牌缓存序列化
@@ -371,7 +371,7 @@
               href: msal-error-handling-js.md
               displayName: 'handling, catch'
             - name: MSAL.js 中的日志记录
-              href: msal-logging.md?tabs=javascript
+              href: msal-logging-js.md
         - name: 适用于 iOS 和 MacOS 的 MSAL
           items:
             - name: 分别适用于 iOS 和 macOS 的 MSAL 的差异
@@ -401,7 +401,7 @@
               href: msal-error-handling-ios.md
               displayName: 'handling, catch'
             - name: MSAL for iOS/macOS 中的日志记录
-              href: msal-logging.md?tabs=swift
+              href: msal-logging-ios.md
         - name: 适用于 Python 的 MSAL
           items:
             - name: 自定义令牌缓存序列化
@@ -414,7 +414,7 @@
               href: msal-error-handling-python.md
               displayName: 'handling, catch'
             - name: MSAL for Python 中的日志记录
-              href: msal-logging.md?tabs=python
+              href: msal-logging-python.md
         - name: 适用于 Java 的 MSAL
           items:
             - name: 自定义令牌缓存序列化
@@ -429,7 +429,7 @@
               href: msal-error-handling-java.md
               displayName: 'handling, catch'
             - name: MSAL for Java 中的日志记录
-              href: msal-logging.md?tabs=java
+              href: msal-logging-java.md
         - name: 适用于 Android 的 MSAL
           items:
             - name: 帐户和租户配置文件
@@ -449,7 +449,7 @@
               href: msal-android-handling-exceptions.md
               displayName: 'android, mobile, handling, catch'
             - name: MSAL for Android 中的日志记录
-              href: msal-logging.md?tabs=android
+              href: msal-logging-android.md
     - name: 自定义令牌和声明
       items:
         - name: 配置角色声明

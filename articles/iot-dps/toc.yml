@@ -124,8 +124,6 @@
       items:
         - name: 管理注册 - 门户
           href: how-to-manage-enrollments.md
-        - name: 管理注册 - 服务 SDK
-          href: how-to-manage-enrollments-sdks.md
         - name: 配置已验证的 CA 证书
           href: how-to-verify-certificates.md
         - name: 滚动更新设备证书
@@ -150,10 +148,6 @@
         - name: Windows
           href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
           maintainContext: true
-    - name: 将证明机制与 SDK 配合使用
-      href: use-hsm-with-sdk.md
-    - name: 使用 SDK 工具进行开发
-      href: how-to-use-sdk-tools.md
     - name: 如何从设备发送更多数据
       href: how-to-send-additional-data.md
     - name: 疑难解答

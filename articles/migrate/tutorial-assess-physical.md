@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: ca50f41f1f0eadbc9cfb916a7f68a90712bef52e
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: b8e59e96d5ecb65933120ecaa4aa43fe4d59d367
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753189"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567546"
 ---
 # <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>教程：评估物理服务器以便迁移到 Azure
 
@@ -56,11 +56,11 @@ ms.locfileid: "96753189"
 
 1. 在“服务器”页 >“Windows 和 Linux 服务器”中，单击“评估和迁移服务器”  。
 
-   ![“评估和迁移服务器”按钮的位置](./media/tutorial-assess-physical/assess.png)
+   ![“评估和迁移服务器”按钮的位置](./media/tutorial-assess-vmware-azure-vm/assess.png)
 
 2. 在 **Azure Migrate:** 服务器评估”中，单击“评估”。
 
-    ![“评估”按钮的位置](./media/tutorial-assess-physical/assess-servers.png)
+    ![“评估”按钮的位置](./media/tutorial-assess-vmware-azure-vm/assess-servers.png)
 
 3. 在“评估服务器” > “评估类型”中，选择“Azure VM”  。
 4. 在“发现源”中：
@@ -68,14 +68,13 @@ ms.locfileid: "96753189"
     - 如果使用设备发现了计算机，请选择“从 Azure Migrate 设备中发现的计算机”。
     - 如果使用导入的 CSV 文件发现了计算机，请选择“导入的计算机”。 
     
-5. 指定评估的名称。 
-6. 单击“全部查看”查看评估属性。
+1. 单击“编辑”查看评估属性。
 
-    ![用于查看评估属性的“查看全部”按钮的位置](./media/tutorial-assess-physical/assessment-name.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vm/assessment-name.png" alt-text="用于查看评估属性的“编辑”按钮的位置":::
 
-7. 在“评估属性” > “目标属性”中 ：
+1. 在“评估属性” > “目标属性”中 ：
     - 在“目标位置”中，选择要迁移到的 Azure 区域。
-        - 大小和成本建议基于你指定的位置。
+        - 大小和成本建议基于你指定的位置。 将目标位置从默认位置更改后，系统将提示你指定“预留实例”和“VM 序列” 。
         - 在 Azure 政府中，你可以以[这些区域](migrate-support-matrix.md#supported-geographies-azure-government)中的评估为目标
     - 在“存储类型”中，
         - 如果要在评估中使用基于性能的数据，请为 Azure Migrate 选择“自动”，以根据磁盘 IOPS 和吞吐量推荐存储类型。
@@ -83,17 +82,21 @@ ms.locfileid: "96753189"
     - 在“预留实例”中，指定在迁移 VM 时是否要使用 VM 的“预留实例”。
         - 如果选择使用预留实例，则无法指定“折扣(%)”或“VM 运行时间” 。 
         - [了解详细信息](https://aka.ms/azurereservedinstances)。
-8. 在“VM 大小”中：
- 
-    - 在“大小调整条件”中，选择进行评估时是基于计算机配置数据/元数据，还是以基于性能的数据为基础。 如果使用性能数据：
+ 1. 在“VM 大小”中：
+     - 在“大小调整条件”中，选择进行评估时是基于计算机配置数据/元数据，还是以基于性能的数据为基础。 如果使用性能数据：
         - 在“性能历史记录”中，指示要用于评估的数据持续时间
         - 在“百分位使用率”中，指定要用于性能示例的百分位数值。 
     - 在“VM 系列”中，指定要列入考虑的 Azure VM 系列。
         - 如果使用基于性能的评估，Azure Migrate 会为你建议一个值。
         - 根据需要调整设置。 例如，如果不需要将生产环境迁移到 Azure 中的 A 系列 VM，可以从系列的列表中排除 A 系列。
-    - 在“舒适因子”中，指明要在评估过程中使用的缓冲区。 此帐户用于解决季节性使用情况、短期性能历史记录，以及未来使用量可能会增加等问题。 例如，如果使用舒适因子 2：组件 | 有效资源利用率 | 添加舒适因子 (2.0) 核心数 | 2 | 4 内存 | 8 GB | 16 GB      
+    - 在“舒适因子”中，指明要在评估过程中使用的缓冲区。 此帐户用于解决季节性使用情况、短期性能历史记录，以及未来使用量可能会增加等问题。 例如，如果使用舒适因子 2：
+    
+        **组件** | **有效利用率** | **添加舒适因子 (2.0)**
+        --- | --- | ---
+        核心数 | 2  | 4
+        内存 | 8 GB | 16 GB
    
-9. 在“定价”中：
+1. 在“定价”中：
     - 在“产品/服务”中，如果已注册，请指定 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 “服务器评估”会估计该产品/服务的费用。
     - 在“货币”中，为帐户选择计费货币。
     - 在“折扣 (%)”中，添加基于 Azure 产品/服务获得的任何特定于订阅的折扣。 默认设置是 0%。
@@ -101,20 +104,30 @@ ms.locfileid: "96753189"
         - 这对于无法连续运行的 Azure VM 非常有用。
         - 成本估算基于指定的持续时间。
         - 默认为“每月 31 天/每天 24 小时”。
-
     - 在“EA 订阅”中，指定是否将企业协议 (EA) 订阅折扣考虑在内以进行成本估算。 
     - 在“Azure 混合权益”中，指定是否已有 Windows Server 许可证。 如果已有许可证，并且许可证具有 Windows Server 订阅的有效软件保障，则在将许可证引入 Azure 时，可以申请 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
 
-10. 如有更改，请单击“保存”。
+1. 如有更改，请单击“保存”。
 
-    ![评估属性](./media/tutorial-assess-physical/assessment-properties.png)
+    ![评估属性](./media/tutorial-assess-vmware-azure-vm/assessment-properties.png)
 
-11. 在“评估服务器”中，单击“下一个” 。
-12. 在“选择要评估的计算机”中，选择“新建”并指定组名称。  
-13. 选择设备，然后选择要添加到组的 VM。 然后单击“下一步”。
-14. 在“审阅 + 创建评估”中，查看评估详细信息，然后单击“创建评估”以创建组并运行评估。
+1. 在“评估服务器”中，单击“下一个” 。
+
+1. 在“选择要评估的计算机” > “评估名称”中，指定评估的名称 。 
+
+1. 在“选择或创建组”中，选择“新建”并指定组名称 。 
+    
+    :::image type="content" source="./media/tutorial-assess-physical/assess-group.png" alt-text="将 VM 添加到组":::
 
 
+1. 选择设备，然后选择要添加到组的 VM。 然后单击“下一步”。
+
+
+1. 在“审阅 + 创建评估”中，查看评估详细信息，然后单击“创建评估”以创建组并运行评估 。
+
+1. 创建评估后，在“服务器” > “Azure Migrate: 服务器评估” > “评估”中查看它。
+
+1. 单击“导出评估”，将评估下载为 Excel 文件。
     > [!NOTE]
     > 对于基于性能的评估，建议在开始发现后至少等待一天，然后再创建评估。 这为收集具有较高置信度的性能数据提供了时间。 理想情况下，在开始发现后，等待指定的性能持续时间（日/周/月）进行高置信度评级。
 

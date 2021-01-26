@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: bbcebfd69789eb6ec03e565b347d05533043781c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064413"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232329"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>教程：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -59,8 +59,8 @@ ms.locfileid: "98064413"
 
 本指南创建的应用程序显示用来查询 Microsoft Graph API 的按钮和用来注销的按钮。它还显示包含调用结果的文本框。
 
-> [!NOTE]
-> 想要下载此示例的 Visual Studio 项目而不是创建它？ 请[下载项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)，并跳到[应用程序注册](#register-your-application "应用程序注册步骤")步骤，在代码示例运行前对其进行配置。
+> [!Tip]
+> 若要查看在本教程中生成的项目的完整版本，可以从 [GitHub](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip) 下载。
 
 ### <a name="create-your-application"></a>创建应用程序
 
@@ -292,8 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-> [!NOTE]
-> MSAL.NET 使用异步方法来获取令牌或操作帐户。 你需要在 UI 线程中支持 UI 操作。 因此，需要进行 `Dispatcher.RunAsync` 调用，并在调用 `ConfigureAwait(false)` 之前采取预防措施。
+MSAL.NET 使用异步方法来获取令牌或操作帐户。 你需要在 UI 线程中支持 UI 操作。 因此，需要进行 `Dispatcher.RunAsync` 调用，并在调用 `ConfigureAwait(false)` 之前采取预防措施。
 
 #### <a name="more-information-about-signing-out"></a>有关注销的详细信息<a name="more-information-on-sign-out"></a>
 
@@ -477,8 +476,7 @@ Microsoft Graph API 需要 `user.read` 作用域来读取用户的配置文件�
 
 若要在应用程序上下文中访问用户的日历，请将 `Calendars.Read` 委托权限添加到应用程序注册信息。 然后，将 `Calendars.Read` 作用域添加到 `acquireTokenSilent` 调用。
 
-> [!NOTE]
-> 增加作用域数量时，用户可能会收到接受其他许可的提示。
+增加作用域数量时，用户可能会收到接受其他许可的提示。
 
 ## <a name="known-issues"></a>已知问题
 

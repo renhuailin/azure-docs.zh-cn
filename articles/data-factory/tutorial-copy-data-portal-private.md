@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
+ms.date: 01/15/2021
 ms.author: jingwang
-ms.openlocfilehash: 4f5d691ef99ac4647d2031d6588d0b3922edd8cf
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: dfd2ed47c3fd963d7e119d235719771b25bdaf34
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505982"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249477"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>使用专用终结点将数据从 Azure Blob 存储安全复制到 SQL 数据库
 
@@ -35,9 +35,9 @@ ms.locfileid: "94505982"
 
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure 订阅** 。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
-* **Azure 存储帐户** 。 可将 Blob 存储用作源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal)以获取创建步骤。 *确保存储帐户仅允许来自选定的网络的访问。* 
-* **Azure SQL 数据库** 。 将数据库用作接收器数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)，了解创建该数据库的步骤。 *确保 SQL 数据库帐户仅允许来自选定的网络的访问。* 
+* **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* **Azure 存储帐户**。 可将 Blob 存储用作源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal)以获取创建步骤。 *确保存储帐户仅允许来自选定的网络的访问。* 
+* **Azure SQL 数据库**。 将数据库用作接收器数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)，了解创建该数据库的步骤。 *确保 SQL 数据库帐户仅允许来自选定的网络的访问。* 
 
 ### <a name="create-a-blob-and-a-sql-table"></a>创建 blob 和 SQL 表
 
@@ -78,13 +78,13 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 在左侧菜单中，选择“创建资源” > “Analytics” > “数据工厂”。
 
-1. 在“新建数据工厂”  页的“名称”下输入 **ADFTutorialDataFactory**  。
+1. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
 
-   Azure 数据工厂的名称必须 *全局唯一* 。 如果收到有关名称值的错误消息，请为数据工厂输入其他名称（例如 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](./naming-rules.md)。
+   Azure 数据工厂的名称必须 *全局唯一*。 如果收到有关名称值的错误消息，请为数据工厂输入其他名称（例如 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](./naming-rules.md)。
 
-1. 选择要在其中创建数据工厂的 Azure **订阅** 。
+1. 选择要在其中创建数据工厂的 Azure **订阅**。
 
-1. 对于“资源组”，请执行以下步骤之一： 
+1. 对于“资源组”，请执行以下步骤之一：
 
     - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
     - 选择“新建”，并输入资源组的名称。 
@@ -107,7 +107,8 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 1. 在数据工厂门户中，转到“管理”并选择“新建”，以创建新的 Azure 集成运行时 。
 
    ![屏幕截图显示创建新的 Azure 集成运行时。](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-1. 选择创建 Azure 集成运行时。
+1. 在“集成运行时安装”页上，根据所需的功能选择要创建的集成运行时。 在本教程中，选择“Azure”、“自承载”，然后单击“继续” 。 
+1. 选择“Azure”，然后单击“继续”以创建 Azure 集成运行时 。
 
    ![屏幕截图显示新的 Azure 集成运行时。](./media/tutorial-copy-data-portal-private/azure-ir.png)
 1. 在“虚拟网络配置(预览)”下，选择“启用” 。
@@ -144,7 +145,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 转到“源”选项卡。选择“+ 新建”创建源数据集。
 
-1. 在“新建数据集”对话框中选择“Azure Blob 存储”，然后选择“继续”。 源数据位于 Blob 存储中，因此选择“Azure Blob 存储”作为源数据集。
+1. 在“新建数据集”对话框中选择“Azure Blob 存储”，然后选择“继续”。   源数据位于 Blob 存储中，因此选择“Azure Blob 存储”作为源数据集。
 
 1. 在“选择格式”对话框中选择数据的格式类型，然后选择“继续” 。
 
@@ -228,7 +229,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 在“新建链接服务(Azure SQL 数据库)”对话框中执行以下步骤：
 
-    1. 在“名称”下输入 **AzureSqlDatabaseLinkedService** 。
+    1. 在“名称”下输入 **AzureSqlDatabaseLinkedService**。
     1. 在“服务器名称”下选择 SQL Server 实例。
     1. 请确保启用“交互式创作”。
     1. 在“数据库名称”下选择自己的 SQL 数据库。

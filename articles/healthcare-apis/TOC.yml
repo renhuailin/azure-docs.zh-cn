@@ -93,6 +93,11 @@
           href: export-data.md
         - name: 去标识化导出
           href: de-identified-export.md
+    - name: 转换数据
+      expanded: false
+      items:
+        - name: $convert-data 和 FHIR 转换器扩展模板
+          href: convert-data.md
     - name: 查找标识对象 ID
       href: find-identity-object-ids.md
     - name: 诊断日志记录和指标

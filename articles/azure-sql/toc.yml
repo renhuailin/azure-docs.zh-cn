@@ -973,6 +973,8 @@
           href: managed-instance/virtual-cluster-delete.md
         - name: 配置自定义 DNS
           href: managed-instance/custom-dns-configure.md
+        - name: 同步 DNS 配置
+          href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
         - name: 同步网络配置
           href: managed-instance/azure-app-sync-network-configuration.md
         - name: 查找管理终结点 IP 地址

@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 14be695f2f58b9738af11a3d2ca3f06592a1cc6e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 6bba5ad17cbb6f1ed72d06b37c6d6af9ebd26495
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575952"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246462"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教程：使用设计器部署机器学习模型
 
@@ -97,11 +97,30 @@ ms.locfileid: "96575952"
 
 1. 选择已创建的 AKS 群集。
 
-1. 选择“部署”。
-    
     :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="显示如何设置新的实时终结点的屏幕截图":::
 
+    还可以更改实时终结点的“高级”设置。
+    
+    |高级设置|说明|
+    |---|---|
+    |启用 Application Insights 诊断和数据收集| 是否启用 Azure Application Ingishts 以从部署的终结点收集数据。 </br> 默认值：false |
+    |评分超时| 对 Web 服务的评分调用强制执行的超时值（以毫秒为单位）。</br>默认情况下：60000|
+    |已启用自动缩放|   是否为 Web 服务启用自动缩放。</br>默认值：true|
+    |副本数下限| 自动缩放此 Web 服务时可使用的容器的最小数目。</br>默认情况下：1|
+    |副本数上限| 自动缩放此 Web 服务时可使用的容器的最大数目。</br> 默认情况下：10|
+    |目标利用率|自动缩放程序应尝试维持的此 Web 服务的目标利用率（以低于 100 的百分比表示）。</br> 默认情况下：70|
+    |刷新周期|自动缩放程序尝试缩放此 Web 服务的频率（以秒为单位）。</br> 默认情况下：1|
+    |CPU 保留容量|要分配给此 Web 服务的 CPU 核心数。</br> 默认情况下：0.1|
+    |内存保留容量|为此 Web 服务分配的内存量 (GB)。</br> 默认情况下：0.5|
+        
+
+1. 选择“部署”。 
+
     部署完成后，将在画布上方显示成功通知。 这可能需要几分钟时间。
+
+> [!TIP]
+> 如果在“实时终结点设置”框中为“计算类型”选择了“Azure 容器实例”，则还可以部署到“Azure 容器实例”(ACI)  。
+> Azure 容器实例用于测试或开发。 对于需要小于 48 GB RAM 的基于 CPU 的低缩放工作负载，请使用 ACI。
 
 ## <a name="view-the-real-time-endpoint"></a>查看实时终结点
 

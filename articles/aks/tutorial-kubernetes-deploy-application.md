@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教程 - 部署应用程序
 description: 在本 Azure Kubernetes 服务 (AKS) 教程中，请使用存储在 Azure 容器注册表中的自定义映像将多容器应用程序部署到群集。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 8114aa0b6c2483d543376727a44d14041ed02b37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0de097a545a831e39a671fe4cf5eadcd336ce24
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576483"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250173"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中运行应用程序
 
@@ -21,7 +21,7 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 你生成自�
 > * 在 Kubernetes 中运行应用程序
 > * 测试应用程序
 
-在另外的教程中，此应用程序将进行横向扩展和更新。
+在后面的教程中，此应用程序将进行横向扩展和更新。
 
 本快速入门假设读者基本了解 Kubernetes 的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
@@ -49,7 +49,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-将 *microsoft* 替换为 ACR 登录服务器名称。 映像名称位于清单文件的第 51 行。 以下示例展示了默认映像名称：
+将 *microsoft* 替换为 ACR 登录服务器名称。 映像名称位于清单文件的第 60 行。 以下示例展示了默认映像名称：
 
 ```yaml
 containers:
@@ -77,7 +77,7 @@ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 下面的示例输出表明已成功在 AKS 群集中创建了资源：
 
-```
+```console
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 deployment "azure-vote-back" created
@@ -98,19 +98,19 @@ kubectl get service azure-vote-front --watch
 
 最初，*azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending*：
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
 当 *EXTERNAL-IP* 地址从 *pending* 更改为实际公共 IP 地址时，请使用 `CTRL-C` 停止 `kubectl` 监视进程。 以下示例输出显示向服务分配了有效的公共 IP 地址：
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 若要查看应用程序的实际效果，请打开 Web 浏览器，以转到服务的外部 IP 地址：
 
-![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-tutorials/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote.png" alt-text="显示容器映像 Azure 投票应用的屏幕截图，该应用在 AKS 群集中运行并在本地 Web 浏览器中打开" lightbox="./media/container-service-kubernetes-tutorials/azure-vote.png":::
 
 如果应用程序未加载，可能是因为映像注册表存在授权问题。 若要查看容器的状态，请使用 `kubectl get pods` 命令。 如果无法拉取容器映像，请参阅[使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证](cluster-container-registry-integration.md)。
 

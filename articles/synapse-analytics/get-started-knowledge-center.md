@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 611d2163e242d7851398821344c3ed595df364cb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 59364a0a2c1d1e411f41dc35dee812c8e920b72d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460255"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209196"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>探索 Synapse 知识中心
 
@@ -39,22 +39,22 @@ ms.locfileid: "96460255"
 
 ## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>使用无服务器 SQL 池浏览 blob 存储
 
-1. 转到“知识中心”，单击“立即使用示例” 
-1. 选择“使用 SQL 来查询数据” 
-1. 单击“立即使用示例”
-1. 它将创建一个新的 SQL 脚本。
-1. 滚动到第一个查询（第 28 行到第 32 行），然后选择查询文本
-1. 单击“运行”。 它将运行你选择的文本。
+1. 转到“知识中心”，单击“立即使用示例” 。
+1. 选择“使用 SQL 来查询数据”。
+1. 单击“使用示例”。
+1. 随即将打开一个新的示例 SQL 脚本。
+1. 滚动到第一个查询（第 28 行到第 32 行），然后选择查询文本。
+1. 单击“运行”。 它只会运行所选代码。
 
 ## <a name="loading-more-nyc-taxi-data"></a>加载更多 NYC 出租车数据
-1. 转到“知识中心”，单击“浏览库”  
-1. 选择顶部的“SQL 脚本”选项卡
-1. 选择“加载纽约出租车数据集”
-1. 在“输入”下选择“选择现有池”，接着选择“SQLDB1”
-1. 单击“打开脚本”
-1. 此时会显示一个新的 SQL 脚本。
+1. 转到“知识中心”，单击“浏览库” 。
+1. 选择顶部的“SQL 脚本”选项卡。
+1. 选择“加载纽约出租车数据集”数据引入示例，单击“继续” 。
+1. 在“SQL 池”下，依次选择“选择现有池”和“SQLPOOL1”，然后选择之前创建的 SQLPOOL1 数据库   。
+1. 单击“打开脚本”。
+1. 随即将打开一个新的示例 SQL 脚本。
 1. 单击“**运行**”
-1. 这将为所有 NYC 出租车数据创建多个表，并使用 T-SQL COPY 命令加载它们。
+1. 这将为所有 NYC 出租车数据创建多个表，并使用 T-SQL COPY 命令加载它们。 如果已在前面的快速入门步骤中创建了这些表，请选择并仅执行不存在的表的 CREATE 和 COPY 代码。
 
     > [!NOTE] 
     > 在专用 SQL 池（之前称为 SQL DW）中使用 SQL 脚本的示例库时，只能使用现有的专用 SQL 池（之前称为 SQL DW）。

@@ -2,24 +2,24 @@
 title: 有关订购 Azure Data Box 的教程 | Microsoft Docs
 description: 在本教程中，了解 Azure Data Box（让你能够将本地数据导入 Azure 中的混合解决方案）以及如何订购 Azure Data Box。
 services: databox
-author: alkohli
+author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: aad6a3ef754b5ba2c65a9b93fbdfcfdc26348487
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fd165795be85c26cdfcaee3c4fd01427274a7316
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186152"
+ms.locfileid: "98210335"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
-Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠地将本地数据导入 Azure 中。 请先将数据传输到 Microsoft 提供的 80 TB（可用容量）存储设备，然后将设备寄回。 然后，此数据将上传到 Azure。
+Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠地将本地数据导入 Azure 中。 请先将数据传输到 Microsoft 提供的 80-TB（可用容量）存储设备，然后再设备寄回。 然后，此数据将上传到 Azure。
 
-本教程介绍如何订购 Azure Data Box。 本教程的介绍内容包括：
+本教程介绍如何订购 Azure Data Box。 本教程的介绍内容包括：  
 
 > [!div class="checklist"]
 >
@@ -245,7 +245,7 @@ PS C:\Windows\System32>
     |资源组    | 之前选择的资源组。 |
     |导入订单名称 | 提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。    |
 
-    ![Data Box 导入订单向导的“基本信息”屏幕，其中已填写正确信息](media/data-box-deploy-ordered/select-data-box-import-06.png)<!--Generic subscription. Cut note. Box command.-->
+    ![Data Box 导入订单向导的“基本信息”屏幕，其中已填写正确信息](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
 7. 在“数据目标”屏幕上，选择“数据目标”（存储帐户或托管磁盘） 。
 
@@ -255,11 +255,15 @@ PS C:\Windows\System32>
 
     根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个或多个存储帐户。 Data Box 可以与最多 10 个存储帐户链接。 也可以创建新的 **常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。
 
+   > [!NOTE]
+   > - 如果选择 Azure Premium FileStorage 帐户，则存储帐户共享上的预配配额将增加到要复制到文件共享的数据的大小。 配额增加后，就不会再进行调整，例如，如果出于某种原因 Data Box 无法复制你的数据。
+   > - 此配额用于计费。 将数据上传到数据中心后，应调整配额以满足需求。 有关详细信息，请参阅[了解计费](../../articles/storage/files/understanding-billing.md)。
+
     支持使用虚拟网络的存储帐户。 若要允许 Data Box 服务使用受保护的存储帐户，请在存储帐户网络防火墙设置中启用受信任的服务。 有关详细信息，请了解如何[将 Azure Data Box 添加为受信任的服务](../storage/common/storage-network-security.md#exceptions)。
 
     如果使用 Data Box 从本地虚拟硬盘 (VHD) 创建“托管磁盘”，则还需提供以下信息：
 
-    |设置  |Value  |
+    |设置  |值  |
     |---------|---------|
     |资源组     | 若要从本地 VHD 创建托管磁盘，请创建新的资源组。 使用现有资源组的前提是，资源组是在以前由 Data Box 服务为托管磁盘创建 Data Box 订单时创建的。 <br> 指定多个用分号分隔的资源组。 最多支持 10 个资源组。|
 
@@ -419,7 +423,7 @@ PS C:\Windows\System32>
    |sku| 要订购的特定 Data Box 设备。 有效值是："DataBox", "DataBoxDisk", and "DataBoxHeavy"| "DataBox" |
    |email-list| 与订单关联的电子邮件地址。| "gusp@contoso.com" |
    |street-address1| 订单将寄送到的街道地址。 | "15700 NE 39th St" |
-   |street-address2| 辅助性地址信息，如公寓号或楼号。 | "Bld 123" |
+   |street-address2| 辅助性地址信息，如公寓号或楼号。 | “123 号建筑” |
    |city| 设备将寄送到的城市。 | "Redmond" |
    |state-or-province| 设备将寄送到的省/市/自治区。| "WA" |
    |country| 设备将寄送到的国家/地区。 | "United States" |
@@ -538,7 +542,7 @@ PS C:\Windows\System32>
     |DataBoxType [必填]| 要订购的特定 Data Box 设备。 有效值是："DataBox", "DataBoxDisk", and "DataBoxHeavy"| "DataBox" |
     |EmailId [必填]| 与订单关联的电子邮件地址。| "gusp@contoso.com" |
     |StreetAddress1 [必填]| 订单将寄送到的街道地址。 | "15700 NE 39th St" |
-    |StreetAddress2| 辅助性地址信息，如公寓号或楼号。 | "Bld 123" |
+    |StreetAddress2| 辅助性地址信息，如公寓号或楼号。 | “123 号建筑” |
     |StreetAddress3| 三级地址信息。 | |
     |城市[必填]| 设备将寄送到的城市。 | "Redmond" |
     |StateOrProvinceCode [必填]| 设备将寄送到的省/市/自治区。| "WA" |
@@ -601,7 +605,7 @@ PS C:\Windows\System32>
 
 ### <a name="track-a-single-order"></a>跟踪单个订单
 
-若要获取单个现有 Azure Data Box 订单的跟踪信息，请运行 [az databox job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true)。 该命令显示有关订单的信息，例如（但不限于）：名称、资源组、跟踪信息、订阅 ID、联系人信息、寄送类型和设备 sku。
+若要获取单个现有 Azure Data Box 订单的跟踪信息，请运行 [`az databox job show`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true)。 该命令显示有关订单的信息，例如（但不限于）：名称、资源组、跟踪信息、订阅 ID、联系人信息、寄送类型和设备 sku。
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -642,7 +646,7 @@ PS C:\Windows\System32>
 
 ### <a name="list-all-orders"></a>列出所有订单
 
-如果订购了多个设备，可以运行 [az databox job list](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) 查看所有的 Azure Data Box 订单。 该命令列出属于特定资源组的所有订单。 输出中还显示：订单名称、寄送状态、Azure 区域、交付类型、订单状态。 已取消的订单也包含在列表中。
+如果订购了多台设备，可以运行 [`az databox job list`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) 查看所有 Azure Data Box 订单。 该命令列出属于特定资源组的所有订单。 输出中还显示：订单名称、寄送状态、Azure 区域、交付类型、订单状态。 已取消的订单也包含在列表中。
 此命令还显示每个订单的时间戳。
 
 ```azurecli
@@ -718,7 +722,7 @@ az databox job list --resource-group <resource-group>
 
 ### <a name="list-all-orders"></a>列出所有订单
 
-如果订购了多台设备，可以运行 [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) 查看所有 Azure Data Box 订单。 该命令列出属于特定资源组的所有订单。 输出中还显示：订单名称、寄送状态、Azure 区域、交付类型、订单状态。 已取消的订单也包含在列表中。
+如果订购了多台设备，可以运行 [`Get-AzDataBoxJob`](/powershell/module/az.databox/Get-AzDataBoxJob) 查看所有 Azure Data Box 订单。 该命令列出属于特定资源组的所有订单。 输出中还显示：订单名称、寄送状态、Azure 区域、交付类型、订单状态。 已取消的订单也包含在列表中。
 此命令还显示每个订单的时间戳。
 
 ```azurepowershell
@@ -761,7 +765,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="cancel-an-order"></a>取消订单
 
-若要取消 Azure Data Box 订单，请运行 [az databox job cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true)。 你需要指定取消订单的原因。
+若要取消 Azure Data Box 订单，请运行 [`az databox job cancel`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true)。 你需要指定取消订单的原因。
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -798,7 +802,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>删除订单
 
-如果取消了 Azure Data Box 订单，可以运行 [az databox job delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) 删除订单。
+如果取消了 Azure Data Box 订单，可以运行 [`az databox job delete`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) 删除订单。
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -871,7 +875,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>删除订单
 
-如果取消了 Azure Data Box 订单，可以运行 [Remove-AzDataBoxJob](/powershell/module/az.databox/remove-azdataboxjob) 删除订单。
+如果取消了 Azure Data Box 订单，可以运行 [`Remove-AzDataBoxJob`](/powershell/module/az.databox/remove-azdataboxjob) 删除订单。
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>

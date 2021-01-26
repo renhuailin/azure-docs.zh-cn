@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: a49258208f7a5945ac71c8f17db56fccfdcd6515
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607875"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661994"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教程：为 MediusFlow 配置自动用户预配
 
@@ -155,17 +155,25 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 9. 在“特性映射”部分中，审阅从 Azure AD 同步到 MediusFlow 的用户特性。 选为“匹配”属性的特性是用于匹配 MediusFlow 中用于更新操作的用户帐户。 如果选择更改[匹配目标特性](../app-provisioning/customize-application-attributes.md)，则需要确保 MediusFlow API 支持根据相应特性来筛选用户。 选择“保存”按钮以提交任何更改。
 
-   |Attribute|类型|
-   |---|---|
-   |userName|字符串|
+   |Attribute|类型|支持筛选|
+   |---|---|---|
+   |userName|字符串|&check;|
    |emails[type eq "work"].value|字符串|
    |name.displayName|字符串|
    |活动|Boolean|
    |name.givenName|字符串|
    |name.familyName|字符串|
    |name.formatted|字符串|
-   |externalID|字符串|
+   |externalId|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:configurationFilter|字符串|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:identityProvider|字符串|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:nameIdentifier|字符串|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText1|字符串|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText2|字符串|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText3|字符串|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText4|字符串|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText5|字符串|
 
 
 10. 在“映射”部分下，选中“将 Azure Active Directory 组同步到 MediusFlow”。
@@ -188,18 +196,22 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
     ![预配范围](common/provisioning-scope.png)
 
-15. 已准备好预配时，单击“保存”。
+15. 已准备好预配时，单击“保存”  。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 
-此操作会启动“设置”部分的“范围”中定义的所有用户和组的初始同步周期。 初始周期的执行时间比后续周期长，后续周期大约每 40 分钟出现一次，只要 Azure AD 预配服务正在运行。 
+此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步周期 。 初始周期执行的时间比后续周期长，只要 Azure AD 预配服务正在运行，后续周期大约每隔 40 分钟就会进行一次。 
 
 ## <a name="step-6-monitor-your-deployment"></a>步骤 6. 监视部署
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](../reports-monitoring/concept-provisioning-logs.md)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)，以查看预配周期的状态以及还剩多少完成
-3. 如果预配配置似乎处于运行不正常状态，应用将进入隔离状态。 若要详细了解隔离状态，请单击[此处](../app-provisioning/application-provisioning-quarantine-status.md)。
+2. 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)来查看预配周期的状态以及完成进度
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](../app-provisioning/application-provisioning-quarantine-status.md)。
+
+## <a name="change-log"></a>更改日志
+
+* 2021/01/21 - 已添加自定义扩展属性 configurationFilter、identityProvider、nameIdentifier、customFieldText1、customFieldText2、customFieldText3、customFieldText3 和 customFieldText5       。
 
 ## <a name="additional-resources"></a>其他资源
 
