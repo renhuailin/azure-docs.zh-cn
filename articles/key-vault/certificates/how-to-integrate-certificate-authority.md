@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 4635bcc51d2ab626b16ddcf02e772bf3df3cad4d
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: c36353448c140450044f352062c3349939e3f7b5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763734"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789004"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>将 Key Vault 与 DigiCert 证书颁发机构集成
 
@@ -129,7 +129,7 @@ Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertifica
  ![证书操作](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 错误消息“请执行合并以完成此证书请求。”
-你需要合并由 CA 签名的 CSR 才能完成此请求。 在[此处](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request)了解详细信息
+你需要合并由 CA 签名的 CSR 才能完成此请求。 在[此处](./create-certificate-signing-request.md)了解详细信息
 
 有关详细信息，请参阅 [Key Vault REST API 中的证书操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
 

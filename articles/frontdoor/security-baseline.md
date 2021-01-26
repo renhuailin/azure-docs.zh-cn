@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 77fccf8b2480232debb88136394013941af796c8
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: c922ae19c496d9f377b47ec43d38807f494593bc
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197262"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789122"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure 前门的 azure 安全基线
 
@@ -88,7 +88,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
-- [部署特权访问工作站](../active-directory/devices/howto-azure-managed-workstation.md)
+- [部署特权访问工作站](/security/compass/privileged-access-deployment)
 
 **Azure 安全中心监视**：不适用
 

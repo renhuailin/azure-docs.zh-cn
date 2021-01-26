@@ -3,27 +3,27 @@ title: 在 Azure 开发测试实验室中配置共享映像库 |Microsoft Docs
 description: 了解如何在 Azure 开发测试实验室中配置共享映像库，使用户能够在创建实验室资源的同时从共享位置访问映像。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 96563b1dcfac171af38b229bb81d12b3afda2e2f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: febcff640efc29eb4916250366641635f9d8721e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327971"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788415"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置共享映像库
-开发测试实验室现在支持 [共享映像库](../virtual-machines/windows/shared-image-galleries.md) 功能。 它允许实验室用户在创建实验室资源的同时访问共享位置中的图像。 它还可帮助你围绕自定义托管 VM 映像构建结构和组织。 共享映像库功能支持：
+开发测试实验室现在支持 [共享映像库](../virtual-machines/shared-image-galleries.md) 功能。 它允许实验室用户在创建实验室资源的同时访问共享位置中的图像。 它还可帮助你围绕自定义托管 VM 映像构建结构和组织。 共享映像库功能支持：
 
 - 托管的映像全局复制
 - 对图像进行版本控制和分组以便于管理
 - 在支持可用性区域的区域中，使用区域冗余存储 (ZRS) 帐户使映像高度可用。 ZRS 提高了针对区域性故障的恢复能力。
 - 使用基于 Azure 角色的访问控制 (Azure RBAC) ，在订阅之间共享，甚至在租户之间共享。
 
-有关详细信息，请参阅 [共享映像库文档](../virtual-machines/windows/shared-image-galleries.md)。 
+有关详细信息，请参阅 [共享映像库文档](../virtual-machines/shared-image-galleries.md)。 
  
 如果你有大量的托管映像需要维护，并想要使其在整个公司中可用，可将共享映像库用作存储库，以便更轻松地更新和共享映像。 作为实验室所有者，你可以将现有的共享映像库附加到实验室。 附加此库后，实验室用户可以从这些最新映像创建计算机。 此功能的一个主要优点是，开发测试实验室现在可以利用跨实验室、跨订阅和跨区域共享映像的优势。 
 
 > [!NOTE]
-> 若要了解与共享映像库服务相关的成本，请参阅 [共享图像库的帐单](../virtual-machines/windows/shared-image-galleries.md#billing)。
+> 若要了解与共享映像库服务相关的成本，请参阅 [共享图像库的帐单](../virtual-machines/shared-image-galleries.md#billing)。
 
 ## <a name="considerations"></a>注意事项
 - 一次只能将一个共享映像库附加到实验室。 如果要附加其他库，则需要分离现有库，并附加另一个库。 
@@ -37,7 +37,7 @@ ms.locfileid: "92327971"
 1. 从列表中选择 " **开发测试实验室** "。
 1. 从实验室列表中，选择 **实验室**。
 1. 在左侧菜单的 "**设置**" 部分中选择 "**配置和策略**"。
-1. 在左侧菜单中的 "**虚拟机**" 下选择**共享映像库**。
+1. 在左侧菜单中的 "**虚拟机**" 下选择 **共享映像库**。
 
     ![共享图像库菜单](./media/configure-shared-image-gallery/shared-image-galleries-menu.png)
 1. 单击 " **附加** " 按钮，然后在下拉列表中选择库，将现有的共享映像库附加到实验室。
@@ -47,11 +47,11 @@ ms.locfileid: "92327971"
 
     默认情况下，" **允许将所有映像用作虚拟机库** " 设置为 **"是"**。 这意味着在创建新的实验室 VM 时，会向实验室用户提供附加的共享映像库中可用的所有映像。 如果需要限制对某些映像的访问，请将 " **允许所有映像全部使用为虚拟机库** " 更改为 " **否**"，并选择要在创建 vm 时允许的映像，然后选择 " **保存** " 按钮。
 
-    :::image type="content" source="./media/configure-shared-image-gallery/enable-disable.png" alt-text="启用或禁用映像&quot;:::
+    :::image type="content" source="./media/configure-shared-image-gallery/enable-disable.png" alt-text="启用或禁用映像":::
 
     > [!NOTE]
     > 共享映像库中的通用映像和专用映像都受支持。 
-1. 然后，实验室用户可以使用启用的映像创建虚拟机，方法是单击 &quot; **+ 添加** &quot;，然后在 &quot; **选择基本** 页" 中查找映像。
+1. 然后，实验室用户可以使用启用的映像创建虚拟机，方法是单击 " **+ 添加** "，然后在 " **选择基本** 页" 中查找映像。
 
     ![实验室用户](./media/configure-shared-image-gallery/lab-users.png)
 ## <a name="use-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板

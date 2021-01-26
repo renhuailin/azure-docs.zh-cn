@@ -1,24 +1,24 @@
 ---
 title: Azure Monitor 中的自定义指标（预览版）
 description: 了解 Azure Monitor 中的自定义指标及其建模方式。
-author: ancav
+author: anirudhcavale
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 01/25/2021
 ms.subservice: metrics
-ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce081896292ec92c41dabc735df828ed167d86e7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639896"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788496"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的自定义指标（预览版）
 
 在 Azure 中部署资源和应用程序时，需要开始收集遥测数据，以洞察它们的性能和运行状况。 Azure 提供一些现成的指标。 这些指标称为[标准指标或平台指标](./metrics-supported.md)。 但是，它们在性质上有限制。 
 
-可能需要收集一些自定义性能指标或特定于业务的指标才能提供更深入的见解。 可以通过应用程序遥测、Azure 资源上运行的代理甚至从外到内的监视系统收集这些**自定义**指标，然后将其直接提交给 Azure Monitor。 发布到 Azure Monitor 之后，可以连同 Azure 发出的标准指标一起浏览、查询 Azure 资源和应用程序的自定义指标，并针对其发出警报。
+可能需要收集一些自定义性能指标或特定于业务的指标才能提供更深入的见解。 可以通过应用程序遥测、Azure 资源上运行的代理甚至从外到内的监视系统收集这些 **自定义** 指标，然后将其直接提交给 Azure Monitor。 发布到 Azure Monitor 之后，可以连同 Azure 发出的标准指标一起浏览、查询 Azure 资源和应用程序的自定义指标，并针对其发出警报。
 
 Azure Monitor 自定义指标目前为公开预览版。 
 
@@ -105,7 +105,6 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 |事务 1|事务 2|事务 3|事务 4|
 |---|---|---|---|
 |7 毫秒|4 毫秒|13 毫秒|16 毫秒|
-|
 
 发布到 Azure Monitor 的最终指标如下：
 * 最小值：4
@@ -134,7 +133,8 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
         "metric": "Memory Bytes in Use",
         "namespace": "Memory Profile",
         "dimNames": [
-          "Process"        ],
+          "Process"
+        ],
         "series": [
           {
             "dimValues": [
@@ -174,7 +174,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 将自定义指标提交到 Azure Monitor 之后，可以通过 Azure 门户浏览它们，以及通过 Azure Monitor REST API 查询它们。 还可以对其创建警报，以便在满足特定的条件时收到通知。
 
 > [!NOTE]
-> 你需要具有“读者”或“参与者”角色才能查看自定义指标。
+> 你需要具有“读者”或“参与者”角色才能查看自定义指标。 请参阅 [监视读取器](../../role-based-access-control/built-in-roles.md#monitoring-reader)。 
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>通过 Azure 门户浏览自定义指标
 1.    转到 [Azure 门户](https://portal.azure.com)。
@@ -184,34 +184,19 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 5.    选择自定义指标的指标命名空间。
 6.    选择自定义指标。
 
+> [!NOTE]
+> 有关在 Azure 门户中查看指标的详细信息，请参阅 [Azure 指标资源管理器](./metrics-getting-started.md) 入门。
+
 ## <a name="supported-regions"></a>支持的区域
-在公共预览期，发布自定义指标的功能只在一部分 Azure 区域中可用。 此限制意味着，只能发布某个受支持区域中的资源的指标。 下表列出了自定义指标支持的 Azure 区域。 另外还列出了这些区域中的资源的指标应发布到的相应终结点：
+在公共预览期，发布自定义指标的功能只在一部分 Azure 区域中可用。 此限制意味着，只能发布某个受支持区域中的资源的指标。 有关 Azure 区域的详细信息，请参阅 [azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/) 位置。 以下终结点中使用的 Azure 区域代码只是带有空格的区域的名称，下表列出了用于自定义指标的一组受支持的 Azure 区域。 另外还列出了这些区域中的资源的指标应发布到的相应终结点：
 
 |Azure 区域 |区域终结点前缀|
 |---|---|
-| **美国和加拿大** | |
-|美国中西部 | https： \/ /westcentralus.monitoring.azure.com |
-|美国西部 2       | https： \/ /westus2.monitoring.azure.com |
-|美国中北部 | https： \/ /northcentralus.monitoring.azure.com
-|美国中南部| https： \/ /southcentralus.monitoring.azure.com |
-|美国中部      | https： \/ /centralus.monitoring.azure.com |
-|加拿大中部 | https： \/ /canadacentral.monitoring.azure.com |
-|美国东部| https： \/ /eastus.monitoring.azure.com |
-|美国东部 2 | https： \/ /eastus2.monitoring.azure.com |
-| **欧洲** | |
-|北欧    | https： \/ /northeurope.monitoring.azure.com |
-|西欧     | https： \/ /westeurope.monitoring.azure.com |
-|英国南部 | https： \/ /uksouth.monitoring.azure.com
-|法国中部 | https： \/ /francecentral.monitoring.azure.com |
-| **非洲** | |
-|南非北部 | https： \/ /southafricanorth.monitoring.azure.com |
-| **亚洲** | |
-|印度中部 | https： \/ /centralindia.monitoring.azure.com |
-|澳大利亚东部 | https： \/ /australiaeast.monitoring.azure.com |
-|Japan East | https： \/ /japaneast.monitoring.azure.com |
-|Southeast Asia  | https： \/ /southeastasia.monitoring.azure.com |
-|东亚 | https： \/ /eastasia.monitoring.azure.com |
-|韩国中部   | https： \/ /koreacentral.monitoring.azure.com |
+| 所有公有云区域 | https://<azure_region_code>。 monitoring.azure.com |
+| **Azure Government** | |
+| US Gov 亚利桑那州 | https： \/ /usgovarizona.monitoring.azure.us |
+| **中国** | |
+| 中国东部 2 | https： \/ /chinaeast2.monitoring.azure.cn |
 
 ## <a name="latency-and-storage-retention"></a>延迟和存储保留期
 

@@ -3,18 +3,18 @@ title: 通过 Azure Migrate 大规模管理迁移项目
 description: 了解如何在委派的客户资源上有效使用 Azure Migrate。
 ms.date: 12/4/2020
 ms.topic: how-to
-ms.openlocfilehash: 16b92f3aa4dc3bfcb71eb232170c4df30348f8db
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 53f7c390d9f16dcbccbb1d09f46e63fec13eee2d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095383"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788937"
 ---
 # <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>通过 Azure Migrate 大规模管理迁移项目
 
 作为服务提供商，你可能已将多个客户租户载入 [Azure Lighthouse](../overview.md)。 Azure Lighthouse 允许服务提供商同时在多个 Azure Active Directory (Azure AD) 租户执行大规模操作，使管理任务更高效。
 
-[Azure Migrate](../../migrate/migrate-services-overview.md) 提供了一个集中式中心，用于评估和迁移到 Azure 本地服务器、基础结构、应用程序和数据。 通常，为多个客户执行大规模评估和迁移的合作伙伴必须使用 [CSP (云解决方案提供商) 订阅模型](/partner-center/customers-revoke-admin-privileges) 或 [在客户租户中创建来宾用户](/azure/active-directory/external-identities/what-is-b2b)，单独访问每个客户订阅。
+[Azure Migrate](../../migrate/migrate-services-overview.md) 提供了一个集中式中心，用于评估和迁移到 Azure 本地服务器、基础结构、应用程序和数据。 通常，为多个客户执行大规模评估和迁移的合作伙伴必须使用 [CSP (云解决方案提供商) 订阅模型](/partner-center/customers-revoke-admin-privileges) 或 [在客户租户中创建来宾用户](../../active-directory/external-identities/what-is-b2b.md)，单独访问每个客户订阅。
 
 使用 Azure Lighthouse 与 Azure Migrate 集成，服务提供商可以大规模发现、评估和迁移不同客户的工作负荷，同时允许客户完全查看和控制其环境。 通过 Azure 委派的资源管理，服务提供商可查看他们跨多个客户租户管理的所有 Azure Migrate 项目。
 
@@ -39,7 +39,7 @@ ms.locfileid: "97095383"
 此模型的工作流将如下所示：
 
 1. 客户 [载入 Azure Lighthouse](onboard-customer.md)。 将与 Azure Migrate 一起使用的标识需要参与方内置角色。 有关使用此角色的示例，请参阅 [azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) 示例模板。
-1. 指定的用户登录到 Azure 门户中的管理租户，然后转到 Azure Migrate。 此用户 [创建一个 Azure Migrate 项目](/azure/migrate/create-manage-projects)，并选择适当的委托客户订阅。
+1. 指定的用户登录到 Azure 门户中的管理租户，然后转到 Azure Migrate。 此用户 [创建一个 Azure Migrate 项目](../../migrate/create-manage-projects.md)，并选择适当的委托客户订阅。
 1. 然后，用户 [执行发现和评估的步骤](../../migrate/tutorial-discover-vmware.md)。
 
    对于 VMware Vm，在配置设备之前，可以将发现限制为 vCenter Server 数据中心、群集、群集文件夹、主机文件夹或单个 Vm。 若要设置作用域，请对设备用于访问 vCenter Server 的帐户分配权限。 如果在虚拟机监控程序上托管多个客户的 Vm，则此方法很有用。 不能限制 Hyper-v 的发现范围。
@@ -61,7 +61,7 @@ ms.locfileid: "97095383"
 此模型的工作流将如下所示：
 
 1. 客户 [载入 Azure Lighthouse](onboard-customer.md)。 将与 Azure Migrate 一起使用的标识需要参与方内置角色。 有关使用此角色的示例，请参阅 [azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) 示例模板。
-1. 指定的用户登录到 Azure 门户中的管理租户，然后转到 Azure Migrate。 此用户在属于管理租户的订阅中 [创建一个 Azure Migrate 项目](/azure/migrate/create-manage-projects) 。
+1. 指定的用户登录到 Azure 门户中的管理租户，然后转到 Azure Migrate。 此用户在属于管理租户的订阅中 [创建一个 Azure Migrate 项目](../../migrate/create-manage-projects.md) 。
 1. 然后，用户 [执行发现和评估的步骤](../../migrate/tutorial-discover-vmware.md)。 本地 Vm 将在管理租户中创建的迁移项目内发现和评估，然后从此处迁移。
 
    如果在同一 Hyper-v 主机中管理多个客户，则可以同时发现所有工作负荷。 可以在同一个组中选择客户特定的 Vm，然后可以创建评估，还可以通过选择适当的客户订阅作为目标目标来执行迁移。 无需限制发现范围，你可以在一个迁移项目中维护所有客户工作负荷的完整概述。
@@ -80,4 +80,3 @@ ms.locfileid: "97095383"
 
 - 了解 [Azure Migrate](../../migrate/migrate-services-overview.md)。
 - 了解[跨租户管理体验](../concepts/cross-tenant-management-experience.md)。
-

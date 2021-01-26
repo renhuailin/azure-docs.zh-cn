@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561216"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788445"
 ---
 # <a name="testing-for-luis-devops"></a>LUIS DevOps 测试
 
@@ -18,7 +18,7 @@ ms.locfileid: "97561216"
 
 在敏捷软件开发方法中，测试在生成优质软件方面扮演着重要的角色。 对 LUIS 应用的每个重大更改都应附带测试，旨在测试开发人员在应用中生成的新功能。 这些测试将与 LUIS 应用的 `.lu` 源一起签入到源代码存储库中。 当应用满足测试条件时，将完成更改的实现。
 
-测试是 [CI/CD 工作流](luis-concept-devops-automation.md)的关键部分。 当拉取请求中 (PR) 或更改合并到主分支后，在拉取请求中建议对 LUIS 应用的更改时，CI 工作流应运行测试，以验证更新是否未引发任何退化。
+测试是 [CI/CD 工作流](luis-concept-devops-automation.md)的关键部分。 当拉取请求 (PR) 建议对 LUIS 应用进行更改时，或者在将更改合并到主分支后，CI 工作流应运行测试，以验证更新是否未导致任何回归。
 
 ## <a name="how-to-do-unit-testing-and-batch-testing"></a>如何进行单元测试和批处理测试
 
@@ -28,7 +28,7 @@ ms.locfileid: "97561216"
 这种测试类似于[交互式测试](./luis-concept-test.md)，可以在 [LUIS 门户](https://www.luis.ai/)中进行。
 
 - **批处理测试** - 批处理测试是对当前已训练的模型进行的全面测试，用于衡量其性能。 与单元测试不同，批处理测试不是关于“通过或失败”的测试。 批处理测试的预期不是每个测试都将返回预期意向和预期实体。 相反，批处理测试可帮助你在应用中查看每个意向和实体的准确性，并帮助你将一段时间内的改进进行比较。  
-这种类型的测试与可以在 LUIS 门户中以交互方式执行的[批处理测试](./luis-concept-batch-test.md)相同。
+这种类型的测试与可以在 LUIS 门户中以交互方式执行的[批处理测试](./luis-how-to-batch-test.md)相同。
 
 可以从项目的开头使用单元测试。 当你开发 LUIS 应用的架构后，要提高其准确性时，批处理测试才具有真正的价值。
 
@@ -42,7 +42,7 @@ ms.locfileid: "97561216"
 * 预期意向
 * 预期实体。
 
-使用 LUIS [批处理文件语法](./luis-concept-batch-test.md#batch-syntax-template-for-intents-with-entities)在 JSON 格式的文件中定义一组测试。 例如：
+使用 LUIS [批处理文件语法](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities)在 JSON 格式的文件中定义一组测试。 例如：
 
 ```JSON
 [
@@ -85,7 +85,7 @@ ms.locfileid: "97561216"
 
 #### <a name="designing-batch-tests"></a>设计批处理测试
 
-批处理测试集应包含大量测试用例，旨在跨 LUIS 应用中的所有意向和所有实体进行测试。 有关定义批处理测试集的信息，请参阅 [LUIS 门户中的批处理测试](./luis-concept-batch-test.md)。
+批处理测试集应包含大量测试用例，旨在跨 LUIS 应用中的所有意向和所有实体进行测试。 有关定义批处理测试集的信息，请参阅 [LUIS 门户中的批处理测试](./luis-how-to-batch-test.md)。
 
 ### <a name="running-tests"></a>运行测试
 
@@ -93,7 +93,7 @@ LUIS 门户提供的功能可帮助进行交互式测试：
 
 * 通过[交互式测试](./luis-concept-test.md)，可以提交示例言语，并获取 LUIS 识别的意向和实体的响应。 通过视觉检测来验证测试是否成功。
 
-* [批处理测试](./luis-concept-batch-test.md)使用批处理测试文件作为输入来验证活动训练版本，以判断其预测准确性。 批处理测试可帮助你查看活动版本中每个意向和实体的准确性，并使用图表显示结果。
+* [批处理测试](./luis-how-to-batch-test.md)使用批处理测试文件作为输入来验证活动训练版本，以判断其预测准确性。 批处理测试可帮助你查看活动版本中每个意向和实体的准确性，并使用图表显示结果。
 
 #### <a name="running-tests-in-an-automated-build-workflow"></a>在自动生成工作流中运行测试
 
@@ -123,7 +123,7 @@ LUIS 门户中可用的测试功能不需要已发布的终结点，并且属于
 还可以使用 NLU.DevOps 包，用于在命令行运行批处理测试。
 
 * 使用 NLU.DevOps [测试命令](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Test.md)将测试文件中的测试提交到终结点，并在文件中捕获实际的预测结果，与单元测试相同。
-* 请使用 NLU。DevOps "[性能测试模式](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode)" 中的 "[比较" 命令](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md)来测量应用程序的性能，还可以将应用程序的性能与基线性能基准进行比较，例如，从最新的 commit 到 main 或当前版本的结果。 在性能测试模式中，`compare` 命令生成 NUnit 测试输出，并以 JSON 格式生成[批处理测试结果](./luis-glossary.md#batch-test)。
+* 在[性能测试模式](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode)下使用 NLU.DevOps [比较命令](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md)衡量应用的性能，还可以将应用的性能与基线性能基准进行比较，例如最新提交到主版本或当前版本的结果。 在性能测试模式中，`compare` 命令生成 NUnit 测试输出，并以 JSON 格式生成[批处理测试结果](./luis-glossary.md#batch-test)。
 
 ## <a name="luis-non-deterministic-training-and-the-effect-on-testing"></a>LUIS 非确定性训练和对测试的影响
 

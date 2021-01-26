@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 342f6a2c4761104823694f2181b3ffa8726a441e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 53ef73c70f5d20133e7b408ad7af91c3778e5568
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449415"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787445"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上的 Kubernetes 群集上启用 Azure Arc
 
@@ -39,7 +39,7 @@ ms.locfileid: "96449415"
 
 1. 你具有将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
   
-    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)。
+    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](/powershell/scripting/install/installing-powershell-core-on-windows)。
     
     - 您也可以将任何其他客户端与 [支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 结合使用。 本文介绍使用 Windows 客户端的过程。 
     
@@ -106,7 +106,7 @@ ms.locfileid: "96449415"
 
 1. 记下 `appID` 、、和， `name` `password` `tenantID` 因为你将在下一命令中将其用作输入。
 
-1. 创建新的服务主体后，将 `Kubernetes Cluster - Azure Arc Onboarding` 角色分配给新创建的主体。 这是一个内置的 Azure 角色 (在命令) 中使用具有有限权限的角色 ID。 请使用以下命令：
+1. 创建新的服务主体后，将 `Kubernetes Cluster - Azure Arc Onboarding` 角色分配给新创建的主体。 这是一个内置的 Azure 角色 (在命令) 中使用具有有限权限的角色 ID。 使用以下命令：
 
     `az role assignment create --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 --assignee <appId-from-service-principal> --scope /subscriptions/<SubscriptionID>/resourceGroups/<Resource-group-name>`
 
@@ -181,7 +181,7 @@ ms.locfileid: "96449415"
 
     还可以在命名空间中获取 Kubernetes 群集上运行的盒的列表 `azure-arc` 。 Pod 是在 Kubernetes 群集上运行的应用程序容器或进程。 
 
-    请使用以下命令：
+    使用以下命令：
     
     `kubectl get pods -n azure-arc`
     

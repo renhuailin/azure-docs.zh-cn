@@ -1,6 +1,6 @@
 ---
-title: 概述-适用于基于云的应用程序和解决方案的 Azure 无服务器
-description: 了解如何使用 Azure 逻辑应用和 Azure Functions 来创建基于云的应用和解决方案，而无需担心基础结构
+title: 概述 - 适用于基于云的应用和解决方案的 Azure 无服务器产品/服务
+description: 了解如何使用 Azure 逻辑应用和 Azure Functions 创建基于云的应用和解决方案，而无需担心基础结构
 services: logic-apps
 ms.suite: integration
 author: jeffhollan
@@ -8,14 +8,14 @@ ms.author: jehollan
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 470857883144f4bf8c21a1921afacb7ba3f5ca00
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75666544"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788089"
 ---
-# <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure 无服务器：通过 Azure 逻辑应用和 Azure Functions 构建基于云的应用和解决方案概述
+# <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure 无服务器产品/服务：概述如何使用 Azure 逻辑应用和 Azure Functions 构建基于云的应用和解决方案
 
 [无服务器](https://azure.microsoft.com/solutions/serverless/)应用具有各种优势，例如开发速度快、减少了代码、简单、规模。 本文介绍无服务器解决方案的各种属性以及 Azure 无服务器产品/服务。
 
@@ -23,7 +23,7 @@ ms.locfileid: "75666544"
 
 无服务器的意思并不是说没有服务器，而是说开发人员不需要考虑服务器。 在传统应用程序开发中，很大一部分工作是解决与缩放、托管以及监视解决方案相关的问题以满足应用程序的需求。 使用无服务器产品/服务时，解决方案中已考虑了这些问题。 此外，无服务器应用是按基于消耗的计划计费的。 如果永远不使用应用，则不会产生费用。 这些功能有助于开发人员集中精力处理解决方案的业务逻辑。
 
-用于无服务器的核心 Azure 服务是 [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/) 和 [Azure Functions](https://azure.microsoft.com/services/functions/)。 两种解决方案都遵守上述原则，有助于开发人员通过最少的代码构建可靠的云应用。
+无服务器的核心 Azure 服务为 [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)和 [Azure Functions](https://azure.microsoft.com/services/functions/)。 两种解决方案都遵守上述原则，有助于开发人员通过最少的代码构建可靠的云应用。
 
 ## <a name="what-is-azure-logic-apps"></a>什么是 Azure 逻辑应用？
 
@@ -35,7 +35,7 @@ ms.locfileid: "75666544"
 
 Azure Functions 是用于在云中轻松运行代码片段或“函数”的一项服务。 可以只编写解决当前问题所需的代码，不需担心整个应用或所需的基础结构。 Functions 可使开发更有效率，并可以使用自己所选的开发语言，例如 C#、F#、Node.js、Python 或 PHP。 只需为代码运行的时间付费，并且 Azure 会根据需要进行缩放。
 
-若要开始使用 Azure Functions，请从[创建第一个 Azure 函数](../azure-functions/functions-create-first-azure-function.md)着手。 有关 Functions 的更多技术信息，请参阅[开发人员参考](../azure-functions/functions-reference.md)。
+若要开始使用 Azure Functions，请从[创建第一个 Azure 函数](../azure-functions/functions-get-started.md)着手。 有关 Functions 的更多技术信息，请参阅[开发人员参考](../azure-functions/functions-reference.md)。
 
 ## <a name="how-can-i-build-and-deploy-serverless-apps-in-azure"></a>如何在 Azure 中构建和部署无服务器应用？
 

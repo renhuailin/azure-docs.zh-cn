@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/1/2019
 ms.author: motanv
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17f0af8c041042ddceccc1f8701e44ab8522840f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13e22633008a4a5df25d84920386a22696648c9a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022116"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789307"
 ---
 # <a name="testability-scenarios"></a>可测试性方案
 大型分布式系统，例如云基础结构，在本质上都是不可靠的。 Azure Service Fabric 使开发人员能够编写出可以在不可靠基础结构上运行的服务。 若要编写高质量的服务，开发人员需要能够引入这种不可靠的基础结构来测试其服务的稳定性。
@@ -125,7 +125,7 @@ class Test
 
 PowerShell
 
-Service Fabric PowerShell 模块提供了两种方法来开始混沌测试。 `Invoke-ServiceFabricChaosTestScenario` 是基于客户端的，如果客户端计算机在测试期间关闭，则不会引入进一步的故障。 另外，还提供了一组命令，用于在计算机关闭的情况下使测试保持运行。 `Start-ServiceFabricChaos` 使用名为 FaultAnalysisService 的有状态且可靠的系统服务，确保在 TimeToRun 启动之前，将继续引入故障。 `Stop-ServiceFabricChaos` 可用于手动停止该测试，`Get-ServiceFabricChaosReport` 将用于获取报表。 有关详细信息，请参阅 [Azure Service Fabric Powershell 参考](/powershell/module/servicefabric/?view=azureservicefabricps)和[在 Service Fabric 群集中引入受控混沌](service-fabric-controlled-chaos.md)。
+Service Fabric PowerShell 模块提供了两种方法来开始混沌测试。 `Invoke-ServiceFabricChaosTestScenario` 是基于客户端的，如果客户端计算机在测试期间关闭，则不会引入进一步的故障。 另外，还提供了一组命令，用于在计算机关闭的情况下使测试保持运行。 `Start-ServiceFabricChaos` 使用名为 FaultAnalysisService 的有状态且可靠的系统服务，确保在 TimeToRun 启动之前，将继续引入故障。 `Stop-ServiceFabricChaos` 可用于手动停止该测试，`Get-ServiceFabricChaosReport` 将用于获取报表。 有关详细信息，请参阅 [Azure Service Fabric Powershell 参考](/powershell/module/servicefabric/)和[在 Service Fabric 群集中引入受控混沌](service-fabric-controlled-chaos.md)。
 
 ```powershell
 $connection = "localhost:19000"

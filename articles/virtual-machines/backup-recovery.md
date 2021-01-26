@@ -1,19 +1,19 @@
 ---
-title: Linux VM 备份选项概述
-description: 概述 Linux Azure 虚拟机的备份选项。
+title: 概述 Vm 的备份选项
+description: 概述 Azure 虚拟机的备份选项。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5a093de0a27c8379cb6eff9c2bc3867dfdc20db5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972350"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787801"
 ---
-# <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的备份和还原选项
+# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Azure 中虚拟机的备份和还原选项
 
 可以通过定期创建备份来保护数据。 有多个备份选项可用于 VM，具体取决于使用案例。
 
@@ -21,7 +21,7 @@ ms.locfileid: "91972350"
 
 若要备份运行生产工作负荷的 Azure VM，请使用 Azure 备份。 Azure 备份对 Windows 和 Linux VM 均支持应用程序一致性备份。 Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。 从恢复点还原时，可以还原整个 VM，也可以仅还原特定的文件。 
 
-有关适用于 Azure VM 的 Azure 备份动手实践简介，请参阅适用于 [Linux](./linux/tutorial-backup-vms.md) 或 [Windows](./windows/tutorial-backup-vms.md) 的“备份 Azure 虚拟机”教程。
+有关 azure Vm 的 Azure 备份的简单实践简介，请参阅 [Azure 备份快速入门](../backup/quick-backup-vm-portal.md)。
 
 有关 Azure 备份工作原理的详细信息，请参阅[在 Azure 中计划 VM 备份基础结构](../backup/backup-azure-vms-introduction.md)
 
@@ -46,4 +46,4 @@ ms.locfileid: "91972350"
 
 
 ## <a name="next-steps"></a>后续步骤
-可以按照适用于 [Linux](./linux/tutorial-backup-vms.md) 或 [Windows](./windows/tutorial-backup-vms.md) 的“备份 Windows 虚拟机教程”试用 Azure 备份。
+可以按照 [Azure 备份快速入门](../backup/quick-backup-vm-portal.md)中的方法尝试 azure 备份。

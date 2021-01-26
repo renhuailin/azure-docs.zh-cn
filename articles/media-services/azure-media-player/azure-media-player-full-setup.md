@@ -1,5 +1,5 @@
 ---
-title: Azure Media Player 完全安装
+title: Azure Media Player 完全设置
 description: 了解如何设置 Azure Media Player。
 author: IngridAtMicrosoft
 ms.author: inhenkel
@@ -7,21 +7,26 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 15f5918748df80cec01ccf89835a0ef51da64529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13abe333bcf3f67ea1a1ba823c693deaa60bc723
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296240"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788801"
 ---
 # <a name="azure-media-player-full-setup"></a>Azure Media Player 完全设置 #
 
 Azure Media Player 易于设置。 只需几分钟即可直接从 Azure 媒体服务帐户获取媒体内容的基本播放。 版本的示例目录中也提供了[示例](https://github.com/Azure-Samples/azure-media-player-samples)。
 
+<!--//aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest-->
+
+下面是 AMS 视频的示例。
+
+> [!VIDEO https://aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest]
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>步骤1：在页面页眉中包含 JavaScript 和 CSS 文件 ##
 
-使用 Azure Media Player，你可以访问 CDN 托管版本中的脚本。 通常建议在结束正文标记之前放置 JavaScript `<body>` ，而不是将其放 `<head>` 在结尾处，但 Azure Media Player 包含 "HTML5 Shiv"，它需要位于旧版 IE 版本的开头，才能将视频标记视为有效元素。
+使用 Azure Media Player，你可以访问 CDN 托管版本中的脚本。 通常建议在结束正文标记之前放置 JavaScript，而不是将其放在末尾 `<body>` `<head>` ，但 Azure Meia Player 包含一个 "HTML5 Shiv"，它需要位于旧版 IE 版本的开头，才能将视频标记视为有效元素。
 
 > [!NOTE]
 > 如果已在使用 HTML5 shiv （如 [Modernizr](https://modernizr.com/) ），则可以在任意位置包含 Azure Media Player JavaScript。 但请确保 Modernizr 的版本包含视频的 shiv。

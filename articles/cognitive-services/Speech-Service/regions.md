@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18,references_regions
-ms.openlocfilehash: f11ccafd58cc64e6186ef590bbbccbfab3335ea4
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 646d29e72b91cd6afcde8e70ad8fd8715442b88e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854853"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786785"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -44,7 +44,7 @@ ms.locfileid: "97854853"
 
 如果使用 [语音 SDK](speech-sdk.md)，则区域由 **区域标识符** 指定（例如，作为 `SpeechConfig.FromSubscription` 的参数）。 请确保该区域与订阅的区域匹配。
 
-如果打算使用音频数据训练自定义模型，请使用 [具有专用硬件](custom-speech-overview.md#set-up-your-azure-account) 的其中一个区域，以实现更快的培训。 您可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) 将经过完全训练的模型复制到其他区域。
+如果打算使用音频数据训练自定义模型，请使用[具有专用硬件的区域](custom-speech-overview.md#set-up-your-azure-account)之一进行更快的训练。 稍后可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) 将完全训练的模型复制到另一个区域。
 
 ### <a name="intent-recognition"></a>意向识别
 
@@ -69,7 +69,7 @@ ms.locfileid: "97854853"
 
 ### <a name="voice-assistants"></a>语音助手
 
-[语音 SDK](speech-sdk.md)通过以下区域中的 [直接线路语音](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech)支持 **语音助手** 功能：
+[语音 SDK](speech-sdk.md)通过以下区域中的 [直接线路语音](./direct-line-speech.md)支持 **语音助手** 功能：
 
 | 全球区域 | 区域           | 区域标识符    |
 | ------------- | ---------------- | -------------------- |

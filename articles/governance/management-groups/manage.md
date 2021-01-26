@@ -1,14 +1,14 @@
 ---
 title: 如何使用管理组 - Azure 治理
 description: 了解如何查看、维护、更新和删除管理组层次结构。
-ms.date: 10/14/2020
+ms.date: 01/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4ce265084662fb7a83f902e046d6e079abff9a48
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 33c7da1d7484056eb1bb2fd4b00d892137ed2b64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058091"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787362"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -41,7 +41,7 @@ ms.locfileid: "92058091"
 
 1. 菜单打开后，请输入要显示的新名称。
 
-   :::image type="content" source="./media/rename_context.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
+   :::image type="content" source="./media/rename_context.png" alt-text="“重命名组”窗口和用于重命名管理组的选项的屏幕截图。" border="false":::
 
 1. 选择“保存”。
 
@@ -82,14 +82,14 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 1. 选择“删除”
 
-   :::image type="content" source="./media/delete.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
+   :::image type="content" source="./media/delete.png" alt-text="突出显示了“删除”按钮的“管理组”页面的屏幕截图。" border="false":::
 
    > [!TIP]
    > 如果该图标已禁用，将鼠标指针悬停在该图标上可显示原因。
 
 1. 此时会打开一个窗口，让你确认是否要删除该管理组。
 
-   :::image type="content" source="./media/delete_confirm.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
+   :::image type="content" source="./media/delete_confirm.png" alt-text="用于删除管理组的“删除组”确认对话框的屏幕截图。" border="false":::
 
 1. 请选择“是”。
 
@@ -119,11 +119,11 @@ az account management-group delete --name 'Contoso'
 
 1. 选择“所有服务” > “管理组”。 
 
-1. 将加载管理组层次结构页。 可以在此页面中浏览你有权访问的所有管理组和订阅。 选择组名称会将您转到层次结构中的较低级别。 导航的工作方式与文件资源管理器一样。
+1. 将加载管理组层次结构页。 可以在此页面中浏览你有权访问的所有管理组和订阅。 选择组名会将你带到层次结构的较低级别。 导航的工作方式与文件资源管理器一样。
 
 1. 若要查看管理组的详细信息，请选择管理组标题旁边的“(详细信息)”链接。 如果此链接不可用，则表示你无权查看该管理组。
 
-   :::image type="content" source="./media/main.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="显示子管理组和订阅的“管理组”页面的屏幕截图。" border="false":::
 
 ### <a name="view-in-powershell"></a>在 PowerShell 中查看
 
@@ -211,9 +211,9 @@ az account management-group show --name 'Contoso' -e -r
 
 **例外**：如果目标或现有父管理组不是根管理组，则权限要求不适用。 由于根管理组是所有新管理组和订阅的默认登陆点，因此不需在其上具有相关权限即可移动某个项。
 
-如果订阅上的“所有者”角色继承自当前管理组，你的移动目标会受限。 只能将订阅移到你在其中拥有“所有者”角色的另一管理组。 你不能将订阅移动到你只是参与者的管理组，因为你将失去订阅的所有权。 如果你是直接分配给订阅的所有者角色，则可以将其移动到你作为参与者的任何管理组。
+如果订阅上的“所有者”角色继承自当前管理组，你的移动目标会受限。 只能将订阅移到你在其中拥有“所有者”角色的另一管理组。 不能将订阅移到你在其中仅是参与者的管理组，因为你会失去订阅的所有权。 如果你已被直接分配了订阅的“所有者”角色，则可将它移到你在其中是参与者的任何管理组。
 
-若要查看自己在 Azure 门户中拥有哪些权限，请选择管理组，然后选择“IAM”。 若要了解有关 Azure 角色的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制 ](../../role-based-access-control/overview.md)。
+若要查看自己在 Azure 门户中拥有哪些权限，请选择管理组，然后选择“IAM”。 若要详细了解 Azure 角色，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
 
 ## <a name="move-subscriptions"></a>移动订阅 
 
@@ -229,7 +229,7 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 在列表中选择具有正确 ID 的订阅。
 
-   :::image type="content" source="./media/add_context_sub.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
+   :::image type="content" source="./media/add_context_sub.png" alt-text="用于选择要添加到管理组的现有订阅的“添加订阅”选项的屏幕截图。" border="false":::
 
 1. 选择“保存”。
 
@@ -243,13 +243,13 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 在列表中，选择要移动的订阅所在行末尾的椭圆。
 
-   :::image type="content" source="./media/move_small.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
+   :::image type="content" source="./media/move_small.png" alt-text="用于选择“移动”选项的订阅的备用菜单的屏幕截图。" border="false":::
 
 1. 选择“移动”。
 
 1. 在打开的菜单中，选择“父管理组”。
 
-   :::image type="content" source="./media/move_small_context.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
+   :::image type="content" source="./media/move_small_context.png" alt-text="“移动”窗口和用于将订阅移到其他管理组的选项的屏幕截图。" border="false":::
 
 1. 选择“保存”。
 
@@ -281,6 +281,42 @@ az account management-group subscription add --name 'Contoso' --subscription '12
 az account management-group subscription remove --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
 ```
 
+### <a name="move-subscriptions-in-arm-template"></a>在 ARM 模板中移动订阅
+
+若要将 Azure 资源管理器模板中的订阅移动 (ARM 模板) ，请使用以下模板。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "targetMgId": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the management group that you want to move the subscription to."
+            }
+        },
+        "subscriptionId": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the existing subscription to move."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "type": "Microsoft.Management/managementGroups/subscriptions",
+            "apiVersion": "2020-05-01",
+            "name": "[concat(parameters('targetMgId'), '/', parameters('subscriptionId'))]",
+            "properties": {
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
 ## <a name="move-management-groups"></a>移动管理组 
 
 ### <a name="move-management-groups-in-the-portal"></a>在门户中移动管理组
@@ -298,7 +334,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
    - 选择新管理组将创建一个新管理组。
    - 选择现有管理组将显示所有管理组的下拉列表，这些管理组可移动到此管理组。  
 
-   :::image type="content" source="./media/add_context_MG.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
+   :::image type="content" source="./media/add_context_MG.png" alt-text="用于创建新管理组的“添加管理组”选项的屏幕截图。" border="false":::
 
 1. 选择“保存”。
 
@@ -323,7 +359,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)支持管理组。 可查询发生在与其他 Azure 资源位于相同中心位置的管理组上的所有事件。 例如，可以看到对特定管理组所做的所有角色分配或策略分配更改。
 
-:::image type="content" source="./media/al-mg.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="与所选管理组相关的活动日志和操作的屏幕截图。" border="false":::
 
 如果要在 Azure 门户外针对管理组进行查询，管理组的目标范围将如下所示： **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** 。
 

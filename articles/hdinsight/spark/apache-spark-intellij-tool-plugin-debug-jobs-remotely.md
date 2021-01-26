@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: 2e6da1783c3bec4958783494cb6928f5a6a69a58
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 63d46298de2f480d97d25de2ec7e1ec78fbebd8d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822346"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789457"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>使用 Azure Toolkit for IntelliJ 通过 VPN 在 HDInsight 中远程调试 Apache Spark 应用程序
 
@@ -41,7 +41,7 @@ ms.locfileid: "97822346"
 
 遵照以下链接中的说明创建 Azure 虚拟网络，并验证台式机与虚拟网络之间的连接。
 
-* [使用 Azure 门户创建具有站点到站点 VPN 连接的 VNet](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [使用 Azure 门户创建具有站点到站点 VPN 连接的 VNet](../../vpn-gateway/tutorial-site-to-site-portal.md)
 * [使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [使用 PowerShell 配置与虚拟网络的点到站点连接](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 994e5a11cd3b42de339ed11a9d2517c81856e672
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c4e2894d193309c169adbea96491e0754d479a8a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581553"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786801"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>管理 Azure Data Box Gateway 的访问、电源和连接模式
 
@@ -68,7 +68,7 @@ ms.locfileid: "96581553"
 
 你应具有 `User` Active Directory 租户的访问权限，以便可以 `Read all directory objects` 。 来宾用户无权访问 `Read all directory objects` 。 如果你是来宾，则生成激活密钥、在设备上创建共享以及创建用户的操作将失败。
 
-有关如何向用户提供 Microsoft Graph API 访问权限的详细信息，请参阅 [Microsoft Graph 权限参考](https://docs.microsoft.com/graph/permissions-reference)。
+有关如何向用户提供 Microsoft Graph API 访问权限的详细信息，请参阅 [Microsoft Graph 权限参考](/graph/permissions-reference)。
 
 ### <a name="register-resource-providers"></a>注册资源提供程序
 
@@ -95,7 +95,7 @@ Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Register
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-有关如何注册资源提供程序的详细信息，请参阅 [解决资源提供程序注册的错误](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors)。
+有关如何注册资源提供程序的详细信息，请参阅 [解决资源提供程序注册的错误](../azure-resource-manager/templates/error-register-resource-provider.md)。
 
 ## <a name="manage-connectivity-mode"></a>管理连接模式
 

@@ -4,19 +4,19 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 群集中配置基�
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 6b23bf285d89a5f3285825feef849b3d168ed62f
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 531d1dc4169b5f4adecfb29c3e116049cb99c3c9
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762038"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787818"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service 上基于主机的加密 (AKS)  (预览) 
 
 通过基于主机的加密，存储在 AKS 代理节点 Vm 的 VM 主机上的数据将静态加密，并加密为存储服务。 这意味着临时磁盘会以平台管理的密钥加密。 操作系统和数据磁盘的缓存会以平台管理的密钥或客户托管的密钥进行加密，具体取决于在这些磁盘上设置的加密类型。 默认情况下，使用 AKS 时，操作系统和数据磁盘使用平台管理的密钥进行静态加密，这意味着这些磁盘的缓存也会默认使用平台管理的密钥进行静态加密。  可以 [在 "自带密钥" 中指定自己的托管密钥， (在 Azure Kubernetes Service 中将 azure 磁盘与 azure 磁盘) ](azure-disk-customer-managed-keys.md)。 这些磁盘的缓存还将使用您在此步骤中指定的密钥进行加密。
 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 此功能只能在创建群集或创建节点池时设置。
 
@@ -28,7 +28,7 @@ ms.locfileid: "98762038"
 - 确保已 `aks-preview` 安装 CLI extension v 0.4.55 或更高版本
 - 确保 `EnableEncryptionAtHostPreview` 功能标志处于 `Microsoft.ContainerService` 启用状态。
 
-为了能够为 VM 或虚拟机规模集使用主机加密，必须在订阅上启用该功能。 使用你的订阅 Id 向发送电子邮件 encryptionAtHost@microsoft.com ，以便为你的订阅启用该功能。
+为了能够为 VM 或虚拟机规模集使用主机加密，必须在订阅上启用该功能。 使用你的订阅 ID 向 encryptionAtHost@microsoft .com 发送电子邮件，以便为你的订阅启用该功能。
 
 ### <a name="register-encryptionathost--preview-features"></a>注册 `EncryptionAtHost`  预览功能
 

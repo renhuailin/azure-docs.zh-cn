@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: deb5f07340f44e7ae4da3372fd17e484d500e6ab
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 1be7331b0c2309350316d1c88c54e6018400463c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573252"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789341"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -235,7 +235,7 @@ Dynamics 365 和 Common Data Service (CDS) 环境托管在 Azure 上，因此客
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>连接到同一线路的虚拟网络相互隔离吗？
 
-不是。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
+否。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>能否将一个虚拟网络连接到多条 ExpressRoute 线路？
 
@@ -256,7 +256,7 @@ Dynamics 365 和 Common Data Service (CDS) 环境托管在 Azure 上，因此客
 
 ### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>连接到同一 ExpressRoute 线路的虚拟网络能否互相对话？
 
-是的。 连接到同一 ExpressRoute 线路的虚拟网络中部署的虚拟机可以彼此通信。 建议设置 [虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) 以促进此通信。
+是的。 连接到同一 ExpressRoute 线路的虚拟网络中部署的虚拟机可以彼此通信。 建议设置 [虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md) 以促进此通信。
 
 ### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>能否将站点到站点连接与 ExpressRoute 一起用于虚拟网络？
 
@@ -428,4 +428,4 @@ Microsoft 365 services 需要启用高级外接程序。 有关费用，请参�
 
 ### <a name="does-the-expressroute-service-store-customer-data"></a>ExpressRoute 服务是否存储客户数据？
 
-不是。
+否。

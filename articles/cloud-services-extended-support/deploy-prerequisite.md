@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 28c7f2c0a61150b2014f669f37ac84ee3a94aebf
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f112d0e96c6ff0caf3c5e3762304158f70963f14
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752150"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787023"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>部署 Azure 云服务 (扩展支持) 的先决条件
 
@@ -49,23 +49,23 @@ CloudServices           Microsoft.Compute    Registered
 #### <a name="virtual-network-located-in-same-resource-group"></a>位于同一资源组中的虚拟网络
 ```xml
 <VirtualNetworkSite name="<vnet-name>"/> 
-<AddressAssignments> 
-<InstanceAddress roleName="<role-name>"> 
-<Subnets> 
-<Subnet name="<subnet-name>"/> 
-</Subnets> 
-</InstanceAddress> 
+  <AddressAssignments> 
+    <InstanceAddress roleName="<role-name>"> 
+     <Subnets> 
+       <Subnet name="<subnet-name>"/> 
+     </Subnets> 
+    </InstanceAddress> 
 ```
 
 #### <a name="virtual-network-located-in-different-resource-group"></a>位于不同资源组中的虚拟网络
 ```xml
 <VirtualNetworkSite name="/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>"/> 
-<AddressAssignments> 
-<InstanceAddress roleName="<role-name>"> 
-<Subnets> 
-<Subnet name="<subnet-name>"/> 
-</Subnets> 
-</InstanceAddress> 
+   <AddressAssignments> 
+     <InstanceAddress roleName="<role-name>"> 
+       <Subnets> 
+        <Subnet name="<subnet-name>"/> 
+       </Subnets> 
+     </InstanceAddress> 
 ```
 ### <a name="2-remove-the-old-plugins"></a>2) 删除旧插件
 
@@ -87,9 +87,9 @@ Azure 资源管理器中已弃用以下大小。 但是，如果要继续使用�
 | 以前的大小名称 | 更新的大小名称 | 
 |---|---|
 | 特小型 | Standard_A0 | 
-| 小 | Standard_A1 |
+| 小型 | Standard_A1 |
 | 中 | Standard_A2 | 
-| 大 | Standard_A3 | 
+| 大型 | Standard_A3 | 
 | 超大型 | Standard_A4 | 
 | A5 | Standard_A5 | 
 | A6 | Standard_A6 | 

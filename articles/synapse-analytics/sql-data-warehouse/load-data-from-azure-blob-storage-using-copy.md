@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b305a07997ccd2cbab0d963ced2bd23ab7a97690
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 398cbd49f79cbeb5f486e3f8ca33987d5357add6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683401"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789440"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>教程：加载纽约出租车数据集
 
-本教程使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)从 Azure Blob 存储帐户加载纽约出租车数据。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) 执行以下操作：
+本教程使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) 从 Azure Blob 存储帐户加载纽约出租车数据集。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) 执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -90,7 +90,7 @@ ms.locfileid: "98683401"
 
 ## <a name="create-tables-for-the-sample-data"></a>为示例数据创建表
 
-已准备好开始将数据加载到新的数据仓库。 本教程的此部分说明如何使用 COPY 语句从 Azure 存储 Blob 加载纽约市出租车数据。 若要了解如何将数据置于 Azure Blob 存储或直接从源加载数据以供将来参考，请参阅[加载概述](design-elt-data-loading.md)。
+已准备好开始将数据加载到新的数据仓库。 本教程的此部分说明如何使用 COPY 语句从 Azure 存储 Blob 加载纽约市出租车数据。 要了解如何将数据获取到 Azure Blob 存储或直接从源加载数据，请参阅 [加载概述](design-elt-data-loading.md)。
 
 运行以下 SQL 脚本，并指定要加载的数据的相关信息。 此信息包括数据所在的位置、数据内容的格式以及数据的表定义。
 

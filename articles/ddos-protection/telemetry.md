@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 86e4a111be7585373ecf4c2fe9508f2bfca7de16
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: a3f6c14b7ed2686a262f28510efb37068cfb9cb3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915073"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787292"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>查看和配置 DDoS 防护遥测
 
@@ -34,7 +34,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 > [!NOTE]
 > 在 Azure 门户上显示 **聚合** 的多个选项时，每个度量值仅支持下表中列出的聚合类型。 对于这种混乱，我们深表歉意，我们正在努力解决此问题。
 
-以下 [指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetworkpublicipaddresses) 适用于 Azure DDoS 保护标准。 这些指标也可通过诊断设置导出 (参阅 [查看和配置 DDoS 诊断日志记录](diagnostic-logging.md)) 。
+以下 [指标](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses) 适用于 Azure DDoS 保护标准。 这些指标也可通过诊断设置导出 (参阅 [查看和配置 DDoS 诊断日志记录](diagnostic-logging.md)) 。
 
 
 | 指标 | 指标显示名称 | 计价单位 | 聚合类型 | 说明 |
@@ -101,7 +101,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你了解了如何执行以下操作：
 
 - 配置针对 DDoS 防护指标的警报
 - 查看 DDoS 保护遥测

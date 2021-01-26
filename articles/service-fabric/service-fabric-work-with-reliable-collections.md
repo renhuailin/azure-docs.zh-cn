@@ -3,12 +3,12 @@ title: 使用可靠集合
 description: 了解有关在 Azure Service Fabric 应用程序中使用可靠集合的最佳做法。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 2d027dc432d1a0a20888bfca4f59bc41866e358d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 908f24cc22c969a34a513ff3fd3ceaa788420620
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651900"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787869"
 ---
 # <a name="working-with-reliable-collections"></a>使用可靠集合
 Service Fabric 通过可靠集合向 .NET 开发人员提供有状态的编程模型。 具体而言，Service Fabric 提供可靠字典和可靠队列类。 在使用这些类时，状态是分区的（实现伸缩性）、复制的（实现可用性），并在分区内进行事务处理（实现 ACID 语义）。 让我们看一下可靠字典对象的典型用法，并看一看它究竟在做些什么。
@@ -226,4 +226,4 @@ public struct ItemId
 
 若要了解如何实现版本容错的数据协定，请参阅[版本容错的序列化回调](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks)
 
-若要了解如何提供可跨多个版本互操作的数据结构，请参阅 [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1)
+若要了解如何提供可跨多个版本互操作的数据结构，请参阅 [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject)

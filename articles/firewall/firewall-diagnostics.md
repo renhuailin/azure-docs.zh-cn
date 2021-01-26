@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 2dd1b51c6bcdbc531661d9ecf45d3d0282eb5b45
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 52c6ef9edfc42bf1ad3b3279e0fa4e19b4cf502c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358841"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788258"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>监视 Azure 防火墙日志和指标
 
@@ -45,7 +45,7 @@ ms.locfileid: "94358841"
 
 3. 选择“添加诊断设置”。 “诊断设置”  页提供用于诊断日志的设置。
 5. 在此示例中，Azure Monitor 日志存储日志，因此请键入“防火墙日志分析”作为名称  。
-6. 在 " **日志** " 下，选择 **AzureFirewallApplicationRule** 、 **AzureFirewallNetworkRule** 、 **AzureFirewallThreatIntelLog** 和 **AzureFirewallDnsProxy** 以收集日志。
+6. 在 " **日志**" 下，选择 **AzureFirewallApplicationRule**、 **AzureFirewallNetworkRule**、 **AzureFirewallThreatIntelLog** 和 **AzureFirewallDnsProxy** 以收集日志。
 7. 选择“发送到 Log Analytics”以配置工作区。
 8. 选择订阅。
 9. 选择“保存”。
@@ -54,13 +54,13 @@ ms.locfileid: "94358841"
 
 每个 Resource Manager 资源都会自动启用活动日志记录。 必须启用诊断日志记录才能开始收集通过这些日志提供的数据。
 
-若要使用 PowerShell 启用诊断日志记录，请执行以下步骤：
+若要通过 PowerShell 启用诊断日志记录，请使用以下步骤：
 
-1. 请注意存储日志数据的 Log Analytics 工作区资源 ID。 此值的形式为： `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>` 。
+1. 记下 Log Analytics 工作区资源 ID，其中存储了日志数据。 此值的形式为：`/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>`。
 
-   你可以使用订阅中的任何工作区。 可使用 Azure 门户查找此信息。 该信息位于资源 **属性** 页中。
+   可以使用订阅中的任何工作区。 可使用 Azure 门户查找此信息。 此信息位于资源的“属性”页中。
 
-2. 记下为其启用了日志记录的防火墙的资源 ID。 此值的形式为： `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` 。
+2. 记下为其启用了日志记录的防火墙的资源 ID。 此值的形式为：`/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`。
 
    可使用门户查找此信息。
 
@@ -76,17 +76,17 @@ ms.locfileid: "94358841"
    Set-AzDiagnosticSetting  @diagSettings 
    ```
 
-## <a name="enable-diagnostic-logging-by-using-the-azure-cli"></a>使用 Azure CLI 启用诊断日志记录
+## <a name="enable-diagnostic-logging-by-using-the-azure-cli"></a>通过 Azure CLI 启用诊断日志记录
 
 每个 Resource Manager 资源都会自动启用活动日志记录。 必须启用诊断日志记录才能开始收集通过这些日志提供的数据。
 
-若要启用 Azure CLI 的诊断日志记录，请执行以下步骤：
+若要通过 Azure CLI 启用诊断日志记录，请使用以下步骤：
 
-1. 请注意存储日志数据的 Log Analytics 工作区资源 ID。 此值的形式为： `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` 。
+1. 记下 Log Analytics 工作区资源 ID，其中存储了日志数据。 此值的形式为：`/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`。
 
-   你可以使用订阅中的任何工作区。 可使用 Azure 门户查找此信息。 该信息位于资源 **属性** 页中。
+   可以使用订阅中的任何工作区。 可使用 Azure 门户查找此信息。 此信息位于资源的“属性”页中。
 
-2. 记下为其启用了日志记录的防火墙的资源 ID。 此值的形式为： `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` 。
+2. 记下为其启用了日志记录的防火墙的资源 ID。 此值的形式为：`/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`。
 
    可使用门户查找此信息。
 
@@ -104,17 +104,17 @@ ms.locfileid: "94358841"
 
 可使用以下任意方法查看和分析活动日志数据：
 
-* **Azure 工具** ：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 的活动操作](../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
+* **Azure 工具**：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 的活动操作](../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
 * Power BI  ：如果尚无 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可免费试用。 使用[适用于 Power BI 的 Azure 活动日志内容包](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)，可以借助预配置的仪表板（可直接使用或进行自定义）分析数据。
-* **Azure Sentinel** ：可以将 Azure 防火墙日志连接到 Azure Sentinel，以便查看工作簿中的日志数据，使用这些数据创建自定义警报，并通过整合这些数据来改进调查。 Azure Sentinel 中的 Azure 防火墙数据连接器目前为公共预览版。 有关详细信息，请参阅 [从 Azure 防火墙连接数据](../sentinel/connect-azure-firewall.md)。
+* **Azure Sentinel**：可以将 Azure 防火墙日志连接到 Azure Sentinel，以便查看工作簿中的日志数据，使用这些数据创建自定义警报，并通过整合这些数据来改进调查。 Azure Sentinel 中的 Azure 防火墙数据连接器目前为公共预览版。 有关详细信息，请参阅 [从 Azure 防火墙连接数据](../sentinel/connect-azure-firewall.md)。
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>查看和分析网络与应用程序规则日志
 
 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md) 收集计数器和事件日志文件。 它含有可视化和强大的搜索功能，可用于分析日志。
 
-如需 Azure 防火墙 Log Analytics 示例查询，请参阅 [Azure 防火墙 Log Analytics 示例](log-analytics-samples.md)。
+如需 Azure 防火墙 Log Analytics 示例查询，请参阅 [Azure 防火墙 Log Analytics 示例](./firewall-workbook.md)。
 
-[Azure 防火墙工作簿](firewall-workbook.md) 为 azure 防火墙数据分析提供了一个灵活的画布。 该画布可用于在 Azure 门户中创建丰富的视觉对象报表。 你可以利用跨 Azure 部署的多个防火墙，并将其组合成统一的交互式体验。
+[Azure 防火墙工作簿](firewall-workbook.md)为 Azure 防火墙数据分析提供了一个灵活的画布。 该画布可用于在 Azure 门户中创建丰富的视觉对象报表。 你可以利用跨 Azure 部署的多个防火墙，并将其组合成统一的交互式体验。
 
 还可以连接到存储帐户并检索访问和性能日志的 JSON 日志条目。 下载 JSON 文件后，可以将其转换为 CSV 并在 Excel、Power BI 或任何其他数据可视化工具中查看。
 

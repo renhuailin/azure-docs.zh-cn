@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: 61be4b45df94c902c0473b94a6dd83237c72da3c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 51989a9219cdbfebf833c99849dba67c939cf77a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196107"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786836"
 ---
 # <a name="use-speech-services-through-a-private-endpoint"></a>通过专用终结点使用语音服务
 
@@ -293,7 +293,7 @@ az cognitiveservices account update --name my-speech-resource-name --resource-gr
 语音到文本有两个 REST Api。 每个 API 的用途不同，并使用不同的终结点，并在启用私有终结点的方案中使用时需要不同的方法。
 
 语音到文本 REST Api 包括：
-- 用于[批处理](batch-transcription.md)和[自定义语音](custom-speech-overview.md)的[语音到文本 REST API 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30)。 3.0 是 v2.0 [的后继版本](/azure/cognitive-services/speech-service/migrate-v2-to-v3)
+- 用于[批处理](batch-transcription.md)和[自定义语音](custom-speech-overview.md)的[语音到文本 REST API 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30)。 3.0 是 v2.0 [的后继版本](./migrate-v2-to-v3.md)
 - 用于在线脚本的[短音频的语音到文本 REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) 
 
 在专用终结点方案中，对短音频和文本到语音 REST API 使用语音到文本 REST API。 它相当于本文后面所述的 [语音 SDK 案例](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk) 。 
@@ -606,7 +606,7 @@ var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
 
 有关定价详细信息，请参阅 [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link)。
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>了解详细信息
 
 * [Azure 专用链接](../../private-link/private-link-overview.md)
 * [语音 SDK](speech-sdk.md)

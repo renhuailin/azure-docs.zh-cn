@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: cc7dac3767ca5c9e2429f4691a458f88ad1af707
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151981"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786938"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解 (LUIS) 术语表解释使用 LUIS 服务时可能遇到的术语。
@@ -50,12 +50,13 @@ LUIS [创作资源](luis-how-to-azure-subscription.md#azure-resources-for-luis)�
 
 ## <a name="batch-test"></a>批处理测试
 
-批处理测试是使用一致且已知的用户话语测试集验证当前 LUIS 应用模型的功能。 批处理测试在 [JSON 格式化文件](luis-concept-batch-test.md#batch-file-format)中定义。
+批处理测试是使用一致且已知的用户话语测试集验证当前 LUIS 应用模型的功能。 批处理测试在 [JSON 格式化文件](./luis-how-to-batch-test.md#batch-test-file)中定义。
+
 
 另请参阅：
-* [概念](luis-concept-batch-test.md)
+* [概念](./luis-how-to-batch-test.md)
 * [操作说明](luis-how-to-batch-test.md) - 运行批处理测试
-* [教程](luis-tutorial-batch-testing.md) - 创建和运行批处理测试
+* [教程](./luis-how-to-batch-test.md) - 创建和运行批处理测试
 
 ### <a name="f-measure"></a>F 度量值
 
@@ -96,11 +97,11 @@ LUIS [创作资源](luis-how-to-azure-subscription.md#azure-resources-for-luis)�
 
 ## <a name="collaborator"></a>协作者
 
-从概念上讲，协作者与[参与者](#contributor)等同。 当所有者将协作者的电子邮件地址添加到不受 Azure 基于角色的访问控制 (Azure RBAC) 的应用时，将授予协作者访问权限。 如果仍在使用协作者，则应迁移 LUIS 帐户，并使用 LUIS 创作资源来管理使用 Azure RBAC 的参与者。
+从概念上讲，协作者与[参与者](#contributor)等同。 当所有者将协作者的电子邮件地址添加到不受 Azure 基于角色的访问控制 (Azure RBAC) 控制的应用中时，该协作者会被授予访问权限。 如果你仍在使用协作者，则应迁移 LUIS 帐户，并使用 LUIS 创作资源通过 Azure RBAC 管理参与者。
 
 ## <a name="contributor"></a>参与者
 
-参与者不是应用程序的[所有者](#owner)，但具有相同权限，可以添加、编辑和删除意向、实体和言语。 参与者为 LUIS 应用提供 Azure RBAC)  (Azure 基于角色的访问控制。
+参与者不是应用程序的[所有者](#owner)，但具有相同权限，可以添加、编辑和删除意向、实体和言语。 参与者为 LUIS 应用提供 Azure 基于角色的访问控制 (Azure RBAC)。
 
 另请参阅：
 * [操作说明](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource) - 添加参与者

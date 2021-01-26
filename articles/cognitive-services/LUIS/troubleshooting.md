@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: e803fa393d85f7f0b4849aed96356b7a4e77d83f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e4de77a8a56ce21511ad099af59a77e10ab1815d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96000124"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787530"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -177,7 +177,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 * 添加更多标签，以便 LUIS 提高意向之间的差异性。
 * 添加短语列表功能，引入专业领域的词汇，以便 LUIS 加快学习速度。
 
-请参阅[批量测试](luis-tutorial-batch-testing.md)教程。
+请参阅[批量测试](./luis-how-to-batch-test.md)教程。
 
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>将某个应用导出之后又重新导入到新应用中时（使用新的应用 ID），LUIS 预测分数会有所不同。 为何发生这种情况？
 

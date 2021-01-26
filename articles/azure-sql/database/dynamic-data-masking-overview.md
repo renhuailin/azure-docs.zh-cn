@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/04/2020
+ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: f8d352dac98f953f7f6d8033d0d9e1376c4da313
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 0f92d8dbfe423efa58231831fe012a27e45f9208
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532222"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787682"
 ---
 # <a name="dynamic-data-masking"></a>动态数据屏蔽 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,15 +26,11 @@ Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 支持�
 
 动态数据掩码允许客户指定在对应用层产生最小影响的前提下可以透露的敏感数据量，从而帮助防止未经授权的用户访问敏感数据。 它是一种基于策略的安全功能，可以隐藏对指定数据库字段进行查询时获得的结果集中的敏感数据，不会更改数据库中的数据。
 
-例如，呼叫中心服务代表可以根据呼叫者的信用卡号的多个数字来识别其身份，但这些数据项不应完全透露给服务代表。 可以定义掩码规则，对任意查询的结果集中任何信用卡号除最后四位数以外的其他所有数字进行掩码。 另举一例：在需要进行故障排除时，开发人员可通过定义适当的数据掩码来保护个人数据，因此可在不违反符合性法规的情况下，对生产环境进行查询。
+例如，呼叫中心的服务代表可以通过其电子邮件地址的几位数来识别调用方，但这些数据项不应完全公开给服务代表。 可以定义屏蔽规则来屏蔽任何查询的结果集中的所有电子邮件地址。 另举一例：在需要进行故障排除时，开发人员可通过定义适当的数据掩码来保护个人数据，因此可在不违反符合性法规的情况下，对生产环境进行查询。
 
 ## <a name="dynamic-data-masking-basics"></a>动态数据掩码基础知识
 
-通过在 SQL 数据库配置窗格中的“安全性”下选择“动态数据掩码”边栏选项卡，在 Azure 门户中设置动态数据掩码策略 。 不能使用门户 for SQL 托管实例 (使用 PowerShell 或 REST API) 来设置此功能。 有关详细信息，请参阅 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)。
-
-### <a name="dynamic-data-masking-permissions"></a>动态数据掩码权限
-
-Azure SQL 数据库管理员、服务器管理员或 [SQL 安全管理员](../../role-based-access-control/built-in-roles.md#sql-security-manager)角色可以配置动态数据掩码。
+通过在 SQL 数据库配置窗格中的“安全性”下选择“动态数据掩码”边栏选项卡，在 Azure 门户中设置动态数据掩码策略 。 不能使用 SQL 托管实例的门户设置此功能（请使用 PowerShell 或 REST API）。 有关详细信息，请参阅 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)。
 
 ### <a name="dynamic-data-masking-policy"></a>动态数据掩码策略
 
@@ -83,3 +79,11 @@ DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段�
 
 - [创建或更新](/rest/api/sql/datamaskingrules/createorupdate)：创建或更新数据库的数据掩码规则。
 - [按数据库列出](/rest/api/sql/datamaskingrules/listbydatabase)：获取数据库的数据掩码规则列表。
+
+## <a name="permissions"></a>权限
+
+可以使用 Azure SQL 数据库管理员、服务器管理员或基于角色的访问控制来配置动态数据屏蔽 (RBAC) [SQL 安全管理员](../../role-based-access-control/built-in-roles.md#sql-security-manager) 角色。
+
+## <a name="next-steps"></a>后续步骤
+
+[动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)

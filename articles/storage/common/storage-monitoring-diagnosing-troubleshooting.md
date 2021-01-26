@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 18d36e37554a5d2b37488b7a1525f8290dc03da0
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 50d78e83bbbeb4b0252c83f9f52e94599ea6946c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763262"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787954"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -472,7 +472,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 ### <a name="the-client-is-receiving-http-403-forbidden-messages"></a><a name="the-client-is-receiving-403-messages"></a>客户端正在接收“HTTP 403 (禁止访问)”消息
 如果客户端应用程序引发“HTTP 403(禁止)”错误，则可能的原因是客户端在发送存储请求时使用了过期的共享访问签名 (SAS)（虽然其他可能的原因包括时钟偏差、无效密钥和空标头）。 如果已过期的 SAS 密钥是原因，则你不会在服务器端存储日志记录日志数据中看到任何条目。 下表显示了存储客户端库生成的客户端日志的示例，它说明了如何出现此问题：
 
-| 源 | 详细程度 | 详细程度 | 客户端请求 ID | 操作文本 |
+| Source | 详细程度 | 详细程度 | 客户端请求 ID | 操作文本 |
 | --- | --- | --- | --- | --- |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab-... |正在按位置模式 PrimaryOnly 使用主位置启动操作。 |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab -… |开始向 <https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Synchronous_request> 发出同步请求 |
@@ -767,7 +767,7 @@ WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 �
 >
 
 ### <a name="appendix-4-using-excel-to-view-metrics-and-log-data"></a><a name="appendix-4"></a>附录 4：使用 Excel 查看指标和日志数据
-使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储指标数据，以便可以轻松地将这些数据加载到 Excel 中以供查看和分析。 来自 Azure Blob 存储的存储日志记录数据已采用带分隔符格式加载到 Excel 中。 但是，需要基于[存储分析日志格式](/rest/api/storageservices/Storage-Analytics-Log-Format)和[存储分析度量表架构](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)中的信息添加相应的列标题。
+使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储指标数据，以便可以轻松地将这些数据加载到 Excel 中以供查看和分析。 来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。 但是，需要基于[存储分析日志格式](/rest/api/storageservices/Storage-Analytics-Log-Format)和[存储分析度量表架构](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)中的信息添加相应的列标题。
 
 要将存储日志记录数据导入 Excel（从 Blob 存储下载后），请执行以下操作：
 

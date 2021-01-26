@@ -3,15 +3,15 @@ title: Azure Service Fabric 有状态可靠服务诊断功能
 description: Azure Service Fabric 中的有状态 Reliable Services 的诊断功能
 ms.topic: conceptual
 ms.date: 8/24/2018
-ms.openlocfilehash: 5a3831dd4f8d5402980fac3daf8c35d9884c852d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 774a771d0c9701076a5d6c070963bf6224a571dd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840755"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789324"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>有状态 Reliable Services 的诊断功能
-Azure Service Fabri 有状态 Reliable Services StatefulServiceBase 类会发出 [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) 事件，这些事件可用于调试服务、提供对运行时运行方式的深入了解，以及帮助进行故障排除。
+Azure Service Fabri 有状态 Reliable Services StatefulServiceBase 类会发出 [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) 事件，这些事件可用于调试服务、提供对运行时运行方式的深入了解，以及帮助进行故障排除。
 
 ## <a name="eventsource-events"></a>EventSource 事件
 有状态 Reliable Services StatefulServiceBase 类的 EventSource 名称是“Microsoft-ServiceFabric-Services”。 当[在 Visual Studio 中调试](service-fabric-debugging-your-application.md)服务时，来自此事件源的事件将显示在“[诊断事件](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)”窗口中。
@@ -58,7 +58,7 @@ Service Fabric TStore 是[可靠集合](./service-fabric-reliable-services-intro
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*ServiceFabricPartitionId* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示形式。 分区 ID 是 GUID，并且其字符串表示形式是通过使用格式说明符“D”的 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 生成的。
+*ServiceFabricPartitionId* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示形式。 分区 ID 是 GUID，并且其字符串表示形式是通过使用格式说明符“D”的 [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) 生成的。
 
 *ServiceFabricReplicaId* 是一种与给定的 Reliable Service 副本相关联的 ID。 副本 ID 包含在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例（由同一分区生成）发生冲突。 [此处](service-fabric-concepts-replica-lifecycle.md)提供有关副本及其在 Reliable Services 中的角色的更多详细信息。
 
@@ -73,7 +73,7 @@ Service Fabric TStore 是[可靠集合](./service-fabric-reliable-services-intro
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*ServiceFabricPartitionId* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示形式。 分区 ID 是 GUID，并且其字符串表示形式是通过使用格式说明符“D”的 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 生成的。
+*ServiceFabricPartitionId* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示形式。 分区 ID 是 GUID，并且其字符串表示形式是通过使用格式说明符“D”的 [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) 生成的。
 
 *ServiceFabricReplicaId* 是一种与给定的 Reliable Service 副本相关联的 ID。 副本 ID 包含在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例（由同一分区生成）发生冲突。 [此处](service-fabric-concepts-replica-lifecycle.md)提供有关副本及其在 Reliable Services 中的角色的更多详细信息。
 

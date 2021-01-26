@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: cd0b73dd22e5e2cab720bb1a33e58e25e517b1f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2a514af99baa2d828df1aee35a0e6339d39e617
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604978"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788547"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions 的 Azure 服务总线触发器
 
@@ -83,91 +83,6 @@ public static void Run(string myQueueItem,
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-以下示例演示 *function.json* 文件中的一个服务总线触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 此函数将读取[消息元数据](#message-metadata)并记录服务总线队列消息。 
-
-下面是 function.json 文件中的绑定数据：
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "testqueue",
-    "connection": "MyServiceBusConnection",
-    "name": "myQueueItem",
-    "type": "serviceBusTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-JavaScript 脚本代码如下所示：
-
-```javascript
-module.exports = function(context, myQueueItem) {
-    context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
-    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
-    context.log('DeliveryCount =', context.bindingData.deliveryCount);
-    context.log('MessageId =', context.bindingData.messageId);
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-下面的示例演示如何通过触发器读取服务总线队列消息。
-
-服务总线绑定在 "*类型*" 设置为的*function.js*中定义 `serviceBusTrigger` 。
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "msg",
-      "type": "serviceBusTrigger",
-      "direction": "in",
-      "queueName": "inputqueue",
-      "connection": "AzureServiceBusConnectionString"
-    }
-  ]
-}
-```
-
-* _ \_ _ \_ Py*中的代码将参数声明为 `func.ServiceBusMessage` ，这允许您在函数中读取队列消息。
-
-```python
-import azure.functions as func
-
-import logging
-import json
-
-def main(msg: func.ServiceBusMessage):
-    logging.info('Python ServiceBus queue trigger processed message.')
-
-    result = json.dumps({
-        'message_id': msg.message_id,
-        'body': msg.get_body().decode('utf-8'),
-        'content_type': msg.content_type,
-        'expiration_time': msg.expiration_time,
-        'label': msg.label,
-        'partition_key': msg.partition_key,
-        'reply_to': msg.reply_to,
-        'reply_to_session_id': msg.reply_to_session_id,
-        'scheduled_enqueue_time': msg.scheduled_enqueue_time,
-        'session_id': msg.session_id,
-        'time_to_live': msg.time_to_live,
-        'to': msg.to,
-        'user_properties': msg.user_properties,
-        'metadata' : msg.metadata
-    })
-
-    logging.info(result)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 以下 Java 函数使用 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中的 `@ServiceBusQueueTrigger` 注释来说明服务总线队列触发器的配置。 此函数获取放置在队列上的消息，然后将其添加到日志。
@@ -199,6 +114,120 @@ def main(msg: func.ServiceBusMessage):
     ) {
         context.getLogger().info(message);
     }
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+以下示例演示 *function.json* 文件中的一个服务总线触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 此函数将读取[消息元数据](#message-metadata)并记录服务总线队列消息。
+
+下面是 function.json 文件中的绑定数据：
+
+```json
+{
+"bindings": [
+    {
+    "queueName": "testqueue",
+    "connection": "MyServiceBusConnection",
+    "name": "myQueueItem",
+    "type": "serviceBusTrigger",
+    "direction": "in"
+    }
+],
+"disabled": false
+}
+```
+
+JavaScript 脚本代码如下所示：
+
+```javascript
+module.exports = function(context, myQueueItem) {
+    context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
+    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
+    context.log('DeliveryCount =', context.bindingData.deliveryCount);
+    context.log('MessageId =', context.bindingData.messageId);
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下面的示例演示了文件 *function.js上* 的服务总线触发器绑定，以及使用绑定的 [PowerShell 函数](functions-reference-powershell.md) 。 
+
+下面是 function.json 文件中的绑定数据：
+
+```json
+{
+  "bindings": [
+    {
+      "name": "mySbMsg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "topicName": "mytopic",
+      "subscriptionName": "mysubscription",
+      "connection": "AzureServiceBusConnectionString"
+    }
+  ]
+}
+```
+
+下面是发送服务总线消息时运行的函数。
+
+```powershell
+param([string] $mySbMsg, $TriggerMetadata)
+
+Write-Host "PowerShell ServiceBus queue trigger function processed message: $mySbMsg"
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+下面的示例演示如何通过触发器读取服务总线队列消息。
+
+服务总线绑定在 "*类型*" 设置为的 *function.js* 中定义 `serviceBusTrigger` 。
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "inputqueue",
+      "connection": "AzureServiceBusConnectionString"
+    }
+  ]
+}
+```
+
+*_\__ \_ Py* 中的代码将参数声明为 `func.ServiceBusMessage` ，这允许您在函数中读取队列消息。
+
+```python
+import azure.functions as func
+
+import logging
+import json
+
+def main(msg: func.ServiceBusMessage):
+    logging.info('Python ServiceBus queue trigger processed message.')
+
+    result = json.dumps({
+        'message_id': msg.message_id,
+        'body': msg.get_body().decode('utf-8'),
+        'content_type': msg.content_type,
+        'expiration_time': msg.expiration_time,
+        'label': msg.label,
+        'partition_key': msg.partition_key,
+        'reply_to': msg.reply_to,
+        'reply_to_session_id': msg.reply_to_session_id,
+        'scheduled_enqueue_time': msg.scheduled_enqueue_time,
+        'session_id': msg.session_id,
+        'time_to_live': msg.time_to_live,
+        'to': msg.to,
+        'user_properties': msg.user_properties,
+        'metadata' : msg.metadata
+    })
+
+    logging.info(result)
 ```
 
 ---
@@ -268,14 +297,6 @@ def main(msg: func.ServiceBusMessage):
 
 C# 脚本不支持特性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-JavaScript 不支持特性。
-
-# <a name="python"></a>[Python](#tab/python)
-
-Python 不支持特性。
-
 # <a name="java"></a>[Java](#tab/java)
 
 使用 `ServiceBusQueueTrigger` 注释可以创建在创建服务总线队列消息时要运行的函数。 可用的配置选项包括队列名称和连接字符串名称。
@@ -284,15 +305,27 @@ Python 不支持特性。
 
 有关更多详细信息，请参阅触发器[示例](#example)。
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支持特性。
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python 不支持特性。
+
 ---
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json 文件和 `ServiceBusTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `ServiceBusTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type  | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 |
 |**queueName**|**QueueName**|要监视的队列的名称。  仅在监视队列的情况下设置，不为主题设置。
@@ -313,8 +346,8 @@ Python 不支持特性。
 * `string` - 如果消息是文本。
 * `byte[]` - 适用于二进制数据。
 * 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
-* `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法的反序列化消息。
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) - 用于接收和确认来自消息容器的消息（当 [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) 设置为 `false` 时为必需）
+* `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true) 方法的反序列化消息。
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) - 用于接收和确认来自消息容器的消息（当 [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) 设置为 `false` 时为必需）
 
 这些参数类型适用于 Azure Functions 版本 1.x；对于 2.x 及更高版本，请使用 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
 
@@ -325,23 +358,27 @@ Python 不支持特性。
 * `string` - 如果消息是文本。
 * `byte[]` - 适用于二进制数据。
 * 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
-* `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法的反序列化消息。
+* `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true) 方法的反序列化消息。
 
 这些参数仅适用于 Azure Functions 版本 1.x；对于 2.x 及更高版本，请使用 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-使用 `context.bindings.<name from function.json>` 访问队列或主题消息。 服务总线消息作为字符串或 JSON 对象传递到函数中。
-
-# <a name="python"></a>[Python](#tab/python)
-
-队列消息可通过类型化为的参数提供给函数 `func.ServiceBusMessage` 。 服务总线消息作为字符串或 JSON 对象传递到函数中。
 
 # <a name="java"></a>[Java](#tab/java)
 
 可以通过 `ServiceBusQueueMessage` 或 `ServiceBusTopicMessage` 参数获取传入的服务总线消息。
 
 [参阅示例了解详细信息](#example)。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+使用 `context.bindings.<name from function.json>` 访问队列或主题消息。 服务总线消息作为字符串或 JSON 对象传递到函数中。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+可以通过在 " *function.js上* 的" 文件名 "属性中配置的参数来使用服务总线实例。
+
+# <a name="python"></a>[Python](#tab/python)
+
+队列消息可通过类型化为的参数提供给函数 `func.ServiceBusMessage` 。 服务总线消息作为字符串或 JSON 对象传递到函数中。
 
 ---
 
@@ -351,13 +388,13 @@ Python 不支持特性。
 
 ## <a name="peeklock-behavior"></a>PeekLock 行为
 
-Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)接收消息。 如果函数成功完成，则对此消息调用 `Complete`；如果函数失败，则调用 `Abandon`。 如果函数的运行时间长于 `PeekLock` 超时时间，则只要该函数正在运行，就会自动续订锁定。 
+Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)接收消息。 如果函数成功完成，则对此消息调用 `Complete`；如果函数失败，则调用 `Abandon`。 如果函数的运行时间长于 `PeekLock` 超时时间，则只要该函数正在运行，就会自动续订锁定。
 
-`maxAutoRenewDuration` 可在 *host.json* 中配置，它映射到 [OnMessageOptions.MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet)。 根据服务总线文档，此设置所允许的最长时间为 5 分钟，而你可以将 Functions 时间限制从默认值 5 分钟增加到 10 分钟。 对于服务总线函数，你不会那么做，因为会超出服务总线续订限制。
+`maxAutoRenewDuration` 可在 *host.json* 中配置，它映射到 [OnMessageOptions.MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet&preserve-view=true)。 根据服务总线文档，此设置所允许的最长时间为 5 分钟，而你可以将 Functions 时间限制从默认值 5 分钟增加到 10 分钟。 对于服务总线函数，你不会那么做，因为会超出服务总线续订限制。
 
 ## <a name="message-metadata"></a>消息元数据
 
-服务总线触发器提供了几个[元数据属性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下属性是 [Message](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) 类的成员。
+服务总线触发器提供了几个[元数据属性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下属性是 [Message](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet&preserve-view=true) 类的成员。
 
 |属性|类型|说明|
 |--------|----|-----------|

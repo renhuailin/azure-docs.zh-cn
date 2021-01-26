@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0de08c166aba7609210892a32836bee9b07d5394
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1d7cd07ee8ae8b35d51fbdd25b34602c2e799c75
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203042"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787258"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Azure Stack Edge 的 Azure 安全基线
 
@@ -22,7 +22,7 @@ ms.locfileid: "98203042"
 
 ## <a name="network-security"></a>网络安全
 
-[有关详细信息，请参阅 *Azure 安全基线：* 网络安全性](/azure/security/benchmarks/security-controls-v2-network-security)。
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全性](../security/benchmarks/security-controls-v2-network-security.md)。
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1：实现内部流量的安全性
 
@@ -104,7 +104,7 @@ Azure Stack Edge 设备使用自己的入侵检测功能来保护服务。
 
 ## <a name="identity-management"></a>标识管理
 
-有关详细信息，请参阅 [Azure 安全基准：标识管理](/azure/security/benchmarks/security-controls-v2-identity-management)。
+有关详细信息，请参阅 [Azure 安全基准：标识管理](../security/benchmarks/security-controls-v2-identity-management.md)。
 
 ### <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2：安全且自动地管理应用程序标识
 
@@ -181,7 +181,7 @@ Azure Stack 边缘设备启动到处于锁定状态以进行本地访问。 对�
 
 ## <a name="privileged-access"></a>特权访问
 
-有关详细信息，请参阅 [Azure 安全基准：特权访问](/azure/security/benchmarks/security-controls-v2-privileged-access)。
+有关详细信息，请参阅 [Azure 安全基准：特权访问](../security/benchmarks/security-controls-v2-privileged-access.md)。
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制对关键业务型系统的管理访问权限
 
@@ -236,7 +236,7 @@ Azure Stack Edge Pro 设备是一个本地设备，它通过在本地处理数�
 
 - [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
-- [部署特权访问工作站](/azure/active-directory/devices/howto-azure-managed-workstation)
+- [部署特权访问工作站](/security/compass/privileged-access-deployment)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -244,7 +244,7 @@ Azure Stack Edge Pro 设备是一个本地设备，它通过在本地处理数�
 
 ## <a name="data-protection"></a>数据保护
 
-[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](/azure/security/benchmarks/security-controls-v2-data-protection)。
+[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](../security/benchmarks/security-controls-v2-data-protection.md)。
 
 ### <a name="dp-2-protect-sensitive-data"></a>DP-2：保护敏感数据
 
@@ -258,7 +258,7 @@ Azure Stack Edge Pro 设备是一个本地设备，它通过在本地处理数�
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4：加密传输中的敏感信息
 
-**指南**： Azure Stack Edge 为航班中的数据使用安全通道。 这些是：
+**指南**： Azure Stack Edge 为航班中的数据使用安全通道。 其中包括：
 
 - 标准 TLS 1.2 用于在设备和 Azure 云之间传输的数据。 不会回退到 TLS 1.1 和更早版本。 如果不支持 TLS 1.2，则将阻止代理通信。 Azure 门户和软件开发工具包 (SDK) 管理还需要 TLS 1.2。
 
@@ -274,7 +274,7 @@ Azure Stack Edge Pro 设备是一个本地设备，它通过在本地处理数�
 
 ## <a name="asset-management"></a>资产管理
 
-有关详细信息，请参阅 [Azure 安全基准：资产管理](/azure/security/benchmarks/security-controls-v2-asset-management)。
+有关详细信息，请参阅 [Azure 安全基准：资产管理](../security/benchmarks/security-controls-v2-asset-management.md)。
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1：确保安全团队可以了解与资产相关的风险
 
@@ -308,7 +308,7 @@ Azure Stack Edge Pro 设备是一个本地设备，它通过在本地处理数�
 
 **指南**：你可以在任何本地创建的虚拟机上运行你自己的应用程序。 使用 PowerShell 脚本在堆栈边缘设备上创建本地计算虚拟机。 我们强烈建议你只引入可在本地虚拟机上运行的受信任的应用程序。 
 
-- [如何在 Windows 环境中控制 PowerShell 脚本执行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1&amp;viewFallbackFrom=powershell-6&amp;preserve-view=true)
+- [如何在 Windows 环境中控制 PowerShell 脚本执行](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&amp;viewFallbackFrom=powershell-6&view=powershell-7.1)
 
 **Azure 安全中心监视**：不适用
 
@@ -316,7 +316,7 @@ Azure Stack Edge Pro 设备是一个本地设备，它通过在本地处理数�
 
 ## <a name="logging-and-threat-detection"></a>日志记录和威胁检测
 
-有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)。
+有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](../security/benchmarks/security-controls-v2-logging-threat-detection.md)。
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：为 Azure 资源启用威胁检测
 
@@ -380,7 +380,7 @@ Azure Stack Edge Pro 设备是一个本地设备，它通过在本地处理数�
 
 ## <a name="incident-response"></a>事件响应
 
-[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](/azure/security/benchmarks/security-controls-v2-incident-response)。
+[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](../security/benchmarks/security-controls-v2-incident-response.md)。
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1：准备 - 更新 Azure 的事件响应流程
 
@@ -466,7 +466,7 @@ Azure Sentinel 提供几乎针对任何日志源的广泛数据分析，并提�
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
-- [使用标记整理 Azure 资源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -488,7 +488,7 @@ Azure Sentinel 提供几乎针对任何日志源的广泛数据分析，并提�
 
 ## <a name="posture-and-vulnerability-management"></a>安全状况和漏洞管理
 
-有关详细信息，请参阅 [Azure 安全基准：安全状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。
+有关详细信息，请参阅 [Azure 安全基准：安全状况和漏洞管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)。
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3：为计算资源建立安全配置
 
@@ -547,7 +547,7 @@ Azure Stack 边缘管理的主机操作系统和虚拟机维护其安全配置�
 
 ## <a name="endpoint-security"></a>终结点安全性
 
-*有关详细信息，请参阅 [Azure 安全基线：终结点安全性](/azure/security/benchmarks/security-controls-v2-endpoint-security)。*
+*有关详细信息，请参阅 [Azure 安全基线：终结点安全性](../security/benchmarks/security-controls-v2-endpoint-security.md)。*
 
 ### <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1：使用终结点检测和响应 (EDR)
 
@@ -569,7 +569,7 @@ Azure Stack 边缘管理的主机操作系统和虚拟机维护其安全配置�
 
 ## <a name="backup-and-recovery"></a>备份和恢复
 
-有关详细信息，请参阅 [Azure 安全基准：备份和恢复](/azure/security/benchmarks/security-controls-v2-backup-recovery)。
+有关详细信息，请参阅 [Azure 安全基准：备份和恢复](../security/benchmarks/security-controls-v2-backup-recovery.md)。
 
 ### <a name="br-1-ensure-regular-automated-backups"></a>BR-1：确保定期执行自动备份
 
@@ -623,7 +623,7 @@ Azure 存储帐户的访问权限由 Azure 订阅以及与该存储帐户关联�
 
 ## <a name="governance-and-strategy"></a>治理和策略
 
-有关详细信息，请参阅 [Azure 安全基准：治理和策略](/azure/security/benchmarks/security-controls-v2-governance-strategy)。
+有关详细信息，请参阅 [Azure 安全基准：治理和策略](../security/benchmarks/security-controls-v2-governance-strategy.md)。
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定义资产管理和数据保护策略 
 
@@ -648,15 +648,15 @@ Azure 存储帐户的访问权限由 Azure 订阅以及与该存储帐户关联�
 -   合适的加密标准
 
 有关详细信息，请参阅以下资源：
-- [Azure 安全体系结构建议 - 存储、数据和加密](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Azure 安全体系结构建议 - 存储、数据和加密](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Azure 安全基础知识 - Azure 数据安全、加密和存储](../security/fundamentals/encryption-overview.md)
 
-- [云采用框架 - Azure 数据安全和加密最佳做法](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [云采用框架 - Azure 数据安全和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure 安全基准 - 资产管理](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure 安全基准 - 资产管理](../security/benchmarks/security-controls-v2-asset-management.md)
 
-- [Azure 安全基准 - 数据保护](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure 安全基准 - 数据保护](../security/benchmarks/security-controls-v2-data-protection.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -684,7 +684,7 @@ Azure 存储帐户的访问权限由 Azure 订阅以及与该存储帐户关联�
 
 **指导**：持续衡量并缓解你的个人资产及其托管环境的风险。 确定高价值资产和暴露程度高的受攻击面（例如已发布的应用程序、网络入口和出口点、用户和管理员终结点等）的优先级。
 
-- [Azure 安全基准 - 状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure 安全基准 - 状况和漏洞管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -725,7 +725,7 @@ Azure 存储帐户的访问权限由 Azure 订阅以及与该存储帐户关联�
 有关详细信息，请参阅以下资源：
 - [Azure 安全最佳做法 11 - 体系结构。单一的统一安全策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure 安全基准 - 网络安全](/azure/security/benchmarks/)
+- [Azure 安全基准 - 网络安全](../security/benchmarks/index.yml)
 
 - [Azure 网络安全概述](../security/fundamentals/network-overview.md)
 
@@ -753,9 +753,9 @@ Azure 存储帐户的访问权限由 Azure 订阅以及与该存储帐户关联�
 
 有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准 - 标识管理](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure 安全基准 - 标识管理](../security/benchmarks/security-controls-v2-identity-management.md)
 
-- [Azure 安全基准 - 特权访问](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure 安全基准 - 特权访问](../security/benchmarks/security-controls-v2-privileged-access.md)
 
 - [Azure 安全最佳做法 11 - 体系结构。单一的统一安全策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -787,9 +787,9 @@ Azure 存储帐户的访问权限由 Azure 订阅以及与该存储帐户关联�
 
 有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准 - 日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure 安全基准 - 日志记录和威胁检测](../security/benchmarks/security-controls-v2-logging-threat-detection.md)
 
-- [Azure 安全基准 - 事件响应](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure 安全基准 - 事件响应](../security/benchmarks/security-controls-v2-incident-response.md)
 
 - [Azure 安全最佳做法 4 - 流程。更新云的事件响应流程](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
@@ -801,5 +801,5 @@ Azure 存储帐户的访问权限由 Azure 订阅以及与该存储帐户关联�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅 [Azure 安全基准 V2 概述](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 参阅 [Azure 安全基准 V2 概述](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: aac1fb8e2da7a3c84b3abff47c8f476b9fb9049c
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704332"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789189"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>教程：创建 Azure Data Box 的出口订单
 
@@ -179,7 +179,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
 15. 选择将用于管理对此资源的访问权限的用户标识。 选中“选择用户标识”。 在右侧面板中，选择要使用的订阅和托管标识。 然后选取“选择”  。
 
-    用户分配的托管标识是一个可用于管理多个资源的独立 Azure 资源。 有关详细信息，请参阅[托管标识类型](/azure/active-directory/managed-identities-azure-resources/overview)。  
+    用户分配的托管标识是一个可用于管理多个资源的独立 Azure 资源。 有关详细信息，请参阅[托管标识类型](../active-directory/managed-identities-azure-resources/overview.md)。  
 
     如果需要创建新的托管标识，请按照[使用 Azure 门户创建、列出和删除用户分配的托管标识以及如何为其分配角色](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指南操作。
     

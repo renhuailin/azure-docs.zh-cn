@@ -9,16 +9,45 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 11aa739beeb07c3de056d8a2430b556fcc40b178
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 6e92fb39845944898bebf6446c35f0932e13b5b8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746724"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788869"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 参考页。
+
+ ## <a name="2021-01-25"></a>2021-01-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1210"></a>用于 Python 的 Azure 机器学习 SDK 1.21。0
++ **Bug 修复与改进**
+  + **azure-cli-ml**
+    + 修复了使用 AmlCompute 和 UserAssigned 标识时的 CLI 帮助文本
+  + **azureml-contrib-automl-dnn-vision**
+    + "部署" 和 "下载" 按钮将对 AutoML 视觉的运行可见，可以部署或下载与其他 AutoML 运行类似的模型。 有两个新文件 (scoring_file_v_1_0_0 py conda_env_v_1_0_0 和 docker-compose.override.yml) ，其中包含一个用于运行推断的脚本和一个用于重新创建 conda 环境的 docker-compose.override.yml 文件。 "Pth" 文件也已重命名为使用 "pt" 扩展名。
+  + **azureml-core**
+    + 适用于 azure cli 的 MSI 支持-ml
+    + 用户分配的托管标识支持。
+    + 进行此项更改后，客户应该能够提供一个用户分配的标识，该标识可用于从客户密钥保管库中提取密钥以供静态加密。
+    +  对于非常大的文件，修复 row_count = 0-对于带有空格填充的带分隔符值，修复双精度转换错误
+    + 为输出数据集 GA 删除实验标志
+    + 更新有关如何获取模型的特定版本的文档
+    + 允许在专用链接的情况下更新混合模式访问的工作区
+    + 修复以删除针对恢复运行功能的数据存储的额外注册
+    + 添加了 CLI/SDK 支持，用于更新主要用户分配的工作区标识
+  + **azureml-interpret**
+    + 已更新的 azureml-解释为解读-社区0.16。0
+    + 用于解释 azureml 中的客户端的内存优化-解释
+  + **azureml-train-automl-runtime**
+    + ADB 运行的已启用流式处理
+  + **azureml-train-core**
+    + 修复以删除针对恢复运行功能的数据存储的额外注册
+  + **azureml-widgets**
+    + 客户不应使用小组件查看对现有运行数据可视化的更改，现在可以根据需要使用条件超参数来获得支持。
+    + 用户运行小组件现在包含有关运行为什么处于排队状态的详细说明。
 
 
  ## <a name="2021-01-11"></a>2021-01-11
@@ -40,16 +69,16 @@ ms.locfileid: "98746724"
    
 
 ## <a name="2020-12-31"></a>2020-12-31
-### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure 机器学习 Studio 笔记本体验 (12 月更新版) 
+### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure 机器学习工作室笔记本体验（12 月更新）
 + **新功能**
-  + 用户文件名搜索。 用户现在可以搜索工作区中保存的所有文件。
-  + 每个笔记本单元的 Markdown 并行支持。 在笔记本单元中，用户现在可以选择并排查看呈现的 markdown 和 markdown 语法。
-  + 单元格状态栏。 状态栏指示代码单元中的状态、单元格运行是否成功以及运行所花的时间。 
+  + 用户文件名搜索。 用户现在可以搜索保存在工作区中的所有文件。
+  + 每个笔记本单元格并行支持 Markdown。 在笔记本单元格中，用户现在可以视需要选择并排查看已呈现的 markdown 和 markdown 语法。
+  + 单元格状态栏。 状态栏指明了代码单元格处于何种状态、单元格运行是否成功以及运行所需的时间。 
    
 + **Bug 修复与改进**
-  + 改善了页面加载时间
+  + 改进了页面加载时间
   + 提高了性能 
-  + 提高速度和内核可靠性
+  + 提高了速度和内核可靠性
 
   
 ## <a name="2020-12-07"></a>2020-12-07
@@ -118,15 +147,15 @@ ms.locfileid: "98746724"
 ## <a name="2020-11-30"></a>2020-11-30
 ### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure 机器学习 Studio 笔记本体验 (11 月更新版) 
 + **新功能**
-   + 本机终端。 用户现在可以通过[集成终端](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)访问集成终端以及 Git 操作。
+   + 本机终端。 用户现在可以通过[集成终端](./how-to-run-jupyter-notebooks.md#terminal)访问集成终端以及 Git 操作。
   + 复制文件夹 
   + 计算下拉下拉的成本 
   + 脱机计算 Pylance 
 
 + **Bug 修复与改进**
-  + 改善了页面加载时间
+  + 改进了页面加载时间
   + 提高了性能 
-  + 提高速度和内核可靠性
+  + 提高了速度和内核可靠性
   + 大型文件上传。 你现在可以将文件上传 >95mb
 
 ## <a name="2020-11-09"></a>2020-11-09

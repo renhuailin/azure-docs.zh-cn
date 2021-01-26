@@ -3,12 +3,12 @@ title: Azure 实验室服务-将自定义映像上传到共享映像库
 description: 描述如何将自定义映像上传到共享映像库。 大学 IT 部门将发现导入图像特别有用。
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 93b4141636b629168e9bb7a73e71a9fe4bfc39f5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3e2f38b0cab87eab27181ddef79d0c02bd8c9bdb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654637"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787157"
 ---
 # <a name="upload-a-custom-image-to-shared-image-gallery"></a>将自定义映像上传到共享映像库
 
@@ -66,5 +66,5 @@ ms.locfileid: "94654637"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [共享映像库概述](../virtual-machines/windows/shared-image-galleries.md)
+* [共享映像库概述](../virtual-machines/shared-image-galleries.md)
 * [如何使用共享映像库](how-to-use-shared-image-gallery.md)

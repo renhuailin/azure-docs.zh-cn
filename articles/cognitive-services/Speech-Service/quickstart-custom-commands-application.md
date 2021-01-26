@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: 2cc37cc66c06dc9e6997c6a031a9c60ad050c01a
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ea32358aa86a6093cd72adf959d5fe731cf1e125
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601763"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786870"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>使用自定义命令创建语音助手
 
@@ -136,4 +136,4 @@ ms.locfileid: "98601763"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文使用现有应用程序。 接下来，在操作 [方法部分](how-to-custom-commands-create-application-with-simple-commands.md)中，你将了解如何从头开始设计、开发、调试、测试和集成自定义命令应用程序。
+本文使用现有应用程序。 接下来，在操作 [方法部分](./how-to-develop-custom-commands-application.md)中，你将了解如何从头开始设计、开发、调试、测试和集成自定义命令应用程序。

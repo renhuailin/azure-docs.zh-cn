@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 6c71d9325ff7c1c5d2e7eff03a587a28335efd72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652138"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788224"
 ---
 # <a name="azure-firewall-features"></a>Azure 防火墙功能
 
@@ -101,7 +101,7 @@ Azure 防火墙包括以下功能：
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor 日志记录
 
-所有事件与 Azure Monitor 集成，使你能够在存储帐户中存档日志、将事件流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 有关 Azure Monitor 日志示例，请参阅 [Azure 防火墙的 Azure Monitor 日志](log-analytics-samples.md)。
+所有事件与 Azure Monitor 集成，使你能够在存储帐户中存档日志、将事件流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 有关 Azure Monitor 日志示例，请参阅 [Azure 防火墙的 Azure Monitor 日志](./firewall-workbook.md)。
 
 有关详细信息，请参阅[教程：监视 Azure 防火墙日志和指标](./firewall-diagnostics.md)。 
 

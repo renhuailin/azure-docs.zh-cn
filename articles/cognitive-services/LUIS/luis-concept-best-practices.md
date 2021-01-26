@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.openlocfilehash: fc4475eb64744688e901d2b37e30632d044b0115
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2f6ed85416cc5d7c3c2baba2b2cfe489e301d7e5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019307"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788479"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>有关生成语言理解 (LUIS) 应用的最佳做法
 使用应用创作过程生成 LUIS 应用：
@@ -141,7 +141,7 @@ ms.locfileid: "95019307"
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>应监视应用的性能
 
-使用[批量测试](luis-concept-batch-test.md)集监视预测准确性。
+使用[批量测试](./luis-how-to-batch-test.md)集监视预测准确性。
 
 保留一个独立的言语集，不将其用作[示例言语](luis-concept-utterance.md)或终结点言语。 针对测试集不断改进应用。 调整测试集以反映真实的用户话语。 使用此测试集来评估每次迭代的或每个版本的应用。
 
