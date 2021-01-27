@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 91915f204a68d59a603b8bdea383b497a5b33d34
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400601"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664021"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure 数字孪生是什么？
 
@@ -33,6 +33,8 @@ Azure 数字孪生是一个服务型平台 (PaaS)，可用于基于整个环境�
 在 Azure 数字孪生中，可以使用称为 [**模型**](concepts-models.md)的自定义孪生类型来定义表示物理环境中的人物、位置和事物的数字实体。 
 
 可以将这些模型定义视为描述业务的专门词汇。 例如，对于建筑物管理解决方案，可以定义诸如“建筑物”、“地板”和“电梯”之类的模型。 然后，可以根据这些模型创建 **数字孪生**，以表示你的特定环境。
+
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 模型是采用类似 JSON 语言（称为[数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)）进行定义的，它们根据状态属性、遥测事件、命令、组件和关系描述孪生。
 * 模型定义实体之间的语义 **关系**，以便可以将孪生连接到反映其交互的知识图。 可以将模型视为描述你世界的名词，将关系视为动词。
