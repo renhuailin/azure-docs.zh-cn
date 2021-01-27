@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: d601c6191da9d555e54c1d58c122420510d288fc
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 8b233211f47250d4742d35cd0782cdd241839496
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955546"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804865"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>在 Azure Stack Edge Pro 设备上运行的 Vm 上部署自定义脚本扩展
 
@@ -31,7 +31,7 @@ ms.locfileid: "97955546"
 
 #### <a name="supported-os-for-custom-script-extension-on-windows"></a>Windows 上的自定义脚本扩展支持的操作系统
 
-适用于 Windows 的自定义脚本扩展将在以下操作系统上运行。 其他版本可能可行，但尚未在 Azure Stack Edge Pro 设备上运行的 Vm 上进行内部测试。
+适用于 Windows 的自定义脚本扩展将在以下操作系统上运行。 其他版本可以正常工作，但尚未在 Azure Stack Edge Pro 设备上运行的 Vm 上进行测试。
 
 | 分发 | 版本 |
 |---|---|
@@ -40,7 +40,7 @@ ms.locfileid: "97955546"
 
 #### <a name="supported-os-for-custom-script-extension-on-linux"></a>适用于 Linux 上的自定义脚本扩展的支持 OS
 
-适用于 Linux 的自定义脚本扩展将在以下操作系统上运行。 其他版本可能可行，但尚未在 Azure Stack Edge Pro 设备上运行的 Vm 上进行内部测试。
+适用于 Linux 的自定义脚本扩展将在以下操作系统上运行。 其他版本可以正常工作，但尚未在 Azure Stack Edge Pro 设备上运行的 Vm 上进行测试。
 
 | 分发 | 版本 |
 |---|---|
@@ -60,15 +60,15 @@ If your script is on a local server, then you may still need additional firewall
 > [!NOTE]
 > Before you install the Custom Script extension, make sure that the port enabled for compute network on your device is connected to Internet and has access. -->
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
-1. 将[VM 模板和参数文件下载](https://aka.ms/ase-vm-templates)到客户端计算机。 将它解压缩到将用作工作目录的目录中。
+1. 将[VM 模板和参数文件下载](https://aka.ms/ase-vm-templates)到客户端计算机。 将下载内容解压缩到将用作工作目录的目录中。
 
-1. 应在设备上创建并部署 VM。 若要创建 Vm，请遵循 [使用模板在 Azure Stack Edge Pro 上部署 vm](azure-stack-edge-gpu-deploy-virtual-machine-templates.md)中的所有步骤。
+1. 应在设备上创建并部署 VM。 若要创建 Vm，请遵循 [使用模板在 Azure Stack Edge Pro 上部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-templates.md)中的所有步骤。
 
-    如果需要在外部从 GitHub 或 Azure 存储下载脚本，请在配置计算网络时，为计算启用连接到 Internet 的端口。 这允许您下载脚本。
+    如果需要从外部下载 GitHub 或 Azure 存储中的脚本，请在配置计算网络时，启用连接到 Internet 的端口进行计算。 这允许您下载脚本。
 
-    下面是一个示例，其中端口2已连接到 internet，并已用于启用计算网络。 如果已确定在前面的步骤中不需要 Kubernetes，可以跳过 Kubernetes 节点 IP 和外部服务 IP 分配。    
+    在以下示例中，端口2已连接到 internet，并已用于启用计算网络。 如果你在前面的步骤中确定不需要 Kubernetes，可以跳过 Kubernetes 节点 IP 和外部服务 IP 分配。
 
     ![在连接到 internet 的端口上启用计算设置](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
 
@@ -115,7 +115,7 @@ If your script is on a local server, then you may still need additional firewall
 ```
 提供 VM 名称、扩展的名称和要执行的命令。
 
-下面是本文中使用的示例参数文件。 
+下面是本文中使用的示例参数文件。
 
 ```powershell
 {
@@ -158,7 +158,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $tem
 > [!NOTE]
 > 扩展部署是一个长时间运行的作业，完成时间大约需要10分钟。
 
-下面是示例输出：
+下面是一个示例输出：
 
 ```powershell
 PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\ExtensionTemplates\addCSExtensiontoVM.json"
@@ -196,7 +196,7 @@ PS C:\WINDOWS\system32>
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName <Name of resource group> -VMName <Name of VM> -Name <Name of the extension>
 ```
-下面是示例输出：
+下面是一个示例输出：
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM5 -Name CustomScriptExtension
@@ -293,7 +293,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $tem
 > [!NOTE]
 > 扩展部署是一个长时间运行的作业，完成时间大约需要10分钟。
 
-下面是示例输出：
+下面是一个示例输出：
 
 ```powershell
 PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\ExtensionTemplates\addCSExtensionToVM.json"
@@ -342,7 +342,7 @@ Administrator@VM6:
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName <VM Name> -Name <Extension Name>
 ```
-下面是示例输出： 
+下面是一个示例输出： 
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM5 -Name CustomScriptExtension
@@ -381,7 +381,7 @@ PS C:\WINDOWS\system32>
 
 `Remove-AzureRmVMExtension -ResourceGroupName <Resource group name> -VMName <VM name> -Name <Extension name>`
 
-下面是示例输出：
+下面是一个示例输出：
 
 ```powershell
 PS C:\WINDOWS\system32> Remove-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM6 -Name LinuxCustomScriptExtension
@@ -396,4 +396,4 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 资源管理器 cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure 资源管理器 cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

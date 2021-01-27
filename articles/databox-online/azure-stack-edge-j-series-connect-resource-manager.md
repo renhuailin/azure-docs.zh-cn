@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 6bf0da8716233178889d47ec3d57e9b29bc2658f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 54aad90cf86f1a20d76f04f3a829f29c47023558
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763211"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805799"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>连接到 Azure Stack Edge Pro 设备上的 Azure 资源管理器
 
@@ -34,9 +34,9 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
 下表总结了设备上公开的各种终结点、支持的协议以及用于访问这些终结点的端口。 在本文中，你将找到对这些终结点的引用。
 
-| # | 终结点 | 支持的协议 | 使用的端口 | 用途 |
+| # | 终结点 | 支持的协议 | 使用的端口 | 用于 |
 | --- | --- | --- | --- | --- |
-| 1. | Azure Resource Manager | https | 443 | 连接到 Azure 资源管理器以实现自动化 |
+| 1. | Azure 资源管理器 | https | 443 | 连接到 Azure 资源管理器以实现自动化 |
 | 2. | 安全令牌服务 | https | 443 | 通过访问和刷新令牌进行身份验证 |
 | 3. | Blob | https | 443 | 通过 REST 连接到 Blob 存储 |
 
@@ -101,7 +101,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
     |类型 |使用者名称 (SN)   |使用者可选名称 (SAN)   |使用者名称示例 |
     |---------|---------|---------|---------|
-    |Azure Resource Manager|`management.<Device name>.<Dns Domain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`|`management.mydevice1.microsoftdatabox.com` |
+    |Azure 资源管理器|`management.<Device name>.<Dns Domain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`|`management.mydevice1.microsoftdatabox.com` |
     |Blob 存储|`*.blob.<Device name>.<Dns Domain>`|`*.blob.< Device name>.<Dns Domain>`|`*.blob.mydevice1.microsoftdatabox.com` |
     |两个终结点的多 SAN 单一证书|`<Device name>.<dnsdomain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`<br>`*.blob.<Device name>.<Dns Domain>`|`mydevice1.microsoftdatabox.com` |
 
@@ -138,9 +138,9 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
     比较 **主要** 版本，并确保其为5.0 或更高版本。
 
-    如果版本已过时，请参阅[升级现有的 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)。
+    如果版本已过时，请参阅[升级现有的 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell)。
 
-    如果 \' 没有 PowerShell 5.0，请遵循 [安装 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)。
+    如果 \' 没有 PowerShell 5.0，请遵循 [安装 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true)。
 
     下面显示了示例输出。
 
@@ -156,7 +156,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
     
 2. 可以访问 PowerShell 库。
 
-    以管理员身份运行 PowerShell。 验证 PSGallery 是否已注册为存储库。
+    以管理员身份运行 PowerShell。 验证是否已 `PSGallery` 注册为存储库。
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
@@ -175,7 +175,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
     PSGallery                 Trusted              https://www.powershellgallery.com/api/v2
     ```
     
-如果你的存储库不受信任，或者需要详细信息，请参阅 [验证 PowerShell 库辅助功能](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility)。
+如果你的存储库不受信任，或者需要详细信息，请参阅 [验证 PowerShell 库辅助功能](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908&preserve-view=true&preserve-view=true#2-validate-the-powershell-gallery-accessibility)。
 
 ## <a name="step-4-set-up-azure-powershell-on-the-client"></a>步骤4：在客户端上设置 Azure PowerShell 
 
@@ -327,7 +327,7 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
     Set-AzureRMEnvironment -Name <Environment Name>
     ```
     
-    有关详细信息，请参阅 [get-azurermenvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)。
+    有关详细信息，请参阅 [get-azurermenvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0&preserve-view=true)。
 
     - 为您执行的每个 cmdlet 定义内联环境。 这可确保所有 API 调用都通过正确的环境。 默认情况下，调用将通过 Azure 公共，但你希望这些调用通过为 Azure Stack Edge Pro 设备设置的环境完成。
 

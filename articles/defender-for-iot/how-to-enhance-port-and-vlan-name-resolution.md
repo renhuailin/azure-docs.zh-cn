@@ -1,5 +1,5 @@
 ---
-title: 增强端口和 VLAN 名称解析
+title: 优化端口和 VLAN 名称解析
 description: 在传感器上自定义端口和 VLAN 名称，以丰富设备的分辨率。
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 1747af77468ebe41f59892dea4bb49ce24757f37
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838267"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803572"
 ---
-# <a name="enhance-port-and-vlan-name-resolution"></a>增强端口和 VLAN 名称解析
+# <a name="enhance-port-and-vlan-name-resolution"></a>优化端口和 VLAN 名称解析
 
 可以在传感器上自定义端口和 VLAN 名称，以丰富设备的分辨率。
 
@@ -50,7 +50,7 @@ Azure Defender for IoT 会自动向最通用的保留端口（例如 DHCP 或 HT
 
 3. 输入端口号，选择 **TCP/UDP**，或同时选择 **两者**，并添加名称。
 
-4. 选择“保存”。
+4. 选择“保存”。 
 
 ## <a name="configure-vlan-names"></a>配置 VLAN 名称
 
@@ -84,7 +84,8 @@ VLAN 名称最多可包含 50 ASCII 字符。
 
 ## <a name="next-steps"></a>后续步骤
 
-在报告中查看设备清单和数据挖掘的已扩充设备信息：
+在各种报告中查看丰富的设备信息：
 
 - [调查设备清单中的传感器检测](how-to-investigate-sensor-detections-in-a-device-inventory.md)
-- [生成报告](how-to-generate-reports.md)
+- [传感器趋势和统计信息报告](how-to-create-trends-and-statistics-reports.md)
+- [传感器数据挖掘查询](how-to-create-data-mining-queries.md)

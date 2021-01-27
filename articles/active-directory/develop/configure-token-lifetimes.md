@@ -13,17 +13,17 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 883a06bdffcd0afcbc1be6f2c761d6a1c2c2ea2a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2529c6c3b0f9d188e1ce8062c05f62f3e980ef50
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681869"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805224"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>配置令牌生存期策略（预览版）
-可以指定 Microsoft 标识平台颁发的 access、SAML 或 ID 令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。 有关详细信息，请参阅 [可配置的令牌生存期](active-directory-configurable-token-lifetimes.md)。
+你可以指定由 Microsoft 标识平台颁发的访问、SAML 或 ID 令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。 有关详细信息，请参阅 [可配置的令牌生存期](active-directory-configurable-token-lifetimes.md)。
 
-在本部分中，我们将逐步介绍常见的策略方案，这些方案可帮助你为令牌生存期实施新规则。 在此示例中，你将了解如何创建要求用户更频繁地在 web 应用中进行身份验证的策略。
+本部分逐步讲解常见的策略场景，帮助你针对令牌生存期实施新规则。 本示例介绍如何创建一个要求用户更频繁地在 Web 应用中进行身份验证的策略。
 
 ## <a name="get-started"></a>入门
 若要开始，请执行以下步骤：
@@ -35,19 +35,19 @@ ms.locfileid: "98681869"
     Connect-AzureAD -Confirm
     ```
 
-1. 若要查看已在组织中创建的所有策略，请运行 [new-azureadpolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet。  定义的属性值与上面列出的默认值不同的任何结果都处于停用范围内。
+1. 若要查看组织中创建的所有策略，请运行 [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet。  任何已定义的属性值不同于上面列出的默认值的结果都在停用范围内。
 
     ```powershell
     Get-AzureADPolicy -All
     ```
 
-1. 若要查看哪些应用和服务主体已链接到指定的特定策略，请使用你的任何策略 Id 替换 **1a37dad8-5da7-4cc8-87c7-efbc0326cf20** 来运行以下 [get-azureadpolicyappliedobject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) cmdlet。 然后，你可以决定是配置条件访问登录频率还是保留 Azure AD 默认值。
+1. 若要查看哪些应用和服务主体链接到你确定的特定策略，请使用任何策略 ID 替换 1a37dad8-5da7-4cc8-87c7-efbc0326cf20，以运行以下 [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) cmdlet。 然后，你可以决定是配置条件访问登录频率，还是保留 Azure AD 默认值。
 
     ```powershell
     Get-AzureADPolicyAppliedObject -id 1a37dad8-5da7-4cc8-87c7-efbc0326cf20
     ```
 
-如果你的租户有为刷新和会话令牌配置属性定义自定义值的策略，Microsoft 建议你将这些策略更新为反映上述默认值的值。 如果未进行任何更改，Azure AD 将自动服从默认值。
+如果你的租户具有定义刷新和会话令牌配置属性的自定义值的策略，Microsoft 建议你将这些策略更新为反映上述默认值的值。 如果未进行更改，Azure AD 将自动接受默认值。
 
 ## <a name="create-a-policy-for-web-sign-in"></a>为 Web 登录创建策略
 
@@ -83,11 +83,11 @@ ms.locfileid: "98681869"
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-## <a name="create-token-lifetime-policies-for-refresh-and-session-tokens"></a>创建刷新和会话令牌的令牌生存期策略
+## <a name="create-token-lifetime-policies-for-refresh-and-session-tokens"></a>为刷新和会话令牌创建令牌生存期策略
 > [!IMPORTANT]
-> 从5月2020，新租户不能配置刷新和会话令牌生存期。  具有现有配置的租户可以修改刷新和会话令牌策略，直至2021年1月30日。  在2021年1月30日后，Azure Active Directory 将停止在策略中遵守现有的刷新和会话令牌配置。 你仍可以在停用后配置访问、SAML 和 ID 令牌的生存期。
+> 从5月2020，新租户不能配置刷新和会话令牌生存期。  具有现有配置的租户可以在 2021 年 1 月 30 之前修改刷新和会话令牌策略。  Azure Active Directory 将在 2021 年 1 月 30 日之后停止执行策略中的现有刷新和会话令牌配置。 在停用之后，你仍然可以配置访问、SAML 和 ID 令牌生存期。
 >
-> 如果需要继续定义在要求用户重新登录之前的时间段，请在条件访问中配置登录频率。 若要了解有关条件性访问的详细信息，请参阅 [使用条件访问配置身份验证会话管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
+> 如果需要继续定义要求用户再次登录之前的时间段，请配置条件访问中的登录频率。 若要了解有关条件性访问的详细信息，请参阅 [使用条件访问配置身份验证会话管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
 >
 > 如果你不想在停用日期后使用条件性访问，则你的刷新和会话令牌将设置为该日期的 [默认配置](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement) ，并且你将无法再更改其生存期。
 

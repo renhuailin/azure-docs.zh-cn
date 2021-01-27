@@ -12,18 +12,18 @@ ms.date: 01/21/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1dc5b8dc8930d75456f307324ef97bd60e78eca9
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 96772020e70aeb32fa1a8ae18bf3818396887877
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660151"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805235"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
 Microsoft Graph 允许管理 Azure AD B2C 目录中的资源。 支持用于管理 Azure AD B2C 资源（包括用户、标识提供者、用户流、自定义策略和策略密钥）的下列 Microsoft Graph API 操作。 以下各部分中的每个链接对应于 Microsoft Graph API 参考中该操作的相应页面。 
 
-## <a name="perquisites"></a>必备
+## <a name="prerequisites"></a>先决条件
 
 若要使用 MS 图形 API，并与 Azure AD B2C 租户中的资源进行交互，你需要一个授予此操作权限的应用程序注册。 按照 [使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md) 一文中的步骤来创建管理应用程序可以使用的应用程序注册。 
 
@@ -108,7 +108,7 @@ Microsoft Graph API 中策略密钥的顶层资源是[信任的框架密钥集](
 
 - [列出扩展属性](/graph/api/application-list-extensionproperty)
 
-Azure AD B2C 提供一个目录，其中可以保存每个用户的 100 个自定义属性。 对于用户流，将 [使用 Azure 门户管理](user-flow-custom-attributes.md)这些扩展属性。 对于自定义策略，Azure AD B2C 会为你创建属性，这是首次向扩展属性写入值。
+Azure AD B2C 提供一个目录，其中可以保存每个用户的 100 个自定义属性。 对于用户流，[可使用 Azure 门户管理](user-flow-custom-attributes.md)这些扩展属性。 对于自定义策略，Azure AD B2C 在策略首次向扩展属性中写入值时替你创建属性。
 
 ## <a name="audit-logs"></a>审核日志
 

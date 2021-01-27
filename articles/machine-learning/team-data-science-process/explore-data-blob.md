@@ -1,5 +1,5 @@
 ---
-title: 使用 pandas 浏览 Azure blob 存储中的数据 - Team Data Science Process
+title: 通过 pandas 了解 Azure Blob 存储中的数据-团队数据科学流程
 description: 如何使用 pandas Python 包浏览存储在 Azure blob 容器中的数据。
 services: machine-learning
 author: marktab
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3d80ff9f5f96bbc642aed6598c86cb682d606695
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 855998b887f1d446ee8d196ff4628e066cb5d675
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410668"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805676"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 pandas 浏览 Azure blob 存储中的数据
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>在 Azure Blob 存储中通过 pandas 浏览数据
 
 本文介绍如何使用 [pandas](https://pandas.pydata.org/) Python 包浏览存储在 Azure blob 容器中的数据。
 
@@ -72,7 +72,7 @@ ms.locfileid: "94410668"
     print('the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape)
     ```
 
-1. 在下方数据集中 **检查** 前面或后面几 **行** ：
+1. 在下方数据集中 **检查** 前面或后面几 **行**：
 
     ```python
     dataframe_blobdata.head(10)
@@ -106,7 +106,7 @@ ms.locfileid: "94410668"
     print(miss_num)
     ```
 
-1. 如果数据中的特定列存在 **缺失值** ，可按如下方法进行替代：
+1. 如果数据中的特定列存在 **缺失值**，可按如下方法进行替代：
 
     ```python
     dataframe_blobdata_noNA = dataframe_blobdata.dropna()

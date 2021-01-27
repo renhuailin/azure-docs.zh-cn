@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 69d5a0a69bcd820fd59da0a18b3838b65a6a0460
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 66d537b79819aecab4ce88a56ed465679363f421
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763417"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805206"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>通过模板在 Azure Stack Edge Pro GPU 设备上部署 Vm
 
@@ -29,7 +29,7 @@ ms.locfileid: "97763417"
 
 使用模板的部署工作流的高级摘要如下：
 
-1. **配置先决条件** -有3种类型的必备组件;设备、客户端和 VM。
+1. **配置先决条件** -对于 VM，有三种类型的先决条件：设备、客户端和。
 
     1. **设备先决条件**
 
@@ -47,7 +47,7 @@ ms.locfileid: "97763417"
         1. 在设备位置中创建将包含所有 VM 资源的资源组。
         1. 创建存储帐户以上传用于创建 VM 映像的 VHD。
         1. 将本地存储帐户 URI 添加到访问设备的客户端上的 DNS 或主机文件中。
-        1. 将 blob 存储证书安装在设备上，并在本地客户端上安装访问你的设备。 （可选）将 blob 存储证书安装在存储资源管理器上。
+        1. 在设备上和访问设备的本地客户端上安装 blob 存储证书。 （可选）将 blob 存储证书安装在存储资源管理器上。
         1. 创建 VHD 并将其上传到之前创建的存储帐户。
 
 2. **从模板创建 VM**
@@ -101,7 +101,7 @@ PS C:\windows\system32>
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-使用在上一步中创建的资源组创建新的存储帐户。 这是一个 **本地存储帐户** ，将用于上载 VM 的虚拟磁盘映像。
+使用在上一步中创建的资源组创建新的存储帐户。 此帐户是一个 **本地存储帐户** ，将用于上载 VM 的虚拟磁盘映像。
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -185,17 +185,17 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![连接到 Azure 存储1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. 选择“使用存储帐户名称和密钥”。 选择“**下一页**”。
+5. 选择“使用存储帐户名称和密钥”。 选择“下一步”  。
 
     ![连接到 Azure 存储2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. 在 " **连接方式" 和 "名称" 和 "密钥**" 中，提供 **显示名称**、 **存储帐户名称** 和 Azure 存储 **帐户密钥**。 选择 " **其他** 存储域"，然后提供 `<device name>.<DNS domain>` 连接字符串。 如果未在存储资源管理器中安装证书，请选中 " **使用 HTTP** " 选项。 选择“**下一页**”。
+6. 在 " **连接方式" 和 "名称" 和 "密钥**" 中，提供 **显示名称**、 **存储帐户名称** 和 Azure 存储 **帐户密钥**。 选择 " **其他** 存储域"，然后提供 `<device name>.<DNS domain>` 连接字符串。 如果未在存储资源管理器中安装证书，请选中 " **使用 HTTP** " 选项。 选择“下一步”  。
 
     ![用名称和密钥连接](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
 7. 查看 **连接摘要** ，然后选择 " **连接**"。
 
-8. 存储帐户将显示在左窗格中。 选择并展开存储帐户。 选择 " **Blob 容器**"，右键单击并选择 " **创建 blob 容器**"。 提供 blob 容器的名称。
+8. 存储帐户将显示在左窗格中。 选择并展开存储帐户。 选择 " **Blob 容器**"，右键单击，然后选择 " **创建 blob 容器**"。 提供 blob 容器的名称。
 
 9. 选择刚创建的容器，并在右窗格中选择 " **上传 > 上传文件**"。 
 
@@ -209,7 +209,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![上载 VHD 文件3](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-3.png)
 
-12. 复制并保存 Uri，因为在后面的步骤中将使用此 **Uri** 。
+12. 复制并保存将在后面的步骤中使用的 **Uri**。
 
     ![复制 URI](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/copy-uri-1.png)
 
@@ -237,7 +237,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
     }
 ```
 
-编辑文件 `CreateImage.parameters.json` ，为 Azure Stack Edge Pro 设备包含以下内容：
+编辑文件 `CreateImage.parameters.json` ，为 Azure Stack Edge Pro 设备包括以下值：
 
 1. 提供对应于要上传的 VHD 的操作系统类型。 OS 类型可以是 Windows 或 Linux。
 
@@ -250,16 +250,17 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
 2. 将映像 URI 更改为在前面的步骤中上传的映像的 URI：
 
-    ```json
-    "imageUri": {
-        "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
-        },
-    ```
-    如果在存储资源管理器中使用 *http* ，请将其更改为 *http* URI。
+   ```json
+   "imageUri": {
+       "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
+       },
+   ```
+
+   如果在存储资源管理器中使用 *http* ，请将 URI 更改为 *http* uri。
 
 3. 提供唯一的映像名称。 在后续步骤中，此映像用于创建 VM。 
 
-    下面是本文中使用的示例 json。
+   下面是本文中使用的示例 json。
 
     ```json
     {
@@ -278,6 +279,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
       }
     }
     ```
+
 5. 保存参数文件。
 
 
@@ -588,4 +590,4 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 资源管理器 cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure 资源管理器 cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

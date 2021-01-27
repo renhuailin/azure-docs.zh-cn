@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 8abbe575e855347714c19c40155d890af484d5d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cece3f531d50356fdefb81a598109d7c067c5ed
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822323"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805951"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览中的路由
 
@@ -210,7 +210,7 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 }
 ```
 
-在上面的示例中，添加了一个新的 `content-security-policy` 标头， `cache-control` 修改了服务器默认值，并且删除了该 `x-dns-prefectch-control` 标头。
+在上面的示例中，添加了一个新的 `content-security-policy` 标头， `cache-control` 修改了服务器默认值，并且删除了该 `x-dns-prefetch-control` 标头。
 
 在处理标头时，请注意以下事项：
 
@@ -218,7 +218,7 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 - 如果为 Null 或空值，则从处理中删除标头。
 - 键或值不能超过8000个字符。
 - 定义的标头将为所有请求提供服务。
-- 在routes.js中定义 _ 的_ 标头仅适用于静态内容。 可以在函数的代码中自定义 API 终结点的响应标头。
+- 在routes.js中定义 _的_ 标头仅适用于静态内容。 可以在函数的代码中自定义 API 终结点的响应标头。
 
 ## <a name="example-route-file"></a>路由文件示例
 
@@ -290,9 +290,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 | 请求... | 结果为... |
 |--|--|--|
 | /profile | 向经过身份验证的用户提供 /profile/index.html 文件。 未经身份验证的用户重定向到 /login。 |
-| /admin/reports | 向经过身份验证的管理员角色用户提供 /admin/reports/index.html 文件。 不在 _管理员_ 角色中的经过身份验证的用户将被提供401错误<sup>2</sup>。 未经身份验证的用户重定向到 /login。 |
+| /admin/reports | 向经过身份验证的管理员角色用户提供 /admin/reports/index.html 文件。 不在 _管理员_ 角色中的经过身份验证的用户将被提供401错误 <sup>2</sup>。 未经身份验证的用户重定向到 /login。 |
 | /api/admin | 将经过身份验证的管理员角色用户发出的请求发送到 API。 经过身份验证的非管理员角色的用户，和未经身份验证的用户将收到 401 错误。 |
-| /customers/contoso | 属于 " _管理员_ " 或 " _客户" \_ contoso_ 角色的经过身份验证的用户提供 _/customers/contoso/index.html_ 文件<sup>2</sup>。 经过身份验证的非管理员或非 customers\_contoso 角色的用户将收到 401 错误。 未经身份验证的用户重定向到 /login。 |
+| /customers/contoso | 属于 " _管理员_ " 或 " _客户" \_ contoso_ 角色的经过身份验证的用户提供 _/customers/contoso/index.html_ 文件 <sup>2</sup>。 经过身份验证的非管理员或非 customers\_contoso 角色的用户将收到 401 错误。 未经身份验证的用户重定向到 /login。 |
 | /login | 未经身份验证的用户将面临在 GitHub 中进行身份验证的挑战。 |
 | /.auth/login/twitter | 已禁用通过 Twitter 的授权。 服务器响应时出现 404 错误。 |
 | /logout | 用户已注销任何身份验证提供程序。 |

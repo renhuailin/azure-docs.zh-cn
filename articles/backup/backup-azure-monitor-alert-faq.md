@@ -4,12 +4,12 @@ description: 本文介绍有关 Azure 备份监视警报和 Azure 备份报告�
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: cf6929b9b926a6e6469f3fa789a19e60d5883d21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e2585009b531512e54ffa889a05ec50038dd619
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181487"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805865"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 备份监视警报 - 常见问题解答
 
@@ -19,7 +19,7 @@ ms.locfileid: "89181487"
 
 ### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>如何确定报告数据是否已开始流向 Log Analytics (LA) 工作区？
 
-导航到已配置的 "LA" 工作区。 导航到 " **日志** " 菜单项，然后运行查询 `CoreAzureBackup | take 1` 。 如果看到返回了记录，则表示数据已开始流入工作区。 初始数据推送可能需要长达 24 小时。
+导航到已配置的 LA 工作区。 导航到“日志”菜单项，然后运行查询 `CoreAzureBackup | take 1`。 如果看到返回了记录，则表示数据已开始流入工作区。 初始数据推送可能需要长达 24 小时。
 
 ### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>向 LA 工作区推送数据的频率是怎样的？
 
@@ -50,17 +50,17 @@ ms.locfileid: "89181487"
 
 ## <a name="recovery-services-vault"></a>恢复服务保管库
 
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure 备份代理作业状态需要多长时间才能在门户中反映出来？
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>多长时间后，门户中会反映 Azure 备份代理作业状态？
 
-Azure 门户最多可能需要15分钟才能反映 Azure 备份代理作业状态。
+最长可能需要 15 分钟，Azure 门户才会反映 Azure 备份代理作业状态。
 
 ### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>备份作业失败后，需要多长时间才会引发警报？
 
-在 Azure 备份失败的20分钟内引发警报。
+Azure 备份失败后，会在 20 分钟内引发警报。
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>是否存在配置了通知却不发送电子邮件的情况？
 
-是的。 在以下情况下，不发送通知：
+是的。 在以下情况下，不会发送通知：
 
 * 已将通知配置为每小时发送，并且在一小时内引发并解决了警报
 * 取消了作业
@@ -70,5 +70,5 @@ Azure 门户最多可能需要15分钟才能反映 Azure 备份代理作业状�
 
 阅读其他常见问题：
 
-* 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.md)。
+* 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.yml)。
 * 有关 Azure 备份代理的[常见问题](backup-azure-file-folder-backup-faq.md)

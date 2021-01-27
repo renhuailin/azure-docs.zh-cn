@@ -1,31 +1,31 @@
 ---
-title: Azure Stack Edge Pro GPU 设备上的启用 Arc 的 Kubernetes 上部署 PHP 留言簿应用 |Microsoft Docs
-description: 介绍如何在 Azure Stack Edge Pro 设备的启用了 Arc 的 Kubernetes 群集上，使用 GitOps 来部署 PHP 留言簿无状态应用程序。
+title: '`PHP Guestbook`Azure Stack Edge PRO GPU 设备上的启用 Arc 的 Kubernetes 上部署应用 |Microsoft Docs'
+description: 介绍如何 `Guestbook` 在 Azure Stack Edge Pro 设备的启用了 Arc 的 Kubernetes 群集上，使用 GitOps 来部署 PHP 无状态应用程序。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 4e974d93b5b7550081abcd7e251c7eda265a2397
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ba72617444a2c7ec30e4d1d25afe1edcda16ff35
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882953"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804879"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 上启用启用了 Arc 的 Kubernetes 群集的 PHP 留言簿无状态应用程序
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>`Guestbook`在 Azure Stack Edge PRO GPU 上启用启用了 Arc 的 Kubernetes 群集的 PHP 无状态应用程序
 
 本文说明如何使用 Kubernetes 和 Azure Arc 构建和部署简单的多层 web 应用程序。此示例包含以下组件：
 
-- 用于存储留言簿项的单实例 Redis 主机
+- 用于存储条目的单实例 Redis 主机 `guestbook`
 - 用于为读取提供服务的多个复制 Redis 实例
 - 多个 web 前端实例
 
 部署是使用 Azure Stack Edge Pro 设备上启用了 Arc 的 Kubernetes 群集上的 GitOps 来完成的。 
 
-此过程适用于已 [在 Azure Stack Edge Pro 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ](../azure-arc/kubernetes/overview.md)的概念。
+此过程适用于已查看 [Azure Stack Edge Pro 设备上的 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) ，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ](../azure-arc/kubernetes/overview.md)的概念的用户。
 
 > [!NOTE]
 > 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
@@ -49,18 +49,18 @@ ms.locfileid: "97882953"
 
 1. 你具有将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
   
-    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view = true)。
     
     - 您也可以将任何其他客户端与 [支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 结合使用。 本文介绍使用 Windows 客户端的过程。 
     
 1. 你已完成在 [Azure Stack Edge Pro 设备上访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)中所述的过程。 你已：
     
-    - 安装 `kubectl` 在客户端上  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
+    - 安装 `kubectl` 在客户端上。 <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
     - 请确保 `kubectl` 客户端版本不会从 Azure Stack Edge Pro 设备上运行的 Kubernetes 主版本中倾斜多个版本。 
       - 使用 `kubectl version` 检查在客户端上运行的 kubectl 的版本。 记下完整版本。
       - 在 Azure Stack Edge Pro 设备的本地 UI 中，切换到 " **概述** "，并记下 "Kubernetes" 软件号码。 
-      - 请验证这两个版本是否与支持的 Kubernetes 版本中提供的映射兼容 <!--insert link-->.
+      - 请验证这两个版本是否与支持的 Kubernetes 版本中提供的映射兼容。 <!--insert link-->
 
 1. 有一个 [可用于运行 Azure Arc 部署的 GitOps 配置](https://github.com/kagoyal/dbehaikudemo)。 在此示例中，你将使用以下 `yaml` 文件在 Azure Stack Edge Pro 设备上进行部署。
 
@@ -86,18 +86,18 @@ ms.locfileid: "97882953"
 
     ![屏幕截图显示已选中 "添加配置" 的已启用 Azure Arc Kubernetes 群集。](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
-1. 在 " **添加配置**" 中，为字段输入适当的值，并选择 " **应用**"。
+1. 在 " **添加配置**" 中，为字段输入适当的值，然后选择 " **应用**"。
 
     |参数  |说明 |
     |---------|---------|
     |配置名称     | 配置资源的名称。        |
     |操作员实例名称     |用于标识特定配置的操作员的实例名称。 Name 是长度为253个字符的字符串，它必须仅为小写、字母数字、连字符和句点。         |
-    |Operator 命名空间     | 设置为 **demotestguestbook** ，因为它与部署中指定的命名空间匹配 `yaml` 。 <br> 字段定义安装操作员的命名空间。 Name 是长度为253个字符的字符串，它必须仅为小写、字母数字、连字符和句点。         |
+    |Operator 命名空间     | 设置为 **demotestguestbook** 以与部署中指定的命名空间匹配 `yaml` 。 <br> 字段定义安装操作员的命名空间。 Name 是长度为253个字符的字符串，它必须仅为小写、字母数字、连字符和句点。         |
     |存储库 URL     |<br>Git 存储库的路径， `http://github.com/username/repo` 或 `git://github.com/username/repo` 格式 GitOps 配置所在的位置。         |
-    |运算符范围     | 选择 **命名空间**。 <br>这会定义操作员的安装范围。 选择此作为命名空间。 操作员将安装在部署 yaml 文件中指定的命名空间中。       |
-    |运算符类型     | 保留默认值。 <br>默认情况下，此值指定操作员的类型设置为 flux。        |
-    |运算符 params     | 将其留空。 <br>此字段包含要传递给 flux 运算符的参数。        |
-    |Helm     | 将此设置为 " **已禁用**"。 <br>如果要执行基于图表的部署，请启用此选项。        |
+    |运算符范围     | 选择 **命名空间**。 <br>此参数定义操作员的安装范围。 选择 "命名空间" 以在部署 yaml 文件中指定的命名空间中安装操作员。       |
+    |运算符类型     | 保留默认值。 <br>此参数指定操作员的类型-默认情况下，设置为 flux。        |
+    |运算符 params     | 将其留空。 <br>此参数包含要传递给 flux 运算符的参数。        |
+    |Helm     | 将此参数设置为 " **已禁用**"。 <br>如果将执行基于图表的部署，请启用此选项。        |
 
 
     ![添加配置](media/azure-stack-edge-gpu-connect-powershell-interface/add-configuration-1.png)
@@ -136,7 +136,7 @@ ms.locfileid: "97882953"
     [10.128.44.240]: PS>
     ```  
 
-1. 在此示例中，前端服务部署为类型： LoadBalancer。 你将需要查找此服务的 IP 地址以查看留言簿。 运行以下命令。
+1. 在此示例中，前端服务部署为类型： LoadBalancer。 你将需要查找此服务的 IP 地址以查看 `guestbook` 。 运行以下命令。
 
     `kubectl get service -n <your-namespace>`
     
@@ -149,13 +149,13 @@ ms.locfileid: "97882953"
     redis-slave    ClusterIP      10.104.215.146   <none>          6379/TCP       85m
     [10.128.44.240]: PS>
     ```
-1. 的前端服务 `type:LoadBalancer` 具有外部 IP 地址。 此 IP 来自在设备上配置计算网络设置时为外部服务指定的 IP 地址范围。 使用此 IP 地址查看 URL 上的留言簿： `https://<external-IP-address>` 。
+1. 的前端服务 `type:LoadBalancer` 具有外部 IP 地址。 此 IP 来自在设备上配置计算网络设置时为外部服务指定的 IP 地址范围。 使用此 IP 地址查看 `guestbook` AT URL： `https://<external-IP-address>` 。
 
     ![查看留言簿](media/azure-stack-edge-gpu-connect-powershell-interface/view-guestbook-1.png)
 
 ## <a name="delete-deployment"></a>删除部署
 
-若要删除部署，可以从 Azure 门户中删除配置。 这会删除创建的对象，包括部署和服务。
+若要删除部署，可以从 Azure 门户中删除配置。 删除配置将删除已创建的对象，包括部署和服务。
 
 1. 在 Azure 门户中，请参阅 Azure Arc 资源 > 配置。 
 1. 找到要删除的配置。 选择 .。。调用上下文菜单并选择 " **删除**"。

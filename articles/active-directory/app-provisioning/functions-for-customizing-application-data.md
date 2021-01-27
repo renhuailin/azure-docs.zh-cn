@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 462f60bbae9fd7b61993a2ccccd40fa5ca4ccc28
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e87211789280c3439d71d8fa63da09416eaaf18e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012961"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805139"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>用于在 Azure AD 中编写属性映射的表达式的参考
 
@@ -41,7 +41,7 @@ ms.locfileid: "98012961"
 [](#append) &nbsp; &nbsp; 追加 &nbsp; &nbsp;[](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp;[](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp;[](#coalesce) &nbsp; &nbsp; 合并 &nbsp; &nbsp;[](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp;[](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp;[](#count) &nbsp; &nbsp; 计数 &nbsp; &nbsp;[](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp;[DateFromNum](#datefromnum) &nbsp;[](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp;[](#guid) &nbsp; &nbsp; Guid &nbsp; &nbsp;[](#iif) &nbsp; &nbsp; IIF &nbsp; &nbsp;[](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp;[](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp;[](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp;[](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp;[](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp;[](#item) &nbsp; &nbsp; 项 &nbsp; &nbsp;[](#join) &nbsp; &nbsp; 联接 &nbsp; &nbsp;[](#left) &nbsp; &nbsp; 左 &nbsp; &nbsp;[Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [](#word) StripSpaces ToLower ToUpper Word
 
 ---
-### <a name="append"></a>追加
+### <a name="append"></a>Append
 
 **函数：** 追加 (源，后缀) 
 
@@ -69,8 +69,8 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **value1** |必选 |num |应与 value2 一起个的数值|
-| **value2** |必选 |num |应为 value1 个的数字值|
+| **value1** |必须 |num |应与 value2 一起个的数值|
+| **value2** |必须 |num |应为 value1 个的数字值|
 
 **实例**
 `BitAnd(&HF, &HF7)`
@@ -89,7 +89,7 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必选 | 表达式 | 任何有效的表达式 |
+| **expression** |必须 | 表达式 | 任何有效的表达式 |
 
 示例：  
 `CBool([attribute1] = [attribute2])`                                                                    
@@ -152,7 +152,7 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **attribute** |必选 |attribute |将计算元素的多值属性|
+| **attribute** |必须 |attribute |将计算元素的多值属性|
 
 ---
 ### <a name="cstr"></a>CStr
@@ -181,7 +181,7 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| value  |必须 | 日期 | 要转换为 DateTime 类型的广告日期 |
+| value  |必须 | Date | 要转换为 DateTime 类型的广告日期 |
 
 **实例**
 `DateFromNum([lastLogonTimestamp])`
@@ -220,9 +220,9 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **状态** |必选 |变量或表达式 |计算结果为 true 或 false 的任何值或表达式。 |
-| **valueIfTrue** |必选 |变量或字符串 | 如果条件计算结果为 true，则为返回值。 |
-| **valueIfFalse** |必选 |变量或字符串 |如果条件计算结果为 false，则为返回值。|
+| **状态** |必须 |变量或表达式 |计算结果为 true 或 false 的任何值或表达式。 |
+| **valueIfTrue** |必须 |变量或字符串 | 如果条件计算结果为 true，则为返回值。 |
+| **valueIfFalse** |必须 |变量或字符串 |如果条件计算结果为 false，则为返回值。|
 
 **实例**
 `IIF([country]="USA",[country],[department])`
@@ -261,7 +261,7 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必选 |表达式 |要计算的表达式 |
+| **expression** |必须 |表达式 |要计算的表达式 |
 
 **实例**
 `IsNull([displayName])`
@@ -279,7 +279,7 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必选 |表达式 |要计算的表达式 |
+| **expression** |必须 |表达式 |要计算的表达式 |
 
 **实例**
 `IsNullOrEmpty([displayName])`
@@ -296,7 +296,7 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必选 |表达式 |要计算的表达式 |
+| **expression** |必须 |表达式 |要计算的表达式 |
 
 **实例**
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
@@ -311,10 +311,10 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **expression** |必选 |表达式 |要计算的表达式 |
+| **expression** |必须 |表达式 |要计算的表达式 |
 
 ---
-### <a name="item"></a>Item
+### <a name="item"></a>项目
 **函数：** Item (属性，index) 
 
 **说明：** Item 函数返回多值字符串/属性中的一个项。
@@ -323,14 +323,14 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **attribute** |必选 |属性 |要搜索的多值属性 |
-| **索引** |必需 |整数 | 多值字符串中的项的索引|
+| **attribute** |必须 |Attribute |要搜索的多值属性 |
+| **index** |必需 |整数 | 多值字符串中的项的索引|
 
 **示例：** 
  `Item([proxyAddresses], 1)`返回多值属性中的第二项。
 
 ---
-### <a name="join"></a>联接
+### <a name="join"></a>Join
 **函数：** 联接 (separator，source1，source2，... ) 
 
 **说明：** 联接 ( # A1 类似于追加 ( # A3，只不过它可以将多个 **源** 字符串值组合成单个字符串，每个值将由一个 **分隔符** 字符串分隔。
@@ -357,7 +357,7 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **字符串** |必选 |属性 | 要从其返回字符的字符串 |
+| **字符串** |必须 |Attribute | 要从其返回字符的字符串 |
 | **NumChars** |必需 |整数 | 标识从字符串的开头开始)  (的字符数的数字|
 
 **实例**
@@ -376,8 +376,8 @@ ms.locfileid: "98012961"
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是属性的名称。 |
-| **start** |必选 |integer |**source** 字符串中的索引，子字符串应从这里开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
-| **length** |必选 |integer |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
+| **start** |必须 |integer |**source** 字符串中的索引，子字符串应从这里开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
+| **length** |必须 |integer |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -401,7 +401,7 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必选 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
+| **source** |必须 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
@@ -433,7 +433,7 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **attribute** |必选 |多值属性 |将删除重复项的多值属性|
+| **attribute** |必须 |多值属性 |将删除重复项的多值属性|
 
 **示例：** 
  `RemoveDuplicates([proxyAddresses])`返回净化的 proxyAddress 属性，其中所有重复值均已删除。
@@ -483,7 +483,7 @@ ms.locfileid: "98012961"
  - 这是一个顶级函数，不能嵌套。
  - 此函数不能应用到具有匹配优先级的属性。   
  - 此函数仅供用于创建条目。 将其与属性一起使用时，请将“应用映射”属性设置为“仅在创建对象期间”。
- - 目前只有“Workday 到 Active Directory 的用户预配”支持此函数。 此函数不可用于其他预配应用程序。 
+ - 目前仅支持 "Workday 到 Active Directory 用户预配" 和 "SuccessFactors to Active Directory User 预配" 这一功能。 此函数不可用于其他预配应用程序。 
 
 
 **Parameters** 
@@ -516,7 +516,7 @@ ms.locfileid: "98012961"
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |要更新的 **source** 值。 |
-| **后面** |必须 |String |指定将用来拆分字符串的字符（示例：“,”） |
+| **delimiter** |必须 |String |指定将用来拆分字符串的字符（示例：“,”） |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -531,7 +531,7 @@ ms.locfileid: "98012961"
 | **source** |必须 |String |要更新的 **source** 值。 |
 
 ---
-### <a name="switch"></a>开关
+### <a name="switch"></a>交换机
 **函数：** Switch (source，defaultValue，key1，value1，key2，value2，... ) 
 
 **说明：** 当 **source** 值与某个 **键** 匹配时，将返回 **该项** 的 **值**。 当 **source** 值未与任何 key 匹配时，则返回 **defaultValue**。  **Key** 和 **value** 参数必须始终成对出现。 该函数始终需要偶数个参数。 函数不应用于管理器等引用属性。 
@@ -585,7 +585,7 @@ ms.locfileid: "98012961"
 
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **字符串** |必选 |多值属性 |要从中返回单词的字符串。|
+| **字符串** |必须 |多值属性 |要从中返回单词的字符串。|
 | **WordNumber** |必需 | 整数 | 标识应返回的单词编号的数字|
 | **限定符** |必须 |String| 一个字符串，表示应用于标识单词的分隔符 (s) |
 

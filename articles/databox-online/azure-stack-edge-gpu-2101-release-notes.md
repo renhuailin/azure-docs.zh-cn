@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: d0b7f871b2ea62c810a6d20f6e20a5e8d3f6306e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8158868a39bf8a1fe03a620f37e4dcb1c9adc14e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791907"
+ms.locfileid: "98805185"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 发行说明
 
@@ -40,15 +40,15 @@ Azure Stack Edge 2101 版中提供了以下新功能。
 
 下表提供了2101版本中已知问题的摘要。
 
-| 否。 | 功能 | 问题 | 解决方法/备注 |
+| 否。 | Feature | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 |**1.**|预览功能 |在此版本中，以下功能包括：本地 Azure 资源管理器、Vm、Vm 的云管理、启用了 Azure Arc 的 Kubernetes、用于 Azure Stack Edge Pro R 的 VPN、Azure Stack 边缘迷你 R、多进程服务 (MPS) for Azure Stack Edge Pro GPU-均以预览版提供。  |这些功能将在以后的版本中公开发布。 |
 |**2.**|Kubernetes 仪表板 | 不支持带 SSL 证书的 Kubernetes 仪表板的 *Https* 终结点。 | |
 |**3.**|Kubernetes |启用 web 代理时，Edge 容器注册表不起作用。|此功能将在将来的版本中可用。 |
 |**4.**|Kubernetes |边缘容器注册表不适用于 IoT Edge 模块。| |
-|**5.**|Kubernetes |Kubernetes 在 .NET 应用程序使用的环境变量名称中不支持 "："。 这也是事件网格 IoT Edge 模块在 Azure Stack 边缘设备和其他应用程序上运行所必需的。 有关详细信息，请参阅 [ASP.NET core 文档](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables)。|将 "：" 替换为双下划线。 有关详细信息，请参阅 [Kubernetes 问题](https://github.com/kubernetes/kubernetes/issues/53201)|
-|**6.** |Azure Arc + Kubernetes 群集 |默认情况下， `yamls` 从 Git 存储库删除资源时，不会从 Kubernetes 群集中删除相应的资源。  |需要将 OperatorParams 设置 `--sync-garbage-collection` 为，以便在从 git 存储库删除资源时允许删除这些资源。 有关详细信息，请参阅 [删除配置](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)。 |
-|**全天候.**|NFS |使用设备上的 NFS 共享装入来写入数据的应用程序应使用独占写入。 使用独占写入可以确保写入到磁盘中。| |
+|**5.**|Kubernetes |Kubernetes 在 .NET 应用程序使用的环境变量名称中不支持 "："。 这也是事件网格 IoT Edge 模块在 Azure Stack 边缘设备和其他应用程序上运行时所必需的。 有关详细信息，请参阅 [ASP.NET core 文档](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables)。|将 "：" 替换为双下划线。 有关详细信息，请参阅 [Kubernetes 问题](https://github.com/kubernetes/kubernetes/issues/53201)|
+|**6.** |Azure Arc + Kubernetes 群集 |默认情况下， `yamls` 从 Git 存储库删除资源时，不会从 Kubernetes 群集中删除相应的资源。  |需要 `--sync-garbage-collection`  在 Arc OperatorParams 中设置，以便在从 git 存储库中删除资源时允许删除资源。 有关详细信息，请参阅 [删除配置](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)。 |
+|**全天候.**|NFS |使用设备上的 NFS 共享装入来写入数据的应用程序应使用独占写入。 这可以确保写入到磁盘中。| |
 |**8.**|计算配置 |计算配置在网络配置中失败，其中的网关或交换机或路由器响应地址解析协议 (ARP) 对网络上不存在的系统的请求。| |
 |**900.**|计算和 Kubernetes |如果在设备上首先设置 Kubernetes，则会声明所有可用 Gpu。 因此，在设置 Kubernetes 后，不能使用 Gpu 创建 Azure 资源管理器 Vm。 |如果设备有2个 Gpu，则可以创建1个使用 GPU 的 VM，并配置 Kubernetes。 在这种情况下，Kubernetes 将使用剩余的可用 1 GPU。 |
 
@@ -57,7 +57,7 @@ Azure Stack Edge 2101 版中提供了以下新功能。
 
 下表提供了以前版本中的已知问题的摘要。
 
-| 否。 | 功能 | 问题 | 解决方法/备注 |
+| 否。 | Feature | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 | **1.** |Azure Stack Edge Pro + Azure SQL | 创建 SQL 数据库需要管理员访问权限。   |执行以下步骤，而不是中的步骤 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) 。 <ul><li>在设备的本地 UI 中，启用 "计算接口"。 选择 **计算 > 端口号 > 启用计算 > 应用。**</li><li>`sqlcmd`从下载客户端计算机https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>连接到计算接口 IP 地址 () 启用的端口，并将 "，1401" 添加到地址的末尾。</li><li>最终命令如下所示： sqlcmd-S {Interface IP}，1401-U SA-P "强！Passw0rd "。</li>完成此操作后，当前文档中的步骤3-4 应相同。 </li></ul> |
 | **2.** |刷新| 不支持对通过 **刷新** 还原的 blob 进行增量更改 |对于 Blob 终结点，刷新后对 blob 进行部分更新可能导致更新不会上载到云中。 例如，一系列操作，例如：<ul><li>在云中创建 blob。 或从设备中删除之前上传的 blob。</li><li>使用刷新功能，将 blob 从云中刷新到设备中。</li><li>使用 Azure SDK REST Api 仅更新部分 blob。</li></ul>这些操作可能导致 blob 的更新部分不在云中更新。 <br>**解决方法**：使用 robocopy 等工具或通过资源管理器或命令行的常规文件复制来替换整个 blob。|

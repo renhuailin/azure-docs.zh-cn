@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 81a52b26c5291f788ac81caeb2ca5416a2f58d36
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e009369f6223e171984d1142419101fdd82879b0
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448871"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804917"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>使用 kubectl 在 Azure Stack Edge Pro GPU 设备上使用 StorageClass 运行 Kubernetes 有状态应用程序
 
@@ -24,7 +24,7 @@ ms.locfileid: "96448871"
 
 ## <a name="prerequisites"></a>先决条件
 
-在部署有状态应用程序之前，请确保已在设备和将用于访问设备的客户端上完成以下先决条件：
+在部署有状态应用程序之前，请在你的设备和将用于访问该设备的客户端上完成以下先决条件：
 
 ### <a name="for-device"></a>对于设备
 
@@ -35,7 +35,7 @@ ms.locfileid: "96448871"
 ### <a name="for-client-accessing-the-device"></a>对于访问设备的客户端
 
 - 你具有将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
-    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true)。
     
     - 您也可以将任何其他客户端与 [支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 结合使用。 本文介绍使用 Windows 客户端的过程。 
     
@@ -157,7 +157,7 @@ ms.locfileid: "96448871"
     persistentvolumeclaim/mysql-pv-claim-sc created
     C:\Users\user>
     ```
-   请注意创建的 PVC 的名称 `mysql-pv-claim-sc` 。 稍后将使用它。 
+   请注意创建的 PVC 的名称-在本示例中为 `mysql-pv-claim-sc` 。 稍后将使用它。
 
 4. 部署文件的内容 `mysql-deployment.yml` 。
 

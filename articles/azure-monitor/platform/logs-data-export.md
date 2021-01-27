@@ -7,18 +7,18 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 4ae69ddeb46d484a64edc4ccabfa6740b36c4264
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: bb4987550e4962ba044e0a6aafbfd00145319e94
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663258"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804941"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
 
 ## <a name="overview"></a>概述
-为 Log Analytics 工作区配置数据导出后，发送到工作区中所选表的任何新数据每小时都会自动导出到你的存储帐户，或准实时导出到你的事件中心。
+为 Log Analytics 工作区配置数据导出后，发送到工作区中所选表的任何新数据将自动以近乎实时的形式导出到你的存储帐户或事件中心。
 
 ![数据导出概述](media/logs-data-export/data-export-overview.png)
 
@@ -67,7 +67,7 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 ## <a name="export-destinations"></a>导出目标
 
 ### <a name="storage-account"></a>存储帐户
-数据以每小时为频率发送到存储帐户。 “数据导出配置”为存储帐户中的每个表创建一个容器，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的容器中 。
+数据将以近乎实时的方式发送到存储帐户，因为它达到 Azure Monitor。 “数据导出配置”为存储帐户中的每个表创建一个容器，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的容器中 。
 
 存储帐户 Blob 路径为 WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json。 由于追加 Blob 在存储中的写入限制为 50K，如果追加的数量很大，则导出的 Blob 的数量可能会增加。 在这种情况下，Blob 的命名模式将为 PT1H_#.json，其中 # 是增量 Blob 计数。
 
@@ -151,7 +151,7 @@ $eventHubsNamespacesResourceId = '/subscriptions/subscription-id/resourceGroups/
 az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesResourceId
 ```
 
-使用以下命令，使用 CLI 创建到特定事件中心的数据导出规则。 所有表都导出到提供的事件中心名称。 
+通过 CLI 使用以下命令，以便创建有关将数据导出到特定事件中心的数据导出规则。 所有表都将导出到所提供的事件中心名称。 
 
 ```azurecli
 $eventHubResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name/eventHubName/eventhub-name'
@@ -222,7 +222,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="template"></a>[模板](#tab/json)
 
-使用以下命令创建使用模板的存储帐户的数据导出规则。
+通过模板使用以下命令，以便创建有关将数据导出到存储帐户的数据导出规则。
 
 ```
 {
@@ -280,7 +280,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 }
 ```
 
-使用以下命令通过模板创建到事件中心的数据导出规则。 为每个表创建一个单独的事件中心。
+通过模板使用以下命令，以便创建有关将数据导出到事件中心的数据导出规则。 为每个表创建一个单独的事件中心。
 
 ```
 {
@@ -336,7 +336,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 }
 ```
 
-使用以下命令通过模板创建到特定事件中心的数据导出规则。 所有表都导出到提供的事件中心名称。
+通过模板使用以下命令，以便创建有关将数据导出到特定事件中心的数据导出规则。 所有表都将导出到所提供的事件中心名称。
 
 ```
 {
@@ -409,7 +409,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-不可用
+空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -476,7 +476,7 @@ Content-type: application/json
 
 # <a name="template"></a>[模板](#tab/json)
 
-如果在特定时间段（例如执行测试时）不需要保留数据，可以禁用导出规则来停止导出。 ```"enable": false```在模板中设置以禁用数据导出。
+如果在特定时间段（例如执行测试时）不需要保留数据，可以禁用导出规则来停止导出。 在模板中设置 ```"enable": false``` 以禁用数据导出。
 
 ---
 
@@ -547,7 +547,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>不受支持的表
 如果数据导出规则包含不受支持的表，配置不会失败，但不会导出该表的任何数据。 如果该表在之后得到支持，则将在那时导出其数据。
 
-如果数据导出规则包含不存在的表，它将失败，并出现错误 " <tableName> 工作区中不存在表"。
+如果数据导出规则包含不存在的表，操作会失败并出现错误“工作区中不存在表 <tableName>”。
 
 
 ## <a name="supported-tables"></a>受支持的表
@@ -683,7 +683,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | NWConnectionMonitorTestResult | |
 | NWConnectionMonitorTestResult | |
 | OfficeActivity | 部分支持。 某些数据通过 Webhook 从 Office 365 引入到 Log Analytics。 当前不导出此数据。 |
-| 操作 | 部分支持。 某些数据是通过不支持导出的内部服务引入的。 当前不导出此数据。 |
+| Operation | 部分支持。 某些数据是通过不支持导出的内部服务引入的。 当前不导出此数据。 |
 | 性能 | 部分支持。 当前仅支持 Windows 性能数据。 当前未导出 Linux 性能数据。 |
 | ProtectionStatus | |
 | SCCMAssessmentRecommendation | |
