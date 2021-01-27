@@ -10,12 +10,12 @@ ms.date: 01/15/2021
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: e463328df195b5a91db8ce272d138f980d000e79
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c3c126a96c0eb2214f63a56120d0966b9a97efed
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232057"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895384"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
 
@@ -27,6 +27,9 @@ ms.locfileid: "98232057"
 
 > [!TIP]
 > 我们建议不要参数化密码或机密。 而应将所有连接字符串都存储在 Azure Key Vault 中，并参数化 *机密名称*。
+
+> [!Note]
+> 存在用于在参数名称中使用 "-" 的开放 bug，我们建议使用名称而不使用 "-"，直到 bug 得到解决。
 
 有关此功能的 7 分钟介绍和演示，请观看以下视频：
 
@@ -43,7 +46,7 @@ ms.locfileid: "98232057"
 - Azure Database for MySQL
 - Azure Databricks
 - Azure Key Vault
-- Azure SQL Database
+- Azure SQL 数据库
 - Azure SQL 托管实例
 - Azure Synapse Analytics 
 - MySQL

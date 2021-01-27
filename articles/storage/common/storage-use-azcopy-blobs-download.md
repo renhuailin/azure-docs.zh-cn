@@ -1,6 +1,6 @@
 ---
-title: 使用 AzCopy v10 从 Azure Blob 存储下载 blob |Microsoft Docs
-description: 本文包含一系列 AzCopy 示例命令，可帮助你从 Azure Blob 存储下载 blob。
+title: 使用 AzCopy v10 从 Azure Blob 存储下载 Blob | Microsoft Docs
+description: 本文包含一组 AzCopy 示例命令，可帮助从 Azure Blob 存储下载 Blob。
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -8,31 +8,31 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 382adb36712fbf4bee83044c8b2d096223eb6269
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 20da05399eed4cb9c5a4b69a82b0b1e799997751
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630031"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880112"
 ---
-# <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>使用 AzCopy v10 从 Azure Blob 存储下载 blob
+# <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>使用 AzCopy v10 从 Azure Blob 存储下载 Blob
 
-可以使用 AzCopy v10 命令行实用程序从 Blob 存储下载 blob 和目录。 
+你可以使用 AzCopy v10 命令行实用程序从 Blob 存储下载 Blob 和目录。 
 
-若要查看其他类型任务的示例，例如上传文件、与 Blob 存储同步或在帐户之间复制 blob，请参阅本文 [后续步骤](#next-steps) 部分中提供的链接。
+若要查看其他类型任务（如上传文件、与 Blob 存储同步或在帐户之间复制 Blob）的示例，请参阅本文的[下一步](#next-steps)部分中提供的链接。
 
 ## <a name="get-started"></a>入门
 
 请参阅 [AzCopy 入门](storage-use-azcopy-v10.md)一文下载 AzCopy，并了解如何提供存储服务的授权凭据。
 
 > [!NOTE] 
-> 本文中的示例假定你已通过使用 Azure Active Directory (Azure AD) 提供了授权凭据。
+> 本文中的示例假定你已使用 Azure Active Directory (Azure AD) 提供了授权凭据。
 >
 > 如果你希望使用 SAS 令牌来授权访问 Blob 数据，可将该令牌追加到每个 AzCopy 命令中的资源 URL。 例如：`'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`。
 
 ## <a name="download-a-blob"></a>下载 blob
 
-使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令下载 blob。
+使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令下载 Blob。
 
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
@@ -59,7 +59,7 @@ ms.locfileid: "97630031"
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 | **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 
-此示例将生成一个名为 `C:\myDirectory\myBlobDirectory` 的目录，其中包含所有已下载的 blob。
+此示例将生成名为 `C:\myDirectory\myBlobDirectory` 的目录，其中包含所有已下载的 Blob。
 
 ## <a name="download-directory-contents"></a>下载目录内容
 
@@ -76,18 +76,18 @@ ms.locfileid: "97630031"
 | **语法** | `azcopy copy 'https://<storage-account-name>.blob.core.windows.net/<container-name>/*' '<local-directory-path>/'` |
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/*' 'C:\myDirectory'` |
 
-追加 `--recursive` 标志以下载所有子目录中的文件。
+追加 `--recursive` 标志可以下载所有子目录中的文件。
 
-## <a name="download-specific-blobs"></a>下载特定 blob
+## <a name="download-specific-blobs"></a>下载特定的 Blob
 
-您可以使用完整的文件名、包含通配符字符的部分名称 ( * ) 或使用日期和时间来下载特定 blob。 
+可以使用完整的文件名、包含通配符 (*) 的部分名称或者日期和时间来下载特定 Blob。 
 
 > [!TIP]
-> 这些示例用单引号将路径参数 ( "" ) 。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
+> 这些示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
-#### <a name="specify-multiple-complete-blob-names"></a>指定多个完整的 blob 名称
+#### <a name="specify-multiple-complete-blob-names"></a>指定多个完整 Blob 名
 
-结合 `--include-path` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 使用 semicolin () 分离单独的 blob 名称 `;` 。
+结合 `--include-path` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 使用分号 (`;`) 分隔各个 Blob 名。
 
 |    |     |
 |--------|-----------|
@@ -95,9 +95,9 @@ ms.locfileid: "97630031"
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 | **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
 
-在此示例中，AzCopy 将传输 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` 目录和 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` 文件。 包含 `--recursive` 用于传输目录中所有 blob 的选项 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` 。
+在此示例中，AzCopy 将传输 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` 目录和 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` 文件。 包含 `--recursive` 选项可传输 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` 目录中的所有 Blob。
 
-还可以通过使用选项排除 blob `--exclude-path` 。 有关详细信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
+还可使用 `--exclude-path` 选项来排除 Blob。 有关详细信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
 #### <a name="use-wildcard-characters"></a>使用通配符
 
@@ -109,15 +109,15 @@ ms.locfileid: "97630031"
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 | **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
-还可以通过使用选项排除 blob `--exclude-pattern` 。 有关详细信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
+还可使用 `--exclude-pattern` 选项来排除 Blob。 有关详细信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
-`--include-pattern`和 `--exclude-pattern` 选项仅适用于 blob 名称，不适用于路径。  如果要复制目录树中存在的 (blob) 的所有文本文件，请使用 `–recursive` 选项获取整个目录树，并使用 `–include-pattern` 和指定 `*.txt` 获取所有文本文件。
+`--include-pattern` 和 `--exclude-pattern` 选项仅适用于 Blob 名，而不适用于路径。  若要复制目录树中存在的所有文本文件 (Blob)，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 来获取所有文本文件。
 
-#### <a name="download-blobs-that-were-modified-before-or-after-a-date-and-time"></a>下载在日期和时间之前或之后修改的 blob 
+#### <a name="download-blobs-that-were-modified-before-or-after-a-date-and-time"></a>下载在某个日期和时间之前或之后修改的 Blob 
 
-将 [azcopy copy](storage-ref-azcopy-copy.md) 命令与 `--include-before` 或选项一起使用 `--include-after` 。 以 ISO-8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。 
+将 [azcopy copy](storage-ref-azcopy-copy.md) 命令与 `--include-before` 或 `--include-after` 选项结合使用。 以 ISO-8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。 
 
-下面的示例下载在指定日期或指定日期之后修改的文件。
+以下示例下载在指定日期或之后修改的文件。
 
 |    |     |
 |--------|-----------|
@@ -143,7 +143,7 @@ ms.locfileid: "97630031"
 
 #### <a name="download-a-blob-snapshot"></a>下载 Blob 快照
 
-可以通过引用 blob 快照的 **DateTime** 值下载 [blob 快照](/azure/storage/blobs/snapshots-overview)。 
+可通过引用 Blob 快照的 **DateTime** 值来下载 [Blob 快照](../blobs/snapshots-overview.md)。 
 
 |    |     |
 |--------|-----------|
@@ -152,7 +152,7 @@ ms.locfileid: "97630031"
 | **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
 
 > [!NOTE]
-> 如果你使用 SAS 令牌来授予对 blob 数据的访问权限，则在 SAS 令牌后面追加快照 **日期时间** 。 例如：`'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z'`。
+> 如果使用 SAS 令牌授权访问 Blob 数据，则在 SAS 令牌之后追加快照 DateTime。 例如：`'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z'`。
 
 ## <a name="download-with-optional-flags"></a>下载可选标志
 
@@ -171,9 +171,9 @@ ms.locfileid: "97630031"
 在以下文章中查找更多示例：
 
 - [示例：上载](storage-use-azcopy-blobs-upload.md)
-- [示例：帐户之间的复制](storage-use-azcopy-blobs-copy.md)
+- [示例：在帐户之间复制](storage-use-azcopy-blobs-copy.md)
 - [示例：同步](storage-use-azcopy-blobs-synchronize.md)
 - [示例：Amazon S3 存储桶](storage-use-azcopy-s3.md)
-- [示例： Azure 文件](storage-use-azcopy-files.md)
+- [示例：Azure 文件存储](storage-use-azcopy-files.md)
 - [教程：使用 AzCopy 将本地数据迁移到云存储](storage-use-azcopy-migrate-on-premises-data.md)
 - [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)

@@ -3,19 +3,19 @@ title: 翻译器 Transliterate 方法
 titleSuffix: Azure Cognitive Services
 description: 使用翻译器 Transliterate 方法将一种语言的文本从一个脚本转换为另一个脚本。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: swmachan
-ms.openlocfilehash: 4b985d7b2eb07ca8bbd3556a237fbcaba5392fe5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 0d5a7f8df0c722ca52780ba254e9af9608f26b54
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016457"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895418"
 ---
 # <a name="translator-30-transliterate"></a>翻译器 3.0：Transliterate
 

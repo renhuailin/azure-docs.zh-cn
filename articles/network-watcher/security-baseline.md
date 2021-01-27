@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 598f925d939694ea47605b0e8ea2e63872db7811
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3f16589765752a2a635ccd055e7d55de8b9ce330
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201240"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880010"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>网络观察程序的 Azure 安全基线
 
@@ -291,7 +291,7 @@ ms.locfileid: "98201240"
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
-**指南**：将特权访问工作站 (PAW) 与 Azure AD 多重身份验证 (MFA) 一起使用，以便登录和配置 Azure Sentinel 相关资源。
+**指导**：使用启用了 Azure AD 多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录和配置 Azure Sentinel 相关的资源。
 
 * [特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
@@ -429,7 +429,7 @@ ms.locfileid: "98201240"
 
 * [Azure VPN 网关支持的 IPSec 参数](./network-watcher-diagnose-on-premises-connectivity.md)
 
-* [如何在 Azure 门户中配置站点到站点连接](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [如何在 Azure 门户中配置站点到站点连接](../vpn-gateway/tutorial-site-to-site-portal.md)
 
 **Azure 安全中心监视**：目前不可用
 

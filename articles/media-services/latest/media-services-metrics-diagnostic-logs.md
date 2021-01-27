@@ -1,27 +1,12 @@
 ---
-title: 使用 Azure Monitor 监视媒体服务指标和诊断日志
-titleSuffix: Azure Media Services
-description: 了解如何通过 Azure Monitor 监视 Azure 媒体服务指标和诊断日志。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 11/02/2020
-ms.author: inhenkel
-ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
-ms.translationtype: MT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685165"
+标题： Media Services 指标和诊断日志与 Azure Monitor： Azure 媒体服务说明：了解如何通过 Azure Monitor 监视 Azure 媒体服务指标和诊断日志。
+服务：媒体服务 documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
+
+ms. service： media services ms. 工作负荷： media ms.tgt_pltfrm： na ms.devlang： na ms. 主题：概念性 ms。日期：11/02/2020 毫秒。作者： inhenkel
+
 ---
-# <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>监视媒体服务指标和诊断日志 Azure Monitor
+
+# <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>使用 Azure Monitor 监视媒体服务指标和诊断日志
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -70,7 +55,7 @@ ms.locfileid: "94685165"
 |CPU 使用率| | 高级流式处理终结点的 CPU 使用率。 此数据不可用于标准流式处理终结点。 |
 |出口带宽 | | 出口带宽（位/秒）。|
 
-### <a name="metrics-are-useful"></a>度量值非常有用
+### <a name="metrics-are-useful"></a>指标很有用
 
 以下示例说明监视媒体服务指标如何能够帮助你了解应用的执行情况。 使用媒体服务指标可以解决的部分问题包括：
 
@@ -82,7 +67,7 @@ ms.locfileid: "94685165"
 * 如何查看正在从打包程序中提取多少个 HLS 或 DASH 请求？
 * 如何设置警报来了解何时达到了失败请求数的阈值？
 
-并发性对于在一段时间内用于单个帐户的流式处理终结点的数量感到担忧。 需要记住并发流数与复杂的发布参数（如动态打包到多个协议、多个 DRM 加密等）之间的关系。其他每个已发布的实时流都会增加流式处理终结点上的 CPU 和输出带宽。 考虑到这一点，您应该使用 Azure Monitor 密切地观察流式处理终结点的利用率 (CPU 和传出容量) ，以确保在将其适当地进行适当的 (或在多个流式处理终结点之间拆分流量，前提是这种情况非常) 高。
+对于在单个帐户中使用的流式处理终结点数，随着时间的推移，并发性成为一个问题。 你需要牢记并发流数与复杂的发布参数（如针对多个协议的动态打包、多个 DRM 加密等）之间的关系。每个额外的已发布实时流都会添加到流式处理终结点上的 CPU 和输出带宽中。 考虑到这一点，你应该使用 Azure Monitor 密切监视流式处理终结点的利用率（CPU 和出口容量），以确保适当地对其进行缩放（或者，在并发性非常高的情况下，可以在多个流式处理终结点之间拆分流量）。
 
 ### <a name="example"></a>示例
 

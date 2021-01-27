@@ -1,47 +1,45 @@
 ---
-title: Azure Active Directory Identity Protection 的 Microsoft Graph API
+title: Microsoft Graph PowerShell SDK 和 Azure Active Directory Identity Protection
 description: 了解如何从 Azure Active Directory 查询 Microsoft Graph 风险检测和关联信息
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 01/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5367e5027bfae2fa3ed7e87a779e50e4048ba608
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 2db8cfe652c0fca4b68b00d846e345c1b60cd05d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861725"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880230"
 ---
-# <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory 标识保护和 Microsoft Graph 入门
+# <a name="azure-active-directory-identity-protection-and-the-microsoft-graph-powershell-sdk"></a>Azure Active Directory Identity Protection 和 Microsoft Graph PowerShell SDK
 
-Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active Directory 标识保护](./overview-identity-protection.md) API 的主页。 有三个 Api 公开了有关风险用户和登录的信息。使用第一个 API **riskDetection**，可以查询 Microsoft Graph 以获取用户和登录链接的风险检测的列表以及有关检测的相关信息。 使用第二个 API **riskyUsers** 可以在 Microsoft Graph 中查询有关“标识保护”作为风险检测到的用户的信息。 第三个 API **signIn** 可以通过与风险状态、详细信息和级别相关的特定属性在 Microsoft Graph 中查询有关 Azure AD 登录的信息。 
+Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active Directory 标识保护](./overview-identity-protection.md) API 的主页。 本文介绍如何通过 PowerShell 使用 [Microsoft Graph POWERSHELL SDK](/graph/powershell/get-started) 获取有风险的用户详细信息。 如果组织想要直接查询 Microsoft Graph Api，则可以使用文章 [教程：使用 Microsoft Graph api 来识别和修正风险](/graph/tutorial-riskdetection-api) ，开始使用。
 
-本文可帮助你开始连接到 Microsoft Graph 并查询这些 API。 如需深入介绍、完整文档以及访问 Graph 浏览器，请参阅 [Microsoft Graph 站点](https://graph.microsoft.io/)或以下 API 的特定参考文档：
-
-* [riskDetection API](/graph/api/resources/riskdetection?view=graph-rest-v1.0)
-* [riskyUsers API](/graph/api/resources/riskyuser?view=graph-rest-v1.0)
-* [signIn API](/graph/api/resources/signin?view=graph-rest-v1.0)
 
 ## <a name="connect-to-microsoft-graph"></a>连接到 Microsoft Graph
 
 通过 Microsoft Graph 访问“标识保护”数据需要执行四个步骤：
 
-- [检索域名](#retrieve-your-domain-name)
+- [创建证书](#create-a-certificate)
 - [创建新的应用注册](#create-a-new-app-registration)
 - [配置 API 权限](#configure-api-permissions)
 - [配置有效凭据](#configure-a-valid-credential)
 
-### <a name="retrieve-your-domain-name"></a>检索域名 
+### <a name="create-a-certificate"></a>创建证书
 
-1. 登录 [Azure 门户](https://portal.azure.com)。  
-1. 浏览到 **Azure Active Directory**  >  **自定义域名**。 
-1. 记下 `.onmicrosoft.com` 域，稍后的步骤中将需要此信息。
+在生产环境中，你将使用生产证书颁发机构颁发的证书，但在此示例中，我们将使用自签名证书。 使用以下 PowerShell 命令创建并导出证书。
+
+```powershell
+$cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
+Export-Certificate -Cert $cert -FilePath "C:\Reporting\MSGraph_ReportingAPI.cer"
+```
 
 ### <a name="create-a-new-app-registration"></a>创建新的应用注册
 
@@ -51,9 +49,11 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
    1. 在 " **名称** " 文本框中，键入应用程序的名称 (例如： Azure AD 风险检测 API) 。
    1. 在 " **受支持的帐户类型**" 下，选择将使用 api 的帐户类型。
    1. 选择“注册”  。
-1. 复制 **应用程序 ID**。
+1. 记下 **应用程序 (客户端) id** 和 **目录 (租户) ID** ，因为稍后将需要这些项。
 
 ### <a name="configure-api-permissions"></a>配置 API 权限
+
+在此示例中，我们将配置应用程序权限，以允许在无人参与的情况下使用此示例。 如果向将登录的用户授予权限，请改为选择 "委派权限"。 有关不同权限类型的详细信息，请参阅 [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md#permission-types)。
 
 1. 从创建的 **应用程序** 中，选择 " **API 权限**"。
 1. 在 " **已配置权限** " 页顶部的工具栏中，单击 " **添加权限**"。
@@ -68,109 +68,34 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 ### <a name="configure-a-valid-credential"></a>配置有效凭据
 
 1. 从创建的 **应用程序** 中，选择 " **证书" & "机密**"。
-1. 在 " **客户端密码**" 下，选择 " **新建客户端密码**"。
-   1. 为客户端密码指定一个 **描述** ，并根据组织策略设置过期时间段。
+1. 在 " **证书**" 下，选择 " **上传证书**"。
+   1. 从打开的窗口中选择先前导出的证书。
    1. 选择 **添加** 。
+1. 记下证书的 **指纹** ，因为下一步将需要此信息。
 
-   > [!NOTE]
-   > 如果丢失此密钥，必须返回到此部分并创建新密钥。 将此密钥保密：持有该密钥的任何人都可以访问数据。
+## <a name="list-risky-users-using-powershell"></a>使用 PowerShell 列出有风险的用户
 
-## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-detections-api"></a>在 Microsoft Graph 中进行身份验证并查询标识风险检测 API
+若要启用查询 Microsoft Graph 功能，需要 `Microsoft.Graph` 使用命令在 PowerShell 窗口中安装该模块 `Install-Module Microsoft.Graph` 。
 
-现在应已获得：
+修改以下变量以包括前面步骤中生成的信息，然后将其作为一个整体运行，以使用 PowerShell 获取有风险的用户详细信息。
 
-- 租户域的名称
-- 应用程序 (客户端) ID 
-- 客户端机密或证书 
+```powershell
+$ClientID       = "<your client ID here>"        # Application (client) ID gathered when creating the app registration
+$tenantdomain   = "<your tenant domain here>"    # Directory (tenant) ID gathered when creating the app registration
+$Thumbprint     = "<your client secret here>"    # Certificate thumbprint gathered when configuring your credential
 
-若要进行身份验证，请向 `https://login.microsoft.com` 发送一个 post 请求，并在请求正文中包含以下参数：
+Select-MgProfile -Name "beta"
+  
+Connect-MgGraph -ClientId $ClientID -TenantId $tenantdomain -CertificateThumbprint $Thumbprint
 
-- grant_type：“**client_credentials**”
-- 资源：`https://graph.microsoft.com`
-- client_id：\<your client ID\>
-- client_secret：\<your key\>
-
-如果成功，此请求将返回身份验证令牌。  
-若要调用 API，请创建包含以下参数的标头：
-
-```
-`Authorization`="<token_type> <access_token>"
-```
-
-身份验证时，可以在返回的令牌中找到令牌类型和访问令牌。
-
-将此标头作为请求发送到以下 API URL：`https://graph.microsoft.com/v1.0/identityProtection/riskDetections`
-
-如果成功，响应中会包含标识风险检测的集合，以及采用 OData JSON 格式的相关数据，在适当的情况下可以分析和处理这些数据。
-
-### <a name="sample"></a>示例
-
-此示例演示如何使用共享机密进行身份验证。 在生产环境中，通常会 frowned 在代码中存储机密。 组织可以使用 Azure 资源的托管标识来保护这些凭据。 有关托管标识的详细信息，请参阅 [Azure 资源的托管标识](../managed-identities-azure-resources/overview.md)一文。
-
-下面是使用 PowerShell 进行身份验证和调用 API 的示例代码。  
-只需添加客户端 ID、密钥和租户域即可。
-
-```PowerShell
-    $ClientID       = "<your client ID here>"        # Should be a ~36 hex character string; insert your info here
-    $ClientSecret   = "<your client secret here>"    # Should be a ~44 character string; insert your info here
-    $tenantdomain   = "<your tenant domain here>"    # For example, contoso.onmicrosoft.com
-
-    $loginURL       = "https://login.microsoft.com"
-    $resource       = "https://graph.microsoft.com"
-
-    $body       = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
-    $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
-
-    Write-Output $oauth
-
-    if ($oauth.access_token -ne $null) {
-        $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
-
-        $url = "https://graph.microsoft.com/v1.0/identityProtection/riskDetections"
-        Write-Output $url
-
-        $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
-
-        foreach ($event in ($myReport.Content | ConvertFrom-Json).value) {
-            Write-Output $event
-        }
-
-    } else {
-        Write-Host "ERROR: No Access Token"
-    } 
-```
-
-## <a name="query-the-apis"></a>查询 API
-
-这三个 API 提供了大量机会来检索你的组织中有风险的用户和登录的信息。 下面是这些 API 的一些常见用例以及相关的示例请求。 可以使用上面的示例代码或使用 [Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)运行这些查询。
-
-### <a name="get-all-of-the-offline-risk-detections-riskdetection-api"></a>获取所有脱机风险检测 (riskDetection API)
-
-使用 Identity Protection 登录风险策略，可以在实时检测到风险时应用条件。 但对于脱机发现的检测怎么办呢？ 若要了解脱机发生了哪些检测，从而不会触发登录风险策略，可以查询 riskDetection API。
-
-```
-GET https://graph.microsoft.com/v1.0/identityProtection/riskDetections?$filter=detectionTimingType eq 'offline'
-```
-
-### <a name="get-all-of-the-users-who-successfully-passed-an-mfa-challenge-triggered-by-risky-sign-ins-policy-riskyusers-api"></a>获取成功通过了由风险登录策略触发的 MFA 质询的所有用户 (riskyUsers API)
-
-若要了解基于身份保护风险的策略对组织的影响，可以查询成功通过了风险登录策略触发的 MFA 质询的所有用户。 该信息可以帮助你了解“标识保护”可能错误地将哪些用户检测为存在风险，以及哪些合法用户可能正在执行人工智能认为有风险的操作。
-
-```
-GET https://graph.microsoft.com/v1.0/identityProtection/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
+Get-MgRiskyUser -All
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-恭喜，已向 Microsoft Graph 发出了第一个调用！  
-现在，可以在适当的情况下查询标识风险检测和使用数据。
-
-若要详细 Microsoft Graph 以及如何使用图形 API 构建应用程序，请查看[文档](/graph/overview)。同时，[Microsoft Graph 站点](https://developer.microsoft.com/graph)上提供了更丰富的信息。 
-
-如需相关信息，请参阅：
-
-- [Azure Active Directory 标识保护](./overview-identity-protection.md)
-- [Azure Active Directory Identity Protection 检测到的风险检测类型](./overview-identity-protection.md)
-- [Microsoft Graph](https://developer.microsoft.com/graph/)
+- [Microsoft Graph PowerShell SDK 入门](/graph/powershell/get-started)
+- [教程：使用 Microsoft Graph Api 识别和修正风险](/graph/tutorial-riskdetection-api)
 - [Microsoft Graph 概述](https://developer.microsoft.com/graph/docs)
+- [在不是用户的情况下获取访问权限](/graph/auth-v2-service)
 - [Azure AD 标识保护服务根](/graph/api/resources/identityprotectionroot)
+- [Azure Active Directory 标识保护](./overview-identity-protection.md)

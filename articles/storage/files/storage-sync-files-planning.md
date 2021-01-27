@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 29f7f241f119ca7fab50409881b517961b00cf20
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: cfeb124aeb614906cef1dc710eb8485e63806539
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610465"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880569"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 
@@ -387,6 +387,6 @@ Microsoft 的内部防病毒解决方案 Windows Defender 和 System Center Endp
 ## <a name="next-steps"></a>后续步骤
 * [考虑防火墙和代理设置](storage-sync-files-firewall-and-proxy.md)
 * [规划 Azure 文件部署](storage-files-planning.md)
-* [部署 Azure 文件](storage-files-deployment-guide.md)
+* [部署 Azure 文件](./storage-how-to-create-file-share.md)
 * [部署 Azure 文件同步](storage-sync-files-deployment-guide.md)
 * [监视 Azure 文件同步](storage-sync-files-monitoring.md)

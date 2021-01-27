@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: cbbbf4ddc651c535cb1266257990f149c80b4742
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: caa0390dfd3a98e6537a7a60a2895461e2efd52a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562491"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879858"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>支持 Azure Data Lake Storage Gen2 的 Azure 服务
 
@@ -39,12 +39,12 @@ ms.locfileid: "97562491"
 |HDInsight |正式发布|是|是|[将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[将 HDFS CLI 与 Data Lake Storage Gen2 配合使用](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据](data-lake-storage-tutorial-extract-transform-load-hive.md)|
 |IoT 中心 |正式发布|是|是|[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
 |Power BI|正式发布|是|是|[使用 Power BI 分析 Data Lake Storage Gen2 中的数据](/power-query/connectors/datalakestorage)|
-|Azure Synapse Analytics（以前称为 SQL 数据仓库）|正式发布|是|是|[分析存储帐户中的数据](/azure/synapse-analytics/get-started-analyze-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Synapse Analytics（以前称为 SQL 数据仓库）|正式发布|是|是|[分析存储帐户中的数据](../../synapse-analytics/get-started-analyze-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |SQL Server 集成服务 (SSIS)|正式发布|是|是|[Azure 存储连接管理器](/sql/integration-services/connection-manager/azure-storage-connection-manager)|
 |Azure 数据资源管理器|正式发布|是|是|[使用 Azure 数据资源管理器查询 Azure Data Lake 中的数据](/azure/data-explorer/data-lake-query-data)|
 |Azure 认知搜索|预览|是|是|[为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](../../search/search-howto-index-azure-data-lake-storage.md)|
 |Azure 内容分发网络|尚不支持|不适用|不适用|[为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](../../cdn/cdn-overview.md)|
-|Azure SQL 数据库|尚不支持|不适用|不适用|[什么是 Azure SQL 数据库？](/azure/azure-sql/database/sql-database-paas-overview)|
+|Azure SQL 数据库|尚不支持|不适用|不适用|[什么是 Azure SQL 数据库？](../../azure-sql/database/sql-database-paas-overview.md)|
 
 ## <a name="see-also"></a>另请参阅
 

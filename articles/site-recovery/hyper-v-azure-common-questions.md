@@ -3,12 +3,12 @@ title: 有关使用 Azure Site Recovery 实现 Hyper-V 灾难恢复的常见问�
 description: 本文汇总了有关使用 Azure Site Recovery 站点设置本地 Hyper-V VM 到 Azure 的灾难恢复的常见问题。
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: e4f5ee71fc56cad247b57f94bf08a68bed8775f9
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 649bd69f14cdf8d81fe05d3a5f5cac3389419fc3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754345"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879438"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常见问题 - Hyper-V 到 Azure 的灾难恢复
 
@@ -165,9 +165,9 @@ Site Recovery 通过公共终结点或使用 ExpressRoute Microsoft 对等互连
 
 可以每隔 30 秒（高级存储除外）或 5 分钟复制一次 Hyper-V VM。
 
-### <a name="can-azure-site-recovery-and-hyper-v-replica-be-configured-together-on-a-hyper-v-machine"></a>是否可以在 Hyper-v 计算机上同时配置 Azure Site Recovery 和 Hyper-v 副本？
+### <a name="can-azure-site-recovery-and-hyper-v-replica-be-configured-together-on-a-hyper-v-machine"></a>Azure Site Recovery 和 Hyper-V 副本能否在 Hyper-V 计算机上一起配置？
 
-是的，可以同时为计算机配置 Azure Site Recovery 和 Hyper-v 副本。 但计算机必须作为物理计算机进行保护，并将使用配置/进程服务器复制到 Azure。 [在此处](https://docs.microsoft.com/azure/site-recovery/physical-azure-architecture)了解有关保护物理计算机的详细信息。
+可以，Azure Site Recovery 和 Hyper-V 副本可以为计算机一起配置。 但是，必须将计算机作为物理计算机进行保护，并使用配置/进程服务器将其复制到 Azure。 在[此处](./physical-azure-architecture.md)详细了解如何保护物理计算机。
 
 ### <a name="can-i-extend-replication"></a>是否可以扩展复制？
 不支持扩展或链式复制。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中请求此功能。

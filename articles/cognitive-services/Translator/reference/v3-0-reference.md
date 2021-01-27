@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: swmachan
-ms.openlocfilehash: f8175cbd469c8a3933526d01f433e1def714783b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: c93b8254e1fc80865d9889072b33cbf3fc94326d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024494"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880770"
 ---
 # <a name="translator-v30"></a>Translator 3.0 版
 
@@ -39,9 +39,9 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 
 在大多数情况下，对 Microsoft Translator 的请求由距离请求来源最近的数据中心处理。 如果数据中心出现故障，请求可能会路由到 Azure 地理区域之外。
 
-若要强制由特定 Azure 地理区域处理请求，请将 API 请求中的全球终结点更改为所需的区域终结点：
+若要强制由特定 Azure 地域处理请求，请将 API 请求中的全局终结点更改为所需的地理终结点：
 
-|说明|Azure 地理区域|基 URL|
+|说明|Azure 地理区域|基 URL (地理端点) |
 |:--|:--|:--|
 |Azure|全局 (非区域) |   api.cognitive.microsofttranslator.com|
 |Azure|美国|   api-nam.cognitive.microsofttranslator.com|

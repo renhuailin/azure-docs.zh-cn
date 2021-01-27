@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 16f903e34c64214d54fc01fa621f561f1786de08
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 81ae46a7b6c19557eeadd2d5b28ad2fa46e77115
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755984"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881361"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>适用于 SQL 的 Azure Defender 简介
 
@@ -27,7 +27,7 @@ ms.locfileid: "97755984"
 |----|:----|
 |发布状态：|**适用于 Azure SQL 数据库服务器的 Azure Defender** - 正式发布 (GA)<br>**适用于计算机上的 SQL Server 的 Azure Defender** - 正式发布 (GA) |
 |定价：|适用于 SQL 的 Azure Defender 包含的两个计划按[定价页](security-center-pricing.md)中的定价计费|
-|受保护的 SQL 版本：|[Azure 虚拟机上的 SQL](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[已启用 Azure Arc 的 SQL Server](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)<br>不带 Azure Arc 的 Windows 计算机上的本地 SQL Server<br>Azure SQL [单一数据库](../azure-sql/database/single-database-overview.md)和[弹性池](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics（以前称为 SQL DW）专用 SQL 池](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
+|受保护的 SQL 版本：|[Azure 虚拟机上的 SQL](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[已启用 Azure Arc 的 SQL Server](/sql/sql-server/azure-arc/overview)<br>不带 Azure Arc 的 Windows 计算机上的本地 SQL Server<br>Azure SQL [单一数据库](../azure-sql/database/single-database-overview.md)和[弹性池](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics（以前称为 SQL DW）专用 SQL 池](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![是](./media/icons/yes-icon.png) China Gov（部分：SQL Server 的警报和漏洞评估的子集。 行为威胁防护功能不可用。）|
 |||
 
@@ -43,7 +43,7 @@ ms.locfileid: "97755984"
 - 适用于计算机上的 SQL Server 的 Azure Defender 会扩展对 Azure 原生 SQL Server 的保护以完全支持混合环境，并保护在 Azure、其他云环境，甚至本地计算机上托管的 SQL server（所有受支持的版本）：
     - [虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - 本地 SQL Server：
-        - [已启用 Azure Arc 的 SQL Server（预览）](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [已启用 Azure Arc 的 SQL Server（预览）](/sql/sql-server/azure-arc/overview)
         - [在不带 Azure Arc 的 Windows 计算机上运行的 SQL Server](../azure-monitor/platform/agent-windows.md)
 
 

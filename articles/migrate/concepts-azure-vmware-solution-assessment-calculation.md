@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: f52c0296023098c755feb1bf0baba980f2988bd7
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: a489902372b0b88a0ffec07fa685ee745ec59c50
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567713"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880451"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>服务器评估概述 (迁移到 Azure VMware 解决方案) 
 
@@ -207,7 +207,7 @@ AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略为虚拟机定义存�
 
 如果使用 *作为本地大小调整*，则服务器评估不会考虑 vm 和磁盘的性能历史记录。 相反，它会根据本地分配的大小分配 AVS 节点。 默认存储类型为在 AVS 中的 vSAN。
 
-[了解](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware-azure-vmware-solution#review-an-assessment) 有关如何查看 Azure VMware 解决方案评估的详细信息。
+[了解](./tutorial-assess-vmware-azure-vmware-solution.md#review-an-assessment) 有关如何查看 Azure VMware 解决方案评估的详细信息。
 
 ## <a name="confidence-ratings"></a>置信度评级
 

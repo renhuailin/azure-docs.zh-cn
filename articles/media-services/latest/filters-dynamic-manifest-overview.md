@@ -1,6 +1,5 @@
 ---
 title: 使用动态打包器筛选清单
-titleSuffix: Azure Media Services
 description: 了解如何使用动态打包器创建筛选器，以筛选并有选择性地流式传输清单。
 services: media-services
 documentationcenter: ''
@@ -14,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: acb30c1659c4c29e0af83da5594bdd9a7e3465d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ffdb41752630e0e5e22303ff58ecd798595a890
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299025"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897656"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>使用动态打包器筛选清单
 
@@ -27,11 +26,11 @@ ms.locfileid: "89299025"
 
 将自适应比特率流内容传送到设备时，有时需要发布多个版本的清单来适应特定的设备功能或可用网络带宽。 使用[动态打包器](dynamic-packaging-overview.md)可以指定筛选器，用于即时筛选出特定的编解码器、分辨率、比特率和音频轨迹组合。 这种筛选消除了创建多个副本的需要。 只需使用一组根据目标设备（iOS、Android、SmartTV 或浏览器）和网络功能（高带宽、移动或低带宽方案）配置的一组特定筛选器发布新的 URL。 在这种情况下，客户端可以通过查询字符串处理内容流（通过指定可用的[资产筛选器或帐户筛选器](filters-concept.md)），并使用筛选器来流式传输流的特定部分。
 
-某些传送方案要求确保客户无法访问特定的轨迹。 例如，你可能不想要将包含 HD 轨迹的清单发布到特定的订户层。 或者，你可能想要删除特定的自适应比特率 (ABR) 轨迹，以降低传送到不会受益于更多轨迹的特定设备的成本。 在这种情况下，可以在创建时将预先创建的筛选器列表关联到[流定位符](streaming-locators-concept.md)。 于是，客户端将无法处理内容的流式传输方式，因为传输方式由**流定位符**定义。
+某些传送方案要求确保客户无法访问特定的轨迹。 例如，你可能不想要将包含 HD 轨迹的清单发布到特定的订户层。 或者，你可能想要删除特定的自适应比特率 (ABR) 轨迹，以降低传送到不会受益于更多轨迹的特定设备的成本。 在这种情况下，可以在创建时将预先创建的筛选器列表关联到[流定位符](streaming-locators-concept.md)。 于是，客户端将无法处理内容的流式传输方式，因为传输方式由 **流定位符** 定义。
 
 可以通过指定[针对流定位符的筛选器](filters-concept.md#associating-filters-with-streaming-locator)，以及客户端在 URL 中指定的其他设备特定筛选器，来组合筛选。 这种组合可以有效地限制其他轨迹，例如元数据或事件流、音频语言，或描述性的音频轨迹。
 
-针对流指定不同筛选器的功能提供了一种强大的**动态清单**处理解决方案用于定位目标设备的多用例方案。 本主题介绍与**动态清单**相关的概念，并提供可以使用此功能的示例方案。
+针对流指定不同筛选器的功能提供了一种强大的 **动态清单** 处理解决方案用于定位目标设备的多用例方案。 本主题介绍与 **动态清单** 相关的概念，并提供可以使用此功能的示例方案。
 
 > [!NOTE]
 > 动态清单不会更改资产和该资产的默认清单。

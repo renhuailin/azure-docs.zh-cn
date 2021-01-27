@@ -2,19 +2,15 @@
 title: 排查 Azure 自动化混合 Runbook 辅助角色问题
 description: 本文介绍如何排查和解决 Azure 自动化混合 Runbook 辅助角色出现的问题。
 services: automation
-ms.service: automation
 ms.subservice: ''
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/25/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.topic: troubleshooting
+ms.openlocfilehash: 214501c447632232dc00b61643ea21083bd0e4ac
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428389"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896488"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>排查混合 Runbook 辅助角色问题
 
@@ -46,7 +42,7 @@ Runbook 在尝试执行三次后很快暂停。 在某些情况下，Runbook 可
 
 #### <a name="resolution"></a>解决方法
 
-验证计算机是否在端口443上有到 azure-automation.net 的出站访问权限** \* 。**
+验证计算机是否在端口443上有到 azure-automation.net 的出站访问权限 **\* 。**
 
 运行混合 Runbook 辅助角色的计算机应满足最低硬件要求，然后才能将辅助角色配置为托管此功能。 它们使用的 Runbook 和后台进程可能会导致系统过度使用，造成 Runbook 作业延迟或超时。
 
@@ -58,7 +54,7 @@ Runbook 在尝试执行三次后很快暂停。 在某些情况下，Runbook 可
 
 #### <a name="issue"></a>问题
 
-混合 Runbook 辅助角色收到表示查询结果无效的事件 15011。 当辅助角色尝试与 [SignalR 服务器](/aspnet/core/signalr/introduction?view=aspnetcore-3.1)建立连接时出现以下错误。
+混合 Runbook 辅助角色收到表示查询结果无效的事件 15011。 当辅助角色尝试与 [SignalR 服务器](/aspnet/core/signalr/introduction)建立连接时出现以下错误。
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -114,7 +110,7 @@ At line:3 char:1
 
 #### <a name="resolution"></a>解决方法
 
-如果混合 Runbook 辅助角色是 Azure VM，则可改用[使用托管标识的 Runbook 身份验证](../automation-hrw-run-runbooks.md#runbook-auth-managed-identities)。 此方案允许使用 Azure VM 的托管标识而非运行方式帐户向 Azure 资源进行身份验证，从而简化了身份验证。 如果混合 Runbook 辅助角色是本地计算机，需要在此计算机上安装运行方式帐户证书。 若要了解如何安装证书，请参阅[在混合 Runbook 辅助角色上运行 Runbook](../automation-hrw-run-runbooks.md) 中有关如何运行 PowerShell Runbook **Export-RunAsCertificateToHybridWorker** 的步骤。
+如果混合 Runbook 辅助角色是 Azure VM，则可改用[使用托管标识的 Runbook 身份验证](../automation-hrw-run-runbooks.md#runbook-auth-managed-identities)。 此方案允许使用 Azure VM 的托管标识而非运行方式帐户向 Azure 资源进行身份验证，从而简化了身份验证。 如果混合 Runbook 辅助角色是本地计算机，需要在此计算机上安装运行方式帐户证书。 若要了解如何安装证书，请参阅 [在混合 Runbook 辅助角色上运行 Runbook](../automation-hrw-run-runbooks.md) 中有关如何运行 PowerShell Runbook **Export-RunAsCertificateToHybridWorker** 的步骤。
 
 ### <a name="scenario-error-403-during-registration-of-a-hybrid-runbook-worker"></a><a name="error-403-on-registration"></a>场景：在注册混合 Runbook 辅助角色期间发生错误 403
 
@@ -226,7 +222,7 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 
 #### <a name="cause"></a>原因
 
-这可能是因为代理或网络防火墙阻止与 Microsoft Azure 通信。 验证计算机是否在端口443上有到 azure-automation.net 的出站访问权限** \* 。**
+这可能是因为代理或网络防火墙阻止与 Microsoft Azure 通信。 验证计算机是否在端口443上有到 azure-automation.net 的出站访问权限 **\* 。**
 
 #### <a name="resolution"></a>解决方法
 
@@ -238,7 +234,7 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 
 #### <a name="issue"></a>问题
 
-在 Windows 混合 Runbook 辅助角色上运行的脚本不能按预期方式连接到 Orchestrator 沙盒上的 Microsoft 365。 脚本使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) 进行连接。 
+在 Windows 混合 Runbook 辅助角色上运行的脚本不能按预期方式连接到 Orchestrator 沙盒上的 Microsoft 365。 脚本使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice) 进行连接。 
 
 即使调整 **Orchestrator.Sandbox.exe.config** 来设置代理和“绕过列表”，沙盒仍然无法正常连接。 包含相同代理和“绕过列表”设置的某个 **Powershell_ise.exe.config** 文件看起来却能按预期方式工作。 Service Management Automation (SMA) 日志和 PowerShell 日志未提供有关代理的任何信息。
 
@@ -250,7 +246,7 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 
 可以通过迁移脚本以使用 Azure Active Directory 模块而不是使用 PowerShell cmdlet 的 MSOnline 模块，来解决业务流程协调程序沙盒的问题。 有关详细信息，请参阅[从业务流程协调程序迁移到 Azure 自动化 (Beta)](../automation-orchestrator-migration.md)。
 
-若要继续使用 MSOnline 模块 cmdlet，请将脚本更改为使用 [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)。 指定 `ComputerName` 和 `Credential` 参数的值。 
+若要继续使用 MSOnline 模块 cmdlet，请将脚本更改为使用 [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command)。 指定 `ComputerName` 和 `Credential` 参数的值。 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential
@@ -293,7 +289,7 @@ Remove-Item -Path 'C:\Program Files\Microsoft Monitoring Agent\Agent\Health Serv
 Start-Service -Name HealthService
 ```
 
-### <a name="scenario-you-cant-add-a-windows-hybrid-runbook-worker"></a><a name="already-registered"></a>方案：无法添加 Windows 混合 Runbook 辅助角色
+### <a name="scenario-you-cant-add-a-windows-hybrid-runbook-worker"></a><a name="already-registered"></a>场景：无法添加 Windows 混合 Runbook 辅助角色
 
 #### <a name="issue"></a>问题
 
@@ -313,17 +309,17 @@ Machine is already registered
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
 
-### <a name="scenario-you-cant-add-a-linux-hybrid-runbook-worker"></a><a name="already-registered"></a>方案：无法添加 Linux 混合 Runbook 辅助角色
+### <a name="scenario-you-cant-add-a-linux-hybrid-runbook-worker"></a><a name="already-registered"></a>场景：无法添加 Linux 混合 Runbook 辅助角色
 
 #### <a name="issue"></a>问题
 
-尝试使用 python 脚本添加混合 Runbook 辅助角色时，会收到以下消息 `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` ：
+尝试使用 `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` python 脚本添加混合 Runbook 辅助角色时收到以下消息：
 
 ```error
 Unable to register, an existing worker was found. Please deregister any existing worker and try again.
 ```
 
-此外，尝试使用 python 脚本取消注册混合 Runbook 辅助角色 `sudo python /opt/microsoft/omsconfig/.../onboarding.py --deregister` ：
+此外，尝试使用 `sudo python /opt/microsoft/omsconfig/.../onboarding.py --deregister` python 脚本取消注册混合 Runbook 辅助角色：
 
 ```error
 Failed to deregister worker. [response_status=404]
@@ -331,13 +327,13 @@ Failed to deregister worker. [response_status=404]
 
 #### <a name="cause"></a>原因
 
-如果计算机已注册到其他自动化帐户，或者如果已删除 Azure 混合辅助角色组，或者在从计算机中删除混合 Runbook 辅助角色之后尝试重新添加混合 Runbook 辅助角色，则可能出现此问题。
+如果计算机已注册到一个不同的自动化帐户，并且 Azure 混合辅助角色组已被删除，或者在将混合 Runbook 辅助角色从计算机中删除后尝试重新添加它，则可能会出现此问题。
 
 #### <a name="resolution"></a>解决方法
 
 若要解决此问题，请执行下列操作：
 
-1. 删除代理 `sudo sh onboard_agent.sh --purge` 。
+1. 删除代理 `sudo sh onboard_agent.sh --purge`。
 
 1. 运行以下命令：
 
@@ -347,15 +343,15 @@ Failed to deregister worker. [response_status=404]
    sudo mv -f /home/nxautomation/state/worker_diy.key /home/nxautomation/state/worker_diy.key_old
    ```
 
-1. 重新载入代理 `sudo sh onboard_agent.sh -w <workspace id> -s <workspace key> -d opinsights.azure.com` 。
+1. 重新载入代理 `sudo sh onboard_agent.sh -w <workspace id> -s <workspace key> -d opinsights.azure.com`。
 
 1. 等待文件夹 `/opt/microsoft/omsconfig/modules/nxOMSAutomationWorker` 填充。
 
-1. 再次尝试 `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` Python 脚本。
+1. 重新尝试 `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` Python 脚本。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果未在此处看到你遇到的问题，或者无法解决你遇到的问题，请尝试以下途径之一以获取其他支持：
+如果你的问题未在本文中列出，或者无法解决问题，请尝试通过以下渠道之一获取更多支持：
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
 * 连接到 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 Azure 支持人员会将你连接到 Azure 社区，从中可以获得解答、支持和专家建议。

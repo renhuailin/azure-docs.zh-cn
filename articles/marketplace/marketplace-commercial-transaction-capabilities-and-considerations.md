@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 5a2a7abf0227812826428557b86c4468f7693c82
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b8c9af31243d8bb58a58fbc687cad68130f64f7e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600385"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880736"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商业市场交易功能
 
@@ -90,7 +90,7 @@ Microsoft 使客户能在 Microsoft 商业市场和你的最终用户许可协�
 
 当客户从商用 marketplace 购买你的产品/服务时，我们将收取20% 的标准存储服务费用。 有关此费用的详细信息，请参阅 [Microsoft 发行者协议](https://go.microsoft.com/fwlink/?LinkID=699560)第5c 部分。
 
-对于发布到商业应用商店的某些事务产品/服务，你可能会有超过10% 的商店服务费用。 对于合格的产品/服务，它必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 在每个日历月结束之前至少需要支付5个工作日，才能获得降低的 Marketplace 服务费用。 一旦满足了资格，就会在下个月的第一天生效，直到 Azure IP 共同销售 incentivized 的状态为 "丢失"。 有关 IP 共同销售资格的详细信息，请参阅 [共同销售状态的要求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
+对于发布到商业应用商店的某些事务产品/服务，你可能会有超过10% 的商店服务费用。 对于合格的产品/服务，它必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 在每个日历月结束之前至少需要支付5个工作日，才能获得降低的 Marketplace 服务费用。 一旦满足了资格，就会在下个月的第一天生效，直到 Azure IP 共同销售 incentivized 的状态为 "丢失"。 有关 IP 共同销售资格的详细信息，请参阅 [共同销售状态的要求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。
 
 降低的 Marketplace 服务费用适用于 Azure IP 共同销售的 incentivized SaaS、Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 解决方案。 付费 SaaS 产品/服务与一个 Microsoft 团队应用相关联，或至少 Microsoft 365 两个 (Excel、PowerPoint、Word、Outlook 和 SharePoint) 的外接程序，并已发布到 Microsoft AppSource 也可获得此折扣。
 

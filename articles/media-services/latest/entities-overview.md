@@ -1,6 +1,5 @@
 ---
 title: 媒体服务实体的筛选、排序和分页
-titleSuffix: Azure Media Services
 description: 了解如何对 Azure 媒体服务 v3 实体进行筛选、排序和分页。
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 9a8cff3685cdaad011332adf58dc76f74976cd44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50f562927fcbcf66ca7006ac2d100520311ac917
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300181"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897877"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
 
@@ -37,15 +36,15 @@ ms.locfileid: "89300181"
 
 相等性运算符：
 
-- `eq`：测试某个字段是否*等于*某个常量值。
-- `ne`：测试某个字段是否*不等于*某个常量值。
+- `eq`：测试某个字段是否 *等于* 某个常量值。
+- `ne`：测试某个字段是否 *不等于* 某个常量值。
 
 范围运算符：
 
-- `gt`：测试某个字段是否*大于*某个常量值。
-- `lt`：测试某个字段是否*小于*某个常量值。
+- `gt`：测试某个字段是否 *大于* 某个常量值。
+- `lt`：测试某个字段是否 *小于* 某个常量值。
 - `ge`：测试某个字段是否大于或等于  某个常数值。
-- `le`：测试某个字段是否*小于或等于*某个常量值。
+- `le`：测试某个字段是否 *小于或等于* 某个常量值。
 
 ## <a name="filter"></a>筛选器
 

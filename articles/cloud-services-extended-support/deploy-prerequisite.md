@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f112d0e96c6ff0caf3c5e3762304158f70963f14
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 42416b1fc06ff59a68a6f5044b8bcca5dc7f035f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787023"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880180"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>部署 Azure 云服务 (扩展支持) 的先决条件
 
@@ -88,7 +88,7 @@ Azure 资源管理器中已弃用以下大小。 但是，如果要继续使用�
 |---|---|
 | 特小型 | Standard_A0 | 
 | 小型 | Standard_A1 |
-| 中 | Standard_A2 | 
+| 中型 | Standard_A2 | 
 | 大型 | Standard_A3 | 
 | 超大型 | Standard_A4 | 
 | A5 | Standard_A5 | 
@@ -126,3 +126,4 @@ Key Vault 用于存储与云服务 (扩展支持) 相关联的证书。 将证�
 - 查看云服务的 [部署先决条件](deploy-prerequisite.md) (扩展支持) 。
 - ) 使用 [Azure 门户](deploy-portal.md)、 [PowerShell](deploy-powershell.md)、 [模板](deploy-template.md) 或 [Visual Studio](deploy-visual-studio.md)部署云服务 (扩展支持。
 - 查看 [云服务的常见问题 (](faq.md) 扩展支持) 。
+- 访问 [云服务 (扩展支持) 示例存储库](https://github.com/Azure-Samples/cloud-services-extended-support)

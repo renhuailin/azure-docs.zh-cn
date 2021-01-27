@@ -3,14 +3,14 @@ title: Azure 自动化更新管理概述
 description: 本文概述了为 Windows 和 Linux 计算机实现更新的更新管理功能。
 services: automation
 ms.subservice: update-management
-ms.date: 01/13/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 718e812a8193797ad350fa61444bb05fe5a4b724
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185608"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896895"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
@@ -185,16 +185,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 ## <a name="network-planning"></a><a name="ports"></a>网络规划
 
-更新管理特别需要以下地址。 与以下地址的通信通过端口 443 进行。
-
-|Azure Public  |Azure Government  |
-|---------|---------|
-|`*.ods.opinsights.azure.com`    | `*.ods.opinsights.azure.us`        |
-|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
-|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
-|`*.azure-automation.net` | `*.azure-automation.us`|
-
-创建网络组安全规则或配置 Azure 防火墙以允许流量流向自动化服务和 Log Analytics 工作区时，请使用 [服务标记](../../virtual-network/service-tags-overview.md#available-service-tags) GuestAndHybridManagement 和 AzureMonitor 。 这样可简化网络安全规则的日常管理。 若要安全且私下地从 Azure Vm 连接到自动化服务，请参阅 [使用 Azure 专用链接](../how-to/private-link-security.md)。 若要获取当前服务标记和范围信息，并将其包含为本地防火墙配置的一部分，请参阅[可下载的 JSON 文件](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
+查看 [Azure 自动化网络配置](../automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration) ，详细了解更新管理所需的端口、url 和其他网络详细信息。
 
 对于 Windows 计算机，还必须允许流量发送到 Windows 更新所需的任何终结点。 可以在[与 HTTP/Proxy 相关的问题](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中找到所需终结点的更新列表。 如果拥有本地 [Windows 更新服务器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，则还必须允许流量发送到 [WSUS 密钥](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的服务器。
 
@@ -227,11 +218,14 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 |其他更新     | 本质上不是关键更新或不是安全更新的所有其他更新。        |
 
 >[!NOTE]
->仅当在支持的 Azure 公有云区域中使用时，才可以使用适用于 Linux 计算机的更新分类。 使用以下国家/地区云区域中的更新管理时：
+>仅当在支持的 Azure 公有云区域中使用时，才可以使用适用于 Linux 计算机的更新分类。 使用以下国家/地区云区域中的更新管理时，不会分类 Linux 更新：
+>
 >* Azure 美国政府
 >* 中国世纪互联
 >
-> 没有 Linux 更新分类，它们在 " **其他更新** " 类别下进行报告。 更新管理使用受支持的分发版发布的数据，尤其是其发布的 [OVAL](https://oval.mitre.org/)（开放式漏洞与评估语言）文件。 由于 internet 访问受限于这些国家云，因此更新管理无法访问和使用这些文件。
+> 更新会在 " **其他更新** " 类别下报告，而不是进行分类。
+>
+> 更新管理使用受支持的分发版发布的数据，尤其是其发布的 [OVAL](https://oval.mitre.org/)（开放式漏洞与评估语言）文件。 由于 internet 访问受限于这些国家云，因此更新管理无法访问这些文件。
 
 对于 Linux，更新管理可以区分云中类别“安全性”和“其他”下的关键更新和安全更新，同时显示因云中数据扩充而产生的评估数据 。 为了进行修补，更新管理依赖于计算机上提供的分类数据。 与其他发行版不同，CentOS 在 RTM 版本中未提供此信息。 如果已将 CentOS 计算机配置为返回以下命令的安全数据，则更新管理可以基于分类进行修补。
 

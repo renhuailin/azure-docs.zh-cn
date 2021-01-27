@@ -1,5 +1,5 @@
 ---
-title: 使用媒体服务 v3 .NET 对自定义转换进行编码 - Azure | Microsoft Docs
+title: 使用媒体服务 v3 .NET 编码自定义转换-Azure
 description: 本主题介绍如何使用 .NET 通过 Azure 媒体服务 v3 对自定义转换进行编码。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: b5bb505df3cad7856e0b08f04949c2e56ccec1ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 035afd43b49c05f51149ad568a0eb16991dbaf85
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295608"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897167"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>如何对自定义转换进行编码 - .NET
 
@@ -48,9 +48,9 @@ ms.locfileid: "89295608"
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>使用自定义预设创建转换 
 
-创建新的[转换](/rest/api/media/transforms)时，需要指定希望生成的输出内容。 所需参数是 [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput) 对象，如以下代码所示。 每个 TransformOutput 包含一个预设   。 **预设**介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 **TransformOutput**。 以下 **TransformOutput** 创建自定义编解码器和层输出设置。
+创建新的[转换](/rest/api/media/transforms)时，需要指定希望生成的输出内容。 所需参数是 [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput) 对象，如以下代码所示。 每个 TransformOutput 包含一个预设   。 **预设** 介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 **TransformOutput**。 以下 **TransformOutput** 创建自定义编解码器和层输出设置。
 
-在创建时[转换](/rest/api/media/transforms)，首先应检查是否其中一个已存在使用**获取**方法，如下面的代码中所示。 在媒体服务 v3 中，如果实体不存在（对名称进行不区分大小写检查），实体上的 **Get** 方法将返回 **null**。
+在创建时 [转换](/rest/api/media/transforms)，首先应检查是否其中一个已存在使用 **获取** 方法，如下面的代码中所示。 在媒体服务 v3 中，如果实体不存在（对名称进行不区分大小写检查），实体上的 **Get** 方法将返回 **null**。
 
 ### <a name="example"></a>示例
 

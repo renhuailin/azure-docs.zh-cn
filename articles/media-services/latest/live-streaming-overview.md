@@ -1,5 +1,5 @@
 ---
-title: 有关使用 Azure 媒体服务 v3 实时传送视频流的概述 | Microsoft Docs
+title: Azure 媒体服务 v3 实时流式处理概述
 description: 本文概述如何使用 Azure 媒体服务 v3 实时传送视频流。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3f9fc9fd1bacce8733949969b496dc03d6c10901
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: ad3a14cff13395f4d59ab2ed59ae1cc26eaad866
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695810"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896776"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 

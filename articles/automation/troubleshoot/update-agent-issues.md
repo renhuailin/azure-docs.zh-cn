@@ -2,19 +2,15 @@
 title: 使用 Azure 自动化排查 Windows 更新代理问题
 description: 本文介绍如何排查和解决在进行更新管理期间出现的 Windows 更新代理问题。
 services: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/25/2020
-ms.topic: conceptual
-ms.service: automation
+ms.topic: troubleshooting
 ms.subservice: update-management
-manager: carmonm
-ms.openlocfilehash: d5c2cc014c87a345507e9c0f99c507d151d59b86
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: d4fbc566cb82eb3b728b37aa1f1cc20ff92f4fca
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762111"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896234"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>排查 Windows 更新代理问题
 

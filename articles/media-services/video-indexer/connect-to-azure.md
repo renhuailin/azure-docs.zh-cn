@@ -8,16 +8,16 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8e110ba9818b48d66c5f17bb524bada567d808ab
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702597"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897150"
 ---
-# <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
+# <a name="create-a-video-indexer-account"></a>创建视频索引器帐户
 
 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项，可以创建连接到 Azure 订阅的视频索引器帐户。 你需要为索引时间付费，有关详细信息，请参阅[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)。
 
@@ -25,7 +25,9 @@ ms.locfileid: "97702597"
 
 如果要从 *试用版* 移动到 *付费* 视频索引器帐户，可以选择将所有视频和模型自定义复制到新帐户，如 [从试用帐户导入内容](#import-your-content-from-the-trial-account) 部分中所述。
 
-## <a name="prerequisites"></a>先决条件
+本文还介绍 [了如何将视频索引器帐户链接到 Azure 政府](#video-indexer-in-azure-government)版。
+
+## <a name="prerequisites-for-connecting-to-azure"></a>连接到 Azure 的先决条件
 
 * Azure 订阅。
 
@@ -37,7 +39,7 @@ ms.locfileid: "97702597"
 
     此用户应该是拥有工作或学校帐户的 Azure AD 用户。 请勿使用个人帐户，如 outlook.com、live.com 或 hotmail.com。
 
-    ![所有 AAD 用户](./media/create-account/all-aad-users.png)
+    ![所有 Azure AD 用户](./media/create-account/all-aad-users.png)
 
 ### <a name="additional-prerequisites-for-automatic-flow"></a>自动流的其他先决条件
 
@@ -59,7 +61,7 @@ ms.locfileid: "97702597"
 
     ![EventGrid](./media/create-account/event-grid.png)
 
-## <a name="create-a-new-account"></a>创建新帐户
+## <a name="create-a-new-account-on-azure"></a>在 Azure 上创建新帐户 
 
 > [!NOTE]
 > 如果你的 Azure 订阅使用基于证书的多重身份验证，则必须在安装了所需证书的设备上执行以下步骤。
@@ -155,7 +157,7 @@ ms.locfileid: "97702597"
 |应用程序 ID|你在上一节中创建的 Azure AD 应用程序 ID（具有指定的媒体服务帐户的权限）。|
 |应用程序密钥|你在上一节中创建的 Azure AD 应用程序密钥。 |
 
-## <a name="import-your-content-from-the-trial-account"></a>从 *试用* 帐户导入内容
+### <a name="import-your-content-from-the-trial-account"></a>从 *试用* 帐户导入内容
 
 创建新帐户时，可以选择将 *试用* 帐户中的内容导入到新帐户。 如果选中 "在 **Azure 订阅上创建新帐户**" 对话框中的 "*导入*" 选项，则所有媒体和内容模型自定义都将从 *试用* 帐户复制到新帐户。
 
@@ -163,16 +165,10 @@ ms.locfileid: "97702597"
 
 > [!NOTE]
 > 每个帐户只能导入一次内容。
+>
+> 试用帐户在 Azure 政府 *版* 云上不 availagle。
 
-## <a name="delete-the-account"></a>删除帐户
-
-如果以后想要删除该帐户，可以从视频索引器网站中删除该帐户。 若要删除帐户，您必须是所有者。
-
-选择 **帐户 > "**  ->  **删除此帐户**"。 
-
-该帐户将在90天内永久删除。
-
-## <a name="considerations"></a>注意事项
+## <a name="azure-media-services-considerations"></a>Azure 媒体服务注意事项
 
 请注意以下 Azure 媒体服务相关的事项：
 
@@ -201,9 +197,52 @@ ms.locfileid: "97702597"
     请参阅 [媒体服务帐户创建模板](https://github.com/Azure-Samples/media-services-v3-arm-templates)的示例。
 1. [通过 Media Services 和 Azure AD 应用程序调用创建帐户](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account)。
 
+## <a name="video-indexer-in-azure-government"></a>Azure 政府版中的视频索引器
+
+### <a name="prerequisites-for-connecting-to-azure-government"></a>连接到 Azure 政府版的先决条件
+
+-   [Azure 政府](https://docs.microsoft.com/azure/azure-government/)版中的 azure 订阅。
+- Azure 政府版中的 Azure AD 帐户。
+- 所有权限和资源的预先要求，如上所述， [连接到 Azure 的先决条件](#prerequisites-for-connecting-to-azure)。
+
+### <a name="create-new-account-via-the-azure-government-portal"></a>通过 Azure 政府门户创建新帐户
+
+> [!NOTE]
+> Azure 政府版云不包括视频索引器的 *试用* 体验。
+
+通过视频索引器门户创建付费帐户：
+
+1. 转到 https://videoindexer.ai.azure.us 
+1. 用 Azure 政府 Azure AD 帐户登录。
+1.  如果 Azure 政府版中没有任何你是所有者或参与者的视频索引器帐户，你将获得一个空体验，你可以在其中开始创建帐户。 
+
+    如以上所述，流的其余部分将是可以使用视频索引器的政府区域。 
+
+    如果你已是 Azure 政府版中现有的一个或多个视频索引器帐户的参与者或管理员，你将转到该帐户，并从该帐户开始执行以下步骤，根据需要创建其他帐户（如上文所述）。
+    
+### <a name="create-new-account-via-the-api-on-azure-government"></a>通过 Azure 政府版 API 创建新帐户
+
+若要在 Azure 政府版中创建付费帐户，请按照 [创建-付费帐户](https://api-portal.videoindexer.ai.azure.us/docs/services/Operations/operations/Create-Paid-Account)中的说明进行操作。 此 API 终结点仅包括政府云区域。
+
+### <a name="limitations-of-video-indexer-on-azure-government"></a>Azure 政府版中的视频索引器限制
+
+*   政府云中未提供手动内容裁决。 
+
+    在公有云中，当内容被视为基于内容审核的冒犯性时，客户可要求人员查看该内容并可能还原该决策。  
+*   无试用帐户。 
+* 必应说明-在 Gov 云中，我们不会提供标识的名人和命名实体的说明。 这只是一个 UI 功能。 
+
 ## <a name="clean-up-resources"></a>清理资源
 
 完成本教程后，请删除你不打算使用的资源。
+
+### <a name="delete-a-video-indexer-account"></a>删除视频索引器帐户
+
+如果要删除视频索引器帐户，可以从视频索引器网站中删除该帐户。 若要删除帐户，您必须是所有者。
+
+选择 **帐户 > "**  ->  **删除此帐户**"。 
+
+该帐户将在90天内永久删除。
 
 ## <a name="next-steps"></a>后续步骤
 

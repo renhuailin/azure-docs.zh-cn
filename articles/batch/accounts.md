@@ -2,13 +2,13 @@
 title: Batch 帐户和 Azure 存储帐户
 description: 了解 Azure Batch 帐户以及如何从开发角度使用它们。
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: 20a2a28d0eaa2c7997ea93e66d07ecb99bf297a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/26/2021
+ms.openlocfilehash: 83108a265f91c9feef2fab424f1819939c2d58c9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83790904"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896742"
 ---
 # <a name="batch-accounts-and-azure-storage-accounts"></a>Batch 帐户和 Azure 存储帐户
 
@@ -20,9 +20,10 @@ Azure Batch 帐户是 Batch 服务中唯一标识的实体。 大多数 Batch �
 
 可以在单个 Batch 帐户中运行多个 Batch 工作负荷。 还可以在相同订阅的不同 Azure 区域的 Batch 帐户之间分散工作负荷。
 
+可以通过 [Azure 门户](batch-account-create-portal.md)或编程方式（例如使用[批处理管理 .NET 库](batch-management-dotnet.md)）创建 Batch 帐户。 创建该帐户时，可以关联一个 Azure 存储帐户，用于存储与作业相关的输入和输出数据或应用程序。
+
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-可以通过 [Azure 门户](batch-account-create-portal.md)或编程方式（例如使用[批处理管理 .NET 库](batch-management-dotnet.md)）创建 Batch 帐户。 创建该帐户时，可以关联一个 Azure 存储帐户，用于存储与作业相关的输入和输出数据或应用程序。
 
 ## <a name="azure-storage-accounts"></a>Azure 存储帐户
 
@@ -41,4 +42,5 @@ Batch 支持以下类型的 Azure 存储帐户：
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[节点和池](nodes-and-pools.md)。
-- 了解如何使用 [Azure 门户](batch-account-create-portal.md)创建 Batch 帐户。
+- 了解如何使用 [Azure 门户](batch-account-create-portal.md) 或 [批处理管理 .net](batch-management-dotnet.md)创建和管理 batch 帐户。
+- 了解如何将 [专用终结点](private-connectivity.md) 用于 Azure Batch 帐户。

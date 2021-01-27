@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 9fc5c115486c7cbf84fc0bd98ff7996c674f2e24
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b27b46c68d018d2ddf79d284b20cc05b51640891
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694819"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880635"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>注册和扫描 Azure Blob 存储
 
@@ -41,11 +41,11 @@ Azure Blob 存储支持完整和增量扫描来捕获元数据和架构。 它�
 
 1. 导航到自己的存储帐户。
 1. 在左侧导航栏菜单中，选择“访问控制 (IAM)”。 
-1. 选择“+ 添加”。
+1. 选择“+添加”。
 1. 将 **角色** 设置为 " **存储 Blob 数据读取器** "，然后在 " **选择** 输入框" 下输入 Azure 监控范围帐户名称。 然后，选择“保存”，将此角色分配给 Purview 帐户。
 
 > [!Note]
-> 有关更多详细信息，请参阅[使用 Azure Active Directory 授予对 blob 和队列的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)中的步骤
+> 有关更多详细信息，请参阅[使用 Azure Active Directory 授予对 blob 和队列的访问权限](../storage/common/storage-auth-aad.md)中的步骤
 
 ### <a name="account-key"></a>帐户密钥
 
@@ -91,7 +91,7 @@ Azure Blob 存储支持完整和增量扫描来捕获元数据和架构。 它�
 
 1. 导航到自己的存储帐户。
 1. 在左侧导航栏菜单中，选择“访问控制 (IAM)”。 
-1. 选择“+ 添加”。
+1. 选择“+添加”。
 1. 将 **角色** 设置为 " **存储 Blob 数据读取器** "，然后在 " **选择** 输入框" 下输入服务主体名称或对象 ID。 然后，选择 " **保存** "，将此角色分配给服务主体。
 
 ## <a name="firewall-settings"></a>防火墙设置

@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务中的流式处理策略 | Microsoft Docs
+title: Azure 媒体服务中的流式处理策略
 description: 本文介绍何为流式处理策略以及 Azure 媒体服务如何使用这些终结点。
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: inhenkel
-ms.openlocfilehash: 9ecb4e0b8a74a163632967781c84d1a110ab3a9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2873486b95f0bb4a9a27e2e050cc6f6d5473a44e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297206"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898166"
 ---
 # <a name="streaming-policies"></a>流式处理策略
 
@@ -33,7 +33,7 @@ ms.locfileid: "89297206"
 以下“决策树”可帮助你为方案选择预定义的流式处理策略。
 
 > [!IMPORTANT]
-> * 属于日期时间类型的**流式处理策略**的属性始终采用 UTC 格式。
+> * 属于日期时间类型的 **流式处理策略** 的属性始终采用 UTC 格式。
 > * 应为媒体服务帐户设计一组有限的策略，并在需要相同的选项时重新将这些策略用于流式处理定位符。 有关详细信息，请参阅[配额和限制](limits-quotas-constraints.md)。
 
 ## <a name="decision-tree"></a>决策树
@@ -42,7 +42,7 @@ ms.locfileid: "89297206"
 
 [![显示决策树的关系图，该决策树用于为你的场景选择预定义的流式处理策略。](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
-如果要加密内容，则需要创建[内容密钥策略](content-key-policy-concept.md)，明文流式处理或下载不需要**内容密钥策略**。 
+如果要加密内容，则需要创建 [内容密钥策略](content-key-policy-concept.md)，明文流式处理或下载不需要 **内容密钥策略**。 
 
 如果有特殊要求（例如，如果想要指定不同的协议，需要使用自定义密钥传送服务，或者需要使用明文音频轨道），则可以[创建](/rest/api/media/streamingpolicies/create)自定义流式处理策略。 
 

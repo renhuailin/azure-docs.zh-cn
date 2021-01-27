@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 1661f0f6cf024fde48d3706a1f8e47bf65f0d46f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1e939b86eeadfee276378488cfcb40c07f28684d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321967"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880652"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
 ## <a name="summary"></a>摘要
 
-预测性维护 ( **PdM** ) 是一种流行的预测分析应用程序，可帮助多个行业中的企业实现较高的资产利用率和运营成本节省。 本指南提供业务和分析准则与最佳做法，介绍如何使用 [Microsoft Azure AI 平台](https://azure.microsoft.com/overview/ai-platform)技术成功开发和部署 PdM 解决方案。
+预测性维护 (**PdM**) 是一种流行的预测分析应用程序，可帮助多个行业中的企业实现较高的资产利用率和运营成本节省。 本指南提供业务和分析准则与最佳做法，介绍如何使用 [Microsoft Azure AI 平台](https://azure.microsoft.com/overview/ai-platform)技术成功开发和部署 PdM 解决方案。
 
 针对初学者，本指南介绍了行业特定的业务方案，以及使这些方案适合 PdM 的过程。 此外，还提供了数据要求，以及生成 PdM 解决方案的建模技术。 本指南的主要内容涉及到数据科学过程 - 包括数据准备、特征工程、模型创建和模型操作化的步骤。 为了补充这些关键概念，本指南列出一组解决方案模板来帮助加快 PdM 应用程序的开发。 本指南还提供了有用培训资源的链接，让 实践者了解数据科学幕后的 AI 技术。 
 
@@ -217,7 +217,7 @@ BDM 内容并不要求读者事先拥有数据科学方面的知识。 若要学
 PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋势变化、峰值和水平变化。
 
 #### <a name="tumbling-aggregates"></a>翻转聚合
-对于每条带有标签的资产记录，定义大小为 _W- <sub>k</sub>_ 的窗口，其中， _k_ 是大小为 _W_ 的窗口数。然后，根据记录时间戳之前时段的 _k_ _翻转窗口_ _W-k, W- <sub>(k-1)</sub>, …, W- <sub>2</sub>, W- <sub>1</sub>_ 创建聚合。 _k_ 可以是较小数字（以捕获短期效应），也可以是较大数字（以捕获长期降级模式）。 （参阅图 2）。
+对于每条带有标签的资产记录，定义大小为 _W-<sub>k</sub>_ 的窗口，其中，_k_ 是大小为 _W_ 的窗口数。然后，根据记录时间戳之前时段的 _k_ _翻转窗口_ _W-k, W-<sub>(k-1)</sub>, …, W-<sub>2</sub>, W-<sub>1</sub>_ 创建聚合。 _k_ 可以是较小数字（以捕获短期效应），也可以是较大数字（以捕获长期降级模式）。 （参阅图 2）。
 
 ![图 2. 翻转聚合特性](./media/predictive-maintenance-playbook/tumbling-aggregate-features.png)
 
@@ -240,7 +240,7 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 | B234 |第 2 天 | 上获取。 上获取。 上获取。 | 上获取。 |
 | ...  |...   | 上获取。 上获取。 上获取。 | 上获取。 |
 
-特征工程的最后一个步骤是将目标变量加上 **标签** 。 此过程依赖于建模技术。 而建模技术又依赖于业务问题和可用数据的性质。 下一部分将介绍标签。
+特征工程的最后一个步骤是将目标变量加上 **标签**。 此过程依赖于建模技术。 而建模技术又依赖于业务问题和可用数据的性质。 下一部分将介绍标签。
 
 > [!IMPORTANT]
 > 若要获得成功的 PdM 解决方案，数据准备和特征工程与建模技术同等重要。 领域专家和实践者应投入大量的时间来获得适当的特征和模型数据。 下面列出了许多书籍中有关特征工程的简短示例：
@@ -257,7 +257,7 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 > 为故障案例和标签策略选择标签。
 
 ### <a name="binary-classification"></a>二元分类
-二元分类用于 _预测设备部件在未来时间段（称为“未来边际时段 X”）内发生故障的概率_ 。在咨询领域专家的情况下，根据业务问题和手头数据确定 X。 示例如下：
+二元分类用于 _预测设备部件在未来时间段（称为“未来边际时段 X”）内发生故障的概率_。在咨询领域专家的情况下，根据业务问题和手头数据确定 X。 示例如下：
 - 更换组件、部署维护资源、执行维护以避免在该时段内发生问题的最小提前期。
 - 问题发生之前可能发生的事件的最小计数。
 
@@ -295,7 +295,7 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 - 预测给定故障的最可能根本原因。 此结果会建议一组用于解决故障的适当维护措施。 根本原因的排名列表和建议的修复措施可帮助技术人员在故障后排定修复措施的优先级。
 
 #### <a name="label-construction-for-multi-class-classification"></a>多类分类的标签构造
-此处的问题是：“资产在将来的 _nZ_ （其中的 _n_ 是时段数目）个时间单位内发生故障的概率是多少？” 若要回答此问题，请使用时间桶 (3Z, 2Z, Z) 标记资产故障之前的 nZ 条记录。 将其他所有记录标记为“正常”（标签 = 0）。 在此方法中，目标变量保存分类值。 （参阅图 5）。
+此处的问题是：“资产在将来的 _nZ_（其中的 _n_ 是时段数目）个时间单位内发生故障的概率是多少？” 若要回答此问题，请使用时间桶 (3Z, 2Z, Z) 标记资产故障之前的 nZ 条记录。 将其他所有记录标记为“正常”（标签 = 0）。 在此方法中，目标变量保存分类值。 （参阅图 5）。
 
 ![图 5。 多类分类的故障时间预测标签](./media/predictive-maintenance-playbook/labelling-for-multiclass-classification-for-failure-time-prediction.png)
 
@@ -429,7 +429,7 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 | 3 | [预测性维护的深度学习](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | 包含一个演示解决方案的 Azure Notebook。该解决方案使用 LSTM （长短期记忆）网络（某类递归神经网络）进行预测性维护。请参阅[有关此示例的博客文章](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)。|
 | 4 | [面向航天工业的 Azure 预测性维护](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | 基于 Azure ML v1.0 的首批 PdM 解决方案模板之一，适用于飞机维护。 本指南源于此项目。 |
 | 5 | [Azure AI Toolkit for IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | IoT Edge 中使用 TensorFlow 的 AI；该工具包在与 Azure IoT Edge 兼容的 Docker 容器中打包了深度学习模型，并以 REST API 的形式公开这些模型。
-| 6 | [Azure IoT 预测性维护](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT 套件 PCS - 预配置解决方案。 包含 IoT 套件的飞机维护 PdM 模板。 与同一个项目相关的[另一个文档](../../iot-accelerators/quickstart-predictive-maintenance-deploy.md)和[演练](../../iot-accelerators/iot-accelerators-predictive-walkthrough.md)。 |
+| 6 | [Azure IoT 预测性维护](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT 套件 PCS - 预配置解决方案。 包含 IoT 套件的飞机维护 PdM 模板。 与同一个项目相关的[另一个文档](/previous-versions/azure/iot-accelerators/about-iot-accelerators)和[演练](/previous-versions/azure/iot-accelerators/iot-accelerators-predictive-walkthrough)。 |
 | 7 | [使用 SQL R Services 的预测性维护模板](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | 基于 R Services 演示剩余使用寿命的场景。 |
 | 8 | [预测性维护建模指南](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | 使用 R 结合[试验](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1)和[数据集](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1)以及 AzureML v1.0 中的 Azure 笔记本和[试验](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)设计的飞机维护数据集特征|
 

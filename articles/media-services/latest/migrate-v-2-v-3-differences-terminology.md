@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务 v2 与 v3 之间的术语和实体更改 |Microsoft Docs
+title: Azure 媒体服务 v2 与 v3 之间的术语和实体更改
 description: 本文介绍 Azure 媒体服务 v2 与 v3 之间的术语差异。
 services: media-services
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9f657b853298cf0065da931835ea56ef2e0e0fe7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b53fbcb62004a8af9b2470c76f64f1ace845c1a8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690260"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898386"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>媒体服务 V2 和 V3 之间的术语和实体更改
 

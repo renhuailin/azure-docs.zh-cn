@@ -3,14 +3,14 @@ title: Azure 自动化 - 更改跟踪和库存概述
 description: 本文介绍了更改跟踪和清单功能，可帮助你在环境中识别软件和 Microsoft 服务的更改。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 11/10/2020
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: b5390e4b3dc6d77390c3fca6323cbd52544c638a
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0ef821634669739ff5aed58e4404d7c21b8d8222
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445415"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896623"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>更改跟踪和库存概述
 
@@ -32,7 +32,7 @@ ms.locfileid: "94445415"
 - Microsoft 服务
 - Linux 守护程序
 
-启用更改跟踪和清单中包含的所有功能可能会产生额外费用。 在继续之前，请查看 [自动化定价](https://azure.microsoft.com/pricing/details/automation/) 并 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。 
+启用更改跟踪和清单中包含的所有功能可能会产生额外费用。 在继续之前，请查看 [自动化定价](https://azure.microsoft.com/pricing/details/automation/) 并 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
 更改跟踪和清单将数据转发到 Azure Monitor 日志，并且收集的数据存储在 Log Analytics 工作区中。 仅当启用了 **适用于服务器的 Azure Defender** 时，才能 (FIM) 功能进行文件完整性监视。 有关详细信息，请参阅 Azure 安全中心 [定价](../../security-center/security-center-pricing.md) 。 FIM 将数据上载到与所创建的工作区相同的 Log Analytics 工作区，该工作区用于存储更改跟踪和清单中的数据。 建议你监视链接的 Log Analytics 工作区，以跟踪你的实际使用情况。 有关分析 Azure Monitor 日志数据使用情况的详细信息，请参阅[管理使用情况和成本](../../azure-monitor/platform/manage-cost-storage.md)。
 
@@ -70,26 +70,17 @@ ms.locfileid: "94445415"
 - Ubuntu、Debian：`apt-get install -y python2`
 - SUSE: `zypper install -y python2`
 
-Python2 可执行文件必须化名为 *python* 。
+Python2 可执行文件必须将别名设置为“python”。
 
 ## <a name="network-requirements"></a>网络要求
 
-以下地址是专用于更改跟踪和清单的地址。 与以下地址的通信通过端口 443 进行。
-
-|Azure Public  |Azure Government  |
-|---------|---------|
-|*.ods.opinsights.azure.com    | *.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|\* .blob.core.windows.net | *.blob.core.usgovcloudapi.net|
-|\* .azure-automation.net | *.azure-automation.us|
-
-创建网络组安全规则或配置 Azure 防火墙以允许流量流向自动化服务和 Log Analytics 工作区时，请使用 [服务标记](../../virtual-network/service-tags-overview.md#available-service-tags) GuestAndHybridManagement 和 AzureMonitor 。 这样可简化网络安全规则的日常管理。 若要安全且私下地从 Azure Vm 连接到自动化服务，请参阅 [使用 Azure 专用链接](../how-to/private-link-security.md)。 若要获取当前服务标记和范围信息，并将其包含为本地防火墙配置的一部分，请参阅[可下载的 JSON 文件](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
+查看 [Azure 自动化网络配置](../automation-network-configuration.md#update-management-and-change-tracking-and-inventory) ，详细了解更改跟踪和清单所需的端口、url 以及其他网络详细信息。
 
 ## <a name="enable-change-tracking-and-inventory"></a>启用更改跟踪和库存
 
 可以通过以下方式启用更改跟踪和清单：
 
-- 从你的 [自动化帐户](enable-from-automation-account.md) ，为一个或多个 azure 和非 azure 计算机。
+- 从[自动化帐户](enable-from-automation-account.md)为一个或多个 Azure 和非 Azure 计算机启用。
 
 - 为非 Azure 计算机手动执行，包括注册到 [启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)的计算机或服务器。 对于混合计算机，我们建议通过首先将计算机连接到 [启用了 Azure arc 的服务器](../../azure-arc/servers/overview.md)，然后使用 Azure 策略将 [部署 Log Analytics 代理分配到 *Linux* 或 *Windows* Azure arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring) 内置策略，来安装适用于 Windows 的 Log Analytics 代理。 如果还计划使用用于 VM 的 Azure Monitor 监视计算机，请改用 [启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
 
@@ -137,7 +128,7 @@ Python2 可执行文件必须化名为 *python* 。
 
 - 跟踪多个文件需要使用通配符。
 
-- 只能在文件路径的最后一段中使用通配符，例如， **c:\folder \\ file** _ 或 _ */etc/* * *。
+- 只能在文件路径的最后一段中使用通配符，例如， **c:\folder \\ file** _ 或 _ */etc/** *。
 
 - 如果环境变量具有无效路径，验证会成功，但在执行过程中路径会失败。
 

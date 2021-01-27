@@ -1,6 +1,6 @@
 ---
 title: Microsoft 安全代码分析文档常见问题解答
-description: 通过查看常见问题解答)  (常见问题了解 Microsoft 安全代码分析扩展。
+description: 请查看常见问题解答 (FAQ)，了解 Microsoft 安全代码分析扩展。
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b851e52141cf93aba4aab9b2768658f0aac4660f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543038"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879909"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 遇到问题？ 请查看以下常见问题解答来了解详细信息。
@@ -26,7 +26,7 @@ ms.locfileid: "87543038"
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>能否在我的 Visual Studio Team Foundation Server 实例而不是在 Azure DevOps 实例上安装扩展？
 
-不是。 此扩展不可用于下载和安装 Visual Studio Team Foundation Server。
+否。 此扩展不可用于下载和安装 Visual Studio Team Foundation Server。
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>是否必须对生成运行 Microsoft 安全代码分析？ 
 
@@ -55,7 +55,7 @@ ms.locfileid: "87543038"
 
 ### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>能否在 Azure DevOps 生成中跨多个存储库运行一个生成任务（例如凭据扫描程序）？
 
-不是。 不支持在单个管道中跨多个存储库运行安全开发工具。
+否。 不支持在单个管道中跨多个存储库运行安全开发工具。
 
 ### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>未创建我指定的输出文件，或者找不到我指定的输出文件
 
@@ -163,7 +163,7 @@ CredScan 输出文件中机密的哈希键是必需的，如以下示例所示�
  - [Azure AD 托管服务标识 (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Azure 应用服务和 Azure Functions 中的托管标识](../../app-service/overview-managed-identity.md)
- - [AppAuthentication 库](../../key-vault/general/service-to-service-authentication.md)
+ - [AppAuthentication 库](/dotnet/api/overview/azure/service-to-service-authentication)
 
 
 有关详细信息，请参阅博客文章：[Managing Secrets Securely in the Cloud](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)（在云中安全地管理机密）。

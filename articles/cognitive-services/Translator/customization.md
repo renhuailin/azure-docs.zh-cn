@@ -3,19 +3,19 @@ title: 翻译自定义-转换器
 titleSuffix: Azure Cognitive Services
 description: 通过 Microsoft Translator Hub 使用首选的术语和样式构建自己的机器翻译系统。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: 9c4410cb2b9550bc111da96204ada15313867fb1
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.author: lajanuar
+ms.openlocfilehash: 0930024a791fe8b76c90e8ab4249a070b22a1c16
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95238082"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898030"
 ---
 # <a name="customize-your-text-translations"></a>自定义文本翻译
 
@@ -27,7 +27,7 @@ ms.locfileid: "95238082"
 
 使用自定义翻译，可以构建神经翻译系统，以了解自己的业务和行业中使用的术语。 然后，自定义的翻译系统将集成到现有的应用程序、工作流和网站中。
 
-### <a name="how-does-it-work"></a>工作原理
+### <a name="how-does-it-work"></a>它是如何工作的？
 
 使用之前翻译的文档 (leaflets、网页、文档等 ) 生成一个翻译系统，该系统反映了域特定术语和样式，比标准翻译系统更好。 用户可以上传 TMX、XLIFF、TXT、DOCX 和 XLSX 文档。  
 

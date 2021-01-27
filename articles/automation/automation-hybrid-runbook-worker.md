@@ -3,14 +3,14 @@ title: Azure 自动化混合 Runbook 辅助角色概述
 description: 本文概述了混合 Runbook 辅助角色，可以使用这些辅助角色在本地数据中心或云提供商的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 01/11/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: a23d30047a13b1d176b086a9923e140e7f8d3e45
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 7cf18b6b677daaf97d425c86a0cad91b3abcb225
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072133"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896946"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合 Runbook 辅助角色概述
 
@@ -54,16 +54,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 ## <a name="network-planning"></a><a name="network-planning"></a>网络规划
 
-要使系统和用户混合 Runbook 辅助角色连接并注册到 Azure 自动化，必须让其有权访问此部分所述的端口号和 URL。 辅助角色还必须有权访问 [Log Analytics 代理所需的端口和 URL](../azure-monitor/platform/agent-windows.md) 才能连接到 Azure Monitor Log Analytics 工作区。
-
-混合 Runbook 辅助角色需要以下端口和 URL：
-
-* 端口：只需使用 TCP 443 即可进行出站 Internet 访问
-* 全局 URL：`*.azure-automation.net`
-* US Gov 弗吉尼亚州的全局 URL： `*.azure-automation.us`
-* 代理服务：`https://<workspaceId>.agentsvc.azure-automation.net`
-
-如果为特定的区域定义了自动化帐户，则可以限制与该区域数据中心之间的混合 Runbook 辅助角色通信。 查看 [Azure Automation 用于](how-to/automation-region-dns-records.md) 所需 dns 记录的 dns 记录。
+有关混合 Runbook 辅助角色所需的端口、Url 和其他网络详细信息，请参阅 [Azure 自动化网络配置](automation-network-configuration.md#network-planning-for-hybrid-runbook-worker) 。
 
 ### <a name="proxy-server-use"></a>使用代理服务器
 
@@ -94,7 +85,7 @@ Azure Automation 混合 Runbook 辅助角色可在 Azure 政府版中使用，�
 * [Azure 专用主机](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host)，提供可承载一个或多个虚拟机的物理服务器，专用于一个 Azure 订阅。
 
 >[!NOTE]
->通过混合 Runbook 辅助角色进行的计算隔离适用于 Azure 商业版和美国政府云。 
+>通过混合 Runbook 辅助角色进行的计算隔离适用于 Azure 商业版和美国政府云。
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>混合 Runbook 辅助角色的更新管理地址
 

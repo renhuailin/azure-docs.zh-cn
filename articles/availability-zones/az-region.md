@@ -4,15 +4,15 @@ description: 若要在 Azure 中创建具有高可用性和弹性的应用程序
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 01/26/2021
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 2a2e4ac57eec866d9857f564d6c76ad4a775d223
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5883dc8b34cd1aa00ba1c5de25a09a017a130c0a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874602"
+ms.locfileid: "98896878"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支持可用性区域的 Azure 服务
 
@@ -58,7 +58,7 @@ ms.locfileid: "98874602"
 | 美国西部2        |                |                      |                     |                |
 
 
-若要详细了解这些区域中的可用性区域和可用服务支持，请联系你的 Microsoft 销售或客户代表。 有关将支持可用性区域的即将推出的区域，请参阅 [Azure 地理](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)位置。
+\* 若要详细了解这些区域中的可用性区域和可用服务支持，请联系你的 Microsoft 销售或客户代表。 有关将支持可用性区域的即将推出的区域，请参阅 [Azure 地理](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)位置。
 
 
 ## <a name="azure-services-supporting-availability-zones"></a>支持可用性区域的 Azure 服务

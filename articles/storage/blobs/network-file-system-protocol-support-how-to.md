@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: b61ce696c28a2c72a2cd3d0eb2d2fde0022dbb01
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: db946dcc0fc8571f7b6aa191909155baccf7d1a2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897733"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878572"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用网络文件系统 (NFS) 3.0 协议 (预览中装载 Blob 存储) 
 
@@ -84,7 +84,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
 |----|---|---|
 |位置|所有可用区域 |以下区域之一：澳大利亚东部、韩国中部和美国中南部   
 |性能|Premium| 标准
-|帐户种类|BlockBlobStorage| 常规用途 V2
+|帐户类型|BlockBlobStorage| 常规用途 V2
 |复制|本地冗余存储 (LRS)| 本地冗余存储 (LRS)
 |连接方法|公共终结点 (所选网络) 或专用终结点 |公共终结点 (所选网络) 或专用终结点
 |需要安全传输|已禁用|已禁用
@@ -100,7 +100,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
 |工具|SDK|
 |---|---|
 |[Azure 门户](https://portal.azure.com)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
-|[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
+|[AzCopy](../common/storage-use-azcopy-v10.md#transfer-data)|[Java](data-lake-storage-directory-file-acl-java.md)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
 ||[REST](/rest/api/storageservices/create-container)|
@@ -128,7 +128,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
    - 将 `<container-name>` 占位符替换为你的容器的名称。
 
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>[Windows](#tab/windows)
 
 1. 打开 " **Windows 功能** " 对话框，并打开 " **NFS 客户端** " 功能。 
 

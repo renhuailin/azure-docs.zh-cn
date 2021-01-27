@@ -1,5 +1,5 @@
 ---
-title: 从 Azure 媒体服务 v2 迁移到 v3 简介 |Microsoft Docs
+title: 从 Azure 媒体服务 v2 迁移到 v3 简介
 description: 本文介绍如何从 Media Services v2 迁移到 v3。
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: fb9abd8f3186405edc31b4af48ee98482e080c68
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: d96644b4df5475192c3b7d90bd055e63bf869faa
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690258"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898335"
 ---
 # <a name="migrate-from-media-services-v2-to-v3-introduction"></a>从 Media Services v2 迁移到 v3 简介
 
@@ -59,7 +59,7 @@ ms.locfileid: "98690258"
 了解媒体服务 V2 API 与 V3 API 之间的差异。
 
 - [API 访问](migrate-v-2-v-3-differences-api-access.md)
-- [功能间隙](migrate-v-2-v-3-differences-feature-gaps.md)
+- [功能差异](migrate-v-2-v-3-differences-feature-gaps.md)
 - [术语和实体更改](migrate-v-2-v-3-differences-terminology.md)
 
 ## <a name="step-3-sdk-setup"></a>步骤 3 SDK 安装
@@ -75,10 +75,10 @@ ms.locfileid: "98690258"
 媒体服务 V2 的应用程序可能是唯一的。 因此，我们提供了基于方案的指南，其中基于过去 *你如何* 使用媒体服务以及服务的每项功能的步骤，如：
 
 - [编码](migrate-v-2-v-3-migration-scenario-based-encoding.md)
-- [实时流式处理](migrate-v-2-v-3-migration-scenario-based-live-streaming.md)
+- [实时传送视频流](migrate-v-2-v-3-migration-scenario-based-live-streaming.md)
 - [打包和交付](migrate-v-2-v-3-migration-scenario-based-publishing.md)
 - [内容保护](migrate-v-2-v-3-migration-scenario-based-content-protection.md)
-- [媒体保留单位 (MRU) ](migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md)
+- [媒体保留单位 (MRU)](migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md)
 
 ## <a name="next-steps"></a>后续步骤
 

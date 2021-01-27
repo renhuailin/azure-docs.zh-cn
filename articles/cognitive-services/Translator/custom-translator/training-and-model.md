@@ -2,19 +2,19 @@
 title: 什么是培训和模型？ - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 模型是为特定语言对提供翻译的系统。 成功培训的结果即为一种模型。 在培训模型时，需要三种互斥的数据集：培训数据集、调整数据集和测试数据集。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.author: swmachan
-ms.openlocfilehash: 1765aaed3c0562da13c539845bfe19f6f85ed4ef
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.author: lajanuar
+ms.openlocfilehash: 62a444b66d50579c601077751b0700aa954b34c0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369012"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897928"
 ---
 # <a name="what-are-trainings-and-models"></a>什么是培训和模型？
 

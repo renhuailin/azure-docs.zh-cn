@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: da136c1f3ce36bf85592c3c73c9e8f92c41c7442
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: ea274914ac70540d5763884bbd01e41e349a530d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357902"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879824"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>在 Azure 中更改 SQL 虚拟机的许可模式
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "97357902"
 
 Azure 混合权益允许在 Azure 虚拟机上使用带有软件保障（“合格许可”）的 SQL Server 许可。 使用 Azure 混合权益，客户无需支付在 VM 上使用 SQL Server 许可的费用， 但仍须支付基础云计算（即，基准费率）、存储和备份的费用， 还必须支付与使用服务（如果适用）相关的 I/O 的费用。
 
-根据 Microsoft 产品条款：“在 Azure 上配置工作负载时，客户必须表明他们是在适用于 SQL Server 的 Azure 混合权益下使用 Azure SQL 数据库（托管实例、弹性池和单一数据库）、Azure 数据工厂、SQL Server Integration Services 或 SQL Server 虚拟机。”
+根据 Microsoft [产品条款](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzureServices/EAEAS)： "客户必须指出他们正在使用 Azure SQL 数据库 (托管实例、弹性池和单一数据库) 、Azure 数据工厂、SQL Server Integration Services 或 SQL Server 在 azure 上配置工作负荷时 Azure 混合权益 SQL Server 中的虚拟机。
 
 要表明是在 Azure VM 上使用适用于 SQL Server 的 Azure 混合权益并符合标准，有以下三个选项可供选择：
 

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: a88f9fab2b10271aa7856a6d0b5ee114f46cfb49
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 659f6527d43e1b45a11fddf774050ca6d42bfe12
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633831"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896657"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>用于数据整理的 Power Query 中的转换函数
 
@@ -24,7 +24,7 @@ ms.locfileid: "98633831"
 
 当前并非所有 Power Query M 函数都支持数据整理，但在创作期间可用。 生成混合时，如果函数不受支持，系统将提示你输入以下错误消息：
 
-`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
+`UserQuery : Expression.Error: The transformation logic is not supported as it requires dynamic access to rows of data, which cannot be scaled out.`
 
 下面是受支持的 Power Query M 函数的列表。
 
@@ -96,7 +96,7 @@ ms.locfileid: "98633831"
 | Table.Distinct | 不支持删除重复的行。 |
 | Table.RemoveLastN | 不支持删除下一行。 |
 | Table.RowCount | 不支持，但可通过添加包含值1的自定义列来实现，然后使用 List. Sum 将该列聚合在一起。 支持组。 | 
-| 行级错误处理 | 当前不支持行级别的错误处理。 例如，若要筛选出列中的非数字值，一种方法是将文本列转换为数字。 未能转换的每个单元都将处于错误状态，需要对其进行筛选。 这种情况在整理的数据流中是不可能的。 |
+| 行级错误处理 | 当前不支持行级别的错误处理。 例如，若要筛选出列中的非数字值，一种方法是将文本列转换为数字。 未能转换的每个单元都将处于错误状态，需要对其进行筛选。 此方案在向外扩展时无法进行。 |
 | Table.Transpose | 不支持 |
 | Table.Pivot | 不支持 |
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 90862a74e5fb6521a95292d50fc5cc11bd0082b5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8c90427e2dd4ecf23cb803c4f75dbee34c38f992
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547650"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898573"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 
@@ -37,7 +37,7 @@ ms.locfileid: "92547650"
 
 - 确保符合所有推送安装[先决条件](vmware-azure-install-mobility-service.md)。
 - 确保所有服务器配置均符合[将 VMware VM 和物理服务器灾难恢复到 Azure 的支持矩阵](vmware-physical-azure-support-matrix.md)中的条件。
-- 从9.36 版本开始，对于 SUSE Linux Enterprise Server 11 SP3，RHEL 5，CentOS 5，Debian 7 确保[配置服务器和横向扩展进程服务器上提供](#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)最新的安装程序
+- 从 9.36 版本开始，对于 SUSE Linux Enterprise Server 11 SP3、RHEL 5、CentOS 5 和 Debian 7，请确保最新的安装程序[在配置服务器和横向扩展进程服务器上可用](#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)
 
 以下部分介绍了推送安装工作流：
 
@@ -85,7 +85,7 @@ ms.locfileid: "92547650"
 
 1. 在“安装进度”中监视安装。 安装完成后，选择“转到配置”，将该服务注册到配置服务器。
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="屏幕截图，显示安装进度和 &quot;活动时继续执行配置&quot; 按钮。":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="此屏幕截图显示了安装进度以及安装完成后激活的“继续配置”按钮。":::
 
 1. 在“配置服务器详细信息”中，指定已配置的 IP 地址和通行短语。
 
@@ -134,7 +134,7 @@ ms.locfileid: "92547650"
 安装程序日志 | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 `/InstallLocation`| 可选参数。 指定移动服务的安装位置（任意文件夹）。
-`/Platform` | 必需。 指定要在其中安装移动服务的平台： <br/> VMware VM/物理服务器的 VMware。 <br/> Azure VM 的 Azure。<br/><br/> 如果要将 Azure VM 视为物理计算机，请指定 **VMware** 。
+`/Platform` | 必需。 指定要在其中安装移动服务的平台： <br/> VMware VM/物理服务器的 VMware。 <br/> Azure VM 的 Azure。<br/><br/> 如果要将 Azure VM 视为物理计算机，请指定 **VMware**。
 `/Silent`| 可选。 指定是否以静默模式运行安装程序。
 
 #### <a name="registration-settings"></a>注册设置
@@ -187,8 +187,8 @@ ms.locfileid: "92547650"
 
 ## <a name="azure-virtual-machine-agent"></a>Azure 虚拟机代理
 
-- **Windows VM** ：从移动服务版本 9.7.0.0 开始，移动服务安装程序会安装 [Azure VM 代理](../virtual-machines/extensions/features-windows.md#azure-vm-agent)。 这可以确保当计算机故障转移到 Azure 时，Azure VM 满足使用任何 VM 扩展相关的代理安装先决条件。
-- **Linux VM** ：故障转移后，必须在 Azure VM 上手动安装 [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md)。
+- **Windows VM**：从移动服务版本 9.7.0.0 开始，移动服务安装程序会安装 [Azure VM 代理](../virtual-machines/extensions/features-windows.md#azure-vm-agent)。 这可以确保当计算机故障转移到 Azure 时，Azure VM 满足使用任何 VM 扩展相关的代理安装先决条件。
+- **Linux VM**：故障转移后，必须在 Azure VM 上手动安装 [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md)。
 
 ## <a name="locate-installer-files"></a>找到安装程序文件
 
@@ -221,14 +221,14 @@ ms.locfileid: "92547650"
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
 `Microsoft-ASR_UA_version_DEBIAN9-64_GA_date_release.tar.gz` | Debian 9
 
-## <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server"></a>下载最新的适用于 SUSE 11 SP3、RHEL 5、Debian 7 服务器的移动代理安装程序
+## <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server"></a>下载适用于 SUSE 11 SP3、RHEL 5 和 Debian 7 服务器的最新移动代理安装程序
 
 ### <a name="suse-11-sp3-server"></a>SUSE 11 SP3 服务器
 
 从 9.36 版本开始作为更新或保护 SUSE Linux Enterprise Server 11 SP3 计算机的先决条件：
 
 1. 确保从 Microsoft 下载中心下载最新的移动代理安装程序，并将其放置在配置服务器和所有横向扩展进程服务器上的推送安装程序存储库中
-2. [下载](site-recovery-whats-new.md)最新的 SUSE Linux Enterprise Server 11 SP3 代理安装程序。 最新移动代理版本为 [9.37](https://support.microsoft.com/help/4582666/)
+2. [下载](site-recovery-whats-new.md) 最新的 SUSE LINUX ENTERPRISE SERVER 11 SP3 agent 安装程序。
 3. 导航到配置服务器，将 SUSE Linux Enterprise Server 11 SP3 代理安装程序复制到路径 INSTALL_DIR\home\svsystems\pushinstallsvc\repository
 1. 复制最新的安装程序后，请重启 InMage PushInstall 服务。 
 1. 现在，导航到关联的横向扩展进程服务器，重复步骤 3 和步骤 4。
@@ -240,7 +240,7 @@ ms.locfileid: "92547650"
 从 9.36 版本开始作为更新或保护 RHEL 5 计算机的先决条件：
 
 1. 确保从 Microsoft 下载中心下载最新的移动代理安装程序，并将其放置在配置服务器和所有横向扩展进程服务器上的推送安装程序存储库中
-2. [下载](site-recovery-whats-new.md)最新的 RHEL 5 或 CentOS 5 代理安装程序。 最新移动代理版本为 [9.37](https://support.microsoft.com/help/4582666/)
+2. [下载](site-recovery-whats-new.md) 最新的 RHEL 5 或 CentOS 5 代理安装程序。 
 3. 导航到配置服务器，将 RHEL 5 或 CentOS 5 代理安装程序复制到路径 INSTALL_DIR\home\svsystems\pushinstallsvc\repository
 1. 复制最新的安装程序后，请重启 InMage PushInstall 服务。 
 1. 现在，导航到关联的横向扩展进程服务器，重复步骤 3 和步骤 4。
@@ -252,7 +252,7 @@ ms.locfileid: "92547650"
 从 9.36 版本开始作为更新或保护 Debian 7 计算机的先决条件：
 
 1. 确保从 Microsoft 下载中心下载最新的移动代理安装程序，并将其放置在配置服务器和所有横向扩展进程服务器上的推送安装程序存储库中
-2. [下载](site-recovery-whats-new.md)最新的 Debian 7 代理安装程序。 最新移动代理版本为 [9.37](https://support.microsoft.com/help/4582666/)
+2. [下载](site-recovery-whats-new.md) 最新的 Debian 7 代理安装程序。
 3. 导航到配置服务器，将 Debian 7 代理安装程序复制到路径 INSTALL_DIR\home\svsystems\pushinstallsvc\repository
 1. 复制最新的安装程序后，请重启 InMage PushInstall 服务。 
 1. 现在，导航到关联的横向扩展进程服务器，重复步骤 3 和步骤 4。

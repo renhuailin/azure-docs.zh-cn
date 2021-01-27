@@ -2,19 +2,19 @@
 title: 句子配对和对齐 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 在执行训练过程中，会将并行文档中的句子配对或对齐。 自定义翻译每次学习一个句子的翻译，并通过读取另一个句子来获取此句子的翻译。 然后，它将这两个句子中的单词和短语相互对齐。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 7ed7c3a586f5671191e3c517b5925cab888caefb
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 0c33d766bfd3dff47ddb151e8ce4ea7b25c37548
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724300"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897945"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>并行文档中的句子配对和对齐
 
@@ -38,7 +38,7 @@ ms.locfileid: "97724300"
 |------------|--------------------------------------------|--------------------------------|
 | 培训   | 10,000                                     | 没有上限                 |
 | 优化     | 500                                      | 2,500       |
-| 正在测试    | 500                                      | 2,500  |
+| 测试    | 500                                      | 2,500  |
 | 字典 | 0                                          | 没有上限                 |
 
 > [!NOTE]

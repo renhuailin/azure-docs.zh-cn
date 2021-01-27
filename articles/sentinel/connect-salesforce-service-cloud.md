@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: d323af2695a41e685e722c98603cf5df09866a15
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 152fee2e4e72cee6a7bc1c768c0a8ca7b031ec39
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567883"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878912"
 ---
 # <a name="connect-your-salesforce-service-cloud-to-azure-sentinel"></a>将 Salesforce 服务云连接到 Azure Sentinel
 
@@ -37,7 +37,7 @@ ms.locfileid: "98567883"
 
 - 您必须对工作区的共享密钥具有读取权限。 [了解有关工作区密钥的详细信息](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)。
 
-- 您必须具有对 Azure Functions 的 "读取" 和 "写入" 权限才能创建 Function App。 [详细了解 Azure Functions](/azure/azure-functions/)。
+- 您必须具有对 Azure Functions 的 "读取" 和 "写入" 权限才能创建 Function App。 [详细了解 Azure Functions](../azure-functions/index.yml)。
 
 - 你必须具有以下 Salesforce REST API 凭据： **SALESFORCE Api 用户名**、 **salesforce api 密码**、 **Salesforce 安全令牌**、 **Salesforce 使用者密钥**、 **salesforce 使用者机密**。 [详细了解 Salesforce REST API](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart.htm)。
 

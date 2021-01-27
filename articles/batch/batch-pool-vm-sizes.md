@@ -1,30 +1,30 @@
 ---
-title: 选择池的 VM 大小和映像
-description: 如何从 Azure Batch 池中的计算节点的可用 VM 大小和操作系统版本中进行选择
+title: 为池选择 VM 大小和映像
+description: 如何选择 Azure Batch 池中计算节点的可用 VM 大小和 OS 版本
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bb54a4db62f56f442f7cec81e6768241a05ffee
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 59218361c5fff51b33131fdd2455c599dd12b06a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895224"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897487"
 ---
-# <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>为 Azure Batch 池中的计算节点选择 VM 大小和映像
+# <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小和映像
 
 为 Azure Batch 池选择节点大小时，可以在 Azure 中提供的几乎所有 VM 大小中进行选择。 Azure 针对不同工作负荷，为 Linux 和 Windows VM 提供一系列大小。
 
 ## <a name="supported-vm-series-and-sizes"></a>支持的 VM 系列和大小
 
-选择 Batch 池的 VM 大小有一些例外和限制：
+选择 Batch 池的 VM 大小时有几个例外和限制：
 
 - Batch 不支持某些 VM 系列或 VM 大小。
 - 某些 VM 大小受到限制，需要专门启用才能进行分配。
 
 ### <a name="pools-in-virtual-machine-configuration"></a>虚拟机配置中的池
 
-虚拟机配置中的 Batch 池几乎支持所有 [VM 大小](../virtual-machines/sizes.md)。 请参阅下表以了解有关支持的大小和限制的详细信息。
+虚拟机配置中的 Batch 池支持几乎所有 [VM 大小](../virtual-machines/sizes.md)。 请参阅下表以了解有关支持的大小和限制的详细信息。
 
 | VM 系列  | 支持的大小 |
 |------------|---------|
@@ -35,40 +35,38 @@ ms.locfileid: "95895224"
 | DC | 不支持 |
 | Dv2, DSv2 | 所有大小 |
 | Dv3, Dsv3 | 所有大小 |
-| Dav4<sup>1</sup> | 所有大小 |
-| Dasv4<sup>1</sup> | 所有大小 |
+| Dav4 | 所有大小 |
+| Dasv4 | 所有大小 |
 | Ddv4、Ddsv4 |  所有大小 |
-| Dv4, Dsv4 | 不支持 |
+| Dv4、Dsv4 | 不支持 |
 | Ev3, Esv3 | 除 E64is_v3 之外的所有大小 |
-| Eav4<sup>1</sup> | 所有大小 |
-| Easv4<sup>1</sup> | 所有大小 |
+| Eav4 | 所有大小 |
+| Easv4 | 所有大小 |
 | Edv4, Edsv4 |  所有大小 |
-| Ev4, Esv4 | 不支持 |
+| Ev4、Esv4 | 不支持 |
 | F, Fs | 所有大小 |
 | Fsv2 | 所有大小 |
 | G, Gs | 所有大小 |
 | H | 所有大小 |
-| HB<sup>1</sup> | 所有大小 |
-| HBv2<sup>1</sup> | 所有大小 |
-| HC<sup>1</sup> | 所有大小 |
-| LS | 所有大小 |
-| Lsv2<sup>1</sup> | 所有大小 |
-| M<sup>1</sup> | 所有大小 |
-| Mv2<sup>1、2</sup> | 所有大小 |
+| HB | 所有大小 |
+| HBv2 | 所有大小 |
+| HC | 所有大小 |
+| Ls | 所有大小 |
+| Lsv2 | 所有大小 |
+| M | 所有大小 |
+| Mv2<sup>1</sup> | 所有大小 |
 | NC | 所有大小 |
-| NCv2<sup>1</sup> | 所有大小 |
-| NCv3<sup>1</sup> | 所有大小 |
+| NCv2 | 所有大小 |
+| NCv3 | 所有大小 |
 | NCasT4_v3 | 无（尚不可用） |
-| ND<sup>1</sup> | 所有大小 |
-| NDv2<sup>1</sup> | 无（尚不可用） |
+| ND | 所有大小 |
+| NDv2 | 无（尚不可用） |
 | NV | 所有大小 |
-| NVv3<sup>1</sup> | 所有大小 |
-| NVv4<sup>1</sup> | 所有大小 |
+| NVv3 | 所有大小 |
+| NVv4 | 所有大小 |
 | SAP HANA | 不支持 |
 
-<sup>1</sup> 可以在虚拟机配置的批处理池中分配这些 VM 系列，但必须创建新的 Batch 帐户并请求特定的 [配额增加](batch-quota-limit.md#increase-a-quota)。 Batch 帐户完全支持每个 VM 系列的 vCPU 配额后，将取消此限制。
-
-<sup>2</sup> 这些 VM 系列仅适用于第2代 vm 映像。
+<sup>1</sup> 这些 VM 系列仅适用于第2代 vm 映像。
 
 ### <a name="using-generation-2-vm-images"></a>使用第2代 VM 映像
 
@@ -93,17 +91,17 @@ ms.locfileid: "95895224"
 
 - **区域可用性** - 某个 VM 系列或大小在创建 Batch 帐户的区域中可能无法使用。 若要检查大小是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/services/)。
 
-- **配额** - Batch 帐户中的 [核心配额](batch-quota-limit.md#resource-quotas)会限制可添加到 Batch 池的给定大小的节点数。 需要时，可以 [请求增加配额](batch-quota-limit.md#increase-a-quota)。
+- **配额** - Batch 帐户中的 [核心配额](batch-quota-limit.md#resource-quotas)会限制可添加到 Batch 池的给定大小的节点数。 根据需要[请求增加配额](batch-quota-limit.md#increase-a-quota)。
 
 - **池配置** - 通常，与云服务配置相比，在虚拟机配置中创建池时有更多 VM 大小选项。
 
 ## <a name="supported-vm-images"></a>支持的 VM 映像
 
-使用以下 Api 之一返回批处理当前支持的 Windows 和 Linux VM 映像的列表，包括每个映像的节点代理 SKU Id：
+使用以下 API 之一返回 Batch 当前支持的 Windows 和 Linux VM 映像列表，包括每个映像的节点代理 SKU ID：
 
-- 批处理服务 REST API： [列出受支持的图像](/rest/api/batchservice/account/listsupportedimages)
-- PowerShell： [AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
-- Azure CLI： [az batch pool 支持-映像](/cli/azure/batch/pool/supported-images)
+- Batch 服务 REST API：[列出支持的映像](/rest/api/batchservice/account/listsupportedimages)
+- PowerShell：[Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
+- Azure CLI：[az batch pool supported-images](/cli/azure/batch/pool/supported-images)
 
 ## <a name="next-steps"></a>后续步骤
 

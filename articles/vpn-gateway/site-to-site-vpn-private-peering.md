@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 62ceafad0210065700e5c9734cfe9a055208ef35
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 01d87bcb5697326fa87b25b20354897049900d9d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657884"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880519"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>通过 ExpressRoute 专用对等互连配置站点到站点 VPN 连接
 
@@ -72,7 +72,7 @@ ms.locfileid: "94657884"
 
 ## <a name="portal-steps"></a><a name="portal"></a>门户步骤
 
-1. 配置站点到站点连接。 有关步骤，请参阅 [站点到站点配置](vpn-gateway-howto-site-to-site-resource-manager-portal.md) 一文。 务必为网关选择区域冗余的网关 SKU。 
+1. 配置站点到站点连接。 有关步骤，请参阅 [站点到站点配置](./tutorial-site-to-site-portal.md) 一文。 务必为网关选择区域冗余的网关 SKU。 
 
    区域冗余 Sku 在 SKU 末尾有 "AZ"。 例如， **VpnGw1AZ**。 区域冗余的网关仅适用于可用性区域服务可用的区域。 有关我们支持可用性区域的区域的信息，请参阅 [支持可用性区域的区域](../availability-zones/az-region.md)。
 
@@ -89,7 +89,7 @@ ms.locfileid: "94657884"
 
 ## <a name="powershell-steps"></a><a name="powershell"></a>PowerShell 步骤
 
-1. 配置站点到站点连接。 有关步骤，请参阅 [配置站点到站点 VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md) 一文。 务必为网关选择区域冗余的网关 SKU。 区域冗余 Sku 在 SKU 末尾有 "AZ"。 例如，VpnGw1AZ。
+1. 配置站点到站点连接。 有关步骤，请参阅 [配置站点到站点 VPN](./tutorial-site-to-site-portal.md) 一文。 务必为网关选择区域冗余的网关 SKU。 区域冗余 Sku 在 SKU 末尾有 "AZ"。 例如，VpnGw1AZ。
 1. 将标志设置为使用以下 PowerShell 命令在网关上使用专用 IP：
 
    ```azurepowershell-interactive

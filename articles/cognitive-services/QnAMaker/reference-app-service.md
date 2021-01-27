@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: e7dfc6db50432b19d515671fabe26edf9cfb45ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c35306d3e0d874218b9ea03fbfeaaff722eacf76
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345662"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896454"
 ---
 # <a name="service-configuration"></a>服务配置
 
@@ -34,6 +34,7 @@ QnA Maker 使用应用服务提供 [GENERATEANSWER API](/rest/api/cognitiveservi
 |UserAppInsightsAppId|聊天日志和遥测|
 |UserAppInsightsKey|聊天日志和遥测|
 |UserAppInsightsName|聊天日志和遥测|
+|QNAMAKER_EXTENSION_VERSION|始终设置为 " _最新_"。 此设置将初始化应用服务中的 QnAMaker 站点扩展。|
 
 完成更改后，需要从 Azure 门户的 "**概述**" 页中 **重新启动** 该服务。
 
@@ -57,7 +58,7 @@ QnA Maker 服务为以下用户提供了配置，以便在单个 QnA Maker 服�
 
 了解 [如何更改默认答案的文本](How-To/change-default-answer.md)。 
 
-## <a name="telemetry"></a>遥测
+## <a name="telemetry"></a>遥测技术
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 

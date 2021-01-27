@@ -3,19 +3,19 @@ title: 翻译器 Translate 方法
 titleSuffix: Azure Cognitive Services
 description: 了解用于翻译文本的 Azure 认知服务翻译器 Translate 方法的参数、标头和正文消息。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
-ms.author: swmachan
-ms.openlocfilehash: 15f20bab91a4feab056a9f8cd6b012792f036be2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: d46fef0159b983f2685be40e2a0ab5471b96883b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016541"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895435"
 ---
 # <a name="translator-30-translate"></a>翻译器 3.0：Translate
 
