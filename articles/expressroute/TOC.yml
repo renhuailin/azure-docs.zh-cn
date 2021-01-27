@@ -82,7 +82,7 @@
           href: about-upgrade-circuit-bandwidth.md
         - name: 将线路从经典部署转移到 Resource Manager 部署
           href: expressroute-move.md
-    - name: 关于 Expressroute 网关
+    - name: 关于 ExpressRoute 网关
       href: expressroute-about-virtual-network-gateways.md
     - name: 关于 ExpressRoute FastPath
       href: about-fastpath.md

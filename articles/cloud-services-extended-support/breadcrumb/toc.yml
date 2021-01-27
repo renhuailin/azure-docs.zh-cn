@@ -9,3 +9,6 @@
         - name: 云服务
           tocHref: /azure/cloud-services/
           topicHref: /azure/cloud-services/index
+        - name: 部署 Visual Studio
+          tocHref: /visualstudio-docs/docs/
+          topicHref: /visualstudio-docs/docs/index

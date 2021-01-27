@@ -21,10 +21,10 @@
   expanded: true
 - name: 概念
   items:
+    - name: 扩展
+      href: extensions.md
     - name: 可用的 VM 大小
       href: available-sizes.md
-    - name: 常见问题
-      href: faq.md
     - name: 来宾 OS 修补程序
       href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
     - name: 来宾 OS 停用
@@ -49,10 +49,10 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration 架构
           href: schema-cscfg-networkconfiguration.md
+    - name: 常见问题
+      href: faq.md
 - name: 操作方式
   items:
-    - name: 扩展概述
-      href: extensions.md
     - name: 应用远程桌面扩展
       href: enable-rdp.md
     - name: 应用 WAD 扩展
@@ -71,8 +71,10 @@
       href: sample-get-cloud-service.md
     - name: 重置云服务
       href: sample-reset-cloud-service.md
-- name: 引用
+- name: 参考
   items:
+    - name: 部署文件示例
+      href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
     - name: Az.CloudService 模块
       href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
     - name: PowerShell cmdlet
@@ -81,6 +83,8 @@
       href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+    - name: SDK 中 IsInRole 中的声明
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
 - name: 资源
   items:
     - name: Azure 路线图
