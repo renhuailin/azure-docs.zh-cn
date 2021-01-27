@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: 49e1b45ca3953d008542c2ed508537d1a3ea0bf3
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a7b55981514ea216f251a0819c1881d58013a0f6
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218971"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806439"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 专用终结点 DNS 配置
 
@@ -72,7 +72,7 @@ Azure 会在公共 DNS 上 (CNAME) 创建规范名称 DNS 记录。 CNAME 记录
 | Azure 事件网格 (Microsoft.EventGrid/topics) / topic | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure 事件网格 (Microsoft.EventGrid/domains) / domain | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Web 应用 (Microsoft.Web/sites)/sites | privatelink.azurewebsites.net | azurewebsites.net |
-| Azure 机器学习 (Microsoft.MachineLearningServices/workspaces)/workspace | privatelink.api.azureml.ms | api.azureml.ms |
+| Azure 机器学习 (MachineLearningServices/工作区) /amlworkspace | privatelink.api.azureml.ms | api.azureml.ms |
 | IoT 中心(Microsoft.Devices/IotHubs)/IotHub | privatelink.azure-devices.net | azure-devices.net |
 | SignalR (SignalRService/SignalR) /signalR | privatelink.service.signalr.net | service.signalr.net |
 | Azure Monitor (Microsoft.Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.net | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.net |

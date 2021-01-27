@@ -5,27 +5,23 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: e06e660a43aaa0ff5eb79bc00bd8a5d2c61c6580
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d93f484e318c10489eb1db3e9c65c6e0c7479c90
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045303"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98859706"
 ---
-| 筛选器名称 | 描述 | 筛选器文本架构 | 支持的值 | 
+| 筛选器名称 | 说明 | 筛选器文本架构 | 支持的值 | 
 | --- | --- | --- | --- |
 | True/False | 允许创建不带筛选的路由，或禁用路由，以便不发送事件 | `<true/false>` | `true` = 启用无筛选的路由 <br> `false` = 已禁用路由 |
 | 类型 | 通过数字克隆实例流动的[事件类型](../articles/digital-twins/concepts-route-events.md#types-of-event-messages) | `type = '<eventType>'` | 下面是可能的事件类型值： <br>`Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
-| 源 | Azure 数字孪生实例的名称 | `source = '<hostname>'`| 下面是可能的主机名值： <br> **对于通知**： `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net` <br> **对于遥测**： `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net/<twinId>`|
+| Source | Azure 数字孪生实例的名称 | `source = '<hostname>'`| 下面是可能的主机名值： <br> **对于通知**： `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net` <br> **对于遥测**： `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net/<twinId>`|
 | 主题 | 上述事件源上下文中事件的说明 | `subject = '<subject>'` | 下面是可能的主题值： <br>**对于通知**：使用者为 `<twinid>` <br> 或主题的 URI 格式，由多个部件或 Id 唯一标识：<br>`<twinid>/relationships/<relationshipid>`<br> **对于遥测**：主体是组件路径 (如果遥测数据是从克隆的组件发出的) （如） `comp1.comp2` 。 如果未从组件发出遥测数据，则其 "使用者" 字段为空。 |
 | 数据架构 | DTDL 模型 ID | `dataschema = '<model-dtmi-ID>'` | **对于遥测**：数据架构是克隆或发出遥测数据的组件的模型 ID。 例如： `dtmi:example:com:floor4;2` <br>**(创建/删除) 的通知**：在的通知正文中可以访问数据架构 `$body.$metadata.$model` 。 <br>**(更新) 的通知**：可在通知正文中访问数据架构，网址为： `$body.modelId`|
 | 内容类型 | 数据值的内容类型 | `datacontenttype = '<contentType>'` | 内容类型为 `application/json` |
 | 规范版本 | 你使用的事件架构的版本 | `specversion = '<version>'` | 版本必须为 `1.0` 。 这表示 CloudEvents 架构版本1。0 |
 | 通知正文 | 引用通知字段中的任何属性 `data` | `$body.<property>` | 有关通知的示例，请参阅 [*操作方法：了解事件数据*](../articles/digital-twins/how-to-interpret-event-data.md) 。 可以使用引用此字段中的任何属性 `data``$body`
-
-请注意，可以将多个筛选器添加到请求，如下所示： 
-
-:::code language="json" source="~/digital-twins-docs-samples/api-requests/filter-multiple.json":::
 
 支持将以下数据类型作为对上述数据的引用返回的值：
 
@@ -46,7 +42,7 @@ ms.locfileid: "98045303"
 
 定义路由筛选器时支持以下函数：
 
-|函数|描述|示例|
+|函数|说明|示例|
 |--|--|--|
 |STARTS_WITH (x、y) |如果值以字符串开头，则返回 true `x` `y` 。|`STARTS_WITH($body.$metadata.$model, 'dtmi:example:com:floor')`|
 |ENDS_WITH (x、y)  | 如果值以字符串结尾，则返回 true `x` `y` 。|`ENDS_WITH($body.$metadata.$model, 'floor;1')`|

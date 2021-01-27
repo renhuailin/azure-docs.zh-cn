@@ -1,16 +1,16 @@
 ---
 title: Azure Functions 网络选项
 description: 在 Azure Functions 中可用的所有网络选项的概述。
-author: jeffhollan
+author: cachai2
 ms.topic: conceptual
-ms.date: 10/27/2020
-ms.author: jehollan
-ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 1/21/2021
+ms.author: cachai
+ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936851"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806981"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -85,12 +85,9 @@ Azure Functions 中的虚拟网络集成将共享基础结构与应用服务 Web
 
 若要了解详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
 
-## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>将存储帐户限制到虚拟网络（预览版）中
+## <a name="restrict-your-storage-account-to-a-virtual-network"></a>将存储帐户限制到虚拟网络中 
 
-创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。  可以将此存储帐户替换为服务终结点或专用终结点所保护的存储帐户。  此预览功能目前仅适用于西欧中的 Windows 高级版计划。  若要使用限制到专用网络的存储帐户来设置函数，请执行以下操作：
-
-> [!NOTE]
-> 仅限在西欧中使用 Windows 的高级功能限制存储帐户
+创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。  可以将此存储帐户替换为服务终结点或专用终结点所保护的存储帐户。  此功能目前仅适用于 Windows 高级版计划。  若要使用限制到专用网络的存储帐户来设置函数，请执行以下操作：
 
 1. 使用未启用服务终结点的存储帐户创建一个函数。
 1. 将该函数配置为连接到你的虚拟网络。

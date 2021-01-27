@@ -1,15 +1,15 @@
 ---
 title: Azure Batch 的内置策略定义
 description: 列出 Azure Batch 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 835079db7e5338e00651a5276572c25943309935
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 3290e5ea74fc16427234e220961a2cf720a0c591
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704182"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807975"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-batch"></a>Azure Batch 的 Azure Policy 内置定义
 

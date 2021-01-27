@@ -4,12 +4,12 @@ description: '了解如何开发使用 C # 的 Azure 功能。'
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 77ae736c787666df5e78358bc78e06eee9b7d4f9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 335cc3017e7b016666324306181c90a0e405a956
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936917"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806325"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -21,7 +21,7 @@ ms.locfileid: "97936917"
 
 | 入门 | 概念| 引导式学习/示例 |
 | -- | -- | -- | 
-| <ul><li>[使用 Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[使用 Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[使用命令行工具](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[托管选项](functions-scale.md)</li><li>[性能注意事项](functions-best-practices.md)</li><li>[Visual Studio 开发](functions-develop-vs.md)</li><li>[依赖关系注入](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[创建无服务器应用程序](/learn/paths/create-serverless-applications/)</li><li>[C# 示例](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+| <ul><li>[使用 Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[使用 Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[使用命令行工具](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[托管选项](functions-scale.md)</li><li>[性能 &nbsp; 注意事项](functions-best-practices.md)</li><li>[Visual Studio 开发](functions-develop-vs.md)</li><li>[依赖关系注入](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[创建无服务器应用程序](/learn/paths/create-serverless-applications/)</li><li>[C# 示例](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在 Azure 门户中使用 C#](functions-create-function-app-portal.md) 的指南，请参阅 [C# 脚本 (.csx) 开发人员参考](functions-reference-csharp.md)。
 
@@ -328,7 +328,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
     logger.LogInformation("Request for item with key={itemKey}.", id);
 ```
 
-若要了解有关函数如何实现 `ILogger` 的详细信息，请参阅 [收集遥测数据](functions-monitoring.md#collecting-telemetry-data)。 前缀为的类别 `Function` 假设你使用的是 `ILogger` 实例。 如果选择改为使用 `ILogger<T>` ，则类别名称可能基于 `T` 。  
+若要详细了解 Functions 如何实现 `ILogger`，请参阅[收集遥测数据](functions-monitoring.md#collecting-telemetry-data)。 以 `Function` 为前缀的类别假定你使用的是 `ILogger` 实例。 如果选择改用 `ILogger<T>`，则类别名称可能改为基于 `T`。  
 
 ### <a name="structured-logging"></a>结构化日志记录
 

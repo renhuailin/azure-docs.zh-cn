@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 9fde0ecd8b6670e43aa3970b2df27a402b9c1a5c
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 4b8141d99d654705450a14767b04ae6265766af9
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747234"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807079"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>利用安全中心的集成 EDR 解决方案保护终结点： Microsoft Defender for Endpoint
 
@@ -43,7 +43,8 @@ Microsoft Defender for Endpoint 是提供的一个全面的云终结点安全解
 | 发布状态：                  | 正式发布 (GA)                                                                                                                                                                                                                                                                                      |
 | 定价：                        | 需要[用于服务器的 Azure Defender](security-center-pricing.md)                                                                                                                                                                                                                                             |
 | 支持的平台：            | 运行 Windows 的 Azure 计算机<br>运行 Windows 的 Azure Arc 计算机|
-| 受支持的 Windows 版本：  |  •安全中心支持在 Windows Server 2016、2012 R2 和 2008 R2 SP1 上检测<br> •使用此集成的服务器终结点监视已为 Office 365 GCC 客户禁用<br> •不支持 Windows Server 2019、Windows 10 1703 (和更高版本) 或 Linux|
+| 受支持的 Windows 版本：  |  •安全中心支持在 Windows Server 2016、2012 R2 和 2008 R2 SP1 上检测<br> •使用此集成的服务器终结点监视已为 Office 365 GCC 客户禁用|
+| 不受支持的操作系统：  |  • Windows Server 2019<br> • Windows 10<br> • Linux|
 | 所需角色和权限： | 启用/禁用集成： **安全管理员** 或 **所有者**<br>在安全中心内查看 MDATP 警报： **安全读者**、 **读者**、 **资源组参与者**、 **资源组所有者**、 **安全管理员**、 **订阅所有者** 或 **订阅参与者**|
 | 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov<br>![否](./media/icons/no-icon.png) 在全球 Azure 云中运行工作负荷的 GCC 客户                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
@@ -105,7 +106,7 @@ Microsoft Defender for Endpoint 提供：
 生成良性 Microsoft Defender for Endpoint 测试警报：
 
 1. 创建文件夹“C:\test-MDATP-test”。
-1. 使用远程桌面访问 Windows Server 2012 R2 VM 或 Windows Server 2016 VM。
+1. 使用远程桌面访问计算机。
 1. 打开命令行窗口。
 1. 在提示符下，复制并运行以下命令。 命令提示符窗口将自动关闭。
 

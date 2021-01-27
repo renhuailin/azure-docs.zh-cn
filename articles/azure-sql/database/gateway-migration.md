@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 0542d7e0ea204d1e9279e89c9f36b9bc6c6c88fa
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c34410fcb5e1992f8b7a358801a354a1e1cf190c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165852"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808008"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>将 Azure SQL 数据库流量迁移到更新的网关
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,13 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供�
 ## <a name="status-updates"></a>状态更新
 
 # <a name="in-progress"></a>[正在学习](#tab/in-progress-ip)
+## <a name="february-2021"></a>2021 年 2 月
+正在向以下区域添加新的 SQL 网关：
+
+- 美国中部：13.89.169.20
+
+这些 SQL 网关应在2021年2月28日开始接受客户流量。
+
 ## <a name="january-2021"></a>2021 年 1 月
 正在向以下区域添加新的 SQL 网关：
 
@@ -41,7 +48,7 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供�
 - 韩国中部：52.231.17.22、52.231.17.23
 - 印度西部：104.211.144。4
 
-这些 SQL 网关应在2021年1月31日开始接受客户流量
+这些 SQL 网关应在2021年1月31日开始接受客户流量。
 
 # <a name="completed"></a>[已完成](#tab/completed-ip)
 以下网关迁移完成： 

@@ -6,24 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: fd55110bbfaed72051bfc388692421cd8209609d
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0985779aeb14fd4f3d6a12cf152e4c63c909d613
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763745"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806686"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>为 Azure Stack Edge Pro 设备创建自定义 VM 映像
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-若要在 Azure Stack Edge Pro 设备上部署 VM，你需要能够创建可用于创建 VM 的自定义 VM 映像。 本文介绍了创建 Linux 或 Windows VM 自定义映像所需的步骤，可使用这些自定义映像在 Azure Stack Edge Pro 设备上部署 VM。
+若要在 Azure Stack Edge Pro 设备上部署 VM，你需要能够创建可用于创建 VM 的自定义 VM 映像。 本文介绍了创建 Linux 或 Windows VM 自定义映像所需的步骤，这些映像可用于在 Azure Stack Edge Pro 设备上部署 Vm。
 
 ## <a name="vm-image-workflow"></a>VM 映像工作流
 
-此工作流要求你在 Azure 中创建虚拟机、自定义 VM、实现通用化，然后下载与该 VM 相对应的 VHD。 系统会将此通用化后的 VHD 上传到 Azure Stack Edge Pro，基于该 VHD 创建托管磁盘，再基于托管磁盘创建映像，最后基于该映像创建 VM。   
+此工作流要求你在 Azure 中创建虚拟机、自定义 VM、实现通用化，然后下载与该 VM 相对应的 VHD。 此通用化 VHD 上传到 Azure Stack Edge Pro。 将从该 VHD 创建托管磁盘。 从托管磁盘创建映像。 最后，从该映像创建 Vm。
 
 有关详细信息，请转到[使用 Azure PowerShell 在 Azure Stack Edge Pro 设备上部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "97763745"
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server 是全球流行的 Linux 云环境。|Canonical|
 |[Debian 8“Jessie”](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |Debian GNU/Linux 是最流行的 Linux 分发版之一。     |credativ|
 
-有关有效（目前未测试）Azure 市场映像的完整列表，请参阅[可用于 Azure Stack Hub 的 Azure 市场项](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910)。
+有关有效（目前未测试）Azure 市场映像的完整列表，请参阅[可用于 Azure Stack Hub 的 Azure 市场项](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910&preserve-view=true)。
 
 
 ## <a name="next-steps"></a>后续步骤
