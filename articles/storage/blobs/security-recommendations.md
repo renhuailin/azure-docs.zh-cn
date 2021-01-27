@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: e3cfede444b65ee6990afd006d3b174d65f9cfad
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 05fdf681b7cdc3b8145a30041e261eece420e560
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179157"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878081"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>适用于 Blob 存储的安全建议
 
@@ -30,8 +30,8 @@ Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在�
 | 建议 | 注释 | 安全中心 |
 |-|----|--|
 | 使用 Azure 资源管理器部署模型 | 使用 Azure 资源管理器部署模型创建新的存储帐户，以用于重要的安全增强功能，包括高级的 Azure 基于角色的访问控制 (Azure RBAC) 和审核、基于资源管理器的部署和治理、托管标识访问权限、用于存储机密的 Azure Key Vault 访问权限、用于访问 Azure 存储数据和资源的基于 Azure AD 的身份验证和授权。 如果可能，请迁移使用经典部署模型的现有存储帐户以使用 Azure 资源管理器。 有关 Azure 资源管理器的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。 | - |
-| 为所有存储帐户启用 Azure Defender | Azure Defender for Azure 存储提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 如果活动发生异常，则会在 Azure 安全中心触发安全警报，并通过电子邮件发送给订阅管理员，并详细介绍可疑活动以及如何调查和修正威胁的建议。 有关详细信息，请参阅 [为 Azure 存储配置 Azure Defender](../common/azure-defender-storage-configure.md)。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
-| 为 blob 启用软删除 | Blob 的软删除使你能够在 blob 数据被删除后恢复它们。 有关 blob 的软删除的详细信息，请参阅 [Azure 存储 blob 的软删除](./soft-delete-blob-overview.md)。 | - |
+| 为所有存储帐户启用 Azure Defender | Azure Defender for Azure 存储提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 如果活动发生异常，则会在 Azure 安全中心触发安全警报，并通过电子邮件发送给订阅管理员，并详细介绍可疑活动以及如何调查和修正威胁的建议。 有关详细信息，请参阅 [为 Azure 存储配置 Azure Defender](../common/azure-defender-storage-configure.md)。 | [是](../../security-center/security-center-remediate-recommendations.md) |
+| 为 Blob 启用软删除 | Blob 的软删除使你能够在 blob 数据被删除后恢复它们。 有关 blob 的软删除的详细信息，请参阅 [Azure 存储 blob 的软删除](./soft-delete-blob-overview.md)。 | - |
 | 为容器启用软删除 | 容器的软删除使你能够在容器被删除后恢复容器。 有关容器软删除的详细信息，请参阅 [ (预览版) 的容器软删除 ](./soft-delete-container-overview.md)。 | - |
 | 锁定存储帐户以防止意外删除帐户 | 可以锁定 Azure 资源管理器资源（例如订阅、资源组或存储帐户），以防止组织中的其他用户意外删除或修改它。 锁定存储帐户不会阻止删除该帐户中的数据。 它仅阻止删除帐户本身。 有关详细信息，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
 | 在不可变 Blob 中存储业务关键数据 | 配置法定保留和基于时间的保留策略，以 WORM（一次写入，多次读取）状态存储 Blob 数据。 在保留时间间隔期间内，可以读取即时存储的 Blob，但不能对其进行修改或删除。 有关详细信息，请参阅[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)。 | - |
@@ -63,7 +63,7 @@ Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在�
 | 允许受信任的 Microsoft 服务访问此存储帐户 | 默认情况下，除非请求源自在 Azure 虚拟网络 (VNet) 中运行的服务或者源自允许的公共 IP 地址，否则启用存储帐户的防火墙规则会阻止数据传入请求。 被阻止的请求包括来自其他 Azure 服务、来自 Azure 门户、来自日志记录和指标服务等的请求。 可以通过添加例外，允许受信任的 Microsoft 服务访问此存储帐户，从而允许来自其他 Azure 服务的请求。 若要详细了解如何为受信任的 Microsoft 服务添加例外，请参阅[配置 Azure 存储防火墙和虚拟网络](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。| - |
 | 使用专用终结点 | 专用终结点将 Azure 虚拟网络 (VNet) 中的专用 IP 地址分配给存储帐户。 它通过专用链接保护 VNet 和存储帐户之间的所有流量。 有关专用终结点的详细信息，请参阅 [使用 Azure 专用终结点将专用连接到存储帐户](../../private-link/tutorial-private-endpoint-storage-portal.md)。 | - |
 | 使用 VNet 服务标记 | 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。 有关 Azure 存储支持的服务标记的详细信息，请参阅 [Azure 服务标记概述](../../virtual-network/service-tags-overview.md)。 有关演示如何使用服务标记创建出站网络规则的教程，请参阅[限制对 PaaS 资源的访问](../../virtual-network/tutorial-restrict-network-access-to-resources.md)。 | - |
-| 限制对特定网络的网络访问 | 将网络访问限制为托管需要访问的客户端的网络可减少你的资源受到网络攻击的风险。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
+| 限制对特定网络的网络访问 | 将网络访问限制为托管需要访问的客户端的网络可减少你的资源受到网络攻击的风险。 | [是](../../security-center/security-center-remediate-recommendations.md) |
 | 配置网络路由首选项 | 你可以为 Azure 存储帐户配置网络路由首选项，以指定如何使用 Microsoft 全局网络或 Internet 路由将网络流量从客户端路由到你的帐户。 有关详细信息，请参阅 [配置 Azure 存储的网络路由首选项](../common/network-routing-preference.md)。 | - |
 
 ## <a name="loggingmonitoring"></a>日志记录/监视
@@ -71,7 +71,7 @@ Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在�
 | 建议 | 注释 | 安全中心 |
 |-|----|--|
 | 跟踪请求的授权方式 | 启用 Azure 存储日志记录以跟踪对 Azure 存储发出的每个请求的授权方式。 日志可指示请求是匿名提出的，还是使用 OAuth 2.0 令牌、共享密钥或共享访问签名 (SAS) 提出的。 有关详细信息，请参阅[通过 Azure Monitor 监视 Azure Blob 存储](monitor-blob-storage.md)或[采用经典监视的 Azure 存储分析日志记录](../common/storage-analytics-logging.md)。 | - |
-| 在 Azure Monitor 中设置警报 | 配置日志警报，以设置的频率评估资源日志，并根据结果触发警报。 有关详细信息，请参阅 [Azure Monitor 中的日志警报](../../azure-monitor/platform/alerts-unified-log.md)。 | - |
+| 在 Azure Monitor 中设置警报 | 配置日志警报，以便按设置的频率评估资源日志，并根据结果触发警报。 有关详细信息，请参阅 [Azure Monitor 中的日志警报](../../azure-monitor/platform/alerts-unified-log.md)。 | - |
 
 ## <a name="next-steps"></a>后续步骤
 

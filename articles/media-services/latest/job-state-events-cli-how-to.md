@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI 通过事件网格监视 Azure 媒体服务事件 | Microsoft Docs
+title: 使用 CLI 通过事件网格监视 Azure 媒体服务事件
 description: 本文介绍如何订阅事件网格，以便使用 Azure CLI 来监视 Azure 媒体服务事件。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b646965be03b5d3f57483887e256d33262192375
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d7148841083cccf4197fe353d077e5149e4afac5
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013281"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895316"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>使用 Azure CLI 创建并通过事件网格监视 Azure 媒体服务事件
 

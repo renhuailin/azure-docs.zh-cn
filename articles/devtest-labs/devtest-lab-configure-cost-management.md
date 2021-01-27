@@ -3,12 +3,12 @@ title: 查看 Azure 开发测试实验室的每月估计实验室成本趋势
 description: 本文介绍了如何在 Azure 开发测试实验室中跟踪实验室 (每月估计成本趋势图表) 的成本。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 220cbd1bc793e4bcfdf03a184d7463114506e6e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a2a9bef9e54ef7deda123aad34cf0c576fd158f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283820"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892331"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>跟踪与 Azure 开发测试实验室中的实验室相关的成本
 本文提供了有关如何跟踪实验室成本的信息。 其中介绍了如何查看实验室当前日历月的估计成本趋势。 本文还介绍了如何在实验室中查看每个资源的每月到目前的成本。
@@ -18,15 +18,15 @@ ms.locfileid: "87283820"
 
 若要查看月评估成本趋势图表，请按以下步骤操作： 
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 在实验室列表中，选择实验室。  
 4. 在左侧菜单中选择 " **配置和策略** "。  
 4. 在左侧菜单的 "**成本跟踪**" 部分中选择 "**成本趋势**"。 以下屏幕截图显示了成本图表的示例。 
    
     ![成本图表](./media/devtest-lab-configure-cost-management/graph.png)
 
-    “评估成本”**** 值为当前日历月中截止目前的成本。 “预计成本”**** 值是当前整个日历月的评估成本，使用前五天的实验室成本计算得出。
+    “评估成本”值为当前日历月中截止目前的成本。 “预计成本”值是当前整个日历月的评估成本，使用前五天的实验室成本计算得出。
 
     成本金额会进位到下一个证书。 例如： 
 
@@ -34,11 +34,11 @@ ms.locfileid: "87283820"
    * 5.50 将计为 6
    * 5.99 将计为 6
 
-     如以上图表所述，图表中默认看到的成本是使用[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)优惠率的估算成本。** 还可以通过[管理实验室的成本目标](#managing-cost-targets-for-your-lab)设置在图表中显示的自身支出目标。
+     如以上图表所述，图表中默认看到的成本是使用[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)优惠率的估算成本。 还可以通过[管理实验室的成本目标](#managing-cost-targets-for-your-lab)设置在图表中显示的自身支出目标。
 
      成本计算中 *不* 包括以下成本：
 
-   * 当前 不支持 CSP 和 Dreamspark 订阅，因为 Azure 开发测试实验室使用不支持 CSP 和 Dreamspark 订阅的 [Azure 计费 API](../cost-management-billing/manage/usage-rate-card-overview.md)。
+   * 当前 不支持 CSP 和 Dreamspark 订阅，因为 Azure 开发测试实验室使用不支持 CSP 和 Dreamspark 订阅的 Azure 计费 API。
    * 套餐费率。 目前，无法使用你与 Microsoft 或 Microsoft 合作伙伴协商的套餐费率（显示于订阅下）。 仅能使用即用即付费率。
    * 税额
    * 折扣
@@ -56,17 +56,17 @@ ms.locfileid: "87283820"
 
    - 选择要跟踪成本目标的时间段。
       - **每月**：每月进行成本目标跟踪。
-      - 已**修复**：为在开始和结束日期中指定的日期范围跟踪成本目标。 通常，这些值表示项目计划运行的时间。
-   - 指定目标成本。**** 例如，你计划在定义的时间段内花费在此实验室中的量。
-   - 选择启用或禁用任何需报告的阈值 - 增量为 25% - 高达指定目标成本的 125%。****
+      - 已 **修复**：为在开始和结束日期中指定的日期范围跟踪成本目标。 通常，这些值表示项目计划运行的时间。
+   - 指定目标成本。 例如，你计划在定义的时间段内花费在此实验室中的量。
+   - 选择启用或禁用任何需报告的阈值 - 增量为 25% - 高达指定目标成本的 125%。
       - **通知**：达到阈值时，可从你指定的 Webhook URL 获得通知。
       - **在图表上绘制**：满足此阈值时，结果将绘制在你可以查看的 "成本趋势" 图上，如查看每月估计成本趋势图表中所述。
-   - 如果选择达到阈值时接收通知，须指定 Webhook URL。**** 在成本集成区域中，选择“单击此处”可添加集成。**** 在 "配置通知" 窗格中输入 **WEBHOOK URL** ，然后选择 **"确定"**。
+   - 如果选择达到阈值时接收通知，须指定 Webhook URL。 在成本集成区域中，选择“单击此处”可添加集成。 在 "配置通知" 窗格中输入 **WEBHOOK URL** ，然后选择 **"确定"**。
 
        ![“配置通知”窗格](./media/devtest-lab-configure-cost-management/configure-notification-new.png)
 
-     - 如果指定“通知”，须定义 Webhook URL。****
-     - 同样，如果定义 Webhook URL，则须在“成本阈值”窗格中将“通知”设置为“开”。********
+     - 如果指定“通知”，须定义 Webhook URL。
+     - 同样，如果定义 Webhook URL，则须在“成本阈值”窗格中将“通知”设置为“开”。
      - 须在将 Webhook 输入此处之前创建 Webhook。  
 
        有关 Webhook 的详细信息，请参阅[创建 Webhook 或 API Azure 函数](../azure-functions/functions-bindings-http-webhook.md)。 
@@ -74,8 +74,8 @@ ms.locfileid: "87283820"
 ## <a name="view-cost-by-resource"></a>按资源查看成本 
 使用实验室中的每月成本趋势功能，你可以查看当前日历月所用的空间。 它还会根据您在过去7天内的支出，显示到月末结束之前的计划。 为了帮助你了解实验室中的支出在提前达到阈值的原因，你可以使用 **按资源** 划分的成本功能，该功能可显示表中 **每个资源** 的本月到目前的成本。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。  
 4. 在左侧菜单中选择 " **配置和策略** "。
 5. 在左侧菜单的 "**成本跟踪**" 部分中选择 "**按资源成本**"。 你将看到与实验室关联的每个资源相关的成本。 

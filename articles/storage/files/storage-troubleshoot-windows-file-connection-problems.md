@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8e657386c417ce3407aea9b3765419e1d2b70bb9
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 242c0819e916f3ea7912d4d57b7d3e338152e4d9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962442"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878504"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>在 Windows 中排查 Azure 文件存储问题 (SMB)
 
@@ -126,7 +126,7 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
 
 如果客户端上已启用 NTLMv1 通信，可能会出现系统错误 53 或 87。 Azure 文件仅支持 NTLMv2 身份验证。 启用 NTLMv1 将创建安全级别较低的客户端。 因此，Azure 文件的通信受阻。 
 
-若要确定这是否是错误原因，请验证以下注册表子项是否未设置为小于3的值：
+若要确定这是否是错误原因，请验证以下注册表子项是否未设为小于 3 的值：
 
 **HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel**
 
@@ -263,7 +263,7 @@ $leaseClient.Break() | Out-Null
 -   如果知道通过写入要扩展的最终文件大小，并且软件在文件的未写入结尾包含零时未出现兼容性问题，请提前设置文件大小，而不是让每次写入都成为扩展写入。
 -   使用正确的复制方法：
     -   为两个文件共享之间的任何传输使用 [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
-    -   在本地计算机上的文件共享之间使用 [Robocopy](./storage-files-deployment-guide.md#robocopy)。
+    -   在本地计算机上的文件共享之间使用 [Robocopy](./storage-how-to-create-file-share.md)。
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Windows 8.1 或 Windows Server 2012 R2 的注意事项
 
@@ -406,8 +406,8 @@ Cmdlet 按顺序执行以下检查，并为故障提供指导：
 5. CheckSidHasAadUser：检查登录 AD 用户是否已同步到 Azure AD。 如果要查找特定 AD 用户是否已同步到 Azure AD，可以在输入参数中指定-UserName 和-Domain。 
 6. CheckGetKerberosTicket：尝试获取用于连接到存储帐户的 Kerberos 票证。 如果没有有效的 Kerberos 令牌，请运行 klist get cifs/cmdlet，并检查错误代码，使其根本原因导致票证检索失败。
 7. CheckStorageAccountDomainJoined：检查是否已启用 AD 身份验证，并填充该帐户的 AD 属性。 否则，请参阅 [此处](./storage-files-identity-ad-ds-enable.md) 的说明，在 Azure 文件上启用 AD DS 身份验证。 
-8. CheckUserRbacAssignment：检查 AD 用户是否具有适当的 RBAC 角色分配，以提供访问 Azure 文件的共享级别权限。 否则，请参阅 [此处](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions) 的说明，配置共享级别权限。 AzFilesHybrid v 0.2.3 + version) 支持 (
-9. CheckUserFileAccess：检查 AD 用户是否具有正确的目录/文件权限 (Windows Acl) 访问 Azure 文件。 否则，请参阅 [此处](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions) 的说明，配置目录/文件级权限。 AzFilesHybrid v 0.2.3 + version) 支持 (
+8. CheckUserRbacAssignment：检查 AD 用户是否具有适当的 RBAC 角色分配，以提供访问 Azure 文件的共享级别权限。 否则，请参阅 [此处](./storage-files-identity-ad-ds-assign-permissions.md) 的说明，配置共享级别权限。 AzFilesHybrid v 0.2.3 + version) 支持 (
+9. CheckUserFileAccess：检查 AD 用户是否具有正确的目录/文件权限 (Windows Acl) 访问 Azure 文件。 否则，请参阅 [此处](./storage-files-identity-ad-ds-configure-permissions.md) 的说明，配置目录/文件级权限。 AzFilesHybrid v 0.2.3 + version) 支持 (
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>无法在 windows 文件资源管理器) 配置目录/文件级别权限 (
 

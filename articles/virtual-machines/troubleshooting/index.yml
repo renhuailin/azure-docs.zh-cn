@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: 4f1fd0f88c7165a409644029f247b090df285138
-  ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+  ms.openlocfilehash: ad47bde23a7125bac60c9f61687e3ff4e94b7a01
+  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/11/2020
-  ms.locfileid: "94506033"
+  ms.lasthandoff: 01/27/2021
+  ms.locfileid: "98877690"
 landingContent:
 - title: 排查部署失败问题
   linkLists:
@@ -48,7 +48,7 @@ landingContent:
     - text: 按事件 ID 排查 Azure VM RDP 连接问题
       url: ./event-id-troubleshoot-vm-rdp-connecton.md
     - text: 使用 RDP 连接到 Azure VM 时排查身份验证错误
-      url: ./troubleshoot-authentication-error-rdp-vm.md
+      url: /troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm
     - text: VM 来宾网卡被禁用
       url: ./troubleshoot-rdp-nic-disabled.md
 - title: 密码重置

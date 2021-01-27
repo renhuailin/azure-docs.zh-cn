@@ -1,5 +1,5 @@
 ---
-title: 媒体服务建议的实时传送视频流编码器 -  Azure | Microsoft Docs
+title: 媒体服务建议的实时流式处理编码器-Azure
 description: 了解媒体服务建议的实时传送视频流本地编码器
 services: media-services
 keywords: 编码;编码器;媒体
@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: 88de41ae62e3a81fdb51981afe42135649bf34b4
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 6d54a4167739775d3c09740f25a883314e048c65
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734304"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895163"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>经过验证的本地实时传送视频流编码器
 
@@ -50,7 +50,7 @@ ms.locfileid: "94734304"
 > 使用 RTMPS 协议时，编码器必须支持 TLS 1.2。
 
 - Adobe Flash 媒体实时编码器 3.2
-- [Antix 数字](http://www.antixdigital.com/) StreamZ Live (以前设想出通信 SelenioFlex 实时) 
+- [Antix Digital](http://www.antixdigital.com/) StreamZ Live（以前称为 Imagine Communication SelenioFlex Live）
 - [Blackmagic ATEM Mini 和 ATEM Mini PRO](https://www.blackmagicdesign.com/products/atemmini)
 - [Cambria Live 4.3](https://www.capellasystems.net/products/cambria-live/)
 - Elemental Live（2.14.15 及更高版本）
@@ -79,7 +79,7 @@ ms.locfileid: "94734304"
 > 使用 HTTPS 协议时，编码器必须支持 TLS 1.2。
 
 - Ateme TITAN Live
-- [Antix 数字](http://www.antixdigital.com/) StreamZ Live (以前设想出通信 SelenioFlex 实时) 
+- [Antix Digital](http://www.antixdigital.com/) StreamZ Live（以前称为 Imagine Communication SelenioFlex Live）
 - Cisco 数字媒体编码器 2200
 - Elemental Live（由于 TLS 1.2 要求，版本为 2.14.15 及更高）
 - Envivio 4Caster C4 Gen III 

@@ -4,19 +4,19 @@ description: 本文介绍如何将托管标识添加到 Service Fabric 托管群
 ms.topic: how-to
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 00e679b07a44b799b6ac6677201bb59eeddcd6cf
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9edcf75451f43f2a00cd01d5ca7f385704b1ea7f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841416"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878420"
 ---
 # <a name="add-a-managed-identity-to-a-service-fabric-managed-cluster-node-type-preview"></a>将托管标识添加到 Service Fabric 托管群集节点类型 (预览版) 
 
-Service Fabric 托管群集中的每个节点类型都受虚拟机规模集的支持。 若要允许托管标识与托管群集节点类型一起使用，则已向 `vmManagedIdentity` 节点类型定义中添加了一个属性，其中包含可使用的标识列表 `userAssignedIdentities` 。 功能反映了如何在非托管群集中使用托管标识，如使用具有 [Azure Key Vault 虚拟机规模集扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows)的托管标识。
+Service Fabric 托管群集中的每个节点类型都受虚拟机规模集的支持。 若要允许托管标识与托管群集节点类型一起使用，则已向 `vmManagedIdentity` 节点类型定义中添加了一个属性，其中包含可使用的标识列表 `userAssignedIdentities` 。 功能反映了如何在非托管群集中使用托管标识，如使用具有 [Azure Key Vault 虚拟机规模集扩展](../virtual-machines/extensions/key-vault-windows.md)的托管标识。
 
 
-有关对节点类型使用托管标识的 Service Fabric 托管群集部署的示例，请参阅 [此模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI)。 有关支持的区域的列表，请参阅 [托管群集常见问题解答](https://docs.microsoft.com/azure/service-fabric/faq-managed-cluster#what-regions-are-supported-in-the-preview)。
+有关对节点类型使用托管标识的 Service Fabric 托管群集部署的示例，请参阅 [此模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI)。 有关支持的区域的列表，请参阅 [托管群集常见问题解答](./faq-managed-cluster.md#what-regions-are-supported-in-the-preview)。
 
 > [!NOTE]
 > 此功能目前仅支持用户分配的标识。
@@ -26,7 +26,7 @@ Service Fabric 托管群集中的每个节点类型都受虚拟机规模集的�
 开始之前：
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
-* 如果计划使用 PowerShell，则 [安装](https://docs.microsoft.com/cli/azure/install-azure-cli) Azure CLI 以运行 CLI 参考命令。
+* 如果计划使用 PowerShell，则 [安装](/cli/azure/install-azure-cli) Azure CLI 以运行 CLI 参考命令。
 
 ## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识 
 
@@ -54,7 +54,7 @@ az identity create --name <userAssignedIdentityName> --resource-group <resourceG
 
 在适用的情况下，必须使用以下值：
 
-|“属性”|对应 Service Fabric 资源提供程序值|
+|名称|对应 Service Fabric 资源提供程序值|
 |----|-------------------------------------|
 |应用程序 ID|74cb6831-0dbb-4be1-8206-fd4df301cdc2|
 |对象 ID|fbc587f2-66f5-4459-a027-bcd908b9d278|
@@ -122,7 +122,7 @@ New-AzRoleAssignment -PrincipalId fbc587f2-66f5-4459-a027-bcd908b9d278 -RoleDefi
 
 部署后，创建的托管标识已添加到指定节点类型的虚拟机规模集，可以按预期方式使用，就像在任何非托管群集中一样。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果无法正确添加角色分配，则在部署时出现以下错误：
 
@@ -131,4 +131,4 @@ New-AzRoleAssignment -PrincipalId fbc587f2-66f5-4459-a027-bcd908b9d278 -RoleDefi
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [将应用部署到 Service Fabric 托管群集](https://docs.microsoft.com/azure/service-fabric/tutorial-managed-cluster-deploy-app) 
+> [将应用部署到 Service Fabric 托管群集](./tutorial-managed-cluster-deploy-app.md)

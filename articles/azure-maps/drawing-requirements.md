@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044775"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895265"
 ---
 # <a name="drawing-package-requirements"></a>绘图包要求
 
@@ -41,7 +41,7 @@ ms.locfileid: "98044775"
 | 层 | AutoCAD DWG 图层。|
 | 级别 | 位于固定高度的建筑物区域。 例如，建筑物的地板。 |
 | Xref  |AutoCAD DWG 文件格式的文件 ( DWG) ，作为外部引用附加到主绘图。  |
-| 功能 | 将几何图形与更多元数据信息组合在一起的对象。 |
+| Feature | 将几何图形与更多元数据信息组合在一起的对象。 |
 | 功能类 | 特征的常见蓝图。 例如，某个 *单元* 是一个功能类，而 *office* 是一项功能。 |
 
 ## <a name="drawing-package-structure"></a>绘图包结构
@@ -106,7 +106,7 @@ DWG 图层还必须遵循以下条件：
 * 必须将 Exteriors 绘制为多边形、折线 (闭合的) 、圆或椭圆 (闭合) 。
 * Exteriors 可能会重叠，但会被解析为一个几何。
 * 结果级别功能必须至少为4平方米。
-* 生成的级别功能不得大于400。
+* 生成的级别功能不得大于400000。
 
 如果该层包含多个重叠折线，则这些折线将被解析为单个级别特征。 或者，如果层包含多个非重叠折线，则生成的级别特征具有多多边形表示形式。
 
@@ -198,7 +198,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### `directoryInfo`
 
-| 属性  | 类型 | 必需 | 说明 |
+| 属性  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
 | `name`      | 字符串 | true   |  建筑物名称。 |
 | `streetAddress`|    字符串 |    false    | 建筑物地址。 |
@@ -219,7 +219,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 `buildingLevels` 对象包含建筑物楼层的 JSON 数组。
 
-| properties  | 类型 | 必需 | 说明 |
+| properties  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
 |`levelName`    |字符串    |true |    楼层的描述性名称。 例如：第1层、会议厅、蓝色停车场或一起。|
 |`ordinal` | integer |    true | 确定级别的垂直顺序。 每个设施都必须有序号为 0 的楼层。 |
@@ -229,7 +229,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### `georeference`
 
-| 属性  | 类型 | 必需 | 描述 |
+| 属性  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
 |`lat`    | numeric |    true |    设施绘图的原点的纬度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。|
 |`lon`    |numeric|    true|    设施绘图的原点的经度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。 |
@@ -251,7 +251,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 `unitProperties` 对象包含 unit 属性的 JSON 数组。
 
-| properties  | 类型 | 必需 | 说明 |
+| properties  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
 |`unitName`    |字符串    |true    |要与此 `unitProperty` 记录关联的单元的名称。 仅当在层中找到标签匹配时，此记录才有效 `unitName` `unitLabel` 。 |
 |`categoryName`|    字符串|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |
@@ -271,7 +271,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 `zoneProperties` 对象包含 zone 属性的 JSON 数组。
 
-| properties  | 类型 | 必需 | 说明 |
+| properties  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
 |zoneName        |字符串    |true    |要与 `zoneProperty` 记录关联的区域的名称。 只有当在区域的 `zoneLabel` 图层中找到与 `zoneName` 匹配的标签时，此记录才有效。  |
 |categoryName|    字符串|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |

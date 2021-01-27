@@ -1,6 +1,6 @@
 ---
-title: 针对媒体服务帐户的 azure 基于角色的访问控制-Azure |Microsoft Docs
-description: 本文介绍 azure 媒体服务帐户 (azure RBAC) 的基于角色的访问控制。
+title: 针对媒体服务帐户的 azure 基于角色的访问控制-Azure
+description: 本文介绍 Azure 媒体服务帐户的 Azure 基于角色的访问控制 (Azure RBAC)。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 8fba3db14c2a950dd230a4721841b4baa9f64636
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fab743c647c3628a79fffb3bf1060983c34d0aa
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426805"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895180"
 ---
-# <a name="azure-role-based-access-control-azure-rbac-for-media-services-accounts"></a>用于媒体服务帐户的 azure RBAC)  (azure 基于角色的访问控制
+# <a name="azure-role-based-access-control-azure-rbac-for-media-services-accounts"></a>媒体服务帐户的 Azure 基于角色的访问控制 (Azure RBAC)
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "92426805"
 
 ## <a name="design-principles"></a>设计原理
 
-V3 API 的主要设计原则之一是使 API 更安全。 v3 API 不会在 **Get** 或 **List** 操作中返回机密或凭据。 在响应中，密钥始终为 null、空值或进行了净化。 用户需要调用单独的操作方法来获取机密或凭据。 “读者”角色  不能调用多项操作，例如 Asset.ListContainerSas、StreamingLocator.ListContentKeys、ContentKeyPolicies.GetPolicyPropertiesWithSecrets。 如果需要，可以使用单独的操作，在自定义角色中设置更精细的 Azure RBAC 安全权限。
+V3 API 的主要设计原则之一是使 API 更安全。 v3 API 不会在 **Get** 或 **List** 操作中返回机密或凭据。 在响应中，密钥始终为 null、空值或进行了净化。 用户需要调用单独的操作方法来获取机密或凭据。 “读者”角色  不能调用多项操作，例如 Asset.ListContainerSas、StreamingLocator.ListContentKeys、ContentKeyPolicies.GetPolicyPropertiesWithSecrets。 可以通过单独的操作根据需要采用自定义角色来设置更细化的 Azure RBAC 安全权限。
 
 若要列出媒体服务支持的操作，请执行以下代码：
 

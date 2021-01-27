@@ -45,6 +45,14 @@
           href: security-baseline.md
 - name: 操作指南
   items:
+    - name: 客户操作
+      items:
+        - name: 查看和管理服务提供商
+          displayName: 'customer, update, visibility, control'
+          href: ./how-to/view-manage-service-providers.md
+        - name: 查看服务提供商活动
+          displayName: 'monitor, log, customer, visibility, transparency, control'
+          href: ./how-to/view-service-provider-activity.md
     - name: 将客户加入 Azure Lighthouse
       displayName: resource management
       href: ./how-to/onboard-customer.md
@@ -87,14 +95,6 @@
           href: ./how-to/deploy-policy-remediation.md
     - name: Azure Sentinel 集成
       href: ./how-to/manage-sentinel-workspaces.md
-    - name: 客户操作
-      items:
-        - name: 查看和管理服务提供商
-          displayName: 'customer, update'
-          href: ./how-to/view-manage-service-providers.md
-        - name: 查看服务提供商活动
-          displayName: 'monitor, log'
-          href: ./how-to/view-service-provider-activity.md
 - name: 参考
   items:
     - name: Azure CLI

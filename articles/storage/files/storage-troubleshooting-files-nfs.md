@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ed86cc76984388618c177590b3f6358421f09f65
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916450"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878487"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>排查 Azure NFS 文件共享问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "97916450"
 Azure 文件不允许字母数字 UID/GID。 因此必须禁用 idmapping。 
 
 ### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>原因2： idmapping 已禁用，但遇到错误的文件/目录名称后重新启用
-即使已正确禁用 idmapping，在某些情况下，禁用 idmapping 的设置也会被重写。 例如，当 Azure 文件遇到错误的文件名时，它将返回错误。 查看此特定错误代码后，NFS 版本 4.1 Linux 客户端决定重新启用 idmapping，以后的请求会与字母数字 UID/GID 再次发送。 有关 Azure 文件中不支持的字符的列表，请参阅此 [文](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length)。 冒号是不受支持的字符之一。 
+即使已正确禁用 idmapping，在某些情况下，禁用 idmapping 的设置也会被重写。 例如，当 Azure 文件遇到错误的文件名时，它将返回错误。 查看此特定错误代码后，NFS 版本 4.1 Linux 客户端决定重新启用 idmapping，以后的请求会与字母数字 UID/GID 再次发送。 有关 Azure 文件中不支持的字符的列表，请参阅此 [文](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)。 冒号是不受支持的字符之一。 
 
 ### <a name="workaround"></a>解决方法
 检查 idmapping 是否已禁用并且不会重新启用它，然后执行以下操作：
@@ -68,7 +68,7 @@ NFS 只能在具有以下配置的存储帐户上使用：
 - 层-高级
 - 帐户类型-FileStorage
 - 冗余-LRS
-- 区域- [受支持区域的列表](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
+- 区域- [受支持区域的列表](./storage-files-how-to-create-nfs-shares.md?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>解决方案
 

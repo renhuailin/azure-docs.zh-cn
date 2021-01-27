@@ -1,24 +1,9 @@
 ---
-title: 通过 CDN 集成流式传输内容
-titleSuffix: Azure Media Services
-description: 了解如何通过 CDN 集成对内容进行流式处理，以及预提取和 Origin-Assist CDN 预提取。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 6bdf6015ca5633c77280111a55055a7394cee5bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001365"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必填字段。 有关详细信息，请参阅 aka.ms/skyeye/meta。
+标题：通过 CDN 集成流式传输内容： Azure 媒体服务说明：了解如何通过 CDN 集成流式传输内容，以及预提取和 Origin-Assist CDN 预提取。
+服务：媒体服务 documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' ' ms. service： media-服务毫秒：：08/31/2020：： inhenkel
 ---
+
 # <a name="stream-content-with-cdn-integration"></a>通过 CDN 集成流式传输内容
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -155,7 +140,7 @@ CDN 缓存是一种反应过程。 如果 CDN 能预测下一个对象将被请�
 
 * 此功能是否适用于 UHD/HEVC 内容？
 
-    是的。
+    是。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

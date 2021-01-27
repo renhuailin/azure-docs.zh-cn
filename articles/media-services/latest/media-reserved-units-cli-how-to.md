@@ -1,5 +1,5 @@
 ---
-title: 如何使用 CLI 缩放媒体保留单位 (Mru) -Azure |Microsoft Docs
+title: 如何使用 CLI 缩放媒体保留单位 (Mru) -Azure
 description: 本主题演示如何使用 CLI 通过 Azure 媒体服务来缩放媒体处理能力。
 services: media-services
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: bcbe5fe71e5a4d4d39a29d4a6828c104f6891c0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41026a64d6f7549c5a268493cfb5975838002df2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617139"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895299"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>如何缩放媒体保留单位
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-本文介绍如何缩放媒体保留单位 (MRSs) 以提高编码速度。
+本文介绍如何缩放媒体保留单位 (MRS) 以加快编码速度。
 
 ## <a name="prerequisites"></a>必备条件
 
