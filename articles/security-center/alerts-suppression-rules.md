@@ -1,6 +1,6 @@
 ---
 title: 使用警报抑制规则在 Azure 安全中心中抑制误报或其他不需要的安全警报。
-description: 本文介绍如何使用 Azure 安全中心的禁止显示规则隐藏不需要的安全警报
+description: 本文介绍如何使用 Azure 安全中心的抑制规则隐藏不需要的安全警报
 author: memildin
 manager: rkarlin
 services: security-center
@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 1ca2ded69b0279a60d8ed83cf310a58dadf1a337
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 12cc2de6cd1a8e9ddf40b358c94b720b8b2cf594
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751982"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920437"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>禁止来自 Azure Defender 的警报
 
@@ -23,7 +23,7 @@ ms.locfileid: "96751982"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：| 正式发布 |
+|发布状态：|正式发布版 (GA)|
 |定价：|免费<br>（大多数安全警报仅适用于 Azure Defender）|
 |所需角色和权限：|“安全管理员”和“所有者”可以创建/删除规则 。<br>“安全读取者”和“读取者”可以查看规则 。|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|

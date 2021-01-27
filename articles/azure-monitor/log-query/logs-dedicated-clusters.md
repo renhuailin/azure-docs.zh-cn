@@ -6,28 +6,25 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: a5cbbed3881433121f5ab811082969bc3c6c4f7f
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: adcc894db630bba11e84e2f277705d2f31caf7dc
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98609938"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920217"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
 
-Azure Monitor 日志 "专用群集" 是一种部署选项，可实现 Azure Monitor 记录客户的高级功能。 具有专用群集的客户可以选择在这些群集上托管的工作区。
+Azure Monitor 日志专用群集是一个部署选项，可为 Azure Monitor 日志客户启用高级功能。 具有专用群集的客户可以选择在这些群集上托管的工作区。
 
 需要专用群集的功能包括：
 
-- **[客户管理的密钥](../platform/customer-managed-keys.md)** -使用客户提供和控制的密钥来加密群集数据。
+- **[客户管理的密钥](../platform/customer-managed-keys.md)** - 使用由客户提供和控制的密钥对群集数据进行加密。
 - **[密码箱](../platform/customer-managed-keys.md#customer-lockbox-preview)** -客户可以控制 Microsoft 支持工程师对数据的访问请求。
 - **[双加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** 可防止其中一个加密算法或密钥泄露的情况。 在这种情况下，附加的加密层会继续保护你的数据。
-- **[多工作区](../log-query/cross-workspace-query.md)** -如果客户使用多个工作区进行生产，则使用专用群集可能有意义。 如果所有工作区都在同一群集上，则跨工作区查询将运行更快。 使用专用群集的方式也可能更具成本效益，因为分配的容量预留层将考虑所有群集引入，并将其应用到所有的工作区，即使其中一些空间较小且不符合容量保留折扣。
+- **[多工作区](../log-query/cross-workspace-query.md)** - - 如果客户使用多个工作区进行生产，则使用专用群集可能是合理的。 如果所有工作区都在同一群集上，则“跨工作区”查询会运行更快。 使用专用群集还可能更具成本效益，因为分配的产能预留层考虑了所有群集引入并应用于其所有工作区，即使其中一些工作区很小并且没有资格享受产能预留折扣。
 
 专用群集要求客户使用每天至少 1 TB 的数据引入产能进行提交。 迁移到专用群集很简单。 无数据丢失或服务中断。 
-
-> [!IMPORTANT]
-> 专用群集已获得批准并完全支持用于生产部署。 但是，由于临时产能限制，我们要求你预先注册才能使用该功能。 在 Microsoft 中使用联系人提供订阅 ID。
 
 ## <a name="management"></a>管理 
 
@@ -35,7 +32,7 @@ Azure Monitor 日志 "专用群集" 是一种部署选项，可实现 Azure Moni
 
 创建群集后，可以对其进行配置并将工作区链接到该群集。 当工作区链接到群集时，发送到工作区的新数据都将驻留在群集上。 只有与群集位于同一区域中的工作区才能链接到群集。 可从群集中取消工作区的链接，但有一些限制。 本文将详细介绍这些限制。 
 
-引入到专用群集的数据将被加密两次-一次是在使用 Microsoft 托管密钥或 [客户托管密钥](../platform/customer-managed-keys.md)的服务级别，一次使用两种不同的加密算法和两个不同的密钥。 [双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。 专用群集还允许通过[密码箱](../platform/customer-managed-keys.md#customer-lockbox-preview)控制来保护数据。
+引入到专用群集的数据进行两次加密 — 一次在服务级别使用 Microsoft 管理的密钥或[客户管理的密钥](../platform/customer-managed-keys.md)，一次在基础结构级别使用两种不同的加密算法和两个不同的密钥。 [双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。 专用群集还允许通过[密码箱](../platform/customer-managed-keys.md#customer-lockbox-preview)控制来保护数据。
 
 群集级别的所有操作都需要群集上的 `Microsoft.OperationalInsights/clusters/write` 操作权限。 可以通过包含 `*/write` 操作的所有者或参与者或包含 `Microsoft.OperationalInsights/*` 操作的 Log Analytics 参与者角色授予此权限。 有关 Log Analytics 权限的更多信息，请参阅[管理对 Azure Monitor 中的日志数据和工作区的访问](../platform/manage-access.md)。 
 
@@ -48,17 +45,17 @@ Log Analytics 专用群集使用产能预留定价模型，该模型至少为 10
 
 对于群集上的使用情况，有两种计费模式。 配置群集时，可通过 `billingType` 参数指定这些计费模式。 
 
-1. **群集**：在此情况下（其为默认情况），引入数据的计费在群集级别完成。 聚合与群集关联的每个工作区中的引入数据数量，以计算该分类的每日帐单。 
+1. **群集**：在此情况下（其为默认情况），引入数据的计费在群集级别完成。 每个与群集关联的工作区中的引入数据数量将进行聚合，以计算该群集的每日帐单。 
 
 2. **工作区**：群集的产能预留成本按比例分配给群集中的工作区（在考虑了为每个工作区从 [Azure 安全中心](../../security-center/index.yml)进行每节点分配之后。）
 
-如果你的工作区使用旧版每节点定价层，则当其链接到某个群集时，将基于针对群集容量预留的数据引入计费，并且不再按节点计费。 将继续应用来自 Azure 安全中心的每节点数据分配。
+如果工作区使用旧的每节点定价层，则当其链接到群集时，它将根据群集的产能预留引入到的数据来计费，而不再是按节点计费。 将继续应用来自 Azure 安全中心的每节点数据分配。
 
 有关 Log Analytics 专用群集的计费的详细信息，请参阅[此处]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)。
 
 ## <a name="asynchronous-operations-and-status-check"></a>异步操作和状态检查
 
-某些配置步骤是异步运行的，因为它们无法快速完成。 响应中的状态可以是以下之一： "正在进行"、"更新"、"删除"、"已成功" 或 "失败" （包括错误代码）。 使用 REST 时，响应最初返回 HTTP 状态代码 202 (接受 Azure-AsyncOperation 属性的) 和标头：
+某些配置步骤是异步运行的，因为它们无法快速完成。 响应中的状态可能包含以下项之一：“InProgress”、“Updating”、“Deleting”、“Succeeded”或“Failed”，包括错误代码。 使用 REST 时，响应最初返回 HTTP 状态代码 202 (接受 Azure-AsyncOperation 属性的) 和标头：
 
 ```JSON
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
@@ -298,7 +295,7 @@ Authorization: Bearer <token>
 
 创建群集资源并对其进行完全预配后，可以使用 PowerShell 或 REST API 在群集级别编辑其他属性。 除了在群集创建过程中可用的属性外，便只能在预配群集后设置其他属性：
 
-- **keyVaultProperties** -Azure Key Vault 中更新密钥。 请参阅 [更新具有密钥标识符详细信息的群集](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details)。 它包含以下参数： *KeyVaultUri*、 *KeyName*、 *KeyVersion*。 
+- **keyVaultProperties** - 更新 Azure Key Vault 中的密钥。 请参阅[为群集更新密钥标识符详细信息](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details)。 它包含以下参数：KeyVaultUri、KeyName、KeyVersion  。 
 - **billingType** - billingType 属性可确定群集资源及其数据的计费归属 ：
   - **群集**（默认）- 群集的产能预留成本归因于群集资源。
   - **工作区** - 群集的产能预留成本按比例分配给群集中的工作区，如果当天引入的总数据在产能预留之下，则会对群集资源的一些使用进行收费。 请参阅 [Log Analytics 专用群集](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)以了解有关群集定价模型的更多信息。 
@@ -389,13 +386,13 @@ Authorization: Bearer <token>
     
 *响应*
     
-与 "资源组" 中的 "群集" 相同，但在订阅范围内。
+与“资源组的群集”相同，但在订阅范围内。
 
 
 
 ### <a name="update-capacity-reservation-in-cluster"></a>更新群集中的容量预留
 
-链接工作区的数据量随时间变化时，建议适当地更新容量预留级别。 容量以 GB 为单位指定，可具有 1000 GB/天或更多的值，以 100 GB/天为增量。 请注意，不需要提供完整的 REST 请求正文，而应包含 sku。
+链接工作区的数据量随时间变化时，建议适当地更新容量预留级别。 容量以 GB 为单位，并且值可以为 1000 GB/天或更大，增量为 100 GB/天。 请注意，无需提供完整的 REST 请求正文，但应包含 sku。
 
 **CLI**
 
@@ -448,12 +445,12 @@ billingType 属性可确定群集及其数据的计费归属：
   }
   ```
 
-### <a name="unlink-a-workspace-from-cluster"></a>从群集取消链接工作区
+### <a name="unlink-a-workspace-from-cluster"></a>从群集中取消与工作区的链接
 
 你可以从群集中取消与工作区的链接。 从群集取消工作区的链接后，与此工作区相关联的新数据不会发送到专用群集。 此外，工作区计费不再通过群集完成。 未取消链接的工作区的旧数据可能还保留在群集上。 如果使用客户管理的密钥 (CMK) 加密此数据，则保留 Key Vault 机密。 该系统从 Log Analytics 用户中提取此更改。 用户可以像往常一样查询工作区。 系统根据需要在后端执行跨群集查询，无需获得用户的指示。  
 
 > [!WARNING] 
-> 一个月内的特定工作区有两个链接操作限制。 花时间考虑并相应地计划取消链接的操作。
+> 一个月内特定工作区的链接操作限制为两次。 花时间考虑并相应地计划取消链接的操作。
 
 **CLI**
 
@@ -463,7 +460,7 @@ az monitor log-analytics workspace linked-service delete --resource-group "resou
 
 **PowerShell**
 
-使用以下 PowerShell 命令从群集中取消链接工作区：
+使用以下 PowerShell 命令来从群集取消链接工作区：
 
 ```powershell
 # Unlink a workspace from cluster
@@ -481,7 +478,7 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 删除后 14 天内，群集资源名称被保留，不能被其他资源使用。
 
 > [!WARNING] 
-> 每个订阅的群集限制为三个。 活动群集和软删除群集均计入此部分。 客户不应创建用于创建和删除群集的重复性过程。 它对 Log Analytics 后端系统有重大影响。
+> 每个订阅的群集限制为三个。 活动群集和软删除群集均计入其中。 客户不应创建用于创建和删除群集的循环过程。 它对 Log Analytics 后端系统有重大影响。
 
 **PowerShell**
 
@@ -527,7 +524,7 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 - 如果在群集处于预配或更新状态时更新群集，则更新将失败。
 
 - 部分操作较为耗时，可能需要一段时间才能完成 - 包括群集创建、群集密钥更新和群集删除。 可以通过两种方式检查操作状态：
-  - 使用 REST 时，从响应中复制 "Azure-AsyncOperation URL" 值并按照 [异步操作状态检查操作](#asynchronous-operations-and-status-check)。
+  - 使用 REST 时，从响应中复制 Azure-AsyncOperation URL 值，并进行[异步操作状态检查](#asynchronous-operations-and-status-check)。
   - 将 GET 请求发送到群集或工作区，然后观察响应。 例如，未链接的工作区在“功能”下没有 clusterResourceId 。
 
 - 将工作区链接到群集时，如果是链接到其他群集，则链接会失败。

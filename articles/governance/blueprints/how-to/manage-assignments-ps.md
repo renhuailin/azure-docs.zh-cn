@@ -1,14 +1,14 @@
 ---
 title: 如何通过 PowerShell 管理分配
 description: 了解如何通过官方 Azure 蓝图 PowerShell 模块 Az. 蓝图管理蓝图分配。
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bcb3731bd1270497945fa86406d08b2f9750c85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d60fb887e07b4697b8e86a4e2fd74a735ac0bb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051400"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919370"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>如何通过 PowerShell 管理分配
 
@@ -49,7 +49,7 @@ Azure 蓝图模块需要以下软件：
 ## <a name="get-blueprint-definitions"></a>获取蓝图定义
 
 处理赋值的第一步通常是获取对蓝图定义的引用。
-`Get-AzBlueprint`Cmdlet 获取一个或多个蓝图定义。 Cmdlet 可以从管理组或使用订阅获取蓝图定义 `-ManagementGroupId {mgId}` `-SubscriptionId {subId}` 。 **Name**参数获取蓝图定义，但必须与**ManagementGroupId**或**SubscriptionId**一起使用。 **版本** 可与 **名称** 一起使用，以便更明确地了解返回的蓝图定义。 开关用于获取最近发布的版本，而不是 **版本** `-LatestPublished` 。
+`Get-AzBlueprint`Cmdlet 获取一个或多个蓝图定义。 Cmdlet 可以从管理组或使用订阅获取蓝图定义 `-ManagementGroupId {mgId}` `-SubscriptionId {subId}` 。 **Name** 参数获取蓝图定义，但必须与 **ManagementGroupId** 或 **SubscriptionId** 一起使用。 **版本** 可与 **名称** 一起使用，以便更明确地了解返回的蓝图定义。 开关用于获取最近发布的版本，而不是 **版本** `-LatestPublished` 。
 
 下面的示例使用 `Get-AzBlueprint` 从表示为的特定订阅获取名为 "101-蓝图-定义-订阅" 的所有版本的蓝图定义 `{subId}` ：
 
@@ -129,7 +129,7 @@ ResourceGroups    : ResourceGroup
 
 - **名称** [必需]
   - 指定蓝图分配的名称
-  - 必须是唯一的，且**SubscriptionId**中不存在
+  - 必须是唯一的，且 **SubscriptionId** 中不存在
 - **蓝图** [必需]
   - 指定要分配的蓝图定义
   - 用于 `Get-AzBlueprint` 获取 reference 对象
@@ -145,14 +145,14 @@ ResourceGroups    : ResourceGroup
 - **SystemAssignedIdentity** (可选) 
   - 选择此项可为分配创建系统分配的托管标识并部署资源
   - "Identity" 参数集的默认值
-  - 不能与**UserAssignedIdentity**一起使用
+  - 不能与 **UserAssignedIdentity** 一起使用
 - **UserAssignedIdentity** (可选) 
   - 指定用于分配并部署资源的用户分配的托管标识
   - "Identity" 参数集的一部分
-  - 不能与**SystemAssignedIdentity**一起使用
+  - 不能与 **SystemAssignedIdentity** 一起使用
 - **参数** (可选) 
   - 用于在蓝图分配上设置[动态参数](../concepts/parameters.md#dynamic-parameters)的键/值对的[哈希表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 动态参数的默认值是定义中的**defaultValue**
+  - 动态参数的默认值是定义中的 **defaultValue**
   - 如果未提供参数且没有 **defaultValue**，则参数不是可选的
 
     > [!NOTE]
@@ -164,11 +164,11 @@ ResourceGroups    : ResourceGroup
   - 如果未提供资源组参数并且没有 **defaultValue**，则资源组参数不是可选的
 - **AssignmentFile** (可选) 
   - 蓝图分配的 JSON 文件表示形式的路径
-  - 此参数是 PowerShell 参数集的一部分，该参数集仅包含 **名称**、 **蓝图**和 **SubscriptionId**以及通用参数。
+  - 此参数是 PowerShell 参数集的一部分，该参数集仅包含 **名称**、 **蓝图** 和 **SubscriptionId** 以及通用参数。
 
 ### <a name="example-1-provide-parameters"></a>示例1：提供参数
 
-下面的示例创建一个新分配的 "我的蓝图" 蓝图定义的版本 "1.1" `Get-AzBlueprint` ，将托管标识和分配对象位置设置为 "westus2"，使用 _AllResourcesReadOnly_锁定资源，并在特定订阅上设置 **参数** 和 **ResourceGroupParameter** 的哈希表，表示为 `{subId}` ：
+下面的示例创建一个新分配的 "我的蓝图" 蓝图定义的版本 "1.1" `Get-AzBlueprint` ，将托管标识和分配对象位置设置为 "westus2"，使用 _AllResourcesReadOnly_ 锁定资源，并在特定订阅上设置 **参数** 和 **ResourceGroupParameter** 的哈希表，表示为 `{subId}` ：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -205,7 +205,7 @@ ResourceGroups    : ResourceGroup
 
 ### <a name="example-2-use-a-json-assignment-definition-file"></a>示例2：使用 JSON 赋值定义文件
 
-下面的示例创建了几乎与 [示例 1](#example-1-provide-parameters)相同的分配。 该示例演示如何使用 JSON 赋值定义文件和 **AssignmentFile** 参数，而不是将参数传递给 cmdlet。 此外，将 **excludedPrincipals** 属性配置为 **锁定**的一部分。 没有适用于 **excludedPrincipals** 的 PowerShell 参数，只能通过 JSON 赋值定义文件设置属性来配置属性。
+下面的示例创建了几乎与 [示例 1](#example-1-provide-parameters)相同的分配。 该示例演示如何使用 JSON 赋值定义文件和 **AssignmentFile** 参数，而不是将参数传递给 cmdlet。 此外，将 **excludedPrincipals** 属性配置为 **锁定** 的一部分。 没有适用于 **excludedPrincipals** 的 PowerShell 参数，只能通过 JSON 赋值定义文件设置属性来配置属性。
 
 ```json
 {
@@ -250,7 +250,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
 
 ## <a name="update-blueprint-assignments"></a>更新蓝图分配
 
-有时，必须更新已创建的蓝图分配。 `Set-AzBlueprintAssignment`Cmdlet 处理此操作。 该 cmdlet 将使用该 cmdlet 执行的大部分相同参数 `New-AzBlueprintAssignment` ，从而允许更新在分配上设置的任何内容。 例外情况包括： _名称_、 _蓝图_和 _SubscriptionId_。 仅更新所提供的值。
+有时，必须更新已创建的蓝图分配。 `Set-AzBlueprintAssignment`Cmdlet 处理此操作。 该 cmdlet 将使用该 cmdlet 执行的大部分相同参数 `New-AzBlueprintAssignment` ，从而允许更新在分配上设置的任何内容。 例外情况包括： _名称_、 _蓝图_ 和 _SubscriptionId_。 仅更新所提供的值。
 
 若要了解更新蓝图分配时所发生的情况，请参阅 [更新分配的规则](./update-existing-assignments.md#rules-for-updating-assignments)。
 
@@ -273,14 +273,14 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
 - **SystemAssignedIdentity** (可选) 
   - 选择此项可为分配创建系统分配的托管标识并部署资源
   - "Identity" 参数集的默认值
-  - 不能与**UserAssignedIdentity**一起使用
+  - 不能与 **UserAssignedIdentity** 一起使用
 - **UserAssignedIdentity** (可选) 
   - 指定用于分配并部署资源的用户分配的托管标识
   - "Identity" 参数集的一部分
-  - 不能与**SystemAssignedIdentity**一起使用
+  - 不能与 **SystemAssignedIdentity** 一起使用
 - **参数** (可选) 
   - 用于在蓝图分配上设置[动态参数](../concepts/parameters.md#dynamic-parameters)的键/值对的[哈希表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 动态参数的默认值是定义中的**defaultValue**
+  - 动态参数的默认值是定义中的 **defaultValue**
   - 如果未提供参数且没有 **defaultValue**，则参数不是可选的
 
     > [!NOTE]

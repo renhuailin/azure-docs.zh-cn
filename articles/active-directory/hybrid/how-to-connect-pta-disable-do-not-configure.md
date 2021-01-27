@@ -11,16 +11,21 @@ ms.date: 04/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5db99f5e8ed2ea5844acba5500bc94d8fb0db2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26112b1e799cbde3145e7137c686b4b336db4bab
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85358338"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919929"
 ---
-# <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>使用 Azure AD Connect "不配置" 时禁用 PTA
+# <a name="disable-pta-when-using-azure-ad-connect"></a>使用 Azure AD Connect 时禁用 PTA
 
-如果使用传递身份验证和 Azure AD Connect，并将其设置为 "不配置"，则可以禁用它。 可以使用以下 cmdlet 来禁用 PTA。 
+如果使用传递身份验证和 Azure AD Connect，并将其设置为 **"不配置"**，则可以禁用它。 
+
+>[!NOTE]
+>如果已启用 PHS，则禁用 PTA 将导致租户回退到 PHS。
+
+可以使用以下 cmdlet 来禁用 PTA。 
 
 ## <a name="prerequisites"></a>必备条件
 需要以下先决条件：

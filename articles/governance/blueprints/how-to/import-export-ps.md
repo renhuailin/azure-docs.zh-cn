@@ -1,18 +1,18 @@
 ---
 title: 通过 PowerShell 导入和导出蓝图
 description: 了解如何以代码的形式使用蓝图定义。 使用导出和导入命令进行共享、源控制和管理。
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 87e8f00013fec3abb8132f92c1c717f152d1e264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5b1adda0b02e2e2490441c5958ca9334febc24c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051434"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919980"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>通过 PowerShell 导入和导出蓝图定义
 
-可以通过 Azure 门户完全管理 Azure 蓝图。 随着组织开始使用 Azure 蓝图，它们应该开始将蓝图定义视为托管代码。 此概念通常称为 "基础结构即代码 (IaC) "。 将蓝图定义视为代码，可提供除 Azure 门户提供的其他优势。 这些优势包括：
+可以通过 Azure 门户完全管理 Azure 蓝图。 随着组织开始使用 Azure 蓝图，它们应该开始将蓝图定义视为托管代码。 此概念通常称为 "基础结构即代码 (IaC) "。 将蓝图定义视为代码，可提供除 Azure 门户提供的其他优势。 优势包括：
 
 - 共享蓝图定义
 - 备份蓝图定义
@@ -97,10 +97,10 @@ ms.locfileid: "89051434"
   - 必须与[所需的文件夹结构](#folder-structure-of-a-blueprint-definition)相匹配
 - **ManagementGroupId** (可选) 
   - 在当前上下文默认情况下，用于保存蓝图定义的管理组 ID
-  - 必须指定**ManagementGroupId**或**SubscriptionId**
+  - 必须指定 **ManagementGroupId** 或 **SubscriptionId**
 - **SubscriptionId** (可选) 
   - 如果不是当前上下文默认值，则为将蓝图定义保存到的订阅 ID
-  - 必须指定**ManagementGroupId**或**SubscriptionId**
+  - 必须指定 **ManagementGroupId** 或 **SubscriptionId**
 
 1. 使用 `Import-AzBlueprintWithArtifact` cmdlet 导入指定的蓝图定义：
 

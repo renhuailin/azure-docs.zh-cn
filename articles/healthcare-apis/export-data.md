@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 48dbd0892c9ec02f203edba55d1104f1ab0118a8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 8ad5ee78a525b3798bbf613168ff74a9e21fe99b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737602"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920251"
 ---
 # <a name="how-to-export-fhir-data"></a>如何导出 FHIR 数据
 
@@ -46,13 +46,14 @@ $Export 作业中必须设置两个必需的标头参数。 这些值由当前 [
 
 ### <a name="query-parameters"></a>查询参数
 适用于 FHIR 的 Azure API 支持以下查询参数。 所有这些参数都是可选的：
-|查询参数        | 由 FHIR 规范定义？    |  说明|
+
+|查询参数        | 由 FHIR 规范定义？    |  描述|
 |------------------------|---|------------|
 | \_outputFormat | 是 | 目前支持三个值以与 FHIR Spec： application/FHIR + ndjson、application/ndjson 或仅 ndjson 对齐。 所有导出作业都将返回 `ndjson` ，并且传递的值不会影响代码行为。 |
 | \_since | 是 | 允许你仅导出自提供时间以来修改的资源 |
 | \_类别 | 是 | 允许您指定将包含哪些类型的资源。 例如， \_ type = 患者只返回患者资源|
 | \_typefilter | 是 | 若要请求更精细的筛选，可以将 \_ typefilter 与 \_ type 参数一起使用。 _TypeFilter 参数的值是以逗号分隔的 FHIR 查询列表，可进一步限制结果 |
-| \_容器 | 否 |  指定已配置的存储帐户中应将数据导出到其中的容器。 如果指定容器，则会将数据导出到名为的新文件夹中的容器。 如果未指定容器，则会将其导出到使用时间戳和作业 ID 的新容器。 |
+| \_container | 否 |  指定已配置的存储帐户中应将数据导出到其中的容器。 如果指定容器，则会将数据导出到名为的新文件夹中的容器。 如果未指定容器，则会将其导出到使用时间戳和作业 ID 的新容器。 |
 
 
 ## <a name="next-steps"></a>后续步骤

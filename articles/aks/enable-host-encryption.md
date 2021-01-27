@@ -3,13 +3,13 @@ title: '在 Azure Kubernetes Service 上启用基于主机的加密 (AKS) '
 description: 了解如何在 Azure Kubernetes Service (AKS) 群集中配置基于主机的加密
 services: container-service
 ms.topic: article
-ms.date: 07/10/2020
-ms.openlocfilehash: 531d1dc4169b5f4adecfb29c3e116049cb99c3c9
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 01/27/2021
+ms.openlocfilehash: 1d071305b457cddde56a11982e08c9331e1d5463
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787818"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919642"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service 上基于主机的加密 (AKS)  (预览) 
 
@@ -23,9 +23,9 @@ ms.locfileid: "98787818"
 > [!NOTE]
 > 基于主机的加密在支持 Azure 托管磁盘的服务器端加密的 [azure 区域][supported-regions] 中提供，并且仅具有特定 [支持的 VM 大小][supported-sizes]。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
-- 确保已 `aks-preview` 安装 CLI extension v 0.4.55 或更高版本
+- 确保已 `aks-preview` 安装 CLI extension v 0.4.73 或更高版本
 - 确保 `EnableEncryptionAtHostPreview` 功能标志处于 `Microsoft.ContainerService` 启用状态。
 
 为了能够为 VM 或虚拟机规模集使用主机加密，必须在订阅上启用该功能。 使用你的订阅 ID 向 encryptionAtHost@microsoft .com 发送电子邮件，以便为你的订阅启用该功能。
@@ -35,18 +35,18 @@ ms.locfileid: "98787818"
 > [!IMPORTANT]
 > encryptionAtHost@microsoft若要为计算资源启用该功能，必须通过电子邮件发送包含订阅 id 的电子邮件。 不能自行为这些资源启用此类资源。 你可以自行在容器服务上启用它。
 
-若要创建使用基于主机的加密的 AKS 群集，必须 `EnableEncryptionAtHostPreview` `EncryptionAtHost` 在订阅上启用和功能标志。
+若要创建使用基于主机的加密的 AKS 群集，必须 `EncryptionAtHost` 在订阅上启用功能标志。
 
 `EncryptionAtHost`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
 
 ```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
+az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHost"
 ```
 
 状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHost')].{Name:name,State:properties.state}"
 ```
 
 准备就绪后， `Microsoft.ContainerService` `Microsoft.Compute` 使用 [az provider register][az-provider-register] 命令刷新和资源提供程序的注册：
@@ -80,7 +80,7 @@ az extension update --name aks-preview
 将群集代理节点配置为在创建群集时使用基于主机的加密。 使用 `--aks-custom-headers` 标志设置 `EnableEncryptionAtHost` 标头。
 
 ```azurecli-interactive
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers EnableEncryptionAtHost=true
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers --enable-encryption-at-host
 ```
 
 如果要创建不包含基于主机的加密的群集，可以通过省略自定义参数来执行此操作 `--aks-custom-headers` 。
@@ -90,7 +90,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D
 通过向群集中添加新的节点池，可以在现有群集上启用基于主机的加密。 使用标志配置新的节点池以使用基于主机的加密 `--aks-custom-headers` 。
 
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers EnableEncryptionAtHost=true
+az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers --enable-encryption-at-host
 ```
 
 如果要在没有基于主机的加密功能的情况下创建新的节点池，可以通过省略自定义参数来执行此操作 `--aks-custom-headers` 。

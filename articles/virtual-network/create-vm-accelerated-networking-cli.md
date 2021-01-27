@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 5b91d6e58f4ae93bbf020f202991f878e7773114
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 643a52c9be04fb325b8e1d088faeb68e473aa673
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222949"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919946"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 创建具有加速网络的 Linux 虚拟机
 
@@ -48,19 +48,17 @@ ms.locfileid: "98222949"
 * **RHEL 7.4 或更高版本**
 * **CentOS 7.4 或更高版本**
 * **CoreOS Linux**
-* **Debian "Stretch" 与 precise-backports kernel，Debian "Buster" 或更高版本**
+* **Debian“Stretch”（backport 内核）、Debian“Buster”或更高版本**
 * **Oracle Linux 7.4 及更高版本与 Red Hat 兼容内核 (RHCK)**
 * **Oracle Linux 7.5 及更高版本，UEK 版本5**
-* **FreeBSD 10.4、11.1 & 12.0 或更高版本**
+* **FreeBSD 10.4, 11.1 & 12.0 或更高版本**
 
 ## <a name="limitations-and-constraints"></a>限制和约束
 
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
-大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括 D/DSv2 和 F/Fs
+大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。 在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 
 
-在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 支持的系列包括： D/Dsv3、D/Dsv4、Dd/Ddv4、Da/Dasv4、E/Esv3、E/Esv4、Ed/Edsv4、Ea/Easv4、Fsv2、Lsv2、Ms/Mms 和 Ms/Mmsv2。
-
-有关 VM 实例的详细信息，请参阅[Linux VM 大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+在单个 [虚拟机大小](../virtual-machines/sizes.md) 文档中可以找到对加速网络的支持。 
 
 ### <a name="custom-images"></a>自定义映像
 如果你使用的是自定义映像，并且映像支持加速网络，请确保在 Azure 上使用 Mellanox ConnectX-3 和 ConnectX-4 Lx NICs 所需的驱动程序。

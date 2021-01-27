@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 62f27a07c868cc9cc7f37a7b26ab38127946e3c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba7342409d309fceeb7cfe50c152f2548f29bec
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652867"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919725"
 ---
 # <a name="nv-series"></a>NV 系列
 
@@ -24,7 +24,8 @@ NV 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可�
 [高级存储缓存](premium-storage-performance.md)：不支持<br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
-[VM 生成支持](generation-2.md)：第1代<br>
+[VM 代系支持](generation-2.md)：第 1 代<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：不支持<br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 |

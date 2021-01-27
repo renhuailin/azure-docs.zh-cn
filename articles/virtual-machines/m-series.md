@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: fe63f9d5a9d215a31a56d7214170d86f46a4e4a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 972eaf3aa20324bc68ce24d2b7c0db041bb8baa4
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653649"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918630"
 ---
 # <a name="m-series"></a>M 系列
 
@@ -21,12 +21,13 @@ M 系列提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.
 M 系列 VM 采用 Intel&reg; 超线程技术。
 
 [ACU](acu.md)：160-180<br>
-[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
-[VM 生成支持](generation-2.md)：第1代和第2代<br>
+[VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [写入加速器](./how-to-enable-write-accelerator.md)：支持<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
@@ -46,7 +47,7 @@ M 系列 VM 采用 Intel&reg; 超线程技术。
 | Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 | Standard_M128m <sup>1</sup>    | 128 | 3892   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 
-<sup>1</sup> 超过 64 vCPU 的 VM 需要以下受支持的来宾 OS 之一：Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2 和 Red Hat Enterprise Linux、CentOS 7.3 或带 LIS 4.2.1 的 Oracle Linux 7.3。
+<sup>1</sup> 超过64的 vCPU 需要以下受支持的来宾版本之一： Windows Server 2016、UBUNTU 16.04 LTS、SLES 12 SP2 和 Red Hat Enterprise Linux、CentOS 7.3 或 Oracle Linux 7.3 和 .lis 4.2.1。
 
 <sup>2</sup> 实例对于专用于单个客户的硬件独立。
 

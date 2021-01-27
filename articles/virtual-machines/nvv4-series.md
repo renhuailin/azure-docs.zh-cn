@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: 67780c725466707f347e9009a77099786cc64939
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: bff754211cb1a8bf9336a9ada4db2c8189d13a21
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133287"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919674"
 ---
 # <a name="nvv4-series"></a>NVv4 系列 
 
@@ -27,7 +27,7 @@ NVv4 系列虚拟机由 [Amd Radeon INSTINCT MI25](https://www.amd.com/en/produc
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-加速网络：支持<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数/预期网络带宽 (MBps) |

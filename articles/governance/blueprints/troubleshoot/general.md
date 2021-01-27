@@ -1,14 +1,14 @@
 ---
 title: 排查常见错误
 description: 了解如何排查创建、分配和删除蓝图等问题，例如，策略违规和蓝图参数函数。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: a1689141f95aaac9183391af79edb0cabf5343b6
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 65cf8ef9a5dcba0165aad8522f91ff1eb2c963a8
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058278"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918838"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
 
@@ -18,9 +18,9 @@ ms.locfileid: "92058278"
 
 将蓝图分配到作用域是许多错误产生的原因。 分配失败时，蓝图会提供失败部署的详细信息。 此信息会指出存在的问题，以便可以修复问题并确保后续部署成功进行。
 
-1. 在左侧窗格中，选择“所有服务”****。 搜索并选择“蓝图”****。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 从左侧页面中选择 " **分配的蓝图** "，然后使用 "搜索" 框筛选蓝图分配，查找失败的分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项****。
+1. 从左侧页面中选择 " **分配的蓝图** "，然后使用 "搜索" 框筛选蓝图分配，查找失败的分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项。
 
 1. 选择状态为 " _失败_ " 的蓝图，或右键单击并选择 " **查看分配详细信息**"。
 
@@ -75,7 +75,7 @@ ms.locfileid: "92058278"
 
 #### <a name="resolution"></a>解决方法
 
-处于非终端状态的蓝图分配在_六小时_超时后会自动标记为 "**失败**"。 超时调整了蓝图分配的状态后，可以重试删除。
+处于非终端状态的蓝图分配在 _六小时_ 超时后会自动标记为 "**失败**"。 超时调整了蓝图分配的状态后，可以重试删除。
 
 ## <a name="next-steps"></a>后续步骤
 

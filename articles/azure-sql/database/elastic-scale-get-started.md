@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 423fd0f91de3e936e2920d57e5bc606bb86a2437
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786711"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919538"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -85,13 +85,15 @@ ms.locfileid: "92786711"
 
 1. 下载 [Elastic DB Tools for Azure SQL - Getting Started sample](https://github.com/Azure/elastic-db-tools)（Azure SQL 弹性数据库工具 - 入门示例）。 将示例解压缩到所选位置。
 
-2. 若要创建项目，请从 C# 目录打开 ElasticScaleStarterKit.sln 解决方案。
+2. 若要创建项目，请从 *弹性-db-master* 目录打开 *ElasticDatabaseTools* 解决方案。 
 
-3. 在示例项目的解决方案中打开 app.config 文件。 然后遵循该文件中的说明，添加服务器名称和登录信息（用户名和密码）。
+3. 将 *elasticscalestarterkit.sln* 项目设置为启动项目。
 
-4. 生成并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作从 NuGet 下载最新版本的弹性数据库客户端库。
+4. 在 *elasticscalestarterkit.sln* 项目中，打开 *App.config* 文件。 然后遵循该文件中的说明，添加服务器名称和登录信息（用户名和密码）。
 
-5. 若要详细了解客户端库功能，请试验各种选项。 请注意应用程序在控制台输出中执行的步骤，并随意浏览后台代码。
+5. 生成并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作从 NuGet 下载最新版本的弹性数据库客户端库。
+
+6. 若要详细了解客户端库功能，请试验各种选项。 请注意应用程序在控制台输出中执行的步骤，并随意浏览后台代码。
 
    ![进度][4]
 
@@ -102,19 +104,19 @@ ms.locfileid: "92786711"
 
 ## <a name="key-pieces-of-the-code-sample"></a>重要的代码示例片段
 
-* **管理分片和分片映射** ：该代码演示如何在“ShardManagementUtils.cs”文件中处理分片、范围和映射。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。  
+* **管理分片和分片映射**：该代码演示如何在“ShardManagementUtils.cs”文件中处理分片、范围和映射。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。  
 
-* **数据依赖型路由** ：“DataDependentRoutingSample.cs”文件演示了如何向正确的分片路由事务。 有关详细信息，请参阅[数据依赖型路由](https://go.microsoft.com/?linkid=9862596)。
+* **数据依赖型路由**：“DataDependentRoutingSample.cs”文件演示了如何向正确的分片路由事务。 有关详细信息，请参阅[数据依赖型路由](https://go.microsoft.com/?linkid=9862596)。
 
-* **跨多个分片进行查询** ：“MultiShardQuerySample.cs”文件演示了如何跨多个分片进行查询。 有关详细信息，请参阅[多分片查询](https://go.microsoft.com/?linkid=9862597)。
+* **跨多个分片进行查询**：“MultiShardQuerySample.cs”文件演示了如何跨多个分片进行查询。 有关详细信息，请参阅[多分片查询](https://go.microsoft.com/?linkid=9862597)。
 
-* **添加空分片** ：“CreateShardSample.cs”文件中的代码以迭代方式添加新的空分片。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。
+* **添加空分片**：“CreateShardSample.cs”文件中的代码以迭代方式添加新的空分片。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。
 
 ## <a name="other-elastic-scale-operations"></a>其他弹性缩放操作
 
-* **拆分现有分片** ：拆分分片的功能由拆分/合并工具提供。 有关详细信息，请参阅[在横向扩展的云数据库之间移动数据](elastic-scale-overview-split-and-merge.md)。
+* **拆分现有分片**：拆分分片的功能由拆分/合并工具提供。 有关详细信息，请参阅[在横向扩展的云数据库之间移动数据](elastic-scale-overview-split-and-merge.md)。
 
-* **合并现有分片** ：分片合并也是使用拆分/合并工具执行的。 有关详细信息，请参阅[在横向扩展的云数据库之间移动数据](elastic-scale-overview-split-and-merge.md)。
+* **合并现有分片**：分片合并也是使用拆分/合并工具执行的。 有关详细信息，请参阅[在横向扩展的云数据库之间移动数据](elastic-scale-overview-split-and-merge.md)。
 
 ## <a name="cost"></a>成本
 

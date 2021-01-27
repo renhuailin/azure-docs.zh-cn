@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2019
+ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 2465cf74dbf4fbf074aed8f8e4097a236e628425
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 11c5c77623fcc693210d5a42bf94c968e884fec3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660638"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920014"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>使用 Azure Sentinel 的有用资源
 
@@ -28,7 +28,7 @@ ms.locfileid: "94660638"
 
 本文列出了可帮助你获取有关使用 Azure Sentinel 的详细信息的资源。
 
-Azure 逻辑应用连接器： <https://docs.microsoft.com/connectors/>
+- **Azure 逻辑应用连接器**： <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>审核和报告
@@ -86,10 +86,25 @@ Azure Sentinel 的审核日志保留在 [Azure 活动日志](../azure-monitor/pl
 
 ## <a name="blogs-and-forums"></a>博客和论坛
 
-将你的问题发布到 Azure Sentinel 的 [TechCommunity 空间](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) 。
+我们非常乐意听取用户的意见！
 
-查看 [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 和 [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)的 Azure Sentinel 博客文章。
+- 将 **你的问题发布** 到 Azure Sentinel 的 [TechCommunity 空间](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)。 
+
+- 通过我们的 [用户语音](https://feedback.azure.com/forums/920458-azure-sentinel)计划 **发送有关改进的建议**。
+
+- **查看并注释** 我们的 Azure Sentinel 博客文章：
+
+    - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
+    - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
+
+有关 Azure 安全性和符合性的详细信息，请参阅 [Microsoft Azure 安全与合规性博客](https://techcommunity.microsoft.com/t5/microsoft-security-and/bg-p/MicrosoftSecurityandCompliance)。
 
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，你获得了在使用 Azure Sentinel 时非常有用的资源列表。 你会在 [Microsoft Azure 安全和合规性博客](/archive/blogs/azuresecurity/)上找到有关 Azure 安全性和符合性的其他信息。
+
+> [!div class="nextstepaction"]
+> [获得认证！](/learn/paths/security-ops-sentinel/)
+
+> [!div class="nextstepaction"]
+> [阅读客户用例故事](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Sentinel%20%22&ff=&p=0&so=story_publish_date%20desc)
+

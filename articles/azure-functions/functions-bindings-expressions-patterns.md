@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 161e3e7fbc5b343ee73142f0e968367c3cbfaa6b
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 7245b0c0fb1e96959ef5dca4992cf52a38accb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927407"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920284"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 绑定表达式模式
 
-[触发器和绑定](./functions-triggers-bindings.md)的最强大功能之一是 *绑定表达式* 。 在 *function.json* 文件、函数参数和代码中，可以使用表达式解析为各种源的值。
+[触发器和绑定](./functions-triggers-bindings.md)的最强大功能之一是 *绑定表达式*。 在 *function.json* 文件、函数参数和代码中，可以使用表达式解析为各种源的值。
 
 大多数表达式的标识方式是将其包装在大括号中。 例如，在队列触发器函数中，`{queueTrigger}` 解析为队列消息文本。 如果 Blob 输出绑定的 `path` 属性为 `container/{queueTrigger}`，并且函数由队列消息 `HelloWorld` 触发，则创建名为 `HelloWorld` 的 Blob。
 
@@ -164,6 +164,7 @@ public static void Run(
 这些元数据值可在 function.json 文件属性中访问。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中，可在 blob `path` 属性中使用 `queueTrigger` 元数据属性，如下面的示例中所示：
 
 ```json
+{
   "bindings": [
     {
       "name": "myQueueItem",
@@ -179,6 +180,7 @@ public static void Run(
       "connection": "MyStorageConnection"
     }
   ]
+}
 ```
 
 相应参考文章中会详细介绍每种触发器的元数据属性。 有关示例，请参阅[队列触发器元数据](functions-bindings-storage-queue-trigger.md#message-metadata)。 在门户“集成”选项卡的绑定配置区域下方的“文档”部分中，还提供了文档。  

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 01/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e64b0af455ab1f84653093b26654530ee3dfab
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 95fe70c774b933113c94125d227976e32a9e353f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232771"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919623"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用条款
 
@@ -26,11 +26,11 @@ Azure AD 使用条款策略提供了一种简单的方法，组织可以使用�
 
 ## <a name="overview-videos"></a>概述视频
 
-以下视频提供了使用条款策略的简要概述。
+以下视频概述了 ToU 策略。
 
 >[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
 
-有关其他视频，请参阅：
+有关更多视频，请参阅：
 - [如何在 Azure Active Directory 中部署使用条款策略](https://www.youtube.com/embed/N4vgqHO2tgY)
 - [如何在 Azure Active Directory 中推出使用条款策略](https://www.youtube.com/embed/t_hA4y9luCY)
 
@@ -52,7 +52,7 @@ Azure AD 使用条款策略具有以下功能：
 - 显示 "使用条款" 策略活动的日志以了解相容性和审核。
 - 使用当前在预览版)  ([Microsoft Graph api](/graph/api/resources/agreement?view=graph-rest-beta) 创建和管理使用条款策略。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用和配置 Azure AD 使用条款策略，你必须具备以下条件：
 
@@ -92,10 +92,10 @@ Azure AD 使用条款策略使用 PDF 格式来呈现内容。 此 PDF 文件可
 
 1. 使用 **过期开始时间** 和 **频率** 设置来指定使用策略过期的计划。 下表显示了几项示例设置的结果：
 
-   | 过期开始日期 | 频率 | 结果 |
+   | 过期开始日期 | 频率 | Result |
    | --- | --- | --- |
-   | 今天的日期  | 每月 | 如今，用户必须接受使用条款政策，然后每个月面向。 |
-   | 将来的日期  | 每月 | 如今，用户必须接受使用条款政策。 到达指定的将来日期时，同意状态将会过期，以后用户必须每个月接受使用条款。  |
+   | 今天的日期  | 每月一次 | 如今，用户必须接受使用条款政策，然后每个月面向。 |
+   | 将来的日期  | 每月一次 | 如今，用户必须接受使用条款政策。 到达指定的将来日期时，同意状态将会过期，以后用户必须每个月接受使用条款。  |
 
    例如，如果将过期开始日期设置为“1 月 1 日”，将频率设置为“每月”，则两个用户的过期计划如下：
 
@@ -117,7 +117,7 @@ Azure AD 使用条款策略使用 PDF 格式来呈现内容。 此 PDF 文件可
 
     ![用于选择策略模板的“条件访问”下拉列表](./media/terms-of-use/conditional-access-templates.png)
 
-   | 模板 | 说明 |
+   | 模板 | 描述 |
    | --- | --- |
    | **所有来宾对云应用的访问权限** | 将会针对所有来宾和所有云应用创建一个条件访问策略。 此策略会影响 Azure 门户。 创建此项后，可能需要注销并登录。 |
    | **所有用户对云应用的访问权限** | 将会针对所有用户和所有云应用创建条件访问策略。 此策略会影响 Azure 门户。 创建此项后，你将需要注销并登录。 |
@@ -183,7 +183,7 @@ Azure AD 使用条款策略使用 PDF 格式来呈现内容。 此 PDF 文件可
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>使用条款呈现给用户的外观
 
-创建并强制实施使用条款后，用户（处于范围内）将在登录时看到以下屏幕。
+创建并强制实施 ToU 策略后，用户（处于范围内）将在登录时看到以下屏幕。
 
 ![用户登录时显示的示例使用条款](./media/terms-of-use/user-tou.png)
 
@@ -191,7 +191,7 @@ Azure AD 使用条款策略使用 PDF 格式来呈现内容。 此 PDF 文件可
 
 ![使用缩放按钮查看使用条款](./media/terms-of-use/zoom-buttons.png)
 
-以下屏幕显示了在移动设备上查找使用条款策略的方式。
+以下屏幕显示了 ToU 策略在移动设备上的外观。
 
 ![用户在移动设备上登录时显示的示例使用条款](./media/terms-of-use/mobile-tou.png)
 
@@ -226,7 +226,7 @@ Azure AD 使用条款策略使用 PDF 格式来呈现内容。 此 PDF 文件可
     -  (预览) 你可以 **更新现有的使用条款** 文档
     - 可以将语言添加到现有 ToU
 
-   如果要更改其他设置（如 PDF 文档）要求用户在每个设备上同意，使同意在 reacceptance 之前过期，或条件性访问策略过期，则必须创建新的使用条款策略。
+   如果要更改其他设置（如 PDF 文档），要求用户在每个设备上同意，使同意过期，reacceptance 之前的持续时间或条件访问策略，则必须创建新的 ToU 策略。
 
     ![编辑显示不同语言选项 ](./media/terms-of-use/edit-terms-use.png)
 
@@ -249,7 +249,7 @@ Azure AD 使用条款策略使用 PDF 格式来呈现内容。 此 PDF 文件可
 7.  上传新 pdf 并决定面向后，请单击窗格底部的 "添加"。
 8.  现在，你将看到 "文档" 列下的最新版本。
 
-## <a name="view-previous-versions-of-a-terms-of-use"></a>查看使用条款的以前版本
+## <a name="view-previous-versions-of-a-tou"></a>查看 ToU 的早期版本
 
 1.  在 https://aka.ms/catou 登录到 Azure 并导航到“使用条款”。
 2.  选择要查看其版本历史记录的使用条款政策。
@@ -266,12 +266,12 @@ Azure AD 使用条款策略使用 PDF 格式来呈现内容。 此 PDF 文件可
 2.  若要查看当前是否接受了 ToU，请单击所需 ToU 的 " **接受** " 列下的编号。
 3.  默认情况下，下一页将显示接受 ToU 的每个用户的当前状态。
 4.  如果你想要查看以前的许可事件，你可以从 "**当前状态**" 下拉菜单中选择 "**全部**"。 现在，你可以在每个版本的详细信息中查看每个用户事件，以及发生了什么情况。
-5.  或者，您可以从 " **版本**  " 下拉选择特定的版本，以查看哪些用户已接受了该特定版本。
+5.  或者，您可以从 " **版本**  " 下拉端选择特定的版本，以查看谁接受了该特定版本。
 
 
-## <a name="add-a-terms-of-use-language"></a>添加使用条款语言
+## <a name="add-a-tou-language"></a>添加 ToU 语言
 
-以下过程介绍如何添加使用条款语言。
+下面的过程介绍如何添加 ToU 语言。
 
 1. 在 [https://aka.ms/catou](https://aka.ms/catou) 登录到 Azure 并导航到“使用条款”。
 1. 选择要编辑的使用条款策略。
@@ -282,7 +282,7 @@ Azure AD 使用条款策略使用 PDF 格式来呈现内容。 此 PDF 文件可
     ![选定的使用条款，显示了详细信息窗格中的“语言”选项卡](./media/terms-of-use/select-language.png)
 
 1. 单击“添加语言”。
-1. 单击“保存”
+1. 单击“保存” 
 
 1. 单击“添加”以添加该语言。
 
@@ -344,9 +344,13 @@ Azure AD 使用条款策略使用 PDF 格式来呈现内容。 此 PDF 文件可
 
    你应该不会再看到你的使用条款政策。
 
-## <a name="deleted-users-and-active-terms-of-use"></a>删除的用户和活动的使用条款
+## <a name="user-acceptance-record-deletion"></a>用户接受记录删除
 
-默认情况下，删除的用户会在 Azure AD 中保持“已删除”状态 30 天，在此期间，管理员可以根据需要还原这些用户。 30 天后，该用户将被永久删除。 此外，使用 Azure Active Directory 门户，全局管理员可以在达到该时间段之前，显式地[永久删除最近删除的用户](../fundamentals/active-directory-users-restore.md)。 一个用户已被永久删除，有关该用户的后续数据将从活动的使用条款策略中删除。 有关已删除用户的审核信息仍保留在审核日志中。
+删除用户验收记录：
+
+- 当管理员显式删除 ToU 时。 如果发生这种情况，所有与该特定 ToU 关联的验收记录也会被删除。
+- 当租户失去其 Azure Active Directory Premium 许可证时。
+- 如果删除了租户。
 
 ## <a name="policy-changes"></a>策略更改
 
@@ -409,7 +413,7 @@ Azure AD 使用条款策略使用 PDF 格式来呈现内容。 此 PDF 文件可
 答：是的，最终用户可以选择指向其他页面的超链接，但不支持链接到文档中的部分。 此外，在从 Azure AD MyApps/我的帐户门户进行访问时，使用中的超链接不起作用。
 
 **问：使用条款策略是否支持多种语言？**<br />
-答：可以。 目前有108种不同的语言，管理员可为单一使用条款策略配置这些语言。 管理员可以上传多个 PDF 文档，并使用相应的语言（最多 108 种）标记这些文档。 当最终用户登录时，我们会查看其浏览器语言首选项，并显示匹配的文档。 如果没有匹配项，我们将显示默认文档，即上传的第一个文档。
+A:是的。 目前有108种不同的语言，管理员可为单一使用条款策略配置这些语言。 管理员可以上传多个 PDF 文档，并使用相应的语言（最多 108 种）标记这些文档。 当最终用户登录时，我们会查看其浏览器语言首选项，并显示匹配的文档。 如果没有匹配项，我们将显示默认文档，即上传的第一个文档。
 
 **问：何时触发使用条款政策？**<br />
 答：在登录体验期间，将触发使用条款政策。

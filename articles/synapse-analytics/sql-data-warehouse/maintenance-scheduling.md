@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c5bc4400e99fb1c24e321e623aaee523b9c7383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1565d4f7792dca5242965d11c58faa90e2222d3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85210977"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920369"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>使用维护计划管理服务更新和维护
 
@@ -38,7 +38,7 @@ ms.locfileid: "85210977"
 我们会在所有维护事件之前提前 24 小时通知，DWC400c 和更低层例外。
 
 > [!NOTE]
-> 在我们需要部署时间关键型更新的情况下，提前通知时间可能会显著减少。
+> 在我们需要部署时间关键型更新的情况下，提前通知时间可能会显著减少。 这可能会在标识的维护时段之外发生，因为更新的关键本质。
 
 如果你提前收到了维护通知，但维护无法在通知中指定的时段进行，你会收到取消通知。 随即会在下一个计划的维护期间继续进行维护。
 

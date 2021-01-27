@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 1792535fab79ed20bdf77f96b4fc39f13b0c7bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2578b47d27ef062d83ba8621a49e9a8f439897c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015988"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919019"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>参考 - 选择通信协议
 
@@ -42,7 +42,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 
 在选择设备端通信协议时，请考虑以下几点：
 
-* **云到设备模式**。 HTTPS 没有用于实现服务器推送的有效方法。 因此，使用 HTTPS 时，设备会在 IoT 中心轮询从云到设备的消息。 此方法对于设备和 IoT 中心而言是低效的。 根据当前 HTTPS 准则，每台设备应每 25 分钟或更长时间轮询一次消息。 MQTT 和 AMQP 支持在收到云到设备的消息时进行服务器推送。 它们会启用从 IoT 中心到设备的直接消息推送。 如果传送延迟是考虑因素，最好使用 MQTT 或 AMQP 协议。 对于很少连接的设备，HTTPS 也适用。
+* **云到设备模式**。 HTTPS 没有用于实现服务器推送的有效方法。 因此，使用 HTTPS 时，设备会在 IoT 中心轮询从云到设备的消息。 此方法对于设备和 IoT 中心而言是低效的。 根据当前 HTTPS 准则，每台设备应每 25 分钟或更长时间轮询一次消息。 发出更多 HTTPS 接收会导致 IoT 中心限制请求。 MQTT 和 AMQP 支持在收到云到设备的消息时进行服务器推送。 它们会启用从 IoT 中心到设备的直接消息推送。 如果传送延迟是考虑因素，最好使用 MQTT 或 AMQP 协议。 对于很少连接的设备，HTTPS 也适用。
 
 * **现场网关**。 MQTT 和 HTTPS 仅支持每个 TLS 连接使用单个设备标识（设备 ID 加上凭据）。 因此，[现场网关方案](iot-hub-devguide-endpoints.md#field-gateways)不支持这些协议，这些方案要求在到 IoT 中心的单个上游连接或一个上游连接池中使用多个设备标识多路复用消息。 此类网关可以将一个支持每个连接使用多个设备标识的协议（例如 AMQP）用于其上游流量。
 

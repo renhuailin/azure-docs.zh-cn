@@ -3,12 +3,12 @@ title: 更改 Azure Service Fabric 群集设置
 description: 本文介绍可以自定义的结构设置和结构升级策略。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 34a63a86bc10a787ef077b9067c3fba5a9e4da25
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095264"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919776"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -141,7 +141,7 @@ ms.locfileid: "97095264"
 |IsEnabled|bool，默认值为 FALSE|静态|启用/禁用 DnsService。 默认已禁用 DnsService，需要设置此配置来启用它。 |
 |PartitionPrefix|string，默认值为“--”|静态|控制对分区服务的 DNS 查询中的分区前缀字符串值。 值： <ul><li>应符合 RFC，因为它将是 DNS 查询的一部分。</li><li>不能包含句点“.”，因为句点会干扰 DNS 后缀行为。</li><li>长度不能超过 5 个字符。</li><li>不能为空字符串。</li><li>如果重写 PartitionPrefix 设置，则必须重写 PartitionSuffix，反之亦然。</li></ul>有关详细信息，请参阅 [Service Fabric DNS 服务](service-fabric-dnsservice.md)。|
 |PartitionSuffix|string，默认值为“”|静态|控制对分区服务的 DNS 查询中的分区后缀字符串值。值： <ul><li>应符合 RFC，因为它将是 DNS 查询的一部分。</li><li>不能包含句点“.”，因为句点会干扰 DNS 后缀行为。</li><li>长度不能超过 5 个字符。</li><li>如果重写 PartitionPrefix 设置，则必须重写 PartitionSuffix，反之亦然。</li></ul>有关详细信息，请参阅 [Service Fabric DNS 服务](service-fabric-dnsservice.md)。 |
-|RetryTransientFabricErrors|Bool，默认值为 true|静态|此设置控制从 DnsService 调用 Service Fabric Api 时的重试功能。 启用后，如果发生暂时性错误，它将重试最多3次。|
+|RetryTransientFabricErrors|Bool，默认值为 true|静态|此设置控制从 DnsService 调用 Service Fabric API 时的重试功能。 启用后，如果发生暂时性错误，则最多重试 3 次。|
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
@@ -171,7 +171,7 @@ ms.locfileid: "97095264"
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |ActivationMaxFailureCount |Int，默认值为 10 |动态|这是系统在放弃前重试失败的激活的最大计数。 |
-|ActivationMaxRetryInterval |以秒为单位的时间，默认值为 300 |动态|指定以秒为单位的时间跨度。 激活的最大重试时间间隔。 每次连续失败后，重试时间间隔的计算结果为 Min（ActivationMaxRetryInterval；连续失败计数 * ActivationRetryBackoffInterval）（即取括号中的最小值）。 |
+|ActivationMaxRetryInterval |以秒为单位的时间，默认值为 300 |动态|指定以秒为单位的时间范围。 激活的最大重试时间间隔。 每次连续失败后，重试时间间隔的计算结果为 Min（ActivationMaxRetryInterval；连续失败计数 * ActivationRetryBackoffInterval）（即取括号中的最小值）。 |
 |ActivationRetryBackoffInterval |以秒为单位的时间，默认值为 5 |动态|指定以秒为单位的时间范围。 每次激活失败的回退时间间隔；每次连续激活失败后，系统将重试激活最多 MaxActivationFailureCount 次。 每次尝试的重试间隔是连续激活失败与激活退让间隔的积。 |
 |EnableRestartManagement |Bool，默认值为 false |动态|这会启用服务器重启。 |
 |EnableServiceFabricAutomaticUpdates |Bool，默认值为 false |动态|这会通过 Windows 更新启用 Fabric 自动更新。 |
@@ -390,7 +390,7 @@ ms.locfileid: "97095264"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|Enabled |Bool，默认值为 false |静态|ImageStoreService 的已启用标志。 默认值：false |
+|已启用 |Bool，默认值为 false |静态|ImageStoreService 的已启用标志。 默认值：false |
 |MinReplicaSetSize | Int，默认值为 3 |静态|ImageStoreService 的 MinReplicaSetSize。 |
 |PlacementConstraints | string，默认值为“” |静态| ImageStoreService 的 PlacementConstraints。 |
 |QuorumLossWaitDuration | 以秒为单位的时间，默认值为 MaxValue |静态| 指定以秒为单位的时间范围。 ImageStoreService 的 QuorumLossWaitDuration。 |
@@ -424,14 +424,14 @@ ms.locfileid: "97095264"
 |AzureStorageMaxConnections | Int，默认值为 5000 |动态|最大并发 Azure 存储连接数。 |
 |AzureStorageMaxWorkerThreads | Int，默认值为 25 |动态|最大并行工作线程数。 |
 |AzureStorageOperationTimeout | 以秒为单位的时间，默认值为 6000 |动态|指定以秒为单位的时间范围。 完成 xstore 操作的超时时间。 |
-|CleanupApplicationPackageOnProvisionSuccess|bool，默认值为 true |动态|成功预配时启用或禁用应用程序包的自动清理。
-|CleanupUnusedApplicationTypes|布尔值，默认为 FALSE |动态|如果启用，此配置允许自动取消注册未使用的应用程序类型版本，这会跳过最近三个未使用的版本，然后释放图像存储所占用的磁盘空间。 将在成功预配结束时对该特定应用类型触发自动清理；对于所有应用程序类型，自动清理也将每天定期运行一次。 要跳过的未使用的版本数量可通过参数“MaxUnusedAppTypeVersionsToKeep”进行配置。 <br/> *最佳做法是使用 `true` 。*
+|CleanupApplicationPackageOnProvisionSuccess|布尔值，默认为 true |动态|成功预配时启用或禁用应用程序包的自动清理。
+|CleanupUnusedApplicationTypes|布尔值，默认为 FALSE |动态|如果启用，此配置允许自动取消注册未使用的应用程序类型版本，这会跳过最近三个未使用的版本，然后释放图像存储所占用的磁盘空间。 将在成功预配结束时对该特定应用类型触发自动清理；对于所有应用程序类型，自动清理也将每天定期运行一次。 要跳过的未使用的版本数量可通过参数“MaxUnusedAppTypeVersionsToKeep”进行配置。 <br/> 最佳做法是使用 `true`。
 |DisableChecksumValidation | Bool，默认值为 false |静态| 通过此配置可在应用程序预配过程中启用或禁用校验和验证。 |
 |DisableServerSideCopy | Bool，默认值为 false |静态|此配置可以在应用程序预配过程中启用或禁用 ImageStore 上应用程序包的服务器端副本。 |
 |ImageCachingEnabled | Bool，默认值为 true |静态|通过此配置可启用或禁用缓存。 |
 |ImageStoreConnectionString |SecureString |静态|ImageStore 的根的连接字符串。 |
 |ImageStoreMinimumTransferBPS | Int，默认值为 1024 |动态|群集和 ImageStore 之间的最小传输速率。 此值用于确定访问外部 ImageStore 时的超时时间。 仅当群集和 ImageStore 之间的延迟较高时可更改此值，以允许群集获得更多的时间从外部 ImageStore 进行下载。 |
-|MaxUnusedAppTypeVersionsToKeep | Int，默认值为 3 |动态|此配置会定义要跳过清理操作的未使用的应用程序类型版本数。 仅在启用参数 CleanupUnusedApplicationTypes 后，此参数才适用。 <br/>*通常，最佳做法是使用默认 (`3`) 。小于1的值无效。*|
+|MaxUnusedAppTypeVersionsToKeep | Int，默认值为 3 |动态|此配置会定义要跳过清理操作的未使用的应用程序类型版本数。 仅在启用参数 CleanupUnusedApplicationTypes 后，此参数才适用。 <br/>一般的最佳做法是使用默认值 (`3`)。小于 1 的值无效。|
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
@@ -521,7 +521,7 @@ ms.locfileid: "97095264"
 |AutoDetectAvailableResources|bool，默认值为 TRUE|静态|此配置会触发对节点上可用资源（CPU 和内存）的自动检测，将此配置设置为 true 时，如果用户已指定错误的节点容量或者根本未定义它们，我们会读取实际容量并更正它们，将此配置设置为 false 时 - 我们会跟踪用户已指定错误的节点容量这一警告；但不会纠正它们；这意味着用户希望将容量指定为 > 节点实际拥有的容量，或者如果未指定容量；它会认为是不限的容量 |
 |BalancingDelayAfterNewNode | 以秒为单位的时间，默认值为 120 |动态|指定以秒为单位的时间范围。 添加新节点后，不在此时间段内启动平衡活动。 |
 |BalancingDelayAfterNodeDown | 以秒为单位的时间，默认值为 120 |动态|指定以秒为单位的时间范围。 发生节点关闭事件后，不在此时间段内启动平衡活动。 |
-|BlockNodeInUpgradeConstraintPriority | Int，默认值为 0 |动态|确定容量约束的优先级：0：硬;1：软;负值：忽略  |
+|BlockNodeInUpgradeConstraintPriority | Int，默认值为-1 |动态|确定容量约束的优先级：0：硬；1：软；负值：忽略  |
 |CapacityConstraintPriority | Int，默认值为 0 | 动态|确定容量约束的优先级：0：硬；1：软；负值：忽略。 |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int，默认值为 20 | 动态|定义在进行诊断并发出运行状况警告之前，删除 ResourceBalancer 发出的移动的连续次数。 负值：在此情况下没有发出任何警告。 |
 |ConstraintFixPartialDelayAfterNewNode | 以秒为单位的时间，默认值为 120 |动态| 指定以秒为单位的时间范围。 添加新节点后，不在此时间段内修复 FaultDomain 和 UpgradeDomain 约束冲突。 |
@@ -678,7 +678,7 @@ ms.locfileid: "97095264"
 |DisableFirewallRuleForPrivateProfile| bool，默认值为 TRUE |静态| 指示是否不应对专用配置文件启用防火墙规则 | 
 |DisableFirewallRuleForPublicProfile| bool，默认值为 TRUE | 静态|指示是否不应对公共配置文件启用防火墙规则 |
 | EnforceLinuxMinTlsVersion | bool，默认值为 FALSE | 静态 | 如果设置为 true，则仅支持 TLS 版本 1.2+。  如果为 false，则支持更早期的 TLS 版本。 仅适用于 Linux |
-| EnforcePrevalidationOnSecurityChanges | bool，默认值为 FALSE| 动态 | 用于控制检测到安全设置更改时群集升级行为的标志。 如果设置为“true”，群集升级将尝试确保与任何显示规则匹配的证书中至少有一个可传递相应的验证规则。 在向任何节点应用新设置之前都会执行预验证，但仅在启动升级时，在托管群集管理器服务的主要副本的节点上运行。 当前默认设置为“false”；自版本 7.1 开始，新的 Azure Service Fabric 群集的此设置将改为“true”。|
+| EnforcePrevalidationOnSecurityChanges | bool，默认值为 FALSE| 动态 | 用于控制检测到安全设置更改时群集升级行为的标志。 如果设置为“true”，则群集升级会尝试确保与任何表示规则匹配的证书中至少有一个可以通过相应的验证规则。 在将新设置应用于任何节点之前会执行预验证，但它仅在启动升级时承载群集管理器服务主要副本的节点上运行。 当前默认设置为“false”；自版本 7.1 开始，新的 Azure Service Fabric 群集的此设置将改为“true”。|
 |FabricHostSpn| string，默认值为“” |静态| FabricHost 的服务主体名称；结构作为单个域用户（gMSA/域用户帐户）运行并且 FabricHost 在计算机帐户下运行时。 该参数是 FabricHost 的 IPC 侦听器的 SPN；由于 FabricHost 在计算机帐户下运行，所以该参数默认留空 |
 |IgnoreCrlOfflineError|bool，默认值为 FALSE|动态|服务器端验证传入客户端证书时，是否忽略 CRL 脱机错误 |
 |IgnoreSvrCrlOfflineError|bool，默认值为 TRUE|动态|客户端验证传入服务器证书时，是否忽略 CRL 脱机错误；默认值为 true。 具有吊销的服务器证书的攻击需要破坏 DNS；比具有吊销的客户端证书的攻击更难。 |
@@ -687,7 +687,7 @@ ms.locfileid: "97095264"
 |SettingsX509StoreName| string，默认值为“MY”| 动态|结构用于保护配置的 X509 证书存储 |
 |UseClusterCertForIpcServerTlsSecurity|bool，默认值为 FALSE|静态|是否使用群集证书保护 IPC 服务器 TLS 传输单元 |
 |X509Folder|string，默认值为 /var/lib/waagent|静态|X509 证书和私钥所在的文件夹 |
-|TLS1_2_CipherList| string| 静态|对于 TLS1.2 及更低版本，如果设置为非空字符串，则替代受支持的密码列表。 请参阅“openssl-ciphers”文档来检索受支持的密码列表和列表格式。TLS1.2 的强密码列表的示例为：“ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256”。仅适用于 Linux。 |
+|TLS1_2_CipherList| 字符串| 静态|对于 TLS1.2 及更低版本，如果设置为非空字符串，则替代受支持的密码列表。 请参阅“openssl-ciphers”文档来检索受支持的密码列表和列表格式。TLS1.2 的强密码列表的示例为：“ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256”。仅适用于 Linux。 |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 
@@ -796,7 +796,7 @@ ms.locfileid: "97095264"
 |UpgradeApplication |string，默认值为“Admin” |动态| 用于启动或中断应用程序升级的安全性配置。 |
 |UpgradeComposeDeployment|string，默认值为“Admin”| 动态|升级组合部署 |
 |UpgradeFabric |string，默认值为“Admin” |动态| 用于启动群集升级的安全性配置。 |
-|上传 |string，默认值为“Admin” | 动态|用于映像存储客户端上传操作的安全性配置。 |
+|上载 |string，默认值为“Admin” | 动态|用于映像存储客户端上传操作的安全性配置。 |
 
 ## <a name="securityclientcertificateissuerstores"></a>Security/ClientCertificateIssuerStores
 

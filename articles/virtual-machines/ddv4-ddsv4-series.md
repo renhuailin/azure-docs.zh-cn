@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 6367a3c3e6a946068498c92456ba42cd3c7c4bdd
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 34aea2849289b8e33b4ec3d785363dc62cc70391
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042632"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919869"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 和 Ddsv4 系列
 
-Ddv4 和 Ddsv4 系列采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) 处理器，具有超线程配置，为大多数通用工作负载提供了更好的价值主张。 它具有 3.4 GHz、 [intel &reg; 迅迅技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、 [Intel &reg; Hyper-Threading 技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) 和 [intel &reg; 高级矢量扩展 512 (Intel &reg; AVX-512) ](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)的所有核心 Turbo 时钟速度。 它们还支持 [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)。 与 [Gen2 VM](./generation-2.md) 的 [Dv3/Dsv3](./dv3-dsv3-series.md) 大小相比，这些新的 VM 大小的本地存储将增加 50%，而且本地磁盘的读写 IOPS 更佳。
+Ddv4 和 Ddsv4 系列采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) 处理器，具有超线程配置，为大多数通用工作负载提供了更好的价值主张。 它的全核睿频时钟速度为 3.4 GHz，采用 [Intel&reg; 睿频加速技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和 [Intel&reg; 高级矢量扩展 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 它们还支持 [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)。 与 [Gen2 VM](./generation-2.md) 的 [Dv3/Dsv3](./dv3-dsv3-series.md) 大小相比，这些新的 VM 大小的本地存储将增加 50%，而且本地磁盘的读写 IOPS 更佳。
 
 D 系列用例包括企业级应用程序、关系数据库、内存中缓存和分析。
 
@@ -32,11 +32,12 @@ Ddv4 系列大小采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) �
 [高级存储](premium-storage-performance.md)：不支持<br>
 [高级存储缓存](premium-storage-performance.md)：不支持<br>
 [实时迁移](maintenance-and-updates.md)：支持<br>
-[内存保留更新](maintenance-and-updates.md)：受支持<br>
-[VM 生成支持](generation-2.md)：第1代和第2代<br>
+[内存保留更新](maintenance-and-updates.md)：支持<br>
+[VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 <br> 
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | <sup>**</sup> 缓存和临时存储的最大吞吐量： IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | <sup>**</sup> 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_D2d_v4 | 2 | 8 | 75 | 4 | 19000/120 | 2|1000 |
 | Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38500/242 | 2|2000 |
@@ -46,7 +47,7 @@ Ddv4 系列大小采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) �
 | Standard_D48d_v4 | 48 | 192 | 1800 | 32 | 462000/2904 | 8|24000 |
 | Standard_D64d_v4 | 64 | 256 | 2400 | 32 | 615000/3872 | 8|30000 |
 
-<sup>**</sup>可以通过使用[Gen2 vm](generation-2.md)来保证这些 IOPs 值
+<sup>**</sup>这些 IOP 值可以通过使用 [Gen2 VM](generation-2.md) 来保证
 
 ## <a name="ddsv4-series"></a>Ddsv4 系列
 
@@ -58,14 +59,15 @@ Ddsv4 系列采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) 处理
  >Ddsv4 大小的定价和计费标准与 Ddv4 系列相同。
 
 [ACU](acu.md)：195-210<br>
-[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
 [实时迁移](maintenance-and-updates.md)：支持<br>
-[内存保留更新](maintenance-and-updates.md)：受支持<br>
-[VM 生成支持](generation-2.md)：第1代和第2代<br>
+[内存保留更新](maintenance-and-updates.md)：支持<br>
+[VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 <br> 
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | <sup>**</sup> 缓存和临时存储的最大吞吐量： IOPS/MBps (GiB 中的缓存大小)  | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | <sup>**</sup> 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|---|
 | Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19000/120(50) | 3200/48 | 2|1000 |
 | Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38500/242(100) | 6400/96 | 2|2000 |
@@ -75,7 +77,7 @@ Ddsv4 系列采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) 处理
 | Standard_D48ds_v4 | 48 | 192 | 1800 | 32 | 462000/2904(1200) | 76800/1152 | 8|24000 |
 | Standard_D64ds_v4 | 64 | 256 | 2400 | 32 | 615000/3872(1600) | 80000/1200 | 8|30000 |
 
-<sup>**</sup>可以通过使用[Gen2 vm](generation-2.md)来保证这些 IOPs 值
+<sup>**</sup>这些 IOP 值可以通过使用 [Gen2 VM](generation-2.md) 来保证
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

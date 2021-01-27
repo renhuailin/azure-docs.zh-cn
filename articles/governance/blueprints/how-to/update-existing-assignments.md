@@ -1,14 +1,14 @@
 ---
 title: 从门户更新现有分配
 description: 了解在 Azure 蓝图中通过门户更新现有蓝图分配的机制。
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: ddaac8110885d817bc96745965c1af7e522b1919
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c383ebedaf83b3a52062c91f98b816c3baf6618e
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007182"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919387"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
 
@@ -20,7 +20,7 @@ ms.locfileid: "96007182"
 
 ## <a name="updating-assignments"></a>更新分配
 
-1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
 1. 从左侧页面选择“分配的蓝图”。
 

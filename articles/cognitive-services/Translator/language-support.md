@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: a218888a094c30b7672fd22c255f6a352422b878
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 935a9e92de88c2519dc1a1042315d204e8f60099
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896844"
+ms.locfileid: "98919912"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文本和语音翻译的语言和区域支持
 
@@ -68,6 +68,7 @@ ms.locfileid: "98896844"
 | 匈牙利语 | `hu` |
 | 冰岛语 | `is` |
 | 印度尼西亚语 | `id` |
+| 因纽特语 | `iu` |
 | 爱尔兰语 | `ga` |
 | 意大利语 | `it` |
 | 日语 | `ja` |
@@ -332,7 +333,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 意大利语      | `it`          |
 | 日语      | `ja`          |
 |卡纳达语|`kn`|
-| 韩语      | `ko`          |
+| 朝鲜语      | `ko`          |
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
 | 马达加斯加语| `mg`    |

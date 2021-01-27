@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 1cbd4c92ec4c124cfd384f45a4cd6f47fdc60be6
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 3821ef790728117df52bf534d75729347a0d8c9f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180160"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919895"
 ---
 # <a name="dcsv2-series"></a>DCsv2 系列
 
@@ -26,6 +26,7 @@ DCsv2 系列可以在公有云中处理数据和代码时帮助保护数据和�
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 生成支持](generation-2.md)：第2代<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 
 *Standard_DC8_v2 除外
 

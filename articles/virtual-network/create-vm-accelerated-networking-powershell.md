@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: b3728a2b67529bab0900d42b3e39140d9329bc83
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: b0ebb75530858a589c3166e21261e2f737fff50d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223629"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919963"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>使用 Azure PowerShell 创建具有加速网络的 Windows VM
 
@@ -61,11 +61,9 @@ ms.locfileid: "98223629"
 
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
 
-大多数常规用途实例以及具有两个或更多虚拟 CPU (vCPU) 的计算优化实例都支持加速网络。  这些受支持的系列包括：Dv2/DSv2 和 F/Fs。
+大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。 在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 
 
-在支持超线程的实例上，具有四个或更多个 vCPU 的 VM 实例支持加速网络。 支持的系列包括： D/Dsv3、D/Dsv4、Da/Dasv4、E/Esv3、Ea/Easv4、Fsv2、Lsv2、Ms/Mms 和 Ms/Mmsv2。
-
-有关 VM 实例的详细信息，请参阅 [Azure 中的 Windows 虚拟机大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+在单个 [虚拟机大小](../virtual-machines/sizes.md) 文档中可以找到对加速网络的支持。 
 
 ### <a name="custom-images"></a>自定义映像
 

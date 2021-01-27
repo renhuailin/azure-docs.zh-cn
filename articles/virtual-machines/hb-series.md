@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: f3fbc1ad3f9e7f3f3c9d2667ae9c3f566325aa51
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 86841910e7fee1cebc2f081a7a9f2159c689437b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931693"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919827"
 ---
 # <a name="hb-series"></a>HB 系列
 
@@ -22,11 +22,12 @@ HB-ACCT-WC 系列 Vm 针对内存带宽驱动的应用程序进行了优化，�
 HB-ACCT-WC 系列 Vm 功能 100 Gb/秒 Mellanox EDR。 这些 Vm 连接在一个非阻止 fat 树中，用于实现优化和一致的 RDMA 性能。 这些 Vm 支持自适应路由，而动态连接传输 (DCT，) 的附加到标准 RC 和 UD 传输。 这些功能增强了应用程序的性能、可伸缩性和一致性，并且强烈建议使用这些功能。
 
 [ACU](acu.md)：199-216<br>
-[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
-[VM 生成支持](generation-2.md)：第1代和第2代<br>
+[VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 <br>
 
 | 大小 | vCPU | 处理器 | 内存 (GiB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz)  | 所有核心频率 (GHz，峰值)  | 单核频率 (GHz，峰值)  | RDMA 性能 (Gb/s)  | MPI 支持 | 临时存储 (GiB) | 最大数据磁盘数 | 最大以太网 Vnic |

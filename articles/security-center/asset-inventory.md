@@ -8,14 +8,14 @@ ms.author: memildin
 ms.date: 12/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: d5820af1efd91efd79fb2a860d6aad8d2eeed80d
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 5b8d167992e57cd0fae35c57212ea700cd677afa
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740872"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920420"
 ---
-# <a name="explore-and-manage-your-resources-with-asset-inventory"></a>利用资产清单探索和管理资源
+# <a name="explore-and-manage-your-resources-with-asset-inventory"></a>使用资产清单浏览和管理资源
 
 Azure 安全中心的资产清单页提供了一个页面，用于查看已连接到安全中心的资源的安全状况。 
 
@@ -40,7 +40,7 @@ Azure 安全中心的资产清单页提供了一个页面，用于查看已连�
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式发布 (GA)|
+|发布状态：|正式发布版 (GA)|
 |定价：|免费|
 |所需角色和权限：|所有用户|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
@@ -63,7 +63,7 @@ Azure 安全中心的资产清单页提供了一个页面，用于查看已连�
 
     应用筛选器后，摘要值就会更新为与查询结果相关的值。 
 
-- 导出选项 - 库存提供了将所选筛选器选项的结果导出到 CSV 文件的选项。 此外，还可以将查询本身导出到 Azure 资源 Graph 资源管理器，以便进一步优化、保存或修改 Kusto 查询语言 (KQL) 查询。
+- 导出选项 - 库存提供了将所选筛选器选项的结果导出到 CSV 文件的选项。 此外，还可以将查询本身导出到 Azure Resource Graph 资源管理器，以进一步优化、保存或修改 Kusto 查询语言 (KQL) 查询。
 
     :::image type="content" source="./media/asset-inventory/inventory-export-options.png" alt-text="库存的导出选项":::
 
@@ -123,7 +123,7 @@ ARG 用于提供高效资源探索，并具有大规模查询的功能。
 
 1. 若要进一步检查查询结果，请选择你感兴趣的资源。
 
-1. 若要在 Resource Graph 资源管理器中以查询形式查看当前所选筛选选项，请选择 " **打开查询**"。
+1. 若要在 Resource Graph Explorer 中以查询的形式查看当前选定的筛选器选项，请选择“打开查询”。
 
     ![ARG 中的库存查询](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 656113df50936acf6f9a6b7e9cc8cb01a8aec2a8
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 8ba3311a67098ac04cc62161935b067e465fed57
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931744"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920131"
 ---
 # <a name="h-series"></a>H 系列
 
@@ -24,7 +24,8 @@ H 系列 Vm 针对按高 CPU 频率驱动的应用程序和每个核心要求提
 [高级存储缓存](premium-storage-performance.md)：不支持<br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
-[VM 生成支持](generation-2.md)：第1代<br>
+[VM 代系支持](generation-2.md)：第 1 代<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：不支持<br>
 <br>
 
 | 大小 | vCPU | 处理器 | 内存 (GiB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz)  | 所有核心频率 (GHz，峰值)  | 单核频率 (GHz，峰值)  | RDMA 性能 (Gb/s)  | MPI 支持 | 临时存储 (GiB) | 最大数据磁盘数 | 磁盘最大吞吐量：IOPS | 最大以太网 Vnic |

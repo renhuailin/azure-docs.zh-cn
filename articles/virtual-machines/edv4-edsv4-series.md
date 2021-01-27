@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: d21c75218fdd43ffcf977a1d70bc325ce5154919
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 53b4b09a95d99bc0fb84f495d1105653f61010c1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96606933"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920352"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 和 Edsv4 系列
 
@@ -30,6 +30,7 @@ Edv4 系列尺寸在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理�
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | <sup>**</sup> 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
@@ -56,6 +57,7 @@ Edsv4 系列尺寸在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | <sup>**</sup> 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |

@@ -4,12 +4,12 @@ description: 在注册表中设置专用的计算池 (代理池) ，以运行 Az
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 94956af14aad2b62e6455f443329bcd3232095c0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: eeb9a71854f52da5c1a9f4befae93c377ad67b05
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844908"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920301"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>在专用代理池上运行 ACR 任务
 
@@ -35,7 +35,7 @@ ms.locfileid: "94844908"
 - 对于每个注册表，默认的 total vCPU (核心) 配额对于所有标准代理池均为16，对于独立代理池为0。 为其他分配打开 [支持请求][open-support-ticket] 。
 - 当前无法取消代理池上运行的任务。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 若要使用本文中 Azure CLI 的步骤，需要 Azure CLI 版本2.3.1 或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。 或是在 [Azure Cloud Shell](../cloud-shell/quickstart.md) 中运行。
 * 如果还没有容器注册表，请在预览区域) [创建一个][create-reg-cli] (高级层。
@@ -139,7 +139,7 @@ az acr build \
     --agent-pool myagentpool \
     --image myimage:mytag \
     --file Dockerfile \
-    https://github.com/Azure-Samples/acr-build-helloworld-node.git
+    https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
 ```
 
 ### <a name="automatically-triggered-task"></a>自动触发的任务
@@ -153,7 +153,7 @@ az acr task create \
     --image myimage:mytag \
     --schedule "0 21 * * *" \
     --file Dockerfile \
-    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git \
+    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git#main \
     --commit-trigger-enabled false
 ```
 
