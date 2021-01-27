@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a0f17df13b5b101aebf585b7f1f3fb2a5b48006
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 992115a65ec015ca04990135975e0d4020764184
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746047"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873767"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -48,7 +48,7 @@ Azure for SAP HANA 的独特之处在于，它是一款能让 Azure 脱颖而出
 - 第三方 HA 帧是否适用于 Windows 和 Pacemaker 以外的支持？ 查看[SAP 支持说明](https://launchpad.support.sap.com/#/notes/1928533)的底部部分 #1928533
 - 哪种 Azure 存储最适合我的方案？ 读取 [SAP 工作负荷的 Azure 存储类型](./planning-guide-storage.md)
 - SAP 支持的 Oracle Enterprise Linux 中的 Red Hat 内核？ 阅读 SAP [sap 支持说明 #1565179](https://launchpad.support.sap.com/#/notes/1565179)
-- 为什么 Azure [Da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [Ea (s) ](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) VM 家族未经过 SAP HANA 认证？ Azure Das/Eas VM 系列基于 AMD 处理器驱动的硬件。 SAP HANA 不支持 AMD 处理器，甚至不适用于虚拟化方案
+- 为什么 Azure [Da (s) v4](../../dav4-dasv4-series.md) / [Ea (s) ](../../eav4-easv4-series.md) VM 家族未经过 SAP HANA 认证？ Azure Das/Eas VM 系列基于 AMD 处理器驱动的硬件。 SAP HANA 不支持 AMD 处理器，甚至不适用于虚拟化方案
 - 为什么仍然会收到消息： "未设置 RDTSCP 指令的 cpu 标志或 constant_tsc 或 nonstop_tsc 的 cpu 标志，current_clocksource 或者未使用 SAP HANA 对其进行正确配置，并且未使用正确配置 available_clocksource，尽管我运行的是最新的 Linux 内核。 有关答案，请查看 [SAP 支持说明 #2791572](https://launchpad.support.sap.com/#/notes/2791572)
 - 在哪里可以找到用于在 Azure 上部署 SAP Fiori 的体系结构？ 查看[Azure 上的博客 SAP：应用程序网关 Web 应用程序防火墙 (WAF) V2 安装程序用于面向 Internet 的 SAP Fiori 应用](https://blogs.sap.com/2020/12/03/sap-on-azure-application-gateway-web-application-firewall-waf-v2-setup-for-internet-facing-sap-fiori-apps/)程序 
 
@@ -84,14 +84,14 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 
 ## <a name="change-log"></a>更改日志
 
-- 01/23/2021：引入了 HANA 数据卷分区功能，使其能够在不同的 Azure 磁盘或 NFS 共享上对 HANA 数据文件进行条带 i/o 操作，而无需使用磁盘卷管理器 SAP HANA azure NetApp 文件上的 [azure 虚拟机存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 和 [NFS v2.0 文件以供 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
-- 01/18/2021：为 azure 虚拟机中的 Oracle Azure net Apps 文件添加了支持 [oracle DBMS FOR SAP 工作负荷的 oracle DBMS 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle) ，并调整了 [azure NetApp 文件中用于 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+- 01/23/2021：引入了 HANA 数据卷分区功能，使其能够在不同的 Azure 磁盘或 NFS 共享上对 HANA 数据文件进行条带 i/o 操作，而无需使用磁盘卷管理器 SAP HANA azure NetApp 文件上的 [azure 虚拟机存储配置](./hana-vm-operations-storage.md) 和 [NFS v2.0 文件以供 SAP HANA](./hana-vm-operations-netapp.md)
+- 01/18/2021：为 azure 虚拟机中的 Oracle Azure net Apps 文件添加了支持 [oracle DBMS FOR SAP 工作负荷的 oracle DBMS 部署](./dbms_guide_oracle.md) ，并调整了 [azure NetApp 文件中用于 SAP HANA](./hana-vm-operations-netapp.md)
 - 01/11/2021：在 rhel 上，azure Vm 上的 sap NW 的严重变化较小， [适用于 sap 应用程序](./high-availability-guide-rhel.md)的高可用性，在 rhel 上，azure vm 上的 sap [nw 高可用性](./high-availability-guide-rhel-netapp-files.md) ，适用于 [azure 上的](./high-availability-guide-rhel-multi-sid.md) sap nw 的和和 ha
 - 01/05/2021：在 [Azure vm 上使用和的备用节点 SAP HANA 扩展](./sap-hana-scale-out-standby-netapp-files-suse.md) ，并在 [和 on RHEL 上使用备用节点在 azure](./sap-hana-scale-out-standby-netapp-files-rhel.md)vm 上向外扩展，SAP HANA 并修改推荐的配置以允许 SAP 主机代理管理本地端口范围  
-- 01/04/2021：将 SAP HANA 的新 Azure 区域添加到 [azure 上的 azure (大型实例上) ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
-- 12/29/2020：[通过 Azure 可用性区域为 SAP 工作负荷配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)中的特定 Azure 区域添加体系结构建议
+- 01/04/2021：将 SAP HANA 的新 Azure 区域添加到 [azure 上的 azure (大型实例上) ](./hana-overview-architecture.md)
+- 12/29/2020：[通过 Azure 可用性区域为 SAP 工作负荷配置](./sap-ha-availability-zones.md)中的特定 Azure 区域添加体系结构建议
 - 12/21/2020：将新证书添加到[可用 sku](./hana-available-skus.md)中的 HANA 大型实例的 sku
-- 12/12/2020：添加了指向 SAP 的指针备注阐明 SAP 的 Oracle Enterprise Linux 支持的详细信息 [Azure 部署支持的 sap 软件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support)
+- 12/12/2020：添加了指向 SAP 的指针备注阐明 SAP 的 Oracle Enterprise Linux 支持的详细信息 [Azure 部署支持的 sap 软件](./sap-supported-product-on-azure.md#oracle-dbms-support)
 - 11/26/2020：将[SAP 工作负荷的](./planning-guide-storage.md) [azure 虚拟机存储配置](./hana-vm-operations-storage.md)和 azure 存储类型 SAP HANA 改编为更改了单一[VM sla](https://azure.microsoft.com/support/legal/sla/virtual-machines)
 - 11/05/2020：更改[Azure 虚拟机存储配置](./hana-vm-operations-storage.md)中有关 HANA 支持的文件系统类型的新 SAP 说明 SAP HANA 的更改链接 
 - 10/26/2020：更改 Azure 高级存储配置的某些表，以明确预配与突发吞吐量 [SAP HANA azure 虚拟机存储配置](./hana-vm-operations-storage.md)

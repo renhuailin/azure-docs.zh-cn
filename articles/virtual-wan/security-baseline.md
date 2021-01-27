@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0f124c0b4af69338ad10f7247a4260b4a348beb5
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a0acbe84a98bc63e5806d25241811c0a7591b897
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131196"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872615"
 ---
 # <a name="azure-security-baseline-for-virtual-wan"></a>适用于虚拟 WAN 的 Azure 安全基线
 
@@ -22,7 +22,7 @@ ms.locfileid: "98131196"
 
 ## <a name="network-security"></a>网络安全
 
-[有关详细信息，请参阅 *Azure 安全基线：* 网络安全性](/azure/security/benchmarks/security-controls-v2-network-security)。
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全性](../security/benchmarks/security-controls-v2-network-security.md)。
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1：实现内部流量的安全性
 
@@ -62,9 +62,9 @@ ms.locfileid: "98131196"
 
 选择 Azure 提供的 DDoS 防护，保护 Azure 虚拟网络上的资产免受攻击。 使用 Azure 安全中心来检测网络相关资源的配置错误风险。
 
-- [Azure 防火墙文档](/azure/firewall)
+- [Azure 防火墙文档](../firewall/index.yml)
 
-- [使用 Azure 门户管理 Azure DDoS 防护标准](/azure/virtual-network/manage-ddos-protection) 
+- [使用 Azure 门户管理 Azure DDoS 防护标准](../ddos-protection/manage-ddos-protection.md) 
 
 - [Azure 安全中心建议](../security-center/recommendations-reference.md#recs-networking)
 
@@ -88,9 +88,9 @@ ms.locfileid: "98131196"
 
 - [了解并使用服务标记](../virtual-network/service-tags-overview.md)
 
-- [了解并使用应用程序安全组](/azure/virtual-network/security-overview#application-security-groups)
+- [了解并使用应用程序安全组](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
-- [Azure 防火墙文档](/azure/firewall/)
+- [Azure 防火墙文档](../firewall/index.yml)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -100,9 +100,9 @@ ms.locfileid: "98131196"
 
 **指导**：通过 Azure 防火墙向虚拟 WAN 提供安全 DNS 功能。 配置 Azure 防火墙，使其充当 DNS 代理，作为从客户端虚拟机到 DNS 服务器的 DNS 请求的中介。 对于自定义 DNS 服务器配置，请启用 DNS 代理以避免 DNS 解析不匹配，并在网络规则中启用完全限定的域名筛选。 
 
-- [Azure 防火墙文档](/azure/firewall/)
+- [Azure 防火墙文档](../firewall/index.yml)
 
-- [Azure 防火墙 DNS 设置](/azure/firewall/dns-settings)
+- [Azure 防火墙 DNS 设置](../firewall/dns-settings.md)
 
 - [使用 Azure 防火墙作为专用链接的 DNS 转发器](https://github.com/adstuart/azure-privatelink-dns-azurefirewall)
 
@@ -112,7 +112,7 @@ ms.locfileid: "98131196"
 
 ## <a name="identity-management"></a>标识管理
 
-有关详细信息，请参阅 [Azure 安全基准：标识管理](/azure/security/benchmarks/security-controls-v2-identity-management)。
+有关详细信息，请参阅 [Azure 安全基准：标识管理](../security/benchmarks/security-controls-v2-identity-management.md)。
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
@@ -189,7 +189,7 @@ Azure AD 建议通过以下方案实现强身份验证控件：
 
 ## <a name="privileged-access"></a>特权访问
 
-有关详细信息，请参阅 [Azure 安全基准：特权访问](/azure/security/benchmarks/security-controls-v2-privileged-access)。
+有关详细信息，请参阅 [Azure 安全基准：特权访问](../security/benchmarks/security-controls-v2-privileged-access.md)。
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制对关键业务型系统的管理访问权限
 
@@ -211,7 +211,7 @@ Azure AD 建议通过以下方案实现强身份验证控件：
 
 ## <a name="data-protection"></a>数据保护
 
-[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](/azure/security/benchmarks/security-controls-v2-data-protection)。
+[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](../security/benchmarks/security-controls-v2-data-protection.md)。
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4：加密传输中的敏感信息
 
@@ -229,7 +229,7 @@ Azure AD 建议通过以下方案实现强身份验证控件：
 
 ## <a name="asset-management"></a>资产管理
 
-有关详细信息，请参阅 [Azure 安全基准：资产管理](/azure/security/benchmarks/security-controls-v2-asset-management)。
+有关详细信息，请参阅 [Azure 安全基准：资产管理](../security/benchmarks/security-controls-v2-asset-management.md)。
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1：确保安全团队可以了解与资产相关的风险
 
@@ -253,7 +253,7 @@ Azure AD 建议通过以下方案实现强身份验证控件：
 
 **指导**：将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。 Azure 虚拟 WAN 还支持基于 Azure 资源管理器的资源部署，可以通过它们导出资产模板。 
 
-- [资源命名和标记决策指南](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [资源命名和标记决策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 - [Azure 安全中心资产库存管理](../security-center/asset-inventory.md)
 
@@ -284,7 +284,7 @@ Azure AD 建议通过以下方案实现强身份验证控件：
 
 ## <a name="logging-and-threat-detection"></a>日志记录和威胁检测
 
-有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)。
+有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](../security/benchmarks/security-controls-v2-logging-threat-detection.md)。
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：为 Azure 资源启用威胁检测
 
@@ -337,7 +337,7 @@ Azure AD 建议通过以下方案实现强身份验证控件：
 
 - [虚拟 WAN 日志和指标](logs-metrics.md)
 
-- [Azure 防火墙日志和指标](/azure/firewall/logs-and-metrics)
+- [Azure 防火墙日志和指标](../firewall/logs-and-metrics.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -368,11 +368,11 @@ Azure AD 建议通过以下方案实现强身份验证控件：
 
 - [虚拟 WAN 日志和指标](logs-metrics.md)
 
-- [Azure 防火墙日志和指标](/azure/firewall/logs-and-metrics)
+- [Azure 防火墙日志和指标](../firewall/logs-and-metrics.md)
 
 Azure 虚拟 WAN 安全性通过 Azure 防火墙实现。 
 
-- [Azure 防火墙文档](/azure/firewall/overview)
+- [Azure 防火墙文档](../firewall/overview.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -394,7 +394,7 @@ Azure 虚拟 WAN 安全性通过 Azure 防火墙实现。
 
 ## <a name="incident-response"></a>事件响应
 
-[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](/azure/security/benchmarks/security-controls-v2-incident-response)。
+[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](../security/benchmarks/security-controls-v2-incident-response.md)。
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1：准备 - 更新 Azure 的事件响应流程
 
@@ -476,7 +476,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
-- [使用标记整理 Azure 资源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -498,7 +498,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ## <a name="posture-and-vulnerability-management"></a>安全状况和漏洞管理
 
-有关详细信息，请参阅 [Azure 安全基准：安全状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。
+有关详细信息，请参阅 [Azure 安全基准：安全状况和漏洞管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)。
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8：执行定期攻击模拟
 
@@ -517,7 +517,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ## <a name="endpoint-security"></a>终结点安全性
 
-*有关详细信息，请参阅 [Azure 安全基线：终结点安全性](/azure/security/benchmarks/security-controls-v2-endpoint-security)。*
+*有关详细信息，请参阅 [Azure 安全基线：终结点安全性](../security/benchmarks/security-controls-v2-endpoint-security.md)。*
 
 ### <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1：使用终结点检测和响应 (EDR)
 
@@ -535,7 +535,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ## <a name="governance-and-strategy"></a>治理和策略
 
-有关详细信息，请参阅 [Azure 安全基准：治理和策略](/azure/security/benchmarks/security-controls-v2-governance-strategy)。
+有关详细信息，请参阅 [Azure 安全基准：治理和策略](../security/benchmarks/security-controls-v2-governance-strategy.md)。
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定义资产管理和数据保护策略 
 
@@ -560,15 +560,15 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 -   合适的加密标准
 
 有关详细信息，请参阅以下资源：
-- [Azure 安全体系结构建议 - 存储、数据和加密](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Azure 安全体系结构建议 - 存储、数据和加密](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Azure 安全基础知识 - Azure 数据安全、加密和存储](../security/fundamentals/encryption-overview.md)
 
-- [云采用框架 - Azure 数据安全和加密最佳做法](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [云采用框架 - Azure 数据安全和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure 安全基准 - 资产管理](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure 安全基准 - 资产管理](../security/benchmarks/security-controls-v2-asset-management.md)
 
-- [Azure 安全基准 - 数据保护](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure 安全基准 - 数据保护](../security/benchmarks/security-controls-v2-data-protection.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -596,7 +596,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 **指导**：持续衡量并缓解你的个人资产及其托管环境的风险。 确定高价值资产和暴露程度高的受攻击面（例如已发布的应用程序、网络入口和出口点、用户和管理员终结点等）的优先级。
 
-- [Azure 安全基准 - 状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure 安全基准 - 状况和漏洞管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -637,7 +637,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 有关详细信息，请参阅以下资源：
 - [Azure 安全最佳做法 11 - 体系结构。单一的统一安全策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure 安全基准 - 网络安全](/azure/security/benchmarks/security-controls-v2-network-security)
+- [Azure 安全基准 - 网络安全](../security/benchmarks/security-controls-v2-network-security.md)
 
 - [Azure 网络安全概述](../security/fundamentals/network-overview.md)
 
@@ -665,9 +665,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准 - 标识管理](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure 安全基准 - 标识管理](../security/benchmarks/security-controls-v2-identity-management.md)
 
-- [Azure 安全基准 - 特权访问](/azure/security/benchmarks//security-controls-v2-privileged-access)
+- [Azure 安全基准 - 特权访问](../security/benchmarks//security-controls-v2-privileged-access.md)
 
 - [Azure 安全最佳做法 11 - 体系结构。单一的统一安全策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -699,9 +699,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准 - 日志记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure 安全基准 - 日志记录和威胁检测](../security/benchmarks/security-controls-v2-logging-threat-detection.md)
 
-- [Azure 安全基准 - 事件响应](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure 安全基准 - 事件响应](../security/benchmarks/security-controls-v2-incident-response.md)
 
 - [Azure 安全最佳做法 4 - 流程。更新云的事件响应流程](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
@@ -715,5 +715,5 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅 [Azure 安全基准 V2 概述](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 参阅 [Azure 安全基准 V2 概述](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

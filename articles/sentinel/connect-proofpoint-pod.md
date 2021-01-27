@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 0e256f2fe4b8d4275e331e0fe1fadd67e1d96655
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: bdc9cbf942b88af93befa34f73eb3a90469cfcef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567880"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873495"
 ---
 # <a name="connect-your-proofpoint-on-demand-email-security-pod-solution-to-azure-sentinel"></a>将 Proofpoint on demand 点播电子邮件安全 (POD) 解决方案连接到 Azure Sentinel
 
@@ -37,7 +37,7 @@ ms.locfileid: "98567880"
 
 - 您必须对工作区的共享密钥具有读取权限。 [了解有关工作区密钥的详细信息](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)。
 
-- 您必须具有对 Azure Functions 的 "读取" 和 "写入" 权限才能创建 Function App。 [详细了解 Azure Functions](/azure/azure-functions/)。
+- 您必须具有对 Azure Functions 的 "读取" 和 "写入" 权限才能创建 Function App。 [详细了解 Azure Functions](../azure-functions/index.yml)。
 
 - 你必须具有以下 Websocket API 凭据： ProofpointClusterID、ProofpointToken。 [详细了解 WEBSOCKET API](https://proofpointcommunities.force.com/community/s/article/Proofpoint-on-Demand-Pod-Log-API)。
 

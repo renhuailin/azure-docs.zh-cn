@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: eea7fb073cdf99ee1f4257f6824375a6502a4fad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bffa7894f7603f95c4840019be5e5670797881df
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913617"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873240"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 满足大数据需求
 
@@ -142,4 +142,4 @@ Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间
 |Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](../../data-factory/copy-activity-overview.md) |
 |Apache DistCp | [使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据](./data-lake-storage-use-distcp.md) |
 |Azure 存储资源管理器|[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-explorer.md)|
-|AzCopy 工具|[使用 AzCopy 和 Blob 存储传输数据](../common/storage-use-azcopy-blobs.md)|
+|AzCopy 工具|[使用 AzCopy 和 Blob 存储传输数据](../common/storage-use-azcopy-v10.md#transfer-data)|

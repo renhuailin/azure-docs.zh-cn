@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 817f9a88bd3536e9c0ec8a1057098e6b4a96716e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a3ed7979584787627c97cfec3bb2e19c147f7152
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676351"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872650"
 ---
 # <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>使用 Azure 监控范围发现、连接和浏览 Synapse 中的数据 
 
@@ -32,6 +32,8 @@ ms.locfileid: "98676351"
 ### <a name="data-discovery-search-datasets"></a>数据发现：搜索数据集 
 
 若要发现 Azure 监控范围注册和扫描的数据，可以使用 Synapse 工作区顶部中心的搜索栏。 请确保选择 "Azure 监控范围" 以搜索所有组织数据。 
+
+[![搜索 Azure 监控范围资产](./media/purview-access.png)](./media/purview-access.png#lightbox)
 
 ## <a name="azure-purview-actions"></a>Azure 监控范围操作 
 

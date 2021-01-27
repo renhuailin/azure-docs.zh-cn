@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 9a53eb1004d68045781903b71d02c3416f494be2
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 7006096154d8958e13e7a86783bd07067b95d293
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803810"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872886"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>在 Azure 中 Red Hat Enterprise Linux 自带订阅金牌映像
 
@@ -194,7 +194,7 @@ Red Hat Enterprise Linux (RHEL) 映像在 Azure 中通过 "即用即付" 或 "�
 
     在这种情况下，请与 Microsoft 或 Red Hat 联系以启用你的订阅。
 
-- 如果从 RHEL BYOS 映像修改快照并尝试将该自定义映像发布到 [共享映像库](../../linux/shared-image-galleries.md)，则必须提供与快照原始源相匹配的计划信息。 例如，命令可能如下所示：
+- 如果从 RHEL BYOS 映像修改快照并尝试将该自定义映像发布到 [共享映像库](../../shared-image-galleries.md)，则必须提供与快照原始源相匹配的计划信息。 例如，命令可能如下所示：
 
     ```azurecli
     az vm create –image \
