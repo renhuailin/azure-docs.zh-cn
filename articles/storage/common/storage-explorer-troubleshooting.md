@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 4e87e99f16a89cab95f9bd07b75b80f1c13d47f1
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900648"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875730"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -61,25 +61,25 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 若要访问 blob 容器或队列，可以使用 Azure 凭据连接到这些资源。
 
 1. 打开“连接”对话框。
-2. 选择 "通过 Azure Active Directory (添加资源 Azure AD) "。 选择“下一步”。
+2. 选择“通过 Azure Active Directory (Azure AD)添加资源”。 选择“下一步”。
 3. 选择与要连接到的资源关联的用户帐户和租户。 选择“下一步”。
-4. 选择资源类型，输入资源的 URL，并为连接输入唯一的显示名称。 选择 "下一步"，然后连接。
+4. 选择资源类型，输入资源的 URL，并为连接输入唯一的显示名称。 选择“下一步”，然后选择“连接”。
 
 对于其他资源类型，我们目前尚未制定与 Azure RBAC 相关的解决方案。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri)。
 
 ### <a name="recommended-azure-built-in-roles"></a>建议的 Azure 内置角色
 
 有几个 Azure 内置角色可以提供使用存储资源管理器所需的权限。 其中一些角色是：
-- [所有者](/azure/role-based-access-control/built-in-roles#owner)：管理所有内容，包括对资源的访问权限。
-- [参与者](/azure/role-based-access-control/built-in-roles#contributor)：管理所有内容，不包括对资源的访问权限。
-- [读者](/azure/role-based-access-control/built-in-roles#reader)：读取和列出资源。
-- [存储帐户参与者](/azure/role-based-access-control/built-in-roles#storage-account-contributor)：完全管理存储帐户。
-- [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)：对 Azure 存储 blob 容器和数据具有完全访问权限。
-- [存储 Blob 数据参与者](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)：读取、写入和删除 Azure 存储容器与 Blob。
-- [存储 Blob 数据读取者](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)：读取和列出 Azure 存储容器与 Blob。
+- [所有者](../../role-based-access-control/built-in-roles.md#owner)：管理所有内容，包括对资源的访问权限。
+- [参与者](../../role-based-access-control/built-in-roles.md#contributor)：管理所有内容，不包括对资源的访问权限。
+- [读者](../../role-based-access-control/built-in-roles.md#reader)：读取和列出资源。
+- [存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)：完全管理存储帐户。
+- [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)：对 Azure 存储 blob 容器和数据具有完全访问权限。
+- [存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)：读取、写入和删除 Azure 存储容器与 Blob。
+- [存储 Blob 数据读取者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)：读取和列出 Azure 存储容器与 Blob。
 
 > [!NOTE]
-> 所有者、参与者和存储帐户参与者角色授予帐户密钥访问权限。
+> “所有者”、“参与者”和“存储帐户参与者”角色授予帐户密钥访问权限。
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>错误：证书链中的自签名证书（和类似错误）
 
@@ -193,50 +193,50 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 存储资源管理器支持通过代理服务器连接到 Azure 存储资源。 如果通过代理连接到 Azure 时遇到任何问题，请参阅下面的建议。
 
 > [!NOTE]
-> 存储资源管理器仅支持对代理服务器进行基本身份验证。 不支持其他身份验证方法，例如 NTLM。
+> 存储资源管理器仅支持通过代理服务器进行基本身份验证。 不支持其他身份验证方法，例如 NTLM。
 
 > [!NOTE]
 > 存储资源管理器不支持使用代理 auto-config 文件来配置代理设置。
 
 ### <a name="verify-storage-explorer-proxy-settings"></a>验证存储资源管理器代理设置
 
-**应用程序→ proxy** "代理配置" 设置确定存储资源管理器从中获取代理配置的源。
+“应用程序”→“代理”→“代理配置”设置决定了从哪个源存储资源管理器获取代理配置。
 
-如果选择 "使用环境变量"，请确保设置 `HTTPS_PROXY` 或 `HTTP_PROXY` 环境变量 (环境变量区分大小写，因此请确保将正确的变量) 。 如果这些变量未定义或无效，存储资源管理器将不使用代理。 修改任何环境变量后重新启动存储资源管理器。
+如果你选择“使用环境变量”，请确保设置 `HTTPS_PROXY` 或 `HTTP_PROXY` 环境变量（环境变量区分大小写，因此请确保设置正确的变量）。 如果这些变量未定义或无效，则存储资源管理器将不使用代理。 修改任何环境变量后，请重启存储资源管理器。
 
-如果选择 "使用应用代理设置"，请确保应用内代理设置正确无误。
+如果你选择“使用应用代理设置”，请确保应用内代理设置正确无误。
 
-### <a name="steps-for-diagnosing-issues"></a>诊断问题的步骤
+### <a name="steps-for-diagnosing-issues"></a>用于诊断问题的步骤
 
 如果仍遇到问题，请尝试以下故障排除方法：
 
 1. 如果在不使用代理时可以连接到 Internet，请确认未启用代理设置时存储资源管理器可以正常工作。 如果存储资源管理器成功连接，则代理服务器可能存在问题。 与管理员配合找到问题所在。
 2. 确认使用代理服务器的其他应用程序按预期运行。
 3. 验证是否能够连接到尝试使用的 Azure 环境的门户。
-4. 确认可以收到来自服务终结点的响应。 在浏览器中输入其中一个终结点 URL。 如果可以连接，则应收到 `InvalidQueryParameterValue` 或类似的 XML 响应。
-5. 检查使用同一代理服务器存储资源管理器的其他人是否可以连接。 如果他们可以连接，请与代理服务器管理员联系。
+4. 确认可以收到来自服务终结点的响应。 在浏览器中输入其中一个终结点 URL。 如果你可以连接，应会收到 `InvalidQueryParameterValue` 或类似的 XML 响应。
+5. 检查其他人是否可以使用存储资源管理器通过同一代理服务器进行连接。 如果他们可以连接，请与代理服务器管理员联系。
 
 ### <a name="tools-for-diagnosing-issues"></a>诊断问题的工具
 
-诸如 Fiddler 之类的网络工具可帮助诊断问题。
+一个可以帮助你诊断问题的网络工具，例如 Fiddler。
 
-1. 将网络工具配置为在本地主机上运行的代理服务器。 如果你必须继续在实际的代理后面工作，则可能必须将网络工具配置为通过代理进行连接。
+1. 将你的网络工具配置为在本地主机上运行的代理服务器。 如果必须继续在实际代理后面工作，则必须将网络工具配置为通过代理进行连接。
 2. 检查网络服务工具使用的端口号。
-3. 将存储资源管理器代理设置配置为使用本地主机和网络工具的端口号 (例如 "localhost： 8888" ) 。
+3. 配置存储资源管理器代理设置，以便使用本地主机和网络工具的端口号（例如“localhost:8888”）。
  
-正确设置后，你的网络工具将存储资源管理器发送到管理终结点和服务终结点发出的网络请求。
+当设置正确时，你的网络工具会记录存储资源管理器向管理和服务终结点发出的网络请求。
  
-如果网络工具似乎未记录存储资源管理器流量，请尝试使用不同的应用程序测试工具。 例如，在 web 浏览器中输入其中一个存储资源 (的终结点 URL `https://contoso.blob.core.windows.net/` ，如) ，你将收到类似于以下内容的响应：
+如果你的网络工具看起来没有记录存储资源管理器流量，请尝试使用不同的应用程序来测试你的工具。 例如，在 Web 浏览器中输入存储资源之一的终结点 URL（例如 `https://contoso.blob.core.windows.net/`），然后就会收到类似于以下内容的响应：
 
   ![代码示例](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
-  响应建议资源存在，即使你无法访问该资源。
+  此响应表示资源存在，虽然你无法访问它。
 
-如果网络工具仅显示来自其他应用程序的流量，则可能需要在存储资源管理器中调整代理设置。 否则，你需要调整工具的设置。
+如果网络工具仅显示了来自其他应用程序的流量，则你可能需要在存储资源管理器中调整代理设置。 否则，你可能需要调整工具的设置。
 
 ### <a name="contact-proxy-server-admin"></a>与代理服务器管理员联系
 
-如果代理设置正确，则可能需要联系代理服务器管理员：
+如果代理设置正确，则可能需要与代理服务器管理员联系，以便：
 
 * 确保代理不会阻止到 Azure 管理或资源终结点的流量。
 * 验证代理服务器使用的身份验证协议。 存储资源管理器仅支持基本身份验证协议。 存储资源管理器不支持 NTLM 代理。
@@ -245,7 +245,7 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 
 如果通过代理连接到 Azure，请确认代理设置正确无误。
 
-如果订阅或帐户的所有者已授予你访问资源的权限，请验证你对该资源具有 "读取" 或 "列出" 权限。
+如果订阅或帐户的所有者已向你授予对某个资源的访问权限，请验证你是否对该资源拥有读取或列出权限。
 
 ## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>连接字符串没有完整的配置设置
 

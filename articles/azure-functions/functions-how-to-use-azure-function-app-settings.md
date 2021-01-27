@@ -1,16 +1,16 @@
 ---
-title: 在 Azure Functions 中配置 function app 设置
-description: 了解如何在 Azure Functions 中配置 function app 设置。
+title: 配置 Azure Functions 中的函数应用设置
+description: 了解如何配置 Azure Functions 中的函数应用设置。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598490"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875443"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 
@@ -36,7 +36,9 @@ ms.locfileid: "98598490"
 
 这些设置以加密的存储。 若要了解详细信息，请参阅 [应用程序设置安全性](security-concepts.md#application-settings)。
 
-# <a name="portal"></a>[Portal](#tab/portal)
+# <a name="portal"></a>[门户](#tab/portal)
+
+若要查找应用程序设置，请参阅 [开始 Azure 门户](#get-started-in-the-azure-portal)。 
 
 “应用程序设置”选项卡维护函数应用使用的设置。 你必须选择 " **显示值** " 才能在门户中查看值。 若要在门户中添加设置，请选择“新建应用程序设置”并添加新的键值对。
 
@@ -82,11 +84,11 @@ Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOUR
 
 在本地开发函数应用时，必须将这些值的本地副本保留在 local.settings.json 项目文件中。 若要了解详细信息，请参阅[本地设置文件](functions-run-local.md#local-settings-file)。
 
-## <a name="hosting-plan-type"></a>宿主计划类型
+## <a name="hosting-plan-type"></a>托管计划类型
 
-创建 function app 时，还会创建一个运行应用的托管计划。 一个计划可以有一个或多个 function app。 函数的功能、缩放和定价取决于计划的类型。 若要了解详细信息，请参阅 [Azure Functions 宿主选项](functions-scale.md)。
+创建 function app 时，还会创建一个运行应用的托管计划。 一个计划可以有一个或多个函数应用。 函数的功能、缩放和定价取决于计划的类型。 若要了解详细信息，请参阅 [Azure Functions 宿主选项](functions-scale.md)。
 
-你可以从 Azure 门户或使用 Azure CLI 或 Azure PowerShell Api 确定 function app 使用的计划类型。 
+可以从 Azure 门户中或通过使用 Azure CLI 或 Azure PowerShell API 确定函数应用所使用的计划类型。 
 
 以下值指示计划类型：
 
@@ -98,7 +100,7 @@ Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOUR
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
-若要确定 function app 使用的计划类型，请参阅 [Azure 门户](https://portal.azure.com)中函数应用的 "**概览**" 选项卡上的 "**应用服务计划**"。 若要查看定价层，请选择“应用服务计划”的名称，然后从左侧窗格中选择“属性” 。
+要确定你的函数应用所使用的计划的类型，请在 [Azure 门户](https://portal.azure.com)中查看该函数应用的“概述”选项卡中的“应用服务计划” 。 若要查看定价层，请选择“应用服务计划”的名称，然后从左侧窗格中选择“属性” 。
 
 ![在门户中查看缩放计划](./media/functions-scale/function-app-overview-portal.png)
 
@@ -114,7 +116,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ```  
 
-在前面的示例中 `<RESOURCE_GROUP>` `<FUNCTION_APP_NAME>` ，请将和替换为资源组和函数应用名称，各自分别为。 
+在前面的示例中，将 `<RESOURCE_GROUP>` 和 `<FUNCTION_APP_NAME>` 分别替换为资源组和函数应用名称。 
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
@@ -127,7 +129,7 @@ $ResourceGroup = '<RESOURCE_GROUP>'
 $PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionApp).AppServicePlan
 (Get-AzFunctionAppPlan -Name $PlanID -ResourceGroupName $ResourceGroup).SkuTier
 ```
-在前面的示例中 `<RESOURCE_GROUP>` `<FUNCTION_APP_NAME>` ，请将和替换为资源组和函数应用名称，各自分别为。 
+在前面的示例中，将 `<RESOURCE_GROUP>` 和 `<FUNCTION_APP_NAME>` 分别替换为资源组和函数应用名称。 
 
 ---
 

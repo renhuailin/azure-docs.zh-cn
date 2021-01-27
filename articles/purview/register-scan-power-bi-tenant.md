@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3370215e9a69e62596f214ba4330fc4914a2837f
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 5f42b5f2b2a7660ee0de975068f64572c470503a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539680"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874900"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>注册并扫描 Power BI 租户 (预览版) 
 
@@ -26,7 +26,7 @@ ms.locfileid: "98539680"
 若要设置身份验证，请创建一个安全组，并向其添加目录的托管标识。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索 **Azure Active Directory**。
-1. 在 Azure Active Directory 中创建一个新的安全组，方法是 [使用 Azure Active Directory 创建一个基本组并添加成员](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)。
+1. 在 Azure Active Directory 中创建一个新的安全组，方法是 [使用 Azure Active Directory 创建一个基本组并添加成员](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
     > [!Tip]
     > 如果你已有要使用的安全组，则可以跳过此步骤。

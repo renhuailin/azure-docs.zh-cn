@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 37753265afa7e76e87dbcdc5893595bea66798f4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 4e9c84efe7b96cf61a69c54e3f5ecbc469ac7d8d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610244"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874136"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>准备要部署到 Azure Spring Cloud 中的应用程序
 
@@ -151,7 +151,7 @@ Spring Boot 版本 | Spring Cloud 版本
 2.4.1 + | 2020.0.0
 
 > [!NOTE]
-> 我们确定了在应用与 Eureka 之间进行 TLS 身份验证时的弹簧 Boot 2.4.0 问题，请使用2.4.1 或更高版本。 如果你坚持使用2.4.0，请参阅我们的 [常见问题](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) 。
+> 我们确定了在应用与 Eureka 之间进行 TLS 身份验证时的弹簧 Boot 2.4.0 问题，请使用2.4.1 或更高版本。 如果你坚持使用2.4.0，请参阅我们的 [常见问题](./spring-cloud-faq.md?pivots=programming-language-java#development) 。
 
 ### <a name="dependencies-for-spring-boot-version-2223"></a>用于春季 Boot 版本 2.2/2.3 的依赖项
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: 00a7a081f29458ae81d8d8ea4dd8f7abef42f78f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 31b2d562d4d0c53b23e8e3f454057b4e26e41ba9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519002"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875240"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -96,7 +96,7 @@ Blob 存储事件使用者使用的格式：
 > [!div class="checklist"]
 > * 由于可将多个订阅配置为将事件路由至相同的事件处理程序，因此请勿假定事件来自特定的源，而是应检查消息的主题，确保它来自所期望的存储帐户。
 > * 同样，检查 eventType 是否为准备处理的项，并且不假定所接收的全部事件都是期望的类型。
-> * 由于消息可能在一段延迟后到达，请使用 etag 字段了解对象的相关信息是否仍然是最新的。 若要了解如何使用 etag 字段，请参阅[在 Blob 存储中管理并发](../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)。
+> * 由于消息可能在一段延迟后到达，请使用 etag 字段了解对象的相关信息是否仍然是最新的。 若要了解如何使用 etag 字段，请参阅[在 Blob 存储中管理并发](./concurrency-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)。
 > * 由于消息可能无序到达，请使用 sequencer 字段来了解任何特定对象的事件顺序。 sequencer 字段是一个字符串值，表示任何特定 blob 名称的事件逻辑顺序。 你可以使用标准字符串比较，了解同一个 blob 名称上两个事件的相对顺序。
 > * 存储事件保证至少向订阅服务器传递一次，以确保输出所有消息。 但是，由于订阅的重试或可用性，可能偶尔会出现重复消息。 若要详细了解消息传递和重试，请参阅[事件网格消息传递和重试](../../event-grid/delivery-and-retry.md)。
 > * 使用 blobType 字段可了解 blob 中允许何种类型的操作，以及应当使用哪种客户端库类型来访问该 blob。 有效值为 `BlockBlob` 或 `PageBlob`。 

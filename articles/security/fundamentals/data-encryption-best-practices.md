@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 3808da24c1baf6dd6e3332d4bd26fd176b761c65
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 414445f90c3be4c55166f6a0ecead25074d6ed74
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196072"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874107"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳做法
 本文介绍了针对数据安全和加密的最佳做法。
@@ -102,7 +102,7 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 以下是特定于使用 Azure VPN 网关、SSL/TLS 和 HTTPS 的最佳做法。
 
 **最佳做法**：从位于本地的多个工作站安全访问 Azure 虚拟网络。   
-**详细信息**：使用 [站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+**详细信息**：使用 [站点到站点 VPN](../../vpn-gateway/tutorial-site-to-site-portal.md)。
 
 **最佳做法**：从位于本地的单个工作站安全访问 Azure 虚拟网络。   
 **详细信息**：使用 [点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)。

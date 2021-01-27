@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: amgowda
-ms.openlocfilehash: b4b6c04a1e35031387a006b6350ebf6cbe502fee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e2095b0df8fdc965926c6c612c45f582c9b9d2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994872"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874478"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes Service 上的机密计算节点的常见问题 (AKS) 
 
@@ -25,6 +25,10 @@ ms.locfileid: "90994872"
 
 证明是演示和验证是否已在特定硬件平台上正确实例化某个软件的过程。 它还可确保其证据是可验证的，以确保它在安全平台中运行且未被篡改。 [详细](attestation.md) 了解如何对 enclave 应用进行证明。
 
+## <a name="can-i-enable-accelerated-networking-with-azure-confidential-computing-aks-clusters"></a>能否使用 Azure 机密计算 AKS 群集启用加速网络？ 
+
+否。 AKS 上的机密计算节点不支持加速网络。 确保在你的部署中禁用加速网络。 
+
 ## <a name="can-i-bring-my-existing-containerized-applications-and-run-it-on-aks-with-azure-confidential-computing"></a>我是否可以将现有的容器化应用程序与 Azure 机密计算一起用于 AKS？ 
 
 是的，请查看 [机密容器页](confidential-containers.md) ，详细了解平台启用程序。
@@ -35,11 +39,11 @@ ms.locfileid: "90994872"
 
 ## <a name="can-i-open-an-azure-support-ticket-if-i-run-into-issues"></a>如果遇到问题，我是否可以打开 Azure 支持票证？ 
 
-是。 预览期间提供 Azure 支持。 由于产品处于预览阶段，因此未附加任何 SLA。
+是的。 预览期间提供 Azure 支持。 由于产品处于预览阶段，因此未附加任何 SLA。
 
 ## <a name="can-i-inject-post-install-scriptscustomize-drivers-to-the-nodes-provisioned-by-aks"></a>我是否可以将安装后脚本/自定义驱动程序注入到由 AKS 设置的节点？ 
 
-不是。 [基于 AKS 的机密计算节点](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md) 支持允许自定义安装的机密计算节点。
+否。 [基于 AKS 的机密计算节点](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md) 支持允许自定义安装的机密计算节点。
 
 ## <a name="should-i-be-using-a-docker-base-image-to-get-started-on-enclave-applications"></a>我应该使用 Docker 基本映像开始使用 enclave 应用程序吗？ 
 
@@ -92,7 +96,7 @@ spec:
 
 ## <a name="do-you-automatically-install-any-additional-daemonsets-to-expose-the-sgx-drivers"></a>是否自动安装任何其他 daemonset 以公开 SGX 驱动程序？ 
 
-是。 Daemonset 的名称为 sgx-设备插件和 sgx-助手。 在 [此处](confidential-nodes-aks-overview.md)了解有关各自用途的详细信息。  
+是的。 Daemonset 的名称为 sgx-设备插件和 sgx-助手。 在 [此处](confidential-nodes-aks-overview.md)了解有关各自用途的详细信息。  
 
 ## <a name="what-is-the-vm-sku-i-should-be-choosing-for-confidential-computing-nodes"></a>应为机密计算节点选择的 VM SKU 是什么？ 
 
@@ -100,11 +104,11 @@ DCSv2 Sku。 [支持的区域](https://azure.microsoft.com/global-infrastructure
 
 ## <a name="can-i-still-schedule-and-run-non-enclave-containers-on-confidential-computing-nodes"></a>我是否仍然可以在机密计算节点上计划并运行非 enclave 容器？ 
 
-是。 Vm 还具有可运行标准容器工作负荷的常规内存。 在决定部署模型之前，请考虑应用程序的安全和威胁模型。
+是的。 Vm 还具有可运行标准容器工作负荷的常规内存。 在决定部署模型之前，请考虑应用程序的安全和威胁模型。
 
 ## <a name="can-i-provision-aks-with-dcsv2-node-pools-through-azure-portal"></a>是否可以通过 Azure 门户通过 DCSv2 节点池来预配 AKS？ 
 
-是。 还可以使用 Azure CLI，如 [此处](confidential-nodes-aks-get-started.md)所述。
+是的。 还可以使用 Azure CLI，如 [此处](confidential-nodes-aks-get-started.md)所述。
 
 ## <a name="what-ubuntu-version-and-vm-generation-is-supported"></a>支持哪些 Ubuntu 版本和 VM 生成？ 
 
@@ -112,7 +116,7 @@ DCSv2 Sku。 [支持的区域](https://azure.microsoft.com/global-infrastructure
 
 ## <a name="can-we-change-the-current-intel-sgx-dcap-diver-version-on-aks"></a>我们能更改 AKS 上的当前 Intel SGX DCAP 驱动程序版本吗？ 
 
-不是。 若要执行任何自定义安装，建议选择 [AKS-Engine 机密计算辅助角色节点](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md) 部署。 
+否。 若要执行任何自定义安装，建议选择 [AKS-Engine 机密计算辅助角色节点](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md) 部署。 
 
 ## <a name="what-version-of-kubernetes-do-you-support-and-recommend"></a>你支持和建议的 Kubernetes 版本是什么？ 
 

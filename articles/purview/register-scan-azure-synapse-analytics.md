@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 3ba43b83166b5548dee4ea4e52c7411db48d23f5
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 62ca32ab4e348e1488fbb87672e582436b91d05d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567270"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875003"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>注册并扫描 Azure Synapse Analytics
 
@@ -45,7 +45,7 @@ Azure 监控范围不支持扫描 Azure Synapse Analytics 中的[视图](/sql/re
 
 ### <a name="managed-identity-recommended"></a>建议 (托管标识)  
    
-在创建监控范围帐户时，该帐户具有自己的托管标识，这基本上是监控范围名称。 必须遵循 [使用 Azure AD 应用程序创建 Azure AD 用户](/azure/azure-sql/database/authentication-aad-service-principal-tutorial)的先决条件和教程，在 Azure Synapse Analytics 中创建一个 Azure AD 用户， (以前的 SQL DW) 和确切的监控范围托管标识名称。
+在创建监控范围帐户时，该帐户具有自己的托管标识，这基本上是监控范围名称。 必须遵循 [使用 Azure AD 应用程序创建 Azure AD 用户](../azure-sql/database/authentication-aad-service-principal-tutorial.md)的先决条件和教程，在 Azure Synapse Analytics 中创建一个 Azure AD 用户， (以前的 SQL DW) 和确切的监控范围托管标识名称。
 
 用于创建用户和授予权限的示例 SQL 语法：
 
@@ -87,7 +87,7 @@ GO
 
 #### <a name="granting-the-service-principal-access-to-your-azure-synapse-analytics-formerly-sql-dw"></a>授予服务主体访问 Azure Synapse Analytics (以前的 SQL DW) 
 
-此外，还必须遵循 [使用 Azure AD 应用程序创建 Azure AD 用户](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial)的先决条件和教程，在 Azure Synapse Analytics 中创建 Azure AD 用户。 用于创建用户和授予权限的示例 SQL 语法：
+此外，还必须遵循 [使用 Azure AD 应用程序创建 Azure AD 用户](../azure-sql/database/authentication-aad-service-principal-tutorial.md)的先决条件和教程，在 Azure Synapse Analytics 中创建 Azure AD 用户。 用于创建用户和授予权限的示例 SQL 语法：
 
 ```sql
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
@@ -140,4 +140,3 @@ GO
 
 - [浏览 Azure Purview 数据目录](how-to-browse-catalog.md)
 - [搜索 Azure Purview 数据目录](how-to-search-catalog.md)
-

@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2af4f5467cb0f604f16d1faf841618a14d292806
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cc1e4bf44827f82b3ca592e41fc3e6640f36e1bb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585728"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875138"
 ---
 # <a name="monitoring-azure-files"></a>监视 Azure 文件
 
@@ -82,7 +82,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 4. 选择 " **文件** " 作为要为其启用日志的存储类型。
 
-5. 单击“添加诊断设置”  。
+5. 单击“添加诊断设置”。
 
    > [!div class="mx-imgBorder"]
    > ![门户-资源日志-添加诊断设置](media/storage-files-monitoring/diagnostic-logs-settings-pane-2.png)
@@ -575,9 +575,9 @@ StorageFileLogs
 
 下表列出了一些要监视的示例方案和用于警报的适当指标：
 
-| 场景 | 用于警报的指标 |
+| 方案 | 用于警报的指标 |
 |-|-|
-| 文件共享受到限制。 | 度量值：事务<br>维度名称：响应类型 <br>维度名称：文件共享 (高级文件共享仅)  |
+| 文件共享受到限制。 | 指标：Transactions<br>维度名称：响应类型 <br>维度名称：文件共享 (高级文件共享仅)  |
 | 文件共享大小为容量的80%。 | 指标：文件容量<br>维度名称：文件共享 (高级文件共享仅)  |
 | 文件共享出口在一天内超过 500 GiB。 | 指标：出口<br>维度名称：文件共享 (高级文件共享仅)  |
 
@@ -677,6 +677,6 @@ StorageFileLogs
 - [利用 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Azure 存储指标迁移](../common/storage-metrics-migration.md)
 - [规划 Azure 文件存储部署](./storage-files-planning.md)
-- [如何部署 Azure 文件](./storage-files-deployment-guide.md)
+- [如何部署 Azure 文件](./storage-how-to-create-file-share.md)
 - [排查 Windows 上的 Azure 文件问题](./storage-troubleshoot-windows-file-connection-problems.md)
 - [排查 Linux 上的 Azure 文件问题](./storage-troubleshoot-linux-file-connection-problems.md)

@@ -2,23 +2,25 @@
 title: 模板中的变量
 description: 介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义变量。
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 7f782f9c7d3107472a74fcab73290c4cebf73693
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 01/26/2021
+ms.openlocfilehash: feecc4b5df77e6a3bf51294cb12aabf44899dde5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934656"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874428"
 ---
 # <a name="variables-in-arm-template"></a>ARM 模板中的变量
 
-本文介绍如何在 Azure 资源管理器模板 (ARM 模板) 中定义和使用变量。 可以使用变量来简化模板。 可以定义一个包含复杂表达式的变量，而不必在整个模板中重复使用复杂表达式。 然后，可以在整个模板中根据需要引用该变量。
+本文介绍如何在 Azure 资源管理器模板（ARM 模板）中定义和使用变量。 可以使用变量来简化模板。 可以定义一个包含复杂表达式的变量，而不必在整个模板中重复使用复杂表达式。 然后，可以在整个模板中根据需要引用该变量。
 
 资源管理器会在启动部署操作之前解析变量。 只要在模板中使用变量，资源管理器就会将其替换为解析的值。
 
-每个变量的格式必须与[数据类型](template-syntax.md#data-types)中的一种匹配。
-
 ## <a name="define-variable"></a>定义变量
+
+定义变量时，请提供可解析为 [数据类型](template-syntax.md#data-types)的值或模板表达式。 构造变量时，可以使用参数或其他变量中的值。
+
+您可以在变量声明中使用 [模板函数](template-functions.md) ，但不能使用 [reference](template-functions-resource.md#reference) 函数或任何 [列表](template-functions-resource.md#list) 函数。 在解析变量时，这些函数获取资源的运行时状态，不能在部署之前执行。
 
 以下示例介绍了变量定义。 它为存储帐户名称创建字符串值。 它使用多个模板函数来获取参数值，并将其连接到唯一字符串。
 
@@ -27,8 +29,6 @@ ms.locfileid: "97934656"
   "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
 },
 ```
-
-不能使用 [reference](template-functions-resource.md#reference) 函数或节中的任何 [列表](template-functions-resource.md#list) 函数 `variables` 。 在解析变量时，这些函数获取资源的运行时状态，不能在部署之前执行。
 
 ## <a name="use-variable"></a>使用变量
 
@@ -44,56 +44,20 @@ ms.locfileid: "97934656"
 ]
 ```
 
+## <a name="example-template"></a>示例模板
+
+以下模板不部署任何资源。 它只是演示声明变量的一些方法。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variables.json":::
+
 ## <a name="configuration-variables"></a>配置变量
 
-可以定义变量来保存配置环境所需的相关值。 可以将变量定义为一个包含值的对象。 以下示例演示的对象包含的值适用于两个环境 - **test** 和 **prod**。
+可以定义变量来保存配置环境所需的相关值。 可以将变量定义为一个包含值的对象。 下面的示例演示了一个对象，该对象包含两个环境的值： " **测试** " 和 " **生产**"。在部署过程中，您可以传入其中一个值。
 
-```json
-"variables": {
-  "environmentSettings": {
-    "test": {
-      "instanceSize": "Small",
-      "instanceCount": 1
-    },
-    "prod": {
-      "instanceSize": "Large",
-      "instanceCount": 4
-    }
-  }
-},
-```
-
-在中 `parameters` ，创建一个值，用于指示要使用的配置值。
-
-```json
-"parameters": {
-  "environmentName": {
-    "type": "string",
-    "allowedValues": [
-      "test",
-      "prod"
-    ]
-  }
-},
-```
-
-若要检索指定环境的设置，请将变量和参数一起使用。
-
-```json
-"[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
-```
-
-## <a name="example-templates"></a>示例模板
-
-以下示例演示了使用变量的方案。
-
-|模板  |说明  |
-|---------|---------|
-| [变量定义](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | 演示不同类型的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |
-| [配置变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 演示如何使用定义配置值的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |
-| [网络安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json)和[参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | 以正确的格式构造数组，以便将安全规则分配给网络安全组。 |
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.json":::
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关变量的可用属性的信息，请参阅 [了解 ARM 模板的结构和语法](template-syntax.md)。
+* 若要了解变量的可用属性，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 有关创建变量的建议，请参阅[最佳做法 - 变量](template-best-practices.md#variables)。
+* 有关将安全规则分配到网络安全组的示例模板，请参阅 [网络安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) 和 [参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)。
