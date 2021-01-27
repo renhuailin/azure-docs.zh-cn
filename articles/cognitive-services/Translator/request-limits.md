@@ -3,19 +3,19 @@ title: 请求限制 - 翻译器
 titleSuffix: Azure Cognitive Services
 description: 本文列出了翻译器的请求限制。 费用是根据字符数而不是请求频率产生的，每个请求限制为 5,000 个字符。 字符限制是基于订阅的，F0 限制为每小时 200 万个字符。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.author: swmachan
-ms.openlocfilehash: 8841c55d8f276f048db53a531bd2e9218e498b34
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 2bc2c1361c7d2f73ff8a67e906a6db725f669d52
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016490"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895401"
 ---
 # <a name="request-limits-for-translator"></a>翻译器的请求限制
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 52cb701312f598b1b8492226709a7d2767db9600
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5c5166785ad8c82c114fb7193cd49716536b408
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187262"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896590"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>在 Azure 自动化中启动 Runbook
 
@@ -145,13 +145,13 @@ jsmith
 
 ## <a name="start-a-runbook-with-powershell"></a>使用 PowerShell 启动 Runbook
 
-可以在 Windows PowerShell 中使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) 启动 Runbook。 以下示例代码将启动名为 **Test-Runbook** 的 Runbook。
+可以在 Windows PowerShell 中使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) 启动 Runbook。 以下示例代码将启动名为 **Test-Runbook** 的 Runbook。
 
 ```azurepowershell-interactive
 Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-`Start-AzAutomationRunbook` 返回一个作业对象，启动 Runbook 后，可以使用该对象来跟踪状态。 然后可以将此作业对象与 [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) 结合使用来确定作业的状态，并将它与 [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput?view=azps-3.7.0) 结合使用以检索作业的输出。 以下示例启动名为 **Test-Runbook** 的 Runbook，等待它完成，然后显示其输出。
+`Start-AzAutomationRunbook` 返回一个作业对象，启动 Runbook 后，可以使用该对象来跟踪状态。 然后可以将此作业对象与 [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob) 结合使用来确定作业的状态，并将它与 [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) 结合使用以检索作业的输出。 以下示例启动名为 **Test-Runbook** 的 Runbook，等待它完成，然后显示其输出。
 
 ```azurepowershell-interactive
 $runbookName = "Test-Runbook"

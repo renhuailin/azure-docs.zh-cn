@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 404999cfac5037702eb61fdf74b2c5245ce9eb30
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: cf0b5d29e0dc375a07fe024ef0763c8200275055
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95526113"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880702"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>块 Blob 存储的性能层
 
@@ -65,7 +65,7 @@ Azure 块 Blob 存储提供两个不同的性能层：
 
 无法将现有的标准性能存储帐户转换为使用高级性能层的块 Blob 存储帐户。 若要迁移到高级性能存储帐户，必须创建一个块 Blob 存储帐户，并将数据迁移到新帐户。 有关详细信息，请参阅[创建块 Blob 存储帐户](storage-blob-create-account-block-blob.md)。
 
-若要在存储帐户之间复制 Blob，可以使用最新版本的 [AzCopy](../common/storage-use-azcopy-blobs.md) 命令行工具。 Azure 数据工厂等其他工具也可用于数据移动和转换。
+若要在存储帐户之间复制 Blob，可以使用最新版本的 [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) 命令行工具。 Azure 数据工厂等其他工具也可用于数据移动和转换。
 
 ## <a name="blob-lifecycle-management"></a>Blob 生命周期管理
 

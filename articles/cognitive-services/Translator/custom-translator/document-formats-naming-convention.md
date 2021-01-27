@@ -2,23 +2,23 @@
 title: 文档格式和命名约定 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 本指南介绍自定义翻译中的文档格式和命名约定。 此概念有助于更好地管理文档名称并避免命名冲突。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 46a19cd4396e598a74f9099727ac80d44c0a44f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9598d3c1d339d1c37b02892cc83164acae447434
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88507240"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895843"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>文档格式和命名约定指南
 
-用于自定义翻译的任何文件的长度必须至少为**四个**字符。
+用于自定义翻译的任何文件的长度必须至少为 **四个** 字符。
 
 下表包含了可用于生成翻译系统的所有受支持文件格式：
 

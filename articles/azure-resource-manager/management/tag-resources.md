@@ -4,12 +4,12 @@ description: 演示如何应用标记来组织 Azure 资源进行计费和管理
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3d1161eb99e1145c7a003326310db1922ec3d55c
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: fb93673b643fd13efe9ffea148c5fb1d072f9e05
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881742"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896217"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用标记对 Azure 资源和管理层次结构进行组织
 
@@ -28,9 +28,9 @@ ms.locfileid: "97881742"
 
 可以通过两种方式获取对标记资源的所需访问权限。
 
-- 你可以对 " **Microsoft .resources/标记** " 资源类型具有写访问权限。 此访问权限允许您标记任何资源，即使您无权访问资源本身。 [标记参与者](../../role-based-access-control/built-in-roles.md#tag-contributor)角色授予此访问权限。 目前，标记参与者角色无法通过门户将标记应用到资源或资源组。 该角色可以通过门户将标记应用到订阅。 它支持通过 PowerShell 和 REST API 执行所有标记操作。  
+- 你可以拥有对 Microsoft.Resources/tags 资源类型的写入权限。 此权限允许你标记任何资源，即使你无权访问资源本身。 [标记参与者](../../role-based-access-control/built-in-roles.md#tag-contributor)角色授予此访问权限。 目前，标记参与者角色无法通过门户将标记应用到资源或资源组。 该角色可以通过门户将标记应用到订阅。 它支持通过 PowerShell 和 REST API 执行所有标记操作。  
 
-- 您可以对资源本身具有写入访问权限。 [参与者](../../role-based-access-control/built-in-roles.md#contributor)角色授予所需的访问权限，以便将标记应用到任何实体。 要将标记仅应用于一种资源类型，请使用该资源的参与者角色。 例如，要将标记应用到虚拟机，请使用[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
+- 你可以拥有对资源本身的写入权限。 [参与者](../../role-based-access-control/built-in-roles.md#contributor)角色授予对任何实体应用标记所需的访问权限。 要将标记仅应用于一种资源类型，请使用该资源的参与者角色。 例如，要将标记应用到虚拟机，请使用[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -279,7 +279,7 @@ az tag create --resource-id $resource --tags Team=Compliance Environment=Product
 },
 ```
 
-若要将标记添加到已包含标记的资源，请使用 `az tag update` 。 将 `--operation` 参数设置为 `Merge`。
+若要将标记添加到已经有标记的资源，请使用 `az tag update`。 将 `--operation` 参数设置为 `Merge`。
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
@@ -315,7 +315,7 @@ az tag update --resource-id $resource --operation Merge --tags Status=Green
 },
 ```
 
-将 `--operation` 参数设置为时 `Replace` ，现有标记将替换为新的标记集。
+将 `--operation` 参数设置为 `Replace` 时，现有标记会替换为新的标记集。
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
@@ -408,7 +408,7 @@ az group list --tag Dept=Finance
 
 ### <a name="remove-tags"></a>删除标记
 
-若要删除特定标记，请使用 `az tag update` 并将设置 `--operation` 为 `Delete` 。 传入要删除的标记。
+若要删除特定标记，请使用 `az tag update`，并将 `--operation` 设置为 `Delete`。 传入要删除的标记。
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web
@@ -697,7 +697,7 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 
 可使用标记对计费数据进行分组。 例如，如果针对不同组织运行多个 VM，可以使用标记根据成本中心对使用情况进行分组。 还可使用标记根据运行时环境（例如，在生产环境中运行的 VM 的计费使用情况）对成本进行分类。
 
-可以通过 [Azure 资源使用情况和费率卡 api](../../cost-management-billing/manage/usage-rate-card-overview.md) 或使用逗号分隔值 (CSV) 文件来检索有关标记的信息。 从 Azure 门户下载使用情况文件。 有关详细信息，请参阅[下载或查看 Azure 帐单发票和每日使用数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。 从 Azure 帐户中心下载使用情况文件时，选择 **版本 2**。 对于支持为账单提供标记的服务，标记会显示在“标记”列中。
+你可以通过下载使用情况文件来检索有关标记的信息，这是一个以逗号分隔的值， (Azure 门户提供的 CSV) 文件。 有关详细信息，请参阅[下载或查看 Azure 帐单发票和每日使用数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。 从 Azure 帐户中心下载使用情况文件时，选择 **版本 2**。 对于支持为账单提供标记的服务，标记会显示在“标记”列中。
 
 有关 REST API 操作，请参阅 [Azure 计费 REST API 参考](/rest/api/billing/)。
 

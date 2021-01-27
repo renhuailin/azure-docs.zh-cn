@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 35cb7ba4523cfbc88daf958fd972b127519385ce
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 69f0da2f1528ad1f45762a8f754cc2020b4cb880
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792282"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900772"
 ---
 本文列出了已发布 Azure Active Directory Connect 预配代理的版本和功能。 Azure AD 团队定期用新特性和功能更新设置代理。 发布新版本时，会自动更新设置代理。 
 
@@ -99,5 +99,3 @@ Microsoft 为最新的代理版本和之前的版本提供直接支持。
 * 改进预配代理和连接器体系结构，以获得更好的性能、稳定性和可靠性 
 * 使用 UI 驱动的安装向导简化预配代理配置 
 * 添加了对自动代理更新的支持
-
-

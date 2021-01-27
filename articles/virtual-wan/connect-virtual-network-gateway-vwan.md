@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: eb31bb09c1e09e4799715fc5a1cbca4b216b28a2
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 469d7ba9e86751312ebf6a6c82b35f065ee6cb50
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922963"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880366"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>将 VPN 网关（虚拟网络网关）连接到虚拟 WAN
 
@@ -91,7 +91,7 @@ Azure 虚拟网络
 
 在本部分，你将创建两个 Azure VPN 网关本地网络网关。 在上一步骤中下载的配置文件包含网关配置设置。 使用这些设置来创建和配置 Azure VPN 网关本地网络网关。
 
-1. 使用这些设置创建本地网络网关。 有关如何创建 VPN 网关本地网络网关的信息，请参阅 VPN 网关文章[创建本地网络网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)。
+1. 使用这些设置创建本地网络网关。 有关如何创建 VPN 网关本地网络网关的信息，请参阅 VPN 网关文章[创建本地网络网关](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway)。
 
    * **IP 地址** - 使用配置文件中为 *gatewayconfiguration* 显示的 Instance0 IP 地址。
    * **BGP** - 如果通过 BGP 建立连接，请选择“配置 BGP 设置”并输入 ASN“65515”。 输入 BGP 对等 IP 地址。 使用配置文件中 *gatewayconfiguration* 的“Instance0 BgpPeeringAddresses”。
@@ -105,7 +105,7 @@ Azure 虚拟网络
 
 ## <a name="5-create-connections"></a><a name="createlocalgateways"></a>5.创建连接
 
-在本部分，你将在 VPN 网关本地网络网关与虚拟网络网关之间创建连接。 有关如何创建 VPN 网关连接的步骤，请参阅[配置连接](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)。
+在本部分，你将在 VPN 网关本地网络网关与虚拟网络网关之间创建连接。 有关如何创建 VPN 网关连接的步骤，请参阅[配置连接](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection)。
 
 1. 在门户中导航到你的虚拟网络网关，然后单击“连接”。 在“连接”页的顶部，单击“+添加”打开“添加连接”页。
 2. 在“添加连接”页上，为你的连接配置以下值：

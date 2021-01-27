@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: ba3005b1ec36e4b2406084368a3aabd778c17716
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 27af230f8fa157f76865bd38a48c17640491d7db
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449436"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896183"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Stack Edge Pro GPU 设备
 
@@ -212,7 +212,7 @@ Commands:
 
 下表简要说明了可用于的命令 `iotedge` ：
 
-|command  |说明 |
+|命令  |说明 |
 |---------|---------|
 |`list`     | 列出模块         |
 |`logs`     | 提取模块的日志        |
@@ -424,6 +424,116 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 
 [10.100.10.10]: PS>
 ```
+
+### <a name="change-memory-processor-limits-for-kubernetes-worker-node"></a>更改内存，Kubernetes 工作节点的处理器限制
+
+若要更改 Kubernetes 工作节点的内存或处理器限制，请执行以下步骤：
+
+1. [连接到设备的 PowerShell 接口](#connect-to-the-powershell-interface)。
+1. 若要获取辅助角色节点和角色选项的当前资源，请运行以下命令：
+
+    `Get-AzureDataBoxEdgeRole`
+
+    下面是一个示例输出。 请注意 `Name` 节和下的的值 `Compute` `Resources` 。 `MemoryInBytes` 和 `ProcessorCount` 表示 Kubernetes 辅助角色节点当前分配的值的内存和处理器数。  
+
+    ```powershell
+    [10.100.10.10]: PS>Get-AzureDataBoxEdgeRole
+    ImageDetail                : Name:mcr.microsoft.com/azureiotedge-agent
+                                 Tag:1.0
+                                 PlatformType:Linux
+    EdgeDeviceConnectionString :
+    IotDeviceConnectionString  :
+    HubHostName                : ase-srp-007.azure-devices.net
+    IotDeviceId                : srp-007-storagegateway
+    EdgeDeviceId               : srp-007-edge
+    Version                    :
+    Id                         : 6ebeff9f-84c5-49a7-890c-f5e05520a506
+    Name                       : IotRole
+    Type                       : IOT
+    Resources                  : Compute:
+                                 MemoryInBytes:34359738368
+                                 ProcessorCount:12
+                                 VMProfile:
+    
+                                 Storage:
+                                 EndpointMap:
+                                 EndpointId:c0721210-23c2-4d16-bca6-c80e171a0781
+                                 TargetPath:mysmbedgecloudshare1
+                                 Name:mysmbedgecloudshare1
+                                 Protocol:SMB
+    
+                                 EndpointId:6557c3b6-d3c5-4f94-aaa0-6b7313ab5c74
+                                 TargetPath:mysmbedgelocalshare
+                                 Name:mysmbedgelocalshare
+                                 Protocol:SMB
+                                 RootFileSystemStorageSizeInBytes:0
+    
+    HostPlatform               : KubernetesCluster
+    State                      : Created
+    PlatformType               : Linux
+    HostPlatformInstanceId     : 994632cb-853e-41c5-a9cd-05b36ddbb190
+    IsHostPlatformOwner        : True
+    IsCreated                  : True    
+    [10.100.10.10]: PS>
+    ```
+    
+1. 若要更改辅助角色节点的内存和处理器的值，请运行以下命令：
+
+    Set-AzureDataBoxEdgeRoleCompute 名称 <Name value from the output of Get-AzureDataBoxEdgeRole> -内存 <Value in Bytes> -ProcessorCount <No。 > 核心
+
+    下面是一个示例输出。 
+    
+    ```powershell
+    [10.100.10.10]: PS>Set-AzureDataBoxEdgeRoleCompute -Name IotRole -MemoryInBytes 32GB -ProcessorCount 16
+    
+    ImageDetail                : Name:mcr.microsoft.com/azureiotedge-agent
+                                 Tag:1.0
+                                 PlatformType:Linux
+    
+    EdgeDeviceConnectionString :
+    IotDeviceConnectionString  :
+    HubHostName                : ase-srp-007.azure-devices.net
+    IotDeviceId                : srp-007-storagegateway
+    EdgeDeviceId               : srp-007-edge
+    Version                    :
+    Id                         : 6ebeff9f-84c5-49a7-890c-f5e05520a506
+    Name                       : IotRole
+    Type                       : IOT
+    Resources                  : Compute:
+                                 MemoryInBytes:34359738368
+                                 ProcessorCount:16
+                                 VMProfile:
+    
+                                 Storage:
+                                 EndpointMap:
+                                 EndpointId:c0721210-23c2-4d16-bca6-c80e171a0781
+                                 TargetPath:mysmbedgecloudshare1
+                                 Name:mysmbedgecloudshare1
+                                 Protocol:SMB
+    
+                                 EndpointId:6557c3b6-d3c5-4f94-aaa0-6b7313ab5c74
+                                 TargetPath:mysmbedgelocalshare
+                                 Name:mysmbedgelocalshare
+                                 Protocol:SMB
+    
+                                 RootFileSystemStorageSizeInBytes:0
+    
+    HostPlatform               : KubernetesCluster
+    State                      : Created
+    PlatformType               : Linux
+    HostPlatformInstanceId     : 994632cb-853e-41c5-a9cd-05b36ddbb190
+    IsHostPlatformOwner        : True
+    IsCreated                  : True
+    
+    [10.100.10.10]: PS>    
+    ```
+
+更改内存和处理器使用情况时，请遵循以下准则。
+
+- 默认内存为设备规格的25%。
+- 默认处理器计数为设备规格的30%。
+- 更改内存和处理器计数的值时，建议你将值介于15% 到65% 的设备内存和处理器计数之间。 
+- 建议上限为65%，以便为系统组件提供足够的资源。 
 
 ## <a name="connect-to-bmc"></a>连接到 BMC
 

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 3290574b26abe544c8c749165e22bef41a83ecf3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d72d2d094e220bd4e460cfca6b422f0609c083af
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538163"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880061"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>版本和跟踪 Azure 机器学习数据集
 
@@ -119,7 +119,7 @@ dataset2.register(workspace = workspace,
 
 可以使用数据集作为每个 [ML 管道](concept-ml-pipelines.md)步骤的输入和输出。 重新运行管道时，每个管道步骤的输出将注册为一个新的数据集版本。
 
-ML 管道每次重新运行时都会将每个步骤的输出填充到一个新文件夹中。 此行为使得已进行版本控制的输出数据集可重现。 详细了解 [管道中的数据集](how-to-create-your-first-pipeline.md#steps)。
+ML 管道每次重新运行时都会将每个步骤的输出填充到一个新文件夹中。 此行为使得已进行版本控制的输出数据集可重现。 详细了解 [管道中的数据集](./how-to-create-machine-learning-pipelines.md#steps)。
 
 ```Python
 from azureml.core import Dataset

@@ -1,24 +1,10 @@
 ---
-title: 流式处理终结点（源）
-titleSuffix: Azure Media Services
-description: 了解流式处理终结点 (源) ，这是一个动态打包和流式处理服务，可直接将内容传递给客户端播放器应用程序或 (CDN) 的内容交付网络。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 02/13/2020
-ms.author: inhenkel
-ms.openlocfilehash: f7307b95912a982bb36efbf2ce18668bd88e1195
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
-ms.translationtype: MT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882868"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必填字段。 有关详细信息，请参阅 aka.ms/skyeye/meta。
+标题：流式处理终结点 (起源) ： Azure 媒体服务说明：了解流式处理终结点 (源) ，这是将内容直接传送到客户端播放器应用程序或内容交付网络 (CDN) 的动态打包和流式处理服务。 服务：媒体服务 documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
+
+ms. service： media-服务毫秒。工作负荷：毫秒。主题：概念性毫秒。日期：02/13/2020 毫秒。作者： inhenkel
 ---
+
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（来源）
 
 在 Microsoft Azure 媒体服务中， [流式处理终结点](/rest/api/media/streamingendpoints) 代表一种动态 (实时) 打包和源服务，它可以使用一种常见的流式媒体协议 (HLS 或破折号) 将实时内容和点播内容直接传送到客户端播放器应用。 此外，流式处理终结点  还为行业领先的 DRM 提供动态（实时）加密。 

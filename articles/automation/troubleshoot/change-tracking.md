@@ -2,19 +2,15 @@
 title: 排查 Azure 自动化更改跟踪和库存的问题
 description: 本文介绍了如何排查和解决 Azure 自动化更改跟踪和库存功能的问题。
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/31/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 3ecd4330381db1f63a40e9ba5ff63108c6fa78fe
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.topic: troubleshooting
+ms.openlocfilehash: 516f1a4e5e7c677b17a2941ee3c300db44d49a3b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205602"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896539"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>排查更改跟踪和库存问题
 
@@ -116,7 +112,7 @@ Azure 安全中心的 FIM 功能可能错误地验证了 Linux 文件的完整�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果未在此处看到你遇到的问题，或者无法解决你遇到的问题，请尝试以下途径之一以获取其他支持：
+如果你的问题未在本文中列出，或者无法解决问题，请尝试通过以下渠道之一获取更多支持：
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
 * 连接到 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 Azure 支持人员会将你连接到 Azure 社区，从中可以获得解答、支持和专家建议。

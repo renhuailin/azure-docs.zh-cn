@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7721100d902948364c9e4b1373f1fa805c680a50
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 619f2c2670d8e376ad0bca7cf8b93b971be067a0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202209"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880719"
 ---
 # <a name="security-control-v2-privileged-access"></a>安全控制 V2：特权访问
 
@@ -159,7 +159,7 @@ ms.locfileid: "98202209"
 
 - [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [部署特权访问工作站](../../active-directory/devices/howto-azure-managed-workstation.md)
+- [部署特权访问工作站](/security/compass/privileged-access-deployment)
 
 **责任**：客户
 
@@ -217,4 +217,3 @@ ms.locfileid: "98202209"
 - [安全合规性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management) 
 
 - [标识和密钥管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
-

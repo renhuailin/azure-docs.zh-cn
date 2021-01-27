@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 987281bd13b7ac053f07a4ef1fb7605c85686d56
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 4deda838d229081ccd23c123f75d0c0ada2383bb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898617"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878657"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -48,7 +48,7 @@ ms.locfileid: "97898617"
 **关键属性**
 
 - 流日志在 [第4层](https://en.wikipedia.org/wiki/OSI_model#Layer_4:_Transport_Layer) 操作，记录传入和传出 NSG 的所有 IP 流
-- 通过 Azure 平台以 **1 分钟为间隔** 收集日志，并且不会以任何方式影响客户资源或网络性能。
+- 日志是通过 Azure 平台以 1 分钟为间隔收集的，不会对客户资源或网络性能造成任何形式的影响。
 - 日志以 JSON 格式编写，基于每个 NSG 规则显示出站和入站流。
 - 每条日志记录包含流所应用到网络接口 (NIC)、5 元组信息、流量决策和（仅限版本 2）吞吐量信息。 有关完整详细信息，请参阅下面的 _日志格式_。
 - 流日志具有保留功能，可以自动删除在创建后已保留一年的日志。 
@@ -353,7 +353,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **存储帐户注意事项**： 
 
 - 位置：所用的存储帐户必须与 NSG 位于同一区域中。
-- 性能层：目前仅支持标准层存储帐户。
+- 性能层：当前仅支持标准层存储帐户。
 - 自行管理密钥轮换：如果你更改/轮换存储帐户的访问密钥，则 NSG 流日志将停止工作。 若要解决此问题，必须禁用并重新启用 NSG 流日志。
 
 **流日志记录成本**：NSG 流日志记录按生成的日志量计费。 流量较高时，流日志的量和相关成本可能会增大。 NSG 流日志定价不包括基本的存储成本。 将保留策略功能与 NSG 流日志记录配合使用意味着在较长时间内会产生单独的存储成本。 如果不需要使用保留策略功能，我们建议将此值设置为 0。 有关详细信息，请参阅[网络观察程序定价](https://azure.microsoft.com/pricing/details/network-watcher/)和 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
@@ -362,7 +362,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **入站流被从 Internet IP 记录到了没有公共 IP 的虚拟机**：对于没有通过与 NIC 关联的公共 IP 地址分配公共 IP 地址作为实例级公共 IP 的虚拟机，或者是属于基本负载均衡器后端池的一部分的虚拟机，请使用 [默认SNAT](../load-balancer/load-balancer-outbound-connections.md)，并使用由 Azure 分配的 IP 地址以便于进行出站连接。 因此，如果流的目的地是分配给 SNAT 的端口范围内的端口，你可能会看到来自 Internet IP 地址的流的流日志条目。 虽然 Azure 不允许将这些流传输到 VM，但是按照设计，该尝试会被记录并显示在网络观察程序的 NSG 流日志中。 我们建议使用 NSG 来显式阻止不需要的入站 Internet 流量。
 
-**应用程序网关 V2 子网 NSG**：目前 [不支持](https://docs.microsoft.com/azure/application-gateway/application-gateway-faq#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet) 应用程序网关 v2 子网 NSG 上的流日志记录。 此问题不会影响应用程序网关 V1。
+应用程序网关 V2 子网 NSG 的问题：当前[不支持](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet)对应用程序网关 V2 子网 NSG 使用流日志记录。 此问题不会影响应用程序网关 V1。
 
 不兼容的服务：由于当前的平台限制，NSG 流日志不支持一小部分 Azure 服务。 当前不兼容的服务的列表为
 - [Azure Kubernetes 服务 (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
@@ -372,15 +372,15 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **在关键的 VNET/子网上启用**：作为审核和安全方面的最佳做法，应在订阅中的所有关键 VNET/子网上启用流日志。 
 
-**在附加到资源的所有 NSG 上启用 NSG 流日志记录**：Azure 中的流日志记录是在 NSG 资源上配置的。 一个流只与一个 NSG 规则相关联。 在使用多个 Nsg 的情况下，我们建议在资源的子网或网络接口上应用的所有 Nsg 上启用 NSG 流日志，以确保记录所有流量。 有关详细信息，请参阅网络安全组中的[流量评估方式](../virtual-network/network-security-group-how-it-works.md)。 
+**在附加到资源的所有 NSG 上启用 NSG 流日志记录**：Azure 中的流日志记录是在 NSG 资源上配置的。 一个流只与一个 NSG 规则相关联。 如果利用了多个 NSG，我们建议对资源子网或网络接口上应用的所有 NSG 均启用 NSG 流日志，以确保记录所有流量。 有关详细信息，请参阅网络安全组中的[流量评估方式](../virtual-network/network-security-group-how-it-works.md)。 
 
-常见方案如下：
-1. **VM 中的多个 nic**：如果有多个 nic 连接到一个虚拟机，则必须在所有这些计算机上启用流日志记录
-1. 同时 **在 nic 和子网级别具有 NSG**：如果 NSG 是在 Nic 和子网级别配置的，则必须在 nsg 同时启用 flow 日志记录。 
+下面是几个常见方案：
+1. 一个 VM 上有多个 NIC：如果有多个 NIC 附加到一个虚拟机，则必须在所有这些 NIC 上启用流日志记录
+1. 在 NIC 和子网级别上都有 NSG：如果在 NIC 和子网级别都配置了 NSG，则必须也在这两个级别的 NSG 上均启用流日志记录。 
 
 **存储预配**：应该根据预期的流日志量预配存储。
 
-**命名**： NSG 名称必须是最多80个字符，NSG 规则名称最多为65个字符。 如果名称超出其字符限制，则可能会在日志记录时被截断。
+命名：NSG 名称的长度不得超过 80 个字符，NSG 规则名称的长度不得超过 65 个字符。 如果名称超出其字符限制，则可能会在进行日志记录时被截断。
 
 ## <a name="troubleshooting-common-issues"></a>排查常见问题
 

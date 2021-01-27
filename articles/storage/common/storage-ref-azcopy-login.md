@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 98f8554d6313147c03d4a0bec74e36043cdce342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4740870dd2d9748aad55150ce1946e3eb666619
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87285265"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878352"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -37,7 +37,7 @@ azcopy login [flags]
 ## <a name="related-conceptual-articles"></a>相关概念性文章
 
 - [AzCopy 入门](storage-use-azcopy-v10.md)
-- [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
 - [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
 
@@ -99,7 +99,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert --applicati
 
 ## <a name="options"></a>选项
 
-“--aad-endpoint”字符串要使用的 Azure Active Directory 终结点。 Azure 云的默认 (https://login.microsoftonline.com) 是正确的。 在国家云中进行身份验证时设置此参数。 托管服务标识不需要。
+“--aad-endpoint”字符串要使用的 Azure Active Directory 终结点。 默认值 (https://login.microsoftonline.com) 适用于全局 Azure 云。 在国家云中进行身份验证时设置此参数。 托管服务标识不需要。
 
 “--application-id”字符串 - 用户分配标识的应用程序 ID。 服务主体身份验证所需。
 

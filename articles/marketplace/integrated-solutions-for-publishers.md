@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 70dfccb32389d2f1fb492669c9f84a3e6ae77bbb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 0a3188d5dc2c34c9959ae488ad5a5f962a99f02f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621342"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880264"
 ---
 # <a name="publish-an-integrated-solution"></a>发布集成解决方案
 
@@ -32,8 +32,8 @@ ms.locfileid: "96621342"
 ## <a name="eligibility-criteria"></a>资格条件
 
 * 参与合作伙伴必须具有 MPN ID。
-* 参与服务提供商应 [共同销售](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
-* 参与的软件供应商应该是 [IP 联销售准备就绪](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
+* 参与服务提供商应 [共同销售](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。
+* 参与的软件供应商应该是 [IP 联销售准备就绪](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。
 * 至少一个参与合作伙伴必须具有以下某个领域的黄金资格：
     - 应用程序开发
     - 应用程序集成

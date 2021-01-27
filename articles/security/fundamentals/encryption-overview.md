@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ff023ad98c7ffa269223b5d0b4a1cecc5fde1feb
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d7d438b369c863660a032f101e466b6fadf639fa
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410209"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879708"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概述
 
@@ -45,11 +45,11 @@ Azure 支持各种加密模型，包括使用服务托管密钥、Key Vault 中�
 
 三个服务器端加密模型提供不同的密钥管理特性，可根据要求进行选择：
 
-- **服务托管密钥** ：可带来低开销的控制和便利。
+- **服务托管密钥**：可带来低开销的控制和便利。
 
-- **客户管理的密钥** ：可用于控制密钥，包括支持“创建自己的密钥”(BYOK) 或生成新密钥。
+- **客户管理的密钥**：可用于控制密钥，包括支持“创建自己的密钥”(BYOK) 或生成新密钥。
 
-- **客户所控硬件上的服务托管密钥** ：可用于管理不受 Microsoft 控制的专有存储库中的密钥。 此特性称为自留密钥 (HYOK)。 但是，配置相当复杂，并且大多数 Azure 服务都不支持此模式。
+- **客户所控硬件上的服务托管密钥**：可用于管理不受 Microsoft 控制的专有存储库中的密钥。 此特性称为自留密钥 (HYOK)。 但是，配置相当复杂，并且大多数 Azure 服务都不支持此模式。
 
 ### <a name="azure-disk-encryption"></a>Azure 磁盘加密
 
@@ -181,7 +181,7 @@ Microsoft 让客户能够使用[传输层安全性](https://en.wikipedia.org/wik
 
 有关详细信息，请参阅：
 
-[在 Azure 门户中创建站点到站点连接](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+[在 Azure 门户中创建站点到站点连接](../../vpn-gateway/tutorial-site-to-site-portal.md)
 
 [在 PowerShell 门户中创建站点到站点连接](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 

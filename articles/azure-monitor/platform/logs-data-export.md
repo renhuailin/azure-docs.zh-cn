@@ -7,18 +7,18 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: bb4987550e4962ba044e0a6aafbfd00145319e94
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: bc369b072f90e675cf882d52b2edae30530f1c18
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804941"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895962"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
 
 ## <a name="overview"></a>概述
-为 Log Analytics 工作区配置数据导出后，发送到工作区中所选表的任何新数据将自动以近乎实时的形式导出到你的存储帐户或事件中心。
+为 Log Analytics 工作区配置数据导出后，任何发送到工作区中所选表的新数据都将自动以每小时的追加 blob 或事件中心以近乎实时的形式导出到你的存储帐户。
 
 ![数据导出概述](media/logs-data-export/data-export-overview.png)
 
@@ -61,13 +61,13 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 ## <a name="data-completeness"></a>数据完整性
 如果目标不可用，数据导出会继续重新尝试发送数据，最多持续 30 分钟。 如果 30 分钟后仍不可用，数据将被放弃，直到目标变为可用。
 
-## <a name="cost"></a>成本
+## <a name="cost"></a>Cost
 数据导出功能当前不收取额外费用。 数据导出的定价将在以后公布，在开始计费之前将提供相关通知。 如果你选择在通知期后继续使用数据导出，则将按照适用的费率缴费。
 
 ## <a name="export-destinations"></a>导出目标
 
 ### <a name="storage-account"></a>存储帐户
-数据将以近乎实时的方式发送到存储帐户，因为它达到 Azure Monitor。 “数据导出配置”为存储帐户中的每个表创建一个容器，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的容器中 。
+当数据到达时，会将数据发送到存储帐户，并将其存储在每小时追加 blob 中 Azure Monitor。 “数据导出配置”为存储帐户中的每个表创建一个容器，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的容器中 。
 
 存储帐户 Blob 路径为 WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json。 由于追加 Blob 在存储中的写入限制为 50K，如果追加的数量很大，则导出的 Blob 的数量可能会增加。 在这种情况下，Blob 的命名模式将为 PT1H_#.json，其中 # 是增量 Blob 计数。
 

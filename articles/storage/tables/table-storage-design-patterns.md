@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20e776e649d13e435a7bc9215802fcd89efe0867
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2eb109078728b8a9070b3991733450c1da790d9e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019219"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879589"
 ---
 # <a name="table-design-patterns"></a>表设计模式
 本文介绍适用于表服务解决方案的一些模式。 此外，还将了解如何实际解决其他表存储设计文章中提出的一些问题和权衡。 下图总结了不同模式之间的关系：  
@@ -711,7 +711,7 @@ foreach (var e in entities)
 还应考虑设计如何影响客户端应用程序处理并发和更新操作的方式。  
 
 ### <a name="managing-concurrency"></a>管理并发
-默认情况下，尽管客户端可强制表服务跳过这些检查，表服务仍会在单个实体级别上执行 **Insert**、**Merge** 和 **Delete** 操作的开放式并发检查。 若要深入了解表服务如何管理并发息，请参阅在 [Microsoft Azure 存储中管理并发](../../storage/common/storage-concurrency.md)。  
+默认情况下，尽管客户端可强制表服务跳过这些检查，表服务仍会在单个实体级别上执行 **Insert**、**Merge** 和 **Delete** 操作的开放式并发检查。 若要深入了解表服务如何管理并发息，请参阅在 [Microsoft Azure 存储中管理并发](../blobs/concurrency-manage.md)。  
 
 ### <a name="merge-or-replace"></a>合并或替换
 **TableOperation** 类的 **Replace** 方法始终替换表服务中的完整实体。 如果在存储实体中存在某个属性时请求中未包含该属性，则请求将从存储实体中删除该属性。 除非你想要从存储实体中显式删除某一属性，否则必须在请求中包含每个属性。  

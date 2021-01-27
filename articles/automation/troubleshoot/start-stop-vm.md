@@ -2,19 +2,15 @@
 title: 排查 Azure 自动化在空闲时间启动/停止 VM 的问题
 description: 本文介绍如何排查并解决在使用“在空闲时间启动/停止 VM”功能时产生的问题。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/04/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: bb8fa53fa07d666693ae545c193faaf3d6d0a30c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: 763e1321556ade73778b82ea70926af21a83f7ec
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187143"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896268"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>排查在空闲时间启动/停止 VM 的问题
 

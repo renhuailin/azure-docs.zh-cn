@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 3fff58c240341776a3bb99c059c179cc4f9d96e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6b3f4ef82813fd4c0e5b3b24be59b68a2dc5b2a7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999138"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880383"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
 
@@ -52,7 +52,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
+使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
 
 以下示例在 `westus` 位置创建名为 `myResourceGroup` 的资源组。
 
@@ -817,4 +817,4 @@ az group delete --name myResourceGroup
 
 [创建高可用性虚拟机教程](../../linux/create-cli-complete.md)
 
-[浏览 VM 部署 CLI 示例](../../linux/cli-samples.md)
+[浏览 VM 部署 CLI 示例](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

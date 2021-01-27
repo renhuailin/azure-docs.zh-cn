@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: be2921f88ad2ecf88c555daf8385f1bd6733e836
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 70f5e17c4cc42201e9aa3d36c9937f6ceb9527d0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554009"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880197"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>在 Azure 机器学习设计器中转换数据
 
@@ -52,11 +52,7 @@ ms.locfileid: "94554009"
 
 1. 将“Adult Census Income Binary classification”数据集拖放到画布上。
 
-1. 选择“Adult Census Income”数据集模块。
-
-1. 在画布右侧出现的详细信息窗格中，选择“输出”。
-
-1. 选择可视化图标 ![可视化图标](media/how-to-designer-transform-data/visualize-icon.png)。
+1. 右键单击 "**成人人口收入** 数据集" 模块，并选择 "**可视化**  >  **数据集输出**"
 
 1. 使用数据预览窗口浏览数据集。 请特别注意“native-country”列值。
 
@@ -105,7 +101,7 @@ ms.locfileid: "94554009"
     
     数据存储类型：Azure Blob 存储
 
-    **数据存储** ：选择现有数据存储，或选择“新建数据存储”以立即创建一个。
+    **数据存储**：选择现有数据存储，或选择“新建数据存储”以立即创建一个。
 
     路径：`/data/us-income`
 
@@ -122,7 +118,7 @@ ms.locfileid: "94554009"
     
     数据存储类型：Azure Blob 存储
 
-    **数据存储** ：选择与上面相同的数据存储
+    **数据存储**：选择与上面相同的数据存储
 
     路径：`/data/non-us-income`
 

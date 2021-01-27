@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 12/08/2020
-ms.openlocfilehash: b5001898fa18834ce7c04403de70879084df85f1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ca090d9bd4f5968b0404cb73af9f8d21197e695d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904902"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880955"
 ---
 # <a name="co-sell-option-in-the-commercial-marketplace"></a>商业市场中的联合销售选项
 
-提供有关 " **与 Microsoft 共同销售** " 选项卡的信息是完全可选的。 需要实现 [合作销售就绪和 IP 共同销售 Incentivized 状态](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 Microsoft 销售团队将使用您提供的信息来了解有关您的产品/服务的详细信息。 它不会直接提供给客户。 有关详细信息，请参阅 [与 Microsoft 共同销售](https://partner.microsoft.com/membership/co-sell-with-microsoft)。
+提供有关 " **与 Microsoft 共同销售** " 选项卡的信息是完全可选的。 需要实现 [合作销售就绪和 IP 共同销售 Incentivized 状态](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 Microsoft 销售团队将使用您提供的信息来了解有关您的产品/服务的详细信息。 它不会直接提供给客户。 有关详细信息，请参阅 [与 Microsoft 共同销售](https://partner.microsoft.com/membership/co-sell-with-microsoft)。
 
 合作伙伴中心的共同销售选项可用于以下产品/服务类型。
 

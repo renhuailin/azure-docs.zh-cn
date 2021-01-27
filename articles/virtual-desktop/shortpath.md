@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: bfcd8b3c482b4d429a9e3a4d7bc75e27ada63a98
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c1cdafe2929502293aada32dbae06e342761862b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134392"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876692"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows 虚拟桌面 RDP Shortpath (预览版) 
 
@@ -58,7 +58,7 @@ RDP Shortpath 使用会话主机的证书在客户端和会话主机之间使用
 若要支持 RDP Shortpath，Windows 虚拟桌面客户端需要向会话主机直接提供线路。 您可以通过使用以下技术之一获得直接的行为：
 
 * [ExpressRoute 专用对等互连](../expressroute/expressroute-circuit-peerings.md)
-* [基于 (IPsec) 的站点到站点 VPN ](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [基于 (IPsec) 的站点到站点 VPN ](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [基于 (IPsec) 的点到站点 VPN ](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 * [公共 IP 地址分配](../virtual-network/virtual-network-public-ip-address.md)
 

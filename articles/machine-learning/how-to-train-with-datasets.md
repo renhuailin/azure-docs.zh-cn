@@ -12,18 +12,18 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 2d6282c527293abdb8b21e0591548cb51e1339a9
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 688bec24cbcd88130470634abff0688ead8005ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539678"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881680"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Azure 机器学习数据集定型模型 
 
 本文介绍如何使用 [Azure 机器学习数据集](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) 来训练机器学习模型。  可以在本地或远程计算目标中使用数据集，而不必考虑连接字符串或数据路径。 
 
-Azure 机器学习数据集提供了与 Azure 机器学习训练功能（如 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、[HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) 和 [Azure 机器学习管道](how-to-create-your-first-pipeline.md)）的无缝集成。
+Azure 机器学习数据集提供了与 Azure 机器学习训练功能（如 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、[HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) 和 [Azure 机器学习管道](./how-to-create-machine-learning-pipelines.md)）的无缝集成。
 
 如果尚未准备好将数据提供给模型定型，但想要将数据加载到笔记本进行数据浏览，请参阅如何 [浏览数据集中的数据](how-to-create-register-datasets.md#explore-data)。 
 
@@ -258,14 +258,14 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 ## <a name="notebook-examples"></a>Notebook 示例
 
 + [数据集笔记本](https://aka.ms/dataset-tutorial)演示了本文中的概念并在其基础上进行了扩展。
-+ 请参阅如何 [PARAMETRIZE ML 管道中的数据集](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)。
++ 请参阅[如何在 ML 管道中参数化数据集](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
-* **数据集初始化失败：正在等待装入点准备就绪**： 
-  * 如果你没有任何出站 [网络安全组](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) 规则，而且使用 `azureml-sdk>=1.12.0` 、更新 `azureml-dataset-runtime` 及其依赖项是特定次要版本的最新规则，或者如果你在运行中使用它，请重新创建你的环境，以便它可以使用修补程序的最新修补程序。 
-  * 如果使用的是 `azureml-sdk<1.12.0` ，请升级到最新版本。
-  * 如果有出站 NSG 规则，请确保存在允许服务标记的所有流量的出站规则 `AzureResourceMonitor` 。
+* **数据集初始化失败：“等待装入点准备完毕”已超时**： 
+  * 如果你没有任何出站[网络安全组](../virtual-network/network-security-groups-overview.md)规则并且正在使用 `azureml-sdk>=1.12.0`，请将 `azureml-dataset-runtime` 及其依赖项更新为特定次要版本的最新版本，而如果你正在运行中使用该版本，请重新创建环境，以便获得具有修补程序的最新补丁。 
+  * 如果使用的是 `azureml-sdk<1.12.0`，请升级到最新版本。
+  * 如果具有出站 NSG 规则，请确保存在允许服务标记 `AzureResourceMonitor` 的所有流量的出站规则。
 
 ### <a name="overloaded-azurefile-storage"></a>AzureFile 存储过载
 
@@ -293,4 +293,4 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 * 使用 FileDataset [训练图像分类模型](https://aka.ms/filedataset-samplenotebook)。
 
-* [通过管道使用数据集进行训练](how-to-create-your-first-pipeline.md)。
+* [通过管道使用数据集进行训练](./how-to-create-machine-learning-pipelines.md)。

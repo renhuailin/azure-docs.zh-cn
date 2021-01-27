@@ -3,17 +3,17 @@ title: Azure IoT 中心设备预配服务中的自定义分配策略
 description: 如何使用 Azure IoT 中心设备预配服务 (DPS) 中的自定义分配策略
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/14/2019
+ms.date: 01/26/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 26615b82bb9dcbc1247bec9b7a06b579dfa1eb2b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 4931258af0dd50d091bec98824df5da0e91dbf53
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571634"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895696"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
 
@@ -66,7 +66,7 @@ ms.locfileid: "96571634"
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. 使用 " [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) " 命令通过 Azure Cloud Shell 创建设备预配服务。 该预配服务将添加到 *contoso-us-resource-group*。
+2. 使用 Azure Cloud Shell 通过 [az iot DPS create](/cli/azure/iot/dps#az-iot-dps-create) 命令 (DPS) 创建设备预配服务。 该预配服务将添加到 *contoso-us-resource-group*。
 
     以下示例在 *westus* 位置创建名为 " *contoso-预配-1098* " 的预配服务。 必须使用唯一的服务名称。 在服务名称中的 **1098** 位置构成你自己的后缀。
 
@@ -96,6 +96,25 @@ ms.locfileid: "96571634"
 
     此命令可能需要花费几分钟时间完成。
 
+5. IoT 中心必须链接到 DPS 资源。 
+
+    运行以下两个命令，获取刚刚创建的中心的连接字符串：
+
+    ```azurecli-interactive 
+    hubToastersConnectionString=$(az iot hub connection-string show --hub-name contoso-toasters-hub-1098 --key primary --query connectionString -o tsv)
+    hubHeatpumpsConnectionString=$(az iot hub connection-string show --hub-name contoso-heatpumps-hub-1098 --key primary --query connectionString -o tsv)
+    ```
+
+    运行以下命令，将中心链接到 DPS 资源：
+
+    ```azurecli-interactive 
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubToastersConnectionString --location westus
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubHeatpumpsConnectionString --location westus
+    ```
+
+
+
+
 ## <a name="create-the-custom-allocation-function"></a>创建自定义分配函数
 
 在本部分，你将创建一个实现自定义分配策略的 Azure 函数。 此函数根据设备的注册 ID 是包含字符串 **-contoso-tstrsd-007** 还是 **-contoso-hpsd-088**，来确定要将该设备注册到哪个部门 IoT 中心。 它还根据设备是烤箱还是热泵，来设置设备孪生的初始状态。
@@ -114,7 +133,9 @@ ms.locfileid: "96571634"
 
     **运行时堆栈**：从下拉列表中选择“.NET Core”。 
 
-    **区域**：选择你的资源组所在的同一区域。 此示例使用“美国西部”。
+    **版本**：从下拉的下拉菜单中选择 **3.1** 。
+
+    **区域**：选择你的资源组所在的区域。 此示例使用“美国西部”。
 
     > [!NOTE]
     > 默认已启用 Application Insights。 本文不需要 Application Insights，但它可以帮助你了解和调查处理自定义分配时遇到的任何问题。 如果需要，可以禁用 Application Insights，方法是选择“监视”选项卡，然后对“启用 Application Insights”选择“否”。   
@@ -123,19 +144,15 @@ ms.locfileid: "96571634"
 
 4. 在“摘要”页上，选择“创建”以创建函数应用。   部署可能需要花费几分钟时间。 完成后，选择“转到资源”。 
 
-5. 在函数应用“概述”页的左窗格中，选择“函数”旁边的 **+** 以添加新函数。  
+5. 在函数应用程序 **概述** 页的左窗格中，单击 " **函数** "，然后单击 " **+ 添加** " 以添加新函数。
 
-    ![将函数添加到函数应用](./media/how-to-use-custom-allocation-policies/create-function.png)
+6. 在 " **添加函数** " 页上，单击 " **HTTP 触发器**"，然后单击 " **添加** " 按钮。
 
-6. 在“适用于 .NET 的 Azure Functions - 入门”页上，对于“选择部署环境”步骤，请选择“门户中”磁贴，然后选择“继续”。    
+7. 在下一页上，单击 " **代码 + 测试**"。 这允许您编辑名为 **HttpTrigger1** 的函数的代码。 应打开 **run.csx** 代码文件进行编辑。
 
-    ![选择门户开发环境](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
+8. 引用所需的 NuGet 包。 为了创建初始设备孪生，自定义分配函数将使用必须载入托管环境的两个 NuGet 包中定义的类。 使用 Azure Functions，将使用 *函数 proj* 文件引用 NuGet 包。 在此步骤中，保存并上传所需程序集的 *函数 proj* 文件。  有关详细信息，请参阅 [在 Azure Functions 中使用 NuGet 包](../azure-functions/functions-reference-csharp.md#using-nuget-packages)。
 
-7. 在下一页上，对于“创建函数”步骤，请选择“Webhook + API”磁贴，然后选择“创建”。    随即会创建名为 **HttpTrigger1** 的函数，门户将显示 **run.csx** 代码文件的内容。
-
-8. 引用所需的 NuGet 包。 若要创建初始设备克隆，自定义分配函数使用在必须加载到宿主环境中的两个 NuGet 包中定义的类。 使用 Azure Functions，将使用 *函数主机* 文件引用 NuGet 包。 此步骤将保存并上传 *function.host* 文件。
-
-    1. 将以下行复制到你偏好的编辑器中，并将文件作为 *function.host* 保存在计算机上。
+    1. 将以下行复制到您喜爱的编辑器中，并将该文件保存在计算机上作为 *函数。*
 
         ```xml
         <Project Sdk="Microsoft.NET.Sdk">  
@@ -143,21 +160,15 @@ ms.locfileid: "96571634"
                 <TargetFramework>netstandard2.0</TargetFramework>  
             </PropertyGroup>  
             <ItemGroup>  
-                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.5.0" />  
-                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.16.0" />  
+                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.16.3" />
+                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.27.0" />
             </ItemGroup>  
         </Project>
         ```
 
-    2. 对于 **HttpTrigger1** 函数，请展开窗口右侧的“查看文件”选项卡。 
+    2. 单击位于代码编辑器上方的 " **上传** " 按钮，上传 *函数 proj* 文件。 上传后，使用下拉框选择代码编辑器中的文件以验证内容。
 
-        ![打开“查看文件”](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
-
-    3. 选择“上传”，浏览到 **function.proj** 文件，然后选择“打开”以上传该文件。  
-
-        ![选择“上传文件”](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
-
-9. 将 **HttpTrigger1** 函数的代码替换为以下代码，然后选择“保存”： 
+9. 请确保在代码编辑器中选择了 *run.csx* for **HttpTrigger1** 。 将 **HttpTrigger1** 函数的代码替换为以下代码，然后选择“保存”： 
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -314,35 +325,21 @@ ms.locfileid: "96571634"
 
     **选择要如何将设备分配到中心**：选择“自定义(使用 Azure Function)”。 
 
+    **订阅**：选择在其中创建 Azure 函数的订阅。
+
+    **Function App**：按名称选择函数应用。 **contoso-** -----1098 已在此示例中使用。
+
+    **函数**：选择 **HttpTrigger1** 函数。
+
     ![为对称密钥证明添加自定义分配注册组](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. 在“添加注册组”中，选择“链接新的 IoT 中心”以链接这两个新的部门 IoT 中心。  
-
-    请对两个部门 IoT 中心执行上述步骤。
-
-    **订阅**：如果你有多个订阅，请选择创建分区 IoT 中心的订阅。
-
-    **IoT 中心**：选择你创建的分区中心之一。
-
-    **访问策略**：选择“iothubowner”。 
-
-    ![使用预配服务链接分区 IoT 中心](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
-
-5. 在“添加注册组”  上，一旦链接这两个分区 IoT 中心后，必须将其选择为注册组的 IoT 中心组，如下所示：
-
-    ![为注册创建分区中心组](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
-
-6. 在“添加注册组”中，向下滚动到“选择 Azure 函数”部分，选择在上一部分创建的函数应用。   选择创建的函数，然后选择“保存”以保存该注册组。
-
-    ![选择函数并保存注册组](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
-
-7. 保存注册后，重新打开它，并记录“主键”  。 必须先保存注册，才能生成密钥。 此密钥稍后将用于为模拟设备生成唯一设备密钥。
+4. 保存注册后，重新打开它，并记录“主键”。 必须先保存注册，才能生成密钥。 此密钥稍后将用于为模拟设备生成唯一设备密钥。
 
 ## <a name="derive-unique-device-keys"></a>派生唯一设备密钥
 
 在本部分，你将创建两个唯一的设备密钥。 一个密钥将用于模拟的烤箱设备。 另一个密钥将用于模拟的热泵设备。
 
-若要生成设备密钥，请使用前面记下的“主密钥”来计算每个设备的设备注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。  有关使用注册组创建派生设备密钥的详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)的组注册部分。
+若要生成设备密钥，请使用前面记 **下的主密钥** 来计算每个设备的设备注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ，并将结果转换为 Base64 格式。 有关使用注册组创建派生设备密钥的详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)的组注册部分。
 
 对于本文中的示例，使用以下两个设备注册 ID 并计算这两个设备的设备密钥。 这两个注册 ID 都具有有效的后缀，以与自定义分配策略的示例代码结合使用：
 
@@ -386,7 +383,7 @@ ms.locfileid: "96571634"
     $REG_ID2='mainbuilding167-contoso-hpsd-088'
 
     $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
-    $hmacsha256.key = [Convert]::FromBase64String($key)
+    $hmacsha256.key = [Convert]::FromBase64String($KEY)
     $sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
     $sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
     $derivedkey1 = [Convert]::ToBase64String($sig1)

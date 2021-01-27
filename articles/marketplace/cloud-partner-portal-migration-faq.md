@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 8346edd0f6016f1751a392213e5d6321f875baf2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 091feacceb510038786ae487c0895f9ff1e47aba
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455652"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880332"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>有关从云合作伙伴门户过渡到合作伙伴中心的常见问题
 
@@ -87,7 +87,7 @@ ms.locfileid: "96455652"
 | IoT Edge 模块 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅在 [Azure Marketplace 中创建、配置和发布 IoT Edge 模块产品](partner-center-portal/azure-iot-edge-module-creation.md)。 |
 | 容器 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请参阅 [创建 Azure 容器产品](./create-azure-container-offer.md)。 |
 | 咨询服务 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 请在 [创建咨询服务产品](./create-consulting-service-offer.md)上了解详细信息。 |
-| 托管服务 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 请在 [创建托管服务产品](partner-center-portal/create-new-managed-service-offer.md)中了解详细信息。 |
+| 托管服务 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 请在 [创建托管服务产品](./plan-managed-service-offer.md)中了解详细信息。 |
 | Dynamics Nav 托管服务 | 否 | Microsoft 已将 Dynamics NAV 托管服务发展为 [dynamics 365 Business Central](/dynamics365/business-central/)，因此我们从 AppSource 中取消列出了 Dynamics Nav 托管服务实时优惠。 这些产品/服务不再被客户发现，也没有移动到合作伙伴中心。 若要在 AppSource 中提供产品/服务，请将其调整为 Dynamics 365 Business Central 产品/服务，并将其提交到 [合作伙伴中心](https://partner.microsoft.com/)。 有关详细信息，请参阅 [创建 Dynamics 365 Business Central 产品](partner-center-portal/create-new-business-central-offer.md)。 |
 | Cortana Intelligence | 否 | Microsoft 为 Cortana Intelligence 发展了产品路线图，因此我们从 AppSource 中取消列出了 Cortana Intelligence live 产品。 这些产品/服务不再被客户发现，也没有移动到合作伙伴中心。 若要在商业应用商店中提供产品/服务，请将你的产品/服务作为服务 (SaaS) 提供，并将其提交到 [合作伙伴中心](https://partner.microsoft.com/)。 有关详细信息，请参阅在 [合作伙伴中心创建清单](./plan-saas-offer.md)。 |
 

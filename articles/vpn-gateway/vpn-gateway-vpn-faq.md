@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 7e59c8ecc0d7af341ddc1ea79aa42460e00fa444
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 467c2b9fe8758db5c1da43a65c1bfde133df0823
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419769"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880095"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 网关常见问题
 
@@ -38,7 +38,7 @@ ms.locfileid: "89419769"
 
 支持以下跨界连接：
 
-* 站点到站点 - 基于 IPsec（IKE v1 和 IKE v2）的 VPN 连接。 此类型的连接需要 VPN 设备或 RRAS。 有关详细信息，请参阅[站点到站点](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+* 站点到站点 - 基于 IPsec（IKE v1 和 IKE v2）的 VPN 连接。 此类型的连接需要 VPN 设备或 RRAS。 有关详细信息，请参阅[站点到站点](./tutorial-site-to-site-portal.md)。
 * 点到站点 - 基于 SSTP（安全套接字隧道协议）或 IKE v2 的 VPN 连接。 此连接不需要 VPN 设备。 有关详细信息，请参阅[点到站点](vpn-gateway-howto-point-to-site-resource-manager-portal.md)。
 * VNet 到 VNet - 此类连接与站点到站点配置相同。 VNet 到 VNet 是一种基于 IPsec（IKE v1 和 IKE v2）的 VPN 连接。 它不需要 VPN 设备。 有关详细信息，请参阅 [VNet 到 VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)。
 * 多站点 - 这是站点到站点配置的变体，可以用于将多个本地站点连接到虚拟网络。 有关详细信息，请参阅[多站点](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。
@@ -70,13 +70,13 @@ VPN 网关是一种虚拟网络网关。 VPN 网关通过公共连接在虚拟�
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>能否将基于策略的 VPN 网关更新为基于路由？
 
-否。Azure Vnet 网关类型不能从基于策略更改为基于路由，反之亦然。 必须先删除该网关，然后再重新创建，此过程需时约 60 分钟。 不会保留网关的 IP 地址，也不会保留预共享密钥 (PSK)。
+否。 Azure Vnet 网关类型不能从基于策略更改为基于路由，反之亦然。 必须先删除该网关，然后再重新创建，此过程需时约 60 分钟。 不会保留网关的 IP 地址，也不会保留预共享密钥 (PSK)。
 1. 删除与要删除的网关相关联的任何连接。
 1. 删除网关：
    - [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
    - [Azure PowerShell - 经典](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [创建所需类型的新网关并完成 VPN 设置](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)。
+1. [创建所需类型的新网关并完成 VPN 设置](./tutorial-site-to-site-portal.md#VNetGateway)。
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>是否需要“GatewaySubnet”？
 
@@ -92,7 +92,7 @@ VPN 网关是一种虚拟网络网关。 VPN 网关通过公共连接在虚拟�
 
 区域冗余和区域性网关 (的网关 Sku，其中 _AZ_ in name) 均依赖于 _标准 SKU_ Azure 公共 IP 资源。 Azure 标准 SKU 公共 IP 资源必须使用静态分配方法。 因此，在创建了要用于它的标准 SKU 公共 IP 资源后，就会获得 VPN 网关的公共 IP 地址。
 
-对于不包含_AZ_ in name) 的非区域冗余和非区域性网关 (，在创建 VPN 网关 IP 地址_之前无法获取_该地址。 仅当你删除并重新创建 VPN 网关时，IP 地址才会更改。
+对于不包含 _AZ_ in name) 的非区域冗余和非区域性网关 (，在创建 VPN 网关 IP 地址 _之前无法获取_ 该地址。 仅当你删除并重新创建 VPN 网关时，IP 地址才会更改。
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>能否为 VPN 网关请求静态公共 IP 地址？
 
@@ -127,9 +127,9 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 隧
 
 是的。 请参阅[配置强制隧道](vpn-gateway-about-forced-tunneling.md)。
 
-### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>能否在 VPN 连接上使用 NAT？
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>可在 VPN 连接上使用 NAT-T 吗？
 
-是，支持 NAT 遍历 (NAT-T) 。 Azure VPN 网关不会对来自 IPsec 隧道的内部数据包执行类似于 NAT 的任何功能。  在此配置中，请确保本地设备启动 IPSec 隧道。
+可以，支持 NAT 遍历 (NAT-T)。 Azure VPN 网关不会对来自 IPsec 隧道的内部数据包执行类似于 NAT 的任何功能。  在此配置中，请确保本地设备启动 IPSec 隧道。
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>是否可以在 Azure 中设置自己的 VPN 服务器，并使用它连接到本地网络？
 

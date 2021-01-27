@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 67c20823d1f80360b2ab23dc3f208673d36a7374
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: dd7b19a2c9e872b811c1aab6e504accb7de383b2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742210"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896471"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a> (经典) 的 Azure 云服务部署问题：常见问题解答 (常见问题) 
 
@@ -52,7 +52,7 @@ ms.locfileid: "98742210"
 
 你还可以在门户中跟踪订阅的当前使用情况/配额： Azure 门户 => 订阅 => \<appropriate subscription>   => "用量 + 配额"。
 
-资源使用情况/相关消耗信息也可以通过 Azure 计费 API 检索。 请参阅 [Azure 资源使用状况 API（预览）](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview)。
+资源使用情况/相关消耗信息也可以通过 Azure 计费 API 检索。 请参阅 [Azure 使用 API 概述](../cost-management-billing/manage/consumption-api-overview.md)。
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>如何在不重新部署已部署云服务虚拟机的情况下更改其大小？
 你无法在不重新部署已部署云服务虚拟机的情况下更改其大小。 虚拟机大小内置在 CSDEF 中，只能通过重新部署进行更新。

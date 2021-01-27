@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: e43c5fb36c5395e12fd0b9c2c67b787a1137f5d0
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: fce20626d5e000c08b8a057671c06a3084534187
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761988"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896030"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>排查 ITSM 连接器中的问题
 
 本文讨论 ITSM 连接器中的常见问题，以及如何解决这些问题。
 
-在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 有关警报的详细信息，请参阅 Microsoft Azure 中的警报概述。
+在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。
 无论是通过邮件、短信、Webhook 还是自动完成解决方案，客户都可以选择他们希望如何收到有关警报的通知。 要通知的另一种方法是使用 ITSM。
 ITSM 提供将警报发送到外部票证系统（如 ServiceNow）的选项。
 

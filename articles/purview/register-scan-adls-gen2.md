@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.openlocfilehash: 0232682661387e635e6ce8bfb5fc6e03301d130c
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694809"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882393"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>注册和扫描 Azure Data Lake Storage Gen2
 
@@ -44,11 +44,11 @@ Azure Data Lake Storage Gen2 支持以下身份验证方法：
 
 1. 导航到 ADLS Gen2 存储帐户。
 1. 在左侧导航栏菜单中，选择“访问控制 (IAM)”。 
-1. 选择“+ 添加”。
+1. 选择“+添加”。
 1. 将 **角色** 设置为 " **存储 Blob 数据读取器** "，然后在 " **选择** 输入框" 下输入 Azure 监控范围帐户名称。 然后，选择“保存”，将此角色分配给 Purview 帐户。
 
 > [!Note]
-> 有关更多详细信息，请参阅[使用 Azure Active Directory 授予对 blob 和队列的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)中的步骤
+> 有关更多详细信息，请参阅[使用 Azure Active Directory 授予对 blob 和队列的访问权限](../storage/common/storage-auth-aad.md)中的步骤
 
 #### <a name="account-key"></a>帐户密钥
 
@@ -94,7 +94,7 @@ Azure Data Lake Storage Gen2 支持以下身份验证方法：
 
 1. 导航到自己的存储帐户。
 1. 在左侧导航栏菜单中，选择“访问控制 (IAM)”。 
-1. 选择“+ 添加”。
+1. 选择“+添加”。
 1. 将 **角色** 设置为 " **存储 Blob 数据读取器** "，然后在 " **选择** 输入框" 下输入服务主体名称或对象 ID。 然后，选择 " **保存** "，将此角色分配给服务主体。
 ### <a name="firewall-settings"></a>防火墙设置
 

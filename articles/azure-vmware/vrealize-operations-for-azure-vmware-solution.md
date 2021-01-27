@@ -2,13 +2,13 @@
 title: 为 Azure VMware 解决方案设置 vRealize 操作
 description: 了解如何为 Azure VMware 解决方案私有云设置 vRealize 操作。
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: 25469089cf1fef076711bfaf1492fad43edbcf33
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 01/26/2021
+ms.openlocfilehash: c2470ecde0874b46da1236ca6e99e6b0b3eb990d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371777"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880685"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>为 Azure VMware 解决方案设置 vRealize 操作
 
@@ -21,14 +21,14 @@ vRealize Operations Manager 是一种操作管理平台，可让 VMware 基础�
 > * [用于管理 Azure VMware 解决方案部署的本地 vRealize 操作](#on-premises-vrealize-operations-managing-azure-vmware-solution-deployment)
 > * [Azure VMware 解决方案部署上运行的 vRealize 操作](#vrealize-operations-running-on-azure-vmware-solution-deployment)
 
-## <a name="before-you-begin"></a>准备工作
+## <a name="before-you-begin"></a>开始之前
 * 查看 [vRealize Operations Manager 产品文档](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) 以了解有关部署 vRealize 操作的详细信息。 
-* 查看基本 Azure VMware 解决方案 Software-Defined Datacenter (SDDC) [教程系列](tutorial-network-checklist.md)。
+* 查看基本的 Azure VMware 解决方案软件定义数据中心 (SDDC) [教程系列](tutorial-network-checklist.md)。
 * （可选）查看用于管理 Azure VMware 解决方案部署选项的本地 vRealize 操作的 [VRealize 操作远程控制器](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-263F9219-E801-4383-8A59-E84F3D01ED6B.html) 产品文档。 
 
 
-
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
+* [vRealize Operations Manager](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) 安装。
 * 在本地与 Azure VMware 解决方案 SDDC 之间配置的 VPN 或 Azure ExpressRoute。
 * Azure VMware 解决方案私有云已部署在 Azure 中。
 
@@ -50,15 +50,16 @@ vRealize Operations Manager 是一种操作管理平台，可让 VMware 基础�
 
 另一种方法是在私有云中的 vSphere 群集上部署 vRealize Operations Manager 的实例。 
 
-:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-2.png" alt-text="用于管理 Azure VMware 解决方案部署的本地 vRealize 操作" border="false":::
+>[!IMPORTANT]
+>VMware 目前不支持此选项。
+
+:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-2.png" alt-text="Azure VMware 解决方案上运行的 vRealize 操作" border="false":::
 
 部署实例后，可以配置 vRealize 操作以从 vCenter、ESXi、NSX-T、vSAN 和 HCX 收集数据。 
 
-> [!TIP]
-> 有关安装 vRealize Operations Manager 的循序渐进指南，请参阅 [VMware 文档](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) 。
 
 
-## <a name="known-limitations"></a>已知的限制
+## <a name="known-limitations"></a>已知限制
 
 - Azure VMware 解决方案中的 **cloudadmin \@ vsphere** 用户拥有有限的 [特权](concepts-role-based-access-control.md)。  Azure VMware 解决方案中 (Vm) 的虚拟机不支持使用 VMware 工具进行来宾内内存收集。  在这种情况下，活动和消耗的内存使用率将继续工作。
 - 基于主机的业务意向的工作负载优化不起作用，因为 Azure VMware 解决方案管理群集配置，包括 DRS 设置。
@@ -68,11 +69,11 @@ vRealize Operations Manager 是一种操作管理平台，可让 VMware 基础�
 
 使用 vCenter Server 的云帐户将 Azure VMware 解决方案 vCenter 连接到 vRealize Operations Manager 时，将看到一条警告：
 
-:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="用于管理 Azure VMware 解决方案部署的本地 vRealize 操作":::
+:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="警告适配器实例创建成功":::
 
 由于 Azure VMware 解决方案中的 **cloudadmin \@ vsphere** 用户没有足够的权限来执行注册所需的所有 vCenter Server 操作，因此会出现此警告。 但是，这些权限足以使适配器实例进行数据收集，如下所示：
 
-:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="用于管理 Azure VMware 解决方案部署的本地 vRealize 操作":::
+:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="要执行数据收集的适配器实例":::
 
 有关详细信息，请参阅 [配置 VCenter 适配器实例所需的特权](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.core.doc/GUID-3BFFC92A-9902-4CF2-945E-EA453733B426.html)。
 

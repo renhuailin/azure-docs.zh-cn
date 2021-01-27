@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e1b29d901630156471bbb9cb8b939bb4bb29c836
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 8a96b44a280e0aea15a6d0843f02f4ed16f8fcf4
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724216"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879841"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可以通过两种主要方式部署[Azure 文件](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步在本地缓存 azure 文件共享。你选择哪种部署选项会更改你在规划部署时需要考虑的事项。 
@@ -131,6 +131,6 @@ Azure[文件共享的 Azure 备份](../../backup/azure-file-share-backup-overvie
 
 ## <a name="next-steps"></a>后续步骤
 * [规划 Azure 文件同步部署](storage-sync-files-planning.md)
-* [部署 Azure 文件](storage-files-deployment-guide.md)
+* [部署 Azure 文件](./storage-how-to-create-file-share.md)
 * [部署 Azure 文件同步](storage-sync-files-deployment-guide.md)
 * [查看迁移概述一文，了解适用于你的方案的迁移指南](storage-files-migration-overview.md)

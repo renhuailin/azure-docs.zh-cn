@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 028250e25f4d67628c08970e25b4621e78526b6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0291b18952efc643de18e111154ebe58f041af
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440827"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880078"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>使用 Azure VPN 网关点到站点连接实现远程工作
 
@@ -36,7 +36,7 @@ Azure 点到站点解决方案基于云且可快速预配，以满足在家办�
 
 在此场景中，远程用户只需访问 Azure 中的资源。
 
-![此图显示了只需要访问 Azure 中的资源的用户的点到站点方案。](./media/working-remotely-support/scenario1.png "方案 1")
+![此图显示了用户只需访问 Azure 中的资源的点到站点方案。](./media/working-remotely-support/scenario1.png "方案 1")
 
 从较高层面讲，需要执行以下步骤才能使用户安全连接到 Azure 资源：
 
@@ -55,7 +55,7 @@ Azure 点到站点解决方案基于云且可快速预配，以满足在家办�
 
 在此场景中，远程用户需要访问 Azure 中以及本地数据中心内的资源。
 
-![此图显示了需要访问 Azure 中的资源的用户的点到站点方案。](./media/working-remotely-support/scenario2.png "方案 2")
+![此图显示了用户需要访问 Azure 中的资源的点到站点方案。](./media/working-remotely-support/scenario2.png "方案 2")
 
 从较高层面讲，需要执行以下步骤才能使用户安全连接到 Azure 资源：
 
@@ -65,7 +65,7 @@ Azure 点到站点解决方案基于云且可快速预配，以满足在家办�
 4. 配置本地设备以连接到 Azure 虚拟网关。
 5. 从 Azure 门户下载点到站点配置文件并将其分发到客户端
 
-若要了解如何设置站点到站点 VPN 隧道，请参阅[此链接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+若要了解如何设置站点到站点 VPN 隧道，请参阅[此链接](./tutorial-site-to-site-portal.md)。
 
 ## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>本机 Azure 证书身份验证常见问题解答
 

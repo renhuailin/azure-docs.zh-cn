@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 349456b0a4de65520dd633efe0573d24ea1c89c4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f945699256b4de9bd87ee4ab7500268302e93089
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409019"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880163"
 ---
 # <a name="security-control-secure-configuration"></a>安全控制：安全配置
 
@@ -88,9 +88,9 @@ ms.locfileid: "94409019"
 
 - [在 Azure 门户中创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-portal.md)
 
-- [有关如何下载 VM 模板的信息](../../virtual-machines/windows/download-template.md)
+- [有关如何下载 VM 模板的信息](/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [将 VHD 上传到 Azure 并创建新的 VM 的示例脚本](../../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [将 VHD 上传到 Azure 并创建新的 VM 的示例脚本](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 ## <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
@@ -118,7 +118,7 @@ ms.locfileid: "94409019"
 
 - [如何配置 Azure RBAC](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [共享映像库概述](../../virtual-machines/windows/shared-image-galleries.md)
+- [共享映像库概述](../../virtual-machines/shared-image-galleries.md)
 
 ## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 

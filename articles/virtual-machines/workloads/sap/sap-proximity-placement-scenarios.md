@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e6aaf1b37073bf93e0aca8237161bf11af3a872
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: ee28f25e766940eb51e92b61fd782b97fd888705
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827217"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879606"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>适用于 SAP 应用程序的最佳网络延迟的 Azure 邻近性放置组
 基于 SAP NetWeaver 或 SAP S/4HANA 体系结构的 SAP 应用程序对于 SAP 应用程序层和 SAP 数据库层之间的网络延迟很敏感。 此敏感度是指在应用程序层中运行的大多数业务逻辑的结果。 因为 SAP 应用程序层运行业务逻辑，所以它将以较高的频率向数据库层发出查询，每秒的速率为上千或数万。 在大多数情况下，这些查询的性质很简单。 它们通常可以在500微秒内或更短的时间内在数据库层上运行。
@@ -30,11 +30,11 @@ ms.locfileid: "97827217"
 
 在许多 Azure 区域中，数据中心的数量越来越多。 同时，客户（尤其是对于高端 SAP 系统）使用 M 或 Mv2 系列的更多特别 VM Sku 或 HANA 大型实例。 Azure 虚拟机的所有数据中心都不会始终提供这些 Azure 虚拟机类型。 这些事实可以为优化 SAP 应用程序层和 SAP DBMS 层之间的网络延迟创造机会。
 
-为了使你能够优化网络延迟，Azure 提供了 [邻近的放置组](../../linux/co-location.md)。 邻近位置组可用于强制将不同 VM 类型分组到单个 Azure 数据中心，以尽可能优化这些不同 VM 类型之间的网络延迟。 在将第一个 VM 部署到此类邻近布局组的过程中，VM 会绑定到特定的数据中心。 这种情况下，构造的使用也会引入一些限制：
+为了使你能够优化网络延迟，Azure 提供了 [邻近的放置组](../../co-location.md)。 邻近位置组可用于强制将不同 VM 类型分组到单个 Azure 数据中心，以尽可能优化这些不同 VM 类型之间的网络延迟。 在将第一个 VM 部署到此类邻近布局组的过程中，VM 会绑定到特定的数据中心。 这种情况下，构造的使用也会引入一些限制：
 
 - 你不能假定所有 Azure VM 类型在所有 Azure 数据中心都可用。 因此，可以限制一个邻近位置组内不同 VM 类型的组合。 出现这些限制的原因是，运行特定 VM 类型所需的主机硬件可能不存在于放置组所部署到的数据中心
 - 当调整位于某个邻近布局组内的 Vm 的各个部分时，你无法自动假设，在所有情况下，新的 VM 类型都与作为邻近位置组一部分的其他 Vm 在同一数据中心内可用
-- Azure add-on 硬件可能会将邻近组的某些 Vm 强制转换到另一个 Azure 数据中心。 有关涵盖这种情况的详细信息，请阅读文档 [归置资源以提高延迟](../../linux/co-location.md#planned-maintenance-and-proximity-placement-groups)  
+- Azure add-on 硬件可能会将邻近组的某些 Vm 强制转换到另一个 Azure 数据中心。 有关涵盖这种情况的详细信息，请阅读文档 [归置资源以提高延迟](../../co-location.md#planned-maintenance-and-proximity-placement-groups)  
 
 > [!IMPORTANT]
 > 由于潜在限制，应使用邻近位置组：

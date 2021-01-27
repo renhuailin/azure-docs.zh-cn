@@ -2,19 +2,19 @@
 title: 迁移 Microsoft Translator Hub 工作区和项目 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何将中心工作区和项目迁移到 Azure 认知服务自定义转换器。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 05/26/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 64c449bdefe6fb067a7c0e26b155b58b6f00c399
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 89658ce88b4f1ac9d5bacac7bd45511b4aa0a1be
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368278"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895702"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>将 Hub 工作区和项目迁移到自定义翻译
 
@@ -130,7 +130,7 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 此表比较了 Microsoft Translator Hub 和自定义翻译器之间的功能。
 
-| 功能 | 集线器 | 自定义翻译 |
+| Feature | 集线器 | 自定义翻译 |
 | ------- | :-: | :---------------: |
 | 自定义功能状态    | 正式版    | 正式版 |
 | 文本 API 版本    | V2     | V3  |

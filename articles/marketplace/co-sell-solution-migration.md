@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 0114c75d99d79041631e5078deb33f77863dc35a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 84d98eedb3ea6f3faaeaecf832811f9f4c78c7c5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043772"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880349"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>将共同销售解决方案从 OCP 转移到商业应用商店
 
@@ -44,7 +44,7 @@ Microsoft 正在移动发布体验。 通过将产品/服务的创建和管理�
 
 在从 OCP 操作中导入解决方案之前，请执行以下步骤：
 
-1. 请访问你的公司的 [发布者列表](https://partner.microsoft.com/dashboard/account/v3/publishers/list)。 它包括具有发布访问权限的帐户所有者、经理和开发人员。 了解有关 [合作伙伴中心用户角色](/azure/marketplace/partner-center-portal/manage-account#define-user-roles-and-permissions)的详细信息。
+1. 请访问你的公司的 [发布者列表](https://partner.microsoft.com/dashboard/account/v3/publishers/list)。 它包括具有发布访问权限的帐户所有者、经理和开发人员。 了解有关 [合作伙伴中心用户角色](./partner-center-portal/manage-account.md#define-user-roles-and-permissions)的详细信息。
 2. 请求列出的其中一个联系人将 [用户](https://partner.microsoft.com/dashboard/account/usermanagement) 作为 *经理* 或 *开发人员* 添加到商业市场，因为只有这些角色才能编辑和发布解决方案。
 3. 与开发人员协作，将你的解决方案从你的 OCP 方式帐户移到商用 marketplace。
 4. 确定要执行以下操作：
@@ -84,7 +84,7 @@ Microsoft 正在移动发布体验。 通过将产品/服务的创建和管理�
 1. 请求合并。
     1. " **操作 2** " 选项卡显示了请求将 OCP 方向解决方案合并到所识别的解决方案的说明。 若要请求合并，请选择 " **保存 & 联系支持** 人员，这将在浏览器中打开合作伙伴支持页面。
     1. 选择 "**提供问题详细信息**"，然后输入以下内容： [ ![ 合并进程的 "操作 2" 选项卡。](media/co-sell-migrate/action-2-merge.png)](media/co-sell-migrate/action-2-merge.png#lightbox)
-    1. 选择“提交”。  合作伙伴支持团队将在两个工作日内与你联系。
+    1. 选择“提交”。 合作伙伴支持团队将在两个工作日内与你联系。
     1. 合作伙伴支持人员将与你合作，以确保成功合并此产品/服务，以便将其发布为实时产品/服务。
 
 ### <a name="migrate-this-solution-from-ocp-gtm"></a>从 OCP 转移迁移此解决方案
@@ -156,4 +156,3 @@ Microsoft 正在移动发布体验。 通过将产品/服务的创建和管理�
 - [通过 CSP 合作伙伴转售](cloud-solution-providers.md)
 - [如何在合作伙伴中心提交共同销售材料](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
 - 查看这些 [faq](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF) 
-

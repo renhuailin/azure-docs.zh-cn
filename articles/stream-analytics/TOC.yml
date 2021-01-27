@@ -39,7 +39,7 @@
     - name: 创建自定义 .NET 反序列化程序
       href: custom-deserializer.md
     - name: 创建 IoT Edge 作业
-      href: /azure/iot-edge/tutorial-deploy-stream-analytics?view=iotedge-2018-06
+      href: ../iot-edge/tutorial-deploy-stream-analytics.md?view=iotedge-2018-06
       maintainContext: true
 - name: 示例
   items:
@@ -343,7 +343,7 @@
             - name: 聚合函数概述
               href: /stream-analytics-query/aggregate-functions-azure-stream-analytics
               maintainContext: true
-            - name: 平均值
+            - name: AVG
               href: /stream-analytics-query/avg-azure-stream-analytics
               maintainContext: true
             - name: COUNT
@@ -358,7 +358,7 @@
             - name: MAX
               href: /stream-analytics-query/max-azure-stream-analytics
               maintainContext: true
-            - name: 最小值
+            - name: MIN
               href: /stream-analytics-query/min-azure-stream-analytics
               maintainContext: true
             - name: Percentile_Cont
