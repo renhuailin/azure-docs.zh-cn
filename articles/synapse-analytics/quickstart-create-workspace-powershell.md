@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0537d2353d6b372ed19127101c488b872bbc5224
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 43f07bc26e75b440cde6d26db8ac8fb80aa3e39c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218852"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796912"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Azure Synapse 工作区
 
@@ -70,26 +70,6 @@ Install-Module -Name Az.Synapse
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $SynapseResourceGroup -Location $Region
-   ```
-
-1. 检索 ADLS Gen 2 存储帐户密钥：
-
-   ```azurepowershell-interactive
-   $StorageAccountKey = Get-AzStorageAccountKey -ResourceGroupName $StorageAccountResourceGroup -Name $StorageAccountName |
-     Select-Object -First 1 -ExpandProperty Value
-    ```
-
-1. 检索 ADLS Gen 2 存储终结点 URL：
-
-   ```azurepowershell-interactive
-   $StorageEndpointUrl = (Get-AzStorageAccount -ResourceGroupName $StorageAccountResourceGroup -Name $StorageAccountName).PrimaryEndpoints.Dfs
-   ```
-
-1. （可选）始终可查看 ADLS Gen2 存储帐户密钥和终结点：
-
-   ```azurepowershell-interactive
-   Write-Output "Storage Account Key: $StorageAccountKey"
-   Write-Output "Storage Endpoint URL: $StorageEndpointUrl"
    ```
 
 1. 创建 Azure Synapse 工作区：

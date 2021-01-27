@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 6aeb4e29390b5b456d3aa820e4b3b8be762dbddd
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: dea881acc4cec90c4a8ad6169d94734f24d5b759
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115780"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880027"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Purview 帐户
 
@@ -25,7 +25,7 @@ ms.locfileid: "98115780"
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 你拥有 [Azure Active Directory 租户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)。
+* 你拥有 [Azure Active Directory 租户](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)。
 
 * 你的帐户必须有权在订阅中创建资源
 
@@ -35,7 +35,7 @@ ms.locfileid: "98115780"
     > 如果你没有 Azure Policy 或现有 Azure Policy 未阻止创建存储帐户和 EventHub 命名空间，则无需执行此步骤 。
 
     1. 导航到 Azure 门户并搜索“策略”
-    1. 遵循[创建自定义策略定义](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition)，或修改现有策略，以使用 `not` 运算符和 `resourceBypass` 标记添加两个例外：
+    1. 遵循[创建自定义策略定义](../governance/policy/tutorials/create-custom-policy-definition.md)，或修改现有策略，以使用 `not` 运算符和 `resourceBypass` 标记添加两个例外：
 
         ```json
         {
@@ -83,7 +83,7 @@ ms.locfileid: "98115780"
 
         :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="显示如何创建策略定义的屏幕截图。":::
 
-    1. 使用创建的自定义策略[创建策略分配](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)。
+    1. 使用创建的自定义策略[创建策略分配](../governance/policy/assign-policy-portal.md)。
 
         [ ![显示如何创建策略分配的屏幕截图](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
 
@@ -155,7 +155,7 @@ ms.locfileid: "98115780"
 
 1. 选择“添加角色分配”。
 
-1. 对于 Purview Data Curator 角色或 Purview Data Source Administrator 角色中的角色类型，具体取决于要使用角色的安全主体（有关详细信息，请参阅[目录权限](catalog-permissions.md)和 [Azure Active Directory 中的应用程序和服务主体对象](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)） 。
+1. 对于 Purview Data Curator 角色或 Purview Data Source Administrator 角色中的角色类型，具体取决于要使用角色的安全主体（有关详细信息，请参阅[目录权限](catalog-permissions.md)和 [Azure Active Directory 中的应用程序和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md)） 。
 
 1. 对于“访问权限分配对象”，保留默认值，即“用户、组或服务主体” 。
 

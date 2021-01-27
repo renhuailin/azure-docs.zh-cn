@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: 4ecd436b548c29c520a7538970d4d703cc8488d2
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 31472b0a0eedee03d5cfcb6ff47a97033a8c78e0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027561"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796068"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>对管理组中的所有订阅启用安全中心
 
@@ -98,4 +98,4 @@ ms.locfileid: "93027561"
 现已加入了整个管理组，请启用 Azure Defender 的高级保护。 
 
 > [!div class="nextstepaction"]
-> [启用 Azure Defender](security-center-pricing.md)
+> [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)

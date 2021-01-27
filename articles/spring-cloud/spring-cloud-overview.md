@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/02/2020
 ms.author: brendm
 ms.custom: devx-track-java, contperf-fy21q2
-ms.openlocfilehash: fc3f78131518b4d8740c25ab37c48d4444deef10
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b7f5d4206140bf2101c10b1cd4ac46d80bdd3342
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563137"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881697"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure Spring Cloud 是什么？
 
@@ -27,7 +27,7 @@ ms.locfileid: "97563137"
 * 无需依赖容器化即可快速开发和部署。
 * 有效轻松地监视生产工作负载。
 
-Azure Spring Cloud 同时支持 Java [Spring Boot](https://spring.io/projects/spring-boot) 和 ASP.NET Core [Steeltoe](https://steeltoe.io/) 应用。 Steeltoe 支持目前以公共预览版的形式提供。 使用公共预览版产品/服务，你可以在产品/服务正式发布之前体验新功能。 公共预览功能和服务并非供生产使用。 有关详细信息，请参阅[常见问题解答](https://azure.microsoft.com/support/faq/)或[支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+Azure Spring Cloud 同时支持 Java [Spring Boot](https://spring.io/projects/spring-boot) 和 ASP.NET Core [Steeltoe](https://steeltoe.io/) 应用。 Steeltoe 支持目前以公共预览版的形式提供。 使用公共预览版产品/服务，你可以在产品/服务正式发布之前体验新功能。 公共预览功能和服务并非供生产使用。 有关详细信息，请参阅[常见问题解答](https://azure.microsoft.com/support/faq/)或[支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 ## <a name="service-overview"></a>服务概述
 
@@ -64,7 +64,7 @@ Azure Spring Cloud 是 Azure 生态系统的一部分，用户可以通过它轻
     * [与其他 Azure 服务集成](spring-cloud-tutorial-bind-cosmos.md)：可以将所选 Azure 服务自动绑定到应用程序（例如，将应用程序绑定到 Azure Cosmos DB 数据库），而不必手动配置 Spring Boot 应用程序。
     * [自动化](spring-cloud-howto-cicd.md)：借助持续集成和持续交付工具，能够以最少的工作量将更新快速部署到现有应用程序，同时将风险降至最低。 Azure DevOps 有助于组织和控制这些关键任务。 
     * [故障排除](spring-cloud-howto-self-diagnose-solve.md)：Azure Spring Cloud 诊断提供的交互式体验可帮助对应用进行故障排除。 不需要任何配置。 如果发现问题，Azure Spring Cloud 诊断会识别问题并指导你获取有助于排查和解决问题的信息。
-    * [迁移](https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud)：如何迁移现有的 Spring Cloud 应用程序或 Spring Boot 应用程序，使其在 Azure Spring Cloud 上运行。
+    * [迁移](/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud)：如何迁移现有的 Spring Cloud 应用程序或 Spring Boot 应用程序，使其在 Azure Spring Cloud 上运行。
 
 ## <a name="next-steps"></a>后续步骤
 

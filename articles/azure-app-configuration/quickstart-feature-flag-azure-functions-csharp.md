@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 6996fdd9dce4314e9365177815d7d310ac80c7cb
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046067"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724239"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>快速入门：向 Azure Functions 应用添加功能标志
 
@@ -46,7 +46,7 @@ ms.locfileid: "98046067"
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-此项目将[ .NET Azure Functions 中使用依赖项注入](/azure/azure-functions/functions-dotnet-dependency-injection)。 它将 Azure 应用程序配置添加为存储功能标志的额外配置源。
+此项目将[ .NET Azure Functions 中使用依赖项注入](../azure-functions/functions-dotnet-dependency-injection.md)。 它将 Azure 应用程序配置添加为存储功能标志的额外配置源。
 
 1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索以下 NuGet 包并将其添加到项目中。
    - [Microsoft.Extensions.Configuration.AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) 版本 4.1.0 或更高版本

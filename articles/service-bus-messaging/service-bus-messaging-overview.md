@@ -3,12 +3,12 @@ title: Azure 服务总线消息传送概述 | Microsoft Docs
 description: 本文粗略概述了 Azure 服务总线（一个完全托管的企业集成消息代理）。
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: 70e9d966a14f78866d72865eed4cbb2dfd6c18dd
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 7453e8dd300ad754fb58489f059670af209314ab
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755729"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881595"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 Microsoft Azure 服务总线是一个完全托管的企业消息代理，其中包含消息队列和发布订阅主题。 服务总线用于分离应用程序和服务，提供以下优势：
@@ -32,7 +32,7 @@ Microsoft Azure 服务总线是一个完全托管的企业消息代理，其中�
     2. 将处理结果发布到一个或多个不同的队列。
     3. 从原始队列移动输入消息。 
     
-    仅在成功时才对下游使用者显示结果，包括成功处置输入消息，允许使用一次性处理语义。 对于更大的解决方案上下文中的[补偿事务](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction)模式，此事务模型是一个可靠的基础。 
+    仅在成功时才对下游使用者显示结果，包括成功处置输入消息，允许使用一次性处理语义。 对于更大的解决方案上下文中的[补偿事务](/azure/architecture/patterns/compensating-transaction)模式，此事务模型是一个可靠的基础。 
 * *消息会话*。 对于需要严格消息排序或消息延迟的工作流和多路复用传输，实现大规模协调。
 
 如果熟悉 Apache ActiveMQ 等其他消息代理，服务总线的概念与你已知的概念相似。 服务总线是一个平台即服务 (PaaS) 产品，一个关键区别在于你不用担心以下操作。 Azure 会为你完成这些琐事。 
@@ -138,11 +138,11 @@ Microsoft Azure 服务总线是一个完全托管的企业消息代理，其中�
 
 可通过 Azure SDK 使用完全受支持的服务总线客户端库。
 
-- [适用于 .NET 的 Azure 服务总线](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
-- [适用于 Java 的 Azure 服务总线库](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
+- [适用于 .NET 的 Azure 服务总线](/dotnet/api/overview/azure/service-bus?preserve-view=true)
+- [适用于 Java 的 Azure 服务总线库](/java/api/overview/azure/servicebus?preserve-view=true)
 - [适用于 Java JMS 2.0 的 Azure 服务总线提供程序](how-to-use-java-message-service-20.md)
-- [适用于 JavaScript 和 TypeScript 的 Azure 服务总线模块](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [适用于 Python 的 Azure 服务总线库](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [适用于 JavaScript 和 TypeScript 的 Azure 服务总线模块](/javascript/api/overview/azure/service-bus?preserve-view=true)
+- [适用于 Python 的 Azure 服务总线库](/python/api/overview/azure/servicebus?preserve-view=true)
 
 [Azure 服务总线的主要协议是 AMQP 1.0](service-bus-amqp-overview.md)，可从兼容 AMQP 1.0 的任何协议客户端使用它。 若干开源 AMQP 客户端具有显式演示服务总线互操作性的示例。 查看 [AMQP 1.0 协议指南](service-bus-amqp-protocol-guide.md)，了解如何通过 AMQP 1.0 客户端直接使用服务总线功能。
 

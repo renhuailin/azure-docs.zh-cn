@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8e3f0435d9856d2b602a4f2b6f604aee05e040ba
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: b55ea814214397e12e50e7bc5047988394623940
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505199"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703583"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 存储简介
 
@@ -70,7 +70,7 @@ Azure 存储支持三种类型的 Blob：
 - **Azure 数据工厂** 支持使用 Azure 资源的帐户密钥、共享访问签名、服务主体或托管标识向/从 Blob 存储复制数据。 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Azure Blob 存储复制数据](../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 - **Blobfuse** 是 Azure Blob 存储的虚拟文件系统驱动程序。 可以使用 Blobfuse 通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 有关详细信息，请参阅[如何使用 Blobfuse 将 Blob 存储装载为文件系统](storage-how-to-mount-container-linux.md)。
 - 如果大型数据集或网络限制导致通过网络上传数据不可行，**Azure Data Box** 服务可将本地数据传输到 Blob 存储。 根据数据大小，你可以向 Microsoft 请求 [Azure Data Box Disk](../../databox/data-box-disk-overview.md)、[Azure Data Box](../../databox/data-box-overview.md) 或 [Azure Data Box Heavy](../../databox/data-box-heavy-overview.md) 设备。 然后，你可以将数据复制到这些设备中，将设备寄回 Microsoft，我们就会将数据上传到 Blob 存储中。
-- **Azure 导入/导出服务** 提供了一种使用你提供的硬盘向存储帐户导入或从存储帐户导出大量数据的方法。 有关详细信息，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中](../common/storage-import-export-service.md)。
+- **Azure 导入/导出服务** 提供了一种使用你提供的硬盘向存储帐户导入或从存储帐户导出大量数据的方法。 有关详细信息，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中](../../import-export/storage-import-export-service.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

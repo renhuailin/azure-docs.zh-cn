@@ -4,16 +4,16 @@ description: 了解 Azure Analysis Services，它是一种可在云中提供企�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 01/07/2021
+ms.date: 01/20/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: c4a14ab1e5b52eb36a532c6d69713d588864d288
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 542b1ed96025f6bd40cd4da766b434dde3569c25
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019068"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663768"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -83,6 +83,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |---------|---------|:---------:|
 |巴西南部     |    B1、B2、S0、S1、S2、S4、D1     |     1    |
 |加拿大中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
+|加拿大中部     |     S8v2、S9v2   |    1    |
 |美国东部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
 |美国东部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
 |美国东部 2     |     S8v2、S9v2   |    1    |
@@ -174,7 +175,7 @@ Azure Analysis Services 防火墙阻止所有客户端连接，规则中指定�
 
 用户身份验证由 [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) 处理。 登录时，用户需使用组织帐户标识对数据库进行基于角色的访问。 用户标识必须是服务器所在订阅的默认 Azure Active Directory 成员。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 
-### <a name="data-security"></a>数据安全
+### <a name="data-security"></a>数据安全性
 
 Azure Analysis Services 使用 Azure Blob 存储来持久保留 Analysis Services 数据库的存储和元数据。 使用 [Azure Blob 服务器端加密 (SSE)](../storage/common/storage-service-encryption.md) 加密 Blob 中的数据文件。 使用“直接查询”模式时，仅存储元数据。 查询时通过加密的协议从数据源访问实际数据。
 

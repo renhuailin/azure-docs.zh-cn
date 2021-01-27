@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b8738b46359287ce1d4e410292cdce213ab80999
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9077ce35065b1bf45646496cc4c43d6def82d958
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115814"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685219"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>什么是 Azure Synapse Analytics 中的专用 SQL 池（之前称为 SQL DW）？
 
@@ -29,7 +29,7 @@ Azure Synapse Analytics 是一种分析服务，它将企业数据仓库和大�
 
 专用 SQL 池（之前称为 SQL DW）表示使用 Synapse SQL 时预配的分析资源集合。 专用 SQL 池（之前称为 SQL DW）的大小由数据仓库单位 (DWU) 决定。
 
-创建专用 SQL 池后，可以使用简单的 [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 查询导入大数据，然后利用分布式查询引擎的功能运行高性能分析。 对数据进行集成和分析时，专用 SQL 池（之前称为 SQL DW）将成为企业赖以获取更快、更可靠见解的唯一信息源。
+创建专用 SQL 池后，可以使用简单的 [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL 查询导入大数据，然后利用分布式查询引擎的功能运行高性能分析。 对数据进行集成和分析时，专用 SQL 池（之前称为 SQL DW）将成为企业赖以获取更快、更可靠见解的唯一信息源。
 
 > [!NOTE]
 >浏览 [Azure Synapse Analytics 文档](../overview-what-is.md)。

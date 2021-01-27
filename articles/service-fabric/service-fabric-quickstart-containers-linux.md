@@ -4,12 +4,12 @@ description: 在此快速入门中，将使用你的应用程序生成 Docker �
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 27d9c96643feb805a785e1e535cd8cac2602082b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f58b8feda0e88d8a5e7cddaabbc650b0f0ab3973
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741926"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788156"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>快速入门：将 Linux 容器部署到 Service Fabric
 
@@ -25,7 +25,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 1. 如果还没有订阅，请在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-2. 安装 [Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+2. 安装 [Azure CLI](/cli/azure/install-azure-cli-apt)
 
 3. 安装 [Service Fabric SDK 和 CLI](service-fabric-get-started-linux.md#installation-methods)
 
@@ -168,7 +168,7 @@ Service Fabric 可确保在发生故障时，将容器实例自动转移到群�
 
 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。
 
-登录到 Azure，选择要删除群集的订阅 ID。 可通过登录到 Azure 门户查找订阅 ID。 使用 [az group delete 命令](/cli/azure/group?view=azure-cli-latest)删除资源组和所有群集资源。
+登录到 Azure，选择要删除群集的订阅 ID。 可通过登录到 Azure 门户查找订阅 ID。 使用 [az group delete 命令](/cli/azure/group)删除资源组和所有群集资源。
 
 ```azurecli
 az login

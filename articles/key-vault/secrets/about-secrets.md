@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4ded48fe8f04d2cdba40650974fd5002d659e381
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705262"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786033"
 ---
 # <a name="about-azure-key-vault-secrets"></a>关于 Azure Key Vault 机密
 
@@ -84,7 +84,7 @@ Key Vault 中托管的机密的访问控制是在包含这些机密的 Key Vault
 
 ## <a name="azure-storage-account-key-management"></a>Azure 存储帐户密钥管理
 
-Key Vault 可以管理 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-overview)密钥：
+Key Vault 可以管理 [Azure 存储帐户](../../storage/common/storage-account-overview.md)密钥：
 
 - 在内部，Key Vault 可以使用 Azure 存储帐户列出（同步）密钥。 
 - Key Vault 定期重新生成（轮换）密钥。
@@ -92,7 +92,7 @@ Key Vault 可以管理 [Azure 存储帐户](https://docs.microsoft.com/azure/sto
 - Key Vault 管理存储帐户和经典存储帐户的密钥。
 
 有关详细信息，请参阅：
-- [存储帐户访问密钥](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)
 - [Azure Key Vault 中的存储帐户密钥管理](../secrets/overview-storage-keys.md)
 
 

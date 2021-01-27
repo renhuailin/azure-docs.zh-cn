@@ -7,17 +7,17 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0b32158ad58a663f7d85b9814bb4f2c1c55e4178
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 5cb767c639c7ff1d9888085caa036571376cc596
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922453"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734138"
 ---
 # <a name="examples-of-an-attestation-policy-signer-certificate"></a>证明策略签名者证书的示例
 
 Microsoft Azure 证明将使用与证明提供程序关联的策略签名者证书来验证签名策略。
-了解[策略签名的优点](/azure/attestation/basic-concepts/#benefits-of-policy-signing)的详细信息
+了解[策略签名的优点](./basic-concepts.md#benefits-of-policy-signing)的详细信息
 
 **要在创建提供程序流中使用的策略签名者证书文件格式**
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7e7dce7ec4b8d4d55e734487595bb330e97ab18b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 2ead7291f52f33c271768ae2f470af65aca98030
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120438"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734741"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET
 
@@ -171,7 +171,7 @@ WITH (
 )
 ```
 
-json_path = 列或嵌套属性的 [JSON 路径表达式](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)。 默认的[路径模式](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE)为宽松。
+json_path = 列或嵌套属性的 [JSON 路径表达式](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true)。 默认的[路径模式](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true#PATHMODE)为宽松。
 
 > [!NOTE]
 > 在严格模式下，如果提供的路径不存在，则查询将失败并显示错误。 在宽松模式下，查询将成功，并且 JSON 路径表达式的计算结果将为 NULL。
@@ -371,7 +371,7 @@ WITH (
 
 ### <a name="specify-columns-using-json-paths"></a>使用 JSON 路径指定列
 
-以下示例演示了如何在 WITH 子句中使用 [JSON 路径表达式](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)，并说明了严格和宽松路径模式之间的区别： 
+以下示例演示了如何在 WITH 子句中使用 [JSON 路径表达式](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true)，并说明了严格和宽松路径模式之间的区别： 
 
 ```sql
 SELECT 

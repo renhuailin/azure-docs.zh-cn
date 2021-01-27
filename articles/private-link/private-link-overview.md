@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: b3ca4f11b02f32e65cf80adc65ec12d25e6e7905
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 974631f9cba66404a3881caed1382be7ff3c00d1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573167"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881327"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。
@@ -72,7 +72,7 @@ Azure 专用链接提供以下优势：
 | Azure Monitor <br/>（Log Analytics 和 Application Insights） | 所有公共区域      |  | GA   <br/> [了解如何为 AAzure Monitor 创建专用终结点。](../azure-monitor/platform/private-link-security.md)   | 
 | Azure Batch | 除以下区域外的所有公共区域：德国中部、德国东北部 <br/> 所有政府区域  | | GA <br/> [了解如何为 Azure Batch 创建专用终结点。](../batch/private-connectivity.md) |
 |Azure 数据工厂 | 所有公共区域<br/> 所有政府区域<br/>所有中国区域    | 凭据需要存储在某个 Azure 密钥保管库中| GA   <br/> [了解如何为 Azure 数据工厂创建专用终结点。](../data-factory/data-factory-private-link.md)   |
-|Azure 托管磁盘 | 所有公共区域<br/> 所有政府区域<br/>所有中国区域    | [单击此处了解已知限制](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal#limitations) | GA   <br/> [了解如何为 Azure 托管磁盘创建专用终结点。](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal)   |
+|Azure 托管磁盘 | 所有公共区域<br/> 所有政府区域<br/>所有中国区域    | [单击此处了解已知限制](../virtual-machines/disks-enable-private-links-for-import-export-portal.md#limitations) | GA   <br/> [了解如何为 Azure 托管磁盘创建专用终结点。](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)   |
 
 
 
@@ -110,5 +110,3 @@ Azure 专用链接可与 Azure Monitor 集成。 通过这种组合可以：
 
 - [快速入门：使用 Azure 门户创建专用终结点](create-private-endpoint-portal.md)
 - [快速入门：使用 Azure 门户创建专用链接服务](create-private-link-service-portal.md)
-
-

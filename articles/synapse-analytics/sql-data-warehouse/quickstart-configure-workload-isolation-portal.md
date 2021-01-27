@@ -11,12 +11,12 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 302249b7d8490e43b841116c52500e686626433d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5773691852ddc723ec84503edee37c678bbbcfd9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460579"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677498"
 ---
 # <a name="quickstart-configure-dedicated-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>快速入门：在 Azure 门户中使用工作负载组配置专用 SQL 池工作负载隔离
 
@@ -93,7 +93,7 @@ ms.locfileid: "96460579"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要使用 `DataLoads` 工作负荷组，需要创建一个[工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以将请求路由到工作负荷组。  继续学习[创建工作负荷分类器](quickstart-create-a-workload-classifier-portal.md)教程，为 `DataLoads` 创建工作负荷分类器。
+若要使用 `DataLoads` 工作负荷组，需要创建一个[工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，以将请求路由到工作负荷组。  继续学习[创建工作负荷分类器](quickstart-create-a-workload-classifier-portal.md)教程，为 `DataLoads` 创建工作负荷分类器。
 
 ## <a name="see-also"></a>另请参阅
 有关如何监视工作负荷以进行工作负荷管理的详细信息，请参阅操作方法文章：[管理和监视工作负荷管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)。

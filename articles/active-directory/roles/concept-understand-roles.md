@@ -2,23 +2,23 @@
 title: 了解 Azure Active Directory 角色概念
 description: 通过 Azure Active Directory 中的资源范围，了解如何理解 Azure Active Directory 内置和自定义角色。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
 ms.date: 11/20/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db3eaef240e1f76e4c61a454e104336806666a7c
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 8b46262e34f57b3ff9aeb6bd4ea671ec611b99df
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803895"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740340"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>了解 Azure Active Directory 中的角色
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: devx-track-python
-ms.openlocfilehash: 43f633e427e20cfb0b044bd42b77f866e4cc0c61
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4eba3ea055e78888d482927fa6eed5c7d41fa0ba
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489405"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630041"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>向 Azure 服务总线主题发送消息，并从该主题的订阅接收消息 (Python)
 本文介绍如何使用 Python 向服务总线主题发送消息，并从该主题的订阅接收消息。 
@@ -217,4 +217,4 @@ Received: Message inside a ServiceBusMessageBatch
 - [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples)。 
     - sync_samples 文件夹包含一些示例，这些示例演示如何以同步方式与服务总线交互。 本快速入门就使用了此方法。 
     - async_samples 文件夹包含一些示例，这些示例演示如何以异步方式与服务总线交互。 
-- [azure-servicebus 参考文档](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)
+- [azure-servicebus 参考文档](/python/api/azure-servicebus/azure.servicebus?preserve-view=true)

@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4212c76d052fe1f272963003e836425b50d6f105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740498"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677608"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 
@@ -90,7 +90,7 @@ Azure 机器学习工作室是 Azure 机器学习中的 Web 门户，其中包�
 | 功能 | 机器学习工作室（经典版） | Azure 机器学习 |
 |---| --- | --- |
 | 拖放界面 | 经典体验 | 更新的体验 - [Azure 机器学习设计器](concept-designer.md)| 
-| 代码 SDK | 不支持 | 与 [Azure 机器学习 Python](/python/api/overview/azure/ml/) 和 [R](tutorial-1st-r-experiment.md) SDK 完全集成 |
+| 代码 SDK | 不支持 | 与 [Azure 机器学习 Python](/python/api/overview/azure/ml/) 和 [R](https://github.com/Azure/azureml-sdk-for-r) SDK 完全集成 |
 | 试验 | 可缩放（10 GB 训练数据限制） | 使用计算目标进行缩放 |
 | 训练计算目标 | 专用计算目标，仅限 CPU 支持 | 各种可自定义的[训练计算目标](concept-compute-target.md#train)。 包括 GPU 和 CPU 支持 | 
 | 部署计算目标 | 专用 Web 服务格式，不可自定义 | 各种可自定义的[部署计算目标](concept-compute-target.md#deploy)。 包括 GPU 和 CPU 支持 |
@@ -103,7 +103,7 @@ Azure 机器学习工作室是 Azure 机器学习中的 Web 门户，其中包�
 
 ## <a name="troubleshooting"></a>疑难解答
 
-* **工作室中缺少用户界面项** 可使用 Azure 基于角色的访问控制限制可通过 Azure 机器学习执行的操作。 这些限制可以防止用户界面项出现在 Azure 机器学习工作室中。 例如，如果分配了无法创建计算实例的角色，则创建计算实例的选项不会出现在工作室中。 有关详细信息，请参阅[管理用户和角色](how-to-assign-roles.md)。
+* 工作室中缺少用户界面项可使用 Azure 基于角色的访问控制限制可通过 Azure 机器学习执行的操作。 这些限制可以防止用户界面项出现在 Azure 机器学习工作室中。 例如，如果分配了无法创建计算实例的角色，则创建计算实例的选项不会出现在工作室中。 有关详细信息，请参阅[管理用户和角色](how-to-assign-roles.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

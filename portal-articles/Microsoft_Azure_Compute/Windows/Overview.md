@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 0fa1ff016ed787725ffde10ade67040a09c7e238
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5a5d9412ca77b73c08acbbfdbdc95371bb6f032b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285911"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791200"
 ---
 # <a name="windows-virtual-machines-documentation"></a>Windows 虚拟机文档
 
@@ -39,7 +39,7 @@ Azure Windows 虚拟机使用 Windows Server 按需提供具有高可伸缩性�
 - [创建 VM 规模集](/azure/virtual-machines/windows/tutorial-create-vmss)
 - [对 VM 进行负载均衡](/azure/virtual-machines/windows/tutorial-load-balancer)
 - [使用虚拟网络管理 VM](/azure/virtual-machines/windows/tutorial-virtual-network)
-- [备份 VM](/azure/virtual-machines/windows/tutorial-backup-vms)
+- [备份 VM](/azure/backup/quick-backup-vm-portal)
 - [监视 VM](/azure/virtual-machines/windows/tutorial-monitoring)
 - [管理 VM 上的安全性](/azure/virtual-machines/windows/tutorial-azure-security)
 

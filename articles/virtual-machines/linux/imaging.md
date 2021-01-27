@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: e364578cdec8696688cf19e14fd0529f1ca3fbb3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 223fdc215bc391bea5cad5d4cb9999b9d14ba570
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842611"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878776"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中引入和创建 Linux 映像
 
@@ -29,7 +29,7 @@ Azure 支持将 VHD 引入到 Azure 平台，将其用作[托管磁盘](../faq-f
 
 Azure 托管磁盘是单个的 VHD。 可以使用现有 VHD 和根据其创建托管磁盘，或者从头开始创建一个空托管磁盘。 可以通过将磁盘附加到 VM 来借助托管磁盘创建 VM，但一个 VM 只能使用一个 VHD。 OS 属性无法修改，Azure 只会尝试开启 VM 和启动磁盘。 
 
-Azure 映像可以由多个 OS 磁盘和数据磁盘组成。 使用托管映像创建 VM 时，该平台生成此映像的副本并使用它来创建 VM，因此，同一托管映像可以重复用于多个 VM。 Azure 还提供了高级映像管理功能，例如全局复制和通过[共享映像库](shared-image-galleries.md)进行版本控制。 
+Azure 映像可以由多个 OS 磁盘和数据磁盘组成。 使用托管映像创建 VM 时，该平台生成此映像的副本并使用它来创建 VM，因此，同一托管映像可以重复用于多个 VM。 Azure 还提供了高级映像管理功能，例如全局复制和通过[共享映像库](../shared-image-galleries.md)进行版本控制。 
 
 
 
@@ -65,7 +65,7 @@ Azure 提供了两种主要映像类型：通用映像和专用映像。 通用�
 使用 Linux 映像时有两个选项可供选择：
 
 - 使用托管映像在开发和测试环境中创建简单的 VM。
-- 使用[共享映像库](shared-image-galleries.md)大规模创建和共享映像。
+- 使用[共享映像库](../shared-image-galleries.md)大规模创建和共享映像。
 
 
 ### <a name="managed-images"></a>托管映像
@@ -76,7 +76,7 @@ Azure 提供了两种主要映像类型：通用映像和专用映像。 通用�
 
 ### <a name="azure-shared-image-gallery-sig"></a>Azure 共享映像库 (SIG)
 
-[共享映像库](shared-image-galleries.md)推荐用于大规模创建、管理和共享映像。 共享映像库提供许多功能和特性，可帮助你围绕映像生成结构和组织：  
+[共享映像库](../shared-image-galleries.md)推荐用于大规模创建、管理和共享映像。 共享映像库提供许多功能和特性，可帮助你围绕映像生成结构和组织：  
 
 - 支持通用映像和专用映像。
 - 支持第 1 代映像和第 2 代映像。

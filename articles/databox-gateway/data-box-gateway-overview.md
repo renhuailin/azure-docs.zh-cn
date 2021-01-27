@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: adb0e12b81701acbdb33018f055bfe8fda2efc52
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583204"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786633"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>什么是 Data Box Gateway？
 
@@ -89,7 +89,7 @@ Data Box Gateway 解决方案包括 Data Box Gateway 资源、Data Box Gateway �
 
 将数据传输到的 Data Box Gateway 物理设备、Azure 资源和目标存储帐户不一定非要位于同一区域。
 
-- 资源可用性 - 有关 Azure Data Box Gateway 资源可用的所有区域的列表，请转到[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)。 Data Box Gateway 也可以部署在 Azure 政府云中。 有关详细信息，请参阅[什么是 Azure 政府？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。
+- 资源可用性 - 有关 Azure Data Box Gateway 资源可用的所有区域的列表，请转到[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)。 Data Box Gateway 也可以部署在 Azure 政府云中。 有关详细信息，请参阅[什么是 Azure 政府？](../azure-government/documentation-government-welcome.md)。
 
 - **目标存储帐户** - 存储数据的存储帐户可在所有 Azure 区域中获得。
 
@@ -101,4 +101,3 @@ Data Box Gateway 解决方案包括 Data Box Gateway 资源、Data Box Gateway �
 - 查看 [Data Box Gateway 系统要求](data-box-gateway-system-requirements.md)。
 - 了解 [Data Box Gateway 限制](data-box-gateway-limits.md)。
 - 在 Azure 门户中部署 [Azure Data Box Gateway](data-box-gateway-deploy-prep.md)。
-

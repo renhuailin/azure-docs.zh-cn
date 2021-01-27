@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 18d9cb3c64eb41b33a58b248f3826bd9a80c6d90
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 957e39f7629337182c3e19a1a514c42883666301
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754795"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796996"
 ---
 # <a name="introduction-to-azure-defender-for-dns"></a>适用于 DNS 的 Azure Defender 简介
 
@@ -47,7 +47,7 @@ ms.locfileid: "96754795"
 
 适用于 DNS 的 Azure Defender 不使用任何代理。 
 
-若要保护 DNS 层，请按照[启用 Azure Defender](security-center-pricing.md) 中的说明为每个订阅启用适用于 DNS 的 Azure Defender。
+若要保护 DNS 层，请按照[启用 Azure Defender](security-center-pricing.md#enable-azure-defender) 中的说明为每个订阅启用适用于 DNS 的 Azure Defender。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -57,4 +57,4 @@ ms.locfileid: "96754795"
 - 安全警报可能是由安全中心生成的，也可能是由安全中心从其他安全产品接收的。 若要将所有这些警报导出到 Azure Sentinel、任何第三方 SIEM 或任何其他外部工具，请按照[将警报导出到 SIEM](continuous-export.md) 中的说明操作。
 
 - > [!div class="nextstepaction"]
-    > [启用 Azure Defender](security-center-pricing.md)
+    > [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)

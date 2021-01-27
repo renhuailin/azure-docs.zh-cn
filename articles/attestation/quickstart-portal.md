@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 52c0dd6825c8576d97e10d3f0568ca5fb81e789e
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 3ab1e6011a1c127c9ac5a2c7652a4bf458372e1e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210795"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733931"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-portal"></a>快速入门：使用 Azure 门户设置 Azure 证明
 
@@ -58,7 +58,7 @@ ms.locfileid: "98210795"
 
     d. **位置**：选择一个位置 
     
-    e. **策略签名者证书文件**：要配置具有策略签名证书的证明提供程序，请上传证书文件。 请参阅[此处](/azure/attestation/policy-signer-examples)的示例 
+    e. **策略签名者证书文件**：要配置具有策略签名证书的证明提供程序，请上传证书文件。 请参阅[此处](./policy-signer-examples.md)的示例 
 6.  提供所需的输入后，单击“查看+创建”
 7.  修复验证问题（如果有），然后单击“创建”。
 
@@ -98,7 +98,7 @@ a.  验证已下载的证书计数和证书。
 3.  选择证明提供程序并导航到概述页面
 4.  单击左侧资源菜单或底部窗格中的“策略签名者证书”
 5.  单击顶部菜单中的“添加”（如果创建的证明提供程序没有策略签名要求，该按钮将被禁用）
-6.  上传策略签名者证书文件，然后单击“添加”。 请参阅[此处](/azure/attestation/policy-signer-examples)的示例
+6.  上传策略签名者证书文件，然后单击“添加”。 请参阅[此处](./policy-signer-examples.md)的示例
 
 ### <a name="delete-policy-signer-certificate"></a>删除策略签名者证书
 
@@ -107,7 +107,7 @@ a.  验证已下载的证书计数和证书。
 3.  选择证明提供程序并导航到概述页面
 4.  单击左侧资源菜单或底部窗格中的“策略签名者证书”
 5.  单击顶部菜单中的“删除”（如果创建的证明提供程序没有策略签名要求，该按钮将被禁用）
-6.  上传策略签名者证书文件，然后单击“删除”。 请参阅[此处](/azure/attestation/policy-signer-examples)的示例 
+6.  上传策略签名者证书文件，然后单击“删除”。 请参阅[此处](./policy-signer-examples.md)的示例 
 
 ## <a name="attestation-policy"></a>证明策略
 
@@ -132,7 +132,7 @@ a.  验证已下载的证书计数和证书。
 5.  单击顶部菜单中的“配置”
 6.  如果创建的证明提供程序没有策略签名要求，则用户可以使用“JWT”或“文本”格式上传策略 
 7.  为“策略格式”选择 JWT 
-8.  以“未签名/已签名 JWT”格式上传策略文件以及策略内容，然后单击“保存” 。 请参阅[此处](/azure/attestation/policy-examples)的示例
+8.  以“未签名/已签名 JWT”格式上传策略文件以及策略内容，然后单击“保存” 。 请参阅[此处](./policy-examples.md)的示例
     
     对于文件上传选项，策略预览将以文本格式显示，并且策略预览不可编辑。
 
@@ -147,7 +147,7 @@ a.  验证已下载的证书计数和证书。
 5.  单击顶部菜单中的“配置”
 6.  如果创建的证明提供程序没有策略签名要求，则用户可以使用“JWT”或“文本”格式上传策略 
 7.  为“策略格式”选择“文本” 
-8.  以“文本”格式上传策略文件及内容，或在文本区域中输入策略内容，然后单击“保存” 。 请参阅[此处](/azure/attestation/policy-examples)的示例
+8.  以“文本”格式上传策略文件及内容，或在文本区域中输入策略内容，然后单击“保存” 。 请参阅[此处](./policy-examples.md)的示例
 
     对于文件上传选项，策略预览将以文本格式显示，并且策略预览不可编辑。
 
@@ -163,20 +163,9 @@ a.  验证已下载的证书计数和证书。
 4.  单击左侧资源菜单或底部窗格中的“策略”
 5.  单击顶部菜单中的“配置”
 6.  如果创建的证明提供程序有策略签名要求，则用户只能以“已签名 JWT 格式”上传策略
-7.  以“已签名 JWT 格式”上传策略文件，然后单击“保存” 。 请参阅[此处](/azure/attestation/policy-examples)的示例
+7.  以“已签名 JWT 格式”上传策略文件，然后单击“保存” 。 请参阅[此处](./policy-examples.md)的示例
 
     对于文件上传选项，策略预览将以文本格式显示，并且策略预览不可编辑。
     
 8.  单击“刷新”以查看配置的策略
-
- 
-
-
-
-
-
-
-
-
-
 

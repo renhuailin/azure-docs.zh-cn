@@ -3,16 +3,16 @@ title: 概述 - Azure Database for MariaDB
 description: 了解 Azure Database for MariaDB 服务，这是 Microsoft 云中基于 MySQL 社区版的关系数据库服务。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: overview
 ms.custom: mvc
 ms.date: 3/18/2020
-ms.openlocfilehash: 8115625099543d378728a6313a8cc4c95fec0cd2
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 7c365dee2b3ac32a62b38d0b3273f2f13e402936
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536993"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662011"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>什么是 Azure Database for MariaDB？
 

@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 939a74a2bbedf6b00159f0c33a50eeb93595cda4
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 547f697c4f8ffb903006e48e94086433d64225c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116069"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681330"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>快速入门：使用 COPY 语句批量加载数据
 
-在本快速入门中，你将使用简单灵活的 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)将数据批量加载到专用 SQL 池中，以实现高吞吐量数据引入。 COPY 语句是推荐使用的加载实用工具，因为它提供以下功能，可以无缝且灵活地加载数据：
+在本快速入门中，你将使用简单灵活的 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)将数据批量加载到专用 SQL 池中，以实现高吞吐量数据引入。 COPY 语句是推荐使用的加载实用工具，因为它提供以下功能，可以无缝且灵活地加载数据：
 
 - 允许权限较低的用户进行加载，不需要对数据仓库有严格的控制权限
 - 只使用一个 T-SQL 语句，不需要创建任何其他数据库对象
