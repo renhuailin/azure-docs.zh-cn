@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: d2e9e306e979f569819568650b25d49278997ede
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 262177d8cde3a5eee2721f2af8a0511c205da9b9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878521"
+ms.locfileid: "98890523"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark 实用工具简介
 
@@ -33,7 +33,7 @@ Synapse 管道使用工作区标识 (MSI) 来访问存储帐户。 若要在管�
 1. 打开 [Azure 门户](https://portal.azure.com/) 和要访问的存储帐户。 可以导航到要访问的特定容器。
 2. 从左侧面板中选择 " **访问控制 (IAM")** 。
 3. 将 **Azure AD 帐户** 和 **工作区标识** (与你的工作区名称相同) 到存储帐户上的 " **存储 Blob 数据参与者** " 角色（如果尚未分配）。 
-4. 选择“保存”。 
+4. 选择“保存”。
 
 可以通过以下 URL 访问 Synapse Spark ADLS Gen2 上的数据：
 
@@ -122,13 +122,45 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 
 ::: zone-end
 
-<!-- :::zone pivot = "programming-language-csharp"
+:::zone pivot = "programming-language-csharp"
+
+
+### <a name="configure-access-to-azure-blob-storage"></a>配置对 Azure Blob 存储的访问权限  
+
+Synapse 利用 **共享访问签名 (SAS)** 访问 Azure Blob 存储。 若要避免在代码中公开 SAS 密钥，我们建议在 Synapse 工作区中创建一个新的链接服务，并将其连接到要访问的 Azure Blob 存储帐户。
+
+按照以下步骤为 Azure Blob 存储帐户添加新的链接服务：
+
+1. 打开 [Azure Synapse Studio](https://web.azuresynapse.net/)。
+2. 从左侧面板中选择 "**管理**"，并选择 "**外部连接**" 下的 "**链接服务**"。
+3. 在右侧的 "**新建链接服务**" 面板中搜索 " **Azure Blob 存储**"。
+4. 选择“继续”。 
+5. 选择要访问的 Azure Blob 存储帐户，并配置链接服务名称。 建议使用 **身份验证方法** 的 **帐户密钥**。
+6. 选择 " **测试连接** " 以验证设置是否正确。
+7. 依次选择 " **创建** " 和 " **全部发布** " 以保存所做的更改。 
+
+可以通过以下 URL 通过 Synapse Spark 访问 Azure Blob 存储上的数据：
+
+<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
+
+下面是一个代码示例：
 
 ```csharp
+var blob_account_name = "";  // replace with your blob name
+var blob_container_name = "";     // replace with your container name
+var blob_relative_path = "";  // replace with your relative folder path
+var linked_service_name = "";    // replace with your linked service name
+var blob_sas_token = Credentials.GetConnectionStringOrCreds(linked_service_name);
+
+spark.SparkContext.GetConf().Set($"fs.azure.sas.{blob_container_name}.{blob_account_name}.blob.core.windows.net", blob_sas_token);
+
+var wasbs_path = $"wasbs://{blob_container_name}@{blob_account_name}.blob.core.windows.net/{blob_relative_path}";
+
+Console.WriteLine(wasbs_path);
 
 ```
 
-::: zone-end -->
+::: zone-end 
  
 ###  <a name="configure-access-to-azure-key-vault"></a>配置对 Azure Key Vault 的访问权限
 

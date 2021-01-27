@@ -2,18 +2,15 @@
 title: 排查 Azure 自动化共享资源问题
 description: 本文介绍了如何排查和解决 Azure 自动化共享资源的问题。
 services: automation
-author: mgoedtel
-ms.author: magoedte
+ms.subservice: ''
 ms.date: 03/12/2019
-ms.topic: conceptual
-ms.service: automation
-manager: carmonm
-ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: c4ede0bffedc256f4af621d4945ebbbea0f8a4b6
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187160"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896285"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>排查共享资源问题
 
@@ -33,7 +30,7 @@ ms.locfileid: "86187160"
 
 #### <a name="resolution"></a>解决方法
 
-若要解决此问题，必须使用 [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) cmdlet 删除处于停滞状态的模块。 然后，可以重试导入模块。
+若要解决此问题，必须使用 [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule) cmdlet 删除处于停滞状态的模块。 然后，可以重试导入模块。
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -70,7 +67,7 @@ Azure modules are being updated
 * 结构与自动化所需的结构不匹配。
 * 该模块依赖于其他模块，而后者尚未部署到自动化帐户。
 * 该模块的文件夹中缺少依赖项。
-* 使用了 [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) cmdlet 来上传该模块，但你未提供完整的存储路径，或者未使用可公开访问的 URL 来加载该模块。
+* 使用了 [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule) cmdlet 来上传该模块，但你未提供完整的存储路径，或者未使用可公开访问的 URL 来加载该模块。
 
 #### <a name="resolution"></a>解决方法
 

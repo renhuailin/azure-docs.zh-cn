@@ -3,19 +3,19 @@ title: 词对齐 - 翻译器
 titleSuffix: Azure Cognitive Services
 description: 若要接收对齐信息，请使用 Translate 方法，并包含可选的 includeAlignment 参数。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: 7288087bfe7d2a7bb03ce8a99831ad8b7f5b549f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: lajanuar
+ms.openlocfilehash: 8368ca0ca4c3f2f0ab3cb88a5d54295d71451636
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83995609"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898013"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>如何接收词对齐信息
 

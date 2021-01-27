@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bb0b9b4645be7e548fe116d9e9a2c92fae7dc96
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57999ce53e536d422e6502a77aaccdc66b4c5077
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120948"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898488"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio 笔记本
 
@@ -303,6 +303,8 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
 你可以使用 ```%run <notebook path>``` 魔棒命令在当前笔记本的上下文中引用另一个笔记本。 参考笔记本中定义的所有变量都在当前笔记本中可用。 ```%run``` 幻命令支持嵌套调用，但不支持递归调用。 如果语句深度大于五，则将收到异常。 ```%run``` 命令目前仅支持将笔记本路径作为参数传递。 
+
+示例：``` %run /path/notebookA ```。
 
 ---
 

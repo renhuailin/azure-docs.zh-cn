@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: 9eb07721f9d507d69de10b6de6c8c2a358dab020
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5dc14873f8863332d37a6ced6ce4013e76640dea
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034082"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879387"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>发布和跟踪机器学习管道
 
@@ -32,7 +32,7 @@ ms.locfileid: "97034082"
 
 * [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 SDK，或使用已经安装了该 SDK 的 [Azure 机器学习计算实例](concept-compute-instance.md)
 
-* 创建并运行机器学习管道，例如，按照[教程：生成 Azure 机器学习管道以用于批量评分](tutorial-pipeline-batch-scoring-classification.md)中的说明操作。 对于其他选项，请参阅[使用 Azure 机器学习 SDK 创建并运行机器学习管道](how-to-create-your-first-pipeline.md)
+* 创建并运行机器学习管道，例如，按照[教程：生成 Azure 机器学习管道以用于批量评分](tutorial-pipeline-batch-scoring-classification.md)中的说明操作。 对于其他选项，请参阅[使用 Azure 机器学习 SDK 创建并运行机器学习管道](./how-to-create-machine-learning-pipelines.md)
 
 ## <a name="publish-a-pipeline"></a>发布管道
 
@@ -74,7 +74,7 @@ ms.locfileid: "97034082"
 所有已发布的管道都具有 REST 终结点。 使用管道终结点，可以从任何外部系统（包括非 Python 客户端）触发管道运行。 在批量评分和重新训练方案中，此终结点支持“托管可重复性”。
 
 > [!IMPORTANT]
-> 如果使用基于 Azure 角色的访问控制 (Azure RBAC) 来管理对管道的访问，请 [ (定型或评分) 设置管道方案的权限 ](how-to-assign-roles.md#common-scenarios)。
+> 如果使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理对管道的访问，请[设置管道方案的权限（训练或评分）](how-to-assign-roles.md#common-scenarios)。
 
 若要调用上述管道的运行，需要 Azure Active Directory 身份验证标头令牌。 [AzureCliAuthentication 类](/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?preserve-view=true&view=azure-ml-py)参考和 [Azure 机器学习中的身份验证](https://aka.ms/pl-restep-auth)笔记本中介绍了如何获取这样的令牌。
 

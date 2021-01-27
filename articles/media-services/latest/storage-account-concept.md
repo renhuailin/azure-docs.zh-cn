@@ -1,24 +1,9 @@
 ---
-title: Azure 存储帐户
-titleSuffix: Azure Media Services
-description: 了解如何创建与 Azure 媒体服务配合使用的 Azure 存储帐户。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 01/05/2021
-ms.author: inhenkel
-ms.openlocfilehash: 55a49d48af95c103d2a28d5106af5f3166605514
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882240"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必填字段。 有关详细信息，请参阅 aka.ms/skyeye/meta。
+标题： Azure 存储帐户： Azure 媒体服务说明：了解如何创建用于 Azure 媒体服务的 Azure 存储帐户。
+服务：媒体服务 documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' ' ms. service： media-服务毫秒：：01/05/2021：： inhenkel
 ---
+
 # <a name="azure-storage-accounts"></a>Azure 存储帐户
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

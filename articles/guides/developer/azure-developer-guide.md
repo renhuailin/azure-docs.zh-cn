@@ -1,25 +1,17 @@
 ---
 title: 面向 Azure 开发人员的入门指南 | Microsoft 文档
 description: 本文提供了一些基本信息，使开发人员希望开始使用 Microsoft Azure 平台满足其开发需求。
-services: ''
-cloud: ''
-documentationcenter: ''
 author: ggailey777
-manager: erikre
-ms.assetid: ''
 ms.service: azure
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: a193ccd060c75cf4031449ddf3318af6e4691436
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 1c28ed90c041a65b2ff8dd08a3aac799795171eb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786463"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897453"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -27,7 +19,7 @@ ms.locfileid: "98786463"
 
 Azure 是一个完整的云平台，可以托管现有应用程序并简化新的应用程序开发。 Azure 甚至可以增强本地应用程序。 Azure 集成了开发、测试、部署和管理应用程序所需的云服务，同时充分利用了云计算的效率。
 
-通过在 Azure 中托管应用程序，你可以随着客户需求的增长，从小规模开始轻松扩展应用程序。 另外，Azure 还可以针对高可用性应用程序提供所需的可靠性，甚至包括在两个不同区域之间的故障转移。 通过 [Azure 门户](https://portal.azure.com)，可让你轻松管理所有的 Azure 服务。 同时，你还可以通过使用特定于服务的 API 和模板以编程方式管理你的服务。
+通过在 Azure 中托管应用程序，你可以随着客户需求的增长，从小规模开始轻松扩展应用程序。 Azure 还提供高可用性应用程序所需的可靠性，甚至包括不同区域之间的故障转移。 通过 [Azure 门户](https://portal.azure.com)，可让你轻松管理所有的 Azure 服务。 同时，你还可以通过使用特定于服务的 API 和模板以编程方式管理你的服务。
 
 本指南介绍面向应用程序开发人员的 Azure 平台。 针对在 Azure 中开始生成新的应用程序或将现有应用程序迁移到 Azure 所需的操作，提供相关指导和说明。
 
@@ -49,7 +41,6 @@ Azure 提供了支持应用程序开发和托管需求的服务。 Azure 还提�
 
 ![Azure 应用程序托管选项](./media/azure-developer-guide/azure-developer-hosting-options.png)
 
-
 #### <a name="azure-app-service"></a>Azure 应用服务
 
 如果你希望以最快路径发布基于 Web 的项目，则可以考虑使用 Azure 应用服务。 通过应用服务，可以轻松扩展 Web 应用以支持移动客户端，并发布易于使用的 REST API。 此平台通过使用社交提供程序、基于流量的自动缩放、在生产中测试和基于容器的持续部署来提供身份验证。
@@ -70,9 +61,9 @@ Azure 提供了支持应用程序开发和托管需求的服务。 Azure 还提�
 
 #### <a name="azure-virtual-machines"></a>Azure 虚拟机
 
-作为一个基础结构即服务 (IaaS) 提供程序，Azure 可让你部署到或将应用程序迁移到 Windows 或 Linux VM。 Azure 虚拟机连同 Azure 虚拟网络一起，可支持将 Windows 或 Linux VM 部署到 Azure。 通过 VM，你可以全面控制计算机的配置。 使用 VM 时，你将负责所有服务器软件的安装、配置、维护和操作系统修补。
+作为一个基础结构即服务 (IaaS) 提供程序，Azure 可让你部署到或将应用程序迁移到 Windows 或 Linux VM。 Azure 虚拟机连同 Azure 虚拟网络一起，可支持将 Windows 或 Linux VM 部署到 Azure。 通过 VM，你可以全面控制计算机的配置。 使用 Vm 时，需要负责所有服务器软件安装、配置、维护和操作系统修补程序。
 
-由于你对 VM 拥有所有控制级别，因此，你可以在 Azure 上运行大量不适合 PaaS 模型的服务器工作负载。 这些工作负载可包括数据库服务器、Windows Server Active Directory 和 Microsoft SharePoint。 有关详细信息，请参阅 [Linux](../../virtual-machines/linux/index.yml) 或 [Windows](../../virtual-machines/windows/index.yml) 的虚拟机文档。
+由于 Vm 的控制级别，可以在 Azure 上运行不适合 PaaS 模型的各种服务器工作负荷。 这些工作负载可包括数据库服务器、Windows Server Active Directory 和 Microsoft SharePoint。 有关详细信息，请参阅 [Linux](../../virtual-machines/linux/index.yml) 或 [Windows](../../virtual-machines/windows/index.yml) 的虚拟机文档。
 
 > **何时使用**：在你需要完全控制应用程序基础结构，或将本地应用程序工作负载迁移到 Azure 而无需进行更改的情况下，可以使用虚拟机。
 >
@@ -102,7 +93,7 @@ Azure Service Fabric 是一种分布式系统平台。 利用此平台，可以�
 
 Service Fabric 支持具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 的 WebAPI。 它提供了用于在 Linux 上使用 .NET Core 和 Java 构建服务的 SDK。 若要了解有关 Service Fabric 的详细信息，请参阅 [Service Fabric 文档](../../service-fabric/index.yml)。
 
-> **何时使用：** 如果要创建应用程序或重新编写现有应用程序，以使用微服务体系结构，则 Service Fabric 将是一个不错的选择。 当你需要更好地控制或直接访问底层基础结构时，也可以使用 Service Fabric。
+> **何时使用：** 当你创建应用程序或重新编写现有应用程序以使用微服务体系结构时，Service Fabric 是一个不错的选择。 当你需要更好地控制或直接访问底层基础结构时，也可以使用 Service Fabric。
 >
 > **开始使用：** [创建第一个 Azure Service Fabric 应用程序](../../service-fabric/service-fabric-tutorial-create-dotnet-app.md)。
 
@@ -110,11 +101,11 @@ Service Fabric 支持具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 
 
 Azure 春季云是一个无服务器微服务平台，可让你在云中构建、部署、缩放和监视你的应用程序。 使用春季 Cloud 将新式微服务模式带入春季 Boot apps，消除了用于快速构建可靠 Java 应用的样板代码。
 
-- 利用 "春季云服务发现和配置服务器" 的托管版本，同时确保这些关键组件在最佳条件下运行。
-- 专注于构建业务逻辑，并使用安全修补程序、合规性标准和高可用性来处理服务运行时。
-- 管理应用程序生命周期 (例如：部署、启动、停止、缩放 Azure Kubernetes 服务的顶层) 。
-- 在应用与 Azure 服务（例如 Azure Database for MySQL 和用于 Redis 的 Azure 缓存）之间轻松绑定连接。
-- 使用企业级统一监视工具监视和故障排除微服务和应用程序，并深入了解应用程序依赖关系和操作遥测。
+* 利用 "春季云服务发现和配置服务器" 的托管版本，同时确保这些关键组件在最佳条件下运行。
+* 专注于构建业务逻辑，并使用安全修补程序、合规性标准和高可用性来处理服务运行时。
+* 管理应用程序生命周期 (例如：部署、启动、停止、缩放 Azure Kubernetes 服务的顶层) 。
+* 在应用与 Azure 服务（例如 Azure Database for MySQL 和用于 Redis 的 Azure 缓存）之间轻松绑定连接。
+* 使用企业级统一监视工具监视和故障排除微服务和应用程序，并深入了解应用程序依赖关系和操作遥测。
 
 > **何时使用：** 作为完全托管的服务，Azure 春季云在 Azure 上运行基于春季 Boot/春季 Cloud 的微服务时，这是一个不错的选择。 
 >
@@ -129,19 +120,19 @@ Azure 春季云是一个无服务器微服务平台，可让你在云中构建�
 
 大多数应用程序必须存储数据，因此，你决定在 Azure 中托管应用程序，请考虑以下一个或多个存储和数据服务。
 
-- **Azure Cosmos DB**：全局分布式多模型数据库服务。 此数据库可让你使用全面的 SLA 跨任意数量的地理区域弹性缩放吞吐量和存储。
+* **Azure Cosmos DB**：全局分布式多模型数据库服务。 此数据库可让你使用全面的 SLA 跨任意数量的地理区域弹性缩放吞吐量和存储。
 
   > **何时使用：** 当应用程序需要文档、表或图形数据库（包括具有多个妥善定义的一致性模型的 MongoDB 数据库）时。
   >
-  > **开始使用**：[构建 Azure Cosmos DB Web 应用](../../cosmos-db/create-sql-api-dotnet.md)。 如果是 MongoDB 开发人员，请参阅[构建使用 Azure Cosmos DB 的 MongoDB Web 应用](../../cosmos-db/create-mongodb-dotnet.md)。
+  > **开始使用**：[构建 Azure Cosmos DB Web 应用](../../cosmos-db/create-sql-api-dotnet.md)。 如果你是 MongoDB 开发人员，请参阅 [使用 Azure Cosmos DB 生成 MongoDB web 应用](../../cosmos-db/create-mongodb-dotnet.md)。
 
-- Azure 存储：可针对 blob、队列、文件和其他类型非关系数据提供持久且高可用性的存储。 存储服务为 VM 提供了存储基础。
+* Azure 存储：可针对 blob、队列、文件和其他类型非关系数据提供持久且高可用性的存储。 存储服务为 VM 提供了存储基础。
 
   > **何时使用**：在应用存储非关系数据，如键值对（表）、blob、文件共享，或消息（队列）的情况下使用。
   >
   > **入门**：选择以下类型之一： [blob](../../storage/blobs/storage-quickstart-blobs-dotnet.md)、 [表](../../cosmos-db/tutorial-develop-table-dotnet.md)、 [队列](../../storage/queues/storage-dotnet-how-to-use-queues.md)或 [文件](../../storage/files/storage-dotnet-how-to-use-files.md)。
 
-- Azure SQL 数据库：基于 Azure 版本的 Microsoft SQL Server 引擎，用于在云中存储关系表格数据。 SQL 数据库可提供可预测的性能、在不停机情况下进行缩放、业务连续性和数据保护功能。
+* Azure SQL 数据库：基于 Azure 版本的 Microsoft SQL Server 引擎，用于在云中存储关系表格数据。 SQL 数据库可提供可预测的性能、在不停机情况下进行缩放、业务连续性和数据保护功能。
 
   > **何时使用**：在应用程序需要具有引用完整性、事务支持和 TSQL 查询支持的数据存储时，可以考虑使用。
   >
@@ -157,33 +148,33 @@ Docker 容器是操作系统虚拟化的一种形式，可让你以更高效且�
 Azure 提供了多种方式以便在应用程序中使用容器。
 
 
-- **Azure Kubernetes Service**：使你能够创建、配置和管理预配置为运行容器化应用程序的虚拟机的群集。 若要了解有关 Azure Kubernetes 服务的详细信息，请参阅 [Azure Kubernetes 服务简介](../../aks/intro-kubernetes.md)。
+* **Azure Kubernetes Service**：使你能够创建、配置和管理预配置为运行容器化应用程序的虚拟机的群集。 若要了解有关 Azure Kubernetes 服务的详细信息，请参阅 [Azure Kubernetes 服务简介](../../aks/intro-kubernetes.md)。
 
-  > **何时使用**：当需要构建提供其他计划和管理工具的生产就绪、可缩放环境，或者当部署 Docker Swarm 群集时使用。
+  > **何时使用**：当需要构建提供其他计划和管理工具的生产就绪、可缩放环境，或者在部署 Docker Swarm 群集时使用。
   >
   > **入门**： [部署 Kubernetes 服务群集](../../aks/tutorial-kubernetes-deploy-cluster.md)。
 
-- Docker 计算机：允许使用 docker 计算机命令安装和管理虚拟主机上的 Docker 引擎。
+* Docker 计算机：允许使用 docker 计算机命令安装和管理虚拟主机上的 Docker 引擎。
 
   >**何时使用**：当需要通过创建一个 Docker 主机快速原型化应用时使用。
 
-- 应用服务的自定义 Docker 映像：在 Linux 上部署 Web 应用时，可以使用容器注册表或客户容器中的 Docker 容器。
+* **适用于应用服务的自定义 Docker 映像**：在 Linux 上部署 web 应用时，允许使用容器注册表或客户容器中的 docker 容器。
 
   > **何时使用**：在 Linux 上将 Web 应用部署到 Docker 映像时使用。
   >
   > **开始使用**：[在 Linux 上使用应用服务的自定义 Docker 映像](../../app-service/quickstart-custom-container.md?pivots=platform-linux%253fpivots%253dplatform-linux)。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
 重要的是：不仅要知道谁在使用你的应用程序，而且还要防止对资源的未授权访问。 Azure 提供了多种方式来对你的应用客户端进行身份验证。
 
-- Azure Active Directory (Azure AD)：Microsoft 基于云的多租户标识和访问管理服务。 你可以通过与 Azure AD 集成将单一登录 (SSO) 添加到你的应用程序。 可以通过直接使用 Azure AD Graph API 或 Microsoft Graph API 访问目录属性。 可以通过使用本机 HTTP/REST 终结点和多平台 Azure AD 身份验证库与支持 OAuth2.0 授权框架的 Azure AD 和 Open ID Connect 相集成。
+* Azure Active Directory (Azure AD)：Microsoft 基于云的多租户标识和访问管理服务。 你可以通过与 Azure AD 集成将单一登录 (SSO) 添加到你的应用程序。 可以通过直接使用 Azure AD Graph API 或 Microsoft Graph API 访问目录属性。 可以通过使用本机 HTTP/REST 终结点和多平台 Azure AD 身份验证库与支持 OAuth2.0 授权框架的 Azure AD 和 Open ID Connect 相集成。
 
   > **何时使用**：当想要提供 SSO 体验、使用基于图形的数据，或者对基于域的用户进行身份验证时使用。
   >
   > **开始使用**：若要了解详细信息，请参阅 [Azure Active Directory 开发人员指南](../../active-directory/develop/v2-overview.md)。
 
-- 应用服务身份验证：当选择应用服务来托管应用时，还将获得对 Azure AD 以及社交标识提供程序（包括 Facebook、Google、Microsoft 和 Twitter）的内置身份验证支持。
+* **应用服务身份验证**：选择应用服务来托管应用时，还会获得对 Azure AD 的内置身份验证支持以及社交标识提供者（包括 Facebook、Google、Microsoft 和 Twitter）。
 
   > **何时使用**：当想要通过使用 Azure AD、社交标识提供程序或两者来启用应用服务应用中的身份验证时使用。
   >
@@ -195,13 +186,13 @@ Azure 提供了多种方式以便在应用程序中使用容器。
 
 在 Azure 中启动并运行应用程序后，需要监视性能、监视问题，并了解客户如何使用你的应用程序。 为此，Azure 提供了几个监视选项。
 
--   **Application Insights**：与 Visual Studio 集成的 Azure 托管的可扩展分析服务，用于监视实时 web 应用程序。 它为你提供所需的数据，以提高应用程序的性能和可用性。 无论你在 Azure 上托管应用程序，这一改进都是如此。
+* **Application Insights**：与 Visual Studio 集成的 Azure 托管的可扩展分析服务，用于监视实时 web 应用程序。 它为你提供所需的数据，以提高应用程序的性能和可用性。 无论你在 Azure 上托管应用程序，这一改进都是如此。
 
-    >**开始使用**：按照 [Application Insights 教程](../../azure-monitor/app/app-insights-overview.md)。
+  > **开始使用**：按照 [Application Insights 教程](../../azure-monitor/app/app-insights-overview.md)。
 
--   **Azure Monitor**：一种服务，可帮助你直观显示、查询、路由、存档和操作你使用 Azure 基础结构和资源生成的指标和日志。 监视器是用于监视 Azure 资源的单个源，并提供在 Azure 门户中看到的数据视图。
+* **Azure Monitor**：一种服务，可帮助你直观显示、查询、路由、存档和操作你使用 Azure 基础结构和资源生成的指标和日志。 监视器是用于监视 Azure 资源的单个源，并提供在 Azure 门户中看到的数据视图。
 
-    >**开始使用**：[Azure Monitor 入门](../../azure-monitor/overview.md)。
+  > **开始使用**：[Azure Monitor 入门](../../azure-monitor/overview.md)。
 
 ### <a name="devops-integration"></a>DevOps 集成
 
@@ -219,18 +210,17 @@ Azure 提供了多种方式以便在应用程序中使用容器。
 >
 > **立即试用：** [尝试几个 DevOps 集成](https://azure.microsoft.com/try/devops/)。
 
-
 ## <a name="azure-regions"></a>Azure 区域
 
 Azure 是一个全球性云平台，在世界各地的许多区域都可以使用。 当你在 Azure 中预配服务、应用程序或 VM 时，系统将要求你选择一个区域。 此区域表示应用程序在其中运行或存储数据的特定数据中心。 这些区域对应于在 [Azure 区域](https://azure.microsoft.com/regions/)页上发布的特定位置。
 
 ### <a name="choose-the-best-region-for-your-application-and-data"></a>选择应用程序和数据的最佳区域
 
-使用 Azure 的好处之一是，你可以将应用程序部署到全球范围内的各种数据中心。 你选择的区域可能会影响应用程序的性能。 例如，最好选择更接近于大部分客户的区域，以减少网络请求中的延迟。 你可能还需要选择你的区域，以满足在某些国家/地区分发应用的法律要求。 最佳的做法是，始终将应用程序数据存储在相同的数据中心，或尽可能靠近托管应用程序的数据中心的数据中心。
+使用 Azure 的好处之一是，你可以将应用程序部署到全球范围内的各种数据中心。 你选择的区域可能会影响应用程序的性能。 例如，最好选择更接近于大部分客户的区域，以减少网络请求的延迟。 你可能还需要选择你的区域，以满足在某些国家/地区分发应用的法律要求。 最佳的做法是，始终将应用程序数据存储在相同的数据中心，或尽可能靠近托管应用程序的数据中心的数据中心。
 
 ### <a name="multi-region-apps"></a>多区域应用
 
-尽管整个数据中心可能会因自然灾害或 Internet 故障等事件而脱机，不过这种情况极少发生。 最佳的做法是，将至关重要的业务应用程序托管在多个数据中心，以提供最大的可用性。 另外，使用多区域也可以减少全球用户的延迟，并在更新应用程序时提供更多的弹性。
+虽然不太可能，但由于自然灾害或 Internet 故障等事件，整个数据中心无法脱机。 最佳做法是在多个数据中心内托管重要的业务应用程序，以提供最高的可用性。 另外，使用多区域也可以减少全球用户的延迟，并在更新应用程序时提供更多的弹性。
 
 某些服务，如虚拟机和应用服务，使用 [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)启用在两个区域之间进行故障转移的多区域支持，以支持高可用性的企业应用程序。 有关示例，请参阅 [Azure 参考体系结构：在多个区域中运行 Web 应用程序](/azure/architecture/reference-architectures/app-service-web-app/multi-region)。
 
@@ -244,9 +234,9 @@ Azure 提供了一套丰富的体验，可让你同时以编程方式和在 [Azu
 
 Azure 提供了两种方法来通过命令行管理应用程序和服务。 您可以使用 Bash、终端、命令提示符或您选择的命令行工具等工具。 通常，你可以从命令行执行与 Azure 门户中相同的任务，例如创建和配置虚拟机、虚拟网络、web 应用和其他服务。
 
--   [Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli)：允许你连接到 Azure 订阅，并从命令行根据 Azure 资源对各种任务进行编程。
+* [Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli)：允许你连接到 Azure 订阅，并从命令行根据 Azure 资源对各种任务进行编程。
 
--   [Azure PowerShell](/powershell/azure/)：提供了一组带 cmdlet 的模块，可让你通过使用 Windows PowerShell 来管理 Azure 资源。
+* [Azure PowerShell](/powershell/azure/)：提供了一组带 cmdlet 的模块，可让你通过使用 Windows PowerShell 来管理 Azure 资源。
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -264,13 +254,13 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 除了 REST Api，许多 Azure 服务还允许使用特定于平台的 Azure Sdk （包括适用于以下开发平台的 Sdk）以编程方式管理应用程序中的资源：
 
--   [.NET](/dotnet/api/)
--   [Node.js](/azure/developer/javascript/)
--   [Java](/java/azure)
--   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
--   [Python](/azure/python/)
--   [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
--   [Go](/azure/go)
+* [.NET](/dotnet/api/)
+* [Node.js](/azure/developer/javascript/)
+* [Java](/java/azure)
+* [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
+* [Python](/azure/python/)
+* [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
+* [Go](/azure/go)
 
 [移动应用](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library)和 [Azure 媒体服务](../../media-services/previous/media-services-dotnet-how-to-use.md)等服务均提供客户端 SDK，可让你从 Web 和移动客户端应用访问服务。
 
@@ -312,7 +302,7 @@ Azure 资源浏览器是一款非常出色的工具，可用于可视化已在�
 
 如果允许访问 Azure 资源，最佳做法是向用户提供完成给定任务所需的最小特权。
 
-- Azure **RBAC) 的 azure 基于角色的访问控制 (**：在 azure 中，你可以授予对用户帐户的访问权限， (主体在指定范围内) ：订阅、资源组或单个资源。 Azure RBAC 使你可以将资源部署到资源组，并向特定用户或组授予权限。 它还允许你将访问权限限制为仅属于目标资源组的资源。 此外，还可以授予对单个资源的访问权限，例如虚拟机或虚拟网络。 若要授予访问权限，请将角色分配给用户、组或服务主体。 预定义角色有很多，但也可定义自己的自定义角色。 若要了解详细信息，请参阅 [什么是 AZURE RBAC) 的 azure 基于角色的访问控制 (？](../../role-based-access-control/overview.md)。
+* Azure **RBAC) 的 azure 基于角色的访问控制 (**：在 azure 中，你可以授予对用户帐户的访问权限， (主体在指定范围内) ：订阅、资源组或单个资源。 Azure RBAC 使你可以将资源部署到资源组，并向特定用户或组授予权限。 它还允许你将访问权限限制为仅属于目标资源组的资源。 此外，还可以授予对单个资源的访问权限，例如虚拟机或虚拟网络。 若要授予访问权限，请将角色分配给用户、组或服务主体。 预定义角色有很多，但也可定义自己的自定义角色。 若要了解详细信息，请参阅 [什么是 AZURE RBAC) 的 azure 基于角色的访问控制 (？](../../role-based-access-control/overview.md)。
 
   > 何时使用：当需要对用户和组进行细致的访问管理，或者当需要使用户成为订阅的所有者时使用。
   >
@@ -342,10 +332,10 @@ Azure 资源浏览器是一款非常出色的工具，可用于可视化已在�
 
 Azure 提供了一组允许访问资源消耗和 Azure 订阅的元数据信息的计费 REST API。 使用这些计费 API，可让你能够更好地预测和管理 Azure 费用。 你可以按小时增量跟踪和分析支出，并创建支出警报。 你还可以根据当前使用情况趋势预测将来的计费。
 
->**开始使用**：若要了解有关使用计费 API 的详细信息，请参阅 [Azure 计费使用情况和 RateCard API 概述](../../cost-management-billing/manage/usage-rate-card-overview.md)。
+>**开始** 使用：若要了解有关使用计费 API 的详细信息，请参阅 [Azure 消耗 API 概述](../../cost-management-billing/manage/consumption-api-overview.md)
 
 #### <a name="predict-future-costs"></a>预测未来成本
 
 尽管提前估算成本非常困难，但 Azure 提供的工具可以提供帮助。 它有一个 [定价计算器](https://azure.microsoft.com/pricing/calculator/) ，可帮助估计部署资源的成本。 你还可以使用门户中的计费资源和计费 REST Api，根据当前消耗量估计未来成本。
 
->**开始使用**：请参阅 [Azure 计费使用情况和 RateCard API 概述](../../cost-management-billing/manage/usage-rate-card-overview.md)。
+>**开始** 使用：请参阅 [Azure 使用 API 概述](../../cost-management-billing/manage/consumption-api-overview.md)。

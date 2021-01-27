@@ -1,6 +1,5 @@
 ---
-title: 资产
-titleSuffix: Azure Media Services
+title: Azure 媒体服务中的资产
 description: 介绍何为资产以及 Azure 媒体服务如何使用这些资产。
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: f6f4cfcc07496179908c8349f4282a7633379cd3
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 5159432107e60f6c21bcf70e0bbc9a9e2123a728
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695809"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897690"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中的资产
 

@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: cfeb124aeb614906cef1dc710eb8485e63806539
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 28b7419dfc889d1149765b884f1a5990a1e28f03
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880569"
+ms.locfileid: "98898098"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 
@@ -186,7 +186,7 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 
 ### <a name="data-deduplication"></a>重复数据删除
 **Windows Server 2016 和 Windows Server 2019**   
-Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重复数据删除。 在启用了云分层的卷上启用重复数据删除后，即可在本地缓存更多文件，而无需预配更多存储。 
+支持重复数据删除，而不管是否在 Windows Server 2016 和 Windows Server 2019 卷上的一个或多个服务器终结点上启用或禁用云分层。 在启用了云分层的卷上启用重复数据删除后，即可在本地缓存更多文件，而无需预配更多存储。 
 
 在启用了云分层的卷上启用重复数据删除后，将根据云分层策略设置，按与普通文件类似的方式，对服务器终结点位置中经过“重复数据删除”优化的文件进行分层。 将经过“重复数据删除”优化的文件进行分层后，重复数据删除垃圾回收作业将自动运行，通过删除卷上不再被其他文件引用的、不必要的区块来回收磁盘空间。
 

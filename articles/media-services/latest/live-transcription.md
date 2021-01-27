@@ -1,26 +1,9 @@
 ---
-title: 实时听录
-titleSuffix: Azure Media Services
-description: 了解 Azure 媒体服务实时脚本。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: c3465e294af104c4d9c3b34960f5e95cf41e7cb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291409"
+标题：实时脚本： Azure 媒体服务说明：了解 Azure 媒体服务实时操作。  
+服务：媒体服务 documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '： media-服务毫秒。工作负荷： media ms.tgt_pltfrm： na ms.devlang： ne ms. 主题：操作08/31/2020 方法：： inhenkel
+
 ---
+
 # <a name="live-transcription-preview"></a>实时脚本 (预览) 
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -42,7 +25,7 @@ Live 脚本在以下区域中提供：
 - 美国中部
 - 美国中南部
 - 美国西部 2
-- 巴西南部
+- Brazil South
 
 这是可转录的可用语言的列表，请使用 API 中的语言代码。
 
@@ -64,7 +47,7 @@ Live 脚本在以下区域中提供：
 | 法语（法国） | fr-FR |
 | 意大利语（意大利） | it-IT |
 | 荷兰语（荷兰） | nl-NL |
-| 葡萄牙语（巴西） | pt-BR |
+| 葡萄牙语(巴西) | pt-BR |
 | 葡萄牙语(葡萄牙) | pt-PT |
 | 瑞典语（瑞典） | sv-SE |
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务中的流式处理定位符 | Microsoft Docs
+title: Azure 媒体服务中的流式处理定位符
 description: 本文介绍何为流式处理定位符以及 Azure 媒体服务如何使用这些定位符。
 services: media-services
 documentationcenter: ''
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68df5256949db44b2b347002570c64d1aa0d55ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b711b9a6923a1923562a282dcaffe7cecb0c58b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297954"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898132"
 ---
 # <a name="streaming-locators"></a>流式处理定位符
 
 若要使输出资产中的视频可供客户端进行播放，必须创建[流式处理定位符](/rest/api/media/streaminglocators)，然后生成流式处理 URL。 若要生成 URL，需要连接流式处理终结点主机名和流定位器路径。 对于 .NET 示例，请参阅[获取流式处理定位符](stream-files-tutorial-with-api.md#get-a-streaming-locator)。
 
-创建**流定位符**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，**流定位符**立即生效，并持续到被删除为止。 
+创建 **流定位符** 的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，**流定位符** 立即生效，并持续到被删除为止。 
 
-创建**流定位器**时，必须指定**资产**名称和**流式处理策略**名称。 有关详细信息，请参阅以下主题：
+创建 **流定位器** 时，必须指定 **资产** 名称和 **流式处理策略** 名称。 有关详细信息，请参阅以下主题：
 
 * [资产](assets-concept.md)
 * [流式处理策略](streaming-policy-concept.md)
@@ -35,7 +35,7 @@ ms.locfileid: "89297954"
 
 ## <a name="considerations"></a>注意事项
 
-* **流定位器**不可更新。 
+* **流定位器** 不可更新。 
 * 属于日期/时间类型的流式处理定位符  的属性始终采用 UTC 格式。
 * 应为媒体服务帐户设计一组有限的策略，并在需要相同的选项时重新将这些策略用于流式处理定位符。 有关详细信息，请参阅[配额和限制](limits-quotas-constraints.md)。
 

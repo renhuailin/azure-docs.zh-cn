@@ -3,19 +3,19 @@ title: 不支持的语言部署-自定义转换器
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何在 Azure 认知服务自定义转换器中部署不受支持的语言对。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
-ms.author: swmachan
-ms.openlocfilehash: 7498169c2c61b8337a90fbda082729f200f04635
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.author: lajanuar
+ms.openlocfilehash: fb31388647fc6022a2e6670baf7b3e73f345c36a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369029"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898064"
 ---
 # <a name="unsupported-language-deployments"></a>不支持的语言部署
 
@@ -25,7 +25,7 @@ ms.locfileid: "94369029"
 
 现在，我们有了一个过程，可让你通过自定义转换器部署不受支持的模型。  此过程使你能够使用最新的 V3 API 继续转换内容。  这些模型将被承载，直到你选择取消部署它们，或者语言对在自定义转换器中变为可用。  本文介绍部署不受支持的语言对的模型的过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 为了使模型成为部署的候选项，它们必须满足以下条件：
 * 必须已使用迁移工具将包含模型的项目从中心迁移到自定义转换器。  可在 [此处](how-to-migrate.md)找到迁移项目和工作区的进程。

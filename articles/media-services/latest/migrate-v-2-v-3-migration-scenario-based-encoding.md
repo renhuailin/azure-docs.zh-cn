@@ -1,5 +1,5 @@
 ---
-title: 编码基于方案的迁移指南 |Microsoft Docs
+title: 编码基于方案的迁移指南
 description: 本文提供基于编码方案的指南，这些指南可帮助你从 Azure 媒体服务 v2 迁移到 v3。
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2d122bdeb98de624d9053852b9bee4595b0ef8c8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f8d25a14593c3c4a26ecafa33f7cc9fe6c4d580a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690259"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898352"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>编码基于方案的迁移指南
 
@@ -26,7 +26,7 @@ ms.locfileid: "98690259"
 
 本文提供基于编码方案的指南，这些指南可帮助你从 Azure 媒体服务 v2 迁移到 v3。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在更改编码工作流之前，建议您了解存储的管理方式上的差异。  在 AMS V3 中，Azure 存储 API 用于管理与媒体服务帐户关联的存储帐户 () 。
 
@@ -60,7 +60,7 @@ ms.locfileid: "98690259"
 
 [![V3 ](./media/migration-guide/V3-pretty.svg) 的编码工作流](./media/migration-guide/V3-pretty.svg#lightbox)
 
-1. 设置
+1. 开始参与
     1. 创建资产或使用现有资产。 如果使用新资产，请将内容上传到该资产。 如果使用现有资产，则应该对资产中已经存在的文件进行编码。 不 *应将更多内容上载到该资产。*
     1. 创建输出资产。  输出资产是指将在其中存储编码文件和输入元数据的位置。
     1. 获取转换的值：

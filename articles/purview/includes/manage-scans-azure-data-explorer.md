@@ -1,16 +1,16 @@
 ---
-author: hophanms
-ms.author: hophan
+author: amberz
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
 ms.date: 1/20/2021
-ms.openlocfilehash: ac83f455d2af82c3f6970077fccb17f07e53cccc
+ms.author: amberz
+ms.openlocfilehash: bf872feae9c3a7ca94e5252872adee2b653f5524
 ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900795"
+ms.locfileid: "98896087"
 ---
 ## <a name="creating-and-running-a-scan"></a>创建和运行扫描
 
@@ -27,19 +27,19 @@ ms.locfileid: "98900795"
 
 1. 选择要连接到数据源的凭据。 
 
-   :::image type="content" source="media/manage-scans/set-up-scan.png" alt-text="设置扫描":::
+   :::image type="content" source="media/manage-scans/set-up-scan-data-explorer.png" alt-text="设置扫描":::
 
 1. 通过选中列表中的适当项目，可以将扫描范围限定于数据源的特定部分，如文件夹、集合或架构。
 
-   :::image type="content" source="media/manage-scans/scope-your-scan.png" alt-text="限定扫描范围":::
+   :::image type="content" source="media/manage-scans/scope-your-scan-data-explorer.png" alt-text="限定扫描范围":::
 
 1. 然后为你的扫描选择扫描规则集。 可以选择系统默认项、现有的自定义项，也可以内联方式创建新项。
 
-   :::image type="content" source="media/manage-scans/scan-rule-set.png" alt-text="扫描规则集":::
+   :::image type="content" source="media/manage-scans/scan-rule-set-data-explorer.png" alt-text="扫描规则集":::
 
 1. 选择扫描触发器。 可以设置一个计划或运行一次扫描。
 
-   :::image type="content" source="media/manage-scans/trigger-scan.png" alt-text="trigger":::
+   :::image type="content" source="media/manage-scans/trigger-scan-data-explorer.png" alt-text="trigger":::
 
 1. 查看扫描并选择“保存并运行”。
 

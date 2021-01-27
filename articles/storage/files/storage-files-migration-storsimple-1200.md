@@ -1,5 +1,5 @@
 ---
-title: StorSimple 1200 到 Azure 文件同步的迁移
+title: 迁移 StorSimple 1200 到 Azure 文件同步
 description: 了解如何将 StorSimple 1200 系列虚拟设备迁移到 Azure 文件同步。
 author: fauhse
 ms.service: storage
@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 78c7953ef6432d37542a7a8b06f226a07f2b701f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 8562d63bf227fff665c70674c7fe66922bce9992
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630475"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882274"
 ---
-# <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 到 Azure 文件同步的迁移
+# <a name="storsimple-1200-migration-to-azure-file-sync"></a>迁移 StorSimple 1200 到 Azure 文件同步
 
 StorSimple 1200 系列是在本地数据中心运行的虚拟设备。 可以将此设备中的数据迁移到 Azure 文件同步的环境。 Azure 文件同步是 StorSimple 设备可以迁移到的默认和策略长期 Azure 服务。
 
@@ -223,7 +223,7 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 当你的 Windows 服务器有足够的可用容量时，重新运行该命令将解决此问题。 如果遇到这种情况，您可以放心地继续操作。 再次运行该命令是一个后果。
 
 还可以遇到其他 Azure 文件同步问题。
-如果出现这种情况，请查看 **Azure 文件同步故障排除指南的链接** 。
+如果出现这种情况，请查看 **Azure 文件同步故障排除指南的链接**。
 
 ## <a name="relevant-links"></a>相关链接
 
@@ -234,5 +234,5 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 Azure 文件同步内容：
 
 * [AFS 概述](./storage-sync-files-planning.md)
-* [AFS 部署指南](storage-files-deployment-guide.md)
+* [AFS 部署指南](./storage-how-to-create-file-share.md)
 * [AFS 故障排除](storage-sync-files-troubleshoot.md)

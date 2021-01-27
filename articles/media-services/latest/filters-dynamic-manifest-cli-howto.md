@@ -1,5 +1,5 @@
 ---
-title: 通过 CLI 使用 Azure 媒体服务创建筛选器 | Microsoft Docs
+title: 使用 CLI 通过 Azure 媒体服务创建筛选器
 description: 本文介绍如何通过 CLI 使用 Azure 媒体服务 v3 创建筛选器。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f86b3fbebfaa2eb6fc35d5373eab2bb296ff5043
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 75df01ff65a0910dab140942b520978cd7728775
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740616"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897571"
 ---
 # <a name="creating-filters-with-cli"></a>使用 CLI 创建筛选器
 
@@ -45,7 +45,7 @@ ms.locfileid: "92740616"
 以下示例定义添加到最终清单的曲目择条件。 此筛选器包括属于 EC-3 的任何音频曲目和比特率在 0-1000000 范围内的任何视频曲目。
 
 > [!TIP]
-> 如果计划在 REST 中定义 **筛选器** ，请注意需要包括“Properties”包装器 JSON 对象。  
+> 如果计划在 REST 中定义 **筛选器**，请注意需要包括“Properties”包装器 JSON 对象。  
 
 ```json
 [

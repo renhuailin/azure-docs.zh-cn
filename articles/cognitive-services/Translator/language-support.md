@@ -3,19 +3,19 @@ title: 语言支持 - 翻译器
 titleSuffix: Azure Cognitive Services
 description: 认知服务翻译器支持使用神经机器翻译 (NMT) 对以下语言进行文本到文本翻译。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
-ms.author: swmachan
-ms.openlocfilehash: a359c4f0de6dab70b334da7e7d29ad4b273385ab
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.author: lajanuar
+ms.openlocfilehash: a218888a094c30b7672fd22c255f6a352422b878
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789273"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896844"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文本和语音翻译的语言和区域支持
 

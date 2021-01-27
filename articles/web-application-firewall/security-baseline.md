@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b44ea6f55717712cfba4045205e02bd9f2b851df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202651"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878115"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web 应用程序防火墙的 azure 安全基线
 
@@ -406,7 +406,7 @@ Azure WAF 通过检查入站 web 流量来阻止攻击（例如 SQL 注入、跨
 
 Azure WAF 在预防模式下，阻止规则检测到的入侵和攻击。 攻击者会收到“403 未授权访问”异常，且连接会结束。 阻止模式会在 WAF 日志中记录此类攻击。
 
-- [应用程序网关和 Azure 安全中心之间的集成概述](../application-gateway/application-gateway-integration-security-center.md#overview)
+- [应用程序网关和 Azure 安全中心之间的集成概述](../security-center/security-center-partner-integration.md)
 
 - [应用程序网关上的 WAF 模式](ag/ag-overview.md#waf-modes)
 

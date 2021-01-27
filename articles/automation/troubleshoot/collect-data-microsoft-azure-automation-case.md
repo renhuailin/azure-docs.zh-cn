@@ -1,24 +1,16 @@
 ---
 title: 为 Microsoft Azure 自动化建立案例时要收集的数据 | Microsoft Docs
 description: 本文介绍在使用 Microsoft Azure 支持为 Azure 自动化建立案例之前要收集的信息。
-services: virtual-machines-windows, azure-resource-manager
-documentationcenter: ''
-author: v-miegge
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue, azure-resource-manager
-ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+services: automation
+ms.subservice: ''
 ms.topic: troubleshooting
 ms.date: 09/23/2019
-ms.author: v-miegge
-ms.openlocfilehash: d2f97d0b889186324aef9613847e3eddbfe1eb02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d2c0cf780b992d7bb464969c50d60ffa5093e8f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83684849"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896556"
 ---
 # <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>为 Microsoft Azure 自动化建立案例时要收集的数据
 

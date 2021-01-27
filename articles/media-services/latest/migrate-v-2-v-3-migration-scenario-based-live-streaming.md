@@ -1,5 +1,5 @@
 ---
-title: 媒体服务 v2 到 v3 迁移方案基于实时流式处理的指南 |Microsoft Docs
+title: 用于实时流式处理的媒体服务 v2 到 v3 迁移方案指南
 description: 本文提供了基于实时流式处理方案的指南，可帮助你从 Azure 媒体服务 v2 迁移到 v3。
 services: media-services
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 89fcf85b20d11664d5d1caa3fbe142fa5bbdbebc
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 65b1c8906463002e144ee520855121ce18693e03
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690243"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898267"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>实时流式处理基于方案的迁移指南
 

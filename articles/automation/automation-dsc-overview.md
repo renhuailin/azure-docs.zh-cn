@@ -7,15 +7,15 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/22/2020
+ms.date: 01/26/2021
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 752d7f86941967c218b3a57fa163698b9f502057
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079734"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897014"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
 
@@ -37,7 +37,7 @@ Azure Automation State Configuration 是一种 Azure 配置管理服务，允许
 
 与在 Azure 之外使用 DSC 相比，Azure Automation State Configuration 具有多项优势。 该服务可让你从中心的安全位置快速轻松地扩展到数千台计算机。 可以轻松启用计算机、为其分配声明性配置并查看显示每台计算机是否符合指定的所需状态的报告。
 
-Azure Automation State Configuration 服务对于 DSC 而言如同 Azure 自动化 Runbook 对于 PowerShell 脚本而言。 换句话说，Azure 自动化以帮助你管理 PowerShell 脚本的相同方式帮助你管理 DSC 配置。 
+Azure Automation State Configuration 服务对于 DSC 而言如同 Azure 自动化 Runbook 对于 PowerShell 脚本而言。 换句话说，Azure 自动化以帮助你管理 PowerShell 脚本的相同方式帮助你管理 DSC 配置。
 
 ### <a name="built-in-pull-server"></a>内置拉取服务器
 
@@ -83,20 +83,11 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 
 ### <a name="configuration-of-private-networks"></a><a name="network-planning"></a>私有网络配置
 
-如果节点位于专用网络中，则需要以下端口和 URL。 这些资源为托管节点提供网络连接，并允许 DSC 与 Azure 自动化功能通信。
-
-* 端口：只需使用 TCP 443 即可进行出站 Internet 访问
-* 全局 URL：*.azure-automation.net
-* US Gov 弗吉尼亚州的全局 URL：*.azure-automation.us
-* 代理服务： **https:// \<workspaceId\> . agentsvc.azure-automation.net**
-
-如果使用在节点之间传递的 DSC 资源（如 [WaitFor* 资源](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)），还需要允许节点之间产生流量。 请参阅每个 DSC 资源的文档以了解这些网络要求。
-
-若要了解 TLS 1.2 的客户端要求，请参阅[强制 Azure 自动化执行 TLS 1.2](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
+查看 [Azure 自动化网络配置](automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration) ，详细了解专用网络上的节点所需的端口、url 和其他网络详细信息。
 
 #### <a name="proxy-support"></a>代理支持
 
-Windows 版本 1809 及更高版本中提供了对 DSC 代理的代理支持。 此选项的启用方法是：在用于注册节点的[元配置脚本](automation-dsc-onboarding.md#generate-dsc-metaconfigurations)中设置 `ProxyURL` 和 `ProxyCredential` 属性的值。 
+Windows 版本 1809 及更高版本中提供了对 DSC 代理的代理支持。 此选项的启用方法是：在用于注册节点的[元配置脚本](automation-dsc-onboarding.md#generate-dsc-metaconfigurations)中设置 `ProxyURL` 和 `ProxyCredential` 属性的值。
 
 >[!NOTE]
 >Azure Automation State Configuration 不为早期版本的 Windows 提供 DSC 代理支持。
@@ -114,4 +105,4 @@ Windows 版本 1809 及更高版本中提供了对 DSC 代理的代理支持。 
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译 DSC 配置](automation-dsc-compile.md)。
 - 若要查看在持续部署管道中使用 Azure Automation State Configuration 的示例，请参阅[使用 Chocolatey 设置持续部署](automation-dsc-cd-chocolatey.md)。
 - 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.microsoft.com/pricing/details/automation/)。
-- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation)。

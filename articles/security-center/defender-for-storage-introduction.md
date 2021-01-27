@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b338b8ee93fb24cff54968630d4ff00deca0b64b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 675751433657a7d630d0c42482716702f520ff82
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606719"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881378"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>用于存储的 Azure Defender 简介
 
@@ -54,7 +54,7 @@ ms.locfileid: "97606719"
 警报包含触发警报的事件的详细信息，并提供有关如何调查和消除威胁的建议。 警报可导出到 Azure Sentinel 或任何其他第三方 SIEM 或任何其他外部工具。
 
 > [!TIP]
-> 最佳做法是在订阅级别[配置用于存储的 Azure Defender](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-security-center)，但也可以[在单独的存储帐户上进行配置](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-portal)。
+> 最佳做法是在订阅级别[配置用于存储的 Azure Defender](../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)，但也可以[在单独的存储帐户上进行配置](../storage/common/azure-defender-storage-configure.md?tabs=azure-portal)。
 
 
 ## <a name="what-is-hash-reputation-analysis-for-malware"></a>什么是针对恶意软件的哈希信誉分析？

@@ -1,5 +1,5 @@
 ---
-title: 步骤 1-了解迁移到媒体服务 API V3 的好处 |Microsoft Docs
+title: 步骤 1-了解迁移到媒体服务 API V3 的优点
 description: 本文列出了从 Media Services v2 迁移到 v3 的好处。
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: c1e3fae35ff249b4435cf2fdcd2bf691bc393d56
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5980da900cd1394d5d9a9ddf99063662cad3c88b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690320"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898369"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>步骤 1-了解迁移到媒体服务 API V3 的优点
 

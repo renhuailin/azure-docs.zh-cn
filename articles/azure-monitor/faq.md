@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: bc229974cf14ba364e5e7111dc1d2704e03c3635
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 2ca8a814fbaf2d8c257d094f81d17a5c871793b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746792"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878929"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -269,9 +269,9 @@ WireData
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>如何更改项目向哪个 Azure 资源发送数据？
 在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”。 可在 Azure 中将数据发送到现有或新资源。 更新向导更改 ApplicationInsights.config 中的检测密钥，该密钥确定服务器 SDK 将数据发送到何处。 除非取消选中“更新全部”，否则它还将在网页中出现密钥的位置更改密钥。
 
-### <a name="do-new-azure-regions-require-the-use-of-connection-strings"></a>新 Azure 区域是否需要使用连接字符串？
+### <a name="do-new-azure-regions-require-the-use-of-connection-strings"></a>新的 Azure 区域是否需要使用连接字符串？
 
-新的 Azure 区域 **要求** 使用连接字符串而不是检测密钥。 [连接字符串](./app/sdk-connection-string.md) 标识您要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+新的 Azure 区域要求使用连接字符串而不是检测密钥。 [连接字符串](./app/sdk-connection-string.md)用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 ### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>能否在 Azure 资源管理器部署中使用 `providers('Microsoft.Insights', 'components').apiVersions[0]`？
 
@@ -380,6 +380,12 @@ WireData
 * 如果没有客户端脚本，可以[在服务器设置 cookie](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/)。
 * 如果一个真实的用户在不同的浏览器中使用站点，或者使用私密/隐身浏览，或使用不同的计算机，则会进行多次计数。
 * 若要识别跨计算机和浏览器登录的用户，请添加对 [setAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users) 的调用。
+
+### <a name="how-does-application-insights-generate-device-information-browser-os-language-model"></a>Application Insights 如何 (浏览器、操作系统、语言、型号) 生成设备信息？
+
+浏览器传递请求的 HTTP 标头中的用户代理字符串，Application Insights 摄取服务使用 [UA 分析器](https://github.com/ua-parser/uap-core) 生成您在数据表和体验中看到的字段。 因此，Application Insights 用户无法更改这些字段。
+
+如果用户或企业禁止在浏览器设置中发送用户代理，则偶尔可能会丢失或不准确的数据。 此外， [UA 分析器正则表达式](https://github.com/ua-parser/uap-core/blob/master/regexes.yaml) 可能不包括所有设备信息，或者 Application Insights 可能未采用最新更新。
 
 ### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> 我是否已在 Application Insights 中启用所有内容？
 | 应看到 | 如何获取 | 为何需要它 |
@@ -566,7 +572,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
    2. 工具无需担心供应商锁定。
    3. 提高客户透明度和参与度。
 
-它还与 Microsoft 用于 [接纳开源](https://opensource.microsoft.com/)的策略相符。
+它还符合 Microsoft 的[拥抱开源](https://opensource.microsoft.com/)策略。
 
 ### <a name="what-additional-value-does-opentelemetry-give-me"></a>OpenTelemetry 可以给我带来哪些附加价值？
 
@@ -578,25 +584,25 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 ### <a name="what-does-ga-mean-in-the-context-of-opentelemetry"></a>在 OpenTelemetry 中，GA 意味着什么？
 
-OpenTelemetry 社区在[此处](https://medium.com/opentelemetry/ga-planning-f0f6d7b5302)定义了正式发布 (GA)。 但是，OpenTelemetry "GA" 并不意味着与现有 Application Insights Sdk 之间存在功能的奇偶校验。 Azure Monitor 将继续向需要[预聚合指标](app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)、[实时指标](app/live-stream.md)、[自适应采样](app/sampling.md#adaptive-sampling)、[探查器](app/profiler-overview.md)和[快照调试程序](app/snapshot-debugger.md)功能的客户推荐我们当前的 Application Insights SDK，直到 OpenTelemetry SDK 达到功能成熟。
+OpenTelemetry 社区在[此处](https://medium.com/opentelemetry/ga-planning-f0f6d7b5302)定义了正式发布 (GA)。 但是，OpenTelemetry 的“GA”并不意味着与现有 Application Insights SDK 具有功能奇偶一致性。 Azure Monitor 将继续向需要[预聚合指标](app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)、[实时指标](app/live-stream.md)、[自适应采样](app/sampling.md#adaptive-sampling)、[探查器](app/profiler-overview.md)和[快照调试程序](app/snapshot-debugger.md)功能的客户推荐我们当前的 Application Insights SDK，直到 OpenTelemetry SDK 达到功能成熟。
 
 ### <a name="can-i-use-preview-builds-in-production-environments"></a>我是否可以在生产环境中使用预览版？
 
-不建议使用此方法。 有关详细信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 。
+不建议这样做。 有关详细信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 。
 
-### <a name="whats-the-difference-between-opentelemetry-sdk-and-auto-instrumentation"></a>OpenTelemetry SDK 与自动检测之间有何区别？
+### <a name="whats-the-difference-between-opentelemetry-sdk-and-auto-instrumentation"></a>OpenTelemetry SDK 和自动检测之间有何区别？
 
-OpenTelemetry 规范定义了 [SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#telemetry-sdk)。 简而言之，"SDK" 是特定于语言的包，它在应用程序的各个组件之间收集遥测数据，并通过导出程序将数据发送到 Azure Monitor。
+OpenTelemetry 规范定义了 [SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#telemetry-sdk)。 简而言之，“SDK”是一种特定于语言的包，可跨应用程序的各个组件收集遥测数据并将数据通过导出程序发送到 Azure Monitor。
 
 自动检测（有时称为字节码注入、无代码或基于代理）的概念指在不更改代码的情况下检测应用程序的功能。 例如，查看 [OpenTelemetry Java 自动检测自述文件](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/master/README.md)了解详细信息。
 
-### <a name="whats-the-opentelemetry-collector"></a>什么是 OpenTelemetry 收集器？
+### <a name="whats-the-opentelemetry-collector"></a>什么是 OpenTelemetry Collector？
 
-相应 [GitHub 自述文件](https://github.com/open-telemetry/opentelemetry-collector#opentelemetry-collector)中介绍了 OpenTelemetry Collector。 目前，Microsoft 不使用 OpenTelemetry 收集器，它依赖于发送到 Azure Monitor Application Insights 的直接导出程序。
+相应 [GitHub 自述文件](https://github.com/open-telemetry/opentelemetry-collector#opentelemetry-collector)中介绍了 OpenTelemetry Collector。 目前，Microsoft 不使用 OpenTelemetry Collector，而是依赖发送到 Azure Monitor Application Insights 的直接导出程序。
 
-### <a name="whats-the-difference-between-opencensus-and-opentelemetry"></a>OpenCensus 和 OpenTelemetry 之间的区别是什么？
+### <a name="whats-the-difference-between-opencensus-and-opentelemetry"></a>OpenCensus 和 OpenTelemetry 之间有何区别？
 
-[OpenCensus](https://opencensus.io/) 是 [OpenTelemetry](https://opentelemetry.io/) 的前身。 Microsoft 帮助整合 [OpenTracing](https://opentracing.io/) 和 OpenCensus 用于创建 OpenTelemetry，OpenTelemetry 是全球唯一的可观测性标准。 Azure Monitor 的当前 [生产环境-建议的 PYTHON SDK](app/opencensus-python.md) 基于 OpenCensus，但最终所有 Azure Monitor 的 sdk 都基于 OpenTelemetry。
+[OpenCensus](https://opencensus.io/) 是 [OpenTelemetry](https://opentelemetry.io/) 的前身。 Microsoft 帮助整合 [OpenTracing](https://opentracing.io/) 和 OpenCensus 用于创建 OpenTelemetry，OpenTelemetry 是全球唯一的可观测性标准。 Azure Monitor 当前[生产推荐的 Python SDK](app/opencensus-python.md) 基于 OpenCensus，但最终所有 Azure Monitor SDK 都将基于 OpenTelemetry。
 
 
 ## <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor

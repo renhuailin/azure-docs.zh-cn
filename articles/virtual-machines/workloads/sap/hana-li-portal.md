@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5adb8edbeafa4d77e24bf865338e111c455cb80
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: b03f3f93e8f829c6ab7dec965850117895a8b52d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827506"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882478"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>通过 Azure 门户控制 Azure HANA 大型实例
 
@@ -88,13 +88,13 @@ az provider register --namespace Microsoft.HanaOnAzure
 - [对 HLI 可用的 SKU](./hana-available-skus.md)
 - [SAP HANA（大型实例）存储体系结构](./hana-storage-architecture.md) 
 
-右侧的其他数据是 HANA 大型实例标记的修订版本。 可能的值为：
+右侧的其他数据是 HANA 大型实例标记的修订版本。 可能的值有：
 
 - 修订版3
 - 修订版4
 
 修订版4是 HANA 大型实例发布的最新体系结构，它对 Azure Vm 和在修订版4标记或行中部署的 HANA 大型实例单元之间的网络延迟进行了重大改进。
-"概述" 的右下角有另一个非常重要的信息，其中包含为每个已部署 HANA 大型实例单元自动创建的 Azure 邻近位置组的名称。 部署托管 SAP 应用程序层的 Azure Vm 时，需要引用此邻近的放置组。 通过使用与 HANA 大型实例单元关联的 [azure 邻近性放置组](../../linux/co-location.md) ，确保将 azure vm 部署到与 Hana 大型实例单元密切接近的位置。 [对于 sap 应用程序的最佳网络延迟，Azure 邻近性放置组](sap-proximity-placement-scenarios.md)中介绍了如何使用近程放置组来查找同一 azure 数据中心内的 sap 应用程序层（如修订版4托管 HANA 大型实例单位）。
+"概述" 的右下角有另一个非常重要的信息，其中包含为每个已部署 HANA 大型实例单元自动创建的 Azure 邻近位置组的名称。 部署托管 SAP 应用程序层的 Azure Vm 时，需要引用此邻近的放置组。 通过使用与 HANA 大型实例单元关联的 [azure 邻近性放置组](../../co-location.md) ，确保将 azure vm 部署到与 Hana 大型实例单元密切接近的位置。 [对于 sap 应用程序的最佳网络延迟，Azure 邻近性放置组](sap-proximity-placement-scenarios.md)中介绍了如何使用近程放置组来查找同一 azure 数据中心内的 sap 应用程序层（如修订版4托管 HANA 大型实例单位）。
 
 标头右侧列中的其他字段会通知 HANA 大型实例单元的电源状态。
 

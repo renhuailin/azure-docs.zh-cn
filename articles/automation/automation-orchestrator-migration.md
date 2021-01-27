@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a47f720344a16d0f77559d6aabfb2b0245e62976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ee4a09df0f95cb809db0e5c0e63d195ee5cfdff
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426327"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896929"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>从 Orchestrator 迁移到 Azure 自动化 (Beta)
 
@@ -24,7 +24,7 @@ ms.locfileid: "89426327"
 
 ## <a name="import-the-standard-activities-module"></a>导入标准活动模块
 
-将[标准活动模块](/system-center/orchestrator/standard-activities?view=sc-orch-2019)导入 Azure 自动化中。 这包括转换后的图形 runbook 可以使用的标准 Orchestrator 活动的转换版本。
+将[标准活动模块](/system-center/orchestrator/standard-activities)导入 Azure 自动化中。 这包括转换后的图形 runbook 可以使用的标准 Orchestrator 活动的转换版本。
 
 ## <a name="import-orchestrator-integration-modules"></a>导入 Orchestrator 集成模块
 
@@ -32,7 +32,7 @@ Microsoft 提供[集成包](/previous-versions/system-center/packs/hh295851(v=te
 
 ## <a name="convert-integration-packs"></a>转换集成包
 
-使用[集成包转换器](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard?view=sc-orch-2019)将使用 [Orchestrator Integration Toolkit (OIT)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) 创建的任何集成包转换为可导入到 Azure 自动化或 Service Management Automation 中的基于 PowerShell 的集成模块。 运行集成包转换器时，系统会显示一个向导，可以通过该向导选择集成包 (.oip) 文件。 然后，该向导会列出该集成包中包括的活动，并允许选择要迁移的活动。 完成向导的操作后，向导会创建一个集成模块，其中包含原始集成包中每个活动的相应 cmdlet。
+使用[集成包转换器](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard)将使用 [Orchestrator Integration Toolkit (OIT)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) 创建的任何集成包转换为可导入到 Azure 自动化或 Service Management Automation 中的基于 PowerShell 的集成模块。 运行集成包转换器时，系统会显示一个向导，可以通过该向导选择集成包 (.oip) 文件。 然后，该向导会列出该集成包中包括的活动，并允许选择要迁移的活动。 完成向导的操作后，向导会创建一个集成模块，其中包含原始集成包中每个活动的相应 cmdlet。
 
 > [!NOTE]
 > 不能使用集成包转换器转换未使用 OIT 创建的集成包。 另外还有一些 Microsoft 提供的集成包目前无法使用此工具转换。 已支持下载这些集成包的已转换版本，以便将其安装在 Azure 自动化或 Service Management Automation 中。
@@ -118,7 +118,7 @@ Orchestrator 中的 Runbook 接受具有 `Initialize Data` 活动的输入参数
 
 ### <a name="invoke-runbook-activity"></a>调用 Runbook 活动
 
-Orchestrator 中的 Runbook 使用 `Invoke Runbook` 活动来启动其他 Runbook。 如果要转换的 Runbook 包含此活动，并且设置了 `Wait for completion` 选项，则在转换后的 Runbook 中为其创建 Runbook 活动。  如果未设置 `Wait for completion`选项，则创建使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) 的工作流脚本活动来启动 Runbook。 将转换的 Runbook 导入 Azure 自动化之后，必须以活动中指定的信息修改此活动。
+Orchestrator 中的 Runbook 使用 `Invoke Runbook` 活动来启动其他 Runbook。 如果要转换的 Runbook 包含此活动，并且设置了 `Wait for completion` 选项，则在转换后的 Runbook 中为其创建 Runbook 活动。  如果未设置 `Wait for completion`选项，则创建使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) 的工作流脚本活动来启动 Runbook。 将转换的 Runbook 导入 Azure 自动化之后，必须以活动中指定的信息修改此活动。
 
 ## <a name="create-orchestrator-assets"></a>创建 Orchestrator 资产
 

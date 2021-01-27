@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: a8286768dac33e48bc4d7c4dce0d9934da08c319
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ec6a03673112dfb5397f6fae947f1fbf65fd6791
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736065"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881412"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -29,7 +29,7 @@ ms.locfileid: "98736065"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 数据路径是否通过 Internet？  
 
-不能。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是一个 Azure 本机服务，该服务部署到 Azure 虚拟网络 (VNet) 服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
+否。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是一个 Azure 本机服务，该服务部署到 Azure 虚拟网络 (VNet) 服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
 
 有关详细信息，请参阅 [Azure NetApp 文件的准则网络规划](./azure-netapp-files-network-topologies.md) 。  
 
@@ -48,7 +48,7 @@ ms.locfileid: "98736065"
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>能否为 Azure NetApp 文件卷设置或选择自己的 IP 地址？  
 
-不能。 IP 分配给 Azure NetApp 文件卷是动态的。 不支持静态 IP 分配。 
+否。 IP 分配给 Azure NetApp 文件卷是动态的。 不支持静态 IP 分配。 
 
 ### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp 文件是否支持双堆栈 (IPv4 和 IPv6) VNet？
 
@@ -196,7 +196,7 @@ Azure NetApp 文件提供容量池和卷使用情况指标。 你还可以使用
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>是否可以通过 Azure 存储资源管理器管理 Azure NetApp 文件？
 
-不能。 Azure 存储资源管理器不支持 Azure NetApp 文件。
+否。 Azure 存储资源管理器不支持 Azure NetApp 文件。
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何实现确定目录是否接近限制大小？
 
@@ -204,7 +204,7 @@ Azure NetApp 文件提供容量池和卷使用情况指标。 你还可以使用
 
 对于 320 MB 的目录，块数为655360，每个块的大小为512个字节。   (，即 320x1024x1024/512 )   
 
-例如：
+示例:
 
 ```console
 [makam@cycrh6rtp07 ~]$ stat bin
@@ -253,17 +253,17 @@ NetApp 提供基于 SaaS 的解决方案，即 [Netapp 云同步](https://cloud.
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Azure Data Box 是否支持迁移？
 
-不能。 Azure Data Box 目前不支持 Azure NetApp 文件。 
+否。 Azure Data Box 目前不支持 Azure NetApp 文件。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支持通过 Azure 导入/导出服务进行迁移？
 
-不能。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
+否。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
 
 ## <a name="product-faqs"></a>产品常见问题
 
 ### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>能否在 Azure VMware 解决方案 (AVS) 上使用 Azure NetApp 文件 NFS 或 SMB 卷？
 
-可以在 AVS Windows Vm 或 Linux Vm 上装载 Azure NetApp 文件 NFS 卷。 可以将 Azure NetApp 文件的 SMB 共享映射到 AVS Windows Vm。 有关更多详细信息，请参阅 azure [NetApp 文件与 Azure VMware 解决方案]( ../azure-vmware/net-app-files-with-azure-vmware-solution.md)。  
+可以在 AVS Windows Vm 或 Linux Vm 上装载 Azure NetApp 文件 NFS 卷。 可以将 Azure NetApp 文件的 SMB 共享映射到 AVS Windows Vm。 有关更多详细信息，请参阅 azure [NetApp 文件与 Azure VMware 解决方案]( ../azure-vmware/netapp-files-with-azure-vmware-solution.md)。  
 
 ### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>使用 azure NetApp 文件 NFS 或 SMB 卷和 Azure VMware 解决方案 (AVS) 支持哪些区域？
 
