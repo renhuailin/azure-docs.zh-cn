@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 3e4d0513808cdc44fc71e182a07fa6b050d182ee
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aab856b1e1d2d991cc4964d061a990dbedbeddb7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452509"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876505"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>规划 Azure 应用程序产品/服务的解决方案模板
 
@@ -28,7 +28,7 @@ ms.locfileid: "96452509"
 | 计费和计量 | 解决方案模板计划并不事务，但可用于部署通过 Microsoft 商业市场计费的付费 VM 产品/服务。 解决方案的 ARM 模板部署的资源是在客户的 Azure 订阅中设置的。 即用即付虚拟机通过 Microsoft 与客户进行交易，并通过客户的 Azure 订阅进行计费。 <br><br> 对于自带许可证 (BYOL) 计费，虽然 Microsoft 会对客户订阅中的基础结构成本收费，但你可以直接向客户收取软件许可费用。 |
 | 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 有关详细信息，请参阅：<ul><li>为 Windows Vhd[创建 AZURE VM 技术资产](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) () </li><li>适用于 Linux Vhd) 的[Azure (认可 linux 分发](../virtual-machines/linux/endorsed-distros.md)版。</li></ul> |
 | 客户使用情况归因 | 在 Azure Marketplace 中发布的所有解决方案模板上都需要启用客户使用情况归属。 有关客户使用情况和如何启用的详细信息，请参阅 [Azure 合作伙伴客户使用归属](azure-partner-customer-usage-attribution.md)。 |
-| 使用托管磁盘 | [托管磁盘](../virtual-machines/managed-disks-overview.md) 是 Azure 中的基础结构即服务 (IaaS) vm 的默认选项。 必须使用解决方案模板中的托管磁盘。<ul><li>若要更新解决方案模板，请遵循在 [Azure 中使用托管磁盘资源管理器模板](../virtual-machines/using-managed-disks-template-deployments.md)中的指南，并使用提供的 [示例](https://github.com/Azure/azure-quickstart-templates)。</li><li>若要在 Azure Marketplace 中将 VHD 作为映像发布，请使用[Azure PowerShell](../virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md)或[Azure CLI](../virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md)将托管磁盘的基础 VHD 导入到存储帐户。</ul> |
+| 使用托管磁盘 | [托管磁盘](../virtual-machines/managed-disks-overview.md) 是 Azure 中的基础结构即服务 (IaaS) vm 的默认选项。 必须使用解决方案模板中的托管磁盘。<ul><li>若要更新解决方案模板，请遵循在 [Azure 中使用托管磁盘资源管理器模板](../virtual-machines/using-managed-disks-template-deployments.md)中的指南，并使用提供的 [示例](https://github.com/Azure/azure-quickstart-templates)。</li><li>若要在 Azure Marketplace 中将 VHD 作为映像发布，请使用[Azure PowerShell](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd)或[Azure CLI](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd)将托管磁盘的基础 VHD 导入到存储帐户。</ul> |
 | 部署包 | 你将需要一个允许客户部署你的计划的部署包。 如果创建的多个计划需要相同的技术配置，则可以使用同一个计划包。 有关详细信息，请参阅下一节：部署包。 |
 |||
 

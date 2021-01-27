@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 73984694d764234e9e1ec11e6b189a9ad85d97a8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 52801d0d7b02bb3637b5edb03072bde04a023de9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737398"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881782"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>排查 Azure 映像生成器服务问题
 
@@ -674,4 +674,4 @@ Support Subtopic: Azure Image Builder
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [Azure 映像生成器概述](image-builder-overview.md)。
+有关详细信息，请参阅 [Azure 映像生成器概述](../image-builder-overview.md)。

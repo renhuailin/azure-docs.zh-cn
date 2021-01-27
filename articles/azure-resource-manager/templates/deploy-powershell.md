@@ -2,13 +2,13 @@
 title: 使用 PowerShell 和模板部署资源
 description: 使用 Azure Resource Manager 和 Azure PowerShell 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: d895c6e029b0b4a70333dde987706549609c8bd3
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/26/2021
+ms.openlocfilehash: efefb6706794bc2488aa4d4fef6c4ecc082b41a7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251006"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881259"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 模板和 Azure PowerShell 部署资源
 
@@ -61,6 +61,34 @@ ms.locfileid: "98251006"
 
 对于每一个范围，部署模板的用户必须具有创建资源所必需的权限。
 
+## <a name="deployment-name"></a>部署名称
+
+部署 ARM 模板时，可以为部署指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用模板文件的名称。 例如，如果部署一个名为 `azuredeploy.json` 的模板，但未指定部署名称，则该部署将命名为 `azuredeploy`。
+
+每次运行部署时，一个包含部署名称的条目会添加到资源组的部署历史记录中。 如果运行另一个部署并为其指定了相同的名称，则会将先前的条目替换为当前部署。 如果要在部署历史记录中保持唯一条目，请为每个部署指定唯一名称。
+
+若要创建唯一名称，你可以分配一个随机数。
+
+```azurepowershell-interactive
+$suffix = Get-Random -Maximum 1000
+$deploymentName = "ExampleDeployment" + $suffix
+```
+
+或者，添加日期值。
+
+```azurepowershell-interactive
+$today=Get-Date -Format "MM-dd-yyyy"
+$deploymentName="ExampleDeployment"+"$today"
+```
+
+如果使用相同的部署名称对同一资源组运行并发部署，则仅会完成最后一个部署。 尚未完成的具有相同名称的任何部署都将被最后一个部署所替换。 例如，如果你运行一个名为 `newStorage` 的部署，它部署了一个名为 `storage1` 的存储帐户；与此同时，你运行了另一个名为 `newStorage` 的部署，它部署了一个名为 `storage2` 的存储帐户，则你将仅部署一个存储帐户。 生成的存储帐户名为 `storage2`。
+
+但是，如果你运行一个名为 `newStorage` 的部署，它部署了一个名为 `storage1` 的存储帐户；在该部署完成时你又立即运行了另一个名为 `newStorage` 的部署，它部署了一个名为 `storage2` 的存储帐户，则你将有两个存储帐户。 一个名为 `storage1`，另一个名为 `storage2`。 但是，部署历史记录中只有一个条目。
+
+为每个部署指定唯一的名称时，可以并发运行它们而不会发生冲突。 如果你运行一个名为 `newStorage1` 的部署，它部署了一个名为 `storage1` 的存储帐户；与此同时，你又运行了另一个名为 `newStorage2` 的部署，它部署了一个名为 `storage2` 的存储帐户，则部署历史记录中将有两个存储帐户和两个条目。
+
+为避免与并发部署冲突并确保部署历史记录中的条目是唯一的，请为每个部署指定唯一的名称。
+
 ## <a name="deploy-local-template"></a>部署本地模板
 
 可以部署本地计算机中的模板，也可以部署存储在外部的模板。 本节介绍如何部署本地模板。
@@ -96,44 +124,28 @@ New-AzResourceGroup -Name ExampleGroup -Location "Central US"
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Name ExampleDeployment `
+  -Name remoteTemplateDeployment `
   -ResourceGroupName ExampleGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
 前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果想要管理对模板的访问权限，请考虑使用 [模板规范](#deploy-template-spec)。
 
-## <a name="deployment-name"></a>部署名称
+若要使用存储在存储帐户中的相对路径部署远程链接模板，请使用 `QueryString` 指定 SAS 令牌：
 
-部署 ARM 模板时，可以为部署指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用模板文件的名称。 例如，如果部署一个名为 `azuredeploy.json` 的模板，但未指定部署名称，则该部署将命名为 `azuredeploy`。
-
-每次运行部署时，一个包含部署名称的条目会添加到资源组的部署历史记录中。 如果运行另一个部署并为其指定了相同的名称，则会将先前的条目替换为当前部署。 如果要在部署历史记录中保持唯一条目，请为每个部署指定唯一名称。
-
-若要创建唯一名称，你可以分配一个随机数。
-
-```azurepowershell-interactive
-$suffix = Get-Random -Maximum 1000
-$deploymentName = "ExampleDeployment" + $suffix
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" `
+  -QueryString $sasToken
 ```
 
-或者，添加日期值。
-
-```azurepowershell-interactive
-$today=Get-Date -Format "MM-dd-yyyy"
-$deploymentName="ExampleDeployment"+"$today"
-```
-
-如果使用相同的部署名称对同一资源组运行并发部署，则仅会完成最后一个部署。 尚未完成的具有相同名称的任何部署都将被最后一个部署所替换。 例如，如果你运行一个名为 `newStorage` 的部署，它部署了一个名为 `storage1` 的存储帐户；与此同时，你运行了另一个名为 `newStorage` 的部署，它部署了一个名为 `storage2` 的存储帐户，则你将仅部署一个存储帐户。 生成的存储帐户名为 `storage2`。
-
-但是，如果你运行一个名为 `newStorage` 的部署，它部署了一个名为 `storage1` 的存储帐户；在该部署完成时你又立即运行了另一个名为 `newStorage` 的部署，它部署了一个名为 `storage2` 的存储帐户，则你将有两个存储帐户。 一个名为 `storage1`，另一个名为 `storage2`。 但是，部署历史记录中只有一个条目。
-
-为每个部署指定唯一的名称时，可以并发运行它们而不会发生冲突。 如果你运行一个名为 `newStorage1` 的部署，它部署了一个名为 `storage1` 的存储帐户；与此同时，你又运行了另一个名为 `newStorage2` 的部署，它部署了一个名为 `storage2` 的存储帐户，则部署历史记录中将有两个存储帐户和两个条目。
-
-为避免与并发部署冲突并确保部署历史记录中的条目是唯一的，请为每个部署指定唯一的名称。
+有关详细信息，请参阅 [对链接模板使用相对路径](./linked-templates.md#linked-template)。
 
 ## <a name="deploy-template-spec"></a>部署模板规格
 
-你可以创建 [模板规范](template-specs.md)，而不是部署本地或远程模板。模板规范是包含 ARM 模板的 Azure 订阅中的资源。 这使你可以轻松地与组织中的用户共享模板。 使用 azure RBAC)  (Azure 基于角色的访问控制来授予对模板规范的访问权限。此功能目前处于预览阶段。
+你可以创建 [模板规范](template-specs.md)，而不是部署本地或远程模板。模板规范是包含 ARM 模板的 Azure 订阅中的资源。 这使你可以轻松地与组织中的用户安全地共享模板。 可使用 Azure 基于角色的访问控制 (Azure RBAC) 来授予对模板规格的访问权限。此功能目前以预览版提供。
 
 下面的示例演示如何创建和部署模板规范。
 

@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: d45ab771f90c0174f24d5f0d39921f93f72be850
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b875936e13edfe0eff12f253836b093796951308
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451070"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876320"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>对 Azure Database for PostgreSQL（单一数据库）使用虚拟网络服务终结点和规则
 
@@ -32,9 +32,9 @@ ms.locfileid: "96451070"
 
 **虚拟网络：** 可以让虚拟网络与 Azure 订阅相关联。
 
-**子网：** 虚拟网络包含 **子网**。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
+**子网：** 虚拟网络包含 **子网**。 VNet 中 (Vm) 的任何 Azure 虚拟机都将分配给子网。 子网可以包含多个 Vm 和/或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
-**虚拟网络服务终结点：** [虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure Database for PostgreSQL 和 MySQL 服务。 务必要注意的一点是，将 Microsoft.Sql 服务标记应用到 VNet 服务终结点时，它将为子网上的所有 Azure SQL 数据库、Azure Database for PostgreSQL 和 Azure Database for MySQL 服务器配置服务终结点流量。 
+**虚拟网络服务终结点：** [虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure Database for PostgreSQL 和 MySQL 服务。 在将 **Microsoft .sql** 服务标记应用到 VNet 服务终结点时，务必要注意，它会为 Azure 数据库服务配置服务终结点流量： Sql 数据库、Azure Synapse Analytics、Azure Database for PostgreSQL 和子网上 Azure Database for MySQL 服务器。 
 
 **虚拟网络规则：** 适用于 Azure Database for PostgreSQL 服务器的虚拟网络规则是一个子网，该子网列在 Azure Database for PostgreSQL 服务器的访问控制列表 (ACL) 中。 该子网必须包含“Microsoft.Sql”类型名称才会列在 Azure Database for PostgreSQL 服务器的 ACL 中。
 
@@ -44,13 +44,13 @@ ms.locfileid: "96451070"
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>虚拟网络规则的优势
 
-在你执行相应操作之前，子网上的 VM 不能与 Azure Database for PostgreSQL 服务器通信。 建立通信的一项操作是创建虚拟网络规则。 若要弄清楚为何选择 VNet 规则方法，必须进行一个比较和对比式的讨论，其中涉及到防火墙提供的竞争性安全选项。
+在采取措施之前，子网中的 Vm (s) 无法与 Azure Database for PostgreSQL 服务器进行通信。 建立通信的一项操作是创建虚拟网络规则。 若要弄清楚为何选择 VNet 规则方法，必须进行一个比较和对比式的讨论，其中涉及到防火墙提供的竞争性安全选项。
 
-### <a name="a-allow-access-to-azure-services"></a>A. 允许访问 Azure 服务
+### <a name="allow-access-to-azure-services"></a>允许访问 Azure 服务
 
 “连接安全性”窗格有一个标签为“允许访问 Azure 服务”的“启用/禁用”按钮。  “启用”设置允许来自所有 Azure IP 地址和所有 Azure 子网的通信。 这些 Azure IP 或子网可能不是你所拥有的。 此“启用”设置可能超出你在开放方面对 Azure Database for PostgreSQL 数据库的需要。 虚拟网络规则功能提供精细得多的控制。
 
-### <a name="b-ip-rules"></a>B. IP 规则
+### <a name="ip-rules"></a>IP 规则
 
 可以通过 Azure Database for PostgreSQL 防火墙指定 IP 地址范围，处于该范围内的通信允许进入 Azure Database for PostgreSQL 数据库。 此方法适用于 Azure 专用网络外部的稳定 IP 地址。 但是，Azure 专用网络内部的许多节点都配置了动态 IP 地址。 某些情况下（例如重启 VM 时），动态 IP 地址可能会变化。 处于生产环境中时，在防火墙规则中指定一个动态 IP 地址并不明智。
 
@@ -86,7 +86,7 @@ Azure RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
-可以选择在 Azure 中使用[基于 Azure 角色的访问控制 (Azure RBAC)][rbac-what-is-813s]，创建一个只有部分必需权限的自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
+可以选择在 Azure 中使用 [Azure 基于角色的访问控制 (Azure RBAC)][rbac-what-is-813s]，创建一个只有部分必需功能的自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
 
 > [!NOTE]
 > 在某些情况下，Azure Database for PostgreSQL 和 VNet 子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
@@ -106,7 +106,7 @@ Azure RBAC 备用：
 
 - 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络，不适用于[经典部署模型][arm-deployment-model-568f]网络。
 
-- 使用 **Synapse 服务标记** 启用虚拟网络服务终结点 Azure Database for PostgreSQL，还可以为所有 Azure 数据库服务启用终结点： Azure Database for MySQL、Azure Database for PostgreSQL、Azure Sql 数据库和 Azure 分析。
+- 使用 **Microsoft.Sql** 服务标记为 Azure Database for PostgreSQL 启用虚拟网络服务终结点也会为以下所有 Azure 数据库服务启用终结点：Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL 数据库和 Azure Synapse Analytics。
 
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 

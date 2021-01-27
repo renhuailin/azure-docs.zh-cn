@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: cdc22520852118c6af823b42600a2f540b89a10c
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 15bf8f4fde2128181664fa7b94f2479bac7ad5b9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233791"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881511"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
@@ -256,7 +256,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
     - 通过平台管理的密钥和客户管理的密钥进行双重加密
 
    > [!NOTE]
-   > 若要使用 CMK 复制 VM，需要在目标资源组下[创建磁盘加密集](https://go.microsoft.com/fwlink/?linkid=2151800)。 磁盘加密集对象将托管磁盘映射到包含 CMK 的密钥保管库，以用于 SSE。
+   > 若要使用 CMK 复制 VM，需要在目标资源组下[创建磁盘加密集](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)。 磁盘加密集对象将托管磁盘映射到包含 CMK 的密钥保管库，以用于 SSE。
   
 14. 在“Azure 混合权益”中：
 

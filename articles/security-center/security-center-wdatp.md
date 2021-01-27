@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 4b8141d99d654705450a14767b04ae6265766af9
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 519285f2bad352aa16bdc8d9a1db7a63c2eb04e5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807079"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876387"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>利用安全中心的集成 EDR 解决方案保护终结点： Microsoft Defender for Endpoint
 
@@ -62,7 +62,7 @@ Microsoft Defender for Endpoint 提供：
 
 通过将 Defender for Endpoint 与安全中心集成，你将受益于以下附加功能：
 
-- **自动载入**。 安全中心会自动为安全中心监视的所有 Windows 服务器启用 Microsoft Defender for Endpoint 传感器。 除了运行 Windows Server 2019 的那些服务器（必须通过本地脚本进行载入），组策略对象 (GPO) 或 [Microsoft 终结点 Configuration Manager](https://docs.microsoft.com/mem/configmgr/) (以前的 SCCM) 。
+- **自动载入**。 安全中心会自动为安全中心监视的所有 Windows 服务器启用 Microsoft Defender for Endpoint 传感器。 除了运行 Windows Server 2019 的那些服务器（必须通过本地脚本进行载入），组策略对象 (GPO) 或 [Microsoft 终结点 Configuration Manager](/mem/configmgr/) (以前的 SCCM) 。
 
 - **单一的玻璃窗格**。 安全中心控制台显示 Microsoft Defender for Endpoint 警报。 若要进一步调查，请使用 Microsoft Defender 作为终结点的门户页面，你可以在其中看到其他信息，如警报流程树和事件图。 此外，还可以看到详细的机器时间线，其中显示了最长六个月的历史时段的每种行为。
 

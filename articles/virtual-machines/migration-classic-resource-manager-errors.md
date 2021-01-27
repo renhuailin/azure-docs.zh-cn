@@ -1,6 +1,6 @@
 ---
 title: 从经典部署模型迁移到 Azure Resource Manager 部署模型的过程中出现的常见错误
-description: 本文介绍了将 IaaS 资源从 Azure 服务管理迁移到 Azure 资源管理器期间的最常见错误和缓解措施。
+description: 本文编录了将 IaaS 资源从 Azure 服务管理迁移到 Azure 资源管理器期间的最常见错误和缓解措施。
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 110d7186db97f6fac91b8fd785384a1c2ed7a8cd
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 8b56d7294237c39d085a30a701ead3bde309759a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301689"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882359"
 ---
 # <a name="errors-that-commonly-occur-during-classic-to-azure-resource-manager-migration"></a>从经典部署模型迁移到 Azure 资源管理器部署模型的过程中经常出现的错误
 
@@ -34,14 +34,14 @@ ms.locfileid: "96301689"
 | 托管服务 {hosted-service-name} 中的 VM {vm-name} 包含 Azure Resource Manager 不支持的扩展 {extension-name}。 建议先从 VM 中卸载该扩展，再继续进行迁移。 |Azure 资源管理器不支持 XML 扩展（例如 BGInfo 1.\*）。 因此，无法迁移这些扩展。 如果将这些扩展保留安装在虚拟机上，则在完成迁移之前会自动将其卸载。 |
 | HostedService {hosted-service-name} 中的 VM {vm-name} 包含当前不支持进行迁移的扩展 VMSnapshot/VMSnapshotLinux。 请从 VM 中卸载该扩展，在迁移完成后再使用 Azure Resource Manager 重新添加它 |这是为 Azure 备份配置虚拟机的方案。 由于这是当前不支持的方案，请按照 https://aka.ms/vmbackupmigration 中的解决方法进行操作 |
 | 托管服务 {hosted-service-name} 中的 VM {vm-name} 包含 VM 未报告其状态的扩展 {extension-name}。 因此，此 VM 无法迁移。 确保 VM 报告该扩展状态或从 VM 中卸载该扩展，并重试迁移。 <br><br> 托管服务 {hosted-service-name} 中的 VM {vm-name} 包含报告处理程序状态：{handler-status} 的扩展 {extension-name}。 因此，此 VM 无法迁移。 确保所报告的扩展处理程序状态为 {handler-status} 或从 VM 中卸载该扩展，并重试迁移。 <br><br> 托管服务 {hosted-service-name} 中 VM {vm-name} 的 VM 代理报告的总体代理状态为“未就绪”。 因此，该 VM 可能不会迁移（如果它包含可迁移的扩展）。 请确保 VM 代理将总体代理状态报告为“就绪”。 请参阅 https://aka.ms/classiciaasmigrationfaqs 。 |Azure 来宾代理和 VM 扩展需要对 VM 存储帐户进行出站 Internet 访问以填充其状态。 状态失败的常见原因包括 <li> 阻止出站访问 Internet 的网络安全组 <li> 如果 VNET 有本地 DNS 服务器并且 DNS 连接已丢失 <br><br> 如果仍然看到不支持的状态，则可以卸载该扩展以跳过此检查并继续进行迁移。 |
-| 托管服务 {hosted-service-name} 中的部署 {deployment-name} 不支持迁移，因为它具有多个可用性集。 |目前，仅具有 1 个或更少可用性集的托管服务可以迁移。 若要解决此问题，请将附加的可用性集和这些可用性集中的虚拟机移到其他托管服务。 |
+| 托管服务 {hosted-service-name} 中的部署 {deployment-name} 不支持迁移，因为它具有多个可用性集。 |目前，仅具有 1 个或更少可用性集的托管服务可以迁移。 若要解决此问题，请将其他可用性集以及其中的虚拟机移到其他托管服务。 |
 | 托管服务 {hosted-service-name} 中的部署 {deployment-name} 不支持迁移，因为它包含的 VM 不属于可用性集，尽管该托管服务包含一个可用性集。 |这种情况的解决方法是将所有虚拟机都移到单个可用性集中，或者从托管服务的可用性集中删除所有虚拟机。 |
 | 存储帐户/托管服务/虚拟网络 {virtual-network-name} 正处于迁移过程中，因此无法更改 |当资源已完成“准备”迁移操作并触发了对资源进行更改的操作时，会发生此错误。 由于“准备”操作完成后对管理平面进行了锁定，将阻止对资源进行任何更改。 若要解锁管理平面，可以运行“提交”迁移操作以完成迁移，或者“中止”迁移操作以回退“准备”操作。 |
 | 托管服务 {hosted-service-name} 不允许迁移，因为它包含的 VM {vm-name} 处于状态：RoleStateUnknown。 仅当 VM 处于以下状态（“正在运行”、“已停止”、“已停止已解除分配”）之一时，才允许迁移。 |该 VM 可能正在进行状态转换，这通常在对托管服务进行更新操作（例如，重新启动、安装扩展等）期间发生。建议先对托管服务完成更新操作，再尝试迁移。 |
 | HostedService {hosted-service-name} 中的部署 {deployment-name} 包含 VM {vm-name}，该 VM 的数据磁盘 {data-disk-name} 的物理 Blob 大小 {size-of-the-vhd-blob-backing-the-data-disk} 字节与 VM 数据磁盘逻辑大小 {size-of-the-data-disk-specified-in-the-vm-api} 字节不匹配。 迁移会继续，但不会指定 Azure Resource Manager VM 的数据磁盘大小。 | 如果已调整 VHD Blob 的大小，而没有更新 VM API 模型中的大小，将发生此错误。 详细的缓解措施步骤如[下](#vm-with-data-disk-whose-physical-blob-size-bytes-does-not-match-the-vm-data-disk-logical-size-bytes)所述。|
 | 在云服务 {云服务名称} 中使用媒体链接 {数据磁盘 URI} 为 VM {VM 名称} 验证数据磁盘 {数据磁盘名称} 时发生存储异常。 请确保该虚拟机可以访问 VHD 媒体链接 | 如果 VM 的磁盘已被删除或不再可访问，则可能发生此错误。 请确保 VM 磁盘存在。|
 | HostedService {cloud-service-name} 中的 VM {vm-name} 包含具有 blob 名称为 {vhd-blob-name} 的 MediaLink {vhd-uri} 的磁盘，这在 Azure Resource Manager 中不受支持。 | 当 Blob 的名称包含“/”（这当前在计算资源提供程序中不支持）时，将出现此错误。 |
-| HostedService {cloud-service-name} 中的部署 {deployment-name} 不允许迁移，因为不在区域范围内。 请参阅 https:\//aka.ms/regionalscope，了解如何将该部署移至区域范围。 | 在 2014 年，Azure 宣布：网络资源将从群集级别范围移至区域范围。 [https://aka.ms/regionalscope](https://aka.ms/regionalscope)有关更多详细信息，请参阅。 当要迁移的部署尚未进行更新操作（自动将其移至区域范围）时，会发生此错误。 最好的解决方法是向 vm 添加终结点，或者向 VM 添加数据磁盘，然后重试迁移。 <br> 请参阅[如何在 Azure 中的经典 Windows 虚拟机上设置终结点](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint)或[将数据磁盘附加到使用经典部署模型创建的 Windows 虚拟机](/azure/virtual-machines/linux/attach-disk-portal)|
+| HostedService {cloud-service-name} 中的部署 {deployment-name} 不允许迁移，因为不在区域范围内。 请参阅 https:\//aka.ms/regionalscope，了解如何将该部署移至区域范围。 | 在 2014 年，Azure 宣布：网络资源将从群集级别范围移至区域范围。 有关更多详细信息，请参阅 [https://aka.ms/regionalscope](https://aka.ms/regionalscope)。 当要迁移的部署尚未进行更新操作（自动将其移至区域范围）时，会发生此错误。 最好的解决办法是向 VM 添加终结点，或者向 VM 添加数据磁盘，并重试迁移。 <br> 请参阅[如何在 Azure 中的经典 Windows 虚拟机上设置终结点](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint)或[将数据磁盘附加到使用经典部署模型创建的 Windows 虚拟机](./linux/attach-disk-portal.md)|
 | 虚拟网络 {vnet-name} 不支持迁移，因为它具有非网关 PaaS 部署。 | 当具有非网关 PaaS 部署（例如连接到虚拟网络的应用程序网关或 API 管理服务）时，将发生此错误。|
 
 
@@ -169,7 +169,7 @@ Update-AzureVM       b0ad3d4c-4v68-45vb-xxc1-134fd010d0f8 Succeeded
 
 ### <a name="moving-a-vm-to-a-different-subscription-after-completing-migration"></a>完成迁移后，将 VM 移动到其他订阅中
 
-完成迁移过程后，建议将 VM 移动到另一个订阅中。 但是，如果在引用 Key Vault 资源的 VM 上有密钥/证书，则当前不支持移动。 以下说明可帮助解决此问题。 
+完成迁移过程后，建议将 VM 移动到另一个订阅中。 但是，如果在引用 Key Vault 资源的 VM 上有密钥/证书，则当前不支持移动。 可按照以下说明解决此问题。 
 
 #### <a name="powershell"></a>PowerShell
 

@@ -3,12 +3,12 @@ title: 升级 Azure Service Fabric 群集版本
 description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中最新版本的链接。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: c9a29a97238164b9f6daf9dda66a1f314a7673ce
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: cd9c4be285c68e5482f7276429dd5514c72ae135
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804241"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881544"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>升级 Azure Service Fabric 群集版本
 
@@ -55,7 +55,7 @@ Service Fabric 运行时的更新适用于所有区域中所有受支持的 Serv
 
 ### <a name="upgrade-alert-for-versions-later-than-63"></a>版本晚于6.3 的升级警报
 
-为了提高安全性和可用性，Azure 基础结构进行了可能影响 Service Fabric 客户的更改。 此更改将影响所有使用 [适用于容器的开放网络模式](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) 的 Service Fabric 群集，并运行6.3 到7.0 或更高版本的到或更7.0 高版本。 Service Fabric 运行时的更新适用于所有区域中所有受支持的 Service Fabric 版本。
+为了提高安全性和可用性，Azure 基础结构进行了可能影响 Service Fabric 客户的更改。 此更改将影响所有使用 [适用于容器的开放网络模式](./service-fabric-networking-modes.md#set-up-open-networking-mode) 的 Service Fabric 群集，并运行6.3 到7.0 或更高版本的到或更7.0 高版本。 Service Fabric 运行时的更新适用于所有区域中所有受支持的 Service Fabric 版本。
 
 #### <a name="if-you-dont-upgrade-to-a-supported-version"></a>如果你不升级到受支持的版本
 

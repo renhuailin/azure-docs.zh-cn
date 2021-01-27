@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4e64d866b5bd2f725db3be31d0fdd2f8663cfd7c
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: bb49523858f07e54887a67d9df68eb894e27ad34
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029687"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881242"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS 证书更改  
 
@@ -22,15 +22,15 @@ Microsoft 在将 Azure 服务更新为使用来自一组不同的根证书颁发
 
 ## <a name="when-will-this-change-happen"></a>此更改将在何时进行？
 
-自2020年8月13日起，现有的 Azure 终结点已分阶段过渡。 所有新创建的 Azure TLS/SSL 终结点都包含链接到新根 CA 的已更新证书。
+从 2020 年 8 月 13 日起，现有 Azure 终结点已开始分阶段转换。 所有新创建的 Azure TLS/SSL 终结点都包含链接到新根 CA 的已更新证书。
 
-服务特定的详细信息：
+特定于服务的详细信息：
 
 - [Azure Active Directory](../../active-directory/index.yml) (Azure AD) 服务在 2020 年 7 月 7 日开始此过渡。
 - [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub)和 [DPS](../../iot-dps/index.yml) 将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 [单击此处了解详细信息](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)。
 - [Azure 存储](../../storage/index.yml)将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 [单击此处了解详细信息](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)。
 - [Azure Cache for Redis](../../azure-cache-for-redis/index.yml) 将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 [单击此处了解详细信息](../../azure-cache-for-redis/cache-whats-new.md)。
-- Azure 实例元数据服务将保留在巴尔的摩 CyberTrust 根 CA，但其中间 Ca 会发生更改。 [单击此处了解详细信息](https://docs.microsoft.com/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html)。
+- Azure 实例元数据服务将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 [单击此处了解详细信息](/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html)。
 
 > [!IMPORTANT]
 > 进行此更改之后，客户可能需要更新其应用程序，以防止在尝试连接到 Azure 服务时出现连接故障。

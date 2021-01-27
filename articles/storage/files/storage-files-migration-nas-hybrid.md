@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0d8d19256dfca21cc805c2689557099a6785f76b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 2d531edeeae9e0dd7e392cae66d9e4d41c68dfa2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629200"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882257"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 Azure 文件同步从网络附加存储迁移 (NAS) 到混合云部署
 
@@ -227,5 +227,5 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 有关 Azure 文件共享和 Azure 文件同步的详细信息，请阅读。以下文章可帮助了解高级选项、最佳做法和故障排除帮助。 这些文章链接到相应的 [Azure 文件共享文档](storage-files-introduction.md) 。
 
 * [AFS 概述](./storage-sync-files-planning.md)
-* [AFS 部署指南](storage-files-deployment-guide.md)
+* [AFS 部署指南](./storage-how-to-create-file-share.md)
 * [AFS 故障排除](storage-sync-files-troubleshoot.md)

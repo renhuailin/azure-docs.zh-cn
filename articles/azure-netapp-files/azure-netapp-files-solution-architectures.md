@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: b-juche
-ms.openlocfilehash: 41e0f996bcd75ba1663bb8eb3880d550bed01f94
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5984727f123da6e1d35d862c3f396bd85ce9e7f2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703430"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881446"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文介绍了可帮助你了解使用 Azure NetApp 文件的解决方案体系结构的最佳做法。  
@@ -96,7 +96,7 @@ ms.locfileid: "98703430"
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware 解决方案
 
-* [Azure NetApp 文件与 Azure VMware 解决方案-来宾操作系统装载](../azure-vmware/net-app-files-with-azure-vmware-solution.md)
+* [Azure NetApp 文件与 Azure VMware 解决方案-来宾操作系统装载](../azure-vmware/netapp-files-with-azure-vmware-solution.md)
 
 ## <a name="virtual-desktop-infrastructure-solutions"></a>虚拟桌面基础结构解决方案
 
@@ -132,7 +132,7 @@ ms.locfileid: "98703430"
 * [Azure CycleCloud： EDA HPC 实验室与 Azure NetApp 文件](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
 * [适用于半导体行业的 Azure](https://azurecomcdn.azureedge.net/cvt-f40f39cd9de2d875ab0c198a8d7b186350cf0bca161e80d7896941389685d012/mediahandler/files/resourcefiles/azure-for-the-semiconductor-industry/Azure_for_the_Semiconductor_Industry.pdf)
 
-### <a name="analytics"></a>Analytics
+### <a name="analytics"></a>分析
 
 * [Azure NetApp 文件：用于 Microsoft Azure 上的 SAS 网格的共享文件系统](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192)
 * [将 Microsoft Azure 与 SAS®配合使用的最佳做法](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
@@ -148,6 +148,6 @@ ms.locfileid: "98703430"
 * [Trident-容器的存储 Orchestrator](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
 * [Azure Kubernetes 服务中的 Magento 电子商务平台 (AKS) ](/azure/architecture/example-scenario/magento/magento-azure)
 
-### <a name="azure-batch"></a>Azure 批处理
+### <a name="azure-batch"></a>Azure Batch
 
 * [Azure Batch 和 Azure NetApp 文件一起运行 MPI 工作负荷](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)

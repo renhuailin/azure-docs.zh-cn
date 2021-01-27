@@ -3,12 +3,12 @@ title: Azure 的托管标识
 description: 了解如何通过 Service Fabric 使用 Azure 的托管标识。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 28c992792d4572a43e12f5d32855f8411b0f4c6f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 71fa9ef4da8081a167b68553e2e3eac8477e8aee
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574745"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881714"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>通过 Service Fabric 使用 Azure 的托管标识
 
@@ -56,7 +56,7 @@ Service Fabric 的托管标识仅在 Azure 部署的 Service Fabric 群集中受
 
 - 删除或更改分配给应用程序的标识；如果必须进行更改，请提交单独的部署，以先添加新的标识分配，然后删除以前分配的标识。 从现有应用程序中删除标识可能会产生不良影响，包括使应用程序处于一种不可升级的状态。 如果有必要删除标识，安全的做法是连同应用程序一起删除；请注意，这会删除与该应用程序关联的系统分配的标识（如果已定义），并会删除与分配给该应用程序的用户分配的标识之间的所有关联。
 
-- 目前，对托管标识的 Service Fabric 支持未集成到 [AzureServiceTokenProvider](../key-vault/general/service-to-service-authentication.md)。
+- 目前，对托管标识的 Service Fabric 支持未集成到 [AzureServiceTokenProvider](/dotnet/api/overview/azure/service-to-service-authentication)。
 
 ## <a name="next-steps"></a>后续步骤
 

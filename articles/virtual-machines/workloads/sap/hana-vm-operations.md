@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a907f2a6fc54c96dbef9f2091a91cac50bbd4ca
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6e28b23f20a0336498abbc357f4c96bdfa5b089f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486515"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881832"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure 上的 SAP HANA 基础结构配置和操作
 本文档提供有关配置 Azure 基础结构以及操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档还包含有关 M128s VM SKU 的 SAP HANA 横向扩展的配置信息。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
@@ -46,7 +46,7 @@ ms.locfileid: "96486515"
 如 [Azure 虚拟机规划指南](./planning-guide.md)中所述，可通过两种基本方法连接到 Azure VM：
 
 - 通过跳接 VM 或运行 SAP HANA 的 VM 上的 Internet 和公共终结点进行连接。
-- 通过 [VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 或 Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 进行连接。
+- 通过 [VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md) 或 Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 进行连接。
 
 生产方案需要通过 VPN 或 ExpressRoute 建立的站点到站点连接。 对于送入使用 SAP 软件的生产方案的非生产方案，也需要此类型的连接。 下图显示了跨站点连接的示例：
 

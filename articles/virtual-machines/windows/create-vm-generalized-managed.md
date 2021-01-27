@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: cefe427a7a6f7a46c838147f3d699423c9f19c7b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: edcaf3fb92b78f2d1fab54cf4db21aaaff0e3d59
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201886"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881849"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>从托管映像创建 VM
 
@@ -20,7 +20,7 @@ ms.locfileid: "98201886"
 
 在创建新的 VM 之前，需要[创建托管 VM 映像](capture-image-resource.md)以用作源映像，并向应有权访问该映像的任何用户授予对该映像的读取权限。 
 
-一个托管映像最多支持 20 个同时部署。 如果尝试从同一托管映像同时创建超过 20 个 VM，则可能会由于单个 VHD 的存储性能限制而导致预配超时。 若要同时创建 20 个以上的 VM，请使用为每 20 个并发 VM 部署配置 1 个副本的[共享映像库](shared-image-galleries.md)映像。
+一个托管映像最多支持 20 个同时部署。 如果尝试从同一托管映像同时创建超过 20 个 VM，则可能会由于单个 VHD 的存储性能限制而导致预配超时。 若要同时创建 20 个以上的 VM，请使用为每 20 个并发 VM 部署配置 1 个副本的[共享映像库](../shared-image-galleries.md)映像。
 
 ## <a name="use-the-portal"></a>使用门户
 

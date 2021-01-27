@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ab3cb403a8757f424a141206f99f9c29bf3e0b49
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 87cc8af9206daa1f1e959b8abd8beb3e7f8ff2f2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108142"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880988"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -79,7 +79,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 此选项仅适用于 blob 存储。 使用 Azure Active Directory 可以一次性提供凭据，而无需向每个命令追加 SAS 令牌。  
 
 > [!NOTE]
-> 在当前版本中，如果你打算在存储帐户之间复制 Blob，必须向每个源 URL 追加一个 SAS 令牌。 只能在目标 URL 中省略 SAS 令牌。 有关示例，请参阅[在存储帐户之间复制 Blob](storage-use-azcopy-blobs.md)。
+> 在当前版本中，如果你打算在存储帐户之间复制 Blob，必须向每个源 URL 追加一个 SAS 令牌。 只能在目标 URL 中省略 SAS 令牌。 有关示例，请参阅[在存储帐户之间复制 Blob](#transfer-data)。
 
 若要使用 Azure AD 进行访问授权，请参阅[使用 AzCopy 和 Azure Active Directory (Azure AD) 授权访问 Blob](storage-use-azcopy-authorize-azure-active-directory.md)。
 
@@ -103,9 +103,9 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 若要查找示例命令，请参阅以下文章中的任何一篇。
 
-| 服务 | 项目 |
+| 服务 | 文章 |
 |--------|-----------|
-|Azure Blob 存储 |[将文件上传到 Azure Blob 存储](storage-use-azcopy-blobs-upload.md)<br><br>[下载 Azure Blob 存储中的 blob](storage-use-azcopy-blobs-download.md)<br><br>[在 Azure 存储帐户之间复制 blob](storage-use-azcopy-blobs-copy.md)<br><br>[与 Azure Blob 存储同步](storage-use-azcopy-blobs-synchronize.md)|
+|Azure Blob 存储 |[将文件上传到 Azure Blob 存储](storage-use-azcopy-blobs-upload.md)<br><br>[从 Azure Blob 存储下载 Blob](storage-use-azcopy-blobs-download.md)<br><br>[在 Azure 存储帐户之间复制 Blob](storage-use-azcopy-blobs-copy.md)<br><br>[与 Azure Blob 存储同步](storage-use-azcopy-blobs-synchronize.md)|
 |Azure 文件 |[使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)|
 |Amazon S3|[使用 AzCopy 和 Amazon S3 Bucket 传输数据](storage-use-azcopy-s3.md)|
 |Azure Stack 存储|[使用 AzCopy 和 Azure Stack 存储传输数据](/azure-stack/user/azure-stack-storage-transfer#azcopy)|

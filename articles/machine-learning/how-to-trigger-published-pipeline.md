@@ -1,7 +1,7 @@
 ---
-title: 触发器 Azure 机器学习管道
+title: 触发 Azure 机器学习管道
 titleSuffix: Azure Machine Learning
-description: 触发的管道使你能够自动执行日常的日常任务，如数据处理、定型和监视。
+description: 通过触发的管道，可以自动执行耗时的例行任务，例如数据处理、训练和监视。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: lobrien
 ms.date: 12/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 9038d6bc9cd061200ef4553242889776f30d2dc1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: a006dfd4f78f90ed323e5780b173cffb6daeac4a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964552"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881731"
 ---
-# <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>用于 Python Azure 机器学习 SDK 的触发器机器学习管道
+# <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>通过适用于 Python 的 Azure 机器学习 SDK 来触发机器学习管道
 
-本文介绍如何以编程方式计划管道，使其在 Azure 上运行。 可以选择创建基于运行时间或文件系统更改的计划。 基于时间的计划可用于处理例行任务，如监视数据偏移。 基于更改的计划可用于响应非常规或无法预测的更改，例如上传新数据或编辑旧数据。 了解如何创建计划后，你将了解如何检索和停用它们。 最后，你将了解如何使用 Azure 逻辑应用来实现更复杂的触发逻辑或行为。
+本文介绍如何以编程方式计划管道，使其在 Azure 上运行。 可以选择创建基于运行时间或文件系统更改的计划。 基于时间的计划可用于处理例行任务，如监视数据偏移。 基于更改的计划可用于响应非常规或无法预测的更改，例如上传新数据或编辑旧数据。 了解如何创建计划后，你将了解如何检索和停用它们。 最后，你将了解如何使用 Azure 逻辑应用来创建更复杂的触发逻辑或行为。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "97964552"
 
 * 安装了适用于 Python 的 Azure 机器学习 SDK 的 Python 环境。 有关详细信息，请参阅[使用 Azure 机器学习创建和管理用于训练和部署的可重用环境。](how-to-use-environments.md)
 
-* 包含已发布管道的机器学习工作区。 可以使用[使用 Azure 机器学习 SDK 创建和运行机器学习管道](how-to-create-your-first-pipeline.md)中提供的工作区。
+* 包含已发布管道的机器学习工作区。 可以使用[使用 Azure 机器学习 SDK 创建和运行机器学习管道](./how-to-create-machine-learning-pipelines.md)中提供的工作区。
 
 ## <a name="initialize-the-workspace--get-data"></a>初始化工作区并获取数据
 
@@ -138,11 +138,11 @@ stop_by_schedule_id(ws, schedule_id)
 
 如果此后再次运行 `Schedule.list(ws)`，应会得到一个空列表。
 
-## <a name="use-azure-logic-apps-for-complex-triggers"></a>对复杂触发器使用 Azure 逻辑应用 
+## <a name="use-azure-logic-apps-for-complex-triggers"></a>将 Azure 逻辑应用用于复杂的触发器 
 
-更复杂的触发器规则或行为可以使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)创建。
+可使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)来创建更复杂的触发器规则或行为。
 
-若要使用 Azure 逻辑应用来触发机器学习管道，需要为已发布的机器学习管道使用 REST 终结点。 [创建并发布管道](how-to-create-your-first-pipeline.md)。 然后，使用管道 ID 查找的 REST 终结点 `PublishedPipeline` ：
+要使用 Azure 逻辑应用触发机器学习管道，将需要已发布机器学习管道的 REST 终结点。 [创建并发布管道](./how-to-create-machine-learning-pipelines.md)。 然后，使用管道 ID 查找 `PublishedPipeline` 的 REST 终结点：
 
 ```python
 # You can find the pipeline ID in Azure Machine Learning studio
@@ -213,11 +213,11 @@ published_pipeline.endpoint
 1. 选择“保存”，你的计划现已准备就绪。
 
 > [!IMPORTANT]
-> 如果使用基于 Azure 角色的访问控制 (Azure RBAC) 来管理对管道的访问，请 [ (定型或评分) 设置管道方案的权限 ](how-to-assign-roles.md#common-scenarios)。
+> 如果使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理对管道的访问，请[设置管道方案的权限（训练或评分）](how-to-assign-roles.md#common-scenarios)。
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何使用适用于 Python 的 Azure 机器学习 SDK 以两种不同的方式计划管道。 其中一个计划按运行时间重复。 另一个计划在指定的 `Datastore` 或该存储的目录中有文件更改时运行。 你了解了如何使用门户来检查管道和单次运行。 了解了如何禁用计划以便管道停止运行。 最后，创建了一个 Azure 逻辑应用来触发管道。 
+本文介绍了如何使用适用于 Python 的 Azure 机器学习 SDK 以两种不同的方式计划管道。 其中一个计划按运行时间重复。 另一个计划在指定的 `Datastore` 或该存储的目录中有文件更改时运行。 你了解了如何使用门户来检查管道和单次运行。 你了解了如何禁用计划以使管道停止运行。 最后，你创建了一个 Azure 逻辑应用来触发管道。 
 
 有关详细信息，请参阅：
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 77a32872726e3c67f0d3c542ca699271846a193b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e44e7c5d04695d5bd65d2eedc5474889a707c8bd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680664"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882138"
 ---
 # <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>收集 Spring Cloud Resilience4J 断路器指标（预览版）
 
@@ -22,9 +22,9 @@ ms.locfileid: "98680664"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 根据 [Application Insights 的 Java 进程内代理指南](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-application-insights#enable-java-in-process-agent-for-application-insights)启用 Java 进程内代理。 
+* 根据 [Application Insights 的 Java 进程内代理指南](./spring-cloud-howto-application-insights.md#enable-java-in-process-agent-for-application-insights)启用 Java 进程内代理。 
 
-* 根据 [Application Insights 指南](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)启用 resilience4j 指标的维度收集。
+* 根据 [Application Insights 指南](../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)启用 resilience4j 指标的维度收集。
 
 * 安装 git、Maven 和 Java（如果开发计算机尚未使用这些程序）。
 
@@ -73,7 +73,7 @@ az spring-cloud app deploy -n reactive-resilience4j \
 >       <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
 >   </dependency>
 >   ```
-> * 客户代码必须使用 `CircuitBreakerFactory` 的 API，该 API 是在你包括 Spring Cloud 断路器入门版时作为自动创建的 `bean` 实现的。 有关详细信息，请参阅 [春季断路器断路](https://spring.io/projects/spring-cloud-circuitbreaker#overview)器。
+> * 客户代码必须使用 `CircuitBreakerFactory` 的 API，该 API 是在你包括 Spring Cloud 断路器入门版时作为自动创建的 `bean` 实现的。 有关详细信息，请参阅 [Spring Cloud 断路器](https://spring.io/projects/spring-cloud-circuitbreaker#overview)。
 >
 > * 以下 2 个依赖项与上述 resilient4j 包冲突。  请确保客户不要包括这些依赖项。
 >
@@ -125,6 +125,6 @@ az spring-cloud app deploy -n reactive-resilience4j \
 
 ## <a name="see-also"></a>另请参阅
 
-* [Application insights](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-application-insights)
+* [Application insights](./spring-cloud-howto-application-insights.md)
 * [分布式跟踪](spring-cloud-tutorial-distributed-tracing.md)
 * [断路器仪表板](spring-cloud-tutorial-circuit-breaker.md)

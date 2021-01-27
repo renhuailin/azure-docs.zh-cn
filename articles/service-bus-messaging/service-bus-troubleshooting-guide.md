@@ -3,12 +3,12 @@ title: Azure 服务总线故障排除指南 | Microsoft Docs
 description: 了解你在使用 Azure 服务总线时可能遇到的一些问题的故障排除技巧和建议。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 8c31d252d75a2ba75528cd12d3a94bad5bd9f677
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: c5813f901f31f96633e11c2ed8162338bdd9bbf7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126863"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881208"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服务总线故障排除指南
 本文提供的故障排除技巧和建议适用于你在使用 Azure 服务总线时可能会遇到的一些问题。 
@@ -80,7 +80,7 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 标识无权访问服务总线主题。 
 
 ### <a name="resolution"></a>解决方法
-要解决此错误，请安装 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) 库。  有关详细信息，请参阅[本地开发身份验证](../key-vault/general/service-to-service-authentication.md#local-development-authentication)。 
+要解决此错误，请安装 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) 库。  有关详细信息，请参阅[本地开发身份验证](/dotnet/api/overview/azure/service-to-service-authentication#local-development-authentication)。 
 
 要了解如何将权限分配给角色，请参阅[使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源](service-bus-managed-service-identity.md)。
 

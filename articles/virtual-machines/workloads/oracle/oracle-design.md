@@ -5,29 +5,30 @@ author: dbakevlar
 ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 12/17/2020
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: 5e9ddecd694a9051e746d07cbc1bee4d98bf5829
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.reviewer: tigorman
+ms.openlocfilehash: 0b6f4e652ca8fef7bee4165bcd0673be2fa11eac
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484424"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890758"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
 ## <a name="assumptions"></a>假设
 
 - 计划将 Oracle 数据库从本地迁移到 Azure。
-- 你具有要迁移的 Oracle Database 的[诊断包](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm)
-- 了解 Oracle AWR 报表中的各种指标。
+- 你为想要迁移的 Oracle Database 提供了[诊断包](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm)或[自动工作负荷存储库](https://www.oracle.com/technetwork/database/manageability/info/other-manageability/wp-self-managing-database18c-4412450.pdf)
+- 你已经了解了 Oracle 中的各种指标。
 - 了解应用程序性能和平台利用率的基线。
 
 ## <a name="goals"></a>目标
 
 - 了解如何在 Azure 中优化 Oracle 部署。
 - 探索 Azure 环境中用于 Oracle 数据库的性能调整选项。
+- 对数据库代码的物理优化限制和数据库代码的逻辑优化以及数据库代码的逻辑优化（ (SQL) 和整体数据库设计）有明显的期望。
 
 ## <a name="the-differences-between-an-on-premises-and-azure-implementation"></a>本地实现和 Azure 实现的区别 
 
@@ -40,7 +41,7 @@ ms.locfileid: "96484424"
 
 |  | 本地实现 | Azure 实现 |
 | --- | --- | --- |
-| **联网** |LAN/WAN  |SDN（软件定义的网络）|
+| **网络** |LAN/WAN  |SDN（软件定义的网络）|
 | **安全组** |IP/端口限制工具 |[网络安全组 (NSG) ](https://azure.microsoft.com/blog/network-security-groups) |
 | **复原能力** |MTBF（平均无故障时间） |MTTR（平均恢复时间）|
 | **计划内维护** |修补/升级|[可用性集](/previous-versions/azure/virtual-machines/windows/infrastructure-example)（由 Azure 管理的修补/升级） |
@@ -52,8 +53,9 @@ ms.locfileid: "96484424"
 
 ### <a name="requirements"></a>要求
 
-- 确定数据库大小和增长率。
-- 确定 IOPS 要求，可根据 Oracle AWR 报表或其他网络监视工具进行估计。
+- 确定真实的 CPU 使用情况，因为 Oracle 已通过核心许可，因此调整 vCPU 需求可能是节省成本的重要做法。 
+- 确定数据库大小、备份存储和增长速率。
+- 确定 IO 要求，你可以基于 Oracle Statspack、AWR 报表或操作系统级别的存储监视工具进行评估。
 
 ## <a name="configuration-options"></a>配置选项
 
@@ -66,33 +68,44 @@ ms.locfileid: "96484424"
 
 ### <a name="generate-an-awr-report"></a>生成 AWR 报表
 
-如果有现有的 Oracle 数据库并且计划将其迁移到 Azure，则有多个选项可供使用。 如果你有 Oracle 实例的 [诊断包](https://www.oracle.com/technetwork/oem/pdf/511880.pdf) ，则可以运行 oracle AWR 报表来获取指标 (IOPS、Mbps、gib 等等) 。 然后基于收集的指标选择虚拟机。 或者，也可以联系基础结构团队，获取类似的信息。
+如果你有现有 Oracle Enterprise Edition 数据库并且打算迁移到 Azure，则可以使用几个选项。 如果你有 Oracle 实例的 [诊断包](https://www.oracle.com/technetwork/oem/pdf/511880.pdf) ，则可以运行 oracle AWR 报表来获取指标 (IOPS、Mbps、gib 等等) 。 对于没有诊断包许可证或标准版数据库的那些数据库，收集手动快照后，可以使用 Statspack 报告收集相同的重要指标。  这两种报告方法的主要区别是： AWR 会自动收集，并提供有关数据库的详细信息，而不是 Statspack 的前置报告选项。
 
-可考虑分别在正常工作负荷与峰值工作负荷期间运行 AWR 报表，以便进行比较。 根据这些报表，可基于平均工作负荷或最大工作负荷来调整虚拟机的大小。
+可考虑分别在正常工作负荷与峰值工作负荷期间运行 AWR 报表，以便进行比较。 若要收集更准确的工作负荷，请考虑使用一周（即24小时运行）的扩展窗口报表，并认识到 AWR 确实在报表中的计算中提供平均值。  对于数据中心迁移，我们建议收集用于调整生产系统大小的报告，并估计用于用户测试、测试、开发等的其他数据库副本，按百分比 (UAT 等于生产、测试和开发50% 的生产规模等 ) 
 
-以下示例演示了如何生成 AWR 报表 (使用 Oracle 企业管理器生成 AWR 报表，如果当前安装具有一个) ：
+默认情况下，AWR 存储库保留8天的数据，并按小时间隔拍摄快照。  若要从命令行运行 AWR 报表，可以从终端执行以下操作：
 
 ```bash
 $ sqlplus / as sysdba
-SQL> EXEC DBMS_WORKLOAD_REPOSITORY.CREATE_SNAPSHOT;
-SQL> @?/rdbms/admin/awrrpt.sql
+SQL> @$ORACLE_HOME/rdbms/admin/awrrpt.sql;
 ```
 
 ### <a name="key-metrics"></a>关键指标
 
+报表将提示输入以下信息：
+- 报表类型： HTML 或文本， (12.1 中的 HTML，并提供比文本格式更多的信息。 ) 
+- 要显示的快照天数， (一小时的时间间隔，一周报表将是快照 Id 中的 168) 
+- 报表窗口的开始 SnapshotID。
+- 报表窗口的结束 SnapshotId。
+- AWR 脚本要创建的报表的名称。
+
+如果在真实的应用程序群集上运行 AWR，则 (RAC) 命令行报表是 awrgrpt 而不是 awrrpt。  "G" 报表将在单个报表中创建 RAC 数据库中所有节点的报表，而不是必须在每个 RAC 节点上运行一个报表。
+
 以下是可以从 AWR 报表获得的指标：
 
-- 内核总数
-- CPU 时钟速度
+- 数据库名称、实例名称和主机名
+- 数据库版本， (Oracle 的可支持性) 
+- CPU/核心
+- SGA/PGA、 (和顾问，告诉您是否太小) 
 - 总内存 (GB)
-- CPU 使用率
-- 峰值数据传输率
-- I/O 更改（读/写）速率
-- 恢复日志速率 (MBPs)
+- CPU 忙
+- DB Cpu
+- 读/写 (IOPs) 
+- MBPs (读取/写入) 
 - 网络吞吐量
 - 网络延迟率（低/高）
-- 数据库大小 (GB)
-- 通过 SQL*Net 从客户端接收/向客户端发送的字节数
+- 热门等待事件 
+- 数据库的参数设置
+- 是使用高级功能或配置的数据库 RAC，Exadata
 
 ### <a name="virtual-machine-size"></a>虚拟机大小
 
@@ -146,25 +159,19 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 - 默认 OS 磁盘：这些磁盘类型提供永久性数据和缓存。 它们针对启动时的 OS 访问进行了优化，不适用于事务性或数据仓库（分析）工作负荷。
 
-- 非托管磁盘：使用这些磁盘类型，可管理存储虚拟硬盘 (VHD) 文件（这些文件与虚拟机磁盘相对应）的存储帐户。 VHD 文件作为页 Blob 存储在 Azure 存储帐户中。
-
-- 托管磁盘：由 Azure 管理用于 VM 磁盘的存储帐户。 需要指定所需的磁盘类型（高级或标准）和磁盘大小。 Azure 将创建和管理该磁盘。
-
-- 高级存储磁盘：这些磁盘类型最适用于生产工作负荷。 高级存储支持可附加到特定大小系列虚拟机（例如 DS、DSv2、GS 和 F 系列虚拟机）的虚拟机磁盘。 高级磁盘大小各异，可选择的磁盘大小范围为 32 GB 到 4,096 GB。 每种磁盘大小都有自身的性能规范。 根据应用程序的要求，可将一个或多个磁盘附加到 VM。
-
-从门户创建新托管磁盘时，可选择要使用的磁盘类型对应的“帐户类型”。 请注意，下拉菜单中并未显示全部的可用磁盘。 选择特定虚拟机大小后，菜单将只显示以此虚拟机大小为基础的可用高级存储 SKU。
+- 托管磁盘：由 Azure 管理用于 VM 磁盘的存储帐户。 指定 (最常见的高级 SSD 的磁盘类型) 和需要的磁盘大小。 Azure 将创建和管理该磁盘。  高级 SSD 托管磁盘仅适用于内存优化并专门设计的 VM 系列。 选择特定虚拟机大小后，菜单将只显示以此虚拟机大小为基础的可用高级存储 SKU。
 
 ![“托管磁盘”页的屏幕截图](./media/oracle-design/premium_disk01.png)
 
 在虚拟机上配置存储后，可能需要在创建数据库前先对磁盘进行负载测试。 了解延迟和吞吐量的 I/O 速率有助于判断 VM 是否支持预计的吞吐量，并实现预期延迟目标。
 
-有多种工具可用于应用程序负载测试，包括 Oracle Orion、Sysbench 和 Fio。
+应用程序负载测试有许多工具，如 Oracle Orion、Sysbench、SLOB 和 Fio。
 
-部署 Oracle 数据库后重新运行负载测试。 启动正常工作负荷与峰值工作负荷，结果将显示所在环境的基线。
+部署 Oracle 数据库后重新运行负载测试。 启动正常工作负荷与峰值工作负荷，结果将显示所在环境的基线。  工作负载测试中的实际情况-运行工作负荷并不像在虚拟机上运行的操作是有意义的。
 
-与根据存储大小调整存储大小相比，根据 IOPS 速率进行调整可能更有用。 例如，如果要求的 IOPS 是 5,000，但是你只需 200 GB，则即使 P30 级别高级磁盘的存储空间大于 200 GB，你可能仍会使用它。
+由于 Oracle 非常多地使用 IO 密集型数据库，因此根据 IOPS 速率（而不是存储大小）调整存储大小非常重要。 例如，如果要求的 IOPS 是 5,000，但是你只需 200 GB，则即使 P30 级别高级磁盘的存储空间大于 200 GB，你可能仍会使用它。
 
-可从 AWR 报表获取 IOPS 速率。 它由恢复日志、物理读取和写入速率确定。
+可从 AWR 报表获取 IOPS 速率。 它由恢复日志、物理读取和写入速率确定。  始终验证所选的 VM 系列是否能够处理工作负荷的 IO 需求。  如果 VM 的 IO 限制低于存储，则 VM 将设置最大限制。
 
 ![“AWR 报表”页的屏幕截图](./media/oracle-design/awr_report.png)
 
@@ -176,34 +183,28 @@ SQL> @?/rdbms/admin/awrrpt.sql
 **建议**
 
 - 对于 Data 表空间，使用托管存储或 Oracle ASM 在多个磁盘间分散 I/O 工作负荷。
-- 随着读取密集型和写入密集型操作的 I/O 块的大小增大，添加更多数据磁盘。
-- 为大型顺序进程增加块大小。
-- 使用数据压缩来降低 I/O（针对数据和索引）。
-- 将重做日志、system、temps 和 undo TS 分隔在不同的数据磁盘上。
+- 使用 Oracle 高级压缩来减少) 的数据和索引的 i/o (。
+- 分隔不同数据磁盘上的重做日志、Temp 和 Undo 表空间。
 - 不要将任何应用程序文件放在默认 OS 磁盘 (/dev/sda) 中。 这些磁盘未针对快速 VM 启动时间进行优化，可能无法为应用程序提供良好的性能。
 - 在高级存储上使用 M 系列 Vm 时，请在重做日志磁盘上启用 [写入加速器](../../how-to-enable-write-accelerator.md) 。
+- 请考虑将具有高延迟的重做日志移动到超磁盘。
 
 ### <a name="disk-cache-settings"></a>磁盘缓存设置
 
-有三个主机缓存选项：
+有三个主机缓存选项，但对于 Oracle 数据库，仅建议对数据库工作负荷使用 ReadOnly 缓存。  读写会为数据文件引入重要的漏洞，其中数据库写入目标是将数据记录到数据文件，而不是缓存信息。
 
-- *ReadOnly*：缓存所有请求，供将来读取。 将所有写入直接保存到 Azure Blob 存储。
-
-- *ReadWrite*：这是 "预读" 算法。 将缓存所有读取和写入，供将来读取。 非直写式写入首先会保存在本地缓存中。 它还为轻型工作负荷提供最低的磁盘延迟。 对不负责保留所需数据的应用程序使用 ReadWrite 缓存可能会在 VM 崩溃时导致数据丢失。
-
-- 无（已禁用）：使用此选项可绕过缓存。 所有数据都传输到磁盘，并保存在 Azure 存储中。 此方法可为 I/O 密集型工作负荷提供最高的 I/O 速率。 此外，还需要考虑“事务成本”。
+与文件系统或应用程序不同，对于数据库，主机缓存建议为 *ReadOnly*：将缓存所有请求以供将来读取。 所有写入都继续写入磁盘。
 
 **建议**
 
-为了最大限度地提高吞吐量，建议对主机缓存启用 " **无** "。 请注意，对于高级存储，在使用“只读”或“无”选项来装载文件系统时，必须禁用“屏障”。 通过 UUID 将 /etc/fstab 文件更新到磁盘。
+为了最大限度地提高吞吐量，建议您尽可能从 **ReadOnly** 进行主机缓存。 对于高级存储，请记住，在装入文件系统时，必须禁用 "屏障"，其中包含 **ReadOnly** 选项。 通过 UUID 将 /etc/fstab 文件更新到磁盘。
 
 ![显示 ReadOnly 和 None 选项的 "托管磁盘" 页的屏幕截图。](./media/oracle-design/premium_disk02.png)
 
-- 对于 OS 磁盘，请使用默认 **读取/写入** 缓存。
-- 对于 SYSTEM、TEMP 和 UNDO，请使用 **None** 进行缓存。
-- 对于 DATA，使用“无”选项进行缓存。 但是，如果数据库为只读或读取密集型数据库，请使用“只读”缓存。
+- 对于 OS 磁盘，请使用默认 **读取/写入** 缓存，并为 Oracle 工作负荷 vm 使用高级 SSD。  还要确保用于交换的卷也在高级 SSD 上。
+- 对于所有数据文件，使用 **ReadOnly** 进行缓存。 只读缓存仅适用于高级托管磁盘，P30 和更高版本。  可以与 ReadOnly 缓存一起使用的4095GiB 卷有限制。  任何较大的分配都将默认禁用主机缓存。
 
-保存数据磁盘设置后，将无法更改主机缓存设置，除非在 OS 级别卸载驱动器，然后在进行更改后重新装载它。
+如果工作负荷在白天和晚间之间发生变化很大，并且 IO 工作负荷可以支持，则具有突发的 P20 高级 SSD 可能会提供夜间批处理负载或有限 IO 需求期间所需的性能。  
 
 ## <a name="security"></a>安全性
 
@@ -229,4 +230,4 @@ SQL> @?/rdbms/admin/awrrpt.sql
 ## <a name="next-steps"></a>后续步骤
 
 - [教程：创建具有高可用性的 VM](../../linux/create-cli-complete.md)
-- [浏览 VM 部署 Azure CLI 示例](../../linux/cli-samples.md)
+- [浏览 VM 部署 Azure CLI 示例](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

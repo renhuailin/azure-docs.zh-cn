@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 380aa826030df14b4b88b86ac2962c988796c0f9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 025a94cf7d163d41486ef218e70d9eb48e93d31c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202634"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881310"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure 机器学习的 Azure 安全基线
 
@@ -879,9 +879,9 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 - [在 Azure 门户中创建 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md)
 
-- [有关如何下载 VM 模板的信息](../virtual-machines/windows/download-template.md)
+- [有关如何下载 VM 模板的信息](/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [将 VHD 上传到 Azure 并创建新的 VM 的示例脚本](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [将 VHD 上传到 Azure 并创建新的 VM 的示例脚本](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 **Azure 安全中心监视**：不适用
 
@@ -911,7 +911,7 @@ Azure 机器学习完全支持用于跟踪工作的 Git 存储库；你可以将
 
 - [如何配置 Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [共享映像库概述](../virtual-machines/windows/shared-image-galleries.md)
+- [共享映像库概述](../virtual-machines/shared-image-galleries.md)
 
 - [使用 Azure RBAC 进行 Kubernetes 授权](../aks/manage-azure-rbac.md)
 

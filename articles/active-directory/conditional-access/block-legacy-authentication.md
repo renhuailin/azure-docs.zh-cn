@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8bc1a96109eda9cc2ee1f86cec892cc5ce9308d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 769460d5dab7311eb2940d101df6f4996a3ad355
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860314"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876573"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问阻止向 Azure AD 进行旧身份验证   
 
@@ -126,4 +126,4 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 - [使用条件访问仅限报告模式确定影响](howto-conditional-access-insights-reporting.md)
 - 如果你还不熟悉配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用进行多重身份验证 (MFA)](../authentication/tutorial-enable-azure-mfa.md) 的示例。
 - 有关新式身份验证支持的详细信息，请参阅[如何对 Office 2013 和 Office 2016 客户端应用使用新式身份验证](/office365/enterprise/modern-auth-for-office-2013-and-2016) 
-- [如何设置多功能设备或应用程序以使用 Microsoft 365 发送电子邮件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [如何设置多功能设备或应用程序以使用 Microsoft 365 发送电子邮件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)

@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: aa6429e27faf92f047c580986d5b434c9a418730
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d38e631a5a12381b407dca4dd9e2f2ae63365453
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044367"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882429"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>设置 Azure 数字孪生实例和身份验证 (门户) 
 
@@ -71,13 +71,13 @@ ms.locfileid: "98044367"
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-首先，在 Azure 门户中打开 Azure 数字孪生实例的页面。 从实例的菜单中，选择 " *访问控制 (IAM)*。 选择 "*添加角色分配*" 下的 "*添加*" 按钮。
+首先，在 Azure 门户中打开 Azure 数字孪生实例的页面。 从实例的菜单中，选择 " *访问控制 (IAM)*。 选择 "  **+ 添加** " 按钮以添加新的角色分配。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="选择从 &quot;访问控制 (IAM) &quot; 页添加角色分配":::
 
 在 " *添加角色分配* " 页上，填写值 (必须由在 Azure 订阅中具有 [足够权限](#prerequisites-permission-requirements) 的用户完成) ：
 * **角色**：从下拉菜单中选择 " *Azure 数字孪生数据所有者* "
-* **将访问权限分配给**：从下拉菜单中选择 *Azure AD 用户、组或服务主体*
+* **分配对的访问权限**：使用 *用户、组或服务主体*
 * **选择**：搜索要分配的用户的名称或电子邮件地址。 选择结果后，用户将显示在 " *所选成员* " 部分中。
 
 :::row:::

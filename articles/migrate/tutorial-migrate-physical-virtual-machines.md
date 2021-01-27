@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: c0f4f1d7f0213ad24d25d8d34235475bbdb0316a
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 3e098e64eacf8b126d6a6d72b1f242443e88d55c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567105"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881089"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>将计算机作为物理服务器迁移到 Azure
 
@@ -55,7 +55,7 @@ ms.locfileid: "98567105"
 
 **任务** | **详细信息**
 --- | ---
-**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能[创建新项目](https://docs.microsoft.com/azure/migrate/create-manage-projects)。
+**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能[创建新项目](./create-manage-projects.md)。
 **验证 Azure 帐户的权限** | Azure 帐户需要有权创建 VM 并将数据写入 Azure 托管磁盘。
 
 
@@ -239,7 +239,7 @@ Azure Migrate:服务器迁移使用复制设备将计算机复制到 Azure。 �
     - 通过平台管理的密钥和客户管理的密钥进行双重加密
 
    > [!NOTE]
-   > 若要使用 CMK 复制 VM，需要在目标资源组下[创建磁盘加密集](https://go.microsoft.com/fwlink/?linkid=2151800)。 磁盘加密集对象将托管磁盘映射到包含 CMK 的密钥保管库，以用于 SSE。
+   > 若要使用 CMK 复制 VM，需要在目标资源组下[创建磁盘加密集](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)。 磁盘加密集对象将托管磁盘映射到包含 CMK 的密钥保管库，以用于 SSE。
   
 13. 在“Azure 混合权益”中：
 

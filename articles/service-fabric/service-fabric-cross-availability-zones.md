@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 82161a8f66dd717a9dc448a743b818a9ab9938db
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 3db31431c24edd3377f6299046cc31067310b2ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250972"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876204"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性区域部署 Azure Service Fabric 群集
 Azure 中的可用性区域是一种高可用性产品，可保护应用程序和数据免受数据中心故障的影响。 可用性区域是一种独特的物理位置，它在 Azure 区域内配有独立的电源、冷却和网络。
@@ -30,7 +30,7 @@ Service Fabric 通过部署固定到特定区域的节点类型来支持跨可�
     * 每个虚拟机规模集应具有至少五个节点 (银持续性) 。
 * 使用标准 SKU 的单个公共 IP 资源。
 * 使用标准 SKU 的单个负载均衡器资源。
-* 用于部署虚拟机规模集的子网所引用的 NSG。
+* 由在其中部署虚拟机规模集的子网所引用的 NSG。
 
 >[!NOTE]
 > "虚拟机规模集单位置组" 属性必须设置为 "true"，因为 Service Fabric 不支持跨区域的单个虚拟机规模集。
@@ -39,7 +39,7 @@ Service Fabric 通过部署固定到特定区域的节点类型来支持跨可�
 
 ## <a name="networking-requirements"></a>网络要求
 ### <a name="public-ip-and-load-balancer-resource"></a>公共 IP 和负载均衡器资源
-若要启用虚拟机规模集资源的 "区域" 属性，该虚拟机规模集所引用的负载均衡器和 IP 资源必须都使用 *标准* SKU。 如果不使用 SKU 属性创建负载平衡器或 IP 资源，将会创建不支持可用性区域的基本 SKU。 默认情况下，标准 SKU 负载均衡器会阻止从外部的所有流量。若要允许外部流量，必须将 NSG 部署到子网。
+若要启用虚拟机规模集资源的 "区域" 属性，该虚拟机规模集所引用的负载均衡器和 IP 资源必须都使用 *标准* SKU。 如果不使用 SKU 属性创建负载平衡器或 IP 资源，将会创建不支持可用性区域的基本 SKU。 默认情况下，标准 SKU 负载均衡器会阻止外部的所有流量；若要允许外部流量，必须将 NSG 部署到子网。
 
 ```json
 {
@@ -87,10 +87,10 @@ Service Fabric 通过部署固定到特定区域的节点类型来支持跨可�
 ```
 
 >[!NOTE]
-> 不能在公共 IP 和负载均衡器资源上对 SKU 进行就地更改。 如果要从具有基本 SKU 的现有资源进行迁移，请参阅本文的迁移部分。
+> 目前不能在公共 IP 和负载均衡器资源上就地更改 SKU。 如果要从具有基本 SKU 的现有资源进行迁移，请参阅本文的迁移部分。
 
 ### <a name="virtual-machine-scale-set-nat-rules"></a>虚拟机规模集 NAT 规则
-负载均衡器入站 NAT 规则应该匹配虚拟机规模集中的 NAT 池。 每个虚拟机规模集都必须具有唯一的入站 NAT 池。
+负载均衡器入站 NAT 规则应匹配虚拟机规模集中的 NAT 池。 每个虚拟机规模集必须有一个唯一的入站 NAT 池。
 
 ```json
 {
@@ -136,13 +136,13 @@ Service Fabric 通过部署固定到特定区域的节点类型来支持跨可�
 ```
 
 ### <a name="standard-sku-load-balancer-outbound-rules"></a>标准 SKU 负载均衡器出站规则
-与使用基本 Sku 相比，标准负载均衡器和标准公共 IP 向出站连接引入了新功能和不同的行为。 如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。 有关详细信息，请参阅 [出站连接](../load-balancer/load-balancer-outbound-connections.md) 和 [Azure 标准负载均衡器](../load-balancer/load-balancer-overview.md)。
+与基本 SKU 相比，标准负载均衡器和标准公共 IP 为出站连接引入了新功能和不同的行为。 如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。 有关详细信息，请参阅[出站连接](../load-balancer/load-balancer-outbound-connections.md)和 [Azure 标准负载均衡器](../load-balancer/load-balancer-overview.md)。
 
 >[!NOTE]
-> 标准模板引用了默认情况下允许所有出站流量的 NSG。 入站流量仅限于 Service Fabric 管理操作所需的端口。 可对 NSG 规则进行修改以满足你的要求。
+> 标准模板引用的 NSG 默认允许所有出站流量。 系统仅允许 Service Fabric 管理操作所需的端口上的入站流量。 你可以根据需要对 NSG 规则进行修改。
 
 >[!NOTE]
-> 使用标准 SKU SLB 的任何 Service Fabric 群集都需要确保每个节点类型都有一个允许端口443上的出站流量的规则。 这是完成群集设置所必需的，没有此类规则的任何部署都将失败。
+> 使用标准 SKU SLB 的任何 Service Fabric 群集都需要确保每种节点类型都有一条规则，即允许端口 443 上的出站流量。 这是完成群集设置所必需的，没有此类规则的任何部署都将失败。
 
 
 ### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>在虚拟机规模集上启用区域
@@ -250,14 +250,14 @@ Service Fabric 通过部署固定到特定区域的节点类型来支持跨可�
 ```
 
 ## <a name="migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>使用基本 SKU 负载均衡器和基本 SKU IP 从群集迁移到使用可用性区域
-若要迁移将负载均衡器和 IP 与基本 SKU 一起使用的群集，必须先使用标准 SKU 创建全新的负载均衡器和 IP 资源。 不能就地更新这些资源。
+若要迁移使用基本 SKU 负载均衡器和 IP 的群集，必须先使用标准 SKU 创建全新的负载均衡器和 IP 资源。 目前无法就地更新这些资源。
 
 新的 LB 和 IP 应在你想要使用的新的跨可用性区域节点类型中进行引用。 在上面的示例中，在区域1、2和3中添加了三个新的虚拟机规模集资源。 这些虚拟机规模集引用新创建的 LB 和 IP，并标记为 Service Fabric 群集资源中的主节点类型。
 
-若要开始，需要将新资源添加到现有资源管理器模板。 这些资源包括：
+首先，需要将新资源添加到现有资源管理器模板。 这些资源包括：
 * 使用标准 SKU 的公共 IP 资源。
 * 使用标准 SKU 的负载均衡器资源。
-* 用于部署虚拟机规模集的子网所引用的 NSG。
+* 由在其中部署虚拟机规模集的子网所引用的 NSG。
 * 三个标记为主节点的节点类型。
     * 每个节点类型都应映射到其自己的虚拟机规模集，位于不同的区域中。
     * 每个虚拟机规模集应具有至少五个节点 (银持续性) 。
@@ -345,7 +345,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 * 第一个值为 **zones** 属性，该属性指定虚拟机规模集中存在的可用性区域。
 * 第二个值为 "singlePlacementGroup" 属性，该属性必须设置为 true。 **即使 "singlePlacementGroup = true"，规模集跨越 3 AZ 的规模集也可扩展到最多300个 Vm。**
-* 第三个值是 "zoneBalance"，如果设置为 true，则将确保严格区域平衡。 建议将此值设置为 true，以避免跨区域分布 Vm 不平衡。 阅读有关 [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing)的信息。
+* 第三个值是 "zoneBalance"，如果设置为 true，则将确保严格区域平衡。 建议将此值设置为 true，以避免跨区域分布 Vm 不平衡。 阅读有关 [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing)的信息。
 * 不需要配置 FaultDomain 和 UpgradeDomain 重写。
 
 ```json
@@ -380,7 +380,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
       对于未启用多个区域的节点类型，此属性不会产生任何影响。
 * 第三个值为 **vmssZonalUpgradeMode = Parallel**。 如果添加了具有多个 AZs 的 nodeType，则这是在群集中配置的 *必需* 属性。 此属性定义虚拟机规模集更新的升级模式，这将同时在所有 AZ 中并行发生。
       现在，此属性只能设置为 "并行"。
-* Service Fabric 群集资源 apiVersion 应为 "2020-12-01-preview" 或更高版本。
+* Service Fabric 群集资源 apiVersion 应为“2020-12-01-preview”或更高版本。
 * 群集代码版本应为 "7.2.445" 或更高版本。
 
 ```json
@@ -416,9 +416,9 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>迁移到具有多个可用性区域的节点类型
 对于所有迁移方案，需要添加新的 nodeType，这将支持多个可用性区域。 无法迁移现有 nodeType 以支持多个区域。
-[此处](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-primary-node-type )的文章将介绍添加新的 nodetype 的详细步骤，还会添加新节点（如 IP 和 LB 资源）所需的其他资源。 本文还介绍了如何在将具有多个可用性区域的 nodeType 添加到群集后停用现有 nodeType。
+[此处](./service-fabric-scale-up-primary-node-type.md)的文章将介绍添加新的 nodetype 的详细步骤，还会添加新节点（如 IP 和 LB 资源）所需的其他资源。 本文还介绍了如何在将具有多个可用性区域的 nodeType 添加到群集后停用现有 nodeType。
 
-* 从使用基本 LB 和 IP 资源的 nodeType 进行迁移：此项已在 [此处](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) 针对每 AZ 具有一种节点类型的解决方案进行了说明。 
+* 从使用基本 LB 和 IP 资源的 nodeType 进行迁移：此项已在 [此处](#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) 针对每 AZ 具有一种节点类型的解决方案进行了说明。 
     对于新的节点类型，唯一的区别在于，对于所有 AZ，每个 AZ 都只有1个虚拟机规模集和1个 nodetype，而不是每个 AZ 都有1个。
 * 从将标准 SKU LB 和 IP 资源与 NSG 结合使用的 nodeType 进行迁移：按照前面所述的相同过程操作，但不需要添加新的 LB、IP 和 NSG 资源，也可以在新的 nodeType 中重复使用相同的资源。
 

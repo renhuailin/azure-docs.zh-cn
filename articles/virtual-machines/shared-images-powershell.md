@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1d135c6fe4e867a9b270e2a5c1b986e1957e7012
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f36b1d75dc167faf555d9af4e3aabd5d83db264a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843836"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882308"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>使用 Azure PowerShell 创建共享映像库 
 
-[共享映像库](./windows/shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动部署任务，例如预加载应用程序、应用程序配置和其他 OS 配置。 
+[共享映像库](./shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动部署任务，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 
 使用共享映像库，你可以在 AAD 租户内在同一区域或跨区域与组织中的其他用户共享自定义 VM 映像。 选择要共享哪些映像，要在哪些区域中共享，以及希望与谁共享它们。 你可以创建多个库，以便可以按逻辑方式对共享映像进行分组。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "94843836"
 
 从 [VM](image-version-vm-powershell.md)、[托管映像](image-version-managed-image-powershell.md)或[另一个库中的映像](image-version-another-gallery-powershell.md)创建映像。
 
-[Azure 映像生成器 (预览版) ](./windows/image-builder-overview.md) 可帮助自动创建映像版本，甚至还可以使用它来更新 [现有映像版本并创建新的映像版本](./windows/image-builder-gallery-update-image-version.md)。 
+[Azure 映像生成器 (预览版) ](./image-builder-overview.md) 可帮助自动创建映像版本，甚至还可以使用它来更新 [现有映像版本并创建新的映像版本](./windows/image-builder-gallery-update-image-version.md)。 
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
@@ -44,5 +44,3 @@ ms.locfileid: "94843836"
 - [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
-
-

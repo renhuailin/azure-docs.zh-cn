@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 71061c056b499f79727f70fb855db7a81a65f3bd
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 7ddd5dec87a122a0b36fee17b5434c8a49dcf434
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572164"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881629"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>对环境映像生成进行故障排除
 
@@ -153,12 +153,12 @@ Pip 子进程错误：
 
 可能的问题：
 - 容器注册表的路径名称可能无法正确解析。 检查映像名称是否使用双斜杠，以及 Linux 与 Windows 主机上的斜杠方向是否正确。
-- 如果虚拟网络后面的容器注册表使用 [不受支持的区域](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)中的专用终结点，请使用服务终结点配置容器注册表 (公共访问) 门户中，然后重试。
-- 在虚拟网络后面放置容器注册表后，请运行 [Azure 资源管理器模板](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) ，使工作区可以与容器注册表实例通信。
+- 如果虚拟网络后面的容器注册表使用 [不受支持的区域](/azure/private-link/private-link-overview#availability)中的专用终结点，请使用服务终结点配置容器注册表 (公共访问) 门户中，然后重试。
+- 在虚拟网络后面放置容器注册表后，请运行 [Azure 资源管理器模板](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) ，使工作区可以与容器注册表实例通信。
 
 ### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>工作区容器注册表出现401错误
 
-使用 [ws.sync_keys ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--)重新同步存储密钥。
+使用 [ws.sync_keys ( # B1 ](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--)重新同步存储密钥。
 
 ### <a name="the-environment-keeps-throwing-a-waiting-for-other-conda-operations-to-finish-error"></a>环境继续引发 "正在等待其他 conda 操作完成 ..."条
 
@@ -166,7 +166,7 @@ Pip 子进程错误：
 
 ### <a name="your-custom-docker-image-isnt-in-the-registry"></a>自定义 Docker 映像不在注册表中
 
-请检查是否使用了[正确的标记](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#create-an-environment)且 `user_managed_dependencies = True`。 `Environment.python.user_managed_dependencies = True` 禁用 conda 并使用用户的已安装包。
+请检查是否使用了[正确的标记](/azure/machine-learning/how-to-use-environments#create-an-environment)且 `user_managed_dependencies = True`。 `Environment.python.user_managed_dependencies = True` 禁用 conda 并使用用户的已安装包。
 
 ### <a name="you-get-one-of-the-following-common-virtual-network-issues"></a>你将获得以下常见的虚拟网络问题之一
 
@@ -184,9 +184,9 @@ Pip 子进程错误：
 
 ### <a name="you-cant-run-experiments-when-storage-has-network-security-enabled"></a>当存储启用了网络安全功能时，无法运行试验
 
-如果要使用默认 Docker 映像并启用用户管理的依赖项，请使用 MicrosoftContainerRegistry 和 AzureFrontDoor [服务标记](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network) 来允许列表 Azure 容器注册表及其依赖项。
+如果要使用默认 Docker 映像并启用用户管理的依赖项，请使用 MicrosoftContainerRegistry 和 AzureFrontDoor [服务标记](/azure/machine-learning/how-to-enable-virtual-network) 来允许列表 Azure 容器注册表及其依赖项。
 
- 有关详细信息，请参阅 [启用虚拟网络](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry)。
+ 有关详细信息，请参阅 [启用虚拟网络](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry)。
 
 ### <a name="you-need-to-create-an-icm"></a>需要创建 ICM
 

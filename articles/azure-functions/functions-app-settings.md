@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 80b2daebbd64f08dd4f5d728b2a9a4ee04b8952f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a28530fd4e4731065c4ddcc2f39e9a4660529921
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728986"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881917"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -239,7 +239,7 @@ _此设置当前处于预览状态。_
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
-仅用于高级计划。 将存储帐户限制在虚拟网络中时，值 `1` 允许函数应用进行缩放。 将存储帐户限制于一个虚拟网络时，应启用此设置。 若要了解详细信息，请参阅[将存储帐户限制在虚拟网络中](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network-preview)。 
+仅用于高级计划。 将存储帐户限制在虚拟网络中时，值 `1` 允许函数应用进行缩放。 将存储帐户限制于一个虚拟网络时，应启用此设置。 若要了解详细信息，请参阅[将存储帐户限制在虚拟网络中](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)。
 
 |键|示例值|
 |---|------------|

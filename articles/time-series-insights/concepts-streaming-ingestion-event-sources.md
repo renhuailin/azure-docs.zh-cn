@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 31398a49de871ad44499a796adfef1be618ccab9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: ae07f51a91745acdaf2601d3a50bf282129dac71
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685168"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881799"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure 时序见解第 2 代事件源
 
@@ -59,7 +59,7 @@ ms.locfileid: "98685168"
 
 - 将 IoT 中心或事件中心的数据保持时间增加到最多7天。
 
-- 在 Azure 门户中创建环境警报。 基于平台 [指标](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics) 的警报允许验证端到端管道行为。 [此处介绍](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)了如何创建和管理警报。 建议的警报条件：
+- 在 Azure 门户中创建环境警报。 基于平台 [指标](./how-to-monitor-tsi-reference.md#metrics) 的警报允许验证端到端管道行为。 [此处介绍](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)了如何创建和管理警报。 建议的警报条件：
 
   - IngressReceivedMessagesTimeLag 大于5分钟
   - IngressReceivedBytes 为0

@@ -10,16 +10,16 @@ ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 478413132a09334c6b5fe6e4d7c4c31c988cd38d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dedefcd18a2860bbcae9a0ac6b5b07550d9cbf3f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501042"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881934"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>使用 Azure CLI 通过专用化映像版本创建 VM
 
-从共享映像库中存储的[专用化映像版本](./linux/shared-image-galleries.md#generalized-and-specialized-images)创建 VM。 若要使用通用化映像版本创建 VM，请参阅[从通用化映像版本创建 VM](vm-generalized-image-version-cli.md)。
+从共享映像库中存储的[专用化映像版本](./shared-image-galleries.md#generalized-and-specialized-images)创建 VM。 若要使用通用化映像版本创建 VM，请参阅[从通用化映像版本创建 VM](vm-generalized-image-version-cli.md)。
 
 在此示例中，请根据需要替换资源名称。 
 
@@ -51,7 +51,7 @@ az vm create --resource-group myResourceGroup \
 
 
 ## <a name="next-steps"></a>后续步骤
-[Azure 映像生成器 (预览版) ](./linux/image-builder-overview.md) 可帮助自动创建映像版本，甚至还可以使用它来更新 [现有映像版本并创建新的映像版本](./linux/image-builder-gallery-update-image-version.md)。 
+[Azure 映像生成器 (预览版) ](./image-builder-overview.md) 可帮助自动创建映像版本，甚至还可以使用它来更新 [现有映像版本并创建新的映像版本](./linux/image-builder-gallery-update-image-version.md)。 
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 

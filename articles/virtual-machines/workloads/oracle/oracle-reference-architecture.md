@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: bbaf34c977546891c6ac05fbd4b5feb15f333e04
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 27a1c57c234d3450cee606c4ffb7484f7b63e732
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737806"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882291"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上的 Oracle Database Enterprise Edition 的参考体系结构
 
@@ -216,7 +216,7 @@ Oracle 数据防护可用于分片与系统管理的用户定义的分片方法�
 - 使用可用性区域在区域中实现高可用性。
 - 请考虑使用 (适用于 Oracle 数据库的) 或高级磁盘时使用的超磁盘。
 - 请考虑使用 Oracle Data Guard 在另一个 Azure 区域中设置备用 Oracle 数据库。
-- 请考虑使用 [邻近的放置组](../../../virtual-machines/linux/co-location.md#proximity-placement-groups) 来减少应用程序层和数据库层之间的延迟。
+- 请考虑使用 [邻近的放置组](../../co-location.md#proximity-placement-groups) 来减少应用程序层和数据库层之间的延迟。
 - 设置 [Oracle 企业管理器](https://docs.oracle.com/en/enterprise-manager/) 进行管理、监视和日志记录。
 - 请考虑使用 Oracle 自动存储管理 (ASM) 来简化数据库的存储管理。
 - 使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) 可以在不停机的情况下管理对数据库的修补和更新。

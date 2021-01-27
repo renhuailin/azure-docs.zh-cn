@@ -6,16 +6,16 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a864ce42888aace385cf60a4122f204c8f76831d
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e0d1789d61bbe57c735f4dd2a70a1c2a8f183d90
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240420"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881055"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>适用于 Azure Database for PostgreSQL - 单一服务器的专用链接
 
-通过专用链接，你可以为 Azure Database for PostgreSQL - 单一服务器创建专用终结点，并将 Azure 服务引入专用虚拟网络 (VNet) 中。 专用终结点公开一个专用 IP，你可以使用它连接到数据库服务器，就像 VNet 中的任何其他资源一样。
+专用链接允许你为 Azure Database for PostgreSQL-单服务器创建专用终结点，使其在虚拟网络 (VNet) 内。 专用终结点公开子网中的专用 IP，可用于连接到数据库服务器，就像 VNet 中的任何其他资源一样。
 
 有关支持专用链接功能的 PaaS 服务的列表，请查看专用链接 [文档](../private-link/index.yml)。 专用终结点是特定 [VNet](../virtual-network/virtual-networks-overview.md) 和子网中的专用 IP 地址。
 
@@ -72,21 +72,21 @@ Azure Database for PostgreSQL 单一服务器中的数据渗透是指已获授�
 
 * 在列表中选择单个 PEC。
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="选择专用终结点门户":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="选择待批准的专用终结点":::
 
 * PostgreSQL 服务器管理员可以选择批准或拒绝 PEC，并可以选择性地添加简短的文本回复。
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="选择专用终结点门户":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="选择专用终结点消息":::
 
 * 批准或拒绝后，该列表会反映相应的状态以及响应文本
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="选择专用终结点门户":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="选择专用终结点最终状态":::
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-postgresql"></a>适用于 Azure Database for PostgreSQL 的专用链接用例
 
 客户端可以通过同一 VNet、同一区域中的对等互连 VNet 或者跨区域的 VNet 到 VNet 连接连接到专用终结点。 此外，客户端可以使用 ExpressRoute、专用对等互连或 VPN 隧道从本地进行连接。 以下简化示意图显示了常见用例。
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="选择专用终结点门户":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="选择专用终结点概述":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>从对等互连虚拟网络 (VNet) 中的 Azure VM 进行连接
 配置 [VNet 对等互连](../virtual-network/tutorial-connect-virtual-networks-powershell.md)，以便从对等互连 VNet 中的 Azure VM 来与 Azure Database for PostgreSQL - 单一服务器建立连接。

@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: f2de6dbba2548f0c281df35edf2883d0c00af667
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 4fc92146d6f076287fe37f64734bb07e8250792b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571907"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882206"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple 与 Azure 文件同步和 Data Box Edge 数据传输选项的比较 
 
@@ -39,5 +39,5 @@ ms.locfileid: "96571907"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md) 和 [Azure Data Box Gateway](../databox-online/data-box-gateway-overview.md)
+- 了解 [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md) 和 [Azure Data Box Gateway](../databox-gateway/data-box-gateway-overview.md)
 - 了解 [Azure 文件同步](../storage/files/storage-sync-files-deployment-guide.md)

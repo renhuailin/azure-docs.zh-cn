@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/17/2020
-ms.openlocfilehash: f9f95a5e85ec4eebf82cca707476750595331d73
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 01/25/2021
+ms.openlocfilehash: bc59c639856de6a5ce5adda1f78266eb7e4d5dd3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522662"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881225"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -46,10 +46,10 @@ ms.locfileid: "95522662"
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>优点
-- 深度集成到 Azure 中。 可视化效果可以固定到多个 Azure 页面的仪表板，包括指标资源管理器、Log Analytics 和 Application Insights。
+- 深度集成到 Azure 中。 可视化效果可以从多个 Azure 页面固定到仪表板，包括 [指标资源管理器](platform/metrics-charts.md)、 [Log Analytics](log-query/log-analytics-overview.md)和 [Application Insights](app/app-insights-overview.md)。
 - 支持指标和日志。
-- 合并来自多个源的数据，包括来自[指标资源管理器](platform/metrics-charts.md)、[日志查询](log-query/log-query-overview.md)以及 Application Insights 中的[映射](app/app-map.md)和可用性的输出。
-- 包含个人或共享仪表板的选项。 与 [AZURE RBAC)  (的 azure 基于角色的访问控制 ](../role-based-access-control/overview.md)集成。
+- 合并来自多个源的数据，包括来自[指标资源管理器](platform/metrics-charts.md)的输出、[日志查询](log-query/log-query-overview.md)以及[Application Insights](app/app-insights-overview.md)中的[映射](app/app-map.md)和可用性。
+- 包含个人或共享仪表板的选项。 与 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 集成。
 - 自动刷新。 指标刷新的时间范围至少为 5 分钟。 日志每小时刷新一次，同时可根据需要使用手动刷新选项，方法是单击给定可视化效果上的“刷新”图标或刷新整个仪表板。
 - 带有时间戳和自定义参数的参数化指标仪表板。
 - 灵活的布局选项。
@@ -57,7 +57,7 @@ ms.locfileid: "95522662"
 
 
 ### <a name="limitations"></a>限制
-- 对日志可视化效果具有有限控制，不支持数据表。 数据系列总数限制为 10，其他数据系列在“其他” Bucket 下进行分组。
+- 对日志可视化效果具有有限控制，不支持数据表。 数据序列的总数限制为50，并在其他存储桶下对 _其他_ 数据序列进行分组。
 - 对于日志图表，不支持自定义参数。
 - 日志图表仅限于过去 30 天。
 - 日志图表只能固定到共享仪表板。
@@ -140,8 +140,9 @@ ms.locfileid: "95522662"
 ## <a name="next-steps"></a>后续步骤
 - 了解[由 Azure Monitor 收集的数据](platform/data-platform.md)。
 - 了解 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。
-- 了解 [Azure Monitor 中的视图](platform/view-designer.md)。
+- 了解 [指标资源管理器](platform/metrics-getting-started.md)
 - 了解[工作簿](./platform/workbooks-overview.md)。
 - 了解如何[将日志数据导入 Power BI](./platform/powerbi.md)。
 - 了解 [Grafana Azure Monitor 数据源插件](./platform/grafana-plugin.md)。
+- 了解 [Azure Monitor 中的视图](platform/view-designer.md)。
 
