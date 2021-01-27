@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 65aab240dd0be97aafa370883aa953f8eb766cf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3419b54fa18058583d81909f7fca0f20dc4b0dd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650742"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917127"
 ---
 # <a name="av2-series"></a>Av2 系列
 
@@ -22,8 +22,9 @@ Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上。 Av2 �
 [高级存储](premium-storage-performance.md)：不支持 <br>
 [高级存储缓存](premium-storage-performance.md)：不支持 <br>
 [实时迁移](maintenance-and-updates.md)：支持 <br>
-[内存保留更新](maintenance-and-updates.md)：受支持 <br>
-[VM 生成支持](generation-2.md)：第1代 <br>
+[内存保留更新](maintenance-and-updates.md)：支持 <br>
+[VM 代系支持](generation-2.md)：第 1 代 <br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：不支持<br>
 <br>
 
 | 大小 | vCore | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数/吞吐量：IOPS | 最大 NIC 数 | 预期的网络带宽 (Mbps)

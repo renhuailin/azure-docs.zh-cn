@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f37341233eec45a22fe92450e69d486e61f26eb4
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 6428f3eafc9d19060fb065082ea3cbe06bb74d81
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585303"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916994"
 ---
 # <a name="nd-series"></a>ND 系列
 
@@ -23,7 +23,8 @@ ND 系列虚拟机是针对 AI 和深度学习工作负荷设计的 GPU 系列�
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-Nvidia NVLink Interconnect：不支持<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：不支持<br>
+Nvidia NVLink 互连：不支持<br>
 
 > [!IMPORTANT]
 > 对于此 VM 系列，订阅中每个区域的 vCPU (核心) 配额最初设置为0。 在[可用区域](https://azure.microsoft.com/regions/services/)中为此系列[请求 vCPU 配额增加](../azure-portal/supportability/resource-manager-core-quotas-request.md)。

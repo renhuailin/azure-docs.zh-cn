@@ -1,97 +1,32 @@
 ---
-title: 生成 SCIM 终结点，以便用户预配到 Azure AD 的应用
-description: 跨域身份管理系统 (SCIM) 将自动用户预配标准化。 了解如何开发 SCIM 终结点，将 SCIM API 与 Azure Active Directory 集成，以及开始自动将用户和组预配到云应用程序中。
+title: 生成 SCIM 终结点，以便用户预配到 Azure Active Directory 的应用
+description: 跨域身份管理系统 (SCIM) 将自动用户预配标准化。 了解如何开发 SCIM 终结点，如何将 SCIM API 与 Azure Active Directory 集成，并开始使用 Azure Active Directory 自动将用户和组预配到你的云应用程序中。
 services: active-directory
-documentationcenter: ''
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/07/2020
-ms.author: mimart
+ms.date: 01/27/2021
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: aaddev;it-pro;seohack1
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ae36af981b113d44ac1b8fd45a1d084760b0294
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 34fa76197c4e08cffd1d8c66d6877b3e427e9fd6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900105"
+ms.locfileid: "98918138"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>教程：开发示例 SCIM 终结点
 
-没有人希望从头开始构建新的终结点，因此，我们已经创建了一些 [参考代码](https://aka.ms/scimreferencecode) ，以便你开始使用 [SCIM](https://aka.ms/scimoverview)。 本教程介绍如何在 Azure 中部署 SCIM 引用代码，并使用 postman 或通过与 Azure AD SCIM 客户端集成来测试该代码。 只需5分钟即可启动并运行 SCIM 终结点，无需任何代码。 本教程适用于想要开始使用 SCIM 或其他对 SICM 终结点进行测试的开发人员。 
+没有人希望从头开始构建新的终结点，因此，我们已经创建了一些 [参考代码](https://aka.ms/scimreferencecode) ，以便你开始使用 [SCIM](https://aka.ms/scimoverview)。 本教程介绍如何在 Azure 中部署 SCIM 引用代码，并使用 Postman 或通过与 Azure AD SCIM 客户端集成来测试该代码。 只需5分钟即可启动并运行 SCIM 终结点，无需任何代码。 本教程适用于想要开始使用 SCIM 或其他对 SICM 终结点进行测试的开发人员。 
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 下载引用代码
 > * 在 Azure 中部署 SCIM 终结点
 > * 测试 SCIM 终结点
-
-终结点功能包括：
-
-|终结点|说明|
-|---|---|
-|`/User`|对用户资源执行 CRUD 操作： **创建**、 **更新**、 **删除**、 **获取**、 **列出**、 **筛选**|
-|`/Group`|对组资源执行 CRUD 操作： **创建**、 **更新**、 **删除**、 **获取**、 **列出**、 **筛选**|
-|`/Schemas`|检索一个或多个受支持的架构。<br/><br/>每个服务提供商支持的资源的属性集可能不同，例如，服务提供商 A 支持 "名称"、"标题" 和 "电子邮件"，而服务提供商 B 支持用户的 "名称"、"标题" 和 "phoneNumbers"。|
-|`/ResourceTypes`|检索支持的资源类型。<br/><br/>每个服务提供商支持的资源数量和类型可能有所不同，例如，服务提供商 A 支持用户，而服务提供商 B 支持用户和组。|
-|`/ServiceProviderConfig`|检索服务提供商的 SCIM 配置<br/><br/>每个服务提供商支持的 SCIM 功能可能有所不同，例如，服务提供商 A 支持修补程序操作，而服务提供程序 B 支持修补程序操作和架构发现。|
-
-## <a name="download-the-reference-code"></a>下载引用代码
-
-要下载的 [引用代码](https://github.com/AzureAD/SCIMReferenceCode) 包括以下项目：
-
-- **Microsoft.SystemForCrossDomainIdentityManagement**，.NET Core MVC web API，用于构建和预配 SCIM API
-- SCIM 终结点的 **SCIM WebHostSample** 示例
-
-项目包含以下文件夹和文件：
-
-|文件/文件夹|说明|
-|-|-|
-|**架构** 文件夹| **用户** 和 **组** 资源的模型以及一些抽象类（如架构化）用于共享功能。<br/><br/> 一个 **属性** 文件夹，其中包含 **用户** 和 **组** （如地址）的复杂属性的类定义。|
-|**服务** 文件夹 | 包含与查询和更新资源的方式相关的操作的逻辑。<br/><br/> 参考代码具有返回用户和组的服务。<br/><br/>" **控制器** " 文件夹包含各种 SCIM 终结点。 资源控制器包括用于对资源执行 CRUD 操作 (**GET**、 **POST**、 **PUT**、 **PATCH**、 **DELETE**) 的 HTTP 谓词。 控制器依赖于服务来执行操作。|
-|**协议** 文件夹|包含与根据 SCIM RFC （如）返回资源的方式相关的操作的逻辑。<br/><ul><li>返回多个资源作为列表。</li><li>仅基于筛选器返回特定资源。</li><li>将查询转换为单个筛选器的链接列表的列表。</li><li>使用与值路径相关的属性将修补请求转换为操作。</li><li>定义可用于将更改应用于资源对象的操作的类型。</li></ul>|
-|`Microsoft.SystemForCrossDomainIdentityManagement`| 示例源代码。|
-|`Microsoft.SCIM.WebHostSample`| SCIM 库的示例实现。|
-|*。 .gitignore*|定义要在提交时忽略的内容。|
-|*CHANGELOG.md*|示例的更改列表。|
-|*CONTRIBUTING.md*|示例的相关准则。|
-|*README.md*|此 **自述** 文件。|
-|*照*|示例的许可证。|
-
-> [!NOTE]
-> 此代码旨在帮助开始生成 SCIM 终结点，并 **按** 原样提供。 包含的引用不保证活动维护或支持。
->
-> 此项目采用了 [Microsoft 开放源代码行为准则](https://opensource.microsoft.com/codeofconduct/)。 由于社区中的此类 [贡献](https://github.com/AzureAD/SCIMReferenceCode/wiki/Contributing-Overview) 欢迎使用来帮助构建和维护存储库，与其他开源发布一样，你将同意参与者许可协议 (CLA) 。 本协议声明你拥有并授予使用你的发布内容的权限。有关详细信息，请参阅 [Microsoft 开源](https://cla.opensource.microsoft.com)。
->
-> 有关详细信息，请参阅[行为准则常见问题解答](https://opensource.microsoft.com/codeofconduct/faq/)，如有任何其他问题或评论，请联系 [opencode@microsoft.com](mailto:opencode@microsoft.com)。
-
-###  <a name="use-multiple-environments"></a>使用多个环境
-
-包含的 SCIM 代码使用 ASP.NET Core 环境来控制其在开发和部署后使用的授权，请参阅 [在 ASP.NET Core 中使用多个环境](https://docs.microsoft.com/aspnet/core/fundamentals/environments?view=aspnetcore-3.1)。
-
-```csharp
-private readonly IWebHostEnvironment _env;
-...
-
-public void ConfigureServices(IServiceCollection services)
-{
-    if (_env.IsDevelopment())
-    {
-        ...
-    }
-    else
-    {
-        ...
-    }
-```
 
 ## <a name="deploy-your-scim-endpoint-in-azure"></a>在 Azure 中部署 SCIM 终结点
 
@@ -164,7 +99,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="use-postman-to-test-endpoints"></a>使用 Postman 测试终结点
 
-部署 SCIM 终结点后，你可以进行测试，确保它 SCIM 符合 RFC。 此示例在 **Postman** 中提供一组测试，以验证对用户和组的 CRUD 操作、筛选、对组成员身份的更新以及禁用用户。
+部署 SCIM 终结点后，可以进行测试，确保它 SCIM 符合 RFC。 此示例在 **Postman** 中提供一组测试，以验证对用户和组的 CRUD 操作、筛选、对组成员身份的更新以及禁用用户。
 
 终结点位于 `{host}/scim/` 目录中，可以使用标准 HTTP 请求进行交互。 若要修改 `/scim/` 路由，请参阅 **AzureADProvisioningSCIMreference**  >  **ScimReferenceApi**  >  **控制器** 中的 ControllerConstant.cs。
 
@@ -206,7 +141,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开发客户端具有互操作性的 SCIM 兼容用户和组终结点，请参阅 [SCIM 客户端实现](http://www.simplecloud.info/#Implementations2)。
+若要为客户端开发具有互操作性的 SCIM 兼容用户和组终结点，请参阅 [SCIM 客户端实现](http://www.simplecloud.info/#Implementations2)。
 
 > [!div class="nextstepaction"]
 > [教程：开发和规划 SCIM 终结点](use-scim-to-provision-users-and-groups.md) 

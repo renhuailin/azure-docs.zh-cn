@@ -1,14 +1,14 @@
 ---
 title: 排查常见错误
 description: 了解如何通过 Azure Resource Graph 在查询 Azure 资源的同时排查各种 SDK 问题。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 13c5d5ffde8b0b82fcafa5e8149400555a0b18a6
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0d783b9cb4fa30e3c3e0ff82536b4878c29c7a0d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056951"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916695"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>使用 Azure Resource Graph 排查错误
 

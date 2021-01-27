@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c640478170049bd06e11f7f89b1e213b7b305642
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 210f7daa9305f2fb343dfae050354264e2fd823e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032807"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898556"
 ---
 # <a name="plan-to-manage-azure-costs"></a>计划管理 Azure 成本
 
@@ -125,7 +125,7 @@ ms.locfileid: "97032807"
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>集成计费和消耗 API
 
-使用 Azure [计费](/rest/api/billing/)和[消耗](/rest/api/consumption/) API 以编程方式获取计费和成本数据。 同时使用 RateCard API 和使用情况 API 获取计费使用情况。 有关详细信息，请参阅[深入了解 Microsoft Azure 资源消耗](../manage/usage-rate-card-overview.md)。
+使用 Azure [计费](/rest/api/billing/)和[消耗](/rest/api/consumption/) API 以编程方式获取计费和成本数据。 同时使用 RateCard API 和使用情况 API 获取计费使用情况。 有关详细信息，请参阅[深入了解 Microsoft Azure 资源消耗](../manage/consumption-api-overview.md#usage-details-api)。
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a>其他资源和特殊情况
 

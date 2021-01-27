@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 3e5f00695ee6f823cf36625f41b25ad9e273481e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8cab2529632316c86ab5a0a86c6699182811ba
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649613"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916995"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>内存优化的 Dv2 和 Dsv2 系列
 
@@ -22,12 +22,13 @@ Dv2 和 Dsv2 系列是原 D 系列的后续系列，其特点是 CPU 功能更�
 
 Dv2 系列大小在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行。
 
-[ACU](acu.md)： 210-250<br>
+[ACU](acu.md)：210 - 250<br>
 [高级存储](premium-storage-performance.md)：不支持<br>
 [高级存储缓存](premium-storage-performance.md)：不支持<br>
 [实时迁移](maintenance-and-updates.md)：支持<br>
-[内存保留更新](maintenance-and-updates.md)：受支持<br>
-[VM 生成支持](generation-2.md)：第1代<br>
+[内存保留更新](maintenance-and-updates.md)：支持<br>
+[VM 代系支持](generation-2.md)：第 1 代<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 <br> 
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数/吞吐量：IOPS | 最大 NIC 数|预期的网络带宽 (Mbps) |
@@ -45,12 +46,13 @@ Dv2 系列大小在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon
 
 DSv2 系列大小在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行。
 
-[ACU](acu.md)： 210-250 <sup>1</sup><br>
-[高级存储](premium-storage-performance.md)：受支持<br>
+[ACU](acu.md)：210 - 250 <sup>1</sup><br>
+[高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
 [实时迁移](maintenance-and-updates.md)：支持<br>
-[内存保留更新](maintenance-and-updates.md)：受支持<br>
-[VM 生成支持](generation-2.md)：第1代和第2代<br>
+[内存保留更新](maintenance-and-updates.md)：支持<br>
+[VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 <br> 
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |

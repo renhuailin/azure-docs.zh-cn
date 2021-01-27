@@ -3,12 +3,12 @@ title: 通过模板实现快速任务运行
 description: 将 ACR 任务运行排入队列，以使用 Azure 资源管理器模板生成映像
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e8023c088ac328c2b6e95fccd0230c4d40325c1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82927762"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916059"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>使用资源管理器模板运行 ACR 任务
 
@@ -58,7 +58,7 @@ az deployment group create \
     registryName=mycontainerregistry \
     repository=helloworld-node \
     taskRunName=testrun \
-    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git
+    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
  ```
 
 上一条命令在命令行上传递了参数。 如有需要，请将这些参数传递到[参数文件](../azure-resource-manager/templates/parameter-files.md)中。
@@ -192,7 +192,7 @@ az role assignment create \
 
 ### <a name="deploy-the-template"></a>部署模板
 
-使用 [az deployment group create][az-deployment-group-create] 命令部署模板。 本示例将生成 helloworld-node:testrun 映像，并将该映像推送到名为 mycontainerregistry 的注册表中 。 基本映像是从 *mybaseregistry.azurecr.io*中提取的。
+使用 [az deployment group create][az-deployment-group-create] 命令部署模板。 本示例将生成 helloworld-node:testrun 映像，并将该映像推送到名为 mycontainerregistry 的注册表中 。 基本映像是从 *mybaseregistry.azurecr.io* 中提取的。
 
 ```azurecli
 az deployment group create \
@@ -204,7 +204,7 @@ az deployment group create \
     taskRunName=basetask \
     userAssignedIdentity=$resourceID \
     customRegistryIdentity=$clientID \
-    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git \
+    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git#main \
     dockerFilePath=Dockerfile-test \
     customRegistry=mybaseregistry.azurecr.io
 ```

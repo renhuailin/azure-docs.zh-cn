@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: b4de2ec68d3cd10dfc4e95c6c2232837a7fca626
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0c279916eb25c5ffe0b0b655818dd1a07849e582
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975750"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917449"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
@@ -20,12 +20,13 @@ Mv2 系列提供高吞吐量、低延迟的平台，该平台在超线程 Intel�
 
 Mv2 系列 VM 的 Intel® Hyper-Threading 技术
 
-[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
-[VM 生成支持](generation-2.md)：第1代和第2代<br>
+[VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [写入加速器](./how-to-enable-write-accelerator.md)：支持<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 <br>
 
 |大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数 | 预期的网络带宽 (Mbps) |

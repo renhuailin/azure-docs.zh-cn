@@ -1,15 +1,15 @@
 ---
 title: 处理大型数据集
 description: 了解如何在使用 Azure Resource Graph 的同时，在大型数据集中获取、格式化、分页和跳过记录。
-ms.date: 09/30/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59f69738bf9fe25cb739539b7a1f93e4499d781a
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 1eaabfdd78712966f3b21d869259a312db31b7bc
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826019"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917684"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>处理大型 Azure 资源数据集
 
@@ -65,7 +65,7 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ## <a name="paging-results"></a>分页结果
 
 如果有必要将结果集拆分为更小的记录集进行处理，或者因为结果集会超过允许的最大返回记录数（即 1000 条），请使用分页。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)
-**QueryResponse** 提供了指明结果集已被拆分的值：**resultTruncated** 和 **$skipToken**。 resultTruncated 是布尔值，用于指示使用者返回的响应中是否还有其他记录。 如果 count 属性小于 totalRecords 属性，也可以确定此条件。 totalRecords 定义匹配查询的记录数。
+**QueryResponse** 提供了指明结果集已被拆分的值：**resultTruncated** 和 **$skipToken**。 **resultTruncated** 是一个布尔值，如果在响应中没有返回更多记录，则通知使用者。 如果 count 属性小于 totalRecords 属性，也可以确定此条件。 totalRecords 定义匹配查询的记录数。
 
  如果由于没有 `id` 列而禁用了分页或无法进行分页，或者可用资源少于查询请求的资源，则 resultTruncated 为 true。 如果 resultTruncated 为 true，则不会设置 $skipToken 属性。
 
@@ -94,7 +94,7 @@ Resource Graph 查询的结果以两种格式提供：Table 和 ObjectArray 。 
 
 Table 是默认格式，它以 JSON 格式返回结果，旨在突出显示查询所返回的属性的列设计和行值。 该格式与结构化表或电子表格中定义的数据很类似，其中首先标识列，然后标识表示与这些列相对应的数据的行。
 
-下面是使用 Table 格式设置的查询结果示例：
+下面是带有 _表格式_ 的查询结果示例：
 
 ```json
 {
@@ -136,7 +136,7 @@ Table 是默认格式，它以 JSON 格式返回结果，旨在突出显示查�
 
 ObjectArray 格式也以 JSON 格式返回结果。 但是，这种设计与 JSON 中常见的键/值对关系保持一致，其中列和行数据在数组组中匹配。
 
-下面是使用 ObjectArray 格式设置的查询结果示例：
+下面是具有 _ObjectArray_ 格式的查询结果的示例：
 
 ```json
 {

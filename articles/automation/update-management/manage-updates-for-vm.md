@@ -4,14 +4,13 @@ description: 本文介绍如何使用更新管理功能来管理 Azure VM 和非
 services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.custom: mvc
-ms.openlocfilehash: 24dcb501872aabf9fac3da0cccc2a1af9c9b06ff
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.date: 01/27/2021
+ms.openlocfilehash: c86c9049bc0afc81f5dfd8553d2aa98cfd4b1a46
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222138"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915976"
 ---
 # <a name="manage-updates-and-patches-for-your-vms"></a>管理 VM 的更新和修补程序
 
@@ -35,11 +34,13 @@ Azure 自动化更新管理中的软件更新提供一组工具和资源，它�
 
 在将软件更新部署到计算机之前，请查看已启用的计算机的更新符合性评估结果。 对于每个软件更新，系统都会记录其符合性状态，然后在评估完成后，进行收集并批量转发到 Azure Monitor 日志。
 
-在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。 除了计划的扫描之外，还会在适用于 Windows 的 Log Analytics 代理重启后的 15 分钟内、更新安装前和更新安装后开始对更新符合性的扫描。 还有必要查看我们的建议，了解如何使用更新管理功能来[配置 Windows 更新客户端](configure-wuagent.md)，以免出现任何妨碍正确管理的问题。
+在 Windows 计算机上，符合性扫描默认每12小时运行一次，并在15分钟内重新启动 Windows Log Analytics 代理。 然后，将评估数据转发到工作区并刷新 **更新** 表。 在更新安装之前和之后，将执行更新符合性扫描以识别缺少的更新，但不会使用结果来更新表中的评估数据。
+
+请务必查看有关如何 [配置 Windows 更新客户端](configure-wuagent.md) 与更新管理的建议，以避免任何阻止其正确管理的问题。
 
 对于 Linux 计算机，符合性扫描默认情况下每个小时执行一次。 如果适用于 Linux 的 Log Analytics 代理重启，则在重启后 15 分钟内开始符合性扫描。
 
-每台已经过评估的计算机的符合性结果将显示在更新管理中。 对于启用了管理的新计算机，可能需要 30 分钟才会在仪表板上显示它更新后的数据。
+每台已经过评估的计算机的符合性结果将显示在更新管理中。 最长可能需要30分钟的时间，仪表板才会显示启用了管理的新计算机的更新数据。
 
 请查看[监视软件更新](view-update-assessments.md)，了解如何查看符合性结果。
 

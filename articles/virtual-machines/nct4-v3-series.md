@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 41ab057bdbf31667e45a73b2c5ded4993e716a66
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 5f31148a811ac1a7789cb81d744b46b847105d5c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131553"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917397"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 系列 
 
@@ -27,7 +27,7 @@ NCasT4_v3 系列虚拟机由 [Nvidia Tesla T4](https://www.nvidia.com/en-us/data
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-加速网络：支持<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 Nvidia NVLink 互连：不支持<br>
 <br>
 

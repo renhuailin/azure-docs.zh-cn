@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 675751433657a7d630d0c42482716702f520ff82
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 42e8a1f4ff06f6ca6af4afd428008ca174823c5f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881378"
+ms.locfileid: "98916415"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>用于存储的 Azure Defender 简介
 
@@ -25,7 +25,7 @@ ms.locfileid: "98881378"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式发布 (GA)|
+|发布状态：|正式发布版 (GA)|
 |定价：|**用于存储的 Azure Defender** 按 [定价页中](security-center-pricing.md)的定价计费|
 |受保护的存储类型：|[Blob 存储](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure 文件](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov|

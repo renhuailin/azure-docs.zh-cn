@@ -4,12 +4,12 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 833837c317d22bf031aee4608ff4c93775736a34
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9e20c21694678acf7be13ccbbe9cce9af38c32c5
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757434"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915703"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -150,10 +150,10 @@ Azure 备份添加了跨区域还原功能来增强数据可用性和复原能�
 
 | 备份管理类型 | 支持                                                    | 支持的区域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 支持具有托管磁盘和非托管磁盘的 Azure Vm。 经典 VM 不支持。 | 所有 Azure 公共区域。  |
-| SQL/SAP HANA | 是                                                          | 除法国以外的所有公共区域 |
-| MARS 代理/本地  | 否                                                           | 空值               |
-|  (Azure 文件共享的 AFS)                  | 否                                                           | 空值               |
+| Azure VM               | 支持具有托管磁盘和非托管磁盘的 Azure Vm。 经典 VM 不支持。 | 除法国中部、澳大利亚中部、南非北部、阿拉伯联合酋长国北部、瑞士北部、德国中西部、挪威东部以外，所有 Azure 公共区域均提供此功能。 <br>有关在这些区域中使用的信息，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| SQL/SAP HANA | 预览                                                      | 除法国中部、澳大利亚中部、南非北部、阿拉伯联合酋长国北部、瑞士北部、德国中西部、挪威东部以外，所有 Azure 公共区域均提供此功能。 <br>有关在这些区域中使用的信息，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| MARS 代理/本地  | 否                                                           | 不适用               |
+|  (Azure 文件共享的 AFS)                  | 否                                                           | 不适用               |
 
 ## <a name="next-steps"></a>后续步骤
 

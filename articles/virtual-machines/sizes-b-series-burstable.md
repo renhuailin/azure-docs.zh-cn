@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 14c8584699ddc981fc24cc29b78c187288c6fb57
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 31a65cab7dfdd478560b7babba156cec7645cf33
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203382"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917245"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 
@@ -27,8 +27,12 @@ B 系列有以下 VM 大小：
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持 * *<br>
+
+*B 系列 VM 是可突发的，因此 ACU 数量会因工作负荷和核心使用情况而异。<br>
+* * 仅 *Standard_B12ms*、 *Standard_B16ms* 和 *Standard_B20ms* 支持加速网络。
 <br>
-*B 系列 VM 是可突发的，因此 ACU 数量会因工作负荷和核心使用情况而异。
+<br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | VM 的基本 CPU 性能 | VM 的最大 CPU 性能 | 初始信用额度 | 累积的额度/小时 | 最大累积积分 | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|

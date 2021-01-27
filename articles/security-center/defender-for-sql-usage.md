@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/23/2020
 ms.author: memildin
-ms.openlocfilehash: c9d11f1ddc3e1dd2239bdfce9c41f58fe9e20497
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d741aad2e97b211e42dc6c8b6176f102703acc5b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539968"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916483"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>计算机上适用于 SQL server 的 Azure Defender 
 
@@ -30,7 +30,7 @@ ms.locfileid: "98539968"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式发布 (GA)|
+|发布状态：|正式发布版 (GA)|
 |定价：|**计算机上适用于 SQL server 的 Azure Defender** 按 [定价页](security-center-pricing.md)中所示的方式计费|
 |受保护的 SQL 版本：|Azure SQL Server (Microsoft 支持涵盖的所有版本) |
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov|
@@ -93,7 +93,7 @@ ms.locfileid: "98539968"
 
 1. 在 "安全中心" 边栏中，打开 " **建议** " 页，然后选择 " **计算机上的 SQL server** 上的建议漏洞" (预览 ") 。 有关详细信息，请参阅[安全中心建议](security-center-recommendations.md)。 
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="应修正关于计算机上的 SQL 服务器的漏洞评估结果（预览版）":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="计算机上的 SQL server 上的漏洞评估结果应 (预览版进行修正) ":::
 
     此时显示此建议的详细视图。
 

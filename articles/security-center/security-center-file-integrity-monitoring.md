@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: ab173f47ed09dbe77c12cad844d8a1f3654f4a9b
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 90f0cd913a191f345afd8acc3f3449b87e4cbfaf
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734753"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918600"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心中的文件完整性监视
 了解如何在 Azure 安全中心使用本演练 (FIM) 配置文件完整性监视。
@@ -28,7 +28,7 @@ ms.locfileid: "97734753"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式发布 (GA)|
+|发布状态：|正式发布版 (GA)|
 |定价：|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)。<br>FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。|
 |所需角色和权限：|**工作区所有者** 可以启用/禁用 FIM (有关详细信息，请参阅 [Log Analytics) 的 Azure 角色](/services-hub/health/azure-roles#azure-roles) 。<br>**读者** 可以查看结果。|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是 ](./media/icons/yes-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) <br>仅支持 Azure 自动化的更改跟踪解决方案的区域。<br>请参阅 [链接 Log Analytics 工作区的受支持区域](../automation/how-to/region-mappings.md)。<br>[了解有关更改跟踪的详细信息](../automation/change-tracking/overview.md)。|

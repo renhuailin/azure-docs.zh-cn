@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 200e1fd7bfffef403fa459d3de13dc31145b8a33
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 99da711038e1fcea3e14584fde09ccd1f79feffa
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796628"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916690"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>用于应用服务的 Azure Defender 简介
 
@@ -25,7 +25,7 @@ Azure 应用服务是一种完全托管的平台，用于构建和托管 Web 应
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式发布 (GA)|
+|发布状态：|正式发布版 (GA)|
 |定价：|[用于应用服务的 Azure Defender](azure-defender.md) 按[定价页中](security-center-pricing.md)的定价计费<br>定价和设置页面列出了“资源数量”中的实例数。 该数字是指当你打开“定价层”页面时，此订阅的所有应用服务计划中正在运行的计算实例总数。<br>若要验证该计数，请在 Azure 门户打开“应用服务计划”，然后检查每个计划使用的计算实例数。|
 |支持的应用服务计划：|![是](./media/icons/yes-icon.png)“基本”、“标准”、“高级”、“独立”或“Linux”<br>![否](./media/icons/no-icon.png)“免费”、“共享”或“消耗”<br>[了解有关应用服务计划的详细信息](https://azure.microsoft.com/pricing/details/app-service/plans/)|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|

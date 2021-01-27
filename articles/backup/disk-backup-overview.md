@@ -3,12 +3,12 @@ title: Azure 磁盘备份概述
 description: 了解 Azure 磁盘备份解决方案。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: d73c431fdc2b2906dc1d3d9485bded9449b2f2ba
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4db2a5f3f02322f18fcf9203c3560905cde86996
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733024"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915502"
 ---
 # <a name="overview-of-azure-disk-backup-in-preview"></a>预览版中的 Azure 磁盘备份 (概述) 
 
@@ -53,7 +53,7 @@ Azure 磁盘备份解决方案在以下情况下很有用：
 
 ## <a name="how-the-backup-and-restore-process-works"></a>备份和还原过程的工作方式
 
-- 为 Azure 文件共享配置备份的第一步是创建 [备份保管库](backup-vault-overview.md)。 保管库提供跨不同工作负荷配置的备份的合并视图。
+- 配置 Azure 托管磁盘的备份的第一步是创建 [备份保管库](backup-vault-overview.md)。 保管库提供跨不同工作负荷配置的备份的合并视图。
 
 - 然后创建一个允许你配置备份频率和保持期的备份策略。
 

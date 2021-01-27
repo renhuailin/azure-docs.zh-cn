@@ -1,15 +1,15 @@
 ---
 title: 针对受限制请求的指南
 description: 了解如何分组、错开、分页以及并行查询，以避免 Azure Resource Graph 限制请求。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a8ba991d13b9be221e67f2ff1e393fb01f8a2d4
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: ddd3cf4d411733e831c94039c3bc9aeaf0e95271
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056168"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917701"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>有关 Azure Resource Graph 中的受限制请求的指南
 
@@ -219,7 +219,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 - Azure CLI/Azure PowerShell
 
-  使用 Azure CLI 或 Azure PowerShell 时，对 Azure Resource Graph 进行的查询会自动分页，以便最多提取 5000 个条目。 查询结果会返回来自所有分页调用的条目的合并列表。 在这种情况下，根据查询结果中的条目数，单个分页查询可能会消耗多个查询配额。 例如，在下面的示例中，一次运行查询可能会消耗最多五个查询配额：
+  使用 Azure CLI 或 Azure PowerShell 时，对 Azure Resource Graph 进行的查询会自动分页，以便最多提取 5000 个条目。 查询结果会返回来自所有分页调用的条目的合并列表。 在这种情况下，根据查询结果中的条目数，单个分页查询可能会消耗多个查询配额。 例如，在以下示例中，运行一次查询最多可能会消耗五个查询配额：
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000

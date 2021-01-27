@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: e2b17e15c5548b4c9b93a62a7d4dfe62ff44404c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: ca60d5afa38a560492c8574aadd43d6170eca253
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341747"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916178"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 安全中心的自适应网络强化
 了解如何在安全中心配置自适应网络强化。
@@ -26,7 +26,7 @@ ms.locfileid: "92341747"
 ## <a name="availability"></a>可用性
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式发布 (GA)|
+|发布状态：|正式发布版 (GA)|
 |定价：|需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
 |所需角色和权限：|对计算机网络安全组的写入权限|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
@@ -52,15 +52,19 @@ ms.locfileid: "92341747"
     > [!TIP]
     > "Insights" 面板显示了当前防御的 Vm 与自适应网络强化的百分比。 
 
-1. **自适应网络强化建议的详细信息页应应用于面向 internet 的虚拟机**建议，并将网络 vm 分组为三个选项卡：
-   * 不**正常的资源**：当前具有通过运行自适应网络强化算法触发的建议和警报的 vm。 
+1. **自适应网络强化建议的详细信息页应应用于面向 internet 的虚拟机** 建议，并将网络 vm 分组为三个选项卡：
+   * 不 **正常的资源**：当前具有通过运行自适应网络强化算法触发的建议和警报的 vm。 
    * **正常的资源**：没有警报和建议的 VM。
-   * 未**扫描的资源**：自适应网络强化算法无法在其上运行的 vm，原因如下：
+   * 未 **扫描的资源**：自适应网络强化算法无法在其上运行的 vm，原因如下：
       * **VM 是经典 VM**：只有 Azure 资源管理器 VM 受支持。
       * **没有足够的数据可用**：为了生成准确的流量强化建议，安全中心至少需要 30 天的流量数据。
       * **VM 未受 Azure defender 保护**：仅使用 [azure defender for Server](defender-for-servers-introduction.md) 保护的 vm 有资格使用此功能。
 
-    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="访问自适应网络强化工具" 选项卡列出自适应网络强化建议你添加的规则
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="建议自适应网络强化建议的详细信息页应用于面向 internet 的虚拟机":::
+
+1. 从“不正常的资源”选项卡中，选择要查看其警报的 VM，并选择要应用的建议强化规则。
+
+    - " **规则** " 选项卡列出自适应网络强化建议你添加的规则
     - “警报”选项卡列出了由于流量（流向不在建议规则所允许的 IP 范围内的资源）而生成的警报。
 
 1. （可选）编辑规则：
@@ -74,7 +78,7 @@ ms.locfileid: "92341747"
     > [!TIP]
     > 如果允许的源 IP 范围显示为 "无"，则表示建议的规则是 *拒绝* 规则，否则为 *允许* 规则。
 
-    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="访问自适应网络强化工具":::
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="管理自适应网络强化规则":::
 
       > [!NOTE]
       > 强制执行的规则将添加到保护 VM 的 NSG。 （VM 可由关联到其 NIC 的 NSG 和/或 VM 所在的子网保护）
@@ -91,9 +95,9 @@ ms.locfileid: "92341747"
   > [!NOTE]
   > 创建和修改“拒绝”规则是直接在 NSG 上执行的。 有关详细信息，请参阅[创建、更改或删除网络安全组](../virtual-network/manage-network-security-group.md)。
 
-* **拒绝所有流量**规则是此处列出的唯一“拒绝”规则类型，并且该规则不能修改。 不过，你可以删除它（请参阅[删除规则](#delete-rule)）。
+* **拒绝所有流量** 规则是此处列出的唯一“拒绝”规则类型，并且该规则不能修改。 不过，你可以删除它（请参阅[删除规则](#delete-rule)）。
   > [!NOTE]
-  > 在运行算法后，如果安全中心根据现有的 NSG 配置未识别出应允许的流量，则会建议执行**拒绝所有流量**规则。 因此，建议的规则是拒绝发往指定端口的所有流量。 此类型规则的名称显示为“系统生成”。 强制执行此规则后，此规则在 NSG 中的实际名称将是包含协议、流量方向、“DENY”和随机数字的字符串。
+  > 在运行算法后，如果安全中心根据现有的 NSG 配置未识别出应允许的流量，则会建议执行 **拒绝所有流量** 规则。 因此，建议的规则是拒绝发往指定端口的所有流量。 此类型规则的名称显示为“系统生成”。 强制执行此规则后，此规则在 NSG 中的实际名称将是包含协议、流量方向、“DENY”和随机数字的字符串。
 
 *修改自适应网络强化规则：*
 

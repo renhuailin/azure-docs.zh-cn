@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 0e3aa70a1a40e3878aea7b4f42f5aa167e4204c5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: aae2c8b51fabf22419028a17f5bbce6c97530ed5
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585372"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917296"
 ---
 # <a name="ncv3-series"></a>NCv3 系列
 
@@ -23,7 +23,8 @@ NCv3 系列 VM 采用 NVIDIA Tesla V100 GPU。 这些 GPU 可提供 NCv2 系列�
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-Nvidia NVLink Interconnect：不支持<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：不支持<br>
+Nvidia NVLink 互连：不支持<br>
 
 > [!IMPORTANT]
 > 对于此 VM 系列，订阅中的 vCPU（核心）配额最初在每个区域中设置为 0。 在[可用区域](https://azure.microsoft.com/regions/services/)中为此系列[请求 vCPU 配额增加](../azure-portal/supportability/resource-manager-core-quotas-request.md)。 这些 SKU 不可用于试用版或 Visual Studio 订阅服务器 Azure 订阅。 你的订阅级别可能不支持选择或部署这些 SKU。 

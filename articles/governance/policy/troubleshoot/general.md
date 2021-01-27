@@ -1,14 +1,14 @@
 ---
 title: 排查常见错误
 description: 了解如何排查为 Kubernetes 创建策略定义、各种 Sdk 和外接程序时遇到的问题。
-ms.date: 12/01/2020
+ms.date: 01/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6f31f6e6f8d24f83f44dc14112f1bdc90c8af859
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 0a64346188696cc7cc16d832474ec4ee6befdae2
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897065"
+ms.locfileid: "98917737"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>使用 Azure 策略排查错误
 
@@ -36,13 +36,14 @@ ms.locfileid: "98897065"
 
 #### <a name="resolution"></a>解决方法
 
-首先，验证资源管理器属性是否有别名。 若要查找可用别名，请访问 Visual Studio Code 或 SDK 的 [Azure 策略扩展](../how-to/extension-for-vscode.md) 。 如果资源管理器属性没有别名，请创建支持票证。
+首先，验证资源管理器属性是否有别名。 若要查找可用别名，请访问 Visual Studio Code 或 SDK 的 [Azure 策略扩展](../how-to/extension-for-vscode.md) 。
+如果资源管理器属性没有别名，请创建支持票证。
 
 ### <a name="scenario-evaluation-details-arent-up-to-date"></a>方案：评估详细信息不是最新的
 
 #### <a name="issue"></a>问题
 
-资源处于 " *未启动* " 状态，或符合性详细信息不是最新的。
+资源处于 " _未启动_ " 状态，或符合性详细信息不是最新的。
 
 #### <a name="cause"></a>原因
 
@@ -90,7 +91,8 @@ ms.locfileid: "98897065"
 
 #### <a name="cause"></a>原因
 
-已为 _禁用_ 的 [**enforcementMode**](../concepts/assignment-structure.md#enforcement-mode)设置配置策略分配。 禁用 **enforcementMode** 时，不会强制实施策略效果，活动日志中没有条目。
+已为 _禁用_ 的 [**enforcementMode**](../concepts/assignment-structure.md#enforcement-mode)设置配置策略分配。
+禁用 **enforcementMode** 时，不会强制实施策略效果，活动日志中没有条目。
 
 #### <a name="resolution"></a>解决方法
 
@@ -101,7 +103,7 @@ ms.locfileid: "98897065"
 1. 若要使用 Azure PowerShell 或 REST API 开始新的评估扫描，请参阅按 [需评估扫描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
 1. 请确保正确设置了分配参数和分配范围并 _启用_ 了 **enforcementMode** 。
 1. 检查[策略定义模式](../concepts/definition-structure.md#mode)：
-   - 模式应该 `all` 适用于所有的资源类型。
+   - 此模式应该 `all` 适用于所有资源类型。
    - `indexed`如果策略定义检查标记或位置，则模式应该为。
 1. 确保资源的作用域未 [排除](../concepts/assignment-structure.md#excluded-scopes) 或不 [例外](../concepts/exemption-structure.md)。
 1. 验证资源负载是否与策略逻辑匹配。 可以通过 [捕获 HTTP 存档 (HAR) trace](../../../azure-portal/capture-browser-trace.md) 或查看 Azure 资源管理器模板 (ARM 模板) 属性来完成此操作。
@@ -186,7 +188,7 @@ Azure 策略支持一些仅在策略定义中可用的 ARM 模板功能和函数
 
 #### <a name="resolution"></a>解决方法
 
-先前导致此问题的定义显示为 *[弃用]*，并由管理先决条件的策略定义替换，而不删除用户分配的托管标识。 需要手动操作。 删除标记为 *[弃用]* 的任何现有策略分配，并将其替换为与原始名称相同的已更新先决条件策略计划和策略定义。
+先前导致此问题的定义将显示为 "已 _\[ 弃用 \]_"，并由管理先决条件的策略定义替换，而不删除用户分配的托管标识。 需要手动操作。 删除标记为 "已 _\[ 弃用 \]_" 的任何现有策略分配，并将其替换为与原始名称相同的已更新先决条件策略计划和策略定义。
 
 有关详细叙述，请参阅博客文章 [针对来宾配置审核策略发布的重要更改](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)。
 
@@ -226,11 +228,11 @@ Azure 策略支持一些仅在策略定义中可用的 ARM 模板功能和函数
 当在群集上安装了外接程序 _标识_ 并且 _kube_ 在 _aad-identity_ 中未排除时，会出现此错误。
 
 Aad (NMI) 盒中的 _aad 标识_ 组件节点托管标识修改节点的 iptables，以截获对 Azure 实例元数据终结点的调用。 此设置意味着对元数据终结点所做的任何请求都将被 NMI 截获，即使该 pod 不使用 _aad-pod 标识_。
-可以将 *AzurePodIdentityException* CUSTOMRESOURCEDEFINITION (.crd) 配置为通知 _aad_ -a 来自与在 .crd 中定义的标签相匹配的 pod 的元数据终结点的任何请求都应该在无 NMI 处理的情况下代理。
+可以将 _AzurePodIdentityException_ CUSTOMRESOURCEDEFINITION (.crd) 配置为通知 _aad_ -a 来自与在 .crd 中定义的标签相匹配的 pod 的元数据终结点的任何请求都应该在无 NMI 处理的情况下代理。
 
 #### <a name="resolution"></a>解决方法
 
-`kubernetes.azure.com/managedby: aks`通过配置 *AzurePodIdentityException* .crd，排除 _aad_ - _kube_ 命名空间中具有标签的系统 pod。
+`kubernetes.azure.com/managedby: aks`通过配置 _AzurePodIdentityException_ .crd，排除 _aad_ - _kube_ 命名空间中具有标签的系统 pod。
 
 有关详细信息，请参阅 [禁用 Azure Active Directory (Azure AD 特定 pod/应用程序) pod 标识](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)。
 
@@ -264,11 +266,11 @@ spec:
 外接程序可以访问 Azure 策略服务终结点，但外接程序日志显示以下错误之一：
 
 - `The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
-https://aka.ms/policy-register-subscription for how to register subscriptions.`
+  https://aka.ms/policy-register-subscription for how to register subscriptions.`
 
 - `policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
-StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
-Code="InternalServerError" Message="Encountered an internal server error.`
+  StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
+  Code="InternalServerError" Message="Encountered an internal server error.`
 
 #### <a name="cause"></a>原因
 

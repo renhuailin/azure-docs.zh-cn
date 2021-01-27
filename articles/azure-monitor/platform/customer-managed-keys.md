@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757536"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917826"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
-Azure Monitor 中的数据是通过 Microsoft 管理的密钥加密的。 你可以使用自己的加密密钥来保护工作区中的数据和已保存的查询。 当你指定客户管理的密钥时，该密钥用于保护和控制对你的数据的访问权限，并且在配置后，发送到你的工作区的任何数据都将使用你的 Azure Key Vault 密钥进行加密。 使用客户托管密钥可以更灵活地管理访问控制。
+使用 Microsoft 管理的密钥对 Azure Monitor 中的数据进行加密。 可以使用自己的加密密钥来保护工作区中的数据和保存的查询。 指定客户管理的密钥时，该密钥将用于保护和控制对数据的访问，在配置后，将使用 Azure Key Vault 密钥对发送到工作区的所有数据进行加密。 使用客户托管密钥可以更灵活地管理访问控制。
 
 建议在配置之前，查看下方的[限制和约束](#limitationsandconstraints)。
 
@@ -23,22 +23,19 @@ Azure Monitor 中的数据是通过 Microsoft 管理的密钥加密的。 你可
 
 [静态加密](../../security/fundamentals/encryption-atrest.md)是组织中常见的隐私和安全要求。 你可以让 Azure 完全管理静态加密，同时可以使用各种选项严格管理加密和加密密钥。
 
-Azure Monitor 确保使用 Microsoft 管理的密钥 (MMK) 静态加密所有数据和保存的查询。 Azure Monitor 还提供了使用你自己的密钥（存储在 [Azure Key Vault](../../key-vault/general/overview.md)中）进行加密的选项，该选项可让你随时撤销对数据的访问权限。 Azure Monitor 进行加密的操作与[Azure 存储加密](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)的操作相同。
+Azure Monitor 确保使用 Microsoft 管理的密钥 (MMK) 静态加密所有数据和保存的查询。 Azure Monitor 还可以使用你自己的密钥进行加密（该密钥存储在 [Azure Key Vault](../../key-vault/general/overview.md) 中），这会赋予你控制权，允许你随时撤销对你的数据的访问权限。 Azure Monitor 进行加密的操作与[Azure 存储加密](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)的操作相同。
 
 客户管理的密钥在提供更高保护级别和控制的 [专用群集](../log-query/logs-dedicated-clusters.md) 上传递。 引入到专用群集的数据将被加密两次-一次是在使用 Microsoft 托管密钥或客户托管密钥的服务级别，一次使用两种不同的加密算法和两个不同的密钥。 [双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。 专用群集还允许通过[密码箱](#customer-lockbox-preview)控制来保护数据。
 
 过去 14 天内引入的数据也保存在热缓存（受 SSD 支持）中，以实现高效的查询引擎操作。 无论客户托管的密钥配置如何，都可以通过 Microsoft 密钥对此数据进行加密，但对 SSD 数据的控制将遵循 [密钥吊销](#key-revocation)的需要。 我们正在努力在2021的上半年内使用客户管理的密钥加密 SSD 数据。
 
-Log Analytics 专用群集使用容量保留 [定价模型](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) ，起价为 1000 GB/天。
-
-> [!IMPORTANT]
-> 由于临时产能限制，我们要求你在创建群集之前预先注册。 通过你的联系人与 Microsoft 取得联系，或提交支持请求来注册你的订阅 ID。
+Log Analytics 专用群集使用产能预留[定价模型](../log-query/logs-dedicated-clusters.md#cluster-pricing-model)，起始价格为 1000 GB/天。
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>客户托管的密钥在 Azure Monitor 中的工作原理
 
 Azure Monitor 使用托管标识授予对 Azure Key Vault 的访问权限。 群集级别支持 Log Analytics 群集的标识。 若要允许在多个工作区上进行客户管理的密钥保护，新的 Log Analytics *群集* 资源将作为 Key Vault 和 Log Analytics 工作区之间的中间标识连接执行。 群集的存储使用 \' 与 *群集* 资源关联的托管标识，通过 Azure Active Directory 向 Azure Key Vault 进行身份验证。 
 
-在客户托管的密钥配置后，将新的引入数据连接到与专用群集关联的工作区，并通过密钥对其进行加密。 可以随时取消工作区与群集的链接。 然后，新数据会被引入到 Log Analytics 存储并使用 Microsoft 密钥进行加密，而你可以无缝查询新旧数据。
+客户管理的密钥配置完成后，与专用群集链接的工作区中引入的新数据都将使用密钥进行加密。 可以随时取消工作区与群集的链接。 然后，新数据会被引入到 Log Analytics 存储并使用 Microsoft 密钥进行加密，而你可以无缝查询新旧数据。
 
 > [!IMPORTANT]
 > 客户托管的密钥功能是区域。 Azure Key Vault、群集和链接的 Log Analytics 工作区必须位于同一区域，但可以位于不同订阅。
@@ -66,20 +63,19 @@ Azure Monitor 使用托管标识授予对 Azure Key Vault 的访问权限。 群
 - 你的 KEK 绝不会离开你的 Key Vault，在使用 HSM 密钥的情况下，它绝不会离开硬件。
 - Azure 存储使用与群集资源关联的托管标识通过 Azure Active Directory 对 Azure Key Vault 进行身份验证和访问。
 
-### <a name="customer-managed-key-provisioning-steps"></a>Customer-Managed key 预配步骤
+### <a name="customer-managed-key-provisioning-steps"></a>客户管理的密钥的预配步骤
 
-1. 注册订阅以允许创建群集
 1. 创建 Azure Key Vault 和存储密钥
 1. 创建群集
 1. 向 Key Vault 授予权限
-1. 正在更新具有密钥标识符详细信息的群集
+1. 为群集更新密钥标识符详细信息
 1. 链接 Log Analytics 工作区
 
 目前 Azure 门户中不支持客户托管的密钥配置，并且可以通过 [PowerShell](/powershell/module/az.operationalinsights/)、 [CLI](/cli/azure/monitor/log-analytics) 或 [REST](/rest/api/loganalytics/) 请求执行预配。
 
 ### <a name="asynchronous-operations-and-status-check"></a>异步操作和状态检查
 
-某些配置步骤是异步运行的，因为它们无法快速完成。 `status`In 响应可以是以下之一： "InProgress"、"更新"、"删除"、"已成功" 或 "失败"，并带有错误代码。
+某些配置步骤是异步运行的，因为它们无法快速完成。 响应中的 `status` 可能是以下项之一：“InProgress”、“Updating”、“Deleting”、“Succeeded”或“Failed”，包括错误代码。
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
@@ -87,7 +83,7 @@ Azure Monitor 使用托管标识授予对 Azure Key Vault 的访问权限。 群
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-不可用
+空值
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -100,17 +96,13 @@ Azure Monitor 使用托管标识授予对 Azure Key Vault 的访问权限。 群
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
 
-可以通过将 GET 请求发送到 *AsyncOperation* 标头中的终结点来检查异步操作的状态：
+若要查看异步操作的状态，请向 Azure-AsyncOperation 标头中的终结点发送 GET 请求：
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
 ---
-
-### <a name="allowing-subscription"></a>允许订阅
-
-在 Log Analytics 中使用联系人加入 Microsoft 或打开支持请求，以提供订阅 Id。
 
 ## <a name="storing-encryption-key-kek"></a>存储加密密钥 (KEK)
 
@@ -157,18 +149,18 @@ Authorization: Bearer <token>
 
 ## <a name="grant-key-vault-permissions"></a>授予 Key Vault 权限
 
-在 Key Vault 中创建访问策略来授予对你的群集的权限。 是 Azure Monitor 存储使用这些权限。 在 Azure 门户中打开你的 Key Vault，然后单击 *"访问策略"* ，然后单击 " *+ 添加访问策略* "，使用以下设置创建策略：
+在 Key Vault 中创建访问策略来授予对你的群集的权限。 基础 Azure Monitor 存储使用这些权限。 在 Azure 门户中打开 Key Vault，单击“访问策略”，然后单击“+ 添加访问策略”以使用以下设置创建策略 ：
 
-- 密钥权限：选择 *"获取"*、 *"环绕键"* 和 *"解包密钥"*。
+- 密钥权限：选择“获取”、“包装密钥”和“解包密钥”  。
 - 选择主体：根据群集 (系统或用户分配的托管标识中使用的标识类型) 为系统分配的托管标识或用户分配的托管标识名称输入群集名称或群集主体 ID。
 
 ![授予 Key Vault 权限](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
 需要“获取”权限，才能验证是否已将 Key Vault 配置为可恢复以保护密钥以及对 Azure Monitor 数据的访问。
 
-## <a name="update-cluster-with-key-identifier-details"></a>更新具有密钥标识符详细信息的群集
+## <a name="update-cluster-with-key-identifier-details"></a>为群集更新密钥标识符详细信息
 
-群集上的所有操作都需要 " `Microsoft.OperationalInsights/clusters/write` 操作" 权限。 可以通过包含 `*/write` 操作的所有者或参与者或包含 `Microsoft.OperationalInsights/*` 操作的 Log Analytics 参与者角色授予此权限。
+群集的所有操作都需要 `Microsoft.OperationalInsights/clusters/write` 操作权限。 可以通过包含 `*/write` 操作的所有者或参与者或包含 `Microsoft.OperationalInsights/*` 操作的 Log Analytics 参与者角色授予此权限。
 
 此步骤使用要用于数据加密的密钥和版本更新 Azure Monitor 存储。 更新后，新密钥将用于包装和解包到存储密钥 (AEK)。
 
@@ -176,7 +168,7 @@ Authorization: Bearer <token>
 
 ![授予 Key Vault 权限](media/customer-managed-keys/key-identifier-8bit.png)
 
-在具有密钥标识符详细信息的群集中更新 KeyVaultProperties。
+为群集中的 KeyVaultProperties 更新密钥标识符详细信息。
 
 该操作是异步操作，可能需要一段时间才能完成。
 
@@ -218,9 +210,9 @@ Content-type: application/json
 
 **响应**
 
-完成密钥的传播需要几分钟时间。 可以通过两种方式检查更新状态：
+完成密钥的传播需要几分钟。 可以通过两种方式检查更新状态：
 1. 从响应中复制 Azure-AsyncOperation URL 值，并进行[异步操作状态检查](#asynchronous-operations-and-status-check)。
-2. 在群集上发送 GET 请求，然后查看 KeyVaultProperties 属性。 你最近更新的密钥应在响应中返回。
+2. 在群集上发送 GET 请求，然后查看 KeyVaultProperties 属性。 你最近更新的密钥应返回到响应中。
 
 完成密钥更新后，对 GET 请求的响应应如下所示： 202 (接受) 和标头
 ```json
@@ -259,7 +251,7 @@ Content-type: application/json
 > [!IMPORTANT]
 > 完成 Log Analytics 群集的预配后才应执行此步骤。 如果在预配前链接工作区并引入数据，则引入的数据将被删除，并且无法恢复。
 
-需要对工作区和群集具有 "写入" 权限才能执行此操作，其中包括 `Microsoft.OperationalInsights/workspaces/write` 和 `Microsoft.OperationalInsights/clusters/write` 。
+需要具有对工作区和群集的“写入”权限才能执行此操作，其中包括 `Microsoft.OperationalInsights/workspaces/write` 和 `Microsoft.OperationalInsights/clusters/write`。
 
 请遵循[“专用群集”一文](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-cluster)中说明的过程。
 
@@ -275,7 +267,7 @@ Content-type: application/json
 
 ## <a name="key-rotation"></a>密钥轮换
 
-客户托管的密钥轮换需要在 Azure Key Vault 中使用新密钥版本对群集进行显式更新。 [更新具有密钥标识符详细信息的群集](#update-cluster-with-key-identifier-details)。 如果未在群集中更新新的密钥版本，Log Analytics 群集存储将继续使用以前的密钥进行加密。 如果在更新群集中的新密钥之前禁用或删除旧密钥，则你将进入[密钥吊销](#key-revocation)状态。
+客户托管的密钥轮换需要在 Azure Key Vault 中使用新密钥版本对群集进行显式更新。 [为群集更新密钥标识符详细信息](#update-cluster-with-key-identifier-details)。 如果未在群集中更新新密钥版本，Log Analytics 群集存储将继续使用之前的密钥进行加密。 如果在更新群集中的新密钥之前禁用或删除旧密钥，则你将进入[密钥吊销](#key-revocation)状态。
 
 进行密钥轮换操作后，所有数据都将保持可访问，因为数据始终使用帐户加密密钥 (AEK) 进行加密，而 AEK 目前使用 Key Vault 中的新密钥加密密钥 (KEK) 版本进行加密。
 
@@ -395,12 +387,12 @@ Content-type: application/json
 
 ## <a name="customer-managed-key-operations"></a>客户管理的密钥的操作
 
-在专用群集上提供 Customer-Managed 密钥，这些操作在[专用群集一文](../log-query/logs-dedicated-clusters.md#change-cluster-properties)中被引用
+客户管理的密钥在专用群集上提供，并且[专用群集文章](../log-query/logs-dedicated-clusters.md#change-cluster-properties)中引用了这些操作
 
 - 获取资源组中的所有群集  
 - 获取订阅中的所有群集
-- 更新群集中的 *容量预留*
-- 更新群集中的 *billingType*
+- 更新群集中的容量预留
+- 更新群集中的 billingType
 - 从群集中取消与工作区的链接
 - 删除群集
 

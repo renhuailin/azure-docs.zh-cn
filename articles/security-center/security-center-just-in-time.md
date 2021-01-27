@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 55e9d2d1af863084b080c2de7833712413221050
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 60ae36d80e34f27ed68c679f47edacf3e402417c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445650"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916144"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>使用实时访问保护管理端口
 
@@ -33,7 +33,7 @@ ms.locfileid: "96445650"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式发布 (GA)|
+|发布状态：|正式发布版 (GA)|
 |定价：|需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
 |支持的 VM：|![是](./media/icons/yes-icon.png) 通过 Azure 资源管理器部署的 VM。<br>![否](./media/icons/no-icon.png) 通过经典部署模型部署的 VM。 [了解有关这些部署模型的详细信息](../azure-resource-manager/management/deployment-models.md)。<br>![否](./media/icons/no-icon.png) 由 [Azure 防火墙管理器](../firewall-manager/overview.md)控制的 Azure 防火墙保护的 VM|
 |所需角色和权限：|“读取者”角色和“安全读取者”角色都可以查看 JIT 状态和参数。<br>若要创建可与 JIT 配合使用的自定义角色，请参阅[配置和使用 JIT 时需要哪些权限？](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)。<br>若要为那些需要请求对 VM 进行 JIT 访问而不执行其他 JIT 操作的用户创建最小特权角色，请使用安全中心 GitHub 社区页面中的 [Set-JitLeastPrivilegedRole 脚本](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)。|
