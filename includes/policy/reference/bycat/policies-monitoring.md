@@ -2,18 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8ad7f54b3e031dfc57bedbec3d7e54a6b07f50a4
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 27c3eb0cce273f3cfe06c1987968d6b52443a937
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704231"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806109"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
+|[\[ASC 个人预览版\]部署 - 配置系统分配的托管标识，以对 VM 启用 Azure Monitor 分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17b3de92-f710-4cf4-aa55-0e7859f1ed7b) |[ASC 个人预览版]将系统分配的托管标识配置到托管在 Azure 中的虚拟机，这些虚拟机受 Azure Monitor 支持，但没有系统分配的托管标识。 系统分配的托管标识是所有 Azure Monitor 分配的先决条件，在使用任何 Azure Monitor 扩展之前必须被添加到计算机。 目标虚拟机必须位于受支持的位置。 |modify |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_AddSystemIdentity_Prerequisite.json) |
 |[\[预览版\]:审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |如果 VM 映像 (OS) 不在定义的列表中且未安装代理，则报告 VM 不合规。 OS 映像列表将随着支持的更新而不断更新。 |auditIfNotExists |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |
 |[活动日志至少应保留一年](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb02aacc0-b073-424e-8298-42b22829ee0a) |此策略审核活动日志的保留期是否未设置为365 天或永久（保留天数设置为 0）。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLogRetention_365orGreater.json) |
 |[特定管理操作应有活动日志警报](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb954148f-4c11-4c38-8221-be76711e194a) |此策略审核未配置任何活动日志警报的特定管理操作。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_AdministrativeOperations_Audit.json) |
@@ -28,6 +29,8 @@ ms.locfileid: "98704231"
 |[Azure Monitor 应从所有区域收集活动日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41388f1c-2db0-4c25-95b2-35d7f5ccbfa9) |此策略审核不从所有 Azure 支持区域（包括全局）导出活动的 Azure Monitor 日志配置文件。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllRegions.json) |
 |[必须部署 Azure Monitor 解决方案“安全和审核”](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3e596b57-105f-48a6-be97-03e9243bad6e) |此策略可确保“安全和审核”已部署。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Security_Audit_MustBeDeployed.json) |
 |[Azure 订阅应有用于活动日志的日志配置文件](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7796937f-307b-4598-941c-67d3a05ebfe7) |此策略确保启用一个日志配置文件来导出活动日志。 它会审核是否未创建日志配置文件将日志导出到存储帐户或事件中心。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Logprofile_activityLogs_Audit.json) |
+|[部署 - 配置 Linux Azure Monitor 代理，以对 Linux 虚拟机启用 Azure Monitor 分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa4034bc6-ae50-406d-bf76-50f4ee5a7811) |将 Linux Azure Monitor 代理配置到 Azure 中托管的受 Azure Monitor 支持的 Linux 虚拟机。 Azure Monitor 代理从虚拟机收集事件，可用于提供建议。 目标虚拟机必须位于受支持的位置。 |deployIfNotExists |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_DeployExtensionLinux_Prerequisite.json) |
+|[部署 - 配置 Windows Azure Monitor 代理，以对 Windows 虚拟机启用 Azure Monitor 分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fca817e41-e85a-4783-bc7f-dc532d36235e) |将 Windows Azure Monitor 代理配置到 Azure 中托管的受 Azure Monitor 支持的 Windows 虚拟机。 Azure Monitor 代理从虚拟机收集事件，可用于提供建议。 目标虚拟机必须位于受支持的位置。 |deployIfNotExists |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_DeployExtensionWindows_Prerequisite.json) |
 |[为 Linux 虚拟机规模集部署 Dependency Agent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F765266ab-e40e-4c61-bcb2-5a5275d0b7c0) |如果 VM 映像 (OS) 位于定义的列表中且未安装代理，请为 Linux 虚拟机规模集部署 Dependency Agent。 注意：如果规模集 upgradePolicy 设置为“Manual”，你则需要通过对规模集调用升级将扩展应用到集中的所有虚拟机。 在 CLI 中，这将是 az vmss update-instances。 |deployIfNotExists |[1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Linux_VMSS_Deploy.json) |
 |[为 Linux 虚拟机部署 Dependency Agent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4da21710-ce6f-4e06-8cdb-5cc4c93ffbee) |如果 VM 映像 (OS) 位于定义的列表中且未安装代理，则为 Linux 虚拟机部署 Dependency Agent。 |deployIfNotExists |[1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Linux_VM_Deploy.json) |
 |[为 Windows 虚拟机规模集部署 Dependency Agent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3be22e3b-d919-47aa-805e-8985dbeb0ad9) |如果 VM 映像 (OS) 位于定义的列表中且未安装代理，请为 Windows 虚拟机规模集部署 Dependency Agent。 OS 映像列表将随着支持的更新而不断更新。 注意：如果规模集 upgradePolicy 设置为“Manual”，你则需要通过对规模集调用升级将扩展应用到集中的所有虚拟机。 在 CLI 中，这将是 az vmss update-instances。 |deployIfNotExists |[1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_VMSS_Deploy.json) |

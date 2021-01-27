@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 54a4a938be18d39993652cecb87b3604e268fcef
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: daf44afbb322cb30ab3a663dce4e935aefa7be13
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678947"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808056"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>使用 Azure CLI 和 Python 在 Azure Stack Edge Pro GPU 设备上部署 VM
 
@@ -72,7 +72,7 @@ ms.locfileid: "98678947"
 
 4. 你已为 Azure Stack Edge Pro 设备创建了 Base-64 编码的 .cer 证书（PEM 格式）。 此证书已作为签名链上传到设备，并安装到了客户端上受信任的根存储中。 还需要 pem 格式的此证书，这样 Python 才能在此客户端上工作。
 
-    使用 `certutil` 命令将此证书转换为 pem 格式。 必须在包含证书的目录中运行此命令。
+    使用 `certutil` 命令将此证书转换为 `pem` 格式。 必须在包含证书的目录中运行此命令。
 
     ```powershell
     certutil.exe <SourceCertificateName.cer> <DestinationCertificateName.pem>
@@ -86,9 +86,9 @@ ms.locfileid: "98678947"
     CertUtil: -encode command completed successfully.
     PS C:\Certificates>
     ```    
-    稍后，你还会将此 pem 添加到 Python 存储。
+    稍后，你还会将此 `pem` 添加到 Python 存储。
 
-5. 你已在设备的本地 Web UI 的“网络”页中分配了设备 IP。 需要将此 IP 添加到：
+5. 你已在设备的本地 Web UI 的“网络”页中分配了设备 IP。 将此 IP 添加到：
 
     - 客户端上的主机文件，或
     - DNS 服务器配置
@@ -117,7 +117,7 @@ ms.locfileid: "98678947"
 
 ### <a name="verify-profile-and-install-azure-cli"></a>验证配置文件并安装 Azure CLI
 
-<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908&preserve-view=true#azure-resource-manager-api-profiles).-->
 
 1. 在客户端上安装 Azure CLI。 此示例已安装 Azure CLI 2.0.80。 若要验证 Azure CLI 的版本，请运行 `az --version` 命令。
 
@@ -149,7 +149,7 @@ ms.locfileid: "98678947"
 
     如果没有 Azure CLI，请下载并[在 Windows 上安装 Azure CLI](/cli/azure/install-azure-cli-windows)。 可以使用 Windows 命令提示符或通过 Windows PowerShell 运行 Azure CLI。
 
-2. 记下 CLI 的 Python 位置。 需要使用该位置确定 Azure CLI 的受信任的根证书存储的位置。
+2. 记下 CLI 的 Python 位置。 需要使用 Python 位置确定 Azure CLI 的受信任的根证书存储的位置。
 
 3. 若要运行本文中使用的示例脚本，你将需要以下 Python 库版本：
 

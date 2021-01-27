@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7418e5578450367e9fa37a87adb6e7036619877b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: e098256a43add6df026ab136bcd6a6b549c147e7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827442"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871309"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性区域的 SAP 工作负荷配置
 除了在 Azure 可用性集内部署不同的 SAP 体系结构层以外，还可以对 SAP 工作负荷部署使用最近引入的 [Azure 可用性区域](../../../availability-zones/az-overview.md) 。 Azure 可用性区域定义为： "区域内的唯一物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配备了独立电源、冷却和网络连接。 Azure 可用性区域在所有区域中均不可用。 对于提供可用性区域的 Azure 区域，请查看 [azure 区域映射](https://azure.microsoft.com/global-infrastructure/geographies/)。 此图将向你显示哪些区域提供或被公布以提供可用性区域。 
@@ -56,7 +56,7 @@ ms.locfileid: "97827442"
 
 - 部署到 Azure 可用性区域时必须使用 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 
 - 区域枚举到物理区域的映射限定为 Azure 订阅。 如果使用不同的订阅部署 SAP 系统，则需要为每个订阅定义理想的区域。
-- 除非使用 [Azure 邻近度放置组](../../linux/co-location.md)，否则无法在 Azure 可用性区域内部署 azure 可用性集。 如何跨区域部署 SAP DBMS 层和中心服务以及同时部署 SAP 应用程序层（使用可用性集）和仍可实现虚拟机的密切接近，请参阅 [Azure 邻近度布局组，以实现 sap 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。 如果不使用 Azure 邻近性放置组，则需要选择其中一项作为虚拟机的部署框架。
+- 除非使用 [Azure 邻近度放置组](../../co-location.md)，否则无法在 Azure 可用性区域内部署 azure 可用性集。 如何跨区域部署 SAP DBMS 层和中心服务以及同时部署 SAP 应用程序层（使用可用性集）和仍可实现虚拟机的密切接近，请参阅 [Azure 邻近度布局组，以实现 sap 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。 如果不使用 Azure 邻近性放置组，则需要选择其中一项作为虚拟机的部署框架。
 - 不能使用 [Azure 基本负载均衡器](../../../load-balancer/load-balancer-overview.md)基于 Windows Server 故障转移群集或 Linux Pacemaker 创建故障转移群集解决方案。 相反，你需要使用 [Azure 标准负载均衡器 SKU](../../../load-balancer/load-balancer-standard-availability-zones.md)。
 
 
@@ -119,7 +119,7 @@ Azure 区域，在这种情况下，如果在不同可用性区域上部署的�
 - 法国中部 
 - 南非北部
 - 加拿大中部
-- 日本东部
+- Japan East
 
 取决于你愿意容忍运行时间差异的其他区域不会有资格。
 
@@ -130,7 +130,7 @@ Azure 区域，在这种情况下，如果在不同可用性区域上部署的�
 
 以下注意事项适用于此配置：
 
-- 如果不使用 [Azure 邻近性放置组](../../linux/co-location.md)，则会将 Azure 可用性区域视为所有 vm 的容错域和更新域，因为可用性集不能部署在 Azure 可用性区域中。
+- 如果不使用 [Azure 邻近性放置组](../../co-location.md)，则会将 Azure 可用性区域视为所有 vm 的容错域和更新域，因为可用性集不能部署在 Azure 可用性区域中。
 - 如果要合并 DBMS 层和中心服务的区域部署，但要为应用程序层使用 Azure 可用性集，则需要使用 azure 邻近性组一文中所述的 Azure 邻近组，以 [实现 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
 - 对于 SAP Central Services 故障转移群集以及 DBMS 层的负载均衡器，需要使用[标准 SKU Azure 负载均衡器](../../../load-balancer/load-balancer-standard-availability-zones.md)。 基本负载均衡器不能跨区域工作。
 - 所部署的用于托管 SAP 系统的 Azure 虚拟网络及其子网将跨区域延伸。 不需要隔离每个区域的虚拟网络。
@@ -156,12 +156,12 @@ Azure 区域，在这种情况下，如果在不同可用性区域上部署的�
 
 - Southeast Asia
 - 澳大利亚东部
-- 巴西南部
+- Brazil South
 - 德国中西部
 - 南非北部
 - 法国中部 
 - 加拿大中部
-- 日本东部
+- Japan East
 
 
 该体系结构的基本布局如下所示：

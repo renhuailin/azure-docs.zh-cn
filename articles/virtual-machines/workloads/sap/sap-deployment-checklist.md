@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca2a844364d11dbb5ac2a244945e07d8ca725c1c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 944e687c27d46a9cf3250cb21024b4e5a52dc62c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728434"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871513"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
 
@@ -137,7 +137,7 @@ ms.locfileid: "98728434"
         - 根据 SAP 支持说明 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)，测试和评估 Sap 应用程序层 vm 与 DBMS vm 之间的网络延迟。 根据 [SAP 支持说明 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的网络延迟指南来评估结果。 网络延迟应为适中或良好的范围。 异常适用于 Vm 与 HANA 大型实例单元之间的流量，如 [本文](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)中所述。
         - 请确保将 ILB 部署设置为使用直接服务器返回。 当 Azure Ilb 用于 DBMS 层上的高可用性配置时，此设置将减少延迟。
         - 如果要将 Azure 负载均衡器与 Linux 来宾操作系统一起使用，请检查 Linux 网络参数 **net.ipv4.tcp_timestamps** 是否已设置为 **0**。 此建议与较旧版本 [SAP 说明 #2382421](https://launchpad.support.sap.com/#/notes/2382421)中的建议冲突。 现已更新 SAP 说明，指出需要将此参数设置为 **0** 才能使用 Azure 负载均衡器。
-        - 请考虑使用 [Azure 邻近性放置组](../../linux/co-location.md) 来获得最佳网络延迟。 有关详细信息，请参阅 [适用于 SAP 应用程序的最佳网络延迟的 Azure 邻近性放置组](sap-proximity-placement-scenarios.md)。
+        - 请考虑使用 [Azure 邻近性放置组](../../co-location.md) 来获得最佳网络延迟。 有关详细信息，请参阅 [适用于 SAP 应用程序的最佳网络延迟的 Azure 邻近性放置组](sap-proximity-placement-scenarios.md)。
    4. 高可用性和灾难恢复部署。
         - 如果在不定义特定 Azure 可用性区域的情况下部署 SAP 应用程序层，请确保运行 SAP 对话框实例的所有 Vm 或单个 SAP 系统的中间件实例都部署在 [可用性集中](../../manage-availability.md)。
         - 如果对于 SAP 中心服务和 DBMS 不需要高可用性，则可以将这些 Vm 部署到与 SAP 应用程序层相同的可用性集。
@@ -209,7 +209,7 @@ ms.locfileid: "98728434"
 8.  查看 [SAP 网站](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) ，了解 Azure 中新的 HANA 认证 sku。 将新 Sku 的定价与计划使用的 Sku 进行比较。 最终，进行必要的更改，以使用具有最佳性价比的设置。
 9.  改编你的部署脚本以使用新的 VM 类型，并包含你想要使用的新 Azure 功能。
 10. 部署基础结构后，根据 SAP 支持说明 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)，测试并评估 Sap 应用程序层 vm 与 DBMS vm 之间的网络延迟。 根据 [SAP 支持说明 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的网络延迟指南来评估结果。 网络延迟应为适中或良好的范围。 异常适用于 Vm 与 HANA 大型实例单元之间的流量，如 [本文](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)中所述。 请确保 [SAP 工作负荷的 Azure 虚拟机 DBMS 部署的 Azure 虚拟机 DBMS 部署](./dbms_guide_general.md#azure-network-considerations) 和 [SAP HANA 基础结构配置和操作](./hana-vm-operations.md) 中所述的任何限制都适用于你的部署。
-11. 请确保已将 Vm 部署到正确的 [azure 邻近性放置组](../../linux/co-location.md)，如 azure 邻近性放置组中所述， [用于 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
+11. 请确保已将 Vm 部署到正确的 [azure 邻近性放置组](../../co-location.md)，如 azure 邻近性放置组中所述， [用于 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
 11. 在应用工作负荷之前，请执行列出的所有其他检查，以查看概念验证阶段。
 12. 在应用工作负荷时，记录 Azure 中系统的资源消耗。 将此消耗与旧平台中的记录进行比较。 如果发现存在较大的差异，请调整未来部署的 VM 大小。 请记住，当您缩小、存储和 Vm 的网络带宽时，也会将其减少。
     - [Azure 中 Windows 虚拟机的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -251,7 +251,7 @@ ms.locfileid: "98728434"
     - [Azure 网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)不在 sap 应用程序和基于 sap NetWeaver、Hybris 或 S/4HANA 的 sap 系统的 DBMS 层之间的通信路径中。
     - 应用程序安全组和网络安全组规则允许根据所需的通信和计划的通信，并在需要时阻止通信。
     - 如前文所述，正确设置了超时设置。
-    - Vm 将部署到正确的 [azure 邻近度布局组](../../linux/co-location.md)，如 azure 邻近性放置组中所述， [用于 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
+    - Vm 将部署到正确的 [azure 邻近度布局组](../../co-location.md)，如 azure 邻近性放置组中所述， [用于 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
     - SAP 应用程序层 Vm 与 DBMS Vm 之间的网络延迟经过测试和验证，如 SAP 支持说明 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中所述。 根据 [SAP 支持说明 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的网络延迟指南来评估结果。 网络延迟应为适中或良好的范围。 异常适用于 Vm 与 HANA 大型实例单元之间的流量，如 [本文](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)中所述。
     - 加密是在必要时通过适当的加密方法实现的。
     - 接口和其他应用程序可以连接新部署的基础结构。

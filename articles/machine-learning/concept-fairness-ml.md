@@ -1,5 +1,5 @@
 ---
-title: 提高机器学习模型中的公平性（预览版）
+title: " (预览中缓解机器学习模型中的 unfairness) "
 titleSuffix: Azure Machine Learning
 description: 了解机器学习模型中的公平性以及 Fairlearn Python 包如何帮助你构建更公平的模型。
 services: machine-learning
@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 08/05/2020
+ms.date: 01/26/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 29e29e73aa1094a2941592655af78a24d95c53b5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6daa03728a5f323f6f8b749975d31fbca24d5602
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223085"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871496"
 ---
-# <a name="mitigate-fairness-in-machine-learning-models-preview"></a>提高机器学习模型中的公平性（预览版）
+# <a name="mitigate-unfairness-in-machine-learning-models-preview"></a> (预览中缓解机器学习模型中的 unfairness) 
 
-了解机器学习中的公平性以及 [Fairlearn](https://fairlearn.github.io/) 开源 Python 包如何帮助你减少机器学习模型中的公平性问题。 如果不努力了解公平性问题以及如何在构建机器学习模型时评估公平性，那么你构建的模型可能会产生不公平的结果。
+了解机器学习和 [Fairlearn](https://fairlearn.github.io/) 的开源 Python 包如何帮助你在机器学习模型中缓解 unfairness 问题。 如果不努力了解公平性问题以及如何在构建机器学习模型时评估公平性，那么你构建的模型可能会产生不公平的结果。
 
 Fairlearn 开源包[用户指南](https://fairlearn.github.io/master/user_guide/index.html)的以下摘要介绍了如何使用它来评估正在构建的 AI 系统的公平性。  Fairlearn 开源包还可以提供一些选项，以帮助缓解或减少你观察到的任何公平性问题。  请参阅[操作方法](how-to-machine-learning-fairness-aml.md)和[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)，以便在有关 Azure 机器学习的训练期间启用 AI 系统的公平性评估。
 
@@ -41,7 +41,7 @@ Fairlearn 开源包[用户指南](https://fairlearn.github.io/master/user_guide/
 
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>通过 Fairlearn 进行公平性评估和缓解
 
-Fairlearn 是一个开源 Python 包，它使机器学习系统开发者能够评估其系统的公平性并缓解所看到的公平性问题。
+Fairlearn 是一个开源 Python 包，它使机器学习系统开发人员能够评估其系统的公平并降低 unfairness。
 
 Fairlearn 开源包有两个组件：
 

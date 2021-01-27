@@ -3,12 +3,12 @@ title: 在应用程序中使用托管标识
 description: 如何使用 Azure Service Fabric 应用程序代码中的托管标识访问 Azure 服务。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: bec640077a17ccef822afb85fc104728aabb13b1
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: e26a29020f26583f7e4aa16434c7e8647ba9a5a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791316"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871055"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务
 
@@ -30,7 +30,7 @@ Azure 标识 SDK 现在支持 Service Fabric。 使用 Azure。标识使得编�
 Service Fabric 支持可在以下语言版本中使用： 
 - [版本1.3.0 中的 c #](https://www.nuget.org/packages/Azure.Identity)。 请参阅 [c # 示例](https://github.com/Azure-Samples/service-fabric-managed-identity)。
 - [版本1.5.0 中的 Python](https://pypi.org/project/azure-identity/)。 请参阅 [Python 示例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md)。
-- [版本1.2.0 中的 Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)。
+- [版本1.2.0 中的 Java](/java/api/overview/azure/identity-readme)。
 
 C # 示例：初始化凭据并使用凭据从 Azure Key Vault 提取机密：
 

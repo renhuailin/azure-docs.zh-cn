@@ -10,12 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 01/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: a6ee4c08a7ecf9bcfcbc9cf6f630efe126248e9f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e3f92f445068b98c12069577ddf61a71568e403b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185700"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871547"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
@@ -118,7 +118,7 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-代码片段以常用 Azure 机器学习对象（`Workspace`、`Datastore`、[ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py) 和 `Experiment`）开头。 然后，该代码将创建用于保存 `input_data` 和 `output_data` 的对象。 `input_data`是[FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true)的实例，并且 `output_data` 是[OutputFileDatasetConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true)的实例。 `OutputFileDatasetConfig`默认行为是将输出复制到 `workspaceblobstore` 路径下的数据存储 `/dataset/{run-id}/{output-name}` 中，其中 `run-id` 是运行的 ID， `output-name` 如果不是由开发人员指定，则为自动生成的值。
+代码片段以常用 Azure 机器学习对象（`Workspace`、`Datastore`、[ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py) 和 `Experiment`）开头。 然后，该代码将创建用于保存 `input_data` 和 `output_data` 的对象。 `input_data`是[FileDataset](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py)的实例，并且 `output_data` 是[OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)的实例。 `OutputFileDatasetConfig`默认行为是将输出复制到 `workspaceblobstore` 路径下的数据存储 `/dataset/{run-id}/{output-name}` 中，其中 `run-id` 是运行的 ID， `output-name` 如果不是由开发人员指定，则为自动生成的值。
 
 数组 `steps` 保存一个元素，即：将使用数据对象并在 `compute_target` 上运行的 `PythonScriptStep`。 然后，代码将实例化 `Pipeline` 对象本身，并将其传入工作区和步骤数组。 对 `experiment.submit(pipeline)` 的调用开始 Azure ML 管道运行。 在管道完成之前，对 `wait_for_completion()` 的调用会被阻止。 
 
@@ -149,7 +149,7 @@ pipeline_run.wait_for_completion()
 
 Azure 机器学习管道是一项功能强大的工具，可在早期开发阶段开始交付价值。 价值随着团队和项目的发展而增加。 本文介绍了如何通过 Azure 机器学习 Python SDK 指定管道，并在 Azure 上进行协调。 你已了解一些简单的源代码和一些可用的 `PipelineStep` 类。 你应了解何时使用 Azure 机器学习管道以及 Azure 如何运行它们。 
 
-+ 了解如何[创建你的第一个管道](how-to-create-your-first-pipeline.md)。
++ 了解如何[创建你的第一个管道](./how-to-create-machine-learning-pipelines.md)。
 
 + 了解如何[对大数据运行批量预测](tutorial-pipeline-batch-scoring-classification.md )。
 

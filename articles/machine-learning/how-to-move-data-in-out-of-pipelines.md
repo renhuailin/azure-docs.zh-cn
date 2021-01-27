@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 7285ab338e978f0de467f79bbce1d41409683b1e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 80a995b488f335ac2eb60ae18621acb2b1df58e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132947"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871530"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
 
@@ -53,7 +53,7 @@ ms.locfileid: "98132947"
 
 - 某些预先存在的数据。 本文简要介绍了如何使用 [Azure blob 容器](../storage/blobs/storage-blobs-overview.md)。
 
-- 可选：现有机器学习管道，例如[使用 Azure 机器学习 SDK 创建和运行机器学习管道](how-to-create-your-first-pipeline.md)中所述的管道。
+- 可选：现有机器学习管道，例如[使用 Azure 机器学习 SDK 创建和运行机器学习管道](./how-to-create-machine-learning-pipelines.md)中所述的管道。
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>将 `Dataset` 对象用于预先存在的数据 
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>将 `OutputFileDatasetConfig` 用于中间数据
 
-尽管 `Dataset` 对象只表示持久性数据， [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 对象 () 可用于从管道步骤 **和** 永久性输出数据输出的临时数据。 `OutputFileDatasetConfig` 支持将数据写入 blob 存储、文件共享、adlsgen1 或 adlsgen2。 它支持装入模式和上传模式。 在装入模式下，当文件关闭时，将永久存储写入到装载的目录中的文件。 在上传模式下，在作业结束时，将上载写入到输出目录中的文件。 如果作业失败或被取消，将不会上载输出目录。
+尽管 `Dataset` 对象只表示持久性数据， [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 对象 () 可用于从管道步骤 **和** 永久性输出数据输出的临时数据。 `OutputFileDatasetConfig` 支持将数据写入 blob 存储、文件共享、adlsgen1 或 adlsgen2。 它支持装入模式和上传模式。 在装入模式下，当文件关闭时，将永久存储写入到装载的目录中的文件。 在上传模式下，在作业结束时，将上载写入到输出目录中的文件。 如果作业失败或被取消，将不会上载输出目录。
 
  `OutputFileDatasetConfig` 对象的默认行为是写入工作区的默认数据存储。 `OutputFileDatasetConfig`用参数将对象传递给 `PythonScriptStep` `arguments` 。
 
@@ -244,4 +244,4 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 ## <a name="next-steps"></a>后续步骤
 
 * [创建 Azure 机器学习数据集](how-to-create-register-datasets.md)
-* [使用 Azure 机器学习 SDK 创建和运行机器学习管道](how-to-create-your-first-pipeline.md)
+* [使用 Azure 机器学习 SDK 创建和运行机器学习管道](./how-to-create-machine-learning-pipelines.md)

@@ -79,7 +79,7 @@
         - name: 常见问题解答 - 备份中心
           href: backup-center-faq.yml
         - name: 常见问题解答 - Azure VM 备份
-          href: backup-azure-vm-backup-faq.md
+          href: backup-azure-vm-backup-faq.yml
         - name: 常见问题解答 - MARS 代理
           href: backup-azure-file-folder-backup-faq.md
         - name: 常见问题解答 - 备份 Azure 文件
@@ -136,7 +136,7 @@
       items:
         - name: 概述
           href: backup-azure-vms-introduction.md
-        - name: 备份
+        - name: Backup
           items:
             - name: 使用 Azure 备份即时还原来备份和还原 Azure VM
               href: backup-instant-restore-capability.md
@@ -200,7 +200,7 @@
               href: install-mars-agent.md
             - name: 升级 MARS 代理
               href: upgrade-mars-agent.md
-        - name: 备份
+        - name: Backup
           items:
             - name: 备份 Windows Server 文件和文件夹
               href: backup-windows-with-mars-agent.md
@@ -220,7 +220,7 @@
       items:
         - name: 概述
           href: disk-backup-overview.md
-        - name: 备份
+        - name: Backup
           href: backup-managed-disks.md
         - name: 还原
           href: restore-managed-disks.md
@@ -246,7 +246,7 @@
               href: manage-afs-backup-cli.md
         - name: 使用 PowerShell
           items:
-            - name: 备份
+            - name: Backup
               href: backup-azure-afs-automation.md
             - name: 还原
               href: restore-afs-powershell.md
@@ -264,7 +264,7 @@
       items:
         - name: 概述
           href: sap-hana-db-about.md
-        - name: 备份
+        - name: Backup
           href: backup-azure-sap-hana-database.md
         - name: 还原
           href: sap-hana-db-restore.md
