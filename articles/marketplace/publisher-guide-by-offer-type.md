@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 10/06/2020
-ms.openlocfilehash: 2191a4df5b319ec16a4a6116aa99cfac50c87d9b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3be967b611f6b75705a60bfa14523832b0652931
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462912"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879218"
 ---
 # <a name="publishing-guide-by-offer-type"></a>发布指南（按产品/服务类型）
 
@@ -36,7 +36,7 @@ ms.locfileid: "96462912"
 | [**咨询服务**](./plan-consulting-service-offer.md) | 咨询服务有助于将客户连接到服务，以支持和扩展其对 Azure、Dynamics 365 或 Power Suite 服务的使用。|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | 可以发布生成或扩展 Dynamics 365 Business Central、Dynamics 365 客户参与、电源应用和财务和操作应用的 AppSource 产品/服务。|
 | [**IoT Edge 模块**](iot-edge-module.md) | Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Microsoft 服务（如 Azure 流分析）、第三方服务，或你自己特定于解决方案的代码。 |
-| [**托管服务**](partner-center-portal/create-new-managed-service-offer.md) | 可以通过 [Azure Lighthouse](../lighthouse/overview.md)创建托管服务提供和管理客户委托的订阅或资源组。|
+| [**托管服务**](./plan-managed-service-offer.md) | 可以通过 [Azure Lighthouse](../lighthouse/overview.md)创建托管服务提供和管理客户委托的订阅或资源组。|
 | [**Power BI 应用** <br/>**Microsoft 365**](appsource-offer-publishing-guide.md) | 您可以发布 Power BI 和 Microsoft 365 上生成或扩展的 AppSource 产品/服务。|
 | [**软件即服务**](plan-saas-offer.md) | 使用 "软件即服务" (SaaS) 产品/服务类型，使客户能够购买基于 SaaS 的技术解决方案作为订阅。 有关 SaaS 产品/服务的单一登录要求的信息，请参阅 [商业应用商店中的 Azure AD 和事务 SaaS 产品](azure-ad-saas.md)。 |
 

@@ -1,22 +1,22 @@
 ---
 title: 适用于 Linux 虚拟机的 Azure 安全基线
-description: Linux 虚拟机安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
+description: Linux 虚拟机安全基线为实现 Azure 安全基准中指定的安全建议提供了过程指南和资源。
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f0ae4ac4cf50eb6e54d41ff25e1cc671e76819ee
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 62030d1c208fc778476f49e5b3165e46e6aa0d66
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200798"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878844"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>适用于 Linux 虚拟机的 Azure 安全基线
 
-适用于 Linux 虚拟机的 Azure 安全基线包含有助于改进部署安全状况的建议。
+适用于 Linux 虚拟机的 Azure 安全基线包含可帮助你改进部署安全态势的建议。
 
 此服务的基线摘自 [Azure 安全基准版本 1.0](../../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
@@ -76,7 +76,7 @@ ms.locfileid: "98200798"
 
 **指导**：在虚拟网络上启用分布式拒绝服务 (DDoS) 标准保护，以防范 DDoS 攻击。 使用 Azure 安全中心的集成式威胁情报功能，可以监视与已知恶意的 IP 地址进行的通信。 在每个虚拟网络段上配置 Azure 防火墙，启用威胁情报并将其配置为针对恶意网络流量执行“发出警报并拒绝”操作。
 
-你可以使用 Azure 安全中心的实时网络访问权限，在有限期限内限制 Linux 虚拟机暴露给批准的 IP 地址。 此外，请使用 Azure 安全中心的自适应网络强化功能，建议基于实际流量和威胁情报限制端口和源 IP 的 NSG 配置。
+可以使用 Azure 安全中心的实时网络访问，将 Linux 虚拟机限制为在有限时间内向批准的 IP 地址公开。 此外，请使用 Azure 安全中心的自适应网络强化功能，建议基于实际流量和威胁情报限制端口和源 IP 的 NSG 配置。
 
 * [如何配置 DDoS 防护](../../ddos-protection/manage-ddos-protection.md)
 
@@ -120,7 +120,7 @@ ms.locfileid: "98200798"
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指导**：你可以为 Web 应用程序部署 Azure 应用程序网关，并为受信任的证书启用 HTTPS/SSL。 使用 Azure 应用程序网关，可将应用程序 web 流量定向到特定资源，方法是将侦听器分配给端口，创建规则，并将资源添加到后端池（如 Linux 虚拟机）。
+**指导**：你可以为 Web 应用程序部署 Azure 应用程序网关，并为受信任的证书启用 HTTPS/SSL。 可以使用 Azure 应用程序网关为端口分配侦听器、创建规则并向后端池添加资源（例如 Linux 虚拟机），从而将应用程序 Web 流量定向到特定资源。
 
 * [如何部署应用程序网关](../../application-gateway/quick-create-portal.md)
 
@@ -158,7 +158,7 @@ ms.locfileid: "98200798"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
-**指南**：你可以使用 nsg 和其他与为 Azure 虚拟机配置的网络安全和流量流相关的资源的标记。 对于单个 NSG 规则，请使用“说明”字段针对允许流量传入/传出网络的任何规则指定业务需求和/或持续时间。
+**指导**：可以将标记用于 NSG 以及与为 Azure 虚拟机配置的网络安全和流量流相关的其他资源。 对于单个 NSG 规则，请使用“说明”字段针对允许流量传入/传出网络的任何规则指定业务需求和/或持续时间。
 
 * [如何创建和使用标记](../../azure-resource-manager/management/tag-resources.md)
 
@@ -174,7 +174,7 @@ ms.locfileid: "98200798"
 
 **指导**：使用 Azure 活动日志来监视与虚拟机相关的网络资源配置的更改。 在 Azure Monitor 中创建警报，这些警报将在对关键网络设置或资源进行更改时触发。
 
-使用 Azure 策略来验证 (和/或修正与 Linux 虚拟机相关的网络资源) 配置。
+使用 Azure Policy 来验证（和/或修正）与 Linux 虚拟机相关的网络资源的配置。
 
 * [如何查看和检索 Azure 活动日志事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
@@ -194,7 +194,7 @@ ms.locfileid: "98200798"
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
-**指南**： Microsoft 维护 Azure 资源的时间源，但你可以选择管理 Linux 虚拟机的时间同步设置。
+**指导**：Microsoft 维护 Azure 资源的时间源，但是，你可以选择管理 Linux 虚拟机的时间同步设置。
 
 * [如何为 Azure 计算资源配置时间同步](./time-sync.md)
 
@@ -204,7 +204,7 @@ ms.locfileid: "98200798"
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指南**： Azure 安全中心为 Linux 虚拟机提供安全事件日志监视。
+**指导**：Azure 安全中心为 Linux 虚拟机提供安全事件日志监视。
 
 * [Azure 安全中心中的数据收集](../../security-center/security-center-enable-data-collection.md)
 
@@ -220,7 +220,7 @@ ms.locfileid: "98200798"
 
 通过在虚拟机 (VM) 上部署诊断扩展，启用来宾 OS 诊断数据收集。 可以使用诊断扩展从 Azure 虚拟机收集诊断数据，例如应用程序日志或性能计数器。
 
-若要获得虚拟机支持的应用程序和服务的高级可见性，可以同时启用 Azure Monitor（用于 VM）和 Application Insights。 利用 Application Insights，你可以监视应用程序并捕获遥测数据（如 HTTP 请求、异常等），以便你可以将 Vm 与应用程序之间的问题关联起来。
+若要获得虚拟机支持的应用程序和服务的高级可见性，可以同时启用 Azure Monitor（用于 VM）和 Application Insights。 借助 Application Insights，可以监视应用程序并捕获遥测数据（例如 HTTP 请求、异常等），因此可将 VM 和应用程序之间的问题关联起来。
 
 此外，请允许 Azure Monitor 访问你的审核和活动日志，其中包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用的元素。
 
@@ -228,7 +228,7 @@ ms.locfileid: "98200798"
 
 * [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)
 
-* [适用于 Linux 的 Log analytics 虚拟机扩展](../extensions/oms-linux.md)
+* [适用于 Linux 的 Log Analytics 虚拟机扩展](../extensions/oms-linux.md)
 
 * [查看和检索 Azure 活动日志事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
@@ -266,7 +266,7 @@ ms.locfileid: "98200798"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
-**指南**：启用 Log Analytics 代理，也称为 MICROSOFT MONITORING AGENT (MMA) 或 OMS Linux 代理，并将其配置为将日志发送到 Log Analytics 工作区。 Linux 代理将不同源中收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区，以及监视解决方案中定义的任何唯一日志或指标。
+**指导**：启用 Log Analytics 代理（也称 Microsoft Monitoring Agent (MMA)）或 OMS Linux 代理，并将其配置为将日志发送到 Log Analytics 工作区。 Linux 代理会将从各种源收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区，并发送在监视解决方案中定义的任何特有的日志或指标。
 
 分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 查看日志并对日志数据执行查询。
 
@@ -274,7 +274,7 @@ ms.locfileid: "98200798"
 
 * [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)
 
-* [适用于 Linux 的 Log analytics 虚拟机扩展](../extensions/oms-linux.md)
+* [适用于 Linux 的 Log Analytics 虚拟机扩展](../extensions/oms-linux.md)
 
 * [如何加入 Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
@@ -304,7 +304,7 @@ ms.locfileid: "98200798"
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中管理反恶意软件日志记录
 
-**指南**：你将需要第三方工具，用于在 Linux OS 内检测反恶意软件漏洞。
+**指导**：你将需要使用第三方工具在 Linux OS 内进行反恶意软件漏洞检测。
 
 * [将 Linux 服务器载入 Azure 安全中心的说明](../../security-center/quickstart-onboard-machines.md)
 
@@ -316,7 +316,7 @@ ms.locfileid: "98200798"
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：启用 DNS 查询日志记录
 
-**指南**：根据组织的需求，从 Azure MARKETPLACE 实现 DNS 日志记录解决方案的第三方解决方案。
+**指导**：根据组织的需求，从 Azure 市场实现 DNS 日志记录解决方案的第三方解决方案。
 
 **Azure 安全中心监视**：不适用
 
@@ -324,7 +324,7 @@ ms.locfileid: "98200798"
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：启用命令行审核日志记录
 
-**指南**：可以基于每个节点手动配置控制台日志记录，并使用一种方法来存储数据。 同时，使用 Azure Monitor 的 Log Analytics 工作区查看日志并对 Azure 虚拟机中的 syslog 数据执行查询。
+**指导**：可以手动逐个节点配置控制台日志记录，并使用 syslog 来存储数据。 同时，使用 Azure Monitor 的 Log Analytics 工作区查看日志并对 Azure 虚拟机中的 syslog 数据执行查询。
 
 * [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/log-query/get-started-queries.md)
 
@@ -352,7 +352,7 @@ ms.locfileid: "98200798"
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
-**指南**： Linux 虚拟机和 Azure Active Directory 没有默认密码的概念。 客户对可能使用默认密码的第三方应用程序和市场服务负责。
+**指导**：Linux 虚拟机和 Azure Active Directory 没有默认密码的概念。 客户对可能使用默认密码的第三方应用程序和市场服务负责。
 
 Azure 安全中心监视：不可用
 
@@ -456,7 +456,7 @@ Azure 安全中心监视：不可用
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视尝试访问已停用凭据的行为
 
-**指导**：配置 Azure Active Directory 的诊断设置，以将审核日志和登录日志发送到 Log Analytics 工作区。 此外，还可以使用 Azure Monitor 查看日志，并对 Azure 虚拟机中的身份验证 syslog 数据执行查询。
+**指导**：配置 Azure Active Directory 的诊断设置，以将审核日志和登录日志发送到 Log Analytics 工作区。 此外，使用 Azure Monitor 查看日志并对来自 Azure 虚拟机的 auth syslog 数据执行查询。
 
 * [了解 Log Analytics 工作区](../../azure-monitor/log-query/log-analytics-tutorial.md)
 
@@ -544,7 +544,7 @@ Azure 安全中心监视：不可用
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
-**指南**：根据连接的性质（例如连接到 RDP 或 SSH 会话中的 VM 时），以多种方式对运行 LINUX (vm) 的传输中的数据进行加密。
+**指导**：根据连接的性质（例如在 RDP 或 SSH 会话中连接到 VM 时），通过多种方式对在运行 Linux 的虚拟机 (VM) 之间传输的数据进行加密。
 
 Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传输数据时对数据进行保护。
 
@@ -584,7 +584,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
-**指南**： (VM) Linux 虚拟机上的虚拟磁盘使用服务器端加密或 Azure 磁盘加密 (ADE) 进行静态加密。 Azure 磁盘加密利用 Linux 的 DM-Crypt 功能，通过来宾 VM 中的客户托管密钥对托管磁盘进行加密。 使用客户托管密钥的服务器端加密改进了 ADE，它通过加密存储服务中的数据使你可以为 VM 使用任何 OS 类型和映像。
+**指导**：使用服务器端加密或 Azure 磁盘加密 (ADE) 对 Linux 虚拟机 (VM) 上的虚拟磁盘进行静态加密。 Azure 磁盘加密利用 Linux 的 DM-Crypt 功能，通过来宾 VM 中的客户托管密钥对托管磁盘进行加密。 使用客户托管密钥的服务器端加密改进了 ADE，它通过加密存储服务中的数据使你可以为 VM 使用任何 OS 类型和映像。
 
 * [Azure 托管磁盘的服务器端加密](../disk-encryption.md)
 
@@ -614,11 +614,11 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
-**指南**：你将需要第三方工具，用于在 Linux OS 内检测反恶意软件漏洞。
+**指导**：你将需要使用第三方工具在 Linux OS 内进行反恶意软件漏洞检测。
 
 * [将 Linux 服务器载入 Azure 安全中心的说明](../../security-center/quickstart-onboard-machines.md)
 
-* [Microsoft 推荐的安全指南](../security-recommendations.md)
+* [Microsoft 建议的安全指南](../security-recommendations.md)
 
 **Azure 安全中心监视**：是
 
@@ -672,7 +672,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
-**指南**：使用 Azure 资源关系图可查询和发现所有资源 (包括订阅中) 的虚拟机。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
+**指导**：使用 Azure Resource Graph 查询和发现订阅中的所有资源（包括虚拟机）。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
 
 * [如何使用 Azure Graph 创建查询](../../governance/resource-graph/first-query-portal.md)
 
@@ -822,7 +822,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：你的 azure 环境中部署的高风险应用程序可使用虚拟网络、子网、订阅和管理组进行隔离，并使用 Azure 防火墙、Web 应用程序防火墙 (WAF) 或网络安全组 (NSG) 进行充分保护。
+**指导**：可以使用虚拟网络、子网、订阅、管理组隔离 Azure 环境中部署的高风险应用程序，并使用 Azure 防火墙、Web 应用程序防火墙 (WAF) 或网络安全组 (NSG) 对其进行充分保护。
 
 * [Azure 中的虚拟网络和虚拟机](../network-overview.md)
 
@@ -852,7 +852,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [有关如何下载 VM 模板的信息](../windows/download-template.md)
+* [有关如何下载 VM 模板的信息](/previous-versions/azure/virtual-machines/windows/download-template)
 
 **Azure 安全中心监视**：不可用
 
@@ -896,7 +896,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 对于大部分方案，Microsoft 基本 VM 模板与 Azure Automation Desired State Configuration 相结合可以帮助满足和维护安全要求。
 
-* [有关如何下载 VM 模板的信息](../windows/download-template.md)
+* [有关如何下载 VM 模板的信息](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [有关创建 ARM 模板的信息](../windows/ps-template.md)
 
@@ -934,7 +934,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 **指导**：利用 Azure Policy 发出警报、执行审核和强制执行虚拟机的系统配置。 另外，开发一个用于管理策略例外的流程和管道。
 
-* [如何配置和管理 Azure 策略](../../governance/policy/tutorials/create-and-manage.md)
+* [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1014,7 +1014,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
-**指南**：你将需要第三方工具在 Azure Linux 虚拟机中提供反恶意软件保护。
+**指导**：需要使用第三方工具在 Azure Linux 虚拟机中提供反恶意软件保护。
 
 * [如何为云服务和虚拟机配置 Microsoft Antimalware](../security-recommendations.md)
 
@@ -1032,7 +1032,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
 
-**指南**：你将需要第三方工具在 Azure Linux 虚拟机中提供反恶意软件保护。
+**指导**：需要使用第三方工具在 Azure Linux 虚拟机中提供反恶意软件保护。
 
 * [如何为云服务和虚拟机配置 Microsoft Antimalware](../security-recommendations.md)
 
@@ -1094,7 +1094,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：在 azure 备份中备份 azure vm 时，将静态加密 vm，并) 存储服务加密 (SSE。 Azure 备份还可以备份使用 Azure 磁盘加密进行加密的 Azure VM。 Azure 磁盘加密还与 Azure Key Vault 密钥加密密钥 (KEK) 相集成。 在 Key Vault 中启用“软删除”，以防止意外删除或恶意删除密钥。 
+**指导**：使用 Azure 备份备份 Azure VM 时，将使用存储服务加密 (SSE) 对 VM 进行静态加密。 Azure 备份还可以备份使用 Azure 磁盘加密进行加密的 Azure VM。 Azure 磁盘加密还与 Azure Key Vault 密钥加密密钥 (KEK) 相集成。 在 Key Vault 中启用“软删除”，以防止意外删除或恶意删除密钥。 
 
 * [VM 的软删除](../../backup/soft-delete-virtual-machines.md)
 
@@ -1124,7 +1124,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 * [Azure 安全中心中的安全警报](../../security-center/security-center-alerts-overview.md)
 
@@ -1138,7 +1138,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 **指南**：定期执行演练来测试系统的事件响应功能，以帮助保护 Azure 资源。
 
-* [确定薄弱点和间隙，并根据需要修改计划。请参阅 NIST 发布：针对 IT 计划和功能的测试、培训和运用计划指南](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
+* [识别弱点和差距，并根据需要修改计划。请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 
 **Azure 安全中心监视**：不适用
 

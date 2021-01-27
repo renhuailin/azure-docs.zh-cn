@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c4e85195ace0a24aa11d4a03b8f429f2714399b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356168"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879150"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -37,7 +37,7 @@ ms.locfileid: "97356168"
 ## <a name="related-conceptual-articles"></a>相关概念性文章
 
 - [AzCopy 入门](storage-use-azcopy-v10.md)
-- [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
 - [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
 
@@ -276,7 +276,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--include-after** 字符串 - 只包括在给定日期/时间或之后修改的文件。 该值应为 ISO8601 格式。 如果未指定时区，则假定该值位于运行 AzCopy 的计算机的本地时区中。 例如，`2020-08-19T15:04:00Z` 表示 UTC 时间，`2020-08-19` 表示本地时区的午夜 (00:00)。 与 AzCopy 10.5 一样，此标志仅适用于文件，不适用于文件夹，因此当将此标志与 `--preserve-smb-info` 或 `--preserve-smb-permissions` 一起使用时，将不会复制文件夹属性。
 
- **--include-** String 仅包含在给定日期/时间之前或之后修改的文件。 该值应为 ISO8601 格式。 如果未指定时区，则假定该值位于运行 AzCopy 的计算机的本地时区中。 例如 `2020-08-19T15:04:00Z` 对于 UTC 时间，或 `2020-08-19` 在本地时区的午夜 (00:00) 。 从 AzCopy 10.7 开始，此标志仅适用于文件，而不适用于文件夹，因此，在将此标志与或一起使用时，不会复制文件夹属性 `--preserve-smb-info` `--preserve-smb-permissions` 。
+ “--include-before”字符串只包括在给定日期/时间或之前修改的文件。 该值应为 ISO8601 格式。 如果未指定时区，则假定该值位于运行 AzCopy 的计算机的本地时区中。 例如 `2020-08-19T15:04:00Z` 表示 UTC 时间，`2020-08-19` 表示本地时区的午夜 (00:00)。 从 AzCopy 10.7 开始，此标志仅适用于文件，不适用于文件夹，因此当将此标志与 `--preserve-smb-info` 或 `--preserve-smb-permissions` 一起使用时，将不会复制文件夹属性。
 
 **--include-attributes** 字符串 -（仅限 Windows）包括其属性与属性列表相匹配的文件。 例如：A;S;R
 
@@ -284,7 +284,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--include-pattern** 字符串 - 复制时仅包括这些文件。 此选项支持通配符 (*)。 使用 `;` 分隔文件。
 
-**--版本列表** 字符串指定一个文件，其中每个版本 ID 都在单独的行上列出。 确保源必须指向单个 blob，并且使用此标志在文件中指定的所有版本 Id 必须仅属于源 blob。 AzCopy 将下载提供的目标文件夹中的指定版本。 有关详细信息，请参阅 [下载以前版本的 blob](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob)。
+**--版本列表** 字符串指定一个文件，其中每个版本 ID 都在单独的行上列出。 确保源必须指向单个 blob，并且使用此标志在文件中指定的所有版本 Id 必须仅属于源 blob。 AzCopy 将下载提供的目标文件夹中的指定版本。 有关详细信息，请参阅 [下载以前版本的 blob](./storage-use-azcopy-v10.md#transfer-data)。
 
 **--log-level** 字符串 - 定义日志文件的日志详细程度，可用级别：INFO（所有请求/响应）、WARNING（响应缓慢）、ERROR（仅限失败的请求）和 NONE（无输出日志）。 （默认值为 `INFO`）。 
 

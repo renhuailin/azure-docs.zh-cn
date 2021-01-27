@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: ea98b2d9812fb5c848c7e13b94d46a4142595cd4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 22e4d0998cde14d4461141a53f05cbc19d1ab671
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492159"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878963"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>在 Azure 文件共享上启用软删除
 
@@ -35,7 +35,7 @@ Azure 存储为文件共享提供软删除，以便在应用程序或其他存�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Azure CLI 模块](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)的版本2.1.3 和更高版本中提供了软删除 cmdlet。
+在 2.1.3 版及更新版本的 [Azure CLI 模块](/cli/azure/install-azure-cli?view=azure-cli-latest)中提供了软删除 cmdlet。
 
 ## <a name="getting-started-with-cli"></a>CLI 入门
 
@@ -55,7 +55,7 @@ az storage account file-service-properties show -n yourStorageaccount -g yourRes
 
 ## <a name="prerequisite"></a>先决条件
 
-4.8.0 模块的和更新版本中提供了软删除 cmdlet。 
+在 4.8.0 版及更新版本的 Az.Storage 模块中提供了软删除 cmdlet。 
 
 ## <a name="getting-started-with-powershell"></a>PowerShell 入门
 
@@ -77,7 +77,7 @@ Get-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName 
 
 ## <a name="restore-soft-deleted-file-share"></a>还原软删除的文件共享
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要还原软删除的文件共享：
 
@@ -96,13 +96,13 @@ Get-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI 的2.1.3 版本中提供了软删除 cmdlet。 若要还原软删除的文件共享，必须首先获取 `--deleted-version` 共享的值。 若要获取该值，请使用以下命令列出存储帐户的所有已删除共享：
+在 2.1.3 版 Azure CLI 中提供了软删除 cmdlet。 若要还原已软删除的文件共享，必须先获取该共享的 `--deleted-version` 值。 若要获取该值，请使用以下命令列出存储帐户的所有已删除共享：
 
 ```azurecli
 az storage share-rm list --storage-account yourStorageaccount --include-deleted
 ```
 
-确定要还原的共享后，可以通过以下命令使用它来还原它：
+确定要还原的共享后，可以将其与以下命令一起使用来还原它：
 
 ```azurecli
 az storage share-rm restore -n deletedshare --deleted-version 01D64EB9886F00C4 -g yourResourceGroup --storage-account yourStorageaccount
@@ -110,13 +110,13 @@ az storage share-rm restore -n deletedshare --deleted-version 01D64EB9886F00C4 -
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-4.8.0 模块的和更新版本中提供了软删除 cmdlet。 若要还原软删除的文件共享，必须首先获取 `-DeletedShareVersion` 共享的值。 若要获取该值，请使用以下命令列出存储帐户的所有已删除共享：
+在 4.8.0 版及更新版本的 Az.Storage 模块中提供了软删除 cmdlet。 若要还原已软删除的文件共享，必须先获取该共享的 `-DeletedShareVersion` 值。 若要获取该值，请使用以下命令列出存储帐户的所有已删除共享：
 
 ```azurepowershell-interactive
 Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -IncludeDeleted
 ```
 
-确定要还原的共享后，可以通过以下命令使用它来还原它：
+确定要还原的共享后，可以将其与以下命令一起使用来还原它：
 
 ```azurepowershell-interactive
 Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -DeletedShareVersion 01D5E2783BDCDA97
@@ -127,7 +127,7 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 
 如果希望停止使用软删除，或永久删除文件共享，请按照以下说明操作：
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 导航到存储帐户，然后在“设置”下选择“软删除”。
 1. 在“文件共享”下，为“软删除文件共享”选择“已禁用”。
@@ -137,14 +137,14 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI 的2.1.3 版本中提供了软删除 cmdlet。 可以使用以下命令在存储帐户上禁用软删除：
+在 2.1.3 版 Azure CLI 中提供了软删除 cmdlet。 可以使用以下命令在存储帐户上禁用软删除：
 
 ```azurecli
 az storage account file-service-properties update --enable-delete-retention false -n yourStorageaccount -g yourResourceGroup
 ```
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-4.8.0 模块的和更新版本中提供了软删除 cmdlet。 可以使用以下命令在存储帐户上禁用软删除：
+在 4.8.0 版及更新版本的 Az.Storage 模块中提供了软删除 cmdlet。 可以使用以下命令在存储帐户上禁用软删除：
 
 ```azurepowershell-interactive
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false

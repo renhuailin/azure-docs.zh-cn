@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 01/19/2020
-ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a1726b29c153bf680d29fe821ac34aa958064335
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602601"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879235"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>支持合作伙伴中心的商业市场计划
 
 Microsoft 支持各种产品和服务。 找到正确的支持团队对于确保适当且及时的响应十分重要。 请考虑使用以下有助于将查询路由到相应团队的方案：
 
 - 如果你是发布者，并有来自客户的问题，请让你的客户使用 [Azure 门户](https://portal.azure.com/)中的支持链接请求支持。
-- 如果你是发布者，并且检测到在 Azure 上运行的应用程序存在安全问题，请参阅 [如何记录安全事件支持票证](/azure/security/fundamentals/event-support-ticket)。 发布者必须第一时间报告 Azure 市场软件和服务产品相关的可疑安全事件，包括安全事件和安全漏洞。
+- 如果你是发布者，并且检测到在 Azure 上运行的应用程序存在安全问题，请参阅 [如何记录安全事件支持票证](../security/fundamentals/event-support-ticket.md)。 发布者必须第一时间报告 Azure 市场软件和服务产品相关的可疑安全事件，包括安全事件和安全漏洞。
 - 如果你是发布者，并且有与你的应用或服务相关的问题，请查看以下支持选项。
 
 ## <a name="get-help-or-open-a-support-ticket"></a>获取帮助或打开支持票证
@@ -42,7 +42,7 @@ Microsoft 支持各种产品和服务。 找到正确的支持团队对于确保
 
 1. 找到所选主题后，请选择 " **查看解决方案**"。
 
-    ![后续步骤](./media/support/next-step.png)
+    ![下一步](./media/support/next-step.png)
 
 显示以下选项：
 

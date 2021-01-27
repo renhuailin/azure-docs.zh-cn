@@ -1,24 +1,11 @@
 ---
-title: 媒体服务中的转换和作业
-titleSuffix: Azure Media Services
-description: 了解如何创建一个转换来描述在 Azure 媒体服务中处理视频的的规则。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 08/19/2019
-ms.author: inhenkel
-ms.openlocfilehash: 4cb4bcf5eb205d27cbca764d5ec16890a23be5c6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
-ms.translationtype: MT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426781"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必填字段。 有关详细信息，请参阅 aka.ms/skyeye/meta。
+标题：媒体服务中的转换和作业： Azure 媒体服务说明：了解如何创建转换，以描述用于在 Azure 媒体服务中处理视频的规则。
+服务：媒体服务 documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
+
+ms. service： media-服务毫秒。工作负荷：毫秒。主题：概念性毫秒。日期：08/19/2019 毫秒。作者： inhenkel
 ---
+
 # <a name="transforms-and-jobs-in-media-services"></a>媒体服务中的转换和作业
 
 本主题提供有关[转换](/rest/api/media/transforms)和[作业](/rest/api/media/jobs)的详细信息，并解释这些实体之间的关系。
@@ -47,14 +34,14 @@ ms.locfileid: "92426781"
     1. 在何处查找该视频。
     2. 在何处写入输出缩略图。
 
-**转换**可帮助你一次性创建脚本（步骤 1），然后使用该脚本提交作业（步骤 2）。
+**转换** 可帮助你一次性创建脚本（步骤 1），然后使用该脚本提交作业（步骤 2）。
 
 > [!NOTE]
 > 属于日期/时间类型的转换和作业的属性始终采用 UTC 格式。
 
 ## <a name="transforms"></a>转换
 
-**转换**可用来配置对视频进行编码或分析的常见任务。 每个**转换**描述了用于处理视频或音频文件的脚本或任务工作流。 单个转换可以应用多个规则。 例如，转换可以指定以给定的比特率将每个视频编码成 MP4 文件，并从该视频的第一帧生成缩略图。 针对要包含在转换中的每个规则，请添加一个 TransformOutput 条目。 使用预设来告知转换要如何处理输入媒体文件。
+**转换** 可用来配置对视频进行编码或分析的常见任务。 每个 **转换** 描述了用于处理视频或音频文件的脚本或任务工作流。 单个转换可以应用多个规则。 例如，转换可以指定以给定的比特率将每个视频编码成 MP4 文件，并从该视频的第一帧生成缩略图。 针对要包含在转换中的每个规则，请添加一个 TransformOutput 条目。 使用预设来告知转换要如何处理输入媒体文件。
 
 ### <a name="viewing-schema"></a>查看架构
 
@@ -62,7 +49,7 @@ ms.locfileid: "92426781"
 
 ### <a name="creating-transforms"></a>创建转换
 
-可以使用 REST、CLI 或任何已发布的 SDK 来创建转换。 媒体服务 v3 API 由 Azure 资源管理器驱动，因此，也可以使用资源管理器模板在媒体服务帐户中创建和部署转换。 Azure 基于角色的访问控制可用于锁定对转换的访问权限。
+可以使用 REST、CLI 或任何已发布的 SDK 来创建转换。 媒体服务 v3 API 由 Azure 资源管理器驱动，因此，也可以使用资源管理器模板在媒体服务帐户中创建和部署转换。 可以使用 Azure 基于角色的访问控制来锁定对转换的访问。
 
 ### <a name="updating-transforms"></a>更新转换
 
@@ -70,7 +57,7 @@ ms.locfileid: "92426781"
 
 ### <a name="transform-object-diagram"></a>转换对象关系图
 
-下图显示了**转换**对象及其引用的对象，包括派生关系。 灰色箭头显示作业引用的类型，绿色箭头显示类派生关系。
+下图显示了 **转换** 对象及其引用的对象，包括派生关系。 灰色箭头显示作业引用的类型，绿色箭头显示类派生关系。
 
 选择图像查看其完整大小。  
 
@@ -78,7 +65,7 @@ ms.locfileid: "92426781"
 
 ## <a name="jobs"></a>作业
 
-**作业**是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 Job 指定输入视频位置和输出位置等信息。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL 或[资产](/rest/api/media/assets)。  
+**作业** 是针对媒体服务的实际请求，目的是将 **转换** 应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 Job 指定输入视频位置和输出位置等信息。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL 或[资产](/rest/api/media/assets)。  
 
 ### <a name="job-input-from-https"></a>来自 HTTPS 的作业输入
 
@@ -98,7 +85,7 @@ ms.locfileid: "92426781"
 
 ### <a name="job-object-diagram"></a>作业对象关系图
 
-下图显示了**作业**对象及其引用的对象，包括派生关系。
+下图显示了 **作业** 对象及其引用的对象，包括派生关系。
 
 单击图像查看其完整大小。  
 

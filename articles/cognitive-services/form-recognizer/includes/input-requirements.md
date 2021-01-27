@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: b3d24ce4dd42ea8122610943379160ca93406c21
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7cf3d86eeea9d1b0f5fcbb757d3597e21cbcc369
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548259"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900793"
 ---
 表单识别器可以处理符合以下要求的输入文档：
 
@@ -25,8 +25,3 @@ ms.locfileid: "92548259"
 * 文本必须使用拉丁字母（英文字符）。
 * 对于非监督式学习（没有已标记的数据），数据必须包含键和值。
 * 对于非监督式学习（没有已标记的数据），键必须出现在值的上方或左侧；它们不能出现在下方或右侧。
-
-表单识别器目前不支持以下类型的输入数据：
-
-* 复杂表（嵌套表、合并的标题或单元格，等等）。
-* 复选框或单选按钮。

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 45bc3aaf5217c626e2593b4eda861eaace2a8be2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: f98f128e56810e3dd710ce454c8dc34b333690d1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620403"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879286"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>为商业市场计划 Azure 应用程序产品/服务
 
@@ -121,7 +121,7 @@ ms.locfileid: "96620403"
 5. 隐私策略地址 (链接) 
 6. 产品名称
 7. 总结
-8. 描述
+8. 说明
 9. 屏幕截图/视频
 
 以下屏幕截图显示了 "产品/服务" Azure 门户中显示的信息：
@@ -130,8 +130,8 @@ ms.locfileid: "96620403"
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. Title
-2. 描述
+1. 标题
+2. 说明
 3. 有用链接
 4. 屏幕截图
 
@@ -177,7 +177,7 @@ ms.locfileid: "96620403"
   - .png 文件
   - 必须包含标题
 - **媒体-视频** (可选) ：最多可以添加5个具有以下要求的视频，其中演示了产品/服务：
-  - “属性”
+  - 名称
   - URL：必须仅托管在 YouTube 或 Vimeo 上。
   - 缩略图： 1280 x 720 .png 文件
 
@@ -210,11 +210,11 @@ ms.locfileid: "96620403"
 你可以选择加入 Microsoft 支持的营销和销售渠道。 在合作伙伴中心创建产品/服务时，你将在此过程结束时看到两个选项卡：
 
 - **通过 Csp 转售**：使用此选项可允许 Microsoft 云解决方案提供商 (CSP) 合作伙伴将你的解决方案作为捆绑产品/服务的一部分转售。 有关详细信息，请参阅 [云解决方案提供商计划](./cloud-solution-providers.md) 。
-- **与 Microsoft 共同销售**：此选项可让 microsoft 销售团队在评估其客户需求时考虑你的 IP 共同销售资格解决方案。 有关如何准备产品/服务进行评估的详细信息，请参阅 [商业 marketplace 中的共同销售选项](commercial-marketplace-co-sell.md)。 有关 IP 共同销售要求的详细信息，请参阅 [共同销售状态的要求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的详细信息，请参阅 [云解决方案提供商](cloud-solution-providers.md)。
+- **与 Microsoft 共同销售**：此选项可让 microsoft 销售团队在评估其客户需求时考虑你的 IP 共同销售资格解决方案。 有关如何准备产品/服务进行评估的详细信息，请参阅 [商业 marketplace 中的共同销售选项](commercial-marketplace-co-sell.md)。 有关 IP 共同销售要求的详细信息，请参阅 [共同销售状态的要求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的详细信息，请参阅 [云解决方案提供商](cloud-solution-providers.md)。
 
 若要了解详细信息，请参阅 [通过 Azure Marketplace 拓展云业务](https://azuremarketplace.microsoft.com/sell)。
 
-## <a name="plans"></a>计划
+## <a name="plans"></a>Plans
 
 Azure 应用程序提供至少需要一个计划。 计划定义了解决方案范围和限制以及关联的定价（如果适用）。 你可以为你的产品/服务创建多个计划，为你的客户提供不同的技术和定价选项。
 

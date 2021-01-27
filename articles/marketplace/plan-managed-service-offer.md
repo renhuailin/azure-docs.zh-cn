@@ -8,12 +8,12 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: a504969d23fce8000119aadf9e45d599da0894f0
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 57a6883a2c4fff14507df27b55ac0f6621306bf5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918083"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879269"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>如何为 Microsoft 商用 marketplace 规划托管服务产品/服务
 
@@ -25,7 +25,7 @@ ms.locfileid: "97918083"
 
 若要发布托管服务，你必须在云平台中获得金牌或银 Microsoft 资格。 此资格认证向客户展示你的专业技能。 有关详细信息，请参阅 [Microsoft 合作伙伴网络胜任度](https://partner.microsoft.com/membership/competencies)。
 
-产品/服务必须满足在 Azure Marketplace 上发布的所有适用的 [商业市场认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies) 。
+产品/服务必须满足在 Azure Marketplace 上发布的所有适用的 [商业市场认证策略](/legal/marketplace/certification-policies) 。
 
 ## <a name="customer-leads"></a>潜在顾客
 
@@ -48,7 +48,7 @@ ms.locfileid: "97918083"
 1. 徽标
 1. 名称
 1. 简短说明
-1. Categories
+1. 类别
 1. 法律合同和隐私策略
 1. 说明
 1. 屏幕截图/视频

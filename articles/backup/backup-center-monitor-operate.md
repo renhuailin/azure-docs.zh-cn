@@ -3,20 +3,20 @@ title: 使用备份中心监视和操作备份
 description: 本文介绍如何使用备份中心按比例监视和运行备份
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 29e09e502e83ea67af290f206ee0e68b847b2069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce3b0f00c51e9b466a9ed040b677df811448b1d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994247"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893772"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center"></a>使用备份中心监视和操作备份
+# <a name="monitor-and-operate-backups-using-backup-center-preview"></a>使用备份中心 (预览监视和操作备份) 
 
 作为备份管理员，你可以使用备份中心作为单一的玻璃窗格，按天监视作业和备份清单。 你还可以使用备份中心来执行常规操作，例如响应按需备份请求、还原备份、创建备份策略等。
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-* 目前，Azure VM 备份和 Azure Database for PostgreSQL 服务器备份支持备份中心。
+* 目前，azure vm 备份、azure VM 备份中的 SQL、azure VM 备份 SAP HANA、Azure 文件备份和 Azure Database for PostgreSQL 服务器备份支持备份中心。
 * 有关支持的和不支持的方案的详细列表，请参阅 [支持矩阵](backup-center-support-matrix.md) 。
 
 ## <a name="backup-instances"></a>备份实例

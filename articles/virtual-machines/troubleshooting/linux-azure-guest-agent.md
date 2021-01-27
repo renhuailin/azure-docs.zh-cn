@@ -11,23 +11,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 247324c30bbe0edaef78c0b0d5e6a6d593e8cac9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 62b462d8e75fc291ac599ac99dbe4fb3a74fde2b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586391"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878691"
 ---
 # <a name="troubleshoot-the-azure-linux-agent"></a>排查 Azure Linux 代理问题
 
-使用 [Azure Linux 代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) ，虚拟机 (vm) 可以与在其上托管了 VM) IP 地址168.63.129.16 的基础物理服务器 (的结构控制器进行通信。
+使用 [Azure Linux 代理](../extensions/agent-linux.md) ，虚拟机 (vm) 可以与在其上托管了 VM) IP 地址168.63.129.16 的基础物理服务器 (的结构控制器进行通信。
 
 >[!NOTE]
 >此 IP 地址是一个虚拟公共 IP 地址，用于促进通信，不应被阻止。 有关详细信息，请参阅 [什么是 IP 地址168.63.129.16？](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
-检查代理状态和版本，以确保它仍受支持。 请参阅 [Azure 中虚拟机代理的最低版本支持](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version) 以检查版本支持，或参阅 [WALinuxAgent 常见问题](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) 了解查找状态和版本的步骤。
+检查代理状态和版本，以确保它仍受支持。 请参阅 [Azure 中虚拟机代理的最低版本支持](/troubleshoot/azure/virtual-machines/support-extensions-agent-version) 以检查版本支持，或参阅 [WALinuxAgent 常见问题](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) 了解查找状态和版本的步骤。
 
 ## <a name="troubleshoot-a-not-ready-status"></a>排查 "未就绪" 状态
 
@@ -64,7 +64,7 @@ ms.locfileid: "97586391"
    AutoUpdate.Enabled=y
    ```
 
-   有关如何更新 Azure Linux 代理的详细信息，请参阅 [如何更新 VM 上的 Azure Linux 代理](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent)。
+   有关如何更新 Azure Linux 代理的详细信息，请参阅 [如何更新 VM 上的 Azure Linux 代理](../extensions/update-linux-agent.md)。
 
 1. 请确保 VM 可以连接到结构控制器。 使用 "卷曲" 之类的工具测试 VM 是否可以连接到端口80、443和32526上的168.63.129.16。 如果 VM 未按预期连接，请检查通过端口 80、443 和 32526 的出站通信是否在 VM 的本地防火墙中打开。 如果此 IP 地址被阻止，VM 代理可能会显示意外的行为。
 
@@ -80,7 +80,7 @@ Azure Linux 代理故障排除事件记录在 **/var/log/waagent.log** 文件中
 2020-10-02T18:11:13.148998Z WARNING ExtHandler ExtHandler An error occurred while retrieving the goal state:
 ```
 
-若要解决此问题，请执行下列操作：
+要解决此问题：
 
 * 使用 SSH 连接到 VM，然后尝试从曲线访问以下 URL： http://168.63.129.16/?comp=versions 。
 * 检查可能由防火墙、代理或可能阻止访问 IP 地址168.63.129.16 的其他源引起的任何问题。

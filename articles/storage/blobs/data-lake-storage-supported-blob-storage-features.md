@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 58a907a2ae17966f50a037f49a807ac0a3ad6867
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 2b195d865a07af9f3166c5225e8de3d0a9b0e749
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545820"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879303"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
 
@@ -45,9 +45,9 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 |不可变存储|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)|
 |容器软删除|预览|预览|[容器的软删除 (预览) ](soft-delete-container-overview.md)|
 |Azure 存储清单|预览|预览|[使用 Azure 存储空间库存来管理 blob 数据 (预览) ](blob-inventory.md)|
-|Blob 软删除|尚不支持|尚不支持|[blob 的软删除](storage-blob-soft-delete.md)|
+|Blob 软删除|尚不支持|尚不支持|[blob 的软删除](./soft-delete-blob-overview.md)|
 |Blobfuse|正式发布|正式发布|[如何使用 Blobfuse 将 Blob 存储装载为文件系统](storage-how-to-mount-container-linux.md)|
-|匿名公共访问 |正式发布|正式发布| 请参阅 [配置容器和 blob 的匿名公共读取访问权限](anonymous-read-access-configure.md)。|
+|匿名公共访问 |正式发布|正式发布| 请参阅[配置对容器和 Blob 的匿名公共读取访问](anonymous-read-access-configure.md)。|
 |客户管理的帐户故障转移|尚不支持|尚不支持|[灾难恢复和帐户故障转移](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |客户提供的密钥|尚不支持|尚不支持|[在对 Blob 存储的请求中提供加密密钥](encryption-customer-provided-keys.md)|
 |自定义域|尚不支持|尚不支持|[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)|

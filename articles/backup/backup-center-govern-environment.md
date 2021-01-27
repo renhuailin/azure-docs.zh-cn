@@ -3,14 +3,14 @@ title: 使用备份中心管理备份空间
 description: 了解如何管理 Azure 环境，以确保所有资源都符合备份中心的备份方式。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: ebb4d72c3a3377072e185251bd642762f6876c03
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 67b0591c7d7146d162687018854365d338105d76
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173800"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893840"
 ---
-# <a name="govern-your-backup-estate-using-backup-center"></a>使用备份中心管理备份空间
+# <a name="govern-your-backup-estate-using-backup-center-preview"></a>使用备份中心 (预览来控制备份房地产) 
 
 备份中心有助于管理 Azure 环境，以确保所有资源都符合备份的要求。 下面是备份中心的一些调控功能：
 
@@ -43,6 +43,11 @@ ms.locfileid: "92173800"
 通过选择 "可保护的数据 **源** " 菜单项，可以查看尚未配置为进行备份的所有数据源。 可以按数据源订阅、资源组、位置、类型和标记筛选列表。 确定了需要备份的数据源后，可以右键单击相应的网格项，然后选择 " **备份** "，为资源配置备份。
 
 ![可保护的数据源菜单](./media/backup-center-govern-environment/protectable-datasources.png)
+
+> [!NOTE]
+> 如果选择 **AZURE VM 中的 SQL** 作为数据源类型，"可保护的数据 **源** " 视图将显示所有没有已配置为进行备份的 SQL 数据库的库 vm 列表。
+> 如果选择 " **azure (Azure 文件** " 作为 "数据源类型") ，"可保护的数据 **源** " 视图将显示支持文件共享的所有存储帐户 (的列表，该文件) 共享不包含已为备份配置的任何文件共享。
+
 
 ## <a name="next-steps"></a>后续步骤
 

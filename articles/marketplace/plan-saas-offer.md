@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: e188c74c6eba5e4182f7b72277db8dd8e08db8d4
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 714b7bccea9b1e0c18ad78a4d98ed3526a279f5f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913919"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879252"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何为商业市场规划 SaaS 产品/服务
 
@@ -79,7 +79,7 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
   提供的 webhook 应启动并运行24/7。 这是你将收到有关通过商业应用商店购买的客户 SaaS 订阅更新的唯一方法。
 
   > [!NOTE]
-  > 在 Azure 门户中，我们需要创建单租户 [Azure Active Directory (Azure AD) 应用程序](../active-directory/develop/howto-create-service-principal-portal.md) ，以便使用一个 Azure 应用 ID 对两个服务之间的连接进行身份验证。 若要查找 [租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，请跳到 Azure Active Directory，选择 " **属性**"，然后查找列出的目录 ID 号。 例如，`50c464d3-4930-494c-963c-1e951d15360e` 。
+  > 在 Azure 门户中，我们需要创建单租户 [Azure Active Directory (Azure AD) 应用程序](../active-directory/develop/howto-create-service-principal-portal.md) ，以便使用一个 Azure 应用 ID 对两个服务之间的连接进行身份验证。 若要查找 [租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，请跳到 Azure Active Directory，选择 " **属性**"，然后查找列出的目录 ID 号。 例如，`50c464d3-4930-494c-963c-1e951d15360e`。
 
 - **Azure Active Directory 租户 id**： (也称为目录 ID) 。 在 Azure 门户中，我们要求你 [注册 Azure Active Directory (AD) 应用程序](../active-directory/develop/howto-create-service-principal-portal.md) ，以便可以将其添加到 API (ACL) 的访问控制列表，以确保你有权调用该应用程序。 若要查找 Azure Active Directory (AD) 应用的租户 ID，请参阅 Azure Active Directory 中的 [应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 边栏选项卡。 在 " **显示名称** " 列中，选择应用。 然后查找 (列出的 **目录 (租户) ID** 号，例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
 
@@ -143,7 +143,7 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
 **拨出说明**
 
 1. 徽标
-2. Categories
+2. 类别
 3. 行业
 4. 支持地址 (链接) 
 5. 使用条款
@@ -160,7 +160,7 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
 
 **调出说明**
 
-1. Title
+1. 标题
 1. 说明
 1. 有用链接
 1. 屏幕截图
@@ -217,7 +217,7 @@ _现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选
 
 可以将邀请发送到 Microsoft 帐户 (MSA) 或 Azure Active Directory (Azure AD) 电子邮件地址。 手动添加最多10个电子邮件地址，或使用 .csv 文件最多导入20个电子邮件地址。 如果你的产品/服务已处于活动阶段，你仍可以定义预览受众来测试产品/服务的任何更改或更新。
 
-## <a name="plans"></a>计划
+## <a name="plans"></a>Plans
 
 事务产品/服务需要至少一个计划。 计划定义解决方案范围和限制以及关联的定价。 你可以为你的产品/服务创建多个计划，为你的客户提供不同的技术和定价选项。 如果选择单独处理事务而不是创建事务产品/服务，则不会显示 " **计划** " 页。 如果是这样，请跳过本部分并转到 [其他销售机会](#additional-sales-opportunities)。
 
@@ -250,7 +250,7 @@ SaaS 应用程序产品/服务通过 Microsoft 支持每月或每年使用计费
 | Microsoft 将许可证费用的 80% 支付给你<br>`*` 对于合格的 SaaS 应用，Microsoft 将支付90% 的许可证成本| 80.00 美元/月<br>``*`` 90.00 美元/月 |
 |||
 
-**`*` 降低 Marketplace 服务费用**–对于在商业市场上发布的特定 SaaS 产品/服务，microsoft 将从 20% (降低其 marketplace 服务费用，如 microsoft Publisher 协议) 到10% 中所述。 为了使你的产品/服务 () 合格，你的产品/服务 () 必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 至少必须在每个日历月结束之前至少满足5个 (5) 工作日内才能获得降低的 Marketplace 服务费用。 一旦满足了资格，就会向下个月的第一天生效的所有事务授予降低的服务费用，并将继续应用，直到 Azure IP 共同销售 incentivized 状态丢失。 有关 IP 共同销售资格的详细信息，请参阅 [共同销售状态的要求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 减少的 Marketplace 服务费用还适用于 Azure IP 共同销售 incentivized Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
+**`*` 降低 Marketplace 服务费用**–对于在商业市场上发布的特定 SaaS 产品/服务，microsoft 将从 20% (降低其 marketplace 服务费用，如 microsoft Publisher 协议) 到10% 中所述。 为了使你的产品/服务 () 合格，你的产品/服务 () 必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 至少必须在每个日历月结束之前至少满足5个 (5) 工作日内才能获得降低的 Marketplace 服务费用。 一旦满足了资格，就会向下个月的第一天生效的所有事务授予降低的服务费用，并将继续应用，直到 Azure IP 共同销售 incentivized 状态丢失。 有关 IP 共同销售资格的详细信息，请参阅 [共同销售状态的要求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 减少的 Marketplace 服务费用还适用于 Azure IP 共同销售 incentivized Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
 
 ## <a name="additional-sales-opportunities"></a>其他销售商机
 
@@ -258,7 +258,7 @@ SaaS 应用程序产品/服务通过 Microsoft 支持每月或每年使用计费
 
 - **通过 Csp 转售**：使用此选项可允许 Microsoft 云解决方案提供商 (CSP) 合作伙伴将你的解决方案作为捆绑产品/服务的一部分转售。 有关此计划的详细信息，请参阅 [云解决方案提供商计划](cloud-solution-providers.md)。
 
-- **与 Microsoft 共同销售**：此选项可让 microsoft 销售团队在评估其客户需求时考虑你的 IP 共同销售资格解决方案。 有关共同销售资格的详细信息，请参阅 [共同销售状态的要求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 有关如何准备产品/服务进行评估的详细信息，请参阅 [合作伙伴中心的共同销售选项](commercial-marketplace-co-sell.md)。
+- **与 Microsoft 共同销售**：此选项可让 microsoft 销售团队在评估其客户需求时考虑你的 IP 共同销售资格解决方案。 有关共同销售资格的详细信息，请参阅 [共同销售状态的要求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 有关如何准备产品/服务进行评估的详细信息，请参阅 [合作伙伴中心的共同销售选项](commercial-marketplace-co-sell.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 78cc0aa6beb9ab83fea2039b271b071de1662fc1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: aa25a81068b25b7b8696a7472eb04542e8bb1a60
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629174"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878946"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>管理和增大 Azure 机器学习资源的配额
 
@@ -53,7 +53,7 @@ Azure 使用限制和配额来防止由于欺诈导致的预算超支，并遵�
 + Azure 存储
 
 > [!IMPORTANT]
-> 限制随时会变化。 有关最新信息，请参阅  [Azure 机器学习中的服务限制](resource-limits-quotas-capacity.md)。
+> 限制随时会变化。 有关最新信息，请参阅 [Azure 机器学习中的服务限制](resource-limits-quotas-capacity.md)。
 
 
 
@@ -82,7 +82,7 @@ Azure 使用限制和配额来防止由于欺诈导致的预算超支，并遵�
 + **每个区域的群集数** 的默认限制为 200。 它们在训练群集和计算实例之间共享。 （就配额用途来说，可以将计算实例视为单节点群集。）
 
 > [!TIP]
-> 若要详细了解要求增加配额的 VM 系列，请查看 [Azure 中的虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/sizes)。 例如，GPU VM 系列在其系列名称中以“N”开头（如 NCv3 系列）
+> 若要详细了解要求增加配额的 VM 系列，请查看 [Azure 中的虚拟机大小](../virtual-machines/sizes.md)。 例如，GPU VM 系列在其系列名称中以“N”开头（如 NCv3 系列）
 
 下表显示了平台中的其他限制。 若要提出有关例外情况的请求，请通过技术支持票证与 AzureML 产品团队联系。
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 84e2eaf71326f59102800428479768aeba9ef9ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73e4dbb24b4e7c0c651f7d082c75b0f4a17158b5
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87042159"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890875"
 ---
 # <a name="configure-runbook-input-parameters"></a>配置 Runbook 输入参数
 
@@ -75,7 +75,7 @@ Param
 图形 runbook 使用以下主要 runbook 活动：
 
 * 配置 Azure 运行方式帐户，以便与 Azure 进行身份验证。 
-* 定义 [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) cmdlet 以获取 VM 属性。
+* 定义 [Get-AzVM](/powershell/module/az.compute/get-azvm) cmdlet 以获取 VM 属性。
 * 使用 [Write-Output](/powershell/module/microsoft.powershell.utility/write-output) 活动输出 VM 名称。 
 
 `Get-AzVM` 活动定义了两个输入：VM 名称和资源组名称。 由于这些名称在每次启动 runbook 时可能不同，因此必须将输入参数添加到 runbook 才能接受这些输入。 请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)。
@@ -140,7 +140,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 
 #### <a name="start-a-published-runbook-using-powershell-cmdlets-and-assign-parameters"></a>使用 PowerShell cmdlet 启动已发布的 Runbook 并分配参数
 
-* **Azure 资源管理器 cmdlet：** 可使用 [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0) 启动在资源组中创建的自动化 Runbook。
+* **Azure 资源管理器 cmdlet：** 可使用 [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) 启动在资源组中创建的自动化 Runbook。
 
    ```powershell
      $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
@@ -272,7 +272,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 
 它可用于存储想要传递到 JSON 文件中的 Runbook 的数据。 例如，你可能会创建包含所有想要传递给 Runbook 的参数的 JSON 文件。 为此，必须先将 JSON 代码转换为字符串，将字符串转换为 PowerShell 对象，然后再将其传递到 Runbook。
 
-此部分使用一个示例，其中 PowerShell 脚本会调用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) 来启动 PowerShell Runbook，将 JSON 文件的内容传递给 Runbook。 该 PowerShell Runbook 通过从 JSON 对象检索 Azure VM 的参数，来启动该 VM。
+此部分使用一个示例，其中 PowerShell 脚本会调用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) 来启动 PowerShell Runbook，将 JSON 文件的内容传递给 Runbook。 该 PowerShell Runbook 通过从 JSON 对象检索 Azure VM 的参数，来启动该 VM。
 
 ### <a name="create-the-json-file"></a>创建 JSON 文件
 
@@ -327,7 +327,7 @@ Start-AzVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
 1. 获取已保存 JSON 文件的内容并将其转换为字符串。 `JsonPath` 指示保存 JSON 文件的位置路径。
 
    ```powershell
-   $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
+   $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
    ```
 
 1. 将 `$json` 的字符串内容转换为 PowerShell 对象。

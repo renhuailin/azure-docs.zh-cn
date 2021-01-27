@@ -3,14 +3,14 @@ title: 使用备份中心执行操作
 description: 本文介绍如何使用备份中心执行操作
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 65ac6374b1a9571d0415bc097a6ee957874d3d44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06229eb0b8cb76482035d3dfe1949c3ab8354f17
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854420"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894569"
 ---
-# <a name="perform-actions-using-backup-center"></a>使用备份中心执行操作
+# <a name="perform-actions-using-backup-center-preview"></a>使用备份中心 (预览执行操作) 
 
 利用备份中心，无需导航到单个保管库，即可执行关键的与备份相关的操作。 可以从备份中心执行的操作包括：
 
@@ -23,26 +23,28 @@ ms.locfileid: "91854420"
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-* 目前，Azure VM 备份和 Azure Database for PostgreSQL 服务器备份支持备份中心。
+* 目前，azure vm 备份、azure VM 备份中的 SQL、azure VM 备份 SAP HANA、Azure 文件备份和 Azure Database for PostgreSQL 服务器备份支持备份中心。
 * 有关支持的和不支持的方案的详细列表，请参阅 [支持矩阵](backup-center-support-matrix.md) 。
 
 ## <a name="configure-backup"></a>配置备份
 
+如果要备份 azure vm、azure vm 中的 SQL、Azure Vm 或 Azure 文件中的 SAP HANA，则应使用恢复服务保管库。 如果要备份适用于 PostgreSQL 服务器的 Azure 数据库，应使用备份保管库。 
+
 根据你想要备份的数据源的类型，请按照下面所述的相应说明进行操作。
 
-### <a name="configure-backup-for-azure-virtual-machines"></a>为 Azure 虚拟机配置备份
+### <a name="configure-backup-to-a-recovery-services-vault"></a>配置备份到恢复服务保管库
 
 1. 导航到 "备份中心"，然后选择 "**概述**" 选项卡顶部的 " **+ 备份**"。
 
     ![备份中心概述](./media/backup-center-actions/backup-center-overview-configure-backup.png)
 
-2. 在本例中，选择要备份的数据源的类型 (Azure 虚拟机) 。
+2. 选择要备份的数据源的类型。
 
     ![选择要配置 VM 备份的数据源](./media/backup-center-actions/backup-select-datasource-vm.png)
 
 3. 选择恢复服务保管库，并选择 " **继续**"。 这会使你获得与从恢复服务保管库可访问的配置相同的备份配置体验。 [详细了解如何使用恢复服务保管库配置 Azure 虚拟机的备份](tutorial-backup-vm-at-scale.md)。
 
-### <a name="configure-backup-for-azure-database-for-postgresql-server"></a>为 Azure Database for PostgreSQL Server 配置备份
+### <a name="configure-backup-to-a-backup-vault"></a>配置备份到备份保管库
 
 1. 导航到 "备份中心"，然后选择 "**概述**" 选项卡顶部的 " **+ 备份**"。
 2. 在这种情况下，选择要备份的数据源的类型 (Azure Database for PostgreSQL 服务器) 。
@@ -55,19 +57,19 @@ ms.locfileid: "91854420"
 
 根据要还原的数据源的类型，请按照下面所述的相应说明进行操作。
 
-### <a name="if-youre-restoring-an-azure-virtual-machine"></a>如果要还原 Azure 虚拟机
+### <a name="if-youre-restoring-from-a-recovery-services-vault"></a>如果要从恢复服务保管库还原
 
 1. 导航到 "备份中心"，然后选择 "**概述**" 选项卡顶部的 "**还原**"。
 
     ![备份中心概述恢复 VM](./media/backup-center-actions/backup-center-overview-restore.png)
 
-2. 在此示例中，选择要在 Azure 虚拟机 (还原的数据源的类型) 。
+2. 选择要还原的数据源的类型。
 
     ![选择 VM 还原的数据源](./media/backup-center-actions/restore-select-datasource-vm.png)
 
 3. 选择一个备份实例，然后选择 " **继续**"。 这会使你转到与从恢复服务保管库可访问的设置相同的还原设置体验。 [了解有关如何使用恢复服务保管库还原 Azure 虚拟机的详细信息](backup-azure-arm-restore-vms.md#before-you-start)。
 
-### <a name="if-youre-restoring-an-azure-database-for-postgresql-server"></a>如果要还原 Azure Database for PostgreSQL 服务器
+### <a name="if-youre-restoring-from-a-backup-vault"></a>如果要从备份保管库还原
 
 1. 导航到 "备份中心"，然后选择 "**概述**" 选项卡顶部的 "**还原**"。
 2. 选择要在这种情况下 Azure Database for PostgreSQL 服务器 (还原的数据源的类型) 。
@@ -89,19 +91,19 @@ ms.locfileid: "91854420"
 
 根据要备份的数据源的类型，请按照下面所述的相应说明进行操作。
 
-### <a name="if-youre-backing-up-an-azure-virtual-machine"></a>如果要备份 Azure 虚拟机
+### <a name="if-youre-backing-up-to-a-recovery-services-vault"></a>如果要备份到恢复服务保管库
 
 1. 导航到 "备份中心"，然后选择 "**概述**" 选项卡顶部的 " **+ 策略**"。
 
     ![备份策略的备份中心概述](./media/backup-center-actions/backup-center-overview-policy.png)
 
-2. 在本例中，选择要备份的数据源的类型 (Azure 虚拟机) 。
+2. 选择要备份的数据源的类型。
 
     ![为 VM 备份选择策略的数据源](./media/backup-center-actions/policy-select-datasource-vm.png)
 
 3. 选择恢复服务保管库，并选择 " **继续**"。 这会使你获得与从恢复服务保管库可访问的相同的策略创建体验。 [详细了解如何使用恢复服务保管库为 Azure 虚拟机创建新的备份策略](backup-azure-arm-vms-prepare.md#create-a-custom-policy)。
 
-### <a name="if-youre-backing-up-an-azure-database-for-postgresql-server"></a>如果要备份 Azure Database for PostgreSQL 服务器
+### <a name="if-youre-backing-up-to-a-backup-vault"></a>如果要备份到备份保管库
 
 1. 导航到 "备份中心"，然后选择 "**概述**" 选项卡顶部的 " **+ 策略**"。
 2. 在这种情况下，选择要备份的数据源的类型 (Azure Database for PostgreSQL 服务器) 。

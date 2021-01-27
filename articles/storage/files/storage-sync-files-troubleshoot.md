@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 49184778c7d6592f074e04df535b9bc221f3162e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539243"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878793"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -206,8 +206,8 @@ Set-AzStorageSyncServerEndpoint `
     - 如果服务器位于代理后面，请按照代理[文档](./storage-sync-files-firewall-and-proxy.md#proxy)中的步骤配置适用于整个计算机或特定于应用的代理设置。
     - 使用 Test-StorageSyncNetworkConnectivity cmdlet 检查服务终结点的网络连接情况。 若要了解详细信息，请参阅[测试服务终结点的网络连接情况](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints)。
     - 如果在服务器上配置了 TLS 密码套件顺序，则可以使用组策略或 TLS cmdlet 来添加密码套件：
-        - 若要使用组策略，请参阅 [使用组策略配置 TLS 密码套件顺序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)。
-        - 若要使用 TLS cmdlet，请参阅 [使用 Tls PowerShell Cmdlet 配置 Tls 密码套件顺序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)。
+        - 若要使用组策略，请参阅 [使用组策略配置 TLS 密码套件顺序](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)。
+        - 若要使用 TLS cmdlet，请参阅 [使用 Tls PowerShell Cmdlet 配置 Tls 密码套件顺序](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)。
     
         Azure 文件同步当前支持用于 TLS 1.2 协议的以下密码套件：  
         - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
@@ -931,7 +931,7 @@ PerItemErrorCount: 1006.
 如果已删除该目录，请执行以下步骤以删除现有的服务器终结点，并使用新路径创建新的服务器终结点：
 
 1. 按照 [删除服务器终结点](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint)中所述的步骤，在同步组中删除服务器终结点。
-2. 按照 [添加服务器终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint)中所述的步骤，在同步组中创建一个新的服务器终结点。
+2. 按照 [添加服务器终结点](./storage-sync-files-server-endpoint.md#add-a-server-endpoint)中所述的步骤，在同步组中创建一个新的服务器终结点。
 
 ### <a name="common-troubleshooting-steps"></a>常见故障排除步骤
 <a id="troubleshoot-storage-account"></a>**验证存储帐户是否存在。**  
