@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 512130928c8e18aad90bce351e3be85d6fbe03f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71057272"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878640"
 ---
 # <a name="troubleshoot-rdp-issues"></a>排查 RDP 问题
 
@@ -36,7 +36,7 @@ ms.locfileid: "71057272"
 - [排查内部错误](Troubleshoot-rdp-internal-error.md)
 - [排查连接频繁断开的问题](troubleshoot-rdp-intermittent-connectivity.md)
 - [排查常见错误](troubleshoot-rdp-general-error.md)
-- [排查身份验证错误](troubleshoot-authentication-error-rdp-vm.md)
+- [排查身份验证错误](/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm)
 - [按事件 ID 排查 Azure VM RDP 连接问题](event-id-troubleshoot-vm-rdp-connecton.md)
 - [排查由于静态 IP 而导致的 VM 中的 RDP 错误](troubleshoot-rdp-static-ip.md)
 - [排查由于 NIC 已禁用而导致的 VM 中的 RDP 错误](troubleshoot-rdp-nic-disabled.md)
@@ -46,4 +46,3 @@ ms.locfileid: "71057272"
 - [来宾 OS 防火墙正在阻止入站流量](guest-os-firewall-blocking-inbound-traffic.md)
 - [来宾 OS 防火墙配置不正确](guest-os-firewall-misconfigured.md) 
 - [排查由于 netvsc.sys 导致的 RDP 错误](troubleshoot-rdp-driver-netvsc.md)
-

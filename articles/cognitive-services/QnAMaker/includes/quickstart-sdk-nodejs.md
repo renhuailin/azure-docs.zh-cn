@@ -4,12 +4,12 @@ description: 本快速入门介绍如何开始使用适用于 Node.js 的 QnA Ma
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 02dc36fb388135c31f639a26264579ab9de75b8c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: fba4354fb1aae19833790e166474008dc994cd79
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98256277"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792286"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/version-1)
 
@@ -24,7 +24,7 @@ ms.locfileid: "98256277"
 * 从知识库获取答案
 * 删除知识库
 
-[参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker) | [包 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [Node.js 示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)
+[参考文档](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker) | [包 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [Node.js 示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
 
@@ -38,7 +38,7 @@ ms.locfileid: "98256277"
 * 从知识库获取答案
 * 删除知识库
 
-[参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker) | [包 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [Node.js 示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/preview-sdk/quickstart.js)
+[参考文档](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker) | [包 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [Node.js 示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/preview-sdk/quickstart.js)
 
 ---
 
@@ -149,13 +149,13 @@ npm install @azure/ms-rest-js
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/version-1)
 
-[QnA Maker](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) 使用两种不同的对象模型：
+[QnA Maker](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) 使用两种不同的对象模型：
 * **[QnAMakerClient](#qnamakerclient-object-model)** 对象可创建、管理、发布和下载知识库。
 * **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** 对象可通过 GenerateAnswer API 查询知识库，并使用训练 API 发送新的建议问题（作为 [主动学习](../concepts/active-learning-suggestions.md)的一部分）。
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
 
-[QnA Maker](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) 使用以下对象模型：
+[QnA Maker](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) 使用以下对象模型：
 * [QnAMakerClient](#qnamakerclient-object-model) 是用于创建、管理、发布、下载和查询知识库的对象。
 
 ---
@@ -176,7 +176,7 @@ npm install @azure/ms-rest-js
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
 
-QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为直接在 [QnAMakerClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) 对象上调用 [generateAnswer](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#generateAnswer_string__QueryDTO__msRest_RequestOptionsBase_)。
+QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为直接在 [QnAMakerClient](/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) 对象上调用 [generateAnswer](/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#generateAnswer_string__QueryDTO__msRest_RequestOptionsBase_)。
 
 ---
 
@@ -322,7 +322,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 ### <a name="generate-an-answer-from-the-knowledge-base"></a>从知识库生成答案
 
-使用 RuntimeClient.runtime.generateAnswer 方法从已发布的知识库生成答案。 此方法接受知识库 ID 和 [QueryDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/querydto)。 访问 QueryDTO 的其他属性，例如要在聊天机器人中使用的 Top 和 Context。
+使用 RuntimeClient.runtime.generateAnswer 方法从已发布的知识库生成答案。 此方法接受知识库 ID 和 [QueryDTO](/javascript/api/@azure/cognitiveservices-qnamaker/querydto)。 访问 QueryDTO 的其他属性，例如要在聊天机器人中使用的 Top 和 Context。
 
 [!code-javascript[Generate an answer from a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=GenerateAnswer)]
 
@@ -330,7 +330,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 ### <a name="generate-an-answer-from-the-knowledge-base"></a>从知识库生成答案
 
-使用 QnAMakerClient.knowledgebase.generateAnswer 方法从已发布的知识库中生成答案。 此方法接受知识库 ID 和 [QueryDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/querydto)。 访问 QueryDTO 的其他属性，例如要在聊天机器人中使用的 Top 和 Context。
+使用 QnAMakerClient.knowledgebase.generateAnswer 方法从已发布的知识库中生成答案。 此方法接受知识库 ID 和 [QueryDTO](/javascript/api/@azure/cognitiveservices-qnamaker/querydto)。 访问 QueryDTO 的其他属性，例如要在聊天机器人中使用的 Top 和 Context。
 
 [!code-javascript[Generate an answer from a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=GenerateAnswer)]
 

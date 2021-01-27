@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/17/2021
-ms.openlocfilehash: aede7e3dec886d6a6213c64b386cacd725dd74f5
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 1b2e914057aa72934524cc4977e3d2292394d0b7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562788"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882026"
 ---
 # <a name="how-to-manually-fix-sync-problems"></a>如何手动修复同步问题
 
@@ -22,16 +22,16 @@ Azure Monitor 可以 (ITSM) 提供程序连接到第三方 IT 服务管理。 Se
 
 1. 在顶部搜索横幅中搜索解决方案，然后选择相关解决方案
 
-    ![屏幕截图，显示顶部搜索横幅和选择相关解决方案的位置。](media/itsmc-resync-servicenow/solution-search-8bit.png)
+    ![屏幕截图，显示顶部搜索横幅和选择相关解决方案的位置。](media/itsmc-resync-servicenow/solution-search-8-bit.png)
 
 1. 在 "解决方案" 屏幕中，依次选择 "订阅" 筛选器中的 "全选" 和 "ServiceDesk"
 
-    ![屏幕截图，显示选择 "全选" 和 "ServiceDesk 筛选位置" 的位置。](media/itsmc-resync-servicenow/solutions-list-8bit.png)
+    ![屏幕截图，显示选择 "全选" 和 "ServiceDesk 筛选位置" 的位置。](media/itsmc-resync-servicenow/solutions-list-8-bit.png)
 
 1. 选择 ITSM 连接的解决方案。
 1. 在左侧的横幅中选择 "ITSM 连接"。
 
-    ![显示在何处选择 ITSM 连接的屏幕截图。](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
+    ![显示在何处选择 ITSM 连接的屏幕截图。](media/itsmc-resync-servicenow/itsm-connector-8-bit.png)
 
 1. 从列表中选择每个连接器。 
     1. 单击连接器名称以对其进行配置
@@ -41,10 +41,10 @@ Azure Monitor 可以 (ITSM) 提供程序连接到第三方 IT 服务管理。 Se
 
     1. 单击 "同步"
 
-       ![突出显示 "同步" 按钮的屏幕截图。](media/itsmc-resync-servicenow/resync-8bit2.png)
+       ![突出显示 "同步" 按钮的屏幕截图。](media/itsmc-resync-servicenow/resync-8-bit-2.png)
 
     1. 单击 "保存"
 
-        ![新建连接](media/itsmc-resync-servicenow/save-8bit.png)
+        ![新建连接](media/itsmc-resync-servicenow/save-8-bit.png)
 
 f.    查看通知以查看进程是否已启动。
