@@ -3,12 +3,12 @@ title: MABS 和 System Center DPM 支持矩阵
 description: 本文汇总了使用 Microsoft Azure 备份服务器 (MABS) 或 System Center DPM 备份本地和 Azure VM 资源时的 Azure 备份支持。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0180135da793aaf7869441ee290f6125ea88fc88
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: aaa68dba0bbd1f3f5ffb5480a2bdb0a48ae85656
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276969"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986050"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -60,7 +60,7 @@ DPM 和 MABS 支持备份各种应用、服务器和客户端操作系统。 它
 
 **部署** | **支持** | **详细信息**
 --- | --- | ---
-**本地部署** | 物理服务器<br/><br/>Hyper-V VM<br/><br/> VMware VM | 有关更多详细信息，请参阅 [保护矩阵](backup-mabs-protection-matrix.md) 。 
+**本地部署** | 物理服务器<br/><br/>Hyper-V VM<br/><br/> VMware VM | 有关更多详细信息，请参阅[保护矩阵](backup-mabs-protection-matrix.md)。 
 **部署为 Azure Stack VM** | 仅限 MABS | 不能使用 DPM 来备份 Azure Stack VM。
 **部署为 Azure VM** | 保护 Azure VM，以及这些 VM 上运行的工作负荷。 | Azure 中运行的 DPM/MABS 无法备份本地计算机。
 
@@ -111,13 +111,18 @@ Azure 备份可以备份运行以下任何操作系统的 DPM/MABS 实例。 操
 
 ### <a name="url-access"></a>URL 访问
 
-DPM 服务器/MABS 需要以下 URL 的访问权限：
+DPM 服务器/MABS 服务器需要访问以下 Url 和 IP 地址：
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `*.Microsoft.com`
-- `*.WindowsAzure.com`
-- `*.microsoftonline.com`
-- `*.windows.net`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP 地址
+  * 20.190.128.0/18
+  * 40.126.0.0/18：
 
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute 支持
 
@@ -125,11 +130,16 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 
 使用公共对等互连：确保访问以下域/地址：
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `microsoft.com`
-- `.WindowsAzure.com`
-- `.microsoftonline.com`
-- `.windows.net`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP 地址
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：
 

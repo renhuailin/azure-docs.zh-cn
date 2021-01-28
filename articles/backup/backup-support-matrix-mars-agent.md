@@ -3,12 +3,12 @@ title: MARS 代理的支持矩阵
 description: 本文汇总了备份运行 Microsoft Azure 恢复服务 (MARS) 代理的计算机时的 Azure 备份支持。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 26a47c2648d1307d2e7da2b25455f3f036cbf32d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2170440b7b47861b75801b8dbd334686b4cabc8b
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997233"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985608"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -59,6 +59,7 @@ MARS 代理需要以下 URL 的访问权限：
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
 - *.Windows.net
+- `www.msftconnecttest.com`
 
 以及以下 IP 地址：
 
@@ -82,11 +83,16 @@ MARS 代理需要以下 URL 的访问权限：
 
 使用公共对等互连：确保访问以下域/地址：
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `microsoft.com`
-- `.WindowsAzure.com`
-- `.microsoftonline.com`
-- `.windows.net`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP 地址
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：
 
@@ -169,9 +175,9 @@ Windows Server 2008 SP2| 1,700 GB
 Windows 8 或更高版本| 54,400 GB
 Windows 7| 1,700 GB
 
-### <a name="minimum-retention-limits"></a>最小保持期限制
+### <a name="minimum-retention-limits"></a>最小保留期限制
 
-以下是可为不同恢复点设置的最小保持期：
+下面是可为不同恢复点设置的最小保留期：
 
 |恢复点 |持续时间  |
 |---------|---------|

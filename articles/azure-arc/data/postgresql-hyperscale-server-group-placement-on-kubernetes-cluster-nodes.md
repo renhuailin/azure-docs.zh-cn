@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 1fc768890e932d1f17ad111b4681b75721ae1e06
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ecc2e98d4c6c58e11b2bdc86b623f31d828cabc0
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148107"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985914"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>启用 Azure Arc PostgreSQL 超大规模服务器组放置
 
@@ -22,7 +22,7 @@ ms.locfileid: "92148107"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 在此示例中，我们使用的是具有四个物理节点 (AKS) 群集的 Azure Kubernetes 服务。 
 
@@ -46,7 +46,7 @@ aks-agentpool-42715708-vmss000003   Ready    agent   11h   v1.17.9
 
 该体系结构可表示为：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="Azure 门户中的4节点 AKS 群集":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="在 Kubernetes 群集中分组的4个节点的逻辑表示形式":::
 
 Kubernetes 群集托管一个 Azure Arc 数据控制器和一个已启用的 Azure Arc PostgreSQL 超大规模服务器组。 此服务器组是三个 PostgreSQL 实例的构成：一个协调器和两个辅助角色。
 
@@ -60,30 +60,30 @@ kubectl get pods -n arc3
 ```output
 NAME                 READY   STATUS    RESTARTS   AGE
 …
-postgres01-0         3/3     Running   0          9h
-postgres01-1         3/3     Running   0          9h
-postgres01-2         3/3     Running   0          9h
+postgres01c-0         3/3     Running   0          9h
+postgres01w-0         3/3     Running   0          9h
+postgres01w-1         3/3     Running   0          9h
 ```
 其中每个盒都托管一个 PostgreSQL 实例。 它们共同构成了已启用 Azure Arc PostgreSQL 超大规模服务器组：
 
 ```output
 Pod name        Role in the server group
-postgres01-0  Coordinator
-postgres01-1    Worker
-postgres01-2    Worker
+postgres01c-0 Coordinator
+postgres01w-0   Worker
+postgres01w-1   Worker
 ```
 
 ## <a name="placement"></a>放置
 让我们看看 Kubernetes 如何放置服务器组的箱。 描述每个 pod，并识别在 Kubernetes 群集中放置的物理节点。 例如，对于协调器，请运行以下命令：
 
 ```console
-kubectl describe pod postgres01-0 -n arc3
+kubectl describe pod postgres01c-0 -n arc3
 ```
 
 这会生成以下输出：
 
 ```output
-Name:         postgres01-0
+Name:         postgres01c-0
 Namespace:    arc3
 Priority:     0
 Node:         aks-agentpool-42715708-vmss000000
@@ -101,7 +101,7 @@ Start Time:   Thu, 17 Sep 2020 00:40:33 -0700
 同时还请注意，在 pod 的描述中，每个 pod 承载的容器的名称。 例如，对于第二个辅助角色，请运行以下命令：
 
 ```console
-kubectl describe pod postgres01-2 -n arc3
+kubectl describe pod postgres01w-1 -n arc3
 ```
 
 这会生成以下输出：
@@ -121,7 +121,7 @@ Containers:
 
 已启用 Azure Arc 的 PostgreSQL 超大规模服务器组中的每个 pod 承载以下三个容器：
 
-|容器|描述
+|容器|说明
 |----|----|
 |`Fluentbit` |数据 * 日志收集器： https://fluentbit.io/
 |`Postgres`|启用了 Azure Arc PosgreSQL 超大规模服务器组的 PostgreSQL 实例部分
@@ -129,7 +129,7 @@ Containers:
 
 体系结构如下：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="Azure 门户中的4节点 AKS 群集":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="3个每个箱放置在单独的节点上":::
 
 这意味着，此时，每个 PostgreSQL 实例构成启用了 Azure Arc 的 PostgreSQL 超大规模服务器组将托管在 Kubernetes 容器中的特定物理主机上。 这是帮助在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组的情况下获得最佳性能的最佳配置，因为每个角色 (协调器和工作人员) 使用每个物理节点的资源。 这些资源不会在多个 PostgreSQL 角色之间共享。
 
@@ -172,23 +172,23 @@ kubectl get pods -n arc3
 ```output
 NAME                 READY   STATUS    RESTARTS   AGE
 …
-postgres01-0         3/3     Running   0          11h
-postgres01-1         3/3     Running   0          11h
-postgres01-2         3/3     Running   0          11h
-postgres01-3         3/3     Running   0          5m2s
+postgres01c-0         3/3     Running   0          11h
+postgres01w-0         3/3     Running   0          11h
+postgres01w-1         3/3     Running   0          11h
+postgres01w-2         3/3     Running   0          5m2s
 ```
 
 并描述新的 pod，以确定托管 Kubernetes 群集的哪些物理节点。
 运行以下命令：
 
 ```console
-kubectl describe pod postgres01-3 -n arc3
+kubectl describe pod postgres01w-2 -n arc3
 ```
 
 标识宿主节点的名称：
 
 ```output
-Name:         postgres01-3
+Name:         postgres01w-2
 Namespace:    arc3
 Priority:     0
 Node:         aks-agentpool-42715708-vmss000000
@@ -203,11 +203,24 @@ Node:         aks-agentpool-42715708-vmss000000
 |辅助角色|postgres01-2|aks-agentpool-42715708-vmss000003
 |辅助角色|postgres01-3|aks-agentpool-42715708-vmss000000
 
-请注意，新工作线程 (postgres01-3) 的 pod 已置于与协调器相同的节点上。 
+请注意，新辅助角色 (postgres01w-2) 的 pod 已置于与协调器相同的节点上。 
 
 体系结构如下：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="Azure 门户中的4节点 AKS 群集" 服务，可让你密切关注数据控制器的可用性。|aks-agentpool-42715708-vmss000000
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="与协调器相同的节点上的第四个 pod":::
+
+为什么不将新的辅助角色/pod 放置在 Kubernetes 群集的剩余物理节点上 aks-agentpool-42715708-vmss000003？
+
+原因在于，Kubernetes 群集的最后一个物理节点实际上承载了多个用于托管运行支持 Azure Arc 的数据服务所需的组件的 pod。 Kubernetes 评估了在计划时最好的候选项（即 aks-agentpool-42715708-vmss000000 物理节点）。 
+
+使用与上面相同的命令;我们发现每个物理节点的宿主：
+
+|其他 pod 名称\* |使用情况|托管 pod 的 Kubernetes 物理节点
+|----|----|----
+|引导程序-jh48b|这是一种服务，用于处理用于创建、编辑和删除自定义资源（例如 SQL 托管实例、PostgreSQL 超大规模服务器组和数据控制器）的传入请求|aks-agentpool-42715708-vmss000003
+|gwmbs||aks-agentpool-42715708-vmss000002
+|controldb-0|这是用于存储数据控制器的配置和状态的控制器数据存储区。|aks-agentpool-42715708-vmss000001
+|controlwd-zzjp7|这是控制器 "监视狗" 服务，可让你密切关注数据控制器的可用性。|aks-agentpool-42715708-vmss000000
 |logsdb-0|这是一种弹性搜索实例，用于存储所有 Arc 数据服务箱中收集的所有日志。 Elasticsearch，从 `Fluentbit` 每个 pod 的容器接收数据|aks-agentpool-42715708-vmss000003
 |logsui-5fzv5|这是一个 Kibana 实例，它位于弹性搜索数据库的顶部，用于显示 log analytics GUI。|aks-agentpool-42715708-vmss000003
 |metricsdb-0|这是一个 InfluxDB 实例，用于存储跨所有 Arc 数据服务箱收集的所有指标。 InfluxDB，从 `Telegraf` 每个 pod 的容器接收数据|aks-agentpool-42715708-vmss000000
@@ -222,7 +235,7 @@ Node:         aks-agentpool-42715708-vmss000000
 
 体系结构如下：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="Azure 门户中的4节点 AKS 群集":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="各个节点的命名空间中的所有 pod":::
 
 这意味着启用了 Azure Arc Postgres 超大规模服务器组的协调器节点 (Pod 1) 与服务器组的第三个辅助角色节点 (Pod 4) 共享相同的物理资源。 这是可接受的，因为协调器节点通常使用非常少的资源来与辅助角色节点所使用的资源进行比较。 从这种情况中，你可能会推断到你应仔细选择：
 - Kubernetes 群集的大小以及其每个物理节点 (内存、vCore) 的特征
@@ -238,24 +251,24 @@ Node:         aks-agentpool-42715708-vmss000000
 
 :::row:::
     :::column:::
-        以前
+        之前
     :::column-end:::
     :::column:::
-        完成
+        之后
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="Azure 门户中的4节点 AKS 群集":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="Azure 门户布局":::
     :::column-end:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="Azure 门户中的4节点 AKS 群集":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="之后 Azure 门户布局":::
     :::column-end:::
 :::row-end:::
 
 体系结构如下：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="Azure 门户中的4节点 AKS 群集":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="更新后 Kubernetes 群集上的逻辑布局":::
 
 让我们通过运行命令来查看在新的 AKS 物理节点上承载 Arc 数据控制器命名空间的哪些 pod：
 
@@ -265,7 +278,7 @@ kubectl describe node aks-agentpool-42715708-vmss000004
 
 接下来，我们将更新系统体系结构的表示形式：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="Azure 门户中的4节点 AKS 群集":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="群集逻辑关系图上的所有 pod":::
 
 我们可以看到，Kubernetes 群集的新物理节点仅托管 Azure Arc 数据服务所需的指标 pod。 请注意，在此示例中，我们仅重点介绍 Arc 数据控制器的命名空间，而不表示其他 pod。
 
@@ -305,42 +318,42 @@ kubectl get pods -n arc3
 
 NAME                 READY   STATUS    RESTARTS   AGE
 …
-postgres01-0         3/3     Running   0          13h
-postgres01-1         3/3     Running   0          13h
-postgres01-2         3/3     Running   0          13h
-postgres01-3         3/3     Running   0          179m
-postgres01-4         3/3     Running   0          3m13s
+postgres01c-0         3/3     Running   0          13h
+postgres01w-0         3/3     Running   0          13h
+postgres01w-1         3/3     Running   0          13h
+postgres01w-2         3/3     Running   0          179m
+postgres01w-3         3/3     Running   0          3m13s
 ```
 
 服务器组的形状现在为：
 
 |服务器组角色|服务器组 pod
 |----|-----
-|Coordinator|postgres01-0
-|辅助角色|postgres01-1
-|辅助角色|postgres01-2
-|辅助角色|postgres01-3
-|辅助角色|postgres01-4
+|Coordinator|postgres01c-0
+|辅助角色|postgres01w-0
+|辅助角色|postgres01w-1
+|辅助角色|postgres01w-2
+|辅助角色|postgres01w-3
 
-让我们介绍 postgres01-4 pod，以确定它所托管的物理节点：
+让我们介绍 postgres01w pod，以确定它所托管的物理节点：
 
 ```console
-kubectl describe pod postgres01-4 -n arc3
+kubectl describe pod postgres01w-3 -n arc3
 ```
 
 并观察它运行的是什么：
 
 |服务器组角色|服务器组 pod| Pod
 |----|-----|------
-|Coordinator|postgres01-0|aks-agentpool-42715708-vmss000000
-|辅助角色|postgres01-1|aks-agentpool-42715708-vmss000002
-|辅助角色|postgres01-2|aks-agentpool-42715708-vmss000003
-|辅助角色|postgres01-3|aks-agentpool-42715708-vmss000000
-|辅助角色|postgres01-4|aks-agentpool-42715708-vmss000004
+|Coordinator|postgres01c-0|aks-agentpool-42715708-vmss000000
+|辅助角色|postgres01w-0|aks-agentpool-42715708-vmss000002
+|辅助角色|postgres01w-1|aks-agentpool-42715708-vmss000003
+|辅助角色|postgres01w-2|aks-agentpool-42715708-vmss000000
+|辅助角色|postgres01w-3|aks-agentpool-42715708-vmss000004
 
 体系结构如下所示：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="Azure 门户中的4节点 AKS 群集":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="Kubernetes 计划使用最低用量的节点中的最新 pod":::
 
 Kubernetes 已在 Kubernetes 群集的最小加载物理节点中计划新的 PostgreSQL pod。
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 76482266f0bbb1f80c1699c736048c705b90b4dc
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "92792984"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986914"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域
 
@@ -35,7 +35,7 @@ ms.locfileid: "92792984"
 
 - 确保帐户使用的服务和功能在目标区域中受支持。
 
-- 对于预览版功能，请确保你的订阅已列入目标区域的允许列表。
+- 对于预览功能，请确保订阅对于目标区域是 allowlisted 的。
 
 <a id="prepare"></a>
 
@@ -225,7 +225,7 @@ ms.locfileid: "92792984"
 | **静态网站** | [在 Azure 存储中托管静态网站](../blobs/storage-blob-static-website-how-to.md) |
 | **事件订阅** | [响应 Blob 存储事件](../blobs/storage-blob-event-overview.md) |
 | **警报** | [使用 Azure Monitor 创建、查看和管理活动日志警报](../../azure-monitor/platform/alerts-activity-log.md) |
-| **内容交付网络 (CDN)** | [在 Azure CDN 中使用自定义域通过 HTTPS 访问 Blob](../blobs/storage-https-custom-domain-cdn.md) |
+| **内容分发网络 (CDN)** | [在 Azure CDN 中使用自定义域通过 HTTPS 访问 Blob](../blobs/storage-https-custom-domain-cdn.md) |
 
 > [!NOTE] 
 > 如果为源存储帐户设置 CDN，只需将现有 CDN 的源更改为新帐户的主 blob 服务终结点（或主静态网站终结点）。 

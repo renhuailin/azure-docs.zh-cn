@@ -3,12 +3,12 @@ title: 排查 Azure 备份代理问题
 description: 本文介绍如何排查 Azure 备份代理的安装和注册问题。
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 4ae4142652d9d38d5bf384e5a10d6eeb7e3cc608
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c08a146d91a128dc48fa4c379055b8c0efc1df0c
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993833"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986643"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -41,8 +41,8 @@ ms.locfileid: "95993833"
 
 | 原因 | 建议的操作 |
 | ---     | ---    |
-| **保管库凭据无效** <br/> <br/> 保管库凭据文件可能已损坏，可能已过期，或者它们的文件扩展名可能不同于 *vaultCredentials*。 （例如，它们可能是在注册时的 48 以前下载的。）| 请从 Azure 门户上的恢复服务保管库[下载新凭据](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)。 然后相应地执行以下步骤： <ul><li> 如果已安装并注册了 MARS，请打开 Microsoft Azure 备份代理 MMC 控制台。 然后，在“操作”窗格中选择“注册服务器”，以使用新凭据完成注册 。 <br/> <li> 如果新的安装失败，请尝试使用新凭据重新安装。</ul> **注意**：如果已下载多个保管库凭据文件，在接下来的 48 小时，只有最新文件才有效。 我们建议下载新的保管库凭据文件。
-| **代理服务器/防火墙正在阻止注册** <br/>或 <br/>**未建立 Internet 连接** <br/><br/> 如果计算机或代理服务器限制了 Internet 连接，并且你无法确保能够访问所需的 URL，则注册将会失败。| 请执行以下步骤：<br/> <ul><li> 与 IT 团队协作，确保系统已建立 Internet 连接。<li> 如果没有代理服务器，请确保在注册代理时不要选择代理选项。 [检查代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你使用了防火墙/代理服务器，请与网络团队协作，确保这些 URL 和 IP 地址能够访问：<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>完成上述故障排除步骤后，再次尝试注册。<br></br> 如果通过 Azure ExpressRoute 进行连接，请确保按照 [Azure ExpressRoute 支持](backup-support-matrix-mars-agent.md#azure-expressroute-support)中所述内容配置设置。
+| **保管库凭据无效** <br/> <br/> 保管库凭据文件可能已损坏、可能已过期，或者其文件扩展名可能不是“.vaultCredentials”。 （例如，它们可能是在注册时的 48 以前下载的。）| 请从 Azure 门户上的恢复服务保管库[下载新凭据](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)。 然后相应地执行以下步骤： <ul><li> 如果已安装并注册了 MARS，请打开 Microsoft Azure 备份代理 MMC 控制台。 然后，在“操作”窗格中选择“注册服务器”，以使用新凭据完成注册 。 <br/> <li> 如果新的安装失败，请尝试使用新凭据重新安装。</ul> **注意**：如果已下载多个保管库凭据文件，在接下来的 48 小时，只有最新文件才有效。 我们建议下载新的保管库凭据文件。
+| **代理服务器/防火墙正在阻止注册** <br/>或 <br/>**未建立 Internet 连接** <br/><br/> 如果计算机或代理服务器限制了 Internet 连接，并且你无法确保能够访问所需的 URL，则注册将会失败。| 请执行以下步骤：<br/> <ul><li> 与 IT 团队协作，确保系统已建立 Internet 连接。<li> 如果没有代理服务器，请确保在注册代理时不要选择代理选项。 [检查代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你使用了防火墙/代理服务器，请与网络团队协作，确保这些 URL 和 IP 地址能够访问：<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/></ul></ul>完成上述故障排除步骤后，再次尝试注册。<br></br> 如果通过 Azure ExpressRoute 进行连接，请确保按照 [Azure ExpressRoute 支持](backup-support-matrix-mars-agent.md#azure-expressroute-support)中所述内容配置设置。
 | **防病毒软件正在阻止注册** | 如果你在服务器上安装了防病毒软件，请将所需的排除规则添加到这些文件和文件夹的防病毒扫描项中： <br/><ul> <li> CBengine.exe <li> CSC.exe<li> scratch 文件夹。 其默认位置为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。 <li> bin 文件夹 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin。
 
 ### <a name="additional-recommendations"></a>其他建议
@@ -67,7 +67,7 @@ ms.locfileid: "95993833"
 
 | 错误   | 建议的操作 |
 | ---     | ---    |
-|未能下载保管库凭据文件。 (ID:403) | <ul><li> 使用不同的浏览器尝试下载保管库凭据，或执行以下步骤： <ul><li> 启动 Internet Explorer。 按 F12。 </li><li> 转到“网络”选项卡，并清除缓存和 Cookie。 </li> <li> 刷新页面。<br></li></ul> <li> 检查订阅是否已禁用/过期。<br></li> <li> 检查是否有任何防火墙规则阻止下载。 <br></li> <li> 确保未用完保管库的限额（每个保管库 50 台计算机）。<br></li>  <li> 确保用户拥有所需的 Azure 备份权限，可以下载保管库凭据并将服务器注册到保管库。 请参阅 [使用 azure 基于角色的访问控制管理 Azure 备份恢复点](backup-rbac-rs-vault.md)。</li></ul> |
+|未能下载保管库凭据文件。 (ID:403) | <ul><li> 使用不同的浏览器尝试下载保管库凭据，或执行以下步骤： <ul><li> 启动 Internet Explorer。 按 F12。 </li><li> 转到“网络”选项卡，并清除缓存和 Cookie。 </li> <li> 刷新页面。<br></li></ul> <li> 检查订阅是否已禁用/过期。<br></li> <li> 检查是否有任何防火墙规则阻止下载。 <br></li> <li> 确保未用完保管库的限额（每个保管库 50 台计算机）。<br></li>  <li> 确保用户拥有所需的 Azure 备份权限，可以下载保管库凭据并将服务器注册到保管库。 请参阅[使用 Azure 基于角色的访问控制来管理 Azure 备份恢复点](backup-rbac-rs-vault.md)。</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份
 

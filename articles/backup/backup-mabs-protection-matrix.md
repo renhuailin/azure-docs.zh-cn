@@ -3,12 +3,12 @@ title: MABS（Azure 备份服务器）V3 UR1 保护矩阵
 description: 本文提供了一个支持矩阵，列出了受 Azure 备份服务器保护的所有工作负荷、数据类型和安装。
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: d37d51ee781dfbc5bcd56fa3158a622202a979c6
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 2c7caad1d377070d4d4ac8436c1d8c08e786dc44
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754175"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986830"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS（Azure 备份服务器）V3 UR1 保护矩阵
 
@@ -57,7 +57,7 @@ ms.locfileid: "96754175"
 
 | **工作负载** | **版本**                               | **Azure 备份服务器安装**                      | **支持的 Azure 备份服务器** | **保护和恢复**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | 作为 [hyper-v](back-up-hyper-v-virtual-machines-mabs.md) 或 [VMware](backup-azure-backup-server-vmware.md) 来宾运行的 Linux | 物理服务器、本地 Hyper-V VM、VMWare 中的 Windows VM | V3 UR1                             | Hyper-V 必须在 Windows Server 2012 R2、Windows Server 2016 或 Windows Server 2019 上运行。 保护：整个虚拟机   <br><br>   恢复：整个虚拟机   <br><br>    仅支持文件一致的快照。    <br><br>   有关受支持的 Linux 分发版和版本的完整列表，请参阅 [Azure 认可的分发](../virtual-machines/linux/endorsed-distros.md)中的 Linux。 |
+| Linux        | 以 [Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) 或 [VMware](backup-azure-backup-server-vmware.md) 来宾身份运行的 Linux | 物理服务器、本地 Hyper-V VM、VMWare 中的 Windows VM | V3 UR1                             | Hyper-V 必须在 Windows Server 2012 R2、Windows Server 2016 或 Windows Server 2019 上运行。 保护：整个虚拟机   <br><br>   恢复：整个虚拟机   <br><br>    仅支持文件一致的快照。    <br><br>   有关支持的 Linux 发行版和版本的完整列表，请参阅 [Azure 认可的发行版中的 Linux](../virtual-machines/linux/endorsed-distros.md) 一文。 |
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute 支持
 
@@ -65,11 +65,17 @@ ms.locfileid: "96754175"
 
 使用公共对等互连：确保访问以下域/地址：
 
-* `http://www.msftncsi.com/ncsi.txt`
-* `microsoft.com`
-* `.WindowsAzure.com`
-* `.microsoftonline.com`
-* `.windows.net`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP 地址
+  * 20.190.128.0/18
+  * 40.126.0.0/18
+
 
 使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 6fb2e5c0193bc4e66f8fb4215732a69c43731146
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5f70f74accba5df439351547fda7497656e2c06e
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756629"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986677"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>在监管合规仪表板中自定义标准集
 
@@ -73,9 +73,11 @@ Microsoft 会自行跟踪法规标准，并随着时间的推移，自动改进�
 
     - **NIST SP 800-53 R4**
     - **NIST SP 800 171 R2**
-    - SWIFT CSP CSCF-v2020
+    - **SWIFT CSP CSCF v2020**
     - UKO and UK NHS
-    - Canada PBMM
+    - **加拿大联邦 PBMM**
+    - **HIPAA HITRUST**
+    - **Azure CIS 1.1.0**
     
     ![将法规标准添加到 Azure 安全中心的符合性仪表板](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
@@ -88,8 +90,7 @@ Microsoft 会自行跟踪法规标准，并随着时间的推移，自动改进�
     > [!NOTE]
     > 新添加的标准可能需要几个小时才能出现在合规仪表板中。
 
-    [![显示旧的和新的 Azure CIS 的监管合规仪表板](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark-small.png)](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark.png#lightbox)
-
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法规符合性仪表板" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 ## <a name="removing-a-standard-from-your-dashboard"></a>从仪表板中删除标准
 

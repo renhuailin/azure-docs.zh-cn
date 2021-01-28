@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 17c0e63b02d61b3aecf70624bc97a468d18f66fe
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 10f21067f48155a394ac20337d77e3e82aae64d8
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607501"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985931"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>什么是启用了 Azure Arc 的 PostgreSQL 超大规模？
 
@@ -48,13 +48,13 @@ ms.locfileid: "97607501"
 这是可用于启用了 Azure Arc 的数据服务的 Postgres 数据库引擎的超大规模外形规格。 它还由启用超大规模体验的 Citus 扩展提供支持。 按照此外观，我们的客户提供了托管系统和运行系统的基础结构。
 
 ## <a name="next-steps"></a>后续步骤
-- **创建**
-   > **只想尝试执行此项任务呢？你没有可用的 Kubernetes 群集？我们提供了一个沙箱：**  
-   > 在 Azure Kubernetes 服务 (AKS)、AWS Elastic Kubernetes 服务 (EKS)、Google Cloud Kubernetes Engine (GKE) 或 Azure VM 中，通过 [Azure Arc 快速入门](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)快速开始操作。
+- **试试看。** 在 Azure Kubernetes Service 上快速开始使用 [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) (AKS) 、AWS 弹性 Kubernetes SERVICE (EKS) 、Google Cloud Kubernetes ENGINE (GKE) 或 Azure VM。 
 
-   - **创建**
-      - [安装客户端工具](install-client-tools.md)
-      - [创建 Azure Arc 数据控制器](create-data-controller.md)（首先需要安装客户端工具）
-      - [在 Azure arc 上创建 Azure Database for PostgreSQL 超大规模服务器组](create-postgresql-hyperscale-server-group.md) ， (需要首先创建 azure arc 数据控制器。 ) 
-- [**阅读有关启用了 Azure Arc 的数据服务的详细信息**](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
-- [**了解 Azure Arc**](https://aka.ms/azurearc)
+- **创建自己的。** 按照以下步骤在自己的 Kubernetes 群集上创建： 
+   1. [安装客户端工具](install-client-tools.md)
+   2. [创建 Azure Arc 数据控制器](create-data-controller.md)
+   3. [在 Azure Arc 上创建 Azure Database for PostgreSQL 超大规模服务器组](create-postgresql-hyperscale-server-group.md) 
+
+- **Learn**
+   - [阅读有关启用了 Azure Arc 的数据服务的详细信息](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
+   - [了解 Azure Arc](https://aka.ms/azurearc)

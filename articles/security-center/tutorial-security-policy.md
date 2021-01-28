@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 7ea871428fffe685cc9d43dd698bfefb8d8a511a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 19128f0372f9a5bda0d16155167a507eccaf436a
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756678"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986575"
 ---
 # <a name="manage-security-policies"></a>管理安全策略
 
@@ -54,7 +54,7 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 
 1. 此时会显示该订阅或管理组的安全策略页。 其中显示了可用和已分配的策略。
 
-   ![策略页](./media/tutorial-security-policy/security-policy-page.png)
+    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="安全中心的安全策略页" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
 
     > [!NOTE]
     > 如果默认策略旁边有一个标签“MG 已继承”，则表示该策略已分配到某个管理组，并已由当前你正在查看的订阅继承。
@@ -102,7 +102,7 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 
 1. 在安全中心的“策略和符合性”部分，选择“安全策略” 。
 
-   ![策略管理](./media/tutorial-security-policy/policy-management.png)
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="在 Azure 安全中心启动策略管理过程":::
 
 2. 选择要禁用其建议的订阅或管理组。
 
@@ -111,7 +111,7 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 
 1. 选择“查看有效策略”。
 
-   ![查看策略](./media/tutorial-security-policy/view-effective-policy.png)
+    :::image type="content" source="./media/tutorial-security-policy/view-effective-policy.png" alt-text="如何打开分配给订阅的有效策略":::
 
 1. 选择分配的策略。
 
@@ -126,10 +126,8 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
    > [!NOTE]
    > 禁用策略更改可能需要长达 12 小时才会生效。
 
-
-
 ## <a name="next-steps"></a>后续步骤
-本文介绍了安全策略。 有关更多信息，请参阅以下文章：
+本页介绍了安全策略。 如需相关信息，请参阅以下页面：
 
 - [了解如何使用 PowerShell 设置策略](../governance/policy/assign-policy-powershell.md) - 
 - [了解如何在 Azure Policy 中编辑安全策略](../governance/policy/tutorials/create-and-manage.md) - 

@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 2529c6c3b0f9d188e1ce8062c05f62f3e980ef50
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 19330af5e4c0e4962993d0ed89ec9bcd4a50514a
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805224"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986407"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>配置令牌生存期策略（预览版）
 你可以指定由 Microsoft 标识平台颁发的访问、SAML 或 ID 令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。 有关详细信息，请参阅 [可配置的令牌生存期](active-directory-configurable-token-lifetimes.md)。
@@ -38,7 +38,7 @@ ms.locfileid: "98805224"
 1. 若要查看组织中创建的所有策略，请运行 [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet。  任何已定义的属性值不同于上面列出的默认值的结果都在停用范围内。
 
     ```powershell
-    Get-AzureADPolicy -All
+    Get-AzureADPolicy -All $true
     ```
 
 1. 若要查看哪些应用和服务主体链接到你确定的特定策略，请使用任何策略 ID 替换 1a37dad8-5da7-4cc8-87c7-efbc0326cf20，以运行以下 [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) cmdlet。 然后，你可以决定是配置条件访问登录频率，还是保留 Azure AD 默认值。

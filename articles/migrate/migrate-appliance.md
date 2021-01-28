@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f3357fcc070ca4ca2212cf0424e4baf8208a3ca1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 17ac10fd4e48043b79db5448fad2f29c5eb3f2a3
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754124"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986813"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -45,7 +45,7 @@ Azure Migrate 设备用于以下应用场景。
 
 要求 | **VMware** 
 --- | ---
-**权限** | 若要在本地或远程访问设备 Web 应用，需要成为设备计算机上的域管理员或本地管理员。
+**权限** | 若要在本地或远程访问设备 web 应用，需要在设备服务器上具有具有管理权限的本地用户帐户或域用户帐户。
 **设备组件** | 设备包括以下组件：<br/><br/> - 管理应用：在设备部署期间用于用户输入的 Web 应用。 在评估要迁移到 Azure 的计算机时会使用它。<br/> - 发现代理：该代理收集计算机配置数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- **收集器代理**：代理收集性能数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- 自动更新服务：更新设备组件（每 24 小时运行一次）。<br/>- DRA 代理：协调 VM 复制，并协调复制计算机与 Azure 之间的通信。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。<br/>- 网关：将复制的数据发送到 Azure。 只有在使用无代理迁移将 VMware VM 复制到 Azure 时，才会使用它。
 **支持的部署** | 使用 OVA 模板部署为 VMware VM。<br/><br/> 使用 PowerShell 安装脚本部署为 VMware VM 或物理计算机。
 **项目支持** |  设备可与单个项目关联。 <br/> 可以将任意数量的设备与单个项目关联。<br/> 
@@ -65,7 +65,7 @@ Azure Migrate 设备用于以下应用场景。
 
 要求 | **Hyper-V** 
 --- | ---
-**权限** | 若要在本地或远程访问设备 Web 应用，需要成为设备计算机上的域管理员或本地管理员。
+**权限** | 若要在本地或远程访问设备 web 应用，需要在设备服务器上具有具有管理权限的本地用户帐户或域用户帐户。
 **设备组件** | 设备包括以下组件：<br/><br/>- 管理应用：在设备部署期间用于用户输入的 Web 应用。 在评估要迁移到 Azure 的计算机时会使用它。<br/> - 发现代理：该代理收集计算机配置数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- **收集器代理**：代理收集性能数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- 自动更新服务：更新设备组件（每 24 小时运行一次）。
 **支持的部署** | 使用 VHD 模板部署为 Hyper-V VM。<br/><br/> 使用 PowerShell 安装脚本部署为 Hyper-V VM 或物理计算机。
 **项目支持** |  设备可与单个项目关联。 <br/> 可以将任意数量的设备与单个项目关联。<br/> 
@@ -82,7 +82,7 @@ _ *Hyper-v 要求** | 如果使用 VHD 模板部署设备，那么 Azure Migrate
 
 要求 | **物理服务器** 
 --- | ---
-**权限** | 若要在本地或远程访问设备 Web 应用，需要成为设备计算机上的域管理员或本地管理员。
+**权限** | 若要在本地或远程访问设备 web 应用，需要在设备服务器上具有具有管理权限的本地用户帐户或域用户帐户。
 **设备组件** | 设备包括以下组件： <br/><br/> - 管理应用：在设备部署期间用于用户输入的 Web 应用。 在评估要迁移到 Azure 的计算机时会使用它。<br/> - 发现代理：该代理收集计算机配置数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- **收集器代理**：代理收集性能数据。 在评估要迁移到 Azure 的计算机时会使用它。<br/>- 自动更新服务：更新设备组件（每 24 小时运行一次）。
 **支持的部署** | 使用 PowerShell 安装脚本部署为专用物理计算机或 VM。 可从门户下载该脚本。
 **项目支持** |  设备可与单个项目关联。 <br/> 可以将任意数量的设备与单个项目关联。<br/> 
@@ -221,7 +221,7 @@ NIC 写入吞吐量（MB/秒） | net.transmitted.average  |计算 VM 大小
 **数据** | **注册表位置** | **键**
 --- | --- | ---
 应用程序名称  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
-Version  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+版本  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
 提供程序  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
 
 #### <a name="windows-vm-features-data"></a>Windows VM 功能数据
@@ -232,7 +232,7 @@ Version  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/
 --- | --- | ---
 名称  | Get-WindowsFeature  | 名称
 特征类型 | Get-WindowsFeature  | FeatureType
-父级  | Get-WindowsFeature  | 父级
+Parent  | Get-WindowsFeature  | Parent
 
 #### <a name="windows-vm-sql-server-metadata"></a>Windows VM SQL Server 元数据
 
@@ -243,7 +243,7 @@ Version  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/
 名称  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL 服务器 \ 实例 Names\SQL  | installedInstance
 版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
 Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | SP
-Version  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Version 
+版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
 
 #### <a name="windows-vm-operating-system-data"></a>Windows VM 操作系统数据
 
@@ -252,7 +252,7 @@ Version  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> 
 数据  | WMI 类  | WMI 类属性
 --- | --- | ---
 名称  | Win32_operatingsystem  | 标题
-Version  | Win32_operatingsystem  | Version
+版本  | Win32_operatingsystem  | 版本
 体系结构  | Win32_operatingsystem  | OSArchitecture
 
 #### <a name="linux-vm-apps-data"></a>Linux VM 应用数据
@@ -262,7 +262,7 @@ Version  | Win32_operatingsystem  | Version
 数据  | 命令
 --- | --- 
 名称 | rpm，dpkg，对齐
-Version | rpm，dpkg，对齐
+版本 | rpm，dpkg，对齐
 提供程序 | rpm，dpkg，对齐
 
 #### <a name="linux-vm-operating-system-data"></a>Linux VM 操作系统数据

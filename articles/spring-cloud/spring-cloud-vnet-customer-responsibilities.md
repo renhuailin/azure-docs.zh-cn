@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 63fbac0919e06b29377afacaaa5708d195c6b319
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5ecf9e49887eb584269f724d5199cbfb014351e0
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887163"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986847"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>在 VNET 中运行 Azure 春季云中的客户责任
 本文档包含有关在虚拟网络中使用 Azure 春季云的规格。
@@ -32,7 +32,7 @@ ms.locfileid: "98887163"
 
 ## <a name="azure-spring-cloud-network-requirements"></a>Azure 春季云网络要求
 
-  | 目标终结点 | 端口 | 用途 | 注意 |
+  | 目标终结点 | 端口 | 用途 | 备注 |
   |------|------|------|
   | *： 1194 *或* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureCloud：1194 | UDP：1194 | 底层 Kubernetes 群集管理。 | |
   | *： 443 *或* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureCloud：443 | TCP：443 | Azure 春季云服务管理。 | 在 "networkProfile" 部分下的资源负载中，可以了解服务实例 "requiredTraffics" 的信息。 |
@@ -57,6 +57,9 @@ Azure 防火墙提供完全限定的域名 (FQDN) 标记 **AzureKubernetesServic
   | <i>login.microsoftonline.com</i> | HTTPS:443 | Azure Active Directory 身份验证。 |
   |<i>packages.microsoft.com</i>    | HTTPS:443 | Microsoft 包存储库。 |
   | <i>acs-mirror.azureedge.net</i> | HTTPS:443 | 安装所需的二进制文件（如 kubenet 和 Azure CNI）所需的存储库。 |
+  | *mscrl.microsoft.com* | HTTPS：80 | 必需的 Microsoft 证书链路径。 |
+  | *crl.microsoft.com* | HTTPS：80 | 必需的 Microsoft 证书链路径。 |
+  | *crl3.digicert.com* | HTTPS：80 | 第三方 SSL 证书链路径。 |
 
 ## <a name="see-also"></a>另请参阅
 * [在专用网络中访问应用程序](spring-cloud-access-app-virtual-network.md)

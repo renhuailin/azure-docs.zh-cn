@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: b8c9af31243d8bb58a58fbc687cad68130f64f7e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 59768e4fc04613a5ecac6a76059382499b7aaa86
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880736"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986456"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商业市场交易功能
 
@@ -84,7 +84,7 @@ Microsoft 使客户能在 Microsoft 商业市场和你的最终用户许可协�
 
 除了使用产品/服务类型和计费模型将产品/服务转化为收益外，还可以交易专用产品/服务，采用经过协商的、特定于交易的定价或者自定义配置。 专用产品/服务受全部三个交易发布选项的支持。
 
-此选项允许采用比公开提供的产品/服务更高或更低的定价。 你可以使用专用产品/服务进行折扣或向产品/服务添加高级版。 可以通过以下方式向一个或多个客户提供专用产品/服务：在产品/服务级别列出其 Azure 订阅。
+此选项允许采用比公开提供的产品/服务更高或更低的定价。 你可以使用专用产品/服务进行折扣或向产品/服务添加高级版。 可以在产品/服务级别 allowlisting 其 Azure 订阅，使其可供一个或多个客户使用。
 
 ### <a name="commercial-marketplace-service-fees"></a>商业 marketplace 服务费用
 

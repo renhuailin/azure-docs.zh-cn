@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6e2443014f6788504a11784945078187a5a72de4
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 37ba4f10365fca4292171c3bd2d9a3e7d00045bb
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311125"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985863"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>配置启用了 Azure Arc 的 SQL 托管实例
 
@@ -60,13 +60,13 @@ azdata arc sql mi show -n <NAME_OF_SQL_MI>
    traceflag0 = 1204
    ```
 
-1. 将 `mssql-custom.conf` 文件复制到 `master-0` Pod 中的 `mssql-miaa` 容器中的 `/var/opt/mssql`。 将 `<namespaceName>` 替换为大数据群集名称。
+1. 将 `mssql-custom.conf` 文件复制到 `master-0` Pod 中的 `arc-sqlmi` 容器中的 `/var/opt/mssql`。 替换 `<namespaceName>` 为在其中部署此实例的命名空间。
 
    ```bash
    kubectl cp mssql-custom.conf master-0:/var/opt/mssql/mssql-custom.conf -c mssql-server -n <namespaceName>
    ```
 
-1. 重启 SQL Server 实例。  将 `<namespaceName>` 替换为大数据群集名称。
+1. 重新启动 SQL 托管实例。  替换 `<namespaceName>` 为在其中部署此实例的命名空间。
 
    ```bash
    kubectl exec -it master-0  -c mssql-server -n <namespaceName> -- /bin/bash
@@ -75,6 +75,6 @@ azdata arc sql mi show -n <NAME_OF_SQL_MI>
    ```
 
 
-**已知的限制**
+**已知限制**
 - 以上步骤需要 Kubernetes 群集管理员权限
 - 这会在整个预览版中随时更改

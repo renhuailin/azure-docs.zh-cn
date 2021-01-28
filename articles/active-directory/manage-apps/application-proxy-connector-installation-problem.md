@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 05/21/2018
+ms.date: 01/28/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 0b7fee330f93097b561714ecc938eaf3fee8f2b5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 04c26609b046f7525c513796622be74633a20e91
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657323"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986762"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>安装应用程序代理程序连接器时出现问题
 
@@ -24,7 +24,7 @@ Microsoft Azure Active Directory 应用程序代理连接器是一个内部域�
 
 ## <a name="general-problem-areas-with-connector-installation"></a>连接器安装的常规问题区域
 
-连接器安装失败时，根本原因通常是以下方面之一：
+连接器的安装失败时，根本原因通常是以下区域之一。 **作为任何故障排除的前提，请务必重新启动连接器。**
 
 1.  **连接性** – 若要成功完成安装，新连接器需要注册并建立未来的信任属性。 这是通过连接到 Azure Active Directory 应用程序代理云服务来完成的。
 

@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: bd9199bc73e56ec36343b30d9b24f0b48799835e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 06614fc33910eda44bf6bf8369c4ad4b3c0b25fe
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445188"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986016"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
@@ -73,7 +73,7 @@ ms.locfileid: "96445188"
 > [!TIP]
 > 当与本文档关联的模板创建了新的 Azure 容器注册表时，你还可以在无需创建容器注册表的情况下创建新工作区。 当你执行需要容器注册表的操作时，会创建容器注册表。 例如，训练或部署模型。
 >
-> 还可以在 Azure 资源管理器模板中引用现有的容器注册表或存储帐户，而不是创建一个新的。 但是，所用的容器注册表必须已启用管理员帐户。 有关如何启用管理员帐户的信息，请参阅[管理员帐户](../container-registry/container-registry-authentication.md#admin-account)。
+> 还可以在 Azure 资源管理器模板中引用现有的容器注册表或存储帐户，而不是创建一个新的。 执行此操作时，必须 [使用托管身份](how-to-use-managed-identities.md) (预览) ，或启用容器注册表 [的管理员帐户](../container-registry/container-registry-authentication.md#admin-account) 。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -165,9 +165,9 @@ New-AzResourceGroupDeployment `
 
 以下示例模板演示如何创建具有三项设置的工作区：
 
-* 启用工作区的高保密性设置。 这将创建一个新的 Cosmos DB 实例。
-* 启用工作区加密。
-* 使用现有 Azure Key Vault 检索客户管理的密钥。 客户管理的密钥用于为工作区创建新的 Cosmos DB 实例。
+* 为工作区启用高保密性设置。 这将创建新 Cosmos DB 实例。
+* 为工作区启用加密。
+* 使用现有的 Azure Key Vault 检索客户管理的密钥。 使用客户管理的密钥为工作区创建新 Cosmos DB 实例。
 
     [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
@@ -285,7 +285,7 @@ New-AzResourceGroupDeployment `
 如果关联的资源不在虚拟网络后面，则可以将 **privateEndpointType** 参数设置为 `AutoAproval` 或 `ManualApproval`，以将工作区部署到专用终结点后面。 对于新的和现有的工作区，都可以这样做。 更新现有工作区时，请使用现有工作区中的信息填写模板参数。
 
 > [!IMPORTANT]
-> 使用具有专用链接的 Azure 机器学习工作区在 Azure 政府区域或 Azure 中国世纪互联区域中不可用。
+> Azure 政府区域或 Azure 中国世纪互联区域不支持使用具有专用链接的 Azure 机器学习工作区。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
