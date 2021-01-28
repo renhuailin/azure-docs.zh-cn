@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 04ba9777fe9e8470e6f02c83f3996d098023e05e
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: a48abb34a201928185130fbe8fdf9592e77492d9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763449"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944960"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>通过 Azure 门户在 Azure Stack Edge Pro GPU 设备上部署 Vm
 
@@ -22,9 +22,12 @@ ms.locfileid: "97763449"
 
 本文适用于 Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack 边缘迷你 R 设备。 
 
+> [!IMPORTANT] 
+> 建议为管理云设备上部署的 Vm 的用户启用多重身份验证。
+        
 ## <a name="vm-deployment-workflow"></a>VM 部署工作流
 
-部署工作流的高级摘要如下：
+下面是此部署工作流的基本摘要信息：
 
 1. 为 Azure Stack 边缘设备上的计算启用网络接口。 这会在指定的网络接口上创建一个虚拟交换机。
 1. 启用 Azure 门户的虚拟机的云管理。
@@ -43,7 +46,7 @@ ms.locfileid: "97763449"
     使用上述资源创建虚拟机。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始通过 Azure 门户在设备上创建和管理 Vm 之前，请确保：
 
@@ -122,7 +125,7 @@ ms.locfileid: "97763449"
     |参数 |说明  |
     |---------|---------|
     |虚拟机名称     |         |
-    |图像     | 从设备上提供的 VM 映像中进行选择。        |
+    |映像     | 从设备上提供的 VM 映像中进行选择。        |
     |大小     | 从支持的 [VM 大小](azure-stack-edge-gpu-virtual-machine-sizes.md)中进行选择。        |
     |用户名     | 使用默认的用户名 *azureuser*。        |
     |身份验证类型    | 从 SSH 公钥或用户定义的密码中进行选择。       |

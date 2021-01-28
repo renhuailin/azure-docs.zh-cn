@@ -3,12 +3,12 @@ title: 新建 Azure Application Insights 资源 | Microsoft Docs
 description: 为新的实时应用程序手动设置 Application Insights 监视。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3fd05e6bd68be89b964fe1ad32029bf44f3352ea
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2924ccbbf591020d7872d3e9cca62a9c271db7c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906363"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944599"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -45,7 +45,7 @@ Azure Application Insights 在 Microsoft Azure *资源* 中显示有关应用程
 检测密钥用于标识要与遥测数据关联的资源。 你需要复制检测密钥并将其添加到应用程序的代码中。
 
 > [!IMPORTANT]
-> 新的 Azure 区域 **要求** 使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=net) 标识您要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+> 新的 Azure 区域要求使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=net)用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 ## <a name="install-the-sdk-in-your-app"></a>在应用中安装 SDK
 
@@ -94,7 +94,7 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-有关此 cmdlet 的完整 PowerShell 文档，以及若要了解如何检索检测密钥，请参阅 [Azure PowerShell 文档](/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)。
+有关此 cmdlet 的完整 PowerShell 文档，以及若要了解如何检索检测密钥，请参阅 [Azure PowerShell 文档](/powershell/module/az.applicationinsights/new-azapplicationinsights)。
 
 ### <a name="azure-cli-preview"></a>Azure CLI（预览版）
 
@@ -151,7 +151,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-有关此命令的完整 Azure CLI 文档，以及若要了解如何检索检测密钥，请参阅 [Azure CLI 文档](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
+有关此命令的完整 Azure CLI 文档，以及若要了解如何检索检测密钥，请参阅 [Azure CLI 文档](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)。
 
 ## <a name="next-steps"></a>后续步骤
 * [诊断搜索](./diagnostic-search.md)

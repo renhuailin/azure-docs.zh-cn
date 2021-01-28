@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 19c27dc80f9af013c458663c9c7afb0033683acd
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: d8944c9e49bde8c452a10a1886cae316a0f7a33f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348061"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945071"
 ---
 # <a name="create-luis-resources"></a>创建 LUIS 资源
 
@@ -29,9 +29,9 @@ LUIS 允许三类 Azure 资源和一类非 Azure 资源：
 
 |资源|目的|认知服务 `kind`|认知服务 `type`|
 |--|--|--|--|
-|创作资源|可用于创建、管理、训练、测试和发布应用程序。 如果计划通过编程方式或 LUIS 门户创作 LUIS 应用，请[创建 LUIS 创作资源](luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal)。 在将 Azure 创作资源链接到应用程序之前，你需要 [迁移你的 LUIS 帐户](luis-migration-authoring.md#what-is-migration) 。 可以通过为人员分配[参与者角色](#contributions-from-other-authors)来控制对创作资源的权限。 <br><br> LUIS 创作资源有一个层级可用：<br> <ul> <li>**免费 F0 创作资源**，它每月提供 100 万个免费创作事务和 1,000 个免费测试预测终结点请求。 |`LUIS.Authoring`|`Cognitive Services`|
+|创作资源|可用于创建、管理、训练、测试和发布应用程序。 如果计划通过编程方式或 LUIS 门户创作 LUIS 应用，请[创建 LUIS 创作资源](luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal)。 在将 Azure 创作资源链接到应用程序之前，你需要[迁移你的 LUIS 帐户](luis-migration-authoring.md#what-is-migration)。 可以通过为人员分配[参与者角色](#contributions-from-other-authors)来控制对创作资源的权限。 <br><br> LUIS 创作资源有一个层级可用：<br> <ul> <li>**免费 F0 创作资源**，它每月提供 100 万个免费创作事务和 1,000 个免费测试预测终结点请求。 |`LUIS.Authoring`|`Cognitive Services`|
 |预测资源| 在发布 LUIS 应用程序后，请使用预测资源/密钥来查询预测终结点请求。 请在客户端应用发出的预测请求超出创作资源或入门资源提供的 1,000 个请求之前创建 LUIS 预测资源。 <br><br> 预测资源有两个层级可用：<br><ul> <li> **免费 F0 预测资源**，它每月提供 10,000 个免费预测终结点请求。<br> <li> **标准 S0 预测资源**，这是付费层级。 [详细了解定价。](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
-|入门版/试用版资源|可用于创建、管理、训练、测试和发布应用程序。 如果在首次登录到 LUIS 时选择入门版资源选项，则会默认创建此资源。 入门版密钥最终会被弃用。 所有 LUIS 用户需要 [迁移其帐户](luis-migration-authoring.md#what-is-migration) 并将其 LUIS 应用程序链接到创作资源。 不同于创作资源，此资源不提供用于 Azure 基于角色的访问控制的权限。 <br><br> 与创作资源一样，入门版资源也提供 100 万个免费创作事务和 1,000 个免费测试预测终结点请求。|-|不是 Azure 资源。|
+|入门版/试用版资源|可用于创建、管理、训练、测试和发布应用程序。 如果在首次登录到 LUIS 时选择入门版资源选项，则会默认创建此资源。 入门版密钥最终会被弃用。 所有 LUIS 用户都将需要[迁移其帐户](luis-migration-authoring.md#what-is-migration)并将其 LUIS 应用程序链接到创作资源。 不同于创作资源，此资源不提供用于 Azure 基于角色的访问控制的权限。 <br><br> 与创作资源一样，入门版资源也提供 100 万个免费创作事务和 1,000 个免费测试预测终结点请求。|-|不是 Azure 资源。|
 |[认知服务多服务资源密钥](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|与 LUIS 和其他受支持的认知服务共享的查询预测终结点请求。|`CognitiveServices`|`Cognitive Services`|
 
 
@@ -55,9 +55,9 @@ Azure 资源（例如 LUIS 资源）归包含该资源的订阅所有。
 
 ### <a name="authoring-key-creation-limits"></a>创作密钥创建限制
 
-可以按订阅为每个区域创建最多 10 个创作密钥。 发布区域不同于创作区域。 请确保在与你希望将客户端应用程序置于其中的发布区域对应的创作区域中创建应用。 有关创作区域映射到发布区域的方式的信息，请参阅 [创作和发布区域](luis-reference-regions.md)。 
+可以按订阅为每个区域创建最多 10 个创作密钥。 发布区域不同于创作区域。 请确保在与你希望将客户端应用程序置于其中的发布区域对应的创作区域中创建应用。 有关创作区域映射到发布区域的方式的信息，请参阅[创作和发布区域](luis-reference-regions.md)。 
 
-有关密钥限制的详细信息，请参阅 [密钥限制](luis-limits.md#key-limits)。
+有关密钥限制的详细信息，请参阅[密钥限制](luis-limits.md#key-limits)。
 
 ### <a name="errors-for-key-usage-limits"></a>有关密钥使用限制的错误
 
@@ -68,7 +68,7 @@ Azure 资源（例如 LUIS 资源）归包含该资源的订阅所有。
 
 ### <a name="reset-an-authoring-key"></a>重置创作密钥
 
-对于已 [迁移的创作资源](luis-migration-authoring.md) 应用：如果你的创作密钥已泄露，请在创作资源的 " **密钥** " 页上重置 Azure 门户中的密钥。
+对于[已迁移的创作资源](luis-migration-authoring.md)应用：如果创作密钥已泄露，请在 Azure 门户中该创作资源的“密钥”页上重置密钥。
 
 对于尚未迁移的应用：可在 LUIS 门户的所有应用中重置此密钥。 如果通过创作 API 创作应用，则需要将 `Ocp-Apim-Subscription-Key` 的值更改为新密钥。
 
@@ -92,7 +92,7 @@ Azure 资源（例如 LUIS 资源）归包含该资源的订阅所有。
 
 ### <a name="contributions-from-other-authors"></a>其他作者的贡献
 
-对于已 [迁移的创作资源](luis-migration-authoring.md)应用：可以使用 "**访问控制" (IAM)** "页来管理 Azure 门户中创作资源的 _参与者_。 了解如何使用协作者的电子邮件地址和参与者角色[添加用户](luis-how-to-collaborate.md)。
+对于[已迁移的创作资源](luis-migration-authoring.md)应用：可以在 Azure 门户中使用“访问控制(IAM)”页面来管理创作资源的参与者。 了解如何使用协作者的电子邮件地址和参与者角色[添加用户](luis-how-to-collaborate.md)。
 
 对于尚未迁移的应用：你可以在 LUIS 门户中的“管理 > 协作者”页上管理所有协作者。
 
@@ -173,7 +173,7 @@ Azure 资源（例如 LUIS 资源）归包含该资源的订阅所有。
 
 ### <a name="create-resources-in-the-azure-cli"></a>在 Azure CLI 中创建资源
 
-使用 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 单独创建每项资源。
+使用 [Azure CLI](/cli/azure/install-azure-cli) 单独创建每项资源。
 
 资源 `kind`：
 
@@ -319,4 +319,4 @@ Azure 资源（例如 LUIS 资源）归包含该资源的订阅所有。
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[如何使用版本](luis-how-to-manage-versions.md)来控制应用生命周期。
-* 迁移到新的 [创作资源](luis-migration-authoring.md)。
+* 迁移到新的[创作资源](luis-migration-authoring.md)。

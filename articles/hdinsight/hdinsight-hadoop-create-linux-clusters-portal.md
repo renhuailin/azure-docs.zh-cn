@@ -1,19 +1,16 @@
 ---
 title: 使用 Web 浏览器创建 Apache Hadoop 群集 - Azure HDInsight
 description: 了解如何在 HDInsight 上创建 Apache Hadoop、Apache HBase、Apache Storm 或 Apache Spark 群集。 使用 web 浏览器和 Azure 门户。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: ebfd5c456d3658c6339e5174c9c4ab33f6c52d4d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541700"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945812"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集
 
@@ -25,7 +22,7 @@ Azure 门户是一种基于 Web 的管理工具，用于管理 Microsoft Azure �
 
 Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模板可以隐藏许多详细信息。 有关详细信息，请参阅[使用资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-clusters"></a>创建群集
 
@@ -45,15 +42,15 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 在“基本信息”选项卡中提供以下信息： 
 
-|属性 |说明 |
+|properties |说明 |
 |---|---|
 |订阅|从下拉列表中选择用于此群集的 Azure 订阅。|
-|资源组|从下拉列表中选择现有资源组，或选择“新建”。|
+|资源组|从下拉列表中选择现有资源组，或选择“新建”  。|
 |群集名称|输入任何全局唯一的名称。|
 |区域|从下拉列表中，选择在其中创建群集的区域。|
 |群集类型|单击“选择群集类型”，打开一个列表。 从列表中选择所需的群集类型。 HDInsight 群集有不同的类型。 这些类型与该群集进行优化的工作负荷或技术相对应。 没有任何方法支持创建组合多种类型的群集，|
-|版本|从下拉列表中，选择一个 **版本** 。 如果不知道要选择哪个版本，请使用默认版本。 有关详细信息，请参阅 [HDInsight 群集版本](hdinsight-component-versioning.md)。|
-|群集登录用户名|提供用户名，默认为 **admin** 。|
+|版本|从下拉列表中，选择一个 **版本**。 如果不知道要选择哪个版本，请使用默认版本。 有关详细信息，请参阅 [HDInsight 群集版本](hdinsight-component-versioning.md)。|
+|群集登录用户名|提供用户名，默认为 **admin**。|
 |群集登录密码|提供密码。|
 |确认群集登录密码|重新输入密码|
 |安全外壳 (SSH) 用户名|提供用户名，默认为 **sshuser**|
@@ -70,11 +67,11 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 ### <a name="primary-storage"></a>主存储
 
-从”主存储类型”的下拉列表中，选择默认存储类型。 要完成的后续字段将因选择而异。 对于 **Azure 存储** ：
+从”主存储类型”的下拉列表中，选择默认存储类型。 要完成的后续字段将因选择而异。 对于 **Azure 存储**：
 
 1. 至于“选择方法”，请选择“从列表中选择”或“使用访问密钥”。 
     * 接下来，对于“从列表中选择”，请从下拉列表中选择“主存储帐户”，或者选择“新建”。
-    * 对于“使用访问密钥”，请输入 **存储帐户名称** 。 然后，请提供 **访问密钥** 。
+    * 对于“使用访问密钥”，请输入 **存储帐户名称**。 然后，请提供 **访问密钥**。
 
 1. 对于“容器”，请接受默认值，或者输入一个新值。
 

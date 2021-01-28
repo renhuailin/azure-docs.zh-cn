@@ -1,19 +1,16 @@
 ---
 title: Apache Kafka TLS 加密 & 身份验证-Azure HDInsight
 description: 为 Kafka 客户端和 Kafka 代理之间以及 Kafka 代理之间的通信设置 TLS 加密。 设置客户端的 SSL 身份验证。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: 9a95970647a26ea80db9f63fb8523c6a65cc5e06
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6c020153d5c5cb5aad593c5b15e60e67951b89d4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012299"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945188"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>为 Azure HDInsight 中的 Apache Kafka 设置 TLS 加密和身份验证
 

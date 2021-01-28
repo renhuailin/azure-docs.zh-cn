@@ -1,19 +1,16 @@
 ---
 title: 用于 Go 的 Azure HDInsight SDK
 description: 有关使用用于 Go 的 Azure HDInsight SDK 和 Apache Hadoop 群集的参考资料
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18, devx-track-azurecli
 ms.date: 01/03/2020
-ms.openlocfilehash: 6fdd7b9e5fda92bd75e54ea5b4aad6a3ba6ecbea
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dc8528c40fe7e3b32e2f38152afc8abb0ae18ba5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748746"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945983"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>用于 Go 的 HDInsight SDK（预览版）
 
@@ -144,7 +141,7 @@ func main() {
 
 #### <a name="example"></a>示例
 
-此示例演示如何创建具有两个头节点和一个辅助角色节点的 [Apache Spark](https://spark.apache.org/) 群集。
+本示例演示如何创建包含两个头节点和一个工作器节点的 [Apache Spark](https://spark.apache.org/) 群集。
 
 > [!NOTE]  
 > 首先需要创建一个资源组和存储帐户，下面将予以介绍。 如果已创建资源组和存储帐户，则可以跳过这些步骤。
@@ -172,7 +169,7 @@ az storage account keys list -n <Storage Account Name>
 ```
 
 ---
-以下代码片段创建一个具有两个头节点和一个辅助角色节点的 Spark 群集。 按照注释中所述填写空白变量，并根据具体的需要任意更改其他参数。
+以下 Go 代码片段创建一个包含两个头节点和一个工作器节点的 Spark 群集。 按照注释中所述填写空白变量，并根据具体的需要任意更改其他参数。
 
 ```golang
 // The name for the cluster you are creating

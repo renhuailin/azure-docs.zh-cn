@@ -7,12 +7,12 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 0ceee3c65e8c4df5d843bb441fb6426a0f4eb696
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1a5f665627da1b08ec57b04863a58f227c673af4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220246"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944896"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>对 Azure 数据工厂中的管道业务流程和触发器进行故障排除
 
@@ -60,7 +60,7 @@ Source=Microsoft.DataTransfer.Common,'
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-**原因**：已达到集成运行时的容量限制。 使用相同的集成运行时，您可能会运行大量数据流。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) 。
+**原因**：已达到集成运行时的容量限制。 使用相同的集成运行时，您可能会运行大量数据流。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md#version-2) 。
 
 **解决方法**：
  
@@ -76,13 +76,13 @@ Azure 数据工厂评估所有叶级活动的结果。 仅当所有叶都成功�
 **分辨率**
 
 1. 按照 [如何处理管道故障和错误](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)来实现活动级别检查。
-1. 使用 Azure 逻辑应用 [通过工厂查询按](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)固定间隔来监视管道。
+1. 使用 Azure 逻辑应用 [通过工厂查询按](/rest/api/datafactory/pipelineruns/querybyfactory)固定间隔来监视管道。
 
 ## <a name="monitor-pipeline-failures-in-regular-intervals"></a>按固定间隔监视管道故障
 
 可能需要按间隔5分钟监视失败的数据工厂管道。 可以使用终结点从数据工厂查询和筛选管道运行。 
 
-将 Azure 逻辑应用设置为每隔5分钟查询所有失败的管道，如 [工厂查询](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)中所述。 然后，你可以将事件报告给我们的票证系统。
+将 Azure 逻辑应用设置为每隔5分钟查询所有失败的管道，如 [工厂查询](/rest/api/datafactory/pipelineruns/querybyfactory)中所述。 然后，你可以将事件报告给我们的票证系统。
 
 有关详细信息，请参阅 [从数据工厂发送通知，第2部分](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)。
 

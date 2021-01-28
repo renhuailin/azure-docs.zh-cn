@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 12/18/2020
-ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 9706bee07f028c36b4d03311a7abbb969a1be685
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858564"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944992"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -115,7 +115,7 @@ Azure 数据工厂生成列哈希，以生成统一分区，使具有相似值�
 
 默认群集大小为四个驱动程序节点和四个辅助角色节点。  处理更多数据时，建议使用较大的群集。 下面是可能的大小调整选项：
 
-| 辅助角色核心 | 驱动程序核心 | 核心总数 | 说明 |
+| 辅助角色核心 | 驱动程序核心 | 核心总数 | 注意 |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | 不可用于计算优化 |
 | 8 | 8 | 16 | |
@@ -161,7 +161,7 @@ Azure SQL 数据库具有一个名为 "源" 分区的唯一分区选项。 启�
 
 #### <a name="isolation-level"></a>隔离级别
 
-Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提交读" 将提供最快的性能，并防止任何数据库锁。 若要了解有关 SQL 隔离级别的详细信息，请参阅 [了解隔离级别](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels)。
+Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提交读" 将提供最快的性能，并防止任何数据库锁。 若要了解有关 SQL 隔离级别的详细信息，请参阅 [了解隔离级别](/sql/connect/jdbc/understanding-isolation-levels)。
 
 #### <a name="read-using-query"></a>使用查询进行读取
 
@@ -208,7 +208,7 @@ Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提�
 ![禁用索引](media/data-flow/disable-indexes-sql.png "禁用索引")
 
 > [!WARNING]
-> 禁用索引时，数据流实际上会控制数据库并使查询在此时不可能成功。 因此，在晚间，会触发许多 ETL 作业，以避免此冲突。 有关详细信息，请参阅 [禁用索引的约束](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints)
+> 禁用索引时，数据流实际上会控制数据库并使查询在此时不可能成功。 因此，在晚间，会触发许多 ETL 作业，以避免此冲突。 有关详细信息，请参阅 [禁用索引的约束](/sql/relational-databases/indexes/disable-indexes-and-constraints)
 
 #### <a name="scaling-up-your-database"></a>扩展数据库
 
@@ -216,7 +216,7 @@ Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提�
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure Synapse 分析接收器
 
-写入 Azure Synapse Analytics 时，请确保将 " **启用过渡** " 设置为 "true"。 这使得 ADF 可以使用可有效地批量加载数据的 [SQL Copy 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) 进行写入。 使用暂存时，需要引用 Azure Data Lake Storage gen2 或 Azure Blob 存储帐户来暂存数据。
+写入 Azure Synapse Analytics 时，请确保将 " **启用过渡** " 设置为 "true"。 这使得 ADF 可以使用可有效地批量加载数据的 [SQL Copy 命令](/sql/t-sql/statements/copy-into-transact-sql) 进行写入。 使用暂存时，需要引用 Azure Data Lake Storage gen2 或 Azure Blob 存储帐户来暂存数据。
 
 除了过渡外，相同的最佳做法也适用于 azure SQL 数据库的 Azure Synapse 分析。
 

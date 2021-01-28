@@ -1,19 +1,16 @@
 ---
 title: 将 ScaleR 和 SparkR 与 Azure HDInsight 配合使用
 description: 使用 ScaleR 和 SparkR 在 Azure HDInsight 上通过 ML 服务进行数据操作和模型开发
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: c12398ceacf8495a05037422a6501dc8138abc10
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 95fcca289b0776cc19464b13eb7d243ca4f8d5ed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628688"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945514"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
 
@@ -529,7 +526,7 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 在本文中，我们展示了如何在 Hadoop Spark 中将用于数据操作的 SparkR 和用于模型开发的 ScaleR 配合使用。 此方案要求保留单独的 Spark 会话，一次只运行一个会话，并通过 CSV 文件交换数据。 尽管此过程现已相当简单直接，但在将来的 ML Services 版本中还会得到进一步简化，因为到时 SparkR 和 ScaleR 可以共享 Spark 会话，因而也能共享 Spark DataFrame。
 

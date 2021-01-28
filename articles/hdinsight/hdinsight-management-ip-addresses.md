@@ -1,23 +1,20 @@
 ---
 title: Azure HDInsight 管理 IP 地址
 description: 了解必须允许哪些 IP 地址的入站流量，以便通过 Azure HDInsight 为虚拟网络正确配置网络安全组和用户定义的路由。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 9fa38e045bbe29e5d45587adf0d277c1414fee4c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 89d749a04c22967198be217350ff38751336fe67
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549032"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944105"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 地址
 
-本文列出了 Azure HDInsight 运行状况和管理服务使用的 IP 地址。 如果使用 (Nsg) 的网络安全组或用户定义的路由 (Udr) 可能需要将其中一些 IP 地址添加到入站网络流量的允许列表中。
+本文列出了 Azure HDInsight 运行状况和管理服务使用的 IP 地址。 如果使用网络安全组 (NSG) 或用户定义的路由 (UDR)，则可能需要将其中一些 IP 地址添加到入站网络流量的允许列表中。
 
 ## <a name="introduction"></a>简介
  
@@ -28,19 +25,19 @@ ms.locfileid: "96549032"
 
 如果需要此处未列出的区域的 IP 地址，则可以使用[服务标记发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 查找所在区域的 IP 地址。 如果无法使用该 API，请下载[服务标记 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)并搜索所需的区域。
 
-HDInsight 在创建和缩放群集时对这些规则进行验证，以防出现进一步的错误。 如果验证未通过，则创建和缩放会失败。
+HDInsight 通过群集创建和扩展来验证这些规则，以防止进一步的错误。 如果验证未通过，则创建和扩展将失败。
 
 以下部分介绍了必须允许的特定 IP 地址。
 
 ## <a name="azure-dns-service"></a>Azure DNS 服务
 
-如果你使用的是 Azure 提供的 DNS 服务，则允许访问 TCP 和 UDP 端口53上的 __168.63.129.16__ 。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。 如果使用的是自定义 DNS，请跳过此步骤。
+如果使用的是 Azure 提供的 DNS 服务，则对于 TCP 和 UDP，允许通过端口 53 访问 168.63.129.16。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。 如果使用的是自定义 DNS，请跳过此步骤。
 
 ## <a name="health-and-management-services-all-regions"></a>运行状况和管理服务：所有区域
 
 允许来自以下 Azure HDInsight 运行状况和管理服务的 IP 地址的流量，适用于所有 Azure 区域：
 
-| 源 IP 地址 | 目的地  | 方向 |
+| 源 IP 地址 | 目标  | 方向 |
 | ---- | ----- | ----- |
 | 168.61.49.99 | \*:443 | 入站 |
 | 23.99.5.239 | \*:443 | 入站 |

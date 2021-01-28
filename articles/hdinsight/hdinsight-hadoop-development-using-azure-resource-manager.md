@@ -1,19 +1,16 @@
 ---
 title: 迁移到适用于 HDInsight 的 Azure 资源管理器工具
 description: 如何迁移到适用于 HDInsight 群集的 Azure Resource Manager 开发工具
-ms.reviewer: jasonh
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.openlocfilehash: 57dec799cbda03e20717a402a88f1d818d9acd92
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 2ff62f4feba44a1c706ab85db1be3f7f654e6135
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629470"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945762"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具
 
@@ -83,7 +80,7 @@ HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>将 Azure PowerShell 迁移到 Azure Resource Manager
 有关处于 Azure 资源管理器模式的 Azure PowerShell 的一般信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/management/manage-resources-powershell.md)。
 
-Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的 cmdlet 可按其名称来区分。  资源管理器模式在 cmdlet 名称中具有与较旧的 Azure 服务管理模式下的 *clustername>.azurehdinsight.net* 进行比较的 *AzHDInsight* 。  例如，前者为 New-AzHDInsightCluster  ，后者为New-AzureHDInsightCluster  。 某些参数和开关可能有新名称，并且在使用资源管理器时，有许多新参数可供使用。  例如，多个 cmdlet 需要名为 -ResourceGroupName 的新开关  。
+Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的 cmdlet 可按其名称来区分。  资源管理器模式在 cmdlet 名称中包含“AzHDInsight”，而在较旧的 Azure 服务管理模式下则包含“AzureHDInsight” 。  例如，前者为 New-AzHDInsightCluster  ，后者为New-AzureHDInsightCluster  。 某些参数和开关可能有新名称，并且在使用资源管理器时，有许多新参数可供使用。  例如，多个 cmdlet 需要名为 -ResourceGroupName 的新开关  。
 
 在使用这些 HDInsight cmdlet 之前，必须先连接到 Azure 帐户并创建新资源组：
 
@@ -134,20 +131,20 @@ help *azurehdinsight*
 
 **与脚本操作相关的 cmdlet：**
 
-* **Get-AzHDInsightPersistedScriptAction** ：获取群集的持久性脚本操作，并按时间顺序列出这些操作，或获取有关指定持久性脚本操作的详细信息。 
-* **Get-AzHDInsightScriptActionHistory** ：获取群集的脚本操作历史记录，并按时间顺序逆序列出这些操作，或获取有关以前执行的脚本操作的详细信息。 
-* **Remove-AzHDInsightPersistedScriptAction** ：从 HDInsight 群集中删除持久性脚本操作。
-* **Set-AzHDInsightPersistedScriptAction** ：将以前执行的脚本操作设置为持久性脚本操作。
-* **Submit-AzHDInsightScriptAction** ：将新的脚本操作提交到 Azure HDInsight 群集。 
+* **Get-AzHDInsightPersistedScriptAction**：获取群集的持久性脚本操作，并按时间顺序列出这些操作，或获取有关指定持久性脚本操作的详细信息。 
+* **Get-AzHDInsightScriptActionHistory**：获取群集的脚本操作历史记录，并按时间顺序逆序列出这些操作，或获取有关以前执行的脚本操作的详细信息。 
+* **Remove-AzHDInsightPersistedScriptAction**：从 HDInsight 群集中删除持久性脚本操作。
+* **Set-AzHDInsightPersistedScriptAction**：将以前执行的脚本操作设置为持久性脚本操作。
+* **Submit-AzHDInsightScriptAction**：将新的脚本操作提交到 Azure HDInsight 群集。 
 
 有关其他用法信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 **与群集标识相关的 cmdlet：**
 
-* **AzHDInsightClusterIdentity** ：将群集标识添加到群集配置对象，以便 HDInsight 群集可以访问 Azure Data Lake Storage。 请参阅[使用 Azure PowerShell 创建包含 Data Lake Storage 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
+* **AzHDInsightClusterIdentity**：将群集标识添加到群集配置对象，以便 HDInsight 群集可以访问 Azure Data Lake Storage。 请参阅[使用 Azure PowerShell 创建包含 Data Lake Storage 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
 
 ### <a name="examples"></a>示例
-**创建群集**
+创建群集 
 
 旧命令 (ASM)： 
 
@@ -184,7 +181,7 @@ New-AzHDInsightCluster `
     -SshCredential $sshCredentials
 ```
 
-**删除群集**
+删除群集 
 
 旧命令 (ASM)：
 
@@ -198,7 +195,7 @@ Remove-AzureHDInsightCluster -name $clusterName
 Remove-AzHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
 ```
 
-**列出群集**
+列出群集 
 
 旧命令 (ASM)：
 
@@ -212,7 +209,7 @@ Get-AzureHDInsightCluster
 Get-AzHDInsightCluster
 ```
 
-**显示群集**
+显示群集 
 
 旧命令 (ASM)：
 
@@ -232,7 +229,7 @@ Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clust
 * [提交 Apache Sqoop 作业](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>迁移到新的 HDInsight .NET SDK
-基于 Azure 服务管理 (ASM) 的 [HDInsight.NET SDK](/previous-versions/azure/reference/mt416619(v=azure.100)) 现已弃用。 建议使用基于 Azure 资源管理器的 [基于资源管理器的 HDInsight .NET SDK](/dotnet/api/overview/azure/hdinsight)。 以下基于 ASM 的 HDInsight 包即将过时。
+基于 Azure 服务管理 (ASM) 的 [HDInsight.NET SDK](/previous-versions/azure/reference/mt416619(v=azure.100)) 现已弃用。 建议使用基于 Azure 资源管理器的 [基于资源管理器的 HDInsight .NET SDK](/dotnet/api/overview/azure/hdinsight)。 以下基于 ASM 的 HDInsight 包即将弃用。
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`
@@ -241,8 +238,8 @@ Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clust
 
 | 如何...使用基于资源管理器的 HDInsight SDK | 链接 |
 | --- | --- |
-| 用于 .NET 的 Azure HDInsight SDK|请参阅 [Azure HDINSIGHT SDK for .net](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true) |
-| 配合使用 Azure Active Directory 与 .NET SDK 以交互方式对应用程序进行身份验证 |请参阅[使用 .NET SDK 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。 本文中的代码段使用交互式身份验证方法。 |
+| 用于 .NET 的 Azure HDInsight SDK|请参阅[用于 .NET 的 Azure HDInsight SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true) |
+| 配合使用 Azure Active Directory 与 .NET SDK 以交互方式对应用程序进行身份验证 |请参阅[使用 .NET SDK 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。 本文中的代码片段使用交互式身份验证方法。 |
 | 配合使用 Azure Active Directory 与 .NET SDK 以非交互方式对应用程序进行身份验证 |请参阅[为 HDInsight 创建非交互式应用程序](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | 使用 .NET SDK 提交 Apache Hive 作业 |请参阅[提交 Apache Hive 作业](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |
 | 使用 .NET SDK 提交 Apache Sqoop 作业 |请参阅[提交 Apache Sqoop 作业](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md) |
@@ -256,7 +253,7 @@ Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clust
 ### <a name="examples"></a>示例
 以下是有关如何使用基于 ASM 的 SDK 和基于资源管理器的 SDK 的等效代码段来执行操作的一些示例。
 
-**创建群集 CRUD 客户端**
+创建群集 CRUD 客户端 
 
 * 旧命令 (ASM)
 
@@ -309,7 +306,7 @@ Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clust
   _hdiManagementClient = new HDInsightManagementClient(creds);
   ```
 
-**创建群集**
+创建群集 
 
 * 旧命令 (ASM)
 
@@ -356,7 +353,7 @@ Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clust
   clusterCreateParameters.Configurations.Add(ConfigurationKey.CoreSite, coreConfigs);
   ```
 
-**启用 HTTP 访问**
+启用 HTTP 访问 
 
 * 旧命令 (ASM)
 
@@ -376,7 +373,7 @@ Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clust
   client.Clusters.ConfigureHttpSettings(resourceGroup, dnsname, httpParams);
   ```
 
-**删除群集**
+删除群集 
 
 * 旧命令 (ASM)
 

@@ -1,19 +1,16 @@
 ---
 title: 使用 Apache Phoenix 在 Azure HDInsight 中运行 Apache Base 查询
 description: 了解如何将 Apache Zeppelin 与 Phoenix 配合使用来运行 Apache Base 查询。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: e85226e7a2544cda01f40a1c1be6be32f11d9dfc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 50a72d0400b23162e05b17b37bdad48783261072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542788"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944765"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>使用 Apache Zepperin 在 Azure HDInsight 中的 Apache HBase 上运行 Apache Phoenix 查询
 
@@ -46,7 +43,7 @@ HDInsight 上的 Apache HBase 群集。 请参阅 [Apache HBase 入门](./apache
 
     ![Zeppelin 笔记本状态](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin 笔记本状态")
 
-1. 创建一个 HBase 表。 输入以下命令，然后按 **Shift + Enter** ：
+1. 创建一个 HBase 表。 输入以下命令，然后按 **Shift + Enter**：
 
     ```sql
     %jdbc(phoenix)

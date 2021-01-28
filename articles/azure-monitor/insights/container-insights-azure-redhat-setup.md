@@ -3,12 +3,12 @@ title: 为容器 Azure Monitor 配置 Azure Red Hat OpenShift v3. x |Microsoft D
 description: 本文介绍如何使用 Azure Red Hat OpenShift 版本3和更高版本上托管 Azure Monitor 来配置监视 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5141ef3a96d39f16a2a9f005dd580b952046e7bf
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: f21a338a06d4a0947e2623854d828c720fb2d4bb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695667"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944550"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift v3
 
@@ -30,7 +30,7 @@ ms.locfileid: "97695667"
 可以使用以下受支持的方法，为新的或 Azure Red Hat OpenShift 的一个或多个现有部署启用容器 Azure Monitor：
 
 - 对于来自 Azure 门户或使用 Azure 资源管理器模板的现有群集。
-- 对于使用 Azure 资源管理器模板的新群集，或在使用 [Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)创建新群集时使用。
+- 对于使用 Azure 资源管理器模板的新群集，或在使用 [Azure CLI](/cli/azure/openshift#az-openshift-create)创建新群集时使用。
 
 ## <a name="supported-and-unsupported-features"></a>支持和不支持的功能
 
@@ -39,7 +39,7 @@ ms.locfileid: "97695667"
 - 实时数据 (预览) 
 - [收集](container-insights-update-metrics.md) 群集节点和 pod 中的指标，并将其存储在 Azure Monitor 度量值数据库中
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [Log Analytics 工作区](../platform/design-logs-deployment.md)。
 

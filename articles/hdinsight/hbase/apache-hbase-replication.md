@@ -1,19 +1,16 @@
 ---
 title: 虚拟网络中的 HBase 群集复制-Azure HDInsight
 description: 了解如何设置从一个 HDInsight 版本到另一个版本的 HBase 复制，以实现负载均衡、高可用性、在不造成停机的情况下进行迁移和更新，以及灾难恢复。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 8fc5ba2280b5ad68a40f4992adc170408e80e5a6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cfcb3a5a601afadb9f3fcd71c24e18a9d7f27b9e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021786"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946414"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -66,7 +63,7 @@ ms.locfileid: "96021786"
 
 **VNet 1**
 
-| 属性 | 值 |
+| properties | 值 |
 |----------|-------|
 | 位置 | 美国西部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet1 |
@@ -78,12 +75,12 @@ ms.locfileid: "96021786"
 | 网关名称 | vnet1gw |
 | 网关类型 | Vpn |
 | 网关 VPN 类型 | RouteBased |
-| 网关 SKU | Basic |
+| 网关 SKU | 基本 |
 | 网关 IP | vnet1gwip |
 
 **VNet 2**
 
-| 属性 | 值 |
+| properties | 值 |
 |----------|-------|
 | 位置 | 美国东部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
@@ -95,7 +92,7 @@ ms.locfileid: "96021786"
 | 网关名称 | vnet2gw |
 | 网关类型 | Vpn |
 | 网关 VPN 类型 | RouteBased |
-| 网关 SKU | Basic |
+| 网关 SKU | 基本 |
 | 网关 IP | vnet1gwip |
 
 ## <a name="setup-dns"></a>设置 DNS
@@ -287,7 +284,7 @@ sudo service bind9 status
 
 **从 Azure 门户启用 HBase 复制**
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开源 HBase 群集。
 3. 在群集菜单中，选择“脚本操作”。
 4. 在页面顶部，选择“提交新项”。
@@ -305,7 +302,7 @@ sudo service bind9 status
       >
       > 本演练假设 hn1 为活动头节点。 请检查群集以确定活动头节点。
 
-6. 选择“创建”  。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
+6. 选择“创建”。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
 
 必需参数：
 
@@ -326,7 +323,7 @@ sudo service bind9 status
 |-m、--machine | 指定要在其中运行脚本操作的头节点。 此值应当根据活动的头节点进行选择。 在 HDInsight 门户或 Azure PowerShell 中以脚本操作的形式运行 $0 脚本时，可使用此选项。|
 |-cp、-copydata | 在启用复制的情况下，允许迁移表中的现有数据。 |
 |-rpm、-replicate-phoenix-meta | 针对 Phoenix 系统表启用复制。 <br><br>*请谨慎使用此选项。* 建议在使用此脚本之前，在副本群集上重新创建 Phoenix 表。 |
-|-h、--help | 显示用法信息。 |
+|-h、--help | 显示使用情况信息。 |
 
 该[脚本](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh)的 `print_usage()` 节中提供了详细的参数说明。
 

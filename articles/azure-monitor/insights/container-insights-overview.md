@@ -3,12 +3,12 @@ title: 用于容器的 Azure Monitor 概述 | Microsoft Docs
 description: 本文介绍用于容器的 Azure Monitor，它通过监视 AKS 群集和 Azure 中容器实例的运行状况监视 AKS 容器见解解决方案及其提供的值。
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 215427adc38ebd554ca7ac650ec65a05f5a781e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a21a0e506082b58473870baed014ede16665e837
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317151"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943809"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>用于容器的 Azure Monitor 概述
 
@@ -17,11 +17,11 @@ ms.locfileid: "91317151"
 - [Azure Kubernetes 服务 (AKS)](../../aks/intro-kubernetes.md) 上托管的托管 Kubernetes 群集
 - 使用 [AKS 引擎](https://github.com/Azure/aks-engine)在 Azure 上托管的自托管 Kubernetes 群集
 - [Azure 容器实例](../../container-instances/container-instances-overview.md)
-- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910&preserve-view=true) 上或本地托管的自托管 Kubernetes 群集
+- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) 上或本地托管的自托管 Kubernetes 群集
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [已启用 Azure Arc Kubernetes](../../azure-arc/kubernetes/overview.md) (预览版) 
 
-适用于容器的 Azure Monitor 支持运行 Linux 和 Windows Server 2019 操作系统的群集。 它支持的容器运行时为 Docker、小鲸鱼和任何 CRI 兼容的运行时，例如 CRI 和 ContainerD。
+适用于容器的 Azure Monitor 支持运行 Linux 和 Windows Server 2019 操作系统的群集。 它支持的容器运行时为 Docker、Moby 和任何 CRI 兼容的运行时（如 CRI-O 和 ContainerD）。
 
 监视容器至关重要，特别是在大规模运行包含多个应用程序的生产群集时。
 
@@ -40,7 +40,7 @@ ms.locfileid: "91317151"
 * 了解群集在平均负载和最重负载下的行为。 此信息有助于了解容量需求及确定群集可承受的最大负载。
 * 配置警报，以便在节点或容器上的 CPU 和内存使用率超过阈值时，或者在基础结构中的群集或节点运行状况汇总中发生运行状况状态更改时，主动通知你或进行记录。
 * 与 [Prometheus](https://prometheus.io/docs/introduction/overview/) 集成，以使用[查询](container-insights-log-search.md)查看从节点和 Kubernetes 收集的应用程序和工作负荷指标，以创建自定义警报、仪表板和详细的执行详细分析。
-* 监视[部署到 AKS 引擎](https://github.com/Azure/aks-engine)本地和 [Azure Stack 上的 AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true)的容器工作负载。
+* 监视[部署到 AKS 引擎](https://github.com/Azure/aks-engine)本地和 [Azure Stack 上的 AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)的容器工作负载。
 * 监视 [部署到 Azure Red Hat OpenShift](../../openshift/intro-openshift.md)的容器工作负荷。
 
     >[!NOTE]

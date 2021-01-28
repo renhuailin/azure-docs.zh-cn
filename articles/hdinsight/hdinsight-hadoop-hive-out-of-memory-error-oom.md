@@ -2,19 +2,16 @@
 title: 解决 Azure HDInsight 中的 Hive 内存不足错误
 description: 解决 HDInsight 中的 Hive 内存不足错误。 客户方案为跨多个大型表运行查询。
 keywords: 内存不足错误, OOM, Hive 设置
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: d91da1aa6f7079069541ac955fce8331591a3bc6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c0810d33f3ac939b9382bf321448ed72b6d87474
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546171"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945721"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>解决 Azure HDInsight 中的 Apache Hive 内存不足错误
 
@@ -91,7 +88,7 @@ Hive 查询在 24 节点 A3 HDInsight 群集上用了 26 分钟才完成。 客�
 
 "如果为，则为。 hive.auto.convert.join.noconditionaltask.size = true 我们检查 hive.auto.convert.join.noconditionaltask.size，如果映射联接中的表大小之和小于 hive.auto.convert.join.noconditionaltask.size，则该计划将生成一个映射联接，此问题的问题在于，计算不会考虑由不同哈希表实现产生的开销，因此，如果输入大小的总和小于小边距查询会命中 OOM 的 hive.auto.convert.join.noconditionaltask.size 大小。"
 
-hive-site.xml 文件中的 **Hive.auto.convert.join.noconditionaltask** 已设置为 **true** ：
+hive-site.xml 文件中的 **Hive.auto.convert.join.noconditionaltask** 已设置为 **true**：
 
 ```xml
 <property>
@@ -109,10 +106,10 @@ hive-site.xml 文件中的 **Hive.auto.convert.join.noconditionaltask** 已设�
 
 ![Tez 容器内存示意图：Hive 内存不足错误](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-如该博客文章中所述，以下两项内存设置定义了堆的容器内存： **hive.tez.container.size** 和 **hive.tez.java.opts** 。 从我们的经验来看，内存不足异常并不意味着容器大小太小。 而是表示 Java 堆大小 (hive.tez.java.opts) 太小。 因此，每当看到内存不足时，可尝试增大 **hive.tez.java.opts** 。 必要时，可能需要增大 **hive.tez.container.size** 。 **java.opts** 设置应该大约为 **container.size** 的 80%。
+如该博客文章中所述，以下两项内存设置定义了堆的容器内存：**hive.tez.container.size** 和 **hive.tez.java.opts**。 从我们的经验来看，内存不足异常并不意味着容器大小太小。 而是表示 Java 堆大小 (hive.tez.java.opts) 太小。 因此，每当看到内存不足时，可尝试增大 **hive.tez.java.opts**。 必要时，可能需要增大 **hive.tez.container.size**。 **java.opts** 设置应该大约为 **container.size** 的 80%。
 
 > [!NOTE]  
-> **hive.tez.java.opts** 设置必须始终小于 **hive.tez.container.size** 。
+> **hive.tez.java.opts** 设置必须始终小于 **hive.tez.container.size**。
 
 由于 D12 计算机具有 28 GB 内存，因此我们决定使用 10 GB 的容器大小 (10240 MB) 并将80% 分配给 java。
 

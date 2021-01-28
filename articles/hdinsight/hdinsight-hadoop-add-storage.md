@@ -1,23 +1,20 @@
 ---
 title: 将其他 Azure 存储帐户添加到 HDInsight
 description: 了解如何将其他 Azure 存储帐户添加到现有 HDInsight 群集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 51977c00dc8c9932def89d54ec1b6ec34afad652
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 11852046442901c70112b5e80fef371671546412
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541989"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945940"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
-了解如何使用脚本操作将其他 Azure 存储 *帐户* 添加到 HDInsight。 本文档中的步骤会将存储帐户添加到现有 HDInsight 群集。  本文适用于不 (默认群集存储帐户) 的存储 *帐户* ，而不适用于和等其他存储 [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-storage-gen1.md) [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) 。
+了解如何使用脚本操作将其他 Azure 存储 *帐户* 添加到 HDInsight。 本文档中的步骤会将存储帐户添加到现有 HDInsight 群集。 本文适用于不 (默认群集存储帐户) 的存储 *帐户* ，而不适用于和等其他存储 [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-storage-gen1.md) [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) 。
 
 > [!IMPORTANT]  
 > 本文档中的信息是关于在创建群集后将其他存储帐户添加到群集。 有关如何在创建群集期间添加存储帐户的信息，请参阅[使用 Apache Hadoop、Apache Spark、Apache Kafka 等设置 HDInsight 中的群集](hdinsight-hadoop-provision-linux-clusters.md)。
@@ -61,7 +58,7 @@ ms.locfileid: "92541989"
 
 ## <a name="verification"></a>验证
 
-在 Azure 门户中查看 HDInsight 群集时，选择“属性”  下的“存储帐户”  项时不会显示通过此脚本操作添加的存储帐户。 Azure PowerShell 和 Azure CLI 也不显示其他存储帐户。 之所以未显示存储信息是因为该脚本只修改群集的 `core-site.xml` 配置。 使用 Azure 管理 API 检索群集信息时，不会使用此信息。
+在 Azure 门户中查看 HDInsight 群集时，选择“属性”下的“存储帐户”项时不会显示通过此脚本操作添加的存储帐户。 Azure PowerShell 和 Azure CLI 也不显示其他存储帐户。 之所以未显示存储信息是因为该脚本只修改群集的 `core-site.xml` 配置。 使用 Azure 管理 API 检索群集信息时，不会使用此信息。
 
 若要验证其他存储，请使用下面显示的方法之一：
 
@@ -97,7 +94,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。
 
-1. 导航到“HDFS”  >  “配置” >  “高级” >  “自定义 core-site”。
+1. 导航到“HDFS” > “配置” > “高级” > “自定义 core-site”。
 
 1. 观察以 `fs.azure.account.key` 开头的密钥。 如此示例图像中所示，帐户名称将成为密钥的一部分：
 
@@ -107,7 +104,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。
 
-1. 导航到“HDFS”  >  “配置” >  “高级” >  “自定义 core-site”。
+1. 导航到“HDFS” > “配置” > “高级” > “自定义 core-site”。
 
 1. 删除以下密钥：
     * `fs.azure.account.key.<STORAGE_ACCOUNT_NAME>.blob.core.windows.net`
@@ -119,13 +116,13 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ### <a name="storage-firewall"></a>存储防火墙
 
-如果选择使用 **所选网络** 上的 **防火墙和虚拟网络** 限制来保护存储帐户，请确保启用 " **允许受信任的 Microsoft 服务** " 例外，以便 HDInsight 可以访问你的存储帐户`.`
+如果选择使用 **所选网络** 上的 **防火墙和虚拟网络** 限制来保护存储帐户，请确保启用 "**允许受信任的 Microsoft 服务**" 例外，以便 HDInsight 可以访问你的存储帐户`.`
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>更改密钥后，无法访问存储
 
 如果更改了存储帐户的密钥，HDInsight 不再能够访问存储帐户。 HDInsight 使用群集的 core-site.xml 中缓存的密钥副本。 必须更新此缓存的副本，使其匹配新密钥。
 
-再次运行脚本操作不会  更新密钥，因为脚本会检查该存储帐户的条目是否已存在。 如果条目已存在，则不会进行任何更改。
+再次运行脚本操作不会更新密钥，因为脚本会检查该存储帐户的条目是否已存在。 如果条目已存在，则不会进行任何更改。
 
 若要解决此问题，请执行以下操作：  
 1. 删除存储帐户。

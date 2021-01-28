@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂的 azure 专用链接
+title: 用于 Azure 数据工厂的 Azure 专用链接
 description: 了解 azure 专用链接在 Azure 数据工厂中的工作原理。
 services: data-factory
 ms.author: abnarain
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 5d13a6a77ede6277eebc7fdab7cd42165cb602fa
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 6fb460c65d37723b03c1dfd4fba2c353c19455bd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746333"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944587"
 ---
-# <a name="azure-private-link-for-azure-data-factory"></a>Azure 数据工厂的 azure 专用链接
+# <a name="azure-private-link-for-azure-data-factory"></a>用于 Azure 数据工厂的 Azure 专用链接
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -67,7 +67,7 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
 > 创建链接服务时，请确保你的凭据存储在 Azure 密钥保管库中。 否则，在 Azure 数据工厂中启用专用链接时，凭据将不起作用。
 
 ## <a name="dns-changes-for-private-endpoints"></a>专用终结点的 DNS 更改
-创建专用终结点时，数据工厂的 DNS CNAME 资源记录将更新为具有前缀 "privatelink" 的子域中的别名。 默认情况下，我们还会创建一个 [专用 dns 区域](https://docs.microsoft.com/azure/dns/private-dns-overview)，该区域与 "privatelink" 子域相对应，其中 dns a 用于专用终结点的资源记录。
+创建专用终结点时，数据工厂的 DNS CNAME 资源记录将更新为具有前缀 "privatelink" 的子域中的别名。 默认情况下，我们还会创建一个 [专用 dns 区域](../dns/private-dns-overview.md)，该区域与 "privatelink" 子域相对应，其中 dns a 用于专用终结点的资源记录。
 
 当你通过专用终结点将数据工厂终结点 URL 从 VNet 外部解析时，它将解析为数据工厂服务的公共终结点。 从托管专用终结点的 VNet 进行解析时，存储终结点 URL 解析为专用终结点的 IP 地址。
 
@@ -89,8 +89,8 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
 如果在网络上使用自定义 DNS 服务器，则客户端必须能够将数据工厂端点的 FQDN 解析到专用终结点 IP 地址。 应将 DNS 服务器配置为将专用链接子域委托给 VNet 的专用 DNS 区域，或为 "DataFactoryA" 配置 A 记录。具有专用终结点 IP 地址的 {region}. privatelink. datafactory。
 
 有关配置自己的 DNS 服务器以支持专用终结点的详细信息，请参阅以下文章：
-- [Azure 虚拟网络中资源的名称解析](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [专用终结点的 DNS 配置](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Azure 虚拟网络中资源的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [专用终结点的 DNS 配置](../private-link/private-endpoint-overview.md#dns-configuration)
 
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>为 Azure 数据工厂设置专用链接

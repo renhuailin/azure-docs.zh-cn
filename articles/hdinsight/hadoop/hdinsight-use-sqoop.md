@@ -1,18 +1,15 @@
 ---
 title: 通过 Azure HDInsight (Apache Hadoop) 运行 Apache Sqoop 作业
 description: 了解如何使用工作站中的 Azure PowerShell 在 Hadoop 群集与 Azure SQL 数据库之间运行 Sqoop 导入和导出。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: c09a910ea5f6ac5c66a94c73bda49d1f65630708
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1c34b673cd970a9e7577b7ff01d27eb0e4cc1ac1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545219"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946426"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用
 
@@ -105,7 +102,7 @@ HDInsight 群集附带了某些示例数据。 可使用以下两个示例：
 
 HDInsight 可以使用各种方法运行 Sqoop 作业。 使用下表来确定哪种方法最适合用户，并访问此链接进行演练。
 
-| **使用此方法** ，如果想要... | ... **交互式** shell | ... **批处理** | ...从此 **客户端操作系统** |
+| **使用此方法** ，如果想要... | ... **交互式** shell | ...**批处理** | ...从此 **客户端操作系统** |
 |:--- |:---:|:---:|:--- |:--- |
 | [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux、Unix、Mac OS X 或 Windows |
 | [.NET SDK for Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |?  |Windows（暂时） |

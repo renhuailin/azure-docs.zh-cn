@@ -1,19 +1,16 @@
 ---
 title: 使用脚本操作自定义 Azure HDInsight 群集
 description: 使用脚本操作将自定义组件添加到 HDInsight 群集。 脚本操作为 Bash 脚本，可用于自定义群集配置。 或添加其他服务和实用工具，如色相、Solr 或 R。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 09/02/2020
-ms.openlocfilehash: 70918d1dc829ff0114a8c1019524feb934c9f915
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 46be3349490f04660d4fc8b69e4cdc295d8ecc1c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630932"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945798"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义 Azure HDInsight 群集
 
@@ -27,21 +24,21 @@ Azure HDInsight 提供名为脚本操作的配置方法，该方法可以调用�
 
 - 必须存储在可从 HDInsight 群集访问的 URI 上。 下面是可能的存储位置：
 
-    - 对于常规 (非 ESP) 群集：
-      - Data Lake Storage Gen1/Gen2：服务主体 HDInsight 使用来访问 Data Lake Storage 必须具有脚本的读取访问权限。 存储在 Data Lake Storage Gen1 中的脚本的 URI 格式为 `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`。 Data Lake Storage Gen2 脚本的 URI 格式是 `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
+    - 对于常规（非 ESP）群集：
+      - Data Lake Storage Gen1/Gen2：用于访问 Data Lake Storage 的服务主体 HDInsight 必须具有对脚本的读取访问权限。 存储在 Data Lake Storage Gen1 中的脚本的 URI 格式为 `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`。 Data Lake Storage Gen2 脚本的 URI 格式为 `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
       - Azure 存储帐户中的一个 Blob，该存储帐户可以是 HDInsight 群集的主存储帐户，也可以是其附加存储帐户。 在创建群集期间，已将这两种存储帐户的访问权限都授予 HDInsight。
 
         > [!IMPORTANT]  
         > 请勿在此 Azure 存储帐户上轮换存储密钥，因为这会导致对存储在其中的脚本执行后续脚本操作失败。
 
-      - 公共文件共享服务可通过路径进行访问 `http://` 。 例如，Azure Blob、GitHub 或 OneDrive。 有关示例 URI，请参阅[脚本操作脚本示例](#example-script-action-scripts)。
-    - 对于具有 ESP 的群集， `wasb://` `wasbs://` 支持或 `http[s]://` uri。
+      - 可通过 `http://` 路径访问的公共文件共享服务。 例如，Azure Blob、GitHub 或 OneDrive。 有关示例 URI，请参阅[脚本操作脚本示例](#example-script-action-scripts)。
+    - 对于具有 ESP 的群集，支持 `wasb://` 或 `wasbs://` 或 `http[s]://` URI。
 
 - 可以限制为只对特定的节点类型运行， 例如头节点或工作节点。
-- 可以是持久的或 *临时* 的。
+- 可以是持久化的，也可以是临时的。
 
     - 持久化脚本操作必须有唯一的名称。 持久化脚本用于自定义通过缩放操作添加到群集的新工作节点。 进行缩放操作时，持久化脚本还可以将更改应用于其他节点类型， 例如头节点。
-    - *即席* 脚本不会持久保存。 创建群集期间使用的脚本操作自动持久保存下来。 它们在运行后不会应用于添加到群集的工作节点。 然后，可以将 *即席* 脚本升级为持久化脚本，或将持久化脚本降级 *为即席脚本* 。 即使明确指出应予保存，也不会持久保存失败的脚本。
+    - 临时脚本不是持久化脚本。 创建群集期间使用的脚本操作自动持久保存下来。 它们在运行后不会应用于添加到群集的工作节点。 然后，可以将临时脚本升级为持久化脚本，或将持久化脚本降级为临时脚本 。 即使明确指出应予保存，也不会持久保存失败的脚本。
 
 - 可以接受脚本在执行期间使用的参数。
 - 在群集节点上以根级别权限运行。
@@ -64,7 +61,7 @@ Azure HDInsight 提供名为脚本操作的配置方法，该方法可以调用�
 
 ## <a name="access-control"></a>访问控制
 
-如果你不是 Azure 订阅的管理员或所有者，你的帐户至少必须具有对 `Contributor` 包含 HDInsight 群集的资源组的访问权限。
+如果你不是 Azure 订阅的管理员或所有者，则你的帐户必须对包含 HDInsight 群集的资源组至少拥有 `Contributor` 访问权限。
 
 至少具有对 Azure 订阅的参与者访问权限的用户必须之前已注册提供程序。 在对订阅具有参与者访问权限的用户创建资源时，会进行提供程序注册。 对于不创建资源的情况，请参阅[使用 REST 注册提供程序](/rest/api/resources/providers#Providers_Register)。
 
@@ -75,7 +72,7 @@ Azure HDInsight 提供名为脚本操作的配置方法，该方法可以调用�
 
 ## <a name="methods-for-using-script-actions"></a>使用脚本操作的方法
 
-你可以选择配置一个脚本操作，使其在第一次创建群集时运行，或在现有群集上运行。
+你可以选择配置一个脚本操作，让它在第一次创建群集时运行，或在现有群集上运行。
 
 ### <a name="script-action-in-the-cluster-creation-process"></a>群集创建过程中的脚本操作
 
@@ -205,7 +202,7 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
 ## <a name="script-action-to-a-running-cluster"></a>将脚本操作应用到正在运行的群集
 
-本部分介绍如何对正在运行的群集应用脚本操作。
+本部分说明如何在正在运行的群集上应用脚本操作。
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-portal"></a>从 Azure 门户将脚本操作应用到正在运行的群集
 
@@ -307,7 +304,7 @@ NodeTypes       : {HeadNode, WorkerNode}
 | `Get-AzHDInsightPersistedScriptAction` |检索有关持久化脚本操作的信息。 此 cmdlet 不会撤消脚本执行的操作，而只会删除持久化标志。|
 | `Get-AzHDInsightScriptActionHistory` |检索已应用到群集的脚本操作的历史记录，或特定脚本的详细信息。 |
 | `Set-AzHDInsightPersistedScriptAction` |将 `ad hoc` 脚本操作升级为持久化脚本操作。 |
-| `Remove-AzHDInsightPersistedScriptAction` |将持久化脚本操作降级为 `ad hoc` 操作。 |
+| `Remove-AzHDInsightPersistedScriptAction` |将持久化脚本操作降级为 `ad hoc` 脚本操作。 |
 
 以下示例脚本演示如何使用 cmdlet 来升级再降级脚本。
 

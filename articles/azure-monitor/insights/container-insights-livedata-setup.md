@@ -4,12 +4,12 @@ description: 本文介绍在不将 kubectl 与适用于容器的 Azure Monitor �
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: d5b978e7138e10ed88f5748b84ff62ddd22bebec
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3c176b2db659577d585ac077eebe0484203eb9cf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050776"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943863"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何设置实时数据（预览版）功能
 
@@ -19,7 +19,7 @@ ms.locfileid: "98050776"
 
 - 没有启用 Kubernetes RBAC 授权的 AKS
 - 启用了 Kubernetes RBAC 授权的 AKS
-    - 配置了群集角色绑定 **[clusterMonitoringUser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0&preserve-view=true)** 的 AKS
+    - 配置了群集角色绑定 **[clusterMonitoringUser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials)** 的 AKS
 - 启用了基于 SAML 的 Azure Active Directory (AD) 单一登录的 AKS
 
 这些说明要求对 Kubernetes 群集具有管理访问权限，在配置为使用 Azure Active Directory (AD) 进行用户身份验证的情况下，要求对 Azure AD 具有管理访问权限。

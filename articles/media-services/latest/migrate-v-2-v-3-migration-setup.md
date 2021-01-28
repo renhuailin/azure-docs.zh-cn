@@ -1,6 +1,6 @@
 ---
-title: 媒体服务 v2 到 v3 迁移清单
-description: 本文是一个核对清单，可帮助你从 Azure 媒体服务 v2 迁移到 v3。
+title: 媒体服务 v2 到 v3 的迁移设置
+description: 本文将帮助你设置用于从 Azure 媒体服务 v2 迁移到 v3 的环境。
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2021
 ms.author: inhenkel
-ms.openlocfilehash: bd1488a1e89bb7d5c8a3a2dedda60bd5a226e02e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1f9e0816a3533008a01f26ca7c0e712abfa23e8e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898250"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946239"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>步骤 3-设置以迁移到 V3 REST API 或客户端 SDK
 

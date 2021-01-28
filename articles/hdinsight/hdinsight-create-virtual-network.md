@@ -1,19 +1,16 @@
 ---
 title: 为 Azure HDInsight 群集创建虚拟网络
 description: 了解如何创建 Azure 虚拟网络，以将 HDInsight 连接到其他云资源或数据中心内的资源。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/16/2020
-ms.openlocfilehash: 4f604ba2edcc63a245a5e87d3dcb6fdd16a9d050
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 43d57eac94cabb5c648183911e0c0bf72889946d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741435"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946068"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>为 Azure HDInsight 群集创建虚拟网络
 
@@ -331,7 +328,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     };
     ```
 
-    将 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` 值替换为另一虚拟网络的 DNS 后缀。  此项将对远程网络 DNS 后缀的请求路由到该网络中的自定义 DNS。
+    将 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` 值替换为另一虚拟网络的 DNS 后缀。 此项将对远程网络 DNS 后缀的请求路由到该网络中的自定义 DNS。
 
 3. 在两个虚拟网络的自定义 DNS 服务器上，使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
 

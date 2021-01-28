@@ -1,19 +1,16 @@
 ---
 title: 查询 Azure Monitor 日志来监视 Azure HDInsight 群集
 description: 了解如何在 Azure Monitor 日志上运行查询，以监视在 HDInsight 群集中运行的作业。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: c2ddcd8ea3524b4afdfa7f70d21f0cba96975f72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9213f36ec33939c3df3b56d21822aa3b6a17c03
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085355"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945612"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a> Azure Monitor 日志以监视 HDInsight 群集
 
@@ -24,7 +21,7 @@ ms.locfileid: "86085355"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 必须将 HDInsight 群集配置为使用 Azure Monitor 日志，并将特定于 HDInsight 群集的 Azure Monitor 日志监视解决方案添加到工作区。 有关说明，请参阅 [将 Azure Monitor 日志与 HDInsight 群集配合使用](hdinsight-hadoop-oms-log-analytics-tutorial.md)。
 
@@ -107,7 +104,7 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 
     ![输入查询以创建警报1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "输入查询以创建警报1")
 
-1. 在“创建规则”窗口中，输入用于创建警报的查询和其他详细信息，然后选择“创建预警规则”********。
+1. 在“创建规则”窗口中，输入用于创建警报的查询和其他详细信息，然后选择“创建预警规则”。
 
     ![输入查询以创建 alert2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "输入查询以创建 alert2")
 
@@ -121,13 +118,13 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 
 1. 选择要编辑或删除的警报。
 
-1. 可选择以下选项：“保存”、“放弃”、“禁用”和“删除”****************。
+1. 可选择以下选项：“保存”、“放弃”、“禁用”和“删除”。
 
     ![HDInsight Azure Monitor 日志警报删除编辑](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
 有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理指标警报](../azure-monitor/platform/alerts-metric.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)
 * [在 Azure Monitor 中使用视图设计器创建自定义视图](../azure-monitor/platform/view-designer.md)

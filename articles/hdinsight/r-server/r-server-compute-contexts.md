@@ -1,19 +1,16 @@
 ---
 title: 适用于 HDInsight 上的 ML Services 的计算上下文选项 - Azure
 description: 了解可供 HDInsight 上的 ML Services 用户使用的不同计算上下文选项
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 71ce0d87faa33bd7d533242edfcf3b131c8f7e47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536328"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943953"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>适用于 HDInsight 上的 ML Services 的计算上下文选项
 
@@ -29,12 +26,12 @@ Azure HDInsight 上的 ML Services 可设置计算上下文，从而控制执行
 
 一般而言，在边缘节点上的 ML Services 群集中运行的 R 脚本会在该节点上的 R 解释器内运行。 但是，调用 RevoScaleR 函数的步骤例外。 RevoScaleR 调用会在计算环境中运行，而计算环境取决于如何设置 RevoScaleR 计算上下文。  从边缘节点运行 R 脚本时，计算上下文的值可能有：
 
-- 本地顺序 (local) 
-- 本地并行 (localpar) 
+- 本地顺序 (local)
+- 本地并行 (localpar)
 - Map Reduce
 - Spark
 
-local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式  。 这两个选项都以并行方式跨所有可用核心执行其他 rx-function 调用，除非使用 RevoScaleR **numCoresToUse** 选项另外指定，例如，`rxOptions(numCoresToUse=6)`。 并行执行选项提供最佳性能。
+local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式。 这两个选项都以并行方式跨所有可用核心执行其他 rx-function 调用，除非使用 RevoScaleR **numCoresToUse** 选项另外指定，例如，`rxOptions(numCoresToUse=6)`。 并行执行选项提供最佳性能。
 
 下表总结了用于设置调用执行方式的各个计算上下文选项：
 
@@ -57,14 +54,14 @@ local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式  。
 
 鉴于这些原则，有一些用于选择计算上下文的常规经验规则，如下面部分所示。
 
-### <a name="local"></a>Local
+### <a name="local"></a>本地
 
 - 如果要分析的数据量较小，并且不需要重复的分析，请使用 *local* 或 *localpar* 将其直接流式传输到分析例程。
-- 如果要分析的数据量较小或者大小适中并且需要重复分析，可将其复制到本地文件系统，导入到 XDF，然后通过 local 或 localpar 进行分析  。
+- 如果要分析的数据量较小或者大小适中并且需要重复分析，可将其复制到本地文件系统，导入到 XDF，然后通过 local 或 localpar 进行分析。
 
 ### <a name="apache-spark"></a>Apache Spark
 
-- 如果要分析的数据量较大，可使用 RxHiveData 或 RxParquetData 将它导入到 Spark DataFrame，或导入到 HDFS 中的 XDF（除非存储有问题），然后通过 Spark 计算上下文进行分析  。
+- 如果要分析的数据量较大，可使用 RxHiveData 或 RxParquetData 将它导入到 Spark DataFrame，或导入到 HDFS 中的 XDF（除非存储有问题），然后通过 Spark 计算上下文进行分析。
 
 ### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop Map Reduce
 

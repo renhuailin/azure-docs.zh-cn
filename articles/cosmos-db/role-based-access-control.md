@@ -1,22 +1,22 @@
 ---
-title: Azure 中基于角色的访问控制 Azure Cosmos DB
-description: 了解 Azure Cosmos DB 如何在 Azure RBAC)  (提供数据库保护和 Active directory 集成。
+title: Azure Cosmos DB 中的 Azure 基于角色的访问控制
+description: 了解 Azure Cosmos DB 如何使用 Active Directory 集成 (Azure RBAC) 来提供数据库保护。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 950a3c03d5c2c76ad417634833c473ee65adb9b9
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 2a5ec03bcd7d5002f85d32ed63614d277e95cfa0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636633"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943754"
 ---
-# <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Azure 中基于角色的访问控制 Azure Cosmos DB
+# <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 Azure 基于角色的访问控制
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB 提供内置的 Azure 基于角色的访问控制 (Azure RBAC) 用于 Azure Cosmos DB 中的常见管理方案。 在 Azure Active Directory 中创建了配置文件的个人可将这些 Azure 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure Cosmos DB 中的资源和操作的访问权限。 角色分配范围仅限控制平面访问，包括对 Azure Cosmos 帐户、数据库、容器和套餐（吞吐量）的访问。
+Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 Azure 基于角色的访问控制 (Azure RBAC)。 在 Azure Active Directory 中创建了配置文件的个人可将这些 Azure 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure Cosmos DB 中的资源和操作的访问权限。 角色分配范围仅限控制平面访问，包括对 Azure Cosmos 帐户、数据库、容器和套餐（吞吐量）的访问。
 
 ## <a name="built-in-roles"></a>内置角色
 
@@ -30,11 +30,11 @@ Azure Cosmos DB 提供内置的 Azure 基于角色的访问控制 (Azure RBAC) �
 |[Cosmos DB 操作员](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|可预配 Azure Cosmos 帐户、数据库和容器。 无法访问任何数据或使用数据资源管理器。|
 
 > [!IMPORTANT]
-> Azure Cosmos DB 中的 Azure RBAC 支持仅适用于控制平面操作。 使用主键或资源令牌保护数据平面操作。 有关详细信息，请参阅[保护对 Azure Cosmos DB 中数据的访问](secure-access-to-data.md)
+> Azure Cosmos DB 中的 Azure RBAC 仅支持适用于控制平面操作。 使用主密钥或资源令牌保护数据平面操作。 有关详细信息，请参阅[保护对 Azure Cosmos DB 中数据的访问](secure-access-to-data.md)
 
 ## <a name="identity-and-access-management-iam"></a>标识和访问管理 (IAM)
 
-Azure 门户中的 **访问控制 (IAM)** 窗格用于在 azure Cosmos 资源上配置基于 azure 角色的访问控制。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。 对于个人和组，可使用内置角色或自定义角色。 以下屏幕截图显示在) 中使用访问控制 (IAM Azure 门户 (Azure RBAC) Active Directory 集成：
+Azure 门户中的“访问控制(IAM)”窗格用于针对 Azure Cosmos 资源配置 Azure 基于角色的访问控制。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。 对于个人和组，可使用内置角色或自定义角色。 以下屏幕截图显示在 Azure 门户中使用访问控制 (IAM) 的 Active Directory 集成 (Azure RBAC)：
 
 :::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Azure 门户中的访问控制 (IAM) - 演示数据库安全性":::
 

@@ -1,19 +1,16 @@
 ---
 title: 在 Azure HDInsight 中使用 Apache Mahout 生成推荐
 description: 了解如何使用 Apache Mahout 机器学习库通过 HDInsight 生成电影推荐。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: a4e4a45519526dd0eeb938a3b83e737d82589c1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c31ffaf094801bdd49e5800bd338a15d8b8315f6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207663"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946498"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Mahout 生成推荐
 
@@ -57,7 +54,7 @@ HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入�
 
 ## <a name="run-the-analysis"></a>运行分析
 
-1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 CLUSTERNAME 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net

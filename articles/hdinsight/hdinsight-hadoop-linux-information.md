@@ -1,19 +1,16 @@
 ---
 title: 有关在基于 Linux 的 HDInsight 上使用 Hadoop 的提示 - Azure
 description: 获取有关在 Azure 云中运行的你所熟悉的 Linux 环境中使用基于 Linux 的 HDInsight (Hadoop) 群集的实施提示。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 0f0073c72c28395d89cec74a489cbc36a8f3ffe7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d2619c7bd7bc09eeab3845599758db7134b4134
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546103"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945649"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
@@ -24,9 +21,9 @@ Azure HDInsight 群集提供了基于熟悉的 Linux 环境并在 Azure 云中�
 本文档中的许多步骤使用以下实用程序，这些程序可能需要在系统上安装。
 
 * [cURL](https://curl.haxx.se/) - 用于与基于 Web 的服务进行通信。
-* 命令行 JSON 处理程序 **jq** 。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
+* 命令行 JSON 处理程序 **jq**。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 * [Azure CLI](/cli/azure/install-azure-cli) - 用于远程管理 Azure 服务。
-* **SSH 客户端** 。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
+* **SSH 客户端**。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="users"></a>用户
 
@@ -92,8 +89,8 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 Hadoop 相关文件可在群集节点上的 `/usr/hdp`中找到。 此目录包含以下子目录：
 
-* **2.6.5.3009-43** ：目录名称是 HDInsight 使用的 Hadoop 平台版本。 群集上的数字可能与这里列出的有所不同。
-* **current** ：此目录包含 2.6.5.3009-43 目录下的子目录的链接。 由于该目录存在，因此无需记住版本号。
+* **2.6.5.3009-43**：目录名称是 HDInsight 使用的 Hadoop 平台版本。 群集上的数字可能与这里列出的有所不同。
+* **current**：此目录包含 2.6.5.3009-43 目录下的子目录的链接。 由于该目录存在，因此无需记住版本号。
 
 可以在 Hadoop 分布式文件系统上的 `/example` 和 `/HdiSamples` 处找到示例数据和 JAR 文件。
 
@@ -189,7 +186,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 从 HDInsight 群集外部访问数据的方法有多种。 以下是一些可用于处理数据的实用工具和 SDK 的链接：
 
-如果使用 __Azure Blob 存储__ ，请参阅以下链接，了解访问数据的方法：
+如果使用的是 Azure Blob 存储，请参阅以下链接了解可用于访问数据的方式：
 
 * [Azure CLI](/cli/azure/install-az-cli2)：适用于 Azure 的命令行接口命令。 在安装后，使用 `az storage` 命令获取有关使用存储的帮助，或者使用 `az storage blob` 获取特定于 Blob 的命令。
 * [blobxfer.py](https://github.com/Azure/blobxfer)：用于处理 Azure 存储中的 blob 的 python 脚本。
@@ -203,7 +200,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [存储 REST API](/rest/api/storageservices/Blob-Service-REST-API)
 
-如果使用 __Azure Data Lake Storage Gen1__ ，请参阅以下链接，了解访问数据的方法：
+如果使用 __Azure Data Lake Storage Gen1__，请参阅以下链接，了解访问数据的方法：
 
 * [Web 浏览器](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)

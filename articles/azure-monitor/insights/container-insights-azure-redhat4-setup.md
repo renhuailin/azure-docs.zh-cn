@@ -3,12 +3,12 @@ title: 为容器 Azure Monitor 配置 Azure Red Hat OpenShift v4 |Microsoft Docs
 description: 本文介绍如何使用 Azure Red Hat OpenShift 版本4或更高版本上托管 Azure Monitor 来配置 Kubernetes 群集的监视。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e9f31d1b71122c53a67dc40af31d33255e2e98d8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8cd551a028f2fc67c26f8e32d59c0e0650aa1e54
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994547"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944529"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>为容器配置 Azure Red Hat OpenShift v4. x Azure Monitor
 
@@ -20,7 +20,7 @@ ms.locfileid: "91994547"
 
 可以使用本文中所述的受支持方法，为 Azure Red Hat OpenShift v4 的一个或多个现有部署启用容器 Azure Monitor。
 
-对于现有群集，请 [在 Azure CLI 中运行此 Bash 脚本](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create&preserve-view=true)。
+对于现有群集，请 [在 Azure CLI 中运行此 Bash 脚本](/cli/azure/openshift#az-openshift-create&preserve-view=true)。
 
 ## <a name="supported-and-unsupported-features"></a>支持和不支持的功能
 
@@ -29,7 +29,7 @@ ms.locfileid: "91994547"
 - 实时数据 (预览) 
 - 从群集节点和 pod[收集指标](container-insights-update-metrics.md)并将其存储在 Azure Monitor 度量值数据库中
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure CLI 版本2.0.72 或更高版本  
 
@@ -133,7 +133,7 @@ ms.locfileid: "91994547"
 
 在此示例中，无需预先创建或指定现有工作区。 此命令通过在群集订阅的默认资源组中创建默认工作区（如果该区域中不存在一个工作区）来简化此过程。
 
-创建的默认工作区的格式为*形式 defaultworkspace- \<GUID> - \<Region> *。  
+创建的默认工作区的格式为 *形式 defaultworkspace- \<GUID> - \<Region>*。  
 
 替换和参数的值 `azureAroV4ClusterResourceId` `kubeContext` 。
 
@@ -162,7 +162,7 @@ export kubeContext="<kubeContext name of your ARO v4 cluster>"
 
 1. 在非监视群集列表中，选择该群集，然后选择 " **启用**"。
 
-    您可以通过在 "**群集类型**" 列中查找**ARO**值来确定列表中的结果。 选择 " **启用**" 后，会重定向到本文。
+    您可以通过在 "**群集类型**" 列中查找 **ARO** 值来确定列表中的结果。 选择 " **启用**" 后，会重定向到本文。
 
 ## <a name="next-steps"></a>后续步骤
 

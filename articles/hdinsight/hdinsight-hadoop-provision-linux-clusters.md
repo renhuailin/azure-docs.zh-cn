@@ -1,19 +1,16 @@
 ---
 title: 使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 description: 通过浏览器、Azure 经典 CLI、Azure PowerShell、REST 或 SDK 为 HDInsight 设置 Hadoop、Kafka、Spark、HBase、R Server 或 Storm 群集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: 6ce5de354583da04905f9f889cfabe36e6da6667
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e81ccb541b188fedfefd150233082e9cb1f8c22
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546120"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945540"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -92,7 +89,7 @@ Azure HDInsight 目前提供以下群集类型，每种类型都具有一组用�
 
 使用 HDInsight 群集时，可以在群集创建期间配置两个用户帐户：
 
-* 群集登录用户名：默认的用户名为 *admin* 。它使用 Azure 门户上的基本配置。 有时称为“群集用户”或“HTTP 用户”。
+* 群集登录用户名：默认的用户名为 *admin*。它使用 Azure 门户上的基本配置。 有时称为“群集用户”或“HTTP 用户”。
 * 安全外壳 (SSH) 用户名：用来通过 SSH 连接到群集。 有关详细信息，请参阅 [将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 HTTP 用户名具有以下限制：
@@ -120,7 +117,7 @@ HDInsight 群集可以使用以下存储选项：
 * Azure Data Lake Storage Gen1
 * Azure 存储常规用途 v2
 * Azure 存储常规用途 v1
-* Azure 存储块 blob ( **仅支持用作辅助存储** ) 
+* Azure 存储块 blob (**仅支持用作辅助存储**) 
 
 有关 HDInsight 存储选项的详细信息，请参阅 [比较用于 Azure hdinsight 群集的存储选项](hdinsight-hadoop-compare-storage-options.md)。
 

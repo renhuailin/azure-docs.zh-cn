@@ -1,19 +1,16 @@
 ---
 title: 在 Azure HDInsight 中将 Apache Ambari Hive 视图与 Apache Hadoop 配合使用
 description: 了解如何从 Web 浏览器中使用 Hive 视图来提交 Hive 查询。 Hive 视图是随基于 Linux 的 HDInsight 群集提供的 Ambari Web UI 的一部分。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: cc04a891bb32ede6c7bb72a339b728642cf343ed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1f2dbef014f1b48b554e6bc30af83b936fe532a7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000515"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944870"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>将 Apache Ambari Hive 视图与 HDInsight 中的 Apache Hadoop 配合使用
 

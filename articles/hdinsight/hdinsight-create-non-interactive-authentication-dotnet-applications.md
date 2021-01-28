@@ -1,19 +1,16 @@
 ---
 title: 非交互式身份验证 .NET 应用程序-Azure HDInsight
 description: 了解如何在 Azure HDInsight 中创建非交互式身份验证 Microsoft .NET 应用程序。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: a696ba4f7bab85f2353e80d028220688531b3b69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 121c5850ef47999f54d206b95b69e10775d3e5c9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021759"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946087"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>创建非交互式身份验证 .NET HDInsight 应用程序
 
@@ -35,11 +32,11 @@ HDInsight 群集。 请参阅[入门教程](hadoop/apache-hadoop-linux-tutorial-
 
 **将“所有者”角色添加到 Azure AD 应用程序**
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 导航到具有 HDInsight 群集的资源组，在本文的后面部分中你将在该群集上运行 Hive 查询。 如果有大量资源组，可以使用筛选器查找所需的资源组。
-1. 在“资源组”菜单中，选择“访问控制（标识和访问管理）”****。
-1. 选择“角色分配”**** 选项卡以查看当前的角色分配。
-1. 在页面顶部，选择“+ 添加”。****
+1. 在“资源组”菜单中，选择“访问控制（标识和访问管理）”。
+1. 选择“角色分配”选项卡以查看当前的角色分配。
+1. 在页面顶部，选择“+ 添加”。
 1. 按照说明将“所有者”角色添加到 Azure AD 应用程序。 成功添加角色后，应用程序将在“所有者”角色下列出。
 
 ## <a name="develop-an-hdinsight-client-application"></a>开发 HDInsight 客户端应用程序

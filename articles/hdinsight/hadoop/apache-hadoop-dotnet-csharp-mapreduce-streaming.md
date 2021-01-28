@@ -1,19 +1,16 @@
 ---
 title: 在 HDInsight 中的 Hadoop 上将 C# 与 MapReduce 配合使用 - Azure
 description: 了解如何在 Azure HDInsight 中通过 Apache Hadoop 使用 C# 创建 MapReduce 解决方案。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 4153b612b4b15883f28517d806acf6b340a94e49
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6948491091f558aa7f317d519b0f92c63cac4788
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543043"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946634"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
 
@@ -31,9 +28,9 @@ HDInsight 群集使用 [Mono (https://mono-project.com)](https://mono-project.co
 
 在本文档中用于流式处理的基本流程如下所示：
 
-1. Hadoop 将数据传递到映射器 (此示例中的 *mapper.exe* ) STDIN。
+1. Hadoop 将数据传递到映射器 (此示例中的 *mapper.exe*) STDIN。
 2. 映射器处理数据，并向 STDOUT 发出制表符分隔的键/值对。
-3. 输出由 Hadoop 读取，然后传递到化简器 ( *reducer.exe* 在此示例中) STDIN。
+3. 输出由 Hadoop 读取，然后传递到化简器 (*reducer.exe* 在此示例中) STDIN。
 4. 化简器将读取制表符分隔的键/值对、处理数据，并将结果作为制表符分隔的键/值对在 STDOUT 上发出。
 5. 该输出由 Hadoop 读取，并写入输出目录。
 
@@ -161,7 +158,7 @@ namespace reducer
 
 1. 若要上传 .exe 文件，请使用以下方法之一：
 
-    * 如果使用的是 **Azure 存储帐户** ，请选择“上传 Blob”图标。
+    * 如果使用的是 **Azure 存储帐户**，请选择“上传 Blob”图标。
 
         ![mapper 的 HDInsight 上传图标，Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 
@@ -183,7 +180,7 @@ namespace reducer
 
 1. 使用以下命令之一启动 MapReduce 作业：
 
-   * 如果默认存储为 **Azure 存储** ：
+   * 如果默认存储为 **Azure 存储**：
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
@@ -194,7 +191,7 @@ namespace reducer
             -output /example/wordcountout
         ```
 
-    * 如果默认存储为 **Data Lake Storage Gen1** ：
+    * 如果默认存储为 **Data Lake Storage Gen1**：
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
@@ -205,7 +202,7 @@ namespace reducer
             -output /example/wordcountout
         ```
 
-   * 如果默认存储为 **Data Lake Storage Gen2** ：
+   * 如果默认存储为 **Data Lake Storage Gen2**：
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \

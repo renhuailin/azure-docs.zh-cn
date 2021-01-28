@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop 体系结构 - Azure HDInsight
 description: 介绍 Azure HDInsight 群集上的 Apache Hadoop 存储和处理。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 389aee77ac56407f3a116d42ad62fbd94de1bb4e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6f291e5aa440a3e6e45a1dcdb872e18c8d4557ce
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541938"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945908"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 体系结构
 

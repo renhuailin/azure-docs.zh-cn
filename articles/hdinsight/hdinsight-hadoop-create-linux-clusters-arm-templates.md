@@ -1,25 +1,22 @@
 ---
 title: 使用模板创建 Apache Hadoop 群集-Azure HDInsight
 description: 了解如何使用 Resource Manager 模板创建 HDInsight 的群集
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/07/2020
-ms.openlocfilehash: aa42e9691eac223e7e72da0d792d14262470e15c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c36cee8ce7076093499a76ec0952ad37bd7511a7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748765"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945871"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>使用资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-本文介绍几种使用 [azure 资源管理器模板](../azure-resource-manager/templates/deploy-powershell.md)创建 azure HDInsight 群集的方法。 若要了解其他群集创建工具和功能，请单击此页顶部的选项卡选择器。 另请参阅 [群集创建方法](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods)。
+本文介绍几种使用 [Azure 资源管理器模板](../azure-resource-manager/templates/deploy-powershell.md)创建 Azure HDInsight 群集的方式。 若要了解其他群集创建工具和功能，请在本页顶部单击选项卡选择器。 另请参阅[群集创建方法](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods)。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 

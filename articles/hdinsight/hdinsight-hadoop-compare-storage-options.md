@@ -1,19 +1,16 @@
 ---
 title: 比较用于与 Azure HDInsight 群集配合使用的存储选项
 description: 概述存储类型及其如何使用 Azure HDInsight。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 34eeeed2b3c44336cd4aa1219d54b1811c6988f5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b6dd0fd95280a65615d38ab11a2f9814f58586f5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952312"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945856"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比较用于与 Azure HDInsight 群集配合使用的存储选项
 
@@ -32,12 +29,12 @@ ms.locfileid: "94952312"
 | 存储服务 | 帐户类型 | 命名空间类型 | 支持的服务 | 支持的性能层 | 支持的访问层 | HDInsight 版本 | 群集类型 |
 |---|---|---|---|---|---|---|---|
 |Azure Data Lake Storage Gen2| 常规用途 V2 | 分层 (filesystem)  | Blob | 标准 | 热、冷、存档 | 3.6+ | 除 Spark 2.1 和2.2 之外的所有|
-|Azure 存储| 常规用途 V2 | Object | Blob | 标准 | 热、冷、存档 | 3.6+ | 全部 |
-|Azure 存储| 常规用途 V1 | Object | Blob | 标准 | 空值 | All | 全部 |
-|Azure 存储| Blob 存储 * * | Object | 块 blob | 标准 | 热、冷、存档 | 全部 | 全部 |
-|Azure Data Lake Storage Gen1| 空值 | 分层 (filesystem)  | 空值 | 空值 | 空值 | 仅3。6 | 除 HBase 之外的所有 |
-|Azure 存储| 块 blob| Object | 块 blob | 高级 | 空值| 3.6+ | 仅具有加速写入的 HBase|
-|Azure Data Lake Storage Gen2| 块 blob| 分层 (filesystem)  | 块 blob | 高级 | 空值| 3.6+ | 仅具有加速写入的 HBase|
+|Azure 存储| 常规用途 V2 | 对象 | Blob | 标准 | 热、冷、存档 | 3.6+ | 全部 |
+|Azure 存储| 常规用途 V1 | 对象 | Blob | 标准 | 空值 | All | 全部 |
+|Azure 存储| Blob 存储 * * | 对象 | 块 blob | 标准 | 热、冷、存档 | 全部 | 全部 |
+|Azure Data Lake Storage Gen1| 不适用 | 分层 (filesystem)  | 不适用 | 不适用 | 不适用 | 仅3。6 | 除 HBase 之外的所有 |
+|Azure 存储| 块 blob| 对象 | 块 blob | Premium | 空值| 3.6+ | 仅具有加速写入的 HBase|
+|Azure Data Lake Storage Gen2| 块 blob| 分层 (filesystem)  | 块 blob | Premium | 空值| 3.6+ | 仅具有加速写入的 HBase|
 
 * * 对于 HDInsight 群集，只有辅助存储帐户的类型为 BlobStorage，页 Blob 不是受支持的存储选项。
 

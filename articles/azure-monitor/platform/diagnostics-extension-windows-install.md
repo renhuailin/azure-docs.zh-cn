@@ -1,6 +1,6 @@
 ---
 title: 安装并配置 Microsoft Azure 诊断扩展 (WAD)
-description: 了解如何安装和配置 Windows 诊断扩展。 另外，了解如何将数据存储在和 Azure 存储帐户中的说明。
+description: 了解如何安装和配置 Windows 诊断扩展。 另外，了解如何存储数据的说明以及 Azure 存储帐户。
 services: azure-monitor
 author: bwren
 ms.subservice: diagnostic-extension
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e6ccba27fb599cb26da86e94d3500f4f806ecb76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14f37d0779f245301b3750329658a580dc3f9e42
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328864"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946203"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>安装并配置 Microsoft Azure 诊断扩展 (WAD)
 [Azure 诊断扩展](diagnostics-extension-overview.md)是 Azure Monitor 中的一个代理，可从 Azure 虚拟机的来宾操作系统和工作负载以及其他计算资源中收集监视数据。 本文详细介绍如何安装并配置 Windows 诊断扩展，以及如何将数据存储在 Azure 存储帐户中。
@@ -51,7 +51,7 @@ ms.locfileid: "91328864"
 
 6. 在“日志”选项卡中，选择要从虚拟机中收集的日志。 可以将日志发送到存储或事件中心，但不能将其发送到 Azure Monitor。 使用 [Log Analytics 代理](log-analytics-agent.md)将来宾日志收集到 Azure Monitor。
 
-   ![屏幕截图显示为虚拟机选择不同日志的日志选项卡。](media/diagnostics-extension-windows-install/logs.png)
+   ![屏幕截图显示为虚拟机选择了不同日志的“日志”选项卡。](media/diagnostics-extension-windows-install/logs.png)
 
 7. 在“故障转储”选项卡中，指定在发生故障后用于收集内存转储的任何进程。 数据将写入到存储帐户以进行诊断设置，你可以选择指定 blob 容器。
 
@@ -59,7 +59,7 @@ ms.locfileid: "91328864"
 
 8. 在“接收器”选项卡中，指定是否将数据发送到 Azure 存储以外的位置。 如果选择“Azure Monitor”，则来宾性能数据将发送到 Azure Monitor 指标。 不能使用 Azure 门户配置事件中心接收器。
 
-   ![屏幕截图显示 "接收器" 选项卡，其中启用了 "将诊断数据发送到 Azure Monitor" 选项。](media/diagnostics-extension-windows-install/sinks.png)
+   ![屏幕截图显示“接收器”选项卡，其中启用了“将诊断数据发送到 Azure Monitor”选项。](media/diagnostics-extension-windows-install/sinks.png)
    
    如果尚未启用为虚拟机配置的系统分配的标识，则在使用 Azure Monitor 接收器保存配置时可能会看到以下警告。 单击横幅以启用系统分配的标识。
    
@@ -67,7 +67,7 @@ ms.locfileid: "91328864"
 
 9. 在“代理”中，可以更改存储帐户、设置磁盘配额，并指定是否收集诊断基础结构日志。  
 
-   ![屏幕截图显示 "代理" 选项卡，其中包含用于设置存储帐户的选项。](media/diagnostics-extension-windows-install/agent.png)
+   ![屏幕截图显示“代理”选项卡，其中包含用于设置存储帐户的选项。](media/diagnostics-extension-windows-install/agent.png)
 
 10. 单击 **保存** 以保存配置。 
 
@@ -78,7 +78,7 @@ ms.locfileid: "91328864"
 有关如何使用 Azure 资源管理器模板部署诊断扩展的信息，请参阅[将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](../../virtual-machines/extensions/diagnostics-template.md)。 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
-可以在 Azure CLI 中使用 [az vm extension set](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) 将 Azure 诊断扩展部署到现有的虚拟机，如以下示例所示。 
+可以在 Azure CLI 中使用 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 将 Azure 诊断扩展部署到现有的虚拟机，如以下示例所示。 
 
 ```azurecli
 az vm extension set \

@@ -1,19 +1,16 @@
 ---
 title: 使用 bootstrap 自定义 Azure HDInsight 群集配置
 description: 了解如何使用 .NET、PowerShell 和资源管理器模板以编程方式自定义 HDInsight 群集配置。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: 246c5600da3b554ba65872780f0719a58f3f4be2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 306ebcf7db3c11f783af8cf4c1779bd3d1a013a4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547480"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945749"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
 
@@ -86,9 +83,9 @@ New-AzHDInsightCluster `
 **若要验证更改，请执行以下操作：**
 
 1. 导航至 `https://CLUSTERNAME.azurehdinsight.net/`，其中 `CLUSTERNAME` 是群集的名称。
-1. 从左侧菜单中，导航到“Hive”  > “配置”  > “高级”  。
-1. 展开“高级 hive-site”  。
-1. 找到 **hive.metastore.client.socket.timeout** 并确认该值为 **90s** 。
+1. 从左侧菜单中，导航到“Hive” > “配置” > “高级”。
+1. 展开“高级 hive-site”。
+1. 找到 **hive.metastore.client.socket.timeout** 并确认该值为 **90s**。
 
 下面是有关自定义其他配置文件的更多示例：
 

@@ -3,16 +3,15 @@ title: 精细的基于角色的访问 Azure HDInsight 群集配置
 description: 了解在迁移到 HDInsight 群集配置的基于角色的细化访问权限时，需要进行哪些更改。
 author: tylerfox
 ms.author: tyfox
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: d2e9c1fe89866511f8eae0b900563471cd6e52e9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 08be42f4f0801fc700b3e0fc645c1bbc1b747e91
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533302"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944085"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>迁移到群集配置的基于角色的细化访问权限
 
@@ -28,7 +27,7 @@ ms.locfileid: "92533302"
 
 | 角色                                  | 以前                                                                                       | 今后       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| 读取器                                | - 读取访问权限，包括机密。                                                                   | - 读取访问权限， **不** 包括机密 |           |   |   |
+| 读取器                                | - 读取访问权限，包括机密。                                                                   | - 读取访问权限，**不** 包括机密 |           |   |   |
 | HDInsight 群集操作员<br>（新角色） | 空值                                                                                              | - 读/写访问权限，包括机密         |   |   |
 | 参与者                           | - 读/写访问权限，包括机密。<br>- 创建和管理所有类型的 Azure 资源。<br>- 执行脚本操作。     | 没有变化 |
 | 所有者                                 | - 读/写访问权限，包括机密。<br>- 对所有资源的完全访问权限<br>- 将访问权限委托给其他人。<br>- 执行脚本操作。 | 没有变化 |
@@ -88,7 +87,7 @@ ms.locfileid: "92533302"
 
 更新到 2.3.9000.1 或更高版本的[用于 Visual Studio 的 Azure Data Lake 和流分析工具](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools&ssr=false#overview)可以避免中断。  如需更新方面的帮助，请参阅文档：[更新用于 Visual Studio 的 Data Lake 工具](./hadoop/apache-hadoop-visual-studio-tools-get-started.md#update-data-lake-tools-for-visual-studio)。
 
-### <a name="azure-toolkit-for-eclipse"></a>用于 Eclipse 的 Azure 工具包
+### <a name="azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse
 
 如果使用 3.15.0 或更低版本，请更新到[最新版本的 Azure Toolkit for Eclipse](https://marketplace.eclipse.org/content/azure-toolkit-eclipse)，以避免中断。
 
@@ -98,7 +97,7 @@ ms.locfileid: "92533302"
 
 请更新到 HDInsight SDK for .NET [版本 2.1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/2.1.0)。 如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改：
 
-- `ClusterOperationsExtensions.GetClusterConfigurations` 将 **不再返回敏感参数** ，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
+- `ClusterOperationsExtensions.GetClusterConfigurations` 将 **不再返回敏感参数**，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
     - 今后若要检索所有配置（包括敏感参数），请使用 `ClusterOperationsExtensions.ListConfigurations`。  请注意，具有“读取者”角色的用户将无法使用此方法。 这样便可以精细控制哪些用户可以访问群集的敏感信息。
     - 如果只要检索 HTTP 网关凭据，请使用 `ClusterOperationsExtensions.GetGatewaySettings`。
 
@@ -112,7 +111,7 @@ ms.locfileid: "92533302"
 
 请更新到 HDInsight SDK for .NET [版本 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) 或更高版本。 如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改：
 
-- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet&preserve-view=true) 将 **不再返回敏感参数** ，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
+- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet&preserve-view=true) 将 **不再返回敏感参数**，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
     - 今后若要检索所有配置（包括敏感参数），请使用 [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet&preserve-view=true)。  请注意，具有“读取者”角色的用户将无法使用此方法。 这样便可以精细控制哪些用户可以访问群集的敏感信息。 
     - 如果只要检索 HTTP 网关凭据，请使用 [`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet&preserve-view=true)。 
 - [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet&preserve-view=true) 现已弃用，已由 [`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet&preserve-view=true) 取代。 
@@ -122,7 +121,7 @@ ms.locfileid: "92533302"
 
 请更新到 HDInsight SDK for Python [版本 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) 或更高版本。 如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改：
 
-- [`ConfigurationsOperations.get`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) 将 **不再返回敏感参数** ，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
+- [`ConfigurationsOperations.get`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) 将 **不再返回敏感参数**，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
     - 今后若要检索所有配置（包括敏感参数），请使用 [`ConfigurationsOperations.list`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-)。  请注意，具有“读取者”角色的用户将无法使用此方法。 这样便可以精细控制哪些用户可以访问群集的敏感信息。 
     - 如果只要检索 HTTP 网关凭据，请使用 [`ClusterOperations.get_gateway_settings`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-)。
 - [`ConfigurationsOperations.update`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) 现已弃用，已由 [`ClusterOperations.update_gateway_settings`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) 取代。
@@ -131,14 +130,14 @@ ms.locfileid: "92533302"
 
 请更新到 HDInsight SDK for Java [版本 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) 或更高版本。 如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改：
 
-- `ConfigurationsInner.get` 将 **不再返回敏感参数** ，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
+- `ConfigurationsInner.get` 将 **不再返回敏感参数**，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
 - `ConfigurationsInner.update` 现已弃用。
 
 ### <a name="sdk-for-go"></a>SDK For Go
 
 请更新到 HDInsight SDK for Go [版本 27.1.0](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight) 或更高版本。 如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改：
 
-- [`ConfigurationsClient.get`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ConfigurationsClient.Get) 将 **不再返回敏感参数** ，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
+- [`ConfigurationsClient.get`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ConfigurationsClient.Get) 将 **不再返回敏感参数**，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
     - 今后若要检索所有配置（包括敏感参数），请使用 [`ConfigurationsClient.list`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ConfigurationsClient.List)。  请注意，具有“读取者”角色的用户将无法使用此方法。 这样便可以精细控制哪些用户可以访问群集的敏感信息。 
     - 如果只要检索 HTTP 网关凭据，请使用 [`ClustersClient.get_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ClustersClient.GetGatewaySettings)。
 - [`ConfigurationsClient.update`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ConfigurationsClient.Update) 现已弃用，已由 [`ClustersClient.update_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ClustersClient.UpdateGatewaySettings) 取代。

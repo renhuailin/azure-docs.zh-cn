@@ -1,17 +1,17 @@
 ---
-title: Application Insights 和 Log Analytics 使用的 IP 地址 | Microsoft Docs
+title: Azure Monitor 使用的 IP 地址
 description: Application Insights 所需的服务器防火墙例外
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: eb0739cb44b9f67258069a574ed0bedb95eac5a4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 01/27/2020
+ms.openlocfilehash: 5a6cc190f84b74cc8a1d4ff24d10cbfa07f3c2fb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625176"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945049"
 ---
-# <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 地址
-[Azure Application Insights](./app-insights-overview.md) 服务使用许多 IP 地址。 如果要监视的应用托管在防火墙后面，可能需要知道这些 IP 地址。
+# <a name="ip-addresses-used-by-azure-monitor"></a>Azure Monitor 使用的 IP 地址
+[Azure Monitor](../overview.md) 使用多个 IP 地址。 Azure Monitor 除了包含 Log Analytics 和 Application Insights，还由核心平台指标和日志组成。 如果所监视的应用或基础结构位于防火墙后面，则你可能需要知道这些地址。
 
 > [!NOTE]
 > 尽管这些地址是静态的，但我们可能随时需要更改它们。 除了需要入站防火墙规则的可用性监视和 Webhook 之外，所有 Application Insights 流量都表示出站流量。

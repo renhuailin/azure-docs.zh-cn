@@ -1,19 +1,16 @@
 ---
 title: 从针对 Visual Studio 的 R 工具提交作业 - Azure HDInsight
 description: 从本地 Visual Studio 计算机将 R 作业提交到 HDInsight 群集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 08426c74b26c18b15466578d9921520da1e9c923
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c5a0b2d21f7d42b8ce96f72d58e5d0a8ab0c572c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993782"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943946"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>从针对 Visual Studio 的 R 工具提交作业
 
@@ -21,7 +18,7 @@ ms.locfileid: "95993782"
 
 RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](/visualstudio/rtvs/interactive-repl) (REPL)、Intellisense（代码完成）、通过 ggplot2 和 ggviz 等 R 库[绘制可视化效果](/visualstudio/rtvs/visualizing-data)、[R 代码调试](/visualstudio/rtvs/debugging)等等。
 
-## <a name="set-up-your-environment"></a>设置你的环境
+## <a name="set-up-your-environment"></a>设置环境
 
 1. 安装[针对 Visual Studio 的 R 工具](/visualstudio/rtvs/installing-r-tools-for-visual-studio)。
 

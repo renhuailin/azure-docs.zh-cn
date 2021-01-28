@@ -1,19 +1,16 @@
 ---
 title: 在基于 HDInsight Linux 的群集上将 Hue 与 Hadoop 配合使用 - Azure
 description: 了解如何在 HDInsight 群集上安装 Hue，并使用隧道将请求路由至 Hue。 使用 Hue 浏览存储和运行 Hive 或 Pig。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: e80df5d1c3d2b2195e76622964406cc65c933a63
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546188"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945676"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Hue
 
@@ -91,7 +88,7 @@ Hue 是一组 Web 应用程序，用来与 Apache Hadoop 群集交互。 可以�
 
     ![在 HDInsight Hue 门户中使用 Hive 编辑器](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "使用 Hive")
 
-2. 在“帮助”选项卡上的“数据库”下面，应会看到 **hivesampletable** 。 这是 HDInsight 上的所有 Hadoop 群集随附的示例表。 在右窗格中输入示例查询，并在下方窗格的“结果”选项卡中查看输出，如屏幕截图所示。
+2. 在“帮助”选项卡上的“数据库”下面，应会看到 **hivesampletable**。 这是 HDInsight 上的所有 Hadoop 群集随附的示例表。 在右窗格中输入示例查询，并在下方窗格的“结果”选项卡中查看输出，如屏幕截图所示。
 
     ![HDInsight Hue 门户 Hive 查询](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "运行 Hive 查询")
 
@@ -107,7 +104,7 @@ Hue 是一组 Web 应用程序，用来与 Apache Hadoop 群集交互。 可以�
 3. 右键单击某个文件或文件夹，以查看可用的操作。 使用右侧的“上传”按钮，将文件上传到当前目录。 使用“新建”按钮创建新的文件或目录。
 
 > [!NOTE]  
-> Hue 文件浏览器只能显示与 HDInsight 群集关联的默认容器的内容。 与群集关联的任何其他存储帐户/容器将无法使用文件浏览器访问。 不过，与群集关联的其他容器始终可供 Hive 作业访问。 例如，如果在 Hive 编辑器中输入 `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` 命令，也可以看到其他容器的内容。 在此命令中， **newcontainer** 不是与群集关联的默认容器。
+> Hue 文件浏览器只能显示与 HDInsight 群集关联的默认容器的内容。 与群集关联的任何其他存储帐户/容器将无法使用文件浏览器访问。 不过，与群集关联的其他容器始终可供 Hive 作业访问。 例如，如果在 Hive 编辑器中输入 `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` 命令，也可以看到其他容器的内容。 在此命令中，**newcontainer** 不是与群集关联的默认容器。
 
 ## <a name="important-considerations"></a>重要注意事项
 

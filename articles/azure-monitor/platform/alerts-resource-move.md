@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4ea5c8552d35db67a1d2caf20c0143c74cdd642e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36cf5882913426062e281194b61a8c760141512a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86505476"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944159"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>如何在警报规则或操作规则的目标资源移动到其他 Azure 区域时对这些规则进行更新
 
@@ -60,7 +60,7 @@ Azure 资源发出的指标是区域性的。 每次将资源移到新区域时�
 
 此说明同时适用于[指标警报规则](alerts-metric-overview.md)和[可用性测试警报规则](../app/monitor-web-app-availability.md)。
 
-如果移动了范围中的**所有**资源，则无需重新创建规则。 可以直接更新警报规则的任何字段（例如警报规则说明），然后将其保存。
+如果移动了范围中的 **所有** 资源，则无需重新创建规则。 可以直接更新警报规则的任何字段（例如警报规则说明），然后将其保存。
 如果仅移动了范围中的某些资源，则需要从现有规则中删除已移动的资源，并创建一个仅涵盖已移动资源的新规则。
 
 ## <a name="procedures-to-fix-problems"></a>解决问题的过程
@@ -106,7 +106,7 @@ Azure 资源发出的指标是区域性的。 每次将资源移到新区域时�
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>使用 Azure CLI 更改规则的范围
 
-1.  获取现有规则（[指标警报](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show)、[活动日志警报](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)）。
+1.  获取现有规则（[指标警报](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-show)、[活动日志警报](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)）。
 2.  直接更新规则范围（[指标警报](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update)、[活动日志警报](/cli/azure/monitor/activity-log/alert/scope)）
 3.  如果需要，请将其拆分为两个规则（这适用于指标警报的某些案例，如上文所述）。
 

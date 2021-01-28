@@ -1,19 +1,16 @@
 ---
 title: HDInsight 上的 Hadoop 服务所使用的端口 - Azure
 description: 本文提供在 Azure HDInsight 中运行的 Apache Hadoop 服务使用的端口列表
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: d0d990bc273c33e94b82b597753b29361b1665e1
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: b5dadb886078f701bb01447efd606c862ee73073
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821853"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945525"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上的 Apache Hadoop 服务所使用的端口
 
@@ -166,7 +163,7 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中。 不能从 I
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift 服务器 |头节点 |10002 |Thrift | &nbsp; | 用于连接到 Spark SQL 的服务 (Thrift/JDBC) |
 | Livy 服务器 | 头节点 | 8998 | HTTP | &nbsp; | 用于运行语句、作业和应用程序的服务 |
-| Jupyter 笔记本 | 头节点 | 8001 | HTTP | &nbsp; | Jupyter Notebook 网站 |
+| Jupyter Notebook | 头节点 | 8001 | HTTP | &nbsp; | Jupyter Notebook 网站 |
 
 示例:
 

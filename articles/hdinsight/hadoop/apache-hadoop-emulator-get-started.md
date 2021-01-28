@@ -1,20 +1,17 @@
 ---
-title: 了解如何使用 Apache Hadoop 沙盒，模拟器-Azure HDInsight
+title: 了解如何使用 Apache Hadoop 沙盒、模拟器 - Azure HDInsight
 description: '若要开始了解如何使用 Apache Hadoop 生态系统，可以在 Azure 虚拟机上设置 Hortonworks 提供的 Hadoop 沙盒。 '
 keywords: hadoop emulator,hadoop 沙盒
-ms.reviewer: jasonh
-author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4f19797fa1c79261dc3459e2b924ed45d0b7e36e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eb286adfd7267a78fcf80bcf5ad34f8f1cc9f493
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547956"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946612"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>开始使用 Apache Hadoop 沙盒，它是虚拟机上的模拟器
 
@@ -28,7 +25,7 @@ ms.locfileid: "92547956"
 
 1. 浏览到 [Cloudera 下载](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html)。
 
-1. 单击“选择安装类型”下的 **VIRTUALBOX** ，在 VM 上下载最新的 Hortonworks 沙盒。 登录或填写产品兴趣表。
+1. 单击“选择安装类型”下的 **VIRTUALBOX**，在 VM 上下载最新的 Hortonworks 沙盒。 登录或填写产品兴趣表。
 
 1. 单击按钮“HDP 沙盒(最新)”  开始下载。
 

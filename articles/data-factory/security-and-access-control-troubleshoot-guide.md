@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 3b7b405e34b6ca82da593507ad6103d360c5df1e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 70e4d0c1a9f26f83924c1343e4e8e51c5595b324
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968579"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944520"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>排查 Azure 数据工厂安全性和访问控制问题
 
@@ -49,13 +49,13 @@ ms.locfileid: "97968579"
 
 * 如果使用的是 **自承载 IR**，请检查代理、防火墙和网络设置，因为如果使用的是 Azure IR，则连接到相同的数据存储可能会成功。 若要解决此问题，请参阅：
 
-   * [自承载 IR 端口和防火墙](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#ports-and-firewalls)
-   * [Azure Data Lake Storage 连接器](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store)
+   * [自承载 IR 端口和防火墙](./create-self-hosted-integration-runtime.md#ports-and-firewalls)
+   * [Azure Data Lake Storage 连接器](./connector-azure-data-lake-store.md)
   
 * 如果使用的是 **Azure IR**，请尝试禁用数据存储的防火墙设置。 此方法可以在以下两种情况下解决问题：
   
-   * [Azure IR 的 IP 地址](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses) 不在允许列表中。
-   * [Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#supported-capabilities)和 [第2代 Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#supported-capabilities)的 "*允许受信任的 Microsoft 服务访问此存储帐户*" 功能处于关闭状态。
+   * [Azure IR 的 IP 地址](./azure-integration-runtime-ip-addresses.md) 不在允许列表中。
+   * [Azure Blob 存储](./connector-azure-blob-storage.md#supported-capabilities)和 [第2代 Azure Data Lake Storage](./connector-azure-data-lake-storage.md#supported-capabilities)的 "*允许受信任的 Microsoft 服务访问此存储帐户*" 功能处于关闭状态。
    * " *允许访问 Azure 服务* " 设置未对 Azure Data Lake Storage Gen1 启用。
 
 如果上述所有方法都不起作用，请联系 Microsoft 获取帮助。
@@ -88,7 +88,7 @@ ms.locfileid: "97968579"
 #### <a name="resolution"></a>解决方法
 
 若要解决此问题，请执行以下操作：
-- 请参阅 azure [数据工厂的 Azure 专用链接](https://docs.microsoft.com/azure/data-factory/data-factory-private-link#dns-changes-for-private-endpoints) 一文。 此说明用于配置专用 DNS 区域或服务器，以将数据工厂 FQDN 解析为专用 IP 地址。
+- 请参阅 azure [数据工厂的 Azure 专用链接](./data-factory-private-link.md#dns-changes-for-private-endpoints) 一文。 此说明用于配置专用 DNS 区域或服务器，以将数据工厂 FQDN 解析为专用 IP 地址。
 
 - 建议使用自定义 DNS 作为长期解决方案。 但是，如果不想配置专用 DNS 区域或服务器，请尝试以下临时解决方案：
 
@@ -120,7 +120,7 @@ ms.locfileid: "97968579"
  
 若要解决此问题，请执行以下操作：
 
-1. 中转到 " [工厂-更新](https://docs.microsoft.com/rest/api/datafactory/Factories/Update) " 页。
+1. 中转到 " [工厂-更新](/rest/api/datafactory/Factories/Update) " 页。
 
 1. 在右上角，选择 " **试用** " 按钮。
 1. 在 " **参数**" 下，填写所需的信息。 
@@ -146,7 +146,7 @@ ms.locfileid: "97968579"
 
 **解决方案 2**
 
-若要解决此问题，请参阅 azure [数据工厂的 Azure 专用链接](https://docs.microsoft.com/azure/data-factory/data-factory-private-link)。
+若要解决此问题，请参阅 azure [数据工厂的 Azure 专用链接](./data-factory-private-link.md)。
 
 尝试在用户界面上启用公用网络访问，如以下屏幕截图所示：
 

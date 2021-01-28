@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 709b83ad3e71a932202cebb9c9cb6187feae4ed7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 812d4976a0c6afe646c329ee483be20c33416381
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079999"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943889"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表存储表设计指南：可缩放的高性能表
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -124,7 +124,7 @@ ms.locfileid: "93079999"
 </table>
 
 
-到目前为止，此设计看起来非常类似于关系数据库中的表。 主要区别是有必需的列，以及能够在同一个表中存储多种实体类型。 此外， **FirstName** 或 **Age** 等用户定义的每个属性还具有数据类型（如 integer 或 string），就像关系数据库中的列一样。 但是，与关系数据库中不同，表存储的架构灵活性质意味着每个实体的属性不需要具有相同的数据类型。 若要在单个属性中存储复杂数据类型，必须使用序列化格式（例如，JSON 或 XML）。 有关详细信息，请参阅[了解表存储数据模型](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
+到目前为止，此设计看起来非常类似于关系数据库中的表。 主要区别是有必需的列，以及能够在同一个表中存储多种实体类型。 此外，**FirstName** 或 **Age** 等用户定义的每个属性还具有数据类型（如 integer 或 string），就像关系数据库中的列一样。 但是，与关系数据库中不同，表存储的架构灵活性质意味着每个实体的属性不需要具有相同的数据类型。 若要在单个属性中存储复杂数据类型，必须使用序列化格式（例如，JSON 或 XML）。 有关详细信息，请参阅[了解表存储数据模型](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
 
 对 `PartitionKey` 和 `RowKey` 的选择是实现良好的表设计的基础。 表中存储的每个实体都必须具有唯一的 `PartitionKey` 和 `RowKey`。 与关系数据库表中的键一样，将为 `PartitionKey` 和 `RowKey` 值编制索引来创建聚集索引以便快速地进行查找。 但是，表存储不创建任何辅助索引，因此，这些键是唯一具有索引的属性（稍后介绍的某些模式展示了可以如何解决此明确限制）。  
 
@@ -211,7 +211,7 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 * 表扫描不包括 `PartitionKey` 且效率较低，因为它会依次搜索构成表的所有分区，查找所有匹配的实体。 它会执行表扫描而不管你的筛选器是否使用 `RowKey`。 例如：`$filter=LastName eq 'Jones'`。  
 * 返回多个实体的 Azure 表存储查询将按 `PartitionKey` 和 `RowKey` 顺序为实体排序。 若要避免对客户端中的实体重新排序，请选择定义最常见排序顺序的 `RowKey`。 Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](table-api-faq.md#table-api-vs-table-storage)。
 
-使用“ **or** ”指定基于 `RowKey` 值的筛选器将导致分区扫描，而不会视为范围查询。 因此，请避免使用筛选器的查询，例如：`$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`。  
+使用“**or**”指定基于 `RowKey` 值的筛选器将导致分区扫描，而不会视为范围查询。 因此，请避免使用筛选器的查询，例如：`$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`。  
 
 有关使用存储客户端库运行高效查询的客户端代码的示例，请参阅：  
 
@@ -253,7 +253,7 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 > [!NOTE]
 > Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](table-api-faq.md#table-api-vs-table-storage)。
 
-表存储中的键是字符串值。 为确保数字值正确排序，应将值转换为固定长度并使用零进行填充。 例如，如果用作 `RowKey` 的员工 ID 值是个整数值，则应将员工 ID **123** 转换为 **00000123** 。 
+表存储中的键是字符串值。 为确保数字值正确排序，应将值转换为固定长度并使用零进行填充。 例如，如果用作 `RowKey` 的员工 ID 值是个整数值，则应将员工 ID **123** 转换为 **00000123**。 
 
 许多应用程序要求使用按不同顺序排序的数据：例如，按名称或按加入日期对员工进行排序。 [表设计模式](#table-design-patterns)部分的以下模式介绍了如何为实体替换排序顺序：  
 
@@ -321,7 +321,7 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 另一种方法是使数据反规范化，并只存储具有反规范化部门数据的员工实体，如以下示例所示。 在此特定方案中，如果要求能够更改部门经理的详细信息，则此反规范化方法可能不是最佳方法。 为此，需要更新部门中的每个员工。  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE02.png" alt-text="员工实体的图形，其中显示了如何非规范化数据，并只存储具有非规范化部门数据的员工实体。":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE02.png" alt-text="员工实体图，其中显示如何使数据反规范化并仅存储具有反规范化部门数据的员工实体。":::
 
 有关详细信息，请参阅本指南后面的 [反规范化模式](#denormalization-pattern) 。  
 
@@ -419,7 +419,7 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 #### <a name="context-and-problem"></a>上下文和问题
 表存储使用 `PartitionKey` 和 `RowKey` 值自动编制实体的索引。 这使客户端应用程序可以使用这些值高效地检索实体。 例如，使用下面的表结构时，客户端应用程序可使用点查询，通过部门名称和员工 ID（`PartitionKey` 和 `RowKey` 值）检索单个员工实体。 客户端还可以在每个部门内检索按员工 ID 排序的实体。
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE06.png" alt-text="员工实体的图形，其中，客户端应用程序可以使用点查询，通过使用部门名称和员工 (ID （) PartitionKey 和 RowKey 值）检索单个员工实体。":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE06.png" alt-text="员工实体图，其中客户端应用程序可使用点查询，通过部门名称和员工 ID（PartitionKey 和 RowKey 值）检索单个员工实体。":::
 
 如果还要基于另一个属性（例如，电子邮件地址）的值查找员工实体，则必须使用效率较低的分区扫描来查找匹配项。 这是因为表存储不提供辅助索引。 此外，还无法选择请求按 `RowKey` 顺序以外顺序排序的员工列表。  
 
@@ -477,7 +477,7 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 #### <a name="context-and-problem"></a>上下文和问题
 表存储使用 `PartitionKey` 和 `RowKey` 值自动编制实体的索引。 这使客户端应用程序可以使用这些值高效地检索实体。 例如，使用下面的表结构时，客户端应用程序可使用点查询，通过部门名称和员工 ID（`PartitionKey` 和 `RowKey` 值）检索单个员工实体。 客户端还可以在每个部门内检索按员工 ID 排序的实体。  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="员工实体结构的图形，在使用时，客户端应用程序可以使用点查询来检索单个员工实体，方法是使用部门名称和员工 ID (&quot;PartitionKey&quot; 和 &quot;RowKey&quot; 值) 。":::900
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="员工实体结构图。在使用该结构时，客户端应用程序可使用点查询，通过部门名称和员工 ID（PartitionKey 和 RowKey 值）检索单个员工实体。":::[9]
 
 如果还要能够基于另一个属性（例如，电子邮件地址）的值查找员工实体，则必须使用效率较低的分区扫描来查找匹配项。 这是因为表存储不提供辅助索引。 此外，还无法选择请求按 `RowKey` 顺序以外顺序排序的员工列表。  
 
@@ -589,7 +589,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 #### <a name="context-and-problem"></a>上下文和问题
 表存储使用 `PartitionKey` 和 `RowKey` 值自动编制实体的索引。 这使客户端应用程序可以使用点查询高效地检索实体。 例如，使用下面的表结构时，客户端应用程序可以高效地使用部门名称和员工 ID（`PartitionKey` 和 `RowKey`）检索单个员工实体。  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE13.png" alt-text="员工实体结构的图形，其中客户端应用程序可以通过使用部门名称和员工 ID (PartitionKey 和 RowKey) 有效地检索单个员工实体。":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE13.png" alt-text="员工实体结构图，其中客户端应用程序可通过使用部门名称和员工 ID（PartitionKey 和 RowKey）高效检索单个员工实体。":::
 
 如果还要能够根据另一个非唯一的属性（如姓氏）的值检索员工实体的列表，则必须使用效率较低的分区扫描。 这种扫描将查找匹配项，而不是使用索引来直接查找。 这是因为表存储不提供辅助索引。  
 
@@ -630,7 +630,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 
 对于此选项，请使用存储以下数据的索引实体：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="显示员工索引实体的屏幕截图，其中包含姓氏存储在 RowKey 和 PartitionKey 中的雇员的雇员 Id 列表。":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="屏幕截图，其中显示了员工索引实体，该实体包含姓氏存储在 RowKey 和 PartitionKey 中的员工的员工 ID 列表。":::
 
 `EmployeeIDs` 属性包含一个员工 ID 列表，其中员工的姓氏存储在 `RowKey` 和 `PartitionKey` 中。  
 
@@ -695,7 +695,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 
 假设你要使用以下结构在表存储中存储员工实体：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE18.png" alt-text="员工实体结构的图形，你应该使用它将员工实体存储在表存储中。":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE18.png" alt-text="员工实体结构图，你应该使用该结构将员工实体存储在表存储中。":::
 
 还需要存储有关员工组织工作的每年的评价和绩效的历史数据，并且需要能够按年份访问此信息。 一种选择是创建另一个表，该表存储具有以下结构的实体：  
 
@@ -717,7 +717,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="issues-and-considerations"></a>问题和注意事项
 在决定如何实现此模式时，请考虑以下几点：  
 
-* 应使用适当的分隔符，轻松分析 `RowKey` 值（如 **000123_2012** ）。  
+* 应使用适当的分隔符，轻松分析 `RowKey` 值（如 **000123_2012**）。  
 * 也将此实体存储在与包含同一员工的相关数据的其他实体在同一分区中。 这意味着可以使用 EGT 来保持强一致性。
 * 应考虑将查询数据的频率，以确定此模式是否合适。 例如，如果不经常访问评价数据但经常访问主要员工数据，则应将它们保存为不同的实体。  
 
@@ -896,7 +896,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="context-and-problem"></a>上下文和问题
 将实体前置或后置于存储实体通常会导致应用程序将新实体添加到分区序列中的第一个分区或最后一个分区。 在这种情况下，对于任何指定时间，所有插入都发生在同一个分区中，从而产生热点。 这会导致表存储无法对多个节点中的插入操作进行负载均衡，从而可能导致应用程序达到分区的可伸缩性目标。 例如，假设某个应用程序记录员工对网络和资源的访问。 如果事务量达到单个分区的可伸缩性目标，则如下所示的实体结构可能会导致当前小时的分区成为热点。  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE26.png" alt-text="如果事务量达到单个分区的可伸缩性目标，则实体结构的图形可能会导致当前小时的分区成为热点。":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE26.png" alt-text="实体结构图。如果事务量达到单个分区的可伸缩性目标，则该实体结构可能会导致当前小时的分区成为热点。":::
 
 #### <a name="solution"></a>解决方案
 以下替代实体结构在应用程序记录事件时可避免在任何特定分区上产生热点：  
@@ -927,7 +927,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="context-and-problem"></a>上下文和问题
 日志数据的一个常见用例是检索针对特定日期/时间范围选择的日志条目。 例如，你想要查找应用程序在特定日期的 15:04 和 15:06 之间记录的所有错误和关键消息。 你不希望使用日志消息的日期和时间来确定日志实体要保存到的分区。 该操作会导致热分区，因为所有日志实体在任意给定时间内均共享同一 `PartitionKey` 值（请参阅[前置/后置反模式](#prepend-append-anti-pattern)）。 例如，日志消息的以下实体架构会导致热分区，因为应用程序会将当前日期小时的所有日志消息都写入到该分区：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE28.png" alt-text="显示日志消息的实体架构的图形将导致热分区。":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE28.png" alt-text="显示日志消息的实体架构导致热分区的图。":::
 
 在此示例中，`RowKey` 包括日志消息的日期和时间，以确保日志消息存储按日期/时间顺序排序。 `RowKey` 还包括消息 ID，以防止多条日志消息共享同一日期和时间。  
 
@@ -1109,7 +1109,7 @@ foreach (var e in entities)
 还应考虑设计如何影响客户端应用程序处理并发和更新操作的方式。  
 
 #### <a name="managing-concurrency"></a>管理并发
-默认情况下，尽管客户端可强制表存储跳过这些检查，表存储仍会在单个实体级别上执行插入、合并和删除操作的开放式并发检查。 有关详细信息，请参阅[在 Microsoft Azure 存储中管理并发](../storage/common/storage-concurrency.md)。  
+默认情况下，尽管客户端可强制表存储跳过这些检查，表存储仍会在单个实体级别上执行插入、合并和删除操作的开放式并发检查。 有关详细信息，请参阅[在 Microsoft Azure 存储中管理并发](../storage/blobs/concurrency-manage.md)。  
 
 #### <a name="merge-or-replace"></a>合并或替换
 `TableOperation` 类的 `Replace` 方法始终替换表存储中的完整实体。 如果在存储实体中存在某个属性时请求中未包含该属性，则请求会从存储实体中删除该属性。 除非你想要从存储实体中显式删除某一属性，否则必须在请求中包含每个属性。  

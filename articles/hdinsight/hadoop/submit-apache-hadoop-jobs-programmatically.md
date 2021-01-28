@@ -1,19 +1,16 @@
 ---
 title: 在 HDInsight 中提交 Apache Hadoop 作业
 description: 使用 Microsoft .NET SDK、卷或 PowerShell 在 Azure HDInsight 中提交 Apache Hadoop 作业
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: ce53e02c587086a34a9967bb09ba047858af52e8
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 52a5fcbc68d7efdce5724e39ee7bc25581ceb0ef
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628926"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944197"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中提交 Apache Hadoop 作业
 
