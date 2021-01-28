@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 96c4eba31013b868fa7afb41544d5d8cbcc1cdc6
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fa46d6e5c7f1007e3a90e22eb9d4f46e18251a28
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607212"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729806"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>教程：Azure Active Directory 单一登录与 Cloud Academy - SSO 的集成
 
@@ -161,9 +161,9 @@ ms.locfileid: "97607212"
 
 * 直接转到 Cloud Academy - SSO 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Cloud Academy - SSO 磁贴时，将会重定向到 Cloud Academy - SSO 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Cloud Academy - SSO 磁贴时，将会重定向到 Cloud Academy - SSO 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Cloud Academy - SSO 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Cloud Academy - SSO 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

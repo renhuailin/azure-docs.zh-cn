@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7341d1f07e8814edcad7b84f6b3b46c7bece3159
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905734"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680326"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks 规划电动车路线 (Python)
 
@@ -27,7 +27,7 @@ Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发�
 在本教程中，将：
 
 > [!div class="checklist"]
-> * 在云中的 [Azure Notebooks](../notebooks/index.yml) 上创建并运行 Jupyter Notebook 文件。
+> * 在云中的 [Azure Notebooks](https://notebooks.azure.com) 上创建并运行 Jupyter Notebook 文件。
 > * 在 Python 中调用 Azure Maps REST API。
 > * 根据电动车的耗电模型搜索可抵达的范围。
 > * 在可抵达范围（或等时线）内搜索电动车充电站。
@@ -49,7 +49,7 @@ Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发�
 
 若要遵循本教程，需要创建一个 Azure Notebooks 项目，然后下载并运行 Jupyter Notebook 文件。 该 Jupyter Notebook 文件包含用于实现本教程中的方案的 Python 代码。 若要创建 Azure Notebooks 项目并将 Jupyter Notebook 文档上传到其中，请执行以下步骤：
 
-1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 有关详细信息，请参阅[快速入门：登录并设置用户 ID](../notebooks/quickstart-sign-in-azure-notebooks.md)。
+1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 有关详细信息，请参阅[快速入门：登录并设置用户 ID](https://notebooks.azure.com)。
 1. 在公共个人资料页的顶部，选择“我的项目”。 
 
     ![“我的项目”按钮](./media/tutorial-ev-routing/myproject.png)
@@ -399,9 +399,13 @@ display(Image(staticMapImage))
 * [获取路线方向](/rest/api/maps/route/getroutedirections)
 * [Azure Maps REST API](./consumption-model.md)
 
+## <a name="clean-up-resources"></a>清理资源
+
+没有需要清理的资源。
+
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解 Azure Notebooks，请参阅：
 
 > [!div class="nextstepaction"]
-> [Azure Notebook](../notebooks/index.yml)
+> [Azure Notebook](https://notebooks.azure.com)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 0004a250173ce6707462b852016d205782479717
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d8aaf093a7e2a0ad1470d72d815e919f5b4e2d05
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896674"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624977"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>教程：如何使用 Azure Maps 路线服务和地图控件显示路线走向
 
@@ -39,7 +39,7 @@ ms.locfileid: "92896674"
 
 以下步骤演示如何在网页中创建和显示地图控件。
 
-1. 在本地计算机上，创建一个新文件并将其命名为 **MapRoute.html** 。
+1. 在本地计算机上，创建一个新文件并将其命名为 **MapRoute.html**。
 2. 将以下 HTML 标记复制/粘贴到文件中。
 
     ```HTML
@@ -174,7 +174,7 @@ ms.locfileid: "92896674"
 
 3. 保存 MapRoute.html 并刷新浏览器。 现在，地图以西雅图为中心。 泪珠形蓝色图钉标记起点。 圆形蓝色图钉标记终点。
 
-    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="地图控件的基本地图呈现":::
+    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="在地图上查看路线的起点和终点":::
 
 <a id="getroute"></a>
 
@@ -214,11 +214,15 @@ ms.locfileid: "92896674"
     });
     ```
 
-3. 保存“MapRoute.html”文件并刷新 web 浏览器  。 现在，地图应显示从起点到终点的路线。
+3. 保存“MapRoute.html”文件并刷新 web 浏览器。 现在，地图应显示从起点到终点的路线。
 
-     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="地图控件的基本地图呈现":::
+     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure 地图控件和路线服务":::
 
 可在[此处](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)获得示例的完整源代码。 可在[此处](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)找到实时示例。
+
+## <a name="clean-up-resources"></a>清理资源
+
+没有需要清理的资源。
 
 ## <a name="next-steps"></a>后续步骤
 

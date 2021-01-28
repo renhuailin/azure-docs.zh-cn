@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 40cb3c6e326cbacfbfb9879cfa92b5780d86fe99
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: cc3ce56ecd17d627001f4925355c055afdc09d22
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724198"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729598"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-statuspage"></a>教程：Azure Active Directory 单一登录 (SSO) 与 StatusPage 的集成
 
@@ -206,7 +206,7 @@ StatusPage 支持实时预配。 已在[配置 Azure AD 单一登录](#configure
 
 * 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 StatusPage
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 StatusPage 磁贴时，你应当会自动登录到为其设置了 SSO 的 StatusPage。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 StatusPage 磁贴时，你应当会自动登录到为其设置了 SSO 的 StatusPage。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

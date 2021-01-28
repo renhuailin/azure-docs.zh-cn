@@ -3,17 +3,17 @@ title: CLI 脚本 - 创建服务器 - Azure Database for MariaDB
 description: 此示例 CLI 脚本创建 Azure Database for MariaDB 服务器，并配置服务器级防火墙规则。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 11/28/2018
-ms.openlocfilehash: a9a0ce595da1aecc3cd2ebdc071c99e42944ef9f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8b414b5d483f4662bf8fdeb144a9cc8ef99d02dd
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536789"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664609"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>使用 Azure CLI 创建 MariaDB 服务器并配置防火墙规则
 此示例 CLI 脚本创建 Azure Database for MariaDB 服务器，并配置服务器级防火墙规则。 成功运行此脚本后，可以通过所有 Azure 服务和配置的 IP 地址访问 MariaDB 服务器。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: c1f102182a9f91d2f8038947b6009fff1af1a508
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 40c533874dcfb00384ae3ab604a3aef8b9c50fc8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914257"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726105"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-heybuddy"></a>教程：Azure Active Directory 单一登录 (SSO) 与 HeyBuddy 的集成
 
@@ -99,7 +99,7 @@ ms.locfileid: "97914257"
     | | |
     
     > [!NOTE]
-    > 有关如何配置和设置应用程序的角色，请参阅此[链接](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
+    > 有关如何配置和设置应用程序的角色，请参阅此[链接](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
@@ -148,9 +148,9 @@ ms.locfileid: "97914257"
 
 * 直接转到 HeyBuddy 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 HeyBuddy 磁贴时，会重定向到 HeyBuddy 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 HeyBuddy 磁贴时，会重定向到 HeyBuddy 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 HeyBuddy 后，可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 HeyBuddy 后，可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

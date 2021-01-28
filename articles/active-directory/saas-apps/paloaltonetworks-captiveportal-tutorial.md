@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 0e16cb3d24f9dd33b156bca72ce1c99e7aae957a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1b9c9182b8ffc6e9ea2e05fd4863783f111f81dd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963598"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727143"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>教程：Azure Active Directory 与 Palo Alto Networks Captive Portal 的集成
 
@@ -150,7 +150,7 @@ ms.locfileid: "97963598"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Palo Alto Networks Captive Portal
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Palo Alto Networks Captive Portal 磁贴时，应当会自动登录到为其设置了 SSO 的 Palo Alto Networks Captive Portal。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Palo Alto Networks Captive Portal 磁贴时，应当会自动登录到为其设置了 SSO 的 Palo Alto Networks Captive Portal。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

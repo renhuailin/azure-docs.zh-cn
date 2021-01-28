@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/09/2020
+ms.date: 01/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 9272114dd472717e59680b40c07d8435dea19682
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d99a19efcef0cae518d8d21d3371adaf37d32ff7
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181962"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625475"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>教程：将 Azure AD 单一登录 (SSO) 与 NetSuite 集成
 
@@ -41,7 +41,6 @@ NetSuite 支持：
 
 * IDP 发起的 SSO。
 * JIT（实时）用户预配。
-* [自动用户预配](NetSuite-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 由于此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -132,7 +131,7 @@ NetSuite 支持：
    a. 在“名称”框中，输入 **B.Simon**。  
    b. 在“用户名”框中，输入 username@companydomain.extension（例如 B.Simon@contoso.com）  。  
    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。    
-   d. 选择“创建”  。
+   d. 选择“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

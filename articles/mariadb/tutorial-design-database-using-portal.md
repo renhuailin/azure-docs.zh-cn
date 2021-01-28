@@ -3,16 +3,16 @@ title: 教程：设计 Azure Database for MariaDB - Azure 门户
 description: 本教程介绍如何使用 Azure 门户创建和管理 Azure Database for MariaDB 服务器和数据库。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: fe503d0e579e30b0c355d3be3e8d02b2bd7a44a8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9df151be99ba81af28f6b7b0cc012eae7db3ea1b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542433"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664463"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>教程：使用 Azure 门户设计 Azure Database for MariaDB 数据库
 
@@ -51,7 +51,7 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
 
     设置 | 建议的值 | 字段说明
     ---|---|---
-    服务器名称 |  唯一的服务器名称 | 选择用于标识 Azure Database for MariaDB 服务器的唯一名称。 例如， **mydemoserver** 。 域名 *.mariadb.database.azure.com* 将追加到所输入的服务器名称后面。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 它必须包含 3 到 63 个字符。
+    服务器名称 |  唯一的服务器名称 | 选择用于标识 Azure Database for MariaDB 服务器的唯一名称。 例如，**mydemoserver**。 域名 *.mariadb.database.azure.com* 将追加到所输入的服务器名称后面。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 它必须包含 3 到 63 个字符。
     订阅 | *用户的订阅* | 选择要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
     资源组 |  myresourcegroup | 输入新的资源组名称，或选择现有的资源组。
     选择源 | **空白** | 选择“空白”  即可创建新服务器。 （如果要从现有 Azure Database for MariaDB 服务器的异地备份创建服务器，请选择“备份”  ）。
@@ -60,7 +60,7 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
     确认密码 |  由用户选择| 确认管理员帐户密码。
     位置 |  离用户最近的区域| 选择最靠近用户或其他 Azure 应用程序的位置。
     版本 |  最新版本| 最新版本，有特定要求（即要求使用其他版本）的除外。
-    定价层 | 请参阅说明。 | 新服务器的计算、存储和备份配置。 选择“定价层”   >   “常规用途”。 为以下设置保留默认值：<br><ul><li>**计算代系** （第 5 代）</li><li>**vCore** （4 个 vCore）</li><li>**存储空间** (100 GB)</li><li>**备份保持期** （7 天）</li></ul><br>若要在异地冗余存储中启用服务器备份，请选择“异地冗余”作为“备份冗余选项”   。 <br><br>若要保存此定价层选择，请选择“确定”  。 下一个屏幕截图捕获了这些选择。
+    定价层 | 请参阅说明。 | 新服务器的计算、存储和备份配置。 选择“定价层”   >   “常规用途”。 为以下设置保留默认值：<br><ul><li>**计算代系**（第 5 代）</li><li>**vCore**（4 个 vCore）</li><li>**存储空间** (100 GB)</li><li>**备份保持期**（7 天）</li></ul><br>若要在异地冗余存储中启用服务器备份，请选择“异地冗余”作为“备份冗余选项”   。 <br><br>若要保存此定价层选择，请选择“确定”  。 下一个屏幕截图捕获了这些选择。
     
    ![定价层](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
@@ -174,10 +174,10 @@ SELECT * FROM inventory;
 
    ![“还原”窗体](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
-   - **还原点** ：在列出的时间范围内选择要还原到的时间点。 请确保将本地时区转换为 UTC。
-   - **还原到新服务器** ：输入一个要还原到的新服务器名称。
-   - **位置** ：此区域与源服务器相同，不能更改。
-   - **定价层** ：定价层与源服务器相同，不能更改。
+   - **还原点**：在列出的时间范围内选择要还原到的时间点。 请确保将本地时区转换为 UTC。
+   - **还原到新服务器**：输入一个要还原到的新服务器名称。
+   - **位置**：此区域与源服务器相同，不能更改。
+   - **定价层**：定价层与源服务器相同，不能更改。
    
 3. 选择“确定”，将服务器还原到删除该表之前的某个时间点[还原到某个时间点](./howto-restore-server-portal.md)。  还原服务器时，将创建服务器在所选时间点的新副本。 
 

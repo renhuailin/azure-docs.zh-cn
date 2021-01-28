@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 3ac81e89aaea5bc37297d2f83dce9e2158ae28d8
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 3f66da38d3303b47c2a9b6cefeee19af6bf64ec1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060650"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725484"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workplace by Facebook 集成
 
@@ -205,7 +205,7 @@ ms.locfileid: "98060650"
 
 * 直接转到 Workplace by Facebook 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Workplace by Facebook”磁贴时，这将重定向到 Workplace by Facebook 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Workplace by Facebook”磁贴时，这将重定向到 Workplace by Facebook 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="test-sso-for-workplace-by-facebook-mobile"></a>测试 Workplace by Facebook 的 SSO（移动）
 

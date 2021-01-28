@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5750597d7d4d372be975aa64ce8db11859791da2
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537746"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674312"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>创建与 Azure 逻辑应用集成的函数
 
@@ -40,7 +40,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 > [!NOTE]
 > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将 Gmail 连接器与 Google 批准的特定应用和服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
-+ 本文以在[从 Azure 门户创建第一个函数](functions-create-first-azure-function.md)主题中创建的资源为基础。
++ 本文以在[从 Azure 门户创建第一个函数](./functions-get-started.md)主题中创建的资源为基础。
 现在请完成以下步骤创建 Function App（如果尚未这样做）。
 
 ## <a name="create-a-cognitive-services-resource"></a>创建认知服务资源
@@ -138,7 +138,7 @@ Azure Functions 可让你方便地卸载逻辑应用工作流中的处理任务�
 
 2. 单击“Web” > “逻辑应用”。
  
-3. 然后，键入一个值（例如 `TweetSentiment`）作为**名称**，并使用表中指定的设置。
+3. 然后，键入一个值（例如 `TweetSentiment`）作为 **名称**，并使用表中指定的设置。
 
     ![在 Azure 门户创建逻辑应用](./media/functions-twitter-email/08-logic-app-create.png)
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
-ms.openlocfilehash: f9e462d66e438e42c40b16ba9b818ddd330e9e5a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 7afcf6c5814917b3356d86e7288fd2920a04cad7
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611941"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695986"
 ---
 # <a name="tutorial-configure-templafy-openid-connect-for-automatic-user-provisioning"></a>Tutorial:为 Templafy OpenID Connect 配置自动用户预配
 
@@ -133,7 +133,26 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 9. 在“属性映射”部分中，查看从 Azure AD 同步到 Templafy OpenID Connect 的用户属性。 选为“匹配”属性的特性用于匹配 Templafy OpenID Connect 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改  。
 
-    ![Templafy OpenID Connect 用户属性](media/templafy-openid-connect-provisioning-tutorial/user-attribute.png)
+   |Attribute|类型|支持筛选|
+   |---|---|---|
+   |userName|字符串|&check;|
+   |活动|Boolean|
+   |displayName|字符串|
+   |title|字符串|
+   |preferredLanguage|字符串|
+   |name.givenName|字符串|
+   |name.familyName|字符串|
+   |phoneNumbers[type eq "work"].value|字符串|
+   |phoneNumbers[type eq "mobile"].value|字符串|
+   |phoneNumbers[type eq "fax"].value|字符串|
+   |externalId|字符串|
+   |addresses[type eq "work"].locality|字符串|
+   |addresses[type eq "work"].postalCode|字符串|
+   |addresses[type eq "work"].region|字符串|
+   |addresses[type eq "work"].streetAddress|字符串|
+   |addresses[type eq "work"].country|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|字符串|
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 Templafy” 。
 
@@ -141,7 +160,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 11. 在“属性映射”部分中，查看从 Azure AD 同步到 Templafy OpenID Connect 的组属性。 选为“匹配”属性的特性用于匹配 Templafy OpenID Connect 中的组以执行更新操作。 选择“保存”按钮以提交任何更改  。
 
-    ![Templafy OpenID Connect 组属性](media/templafy-openid-connect-provisioning-tutorial/group-attribute.png)
+      |Attribute|类型|支持筛选|
+      |---|---|---|
+      |displayName|字符串|&check;|
+      |members|参考|
+      |externalId|字符串|      
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 

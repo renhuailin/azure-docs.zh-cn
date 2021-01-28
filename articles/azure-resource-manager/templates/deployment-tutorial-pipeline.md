@@ -4,12 +4,12 @@ description: 了解如何持续构建、测试和部署 Azure 资源管理器模
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e9f047497f493752947d8115084dcfe86f5e040
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e7e2cda0524e4d754fbf879c046fee2d43c44cb3
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588125"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701706"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 ARM 模板
 
@@ -39,12 +39,12 @@ Azure DevOps 提供开发人员服务，以支持团队规划工作、协作开�
 
 * **GitHub 帐户**，用于为模板创建存储库。 如果没有帐户，可以[免费创建一个帐户](https://github.com)。 有关使用 GitHub 存储库的详细信息，请参阅[构建 GitHub 存储库](/azure/devops/pipelines/repos/github)。
 * **安装 Git**。 本教程说明使用 Git Bash 或 Git Shell 。 如需说明，请参阅[安装 Git](https://www.atlassian.com/git/tutorials/install-git)。
-* **Azure DevOps 组织**。 如果没有组织，可以免费创建一个组织。 请参阅[创建组织或项目集合](/azure/devops/organizations/accounts/create-organization?view=azure-devops)。
+* **Azure DevOps 组织**。 如果没有组织，可以免费创建一个组织。 请参阅[创建组织或项目集合](/azure/devops/organizations/accounts/create-organization)。
 * （可选）**包含资源管理器工具扩展的 Visual Studio Code**。 请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="prepare-a-github-repository"></a>准备 GitHub 存储库
 
-GitHub 用于存储项目源代码，包括资源管理器模板。 有关其他受支持的存储库，请参阅 [Azure DevOps 支持的存储库](/azure/devops/pipelines/repos/?view=azure-devops)。
+GitHub 用于存储项目源代码，包括资源管理器模板。 有关其他受支持的存储库，请参阅 [Azure DevOps 支持的存储库](/azure/devops/pipelines/repos/)。
 
 ### <a name="create-a-github-repository"></a>创建 GitHub 存储库
 
@@ -128,7 +128,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
     * **版本控制**：选择“Git”。 可能需要展开“高级”才能看到“版本控制” 。
 
     可以使用其他属性的默认值。
-1. 选择“创建”  。
+1. 选择“创建”。
 
 创建服务连接，用于将项目部署到 Azure。
 
@@ -199,7 +199,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
 ## <a name="verify-the-deployment"></a>验证部署
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 打开资源组。 名称是在管道 YAML 文件中指定的名称。 你将看到创建了一个存储帐户。 存储帐户名称以“存储”开头。
 1. 选择存储帐户名称以将其打开。
 1. 选择“属性”。 注意“复制”是“本地冗余存储(LRS)” 。

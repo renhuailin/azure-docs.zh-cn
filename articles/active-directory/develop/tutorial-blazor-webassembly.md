@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: ce854c8f2d1d317c3660aaab9c0a6569aae0bb36
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 4d6401c53071235784a5371a4a6315e4e25a438f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895965"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680259"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>教程：从 Blazor WebAssembly 应用让用户登录并调用受保护的 API
 
@@ -26,7 +26,7 @@ ms.locfileid: "97895965"
 > * 创建新的 Blazor WebAssembly 应用，并将其配置为通过 Microsoft 标识平台使用 Azure Active Directory (Azure AD) [进行身份验证和授权](authentication-vs-authorization.md)
 > * 从受保护的 Web API（在本例中为 [Microsoft Graph](/graph/overview)）中检索数据
 
-本教程使用 .NET Core 3.1。 .NET 文档包含有关如何使用 ASP.NET Core 5.0 [保护 Blazor WebAssembly 应用](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api)的说明。 
+本教程使用 .NET Core 3.1。 .NET 文档包含有关如何使用 ASP.NET Core 5.0 [保护 Blazor WebAssembly 应用](/aspnet/core/blazor/security/webassembly/graph-api)的说明。 
 
 我们还提供了[关于 Blazor Server 的教程](tutorial-blazor-server.md)。 
 
@@ -80,7 +80,7 @@ dotnet run --framework netstandard2.1
 
 [Microsoft Graph](/graph/overview) 包含使用户可访问 Microsoft 365 数据的 API，并且支持 Microsoft 标识平台颁发的令牌，这使得它成为很棒的受保护 API，可用作示例。 在本部分，你将添加代码来调用 Microsoft Graph，并在应用程序的“提取数据”页面上显示用户的电子邮件。
 
-本部分采用常见方法编写，该方法使用命名客户端调用受保护的 API。 这一方法可用于其他要调用的受保护 API。 但是，如果你确实计划从应用程序调用 Microsoft Graph，那么可使用 Graph SDK 来减少样板。 .NET 文档包含有关[如何使用 Graph SDK](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0) 的说明。
+本部分采用常见方法编写，该方法使用命名客户端调用受保护的 API。 这一方法可用于其他要调用的受保护 API。 但是，如果你确实计划从应用程序调用 Microsoft Graph，那么可使用 Graph SDK 来减少样板。 .NET 文档包含有关[如何使用 Graph SDK](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0) 的说明。
 
 在开始之前，请注销你的应用，因为你将对所需权限进行更改，并且你的当前令牌将不起作用。 如果你尚未这样做，请再次运行应用，并在更新以下代码之前选择“注销”。
 

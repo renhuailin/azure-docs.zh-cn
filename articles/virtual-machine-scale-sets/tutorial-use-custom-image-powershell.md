@@ -9,12 +9,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: akjosh
-ms.openlocfilehash: 8a0ee8565d22e935535bbe1e830d8399b2489f5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 803bbf485d783fc160d1f2644a56e1339f73690e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527517"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678299"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>教程：通过 Azure PowerShell 创建和使用虚拟机规模集的自定义映像
 
@@ -80,7 +80,7 @@ $gallery = New-AzGallery `
 
 ## <a name="create-an-image-definition"></a>创建映像定义 
 
-映像定义为映像创建逻辑分组。 映像定义用于管理在其中创建的映像版本的相关信息。 映像定义名称可以由大写或小写字母、数字、点、短划线和句点构成。 有关可为映像定义指定的值的详细信息，请参阅[映像定义](../virtual-machines/windows/shared-image-galleries.md#image-definitions)。
+映像定义为映像创建逻辑分组。 映像定义用于管理在其中创建的映像版本的相关信息。 映像定义名称可以由大写或小写字母、数字、点、短划线和句点构成。 有关可为映像定义指定的值的详细信息，请参阅[映像定义](../virtual-machines/shared-image-galleries.md#image-definitions)。
 
 使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，库映像名为 myGalleryImage，它是为专用化映像创建的。 
 
@@ -256,7 +256,7 @@ Remove-AzResourceGroup -Name myResoureceGroup
 
 ## <a name="azure-image-builder"></a>Azure 映像生成器
 
-Azure 还提供一个基于 Packer 的服务：[Azure VM 映像生成器](../virtual-machines/windows/image-builder-overview.md)。 只需在模板中描述你的自定义设置，然后该模板即会处理映像的创建。 
+Azure 还提供一个基于 Packer 的服务：[Azure VM 映像生成器](../virtual-machines/image-builder-overview.md)。 只需在模板中描述你的自定义设置，然后该模板即会处理映像的创建。 
 
 ## <a name="next-steps"></a>后续步骤
 本教程介绍了如何通过 Azure PowerShell 创建和使用规模集的自定义 VM 映像：

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: daeef90c78fe1f4b98ee1865f48ce86fb3b48023
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 605f033ed48dd79fd164aabd95e326a6467d0ecd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936458"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726178"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>教程：Azure Active Directory 与 Zscaler ZSCloud 的集成
 
@@ -109,7 +109,7 @@ ms.locfileid: "97936458"
     f. 单击“ **保存**”。
 
     > [!NOTE]
-    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
+    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)。
 
 7. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
@@ -249,7 +249,7 @@ ms.locfileid: "97936458"
 
 * 直接转到 Zscaler ZSCloud 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler ZSCloud 磁贴时，会重定向到 Zscaler ZSCloud 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler ZSCloud 磁贴时，会重定向到 Zscaler ZSCloud 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,14 +1,14 @@
 ---
 title: 部署澳大利亚政府 ISM PROTECTED 蓝图示例
 description: 澳大利亚政府 ISM PROTECTED 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 09/11/2020
+ms.date: 01/21/2021
 ms.topic: sample
-ms.openlocfilehash: 4d38a5ad6790b8b2ef09476f4779ef596be9734b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 354d010442f896728ef9af1e3f372c2abbc58ef3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950510"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682273"
 ---
 # <a name="deploy-the-australian-government-ism-protected-blueprint-sample"></a>部署澳大利亚政府 ISM PROTECTED 蓝图示例
 
@@ -25,9 +25,9 @@ ms.locfileid: "91950510"
 
 首先，通过使用示例作为起点在环境中创建新的蓝图，来实现蓝图示例。
 
-1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。
+1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。 
 
 1. 在“其他示例”下找到“ISM PROTECTED”蓝图示例，然后选择“使用此示例”。
 
@@ -42,19 +42,19 @@ ms.locfileid: "91950510"
 
 ## <a name="publish-the-sample-copy"></a>发布示例副本
 
-现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其**发布**，然后才能分配和部署它。 可根据环境和需求自定义蓝图示例的副本，但这种修改可能不符合 ISM PROTECTED 控制要求。
+现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其 **发布**，然后才能分配和部署它。 可根据环境和需求自定义蓝图示例的副本，但这种修改可能不符合 ISM PROTECTED 控制要求。
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
 1. 在左侧选择“蓝图定义”页。 使用筛选器找到蓝图示例的副本，然后选择它。
 
-1. 选择页面顶部的“发布蓝图”。 在右侧的新窗格中，提供蓝图示例副本的**版本**。 以后做出修改时，此属性非常有用。 提供更改注释，例如，“基于 ISM PROTECTED 蓝图示例发布的第一个版本。” 然后选择页面底部的“发布”。
+1. 选择页面顶部的“发布蓝图”。 在右侧的新窗格中，提供蓝图示例副本的 **版本**。 以后做出修改时，此属性非常有用。 提供更改注释，例如，“基于 ISM PROTECTED 蓝图示例发布的第一个版本。” 然后选择页面底部的“发布”。
 
 ## <a name="assign-the-sample-copy"></a>分配示例副本
 
-成功**发布**蓝图示例的副本后，可将它分配到它所在的管理组中的某个订阅。 在此步骤中，需提供参数来使蓝图示例副本的每个部署保持唯一。
+成功 **发布** 蓝图示例的副本后，可将它分配到它所在的管理组中的某个订阅。 在此步骤中，需提供参数来使蓝图示例副本的每个部署保持唯一。
 
-1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
 1. 在左侧选择“蓝图定义”页。 使用筛选器找到蓝图示例的副本，然后选择它。
 
@@ -68,7 +68,7 @@ ms.locfileid: "91950510"
      - **分配名称**：系统会根据蓝图的名称预先填充该名称。
        请根据需要更改该名称，或保留原样。
      - 位置：选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../../active-directory/managed-identities-azure-resources/overview.md)。
-     - **蓝图定义版本**：选择蓝图示例副本的**已发布**版本。
+     - **蓝图定义版本**：选择蓝图示例副本的 **已发布** 版本。
 
    - 锁分配
 
@@ -85,7 +85,7 @@ ms.locfileid: "91950510"
 1. 输入所有参数后，选择页面底部的“分配”。 随后将创建蓝图分配，并开始部署项目。 部署过程大约需要一小时。 若要检查部署状态，请打开蓝图分配。
 
 > [!WARNING]
-> Azure 蓝图服务和内置蓝图示例是**免费的**。 Azure 资源[按产品定价](https://azure.microsoft.com/pricing/) 。 使用[定价计算器](https://azure.microsoft.com/pricing/calculator/) 可以估算运行此蓝图示例部署的资源所需的成本。
+> Azure 蓝图服务和内置蓝图示例是 **免费的**。 Azure 资源[按产品定价](https://azure.microsoft.com/pricing/) 。 使用[定价计算器](https://azure.microsoft.com/pricing/calculator/) 可以估算运行此蓝图示例部署的资源所需的成本。
 
 ## <a name="artifact-parameters-table"></a>项目参数表
 

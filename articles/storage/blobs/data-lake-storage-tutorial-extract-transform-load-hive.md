@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7640b7a6053532360da4c908089aecfe163bd3de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f8210c3bc0437180ace110f8decd9f83e18650ed
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912648"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661927"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>教程：使用 Azure HDInsight 提取、转换和加载数据
 
@@ -40,7 +40,7 @@ ms.locfileid: "95912648"
 
 * **Azure SQL 数据库**：使用 Azure SQL 数据库作为目标数据存储。 如果 Azure SQL 数据库中没有数据库，请参阅[通过 Azure 门户在 Azure SQL 数据库中创建数据库](../../azure-sql/database/single-database-create-quickstart.md)。
 
-* **Azure CLI**：如果尚未安装 Azure CLI，请参阅 [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* **Azure CLI**：如果尚未安装 Azure CLI，请参阅 [安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 * **安全外壳 (SSH) 客户端**：有关详细信息，请参阅 [使用 SSH 连接到 HDInsight (Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 

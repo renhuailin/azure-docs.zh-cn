@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d475c76d338270cb9b8e34ea8563cdfd8fdf5122
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b5c65035f8b51b53f617d4562fe1982f53f0deec
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563052"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678266"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 
@@ -161,15 +161,15 @@ IoT 中心使 IoT 应用程序与其管理的设备之间能够安全可靠地�
 > [!NOTE]
 > 在事件网格中发布设备遥测事件的功能当前处于预览阶段。 此功能已在除以下区域之外的所有区域推出：美国东部、美国西部、西欧、Azure 政府、Azure 中国世纪互联和 Azure 德国。
 
-若要在 ContosoRental 资源组中创建 IoT 中心，请按照[创建 IoT 中心](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub)中的步骤执行操作。
+若要在 ContosoRental 资源组中创建 IoT 中心，请按照[创建 IoT 中心](../iot-hub/quickstart-send-telemetry-dotnet.md#create-an-iot-hub)中的步骤执行操作。
 
 ## <a name="register-a-device-in-your-iot-hub"></a>在 IoT 中心注册设备
 
-除非在 IoT 中心标识注册表中注册了设备，否则它们无法连接到 IoT 中心。 在这里，你将创建名为 InVehicleDevice 的设备。 若要在 IoT 中心创建和注册设备，请按照[在 IoT 中心注册新设备](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub)中的步骤执行操作。 确保复制设备的主连接字符串。 稍后需要用到此信息。
+除非在 IoT 中心标识注册表中注册了设备，否则它们无法连接到 IoT 中心。 在这里，你将创建名为 InVehicleDevice 的设备。 若要在 IoT 中心创建和注册设备，请按照[在 IoT 中心注册新设备](../iot-hub/iot-hub-create-through-portal.md#register-a-new-device-in-the-iot-hub)中的步骤执行操作。 确保复制设备的主连接字符串。 稍后需要用到此信息。
 
 ## <a name="create-a-function-and-add-an-event-grid-subscription"></a>创建函数并添加事件网格订阅
 
-Azure Functions 是无服务器计算服务，使用它可以运行一小段代码（“函数”），而无需显式预配或管理计算基础结构。 有关详细信息，请参阅 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview)。
+Azure Functions 是无服务器计算服务，使用它可以运行一小段代码（“函数”），而无需显式预配或管理计算基础结构。 有关详细信息，请参阅 [Azure Functions](../azure-functions/functions-overview.md)。
 
 函数由特定事件触发。 在本文中，你将创建一个由事件网格触发器触发的函数。 通过为 IoT 中心设备遥测事件创建事件订阅来创建触发器与函数之间的关系。 发生设备遥测事件时，函数作为终结点被调用，并接收之前在 IoT 中心注册的设备的相关数据。
 
@@ -223,7 +223,7 @@ Azure Functions 是无服务器计算服务，使用它可以运行一小段代�
 
 ## <a name="filter-events-by-using-iot-hub-message-routing"></a>使用 IoT 中心消息路由筛选事件
 
-将事件网格订阅添加到 Azure 函数时，系统会在指定的 IoT 中心自动创建消息路由。 借助消息路由，你能够将不同的数据类型路由到各个终结点。 例如，可以路由设备遥测消息、设备生命周期事件和设备孪生更改事件。 有关详细信息，请参阅[使用 IoT 中心消息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)。
+将事件网格订阅添加到 Azure 函数时，系统会在指定的 IoT 中心自动创建消息路由。 借助消息路由，你能够将不同的数据类型路由到各个终结点。 例如，可以路由设备遥测消息、设备生命周期事件和设备孪生更改事件。 有关详细信息，请参阅[使用 IoT 中心消息路由](../iot-hub/iot-hub-devguide-messages-d2c.md)。
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="IoT 中心内消息路由的屏幕截图。":::
 
@@ -232,7 +232,7 @@ Azure Functions 是无服务器计算服务，使用它可以运行一小段代�
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="筛选路由消息的屏幕截图。":::
 
 >[!TIP]
->可以通过多种方法查询 IoT 设备到云的消息。 若要详细了解消息路由语法，请参阅 [IoT 中心消息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax)。
+>可以通过多种方法查询 IoT 设备到云的消息。 若要详细了解消息路由语法，请参阅 [IoT 中心消息路由](../iot-hub/iot-hub-devguide-routing-query-syntax.md)。
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>将遥测数据发送到 IoT 中心
 
@@ -283,6 +283,10 @@ Azure Functions 是无服务器计算服务，使用它可以运行一小段代�
 若要获取 Azure 认证的 IoT 设备列表，请访问：
 
 * [Azure 认证的设备](https://catalog.azureiotsolutions.com/)
+
+## <a name="clean-up-resources"></a>清理资源
+
+没有需要清理的资源。
 
 ## <a name="next-steps"></a>后续步骤
 

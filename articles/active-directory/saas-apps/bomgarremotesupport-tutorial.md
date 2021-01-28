@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/12/2020
 ms.author: jeedes
-ms.openlocfilehash: c11d8aaa578006c7dbd96b457399df5b17fd9bd8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f9e4af3330ecf5fbe161f7ba92ddf96eb04880a1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95914882"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728018"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BeyondTrust Remote Support 集成
 
@@ -46,7 +46,7 @@ ms.locfileid: "95914882"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“BeyondTrust Remote Support”   。
 1. 从结果面板中选择“BeyondTrust Remote Support”，然后添加应用  。 在该应用添加到租户时等待几秒钟。
@@ -74,13 +74,13 @@ ms.locfileid: "95914882"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com/saml`。
 
     b. 在“标识符”框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com`
 
-    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com/saml/sso`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com/saml/sso`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 本教程后面的步骤中将介绍这些值。
@@ -189,8 +189,8 @@ ms.locfileid: "95914882"
 
 * 直接转到 BeyondTrust 远程支持登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“BeyondTrust 远程支持”磁贴后，会重定向到 BeyondTrust 远程支持登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“BeyondTrust 远程支持”磁贴后，会重定向到 BeyondTrust 远程支持登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 BeyondTrust 远程支持后，即可强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+配置 BeyondTrust 远程支持后，即可强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)

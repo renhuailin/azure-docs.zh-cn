@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 6ac9dea5f77a47926e8dec5bda0befc66e4e675b
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 7a706eb120f45fcd08febd0bda9aaaa54a82135a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963838"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728160"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bic-cloud-design"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BIC Cloud Design 的集成
 
@@ -159,7 +159,7 @@ ms.locfileid: "97963838"
 
 * 直接转到 BIC Cloud Design 登录 URL，并在其中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 BIC Cloud Design 磁贴时，将会重定向到 BIC Cloud Design 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 BIC Cloud Design 磁贴时，将会重定向到 BIC Cloud Design 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

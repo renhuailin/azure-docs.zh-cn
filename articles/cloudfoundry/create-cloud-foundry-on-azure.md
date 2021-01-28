@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 65d8ade438228d7af71de1fc66639e5b6de2edda
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 735c0955a25a3995c94c73bd6471643ce2783df3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040802"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682608"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>在 Azure 上创建 Pivotal Cloud Foundry 群集
 
@@ -42,25 +42,31 @@ ssh-keygen -t rsa -b 2048
 
 > [!NOTE]
 >
-> 若要创建服务主体，需要所有者帐户权限。 还可以编写一个脚本来自动创建服务主体。 例如，可以使用 Azure CLI 的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest)。
+> 若要创建服务主体，需要所有者帐户权限。 还可以编写一个脚本来自动创建服务主体。 例如，可以使用 Azure CLI 的 [az ad sp create-for-rbac](/cli/azure/ad/sp)。
 
 1. 登录 Azure 帐户。
 
-    `az login`
+    ```azurecli
+    az login
+    ```
 
     ![Azure CLI 登录](media/deploy/az-login-output.png )
  
-    复制“id”值（用作 **订阅 ID** ）和“tenantId”值供以后使用。
+    复制“id”值（用作 **订阅 ID**）和“tenantId”值供以后使用。
 
 2. 设置此配置的默认订阅。
 
-    `az account set -s {id}`
+    ```azurecli
+    az account set -s {id}
+    ```
 
-3. 创建适用于 PCF 的 Azure Active Directory 应用程序。 指定唯一的字母数字密码。 将密码存储为 **clientSecret** ，供以后使用。
+3. 创建适用于 PCF 的 Azure Active Directory 应用程序。 指定唯一的字母数字密码。 将密码存储为 **clientSecret**，供以后使用。
 
-    `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
+    ```azurecli
+    az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}
+    ```
 
-    复制输出中的“appId”值（用作 **ClientID** ），供以后使用。
+    复制输出中的“appId”值（用作 **ClientID**），供以后使用。
 
     > [!NOTE]
     >
@@ -68,23 +74,31 @@ ssh-keygen -t rsa -b 2048
 
 4. 使用新的应用 ID 创建服务主体。
 
-    `az ad sp create --id {appId}`
+    ```azurecli
+    az ad sp create --id {appId}
+    ```
 
 5. 将服务主体的权限角色设置为“参与者”。
 
-    `az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"
+    ```
 
     也可使用
 
-    `az role assignment create --assignee {service-principal-name} --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee {service-principal-name} --role "Contributor"
+    ```
 
     ![服务主体角色分配](media/deploy/svc-princ.png )
 
 6. 使用应用 ID、密码和租户 ID 验证是否可以成功登录到自己的服务主体。
 
-    `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
+    ```azurecli
+    az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}
+    ```
 
-7. 使用以下格式创建 .json 文件。 使用此前复制的 **订阅 ID** 、 **tenantID** 、 **clientID** 和 **clientSecret** 的值。 保存文件。
+7. 使用以下格式创建 .json 文件。 使用此前复制的 **订阅 ID**、**tenantID**、**clientID** 和 **clientSecret** 的值。 保存文件。
 
     ```json
     {

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: a3b1db5c0587156e0b966a36627f0d754725d901
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 329e0fbfdea43f3933333744f89ed1c03ef0ed13
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729459"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729274"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeclock-365-saml"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Timeclock 365 SAML 集成
 
@@ -143,11 +143,9 @@ ms.locfileid: "97729459"
 
 * 直接转到 Timeclock 365 SAML 登录 URL，并在其中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Timeclock 365 SAML 磁贴时，会重定向到 Timeclock 365 SAML 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Timeclock 365 SAML 磁贴时，会重定向到 Timeclock 365 SAML 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Timeclock 365 SAML 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 Timeclock 365 SAML 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

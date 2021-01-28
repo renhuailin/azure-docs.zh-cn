@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 125ca501dbad74263f32632db44eebd097c3b0a1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: dbf2331dc6bcd3187175554b61d347e8bb2c04a4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896695"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624993"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>教程：使用 Azure Maps 查找和显示不同出行模式的路线
 
@@ -121,7 +121,7 @@ ms.locfileid: "92896695"
 
 2. 保存“MapTruckRoute.html”文件并刷新浏览器中的页  。 如果放大地图并显示任何城市（如洛杉矶），你可看到显示了当前交通流数据的街道。
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="地图控件的基本地图呈现":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="在地图上查看交通信息":::
 
 <a id="queryroutes"></a>
 
@@ -197,7 +197,7 @@ ms.locfileid: "92896695"
 
 3. 保存 TruckRoute.html 并刷新浏览器。 现在，地图以西雅图为中心。 泪珠形蓝色图钉标记起点。 圆形蓝色图钉标记终点。
 
-   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="地图控件的基本地图呈现":::
+   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="查看有起点和终点的地图":::
 
 <a id="multipleroutes"></a>
 
@@ -277,7 +277,7 @@ ms.locfileid: "92896695"
 
 4. 保存 TruckRoute.html 文件并刷新 web 浏览器。 地图现在应显示卡车路线和小汽车路线。
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="地图控件的基本地图呈现":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="使用 Azure 路线服务的地图上的私家车和商用车路线":::
 
     卡车路线使用蓝色粗线显示。 小汽车路线使用紫色细线显示。 小汽车路线经 I-90 穿过华盛顿湖，会经过居民区下的隧道。 由于隧道靠近居住区，因此会限制危险货物。 卡车路线（指定 `USHazmatClass2` 货物类型）指向不同的公路。
 
@@ -285,7 +285,9 @@ ms.locfileid: "92896695"
 
 还可以[使用数据驱动的样式表达式](data-driven-style-expressions-web-sdk.md)
 
+## <a name="clean-up-resources"></a>清理资源
 
+没有需要清理的资源。
 
 ## <a name="next-steps"></a>后续步骤
 

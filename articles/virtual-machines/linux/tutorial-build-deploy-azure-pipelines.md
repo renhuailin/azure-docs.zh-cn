@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4ca431290fe168f8fc073908bb3735ecb5992562
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739699"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731245"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>教程：使用 Azure DevOps Services 和 Azure Pipelines 将应用部署到 Azure 中的 Linux 虚拟机
 
@@ -24,7 +24,7 @@ ms.locfileid: "97739699"
 
 Azure Pipelines 提供了一组完整且功能完备的 CI/CD 自动化工具，以部署本地或任何云上的虚拟机。
 
-在本教程中，你将设置基于 YAML 的 CI/CD 管道，以便将应用部署到 Linux 虚拟机作为资源的 Azure Pipelines [环境](/azure/devops/pipelines/process/environments?view=azure-devops)中，其中每个虚拟机都充当 Web 服务器来运行应用。
+在本教程中，你将设置基于 YAML 的 CI/CD 管道，以便将应用部署到 Linux 虚拟机作为资源的 Azure Pipelines [环境](/azure/devops/pipelines/process/environments)中，其中每个虚拟机都充当 Web 服务器来运行应用。
 
 学习如何：
 
@@ -41,7 +41,7 @@ Azure Pipelines 提供了一组完整且功能完备的 CI/CD 自动化工具，
   你可以获取[免费 Azure DevOps Services 组织](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308)。
 
   > [!NOTE]
-  > 有关详细信息，请参阅[连接到 Azure DevOps Services](/azure/devops/organizations/projects/connect-to-projects?view=vsts)。
+  > 有关详细信息，请参阅[连接到 Azure DevOps Services](/azure/devops/organizations/projects/connect-to-projects)。
 
 *  部署目标需用到 Linux 虚拟机。  有关详细信息，请参阅[使用 Azure CLI 创建和管理 Linux VM](./tutorial-manage-vm.md)。
 
@@ -222,7 +222,7 @@ jobs:
        tags: web
    ```
 2. 可以从环境中选择特定的虚拟机集来接收部署，方法是指定为环境中的每个虚拟机定义的“标记”  。
-[此处](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) 是部署作业的完整 YAML 架构。
+[此处](/azure/devops/pipelines/yaml-schema?tabs=schema#deployment-job) 是部署作业的完整 YAML 架构。
 
 3. 可以指定 `runOnce` 或 `rolling` 作为部署策略。 
 

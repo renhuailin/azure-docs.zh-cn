@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: cdb72eb857f60400e8f7c23bbd1af39df802df76
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 5802df8bec8a0d938b132e099dd71fdb1d22a5b7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968902"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727460"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Kronos 集成
 
@@ -147,7 +147,7 @@ ms.locfileid: "97968902"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 Kronos
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Kronos 磁贴时，你应该会自动登录到为其设置了 SSO 的 Kronos。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Kronos 磁贴时，你应该会自动登录到为其设置了 SSO 的 Kronos。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

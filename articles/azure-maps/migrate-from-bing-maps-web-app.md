@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: ef2c69409ce3f479338ffc9d418b3469f197ad30
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679392"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684819"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>教程：从必应地图迁移 Web 应用
 
@@ -85,7 +85,7 @@ Azure Maps 还具有其他很多[用于 Web SDK 的开源模块](open-source-pro
 
 下面是必应地图与 Azure Maps Web SDK 之间需要注意的一些重要区别：
 
-* 除了提供托管终结点用于访问 Azure Maps Web SDK 以外，还可以根据偏好使用某个 NPM 包将 Web SDK 嵌入应用。 有关详细信息，请参阅此[文档](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。 此程序包还包括了 TypeScript 定义。
+* 除了提供托管终结点用于访问 Azure Maps Web SDK 以外，还可以根据偏好使用某个 NPM 包将 Web SDK 嵌入应用。 有关详细信息，请参阅此[文档](./how-to-use-map-control.md)。 此程序包还包括了 TypeScript 定义。
 * 必应地图提供了其 SDK 的两个托管分支：发布和实验。 在进行新的开发时，实验分支每天可能会收到多个更新。 Azure Maps 仅托管发布分支，但实验功能在开源 Azure Maps 代码示例项目中作为自定义模块进行创建。 必应地图之前有一个冻结的分支，该分支更新频率较低，因此降低了因发布而出现中断性变更的风险。 在 Azure Maps 中可使用 NPM 模块，并指向之前任何的次要版本。
 
 > [!TIP]
@@ -95,7 +95,7 @@ Azure Maps 还具有其他很多[用于 Web SDK 的开源模块](open-source-pro
 * 这两个平台为基础地图使用类似的图块系统，但必应地图中图块的尺寸为 256 像素，而 Azure Maps 中图块的尺寸为 512 像素。 因此，若要在 Azure Maps 中获得与必应地图相同的地图视图，在必应地图中使用的缩放级别在 Azure Maps 中需要减 1。
 * 必应地图中的坐标称为 `latitude, longitude`，而 Azure Maps 使用 `longitude, latitude`。 此格式符合大多数 GIS 平台所遵循的标准 `[x, y]`。
 
-* Azure Maps Web SDK 中的形状基于 GeoJSON 架构。 帮助器类通过 [atlas.data 命名空间](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)公开。 还有 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 类可用于包装 GeoJSON 对象，使它们可以数据可绑定的方式轻松更新和维护。
+* Azure Maps Web SDK 中的形状基于 GeoJSON 架构。 帮助器类通过 [atlas.data 命名空间](/javascript/api/azure-maps-control/atlas.data)公开。 还有 [atlas.Shape](/javascript/api/azure-maps-control/atlas.shape) 类可用于包装 GeoJSON 对象，使它们可以数据可绑定的方式轻松更新和维护。
 * Azure Maps 中的坐标定义为 Position 对象，可将这些对象指定为采用 `[longitude, latitude]` 或 `new atlas.data.Position(longitude, latitude)` 格式的简单数字数组。
 
 > [!TIP]

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 4793cad25e34e2e318dd205ba5f474d4529d13d5
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 75b8230a1027bbf3ff3d73fb35ce65107c2db7e9
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183874"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730656"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>教程：Azure Active Directory 单一登录 (SSO) 与 JIRA SAML SSO by Microsoft 集成
 
@@ -254,7 +254,7 @@ ms.locfileid: "98183874"
 
 * 直接转到 JIRA SAML SSO by Microsoft 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 当单击“我的应用”中 JIRA SAML SSO by Microsoft 磁贴时，这将通过 Microsoft 登录 URL 重定向到 JIRA SAML SSO。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 当单击“我的应用”中 JIRA SAML SSO by Microsoft 磁贴时，这将通过 Microsoft 登录 URL 重定向到 JIRA SAML SSO。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 8cc7c1e0b776574ec7908557108e2cda49bb2a11
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 31dd1c06b0f17b469454593131ccdc93b45b2446
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896654"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624961"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教程：使用 Azure Maps 搜索附近兴趣点
 
@@ -41,7 +41,7 @@ ms.locfileid: "92896654"
 
 Map Control API 是一个便利的客户端库。 使用此 API，可以轻松将 Maps 集成到你的 Web 应用程序中。 它消除了单纯 REST 服务调用的复杂性，并可以通过可自定义的组件提高工作效率。 以下步骤说明如何使用 Map Control API 创建一个嵌入式静态 HTML 页面。
 
-1. 在本地计算机上，创建一个新文件并将其命名为 **MapSearch.html** 。
+1. 在本地计算机上，创建一个新文件并将其命名为 **MapSearch.html**。
 2. 将以下 HTML 组件添加到该文件：
 
    ```HTML
@@ -246,6 +246,10 @@ Map Control API 是一个便利的客户端库。 使用此 API，可以轻松�
     ![Azure 地图控件和搜索服务](./media/tutorial-search-location/popup-map.png)
 
 若要查看本教程的完整代码，请单击[此处](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)。 若要查看实时示例，请单击[此处](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
+
+## <a name="clean-up-resources"></a>清理资源
+
+没有需要清理的资源。
 
 ## <a name="next-steps"></a>后续步骤
 

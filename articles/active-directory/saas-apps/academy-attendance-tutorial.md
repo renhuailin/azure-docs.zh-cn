@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 06b538f0f218beab2549b027a5da9dcc594969a4
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 12752e3d3cc08e8a13e9679725fbb6678c4bbd71
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586850"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728676"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-academy-attendance"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Academy Attendance 的集成
 
@@ -97,7 +97,7 @@ ms.locfileid: "97586850"
     | 角色 (role)      | user.assignedroles |
 
     > [!NOTE]
-    > Academy Attendance 支持两种用户角色：“教员”和“学生”。  在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 请参阅[此文档](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)，其中介绍了如何在 Azure AD 中创建自定义角色。
+    > Academy Attendance 支持两种用户角色：“教员”和“学生”。  在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 请参阅[此文档](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)，其中介绍了如何在 Azure AD 中创建自定义角色。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -147,9 +147,9 @@ ms.locfileid: "97586850"
 
 * 直接转到 Academy Attendance 登录 URL，并在其中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Academy Attendance 磁贴时，会重定向到 Academy Attendance 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Academy Attendance 磁贴时，会重定向到 Academy Attendance 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Academy Attendance 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Academy Attendance 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

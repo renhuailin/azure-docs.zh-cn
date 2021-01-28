@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 259db10aa8f5cd2b711eca001bc6d48057d5280d
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683212"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678157"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks (Python) 将传感器数据与天气预报数据相联接
 
@@ -27,7 +27,7 @@ ms.locfileid: "97683212"
 在本教程中，将：
 
 > [!div class="checklist"]
-> * 在云中的 [Azure Notebooks](../notebooks/index.yml) 中处理数据文件。
+> * 在云中的 [Azure Notebooks](https://notebooks.azure.com) 中处理数据文件。
 > * 从该文件加载演示数据。
 > * 在 Python 中调用 Azure Maps REST API。
 > * 在地图上呈现位置数据。
@@ -197,9 +197,13 @@ windsPlot.set_ylabel("Wind direction")
 
 有关 Azure Maps REST API 的完整列表，请参阅 [Azure Maps REST API](./consumption-model.md)。
 
+## <a name="clean-up-resources"></a>清理资源
+
+没有需要清理的资源。
+
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解 Azure Notebooks，请参阅：
 
 > [!div class="nextstepaction"]
-> [Azure Notebook](../notebooks/index.yml)
+> [Azure Notebook](https://notebooks.azure.com)

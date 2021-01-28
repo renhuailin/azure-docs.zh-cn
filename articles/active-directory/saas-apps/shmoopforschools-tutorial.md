@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: aa45c2c6ca779669411c3f7c2d2e322d8f647a3a
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: d1d29e939ab01f6311b665eaec8425b7cd38f207
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915243"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729455"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>教程：将 Shmoop For Schools 与 Azure Active Directory 集成
 
@@ -94,7 +94,7 @@ ms.locfileid: "97915243"
     | 角色 (role)      | user.assignedroles |
 
     > [!NOTE]
-    > Shmoop For Schools 支持两个用户角色：“教师”和“学生”。 在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
+    > Shmoop For Schools 支持两个用户角色：“教师”和“学生”。 在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)。
 
 1. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
@@ -143,7 +143,7 @@ ms.locfileid: "97915243"
 
 * 直接转到 Shmoop For Schools 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Shmoop For Schools 磁贴时，会重定向到 Shmoop For Schools 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Shmoop For Schools 磁贴时，会重定向到 Shmoop For Schools 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

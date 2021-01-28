@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 9578793c88c069b885f03dd682c47ae9f1f1b0a1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: bc2f802a902212633fdbc081d33a51407d374e36
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802620"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696357"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>安装软件并设置教程所需资源
 
@@ -32,7 +32,6 @@ ms.locfileid: "97802620"
 5. 安装最新版本的 [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020)。 以下脚本要求 AZ PowerShell 是最新版本（3.5.0，2020 年 2 月）。
 6. 通过安装 [Azure IoT EdgeHub 开发工具](https://pypi.org/project/iotedgehubdev/)，设置用于调试、运行和测试 IoT Edge 解决方案的环境。
 7. 安装 Docker。
-8. 下载本教程中将使用的 DACPAC 文件。 
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>使用 PowerShell 脚本部署 Azure 资源
 
