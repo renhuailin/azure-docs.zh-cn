@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 64a4404fa881181f92d442a73e5da4c16ae87ae3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e0e71bc0e3a81b5ab2f455224ed2ed4281532d55
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598873"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98952668"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Facebook 帐户注册与登录
 
@@ -30,7 +30,7 @@ ms.locfileid: "98598873"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -76,7 +76,7 @@ ms.locfileid: "98598873"
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击要添加 Facebook 标识提供程序的用户流。
 1. 在 **社交标识提供者** 下，选择 **Facebook**。
-1. 选择“保存”。 
+1. 选择“保存”。
 1. 若要测试策略，请选择 " **运行用户流**"。
 1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击 "**运行用户流**"
@@ -84,6 +84,21 @@ ms.locfileid: "98598873"
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="create-a-policy-key"></a>创建策略密钥
+
+需要存储以前在 Azure AD B2C 租户中记录的应用程序机密。
+
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+4. 在“概述”页上选择“标识体验框架”。
+5. 选择“策略密钥”，然后选择“添加”。
+6. 对于“选项”，请选择 `Manual`。
+7. 输入策略密钥的 **名称**。 例如，`FacebookSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+8. 在 " **密钥**" 中，输入你之前记录的应用密码。
+9. 在“密钥用法”处选择 `Signature`。
+10. 单击“创建”。
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>将 Facebook 帐户配置为标识提供者
 

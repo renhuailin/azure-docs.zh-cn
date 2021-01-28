@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 50042b749c917752d08198c31ada3c73a5ef540b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938494"
+ms.locfileid: "98952218"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
@@ -45,9 +45,13 @@ Microsoft Graph 允许管理 Azure AD B2C 目录中的资源。 支持用于管�
 - [更新](/graph/api/phoneauthenticationmethod-update)
 - [删除](/graph/api/phoneauthenticationmethod-delete)
 
+请注意， [list](/graph/api/authentication-list-phonemethods) 操作仅返回已启用的电话号码。 应启用以下电话号码来与列表操作一起使用。 
+
+![启用电话登录](./media/microsoft-graph-operations/enable-phone-sign-in.png)
+
 ## <a name="self-service-password-reset-email-address-beta"></a>自助服务密码重置电子邮件地址 (beta) 
 
-用户可以使用的电子邮件地址，用于为 [用户名登录帐户](identity-provider-local.md#username-sign-in)提供密码。 有关详细信息，请参阅 [Azure AD authentication 方法 API](/graph/api/resources/emailauthenticationmethod)。
+[用户名登录帐户](identity-provider-local.md#username-sign-in)可以使用的电子邮件地址，用于重置密码。 有关详细信息，请参阅 [Azure AD authentication 方法 API](/graph/api/resources/emailauthenticationmethod)。
 
 - [添加](/graph/api/emailauthenticationmethod-post)
 - [列表](/graph/api/emailauthenticationmethod-list)

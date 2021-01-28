@@ -1,16 +1,16 @@
 ---
 title: 在运行时扩展应用 - LUIS
-description: ''
+description: 了解如何扩展已发布的预测终结点以传递新的信息。
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 69e2608fb01ece81f555aae2f3d4a2e4a05cfc90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d94e9f59062e4d730b8f3b71022442e81e6eeda
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322795"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953015"
 ---
 # <a name="extend-app-at-prediction-runtime"></a>在预测运行时扩展应用
 
@@ -149,7 +149,7 @@ ms.locfileid: "91322795"
 
 #### <a name="resolution"></a>解决方法
 
-可选的 `resolution` 属性将在预测响应中返回，可让你传入与外部实体关联的元数据，然后在响应中接收该元数据。__
+可选的 `resolution` 属性将在预测响应中返回，可让你传入与外部实体关联的元数据，然后在响应中接收该元数据。
 
 主要目的是扩展预生成实体，但并不局限于该实体类型。
 

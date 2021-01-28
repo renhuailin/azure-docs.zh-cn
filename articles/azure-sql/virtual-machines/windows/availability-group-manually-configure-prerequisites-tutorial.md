@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 33233e8a6aa54e65094e0cc6130e804241d7201c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 869c4ac5cde7d1e50be0f2f738d8a0ce6de5e625
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044282"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951709"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>教程：在 Azure 虚拟机中的 SQL Server 上创建可用性组的先决条件
 
@@ -91,9 +91,9 @@ Azure 会创建资源组，并在门户中固定资源组的快捷方式。
    | **字段** | 值 |
    | --- | --- |
    | **名称** |autoHAVNET |
-   | **地址空间** |10.33.0.0/24 |
+   | **地址空间** |10.0.0.0/24 |
    | **子网名称** |管理员 |
-   | **子网地址范围** |10.33.0.0/29 |
+   | **子网地址范围** |10.0.0.0/29 |
    | **订阅** |指定要使用的订阅。 如果只有一个订阅，“订阅”字段将是空白的。 |
    | **资源组** |选择“使用现有项”，然后选择资源组的名称。 |
    | **位置** |指定 Azure 位置。 |
@@ -245,7 +245,7 @@ Azure 会创建虚拟机。
 12. 在“所有服务器任务详细信息”对话框的“操作”栏中，选择“将此服务器提升为域控制器”。  
 13. 在“Active Directory 域服务配置向导”中，使用以下值：
 
-    | **第** | 设置 |
+    | **Page** | 设置 |
     | --- | --- |
     | **部署配置** |**添加新林**<br/> **根域名** = corp.contoso.com |
     | **域控制器选项** |**DSRM 密码** = Contoso!0000<br/>**确认密码** = Contoso!0000 |
@@ -389,9 +389,9 @@ Azure 会创建虚拟机。
 
    本教程为虚拟机使用公共 IP 地址。 使用公共 IP 地址可以通过 Internet 直接远程连接到虚拟机，从而使配置过程更加轻松。 在生产环境中，Microsoft 建议仅使用专用 IP 地址，以减少 SQL Server 实例 VM 资源的漏洞涉及面。
 
-* **网络-每个服务器建议一个 NIC** 
+* 网络 - 建议为每个服务器设置一个 NIC 
 
-每台服务器 (群集节点上使用单个 NIC) 和单个子网。 Azure 网络具有物理冗余，这使得 Azure 虚拟机来宾群集上不需要其他 Nic 和子网。 群集验证报告将发出警告，指出节点只能在单个网络上访问。 可以在 Azure 虚拟机来宾故障转移群集上忽略此警告。
+每个服务器（群集节点）使用一个 NIC，并使用一个子网。 Azure 网络具有物理冗余，因此在 Azure 虚拟机来宾群集上不需要额外的 NIC 和子网。 群集验证报告将发出警告，指出节点只能在单个网络上访问。 在 Azure 虚拟机来宾故障转移群集上，可以忽略此警告。
 
 ### <a name="create-and-configure-the-sql-server-vms"></a>创建并配置 SQL Server VM
 
@@ -537,9 +537,9 @@ Azure 会创建虚拟机。
   > 现在，此步骤以及实际将 SQL Server VM 加入故障转移群集的操作可通过 [Azure SQL VM CLI](./availability-group-az-commandline-configure.md) 和 [Azure 快速启动模板](availability-group-quickstart-template-configure.md)自动执行。
   >
 
-### <a name="tuning-failover-cluster-network-thresholds"></a>优化故障转移群集网络阈值
+### <a name="tuning-failover-cluster-network-thresholds"></a>调整故障转移群集网络阈值
 
-使用 SQL Server 可用性组在 Azure Vm 中运行 Windows 故障转移群集节点时，请将群集设置更改为更宽松的监视状态。  这会使群集更稳定、更可靠。  有关此功能的详细信息，请参阅 [IaaS 与 SQL Server 优化故障转移群集网络阈值](/windows-server/troubleshoot/iaas-sql-failover-cluster)。
+使用 SQL Server 可用性组在 Azure VM 中运行 Windows 故障转移群集节点时，请将群集设置更改为更宽松的监视状态。  这将使群集更稳定、更可靠。  有关详细信息，请参阅[使用 SQL Server 的 IaaS - 调整故障转移群集网络阈值](/windows-server/troubleshoot/iaas-sql-failover-cluster)。
 
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a>在每个 SQL Server VM 上配置防火墙

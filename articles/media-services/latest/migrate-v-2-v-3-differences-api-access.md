@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务 V2 到 v3 API 访问差异
+title: 媒体服务 V2 与 v3 API 访问
 description: 本文介绍 Azure 媒体服务 V2 与 V3 之间的 API 访问差别。
 services: media-services
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 59347d2ff797cbbd2f91410c3ec713b544d7fd08
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 831bc737fbd54685cdc8358642bc37e7b2df2c42
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928214"
+ms.locfileid: "98953710"
 ---
 # <a name="api-access-differences-between-azure-media-services-v2-to-v3-api"></a>Azure 媒体服务 V2 与 v3 API 之间的 API 访问差异
 
