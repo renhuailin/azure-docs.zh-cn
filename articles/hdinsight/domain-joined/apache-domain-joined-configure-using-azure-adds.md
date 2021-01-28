@@ -2,25 +2,22 @@
 title: 为 Azure Active Directory 集成配置群集
 titleSuffix: Azure HDInsight
 description: 了解如何使用 Azure Active Directory 域服务和企业安全性套餐功能设置和配置与 Active Directory 集成的 HDInsight 群集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: c5c5db892f417f2e2ef3fde3535d806d39342327
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 15869a547ec5debee939c956d7495bfa58357555
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631544"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946922"
 ---
-# <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>为与企业安全性套餐 Azure Active Directory 集成配置 HDInsight 群集
+# <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>为 Azure Active Directory 与企业安全性套餐的集成配置 HDInsight 群集
 
-本文概述了创建和配置与 Azure Active Directory 集成的 HDInsight 群集的过程。 此集成依赖于名为企业安全性套餐的 HDInsight 功能 (ESP) ，Azure Active Directory 域服务 (Azure AD-DS) 和预先存在的本地 Active Directory。
+本文总结并概述了与 Azure Active Directory 集成的 HDInsight 群集的创建和配置过程。 此集成依赖于称为企业安全性套餐 (ESP) 的 HDInsight 功能、Azure Active Directory 域服务 (Azure AD-DS) 和现有的本地 Active Directory。
 
-若要详细了解如何在 Azure 中设置和配置域并创建已启用 ESP 的群集，然后同步本地用户，请参阅 [在 Azure HDInsight 中创建和配置企业安全性套餐群集](apache-domain-joined-create-configure-enterprise-security-cluster.md)。
+有关在 Azure 中设置和配置域并创建已启用 ESP 的群集然后同步本地用户的详细分步教程，请参阅[在 Azure HDInsight 中创建和配置企业安全性套餐群集](apache-domain-joined-create-configure-enterprise-security-cluster.md)。
 
 ## <a name="background"></a>背景
 
@@ -39,7 +36,7 @@ ms.locfileid: "97631544"
 - 创建托管标识并为其授权。
 - 针对 DNS 和相关问题完成网络设置。
 
-下面将详细讨论其中的每一项。 有关完成所有这些步骤的演练，请参阅 [在 Azure HDInsight 中创建和配置企业安全性套餐群集](apache-domain-joined-create-configure-enterprise-security-cluster.md)。
+下面将详细讨论其中的每一项。 有关完成所有这些步骤的演练，请参阅[在 Azure HDInsight 中创建和配置企业安全性套餐群集](apache-domain-joined-create-configure-enterprise-security-cluster.md)。
 
 ### <a name="enable-azure-ad-ds"></a>启用 Azure AD DS
 
@@ -63,7 +60,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 ```
 
 > [!NOTE]  
-> 只有租户管理员有权启用 Azure AD DS。 如果群集存储 Azure Data Lake Storage Gen1 或 Gen2，则必须仅针对将需要使用基本 Kerberos 身份验证来访问群集的用户禁用 Azure AD 多重身份验证。
+> 只有租户管理员有权启用 Azure AD DS。 如果群集存储是 Azure Data Lake Storage Gen1 或 Gen2，则必须只对需要使用基本 Kerberos 身份验证访问群集的用户禁用 Azure AD 多重身份验证。
 >
 > 可以使用[受信任 IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) 或[条件访问](../../active-directory/conditional-access/overview.md)仅在特定用户访问 HDInsight 群集的虚拟网络 IP 范围时对其禁用多重身份验证。 如果使用条件访问，请确保在 HDInsight 虚拟网络上启用了 Active Directory 服务终结点。
 >

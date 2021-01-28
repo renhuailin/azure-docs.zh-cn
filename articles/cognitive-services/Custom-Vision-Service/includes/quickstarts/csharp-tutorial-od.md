@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: d177f667f7bae2d061dfe7d79247c5cc2fd40d5b
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 66934d61ea4e47df0fec8a6a347c676dc85a5b0a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256258"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948675"
 ---
 适用于 .NET 的自定义视觉客户端库入门。 请按照以下步骤安装包并试用用于生成对象检测模型的示例代码。 你将创建一个项目，添加标签，针对示例图像训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 
@@ -24,7 +24,7 @@ ms.locfileid: "98256258"
 * 发布当前迭代
 * 测试预测终结点
 
-[参考文档](/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet) | 库源代码[（训练）](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training)[（预测）](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction)| 包 (NuGet)[（训练）](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)[（预测）](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/) | [示例](/samples/browse/?products=azure&term=vision&terms=vision)
+[参考文档](/dotnet/api/overview/azure/cognitiveservices/client/customvision) | 库源代码[（训练）](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training)[（预测）](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction)| 包 (NuGet)[（训练）](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)[（预测）](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/) | [示例](/samples/browse/?products=azure&term=vision&terms=vision)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -105,9 +105,9 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Predict
 
 |名称|说明|
 |---|---|
-|[CustomVisionTrainingClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-dotnet) | 此类处理模型的创建、训练和发布。 |
-|[CustomVisionPredictionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-dotnet-preview)| 此类处理用于对象检测预测的模型查询。|
-|[PredictionModel](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.predictionmodel?view=azure-dotnet-preview)| 此类定义单一图像上的单一对象预测。 其中包括对象 ID 和名称的属性、对象的边界框位置以及可信度分数。|
+|[CustomVisionTrainingClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient) | 此类处理模型的创建、训练和发布。 |
+|[CustomVisionPredictionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient)| 此类处理用于对象检测预测的模型查询。|
+|[PredictionModel](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.predictionmodel)| 此类定义单一图像上的单一对象预测。 其中包括对象 ID 和名称的属性、对象的边界框位置以及可信度分数。|
 
 ## <a name="code-examples"></a>代码示例
 
@@ -129,7 +129,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Predict
 
 ## <a name="create-a-new-custom-vision-project"></a>创建新的自定义视觉项目
 
-下一个方法将创建对象检测项目。 创建的项目将显示在[自定义视觉网站](https://customvision.ai/)上。 请查看 [CreateProject](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) 方法，以在创建项目时指定其他选项（在[生成检测器](../../get-started-build-detector.md) Web 门户指南中进行了说明）。  
+下一个方法将创建对象检测项目。 创建的项目将显示在[自定义视觉网站](https://customvision.ai/)上。 请查看 [CreateProject](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) 方法，以在创建项目时指定其他选项（在[生成检测器](../../get-started-build-detector.md) Web 门户指南中进行了说明）。  
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_create)]
 
@@ -168,7 +168,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Predict
 > [!TIP]
 > 使用选定标记进行训练
 >
-> 可以选择只对应用的标记的子集进行训练。 如果你还没有应用足够多的特定标记，但是你确实有足够多的其他标记，则可能需要这样做。 在 [TrainProject](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.trainproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_TrainProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_Guid_System_String_System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_Models_TrainingParameters_&preserve-view=true) 调用中，使用 trainingParameters 参数。 构造一个 [TrainingParameters](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.models.trainingparameters?preserve-view=true&view=azure-dotnet)，并将其 SelectedTags 属性设置为要使用的标记的 ID 列表。 模型将训练成只识别该列表中的标记。
+> 可以选择只对应用的标记的子集进行训练。 如果你还没有应用足够多的特定标记，但是你确实有足够多的其他标记，则可能需要这样做。 在 [TrainProject](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.trainproject#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_TrainProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_Guid_System_String_System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_Models_TrainingParameters_&preserve-view=true) 调用中，使用 trainingParameters 参数。 构造一个 [TrainingParameters](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.models.trainingparameters)，并将其 SelectedTags 属性设置为要使用的标记的 ID 列表。 模型将训练成只识别该列表中的标记。
 
 ## <a name="publish-the-current-iteration"></a>发布当前迭代
 
@@ -226,4 +226,4 @@ Making a prediction:
 
 * 什么是自定义视觉？
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs) 上找到此示例的源代码
-* [SDK 参考文档](/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet)
+* [SDK 参考文档](/dotnet/api/overview/azure/cognitiveservices/client/customvision)

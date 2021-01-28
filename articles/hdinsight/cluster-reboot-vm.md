@@ -1,19 +1,16 @@
 ---
 title: 重新启动 Azure HDInsight 群集的 VM
 description: 了解如何重新启动 Azure HDInsight 群集的无响应的 VM。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 725b616fec9c2bc4a0540a7941098377e01732e2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a61735dba60860459d007eb54d4655f41d5ae51a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546460"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946875"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>重新启动 HDInsight 群集的 VM
 
@@ -32,7 +29,7 @@ Azure HDInsight 群集包含作为群集节点的虚拟机 (VM) 组。 对于长
 - VM 上的进程表中有很多条目的进程已完成，但状态显示为“终止状态”。
 
 > [!NOTE]
-> **HBase** 和 **Kafka** 群集不支持重启 vm，因为重新启动可能会导致数据丢失。
+> HBase 和 Kafka 群集不支持重启 VM，因为重启可能会导致数据丢失 。
 
 ## <a name="use-powershell-to-reboot-vms"></a>使用 PowerShell 重新启动 VM
 

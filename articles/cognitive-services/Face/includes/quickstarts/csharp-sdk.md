@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 972609b0a1b2249c9da9ab6da9309c0950e76734
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: a01afdcb54ff124bf4141d6ceb34b77303bef104
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98697885"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948084"
 ---
 开始使用适用于 .NET 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -25,7 +25,7 @@ ms.locfileid: "98697885"
 * [创建人员组](#create-a-person-group)
 * [识别人脸](#identify-a-face)
 
-[参考文档](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1) | [示例](/samples/browse/?products=azure&term=face)
+[参考文档](/dotnet/api/overview/azure/cognitiveservices/client/faceapi) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1) | [示例](/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -110,12 +110,12 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 
 |名称|说明|
 |---|---|
-|[FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | 此类代表使用人脸服务的授权，使用所有人脸功能时都需要用到它。 请使用你的订阅信息实例化此类，然后使用它来生成其他类的实例。 |
-|[FaceOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|此类处理可对人脸执行的基本检测和识别任务。 |
-|[DetectedFace](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)|此类代表已从图像中的单个人脸检测到的所有数据。 可以使用它来检索有关人脸的详细信息。|
-|[FaceListOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)|此类管理云中存储的 **FaceList** 构造，这些构造存储各种不同的人脸。 |
-|[PersonGroupPersonExtensions](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongrouppersonextensions?view=azure-dotnet)| 此类管理云中存储的 **Person** 构造，这些构造存储属于单个人员的一组人脸。|
-|[PersonGroupOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)| 此类管理云中存储的 **PersonGroup** 构造，这些构造存储各种不同的 **Person** 对象。 |
+|[FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient) | 此类代表使用人脸服务的授权，使用所有人脸功能时都需要用到它。 请使用你的订阅信息实例化此类，然后使用它来生成其他类的实例。 |
+|[FaceOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations)|此类处理可对人脸执行的基本检测和识别任务。 |
+|[DetectedFace](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface)|此类代表已从图像中的单个人脸检测到的所有数据。 可以使用它来检索有关人脸的详细信息。|
+|[FaceListOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations)|此类管理云中存储的 **FaceList** 构造，这些构造存储各种不同的人脸。 |
+|[PersonGroupPersonExtensions](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongrouppersonextensions)| 此类管理云中存储的 **Person** 构造，这些构造存储属于单个人员的一组人脸。|
+|[PersonGroupOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations)| 此类管理云中存储的 **PersonGroup** 构造，这些构造存储各种不同的 **Person** 对象。 |
 
 ## <a name="code-examples"></a>代码示例
 
@@ -129,7 +129,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-在新方法中，使用终结点和密钥实例化客户端。 使用密钥创建一个 **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** 对象，并在终结点中使用该对象创建一个 **[FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** 对象。
+在新方法中，使用终结点和密钥实例化客户端。 使用密钥创建一个 **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials)** 对象，并在终结点中使用该对象创建一个 **[FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient)** 对象。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_auth)]
 
@@ -147,16 +147,16 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 
 ### <a name="get-detected-face-objects"></a>获取检测到的人脸对象
 
-创建新方法以检测人脸。 `DetectFaceExtract` 方法处理给定 URL 处的三个图像，并在程序内存中创建 [DetectedFace](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) 对象的列表。 **[FaceAttributeType](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** 值列表指定要提取的特征。 
+创建新方法以检测人脸。 `DetectFaceExtract` 方法处理给定 URL 处的三个图像，并在程序内存中创建 [DetectedFace](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface) 对象的列表。 **[FaceAttributeType](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype)** 值列表指定要提取的特征。 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect)]
 
 > [!TIP]
-> 还可以检测本地图像中的人脸。 请参阅 [IFaceOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ifaceoperations?view=azure-dotnet) 方法，例如 DetectWithStreamAsync。
+> 还可以检测本地图像中的人脸。 请参阅 [IFaceOperations](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ifaceoperations) 方法，例如 DetectWithStreamAsync。
 
 ### <a name="display-detected-face-data"></a>显示检测到的人脸数据
 
-`DetectFaceExtract` 方法的其余部分将分析和打印每个检测到的人脸的属性数据。 每个属性必须在原始人脸检测 API 调用中单独指定（在 **[FaceAttributeType](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** 列表中）。 下面的代码处理每个属性，但你可能只需要使用一个或一些属性。
+`DetectFaceExtract` 方法的其余部分将分析和打印每个检测到的人脸的属性数据。 每个属性必须在原始人脸检测 API 调用中单独指定（在 **[FaceAttributeType](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype)** 列表中）。 下面的代码处理每个属性，但你可能只需要使用一个或一些属性。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_parse)]
 
@@ -205,7 +205,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_create)]
 
 > [!TIP]
-> 你还可以从本地图像创建 PersonGroup。 请参阅 [IPersonGroupPerson](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ipersongroupperson?view=azure-dotnet) 方法，例如 AddFaceFromStreamAsync.
+> 你还可以从本地图像创建 PersonGroup。 请参阅 [IPersonGroupPerson](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ipersongroupperson) 方法，例如 AddFaceFromStreamAsync.
 
 ### <a name="train-the-persongroup"></a>训练 PersonGroup
 
@@ -264,7 +264,7 @@ dotnet run
 在本快速入门中，你已了解如何使用适用于 .NET 的人脸客户端库来执行基本人脸识别任务。 接下来，请在参考文档中详细了解该库。
 
 > [!div class="nextstepaction"]
-> [人脸 API 参考 (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+> [人脸 API 参考 (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)
 
 * [什么是人脸服务？](../../overview.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/Face/FaceQuickstart.cs) 上找到此示例的源代码。
