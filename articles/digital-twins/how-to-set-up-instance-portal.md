@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d38e631a5a12381b407dca4dd9e2f2ae63365453
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 61b396cbcc8c91c75c961f702de7ed6a33e676e4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882429"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947020"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>设置 Azure 数字孪生实例和身份验证 (门户) 
 
@@ -40,7 +40,7 @@ ms.locfileid: "98882429"
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="从 Azure 数字孪生服务页中选择 &quot;创建&quot;":::
 
-在下面的 " *创建资源* " 页上，填写以下给定值：
+在下面的 " **创建资源** " 页上，填写以下给定值：
 * **订阅**：要使用的 Azure 订阅
   - **资源组**：要在其中部署实例的资源组。 如果尚未记住现有的资源组，可通过选择 "新建" 链接并输入新资源组 *的名称* 来创建一个资源组。
 * **位置**：用于部署的支持 Azure 数字孪生的区域。 有关区域支持的更多详细信息，请访问 azure [*孪生) 提供 (的 azure 产品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
@@ -48,11 +48,21 @@ ms.locfileid: "98882429"
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="填写所述的值以创建 Azure 数字孪生资源":::
 
-完成后，选择“查看 + 创建”。 这会转到 "摘要" 页，您可以在其中查看所输入的实例详细信息，然后单击 " _创建_"。 
+完成后，如果不想为实例配置更多设置，可以选择 " **查看 + 创建** "。 这会转到 "摘要" 页，您可以在其中查看已输入的实例详细信息并完成 **创建**。 
+
+如果确实要为实例配置更多详细信息，下一节将介绍其余设置选项卡。
+
+### <a name="additional-setup-options"></a>其他设置选项
+
+下面是在安装过程中可以使用 " **创建资源** " 进程中的其他选项卡配置的其他选项。
+
+* **网络**：在此选项卡中，你可以使用 [Azure private Link](../private-link/private-link-overview.md) 启用专用终结点，以消除你的实例的公共网络公开。 有关说明，请参阅 [*如何：使用专用链接启用专用访问*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation)。
+* **高级**：在此选项卡中，你可以为可在将事件转发到 [终结点](concepts-route-events.md)时使用的实例启用 [系统管理的标识](../active-directory/managed-identities-azure-resources/overview.md)。 有关说明，请参阅 [*如何：为路由事件启用托管标识*](how-to-enable-managed-identities.md)。
+* **标记**：在此选项卡中，你可以将标记添加到你的实例，以帮助你在 Azure 资源之间对其进行组织。 有关 Azure 资源标记的详细信息，请参阅 [*为逻辑组织标记资源、资源组和订阅*](../azure-resource-manager/management/tag-resources.md)。
 
 ### <a name="verify-success-and-collect-important-values"></a>验证成功并收集重要值
 
-推送 *创建* 后，可以通过门户图标栏在 Azure 通知中查看实例的部署状态。 通知将指示部署成功的时间，并且你将能够选择 " _中转到资源_ " 按钮来查看已创建的实例。
+通过选择 " **创建**" 完成实例设置后，可以通过门户图标栏在 Azure 通知中查看实例的部署状态。 通知将指示部署成功的时间，并且你将能够选择 " _中转到资源_ " 按钮来查看已创建的实例。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="显示成功部署并突出显示 &quot;中转到资源&quot; 按钮的 Azure 通知视图":::
 

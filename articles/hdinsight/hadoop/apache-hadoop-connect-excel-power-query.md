@@ -1,19 +1,16 @@
 ---
 title: 使用 Power Query 将 Excel 连接到 Apache Hadoop - Azure HDInsight
 description: 了解如何利用商业智能组件和使用 Power Query for Excel 访问 HDInsight 上的 Hadoop 中存储的数据。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 8664efd40bb5392f56803515f09cccc800fdf21c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcca511bcb61ceab8395ee56b377efa99f095586
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397107"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946692"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>使用 Power Query 将 Excel 连接到 Apache Hadoop
 
@@ -23,7 +20,7 @@ Microsoft 大数据解决方案的一个关键功能是，将 Microsoft 商业�
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 * 运行 Windows 10、Windows 7、Windows Server 2008 R2 或更高版本操作系统的工作站。
-* 适用于企业、Office 2016、Office 2013 Professional Plus、Excel 2013 独立版或 Office 2010 Professional Plus Microsoft 365 应用。
+* Microsoft 365 企业应用版、Office 2016、Office 专业增强版 2013、Excel 2013 Standalone 或 Office 专业增强版 2010。
 
 ## <a name="install-microsoft-power-query"></a>安装 Microsoft Power Query
 

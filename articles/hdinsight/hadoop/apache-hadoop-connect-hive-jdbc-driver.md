@@ -1,19 +1,16 @@
 ---
 title: 通过 JDBC 驱动程序查询 Apache Hive - Azure HDInsight
 description: 从 Java 应用程序使用 JDBC 驱动程序将 Apache Hive 查询提交到 HDInsight 上的 Hadoop。 以编程方式以及通过 SQuirrel SQL 客户端进行连接。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 183bc416dde941f11bd94cfcff3bf738b35f876f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d23b376384262c208fed70306e62634592d0b46b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996062"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946772"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive
 
@@ -102,7 +99,7 @@ SQuirreL SQL 是一个 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
 7. 将以下值用于 " **添加别名** " 对话框：
 
-    |属性 |值 |
+    |properties |值 |
     |---|---|
     |名称|Hive on HDInsight|
     |驱动程序|使用下拉列表选择 Hive 驱动程序。|
