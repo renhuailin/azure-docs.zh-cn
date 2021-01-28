@@ -3,31 +3,31 @@ title: 新建基于工作区的 Azure Monitor Application Insights 资源 | Micr
 description: 了解启用基于工作区的新 Azure Monitor Application Insights 资源所需的步骤。
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: ecbac02bcb4d9b4f0db36eab854a91366c774d6c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9d1ef158b8096c12c36673b62f87e1d02be69175
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536908"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936453"
 ---
 # <a name="workspace-based-application-insights-resources"></a>基于工作区的 Application Insights 资源
 
 基于工作区的资源支持 Application Insights 与 Log Analytics 之间的完全集成。 你现在可以选择将 Application Insights 遥测数据发送到一个公用 Log Analytics 工作区，这样就可以全权访问 Log Analytics 的所有功能，同时将应用程序、基础结构和平台日志置于单一的合并位置中。
 
-这也允许在资源上 (Azure RBAC) 的常见 Azure 基于角色的访问控制，并消除了跨应用/工作区查询的需要。
+这样还可以跨资源实现公用的 Azure 基于角色的访问控制 (Azure RBAC)，并且不再需要跨应用/工作区的查询。
 
 > [!NOTE]
 > 基于工作区的 Application Insights 资源的数据引入和保留操作通过数据所在的 Log Analytics 工作区计费。 [详细了解]( ./pricing.md#workspace-based-application-insights)基于工作区的 Application Insights 资源的计费。
 
 ## <a name="new-capabilities"></a>新功能
 
-基于工作区的 Application Insights 允许你利用 Azure Monitor 和 Log Analytics 的最新功能，包括：
+基于工作区的 Application Insights 使得你可以利用 Azure Monitor 和 Log Analytics 的最新功能，其中包括：
 
-* [ (CMK 的客户托管密钥) ](../platform/customer-managed-keys.md) 使用只有你有权访问的加密密钥为你的数据提供静态加密。
+* [客户管理的密钥 (CMK)](../platform/customer-managed-keys.md) 为你的数据提供静态加密，并提供只有你有权访问的加密密钥。
 * 通过 [Azure 专用链接](../platform/private-link-security.md)，可使用专用终结点将 Azure PaaS 服务安全地链接到你的虚拟网络。
 * [为探查器和 Snapshot Debugger 提供自己的存储 (BYOS) ](./profiler-bring-your-own-storage.md) ，你可以完全控制静态加密策略、生存期管理策略以及与 Application Insights Profiler 和 Snapshot Debugger 相关的所有数据的网络访问。 
-* 与即用即付价格相比，[容量预留层](../platform/manage-cost-storage.md#pricing-model)最多可节省25%。 
-* 通过 Log Analytics 流引入提高数据引入速度。
+* 使用[产能预留层](../platform/manage-cost-storage.md#pricing-model)可以节省 25% 的成本（与即用即付价格相比）。 
+* 可以通过 Log Analytics 流引入提高数据引入速度。
 
 ## <a name="create-workspace-based-resource"></a>创建基于工作区的资源
 
@@ -46,7 +46,7 @@ ms.locfileid: "95536908"
 单击蓝色链接文本会转到关联的 Log Analytics 工作区，你可以在其中利用新的统一工作区查询环境。
 
 > [!NOTE]
-> 我们仍然针对 Application Insights 体验中的 Application Insights 经典资源查询、工作簿和基于日志的警报提供完全的后向兼容性。 若要根据[新的基于工作区的表结构/架构](apm-tables.md)进行查询/查看，必须先导航到 Log Analytics 工作区。 从 Application Insights 窗格内选择 **日志 (分析)** 可让你访问经典 Application Insights 查询体验。
+> 我们仍然针对 Application Insights 体验中的 Application Insights 经典资源查询、工作簿和基于日志的警报提供完全的后向兼容性。 若要根据[新的基于工作区的表结构/架构](apm-tables.md)进行查询/查看，必须先导航到 Log Analytics 工作区。 从 Application Insights 窗格中选择“日志(分析)”即可访问经典 Application Insights 查询体验。
 
 ## <a name="copy-the-connection-string"></a>复制连接字符串
 
@@ -112,7 +112,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
+有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -206,7 +206,7 @@ PowerShell 命令 `New-AzApplicationInsights` 当前不支持创建基于工作�
 基于工作区的资源不支持旧版连续导出功能。 相反，请选择“诊断设置” > 从 Application Insights 资源中“添加诊断设置”。 可以选择所有表，或是要存档到存储帐户或流式传输到 Azure 事件中心的表的子集。
 
 > [!NOTE]
-> 对于遥测导出，当前没有额外的费用。 此功能的定价信息将在 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)上提供。  在帐单开始之前，将发送通知。 如果你选择在 <feature name> 通知期后继续使用，则将按适用的费率向你收费。 
+> 遥测导出当前不额外收费。 此功能的定价信息会在 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)中提供。  开始计费之前，会发送通知。 如果你选择在通知期过后继续使用 <feature name>，系统会按照适用的费率计费。 
  
 
 ## <a name="next-steps"></a>后续步骤

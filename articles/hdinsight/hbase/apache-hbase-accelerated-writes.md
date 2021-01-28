@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 的 Apache HBase 加速写入
 description: 概述 Azure HDInsight 加速写入功能。该功能使用高级托管磁盘来提高 Apache HBase 预写日志的性能。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 27b0485fdd7b3c352a85fe7eb39fba33c53bf727
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 1f5a9f05b94f43db9e1d883ef5e86f8621f39251
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519206"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943027"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight 的 Apache HBase 加速写入
 
@@ -36,7 +33,7 @@ HBase 最初会将数据更新写入到一种名为“预写日志”(WAL) 的�
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>如何启用 HDInsight 中 HBase 的加速写入
 
-若要使用加速写入功能创建新的 HBase 群集，请按照在 [HDInsight 中设置群集](../hdinsight-hadoop-provision-linux-clusters.md)中的步骤进行操作。 在 " **基本** 信息" 选项卡上，选择 "群集类型" 作为 HBase，指定组件版本，然后单击 " **启用 HBase 加速写入**" 旁边的复选框。 然后，继续执行剩余的步骤创建群集。
+若要使用加速写入功能创建新的 HBase 群集，请执行[在 HDInsight 中设置群集](../hdinsight-hadoop-provision-linux-clusters.md)中的步骤。 在“基本信息”选项卡上，选择群集类型“HBase”，指定组件版本，然后单击“启用 HBase 加速写入”旁的复选框 。 然后，继续执行剩余的步骤创建群集。
 
 ![启用 HDInsight Apache HBase 的加速写入选项](./media/apache-hbase-accelerated-writes/azure-portal-create-hbase-wals.png)
 

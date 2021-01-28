@@ -12,20 +12,20 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b6240f88d309cbf4f26375c5f961d716b472755d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7f7be27e67bfa266c368927227f1b8d1083a5124
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756279"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937874"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>用于登录用户的 Web 应用：应用注册
 
-本文介绍可将用户登录的 Web 应用的应用注册具体信息。
+本文介绍了用于登录用户的 web 应用的应用注册步骤。
 
 若要注册应用程序，可以使用：
 
-- [Web 应用快速入门](#register-an-app-by-using-the-quickstarts)。 除了提供创建应用程序的第一手体验，Azure 门户中的快速入门还包含名为“为我进行此更改”的按钮。  可以使用此按钮设置所需属性，对现有应用也可以这样做。 需根据自己的情况调整这些属性的值。 具体而言，应用的 Web API URL 可能会不同于建议的默认值，后者还会影响注销 URI。
+- [Web 应用快速入门](#register-an-app-by-using-the-quickstarts)。 除了提供创建应用程序的第一手体验，Azure 门户中的快速入门还包含名为“为我进行此更改”的按钮。  可以使用此按钮设置所需属性，对现有应用也可以这样做。 根据自己的情况调整这些属性的值。 具体而言，应用的 Web API URL 可能会不同于建议的默认值，后者还会影响注销 URI。
 - 用于[手动注册应用程序](#register-an-app-by-using-the-azure-portal)的 Azure 门户。
 - PowerShell 和命令行工具。
 
@@ -56,8 +56,8 @@ ms.locfileid: "98756279"
    1. 选择“注册”。
 1. 在“管理”下，选择“身份验证”，然后添加以下信息：
    1. 在“Web”部分，添加 `https://localhost:44321/signin-oidc` 作为“重定向 URI” 。
-   1. 添加 `https://localhost:44321/signout-oidc` 作为“注销 URL”。
-   1. 选择“隐式授权”下的“ID 令牌”。
+   1. 在 " **前声道注销 URL**" 中，输入 `https://localhost:44321/signout-oidc` 。
+   1. 在 " **隐式授权" 和 "混合流**" 下，选择 " **ID 令牌**"。
    1. 选择“保存”。
    
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
@@ -65,10 +65,10 @@ ms.locfileid: "98756279"
 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
    1. 输入应用程序的名称（例如 `MailApp-openidconnect-v2`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
    1. 为应用程序选择支持的帐户类型。 （请参阅[支持的帐户类型](./v2-supported-account-types.md)。）
-   1. 在“重定向 URI (可选)”部分，选择组合框中的“Web”并输入以下重定向 URI： **https://localhost:44326/** 。 
+   1. 在 " **重定向 uri (可选)** " 部分中，在组合框中选择 " **Web** "，然后输入的 **重定向 URI** `https://localhost:44326/` 。
    1. 选择“注册”以创建应用程序。
 1. 在“管理”下，选择“身份验证”。 
-1. 在“隐式授权”部分，选择“ID 令牌”。 本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)才能将用户登录。
+1. 在 " **隐式授权和混合流** " 部分中，选择 " **ID 令牌**"。 本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)才能将用户登录。
 1. 选择“保存”。
 
 # <a name="java"></a>[Java](#tab/java)
@@ -81,10 +81,10 @@ ms.locfileid: "98756279"
 1. 选择“Web”。
 1. 对于“重定向 URI”，请输入同一主机和端口号，后跟 `/msal4jsample/secure/aad` 作为登录页。 
 1. 选择“配置” 。
-1. 在“Web”部分，使用主机和端口号，后跟“/msal4jsample/graph/me”作为用户信息页的“重定向 URI”。
+1. 在 " **Web** " 部分中，使用主机和端口号，后跟 `/msal4jsample/graph/me` 作为用户信息页的 **重定向 URI** 。
 默认情况下，该示例使用：
-   - **http://localhost:8080/msal4jsample/secure/aad**
-   - **http://localhost:8080/msal4jsample/graph/me**
+   - `http://localhost:8080/msal4jsample/secure/aad`
+   - `http://localhost:8080/msal4jsample/graph/me`
 
 1. 选择“保存”。
 1. 在“管理”下，选择“证书和机密”。  
@@ -100,7 +100,7 @@ ms.locfileid: "98756279"
 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
    1. 输入应用程序的名称（例如 `python-webapp`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
    1. 将 **支持的帐户类型** 更改为 **任何组织目录中的帐户和个人 Microsoft 帐户 (例如 Skype、Xbox、Outlook.com)**。
-   1. 在“重定向 URI (可选)”部分，选择组合框中的“Web”并输入以下重定向 URI：**http://localhost:5000/getAToken**。
+   1. 在“重定向 URI (可选)”部分，选择组合框中的“Web”并输入以下重定向 URI：`http://localhost:5000/getAToken`。
    1. 选择“注册”以创建应用程序。
 1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值供稍后使用。  稍后需要使用它为此项目配置 Visual Studio 配置文件。
 1. 在“管理”下，选择“证书和机密”。  

@@ -4,12 +4,12 @@ description: 在 Application Insights 中设置 Web 测试。 当网站不可用
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 1b51c70dcebbfad5417a8478f4a956fb5d0608b1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198656"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937411"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>监视任意网站的可用性
 
@@ -23,12 +23,12 @@ ms.locfileid: "98198656"
 
 * [URL ping 测试](#create-a-url-ping-test)：可以在 Azure 门户中创建的简单测试。
 * [多步骤 Web 测试](availability-multistep.md)：记录一系列 Web 请求，这些请求可以通过再现来测试更复杂的场景。 多步骤 Web 测试在 Visual Studio Enterprise 中创建并上传到门户执行。
-* [自定义跟踪可用性测试](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet)：如果决定创建自定义应用程序以运行可用性测试，则可以使用 `TrackAvailability()` 方法将结果发送到 Application Insights。
+* [自定义跟踪可用性测试](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)：如果决定创建自定义应用程序以运行可用性测试，则可以使用 `TrackAvailability()` 方法将结果发送到 Application Insights。
 
 **对于每个 Application Insights 资源，最多可以创建 100 个可用性测试。**
 
 > [!IMPORTANT]
-> [URL ping 测试](#create-a-url-ping-test)和[多步骤 web 测试](availability-multistep.md)都依赖公共 internet DNS 基础结构来解析已测试终结点的域名。 这意味着，如果你使用专用 DNS，则必须确保你的测试的每个域名也可由公共域名服务器解析，如果不可能，你可以改用 [自定义跟踪可用性测试](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) 。
+> [URL ping 测试](#create-a-url-ping-test)和[多步骤 web 测试](availability-multistep.md)都依赖公共 internet DNS 基础结构来解析已测试终结点的域名。 这意味着，如果你使用专用 DNS，则必须确保你的测试的每个域名也可由公共域名服务器解析，如果不可能，你可以改用 [自定义跟踪可用性测试](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) 。
 
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 

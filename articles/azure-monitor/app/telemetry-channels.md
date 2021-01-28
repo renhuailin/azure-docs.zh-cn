@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: fec7bfc16e2cc36d19c84b93b5b93c3c1365b166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a22a0d112671019d73eb4c9a3853462e4e9c8c75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564009"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937359"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights 中的遥测通道
 
@@ -18,7 +18,7 @@ ms.locfileid: "90564009"
 
 ## <a name="what-are-telemetry-channels"></a>什么是遥测通道？
 
-遥测通道负责缓冲遥测项并将其发送到 Application Insights 服务，存储在该服务中的项可用于查询和分析。 遥测通道是实现 [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) 接口的任何类。
+遥测通道负责缓冲遥测项并将其发送到 Application Insights 服务，存储在该服务中的项可用于查询和分析。 遥测通道是实现 [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel) 接口的任何类。
 
 遥测信道的 `Send(ITelemetry item)` 方法在调用所有遥测初始化表达式和遥测处理器之后调用。 因此，遥测处理器删除的任何项不会进入通道。 一般情况下，`Send()` 不会立即将项发送到后端。 它通常将这些项缓冲在内存中并分批发送，以提高传输效率。
 
@@ -154,11 +154,11 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 尽管该通道的包和命名空间名称包含“WindowsServer”，但非 Windows 系统也支持此通道，不过存在以下例外情况。 在非 Windows 系统中，该通道默认不会创建本地存储文件夹。 必须创建本地存储文件夹，并将通道配置为使用该文件夹。 配置本地存储后，该通道在所有系统中的工作方式相同。
 
 > [!NOTE]
-> 由于已为 Linux、Mac 和 Windows 自动创建了 release 2.15.0-beta3 和更高版本的本地存储。 对于非 Windows 系统，SDK 会根据以下逻辑自动创建本地存储文件夹：
-> - `${TMPDIR}` -如果 `${TMPDIR}` 设置了环境变量，则使用此位置。
-> - `/var/tmp` -如果不存在以前的位置，我们尝试 `/var/tmp` 。
-> - `/tmp` -如果以前的两个位置都不存在，请尝试 `tmp` 。 
-> - 如果这些位置均不存在，则不会创建本地存储，并且仍需要手动配置。 [了解完整的实现细节](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)。
+> 随着 2.15.0-beta3 版的推出，现可为 Linux、Mac 和 Windows 自动创建更大的本地存储。 对于非 Windows 系统，SDK 将根据以下逻辑自动创建本地存储文件夹：
+> - `${TMPDIR}` - 如果设置了 `${TMPDIR}` 环境变量，则使用此位置。
+> - `/var/tmp` - 如果前一个位置不存在，请尝试 `/var/tmp`。
+> - `/tmp` - 如果前两个位置都不存在，请尝试 `tmp`。 
+> - 如果这些位置都不存在，则不会创建本地存储，且仍然需要手动配置。 [了解有关实现的完整详细信息](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)。
 
 ### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>SDK 是否创建临时本地存储？ 存储中的数据是否会加密？
 
@@ -169,7 +169,7 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 对于非 Windows 系统，SDK 不会自动创建本地存储，因此默认不会在本地存储数据。
 
 > [!NOTE]
-> 由于已为 Linux、Mac 和 Windows 自动创建了 release 2.15.0-beta3 和更高版本的本地存储。 
+> 随着 2.15.0-beta3 版的推出，现可为 Linux、Mac 和 Windows 自动创建更大的本地存储。 
 
  你可以自行创建存储目录，并将通道配置为使用该目录。 在这种情况下，你需负责确保该目录受到保护。
 详细了解[数据保留和隐私](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage)。

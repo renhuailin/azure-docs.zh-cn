@@ -1,19 +1,16 @@
 ---
 title: 教程：使用交互式查询执行 ETL 操作 - Azure HDInsight
 description: 教程 - 了解如何从原始 CSV 数据集提取数据。 使用 HDInsight 上的 Interactive Query 转换数据。 然后使用 Apache Sqoop 将转换后的数据加载到 Azure SQL 数据库中。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 730a6bfa627eafcab799fc811db4e20a1d4cec48
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 13b6b8658aa2d896ec154cfa3c7a961e37df6cbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534577"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935901"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用交互式查询提取、转换和加载数据
 
@@ -30,7 +27,7 @@ ms.locfileid: "92534577"
 
 ## <a name="prerequisites"></a>先决条件
 
-* HDInsight 上的一个交互式查询群集。 请参阅 [使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“交互式查询”作为 **群集类型** 。
+* HDInsight 上的一个交互式查询群集。 请参阅 [使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“交互式查询”作为 **群集类型**。
 
 * Azure SQL 数据库中的数据库。 使用数据库作为目标数据存储。 如果 Azure SQL 数据库中没有数据库，请参阅[通过 Azure 门户在 Azure SQL 数据库中创建数据库](../../azure-sql/database/single-database-create-quickstart.md)。
 

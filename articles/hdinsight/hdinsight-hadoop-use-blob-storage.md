@@ -1,19 +1,16 @@
 ---
 title: 从与 HDFS 兼容的 Azure 存储查询数据 - Azure HDInsight
 description: 了解如何从 Azure 存储和 Azure Data Lake Storage 查询数据，以存储分析结果。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: cedc0ff1b3c2aa64f32445eabc800748a753981d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547429"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945420"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
@@ -23,17 +20,17 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 
 本文介绍 Azure 存储如何与 HDInsight 群集配合使用。 
 * 若要了解 Data Lake Storage Gen1 如何与 HDInsight 群集配合使用，请参阅 [将 Azure Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](./hdinsight-hadoop-use-data-lake-storage-gen1.md)。
-* 若要了解 Data Lake Storage Gen2 如何与 HDInsight 群集配合使用，请参阅 [将 Azure Data Lake Storage Gen2 与 Azure HDInsight 群集配合使用](./hdinsight-hadoop-use-data-lake-storage-gen2.md)。
+* 若要了解 Data Lake Storage Gen2 与 HDInsight 群集如何配合工作，请参阅[将 Azure Data Lake Storage Gen2 与 Azure HDInsight 群集配合使用](./hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 * 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](./hdinsight-hadoop-provision-linux-clusters.md)。
 
 > [!IMPORTANT]  
-> 存储帐户类型 BlobStorage 仅可用作 HDInsight 群集的辅助存储器  。
+> 存储帐户类型 BlobStorage 仅可用作 HDInsight 群集的辅助存储器。
 
 | 存储帐户类型 | 支持的服务 | 支持的性能层 |不支持的性能层| 支持的访问层 |
 |----------------------|--------------------|-----------------------------|---|------------------------|
 | StorageV2（常规用途 v2）  | Blob     | 标准                    |高级| 热、冷、存档\*   |
 | 存储（常规用途 v1）   | Blob     | 标准                    |高级| 空值                    |
-| BlobStorage                    | Blob     | 标准                    |高级| 热、冷、存档\*   |
+| BlobStorage                    | Blob     | 标准                    |Premium| 热、冷、存档\*   |
 
 建议不要使用默认 blob 容器来存储业务数据。 最佳做法是每次使用之后删除默认 Blob 容器以降低存储成本。 默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
 
@@ -44,23 +41,23 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 
 ## <a name="access-files-from-within-cluster"></a>从群集中访问文件
 
-可以通过多种方法从 HDInsight 群集访问 Data Lake Storage 中的文件。 URI 方案提供了使用 wasb: 前缀的未加密访问和使用 wasbs 的 TLS 加密访问   。 建议尽量使用 *wasbs* ，即使在访问位于同一 Azure 区域内的数据时也是如此。
+可以通过多种方法从 HDInsight 群集访问 Data Lake Storage 中的文件。 URI 方案提供了使用 wasb: 前缀的未加密访问和使用 wasbs 的 TLS 加密访问 。 建议尽量使用 *wasbs* ，即使在访问位于同一 Azure 区域内的数据时也是如此。
 
-* **使用完全限定的名称** 。 使用此方法时，需提供要访问的文件的完整路径。
+* **使用完全限定的名称**。 使用此方法时，需提供要访问的文件的完整路径。
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **使用缩短的路径格式** 。 使用此方法时，需将群集根的路径替换为：
+* **使用缩短的路径格式**。 使用此方法时，需将群集根的路径替换为：
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **使用相对路径** 。 使用此方法时，仅需提供要访问的文件的相对路径。
+* **使用相对路径**。 使用此方法时，仅需提供要访问的文件的相对路径。
 
     ```
     /<file.path>/
@@ -141,11 +138,11 @@ Microsoft 提供以下工具用于操作 Azure 存储：
 
 * 若要标识指向配置的默认存储的完整路径，请导航至：
 
-    “HDFS”  >  “配置”，然后在筛选器输入框中输入 `fs.defaultFS`。
+    “HDFS” > “配置”，然后在筛选器输入框中输入 `fs.defaultFS`。
 
 * 若要检查是否已将 wasb 存储配置为辅助存储器，请导航到
 
-    HDFS > Configs 并在筛选器输入框输入 `blob.core.windows.net`  。
+    HDFS > Configs 并在筛选器输入框输入 `blob.core.windows.net` 。
 
 若要使用 Ambari REST API 获取路径，请参阅[获取默认存储](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage)。
 

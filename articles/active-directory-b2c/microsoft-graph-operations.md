@@ -8,22 +8,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 96772020e70aeb32fa1a8ae18bf3818396887877
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 50042b749c917752d08198c31ada3c73a5ef540b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805235"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938494"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
 Microsoft Graph 允许管理 Azure AD B2C 目录中的资源。 支持用于管理 Azure AD B2C 资源（包括用户、标识提供者、用户流、自定义策略和策略密钥）的下列 Microsoft Graph API 操作。 以下各部分中的每个链接对应于 Microsoft Graph API 参考中该操作的相应页面。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用 MS 图形 API，并与 Azure AD B2C 租户中的资源进行交互，你需要一个授予此操作权限的应用程序注册。 按照 [使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md) 一文中的步骤来创建管理应用程序可以使用的应用程序注册。 
 
@@ -35,18 +35,29 @@ Microsoft Graph 允许管理 Azure AD B2C 目录中的资源。 支持用于管�
 - [更新用户](/graph/api/user-update)
 - [删除用户](/graph/api/user-delete)
 
-## <a name="user-phone-number-management"></a>用户电话号码管理
+## <a name="user-phone-number-management-beta"></a>用户电话号码管理 (beta) 
+
+一种电话号码，用户可以使用它来通过 [短信或语音呼叫](identity-provider-local.md#phone-sign-in-preview)或 [多重身份验证](multi-factor-authentication.md)进行登录。 有关详细信息，请参阅 [Azure AD authentication 方法 API](/graph/api/resources/phoneauthenticationmethod)。
 
 - [添加](/graph/api/authentication-post-phonemethods)
-- [Get](/graph/api/b2cauthenticationmethodspolicy-get)
-- [更新](/graph/api/b2cauthenticationmethodspolicy-update)
+- [列表](/graph/api/authentication-list-phonemethods)
+- [Get](/graph/api/phoneauthenticationmethod-get)
+- [更新](/graph/api/phoneauthenticationmethod-update)
 - [删除](/graph/api/phoneauthenticationmethod-delete)
 
-有关管理用户的登录电话号码的详细信息，请参阅 [B2C 身份验证方法](/graph/api/resources/b2cauthenticationmethodspolicy)。
+## <a name="self-service-password-reset-email-address-beta"></a>自助服务密码重置电子邮件地址 (beta) 
 
-## <a name="identity-providers-user-flow"></a>标识提供者（用户流）
+用户可以使用的电子邮件地址，用于为 [用户名登录帐户](identity-provider-local.md#username-sign-in)提供密码。 有关详细信息，请参阅 [Azure AD authentication 方法 API](/graph/api/resources/emailauthenticationmethod)。
 
-管理 Azure AD B2C 租户中的用户流可用的标识提供者。
+- [添加](/graph/api/emailauthenticationmethod-post)
+- [列表](/graph/api/emailauthenticationmethod-list)
+- [Get](/graph/api/emailauthenticationmethod-get)
+- [更新](/graph/api/emailauthenticationmethod-update)
+- [删除](/graph/api/emailauthenticationmethod-delete)
+
+## <a name="identity-providers"></a>标识提供者
+
+管理 Azure AD B2C 租户中用户流可用的 [标识提供者](add-identity-provider.md) 。
 
 - [列出 Azure AD B2C 租户中注册的标识提供者](/graph/api/identityprovider-list)
 - [创建标识提供者](/graph/api/identityprovider-post-identityproviders)
@@ -62,6 +73,13 @@ Microsoft Graph 允许管理 Azure AD B2C 目录中的资源。 支持用于管�
 - [创建用户流](/graph/api/identitycontainer-post-b2cuserflows)
 - [获取用户流](/graph/api/b2cidentityuserflow-get)
 - [删除用户流](/graph/api/b2cidentityuserflow-delete)
+
+## <a name="user-flow-authentication-methods-beta"></a> (beta) 的用户流身份验证方法
+
+选择一种机制，让用户通过本地帐户进行注册。 本地帐户是 Azure AD 对标识断言进行身份验证的帐户。 有关详细信息，请参阅 [b2cAuthenticationMethodsPolicy 资源类型](/graph/api/resources/b2cauthenticationmethodspolicy)。
+
+- [Get](/graph/api/b2cauthenticationmethodspolicy-get)
+- [更新](/graph/api/b2cauthenticationmethodspolicy-update)
 
 ## <a name="custom-policies"></a>自定义策略
 

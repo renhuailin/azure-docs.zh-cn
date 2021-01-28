@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: alkohli
-ms.openlocfilehash: f1b00273314c845a36c7efdb9cf9f4de9d5cdd46
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 40de216a9bcb173d9dfebf39d05fb9cb12579301
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96580053"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937341"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>教程：准备部署 Azure Data Box Gateway
 
@@ -50,11 +50,11 @@ ms.locfileid: "96580053"
 
 在开始之前，请确保：
 
-* 已为 Azure Stack Edge 资源启用 Microsoft Azure 订阅。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。
+* 已为 Azure Stack Edge 资源启用 Microsoft Azure 订阅。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。
 * 你在资源组级别拥有对 Azure Stack Edge/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
     - 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 你还需要确保已注册 `Microsoft.DataBoxEdge` 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers)。
     - 若要创建存储帐户资源，你同样需要资源组级别范围内的参与者或更高级别访问权限。 Azure 存储在默认情况下是已注册的资源提供程序。
-- 你对 Microsoft Graph API 有管理员或用户访问权限。 有关详细信息，请参阅 [Microsoft Graph 权限参考](https://docs.microsoft.com/graph/permissions-reference)。
+- 你对 Microsoft Graph API 有管理员或用户访问权限。 有关详细信息，请参阅 [Microsoft Graph 权限参考](/graph/permissions-reference)。
 - 具有 Microsoft Azure 存储帐户和访问凭据。
 
 ### <a name="for-the-data-box-gateway-device"></a>对于 Data Box Gateway 设备
@@ -90,7 +90,7 @@ ms.locfileid: "96580053"
 1. 使用 Microsoft Azure 凭据登录到以下任一门户：
 
     - URL [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
-    - 通过 URL [https://portal.azure.us](https://portal.azure.us) 登录到 Azure 政府门户。 有关详细信息，请参阅[使用门户连接到 Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)。
+    - 通过 URL [https://portal.azure.us](https://portal.azure.us) 登录到 Azure 政府门户。 有关详细信息，请参阅[使用门户连接到 Azure 政府](../azure-government/documentation-government-get-started-connect-with-portal.md)。
     
 2. 选择“+ 创建资源”。 
 
@@ -193,5 +193,3 @@ OR
 
 > [!div class="nextstepaction"]
 > [在 VMware 中预配 Data Box Gateway](./data-box-gateway-deploy-provision-vmware.md)
-
-

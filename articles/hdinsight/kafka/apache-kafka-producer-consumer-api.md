@@ -1,19 +1,16 @@
 ---
 title: 教程：Apache Kafka 生成者和使用者 API - Azure HDInsight
 description: 了解如何将 Apache Kafka 生成者和使用者 API 与 Kafka on HDInsight 配合使用。 本教程介绍如何从 Java 应用程序中将这些 API 与 Kafka on HDInsight 配合使用。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b942fb321d2bceef64930bea0c660f66747508b6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: e5a635a8837aadaf423c6f3a0925dbac4080e60f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629300"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945178"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教程：使用 Apache Kafka 生成者和使用者 API
 
@@ -219,7 +216,7 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 
 1. 主题创建失败 如果群集启用了企业安全性套餐，请使用[面向生成者和使用者的预建 JAR 文件](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar)。 可以从 [`DomainJoined-Producer-Consumer` 子目录](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)中的代码生成 ESP jar。 生成者和使用者属性会为启用了 ESP 的群集保存附加属性 `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG`。
 
-2. **启用 ESP 的群集失败** ：如果生产和使用操作失败，并且你使用的是启用 ESP 的群集，请检查所有 Ranger 策略中是否存在用户 `kafka`。 如果该用户不存在，请将它添加到所有 Ranger 策略。
+2. **启用 ESP 的群集失败**：如果生产和使用操作失败，并且你使用的是启用 ESP 的群集，请检查所有 Ranger 策略中是否存在用户 `kafka`。 如果该用户不存在，请将它添加到所有 Ranger 策略。
 
 ## <a name="clean-up-resources"></a>清理资源
 

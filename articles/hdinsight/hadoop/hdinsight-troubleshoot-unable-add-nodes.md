@@ -3,16 +3,13 @@ title: 无法将节点添加到 Azure HDInsight 群集
 description: 排查无法在 Azure HDInsight 中将节点添加到 Apache Hadoop 群集的原因
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: 089eab563c83384bdb7e1681044fa89f5eb7f6c0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b11d1edef2f3a6fa0fb39c76d1f25ec05ff15d07
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014663"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944326"
 ---
 # <a name="scenario-unable-to-add-nodes-to-azure-hdinsight-cluster"></a>方案：无法将节点添加到 Azure HDInsight 群集
 

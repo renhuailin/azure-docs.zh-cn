@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: b0869335c386712e6b759bb0ced459ebd1bf383c
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 43ccde054a9630b251aa6c206028d29c7c699316
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702720"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936198"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>使用异常探测器 API 的最佳实践
 
@@ -52,7 +52,7 @@ ms.locfileid: "98702720"
 
 ## <a name="data-preparation"></a>数据准备
 
-异常探测器 API 接受格式设置为 JSON 请求对象的时序数据。 时序可以是在一段时间内按顺序进行记录的任何数值数据。 可以将时序数据的 windows 发送到异常检测程序 API 终结点，以提高 API 的性能。 可以发送的数据点数的最小数目为12，最大值为8640点。 [粒度](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) 定义为对数据进行采样的速率。 
+异常探测器 API 接受格式设置为 JSON 请求对象的时序数据。 时序可以是在一段时间内按顺序进行记录的任何数值数据。 可以将时序数据的 windows 发送到异常检测程序 API 终结点，以提高 API 的性能。 可以发送的数据点数的最小数目为12，最大值为8640点。 [粒度](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity) 定义为对数据进行采样的速率。 
 
 发送到异常探测器 API 的数据点必须具有有效的协调世界时 (UTC) 时间戳和数值。 
 

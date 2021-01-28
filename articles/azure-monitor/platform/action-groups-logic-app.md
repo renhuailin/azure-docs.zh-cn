@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f8e5b557c2d307659c086dc41480c6bed25430c3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995091"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936433"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何使用 Azure Monitor 警报触发复杂操作
 
@@ -166,7 +166,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
                         "trackingId": "...",
                         "impactStartTime": "2018-03-22T21:40:00.0000000Z",
                         "impactMitigationTime": "2018-03-22T21:41:00.0000000Z",
-                        "impactedServices": "[{"ImpactedRegions"}]",
+                        "impactedServices": "[{\"ImpactedRegions\"}]",
                         "defaultLanguageTitle": "...",
                         "defaultLanguageContent": "...",
                         "stage": "Active",

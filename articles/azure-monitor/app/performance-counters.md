@@ -4,12 +4,12 @@ description: 监视 Application Insights 中的系统和自定义的 .NET 性能
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4da8aef69b6a83c17fa8a20a80b2c485378e0aef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f772b129e20fbaaade7305d84064a713dd734199
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918513"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937382"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
 
@@ -41,7 +41,7 @@ Windows 提供了各种[性能计数器](/windows/desktop/perfctrs/about-perform
 
     `Get-Counter -ListSet *`
 
-    （请参阅 [`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter?view=powershell-5.1)。）
+    （请参阅 [`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter)。）
 2. 打开 ApplicationInsights.config。
 
    * 如果在开发期间已将 Application Insights 添加到了应用，请在项目中编辑 ApplicationInsights.config，然后将它重新部署到服务器。
@@ -130,9 +130,9 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 
 *异常率和异常指标之间的区别是什么？*
 
-* *异常率*是系统性能计数器。 CLR 会对所有引发的已处理和未经处理异常进行计数，并将总采样间隔除以间隔长度。 Application Insights SDK 会收集此结果，并将其发送到门户。
+* *异常率* 是系统性能计数器。 CLR 会对所有引发的已处理和未经处理异常进行计数，并将总采样间隔除以间隔长度。 Application Insights SDK 会收集此结果，并将其发送到门户。
 
-* *异常*是在图表的采样间隔内门户所接收的 TrackException 报告的计数。 它仅包括已将 TrackException 调用写入代码的已处理异常，并不包括所有[未经处理的异常](./asp-net-exceptions.md)。 
+* *异常* 是在图表的采样间隔内门户所接收的 TrackException 报告的计数。 它仅包括已将 TrackException 调用写入代码的已处理异常，并不包括所有[未经处理的异常](./asp-net-exceptions.md)。 
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>在 Azure Web 应用运行的应用程序的性能计数器
 

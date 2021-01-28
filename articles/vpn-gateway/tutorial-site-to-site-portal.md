@@ -7,12 +7,12 @@ ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/04/2020
-ms.openlocfilehash: d078d4b106136c95d67eb467bc16e22e2bb91c5c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ccb43c3e7efb9289450ad9a71c003f54e5362b66
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747277"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945212"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-in-the-azure-portal"></a>教程：在 Azure 门户中创建站点到站点连接
 
@@ -153,7 +153,7 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 
 [!INCLUDE [reset a gateway](../../includes/vpn-gateway-reset-gw-portal-include.md)]
 
-### <a name="additional-configuration-considerations"></a><a name="connectVM"></a>其他配置注意事项
+### <a name="additional-configuration-considerations"></a><a name="additional"></a>其他配置注意事项
 
 可以通过多种方式自定义 S2S 配置。 有关详细信息，请参阅下列文章：
 

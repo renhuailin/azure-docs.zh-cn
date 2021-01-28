@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 5b0b86321f7f2b320c3fea8e7c5bfa45bd936b77
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752994"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937848"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>用于登录用户的 Web 应用：登录和注销
 
@@ -222,19 +222,19 @@ def _get_token_from_cache(scope=None):
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在应用程序注册期间，需要注册一个注销后的 URI。 在本教程中，你已在“身份验证”页上“高级设置”部分的“注销 URL”字段中注册了 `https://localhost:44321/signout-oidc`。   有关详细信息，请参阅[注册 webApp 应用](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)。
+在应用程序注册过程中，将注册一个前声道注销 URL。 在本教程中，你已在 `https://localhost:44321/signout-oidc` "**身份验证**" 页上的 "**前端通道注销 URL** " 字段中进行注册。 有关详细信息，请参阅[注册 webApp 应用](scenario-web-app-sign-user-app-registration.md#register-an-app-by-using-the-azure-portal)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-在应用程序注册期间，需要注册一个注销后的 URI。 在本教程中，你已在“身份验证”页上“高级设置”部分的“注销 URL”字段中注册了 `https://localhost:44308/Account/EndSession`。   有关详细信息，请参阅[注册 webApp 应用](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)。
+在应用程序注册过程中，无需注册额外的前端通道注销 URL。 将在应用的主 URL 上回调应用。 
 
 # <a name="java"></a>[Java](#tab/java)
 
-在应用程序注册期间，需要注册一个注销后的 URI。 在本教程中，你已在“身份验证”页上“高级设置”部分的“注销 URL”字段中注册了 `http://localhost:8080/msal4jsample/sign_out`。  
+在应用程序注册中不需要前声道注销 URL。
 
 # <a name="python"></a>[Python](#tab/python)
 
-在应用程序注册过程中，无需注册额外的注销 URL。 将在应用的主 URL 上回调应用。
+在应用程序注册过程中，无需注册额外的前端通道注销 URL。 将在应用的主 URL 上回调应用。
 
 ---
 
@@ -336,7 +336,7 @@ else
 - 调用 `Signout()`，让 OpenID Connect 中间件联系 Microsoft 标识平台 `logout` 终结点。 然后，终结点将会：
 
   - 从浏览器中清除会话 Cookie。
-  - 回调注销 URL。 默认情况下，注销 URL 会显示已注销视图页 [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)。 此页也作为 MIcrosoft.Identity.Web 的一部分提供。
+  - 回调注销后重定向 URI。 默认情况下，注销后的重定向 URI 显示注销视图页面 [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)。 此页还作为 Microsoft 的一部分提供。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -433,4 +433,4 @@ public class AccountController : Controller
 
 ## <a name="next-steps"></a>后续步骤
 
-转到此方案中的下一篇文章：[转向生产](scenario-web-app-sign-user-production.md)。
+转到此方案中的下一篇文章：[移到生产环境](scenario-web-app-sign-user-production.md)。

@@ -1,19 +1,16 @@
 ---
 title: 教程：使用 Azure 自动化 runbook 创建群集 - Azure HDInsight
 description: 了解如何使用 Azure 自动化 runbook 创建和删除包含在云中运行的脚本的 Azure HDInsight 群集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
-ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 255542d820d135d1a88e193a8ef13ae590ce4016
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75553117"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944041"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>教程：通过 Azure 自动化创建 Azure HDInsight 群集
 

@@ -1,18 +1,15 @@
 ---
-title: 当 Azure HDInsight 存储包含多个文件时，Apache Spark 慢速
+title: 当 Azure HDInsight 存储包含许多文件时，Apache Spark 运行速度缓慢
 description: 当 Azure 存储容器包含 Azure HDInsight 中的许多文件时，Apache Spark 作业运行速度缓慢
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/21/2019
-ms.openlocfilehash: f14e9bfad959d7f40b2d364c702983c31e0e3cef
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c26baec66248ca00ef212acf3d773c2566b3aea9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289758"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946358"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>当 Azure 存储容器包含 Azure HDInsight 中的许多文件时，Apache Spark 作业运行速度缓慢
 

@@ -1,5 +1,5 @@
 ---
-title: 如何通过 .NET 使用 Azure Media Services Encoder Standard 来生成缩略图
+title: 使用媒体服务编码器 Standard with .NET 生成缩略图
 description: 本文介绍如何通过 .NET 使用 Media Encoder Standard 同时对资产进行编码和生成缩略图。
 services: media-services
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 887ac4197321b4015eff7cc839abd8f57ae67760
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: fe051ceec43ec919ddf92a4d7f7e4bfab0b351f5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512012"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938765"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-net"></a>如何使用编码器标准版通过 .NET 来生成缩略图
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-可以使用 Media Encoder Standard 从输入视频生成一个或多个使用 [JPEG](https://en.wikipedia.org/wiki/JPEG) 或 [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) 图像文件格式的缩略图。
+可以使用 Media Encoder Standard 以 [JPEG](https://en.wikipedia.org/wiki/JPEG) 或 [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) 图像文件格式从输入视频生成一个或多个缩略图。
 
 ## <a name="recommended-reading-and-practice"></a>推荐阅读内容及演练
 

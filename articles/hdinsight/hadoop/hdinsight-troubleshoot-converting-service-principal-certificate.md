@@ -3,17 +3,14 @@ title: 将证书内容转换为 64-Azure HDInsight
 description: 在 Azure HDInsight 中将服务主体证书内容转换为 base-64 编码的字符串格式
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/31/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 88faf878d9528b314e59c81dad7a97d4700b608f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0ee2e783a7a9443db4c96817cf611272667c675a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289130"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944406"
 ---
 # <a name="converting-service-principal-certificate-contents-to-base-64-encoded-string-format-in-hdinsight"></a>在 HDInsight 中将服务主体证书内容转换为64编码的字符串格式
 

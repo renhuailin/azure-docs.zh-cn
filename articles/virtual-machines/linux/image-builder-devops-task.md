@@ -3,16 +3,16 @@ title: Azure 映像生成器服务 DevOps 任务
 description: Azure DevOps 任务：将生成项目注入 VM 映像，以便安装和配置应用程序和操作系统。
 author: danielsollondon
 ms.author: danis
-ms.date: 08/10/2020
+ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: df97ecd1668dcc0e21408b7d39b0973e8f0d8fbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684536"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934256"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure 映像生成器服务 DevOps 任务
 
@@ -26,7 +26,7 @@ ms.locfileid: "98684536"
 
 * ["不稳定" 的 AIB 任务](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary)，这使我们可以将最新的更新和功能放入最新的更新和功能，让客户在将其升级到 "稳定" 任务之前对其进行测试。 如果没有报告的问题，并且我们的遥测未显示任何问题，请在大约1周后将任务代码提升为 "稳定"。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [从 Visual Studio Marketplace 安装稳定的 DevOps 任务](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)。
 * 你必须具有 VSTS DevOps 帐户，并创建了一个生成管道
@@ -154,6 +154,12 @@ ms.locfileid: "98684536"
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
+   可以引用多个脚本，也可以添加更多命令，例如：
+
+       ```PowerShell
+       & 'c:\buildArtifacts\webapp\webconfig.ps1'
+       & 'c:\buildArtifacts\webapp\installAgent.ps1'
+       ```
 * Linux-在 Linux 系统上，生成项目放置在 `/tmp` 目录中。 但是，在许多 Linux 操作系统上，重新启动时，将删除/tmp 目录内容。 如果希望项目存在于映像中，则必须创建另一个目录并将其复制到其中。  例如：
 
     ```bash

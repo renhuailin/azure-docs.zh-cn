@@ -1,24 +1,21 @@
 ---
 title: 在 Azure HDInsight 中控制网络流量
 description: 了解控制 Azure HDInsight 群集的入站和出站流量的方法。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 348b9b80c74f085ce31ecce93753a253782fe3ea
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0cbda0b533a64e627bfeef9589ab95c4163ae73e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543162"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943364"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>在 Azure HDInsight 中控制网络流量
 
 可以使用以下方法控制 Azure 虚拟网络中的网络流量：
 
-*  网络安全组 (NSG)：用于筛选网络的入站和出站流量。 有关详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/network-security-groups-overview.md)文档。
+* 网络安全组 (NSG)：用于筛选网络的入站和出站流量。 有关详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/network-security-groups-overview.md)文档。
 
 * **网络虚拟设备** (NVA) 只能用于出站流量。 NVA 可复制设备（如防火墙和路由器）的功能。 有关详细信息，请参阅[网络设备](https://azure.microsoft.com/solutions/network-appliances)文档。
 
@@ -40,7 +37,7 @@ ms.locfileid: "92543162"
 
 3. 为计划将 HDInsight 安装到其中的子网创建或修改网络安全组。
 
-    *  网络安全组：在端口 443 上允许来自 IP 地址的入站流量。   这将确保 HDInsight 管理服务可从虚拟网络外部访问群集。 对于启用了 Kafka REST 代理的群集，还要在端口 9400 上允许入站流量  。 这将确保 Kafka REST 代理服务器可访问。
+    * 网络安全组：在端口 443 上允许来自 IP 地址的入站流量。  这将确保 HDInsight 管理服务可从虚拟网络外部访问群集。 对于启用了 Kafka REST 代理的群集，还要在端口 9400 上允许入站流量  。 这将确保 Kafka REST 代理服务器可访问。
 
 有关网络安全组的详细信息，请参阅[网络安全组概述](../virtual-network/network-security-groups-overview.md)。
 
@@ -50,7 +47,7 @@ ms.locfileid: "92543162"
 
 ### <a name="forced-tunneling-to-on-premises"></a>到本地的强制隧道
 
-强制隧道是用户定义的路由配置，其中来自子网的所有流量都强制流向特定网络或位置，例如你的本地网络或防火墙。 因为数据传输量大且可能影响性能，所以在将所有数据传输回本地时，建议不要使用强制隧道  。
+强制隧道是用户定义的路由配置，其中来自子网的所有流量都强制流向特定网络或位置，例如你的本地网络或防火墙。 因为数据传输量大且可能影响性能，所以在将所有数据传输回本地时，建议不要使用强制隧道。
 
 有兴趣设置强制隧道的客户应使用[自定义元存储](./hdinsight-use-external-metadata-stores.md)，并设置从群集子网或本地网络到这些自定义元存储的适当连接。
 
@@ -58,7 +55,7 @@ ms.locfileid: "92543162"
 
 ## <a name="required-ports"></a>必需端口
 
-如果计划使用 **防火墙** 并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中所述的 Azure 管理流量到达端口443上的群集，就不需要对端口进行特殊筛选。
+如果计划使用 **防火墙** 并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中介绍的 Azure 管理流量在端口 443 上到达群集，就不需要特殊的端口筛选。
 
 对于特定服务的端口列表，请参阅 [HDInsight 上的 Apache Hadoop 服务所用的端口](hdinsight-hadoop-port-settings-for-services.md)文档。
 

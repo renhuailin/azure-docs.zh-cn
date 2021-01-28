@@ -4,12 +4,12 @@ description: 创建 HTTP 触发的无服务器 PowerShell 函数，以便自动�
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7b94d583ca26b88d093810528d3193f20d765f1d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e7315796f2f7f89800b58f5fa607e69cd7ae3447
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349242"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935416"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>教程：使用 HTTP 触发的 Azure 函数创建容器组
 
@@ -105,7 +105,7 @@ if ($name) {
 
 ## <a name="run-the-function-in-azure"></a>在 Azure 中运行函数
 
-部署成功完成以后，请获取函数 URL。 例如，使用 Visual Studio Code 中的“Azure:Functions”区域复制 HttpTrigger 函数 URL，或者在 [Azure 门户](../azure-functions/functions-create-first-azure-function.md#test-the-function)中获取函数 URL。
+部署成功完成以后，请获取函数 URL。 例如，使用 Visual Studio Code 中的“Azure:Functions”区域复制 HttpTrigger 函数 URL，或者在 [Azure 门户](../azure-functions/functions-get-started.md)中获取函数 URL。
 
 函数 URL 的格式为：
 

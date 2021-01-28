@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 77521150e73014c5568003597059a9d32f6e80ee
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: eea2e587a075d774a25f479ec61575a002b57f75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752969"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937820"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>按受支持帐户类型列出的验证差异 (signInAudience)
 
@@ -24,9 +24,9 @@ ms.locfileid: "98752969"
 
 这些方式包括：
 
-- *AzureADMyOrg*：仅限应用注册的组织目录中的帐户（单租户）
-- *AzureADMultipleOrgs*：任何组织目录中的帐户（多租户）
-- *AzureADandPersonalMicrosoftAccount*：任何组织目录中的帐户 (多租户) 和个人 Microsoft 帐户 (例如，Skype、Xbox 和 Outlook.com) 
+- **AzureADMyOrg**：仅 (单租户) 在其中注册了应用的组织目录中的帐户。
+- **AzureADMultipleOrgs**： (多租户) 的任何组织目录中的帐户。
+- **AzureADandPersonalMicrosoftAccount**：任何组织目录中的帐户 (多租户) 和个人 Microsoft 帐户 (例如，Skype、Xbox 和 Outlook.com) 。
 
 对于已注册的应用程序，可以在应用程序的“身份验证”  部分找到受支持帐户类型值。 也可以在 **清单** 中的 `signInAudience` 属性下找到它。
 
@@ -44,11 +44,11 @@ ms.locfileid: "98752969"
 | 此 API 定义的作用域 (`oauth2Permissions`) | 最大作用域名称长度为 120 个字符 <br><br> 对定义的作用域数没有限制* | 最大作用域名称长度为 120 个字符 <br><br> 对定义的作用域数没有限制* |  最大作用域名称长度为40个字符 <br><br> 最多定义100个作用域 | 
 | 授权客户端应用程序 (`preAuthorizedApplications`) | 无限制* | 无限制* | 总最大值为500 <br><br> 最多定义100个客户端应用 <br><br> 每个客户端最多定义30个作用域 | 
 | appRoles | 支持 <br> 无限制* | 支持 <br> 无限制* | 不支持 | 
-| 注销 URL | 允许 http://localhost <br><br> 最大长度为 255 个字符 | 允许 http://localhost <br><br> 最大长度为 255 个字符 | <br><br> https://localhost 对于 MSA，允许， http://localhost 失败 <br><br> 最大长度为 255 个字符 <br><br> 不允许使用 HTTP 方案 <br><br> 不支持通配符 | 
+| 前声道注销 URL | 允许 https://localhost <br><br> `http` 不允许使用方案 <br><br> 最大长度为 255 个字符 | 允许 https://localhost <br><br> `http` 不允许使用方案 <br><br> 最大长度为 255 个字符 | <br><br> https://localhost 对于 MSA，允许， http://localhost 失败 <br><br> 最大长度为 255 个字符 <br><br> `http` 不允许使用方案 <br><br> 不支持通配符 | 
 
-*应用对象的所有集合属性有大约 1000 项的全局限制
+* 应用对象的所有集合属性的全局限制为大约1000个项目。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[应用程序注册](app-objects-and-service-principals.md)
-- 了解[应用程序清单](reference-app-manifest.md)
+- 了解 [应用程序注册](app-objects-and-service-principals.md)。
+- 了解 [应用程序清单](reference-app-manifest.md)。

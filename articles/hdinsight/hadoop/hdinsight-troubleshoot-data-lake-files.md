@@ -3,16 +3,13 @@ title: 无法访问 Azure HDInsight 中的 Data Lake 存储文件
 description: 无法访问 Azure HDInsight 中的 Data Lake 存储文件
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 8bac53cd08629e8b0a9cb91e596856c0ae6b5a2f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f4c5a23b604334952730fcc4cf1fcb3fcbed6237
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289112"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944400"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>无法访问 Azure HDInsight 中的 Data Lake 存储文件
 
@@ -161,7 +158,7 @@ Invoke-AzureRmResourceAction `
 
 ```
 
-若要分配现有证书，请创建一个证书，并准备好 .pfx 文件和密码。 使用 AppId ready 将证书与创建群集时所用的服务主体相关联。
+若要分配现有证书，请创建一个证书，并准备好 .pfx 文件和密码。 使用准备好的 AppId 将证书与创建群集时使用的服务主体相关联。
 
 将参数替换为实际值后，执行 PowerShell 命令。
 

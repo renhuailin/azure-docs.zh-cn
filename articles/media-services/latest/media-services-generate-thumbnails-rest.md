@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure Media Services Encoder Standard 通过 REST 来生成缩略图
+title: 使用 Azure 媒体服务 v3 .NET 从策略获取签名密钥
 description: 本文介绍如何使用 REST 通过 Media Encoder Standard 同时对资产进行编码和生成缩略图。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ec2782297f2659341c9fa7e87ce15d3dbceb022c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 75b8fd53836cce02816413afaeb656c3ac3f8796
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019556"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935389"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>如何使用 Encoder Standard 通过 REST 来生成缩略图
 

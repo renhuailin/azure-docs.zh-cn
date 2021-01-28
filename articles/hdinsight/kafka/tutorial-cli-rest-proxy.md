@@ -1,19 +1,16 @@
 ---
 title: 教程：使用 Azure CLI 在 HDInsight 中创建启用 Apache Kafka REST 代理的群集
 description: 了解如何在 Azure HDInsight 上使用 Kafka REST 代理执行 Apache Kafka 操作。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 68dddcbc5771ef1a8b5d6ea423674a1c6845a5e6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539473"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944032"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>教程：使用 Azure CLI 在 HDInsight 中创建启用 Apache Kafka REST 代理的群集
 
@@ -130,14 +127,14 @@ ms.locfileid: "92539473"
 
         |参数 | 说明|
         |---|---|
-        |--type|值必须是 **Kafka** 。|
-        |--workernode-data-disks-per-node|每个工作器节点要使用的数据磁盘数。 HDInsight Kafka 仅支持数据磁盘。 本教程使用的值为 **2** 。|
+        |--type|值必须是 **Kafka**。|
+        |--workernode-data-disks-per-node|每个工作器节点要使用的数据磁盘数。 HDInsight Kafka 仅支持数据磁盘。 本教程使用的值为 **2**。|
 
     1. Kafka REST 代理所需的参数：
 
         |参数 | 说明|
         |---|---|
-        |--kafka-management-node-size|节点的大小。 本教程使用的值为 **Standard_D4_v2** 。|
+        |--kafka-management-node-size|节点的大小。 本教程使用的值为 **Standard_D4_v2**。|
         |--kafka-client-group-id|Kafka REST 代理的客户端 AAD 安全组 ID。 该值是从变量 **$securityGroupID** 传递的。|
         |--kafka-client-group-name|Kafka REST 代理的客户端 AAD 安全组名称。 该值是从变量 **$securityGroupName** 传递的。|
         |--version|HDInsight 群集版本必须至少为 4.0。 该值是从变量 **$clusterVersion** 传递的。|

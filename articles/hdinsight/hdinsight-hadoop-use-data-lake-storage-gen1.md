@@ -1,19 +1,16 @@
 ---
 title: 在 Azure HDInsight 中将 Data Lake Storage Gen1 与 Hadoop 配合使用
 description: 了解如何从 Azure Data Lake Storage Gen1 查询数据并存储分析结果。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 5949bab7bdf11b11e0ff71f9054098ed83d95ab4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 35941f585a0ae5c0d3915c769db5b18737b299f0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539830"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945408"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用
 
@@ -40,7 +37,7 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Storage Gen1：
 
 目前，只有某些 HDInsight 群集类型/版本支持使用 Data Lake Storage Gen1 作为默认存储和其他存储帐户：
 
-| HDInsight 群集类型 | 将 Data Lake Storage Gen1 用作默认存储 | 将 Data Lake Storage Gen1 用作附加存储| 注释 |
+| HDInsight 群集类型 | 将 Data Lake Storage Gen1 用作默认存储 | 将 Data Lake Storage Gen1 用作附加存储| 注意 |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight 版本4。0 | 否 | 否 |HDInsight 4.0 不支持 ADLS Gen1 |
 | HDInsight 版本 3.6 | 是 | 是 | HBase 除外|
@@ -62,7 +59,7 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Storage Gen1：
 * Cluster1 可以使用路径 `adl://mydatalakestore/cluster1storage`
 * Cluster2 可以使用路径 `adl://mydatalakestore/cluster2storage`
 
-请注意，这两个群集使用的是同一个 Data Lake Storage Gen1 帐户 **mydatalakestore** 。 每个群集都有权访问 Data Lake Storage 中其自身的根文件系统。 Azure 门户部署体验提示你使用文件夹名称（如 **/clusters/ \<clustername>** ）作为根路径。
+请注意，这两个群集使用的是同一个 Data Lake Storage Gen1 帐户 **mydatalakestore**。 每个群集都有权访问 Data Lake Storage 中其自身的根文件系统。 Azure 门户部署体验提示你使用文件夹名称（如 **/clusters/ \<clustername>** ）作为根路径。
 
 若要使用 Data Lake Storage Gen1 作为默认存储，则必须授予服务主体对以下路径的访问权限：
 
@@ -108,13 +105,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>将 Data Lake Storage Gen1 用作附加存储
 
-也可将 Data Lake Storage Gen1 用作群集的附加存储。 在这种情况下，群集默认存储可以是 Azure Blob 存储或 Azure Data Lake Storage Gen1 帐户。 针对作为附加存储 Azure Data Lake Storage Gen1 中存储的数据运行 HDInsight 作业时，请使用完全限定的路径。 例如： 。
+也可将 Data Lake Storage Gen1 用作群集的附加存储。 在这种情况下，群集默认存储可以是 Azure Blob 存储或 Azure Data Lake Storage Gen1 帐户。 针对作为附加存储 Azure Data Lake Storage Gen1 中存储的数据运行 HDInsight 作业时，请使用完全限定的路径。 例如：
 
 `adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
 URL 中现在没有 **cluster_root_path** 。 这是因为在这种情况下 Data Lake Storage 不是默认存储。 因此，只需提供文件的路径即可。
 
-若要使用 Data Lake Storage Gen1 作为附加存储，请向服务主体授予对存储文件的路径的访问权限。  例如： 。
+若要使用 Data Lake Storage Gen1 作为附加存储，请向服务主体授予对存储文件的路径的访问权限。  例如：
 
 `adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
@@ -137,19 +134,19 @@ URL 中现在没有 **cluster_root_path** 。 这是因为在这种情况下 Dat
 
 可以通过多种方法从 HDInsight 群集访问 Data Lake Storage 中的文件。
 
-* **使用完全限定的名称** 。 使用此方法时，需提供要访问的文件的完整路径。
+* **使用完全限定的名称**。 使用此方法时，需提供要访问的文件的完整路径。
 
     ```
     adl://<data_lake_account>.azuredatalakestore.net/<cluster_root_path>/<file_path>
     ```
 
-* **使用缩短的路径格式** 。 使用此方法时，需将群集根的路径替换为：
+* **使用缩短的路径格式**。 使用此方法时，需将群集根的路径替换为：
 
     ```
     adl:///<file path>
     ```
 
-* **使用相对路径** 。 使用此方法时，仅需提供要访问的文件的相对路径。
+* **使用相对路径**。 使用此方法时，仅需提供要访问的文件的相对路径。
 
     ```
     /<file.path>/
@@ -193,7 +190,7 @@ URL 中现在没有 **cluster_root_path** 。 这是因为在这种情况下 Dat
 
 #### <a name="creating-a-hive-table"></a>创建 Hive 表
 
-但为了便于说明，显示了三个文件位置。 实际执行时，仅使用 `LOCATION` 条目之一。
+但为了便于说明，显示了三个文件位置。 在实际执行中，只使用其中一个 `LOCATION` 条目。
 
 ```hql
 DROP TABLE myTable;

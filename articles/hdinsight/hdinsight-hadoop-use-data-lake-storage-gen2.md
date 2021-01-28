@@ -1,23 +1,20 @@
 ---
 title: 配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 description: 了解如何将 Azure Data Lake Storage Gen2 与 Azure HDInsight 群集配合使用。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/24/2020
-ms.openlocfilehash: cc17cd23ae197db25fed440eb249f2cf069d4859
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2bbfbd2d953ea663453f0092ff366e95f6dd5ea7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744584"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945373"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
-[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 是一种专用于在 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)基础上进行大数据分析的云存储服务。 Data Lake Storage Gen2 将 Azure Blob 存储和 Azure Data Lake Storage Gen1 的功能组合在一起。 生成的服务提供了 Azure Data Lake Storage Gen1 中的功能，其中包括：文件系统语义、目录级别和文件级安全性以及适应性。 以及 Azure Blob 存储的低成本、分层存储、高可用性和灾难恢复功能。
+[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 是构建在 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)基础之上的，专用于大数据分析的云存储服务。 Data Lake Storage Gen2 将 Azure Blob 存储和 Azure Data Lake Storage Gen1 的功能组合在一起。 由此产生的服务提供来自 Azure Data Lake Storage Gen1 的功能，包括：文件系统语义、目录级和文件级安全性以及适应性。 以及 Azure Blob 存储的低成本、分层存储、高可用性和灾难恢复功能。
 
 有关使用 Data Lake Storage Gen2 的群集创建选项的完整比较，请参阅 [比较用于 Azure HDInsight 群集的存储选项](hdinsight-hadoop-compare-storage-options.md)。
 
@@ -25,18 +22,18 @@ ms.locfileid: "92744584"
 
 ## <a name="data-lake-storage-gen2-availability"></a>Data Lake Storage Gen2 可用性
 
-Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作几乎所有 Azure HDInsight 群集类型的存储选项。 但是，HBase 只能有一个具有 Data Lake Storage Gen2 的帐户。
+Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作几乎所有 Azure HDInsight 群集类型的存储选项。 但是，HBase 只能有一个帐户使用 Data Lake Storage Gen2。
 
 > [!Note]  
-> 选择 "Data Lake Storage Gen2 作为 **主存储类型** 后，将无法选择 Data Lake Storage Gen1 作为附加存储。
+> 选择 Data Lake Storage Gen2 作为“主要存储类型”后，无法选择 Data Lake Storage Gen1 作为附加存储。
 
 ## <a name="create-hdinsight-clusters-using-data-lake-storage-gen2"></a>使用 Data Lake Storage Gen2 创建 HDInsight 群集
 
-使用以下链接获取有关如何创建具有对 Data Lake Storage Gen2 的访问权限的 HDInsight 群集的详细说明。
+请使用以下链接，详细了解有关如何创建具有 Data Lake Storage Gen2 访问权限的 HDInsight 群集的说明。
 
 * [使用门户](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2-portal.md)
 * [使用 Azure CLI](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2-azure-cli.md)
-* 目前不支持 PowerShell 创建具有 Azure Data Lake Storage Gen2 的 HDInsight 群集。
+* 当前不支持使用 PowerShell 创建具有 Azure Data Lake Storage Gen2 的 HDInsight 群集。
 
 ## <a name="access-control-for-data-lake-storage-gen2-in-hdinsight"></a>HDInsight 中 Data Lake Storage Gen2 的访问控制
 
@@ -44,7 +41,7 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 
 Data Lake Storage Gen2 使用的访问控制模型同时支持 Azure RBAC) 和类似 POSIX 的访问控制列表 (Azure RBAC 和类似 POSIX 的访问控制 (列表) 。 Data Lake Storage Gen1 仅支持用于控制数据访问的访问控制列表。
 
-Azure RBAC 使用角色分配将权限集有效地应用于 Azure 资源的用户、组和服务主体。 通常，这些 Azure 资源会被限制为顶级资源 (例如，Azure Blob 存储帐户) 。 对于 Azure Blob 存储，以及 Data Lake Storage Gen2，此机制已扩展到文件系统资源。
+Azure RBAC 使用角色分配将权限集有效地应用于 Azure 资源的用户、组和服务主体。 一般情况下，这些 Azure 资源限制为顶级资源（例如 Azure Blob 存储帐户）。 对于 Azure Blob 存储以及 Azure Data Lake Storage Gen2，此机制已扩展到文件系统资源。
 
 有关使用 Azure RBAC 的文件权限的详细信息，请参阅 azure [rbac)  (azure 基于角色的访问控制 ](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control)。
 
@@ -54,7 +51,7 @@ Azure RBAC 使用角色分配将权限集有效地应用于 Azure 资源的用�
 
 HDInsight 群集在 Data Lake Storage Gen2 中访问文件的能力通过托管标识进行控制。 托管标识是在 Azure Active Directory (Azure AD) 中注册的标识，其凭据由 Azure 管理。 利用托管标识，无需在 Azure AD 中注册服务主体。 或维护凭据，如证书。
 
-Azure 服务有两种类型的托管标识：系统分配的托管标识和用户分配的托管标识。 HDInsight 使用用户分配的托管标识来访问 Data Lake Storage Gen2。 `user-assigned managed identity`作为独立的 Azure 资源创建。 在创建过程中，Azure 会在由所用订阅信任的 Azure AD 租户中创建一个标识。 在创建标识后，可以将标识分配到一个或多个 Azure 服务实例。
+Azure 服务有两种类型的托管标识：系统分配的托管标识和用户分配的托管标识。 HDInsight 使用用户分配的托管标识来访问 Data Lake Storage Gen2。 `user-assigned managed identity`是作为独立的 Azure 资源创建的。 在创建过程中，Azure 会在由所用订阅信任的 Azure AD 租户中创建一个标识。 在创建标识后，可以将标识分配到一个或多个 Azure 服务实例。
 
 用户分配标识的生命周期与它所分配到的 Azure 服务实例的生命周期是分开管理的。 有关托管标识的详细信息，请参阅[什么是 Azure 资源托管标识？](../active-directory/managed-identities-azure-resources/overview.md)。
 
@@ -66,19 +63,19 @@ Azure 服务有两种类型的托管标识：系统分配的托管标识和用�
 
 可以通过多种方法从 HDInsight 群集访问 Data Lake Storage Gen2 中的文件。
 
-* **使用完全限定的名称** 。 使用此方法时，需提供要访问的文件的完整路径。
+* **使用完全限定的名称**。 使用此方法时，需提供要访问的文件的完整路径。
 
     ```
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
     ```
 
-* **使用缩短的路径格式** 。 使用此方法时，需将群集根的路径替换为：
+* **使用缩短的路径格式**。 使用此方法时，需将群集根的路径替换为：
 
     ```
     abfs:///<file.path>/
     ```
 
-* **使用相对路径** 。 使用此方法时，仅需提供要访问的文件的相对路径。
+* **使用相对路径**。 使用此方法时，仅需提供要访问的文件的相对路径。
 
     ```
     /<file.path>/

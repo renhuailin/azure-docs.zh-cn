@@ -3,12 +3,12 @@ title: 为混合 Kubernetes 群集配置适用于容器的 Azure Monitor | Micro
 description: 本文介绍了如何配置适用于容器的 Azure Monitor 以监视在 Azure Stack 或其他环境中承载的 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d481af07013c0a5b4c5a381527c6f555400a2559
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 12901b1d2d7edd85fbe1650600856d09105c15b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890456"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936409"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>为混合 Kubernetes 群集配置适用于容器的 Azure Monitor
 
@@ -16,12 +16,12 @@ ms.locfileid: "92890456"
 
 ## <a name="supported-configurations"></a>支持的配置
 
-适用于容器的 Azure Monitor 正式支持以下配置。 如果有不同版本的 Kubernetes 和操作系统版本，请将邮件发送到 askcoin@microsoft.com 。
+适用于容器的 Azure Monitor 正式支持以下配置。 如果你使用不同版本的 Kubernetes 和操作系统，请将邮件发送至 askcoin@microsoft.com。
 
 - 环境：
 
     - 本地 Kubernetes
-    - Azure 和 Azure Stack 的 AKS 引擎。 有关详细信息，请参阅 [Azure Stack 上的 AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true)
+    - Azure 和 Azure Stack 的 AKS 引擎。 有关详细信息，请参阅 [Azure Stack 上的 AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)
     - [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) 版本 4 及更高版本，位于本地或其他云环境中。
 
 - Kubernetes 和支持策略的版本与 [AKS 支持](../../aks/supported-kubernetes-versions.md)的版本相同。
@@ -73,7 +73,7 @@ ms.locfileid: "92890456"
 
 2. 通过 Log Analytics 工作区启用适用于容器的 Azure Monitor 的 HELM 图表。
 
-有关中的监视解决方案的其他信息，请参阅 [此处](../../azure-monitor/insights/solutions.md)Azure Monitor。
+有关 Azure Monitor 中监视解决方案的其他信息，请参阅[此文](../../azure-monitor/insights/solutions.md)。
 
 ### <a name="how-to-add-the-azure-monitor-containers-solution"></a>如何添加 Azure Monitor 容器解决方案
 
@@ -202,7 +202,7 @@ ms.locfileid: "92890456"
     }
     ```
 
-7. 使用在第 3 步复制的值编辑 **workspaceResourceId** 的值。对于 **workspaceRegion** ，请在运行 Azure CLI 命令 [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list&preserve-view=true) 后复制 **Region** 值。
+7. 使用在第 3 步复制的值编辑 **workspaceResourceId** 的值。对于 **workspaceRegion**，请在运行 Azure CLI 命令 [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list&preserve-view=true) 后复制 **Region** 值。
 
 8. 在一个本地文件夹中将该文件另存为 containerSolutionParams.json。
 

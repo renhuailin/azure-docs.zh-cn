@@ -1,19 +1,16 @@
 ---
 title: 教程：在 Azure HDInsight 的 Spark 计算上下文中使用 R
 description: 教程 - Azure HDInsight 机器学习服务群集上的 R 和 Spark 入门。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 6e727bc7ad8b7f0b8a04c48f3abd1f1ac0806c66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bd6015529fb521e3b157e46ee808aea43e993dee
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545899"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935671"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>教程：在 Azure HDInsight 的 Spark 计算上下文中使用 R
 
@@ -43,7 +40,7 @@ RStudio Server 在群集的边缘节点上运行。 转到以下站点（其中�
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-首次登录时需要进行两次身份验证。 对于第一次身份验证提示，请提供群集管理员用户名和密码（默认为 *admin* ）。 对于第一次身份验证提示，请提供 SSH 用户名和密码（默认为 *sshuser* ）。 后续登录只需提供 SSH 凭据。
+首次登录时需要进行两次身份验证。 对于第一次身份验证提示，请提供群集管理员用户名和密码（默认为 *admin*）。 对于第一次身份验证提示，请提供 SSH 用户名和密码（默认为 *sshuser*）。 后续登录只需提供 SSH 凭据。
 
 ## <a name="download-the-sample-data-to-local-storage"></a>将示例数据下载到本地存储
 

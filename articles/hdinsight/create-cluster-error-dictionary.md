@@ -3,17 +3,16 @@ title: Azure HDInsight 创建群集错误字典
 description: 了解如何排查创建 Azure HDInsight 群集时出现的错误
 author: karkrish
 ms.author: v-todmc
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6b8c0069d619d3ebd87e3c54b4f653812199f590
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543094"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943340"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：群集创建错误
 
@@ -24,7 +23,7 @@ ms.locfileid: "92543094"
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>错误代码： DeploymentDocument 'CsmDocument_2_0' 验证失败
 
-**错误** ：“无法通过 URI:\<SCRIPT ACTION URL\>”
+**错误**：“无法通过 URI:\<SCRIPT ACTION URL\>”
 
 ### <a name="error-message-1"></a>错误消息 1
 
@@ -86,7 +85,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 1. 转到 Azure 门户。
 1. 选择你的虚拟网络。
-1. 选择“属性”菜单项。  **ResourceID** 属性值即为 **VirtualNetworkId** 值。
+1. 选择“属性”菜单项。 **ResourceID** 属性值即为 **VirtualNetworkId** 值。
 
 下面是虚拟网络 ID 的示例：
 
@@ -106,7 +105,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 ### <a name="resolution"></a>解决方法
 
-由于这是你的自定义脚本，因此我们建议排查问题，并根据需要重新运行该脚本。 若要排查脚本错误，请检查 /var/lib/ambari-agent/* 文件夹中的日志。 或者，在 Ambari UI 中打开“操作”页，然后选择“run_customscriptaction”操作查看错误详细信息。  
+由于这是你的自定义脚本，因此我们建议排查问题，并根据需要重新运行该脚本。 若要排查脚本错误，请检查 /var/lib/ambari-agent/* 文件夹中的日志。 或者，在 Ambari UI 中打开“操作”页，然后选择“run_customscriptaction”操作查看错误详细信息。 
 
 ---
 
@@ -161,7 +160,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 1. 打开 Azure 门户。
 1. 转到存储帐户。
-1. 查看“访问控制(IAM)”。 
+1. 查看“访问控制(IAM)”。
 1. 确保为该用户分配了“存储 Blob 数据参与者”角色或“存储 Blob 数据所有者”角色。
 
 有关详细信息，请参阅[在 Data Lake Storage Gen2 帐户中设置托管标识的权限](hdinsight-hadoop-use-data-lake-storage-gen2.md)。

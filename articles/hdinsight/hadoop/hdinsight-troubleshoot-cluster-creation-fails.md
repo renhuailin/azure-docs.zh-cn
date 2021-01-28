@@ -1,19 +1,16 @@
 ---
 title: 排查 Azure HDInsight 中的群集创建失败问题
 description: 了解如何排查 Azure HDInsight 的 Apache 群集创建问题。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: b8be230044d868cc3ec03f6dc3fc2d21e102f121
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e12b96883ae26b6c10e3622c35914ce498afca48
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856290"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944420"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>排查 Azure HDInsight 中的群集创建失败问题
 
@@ -29,7 +26,7 @@ ms.locfileid: "91856290"
 
 ## <a name="permissions-issues"></a>权限问题
 
-如果使用的是 Azure Data Lake Storage Gen2 并收到错误 `AmbariClusterCreationFailedErrorCode`（“:::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::”），请打开 Azure 门户，转到你的存储帐户，并在访问控制 (IAM) 下确保“存储 Blob 数据参与者”或“存储 Blob 数据所有者”角色已经为该订阅的“用户分配的托管标识”分配了访问权限  。 有关详细说明，请参阅在 [Data Lake Storage Gen2 上设置托管标识的权限](../hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2) 。
+如果使用的是 Azure Data Lake Storage Gen2 并收到错误 `AmbariClusterCreationFailedErrorCode`（“:::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::”），请打开 Azure 门户，转到你的存储帐户，并在访问控制 (IAM) 下确保“存储 Blob 数据参与者”或“存储 Blob 数据所有者”角色已经为该订阅的“用户分配的托管标识”分配了访问权限  。 有关详细说明，请参阅[在 Data Lake Storage Gen2 上设置托管标识的权限](../hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2)。
 
 如果使用 Azure Data Lake Storage Gen1，请参阅安装和配置说明在 [Azure HDInsight 群集中使用 Azure Data Lake Storage Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md)。 HBase 群集不支持 Data Lake Storage Gen1，HDInsight 版本4.0 不支持此项。
 

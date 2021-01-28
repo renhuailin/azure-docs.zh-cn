@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 中群集节点的磁盘空间不足
 description: 排查 Azure HDInsight 中的 Apache Hadoop 群集节点磁盘空间问题。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/30/2020
-ms.openlocfilehash: f1a994ad07980c67e37d00bffb7e605ed610bb08
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c58ac1e65509299680f67cf17060ff3e9af4c817
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289089"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944355"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>方案：Azure HDInsight 中群集节点的磁盘空间不足
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c065b7a7269c8da42493ede50466f44f7dd2658
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5f0a84af0c7a4105327405cfb809f5101ab42931
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219940"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938383"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -35,7 +35,7 @@ ms.locfileid: "98219940"
 在授予访问权限时，管理员可以选择强制实施一项或多项控制。 这些控制包括以下选项： 
 
 - [需要多重身份验证（Azure AD 多重身份验证）](../authentication/concept-mfa-howitworks.md)
-- [要求设备标记为符合 (Microsoft Intune) ](/intune/protect/device-compliance-get-started)
+- [要求将设备标记为合规 (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [要求使用已建立混合 Azure AD 联接的设备](../devices/concept-azure-ad-join-hybrid.md)
 - [“需要已批准的客户端应用”](app-based-conditional-access.md)
 - [需要应用保护策略](app-protection-based-conditional-access.md)
@@ -54,17 +54,17 @@ ms.locfileid: "98219940"
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>要求将设备标记为合规
 
-部署了 Microsoft Intune 的组织可以根据从其设备返回的信息来识别符合具体合规要求的设备。 此策略合规性信息将从 Intune 转发到 Azure AD，其中的条件访问可以决定是要授予还是阻止对资源的访问。 有关合规性策略的详细信息，请参阅文章 [使用 Intune 设置设备上的规则以允许访问你的组织中的资源](/intune/protect/device-compliance-get-started)。
+部署了 Microsoft Intune 的组织可以根据从其设备返回的信息来识别符合具体合规要求的设备。 此策略合规性信息将从 Intune 转发到 Azure AD，其中的条件访问可以决定是要授予还是阻止对资源的访问。 有关合规性策略的详细信息，请参阅[使用 Intune 在设备上设置规则以允许访问组织中的资源](/intune/protect/device-compliance-get-started)一文。
 
-对于任何设备 OS) 或由适用于 Windows 10 设备的第三方 MDM 系统，设备都可以将其标记为符合 Intune (。 Jamf pro 是唯一受支持的第三方 MDM 系统。 有关集成的详细信息，请参阅将 [Jamf Pro 与 Intune 集成以实现符合性](/intune/protect/conditional-access-integrate-jamf)。
+可以通过 Intune（适用于任何设备 OS）或通过适用于 Windows 10 设备的第三方 MDM 系统将设备标记为合规。 Jamf pro 是唯一受支持的第三方 MDM 系统。 有关集成的详细信息可在[将 Jamf Pro 与 Intune 集成以实现符合性](/intune/protect/conditional-access-integrate-jamf)一文中找到。
 
-设备必须在 Azure AD 中进行注册，然后才能将其标记为合规。 有关设备注册的详细信息，请参阅 [什么是设备标识](../devices/overview.md)。
+设备必须在 Azure AD 中进行注册，然后才能标记为合规。 如需详细了解设备注册，请参阅[什么是设备标识](../devices/overview.md)一文。
 
 ### <a name="require-hybrid-azure-ad-joined-device"></a>要求使用已建立混合 Azure AD 联接的设备
 
-组织可以选择使用设备标识作为其条件性访问策略的一部分。 组织可以要求使用此复选框联接设备 Azure AD 混合。 有关设备标识的详细信息，请参阅 [什么是设备标识？一](../devices/overview.md)文。
+组织可以选择使用设备标识作为其条件访问策略的一部分。 组织可以使用此复选框要求设备是已加入混合 Azure AD 的设备。 如需详细了解设备标识，请参阅[什么是设备标识？](../devices/overview.md)一文。
 
-使用 [设备代码 OAuth 流](../develop/v2-oauth2-device-code.md)时，"需要托管设备授权控制" 或 "设备状态" 条件不受支持。 这是因为执行身份验证的设备无法向提供代码的设备提供其设备状态，并且令牌中的设备状态会锁定到执行身份验证的设备。 改为使用 "需要多重身份验证" 授权控制。
+使用[设备代码 OAuth 流](../develop/v2-oauth2-device-code.md)时，不支持要求受管理设备授权控制或设备状态条件。 这是因为执行身份验证的设备无法向提供代码的设备提供其设备状态，并且令牌中的设备状态会锁定到执行身份验证的设备。 请改用“需要多重身份验证授权控制”。
 
 ### <a name="require-approved-client-app"></a>需要批准的客户端应用
 
@@ -121,7 +121,9 @@ ms.locfileid: "98219940"
 
 为了利用此授权控制，条件访问要求在 Azure Active Directory 中注册设备，这需要使用代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是适用于 Android 设备的 Microsoft 公司门户。 如果用户尝试进行身份验证时设备上未安装代理应用，则会将用户重定向到应用商店来安装代理应用。
 
-此设置适用于以下客户端应用：
+需要 **为应用** 程序实施 **策略保证** 并满足某些其他要求以支持此设置。 通过 Intune SDK 实现应用程序的开发人员可以在 SDK 文档中找到有关这些要求的详细信息。
+
+已确认以下客户端应用支持此设置：
 
 - Microsoft Cortana
 - Microsoft Edge

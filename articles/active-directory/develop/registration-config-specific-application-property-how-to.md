@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 222c961f9e5587cd5526778e6ef1c800f5085a69
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6da6187e59bf028101eac2ea6f09fb1530821bfd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064294"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937860"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>自定义开发应用的 Azure 门户注册字段
 
@@ -25,7 +25,7 @@ ms.locfileid: "98064294"
 
 ## <a name="register-a-new-application"></a>注册新应用程序
 
--   若要注册新应用程序，请导航<a href="https://portal.azure.com/" target="_blank">到 <span class="docon docon-navigate-external x-hidden-focus"></span> Azure 门户</a>。
+-   若要注册新应用程序，请导航到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 -   在左侧导航窗格中，单击“Azure Active Directory” 
 
@@ -61,7 +61,7 @@ ms.locfileid: "98064294"
 
 | 字段           | 说明        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 注销 URL      | 这是单一注销的注销 URL。 用户使用任何其他注册的应用程序清除与 Azure AD 的会话时，Azure AD 将向此 URL 发送注销请求。|
+| 前声道注销 URL      | 这是单一注销的注销 URL。 用户使用任何其他注册的应用程序清除与 Azure AD 的会话时，Azure AD 将向此 URL 发送注销请求。|
 | 支持的帐户类型  | 此开关指定多个租户是否可以使用应用程序。 通常情况下，这意味着外部组织可以通过在其租户中注册，并授予对其组织数据的访问权限来使用应用程序。|
 | 重定向 URL      | 重定向或回复 URL 是 Azure AD 会在其中返回应用程序请求的任何令牌的终结点。 对于本机应用程序，会在成功授权后向其中发送用户。 Azure AD 会检查应用程序在 OAuth 2.0 请求中提供的重定向 URI 是否与门户中的某个注册值相匹配。|
 
