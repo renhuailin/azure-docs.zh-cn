@@ -1,18 +1,18 @@
 ---
 title: 教程：在 Azure 门户中管理查询
 description: 在本教程中，你会在 Azure 门户中创建 Resource Graph 查询并将这个新查询与其他人共享。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
-ms.openlocfilehash: 98d4c7d0493686a45bdfef9d85823432cb637a66
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7240a843cfa041137b28284e396c8a4b62a81926
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057920"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916673"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>教程：在 Azure 门户中创建和共享 Azure Resource Graph 查询
 
-使用 Azure Resource Graph 资源管理器可以直接在 Azure 门户中保存 Resource Graph 查询。 查询有两种：_专用_和_共享_。 专用查询保存在 Azure 门户设置中。 而“共享查询”是 Azure 资源管理器资源，可以使用 Azure 基于角色的访问控制 (Azure RBAC) 进行管理，并使用资源锁进行保护。 这两种类型的查询都是静态加密的。
+使用 Azure Resource Graph 资源管理器可以直接在 Azure 门户中保存 Resource Graph 查询。 查询有两种：_专用_ 和 _共享_。 专用查询保存在 Azure 门户设置中。 而“共享查询”是 Azure 资源管理器资源，可以使用 Azure 基于角色的访问控制 (Azure RBAC) 进行管理，并使用资源锁进行保护。 这两种类型的查询都是静态加密的。
 
 通过将查询保存在 Azure 门户中，可以在查找收藏夹查询或常用查询时节省时间。 共享查询时，可以通过重复操作来帮助你的团队实现一致性和高效的目标。
 
@@ -88,7 +88,7 @@ ms.locfileid: "92057920"
 
 1. 在“保存查询”窗格底部选择“保存”。  选项卡标题从“查询 1”更改为“按 OS 对 VM 进行计数” 。 第一次使用 resource-graph-queries 资源组时，创建资源组后保存所需的时间比预期时间更长。
    
-   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="使用“保存”按钮保存新查询" border="false":::
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="将新查询另存为共享查询" border="false":::
 
    > [!NOTE] 
    > 如果要提供保存共享查询的现有资源组的名称，则可以清除“发布到 resource-graph-queries 资源组”复选框。 使用查询的默认命名资源组可以更轻松地发现共享查询。 它还使该资源组的用途更加明显。 但出于安全原因，可以根据现有权限选择现有资源组。
@@ -97,7 +97,7 @@ ms.locfileid: "92057920"
 
 1. 选择“打开查询”。 验证类型是否设置为“共享查询”，以及“订阅”和“资源组”的组合是否与查询的保存位置匹配  。 已保存“按 OS 对 VM 进行计数”项现在会显示在“查询名称”列表中。 选择已保存查询的标题链接以将其加载到具有该查询的名称的新选项卡中。 作为共享查询，将在标题旁边的选项卡中显示一个图标，表示它是共享查询。
 
-   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="使用“保存”按钮保存新查询" border="false":::
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="显示带有图标的共享查询" border="false":::
 
    > [!NOTE] 
    > 当已保存的查询处于打开状态且选项卡显示其名称时，“保存”按钮将使用所做的任何更改来更新它。 若要创建新保存的查询，请选择“另存为”并继续操作，就像保存全新的查询一样。

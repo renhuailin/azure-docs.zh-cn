@@ -1,19 +1,16 @@
 ---
 title: 如何在 Azure HDInsight 中使用 Apache Ambari 监视群集可用性
 description: 了解如何使用 Apache Ambari 监视群集的运行状况与可用性。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 5cfc2abad828a3974c04074a4cde062a479f673f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 34f752d4c3d50d5f680e317b2724b1e631537f32
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533557"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933193"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>如何在 Azure HDInsight 中使用 Apache Ambari 监视群集可用性
 
@@ -23,7 +20,7 @@ HDInsight 群集包含 Apache Ambari，后者提供运行状况信息概览和�
 
 ## <a name="dashboard"></a>仪表板
 
-可以选择 Azure 门户上“HDInsight 概述”的“群集仪表板”部分中的“Ambari 主页”来访问 Ambari 仪表板，如下所示。   或者，可以在浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net` 来访问 Ambari 仪表板，其中，CLUSTERNAME 是群集名称。
+可以选择 Azure 门户上“HDInsight 概述”的“群集仪表板”部分中的“Ambari 主页”来访问 Ambari 仪表板，如下所示。  或者，可以在浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net` 来访问 Ambari 仪表板，其中，CLUSTERNAME 是群集名称。
 
 ![HDInsight 资源门户视图](media/hdinsight-cluster-availability/azure-portal-dashboard-ambari.png)
 
@@ -35,7 +32,7 @@ HDInsight 群集包含 Apache Ambari，后者提供运行状况信息概览和�
 
 ## <a name="hosts--view-individual-node-status"></a>主机 – 查看单个节点的状态
 
-还可以查看单个节点的状态信息。 选择“主机”选项卡可查看群集中所有节点的列表，并查看有关每个节点的基本信息。  每个节点名称左侧的绿色勾选标记表示该节点上的所有组件已运行。 如果某个组件在某个节点上关闭，你会看到红色的警报三角形而不是绿色勾选标记。
+还可以查看单个节点的状态信息。 选择“主机”选项卡可查看群集中所有节点的列表，并查看有关每个节点的基本信息。 每个节点名称左侧的绿色勾选标记表示该节点上的所有组件已运行。 如果某个组件在某个节点上关闭，你会看到红色的警报三角形而不是绿色勾选标记。
 
 ![HDInsight Apache Ambari 主机视图](media/hdinsight-cluster-availability/apache-ambari-hosts1.png)
 
@@ -49,7 +46,7 @@ Ambari 还提供多个可配置的警报来针对特定的事件发出通知。 
 
 ![Apache Ambari 当前警报计数](media/hdinsight-cluster-availability/apache-ambari-alerts.png)
 
-若要查看警报定义的列表及其状态，请选择“警报”选项卡，如下所示。 
+若要查看警报定义的列表及其状态，请选择“警报”选项卡，如下所示。
 
 ![Ambari 警报定义视图](media/hdinsight-cluster-availability/ambari-alerts-definitions.png)
 
@@ -63,7 +60,7 @@ Ambari 提供许多与可用性相关的预定义警报，其中包括：
 | 可用 DataNode 百分比       | 如果群集中已关闭的 DataNode 数目大于配置的“严重”阈值，则会触发此警报。 此值聚合了 DataNode 进程检查的结果。|
 
 
-若要查看某个警报的详细信息或修改条件，请选择该警报的 **名称** 。 以“DataNode 运行状况摘要”为例。  可以查看该警报的说明、触发“警告”或“严重”警报的特定条件，以及条件的检查间隔。 若要编辑配置，请选择“配置”框右上角的“编辑”按钮。 
+若要查看某个警报的详细信息或修改条件，请选择该警报的 **名称**。 以“DataNode 运行状况摘要”为例。 可以查看该警报的说明、触发“警告”或“严重”警报的特定条件，以及条件的检查间隔。 若要编辑配置，请选择“配置”框右上角的“编辑”按钮。
 
 ![Apache Ambari 警报配置](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
 
@@ -71,11 +68,11 @@ Ambari 提供许多与可用性相关的预定义警报，其中包括：
 
 ![Ambari 警报配置编辑视图](media/hdinsight-cluster-availability/ambari-alert-configuration-edit.png)
 
-在此示例中，可以设置为存在 2 个不正常的 DataNode 时触发严重警报，存在 1 个不正常的 DataNode 时只触发警告。 完成编辑后，选择“保存”。 
+在此示例中，可以设置为存在 2 个不正常的 DataNode 时触发严重警报，存在 1 个不正常的 DataNode 时只触发警告。 完成编辑后，选择“保存”。
 
 ## <a name="email-notifications"></a>电子邮件通知
 
-还可以选择为 Ambari 警报配置电子邮件通知。 为此，请单击“警报”选项卡左上角的“操作”按钮，然后单击“管理通知”。   
+还可以选择为 Ambari 警报配置电子邮件通知。 为此，请单击“警报”选项卡左上角的“操作”按钮，然后单击“管理通知”。  
 
 ![Ambari“管理通知”操作](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 

@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 中的企业安全性常规准则
 description: 一些应该可以简化企业安全性套餐的部署和管理的最佳做法。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92ad8362f75cdf0613d4ee95f39c23aa6d4819bb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87530259"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933563"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Azure HDInsight 中的企业安全性常规信息和准则
 
@@ -62,7 +59,7 @@ ms.locfileid: "87530259"
 如果未启用分层命名空间，则：
 
 * 没有继承的权限。
-* 能够使用的唯一文件系统权限是**存储数据 XXXX** Azure 角色，该角色直接在 Azure 门户中分配给用户。
+* 能够使用的唯一文件系统权限是 **存储数据 XXXX** Azure 角色，该角色直接在 Azure 门户中分配给用户。
 
 ### <a name="default-hdfs-permissions"></a>默认的 HDFS 权限
 

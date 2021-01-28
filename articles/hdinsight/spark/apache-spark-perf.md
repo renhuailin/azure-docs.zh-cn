@@ -1,19 +1,16 @@
 ---
 title: 优化 Spark 作业的性能 - Azure HDInsight
 description: 介绍实现 Azure HDInsight 中的 Apache Spark 群集最佳性能的常见策略。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d808339dd842e88e74efce5d56d12bc5250eb238
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 567fc2637538408d9727d07d3185a5b0e3cf20c5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029288"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929938"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>在 HDInsight 中优化 Apache Spark 作业
 

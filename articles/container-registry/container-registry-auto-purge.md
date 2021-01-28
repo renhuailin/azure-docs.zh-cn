@@ -2,19 +2,19 @@
 title: 清除标记和清单
 description: 使用清除命令根据年龄和标记筛选器从 Azure 容器注册表中删除多个标记和清单，并选择性地安排清除操作计划。
 ms.topic: article
-ms.date: 11/10/2020
-ms.openlocfilehash: 406a1f231af57407e9475a8888b68aad9d88dcb3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.date: 01/27/2021
+ms.openlocfilehash: ab1a925092784effd07431d75e4ec1535c53ed33
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445109"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927267"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>自动清除 Azure 容器注册表中的映像
 
 在开发工作流中使用 Azure 容器注册表时，注册表中可能很快会填满在一小段时间后不需要的映像或其他项目。 你可能会想删除早于某一特定持续时间或与指定名称筛选器匹配的所有标记。 为帮助你快速删除多个项目，本文介绍了 `acr purge` 命令，可以将其作为按需或[计划的](container-registry-tasks-scheduled.md) ACR 任务来运行。 
 
-`acr purge` 命令当前在公共容器映像 (`mcr.microsoft.com/acr/acr-cli:0.3`) 中分发，该映像通过 GitHub 中 [acr-cli](https://github.com/Azure/acr-cli) 存储库中的源代码生成。
+`acr purge` 命令当前在公共容器映像 (`mcr.microsoft.com/acr/acr-cli:0.4`) 中分发，该映像通过 GitHub 中 [acr-cli](https://github.com/Azure/acr-cli) 存储库中的源代码生成。
 
 可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装来运行本文中的 ACR 任务示例。 如果想要在本地使用它，则需要使用 2.0.76 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。 
 
@@ -44,7 +44,8 @@ ms.locfileid: "94445109"
 
 * `--untagged` - 指定删除没有相关标记的清单（未标记的清单）。
 * `--dry-run` - 指定不删除任何数据，但其输出与在没有此标志的情况下运行此命令时的输出相同。 此参数有助于测试清除命令，确保它不会无意中删除要保留的数据。
-* `--keep` -指定保留要删除的最新数量的标记。
+* `--keep` - 指定保留最新的 x 个待删除标记。
+* `--concurrency` -指定同时处理 x 清除任务。 如果未提供此参数，则将使用默认值。
 
 对于其他参数，请运行 `acr purge --help`。 
 
@@ -81,7 +82,7 @@ az acr task create --name purgeTask \
   --context /dev/null
 ```
 
-运行 [az acr task show][az-acr-task-show] 命令，查看是否已配置计时器触发器。
+运行 [az acr task show][az-acr-task-show] 命令查看该计时器触发器是否已配置。
 
 ### <a name="purge-large-numbers-of-tags-and-manifests"></a>清除大量标记和清单
 
@@ -164,7 +165,7 @@ az acr task create --name weeklyPurgeTask \
   --context /dev/null
 ```
 
-运行 [az acr task show][az-acr-task-show] 命令，查看是否已配置计时器触发器。
+运行 [az acr task show][az-acr-task-show] 命令查看该计时器触发器是否已配置。
 
 ## <a name="next-steps"></a>后续步骤
 

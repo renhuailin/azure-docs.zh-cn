@@ -1,5 +1,5 @@
 ---
-title: 基于方案的打包和交付方案的迁移指南
+title: 打包和交付迁移指南
 description: 本文提供了有关打包和传递的基于方案的指南，可帮助你从 Azure 媒体服务 v2 迁移到 v3。
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 78f3e6ee53d5158096882f5554054c3ff06a32b4
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 90dfc2fd6f6258ec5bfdea38423489c72ee06e03
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895231"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928199"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>基于方案的打包和交付方案的迁移指南
 

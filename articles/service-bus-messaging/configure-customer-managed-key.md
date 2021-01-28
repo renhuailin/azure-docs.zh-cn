@@ -2,26 +2,20 @@
 title: 配置自己的密钥以用于加密 Azure 服务总线静态数据
 description: 本文介绍了如何配置自己的密钥以用于加密 Azure 服务总线静态数据。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 3e8f3a599ee5fe40c85a93dd58d36e6cd611c9ea
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 01/26/2021
+ms.openlocfilehash: 132ee3883b818dcc5a5d8e0cc7b372daee41e273
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631760"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928097"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 门户配置客户管理的密钥以用于加密 Azure 服务总线静态数据
-Azure 服务总线高级层提供了通过 Azure 存储服务加密 (Azure SSE) 对静态数据进行加密的功能。 服务总线高级层依赖于 Azure 存储来存储数据，默认情况下，存储在 Azure 存储中的所有数据将使用 Microsoft 管理的密钥进行加密。 
+Azure 服务总线高级层提供了通过 Azure 存储服务加密 (Azure SSE) 对静态数据进行加密的功能。 服务总线高级版使用 Azure 存储来存储数据。 使用 Azure 存储空间存储的所有数据都使用 Microsoft 托管密钥进行加密。 如果你使用自己的密钥 (也称为创建自己的密钥 (BYOK) 或客户托管的密钥) ，则仍使用 Microsoft 托管的密钥对数据进行加密，但另外，将使用客户管理的密钥加密 Microsoft 托管密钥。 利用此功能，您可以创建、轮换、禁用和撤消对用于加密 Microsoft 托管密钥的客户托管密钥的访问权限。 启用 BYOK 功能是在命名空间中执行的一次性设置过程。
 
-## <a name="overview"></a>概述
-Azure 服务总线现在支持用户选择通过 Microsoft 管理的密钥或客户管理的密钥（创建自己的密钥 - BYOK）来加密静态数据。 使用此功能可以创建、轮换、禁用用于加密 Azure 服务总线静态数据的客户管理密钥，以及撤销对这些密钥的访问权限。
-
-启用 BYOK 功能是在命名空间中执行的一次性设置过程。
-
-> [!NOTE]
-> 对于用于服务端加密的客户管理密钥，需要注意一些事项。 
->   * [Azure 服务总线高级层](service-bus-premium-messaging.md)支持此功能。 不能为标准层服务总线命名空间启用此功能。
->   * 只能为新的或空的命名空间启用加密。 如果命名空间包含任何队列或主题，则加密操作将会失败。
+对于用于服务端加密的客户管理密钥，需要注意一些事项。 
+- [Azure 服务总线高级层](service-bus-premium-messaging.md)支持此功能。 不能为标准层服务总线命名空间启用此功能。
+- 只能为新的或空的命名空间启用加密。 如果命名空间包含任何队列或主题，则加密操作将会失败。
 
 可以使用 Azure Key Vault 管理密钥并审核密钥使用情况。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。 有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/general/overview.md)
 
@@ -70,13 +64,13 @@ Azure 服务总线现在支持用户选择通过 Microsoft 管理的密钥或客
         > [!NOTE]
         > 最多可以添加 3 个密钥来实现冗余。 如果某个密钥已过期或不可访问，则会使用其他密钥进行加密。
         
-    1. 填写密钥详细信息，然后单击“选择”。 然后，便可以使用客户管理的密钥来加密命名空间中的静态数据。 
+    1. 填写密钥详细信息，然后单击“选择”。 这将允许使用密钥 (客户管理的密钥) 来加密 Microsoft 托管密钥。 
 
 
     > [!IMPORTANT]
-    > 如果你想将客户管理的密钥用于异地灾难恢复，请查看下文 - 
+    > 如果你想要使用客户托管密钥以及异地灾难恢复，请查看此部分。 
     >
-    > 为了将客户管理的密钥用于静态加密，已在指定的 Azure KeyVault 上为服务总线托管标识设置了一个[访问策略](../key-vault/general/secure-your-key-vault.md)。 这可确保能够控制从 Azure 服务总线命名空间对 Azure KeyVault 的访问。
+    > 若要启用使用客户托管密钥的 Microsoft 托管密钥加密，请在指定的 Azure KeyVault 上为服务总线的托管标识设置 [访问策略](../key-vault/general/secure-your-key-vault.md) 。 这可确保能够控制从 Azure 服务总线命名空间对 Azure KeyVault 的访问。
     >
     > 因此：
     > 

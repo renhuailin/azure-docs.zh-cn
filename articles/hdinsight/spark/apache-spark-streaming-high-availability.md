@@ -1,19 +1,16 @@
 ---
 title: YARN 中高度可用的 Spark 流作业-Azure HDInsight
 description: 如何在 Azure HDInsight 中设置 Apache Spark 流式处理以实现高可用性方案
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 2ec0bf460a73f95e18e2e9221e8cbd8d4e14ff77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3eb761a793c41c2e2cc2cb952e4fb9f241b41ab6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086205"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929699"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>使用 YARN 创建高可用性 Apache Spark 流式处理作业
 
@@ -67,7 +64,7 @@ Rdd 具有多个属性，可帮助实现高可用性和容错的 Spark 流式处
 
 如果 **执行** 器失败，则会自动重新启动其任务和接收方，因此不需要进行任何配置更改。
 
-但是，如果**驱动程序**发生故障，则其所有关联的执行器都会发生故障，并且所有已收到的块和计算结果都会丢失。 若要从驱动程序故障中恢复，请使用 *DStream 的检查点* ，如 [创建只使用一次事件处理的 Spark 流式处理作业](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers)中所述。 DStream 检查点会定期将 DStreams 的有向无环图 (DAG) 保存到 Azure 存储等容错存储中。   检查点可让 Spark 结构化流根据检查点信息重启有故障的驱动程序。  重启此驱动程序会启动新的执行器，同时重启接收器。
+但是，如果 **驱动程序** 发生故障，则其所有关联的执行器都会发生故障，并且所有已收到的块和计算结果都会丢失。 若要从驱动程序故障中恢复，请使用 *DStream 的检查点* ，如 [创建只使用一次事件处理的 Spark 流式处理作业](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers)中所述。 DStream 检查点会定期将 DStreams 的有向无环图 (DAG) 保存到 Azure 存储等容错存储中。   检查点可让 Spark 结构化流根据检查点信息重启有故障的驱动程序。  重启此驱动程序会启动新的执行器，同时重启接收器。
 
 使用 DStream 检查点恢复驱动程序：
 

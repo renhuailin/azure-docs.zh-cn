@@ -3,17 +3,14 @@ title: 使用 Azure HDInsight 对 Hive 进行故障排除
 description: 获取有关使用 Apache Hive 和 Azure HDInsight 的常见问题的解答。
 keywords: Azure HDInsight, Hive, 常见问题解答, 故障排除指南, 常见问题
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f1a26e3323e4d1db2e9b2bda9afaa2756307749b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a76974b8daddf225b0d9b8b581475d657322847e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288965"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931450"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hive 进行故障排除
 
@@ -49,7 +46,7 @@ ms.locfileid: "93288965"
 
 ### <a name="resolution-steps"></a>解决步骤
 
-1. 使用 SSH 连接到 HDInsight 群集。 有关详细信息，请参阅 **其他阅读材料** 。
+1. 使用 SSH 连接到 HDInsight 群集。 有关详细信息，请参阅 **其他阅读材料**。
 
 2. 若要查看 Hive 客户端日志，请使用以下命令：
 
@@ -120,17 +117,17 @@ ms.locfileid: "93288965"
    必须提供一个示例程序作为第一个参数。
 
    有效的程序名称包括：
-    - **ContainerReuseAnalyzer** ：列显 DAG 中的容器重用详细信息
-    - **CriticalPath** ：查找 DAG 的关键路径
-    - **LocalityAnalyzer** ：列显 DAG 中的区域详细信息
-    - **ShuffleTimeAnalyzer** ：分析 DAG 中的随机排列时间详细信息
-    - **SkewAnalyzer** ：分析 DAG 中的偏斜详细信息
-    - **SlowNodeAnalyzer** ：列显 DAG 中的节点详细信息
-    - **SlowTaskIdentifier** ：列显 DAG 中的慢速任务详细信息
-    - **SlowestVertexAnalyzer** ：列显 DAG 中的最慢顶点详细信息
-    - **SpillAnalyzer** ：列显 DAG 中的溢出详细信息
-    - **TaskConcurrencyAnalyzer** ：列显 DAG 中的任务并发性详细信息
-    - **VertexLevelCriticalPathAnalyzer** ：查找 DAG 中顶点级别的关键路径
+    - **ContainerReuseAnalyzer**：列显 DAG 中的容器重用详细信息
+    - **CriticalPath**：查找 DAG 的关键路径
+    - **LocalityAnalyzer**：列显 DAG 中的区域详细信息
+    - **ShuffleTimeAnalyzer**：分析 DAG 中的随机排列时间详细信息
+    - **SkewAnalyzer**：分析 DAG 中的偏斜详细信息
+    - **SlowNodeAnalyzer**：列显 DAG 中的节点详细信息
+    - **SlowTaskIdentifier**：列显 DAG 中的慢速任务详细信息
+    - **SlowestVertexAnalyzer**：列显 DAG 中的最慢顶点详细信息
+    - **SpillAnalyzer**：列显 DAG 中的溢出详细信息
+    - **TaskConcurrencyAnalyzer**：列显 DAG 中的任务并发性详细信息
+    - **VertexLevelCriticalPathAnalyzer**：查找 DAG 中顶点级别的关键路径
 
 ### <a name="additional-reading"></a>其他阅读材料
 

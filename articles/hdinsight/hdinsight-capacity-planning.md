@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 中的群集容量规划
 description: 确定 Azure HDInsight 群集的容量和性能规划的关键问题。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 8e76f767470b9052b25cd2b2958f3f9e9780881b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45cfa90f2156dba87cbec2b6313bc24e5d030572
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83714740"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933231"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -66,7 +63,7 @@ Azure 存储具有某些[容量限制](../azure-resource-manager/management/azur
 
 每个群集类型具有一组节点类型，每个节点类型在 VM 大小和类型方面提供特定的选项。
 
-若要确定应用程序的最佳群集大小，可以建立群集容量基准，并根据指示增加大小。 例如，可以使用模拟工作负荷或“canary 查询”。** 在不同大小的群集上运行模拟工作负载。 逐渐增加大小，直到达到预期性能。 可在其他生产查询之间定期插入 canary 查询，以显示群集是否有足够的资源。
+若要确定应用程序的最佳群集大小，可以建立群集容量基准，并根据指示增加大小。 例如，可以使用模拟工作负荷或“canary 查询”。 在不同大小的群集上运行模拟工作负载。 逐渐增加大小，直到达到预期性能。 可在其他生产查询之间定期插入 canary 查询，以显示群集是否有足够的资源。
 
 有关如何为工作负荷选择正确的 VM 系列的详细信息，请参阅[为群集选择适当的 VM 大小](hdinsight-selecting-vm-size.md)。
 
@@ -87,7 +84,7 @@ Azure 存储具有某些[容量限制](../azure-resource-manager/management/azur
 
 ### <a name="isolate-cluster-job-errors"></a>查明群集作业错误
 
-有时，多节点群集上多个映射和化简组件的并行执行可能导致出错。 若要帮助隔离此问题，请尝试分布式测试。 在单工作器节点群集上并发运行多个作业。 然后将这种方法扩展为在包含多个节点的群集上并发运行多个作业。 若要在 Azure 中创建单节点 HDInsight 群集，请使用 `Custom(size, settings, apps)` 选项，并于在门户中预配新群集时，将值 1 用作“群集大小”部分中的工作器节点数** ******。
+有时，多节点群集上多个映射和化简组件的并行执行可能导致出错。 若要帮助隔离此问题，请尝试分布式测试。 在单工作器节点群集上并发运行多个作业。 然后将这种方法扩展为在包含多个节点的群集上并发运行多个作业。 若要在 Azure 中创建单节点 HDInsight 群集，请使用 `Custom(size, settings, apps)` 选项，并于在门户中预配新群集时，将值 1 用作“群集大小”部分中的工作器节点数 。
 
 ## <a name="quotas"></a>配额
 

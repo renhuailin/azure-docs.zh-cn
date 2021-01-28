@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: b3503dead21eeca32d82e896f889b99d11435642
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555944"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879725"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>注册并扫描 Azure SQL 数据库
 
@@ -39,7 +39,7 @@ Azure Purview 不支持扫描 Azure SQL 数据库中的[视图](/sql/relational-
 
 ### <a name="set-up-authentication-for-a-scan"></a>为扫描设置身份验证
 
-用于扫描 Azure SQL 数据库的身份验证。 如果需要创建新的身份验证，则需要[授予对 SQL 数据库的数据库访问权限](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)。 目前，Purview 支持三种身份验证方法：
+用于扫描 Azure SQL 数据库的身份验证。 如果需要创建新的身份验证，则需要[授予对 SQL 数据库的数据库访问权限](../azure-sql/database/logins-create-manage.md)。 目前，Purview 支持三种身份验证方法：
 
 - SQL 身份验证
 - Service Principal
@@ -88,8 +88,8 @@ Purview 可以通过几个步骤使用服务主体或自己的托管标识来扫
 
 服务主体或托管标识必须具有获取数据库、架构和表的元数据的权限。 它还必须能够查询表以进行采样分类。
 
-- [使用 Azure SQL 配置和管理 Azure AD 身份验证](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- 如果你使用的是托管标识，则你的 Purview 帐户具有其自己的托管标识，这基本上就是创建它时所用的 Purview 名称。 必须遵循关于[在 Azure SQL 数据库中创建服务主体用户](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database)的教程，在 Azure SQL 数据库中使用确切的 Purview 托管标识或你自己的服务主体创建 Azure AD 用户。 需要为该标识分配适当的权限（例如 `db_owner` 或 `db_datareader`）。 用于创建用户和授予权限的示例 SQL 语法：
+- [使用 Azure SQL 配置和管理 Azure AD 身份验证](../azure-sql/database/authentication-aad-configure.md)
+- 如果你使用的是托管标识，则你的 Purview 帐户具有其自己的托管标识，这基本上就是创建它时所用的 Purview 名称。 必须遵循关于[在 Azure SQL 数据库中创建服务主体用户](../azure-sql/database/authentication-aad-service-principal-tutorial.md#create-the-service-principal-user-in-azure-sql-database)的教程，在 Azure SQL 数据库中使用确切的 Purview 托管标识或你自己的服务主体创建 Azure AD 用户。 需要为该标识分配适当的权限（例如 `db_owner` 或 `db_datareader`）。 用于创建用户和授予权限的示例 SQL 语法：
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER

@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 中的 Spark 流式处理
 description: 如何在 HDInsight Spark 群集上使用 Apache Spark 流式处理应用程序。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a88d4893daa12ff2c35ee7cf8f4e5b7569f854f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde6c5b2bad12df8642dd3c9b4a49548f7bc9a6d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086188"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929521"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark 流式处理概述
 
@@ -31,7 +28,7 @@ DStream 可提供基于原始事件数据的抽象层。
 
 从单一事件开始，例如已连接调温器的温度读数。 当此事件到达 Spark 流式处理应用程序时，将以可靠的方式存储事件，在该事件中，会将其复制到多个节点上。 这种容错可确保任何单个节点的故障不会导致事件丢失。 Spark 核心使用在群集中跨多个节点分发数据的数据结构。 其中每个节点通常在内存中维护自己的数据，以获得最佳性能。 此数据结构称为弹性分布式数据集 (RDD)。
 
-每个 RDD 表示在用户定义的时间范围（称为*批处理间隔*）内收集的事件。 每个批处理间隔后，将生成新的 RDD，其中包含该间隔的所有数据。 将连续的 Rdd 集收集到 DStream 中。 例如，如果批处理间隔为 1 秒，则 DStream 将每秒发出一个批处理，其中包含一个 RDD（包含该秒期间引入的所有数据）。 处理 DStream 时，温度事件将出现在其中一个批处理中。 Spark 流式处理应用程序处理包含事件的批处理并最终作用于每个 RDD 中存储的数据。
+每个 RDD 表示在用户定义的时间范围（称为 *批处理间隔*）内收集的事件。 每个批处理间隔后，将生成新的 RDD，其中包含该间隔的所有数据。 将连续的 Rdd 集收集到 DStream 中。 例如，如果批处理间隔为 1 秒，则 DStream 将每秒发出一个批处理，其中包含一个 RDD（包含该秒期间引入的所有数据）。 处理 DStream 时，温度事件将出现在其中一个批处理中。 Spark 流式处理应用程序处理包含事件的批处理并最终作用于每个 RDD 中存储的数据。
 
 ![温度事件的示例 DStream](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 

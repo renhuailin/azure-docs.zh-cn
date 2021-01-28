@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: eddee58d70cf621bd6c82d54fe75434f4e596d9e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 682394329205d74859c1af0c0a68a37539da7872
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498160"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881022"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>教程：使用 AzCopy 将本地数据迁移到云存储空间
 
@@ -108,7 +108,7 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.wind
 
 * 请将 `<container-name>` 占位符替换为所创建容器的名称。
 
-若要详细了解 `sync` 命令，请参阅[同步文件](storage-use-azcopy-blobs.md#synchronize-files)。
+若要详细了解 `sync` 命令，请参阅[同步文件](./storage-use-azcopy-v10.md#transfer-data)。
 
 ## <a name="create-a-scheduled-task"></a>创建计划的任务
 
@@ -182,7 +182,7 @@ schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\script.bat
 
 * [AzCopy 入门](storage-use-azcopy-v10.md)
 
-* [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+* [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
 
 * [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
 

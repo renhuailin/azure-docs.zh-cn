@@ -1,19 +1,17 @@
 ---
 title: 在 Apache Kafka 中启用自动创建主题功能 - Azure HDInsight
 description: 了解如何将 Apache Kafka on HDInsight 配置为自动创建主题。 可以通过将设置为 true 来配置 Kafka，方法是 `auto.create.topics.enable` 通过 Ambari。 或在群集创建过程中通过 PowerShell 或资源管理器模板执行。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 829f91452725615af4d444426e25ffad62d6ab6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b416623d6637cfe8e2c1cd795dd62553f8c0aed4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087493"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933218"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>如何将 Apache Kafka on HDInsight 配置为自动创建主题
 
@@ -25,7 +23,7 @@ ms.locfileid: "86087493"
 
 1. 从 [Azure 门户](https://portal.azure.com)选择 Kafka 群集。
 
-1. 从**群集仪表板**中，选择“Ambari 主页”****。
+1. 从 **群集仪表板** 中，选择“Ambari 主页”。
 
     ![群集仪表板处于选中状态的门户的图像](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
@@ -45,11 +43,11 @@ ms.locfileid: "86087493"
 
     此设置筛选属性列表，并显示 `auto.create.topics.enable` 设置。
 
-1. 将 `auto.create.topics.enable` 的值更改为 `true`，然后选择“保存”****。 添加注释，然后选择**保存**。
+1. 将 `auto.create.topics.enable` 的值更改为 `true`，然后选择“保存”。 添加注释，然后选择 **保存**。
 
     ![auto.create.topics.enable 条目的图像](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-1. 依次选择 Kafka 服务、“重启”、“重启所有受影响的项”。____ ____ 出现提示时，选择“确认全部重启”____。
+1. 依次选择 Kafka 服务、“重启”、“重启所有受影响的项”。  出现提示时，选择“确认全部重启”。
 
     !["Apache Ambari 重新启动所有受影响的"](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 

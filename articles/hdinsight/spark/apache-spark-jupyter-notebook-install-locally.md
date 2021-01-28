@@ -1,19 +1,16 @@
 ---
 title: 在本地安装 Jupyter 并将其连接到 Azure HDInsight 中的 Spark
 description: 了解如何在计算机本地安装 Jupyter Notebook，并将其连接到 Apache Spark 群集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: de11e6f9fd9acc81f7be6d23bb1019f88f9e1322
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d5915316ee9d393b2481eeca6a5da7923b271d9f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657203"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930412"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在计算机上安装 Jupyter Notebook，并连接到 HDInsight 上的 Apache Spark
 
@@ -42,7 +39,7 @@ ms.locfileid: "97657203"
 
 ## <a name="install-spark-magic"></a>安装 Spark magic
 
-1. 输入命令 `pip install sparkmagic==0.13.1` ，以安装适用于 HDInsight 群集版本3.6 和4.0 的 Spark 幻数。 另请参阅 [sparkmagic 文档](https://github.com/jupyter-incubator/sparkmagic#installation)。
+1. 输入 `pip install sparkmagic==0.13.1` 命令以安装适用于 HDInsight 群集 3.6 版和 4.0 版的 Spark magic。 另请参阅 [sparkmagic 文档](https://github.com/jupyter-incubator/sparkmagic#installation)。
 
 1. 确保通过运行以下命令正确安装了 `ipywidgets`：
 

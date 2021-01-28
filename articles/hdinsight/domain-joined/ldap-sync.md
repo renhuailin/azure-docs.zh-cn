@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 中的 Ranger 和 Apache Ambari 中的 LDAP 同步
 description: 解决 Ranger 和 Ambari 中的 LDAP 同步问题并提供一般性指导。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 0779ac261fbb4ee91bf63021bb0cc685a371c2b2
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: fb9035b4d816c1af84b15e6865335aa1bdf86f5b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234063"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933418"
 ---
 # <a name="ldap-sync-in-ranger-and-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 中的 Ranger 和 Apache Ambari 中的 LDAP 同步
 
@@ -20,19 +17,19 @@ HDInsight 企业安全性套餐 (ESP) 群集使用 Ranger 进行授权。 Apache
 
 ## <a name="general-guidelines"></a>一般性指导
 
-* 始终部署具有一个或多个组的群集。
-* 如果要在群集中使用更多组，请检查是否有必要更新 Azure Active Directory (Azure AD) 中的组成员身份。
+* 始终使用一个或多个组部署群集。
+* 如果要在群集中使用更多组，请检查是否有必要在 Azure Active Directory (Azure AD) 中更新组成员身份。
 * 如果要更改群集组，可以通过使用 Ambari 更改同步筛选器。
-* Azure AD 中的所有组成员身份更改都反映在后续同步的群集中。 需要将更改同步到 Azure AD 域服务 (首先 Azure AD DS) ，然后再同步到群集。
-* HDInsight 群集使用 Samba/Winbind 来投影群集节点上的组成员身份。
-* 组成员将 (所有子组及其成员) 同步到 Ambari 和 Ranger。 
+* Azure AD 中的所有组成员身份更改都会在后续同步中反映到群集内。 更改需要先同步到 Azure AD 域服务 (Azure AD DS)，然后同步到群集。
+* HDInsight 群集使用 Samba/Winbind 将组成员身份投影到群集节点上。
+* 系统会以可传递的方式将组成员（包括所有子组及其成员）同步到 Ambari 和 Ranger。 
 
 ## <a name="users-are-synced-separately"></a>用户是分别同步的
 
  * Ambari 和 Ranger 不共享用户数据库，因为它们用于两种不同的用途。 
    * 如果用户需要使用 Ambari UI，则需要将用户同步到 Ambari。 
-   * 如果用户未同步到 Ambari，则 Ambari UI/API 将拒绝该用户，但系统的其他部分将工作 (这些部分受 Ranger 或资源管理器保护，而不受 Ambari) 保护。
-   * 若要在 Ranger 策略中包括用户或组，主体需要在 Ranger 中显式同步。
+   * 如果用户未同步到 Ambari，则 Ambari UI/API 会拒绝该用户，但系统的其他部分将正常运行（这些部分受 Ranger 或资源管理器保护，而不是受 Ambari 保护）。
+   * 若要在 Ranger 策略中包括用户或组，主体需要显式同步到 Ranger 中。
 
 ## <a name="ambari-user-sync-and-configuration"></a>Ambari 的用户同步和配置
 
@@ -40,20 +37,20 @@ HDInsight 企业安全性套餐 (ESP) 群集使用 Ranger 进行授权。 Apache
 
 日志应位于 `/var/log/ambari-server/ambari-server.log` 中。 有关详细信息，请参阅[配置 Ambari 日志记录级别](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html)。
 
-在 Data Lake 群集中，将使用创建用户后的挂钩为同步的用户创建主文件夹，并将这些用户设置为主文件夹的所有者。 如果用户未正确同步到 Ambari，则用户可能会面临正在运行的作业中的故障，因为主文件夹可能安装不正确。
+在 Data Lake 群集中，将使用创建用户后的挂钩为同步的用户创建主文件夹，并将这些用户设置为主文件夹的所有者。 如果用户未正确同步到 Ambari，则用户在运行作业时可能会遇到失败，因为主文件夹可能未正确设置。
 
-## <a name="ranger-user-sync-and-configuration"></a>Ranger 用户同步和配置
+## <a name="ranger-user-sync-and-configuration"></a>Ranger 的用户同步和配置
 
-Ranger 有一个内置同步引擎，每小时运行一次，同步用户。 它不与 Ambari 共享用户数据库。 HDInsight 会对搜索筛选器进行配置，以便对管理员用户、监视用户以及在创建群集期间指定的组的成员进行同步。 组成员将以传递方式进行同步：
+Ranger 有一个内置的同步引擎，该引擎每小时运行一次来同步用户。 它不与 Ambari 共享用户数据库。 HDInsight 会对搜索筛选器进行配置，以便对管理员用户、监视用户以及在创建群集期间指定的组的成员进行同步。 组成员将以传递方式进行同步：
 
 1. 禁用增量同步。
 1. 启用用户组同步映射。
 1. 将搜索筛选器指定为包括可传递的组成员。
-1. 同步用户的 sAMAccountName 属性和组的 name 属性。
+1. 同步用户的 sAMAccountName 特性和组的 name 特性。
 
-### <a name="group-or-incremental-sync"></a>组或增量同步
+### <a name="group-or-incremental-sync"></a>组同步或增量同步
 
-Ranger 支持组同步选项，但它可作为与用户筛选器的交集，而不能作为组成员身份和用户筛选器之间的联合。 Ranger 中的组同步筛选器的典型用例如下：组筛选器：(dn=clusteradmingroup)，用户筛选器：(city=seattle)。
+Ranger 支持组同步选项，但它是作为与用户筛选器的交集（而不是组成员身份与用户筛选器的并集）使用的。 Ranger 中的组同步筛选器的典型用例如下：组筛选器：(dn=clusteradmingroup)，用户筛选器：(city=seattle)。
 
 增量同步仅适用于已首次同步的用户。 增量同步不会同步在初始同步后添加到组的任何新用户。
 
@@ -67,13 +64,13 @@ Ranger 用户同步可以在任一头节点中进行。 日志位于 `/var/log/r
 
 1. 登录到 Ambari。
 1. 转到 Ranger 配置部分。
-1. 转到“高级 **usersync-log4j** ”部分。
-1. 将更改 `log4j.rootLogger` 为 " `DEBUG` 级别"。 更改后， (应类似于 `log4j.rootLogger = DEBUG,logFile,FilterLog`) 。
-1. 保存配置并重新启动 Ranger。
+1. 转到“高级 **usersync-log4j**”部分。
+1. 将 `log4j.rootLogger` 更改为 `DEBUG` 级别。 （更改后，它应类似于 `log4j.rootLogger = DEBUG,logFile,FilterLog`）。
+1. 保存配置并重启 Ranger。
 
 ## <a name="known-issues-with-ranger-user-sync"></a>Ranger 用户同步的已知问题
-* 如果组名称包含 unicode 字符，则 Ranger 同步将无法同步该对象。 如果用户属于具有国际字符的组，则 Ranger 同步部分组成员身份
-* 用户名 (sAMAccountName) 和组名 (名称) 长度为20个字符或更少。 如果组名称过长，则在计算权限时，用户将被视为不属于组。
+* 如果组名称包含 unicode 字符，则 Ranger 同步将无法同步该对象。 如果用户属于具有国际字符的组，则 Ranger 会同步部分组成员身份
+* 用户名 (sAMAccountName) 和组名 (name) 的长度必须小于或等于 20 个字符。 如果组名过长，则在计算权限时，用户将被视为不属于该组。
 
 ## <a name="next-steps"></a>后续步骤
 

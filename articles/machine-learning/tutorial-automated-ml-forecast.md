@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 31e9ff3fd07a7d305c88d28629f3252db5d857c8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 2653161b5828d89858234a9ca98fe432e0eacb5c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695425"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879354"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教程：使用自动化机器学习预测需求
 
@@ -115,7 +115,7 @@ ms.locfileid: "97695425"
 
             字段 | 说明 | 教程的值
             ----|---|---
-            虚拟机优先级 |选择试验应具有的优先级| 专用
+            虚拟机优先级&nbsp;&nbsp; |选择试验应具有的优先级| 专用
             虚拟机类型&nbsp;&nbsp;| 选择计算的虚拟机大小。|CPU（中央处理单元）
             虚拟机大小&nbsp;&nbsp;| 指定计算资源的虚拟机大小。 根据数据和试验类型提供了建议的大小列表。 |Standard_DS12_V2
         
@@ -158,7 +158,7 @@ ms.locfileid: "97695425"
     验证 | 选择交叉验证类型和测试数。|验证类型：<br>k-折交叉验证&nbsp;&nbsp; <br> <br> 验证次数：5
     并发| 每次迭代执行的并行迭代的最大数目| 最大并发迭代次数：&nbsp;&nbsp;6
     
-    选择“保存”。
+    选择“保存” 。
 
 ## <a name="run-experiment"></a>运行试验
 
@@ -197,7 +197,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 
 1. 按如下所示填充“部署模型”窗格：
 
-    字段| 值
+    字段| Value
     ----|----
     部署名称| bikeshare-deploy
     部署说明| 单车共享需求部署
@@ -240,7 +240,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 请参阅以下文章中的步骤来创建 Power BI 支持的架构，以方便使用新部署的 Web 服务：
 
 > [!div class="nextstepaction"]
-> [使用 Web 服务](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [使用 Web 服务](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context)
 
 + 详细了解[自动化机器学习](concept-automated-ml.md)。
 + 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md)一文。

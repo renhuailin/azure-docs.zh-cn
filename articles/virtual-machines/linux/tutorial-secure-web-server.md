@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4a790c51cd0caa2c81275e7eafdd663f2f2f0116
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e4e80990b32175842556059d005563a220d14688
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740200"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878454"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>教程：在 Azure 中使用 Key Vault 中存储的 TLS/SSL 证书保护 Linux 虚拟机上的 Web 服务器
 若要保护 Web 服务器，可以使用传输层安全 (TLS)（以前称为安全套接字层 (SSL)）证书来加密 Web 流量。 这些 TLS/SSL 证书可存储在 Azure Key Vault 中，并可安全部署到 Azure 中的 Linux 虚拟机 (VM)。 本教程介绍如何执行下列操作：
@@ -146,7 +146,7 @@ az vm open-port \
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已介绍如何使用 Azure Key Vault 中存储的 TLS/SSL 证书保护 NGINX Web 服务器。 你已了解如何：
+本教程已介绍如何使用 Azure Key Vault 中存储的 TLS/SSL 证书保护 NGINX Web 服务器。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure Key Vault
@@ -157,4 +157,4 @@ az vm open-port \
 请访问以下链接，查看预先生成的虚拟机脚本示例。
 
 > [!div class="nextstepaction"]
-> [Linux 虚拟机脚本示例](./cli-samples.md)
+> [Linux 虚拟机脚本示例](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

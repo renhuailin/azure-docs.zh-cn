@@ -3,17 +3,16 @@ title: Apache Oozie 工作流和企业安全性 - Azure HDInsight
 description: 使用 Azure HDInsight 企业安全性套餐保护 Apache Oozie 工作流。 了解如何定义 Oozie 工作流，并提交 Oozie 作业。
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 71432dc2dd09381d39ca646d45c7f2bdd96012c6
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 559779e3979ab2ada2191f55cfc06ceb2470bd7d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653429"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933481"
 ---
 # <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>在具有企业安全性套餐的 Azure HDInsight 群集中运行 Apache Oozie
 

@@ -1,19 +1,16 @@
 ---
 title: 在 Azure HDInsight 中使用 Apache Ambari 优化群集
 description: 使用 Apache Ambari web UI 配置和优化 Azure HDInsight 群集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
-ms.openlocfilehash: 52eb1b6c89ff02cb44fe731c2463ab02c284f26c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14268e58296554cedc9488e48b41719421797a57
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086443"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933279"
 ---
 # <a name="optimize-clusters-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Ambari 优化群集
 
@@ -39,11 +36,11 @@ NameNode Java 堆大小取决于许多因素，例如群集上的负载。 此�
 
 修改 NameNode Java 堆大小：
 
-1. 从“服务”边栏中选择“HDFS”，然后导航到“配置”选项卡。**** ****
+1. 从“服务”边栏中选择“HDFS”，然后导航到“配置”选项卡。 
 
     ![Apache Ambari HDFS 配置](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
 
-1. 找到“NameNode Java 堆大小”设置。**** 也可以使用“筛选器”文本框键入和查找特定的设置。**** 选择设置名称旁边的**笔**图标。
+1. 找到“NameNode Java 堆大小”设置。 也可以使用“筛选器”文本框键入和查找特定的设置。 选择设置名称旁边的 **笔** 图标。
 
     ![Apache Ambari NameNode Java 堆大小](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
 
@@ -55,7 +52,7 @@ NameNode Java 堆大小取决于许多因素，例如群集上的负载。 此�
 
     ![已编辑 NameNode Java 堆大小 2](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
-1. 单击配置屏幕顶部的绿色“保存”按钮保存所做的更改。****
+1. 单击配置屏幕顶部的绿色“保存”按钮保存所做的更改。
 
     !["Apache Ambari 保存配置"](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
 

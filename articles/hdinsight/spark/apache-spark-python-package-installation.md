@@ -1,19 +1,16 @@
 ---
 title: 用于 Azure HDInsight 上包含 Jupyter 的 Python 包的脚本操作
 description: 逐步说明如何使用脚本操作来配置 HDInsight Spark 群集可使用的 Jupyter 笔记本，以使用外部 python 包。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 21423f7200d25c9a5b3b63d2371e56977cd9d227
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 8fbbe137ece7aac2dd2196c5ebec435e118297ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821369"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929810"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
 
@@ -45,7 +42,7 @@ HDInsight Spark 群集是通过 Anaconda 安装创建的。 群集中有两个 P
 
 |设置 |Python 2.7|Python 3.5|
 |----|----|----|
-|路径|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
+|`Path`|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
 |Spark 版本|默认设置为 2.7|可以将配置更改为 3.5|
 |Livy 版本|默认设置为 2.7|可以将配置更改为 3.5|
 |Jupyter|PySpark 内核|PySpark3 内核|

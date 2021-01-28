@@ -3,16 +3,13 @@ title: Apache Spark thrift 的 RpcTimeoutException - Azure HDInsight
 description: 使用 Apache Spark thrift 服务器处理大型数据集时看到 502 错误
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: b4b5268bef71bd6b23df6049fd3ac8af973d4385
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c2975599272474fed9d61702fc1dbceb946c1190
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287759"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932706"
 ---
 # <a name="scenario-rpctimeoutexception-for-apache-spark-thrift-server-in-azure-hdinsight"></a>方案：Azure HDInsight 中的 Apache Spark thrift 服务器发生 RpcTimeoutException
 

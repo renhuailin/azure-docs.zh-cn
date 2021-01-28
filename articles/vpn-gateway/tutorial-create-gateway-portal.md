@@ -6,12 +6,12 @@ ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 933b71d75eacdca015a38524870f25a345e76d22
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 820482a268af038737557c517ccda086cd65d943
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746159"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880553"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>教程：使用 Azure 门户创建和管理 VPN 网关
 
@@ -103,7 +103,7 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 有了 VPN 网关后，就可以配置连接。 下面的文章将有助于你创建一些最常见的配置：
 
 > [!div class="nextstepaction"]
-> [站点到站点 VPN 连接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> [站点到站点 VPN 连接](./tutorial-site-to-site-portal.md)
 
 > [!div class="nextstepaction"]
 > [点到站点 VPN 连接](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
