@@ -11,12 +11,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 17b2d717ac6f244cb3ddddfdbc2f29581aa1f59f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d8b1c2a5384e479e39d169d368554f16c300a33e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95527303"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954540"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>将模型部署到 Azure 机器学习计算实例
 
@@ -38,11 +38,12 @@ ms.locfileid: "95527303"
 
 用于演示本地部署的示例笔记本包含在计算实例中。 使用以下步骤加载笔记本，并将模型部署为 VM 上的 Web 服务：
 
-1. 从 [Azure 机器学习工作室](https://ml.azure.com)选择 Azure 机器学习计算实例。
+1. 在 [Azure 机器学习 studio](https://ml.azure.com)中，选择 "笔记本"，然后在 "示例笔记本" 下选择 "how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local"。 将此笔记本克隆到您的用户文件夹。
 
-1. 打开 `samples-*` 子目录，然后打开 `how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb`。 打开后，运行笔记本。
+1. 查找步骤1中克隆的笔记本，选择或创建计算实例以运行笔记本。
 
     ![笔记本上运行的本地服务的屏幕截图](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
+
 
 1. 笔记本会显示其上有服务运行的 URL 和端口。 例如，`https://localhost:6789`。 还可以运行包含 `print('Local service port: {}'.format(local_service.port))` 的单元格以显示端口。
 
@@ -63,7 +64,7 @@ ms.locfileid: "95527303"
 > [!NOTE]
 > 对计算实例上的部署进行身份验证时，将使用 Azure Active Directory 进行身份验证。 对示例代码中 `interactive_auth.get_authentication_header()` 的调用将使用 AAD 对你进行身份验证，并返回一个标头，然后可使用该标头向计算实例上的服务进行身份验证。 有关详细信息，请参阅[为 Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md#interactive-authentication)。
 >
-> 对 Azure Kubernetes 服务或 Azure 容器实例上的部署进行身份验证时，将使用不同的身份验证方法。 有关的详细信息，请参阅为 [部署为 web 服务的 Azure 计算机型号配置身份验证](how-to-authenticate-web-service.md)。
+> 对 Azure Kubernetes 服务或 Azure 容器实例上的部署进行身份验证时，将使用不同的身份验证方法。 有关详细信息，请参阅[针对部署为 Web 服务的 Azure 机器学习模型配置身份验证](how-to-authenticate-web-service.md)。
 
 ```python
 import requests

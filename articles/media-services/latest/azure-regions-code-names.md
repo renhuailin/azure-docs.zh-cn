@@ -1,6 +1,6 @@
 ---
-title: Azure 媒体服务 v3 可用的云和区域
-description: 本文讨论用于区域的终结点和代码的 Url。
+title: Azure 媒体服务 v3 的云和区域
+description: 本文讨论了用于终结点的 URL 和区域的代码。
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
@@ -8,18 +8,18 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: c17eeda91af46c4159f7c4b1747416298f24c703
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 74f30ebb766ea34603c0a30455837c47222967c0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319644"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954321"
 ---
 # <a name="regional-code-names-and-endpoints"></a>区域代码名称和终结点
 
 ### <a name="region-code-name"></a>区域代码名
 
-当 **location** 参数用于命令或请求时，需要提供区域代码名称作为 **位置** 值。 若要获取你的帐户所在区域的代码名称，并且应将你的调用路由到，你可以在 Azure CLI 中运行以下行。
+在命令或请求中使用 location 参数时，需要提供区域代码名称作为 location 值。 若要获取你的帐户所在的并且应当将你的调用路由到的区域的代码名称，可以在 Azure CLI 中运行以下命令行。
 
 ```azurecli-interactive
 az account list-locations
@@ -46,7 +46,7 @@ az account list-locations
 
 ### <a name="global-azure"></a>全球 Azure
 
-| 服务 | 端点 |
+| 服务 | 终结点 |
 | ------- | -------- |
 | Azure Resource Manager |  `https://management.azure.com/` |
 | 身份验证 | `https://login.microsoftonline.com/` |
@@ -54,7 +54,7 @@ az account list-locations
 
 ### <a name="azure-government"></a>Azure Government
 
-| 服务 | 端点 |
+| 服务 | 终结点 |
 | ------- | -------- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
 | 身份验证 | `https://login.microsoftonline.us/` |
@@ -67,7 +67,7 @@ az account list-locations
 > [!NOTE]
 > Azure 德国终结点仅适用于德国的主权云。
 
-| 服务 | 端点 |
+| 服务 | 终结点 |
 | ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
 | 身份验证 | `https://login.microsoftonline.de/` |
@@ -75,7 +75,7 @@ az account list-locations
 
 ### <a name="azure-china-21vianet"></a>Azure 中国世纪互联
 
-| 服务 | 端点 |
+| 服务 | 终结点 |
 | ------- | -------- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | 身份验证 | `https://login.chinacloudapi.cn/` |

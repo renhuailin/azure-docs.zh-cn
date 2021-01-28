@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6971d67204beb39ff0afa6c68dbecf278d86b299
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600070"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954709"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 
@@ -151,7 +151,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
    ```
 
 
-1. 预测任务需要额外设置，有关更多详细信息，请参阅 [Autotrain a 时序预测模型一](how-to-auto-train-forecast.md) 文。 
+1. 预测任务需要额外的设置，请参阅[自动训练时序预测模型](how-to-auto-train-forecast.md)一文来了解更多详细信息。 
 
     ```python
     time_series_settings = {
@@ -203,15 +203,53 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 ### <a name="primary-metric"></a>主要指标
 `primary metric` 参数决定了将在模型训练期间用于优化的指标。 你可选择的可用指标取决于所选择的任务类型，下表显示了每种任务类型的有效主要指标。
 
+选择要优化的自动机器学习的主要指标取决于许多因素。 我们建议你在选择最能满足你的业务需求的指标时选择一个指标。 然后考虑指标是否适用于数据集配置文件 (的数据大小、范围、类分布等 ) 。
+
 如需了解上述指标的具体定义，请参阅[了解自动化机器学习结果集](how-to-understand-automated-ml.md)。
 
 |分类 | 回归 | 时序预测
 |--|--|--
-|accuracy| spearman_correlation | spearman_correlation
-|AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
-|average_precision_score_weighted | r2_score | r2_score
-|norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
-|precision_score_weighted |
+|`accuracy`| `spearman_correlation` | `spearman_correlation`
+|`AUC_weighted` | `normalized_root_mean_squared_error` | `normalized_root_mean_squared_error`
+|`average_precision_score_weighted` | `r2_score` | `r2_score`
+|`norm_macro_recall` | `normalized_mean_absolute_error` | `normalized_mean_absolute_error`
+|`precision_score_weighted` |
+
+### <a name="primary-metrics-for-classification-scenarios"></a>分类方案的主要指标 
+
+Post thresholded 指标（如 `accuracy` 、 `average_precision_score_weighted` 、 `norm_macro_recall` 和） `precision_score_weighted` 可能不会对非常小的数据集进行优化 (，因此) 的类不平衡，或预期的指标值非常接近0.0 或1.0。 在这些情况下， `AUC_weighted` 可能是主要指标的更好选择。 自动机器学习完成后，可以根据最适合您的业务需求的指标选择入选的模型。
+
+| 指标 | 示例用例 (s)  |
+| ------ | ------- |
+| `accuracy` | 图像分类，情绪分析，流失预测 |
+| `AUC_weighted` | 欺诈检测、图像分类、异常检测/垃圾邮件检测 |
+| `average_precision_score_weighted` | 情绪分析 |
+| `norm_macro_recall` | 改动预测 |
+| `precision_score_weighted` |  |
+
+### <a name="primary-metrics-for-regression-scenarios"></a>回归方案的主要指标
+
+`r2_score` `spearman_correlation` 当值预测的规模涵盖许多数量级时，和和等指标可以更好地表示模型的质量。 例如，对于薪金估算，其中许多人的薪水为 $ 20k 到 $ 100k，但在 $ 100M 范围内的某些薪金中，规模会变得非常高。 
+
+`normalized_mean_absolute_error``normalized_root_mean_squared_error`在这种情况下，这种情况下，将使用 $ 30000 薪金作为工作人员的 $ 20k 预测错误视为具有 $ 20M 的工作人员。 在现实情况下，只预测 $ 20M 薪金中的 $ 20k 是非常接近 (小0.1% 相对差异) ，而从 $ 30000 关闭 $ 20k 不会接近 (67% 相对差异) 。 `normalized_mean_absolute_error``normalized_root_mean_squared_error`当要预测的值采用类似的刻度时，和非常有用。
+
+| 指标 | 示例用例 (s)  |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | 价格预测 (房子/产品/tip) ，查看分数预测 |
+| `r2_score` | 航空延迟，薪金估算，Bug 解决时间 |
+| `normalized_mean_absolute_error` |  |
+
+### <a name="primary-metrics-for-time-series-forecasting-scenarios"></a>时序预测方案的主要指标
+
+请参阅上面的回归注释。
+
+| 指标 | 示例用例 (s)  |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | 价格预测 (预测) ，库存优化，需求预测 |
+| `r2_score` | 价格预测 (预测) ，库存优化，需求预测 |
+| `normalized_mean_absolute_error` | |
 
 ### <a name="data-featurization"></a>数据特征化
 
@@ -462,22 +500,22 @@ run = experiment.submit(automl_config, show_output=True)
 
 * **`import numpy` 在 Windows 中失败**：在某些 Windows 环境中，最新的 Python 3.6.8 版本加载 numpy 时会出现错误。 如果出现此问题，请尝试使用 Python 3.6.7 版本。
 
-* **`import numpy` 失败**：在自动化 ML conda 环境中检查 TensorFlow 版本。 支持的版本为 <1.13 的版本。 如果版本 >为1.13，则从环境中卸载 TensorFlow。 可以按如下所示检查 TensorFlow 和 uninstall 的版本：
+* **`import numpy` 失败**：在自动化 ML conda 环境中检查 TensorFlow 版本。 支持的版本为 <1.13 的版本。 如果版本不低于 1.13，请从环境中卸载 TensorFlow。 可以按下面的方式检查 TensorFlow 的版本并卸载：
   1. 启动命令 shell，激活安装了自动化 ML 包的 conda 环境。
   2. 输入 `pip freeze` 并查找 `tensorflow`，如果找到，则列出的版本应 <1.13
   3. 如果列出的版本不受支持，请在命令行界面中使用 `pip uninstall tensorflow`，并输入 y 进行确认。
   
- * **运行失败， `jwt.exceptions.DecodeError`** 出现错误：准确的错误消息： `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` 。
+ * 运行失败并出现 `jwt.exceptions.DecodeError`：确切的错误消息：`jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`。
 
-    对于版本 <= SDK 的1.17.0，安装可能会导致不受支持的 PyJWT 版本。 检查自动 ml conda 环境中的 PyJWT 版本。 支持的版本 < 2.0.0。 您可以按如下所示检查 PyJWT 的版本：
+    对于版本不高于 1.17.0 的 SDK，安装可能会导致 PyJWT 的版本不受支持。 在自动化 ML conda 环境中检查 PyJWT 版本。 支持的版本为低于 2.0.0 的版本。 可以按下面的方式检查 PyJWT 的版本：
     1. 启动命令 shell，激活安装了自动化 ML 包的 conda 环境。
-    2. 输入 `pip freeze` 并查找 `PyJWT` ，如果找到，则列出的版本应 < 2.0。0
+    2. 输入 `pip freeze` 并查找 `PyJWT`，如果找到，则列出的版本应低于 2.0.0
 
     如果列出的版本不是受支持的版本：
-    1. 请考虑升级到最新版本的 AutoML SDK： `pip install -U azureml-sdk[automl]` 。
+    1. 请考虑升级到 AutoML SDK 的最新版本：`pip install -U azureml-sdk[automl]`。
     2. 如果这不可行，请从环境中卸载 PyJWT，并安装正确的版本，如下所示：
-        - `pip uninstall PyJWT` 在命令行界面中，输入 `y` 进行确认。
-        - 使用安装 `pip install 'PyJWT<2.0.0'` 。
+        - 在命令行界面中输入 `pip uninstall PyJWT`，然后输入 `y` 进行确认。
+        - 使用 `pip install 'PyJWT<2.0.0'` 进行安装。
 
 ## <a name="next-steps"></a>后续步骤
 

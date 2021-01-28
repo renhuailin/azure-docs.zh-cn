@@ -1,9 +1,24 @@
 ---
-标题： Azure 媒体服务 v3 中的实时事件和实时输出概念： Azure 媒体服务说明：本主题提供 Azure 媒体服务 v3 中的实时事件和实时输出的概述。
-服务：媒体服务 documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
-
-ms. service： media services ms. 工作负荷： media ms.tgt_pltfrm： na ms.devlang： ne ms。主题：概念性 ms. 日期：10/23/2020 毫秒。作者： inhenkel
-
+title: 实时事件和实时输出概念
+description: 本主题概述 Azure 媒体服务 v3 中的直播活动和实时输出。
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: ne
+ms.topic: conceptual
+ms.date: 10/23/2020
+ms.author: inhenkel
+ms.openlocfilehash: 0b223fcedfdead991f7ce374f7f7814749388f90
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955947"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒体服务中的实时事件和实时输出
 

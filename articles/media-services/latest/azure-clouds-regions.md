@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务 v3 云和地区可用性
+title: Azure 媒体服务 v3 区域可用性
 description: 本文讨论 Azure 媒体服务 v3 可用的 Azure 云和区域。
 services: media-services
 author: IngridAtMicrosoft
@@ -8,22 +8,22 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 20c025cfabf6ed3cedd838f8be964bec06ad595e
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 91df515703b4b6b368b07482fad1aa8b781281f6
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242492"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954440"
 ---
-# <a name="azure-media-services-v3-clouds-and-regions-availability"></a>Azure 媒体服务 v3 云和地区可用性
+# <a name="azure-media-services-v3-clouds-and-regions-availability"></a>Azure 媒体服务 v3 云和区域可用性
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Azure 媒体服务 v3 通过 Azure 资源管理器提供。 但是，并非所有媒体服务功能都可在所有 Azure 云中使用。 本文档概述了主要媒体服务 v3 组件的可用性。 下表显示了每个区域中可用的媒体服务功能。  
+Azure 媒体服务 v3 可通过 Azure 资源管理器使用。 但是，并非所有媒体服务功能都可在所有 Azure 云中使用。 本文档概述了主要媒体服务 v3 组件的可用性。 下表显示了每个区域中可用的媒体服务功能。  
 
 [!INCLUDE [reference-feature-availability-us](./includes/regions-availability-table-key.md)]
 
-使用右侧的导航查找感兴趣的区域。
+使用右侧的导航栏查找感兴趣的区域。
 
 <!-- US and US Gov -->
 [!INCLUDE [reference-feature-availability-us](./includes/reference-feature-availability-us.md)]

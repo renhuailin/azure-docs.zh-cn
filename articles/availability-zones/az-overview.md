@@ -1,18 +1,19 @@
 ---
 title: Azure 中的区域和可用性区域
 description: 了解 Azure 中的区域和可用性区域，以满足你的技术和法规要求。
-author: cynthn
+author: prsandhu
 ms.service: azure
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2021
-ms.author: cynthn
+ms.author: prsandhu
+ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 0b67f113fb8ab3835419a75697e60a732d4ee390
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dae5319e6c8b87d6a9eef98875ad7e8da623e65c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896047"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955794"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的区域和可用性区域
 
@@ -110,7 +111,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 > | 云服务：保留 IP           | Azure 认知服务：文本分析          | Azure SignalR 服务                                |
 > | 磁盘存储                          | Azure 认知服务：转换器              | Azure 春季云服务                           |
 > | 事件中心                            | Azure 数据资源管理器                               | Azure 时序见解                           |
-> | 密钥保管库                             | Azure Data Share                                  | Azure VMware 解决方案                                |
+> | Key Vault                             | Azure Data Share                                  | Azure VMware 解决方案                                |
 > | 负载均衡器                         | Azure Database for MySQL                          | Azure VMware Solution by CloudSimple                 |
 > | 服务总线                           | Azure Database for PostgreSQL                     | 云服务： H 系列                             |
 > | Service Fabric                        | Azure Databricks                                  | 数据目录                                         |
@@ -133,7 +134,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 > |                                       | 云服务： M 系列                          | 虚拟机： LSv2-Series                        |
 > |                                       | 容器实例                               | 虚拟机： Mv2-Series                         |
 > |                                       | 容器注册表                                | 虚拟机： NCv3-Series                        |
-> |                                       | Data Factory                                      | 虚拟机： NDv2-Series                        |
+> |                                       | 数据工厂                                      | 虚拟机： NDv2-Series                        |
 > |                                       | 事件网格                                        | 虚拟机： NVv3-Series                        |
 > |                                       | HDInsight                                         | 虚拟机： NVv4-Series                        |> 
 > |                                       | 逻辑应用                                        | 虚拟机： Azure SAP HANA 大型实例  |

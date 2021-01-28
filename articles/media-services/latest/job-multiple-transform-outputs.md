@@ -1,5 +1,5 @@
 ---
-title: 创建有多个转换输出的 Azure 媒体服务作业
+title: 创建具有多个转换输出的作业
 description: 本主题演示如何创建有多个转换输出的 Azure 媒体服务作业。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e5fe12b02503aff625a1cc2c39a71abcdf3dab0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0396415593f2d0f41abc55433bb8f19c4913ac26
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296770"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954134"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>创建有多个转换输出的作业
 

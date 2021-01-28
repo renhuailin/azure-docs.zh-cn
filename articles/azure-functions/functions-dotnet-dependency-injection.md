@@ -4,15 +4,15 @@ description: 了解如何在 .NET 函数中使用依赖项注入来注册和使�
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 08/15/2020
+ms.date: 01/27/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 70ec9248db002823e969fa5f4fba8bf1074a9af7
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706926"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955082"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -30,7 +30,7 @@ Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是一种在�
 
 - [Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) 包版本 1.0.28 或更高版本
 
-- [DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) (当前仅支持版本4.x 和更早版本) 
+- [Microsoft.Extensions.DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/)（当前仅支持 3.x 版及更低版本）
 
 ## <a name="register-services"></a>注册服务
 
@@ -120,8 +120,8 @@ namespace MyNamespace
 
 Azure Functions 应用提供与 [ASP.NET 依赖项注入](/aspnet/core/fundamentals/dependency-injection#service-lifetimes)相同的服务生存期。 就 Functions 应用来说，不同的服务生存期表现如下：
 
-- **暂时性**：在每个服务解析时创建暂时性服务。
-- **限定范围**：限定范围的服务的生存期与函数执行生存期相匹配。 作用域内服务在每次函数执行时创建一次。 在执行期间对该服务的后续请求会重复使用现有服务实例。
+- **暂时性**：每次解析此服务时，都会创建暂时性服务。
+- **限定范围**：限定范围的服务的生存期与函数执行生存期相匹配。 每次执行函数后，都会创建设有范围的服务。 在执行期间对该服务的后续请求会重复使用现有服务实例。
 - **单一实例**：单一实例服务生存期与主机生存期相匹配，并且在该实例上的各个函数执行之间重用。 对于连接和客户端（例如 `DocumentClient` 或 `HttpClient` 实例），建议使用单一实例生存期服务。
 
 在 GitHub 上查看或下载[不同服务生存期的示例](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes)。
@@ -184,7 +184,7 @@ namespace MyNamespace
 }
 ```
 
-有关日志级别的详细信息，请参阅 [配置日志级别](configure-monitoring.md#configure-log-levels)。
+若要详细了解日志级别，请参阅[配置日志级别](configure-monitoring.md#configure-log-levels)。
 
 ## <a name="function-app-provided-services"></a>函数应用提供的服务
 
@@ -256,6 +256,24 @@ public class HttpTrigger
 ```
 
 有关使用选项的更多详细信息，请参阅 [ASP.NET Core 中的选项模式](/aspnet/core/fundamentals/configuration/options)。
+
+## <a name="using-aspnet-core-user-secrets"></a>使用 ASP.NET Core 用户机密
+
+在本地开发时，ASP.NET Core 提供了一个 [机密管理器工具](/aspnet/core/security/app-secrets#secret-manager) ，可用于将机密信息存储在项目根目录之外。 这使得机密意外提交到源代码管理的可能性更小。 Azure Functions Core Tools (版本3.0.3233 或更高版本) 会自动读取 ASP.NET Core 机密管理器创建的机密。
+
+若要将 .NET Azure Functions 项目配置为使用用户机密，请在项目根目录中运行以下命令。
+
+```bash
+dotnet user-secrets init
+```
+
+然后，使用 `dotnet user-secrets set` 命令创建或更新密码。
+
+```bash
+dotnet user-secrets set MySecret "my secret value"
+```
+
+若要在 function app 代码中访问用户机密值，请使用 `IConfiguration` 或 `IOptions` 。
 
 ## <a name="customizing-configuration-sources"></a>自定义配置源
 

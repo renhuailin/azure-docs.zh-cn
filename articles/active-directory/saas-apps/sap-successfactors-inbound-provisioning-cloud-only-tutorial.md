@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 6a73ecf18a4bd89567dc603758d9ff8501267a1f
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: a39f7701d0244eff7f914908a6708dfc14873b35
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570026"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954848"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>教程：配置 SAP SuccessFactors 到 Azure AD 的用户预配
 本教程旨在说明需要执行哪些步骤才能将工作人员数据从 SuccessFactors Employee Central 预配到 Azure Active Directory，以及选择性地将电子邮件地址写回到 SuccessFactors。 
@@ -223,9 +223,8 @@ Azure AD 用户预配服务支持的 SuccessFactors 用户预配工作流可将�
 
 1. 在“属性映射”部分中，可以定义将单个 SuccessFactors 属性映射到 Active Directory 属性的方式。
 
-  >[!NOTE]
-  >有关此应用程序支持的 SuccessFactors 属性的完整列表，请参阅 [SuccessFactors 属性参考](../app-provisioning/sap-successfactors-attribute-reference.md)
-
+     >[!NOTE]
+     >有关此应用程序支持的 SuccessFactors 属性的完整列表，请参阅 [SuccessFactors 属性参考](../app-provisioning/sap-successfactors-attribute-reference.md)
 
 1. 单击现有的属性映射可将其更新，单击屏幕底部的“添加新映射”可添加新的映射。 单个属性映射支持以下属性：
 

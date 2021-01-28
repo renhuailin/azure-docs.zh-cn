@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析发行说明 - Azure
 description: 本主题提供 IoT Edge 上的实时视频分析版本的发行说明、改进、bug 修复和已知问题。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 328fe97c4e03f039a1224d13ce6712ccff06b3b7
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f130b93b8d799c371a640f2b29c22c0d77834cba
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629770"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954389"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 上的实时视频分析发行说明
 
@@ -35,7 +35,7 @@ mcr.microsoft.com/media/live-video-analytics:2.0.1
 > 在快速入门和教程中，部署清单使用2个 (实时视频分析： 2) 的标记。 因此，只需重新部署此类清单，即可在“边缘”>“设备”上更新该模块。
 ### <a name="bug-fixes"></a>Bug 修复 
 
-* `ActivationSignalOffset` `MinimumActivationTime` `MaximumActivationTime` 未正确地将字段和信号入口处理器设置为所需属性。 它们现在是 **可选** 属性。
+* `ActivationSignalOffset` `MinimumActivationTime` `MaximumActivationTime` 信号入口处理器中的字段、和已错误设置为必需属性。 它们现在是 **可选** 属性。
 * 修复了一个使用 bug，该 bug 会导致 IoT Edge 模块上的实时视频分析在特定区域中部署时崩溃。
 
 <hr width=100%>
@@ -48,15 +48,15 @@ mcr.microsoft.com/media/live-video-analytics:2.0.1
 ```
 ### <a name="module-updates"></a>模块更新
 * 添加了对每个图形拓扑使用多个 HTTP 扩展处理器和 gRPC 扩展处理器的支持。
-* 添加了对接收器节点的磁盘空间管理的支持。
+* 添加了对 [接收器节点的磁盘空间管理](upgrading-lva-module.md#disk-space-management-with-sink-nodes)的支持。
 * `MediaGraphGrpcExtension` 节点现在支持 [extensionConfiguration](grpc-extension-protocol.md) 属性，允许在单个 gRPC 服务器中使用多个 AI 模型。
-* 添加了对以 [Prometheus 格式](https://prometheus.io/docs/practices/naming/)收集实时视频分析模块度量值的支持。 详细了解如何 [在 Azure Monitor 中收集指标和视图。](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
+* 添加了对以 [Prometheus 格式](https://prometheus.io/docs/practices/naming/)收集实时视频分析模块指标的支持。 详细了解如何[收集指标并在 Azure Monitor 中查看。](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
 * 添加了筛选输出选择的功能。 既可以将 **音频** 和 **视频、视频或****音频和视频** 传递 `outputSelectors` 到任何图形节点的帮助。 
 * 帧速率筛选器处理器已弃用。  
     * 帧速率管理现在在图形扩展处理器节点本身中可用。
 
 ### <a name="visual-studio-code-extension"></a>Visual Studio Code 扩展
-* [IoT Edge 上发布的实时视频分析](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge)-一种 Visual Studio Code 扩展，可帮助你管理 LVA media graph。 此扩展适用于 **LVA 2.0 模块** ，提供了编辑和管理媒体图形的功能，并提供了一个精美易用的图形界面。
+* [IoT Edge 上发布的实时视频分析](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge)-一种 Visual Studio Code 扩展，可帮助你管理 LVA media graph。 此扩展适用于 **LVA 2.0 模块** ，提供使用精美的、易于使用的图形界面编辑和管理媒体图形。
 ## <a name="september-22-2020"></a>2020 年 9 月 22 日
 
 此模块 2020 年 9 月刷新的此版本标记为：
@@ -93,15 +93,15 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ### <a name="module-updates"></a>模块更新
 
-* 现在，你可以使用 gRPC 框架在 IoT Edge 的实时视频分析和自定义扩展之间获得高数据内容传输性能。 请参阅[此内容](analyze-live-video-use-your-grpc-model-quickstart.md)以开始使用。
+* 现在，你可以使用 gRPC 框架在 IoT Edge 的实时视频分析和自定义扩展之间获得高数据内容传输性能。 请参阅 [快速入门](analyze-live-video-use-your-grpc-model-quickstart.md) 。
 * 实时视频分析的区域部署更广泛，且只更新了云服务。  
-* 实时视频分析现已在全球25个其他区域推出。 下面是所有可用区域的[列表](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)。  
+* 实时视频分析现已在全球25多个区域推出。 下面是所有可用区域的[列表](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)。  
 * 快速入门的[设置](https://aka.ms/lva-edge/setup-resources-for-samples)已更新，并支持新区域。
     * 对于已设置资源的用户，不需要进行任何操作
 
 ### <a name="bug-fixes"></a>Bug 修复 
 
-* 在设置脚本中不再使用已弃用的 Azure 扩展
+* 在安装脚本中删除不推荐使用的 Azure 扩展
 
 <hr width=100%>
 
@@ -118,7 +118,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.2
 
 ### <a name="module-updates"></a>模块更新
 
-* 现在，你可以创建具有资产接收器节点以及信号门处理器节点下游的文件接收器节点的图形拓扑。 请参阅[此内容](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files)获取示例。
+* 你现在可以创建具有 "资产接收器" 节点和 "信号入口处理器" 节点下游的 "文件接收器" 节点的图形拓扑。 有关示例，请参阅 [拓扑](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files) 。
 
 ### <a name="bug-fixes"></a>Bug 修复
 

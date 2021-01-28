@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 262177d8cde3a5eee2721f2af8a0511c205da9b9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d36086052f4e5719fd17989e3326a4b5728ee3ca
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890523"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954287"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark 实用工具简介
 
@@ -39,10 +39,6 @@ Synapse 管道使用工作区标识 (MSI) 来访问存储帐户。 若要在管�
 
 <code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
 
-<!-- ### Configure access to Azure Blob Storage  -->
-
-:::zone pivot = "programming-language-python"
-
 ### <a name="configure-access-to-azure-blob-storage"></a>配置对 Azure Blob 存储的访问权限  
 
 Synapse 利用 **共享访问签名 (SAS)** 访问 Azure Blob 存储。 若要避免在代码中公开 SAS 密钥，我们建议在 Synapse 工作区中创建一个新的链接服务，并将其连接到要访问的 Azure Blob 存储帐户。
@@ -62,6 +58,8 @@ Synapse 利用 **共享访问签名 (SAS)** 访问 Azure Blob 存储。 若要�
 <code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
 
 下面是一个代码示例：
+
+:::zone pivot = "programming-language-python"
 
 ```python
 from pyspark.sql import SparkSession
@@ -86,26 +84,6 @@ print('Remote blob path: ' + wasb_path)
 
 :::zone pivot = "programming-language-scala"
 
-### <a name="configure-access-to-azure-blob-storage"></a>配置对 Azure Blob 存储的访问权限  
-
-Synapse 利用 **共享访问签名 (SAS)** 访问 Azure Blob 存储。 若要避免在代码中公开 SAS 密钥，我们建议在 Synapse 工作区中创建一个新的链接服务，并将其连接到要访问的 Azure Blob 存储帐户。
-
-按照以下步骤为 Azure Blob 存储帐户添加新的链接服务：
-
-1. 打开 [Azure Synapse Studio](https://web.azuresynapse.net/)。
-2. 从左侧面板中选择 "**管理**"，并选择 "**外部连接**" 下的 "**链接服务**"。
-3. 在右侧的 "**新建链接服务**" 面板中搜索 " **Azure Blob 存储**"。
-4. 选择“继续”。 
-5. 选择要访问的 Azure Blob 存储帐户，并配置链接服务名称。 建议使用 **身份验证方法** 的 **帐户密钥**。
-6. 选择 " **测试连接** " 以验证设置是否正确。
-7. 依次选择 " **创建** " 和 " **全部发布** " 以保存所做的更改。 
-
-可以通过以下 URL 通过 Synapse Spark 访问 Azure Blob 存储上的数据：
-
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
-
-下面是一个代码示例：
-
 ```scala
 val blob_account_name = "" // replace with your blob name
 val blob_container_name = "" //replace with your container name
@@ -123,27 +101,6 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 ::: zone-end
 
 :::zone pivot = "programming-language-csharp"
-
-
-### <a name="configure-access-to-azure-blob-storage"></a>配置对 Azure Blob 存储的访问权限  
-
-Synapse 利用 **共享访问签名 (SAS)** 访问 Azure Blob 存储。 若要避免在代码中公开 SAS 密钥，我们建议在 Synapse 工作区中创建一个新的链接服务，并将其连接到要访问的 Azure Blob 存储帐户。
-
-按照以下步骤为 Azure Blob 存储帐户添加新的链接服务：
-
-1. 打开 [Azure Synapse Studio](https://web.azuresynapse.net/)。
-2. 从左侧面板中选择 "**管理**"，并选择 "**外部连接**" 下的 "**链接服务**"。
-3. 在右侧的 "**新建链接服务**" 面板中搜索 " **Azure Blob 存储**"。
-4. 选择“继续”。 
-5. 选择要访问的 Azure Blob 存储帐户，并配置链接服务名称。 建议使用 **身份验证方法** 的 **帐户密钥**。
-6. 选择 " **测试连接** " 以验证设置是否正确。
-7. 依次选择 " **创建** " 和 " **全部发布** " 以保存所做的更改。 
-
-可以通过以下 URL 通过 Synapse Spark 访问 Azure Blob 存储上的数据：
-
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
-
-下面是一个代码示例：
 
 ```csharp
 var blob_account_name = "";  // replace with your blob name

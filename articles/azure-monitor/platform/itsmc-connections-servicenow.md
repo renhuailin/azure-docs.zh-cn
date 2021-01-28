@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 7d1b4b3542f6914d413a5e29e57baa15e7a53346
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3cc38fad6f26bf6f382b4a275638c450c8333a04
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012778"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955726"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>连接 ServiceNow 与 IT 服务管理连接器
 
 本文介绍如何在 Log Analytics 中配置 ServiceNow 实例与 IT 服务管理连接器 (ITSMC) 之间的连接，以便你可以集中管理 IT 服务管理 (ITSM) 工作项。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 确保满足以下连接先决条件。
 
 ### <a name="itsmc-installation"></a>ITSMC 安装
@@ -118,11 +118,11 @@ ServiceNow 管理员必须为其 ServiceNow 实例生成客户端 ID 和客户�
 
 4. 提供下表中所述的信息，然后选择 **"确定"**。
 
-   | **字段** | **说明** |
+   | 字段 | **说明** |
    | --- | --- |
    | **连接名称**   | 输入要使用 ITSMC 连接的 ServiceNow 实例的名称。 稍后在配置 ITSM 工作项和查看详细分析时 Log Analytics 使用此名称。 |
    | **合作伙伴类型**   | 选择“ServiceNow”。 |
-   | **服务器 Url**   | 输入要连接到 ITSMC 的 ServiceNow 实例的 URL。 URL 应指向支持的 SaaS 版本，其后缀为 *servicenow.com*。|
+   | **服务器 Url**   | 输入要连接到 ITSMC 的 ServiceNow 实例的 URL。 URL 应指向支持的 SaaS 版本，并使用 *servicenow.com* (例如 https://XXXXX.service-now.com/) 。|
    | **用户名**   | 输入在 ServiceNow 应用中创建的、用于支持连接到 ITSMC 的集成用户名。|
    | **密码**   | 输入与此用户名关联的密码。 **注意**：用户名和密码仅用于生成身份验证令牌。 它们不存储在 ITSMC 服务中的任何位置。  |
    | **客户端 Id**   | 输入要用于之前生成的 OAuth2 authentication 的客户端 ID。 有关生成客户端 ID 和机密的详细信息，请参阅 [设置 OAuth](https://wiki.servicenow.com/index.php?title=OAuth_Setup)。 |

@@ -6,26 +6,26 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 1d4d0c591640a3528b7aeec5254f2a634ee008aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c4fbef807d31e03a79f80db7fd29580074fb8bd
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743669"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955418"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>管理 Azure Stack Edge Pro GPU 上的计算
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文介绍如何在 Azure Stack Edge Pro 上管理计算。 可以通过 Azure 门户或本地 Web UI 管理计算。 使用 Azure 门户可以管理模块、触发器和计算配置，使用本地 Web UI 可以管理计算设置。
+本文介绍如何通过 Azure Stack Edge Pro GPU 设备上的 IoT Edge 服务管理计算。 可以通过 Azure 门户或本地 Web UI 管理计算。 使用 Azure 门户管理模块、触发器和 IoT Edge 配置，并使用本地 web UI 管理计算网络设置。
 
 在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 管理触发器
-> * 管理计算配置
+> * 管理 IoT Edge 配置
 
 
 ## <a name="manage-triggers"></a>管理触发器
@@ -40,15 +40,15 @@ ms.locfileid: "91743669"
 
 在 Azure 门户中执行以下步骤可以创建触发器。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后切换到 **edge 计算 > 触发器**。 在命令栏上选择“+ 添加触发器”****。
+1. 在 Azure 门户中，请切换到 "Azure Stack" 边缘资源，然后 " **IoT Edge**"。 中转到 **触发器** ，然后在命令栏上选择 " **+ 添加触发器** "。
 
     ![选择“添加触发器”](media/azure-stack-edge-j-series-manage-compute/add-trigger-1m.png)
 
-2. 在“添加触发器”边栏选项卡中，提供触发器的唯一名称。****
+2. 在“添加触发器”边栏选项卡中，提供触发器的唯一名称。
     
     <!--Trigger names can only contain numbers, lowercase letters, and hyphens. The share name must be between 3 and 63 characters long and begin with a letter or a number. Each hyphen must be preceded and followed by a non-hyphen character.-->
 
-3. 选择触发器的**类型**。 如果该触发器用于响应文件事件，请选择“文件”。**** 如果希望该触发器在定义的时间启动并按指定的重复间隔运行，请选择“计划”。**** 根据所做的选择，屏幕上会显示一组不同的选项。
+3. 选择触发器的 **类型**。 如果该触发器用于响应文件事件，请选择“文件”。 如果希望该触发器在定义的时间启动并按指定的重复间隔运行，请选择“计划”。 根据所做的选择，屏幕上会显示一组不同的选项。
 
     - **文件触发器** - 从下拉列表中选择一个装载的共享。 当此共享中激发文件事件时，该触发器会调用某个 Azure 函数。
 
@@ -60,7 +60,7 @@ ms.locfileid: "91743669"
 
         ![添加 NFS 共享](media/azure-stack-edge-j-series-manage-compute/add-scheduled-trigger.png)
 
-4. 选择“添加”**** 以创建该触发器。 此时会显示一条通知，指出正在创建触发器。 创建触发器后，边栏选项卡会更新以反映新的触发器。
+4. 选择“添加”以创建该触发器。 此时会显示一条通知，指出正在创建触发器。 创建触发器后，边栏选项卡会更新以反映新的触发器。
  
     ![更新的触发器列表](media/azure-stack-edge-j-series-manage-compute/add-trigger-2.png)
 
@@ -82,32 +82,32 @@ ms.locfileid: "91743669"
 
 触发器列表将会更新以反映删除后的结果。
 
-## <a name="manage-compute-configuration"></a>管理计算配置
+## <a name="manage-iot-edge-configuration"></a>管理 IoT Edge 配置
 
 使用 Azure 门户查看计算配置、删除现有的计算配置，或刷新计算配置以同步 IoT 设备的访问密钥，并为 Azure Stack Edge Pro IoT Edge 设备。
 
-### <a name="view-compute-configuration"></a>查看计算配置
+### <a name="view-iot-edge-configuration"></a>查看 IoT Edge 配置
 
-在 Azure 门户中执行以下步骤可以查看设备的计算配置。
+在 Azure 门户中执行以下步骤，查看设备的 IoT Edge 配置。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后中转到 " **边缘计算 > 模块**"。 在命令栏上选择“查看计算”。****
+1. 在 Azure 门户中，请切换到 "Azure Stack" 边缘资源，然后 " **IoT Edge**"。 在设备上启用 IoT Edge 服务后，"概述" 页将指示 IoT Edge 服务运行正常。
 
     ![选择“查看计算”](media/azure-stack-edge-j-series-manage-compute/view-compute-1.png)
 
-2. 记下设备上的计算配置。 配置计算时，已创建一个 IoT 中心资源。 在该 IoT 中心资源下，已配置 IoT 设备和 IoT Edge 设备。 仅支持在 IoT Edge 设备上运行 Linux 模块。
+2. 请参阅 " **属性** " 以查看设备上的 IoT Edge 配置。 配置计算时，已创建一个 IoT 中心资源。 在该 IoT 中心资源下，已配置 IoT 设备和 IoT Edge 设备。 仅支持在 IoT Edge 设备上运行 Linux 模块。
 
     ![查看配置](media/azure-stack-edge-j-series-manage-compute/view-compute-2.png)
 
 
-### <a name="remove-compute-configuration"></a>删除计算配置
+### <a name="remove-iot-edge-service"></a>删除 IoT Edge 服务
 
-在 Azure 门户中执行以下步骤可以删除设备的现有 Edge 计算配置。
+在 Azure 门户中执行以下步骤以删除设备的现有 IoT Edge 配置。
 
-1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到 " **边缘计算" > "入门**"。 在命令栏上选择“删除计算”。****
+1. 在 Azure 门户中，请切换到 "Azure Stack" 边缘资源，然后 " **IoT Edge**"。 请参阅 " **概述** "，并在命令栏上选择 " **删除** "。
 
     ![选择“删除计算”](media/azure-stack-edge-j-series-manage-compute/remove-compute-1.png)
 
-2. 删除计算配置后，如果需要再次使用计算，则重新配置设备。 出现确认提示时，选择“是”****。
+2. 如果删除 IoT Edge 服务，则操作是不可逆的，无法撤消。 你创建的模块和触发器也会被删除。 需要重新配置设备，以防需要再次使用 IoT Edge。 出现确认提示时，选择 **"确定"**。
 
     ![选择删除计算2](media/azure-stack-edge-j-series-manage-compute/remove-compute-2.png)
 
@@ -121,11 +121,11 @@ ms.locfileid: "91743669"
 
 在 Azure 门户中执行以下步骤可以同步设备的访问密钥。
 
-1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到 " **边缘计算" > "入门**"。 在命令栏上选择“刷新配置”。****
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 **IoT Edge 计算**。 请参阅 **概述** ，并在命令栏上选择 " **刷新配置** "。
 
     ![选择“刷新配置”](media/azure-stack-edge-j-series-manage-compute/refresh-configuration-1.png)
 
-2. 出现确认提示时，选择“是”。****
+2. 出现确认提示时，选择“是”。
 
     ![出现提示时选择“是”](media/azure-stack-edge-j-series-manage-compute/refresh-configuration-2.png)
 

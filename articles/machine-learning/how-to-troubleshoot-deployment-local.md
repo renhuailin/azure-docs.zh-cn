@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 473b2e4ac3443d204b39331d9cefaa6c71122439
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 225cb8d7bc35491ceefe444664afe175c7f7ea01
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881663"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954929"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>使用本地模型部署进行故障排除
 
@@ -25,12 +25,14 @@ ms.locfileid: "98881663"
 ## <a name="prerequisites"></a>先决条件
 
 * 一个 **Azure 订阅**。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
-* [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
-* [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
-* 若要在本地调试，可以将模型部署到 [Azure 机器学习计算实例](./how-to-deploy-local-container-notebook-vm.md)，或在本地系统上进行有效的 Docker 安装。
-
-    若要验证 Docker 安装，请使用终端或命令提示符中的命令 `docker run hello-world`。 有关安装 Docker 或排除 Dcoker 错误的详细信息，请参阅 [Docker 文档](https://docs.docker.com/)。
+* 选项 A (**建议** 在 Azure 机器学习计算实例上本地) 调试
+   * [计算实例](how-to-deploy-local-container-notebook-vm.md)正在运行的 Azure 机器学习工作区
+* 选项 B-在计算中本地调试
+   * [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
+   * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+   * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
+   * 在您的本地系统上安装了一个工作的 Docker。 
+   * 若要验证 Docker 安装，请使用终端或命令提示符中的命令 `docker run hello-world`。 有关安装 Docker 或排除 Dcoker 错误的详细信息，请参阅 [Docker 文档](https://docs.docker.com/)。
 
 ## <a name="debug-locally"></a>本地调试
 

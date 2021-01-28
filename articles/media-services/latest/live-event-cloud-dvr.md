@@ -1,5 +1,5 @@
 ---
-title: 使用时移和实时输出创建点播视频
+title: 使用时间变化来创建按需视频播放
 description: 本文介绍如何使用时移和实时输出来录制实时流及创建点播视频。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f5b475f15a5dc751de154965e3d1e78a85fbd4c9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a2bb876c164f0df56a8b7f3c4a3666ff306e9416
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897860"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955930"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>使用时移和实时输出创建点播视频
 

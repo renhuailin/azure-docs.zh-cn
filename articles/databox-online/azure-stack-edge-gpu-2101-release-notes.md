@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/19/2021
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 8158868a39bf8a1fe03a620f37e4dcb1c9adc14e
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 6fff5b9d41c960ebe37098695c694725de0226e0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805185"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954608"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 发行说明
 
@@ -23,7 +23,7 @@ ms.locfileid: "98805185"
 
 本文适用于 **Azure Stack Edge 2101** 版本，该版本映射到软件版本号 **2.2.1473.2521**。
 
-## <a name="whats-new"></a>新增功能
+## <a name="whats-new"></a>新变化
 
 Azure Stack Edge 2101 版中提供了以下新功能。 
 
@@ -40,7 +40,7 @@ Azure Stack Edge 2101 版中提供了以下新功能。
 
 下表提供了2101版本中已知问题的摘要。
 
-| 否。 | Feature | 问题 | 解决方法/备注 |
+| 不是。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 |**1.**|预览功能 |在此版本中，以下功能包括：本地 Azure 资源管理器、Vm、Vm 的云管理、启用了 Azure Arc 的 Kubernetes、用于 Azure Stack Edge Pro R 的 VPN、Azure Stack 边缘迷你 R、多进程服务 (MPS) for Azure Stack Edge Pro GPU-均以预览版提供。  |这些功能将在以后的版本中公开发布。 |
 |**2.**|Kubernetes 仪表板 | 不支持带 SSL 证书的 Kubernetes 仪表板的 *Https* 终结点。 | |
@@ -57,7 +57,7 @@ Azure Stack Edge 2101 版中提供了以下新功能。
 
 下表提供了以前版本中的已知问题的摘要。
 
-| 否。 | Feature | 问题 | 解决方法/备注 |
+| 不是。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 | **1.** |Azure Stack Edge Pro + Azure SQL | 创建 SQL 数据库需要管理员访问权限。   |执行以下步骤，而不是中的步骤 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) 。 <ul><li>在设备的本地 UI 中，启用 "计算接口"。 选择 **计算 > 端口号 > 启用计算 > 应用。**</li><li>`sqlcmd`从下载客户端计算机https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>连接到计算接口 IP 地址 () 启用的端口，并将 "，1401" 添加到地址的末尾。</li><li>最终命令如下所示： sqlcmd-S {Interface IP}，1401-U SA-P "强！Passw0rd "。</li>完成此操作后，当前文档中的步骤3-4 应相同。 </li></ul> |
 | **2.** |刷新| 不支持对通过 **刷新** 还原的 blob 进行增量更改 |对于 Blob 终结点，刷新后对 blob 进行部分更新可能导致更新不会上载到云中。 例如，一系列操作，例如：<ul><li>在云中创建 blob。 或从设备中删除之前上传的 blob。</li><li>使用刷新功能，将 blob 从云中刷新到设备中。</li><li>使用 Azure SDK REST Api 仅更新部分 blob。</li></ul>这些操作可能导致 blob 的更新部分不在云中更新。 <br>**解决方法**：使用 robocopy 等工具或通过资源管理器或命令行的常规文件复制来替换整个 blob。|
@@ -77,8 +77,7 @@ Azure Stack Edge 2101 版中提供了以下新功能。
 |**超过.**|证书 |在某些情况下，本地 UI 中的证书状态可能需要几秒钟才能更新。 |本地 UI 中的以下方案可能会受到影响。<ul><li>"**证书**" 页中的 "**状态**" 列。</li><li>"**入门**" 页中的 "**安全**" 磁贴。</li><li>**概述** 页中的 "**配置**" 磁贴。</li></ul>  |
 |**11x17.**|IoT Edge |通过 IoT Edge 部署的模块不能使用主机网络。 | |
 |**18.**|计算 + Kubernetes |计算/Kubernetes 不支持 NTLM web 代理。 ||
-|**19.**|计算 + web 代理 + 更新 |如果使用 web 代理配置了计算，则计算更新可能会失败。 |建议在更新前禁用计算。 |
-|**0.2.**|Kubernetes + 更新 |以前的软件版本（如2008版本）有一个争用条件更新问题，导致更新失败并出现 ClusterConnectionException。 |使用较新版本应有助于避免此问题。 如果仍出现此问题，则解决方法是重试升级，它应该能够正常运行。|
+|**19.**|Kubernetes + 更新 |以前的软件版本（如2008版本）有一个争用条件更新问题，导致更新失败并出现 ClusterConnectionException。 |使用较新版本应有助于避免此问题。 如果仍出现此问题，则解决方法是重试升级，它应该能够正常运行。|
 
 
 <!--|**18.**|Azure Private Edge Zone (Preview) |There is a known issue with Virtual Network Function VM if the VM was created on Azure Stack Edge device running earlier preview builds such as 2006/2007b and then the device was updated to 2009 GA release. The issue is that the VNF information can't be retrieved or any new VNFs can't be created unless the VNF VMs are deleted before the device is updated.  |Before you update Azure Stack Edge device to 2009 release, use the PowerShell command `get-mecvnf` followed by `remove-mecvnf <VNF guid>` to remove all Virtual Network Function VMs one at a time. After the upgrade, you will need to redeploy the same VNFs.|-->

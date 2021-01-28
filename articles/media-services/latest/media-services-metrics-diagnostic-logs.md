@@ -1,11 +1,25 @@
 ---
-标题： Media Services 指标和诊断日志与 Azure Monitor： Azure 媒体服务说明：了解如何通过 Azure Monitor 监视 Azure 媒体服务指标和诊断日志。
-服务：媒体服务 documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
-
-ms. service： media services ms. 工作负荷： media ms.tgt_pltfrm： na ms.devlang： na ms. 主题：概念性 ms。日期：11/02/2020 毫秒。作者： inhenkel
-
+title: Azure Monitor 的指标和诊断日志
+description: 了解如何通过 Azure Monitor 监视 Azure 媒体服务指标和诊断日志。
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: conceptual
+ms.date: 11/02/2020
+ms.author: inhenkel
+ms.openlocfilehash: 35b0d9c2937024341be6183ac1438b7c4500d6ef
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954980"
 ---
-
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>使用 Azure Monitor 监视媒体服务指标和诊断日志
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

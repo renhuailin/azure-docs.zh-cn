@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 01/18/2021
 ms.author: chmutali
-ms.openlocfilehash: 251e1d4249373ec52afb3d7edaa2325c992b66f1
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 38a93d5db6f8331da6e7afdef3e91b2764537459
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570153"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954015"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory 预配与 Workday 的集成方式
 
@@ -43,7 +43,7 @@ Azure AD 预配服务使用基本身份验证连接到 Workday Web 服务 API �
 1. 复制元素 *addressPrefixes* 中列出的所有 IP 地址范围，并使用范围生成 IP 地址列表。
 1. 登录到 Workday 管理门户。 
 1. 访问 " **维护 IP 范围** " 任务，为 Azure 数据中心创建新的 IP 范围。 使用 CIDR 表示法指定 IP 范围 (以逗号分隔的列表形式) 。  
-1. 访问 " **管理身份验证策略** " 任务以创建新的身份验证策略。 在 "身份验证策略" 中，使用 " **身份验证" 白名单** 指定 Azure AD ip 范围和允许从此 ip 范围进行访问的安全组。 保存更改。 
+1. 访问 " **管理身份验证策略** " 任务以创建新的身份验证策略。 在 "身份验证策略" 中，使用 "身份验证允许列表" 指定 Azure AD IP 范围和允许从此 IP 范围进行访问的安全组。 保存更改。 
 1. 访问 " **激活所有挂起的身份验证策略更改** " 任务以确认更改。
 
 ### <a name="limiting-access-to-worker-data-in-workday-using-constrained-security-groups"></a>使用受约束的安全组限制对 Workday 中辅助角色数据的访问
@@ -348,7 +348,7 @@ Azure AD 预配服务将处理每个页面，并在完全同步期间遍历所�
 </Get_Workers_Request>
 ```
 
-### <a name="retrieving-worker-data-attributes"></a>正在检索辅助数据属性
+## <a name="retrieving-worker-data-attributes"></a>正在检索辅助数据属性
 
 *Get_Workers* API 可以返回与辅助角色关联的不同数据集。 根据设置架构中配置的 [XPATH API 表达式](workday-attribute-reference.md) ，Azure AD 预配服务将确定要从 Workday 中检索的数据集。 相应地， *Response_Group* 标志是在 *Get_Workers* 请求中设置的。 
 
@@ -402,6 +402,9 @@ Azure AD 预配服务将处理每个页面，并在完全同步期间遍历所�
 | 44 | 人才评估数据               | 否                  | wd： Worker \_ data/wd：人才 \_ 评估 \_ 数据                                   |
 | 45 | 用户帐户数据                    | 否                  | wd： Worker \_ data/wd：用户 \_ 帐户 \_ 数据                                        |
 | 46 | 工作线程文档数据                 | 否                  | wd： Worker \_ data/wd： worker \_ 文档 \_ 数据                                     |
+
+>[!NOTE]
+>表中列出的每个 Workday 实体都受 Workday 中的 **域安全策略** 保护。 如果在设置正确的 XPATH 后无法检索与实体关联的任何属性，请与 Workday 管理员联系，以确保为与预配应用相关联的 integration system 用户配置适当的域安全策略。 例如，若要检索 *技术数据*，Workday 域辅助角色数据需要具有 *Get* 访问权限 *：技能和经验*。 
 
 下面是有关如何扩展 Workday 集成以满足特定要求的一些示例。 
 

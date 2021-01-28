@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f05afb3c23fc720bb0100a751a6943d7bb03453f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84697684"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954777"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
@@ -62,7 +62,7 @@ ms.locfileid: "84697684"
 
 如果已处理队列项，则允许函数不执行任何操作。
 
-利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 [Azure 存储队列触发器和绑定](functions-bindings-storage-queue-trigger.md#poison-messages)文档中的**处理有害队列消息**。 
+利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 [Azure 存储队列触发器和绑定](functions-bindings-storage-queue-trigger.md#poison-messages)文档中的 **处理有害队列消息**。 
 
 ## <a name="scalability-best-practices"></a>可伸缩性最佳做法
 
@@ -112,7 +112,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序�
 
 使用函数应用中的 `host.json` 文件可以配置主机运行时和触发器行为。  除了批处理行为以外，还可以管理大量触发器的并发性。 调整这些选项中的值往往有助于每个实例根据被调用函数的需求适当缩放。
 
-host.json 文件中的设置应用于应用中的所有函数，以及函数的单个实例。  例如，如果有包含两个 HTTP 函数的函数应用，并且 [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) 请求设置为 25，则针对任一 HTTP 触发器发出的请求将计入 25 个共享的并发请求。  如果该函数应用扩展到 10 个实例，则两个函数会有效地允许 250 个并发请求（10 个实例 * 每个实例 25 个并发请求）。 
+host.json 文件中的设置应用于应用中的所有函数，以及函数的单个实例。  例如，如果有包含两个 HTTP 函数的函数应用，并且 [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) 请求设置为 25，则针对任一 HTTP 触发器发出的请求将计入 25 个共享的并发请求。  当该函数应用扩展为10个实例时，十个函数会有效地允许250个 (10 个实例 * 25 个并发请求的并发请求) 。 
 
 可在 [host.json 配置文章](functions-host-json.md)在找到其他主机配置选项。
 

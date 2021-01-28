@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0e993cb1e53645f7081a20fc6a2785b8cfef1cce
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723874"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954170"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure 监控范围
 
@@ -69,12 +69,22 @@ ms.locfileid: "98723874"
 >[!Note]
 >现在支持一次添加不超过10个数据工厂。 如果要一次添加10个以上的数据工厂，请提交支持票证。
 
+### <a name="how-does-the-authentication-work"></a>身份验证的工作原理是什么？
+
+当监控范围用户注册他们有权访问的数据工厂时，后端会发生以下情况：
+
+1. **数据工厂 MSI** 将添加到监控范围 RBAC Role：**监控范围 Data 陈列**。
+
+    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="显示 Azure 数据工厂 MSI 的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
+     
+2. 需要重新执行数据工厂管道，以便沿袭元数据可以推送回监控范围。
+3. 执行后，数据工厂元数据将推送到监控范围。
 
 ### <a name="remove-data-factory-connections"></a>删除数据工厂连接
 若要删除数据工厂连接，请执行以下操作：
 
 1. 在 " **数据工厂连接** " 页上，选择一个或多个数据工厂连接旁边的 " **删除** " 按钮。
-1. 在弹出窗口中选择 " **确认** "，删除所选的数据工厂连接。
+2. 在弹出窗口中选择 " **确认** "，删除所选的数据工厂连接。
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="显示如何选择数据工厂以删除连接的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 

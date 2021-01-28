@@ -1,68 +1,72 @@
 ---
 title: JavaScript 示例
 titleSuffix: Azure Cognitive Search
-description: 查找使用 Azure .NET SDK for JavaScript 的 Azure 认知搜索演示 JavaScript 代码示例。
+description: 查找 Azure 认知搜索 JavaScript 代码示例演示，这些示例使用适用于 JavaScript 的 Azure .NET SDK。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 09a9ca2ad1b1f1e5578ecc5d35a85c81b32a5b1a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.date: 01/27/2021
+ms.openlocfilehash: f83767813ea3923d85db2ca3f0164776c610525e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511740"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955014"
 ---
-# <a name="javascript-code-samples-for-azure-cognitive-search"></a>适用于 Azure 认知搜索的 JavaScript 代码示例
+# <a name="javascript-code-samples-for-azure-cognitive-search"></a>Azure 认知搜索的 JavaScript 代码示例
 
-了解演示 Azure 认知搜索的特性和功能的 JavaScript 代码示例。 主要存储库如下所示：
+了解演示 Azure 认知搜索解决方案的功能和工作流的 JavaScript 代码示例。 这些示例使用 azure [**SDK For JavaScript**](/azure/developer/javascript/)的 [**azure 认知搜索客户端库**](/javascript/api/overview/azure/search-documents-readme)，你可以浏览以下链接。
 
-| 存储库 | 说明 |
-|------------|-------------|
-| [azure sdk-用于-js/tree/master/sdk/搜索/搜索-文档](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents) | 由 Azure SDK 团队生成的示例由 SDK 中 Azure.Search.Documents 客户端库附带。 你还可以查看客户端库的 [单元测试](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/test) ，以查看如何调用各种 api。 |
-| [Azure-示例/azure--javascript-示例](https://github.com/Azure-Samples/azure-search-javascript-samples) | 操作指南文章随附的代码示例，包括 [快速入门：在 JavaScript 中创建搜索索引](search-get-started-javascript.md)。|
+| 目标 | 链接 |
+|--------|------|
+| 包下载 | [www.npmjs.com/package/@azure/search-documents](https://www.npmjs.com/package/@azure/search-documents) |
+| API 参考 | [@azure/search-documents](/javascript/api/@azure/search-documents/)  |
+| API 测试用例 | [github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/test](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/test) |
+| 源代码 | [github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents)  |
 
-> [!Tip]
-> 尝试使用 [示例浏览器](/samples/browse/?languages=javascript&products=azure-cognitive-search) 在 Github 中搜索 Microsoft 代码示例，并按产品、服务和语言进行筛选。
+## <a name="sdk-samples"></a>SDK 示例
 
-## <a name="javascript-sdk-samples"></a>JavaScript SDK 示例
+Azure SDK 开发团队中的代码示例演示了 API 使用。 你可以在 GitHub 上 [**的 azure-sdk/tree/master/sdk/搜索/搜索文档/示例**](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples) 中找到这些示例。
 
-适用于 Java 的 Azure SDK 包括许多示例和入门 [页面](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/README.md#getting-started) ，涵盖包安装、客户端设置和故障排除。 此页还介绍了下面列出的示例类别，以方便您方便。
+### <a name="javascript-sdk-samples"></a>JavaScript SDK 示例
 
 | 示例 | 说明 |
 |---------|-------------|
-| [全文](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexes) | 演示如何创建、更新、获取、列出和删除 [搜索索引](search-what-is-an-index.md)。 此示例类别还包括一个服务统计信息示例。 |
-| [索引器的 dataSourceConnections () ](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/dataSourceConnections) | 演示如何创建、更新、获取、列出和删除索引器数据源，这些数据源是 [支持的 Azure 数据源](search-indexer-overview.md#supported-data-sources)的索引编制索引所必需的。 |
-| [索引器](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  演示如何创建、更新、获取、列出、重置和删除 [索引器](search-indexer-overview.md)。|
-| [技能组合](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/skillSets) |   演示如何创建、更新、获取、列出和删除附加了索引器的 [技能集](cognitive-search-working-with-skillsets.md) ，并在索引期间执行基于 AI 的扩充。 |
-| [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/synonymMaps) | 演示如何创建、更新、获取、列出和删除 [同义词映射](search-synonyms.md)。  |
+| [索引](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexes) | 演示如何创建、更新、获取、列出和删除[搜索索引](search-what-is-an-index.md)。 此样本类别还包括一个服务统计信息示例。 |
+| [dataSourceConnections（用于索引器）](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/dataSourceConnections) | 演示如何创建、更新、获取、列出和删除索引器数据源，对于基于索引器为[支持的 Azure 数据源](search-indexer-overview.md#supported-data-sources)编制索引而言，这些数据源是必需的。 |
+| [索引器](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  演示如何创建、更新、获取、列出、重置和删除[索引器](search-indexer-overview.md)。|
+| [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/skillSets) |   演示如何创建、更新、获取、列出和删除[技能组](cognitive-search-working-with-skillsets.md)，这些技能组是附加的索引器，并且在编制索引期间执行基于 AI 的扩充。 |
+| [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/synonymMaps) | 演示如何创建、更新、获取、列出和删除[同义词映射](search-synonyms.md)。  |
 | [查询](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) | 演示如何针对 Microsoft 托管的只读公共索引执行查询。  |
 
-## <a name="typescript-samples"></a>TypeScript 示例
-
-SDK 还提供了 TypeScript 示例，为方便起见列出了这些示例。
+### <a name="typescript-samples"></a>TypeScript 示例
 
 | 示例 | 说明 |
 |---------|-------------|
-| [全文](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexes) | 演示如何创建、更新、获取、列出和删除 [搜索索引](search-what-is-an-index.md)。 此示例类别还包括一个服务统计信息示例。 |
-| [索引器的 dataSourceConnections () ](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/dataSourceConnections) | 演示如何创建、更新、获取、列出和删除索引器数据源，这些数据源是 [支持的 Azure 数据源](search-indexer-overview.md#supported-data-sources)的索引编制索引所必需的。 |
-| [索引器](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  演示如何创建、更新、获取、列出、重置和删除 [索引器](search-indexer-overview.md)。|
-| [技能组合](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/skillSets) |   演示如何创建、更新、获取、列出和删除附加了索引器的 [技能集](cognitive-search-working-with-skillsets.md) ，并在索引期间执行基于 AI 的扩充。 |
-| [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/synonymMaps) | 演示如何创建、更新、获取、列出和删除 [同义词映射](search-synonyms.md)。  |
+| [索引](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexes) | 演示如何创建、更新、获取、列出和删除[搜索索引](search-what-is-an-index.md)。 此样本类别还包括一个服务统计信息示例。 |
+| [dataSourceConnections（用于索引器）](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/dataSourceConnections) | 演示如何创建、更新、获取、列出和删除索引器数据源，对于基于索引器为[支持的 Azure 数据源](search-indexer-overview.md#supported-data-sources)编制索引而言，这些数据源是必需的。 |
+| [索引器](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  演示如何创建、更新、获取、列出、重置和删除[索引器](search-indexer-overview.md)。|
+| [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/skillSets) |   演示如何创建、更新、获取、列出和删除[技能组](cognitive-search-working-with-skillsets.md)，这些技能组是附加的索引器，并且在编制索引期间执行基于 AI 的扩充。 |
+| [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/synonymMaps) | 演示如何创建、更新、获取、列出和删除[同义词映射](search-synonyms.md)。  |
 | [查询](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/typescript/src/readonlyQuery.ts) | 演示如何针对 Microsoft 托管的只读公共索引执行查询。  |
 
-## <a name="documentation-samples"></a>文档示例
+## <a name="doc-samples"></a>文档示例
 
-以下示例在 [Azure 认知搜索文档](./index.yml)中有一个相关的文章。
+认知搜索团队中的代码示例演示了功能和工作流。 其中的许多示例在教程、快速入门和操作指南文章中进行了引用。 你可以在 GitHub 上的 [**Azure 示例/azure--**](https://github.com/Azure-Samples/azure-search-javascript-samples) ------javascript-示例中找到这些示例。
 
-| 示例 | 说明 | 
-|---------|-------------|
-| [起步](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | [快速入门的源代码：在 JavaScript 中创建搜索索引](search-get-started-javascript.md)。  |
+| 示例 | 文章 |
+|---------|---------|
+| [quickstart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | [快速入门：在 JavaScript 中创建搜索索引](search-get-started-javascript.md)的源代码。 本文介绍了使用示例数据创建、加载和查询搜索索引的基本工作流。 |
 
-## <a name="standalone-samples"></a>独立示例
+> [!Tip]
+> 请尝试使用[示例浏览器](/samples/browse/?languages=javascript&products=azure-cognitive-search)来搜索 Github 中的 Microsoft 代码示例，搜索时可按产品、服务和语言进行筛选。
+
+## <a name="other-samples"></a>其他示例
+
+以下示例也由认知搜索团队发布，但在文档中未被引用。 相关的自述文件提供了使用说明。
 
 | 示例 | 说明 |
 |---------|-------------|
-| [azure-搜索-响应-模板](https://github.com/dereklegenzoff/azure-search-react-template) | Azure 认知搜索的响应模板 (github.com)  |
+| [azure-search-react-template](https://github.com/dereklegenzoff/azure-search-react-template) | Azure 认知搜索的 React 模板 (github.com) |

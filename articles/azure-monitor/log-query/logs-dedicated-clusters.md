@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: adcc894db630bba11e84e2f277705d2f31caf7dc
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 1222108694ff7274e5d8fd063635b70a76ffc59c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920217"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954743"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
 
@@ -81,10 +81,12 @@ Authorization: Bearer <token>
 
 创建群集资源后，可以编辑其他属性，如 sku、keyVaultProperties 或 billingType  。 参阅下面的更多详细信息。
 
+每个区域每个订阅最多可以有2个活动群集。 如果删除群集，它仍保留14天。 每个区域每个订阅最多可以有4个保留群集 (活动或最近删除的) 。
+
 > [!WARNING]
 > 创建群集会触发资源分配和预配。 此操作可能需要一个小时才能完成。 建议以异步方式运行。
 
-创建群集的用户帐户必须具有标准 Azure 资源创建权限：`Microsoft.Resources/deployments/*` 和群集写入权限 `(Microsoft.OperationalInsights/clusters/write)`。
+创建群集的用户帐户必须具有标准 Azure 资源创建权限： `Microsoft.Resources/deployments/*` 和群集写入权限， `Microsoft.OperationalInsights/clusters/write` 方法是将其角色分配到此特定操作或 `Microsoft.OperationalInsights/*` 或 `*/write` 。
 
 ### <a name="create"></a>创建 
 
@@ -503,7 +505,9 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 ## <a name="limits-and-constraints"></a>限制和约束
 
-- 每个区域和每个订阅的群集的最大数目为 2
+- 每个区域和订阅的活动群集的最大数目为2
+
+- 每个区域和订阅 (活动或最近删除) 的保留群集的最大数目为4 
 
 - 与群集链接的工作区的最大数目为 1000
 

@@ -1,16 +1,16 @@
 ---
 title: 与他人协作-QnA Maker
-description: ''
+description: 了解如何使用 Azure 基于角色的访问控制与其他作者和编辑人员协作。
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: ecf81152605d77e1036c9fbf5d3308af2b1fb988
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cb6d0ee9c651ca1dcc554f5951a5733727af2d6b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346149"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954100"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>与其他作者和编辑人员协作
 
@@ -35,7 +35,7 @@ ms.locfileid: "96346149"
 > [!div class="mx-imgBorder"]
 > ![下图显示了从作者的角度来登录到 QnA Maker 门户并使用创作 Api 的流。](../media/qnamaker-how-to-collaborate-knowledge-base/rbac-flow-from-portal-to-service.png)
 
-|步骤|描述|
+|步骤|说明|
 |--|--|
 |1|门户获取 QnA Maker 资源的标记。|
 |2|门户会调用适当的 QnA Maker 创作 API (APIM) 传递令牌，而不是密钥。|
@@ -52,6 +52,6 @@ ms.locfileid: "96346149"
 
 如果通过 REST 或 Sdk 使用 Api 创作和协作，则需要 [创建服务主体](../../authentication.md#assign-a-role-to-a-service-principal) 来管理身份验证。
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 * 为[语言](../index.yml)和[客户端应用程序](../index.yml)设计知识库

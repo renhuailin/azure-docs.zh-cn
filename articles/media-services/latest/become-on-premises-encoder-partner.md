@@ -1,5 +1,5 @@
 ---
-title: 成为本地编码器合作伙伴 - Azure 媒体服务
+title: 成为本地编码器合作伙伴
 description: 本文介绍如何验证本地实时传送视频流编码器。
 services: media-services
 author: johndeu
@@ -8,12 +8,12 @@ ms.author: johndeu
 ms.date: 08/31/2020
 ms.topic: how-to
 ms.service: media-services
-ms.openlocfilehash: 1383b6afac9ad2332169328ef71981e23e86bdcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e07831ce4a016d49e0343da66efc0345effafd94
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297444"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954355"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>如何验证本地实时传送视频流编码器
 
@@ -25,15 +25,15 @@ ms.locfileid: "89297444"
 
 ## <a name="pass-through-live-event-verification"></a>直通直播活动验证
 
-1. 在媒体服务帐户中，确保**流式处理终结点**正在运行。 
+1. 在媒体服务帐户中，确保 **流式处理终结点** 正在运行。 
 2. 创建并启动直通  直播活动。 <br/> 有关详细信息，请参阅[直播活动状态和计费](live-event-states-billing.md)。
 3. 获取引入 URL 并配置本地编码器以使用 URL 将多比特率实时流发送到媒体服务。
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
-5. 创建新的**资产**对象。
-6. 创建**实时输出**并使用创建的资产名称。
+5. 创建新的 **资产** 对象。
+6. 创建 **实时输出** 并使用创建的资产名称。
 7. 使用内置的流式处理策略类型创建流式处理定位符。
 8. 列出流式处理定位器的路径，以取回要使用的 URL  。
-9. 获取要从中流式传输的**流式处理终结点**的主机名。
+9. 获取要从中流式传输的 **流式处理终结点** 的主机名。
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
 11. 运行实时编码器大约 10 分钟。
 12. 停止直播活动。 
@@ -44,15 +44,15 @@ ms.locfileid: "89297444"
 
 ## <a name="live-encoding-live-event-verification"></a>实时编码直播活动验证
 
-1. 在媒体服务帐户中，确保**流式处理终结点**正在运行。 
+1. 在媒体服务帐户中，确保 **流式处理终结点** 正在运行。 
 2. 创建并启动实时编码  直播活动。 <br/> 有关详细信息，请参阅[直播活动状态和计费](live-event-states-billing.md)。
 3. 获取引入 URL，并配置编码器以将单比特率实时流推送到媒体服务。
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
-5. 创建新的**资产**对象。
-6. 创建**实时输出**并使用创建的资产名称。
+5. 创建新的 **资产** 对象。
+6. 创建 **实时输出** 并使用创建的资产名称。
 7. 使用内置的流式处理策略类型创建流式处理定位符。
 8. 列出流式处理定位器的路径，以取回要使用的 URL  。
-9. 获取要从中流式传输的**流式处理终结点**的主机名。
+9. 获取要从中流式传输的 **流式处理终结点** 的主机名。
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
 11. 运行实时编码器大约 10 分钟。
 12. 停止直播活动。

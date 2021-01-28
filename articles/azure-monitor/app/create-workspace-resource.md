@@ -3,12 +3,12 @@ title: 新建基于工作区的 Azure Monitor Application Insights 资源 | Micr
 description: 了解启用基于工作区的新 Azure Monitor Application Insights 资源所需的步骤。
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 9d1ef158b8096c12c36673b62f87e1d02be69175
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f1cc7db7eea4485ad40062a0e11a76dc14234b41
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936453"
+ms.locfileid: "98956033"
 ---
 # <a name="workspace-based-application-insights-resources"></a>基于工作区的 Application Insights 资源
 
@@ -33,6 +33,7 @@ ms.locfileid: "98936453"
 
 登录 [Azure 门户](https://portal.azure.com)，并创建 Application Insights 资源：
 
+[!div class="mx-imgBorder"]
 ![基于工作区的 Application Insights 资源](./media/create-workspace-resource/create-workspace-based.png)
 
 如果你还没有现有的 Log Analytics 工作区，请[参阅 Log Analytics 工作区创建文档](../learn/quick-create-workspace.md)。

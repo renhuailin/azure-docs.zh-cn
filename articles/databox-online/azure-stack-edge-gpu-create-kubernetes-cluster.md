@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 6f6d2b126cd9a0acbbbdb8d17ce7345bbf17b556
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bf73640c1a4014b61809f407e1873686c229273f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635902"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954625"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>通过 Azure Stack Edge Pro GPU 设备上的 kubectl 连接并管理 Kubernetes 群集
 
-在 Azure Stack Edge Pro 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以通过本机工具（如 *kubectl* ），从客户端计算机本地连接和管理群集。
+在 Azure Stack Edge Pro 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以通过本机工具（如 *kubectl*），从客户端计算机本地连接和管理群集。
 
 本文介绍如何连接到 Azure Stack Edge Pro 设备上的 Kubernetes 群集，然后使用 *kubectl* 对其进行管理。 
 
@@ -165,9 +165,9 @@ ms.locfileid: "94635902"
 
 ## <a name="remove-kubernetes-cluster"></a>删除 Kubernetes 群集
 
-若要删除 Kubernetes 群集，你将需要删除计算配置。
+若要删除 Kubernetes 群集，你将需要删除 IoT Edge 配置。
 
-有关详细说明，请参阅 [删除计算配置](azure-stack-edge-j-series-manage-compute.md#remove-compute-configuration)。
+有关详细说明，请参阅 [删除 IoT Edge 配置](azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service)。
    
 
 ## <a name="next-steps"></a>后续步骤

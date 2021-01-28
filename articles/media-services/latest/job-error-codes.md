@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务作业 (编码和分析) 错误代码
+title: 作业 (编码和分析) 错误代码
 description: 本文会链接到作业错误代码参考主题，并提供指向相关主题的有用链接。
 author: IngridAtMicrosoft
 manager: femila
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 64d8d889d3b9b55d6e47bb96afc7f9badac9e2ee
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: ed57252a112aad8dd7d94dda95219867424dbb8f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895367"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954151"
 ---
 # <a name="media-services-job-error-codes"></a>媒体服务作业错误代码
 

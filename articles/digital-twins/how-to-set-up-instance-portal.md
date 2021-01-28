@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 61b396cbcc8c91c75c961f702de7ed6a33e676e4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5e0c2541c398f2e135b8763cc753ec8c20c3967d
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947020"
+ms.locfileid: "98953744"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>设置 Azure 数字孪生实例和身份验证 (门户) 
 
@@ -56,8 +56,8 @@ ms.locfileid: "98947020"
 
 下面是在安装过程中可以使用 " **创建资源** " 进程中的其他选项卡配置的其他选项。
 
-* **网络**：在此选项卡中，你可以使用 [Azure private Link](../private-link/private-link-overview.md) 启用专用终结点，以消除你的实例的公共网络公开。 有关说明，请参阅 [*如何：使用专用链接启用专用访问*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation)。
-* **高级**：在此选项卡中，你可以为可在将事件转发到 [终结点](concepts-route-events.md)时使用的实例启用 [系统管理的标识](../active-directory/managed-identities-azure-resources/overview.md)。 有关说明，请参阅 [*如何：为路由事件启用托管标识*](how-to-enable-managed-identities.md)。
+* **网络**：在此选项卡中，你可以使用 [Azure private Link](../private-link/private-link-overview.md) 启用专用终结点，以消除你的实例的公共网络公开。 有关说明，请参阅 how [*to： Enable private access With Private Link (preview)*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation)。
+* **高级**：在此选项卡中，你可以为可在将事件转发到 [终结点](concepts-route-events.md)时使用的实例启用 [系统管理的标识](../active-directory/managed-identities-azure-resources/overview.md)。 有关说明，请参阅 [*如何：为路由事件启用托管标识 (预览)*](how-to-enable-managed-identities.md#add-a-system-managed-identity-during-instance-creation)。
 * **标记**：在此选项卡中，你可以将标记添加到你的实例，以帮助你在 Azure 资源之间对其进行组织。 有关 Azure 资源标记的详细信息，请参阅 [*为逻辑组织标记资源、资源组和订阅*](../azure-resource-manager/management/tag-resources.md)。
 
 ### <a name="verify-success-and-collect-important-values"></a>验证成功并收集重要值

@@ -1,5 +1,5 @@
 ---
-title: 多 DRM 内容保护系统 - Azure 媒体服务 v3
+title: 多 DRM 内容保护系统
 description: 本文详细说明了如何使用 Azure 媒体服务设计多 DRM 内容保护系统。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0104dd2761f74fbd84486aebbf8c3c4e128eb08
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89298192"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954895"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统
 
@@ -51,7 +51,7 @@ ms.locfileid: "89298192"
 | --- | --- | --- |
 | **智能电视、STB** | PlayReady、Widevine 和/或其他 | 适用于 PlayReady 和/或 Widevine 的嵌入式浏览器/EME|
 | **Windows 10** | PlayReady | 适用于 PlayReady 的 Microsoft Edge/IE11|
-| **Android 设备 (手机、平板电脑、TV) ** |Widevine |适用于 Widevine 的 Chrome |
+| **Android 设备 (手机、平板电脑、TV)** |Widevine |适用于 Widevine 的 Chrome |
 | **iOS** | FairPlay | 适用于 FairPlay 的 Safari（自 iOS 11.2 起） |
 | **macOS** | FairPlay | 适用于 FairPlay 的 Safari（自 Mac OS X 10.11 + El Capitan 版 Safari 9+ 起）|
 | **tvOS** | FairPlay | |
@@ -105,7 +105,7 @@ DRM 子系统可能包含以下组件：
 
 以下部分介绍密钥管理的设计。
 
-| **ContentKey-to-asset** | **应用场景** |
+| **ContentKey-to-asset** | **方案** |
 | --- | --- |
 | 一对一 |最简单的情况。 它提供最精细的控制。 但是，此排列方式通常产生最高的许可证传送成本。 每个受保护的资产需要至少一个许可证请求。 |
 | 一对多 |可以对多个资产使用相同的内容密钥。 例如，对于如流派或流派子集（或电影基因）的逻辑组中的所有资产，可以使用单个内容密钥。 |
@@ -135,7 +135,7 @@ DRM 子系统可能包含以下组件：
 
 | **构建基块** | **技术** |
 | --- | --- |
-| **球员** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
+| **播放器** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
 | **标识提供者 (IDP)** |Azure Active Directory (Azure AD) |
 | **安全令牌服务 (STS)** |Azure AD |
 | **DRM 保护工作流** |Azure 媒体服务动态保护 |
@@ -178,7 +178,7 @@ DRM 子系统可能包含以下组件：
 ### <a name="implementation-procedures"></a>实现过程
 实现包括下列步骤：
 
-1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产不受 DRM 保护。 DRM 保护稍后由动态保护完成。
+1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产不受 DRM 保护。  DRM 保护稍后由动态保护完成。
 
 2. 创建密钥 ID 和内容密钥（可以选择从密钥种子中获取）。 在此情况下，不需要密钥管理系统，因为只需要对一些测试资产使用单个密钥 ID 和内容密钥。
 
@@ -233,7 +233,7 @@ DRM 子系统可能包含以下组件：
 
     ![JWT](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
 
-* 在应用程序的“配置”选项卡上，将权限添加到 Azure AD 中的应用程序。**** 对于本地版本和已部署的版本，需要提供每个应用程序的权限。
+* 在应用程序的“配置”选项卡上，将权限添加到 Azure AD 中的应用程序。  对于本地版本和已部署的版本，需要提供每个应用程序的权限。
 
     ![权限](./media/design-multi-drm-system-with-access-control/media-services-perms-to-other-apps.png)
 
@@ -249,7 +249,7 @@ DRM 子系统可能包含以下组件：
     <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
     ```
 
-    GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。****
+    GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。 
 
 * 授予组成员资格声明权限。 确保 Azure AD 应用程序清单文件中包含以下内容： 
 
@@ -284,7 +284,7 @@ DRM 子系统可能包含以下组件：
 
 由于 Azure AD 信任 Microsoft 帐户域，因此可以将以下任何域的任何帐户添加到自定义 Azure AD 租户，并使用该帐户登录：
 
-| **域名** | **Domain** |
+| **域名** | **域** |
 | --- | --- |
 | **自定义 Azure AD 租户域** |somename.onmicrosoft.com |
 | **企业域** |microsoft.com |

@@ -1,5 +1,5 @@
 ---
-title: 使用媒体服务编码器 Standard with .NET 生成缩略图
+title: 使用 Media Encoder Standard .NET 生成缩略图
 description: 本文介绍如何通过 .NET 使用 Media Encoder Standard 同时对资产进行编码和生成缩略图。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe051ceec43ec919ddf92a4d7f7e4bfab0b351f5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 551574685ec9a2f9eb1ef569fbec7c9a104353ff
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938765"
+ms.locfileid: "98955862"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-net"></a>如何使用编码器标准版通过 .NET 来生成缩略图
 

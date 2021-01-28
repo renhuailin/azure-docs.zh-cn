@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f660bd17954afb4ae02da77e93d4d9cc36f3d355
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 560caa7e29ce12b58e151a1362aaf2c662646f13
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763365"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954794"
 ---
 # <a name="logging-in-msal-for-python"></a>MSAL for Python 中的日志记录
 
@@ -54,6 +54,6 @@ logging.getLogger("msal").setLevel(logging.WARN)
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多代码示例，请参阅 [Microsoft 标识平台代码示例) ](sample-v2-code.md)。
+有关更多代码示例，请参阅 [Microsoft 标识平台代码示例](sample-v2-code.md)。
 
 ---

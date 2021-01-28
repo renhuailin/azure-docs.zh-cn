@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务 v3 with Widevine 许可证模板概述
+title: 媒体服务 v3 Widevine 许可证模板概述
 description: 使用 Widevine 许可证模板了解 Azure 媒体服务，以及如何使用它来配置 Widevine 许可证。
 author: IngridAtMicrosoft
 manager: femila
@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: abedbd60a82f280bcd983c05a43685524a3a24e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39cccd270a4947820640940ae43fa0feb3e52028
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598146"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954473"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>带有 Widevine 许可证模板的媒体服务 v3 概述
 
-通过 Azure 媒体服务，可使用 Google Widevine 加密内容****。 媒体服务还提供传送 Widevine 许可证的服务。 可使用 Azure 媒体服务 API 来配置 Widevine 许可证。 当播放器尝试播放受 Widevine 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了请求，则该服务将颁发许可证。 许可证将被发送到客户端，并用于解密和播放指定的内容。
+通过 Azure 媒体服务，可使用 Google Widevine 加密内容。 媒体服务还提供传送 Widevine 许可证的服务。 可使用 Azure 媒体服务 API 来配置 Widevine 许可证。 当播放器尝试播放受 Widevine 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了请求，则该服务将颁发许可证。 许可证将被发送到客户端，并用于解密和播放指定的内容。
 
 [!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 

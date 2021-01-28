@@ -4,12 +4,12 @@ description: 提供支持设置的摘要，并限制 Azure 磁盘备份。
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5281a5f0b833759c2594b6748cf06f2e12c03822
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 08d2ac8451e88dd8d40ed5faee0368ff7739cd16
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757468"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954692"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>预览版中的 Azure 磁盘备份支持矩阵 () 
 
@@ -65,6 +65,8 @@ Azure 磁盘备份在以下区域提供预览版：美国中部、东部2、韩�
 - 托管磁盘允许在部署时或之后更改性能层，而无需更改磁盘大小。 Azure 磁盘备份解决方案支持对要备份的源磁盘进行性能层更改。 在还原过程中，还原磁盘的性能层将与备份时源磁盘的性能层相同。 执行还原操作后，请按照 [此处](../virtual-machines/disks-performance-tiers-portal.md) 的文档更改磁盘的性能层。
 
 - 通过对托管磁盘的[私有链接](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)支持，你可以限制导出和导入托管磁盘，使其仅出现在 Azure 虚拟网络中。 Azure 磁盘备份支持备份启用了专用终结点的磁盘。 这不包括可通过专用终结点访问的备份数据或快照。
+
+- 在预览期间，不能禁用备份，因此不支持 " **停止备份并保留备份数据** " 选项。 可以删除备份实例，这不仅会停止备份，还会删除所有备份数据。
 
 ## <a name="next-steps"></a>后续步骤
 

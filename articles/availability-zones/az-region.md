@@ -1,18 +1,19 @@
 ---
 title: 支持可用性区域的 Azure 服务
 description: 若要在 Azure 中创建具有高可用性和弹性的应用程序，可用性区域提供了可用于运行资源的物理独立位置。
-author: cynthn
+author: prsandhu
 ms.service: azure
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2021
-ms.author: cynthn
+ms.author: prsandhu
+ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 5883dc8b34cd1aa00ba1c5de25a09a017a130c0a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e8e62d92afb70ec9d4df40f677de05583ef472b0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896878"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955777"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支持可用性区域的 Azure 服务
 
@@ -89,7 +90,7 @@ ms.locfileid: "98896878"
 |     Azure SQL Database (高级 & 业务关键层)      | ： large_blue_diamond：  |
 |     磁盘存储                                                | ： large_blue_diamond：  |
 |     事件中心                                                  | ： large_blue_diamond：  |
-|     密钥保管库                                                   | ： large_blue_diamond：  |
+|     Key Vault                                                   | ： large_blue_diamond：  |
 |     负载均衡器                                               | ： large_blue_diamond：  |
 |     服务总线                                                 | ： large_blue_diamond：  |
 |     Service Fabric                                            | ： large_blue_diamond：  |

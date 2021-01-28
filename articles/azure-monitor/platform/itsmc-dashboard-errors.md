@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: be6d47d8f40746bfb2154ddb62cf2e9ce93e74aa
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762756"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955677"
 ---
 # <a name="errors-in-the-connector-status-section"></a>"连接器状态" 部分中的错误
 
@@ -66,6 +66,10 @@ ms.locfileid: "98762756"
 
 * **错误**： "出现错误。 无法获取连接详细信息。 " 当客户定义 ITSM 操作组时，会出现此错误。
 
-    **原因**：新创建的 ITSM 连接器尚未完成初始同步。
+    **原因**：当以下情况时，将显示此类错误：
+    * 新创建的 ITSM 连接器尚未完成初始同步。
+    * 连接器未正确定义
 
-    **解决方法**：在创建新的 ITSM 连接器时，ITSM 连接器会开始同步 ITSM 系统中的信息，例如工作项模板和工作项。 同步 ITSM 连接器以生成新的刷新令牌，如 [此处](./itsmc-resync-servicenow.md)所述。
+    **解决方法**： 
+    * 创建新的 ITSM 连接器后，ITSM 连接器会开始同步 ITSM 系统中的信息，例如工作项模板和工作项。 同步 ITSM 连接器以生成新的刷新令牌，如 [此处](./itsmc-resync-servicenow.md)所述。
+    * 查看 ITSM 连接器中的连接详细信息，如 [此处](./itsmc-connections-servicenow.md#create-a-connection) 所述，检查 ITSM 连接器是否可以成功 [同步](./itsmc-resync-servicenow.md)。

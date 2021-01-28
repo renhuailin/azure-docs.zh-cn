@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: ce48d87c6e04e6c349b681e953647feb5e7ddda5
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 7b59e0ae2fbb73f341d5254fd2804d50ad141a19
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570110"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953795"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>教程：配置 SAP SuccessFactors 到 Active Directory 的用户预配 
 本教程旨在说明需要执行哪些步骤才能将用户从 SuccessFactors Employee Central 预配到 Active Directory (AD) 和 Azure AD，以及选择性地将电子邮件地址写回到 SuccessFactors。 
@@ -186,7 +186,7 @@ Azure AD 用户预配服务支持的 SuccessFactors 用户预配工作流可将�
 
 要预配到本地 Active Directory，必须在可通过网络访问所需 Active Directory 域的已加入域的服务器上安装预配代理。
 
-将下载的代理安装程序传输到服务器主机，并按照[安装代理部分](../cloud-provisioning/how-to-install.md)中列出的步骤完成代理配置。
+将下载的代理安装程序传输到服务器主机，并按照[安装代理部分](../cloud-sync/how-to-install.md)中列出的步骤完成代理配置。
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>第 3 部分：在预配应用中，配置与 SuccessFactors 和 Active Directory 的连接
 在此步骤中，我们将在 Azure 门户中建立与 SuccessFactors 和 Active Directory 的连接。 
@@ -209,12 +209,12 @@ Azure AD 用户预配服务支持的 SuccessFactors 用户预配工作流可将�
         > 如果未在属性映射中配置 parentDistinguishedName 属性，则此设置仅对用户帐户创建起作用。 此设置不用于用户搜索或更新操作。 整个域子树属于搜索操作的范围。
 
    * **通知电子邮件 -** 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
-    > [!NOTE]
-    > 如果预配作业进入[隔离](../app-provisioning/application-provisioning-quarantine-status.md)状态，Azure AD 预配服务将发送电子邮件通知。
+     > [!NOTE]
+     > 如果预配作业进入[隔离](../app-provisioning/application-provisioning-quarantine-status.md)状态，Azure AD 预配服务将发送电子邮件通知。
 
    * 单击“测试连接”按钮。 如果连接测试成功，请单击顶部的“保存”按钮。 如果测试失败，请仔细检查代理设置上配置的 SuccessFactors 凭据和 AD 凭据是否有效。
-    >[!div class="mx-imgBorder"]
-    >![Azure 门户](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
+     >[!div class="mx-imgBorder"]
+     >![Azure 门户](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
 
    * 凭据成功保存后，“映射”部分将显示名为“将 SuccessFactors 用户同步到本地 Active Directory”的默认映射 
 
@@ -250,9 +250,8 @@ Azure AD 用户预配服务支持的 SuccessFactors 用户预配工作流可将�
 
 1. 在“属性映射”部分中，可以定义将单个 SuccessFactors 属性映射到 Active Directory 属性的方式。
 
-  >[!NOTE]
-  >有关此应用程序支持的 SuccessFactors 属性的完整列表，请参阅 [SuccessFactors 属性参考](../app-provisioning/sap-successfactors-attribute-reference.md)
-
+     >[!NOTE]
+     >有关此应用程序支持的 SuccessFactors 属性的完整列表，请参阅 [SuccessFactors 属性参考](../app-provisioning/sap-successfactors-attribute-reference.md)
 
 1. 单击现有的属性映射可将其更新，单击屏幕底部的“添加新映射”可添加新的映射。 单个属性映射支持以下属性：
 

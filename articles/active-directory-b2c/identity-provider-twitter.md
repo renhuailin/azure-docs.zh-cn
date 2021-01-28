@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a0f209e0ac17c62378d279a32f4a27f48a9f74bd
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: a998491729a1d3bd472ecc3de9722c142f8dc182
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232686"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98953778"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Twitter 帐户注册与登录
 
@@ -29,13 +29,13 @@ ms.locfileid: "98232686"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-an-application"></a>创建应用程序
 
-若要使用 Azure Active Directory B2C () Azure AD B2C 中的 Twitter 帐户登录用户，需要创建 Twitter 应用程序。 如果还没有 Twitter 帐户，可以在注册 [https://twitter.com/signup](https://twitter.com/signup) 。 还需要 [申请开发人员帐户](https://developer.twitter.com/en/apply/user.html)。 有关详细信息，请参阅 [应用访问权限](https://developer.twitter.com/en/apply-for-access)。
+若要在 Azure AD B2C 中为使用 Twitter 帐户的用户登录，需要创建 Twitter 应用程序。 如果还没有 Twitter 帐户，可以在注册 [https://twitter.com/signup](https://twitter.com/signup) 。 还需要 [申请开发人员帐户](https://developer.twitter.com/en/apply/user.html)。 有关详细信息，请参阅 [应用访问权限](https://developer.twitter.com/en/apply-for-access)。
 
 1. 用你的 Twitter 帐户凭据登录到 [Twitter 开发人员门户](https://developer.twitter.com/portal/projects-and-apps) 。
 1. 在 " **独立应用**" 下，选择 " **+ 创建应用**"。
@@ -45,7 +45,7 @@ ms.locfileid: "98232686"
 1. 在 "**身份验证设置**" 下，选择 "**编辑**"
     1. 选择 " **启用腿 OAuth** " 复选框。
     1. 选中 " **从用户请求电子邮件地址** " 复选框。
-    1. 对于 **回调 url**，请输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` 。 将 `your-tenant` 替换为你的租户的名称，并将 `your-user-flow-Id` 替换为你的用户流的标识符。 例如，`b2c_1A_signup_signin_twitter`。 输入租户名称和用户流 id 时，必须使用所有小写字母，即使它们是在 Azure AD B2C 中使用大写字母定义的也是如此。
+    1. 对于 **回调 url**，请输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` 。 将 `your-tenant` 替换为你的租户的名称，并将 `your-user-flow-Id` 替换为你的用户流的标识符。 例如，`b2c_1A_signup_signin_twitter`。 输入租户名称和用户流 id 时，请使用所有小写字母，即使它们是在 Azure AD B2C 中使用大写字母定义的也是如此。
     1. 对于 " **网站 URL**"，请输入 `https://your-tenant.b2clogin.com` 。 将 `your-tenant` 替换为租户的名称。 例如，`https://contosob2c.b2clogin.com`。
     1. 输入 **服务条款** 的 URL，例如 `http://www.contoso.com/tos` 。 策略 URL 是你维护的一个页面，用于为你的应用程序提供条款和条件。
     1. 输入 **隐私策略** 的 URL，例如 `http://www.contoso.com/privacy` 。 策略 URL 是继续提供应用程序的隐私信息的页面。
@@ -53,7 +53,7 @@ ms.locfileid: "98232686"
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-twitter-as-an-identity-provider-in-your-tenant"></a>将 Twitter 配置为租户中的标识提供者
+## <a name="configure-twitter-as-an-identity-provider"></a>将 Twitter 配置为标识提供程序
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
@@ -82,7 +82,7 @@ ms.locfileid: "98232686"
 
 你需要存储前面在 Azure AD B2C 租户中记录的机密密钥。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 4. 在“概述”页上选择“标识体验框架”。
@@ -93,9 +93,9 @@ ms.locfileid: "98232686"
 9. 在“密钥用法”处选择 `Encryption`。
 10. 单击“创建”。
 
-## <a name="add-a-claims-provider"></a>添加声明提供程序
+## <a name="configure-twitter-as-an-identity-provider"></a>将 Twitter 配置为标识提供程序
 
-如果希望用户使用 Twitter 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与其进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
+若要允许用户使用 Twitter 帐户登录，需要将该帐户定义为声明提供程序，该提供程序 Azure AD B2C 可以通过终结点进行通信。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
 可以通过在策略的扩展文件中将 Twitter 帐户添加到 **ClaimsProvider** 元素，将该帐户定义为声明提供程序。
 
@@ -108,7 +108,7 @@ ms.locfileid: "98232686"
       <Domain>twitter.com</Domain>
       <DisplayName>Twitter</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Twitter-OAUTH1">
+        <TechnicalProfile Id="Twitter-OAuth1">
           <DisplayName>Twitter</DisplayName>
           <Protocol Name="OAuth1" />
           <Metadata>
@@ -145,59 +145,29 @@ ms.locfileid: "98232686"
 4. 将 **client_id** 的值替换为前面记录的 *API 密钥机密* 。
 5. 保存文件。
 
-### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-至此，已配置策略，以便 Azure AD B2C 知道如何与 Twitter 帐户通信。 请尝试上传该策略的扩展文件，这只是为了确认它到目前为止不会出现任何问题。
 
-1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略” 。
-2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
-3. 单击“上载” 。
-
-## <a name="register-the-claims-provider"></a>注册声明提供程序
-
-此时，标识提供者已设置，但不会出现在任何注册或登录屏幕中。 若要使其可用，需要创建现有模板用户旅程的副本，并对其进行修改，使其具有 Twitter 标识提供者。
-
-1. 打开初学者包中的 *TrustFrameworkBase.xml* 文件。
-2. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
-3. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
-4. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
-5. 重命名用户旅程的 ID。 例如，`SignUpSignInTwitter`。
-
-### <a name="display-the-button"></a>显示按钮
-
-**ClaimsProviderSelection** 元素类似于注册或登录屏幕上的标识提供者按钮。 如果为 Twitter 帐户添加 **ClaimsProviderSelection** 元素，则当用户进入页面时，会显示一个新按钮。
-
-1. 在创建的用户旅程中找到包含 `Order="1"` 的 **OrchestrationStep** 元素。
-2. 在 **ClaimsProviderSelects** 下，添加以下元素。 将 **TargetClaimsExchangeId** 设置为适当的值，例如 `TwitterExchange`：
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="TwitterExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>将按钮链接到操作
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAuth1" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 Twitter 帐户通信以接收令牌。
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
-2. 添加以下 **ClaimsExchange** 元素，确保在 ID 和 **TargetClaimsExchangeId** 处使用相同的值：
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
-    ```xml
-    <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
-    ```
-
-    将 **TechnicalProfileReferenceId** 的值更新为之前创建的技术配置文件的 ID。 例如，`Twitter-OAUTH1`。
-
-3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
-
-## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
-
-更新用于启动创建的用户旅程的信赖方 (RP) 文件。
-
-1. 在工作目录中创建 *SignUpOrSignIn.xml* 的副本并将其重命名。 例如，将其重命名为 *SignUpSignInTwitter.xml*。
-1. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如，`SignUpSignInTwitter`。
-1. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_twitter`
-1. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，以匹配所创建的新用户旅程的 ID (SignUpSignTwitter)。
-1. 保存更改并上传文件，然后选择列表中的新策略。
-1. 确保在“选择应用程序”字段选择你创建的 Azure AD B2C 应用程序，然后单击“立即运行”对其进行测试 。
 
 ::: zone-end
