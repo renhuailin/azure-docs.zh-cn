@@ -259,7 +259,7 @@
           href: connector-azure-databricks-delta-lake.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL Database
+        - name: Azure SQL 数据库
           href: connector-azure-sql-database.md
         - name: Azure SQL 托管实例
           href: connector-azure-sql-managed-instance.md
@@ -796,6 +796,10 @@
       href: /python/api/overview/azure/datafactory
 - name: 资源
   items:
+    - name: 数据流 - 预留容量概述
+      href: data-flow-reserved-capacity-overview.md
+    - name: 数据流 - 了解预留费用
+      href: data-flow-understand-reservation-charges.md
     - name: 白皮书
       href: whitepapers.md
     - name: 常见问题解答

@@ -4,13 +4,13 @@ description: 本文会经常更新有关 Azure 认知服务语言理解 API 的�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/12/2021
-ms.openlocfilehash: 4bcd25e96aba1ca103737679540cb9ff67674914
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.date: 01/21/2021
+ms.openlocfilehash: 5fdde81d31eae4c50b86a5553742f9b599f32505
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179123"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693589"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
@@ -21,6 +21,7 @@ ms.locfileid: "98179123"
 ### <a name="january-2021"></a>2021 年 1 月
 
 * V3 预测 API 现支持[必应拼写检查 API](luis-how-to-publish-app.md#spelling-correction)。
+* 区域门户（au.luis.ai 和 eu.luis.ai）已合并为一个门户和 URL。 如果你使用的是这些门户之一，则将自动重定向到 luis.ai。
 
 ### <a name="december-2020"></a>2020 年 12 月
 

@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 36b7c5caf54001abba1f17500c680f96934657eb
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d52430c87d99f8837c78fcff89d8b214e45350ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216761"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934937"
 ---
 # <a name="manage-public-ip-addresses"></a>管理公共 IP 地址
 
@@ -77,9 +77,9 @@ ms.locfileid: "98216761"
 ## <a name="view-modify-settings-for-or-delete-a-public-ip-address"></a>查看、修改公共 IP 地址的设置或删除公共 IP 地址
 
    - 查看/列出：用于检查公共 IP 的设置，包括 SKU、地址、任何适用的关联（例如虚拟机 NIC、负载均衡器前端）。
-   - **修改**：用于使用 [创建公共 IP 地址](#create-a-public-ip-address)的第 4 步中的信息来修改设置，如空闲超时、DNS 名称标签或分配方法。   (将公共 IP SKU 从 "基本" 升级到 "标准"，请参阅 [升级 Azure 公共 ip 地址](./virtual-network-public-ip-address-upgrade.md)。 ) 
+   - **修改**：用于使用 [创建公共 IP 地址](#create-a-public-ip-address)的第 4 步中的信息来修改设置，如空闲超时、DNS 名称标签或分配方法。  （有关将公共 IP SKU 从“基本”升级到“标准”的完整过程，请参阅[升级 Azure 公共 IP 地址](./virtual-network-public-ip-address-upgrade.md)。）
    >[!WARNING]
-   >若要将公共 IP 地址的分配从静态更改为动态，必须先从任何适用的 IP 配置中取消关联该地址 (参阅 **删除** 部分) 。  另外请注意，在将分配方法从静态更改为动态时，已分配给公共 IP 地址的 IP 地址会丢失。 尽管 Azure 公共 DNS 服务器会保留静态或动态地址与任何 DNS 名称标签（若已定义）之间的映射，但如果虚拟机在处于停止（解除分配）状态之后启动，动态 IP 地址可能更改。 为防止地址变化，请分配静态 IP 地址。
+   >若要将公共 IP 地址的分配方法从静态更改为动态，必须先将该地址与任何适用的 IP 配置取消关联（请参阅“删除”部分）。  另外请注意，在将分配方法从静态更改为动态时，已分配给公共 IP 地址的 IP 地址会丢失。 尽管 Azure 公共 DNS 服务器会保留静态或动态地址与任何 DNS 名称标签（若已定义）之间的映射，但如果虚拟机在处于停止（解除分配）状态之后启动，动态 IP 地址可能更改。 为防止地址变化，请分配静态 IP 地址。
    
 |操作|Azure 门户|Azure PowerShell|Azure CLI|
 |---|---|---|---|
@@ -92,14 +92,14 @@ ms.locfileid: "98216761"
 |资源|Azure 门户|Azure PowerShell|Azure CLI|
 |---|---|---|---|
 |[虚拟机](./remove-public-ip-address-vm.md)|选择“取消关联”，以将该 IP 地址与 NIC 配置取消关联，然后选择“删除” 。|使用 [Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) 来将该 IP 地址与 NIC 配置取消关联；使用 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 来删除|使用 [az network public-ip update --remove](/cli/azure/network/public-ip#az-network-public-ip-update) 来将该 IP 地址与 NIC 配置取消关联；使用 [az network public-ip delete](/cli/azure/network/public-ip#az-network-public-ip-delete) 来删除 |
-|负载均衡器前端 | 导航到未使用的公共 IP 地址并选择“关联”，然后选择具有相关的前端 IP 配置的负载均衡器来替换该地址（然后可使用与用于 VM 的同一方法来删除旧 IP）  | 使用 [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) 将新的前端 IP 配置关联到公共负载均衡器；使用 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 来删除；也可以使用 [Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) 来删除前端 IP 配置（如果有多个） |使用 [az network lb frontend-ip update](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_update) 将新的前端 IP 配置关联到公共负载均衡器；使用 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 来删除，也可以使用 [az network lb frontend-ip delete](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_delete) 来删除前端 IP 配置（如果有多个）|
+|负载均衡器前端 | 导航到未使用的公共 IP 地址并选择“关联”，然后选择具有相关的前端 IP 配置的负载均衡器来替换该地址（然后可使用与用于 VM 的同一方法来删除旧 IP）  | 使用 [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) 将新的前端 IP 配置关联到公共负载均衡器；使用 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 来删除；也可以使用 [Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) 来删除前端 IP 配置（如果有多个） |使用 [az network lb frontend-ip update](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_update) 将新的前端 IP 配置关联到公共负载均衡器；使用 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 来删除，也可以使用 [az network lb frontend-ip delete](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_delete) 来删除前端 IP 配置（如果有多个）|
 |防火墙|空值| 使用 [Deallocate()](../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall) 来解除分配防火墙并删除所有 IP 配置 | 使用 [az network firewall ip-config delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) 来删除 IP（但必须先使用 PowerShell 来解除分配）|
 
 ## <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 
 在使用具有公共 IP 的虚拟机规模集时，不存在与单个虚拟机实例关联的独立公共 IP 对象。 但是，公共 IP 前缀对象[可用于生成实例 IP](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/)。
 
-若要列出虚拟机规模集上的公共 IP，可以使用 PowerShell ([Get-AzPublicIpAddress -VirtualMachineScaleSetName](/powershell/module/az.network/get-azpublicipaddress)) 或 CLI ([az vmss list-instance-public-ips](/cli/azure/vmss?view=azure-cli-latest#az_vmss_list_instance_public_ips))。
+若要列出虚拟机规模集上的公共 IP，可以使用 PowerShell ([Get-AzPublicIpAddress -VirtualMachineScaleSetName](/powershell/module/az.network/get-azpublicipaddress)) 或 CLI ([az vmss list-instance-public-ips](/cli/azure/vmss#az_vmss_list_instance_public_ips))。
 
 有关详细信息，请参阅 [Azure 虚拟机规模集的网络](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine)。
 

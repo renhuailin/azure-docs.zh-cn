@@ -1,5 +1,5 @@
 ---
-title: 将数据工厂沿袭数据推送到 Azure 监控范围
+title: 将数据工厂世系数据推送到 Azure Purview
 description: 了解如何将数据工厂沿袭数据推送到 Azure 监控范围
 services: data-factory
 ms.author: lle
@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: 6b50c9440a958bc1398e79ddf3c5a0984816ec45
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e87a9d677fee94d410099db1da80a56b5539048c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603140"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935466"
 ---
 # <a name="push-data-factory-lineage-data-to-azure-purview-preview"></a>将数据工厂沿袭数据推送到 Azure 监控范围 (预览) 
 
@@ -29,7 +29,7 @@ ms.locfileid: "96603140"
 ## <a name="prerequisites"></a>先决条件
 * **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * **Azure 数据工厂**。 如果没有 Azure 数据工厂，请参阅 [创建 Azure 数据工厂](./quickstart-create-data-factory-portal.md)。
-* **Azure 监控范围帐户**。 监控范围帐户捕获数据工厂生成的所有沿袭数据。 如果没有 Azure 监控范围帐户，请参阅 [创建 Azure 监控范围](https://docs.microsoft.com/azure/purview/create-catalog-portal)。
+* **Azure 监控范围帐户**。 监控范围帐户捕获数据工厂生成的所有沿袭数据。 如果没有 Azure 监控范围帐户，请参阅 [创建 Azure 监控范围](../purview/create-catalog-portal.md)。
 
 
 ## <a name="run-data-factory-activities-and-push-lineage-data-to-azure-purview"></a>运行数据工厂活动，并将沿袭数据推送到 Azure 监控范围
@@ -76,6 +76,6 @@ ms.locfileid: "96603140"
 > 对于 "执行 SSIS 包" 活动的沿袭，我们只支持源和目标。 尚不支持转换的沿袭。
 
 ## <a name="next-steps"></a>后续步骤
-[目录沿袭用户指南](https://docs.microsoft.com/azure/purview/catalog-lineage-user-guide)
+[目录沿袭用户指南](../purview/catalog-lineage-user-guide.md)
 
 [将数据工厂连接到 Azure 监控范围](connect-data-factory-to-azure-purview.md)

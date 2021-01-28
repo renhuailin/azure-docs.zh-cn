@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 92bf066c9769cc4b2525923b9e18ed3c0e9c577a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246564"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937146"
 ---
 # <a name="identify-required-appliances"></a>确定所需设备
 
@@ -38,7 +38,7 @@ ms.locfileid: "98246564"
 
 本部分提供可用的物理传感器型号的概述。 你可以购买包含预配置软件的传感器，或购买未预先配置的传感器。
 
-| 部署类型 | 企业 | Enterprise | SMB |
+| 部署类型 | 企业 | 企业 | SMB |
 |--|--|--|--|
 | 映像 | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="公司级别的模型。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="企业级模型。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="SMB 级别的模型。"::: |
 | 建模 | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 |
@@ -60,7 +60,7 @@ ms.locfileid: "98246564"
 
 本部分提供可用虚拟传感器的概述。
 
-| 部署类型 | 企业 | Enterprise | SMB |
+| 部署类型 | 企业 | 企业 | SMB |
 |--|--|--|--|
 | 最大带宽 | 2.5 Gb/秒 | 800 Mb/秒 | 160 Mb/秒 |
 | 受保护的最大设备 | 30,000 | 10,000 | 2,500 |
@@ -69,7 +69,7 @@ ms.locfileid: "98246564"
 
 管理控制台作为虚拟部署提供。
 
-| 部署类型 | Enterprise |
+| 部署类型 | 企业 |
 |--|--|
 | 设备类型 | HPE DL20，VM |
 | 托管传感器数量 | 最大 300 |
@@ -96,7 +96,7 @@ ms.locfileid: "98246564"
 |--|--|
 | 底盘 | 1U 机架服务器 |
 | 维度 | 42.9 x 43.46 x 70.7 (厘米) /1.69 "x 17.11" x 27.83 " ()  |
-| 重量 | 最大16.27 千克 (35.86 lb)  |
+| 权重 | 最大16.27 千克 (35.86 lb)  |
 | 处理器 | 3.2 4215 Intel 11 分钟 cache、8c/16T、130 W |
 | 高速芯片组家族 | Intel C621 |
 | 内存 | 32 GB = 2 x 16-GB 2666MT/s DDR4 ECC UDIMM |
@@ -132,7 +132,7 @@ ms.locfileid: "98246564"
 |--|--|
 | 底盘 | 1U 机架服务器 |
 | 尺寸 (高度 x 宽度 x 深度)  | 4.32 x 43.46 x 38.22 厘米/1.70 x 17.11 x 15.05 英寸 |
-| 重量 | 7.9 千克/17.41 lb |
+| 权重 | 7.9 千克/17.41 lb |
 | 处理器 | Intel 强 E-2234，3.6 GHz，4C/8T，71 W |
 | 高速芯片组家族 | Intel C242 |
 | 内存 | 2 x 16 GB 双级别 x8 DDR4-2666 |
@@ -167,7 +167,7 @@ ms.locfileid: "98246564"
 |--|--|
 | 底盘 | 1U 机架服务器 |
 | 尺寸 (高度 x 宽度 x 深度)  | 4.32 x 43.46 x 38.22 厘米/1.70 x 17.11 x 15.05 英寸 |
-| 重量 | 7.88 千克/17.37 lb |
+| 权重 | 7.88 千克/17.37 lb |
 | 处理器 | Intel 强 E-2224、3.4 GHz、4C、71 W |
 | 高速芯片组家族 | Intel C242 |
 | 内存 | 1 x 8 GB 双级别 x8 DDR4-2666 |
@@ -199,7 +199,7 @@ ms.locfileid: "98246564"
 
 ### <a name="sensors"></a>传感器
 
-| 类型 | 企业 | Enterprise | SMB |
+| 类型 | 企业 | 企业 | SMB |
 |--|--|--|--|
 | vCPU | 32 | 8 | 4 |
 | 内存 | 32 GB | 32 GB | 8 GB |
@@ -207,7 +207,7 @@ ms.locfileid: "98246564"
 
 ### <a name="on-premises-management-console-appliance"></a>本地管理控制台设备
 
-| 类型 | Enterprise |
+| 类型 | 企业 |
 |--|--|
 | 说明 | 适用于企业部署类型的虚拟设备 |
 | vCPU | 8 |
@@ -220,12 +220,12 @@ ms.locfileid: "98246564"
 
 本部分详细介绍了由 Microsoft 认证但未作为预配置设备提供的其他设备。
 
-| 部署类型 | Enterprise |
+| 部署类型 | 企业 |
 |--|--|
 | 映像 | :::image type="content" source="media/how-to-prepare-your-network/deployment-type-enterprise-for-azure-defender-for-iot-v2.png" alt-text="企业部署类型。"::: |
 | 建模 | Dell PowerEdge R340 XL |
 | 监视端口 | 最多9个 RJ45 或六个 OPT |
-| 最大带宽 [1](#anchortext2)| 1G Mb/秒 |
+| 最大带宽 [1](#anchortext2)| 1 Gb/秒 |
 | 最大受保护设备 | 10,000 |
 
 <a id="anchortext2">一个</a> 带宽容量可能因协议分发而异。
@@ -240,7 +240,7 @@ ms.locfileid: "98246564"
 |--|--|
 | 底盘 | 1U 机架服务器 |
 | 维度 | 42.8 x 434.0 x 596 (mm) /1.67 "x 17.09" x 23.5 " ()  |
-| 重量 | 最大29.98 磅/13.6 公斤 |
+| 权重 | 最大29.98 磅/13.6 公斤 |
 | 处理器 | Intel 2144G 3.6 GHz、8分钟缓存、4C/8T、turbo (71 W)  |
 | 高速芯片组家族 | Intel C246 |
 | 内存 | 32 GB = 2 x 16-GB 2666MT/s DDR4 ECC UDIMM |

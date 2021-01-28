@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 09ce611b5bca6c04d55da95a82a8fcd7ae348db3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 8933dd6655223db092597aedf839fd800119864a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049210"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683999"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教程：扩建端到端解决方案
 
@@ -117,49 +117,9 @@ Query
 
 ### <a name="publish-the-app"></a>发布应用
 
-返回到打开 AdtE2ESample 项目的 Visual Studio 窗口中，从“解决方案资源管理器”窗格中，右键选择 SampleFunctionsApp 项目文件，然后点击“发布” 。
+返回到打开 AdtE2ESample 项目的 Visual Studio 窗口中，在“解决方案资源管理器”窗格中查找 SampleFunctionsApp 项目 。
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Visual Studio：发布项目":::
-
-在接下来的“发布”页中，保留选择的默认 Azure 目标，然后点击“下一步”。 
-
-对于特定目标，请选择“Azure 函数应用(Windows)”，然后点击“下一步”。
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="在 Visual Studio 中发布 Azure 函数：特定目标":::
-
-在“Functions 实例”页上，选择你的订阅。 这应该会使订阅中资源组填入方框。
-
-选择实例的资源组，然后点击 + 来创建新的 Azure 函数。
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="在 Visual Studio 中发布 Azure 函数：Functions 实例（在函数应用之前）":::
-
-在“函数应用(Windows) - 新建”窗口中，按如下所示填写字段：
-* “名称”是 Azure 将用于托管 Azure Functions 应用的消耗计划的名称。 这也将成为保存实际函数的函数应用的名称。 你可以选择自己的唯一值，也可以保留默认建议。
-* 确保“订阅”与要使用的订阅匹配 
-* 确保“资源组”是你想要使用的资源组
-* 将“计划类型”保留为“消耗”
-* 在“位置”中，选择符合资源组位置的位置
-* 使用“新建…”链接创建新的 Azure 存储资源。 设置与资源组相匹配的位置，使用其他默认值，然后点击“确定”。
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="在 Visual Studio 中发布 Azure 函数：函数应用(Windows) - 新建":::
-
-然后选择“创建”。
-
-这会使你返回到“Functions 实例”页，此时新函数应用会显示在资源组下。 点击“完成”。
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="在 Visual Studio 中发布 Azure 函数：Functions 实例（在函数应用之后）":::
-
-在 Visual Studio 主窗口重新打开的“发布”窗格中，检查所有信息是否都正确无误，然后选择“发布”。
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="在 Visual Studio 中发布 Azure 函数：发布":::
-
-> [!NOTE]
-> 如果看到如下所示的弹出窗口：:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="在 Visual Studio 中发布 Azure 函数：发布凭据" border="false":::
-> 依次选择“尝试从 Azure 检索凭据”和“保存” 。
->
-> 若看到“升级 Azure 上的 Functions 版本”或“你的 Functions 运行时版本与在 Azure 中运行的版本不匹配”警告 ：
->
-> 请按照提示升级到最新的 Azure Functions 运行时版本。 若使用旧版本的 Visual Studio 而不是本教程开头的“先决条件”部分中推荐的版本，则可能出现此问题。
+[!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
 ### <a name="assign-permissions-to-the-function-app"></a>向函数应用分配权限
 
@@ -167,11 +127,13 @@ Query
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
-在 Azure Cloud Shell 中，使用以下命令设置一个应用程序设置，供函数应用用来引用 Azure 数字孪生实例。
+在 Azure Cloud Shell 中，使用以下命令设置一个应用程序设置，供函数应用用来引用 Azure 数字孪生实例。 在占位符中填写资源详细信息（请记住，Azure 数字孪生实例 URL 是其主机名，以 https:// 开头）。
 
 ```azurecli-interactive
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
+
+输出是 Azure 函数的设置列表，其中现在应包含一个名为 ADT_SERVICE_URL 的条目。
 
 使用以下命令创建系统管理的标识。 记下输出中的 principalId 字段。
 

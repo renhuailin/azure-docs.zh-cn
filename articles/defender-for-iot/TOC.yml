@@ -3,13 +3,12 @@
 - name: 概述
   href: overview.md
   items:
-    - name: 新增功能
-      href: release-notes.md
     - name: 解决方案体系结构
       href: architecture.md
-- name: 快速入门
-  expanded: true
-  items:
+    - name: 新增功能
+      href: release-notes.md
+    - name: 快速入门
+      expanded: true
     - name: 适用于组织的无代理解决方案
       items:
         - name: 系统先决条件
@@ -154,6 +153,16 @@
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
         - name: 处理本地管理控制台上的警报
           href: how-to-work-with-alerts-on-premises-management-console.md
+        - name: 创建报表
+          items:
+            - name: 创建风险评估报告
+              href: how-to-create-risk-assessment-reports.md
+            - name: 创建攻击途径报告
+              href: how-to-create-attack-vector-reports.md
+            - name: 创建数据挖掘报告
+              href: how-to-create-data-mining-queries.md
+            - name: 创建趋势和统计信息报告
+              href: how-to-create-data-mining-queries.md
         - name: 丰富设备信息
           items:
             - name: 处理设备通知
@@ -168,8 +177,6 @@
         - name: 跟踪传感器活动
           href: how-to-track-sensor-activity.md
           displayName: 'timeline, time line, time-line, event'
-        - name: 生成报告
-          href: how-to-generate-reports.md
         - name: 排查传感器和本地管理控制台问题
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: 设置 SNMP MIB 监视

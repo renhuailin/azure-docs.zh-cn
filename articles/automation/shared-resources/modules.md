@@ -3,14 +3,14 @@ title: 管理 Azure 自动化中的模块
 description: 本文介绍如何使用 PowerShell 模块在 DSC 配置中启用 runbook 和 DSC 资源中的 cmdlet。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 10/22/2020
+ms.date: 01/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: c940ede63e2a467a29ae56308893d573925d0039
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d62ed96f86078839e66a4cf2ce71f304de2abf4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458143"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936638"
 ---
 # <a name="manage-modules-in-azure-automation"></a>管理 Azure 自动化中的模块
 
@@ -25,10 +25,18 @@ Azure 自动化使用许多 PowerShell 模块在 runbook DSC 配置中启用 run
 
 创建自动化帐户时，Azure 自动化默认导入一些模块。 请参阅[默认模块](#default-modules)。
 
+## <a name="sandboxes"></a>沙盒
+
 当自动化执行 runbook 和 DSC 编译作业时，它会将模块加载到沙盒中，其中 runbook 可以运行，并且 DSC 配置可以编译。 自动化还自动将任何 DSC 资源放置到 DSC 拉取服务器上的模块中。 计算机在应用 DSC 配置时可以提取资源。
 
 >[!NOTE]
 >请务必仅导入 runbook 和 DSC 配置所需的模块。 不建议导入根 Az 模块。 它包括可能不需要的许多其他模块，这可能导致性能问题。 改为导入单个模块，如 Az.Compute。
+
+云沙盒最多支持48系统调用，并出于安全原因限制所有其他调用。 云沙盒不支持其他功能，例如凭据管理和某些网络。
+
+由于包含了模块和 cmdlet 的数量，因此很难提前知道哪些 cmdlet 会发出不受支持的调用。 通常，我们发现了需要提升访问权限的 cmdlet 的问题，需要凭据作为参数或与网络相关的 cmdlet。 沙盒不支持执行完整堆栈网络操作的任何 cmdlet，包括 AIPService PowerShell 模块中的 [AipService](/powershell/module/aipservice/connect-aipservice) 和从 Set-dnsclient 模块 [解析 DnsName](/powershell/module/dnsclient/resolve-dnsname) 。
+
+这些是沙盒的已知限制。 建议的解决方法是部署 [混合 Runbook 辅助角色](../automation-hybrid-runbook-worker.md) 或使用 [Azure Functions](../../azure-functions/functions-overview.md)。
 
 ## <a name="default-modules"></a>默认模块
 
@@ -169,7 +177,7 @@ TestModule
 
 在每个版本文件夹内，将组成模块的 hbase-runner.psm1、. psd1 或 PowerShell 模块 **.dll** 文件复制到相应的版本文件夹中。 压缩 module 文件夹，使 Azure 自动化可以将其作为单个 .zip 文件导入。 尽管自动化只显示导入的模块的最高版本，但如果模块包包含模块的并行版本，则它们都可在 runbook 或 DSC 配置中使用。  
 
-尽管自动化支持的模块包含同一包中的并行版本，但它不支持跨模块包导入使用模块的多个版本。 例如，将包含版本1和2的 **模块 A**导入到自动化帐户中。 稍后，将 **模块 A** 更新为包含版本3和4，当你将导入到自动化帐户时，只能在任何 RUNBOOK 或 DSC 配置中使用版本3和4。 如果需要所有版本-1、2、3和4可用，则导入的 .zip 文件应包含版本1、2、3和4。
+尽管自动化支持的模块包含同一包中的并行版本，但它不支持跨模块包导入使用模块的多个版本。 例如，将包含版本1和2的 **模块 A** 导入到自动化帐户中。 稍后，将 **模块 A** 更新为包含版本3和4，当你将导入到自动化帐户时，只能在任何 RUNBOOK 或 DSC 配置中使用版本3和4。 如果需要所有版本-1、2、3和4可用，则导入的 .zip 文件应包含版本1、2、3和4。
 
 如果要在 runbook 之间使用同一个模块的不同版本，则应始终使用 cmdlet 声明要在 runbook 中使用的版本 `Import-Module` ，并包括参数 `-RequiredVersion <version>` 。 即使您要使用的版本是最新版本。 这是因为 runbook 作业可以在同一沙盒中运行。 如果沙盒已经显式加载了某个版本号的模块，因为该沙箱中的上一个作业认为这样做了，则该沙箱中的后续作业不会自动加载该模块的最新版本。 这是因为它已在沙盒中加载。
 

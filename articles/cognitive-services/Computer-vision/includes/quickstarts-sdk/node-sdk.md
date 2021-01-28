@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 50d1222f5c33b327c92799ccf27ed0650ba0226c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 8fd7c820a25f098799f1c2fa69ba700a334e932d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560859"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98698131"
 ---
 <a name="HOLTop"></a>
 
@@ -58,6 +58,12 @@ npm init
 npm install @azure/cognitiveservices-computervision
 ```
 
+同时安装异步模块：
+
+```console
+npm install async
+```
+
 应用的 `package.json` 文件将使用依赖项进行更新。
 
 创建新文件 *index.js*，将其在文本编辑器中打开。 添加以下 import 语句。
@@ -72,7 +78,7 @@ npm install @azure/cognitiveservices-computervision
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_vars)]
 
 > [!IMPORTANT]
-> 转到 Azure 门户。 如果在“先决条件”部分中创建的 [产品名称] 资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
+> 转到 Azure 门户。 如果在“先决条件”部分中创建的计算机视觉资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
 >
 > 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
 

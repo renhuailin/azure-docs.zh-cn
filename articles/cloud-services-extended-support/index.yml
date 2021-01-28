@@ -10,12 +10,12 @@ metadata:
   author: mimckitt
   ms.author: mimckitt
   ms.date: 03/06/2020
-  ms.openlocfilehash: 8f999851c1566b2a488daa4bdc5da73761f7ce0b
-  ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+  ms.openlocfilehash: efbdf689b895278445f022d15473591e09a691f9
+  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/23/2021
-  ms.locfileid: "98743645"
+  ms.lasthandoff: 01/27/2021
+  ms.locfileid: "98878725"
 landingContent:
 - title: 关于云服务（外延支持）
   linkLists:
@@ -47,6 +47,8 @@ landingContent:
       url: available-sizes.md
     - text: 常见问题解答
       url: faq.md
+    - text: 来宾 OS 发行动态
+      url: ../cloud-services/cloud-services-guestos-update-matrix.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
 - title: 操作方法指南
   linkLists:
   - linkListType: how-to-guide
@@ -63,6 +65,8 @@ landingContent:
   linkLists:
   - linkListType: sample
     links:
+    - text: 示例模板
+      url: https://github.com/Azure-Samples/cloud-services-extended-support
     - text: 创建云服务部署
       url: sample-create-cloud-service.md
     - text: 检索有关云服务部署的信息

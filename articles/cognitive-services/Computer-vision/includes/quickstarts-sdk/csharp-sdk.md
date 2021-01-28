@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1826edb31c442fb10b8053433ec01ee5abad0eb2
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 8bd919d2896b187d32ad5347e6b8729ccb8555de
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98109353"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612898"
 ---
 <a name="HOLTop"></a>
 
@@ -255,24 +255,9 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 ### <a name="call-the-read-api"></a>调用读取 API
 
-定义用于读取文本的新方法。 添加以下代码，该代码对给定图像调用 ReadAsync 方法。 这会返回一个操作 ID 并启动异步进程来读取图像的内容。
+添加以下方法，该方法对给定图像调用 ReadAsync 方法。 这会返回一个操作 ID 并启动异步进程来读取图像的内容。 接下来，获取从 ReadAsync 调用返回的操作 ID，并使用它轮询服务以获取操作结果。 最后，将提取的文本输出到控制台。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_url)]
-
-### <a name="get-read-results"></a>获取读取结果
-
-接下来，获取从 ReadAsync 调用返回的操作 ID，并使用它查询服务以获取操作结果。 下面的代码检查操作，直到返回结果。 然后，它将提取的文本数据输出到控制台。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_response)]
-
-### <a name="display-read-results"></a>显示读取结果
-
-添加以下代码来分析和显示检索到的文本数据，并完成方法定义。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_display)]
-
-> [!div class="nextstepaction"]
-> [我阅读了文字](?success=read-printed-handwritten-text#run-the-application) [我遇到问题](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text)
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -289,8 +274,6 @@ dotnet run
 ```
 
 ---
-> [!div class="nextstepaction"]
-> [我运行了应用程序](?success=run-the-application#clean-up-resources) [我遇到问题](https://www.research.net/r/7QYZKHL?issue=run-the-application)
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -299,14 +282,10 @@ dotnet run
 * [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-> [!div class="nextstepaction"]
-> [我清理了资源](?success=clean-up-resources#next-steps) [我遇到问题](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) 
-
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 >[计算机视觉 API 参考 (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
-
 
 * [什么是计算机视觉？](../../overview.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上找到此示例的源代码。

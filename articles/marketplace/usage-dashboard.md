@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 563ccdb0633f94acccf3ade9faf1c40c28f108ac
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9f798751065d4889569f4b798ac864342f3e54ef
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462924"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934399"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“使用情况”仪表板
 
@@ -128,17 +128,17 @@ _**表1：数据字典**_
 | 客户所在国家/地区 | 客户所在国家/地区 | 客户提供的国家/地区名称。 国家/地区可能不同于客户的 Azure 订阅中的国家/地区。 |
 | 是预览版 SKU | 是预览版 SKU | 此值显示是否已将 SKU 标记为 "预览"。 如果已相应地标记了 SKU，则值为“是”，并且只有你授权的 Azure 订阅可以部署和使用此映像。 如果 SKU 未标识为“预览版”，则值为“否”。 |
 | SKU 计费类型 | SKU 计费类型 | 与产品/服务中的每个 SKU 关联的计费类型。 可能的值为：<ul><li>免费</li><li>已付</li></ul> |
-| IsInternal | 不推荐使用 | 不推荐使用 |
+| IsInternal | 已放弃 | 已放弃 |
 | VM 大小 | 虚拟机大小 | 对于基于 VM 的产品/服务类型，此实体表示与产品/服务的 SKU 关联的 VM 大小。 |
 | 云实例名称 | 云实例名称 | 部署 VM 的 Microsoft 云。 |
-| ServicePlanName | 不推荐使用 | 弃用 (与 SKU) 相同的定义 |
+| ServicePlanName | 已放弃 | 弃用 (与 SKU) 相同的定义 |
 | 产品名称 | 产品名称 | 商业应用商店的名称。 |
-| DeploymentMethod | 不推荐使用 | 弃用 (与产品/服务类型相同的定义) 
+| DeploymentMethod | 已放弃 | 弃用 (与产品/服务类型相同的定义) 
  |
-| 客户公司名称 | 客户公司名称 | 客户提供的公司名称。 该名称可以不同于客户的 Azure 订阅中的城市。 |
+| 客户公司名称 | 客户公司名称 | 客户提供的公司名称。 名称可能与客户的 Azure 订阅中的名称不同。 |
 | 使用日期 | 使用日期 | 基于使用情况的资产的使用事件生成日期。 |
 | IsMultisolution | 为 Multisolution | 表示产品/服务是否为 Multisolution 产品/服务类型。 |
-| 是新客户 | 不推荐使用 | 不推荐使用 |
+| 是新客户 | 已放弃 | 已放弃 |
 | 核心大小 | 核心大小 | 与基于 VM 的产品/服务关联的内核数。 |
 | 使用情况类型 | 使用情况类型 | 指示与产品/服务关联的使用情况事件是否是以下项之一：<ul><li>规范化使用情况</li><li>原始使用情况</li><li>计量使用</li></ul> |
 | 试用结束日期 | 试用结束日期 | 此订单的试用期将要结束或已结束的日期。 |

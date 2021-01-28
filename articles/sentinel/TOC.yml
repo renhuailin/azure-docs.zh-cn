@@ -223,14 +223,26 @@
           href: bookmarks.md
         - name: 使用实时流搜寻
           href: livestream.md
-        - name: 通过 REST-API 管理搜寻查询
-          href: hunting-with-rest-api.md
     - name: 删除 Azure Sentinel
       href: offboard.md
 - name: 参考（新增！）
   items:
+    - name: Azure RBAC 角色
+      items:
+        - name: 所有 Azure 角色
+          href: /azure/role-based-access-control/built-in-roles#all
+        - name: Azure Sentinel 角色
+          href: /azure/role-based-access-control/built-in-roles#security
     - name: REST API
-      href: /rest/api/securityinsights/
+      items:
+        - name: Azure Sentinel REST API
+          href: /rest/api/securityinsights/
+        - name: 通过 REST-API 管理搜寻查询
+          href: hunting-with-rest-api.md
+        - name: 通过 REST API 管理播放列表
+          href: watchlist-with-rest-api.md
+    - name: Azure Sentinel 逻辑应用连接器
+      href: /connectors/azuresentinel/
     - name: 网络规范化架构
       href: normalization-schema.md
     - name: UEBA 扩充

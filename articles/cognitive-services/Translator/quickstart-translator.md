@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: translator, translator 服务, 翻译文本, 音译文本, 语言检测
-ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 38bd4d28a8ae4c737155cd74bcb39d1acfaf699c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369522"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733488"
 ---
 # <a name="quickstart-get-started-with-translator"></a>快速入门：Translator 入门
 
@@ -59,7 +59,7 @@ ms.locfileid: "94369522"
 # <a name="java"></a>[Java](#tab/java)
 
 * 为项目创建一个工作目录。 例如：`mkdir sample-project`。
-* 使用 Gradle 初始化项目：`gradle init --type basic`。 当提示你选择一个 **DSL** 时，选择 **Kotlin** 。
+* 使用 Gradle 初始化项目：`gradle init --type basic`。 当提示你选择一个 **DSL** 时，选择 **Kotlin**。
 * 更新 `build.gradle.kts`。 请记住，你需要根据示例更新 `mainClassName`。
   ```java
   plugins {
@@ -123,7 +123,7 @@ ms.locfileid: "94369522"
 
 ## <a name="keys-and-endpoints"></a>密钥和终结点
 
-为简单起见，此页面上的示例使用了硬编码的密钥和终结点。 请记住 **完成后将密钥从代码中删除** ， **永远不要公开发布该密钥** 。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../cognitive-services-security.md)文章。
+为简单起见，此页面上的示例使用了硬编码的密钥和终结点。 请记住 **完成后将密钥从代码中删除**，**永远不要公开发布该密钥**。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../cognitive-services-security.md)文章。
 
 ## <a name="translate-text"></a>翻译文本 
 
@@ -968,7 +968,8 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 若要从 `translate` 终结点获取音译，请使用 `toScript` 参数。
 
-> ![NOTE] 有关可用语言和音译选项的完整列表，请参阅[语言支持](language-support.md)。
+> [!NOTE]
+> 有关可用语言和音译选项的完整列表，请参阅[语言支持](language-support.md)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1247,7 +1248,8 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 你还可以使用 `transliterate` 终结点来获取音译。 使用音译终结点时，必须提供源语言 (`language`)、源脚本/字母表 (`fromScript`) 以及输出脚本/字母表 (`toScript`) 作为参数。 在此示例中，我们将获取 สวัสดี 的音译。 
 
-> ![NOTE] 有关可用语言和音译选项的完整列表，请参阅[语言支持](language-support.md)。
+> [!NOTE]
+> 有关可用语言和音译选项的完整列表，请参阅[语言支持](language-support.md)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 

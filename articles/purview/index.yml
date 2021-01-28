@@ -6,15 +6,15 @@ metadata:
   description: 了解如何使用 Azure Purview - 组织可通过它来查找、了解和使用数据源。 教程、REST API 参考和其他文档介绍了如何规划和配置数据存储库 - 数据使用者可在此存储库中发现可用数据源，学习主题专家分享的知识。
   ms.service: purview
   ms.topic: landing-page
-  author: hrasheed-msft
-  ms.author: hrasheed
+  author: JasonWHowell
+  ms.author: jasonh
   ms.date: 11/29/2020
-  ms.openlocfilehash: 378a335653acf31275c312bcf4fa53b36bfa614e
-  ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+  ms.openlocfilehash: c9e9a32ca5c77082186f15a0eae3f3430347a02b
+  ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/03/2020
-  ms.locfileid: "96549410"
+  ms.lasthandoff: 01/28/2021
+  ms.locfileid: "98926921"
 landingContent:
 - title: 关于 Azure Purview
   linkLists:

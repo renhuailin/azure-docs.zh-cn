@@ -393,7 +393,7 @@
     - name: 计费自动化方案
       href: manage/cost-management-automation-scenarios.md
     - name: Azure 计费 API 概述
-      href: manage/usage-rate-card-overview.md
+      href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Azure 计费 REST API
       href: /rest/api/billing
     - name: Azure 使用情况 API 概述

@@ -120,6 +120,10 @@
       href: azure-monitor.md
     - name: 设置灾难恢复计划
       href: disaster-recovery.md
+    - name: 设置 KDC 代理
+      href: key-distribution-center-proxy.md
+    - name: 设置 RD 网关角色
+      href: rd-gateway-role.md
 - name: 概念
   items:
     - name: 内置角色
@@ -170,6 +174,10 @@
       href: azure-monitor-glossary.md
     - name: 数据位置
       href: data-locations.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
 - name: 疑难解答
   items:
     - name: 故障排除概述、反馈和支持

@@ -13,7 +13,7 @@
       href: invite-users.md
 - name: 教程
   items:
-    - name: 创建连接到 Azure 的新帐户
+    - name: 创建新帐户
       href: connect-to-azure.md
     - name: 使用视频索引器 API
       href: video-indexer-use-apis.md

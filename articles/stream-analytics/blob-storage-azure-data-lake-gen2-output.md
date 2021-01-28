@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 5484d13a70d8eaf905d3c8a51d575f177427019b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 01/27/2021
+ms.openlocfilehash: 3ce22837da2ca30249b399a297b6188d950b1ea4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882155"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935138"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>来自 Azure 流分析的 Blob 存储和 Azure Data Lake Gen2 输出
 
@@ -44,7 +44,7 @@ Azure Blob 存储提供了一种经济高效且可扩展的解决方案，用于
 使用 blob 存储作为输出时，在以下情况下 blob 中创建一个新文件：
 
 * 如果文件超出了允许的最大块数（目前为 50,000）。 可达到允许的最大块数，但不能达到允许的最大 blob 大小。 例如，如果输出率很高，则可以看到每个块的字节更多，并且文件大小会更大。 输出率较低时，每个块都有较少的数据，且文件大小较小。
-* 如果输出中出现架构更改，输出格式也需要固定的架构（CSV 和 Avro）。
+* 如果输出中有架构更改，并且输出格式需要固定的架构 (CSV、Avro、Parquet) 。
 * 如果作业重新启动，可选择在外部由用户停止或启动，或在内部进行系统维护或错误恢复。
 * 如果对查询进行完全分区，会为每个输出分区创建新文件。
 * 如果用户删除存储帐户的文件或容器。

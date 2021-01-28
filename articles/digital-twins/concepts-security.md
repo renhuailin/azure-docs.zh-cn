@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d62e7566038af6647cab2992b02184a4ea5ba30b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bf92765431ea6b0f80b96ab7d61e8e830220dc82
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344141"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934545"
 ---
 # <a name="secure-azure-digital-twins"></a>保护 Azure 数字孪生
 
@@ -89,15 +89,48 @@ Azure 提供了 **两个 azure 内置角色** ，用于授权对 Azure 数字孪
 
 如果用户尝试执行其角色不允许的操作，则可能会收到来自服务请求读取的错误 `403 (Forbidden)` 。 有关详细信息和疑难解答步骤，请参阅 [*故障排除： Azure 数字孪生请求失败，状态为： 403 (禁止访问)*](troubleshoot-error-403.md)。
 
+## <a name="managed-identity-for-accessing-other-resources-preview"></a>用于访问其他资源 (预览的托管标识) 
+
+将 [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) Azure 数字孪生实例的 **托管标识** ，可以允许实例轻松访问其他受 Azure AD 保护的资源，例如 [Azure Key Vault](../key-vault/general/overview.md)。 该标识由 Azure 平台管理，并且不要求你预配或轮换任何机密。 有关 Azure AD 中的托管标识的详细信息，请参阅  [*Azure 资源的托管标识*](../active-directory/managed-identities-azure-resources/overview.md)。 
+
+Azure 支持两种类型的托管标识：系统分配和用户分配。 目前，Azure 数字孪生仅支持 **系统分配的标识**。 
+
+你可以对 Azure 数字实例使用系统分配的托管标识，对 [自定义终结点](concepts-route-events.md#create-an-endpoint)进行身份验证。 Azure 数字孪生针对[事件中心](../event-hubs/event-hubs-about.md)和 [服务总线](../service-bus-messaging/service-bus-messaging-overview.md)目标的终结点   和用于死信事件的[azure 存储容器](../storage/blobs/storage-blobs-introduction.md)   终结点[](concepts-route-events.md#dead-letter-events)，支持系统分配的基于身份的身份验证。 [事件网格](../event-grid/overview.md)  托管标识当前不支持终结点。
+
+有关如何为 Azure 数字孪生启用系统管理的标识并使用它来路由事件的说明，请参阅 [*如何：启用托管标识以便路由事件 (预览)*](how-to-enable-managed-identities.md)。
+
+## <a name="private-network-access-with-azure-private-link-preview"></a>使用 Azure Private Link (预览) 进行专用网络访问
+
+[Azure Private Link](../private-link/private-link-overview.md)是一项服务，可用于通过[azure 虚拟网络 (VNet) ](../virtual-network/virtual-networks-overview.md)中的专用终结点访问 azure 资源， (例如[Azure 事件中心](../event-hubs/event-hubs-about.md)、 [azure 存储](../storage/common/storage-introduction.md)和[Azure Cosmos DB](../cosmos-db/introduction.md)) 和 azure 托管的客户和合作伙伴服务。 
+
+同样，可以将专用终结点用于 Azure 数字克隆实例，以允许位于虚拟网络中的客户端通过专用链接安全地访问实例。 
+
+专用终结点使用 Azure VNet 地址空间中的 IP 地址。 专用网络上的客户端与 Azure 数字孪生实例之间的网络流量通过 VNet 和 Microsoft 主干网络上的专用链接进行遍历，从而消除了对公共 internet 的公开。 下面是此系统的直观表示形式：
+
+:::image type="content" source="media/concepts-security/private-link.png" alt-text="显示 PowerGrid 公司网络的关系图，该公司是不带 internet/公有云访问权限的受保护 VNET，通过专用链接连接到名为 CityOfTwins 的 Azure 数字孪生实例。":::
+
+为 Azure 数字孪生实例配置专用终结点可以保护 Azure 数字孪生实例，消除公开泄露，并避免从 VNet 渗透数据。
+
+有关如何为 Azure 数字孪生设置专用链接的说明，请参阅 how [*to： Enable private access With Private link (preview)*](how-to-enable-private-link.md)。
+
+### <a name="design-considerations"></a>设计注意事项 
+
+使用 Azure 数字孪生的专用链接时，需要考虑以下几个因素：
+* **定价**：有关定价的详细信息，请参阅  [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link)。 
+* **区域可用性**：对于 Azure 数字孪生，此功能在 Azure 数字孪生可用的所有 azure 区域中提供。 
+* **每个 Azure 数字孪生实例的最大专用终结** 点数：10
+
+有关 "专用链接限制" 的信息，请参阅 [Azure 专用链接文档：限制](../private-link/private-link-service-overview.md#limitations)。
+
 ## <a name="service-tags"></a>服务标记
 
 **服务标记** 表示给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记，从而尽量减少频繁更新网络安全规则所需的复杂操作。 有关服务标记的详细信息，请参阅  [*虚拟网络标记*](../virtual-network/service-tags-overview.md)。 
 
-你可以使用服务标记来定义 [网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)或 Azure 防火墙上的网络访问控制    [Azure Firewall](../firewall/service-tags.md)，方法是在创建安全规则时使用服务标记来替换特定的 IP 地址。 在这种情况下，通过指定服务标记名称 **AzureDigitalTwins** (，在规则的相应 *源*   或 *目标* 字段中 AzureDigitalTwins)   ，可以允许或拒绝相应服务的流量。 
+你可以使用服务标记来定义 [网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)或 Azure 防火墙上的网络访问控制    [](../firewall/service-tags.md)，方法是在创建安全规则时使用服务标记来替换特定的 IP 地址。 在这种情况下，通过指定服务标记名称 **** (，在规则的相应 *源*   或 *目标* 字段中 AzureDigitalTwins)   ，可以允许或拒绝相应服务的流量。 
 
 下面是 **AzureDigitalTwins** 服务标记的详细信息。
 
-| 标记 | 目的 | 可以使用入站或出站？ | 可以支持区域范围？ | 是否可与 Azure 防火墙一起使用？ |
+| 标记 | 目的 | 可以使用入站还是出站连接？ | 可以支持区域范围？ | 是否可与 Azure 防火墙一起使用？ |
 | --- | --- | --- | --- | --- |
 | AzureDigitalTwins | Azure 数字孪生<br>注意：此标记或此标记涵盖的 IP 地址可用于限制对配置为 [事件路由](concepts-route-events.md)的终结点的访问。 | 入站 | 否 | 是 |
 
@@ -113,7 +146,7 @@ Azure 提供了 **两个 azure 内置角色** ，用于授权对 Azure 数字孪
 
 4. 使用 *步骤 2* 中的 ip 范围) 对外部资源 (s 设置 ip 筛选器。  
 
-5. 根据需要定期更新 IP 范围。 范围可能会随时间而变化，因此最好定期检查并刷新它们。 这些更新的频率可能有所不同，但最好是每周检查一次。
+5. 根据需要定期更新 IP 范围。 范围可能会随时间而变化，因此最好定期检查它们并在需要时对其进行刷新。 这些更新的频率可能有所不同，但最好是每周检查一次。
 
 ## <a name="encryption-of-data-at-rest"></a>静态数据加密
 
@@ -123,7 +156,7 @@ Azure 数字孪生提供静态数据和传输中的数据加密，因为它是�
 
 Azure 数字孪生目前不支持 **(CORS) 的跨域资源共享**。 因此，如果从浏览器应用中调用 REST API， [API 管理 (APIM) ](../api-management/api-management-key-concepts.md) 接口或 [Power Apps](/powerapps/powerapps-overview) 连接器，则可能会出现策略错误。
 
-若要解决此错误，可以执行以下操作之一：
+若要解决此错误，可以执行下列操作之一：
 * 从消息中去除 CORS 标头 `Access-Control-Allow-Origin` 。 此标头指示是否可以共享响应。 
 * 或者，创建 CORS 代理，并通过它 REST API 请求来请求 Azure 数字孪生。 
 
