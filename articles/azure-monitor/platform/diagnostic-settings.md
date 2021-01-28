@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 29e50a5c9b306d0e4491852fd08ecdf73026ebc2
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: c25c53159fd0504956eed2cf7f968c573e9fc289
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882239"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927728"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>创建诊断设置以将平台日志和指标发送到不同的目标
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 默认情况下会收集[平台指标](data-platform-metrics.md)，它们通常存储在 Azure Monitor 指标数据库中。 本文详细介绍如何创建和配置诊断设置，以将平台指标和平台日志发送到不同的目标。
@@ -34,7 +34,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 > [平台指标](metrics-supported.md)自动发送到 [Azure Monitor 指标](data-platform-metrics.md)中。 使用诊断设置可将特定 Azure 服务的指标发送到 Azure Monitor 日志中，以使用具有特定限制的[日志查询](../log-query/log-query-overview.md)结合其他监视数据进行分析。 
 >  
 >  
-> 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。 *例如*：区块链上的 "IOReadBytes" 指标可在每个节点级别上浏览和绘制图表。 但是，当通过诊断设置导出时，导出的指标将表示为所有节点的所有读取字节数。 此外，由于内部限制，并非所有指标都可以导出到 Azure Monitor 日志/Log Analytics。 有关详细信息，请参阅[可导出指标的列表](metrics-supported-export-diagnostic-settings.md)。 
+> 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。 例如：可以在每个节点级别浏览区块链上的“IOReadBytes”指标并为其绘制图表。 但是，当通过诊断设置导出时，导出的指标将表示为所有节点的所有读取字节数。 此外，由于内部限制，并非所有指标都可以导出到 Azure Monitor 日志/Log Analytics。 有关详细信息，请参阅[可导出指标的列表](metrics-supported-export-diagnostic-settings.md)。 
 >  
 >  
 > 若要解决特定指标的这些限制，建议你使用[指标 REST API](/rest/api/monitor/metrics/list) 手动提取它们并使用 [Azure Monitor 数据收集器 API](data-collector-api.md) 将其导入到 Azure Monitor 日志中。  
@@ -149,7 +149,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 
 ## <a name="create-using-azure-cli"></a>使用 Azure CLI 创建
 
-在 [Azure CLI](/cli/azure/monitor?view=azure-cli-latest) 中使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) 命令创建诊断设置。 有关参数说明，请参阅此命令的文档。
+在 [Azure CLI](/cli/azure/monitor) 中使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令创建诊断设置。 有关参数说明，请参阅此命令的文档。
 
 > [!IMPORTANT]
 > 不能将此方法用于 Azure 活动日志。 请改为按[使用资源管理器模板在 Azure Monitor 中创建诊断设置](../samples/resource-manager-diagnostic-settings.md)中的说明操作，创建资源管理器模板并使用 CLI 进行部署。

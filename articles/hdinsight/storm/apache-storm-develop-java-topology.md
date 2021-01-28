@@ -1,19 +1,16 @@
 ---
 title: Apache Storm 示例 Java 拓扑 - Azure HDInsight
 description: 了解如何通过创建一个示例单词计数拓扑，来以 Java 语言创建 Apache Storm 拓扑。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: 881ec4aa36261958b566dc2d7c4d06475a76bad4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 620a4e1627b25af22db68173f35924376e26f5f8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545491"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929125"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>以 Java 语言创建 Apache Storm 拓扑
 
@@ -149,7 +146,7 @@ Maven 允许定义项目级的值，称为属性。 在 `pom.xml` 中的 `</repo
 在编译时，Maven 会使用此信息在 Maven 存储库中查找 `storm-core`。 它会先查找本地计算机上的存储库。 如果文件不存在，Maven 会从公共 Maven 存储库下载这些文件，并将其存储在本地存储库中。
 
 > [!NOTE]  
-> 请注意该部分中的 `<scope>provided</scope>` 行。 此设置会告诉 Maven 从创建的任何 JAR 文件中排除 **storm-core** ，因为系统会提供它。
+> 请注意该部分中的 `<scope>provided</scope>` 行。 此设置会告诉 Maven 从创建的任何 JAR 文件中排除 **storm-core**，因为系统会提供它。
 
 ## <a name="build-configuration"></a>生成配置
 
@@ -199,9 +196,9 @@ Maven 插件可用于自定义项目的生成阶段。 例如，如何编译项�
 
     另一个有用的插件是 [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/)，它用于更改编译选项。 更改 Maven 用作应用程序源和目标的 Java 版本。
 
-  * 对于 __HDInsight 3.4 或更早的版本__ ，请将源和目标 Java 版本设置为 __1.7__ 。
+  * 对于 __HDInsight 3.4 或更早的版本__，请将源和目标 Java 版本设置为 __1.7__。
 
-  * 对于 HDInsight __3.5__ ，请将源和目标 Java 版本设置为 __1.8__ 。
+  * 对于 HDInsight __3.5__，请将源和目标 Java 版本设置为 __1.8__。
 
   在 `pom.xml` 文件的 `<plugins>` 部分添加以下文本，以包括 Apache Maven Compiler 插件。 此示例指定 1.8，因此目标 HDInsight 版本为 3.5。
 
@@ -237,11 +234,11 @@ Maven 插件可用于自定义项目的生成阶段。 例如，如何编译项�
 
 基于 Java 的 Apache Storm 拓扑包含必须编写（或引用）为依赖项的三个组件。
 
-* **Spout** ：读取外部源中的数据，并发出进入拓扑的数据流。
+* **Spout**：读取外部源中的数据，并发出进入拓扑的数据流。
 
-* **Bolt** ：对 Spout 或其他 Bolt 发出的数据流进行处理，并发出一个或多个数据流。
+* **Bolt**：对 Spout 或其他 Bolt 发出的数据流进行处理，并发出一个或多个数据流。
 
-* **拓扑** ：定义如何排列 Spout 和 Bolt，并提供拓扑的入口点。
+* **拓扑**：定义如何排列 Spout 和 Bolt，并提供拓扑的入口点。
 
 ### <a name="create-the-spout"></a>创建 Spout
 
@@ -327,9 +324,9 @@ public class RandomSentenceSpout extends BaseRichSpout {
 
 Bolt 用于处理数据。 Bolt 可以执行任何操作，例如，计算、保存，或者与外部组件通信。 此拓扑使用两个 Bolt：
 
-* **SplitSentence** ：将 **RandomSentenceSpout** 发出的句子分割成不同的单词。
+* **SplitSentence**：将 **RandomSentenceSpout** 发出的句子分割成不同的单词。
 
-* **WordCount** ：统计每个单词的出现次数。
+* **WordCount**：统计每个单词的出现次数。
 
 #### <a name="splitsentence"></a>SplitSentence
 

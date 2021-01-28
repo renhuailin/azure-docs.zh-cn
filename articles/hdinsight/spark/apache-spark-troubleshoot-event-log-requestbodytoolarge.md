@@ -3,16 +3,13 @@ title: 来自 Apache Spark 应用的 RequestBodyTooLarge 错误 - Azure HDInsigh
 description: NativeAzureFileSystem ...RequestBodyTooLarge 显示在 Azure HDInsight 上 Apache Spark 流应用的日志中
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 38d6e5bfea1ae7ad4eead3a3f614007d31f0a7cb
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 73ae646cb083841ee1d55b6c7ce6af7180cef08e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287930"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929426"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>“NativeAzureFileSystem...RequestBodyTooLarge”出现在 HDInsight 的 Apache Spark 流式处理应用日志中
 
@@ -26,7 +23,7 @@ ms.locfileid: "93287930"
 
 Spark 事件日志文件可能达到了 WASB 的文件长度限制。
 
-在 Spark 2.3 中，每个 Spark 应用会生成一个 Spark 事件日志文件。 在 Spark 流应用运行过程中，其事件日志文件会不断增大。 目前，WASB 上的文件的块大小限制为 50000，默认块大小为 4 MB。 因此在默认配置中，最大文件大小为 195 GB。 但是，Azure 存储已将最大块大小增加到 100 MB，这会将单个文件限制到 4.75 TB。 有关详细信息，请参阅 [Blob 存储可伸缩性和性能目标](../../storage/blobs/scalability-targets.md)。
+在 Spark 2.3 中，每个 Spark 应用会生成一个 Spark 事件日志文件。 在 Spark 流应用运行过程中，其事件日志文件会不断增大。 目前，WASB 上的文件的块大小限制为 50000，默认块大小为 4 MB。 因此在默认配置中，最大文件大小为 195 GB。 但是，Azure 存储已将最大块大小增大至 100 MB，这样就有效地将单个文件的限制提升至 4.75 TB。 有关详细信息，请参阅 [Blob 存储可伸缩性和性能目标](../../storage/blobs/scalability-targets.md)。
 
 ## <a name="resolution"></a>解决方法
 

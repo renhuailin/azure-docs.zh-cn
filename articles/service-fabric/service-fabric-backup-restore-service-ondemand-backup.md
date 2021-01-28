@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 04d8bb4a9f8157a229751d073e8d351f5448fa68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7986c8cd8d0714215c7b4dc57170be346e627ed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247891"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928042"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Azure Service Fabric 中的按需备份
 
@@ -21,11 +21,16 @@ Azure Service Fabric 提供[定期备份数据](service-fabric-backuprestoreserv
 在手动触发服务或服务环境操作之前，按需备份功能有助于捕获服务的状态。 例如，如果你在升级或降级服务时对服务二进制文件做出了更改。 在这种情况下，按需备份可以帮助防止应用程序代码 bug 导致数据损坏。
 ## <a name="prerequisites"></a>先决条件
 
-- 安装 Microsoft.ServiceFabric.Powershell.Http模块 [在预览中] 进行配置调用。
+- 安装 ServiceFabric 模块 (预览) 进行配置调用。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> 如果 PowerShellGet 版本低于1.6.0，则需要更新以添加对 *-AllowPrerelease* 标志的支持：
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 - 请确保在使用 Microsoft.ServiceFabric.Powershell.Http 模块发出任何配置请求之前，先使用 `Connect-SFCluster` 命令连接群集。
 
@@ -109,7 +114,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
     ![触发分区备份][0]
 
-    或用于文件共享的信息：
+    或 FileShare：
 
     ![触发分区备份文件共享][1]
 
@@ -139,7 +144,7 @@ $backupResponse
 
 按需备份请求可处于以下状态：
 
-- **Accepted**：备份已针对分区启动，且正在进行。
+- 已 **接受**：备份已在分区上启动并且正在进行。
   ```
   BackupState             : Accepted
   TimeStampUtc            : 0001-01-01T00:00:00Z
@@ -149,8 +154,8 @@ $backupResponse
   LsnOfLastBackupRecord   : 0
   FailureError            :
   ```
-- **Success**、**Failure** 或 **Timeout**：请求的按需备份可能是在以下任一状态下完成的：
-  - **成功**：_Success_ 备份状态表示已成功完成备份状态。 响应将提供分区的 _BackupEpoch_ 和 _BackupLSN_ 以及 UTC 格式的时间。
+- **成功**、 **失败** 或 **超时**：请求的按需备份可通过以下任何一种状态完成：
+  - **成功**： _成功_ 备份状态表明分区状态已成功备份。 响应将提供分区的 _BackupEpoch_ 和 _BackupLSN_ 以及 UTC 格式的时间。
     ```
     BackupState             : Success
     TimeStampUtc            : 2018-11-21T20:00:01Z
@@ -160,7 +165,7 @@ $backupResponse
     LsnOfLastBackupRecord   : 36
     FailureError            :
     ```
-  - **失败**：_Failure_ 备份状态表示在备份分区状态期间发生失败。 响应中会指明失败的原因。
+  - **失败**： _失败_ 的备份状态指示在备份分区状态时出错。 响应中会指明失败的原因。
     ```
     BackupState             : Failure
     TimeStampUtc            : 0001-01-01T00:00:00Z
@@ -170,7 +175,7 @@ $backupResponse
     LsnOfLastBackupRecord   : 0
     FailureError            : @{Code=FABRIC_E_BACKUPCOPIER_UNEXPECTED_ERROR; Message=An error occurred during this operation.  Please check the trace logs for more details.}
     ```
-  - **Timeout**：_Timeout_ 备份状态表示在给定的时间内无法创建分区状态备份。 默认超时值为 10 分钟。 如果发生这种情况，请使用更大的 [BackupTimeout](/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) 发起新的按需备份请求。
+  - **超时**： _超时_ 备份状态指示无法在给定的时间内创建分区状态备份。 默认超时值为 10 分钟。 如果发生这种情况，请使用更大的 [BackupTimeout](/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) 发起新的按需备份请求。
     ```
     BackupState             : Timeout
     TimeStampUtc            : 0001-01-01T00:00:00Z

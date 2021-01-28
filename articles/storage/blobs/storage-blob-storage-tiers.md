@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 570fd7f356969bbd37ef6b661334501a062c36df
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 67534e70904c70f7bf9dda44502e723916bdce93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165682"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928798"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob 存储的访问层 - 热、冷和存档
 
@@ -86,7 +86,7 @@ Blob 在存档存储中时，blob 数据处于脱机状态，无法读取或修�
 - 需要长时间存储并且几乎不能访问的相容性和存档数据
 
 > [!NOTE]
-> ZRS、GZRS 或 GZRS 帐户不支持存档层。
+> ZRS、GZRS 或 GZRS 帐户不支持存档层。 如果存储帐户包含存档层中的 blob，则不支持从 LRS 迁移到 GRS。
 
 ## <a name="account-level-tiering"></a>帐户级分层
 
@@ -132,10 +132,10 @@ Blob 存储生命周期管理提供了一种基于规则的丰富策略，可用
 
 移到冷层（仅限 GPv2 帐户）中的 Blob 会有一个 30 天的冷层提前删除期限。 移到存档层中的 Blob 会有一个 180 天的存档提前删除期限。 此项费用按比例计算。 例如，如果将某个 Blob 移到存档层，然后在 45 天后将其删除或移到热层，则需支付相当于将该 Blob 存储在存档层中 135（180 减 45）天的提前删除费用。
 
-在 "冷" 和 "存档" 层之间移动时，有一些详细信息：
+一些在冷层和存档层之间移动时的详细信息：
 
-1. 如果根据存储帐户的默认访问层将 blob 推断为 "冷"，并将 blob 移到 "存档"，则不会收取早期删除费用。
-1. 如果将 blob 显式移动到 "冷" 层，然后将其移动到 "存档"，则会应用早期删除费用。
+1. 如果根据存储帐户的默认访问层将 Blob 推断为冷层，并将 Blob 移动到存档层，则不会收取提前删除费用。
+1. 如果将 Blob 显式移动到冷层，然后将其移动到存档层，则将收取提前删除费用。
 
 如果没有任何访问层发生更改，则使用 **最后修改** 的 blob 属性来计算早期的删除时间。 否则，请在访问层上次修改为冷或存档时使用，方法是查看 blob 属性： **访问层-更改时间**。 有关 Blob 属性的详细信息，请参阅[获取 Blob 属性](/rest/api/storageservices/get-blob-properties)。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: ab0ed536bd23aaf15d85af85e4f924bc2f51f3d4
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bdbb4307f46566d1cac259cbdc4c81d1dfba5c7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006621"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927786"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor
 本文介绍如何使用 HTTP 数据收集器 API 从 REST API 客户端将日志数据发送到 Azure Monitor。  其中说明了对于脚本或应用程序收集的数据，如何设置其格式、将其包含在请求中，并由 Azure Monitor 授权该请求。  将针对 PowerShell、C# 和 Python 提供示例。
@@ -66,7 +66,7 @@ Azure Monitor HTTP 数据收集器 API 的任何请求都必须包含授权标�
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* 是 Log Analytics 工作区的唯一标识符。 *签名* 是 [基于哈希的消息验证代码 (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1)，它构造自请求并使用 [SHA256 算法](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1)进行计算。 然后，使用 Base64 编码进行编码。
+*WorkspaceID* 是 Log Analytics 工作区的唯一标识符。 *签名* 是 [基于哈希的消息验证代码 (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256)，它构造自请求并使用 [SHA256 算法](/dotnet/api/system.security.cryptography.sha256)进行计算。 然后，使用 Base64 编码进行编码。
 
 使用此格式对 **SharedKey** 签名字符串进行编码：
 

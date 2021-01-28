@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 288e3f0c048bddb3f3378226889dc519de27764b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441515"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927889"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>将 System Center Operations Manager 与用于 VM 的 Azure Monitor 的映射功能集成
 
@@ -139,7 +139,7 @@ ms.locfileid: "91441515"
 有关创建服务主体的 Azure 正式文档，请参阅：
 
 * [使用 PowerShell 创建服务主体](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [使用 Azure CLI 创建服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+* [使用 Azure CLI 创建服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)
 * [使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)
 
 ### <a name="suggestions"></a>建议
