@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 18d75d5c49eecb0fe198ce2afc432870fb3783e6
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 2d046f5f039555e58d9ce4c028e750ce083fd5f4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969038"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733666"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>教程：将 Qlik Sense Enterprise 与 Azure Active Directory 集成
 
@@ -251,7 +251,7 @@ Qlik Sense Enterprise 支持 **实时预配**，当用户使用 SSO 功能时，
 
 * 直接转到 Qlik Sense Enterprise 登录 URL，并在其中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Qlik Sense Enterprise 磁贴时，将会重定向到 Qlik Sense Enterprise 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Qlik Sense Enterprise 磁贴时，将会重定向到 Qlik Sense Enterprise 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

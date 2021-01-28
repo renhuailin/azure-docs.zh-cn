@@ -1,18 +1,18 @@
 ---
 title: Azure 事件中心的 Azure Policy 法规遵从性控制
 description: 列出可用于 Azure 事件中心的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: event-hubs
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 1314b77d556631fe24b283ef7f38bbe747d6cbc9
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: cf9bdf99795279926da2dbd2ea544e66149673f6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048074"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797700"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-event-hubs"></a>Azure 事件中心的 Azure Policy 法规遵从性控制
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 25d084b8af148707685b2cbb4368394a12d99db2
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 64064a584681d84eb6ba023c4777c0fdc4e6ec3d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005301"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791924"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>教程：使用注册组预配多个 X.509 设备
 
@@ -46,7 +46,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负荷。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负荷。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
 
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
@@ -56,7 +56,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 1. 下载 [CMake 生成系统](https://cmake.org/download/)。
 
-    在进行 `CMake` 安装之前，必须在计算机上安装 Visual Studio 必备组件（[Visual Studio](https://visualstudio.microsoft.com/vs/) 和[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负载）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
+    在进行 `CMake` 安装之前，必须在计算机上安装 Visual Studio 必备组件（[Visual Studio](https://visualstudio.microsoft.com/vs/) 和[“使用 C++ 的桌面开发”](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负载）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
 2. 找到[最新版](https://github.com/Azure/azure-iot-sdk-c/releases/latest) Azure IoT C SDK 的标记名称。
 
@@ -87,7 +87,7 @@ Azure IoT 设备预配服务支持两类注册：
     $ cmake -Duse_prov_client:BOOL=ON -Dhsm_custom_lib=/d/azure-iot-sdk-c/cmake/provisioning_client/samples/custom_hsm_example/Debug/custom_hsm_example.lib ..
     ```
 
-    如果 `cmake` 找不到 C++ 编译器，则可能会在运行以上命令时出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)窗口中运行该命令。
+    如果 `cmake` 找不到 C++ 编译器，则可能会在运行以上命令时出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](/dotnet/framework/tools/developer-command-prompt-for-vs)窗口中运行该命令。
 
     生成成功后，将在 `cmake` 目录中生成一个 Visual Studio 解决方案。 最后的几个输出行如下所示：
 
@@ -351,7 +351,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 在非 Windows 设备上，可以将代码中的证书链作为证书存储传递。
 
-在基于 Windows 的设备上，必须将签名证书（根证书和中间证书）添加到 Windows [证书存储](https://docs.microsoft.com/windows/win32/secauthn/certificate-stores)。 否则，签名证书将不会通过具有传输层安全性 (TLS) 的安全通道传输到 DPS。
+在基于 Windows 的设备上，必须将签名证书（根证书和中间证书）添加到 Windows [证书存储](/windows/win32/secauthn/certificate-stores)。 否则，签名证书将不会通过具有传输层安全性 (TLS) 的安全通道传输到 DPS。
 
 若要将签名证书添加到基于 Windows 的设备中的证书存储，请执行以下操作：
 

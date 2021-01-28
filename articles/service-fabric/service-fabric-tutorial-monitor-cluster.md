@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ecd05a838425d57e0eaff2fa571d72b5a87e92a6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331985"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791772"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>教程：在 Azure 中监视 Service Fabric 群集
 
@@ -240,7 +240,7 @@ ServiceFabricReliableActorEvent
 ## <a name="query-the-eventstore-service"></a>查询 EventStore 服务
 [EventStore 服务](service-fabric-diagnostics-eventstore.md)提供了在给定时间点了解群集或工作负载状态的方法。 EventStore 是有状态 Service Fabric 服务，它维护群集中的事件。 事件通过 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)、REST 和 API 公开。 EventStore 直接查询群集以获取群集中任何实体的诊断数据，要查看 EventStore 中可用事件的完整列表，请参阅 [Service Fabric 事件](service-fabric-diagnostics-event-generation-operational.md)。
 
-可以使用 [Service Fabric 客户端库](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)以编程方式查询 EventStore API。
+可以使用 [Service Fabric 客户端库](/dotnet/api/overview/azure/service-fabric#client-library)以编程方式查询 EventStore API。
 
 以下是通过 GetClusterEventListAsync 函数查询 2018-04-03T18:00:00Z 和 2018-04-04T18:00:00Z 之间的所有群集事件的示例请求。
 
@@ -299,10 +299,10 @@ Service Fabric 引入了一种具有运行状况实体的[运行状况模型](se
 
 群集会自动被系统组件发送的运行状况报告所填充。 从[使用系统运行状况报告进行故障排除](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)了解更多信息。
 
-Service Fabric 为每个支持的[实体类型](service-fabric-health-introduction.md#health-entities-and-hierarchy)提供运行状况查询。 可以通过 API（使用 [FabricClient.HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet) 上的方法）、PowerShell cmdlet 和 REST 访问它们。 这些查询返回有关实体的完整运行状况信息：聚合运行状况、实体运行状况事件、子运行状况（在适用时）、不正常评估（实体不正常时）以及子集运行状况统计信息（在适用时）。
+Service Fabric 为每个支持的[实体类型](service-fabric-health-introduction.md#health-entities-and-hierarchy)提供运行状况查询。 可以通过 API（使用 [FabricClient.HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager) 上的方法）、PowerShell cmdlet 和 REST 访问它们。 这些查询返回有关实体的完整运行状况信息：聚合运行状况、实体运行状况事件、子运行状况（在适用时）、不正常评估（实体不正常时）以及子集运行状况统计信息（在适用时）。
 
 ### <a name="get-cluster-health"></a>获取群集运行状况
-[Get-ServiceFabricClusterHealth cmdlet](/powershell/module/servicefabric/get-servicefabricclusterhealth) 返回群集实体的运行状况，并包含应用程序和节点（群集的子项）的运行状况。  首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。
+[Get-ServiceFabricClusterHealth cmdlet](/powershell/module/servicefabric/get-servicefabricclusterhealth) 返回群集实体的运行状况，并包含应用程序和节点（群集的子项）的运行状况。  首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) cmdlet 连接到群集。
 
 群集的状态是 11 个节点、系统应用程序和 fabric:/Voting 按所述进行配置。
 
@@ -454,7 +454,7 @@ HealthEvents            : None
 ```
 
 ### <a name="get-node-health"></a>获取节点运行状况
-[Get-ServiceFabricNodeHealth cmdlet](/powershell/module/servicefabric/get-servicefabricnodehealth) 返回节点实体的运行状况，并包含针对该节点报告的运行状况事件。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 连接到群集。 以下示例使用默认运行状况策略获取特定节点的运行状况：
+[Get-ServiceFabricNodeHealth cmdlet](/powershell/module/servicefabric/get-servicefabricnodehealth) 返回节点实体的运行状况，并包含针对该节点报告的运行状况事件。 首先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) cmdlet 连接到群集。 以下示例使用默认运行状况策略获取特定节点的运行状况：
 
 ```powershell
 Get-ServiceFabricNodeHealth _nt1vm_3

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: df52e18c602e1054ecc53146080e56cab4781d78
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 60381c7d8c452277b53e1af67ae7fc85349521c8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963821"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735668"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SAP Cloud for Customer 的集成
 
@@ -188,7 +188,7 @@ ms.locfileid: "97963821"
 
 * 直接转到 SAP Cloud for Customer 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 当单击“我的应用”中的 SAP Cloud for Customer 磁贴时，这将重定向到 SAP Cloud for Customer 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 当单击“我的应用”中的 SAP Cloud for Customer 磁贴时，这将重定向到 SAP Cloud for Customer 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

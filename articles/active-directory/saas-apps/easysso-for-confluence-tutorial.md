@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: e5477b0ce45b1e888e472ebf7582607034c55800
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 325f6ad7d9685fac17e17b28c4ffbe31b1245cca
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813456"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734523"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-confluence"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EasySSO for Confluence 的集成
 
@@ -197,7 +197,7 @@ ms.locfileid: "97813456"
 
 本部分将使用“我的应用”测试 Azure AD 单一登录配置。
 
-单击“我的应用”中的 EasySSO for Confluence 磁贴时，应当会自动登录到为其设置了 SSO 的 Confluence 实例。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+单击“我的应用”中的 EasySSO for Confluence 磁贴时，应当会自动登录到为其设置了 SSO 的 Confluence 实例。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ### <a name="sp-initiated-workflow"></a>SP 发起的工作流
 

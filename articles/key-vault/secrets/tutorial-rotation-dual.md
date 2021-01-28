@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 39081bc7bec7cfd76ccfc9107d5c2286affb7df0
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e7e63ea56edc2b76383ee4c034fd39dd8b8259c1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913764"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785999"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>自动轮换使用两组身份验证凭据的资源的机密
 
@@ -234,8 +234,8 @@ az storage account keys list -n vaultrotationstorage
 
 ## <a name="next-steps"></a>后续步骤
 
-- 教程：[一组凭据的机密轮换](https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation)
+- 教程：[一组凭据的机密轮换](./tutorial-rotation.md)
 - 概述：[通过 Azure 事件网格监视 Key Vault](../general/event-grid-overview.md)
-- 如何：[在 Azure 门户中创建你的第一个函数](../../azure-functions/functions-create-first-azure-function.md)
+- 如何：[在 Azure 门户中创建你的第一个函数](../../azure-functions/functions-get-started.md)
 - 如何：[Key Vault 机密发生更改时接收电子邮件](../general/event-grid-logicapps.md)
 - 参考：[Azure Key Vault 的 Azure 事件网格事件架构](../../event-grid/event-schema-key-vault.md)

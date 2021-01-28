@@ -3,12 +3,12 @@ title: 添加和删除 Service Fabric 托管群集的节点类型（预览版）
 description: 本教程介绍如何添加和删除 Service Fabric 托管群集的节点类型。
 ms.topic: tutorial
 ms.date: 09/28/2020
-ms.openlocfilehash: 51cc83b4accae5f2791ce378e30f6fa692446b1c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: bb33512652677fc4e46d8ba3668dca985bbcfe01
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316214"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791234"
 ---
 # <a name="tutorial-add-and-remove-node-types-from-a-service-fabric-managed-cluster-preview"></a>教程：在 Service Fabric 托管群集中添加和删除节点类型（预览版）
 
@@ -29,7 +29,7 @@ ms.locfileid: "92316214"
 ## <a name="prerequisites"></a>先决条件
 
 * Service Fabric 托管群集（请参阅[部署托管群集](tutorial-managed-cluster-deploy.md)）。
-* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) 或更高版本（请参阅[*安装 Azure PowerShell*](/powershell/azure/install-az-ps?preserve-view=true&view=azps-4.7.0)）。
+* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps#azservicefabric) 或更高版本（请参阅 [*安装 Azure PowerShell*](/powershell/azure/install-az-ps)）。
 
 ## <a name="add-a-node-type-to-a-service-fabric-managed-cluster"></a>将节点类型添加到 Service Fabric 托管群集
 

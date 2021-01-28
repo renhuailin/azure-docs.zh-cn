@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/05/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 4535368b7d8d044469a4b0effee914176aca78e4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b6745ed879f02a341027417b54eb459b5bfed705
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935389"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762950"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>教程：准备部署 Azure Stack Edge Mini R
 
@@ -121,11 +121,11 @@ ms.locfileid: "97935389"
 
 7. 在完成时选择“下一步:送货地址”。
 
-    - 如果已经有一台设备，请选择与“我已有设备”对应的组合框。
+   - 如果已经有一台设备，请选择与“我已有设备”对应的组合框。
 
      ![创建资源 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
-    - 如果这是你订购的新设备，请输入联系人姓名、公司、要将设备寄送到的地址，以及联系人信息。
+   - 如果这是你订购的新设备，请输入联系人姓名、公司、要将设备寄送到的地址，以及联系人信息。
 
      ![创建资源 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
@@ -145,9 +145,12 @@ ms.locfileid: "97935389"
     
     ![转到 Azure Stack Edge Pro 资源](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-1.png)
     
-    在你下单以后，Microsoft 会审核订单并通过电子邮件联系你，核对配送详细信息。
+在你下单以后，Microsoft 会审核订单并通过电子邮件联系你，核对配送详细信息。
 
-   若在处理订单的过程中遇到任何问题，请参阅[排查订单问题](azure-stack-edge-troubleshoot-ordering.md)。
+> [!NOTE]
+> 如果要一次创建多个订单或克隆现有订单，可以使用 [Azure 示例中的脚本](https://github.com/Azure-Samples/azure-stack-edge-order)。 有关详细信息，请参阅自述文件。
+
+若在处理订单的过程中遇到任何问题，请参阅[排查订单问题](azure-stack-edge-troubleshoot-ordering.md)。
 
 ## <a name="get-the-activation-key"></a>获取激活密钥
 

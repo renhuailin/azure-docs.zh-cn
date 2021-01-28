@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 94923b13181290a290f13339da5b05f6fdddff38
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: d9c2bec575f2c7a948f3eb6e65be6a735a3c03e8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252135"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733801"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>教程：在 Azure SQL 数据库中开始使用具有安全 enclave 的 Always Encrypted
 
@@ -25,7 +25,7 @@ ms.locfileid: "98252135"
 > [!NOTE]
 > Azure SQL 数据库的具有安全 Enclave 的 Always Encrypted 目前提供公共预览版。
 
-本教程介绍如何在 Azure SQL 数据库中开始使用[具有安全 enclave 的 Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves)。 它将介绍：
+本教程介绍如何在 Azure SQL 数据库中开始使用[具有安全 enclave 的 Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves)。 它将介绍：
 
 > [!div class="checklist"]
 > - 如何创建环境，以便测试和评估具有安全 enclave 的 Always Encrypted。
@@ -33,11 +33,11 @@ ms.locfileid: "98252135"
 
 ## <a name="prerequisites"></a>必备条件
 
-本教程需要 Azure PowerShell 和 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+本教程需要 Azure PowerShell 和 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 ### <a name="powershell-requirements"></a>PowerShell 要求
 
-要了解如何安装和运行 Azure PowerShell，请参阅 [Azure PowerShell 概述](https://docs.microsoft.com/powershell/azure)。 
+要了解如何安装和运行 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure)。 
 
 支持证明操作所需的 Az 模块的最低版本：
 
@@ -66,7 +66,7 @@ PowerShell 库已弃用传输层安全性 (TLS) 版本 1.0 和 1.1。 建议使�
 
 ### <a name="ssms-requirements"></a>SSMS 要求
 
-请参阅[下载 SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 以获取有关如何下载 SSMS 的信息。
+请参阅[下载 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 以获取有关如何下载 SSMS 的信息。
 
 SSMS 的最低版本要求为 18.8。
 
@@ -75,7 +75,7 @@ SSMS 的最低版本要求为 18.8。
 
  此步骤将使用 DC 系列硬件配置创建新的 Azure SQL 数据库逻辑服务器和新数据库。 Azure SQL 数据库中具有安全 Enclave 的 Always Encrypted 使用 Intel SGX enclave，这在 DC 系列硬件配置中受支持。 有关更多信息，请参见 [DC 系列](service-tiers-vcore.md#dc-series)。
 
-1. 打开 PowerShell 控制台并登录到 Azure。 如果需要，[切换到本教程中使用的订阅](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps)。
+1. 打开 PowerShell 控制台并登录到 Azure。 如果需要，[切换到本教程中使用的订阅](/powershell/azure/manage-subscriptions-azureps)。
 
   ```PowerShell
   Connect-AzAccount
@@ -356,10 +356,10 @@ SSMS 的最低版本要求为 18.8。
 ## <a name="next-steps"></a>后续步骤
 
 完成本教程之后，可以继续学习以下教程之一：
-- [教程：使用具有安全 enclave 的 Always Encrypted 开发 .NET 应用程序](https://docs.microsoft.com/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)
-- [教程：开发使用具有安全 enclave 的 Always Encrypted 的 .NET Framework 应用程序](https://docs.microsoft.com/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
-- [教程：对使用随机加密的启用了 enclave 的列创建和使用索引](https://docs.microsoft.com/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
+- [教程：使用具有安全 enclave 的 Always Encrypted 开发 .NET 应用程序](/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)
+- [教程：开发使用具有安全 enclave 的 Always Encrypted 的 .NET Framework 应用程序](/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
+- [教程：对使用随机加密的启用了 enclave 的列创建和使用索引](/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
 
 ## <a name="see-also"></a>另请参阅
 
-- [配置和使用具有安全 enclave 的 Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)
+- [配置和使用具有安全 enclave 的 Always Encrypted](/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)

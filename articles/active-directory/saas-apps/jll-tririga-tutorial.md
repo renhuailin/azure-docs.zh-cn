@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/17/2020
 ms.author: jeedes
-ms.openlocfilehash: fbf0b6f929fc0999249298f5f271a86ccf3bef39
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b33db1b766d99aeb8d0a08f6396b5384948f118e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602848"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736863"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jll-tririga"></a>教程：Azure Active Directory 与 JLL TRIRIGA 的单一登录 (SSO) 集成
 
@@ -140,11 +140,9 @@ ms.locfileid: "96602848"
 
 * 在 Azure 门户中单击“测试此应用程序”，随后应会自动登录到为其设置了 SSO 的 JLL TRIRIGA
 
-* 可以使用 Microsoft 访问面板。 在访问面板中单击 JLL TRIRIGA 磁贴时，应会自动登录到为其设置了 SSO 的 JLL TRIRIGA。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+* 可以使用 Microsoft 访问面板。 在访问面板中单击 JLL TRIRIGA 磁贴时，应会自动登录到为其设置了 SSO 的 JLL TRIRIGA。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 JLL TRIRIGA 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 JLL TRIRIGA 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

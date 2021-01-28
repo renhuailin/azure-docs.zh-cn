@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 9d1d22d57464266239aea96f427020351eb749d5
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 22d7ee518a458143fe25b677b680a964c538904f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740651"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791555"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>教程：在 Hyper-V 中预配 Azure Data Box Gateway
 
@@ -84,7 +84,7 @@ ms.locfileid: "97740651"
 ## <a name="bitlocker-considerations"></a>BitLocker 注意事项
 
 * 建议在 Data Box Gateway 虚拟机上启用 BitLocker。 默认情况下，不启用 BitLocker。 有关详细信息，请参阅：
-  * [Hyper-V 管理器中的加密支持设置](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+  * [Hyper-V 管理器中的加密支持设置](/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
   * [虚拟机中的 BitLocker 支持](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="provision-a-virtual-device-in-hypervisor"></a>预配虚拟机监控程序中的虚拟设备

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 6599abd6282d0d1eb7cb81002c34ddd5158dab6b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4682396f68d6ff1af0b2fb6a5b1a8419d6963529
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511053"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735325"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-awarego"></a>教程：Azure Active Directory 单一登录与 AwareGo 的集成
 
@@ -139,11 +139,9 @@ ms.locfileid: "97511053"
 
 * 直接转到 AwareGo 登录页面，并从那里启动登录流。
 
-* 转到 Microsoft“我的应用”。 在“我的应用”中选择 AwareGo 磁贴后，你将重定向到 AwareGo 登录页面。 有关详细信息，请参阅[从“我的应用”门户登录和启动应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 转到 Microsoft“我的应用”。 在“我的应用”中选择 AwareGo 磁贴后，你将重定向到 AwareGo 登录页面。 有关详细信息，请参阅[从“我的应用”门户登录和启动应用](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 AwareGo 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制扩展自条件访问应用控制。 有关详细信息，请参阅[了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 AwareGo 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制扩展自条件访问应用控制。 有关详细信息，请参阅[了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

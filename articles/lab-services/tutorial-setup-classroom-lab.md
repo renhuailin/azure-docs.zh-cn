@@ -3,12 +3,12 @@ title: 使用 Azure 实验室服务设置课堂实验室 | Microsoft Docs
 description: 在本教程中，我们使用 Azure 实验室服务设置带虚拟机的课堂实验室，供学生在课堂上使用。
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 3abbf5221382b46dbf4e73f9f4dc3b639bc5ecbd
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8093a1fd270cdba8bdccaf48737bf6737bdd394d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602475"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787412"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -127,7 +127,7 @@ ms.locfileid: "96602475"
 
 可以将实验室用户列表同步到现有 Azure Active Directory (Azure AD) 组，这样就无需手动添加或删除用户。 
 
-可以在组织的 Azure Active Directory 中创建 Azure AD 组，以管理对组织资源和基于云的应用的访问。 若要了解详细信息，请参阅 [Azure AD 组](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)。 如果组织使用 Microsoft Office 365 或 Azure 服务，则组织已有管理 Azure Active Directory 的管理员。 
+可以在组织的 Azure Active Directory 中创建 Azure AD 组，以管理对组织资源和基于云的应用的访问。 若要了解详细信息，请参阅 [Azure AD 组](../active-directory/fundamentals/active-directory-manage-groups.md)。 如果组织使用 Microsoft Office 365 或 Azure 服务，则组织已有管理 Azure Active Directory 的管理员。 
 
 > [!IMPORTANT]
 > 确保用户列表为空。 如果实验室中存在手动添加或通过导入 CSV 文件添加的现有用户，则不会显示用于将实验室同步到现有组的选项。 
@@ -204,4 +204,3 @@ CSV 文本文件用于存储以逗号分隔 (CSV) 的表格数据（数字和文
 
 > [!div class="nextstepaction"]
 > [连接到课堂实验室中的 VM](tutorial-connect-virtual-machine-classroom-lab.md)
-

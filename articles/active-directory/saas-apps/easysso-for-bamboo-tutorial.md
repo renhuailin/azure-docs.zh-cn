@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: fec95dc033eb5eacaf79f5bbd2b6b294628667b9
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 3d784979876857e94c1e09ffc5b7bef11c0a0d04
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97725065"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735958"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EasySSO for Bamboo 的集成
 
@@ -199,7 +199,7 @@ ms.locfileid: "97725065"
 
 本部分将使用“我的应用”测试 Azure AD 单一登录配置。
 
-单击“我的应用”中的 EasySSO for Bamboo 磁贴时，应当会自动登录到为其设置了 SSO 的 Bamboo 实例。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+单击“我的应用”中的 EasySSO for Bamboo 磁贴时，应当会自动登录到为其设置了 SSO 的 Bamboo 实例。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ### <a name="sp-initiated-workflow"></a>SP 发起的工作流
 

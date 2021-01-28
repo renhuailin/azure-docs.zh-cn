@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 32ca39685772272ae93ccbe0c2afcbd1f66894b1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 786925799d19bf01e8edebbf85de04d92213298b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354736"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732839"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-retrievermediadatabase"></a>教程：Azure Active Directory 单一登录 (SSO) 与 RetrieverMediaDatabase 的集成
 
@@ -118,10 +118,8 @@ ms.locfileid: "96354736"
 
 1. 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 RetrieverMediaDatabase
 
-1. 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 RetrieverMediaDatabase 磁贴时，你应自动登录到为其设置了 SSO 的 RetrieverMediaDatabase。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+1. 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 RetrieverMediaDatabase 磁贴时，你应自动登录到为其设置了 SSO 的 RetrieverMediaDatabase。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 RetrieverMediaDatabase 后，即可强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 RetrieverMediaDatabase 后，即可强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

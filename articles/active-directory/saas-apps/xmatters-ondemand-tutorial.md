@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2020
 ms.author: jeedes
-ms.openlocfilehash: cbadf2e072cdd9bfdf64cb2b799355aada8ec4b0
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 762bd1c536df0ca307149ba7c201f08f5bdfded5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621143"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735585"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>教程：Azure Active Directory 与 xMatters OnDemand 集成
 
@@ -181,8 +181,8 @@ ms.locfileid: "96621143"
 
 * 在 Azure 门户中单击“测试此应用程序”，随后应会自动登录到为其设置了 SSO 的 xMatters OnDemand
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“xMatters OnDemand”磁贴时，应会自动登录到为其设置了 SSO 的 xMatters OnDemand。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“xMatters OnDemand”磁贴时，应会自动登录到为其设置了 SSO 的 xMatters OnDemand。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 xMatters OnDemand 后，可以强制实施会话控制，以实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 xMatters OnDemand 后，可以强制实施会话控制，以实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

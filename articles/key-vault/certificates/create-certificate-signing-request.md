@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: bbc232ed0bc9e9715f481fef8b7b3a1f8eeebe78
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: aa631f4c505200c2c8abc67d4e22ffbab23e015c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059647"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789021"
 ---
 # <a name="create-and-merge-a-csr-in-key-vault"></a>在 Key Vault 中创建和合并 CSR
 
@@ -123,7 +123,7 @@ Key Vault 与以下证书颁发机构合作，以简化证书的创建。
 
 - 如何监视或管理我的 CSR？
 
-     请参阅[监视和管理证书创建](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)。
+     请参阅[监视和管理证书创建](./create-certificate-scenarios.md)。
 
 - 如果出现此情况该怎么办 - 错误类型“指定的 X.509 证书内容中最终实体证书的公钥与指定私钥的公共部分不一致。请检查证书是否有效”？
 

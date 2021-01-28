@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: a00087d557e4244a6551b84623e2c34461623eb3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: b2558b4b3bcd60acba3bf47d4a973a2b6de7424f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916535"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735995"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appneta-performance-monitor"></a>教程：Azure Active Directory 单一登录 (SSO) 与 AppNeta Performance Monitor 集成
 
@@ -106,7 +106,7 @@ ms.locfileid: "97916535"
     | | |
 
     > [!NOTE]
-    > **groups** 引用 Appneta 中已映射到 Azure AD 中的“角色”的安全组。 请参阅[此文档](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)，其中介绍了如何在 Azure AD 中创建自定义角色。
+    > **groups** 引用 Appneta 中已映射到 Azure AD 中的“角色”的安全组。 请参阅[此文档](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)，其中介绍了如何在 Azure AD 中创建自定义角色。
 
     1. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
@@ -172,9 +172,9 @@ ms.locfileid: "97916535"
 
 * 直接转到 AppNeta Performance Monitor 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 AppNeta Performance Monitor 磁贴时，这将重定向到 AppNeta Performance Monitor 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 AppNeta Performance Monitor 磁贴时，这将重定向到 AppNeta Performance Monitor 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 AppNeta Performance Monitor 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 AppNeta Performance Monitor 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
