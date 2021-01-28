@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0503e0bf2fe152296ca6890e14503d05bd3bbeef
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024766"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939867"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>在 Windows 上实现语音助手
 
@@ -30,7 +30,7 @@ ms.locfileid: "95024766"
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>确保麦克风可用且可访问，然后监视其状态
 
-MVA 需要提供麦克风并可访问，以便能够检测语音激活。 使用 [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362)、 [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)和 [MediaCapture](/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) 类检查) 的麦克风隐私访问、设备是否存在以及设备状态 (如。
+MVA 需要提供麦克风并可访问，以便能够检测语音激活。 使用 [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability)、 [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher)和 [MediaCapture](/uwp/api/windows.media.capture.mediacapture) 类检查) 的麦克风隐私访问、设备是否存在以及设备状态 (如。
 
 ### <a name="register-the-application-with-the-background-service"></a>向后台服务注册应用程序
 
@@ -38,7 +38,7 @@ MVA 需要提供麦克风并可访问，以便能够检测语音激活。 使用
 
 ### <a name="unlock-the-limited-access-feature"></a>解锁受限访问功能
 
-使用你的 Microsoft 提供的有限访问权限功能密钥解锁语音助手功能。 使用 Windows SDK 中的 [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) 类执行此操作。
+使用你的 Microsoft 提供的有限访问权限功能密钥解锁语音助手功能。 使用 Windows SDK 中的 [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures) 类执行此操作。
 
 ### <a name="register-the-keyword-for-the-application"></a>为应用程序注册关键字
 
@@ -86,7 +86,7 @@ Windows 将在通过以下两种方式之一来检测关键字时发出通知。
 
 ### <a name="retrieve-activation-audio"></a>检索激活音频
 
-创建 [AudioGraph](/uwp/api/windows.media.audio.audiograph) 并将其传递到的 `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` 。 这会加载在 *检测到关键字之前约3秒开始* 音频的图形音频缓冲区。 随附这一额外的领先音频是为了容纳各种关键字长度和发言人速度。 然后，处理来自音频图形的 [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) 事件以检索音频数据。
+创建 [AudioGraph](/uwp/api/windows.media.audio.audiograph) 并将其传递到的 `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` 。 这会加载在 *检测到关键字之前约3秒开始* 音频的图形音频缓冲区。 随附这一额外的领先音频是为了容纳各种关键字长度和发言人速度。 然后，处理来自音频图形的 [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted) 事件以检索音频数据。
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);

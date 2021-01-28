@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 122e76e4bde96823ff18207bc24df4a8e91afb1c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8e51d7d00120f6facb0fb53a8e379d157ae79ea4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517962"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938577"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>方案：使用自定义设置通过 Nva 路由流量
 
@@ -22,14 +22,14 @@ ms.locfileid: "92517962"
 
 ## <a name="design"></a>设计
 
-* 连接到虚拟中心的虚拟网络的**辐射**。 本文后面的关系图中 (例如 VNet 1、VNet 2 和 VNet 3。 ) 
-* 适用于虚拟网络的**服务 VNet** ，其中用户已部署 NVA 以检查非 internet 流量，并可能包含轮辐访问的公共服务。  (例如，本文后面的关系图中的 VNet 4。 )  
-* 适用于虚拟网络的**外围 VNet** ，其中用户已部署了 NVA，用于检查 internet 绑定的流量。  (例如，本文后面的关系图中的 VNet 5。 ) 
-* 适用于 Microsoft 托管的虚拟 WAN 中心的**中心**。
+* 连接到虚拟中心的虚拟网络的 **辐射**。 本文后面的关系图中 (例如 VNet 1、VNet 2 和 VNet 3。 ) 
+* 适用于虚拟网络的 **服务 VNet** ，其中用户已部署 NVA 以检查非 internet 流量，并可能包含轮辐访问的公共服务。  (例如，本文后面的关系图中的 VNet 4。 )  
+* 适用于虚拟网络的 **外围 VNet** ，其中用户已部署了 NVA，用于检查 internet 绑定的流量。  (例如，本文后面的关系图中的 VNet 5。 ) 
+* 适用于 Microsoft 托管的虚拟 WAN 中心的 **中心**。
 
 下表总结了此方案中支持的连接：
 
-| 从          | 功能|分支|服务 VNet|分支|Internet|
+| From          | 功能|分支|服务 VNet|分支|Internet|
 |---|---|:---:|:---:|:---:|:---:|:---:|
 | **分支**| ->| 直接提交 |直接提交 | 通过服务 VNet |通过外围 VNet |
 | **服务 VNet**| ->| 直接提交 |不适用| 直接提交 | |
@@ -58,9 +58,12 @@ ms.locfileid: "92517962"
   * 关联的路由表：**默认**
   * 传播到路由表：RT_SHARED 和 Default
 
+> [!NOTE] 
+> 请确保辐射 Vnet 不会传播到默认标签。 这可确保从分支到辐射 Vnet 的流量将转发到 Nva。
+
 这些静态路由确保进出虚拟网络和分支的流量经过服务 VNet (VNet 4) 中的 NVA：
 
-| 描述 | 路由表 | 静态路由              |
+| 说明 | 路由表 | 静态路由              |
 | ----------- | ----------- | ------------------------- |
 | 分支    | RT_V2B      | 10.2.0.0/16-> vnet4conn  |
 | NVA 轮辐  | 默认     | 10.1.0.0/16-> vnet4conn  |
@@ -94,11 +97,11 @@ ms.locfileid: "92517962"
 
 1. 要使 internet 绑定的流量通过 VNet 5，需要 Vnet 1、2和3才能直接通过虚拟网络对等互连连接到 VNet 5。 还需要在虚拟网络中为 0.0.0.0/0 和下一跃点10.5.0.5 设置用户定义的路由。 目前，虚拟 WAN 不允许虚拟中心的下一跃点 NVA 0.0.0.0/0。
 
-1. 在 Azure 门户中，请前往虚拟中心，并创建名为 **RT_Shared**的自定义路由表。 此表通过从所有虚拟网络和分支连接传播的传播了解路由。 可以在下图中看到此空表。
+1. 在 Azure 门户中，请前往虚拟中心，并创建名为 **RT_Shared** 的自定义路由表。 此表通过从所有虚拟网络和分支连接传播的传播了解路由。 可以在下图中看到此空表。
 
    * **路由：** 无需添加任何静态路由。
 
-   * **关联：** 选择 Vnet 4 和5，这意味着这些虚拟网络的连接与 **RT_Shared**的路由表相关联。
+   * **关联：** 选择 Vnet 4 和5，这意味着这些虚拟网络的连接与 **RT_Shared** 的路由表相关联。
 
    * **传播：** 因为你希望所有分支和虚拟网络连接都动态地将其路由传播到此路由表，请选择 "分支和所有虚拟网络"。
 
@@ -120,7 +123,7 @@ ms.locfileid: "92517962"
 
    * **传播自：** 请确保选择 "分支 (VPN/ER/P2S) 的选项，确保本地连接正在将路由传播到默认路由表。
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="网络体系结构示意图。" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="工作流关系图。" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>后续步骤
 

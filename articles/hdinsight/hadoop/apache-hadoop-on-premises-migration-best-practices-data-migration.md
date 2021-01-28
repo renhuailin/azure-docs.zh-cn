@@ -1,19 +1,17 @@
 ---
-title: 数据迁移：本地 Apache Hadoop 到 Azure HDInsight
+title: 数据迁移：从本地 Apache Hadoop 到 Azure HDInsight
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的数据迁移最佳做法。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: d2a2c734b256ad934b7a17d7cefd1783b406e766
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: cdb028bcd608aa7a19a7c83e5e2c1129386928a0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537178"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939790"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 数据迁移最佳做法
 
@@ -24,7 +22,7 @@ ms.locfileid: "92537178"
 有两个主要选项可将数据从本地迁移到 Azure 环境：
 
 * 使用 TLS 通过网络传输数据
-    * 通过 Internet - 可以使用以下多个工具中的任意一个将数据通过 Internet 传输到 Azure 存储：Azure 存储资源管理器、AzCopy、Azure Powershell 和 Azure CLI。 有关详细信息，请参阅 [将数据移到和移出 Azure 存储](../../storage/common/storage-choose-data-transfer-solution.md)。
+    * 通过 Internet - 可以使用以下多个工具中的任意一个将数据通过 Internet 传输到 Azure 存储：Azure 存储资源管理器、AzCopy、Azure Powershell 和 Azure CLI。 有关详细信息，请参阅[将数据移入和移出 Azure 存储](../../storage/common/storage-choose-data-transfer-solution.md)。
 
     * Express Route - ExpressRoute 是一项 Azure 服务，允许在 Microsoft 数据中心与本地环境或共同租用设施中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet，与通过 Internet 的典型连接相比，提供更高的安全性、可靠性、速度和更低的延迟。 有关详细信息，请参阅[创建和修改 ExpressRoute 线路](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)。
 
@@ -32,7 +30,7 @@ ms.locfileid: "92537178"
 
 * 脱机寄送数据
 
-    Data Box 脱机数据传输 - Data Box、Data Box Disk 和 Data Box Heavy 设备可在网络不可用时将大量数据传输到 Azure。 这些脱机数据传输设备在组织和 Azure 数据中心之间往返运输。 它们使用 AES 加密来帮助保护传输中的数据，还在上传后执行一个清理过程，从设备中删除你的数据。 有关 Data Box 脱机传输设备的详细信息，请参阅 [Azure Data Box 文档-脱机传输](../../databox/index.yml)。 有关迁移 Hadoop 群集的详细信息，请参阅 [使用 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)。
+    Data Box 脱机数据传输 - Data Box、Data Box Disk 和 Data Box Heavy 设备可在网络不可用时将大量数据传输到 Azure。 这些脱机数据传输设备在组织和 Azure 数据中心之间往返运输。 它们使用 AES 加密来帮助保护传输中的数据，还在上传后执行一个清理过程，从设备中删除你的数据。 有关 Data Box 脱机传输设备的详细信息，请参阅 [Azure Data Box 文档 - 脱机传输](../../databox/index.yml)。 有关迁移 Hadoop 群集的详细信息，请参阅 [使用 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)。
 
 下表根据数据量和网络带宽列出了大致的数据传输持续时间。 如果数据迁移预计需要花费三周以上，请使用 Data Box。
 

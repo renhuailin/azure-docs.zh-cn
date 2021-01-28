@@ -1,19 +1,16 @@
 ---
 title: 使数据分析管道可操作化 - Azure
 description: 设置和运行由新数据触发的示例数据管道并生成简明结果。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 1e73c403a03eef9a47bc0550b37769db302a599c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a306890560497b0c7196f1286de3f73039821ea2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504412"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939527"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使数据分析管道可操作化
 
@@ -272,7 +269,7 @@ Azure SQL 数据库现已准备就绪。
     WHERE year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
 
-    Oozie 变量使用语法 `${variableName}`。 这些变量在文件中设置 `job.properties` 。 Oozie 在运行时替换实际值。
+    Oozie 变量使用语法 `${variableName}`。 这些变量在 `job.properties` 文件中进行设置。 Oozie 在运行时替换实际值。
 
 1. 在本地工作站中，创建名为 `hive-create-daily-summary-table.hql` 的文件。 使用以下代码作为该文件的内容。
 

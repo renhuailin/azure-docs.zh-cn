@@ -1,18 +1,15 @@
 ---
 title: 有关 Azure HDInsight 中的 Apache Kafka 的常见问题解答
 description: 获取有关 Azure HDInsight 上的 Apache Kafka（一个托管式 Hadoop 云服务）的常见问题的解答。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 84c48f14ae57cfa4aa3290924d3d170c075fe3a6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 851d7ceb44d2466ed31e26c1442fde9acea9fd22
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532538"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939100"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>有关 Azure HDInsight 中的 Apache Kafka 的常见问题解答
 
@@ -42,7 +39,7 @@ HDInsight Kafka 群集包含以下资源：
 
 ## <a name="can-i-change-cluster-configurations"></a>是否可以更改群集配置？
 
-是的，可通过 Ambari 门户更改。 门户中的每个组件都附带一个“配置”部分，可在该部分更改组件配置。  某些更改可能需要重启代理。
+是的，可通过 Ambari 门户更改。 门户中的每个组件都附带一个“配置”部分，可在该部分更改组件配置。 某些更改可能需要重启代理。
 
 ## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>对于 Apache Kafka，HDInsight 支持哪种类型的身份验证？
 

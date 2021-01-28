@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 01/27/2021
 ms.author: aahi
-ms.openlocfilehash: 3b6c2a5a50cedadd8818eae735df55b661e794ef
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 8fa10164ae2d697f68156777f224b92f0562475f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97034014"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940039"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>配置 Azure 认知服务虚拟网络
 
@@ -340,9 +340,6 @@ Azure 认知服务提供了分层的安全模型。 借助此模型，可保护�
    > 不支持使用“/31”或“/32”前缀大小的小型地址范围。 这些范围应使用单独的 IP 地址规则配置。
 
 IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许使用为专用网络保留的 IP 地址范围（如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定义）。 专用网络包括以 `10.*`、`172.16.*` - `172.31.*` 和 `192.168.*` 开头的地址。
-
-   > [!NOTE]
-   > IP 网络规则对源自与认知服务资源相同的 Azure 区域的请求不起作用。 请使用[虚拟网络规则](#grant-access-from-a-virtual-network)来允许相同区域的请求。
 
 目前仅支持 IPV4 地址。 每个认知服务资源最多支持 100 条 IP 网络规则，这些规则可与 [虚拟网络规则](#grant-access-from-a-virtual-network)组合使用。
 

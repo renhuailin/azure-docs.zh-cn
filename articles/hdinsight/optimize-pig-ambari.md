@@ -1,18 +1,15 @@
 ---
 title: 在 Azure HDInsight 中通过 Apache Ambari 优化 Apache Pig
 description: 使用 Apache Ambari Web UI 来配置和优化 Apache Pig。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: d6f20780ccd90d83631ce07411820fb8c9280c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 690cfc66d0f08e63ac6ef1d21b6722fed59eca14
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084080"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939015"
 ---
 # <a name="optimize-apache-pig-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Apache Ambari 优化 Apache Pig
 

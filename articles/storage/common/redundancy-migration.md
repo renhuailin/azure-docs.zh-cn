@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 01/27/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 228595bf633ef0545a13abe19308e49da82cf75a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 38978982baea41d23958a857b19a1edf2e454f37
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844006"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938723"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>更改存储帐户的复制方式
 
@@ -39,16 +39,17 @@ Azure 存储提供以下类型的复制：
 
 | 切换 | …到 LRS | …到 GRS/RA-GRS | ...到 ZRS | ...to GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>…从 LRS</b> | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1</sup> | 执行手动迁移 <br /><br /> OR <br /><br /> 请求实时迁移 | 执行手动迁移 <br /><br /> OR <br /><br /> 先切换到 GRS/RA-GRS，然后请求实时迁移<sup>1</sup> |
+| <b>…从 LRS</b> | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1、2</sup> | 执行手动迁移 <br /><br /> OR <br /><br /> 请求实时迁移 | 执行手动迁移 <br /><br /> OR <br /><br /> 先切换到 GRS/RA-GRS，然后请求实时迁移<sup>1</sup> |
 | <b>…从 GRS/RA-GRS</b> | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 | 执行手动迁移 <br /><br /> OR <br /><br /> 先切换到 LRS，然后请求实时迁移 | 执行手动迁移 <br /><br /> OR <br /><br /> 请求实时迁移 |
-| <b>...from ZRS</b> | 执行手动迁移 | 执行手动迁移 | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1、2</sup> |
+| <b>...from ZRS</b> | 执行手动迁移 | 执行手动迁移 | 不适用 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1、3</sup> |
 | <b>...from GZRS/RA-GZRS</b> | 执行手动迁移 | 执行手动迁移 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 |
 
 <sup>1</sup> 会产生一次性出口费用。<br />
-<sup>2</sup> 在以下区域中不支持从 ZRS 到 GZRS/RA-GZRS，反之亦然：，反之亦然。
+<sup>2</sup> 如果存储帐户包含存档层中的 blob，则不支持从 LRS 迁移到 GRS。<br />
+<sup>3</sup> 以下区域不支持从 ZRS 到 GZRS/RA-GZRS，反之亦然：美国东部2、美国东部、西欧。
 
 > [!CAUTION]
-> 如果为 (RA ) GRS 或 (RA-) GZRS 帐户执行 [帐户故障转移](storage-disaster-recovery-guidance.md) ，则在故障转移后，该帐户在新的主要区域中为本地冗余。 不支持通过故障转移导致的 LRS 帐户的实时迁移到 ZRS 或 GZRS。 即使是所谓的故障回复操作，也是如此。 例如，如果你执行从 GZRS 到次要区域中的 LRS 的帐户故障转移，然后再次将其配置为 RA-GRS 并执行另一个帐户故障转移到原始的主要区域，则你无法与主要区域中的 RA-GZRS 联系支持。 相反，你需要执行手动迁移到 ZRS 或 GZRS。
+> 如果为 (RA ) GRS 或 ("RA-) GZRS" 帐户执行 [帐户故障转移](storage-disaster-recovery-guidance.md) ，则在故障转移后，该帐户在新的主要区域中为本地冗余 (LRS) 。 不支持通过故障转移导致的 LRS 帐户的实时迁移到 ZRS 或 GZRS。 即使是所谓的故障回复操作，也是如此。 例如，如果你执行从 GZRS 到次要区域中的 LRS 的帐户故障转移，然后再次将其配置为 RA-GRS 并执行另一个帐户故障转移到原始的主要区域，则你无法与主要区域中的 RA-GZRS 联系支持。 相反，你需要执行手动迁移到 ZRS 或 GZRS。
 
 ## <a name="change-the-replication-setting"></a>更改复制设置
 

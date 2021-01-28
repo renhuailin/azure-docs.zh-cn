@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 01/27/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9442489efd2a84ac8a31dfb2efb5718e1fd4f594
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 112ad0714c84cd3be08788b3277f52372f6d0373
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621787"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938477"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory 概述的组合安全信息注册
 
 在组合注册之前，用户会为 Azure AD 多重身份验证和自助服务密码重置 (SSPR) 单独注册身份验证方法。 人们搞糊涂，使用了类似的方法进行多重身份验证和 SSPR，但他们不得不注册这两种功能。 现在，通过组合注册，用户可以注册一次，并获得多重身份验证和 SSPR 的优势。
 
 > [!NOTE]
-> 自2020年8月15日起，将自动为所有新的 Azure AD 租户启用合并注册。 从2020年12月14日开始，将自动为组合注册启用所有 Azure AD 租户。
+> 自2020年8月15日起，将自动为所有新的 Azure AD 租户启用合并注册。 
 
 本文概述了安全注册的组合。 若要开始结合安全注册，请参阅以下文章：
 
@@ -56,7 +56,7 @@ Azure AD 组合的安全信息注册当前不适用于 Azure 德国或 Azure 中
 | Microsoft Authenticator | 是 (最多 5)  | 否 | 是 |
 | 其他验证器应用 | 是 (最多 5)  | 否 | 是 |
 | 硬件令牌 | 否 | 否 | 是 |
-| 电话号码 | 是 | 是 | 是 |
+| 电话 | 是 | 是 | 是 |
 | 备用号码 | 是 | 是 | 是 |
 | 办公电话 | 是 | 是 | 是 |
 | 电子邮件 | 是 | 是 | 是 |

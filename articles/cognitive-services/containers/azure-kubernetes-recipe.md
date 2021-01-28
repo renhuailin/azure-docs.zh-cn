@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2a6e7ee125cac66b48e666a766c39813aa38fb1a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6918218d8434c06f59b0738e60cad53b94b0a0b5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968496"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939847"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>将文本分析语言检测容器部署到 Azure Kubernetes 服务
 
@@ -27,7 +27,7 @@ ms.locfileid: "94968496"
 
 * 使用 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services)。
 * 适用于操作系统的 [Git](https://git-scm.com/downloads)，以便克隆此过程中使用的[示例](https://github.com/Azure-Samples/cognitive-services-containers-samples)。
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Azure CLI](/cli/azure/install-azure-cli)。
 * [Docker 引擎](https://www.docker.com/products/docker-engine)并验证 Docker CLI 是否可在控制台窗口中工作。
 * [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe)。
 * 具有适当定价层的 Azure 资源。 并非所有定价层都适用于此容器：

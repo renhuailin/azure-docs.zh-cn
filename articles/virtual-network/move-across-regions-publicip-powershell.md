@@ -7,12 +7,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 0a3fdb776643e2cf817c50fb9b716f7315151e21
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a21d088680855b74e7259028ed7ef55165707c56
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223391"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938693"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 公共 IP 配置移动到另一个区域
 
@@ -44,19 +44,19 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>通过脚本导出模板并进行部署
 
-1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登录到 Azure 订阅，然后按屏幕说明操作：
+1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 命令登录到 Azure 订阅，然后按屏幕说明操作：
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-2. 使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0) 获取要移到目标区域的公共 IP 的资源 ID，将其置于一个变量中：
+2. 使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取要移到目标区域的公共 IP 的资源 ID，将其置于一个变量中：
 
     ```azurepowershell-interactive
     $sourcePubIPID = (Get-AzPublicIPaddress -Name <source-public-ip-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. 将源虚拟网络导出到执行 [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) 命令时所在的目录中的某个 .json 文件：
+3. 将源虚拟网络导出到执行 [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup) 命令时所在的目录中的某个 .json 文件：
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
@@ -109,7 +109,7 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
              ]             
     ```
   
-7. 若要获取区域位置代码，可以通过运行以下命令来使用 Azure PowerShell cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0)：
+7. 若要获取区域位置代码，可以通过运行以下命令来使用 Azure PowerShell cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation)：
 
     ```azurepowershell-interactive
 
@@ -165,12 +165,12 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
 
 9. 保存 \<resource-group-name>.json 文件。
 
-10. 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) 在目标区域创建资源组，以便部署目标公共 IP。
+10. 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 在目标区域创建资源组，以便部署目标公共 IP。
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. 使用 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将编辑的 \<resource-group-name>.json 文件部署到在上一步创建的资源组：
+11. 使用 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 将编辑的 \<resource-group-name>.json 文件部署到在上一步创建的资源组：
 
     ```azurepowershell-interactive
 
@@ -178,7 +178,7 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
     
     ```
 
-12. 若要验证是否已在目标区域创建这些资源，请使用 [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) 和 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0)：
+12. 若要验证是否已在目标区域创建这些资源，请使用 [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) 和 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress)：
     
     ```azurepowershell-interactive
 
@@ -193,7 +193,7 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
     ```
 ## <a name="discard"></a>弃用 
 
-部署以后，如果希望重新开始或弃用目标中的公共 IP，请删除在目标中创建的资源组，系统就会删除已移动的公共 IP。  若要删除资源组，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
+部署以后，如果希望重新开始或弃用目标中的公共 IP，请删除在目标中创建的资源组，系统就会删除已移动的公共 IP。  若要删除资源组，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)：
 
 ```azurepowershell-interactive
 
@@ -203,7 +203,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 ## <a name="clean-up"></a>清除
 
-若要提交更改并完成虚拟网络的移动，以及删除源虚拟网络或资源组，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) 或 [Remove-AzPublicIPAddress](/powershell/module/az.network/remove-azpublicipaddress?view=azps-2.6.0)：
+若要提交更改并完成虚拟网络的移动，以及删除源虚拟网络或资源组，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 或 [Remove-AzPublicIPAddress](/powershell/module/az.network/remove-azpublicipaddress)：
 
 ```azurepowershell-interactive
 

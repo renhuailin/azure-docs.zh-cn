@@ -2,18 +2,15 @@
 title: 创建 Apache Spark 机器学习管道-Azure HDInsight
 description: 使用 Apache Spark 机器学习库在 Azure HDInsight 中创建数据管道。
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 07/22/2019
-ms.openlocfilehash: c270e9865aff30184ea236f56ab20ede78c5d577
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9897c7ba14e6190698cf10792a94acc759699d4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075444"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940185"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>创建 Apache Spark 机器学习管道
 
@@ -132,6 +129,6 @@ only showing top 20 rows
 
 现在可以使用 `model` 对象来进行预测。 有关此机器学习应用程序的完整示例以及运行此应用程序的分步说明，请参阅[在 Azure HDInsight 上生成 Apache Spark 机器学习应用程序](apache-spark-ipython-notebook-machine-learning.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [在 Azure 上使用 Scala 和 Apache Spark 展开数据科研](../../machine-learning/team-data-science-process/scala-walkthrough.md)

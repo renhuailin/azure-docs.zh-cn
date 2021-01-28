@@ -1,18 +1,15 @@
 ---
 title: 在 Azure HDInsight 中通过 Apache Ambari 优化 Apache Hive
 description: 使用 Apache Ambari Web UI 来配置和优化 Apache Hive。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 349f58720e6fff52191dfff65108cd1320e41eed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084352"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939243"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Apache Ambari 优化 Apache Hive
 
@@ -20,24 +17,24 @@ Apache Ambari 是用于管理和监视 HDInsight 群集的 Web 界面。 有关 
 
 以下部分介绍了用于优化 Apache Hive 总体性能的配置选项。
 
-1. 若要修改 Hive 配置参数，请从“服务”边栏中选择“Hive”。****
-1. 导航到“配置”选项卡。****
+1. 若要修改 Hive 配置参数，请从“服务”边栏中选择“Hive”。
+1. 导航到“配置”选项卡。
 
 ## <a name="set-the-hive-execution-engine"></a>设置 Hive 执行引擎
 
 Hive 提供两个执行引擎：Apache Hadoop MapReduce 和 Apache TEZ。 Tez 的速度比 MapReduce 更快。 HDInsight Linux 群集将 Tez 用作默认的执行引擎。 更改执行引擎：
 
-1. 在 Hive 的“配置”选项卡上的筛选框中，键入“执行引擎”。**** ****
+1. 在 Hive 的“配置”选项卡上的筛选框中，键入“执行引擎”。 
 
     ![Apache Ambari 搜索执行引擎](./media/optimize-hive-ambari/ambari-search-execution.png)
 
-1. “优化”属性的默认值为 **Tez**。****
+1. “优化”属性的默认值为 **Tez**。
 
     ![优化 - Apache Tez 引擎](./media/optimize-hive-ambari/optimization-apache-tez.png)
 
 ## <a name="tune-mappers"></a>优化映射器
 
-Hadoop 会尝试将单个文件拆分（映射）为多个文件，以并行方式处理生成的文件。** 映射器数目取决于拆分数目。 以下两个配置参数驱动 Tez 执行引擎的拆分数目：
+Hadoop 会尝试将单个文件拆分（映射）为多个文件，以并行方式处理生成的文件。 映射器数目取决于拆分数目。 以下两个配置参数驱动 Tez 执行引擎的拆分数目：
 
 * `tez.grouping.min-size`：分组拆分大小的下限，默认值为 16 MB（16,777,216 字节）。
 * `tez.grouping.max-size`：分组拆分大小的上限，默认值为 1 GB（1,073,741,824 字节）。
@@ -46,7 +43,7 @@ Hadoop 会尝试将单个文件拆分（映射）为多个文件，以并行方�
 
 例如，若要为数据大小 128 MB 设置四个映射器任务，可将每个任务的这两个参数设置为 32 MB（33,554,432 字节）。
 
-1. 若要修改限制参数，请导航到 Tez 服务的“配置”选项卡。**** 展开“常规”面板并找到 `tez.grouping.max-size` 和 `tez.grouping.min-size` 参数。****
+1. 若要修改限制参数，请导航到 Tez 服务的“配置”选项卡。 展开“常规”面板并找到 `tez.grouping.max-size` 和 `tez.grouping.min-size` 参数。
 
 1. 将这两个参数设置为 **33,554,432** 字节 (32 MB)。
 
@@ -64,23 +61,23 @@ Apache ORC 和 Snappy 都可提供高性能。 但是，Hive 默认提供的化�
 
 `hive.exec.reducers.bytes.per.reducer` 参数指定每个化简器处理的字节数。 默认值为 64 MB。 减小此值可提高并行度，并可能会改善性能。 但过度减小也可能生成过多的化简器，从而对性能产生潜在的负面影响。 此参数基于特定的数据要求、压缩设置和其他环境因素。
 
-1. 若要修改该参数，请导航到 Hive 的“配置”选项卡，然后在“设置”页上找到“每个化简器的数据”参数。**** ****
+1. 若要修改该参数，请导航到 Hive 的“配置”选项卡，然后在“设置”页上找到“每个化简器的数据”参数。 
 
     ![每个化简器的 Apache Ambari 数据](./media/optimize-hive-ambari/ambari-data-per-reducer.png)
 
-1. 选择“编辑”并将该值修改为 128 MB（134,217,728 字节），然后按 **Enter** 保存。****
+1. 选择“编辑”并将该值修改为 128 MB（134,217,728 字节），然后按 **Enter** 保存。
 
     ![每个化简器的 Ambari 数据 - 已编辑](./media/optimize-hive-ambari/data-per-reducer-edited.png)
   
     假设输入大小为 1024 MB，每个化简器的数据为 128 MB，则有 8 个化简器 (1024/128)。
 
-1. 为“每个化简器的数据”参数提供错误的值可能导致生成大量的化简器，从而对查询性能产生负面影响。**** 若要限制化简器的最大数目，请将 `hive.exec.reducers.max` 设置为适当的值。 默认值为 1009。
+1. 为“每个化简器的数据”参数提供错误的值可能导致生成大量的化简器，从而对查询性能产生负面影响。 若要限制化简器的最大数目，请将 `hive.exec.reducers.max` 设置为适当的值。 默认值为 1009。
 
 ## <a name="enable-parallel-execution"></a>启用并行执行
 
 一个 Hive 查询是在一个或多个阶段中执行的。 如果可以并行运行各个独立阶段，则会提高查询性能。
 
-1. 若要启用并行查询执行，请导航到 Hive 的“配置”选项卡并搜索 `hive.exec.parallel` 属性。**** 默认值为 false。 将该值更改为 true，然后按 **Enter** 保存该值。
+1. 若要启用并行查询执行，请导航到 Hive 的“配置”选项卡并搜索 `hive.exec.parallel` 属性。 默认值为 false。 将该值更改为 true，然后按 **Enter** 保存该值。
 
 1. 若要限制并行运行的作业数，请修改 `hive.exec.parallel.thread.number` 属性。 默认值为 8。
 
@@ -90,7 +87,7 @@ Apache ORC 和 Snappy 都可提供高性能。 但是，Hive 默认提供的化�
 
 Hive 逐行处理数据。 矢量化指示 Hive 以块（一个块包含 1,024 行）的方式处理数据，而不是以一次一行的方式处理数据。 矢量化只适用于 ORC 文件格式。
 
-1. 若要启用矢量化查询执行，请导航到 Hive 的“配置”选项卡并搜索 `hive.vectorized.execution.enabled` 参数。**** Hive 0.13.0 或更高版本的默认值为 true。
+1. 若要启用矢量化查询执行，请导航到 Hive 的“配置”选项卡并搜索 `hive.vectorized.execution.enabled` 参数。 Hive 0.13.0 或更高版本的默认值为 true。
 
 1. 若要为查询的化简端启用矢量化执行，请将 `hive.vectorized.execution.reduce.enabled` 参数设置为 true。 默认值为 false。
 
@@ -100,7 +97,7 @@ Hive 逐行处理数据。 矢量化指示 Hive 以块（一个块包含 1,024 �
 
 默认情况下，Hive 遵循一组规则来找到一个最佳的查询执行计划。 基于成本的优化 (CBO) 会评估多个查询执行计划， 并为每个计划分配成本，然后确定执行查询的成本最低的计划。
 
-若要启用 CBO，请导航到“Hive” > “配置” > “设置”，找到“启用基于成本的优化器”，然后将切换按钮切换到“打开”**** **** **** **** ****。
+若要启用 CBO，请导航到“Hive” > “配置” > “设置”，找到“启用基于成本的优化器”，然后将切换按钮切换到“打开”    。
 
 ![HDInsight 基于成本的优化器](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
 
@@ -141,7 +138,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 一般规则是，尽量使用可拆分的压缩方法，否则会创建极少的映射器。 如果输入数据为文本，则 `bzip2` 是最佳选项。 对于 ORC 格式，Snappy 是最快的压缩选项。
 
-1. 若要启用中间压缩，请导航到 Hive 的“配置”选项卡，并将 `hive.exec.compress.intermediate` 参数设置为 true。**** 默认值为 false。
+1. 若要启用中间压缩，请导航到 Hive 的“配置”选项卡，并将 `hive.exec.compress.intermediate` 参数设置为 true。 默认值为 false。
 
     ![“Hive 执行 - 中间压缩”](./media/optimize-hive-ambari/hive-exec-compress-intermediate.png)
 
@@ -152,13 +149,13 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 1. 添加自定义设置：
 
-    a. 导航到“Hive” > “配置” > “高级” > “自定义 hive-site”**** **** **** ****。
+    a. 导航到“Hive” > “配置” > “高级” > “自定义 hive-site”   。
 
-    b. 选择“自定义 hive-site”窗格底部的“添加属性…”****。
+    b. 选择“自定义 hive-site”窗格底部的“添加属性…”。
 
     c. 在“添加属性”窗口中，输入 `mapred.map.output.compression.codec` 作为键，输入 `org.apache.hadoop.io.compress.SnappyCodec` 作为值。
 
-    d. 选择“添加”  ****。
+    d. 选择“添加”  。
 
     ![“Apache Hive 自定义属性添加”](./media/optimize-hive-ambari/hive-custom-property.png)
 
@@ -171,7 +168,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 还可以压缩最终的 Hive 输出。
 
-1. 若要压缩最终的 Hive 输出，请导航到 Hive 的“配置”选项卡，并将 `hive.exec.compress.output` 参数设置为 true。**** 默认值为 false。
+1. 若要压缩最终的 Hive 输出，请导航到 Hive 的“配置”选项卡，并将 `hive.exec.compress.output` 参数设置为 true。 默认值为 false。
 
 1. 若要选择输出压缩编解码器，请根据上一部分的步骤 3 所述，将 `mapred.output.compression.codec` 自定义属性添加到“自定义 hive-site”窗格。
 
@@ -183,7 +180,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 不应该对输入量较大的长时间运行的 MapReduce 任务启用推理执行。
 
-* 若要启用推理执行，请导航到 Hive 的“配置”选项卡，并将 `hive.mapred.reduce.tasks.speculative.execution` 参数设置为 true。**** 默认值为 false。
+* 若要启用推理执行，请导航到 Hive 的“配置”选项卡，并将 `hive.mapred.reduce.tasks.speculative.execution` 参数设置为 true。 默认值为 false。
 
     ![“Hive mapred 化简任务推理执行”](./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
@@ -193,7 +190,7 @@ Hive 允许在表中插入记录时创建动态分区，且无需预定义每个
 
 1. 要让 Hive 执行动态分区，应将 `hive.exec.dynamic.partition` 参数值设置为 true（默认值）。
 
-1. 将动态分区模式更改为 *strict*。 在 strict（严格）模式下，必须至少有一个分区是静态的。 此设置可以阻止未在 WHERE 子句中包含分区筛选器的查询，即，strict** 可阻止扫描所有分区的查询。 导航到 Hive 的“配置”选项卡，并将 `hive.exec.dynamic.partition.mode` 设置为 **strict**。**** 默认值为 **nonstrict**。
+1. 将动态分区模式更改为 *strict*。 在 strict（严格）模式下，必须至少有一个分区是静态的。 此设置可以阻止未在 WHERE 子句中包含分区筛选器的查询，即，strict 可阻止扫描所有分区的查询。 导航到 Hive 的“配置”选项卡，并将 `hive.exec.dynamic.partition.mode` 设置为 **strict**。 默认值为 **nonstrict**。
 
 1. 若要限制要创建的动态分区数，请修改 `hive.exec.max.dynamic.partitions` 参数。 默认值为 5000。
 
@@ -221,7 +218,7 @@ Hive 允许在表中插入记录时创建动态分区，且无需预定义每个
 
 ### <a name="join-optimizations"></a>联接优化
 
-Hive 中的默认联接类型是“随机联接”。** 在 Hive 中，特殊的映射器会读取输入，并向中间文件发出联接键/值对。 Hadoop 在随机阶段中排序与合并这些对。 此随机阶段的系统开销较大。 根据数据选择右联接可以显著提高性能。
+Hive 中的默认联接类型是“随机联接”。 在 Hive 中，特殊的映射器会读取输入，并向中间文件发出联接键/值对。 Hadoop 在随机阶段中排序与合并这些对。 此随机阶段的系统开销较大。 根据数据选择右联接可以显著提高性能。
 
 | 联接类型 | 时间 | 方式 | Hive 设置 | 注释 |
 | --- | --- | --- | --- | --- |
