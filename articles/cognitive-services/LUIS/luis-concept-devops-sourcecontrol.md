@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 0466105ab99d191b5dd9beab1d5d5b61f4b3225e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 68d88ef667da9f22d3e3a17f10036693fcca0c3f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790878"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932522"
 ---
 # <a name="devops-practices-for-luis"></a>LUIS 的 DevOps 实践
 
@@ -18,7 +18,7 @@ ms.locfileid: "98790878"
 
 ## <a name="source-control-and-branch-strategies-for-luis"></a>LUIS 的源代码管理和分支策略
 
-DevOps 成功的关键因素之一是[源代码管理](/azure/devops/user-guide/source-control?view=azure-devops)。 源代码管理系统允许开发人员围绕代码开展协作并跟踪更改。 使用分支可允许开发人员在不同版本的代码库之间进行切换，并允许独立于团队的其他成员开展工作。 开发人员提出[拉取请求](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests)提议从一个分支更新到另一个分支时，或合并更改时，可能会触发[自动生成](luis-concept-devops-automation.md)进程生成并连续测试代码。
+DevOps 成功的关键因素之一是[源代码管理](/azure/devops/user-guide/source-control)。 源代码管理系统允许开发人员围绕代码开展协作并跟踪更改。 使用分支可允许开发人员在不同版本的代码库之间进行切换，并允许独立于团队的其他成员开展工作。 开发人员提出[拉取请求](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests)提议从一个分支更新到另一个分支时，或合并更改时，可能会触发[自动生成](luis-concept-devops-automation.md)进程生成并连续测试代码。
 
 通过使用本文档所述的概念和指南，你可以在跟踪源代码管理系统中的更改的同时开发 LUIS 应用程序，然后按照以下软件工程最佳做法进行操作：
 
@@ -42,7 +42,7 @@ DevOps 成功的关键因素之一是[源代码管理](/azure/devops/user-guide/
 
 ## <a name="source-control"></a>源代码管理
 
-若要在源代码管理系统中维护 LUIS 应用的[应用架构定义](./app-schema-definition.md)，请使用应用的 [LUDown 格式 (`.lu`)](/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0) 表示形式。 `.lu` 格式优于 `.json` 格式，因为前者易于阅读，这使开发人员可以更轻松地在 PR 中进行更改和查看更改。
+若要在源代码管理系统中维护 LUIS 应用的[应用架构定义](./app-schema-definition.md)，请使用应用的 [LUDown 格式 (`.lu`)](/azure/bot-service/file-format/bot-builder-lu-file-format) 表示形式。 `.lu` 格式优于 `.json` 格式，因为前者易于阅读，这使开发人员可以更轻松地在 PR 中进行更改和查看更改。
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>将 LUIS 应用另存为 LUDown 格式
 
@@ -81,7 +81,7 @@ LUIS 应用程序的以下类型的文件应在源代码管理下进行维护：
 - LUIS 创作和预测密钥
 - LUIS 创作和预测终结点
 - Azure 订阅密钥
-- 访问令牌，例如自动化身份验证中所使用的 Azure [服务主体](/cli/azure/ad/sp?view=azure-cli-latest)的令牌
+- 访问令牌，例如自动化身份验证中所使用的 Azure [服务主体](/cli/azure/ad/sp)的令牌
 
 #### <a name="strategies-for-securely-managing-secrets"></a>安全管理机密的策略
 
@@ -183,7 +183,7 @@ LUDown 格式的 LUIS 应用易于阅读，它支持在适用于审查的 PR 中
 
 ## <a name="versioning"></a>版本控制
 
-应用程序由多个组件组成，其中可能包括 [Azure 机器人服务](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)、[QnA Maker](https://www.qnamaker.ai/)、[Azure 语音服务](../speech-service/overview.md)等中运行的机器人等。 若要实现松散耦合的应用程序，请使用[版本控制](/azure/devops/learn/git/what-is-version-control)以便独立地对应用程序的每个组件进行版本控制，使开发人员可以通过直接查看版本号来检测重大更改或更新。 如果在 LUIS 应用自己的存储库中对其进行维护，则可以独立于其他组件轻松地对其进行版本控制。
+应用程序由多个组件组成，其中可能包括 [Azure 机器人服务](/azure/bot-service/bot-service-overview-introduction)、[QnA Maker](https://www.qnamaker.ai/)、[Azure 语音服务](../speech-service/overview.md)等中运行的机器人等。 若要实现松散耦合的应用程序，请使用[版本控制](/azure/devops/learn/git/what-is-version-control)以便独立地对应用程序的每个组件进行版本控制，使开发人员可以通过直接查看版本号来检测重大更改或更新。 如果在 LUIS 应用自己的存储库中对其进行维护，则可以独立于其他组件轻松地对其进行版本控制。
 
 主分支的 LUIS 应用应该应用版本控制方案。 将 LUIS 应用的 `.lu` 的更新合并到主分支后，然后将更新后的该源导入到主分支的 LUIS 应用中的新版本。
 

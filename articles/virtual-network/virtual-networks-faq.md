@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 2cf28565818f6de4d52b57040a80c21d0e03a76c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 61076b49d396c83a67635e46eb4f1b928b3f9e1d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218512"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933976"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -44,7 +44,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>是否可以在 VNet 之间或者 VNet 与本地数据中心之间执行 WAN 优化？
 是的。 可以通过 Azure 市场部署许多供应商提供 [WAN 优化网络虚拟设备](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization)。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>要使用哪些工具创建 VNet？
 可以使用以下工具创建或配置 VNet：
@@ -239,7 +239,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 ### <a name="is-there-tooling-support-for-vnets"></a>是否有 VNet 的工具支持？
 是的。 详细了解以下操作：
 - 使用 Azure 门户通过 [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) 和[经典](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)部署模型部署 VNet。
-- 使用 PowerShell 来管理通过 [Resource Manager](/powershell/module/az.network) 和[经典](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0)部署模型部署的 VNet。
+- 使用 PowerShell 来管理通过 [Resource Manager](/powershell/module/az.network) 和[经典](/powershell/module/servicemanagement/azure.service/)部署模型部署的 VNet。
 - 使用 Azure 命令行接口 (CLI) 管理通过[资源管理器](/cli/azure/network/vnet)和[经典](/previous-versions/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources)部署模型部署的 VNet。  
 
 ## <a name="vnet-peering"></a>VNet 对等互连
@@ -259,7 +259,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 - 应用程序网关 (v1) SKU
 - Service Fabric
 - API 管理
-- Active Directory 域服务 (添加) 
+- Active Directory 域服务 (ADDS)
 - 逻辑应用
 - HDInsight
 -   Azure Batch
@@ -282,8 +282,8 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 ### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>是否可以将两个地址范围匹配或重叠的 VNet 对等互连？
 否。 要启用 VNet 对等互连，地址空间不得重叠。
 
-### <a name="can-i-peer-a-vnet-to-two-different-vnets-with-the-the-use-remote-gateway-option-enabled-on-both-the-peerings"></a>是否可以对两个不同的 Vnet 使用 "使用远程网关" 选项启用 VNet，同时在对等互连上启用 "使用远程网关" 选项？
-不是。 仅可对某个对等互连的 Vnet 启用 "使用远程网关" 选项。
+### <a name="can-i-peer-a-vnet-to-two-different-vnets-with-the-the-use-remote-gateway-option-enabled-on-both-the-peerings"></a>在两个对等互连上都启用了“使用远程网关”选项的情况下，是否可以将一个 VNet 与两个不同的 VNet 对等互连？
+不是。 只能在与其中一个 VNet 的对等互连上启用“使用远程网关”选项。
 
 ### <a name="how-much-do-vnet-peering-links-cost"></a>VNet 对等互连链接的费用如何？
 创建 VNet 对等互连连接不收费。 跨对等互连连接进行数据传输收费。 请[参阅此文](https://azure.microsoft.com/pricing/details/virtual-network/)。

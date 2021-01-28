@@ -1,7 +1,7 @@
 ---
 title: 多设备对话 (预览版) 语音服务
 titleSuffix: Azure Cognitive Services
-description: ''
+description: 多设备对话使你可以轻松地在多个客户端之间创建语音或文本对话，并协调它们之间发送的消息。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 3c2dbaf8f65208126c52617d4b89d901b3670dac
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7b38bc390b28788003c2de757f45e8ecdfd5c89a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025168"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932426"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>什么是多设备对话 (预览) ？
 
@@ -37,7 +37,7 @@ ms.locfileid: "95025168"
 ## <a name="key-features"></a>主要功能
 
 - **实时** 脚本–每个人都将收到会话的脚本，因此，他们可以实时跟踪文本或保存以供稍后使用。
-- **实时翻译** –对于超过60个支持的文本翻译 [语言](language-support.md#text-languages) ，用户可以将会话转换为其首选语言 () 。
+- **实时翻译** –对于超过70个支持的文本翻译 [语言](language-support.md#text-languages) ，用户可以将会话转换为其首选语言 () 。
 - **可读的脚本** -通过标点和句尾，脚本和转换易于理解。
 - **语音或文本输入** –每个用户都可以在自己的设备上讲话或键入，具体取决于为参与者选择的语言启用的语言支持功能。 请参阅 [语言支持](language-support.md#speech-to-text)。
 - **消息中继** -多设备会话服务会将一台客户端发送的消息以他们选择的语言)  (。
@@ -58,9 +58,6 @@ ms.locfileid: "95025168"
 ### <a name="presentations"></a>演示文稿
 
 你还可以在屏幕上以及观众成员自己的设备上提供演示文稿和讲座的标题。 在受众加入会话代码后，他们可以在自己的设备上以其首选语言查看脚本。
-
-> [!NOTE]
-> 若要查看示例，请查看 [演示文稿转换器](https://www.microsoft.com/translator/apps/presentation-translator/)，其中使用了多设备对话服务的 PowerPoint 外接程序。 可以在[此处](https://download.cnet.com/s/powerpoint-add-in/)下载。
 
 ## <a name="how-it-works"></a>工作原理
 

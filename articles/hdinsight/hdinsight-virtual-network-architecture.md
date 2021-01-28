@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 虚拟网络体系结构
 description: 了解在 Azure 虚拟网络中创建 HDInsight 群集时可用的资源。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5b8bdf5577642290cee7250e0f21f8a69dfd248
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81390209"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931148"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虚拟网络体系结构
 
@@ -38,7 +35,7 @@ Azure HDInsight 群集包含不同类型的虚拟机（或节点）。 每个节
 
 这些 FQDN 的格式为 `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`。
 
-对于头节点，`<node-type-prefix>` 为“hn”**，对于工作节点为“wn”**，对于 zookeeper 节点为“zn”**。
+对于头节点，`<node-type-prefix>` 为“hn”，对于工作节点为“wn”，对于 zookeeper 节点为“zn”。
 
 如果只需要主机名，则仅使用 FQDN 的第一部分：`<node-type-prefix><instance-number>-<abbreviated-clustername>`
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 04f50396ea9ced4b4377f264b4952efa7a75d170
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9a321687a755f8a3d6e6d9139138d61c58764ef4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223493"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932603"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>将 IPv6 添加到 Azure 虚拟网络中的 IPv4 应用程序 - Azure CLI
 
@@ -48,7 +48,7 @@ az network public-ip create \
 
 ## <a name="configure-ipv6-load-balancer-frontend"></a>配置 IPv6 负载均衡器前端
 
-运行 [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create) 配置使用新 IPv6 IP 地址的负载均衡器，如下所示：
+运行 [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip#az-network-lb-frontend-ip-create) 配置使用新 IPv6 IP 地址的负载均衡器，如下所示：
 
 ```azurecli-interactive
 az network lb frontend-ip create \
@@ -60,7 +60,7 @@ az network lb frontend-ip create \
 
 ## <a name="configure-ipv6-load-balancer-backend-pool"></a>配置 IPv6 负载均衡器后端池
 
-运行 [az network lb address-pool create](/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) 为使用 IPv6 地址的 NIC 创建后端池，如下所示：
+运行 [az network lb address-pool create](/cli/azure/network/lb/address-pool#az-network-lb-address-pool-create) 为使用 IPv6 地址的 NIC 创建后端池，如下所示：
 
 ```azurecli-interactive
 az network lb address-pool create \
@@ -71,7 +71,7 @@ az network lb address-pool create \
 
 ## <a name="configure-ipv6-load-balancer-rules"></a>配置 IPv6 负载均衡器规则
 
-使用 [az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) 创建 IPv6 负载均衡器规则。
+使用 [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) 创建 IPv6 负载均衡器规则。
 
 ```azurecli-interactive
 az network lb rule create \
@@ -104,7 +104,7 @@ az network vnet subnet update \
 
 ## <a name="add-ipv6-configuration-to-nics"></a>将 IPv6 配置添加到 NIC
 
-运行 [az network nic ip-config create](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create) 配置使用 IPv6 地址的 VM NIC，如下所示：
+运行 [az network nic ip-config create](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-create) 配置使用 IPv6 地址的 VM NIC，如下所示：
 
 ```azurecli-interactive
 az network nic ip-config create \

@@ -3,20 +3,15 @@ title: 为静态 Azure 事件中心数据配置你自己的密钥
 description: 本文提供了有关如何配置自己的密钥来加密 Azure 事件中心数据 rest 的信息。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 095def84c5ab5e4dac7802027468b67eefb3161f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 00e33bc3464aed1829968b7957e48455eaa04447
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625375"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933785"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>配置客户托管的密钥，以便通过使用 Azure 门户来加密静态 Azure 事件中心数据
-Azure 事件中心通过 azure 存储服务加密 (Azure SSE) 提供静态数据的加密。 事件中心依赖于 Azure 存储来存储数据，默认情况下，使用 Microsoft 托管密钥对存储在 Azure 存储中的所有数据进行加密。 
-
-## <a name="overview"></a>概述
-Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的密钥加密静态数据的选项， (创建自己的密钥– BYOK) 。 此功能使你能够创建、轮换、禁用和撤消对用于静态 Azure 事件中心数据加密的客户托管密钥的访问权限。
-
-启用 BYOK 功能是在命名空间中执行的一次性设置过程。
+Azure 事件中心通过 azure 存储服务加密 (Azure SSE) 提供静态数据的加密。 事件中心服务使用 Azure 存储来存储数据。 使用 Azure 存储空间存储的所有数据都使用 Microsoft 托管密钥进行加密。 如果你使用自己的密钥 (也称为创建自己的密钥 (BYOK) 或客户托管的密钥) ，则仍使用 Microsoft 托管的密钥对数据进行加密，但另外，将使用客户管理的密钥加密 Microsoft 托管密钥。 利用此功能，您可以创建、轮换、禁用和撤消对用于加密 Microsoft 托管密钥的客户托管密钥的访问权限。 启用 BYOK 功能是在命名空间中执行的一次性设置过程。
 
 > [!NOTE]
 > BYOK 功能受 [事件中心专用单租户](event-hubs-dedicated-overview.md) 群集支持。 不能为标准事件中心命名空间启用此功能。
@@ -62,7 +57,7 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
     1. 你现在可以从下拉列表中选择此密钥以与用于加密的事件中心命名空间相关联。 
 
         ![从密钥保管库中选择密钥](./media/configure-customer-managed-key/select-key-from-key-vault.png)
-    1. 填写密钥详细信息，然后单击“选择”。 然后，便可以使用客户管理的密钥来加密命名空间中的静态数据。 
+    1. 填写密钥详细信息，然后单击“选择”。 这将允许使用密钥 (客户管理的密钥) 来加密 Microsoft 托管密钥。 
 
 
 ## <a name="rotate-your-encryption-keys"></a>轮换加密密钥
@@ -74,7 +69,7 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 撤消加密密钥后，已加密命名空间上的事件中心服务将无法操作。 如果启用了对密钥的访问权限，或者还原了删除密钥，事件中心服务将选取密钥，以便可以从加密的事件中心命名空间访问数据。
 
 ## <a name="set-up-diagnostic-logs"></a>设置诊断日志 
-为启用了 BYOK 的命名空间设置诊断日志，可以在使用客户管理的密钥对命名空间进行加密时，提供有关操作的必需信息。 可以启用这些日志，稍后将其流式传输到事件中心，或通过 log analytics 进行分析或流式传输到存储，以执行自定义的分析。 若要了解有关诊断日志的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
+为启用了 BYOK 的命名空间设置诊断日志可提供有关操作所需的信息。 可以启用这些日志，稍后将其流式传输到事件中心，或通过 log analytics 进行分析或流式传输到存储，以执行自定义的分析。 若要了解有关诊断日志的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="enable-user-logs"></a>启用用户日志
 按照以下步骤为客户管理的密钥启用日志。
@@ -101,7 +96,7 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 | category | 定义任务的分类。 例如，如果密钥保管库中的密钥处于禁用状态，则它将是信息类别; 如果密钥无法解包，则可能发生错误。 |
 | ResourceId | Azure Resource Manager 资源 ID |
 | keyVault | 密钥保管库的完整名称。 |
-| 键 | 用于加密事件中心命名空间的密钥名称。 |
+| key | 用于加密事件中心命名空间的密钥名称。 |
 | 版本 | 所使用的密钥的版本。 |
 | operation | 对密钥保管库中的密钥执行的操作。 例如，禁用/启用密钥、包装或解包 |
 | code | 与操作关联的代码。 示例：错误代码404，表示找不到键。 |

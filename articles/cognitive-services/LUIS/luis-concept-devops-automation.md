@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 1ce78e02c652777b524964559b579530f3e022fa
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 215399e4b131162097e54c15b84cb6fa7dac72e3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561301"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932534"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>LUIS DevOps 持续集成和持续交付工作流
 
@@ -22,8 +22,8 @@ ms.locfileid: "97561301"
 
 在源代码管理 (SCM) 系统中，将自动化生成管道配置为在发生以下事件时运行：
 
-1. 当有[拉取请求](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) 发起时，触发“PR 工作流”。 此工作流在更新合并到主分支 *之前* ，验证 PR 的内容。
-1. 将更新推送到主分支（例如合并 PR 的更改）时触发的 **CI/CD 工作流**。 此工作流可确保主分支的所有更新的质量。
+1. 当有[拉取请求](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) 发起时，触发“PR 工作流”。 在将更新合并到主分支之前，此工作流要验证 PR 的内容。
+1. 在将更新推送到主分支时（例如当合并来自 PR 的更改时），触发“CI/CD 工作流”。 此工作流可确保主分支的所有更新的质量。
 
 “CI/CD 工作流”合并两个补充开发进程：
 
@@ -31,7 +31,7 @@ ms.locfileid: "97561301"
 
 * [持续交付](/azure/devops/learn/what-is-continuous-delivery) (CD) 在持续集成概念的基础上更进了一步，可将应用程序自动部署到可执行更深入测试的环境中。 CD 使我们能够及早了解我们所做的更改所带来的任何无法预料的问题，还可以了解我们的测试覆盖率与目标的差距。
 
-持续集成和持续交付的目标是确保 "main 始终可交付"。 对于 LUIS 应用程序，这意味着我们可以（如果需要）从主分支 LUIS 应用程序获取任何版本并将其发布到生产环境中。
+持续集成和持续交付的目标是确保“主分支始终可提供服务”。 对于 LUIS 应用程序，这意味着，如果需要，我们可以从主分支 LUIS 应用中获取任何版本并将其交付生产。
 
 ### <a name="tools-for-building-automation-workflows-for-luis"></a>LUIS 自动化工作流生成工具
 
@@ -41,13 +41,13 @@ ms.locfileid: "97561301"
 
 * 使用 [Bot Framework 工具 LUIS CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) 在 LUIS 服务中处理 LUIS 应用及其各种版本，并对其进行定型、测试和发布。
 
-* 使用 [Azure CLI](/cli/azure/?view=azure-cli-latest) 查询 Azure 订阅、提取 LUIS 创作和预测密钥，并创建 Azure [服务主体](/cli/azure/ad/sp?view=azure-cli-latest)用于自动化身份验证。
+* 使用 [Azure CLI](/cli/azure/) 查询 Azure 订阅、提取 LUIS 创作和预测密钥，并创建 Azure [服务主体](/cli/azure/ad/sp)用于自动化身份验证。
 
 * 使用用于[测试 LUIS 应用](luis-concept-devops-testing.md)的 [NLU.DevOps](https://github.com/microsoft/NLU.DevOps)工具来分析测试结果。
 
 ### <a name="the-pr-workflow"></a>PR 工作流
 
-如上所述，将此工作流配置为当开发人员引发 PR 以将更改从功能分支合并到主分支时运行。 其目的是在将 PR 合并到主分支之前，验证其更改的质量。
+如上所述，将此工作流配置为在以下操作发生时运行：开发人员发起 PR 并请求实施要从功能分支合并到主分支的更改。 该配置的目的是在 PR 中的更改合并到主分支之前验证它们的质量。
 
 此工作流应：
 
@@ -61,11 +61,11 @@ ms.locfileid: "97561301"
 
 ### <a name="the-main-branch-cicd-workflow"></a>主分支 CI/CD 工作流
 
-将此工作流配置为在 PR 中的更新合并到主分支后运行。 其目的是通过测试更新来使主分支的质量栏更高。 如果更新满足质量要求，则此工作流将新的 LUIS 应用版本部署到可执行更深入测试的环境。
+将此工作流配置为在 PR 中的更新合并到主分支后运行。 其目的是通过测试更新来提升主分支的质量。 如果更新满足质量要求，则此工作流将新的 LUIS 应用版本部署到可执行更深入测试的环境。
 
 此工作流应：
 
-* 在主要 LUIS 应用中生成新版本 (你为主分支维护的应用) 使用更新后的源代码。
+* 使用已更新的源代码在主 LUIS 应用（为主分支维护的应用）中生成新版本。
 
 * 定型和发布 LUIS 应用版本。
 

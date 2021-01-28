@@ -1,19 +1,16 @@
 ---
 title: 基础结构：本地 Apache Hadoop 到 Azure HDInsight
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的基础结构最佳做法。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: e412b82be911f0b4ba2e5cda51495cdcd7826917
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f66e13046a34bddfd27912e23ce51f75006fd9fa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542295"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932142"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
 
@@ -80,7 +77,7 @@ Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化�
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>使用脚本操作自定义 HDInsight 群集
 
-HDInsight 提供名为“脚本操作”的群集配置方法。  脚本操作是一个 Bash 脚本，在 HDInsight 群集中的节点上运行，可用于安装附加的组件和更改配置设置。
+HDInsight 提供名为“脚本操作”的群集配置方法。 脚本操作是一个 Bash 脚本，在 HDInsight 群集中的节点上运行，可用于安装附加的组件和更改配置设置。
 
 必须将脚本操作存储在可从 HDInsight 群集访问的 URI 上。 在创建群集期间或之后可以使用脚本操作，也可以将它们限制为只能在特定的节点类型上运行。
 

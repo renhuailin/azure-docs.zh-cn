@@ -1,18 +1,16 @@
 ---
 title: Azure HDInsight 的网络安全组 (NSG) 服务标记
 description: 使用 HDInsight 服务标记允许来自运行状况和管理服务节点的群集的入站流量，而无需向你的 Nsg 添加 IP 地址。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022745"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931762"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的 NSG 服务标记
 
@@ -96,7 +94,7 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| 国家/地区 | 区域 | 服务标记 |
+| Country | 区域 | 服务标记 |
 | ---- | ---- | ---- |
 | 美国 | 美国东部 2 | HDInsight.EastUS2 |
 | &nbsp; | 美国中部 | HDInsight.CentralUS |

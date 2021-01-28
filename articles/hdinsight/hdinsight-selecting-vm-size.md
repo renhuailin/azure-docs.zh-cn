@@ -2,19 +2,16 @@
 title: 如何为 Azure HDInsight 群集选择适当的 VM 大小
 description: 了解如何为 HDInsight 群集选择适当的 VM 大小。
 keywords: vm 大小, 群集大小, 群集配置
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: d347707b0f48314dd872bc3ad34ac624817d2937
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 51043f0a1009994528783a1b56ec5ccec68e99b3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535308"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931775"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>为 Azure HDInsight 群集选择适当的 VM 大小
 
@@ -32,7 +29,7 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 - RAM：VM 大小还支配 VM 中可用的 RAM 量。 对于在内存中存储而不是从磁盘读取待处理数据的工作负荷，请确保工作节点能够提供足够的内存来容纳这些数据。
 
-- 网络：对于大多数群集类型，群集处理的数据不在本地磁盘上，而是在 Data Lake Storage 或 Azure 存储等外部存储服务中。 考虑节点 VM 与存储服务之间的网络带宽和吞吐量。 通常，更大 VM 的可用网络带宽越高。 有关详细信息，请参阅 [VM 大小概述](../virtual-machines/sizes.md)。
+- 网络：对于大多数群集类型，群集处理的数据并不在本地磁盘上，而是在 Data Lake Storage 或 Azure 存储之类的外部存储服务中。 考虑节点 VM 与存储服务之间的网络带宽和吞吐量。 通常，更大 VM 的可用网络带宽越高。 有关详细信息，请参阅 [VM 大小概述](../virtual-machines/sizes.md)。
 
 ## <a name="understanding-vm-optimization"></a>了解 VM 优化
 
@@ -53,7 +50,7 @@ Azure 中的虚拟机系列经过优化，可以适应不同的用例。 在下�
 
 下表描述了可以使用 Fsv2 系列 VM 创建的群集类型和节点类型。
 
-| 群集类型 | 版本 | 工作器节点 | 头节点 | ZooKeeper 节点 |
+| 群集类型 | Version | 工作器节点 | 头节点 | ZooKeeper 节点 |
 |---|---|---|---|---|
 | Spark | 全部 | F4 和更大 | 否 | 否 |
 | Hadoop | 全部 | F4 和更大 | 否 | 否 |

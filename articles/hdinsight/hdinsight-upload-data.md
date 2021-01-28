@@ -1,19 +1,16 @@
 ---
 title: 在 HDInsight 中上传 Apache Hadoop 作业的数据
 description: 了解如何在 HDInsight 中上载和访问 Apache Hadoop 作业的数据。 使用 Azure 经典 CLI、Azure 存储资源管理器、Azure PowerShell、Hadoop 命令行或 Sqoop。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 47262e0dc7247e1d514eeb64512c21ff1ae527ab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a8d21b88298b6092c869b89d48fe4c259c2365b6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534815"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931345"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上传 Apache Hadoop 作业的数据
 
@@ -71,7 +68,7 @@ hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 若要查看可用于文件的其他 Hadoop 命令的列表，请参阅 [https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]  
-> 在 Apache HBase 群集上，写入数据为 256 KB 时会使用默认块大小。 虽然在使用 HBase Api 或 REST API 时可良好运行，但使用 `hadoop` 或 `hdfs dfs` 命令编写大于 ~12 GB 的数据会导致错误。 有关详细信息，请参阅 [在 blob 上写入时的存储异常](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob)。
+> 在 Apache HBase 群集上，写入数据为 256 KB 时会使用默认块大小。 虽然在使用 HBase Api 或 REST API 时可良好运行，但使用 `hadoop` 或 `hdfs dfs` 命令编写大于 ~12 GB 的数据会导致错误。 有关详细信息，请参阅[在 blob 上写入时的存储异常](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob)。
 
 ### <a name="graphical-clients"></a>图形客户端
 

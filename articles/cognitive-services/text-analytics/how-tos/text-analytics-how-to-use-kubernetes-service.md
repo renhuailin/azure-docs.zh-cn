@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 744be742d9f638df14f9d6720c9dad9678685af0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb33bd4fe70c51e1e2afffece10ba3b29dcb0450
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017831"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932435"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>将文本分析容器部署到 Azure Kubernetes 服务
 
@@ -27,7 +27,7 @@ ms.locfileid: "96017831"
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services)。
 * 文本编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/download)。
-* 已安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* 已安装 [Azure CLI](/cli/azure/install-azure-cli)。
 * 已安装 [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/)。
 * 具有适当定价层的 Azure 资源。 并非所有定价层都适用于此容器：
     * 仅具有 F0 或标准定价层的 Azure 文本分析资源。

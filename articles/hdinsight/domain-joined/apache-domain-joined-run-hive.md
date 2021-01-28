@@ -3,17 +3,16 @@ title: Apache Ranger 中的 Apache Hive 策略 - Azure HDInsight
 description: 了解如何为具有企业安全性套餐的 Azure HDInsight 服务中的 Hive 配置 Apache Ranger 策略。
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: f2d9c96a616f05c22c8b999fdc6cab2505c27485
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8ebc03d0847414730c51b899be4cf6586d064696
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544930"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932233"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight 中配置 Apache Hive 策略
 
@@ -87,7 +86,7 @@ ms.locfileid: "92544930"
  | --- | --- |
  | 数据源名称 | 为数据源提供名称 |
  | 主机 | 输入 CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
- | 端口 | 使用 **443** 。 （此端口已从 563 更改为 443。） |
+ | 端口 | 使用 **443**。 （此端口已从 563 更改为 443。） |
  | 数据库 | 使用“默认”。 |
  | Hive 服务器类型 | 选择“Hive Server 2” |
  | 机制 | 选择“Azure HDInsight 服务” |
@@ -109,7 +108,7 @@ ms.locfileid: "92544930"
 
 1. 在下拉列表中，选择在上一部分创建的数据源名称，然后选择“确定”。
 
-1. 第一次使用时，将打开“ODBC 驱动程序”对话框。 从左侧菜单中选择 **Windows** 。 然后选择“连接”以打开“导航器”窗口。
+1. 第一次使用时，将打开“ODBC 驱动程序”对话框。 从左侧菜单中选择 **Windows**。 然后选择“连接”以打开“导航器”窗口。
 
 1. 等待“选择数据库和表”对话框打开  。 这可能需要几秒钟时间。
 

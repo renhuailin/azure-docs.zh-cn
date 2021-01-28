@@ -1,18 +1,15 @@
 ---
 title: HDInsight 4.0 概述 - Azure
 description: 比较 HDInsight 3.6 与 HDInsight 4.0 的功能、限制和升级建议。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 0d732fd484e9ca4788204d726286503296bec8ab
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 694acc0005e90d8299d46528f83ba68ea3fcf1c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822091"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931188"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 概述
 
@@ -41,7 +38,7 @@ Hive 现在支持动态具体化视图或相关摘要的预先计算。 这些�
 HDI 4.0 包括 Apache Hive 3。 Hive 3 要求驻留在 Hive 仓库中的事务表具有原子性、一致性、隔离性和持久合规性。 符合 ACID 的表和表数据由 Hive 访问和管理。 位于创建、检索、更新和删除 (CRUD) 表中的数据必须采用优化行列 (ORC) 文件格式， 但仅限插入的表支持所有文件格式。 
 
 > [!Note]
-> ACID/事务性支持仅适用于托管表而非外部表。 Hive 外部表的设计使外部方可以读取和写入表数据，而不包含 Hive perfoming 对基础数据的任何更改。 对于 ACID 表，Hive 可以通过 compactions 和事务来更改基础数据。
+> ACID/事务性支持仅适用于托管表而非外部表。 Hive 外部表的设计使外部方可以读取和写入表数据，无需 Hive 对基础数据进行任何更改。 对于 ACID 表，Hive 可以通过压缩和事务来更改基础数据。
 
 ACID 表的一些优点如下：
 

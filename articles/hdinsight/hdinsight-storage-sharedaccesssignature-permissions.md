@@ -1,19 +1,16 @@
 ---
 title: 使用共享访问签名限制访问 - Azure HDInsight
 description: 了解如何使用共享访问签名限制 HDInsight 访问 Azure Blob 存储中存储的数据。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
-ms.openlocfilehash: 141db7feee987b7fffc578e19c60bd94ad56d239
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 647ac363dd81604f0a5a1d750d98a3349beb19c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511631"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931726"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure Blob 存储共享访问签名来限制访问 HDInsight 中的数据
 

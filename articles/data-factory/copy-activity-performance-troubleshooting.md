@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 203782ef2d95cd2b47082f630fa12531a110d49e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968885"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933927"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
@@ -37,7 +37,7 @@ ms.locfileid: "97968885"
 
 | Category              | 性能优化提示                                      |
 | --------------------- | ------------------------------------------------------------ |
-| 特定于数据存储   | 将数据加载到 **Azure Synapse Analytics**：建议使用 POLYBASE 或 COPY 语句（如果未使用）。 |
+| 特定于数据存储   | 将数据载入 Azure Synapse Analytics：建议使用 PolyBase；如果 PolyBase 不可用，则使用 COPY 语句。 |
 | &nbsp;                | 从/向 **Azure SQL 数据库** 复制数据：当 DTU 的利用率较高时，建议升级到更高的层。 |
 | &nbsp;                | 从/向 **Azure Cosmos DB** 复制数据：当 RU 的利用率较高时，建议升级到更大的 RU。 |
 |                       | 从 SAP 表复制数据：复制大量数据时，建议利用 SAP 连接器的分区选项启用并行加载并增加最大分区数。 |
@@ -98,7 +98,7 @@ ms.locfileid: "97968885"
 
 - **“传输 - 写入接收器”的工作持续时间较长：**
 
-  - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如，将数据复制到 [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)时，请使用 POLYBASE 或 COPY 语句。 
+  - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如，将数据复制到 [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) 时，请使用 PolyBase 或 COPY 语句。 
 
   - 检查 ADF 是否报告了接收器中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
 
@@ -160,7 +160,7 @@ ms.locfileid: "97968885"
 
 - **“传输 - 写入接收器”的工作持续时间较长：**
 
-  - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如，将数据复制到 [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)时，请使用 POLYBASE 或 COPY 语句。 
+  - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如，将数据复制到 [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) 时，请使用 PolyBase 或 COPY 语句。 
 
   - 检查自承载 IR 计算机是否以较低的延迟连接到接收器数据存储。 如果接收器位于 Azure 中，你可以使用[此工具](http://www.azurespeed.com/Azure/Latency)检查自承载 IR 计算机与 Azure 区域之间的连接延迟，延迟值越小越好。
 
@@ -186,43 +186,42 @@ ms.locfileid: "97968885"
 - **原因**：检查管道运行的详细信息，可以看到慢速管道运行在托管 VNet (虚拟网络) IR 上，而正常运行在 Azure IR 上。 按照设计，托管 VNet IR 的排队时间比 Azure IR 长，因为我们不会为每个数据工厂保留一个计算节点，因此每个复制活动需要大约2分钟的时间来启动，并且它主要在 VNet 联接而不是 Azure IR 进行。
 
     
-### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>将数据加载到 Azure SQL 数据库时性能低
+### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>在将数据加载到 Azure SQL 数据库时性能较低
 
-- **症状**：将数据复制到 Azure SQL 数据库会变慢。
+- **症状**：在将数据复制到 Azure SQL 数据库时速度变慢。
 
-- **原因**：此问题的根本原因主要由 Azure SQL 数据库端的瓶颈触发。 下面是一些可能的原因：
+- **原因：** 此问题的根本原因主要由 Azure SQL 数据库端的瓶颈触发。 下面是一些可能的原因：
 
     - Azure SQL 数据库层不够高。
 
-    - Azure SQL 数据库 DTU 使用率接近100%。 可以 [监视性能](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) 并考虑升级 Azure SQL 数据库层。
+    - Azure SQL 数据库 DTU 使用率接近 100%。 可以[监视性能](../azure-sql/database/monitor-tune-overview.md)并考虑将 Azure SQL 数据库层升级。
 
-    - 未正确设置索引。 在数据加载之前删除所有索引，并在加载完成后重新创建它们。
+    - 未正确设置索引。 请在加载数据之前先删除所有索引，并在加载完成之后再重新创建索引。
 
-    - WriteBatchSize 不够大，无法容纳架构行大小。 尝试放大此问题的属性。
+    - WriteBatchSize 不够大，无法容纳架构行大小。 若要解决此问题，请尝试增大该属性。
 
-    - 使用的是存储过程，而不是大容量嵌入，这会使性能更差。 
+    - 使用的是存储过程，而不是批量插入，这会使性能更差。 
 
-- **解决方法**：请参阅对 [复制活动性能进行故障排除](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)。
 
-### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>分析大型 Excel 文件时超时或性能降低
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>分析大型 Excel 文件时超时或性能较低
 
 - **症状**：
 
-    - 当你创建 Excel 数据集并从连接/存储区导入架构、预览数据、列出或刷新工作表时，如果 Excel 文件大小大，则可能会遇到超时错误。
+    - 在创建 Excel 数据集并从连接/存储导入架构、预览数据、列出或刷新工作表时，如果 Excel 文件很大，则可能会出现超时错误。
 
-    - 使用复制活动将数据从大型 Excel 文件复制 ( # B0 = 100 MB) 到其他数据存储时，可能会遇到性能下降或 OOM 问题。
+    - 在使用复制活动将大型 Excel 文件（不小于 100 MB）中的数据复制到其他数据存储时，可能会遇到性能低下或 OOM 问题。
 
 - **原因**： 
 
-    - 对于导入架构、预览数据以及在 excel 数据集上列出工作表这样的操作，超时为100秒，并为静态。 对于大型 Excel 文件，这些操作可能无法在超时值内完成。
+    - 对于导入架构、预览数据以及在 Excel 数据集上列出工作表等操作，超时为 100 秒并且是静态的。 对于大型 Excel 文件，这些操作可能无法在超时值内完成。
 
-    - ADF 复制活动将整个 Excel 文件读入内存，然后查找指定的工作表和单元格以读取数据。 此行为是由基础 SDK ADF 使用的。
+    - ADF 复制活动将整个 Excel 文件读入内存，然后查找指定的工作表和单元格来读取数据。 此行为是由 ADF 使用的基础 SDK 导致的。
 
 - **解决方法**： 
 
-    - 对于导入架构，你可以生成一个较小的示例文件，该文件是原始文件的子集，并选择 "从示例文件导入架构"，而不是 "从连接中导入架构"。
+    - 对于导入架构，你可以生成一个较小的示例文件（原始文件的一部分），并选择“从示例文件导入架构”而不是“从连接/存储导入架构”。
 
-    - 对于列表工作表，在 "工作表" 下拉列表中，可以单击 "编辑"，并改为输入工作表名称/索引。
+    - 若要列出工作表，可以改为在工作表下拉框中单击“编辑”并输入工作表名称/索引。
 
     - 若要将 ( # B0 100 MB) 的大型 excel 文件复制到其他存储，可以使用运动流式处理读取和执行的数据流 Excel 源。
     
@@ -233,7 +232,7 @@ ms.locfileid: "97968885"
 * Azure Blob 存储：[Blob 存储的可伸缩性和性能目标](../storage/blobs/scalability-targets.md)和 [Blob 存储的性能与可伸缩性查检表](../storage/blobs/storage-performance-checklist.md)。
 * Azure 表存储：[表存储的可伸缩性和性能目标](../storage/tables/scalability-targets.md)和[表存储的性能与可伸缩性查检表](../storage/tables/storage-performance-checklist.md)。
 * Azure SQL 数据库：可[监视性能](../azure-sql/database/monitor-tune-overview.md)并检查数据库事务单位 (DTU) 百分比。
-* Azure Synapse Analytics：其功能以数据仓库单位 (Dwu) 来度量。 请参阅[管理 Azure Synapse Analytics 中的计算能力（概述）](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
+* Azure Synapse Analytics：其功能以数据仓库单位 (DWU) 衡量。 请参阅[管理 Azure Synapse Analytics 中的计算能力（概述）](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 * Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../cosmos-db/performance-levels.md)。
 * SQL Server：[性能监视和优化](/sql/relational-databases/performance/monitor-and-tune-for-performance)。
 * 本地文件服务器：[文件服务器性能优化](/previous-versions//dn567661(v=vs.85))。

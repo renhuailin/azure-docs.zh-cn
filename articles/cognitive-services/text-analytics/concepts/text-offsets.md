@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: c587bb042601b947b71658bf790e9acdfbdbf742
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f5b63503792b13e089568004ba67e5be8a3d0c7f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363776"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932375"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>文本分析 API 输出中的文本偏移量
 
@@ -34,21 +34,21 @@ ms.locfileid: "94363776"
 
 ## <a name="extracting-substrings-from-text-with-offsets"></a>从具有偏移量的文本中提取子字符串
 
-使用基于字符的子字符串方法（例如 .NET [substring()](/dotnet/api/system.string.substring?view=netframework-4.8) 方法）时，偏移量可能会导致问题。 一个问题是，偏移量可能导致子字符串方法在多字符字形编码的中间而不是结尾处结束。
+使用基于字符的子字符串方法（例如 .NET [substring()](/dotnet/api/system.string.substring) 方法）时，偏移量可能会导致问题。 一个问题是，偏移量可能导致子字符串方法在多字符字形编码的中间而不是结尾处结束。
 
-在 .NET 中，考虑使用 [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) 类，该类使你可以将字符串作为一系列文本元素（而不是单个字符对象）来处理。 也可以在首选软件环境中查找字形拆分器库。 
+在 .NET 中，考虑使用 [StringInfo](/dotnet/api/system.globalization.stringinfo) 类，该类使你可以将字符串作为一系列文本元素（而不是单个字符对象）来处理。 也可以在首选软件环境中查找字形拆分器库。 
 
 为方便起见，文本分析 API 也会返回这些文本元素。
 
-## <a name="offsets-in-api-version-31-preview"></a>API 版本3.1 中的偏移-预览
+## <a name="offsets-in-api-version-31-preview"></a>API 版本 3.1-preview 中的偏移
 
-从 API 版本 3.1-preview. 1 开始，返回偏移量的所有文本分析 API 终结点都支持 `stringIndexType` 参数。 此参数 `offset` `length` 在 API 输出中调整和特性以匹配请求的字符串迭代方案。 目前支持三种类型：
+从 API 版本 3.1-preview.1 开始，返回偏移量的所有文本分析 API 终结点都会支持 `stringIndexType` 参数。 此参数在 API 输出中调整 `offset` 和 `length` 属性，以匹配请求的字符串迭代方案。 目前，我们支持三种类型：
 
-1. `textElement_v8` (默认) ：按 [Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0) 标准定义的 graphemes 循环访问
-2. `unicodeCodePoint`：循环访问 [Unicode 码](http://www.unicode.org/versions/Unicode13.0.0/ch02.pdf#G25564)位，Python 3 的默认方案
-3. `utf16CodeUnit`：遍历 [Utf-16 代码单元](https://unicode.org/faq/utf_bom.html#UTF16)，Javascript、Java 和 .net 的默认方案
+1. `textElement_v8`（默认值）：根据 [Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0) 标准的定义循环访问字形
+2. `unicodeCodePoint`：循环访问 [Unicode 码位](http://www.unicode.org/versions/Unicode13.0.0/ch02.pdf#G25564)（Python 3 的默认方案）
+3. `utf16CodeUnit`：循环访问 [UTF-16 代码单位](https://unicode.org/faq/utf_bom.html#UTF16)（Javascript、Java 和 .NET 的默认方案）
 
-如果 `stringIndexType` 请求的与所选的编程环境相匹配，则可以使用标准子字符串或切片方法提取子字符串。 
+如果请求的 `stringIndexType` 与所选的编程环境相匹配，则可以使用标准子字符串或切片方法提取子字符串。 
 
 ## <a name="see-also"></a>另请参阅
 

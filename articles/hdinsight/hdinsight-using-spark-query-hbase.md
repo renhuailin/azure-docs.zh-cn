@@ -1,19 +1,16 @@
 ---
 title: 使用 Spark 来读写 HBase 数据 - Azure HDInsight
 description: 使用 Spark HBase 连接器将 Spark 群集中的数据读写到 HBase 群集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
-ms.openlocfilehash: eb62cf099d7ccc133a207a843a8be3debf5c5454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 344caf4080380f5d9dfdaf452798ada6d1dc9f1c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308412"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931221"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
@@ -165,7 +162,7 @@ __注意：__ 每当其中一个群集经历缩放活动时，都需要执行这
     |      2.1    | HDI 3.6 (HBase 1.1) | 1.1.1-2.1-s_2.11    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
     |      2.4    | HDI 4.0 (HBase 2.0) | 1.1.0.3.1.2.2-1  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
 
-2. 保持此 Spark shell 实例处于打开状态，并继续[定义目录和查询](#define-a-catalog-and-query)。 如果找不到对应于 SHC Core 存储库中的版本的 jar，请继续阅读。 
+2. 保持此 Spark shell 实例处于打开状态，并继续[定义目录和查询](#define-a-catalog-and-query)。 如果在 SHC Core 存储库中找不到与版本相对应的 jar，请继续阅读。 
 
 可以直接从 [spark-hbase-connector](https://github.com/hortonworks-spark/shc) GitHub 分支生成 jar。 例如，如果运行的是 Spark 2.3 和 HBase 1.1，请完成以下步骤：
 
