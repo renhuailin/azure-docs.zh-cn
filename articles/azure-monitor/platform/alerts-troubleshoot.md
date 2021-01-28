@@ -6,12 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: d86c6d8b67546aede86a3fc3c905f6feb40d92db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 856aeb4dabc64edc2ade2869fddc3d14cb21a81b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403409"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942164"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>排查 Azure Monitor 警报的问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "91403409"
 
 如果你可以在 Azure 门户中看到触发的警报，但未收到你已为其配置的相关电子邮件，请遵循以下步骤：
 
-1. **是否某个[操作规则](alerts-action-rules.md)阻止了该电子邮件**？
+1. **是否某个 [操作规则](alerts-action-rules.md)阻止了该电子邮件**？
 
     在门户中单击触发的警报进行检查，查看“历史记录”选项卡中是否有已阻止的[操作组](action-groups.md)：
 
@@ -61,7 +61,7 @@ ms.locfileid: "91403409"
     另请检查：
 
    - 电子邮件客户端（如 Outlook、Gmail）的垃圾邮件设置
-      - 电子邮件服务器的发件人限制/垃圾邮件设置/隔离设置 (如 Exchange、Microsoft 365、G 套件) 
+      - 电子邮件服务器（如 Exchange、Microsoft 365、G-suite）的发件人限制/垃圾邮件设置/隔离设置
       - 若使用了电子邮件安全设备（如 Barracuda、Cisco），请检查其设置。
 
 1. **是否意外取消了对操作组的订阅？**
@@ -90,7 +90,7 @@ ms.locfileid: "91403409"
 
 如果你可以在门户中看到触发的警报，但未收到你已为其配置的相关短信、语音呼叫或推送通知，请遵循以下步骤： 
 
-1. **是否某个[操作规则](alerts-action-rules.md)阻止了该操作？**
+1. **是否某个 [操作规则](alerts-action-rules.md)阻止了该操作？**
 
     在门户中单击触发的警报进行检查，查看“历史记录”选项卡中是否有已阻止的[操作组](action-groups.md)： 
 
@@ -245,7 +245,7 @@ ms.locfileid: "91403409"
 
 1. **是否已验证操作规则参数？**  
 
-    查看[操作规则文档](alerts-action-rules.md)或[操作规则 PowerShell Set-AzActionRule](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0) 命令。 
+    查看[操作规则文档](alerts-action-rules.md)或[操作规则 PowerShell Set-AzActionRule](/powershell/module/az.alertsmanagement/set-azactionrule) 命令。 
 
 
 ## <a name="next-steps"></a>后续步骤

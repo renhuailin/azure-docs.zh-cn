@@ -1,19 +1,16 @@
 ---
 title: 适用于 Visual Studio 的 Apache Hive & Data Lake 工具-Azure HDInsight
 description: 了解如何使用用于 Visual Studio 的 Data Lake 工具对 Azure HDInsight 上的 Apache Hadoop 运行 Apache Hive 查询。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: c8645ae9cb901b9fc95f00665d73e223a24fda63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e54991f6afd2ace19bf7b70e57bda6f551f7780
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076447"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943170"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具运行 Apache Hive 查询
 
@@ -36,7 +33,7 @@ ms.locfileid: "86076447"
 
 ### <a name="create-an-ad-hoc-hive-query"></a>创建临时 Hive 查询。
 
-即席查询可以**批处理**或**交互式**模式执行。
+即席查询可以 **批处理** 或 **交互式** 模式执行。
 
 1. 启动 **Visual Studio** 并选择“继续但无需代码”  。
 
@@ -54,7 +51,7 @@ ms.locfileid: "86076447"
 
     ![执行交互式 Hive 查询，Visual Studio](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
 
-6. 若要以**批处理**模式下运行同一查询，请将下拉列表从“交互式”  切换到“批处理”  。 执行按钮将从“执行”  更改为“提交”  。
+6. 若要以 **批处理** 模式下运行同一查询，请将下拉列表从“交互式”  切换到“批处理”  。 执行按钮将从“执行”  更改为“提交”  。
 
     ![提交批处理 Hive 查询，Visual Studio](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
@@ -76,7 +73,7 @@ ms.locfileid: "86076447"
 
 3. 在“创建新项目”窗口中的“搜索模板”框内，输入 *Hive*。   然后依次选择“Hive 应用程序”、“下一步”。  
 
-4. 在“配置新项目”窗口中输入一个**项目名称**，选择或创建新项目的**位置**，然后选择“创建”。  
+4. 在“配置新项目”窗口中输入一个 **项目名称**，选择或创建新项目的 **位置**，然后选择“创建”。  
 
 5. 打开在创建此项目时产生的 **Script.hql** 文件，并在其中粘贴以下 HiveQL 语句：
 

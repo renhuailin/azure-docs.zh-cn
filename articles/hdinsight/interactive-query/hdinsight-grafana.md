@@ -1,18 +1,15 @@
 ---
 title: 在 Azure HDInsight 上使用 Grafana
 description: 了解如何在 Azure HDInsight 中使用 Apache Hadoop 群集访问 Grafana 仪表板
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 7750544367044cab2a0243577c200025bb9ff693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd2a09b6c3196302dcb74fd363481706021a4d4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083026"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940887"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>在 Azure HDInsight 中访问 Grafana
 
@@ -24,7 +21,7 @@ ms.locfileid: "86083026"
 
 ## <a name="create-an-apache-hadoop-cluster"></a>创建 Apache Hadoop 群集
 
-请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。 对于“群集类型”****，请选择“Spark”****、“Kafka”****、“HBase”**** 或“Interactive Query”****。
+请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。 对于“群集类型”，请选择“Spark”、“Kafka”、“HBase”或“Interactive Query”。
 
 ## <a name="access-the-grafana-dashboard"></a>访问 Grafana 仪表板
 
@@ -42,13 +39,13 @@ ms.locfileid: "86083026"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 在顶部的“搜索”框中，键入 **HDInsight**。****
+1. 在顶部的“搜索”框中，键入 **HDInsight**。
 
-1. 选择“服务”下的“HDInsight 群集”**** ****。
+1. 选择“服务”下的“HDInsight 群集” 。
 
-1. 在显示的 HDInsight 群集列表中，选择你创建的群集旁边的“...”。****
+1. 在显示的 HDInsight 群集列表中，选择你创建的群集旁边的“...”。
 
-1. 选择“删除” ****。 请选择“是”。****
+1. 选择“删除” 。 请选择“是”。
 
 ## <a name="next-steps"></a>后续步骤
 

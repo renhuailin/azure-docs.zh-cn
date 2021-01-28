@@ -1,19 +1,16 @@
 ---
 title: 在 Azure HDInsight 中的 Apache Hadoop 群集上使用空边缘节点
 description: 如何将空边缘节点添加到 HDInsight 群集。 用作客户端，然后测试或托管 HDInsight 应用程序。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4061df2dfcfb4cf993e2312fb3438de66863a476
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010106"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942667"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点
 
@@ -79,7 +76,7 @@ ms.locfileid: "96010106"
 
 1. 配置以下属性：
 
-    |属性 |说明 |
+    |properties |说明 |
     |---|---|
     |订阅|选择用于创建此群集的 Azure 订阅。|
     |资源组|选择用于现有 HDInsight 群集的资源组。|

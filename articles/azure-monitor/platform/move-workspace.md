@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
-ms.openlocfilehash: 8d7fde6661a4a133f689016559f010767c662417
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4915fd69940450f22548ae326879b5729b687248
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699740"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942080"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>将 Log Analytics 工作区移到其他订阅或资源组
 
@@ -30,7 +30,7 @@ ms.locfileid: "94699740"
 
 ## <a name="workspace-move-considerations"></a>工作区移动注意事项
 - 将使用 Log Analytics 工作区移动操作来移动工作区中安装的托管解决方案。 
-- 主) 和辅助 (的工作区密钥是通过工作区移动操作重新生成的。 如果在密钥保管库中保留工作区密钥的副本，请使用工作区移动后生成的新密钥对其进行更新。 
+- 通过工作区移动操作重新生成工作区密钥（主密钥和辅助密钥）。 如果在密钥保管库中保留工作区密钥的副本，请使用工作区移动后生成的新密钥对其进行更新。 
 - 在移动后，连接的代理将保持连接状态并继续向工作区发送数据。 
 - 由于移动操作要求工作区中没有任何链接的服务，因此必须删除依赖于该链接的解决方案才能移动工作区。 在取消链接自动化帐户之前必须先删除的解决方案：
   - 更新管理
@@ -44,13 +44,13 @@ ms.locfileid: "94699740"
 > - 如果已移动工作区，请禁用“分析”下的所有活动规则，并在五分钟后重新启用这些规则。 但在大多数情况下，这应该是一个有效的解决方案，不过，这是不受支持的，会自行承担。
 > 
 > **重新创建警报**
-> - 在移动后，必须重新创建所有警报，因为这些权限基于工作区移动期间更改的工作区的 Azure 资源 ID。
+> - 所有警报必须在移动后重新创建，因为权限基于工作区的 Azure 资源 ID，而该 ID 在工作区移动期间会更改。
 >
 > **更新资源路径**
-> - 工作区移动之后，必须检查并更新指向工作区的任何 Azure 或外部资源，使之指向新的资源目标路径。
+> - 工作区移动之后，必须查看并更新指向工作区的任何 Azure 资源或外部资源，使之指向新的资源目标路径。
 > 
 >   *示例：*
->   - [Azure Monitor 预警规则](alerts-resource-move.md)
+>   - [Azure Monitor 警报规则](alerts-resource-move.md)
 >   - 第三方应用程序
 >   - 自定义脚本
 >
@@ -66,7 +66,7 @@ ms.locfileid: "94699740"
 
 ### <a name="delete-using-powershell"></a>使用 PowerShell 删除
 
-若要使用 PowerShell 删除解决方案，请按以下示例中所示使用 [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.8.0) cmdlet：
+若要使用 PowerShell 删除解决方案，请按以下示例中所示使用 [Remove-AzResource](/powershell/module/az.resources/remove-azresource) cmdlet：
 
 ``` PowerShell
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "ChangeTracking(<workspace-name>)" -ResourceGroupName <resource-group-name>

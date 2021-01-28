@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 11dc71578b3d94ce41fe040557184ff32bcf3240
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: f7425e1cf34348b7742b739ef5440a5cb0355077
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661791"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942104"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -107,7 +107,7 @@ ms.locfileid: "98661791"
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>使指标警报在每次满足条件时都出现
 
-默认情况下，指标警报是有状态的，因此，如果给定的时序已存在触发的警报，则不会触发其他警报。 如果希望将特定指标警报规则设为无状态，并在每次评估符合警报条件时收到警报，请以编程方式（例如，通过[资源管理器](./alerts-metric-create-templates.md)、[PowerShell](/powershell/module/az.monitor/?view=azps-3.6.1)、[REST](/rest/api/monitor/metricalerts/createorupdate)、[CLI](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)）创建警报规则，并将 autoMitigate 属性设为“False”。
+默认情况下，指标警报是有状态的，因此，如果给定的时序已存在触发的警报，则不会触发其他警报。 如果希望将特定指标警报规则设为无状态，并在每次评估符合警报条件时收到警报，请以编程方式（例如，通过[资源管理器](./alerts-metric-create-templates.md)、[PowerShell](/powershell/module/az.monitor/)、[REST](/rest/api/monitor/metricalerts/createorupdate)、[CLI](/cli/azure/monitor/metrics/alert)）创建警报规则，并将 autoMitigate 属性设为“False”。
 
 > [!NOTE] 
 > 将指标警报规则设为无状态会妨碍已触发警报的解决，因此即使在不再满足条件后，触发的警报也会在 30 天的保留期内保持已触发状态。
@@ -175,9 +175,9 @@ ms.locfileid: "98661791"
 
 ### <a name="from-api"></a>通过 API
 
-- PowerShell - [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2?view=azps-3.7.0)
+- PowerShell - [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)
 - REST API - [按订阅列出](/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI - [az monitor metrics alert list](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-list)
+- Azure CLI - [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-list)
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>使用资源管理器模板、REST API、PowerShell 或 Azure CLI 管理警报规则
 
@@ -196,14 +196,14 @@ ms.locfileid: "98661791"
 
 确保对指标警报使用正确的 PowerShell cmdlet 命令：
 
-- [Az.Monitor 模块](/powershell/module/az.monitor/?view=azps-3.6.1) 中提供了用于指标警报的 PowerShell cmdlet
-- 请确保对新（非经典）指标警报（例如 [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1)）使用以“V2”结尾的 cmdlet
+- [Az.Monitor 模块](/powershell/module/az.monitor/) 中提供了用于指标警报的 PowerShell cmdlet
+- 请确保对新（非经典）指标警报（例如 [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2)）使用以“V2”结尾的 cmdlet
 
 ### <a name="azure-cli"></a>Azure CLI
 
 确保对指标警报使用正确的 CLI 命令：
 
-- 适用于指标警报的 CLI 命令以 `az monitor metrics alert` 开头。 查看 [Azure CLI 参考](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)来了解语法。
+- 适用于指标警报的 CLI 命令以 `az monitor metrics alert` 开头。 查看 [Azure CLI 参考](/cli/azure/monitor/metrics/alert)来了解语法。
 - 你可以查看[展示了如何使用指标警报 CLI 的示例](./alerts-metric.md#with-azure-cli)
 - 若要针对自定义指标发出警报，请确保使用相关指标命名空间为指标名称加上前缀：NAMESPACE.METRIC
 
@@ -267,22 +267,22 @@ ms.locfileid: "98661791"
 -   监视多个资源的指标警报规则-将新资源添加到作用域时
 -   用于监视不连续 (稀疏指标) 的指标的指标警报规则–在超过24小时的时间段内发出指标时，未发出此指标
 
-## <a name="the-dynamic-thresholds-borders-dont-seem-to-fit-the-data"></a>动态阈值边框似乎不适用于数据
+## <a name="the-dynamic-thresholds-borders-dont-seem-to-fit-the-data"></a>动态阈值边界似乎不适用于数据
 
-如果最近更改了某个指标的行为，则所做的更改不一定会立即反映在 (上限和下限) 的动态阈值边界内，因为这些更改基于过去10天的指标数据进行计算。 查看给定指标的动态阈值边界时，请确保查看上一周的指标趋势，而不仅是最近的小时数或天数。
+如果指标的行为最近发生了更改，则这些更改不一定会立即反映在动态阈值边界（上限和下限）中，因为它们是基于过去 10 天的指标数据计算得出的。 查看给定指标的动态阈值边界时，请务必查看过去一周（而不仅仅是过去几个小时或几天）的指标趋势。
 
-## <a name="why-is-weekly-seasonality-not-detected-by-dynamic-thresholds"></a>为什么动态阈值未检测到每周季节性？
+## <a name="why-is-weekly-seasonality-not-detected-by-dynamic-thresholds"></a>为什么动态阈值未检测到周周期性？
 
-为了识别每周季节性，动态阈值模型至少需要三周的历史数据。 当有足够的历史数据可用时，将标识度量数据中存在的每周季节性，并相应地调整模型。 
+为了确定周周期性，动态阈值模型至少需要三周的历史数据。 有了足够的历史数据可用之后，就会识别指标数据中存在的任何周周期性，并相应调整该模型。 
 
-## <a name="dynamic-thresholds-shows-a-negative-lower-bound-for-a-metric-even-though-the-metric-always-has-positive-values"></a>即使度量值始终为正值，动态阈值也会显示指标的负下限
+## <a name="dynamic-thresholds-shows-a-negative-lower-bound-for-a-metric-even-though-the-metric-always-has-positive-values"></a>即使指标始终为正值，动态阈值也会显示该指标的负值下限
 
-当指标出现较大的波动时，动态阈值将围绕指标值生成更大的模型，这可能会导致下面的边框小于零。 具体而言，在以下情况下可能会发生这种情况：
-1. 敏感度设置为 low 
-2. 中间值接近零
-3. 此指标展示了具有高方差的不规则行为 (数据中存在峰值或 dip) 
+当指标出现较大波动时，动态阈值将围绕指标值生成更大的模型，这可能会导致下限值低于零。 具体来说，在以下情况下可能会发生这种情况：
+1. 敏感度设置为低 
+2. 中值接近零
+3. 指标出现无规律的行为，且变化较大（数据中存在峰值或最小值）
 
-当下限为负值时，这意味着在给定指标的不规则行为的情况下，它将变得合理，以到达零值。 您可以考虑选择更高的敏感度或更大的 *聚合粒度 (Period)* 使模型不太敏感，或使用 " *在此之前忽略数据* " 选项从用于生成模型的历史数据中排除最近的 irregulaity。
+当下限具有负值时，这意味着在指标出现无规律行为的情况下，指标可能会达到零值。 可以考虑选择更高的敏感度或更大的聚合粒度（时间范围），以降低模型的敏感度，或者使用“之前忽略数据”选项从用于构建模型的历史数据中排除最近的不规则行为 。
 
 ## <a name="next-steps"></a>后续步骤
 

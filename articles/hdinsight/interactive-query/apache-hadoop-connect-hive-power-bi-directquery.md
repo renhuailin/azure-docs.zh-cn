@@ -1,19 +1,16 @@
 ---
 title: 请参阅在 Azure HDInsight 中利用 Power BI 的交互式查询 Hive 数据
 description: 在 Azure HDInsight 中使用 Microsoft Power BI 直观显示交互式查询 Hive 数据
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: 92e94c911acb701b1ccf8e39636d152cc5bfb575
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7f249bb0e81bf3a371b8743a304ef49baffaed7a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534798"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941389"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>使用 HDInsight 中的直接查询直观显示交互式查询 Apache Hive 数据与 Microsoft Power BI
 
@@ -26,7 +23,7 @@ ms.locfileid: "92534798"
 ## <a name="prerequisites"></a>必备条件
 在开始阅读本文前，必须具备以下项：
 
-* **HDInsight 群集** 。 该群集可以是包含 Apache Hive 的 HDInsight 群集，也可以是新发布的交互式查询群集。 有关创建群集的信息，请参阅[创建群集](../hadoop/apache-hadoop-linux-tutorial-get-started.md)。
+* **HDInsight 群集**。 该群集可以是包含 Apache Hive 的 HDInsight 群集，也可以是新发布的交互式查询群集。 有关创建群集的信息，请参阅[创建群集](../hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 * **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** 。 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=45331)下载副本。
 
 ## <a name="load-data-from-hdinsight"></a>从 HDInsight 加载数据
@@ -49,7 +46,7 @@ ms.locfileid: "92534798"
 
     |properties | 值 |
     |---|---|
-    |服务器 |输入群集名称，例如， *myiqcluster.azurehdinsight.net* 。|
+    |服务器 |输入群集名称，例如，*myiqcluster.azurehdinsight.net*。|
     |数据库 |就本文来说，请输入“default”。 |
     |数据连接模式 |就本文来说，请选择“DirectQuery”。 |
 
@@ -71,7 +68,7 @@ ms.locfileid: "92534798"
 
     ![HDInsight Power BI 自定义报表](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
 
-2. 在“字段”窗格中，选择 **country** 和 **devicemake** 。 一会儿就会在主窗口中显示包含数据点的世界地图。
+2. 在“字段”窗格中，选择 **country** 和 **devicemake**。 一会儿就会在主窗口中显示包含数据点的世界地图。
 
 3. 展开地图。
 

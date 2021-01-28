@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: d9a87eca6a6c66d116817ced0f534a75033d48b9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9975e40f7d4f3b69c9281efd0288389740bf92ec
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221470"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943650"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>配置和验证虚拟网络或 VPN 连接
 
@@ -64,7 +64,7 @@ ms.locfileid: "98221470"
 
 ![用于检查虚拟网络对等互连配置的选项](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-在 Azure PowerShell 中，运行命令 [Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) 获取虚拟网络对等互连。 下面是一个示例：
+在 Azure PowerShell 中，运行命令 [Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) 获取虚拟网络对等互连。 下面是一个示例：
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets
@@ -248,13 +248,13 @@ BGP 是在 Internet 上使用的，用于在两个或更多网络之间交换路
 
 若要配置使用 BGP 的 VPN 连接，请参阅[使用 PowerShell 在 Azure VPN 网关上配置 BGP](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md)。
 
-通过为虚拟网络网关创建自治系统 (AS) 编号在虚拟网络网关上启用 BGP。 基本网关不支持 BGP。 若要检查网关的 SKU，请在 Azure 门户中转到“VPN 网关”边栏选项卡的“概述”部分。   如果 SKU 为“基本”，则必须将 SKU（请参阅[调整网关大小](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)）更改为“VpnGw1”。   
+通过为虚拟网络网关创建自治系统 (AS) 编号在虚拟网络网关上启用 BGP。 基本网关不支持 BGP。 若要检查网关的 SKU，请在 Azure 门户中转到“VPN 网关”边栏选项卡的“概述”部分。   如果 SKU 为“基本”，则必须将 SKU（请参阅[调整网关大小](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?viewFallbackFrom=azurermps-4.0.0)）更改为“VpnGw1”。   
 
-检查 SKU 会导致 20 到 30 分钟的停机时间。 网关获得正确的 SKU 后，你可以使用 [Set-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) PowerShell cmdlet 添加 AS 编号。 配置 AS 编号后，系统会自动提供网关的 BGP 对等互连 IP。
+检查 SKU 会导致 20 到 30 分钟的停机时间。 网关获得正确的 SKU 后，你可以使用 [Set-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway) PowerShell cmdlet 添加 AS 编号。 配置 AS 编号后，系统会自动提供网关的 BGP 对等互连 IP。
 
-必须使用 AS 编号和 BGP 对等互连地址手动提供 `LocalNetworkGateway`。 可以使用 [New-AzureRmLocalNetworkGateway](/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) 或 [Set-AzureRmLocalNetworkGateway PowerShell](/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) cmdlet 设置 `ASN` 和 `-BgpPeeringAddress` 值。 某些 AS 编号是为 Azure 保留的，不能按[关于使用 Azure VPN 网关的 BGP](../vpn-gateway/vpn-gateway-bgp-overview.md#faq) 中所述使用这些编号。
+必须使用 AS 编号和 BGP 对等互连地址手动提供 `LocalNetworkGateway`。 可以使用 [New-AzureRmLocalNetworkGateway](/powershell/module/azurerm.network/new-azurermlocalnetworkgateway) 或 [Set-AzureRmLocalNetworkGateway PowerShell](/powershell/module/azurerm.network/set-azurermlocalnetworkgateway) cmdlet 设置 `ASN` 和 `-BgpPeeringAddress` 值。 某些 AS 编号是为 Azure 保留的，不能按[关于使用 Azure VPN 网关的 BGP](../vpn-gateway/vpn-gateway-bgp-overview.md#faq) 中所述使用这些编号。
 
-必须为连接对象启用 BGP。 可以通过 [New-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) 或 [Set-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) 将 `-EnableBGP` 值设置为 `$True`。
+必须为连接对象启用 BGP。 可以通过 [New-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection) 或 [Set-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection) 将 `-EnableBGP` 值设置为 `$True`。
 
 ### <a name="validate-the-bgp-configuration"></a>验证 BGP 配置
 

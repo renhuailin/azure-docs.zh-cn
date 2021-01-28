@@ -1,18 +1,18 @@
 ---
 title: 模板函数 - 部署
-description: 描述在 Azure 资源管理器模板中使用的用于检索部署信息 (ARM 模板) 的函数。
+description: 介绍可在 Azure 资源管理器模板（ARM 模板）中使用的用于检索部署信息的函数。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/27/2021
+ms.openlocfilehash: 438afc947b07ac7425de365a2d63c427cf53e2ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920517"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943478"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署函数
 
-资源管理器提供了以下功能，用于获取与 Azure 资源管理器模板的当前部署有关的值 (ARM 模板) ：
+资源管理器提供了以下函数，用于获取与 Azure 资源管理器模板（ARM 模板）的当前部署相关的值：
 
 * [部署](#deployment)
 * [环境](#environment)
@@ -33,6 +33,7 @@ ms.locfileid: "96920517"
 
 此函数返回部署期间传递的对象。 返回的对象中的属性因以下情况而异：
 
+* 部署模板或模板规范。
 * 你部署的模板是本地文件，还是通过 URI 访问的远程文件。
 * 部署到资源组或部署到 ([Azure 订阅](deploy-to-subscription.md)、 [管理组](deploy-to-management-group.md)或 [租户](deploy-to-tenant.md)) 的其他作用域之一。
 
@@ -66,6 +67,31 @@ ms.locfileid: "96920517"
   "properties": {
     "templateLink": {
       "uri": ""
+    },
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
+}
+```
+
+将模板规范部署到资源组时：该函数返回以下格式：
+
+```json
+{
+  "name": "",
+  "properties": {
+    "templateLink": {
+      "id": ""
     },
     "template": {
       "$schema": "",
@@ -295,7 +321,7 @@ output environmentOutput object = environment()
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |字符串 |要返回的参数名称。 |
 
@@ -434,7 +460,7 @@ output crossOutput string = crossParameter
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | 选项 1 |
 
-有关使用参数的详细信息，请参阅 [ARM 模板中的参数](template-parameters.md)。
+如需详细了解如何使用参数，请参阅 [ARM 模板中的参数](template-parameters.md)。
 
 ## <a name="variables"></a>variables
 
@@ -444,7 +470,7 @@ output crossOutput string = crossParameter
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要返回的变量名称。 |
 
@@ -571,8 +597,8 @@ output exampleOutput4 object = var4
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-有关使用变量的详细信息，请参阅 [ARM 模板中的变量](template-variables.md)。
+如需详细了解如何使用变量，请参阅 [ARM 模板中的变量](template-variables.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅 [了解 arm 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。

@@ -1,19 +1,16 @@
 ---
 title: 将 HBase 群集迁移到新版本 - Azure HDInsight
 description: 如何将 Apache HBase 群集迁移到 Azure HDInsight 中的较新版本。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 8ce25780e197c26e0e5b102670e093031e1a2582
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 24a0c09ba78c668dab017ec80adda19f59d89a4f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697656"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942974"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>将 Apache HBase 群集迁移到新版本
 
@@ -184,7 +181,7 @@ ms.locfileid: "94697656"
 
 1. 如果不使用带增强写入功能的 HBase 群集，请跳过此步骤。 带增强写入功能的 HBase 群集才需要它。
 
-   通过从原始群集的任何 zookeeper 节点或工作节点上的 ssh 会话运行以下命令，在 HDFS 下备份 WAL 目录。
+   通过从原始群集的任何 zookeeper 节点或工作器节点上的 ssh 会话运行以下命令，在 HDFS 下备份 WAL 目录。
    
    ```bash
    hdfs dfs -mkdir /hbase-wal-backup**
@@ -203,9 +200,9 @@ ms.locfileid: "94697656"
 
    ![在 Ambari 中更改 HBase rootdir 的容器名称](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
     
-1. 如果不使用带增强写入功能的 HBase 群集，请跳过此步骤。 仅在具有增强写入功能的 HBase 群集中需要，而且仅在原始群集是具有增强写入功能的 HBase 群集时才需要。
+1. 如果不使用带增强写入功能的 HBase 群集，请跳过此步骤。 只有带增强写入功能的 HBase 群集才需要它，并且只有在原始群集是带增强写入功能的 HBase 群集的情况下才需要它。
 
-   清除此新群集的 zookeeper 和 WAL FS 数据。 在任何 zookeeper 节点或工作节点中发出以下命令：
+   清除此新群集的 zookeeper 和 WAL FS 数据。 在任何 zookeeper 节点或工作器节点中发出以下命令：
 
    ```bash
    hbase zkcli
@@ -217,7 +214,7 @@ ms.locfileid: "94697656"
 
 1. 如果不使用带增强写入功能的 HBase 群集，请跳过此步骤。 带增强写入功能的 HBase 群集才需要它。
    
-   从新群集的任何 zookeeper 节点或辅助节点上的 ssh 会话，将 WAL 目录还原到新群集的 HDFS 中。
+   通过新群集的任何 zookeeper 节点或工作器节点上的 ssh 会话，将 WAL 目录还原到新群集的 HDFS 中。
    
    ```bash
    hdfs dfs -cp /hbase-wal-backup/hbasewal hdfs://mycluster/**

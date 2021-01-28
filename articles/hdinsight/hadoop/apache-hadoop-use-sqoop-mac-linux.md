@@ -1,25 +1,22 @@
 ---
 title: 将 Apache Sqoop 与 Apache Hadoop 配合使用 - Azure HDInsight
 description: 了解如何使用 Apache Sqoop 在 HDInsight 和 Azure SQL 数据库 Apache Hadoop 之间导入和导出。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 6cd522192c498d628490430c46c18c8ae08ad2e2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d0d38dee15817e56c2784981365ea331b6a8459
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547004"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943147"
 ---
-# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-azure-sql-database"></a>使用 Apache Sqoop 在 HDInsight 和 Azure SQL 数据库 Apache Hadoop 之间导入和导出数据
+# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-azure-sql-database"></a>使用 Apache Sqoop 在 Apache Hadoop on HDInsight 与 Azure SQL 数据库之间导入和导出数据
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-了解如何使用 Apache Sqoop 在 Azure HDInsight 中的 Apache Hadoop 群集与 Azure SQL 数据库或 Microsoft SQL Server 之间进行导入和导出。 本文档中的步骤直接从 Hadoop 群集的头节点使用 `sqoop` 命令。 可以使用 SSH 连接到头节点并运行本文档中的命令。 本文是[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)一文的延续。
+了解如何使用 Apache Sqoop 在 Azure HDInsight 中的 Apache Hadoop 群集与 Azure SQL 数据库或 Microsoft SQL Server 之间进行导入和导出。 本文档中的步骤直接从 Hadoop 群集的头节点使用 `sqoop` 命令。 可以使用 SSH 连接到头节点并运行本文档中的命令。 本文是[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)的续篇。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,7 +28,7 @@ ms.locfileid: "92547004"
 
 ## <a name="set-up"></a>设置
 
-1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 CLUSTERNAME 替换为群集的名称，然后输入该命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -53,7 +50,7 @@ ms.locfileid: "92547004"
 
 从 Hive 到 SQL。
 
-1. 若要验证 Sqoop 是否可以看到数据库，请在打开的 SSH 连接中输入以下命令。 此命令会返回数据库列表。
+1. 若要验证 Sqoop 是否可以查看数据库，请在打开的 SSH 连接中输入以下命令。 此命令会返回数据库列表。
 
     ```bash
     sqoop list-databases --connect $serverConnect
@@ -65,7 +62,7 @@ ms.locfileid: "92547004"
     sqoop list-tables --connect $serverDbConnect
     ```
 
-1. 若要将 Hive 表中的数据导出 `hivesampletable` 到 `mobiledata` 数据库中的表，请在打开的 SSH 连接中输入以下命令：
+1. 若要将数据从 Hive `hivesampletable` 表导出到数据库中的 `mobiledata` 表，请在打开的 SSH 连接中输入以下命令：
 
     ```bash
     sqoop export --connect $serverDbConnect \
@@ -88,7 +85,7 @@ ms.locfileid: "92547004"
 
 从 SQL 到 Azure 存储。
 
-1. 在打开的 SSH 连接中输入以下命令，将 SQL 中的表中的数据导入 `mobiledata` 到 `wasbs:///tutorials/usesqoop/importeddata` HDInsight 上的目录。 数据中的字段将通过制表符分隔，并且相关行由换行符终止。
+1. 在打开的 SSH 连接中输入以下命令，以将数据从 SQL 中的 `mobiledata` 表导入到 HDInsight 上的 `wasbs:///tutorials/usesqoop/importeddata` 目录。 数据中的字段将通过制表符分隔，并且相关行由换行符终止。
 
     ```bash
     sqoop import --connect $serverDbConnect \
@@ -138,7 +135,7 @@ ms.locfileid: "92547004"
 
 ## <a name="limitations"></a>限制
 
-* 大容量导出-使用基于 Linux 的 HDInsight 时，用于将数据导出到 SQL 的 Sqoop 连接器不支持大容量插入。
+* 批量导出 - 在基于 Linux 的 HDInsight 上，用于将数据导出到 SQL 的 Sqoop 连接器不支持批量插入。
 
 * 批处理 - 在基于 Linux 的 HDInsight 上，如果在执行插入时使用 `-batch` 开关，Sqoop 将进行多次插入而不是批处理插入操作。
 
@@ -159,5 +156,5 @@ ms.locfileid: "92547004"
 现在，你已了解了如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
 
 * [将 Apache Oozie 和 HDInsight 配合使用](../hdinsight-use-oozie-linux-mac.md)：在 Oozie 工作流中使用 Sqoop 操作。
-* [使用 HDInsight 分析航班延误数据](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)：使用交互式查询分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure 中的数据库。
+* [使用 HDInsight 分析航班延误数据](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)：使用 Interactive Query 分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure 中的数据库。
 * [将数据上传到 HDInsight](../hdinsight-upload-data.md)：了解将数据上传到 HDInsight/Azure Blob 存储的其他方法。

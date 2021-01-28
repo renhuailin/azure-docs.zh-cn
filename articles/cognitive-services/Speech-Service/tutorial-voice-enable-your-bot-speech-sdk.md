@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6b231b5af208a51cbe8f4370c2dc532be1ba3af9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9ee7116efe931d101a1505bc2d9d866d8ea5b92a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024919"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943443"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 实现机器人的语音
 
@@ -54,7 +54,7 @@ ms.locfileid: "95024919"
 > * 添加自定义关键字激活
 > * 了解如何更改识别语音的语言
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 下面是完成本教程所需的操作：
 
@@ -75,7 +75,7 @@ ms.locfileid: "95024919"
    * 输入 **资源组** 的名称。 建议 **SpeechEchoBotTutorial**。
    * 从 " **区域** " 下拉箭头中，选择 " **美国西部**"。
 1. 单击“审阅并创建”。 应该会看到一个横幅，其中显示了已 **通过的验证**。
-1. 单击“创建”。  创建资源组可能需要几分钟的时间。
+1. 单击“创建”。 创建资源组可能需要几分钟的时间。
 1. 与稍后在本教程中创建的资源一样，最好将此资源组固定到仪表板以便于访问。 如果要固定此资源组，请单击资源组名称右侧的固定图标。
 
 ### <a name="choosing-an-azure-region"></a>选择 Azure 区域
@@ -124,7 +124,7 @@ ms.locfileid: "95024919"
    * 对于 " **区域**"，选择 " **美国西部**"。
    * 对于 " **定价层**"，请确保选择 " **标准 S1** "。 这应该是默认值。 如果不是这样，请确保将 **操作系统** 设置为 **Windows** ，如上所述。
 5. 单击“审阅并创建”。 应该会看到一个横幅，其中显示了已 **通过的验证**。
-6. 单击“创建”。  创建资源组可能需要几分钟的时间。
+6. 单击“创建”。 创建资源组可能需要几分钟的时间。
 
 此时，请检查资源组 (**SpeechEchoBotTutorial-ResourceGroup**) 是否有两个资源：
 
@@ -201,7 +201,7 @@ ms.locfileid: "95024919"
    * 对于 "**订阅**"，将其设置为 "**免费试用**"
    * 对于 " **资源组**"，选择 **SpeechEchoBotTutorial**
    * 对于 **托管计划**，请选择 **SpeechEchoBotTutorial-AppServicePlan**
-1. 单击“创建”。  在向导的最后一个屏幕上，单击 " **完成**"。
+1. 单击“创建”。 在向导的最后一个屏幕上，单击 " **完成**"。
 1. 单击 "发布" 屏幕右侧的 " **发布** "。 Visual Studio 将机器人部署到 Azure。
 1. 在 Visual Studio 的输出窗口中应会看到如下所示的成功消息：
 
@@ -227,14 +227,14 @@ ms.locfileid: "95024919"
 2. 在左侧导航窗格中的 " **设置**" 下，单击 " **配置**"。
 3. 选择 " **常规设置** " 选项卡。
 4. 找到 " **Web 套接字** " 的切换，并将其设置为 **"开**"。
-5. 单击“ **保存**”。
+5. 单击“保存”。
 
 > [!TIP]
 > 您可以使用 Azure App Service 页顶部的控件来停止或重新启动该服务。 故障排除时，这可能很方便。
 
 ## <a name="create-a-channel-registration"></a>创建频道注册
 
-创建用于托管机器人的 Azure App Service 后，下一步就是创建 **机器人频道注册**。 创建频道注册是将机器人注册到机器人框架通道（包括直接线路语音通道）的先决条件。 如果要了解有关 bot 如何使用频道的详细信息，请参阅 [将 Bot 连接到通道](/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)。
+创建用于托管机器人的 Azure App Service 后，下一步就是创建 **机器人频道注册**。 创建频道注册是将机器人注册到机器人框架通道（包括直接线路语音通道）的先决条件。 如果要了解有关 bot 如何使用频道的详细信息，请参阅 [将 Bot 连接到通道](/azure/bot-service/bot-service-manage-channels)。
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">创建 Azure 机器人频道注册 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. 系统将提示你提供一些信息：
@@ -244,7 +244,7 @@ ms.locfileid: "95024919"
    * 对于 " **位置**"，请选择 " **美国西部**"。
      * 对于 " **定价层**"，请选择 **F0**。
      * 对于 " **消息传递终结点**"，请输入 web 应用的 URL， `/api/messages` 路径后面追加了路径。 例如：如果全局唯一的应用名称为 **EchoBot20190805125647**，则消息传递终结点将为： `https://EchoBot20190805125647.azurewebsites.net/api/messages/` 。
-     * 对于 **application insights**，你可以将其设置为 **Off**。 有关详细信息，请参阅 [机器人分析](/azure/bot-service/bot-service-manage-analytics?view=azure-bot-service-4.0)。
+     * 对于 **application insights**，你可以将其设置为 **Off**。 有关详细信息，请参阅 [机器人分析](/azure/bot-service/bot-service-manage-analytics)。
      * 忽略 **自动创建应用 ID 和密码**。
 5. 在 " **机器人频道注册** " 边栏选项卡底部，单击 " **创建**"。
 
@@ -291,14 +291,14 @@ ms.locfileid: "95024919"
    * 查看标题为 " **配置直接线路语音**" 的页面上的文本，然后展开 " **认知服务帐户** " 下拉菜单。
    * 选择之前创建的语音资源 (例如，从菜单中选择 " **SpeechEchoBotTutorial** ") ，将机器人关联到语音订阅密钥。
    * 忽略其余的可选字段。
-   * 单击“ **保存**”。
+   * 单击“保存”。
 
 1. 在 **机器人管理** 导航中，单击 " **设置**"。
    * 选中标记为 **启用流式处理终结点** 的框。 这是在机器人和直接线路语音通道之间创建在 web 套接字上构建的通信协议所必需的。
-   * 单击“ **保存**”。
+   * 单击“保存”。
 
 > [!TIP]
-> 若要了解详细信息，请参阅 [连接机器人以定向语音](/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)。 此页包含其他信息和已知问题。
+> 若要了解详细信息，请参阅 [连接机器人以定向语音](/azure/bot-service/bot-service-channel-connect-directlinespeech)。 此页包含其他信息和已知问题。
 
 ## <a name="run-the-windows-voice-assistant-client"></a>运行 Windows 语音助手客户端
 
@@ -323,7 +323,7 @@ Windows 语音助手客户端具有一个简单的 UI，可用于配置与机器
 
 如果在主应用窗口中收到错误消息，请使用此表来确定并解决该错误：
 
-| 错误 | 你应该如何操作？ |
+| 错误 | 该怎么办？ |
 |-------|----------------------|
 |AuthenticationFailure)  (错误： WebSocket 升级失败，出现身份验证错误 (401) 。 检查正确的订阅密钥 (或授权令牌) 和区域名称| 在应用的 "设置" 页中，确保已正确输入语音订阅密钥及其区域。<br>请确保正确输入了语音密钥和密钥区域。 |
 |ConnectionFailure)  (错误：连接已被远程主机关闭。 错误代码：1011。 错误详细信息：无法在发送消息之前连接到机器人 | 请确保 [已选中 "启用流式处理终结点"](#register-the-direct-line-speech-channel)框和/或将 [ **Web 套接字** 切换](#enable-web-sockets)到 "打开"。<br>请确保 Azure App Service 正在运行。 如果已启动，请尝试重新启动应用服务。|
@@ -412,7 +412,7 @@ Windows 语音助手客户端使用包含语音 SDK 的 NuGet 包[cognitiveservi
 
 在 Windows 语音助手客户端源代码中，查看以下文件以查看用于启用关键字检测的代码：
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) 包括对语音 SDK 方法的调用 [`KeywordRecognitionModel.fromFile()`](/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?preserve-view=true&view=azure-node-latest#fromfile-string-) ，该方法用于实例化磁盘上的本地文件中的模型。
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) 包括对语音 SDK 方法的调用 [`KeywordRecognitionModel.fromFile()`](/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel#fromfile-string-) ，该方法用于实例化磁盘上的本地文件中的模型。
 1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) 包括对语音 SDK 方法的调用 [`DialogServiceConnector.StartKeywordRecognitionAsync()`](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) ，该方法激活连续关键字检测。
 
 ## <a name="optional-change-the-language-and-bot-voice"></a> (可选) 更改语言和机器人声音
@@ -480,5 +480,5 @@ Windows 语音助手客户端使用包含语音 SDK 的 NuGet 包[cognitiveservi
   * [机器人服务定价](https://azure.microsoft.com/pricing/details/bot-service/)
   * [语音服务](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * 构建和部署自己的支持语音的机器人：
-  * 构建 [机器人框架机器人](https://dev.botframework.com/)。 将其注册为 [直接线路语音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) 并 [自定义用于语音的机器人](/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)
+  * 构建 [机器人框架机器人](https://dev.botframework.com/)。 将其注册为 [直接线路语音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech) 并 [自定义用于语音的机器人](/azure/bot-service/directline-speech-bot)
   * 了解现有的 [机器人框架解决方案](https://microsoft.github.io/botframework-solutions/index)：构建 [虚拟助手](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) 并 [将其扩展为直接行语音](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

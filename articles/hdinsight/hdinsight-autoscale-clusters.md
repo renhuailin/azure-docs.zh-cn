@@ -1,27 +1,24 @@
 ---
 title: 自动缩放 Azure HDInsight 群集
 description: 使用自动缩放功能可以根据计划或性能指标自动缩放 Azure HDInsight 群集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 130a5a58fc7dab6f94c011cf9764743f9114e48a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629249"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942638"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
-Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件自动增加或减少群集中的工作器节点数。 自动缩放功能的工作方式是：根据性能指标或纵向扩展和向下缩放操作的计划，缩放预设限制内的节点数。
+Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件自动增加或减少群集中的工作器节点数。 自动缩放功能的工作原理是根据性能指标或纵向扩展和纵向缩减操作计划在预设限制内缩放节点数。
 
 ## <a name="how-it-works"></a>工作原理
 
-自动缩放功能使用两种类型的条件来触发缩放事件：各种群集性能指标的阈值（称为“基于负载的缩放”）和基于时间的触发器（称为“基于计划的缩放”）。 基于负载的缩放会在设置的范围内更改群集中的节点数，以确保获得最佳的 CPU 使用率并尽量降低运行成本。 基于计划的缩放根据纵向扩展和向下缩放操作的计划更改群集中的节点数。
+自动缩放功能使用两种类型的条件来触发缩放事件：各种群集性能指标的阈值（称为“基于负载的缩放”）和基于时间的触发器（称为“基于计划的缩放”）。 基于负载的缩放会在设置的范围内更改群集中的节点数，以确保获得最佳的 CPU 使用率并尽量降低运行成本。 基于计划的缩放会根据纵向扩展和纵向缩减操作计划更改群集中的节点数。
 
 以下视频概述了自动缩放解决的难题，以及它如何帮助你使用 HDInsight 控制成本。
 

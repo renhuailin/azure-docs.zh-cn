@@ -1,19 +1,16 @@
 ---
 title: 使用 Apache Maven 生成适用于 Azure HDInsight 的 Java HBase 客户端
 description: 了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase 应用程序，然后将其部署到 Azure HDInsight 上的 HBase。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 61b8aaf9ea61ebe85eac6708d7390c386dea2696
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 13616cf99db39ec4dac1d13e3dcd2cefc5a44614
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547905"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942965"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
 
@@ -179,7 +176,7 @@ scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./
 
 ### <a name="implement-a-createtable-class"></a>实现 CreateTable 类
 
-输入以下命令，以创建并打开新文件 `CreateTable.java`。 根据提示选择“是”，以创建新文件。 
+输入以下命令，以创建并打开新文件 `CreateTable.java`。 根据提示选择“是”，以创建新文件。
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\CreateTable.java
@@ -261,7 +258,7 @@ public class CreateTable {
 
 ### <a name="implement-a-searchbyemail-class"></a>实现 SearchByEmail 类
 
-输入以下命令，以创建并打开新文件 `SearchByEmail.java`。 根据提示选择“是”，以创建新文件。 
+输入以下命令，以创建并打开新文件 `SearchByEmail.java`。 根据提示选择“是”，以创建新文件。
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\SearchByEmail.java
@@ -346,7 +343,7 @@ public class SearchByEmail {
 
 ### <a name="implement-a-deletetable-class"></a>实现 DeleteTable 类
 
-输入以下命令，以创建并打开新文件 `DeleteTable.java`。 根据提示选择“是”，以创建新文件。 
+输入以下命令，以创建并打开新文件 `DeleteTable.java`。 根据提示选择“是”，以创建新文件。
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\DeleteTable.java
@@ -695,7 +692,7 @@ public class DeleteTable {
     Gabriela Ingram - gabriela@contoso.com - ID: 6
     ```
 
-    将 **fabrikam.com** 用于 `-emailRegex` 值会返回电子邮件字段中包含 **fabrikam.com** 的用户。 还可以使用正则表达式作为搜索词。 例如， **^r** 返回以字母“r”开头的电子邮件地址。
+    将 **fabrikam.com** 用于 `-emailRegex` 值会返回电子邮件字段中包含 **fabrikam.com** 的用户。 还可以使用正则表达式作为搜索词。 例如，**^r** 返回以字母“r”开头的电子邮件地址。
 
 7. 若要删除表，请使用以下命令：
 

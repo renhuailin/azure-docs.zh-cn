@@ -1,19 +1,16 @@
 ---
 title: 使用 Apache Spark History Server 中的扩展功能调试应用 - Azure HDInsight
 description: 使用 Apache Spark History Server 中的扩展功能调试和诊断 Spark 应用程序 - Azure HDInsight。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d53d9e9ee2a7fa6588ea0993b3bebdb2a287351
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079286"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941048"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>使用 Apache Spark History Server 的扩展功能调试和诊断 Spark 应用程序
 
@@ -26,7 +23,7 @@ Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI
 ### <a name="open-the-spark-history-server-web-ui-from-the-azure-portal"></a>从 Azure 门户打开 Spark History Server Web UI
 
 1. 从 [Azure 门户](https://portal.azure.com/)打开 Spark 群集。 有关详细信息，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。
-2. 在**群集仪表板**中选择“Spark History Server”。  出现提示时，输入 Spark 群集的管理员凭据。
+2. 在 **群集仪表板** 中选择“Spark History Server”。  出现提示时，输入 Spark 群集的管理员凭据。
 
     ![从 Azure 门户启动 Spark History Server。](./media/apache-azure-spark-history-server/azure-portal-dashboard-spark-history.png "Spark History Server")
 

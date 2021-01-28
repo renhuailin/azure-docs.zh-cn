@@ -1,19 +1,16 @@
 ---
 title: 在 HDInsight 中将 Apache Hive 与 PowerShell 配合使用 - Azure
 description: 使用 PowerShell 在 Azure HDInsight 的 Apache Hadoop 中运行 Apache Hive 查询
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 013eb8215064173e002aea23043bc2e9ba92b525
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 43cac81717027b39210d6cd9cb9ad0baa596f50d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545236"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943175"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>使用 PowerShell 运行 Apache Hive 查询
 
@@ -32,7 +29,7 @@ ms.locfileid: "92545236"
 
 ## <a name="run-a-hive-query"></a>运行 Hive 查询
 
-Azure PowerShell 提供 *cmdlet* ，可在 HDInsight 上远程运行 Hive 查询。 cmdlet 在内部对 HDInsight 群集上的 [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) 进行 REST 调用。
+Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询。 cmdlet 在内部对 HDInsight 群集上的 [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) 进行 REST 调用。
 
 在远程 HDInsight 群集上运行 Hive 查询时，将使用以下 Cmdlet：
 
@@ -84,7 +81,7 @@ Azure PowerShell 提供 *cmdlet* ，可在 HDInsight 上远程运行 Hive 查询
    >
    > `Invoke-AzHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
-   > 有关 **字符串** 的详细信息，请参阅 [此处-字符串](/powershell/module/microsoft.powershell.core/about/about_quoting_rules#here-strings)。
+   > 有关 Here-Strings 的详细信息，请参阅 [HERE-STRINGS](/powershell/module/microsoft.powershell.core/about/about_quoting_rules#here-strings)。
 
 ## <a name="troubleshooting"></a>故障排除
 

@@ -1,25 +1,22 @@
 ---
 title: 使用 PowerShell 和 Azure HDInsight 运行 Apache Sqoop 作业
 description: 了解如何使用工作站 Azure PowerShell 在 Apache Hadoop 群集和 Azure SQL 数据库之间运行 Apache Sqoop 导入和导出。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 781c19edb9261b13f31bebecb6bc74bf2b616b47
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7d1f0a4982402a7854841f17c1915625e2f01cc1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546970"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943131"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>在 HDInsight 中使用 Azure PowerShell 运行 Apache Sqoop 作业
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-了解如何使用 Azure PowerShell 在 Azure HDInsight 中运行 Apache Sqoop 作业，以在 HDInsight 群集和 Azure SQL 数据库或 SQL Server 之间导入和导出数据。  本文是[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)一文的延续。
+了解如何使用 Azure PowerShell 运行 Azure HDInsight 中的 Apache Sqoop 作业，以便在 HDInsight 群集与 Azure SQL 数据库或 SQL Server 之间导入和导出数据。  本文是[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)一文的延续。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +30,7 @@ ms.locfileid: "92546970"
 
 从 Hive 到 SQL。
 
-此示例将 Hive 表中的数据导出 `hivesampletable` 到 `mobiledata` SQL 中的表。 设置以下变量的值，然后执行命令。
+此示例将数据从 Hive `hivesampletable` 表导出到 SQL 中的 `mobiledata` 表。 设置以下变量的值，然后执行命令。
 
 ```powershell
 $hdinsightClusterName = ""
@@ -96,7 +93,7 @@ New-AzHDInsightSqoopJobDefinition `
 
 ## <a name="sqoop-import"></a>Sqoop 导入
 
-从 SQL 到 Azure 存储。 此示例将 SQL 表中的数据导入 `mobiledata` 到 `wasb:///tutorials/usesqoop/importeddata` HDInsight 上的目录。 数据中的字段将通过制表符分隔，并且相关行由换行符终止。 此示例假定你已完成上一示例。
+从 SQL 到 Azure 存储。 此示例将数据从 SQL 中的 `mobiledata` 表导入 HDInsight 上的 `wasb:///tutorials/usesqoop/importeddata` 目录。 数据中的字段将通过制表符分隔，并且相关行由换行符终止。 此示例假定你已完成上一示例。
 
 ```powershell
 $sqoopCommand = "import --connect $connectionString --table mobiledata --target-dir wasb:///tutorials/usesqoop/importeddata --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1"
@@ -128,7 +125,7 @@ Get-AzHDInsightJobOutput `
 
 这是一个说服力很强的示例，它从默认存储帐户中的 `/tutorials/usesqoop/data/sample.log` 导出数据，然后将其导入到 SQL Server 数据库中名为 `log4jlogs` 的表中。 此示例不依赖于前面的示例。
 
-下面的 PowerShell 脚本预先处理源文件，然后将其导出到表 `log4jlogs` 。 请将 `CLUSTERNAME`、`CLUSTERPASSWORD` 和 `SQLPASSWORD` 替换为在先决条件部分使用的值。
+下面的 PowerShell 脚本预处理源文件，然后将其导出到 `log4jlogs` 表。 请将 `CLUSTERNAME`、`CLUSTERPASSWORD` 和 `SQLPASSWORD` 替换为在先决条件部分使用的值。
 
 ```powershell
 <#------ BEGIN USER INPUT ------#>

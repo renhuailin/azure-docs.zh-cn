@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 5008da99b63cabba41dade9a745fbd5853345737
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 637e66956eadf57199d2e5191368d6355e2cd118
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734960"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941891"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 专用链接将网络安全地连接到 Azure Monitor
 
@@ -173,7 +173,7 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 ### <a name="access-from-outside-of-private-links-scopes"></a>从专用链接范围之外的访问权限
 此页面底部的设置控制从公共网络访问，这意味着网络未通过上面列出的作用域进行连接。 如果将“允许公用网络访问以便执行引入”设置为“否”，则已连接的范围之外的计算机无法将数据上传到此工作区中 。 如果将 " **允许对查询的公共网络访问** " 设置为 " **否**"，则范围之外的计算机将无法访问此工作区中的数据，这意味着它将无法查询工作区数据。 这包括工作簿中的查询、面板、基于 API 的客户端体验、Azure 门户中的见解等。 在 Azure 门户外运行的体验，还必须在专用链接的 VNET 中运行查询 Log Analytics 数据。
 
-### <a name="exceptions"></a>例外
+### <a name="exceptions"></a>异常
 如上所述的限制访问不适用于 Azure 资源管理器，因此具有以下限制：
 * 对数据的访问-同时阻止/允许来自公共网络的查询适用于大多数 Log Analytics 体验，一些经验通过 Azure 资源管理器查询数据，因此将无法查询数据，除非资源管理器) 不久就会将专用链接设置应用到 (。 例如，Azure Monitor 解决方案、工作簿和见解以及逻辑应用连接器。
 * 工作区管理-工作区设置和配置更改 (包括打开或关闭这些访问设置) 由 Azure 资源管理器管理。 使用适当的角色、权限、网络控制和审核限制对工作区管理的访问。 有关详细信息，请参阅 [Azure Monitor 角色、权限和安全性](roles-permissions-security.md)。
@@ -217,13 +217,13 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 
 可以使用 Azure 资源管理器模板、REST 和命令行接口来自动执行前面所述的过程。
 
-若要创建和管理专用链接范围，请使用 [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) 或 [Azure CLI (az 监视器专用链接范围) ](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。
+若要创建和管理专用链接范围，请使用 [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) 或 [Azure CLI (az 监视器专用链接范围) ](/cli/azure/monitor/private-link-scope)。
 
-要管理网络访问，请在 [Log Analytics 工作区](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest)或 [Application Insights 组件](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 标志。
+要管理网络访问，请在 [Log Analytics 工作区](/cli/azure/monitor/log-analytics/workspace)或 [Application Insights 组件](/cli/azure/ext/application-insights/monitor/app-insights/component)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 标志。
 
 ## <a name="collect-custom-logs-over-private-link"></a>通过专用链接收集自定义日志
 
-在自定义日志的引入过程中会使用存储帐户。 默认使用服务托管的存储帐户。 但若要通过专用链接引入自定义日志，必须使用你自己的存储帐户并将其与 Log Analytics 工作区关联。 请查看更多详细信息，了解如何使用[命令行](/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest)设置此类帐户。
+在自定义日志的引入过程中会使用存储帐户。 默认使用服务托管的存储帐户。 但若要通过专用链接引入自定义日志，必须使用你自己的存储帐户并将其与 Log Analytics 工作区关联。 请查看更多详细信息，了解如何使用[命令行](/cli/azure/monitor/log-analytics/workspace/linked-storage)设置此类帐户。
 
 要详细了解如何使用你自己的存储帐户，请参阅[使用客户拥有的存储帐户引入日志](private-storage.md)
 
@@ -252,7 +252,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="programmatic-access"></a>以编程方式访问
 
-要在专用网络上将 REST API、[CLI](/cli/azure/monitor?view=azure-cli-latest) 或 PowerShell 与 Azure Monitor 结合使用，请在防火墙中添加 AzureActiveDirectory 和 AzureResourceManager [服务标记](../../virtual-network/service-tags-overview.md) 。
+要在专用网络上将 REST API、[CLI](/cli/azure/monitor) 或 PowerShell 与 Azure Monitor 结合使用，请在防火墙中添加 AzureActiveDirectory 和 AzureResourceManager [服务标记](../../virtual-network/service-tags-overview.md) 。
 
 通过添加这些标记，可执行查询日志数据、创建和管理 Log Analytics 工作区及 AI 组件等操作。
 

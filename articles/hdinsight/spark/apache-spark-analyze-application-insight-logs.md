@@ -1,19 +1,16 @@
 ---
 title: 使用 Spark 分析 Application Insight 日志 - Azure HDInsight
 description: 了解如何将 Application Insight 日志导出到 Blob 存储，并使用 HDInsight 上的 Spark 分析这些日志。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbca4b23b6fc414727ea1b5a4012d2847d6b8d78
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86078793"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940477"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>使用 HDInsight 上的 Apache Spark 分析 Application Insights 遥测日志
 
@@ -72,9 +69,9 @@ Application Insights 为导出到 Blob 的遥测数据格式提供 [导出数据
 
 1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net/jupyter`，其中 CLUSTERNAME 是群集的名称。
 
-2. 在 Jupyter 页面右上角选择“新建”****，并选择“PySpark”****。 此时会打开新浏览器选项卡，其中包含基于 Python 的 Jupyter 笔记本。
+2. 在 Jupyter 页面右上角选择“新建”，并选择“PySpark”。 此时会打开新浏览器选项卡，其中包含基于 Python 的 Jupyter 笔记本。
 
-3. 在页面上的第一个字段（称为“单元格”****）中输入以下文本：
+3. 在页面上的第一个字段（称为“单元格”）中输入以下文本：
 
    ```python
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
@@ -108,7 +105,7 @@ Application Insights 为导出到 Blob 的遥测数据格式提供 [导出数据
     drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
     ```
 
-    返回的 wasbs 路径是 Application Insights 遥测数据的位置。 将单元格中的 `hdfs dfs -ls` 行更改为使用返回的 wasbs 路径，然后使用 Shift+Enter 再次执行单元格中的命令****。 这一次，结果应显示包含遥测数据的目录。
+    返回的 wasbs 路径是 Application Insights 遥测数据的位置。 将单元格中的 `hdfs dfs -ls` 行更改为使用返回的 wasbs 路径，然后使用 Shift+Enter 再次执行单元格中的命令。 这一次，结果应显示包含遥测数据的目录。
 
    > [!NOTE]  
    > 本部分中的余下步骤使用了 `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` 目录。 目录结构可能有所不同。
@@ -223,9 +220,9 @@ Application Insights 为导出到 Blob 的遥测数据格式提供 [导出数据
 
 1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net/jupyter`，其中 CLUSTERNAME 是群集的名称。
 
-2. 在 Jupyter 页面右上角选择“新建”****，并选择“Scala”****。 此时会打开新浏览器选项卡，其中包含基于 Scala 的 Jupyter Notebook。
+2. 在 Jupyter 页面右上角选择“新建”，并选择“Scala”。 此时会打开新浏览器选项卡，其中包含基于 Scala 的 Jupyter Notebook。
 
-3. 在页面上的第一个字段（称为“单元格”****）中输入以下文本：
+3. 在页面上的第一个字段（称为“单元格”）中输入以下文本：
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
@@ -259,7 +256,7 @@ Application Insights 为导出到 Blob 的遥测数据格式提供 [导出数据
     drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
     ```
 
-    返回的 wasbs 路径是 Application Insights 遥测数据的位置。 将单元格中的 `hdfs dfs -ls` 行更改为使用返回的 wasbs 路径，然后使用 Shift+Enter 再次执行单元格中的命令****。 这一次，结果应显示包含遥测数据的目录。
+    返回的 wasbs 路径是 Application Insights 遥测数据的位置。 将单元格中的 `hdfs dfs -ls` 行更改为使用返回的 wasbs 路径，然后使用 Shift+Enter 再次执行单元格中的命令。 这一次，结果应显示包含遥测数据的目录。
 
    > [!NOTE]  
    > 本部分中的余下步骤使用了 `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` 目录。 除非遥测数据用于 Web 应用，否则此目录可能并不存在。

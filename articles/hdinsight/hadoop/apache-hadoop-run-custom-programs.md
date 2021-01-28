@@ -1,19 +1,16 @@
 ---
 title: 运行自定义 MapReduce 程序 - Azure HDInsight
 description: 何时以及如何在 Azure HDInsight 群集上运行自定义的 Apache MapReduce 程序。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 1dcc2a944fc527e4cbc8c7c1072503377ecb5798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f7a3676db14dbf61d3976690c8f9c71a660f889
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505261"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943232"
 ---
 # <a name="run-custom-mapreduce-programs"></a>运行自定义 MapReduce 程序
 
@@ -30,7 +27,7 @@ ms.locfileid: "89505261"
 
 ## <a name="custom-mapreduce-components"></a>自定义映射/化简组件
 
-映射/化简代码由实现为**映射**和**化简**组件的两个独立函数组成。 **映射**组件在多个群集节点上并行运行，其中每个节点将映射应用到该节点自身的数据子集。 **化简**组件对来自所有映射函数的结果进行整理和汇总。 有关这两个组件的详细信息，请参阅[在 HDInsight 上的 Hadoop 中使用 MapReduce](hdinsight-use-mapreduce.md)。
+映射/化简代码由实现为 **映射** 和 **化简** 组件的两个独立函数组成。 **映射** 组件在多个群集节点上并行运行，其中每个节点将映射应用到该节点自身的数据子集。 **化简** 组件对来自所有映射函数的结果进行整理和汇总。 有关这两个组件的详细信息，请参阅[在 HDInsight 上的 Hadoop 中使用 MapReduce](hdinsight-use-mapreduce.md)。
 
 在大多数 HDInsight 处理方案中，使用较高级别的抽象（例如 Pig 或 Hive）更简单、更有效。 也可以创建要在 Hive 脚本中使用的自定义映射和化简组件，用于执行更复杂的处理。
 
