@@ -65,7 +65,7 @@
       href: concepts-scale.md
     - name: 节点自动修复
       href: node-auto-repair.md
-    - name: 最佳做法
+    - name: 最佳实践
       items:
         - name: 概述
           href: best-practices.md
@@ -296,8 +296,8 @@
         - name: 用于容器的 Azure Monitor
           href: ../azure-monitor/insights/container-insights-overview.md
           maintainContext: true
-        - name: 查看主组件日志
-          href: view-master-logs.md
+        - name: 查看控制平面组件日志
+          href: view-control-plane-logs.md
         - name: 查看 kubelet 日志
           href: kubelet-logs.md
         - name: 实时查看容器数据

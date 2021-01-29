@@ -101,13 +101,11 @@
   items:
     - name: 管理 Batch 帐户
       items:
-        - name: 管理帐户
-          href: batch-manage-account-basics.md
-        - name: 使用门户管理 Batch 帐户
+        - name: 在 Azure 门户中管理 Batch 帐户
           href: batch-account-create-portal.md
         - name: 使用批处理管理 .NET 来管理 Azure Batch 帐户
           href: batch-management-dotnet.md
-        - name: 成本分析和预算
+        - name: 获取成本分析并设置预算
           href: budget.md
         - name: 对 Batch 帐户使用专用终结点
           href: private-connectivity.md
@@ -291,16 +289,18 @@
       href: 'https://azure.microsoft.com/updates/'
     - name: Batch 社区
       href: 'https://github.com/Azure/Batch'
+    - name: 批处理资源管理器
+      href: 'https://azure.github.io/BatchExplorer/'
     - name: Batch 反馈
       href: 'https://feedback.azure.com/forums/269742-batch'
-    - name: 有关 Batch 的 Microsoft Q&A 问题页面
-      href: /answers/topics/azure-batch.html
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: 博客
       href: /archive/blogs/windowshpc/
     - name: 基于 Azure 的 HPC
       href: /azure/architecture/topics/high-performance-computing/
+    - name: 有关 Batch 的 Microsoft Q&A 问题页面
+      href: /answers/topics/azure-batch.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: 定价计算器

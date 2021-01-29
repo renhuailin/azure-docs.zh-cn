@@ -225,7 +225,7 @@
           href: livestream.md
     - name: 删除 Azure Sentinel
       href: offboard.md
-- name: 参考（新增！）
+- name: 参考
   items:
     - name: Azure RBAC 角色
       items:
@@ -241,10 +241,20 @@
           href: hunting-with-rest-api.md
         - name: 通过 REST API 管理播放列表
           href: watchlist-with-rest-api.md
+    - name: Azure Monitor 数据参考
+      href: /azure/azure-monitor/reference/
     - name: Azure Sentinel 逻辑应用连接器
       href: /connectors/azuresentinel/
     - name: 网络规范化架构
       href: normalization-schema.md
+    - name: 数据源架构引用
+      href: data-source-schema-reference.md
+    - name: Kusto 查询语言
+      items:
+        - name: Kusto 查询概述
+          href: /azure/data-explorer/kusto/query/
+        - name: Kusto 查询语言快速参考
+          href: /azure/data-explorer/kql-quick-reference
     - name: UEBA 扩充
       href: ueba-enrichments.md
 - name: 资源

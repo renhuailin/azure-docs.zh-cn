@@ -10,8 +10,10 @@
 - name: 教程
   expanded: true
   items:
-    - name: 生成 SCIM 终结点并配置预配
+    - name: 计划 SCIM 终结点的预配
       href: use-scim-to-provision-users-and-groups.md
+    - name: 开发示例 SCIM 终结点
+      href: use-scim-to-build-users-and-groups-endpoints.md
     - name: 自定义属性映射
       href: customize-application-attributes.md
     - name: 有关应用特定的预配的教程
