@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a998491729a1d3bd472ecc3de9722c142f8dc182
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 65d3badc02efbb02df50189885c28a8abe851415
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953778"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050441"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Twitter 帐户注册与登录
 
@@ -29,7 +29,7 @@ ms.locfileid: "98953778"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -45,7 +45,7 @@ ms.locfileid: "98953778"
 1. 在 "**身份验证设置**" 下，选择 "**编辑**"
     1. 选择 " **启用腿 OAuth** " 复选框。
     1. 选中 " **从用户请求电子邮件地址** " 复选框。
-    1. 对于 **回调 url**，请输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` 。 将 `your-tenant` 替换为你的租户的名称，并将 `your-user-flow-Id` 替换为你的用户流的标识符。 例如，`b2c_1A_signup_signin_twitter`。 输入租户名称和用户流 id 时，请使用所有小写字母，即使它们是在 Azure AD B2C 中使用大写字母定义的也是如此。
+    1. 对于 **回调 url**，请输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` 。 将 `your-tenant` 替换为你的租户的名称，并将 `your-user-flow-Id` 替换为你的用户流的标识符。 例如，`b2c_1a_signup_signin_twitter`。 输入租户名称和用户流 id 时，请使用所有小写字母，即使它们是在 Azure AD B2C 中使用大写字母定义的也是如此。
     1. 对于 " **网站 URL**"，请输入 `https://your-tenant.b2clogin.com` 。 将 `your-tenant` 替换为租户的名称。 例如，`https://contosob2c.b2clogin.com`。
     1. 输入 **服务条款** 的 URL，例如 `http://www.contoso.com/tos` 。 策略 URL 是你维护的一个页面，用于为你的应用程序提供条款和条件。
     1. 输入 **隐私策略** 的 URL，例如 `http://www.contoso.com/privacy` 。 策略 URL 是继续提供应用程序的隐私信息的页面。

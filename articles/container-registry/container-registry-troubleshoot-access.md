@@ -3,12 +3,12 @@ title: 排查与注册表相关的网络问题
 description: 访问位于虚拟网络中或防火墙后面的 Azure 容器注册表时的常见问题的症状、原因和解决方法
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 95b32b839d1b3b804a2035b797e1146a09d5236a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f15eb8a830ce93ecf942663fc8a44b9df86d6d6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351787"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052155"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>排查与注册表相关的网络问题
 
@@ -40,6 +40,8 @@ ms.locfileid: "96351787"
 运行 [az acr check-health](/cli/azure/acr#az-acr-check-health) 命令可详细了解注册表环境的运行状况，以及对目标注册表的访问（可选）。 例如，诊断某些网络连接或配置问题。 
 
 参阅[检查 Azure 容器注册表的运行状况](container-registry-check-health.md)以查看命令示例。 如果报告了错误，请查看[错误参考](container-registry-health-error-reference.md)和以下部分，以了解建议的解决方案。
+
+如果使用注册表同时 Azure Kubernetes 服务时遇到问题，请运行 [az aks check-acr](/cli/azure/aks#az_aks_check_acr) 命令，以验证是否可以从 aks 群集访问注册表。
 
 > [!NOTE]
 > 当注册表身份验证或授权存在问题时，也可能出现一些网络连接症状。 请参阅[注册表登录故障排除](container-registry-troubleshoot-login.md)。

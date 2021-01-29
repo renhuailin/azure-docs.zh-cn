@@ -1,17 +1,17 @@
 ---
 title: 计算和存储选项 - Azure Database for MySQL（灵活服务器）
 description: 本文介绍 Azure Database for MySQL（灵活服务器）中的计算和存储选项。
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 267b362c94b04b3be634f7e61c2b6d67604d7854
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.date: 1/28/2021
+ms.openlocfilehash: b1e8093a1991a97220060c2b6936368f9a4be796
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954675"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052340"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）中的计算和存储选项
 
@@ -72,7 +72,7 @@ ms.locfileid: "98954675"
 若要获取有关可用计算系列的更多详细信息，请参阅[可突发（B 系列）](../../virtual-machines/sizes-b-series-burstable.md)、[常规用途（Ddsv4 系列）](../../virtual-machines/ddv4-ddsv4-series.md)和[内存优化（Edsv4 系列）](../../virtual-machines/edv4-edsv4-series.md)的相关 Azure VM 文档。
 
 >[!NOTE]
->对于 [可突增 (B 系列) ](../../virtual-machines/sizes-b-series-burstable.md) 计算层，当服务器出于任何原因（如用户启动、计划内或计划外维护）重新启动时，累计信用可能会丢失。 原因是，每当 Azure Database for MySQL 重新启动它时，它将保留在同一节点上，则将保留累计的信用额度。 相反，只要 Azure Database for MySQL 服务器在新节点上重新启动，它就会获得一个初始信用额度。 有关详细信息，请参阅 [可突增 (B 系列) 常见问题](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart)。
+>对于 [可突增 (B 系列) 计算层](../../virtual-machines/sizes-b-series-burstable.md) 如果 VM 启动/停止或重新启动，信用可能会丢失。 有关详细信息，请参阅 [可突增 (B 系列) 常见问题](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart)。
 
 ## <a name="storage"></a>存储
 

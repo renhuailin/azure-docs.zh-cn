@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 86f2abb8bfb95d5b9e72936ca3e9464747c00b1c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0e1c5f08c4292e4f3dfec448d8bf54d5d5601840
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049297"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050492"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure 数字孪生中的查询单位 
 
@@ -45,4 +45,4 @@ Azure 数字孪生 [sdk](how-to-use-apis-sdks.md) 允许从可分页的响应中
 * [*操作方法：查询双子图形*](how-to-query-graph.md)
 * [查询 API 参考文档](/rest/api/digital-twins/dataplane/query/querytwins)
 
-可在引用中找到 Azure 数字孪生与查询相关的限制 [*：服务限制*](reference-service-limits.md)。
+可以在 azure [*数字孪生服务限制*](reference-service-limits.md)中找到与 Azure 数字孪生查询相关的限制。

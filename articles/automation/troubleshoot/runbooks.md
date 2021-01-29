@@ -6,12 +6,12 @@ ms.subservice: ''
 ms.date: 11/03/2020
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: 116677354009c538eece02184d801cfda11574a0
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e154284df8eaad798c5cfaf4de69c40601863cf4
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896302"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053663"
 ---
 # <a name="troubleshoot-runbook-issues"></a>排查 Runbook 问题
 
@@ -134,7 +134,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>原因
 
-如果使用的不是运行方式帐户或者运行方式帐户已过期，则可能会发生此错误。 有关详细信息，请参阅[管理 Azure 自动化运行方式帐户](../manage-runas-account.md)。
+如果使用的不是运行方式帐户或者运行方式帐户已过期，则可能会发生此错误。 有关详细信息，请参阅 [Azure 自动化运行方式帐户概述](../automation-security-overview.md#run-as-accounts)。
 
 此错误有两个主要原因：
 

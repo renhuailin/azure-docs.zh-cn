@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d519193d55c9535dc71206d2d9f72661d7a40d71
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ee5ae7ca8b52d44f21c35df23ef92f61d38fc3c3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954406"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051289"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>对 IoT Edge 上的实时视频分析进行故障排除
 
@@ -107,7 +107,8 @@ IoT Edge 模块的容器日志应包含诊断信息，以帮助调试模块运�
 * 安装脚本无法创建服务主体和/或 Azure 资源。
     * 若要解决此问题，请检查你的订阅和 Azure 租户是否未达到其最大服务限制。 详细了解 [Azure AD 服务限制和限制](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) [、Azure 订阅和服务限制、配额和约束。](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
 
-
+> [!TIP]
+> 如果有任何其他可能需要帮助的问题，请 **[收集日志并提交支持票证](#collect-logs-for-submitting-a-support-ticket)**。 你还可以通过向我们发送电子邮件来联系我们 **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** 。
 ### <a name="live-video-analytics-working-with-external-modules"></a>用于外部模块的实时视频分析
 
 通过媒体图扩展处理器的实时视频分析可以扩展媒体图，以使用 HTTP 或 gRPC 协议发送和接收来自其他 IoT Edge 模块的数据。 作为[特定示例](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)，媒体图可以通过 HTTP 协议将视频帧作为图像发送到外部推理模块（如 Yolo v3），并接收基于 JSON 的分析结果。 在这种拓扑中，事件的目标主要是 IoT 中心。 如果在中心上看不到推理事件，请检查以下各项：

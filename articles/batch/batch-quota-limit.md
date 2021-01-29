@@ -2,14 +2,14 @@
 title: 服务配额和限制
 description: 了解默认的 Azure Batch 配额、限制和约束，以及如何请求提高配额
 ms.topic: conceptual
-ms.date: 12/29/2020
+ms.date: 01/28/2021
 ms.custom: seodec18
-ms.openlocfilehash: 11c9ad1e916ad7e64b59cc13c0967d2b9daed4aa
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 433272c76b9ff27d9cad542cf65a8ec0d8fc0378
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814629"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052374"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -23,7 +23,7 @@ ms.locfileid: "97814629"
 
 ## <a name="resource-quotas"></a>资源配额
 
-配额是一种限制，不能保证容量。 如果有大规模的容量需求，请联系 Azure 支持。
+配额是一种限制，不是容量保证。 如果有大规模的容量需求，请联系 Azure 支持。
 
 另请注意，配额不是受保证值。 配额可能因来自 Batch 服务的更改或是用于更改配额值的用户请求而异。
 
@@ -33,23 +33,11 @@ ms.locfileid: "97814629"
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Batch 服务模式下的核心配额
 
-在2021年1月结束时，将会改进实施专用核心配额，并为所有批处理帐户完成更改。
-
-VM 支持的每个 VM 序列都存在核心配额，它们显示在门户的 " **配额** " 页上。 可以使用支持请求更新 VM 序列配额限制，如下所述。
-
-随着现有机制的出现，不会检查 VM 系列的配额限制，只会强制执行该帐户的总配额限制。 这意味着，可以为 VM 系列分配比 VM 系列配额所指示的更多的内核，直到达到总帐户配额限制。
-
-除了帐户配额总计外，更新的机制还将强制实施 VM 序列配额。 在过渡到新机制的过程中，可能会更新 VM 序列配额值以避免分配失败-最近几个月内使用的任何 VM 序列都将更新其 VM 序列配额，以匹配总帐户配额。 此更改不会允许使用比已提供的容量更多的容量。
-
-可以通过检查来确定是否已为批处理帐户启用了 VM 系列配额强制：
-
-* Batch 帐户 [dedicatedCoreQuotaPerVMFamilyEnforced](/rest/api/batchmanagement/batchaccount/get#batchaccount) API 属性。
-
-* 门户中 "Batch 帐户 **配额** " 页上的文本。
+Batch 支持的每个 VM 系列都存在核心配额，它们显示在门户中的“配额”页面上。 可以通过提交支持请求来更新 VM 系列的配额限制，详见下面的描述。 对于专用节点，Batch 对每个 VM 序列强制实施核心配额限制，同时对整个批处理帐户强制实施总核心配额限制。 对于低优先级节点，批处理仅强制实施批处理帐户的总核心配额，而不会在不同的 VM 系列之间进行任何区分。
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>用户订阅模式中的核心配额
 
-如果创建的 [batch 帐户](accounts.md) 的池分配模式设置为 " **用户订阅**"，则在创建池或调整池大小时，将直接在订阅中创建 batch vm 和其他资源。 Azure Batch 核心配额不会应用，并且将使用和强制执行针对区域计算核心、每系列计算核心和其他资源的订阅中的配额。
+如果你创建了一个池分配模式设置为“用户订阅”的 [Batch 帐户](accounts.md)，则在创建池或重设池大小时，会直接在订阅中创建 Batch VM 和其他资源。 不会应用 Azure Batch 核心配额，将使用并强制实施你的订阅中为区域性计算核心、每系列计算核心和其他资源设定的配额。
 
 若要详细了解这些配额，请参阅 [Azure 订阅和服务的限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
@@ -70,7 +58,7 @@ VM 支持的每个 VM 序列都存在核心配额，它们显示在门户的 " *
 
 ## <a name="other-limits"></a>其他限制
 
-这些附加限制由 Batch 服务设置。 与[资源配额](#resource-quotas)不同，这些值无法更改。
+这些额外的限制是由 Batch 服务设置的。 与[资源配额](#resource-quotas)不同，这些值无法更改。
 
 | **资源** | **最大限制** |
 | --- | --- |
@@ -92,7 +80,7 @@ VM 支持的每个 VM 序列都存在核心配额，它们显示在门户的 " *
 1. 在 Batch 帐户的菜单上选择“配额”。
 1. 查看当前应用于 Batch 帐户的配额。
 
-:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="显示 Azure 门户中的 Batch 帐户配额的屏幕截图。":::
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="屏幕截图显示了 Azure 门户中的 Batch 帐户配额。":::
 
 ## <a name="increase-a-quota"></a>提高配额
 
@@ -114,7 +102,7 @@ VM 支持的每个 VM 序列都存在核心配额，它们显示在门户的 " *
 
     1. 在“提供详细信息”中，指定位置、配额类型和 Batch 帐户。
 
-       :::image type="content" source="media/batch-quota-limit/quota-increase.png" alt-text="请求增加配额时，配额详细信息屏幕的屏幕截图。":::
+       :::image type="content" source="media/batch-quota-limit/quota-increase.png" alt-text="屏幕截图显示了请求增加配额时的“配额详细信息”屏幕。":::
 
        配额类型包括：
 

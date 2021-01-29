@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fc688ca0981024e5e08c9fb20ecb6704efbd7f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9552d1a0c7bdb73dbcf739144a3ab9f746705664
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997488"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053357"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a> (预览配置管理员许可工作流) 
 
@@ -118,7 +118,7 @@ ms.locfileid: "95997488"
 > 当前所有方案中都缺少 audit 参与者的用户上下文。 这是预览版本中的一个已知限制。
 
 
-|场景  |审核服务  |审核类别  |审核活动  |审核参与者  |审核日志限制  |
+|方案  |审核服务  |审核类别  |审核活动  |审核参与者  |审核日志限制  |
 |---------|---------|---------|---------|---------|---------|
 |启用同意请求工作流的管理员        |访问评审           |UserManagement           |创建调控策略模板          |应用上下文            |当前找不到用户上下文            |
 |管理员禁用同意请求工作流       |访问评审           |UserManagement           |删除调控策略模板          |应用上下文            |当前找不到用户上下文           |
@@ -159,4 +159,4 @@ ms.locfileid: "95997488"
 
 [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
-[StackOverflow 上的 Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Microsoft Azure AD 上的&](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

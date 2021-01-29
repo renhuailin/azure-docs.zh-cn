@@ -2,19 +2,15 @@
 title: 将 Azure 自动化帐户移到另一个订阅
 description: 本文介绍如何将自动化帐户移到另一个订阅。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/11/2019
+ms.date: 01/07/2021
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8454c5a5bb5b44d2a60ae0095a9b82a19ed27c8d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a86d876a723c89eb8dcdf18c8318f2a9c740a229
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896640"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051018"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>将 Azure 自动化帐户移到另一个订阅
 
@@ -108,7 +104,7 @@ Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Not
 
 ## <a name="re-create-run-as-accounts"></a>重新创建运行方式帐户
 
-[运行方式帐户](../manage-runas-account.md)在 Azure Active Directory 中创建服务主体，用于对 Azure 资源进行身份验证。 更改订阅后，自动化帐户将不再使用现有的运行方式帐户。 重新创建运行方式帐户的方法如下：
+[运行方式帐户](../automation-security-overview.md#run-as-accounts)在 Azure Active Directory 中创建服务主体，用于对 Azure 资源进行身份验证。 更改订阅后，自动化帐户将不再使用现有的运行方式帐户。 重新创建运行方式帐户的方法如下：
 
 1. 转到新订阅中的自动化帐户，然后在“帐户设置”下选择“运行方式帐户” 。 你会看到运行方式帐户现在显示为“不完整”。
 
@@ -117,7 +113,7 @@ Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Not
 2. 通过选择“属性”页上的“删除”，一次删除一个运行方式帐户 。 
 
     > [!NOTE]
-    > 如果没有创建或查看运行方式帐户的权限，会看到以下消息：`You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` 有关详细信息，请参阅[配置运行方式帐户时所需的权限](../manage-runas-account.md#permissions)。
+    > 如果没有创建或查看运行方式帐户的权限，会看到以下消息：`You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` 有关详细信息，请参阅[配置运行方式帐户时所需的权限](../automation-security-overview.md#permissions)。
 
 3. 删除运行方式帐户后，请选择“Azure 运行方式帐户”下的“创建” 。 
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: aa3466456b99664b1b39bd415680a6a291f85acd
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: c51f8c894c9a88b6ae81460623eec616d29b62ff
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049280"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050509"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 数字孪生内部和外部路由事件
 
@@ -55,7 +55,7 @@ Azure 数字孪生使用 **事件路由** 将数据发送到服务外的使用�
 * 事件中心
 * 服务总线
 
-若要创建终结点，可以使用 Azure 数字孪生 [**控制平面 api**](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)、 [**CLI 命令**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)或 [**Azure 门户**](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins)。 
+若要创建终结点，可以使用 Azure 数字孪生 [REST api、CLI 命令](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)或 [Azure 门户](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins)。
 
 定义终结点时，需要提供：
 * 终结点的名称
@@ -71,7 +71,7 @@ Azure 数字孪生使用 **事件路由** 将数据发送到服务外的使用�
 
 ## <a name="create-an-event-route"></a>创建事件路由
  
-若要创建事件路由，可以使用 Azure 数字孪生 [**数据平面 api**](how-to-manage-routes-apis-cli.md#create-an-event-route)、 [**CLI 命令**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)或 [**Azure 门户**](how-to-manage-routes-portal.md#create-an-event-route)。 
+若要创建事件路由，可以使用 Azure 数字孪生 [REST api、CLI 命令](how-to-manage-routes-apis-cli.md#create-an-event-route)或 [Azure 门户](how-to-manage-routes-portal.md#create-an-event-route)。
 
 下面是使用 `CreateOrReplaceEventRouteAsync` [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 调用在客户端应用程序中创建事件路由的示例： 
 
@@ -85,8 +85,6 @@ Azure 数字孪生使用 **事件路由** 将数据发送到服务外的使用�
 
 > [!TIP]
 > 所有 SDK 函数都提供同步和异步版本。
-
-还可以使用 [Azure 数字孪生 CLI](how-to-use-cli.md)创建路由。
 
 ## <a name="dead-letter-events"></a>死信事件
 

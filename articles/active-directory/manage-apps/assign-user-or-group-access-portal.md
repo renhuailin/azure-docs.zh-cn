@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 22acfc5095b1ffcad382fa2b665a86d382645e7a
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 59c69e88fb64cbb00063534be9fd41b86dce0b62
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861671"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053374"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>在 Azure Active Directory 中管理应用的用户分配
 
@@ -148,7 +148,7 @@ ms.locfileid: "96861671"
 ## <a name="related-articles"></a>相关文章
 
 - [详细了解最终用户如何访问应用程序](end-user-experiences.md)
-- [规划应用程序部署 Azure AD](access-panel-deployment-plan.md)
+- [规划应用程序部署 Azure AD](my-apps-deployment-plan.md)
 - [管理对应用的访问](what-is-access-management.md)
  
 ## <a name="next-steps"></a>后续步骤
@@ -156,4 +156,4 @@ ms.locfileid: "96861671"
 - [查看所有组](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [删除企业应用的用户或组分配]()
 - [禁用企业应用的用户登录](disable-user-sign-in-portal.md)
-- [Change the name or logo of an enterprise app](./add-application-portal-configure.md)
+- [更改企业应用的名称或徽标](./add-application-portal-configure.md)

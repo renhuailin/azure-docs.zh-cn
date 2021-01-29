@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b980624ebf55c3666bcc7dd1d60f681d788c95ae
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 866af8b992374492286f47357f108a01f35e560b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98987034"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051035"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Azure Active Directory B2C 服务限制和限制
 
@@ -40,17 +40,15 @@ ms.locfileid: "98987034"
 |类别  |限制  |
 |---------|---------|
 |每个 Azure AD B2C 租户的应用程序数   |250           |
-|每个 Azure AD B2C 租户的策略数       |200          |
-|最大策略文件大小      |400 KB          |
 |每个应用程序的作用域数        |1000          |
-|每个用户的自定义属性数 <sup>1</sup>       |100         |
+|每个用户的[自定义属性](user-profile-attributes.md#extension-attributes)数   <sup>1</sup>       |100         |
 |每个应用程序的重定向 Url 数量       |100         |
 |每个应用程序的注销 Url 数量        |1          |
 |每个属性的字符串限制      |250个字符          |
 |每个订阅的 B2C 租户数      |20         |
 |自定义策略中的 [继承](custom-policy-overview.md#inheritance-model) 级别     |10         |
-|每个 Azure AD B2C 租户的策略数      |200         |
-|最大策略文件大小      |400 KB         |
+|每个 Azure AD B2C 租户的策略数      |200          |
+|最大策略文件大小      |400 KB          |
 
 <sup>1</sup> 另请参阅 [Azure AD 服务限制和限制](../active-directory/enterprise-users/directory-service-limits-restrictions.md)。
 

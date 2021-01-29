@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 842b0a92ba4a2cb6b3ceb54675ef95f9c8275311
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9f7a37fa2101e4a386c9c6f2338f185b3ecdc986
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209465"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052611"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>从 runbook“启用更改跟踪和清单”
 
@@ -44,7 +44,7 @@ ms.locfileid: "92209465"
 
 1. 在 Azure 门户中，导航到 " **Automation 帐户**"。 在 " **自动化帐户** " 页上，从列表中选择你的帐户。
 
-1. 在自动化帐户中，选择 "**清单**" 或 "**配置管理**" 下的**更改跟踪**。
+1. 在自动化帐户中，选择 "**清单**" 或 "**配置管理**" 下的 **更改跟踪**。
 
 1. 选择 Log Analytics 工作区，然后单击“启用”。 启用库存或更改跟踪时，会显示一个横幅。
 

@@ -12,12 +12,12 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ca2ade1775d7224ce55ee1c51dfdd2ae417151e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4185ffd644d54c419f42c78326ca10bf100443c3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672375"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051424"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署计划
 正在寻找有关部署 Azure Active Directory (Azure AD) 功能的端到端指南吗？ Azure AD 部署计划将引导你完成成功部署常见 Azure AD 功能所需的业务价值、规划注意事项和操作过程。
@@ -39,8 +39,8 @@ ms.locfileid: "97672375"
 | 功能 | 说明|
 | -| - |
 | [单一登录](../manage-apps/plan-sso-deployment.md)| 单一登录可帮助用户访问在只登录一次时需要执行业务的应用和资源。 登录后，他们可以从 Microsoft Office 到 SalesForce 到 Box，再到内部应用程序，而无需再次输入凭据。 |
-| [访问面板](../manage-apps/access-panel-deployment-plan.md)| 为你的用户提供一个简单的中心来发现和访问他们的所有应用程序。 通过自助服务功能提高他们的工作效率，例如请求访问应用和组，或代表其他人管理对资源的访问。 |
-| [设备](../devices/plan-device-deployment.md) | 本文将帮助你评估将设备与 Azure AD 集成的方法、选择实现计划，并提供指向受支持的设备管理工具的关键链接。 |
+| [我的应用](../manage-apps/my-apps-deployment-plan.md)| 为你的用户提供一个简单的中心来发现和访问他们的所有应用程序。 通过自助服务功能提高他们的工作效率，例如请求访问应用和组，或代表其他人管理对资源的访问。 |
+| [设备](../devices/plan-device-deployment.md) | 本文可帮助你评估以下操作方法：将设备与 Azure AD 集成，选择实施计划，以及提供指向受支持的设备管理工具的关键链接。 |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>部署混合方案

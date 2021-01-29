@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8deb249dc042701ec02c3e5e30f3603be132d0ec
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 5f6494eb72084c683ddbb8b27a49acdb1fbc2bfc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733988"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054257"
 ---
 # <a name="manage-connections-in-azure-automation"></a>在 Azure 自动化中管理连接
 
@@ -35,7 +35,7 @@ Azure 自动化提供了以下内置连接类型：
 * `AzureServicePrincipal` -表示 Azure 运行方式帐户使用的连接。
 * `AzureClassicCertificate` -表示经典 Azure 运行方式帐户使用的连接。
 
-在大多数情况下不需要创建连接资源，因为在创建 [RunAs 帐户](manage-runas-account.md)时已经创建了该连接。
+在大多数情况下不需要创建连接资源，因为在创建 [RunAs 帐户](automation-security-overview.md)时已经创建了该连接。
 
 ## <a name="powershell-cmdlets-to-access-connections"></a>用于访问连接的 PowerShell cmdlet
 
@@ -63,7 +63,7 @@ Azure 自动化提供了以下内置连接类型：
 
 下表中的函数用于在 Python 2 和 3 runbook 中访问连接。 Python 3 runbook 目前处于预览阶段。
 
-| 函数 | 说明 |
+| 功能 | 说明 |
 |:---|:---|
 | `automationassets.get_automation_connection` | 检索连接。 返回包括该连接属性的字典。 |
 

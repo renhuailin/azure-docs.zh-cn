@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 14520c7c448231045b36e025c2c92332f9daac53
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5f207a0b5f829e952c92133a66313f49e9352f51
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658717"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053202"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>计划单一登录部署
 
@@ -32,7 +32,7 @@ ms.locfileid: "94658717"
 
 Azure Marketplace 具有超过3000个具有预先集成 SSO 连接的应用程序，因此可以轻松地将它们集成到租户中。
 
-## <a name="licensing"></a>授权
+## <a name="licensing"></a>许可
 
 - **Azure AD 的授权** -SSO 适用于预先集成的 SaaS 应用程序。 但是，目录中的对象数以及要部署的功能可能需要额外的许可证。 有关许可证要求的完整列表，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
 - **应用程序授权** -你将需要适用于你的 SaaS 应用程序的许可证，以满足你的业务需求。 与应用程序所有者合作，确定分配到应用程序的用户是否具有其在应用程序中的角色的相应许可证。 如果 Azure AD 基于角色管理自动预配，则在 Azure AD 中分配的角色必须与应用程序中拥有的许可证数量一致。 应用程序中拥有的许可证数量不正确可能会导致在用户的预配/更新过程中出现错误。
@@ -62,7 +62,7 @@ Azure Marketplace 具有超过3000个具有预先集成 SSO 连接的应用程�
 
 使用基于密码的 SSO 的 Azure AD 需要部署一个浏览器扩展，该扩展将安全地检索凭据并填写登录窗体。 定义一种机制，用于使用 [受支持的浏览器](../user-help/my-apps-portal-end-user-access.md)大规模部署扩展。 选项包括：
 
-- [Internet Explorer 组策略](./access-panel-deployment-plan.md)
+- [Internet Explorer 组策略](my-apps-deployment-plan.md)
 - [Internet Explorer Configuration Manager](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 - [用户驱动的 Chrome、Firefox、Microsoft Edge 或 IE 的下载和配置](../user-help/my-apps-portal-end-user-access.md)
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec74ca19978a4164289276d44b34eb14b694687f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987319"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051575"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>在 Azure 自动化中创作图形 Runbook
 
@@ -91,11 +91,11 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 对活动启用重试时，可以设置延迟和条件。 延迟是 Runbook 再次运行活动之前等待的时间（以秒或分钟为单位）。 如果没有指定延迟，则活动在完成后立即再次运行。
 
-:::image type="content" source="media/automation-graphical-authoring-intro/retry-delay.png" alt-text="启用重试功能设置的屏幕截图。":::
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-delay.png" alt-text="“启用重试”功能设置的屏幕截图。":::
 
 重试条件是在每次活动运行后计算的 PowerShell 表达式。 如果表达式解析为 True，则活动再次运行。 如果表达式解析为 False，则活动不会再次运行，且 Runbook 转移到下一个活动。
 
-:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="启用重试功能设置的屏幕截图。":::
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="此屏幕截图显示了“重试，直到此条件成立”字段以及可在重试条件中使用的 PowerShell 表达式示例。":::
 
 重试条件可以使用名为 `RetryData` 的变量，此变量提供对活动重试相关信息的访问权限。 此变量具有下表中的属性。
 
@@ -373,7 +373,7 @@ $h
 
 ## <a name="authenticate-to-azure-resources"></a>访问 Azure 资源所需的身份验证
 
-Azure 自动化中用于管理 Azure 资源的 Runbook 将需要通过 Azure 进行身份验证。 [运行方式帐户](./manage-runas-account.md)（亦称为“服务主体”）是自动化 Runbook 用于访问订阅中的 Azure 资源管理器资源的默认机制。 通过向画布添加使用 PowerShell [Get-AutomationConnection](/system-center/sma/manage-global-assets) cmdlet 的 `AzureRunAsConnection` 连接资产，可以将此功能添加到图形 Runbook。 还可以添加 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet。 以下示例展示了此方案。
+Azure 自动化中用于管理 Azure 资源的 Runbook 将需要通过 Azure 进行身份验证。 [运行方式帐户](./automation-security-overview.md)（亦称为“服务主体”）是自动化 Runbook 用于访问订阅中的 Azure 资源管理器资源的默认机制。 通过向画布添加使用 PowerShell [Get-AutomationConnection](/system-center/sma/manage-global-assets) cmdlet 的 `AzureRunAsConnection` 连接资产，可以将此功能添加到图形 Runbook。 还可以添加 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet。 以下示例展示了此方案。
 
 ![运行方式身份验证活动](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 

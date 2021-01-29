@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: caaeb0e40d277ef5e356c0f385a818b831326d6e
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 9b9e42d55a982aeb55d7c9e26f7b1a6cbca32e0a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734821"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052798"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>在 Azure 自动化中管理凭据
 
@@ -51,11 +51,11 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 > [!NOTE]
 > 应避免在 `Get-AutomationPSCredential` 的 `Name` 参数中使用变量。 使用变量在设计时可能会导致难以厘清 Runbook 或 DSC 配置与凭据资产之间的依赖关系。
 
-## <a name="python-functions-that-access-credentials"></a>访问凭据的 Python 函数
+## <a name="python-functions-that-access-credentials"></a>用于访问凭据的 Python 函数
 
 下表中的函数用于在 Python 2 和 3 runbook 中访问凭据。 Python 3 runbook 目前处于预览阶段。
 
-| 函数 | 说明 |
+| 功能 | 说明 |
 |:---|:---|
 | `automationassets.get_automation_credential` | 检索有关凭据资产的信息。 |
 
@@ -115,7 +115,7 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-还可以使用凭据通过 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 向 Azure 进行身份验证。 在大多数情况下，应使用[运行方式帐户](../manage-runas-account.md)并使用 [Get-AzAutomationConnection](../automation-connections.md) 检索连接。
+还可以使用凭据通过 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 向 Azure 进行身份验证。 在大多数情况下，应使用[运行方式帐户](../automation-security-overview.md#run-as-accounts)并使用 [Get-AzAutomationConnection](../automation-connections.md) 检索连接。
 
 ```powershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
@@ -176,4 +176,4 @@ print (cred["password"])
 
 * 若要了解有关用于访问凭据的 cmdlet 的详细信息，请参阅[在 Azure 自动化中管理模块](modules.md)。
 * 有关 Runbook 的常规信息，请参阅[在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)。
-* 有关 DSC 配置的详细信息，请参阅 [Azure 自动化状态配置概述](../automation-dsc-overview.md)。
+* 有关 DSC 配置的详细信息，请参阅 [Azure 自动化 State Configuration 概述](../automation-dsc-overview.md)。

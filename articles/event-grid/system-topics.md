@@ -3,12 +3,12 @@ title: Azure 事件网格中的系统主题
 description: 介绍 Azure 事件网格中的系统主题。
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: b3a6e7528da2a11c2f91007425ab8beecaf920c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1fbecb1e372602f9c252d43d2a1f93524ef1846
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297277"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052959"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure 事件网格中的系统主题
 事件网格中的系统主题表示由 Azure 服务（如 Azure 存储和 Azure 事件中心）发布的一个或多个事件。 例如，一个系统主题可以表示已为特定存储帐户发布的所有 Blob 事件或仅“Blob 已创建”和“Blob 已删除”事件  。 在此示例中，当 Blob 上传到存储帐户时，Azure 存储服务会将“Blob 已创建”事件发布到事件网格中的系统主题，然后，事件网格会将该事件转发给接收和处理该事件的主题[订阅服务器](event-handlers.md)。 
@@ -34,6 +34,7 @@ ms.locfileid: "91297277"
 - [Azure 服务总线](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Azure 订阅](event-schema-subscriptions.md)
+- [用于 Redis 的 Azure 缓存](event-schema-azure-cache.md)
 
 ## <a name="system-topics-as-azure-resources"></a>作为 Azure 资源的系统主题
 在过去，系统主题是隐式的，并且为了简单起见而未公开。 系统主题现在作为 Azure 资源可见，并提供以下功能：
@@ -49,7 +50,7 @@ ms.locfileid: "91297277"
 - 创建 [Azure 资源的事件订阅作为扩展资源](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate)，这会自动创建名称采用以下格式的系统主题：`<Azure resource name>-<GUID>`。 删除该主题的最后一个事件订阅时，以这种方式创建的系统主题将会自动删除。 
 - 为 Azure 资源创建系统主题，然后为该系统主题创建事件订阅。 使用此方法时，可以为系统主题指定一个名称。 删除最后一个事件订阅时，系统主题不会自动删除。 需要手动将其删除。 
 
-    使用 Azure 门户时，始终要使用此方法。 使用 Azure 资源的 " [**事件** " 页](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage)创建事件订阅时，将首先创建系统主题，然后创建该主题的订阅。 可以先使用[“事件网格系统主题”页](create-view-manage-system-topics.md#create-a-system-topic)显式创建系统主题，然后创建该主题的订阅。 
+    使用 Azure 门户时，始终要使用此方法。 使用 [Azure 资源的“事件”页面](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage)创建事件订阅时，将首先创建系统主题，然后创建该主题的订阅。 可以先使用[“事件网格系统主题”页](create-view-manage-system-topics.md#create-a-system-topic)显式创建系统主题，然后创建该主题的订阅。 
 
 使用 [CLI](create-view-manage-system-topics-cli.md)、[REST](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate) 或 [Azure 资源管理器模板](create-view-manage-system-topics-arm.md)时，可以选择上述两种方法之一。 建议先创建一个系统主题，然后创建该主题的订阅，因为这是创建系统主题的最新方法。
 
@@ -58,7 +59,7 @@ ms.locfileid: "91297277"
 ## <a name="location-and-resource-group-for-a-system-topic"></a>系统主题的位置和资源组
 对于位于特定区域/位置的 Azure 事件源，将在与 Azure 事件源相同的位置创建系统主题。 例如，如果在美国东部为 Azure blob 存储创建事件订阅，则系统主题将在美国东部创建。 对于 Azure 订阅、资源组或 Azure Maps 等全局 Azure 事件源，事件网格会在全局位置创建系统主题。 
 
-通常，系统主题在 Azure 事件源所在的资源组中创建。 对于在 Azure 订阅范围内创建的事件订阅，系统主题是在**美国西部 2**区域中的**EventGrid**资源组中创建的。 如果该资源组不存在，则 Azure 事件网格会在创建系统主题之前创建该资源组。 
+通常，系统主题在 Azure 事件源所在的资源组中创建。 对于在 Azure 订阅范围内创建的事件订阅，系统主题是在 **美国西部 2** 区域中的 **EventGrid** 资源组中创建的。 如果该资源组不存在，则 Azure 事件网格会在创建系统主题之前创建该资源组。 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: f3c147b292ab21bd4e568f9e52acef07396acc28
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d1632c66791dd5e697b95a2c5aaaddea81629abf
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878216"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052816"
 ---
 # <a name="using-snat-for-outbound-connections"></a>使用 SNAT 进行出站连接
 
@@ -80,7 +80,7 @@ SNAT 启用后端实例的 IP 伪装。 此伪装可以防止外部源直接访�
 
  | 关联 | 方法 | IP 协议 |
  | ------------ | ------ | ------------ |
- | 公共负载均衡器 | 将负载均衡器前端 IP 用于 [SNAT](#snat)。| TCP </br> UDP |
+ | 标准公共负载均衡器 | 将负载均衡器前端 IP 用于 [SNAT](#snat)。| TCP </br> UDP |
 
 
  #### <a name="description"></a>描述
@@ -103,8 +103,18 @@ SNAT 启用后端实例的 IP 伪装。 此伪装可以防止外部源直接访�
 
  在此情况下，用于 SNAT 的临时端口被称为 SNAT 端口。 强烈建议显式配置[出站规则](./outbound-rules.md)。 如果通过负载均衡规则使用默认 SNAT，则按照[默认 SNAT 端口分配表](#snatporttable)中所述预先分配 SNAT 端口。
 
+ ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-standard-internal-load-balancer"></a><a name="scenario3"></a>方案3：没有公共 IP 和标准内部负载均衡器的虚拟机
 
- ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario3"></a>应用场景 3：没有公共 IP 且在基本负载均衡器之后的虚拟机
+
+ | 关联 | 方法 | IP 协议 |
+ | ------------ | ------ | ------------ |
+ | 标准内部负载均衡器 | 无 internet 连接。| 无 |
+
+ #### <a name="description"></a>说明
+ 
+使用标准内部负载均衡器时，不会为 SNAT 使用临时 IP 地址。 这是为了在默认情况下支持安全性，并确保资源使用的所有 IP 地址都可配置并可保留。 若要在使用标准内部负载均衡器时实现到 internet 的出站连接，请将实例级别的公共 IP 地址配置为遵循 (方案 1) [#scenario1] 中的行为，或将后端实例添加到标准的公共负载均衡器，并将另外中配置的出站规则添加到内部负载均衡器，以遵循 (方案 2) [#scenario2] 中 
+
+ ### <a name="scenario-4-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario4"></a>方案4：没有公共 IP 和基本负载均衡器的虚拟机
 
 
  | 关联 | 方法 | IP 协议 |
@@ -126,7 +136,6 @@ SNAT 启用后端实例的 IP 伪装。 此伪装可以防止外部源直接访�
 
 
  不要将此方案用于向允许列表添加 IP。 请使用方案 1 或 2，你可以在其中显式声明出站行为。 [SNAT](#snat) 端口是预先分配的，如[默认 SNAT 端口分配表](#snatporttable)所述。
-
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> 大量消耗端口
 

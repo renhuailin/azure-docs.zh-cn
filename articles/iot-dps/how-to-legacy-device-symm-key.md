@@ -3,17 +3,17 @@ title: 使用对称密钥预配设备 - Azure IoT 中心设备预配服务
 description: 如何使用对称密钥通过设备预配服务 (DPS) 实例预配设备
 author: wesmc7777
 ms.author: wesmc
-ms.date: 07/13/2020
+ms.date: 01/28/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: eliotga
-ms.openlocfilehash: dc33dcd2c80b2a6d4a1cc27778e49dc06ac48b34
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+manager: lizross
+ms.openlocfilehash: a4c16347d1883e1522fda18c2382f2d67b8ace80
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967306"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051103"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>如何使用对称密钥注册组预配设备
 
@@ -21,9 +21,7 @@ ms.locfileid: "94967306"
 
 有些设备可能没有证书、TPM 或可用于安全地识别设备的任何其他安全功能。 设备预配服务包括[对称密钥证明](concepts-symmetric-key-attestation.md)。 对称密钥证明可以用于根据 MAC 地址或序列号等唯一信息来标识设备。
 
-如果安装[硬件安全模块 (HSM)](concepts-service.md#hardware-security-module) 和证书比较轻松，这可能是标识和预配设备更好的方式。 这种方式可避免更新部署到所有设备上的代码，并且不必在设备映像中嵌入密钥。
-
-本文假定：HSM 或证书都是不可行的选择。 但你有一些更新设备代码的方法，可供使用设备预配服务来预配设备。 
+如果安装[硬件安全模块 (HSM)](concepts-service.md#hardware-security-module) 和证书比较轻松，这可能是标识和预配设备更好的方式。 使用 HSM 可以绕过更新部署到所有设备的代码，而不会在设备映像中嵌入机密密钥。 本文假定：HSM 或证书都是不可行的选择。 但你有一些更新设备代码的方法，可供使用设备预配服务来预配设备。 
 
 本文还假定，在安全的环境中进行设备更新，以防发生对组主密钥或派生的设备密钥未经授权的访问。
 
@@ -49,7 +47,7 @@ ms.locfileid: "94967306"
 
 以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负荷。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
 
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
@@ -63,9 +61,9 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
     在进行 `CMake` 安装 **之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
-2. 找到[最新版](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
+2. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
 
-3. 打开命令提示符或 Git Bash shell。 运行以下命令，克隆最新版 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步找到的标记作为 `-b` 参数的值：
+3. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步中找到的标记作为 `-b` 参数的值：
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -142,39 +140,18 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-为设备创建一个唯一注册 ID。 有效字符为小写字母数字和短划线（“-”）。
+创建每个设备的唯一注册 Id。 有效字符为小写字母数字和短划线（“-”）。
 
 
 ## <a name="derive-a-device-key"></a>派生一个设备密钥 
 
-若要生成设备密钥，请使用组主密钥来计算设备的唯一注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ，并将结果转换为 Base64 格式。
+若要生成设备密钥，请使用注册组主密钥来计算每个设备的注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) 。 然后，将结果转换为每个设备的 Base64 格式。
 
 > [!WARNING]
-> 设备代码只应包括该单独设备的派生设备密钥。 不要在设备代码中包含你的组主键。 泄露的主密钥可能会危及所有使用该密钥进行身份验证的设备的安全。
+> 每个设备的设备代码应该只包含该设备的相应派生设备密钥。 不要在设备代码中包含你的组主键。 泄露的主密钥可能会危及所有使用该密钥进行身份验证的设备的安全。
 
 
-#### <a name="linux-workstations"></a>Linux 工作站
-
-如果使用的是 Linux 工作站，可以使用 openssl 生成派生的设备密钥，如以下示例中所示。
-
-将“键”  值替换为前面记录的“主键”  。
-
-用注册 ID 替换 REG_ID 值。
-
-```bash
-KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
-REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
-
-keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
-```
-
-```bash
-Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
-```
-
-
-#### <a name="windows-based-workstations"></a>基于 Windows 的工作站
+# <a name="windows"></a>[Windows](#tab/windows)
 
 如果使用的是基于 Windows 的工作站，可以使用 PowerShell 生成派生的设备密钥，如以下示例中所示。
 
@@ -197,8 +174,29 @@ echo "`n$derivedkey`n"
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
+# <a name="linux"></a>[Linux](#tab/linux)
 
-设备将使用派生的设备密钥和唯一注册 ID，于预配期间在注册组中执行对称密钥证明。
+如果使用的是 Linux 工作站，可以使用 openssl 生成派生的设备密钥，如以下示例中所示。
+
+将“键”  值替换为前面记录的“主键”  。
+
+用注册 ID 替换 REG_ID 值。
+
+```bash
+KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
+REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
+```
+
+```bash
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+---
+
+每个设备使用其派生的设备密钥和唯一注册 ID 在预配过程中通过注册组执行对称密钥证明。
 
 
 
@@ -206,21 +204,21 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 在本部分，你将更新你在较早前设置的位于 Azure IoT C SDK 中的名为 prov\_dev\_client\_sample 的预配示例。 
 
-此示例代码模拟将预配请求发送到你的设备预配服务实例的设备启动序列。 启动序列将会使设备被识别并分配到你在注册组上配置的 IoT 中心。
+此示例代码模拟将预配请求发送到你的设备预配服务实例的设备启动序列。 启动序列将会使设备被识别并分配到你在注册组上配置的 IoT 中心。 这将针对使用注册组进行预配的每个设备完成。
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。****
+1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。  
 
     ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. 在 Visual Studio 中，打开较早前通过运行 CMake 生成的 azure_iot_sdks.sln 解决方案文件。 解决方案文件应位于以下位置：
+2. 在 Visual Studio 中，打开较早前通过运行 CMake 生成的 azure_iot_sdks.sln  解决方案文件。 解决方案文件应位于以下位置：
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
-3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。 展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。
+3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。  展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。 
 
-4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。 
+4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。  
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -251,7 +249,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
    
     保存文件。
 
-7. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。 
+7. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。  
 
 8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。  在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。
 
@@ -280,10 +278,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ## <a name="security-concerns"></a>安全注意事项
 
-请注意，这会使派生的设备密钥成为映像的一部分，不是推荐的安全最佳做法。 充分体现了安全性和易用性各有利弊。 
-
-
-
+请注意，这样做会使派生的设备密钥作为每个设备的映像的一部分包含在内，这不是推荐的最佳安全方案。 这是安全和易用性经常发生权衡的一个原因。 您必须根据自己的要求完全检查设备的安全性。
 
 
 ## <a name="next-steps"></a>后续步骤

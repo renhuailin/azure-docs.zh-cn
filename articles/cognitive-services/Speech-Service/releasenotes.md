@@ -8,17 +8,67 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/17/2020
+ms.date: 01/27/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 050c16670ea0c6df53345216d8dd450c159792ea
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eec2919eddc4c9631c3153d6016485d64d368902
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927454"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050848"
 ---
 # <a name="speech-service-release-notes"></a>语音服务发行说明
+
+## <a name="speech-sdk-1150-2021-january-release"></a>Speech SDK 1.15.0： 2021-一月发行版
+
+**注意**：Windows 版语音 SDK 依赖于 Visual Studio 2015、2017 和 2019 的共享 Microsoft Visual C++ Redistributable。 可从[此处](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)下载。
+
+**改进**
+- 我们已经开始了多个发布工作，以减少语音 SDK 的内存使用量和磁盘占用量。 作为第一步，我们在大多数平台上的共享库中减少了显著的文件大小。 与1.14 版本相比：
+  - 64位 UWP 兼容的 Windows 库的大小约为 30%;
+  - 32位 Windows 库尚未显示大小改进。
+  - Linux 库的大小为 20-25%;
+  - Android 库的大小为 3-5%;
+
+**新功能**
+- **All**：为自定义 TTS 声音添加了48kHz 格式，从而提高了本机输出采样率高于24kHz 的自定义语音的音频质量。
+- **All**：添加了对通过 `EndpointId` ([c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setendpointid)、 [c #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId)、 [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_)、 [JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#endpointId)、 [目标-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid)、 [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#endpoint-id)) 设置自定义语音的支持。 在进行此更改之前，自定义语音用户需要通过方法设置终结点 URL `FromEndpoint` 。 现在，客户可以 `FromSubscription` 像公开语音一样使用方法，然后通过设置提供部署 id `EndpointId` 。 这可以简化自定义语音的设置。 
+- **C + +/c #/Java/Objective-C/Python**： `IntentRecognizer` 现在支持 `LanguageUnderstandingModel FromEndpoint` 使用 uri 参数通过方法配置包含所有意图的 JSON 结果，而不支持配置 top 计分意向 `verbose=true` 。 这解决了 [GitHub 问题 #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880)。 请参阅 [此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition/#add-a-languageunderstandingmodel-and-intents)的更新文档。
+- **C + +/c #/Java**： `DialogServiceConnector` ([c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/dialog-dialogserviceconnector)、 [c #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet)、 [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable)) 现在提供了一个 `StopListeningAsync()` 方法 `ListenOnceAsync()` 。 这会立即停止音频捕获并正常等待结果，使其完美地用于 "立即停止" 按钮按方案。
+- **C + +/c #/Java/JavaScript**： `DialogServiceConnector` ([c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/dialog-dialogserviceconnector)、 [c #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet)、 [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable)、 [JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/dialogserviceconnector?view=azure-node-latest)) 现在有一个新的 `TurnStatusReceived` 事件处理程序。 这些可选事件对应于 [`ITurnContext`](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.iturncontext?view=botbuilder-dotnet-stable) 机器人上的每个解决方法，并且在发生故障时将报告执行失败，例如，在直接线路语音与机器人之间发生未经处理的异常、超时或网络断开。 `TurnStatusReceived` 可更轻松地响应故障条件。 例如，如果机器人数据库查询所用的时间太长 (例如，查找产品) ， `TurnStatusReceived` 则允许客户端了解以下内容： "抱歉，我不能再重试" 或类似的内容。
+- **C + +/c #**： [语音 sdk nuget 包](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech) 现在支持 Windows ARM/ARM64 DESKTOP native 二进制 (UWP 已受支持) 使语音 SDK 更适用于更多计算机类型。
+- **Java**： [`DialogServiceConnector`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable) 目前有一个 `setSpeechActivityTemplate()` 方法，该方法在以前无意中从语言中排除。 这相当于设置 `Conversation_Speech_Activity_Template` 属性，并请求由 "直接 Line Speech" 服务产生的所有未来 Bot Framework 活动将提供的内容合并到其 JSON 有效负载中。
+- **Java**： [`Connection`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable) 类现在有一个 `MessageReceived` 事件，类似于其他编程语言 (c + +、c # ) 。 此事件提供对来自服务的传入数据的低级别访问权限，可用于诊断和调试。
+- **JavaScript**： [`BotFrameworkConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/botframeworkconfig) 现在具有 `fromHost()` 和 `fromEndpoint()` 工厂方法，可简化自定义服务位置与手动设置属性的使用。 我们还将的可选规范标准化 `botId` ，以便在配置工厂中使用非默认机器人。
+- **JavaScript**：添加了 websocket 压缩的字符串控件属性。 出于性能原因，我们默认禁用 websocket 压缩。 对于低带宽方案，可以重新启用此方案。 [此处](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/propertyid)提供了更多详细信息。 这解决了 [GitHub 问题 #242](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/242)。
+- **JavaScript**：添加了对发音评估的支持，以便对语音发音进行评估。 请参阅 [此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment?pivots=programming-language-javascript)的快速入门。
+
+**Bug 修复**
+- 除 JavaScript) 之外的 **所有** (：修复了版本1.14 中的回归，其中，识别器分配了过多的内存。
+- **C + +**：修复了的垃圾回收问题 `DialogServiceConnector` ， [#794 解决 GitHub 问题](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/794)。
+- **C #**：修复了线程关闭的问题，该问题会导致对象在被释放时阻塞一秒钟。
+- **C + +/c #/Java**：修复了一个例外，阻止应用程序在上多次设置语音授权令牌或活动模板 `DialogServiceConnector` 。
+- **C + +/c #/Java**：修复了由于拆卸中的争用问题导致的识别器崩溃。
+- **JavaScript**： [`DialogServiceConnector`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/dialogserviceconnector) 以前未 `botId` 采用在的工厂中指定的可选参数 `BotFrameworkConfig` 。 这使得必须 `botId` 手动设置查询字符串参数才能使用非默认机器人。 已更正 bug，并 `botId` 使用提供给 `BotFrameworkConfig` 工厂的值，包括新的 `fromHost()` 和添加的 `fromEndpoint()` 。 这也适用于的 `applicationId` 参数 `CustomCommandsConfig` 。
+- **JavaScript**：修复 [GitHub 问题 #881](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/881)，允许识别器对象重复使用。
+- **JavaScript**：修复了 SKD `speech.config` 在一个 TTS 会话中多次发送的问题，从而浪费了带宽。
+- **JavaScript**：简化了麦克风授权中的错误处理，允许在用户的浏览器上不允许麦克风输入时，将更多描述性消息向上冒泡。
+- **JavaScript**：修复了 [GitHub 问题 #249](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/249) 其中的类型错误 `ConversationTranslator` 和 `ConversationTranscriber` 导致 TypeScript 用户的编译错误。
+- **目标-C**：修复了 Xcode 11.4 上的适用 gstreamer 生成失败的问题，解决 [GitHub 问题 #911](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/911)。
+- **Python**：固定 [GitHub 问题 #870](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/870)，删除 "DeprecationWarning： imp 模块在优选 of importlib" 中已弃用。
+
+**示例**
+- [JavaScript 浏览器的文件中示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/javascript/browser/from-file/index.html) 现在使用文件进行语音识别。 这解决了 [GitHub 问题 #884](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/884)。
+
+## <a name="speech-cli-also-known-as-spx-2021-january-release"></a>语音 CLI (也称为 SPX) ： 2021-1 月版
+
+**新功能**
+- 语音 CLI 现在作为 [NuGet 包](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech.CLI/) 提供，可以通过 .net CLI 作为 .net 全局工具进行安装，你可以从 shell/命令行调用。
+- 已更新 [自定义语音 DevOps 模板](https://github.com/Azure-Samples/Speech-Service-DevOps-Template) 存储库，以便将语音 CLI 用于其自定义语音工作流。
+
+**COVID-19 缩减测试**：随着正在进行的流行病继续要求我们的工程师在家工作，流行病手动验证脚本已经大大减少。 我们在配置较少的设备上进行测试，可能会增加环境特定的 bug 的增长可能性。 我们仍严格使用一组自动化进行验证。 如果我们遗漏了某些内容，请在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 上告诉我们。<br>
+请保重身体！
 
 ## <a name="text-to-speech-2020-december-release"></a>文本转语音 2020 年 12 月发行版
 
@@ -75,7 +125,7 @@ ms.locfileid: "98927454"
 - 提高了以下语言单词级别发音的准确度：`pl-PL`（错误率降低：51%）和 `fi-FI`（错误速率降低：58%）
 - 改进了字典方案的 `ja-JP` 单个字词阅读功能。 将发音错误减小了 80%。
 - `zh-CN-XiaoxiaoNeural`：改进了情绪/客户服务/新闻广播/快乐/愤怒风格的语音质量。
-- `zh-CN`：改进了 Erhua 发音和轻声，优化了空间韵律，从而大大提高了清晰度。 
+- `zh-CN`：改进了 Erhua 发音和淡音和精致的空间诗体论，大大提高了 intelligibility。 
 
 ## <a name="speech-sdk-1140-2020-october-release"></a>语音 SDK 1.14.0：2020 年 10 月版本
 

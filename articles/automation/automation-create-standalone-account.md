@@ -3,14 +3,14 @@ title: 创建独立的 Azure 自动化帐户
 description: 本文介绍如何创建独立的 Azure 自动化帐户和经典运行方式帐户。
 services: automation
 ms.subservice: process-automation
-ms.date: 01/15/2019
+ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: c78a65c3cc2d913ba0b836947d2184b3a061a648
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0855395a305624bb2df96d183dc2bcac45f8e6b3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714641"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051458"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 
@@ -22,7 +22,7 @@ ms.locfileid: "91714641"
 
 * 在 Azure Active Directory (Azure AD) 中创建服务主体。
 * 创建证书。
-* 分配 "参与者" 角色，该角色使用 runbook 管理 Azure 资源管理器资源。
+* 分配“参与者”角色，以便使用 Runbook 管理 Azure 资源管理器资源。
 
 使用系统创建的此帐户，可以快速开始构建和部署 Runbook 来支持自动化需求。
 
@@ -59,7 +59,7 @@ ms.locfileid: "91714641"
    > [!NOTE]
    > 如果“添加自动化帐户”窗格中显示以下消息，则表示你的帐户不是订阅管理员角色成员和订阅的共同管理员。
    >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text="提示 &quot;你没有权限在 Azure Active directory 中创建运行方式帐户&quot; 的屏幕截图。":::
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text="提示“你无权在 Azure Active Directory 中创建运行方式帐户”的屏幕截图。":::
 
 1. 在“添加自动化帐户”窗格的“名称”字段中，输入新自动化帐户的名称。 选择后，将无法更改此名称。 
 
@@ -74,7 +74,7 @@ ms.locfileid: "91714641"
    > [!NOTE]
    > 如果选择不创建运行方式帐户，则选择“否”，“添加自动化帐户”窗格中会显示一条消息。  尽管该帐户是在 Azure 门户中创建的，但它在经典部署模型订阅或 Azure 资源管理器订阅目录服务中没有对应的身份验证标识。 因此，自动化帐户无法访问订阅中的资源。 这会导致引用此帐户的任何 Runbook 无法进行身份验证，也无法针对这些部署模型中的资源执行任务。
    >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="提示 &quot;你没有权限在 Azure Active directory 中创建运行方式帐户&quot; 的屏幕截图。":::
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="带有“你已选择不创建运行方式帐户”消息的提示的屏幕截图。":::
    >
    > 未创建服务主体时不会分配参与者角色。
    >
@@ -93,7 +93,7 @@ ms.locfileid: "91714641"
 
 ## <a name="create-a-classic-run-as-account"></a>创建经典运行方式帐户
 
-创建 Azure 自动化帐户时，默认情况下不再创建经典运行方式帐户。 如果你仍需要经典运行方式帐户：
+创建 Azure 自动化帐户时，默认情况下不会创建经典运行方式帐户。 如果需要经典运行方式帐户来管理 Azure 经典资源，请执行以下步骤：
 
 1. 在“自动化帐户”的“帐户设置”下，选择“运行方式帐户” 。
 2. 选择“Azure 经典运行方式帐户”。
@@ -104,5 +104,5 @@ ms.locfileid: "91714641"
 * 若要详细了解图形创作，请参阅[在 Azure 自动化中创作图形 Runbook](automation-graphical-authoring-intro.md)。
 * 若要开始使用 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅[教程：创建 PowerShell 工作流 Runbook](learn/automation-tutorial-runbook-textual.md)。
-* 若要开始使用 Python 2 Runbook，请参阅[教程：创建 Python 2 Runbook](learn/automation-tutorial-runbook-textual-python2.md)。
-* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation)。
+* 若要开始使用 Python 3 runbook，请参阅 [教程：创建 Python 3 runbook](learn/automation-tutorial-runbook-textual-python-3.md)。
+* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation&preserve-view=true#automation)。

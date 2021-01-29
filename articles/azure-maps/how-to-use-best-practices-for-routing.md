@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 743710ea0d40eb31375236d4e59b0b138a217518
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8174529def5e3924086e49f36c225f07a4da2648
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895539"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051645"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps 路由服务的最佳做法
 
@@ -59,10 +59,10 @@ Azure Maps [路线服务](/rest/api/maps/route) 中的路由方向和路由矩�
 
 | Azure Maps API | 请求中的最大查询数 | 避免区域 | 卡车和电车布线 | Waypoints 和旅游推销员优化 | 支持点 |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
-| 获取路线方向 | 1 | | X | X | |
-| 后敷设方向 | 1 | X | X | X | X |
-| 后期路由方向批处理 | 700 | | X | X | |
-| 发布路线矩阵 | 700 | | X | | |
+| 获取路线方向 | 1 | | ✔ | ✔ | |
+| 后敷设方向 | 1 | ✔ | ✔ | ✔ | ✔ |
+| 后期路由方向批处理 | 700 | | ✔ | ✔ | |
+| 发布路线矩阵 | 700 | | ✔ | | |
 
 若要详细了解电动机布线功能，请参阅本教程，了解如何 [通过 Python 使用 Azure Notebooks 来路由电动汽车](tutorial-ev-routing.md)。
 
@@ -113,7 +113,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
-响应包含摘要，如下所示。 由于拥塞， **trafficDelaysInSeconds** 值大于零。 它还大于 **historicTrafficTravelTimeInSeconds** 。
+响应包含摘要，如下所示。 由于拥塞， **trafficDelaysInSeconds** 值大于零。 它还大于 **historicTrafficTravelTimeInSeconds**。
 
 ```json
 "summary": {
@@ -140,7 +140,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 ![展开点元素](media/how-to-use-best-practices-for-routing/points-list-img.png)
 
-路由方向 Api 支持可以通过指定 **instructionsType** 参数来使用的不同格式的指令。 若要格式化说明以便轻松进行计算机处理，请使用 **instructionsType = 编码** 。 使用 **instructionsType = 标记** 为用户显示文本说明。 此外，还可以将指令的格式设置为文本，其中指令的某些元素将被标记出来，并且说明中提供了特殊的格式设置。 有关详细信息，请参阅 [支持的指令类型的列表](/rest/api/maps/route/postroutedirections#routeinstructionstype)。
+路由方向 Api 支持可以通过指定 **instructionsType** 参数来使用的不同格式的指令。 若要格式化说明以便轻松进行计算机处理，请使用 **instructionsType = 编码**。 使用 **instructionsType = 标记** 为用户显示文本说明。 此外，还可以将指令的格式设置为文本，其中指令的某些元素将被标记出来，并且说明中提供了特殊的格式设置。 有关详细信息，请参阅 [支持的指令类型的列表](/rest/api/maps/route/postroutedirections#routeinstructionstype)。
 
 请求指令时，响应将返回名为的新元素 `guidance` 。 `guidance`元素包含两条信息：依次旋转方向和摘要说明。
 
@@ -214,7 +214,7 @@ Azure Maps 当前提供两种形式的路由优化：
 
 对于多停止路由，在单个路由请求中最多可以指定 150 waypoints。 起始坐标位置和结束坐标位置可以相同，这与往返行程的情况相同。 但需要至少提供一个额外的 waypoint 来进行路由计算。 Waypoints 可以在源坐标和目标坐标之间的位置添加到查询中。
 
-如果要优化访问给定 waypoints 的最佳顺序，则需要指定 **computeBestOrder = true** 。 此方案也称为旅行推销员优化问题。
+如果要优化访问给定 waypoints 的最佳顺序，则需要指定 **computeBestOrder = true**。 此方案也称为旅行推销员优化问题。
 
 ### <a name="sample-query"></a>示例查询
 

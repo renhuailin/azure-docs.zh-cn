@@ -1,18 +1,16 @@
 ---
-title: 使用 Azure 资源管理器模板启用更新管理 | Microsoft Docs
+title: 使用 Azure 资源管理器模板启用“更新管理”
 description: 本文介绍如何使用 Azure 资源管理器模板启用更新管理。
-ms.service: automation
+services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/18/2020
-ms.openlocfilehash: e2ebdd3d0f4a4461521ee5f412d5b4c4f872b8a0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 47c982bff45838617b9a55f9129d4dc55d58b0d2
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183228"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050325"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用“更新管理”
 
@@ -29,7 +27,7 @@ ms.locfileid: "98183228"
 如果已在订阅支持的区域中部署了 Log Analytics 工作区和自动化帐户，不会链接该工作区和帐户。 使用此模板可以成功创建链接并部署更新管理。
 
 >[!NOTE]
->使用 ARM 模板时，不支持创建自动化运行方式帐户。 若要从门户或使用 PowerShell 手动创建运行方式帐户，请参阅[管理运行方式帐户](../manage-runas-account.md)。
+>使用 ARM 模板时，不支持创建自动化运行方式帐户。 若要从门户或 PowerShell 手动创建运行方式帐户，请参阅 [创建运行方式帐户](../create-run-as-account.md)。
 
 完成这些步骤后，你需要为自动化帐户[配置诊断设置](../automation-manage-send-joblogs-log-analytics.md)，以将 runbook 作业状态和作业流发送到链接的 Log Analytics 工作区。
 

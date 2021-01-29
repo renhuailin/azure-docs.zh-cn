@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: c2ddb0143bb9cba0dc2fc48ff9b9df94dc55c29c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: e7a6b6d3e753352820cdcb910dcbfa9362793493
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579447"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050764"
 ---
 # <a name="use-source-control-integration"></a>使用源代码管理集成
 
@@ -29,7 +29,7 @@ Azure 自动化支持三种类型的源代码管理：
 ## <a name="prerequisites"></a>先决条件
 
 * 源代码管理存储库（GitHub 或 Azure Repos）
-* 一个[运行方式帐户](manage-runas-account.md)
+* 一个[运行方式帐户](automation-security-overview.md#run-as-accounts)
 * 自动化帐户中[最新的 Azure 模块](automation-update-azure-modules.md)包括 `Az.Accounts` 模块（相当于 `AzureRM.Profile` 的 Az 模块）
 
 > [!NOTE]
@@ -209,4 +209,4 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 ## <a name="next-steps"></a>后续步骤
 
 * 若要在 Azure 自动化中集成源代码管理，请参阅 [Azure 自动化：Azure 自动化中的源代码管理集成](https://azure.microsoft.com/blog/azure-automation-source-control-13/)。  
-* 若要使用 Visual Studio Online 集成 Runbook 源代码管理，请参阅 [Azure 自动化：使用 Visual Studio Online 集成 Runbook 源代码管理](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)。
+* 若要将 runbook 源代码管理与 Visual Studio Codespaces 集成，请参阅 [Azure Automation：使用 Visual Studio 集成 Runbook 源代码管理 Codespaces](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)。

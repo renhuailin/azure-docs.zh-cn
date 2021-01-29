@@ -1,33 +1,33 @@
 ---
-title: 自定义用户界面
+title: 利用 HTML 模板自定义用户界面
 titleSuffix: Azure AD B2C
-description: 了解如何自定义使用 Azure Active Directory B2C 的应用程序的用户界面。
+description: 了解如何使用 Azure Active Directory B2C 的应用程序的 HTML 模板自定义用户界面。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4a789574b736eb22bd8d13fcf1a9facec5e241c9
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 78ad2540029d78084485ae2004194f9f7c2d6052
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98058661"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050537"
 ---
-# <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
+# <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>通过 Azure Active Directory B2C 中的 HTML 模板自定义用户界面
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 对 Azure Active Directory B2C (Azure AD B2C) 向客户显示的用户界面进行品牌设计和自定义有助于在应用程序中提供无缝的用户体验。 这些体验包括注册、登录、个人资料编辑和密码重置。 本文介绍 (UI) 自定义的用户界面方法。 
 
 > [!TIP]
-> 如果只希望修改用户流页面的标题徽标、背景图像和背景色，则可以尝试 [公司品牌](company-branding.md) 功能。
+> 如果只希望修改用户流页面的标题徽标、背景图像和背景色，则可以尝试 [公司品牌](customize-ui.md) 功能。
 
 ## <a name="custom-html-and-css-overview"></a>自定义 HTML 和 CSS 概述
 
@@ -59,7 +59,7 @@ Azure AD B2C 使用 [跨域资源共享 (CORS) ](https://www.w3.org/TR/cors/)在
 
 下表列出了 Azure AD B2C 提供的默认页面内容。 下载文件，并将它们用作创建自己的自定义页面的起点。
 
-| 默认页 | 描述 | 内容定义 ID<br/>仅 (自定义策略)  |
+| 默认页 | 说明 | 内容定义 ID<br/>仅 (自定义策略)  |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **错误页**。 遇到异常或错误时显示此页面。 | *api.error* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **自断言页**。 将此文件用作社交帐户注册页面、本地帐户注册页面、本地帐户登录页、密码重置等的自定义页面内容。 该窗体可以包含各种输入控件，如文本输入框、密码输入框、单选按钮、单选下拉框和多选复选框。 | *localaccountsignin*、 *localaccountsignup*、 *localaccountpasswordreset*、 *selfasserted。* |
@@ -387,7 +387,15 @@ git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
 1. 现在，如前文所述，修改策略，指向 HTML 文件。
 1. 如果发现缺少字体、图像或 CSS，请检查扩展策略和 .html 文件中的引用 \* 。
 
+## <a name="use-company-branding-assets-in-custom-html"></a>在自定义 HTML 中使用公司品牌资产
+
+若要在自定义 HTML 中使用 [公司品牌](customize-ui.md#configure-company-branding) 资产，请在标记外添加以下标记 `<div id="api">` 。 图像源被替换为背景图像和横幅徽标的图像源。
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 了解如何启用 [客户端 JavaScript 代码](javascript-and-page-layout.md)。
-

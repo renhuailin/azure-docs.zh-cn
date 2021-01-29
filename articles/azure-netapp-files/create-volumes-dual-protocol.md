@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 01/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 47aefecce846f58128335768018ba59d3520bd87
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 70b42fb5522b31b5e7e15b5715717f0d010d56dc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726674"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052407"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建双重协议 (NFSv3 和 SMB) 卷
 
 Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议创建卷。 本文介绍如何创建使用 NFSv3 和 SMB 的双重协议的卷，并支持 LDAP 用户映射。  
 
 
-## <a name="before-you-begin"></a>准备阶段 
+## <a name="before-you-begin"></a>开始之前 
 
 * 你必须已创建容量池。  
     请参阅 [设置容量池](azure-netapp-files-set-up-capacity-pool.md)。   
@@ -51,6 +51,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMB3 或双重协议
     | `Unix`    | NFS   | NFSv3 模式位   | UNIX  | NFS 和 Windows   |
     | `Ntfs`    | Windows   | NTFS Acl     | NTFS  |NFS 和 Windows|
 * 使用 NFS 安装 NTFS 安全样式卷的 UNIX 用户将作为 Windows 用户 `root` FOR unix `root` 和 `pcuser` 所有其他用户进行身份验证。 使用 NFS 时，请确保这些用户帐户存在于你的 Active Directory 中。 
+* 如果你具有较大的拓扑，并将 `Unix` 安全样式与双协议卷或具有扩展组的 LDAP 一起使用，则 Azure NetApp 文件可能无法访问拓扑中的所有服务器。  如果出现这种情况，请联系你的帐户团队以获得帮助。  <!-- NFSAAS-15123 --> 
 * 创建双协议卷不需要服务器根 CA 证书。 仅当启用 LDAP over TLS 时，才需要此功能。
 
 

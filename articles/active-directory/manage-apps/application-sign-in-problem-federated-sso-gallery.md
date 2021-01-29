@@ -12,17 +12,17 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 62b828a23805c6d3ab544dd2b9f78b45a3327cde
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586340"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053391"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>登录到基于 SAML 的单一登录配置的应用时出现问题
 若要解决下面的登录问题，建议执行以下操作来更好地诊断和自动执行解决步骤：
 
-- 安装[我的应用安全浏览器扩展](./access-panel-deployment-plan.md)，以在 Azure 门户中使用测试体验时帮助 Azure Active Directory (Azure AD) 提供更好的诊断和解决方法。
+- 安装[我的应用安全浏览器扩展](my-apps-deployment-plan.md)，以在 Azure 门户中使用测试体验时帮助 Azure Active Directory (Azure AD) 提供更好的诊断和解决方法。
 - 使用 Azure 门户的应用配置页中的测试体验重现该错误。 详细了解如何 [调试基于 SAML 的单一登录应用程序](./debug-saml-sso-issues.md)
 
 如果在 Azure 门户中使用 "我的应用" 安全浏览器扩展的 [测试体验](./debug-saml-sso-issues.md) ，则无需手动执行以下步骤来打开 "基于 SAML 的单一登录配置" 页。

@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: e9f46b11d9c0b5251ee4d52f64d657926f6f9c5e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 38054d983b0a9f01f396b7379fec37de452d03b7
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222983"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051866"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>负载均衡器常见问题解答
 
@@ -48,6 +48,10 @@ NAT 规则用于指定要将流量路由到其中的后端资源。 例如，将
  
 ## <a name="can-i-add-a-vm-from-the-same-availability-set-to-different-backend-pools-of-a-load-balancer"></a>能否将同一可用性集的 VM 添加到负载均衡器的不同后端池？
 不，这不可能。
+
+## <a name="what-is-the-maximum-data-throughput-that-can-be-achieved-via-an-azure-load-balancer"></a>可以通过 Azure 负载均衡器实现的最大数据吞吐量是多少？
+由于 Azure LB 是传递网络负载平衡器，因此吞吐量限制由后端池中使用的虚拟机类型决定。 若要了解其他与网络吞吐量相关的信息，请参阅 [虚拟机网络吞吐量](../virtual-network/virtual-machine-network-throughput.md)。
+
 
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>如何连接到同一区域中的 Azure 存储？
 通过上述方案进行出站连接时不一定要连接到与 VM 位于同一区域的存储。 如果不想这样做，请按上述说明使用网络安全组 (NSG)。 若要连接到其他区域的存储，则需要使用出站连接。 请注意，当从同一区域中的虚拟机连接到存储时，存储诊断日志中的源 IP 地址将是内部提供程序地址，而不是虚拟机的公共 IP 地址。 如果要将对存储帐户的访问限制至同一区域中一个或多个虚拟网络子网中的 VM，请在配置存储帐户防火墙时使用[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，而不是公共 IP 地址。 配置了服务终结点后，将在存储诊断日志中看到虚拟网络专用 IP 地址，而不是内部提供程序地址。

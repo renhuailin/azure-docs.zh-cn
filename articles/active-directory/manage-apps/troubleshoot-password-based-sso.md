@@ -10,19 +10,19 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: d122cedbad41d6984614a0edccb2fd98269710f2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 84aec5031dd8d19f8f2ad0aa32185002add378b1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618070"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053973"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>在 Azure AD 中排查基于密码的单一登录问题
 
 若要使用 "我的应用" 中的 "基于密码的单一登录 (SSO) ，必须安装浏览器扩展。 当你选择配置为基于密码的 SSO 的应用时，会自动下载此扩展。 若要了解如何从最终用户的角度使用我的应用，请参阅 [我的应用门户的帮助](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="my-apps-browser-extension-not-installed"></a>我的应用浏览器扩展未安装
-请确保已安装浏览器扩展。 若要了解详细信息，请参阅 [计划 Azure Active Directory 应用部署](access-panel-deployment-plan.md)。 
+请确保已安装浏览器扩展。 若要了解详细信息，请参阅 [计划 Azure Active Directory 应用部署](my-apps-deployment-plan.md)。 
 
 ## <a name="single-sign-on-not-configured"></a>未配置单一登录
 请确保已配置基于密码的单一登录。 若要了解详细信息，请参阅 [配置基于密码的单一登录](configure-password-single-sign-on-non-gallery-applications.md)。
@@ -247,4 +247,4 @@ ms.locfileid: "96618070"
 
 ## <a name="next-steps"></a>后续步骤
 * [应用程序管理的快速入门系列](view-applications-portal.md)
-* [计划“我的应用”部署](access-panel-deployment-plan.md)
+* [计划“我的应用”部署](my-apps-deployment-plan.md)

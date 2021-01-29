@@ -3,14 +3,14 @@ title: 排查 Azure 自动化共享资源问题
 description: 本文介绍了如何排查和解决 Azure 自动化共享资源的问题。
 services: automation
 ms.subservice: ''
-ms.date: 03/12/2019
+ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: c4ede0bffedc256f4af621d4945ebbbea0f8a4b6
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1a822166ae4c2bf793e0fa50e93018f499fcc27a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896285"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053613"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>排查共享资源问题
 
@@ -131,7 +131,7 @@ You do not have permissions to create…
 
 #### <a name="resolution"></a>解决方法
 
-若要创建或更新运行方式帐户，你必须对运行方式帐户使用的各种资源具有适当的[权限](../manage-runas-account.md#permissions)。 
+若要创建或更新运行方式帐户，你必须对运行方式帐户使用的各种资源具有适当的[权限](../automation-security-overview.md#permissions)。
 
 如果问题是由某个锁造成的，请验证是否可以删除该锁。 在 Azure 门户中转到被锁定的资源，右键单击该锁，然后选择“删除”。
 
@@ -147,7 +147,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>原因
 
-此错误很可能是由于错误配置了[运行方式帐户](../manage-runas-account.md)而造成的。
+此错误很可能是由于错误配置了[运行方式帐户](../automation-security-overview.md)而造成的。
 
 #### <a name="resolution"></a>解决方法
 
@@ -166,4 +166,3 @@ Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
 * 联系 [@AzureSupport](https://twitter.com/azuresupport)。 这是官方的 Microsoft Azure 帐户，它可以连接到 Azure 社区中的合适资源，为你提供解答、支持和专家建议。
 * 提出 Azure 支持事件。 转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
-

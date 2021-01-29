@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: 65fa226b368baa3b1d4f376600e610a518c48c02
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 915a0d75622a98b33f647041f3c3b622cb5236b1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900315"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053714"
 ---
 # <a name="send-an-email-from-a-runbook"></a>从 Runbook 发送电子邮件
 
@@ -21,7 +21,7 @@ ms.locfileid: "97900315"
 * Azure 订阅。 如果还没有 Azure 订阅，可以[激活 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [一个 SendGrid 帐户](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)。
 * 具有 Az 模块的[自动化帐户](./index.yml)。
-* 用于存储和执行 runbook 的[运行方式帐户](./manage-runas-account.md)。
+* 用于存储和执行 runbook 的[运行方式帐户](./automation-security-overview.md#run-as-accounts)。
 
 ## <a name="create-an-azure-key-vault"></a>创建 Azure Key Vault
 
@@ -74,7 +74,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 
 ## <a name="create-the-runbook-to-send-an-email"></a>创建用于发送电子邮件的 runbook
 
-在创建密钥保管库并存储 `SendGrid` API 密钥后，即可创建 runbook 来检索 API 密钥和发送电子邮件。 让我们使用 runbook，该 runbook 使用 `AzureRunAsConnection` 以[运行方式帐户](./manage-runas-account.md)身份向 Azure 进行身份验证，以便从 Azure 密钥保管库检索机密。 我们将该 runbook 命名为 Send-GridMailMessage。 你可以修改用作示例的 PowerShell 脚本，并将其重用于不同的方案。
+在创建密钥保管库并存储 `SendGrid` API 密钥后，即可创建 runbook 来检索 API 密钥和发送电子邮件。 让我们使用 runbook，该 runbook 使用 `AzureRunAsConnection` 以[运行方式帐户](./automation-security-overview.md#run-as-accounts)身份向 Azure 进行身份验证，以便从 Azure 密钥保管库检索机密。 我们将该 runbook 命名为 Send-GridMailMessage。 你可以修改用作示例的 PowerShell 脚本，并将其重用于不同的方案。
 
 1. 转到 Azure 自动化帐户。
 2. 在“过程自动化”下，选择“Runbook”。 

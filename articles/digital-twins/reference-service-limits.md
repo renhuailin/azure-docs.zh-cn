@@ -7,19 +7,19 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 87061d378be97bf669fd569c0408f247b9e8dc5d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 165fa23cf3965d3017b15c27fedc2846f97d8d11
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091765"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054393"
 ---
-# <a name="service-limits"></a>服务限制
+# <a name="azure-digital-twins-service-limits"></a>Azure 数字孪生服务限制
 
 这些是 Azure 数字孪生的服务限制。
 
 > [!NOTE]
-> 此服务的某些区域具有可调整的限制。 下面的表中显示了可调整的 *？* 列。 当调整该限制时，可 *调整* 的值为 *Yes* 。
+> 此服务的某些区域具有可调整的限制。 下面的表中显示了可调整的 *？* 列。 当调整该限制时，可 *调整* 的值为 *Yes*。
 >
 > 如果业务需要提高限制或配额超过默认限制，则可以通过 [打开支持票证](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来请求更多资源。
 
