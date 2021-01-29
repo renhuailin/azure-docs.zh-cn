@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 9caf69a7f78c7872f0a5f8a2ed07bdc749a29023
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 790879894c3b268fcd55aafc96507319b29fe1e5
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682989"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055070"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Office 365 Outlook 中的电子邮件、联系人和日历
 
@@ -26,11 +26,11 @@ ms.locfileid: "94682989"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 使用 [工作或学校帐户](https://www.office.com/)登录的 Outlook 帐户。 如果有 @outlook.com 或 @hotmail.com 帐户，请改为使用 [Outlook.com 连接器](../connectors/connectors-create-api-outlook.md) 。 若要使用不同的用户帐户（例如服务帐户）连接到 Outlook，请参阅 [使用其他帐户进行连接](#connect-using-other-accounts)。
+* 一个使用[工作或学校帐户](https://www.office.com/)登录的 Outlook 帐户。 如果你具有 @outlook.com 或 @hotmail.com 帐户，请改用 [Outlook.com 连接器](../connectors/connectors-create-api-outlook.md)。 若要使用其他用户帐户（例如服务帐户）连接到 Outlook，请参阅[使用其他帐户进行连接](#connect-using-other-accounts)。
 
 * Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 要在其中访问 Outlook 帐户的逻辑应用。 若要通过 Office 365 Outlook 触发器启动工作流，需要有一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要向工作流中添加 Office 365 Outlook 操作，逻辑应用需要已有一个触发器。
+* 你要在其中访问 Outlook 帐户的逻辑应用。 若要通过 Office 365 Outlook 触发器启动工作流，需要有一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要向工作流中添加 Office 365 Outlook 操作，逻辑应用需要已有一个触发器。
 
 ## <a name="add-a-trigger"></a>添加触发器
 
@@ -42,7 +42,7 @@ ms.locfileid: "94682989"
    
    ![选择用于启动逻辑应用的触发器](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
-1. 如果你没有连接到 Outlook 帐户的活动连接，系统将提示你登录并创建该连接。 若要使用不同的用户帐户（例如服务帐户）连接到 Outlook，请参阅 [使用其他帐户进行连接](#connect-using-other-accounts)。 否则，请提供触发器属性的信息。
+1. 如果你没有连接到 Outlook 帐户的活动连接，系统将提示你登录并创建该连接。 若要使用其他用户帐户（例如服务帐户）连接到 Outlook，请参阅[使用其他帐户进行连接](#connect-using-other-accounts)。 否则，请提供触发器属性的相关信息。
 
    > [!NOTE]
    > 即使更改了登录凭据，连接也不会在吊销之前过期。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)。
@@ -75,7 +75,7 @@ ms.locfileid: "94682989"
 
    ![选择要在逻辑应用中运行的操作](./media/connectors-create-api-office365-outlook/office365-actions.png) 
 
-1. 如果你没有连接到 Outlook 帐户的活动连接，系统将提示你登录并创建该连接。 若要使用不同的用户帐户（例如服务帐户）连接到 Outlook，请参阅 [使用其他帐户进行连接](#connect-using-other-accounts)。 否则，请提供操作属性的信息。
+1. 如果你没有连接到 Outlook 帐户的活动连接，系统将提示你登录并创建该连接。 若要使用其他用户帐户（例如服务帐户）连接到 Outlook，请参阅[使用其他帐户进行连接](#connect-using-other-accounts)。 否则，请提供操作属性的相关信息。
 
    > [!NOTE]
    > 即使更改了登录凭据，连接也不会在吊销之前过期。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)。
@@ -92,23 +92,25 @@ ms.locfileid: "94682989"
 
 ## <a name="connect-using-other-accounts"></a>使用其他帐户进行连接
 
-如果尝试使用与当前登录到 Azure 的帐户不同的帐户连接到 Outlook，则可能会收到 [单一登录 (SSO) ](../active-directory/manage-apps/what-is-single-sign-on.md) 错误。 当使用一个帐户登录到 Azure 门户，但使用不同的帐户来创建连接时，会发生此问题。 逻辑应用设计器需要使用登录到 Azure 的帐户。 若要解决此问题，可以使用以下选项：
+如果尝试使用与当前登录到 Azure 的帐户不同的帐户连接到 Outlook，则可能会收到 [单一登录 (SSO) ](../active-directory/manage-apps/what-is-single-sign-on.md) 错误。 当使用一个帐户登录 Azure 门户，但使用其他帐户来创建连接时，会发生此问题。 设计器要求使用登录到 Azure 门户的帐户。 若要解决此问题，可采用以下选项：
 
-* 将另一个帐户设置为逻辑应用的资源组的 **参与者** 。
+* 在逻辑应用的资源组中设置具有 **参与者** 角色的其他帐户。
 
-  1. 在逻辑应用的资源组菜单上，选择 " **访问控制 (IAM)**"。 设置具有 **参与者** 角色的其他帐户。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
+  1. 在逻辑应用的资源组菜单中，选择“访问控制(IAM)”。 使用参与者角色设置其他帐户。 
+  
+     有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
 
-  1. 如果使用工作或学校帐户登录到 Azure 门户，请注销并使用其他帐户重新登录。 你现在可以使用其他帐户创建到 Outlook 的连接。
+  1. 设置此角色后，请以现在具有参与者权限的帐户登录 Azure 门户。 你现在可以使用此帐户创建到 Outlook 的连接。
 
-* 设置其他帐户，使工作或学校帐户具有 "发送为" 权限。
+* 设置另一个帐户，使工作或学校帐户具有“发送方式”权限。
 
-   如果你具有管理员权限，请在服务帐户的邮箱上设置你的工作或学校帐户，其中包含 " **发送为** " 或 " **代表发送"** 权限。 有关详细信息，请参阅向 [其他用户授予邮箱权限-管理帮助](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user)。 然后，可以使用工作或学校帐户创建连接。 现在，可以在可指定发送方的触发器或操作中使用服务帐户的电子邮件地址。
+   如果你具有管理员权限，请在服务帐户的邮箱上，使用 " **发送为** " 或 **"代表发送"** 权限设置你的工作或学校帐户。 有关详细信息，请参阅[向其他用户授予邮箱权限 - 管理帮助](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user)。 然后，可使用工作或学校帐户创建连接。 现在，在可指定发送方的触发器或操作中，可使用服务帐户的电子邮件地址。
 
-   例如，" **发送电子邮件** " 操作有一个可选参数， **(Send as)**，你可以将其添加到操作中，并使用你的服务帐户的电子邮件地址作为发件人。 若要添加此参数，请执行以下步骤：
+   例如，“发送电子邮件”操作有一个名为“发件人(发送方式)”的可选参数，你可将它添加到操作，并使用你的服务帐户的电子邮件地址作为发件人 。 若要添加此参数，请执行以下步骤：
 
-   1. 在 " **发送电子邮件** " 操作中，打开 " **添加参数** " 列表，然后选择 " **(作为) 参数发送** "。
+   1. 在“发送电子邮件”操作中，打开“添加参数”列表，然后选择“发件人(发送方式)”参数  。
 
-   1. 在操作中显示参数后，输入服务帐户的电子邮件地址。
+   1. 在操作中显示该参数后，输入服务帐户的电子邮件地址。
 
 ## <a name="connector-reference"></a>连接器参考
 

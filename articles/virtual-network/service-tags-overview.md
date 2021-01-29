@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 39645e8bd370dfd518d570c3088c56a22aa77748
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b353fad64b08f5fc50af2b8d31abab77cd797e25
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927030"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055036"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -58,7 +58,7 @@ ms.locfileid: "98927030"
 | **AzureBotService** | Azure 机器人服务。 | 出站 | 否 | 否 |
 | **AzureCloud** | 所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 出站 | 是 | 是 |
 | **AzureCognitiveSearch** | Azure 认知搜索。 <br/><br/>可以使用此标记或此标记涵盖的 IP 地址授予索引器对数据源的安全访问权限。 有关更多详细信息，请参阅[索引器连接文档](../search/search-indexer-troubleshooting.md#connection-errors)。 <br/><br/> *注意*：此服务标记的 IP 范围列表中不包含搜索服务的 IP，该 IP **也需要添加** 到数据源的 IP 防火墙中。 | 入站 | 否 | 否 |
-| **AzureConnectors** | 用于探测/后端连接的 Azure 逻辑应用连接器。 | 入站 | 是 | 是 |
+| **AzureConnectors** | 此标记表示用于托管连接器的 IP 地址，这些地址对 Azure 逻辑应用服务进行入站 webhook 回拨，并向其各自的服务（例如 Azure 存储或 Azure 事件中心）发出出站调用。 | 入站/出站 | 是 | 是 |
 | **AzureContainerRegistry** | Azure 容器注册表。 | 出站 | 是 | 是 |
 | **AzureCosmosDB** | Azure Cosmos DB。 | 出站 | 是 | 是 |
 | **AzureDatabricks** | Azure Databricks。 | 推送、请求和匿名 | 否 | 否 |

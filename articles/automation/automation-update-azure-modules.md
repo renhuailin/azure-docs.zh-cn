@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 413293cdefd39285c57b58d4555d3d703492ea96
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f05c3247ecdd77fe4cf02db70c7ba4b2c534f959
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98894841"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055342"
 ---
 # <a name="update-azure-powershell-modules"></a>更新 Azure PowerShell 模块
 
@@ -23,7 +23,7 @@ ms.locfileid: "98894841"
 
 为了避免影响 Runbook 及其自动化过程，请在继续操作之前进行测试和验证。 如果没有用于此目的专用自动化帐户，请考虑创建一个自动化帐户，以便可以在 Runbook 开发期间测试许多不同的方案。 该测试应该包括更新 PowerShell 模块等迭代更改。
 
-请确保为自动化帐户创建了 [Azure 运行方式帐户凭据](manage-runas-account.md)。
+请确保已创建 [Azure 运行方式帐户](automation-security-overview.md#run-as-accounts) 的自动化帐户。
 
 如果在本地开发脚本，建议测试时在本地使用与自动化帐户中相同的模块版本，以确保收到相同的结果。 在验证结果并且应用了所需的任何更改之后，则可将更改移到生产环境。
 

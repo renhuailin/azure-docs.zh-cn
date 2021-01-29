@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: duau
-ms.openlocfilehash: 120261cdb902fbdd089c73320a847191005f149b
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 9129ed0c91e7a91af1dfac7c048db2f424d59283
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740578"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055019"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -114,7 +114,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **墨尔本** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | 澳大利亚东南部 | 10G，100G | AARNet、Devoli、Equinix、Megaport、NEXTDC、Optus、Telstra Corporation、TPG Telecom |
 | **迈阿密** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | 不适用 | 10G，100G | Claro、C3ntro、Equinix、Megaport、Neutrona Networks |
 | **米兰** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | 不适用 | 10G | Colt、Equinix、Fastweb s.p.a、IRIDEOS、Retelit |
-| **明尼阿波利斯** | [Cologix MIN1](https://www.cologix.com/data-centers/minneapolis/min1/) | 1 | 不适用 | 10G，100G | Cologix |
+| **明尼阿波利斯** | [Cologix MIN1](https://www.cologix.com/data-centers/minneapolis/min1/) | 1 | 不适用 | 10G，100G | Cologix、Megaport |
 | **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | 不适用 | 10G，100G | 铃加拿大、Cologix、Fibrenoire、Megaport、Telus、Zayo |
 | **Mumbai** | Tata Communications | 2 | 印度西部 | 10G | CIX、Global CloudXchange (GCX) 、依赖 Jio、Sify、Tata 通信、Verizon |
 | **孟买 2** | Airtel | 2 | 印度西部 | 10G | Airtel、Sify、Vodafone Idea |
@@ -145,7 +145,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **东京** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | 日本东部 | 10G，100G | Aryaka Networks、AT&T NetBond、BBIX、British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、Megaport、NTT Communications、NTT EAST、Orange、Softbank、Verizon |
 | **东京 2** | [AT TOKYO](https://www.attokyo.com/) | 2 | 日本东部 | 10G，100G | 东京，Megaport，Tokai 通信 |
 | **多伦多** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1 | 加拿大中部 | 10G，100G | AT&T NetBond、Bell Canada、CenturyLink Cloud Connect、Cologix、Equinix、IX Reach Megaport、Telus、Verizon、Zayo |
-| **温哥华** | [Cologix VAN1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | 不适用 | 10G | Cologix、Telus |
+| **温哥华** | [Cologix VAN1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | 不适用 | 10G | Cologix、Megaport、Telus |
 | **华盛顿特区** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1 | 美国东部、美国东部 2 | 10G，100G | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Cologix、Colt、Comcast、Coresite、Equinix、Internet2、InterCloud、IX Reach、Level 3 Communications、Megaport、Neutrona Networks、NTT Communications、Orange、PacketFabric、SES、Sprint、Tata Communications、Telia Carrier、Verizon、Zayo |
 | **华盛顿特区 2** | [Coresite Reston](https://www.coresite.com/data-center-locations/northern-virginia-washington-dc) | 1 | 美国东部、美国东部 2 | 10G，100G | CenturyLink Cloud Connect、Coresite、Intelsat、Megaport、Viasat、Zayo | 
 | **苏黎世** | [Interxion ZUR2](https://www.interxion.com/Locations/zurich/) | 1 | 瑞士北部 | 10G，100G | Eqinix、Intercloud、Interxion、Megaport、Swisscom |

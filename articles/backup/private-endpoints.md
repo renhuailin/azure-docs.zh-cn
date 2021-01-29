@@ -3,12 +3,12 @@ title: 专用终结点
 description: 了解创建 Azure 备份的专用终结点的过程以及使用专用终结点帮助维护资源安全的方案。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: b1412a79fa6137ce1f8c73d5875e52b6382048fa
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 0d9d77c139896f9067f73943dbb213fc655f00f6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986965"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054866"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
@@ -32,7 +32,7 @@ ms.locfileid: "98986965"
 
 虽然为保管库启用了专用终结点，但它们仅用于在 Azure VM 中备份和还原 SQL 和 SAP HANA 工作负载以及进行 MARS 代理备份。 还可以使用保管库来备份其他工作负载（尽管它们不需要专用终结点）。 除了备份 SQL 和 SAP HANA 工作负载以及使用 MARS 代理进行备份，专用终结点还可用于在 Azure VM 备份时执行文件恢复。 有关详细信息，请参阅下表：
 
-| 在 Azure VM 中备份工作负荷 (SQL，SAP HANA) ，使用 MARS 代理备份 | 建议使用专用终结点，以允许进行备份和还原，而无需从虚拟网络列出用于 Azure 备份或 Azure 存储的任何 IP/FQDN。 |
+| 在 Azure VM 中备份工作负荷 (SQL，SAP HANA) ，使用 MARS 代理备份 | 建议使用私有终结点，以允许备份和还原，而无需为虚拟网络中的 Azure 备份或 Azure 存储允许列表任何 Ip/Fqdn。 在这种情况下，请确保承载 SQL 数据库的 Vm 可以访问 Azure AD 的 Ip 或 Fqdn。 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Azure VM 备份**                                         | VM 备份不要求你允许访问任何 IP 或 FQDN。 因此，它不需要专用终结点来备份和还原磁盘。  <br><br>   但是，从包含专用终结点的保管库执行文件恢复将限制为包含该保管库的终结点的虚拟网络。 <br><br>    使用 ACL 非托管磁盘时，请确保包含磁盘的存储帐户允许访问受信任的 Microsoft 服务（如果为 ACL）。 |
 | **Azure 文件备份**                                      | Azure 文件备份存储在本地存储帐户中。 因此，它不需要专用终结点来进行备份和还原。 |
@@ -386,7 +386,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 #### <a name="create-dns-zones-for-custom-dns-servers"></a>为自定义 DNS 服务器创建 DNS 区域
 
-需要创建三个专用 DNS 区域，并将其链接到虚拟网络。
+需要创建三个专用 DNS 区域，并将其链接到虚拟网络。 请记住，与 Blob 和队列不同的是，备份服务公共 Url 不在 Azure 公共 DNS 中注册，以重定向到专用链接 DNS 区域。 
 
 | **区域**                                                     | **服务** |
 | ------------------------------------------------------------ | ----------- |

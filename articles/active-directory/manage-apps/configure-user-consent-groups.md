@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d14e4808d5bec03dff9406f37e63ee4c76e601f8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b318ed0d5cd97ca7c020097dff25516f0783c70e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033215"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055291"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>配置组所有者对应用访问组数据的同意
 
@@ -124,4 +124,4 @@ ms.locfileid: "97033215"
 * [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
 获取帮助或查找问题的答案：
-* [StackOverflow 上的 Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Microsoft Azure AD 上的&](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

@@ -2,15 +2,16 @@
 title: 从 Azure 门户启用 Azure 自动化更新管理
 description: 本文介绍如何从 Azure 门户启用更新管理。
 services: automation
-ms.date: 04/11/2019
-ms.topic: article
+ms.subservice: update-management
+ms.date: 01/07/2021
+ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: ac402587c8346c14f34b683ba10832c7779b660b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 089c5fea6ac4a6fc4fb25af2d631335ef51cf4cc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182761"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054900"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>从 Azure 门户启用“更新管理”
 
@@ -24,7 +25,7 @@ ms.locfileid: "96182761"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 用于管理计算机的[自动化帐户](../index.yml)。
+* 用于管理计算机的[自动化帐户](../automation-security-overview.md)。
 * [虚拟机](../../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure

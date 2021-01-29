@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: eaba099725530f24dcd6aa5da7eb59cb233efd46
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: e64f8cded851427636a19e16cccd78932dd6baac
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695639"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054951"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -448,7 +448,7 @@ function.json 文件如下所示：
         {
             "type": "http",
             "direction": "out",
-            "name": "res"
+            "name": "$return"
         }
     ]
 }
@@ -551,7 +551,7 @@ Python 不支持特性。
 |---------|---------|----------------------|
 | type  | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
 | **direction** | 不适用| 必需 - 必须设置为 `in`。 |
-| name | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
+| **name** | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
 | <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
 | methods |**方法** | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | route | **Route** | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |

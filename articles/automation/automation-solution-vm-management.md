@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3210aa5ae2ff94ba2c7dda673fbb60847c4dfd0b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 89566bdfb56ca662813b586b2203eec7e7e5566b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372151"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055375"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>“在空闲时间启动/停止 VM”概述
 
@@ -37,7 +37,7 @@ ms.locfileid: "92372151"
 
 ## <a name="prerequisites"></a>先决条件
 
-- “在空闲时间启动/停止 VM”功能的 runbook 使用 [Azure 运行方式帐户](./manage-runas-account.md)。 运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。
+- “在空闲时间启动/停止 VM”功能的 runbook 使用 [Azure 运行方式帐户](./automation-security-overview.md#run-as-accounts)。 运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。
 
 - 链接的自动化帐户和 Log Analytics 的工作区必须位于同一资源组中。
 
@@ -79,7 +79,7 @@ ms.locfileid: "92372151"
 可以使用新的自动化帐户和 Log Analytics 工作区为“在空闲时间启动/停止 VM”功能启用 VM。 在这种情况下，需要具有上一部分中定义的权限以及本部分中定义的权限。 还需要以下角色：
 
 - 订阅上的 Co-Administrator。 如果要管理经典 VM，则需要此角色才能创建“经典运行方式帐户”。 默认情况下，不再创建[经典运行方式帐户](automation-create-standalone-account.md#create-a-classic-run-as-account)。
-- [Azure AD](../active-directory/roles/permissions-reference.md) 应用程序开发人员角色中的成员身份。 有关配置运行方式帐户的详细信息，请参阅[用于配置运行方式帐户的权限](manage-runas-account.md#permissions)。
+- [Azure AD](../active-directory/roles/permissions-reference.md) 应用程序开发人员角色中的成员身份。 有关配置运行方式帐户的详细信息，请参阅[用于配置运行方式帐户的权限](automation-security-overview.md#permissions)。
 - 订阅的参与者或以下权限。
 
 | 权限 |范围|

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: bad312b777c57a48c3205de588325d477b5773af
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: ea2e08db91d23e9523b7bc95e01b7adc9c93b3cc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563392"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054815"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 应用程序管理：新增功能
 
@@ -67,7 +67,7 @@ ms.locfileid: "97563392"
 ### <a name="new-articles"></a>新文章
 - [快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 OIDC 的单一登录 (SSO)](add-application-portal-setup-oidc-sso.md)
 - [快速入门：将用户分配到使用 Azure AD 作为标识提供者的应用](add-application-portal-assign-users.md)
-- [文档有哪些新功能？](whats-new-docs.md)
+- [Docs 中的新增内容](whats-new-docs.md)
 
 
 ### <a name="updated-articles"></a>更新的文章
@@ -90,7 +90,7 @@ ms.locfileid: "97563392"
 - [如何使用自助服务应用程序访问](access-panel-manage-self-service-access.md)
 - [排查 Azure AD 我的应用登录应用程序时遇到的问题](application-sign-in-other-problem-access-panel.md)
 - [在 Azure AD 中排查基于密码的单一登录问题](troubleshoot-password-based-sso.md)
-- [规划应用程序部署 Azure Active Directory](access-panel-deployment-plan.md)
+- [规划应用程序部署 Azure Active Directory](my-apps-deployment-plan.md)
 - [什么是单一登录 (SSO)？](what-is-single-sign-on.md)
 - [对 Azure Active Directory 中拥有过度特权的或可疑的应用程序采取措施](manage-application-permissions.md)
 - [快速入门：在 Azure Active Directory (Azure AD) 租户中配置应用程序的属性](add-application-portal-configure.md)

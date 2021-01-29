@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12f262347938720a9d5a95e070d792a83ac9188c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: e38ca27606ecf04b08bd29867894ba269148260c
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740799"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055240"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -147,9 +147,10 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 个人电子邮件帐户经常会遭到网络攻击者的钓鱼攻击，这种风险使得全局管理员帐户不能使用个人电子邮件地址。 若要将 Internet 风险与管理权限隔离开来，请为每个具有管理权限的用户创建专用的帐户。
 
-* 确保为执行全局管理员任务的用户创建单独的帐户
-* 确保全局管理员不会无意中使用其管理员帐户打开电子邮件或运行程序
-* 确保这些帐户将其电子邮件转发到工作邮箱
+* 请确保为用户创建单独的帐户以执行全局管理任务。
+* 请确保全局管理员不会意外地打开电子邮件，也不会在其管理员帐户中运行程序。
+* 确保这些帐户将其电子邮件转发到工作邮箱。
+* 全局管理员 (和其他特权组) 帐户应为仅限云的帐户，而不会与本地 Active Directory 进行联系。
 
 #### <a name="ensure-the-passwords-of-administrative-accounts-have-recently-changed"></a>确保管理帐户的密码最近更改过
 

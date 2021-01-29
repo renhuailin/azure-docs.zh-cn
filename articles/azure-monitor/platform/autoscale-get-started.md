@@ -1,20 +1,20 @@
 ---
 title: Azure 中的自动缩放入门
-description: 了解如何在 Azure 中缩放资源：Web 应用、云服务、虚拟机或虚拟机规模集。
+description: 了解如何在 Azure 中缩放资源 Web 应用、云服务、虚拟机或虚拟机规模集。
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: ee36db3f657365036bb68f641be53fd434f1b64b
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 9bbd4da77d2892064906dc7ae272bcc770b6bdc4
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694915"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055274"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
 
-Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](../../api-management/api-management-key-concepts.md)。
+Azure Monitor 自动缩放仅适用于 [虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、 [云服务](https://azure.microsoft.com/services/cloud-services/)、 [应用服务 Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](../../api-management/api-management-key-concepts.md)。
 
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>了解订阅中的自动缩放设置
 
@@ -115,36 +115,9 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>将流量路由到正常运行的实例（应用服务）
 
-横向扩展到多个实例时，应用服务可以对实例执行运行状况检查，以仅将流量路由到正常运行的实例。 为此，请打开门户并转到应用服务，然后选择“监视”下的“运行状况检查” 。 选择“启用”，然后在应用程序上提供有效的 URL 路径，例如 `/health` 或 `/api/health`。 单击“保存”  。
+<a id="health-check-path"></a>
 
-若要在 ARM 模板中启用该功能，请将 `Microsoft.Web/sites` 资源的 `healthcheckpath` 属性设置为站点中的运行状况检查路径，例如：`"/api/health/"`。 若要禁用该功能，请将属性重新设置为空字符串 `""`。
-
-### <a name="health-check-path"></a>运行状况检查路径
-
-路径必须在一分钟内响应，且状态码介于 200 到 299（含）之间。 如果路径未在一分钟内响应，或返回范围之外的状态代码，则将该实例视为“运行不正常”。 在运行状况检查路径 ) 重定向时，应用服务不遵循 30 (301、302、307 **等。** 运行状况检查集成了应用服务的身份验证和授权功能，即使启用了这些安全功能，系统也会到达终结点。 如果使用自己的身份验证系统，则必须允许匿名访问运行状况检查路径。 如果站点启用了“仅限 HTTPS”，则将通过 HTTPS 发送运行状况检查请求 。
-
-运行状况检查路径应检查应用程序的关键组件。 例如，如果应用程序依赖于数据库和消息传递系统，则运行状况检查终结点应连接到这些组件。 如果应用程序无法连接到关键组件，则路径应返回介于 500 级别的响应代码，以指示应用运行不正常。
-
-#### <a name="security"></a>安全性 
-
-大型企业的开发团队通常需要遵守已公开 API 的安全性要求。 若要保护运行状况检查终结点，应先使用 [IP 限制](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule)、[客户端证书](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule)或虚拟网络等功能来限制对应用程序的访问。 可以要求传入请求的 `User-Agent` 与 `ReadyForRequest/1.0` 匹配，以保护运行状况检查终结点。 由于先前的安全功能已对该请求进行了保护，因此无法冒名顶替用户代理。
-
-### <a name="behavior"></a>行为
-
-提供运行状况检查路径后，应用服务将在所有实例上 ping 通该路径。 如果进行 5 次 ping 后未收到表示成功的响应代码，则将该实例视为“运行不正常”。 如果扩展到2个或多个实例并使用 [基本层](../../app-service/overview-hosting-plans.md) 或更高级别，则不能从负载均衡器轮换中排除不正常的实例 () 。 可以通过 `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` 应用设置来配置所需的 ping 失败次数。 该应用设置可以设置为 2 到 10 之间的任何整数。 例如，如果设置为 `2`，则在两次失败的 ping 操作后，将从负载均衡器中删除实例。 此外，纵向扩展或横向扩展时，应用服务会在将新实例添加到负载均衡器之前，对运行状况检查路径执行 ping 操作，确保新实例可用于请求。
-
-> [!NOTE]
-> 请记住，你的应用服务计划必须扩展到2个或更多个实例，并且必须是 **基本层或更高级别** ，才能排除负载均衡器。 如果只有 1 个实例，那么即使它不正常，也不会从负载均衡器中删除。 
-
-此外，在添加或重新启动实例时，会对运行状况检查路径进行 ping 操作，例如在 scale out 操作期间，手动重新启动，或通过 SCM 站点部署代码。 如果在执行这些操作期间运行状况检查失败，则不会将失败的实例添加到负载均衡器。 这可以防止这些操作对应用程序的可用性产生负面影响。
-
-当使用 healthcheck 时，剩余的正常实例可能会提高负载。 为避免其余实例不堪重负，排除的实例不得过半。 例如，如果应用服务计划横向扩展到 4 个实例，且其中 3 个运行不正常，则负载均衡器轮换最多排除 2 个。 其他 2 个实例（1 个运行正常的实例和 1 个运行不正常的实例）将继续接收请求。 在所有实例均不正常的最坏情况下，不排除任何实例。如果要替代此行为，可以将 `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` 应用设置设置为介于 `0` 和 `100` 之间的值。 将此值设置为较高值意味着将删除更多运行不正常的实例（默认值为 50）。
-
-如果针对实例的所有应用的运行状况检查失败一小时，则将替换该实例。 每小时最多更换一个实例，每个应用服务计划每天最多更换三个实例。
-
-### <a name="monitoring"></a>监视
-
-提供应用程序的运行状况检查路径后，可以使用 Azure Monitor 监视站点的运行状况。 在门户的“运行状况检查”边栏选项卡中，单击顶部工具栏中的“指标” 。 此操作将打开新的边栏选项卡，可以在其中查看站点的历史运行状况以及新建预警规则。 有关监视站点的更多信息，请[参阅 Azure Monitor 指南](../../app-service/web-sites-monitor.md)。
+将 Azure web 应用扩展到多个实例时，应用服务可以对实例执行运行状况检查，以将流量路由到正常的实例。 若要了解详细信息，请参阅 [有关应用服务运行状况检查的这篇文章](../../app-service/monitor-instances-health-check.md)。
 
 ## <a name="moving-autoscale-to-a-different-region"></a>将自动缩放移动到其他区域
 本部分介绍如何将 Azure 自动缩放移动到同一订阅和资源组下的另一个区域。 可以使用 REST API 来移动自动缩放设置。

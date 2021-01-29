@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799e879b4d9fd54367d54c17b3d275acfc5f34c1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322506"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054765"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -122,7 +122,7 @@ ms.locfileid: "91322506"
 
    *为何要更改网关安装的区域？*
 
-   例如，为了降低延迟，可将网关的区域更改为逻辑应用所在的同一区域。 或者，可以选择最靠近本地数据源的区域。 *Azure 中的网关资源*和逻辑应用可以有不同的位置。
+   例如，为了降低延迟，可将网关的区域更改为逻辑应用所在的同一区域。 或者，可以选择最靠近本地数据源的区域。 *Azure 中的网关资源* 和逻辑应用可以有不同的位置。
 
    1. 在当前区域的旁边，选择“更改区域”。
 
@@ -138,12 +138,18 @@ ms.locfileid: "91322506"
 
 1. 现在[为网关安装创建 Azure 资源](../logic-apps/logic-apps-gateway-connection.md)。
 
+<a name="communication-settings"></a>
+
 ## <a name="check-or-adjust-communication-settings"></a>检查或调整通信设置
 
-本地数据网关依赖于 [Azure 服务总线消息传送](../service-bus-messaging/service-bus-messaging-overview.md) 进行云连接，并建立与网关关联的 azure 区域的相应出站连接。 如果你的工作环境要求流量通过代理或防火墙来访问 internet，则此限制可能会阻止本地数据网关连接到网关云服务和 Azure 服务总线消息传送。 网关有多个可以调整的通信设置。 有关详细信息，请参阅以下主题：
+本地数据网关依赖于 [Azure 服务总线消息传送](../service-bus-messaging/service-bus-messaging-overview.md) 进行云连接，并建立与网关关联的 azure 区域的相应出站连接。 如果你的工作环境要求流量通过代理或防火墙来访问 internet，则此限制可能会阻止本地数据网关连接到网关云服务和 Azure 服务总线消息传送。 网关有多个可以调整的通信设置。
+
+例如，你可以使用 Azure 中的本地数据网关资源来访问本地资源的自定义连接器。 如果还拥有将流量限制为特定 IP 地址的防火墙，则需要设置网关安装，以允许访问相应的 *托管连接器 [出站 IP 地址](logic-apps-limits-and-config.md#outbound)*。 同一区域中的所有逻辑应用都使用相同的 IP 地址范围。
+
+有关详细信息，请参阅以下主题：
 
 * [调整本地数据网关的通信设置](/data-integration/gateway/service-gateway-communication)
-* [配置本地数据网关的代理设置](/data-integration/gateway/service-gateway-proxy)
+* [为本地数据网关配置代理设置](/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 

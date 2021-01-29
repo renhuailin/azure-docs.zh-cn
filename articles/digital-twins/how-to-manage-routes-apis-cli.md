@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fa699163fdf445624c918e714fda890a41a67f07
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e2623ebf929f6a24cfc977896acea514634ffb23
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682641"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054496"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>在 Azure 数字孪生中管理终结点和路由 (Api 和 CLI) 
 
@@ -20,7 +20,7 @@ ms.locfileid: "98682641"
 
 在 Azure 数字孪生中，可以将 [事件通知](how-to-interpret-event-data.md) 路由到下游服务或连接的计算资源。 首先需要设置可接收事件的终结点。 然后，可以创建  [**事件路由**](concepts-route-events.md) ，用于指定由 Azure 数字孪生生成的哪些事件将传递到哪些终结点。
 
-本文逐步讲解如何使用 [事件路由 api](/rest/api/digital-twins/dataplane/eventroutes)、 [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)和 [Azure 数字孪生 CLI](how-to-use-cli.md)创建终结点和路由。
+本文指导完成使用 [REST api](/rest/api/azure-digitaltwins/)、 [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)和 [Azure 数字孪生 CLI](how-to-use-cli.md)创建终结点和路由的过程。
 
 此外，还可以通过 [Azure 门户](https://portal.azure.com)来管理终结点和路由。 有关使用门户的本文版本，请参阅 [*操作方法：管理终结点和路由 (门户)*](how-to-manage-routes-portal.md)。
 
@@ -42,51 +42,31 @@ ms.locfileid: "98682641"
 
 有关不同终结点类型的详细信息，请参阅在 [*Azure 消息服务之间选择*](../event-grid/compare-messaging-services.md)。
 
-若要将终结点链接到 Azure 数字孪生，要用于终结点的事件网格主题、事件中心或服务总线必须已存在。 
+本部分介绍如何使用 Azure CLI 创建这些终结点。 你还可以通过 [DigitalTwinsEndpoint 控制平面 api](/rest/api/digital-twins/controlplane/endpoints)来管理终结点。
 
-### <a name="create-an-event-grid-endpoint"></a>创建事件网格端点
+[!INCLUDE [digital-twins-endpoint-resources.md](../../includes/digital-twins-endpoint-resources.md)]
 
-下面的示例演示如何使用 Azure CLI 创建事件网格类型终结点。
+### <a name="create-the-endpoint"></a>创建终结点
 
-首先，创建一个事件网格主题。 可以使用以下命令，或通过访问事件网格 *自定义事件* 快速入门中 [的 *"创建自定义主题*" 部分](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)更详细地查看这些步骤。
+创建终结点资源后，可将其用于 Azure 数字孪生终结点。 下面的示例演示如何使用 `az dt endpoint create` [Azure 数字孪生 CLI](how-to-use-cli.md)的命令创建终结点。 将命令中的占位符替换为你自己的资源的详细信息。
 
-```azurecli-interactive
-az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
-```
-
-> [!TIP]
-> 要输出可传递到 Azure CLI 命令中的 Azure 区域名称的列表，请运行以下命令：
-> ```azurecli-interactive
-> az account list-locations -o table
-> ```
-
-创建主题后，可以使用以下 [Azure 数字孪生 CLI 命令](how-to-use-cli.md)将其链接到 Azure 数字孪生：
+创建事件网格端点：
 
 ```azurecli-interactive
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-现在，可以在使用参数指定的名称下，使用事件网格主题作为 Azure 数字孪生内的终结点 `--endpoint-name` 。 通常使用该名称作为 **事件路由** 的目标，将 [在本文稍后](#create-an-event-route) 使用 AZURE 数字孪生服务 API 进行创建。
+若要创建事件中心终结点，请执行以下操作：
+```azurecli-interactive
+az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
+```
 
-### <a name="create-an-event-hubs-or-service-bus-endpoint"></a>创建事件中心或服务总线终结点
-
-创建事件中心或服务总线终结点的过程类似于上面所示的事件网格进程。
-
-首先，创建将用作终结点的资源。 下面是需要执行的操作：
-* Service Bus： _服务总线命名空间_、 _服务总线主题_、 _授权规则_
-* 事件中心： _事件中心命名空间_， _事件中心_， _授权规则_
-
-然后，使用以下命令在 Azure 数字孪生中创建终结点： 
-
-* 添加 Service Bus 主题终结点 (需要预先创建的服务总线资源) 
+若要创建服务总线主题终结点：
 ```azurecli-interactive 
 az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-* 添加事件中心终结点 (需要预先创建的事件中心资源) 
-```azurecli-interactive
-az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
-```
+成功运行这些命令后，事件网格、事件中心或服务总线主题将作为 Azure 数字孪生内的终结点提供，并在使用参数提供的名称下 `--endpoint-name` 。 通常将该名称用作 **事件路由** 的目标， [稍后将在本文中](#create-an-event-route)创建。
 
 ### <a name="create-an-endpoint-with-dead-lettering"></a>创建具有死信的端点
 
@@ -121,15 +101,15 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
     
 #### <a name="configure-the-endpoint"></a>配置终结点
 
-若要创建启用了死信的终结点，需要使用 Azure 资源管理器 Api 创建终结点。 
+若要创建启用了死信的终结点，可以使用 Azure 资源管理器 Api 创建终结点。 
 
 1. 首先，使用 [Azure 资源管理器 api 文档](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) 来设置创建终结点的请求，并填写所需的请求参数。 
 
-1. 接下来，将 `deadLetterSecret` 字段添加到请求 **正文** 中的属性对象。 根据下面的模板设置此值，这将从 [上一节](#set-up-storage-resources)中收集的存储帐户名称、容器名称和 SAS 令牌值中进行 URL。
+2. 接下来，将 `deadLetterSecret` 字段添加到请求 **正文** 中的属性对象。 根据下面的模板设置此值，这将从 [上一节](#set-up-storage-resources)中收集的存储帐户名称、容器名称和 SAS 令牌值中进行 URL。
       
   :::code language="json" source="~/digital-twins-docs-samples/api-requests/deadLetterEndpoint.json":::
 
-1. 发送请求以创建终结点。
+3. 发送请求以创建终结点。
 
 有关构造此请求的详细信息，请参阅 Azure 数字孪生 REST API 文档： [终结点-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)。
 
@@ -169,10 +149,6 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 ## <a name="create-an-event-route"></a>创建事件路由
 
-若要将数据从 Azure 数字孪生实际发送到终结点，需要定义 **事件路由**。 通过 Azure 数字孪生 **EventRoutes api** ，开发人员可以将事件流连接到整个系统和下游服务。 有关事件路由的详细信息，请参阅 [*概念：路由 Azure 数字孪生事件*](concepts-route-events.md)。
-
-本节中的示例使用 [.net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)。
-
 **必备组件**：你需要先按本文前面所述创建终结点，然后才能继续创建路由。 终结点完成设置后，可以继续创建事件路由。
 
 > [!NOTE]
@@ -180,9 +156,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 >
 > 如果要编写此流脚本，可能需要在2-3 分钟的等待时间内生成终结点服务，然后再继续进行路由设置。
 
-### <a name="creation-code-with-apis-and-the-c-sdk"></a>用 Api 和 c # SDK 创建代码
-
-使用 [数据平面 api](how-to-use-apis-sdks.md#overview-data-plane-apis)定义事件路由。 
+若要将数据从 Azure 数字孪生实际发送到终结点，需要定义 **事件路由**。 事件路由用于连接整个系统和下游服务中的事件流。
 
 路由定义可包含以下元素：
 * 要使用的路由名称
@@ -193,6 +167,12 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 一个路由应该允许选择多个通知和事件类型。 
 
+可以通过 Azure 数字孪生 [ **EventRoutes** 数据平面 api](/rest/api/digital-twins/dataplane/eventroutes)或 [ **az dt route** CLI 命令](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true)创建事件路由。 本部分的其余部分将演练创建过程。
+
+### <a name="create-routes-with-the-apis-and-c-sdk"></a>通过 Api 和 c # SDK 创建路由
+
+定义事件路由的一种方法是通过 [数据平面 api](how-to-use-apis-sdks.md#overview-data-plane-apis)。 本节中的示例使用 [.net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)。
+
 `CreateOrReplaceEventRouteAsync` 用于添加事件路由的 SDK 调用。 下面是其用法的示例：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="CreateEventRoute":::
@@ -200,11 +180,17 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 > [!TIP]
 > 所有 SDK 函数都提供同步和异步版本。
 
-### <a name="event-route-sample-code"></a>事件路由示例代码
+#### <a name="event-route-sample-sdk-code"></a>事件路由示例 SDK 代码
 
-以下示例方法说明了如何创建、列出和删除事件路由：
+下面的示例方法演示如何使用 c # SDK 创建、列出和删除事件路由：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="FullEventRouteSample":::
+
+### <a name="create-routes-with-the-cli"></a>用 CLI 创建路由
+
+还可以使用 Azure 数字孪生 CLI 的 [az dt 路由](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true) 命令管理路由。 
+
+有关使用 CLI 以及哪些命令可用的详细信息，请参阅 [*操作方法：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)。
 
 ## <a name="filter-events"></a>筛选事件
 
@@ -222,10 +208,6 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 下面是受支持的路由筛选器。 使用 *筛选器文本架构* 列中的详细信息替换 `<filter-text>` 上述请求正文中的占位符。
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]
-
-## <a name="manage-endpoints-and-routes-with-cli"></a>用 CLI 管理终结点和路由
-
-还可以使用 Azure 数字孪生 CLI 管理终结点和路由。 有关使用 CLI 以及哪些命令可用的详细信息，请参阅 [*操作方法：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)。
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 

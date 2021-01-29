@@ -2,15 +2,16 @@
 title: 从自动化帐户启用 Azure 自动化更新管理
 description: 本文介绍如何从自动化帐户启用更新管理。
 services: automation
+ms.subservice: update-management
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: b97e1e61401697204f79004e4678e6f2286f4a98
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 06a29cd07a870e7553d599b5f719943acb259c2a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380532"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054917"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>从自动化帐户启用更新管理
 
@@ -22,8 +23,8 @@ ms.locfileid: "94380532"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 用于管理计算机的[自动化帐户](../index.yml)。
-* 使用启用了 Arc 的服务器注册的 [Azure 虚拟机](../../virtual-machines/windows/quick-create-portal.md)或 VM 或服务器。 非 Azure Vm 或服务器需要安装适用于 Windows 或 Linux 的 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md) ，并向链接到自动化帐户的工作区报告，更新管理在中启用。 建议通过首先将计算机连接到 [启用了 Azure arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Windows 或 Linux 的 Log Analytics 代理，然后使用 Azure 策略将 [部署 Log Analytics 代理分配到 *Linux* 或 *Windows* Azure arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring) 内置策略。 或者，如果你计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用 [启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
+* 用于管理计算机的[自动化帐户](../automation-security-overview.md)。
+* 使用启用了 Arc 的服务器注册的 [Azure 虚拟机](../../virtual-machines/windows/quick-create-portal.md)或 VM 或服务器。 非 Azure VM 或服务器需要安装用于 Windows 或 Linux 的 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)，在其中启用了向链接到自动化帐户更新管理的工作区报告的功能。 建议通过首先将计算机连接到 [启用了 Azure arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Windows 或 Linux 的 Log Analytics 代理，然后使用 Azure 策略将 [部署 Log Analytics 代理分配到 *Linux* 或 *Windows* Azure arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring) 内置策略。 或者，如果你计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用 [启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -65,14 +66,14 @@ ms.locfileid: "94380532"
 
     ![保存的搜索](media/enable-from-automation-account/managemachines.png)
 
-3. 要为向工作区报告的所有可用计算机启用更新管理，请在“管理计算机”页上选择“在所有可用计算机上启用”。 此操作禁止控件单独添加计算机，并将向工作区报告的所有计算机添加到计算机组保存的搜索查询 `MicrosoftDefaultComputerGroup` 。 如果选择此项，此操作将禁用 " **管理计算机** " 选项。
+3. 要为向工作区报告的所有可用计算机启用更新管理，请在“管理计算机”页上选择“在所有可用计算机上启用”。 此操作禁止控件单独添加计算机，并将向工作区报告的所有计算机添加到计算机组保存的搜索查询 `MicrosoftDefaultComputerGroup` 中。 选中此项后，此操作会禁用“管理计算机”选项。
 
-4. 若要为所有可用的计算机和将来的计算机启用该功能，请选择“在所有可用的和将来的计算机上启用”。 此选项从工作区中删除已保存的搜索和作用域配置，并允许该功能包括当前或将来向工作区报告的所有 Azure 和非 Azure 计算机。 选中此操作时，此操作会永久禁用 " **管理计算机** " 选项，因为没有可用的作用域配置。
+4. 若要为所有可用的计算机和将来的计算机启用该功能，请选择“在所有可用的和将来的计算机上启用”。 此选项从工作区中删除已保存的搜索和作用域配置，并允许该功能包括当前或将来向工作区报告的所有 Azure 和非 Azure 计算机。 选中此项后，此操作会永久禁用“管理计算机”选项，因为没有可用的范围配置。
 
     > [!NOTE]
-    > 由于此选项会删除 Log Analytics 中保存的搜索和范围配置，因此在选择此选项之前，请务必在 Log Analytics 工作区上删除所有删除锁。 否则，该选项将无法删除配置，必须手动将其删除。
+    > 由于此选项会删除 Log Analytics 中保存的搜索和范围配置，因此在选择此选项之前，必须先删除 Log Analytics 工作区中的所有删除锁。 否则，该选项将无法删除配置，必须手动将其删除。
 
-5. 如有必要，可以通过重新添加初始保存的搜索查询来添加作用域配置。 有关详细信息，请参阅[限制更新管理的部署范围](scope-configuration.md)。
+5. 如果需要，可以通过重新添加初始的已保存搜索查询将范围配置添加回来。 有关详细信息，请参阅[限制更新管理的部署范围](scope-configuration.md)。
 
 6. 若要为一台或多台计算机启用该功能，请选择“在所选计算机上启用”，并选择每台计算机旁边的“添加” 。 此任务会将所选计算机名称添加到计算机组为此功能保存的搜索查询。
 

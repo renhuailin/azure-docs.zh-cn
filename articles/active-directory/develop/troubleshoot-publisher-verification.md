@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 10609f2706d257dbe5d8f43b85da5f06cb986cae
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: dd1edc001e51bf20f3ff7745baa520b3844c139b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756184"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054663"
 ---
 # <a name="troubleshoot-publisher-verification"></a>排查发布者验证问题
 如果无法完成该过程或在 [发布服务器验证](publisher-verification-overview.md)时遇到意外行为，则应首先执行以下操作（如果接收到错误或看到意外行为）： 
@@ -149,87 +149,95 @@ HTTP/1.1 200 OK
 
 以下是在使用 Microsoft Graph 进行故障排除或在应用注册门户中完成此过程时，可能会收到的潜在错误代码的列表。
 
-### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess     
+### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess
 
-提供的 MPN ID (<MPNID>) 不存在，或你无权访问它。 提供有效的 MPN ID，然后重试。
+提供的 MPN ID (`MPNID`) 不存在，或你无权访问它。 提供有效的 MPN ID，然后重试。
     
 最常见的原因是，已登录用户不是合作伙伴中心中 MPN 帐户的正确角色的成员-请参阅符合条件的角色列表的 [要求](publisher-verification-overview.md#requirements) ，并查看有关详细信息的 [常见问题](#common-issues) 。 还可能是由于应用注册的租户未添加到 MPN 帐户，或者是无效的 MPN ID。
 
-### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound     
+### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound
 
-提供的 MPN ID (<MPNID>) 无效。 提供有效的 MPN ID，然后重试。
+提供的 MPN ID (`MPNID`) 无效。 提供有效的 MPN ID，然后重试。
     
 最常见的原因是，提供的 MPN ID 与 (PLA) 的伙伴位置帐户相对应。 仅支持合作伙伴全局帐户。 有关更多详细信息，请参阅 [合作伙伴中心帐户结构](/partner-center/account-structure) 。
 
-### <a name="mpnaccountinvalid"></a>MPNAccountInvalid    
+### <a name="mpnaccountinvalid"></a>MPNAccountInvalid
 
-提供的 MPN ID (<MPNID>) 无效。 提供有效的 MPN ID，然后重试。
+提供的 MPN ID (`MPNID`) 无效。 提供有效的 MPN ID，然后重试。
     
 最常见的原因是提供了错误的 MPN ID。
 
-### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted  
+### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted
 
-提供的 MPN ID (<MPNID>) 未完成审核过程。 请在合作伙伴中心中完成此过程，然后重试。 
+提供的 MPN ID (`MPNID`) 未完成审核过程。 请在合作伙伴中心中完成此过程，然后重试。 
     
 最常见的原因是 MPN 帐户未完成 [验证](/partner-center/verification-responses) 过程。
 
-### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount  
+### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount
 
-提供的 MPN ID (<MPNID>) 无效。 提供有效的 MPN ID，然后重试。 
+提供的 MPN ID (`MPNID`) 无效。 提供有效的 MPN ID，然后重试。 
    
 最常见的原因是提供了错误的 MPN ID。
 
-### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>MPNIdDoesNotMatchAssociatedMPNAccount    
+### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>MPNIdDoesNotMatchAssociatedMPNAccount
 
-提供的 MPN ID (<MPNID>) 无效。 提供有效的 MPN ID，然后重试。
+提供的 MPN ID (`MPNID`) 无效。 提供有效的 MPN ID，然后重试。
     
 最常见的原因是提供了错误的 MPN ID。
 
-### <a name="applicationnotfound"></a>ApplicationNotFound  
+### <a name="applicationnotfound"></a>ApplicationNotFound
 
-找不到目标应用程序 (<AppId>)。 提供有效的应用程序 ID，然后重试。
+找不到目标应用程序 (`AppId`)。 提供有效的应用程序 ID，然后重试。
     
 最常见的原因是通过图形 API 执行验证，而提供的应用程序的 id 不正确。 注意-必须提供应用程序的 id，而不是 AppId/ClientId。
 
-### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed  
+### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed
 
-Azure AD B2C 租户不支持此功能。 
+Azure AD B2C 租户不支持此功能。
 
-### <a name="emailverifiedtenantnotallowed"></a>EmailVerifiedTenantNotAllowed    
+### <a name="emailverifiedtenantnotallowed"></a>EmailVerifiedTenantNotAllowed
 
-通过电子邮件验证的租户不支持此功能。 
+通过电子邮件验证的租户不支持此功能。
 
-### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication   
+### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication
 
-目标应用程序 (\<AppId\>) 必须具有发布服务器域集。 设置发布者域，然后重试。
+目标应用程序 (`AppId`) 必须具有发布服务器域集。 设置发布者域，然后重试。
 
 如果未在应用上配置 [发布服务器域](howto-configure-publisher-domain.md) ，则发生此事件。
 
-### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
+### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch
 
-目标应用程序的发布者域 (<publisherDomain>) 与用于在合作伙伴中心内执行电子邮件验证的域 (<pcDomain>) 不一致。 请确保这两个域一致，然后重试。 
+目标应用程序的发布者域 (`publisherDomain`) 与用于在合作伙伴中心内执行电子邮件验证的域 (`pcDomain`) 不一致。 请确保这两个域一致，然后重试。 
     
 当应用程序的 [发布服务器域](howto-configure-publisher-domain.md) 和添加到 Azure AD 租户的某个 [自定义域](../fundamentals/add-custom-domain.md) 都不匹配用于在合作伙伴中心执行电子邮件验证的域时，将发生此事件。
 
-### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher   
+### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher
 
-你无权设置此应用程序 (<AppId>) 的已验证发布者属性 
+你无权在应用程序 ( # B0) 上设置已验证的发布服务器属性 `AppId` 
   
 最常见的原因是，已登录的用户不是 Azure AD 中 MPN 帐户的正确角色的成员，请参阅符合条件的角色列表的 [要求](publisher-verification-overview.md#requirements) ，并查看有关详细信息的 [常见问题](#common-issues) 。
 
-### <a name="mpnidwasnotprovided"></a>MPNIdWasNotProvided  
+### <a name="mpnidwasnotprovided"></a>MPNIdWasNotProvided
 
-请求正文中未提供 MPN ID，或者请求内容类型不是“application/json”。 
+请求正文中未提供 MPN ID，或者请求内容类型不是“application/json”。
 
-### <a name="msanotsupported"></a>MSANotSupported  
+### <a name="msanotsupported"></a>MSANotSupported 
 
 Microsoft 使用者帐户不支持此功能。 仅支持由 Azure AD 用户在 Azure AD 中注册的应用程序。
 
 ### <a name="interactionrequired"></a>InteractionRequired
 
-在尝试将已验证的发布服务器添加到应用之前未执行多重身份验证时发生。 有关详细信息，请参阅 [常见问题](#common-issues) 。 注意：尝试添加已验证的发布服务器时，必须在同一会话中执行 MFA。 如果已启用 MFA，但不需要在会话中执行，请求将失败。   
+在尝试将已验证的发布服务器添加到应用之前未执行多重身份验证时发生。 有关详细信息，请参阅 [常见问题](#common-issues) 。 注意：尝试添加已验证的发布服务器时，必须在同一会话中执行 MFA。 如果已启用 MFA，但不需要在会话中执行，请求将失败。 
 
 显示的错误消息为： "由于管理员所做的配置更改，或你已移动到新位置，因此你必须使用多重身份验证才能继续。"
+
+### <a name="unabletoaddpublisher"></a>UnableToAddPublisher
+
+显示的错误消息为： "无法将已验证的发布服务器添加到此应用程序。 请与管理员联系以获得帮助。 "
+
+首先，验证是否满足了 [发行者验证要求](publisher-verification-overview.md#requirements)。
+
+当向添加已验证的发布者发出请求时，会使用多个信号进行安全风险评估。 如果确定该请求是危险的，则会返回错误。 出于安全原因，Microsoft 不会公开用于确定请求是否风险的特定条件。
 
 ## <a name="next-steps"></a>后续步骤
 
