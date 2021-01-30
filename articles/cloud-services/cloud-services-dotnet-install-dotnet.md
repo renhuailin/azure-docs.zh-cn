@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 18665fabad079a8759f26be8834b2fe029ab5f49
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: aa05fc9f02c26192762ed34db54b60b4760bf3bf
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742771"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061845"
 ---
 # <a name="install-net-on-azure-cloud-services-classic-roles"></a>在 Azure 云服务上安装 .NET (经典) 角色
 
@@ -32,7 +32,7 @@ ms.locfileid: "98742771"
 ## <a name="add-the-net-installer-to-your-project"></a>将 .NET 安装程序添加到项目
 若要下载 .NET Framework 的 Web 安装程序，请选择想要安装的版本：
 
-* [.NET Framework 4.8 web 安装程序](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET Framework 4.8 Web 安装程序](https://go.microsoft.com/fwlink/?LinkId=2150985)
 * [.NET Framework 4.7.2 web 安装程序](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [.NET Framework 4.6.2 web 安装程序](https://www.microsoft.com/download/details.aspx?id=53345)
 

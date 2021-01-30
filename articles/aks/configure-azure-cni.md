@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI�
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 0a6ea45156477c0d0e95b9d345cffe1a75c773b6
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: afb98acf903f90ead137c9b372d33ce82b89f7b5
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917801"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062211"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -63,7 +63,7 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认最大
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | 是（最大 250） |
 | Resource Manager 模板 | 110 | 30 | 是（最大 250） |
-| 门户 | 110 | 30 | 否 |
+| 门户 | 110 | 110 (在 "节点池" 选项卡中配置)  | 否 |
 
 ### <a name="configure-maximum---new-clusters"></a>配置最大值 - 新群集
 

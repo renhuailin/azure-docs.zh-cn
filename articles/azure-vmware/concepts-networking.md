@@ -3,12 +3,12 @@ title: 概念-网络互连
 description: 了解 Azure VMware 解决方案中的网络和互连的主要方面和用例。
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: f8e9ed143d53afe2f7a24c832c69390c6ffcb36b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9369c0fff31de4c6575d8e4903420cfa01461bf4
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575752"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062114"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware 解决方案网络和互连的概念
 
@@ -53,11 +53,9 @@ Azure VMware 解决方案私有云的用例包括：
 * 热/冷跨 vCenter vMotion
 * 本地到 Azure VMware 解决方案私有云管理访问权限
 
-:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="基本虚拟网络到私有云连接" border="false":::
+:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="虚拟网络和本地完整私有云连接" border="false":::
 
-对于私有云，请 Global Reach 启用 ExpressRoute，然后在 Azure 门户中请求 Global Reach 的授权密钥和专用对等互连 ID。 授权密钥和对等互连 ID 用于在你的订阅中的 ExpressRoute 线路与新的私有云的 ExpressRoute 线路之间建立 Global Reach。 链接后，这两条 ExpressRoute 线路将本地环境之间的网络流量路由到私有云。  有关请求和使用授权密钥和对等互连 ID 的过程，请参阅 [创建与私有云的 ExpressRoute Global Reach 对等互连教程](tutorial-expressroute-global-reach-private-cloud.md) 。
-
-
+对于私有云，请 Global Reach 启用 ExpressRoute，然后在 Azure 门户中请求 Global Reach 的授权密钥和专用对等互连 ID。 授权密钥和对等互连 ID 用于在你的订阅中的 ExpressRoute 线路与新的私有云的 ExpressRoute 线路之间建立 Global Reach。 链接后，这两条 ExpressRoute 线路将本地环境之间的网络流量路由到私有云。  有关请求和使用授权密钥和对等互连 ID 的过程的详细信息，请参阅 [创建 ExpressRoute Global Reach 对等互连到私有云的教程](tutorial-expressroute-global-reach-private-cloud.md)。
 
 ## <a name="next-steps"></a>后续步骤 
 了解 [私有云存储概念](concepts-storage.md)。

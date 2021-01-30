@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 38dcb32b2993838f8c3f13334e0bc44e9146f113
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b1b5c236c147f060ca1c05e8ed9de12e7e88cf68
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448549"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061795"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>为 Azure Stack Edge Pro GPU 管理访问、电源和连接模式
 
@@ -54,7 +54,7 @@ ms.locfileid: "96448549"
 
 1. 在 Azure 门户中，转到“概述”>“重置管理员密码”。
 
-    ![屏幕截图显示已选择 "重置设备密码" 的设备。](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![屏幕截图显示已选择 "重置设备密码" 的设备。](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
 2. 输入新密码并确认。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 选择“重置”。
@@ -83,7 +83,7 @@ ms.locfileid: "96448549"
 
     ![使用系统生成的静态加密密钥](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-3.png)
 
-1. 选择“应用”。  密钥保护程序会旋转。
+1. 选择“应用”。 密钥保护程序会旋转。
 
     ![应用新的静态加密密钥](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-4.png)
 

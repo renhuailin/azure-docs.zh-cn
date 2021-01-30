@@ -1,18 +1,20 @@
 ---
-title: 注册表状况检查的错误引用
+title: 注册表运行状况检查的错误参考信息
 description: 在 Azure 容器注册表中运行 az acr check-health 命令时出现的问题的错误代码及可能的解决方法
 ms.topic: article
-ms.date: 07/02/2019
-ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 05ae5a7ac19bb7748d5313ccb4974b639ab52d9c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565592"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061862"
 ---
 # <a name="health-check-error-reference"></a>运行状况检查错误参考
 
 下面是有关 [az acr check-health][az-acr-check-health] 命令返回的错误代码的详细信息。 其中针对每个错误列出了可能的解决方法。
+
+有关运行的信息 `az acr check-healh` ，请参阅 [检查 Azure 容器注册表的运行状况](container-registry-check-health.md)。
 
 ## <a name="docker_command_error"></a>DOCKER_COMMAND_ERROR
 
@@ -49,6 +51,12 @@ ms.locfileid: "91565592"
 此错误表示 CLI 无法确定安装的 Helm 版本。 如果使用的 Azure CLI 版本（或 Helm 版本）已过时，则可能会发生这种情况。
 
 *可能的解决方法*：更新到最新的 Azure CLI 版本或建议的 Helm 版本；手动运行命令并调查错误消息。
+
+## <a name="cmk_error"></a>CMK_ERROR
+
+此错误表示注册表无法访问用户分配的或列值分配的托管标识，该标识用于使用客户托管的密钥来配置注册表加密。 托管标识可能已被删除。  
+
+*可能的解决方案*：若要解决此问题并使用其他托管标识轮换密钥，请参阅对 [用户分配的标识](container-registry-customer-managed-keys.md#troubleshoot)进行故障排除的步骤。
 
 ## <a name="connectivity_dns_error"></a>CONNECTIVITY_DNS_ERROR
 
@@ -90,7 +98,7 @@ ms.locfileid: "91565592"
 
 此错误表示客户端无法与容器注册表建立安全连接。 如果运行或使用代理服务器，则往往会发生此错误。
 
-*可能的解决方法*：可[在此处](/cli/azure/use-cli-effectively)找到有关如何使用代理的详细信息。
+*可能的解决方法*：可 [在此处](/cli/azure/use-cli-effectively)找到有关如何使用代理的详细信息。
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 

@@ -3,12 +3,12 @@ title: 常见问题
 description: 提供有关 Azure VMware 解决方案的一些常见问题的解答。
 ms.topic: conceptual
 ms.date: 1/14/2021
-ms.openlocfilehash: 8245cd8da983ce48ba88d7faef76ab9b7ceb8c26
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 090b29b1e013ffbceb9296250fed99a04d15a82c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218580"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062081"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>有关 Azure VMware 解决方案的常见问题
 
@@ -36,7 +36,7 @@ ms.locfileid: "98218580"
 
 ### <a name="do-i-use-the-same-tools-that-i-use-now-to-manage-private-cloud-resources"></a>我是否使用与现在相同的工具来管理私有云资源？
 
-是。 Azure 门户用于部署和多个管理操作。 vCenter 和 NSX Manager 用于管理 vSphere 和 NSX-T 资源。
+是的。 Azure 门户用于部署和多个管理操作。 vCenter 和 NSX Manager 用于管理 vSphere 和 NSX-T 资源。
 
 ### <a name="can-i-manage-a-private-cloud-with-my-on-premises-vcenter"></a>可以使用我的本地 vCenter 来管理私有云吗？
 
@@ -48,7 +48,7 @@ ms.locfileid: "98218580"
 
 ### <a name="can-i-migrate-vsphere-vms-from-on-premises-environments-to-azure-vmware-solution-private-clouds"></a>能否将 vSphere Vm 从本地环境迁移到 Azure VMware 解决方案私有云？
 
-是。 如果满足标准跨 vCenter [vMotion 要求](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952) ，则可以使用 VM 迁移和 VMotion 将 vm 移到私有云。
+是的。 如果满足标准跨 vCenter [vMotion 要求](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952) ，则可以使用 VM 迁移和 VMotion 将 vm 移到私有云。
 
 ### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>本地环境中是否需要特定版本的 vSphere？
 
@@ -63,10 +63,10 @@ ms.locfileid: "98218580"
 对于新的 Azure VMware 解决方案，Microsoft 与 VMware 具有云服务提供商直接合作伙伴关系。 新解决方案完全是由 Microsoft 设计、构建和支持的，并由 VMware 认可。 从体系结构上来说，解决方案是一致的，VMware 技术堆栈是在专用的 Azure 基础结构上运行的。
 
 ### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Azure VMware 解决方案 Vm 是否可以通过 VMRC 来管理？
-是。 如果安装它的系统可以访问私有云 vCenter，并使用公共 DNS 来解析 ESXi 主机名。
+是的。 如果安装它的系统可以访问私有云 vCenter，并使用公共 DNS 来解析 ESXi 主机名。
 
 ### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>是否有关于在 Azure VMware 解决方案 Vm 中安装和使用 VMRC 的特殊说明？
-不是。 若要满足 VM 先决条件，请遵循 [VMware 提供的说明](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html)。 
+不能。 若要满足 VM 先决条件，请遵循 [VMware 提供的说明](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html)。 
 
 ### <a name="is-vmware-hcx-supported-on-vpns"></a>Vpn 上是否支持 VMware HCX？
 没有，因为带宽和延迟要求。
@@ -75,10 +75,10 @@ ms.locfileid: "98218580"
 Azure 堡垒是推荐用于连接到跳转盒的服务，以防止向 internet 公开 Azure VMware 解决方案。 不能使用 Azure 堡垒连接到 Azure VMware 解决方案 Vm，因为它们不是 Azure IaaS 对象。
 
 ### <a name="can-azure-load-balancer-internal-be-used-for-azure-vmware-solution-vms"></a>Azure 负载均衡器是否可用于 Azure VMware 解决方案 Vm？
-不是。 Azure 负载均衡器内部-仅支持 Azure IaaS Vm。 Azure 负载均衡器不支持基于 IP 的后端池;只有 azure 虚拟机或虚拟机规模集对象（其中 Azure VMware 解决方案 Vm 不是 Azure 对象）。
+不能。 Azure 负载均衡器内部-仅支持 Azure IaaS Vm。 Azure 负载均衡器不支持基于 IP 的后端池;只有 azure 虚拟机或虚拟机规模集对象（其中 Azure VMware 解决方案 Vm 不是 Azure 对象）。
 
 ### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>是否可以使用现有 ExpressRoute 网关连接到 Azure VMware 解决方案？
-是。 使用现有的 ExpressRoute 网关连接到 Azure VMware 解决方案，前提是它不超过每个虚拟网络的四个 ExpressRoute 线路的限制。 若要通过 ExpressRoute 从本地访问 Azure VMware 解决方案，必须具有 ExpressRoute Global Reach，因为 ExpressRoute 网关不提供其连接线路之间的可传递路由。
+是的。 使用现有的 ExpressRoute 网关连接到 Azure VMware 解决方案，前提是它不超过每个虚拟网络的四个 ExpressRoute 线路的限制。 若要通过 ExpressRoute 从本地访问 Azure VMware 解决方案，必须具有 ExpressRoute Global Reach，因为 ExpressRoute 网关不提供其连接线路之间的可传递路由。
 
 ## <a name="compute-network-storage-and-backup"></a>计算、网络、存储和备份
 
@@ -120,7 +120,7 @@ Commvault、Veritas 和 Veeam 已扩展其备份解决方案，以便与 Azure V
 
 ### <a name="are-the-snmp-infrastructure-logs-shared"></a>SNMP 基础结构日志是否共享？
 
-不是。
+不能。
 
 ## <a name="hosts-clusters-and-private-clouds"></a>主机、群集和私有云
 
@@ -190,15 +190,15 @@ Commvault、Veritas 和 Veeam 已扩展其备份解决方案，以便与 Azure V
 
 ### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>是否需要限制从 Internet 访问私有云中逻辑网络上的 VM？
 
-不是。 默认情况下，不允许从 internet 到专用云的入站网络流量。  不过，你可以通过 Azure VMware 解决方案私有云的 Azure 门户中的 [公共 IP](public-ip-usage.md) 选项向 Internet 公开 Azure Vmware 解决方案 vm。
+不能。 默认情况下，不允许从 internet 到专用云的入站网络流量。  不过，你可以通过 Azure VMware 解决方案私有云的 Azure 门户中的 [公共 IP](public-ip-usage.md) 选项向 Internet 公开 Azure Vmware 解决方案 vm。
 
 ### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>是否需要限制从逻辑网络上的 VM 到 Internet 的 Internet 访问？
 
-是。 你需要使用 NSX-T 管理器创建防火墙，以限制 VM 对 internet 的访问。
+是的。 你需要使用 NSX-T 管理器创建防火墙，以限制 VM 对 internet 的访问。
 
 
 ### <a name="can-azure-vmware-solution-use-azure-virtual-wan-hosted-expressroute-gateways"></a>Azure VMware 解决方案可以使用 Azure 虚拟 WAN 托管 ExpressRoute 网关吗？
-是。
+是的。
 
 ### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>能否通过 ExpressRoute Global Reach 上的 Azure 虚拟 WAN 在本地与 Azure VMware 解决方案之间建立传输连接？
 Azure 虚拟 WAN 不提供两个已连接的 ExpressRoute 线路和非虚拟 WAN ExpressRoute 网关之间的可传递路由。 使用 ExpressRoute Global Reach 允许在本地与 Azure VMware 解决方案之间建立连接，但会通过 Microsoft 的全球网络而不是虚拟 WAN 集线器进行连接。
@@ -258,7 +258,7 @@ VMware HCX Enterprise 提供 Azure VMware 解决方案作为 *预览* 功能/服
 
 ### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>如何实现请求 Azure VMware 解决方案的主机配额增加？
 
-对于 CSP 托管的订阅，客户必须将请求提交给合作伙伴。 然后，合作伙伴团队与 Microsoft 合作，以便为订阅增加配额。 有关详细信息，请参阅 [如何启用 Azure VMware 解决方案资源一文](enable-azure-vmware-solution.md) 。 
+对于 CSP 托管的订阅，客户必须将请求提交给合作伙伴。 然后，合作伙伴团队与 Microsoft 合作，以便为订阅增加配额。 有关详细信息，请参阅[如何启用 Azure VMware 解决方案资源](enable-azure-vmware-solution.md)。 
 
 对于 EA 订阅，请使用以下过程。 首先，你将需要：
 
@@ -303,11 +303,11 @@ VMware HCX Enterprise 提供 Azure VMware 解决方案作为 *预览* 功能/服
 
 ### <a name="are-reserved-instances-available-for-purchasing-through-the-cloud-solution-provider-csp-program"></a>是否可通过云解决方案提供商 (CSP) 计划购买保留实例？
 
-是。 CSP 可以为其客户购买保留实例。 有关详细信息，请参阅 [使用预订实例节省成本](reserved-instance.md)。 
+是的。 CSP 可以为其客户购买保留实例。 有关详细信息，请参阅 [使用预订实例节省成本](reserved-instance.md)。 
 
 ### <a name="does-azure-vmware-solution-offer-multi-tenancy-for-hosting-csp-partners"></a>Azure VMware 解决方案是否为托管 CSP 合作伙伴提供多租户？
 
-不是。 目前，Azure VMware 解决方案不提供多租户服务。
+不能。 目前，Azure VMware 解决方案不提供多租户服务。
 
 ### <a name="will-traffic-between-on-premises-and-azure-vmware-solution-over-expressroute-incur-any-outbound-data-transfer-charge-in-the-metered-data-plan"></a>基于 ExpressRoute 的本地与 Azure VMware 解决方案之间的流量是否会在计量数据计划中产生任何出站数据传输费用？
 

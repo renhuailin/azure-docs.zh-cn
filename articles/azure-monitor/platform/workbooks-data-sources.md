@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 3d94aca51d3d305b70c8c555e2b41e3d0ab857b3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927900"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061932"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor 工作簿数据源
 
@@ -59,7 +59,7 @@ Azure 资源发出可以通过工作簿访问的[指标](data-platform-metrics.m
 
 ## <a name="azure-data-explorer"></a>Azure 数据资源管理器
 
-工作簿现在支持使用强大的 [Kusto](/azure/kusto/query/index) 查询语言从 [Azure 数据资源管理器](/azure/data-explorer/)群集进行查询。   
+工作簿现在支持使用强大的 [Kusto](/azure/kusto/query/index) 查询语言从 [Azure 数据资源管理器](/azure/data-explorer/)群集进行查询。
 
 ![Kusto 查询窗口的屏幕截图](./media/workbooks-overview/data-explorer.png)
 
@@ -79,9 +79,43 @@ Azure Monitor 提供主动监视 Windows 或 Linux 来宾操作系统可用性�
 
 ![显示运行状况筛选器列表的警报查询的屏幕截图。](./media/workbooks-overview/resource-health.png)
 
+## <a name="change-analysis-preview"></a>更改分析 (预览) 
+
+若要使用 [应用程序更改分析](../app/change-analysis.md) 作为数据源，请使用 " *数据源* " 下拉箭头并选择 " *更改分析 (预览)* 并选择单个资源。 最多可以显示最后14天的更改。 *级别* 下拉菜单可用于在 "重要"、"正常" 和 "干扰" 更改之间进行筛选，此下拉项支持类型为 [下拉](workbooks-dropdowns.md)的工作簿参数。
+
+> [!div class="mx-imgBorder"]
+> ![包含更改分析的工作簿的屏幕截图](./media/workbooks-data-sources/change-analysis-data-source.png)
+
+## <a name="merge-data-from-different-sources"></a>合并来自不同源的数据
+
+通常需要将不同源中的数据集中在一起，以增强见解体验。 例如，使用相关指标数据来补充活动的警报信息。 这样，用户不仅可以查看活动警报)  (的效果，还可以查看潜在的原因 (例如，CPU 使用率) 高。 监视域具有许多此类相关数据源，这些数据源对会审和诊断工作流通常很重要。
+
+工作簿不仅允许查询不同的数据源，而且还提供了简单的控件，使你能够合并或联接数据以提供丰富的见解。 `merge`控件是实现此目的的方式。
+
+以下示例结合了警报数据和 log analytics VM 性能数据，以获取丰富的见解网格。
+
+> [!div class="mx-imgBorder"]
+> ![工作簿的屏幕截图，其中包含合并警报和 log analytics 数据的合并控件](./media/workbooks-data-sources/merge-control.png)
+
+工作簿支持多种合并：
+
+* 内部唯一联接
+* 完全内部联接
+* 完全外联
+* 左外部联接
+* 右外部联接
+* 左半部联接
+* 右半部联接
+* 左反联接
+* 右反联接
+* Union
+* 复制表
+
 ## <a name="json"></a>JSON
 
 使用 JSON 提供程序可从静态 JSON 内容创建查询结果。 它最常用于在参数中创建静态值的下拉列表参数。 简单的 JSON 数组或对象将自动转换为网格行和列。  有关更具体的行为，可使用“结果”选项卡和 JSONPath 设置来配置列。
+
+此访问接口支持 [JSONPath](workbooks-jsonpath.md)。
 
 ## <a name="alerts-preview"></a>警报（预览版）
 
@@ -94,7 +128,7 @@ Azure Monitor 提供主动监视 Windows 或 Linux 来宾操作系统可用性�
 
 工作簿允许用户可视化与其资源相关的活动警报。 限制：警报数据源需要对订阅的读取访问权限才能查询资源，并且可能不会显示较新的警报类型。 
 
-若要让查询控件使用此数据源，请使用“数据源”下拉列表选择“警报(预览)”，然后选择目标订阅、资源组或资源 。 使用警报筛选器下拉列表根据分析需求选择一个所关注的警报子集。
+若要使查询控件使用此数据源，请使用 " _数据源_ " 下拉箭头选择 _警报 (预览)_ 并选择要面向的订阅、资源组或资源。 使用警报筛选器下拉列表根据分析需求选择一个所关注的警报子集。
 
 ## <a name="custom-endpoint"></a>自定义终结点
 
@@ -102,10 +136,12 @@ Azure Monitor 提供主动监视 Windows 或 Linux 来宾操作系统可用性�
 
 若要让查询控件使用此数据源，请使用“数据源”下拉列表选择“自定义终结点” 。 提供适当的参数，如 `Http method`、`url`、`headers`、`url parameters` 和/或 `body`。 请确保数据源支持 [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)，否则请求将会失败。
 
-若要避免在使用模板时自动调用不受信任的主机，用户需要将使用的主机标记为受信任。 为此，可以单击“添加为受信任”按钮，或在工作簿设置中将其添加为受信任的主机。 这些设置将保存在支持带有 Web 辅助角色的 IndexDb 的浏览器中；有关详细信息，请参阅[此处](https://caniuse.com/#feat=indexeddb)。
+若要避免在使用模板时自动调用不受信任的主机，用户需要将使用的主机标记为受信任。 为此，可以单击“添加为受信任”按钮，或在工作簿设置中将其添加为受信任的主机。 这些设置将保存在 [支持与 web 工作进程 IndexDb 的浏览器](https://caniuse.com/#feat=indexeddb)中。
 
 > [!NOTE]
 > 请勿在任何字段（`headers`、`parameters`、`body`、`url`）中写入任何机密，因为这些字段对所有工作簿用户均可见。
+
+此访问接口支持 [JSONPath](workbooks-jsonpath.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

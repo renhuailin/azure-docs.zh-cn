@@ -3,12 +3,12 @@ title: 通过 Azure 安全中心集成保护 Azure VMware 解决方案 Vm
 description: 了解如何通过 azure 安全中心中的单个仪表板使用 Azure 的本机安全工具保护 Azure VMware 解决方案 Vm。
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937332"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061458"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>通过 Azure 安全中心集成保护 Azure VMware 解决方案 Vm
 
@@ -32,7 +32,7 @@ Log Analytics 工作区收集日志后，可以使用 Azure 安全中心配置 L
 
 可以通过 Azure Sentinel 配置 Log Analytics 工作区，以实现警报检测、威胁可见性、主动搜寻和威胁响应。 在上图中，Azure 安全中心使用 Azure 安全中心连接器连接到 Azure Sentinel。 Azure 安全中心会将环境漏洞转发到 Azure Sentinel 来创建事件，并与其他威胁进行映射。 你还可以创建 "计划的规则" 查询来检测不需要的活动，并将其转换为事件。
 
-## <a name="benefits"></a>好处
+## <a name="benefits"></a>优点
 
 - Azure 本机服务可用于 Azure、Azure VMware 解决方案和本地服务中的混合环境安全性。
 - 使用 Log Analytics 工作区，你可以将数据或日志收集到一个点，并向不同的 Azure 本机服务提供相同的数据。
@@ -45,7 +45,7 @@ Log Analytics 工作区收集日志后，可以使用 Azure 安全中心配置 L
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
-你将需要一个 Log Analytics 工作区，用于从各种源收集数据。 请参阅 [使用 Azure 门户创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)中的步骤。 
+你将需要一个 Log Analytics 工作区，用于从各种源收集数据。 有关详细信息，请参阅 [从 Azure 门户创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>部署安全中心并配置 Azure VMware 解决方案 Vm
 
@@ -173,13 +173,13 @@ Azure Sentinel 构建在 Log Analytics 工作区之上。 加入 Azure Sentinel 
         |where count_ > 3
         ```
         
-    - 地图实体
+    - 映射实体
     - 查询计划
     - 警报阈值
     - 事件分组
     - 禁止
 
-    选择“下一步”  。
+    选择“**下一页**”。
 
 6. 在 " **事件设置** " 选项卡上，启用 "从此 **分析规则触发的警报创建事件** "，然后选择 " **下一步：自动响应 >**。
  

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 64d028892298a70e7588863bf9a3f4fc6f4ca609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2c46e8a7cae9ddba9606abf75ac022e804fde9c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760053"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062488"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上从 Azure Marketplace 部署支持 GPU 的 IoT 模块
 
@@ -28,7 +28,7 @@ ms.locfileid: "91760053"
 
 本文中的 GPU 示例模块包括针对 GPU 的 CPU 的 PyTorch 和 TensorFlow 基准测试示例代码。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 
@@ -45,7 +45,7 @@ ms.locfileid: "91760053"
 
     ![在 Azure Marketplace 中浏览应用](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/browse-apps-marketplace-1.png)
 
-2. 搜索 **gpu**入门。
+2. 搜索 **gpu** 入门。
 
     ![搜索 GPU 示例模块](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/search-gpu-sample-module-1.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "91760053"
 
     ![获取示例模块](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/get-sample-module-1.png)
 
-4. 选择 " **继续** " 以确认提供者的使用条款和隐私策略。 
+4. 选择 " **继续** " 以确认提供者的使用条款和隐私策略。 
 
     ![获取示例模块2](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
 
@@ -63,13 +63,11 @@ ms.locfileid: "91760053"
 
 6. 输入在配置 Azure Stack Edge Pro 设备时创建的 IoT 中心服务的名称。 若要查找此 IoT 中心服务名称，请在 Azure 门户中转到与设备关联的 Azure Stack Edge 资源。 
 
-    1. 在左窗格菜单选项中，转到 **Edge 计算 > 开始**。 
-
-    1. 在 " **配置边缘计算** " 磁贴中，选择 " **查看配置**"。 
+    1. 在左窗格菜单选项中，> IoT Edge 中转到 " **边缘服务**"。 
 
         ![查看计算配置](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/view-config-1.png)
 
-    1. 在 " **边缘计算配置** " 边栏选项卡中：
+    1. 中转到 " **属性**"。 
 
         1. 记下在 Azure Stack Edge Pro 设备上配置计算时所创建的 IoT 中心服务。
         2. 记下在配置计算时创建的 IoT Edge 设备的名称。 你将在后续步骤中使用此名称。
@@ -78,38 +76,38 @@ ms.locfileid: "91760053"
 
 10. 选择“部署到设备”。
 
-11. 输入 IoT Edge 设备的名称，或选择 " **查找设备**"，在向   中心注册的设备之间浏览。
+11. 输入 IoT Edge 设备的名称，或选择 " **查找设备** "，在向中心注册的设备之间浏览。
 
     ![查找设备](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/find-device-1.png)
 
-12. 选择 " **创建**   " 以继续配置部署清单的标准过程，包括添加其他模块（如果需要）。 新模块的详细信息（例如映像 URI、创建选项以及所需的属性）已预定义，但可以更改。
+12. 选择 " **创建** " 以继续配置部署清单的标准过程，包括添加其他模块（如果需要）。 新模块的详细信息（例如映像 URI、创建选项以及所需的属性）已预定义，但可以更改。
 
     ![选择“创建”](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/target-devices-iot-edge-module-1.png)
 
 
-13. 验证该模块是否已部署在 Azure 门户的 IoT 中心。 选择设备，选择 " **设置模块**"，   模块应在 **IoT Edge 模块**"部分中列出   。
+13. 验证该模块是否已部署在 Azure 门户的 IoT 中心。 选择设备，选择”设置模块“，该模块应列在“IoT Edge 模块”部分中 。
 
     ![选择创建2](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
 
 ## <a name="monitor-the-module"></a>监视模块  
 
-1. 在 VS Code 命令面板中，运行“Azure IoT 中心: 选择 IoT 中心”。****
+1. 在 VS Code 命令面板中，运行“Azure IoT 中心: 选择 IoT 中心”。
 
 2. 选择包含要配置的 IoT Edge 设备的订阅和 IoT 中心。 在这种情况下，请选择用于部署 Azure Stack Edge Pro 设备的订阅，并选择为 Azure Stack Edge Pro 设备创建的 IoT Edge 设备。 在前面的步骤中通过 Azure 门户配置计算时，会发生这种情况。
 
-3. 在 VS Code 资源管理器中，展开 "Azure IoT 中心" 部分。 在 " **设备**" 下，应会看到与 Azure Stack Edge Pro 设备对应的 IoT Edge 设备。 
+3. 在 VS Code 资源管理器中，展开“Azure IoT 中心”部分。 在 " **设备**" 下，应会看到与 Azure Stack Edge Pro 设备对应的 IoT Edge 设备。 
 
     1. 选择该设备，右键单击并选择 " **开始监视" "内置事件终结点**"。
   
         ![开始监视](media/azure-stack-edge-gpu-deploy-sample-module/monitor-builtin-event-endpoint-1.png)  
 
-    2. 中转到 " **设备" > 模块** ，你会看到你的 **GPU 模块** 正在运行。
+    2. 转到“设备”>“模块”，应会看到“GPU 模块”正在运行 。
 
     3. VS Code 终端还应显示 IoT 中心事件作为 Azure Stack Edge Pro 设备的监视输出。
 
         ![监视输出](media/azure-stack-edge-gpu-deploy-sample-module/monitor-events-output-1.png) 
 
-        你可以看到，执行同一组操作所需的时间 (5000 的形状转换) 迭代的时间比 CPU 的小。
+        你可看到 GPU 执行同一组操作（5000 次形状转换迭代）所用时间比 CPU 所用时间要少得多。
 
 ## <a name="next-steps"></a>后续步骤
 
