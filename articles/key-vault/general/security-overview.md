@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault 安全性概述
-description: Azure Key Vault 的安全功能和最佳实践的概述。
+description: Azure Key Vault 的安全功能和最佳做法的概述。
 services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
@@ -9,30 +9,29 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: mbaldwin
-ms.openlocfilehash: c4e9f0cd6a7421f5be29200816bb00a56b141367
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c7635fdc2012ab404709733d8f5849465c2ee82f
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937596"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071557"
 ---
-# <a name="azure-key-vault-security-overview"></a>Azure Key Vault 安全性概述
+# <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
 使用 Azure Key Vault 可以保护云中的加密密钥和机密，例如证书、连接字符串和密码。 存储敏感数据和关键业务数据时，需要采取措施来最大限度地提高保管库及其存储的数据的安全性。
 
-本文概述了 Azure Key Vault 的安全功能和最佳实践。 有关基于 [Azure 安全基准](../../security/benchmarks/introduction.md)的建议的完整列表，请参阅 [Azure Key Vault 的安全基线](security-baseline.md)。
+本文概述了 Azure Key Vault 的安全功能和最佳做法。 
 
-## <a name="general-guidance"></a>一般指南
+> [!NOTE]
+> 有关 Azure Key Vault 安全建议的完整列表，请参阅 [Azure Key Vault 的安全基线](security-baseline.md)。
 
-我们的建议是对每个环境（开发环境、预生产环境和生产环境）的每个应用程序使用一个保管库。 这可以帮助你避免在不同环境之间共享机密，并可在出现安全漏洞时降低威胁。
+## <a name="network-security"></a>网络安全性
 
-## <a name="network-security"></a>网络安全
+可以通过指定哪些 IP 地址有权访问来减少保管库的曝光。 通过 Azure Key Vault 的虚拟网络服务终结点可将访问限制为指定虚拟网络。 此外，还可通过这些终结点将访问限制为一系列 IPv4（Internet 协议版本 4）地址范围。 任何从外部连接到 Key Vault 的用户都无法访问这些资源。  有关完整的详细信息，请参阅[适用于 Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)。
 
-可以通过指定哪些 IP 地址有权访问来减少保管库的曝光。 通过 Azure Key Vault 的虚拟网络服务终结点可将访问限制为指定虚拟网络。 此外，还可通过这些终结点将访问限制为一系列 IPv4（Internet 协议版本 4）地址范围。 任何从外部连接到 Key Vault 的用户都无法访问这些资源。  有关完整详细信息，请参阅 [Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)
+防火墙规则生效后，仅当用户请求来自允许的虚拟网络或 IPv4 地址范围时，才能读取 Key Vault 中的数据。 从 Azure 门户访问 Key Vault 时，这同样适用。 虽然用户可从 Azure 门户浏览到 Key Vault，但如果其客户端计算机不在允许列表中，则可能无法列出密钥、机密或证书。 这也会影响其他 Azure 服务的 Key Vault 选取器。 如果防火墙规则阻止了用户的客户端计算机，则用户可以查看 Key Vault 列表，但不能查看列表密钥。  有关实施步骤，请参阅[配置 Azure Key Vault 防火墙和虚拟网络](network-security.md)。
 
-防火墙规则生效后，仅当用户请求来自允许的虚拟网络或 IPv4 地址范围时，才能读取 Key Vault 中的数据。 从 Azure 门户访问 Key Vault 时，这同样适用。 虽然用户可从 Azure 门户浏览到 Key Vault，但如果其客户端计算机不在允许列表中，则可能无法列出密钥、机密或证书。 这也会影响其他 Azure 服务的 Key Vault 选取器。 如果防火墙规则阻止了用户的客户端计算机，则用户可以查看 Key Vault 列表，但不能查看列表密钥。  有关实施步骤，请参阅 [配置 Azure Key Vault 防火墙和虚拟网络](network-security.md)
-
-使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure Key Vault 和 Azure 托管的客户服务/合作伙伴服务。 Azure 专用终结点是一个网络接口，可以通过私密且安全的方式将你连接到 Azure 专用链接支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。  有关实施步骤，请参阅将 [Key Vault 与 Azure Private Link 集成](private-link-service.md)
+使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure Key Vault 和 Azure 托管的客户服务/合作伙伴服务。 Azure 专用终结点是一个网络接口，可以通过私密且安全的方式将你连接到 Azure 专用链接支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。  有关实施步骤，请参阅[将 Key Vault 与 Azure 专用链接集成](private-link-service.md)
 
 ## <a name="tls-and-https"></a>TLS 和 HTTPS
 
@@ -51,7 +50,7 @@ ms.locfileid: "97937596"
 
 在所有类型的访问中，应用程序都使用 Azure AD 进行身份验证。 应用程序根据应用程序类型使用任何[支持的身份验证方法](../../active-directory/develop/authentication-vs-authorization.md)。 应用程序通过获取平面中资源的令牌来授予访问权限。 资源是管理平面或数据平面中基于 Azure 环境的终结点。 应用程序使用令牌并向密钥保管库发送 REST API 请求。 若要了解详细信息，请查看[整个身份验证流](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 
-有关完整详细信息，请参阅 [Key Vault 身份验证基础知识](authentication-fundamentals.md)
+有关完整的详细信息，请参阅 [Key Vault 身份验证基础知识](authentication-fundamentals.md)
 
 ## <a name="privileged-access"></a>特权访问
 
@@ -69,7 +68,7 @@ ms.locfileid: "97937596"
 | 访问&nbsp;平面 | 访问终结点 | 操作 | 访问&nbsp;控制机制 |
 | --- | --- | --- | --- |
 | 管理平面 | **全球：**<br> management.azure.com:443<br><br> **Azure 中国世纪互联：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> management.microsoftazure.de:443 | 创建、读取、更新和删除密钥保管库<br><br>设置密钥保管库访问策略<br><br>设置密钥保管库标记 | Azure RBAC |
-| 数据平面 | **全球：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure 中国世纪互联：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government：**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | 密钥：加密、解密、wrapKey、unwrapKey、签名、验证、获取、列出、创建、更新、导入、删除、恢复、备份、还原、清除<br><br> 证书： managecontacts、getissuers、listissuers、setissuers、deleteissuers、manageissuers、get、list、create、import、update、delete、recover、backup、restore、delete<br><br>  机密：获取、列出、设置、删除、恢复、备份、还原、清除 | Key Vault 访问策略或 Azure RBAC (预览版) |
+| 数据平面 | **全球：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure 中国世纪互联：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government：**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | 密钥：加密、解密、包装密钥、解包密钥、签名、验证、获取、列出、创建、更新、导入、删除、恢复、备份、还原、清除<br><br> 证书：管理联系人、获取颁发者、列出颁发者、设置颁发者、删除颁发者、管理颁发者、获取、列出、创建、导入、更新、删除、恢复、备份、还原、清除<br><br>  机密：获取、列出、设置、删除、恢复、备份、还原、清除 | Key Vault 访问策略或 Azure RBAC（预览版）|
 
 ### <a name="managing-administrative-access-to-key-vault"></a>管理对 Key Vault 的管理访问权限
 
@@ -99,30 +98,19 @@ Key Vault 访问策略单独授予对密钥、机密或证书的权限。 可以
 
 Key Vault 日志记录会保存保管库中所执行活动的相关信息。 有关完整详细信息，请参阅 [Key Vault 日志记录](logging.md)。
 
-可以将 Key Vault 与事件网格相集成，以便在 key Vault 中存储的密钥、证书或机密的状态发生更改时收到通知。 有关详细信息，请参阅 [通过 Azure 事件网格监视 Key Vault](event-grid-overview.md)
+你可以将 Key Vault 与事件网格集成，以便在密钥保管库中存储的密钥、证书或机密的状态发生更改时收到通知。 有关详细信息，请参阅 [通过 Azure 事件网格监视 Key Vault](event-grid-overview.md)
 
 还必须监视密钥保管库的运行状况，以确保服务按预期运行。 若要了解如何执行此操作，请参阅 [Azure Key Vault 的监视和警报](alert.md)。
 
 ## <a name="backup-and-recovery"></a>备份和恢复
 
-Azure Key Vault 软删除和清除保护，则可以恢复已删除的保管库和保管库对象。 有关完整详细信息，请参阅 [Azure Key Vault 软删除概述](soft-delete-overview.md)。
+Azure Key Vault 软删除和清除保护允许你恢复已删除的保管库和保管库对象。 有关完整的详细信息，请参阅 [Azure Key Vault 软删除概述](soft-delete-overview.md)。
 
-还应在保管库中的对象的更新/删除/创建时定期备份保管库。  
-
-Azure PowerShell 备份命令：
-
-* [备份证书](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultCertificate)
-* [备份密钥](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultKey)
-* [备份机密](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultSecret)
-
-Azure CLI 备份命令
-
-* [备份证书](/cli/azure/keyvault/certificate#az-keyvault-certificate-backup)
-* [备份密钥](/cli/azure/keyvault/key#az-keyvault-key-backup)
-* [备份机密](/cli/azure/keyvault/secret#az-keyvault-secret-backup)
-
+在保管库中更新/删除/创建对象时，你还应定期备份保管库。  
 
 ## <a name="next-steps"></a>后续步骤
 
+- [Azure Key Vault 安全基线](security-baseline.md)
+- [Azure Key Vault 最佳做法](security-baseline.md)
 - [Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)
 - [Azure RBAC：内置角色](../../role-based-access-control/built-in-roles.md)

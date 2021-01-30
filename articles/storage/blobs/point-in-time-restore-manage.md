@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f550f96a8bd2e402556089061604654b11d47844
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: b62e341d35a4ff7fd5a7ddd6d9f19b138aaf0aa9
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762894"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071641"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>对块 blob 数据执行时间点还原
 
@@ -185,6 +185,17 @@ az storage blob restore \
     --account-name <storage-account> \
     --time-to-restore 2021-01-14T06:31:22Z \
     --no-wait
+```
+
+若要检查还原操作的属性，请调用 [az storage account show](/cli/azure/storage/account#az_storage_account_show) 并展开 **blobRestoreStatus** 属性。 下面的示例演示如何检查 **status** 属性。
+
+```azurecli
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource_group> \ 
+    --expand blobRestoreStatus \
+    --query blobRestoreStatus.status \
+    --output tsv
 ```
 
 若要同步运行 **az storage blob restore** 命令并在还原操作完成前阻止执行，则忽略 `--no-wait` 参数。

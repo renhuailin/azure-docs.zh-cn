@@ -3,12 +3,12 @@ title: 将群集节点升级为使用 Azure 托管磁盘
 description: 本文介绍了如何在只需群集短暂停机甚至无需其停机的前提下，将现有 Service Fabric 群集升级为使用 Azure 托管磁盘。
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 36896a6cf471ff0c9312ab454465419471bb164d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c374c4536309a13abcf8c882b041a9c5357878e5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316164"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090648"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>将群集节点升级为使用 Azure 托管磁盘
 
@@ -30,11 +30,11 @@ ms.locfileid: "92316164"
 > [!CAUTION]
 > 仅当你依赖于群集 DNS 时（例如，在访问 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 时），才会在此过程中遇到服务中断。 [适用于前端服务的体系结构最佳做法](/azure/architecture/microservices/design/gateway)要求在你的节点类型的前面使用某种[负载均衡器](/azure/architecture/guide/technology-choices/load-balancing-overview)，以便无需中断服务即可进行节点交换。
 
-下面是用于完成升级方案的 Azure 资源管理器的[模板和 cmdlet](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)。 下文中的[为主要节点类型部署升级规模集](#deploy-an-upgraded-scale-set-for-the-primary-node-type)将介绍模板更改。
+下面是用于完成升级方案的 Azure 资源管理器的[模板和 cmdlet](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade)。 下文中的[为主要节点类型部署升级规模集](#deploy-an-upgraded-scale-set-for-the-primary-node-type)将介绍模板更改。
 
 ## <a name="set-up-the-test-cluster"></a>设置测试群集
 
-接下来让我们设置初始 Service Fabric 测试群集。 首先，[下载](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)用于完成此方案的 Azure 资源管理器示例模板。
+接下来让我们设置初始 Service Fabric 测试群集。 首先，[下载](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade)用于完成此方案的 Azure 资源管理器示例模板。
 
 然后，登录到 Azure 帐户。
 
@@ -373,6 +373,6 @@ foreach($name in $nodeNames){
 
 另请参阅：
 
-* [示例：将群集节点升级为使用 Azure 托管磁盘](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
+* [示例：将群集节点升级为使用 Azure 托管磁盘](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade)
 
 * [纵向缩放注意事项](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)

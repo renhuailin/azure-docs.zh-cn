@@ -14,18 +14,18 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36a29048d97798c2e1621fbdc957bde51b5a383
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: b5cb7e1521c649be4abc155d9f28a49b43a11e6d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740595"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071252"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中委托应用注册权限
 
 本文介绍如何使用 Azure Active Directory (Azure AD) 中的自定义角色授予的权限来满足应用程序管理需求。 在 Azure AD中，可以通过以下方式委托应用程序创建和管理权限：
 
-- [限制谁可以创建应用程序](#restrict-who-can-create-applications)和管理他们创建的应用程序。 默认情况下，Azure AD 中的所有用户都可以注册应用程序，并全方面地管理他们创建的应用程序。 可将此权限限制为选定的人员。
+- [限制谁可以创建应用程序](#restrict-who-can-create-applications)和管理他们创建的应用程序。 默认情况下，在 Azure AD 中，所有用户都可以注册应用程序并管理他们创建的应用程序的所有方面。 可将此权限限制为选定的人员。
 - [将一个或多个所有者分配到应用程序](#assign-application-owners)。 这是向用户授予全方面管理特定应用程序的 Azure AD 配置的权限的一种简单方法。
 - [分配内置管理角色](#assign-built-in-application-admin-roles)，以授予管理 Azure AD 中所有应用程序的配置的访问权限。 建议通过此方法向 IT 专家授予管理广泛应用程序配置权限的访问权限，此方法无需授予管理与应用程序配置无关的其他 Azure AD 部分的访问权限。
 - [创建自定义角色](#create-and-assign-a-custom-role-preview)，定义非常具体的权限并在单个应用程序的范围将其分配给受限所有者，或者在目录（所有应用程序）范围将其分配给受限管理员。
@@ -34,7 +34,7 @@ ms.locfileid: "98740595"
 
 ## <a name="restrict-who-can-create-applications"></a>限制谁可以创建应用程序
 
-默认情况下，Azure AD 中的所有用户都可以注册应用程序，并全方面地管理他们创建的应用程序。 每个用户还可以许可代表其访问公司数据的应用。 可以通过将全局开关设置为“否”并将选定用户添加到“应用程序开发人员”角色，有选择地授予这些权限。
+默认情况下，在 Azure AD 中，所有用户都可以注册应用程序并管理他们创建的应用程序的所有方面。 每个用户还可以许可代表其访问公司数据的应用。 可以通过将全局开关设置为“否”并将选定用户添加到“应用程序开发人员”角色，有选择地授予这些权限。
 
 ### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>禁用创建应用程序注册或许可应用程序的默认权限
 

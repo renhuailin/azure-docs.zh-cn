@@ -4,58 +4,28 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 群集中配置基�
 services: container-service
 ms.topic: article
 ms.date: 01/27/2021
-ms.openlocfilehash: 1d071305b457cddde56a11982e08c9331e1d5463
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ac28c698a766f1f3febaff582038906f658d58dd
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919642"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071844"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service 上基于主机的加密 (AKS)  (预览) 
 
 通过基于主机的加密，存储在 AKS 代理节点 Vm 的 VM 主机上的数据将静态加密，并加密为存储服务。 这意味着临时磁盘会以平台管理的密钥加密。 操作系统和数据磁盘的缓存会以平台管理的密钥或客户托管的密钥进行加密，具体取决于在这些磁盘上设置的加密类型。 默认情况下，使用 AKS 时，操作系统和数据磁盘使用平台管理的密钥进行静态加密，这意味着这些磁盘的缓存也会默认使用平台管理的密钥进行静态加密。  可以 [在 "自带密钥" 中指定自己的托管密钥， (在 Azure Kubernetes Service 中将 azure 磁盘与 azure 磁盘) ](azure-disk-customer-managed-keys.md)。 这些磁盘的缓存还将使用您在此步骤中指定的密钥进行加密。
 
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 此功能只能在创建群集或创建节点池时设置。
 
 > [!NOTE]
 > 基于主机的加密在支持 Azure 托管磁盘的服务器端加密的 [azure 区域][supported-regions] 中提供，并且仅具有特定 [支持的 VM 大小][supported-sizes]。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
-- 确保已 `aks-preview` 安装 CLI extension v 0.4.73 或更高版本
-- 确保 `EnableEncryptionAtHostPreview` 功能标志处于 `Microsoft.ContainerService` 启用状态。
-
-为了能够为 VM 或虚拟机规模集使用主机加密，必须在订阅上启用该功能。 使用你的订阅 ID 向 encryptionAtHost@microsoft .com 发送电子邮件，以便为你的订阅启用该功能。
-
-### <a name="register-encryptionathost--preview-features"></a>注册 `EncryptionAtHost`  预览功能
-
-> [!IMPORTANT]
-> encryptionAtHost@microsoft若要为计算资源启用该功能，必须通过电子邮件发送包含订阅 id 的电子邮件。 不能自行为这些资源启用此类资源。 你可以自行在容器服务上启用它。
-
-若要创建使用基于主机的加密的 AKS 群集，必须 `EncryptionAtHost` 在订阅上启用功能标志。
-
-`EncryptionAtHost`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHost"
-```
-
-状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHost')].{Name:name,State:properties.state}"
-```
-
-准备就绪后， `Microsoft.ContainerService` `Microsoft.Compute` 使用 [az provider register][az-provider-register] 命令刷新和资源提供程序的注册：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+- 确保 `aks-preview` 安装了 CLI extension v 0.4.73 或更高版本。
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
@@ -77,23 +47,23 @@ az extension update --name aks-preview
 
 ## <a name="use-host-based-encryption-on-new-clusters-preview"></a>在新群集上使用基于主机的加密 (预览) 
 
-将群集代理节点配置为在创建群集时使用基于主机的加密。 使用 `--aks-custom-headers` 标志设置 `EnableEncryptionAtHost` 标头。
+将群集代理节点配置为在创建群集时使用基于主机的加密。 
 
 ```azurecli-interactive
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers --enable-encryption-at-host
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --enable-encryption-at-host
 ```
 
-如果要创建不包含基于主机的加密的群集，可以通过省略自定义参数来执行此操作 `--aks-custom-headers` 。
+如果要创建不包含基于主机的加密的群集，可以通过省略参数来执行此操作 `--enable-encryption-at-host` 。
 
 ## <a name="use-host-based-encryption-on-existing-clusters-preview"></a>在现有群集上使用基于主机的加密 (预览) 
 
-通过向群集中添加新的节点池，可以在现有群集上启用基于主机的加密。 使用标志配置新的节点池以使用基于主机的加密 `--aks-custom-headers` 。
+通过向群集中添加新的节点池，可以在现有群集上启用基于主机的加密。 使用参数配置新的节点池以使用基于主机的加密 `--enable-encryption-at-host` 。
 
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers --enable-encryption-at-host
+az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --enable-encryption-at-host
 ```
 
-如果要在没有基于主机的加密功能的情况下创建新的节点池，可以通过省略自定义参数来执行此操作 `--aks-custom-headers` 。
+如果要在没有基于主机的加密功能的情况下创建新的节点池，可以通过省略参数来执行此操作 `--enable-encryption-at-host` 。
 
 ## <a name="next-steps"></a>后续步骤
 

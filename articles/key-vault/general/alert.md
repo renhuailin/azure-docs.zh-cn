@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 5946a5d6d1adb5f609f497b4c2194582f624fe24
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 1b447e907bca3f8d21f522d888632aa687fd0f91
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934588"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070655"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault 的监视和警报
 
@@ -203,12 +203,13 @@ ms.locfileid: "97934588"
 
 7. 创建警报 
 
+### <a name="example-email-alert"></a>示例电子邮件警报 
+
+> [!div class="mx-imgBorder"]
+> ![此屏幕截图突出显示了配置电子邮件警报所需的信息。](../media/alert-20.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 恭喜，现在已成功创建了一个用于密钥保管库的监视仪表板并配置了警报！ 完成上述所有步骤后，当密钥保管库满足配置的警报条件时，就会收到电子邮件警报。 下面显示了一个示例。 使用本文中设置的工具积极监视密钥保管库的运行状况。 
 
-### <a name="example-email-alert"></a>示例电子邮件警报 
 
-> [!div class="mx-imgBorder"]
-> ![此屏幕截图突出显示了配置电子邮件警报所需的信息。](../media/alert-20.png)

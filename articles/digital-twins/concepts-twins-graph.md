@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a4875c2c75b133f0ab4046266d6aac36d5478fe4
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 105128af60b90324e93bcad1bd9900a55461378f
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664038"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071709"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>了解数字孪生及其克隆图形
 
-在 Azure 数字孪生解决方案中，环境中的实体由 Azure **数字孪生** 表示。 数字克隆是一个自定义 [模型](concepts-models.md)的实例。 它可以通过 **关系** 连接到其他数字孪生以形成一个克隆 **图形**：此双子图形是整个环境的表示形式。
+在 Azure 数字孪生解决方案中，环境中的实体由 **数字孪生** 表示。 数字克隆是一个自定义 [模型](concepts-models.md)的实例。 它可以通过 **关系** 连接到其他数字孪生以形成一个克隆 **图形**：此双子图形是整个环境的表示形式。
 
 > [!TIP]
 > "Azure 数字孪生" 是指作为一个整体的 Azure 服务。 "数字双子 (s) " 或仅 " () " 的 "克隆" 指的是服务实例中的各个不同的节点。

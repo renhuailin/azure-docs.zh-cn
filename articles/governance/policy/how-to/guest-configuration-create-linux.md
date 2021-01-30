@@ -4,12 +4,12 @@ description: 了解如何创建适用于 Linux 的 Azure Policy 来宾配置策�
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 705c12cff5f4377249674ef9db155d1ed321ce42
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 38579bb43f012cac2b373bbbbb6ad757604f4c07
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755865"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070683"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何创建适用于 Linux 的来宾配置策略
 
@@ -204,7 +204,17 @@ Test-GuestConfigurationPackage `
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefInspecProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-下一步是将文件发布到 Azure Blob 存储。  命令 `Publish-GuestConfigurationPackage` 需要 `Az.Storage` 模块。
+下一步是将文件发布到 Azure Blob 存储。 命令 `Publish-GuestConfigurationPackage` 需要 `Az.Storage` 模块。
+
+`Publish-GuestConfigurationPackage` cmdlet 的参数：
+
+- **路径**：要发布的包的位置
+- **ResourceGroupName**：存储帐户所在的资源组的名称
+- **StorageAccountName**：应在其中发布包的存储帐户的名称
+- **StorageContainerName**： (默认值： *guestconfiguration*) 存储帐户中存储容器的名称
+- **强制**：覆盖具有相同名称的存储帐户中的现有包
+
+下面的示例将包发布到存储容器名称 "guestconfiguration"。
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
@@ -329,15 +339,15 @@ Configuration AuditFilePathExists
 
 ## <a name="policy-lifecycle"></a>策略生命周期
 
-如果要释放对策略的更新，请对来宾配置包和 Azure 策略定义详细信息进行更改。
+如果要发布策略更新，请同时更改来宾配置包和 Azure Policy 定义详细信息。
 
 > [!NOTE]
 > 来宾配置分配的 `version` 属性仅影响 Microsoft 托管的包。 对自定义内容进行版本控制的最佳做法是在文件名中包含版本。
 
-首先，在运行时 `New-GuestConfigurationPackage` ，请为包指定一个名称，该名称使其在以前的版本中是唯一的。 可以在名称中包含版本号，例如 `PackageName_1.0.0` 。
-本示例中的数字仅用于使包唯一，而不是指定应将包视为比其他包更高或更早。
+首先，在运行 `New-GuestConfigurationPackage` 时为包指定一个名称，使其与以前的版本不同。 可以在名称中包含版本号，例如 `PackageName_1.0.0`。
+使用本示例中的数字只是为了让包独一无二，而不是指定该包应被视为比其他包更新或更旧。
 
-其次， `New-GuestConfigurationPolicy` 按下面的每个说明更新与 cmdlet 一起使用的参数。
+接下来，按下面的每项说明更新与 `New-GuestConfigurationPolicy` cmdlet 一起使用的参数。
 
 - **版本**：运行 `New-GuestConfigurationPolicy` cmdlet 时，必须指定高于当前发布版本的版本号。
 - **contentUri**：运行 `New-GuestConfigurationPolicy` cmdlet 时，必须为包的位置指定一个 URI。 在文件名中包含包版本将确保此属性的值在每个版本中都会更改。

@@ -1,14 +1,14 @@
 ---
 title: 监视管理租户中的委派更改
 description: 了解如何监视从客户租户到管理租户的委托活动。
-ms.date: 12/11/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: f65ffda642e67ec6e2c7694a823c2ba6845a7af4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 9fdf47df4ac37fec44cf53b565b7fe1411540793
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936101"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089405"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>监视管理租户中的委派更改
 
@@ -16,10 +16,12 @@ ms.locfileid: "97936101"
 
 在管理租户中， [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md) 在租户级别跟踪委托活动。 此记录的活动包含所有客户租户中添加或删除的委派。
 
-本主题介绍在所有客户) 中监视租户 (所需的权限，以及执行此操作的最佳做法。 它还包含一个示例脚本，其中显示了用于查询和报告此数据的一种方法。
+本主题介绍在所有客户) 中监视租户 (所需的权限。 它还包含一个示例脚本，其中显示了用于查询和报告此数据的一种方法。
 
 > [!IMPORTANT]
 > 所有这些步骤都必须在管理租户中执行，而不是在任何客户租户中执行。
+>
+> 尽管我们指的是本主题中的服务提供商和客户，但 [管理多个租户的企业](../concepts/enterprise.md) 可以使用相同的过程。
 
 ## <a name="enable-access-to-tenant-level-data"></a>启用对租户级别数据的访问
 
@@ -33,24 +35,12 @@ ms.locfileid: "97936101"
 
 提升访问权限后，你的帐户将在 Azure 中具有根范围内的用户访问管理员角色。 此角色分配允许你查看所有资源并在目录中的任何订阅或管理组中分配访问权限，以及在根范围内分配角色。
 
-### <a name="create-a-new-service-principal-account-to-access-tenant-level-data"></a>创建新的服务主体帐户以访问租户级别的数据
+### <a name="assign-the-monitoring-reader-role-at-root-scope"></a>在根范围内分配监视读取者角色
 
 提升访问权限后，可以为帐户分配适当的权限，以便它可以查询租户级别的活动日志数据。 此帐户需要在管理租户的根范围内分配 [监视读取器](../../role-based-access-control/built-in-roles.md#monitoring-reader) Azure 内置角色。
 
 > [!IMPORTANT]
-> 在根范围授予角色分配意味着相同的权限将应用于租户中的每个资源。
-
-由于这是一种广泛的访问级别，因此建议将此角色分配给服务主体帐户，而不是分配给单个用户或组。
-
- 此外，我们建议采用以下最佳做法：
-
-- [创建新的服务主体帐户](../../active-directory/develop/howto-create-service-principal-portal.md) 以便仅用于此函数，而不是将此角色分配到用于其他自动化的现有服务主体。
-- 确保此服务主体不具有对任何委派的客户资源的访问权限。
-- [使用证书进行身份验证](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) ，并 [将其安全地存储在 Azure Key Vault 中](../../key-vault/general/security-overview.md)。
-- 限制有权代表服务主体执行操作的用户。
-
-> [!NOTE]
-> 你还可以将监视读取器 Azure 内置角色的根范围分配给单个用户或用户组。 如果希望用户能够 [直接在 Azure 门户中查看委派信息](#view-delegation-changes-in-the-azure-portal)，这会很有用。 如果这样做，请注意，这是一种广泛的访问级别，应限制为尽可能少的用户数。
+> 在根范围授予角色分配意味着相同的权限将应用于租户中的每个资源。 由于这是一种广泛的访问级别，因此你可能希望 [将此角色分配给服务主体帐户，并使用该帐户来查询数据](#use-a-service-principal-account-to-query-the-activity-log)。 你还可以在根范围向单个用户或用户组分配 "监视读取者" 角色，以便他们可以 [直接在 Azure 门户中查看委派信息](#view-delegation-changes-in-the-azure-portal)。 如果这样做，请注意，这是一种广泛的访问级别，应限制为尽可能少的用户数。
 
 使用以下方法之一来进行根范围分配。
 
@@ -59,7 +49,7 @@ ms.locfileid: "97936101"
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
 
-New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName "Monitoring Reader"  -ApplicationId $servicePrincipal.ApplicationId 
+New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName "Monitoring Reader"  -ObjectId <objectId> 
 ```
 
 #### <a name="azure-cli"></a>Azure CLI
@@ -72,9 +62,32 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 ### <a name="remove-elevated-access-for-the-global-administrator-account"></a>删除全局管理员帐户的提升的访问权限
 
-在创建了服务主体帐户并在根范围内分配了 "监视读取者" 角色后，请确保删除全局管理员帐户的 [提升的访问权限](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) ，因为不再需要此级别的访问权限。
+将根范围内的 "监视读取者" 角色分配给所需的帐户后，请务必删除全局管理员帐户的 [提升的访问权限](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) ，因为不再需要此级别的访问权限。
 
-## <a name="query-the-activity-log"></a>查询活动日志
+## <a name="view-delegation-changes-in-the-azure-portal"></a>查看 Azure 门户中的委派更改
+
+在根范围内分配有 "监视读取者" 角色的用户可以直接在 Azure 门户中查看委托更改。
+
+1. 导航到 " **我的客户** " 页，然后从左侧导航菜单中选择 " **活动日志** "。
+1. 确保在屏幕顶部附近的筛选器中选择 " **目录活动** "。
+
+将显示委托更改列表。 你可以选择 **"编辑列** " 以显示或隐藏 **状态**、 **事件类别**、 **时间**、 **时间戳**、 **订阅**、 **事件启动者**、 **资源组**、 **资源类型** 和 **资源** 值。
+
+:::image type="content" source="../media/delegation-activity-portal.jpg" alt-text="Azure 门户中的委托更改的屏幕截图。":::
+
+## <a name="use-a-service-principal-account-to-query-the-activity-log"></a>使用服务主体帐户查询活动日志
+
+由于根范围的监视读取器角色是这种级别的访问权限，因此你可能想要将角色分配给服务主体帐户，并使用该帐户通过以下脚本查询数据。
+
+> [!IMPORTANT]
+> 目前，具有大量委托活动的租户在查询此数据时可能会遇到错误。
+
+使用服务主体帐户查询活动日志时，建议使用以下最佳做法：
+
+- [创建新的服务主体帐户](../../active-directory/develop/howto-create-service-principal-portal.md) 以便仅用于此函数，而不是将此角色分配到用于其他自动化的现有服务主体。
+- 确保此服务主体不具有对任何委派的客户资源的访问权限。
+- [使用证书进行身份验证](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) ，并 [将其安全地存储在 Azure Key Vault 中](../../key-vault/general/security-overview.md)。
+- 限制有权代表服务主体执行操作的用户。
 
 一旦你创建了一个新的服务主体帐户，该帐户具有对管理租户的根作用域的 "监视读取者" 访问权限，你就可以使用它来查询和报告租户中的委托活动。
 
@@ -164,18 +177,6 @@ else {
     Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
 }
 ```
-
-> [!TIP]
-> 尽管我们指的是本主题中的服务提供商和客户，但 [管理多个租户的企业](../concepts/enterprise.md) 可以使用相同的过程。
-
-## <a name="view-delegation-changes-in-the-azure-portal"></a>查看 Azure 门户中的委派更改
-
-在根范围内分配了监视读者 Azure 内置角色的用户可以直接在 Azure 门户中查看委托更改。
-
-1. 导航到 " **我的客户** " 页，然后从左侧导航菜单中选择 " **活动日志** "。
-1. 确保在屏幕顶部附近的筛选器中选择 " **目录活动** "。
-
-将显示委托更改列表。 你可以选择 **"编辑列** " 以显示或隐藏 **状态**、 **事件类别**、 **时间**、 **时间戳**、 **订阅**、 **事件启动者**、 **资源组**、 **资源类型** 和 **资源** 值。
 
 ## <a name="next-steps"></a>后续步骤
 

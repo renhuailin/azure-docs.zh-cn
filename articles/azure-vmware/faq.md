@@ -2,13 +2,13 @@
 title: 常见问题
 description: 提供有关 Azure VMware 解决方案的一些常见问题的解答。
 ms.topic: conceptual
-ms.date: 1/14/2021
-ms.openlocfilehash: 090b29b1e013ffbceb9296250fed99a04d15a82c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 1/27/2021
+ms.openlocfilehash: 3ef3d1b9e6fc76b5f09acf8c300dbea901b4aef2
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062081"
+ms.locfileid: "99072262"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>有关 Azure VMware 解决方案的常见问题
 
@@ -79,6 +79,12 @@ Azure 堡垒是推荐用于连接到跳转盒的服务，以防止向 internet �
 
 ### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>是否可以使用现有 ExpressRoute 网关连接到 Azure VMware 解决方案？
 是的。 使用现有的 ExpressRoute 网关连接到 Azure VMware 解决方案，前提是它不超过每个虚拟网络的四个 ExpressRoute 线路的限制。 若要通过 ExpressRoute 从本地访问 Azure VMware 解决方案，必须具有 ExpressRoute Global Reach，因为 ExpressRoute 网关不提供其连接线路之间的可传递路由。
+
+### <a name="why-does-azure-vmware-solution-use-a-public-4-byte-autonomous-system-number-asn"></a>为什么 Azure VMware 解决方案使用公用4字节自治系统编号 (ASN) ？
+Azure VMware 解决方案使用官方注册的公共4字节 Asn，以确保在客户的 Azure VMware 解决方案的路由路径中，不会与本地使用私有 Asn 发生冲突。
+ 
+### <a name="how-can-i-use-expressroute-to-connect-to-azure-vmware-solution-if-the-on-premises-expressroute-carrier-partnersisps-dont-support-4-byte-asn"></a>如果本地 ExpressRoute-运营商合作伙伴/Isp 不支持4字节 ASN，如何使用 ExpressRoute 连接到 Azure VMware 解决方案？
+通过 ExpressRoute 连接到 Azure VMware 解决方案的唯一方法是针对您的环境，本地 ExpressRoute-运营商合作伙伴/Isp 支持4字节 ASN，或在 BGP 前缀 ASN 路径广告中具有从4个字节到2字节 ASN 的向后兼容性。
 
 ## <a name="compute-network-storage-and-backup"></a>计算、网络、存储和备份
 

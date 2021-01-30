@@ -8,19 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/27/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 625fe5f53318ebc641d102e679ef7fd0607ef683
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 3f403308c77e5ee0dfc066ec3dc53100e520d274
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652834"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090665"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
 文本分析 API 会持续更新。 为了让大家随时了解最新的开发成果，本文介绍了新版本和新功能。
+
+## <a name="january-2021"></a>2021 年 1 月
+
+* `2021-01-15`[命名实体识别](how-tos/text-analytics-how-to-entity-linking.md)v3. x 的模型版本，它提供 
+  * 为 [几个常规实体类别](named-entity-types.md)扩展了语言支持。 
+  * 提高了所有支持的 v3 语言的 "常规实体" 类别的 AI 质量。 
+
+* `2021-01-05`用于[语言检测](how-tos/text-analytics-how-to-language-detection.md)的模型版本，可提供其他[语言支持](language-support.md?tabs=language-detection)。
 
 ## <a name="december-2020"></a>2020 年 12 月
 
@@ -66,7 +74,7 @@ ms.locfileid: "97652834"
 ### <a name="text-analytics-for-health-container-updates"></a>运行状况容器更新的文本分析
 
 以下更新仅特定于运行状况容器文本分析的九月版本。
-* 已将带有新型号版本的标记的新容器映像 `1.1.013530001-amd64-preview` `2020-09-03` 发布到 containerpreview 存储库。 
+* 已将带有新型号版本的标记的新容器映像 `1.1.013530001-amd64-preview` `2020-09-03` 发布到容器预览存储库。 
 * 此模型版本提供实体识别、缩写检测和延迟增强功能的改进。
 
 > [!div class="nextstepaction"]

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: d2abc357a5a636aa15909a3645e284c978fb903f
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b609d8389504eb10dd35a5ab74b0c198d3da57a6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197585"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090486"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -102,7 +102,7 @@ ms.locfileid: "98197585"
 > 你需要选择关键帐户将驻留在哪些目录中，以及所使用的管理工作站是由新的云服务托管，还是由现有进程托管。 使用现有的管理和标识预配流程可以降低一些风险，但也可能会造成攻击者入侵本地帐户并转向云的风险。 不妨对不同的角色（例如，IT 管理员与业务部门管理员）使用不同的策略。 您有两种选择： 第一种选择是，创建不与本地 Active Directory 实例同步的 Azure AD 帐户。 将管理工作站加入到 Azure AD，这样可以使用 Microsoft Intune 进行管理和修补。 第二种选择是，通过同步到本地 Active Directory 实例来使用现有的管理员帐户。 使用 Active Directory 域中的现有工作站来实现管理和安全性。
 
 ## <a name="manage-connected-tenants"></a>管理已连接的租户
-你的安全组织需要能够查看订阅来评估风险，并确定是否遵循了组织的策略和任何法规要求。 你应确保安全组织能够查看所有（通过 [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) 或[站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)）连接到生产环境和网络的订阅。 Azure AD 中的[全局管理员/公司管理员](../../active-directory/roles/permissions-reference.md#company-administrator-permissions)可以将自己的访问权限提升为[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色，并查看所有连接到环境的订阅和管理组。
+你的安全组织需要能够查看订阅来评估风险，并确定是否遵循了组织的策略和任何法规要求。 你应确保安全组织能够查看所有（通过 [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) 或[站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)）连接到生产环境和网络的订阅。 Azure AD 中的 [全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator-permissions) 可以将其访问权限提升到 " [用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator) " 角色，并查看连接到你的环境的所有订阅和管理组。
 
 请参阅[提升访问权限以管理所有 Azure 订阅和管理组](../../role-based-access-control/elevate-access-global-admin.md)，以确保你和你的安全组可以查看所有连接到环境的订阅或管理组。 你应该在评估风险后撤消此提升的访问权限。
 

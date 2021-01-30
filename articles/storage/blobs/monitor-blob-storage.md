@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 9224d02e36dbca96d3e54946330d3135ff811829
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 76f266ec915754b5746f06a340b21146b84fa711
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590760"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071658"
 ---
 # <a name="monitoring-azure-blob-storage"></a>监视 Azure Blob 存储
 
@@ -44,7 +44,7 @@ Azure Blob 存储使用 [Azure Monitor](../../azure-monitor/overview.md)，这�
 
 Azure Blob 存储会收集与其他 Azure 资源相同的监视数据，如 [监视 Azure 资源的数据](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)中所述。 
 
-有关 Azure Blob 存储创建的指标和日志指标的详细信息，请参阅 [Azure blob 存储监视数据参考](monitor-blob-storage-reference.md) 。
+有关 Azure Blob 存储创建的指标和日志指标的详细信息，请参阅 [Azure Blob 存储监视数据参考](monitor-blob-storage-reference.md) 。
 
 Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户。 Azure Monitor 不支持经典存储帐户。 如果要使用经典存储帐户上的指标或日志，则需要迁移到 Azure 资源管理器存储帐户。 请参阅[迁移到 Azure 资源管理器](../../virtual-machines/migration-classic-resource-manager-overview.md)。
 
@@ -87,7 +87,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 4. 选择 " **blob** " 作为要为其启用日志的存储类型。
 
-5. 单击“添加诊断设置”  。
+5. 单击“添加诊断设置”。
 
    > [!div class="mx-imgBorder"]
    > ![门户-资源日志-添加诊断设置](media/monitor-blob-storage/diagnostic-logs-settings-pane-2.png)
@@ -597,10 +597,10 @@ Blob 存储服务本身发出的请求，如日志创建或删除，则不记录
 
 **Azure 存储是否支持托管磁盘或非托管磁盘的指标？**
 
-不是。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
+否。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Azure Blob 存储创建的日志和指标的参考，请参阅 [Azure blob 存储监视数据参考](monitor-blob-storage-reference.md)。
+- 有关 Azure Blob 存储创建的日志和指标的参考，请参阅 [Azure Blob 存储监视数据参考](monitor-blob-storage-reference.md)。
 - 要了解如何监视 Azure 资源，请参阅[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)。
 - 要详细了解指标迁移，请参阅 [Azure 存储指标迁移](../common/storage-metrics-migration.md)。

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 01/21/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 8159010486371d619aa14a845050a0eb38aaeda8
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: d7f71afd1cf47ab1a94d984090e8fb52ee69c6b4
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683528"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99088932"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>如何：使用健康状况文本分析（预览）
 
@@ -26,8 +26,8 @@ ms.locfileid: "97683528"
 
 用于运行状况的文本分析是文本分析 API 服务的一项功能，它可从非结构化文本（如医生的说明、解雇汇总、临床文档和电子健康记录）中提取和标记相关的医疗信息。  使用此服务有两种方法： 
 
-* 基于 web 的 API (异步)  
-*  (同步的 Docker 容器)    
+* [基于 web 的 API (异步) ](#structure-the-api-request-for-the-hosted-asynchronous-web-api)
+* [ (同步的 Docker 容器) ](#hosted-asynchronous-web-api-response)   
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 
