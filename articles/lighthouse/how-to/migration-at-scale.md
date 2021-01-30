@@ -1,27 +1,27 @@
 ---
-title: 通过 Azure Migrate 大规模管理迁移项目
+title: 利用 Azure Lighthouse 管理大规模 Azure Migrate 项目
 description: 了解如何在委派的客户资源上有效使用 Azure Migrate。
-ms.date: 12/4/2020
+ms.date: 01/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 53f7c390d9f16dcbccbb1d09f46e63fec13eee2d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8e8ba21881ea5dad36ae640632b6307cd9a22a73
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788937"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093602"
 ---
-# <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>通过 Azure Migrate 大规模管理迁移项目
+# <a name="manage-azure-migrate-projects-at-scale-with-azure-lighthouse"></a>利用 Azure Lighthouse 管理大规模 Azure Migrate 项目
 
-作为服务提供商，你可能已将多个客户租户载入 [Azure Lighthouse](../overview.md)。 Azure Lighthouse 允许服务提供商同时在多个 Azure Active Directory (Azure AD) 租户执行大规模操作，使管理任务更高效。
+本主题概述了 [Azure Lighthouse](../overview.md) 如何帮助你跨多个 Azure Active Directory (Azure AD) 租户以可伸缩方式使用 [Azure Migrate](../../migrate/migrate-services-overview.md) 。
 
-[Azure Migrate](../../migrate/migrate-services-overview.md) 提供了一个集中式中心，用于评估和迁移到 Azure 本地服务器、基础结构、应用程序和数据。 通常，为多个客户执行大规模评估和迁移的合作伙伴必须使用 [CSP (云解决方案提供商) 订阅模型](/partner-center/customers-revoke-admin-privileges) 或 [在客户租户中创建来宾用户](../../active-directory/external-identities/what-is-b2b.md)，单独访问每个客户订阅。
+Azure Lighthouse 允许服务提供商同时在多个租户之间大规模执行操作，从而提高管理任务的效率。
+
+Azure Migrate 提供了一个集中化中心，用于评估本地服务器、基础结构、应用程序和数据并将其迁移到 Azure。 通常，为多个客户执行大规模评估和迁移的合作伙伴必须使用 [CSP (云解决方案提供商) 订阅模型](/partner-center/customers-revoke-admin-privileges) 或 [在客户租户中创建来宾用户](../../active-directory/external-identities/what-is-b2b.md)，单独访问每个客户订阅。
 
 使用 Azure Lighthouse 与 Azure Migrate 集成，服务提供商可以大规模发现、评估和迁移不同客户的工作负荷，同时允许客户完全查看和控制其环境。 通过 Azure 委派的资源管理，服务提供商可查看他们跨多个客户租户管理的所有 Azure Migrate 项目。
 
 > [!NOTE]
 > 合作伙伴可通过 Azure Lighthouse 为本地 VMware Vm、Hyper-v Vm、物理服务器和 AWS/GCP 实例执行发现、评估和迁移。 [VMWARE VM 迁移](../../migrate/server-migrate-overview.md)有两个选项。 目前，在委派的客户订阅中处理迁移项目时，只能使用基于代理的迁移方法;当前不支持使用无代理复制进行的迁移，因为它是对客户范围的委托访问。
-
-本主题概述了如何以可伸缩方式使用 [Azure Migrate](../../migrate/migrate-services-overview.md) 。
 
 > [!TIP]
 > 尽管我们指的是本主题中的服务提供商和客户，但本指南也适用于 [使用 Azure Lighthouse 管理多个租户的企业](../concepts/enterprise.md)。
@@ -72,11 +72,11 @@ ms.locfileid: "98788937"
 
 ## <a name="partner-recognition-for-customer-migrations"></a>用于客户迁移的合作伙伴识别
 
-作为 [Microsoft 合作伙伴网络](https://partner.microsoft.com)的成员，你可以将合作伙伴 ID 链接到用于管理委派的客户资源的凭据。 通过合作伙伴管理员链接 (PAL) ，Microsoft 可以根据你为客户执行的任务（包括迁移项目）对你的组织进行属性影响和 Azure 消耗收入。
+作为 [Microsoft 合作伙伴网络](https://partner.microsoft.com)的成员，你可以将合作伙伴 ID 链接到用于管理委派的客户资源的凭据。 这允许 Microsoft 根据你为客户执行的任务（包括迁移项目）对你的组织进行属性影响和 Azure 消耗收入。
 
 有关详细信息，请参阅[链接合作伙伴 ID 以跟踪对委派的资源的影响](partner-earned-credit.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Azure Migrate](../../migrate/migrate-services-overview.md)。
-- 了解[跨租户管理体验](../concepts/cross-tenant-management-experience.md)。
+- 详细了解 [Azure Migrate](../../migrate/migrate-services-overview.md)。
+- 了解 Azure Lighthouse 支持的其他 [跨租户管理体验](../concepts/cross-tenant-management-experience.md) 。

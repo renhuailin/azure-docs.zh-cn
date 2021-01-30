@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e38ca27606ecf04b08bd29867894ba269148260c
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 6ae8dbf6ffd2d827bbcd0fd723f63255d71d47a5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055240"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090784"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -40,7 +40,7 @@ ms.locfileid: "99055240"
 在你关注的 Microsoft 服务中以一种管理加报告的方式保护你的特权访问。 如果你有本地管理员帐户，请参阅[保护特权访问](/windows-server/identity/securing-privileged-access/securing-privileged-access)中提供的有关 Active Directory 中的本地和混合特权访问的指导。
 
 > [!NOTE]
-> 本文中的指南主要讲述 Azure Active Directory Premium 计划 P1 和 P2 中包括的 Azure Active Directory 功能。 Azure Active Directory Premium P2 包括在 EMS E5 套件和 Microsoft 365 E5 套件中。 本指南假定你的组织已经为你的用户购买 Azure AD Premium P2 许可证。 如果没有这些许可证，某些指南内容可能不适用于你的组织。 另外，本文中的“全局管理员”一词与“公司管理员”或“租户管理员”同义。
+> 本文中的指南主要讲述 Azure Active Directory Premium 计划 P1 和 P2 中包括的 Azure Active Directory 功能。 Azure Active Directory Premium P2 包括在 EMS E5 套件和 Microsoft 365 E5 套件中。 本指南假定你的组织已经为你的用户购买 Azure AD Premium P2 许可证。 如果没有这些许可证，某些指南内容可能不适用于你的组织。 此外，在本文中，"全局管理员" 这一术语与 "公司管理员" 或 "租户管理员" 的含义相同。
 
 ## <a name="develop-a-roadmap"></a>制定路线图
 
@@ -74,7 +74,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 启用 Azure AD Privileged Identity Management 之后，请执行以下操作：
 
-1. 使用充当 Azure AD 生产组织全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com/)。
+1. 使用作为 Azure AD 生产组织的全局管理员的帐户登录 [Azure 门户](https://portal.azure.com/) 。
 
 2. 若要选择你要在其中使用 Privileged Identity Management 的 Azure AD 组织，请选择 Azure 门户右上角的用户名。
 
@@ -93,7 +93,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 * Exchange 管理员
 * SharePoint 管理员
 
-如果组织中没有 Azure AD Privileged Identity Management，可以使用 [PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember)。 请从全局管理员角色开始，因为全局管理员在组织订阅的所有云服务中拥有相同的权限。 无论这些角色是在哪个位置分配的（在 Microsoft 365 管理中心分配、在 Azure 门户分配或者通过 Microsoft PowerShell 的 Azure AD 模块分配），都会授予这些权限。
+如果组织中没有 Azure AD Privileged Identity Management，可以使用 [PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember)。 从全局管理员角色开始，因为全局管理员在你的组织已订阅的所有云服务中具有相同的权限。 无论这些角色是在哪个位置分配的（在 Microsoft 365 管理中心分配、在 Azure 门户分配或者通过 Microsoft PowerShell 的 Azure AD 模块分配），都会授予这些权限。
 
 删除这些角色不再需要的任何帐户。 然后，对分配给管理员角色的剩余帐户进行分类：
 
@@ -110,7 +110,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 紧急访问帐户有助于限制 Azure AD 组织中的特权访问。 这些帐户拥有极高的特权，不要将其分配给特定的个人。 紧急访问帐户只能用于“破窗式”紧急情况，即不能使用正常管理帐户的情况。 务必控制和减少紧急帐户的使用，只在必要时使用。
 
-评估已经获得或有资格获得全局管理员角色的帐户。 如果使用 \*.onmicrosoft.com 域（用于“破窗式”紧急访问）看不到任何仅限云的帐户，请创建此类帐户。 有关详细信息，请参阅[在 Azure AD 中管理紧急访问管理帐户](security-emergency-access.md)。
+评估分配给全局管理员角色或符合全局管理员角色的帐户。 如果使用 \*.onmicrosoft.com 域（用于“破窗式”紧急访问）看不到任何仅限云的帐户，请创建此类帐户。 有关详细信息，请参阅[在 Azure AD 中管理紧急访问管理帐户](security-emergency-access.md)。
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>启用多重身份验证，并注册所有其他的特许权限高的单用户非联合管理员帐户
 
@@ -141,13 +141,13 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 #### <a name="identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts"></a>确定管理角色中那些需要切换到工作或学校帐户的 Microsoft 帐户
 
-如果初始全局管理员在开始使用 Azure AD 时重复使用其现有的 Microsoft 帐户凭据，请将 Microsoft 帐户替换为单个基于云的或同步的帐户。
+如果初始全局管理员在开始使用 Azure AD 时重复使用其现有 Microsoft 帐户凭据，请将 Microsoft 帐户替换为单独的基于云或已同步的帐户。
 
-#### <a name="ensure-separate-user-accounts-and-mail-forwarding-for-global-administrator-accounts"></a>对于全局管理员帐户，请确保使用单独的用户帐户和邮件转发功能
+#### <a name="ensure-separate-user-accounts-and-mail-forwarding-for-global-administrator-accounts"></a>确保全局管理员帐户的单独用户帐户和邮件转发
 
-个人电子邮件帐户经常会遭到网络攻击者的钓鱼攻击，这种风险使得全局管理员帐户不能使用个人电子邮件地址。 若要将 Internet 风险与管理权限隔离开来，请为每个具有管理权限的用户创建专用的帐户。
+个人电子邮件帐户经常被网络攻击者钓鱼，这是使个人电子邮件地址不能被全局管理员帐户接受的风险。 若要将 Internet 风险与管理权限隔离开来，请为每个具有管理权限的用户创建专用的帐户。
 
-* 请确保为用户创建单独的帐户以执行全局管理任务。
+* 请确保为用户创建单独的帐户以执行全局管理员任务。
 * 请确保全局管理员不会意外地打开电子邮件，也不会在其管理员帐户中运行程序。
 * 确保这些帐户将其电子邮件转发到工作邮箱。
 * 全局管理员 (和其他特权组) 帐户应为仅限云的帐户，而不会与本地 Active Directory 进行联系。
@@ -230,7 +230,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>完成对管理员角色用户的访问权限审核
 
-更多的公司用户是通过云服务获得特许访问权限的，因此可能会导致访问不受管理。 当今的用户可以成为 Microsoft 365 全局管理员、Azure 订阅管理员，或者获取对 VM 的管理访问权限或通过 SaaS 应用获取管理访问权限。
+更多的公司用户是通过云服务获得特许访问权限的，因此可能会导致访问不受管理。 如今，用户可以成为 Microsoft 365、Azure 订阅管理员的全局管理员，也可以通过 SaaS 应用对 Vm 或通过 SaaS 应用进行管理员访问。
 
 组织应让所有员工以非特权用户身份处理日常的业务事务，只在有需要时才向其授予管理权限。 完成访问评审，识别并确认有资格激活管理特权的用户。
 
@@ -431,7 +431,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与你的 SIEM 服务器集
 
 **问**：如果还没有实施任何安全访问组件，该怎么办？
 
-**答：** 定义至少两个“不受限”帐户，指定对特权管理员帐户实施 MFA，并将用户帐户与全局管理员帐户分开。
+**答案：** 定义至少两个中断玻璃帐户，将 MFA 分配给特权管理员帐户，并将用户帐户与全局管理员帐户分开。
 
 **问：** 在遭到攻击后，首先需要解决的最重要问题是什么？
 
@@ -439,9 +439,9 @@ Cloud App Security SIEM 代理将 Cloud App Security 与你的 SIEM 服务器集
 
 **问：** 如果停用了特权管理员，该怎么办？
 
-**答：** 请创建一个始终保持最新的全局管理员帐户。
+**答案：** 创建始终保持最新状态的全局管理员帐户。
 
-**问**：如果只剩下一位全局管理员，而该管理员联系不上，该怎么办？
+**问：** 如果只剩下一个全局管理员，并且无法访问，会发生什么情况？
 
 **答：** 使用其中一个“不受限”帐户，立即获取特许访问权限。
 

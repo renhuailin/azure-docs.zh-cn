@@ -7,53 +7,817 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 05/13/2020
+ms.date: 01/15/2021
 ms.author: aahi
-ms.openlocfilehash: 630f04bf2cc9e7de6331f9d25754a20fe2327d76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43864d3593fda986031cf9b59251b920672476bb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779242"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097248"
 ---
-将请求发送到终结点时，将返回以下实体类别 `/entities/recognition/general` 。
+文本分析的 NER 功能返回以下常规 (非标识) 实体类别。 例如，将请求发送到 `/entities/recognition/general` 终结点时。
 
-| 类别   | Subcategory | 说明                          | 开始模型版本                                                    | 注意 |
+
+| 类别 | 说明                          |
 |------------|-------------|--------------------------------------|-------------------------------------------------------------|--------------------------------------|
-| 人员     | 不适用         | 人员姓名。  | `2019-10-01`  | NER v 2.1 还返回 |
-| PersonType | 不适用         | 人员持有的作业类型或角色。 | `2020-02-01` | |
-|位置    | 不适用         | 自然和人为的特征点、结构、地理功能和地缘政治实体     |  `2019-10-01` | NER v 2.1 还返回 |
-|位置     | 地缘政治实体 (GPE)         | 城市、国家/地区、州。      | `2020-02-01` | |
-|位置     | Structural                       | 人造结构。 | `2020-04-01` | |
-|位置     | 出于       | 地理和自然功能，如河流、海洋和盛夏。 |  `2020-04-01` | |
-|组织  | 不适用 | 公司、政治组、音乐带、运动俱乐部、政府机构和公共组织。  | `2019-10-01` | 各族和 religions 不包含在此实体类型中。 NER v 2.1 还返回 |
-|组织 | 医疗 | 医疗公司和团队。 | `2020-04-01` |  |
-|组织 | 股票兑换 | 股票兑换组。 | `2020-04-01` | |
-| 组织 | 体育游戏 | 与体育相关的组织。 | `2020-04-01` |  |
-| 事件  | 不适用 | 历史事件、社交事件和自然发生事件。 | `2020-02-01` |  |
-| 事件  | 区域性 | 文化活动和假期。 | `2020-04-01` | |
-| 事件  | Natural | 自然发生的事件。 | `2020-04-01` |  |
-| 事件  | 体育游戏 | 体育活动。  | `2020-04-01` | |
-| 产品 | 不适用 | 各种类别的物理对象。 | `2020-02-01` | |
-| 产品 | 计算产品 | 计算产品。 |  `2020-02-01 ` | |
-| 技能 | 不适用 | 功能、技能或专业知识。 | `2020-02-01` |  |
-| 地址 | 不可用 | 完整的邮件地址。  | `2020-04-01` |  |
-| PhoneNumber | 不适用 | 电话号码仅)  (美国和欧盟电话号码。 | `2019-10-01` | NER v 2.1 还返回 |
-| 电子邮件 | 不适用 | 电子邮件地址。 | `2019-10-01` | NER v 2.1 还返回 |
-| URL | 不适用 | 指向网站的 Url。 | `2019-10-01` | NER v 2.1 还返回  |
-| IP | 不适用 | 网络 IP 地址。 | `2019-10-01` | NER v 2.1 还返回 |
-| DateTime | 不适用 | 日期和时间。 | `2019-10-01` | NER v 2.1 还返回 | 
-| DateTime | Date | 日历日期。 | `2019-10-01` | NER v 2.1 还返回 |
-| DateTime | 时间 | 当天的时间 | `2019-10-01` | NER v 2.1 还返回 |
-| DateTime | DateRange | 日期范围。 | `2019-10-01` | NER v 2.1 还返回 |
-| DateTime | TimeRange | 时间范围。 | `2019-10-01` | NER v 2.1 还返回 |
-| DateTime | 持续时间 | 持续. | `2019-10-01` | NER v 2.1 还返回 |
-| DateTime | 设置 | 集、重复的时间。 |  `2019-10-01` | NER v 2.1 还返回 |
-| 数量 | 不适用 | 数字和数字。 | `2019-10-01` | NER v 2.1 还返回  |
-| 数量 | Number | 数字。 | `2019-10-01` | NER v 2.1 还返回 |
-| 数量 | 百分比 | 形式.| `2019-10-01` | NER v 2.1 还返回 |
-| 数量 | Ordinal | 序数。 | `2019-10-01` | NER v 2.1 还返回 |
-| 数量 | Age | 年龄段. | `2019-10-01` |  NER v 2.1 还返回 |
-| 数量 | 货币 | 成员国. | `2019-10-01` | NER v 2.1 还返回 |
-| 数量 | 维度 | 维度和度量。 | `2019-10-01` | NER v 2.1 还返回 |
-| 数量 | 温度 | 低温. | `2019-10-01` | NER v 2.1 还返回 |
+| [Person](#category-person)     | 人员姓名。  |
+| [PersonType](#category-persontype) | 某人的工作类型或角色。 |
+| [位置](#category-location)    | 自然地标和人造地标、结构、地理特征和地缘政治实体 |
+| 组织  | 公司、政治团体、乐队、体育俱乐部、政府机构和公共组织。  |
+| [事件](#category-event)  | 历史事件、社会事件和自然发生的事件。 |
+| [产品](#category-product) | 各种类别的物理对象。 |
+| [Skill](#category-skill) | 能力、技能或专长。  |
+| [Address](#category-address) | 完整的邮寄地址。  |
+| [电话号码](#category-phonenumber) | 电话号码。 |
+| [Email](#category-email) | 电子邮件地址。 |
+| [URL](#category-url) | 指向网站的 URL。 |
+| [IP](#category-ip) | 网络 IP 地址。 |
+| [DateTime](#category-datetime) | 某天的日期和时间。 |
+
+
+### <a name="category-person"></a>类别： Person
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        人员
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        人员姓名。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `ar`, `cs`, `da`, `nl`, `en`, `fi`, `fr`, `de`, `he`, <br> `hu`, `it`, `ja`, `ko`, `no`, `pl`, `pt-br`, `pt`-`pt`, `ru`, `es`, `sv`, `tr`   
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-persontype"></a>类别： PersonType
+
+此类别包含以下实体：
+
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        PersonType
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        人员持有的作业类型或角色
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-location"></a>类别：位置
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        位置
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        自然和人工特征点、结构、地理特征和地缘政治实体。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `ar`, `cs`, `da`, `nl`, `en`, `fi`, `fr`, `de`, `he`, `hu`, `it`, `ja`, `ko`, `no`, `pl`, `pt-br`, `pt-pt`, `ru`, `es`, `sv`, `tr`   
+      
+   :::column-end:::
+:::row-end:::
+
+#### <a name="subcategories"></a>类别
+
+此类别中的实体可以具有以下子类别。
+
+:::row:::
+    :::column span="":::
+        **实体子类别**
+
+        地缘政治实体 (GPE)
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        城市、国家/地区、省/自治区/直辖市。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Structural
+
+    :::column-end:::
+    :::column span="2":::
+
+        人造结构。 
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        地理
+
+    :::column-end:::
+    :::column span="2":::
+
+        地理和自然特征，如河流、海洋和沙漠。
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-organization"></a>类别：组织
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        组织
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        公司、政治团体、乐队、体育俱乐部、政府机构和公共组织。 民族和宗教不包括在此实体类型中。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `ar`, `cs`, `da`, `nl`, `en`, `fi`, `fr`, `de`, `he`, `hu`, `it`, `ja`, `ko`, `no`, `pl`, `pt-br`, `pt-pt`, `ru`, `es`, `sv`, `tr`   
+      
+   :::column-end:::
+:::row-end:::
+
+#### <a name="subcategories"></a>类别
+
+此类别中的实体可以具有以下子类别。
+
+:::row:::
+    :::column span="":::
+        **实体子类别**
+
+        医疗
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        医疗公司和团体。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        证券交易
+
+    :::column-end:::
+    :::column span="2":::
+
+        证券交易所集团。 
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        体育游戏
+
+    :::column-end:::
+    :::column span="2":::
+
+        与体育相关的组织。
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-event"></a>Category：事件
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        事件
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        历史事件、社会事件和自然发生的事件。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`、 `es` 、 `fr` 、 `de` 、 `it` 、 `zh-hans` 、 `ja` 、 `ko` `pt-pt` 和 `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+
+#### <a name="subcategories"></a>类别
+
+此类别中的实体可以具有以下子类别。
+
+:::row:::
+    :::column span="":::
+        **实体子类别**
+
+        文化
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        文化活动和假期。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Natural
+
+    :::column-end:::
+    :::column span="2":::
+
+        自然发生的事件。
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        体育游戏
+
+    :::column-end:::
+    :::column span="2":::
+
+        体育活动。
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-product"></a>类别：产品
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        产品
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        各种类别的物理对象。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+
+
+#### <a name="subcategories"></a>类别
+
+此类别中的实体可以具有以下子类别。
+
+:::row:::
+    :::column span="":::
+        **实体子类别**
+
+        计算产品
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        计算产品。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-skill"></a>类别：技能
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        技能
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        能力、技能或专长。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`  
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-address"></a>类别：地址
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        地址
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        完整的邮件地址。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-phonenumber"></a>类别： PhoneNumber
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        PhoneNumber
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        电话号码（仅限美国和欧洲电话号码）。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt` `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-email"></a>类别：电子邮件
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        电子邮件
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        电子邮件地址。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-url"></a>类别： URL
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        URL
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        指向网站的 URL。 
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-ip"></a>类别： IP
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        IP
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        网络 IP 地址。 
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-datetime"></a>Category： DateTime
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        DateTime
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        某天的日期和时间。 
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+此类别中的实体可以具有以下子类别
+
+#### <a name="subcategories"></a>类别
+
+此类别中的实体可以具有以下子类别。
+
+:::row:::
+    :::column span="":::
+        **实体子类别**
+
+        Date
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        日历日期。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        时间
+
+    :::column-end:::
+    :::column span="2":::
+
+        当天的时间。
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        DateRange
+
+    :::column-end:::
+    :::column span="2":::
+
+        日期范围。
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        TimeRange
+
+    :::column-end:::
+    :::column span="2":::
+
+        时间范围。
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        持续时间
+
+    :::column-end:::
+    :::column span="2":::
+
+        持续时间。
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        设置
+
+    :::column-end:::
+    :::column span="2":::
+
+        集，重复的时间。
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-quantity"></a>类别：数量
+
+此类别包含以下实体：
+
+:::row:::
+    :::column span="":::
+        **实体**
+
+        数量
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        数字和数量。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+#### <a name="subcategories"></a>类别
+
+此类别中的实体可以具有以下子类别。
+
+:::row:::
+    :::column span="":::
+        **实体子类别**
+
+        数字
+
+    :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        数字。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+        百分比
+
+    :::column-end:::
+    :::column span="2":::
+
+        百分比
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+        序数
+
+    :::column-end:::
+    :::column span="2":::
+
+        序号。
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+        Age
+
+    :::column-end:::
+    :::column span="2":::
+
+        年龄。
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+        货币
+
+    :::column-end:::
+    :::column span="2":::
+
+        成员国
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+        维度
+
+    :::column-end:::
+    :::column span="2":::
+
+        维度和度量。
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+        温度
+
+    :::column-end:::
+    :::column span="2":::
+
+        温度。
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::

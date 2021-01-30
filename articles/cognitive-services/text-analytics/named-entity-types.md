@@ -8,18 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 01/22/2021
 ms.author: aahi
-ms.openlocfilehash: 77b75b1134bbc8366478b1f9f4d14e86e9684f70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 883c5a20612f4dab44c0d06776ee287b27174ab9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91709196"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097250"
 ---
 # <a name="supported-entity-categories-in-the-text-analytics-api-v3"></a>文本分析 API v3 中支持的实体类别
 
-使用本文查找可通过 [命名实体识别](how-tos/text-analytics-how-to-entity-linking.md) (NER) 返回的实体类别。 还提供了 NER 3.1 版本的预览版，其中包括检测个人 (`PII`) 和运行状况 (`PHI`) 信息的能力。 此外，单击 " **运行状况** " 选项卡以查看文本分析 for Health 中支持的类别列表。
+使用本文查找[命名实体识别](how-tos/text-analytics-how-to-entity-linking.md) (NER) 可以返回的实体类别。 NER 运行预测模型来识别输入文档中的命名实体并对其分类。
+
+用户也可预览 NER v3.1，其中包括检测个人 (`PII`) 信息和运行状况 (`PHI`) 信息的功能。 此外，单击“运行状况”选项卡可以查看运行状况文本分析中支持的类别的列表。 
+
+可以在[迁移指南](migration-guide.md?tabs=named-entity-recognition)中找到版本2.1 返回的类型列表
 
 ## <a name="entity-categories"></a>实体类别
 
@@ -35,8 +39,8 @@ ms.locfileid: "91709196"
 
 [!INCLUDE [biomedical entity types](./includes/entity-types/health-entities.md)]
 
-***
+**_
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何在文本分析中使用命名实体识别](how-tos/text-analytics-how-to-entity-linking.md)
+[如何在文本分析中使用命名实体识别](how-tos/text-analytics-how-to-entity-linking.md)

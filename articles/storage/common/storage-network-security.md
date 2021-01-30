@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 5a1ad898b745bbb49421c1bc0b5a9b2e5c8ec0f6
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: c8807f0200f96dc12a3b3d43fa50a91bec85ed38
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985984"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071173"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -590,8 +590,8 @@ az storage account network-rule list \
 | Azure IoT 中心                  | Microsoft.Devices/IotHubs              | 允许将 IoT 中心的数据写入 Blob 存储。 [了解详细信息](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详细信息](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
 | Azure 机器学习服务 | Microsoft.MachineLearningServices      | 经过授权的 Azure 机器学习工作区将实验输出、模型和日志写入 Blob 存储并读取数据。 [了解详细信息](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources)。 | 
-| Azure Synapse Analytics       | Microsoft.Sql                          | 允许使用 COPY 语句或 PolyBase 通过特定 SQL 数据库导入和导出数据。 [了解详细信息](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)。 |
-| Azure SQL 数据库       | Microsoft.Sql                          | 允许从存储帐户[导入](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage)数据，并将审核数据[写入](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md)防火墙后的存储帐户。 |
+| Azure Synapse Analytics       | Microsoft.Sql                          | 允许使用) 中的 COPY 语句或 PolyBase (或 `openrowset` 无服务器池中的函数和外部表，从特定的 SQL 数据库导入和导出数据。 [了解详细信息](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)。 |
+| Azure SQL 数据库       | Microsoft.Sql                          | 允许将审核数据 [写入](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) 防火墙后面的存储帐户。 |
 | Azure 流分析         | Microsoft.StreamAnalytics             | 用于将流式处理作业中的数据写入 Blob 存储。 [了解详细信息](../../stream-analytics/blob-output-managed-identity.md)。 |
 | Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 允许从 Azure Synapse Analytics 访问 Azure 存储中的数据。 |
 

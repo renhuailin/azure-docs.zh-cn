@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 509a3ac383cebd91821e9c4b872c253ab3b0a947
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a321b2eb79ea01bbf94e1a413c189ac7f4614ad
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005854"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096417"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>通过 Azure 门户进行 StorSimple 虚拟阵列的灾难恢复和设备故障转移
 
@@ -156,7 +156,7 @@ ms.locfileid: "96005854"
     1. 选择并单击在故障转移过程中用作目标设备的 StorSimple 设备。
     2. 转到“设置”>“管理”>“共享”或“卷”（如果是 iSCSI 服务器）。 在“共享”边栏选项卡中，可以查看旧设备上的所有共享（卷）。
         ![设备边栏选项卡的屏幕截图。 列出的目标设备的状态为 "联机"。](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. 需要[创建 DNS 别名](https://support.microsoft.com/kb/168322)，以使要尝试连接的所有应用程序都能重定向到新设备。
+14. 需要[创建 DNS 别名](https://web.archive.org/web/20150307000707/http://support.microsoft.com:80/kb/168322)，以使要尝试连接的所有应用程序都能重定向到新设备。
 
 ## <a name="errors-during-dr"></a>在 DR 期间出错
 

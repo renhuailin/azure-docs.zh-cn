@@ -13,12 +13,12 @@ ms.date: 01/11/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a313633c6c1799136b8b8911ae780ca13be5d2c3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5b3f7f8016d9b5da70d76322aead551613b8d9c3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756128"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090215"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -48,7 +48,7 @@ OAuth 2.0 授权代码授予可用于设备上所安装的应用，以访问受�
 
 ## <a name="request-an-authorization-code"></a>请求授权代码
 
-授权代码流始于客户端将用户定向到 `/authorize` 终结点。 在此请求中，客户端向用户请求 `openid`、`offline_access` 和 `https://graph.microsoft.com/mail.read ` 权限。  某些权限受管理员限制，例如，使用 `Directory.ReadWrite.All` 将数据写入组织的目录。 如果应用程序向组织用户请求访问以下权限之一，则用户会收到错误消息，显示他们未经授权，无法同意应用的权限。 若要请求访问受管理员限制的范围，应该直接向公司管理员请求。  有关详细信息，请参阅[管理员限制的权限](v2-permissions-and-consent.md#admin-restricted-permissions)。
+授权代码流始于客户端将用户定向到 `/authorize` 终结点。 在此请求中，客户端向用户请求 `openid`、`offline_access` 和 `https://graph.microsoft.com/mail.read ` 权限。  某些权限受管理员限制，例如，使用 `Directory.ReadWrite.All` 将数据写入组织的目录。 如果应用程序向组织用户请求访问以下权限之一，则用户会收到错误消息，显示他们未经授权，无法同意应用的权限。 若要请求访问管理员限制的作用域，你应直接从全局管理员请求它们。  有关详细信息，请参阅[管理员限制的权限](v2-permissions-and-consent.md#admin-restricted-permissions)。
 
 ```
 // Line breaks for legibility only

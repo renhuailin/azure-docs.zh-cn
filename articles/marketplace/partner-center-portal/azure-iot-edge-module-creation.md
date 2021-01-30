@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 62cb8db094cf1bfd7d81b1da06dd7a1b743ec045
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 23af7b3f7cfd5ec0531c5cac73cf8a334ef4aa62
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347476"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096434"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>创建 IoT Edge 模块产品/服务
 
@@ -94,9 +94,9 @@ ms.locfileid: "93347476"
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
 - 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用** "。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
-请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 在 marketplace 中，IoT Edge 模块始终显示在 "  **物联网**  >  **IoT Edge" 模块** "   类别下。
+请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 在 marketplace 中，IoT Edge 模块始终显示在 " **物联网**  >  **IoT Edge" 模块**"   类别下。
 
 #### <a name="legal"></a>合法
 
@@ -236,8 +236,8 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 5. 隐私策略地址 (链接) 
 6. 名称
 7. 总结
-8. 描述
-9. 有用的链接
+8. 说明
+9. 有用链接
 10. 屏幕截图/视频
 
 <br>下面是有关如何在 Azure Marketplace 搜索结果中显示产品/服务的示例：
@@ -257,8 +257,8 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 #### <a name="call-out-descriptions"></a>拨出说明
 
 1. 名称
-2. 描述
-3. 有用的链接
+2. 说明
+3. 有用链接
 4. 屏幕截图
 
 <br>下面是一个示例，说明了产品/服务信息在 "Azure 门户搜索" 结果中的显示方式：
@@ -336,7 +336,7 @@ IoT Edge 模块产品/服务的所有计划自动在 **Azure Global** 中提供�
 
 #### <a name="azure-government-certifications"></a>Azure 政府认证
 
-仅当在 " **azure 区域** " 下选择了 " **azure 政府** " 时，此选项才可见。
+仅当在 " **azure 区域**" 下选择了 " **azure 政府**" 时，此选项才可见。
 
 Azure 政府服务处理符合特定政府法规和要求的数据。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。 为了让受众注意到你在这些计划上获得的认证，可以提供最多 100 个链接来描述你的认证。 这些链接可以直接链接到你在这些计划上获得的认证一览，也可以链接到你自己的网站。 这些链接只对 Azure 政府客户可见。
 
@@ -411,7 +411,7 @@ Azure 资源组名称：提供包含具有容器映像的 Azure 容器注册表�
 
 Azure 容器注册表名称：提供包含容器映像的 [Azure 容器注册表](../../container-registry/container-registry-intro.md)的名称。 容器注册表必须位于你前面提供的 Azure 资源组中。 只提供注册表名称，而不提供完整的登录服务器名称。 请务必从名称中省略 azurecr.io。 可以在 Azure 门户的[“容器注册表”页](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到注册表名称。
 
-**Azure 容器注册表的管理员用户名** ：提供与具有容器映像的 Azure 容器注册表关联) 的 [管理员用户名](../../container-registry/container-registry-authentication.md#admin-account) 。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
+**Azure 容器注册表的管理员用户名**：提供与具有容器映像的 Azure 容器注册表关联) 的 [管理员用户名](../../container-registry/container-registry-authentication.md#admin-account) 。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
 
 :::image type="content" source="media/example-iot-update-container-registry.png" alt-text="展示了“更新容器注册表”对话框。":::
 
@@ -425,11 +425,14 @@ Azure 容器注册表名称：提供包含容器映像的 [Azure 容器注册表
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. 访问密钥
+1. 访问键
 2. 用户名
 3. 密码
 
 Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器注册表存储库的名称。 可以在将映像推送到注册表时指定存储库名称。 若要查找存储库名称，可以依次转到[容器注册表](https://azure.microsoft.com/services/container-registry/) > “存储库”页。 有关详细信息，请参阅[在 Azure 门户中查看容器注册表存储库](../../container-registry/container-registry-repositories.md)。 请注意，名称一经设置便不可更改。 请对你帐户中的每个产品/服务使用唯一名称。
+
+> [!NOTE]
+> 我们不支持将加密的 Azure 容器注册表用于 Edge 模块认证。 应在不启用加密的情况下创建 Azure 容器注册表。
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>新版产品/服务的映像标记
 
@@ -488,7 +491,7 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 
 若要提交产品/服务进行发布，请选择“发布”。
 
-我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 " **上线** "。
+我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 " **上线**"。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 1/29/2021
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12b5c95b67f8fada29914d3a8de559280e6145f8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 6da71db47e396ee1d699cbc72dd51b5c7f9b1a12
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724214"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091456"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -38,6 +38,190 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 本页面每月更新，请不时回来查看。 如果你要查找的项超过六个月，则可以在存档中查找 [Azure Active Directory 中的新增功能](whats-new-archive.md)。
 
 ---
+## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="secret-token-will-be-a-mandatory-field-when-configuring-provisioning"></a>配置预配时，机密令牌将为必填字段
+
+**类型：** 更改计划  
+**服务类别：** 应用预配  
+**产品功能：** 标识生命周期管理
+
+过去，在自定义/BYOA 应用程序上设置设置时，"机密令牌" 字段可能会保留为空。 此函数旨在仅用于测试。 我们将更新 UI，以使字段成为必填字段。 
+
+客户可通过使用浏览器 URL 中的功能标志解决这一要求，以便进行测试。 [了解详细信息](../app-provisioning/use-scim-to-provision-users-and-groups.md#authorization-for-provisioning-connectors-in-the-application-gallery)。
+ 
+---
+
+### <a name="public-preview---customize-and-configure-android-shared-devices-for-firstline-workers-at-scale"></a>公共预览版-大规模自定义和配置适用于 Firstline 工作人员的 Android 共享设备
+
+**类型：** 新功能  
+**服务类别：** 设备注册和管理  
+**产品功能：** 标识安全和保护
+ 
+Azure AD 和 Microsoft 终结点管理器团队组合在一起，可自定义、缩放和保护 Firstline 工作线程设备。
+
+以下预览功能将允许你：
+- 通过 Microsoft 终结点管理器大规模预配 Android 共享设备
+- 使用基于设备的条件访问保护对倒班辅助角色的访问
+- 通过托管主屏幕为倒班 worker 自定义登录体验
+
+若要了解详细信息，请参阅 [自定义和配置规模为 Firstline 的辅助角色的共享设备](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/customize-and-configure-shared-devices-for-firstline-workers-at/ba-p/1751708)。
+
+---
+
+### <a name="public-preview---provisioning-logs-can-now-be-downloaded-as-a-csv-or-json"></a>公共预览版-预配日志现在可以下载为 CSV 或 JSON
+
+**类型：** 新功能  
+**服务类别：** 应用预配  
+**产品功能：** 标识生命周期管理
+
+客户可以通过 UI 和通过图形 API 将预配日志作为 CSV 或 JSON 文件下载。 若要了解详细信息，请参阅 [在 Azure Active Directory 门户中预配报表](../reports-monitoring/concept-provisioning-logs.md)。
+
+---
+
+### <a name="public-preview---assign-cloud-groups-to-azure-ad-custom-roles-and-admin-unit-scoped-roles"></a>公共预览-将云组分配到 Azure AD 自定义角色和管理单元范围的角色
+
+**类型：** 新功能  
+**服务类别：** RBAC  
+**产品功能：** 访问控制
+ 
+客户可将云组分配到 Azure AD 自定义角色或管理单元范围的角色。 若要了解如何使用此功能，请参阅 [使用云组管理 Azure Active Directory 中的角色分配](../roles/groups-concept.md)。
+
+---
+
+### <a name="general-availability---azure-ad-connect-cloud-sync-previously-known-as-cloud-provisioning"></a>公开上市-Azure AD Connect 云同步 (之前称为云预配) 
+
+**类型：** 新功能  
+**服务类别：** Azure AD Connect 云同步  
+**产品功能：** 标识生命周期管理
+ 
+Azure AD Connect 云同步现已正式提供给所有客户。
+
+Azure AD Connect 云将转换逻辑的重提升量转移到了云，从而减少了本地占用量。 此外，有多个轻型代理部署可用于提高同步可用性。 [了解详细信息](https://aka.ms/cloudsyncGA)。
+ 
+---
+### <a name="general-availability---attack-simulation-administrator-and-attack-payload-author-built-in-roles"></a>公开发布-攻击模拟管理员和攻击负载作者内置角色
+
+**类型：** 新功能  
+**服务类别：** RBAC  
+**产品功能：** 访问控制
+ 
+Role-Based 访问控制中的两个新角色可分配给用户、攻击模拟管理员和攻击负载作者。 
+
+[攻击模拟管理员](../roles/permissions-reference.md#attack-simulation-administrator)角色中的用户可以访问租户中的所有模拟，并可以：
+- 创建和管理攻击模拟创建的所有方面
+- 启动/计划模拟
+-  查看模拟结果。 
+
+[攻击负载作者](../roles/permissions-reference.md#attack-payload-author)角色中的用户可以创建攻击负载，但实际上不会启动或计划它们。 然后，租户中的所有管理员都可以使用攻击有效负载创建模拟。
+
+---
+
+### <a name="general-availability---usage-summary-reports-reader-built-in-role"></a>公开上市-使用情况摘要报表读者内置角色
+
+**类型：** 新功能  
+**服务类别：** RBAC  
+**产品功能：** 访问控制
+ 
+使用 "使用情况摘要报表读者" 角色的用户可以访问租户级别的聚合数据，并 Microsoft 365 管理中心中的相关见解来实现使用情况和效率评分。 但是，他们无法访问任何用户级别的详细信息或见解。 
+
+对于这两个报表 Microsoft 365 管理中心，我们区分租户级别的聚合数据和用户级别的详细信息。 此角色向单独的用户可识别数据添加了额外的保护层。 [了解详细信息](../roles/permissions-reference.md#usage-summary-reports-reader)。
+
+---
+
+### <a name="general-availability---require-app-protection-policy-grant-in-azure-ad-conditional-access"></a>公开上市-需要 Azure AD 条件访问中的应用保护策略授予
+
+**键入：** 新功能  
+**服务类别：** 条件访问  
+**产品功能：** 标识安全和保护
+ 
+现已为 "需要应用保护策略" Azure AD 条件访问授予。 
+
+该策略提供了以下功能：
+- 仅在使用支持 Intune 应用保护的移动应用程序时才允许访问
+- 仅当用户将 Intune 应用保护策略传递到移动应用程序时才允许访问
+
+在 [此处](../conditional-access/app-protection-based-conditional-access.md)了解有关如何为应用保护设置条件访问策略的详细信息。
+ 
+---
+
+### <a name="general-availability---email-one-time-passcode"></a>公开发布-电子邮件 One-Time 密码
+
+**类型：** 新功能  
+**服务类别：** B2B  
+**产品功能：** B2B/B2C
+ 
+通过电子邮件 OTP，世界各地的组织可以通过电子邮件发送链接或邀请来与他人进行协作。 受邀用户可以使用发送到其电子邮件的一次性密码来验证其身份，以便访问其合作伙伴的资源。 [了解详细信息](../external-identities/one-time-passcode.md)。 
+ 
+---
+
+ ### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---january-2021"></a>Azure AD 应用程序库中的新预配连接器-2021 年1月
+
+**类型：** 新功能  
+**服务类别：** 应用预配  
+**产品功能：** 第三方集成
+ 
+现在，可以为这些新集成的应用自动创建、更新和删除用户帐户：
+- [Fortes Change Cloud](../saas-apps/fortes-change-cloud-provisioning-tutorial.md)
+- [Gtmhub](../saas-apps/gtmhub-provisioning-tutorial.md)
+- [monday.com](../saas-apps/mondaycom-provisioning-tutorial.md)
+- [Splashtop](../saas-apps/splashtop-provisioning-tutorial.md)
+- [Templafy OpenID Connect](../saas-apps/templafy-openid-connect-provisioning-tutorial.md)
+- [WEDO](../saas-apps/wedo-provisioning-tutorial.md)
+
+有关详细信息，请参阅 [什么是 Azure AD 中的自动 SaaS 应用用户预配？](../app-provisioning/user-provisioning.md)
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---january-2021"></a>Azure AD 应用程序库中提供了新的联合应用程序-2021 年1月
+
+**类型：** 新功能  
+**服务类别：** 企业应用  
+**产品功能：** 第三方集成
+
+2021年1月，我们已在应用程序库中添加了以下29个新应用程序，并提供联合支持：
+
+[mySCView](https://dev.myscview.com/)、 [Talentech](https://talentech.com/contact/)、 [Bipsync](https://www.bipsync.com/)、 [OroTimesheet](https://app.orotimesheet.com/login.php)、 [Mio](https://app.m.io/auth/install/microsoft?scopetype=hub)、 [SOVELTO](https://login.soveltoeasy.fi/) [Supportbench](https://account.supportbench.net/agent/login/)，[Bienvenue 构造](https://formation.bienvenue.pro/login)， [AIDA 医疗保健 SSO](https://aidaforparents.com/login/organizations)，[国际 SOS 援助产品](../saas-apps/international-sos-assistance-products-tutorial.md)， [NAVEX One](../saas-apps/navex-one-tutorial.md)， [LabLog](../saas-apps/lablog-tutorial.md)，Oktopost [SAML](../saas-apps/oktopost-saml-tutorial.md)，EPHOTO [DAM](../saas-apps/ephoto-dam-tutorial.md)，[观念](../saas-apps/notion-tutorial.md)， [Syndio，](../saas-apps/syndio-tutorial.md) [Yello Enterprise](../saas-apps/yello-enterprise-tutorial.md)， [Timeclock 365 SAML](../saas-apps/timeclock-365-saml-tutorial.md)， [Nalco E-数据](https://www.ecolab.com/)，[空缺 Filler](https://app.vacancy-filler.co.uk/VFMVC/Account/Login)，Synerise [AI 增长生态系统](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md)， [Imperva 数据安全](../saas-apps/imperva-data-security-tutorial.md)， [Illusive 网络](../saas-apps/illusive-networks-tutorial.md)， [Proware](../saas-apps/proware-tutorial.md) [，](../saas-apps/perimeter-81-tutorial.md)Splan[访问者，](../saas-apps/splan-visitor-tutorial.md) [Aruba 用户](https://docs.microsoft.com/azure/active-directory/saas-apps/burp-suite-enterprise-edition-tutorial)[体验见解，](../saas-apps/aruba-user-experience-insight-tutorial.md) [Contentsquare 81](../saas-apps/contentsquare-sso-tutorial.md)
+
+你还可以从此处查找所有应用程序的文档 https://aka.ms/AppsTutorial
+
+若要在 Azure AD 应用库中列出你的应用程序，请阅读此处的详细信息 https://aka.ms/AzureADAppRequest 
+
+---
+
+### <a name="public-preview---second-level-manager-can-be-set-as-alternate-approver"></a>公共预览版-第二级经理可以设置为备用审批者
+
+**类型：** 已更改的功能  
+**服务类别：** 用户访问管理  
+**产品功能：** 权利管理
+ 
+当你选择 "审批者" 时，可以使用其他选项。 如果为第一个审批者选择了 "经理作为审批者"，则可以选择另一个选项，即 "作为备用审批者的第二级经理"，可以在 "备用审批者" 字段中进行选择。 如果选择此选项，则需要添加后备审批者，以便在系统找不到二级管理员的情况下将请求转发给该审批者。 [了解详细信息](../governance/entitlement-management-access-package-approval-policy.md#alternate-approvers)
+ 
+---
+
+### <a name="general-availability---navigate-to-teams-directly-from-my-access-portal"></a>公开上市-直接从我的访问门户导航到团队
+
+**类型：** 已更改的功能  
+**服务类别：** 用户访问管理  
+**产品功能：** 权利管理
+ 
+你现在可以直接从 "我的 Access" 门户启动团队。 
+
+为此，请登录到 "我的 Access (https://myaccess.microsoft.com/) ，导航到" 访问包 "，然后转到" 活动 "选项卡以查看您有权访问的所有访问包。 展开所选访问包并将其悬停在团队中时，可以通过单击 "打开" 按钮启动它。 [了解详细信息](../governance/entitlement-management-request-access.md)。
+ 
+---
+
+### <a name="improved-logging--end-user-prompts-for-risky-guest-users"></a>改善了日志记录 & End-User 为有风险的来宾用户提供提示
+
+**类型：** 已更改的功能  
+**服务类别：** 标识保护  
+**产品功能：** 标识安全和保护
+ 
+
+已更新有风险的来宾用户的日志记录和 End-User 提示。 详细了解 [Identity Protection 和 B2B 用户](../identity-protection/concept-identity-protection-b2b.md)。
+ 
+---
+ 
 ## <a name="december-2020"></a>2020 年 12 月
 
 ### <a name="public-preview---azure-ad-b2c-phone-sign-up-and-sign-in-using-built-in-policy"></a>公共预览版-使用内置策略 Azure AD B2C 手机注册和登录
@@ -46,7 +230,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 **服务类别：** B2C - 用户标识管理  
 **产品功能：** B2B/B2C
  
-使用内置策略的 B2C 手机注册和登录可让组织的 IT 管理员和开发人员允许最终用户使用用户流中的电话号码进行登录和注册。 有关详细信息，请参阅为 [用户流 (预览设置电话注册和登录) ](../../active-directory-b2c/phone-authentication-user-flows.md) 。
+使用内置策略的 B2C 手机注册和登录可让组织的 IT 管理员和开发人员允许最终用户登录并使用用户流中的电话号码进行注册。 有关详细信息，请参阅为 [用户流 (预览设置电话注册和登录) ](../../active-directory-b2c/phone-authentication-user-flows.md) 。
 
 ---
 
@@ -129,7 +313,7 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
 **类型：** 已更改的功能  
 **服务类别：** 用户访问管理 **产品功能：** 权利管理
 
-你现在可以直接从我的访问门户启动团队。 为此，请登录到 ["我的访问](https://myaccess.microsoft.com/)"，导航到 " **访问包**"，然后转到 " **活动** " 选项卡以查看你有权访问的所有访问包。 展开访问包并将鼠标悬停在团队中时，可以通过单击 " **打开** " 按钮启动该访问包。 
+你现在可以直接从我的访问门户启动团队。 为此，请登录到 ["我的访问](https://myaccess.microsoft.com/)"，导航到 " **访问包**"，然后转到 " **活动** " 选项卡以查看你有权访问的所有访问包。 展开访问包并将鼠标悬停在团队中时，可以通过单击 " **打开** " 按钮启动。 
 
 若要详细了解如何使用 "我的访问门户"，请访问 Azure AD 权限管理 "中的" [请求访问访问包](../governance/entitlement-management-request-access.md#sign-in-to-the-my-access-portal)"。
 
@@ -141,7 +325,7 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
 **服务类别：** 用户访问管理  
 **产品功能：** 权利管理
 
-在授权管理的审批流程中现在提供了一个附加选项。 如果为第一个审批者选择了经理作为审批者，你将有一个额外的选项，即第二级经理作为备用审批者，可在备用审批者字段中进行选择。 如果选择此选项，则需要添加后备审批者，以便在系统找不到二级管理员的情况下将请求转发给该审批者。
+在授权管理的审批过程中，现在可以使用额外的选项。 如果为第一个审批者选择了 "经理" 作为审批者，则可以选择另一个选项，第二级经理作为备用审批者，可在备用审批者字段中进行选择。 如果选择此选项，则需要添加后备审批者，以便在系统无法找到第二层管理器的情况下将请求转发到。
 
 有关详细信息，请转到 [Azure AD 授权管理中的访问包的 "更改批准设置](../governance/entitlement-management-access-package-approval-policy.md#alternate-approvers)"。
 
@@ -956,173 +1140,5 @@ Insights 管理员角色中的用户可以访问 [M365 Insights 应用程序](ht
 
 ---
  
-## <a name="july-2020"></a>2020 年 7 月
 
-### <a name="as-an-it-admin-i-want-to-target-client-apps-using-conditional-access"></a>作为 IT 管理员，我想要使用条件性访问来面向客户端应用
-
-**类型：** 更改计划   
-**服务类别：** 条件访问  
-**产品功能：** 标识安全和保护
- 
-由于条件访问中的客户端应用条件的 GA 版本，默认情况下，新策略将默认应用于所有客户端应用程序。 这包括旧身份验证客户端。 现有策略将保持不变，但会从现有策略中删除 *"配置是/否* " 切换，以便轻松查看策略所应用到的客户端应用。 
-
-创建新策略时，请确保排除仍使用旧身份验证的用户和服务帐户;否则，它们将被阻止。 [了解详细信息](../conditional-access/concept-conditional-access-conditions.md)。
- 
----
-
-### <a name="upcoming-scim-compliance-fixes"></a>即将推出的 SCIM 合规性修复
-
-**类型：** 更改计划  
-**服务类别：** 应用预配  
-**产品功能：** 标识生命周期管理
- 
-Azure AD 预配服务利用 SCIM 标准来与应用程序集成。 我们 SCIM 标准的实现正在不断发展，我们希望对我们如何执行修补程序操作以及如何在资源上设置属性 "活动" 的行为进行更改。 [了解详细信息](../app-provisioning/application-provisioning-config-problem-scim-compatibility.md)。
- 
----
-
-### <a name="group-owner-setting-on-azure-admin-portal-will-be-changed"></a>Azure 管理门户上的组所有者设置将更改
-
-**类型：** 更改计划  
-**服务类别：** 组管理  
-**产品功能：** 协作
-
-"组常规设置" 页上的 "所有者设置" 可以配置为在 Azure 管理门户和访问面板中将所有者分配权限限制为一组有限的用户。 我们很快就可以在这两个 UX 门户上分配组所有者特权，但也可以在后端强制执行策略，以跨终结点（例如 PowerShell 和 Microsoft Graph）提供一致的行为。 
-
-我们将开始为不使用它的客户禁用当前设置，并将在接下来的几个月中提供一个选项来向用户提供组所有者权限。 有关更新组设置的指导，请参阅使用 [Azure Active Directory](./active-directory-groups-settings-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)编辑组信息。
-
----
-
-### <a name="azure-active-directory-registration-service-is-ending-support-for-tls-10-and-11"></a>Azure Active Directory 注册服务正在结束 TLS 1.0 和1.1 的支持
-
-**类型：** 更改计划  
-**服务类别：** 设备注册和管理  
-**产品功能：** 平台
-
-传输层安全性 (TLS) 1.2 和更新服务器和客户端不久将与 Azure Active Directory 设备注册服务通信。 支持 TLS 1.0 和1.1 以便与 Azure AD 设备注册 service 进行通信：
-- 在2020年8月31日，在所有主权云中 (GCC 高、DoD 等 ) 
-- 所有商业云中的2020年10月30日
-
-[详细了解](../devices/reference-device-registration-tls-1-2.md) Azure AD 注册服务的 TLS 1.2。
-
----
-
-### <a name="windows-hello-for-business-sign-ins-visible-in-azure-ad-sign-in-logs"></a>Azure AD 登录日志中显示 Windows Hello 企业版登录
-
-**类型：** 已修复  
-**服务类别：** 报表  
-**产品功能：** 监视和报告
- 
-Windows Hello 企业版允许最终用户使用手势 (（例如 PIN 或生物识别) ）登录到 Windows 计算机。 Azure AD 管理员可能希望将 Windows Hello 企业版登录从其他 Windows 登录区，作为组织的无密码身份验证过程的一部分。 
-
-管理员现在可以通过在 Azure 门户的 Azure AD Sign-Ins 边栏选项卡中检查 Windows 登录事件的 "身份验证详细信息" 选项卡，来查看 Windows 身份验证是否使用了 Windows Hello 企业版。 Windows Hello 企业版身份验证将在 "身份验证方法" 字段中包括 "WindowsHelloForBusiness"。 有关解释 Sign-In 日志的详细信息，请参阅 [登录日志文档](../reports-monitoring/concept-sign-ins.md)。
- 
----
-
-### <a name="fixes-to-group-deletion-behavior-and-performance-improvements"></a>修复了组删除行为和性能改进
-
-**类型：** 已修复  
-**服务类别：** 应用预配  
-**产品功能：** 标识生命周期管理
- 
-以前，当某个组从 "范围中" 更改为 "超出作用域"，并且管理员在完成更改之前单击了 "重新启动" 时，不会删除组对象。 现在，当组对象超出范围 (禁用、删除、未分配或未通过范围筛选器) 时，会从目标应用程序中删除。 [了解详细信息](../app-provisioning/how-provisioning-works.md#incremental-cycles)。
- 
----
-
-### <a name="public-preview-admins-can-now-add-custom-content-in-the-email-to-reviewers-when-creating-an-access-review"></a>公共预览版：管理员现在可以将电子邮件中的自定义内容添加到审阅者创建访问评审
-
-**类型：** 新功能  
-**服务类别：** 访问评审  
-**产品功能：** 标识调控
- 
-创建新的访问评审后，审阅者将收到一封电子邮件，要求他们完成访问评审。 许多客户要求向电子邮件添加自定义内容（例如联系信息）或其他其他支持内容，以指导审阅者。 
-
-管理员可以在公共预览版中提供，通过在 Azure AD 访问评审的 "高级" 部分添加内容来指定发送给审阅者的电子邮件中的自定义内容。 有关创建访问评审的指南，请参阅 [在 Azure AD 访问评审中创建组和应用程序的访问评审](../governance/create-access-review.md)。
- 
----
-
-### <a name="authorization-code-flow-for-single-page-apps-available"></a>提供单页面应用的授权代码流
-
-**类型：** 新功能  
-**服务类别：** 身份验证（登录）  
-**产品功能：** 开发人员体验
- 
-由于新的浏览器第三方 cookie 限制（如 Safari ITP），Spa 将必须使用授权代码流，而不是隐式流来维护 SSO，MSAL.js 版本 2. x 现在支持授权代码流。 
-
-Azure 门户有相应的更新，以便你可以将你的 SPA 更新为 "SPA" 类型并使用身份验证代码流。 若要进一步指导，请参阅 [使用身份验证代码流登录用户和获取 JAVASCRIPT SPA 中的访问令牌](../develop/quickstart-v2-javascript-auth-code.md) 。
- 
----
-
-### <a name="azure-ad-application-proxy-now-supports-the-remote-desktop-services-web-client"></a>Azure AD 应用程序代理现在支持远程桌面服务 Web 客户端
-
-**类型：** 新功能  
-**服务类别：** 应用代理  
-**产品功能：** 访问控制
-
-Azure AD 应用程序代理现在支持 (RDS) Web 客户端的远程桌面服务。 RDS web 客户端允许用户通过任何支持 HTLM5 的浏览器（如 Microsoft Edge、Internet Explorer 11、Google Chrome 等）访问远程桌面基础结构。用户可以与远程应用或桌面进行交互，就像在任何位置使用本地设备一样。 通过使用 Azure AD 应用程序代理，你可以通过为所有类型的丰富客户端应用强制执行预身份验证和条件性访问策略，从而提高 RDS 部署的安全性。 有关指南，请参阅将 [远程桌面与 Azure AD 应用程序代理一起发布](../manage-apps/application-proxy-integrate-with-remote-desktop-services.md)。
- 
----
-
-### <a name="next-generation-azure-ad-b2c-user-flows-in-public-preview"></a>公共预览版中的下一代 Azure AD B2C 用户流
-
-**类型：** 新功能  
-**服务类别：** B2C - 用户标识管理  
-**产品功能：** B2B/B2C
- 
-简化的用户流体验提供具有预览功能的功能奇偶校验，并是所有新功能的主页。 用户能够在同一用户流中启用新功能，从而减少了使用每个新功能版本创建多个版本的需要。 最后，新的、用户友好的 UX 可简化用户流的选择和创建。 立即通过 [创建用户流](../../active-directory-b2c/tutorial-create-user-flows.md)来试用。 
-
-有关用户流的详细信息，请参阅 [Azure Active Directory B2C 中的用户流版本](../../active-directory-b2c/user-flow-versions.md)。
-
----
-
-### <a name="new-federated-apps-available-in-azure-ad-application-gallery---july-2020"></a>Azure AD 应用程序库中提供了新的联合应用程序-2020 年7月
-
-**类型：** 新功能  
-**服务类别：** 企业应用  
-**产品功能：** 第三方集成
- 
-2020年7月，我们已在应用程序库中添加了以下55新应用程序，并提供联合身份验证支持：
-
-[击掌](http://www.rmit.com.ar/)， [Appreiz](https://microsoftteams.appreiz.com/)， [Inextor 保管库](https://inexto.com/inexto-suite/inextor)， [Beekast](https://my.beekast.com/)， [Templafy](https://app.templafy.com/)， [Control 塔](https://bpm.tnxcorp.com/sso/microsoft)， [PeterConnects，](https://msteams.peterconnects.com/)[硬币构造云](https://sso.coinsconstructioncloud.com/#login/) [，](https://appfusions.alohacloud.com/auth) [AlohaCloud MT](https://task.teamsmain.medx.im/authorization) [，Cocoom，](https://start.cocoom.com/) [Medxnote，Reflekt](https://reflekt.konsolute.com/login) [，Rever](https://app.reverscore.net/access) [，MyCompanyArchive](https://login.mycompanyarchive.com/) [，GReminders](../saas-apps/titanfile-tutorial.md) [，Titanfile](../saas-apps/wootric-tutorial.md) [，](../saas-apps/kpifire-tutorial.md) [Wootric，](../saas-apps/intsights-tutorial.md) [SolarWinds，Orion](https://app.greminders.com/o365-oauth) [，OpenText](../saas-apps/datasite-tutorial.md) [，Datasite，](https://support.solarwinds.com/SuccessCenter/s/orion-platform?language=en_US) [BlogIn、](../saas-apps/opentext-directory-services-tutorial.md) [IntSights、](../saas-apps/textline-tutorial.md)kpifire [、system.windows.media.textformatting.textline>](../saas-apps/blogin-tutorial.md)、[社区 Spark](../saas-apps/community-spark-tutorial.md)、 [Chatwork、](../saas-apps/cloud-academy-sso-tutorial.md) [CloudSign](../saas-apps/cloudsign-tutorial.md)、 [C3M Cloud Control](../saas-apps/c3m-cloud-control-tutorial.md) [，SmartHR ](https://smartschoolz.com/login)， [](../saas-apps/chatwork-tutorial.md) [NumlyEngage](https://smarthr.jp/)™ [，密歇根](../saas-apps/numlyengage-tutorial.md)Data [Hub 单一登录，出口](../saas-apps/michigan-data-hub-single-sign-on-tutorial.md)， [SendSafely](../saas-apps/egress-tutorial.md)， [Eletive](../saas-apps/sendsafely-tutorial.md)，[右手](https://app.eletive.com/)网络安全[ADI，Fyde](https://right-hand.ai/)Enterprise [Authentication，Verme](https://enterprise.fyde.com/)， [Lenses.io](../saas-apps/verme-tutorial.md) [，Momenta，Uprise](../saas-apps/lensesio-tutorial.md) [，CloudCords](../saas-apps/momenta-tutorial.md) [，](https://app.inspiresoftware.com/)TellMe Identity [Orchestrator SAML 连接器，Maverics](https://www.strata.io/identity-fabric/)，Smartschool， [Zepto](https://app.uprise.co/sign-in)， [](https://q.moduleq.com/login)timekeeping， [](../saas-apps/cloudcords-tutorial.md)Studi.ly， [](https://tellme365liteweb.azurewebsites.net/) [Trackplan，Skedda](https://studi.ly/) [，WhosOnLocation，](https://user.zepto-ai.com/signin) [Coggle，](../saas-apps/skedda-tutorial.md) [，](../saas-apps/whos-on-location-tutorial.md)) [ (，](../saas-apps/coggle-tutorial.md) [Kemp LoadMaster](https://kemptechnologies.com/cloud-load-balancer/)， [BrowserStack 单一登录](../saas-apps/browserstack-single-sign-on-tutorial.md) [](http://www.trackplanfm.com/)
-
-你还可以从此处查找所有应用程序的文档 https://aka.ms/AppsTutorial
-
-若要在 Azure AD 应用库中列出你的应用程序，请阅读此处的详细信息 https://aka.ms/AzureADAppRequest
-
----
-
-### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---july-2020"></a>Azure AD 应用程序库中的新预配连接器-2020 年7月
-
-**类型：** 新功能  
-**服务类别：** 应用预配  
-**产品功能：** 第三方集成
-
-你现在可以自动创建、更新和删除新集成的应用 [LinkedIn 学习](../saas-apps/linkedin-learning-provisioning-tutorial.md)的用户帐户。
-
-有关如何使用自动化用户帐户预配更好地保护组织的详细信息，请参阅[使用 Azure AD 自动将用户预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
-
----
-
-### <a name="view-role-assignments-across-all-scopes-and-ability-to-download-them-to-a-csv-file"></a>查看所有范围内的角色分配，并将其下载到 csv 文件
-
-**类型：** 已更改的功能  
-**服务类别：** Azure AD 角色  
-**产品功能：** 访问控制
- 
-你现在可以在 Azure AD 门户的 "角色和管理员" 选项卡中查看角色的所有作用域中的角色分配。 你还可以将每个角色的角色分配下载到 CSV 文件中。 有关查看和添加角色分配的指导，请参阅 [在 Azure Active Directory 中查看和分配管理员角色](../roles/manage-roles-portal.md)。
- 
----
-
-### <a name="azure-multi-factor-authentication-software-development-azure-mfa-sdk-deprecation"></a>Azure 多重身份验证软件开发 (Azure MFA SDK) 弃用
-
-**类型：** 已弃用  
-**服务类别：** MFA  
-**产品功能：** 标识安全和保护
- 
-Azure 多重身份验证软件开发 (Azure MFA SDK) 已于2018年11月14日结束，如11月 2017 11 日公布。 Microsoft 将关闭 SDK 服务，在2020年9月30日生效。 对 SDK 的任何调用都将失败。
-
-如果你的组织使用的是 Azure MFA SDK，则需要在2020年9月30日之前迁移：
-- 用于 MIM 的 Azure MFA SDK：如果将 SDK 与 MIM 一起使用，则应迁移到 Azure MFA 服务器，并按照这些 [说明](/microsoft-identity-manager/working-with-mfaserver-for-mim)激活 Privileged Access Management () PAM。   
-- 适用于自定义应用的 Azure MFA SDK：考虑将你的应用集成到 Azure AD 并使用条件性访问来强制执行 MFA。 若要开始，请查看此 [页](../manage-apps/plan-an-application-integration.md)。 
-
----
 
