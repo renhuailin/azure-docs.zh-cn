@@ -1,18 +1,18 @@
 ---
 title: Azure 机器学习的内置策略定义
 description: 列出 Azure 机器学习的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: larryfr
 author: BlackMist
 ms.topic: reference
 ms.service: machine-learning
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 09350ae9482ea89c0a0012a338a5a06832f0becc
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 65a5719b6f90aef6b30bac7e03138d5b7843def2
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807027"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097314"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-machine-learning"></a>Azure 机器学习的 Azure Policy 内置策略定义
 

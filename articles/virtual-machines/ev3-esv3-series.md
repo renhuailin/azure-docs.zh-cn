@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 1a0943c9f87960f9fcec074941b6e8ead81d92af
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 537a301ef2c3ba1bb5ed34d92c8784655c79d97f
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917903"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097466"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
 
@@ -33,6 +33,7 @@ Ev3 系列 VM 的 Intel® Hyper-Threading 技术。
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大网卡数/网络带宽等级 |
@@ -64,6 +65,7 @@ Esv3 系列 VM 的 Intel® Hyper-Threading 技术。
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：受支持 <br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 突发缓存吞吐量和临时存储吞吐量：IOPS/MBps<sup>3</sup> | 最大非缓存磁盘吞吐量：IOPS/MBps |  突发非缓存磁盘吞吐量：IOPS/MBps<sup>3</sup>| 最大 NIC 数/预期网络带宽 (Mbps) |
