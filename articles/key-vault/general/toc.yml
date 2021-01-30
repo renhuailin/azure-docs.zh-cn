@@ -43,9 +43,11 @@
   items:
     - name: 基本概念
       href: basic-concepts.md
+    - name: 最佳做法
+      href: best-practices.md
     - name: 安全性
       items:
-        - name: 安全概述
+        - name: 概述
           href: security-overview.md
         - name: 保护对密钥保管库的访问
           href: secure-your-key-vault.md

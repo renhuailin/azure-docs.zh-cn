@@ -278,6 +278,8 @@
           href: /rest/api/hdinsightspark/
         - name: 资源管理器模板
           href: /azure/templates/microsoft.hdinsight/allversions
+        - name: Azure Policy 内置策略定义
+          href: ./policy-reference.md
     - name: 资源
       items:
         - name: 发行版本

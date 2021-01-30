@@ -1742,7 +1742,7 @@
         - name: 备份多个 VM
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: 还原选项
-          href: ../backup/backup-azure-arm-restore-vms.md
+          href: /azure/backup/backup-azure-arm-restore-vms
         - name: 支持矩阵
           href: ../backup/backup-support-matrix-iaas.md
         - name: 定价

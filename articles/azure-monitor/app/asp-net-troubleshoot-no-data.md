@@ -4,12 +4,12 @@ description: 在 Azure Application Insights 中看不到数据？ 试试这里�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 26ba586715c7b76ff8972c6574c3c29b837713a1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904459"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092445"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights
 
@@ -40,16 +40,16 @@ ms.locfileid: "96904459"
 * 请参阅[排查状态监视器问题](./monitor-performance-live-website-now.md#troubleshoot)。
 
 > [!IMPORTANT]
-> 新的 Azure 区域 **要求** 使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=net) 标识您要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+> 新的 Azure 区域要求使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=net)用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 
-## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>System.io.filenotfoundexception：无法加载文件或程序集 "TelemetryCorrelation"
+## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException：无法加载文件或程序集“Microsoft.AspNet TelemetryCorrelation”
 
-有关此错误的详细信息，请参阅 [GitHub 问题 1610] (https://github.com/microsoft/ApplicationInsights-dotnet/issues/1610) 。
+有关此错误的详细信息，请参阅 [GitHub 问题 1610] (https://github.com/microsoft/ApplicationInsights-dotnet/issues/1610) )。
 
-从早于 (2.4 的 Sdk 升级时) 需确保将以下更改应用于 `web.config` 和 `ApplicationInsights.config` ：
+从 (2.4) 之前的 SDK 升级时，需要确保将以下更改应用到 `web.config` 和 `ApplicationInsights.config`：
 
-1. 两个 http 模块，而不是一个。 在中 `web.config` ，你应该有两个 http 模块。 在某些情况下，顺序非常重要：
+1. 两个 http 模块，而不是一个。 在 `web.config` 中，应该有两个 http 模块。 对于某些场景，顺序很重要：
 
     ``` xml
     <system.webServer>
@@ -60,7 +60,7 @@ ms.locfileid: "96904459"
     </system.webServer>
     ```
 
-2. `ApplicationInsights.config`除外，还 `RequestTrackingTelemetryModule` 应具有以下遥测模块：
+2. 在 `ApplicationInsights.config` 中，除了 `RequestTrackingTelemetryModule` 之外，还应具有以下遥测模块：
 
     ``` xml
     <TelemetryModules>
@@ -68,11 +68,11 @@ ms.locfileid: "96904459"
     </TelemetryModules>
     ```
 
-**_如果未能正确升级，可能会导致意外的异常或未收集遥测数据。_* _
+如果未能正确升级，可能会导致意外异常或无法收集遥测数据*。
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio 中没有“添加 Application Insights”选项
-_When 在解决方案资源管理器中右键单击现有项目时，我看不到任何 Application Insights 选项。 *
+在解决方案资源管理器中右键单击现有项目时，未看到任何 Application Insights 选项。
 
 * 工具并非支持所有类型的 .NET 项目。 支持 Web 和 WCF 项目。 对于其他项目类型，例如桌面或服务应用程序，仍可以[手动将 Application Insights SDK 添加到项目](./windows-desktop.md)。
 * 请务必使用 [Visual Studio 2013 Update 3 或更高版本](/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 该软件预装了开发人员分析工具，其中提供了 Application Insights SDK。
@@ -188,7 +188,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 * 请检查是否确实将 Microsoft. ApplicationInsights DLL 连同 Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll 一起复制到了服务器。
 * 在防火墙中，可能需要[打开某些 TCP 端口](./ip-addresses.md)。
 * 如果必须使用代理在企业网络外部发送数据，请在 Web.config 中设置 [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71))
-* Windows Server 2008：请确保已安装以下更新：[KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217)。
+* Windows Server 2008：请确保已安装以下更新：[KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://web.archive.org/web/20150129090641/http://support.microsoft.com/kb/2600217)。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>我以前看到了数据，但现在看不到
 * 是否达到了数据点的每月配额？ 打开“设置/配额和定价”即可检查。如果达到了配额，可以升级计划，或付费购买更多的容量。 请参阅[定价方案](https://azure.microsoft.com/pricing/details/application-insights/)。

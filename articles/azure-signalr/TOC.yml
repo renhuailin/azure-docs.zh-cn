@@ -86,6 +86,8 @@
       items:
         - name: 安全基线
           href: security-baseline.md
+        - name: Azure Policy 的安全控件
+          href: ./security-controls-policy.md
 - name: 操作指南
   items:
     - name: 缩放

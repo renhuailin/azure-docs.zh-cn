@@ -9,6 +9,8 @@
   items:
     - name: CLI
       href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
     - name: Azure 资源管理器模板
       href: quick-create-template.md
 - name: 教程
