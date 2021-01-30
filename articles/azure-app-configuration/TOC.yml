@@ -104,6 +104,8 @@
           href: overview-managed-identity.md
         - name: 安全基线
           href: security-baseline.md
+        - name: Azure Policy 的安全控件
+          href: ./security-controls-policy.md
     - name: 高可用性
       items:
         - name: 复原能力和灾难恢复

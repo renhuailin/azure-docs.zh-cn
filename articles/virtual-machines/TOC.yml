@@ -957,8 +957,6 @@
               href: ./linux/cloudinit-configure-swapfile.md
             - name: 运行现有的 Bash 脚本
               href: ./linux/cloudinit-bash-script.md
-            - name: 准备适用于 cloud-init 的现有 VM
-              href: ./linux/cloudinit-prepare-custom-image.md
         - name: 创建不含预配代理的 Linux 映像
           href: ./linux/no-agent.md
         - name: 禁用 Linux 代理预配
@@ -1070,6 +1068,10 @@
               href: ./windows/image-builder.md
         - name: PowerShell
           href: ./windows/image-builder-powershell.md
+        - name: 安全性
+          items:
+            - name: Azure Policy 的安全控件
+              href: ./security-controls-policy-image-builder.md
         - name: 使用 VNET
           items:
             - name: CLI
@@ -1508,7 +1510,6 @@
               href: ../bastion/create-host-cli.md
             - name: Bastion SSH 连接
               href: ../bastion/bastion-connect-vm-ssh.md
-              items: null
             - name: Bastion RDP 连接
               href: ../bastion/bastion-connect-vm-rdp.md
         - name: 使用访问控制
@@ -1741,7 +1742,7 @@
         - name: 备份多个 VM
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: 还原选项
-          href: /backup/backup-azure-arm-restore-vms.md
+          href: ../backup/backup-azure-arm-restore-vms.md
         - name: 支持矩阵
           href: ../backup/backup-support-matrix-iaas.md
         - name: 定价

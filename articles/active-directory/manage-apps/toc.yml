@@ -50,7 +50,7 @@
         - name: 规划库中未列出的应用
           href: non-gallery-apps.md
         - name: 计划“我的应用”部署
-          href: access-panel-deployment-plan.md
+          href: my-apps-deployment-plan.md
     - name: 单一登录
       items:
         - name: 计划单一登录部署

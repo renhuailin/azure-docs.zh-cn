@@ -188,14 +188,17 @@
       items:
         - name: 配置用户输入
           href: configure-user-input.md
-        - name: 使用公司品牌打造自定义 UI
-          href: company-branding.md
+        - name: 自定义 UI
+          displayName: company branding
+          href: customize-ui.md
         - name: 使用 HTML 模板自定义 UI
+          displayName: content definitions
           href: customize-ui-with-html.md
         - name: JavaScript 和页面布局
           href: javascript-and-page-layout.md
         - name: 自定义语言
           href: language-customization.md
+          displayName: localization
         - name: 密码复杂性
           href: password-complexity.md
         - name: 禁用电子邮件验证
@@ -259,12 +262,13 @@
           items:
             - name: 使用 Application Insights 收集日志
               href: troubleshoot-with-application-insights.md
-              displayName: troubleshooting
+              displayName: 'troubleshooting, app insights'
             - name: 策略验证
               href: troubleshoot-custom-policies.md
               displayName: troubleshooting
         - name: 使用情况分析
           href: analytics-with-application-insights.md
+          displayName: 'application insights, app insights'
         - name: 参考
           items:
             - name: TrustFrameworkPolicy
@@ -452,6 +456,8 @@
           href: user-migration.md
 - name: 参考
   items:
+    - name: 服务限制和局限性
+      href: service-limits.md
     - name: 应用注册
       href: app-registrations-training-guide.md
     - name: 计费模式

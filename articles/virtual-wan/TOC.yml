@@ -41,22 +41,22 @@
       items:
         - name: 关于虚拟中心路由
           href: about-virtual-hub-routing.md
-        - name: 路由方案
-          items:
-            - name: 任意位置到任意位置
-              href: scenario-any-to-any.md
-            - name: 隔离 VNet
-              href: scenario-isolate-vnets.md
-            - name: 隔离 VNet - 自定义
-              href: scenario-isolate-vnets-custom.md
-            - name: 共享服务 VNet
-              href: scenario-shared-services-vnet.md
-            - name: 通过 NVA 路由
-              href: scenario-route-through-nva.md
-            - name: 通过 NVA 路由 - 自定义
-              href: scenario-route-through-nvas-custom.md
-            - name: Azure 防火墙 - 自定义
-              href: scenario-route-between-vnets-firewall.md
+    - name: 路由方案
+      items:
+        - name: 任意位置到任意位置
+          href: scenario-any-to-any.md
+        - name: 隔离 VNet
+          href: scenario-isolate-vnets.md
+        - name: 隔离 VNet - 自定义
+          href: scenario-isolate-vnets-custom.md
+        - name: 共享服务 VNet
+          href: scenario-shared-services-vnet.md
+        - name: 通过 NVA 路由
+          href: scenario-route-through-nva.md
+        - name: 通过 NVA 路由 - 自定义
+          href: scenario-route-through-nvas-custom.md
+        - name: Azure 防火墙 - 自定义
+          href: scenario-route-between-vnets-firewall.md
     - name: 监视
       items:
         - name: 关于虚拟 WAN 的 Azure Monitor 见解

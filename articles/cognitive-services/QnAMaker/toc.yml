@@ -113,6 +113,8 @@
           href: reference-data-guidelines.md
     - name: 显示格式
       href: reference-markdown-format.md
+    - name: 专用链接
+      href: reference-private-endpoint.md
     - name: 批量测试格式
       href: reference-tsv-format-batch-testing.md
     - name: 加密
