@@ -172,6 +172,8 @@
           href: concept-enterprise-security.md
         - name: 安全基线
           href: security-baseline.md
+        - name: Azure Policy 的安全控件
+          href: ./security-controls-policy.md
     - name: 负责的 ML
       items:
         - name: “负责的 ML”概述
@@ -609,6 +611,8 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 用户论坛
       href: /answers/topics/azure-machine-learning.html
+    - name: Microsoft Learn
+      href: /learn/browse/?expanded=azure&products=azure-machine-learning
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: 比较我们的 ML 产品
