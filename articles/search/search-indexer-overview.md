@@ -7,31 +7,32 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/28/2021
-ms.openlocfilehash: 0d0ec6d6512655277a278db9a1e05b6ca58bfc92
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 01/29/2021
+ms.openlocfilehash: ceeaad64734099f8669590d39f1629b9f4173e19
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063156"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097137"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
-Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 数据源提取可搜索的文本和元数据，并使用源数据和索引之间的字段到字段映射填充搜索索引。 由于不需要编写任何将数据添加到索引的代码，该服务就能拉取数据，因此这种方法有时也称为“拉取模式”。
+Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 数据源提取可搜索的文本和元数据，并使用源数据和索引之间的字段到字段映射填充搜索索引。 由于不需要编写任何将数据添加到索引的代码，该服务就能拉取数据，因此这种方法有时也称为“拉取模式”。 索引器还驱动认知搜索的 [AI 扩充](cognitive-search-concept-intro.md) 功能，将内容的外部处理与索引进行集成。
 
 索引器仅适用于 azure，其中包含 [AZURE SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)的单个索引器、 [Azure Cosmos DB](search-howto-index-cosmosdb.md)、 [Azure 表存储](search-howto-indexing-azure-tables.md) 和 [Blob 存储](search-howto-indexing-azure-blob-storage.md)。 配置索引器时，您将指定 (源) 的数据源，以及 (目标) 的索引。 一些源（例如 Blob 存储）具有特定于该内容类型的其他配置属性。
 
-可以按需运行索引器，也可以采用每 5 分钟运行一次的定期数据刷新计划来运行索引器。 要进行更频繁的更新，则需要采用“推送模式”，便于同时更新 Azure 认知搜索和外部数据源中的数据。
+可以按需运行索引器，也可以采用每 5 分钟运行一次的定期数据刷新计划来运行索引器。 更频繁的更新需要 ["推送模型"](search-what-is-data-import.md) ，同时同时更新 Azure 认知搜索和外部数据源中的数据。
 
 ## <a name="usage-scenarios"></a>使用方案
 
-您可以使用索引器作为数据引入的唯一方法，也可以使用包括仅在索引中加载某些字段的方法组合，还可以根据情况转换或浓缩内容。 下表汇总了主要方案。
+您可以使用索引器作为数据引入的唯一方法，也可以将其作为加载和选择性地转换或丰富内容的技术组合的一部分。 下表汇总了主要方案。
 
 | 方案 |策略 |
 |----------|---------|
-| 单一源 | 此模式是最简单的模式：一个数据源是搜索索引的唯一内容提供程序。 在源中，您将标识一个字段，其中包含用于在搜索索引中充当文档键的唯一值。 将使用唯一值作为标识符。 所有其他源字段将隐式或显式映射到索引中的相应字段。 </br></br>一个重要的要点在于是，文档键的值源自源数据。 搜索服务不生成键值。 在后续运行中，将添加包含新密钥的传入文档，而包含现有密钥的传入文档会合并或覆盖，具体取决于索引字段是 null 还是填充。 |
-| 多个源| 索引可以接受来自多个源的内容，其中每个源都从不同的源中引入了新的内容。 </br></br>其中一项结果可能是在每个索引器运行后获得文档的索引，其中的整个文档完全由每个源创建。 例如，文档1-100 来自 Blob 存储，文档101-200 来自 Azure SQL 等。 此方案的难题在于设计适用于所有传入数据的索引架构，以及在搜索索引中统一的文档键结构。 在本机中，唯一标识文档的值在 blob 容器中 metadata_storage_path，在 SQL 表中是主键。 您可以想象，无论内容来源如何，都必须修改一个或两个源来提供公共格式的键值。 对于这种情况，应执行一定程度的预处理来 homogenize 数据，以便将数据提取到单个索引中。</br></br>另一种结果可能是搜索在第一次运行时部分填充的文档，然后后续运行会进一步填充这些文档以引入来自其他源的值。 例如，1-10 域是从 Blob 存储、11-20 到 Azure SQL 等。 此模式的难题是确保每个索引运行都面向相同的文档。 若要将字段合并到现有文档中，则需要对文档键进行匹配。 有关此方案的演示，请参阅 [教程：来自多个数据源的索引](tutorial-multiple-data-sources.md)。 |
-| 内容转换 | 认知搜索支持可选的 [AI 扩充](cognitive-search-concept-intro.md) 行为，这些行为可添加图像分析和自然语言处理，以创建新的可搜索内容和结构。 AI 扩充通过附加 [技能组合](cognitive-search-working-with-skillsets.md)由索引器驱动。 若要执行 AI 扩充，索引器仍需要索引和数据源，但在此方案中，会将技能组合处理添加到索引器执行。 |
+| 单个数据源 | 此模式是最简单的模式：一个数据源是搜索索引的唯一内容提供程序。 在源中，您将标识一个字段，其中包含用于在搜索索引中充当文档键的唯一值。 将使用唯一值作为标识符。 所有其他源字段将隐式或显式映射到索引中的相应字段。 </br></br>一个重要的要点在于是，文档键的值源自源数据。 搜索服务不生成键值。 在后续运行中，将添加包含新密钥的传入文档，而包含现有密钥的传入文档会合并或覆盖，具体取决于索引字段是 null 还是填充。 |
+| 多个数据源 | 索引可以接受来自多个源的内容，其中每个源都从不同的源中引入了新的内容。 </br></br>其中一项结果可能是在每个索引器运行后获得文档的索引，其中的整个文档完全由每个源创建。 例如，文档1-100 来自 Blob 存储，文档101-200 来自 Azure SQL 等。 此方案的难题在于设计适用于所有传入数据的索引架构，以及在搜索索引中统一的文档键结构。 在本机中，唯一标识文档的值在 blob 容器中 metadata_storage_path，在 SQL 表中是主键。 您可以想象，无论内容来源如何，都必须修改一个或两个源来提供公共格式的键值。 对于这种情况，应执行一定程度的预处理来 homogenize 数据，以便将数据提取到单个索引中。 </br></br>另一种结果可能是搜索在第一次运行时部分填充的文档，然后后续运行会进一步填充这些文档以引入来自其他源的值。 例如，1-10 域是从 Blob 存储、11-20 到 Azure SQL 等。 此模式的难题是确保每个索引运行都面向相同的文档。 若要将字段合并到现有文档中，则需要对文档键进行匹配。 有关此方案的演示，请参阅 [教程：来自多个数据源的索引](tutorial-multiple-data-sources.md)。 |
+| 多个索引器 | 如果使用多个数据源，则如果需要改变运行时参数、计划或字段映射，则可能还需要多个索引器。 虽然多个索引器数据源集可以作为同一索引的目标，但要注意可以覆盖索引中现有值的索引器运行。 如果第二个索引器数据源以相同的文档和字段为目标，则将覆盖第一次运行中的任何值。 字段值将被完全替换;索引器无法将多个运行中的值合并为同一字段。</br></br>另一个多索引器用例是 [认知搜索的跨区域扩展](search-performance-optimization.md#use-indexers-for-updating-content-on-multiple-services)。 您可能在不同区域中具有相同搜索索引的副本。 若要同步搜索索引内容，可从同一数据源中提取多个索引器，其中每个索引器都以不同的搜索索引为目标。</br></br>非常大的数据集的[并行索引](search-howto-large-index.md#parallel-indexing)还需要多索引器策略。 每个索引器都针对数据的一个子集。 |
+| 内容转换 | 认知搜索支持可选的 [AI 扩充](cognitive-search-concept-intro.md) 行为，这些行为可添加图像分析和自然语言处理，以创建新的可搜索内容和结构。 AI 扩充通过附加 [技能组合](cognitive-search-working-with-skillsets.md)由索引器驱动。 若要执行 AI 扩充，索引器仍需要索引和 Azure 数据源，但在此方案中，会将技能组合处理添加到索引器执行。 |
 
 <a name="supported-data-sources"></a>
 
@@ -108,7 +109,7 @@ Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 
 
 首次在搜索服务中 [创建索引](/rest/api/searchservice/Create-Indexer) 器时，将运行一个索引器。 只有在创建或运行索引器时，才会发现数据源是可访问的，或者技能组合是有效的。 首次运行后，可以使用 " [运行索引器](/rest/api/searchservice/run-indexer)" 按需重新运行它，也可以 [定义定期计划](search-howto-schedule-indexers.md)。 
 
-可以在门户中或通过 [获取索引器状态 API](/rest/api/searchservice/get-indexer-status)来监视索引器状态。 
+可以在门户中或通过 [获取索引器状态 API](/rest/api/searchservice/get-indexer-status)来监视索引器状态。 还应 [对索引运行查询](search-query-create.md) ，以验证结果是否符合预期。
 
 ## <a name="next-steps"></a>后续步骤
 

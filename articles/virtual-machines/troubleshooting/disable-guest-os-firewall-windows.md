@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d06d3d4aaa0d76b80257d2148fb62f71c3fdb0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87009758"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093189"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>在 Azure VM 中禁用来宾 OS 防火墙
 
@@ -47,7 +47,7 @@ ms.locfileid: "87009758"
 >   ```
 > * 如果通过 Active Directory 策略设置防火墙，则可以运行以下脚本进行临时访问。 
 >   ```
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
@@ -88,7 +88,7 @@ ms.locfileid: "87009758"
 
 #### <a name="mitigation-4-remote-registry"></a>缓解操作 4：远程注册表 
 
-按以下步骤来使用[远程注册表](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
+按以下步骤来使用[远程注册表](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837)。
 
 1.  在故障排除 VM 上，启动注册表编辑器，然后转到“文件” > “连接网络注册表” 。
 
@@ -108,7 +108,7 @@ ms.locfileid: "87009758"
 
 6.  选择“连接到另一台计算机”。 
 
-7.  输入问题 VM 的**专用 IP 地址 (DIP)** 。
+7.  输入问题 VM 的 **专用 IP 地址 (DIP)** 。
 
 8.  重启本地防火墙策略。
 
@@ -124,9 +124,9 @@ ms.locfileid: "87009758"
 
 3.  确保磁盘在磁盘管理控制台中标记为“联机”。 请留意分配给附加系统磁盘的驱动器号。
 
-4.  在进行任何更改之前，请创建 \windows\system32\config 文件夹的副本，以防需要回滚更改。
+4.  在进行任何更改之前，请创建 \windows\system32\config 文件夹的副本，以防需要回退更改。
 
-5.  在故障排除 VM 上，启动注册表编辑器 (regedit.exe)。 
+5.  在故障排除 VM 上，启动注册表编辑器 (regedit.exe)。 
 
 6.  对于此故障排除过程，我们将配置单元装载为 BROKENSYSTEM 和 BROKENSOFTWARE。
 

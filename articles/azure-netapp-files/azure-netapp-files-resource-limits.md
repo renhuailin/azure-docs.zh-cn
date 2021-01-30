@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 01/29/2021
 ms.author: b-juche
-ms.openlocfilehash: aaffc63690894f43329763064ae89a105274953c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: c82e834c0af3737c1e5ef19c7aa789b94d87f6d8
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511927"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095385"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
@@ -48,6 +48,8 @@ ms.locfileid: "96511927"
 |  手动 QoS 卷的最小分配吞吐量     |    1 MiB/秒   |    否    |    
 |  手动 QoS 卷的最大分配吞吐量     |    4500 MiB/秒    |    否    |    
 |  跨区域复制数据保护卷 (目标卷的数量)      |    5    |    是    |     
+
+若要查看目录是否接近目录元数据的最大大小限制 (320 MB) ，请参阅 [如何实现确定目录是否接近限制大小](azure-netapp-files-faqs.md#how-do-i-determine-if-a-directory-is-approaching-the-limit-size)。   
 
 有关详细信息，请参阅 [容量管理常见问题](azure-netapp-files-faqs.md#capacity-management-faqs)。
 
@@ -87,7 +89,7 @@ Azure NetApp 文件卷具有称为 *maxfiles* 的限制。 Maxfiles 限制是卷
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  帐户 |  *订阅 ID*   |  *请求的新的最大 **帐户** 编号*    |  *哪个方案或用例提示请求？*  |
         |  池    |  *订阅 ID，NetApp 帐户 URI*  |  *请求的新的最大 **池** 编号*   |  *哪个方案或用例提示请求？*  |
-        |  数据量(Volume)  |  *订阅 ID，NetApp 帐户 URI，容量池 URI*   |  *请求的新的最大 **卷** 号*     |  *哪个方案或用例提示请求？*  |
+        |  Volume  |  *订阅 ID，NetApp 帐户 URI，容量池 URI*   |  *请求的新的最大 **卷** 号*     |  *哪个方案或用例提示请求？*  |
         |  Maxfiles  |  *订阅 ID，NetApp 帐户 URI，容量池 URI，卷 URI*   |  *请求的新的最大 **maxfiles** 数*     |  *哪个方案或用例提示请求？*  |    
         |  跨区域复制数据保护卷  |  *订阅 ID、目标 NetApp 帐户 URI、目标容量池 URI、源 NetApp 帐户 URI、源容量池 URI、源卷 URI*   |  * 请求新的 **跨区域复制数据保护卷的最大数目 (目标卷)** _     |  _What 方案或用例提示请求？ *  |    
 

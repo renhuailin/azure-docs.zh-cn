@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 575486a89cd078325b76fa684ff9bd3d59a619c9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 353b1708a1c6014f9108ad2be62f22c1e0b0604c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844261"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092762"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 本文介绍了 Azure 中的安全服务，这些服务可帮助保护云中的数据、资源和应用程序，并满足业务的安全需求。
@@ -92,7 +92,7 @@ Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 #### <a name="multi-factor-authentication"></a>多重身份验证
 
-[Azure AD 多重身份验证 (MFA) ](../../active-directory/authentication/concept-mfa-howitworks.md) 是一种需要使用多种验证方法并向用户登录和事务添加关键的第二层安全性的身份验证方法。 [MFA 可帮助保护](../../active-directory/authentication/concept-mfa-howitworks.md)对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 它通过各种验证选项（例如电话、短信、移动应用通知或验证码和第三方 OAuth 令牌）来提供强身份验证。
+[Azure AD 多重身份验证 (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md) 是需要使用多种验证方法的身份验证方法，为用户登录和事务又增加了一层至关重要的安全保障。 [MFA 可帮助保护](../../active-directory/authentication/concept-mfa-howitworks.md)对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 它通过各种验证选项（例如电话、短信、移动应用通知或验证码和第三方 OAuth 令牌）来提供强身份验证。
 
 #### <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>安全监控、警报和基于机器学习的报告
 
@@ -156,9 +156,9 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 ![受保护的资源访问](./media/technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
-使用 Azure RBAC，可以在团队中实现职责分离，仅向用户授予他们执行作业所需的访问权限。 而不是向每个人提供对 Azure 订阅或资源的无限权限，可以仅允许某些操作。 例如，使用 Azure RBAC 允许一个员工管理订阅中的虚拟机，另一个员工可以管理同一订阅中的 SQL 数据库。
+使用 Azure RBAC，可以在团队中实现职责分离，仅向用户授予他们执行作业所需的访问权限。 而不是向每个人提供对 Azure 订阅或资源的无限权限，可以仅允许某些操作。 例如，使用 Azure RBAC 允许一个员工管理订阅中的虚拟机，而另一个员工可以管理同一订阅中的 SQL 数据库。
 
-![使用 Azure RBAC 进行安全的资源访问](./media/technical-capabilities/azure-security-technical-capabilities-fig5.png)
+![使用 Azure RBAC 实现受保护的资源访问](./media/technical-capabilities/azure-security-technical-capabilities-fig5.png)
 
 ## <a name="data-security-and-encryption"></a>数据安全与加密
 
@@ -181,7 +181,7 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 对于需要从位于本地的一个工作站安全访问 Azure 的组织而言，请使用[点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)。
 
-可以通过专用高速 WAN 链路（例如 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)）移动较大的数据集。 如果选择使用 ExpressRoute，则还可以使用 [SSL/TLS](https://support.microsoft.com/kb/257591) 或其他协议，在应用程序级别加密数据，以提供额外的保护。
+可以通过专用高速 WAN 链路（例如 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)）移动较大的数据集。 如果选择使用 ExpressRoute，则还可以使用 [SSL/TLS](https://web.archive.org/web/20150221085231/http://support.microsoft.com:80/kb/257591) 或其他协议，在应用程序级别加密数据，以提供额外的保护。
 
 如果通过 Azure 门户与 Azure 存储交互，则所有事务都将通过 HTTPS 发生。 也可以使用基于 HTTPS 的[存储 REST API](/rest/api/storageservices/) 来与 [Azure 存储](https://azure.microsoft.com/services/storage/)和 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)交互。
 
@@ -367,7 +367,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。
 
-![显示可以使用监视数据来深入了解应用程序的关系图。](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png)
+![图中显示你可以利用监视数据深入了解应用程序的情况。](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png)
 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
 
 审核网络安全性对于检测网络漏洞以及确保符合 IT 安全和监管治理模型至关重要。 使用安全组视图，可以检索配置的网络安全组和安全规则，以及有效的安全规则。 应用规则列表后，可以确定打开的端口并评估网络漏洞。
@@ -422,7 +422,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 
 - 可以定义各资源之间的依赖关系，使其按正确的顺序进行部署。
 
-- 可以将访问控制应用到资源组中的所有服务，因为 Azure RBAC) 的基于角色的访问控制 (本机集成到管理平台。
+- 可以将访问控制应用到资源组中的所有服务，因为 Azure 基于角色的访问控制 (Azure RBAC) 已在本机集成到管理平台。
 
 - 可以将标记应用到资源，以逻辑方式组织订阅中的所有资源。
 

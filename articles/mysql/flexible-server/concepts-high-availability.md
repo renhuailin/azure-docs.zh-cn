@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MySQL 灵活的服务器的区域冗余高可用性概述
 description: 了解 Azure Database for MySQL 灵活的服务器的区域冗余高可用性的概念
-author: mksuni
-ms.author: sumuth
+author: ambhatna
+ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: cd7be998c49a710ee7652cf18c35bed743606ffd
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.date: 01/29/2021
+ms.openlocfilehash: f01a0869f7786ee6197835610456f4bb1cbd6b03
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241178"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097111"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL 灵活的服务器 (预览版中的高可用性概念) 
 
@@ -48,7 +48,7 @@ Azure Database for MySQL 灵活的服务器 (预览版) ，允许使用 **区域
 -   备用副本将部署在与主副本完全相同的 VM 配置中，如 Vcore、存储、网络设置 (VNET、防火墙) 等。
 -   可以通过禁用高可用性来删除备用副本。
 -   自动备份是基于快照的，它从主数据库服务器执行并存储在区域冗余存储中。
--   如果存在故障转移事件，则会在原始主可用性区域中预配新的备用副本。
+-   发生故障转移时，如果启用了高可用性，Azure Database for MySQL 灵活的服务器将自动故障转移到备用副本。 高可用性设置将监视主服务器并使其重新联机。
 -   客户端始终连接到主数据库服务器。
 -   如果数据库崩溃或节点发生故障，则在同一节点上首先尝试重启。 如果此操作失败，则会触发自动故障转移。
 -   能够重新启动服务器以获取任何静态服务器参数更改。
@@ -99,6 +99,6 @@ Azure Database for MySQL 灵活的服务器 (预览版) ，允许使用 **区域
 
 ## <a name="next-steps"></a>后续步骤
 
--   了解 [业务连续性](./concepts-business-continuity.md)
+-   了解[业务连续性](./concepts-business-continuity.md)
 -   了解 [区域冗余高可用性](./concepts-high-availability.md)
--   了解 [备份和恢复](./concepts-backup-restore.md)
+-   了解[备份和恢复](./concepts-backup-restore.md)

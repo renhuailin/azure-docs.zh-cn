@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a08b5db19aab19402aa3c93cfa23ce7b39a0a838
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2416c0b4002f560e272393c95a86c543cb5f1009
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918682"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097836"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
@@ -33,6 +33,7 @@ Lsv2 系列具有高吞吐量、低延迟、在 [AMD EPYC<sup>TM</sup>7551 处�
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 突发：支持<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
 | 大小 | vCPU | 内存 (GiB) | 临时磁盘<sup>1</sup> (GiB) | NVMe 磁盘<sup>2</sup> | NVMe 磁盘吞吐量<sup>3</sup>（读取 IOPS/MBps） | 非缓存数据磁盘吞吐量 (IOPS/MBps)<sup>4</sup> | 最大突发非缓存数据磁盘吞吐量 (IOPS/MBps)<sup>5</sup>| 最大数据磁盘 | 最大 NIC 数 | 预期的网络带宽 (Mbps) |

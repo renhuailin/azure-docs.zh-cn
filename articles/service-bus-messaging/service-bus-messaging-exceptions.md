@@ -3,12 +3,12 @@ title: Azure 服务总线-消息传递异常 |Microsoft Docs
 description: 本文提供了 Azure 服务总线消息传送异常以及发生异常时建议采取的措施的列表。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ac18538492b80abadfd1284c125e4be8f3228490
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: bfd6a0c5ae1298b722b456d68d00c5b31e6dd694
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630962"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097009"
 ---
 # <a name="service-bus-messaging-exceptions"></a>服务总线消息传送异常
 本文列出了 .NET Framework API 生成的 .NET 异常。 
@@ -16,21 +16,21 @@ ms.locfileid: "98630962"
 ## <a name="exception-categories"></a>异常类别
 消息传送 API 会生成以下类别的异常，以及在尝试修复这些异常时可以采取的相关操作。 异常的含义和原因会因消息传送实体的类型而异：
 
-1. 用户代码错误（[System.ArgumentException](/dotnet/api/system.argumentexception&preserve-view=true)、[System.InvalidOperationException](/dotnet/api/system.invalidoperationexception&preserve-view=true)、[System.OperationCanceledException](/dotnet/api/system.operationcanceledexception&preserve-view=true)、[System.Runtime.Serialization.SerializationException](/dotnet/api/system.runtime.serialization.serializationexception&preserve-view=true)）。 常规操作：继续之前尝试修复代码。
-2. 设置/配置错误（[Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception)、[System.UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception&preserve-view=true)）。 常规操作：检查配置，必要时进行更改。
+1. 用户代码错误（[System.ArgumentException](/dotnet/api/system.argumentexception?view=net-5.0)、[System.InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=net-5.0)、[System.OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=net-5.0)、[System.Runtime.Serialization.SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=net-5.0)）。 常规操作：继续之前尝试修复代码。
+2. 设置/配置错误（[Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception)、[System.UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=net-5.0)）。 常规操作：检查配置，必要时进行更改。
 3. 暂时性异常（[Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception)、[Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception)、[Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)）。 常规操作：重试操作或通知用户。 客户端 SDK 中的 `RetryPolicy` 类可以配置为自动处理重试。 有关详细信息，请参阅[重试指南](/azure/architecture/best-practices/retry-service-specific#service-bus)。
-4. 其他异常（[System.Transactions.TransactionException](/dotnet/api/system.transactions.transactionexception&preserve-view=true)、[System.TimeoutException](/dotnet/api/system.timeoutexception&preserve-view=true)、[Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)、[Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception)）。 常规操作：特定于异常类型；请参考以下部分中的表： 
+4. 其他异常（[System.Transactions.TransactionException](/dotnet/api/system.transactions.transactionexception?view=net-5.0)、[System.TimeoutException](/dotnet/api/system.timeoutexception?view=net-5.0)、[Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)、[Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception)）。 常规操作：特定于异常类型；请参考以下部分中的表： 
 
 ## <a name="exception-types"></a>异常类型
 下表列出了消息异常的类型及其原因，并说明可以采取的建议性操作。
 
 | **异常类型** | **说明/原因/示例** | **建议的操作** | **自动/立即重试注意事项** |
 | --- | --- | --- | --- |
-| [TimeoutException](/dotnet/api/system.timeoutexception&preserve-view=true) |服务器在 [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) 控制的指定时间内未响应请求的操作。 服务器可能已完成请求的操作。 这可能是由于网络或其他基础结构延迟造成的。 |检查系统状态的一致性，并根据需要重试。 请参阅[超时异常](#timeoutexception)。 |在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
-| [InvalidOperationException](/dotnet/api/system.invalidoperationexception&preserve-view=true) |不允许在服务器或服务中执行请求的用户操作。 有关详细信息，请查看异常消息。 例如，如果在 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式下收到消息，则 [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) 将生成此异常。 |检查代码和文档。 确保请求的操作有效。 |重试不起作用。 |
-| [OperationCanceledException](/dotnet/api/system.operationcanceledexception&preserve-view=true) |尝试对已关闭、中止或释放的对象调用某个操作。 在极少数情况下，环境事务已释放。 |检查代码并确保代码不会对已释放的对象调用操作。 |重试不起作用。 |
-| [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception&preserve-view=true) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) 对象无法获取令牌，该令牌无效，或者令牌不包含执行操作所需的声明。 |确保使用正确的值创建令牌提供程序。 检查访问控制服务的配置。 |在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
-| [ArgumentException](/dotnet/api/system.argumentexception&preserve-view=true)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception&preserve-view=true)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception&preserve-view=true) |提供给该方法的一个或多个参数均无效。<br /> 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 包含路径段。<br /> 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 方案无效。 <br />属性值大于 32 KB。 |检查调用代码并确保参数正确。 |重试不起作用。 |
+| [TimeoutException](/dotnet/api/system.timeoutexception?view=net-5.0) |服务器在 [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) 控制的指定时间内未响应请求的操作。 服务器可能已完成请求的操作。 这可能是由于网络或其他基础结构延迟造成的。 |检查系统状态的一致性，并根据需要重试。 请参阅[超时异常](#timeoutexception)。 |在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
+| [InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=net-5.0) |不允许在服务器或服务中执行请求的用户操作。 有关详细信息，请查看异常消息。 例如，如果在 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式下收到消息，则 [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) 将生成此异常。 |检查代码和文档。 确保请求的操作有效。 |重试不起作用。 |
+| [OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=net-5.0) |尝试对已关闭、中止或释放的对象调用某个操作。 在极少数情况下，环境事务已释放。 |检查代码并确保代码不会对已释放的对象调用操作。 |重试不起作用。 |
+| [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=net-5.0) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) 对象无法获取令牌，该令牌无效，或者令牌不包含执行操作所需的声明。 |确保使用正确的值创建令牌提供程序。 检查访问控制服务的配置。 |在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
+| [ArgumentException](/dotnet/api/system.argumentexception?view=net-5.0)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=net-5.0)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=net-5.0) |提供给该方法的一个或多个参数均无效。<br /> 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 包含路径段。<br /> 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 方案无效。 <br />属性值大于 32 KB。 |检查调用代码并确保参数正确。 |重试不起作用。 |
 | [MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception) |与操作关联的实体不存在或已被删除。 |确保该实体存在。 |重试不起作用。 |
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |尝试接收具有特定序列号的消息。 找不到此消息。 |确保该消息尚未接收。 检查死信队列，以确定该消息是否被视为死信。 |重试不起作用。 |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |客户端无法与服务总线建立连接。 |确保提供的主机名正确并且主机可访问。 <p>如果你的代码在使用防火墙/代理的环境中运行，请确保到服务总线域/IP 地址和端口的流量未被阻止。</p>|如果存在间歇性的连接问题，重试可能会有帮助。 |
@@ -83,9 +83,9 @@ ConnectionsQuotaExceeded for namespace xxx.
 2. **接收方已停止**。 接收方已停止从队列或订阅接收消息。 识别这种情况的方法是查看 [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) 属性，它会显示消息的完整细目。 如果 [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) 属性很高或不断增加，则表示消息写入的速度超过读取的速度。
 
 ## <a name="timeoutexception"></a>TimeoutException
-[TimeoutException](/dotnet/api/system.timeoutexception&preserve-view=true) 指示用户启动的操作所用的时间超过操作超时值。 
+[TimeoutException](/dotnet/api/system.timeoutexception?view=net-5.0) 指示用户启动的操作所用的时间超过操作超时值。 
 
-应检查 [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit&preserve-view=true) 属性的值，因为达到此限制也会导致 [TimeoutException](/dotnet/api/system.timeoutexception&preserve-view=true) 异常。
+应检查 [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit?view=net-5.0) 属性的值，因为达到此限制也会导致 [TimeoutException](/dotnet/api/system.timeoutexception?view=net-5.0) 异常。
 
 预计会在维护操作（例如，服务总线服务更新或运行服务的资源上的 OS 更新）期间或操作间隙发生超时。 在 OS 更新期间，实体会四处移动，节点会更新或重启，这可能会导致超时。 有关 Azure 服务总线服务的服务级别协议 (SLA) 详细信息，请参阅[服务总线的 SLA](https://azure.microsoft.com/support/legal/sla/service-bus/)。
 

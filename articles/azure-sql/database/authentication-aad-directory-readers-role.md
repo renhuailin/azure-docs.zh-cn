@@ -9,19 +9,19 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 2374b1fb7f355b336c713a8a3240eacc8b1f188c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5764a8df862610fc076ce2810fcc0d4bf8dbda3c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675068"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094550"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Azure SQL 的 Azure Active Directory 中的目录读取者角色
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 > [!NOTE]
-> 本文中的此功能 **公开预览版** 。
+> 本文中的此功能 **公开预览版**。
 
 使用云组 Azure Active Directory (Azure AD) [在 Azure Active Directory (preview) 中管理角色分配 ](../../active-directory/roles/groups-concept.md)。 这允许将 Azure AD 角色分配给组。
 
@@ -37,7 +37,7 @@ ms.locfileid: "92675068"
 
 ## <a name="assigning-the-directory-readers-role"></a>分配目录读者角色
 
-若要将 [**目录读取**](../../active-directory/roles/permissions-reference.md#directory-readers) 者角色分配给某个标识，需要具有 [全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) 或 [特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) 权限的用户。 经常管理或部署 SQL 数据库、SQL 托管实例或 Azure Synapse 的用户可能无权访问这些高特权角色。 这通常会导致创建未计划的 Azure SQL 资源的用户的复杂性，或者需要在大型组织中经常无法访问的高特权角色成员提供帮助。
+若要将 [**目录读取**](../../active-directory/roles/permissions-reference.md#directory-readers) 者角色分配给某个标识，需要具有 [全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator) 或 [特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) 权限的用户。 经常管理或部署 SQL 数据库、SQL 托管实例或 Azure Synapse 的用户可能无权访问这些高特权角色。 这通常会导致创建未计划的 Azure SQL 资源的用户的复杂性，或者需要在大型组织中经常无法访问的高特权角色成员提供帮助。
 
 对于 SQL 托管实例，必须先将目录读取者角色分配给托管实例标识，然后才能[为托管实例设置 Azure AD 管理员](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)。 
 
@@ -45,7 +45,7 @@ ms.locfileid: "92675068"
 
 ## <a name="granting-the-directory-readers-role-to-an-azure-ad-group"></a>向 Azure AD 组授予目录读者角色
 
-当前在 **公共预览版** 中，你现在可以拥有 [全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) 或 [特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) 创建 Azure AD 组，并为该组分配 [**目录读取器**](../../active-directory/roles/permissions-reference.md#directory-readers) 权限。 这将允许访问此组成员的 Azure AD 图形 API。 此外 Azure AD，还允许作为此组所有者的用户分配此组的新成员，其中包括 Azure SQL 逻辑服务器的标识。
+当前在 **公共预览版** 中，你现在可以拥有 [全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator) 或 [特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) 创建 Azure AD 组，并为该组分配 [**目录读取器**](../../active-directory/roles/permissions-reference.md#directory-readers) 权限。 这将允许访问此组成员的 Azure AD 图形 API。 此外 Azure AD，还允许作为此组所有者的用户分配此组的新成员，其中包括 Azure SQL 逻辑服务器的标识。
 
 此解决方案仍要求高特权用户 (全局管理员或特权角色管理员) 创建组并将用户分配为一次性活动，但 Azure AD 组所有者将能够分配其他成员。 这样，以后就不必再涉及到高特权用户在其 Azure AD 租户中配置所有 SQL 数据库、SQL 托管实例或 Azure Synapse 服务器。
 

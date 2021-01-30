@@ -8,26 +8,26 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 0483030312493dde9a50ab9000fbe29f19bfaff4
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: c26529f48d03b8cd038ce4fea8164a305dfc17f3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063821"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097634"
 ---
 # <a name="create-a-search-indexer"></a>创建搜索索引器
 
 搜索索引器提供自动工作流，用于将文档和外部数据源的内容传输到搜索服务上的搜索索引。 正如最初设计的，它从 Azure 数据源提取文本和元数据，将文档序列化为 JSON，并将生成的文档传递到用于索引的搜索引擎。 这是因为已将其扩展为支持 [AI 扩充](cognitive-search-concept-intro.md) 进行深层内容处理。 
 
-使用索引器可以显著减少需要编写的代码的数量和复杂性。 本文重点介绍索引器的结构和结构，在探索特定于源的索引器和 [技能集](cognitive-search-working-with-skillsets.md)之前，先构建一个基础。
+使用索引器可以显著减少需要编写的代码的数量和复杂性。 本文重点介绍创建索引器的机制，作为使用源特定索引器和 [技能集](cognitive-search-working-with-skillsets.md)进行更高级的工作准备。
 
 ## <a name="whats-an-indexer-definition"></a>什么是索引器定义？
 
-索引器可用于将文本从源字段提取到索引字段的基于文本的索引，或用于分析无差别文本以进行结构处理的基于 AI 的处理，或分析文本和信息的图像。 以下索引定义是你可能为任一方案创建的内容的典型定义。
+索引器可用于将来自源字段的字母数字内容提取到索引字段中，或用于分析无差别文本以进行结构处理的基于 AI 的索引，也可用于分析文本和信息的图像，同时还会将该内容添加到索引中。 以下索引定义是你可能为任一方案创建的内容的典型定义。
 
 ### <a name="indexers-for-text-content"></a>文本内容的索引器
 
-索引器的原始用途是通过提供一种机制，用于连接到数据源中的字段和从数据源中的字段读取文本和数字内容，将该内容序列化为 JSON 文档，并将这些文档移交给搜索引擎，以实现索引。 这仍是一个主要用例，对于此操作，你将需要使用此部分中定义的属性创建索引器。
+索引器的原始用途是通过提供一种机制，用于连接到数据源中的字段和从数据源中的字段读取文本和数字内容，将该内容序列化为 JSON 文档，并将这些文档移交给搜索引擎，以实现索引。 这仍是一个主要用例，对于此操作，你需要使用以下示例中定义的属性创建索引器。
 
 ```json
 {
@@ -42,17 +42,18 @@ ms.locfileid: "99063821"
   "fieldMappings": [ optional unless there are field discrepancies that need resolution]
 }
 ```
-**`name`** 需要、 **`dataSourceName`** 和 **`targetIndexName`** 属性，并且根据创建索引器的方式，数据源和索引必须已经存在，然后才能运行索引器。 
 
-**`parameters`** 属性通知运行时行为，如在失败整个作业之前要接受多少个错误。 参数也是指定特定于源的行为的方式。 例如，如果源是 Blob 存储，则可以设置对文件扩展名进行筛选的参数： `"parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }` 。
+**`name`** 需要、 **`dataSourceName`** 和 **`targetIndexName`** 属性，并且根据创建索引器的方式，数据源和索引必须已经存在于服务上，然后才能运行索引器。 
 
-**`field mappings`** 如果源到目标字段的名称不同，则使用属性显式映射这些字段。  (未显示) 的其他属性，用于指定计划、在禁用状态下创建索引器或为静态数据的补充加密指定加密密钥。
+**`parameters`** 属性修改运行时的行为，例如在未能通过整个作业的情况下要接受多少个错误。 参数也是指定特定于源的行为的方式。 例如，如果源是 Blob 存储，则可以设置对文件扩展名进行筛选的参数： `"parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }` 。
+
+**`field mappings`** 如果源到目标字段的名称不同，则使用属性显式映射这些字段。  (未显示) 的其他属性，用于 [指定计划](search-howto-schedule-indexers.md)、在禁用状态下创建索引器或为静态数据的补充加密指定 [加密密钥](search-security-manage-encryption-keys.md) 。
 
 ### <a name="indexers-for-ai-indexing"></a>AI 索引编制索引器
 
-由于索引器是搜索服务发出出站请求的机制，因此，对索引器进行了扩展以支持 AI 根据，并添加了此用例所需的步骤和对象。
+由于索引器是搜索服务发出出站请求的机制，因此，对索引器进行了扩展以支持 AI 根据，并添加了基础结构和对象来实现此用例。
 
-上述所有属性和参数均适用于执行 ai 扩充的索引器，并添加了三个特定于 ai 扩充的属性： **`skillSets`** 、 **`outputFieldMappings`** 、 **`cache`** (预览和 REST 仅) 。 
+以上所有属性和参数均适用于执行 AI 扩充的索引器。 以下属性特定于 AI 扩充： **`skillSets`** 、 **`outputFieldMappings`** 、 **`cache`** (预览和 REST 仅) 。 
 
 ```json
 {
@@ -74,7 +75,7 @@ ms.locfileid: "99063821"
 }
 ```
 
-AI 扩充超出了本文的范围。 有关详细信息，请从 [Azure 中的技能集开始认知搜索](cognitive-search-working-with-skillsets.md) 或 [创建技能组合 (REST) ](/rest/api/searchservice/create-skillset)。
+AI 扩充超出了本文的范围。 有关详细信息，请从以下文章开始： [AI 扩充](cognitive-search-concept-intro.md)， [技能集 in Azure 认知搜索](cognitive-search-working-with-skillsets.md)，并 [创建技能组合 (REST) ](/rest/api/searchservice/create-skillset)。
 
 ## <a name="choose-an-indexer-client-and-create-the-indexer"></a>选择索引器客户端并创建索引器
 
@@ -90,7 +91,7 @@ AI 扩充超出了本文的范围。 有关详细信息，请从 [Azure 中的�
 
 ### <a name="use-azure-portal-to-create-an-indexer"></a>使用 Azure 门户创建索引器
 
-门户提供了两个用于创建索引器的选项： [**导入数据**](search-import-data-portal.md) 和 **新索引器** ，用于提供用于指定索引器定义的字段。 向导是唯一的，因为它会创建所有必需的元素。 其他方法要求预定义数据源和索引。
+门户提供了两个用于创建索引器的选项： [**导入数据向导**](search-import-data-portal.md) 和提供用于指定索引器定义的字段的 **新索引器** 。 向导是唯一的，因为它会创建所有必需的元素。 其他方法要求预定义数据源和索引。
 
 以下屏幕截图显示了在门户中可以找到这些功能的位置。 
 
@@ -120,11 +121,20 @@ AI 扩充超出了本文的范围。 有关详细信息，请从 [Azure 中的�
 
 ## <a name="run-the-indexer"></a>运行索引器
 
-当您在服务上创建索引器时，索引器将自动运行。 这就是您会发现数据源连接错误、字段映射问题或技能组合问题的情况。 [Create 索引](/rest/api/searchservice/create-indexer)器或[更新索引器](/rest/api/searchservice/update-indexer)的交互式 HTTP 请求将运行索引器。 运行调用 SearchIndexerClient 方法的程序也将运行一个索引器。
+当您在服务上创建索引器时，索引器将自动运行。 这就是您会发现数据源连接错误、字段映射问题或技能组合问题的情况。 
 
-若要避免在创建时立即运行索引器，请 **`disabled=true`** 在索引器定义中包含。
+可以通过多种方式来运行索引器：
 
-索引器存在后，可以使用 [运行索引器 (REST) ](/rest/api/searchservice/run-indexer) 或等效的 SDK 方法，按需运行该索引器。 或者，将索引器置于 [计划中](search-howto-schedule-indexers.md) ，以便定期调用处理。 
++ 发送 [Create 索引](/rest/api/searchservice/create-indexer) 器或 [更新索引器](/rest/api/searchservice/update-indexer) 的 HTTP 请求，以添加或更改定义，并运行索引器。
+
++ 发送用于 [运行索引器](/rest/api/searchservice/run-indexer) 的 HTTP 请求，以执行没有对定义的更改的索引器。
+
++ 运行用于创建、更新或运行的 SearchIndexerClient 方法的程序。
+
+> [!NOTE]
+> 若要避免在创建时立即运行索引器，请 **`disabled=true`** 在索引器定义中包含。
+
+或者，将索引器置于 [计划中](search-howto-schedule-indexers.md) ，以便定期调用处理。 
 
 计划的处理通常与对更改内容进行增量索引的需要相符。 更改检测逻辑是一种内置于源平台的功能。 索引器自动检测 blob 容器中的更改。 有关在其他数据源中利用更改检测的指南，请参阅特定数据源的索引器文档：
 
@@ -135,9 +145,9 @@ AI 扩充超出了本文的范围。 有关详细信息，请从 [Azure 中的�
 
 ## <a name="know-your-data"></a>了解你的数据
 
-索引器应为表格行集，其中每行都成为索引中的完整或部分搜索文档。 通常，在行与生成的搜索文档之间有一个完全一一对应的关系，所有字段都排在那里。 但是，您可以使用索引器仅生成文档的一部分，例如，如果使用多个索引器或方法来生成索引。 
+索引器应为表格行集，其中每行都成为索引中的完整或部分搜索文档。 通常，行和结果搜索文档之间存在一对一的对应关系，该行集中的所有字段均会完全填充每个文档。 但是，您可以使用索引器仅生成文档的一部分，例如，如果使用多个索引器或方法来生成索引。 
 
-若要将关系数据平展到行集，您可能需要创建一个 SQL 视图，或者生成一个查询，该查询返回同一行中的父记录和子记录。 例如，内置的酒店示例数据集是一个 SQL 数据库，该数据库具有50记录 (每个旅馆) ，链接到相关表中的教室记录。 将集体数据平展到行集的查询会将所有房间信息嵌入到每个酒店记录的 JSON 文档中。 嵌入的空间信息是一个使用 **FOR JSON AUTO** 子句的查询生成的。 有关此技术的详细信息，请参阅 [定义返回嵌入 JSON 的查询](index-sql-relational-data.md#define-a-query-that-returns-embedded-json)。 这只是一个示例;您可以找到将产生相同效果的其他方法。
+若要将关系数据平展到行集，您应创建一个 SQL 视图，或生成一个查询，该查询返回同一行中的父记录和子记录。 例如，内置的酒店示例数据集是一个 SQL 数据库，该数据库具有50记录 (每个旅馆) ，链接到相关表中的教室记录。 将集体数据平展到行集的查询会将所有房间信息嵌入到每个酒店记录的 JSON 文档中。 嵌入的空间信息是一个使用 **FOR JSON AUTO** 子句的查询生成的。 有关此技术的详细信息，请参阅 [定义返回嵌入 JSON 的查询](index-sql-relational-data.md#define-a-query-that-returns-embedded-json)。 这只是一个示例;您可以找到将产生相同效果的其他方法。
 
 除平展数据外，还必须仅提取可搜索的数据。 可搜索数据为字母数字。 认知搜索无法以任何格式搜索二进制数据，但它可以提取并推断图像文件的文本说明 (请参阅 [AI 扩充](cognitive-search-concept-intro.md)) 创建可搜索的内容。 同样，使用 AI 扩充，自然语言模型可以分析大文本，以查找结构或相关信息，并生成可添加到搜索文档中的新内容。
 
@@ -147,7 +157,7 @@ AI 扩充超出了本文的范围。 有关详细信息，请从 [Azure 中的�
 
 请记住，索引器会将搜索文档传递给搜索引擎，以便进行索引。 就像索引器具有确定执行行为的属性一样，索引架构具有程度对字符串进行索引的方式的属性， (仅分析字符串并将其标记) 。 根据分析器分配，索引字符串可能不同于传入的字符串。 可以使用 " [分析文本" (REST) ](/rest/api/searchservice/test-analyzer)来评估分析器的效果。 有关分析器的详细信息，请参阅 [文本处理分析器](search-analyzers.md)。
 
-索引器仅检查字段名称和类型。 没有验证步骤可确保传入内容对于索引中对应的搜索字段是正确的。 作为验证步骤，你可以对已填充的索引运行查询，以返回整篇文档或所选字段。 有关查询索引内容的详细信息，请参阅 [创建基本查询](search-query-create.md)。
+就索引器与索引进行交互的方式而言，索引器仅检查字段名称和类型。 没有验证步骤可确保传入内容对于索引中对应的搜索字段是正确的。 作为验证步骤，你可以对已填充的索引运行查询，以返回整篇文档或所选字段。 有关查询索引内容的详细信息，请参阅 [创建基本查询](search-query-create.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

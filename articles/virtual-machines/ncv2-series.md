@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 2b37b69390c75b30575377dddf7ffb1d2cf5b9cf
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: abe3fbb9fb48021be7c44ddded436460633807ce
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917355"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094769"
 ---
 # <a name="ncv2-series"></a>NCv2 系列
 
@@ -26,6 +26,7 @@ NC24rs v2 配置提供了针对紧密耦合的并行计算工作负荷优化的�
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：不支持<br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 Nvidia NVLink 互连：不支持
 
 > [!IMPORTANT]

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 75b62eb00b1a1a534be01f9f118b4d5066e44a37
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cb5ce421b6a38edcb8d92866f749a544eff927d6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222881"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096383"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>排查虚拟网络对等互连问题
 
@@ -87,7 +87,7 @@ ms.locfileid: "98222881"
 有关详细信息，请参阅[服务链接](./virtual-network-peering-overview.md#service-chaining)。
 
 > [!Note]
-> 如果需要帮助设置 NVA，请[联系 NVA 供应商](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+> 如果需要帮助设置 NVA，请[联系 NVA 供应商](https://mskb.pkisolutions.com/kb/2984655)。
 
 在排查 NVA 设备设置和路由问题时如需帮助，请参阅 [Azure 中的网络虚拟设备问题](./virtual-network-troubleshoot-nva.md)。
 
@@ -190,7 +190,7 @@ ms.locfileid: "98222881"
 
 中心网络必须包含 NVA。 在已将 NVA 设置为下一跃点的辐射虚拟网络中配置 UDR，并在中心虚拟网络中启用“允许转发的流量”。
 
-有关详细信息，请参阅[服务链接](./virtual-network-peering-overview.md#service-chaining)，并与所选的 [NVA 供应商](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)讨论这些要求。
+有关详细信息，请参阅[服务链接](./virtual-network-peering-overview.md#service-chaining)，并与所选的 [NVA 供应商](https://mskb.pkisolutions.com/kb/2984655)讨论这些要求。
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>排查不同区域中辐射虚拟网络之间的中心辐射型网络连接问题
 

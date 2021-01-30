@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/29/2018
-ms.openlocfilehash: afa21e6aae769e69e8bc83b9fa0d4f9b76396f7e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2f56fc285ed263b4b58985b5df620740a33cb3f5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220306"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092345"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Data Lake Analytics
 
@@ -242,7 +242,7 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 * 已取消
 * 已失败
 * 无
-* 已成功
+* 成功
 
 ``` powershell
 # List Successful jobs.
@@ -298,7 +298,7 @@ Wait-AdlJob -Account $adla -JobId $job.JobId
 
 ## <a name="analyzing-job-history"></a>分析作业历史记录
 
-使用 Azure PowerShell 分析 Data Lake 分析中运行的作业的历史记录是一项强大的技术。 通过此方法可深入了解使用情况和成本。 可参阅[作业历史分析示例存储库](https://github.com/Azure-Samples/data-lake-analytics-powershell-job-history-analysis)，了解详细信息  
+使用 Azure PowerShell 分析 Data Lake 分析中运行的作业的历史记录是一项强大的技术。 通过此方法可深入了解使用情况和成本。 可参阅[作业历史分析示例存储库](https://github.com/jpalbright31/data-lake-analytics-powershell-job-history-analysis)，了解详细信息  
 
 ## <a name="list-job-pipelines-and-recurrences"></a>列出作业管道和重复周期
 

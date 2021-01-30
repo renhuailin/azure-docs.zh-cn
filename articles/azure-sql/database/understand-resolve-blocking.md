@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 1/14/2020
-ms.openlocfilehash: b73e72969a851428034499d447ecb162a61aa9ab
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1341d0e64a01ff428fe42735d198c5e6b74b0ce8
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725780"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093302"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>了解和解决 Azure SQL 数据库阻塞问题
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -228,8 +228,8 @@ AND object_name(p.object_id) = '<table_name>';
     | 资源 | 格式 | 示例 | 说明 | 
     |:-|:-|:-|:-|
     | 表 | DatabaseID： ObjectID： IndexID | 选项卡：5:261575970:1 | 在这种情况下，数据库 ID 5 是 pubs 示例数据库，对象 ID 261575970 是标题表，1是聚集索引。 |
-    | 页面 | DatabaseID： FileID： PageID | 页面：5:1:104 | 在这种情况下，数据库 ID 5 是 pubs，文件 ID 1 是主数据文件，页面104是属于标题表的页面。 若要标识页面所属的 object_id，请使用动态管理函数 [sys.dm_db_page_info](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-page-info-transact-sql)，并传入 DatabaseID、FileId、PageId `wait_resource` 。 | 
-    | 密钥 | DatabaseID： Hobt_id 索引键 (哈希值)  | 密钥： 5:72057594044284928 (3300a4f361aa)  | 在这种情况下，数据库 ID 5 是 Pubs，Hobt_ID 72057594044284928 对应于 object_id 261575970 (标题表) index_id 2。 使用 sys.databases 目录视图将 hobt_id 关联到特定 index_id 并 object_id。 无法将索引键哈希进行解到特定键值。 |
+    | 页 | DatabaseID： FileID： PageID | 页面：5:1:104 | 在这种情况下，数据库 ID 5 是 pubs，文件 ID 1 是主数据文件，页面104是属于标题表的页面。 若要标识页面所属的 object_id，请使用动态管理函数 [sys.dm_db_page_info](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-page-info-transact-sql)，并传入 DatabaseID、FileId、PageId `wait_resource` 。 | 
+    | 键 | DatabaseID： Hobt_id 索引键 (哈希值)  | 密钥： 5:72057594044284928 (3300a4f361aa)  | 在这种情况下，数据库 ID 5 是 Pubs，Hobt_ID 72057594044284928 对应于 object_id 261575970 (标题表) index_id 2。 使用 sys.databases 目录视图将 hobt_id 关联到特定 index_id 并 object_id。 无法将索引键哈希进行解到特定键值。 |
     | 行 | DatabaseID： FileID： PageID：槽 (行)  | RID：5:1:104:3 | 在这种情况下，数据库 ID 5 是 pubs，文件 ID 1 是主数据文件，页104是属于标题表的页，槽3指示行在页面上的位置。 |
     | Compile  | DatabaseID： FileID： PageID：槽 (行)  | RID：5:1:104:3 | 在这种情况下，数据库 ID 5 是 pubs，文件 ID 1 是主数据文件，页104是属于标题表的页，槽3指示行在页面上的位置。 |
 
@@ -282,13 +282,13 @@ AND object_name(p.object_id) = '<table_name>';
 
 `wait_type`、 `open_transaction_count` 和 `status` 列引用[sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)返回的信息， [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql)可能返回其他列。 "解决？" 列指示阻塞是否会自行解析，或是否应通过命令终止会话 `KILL` 。 有关详细信息，请参阅 [KILL (transact-sql) ](/sql/t-sql/language-elements/kill-transact-sql)。
 
-| 场景 | Waittype | Open_Tran | 状态 | 解析? | 其他症状 |  
+| 方案 | Waittype | Open_Tran | 状态 | 解析? | 其他症状 |  
 |:-|:-|:-|:-|:-|:-|--|
 | 1 | NOT NULL | >= 0 | 运行 | 是，当查询完成时。 | 在 sys.dm_exec_sessions 中， **读取**、 **cpu_time** 和/或 **memory_usage** 列将随着时间的推移而增加。 完成后，查询的持续时间将较高。 |
 | 2 | Null | \>0 | 正在睡眠 | 不可以，但可以终止 SPID。 | 此 SPID 的扩展事件会话中可能出现了注意信号，指示发生了查询超时或取消。 |
 | 3 | Null | \>= 0 | 运行 | 不能。 在客户端提取所有行或关闭连接之前，将无法解析。 可以终止 SPID，但可能最多需要30秒。 | 如果 open_transaction_count = 0，并且 SPID 持有锁，而事务隔离级别为默认值 (READ COMMMITTED) ，则可能是这种情况。 |  
 | 4 | 多种多样 | \>= 0 | 运行 | 不能。 在客户端取消查询或关闭连接之前，将不会解析。 可以终止 Spid，但可能最多需要30秒。 | 阻塞链开头的 SPID sys.dm_exec_sessions 中的 " **主机名** " 列将与它阻止的一个 spid 相同。 |  
-| 5 | Null | \>0 | 回滚 | 是。 | 此 SPID 的扩展事件会话中可能出现了注意信号，指示已发生查询超时或取消，或者只是发出了 rollback 语句。 |  
+| 5 | Null | \>0 | 回滚 | 是的。 | 此 SPID 的扩展事件会话中可能出现了注意信号，指示已发生查询超时或取消，或者只是发出了 rollback 语句。 |  
 | 6 | Null | \>0 | 正在睡眠 | 最终. 当 Windows NT 确定会话不再处于活动状态时，Azure SQL 数据库连接将中断。 | `last_request_start_time`Sys.dm_exec_sessions 中的值早于当前时间。 |
 
 以下方案将在这些情况下扩展。 
@@ -369,9 +369,9 @@ AND object_name(p.object_id) = '<table_name>';
     KILL 99
     ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-* [Azure SQL 数据库与 Azure SQL 托管实例中的监视和性能优化](/monitor-tune-overview.md)
+* [Azure SQL 数据库与 Azure SQL 托管实例中的监视和性能优化](/azure/azure-sql/database/monitor-tune-overview)
 * [使用 Query Store 监视性能](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
 * [事务锁定和行版本控制指南](/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide)
 * [SET TRANSACTION ISOLATION LEVEL](/sql/t-sql/statements/set-transaction-isolation-level-transact-sql)

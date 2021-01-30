@@ -3,12 +3,12 @@ title: 使用 Azure 服务总线资源管理器在服务总线上执行数据操
 description: 本文介绍如何使用基于门户的 Azure 服务总线资源管理器访问 Azure 服务总线数据。
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: eb6610945ba4b09543308ab351d3a36ec7e587dd
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 06bc2ffffc6b467aa730e16599099bc95117dac9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684835"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092211"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>使用服务总线资源管理器在服务总线上执行数据操作（预览版）
 
@@ -37,9 +37,9 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
     - [快速入门 - 创建队列](service-bus-quickstart-portal.md)
     - [快速入门 - 创建主题](service-bus-quickstart-topics-subscriptions-portal.md)
 - 确保你是该命名空间中某个角色的成员： 
-    - [服务总线数据所有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 
-    - [参与者](../role-based-access-control/built-in-roles.md#contributor) 
-    - [所有者](/role-based-access-control/built-in-roles.md#owner)
+    - [服务总线数据所有者](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) 
+    - [参与者](/azure/role-based-access-control/built-in-roles#contributor) 
+    - [所有者](/azure/role-based-access-control/built-in-roles#owner)
 
 
 ## <a name="using-the-service-bus-explorer"></a>使用服务总线资源管理器

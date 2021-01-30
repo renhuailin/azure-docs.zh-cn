@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 76bf9376d3eb33153584f74c9d0d9196706428ae
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 88e2161cfddf95f7f250b8b76c067d045f1529da
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932096"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092228"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 发行说明
 
@@ -38,7 +38,7 @@ HDInsight 目前使用 Azure 虚拟机来预配群集。 从此版本开始，�
 
 ## <a name="deprecation"></a>弃用
 ### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>弃用 HDInsight 3.6 ML 服务群集
-HDInsight 3.6 ML 服务群集类型将于 2020 年 12 月 31 日终止支持。 3.6 年 12 31 2020 月之后，客户将无法创建新的 ML 服务群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请在[此处](./hdinsight-component-versioning.md#available-versions)检查 HDInsight 版本的有效期限和群集类型。
+HDInsight 3.6 ML 服务群集类型将于 2020 年 12 月 31 日终止支持。 2020 年 12 月 31 日之后，客户将不能创建新的 3.6 ML 服务群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请在[此处](./hdinsight-component-versioning.md#available-versions)检查 HDInsight 版本的有效期限和群集类型。
 
 ### <a name="disabled-vm-sizes"></a>禁用的 VM 大小
 自 2020 年 11 月 16 日起，HDInsight 将阻止新客户使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集。 过去三个月内使用过这些 VM 大小的现有客户将不会受到影响。 自 2021 年 1 月 9 日起，HDInsight 将阻止所有客户使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小创建群集。 现有群集将照常运行。 请考虑迁移到 HDInsight 4.0，避免出现潜在的系统/支持中断。
@@ -50,14 +50,17 @@ HDInsight 为缩放操作添加了网络安全组 (NSG) 和用户定义的路由
 ## <a name="upcoming-changes"></a>即将推出的更改
 即将发布的版本中将推出以下变更。
 
+### <a name="breaking-change-for-net-for-apache-spark-100"></a>Apache Spark 1.0.0 的 .NET 的重大更改
+HDInsight 将在下一版本中介绍 .NET for Apache Spark 的第一个主要版本。 它提供 Spark 2.4. x 和 Spark 3.0. x 与其他功能的数据帧 API 完整性。 此主要版本有重大更改，请参阅 [此迁移 guid](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) ，了解更新代码和管道所需的步骤。 在[此处](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)了解更多信息。
+
 ### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>默认群集 VM 大小将更改为 Ev3 系列
-从) 1 月结束 (的下一版本开始，默认群集 VM 大小将从 D 系列更改为 Ev3 系列。 此更改适用于头节点和工作节点。 若要避免此更改，请指定要在 ARM 模板中使用的 VM 大小。
+从下一个版本开始（1 月底左右），默认群集 VM 大小将从 D 系列更改为 Ev3 系列。 此更改适用于头节点和工作器节点。 要避免此更改，请指定要在 ARM 模板中使用的 VM 大小。
 
 ### <a name="default-cluster-version-will-be-changed-to-40"></a>默认群集版本将更改为 4.0
 自 2021 年 2 月起，HDInsight 群集的默认版本将从 3.6 更改为 4.0。 有关可用版本的详细信息，请参阅[可用版本](./hdinsight-component-versioning.md#available-versions)。 详细了解 [HDInsight 4.0](./hdinsight-version-release.md) 中的新增功能
 
-### <a name="os-version-upgrade"></a>操作系统版本升级
-HDInsight 正在将操作系统版本从16.04 升级到18.04。 升级将在2021年4月之前完成。
+### <a name="os-version-upgrade"></a>OS 版本升级
+HDInsight 正在将 OS 版本从 16.04 升级到 18.04。 升级将在2021年4月之前完成。
 
 ### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>将于 2021 年 6 月 30 日终止支持 HDInsight 3.6
 将终止支持 HDInsight 3.6。 自 2021 年 6 月 30 日起，客户无法创建新的 HDInsight 3.6 群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请考虑迁移到 HDInsight 4.0，避免出现潜在的系统/支持中断。
@@ -71,7 +74,7 @@ HDInsight 会持续改善群集的可靠性和性能。
 ## <a name="known-issues"></a>已知问题
 ### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>防止 HDInsight 群集 VM 定期重启
 
-你可能已注意到，从 2020 年 11 月月中开始，HDInsight 群集 VM 会定期重启。 这可能是由以下原因导致的：
+从2020年11月开始，你可能已注意到 HDInsight 群集 Vm 定期重启。 这可能是由以下原因导致的：
 
 1.  在群集上启用了 Clamav。 新的 azsec-clamav 包消耗大量的内存，这会触发节点重启。 
 2.  每天会安排一个 CRON 作业，该作业监视 Azure 服务使用的证书颁发机构 (CA) 列表的变更。 当有新的 CA 证书可用时，该脚本会将证书添加到 JDK 信任存储，并安排重启。
