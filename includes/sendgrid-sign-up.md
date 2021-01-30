@@ -4,15 +4,13 @@ ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
-ms.openlocfilehash: 3590b8fdb67b25e0d4389e814aefcc4d18b1193c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bc00f4de95d22eec71f9b1b2504b00f506232dc
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015413"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99213579"
 ---
-Azure 客户每月可解锁 25,000 封免费电子邮件。 这些25000免费的每月电子邮件将使你能够访问高级报告和分析以及 [所有 api][all APIs] (WEB、SMTP、事件、分析等) 。 有关 SendGrid 提供的其他服务的信息，请访问 [SendGrid 解决方案][SendGrid Solutions]页。
-
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>注册 SendGrid 帐户
 1. 登录 [Azure 门户][Azure portal]。
 2. 在 "Azure 门户" 菜单或 "主页" 中，选择 " **创建资源**"。
@@ -30,7 +28,7 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 这些25000免费的
 8. 新建“资源组”或使用现有资源组。
 9. 在“定价层”对话框中，选择要注册的 SendGrid 计划。
 
-    !["创建新的 SendGrid 帐户" 对话框的屏幕截图，其中打开了 "选择定价层" 部分，并选择了 "免费" 定价层。][sendgrid-pricing]
+    !["创建新的 SendGrid 帐户" 对话框的屏幕截图，其中打开了 "选择定价层" 部分][sendgrid-pricing]
 10. 如果有“促销代码”，请输入。
 11. 输入 **联系信息**。
 12. 查看并接受 **法律条款**。
