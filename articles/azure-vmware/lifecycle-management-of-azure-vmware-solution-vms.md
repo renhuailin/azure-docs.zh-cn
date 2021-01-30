@@ -3,12 +3,12 @@ title: Azure VMware 解决方案 Vm 的生命周期管理
 description: 了解如何通过 Microsoft Azure 本机工具来管理 Azure VMware 解决方案 Vm 生命周期的所有方面。
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: ff1032900fa936895f3adfcb0d8a872f24948aca
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326805"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062890"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware 解决方案 Vm 的生命周期管理
 
@@ -81,13 +81,13 @@ Azure 安全中心不需要部署。 有关详细信息，请参阅 [虚拟机�
 
 Azure Arc 将 Azure 管理扩展到任何基础结构，包括 Azure VMware 解决方案、本地或其他云平台。
 
-- 请参阅 [大规模将混合计算机连接到 azure](../azure-arc/servers/onboard-service-principal.md) ，为多个 Windows 或 Linux vm 启用启用了 Azure Arc 的服务器。
+- 有关为多个 Windows 或 Linux Vm 启用启用了 Azure Arc 的服务器的信息，请参阅 [大规模将混合计算机连接到 azure](../azure-arc/servers/onboard-service-principal.md)。
 
 ### <a name="onboard-hybrid-kubernetes-clusters-with-arc-enabled-kubernetes"></a>启用了 Arc 的内置混合 Kubernetes 群集 Kubernetes
 
 可以使用启用了 Azure Arc Kubernetes 的 Azure VMware 解决方案环境中托管的 Kubernetes 群集。 
 
-- 请参阅 [创建启用了 Azure Arc 的载入服务主体](../azure-arc/kubernetes/create-onboarding-service-principal.md)。
+- 有关详细信息，请参阅 [创建启用了 Azure Arc 的载入服务主体](../azure-arc/kubernetes/create-onboarding-service-principal.md)。
 
 ### <a name="deploy-the-log-analytics-agent"></a>部署 Log Analytics 代理
 

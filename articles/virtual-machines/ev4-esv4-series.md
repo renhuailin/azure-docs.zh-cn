@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 9918c978ecb98b7586272da714bdc8d25920d114
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 7d0e3f8c55a2c8eff40c196719213390e96efb0a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920318"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089302"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 和 Esv4 系列
 
@@ -36,6 +36,7 @@ Ev4 系列规格在 Intel Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上�
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大 NIC 数|预期的网络带宽 (Mbps) |
@@ -61,6 +62,7 @@ Esv4 系列规格在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理�
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |

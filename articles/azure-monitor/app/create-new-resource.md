@@ -3,12 +3,12 @@ title: 新建 Azure Application Insights 资源 | Microsoft Docs
 description: 为新的实时应用程序手动设置 Application Insights 监视。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: adc40db493c701a21fd30d10a4452edee1b87ab9
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: e69611d650f61630c8b36f7387b79cffbb61f227
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951254"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062907"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -36,8 +36,8 @@ Azure Application Insights 在 Microsoft Azure *资源* 中显示有关应用程
 
 在必填字段中输入适当的值，然后选择“查看 + 创建”。
 
-[!div class="mx-imgBorder"]
-![在必填字段中输入值，然后选择“查看 + 创建”。](./media/create-new-resource/review-create.png)
+> [!div class="mx-imgBorder"]
+> ![在必填字段中输入值，然后选择“查看 + 创建”。](./media/create-new-resource/review-create.png)
 
 创建应用后，将打开一个新窗格。 可以在此窗格中查看有关受监视应用程序的性能和使用情况数据。 
 

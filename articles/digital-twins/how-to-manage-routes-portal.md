@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 083d868f2d2652be9480227c29dfb289564056d6
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 0f705aa61f1fe627dc0c8227242538e01ffce1d5
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533780"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070767"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>在 Azure 数字孪生 (门户中管理终结点和路由) 
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-在 Azure 数字孪生中，可以将 [事件通知](how-to-interpret-event-data.md) 路由到下游服务或连接的计算资源。 这是通过首先设置可接收事件的 **终结点** 来完成的。 然后，可以创建 [**事件路由**](concepts-route-events.md) ，用于指定由 Azure 数字孪生生成的哪些事件将传递到哪些终结点。
+在 Azure 数字孪生中，可以将 [事件通知](how-to-interpret-event-data.md) 路由到下游服务或连接的计算资源。 首先需要设置可接收事件的终结点。 然后，可以创建 [**事件路由**](concepts-route-events.md) ，用于指定由 Azure 数字孪生生成的哪些事件将传递到哪些终结点。
 
 本文将指导你完成使用 [Azure 门户](https://portal.azure.com)创建终结点和路由的过程。
 
@@ -33,11 +33,11 @@ ms.locfileid: "94533780"
 
 设置实例后，可以在 [Azure 门户](https://portal.azure.com) 中找到这些详细信息。 登录到门户，并在门户搜索栏中搜索实例的名称。
  
-:::image type="content" source="media/how-to-manage-routes-portal/search-field-portal.png" alt-text="Azure 门户搜索栏的屏幕截图。":::
+:::image type="content" source="media/how-to-manage-routes-portal/search-field-portal.png" alt-text="Azure 门户搜索栏的屏幕截图。" lightbox="media/how-to-manage-routes-portal/search-field-portal.png":::
 
-从结果中选择实例，以查看实例的详细信息页：
+从结果中选择实例，以在实例的概述中查看这些详细信息：
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="ADT 实例详细信息的屏幕截图。" border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Azure 数字孪生实例的 &quot;概述&quot; 页的屏幕截图。将突出显示名称和资源组。":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>为 Azure 数字孪生创建终结点
 
@@ -48,89 +48,65 @@ ms.locfileid: "94533780"
 
 有关不同终结点类型的详细信息，请参阅在 [*Azure 消息服务之间选择*](../event-grid/compare-messaging-services.md)。
 
-若要将终结点链接到 Azure 数字孪生，要用于终结点的事件网格主题、事件中心或服务总线必须已存在。 
+本部分介绍如何在 [Azure 门户](https://portal.azure.com)中创建其中一个终结点。
 
-### <a name="create-an-event-grid-endpoint"></a>创建事件网格端点
+[!INCLUDE [digital-twins-endpoint-resources.md](../../includes/digital-twins-endpoint-resources.md)]
 
-**先决条件** ：按照事件网格 *自定义事件* 快速入门中 [的 *创建自定义主题* 部分](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)中的步骤创建事件网格主题。
+### <a name="create-the-endpoint"></a>创建终结点 
 
-创建主题后，可将其从 [Azure 门户](https://portal.azure.com) 中的 Azure 数字孪生实例页面链接到 Azure 数字孪生 (可以通过在门户搜索栏中输入名称) 来查找实例。
+创建终结点资源后，可将其用于 Azure 数字孪生终结点。 若要创建新的终结点，请在 [Azure 门户](https://portal.azure.com) 中中转到实例的页面 (可以通过在门户搜索栏中输入名称) 来查找实例。
 
-从 "实例" 菜单中选择 " _终结点_ "。 然后，在下面的 " *终结点* " 页中，选择 " *+ 创建终结点* "。 
+1. 从 "实例" 菜单中选择 " _终结点_"。 然后，在下面的 " *终结点* " 页中，选择 " *+ 创建终结点*"。 这将打开 " *创建终结点* " 页，在该页面中，你将在以下步骤中填写字段。
 
-在打开的 " *创建终结点* " 页上，可以通过选择相应的单选按钮来创建 _事件网格_ 类型的终结点。 完成其他详细信息：在 " _名称_ " 字段中输入终结点的名称，从下拉列表中选择你的 _订阅_ ，并从第三个下拉列表中选择预先创建的  _事件网格主题_ 。
+    :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="创建事件网格类型终结点的屏幕截图。" lightbox="media/how-to-manage-routes-portal/create-endpoint-event-grid.png":::
 
-然后，通过命中 _保存_ 来创建终结点。
+1. 输入终结点的 **名称** ，并选择 **终结点类型**。
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="创建事件网格类型终结点的屏幕截图。":::
+1. 完成终结点类型所需的其他详细信息，包括你的订阅和 [上面](#prerequisite-create-endpoint-resources)所述的终结点资源。
+    1. 仅适用于事件中心和服务总线终结点，你必须选择 **身份验证类型**。 你可以将基于密钥的身份验证与预先创建的授权规则或基于身份的身份验证配合使用，前提是你要将该终结点用于 Azure 数字孪生实例的 [托管标识](concepts-security.md#managed-identity-for-accessing-other-resources-preview) 。 
 
-可以通过选中顶部 Azure 门户栏中的通知图标来验证是否已成功创建终结点： 
+    :::row:::
+        :::column:::
+            :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png" alt-text="创建事件中心类型终结点的屏幕截图。" lightbox="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png":::
+        :::column-end:::
+        :::column:::
+        :::column-end:::
+    :::row-end:::
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="通知的屏幕截图，用于验证终结点的创建。" border="false":::
+1. 通过选择 " _保存_" 完成终结点的创建。
+
+>[!IMPORTANT]
+> 为了成功地对终结点使用基于身份的身份验证，需要按照 [*如何：为路由事件启用托管标识 (预览)*](how-to-enable-managed-identities.md)为实例创建托管标识。
+
+创建终结点后，可以通过选中顶部 Azure 门户栏中的通知图标来验证是否已成功创建终结点： 
+
+:::row:::
+    :::column:::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="通知的屏幕截图，用于验证终结点的创建。选中门户顶部栏中的 &quot;钟形&quot; 图标，出现 &quot;Endpoint ADT 已成功创建&quot; 的通知。":::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
+
+如果终结点创建失败，请在几分钟后观察错误消息并重试。
 
 你还可以在 Azure 数字孪生实例的 " *终结点* " 页上查看已创建的终结点。
 
-如果终结点创建失败，请在几分钟后观察错误消息并重试。
-
-现在，可以在 " _名称_ " 字段中指定的名称下，使用事件网格主题作为 Azure 数字孪生内的终结点。 通常将该名称用作 **事件路由** 的目标， [稍后将在本文中](#create-an-event-route)创建。
-
-### <a name="create-an-event-hubs-endpoint"></a>创建事件中心终结点
-
-**先决条件** ： 
-* 需要一个事件中心 _命名空间_ 和 _事件中心_ 。 按照事件中心 [*创建事件中心*](../event-hubs/event-hubs-create.md) 快速入门中的步骤创建这两项。
-* 你将需要一个 _授权规则_ 。 若要创建此项目，请参阅 [*使用共享访问签名授权访问事件中心资源*](../event-hubs/authorize-access-shared-access-signature.md) 的事件中心。
-
-请在 [Azure 门户](https://portal.azure.com) 中的 Azure 数字孪生实例中转到详细信息页 (可以通过在门户搜索栏) 中输入其名称来找到它。
-
-从 "实例" 菜单中选择 " _终结点_ "。 然后，在下面的 " *终结点* " 页中，选择 " *+ 创建终结点* "。 
-
-在打开的 " *创建终结点* " 页上，可以通过选择相应的单选按钮来创建 _事件中心_ 类型的终结点。 在 " _名称_ " 字段中输入终结点的名称。 然后从相应的下拉列表中选择你的 _订阅_ 以及预先创建的 _事件中心命名空间_ 、 _事件中心_ 和 _授权规则_ 。
-
-然后，通过命中 _保存_ 来创建终结点。
-
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="创建事件中心类型终结点的屏幕截图。":::
-
-可以通过选中顶部 Azure 门户栏中的通知图标来验证是否已成功创建终结点。 
-
-如果终结点创建失败，请在几分钟后观察错误消息并重试。
-
-现在，可以在 " _名称_ " 字段中指定的名称下将事件中心用作 Azure 数字孪生内的终结点。 通常将该名称用作 **事件路由** 的目标， [稍后将在本文中](#create-an-event-route)创建。
-
-### <a name="create-a-service-bus-endpoint"></a>创建服务总线终结点
-
-**先决条件** ： 
-* 需要 _服务总线命名空间_ 和 _服务总线主题_ 。 请按照服务总线 [*创建主题和订阅*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md) 快速入门中的步骤创建这两项。 不需要完成 " [*创建订阅" 主题*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md#create-subscriptions-to-the-topic) 部分。
-* 你将需要一个 _授权规则_ 。 若要创建此服务，请参阅服务总线 [*身份验证和授权*](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature) 一文。
-
-请在 [Azure 门户](https://portal.azure.com) 中的 Azure 数字孪生实例中转到详细信息页 (可以通过在门户搜索栏) 中输入其名称来找到它。
-
-从 "实例" 菜单中选择 " _终结点_ "。 然后，在下面的 " *终结点* " 页中，选择 " *+ 创建终结点* "。 
-
-在打开的 " *创建终结点* " 页上，可以通过选择相应的单选按钮来创建 _服务总线_ 类型的终结点。 在 " _名称_ " 字段中输入终结点的名称。 然后从相应的下拉列表中选择你的 _订阅_ 以及预先创建的 _服务总线命名空间_ 、 _服务总线主题_ 和 _授权规则_ 。
-
-然后，通过命中 _保存_ 来创建终结点。
-
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="用于创建服务总线类型终结点的屏幕截图。":::
-
-可以通过选中顶部 Azure 门户栏中的通知图标来验证是否已成功创建终结点。 
-
-如果终结点创建失败，请在几分钟后观察错误消息并重试。
-
-现在，可以在 " _名称_ " 字段中指定的名称下，使用服务总线主题作为 Azure 数字孪生内的终结点。 通常将该名称用作 **事件路由** 的目标， [稍后将在本文中](#create-an-event-route)创建。
+现在，"事件网格"、"事件中心" 或 "服务总线" 主题在 Azure 数字孪生内作为终结点提供，其名称位于为终结点选择的名称下。 通常将该名称用作 **事件路由** 的目标， [稍后将在本文中](#create-an-event-route)创建。
 
 ### <a name="create-an-endpoint-with-dead-lettering"></a>创建具有死信的端点
 
 当终结点无法在某个时间段内传递事件时，或者尝试将事件传递到一定次数后，它可以将未送达的事件发送到存储帐户。 此过程称为“死信处理”。
 
-若要创建启用了死信的终结点，必须使用 [ARM api](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) 来创建终结点，而不是 Azure 门户。
+为了创建启用了死信的端点，必须使用 [CLI 命令](how-to-use-cli.md) 或 [控制平面 api](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) 来创建终结点，而不是 Azure 门户。
 
-有关如何通过 Api 执行此操作的说明，请参阅本文的 [*api 和 CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) 版本。
+有关如何在这些工具中执行此操作的说明，请参阅本文的 [*api 和 CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) 版本。
 
 ## <a name="create-an-event-route"></a>创建事件路由
 
-若要将数据从 Azure 数字孪生实际发送到终结点，需要定义 **事件路由** 。 通过这些路由，开发人员可以将事件流连接到整个系统和下游服务。 有关事件路由的详细信息，请参阅 [*概念：路由 Azure 数字孪生事件*](concepts-route-events.md)。
+若要将数据从 Azure 数字孪生实际发送到终结点，需要定义 **事件路由**。 通过这些路由，开发人员可以将事件流连接到整个系统和下游服务。 有关事件路由的详细信息，请参阅 [*概念：路由 Azure 数字孪生事件*](concepts-route-events.md)。
 
-**必备组件** ：你需要先按本文前面所述创建终结点，然后才能继续创建路由。 终结点完成设置后，可以继续创建事件路由。
+**必备组件**：你需要先按本文前面所述创建终结点，然后才能继续创建路由。 终结点完成设置后，可以继续创建事件路由。
 
 >[!NOTE]
 >如果你最近部署了终结点，请验证它们是否已完成部署， **然后再** 尝试将它们用于新的事件路由。 如果无法设置路由，因为终结点尚未准备就绪，请等待几分钟，然后重试。
@@ -140,7 +116,7 @@ ms.locfileid: "94533780"
 事件路由定义包含以下元素：
 * 要使用的路由名称
 * 要使用的终结点的名称
-* 定义要发送到终结点的事件的筛选器
+* 用于定义发送到终结点的事件的筛选器
     - 若要禁用路由，以便不发送事件，请使用筛选器值 `false`
     - 若要启用没有特定筛选的路由，请使用筛选器值 `true`
     - 有关任何其他类型的筛选器的详细信息，请参阅下面的 " [*筛选器事件*](#filter-events) " 一节。
@@ -149,7 +125,7 @@ ms.locfileid: "94533780"
 
 若要创建事件路由，请在 [Azure 门户](https://portal.azure.com) 中的 Azure 数字孪生实例中转到详细信息页 (可以通过在门户搜索栏中输入其名称) 找到该实例。
 
-在 "实例" 菜单中，选择 " _事件路由_ "。 然后，在随后的 *事件路由* 页面中，选择 " *+ 创建事件路由* "。 
+在 "实例" 菜单中，选择 " _事件路由_"。 然后，在随后的 *事件路由* 页面中，选择 " *+ 创建事件路由*"。 
 
 在打开的 " *创建事件路由* " 页上，选择 "最小值"：
 * " _名称_ " 字段中的路由名称
@@ -172,7 +148,7 @@ ms.locfileid: "94533780"
 
 可以通过定义更具体的筛选器来限制正在发送的事件类型。
 
-若要在创建事件路由时添加事件筛选器，请使用 " *创建事件路由* " 页的 " _添加事件路由筛选器_ " 部分。 
+若要在创建事件路由时添加事件筛选器，请使用 "*创建事件路由*" 页的 "_添加事件路由筛选器_" 部分。 
 
 你可以从某些基本的常见筛选器选项中进行选择，也可以使用高级筛选器选项编写你自己的自定义筛选器。
 

@@ -3,12 +3,12 @@ title: 概念-在中心辐射型体系结构中集成 Azure VMware 解决方案�
 description: 了解如何在 Azure 上的中心和辐射型体系结构中集成 Azure VMware 解决方案部署。
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: bfc442e569572349b1323500fbd0b2f912ebbc62
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901379"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062739"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>在中心和辐射型体系结构中集成 Azure VMware 解决方案
 
@@ -76,7 +76,7 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
   :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware 解决方案到中心虚拟网络流量流" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
-可以在 [Azure Vmware 解决方案产品文档](./concepts-networking.md)中找到有关 Azure vmware 解决方案网络和连接概念的更多详细信息。
+有关 Azure VMware 解决方案网络和连接性概念的详细信息，请参阅 [Azure Vmware 解决方案产品文档](./concepts-networking.md)。
 
 ### <a name="traffic-segmentation"></a>流量分段
 
@@ -103,7 +103,7 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
 
 已使用在作为后端池的 Azure VMware 解决方案虚拟机上运行的 web 应用来测试 Azure 应用程序网关 V1 和 V2。 应用程序网关目前是唯一受支持的方法，可将 Azure VMware 解决方案 Vm 上运行的 web 应用公开到 internet。 它也可以安全地向内部用户公开应用程序。
 
-有关详细信息和要求，请查看 Azure VMware 解决方案特定的 [应用程序网关](./protect-azure-vmware-solution-with-application-gateway.md) 文章。
+有关详细信息，请参阅 [应用程序网关上](./protect-azure-vmware-solution-with-application-gateway.md)的特定于 Azure VMware 解决方案的文章。
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="使用网络安全组的第二级流量分段" border="false":::
 

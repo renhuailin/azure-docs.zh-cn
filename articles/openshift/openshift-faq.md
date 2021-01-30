@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: 3a474228776c689dbbd6f15ddd926f29383400ce
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 69417945bcd5234a0e5e8d2d6aee42859bc95c20
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964705"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071046"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常见问题
 
@@ -41,7 +41,7 @@ Azure Red Hat OpenShift 3.11 的每节点上限为50，每个节点限制为20�
 
 ### <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>群集是否可以跨多个 Azure 区域具有计算节点？
 
-不是。 Azure Red Hat OpenShift 群集中的所有节点都必须源自同一 Azure 区域。
+不能。 Azure Red Hat OpenShift 群集中的所有节点都必须源自同一 Azure 区域。
 
 ### <a name="can-a-cluster-be-deployed-across-multiple-availability-zones"></a>是否可以跨多个可用性区域部署群集？
 
@@ -49,7 +49,7 @@ Azure Red Hat OpenShift 3.11 的每节点上限为50，每个节点限制为20�
 
 ### <a name="are-control-plane-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>控制平面节点与 Azure Kubernetes Service (AKS) 相比是否抽象？
 
-不是。 所有资源（包括群集主节点）都在您的客户订阅中运行。 这些类型的资源置于只读资源组中。
+不能。 所有资源（包括群集主节点）都在您的客户订阅中运行。 这些类型的资源置于只读资源组中。
 
 ### <a name="does-the-cluster-reside-in-a-customer-subscription"></a>群集是否位于客户订阅中？ 
 
@@ -81,7 +81,7 @@ Azure 托管应用程序与客户订阅处于锁定的资源组中。 客户可�
 
 ### <a name="can-i-use-prometheus-to-monitor-my-applications"></a>是否可以使用 Prometheus 监视我的应用程序？
 
-Prometheus 是预安装的，并配置为适用于 Azure Red Hat OpenShift 1.x 群集。 阅读有关 [群集监视](https://docs.openshift.com/container-platform/3.11/install_config/prometheus_cluster_monitoring.html)的详细信息。
+Prometheus 是预安装的，并配置为适用于 Azure Red Hat OpenShift 1.x 群集。 阅读有关 [群集监视](https://docs.openshift.com/container-platform/4.6/operators/operator_sdk/osdk-monitoring-prometheus.html)的详细信息。
 
 对于 Azure Red Hat OpenShift 3.11 群集，可以在命名空间中部署 Prometheus 并监视命名空间中的应用程序。 有关详细信息，请参阅 [在 Azure Red Hat OpenShift 群集中部署 Prometheus 实例](howto-deploy-prometheus.md)。
 
@@ -97,7 +97,7 @@ Prometheus 是预安装的，并配置为适用于 Azure Red Hat OpenShift 1.x �
 
 ### <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-azure-red-hat-openshift-cluster"></a>客户如何在节点级别获取对 CPU/内存等指标的访问权限，以采取措施来缩放、调试问题，等等。 我似乎无法在 Azure Red Hat OpenShift 群集上运行 kubectl。
 
-对于 Azure Red Hat OpenShift 4.x 群集，OpenShift web 控制台在节点级别包含所有指标。 有关详细信息，请参阅关于 [查看群集信息](https://docs.openshift.com/aro/4/web_console/using-dashboard-to-get-cluster-information.html)的 Red Hat 文档。
+对于 Azure Red Hat OpenShift 4.x 群集，OpenShift web 控制台在节点级别包含所有指标。 有关详细信息，请参阅关于 [查看群集信息](https://docs.openshift.com/container-platform/4.6/web_console/using-dashboard-to-get-cluster-information.html)的 Red Hat 文档。
 
 对于 Azure Red Hat OpenShift 3.11 群集，客户可以通过使用命令 `oc adm top nodes` 或 `kubectl top nodes` 使用客户管理员群集角色来访问节点级别的 CPU/内存指标。 客户还可以使用命令或访问的 CPU/内存指标 `pods` `oc adm top pods` `kubectl top pods` 。
 
@@ -116,14 +116,14 @@ Prometheus 是预安装的，并配置为适用于 Azure Red Hat OpenShift 1.x �
 - 不得使用主机名。 主机名经常随升级和更新一起旋转，并保证更改。
 - 如果客户有针对特定标签或部署策略的请求，则可以完成此操作，但目前不支持工程设计工作。
 
-有关详细信息，请参阅 [控制 pod 位置](https://docs.openshift.com/aro/4/nodes/scheduling/nodes-scheduler-about.html)。
+有关详细信息，请参阅 [控制 pod 位置](https://docs.openshift.com/container-platform/4.6/nodes/scheduling/nodes-scheduler-about.html)。
 
 ### <a name="is-the-image-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>映像注册表是否可在外部使用，因此可以使用 Jenkins 等工具？
 
 对于4.x 群集，需要公开安全注册表并配置身份验证。 有关详细信息，请参阅以下 Red Hat 文档：
 
-- [公开注册表](https://docs.openshift.com/aro/4/registry/securing-exposing-registry.html)
-- [访问注册表](https://docs.openshift.com/aro/4/registry/accessing-the-registry.html)
+- [公开注册表](https://docs.openshift.com/container-platform/4.6/registry/securing-exposing-registry.html)
+- [访问注册表](https://docs.openshift.com/container-platform/4.6/registry/accessing-the-registry.html)
 
 对于3.11 群集，可以使用 Docker 映像注册表。 可从获取 Docker 注册表 `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` 。 你还可以使用 Azure 容器注册表。
 
@@ -181,24 +181,24 @@ oc adm policy \
 
 有关详细信息，请参阅 OpenShift 文档，了解如何对群集版本禁用自我预配：
 
-- [禁用4.3 群集中的自我预配](https://docs.openshift.com/aro/4/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
+- [禁用4.6 群集中的自我预配](https://docs.openshift.com/container-platform/4.6/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
 - [禁用3.11 群集中的自我预配](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning)
 
 ### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>IaaS) 中 (哪些 UNIX 权限可用于主机/基础节点/应用节点？
 
-对于4.x 群集，可以通过群集管理角色访问节点。 有关详细信息，请参阅 [KUBERNETES RBAC 概述](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)。
+对于4.x 群集，可以通过群集管理角色访问节点。 有关详细信息，请参阅 [KUBERNETES RBAC 概述](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html)。
 
 对于3.11 群集，禁止访问节点。
 
 ### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>我们有哪些 OCP 权限？ 群集管理？ 项目-管理员？
 
-对于4.x 群集，群集管理角色可用。 有关详细信息，请参阅 [KUBERNETES RBAC 概述](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)。
+对于4.x 群集，群集管理角色可用。 有关详细信息，请参阅 [KUBERNETES RBAC 概述](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html)。
 
 有关3.11 群集的详细信息，请参阅 [群集管理概述](https://docs.openshift.com/aro/admin_guide/index.html) 。
 
 ### <a name="which-identity-providers-are-available"></a>提供哪些标识提供程序？
 
-对于4.x 群集，可以配置自己的标识提供者。 有关详细信息，请参阅有关 [配置标识 prodivers](https://docs.openshift.com/aro/4/authentication/identity_providers/configuring-ldap-identity-provider.html)的 Red Hat 文档。
+对于4.x 群集，可以配置自己的标识提供者。 有关详细信息，请参阅有关 [配置标识提供程序](https://docs.openshift.com/container-platform/4.6/authentication/identity_providers/configuring-ldap-identity-provider.html)的 Red Hat 文档。
 
 对于3.11 群集，可以使用 Azure AD 集成。 
 
@@ -210,16 +210,16 @@ oc adm policy \
 
 ### <a name="is-data-stored-in-etcd-encrypted-on-azure-red-hat-openshift"></a>存储在 etcd 中的数据是否存储在 Azure Red Hat OpenShift 上？
 
-对于 Azure Red Hat OpenShift 4 群集，默认情况下不会对数据进行加密，但你可以选择启用加密。 有关详细信息，请参阅 [加密 etcd](https://docs.openshift.com/container-platform/4.3/authentication/encrypting-etcd.html)指南。
+对于 Azure Red Hat OpenShift 4 群集，默认情况下不会对数据进行加密，但你可以选择启用加密。 有关详细信息，请参阅 [加密 etcd](https://docs.openshift.com/container-platform/4.6/security/encrypting-etcd.html)指南。
 
 对于3.11 群集，不会在 etcd 级别对数据进行加密。 当前不支持启用加密的选项。 OpenShift 支持此功能，但需要进行工程工作才能将其放在路线图上。 在磁盘级别对数据进行加密。 有关详细信息，请参阅 [数据存储层上的数据加密](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html) 。
 
 ### <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>能否选择任何持久性存储解决方案，如 OCS？ 
 
-对于4.x 群集，Azure 磁盘 (Premium_LRS) 配置为默认存储类。 有关其他存储提供程序以及配置详细信息 (包括 Azure 文件) ，请参阅 [永久性存储](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html)上的 Red Hat 文档。
+对于4.x 群集，Azure 磁盘 (Premium_LRS) 配置为默认存储类。 有关其他存储提供程序以及配置详细信息 (包括 Azure 文件) ，请参阅 [永久性存储](https://docs.openshift.com/container-platform/4.6/storage/understanding-persistent-storage.html)上的 Red Hat 文档。
 
 对于3.11 群集，默认情况下提供两个存储类：一个用于 Azure 磁盘 (Premium_LRS) ，一个用于 Azure 文件。
 
 ## <a name="does-aro-store-any-customer-data-outside-of-the-clusters-region"></a>ARO 是否将任何客户数据存储在群集区域之外？
 
-不是。 在 ARO 群集中创建的所有数据都保留在群集的区域内。
+不能。 在 ARO 群集中创建的所有数据都保留在群集的区域内。

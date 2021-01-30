@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: ff8aa6688d8a838fa2e06d2eef546025cdd9213f
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 762db9d165358f3347fc9b7f3aaaf39f0c762308
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340047"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063190"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>通过专用终结点建立索引器连接
 
@@ -31,7 +31,7 @@ ms.locfileid: "92340047"
 
 通过其管理 REST API，Azure 认知搜索提供 [CreateOrUpdate](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) 操作，可用于配置 Azure 认知搜索索引器的访问权限。
 
-仅可使用搜索管理 API (版本 *2020-08-01-preview* 或更高版本) （在下表中指定为 *预览版* ）的预览版本创建到某些资源的专用终结点连接。 使用预览版或 (*2020-08-01*或更高版本) ，可以创建不带*预览*标志的资源。
+仅可使用搜索管理 API (版本 *2020-08-01-preview* 或更高版本) （在下表中指定为 *预览版* ）的预览版本创建到某些资源的专用终结点连接。 使用预览版或 (*2020-08-01* 或更高版本) ，可以创建不带 *预览* 标志的资源。
 
 下表列出了可从 Azure 认知搜索创建出站专用终结点的 Azure 资源。 若要创建共享专用链接资源，请输入与在 API 中写入的 **组 ID** 值完全相同的值。 这些值区分大小写。
 
@@ -47,14 +47,14 @@ ms.locfileid: "92340047"
 
 你还可以使用 [受支持的 api 列表](/rest/api/searchmanagement/privatelinkresources/listsupported)查询支持出站专用终结点连接的 Azure 资源。
 
-本文的其余部分将使用 [ARMClient](https://github.com/projectkudu/ARMClient) 和 [Postman](https://www.postman.com/) api 的混合来演示 REST API 调用。
+在本文的剩余部分中，如果你更喜欢) 和[Postman](https://www.postman.com/) (或其他任何 HTTP 客户端[（例如，](https://curl.se/)如果你更希望) 用于演示 REST API 调用，则[Azure CLI](https://docs.microsoft.com/cli/azure/) (或[ARMClient](https://github.com/projectkudu/ARMClient) ）的混合。
 
 > [!NOTE]
 > 本文中的示例基于以下假设：
-> * 搜索服务的名称是_contoso-搜索_，后者位于订阅 ID 为_00000000-0000-0000-0000-000000000000_的订阅的_contoso_资源组中。 
+> * 搜索服务的名称是 _contoso-搜索_，后者位于订阅 ID 为 _00000000-0000-0000-0000-000000000000_ 的订阅的 _contoso_ 资源组中。 
 > * 此搜索服务的资源 ID 为 _/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search_。
 
-其余示例显示了如何配置 _contoso 搜索_ 服务，以便其索引器可以从安全存储帐户 _/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage_访问数据。
+其余示例显示了如何配置 _contoso 搜索_ 服务，以便其索引器可以从安全存储帐户 _/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage_ 访问数据。
 
 ## <a name="secure-your-storage-account"></a>保护你的存储帐户
 
@@ -69,11 +69,15 @@ ms.locfileid: "92340047"
 
 ### <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>步骤1：创建存储帐户的共享专用链接资源
 
-若要请求 Azure 认知搜索创建到存储帐户的出站专用终结点连接，请执行以下 API 调用： 
+若要请求 Azure 认知搜索创建到存储帐户的出站专用终结点连接，请执行以下 API 调用，如 [Azure CLI](https://docs.microsoft.com/cli/azure/)所示： 
+
+`az rest --method put --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01 --body @create-pe.json`
+
+或者，如果想要使用 [ARMClient](https://github.com/projectkudu/ARMClient)：
 
 `armclient PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01 create-pe.json`
 
-文件 * 上create-pe.js* 的内容表示 API 的请求正文，如下所示：
+文件 *上create-pe.js* 的内容表示 API 的请求正文，如下所示：
 
 ```json
 {
@@ -99,6 +103,10 @@ ms.locfileid: "92340047"
 `"Azure-AsyncOperation": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe/operationStatuses/08586060559526078782?api-version=2020-08-01"`
 
 可以定期轮询此 URI 以获取操作的状态。 在继续操作之前，我们建议你等待，直到共享专用链接资源操作的状态达到终端状态 (即，操作的状态为 "已 *成功* ") 。
+
+`az rest --method get --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe/operationStatuses/08586060559526078782?api-version=2020-08-01`
+
+或使用 ARMClient：
 
 `armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe/operationStatuses/08586060559526078782?api-version=2020-08-01"`
 
@@ -130,6 +138,10 @@ ms.locfileid: "92340047"
 ### <a name="step-2b-query-the-status-of-the-shared-private-link-resource"></a>步骤2b：查询共享的专用链接资源的状态
 
 若要在批准后确认共享的专用链接资源已更新，请使用 [GET API](/rest/api/searchmanagement/sharedprivatelinkresources/get)获取其状态。
+
+`az rest --method get --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
+
+或使用 ARMClient：
 
 `armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
 

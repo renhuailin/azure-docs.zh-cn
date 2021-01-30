@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/21/2020
 keywords: pull secret，aro，openshift，red hat
-ms.openlocfilehash: 769b7589fb6496fc2f4123665ad1f6fe61d0cce2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1a8e45a2eab1b7b4c8a5936049f404d5bd3441c
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294741"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071080"
 ---
 # <a name="add-or-update-your-red-hat-pull-secret-on-an-azure-red-hat-openshift-4-cluster"></a>在 Azure Red Hat OpenShift 4 群集上添加或更新 Red Hat 请求机密
 
@@ -20,7 +20,7 @@ ms.locfileid: "89294741"
 
 如果是首次创建群集，则可以在创建群集时添加拉取机密。 有关使用 Red Hat 请求机密创建 ARO 群集的详细信息，请参阅 [创建 Azure Red Hat OpenShift 4 群集](tutorial-create-cluster.md#get-a-red-hat-pull-secret-optional)。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 本指南假定你已有一个 Azure Red Hat OpenShift 4 群集。 确保你有权访问群集。
 
@@ -231,6 +231,6 @@ openshift-marketplace   redhat-operators      Red Hat Operators     grpc   Red H
 若要确保你的请求机密已更新并且工作正常，请打开 OperatorHub 并检查是否有任何 Red Hat 验证的操作员。 例如，查看 OpenShift 容器存储操作员是否可用，并查看是否有权安装。
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解 Red Hat 请求机密，请参阅 [使用映像请求密码](https://docs.openshift.com/container-platform/4.5/openshift_images/managing_images/using-image-pull-secrets.html)。
+若要详细了解 Red Hat 请求机密，请参阅 [使用映像请求密码](https://docs.openshift.com/container-platform/4.6/openshift_images/managing_images/using-image-pull-secrets.html)。
 
-若要详细了解 Red Hat OpenShift 4，请参阅 [Azure Red Hat OpenShift 4](https://docs.openshift.com/aro/4/welcome/index.html)。
+若要详细了解 Red Hat OpenShift 4，请参阅 [Red Hat OpenShift 容器平台文档](https://docs.openshift.com/container-platform/4.6/welcome/index.html)。

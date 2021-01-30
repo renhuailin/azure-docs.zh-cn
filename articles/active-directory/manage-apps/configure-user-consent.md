@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 184263badc909881f597213a222272bd675fc362
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 992f082c5157521ea7f0d8a681557d6c7cc3dc04
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051968"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089979"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>配置最终用户如何对应用程序表示同意
 
@@ -48,7 +48,7 @@ ms.locfileid: "99051968"
 
 若要通过 Azure 门户配置用户同意设置：
 
-1. 以[全局管理员](../roles/permissions-reference.md#global-administrator--company-administrator)的身份登录 [Azure 门户](https://portal.azure.com)。
+1. 以[全局管理员](../roles/permissions-reference.md#global-administrator)的身份登录 [Azure 门户](https://portal.azure.com)。
 1. 选择“Azure Active Directory” > “企业应用程序” > “同意和权限” > “用户同意设置”   。
 1. 在“针对应用程序的用户同意”下，选择想要为所有用户配置的同意设置。
 1. 选择“保存”以保存设置。

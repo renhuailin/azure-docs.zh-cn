@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bd2bd67774eb55051e55e4433984c0fd1fda5240
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f3bf9ffeb8da8e877a27ab8758572b2c8277146d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755576"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090309"
 ---
 # <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>Microsoft 标识平台中的签名密钥滚动更新
 本文讨论了需要了解的有关 Microsoft 标识平台为安全令牌签名的公钥。 请务必注意，这些密钥会定期滚动更新，紧急情况下可立即滚动更新。 使用 Microsoft 标识平台的所有应用程序都应该能够以编程方式处理密钥滚动更新过程。 继续阅读，了解密钥工作方式、如何评估应用程序的滚动更新的影响以及如何更新应用程序，或者在必要时建立定期手动滚动更新过程来处理密钥滚动更新。
@@ -297,7 +297,7 @@ namespace JWTValidation
 
 使用 FedUtil 更新配置的说明：
 
-1. 请确认已在开发计算机上为 Visual Studio 2008 或 2010 安装了 WIF v1.0 SDK。 如果尚未安装，可以 [从此处下载](https://www.microsoft.com/en-us/download/details.aspx?id=4451) 。
+1. 请确认已在开发计算机上为 Visual Studio 2008 或 2010 安装了 WIF v1.0 SDK。 如果尚未安装，可以 [从此处下载](https://www.softpedia.com/get/Programming/Other-Programming-Files/Windows-Identity-Foundation-SDK.shtml) 。
 2. 在 Visual Studio 中打开解决方案，然后右键单击相应的项目并选择“更新联合元数据”  。 如果此选项不可用，则表示 FedUtil 和/或 WIF v1.0 SDK 尚未安装。
 3. 系统提示时，请选择“更新”以开始更新联合元数据  。 如果有权访问托管应用程序的服务器环境，则可以选择使用 FedUtil 的[自动元数据更新计划程序](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))。
 4. 单击“完成”以完成更新过程  。

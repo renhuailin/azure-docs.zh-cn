@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2ab1b5ae87cee6265c965c45b706c7fbf10dfe3f
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: c8a5666d373852da5ff79490f435b2d66d5cc6e0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702948"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090360"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>教程：配置无键与 Azure Active Directory B2C
 
@@ -85,8 +85,8 @@ ms.locfileid: "98702948"
 
    |properties | 值 |
    |:-----| :-----------|
-   | 名称   | 无键 |
-   | 元数据 URL | 插入托管无键 Authentication 应用程序的 URI，后跟特定路径，例如 https://keyless.auth/.well-known/openid-configuration |
+   | 名称   | Keyless |
+   | 元数据 URL | 插入托管无键 Authentication 应用程序的 URI，后跟特定路径，如 " https://keyless.auth/.well-known/openid-configuration " |
    | 客户端机密 | 与无键 Authentication 实例关联的机密-与以前配置的不同。 插入所选的复杂字符串。 稍后将在无键容器配置中使用此密钥。|
    | 客户端 ID | 客户端的 ID。 稍后将在无键容器配置中使用此 ID。|
    | 范围 | openid |
@@ -129,7 +129,7 @@ ms.locfileid: "98702948"
 
 9. 在 " **用户属性和令牌声明**" 下，在 "收集属性" 选项中选择 " **电子邮件地址** "。 你可以添加 Azure Active Directory 可以与 Azure AD B2C 可以返回到客户端应用程序的声明一起收集的所有属性。
 
-10. 选择“创建”。
+10. 选择“创建”  。
 
 11. 成功创建后，选择新的 **用户流**。
 

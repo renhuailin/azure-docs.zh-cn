@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 34165071238ca3edf78ab9cca43639c23ce5ed2a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2d079f2fa3e67f1ec915a02de3e195ccac538209
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448706"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063294"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 设备上的 Kubernetes 存储管理
 
@@ -79,11 +79,11 @@ Kubernetes 群集管理员可静态地配置存储。 为此，他们可以使�
 
 在 Azure Stack Edge Pro 设备上，静态预配 `PersistentVolumes` 是使用设备的存储功能创建的。 当你预配共享并 **使用 "使用边缘进行共享计算** " 选项时，此操作会在 Kubernetes 群集中自动创建 PV 资源。
 
-![用于静态预配的 Azure 门户中的本地共享创建](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
+![用于静态预配的 Azure 门户中的本地共享创建](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
 若要使用云分层，可以通过启用 "使用共享并启用边缘计算" 选项创建边缘云共享。 将再次为此共享自动创建 PV。 写入边缘共享的任何应用程序数据都分层到了云。 
 
-![用于静态预配的 Azure 门户中的云共享创建](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
+![用于静态预配的 Azure 门户中的云共享创建](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
 你可以创建 SMB 和 NFS 共享，以便在 Azure Stack Edge Pro 设备上以静态方式预配 PVs。 预配 PV 后，你将提交一个 PVC 来声明此存储。 下面是一个 PVC 部署示例 `yaml` ，用于声明存储并使用预配的共享。
 

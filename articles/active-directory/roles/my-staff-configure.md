@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 304d88dfcf0c72769f27911186df04c66224419e
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 501fe17734be1e73ffc516a7b94300445c331e86
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740136"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090937"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>通过我的员工 (预览版来管理用户) 
 
@@ -32,7 +32,7 @@ ms.locfileid: "98740136"
 
 我的员工基于管理单元 (澳大利亚) ，这是资源的容器，可用于限制角色分配的管理控制的作用域。 在我的工作人员中，使用了澳大利亚来定义组织用户（如商店或部门）的子集。 例如，可以将团队经理分配到其作用域为一个或多个澳大利亚的角色。 在以下示例中，用户已被授予身份验证管理角色，这三个澳大利亚是角色的作用域。 有关管理单元的详细信息，请参阅 [Azure Active Directory 中的管理单元管理](administrative-units.md)。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 需有以下资源和特权才能完成本文：
 
@@ -89,7 +89,7 @@ ms.locfileid: "98740136"
 
 - [身份验证管理员](permissions-reference.md#authentication-administrator)
 - [特权身份验证管理员](permissions-reference.md#privileged-authentication-administrator)
-- [全局管理员](permissions-reference.md#global-administrator--company-administrator)
+- [全局管理员](permissions-reference.md#global-administrator)
 - [支持管理员](permissions-reference.md#helpdesk-administrator)
 - [用户管理员](permissions-reference.md#user-administrator)
 - [密码管理员](permissions-reference.md#password-administrator)
@@ -117,7 +117,7 @@ ms.locfileid: "98740136"
 
 - [身份验证管理员](permissions-reference.md#authentication-administrator)
 - [特权身份验证管理员](permissions-reference.md#privileged-authentication-administrator)
-- [全局管理员](permissions-reference.md#global-administrator--company-administrator)
+- [全局管理员](permissions-reference.md#global-administrator)
 
 ## <a name="search"></a>搜索
 

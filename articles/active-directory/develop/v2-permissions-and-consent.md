@@ -12,16 +12,16 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: aa8c00d1ee2a0dc3d019cc75b4e411ede984e74a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 570314bcaedb86cc593846ffc1d6846d1d2fe335
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756046"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090181"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft 标识平台中的权限和许可
 
-与 Microsoft 标识平台集成的应用程序遵循授权模型，该模型可让用户和管理员控制数据的访问方式。 已在 Microsoft 标识平台上更新授权模型的实现。 它会更改应用必须与 Microsoft 标识平台交互的方式。 本文介绍此授权模型的基本概念，包括范围、权限和许可。
+与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 已在 Microsoft 标识平台上更新授权模型的实现。 它会更改应用必须与 Microsoft 标识平台交互的方式。 本文介绍此授权模型的基本概念，包括范围、权限和许可。
 
 ## <a name="scopes-and-permissions"></a>范围和权限
 
@@ -164,7 +164,7 @@ Microsoft 资源中的某些高特权权限可设置为 *受管理员限制*。 
 
 在您使用管理员同意终结点授予管理员同意后，您就已完成。 用户无需执行任何其他操作。 授予管理员许可后，用户可以通过典型的身份验证流程获取访问令牌。 生成的访问令牌具有许可的权限。
 
-当公司管理员使用你的应用程序并将其定向到授权终结点时，Microsoft 标识平台会检测用户的角色。 它会询问公司管理员是否要代表整个租户代表您请求的权限。 相反，可以使用专用管理员许可终结点主动请求管理员代表整个租户授予权限。 此终结点对于请求应用程序权限也是必需的。 不能使用授权终结点请求应用程序权限。
+当全局管理员使用你的应用程序并将其定向到授权终结点时，Microsoft 标识平台会检测用户的角色。 它会询问全局管理员是否要代表整个租户代表您请求的权限。 相反，可以使用专用管理员许可终结点主动请求管理员代表整个租户授予权限。 此终结点对于请求应用程序权限也是必需的。 不能使用授权终结点请求应用程序权限。
 
 如果你遵循了这些步骤，则应用就能为租户中的所有用户请求权限，包括受管理员限制的范围。 此操作是高权限操作。 仅在需要时才使用此操作。
 

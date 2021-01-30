@@ -3,19 +3,17 @@ title: 索引器中的字段映射
 titleSuffix: Azure Cognitive Search
 description: 针对字段名称和数据表示的差异配置帐户索引器中的字段映射。
 manager: nitinme
-author: mattmsft
-ms.author: magottei
-ms.devlang: rest-api
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/11/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 579d0e334b4e60815b3a5efc877833ab75a3375d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.date: 01/28/2021
+ms.openlocfilehash: efee1e1cda7767620931ef81825708d94a1925c3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358926"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063173"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器进行字段映射和转换
 
@@ -28,7 +26,7 @@ ms.locfileid: "94358926"
 * 数据源具有名为 `_id` 的字段，但 Azure 认知搜索不允许字段名称以下划线开头。 使用字段映射可以有效地为字段重命名。
 * 你希望使用同一数据源数据填充索引中的多个字段。 例如，你可能想要将不同的分析器应用到这些字段。
 * 你希望使用多个数据源中的数据填充索引字段，而每个数据源使用不同的字段名称。
-* 需要对数据进行 Base64 编码或解码。 字段映射支持多个 **映射函数** ，包括用于 Base64 编码和解码的函数。
+* 需要对数据进行 Base64 编码或解码。 字段映射支持多个 **映射函数**，包括用于 Base64 编码和解码的函数。
 
 > [!NOTE]
 > 索引器中的字段映射是将数据字段映射到索引字段的一种简单方法，可实现轻量级数据转换。 较复杂的数据可能需要经过预处理，才能将形状调整为有利于编制索引的形式。 可以考虑使用 [Azure 数据工厂](../data-factory/index.yml)。
@@ -46,7 +44,7 @@ ms.locfileid: "94358926"
 > [!NOTE]
 > 如果未添加任何字段映射，则索引器将假定数据源字段映射到具有相同名称的索引字段。 添加字段映射将删除源和目标字段的这些默认字段映射。 一些索引器（如 [Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)）为索引键字段添加默认字段映射。
 
-## <a name="map-fields-using-the-rest-api"></a>使用 REST API 映射字段
+## <a name="map-fields-using-rest"></a>使用 REST 映射字段
 
 使用[创建索引器](/rest/api/searchservice/create-Indexer) API 请求创建新的索引器时，可以添加字段映射。 可以使用[更新索引器](/rest/api/searchservice/update-indexer) API 请求来管理现有索引器的字段映射。
 
@@ -77,9 +75,8 @@ api-key: [admin key]
 > [!NOTE]
 > Azure 认知搜索使用不区分大小写的比较，来解析字段映射中的字段和函数名称。 此操作很方便（大小写无需全都正确），但这表示数据源或索引无法具有仅大小写不同的字段。  
 >
->
 
-## <a name="map-fields-using-the-net-sdk"></a>使用 .NET SDK 映射字段
+## <a name="map-fields-using-net"></a>使用 .NET 映射字段
 
 在 .NET SDK 中，使用 [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) 类定义字段映射，该类包含属性 `SourceFieldName` 和 `TargetFieldName`，以及可选的 `MappingFunction` 引用。
 

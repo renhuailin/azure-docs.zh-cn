@@ -3,12 +3,12 @@ title: Azure NetApp 文件与 Azure VMware 解决方案
 description: 结合使用 Azure NetApp 文件和 Azure VMware 解决方案 Vm，在本地服务器、Azure VMware 解决方案 Vm 和云基础结构之间迁移和同步数据。
 ms.topic: how-to
 ms.date: 01/20/2021
-ms.openlocfilehash: 97a9172dfbed2722d4af0abbd6231a0367dc4e3c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: b712b25130a8bed19bd784d2c45c18a55a582be6
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798377"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062972"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp 文件与 Azure VMware 解决方案
 
@@ -102,7 +102,7 @@ Azure NetApp 文件在许多 Azure 区域中提供，并支持跨区域复制。
 - Azure VMware 解决方案上的文件共享
 
 ## <a name="next-steps"></a>后续步骤
-- 了解 [Azure NetApp 文件的资源限制](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits)。
-- 请参阅 [Azure NetApp 文件网络规划指南](../azure-netapp-files/azure-netapp-files-network-topologies.md)。
-- 了解 [Azure NetApp 文件卷的跨区域复制](../azure-netapp-files/cross-region-replication-introduction.md)。 
-- 请参阅 [有关 Azure NetApp 文件的常见问题解答](../azure-netapp-files/azure-netapp-files-faqs.md)。
+- [Azure NetApp 文件的资源限制](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits)
+- [Azure NetApp 文件网络规划指南](../azure-netapp-files/azure-netapp-files-network-topologies.md)
+- [Azure NetApp 文件卷的跨区域复制](../azure-netapp-files/cross-region-replication-introduction.md) 
+- [有关 Azure NetApp 文件的常见问题解答](../azure-netapp-files/azure-netapp-files-faqs.md)

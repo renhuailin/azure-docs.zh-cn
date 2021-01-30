@@ -5,67 +5,40 @@ description: 使用 Azure 门户、REST API 或 .NET SDK 监视 Azure 认知搜�
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 0107dfb24ddad2a5b0f9f0ab12d2fe701466e385
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.date: 01/28/2021
+ms.openlocfilehash: a94720e6b84821d53a3bfdcbdce249390078940f
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372823"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063228"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>如何监视 Azure 认知搜索索引器的状态和结果
 
-Azure 认知搜索提供有关每个索引器的当前和历史运行的状态与监视信息。
+可以在 Azure 门户中监视索引器处理，也可以通过 REST 调用或 Azure SDK 以编程方式监视索引器处理。 除了有关索引器本身的状态之外，还可以查看开始和结束时间，以及特定运行中的详细错误和警告。
 
-想要执行以下操作时，索引器监视非常有用：
+## <a name="monitor-using-azure-portal"></a>使用 Azure 门户的监视器
 
-* 在运行期间跟踪索引器的进度。
-* 查看正在运行的或上一个索引器运行的结果。
-* 找出顶级索引器错误，以及有关要编制索引的单个文档的错误或警告。
-
-## <a name="get-status-and-history"></a>获取状态和历史记录
-
-可通过多种方式访问索引器监视信息，包括：
-
-* 在 [Azure 门户](#portal)中
-* 使用 [REST API](#restapi)
-* 使用 [.NET SDK](#dotnetsdk)
-
-提供的索引器监视信息包括以下各项（不过，数据格式根据所用的访问方法而异）：
-
-* 有关索引器本身的状态信息
-* 有关索引器的最近运行的信息，包括其状态、开始和结束时间，以及详细的错误和警告。
-* 历史索引器运行的列表及其状态、结果、错误和警告。
-
-处理大量数据的索引器可能需要很长时间才能完成运行。 例如，处理数百万个源文档的索引器可能要运行 24 个小时，紧接着重启。 处理大量数据的索引器的状态可能始终在门户中显示为“正在进行”。  即使索引器正在运行，也会提供有关当前进度和以前的运行的详细信息。
-
-<a name="portal"></a>
-
-## <a name="monitor-using-the-portal"></a>使用门户进行监视
-
-可以在搜索服务“概述”页上的“索引器”列表中查看所有索引器的当前状态。 
+您可以在搜索服务概述页中查看所有索引器的当前状态。 门户页面每隔几分钟刷新一次，因此你不会立即看到新索引器的证据。
 
    ![索引器列表](media/search-monitor-indexers/indexers-list.png "索引器列表")
 
-索引器正在执行时，列表中的状态将显示为“正在进行”，“成功的文档数”值将显示到目前为止已处理的文档数。   门户可能需要花费几分钟时间来更新索引器状态值和文档计数。
+| 状态 | 说明 |
+|--------|-------------|
+| **正在进行** | 指示活动执行。 门户将报告部分信息。 在编制索引的过程中，你可以在响应中观看成功值增长的 **文档** 。 处理大量数据的索引器可能需要很长时间才能完成运行。 例如，处理数百万个源文档的索引器可能要运行 24 个小时，紧接着重启。 处理大量数据的索引器的状态可能始终在门户中显示为“正在进行”。  即使索引器正在运行，也会提供有关当前进度和以前的运行的详细信息。 |
+| **Success** | 指示运行成功。 如果错误数小于索引器的“最大失败项数”设置，即使单个文档出错，索引器运行也可以成功。  |
+| 失败 | 超过 **最大失败项目** 和索引编制的错误数已停止。 |
+| **重置** | 已重置索引器的内部更改跟踪状态。 索引器将完全运行，并刷新所有文档，而不仅仅是那些具有较新时间戳的文档。 |
 
-其最近运行成功的索引器将显示“成功”。  如果错误数小于索引器的“最大失败项数”设置，即使单个文档出错，索引器运行也可以成功。 
-
-如果最近的运行最终出错，状态将显示为“失败”。  “重置”状态表示索引器的更改跟踪状态已重置。 
-
-单击列表中的某个索引器可以查看有关该索引器的当前运行和最近运行的更多详细信息。
+你可以单击列表中的索引器以查看有关索引器的当前和最新运行的详细信息。
 
    ![索引器摘要和执行历史记录](media/search-monitor-indexers/indexer-summary.png "索引器摘要和执行历史记录")
 
 “索引器摘要”图表显示最近运行中处理的文档数图表。 
 
-“执行详细信息”列表最多显示 50 个最近执行结果。 
-
-单击该列表中的某个执行结果可查看有关该运行的具体信息， 包括该运行的开始和结束时间，以及发生的任何错误和警告。
+“执行详细信息”列表最多显示 50 个最近执行结果。  单击该列表中的某个执行结果可查看有关该运行的具体信息， 包括该运行的开始和结束时间，以及发生的任何错误和警告。
 
    ![索引器执行详细信息](media/search-monitor-indexers/indexer-execution.png "索引器执行详细信息")
 
@@ -73,13 +46,11 @@ Azure 认知搜索提供有关每个索引器的当前和历史运行的状态�
 
    ![索引器详细信息和错误](media/search-monitor-indexers/indexer-execution-error.png "索引器详细信息和错误")
 
-警告经常会出现在某些类型的索引器上，不一定表示出现了问题。 例如，当图像或 PDF 文件不包含任何有待处理的文本时，使用认知服务的索引器可能会报告警告。
+警告经常会出现在某些类型的索引器上，不一定表示出现了问题。 例如，当图像或 PDF 文件不包含任何有待处理的文本时，使用认知服务的索引器可能会报告警告。 
 
 有关调查索引器错误和警告的详细信息，请参阅[排查 Azure 认知搜索中的常见索引器问题](search-indexer-troubleshooting.md)。
 
-<a name="restapi"></a>
-
-## <a name="monitor-using-rest-apis"></a>使用 REST API 进行监视
+## <a name="monitor-using-get-indexer-status-rest-api"></a>使用 Get 索引器状态 (REST API 的监视器) 
 
 可以使用[“获取索引器状态”命令](/rest/api/searchservice/get-indexer-status)检索索引器的状态和执行历史记录：
 
@@ -126,13 +97,11 @@ api-key: [Search service admin key]
 
 重置索引器以刷新其更改跟踪状态时，将添加一个“重置”状态的独立执行历史记录条目。 
 
-有关状态代码和索引器监视数据的详细信息，请参阅 [GetIndexerStatus](/rest/api/searchservice/get-indexer-status)。
+有关状态代码和索引器监视数据的详细信息，请参阅 [获取索引器状态](/rest/api/searchservice/get-indexer-status)。
 
-<a name="dotnetsdk"></a>
+## <a name="monitor-using-net"></a>使用 .NET 进行监视
 
-## <a name="monitor-using-the-net-sdk"></a>使用 .NET SDK 进行监视
-
-使用 Azure 认知搜索 .NET SDK，以下 c # 示例将有关索引器状态的信息以及最新的 (或正在进行的) 运行的结果写入控制台。
+以下 C# 示例使用 Azure 认知搜索 .NET SDK，将有关索引器状态的信息及其最近（或持续）运行的结果写入控制台。
 
 ```csharp
 static void CheckIndexerStatus(SearchIndexerClient indexerClient, SearchIndexer indexer)
@@ -188,7 +157,7 @@ Latest run
 
 有关状态代码和索引器监视信息的详细信息，请参阅以下 API 参考：
 
-* [GetIndexerStatus (REST API) ](/rest/api/searchservice/get-indexer-status)
+* [GetIndexerStatus (REST API)](/rest/api/searchservice/get-indexer-status)
 * [IndexerStatus](/dotnet/api/azure.search.documents.indexes.models.indexerstatus)
 * [IndexerExecutionStatus](/dotnet/api/azure.search.documents.indexes.models.indexerexecutionstatus)
 * [IndexerExecutionResult](/dotnet/api/azure.search.documents.indexes.models.indexerexecutionresult)

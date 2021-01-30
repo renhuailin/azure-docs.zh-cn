@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 558c6dc24f6d0d17c9a82bbc79f39649f63dc7f4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 25515c29ae3e5623b447232ed6f935a668a58c3a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658479"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090063"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>对应用程序执行许可时发生的意外错误
 
@@ -35,7 +35,7 @@ ms.locfileid: "94658479"
 * **AADSTS90093：** &lt;clientAppDisplayName&gt; 正在请求一个或多个你无权授予的权限。 请与管理员联系，他/她可代表你对此应用程序进行许可。
 * AADSTS90094：  &lt;clientAppDisplayName&gt; 需要访问组织中资源的权限（只有管理员可以授予）。 请先让管理员授予对此应用的权限，然后你才能使用此应用。
 
-当非公司管理员用户尝试使用的应用程序请求只有管理员才能授予的权限时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
+如果非全局管理员用户尝试使用的应用程序请求只有管理员才能授予的权限，则会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
 
 如果 Microsoft 检测到权限请求存在风险而阻止用户许可应用程序，则也可能会发生此错误。 在这种情况下，还将记录一个审核事件，其“类别”为“ApplicationManagement”、“活动类型”为“许可应用程序”、“状态原因”为“检测到风险应用程序”。
 
@@ -44,7 +44,7 @@ ms.locfileid: "94658479"
 ## <a name="policy-prevents-granting-permissions-error"></a>策略阻止权限授予错误
 * **AADSTS90093：** &lt;tenantDisplayName&gt; 管理员设置的策略阻止授予 &lt;name of app&gt; 请求的权限。 请与 &lt;tenantDisplayName&gt; 管理员联系，他/她可代表你授予对此应用的权限。
 
-当公司管理员关闭用户对应用程序进行许可的能力，非管理员用户尝试使用的应用程序需要许可时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
+当全局管理员关闭用户同意应用程序的能力，而非管理员用户尝试使用要求同意的应用程序时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
 
 ## <a name="intermittent-problem-error"></a>不稳定问题错误
 * **AADSTS90090：** 登录过程似乎遇到了间歇性问题，它记录了尝试授予 &lt;clientAppDisplayName&gt; 的权限。 请稍后重试。

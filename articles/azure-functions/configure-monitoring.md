@@ -4,12 +4,12 @@ description: 了解如何将函数应用连接到 Application Insights 以进行
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 73ed679288d9d03b81a0b01670aa0f574a14839f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e24f2b1a61d77dafd7a23b04d225d0301f82ca59
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684702"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070134"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何为 Azure Functions 配置监视
 
@@ -246,7 +246,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>添加到现有函数应用 
 
-如果未使用函数应用创建 Application Insights 资源，请使用以下步骤创建资源。 然后，可以添加该资源中的检测密钥，作为函数应用中的[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)。
+如果 Application Insights 资源不是使用函数应用创建的，请使用以下步骤来创建资源。 然后，可以添加该资源中的检测密钥，作为函数应用中的[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“函数应用”，然后选择你的函数应用。 
 
@@ -271,6 +271,30 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 > [!NOTE]
 > 早期版本的 Functions 使用了内置监视功能，现不再建议使用该功能。 为此类函数应用启用 Application Insights 集成时，还必须[禁用内置日志记录功能](#disable-built-in-logging)。  
+
+## <a name="query-scale-controller-logs"></a>查询缩放控制器日志
+
+启用缩放控制器日志记录和 Application Insights 集成后，可以使用 Application Insights 的日志搜索来查询已发出的规模控制器日志。 规模控制器日志保存在 `traces` **ScaleControllerLogs** 类别下的集合中。
+
+以下查询可用于在指定的时间段内搜索当前函数应用的所有规模控制器日志：
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+```
+
+下面的查询对上一个查询进行了扩展，以演示如何只获取指示规模变化的日志：
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+| where message == "Instance count changed"
+| extend Reason = CustomDimensions.Reason
+| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
+| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
+```
 
 ## <a name="disable-built-in-logging"></a>禁用内置日志记录
 

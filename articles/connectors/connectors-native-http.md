@@ -7,18 +7,18 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2835bda8ac7242b7a3ea4ea63401f26b9c8e426
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292449"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062989"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>从 Azure 逻辑应用通过 HTTP 或 HTTPS 调用服务终结点
 
-通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 和内置 HTTP 触发器或操作，你可以创建可通过 HTTP 或 HTTPS 将出站请求发送到其他服务和系统上的终结点的自动化任务和工作流。 若要接收和响应入站 HTTPS 调用，请使用内置 [请求触发器和响应操作](../connectors/connectors-native-reqres.md)。
+使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置 HTTP 触发器或操作，可以创建自动化任务和工作流，可通过 HTTP 或 HTTPS 向其他服务和系统上的终结点发送出站请求。 若要改为接收和响应入站 HTTPS 调用，请使用内置[请求触发器和响应操作](../connectors/connectors-native-reqres.md)。
 
-例如，可以通过按特定计划检查终结点来监视网站的服务终结点。 当该终结点上发生特定的事件（例如网站关闭）时，该事件会触发逻辑应用的工作流并运行该工作流中的操作。
+例如，可按特定的计划检查网站的服务终结点，从而对该终结点进行监视。 当该终结点上发生特定的事件（例如网站关闭）时，该事件会触发逻辑应用的工作流并运行该工作流中的操作。
 
 * 若要按定期计划检查或轮询某个终结点，可[添加 HTTP 触发器](#http-trigger)作为工作流中的第一个步骤。 每次触发器检查终结点时，触发器都会调用该终结点或向该终结点发送请求。 该终结点的响应确定了逻辑应用的工作流是否运行。 触发器将终结点响应中的任何内容传递到逻辑应用中的操作。
 
@@ -168,13 +168,13 @@ ms.locfileid: "91292449"
 }
 ```
 
-## <a name="content-with-applicationx-www-form-urlencoded-type"></a>包含应用程序的内容/x-url 编码类型
+## <a name="content-with-applicationx-www-form-urlencoded-type"></a>具有 application/x-www-form-urlencoded 类型的内容
 
-若要在 HTTP 请求的正文中提供 url 编码数据，必须指定数据具有 `application/x-www-form-urlencoded` 内容类型。 在 HTTP 触发器或操作中，添加 `content-type` 标头。 将标头值设置为 `application/x-www-form-urlencoded` 。
+若要在 HTTP 请求的正文中提供 form-urlencoded 数据，必须指定数据具有 `application/x-www-form-urlencoded` 内容类型。 在 HTTP 触发器或操作中，添加 `content-type` 标头。 将标头值设置为 `application/x-www-form-urlencoded`。
 
-例如，假设有一个逻辑应用，该应用将 HTTP POST 请求发送到支持该类型的网站 `application/x-www-form-urlencoded` 。 下面是此操作的可能外观：
+例如，假设你有一个逻辑应用，它向支持 `application/x-www-form-urlencoded` 类型的网站发送 HTTP POST 请求。 下面是此操作的可能外观：
 
-![显示 HTTP 请求并将 "content-type" 标头设置为 "application/x-url 编码" 的屏幕截图](./media/connectors-native-http/http-action-urlencoded.png)
+![显示“content-type”标头设置为“application/x-www-form-urlencoded”的 HTTP 请求的屏幕截图](./media/connectors-native-http/http-action-urlencoded.png)
 
 <a name="asynchronous-pattern"></a>
 
@@ -182,7 +182,7 @@ ms.locfileid: "91292449"
 
 默认情况下，Azure 逻辑应用中所有基于 HTTP 的操作都遵循标准[异步操作模式](/azure/architecture/patterns/async-request-reply)。 该模式指定在 HTTP 操作调用某个终结点、服务、系统或 API 或向其发送请求后，接收方立即返回[“202 已接受”](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)响应。 此代码确认接收方已接受请求，但尚未完成处理。 响应可以包括一个指定了 URL 和刷新 ID 的 `location` 标头，调用方可以使用该标头来轮询或检查异步请求的状态，直到接收方停止处理并返回[“200 正常”](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)成功响应或其他非 202 响应。 但是，调用方不必等待请求完成处理即可继续运行下一操作。 有关详细信息，请参阅[异步微服务集成强制实施微服务自治](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)。
 
-* 在逻辑应用设计器中，HTTP 操作（而不是触发器）有一个默认启用的**异步模式**设置。 此设置指定调用方不等待处理完成即可继续执行下一操作，但需继续检查状态直到处理停止。 如果禁用，则此设置指定调用方需等待处理完成才能继续执行下一操作。
+* 在逻辑应用设计器中，HTTP 操作（而不是触发器）有一个默认启用的 **异步模式** 设置。 此设置指定调用方不等待处理完成即可继续执行下一操作，但需继续检查状态直到处理停止。 如果禁用，则此设置指定调用方需等待处理完成才能继续执行下一操作。
 
   若要查找此设置，请执行以下步骤：
 
@@ -247,9 +247,9 @@ HTTP 请求有一个[超时限制](../logic-apps/logic-apps-limits-and-config.md
 
 如果 HTTP 触发器或操作包含这些标头，则逻辑应用会从生成的请求消息中删除这些标头，且不显示任何警告或错误：
 
-* `Accept-*` 标头除外 `Accept-version`
+* `Accept-*` 标头（`Accept-version` 除外）
 * `Allow`
-* `Content-*` 中含以下例外：`Content-Disposition`、`Content-Encoding` 和 `Content-Type`
+* `Content-*``Content-Disposition` `Content-Encoding` `Content-Type` 当你使用 POST 和 PUT 操作，但不包括在获取操作中时，、和以外的标头
 * `Cookie`
 * `Expires`
 * `Host`
@@ -269,5 +269,5 @@ HTTP 请求有一个[超时限制](../logic-apps/logic-apps-limits-and-config.md
 
 ## <a name="next-steps"></a>后续步骤
 
-* [对其他服务和系统的出站调用进行安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
+* [保护访问和数据 - 对其他服务和系统的出站调用的访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
 * [适用于逻辑应用的连接器](../connectors/apis-list.md)

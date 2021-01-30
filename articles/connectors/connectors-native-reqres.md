@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: 4997853fea97d14491bd9e9101f79f324807a6a1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 83ffccb7bae4fabc10796c36e782e72c661bd346
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920817"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063006"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure 逻辑应用中接收和响应入站 HTTPS 请求
 
@@ -44,7 +44,7 @@ ms.locfileid: "96920817"
 
 逻辑应用仅在[有限的时间](../logic-apps/logic-apps-limits-and-config.md#http-limits)内使入站请求保持打开状态。 假设逻辑应用包含[响应操作](#add-response)，如果逻辑应用在此时间之后未向调用方发回响应，则逻辑应用会将 `504 GATEWAY TIMEOUT` 状态返回给调用方。 如果逻辑应用不包含“响应”操作，则逻辑应用会立即向调用方返回 `202 ACCEPTED` 状态。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 创建空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 创建空白逻辑应用。
 
 1. 逻辑应用设计器打开后，在搜索框中，输入 `http request` 作为筛选器。 从触发器列表中选择“当收到 HTTP 请求时”触发器。
 
@@ -192,7 +192,7 @@ ms.locfileid: "96920817"
 
 1. 若要测试逻辑应用，请将 HTTP 请求发送到生成的 URL。
 
-   例如，你可以使用 [Postman](https://www.getpostman.com/) 之类的工具来发送 HTTP 请求。 有关触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅以下主题：[请求触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[通过 Azure 逻辑应用中的 HTTP 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
+   例如，可以使用 [Postman](https://www.getpostman.com/) 之类的工具来发送 HTTP 请求。 有关触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅以下主题：[请求触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[通过 Azure 逻辑应用中的 HTTP 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
 
 有关对逻辑应用的入站调用的安全、授权和加密的详细信息（例如 [传输层安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，以前称为安全套接字层 (SSL) ）， [Azure Active Directory 开放式身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml)，使用 Azure API 管理公开逻辑应用，或限制发起入站调用的 IP 地址，请参阅 [对基于请求的触发器的入站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
 
@@ -202,8 +202,8 @@ ms.locfileid: "96920817"
 
 | JSON 属性名称 | 数据类型 | 说明 |
 |--------------------|-----------|-------------|
-| `headers` | Object | 描述请求中的标头的 JSON 对象 |
-| `body` | Object | 描述请求中的正文内容的 JSON 对象 |
+| `headers` | 对象 | 描述请求中的标头的 JSON 对象 |
+| `body` | 对象 | 描述请求中的正文内容的 JSON 对象 |
 ||||
 
 <a name="add-response"></a>
@@ -216,7 +216,7 @@ ms.locfileid: "96920817"
 > 如果响应操作包含这些标头，则逻辑应用会从生成的响应消息中删除这些标头，且不显示任何警告或错误：
 >
 > * `Allow`
-> * `Content-*` 中含以下例外：`Content-Disposition`、`Content-Encoding` 和 `Content-Type`
+> * `Content-*``Content-Disposition` `Content-Encoding` `Content-Type` 当你使用 POST 和 PUT 操作，但不包括在获取操作中时，、和以外的标头
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`
@@ -253,7 +253,7 @@ ms.locfileid: "96920817"
 
    下面是有关可在“响应”操作中设置的属性的详细信息。
 
-   | 属性名称 | JSON 属性名称 | 必须 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **状态代码** | `statusCode` | 是 | 要在响应中返回的状态代码 |
    | **标头** | `headers` | 否 | 一个 JSON 对象，描述要包含在响应中的一个或多个标头 |

@@ -3,16 +3,16 @@ title: 联合销售合作伙伴参与 - Microsoft 商业市场
 description: 适用于合作伙伴的 Microsoft 合作伙伴中心共同销售计划可帮助你赢得巨大的客户群，并生成新的销售。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 12/2/2020
-ms.openlocfilehash: 7969f5ffd3064a5af97a101185b6229c81c7613d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 1/29/2021
+ms.openlocfilehash: 84d37def6aa519eabf26a72ded7b0ab70994c430
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880281"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063073"
 ---
 # <a name="co-sell-partner-engagement"></a>联合销售合作伙伴参与
 
@@ -22,7 +22,7 @@ ms.locfileid: "98880281"
 
 - 向 Microsoft 现场卖方公开 **共同销售准备就绪** 的产品/服务。 使用 Microsoft 卖方时，共同销售计划可帮助您向广大的 Microsoft 托管客户提供协作，以与加速业务增长的销售机会展开协作。
 
-    ![显示在对 Microsoft 管理的客户进行共享、接受和赢得销售线索后如何进行共同销售的关系图。](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
+    :::image type="content" source="./media/marketplace-publishers-guide/marketplace-co-sell-v2.png" alt-text="显示在对 Microsoft 管理的客户进行共享、接受和赢得销售线索后如何进行共同销售的关系图。":::
 
 - **共同销售 incentivized** 除了下面列出的 marketplace 权益外，在与 Microsoft 销售团队合作时，IP 产品/服务还可为 Microsoft 现场销售人员提供奖励。</li></ul>
 
@@ -41,7 +41,7 @@ ms.locfileid: "98880281"
 
 |步骤    |产品/服务类型    |要求    |共同销售状态    |
 |----    |-------------    |------------    |---------------   |
-|<ol start=1><li>在合作伙伴中心创建一个帐户，并将产品/服务发布到商业市场。</li>|全部|<ul><li>产品/服务满足商业市场发布要求。</li><li>合作伙伴中心有一个完整的业务配置文件。</li></ul>| 投放市场 |
+|<ol start=1><li>在合作伙伴中心创建一个帐户，并将产品/服务发布到商业市场。</li>|All|<ul><li>产品/服务满足商业市场发布要求。</li><li>合作伙伴中心有一个完整的业务配置文件。</li></ul>| 投放市场 |
 |<ol start=2><li>提交所需的共同销售材料。</li>| [在商业市场中通过共同销售选项](commercial-marketplace-co-sell.md)提供 IP 服务|[在合作伙伴中心上传所需的资料](#how-to-submit-co-sell-materials-in-partner-center)|合作销售就绪|
 ||商业应用 [商店中没有共同销售选项](commercial-marketplace-co-sell.md)的 IP 优惠|<ul><li>[与云专家合作](https://partner.microsoft.com/campaigns/ced-nomination-form/)提供所需的共同销售文档的请求。</li></ul>|合作销售就绪|
 ||咨询服务|<ul><li>[与云专家合作](https://partner.microsoft.com/campaigns/ced-nomination-form/)提供所需的共同销售文档的请求。</li><li>活动金牌资格。</li></ul>|合作销售就绪|
@@ -63,7 +63,7 @@ ms.locfileid: "98880281"
 
 1. 在左侧菜单中，选择 " **与 Microsoft 共同销售**"。
 
-    :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="此图显示了 &quot;与 Microsoft 共同销售&quot; 选项卡的位置。":::
+    [![此图显示了 "与 Microsoft 共同销售" 选项卡的位置。](media/co-sell/co-sell-with-microsoft-tab.png)](media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
 
 1. 提供基本的列表详细信息，以帮助 Microsoft 卖方在 **列表** 部分快速排序和发现你的产品/服务。  (*必需：所有字段。*) 
 
@@ -71,29 +71,20 @@ ms.locfileid: "98880281"
 
 1. 提供有关产品/服务的详细信息并上传 **文档** 部分。 Microsoft 卖方将使用此信息来建议并销售您的产品/服务。 *(必需：解决方案/产品/服务-寻呼和解决方案/产品/服务等。需要获得 Azure IP 共同销售 incentivized 状态：参考体系结构示意图。 )*
 
-    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="此图显示了 &quot;共同销售&quot; 选项卡上的文档部分。":::
+    [![此图显示了 "共同销售" 选项卡上的文档部分。](media/co-sell/co-sell-documents-section.png)](media/co-sell/co-sell-documents-section.png#lightbox)
 
 1. 在 **contact** 节中上传销售联系人信息。 Microsoft 卖方可能会联系这些联系人，请求有关你的产品/服务的其他信息。  (*必需：提供产品/服务的每个地域的联系人。*) 
 
-    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="此图显示了 &quot;共同销售&quot; 选项卡中的 &quot;联系人&quot; 部分。":::
+    [![此图显示了 "共同销售" 选项卡中的 "联系人" 部分。](media/co-sell/co-sell-contacts-section.png)](media/co-sell/co-sell-contacts-section.png#lightbox)
 
 1. 继续之前，请保存草稿。
 1. 完成产品/服务的所有必需部分后，可以提交产品/服务以供审阅和发布。 在右上角选择 " **查看并发布**"。 查看产品/服务详细信息，然后选择 " **发布**"。
-1. 确保满足你 [正在寻求的共同销售状态的条件](#co-sell-publishing-steps-and-requirements)后，请遵循以下指南，为你的产品/服务提供共同销售：
-    1. **如果你有 Microsoft 合作伙伴经理 (例如，PDM) ：** 与你的合作伙伴经理联系以获得帮助。 本指南将指导你完成合作销售就绪状态和 Azure IP 共同销售的提名流程，或者 Business Applications 共同销售 incentivized (（如果适用）) 。
-
-    1. **如果你没有 Microsoft 合作伙伴经理 (例如，PDM) ：** [通过云支持人员 (CED) 进行自助](https://aka.ms/cednominate)处理。 在 "所需的 CED 服务" 下拉列表中，选择 "成为共同销售就绪"：
-
-        :::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="此图显示了使用 CED 下拉列表来请求共同销售审核。":::
-
-    CED 将与你联系以完成此过程。
 
 ## <a name="see-your-offers-co-sell-status"></a>查看产品/服务的共同销售状态
 
 对于 [在商业市场中具有共同销售选项](commercial-marketplace-co-sell.md)的产品/服务，可以在产品/服务概述页上查看产品/服务的当前共同销售状态：
 
- :::image type="content" source="media/co-sell/co-sell-status.png" alt-text="此图显示了产品/服务的当前共同销售状态。":::
-
+[![此图显示了产品/服务的当前共同销售状态。](media/co-sell/co-sell-status.png)](media/co-sell/co-sell-status.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 

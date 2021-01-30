@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794c4e1a0859fc8a36b0abf4fcc9d5243c8bd308
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b1c0e91b08fff80c0308c0ead5fabce903421adc
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649562"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090114"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理远程访问应用时的安全注意事项
 
@@ -108,7 +108,7 @@ Azure AD 应用程序代理由两个部分组成：
 首次设置连接器时会发生以下流量事件：
 
 1. 在安装连接器的过程中，将连接器注册到服务。 系统会提示用户输入其 Azure AD 管理员凭据。  从此身份验证获取令牌，并将其提供给 Azure AD 应用程序代理服务。
-2. 应用程序代理服务评估该令牌。 它检查用户是否为租户中的公司管理员。  如果用户不是管理员，则终止此过程。
+2. 应用程序代理服务评估该令牌。 它检查用户是否为租户中的全局管理员。  如果用户不是管理员，则终止此过程。
 3. 连接器生成客户端证书请求，并将此请求连同令牌一起传递给应用程序代理服务。 该服务转而验证令牌并为客户端证书请求签名。
 4. 以后，连接器将使用此客户端证书来与应用程序代理服务通信。
 5. 连接器使用其客户端证书从服务执行初始的系统配置数据提取，并准备好接收请求。

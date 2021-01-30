@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e2623ebf929f6a24cfc977896acea514634ffb23
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d25a429873ccf8b546c0919456c97e64445f184c
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054496"
+ms.locfileid: "99071692"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>在 Azure 数字孪生中管理终结点和路由 (Api 和 CLI) 
 
@@ -48,7 +48,7 @@ ms.locfileid: "99054496"
 
 ### <a name="create-the-endpoint"></a>创建终结点
 
-创建终结点资源后，可将其用于 Azure 数字孪生终结点。 下面的示例演示如何使用 `az dt endpoint create` [Azure 数字孪生 CLI](how-to-use-cli.md)的命令创建终结点。 将命令中的占位符替换为你自己的资源的详细信息。
+创建终结点资源后，可将其用于 Azure 数字孪生终结点。 下面的示例演示如何使用适用于[Azure 数字孪生 CLI](how-to-use-cli.md)的[az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true)命令创建终结点。 将命令中的占位符替换为你自己的资源的详细信息。
 
 创建事件网格端点：
 
@@ -56,21 +56,39 @@ ms.locfileid: "99054496"
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-若要创建事件中心终结点，请执行以下操作：
+若要创建事件中心终结点 (基于密钥的身份验证) ：
 ```azurecli-interactive
 az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-若要创建服务总线主题终结点：
+若要创建服务总线主题终结点 (基于密钥的身份验证) ：
 ```azurecli-interactive 
 az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
 成功运行这些命令后，事件网格、事件中心或服务总线主题将作为 Azure 数字孪生内的终结点提供，并在使用参数提供的名称下 `--endpoint-name` 。 通常将该名称用作 **事件路由** 的目标， [稍后将在本文中](#create-an-event-route)创建。
 
+#### <a name="create-an-endpoint-with-identity-based-authentication"></a>创建具有基于标识的身份验证的终结点
+
+还可以创建具有基于标识的身份验证的终结点，以便将终结点与 [托管标识](concepts-security.md#managed-identity-for-accessing-other-resources-preview)一起使用。 此选项仅适用于事件中心和服务总线类型终结点， (事件网格) 不支持此选项。
+
+下面是用于创建此类型终结点的 CLI 命令。 需要将以下值插入命令中的占位符：
+* Azure 数字孪生实例的 Azure 资源 ID
+* 终结点名称
+* 终结点类型
+* 终结点资源的命名空间
+* 事件中心或服务总线主题的名称
+* Azure 数字孪生实例的位置
+
+```azurecli-interactive
+az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoints/<endpoint-name> --properties '{\"properties\": { \"endpointType\": \"<endpoint-type>\", \"authenticationType\": \"IdentityBased\", \"endpointUri\": \"sb://<endpoint-namespace>.servicebus.windows.net\", \"entityPath\": \"<name-of-event-hub-or-Service-Bus-topic>\"}, \"location\":\"<instance-location>\" }' --is-full-object
+```
+
 ### <a name="create-an-endpoint-with-dead-lettering"></a>创建具有死信的端点
 
 当终结点无法在某个时间段内传递事件时，或者尝试将事件传递到一定次数后，它可以将未送达的事件发送到存储帐户。 此过程称为“死信处理”。
+
+可以通过 Azure 数字孪生 [CLI](how-to-use-cli.md) 或 [控制平面 api](how-to-use-apis-sdks.md#overview-control-plane-apis)设置启用了死信的端点。
 
 若要了解有关死信的详细信息，请参阅 [*概念：事件路由*](concepts-route-events.md#dead-letter-events)。 有关如何使用死信设置终结点的说明，请继续阅读本部分的其余部分。
 
@@ -78,7 +96,7 @@ az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --s
 
 在设置死信位置之前，你必须具有在 Azure 帐户中设置[容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)的[存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal)。 
 
-稍后创建终结点时，将提供此容器的 URL。 会将死信位置作为带有 [SAS 令牌](../storage/common/storage-sas-overview.md)的容器 URL 提供给终结点。 该令牌需要 `write` 存储帐户中目标容器的权限。 完整的格式 URL 将采用以下格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>` 。
+稍后创建终结点时，将提供此容器的 URI。 会将死信位置作为带有 [SAS 令牌](../storage/common/storage-sas-overview.md)的容器 URI 提供给终结点。 该令牌需要 `write` 存储帐户中目标容器的权限。 完全形成的 **死信 SAS URI** 的格式为： `https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>` 。
 
 按照以下步骤在 Azure 帐户中设置这些存储资源，以便在下一部分中准备设置终结点连接。
 
@@ -99,25 +117,44 @@ az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --s
 
     :::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="复制 SAS 令牌以在死信密钥中使用。" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
     
-#### <a name="configure-the-endpoint"></a>配置终结点
+#### <a name="create-the-dead-letter-endpoint"></a>创建死信终结点
 
-若要创建启用了死信的终结点，可以使用 Azure 资源管理器 Api 创建终结点。 
+若要创建启用了死信的终结点，请将以下死信参数添加到[Azure 数字孪生 CLI](how-to-use-cli.md)的[az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true)命令。
 
-1. 首先，使用 [Azure 资源管理器 api 文档](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) 来设置创建终结点的请求，并填写所需的请求参数。 
+参数的值是由 [上一部分](#set-up-storage-resources)收集的存储帐户名称、容器名称和 SAS 令牌组成的 **死信 SAS URI** 。 此参数创建具有基于密钥的身份验证的终结点。
 
-2. 接下来，将 `deadLetterSecret` 字段添加到请求 **正文** 中的属性对象。 根据下面的模板设置此值，这将从 [上一节](#set-up-storage-resources)中收集的存储帐户名称、容器名称和 SAS 令牌值中进行 URL。
-      
-  :::code language="json" source="~/digital-twins-docs-samples/api-requests/deadLetterEndpoint.json":::
+```azurecli
+--deadletter-sas-uri https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>
+```
 
-3. 发送请求以创建终结点。
+将此参数添加到前面 " [*创建终结点*](#create-the-endpoint) " 部分中的终结点创建命令的末尾，以创建已启用死信的所需类型的终结点。
 
-有关构造此请求的详细信息，请参阅 Azure 数字孪生 REST API 文档： [终结点-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)。
+或者，可以使用 [Azure 数字孪生控制平面 api](how-to-use-apis-sdks.md#overview-control-plane-apis) 而不是 CLI 创建死信端点。 为此，请查看 [DigitalTwinsEndpoint 文档](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) ，查看如何构建请求并添加死信参数。
 
-### <a name="message-storage-schema"></a>消息存储架构
+#### <a name="create-a-dead-letter-endpoint-with-identity-based-authentication"></a>创建具有基于标识的身份验证的死信终结点
+
+还可以创建具有基于标识的身份验证的死信终结点，以便将终结点与 [托管标识](concepts-security.md#managed-identity-for-accessing-other-resources-preview)一起使用。 此选项仅适用于事件中心和服务总线类型终结点， (事件网格) 不支持此选项。
+
+若要创建这种类型的终结点，请使用前面的相同 CLI 命令 [创建具有基于标识的身份验证的终结点](#create-an-endpoint-with-identity-based-authentication)，并在的 JSON 有效负载中提供额外字段 `deadLetterUri` 。
+
+下面是需要在命令中插入占位符的值：
+* Azure 数字孪生实例的 Azure 资源 ID
+* 终结点名称
+* 终结点类型
+* 终结点资源的命名空间
+* 事件中心或服务总线主题的名称
+* **死信 SAS URI** 详细信息：存储帐户名称，容器名称
+* Azure 数字孪生实例的位置
+
+```azurecli-interactive
+az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoints/<endpoint-name> --properties '{\"properties\": { \"endpointType\": \"<endpoint-type>\", \"authenticationType\": \"IdentityBased\", \"endpointUri\": \"sb://<endpoint-namespace>.servicebus.windows.net\", \"entityPath\": \"<name-of-event-hub-or-Service-Bus-topic>\", \"deadLetterUri\": \"https://<storage-account-name>.blob.core.windows.net/<container-name>\"}, \"location\":\"<instance-location>\" }' --is-full-object
+```
+
+#### <a name="message-storage-schema"></a>消息存储架构
 
 设置了具有死信的端点后，会在存储帐户中以下列格式存储死信消息：
 
-`{container}/{endpointName}/{year}/{month}/{day}/{hour}/{eventId}.json`
+`{container}/{endpoint-name}/{year}/{month}/{day}/{hour}/{event-ID}.json`
 
 死信消息将匹配要传递到原始终结点的原始事件的架构。
 
@@ -128,7 +165,7 @@ az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --s
   "specversion": "1.0",
   "id": "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "type": "Microsoft.DigitalTwins.Twin.Create",
-  "source": "<yourInstance>.api.<yourregion>.da.azuredigitaltwins-test.net",
+  "source": "<your-instance>.api.<your-region>.da.azuredigitaltwins-test.net",
   "data": {
     "$dtId": "<yourInstance>xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "$etag": "W/\"xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
