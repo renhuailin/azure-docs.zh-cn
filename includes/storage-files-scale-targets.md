@@ -2,20 +2,20 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 01/27/2021
 ms.author: rogarana
-ms.openlocfilehash: e7b7fae094ad15bc1732778b6a4a3259fb4dd3b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7da7c2fbb49a9dd936762b23f3c251d2142c52fd
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028083"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221792"
 ---
 | 资源 | 标准文件共享\* | 高级文件共享 |
 |----------|---------------|------------------------------------------|
 | 文件共享的最小大小 | 没有最小值；即用即付 | 100 GiB；未预配 |
 | 文件共享的最大大小 | 100 TiB\*\*，5 TiB | 100 TiB |
-| 文件共享中文件的最大大小 | 1 TiB | 4 TiB |
+| 文件共享中文件的最大大小 | 4 TiB | 4 TiB |
 | 文件共享中的文件数上限 | 无限制 | 无限制 |
 | 每个共享的最大 IOPS | 10,000 IOPS\*\*，1,000 IOPS 或 100 毫秒内 100 个请求 | 100,000 IOPS |
 | 每个文件共享的存储的访问策略的最大数目 | 5 | 5 |

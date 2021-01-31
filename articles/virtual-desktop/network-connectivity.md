@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 4c0017a36d84973a4d99c49a5ea33faeb189b35f
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: e4149864e16196b695d38a8c46ab5af835453412
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94639185"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221204"
 ---
 # <a name="understanding-windows-virtual-desktop-network-connectivity"></a>了解 Windows 虚拟桌面网络连接
 
@@ -50,7 +50,7 @@ Windows 虚拟桌面会话主机启动时，远程桌面代理加载器服务将
 
 ## <a name="connection-security"></a>连接安全性
 
-TLS 1.2 用于从客户端和会话主机启动到 Windows 虚拟桌面基础结构组件的所有连接。
+TLS 1.2 用于从客户端和会话主机启动到 Windows 虚拟桌面基础结构组件的所有连接。 Windows 虚拟桌面使用与 [Azure 前门](../frontdoor/front-door-faq.md#what-are-the-current-cipher-suites-supported-by-azure-front-door)相同的 TLS 1.2 密码。 务必确保客户端计算机和会话主机可以使用这些密码。
 对于反向连接传输，客户端和会话主机均连接到 Windows 虚拟桌面网关。 建立 TCP 连接后，客户端或会话主机将验证 Windows 虚拟桌面网关的证书。
 建立基本传输后，RDP 将使用会话主机的证书在客户端和会话主机之间建立嵌套的 TLS 连接。 默认情况下，用于 RDP 加密的证书是在部署过程中由操作系统自行生成的。 如果需要，客户可以部署企业证书颁发机构颁发的集中管理的证书。 有关配置证书的详细信息，请参阅 [Windows Server 文档](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations)。
 

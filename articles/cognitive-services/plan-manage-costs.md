@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 61eb7d06773428074940d153b01d23b13468795d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 661af89ad223978abbefd71dd8008577475c5875
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788818"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221359"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>规划和管理 Azure 认知服务的成本
 
@@ -64,6 +64,32 @@ ms.locfileid: "98788818"
 
 你可以通过 Azure 预付款 (之前称为货币承诺) 信用额度来支付认知服务费用。 但是，不能使用 Azure 预付款信用额度来支付第三方产品和服务（包括来自 Azure Marketplace 的产品和服务）的费用。
 
+## <a name="monitor-costs"></a>监视成本
+
+<!-- Note to Azure service writer: Modify the following as needed for your service. Replace example screenshots with ones taken for your service. If you need assistance capturing screenshots, ask banders for help. -->
+
+将 Azure 资源用于认知服务时，会产生成本。 Azure 资源使用情况单位成本因时间间隔 (秒、分钟、小时和天) 或 (字节、mb 等) 的单位使用情况而异。 一旦使用认知服务 (或认知服务开始) ，就会产生成本，你可以在 [成本分析](../cost-management/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)中查看成本。
+
+使用成本分析时，可以在不同时间间隔的图形和表中查看认知服务成本。 有些示例是按天、当前和上个月和年。 你还可以查看预算和预测成本的成本。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势。 你会看到超支可能发生的位置。 如果已创建预算，还可以轻松地查看超出的位置。
+
+在成本分析中查看认知服务成本：
+
+1. 登录到 Azure 门户。
+2. 在 Azure 门户中打开范围，并在菜单中选择 " **成本分析** "。 例如，在 " **订阅**" 中，从列表中选择一个订阅，然后在菜单中选择 "  **成本分析** "。 选择 " **作用域** " 可切换到成本分析中的其他作用域。
+3. 默认情况下，服务的成本显示在第一个圆环图中。 选择图表中标记为 "认知服务" 的区域。
+
+最初打开成本分析时，会显示实际的每月成本。 下面是显示所有每月使用成本的示例。
+
+:::image type="content" source="./media/cost-management/all-costs.png" alt-text="显示订阅的累计成本的示例":::
+
+- 若要缩小单个服务（如认知服务）的成本，请选择 " **添加筛选器** "，然后选择 " **服务名称**"。 然后选择 " **认知服务**"。
+
+以下示例显示了关于认知服务的成本。
+
+:::image type="content" source="./media/cost-management/cognitive-services-costs.png" alt-text="显示认知服务累积成本的示例":::
+
+在前面的示例中，您将看到该服务的当前成本。 还显示了按资源组列出的 Azure 区域 (位置) 和认知服务成本。 从这里，你可以自行探索成本。
+
 ## <a name="create-budgets"></a>创建预算
 
 你可以创建 [预算](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 来管理成本，并创建 [警报](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) ，以自动通知利益干系人支出异常和超支风险的利益干系人。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。 
@@ -73,13 +99,6 @@ ms.locfileid: "98788818"
 ## <a name="export-cost-data"></a>导出成本数据
 
 你还可以将 [成本数据导出](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 到存储帐户。 当你需要或其他人进行额外的数据分析以获得成本时，这非常有用。 例如，财务团队可以使用 Excel 或 Power BI 来分析数据。 您可以按每天、每周或每月计划导出您的成本，并设置自定义的日期范围。 建议使用导出成本数据来检索成本数据集。
-
-<!--
-## Other ways to manage and reduce costs for Cognitive Services
-
-Work with Dean to complete this section in 2021.
-
--->
 
 ## <a name="next-steps"></a>后续步骤
 

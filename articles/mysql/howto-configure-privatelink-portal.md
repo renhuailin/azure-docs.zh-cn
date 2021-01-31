@@ -6,18 +6,18 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: fbc75df0b22ba452b8c91dfcb21ca13aaed557a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ce916336ea47cd223c10a8f664b2dc9806ed0a17
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998560"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221020"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>使用门户创建和管理用于 Azure Database for MySQL 的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 本文介绍如何使用 Azure 门户在 Azure 虚拟网络和带有 Azure 专用终结点的 Azure Database for MySQL 服务器中创建 VM。
 
-如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
 > 专用链接功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MySQL 服务器。 请确保数据库服务器位于其中一个定价层中。
@@ -35,7 +35,7 @@ ms.locfileid: "95998560"
 1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”  。
 2. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16。 |
@@ -53,7 +53,7 @@ ms.locfileid: "95998560"
 
 2. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -80,18 +80,18 @@ ms.locfileid: "95998560"
 
 1. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。|
     | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。|
     | 公共 IP | 保留默认值“(new) myVm-ip”。 |
-    | 公共入站端口 | 选择“允许所选端口”。 |
+    | 公共入站端口 | 选择“允许所选端口”  。 |
     | 选择入站端口 | 选择“HTTP”和“RDP”。 |
     |||
 
 
-1. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 1. 看到“验证通过”消息时，选择“创建” 。
 
@@ -103,7 +103,7 @@ ms.locfileid: "95998560"
 
 1. 在“Azure Database for MySQL”中，提供以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -118,7 +118,7 @@ ms.locfileid: "95998560"
     |||
  
 7. 选择“确定” 。 
-8. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
+8. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
 9. 当看到 验证通过的 消息时，选择“创建”。 
 10. 看到“验证通过”消息时选择“创建”。 
 
@@ -130,7 +130,7 @@ ms.locfileid: "95998560"
 
 在本部分，你将创建一个 MySQL 服务器并在其中添加专用终结点。 
 
-1. 在 Azure 门户屏幕的左上方，选择“创建资源” > “网络” > “专用链接”  。
+1. 在 Azure 门户中的屏幕的左上方，选择“创建资源” > “网络” > “专用链接”  。
 
 2. 在“专用链接中心 - 概述”中的“与服务建立专用连接”选项的旁边，选择“启动”。  
 
@@ -138,7 +138,7 @@ ms.locfileid: "95998560"
 
 1. 在“创建专用终结点 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -151,7 +151,7 @@ ms.locfileid: "95998560"
 5. 在完成时选择“下一步:资源”。
 6. 在“创建专用终结点 - 资源”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
     | 订阅| 选择订阅。 |
@@ -162,7 +162,7 @@ ms.locfileid: "95998560"
 7. 在完成时选择“下一步:配置”。
 8. 在“创建专用终结点 - 配置”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     |**网络**| |
     | 虚拟网络| 选择“MyVirtualNetwork”。 |
@@ -181,7 +181,7 @@ ms.locfileid: "95998560"
     :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="创建的专用链接":::
 
     > [!NOTE] 
-    > 客户 DNS 设置中的 FQDN 未解析为已配置的专用 IP。 必须为配置的 FQDN 设置一个 DNS 区域，如[此处](../dns/dns-operations-recordsets-portal.md)所示。
+    > 客户 DNS 设置中的 FQDN 未解析为已配置的专用 IP。 你必须为已配置的 FQDN 设置一个 DNS 区域，如[此处](../dns/dns-operations-recordsets-portal.md)所示。
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>使用远程桌面 (RDP) 连接到 VM
 
@@ -196,7 +196,7 @@ ms.locfileid: "95998560"
 
 1. 打开 downloaded.rdp 文件。
 
-    1. 出现提示时，选择“连接”  。
+    1. 出现提示时，选择“连接”。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
@@ -223,6 +223,8 @@ ms.locfileid: "95998560"
     Name:    myServer.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
     ```
+    > [!NOTE]
+    > 如果在 Azure Database for MySQL-单服务器的防火墙设置中禁用了公共访问。 无论防火墙设置如何，这些 ping 和 telnet 测试都将成功。 这些测试将确保网络连接。
 
 3. 使用任何可用的客户端测试 MySQL 服务器的专用链接连接。 在下面的示例中，我使用了 [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) 来执行该操作。
 
