@@ -1,14 +1,14 @@
 ---
 title: 策略分配结构的详细信息
 description: 介绍策略分配定义，Azure Policy 使用该定义将策略定义和参数关联到资源，以进行评估。
-ms.date: 09/22/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: e930e9ddcc04846a35c8db7784a349007c71580b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12acbe368c9ccd6fa5654d3394e0fecb286984bf
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904080"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219560"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
@@ -22,6 +22,7 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 - 强制模式
 - 排除的范围
 - 策略定义
+- 不符合性消息
 - 参数
 
 例如，以下 JSON 显示包含动态参数的、处于 _DoNotEnforce_ 模式的策略分配：
@@ -37,6 +38,11 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
         "enforcementMode": "DoNotEnforce",
         "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
+        "nonComplianceMessages": [
+            {
+                "message": "Resource names must start with 'DeptA' and end with '-LC'."
+            }
+        ],
         "parameters": {
             "prefix": {
                 "value": "DeptA"
@@ -66,19 +72,45 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 |Enabled |默认 |string |是 |是 |在创建或更新资源期间强制实施策略效果。 |
 |已禁用 |DoNotEnforce |string |是 |否 | 在创建或更新资源期间不强制实施策略效果。 |
 
-如果未在策略或计划定义中指定 **enforcementMode**，则使用值 _Default_。 即使 **enforcementMode** 设置为 _DoNotEnforce_，也可以针对 [deployIfNotExists](./effects.md#deployifnotexists) 策略启动[修正任务](../how-to/remediate-resources.md)。
+如果未在策略或计划定义中指定 **enforcementMode**，则使用值 _Default_。 即使 **enforcementMode** 设置为 _DoNotEnforce_，也可以针对 [deployIfNotExists](./effects.md#deployifnotexists) 策略启动 [修正任务](../how-to/remediate-resources.md)。
 
 ## <a name="excluded-scopes"></a>排除的范围
 
-分配的范围包括所有子资源容器和子资源。 如果子资源容器或子资源不应应用定义，则可以通过设置**notScopes**将每个项从计算中_排除_。 此属性是一个数组，用于从计算中排除一个或多个资源容器或资源。 notScopes 可以在创建初始赋值后添加或更新。
+分配的范围包括所有子资源容器和子资源。 如果子资源容器或子资源不应应用定义，则可以通过设置 notScopes 将每个项从计算中排除。 此属性是一个数组，用于从计算中排除一个或多个资源容器或资源。 notScopes 可以在创建初始赋值后添加或更新。
 
 > [!NOTE]
-> _排除_的资源不同于_免除_的资源。 有关详细信息，请参阅 [了解 Azure 策略中的作用域](./scope.md)。
+> 排除的资源与免除的资源不同。 有关详细信息，请参阅[了解 Azure Policy 中的范围](./scope.md)。
 
 ## <a name="policy-definition-id"></a>策略定义 ID
 
 此字段必须是策略定义或计划定义的完整路径名称。
 `policyDefinitionId` 是字符串，而不是数组。 如果经常要一起分配多个策略，我们建议改用[计划](./initiative-definition-structure.md)。
+
+## <a name="non-compliance-messages"></a>不符合性消息
+
+若要设置自定义消息以描述资源不符合策略或计划定义的原因，请 `nonComplianceMessages` 在分配定义中设置。 此节点是一组 `message` 条目。 此自定义消息是对不符合性的默认错误消息的补充，并且是可选的。
+
+```json
+"nonComplianceMessages": [
+    {
+        "message": "Default message"
+    }
+]
+```
+
+如果分配用于某个计划，则可以为该计划中的每个策略定义配置不同的消息。 消息使用 `policyDefinitionReferenceId` 计划定义中配置的值。 有关详细信息，请参阅 [属性定义属性](./initiative-definition-structure.md#policy-definition-properties)。
+
+```json
+"nonComplianceMessages": [
+    {
+        "message": "Default message"
+    },
+    {
+        "message": "Message for just this policy definition by reference ID",
+        "policyDefinitionReferenceId": "10420126870854049575"
+    }
+]
+```
 
 ## <a name="parameters"></a>parameters
 

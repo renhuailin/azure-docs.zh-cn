@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: efc4f6293623278314df3ac55b2fecae2e28f7d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a2b5350e1aebeff3cc9dc3996f7e0a92c424ecf3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968343"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219988"
 ---
 # <a name="ibm-workloads-on-azure"></a>Azure 上的 IBM 工作负荷
 
 许多基于 z/OS 的 IBM 大型机工作负荷可以在 Azure 中进行复制，而不会丢失任何功能，甚至不会用户发现其基础系统中的更改。 Azure 上的重新承载应用程序提供所需的大型机功能，以及云的弹性、可用性和可能的成本节约。
 
-Azure 支持与现有的 IBM 大型机环境集成，使你可以迁移有意义的 applicates，在需要时运行混合解决方案，并随时间推移迁移。 尽管可以为 Azure 完全重写现有的基于大型机的程序，但更常见的方法是 rehost 它们。 重写增加了迁移项目的成本、复杂性和时间。 借助重新承载，你可以：
+Azure 支持与现有的 IBM 大型机环境集成，使你能够迁移合理的应用程序，在必要时运行混合解决方案，并随时间推移迁移。 尽管可以为 Azure 完全重写现有的基于大型机的程序，但更常见的方法是 rehost 它们。 重写增加了迁移项目的成本、复杂性和时间。 借助重新承载，你可以：
 
 - 将应用程序移动到基于云的模拟器。
 
@@ -41,4 +41,4 @@ Azure 支持与现有的 IBM 大型机环境集成，使你可以迁移有意义
 - [大型机迁移：误解和事实](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [&Azure 上的开发/测试环境安装 IBM zD](./install-ibm-z-environment.md)
 - [设置应用程序开发人员受控分发 (ADCD) 在 IBM zD&T v1](./demo.md)
-- [Azure 上的 IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)
+- [Azure 上的 IBM DB2 pureScale](ibm-db2-purescale-azure.md)

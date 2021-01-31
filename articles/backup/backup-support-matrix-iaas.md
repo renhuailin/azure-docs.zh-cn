@@ -4,12 +4,12 @@ description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: d3329d9cac9547fbe9ec971bb8944f50971732b5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3d1238bffd785a47b6e0ffab70366a15dfff0ef3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757400"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218105"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -150,6 +150,7 @@ Gen2 VM | 支持 <br> Azure 备份支持备份和还原 [Gen2 VM](https://azure.
 带锁的 Azure VM 的备份 | 非托管 VM 不支持。 <br><br> 托管 VM 支持。
 [点 VM](../virtual-machines/spot-vms.md) | 不受支持。 Azure 备份会将专色 Vm 恢复为常规 Azure Vm。
 [Azure 专用主机](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | 支持
+独立 Azure Vm 的 Windows 存储空间配置 | 支持 
 
 ## <a name="vm-storage-support"></a>VM 存储支持
 

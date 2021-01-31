@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: 5567cf3bf606b08ce430f9189467d796498ae691
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: cbb84a4934eed4d258cf07772753315785f98019
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953897"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218156"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>Azure 认知搜索的 .NET (C#) 代码示例
 
@@ -69,3 +69,4 @@ Azure SDK 开发团队中的代码示例演示了 API 使用。 可以在 [**azu
 | [知识挖掘解决方案加速器](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | 包括模板、支持文件和分析报表，以帮助你建立端到端知识挖掘解决方案的原型。  |
 | [Covid-19 搜索应用存储库](https://github.com/liamca/covid19search) | 基于认知搜索的 [Covid-19 搜索应用](https://covid19search.azurewebsites.net/)的源代码存储库 |
 | [JFK](https://github.com/Microsoft/AzureSearch_JFK_Files) | 详细了解 [JFK 解决方案](https://www.microsoft.com/ai/ai-lab-jfk-files)。 |
+| [搜索 + QnA Maker 加速器](https://github.com/Azure-Samples/search-qna-maker-accelerator) | 一种 [解决方案](https://techcommunity.microsoft.com/t5/azure-ai/qna-with-azure-cognitive-search/ba-p/2081381) ，它结合了搜索和 QnA Maker 的功能。 请参阅现场 [演示网站](https://aka.ms/qnaWithAzureSearchDemo)。 |

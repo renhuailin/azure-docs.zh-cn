@@ -2,13 +2,13 @@
 title: Azure 服务总线消息、有效负载和序列化 | Microsoft Docs
 description: 本文概述了 Azure 服务总线消息、有效负载、消息路由和序列化。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/29/2021
+ms.openlocfilehash: db1989004e60c305341e54e62e42f31e40e47487
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85341684"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219173"
 ---
 # <a name="messages-payloads-and-serialization"></a>消息、有效负载和序列化
 
@@ -70,8 +70,6 @@ Microsoft Azure 服务总线负责处理消息。 消息传递键值对属性形
 如果使用的是旧版 SBMP 协议，这些对象使用默认二进制序列化程序，或使用外部提供的序列化程序进行序列化。 如果使用的是 AMQP 协议，对象会被序列化为 AMQP 对象。 接受器可使用 [GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法检索这些对象，并提供预期类型。 使用 AMQP，对象都被序列化为 ArrayList 和 IDictionary<string,object> 对象的 AMQP 图，任何 AMQP 客户端都可以将其解码。 
 
 尽管这种隐藏序列化的神奇操作十分方便，但应用程序应明确控制对象序列化，并先将对象图转为流，再将它们添加到消息中（在接收程序端，操作执行顺序相反）。 这样生产的是交互结果。 还应指出，尽管 AMQP 有功能强大的二进制编码模型，但它与 AMQP 消息生态系统关联，导致 HTTP 客户端无法解码此类有效负载。 
-
-通常建议使用 JSON 和 Apache Avro 作为结构化数据的有效负载格式。
 
 .NET Standard 和 Java API 变体仅接受字节数组。也就是说，应用程序必须控制对象序列化。 
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3f403308c77e5ee0dfc066ec3dc53100e520d274
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 45b52f98f9f3670f2a68c22cfe9e27a86b2a74cc
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090665"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220694"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
@@ -28,7 +28,12 @@ ms.locfileid: "99090665"
   * 为 [几个常规实体类别](named-entity-types.md)扩展了语言支持。 
   * 提高了所有支持的 v3 语言的 "常规实体" 类别的 AI 质量。 
 
-* `2021-01-05`用于[语言检测](how-tos/text-analytics-how-to-language-detection.md)的模型版本，可提供其他[语言支持](language-support.md?tabs=language-detection)。
+* `2021-01-05`[语言检测](how-tos/text-analytics-how-to-language-detection.md)的模型版本，它提供了其他[语言支持](language-support.md?tabs=language-detection)。
+
+这些模型版本目前在美国东部地区不可用。 
+
+> [!div class="nextstepaction"]
+> [了解有关新 NER 模型的详细信息](https://azure.microsoft.com/updates/text-analytics-ner-improved-ai-quality)
 
 ## <a name="december-2020"></a>2020 年 12 月
 

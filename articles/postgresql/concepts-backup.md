@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: c712af41fdc191cab4fd08c9d8175a849d4f286a
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.date: 01/29/2021
+ms.openlocfilehash: e74c96e0c03d75f34a16d95d0bed642c1900f558
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706764"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219717"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
 
@@ -82,9 +82,19 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 
 可能需要等到下一个事务日志备份进行后，才能还原到上一个五分钟内的某个时间点。
 
+如果要还原已删除的表， 
+1. 使用时间点方法还原源服务器。
+2. 使用 `pg_dump` 从还原的服务器转储表。
+3. 重命名原始服务器上的源表。
+4. 在原始服务器上使用 psql 命令行导入表。
+5. 您可以选择删除还原后的服务器。
+
+>[!Note]
+> 建议不要同时为同一服务器创建多个还原。 
+
 ### <a name="geo-restore"></a>异地还原
 
-如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 支持存储容量最大达 4 TB 的服务器可以还原到异地配对区域，也可以还原到支持存储容量最大达 16 TB 的任何区域。 对于支持存储容量最大达 16 TB 的服务器，也可以在支持 16 TB 服务器的任何区域中还原异地备份。 查看 [Azure Database for PostgreSQL 的定价层](concepts-pricing-tiers.md) 以获取受支持区域的列表。
+如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 支持存储容量最大达 4 TB 的服务器可以还原到异地配对区域，也可以还原到支持存储容量最大达 16 TB 的任何区域。 对于支持存储容量最大达 16 TB 的服务器，也可以在支持 16 TB 服务器的任何区域中还原异地备份。 查看 [Azure Database for PostgreSQL 定价层](concepts-pricing-tiers.md)，以获取受支持区域的列表。
 
 当服务器因其所在的区域发生事故而不可用时，异地还原是默认的恢复选项。 如果区域中出现的大规模事件导致数据库应用程序不可用，可以根据异地冗余备份将服务器还原到任何其他区域中的服务器。 提取备份后，会延迟一段时间才会将其复制到其他区域中。 此延迟可能长达一小时，因此发生灾难时，会有长达 1 小时的数据丢失风险。
 
@@ -97,7 +107,7 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 
 从任一恢复机制还原后，都应执行以下任务，然后用户和应用程序才能重新运行：
 
-- 如果需要使用新服务器来替换原始服务器，则请将客户端和客户端应用程序重定向到新服务器
+- 如果需要使用新的服务器来替换原始服务器，请将客户端和客户端应用程序重定向到新服务器。 还将 "用户名" 更改为 "" `username@new-restored-server-name` 。
 - 对于要进行连接的用户，请确保设置适当的服务器级防火墙规则和 VNet 规则。 不会从源服务器复制这些规则。
 - 确保设置适当的登录名和数据库级权限
 - 视情况配置警报

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: c441d8e9fa5a3375b1ec4cd3e68d92e92738261d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: c302e10a169a190d11f016620ec048cc58e3ac28
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755775"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220158"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>身份验证流和应用程序方案
 
@@ -42,8 +42,8 @@ Microsoft 标识平台支持对不同种类的新式应用程序体系结构进�
 
 身份验证方案涉及两个活动：
 
-- **获取受保护 Web API 的安全令牌**：建议使用 [Microsoft 支持的客户端库](reference-v2-libraries.md#microsoft-supported-client-libraries)来获取令牌。 具体而言，建议使用 Microsoft 身份验证库 (MSAL) 系列。
-- **保护 Web API 或 Web 应用**：保护这些资源的一大难题是验证安全令牌。 Microsoft 在某些平台上提供[中间件库](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)。
+- **获取受保护的 WEB API 的安全令牌**：我们建议使用 microsoft 提供的 [Microsoft 身份验证库 (MSAL)](reference-v2-libraries.md)。
+- **保护 Web API 或 Web 应用**：保护这些资源的一大难题是验证安全令牌。 Microsoft 在某些平台上提供[中间件库](reference-v2-libraries.md)。
 
 ### <a name="with-users-or-without-users"></a>涉及或不涉及用户
 
@@ -65,7 +65,7 @@ Microsoft 标识平台支持对不同种类的新式应用程序体系结构进�
   - 以登录的用户身份调用 Web API 的桌面应用
   - 移动应用
   - 在没有浏览器的设备上运行的应用，例如，在 IoT 上运行的应用
-  
+
 - **机密客户端应用程序**：此类别中的应用包括：
   - 调用 Web API 的 Web 应用
   - 调用 Web API 的 Web API
@@ -95,7 +95,7 @@ Microsoft 标识平台支持以下应用体系结构的身份验证：
 
 许多新式 Web 应用都是作为客户端单页应用程序构建的。 这些应用程序使用 JavaScript 或框架（例如 Angular、Vue 和 React）。 这些应用程序在 Web 浏览器中运行。
 
-单页应用程序在身份验证特征方面与传统的服务器端 Web 应用不同。 单页应用程序可以使用 Microsoft 标识平台将用户登录，并获取用于访问后端服务或 Web API 的令牌。 Microsoft 标识平台为 JavaScript 应用程序提供了两种授予类型： 
+单页应用程序在身份验证特征方面与传统的服务器端 Web 应用不同。 单页应用程序可以使用 Microsoft 标识平台将用户登录，并获取用于访问后端服务或 Web API 的令牌。 Microsoft 标识平台为 JavaScript 应用程序提供了两种授予类型：
 
 | MSAL.js (2.x) | MSAL.js (1.x) |
 |---|---|
@@ -160,7 +160,7 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
 
 ### <a name="protected-web-api"></a>受保护的 Web API
 
-可以使用 Microsoft 标识平台来保护 web 服务，例如应用的 RESTful web API。 通过访问令牌调用受保护的 Web API。 该令牌帮助保护 API 的数据并对传入请求进行身份验证。 Web API 调用方会在 HTTP 请求的授权标头中追加一个访问令牌。
+可以使用 Microsoft 标识平台终结点来保护 Web 服务，例如应用的 RESTful Web API。 通过访问令牌调用受保护的 Web API。 该令牌帮助保护 API 的数据并对传入请求进行身份验证。 Web API 调用方会在 HTTP 请求的授权标头中追加一个访问令牌。
 
 若要保护 ASP.NET 或 ASP.NET Core Web API，需要验证访问令牌。 可以使用 ASP.NET JWT 中间件进行这种验证。 验证是由[适用于.NET 的 IdentityModel 扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki)库而不是 MSAL.NET 完成的。
 
@@ -309,7 +309,7 @@ Microsoft 身份验证库支持多种平台：
 | [守护程序应用](scenario-daemon-overview.md) <br/> [![守护程序应用](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 | [用于调用 Web API 的 Web API](scenario-web-api-call-api-overview.md) <br/><br/> [![用于调用 Web API 的 Web API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 
-有关详细信息，请参阅[按 OS/语言列出的 Microsoft 支持的库](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)。
+有关详细信息，请参阅 [Microsoft 标识平台身份验证库](reference-v2-libraries.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

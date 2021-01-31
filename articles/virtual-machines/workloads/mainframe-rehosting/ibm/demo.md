@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: dcd354b906b4d6c92d8b3186fc8e09c94a31ca55
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c76768fa94b524763ac8ad94c9c3f5bb3a73dddb
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968394"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219432"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>设置应用程序开发人员受控分发 (ADCD) 在 IBM zD&T v1
 
@@ -57,7 +57,7 @@ ms.locfileid: "94968394"
 
 4. 输入部件说明或部件号，然后单击 " **查找** 器"。
 
-5. 也可以单击 "按字母顺序排序" 列表，按名称显示和查看产品。
+5. 还可以单击 "按字母顺序排序" 列表，按名称显示和查看产品。
 
 6. 在 "**操作系统" 字段** 中选择 "**所有操作系统**"，并在 "**语言" 字段** 中选择 **所有语言**。 然后单击 " **开始**"。
 
@@ -190,7 +190,7 @@ ms.locfileid: "94968394"
 ## <a name="learn-more"></a>了解详细信息
 
 - [大型机迁移：误解和事实](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [Azure 上的 IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)
+- [Azure 上的 IBM DB2 pureScale](ibm-db2-purescale-azure.md)
 - [故障排除](../../../troubleshooting/index.yml)
 - [揭密大型机到 Azure 的迁移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 

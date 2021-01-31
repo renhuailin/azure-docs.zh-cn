@@ -13,12 +13,12 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3280952636a915cca4bade40d3e56b795050c321
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f32c81d4d247eb6c819adf5015cf36c846f4e83b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053459"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218224"
 ---
 # <a name="migrate-applications-to-the-microsoft-authentication-library-msal"></a>将应用程序迁移到 Microsoft 身份验证库 (MSAL) 
 
@@ -73,7 +73,7 @@ __问：MSAL 如何与 AD FS 配合工作？__
 答：MSAL.NET 支持针对 AD FS 2019 进行身份验证的特定方案。 如果你的应用需要直接从 AD FS 的早期版本获取令牌，应继续使用 ADAL。 [了解详细信息](msal-net-adfs-support.md)。
 
 __问：如何获取有关迁移应用程序的帮助？__  
-答：请参阅本文的[迁移指南](#migration-guidance)部分。 如果在阅读应用平台的指南后，你还有其他问题，你可以在 Microsoft Q 上发布&带有标记的文章， `[azure-ad-adal-deprecation]` 或在库的 GitHub 存储库中提出问题。 请参阅 MSAL 概述文章的[语言和框架](msal-overview.md#languages-and-frameworks)部分，获取指向每个库的存储库的链接。
+答：请参阅本文的[迁移指南](#migration-guidance)部分。 如果在阅读应用平台的指南后，你还有其他问题，你可以在 [Microsoft Q](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html) 上发布&带有标记的文章， `[azure-ad-adal-deprecation]` 或在库的 GitHub 存储库中提出问题。 请参阅 MSAL 概述文章的[语言和框架](msal-overview.md#languages-and-frameworks)部分，获取指向每个库的存储库的链接。
 
 ## <a name="next-steps"></a>后续步骤
 

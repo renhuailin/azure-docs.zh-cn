@@ -4,16 +4,16 @@ description: 使用 Azure 文件同步服务计划部署，该服务允许你在
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 28b7419dfc889d1149765b884f1a5990a1e28f03
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 65293df5fae523bff36240273afb93c4dd8485df
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898098"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219470"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 
@@ -302,48 +302,16 @@ Azure 存储帐户包含一个用于要求在传输过程中加密的开关，�
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="azure-file-sync-region-availability"></a>Azure 文件同步区域可用性
-Azure 文件同步在以下区域中可用：
 
-| Azure 云 | 地理区域 | Azure 区域 | 区域代码 |
-|-------------|-------------------|--------------|-------------|
-| 公共 | 亚洲 | 东亚 | `eastasia` |
-| 公共 | 亚洲 | 东南亚 | `southeastasia` |
-| 公共 | 澳大利亚 | 澳大利亚东部 | `australiaeast` |
-| 公共 | 澳大利亚 | 澳大利亚东南部 | `australiasoutheast` |
-| 公共 | 巴西 | 巴西南部 | `brazilsouth` |
-| 公共 | Canada | 加拿大中部 | `canadacentral` |
-| 公共 | Canada | 加拿大东部 | `canadaeast` |
-| 公共 | 欧洲 | 北欧 | `northeurope` |
-| 公共 | 欧洲 | 西欧 | `westeurope` |
-| 公共 | 法国 | 法国中部 | `francecentral` |
-| 公共 | 法国 | 法国南部* | `francesouth` |
-| 公共 | 印度 | 印度中部 | `centralindia` |
-| 公共 | 印度 | 印度南部 | `southindia` |
-| 公共 | 日本 | 日本东部 | `japaneast` |
-| 公共 | 日本 | 日本西部 | `japanwest` |
-| 公共 | 韩国 | 韩国中部 | `koreacentral` |
-| 公共 | 韩国 | 韩国南部 | `koreasouth` |
-| 公共 | 南非 | 南非北部 | `southafricanorth` |
-| 公共 | 南非 | 南非西部* | `southafricawest` |
-| 公共 | 阿拉伯联合酋长国 | 阿联酋中部* | `uaecentral` |
-| 公共 | 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 | `uaenorth` |
-| 公共 | 英国 | 英国南部 | `uksouth` |
-| 公共 | 英国 | 英国西部 | `ukwest` |
-| 公共 | 美国 | 美国中部 | `centralus` |
-| 公共 | 美国 | 美国东部 | `eastus` |
-| 公共 | 美国 | 美国东部 2 | `eastus2` |
-| 公共 | 美国 | 美国中北部 | `northcentralus` |
-| 公共 | 美国 | 美国中南部 | `southcentralus` |
-| 公共 | 美国 | 美国中西部 | `westcentralus` |
-| 公共 | 美国 | 美国西部 | `westus` |
-| 公共 | 美国 | 美国西部 2 | `westus2` |
-| US Gov | 美国 | US Gov 亚利桑那州 | `usgovarizona` |
-| US Gov | 美国 | US Gov 德克萨斯州 | `usgovtexas` |
-| US Gov | 美国 | US Gov 弗吉尼亚州 | `usgovvirginia` |
+有关区域可用性，请参阅 [可用产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)）。
 
-Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件共享进行同步。
+以下区域要求先请求 Azure 存储的访问权限，然后才能将 Azure 文件同步与它们一起使用：
 
-对于带星号的区域，需要与 Azure 支持部门联系，请求访问这些区域中的 Azure 存储。 [此文档](https://azure.microsoft.com/global-infrastructure/geographies/)中介绍了相关流程。
+- 法国南部
+- 南非西部
+- 阿联酋中部
+
+若要请求对这些区域的访问权限，请按照 [本文档](https://azure.microsoft.com/global-infrastructure/geographies/)中的过程进行操作。
 
 ## <a name="redundancy"></a>冗余
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]

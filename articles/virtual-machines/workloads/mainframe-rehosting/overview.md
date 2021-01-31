@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f62cb6d5277ae202e8ea864aa99a3e19c3beef22
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835521"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220745"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 虚拟机上的大型机重新承载
 
@@ -70,7 +70,7 @@ Azure 上的仿真环境可以通过应用程序开发人员控制分发 (ADCDs)
 
 IBM DB2 pureScale 环境为 Azure 提供了一个数据库群集。 它与原始环境并不完全相同，但它提供了类似的可用性和规模，因为在并行 Sysplex 设置中运行的是 IBM DB2 for z/OS。
 
-若要开始，请参阅 [Azure 上的 IBM DB2 pureScale](../../linux/ibm-db2-purescale-azure.md)。
+若要开始，请参阅 [Azure 上的 IBM DB2 pureScale](.//ibm/ibm-db2-purescale-azure.md)。
 
 ## <a name="considerations"></a>注意事项
 

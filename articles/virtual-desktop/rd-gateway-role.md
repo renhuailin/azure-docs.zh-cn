@@ -3,19 +3,24 @@ title: 部署 RD 网关角色 Windows 虚拟桌面-Azure
 description: 如何在 Windows 虚拟桌面中部署 RD 网关角色。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 01/30/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ca3c36f339d5cbca6d5b5990415fba180ae42a13
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 71bd7d38727d99c05a15c54e5141c613960d9050
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798372"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220813"
 ---
-# <a name="deploy-the-rd-gateway-role-in-windows-virtual-desktop"></a>在 Windows 虚拟桌面中部署 RD 网关角色
+# <a name="deploy-the-rd-gateway-role-in-windows-virtual-desktop-preview"></a>在 Windows 虚拟桌面 (预览中部署 RD 网关角色) 
 
-本文将介绍如何在你的环境中部署远程桌面网关服务器。 可以在物理计算机或虚拟机上安装服务器角色，具体取决于是创建本地环境、基于云的环境还是混合环境。
+> [!IMPORTANT]
+> 此功能目前处于公开预览状态。
+> 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+本文将介绍如何使用 RD 网关角色 (预览版) 在你的环境中部署远程桌面网关服务器。 您可以在物理计算机或虚拟机上安装服务器角色，具体取决于您是在创建本地环境还是混合环境。
 
 ## <a name="install-the-rd-gateway-role"></a>安装 RD 网关角色
 

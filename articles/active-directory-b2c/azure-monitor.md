@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
-ms.date: 11/12/2020
-ms.openlocfilehash: 6d40eab12c9726459543d0b69e27b73178eba99f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/29/2021
+ms.openlocfilehash: e44a029c61db5a22513387772c2b0d7a3e4d1a40
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170610"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219224"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure AD B2C
 
@@ -31,6 +31,10 @@ ms.locfileid: "96170610"
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
 本文介绍如何将日志传输到 Azure Log Analytics 工作区。 然后，可以创建仪表板或创建基于 Azure AD B2C 用户活动的警报。
+
+> [!IMPORTANT]
+> 当你计划将 Azure AD B2C 日志传输到不同的监视解决方案或存储库时，请考虑以下事项。 Azure AD B2C 日志包含个人数据。 此类数据应以确保个人数据的适当安全性的方式进行处理，包括使用适当的技术或组织措施防范未经授权或非法的处理。
+
 
 ## <a name="deployment-overview"></a>部署概述
 
@@ -58,7 +62,7 @@ Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在门户工具栏中选择 " **目录 + 订阅** " 图标，然后选择包含 **Azure AD 租户** 的目录。
-1. [创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。 此示例在名为 "AzureAdB2C" 的资源组中使用 Log Analytics 一个名为 " *AzureAdB2C* *" 的工作区。*
+1. [创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。 此示例在名为 "AzureAdB2C" 的资源组中使用 Log Analytics 一个名为 "  *" 的工作区。*
 
 ## <a name="3-delegate-resource-management"></a>3. 委派资源管理
 
@@ -93,7 +97,7 @@ Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-
 2. 在门户工具栏中选择 " **目录 + 订阅** " 图标，然后选择包含 **Azure AD** 租户的目录。
 3. 使用 " **部署到 Azure** " 按钮打开 Azure 门户并直接在门户中部署模板。 有关详细信息，请参阅 [创建 Azure 资源管理器模板](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template)。
 
-   [![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Lighthouse-samples%2Fmaster%2Ftemplates%2Frg-delegated-resource-management%2FrgDelegatedResourceManagement.json)
+   [![“部署到 Azure”](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Lighthouse-samples%2Fmaster%2Ftemplates%2Frg-delegated-resource-management%2FrgDelegatedResourceManagement.json)
 
 5. 在 " **自定义部署** " 页上，输入以下信息：
 
@@ -230,7 +234,7 @@ AuditLogs
 
 1. 从 " **Log Analytics" 工作区** 中，选择 " **工作簿**"。
 1. 从工具栏中，选择 " **+ 新建** " 选项以创建新的工作簿。
-1. 在 "**新建工作簿**" 页上 **Advanced Editor** ，使用 **</>** 工具栏上的选项选择高级编辑器。
+1. 在 "**新建工作簿**" 页上 ，使用 **</>** 工具栏上的选项选择高级编辑器。
 
      ![库模板](./media/azure-monitor/wrkb-adv-editor.png)
 

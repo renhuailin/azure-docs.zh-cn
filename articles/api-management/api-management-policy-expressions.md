@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理策略表达式 | Microsoft 文档
-description: 了解 Azure API 管理中的策略表达式。 请参阅示例并查看其他可用资源。
+description: 了解 Azure API 管理中的策略表达式。 请参阅示例，查看其他可用资源。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: ab83344f779f93107b59ca28348da3a66f1efc1a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: aec1967f0652e18c4a24ca258c14a103355b22af
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076855"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219309"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
 本文讨论 C# 7 中的策略表达式语法。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量以及允许的 .NET Framework 类型[子集](api-management-policy-expressions.md#CLRTypes)。
@@ -220,7 +220,7 @@ ms.locfileid: "92076855"
 |<a id="ref-context-request-headers"></a>string context.Request.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName：string<br /><br /> defaultValue：string<br /><br /> 如果找不到标头，则返回逗号分隔的请求标头值或 `defaultValue`。|
 |<a id="ref-context-response"></a>context.Response|正文：[IMessageBody](#ref-imessagebody)<br /><br /> [标头](#ref-context-response-headers)：IReadOnlyDictionary<string, string[]><br /><br /> StatusCode：int<br /><br /> StatusReason：string|
 |<a id="ref-context-response-headers"></a>string context.Response.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName：string<br /><br /> defaultValue：string<br /><br /> 如果找不到标头，则返回逗号分隔的响应标头值或 `defaultValue`。|
-|<a id="ref-context-subscription"></a>context.Subscription|CreatedTime：DateTime<br /><br /> EndDate:DateTime?<br /><br /> Id：string<br /><br /> Key：string<br /><br /> Name：string<br /><br /> PrimaryKey：string<br /><br /> SecondaryKey：string<br /><br /> StartDate:DateTime?|
+|<a id="ref-context-subscription"></a>context.Subscription|CreatedDate： DateTime<br /><br /> EndDate:DateTime?<br /><br /> Id：string<br /><br /> Key：string<br /><br /> Name：string<br /><br /> PrimaryKey：string<br /><br /> SecondaryKey：string<br /><br /> StartDate:DateTime?|
 |<a id="ref-context-user"></a>context.User|Email：string<br /><br /> FirstName：string<br /><br /> 组：IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id：string<br /><br /> 标识：IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName：string<br /><br /> Note：string<br /><br /> RegistrationDate：DateTime|
 |<a id="ref-iapi"></a>IApi|Id：string<br /><br /> Name：string<br /><br /> Path：string<br /><br /> 协议：IEnumerable<string\><br /><br /> ServiceUrl：[IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames：[ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|Id：string<br /><br /> Name：string|

@@ -12,14 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 01/29/2021
 ms.author: b-juche
-ms.openlocfilehash: e51297e8fe5c3dccf43318a066ac5da4a7d24cb2
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.custom: references_regions
+ms.openlocfilehash: fd3e8295820cd9388bd7999d3008b4c583dbf295
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696085"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220898"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp 文件卷的跨区域复制
 
@@ -28,26 +29,31 @@ Azure NetApp 文件复制功能通过跨区域卷复制提供数据保护。 可
 > [!IMPORTANT]
 > 跨区域复制功能目前为公共预览版。 需要提交候补请求，以便通过 [Azure NetApp 文件跨区域复制候补提交页](https://aka.ms/anfcrrpreviewsignup)访问该功能。 使用跨区域复制功能之前，请先从 Azure NetApp 文件团队等待官方确认电子邮件。
 
-## <a name="supported-region-pairs"></a>支持的区域对
+## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>支持的跨区域复制对
 
-Azure NetApp 文件卷复制当前提供以下固定区域对：  
+Azure NetApp 文件在不同的 [azure 区域对](/azure/best-practices-availability-paired-regions#azure-regional-pairs) 与非对之间进行复制。 Azure NetApp 文件卷复制当前在以下区域之间可用：  
 
-* 美国西部和美国东部
-* 美国西部2和美国东部 
-* 美国中南部和美国中部 
-* 美国中南部和美国东部
-* 美国中南部和美国东部2 
-* 美国东部和美国东部2  
-* 美国东部2和美国中部 
+### <a name="azure-regional-pairs"></a>Azure 区域对
+
+* 美国东部和美国西部
+* 美国东部2和美国中部
 * 澳大利亚东部和澳大利亚东南部
 * 加拿大中部和加拿大东部
-* 印度中部和印度南部
+* 印度南部和印度中部 
 * 德国中西部和德国北部
 * 日本东部和日本西部
 * 欧洲北部和欧洲西部
-* 东南亚和澳大利亚东部
-* 英国南部和德国中西部
 * 英国南部和英国西部
+
+### <a name="azure-regional-non-pairs"></a>Azure 区域非对
+
+*   美国西部2和美国东部
+*   美国中南部和美国中部
+*   美国中南部和美国东部
+*   美国中南部和美国东部2
+*   美国东部和美国东部2
+*   澳大利亚东部和东南亚 
+*   德国中西部和英国南部
 
 ## <a name="service-level-objectives"></a>服务级别目标
 

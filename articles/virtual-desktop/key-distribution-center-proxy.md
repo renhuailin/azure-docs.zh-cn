@@ -3,19 +3,24 @@ title: 设置 Kerberos 密钥发行中心 proxy Windows 虚拟桌面-Azure
 description: 如何将 Windows 虚拟桌面主机池设置为使用 Kerberos 密钥发行中心代理。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 01/30/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f123659941eaeb3b8ceeb6a999abf836eb9cf5ea
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 102ddc1c8937c66a92416ddb6d5f2d25f2a3c349
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798358"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219649"
 ---
-# <a name="configure-a-kerberos-key-distribution-center-proxy"></a>配置 Kerberos 密钥发行中心代理
+# <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>配置 Kerberos 密钥发行中心代理 (预览版) 
 
-本文介绍如何为主机池配置 Kerberos Key Distribiution Center (KDC) 代理。 此代理可让组织通过其企业边界之外的 Kerberos 进行身份验证。 例如，你可以使用 KDC 代理为外部客户端启用智能卡身份验证。
+> [!IMPORTANT]
+> 此功能目前处于公开预览状态。
+> 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+本文介绍如何为主机池配置 Kerberos 密钥发行中心 (KDC) 代理 (预览) 。 此代理可让组织通过其企业边界之外的 Kerberos 进行身份验证。 例如，你可以使用 KDC 代理为外部客户端启用智能卡身份验证。
 
 ## <a name="how-to-configure-the-kdc-proxy"></a>如何配置 KDC 代理
 
@@ -37,7 +42,7 @@ ms.locfileid: "98798358"
     > [!div class="mx-imgBorder"]
     > ![显示选定的 "高级" 选项卡的屏幕截图，并按步骤4中所述输入值。](media/advanced-tab-selected.png)
 
-5. 选择“保存”。 
+5. 选择“保存”。
 
 6. 所选主机池现在应开始发出 RDP 连接文件，其中包含输入的 kdcproxyname 字段。
 
