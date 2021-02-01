@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: ce0808bc53ae663b80da793bf33b5b371d881961
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131332"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222177"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保护 Kubernetes 工作负载
 
@@ -21,7 +21,7 @@ ms.locfileid: "98131332"
 
 在工作负荷保护中了解有关这些功能的详细信息 [使用 Kubernetes 许可控制的最佳做法](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
 
-如果启用 Azure Defender，安全中心会提供更多的容器安全功能。 具体而言：
+如果启用 Azure Defender，安全中心会提供更多的容器安全功能。 尤其是在下列情况下：
 
 - 针对[容器注册表的 Azure Defender](defender-for-container-registries-introduction.md) ，扫描容器注册表中的漏洞
 - 获取 K8s 群集的实时威胁检测警报 [Azure Defender For Kubernetes](defender-for-kubernetes-introduction.md)
@@ -62,7 +62,7 @@ Azure 安全中心包含一系列建议，这些建议可在安装 **适用于 K
         > [!TIP]
         > 建议包括在五个不同的安全控件中，在下一步中选择哪一种都不重要。
 
-    1. 从任何安全控件中选择建议，查看可在其上安装 "添加" 的资源。
+    1. 从任何安全控件中，选择 "建议" 以查看可用于安装外接程序的资源。
     1. 选择相关群集并进行 **修正**。
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="* * 的建议详细信息页应在群集上安装和启用适用于 Kubernetes 的 Azure 策略外接程序 * *":::

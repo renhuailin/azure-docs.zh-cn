@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3dfeca64804ceb522046e5c0dc10702575f60aad
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d366664981894933f9afb177e9147ccae6695872
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054579"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222160"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>获取 Azure Active Directory 的 AppSource 认证
 
@@ -106,7 +106,7 @@ ms.locfileid: "99054579"
 
 对于 Azure AD 集成，我们使用与社区 [&的 Microsoft Q](https://docs.microsoft.com/answers/topics/azure-active-directory.html) 来提供支持。
 
-我们强烈建议你先提问&第一次，浏览现有问题，查看是否有人在之前提出过你的问题。 请确保已将你的问题或评论标记为 [`[azure-active-directory]`](https://docs.microsoft.com/answers/topics/azure-active-directory.html) 。
+我们强烈建议你先提问 [&](https://docs.microsoft.com/answers/topics/azure-active-directory.html) 第一次，浏览现有问题，查看是否有人在之前提出过你的问题。 请确保已将你的问题或评论标记为 [`[azure-active-directory]`](https://docs.microsoft.com/answers/topics/azure-active-directory.html) 。
 
 使用以下评论部分提供反馈，帮助我们改进内容。
 

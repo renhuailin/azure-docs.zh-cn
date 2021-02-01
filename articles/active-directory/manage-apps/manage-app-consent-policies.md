@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f8fe027b350968a99aab5458fc2d7c1699fb50e3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 62a8b48d6b33a92b62bc4c3634794190585615b7
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052509"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222011"
 ---
 # <a name="manage-app-consent-policies"></a>管理应用同意策略
 
@@ -152,4 +152,4 @@ ID 以“microsoft-”开头的应用同意策略是内置策略。 其中的某
 * [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
 获取帮助或查找问题的答案：
-* [StackOverflow 上的 Azure AD](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+* [Microsoft Azure AD 上的&](https://docs.microsoft.com/answers/products/)
