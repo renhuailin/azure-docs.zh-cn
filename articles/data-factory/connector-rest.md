@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 数据工厂从/向 REST 终结点复制数据
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从云或本地 REST 源复制到支持的接收器数据存储，或者从支持的源数据存储复制到 REST 接收器。
+title: 使用 Azure 数据工厂从 REST 终结点复制数据以及向其中复制数据
+description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从云或本地 REST 源复制到受支持的接收器数据存储，或者从受支持的源数据存储复制到 REST 接收器。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,34 +11,34 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 1b3ab569666ea413ba36da0dc00f6c37336c4443
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3fc567b7d4b2efab03e5d93adda62839d47f7522
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931293"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223082"
 ---
-# <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 REST 终结点复制数据
+# <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据以及向其中复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure 数据工厂中的复制活动将数据从和复制到 REST 终结点。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 REST 终结点复制数据以及向其中复制数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
 
 此 REST 连接器、[HTTP 连接器](connector-http.md)和 [Web 表连接器](connector-web-table.md)之间的区别如下：
 
 - **REST 连接器** 专门支持从 RESTful API 复制数据； 
-- “HTTP 连接器”是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 在此 REST 连接器可用之前，可以偶尔使用 HTTP 连接器从 RESTful API 复制数据，这是受支持的，但 HTTP 连接器与 REST 连接器相比功能较少。
+- “HTTP 连接器”是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 在此 REST 连接器之前，你可能会使用 HTTP 连接器从 RESTful API 复制数据，这是受支持的，但与 REST 连接器相比功能比较少。
 - **Web 表连接器** 用于从 HTML 网页中提取表内容。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-可将数据从 REST 源复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 REST 接收器。 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
+可将数据从 REST 源复制到任何支持的接收器数据存储。 还可以将数据从任何受支持的源数据存储复制到 REST 接收器。 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
 
 具体而言，此泛型 REST 连接器支持：
 
-- 使用 **GET** 或 **POST** 方法从 rest 终结点复制数据并使用 **POST**、 **PUT** 或 **PATCH** 方法将数据复制到 rest 终结点。
-- 使用以下一种身份验证复制数据： **匿名**、 **基本**、 **AAD 服务主体** 和 **Azure 资源的托管标识**。
+- 使用 GET 或 POST 方法从 REST 终结点复制数据，以及使用 POST、PUT 或 PATCH 方法将数据复制到 REST 终结点。
+- 使用以下某种身份验证复制数据：“匿名”、“基本”、“AAD 服务主体”和“Azure 资源的托管标识”。   
 - REST API 中的 **[分页](#pagination-support)** 。
-- 对于 REST 为源，按原样复制 REST JSON [响应或](#export-json-response-as-is) 使用 [架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)对其进行分析。 仅支持 **JSON** 格式的响应有效负载。
+- 对于作为源的 REST，[按原样](#export-json-response-as-is)复制 REST JSON 响应，或使用[架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)对其进行分析。 仅支持 **JSON** 格式的响应有效负载。
 
 > [!TIP]
 > 若要在数据工厂中配置 REST 连接器之前测试数据检索请求，请了解标头和正文的 API 规范要求。 可以使用 Postman 或 Web 浏览器等工具进行验证。
@@ -57,7 +57,7 @@ ms.locfileid: "96931293"
 
 REST 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **RestService**  。 | 是 |
 | url | REST 服务的基 URL。 | 是 |
@@ -69,7 +69,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **Basic**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | userName | 用于访问 REST 终结点的用户名。 | 是 |
 | password | 用户（userName 值）的密码  。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中  。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -102,13 +102,13 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **AadServicePrincipal**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
 | aadResourceId | 指定请求授权的 AAD 资源，例如 `https://management.core.windows.net`。| 是 |
-| azureCloudType | 对于服务主体身份验证，请指定 AAD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下使用数据工厂的云环境。 | 否 |
+| azureCloudType | 对于服务主体身份验证，请指定 AAD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下，使用数据工厂的云环境。 | 否 |
 
 **示例**
 
@@ -172,12 +172,12 @@ REST 链接服务支持以下属性：
 
 若要从 REST 复制数据，支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **RestResource**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 HTTP 连接器从以下组合 URL 复制数据：`[URL specified in linked service]/[relative URL specified in dataset]`。 | 否 |
 
-如果在 `requestMethod` 数据集中设置、和，则 `additionalHeaders` `requestBody` `paginationRules` 仍支持原样，但建议在活动中使用新模型。
+如果你在数据集中设置了 `requestMethod`、`additionalHeaders`、`requestBody` 和 `paginationRules`，我们仍按原样支持该数据集，但建议你以后在活动中使用新模型。
 
 **示例：**
 
@@ -200,7 +200,7 @@ REST 链接服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-本部分提供 REST 源和接收器支持的属性列表。
+本部分提供了 REST 源和接收器支持的属性列表。
 
 有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)。 
 
@@ -208,10 +208,10 @@ REST 链接服务支持以下属性：
 
 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **RestSource**。 | 是 |
-| requestMethod | HTTP 方法。 允许的值为 **GET** (默认) 和 **POST**。 | 否 |
+| requestMethod | HTTP 方法。 允许的值为 GET（默认值）和 POST 。 | 否 |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
 | requestBody | HTTP 请求的正文。 | 否 |
 | paginationRules | 用于撰写下一页请求的分页规则。 有关详细信息，请参阅[分页支持](#pagination-support)部分。 | 否 |
@@ -293,21 +293,21 @@ REST 链接服务支持以下属性：
 ]
 ```
 
-### <a name="rest-as-sink"></a>REST 用作接收器
+### <a name="rest-as-sink"></a>REST 作为接收器
 
 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的 **type** 属性必须设置为 **RestSink**。 | 是 |
-| requestMethod | HTTP 方法。 允许的值为 **POST** (默认值) 、 **PUT** 和 **PATCH**。 | 否 |
+| type | 复制活动接收器的 type 属性必须设置为 RestSink 。 | 是 |
+| requestMethod | HTTP 方法。 允许的值为 POST（默认值）、PUT 和 PATCH。 | 否 |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
-| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 此值是获取响应的超时值，而不是写入数据的超时值。 默认值为 00:01:40  。  | 否 |
-| requestInterval | 不同请求之间的间隔时间（以毫秒为单位）。 请求间隔值应为 [10，60000] 之间的数字。 |  否 |
-| httpCompressionType | 使用最佳压缩级别发送数据时要使用的 HTTP 压缩类型。 允许的值为 **none** 和 **gzip**。 | 否 |
-| writeBatchSize | 每批向 REST 接收器写入的记录数。 默认值为 10000。 | 否 |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 此值是获取响应时的超时，而不是写入数据时的超时。 默认值为 00:01:40  。  | 否 |
+| requestInterval | 不同请求之间的间隔时间（以毫秒为单位）。 请求时间间隔值应当为 [10, 60000] 范围中的数字。 |  否 |
+| httpCompressionType | 使用最佳压缩级别发送数据时要使用的 HTTP 压缩类型。 允许的值为 none 和 gzip。 | 否 |
+| writeBatchSize | 每批向 REST 接收器中写入的记录数。 默认值为 10000。 | 否 |
 
-REST 连接器 as sink 适用于接受 JSON 的 REST Api。 数据将在 JSON 中以下列模式发送。 根据需要，可以使用复制活动 [架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping) 来改变源数据的形状，以符合 REST API 的预期负载。
+REST 连接器作为接收器时适用于接受 JSON 的 REST API。 数据将采用 JSON 以下列模式发送。 根据需要，可以使用复制活动[架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)来重新调整源数据的形式，使之符合 REST API 预期的有效负载。
 
 ```json
 [
@@ -355,7 +355,7 @@ REST 连接器 as sink 适用于接受 JSON 的 REST Api。 数据将在 JSON �
 
 ## <a name="pagination-support"></a>分页支持
 
-通常，在从 REST Api 复制数据时，REST API 会根据合理的数目限制单个请求的响应负载大小;在返回大量数据时，它会将结果拆分为多个页面，并要求调用方发送连续请求以获取结果的下一页。 一般情况下，一个页面的请求是动态的，由上一页响应中返回的信息构成。
+从 REST API 复制数据时，REST API 通常会将单个请求的响应有效负载大小限制在合理的数字以下；若要返回大量的数据，它会将结果拆分成多个页面，并要求调用方发送连续的请求来获取下一页结果。 一般情况下，一个页面的请求是动态的，由上一页响应中返回的信息构成。
 
 此泛型 REST 连接器支持以下分页模式： 
 

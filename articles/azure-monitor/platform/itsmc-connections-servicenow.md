@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 221678da819d32539d0078b72a87c61851ed3e8f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: cc4f961c399e9ac5e853085106924584eb3935d0
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089252"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223383"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>连接 ServiceNow 与 IT 服务管理连接器
 
@@ -29,10 +29,11 @@ ms.locfileid: "99089252"
 
 ### <a name="oauth-setup"></a>OAuth 设置
 
-ServiceNow 支持的版本包括奥兰多、纽约、马德里、伦敦、Kingston、雅加达、伊斯坦布尔、赫尔辛基和 Geneva。
+ServiceNow 支持的版本包括巴黎、奥兰多、纽约、马德里、伦敦、Kingston、雅加达、伊斯坦布尔、赫尔辛基和 Geneva。
 
 ServiceNow 管理员必须为其 ServiceNow 实例生成客户端 ID 和客户端密码。 根据需要查看以下信息：
 
+- [设置巴黎的 OAuth](https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [为奥兰多设置 OAuth](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [为纽约设置 OAuth](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [为马德里设置 OAuth](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

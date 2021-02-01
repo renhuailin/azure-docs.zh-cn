@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 03/18/2020
-ms.openlocfilehash: 2a7d77579eaebd3ee951d0184e25937783420806
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/01/2021
+ms.openlocfilehash: 74c0dbaaa511e2fd2f20a3c245a561a177dd2b9a
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325190"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223434"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>使用客户管理的密钥进行 Azure SQL 透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -137,9 +137,9 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 
 - 如果超过 8 小时后还原了密钥访问权限，数据库将无法自动修复，并且要使数据库恢复正常运行，需要在门户上执行其他步骤，并且可能会花费大量时间，具体取决于数据库的大小。 数据库恢复联机后，先前配置的服务器级别设置（例如 [故障转移组](auto-failover-group-overview.md)配置、时间点还原历史记录和标记）**将丢失**。 因此，建议实现一个通知系统，以便在 8 小时内识别和解决基础密钥访问问题。
 
-下面是一个视图，其中介绍了在门户中将无法访问的数据库重新联机所需的其他步骤。
+下面介绍在门户上使不可访问的数据库重新联机所需的其他步骤。
 
-![TDE BYOK 无法访问数据库](./media/transparent-data-encryption-byok-overview/customer-managed-tde-inaccessible-database.jpg)
+![TDE BYOK 不可访问的数据库](./media/transparent-data-encryption-byok-overview/customer-managed-tde-inaccessible-database.jpg)
 
 
 ### <a name="accidental-tde-protector-access-revocation"></a>意外的 TDE 保护器访问权限吊销
@@ -179,17 +179,15 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 
 若要缓解此问题，请对目标服务器运行 [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet，或对目标托管实例运行 [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey)，以返回可用密钥的列表并标识缺少的密钥。 为了确保可以还原所有备份，请确保要还原的目标服务器有权访问全部所需的密钥。 这些密钥无需标记为 TDE 保护器。
 
-若要详细了解 SQL 数据库的备份恢复，请参阅[恢复 SQL 数据库中的数据库](recovery-using-backups.md)。 若要详细了解 Azure Synapse Analytics 中专用 SQL 池的备份恢复，请参阅 [恢复专用 sql 池](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md)。 有关使用 SQL 托管实例进行 SQL Server 本机备份/还原，请参阅[快速入门：将数据库还原到 SQL 托管实例](../managed-instance/restore-sample-database-quickstart.md)
+若要详细了解 SQL 数据库的备份恢复，请参阅[恢复 SQL 数据库中的数据库](recovery-using-backups.md)。 若要详细了解 Azure Synapse Analytics 中专用 SQL 池的备份恢复，请参阅[恢复专用 SQL 池](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md)。 有关使用 SQL 托管实例进行 SQL Server 本机备份/还原，请参阅[快速入门：将数据库还原到 SQL 托管实例](../managed-instance/restore-sample-database-quickstart.md)
 
 有关日志文件的其他注意事项：备份的日志文件仍会使用原始 TDE 保护器保持加密，即使 TDE 保护器已轮换，并且数据库正在使用新的 TDE 保护器。  还原时，需要使用这两个密钥来还原数据库。  如果日志文件使用 Azure Key Vault 中存储的 TDE 保护器，则还原时需要此密钥，即使数据库同时已改用服务托管的 TDE。
 
 ## <a name="high-availability-with-customer-managed-tde"></a>使用客户管理的 TDE 实现高可用性
 
-即使没有为服务器配置异地冗余，我们也强烈建议将服务器配置为使用两个不同区域中的包含相同密钥材料的两个不同 Key Vault。 若要实现此目的，可以使用与服务器共置在同一区域中的主要 Key Vault 来创建一个 TDE 保护器，并将密钥克隆到位于不同 Azure 区域中的 Key Vault，以便在主要 Key Vault 遇到服务中断时，服务器能够访问另一个 Key Vault，同时让数据库保持正常运行。
+即使没有为服务器配置异地冗余，我们也强烈建议将服务器配置为使用两个不同区域中的包含相同密钥材料的两个不同 Key Vault。 不应将另一区域的辅助 Key Vault 中的密钥标记为 TDE 保护器，甚至不允许这样做。 如果发生了影响主要 Key Vault 的服务中断，只有在满足上述条件时，系统才会自动切换到辅助 Key Vault 中具有相同指纹的另一个已链接密钥（如果存在）。 请注意，如果 TDE 保护程序由于吊销访问权限而无法访问，或者由于删除了密钥或密钥保管库，则不会发生此开关，因为这可能表明客户有意要限制服务器访问密钥。在密钥保管库外创建密钥，并将其导入到这两个密钥保管库中，可以在不同区域中的两个密钥保管库中提供相同的密钥材料。 
 
-使用 Backup-AzKeyVaultKey cmdlet 从主要 Key Vault 检索加密格式的密钥，然后使用 Restore-AzKeyVaultKey cmdlet 并指定第二个区域中的 Key Vault 来克隆密钥。 或者，使用 Azure 门户来备份和还原密钥。 不应将另一区域的辅助 Key Vault 中的密钥标记为 TDE 保护器，甚至不允许这样做。
-
-如果发生了影响主要 Key Vault 的服务中断，只有在满足上述条件时，系统才会自动切换到辅助 Key Vault 中具有相同指纹的另一个已链接密钥（如果存在）。 请注意，如果由于撤销了访问权限或者由于删除了密钥或 Key Vault 而无法访问 TDE 保护器，则不会发生这种切换，因为这可能意味着客户有意地想要限制服务器访问密钥。
+另外，还可以通过使用与服务器相同的区域中的主密钥保管库生成密钥，并将密钥克隆到不同 Azure 区域中的密钥保管库来实现此目的。 使用 [AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Backup-AzKeyVaultKey) cmdlet 从主密钥保管库中检索加密格式的密钥，然后使用 [AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey) cmdlet 并在第二个区域中指定密钥保管库来克隆该密钥。 或者，使用 Azure 门户来备份和还原密钥。 仅允许在同一 Azure 订阅和 [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)内的密钥保管库之间执行密钥备份/还原操作。  
 
 ![单服务器高可用性](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 

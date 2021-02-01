@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0e8d5fa14678a2a26234dfcd73f4a50af62ca7aa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e4d4b7e01eb5799bee604c05e1660a7a45188763
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012931"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223334"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>使用流量管理器集成在 Azure 应用服务中配置自定义域名
 
@@ -75,9 +75,9 @@ ms.locfileid: "96012931"
 
 ### <a name="what-about-root-domains"></a>根域的情况如何？
 
-由于流量管理器只支持使用 CNAME 记录的自定义域映射，并且由于 DNS 标准不支持将 CNAME 记录用于映射根域（例如，contoso.com），流量管理器不支持到根域的映射。 若要暂时避开此问题，请从应用级别使用 URL 重定向。 例如，在 ASP.NET Core 中，可以使用 [URL 重写](/aspnet/core/fundamentals/url-rewriting)。 然后，使用流量管理器对子域 (www.contoso.com) 进行负载均衡。
+由于流量管理器只支持使用 CNAME 记录的自定义域映射，并且由于 DNS 标准不支持将 CNAME 记录用于映射根域（例如，contoso.com），流量管理器不支持到根域的映射。 若要暂时避开此问题，请从应用级别使用 URL 重定向。 例如，在 ASP.NET Core 中，可以使用 [URL 重写](/aspnet/core/fundamentals/url-rewriting)。 然后，使用流量管理器对子域 (www.contoso.com) 进行负载均衡。 另一种方法是，可以 [创建域名顶点的别名记录，以便引用 Azure 流量管理器配置文件](https://docs.microsoft.com/azure/dns/tutorial-alias-tm)。 例如 contoso.com。 可以将 Azure DNS 配置为直接从区域引用流量管理器配置文件，而不使用重定向服务。 
 
-对于高可用性方案，可以通过创建多个从根域指向每个应用副本 IP 地址的“A 记录”，从而在不使用流量管理器的情况下实现容错 DNS 设置。 然后，[将同一根域映射到所有应用副本](app-service-web-tutorial-custom-domain.md#map-an-a-record)。 由于同一域名无法映射到同一区域中的两个不同应用，此设置仅在应用副本位于不同区域时有效。
+对于高可用性方案，可以通过创建从根域指向每个应用副本的 IP 地址的多个 *a 记录* ，来实现负载平衡 DNS 设置，而无需流量管理器。 然后，[将同一根域映射到所有应用副本](app-service-web-tutorial-custom-domain.md#map-an-a-record)。 由于同一域名无法映射到同一区域中的两个不同应用，此设置仅在应用副本位于不同区域时有效。
 
 ## <a name="enable-custom-domain"></a>启用自定义域
 在域名称的记录传播完成后，使用浏览器验证自定义域名是否解析为应用服务应用。

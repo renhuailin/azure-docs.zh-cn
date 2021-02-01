@@ -11,13 +11,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/23/2020
-ms.openlocfilehash: 204399186ae229324f9dc478e0ef58a173060013
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 02/01/2021
+ms.openlocfilehash: d11125ed00491f87844c7b0b344473825ad52a99
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638170"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223468"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,10 +56,10 @@ ms.locfileid: "92638170"
 
 此连接器不支持其他应用程序类型，如“财务”、“运营”和“人才”。
 
-此 Dynamics 连接器基于 [Dynamics XRM 工具](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)构建。
-
 >[!TIP]
 >若要从 Dynamics 365 Finance and Operations 复制数据，可以使用 [Dynamics AX 连接器](connector-dynamics-ax.md)。
+
+此 Dynamics 连接器基于 [Dynamics XRM 工具](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)构建。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -172,7 +172,7 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>带有 IFD 的本地 Dynamics 365 和 Dynamics CRM
 
-与联机 Dynamics 进行对比的其他属性是 **hostName** 和 **port** 。
+与联机 Dynamics 进行对比的其他属性是 **hostName** 和 **port**。
 
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
@@ -326,7 +326,7 @@ Dynamics 链接服务支持以下属性。
 | writeBehavior | 操作的写入行为。 值必须是“Upsert”。 | 是 |
 | alternateKeyName | 在实体上定义的用于执行更新插入的备用密钥名称。 | 否。 |
 | writeBatchSize | 每批中写入到 Dynamics 的数据行计数。 | 否。 默认值为 10。 |
-| ignoreNullValues | 在执行写入操作期间是否忽略输入数据中的 NULL 值（键字段除外）。<br/><br/>有效值为 **TRUE** 和 **FALSE** ：<ul><li>**TRUE** ：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。</li><li>**FALSE** ：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL 值。 执行插入操作时插入 NULL 值。</li></ul> | 否。 默认值为 **FALSE** 。 |
+| ignoreNullValues | 在执行写入操作期间是否忽略输入数据中的 NULL 值（键字段除外）。<br/><br/>有效值为 **TRUE** 和 **FALSE**：<ul><li>**TRUE**：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。</li><li>**FALSE**：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL 值。 执行插入操作时插入 NULL 值。</li></ul> | 否。 默认值为 **FALSE**。 |
 
 >[!NOTE]
 >接收器“writeBatchSize”和 Dynamics 接收器的复制活动“[parallelCopies](copy-activity-performance-features.md#parallel-copy)” 的默认值都是 10。 因此，默认情况下会将 100 条记录并发提交到 Dynamics。
@@ -397,7 +397,7 @@ Dynamics 链接服务支持以下属性。
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> Dynamics 数据类型 **AttributeType.CalendarRules** 、 **AttributeType.MultiSelectPicklist** 和 **AttributeType.PartyList** 不受支持。
+> Dynamics 数据类型 **AttributeType.CalendarRules**、**AttributeType.MultiSelectPicklist** 和 **AttributeType.PartyList** 不受支持。
 
 ## <a name="writing-data-to-a-lookup-field"></a>将数据写入查找字段
 
@@ -416,12 +416,12 @@ Dynamics 链接服务支持以下属性。
 - 类型为 **GUID** 的 **CustomerField** 列，它是 Dynamics 中目标实体的主键值。
 - 类型为 **String** 的 **Target** 列，它是目标实体的逻辑名称。
 
-另外假设你希望将此类数据复制到类型为 **Customer** 的接收器 Dynamics 实体字段 **CustomerField** 。
+另外假设你希望将此类数据复制到类型为 **Customer** 的接收器 Dynamics 实体字段 **CustomerField**。
 
 在复制活动列映射中，如下所述映射这两个列：
 
-- 将 **CustomerField** 映射到 **CustomerField** 。 此映射是标准字段映射。
-- 将 **Target** 映射到 **CustomerField\@EntityReference** 。 接收器列是表示实体引用的虚拟列。 请在映射中输入此类字段名称，因为不可通过导入架构来显示它们。
+- 将 **CustomerField** 映射到 **CustomerField**。 此映射是标准字段映射。
+- 将 **Target** 映射到 **CustomerField\@EntityReference**。 接收器列是表示实体引用的虚拟列。 请在映射中输入此类字段名称，因为不可通过导入架构来显示它们。
 
 ![Dynamics 查找字段列映射](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
 

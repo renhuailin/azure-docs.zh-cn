@@ -10,13 +10,13 @@ ms.service: multiple
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/11/2019
-ms.openlocfilehash: bb9f2673eb080ee2919297fcbb5199f99d176bce
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/29/2021
+ms.openlocfilehash: 1d9e43aafbe1f9fdd48596c54138075e23a25590
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013677"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222910"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB (SQL API) 中复制和转换数据
 
@@ -160,6 +160,7 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 | query |指定要读取数据的 Azure Cosmos DB 查询。<br/><br/>示例：<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行此 SQL 语句：`select <columns defined in structure> from mycollection` |
 | preferredRegions | 从 Cosmos DB 检索数据时要连接到的区域的首选列表。 | 否 |
 | pageSize | 查询结果的每页文档数。 默认值为“-1”，表示使用服务端动态页大小，最大为 1000。 | 否 |
+| detectDatetime | 是否从文档中的字符串值检测日期时间。 允许的值是：true（默认）、false。 | 否 |
 
 如果使用“DocumentDbCollectionSource”类型的源，则仍按原样提供支持以实现后向兼容性。 建议今后使用新模型，新模型提供了更丰富的功能来从 Cosmos DB 复制数据。
 
@@ -295,15 +296,18 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 * None：不会对集合执行任何操作。
 * 重新创建：将删除并重新创建集合
 
-**批大小**：控制每个 Bucket 中写入的行数。 较大的批大小可提高压缩比并改进内存优化，但在缓存数据时可能会导致内存不足异常。
+**批大小**：一个整数，表示每个批处理中 Cosmos DB 集合中写入的对象数。 通常，从默认的批大小开始便已足够。 若要进一步优化此值，请注意：
+
+- Cosmos DB 将单个请求的大小限制为 2MB。 公式为 "请求大小 = 单文档大小 * 批大小"。 如果遇到错误，指出 "请求太大"，请减小 "批大小" 值。
+- 批大小越大，就可以获得更好的吞吐量，同时请确保分配足够的 ru 来提供工作负荷。
 
 **分区键：** 输入一个字符串，该字符串表示集合的分区键。 示例： ```/movies/title```
 
 **吞吐量：** 为每次执行此数据流时要应用到 CosmosDB 集合的 ru 数设置一个可选值。 最小值为400。
 
-**写入吞吐量预算：** 一个整数，表示要分配给大容量引入 Spark 作业的 ru 数。 此数目超出分配给集合的总吞吐量。
+**写入吞吐量预算：** 一个整数，表示要分配给此数据流写操作的 ru，超出分配给集合的总吞吐量。
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

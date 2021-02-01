@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 00b220e07dc3fa7580100d6d36108c14fe598d40
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: fa0017b0633d856906609818dd56b5971b1879a7
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572181"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222792"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>对在 Azure 区域之间移动 Azure VM 的支持
 
@@ -154,7 +154,7 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/managed
 --- | --- | ---
 NIC | 支持 | 指定目标区域中的一个现有资源，或者在准备过程中创建一个新资源。 
 内部负载均衡器 | 支持 | 指定目标区域中的一个现有资源，或者在准备过程中创建一个新资源。  
-公共负载均衡器 | 目前不支持 | 指定目标区域中的一个现有资源，或者在准备过程中创建一个新资源。  
+公共负载均衡器 | 支持 | 指定目标区域中的一个现有资源，或者在准备过程中创建一个新资源。  
 公共 IP 地址 | 支持 | 指定目标区域中的一个现有资源，或者在准备过程中创建一个新资源。<br/><br/> 公共 IP 地址是特定于区域的，在移动后不会保留在目标区域中。 修改目标位置中的网络设置（包括负载均衡规则）时，请记住这一点。
 网络安全组 | 支持 | 指定目标区域中的一个现有资源，或者在准备过程中创建一个新资源。  
 保留（静态）IP 地址 | 支持 | 目前无法配置此项。 该值默认为源值。 <br/><br/> 如果源 VM 上的 NIC 具有静态 IP 地址，并且目标子网具有相同的可用 IP 地址，则会将它分配给目标 VM。<br/><br/> 如果目标子网没有相同的 IP 地址可用，则针对 VM 启动移动操作会失败。

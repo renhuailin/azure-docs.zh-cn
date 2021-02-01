@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: 12630e5e4b332d875a75c59d2fdafecd23be0b17
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.date: 01/29/2020
+ms.openlocfilehash: 8071b0fb08f6456b4eb59a3dae875ab0c90ab64d
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005408"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223486"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Synapse Analytics 中
 
@@ -102,7 +102,7 @@ ms.locfileid: "97005408"
 
     a. 单击“+ 创建新连接”来添加连接
 
-    b. 从库中选择 " **Azure Synapse Analytics** "，并选择 " **继续**"。
+    b. 从库中选择“Azure Synapse Analytics”，然后选择“继续” 。
 
     ![选择 Azure Synapse Analytics](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "97005408"
 
     b. 在“新建链接服务”页上，选择你的存储帐户，然后选择“创建”以部署链接服务 。
 
-    c. 在“高级设置”部分，取消选择“使用默认类型”选项，然后选择“下一步”  。
+    c. 取消选中 " **使用类型默认值** " 选项，然后选择 " **下一步**"。
 
     ![配置 PolyBase](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 

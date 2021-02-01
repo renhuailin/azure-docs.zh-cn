@@ -1,0 +1,7 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 存储/Data Box 联机传输
+      tocHref: /azure/databox-gateway/
+      topicHref: /azure/databox-online/index

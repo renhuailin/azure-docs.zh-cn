@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6e2ac9d80c1c3bf76b4a3d4c44f0654100670f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82247ae9817e5ff2e26d0862230654021876406b
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567412"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223253"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的资源角色
 
@@ -55,11 +55,11 @@ ms.locfileid: "89567412"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 在左侧菜单中单击“资源角色”。****
+1. 在左侧菜单中单击“资源角色”。
 
-1. 单击“添加资源角色”打开“将资源角色添加到访问包”页。****
+1. 单击“添加资源角色”打开“将资源角色添加到访问包”页。
 
     ![访问包 - 添加资源角色](./media/entitlement-management-access-package-resources/resource-roles-add.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "89567412"
     | Microsoft 365 | 未启用 Teams 的 Microsoft 365 组。 用于公司内部和外部用户之间的协作。 |
     | 组 | 已启用 Teams 的 Microsoft 365 组。 用于公司内部和外部用户之间的协作。 |
 
-1. 在“角色”列表中，选择“所有者”或“成员”。************
+1. 在“角色”列表中，选择“所有者”或“成员”。
 
     我们通常会选择“成员”角色。 如果选择“所有者”角色，则允许用户添加或删除其他成员或所有者。
 
@@ -122,7 +122,7 @@ ms.locfileid: "89567412"
 
 - 应用程序还可能已将组分配到其角色。  可以选择添加组来取代访问包中的应用程序角色，但是，用户在“我的访问权限”门户中看不到作为访问包的一部分的应用程序。
 
-1. 在“将资源角色添加到访问包”页上，单击“应用程序”打开“选择应用程序”窗格。********
+1. 在“将资源角色添加到访问包”页上，单击“应用程序”打开“选择应用程序”窗格。
 
 1. 选择要包含在访问包中的应用程序。
 
@@ -130,7 +130,7 @@ ms.locfileid: "89567412"
 
 1. 单击“选择”。
 
-1. 在“角色”列表中，选择应用程序角色。****
+1. 在“角色”列表中，选择应用程序角色。
 
     ![访问包 - 为应用程序添加资源角色](./media/entitlement-management-access-package-resources/application-role.png)
 
@@ -142,15 +142,21 @@ ms.locfileid: "89567412"
 
 为用户分配访问包时，Azure AD 可自动为用户分配对 SharePoint Online 站点或 SharePoint Online 站点集合的访问权限。
 
-1. 在“将资源角色添加到访问包”页上，单击“SharePoint 站点”打开“选择 SharePoint Online 站点”窗格。********
+1. 在“将资源角色添加到访问包”页上，单击“SharePoint 站点”打开“选择 SharePoint Online 站点”窗格。
 
-1. 选择要包含在访问包中的 SharePoint Online 站点。
+    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-portal.png" alt-text="访问包-添加资源角色-选择 SharePoint 站点-门户视图":::
+
+1. 如果为 SharePoint 启用了 [多个地域](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) ，请选择要从中选择站点的环境。
+    
+    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-select.png" alt-text="访问包-添加资源角色-选择 SharePoint 多地理网站":::
+
+1. 如果未启用多地域，则无需选择环境。 选择要包含在访问包中的 SharePoint Online 站点。
 
     ![访问包 - 添加资源角色 - 选择 SharePoint Online 站点](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 
 1. 单击“选择”。
 
-1. 在“角色”列表中，选择 SharePoint Online 站点角色。****
+1. 在“角色”列表中，选择 SharePoint Online 站点角色。
 
     ![访问包 - 为 SharePoint Online 站点添加资源角色](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
@@ -164,13 +170,13 @@ ms.locfileid: "89567412"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 在左侧菜单中单击“资源角色”。****
+1. 在左侧菜单中单击“资源角色”。
 
 1. 在资源角色列表中，找到要删除的资源角色。
 
-1. 依次单击省略号 (**...**)、“删除资源角色”。****
+1. 依次单击省略号 (**...**)、“删除资源角色”。
 
     删除此资源角色后，在访问包中具有现有分配的任何用户对此资源角色的访问权限将自动吊销。
 

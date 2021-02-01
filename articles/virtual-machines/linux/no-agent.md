@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: edbcabfe4d0b633a784163562f52b303120916ca
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1c9ac872587804adbd9e62a3dc3ef3daed9e0c25
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685050"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223045"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>创建不含预配代理的通用映像
 
@@ -154,7 +154,7 @@ wireserver_conn.close()
 
 如果 VM 未安装或未提供 Python，则可通过以下步骤以编程方式重现以上脚本逻辑：
 
-1. 通过分析来自 WireServer 的响应检索 `ContainerId` 和 `InstanceId`：`curl -X GET -H 'x-ms-version: 2012-11-30' http://$168.63.129.16/machine?comp=goalstate`。
+1. 通过分析来自 WireServer 的响应检索 `ContainerId` 和 `InstanceId`：`curl -X GET -H 'x-ms-version: 2012-11-30' http://168.63.129.16/machine?comp=goalstate`。
 
 2. 构造以下 XML 数据，注入在上面的步骤分析的 `ContainerId` 和 `InstanceId`：
    ```xml

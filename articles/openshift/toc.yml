@@ -16,6 +16,10 @@
       href: tutorial-delete-cluster.md
 - name: 操作指南
   items:
+    - name: 群集操作
+      items:
+        - name: 升级 ARO 群集
+          href: howto-upgrade.md
     - name: 网络
       items:
         - name: 创建专用 ARO 群集
@@ -28,6 +32,8 @@
           href: howto-create-a-storageclass.md
         - name: 使用内置容器注册表
           href: built-in-container-registry.md
+        - name: 使用 Azure 容器注册表
+          href: howto-use-acr-with-aro.md
     - name: 安全性和身份验证
       items:
         - name: 配置 Azure Active Directory 身份验证 (CLI)

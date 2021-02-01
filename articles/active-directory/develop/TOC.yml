@@ -68,6 +68,8 @@
           href: quickstart-v2-netcore-daemon.md
         - name: Python 控制台守护程序
           href: quickstart-v2-python-daemon.md
+        - name: Java 控制台守护程序
+          href: quickstart-v2-java-daemon.md
 - name: 教程
   items:
     - name: 单页应用 (SPA)

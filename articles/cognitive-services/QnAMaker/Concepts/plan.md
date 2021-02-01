@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e523b35afca33213a40060819a1293e94d413b00
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353164"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222859"
 ---
 # <a name="plan-your-qna-maker-app"></a>规划 QnA Maker 应用
 
@@ -94,13 +94,13 @@ ms.locfileid: "96353164"
 
 ### <a name="ingest-data-sources"></a>引入数据源
 
-您可以使用以下引入 [数据源](../index.yml) 之一来创建知识库：
+您可以使用以下引入 [数据源](../Concepts/data-sources-and-content.md) 之一来创建知识库：
 
 * 公共 URL
 * 私有 SharePoint URL
 * 文件
 
-引入过程会将 [支持的内容类型](../index.yml) 转换为 markdown。 对 *答案* 的所有进一步编辑都是通过 markdown 来完成的。 创建知识库后，可以在 QnA Maker 门户中使用[富文本创作](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)来编辑[QnA 对](question-answer-set.md)。
+引入过程会将 [支持的内容类型](../reference-document-format-guidelines.md) 转换为 markdown。 对 *答案* 的所有进一步编辑都是通过 markdown 来完成的。 创建知识库后，可以在 QnA Maker 门户中使用[富文本创作](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)来编辑[QnA 对](question-answer-set.md)。
 
 ### <a name="data-format-considerations"></a>数据格式注意事项
 
@@ -124,7 +124,7 @@ ms.locfileid: "96353164"
 
 协作者可以是共享知识库应用程序的完整开发堆栈的其他开发人员，也可以仅编写该知识库。
 
-知识库创作支持在 Azure 门户中应用的多个 [基于角色的访问权限](../index.yml) ，以限制合作者的能力范围。
+知识库创作支持在 Azure 门户中应用的多个 [基于角色的访问权限](../reference-role-based-access-control.md) ，以限制合作者的能力范围。
 
 ## <a name="integration-with-client-applications"></a>与客户端应用程序集成
 

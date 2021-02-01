@@ -30,6 +30,12 @@
       href: oracle-reference-architecture.md
     - name: 设计 Oracle DB
       href: oracle-design.md
+    - name: Oracle Database 备份策略
+      href: oracle-database-backup-strategies.md
+    - name: 使用 Azure 存储的 Oracle Database 备份
+      href: oracle-database-backup-azure-storage.md
+    - name: 使用 Azure 备份的 Oracle Database 备份
+      href: oracle-database-backup-azure-backup.md
     - name: Oracle 灾难恢复选项
       href: oracle-disaster-recovery.md
 - name: 操作指南

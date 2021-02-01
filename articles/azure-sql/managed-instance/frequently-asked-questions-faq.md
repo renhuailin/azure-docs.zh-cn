@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 5d15947254d80d97b6a241a717fb7d33a3d5ccb5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d3f859590b30aaeeaebaed7b1f2f85e1a86a92c9
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724010"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223400"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题解答 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -363,7 +363,7 @@ SQL 托管实例负责对管理端口设置规则。 这通过名为[服务辅�
 
 **是否可以执行 DNS 刷新？**
 
-目前我们不提供刷新 SQL 托管实例 DNS 服务器配置的功能。
+是的。 请参阅 [在 SQL 托管实例虚拟群集上同步虚拟网络 DNS 服务器设置](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md)。
 
 DNS 配置最终会刷新：
 

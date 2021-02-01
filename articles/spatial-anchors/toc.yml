@@ -83,6 +83,8 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: 在 C++/WinRT 中
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
+    - name: 在没有定位点会话的情况下使用粗略重新局部化
+      href: how-tos/use-coarse-relocalization-without-anchor-session.md
     - name: 项目设置
       items:
         - name: C++/WinRT
