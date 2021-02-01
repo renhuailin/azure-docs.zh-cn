@@ -1,4 +1,4 @@
-- name: 使用帮助文档
+- name: 用户帮助文档
   href: index.yml
 - name: 双重验证帮助
   items:
@@ -50,6 +50,8 @@
       href: auth-app-android-china.md
     - name: 备份并恢复帐户
       href: user-help-auth-app-backup-recovery.md
+    - name: 将密码导入 Authenticator 应用
+      href: user-help-authenticator-app-import-passwords.md
     - name: 常见问题解答
       href: user-help-auth-app-faq.md
 - name: “我的帐户”门户帮助

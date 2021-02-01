@@ -698,10 +698,12 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: 创建翻转窗口触发器依赖项
           href: tumbling-window-trigger-dependency.md
-    - name: 沿袭
+    - name: 数据目录与治理
       items:
         - name: 将数据工厂连接到 Azure Purview
           href: connect-data-factory-to-azure-purview.md
+        - name: 使用 Purview 发现和探索 ADF 中的数据
+          href: how-to-discover-explore-purview-data.md
     - name: 方案
       items:
         - name: Data Lake 与 EDW 的数据迁移
@@ -796,10 +798,6 @@
       href: /python/api/overview/azure/datafactory
 - name: 资源
   items:
-    - name: 数据流 - 预留容量概述
-      href: data-flow-reserved-capacity-overview.md
-    - name: 数据流 - 了解预留费用
-      href: data-flow-understand-reservation-charges.md
     - name: 白皮书
       href: whitepapers.md
     - name: 常见问题解答

@@ -66,14 +66,20 @@
           href: automation-create-standalone-account.md
         - name: 使用资源管理器模板创建自动化帐户
           href: quickstart-create-automation-account-template.md
+        - name: 运行方式帐户
+          items:
+            - name: 创建运行方式帐户
+              href: create-run-as-account.md
+            - name: 删除运行方式帐户
+              href: delete-run-as-account.md
+            - name: 管理运行方式帐户
+              href: manage-runas-account.md
         - name: 使用 Amazon Web Services 配置身份验证
           href: automation-config-aws-account.md
         - name: 配置使用 Azure AD 进行的身份验证
           href: automation-use-azure-ad.md
         - name: 管理自动化服务使用的 DNS 记录
           href: how-to/automation-region-dns-records.md
-        - name: 管理自动化运行方式帐户
-          href: manage-runas-account.md
         - name: 专门连接到自动化帐户
           href: how-to/private-link-security.md
         - name: 管理角色权限和安全性

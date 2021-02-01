@@ -45,8 +45,12 @@
       href: spring-cloud-concept-metrics.md
     - name: Azure Spring Boot 执行器
       href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
-    - name: 安全控件
-      href: spring-cloud-concept-security-controls.md
+    - name: 安全性
+      items:
+        - name: 安全控件
+          href: spring-cloud-concept-security-controls.md
+        - name: Azure Policy 的安全控件
+          href: ./security-controls-policy.md
     - name: 了解应用状态
       href: spring-cloud-concept-app-status.md
     - name: 规划灾难恢复
@@ -99,6 +103,8 @@
           href: spring-cloud-howto-application-insights.md
         - name: Resilience4J 断路器指标
           href: spring-cloud-howto-circuit-breaker-metrics.md
+        - name: 结构化应用程序日志
+          href: spring-cloud-structured-app-log.md
     - name: 网络
       items:
         - name: 在虚拟网络中部署 Azure Spring Cloud

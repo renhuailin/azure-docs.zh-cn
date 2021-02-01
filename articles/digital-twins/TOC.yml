@@ -4,8 +4,6 @@
   items:
     - name: 关于 Azure 数字孪生
       href: overview.md
-    - name: 与上一版本之间的差异
-      href: overview-differences.md
 - name: 快速入门
   expanded: true
   items:
@@ -53,6 +51,8 @@
               href: how-to-set-up-instance-powershell.md
             - name: 脚本版本
               href: how-to-set-up-instance-scripted.md
+        - name: 通过专用链接启用私密访问
+          href: how-to-enable-private-link.md
         - name: 编写应用身份验证码
           href: how-to-authenticate-client.md
         - name: 创建应用注册
@@ -107,6 +107,8 @@
               href: how-to-manage-routes-apis-cli.md
             - name: 门户版本
               href: how-to-manage-routes-portal.md
+        - name: 为路由事件启用托管标识
+          href: how-to-enable-managed-identities.md
         - name: 与 Azure Maps 集成
           href: how-to-integrate-maps.md
         - name: 与 Azure 时序见解集成
@@ -153,6 +155,20 @@
       href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
 - name: 资源
   items:
+    - name: 数字孪生服务限制
+      href: reference-service-limits.md
+    - name: 定价和可用性
+      items:
+        - name: 定价
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: SLA
+          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
+        - name: 区域和可用性
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+    - name: 客户数据请求
+      href: resources-customer-data-requests.md
+    - name: 与原始版本的差异
+      href: resources-compare-original-release.md
     - name: API 和 SDK
       items:
         - name: 控制面板
@@ -243,22 +259,10 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: DTMI 规范
           href: 'https://github.com/Azure/digital-twin-model-identifier'
-    - name: 客户数据请求
-      href: resources-customer-data-requests.md
-    - name: 数字孪生服务限制
-      href: reference-service-limits.md
-    - name: 定价和可用性
-      items:
-        - name: 定价
-          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
-        - name: SLA
-          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
-        - name: 区域和可用性
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
-    - name: 客户案例
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
     - name: Channel 9 视频
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
+    - name: 客户案例
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
     - name: Azure 工具
       items:
         - name: Azure Cloud Shell
@@ -267,7 +271,5 @@
           href: /powershell/azure/
         - name: Azure 门户
           href: 'https://portal.azure.com'
-    - name: Azure RBAC 文档
-      href: ../role-based-access-control/overview.md
     - name: 支持和帮助选项
       href: ../iot-fundamentals/iot-support-help.md

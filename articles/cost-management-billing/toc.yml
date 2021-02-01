@@ -384,15 +384,15 @@
       href: /rest/api/cost-management
     - name: Azure 使用情况 REST API
       href: /rest/api/consumption
-    - name: 资源管理器模板
+    - name: 使用量 REST API ARM 预算模板
       href: /azure/templates/microsoft.consumption/budgets
     - name: 成本管理 REST API 示例
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
-    - name: 成本管理 - Azure PowerShell
+    - name: 用于成本管理的 Azure PowerShell cmdlet
       href: /powershell/module/Az.CostManagement
     - name: 计费自动化方案
       href: manage/cost-management-automation-scenarios.md
-    - name: Azure 计费 API 概述
+    - name: Azure 零售价格 REST API
       href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Azure 计费 REST API
       href: /rest/api/billing
@@ -400,11 +400,7 @@
       href: manage/consumption-api-overview.md
     - name: Azure 使用情况 REST API
       href: /rest/api/consumption
-    - name: RateCard REST API
-      href: /previous-versions/azure/reference/mt219005(v=azure.100)
-    - name: 使用情况 REST API
-      href: /previous-versions/azure/reference/mt219003(v=azure.100)
-    - name: Enterprise Reporting 概述
+    - name: Enterprise Reporting REST API 概述
       href: manage/enterprise-api.md
     - name: Enterprise Reporting REST API
       href: /rest/api/billing/enterprise/billing-enterprise-api-balance-summary
@@ -412,13 +408,13 @@
       items:
         - name: 预留 REST API
           href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
-        - name: 预留 - Azure PowerShell
+        - name: 适用于预留的 Azure PowerShell cmdlet
           href: /powershell/module/azurerm.reservations
-        - name: 预留 - CLI
+        - name: 适用于预留的 Azure CLI
           href: /cli/azure/reservations/reservation
-        - name: 成本管理 - 消耗用量详细信息 REST API
+        - name: 使用情况详细信息 REST API
           href: /rest/api/consumption/usagedetails
-        - name: 成本管理 - 消耗预留详细信息 REST API
+        - name: 预留详细信息 REST API
           href: /rest/api/consumption/reservationsdetails
 - name: 资源
   items:
