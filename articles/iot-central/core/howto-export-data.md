@@ -8,12 +8,12 @@ ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 74de0481bf6786d245fb96f5d102ab72a00031c8
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 350cd7c14a4f1ee5058a60ccf60c1205ce97916a
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760905"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226053"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用数据导出将 IoT 数据导出到云目标
 
@@ -96,10 +96,10 @@ ms.locfileid: "98760905"
 
     |性能层|帐户类型|
     |-|-|
-    |标准|常规用途 V2|
-    |标准|常规用途 V1|
-    |标准|Blob 存储|
-    |Premium|块 Blob 存储|
+    |Standard|常规用途 V2|
+    |Standard|常规用途 V1|
+    |Standard|Blob 存储|
+    |高级|块 Blob 存储|
 
 1. 若要在存储帐户中创建容器，请使用存储帐户。 在“Blob 服务”下选择“浏览 Blob”。 选择顶部的“+ 容器”以创建新容器。
 
@@ -131,7 +131,7 @@ ms.locfileid: "98760905"
 
     | 数据类型 | 说明 | 数据格式 |
     | :------------- | :---------- | :----------- |
-    |  遥测 | 以近乎实时的速度从设备导出遥测消息。 每个导出的消息都包含原始设备消息的已规范化内容。   |  [遥测消息格式](#telemetry-format)   |
+    |  遥测技术 | 以近乎实时的速度从设备导出遥测消息。 每个导出的消息都包含原始设备消息的已规范化内容。   |  [遥测消息格式](#telemetry-format)   |
     | 属性更改 | 以近乎实时的速度将更改导出到设备和云属性。 对于只读设备属性，将导出对报告值所做的更改。 对于读写属性，将导出报告的值和所需的值。 | [属性更改消息格式](#property-changes-format) |
 
 <a name="DataExportFilters"></a>
@@ -160,13 +160,13 @@ ms.locfileid: "98760905"
     - 对于 Webhook，请粘贴 webhook 终结点的回调 URL。 你可以选择配置 webhook 授权 (OAuth 2.0 和授权令牌) 并添加自定义标头。 
         - 对于 OAuth 2.0，仅支持客户端凭据流。 保存目标后，IoT Central 将与 OAuth 提供程序进行通信以检索授权令牌。 对于发送到此目标的每个消息，此标记将附加到 "Authorization" 标头。
         - 对于 "授权令牌"，可以为发送到此目标的每个消息指定将直接附加到 "Authorization" 标头的令牌值。
-    - 选择“创建”。
+    - 选择“创建”  。
 
 1. 选择 " **+ 目标** "，然后从下拉列表中选择一个目标。 最多可以向单个导出添加5个目标。
 
 1. 完成导出设置后，请选择 " **保存**"。 几分钟后，你的数据将显示在目标中。
 
-## <a name="export-contents-and-format"></a>导出内容和格式
+## <a name="destinations"></a>Destinations
 
 ### <a name="azure-blob-storage-destination"></a>Azure Blob 存储目标
 
@@ -187,7 +187,7 @@ ms.locfileid: "98760905"
 
 对于 webhook 目标，数据也会以近乎实时的速度导出。 消息正文中的数据的格式与事件中心和服务总线的格式相同。
 
-### <a name="telemetry-format"></a>遥测格式
+## <a name="telemetry-format"></a>遥测格式
 
 每个导出的消息都包含在消息正文中发送的完整消息的规范化形式。 消息采用 JSON 格式，并编码为 UTF-8。 每条消息中的信息包括：
 
@@ -231,6 +231,102 @@ ms.locfileid: "98760905"
     "messageProperties": {
       "messageProp": "value"
     }
+}
+```
+
+### <a name="message-properties"></a>消息属性
+
+遥测消息除了包含遥测有效负载之外，还具有元数据的属性。 上一个代码段显示了系统消息的示例 `deviceId` ，例如和 `enqueuedTime` 。 若要了解有关系统消息属性的详细信息，请参阅 [D2C IoT 中心消息的系统属性](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages)。
+
+如果需要将自定义元数据添加到遥测消息，则可以向遥测消息添加属性。 例如，需要在设备创建消息时添加时间戳。
+
+下面的代码片段演示了在 `iothub-creation-time-utc` 设备上创建该属性时如何将其添加到消息：
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+async function sendTelemetry(deviceClient, index) {
+  console.log('Sending telemetry message %d...', index);
+  const msg = new Message(
+    JSON.stringify(
+      deviceTemperatureSensor.updateSensor().getCurrentTemperatureObject()
+    )
+  );
+  msg.properties.add("iothub-creation-time-utc", new Date().toISOString());
+  msg.contentType = 'application/json';
+  msg.contentEncoding = 'utf-8';
+  await deviceClient.sendEvent(msg);
+}
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+private static void sendTemperatureTelemetry() {
+  String telemetryName = "temperature";
+  String telemetryPayload = String.format("{\"%s\": %f}", telemetryName, temperature);
+
+  Message message = new Message(telemetryPayload);
+  message.setContentEncoding(StandardCharsets.UTF_8.name());
+  message.setContentTypeFinal("application/json");
+  message.setProperty("iothub-creation-time-utc", Instant.now().toString());
+
+  deviceClient.sendEventAsync(message, new MessageIotHubEventCallback(), message);
+  log.debug("My Telemetry: Sent - {\"{}\": {}°C} with message Id {}.", telemetryName, temperature, message.getMessageId());
+  temperatureReadings.put(new Date(), temperature);
+}
+```
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```csharp
+private async Task SendTemperatureTelemetryAsync()
+{
+  const string telemetryName = "temperature";
+
+  string telemetryPayload = $"{{ \"{telemetryName}\": {_temperature} }}";
+  using var message = new Message(Encoding.UTF8.GetBytes(telemetryPayload))
+  {
+      ContentEncoding = "utf-8",
+      ContentType = "application/json",
+  };
+  message.Properties.Add("iothub-creation-time-utc", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"));
+  await _deviceClient.SendEventAsync(message);
+  _logger.LogDebug($"Telemetry: Sent - {{ \"{telemetryName}\": {_temperature}°C }}.");
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+async def send_telemetry_from_thermostat(device_client, telemetry_msg):
+    msg = Message(json.dumps(telemetry_msg))
+    msg.custom_properties["iothub-creation-time-utc"] = datetime.now(timezone.utc).isoformat()
+    msg.content_encoding = "utf-8"
+    msg.content_type = "application/json"
+    print("Sent message")
+    await device_client.send_message(msg)
+```
+
+---
+
+以下代码片段显示已导出到 Blob 存储的消息中的此属性：
+
+```json
+{
+  "applicationId":"5782ed70-b703-4f13-bda3-1f5f0f5c678e",
+  "messageSource":"telemetry",
+  "deviceId":"sample-device-01",
+  "schema":"default@v1",
+  "templateId":"urn:modelDefinition:mkuyqxzgea:e14m1ukpn",
+  "enqueuedTime":"2021-01-29T16:45:39.143Z",
+  "telemetry":{
+    "temperature":8.341033560421833
+  },
+  "messageProperties":{
+    "iothub-creation-time-utc":"2021-01-29T16:45:39.021Z"
+  },
+  "enrichments":{}
 }
 ```
 

@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 0beaef9162f4bdb540764a100243c579b40d1324
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 11f32d893ccc26dd30d9997d4348661d45f84eb8
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755955"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225473"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft 标识平台文档：新增功能
 
@@ -24,13 +24,25 @@ ms.locfileid: "98755955"
 
 ## <a name="january-2021"></a>2021 年 1 月
 
+### <a name="new-articles"></a>新文章
+
+- [MSAL for Android 中的日志记录](msal-logging-android.md)
+- [在 MSAL.NET 中进行日志记录](msal-logging-dotnet.md)
+- [MSAL for iOS/macOS 中的日志记录](msal-logging-ios.md)
+- [MSAL for Java 中的日志记录](msal-logging-java.md)
+- [MSAL.js 中的日志记录](msal-logging-js.md)
+- [MSAL for Python 中的日志记录](msal-logging-python.md)
+
 ### <a name="updated-articles"></a>更新的文章
 
+- [排查发布者验证问题](troubleshoot-publisher-verification.md)
+- [应用程序模型](application-model.md)
 - [身份验证和授权](authentication-vs-authorization.md)
 - [如何：将 Azure AD 应用限制为仅供 Azure AD 租户中的一组用户使用](howto-restrict-your-app-to-a-set-of-users.md)
 - [Microsoft 标识平台终结点中的权限和许可](v2-permissions-and-consent.md)
 - [Microsoft 标识平台中可配置的令牌生存期 (预览) ](active-directory-configurable-token-lifetimes.md)
 - [配置令牌生存期策略（预览版）](configure-token-lifetimes.md)
+- [Microsoft 标识平台身份验证库](reference-v2-libraries.md)
 - [Microsoft 标识平台和 OAuth 2.0 授权代码流](v2-oauth2-auth-code-flow.md)
 
 ## <a name="december-2020"></a>2020 年 12 月

@@ -4,12 +4,12 @@ description: 了解如何创建适用于 Linux 的 Azure Policy 来宾配置策�
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 38579bb43f012cac2b373bbbbb6ad757604f4c07
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 9d9a66ddad5bd3511d5372f62558af35cfcb5616
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070683"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226601"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何创建适用于 Linux 的来宾配置策略
 
@@ -291,6 +291,27 @@ describe file(attr_path) do
 end
 ```
 
+在配置中添加属性 **AttributesYmlContent** ，其中包含任何字符串作为值。
+来宾配置代理自动创建 InSpec 用于存储特性的 YAML 文件。 请参阅以下示例。
+
+```powershell
+Configuration AuditFilePathExists
+{
+    Import-DscResource -ModuleName 'GuestConfiguration'
+
+    Node AuditFilePathExists
+    {
+        ChefInSpecResource 'Audit Linux path exists'
+        {
+            Name = 'linux-path'
+            AttributesYmlContent = "fromParameter"
+        }
+    }
+}
+```
+
+使用本文档中提供的示例重新编译 MOF 文件。
+
 cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含名为“Parameter”的参数。 此参数需要使用包含每个参数的所有详细信息的哈希表，并自动创建用于创建每个 Azure Policy 定义的文件的所有必需部分。
 
 以下示例创建一个用于审核文件路径的策略定义，其中，用户将在分配策略时提供路径。
@@ -300,10 +321,10 @@ $PolicyParameterInfo = @(
     @{
         Name = 'FilePath'                             # Policy parameter name (mandatory)
         DisplayName = 'File path.'                    # Policy parameter display name (mandatory)
-        Description = "File path to be audited."      # Policy parameter description (optional)
-        ResourceType = "ChefInSpecResource"           # Configuration resource type (mandatory)
+        Description = 'File path to be audited.'      # Policy parameter description (optional)
+        ResourceType = 'ChefInSpecResource'           # Configuration resource type (mandatory)
         ResourceId = 'Audit Linux path exists'        # Configuration resource property name (mandatory)
-        ResourcePropertyName = "AttributesYmlContent" # Configuration resource property name (mandatory)
+        ResourcePropertyName = 'AttributesYmlContent' # Configuration resource property name (mandatory)
         DefaultValue = '/tmp'                         # Policy parameter default value (optional)
     }
 )
@@ -316,26 +337,10 @@ New-GuestConfigurationPolicy
     -Description 'Audit that a file path exists on a Linux machine.' `
     -Path './policies' `
     -Parameter $PolicyParameterInfo `
+    -Platform 'Linux' `
     -Version 1.0.0
 ```
 
-对于 Linux 策略，请在配置中添加属性 AttributesYmlContent，并根据需要覆盖这些值。 来宾配置代理自动创建 InSpec 用于存储特性的 YAML 文件。 请参阅以下示例。
-
-```powershell
-Configuration AuditFilePathExists
-{
-    Import-DscResource -ModuleName 'GuestConfiguration'
-
-    Node AuditFilePathExists
-    {
-        ChefInSpecResource 'Audit Linux path exists'
-        {
-            Name = 'linux-path'
-            AttributesYmlContent = "path: /tmp"
-        }
-    }
-}
-```
 
 ## <a name="policy-lifecycle"></a>策略生命周期
 

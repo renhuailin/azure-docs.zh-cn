@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: b32f9dd10d9bd03a7e446616d9941e7bd1a9c3ed
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: bc3b041e44fad66a4edc6ff34c0e534dc423de86
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724902"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226584"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>提高你开发的客户端应用程序中身份验证和授权的复原能力
 
@@ -97,7 +97,7 @@ return myMSALObj.acquireTokenSilent(request).catch(error => {
 
 ### <a name="cache-tokens"></a>缓存令牌
 
-应用应当正确缓存从 Microsoft 标识收到的令牌。 当你的应用接收令牌时，包含令牌的 HTTP 响应还会包含一个“expires_in”属性，该属性告知应用程序缓存和重复使用令牌的时间长度。 应用程序必须使用“expires_in”属性来确定令牌的有效期。 应用程序绝对不得尝试对 API 访问令牌进行解码。
+应用应当正确缓存从 Microsoft 标识收到的令牌。 当你的应用接收令牌时，包含令牌的 HTTP 响应还会包含一个“expires_in”属性，该属性告知应用程序缓存和重复使用令牌的时间长度。 应用程序必须使用 "expires_in" 属性来确定令牌的使用期限，这一点非常重要。 应用程序绝对不得尝试对 API 访问令牌进行解码。
 
 ![应用程序调用 Microsoft 标识，但该调用会通过运行此应用程序的设备上的令牌缓存来进行](media/resilience-client-app/token-cache.png)
 

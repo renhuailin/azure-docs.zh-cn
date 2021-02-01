@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/04/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ef7f19d835f4fef1a911da01015321b2dda67682
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 0b977944f3a531365487b9655820e5d8f85e13d0
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861879"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225909"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
@@ -55,9 +55,9 @@ UPD 和 RUP 是远程桌面会话主机 (RDSH) 和虚拟硬盘 (VHD) 环境中�
 
 #### <a name="performance"></a>性能
 
-UPD 要求 [ (S2D) 存储空间直通 ](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) ，以满足性能要求。 UPD 使用服务器消息块 (SMB) 协议。 它将配置文件复制到记录用户的 VM。 UPD with S2D 是我们建议用于 Windows 虚拟桌面的解决方案。
+UPD 要求 [ (S2D) 存储空间直通 ](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) ，以满足性能要求。 UPD 使用服务器消息块 (SMB) 协议。 它将配置文件复制到记录用户的 VM。
 
-#### <a name="cost"></a>节约成本
+#### <a name="cost"></a>Cost
 
 虽然 S2D 群集实现了所需的性能，但企业客户的成本成本非常高，但对于中小型企业 (SMB) 客户，开销特别高。 对于此解决方案，企业需要支付存储空间，以及使用磁盘作为共享的 Vm 的成本。
 

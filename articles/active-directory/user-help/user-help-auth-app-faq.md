@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 369ec11050fa7dbc09159d88793685ad5fbdb3e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f4640bbd445b27942d757cc4e09aa7e673550ebc
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053954"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226516"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>常见问题 (常见问题解答) Microsoft Authenticator 应用
 
@@ -238,7 +238,7 @@ Microsoft Authenticator 应用取代了 Azure Authenticator 应用，在使用 A
    - 在 iOS 的 " **设置**" 下，选择如何在自动填充设置部分中 **打开自动填充** ，以了解如何将身份验证器设置为默认自动填充提供程序。
    - 在 Android 上的 " **设置**" 下，在 "自动填充设置" 部分选择 " **设置为自动填充提供程序** "。
 
-**问**：如果在设置中不能使用自动 **填充** 开关，该怎么办？
+**问**：如果在设置中不能使用 "自动 **填充** "，该怎么办？
 
 **答**：如果自动填充在验证器中不可用，可能是因为你的组织或帐户类型尚未允许自动填充。 你可以在未添加工作或学校帐户的设备上使用此功能。 若要详细了解如何允许你的组织自动填充，请参阅 [IT 管理员的自动填充](#autofill-for-it-admins)。
 

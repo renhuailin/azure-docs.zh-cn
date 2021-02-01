@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: a6f75a80fd73844c975b332db8a0e8919cde9f0d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 61768991fc4e72b44568bd92278427e6af398d52
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072167"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226550"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -49,15 +49,15 @@ ms.locfileid: "98072167"
 
 **答**：当前无法回滚声学或语言适应过程。 可以在导入的数据和模型处于终点状态时删除它们。
 
-**问：我会为每个短语获取详细的输出格式的多个结果。我应该使用哪一种？**
+**问：我针对每个短语获得了采用详细输出格式的多个结果。我应该使用哪一种？**
 
-**答**：始终获取第一个结果，即使另一个结果 ( "N-最佳" ) 可能具有更高的置信度值。 语音服务认为第一个结果是最佳的。 如果未识别语音，则它也可以是空字符串。
+**答**：始终采用第一个结果，即使另一个结果（“N-最佳”）可能具有更高的置信度值。 语音服务认为第一个结果是最佳的。 如果未识别出语音，则它也可以是空字符串。
 
-其他结果可能更糟，可能没有应用完整的大写和标点。 这些结果在特殊情况下非常有用，例如，为用户提供从列表选取更正或处理错误识别的命令的选项。
+其他结果可能更糟，可能没有应用完整的大写和标点。 这些结果在特殊情况下非常有用，例如，为用户提供选项来从列表中选取更正项或处理错误识别的命令。
 
-**问：为什么有不同的基本模型？**
+**问：** 为什么会有不同的基础模型？
 
-**答**：您可以从语音服务的多个基础模型中进行选择。 每个模型名称包含添加该日期的日期。 开始训练自定义模型时，请使用最新模型获得最佳准确性。 新模型可用时，较旧的基本模型仍可供使用。 你可以继续使用已在其停用之前使用过的模型 (参阅 [模型生命周期](custom-speech-overview.md#model-lifecycle)) 。 仍建议切换到最新的基本模型，以提高准确性。
+**答**：你可以从语音服务的多个基础模型中进行选择。 每个模型名称都包含添加它的日期。 开始训练自定义模型时，请使用最新模型以获取最佳准确度。 当有新模型可用时，较旧的基础模型在一段时间内仍可供使用。 你可以继续使用所使用的模型，直到它被停用（请参阅[模型生命周期](custom-speech-overview.md#model-lifecycle)）。 仍建议切换到最新的基础模型，以提高准确度。
 
 **问：能否更新现有模型（模型堆叠）？**
 
@@ -65,27 +65,27 @@ ms.locfileid: "98072167"
 
 旧数据集和新数据集必须合并为单个 .zip 文件（用于声学数据）或 .txt 文件（用于语言数据）。 适应完成后，需要重新部署新的更新后模型以获取新的终结点
 
-**问：当基本模型的新版本可用时，我的部署是否自动更新？**
+**问：** 当有新版本的基础模型可用时，我的部署是否会自动更新？
 
 **答**：部署不会自动更新。
 
-如果已改编并部署了模型，则该部署将保持不变。 你可以使用较新版本的基础模型来解除部署的模型 readapt，并重新部署以提高准确性。
+如果你已调整并部署了某个模型，该部署会保持原样。 你可以解除已部署的模型，使用较新版本的基础模型重新调整，并重新部署以提高准确度。
 
-基本模型和自定义模型将在一段时间后停用 (参阅 [模型生命周期](custom-speech-overview.md#model-lifecycle)) 。
+基础模型和自定义模型在一段时间后都会停用（请参阅[模型生命周期](custom-speech-overview.md#model-lifecycle)）。
 
 **问：能否下载模型并在本地运行？**
 
 **答**：你可以在 [Docker 容器](speech-container-howto.md?tabs=cstt)中本地运行自定义模型。
 
-**问：我是否可以将数据集、模型和部署复制或移动到另一个区域或订阅？**
+**问：** 是否可以将数据集、模型和部署复制或移动到另一个区域或订阅？
 
-**答**：您可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) 将自定义模型复制到另一个区域或订阅。 不能复制数据集或部署。 可以在另一个订阅中再次导入数据集，并使用模型副本在其中创建终结点。
+**答**：你可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) 将自定义模型复制到另一个区域或订阅。 无法复制数据集或部署。 可以在另一个订阅中再次导入数据集，并使用模型副本在其中创建终结点。
 
 **问：是否会记录我的请求？**
 
-**答**：默认情况下不记录请求（既不进行音频记录，也不进行听录）。 如有必要，你可以在 [创建自定义终结点](./how-to-custom-speech-train-model.md)时选择 "从此 *终结点中记录内容*" 选项。 你还可以在 [语音 SDK](speech-sdk.md) 中按请求启用音频日志记录，而无需创建自定义终结点。 在这两种情况下，请求的音频和识别结果将存储在安全存储中。 对于使用 Microsoft 拥有的存储的订阅，它们将在30天内可用。
+**答**：默认情况下不记录请求（既不进行音频记录，也不进行听录）。 如果需要，可以在[创建自定义终结点](how-to-custom-speech-train-model.md#deploy-a-custom-model)时选择“从此终结点记录内容”选项。 你还可以在[语音 SDK](how-to-use-logging.md) 中逐个请求启用音频日志记录，而无需创建自定义终结点。 在两种情况下，请求的音频和识别结果都将存储在安全的存储中。 对于使用 Microsoft 拥有的存储的订阅，它们将可供使用 30 天。
 
-如果你使用的自定义终结点包含启用了 *此终结点的日志内容* ，则可以在 Speech Studio 的 "部署" 页上导出已记录的文件。 如果通过 SDK 启用音频日志记录，请调用 [API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModelLogs) 来访问这些文件。
+如果你在启用了“从此终结点记录内容”的情况下使用自定义终结点，则可在 Speech Studio 中的部署页面上导出所记录的文件。 如果音频日志记录是通过 SDK 启用的，请调用 [API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModelLogs) 来访问文件。
 
 **问：我的请求是否受到限制？**
 
@@ -106,7 +106,7 @@ ms.locfileid: "98072167"
 
 **问：数据集大小的限制是什么？为何限制？**
 
-**答**：之所以有此限制，是由于 HTTP 上传文件大小存在限制。 有关实际限制，请参阅[语音服务配额和限制](speech-services-quotas-and-limits.md)。 您可以将数据拆分为多个数据集，并选择所有数据集来训练模型。
+**答**：之所以有此限制，是由于 HTTP 上传文件大小存在限制。 有关实际限制，请参阅[语音服务配额和限制](speech-services-quotas-and-limits.md)。 你可以将数据拆分为多个数据集，并选择所有数据集来训练模型。
 
 **问：是否可以压缩文本文件，以便上传更大的文本文件？**
 
@@ -134,19 +134,19 @@ ms.locfileid: "98072167"
 
 **答**：是的。 可以自行转录或使用专业听录服务进行转录。 有些用户更喜欢使用专业听录器，而其他用户则使用众包或自己进行听录。
 
-**问：向自定义模型定型音频数据需要多长时间？**
+**问：** 使用音频数据训练一个自定义模型需要多长时间？
 
-**答**：使用音频数据训练模型可能是一个漫长的过程。 根据数据量，可能需要几天的时间来创建自定义模型。 如果该服务无法在一周内完成，则该服务可能会中止定型操作并将该模型报告为失败。
+**答**：使用音频数据训练模型可能是一个漫长的过程。 创建自定义模型可能需要几天时间，具体取决于数据量。 如果它无法在一周内完成，则服务可能会中止训练操作并将该模型报告为失败。
 
-为了更快地获得结果，请使用专用硬件可用于培训的 [区域](custom-speech-overview.md#set-up-your-azure-account) 之一。 通常，该服务会在具有此类硬件的区域中每天处理大约10小时的音频数据。 它在其他区域每天只能处理大约1小时的音频数据。 您可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)将完全训练的模型复制到另一个区域。 只有文本培训速度快得多，通常在几分钟内就会完成。
+为了更快地获得结果，请使用其中有用于训练的专用硬件的[区域](custom-speech-overview.md#set-up-your-azure-account)之一。 通常，该服务会在具有此类硬件的区域中每天处理大约10小时的音频数据。 它在其他区域每天只能处理大约1小时的音频数据。 你可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) 将已完全训练好的模型复制到另一个区域。 仅使用文本进行训练速度要快得多，通常在几分钟内就可完成。
 
-某些基本模型不能用音频数据自定义。 对于这些服务，该服务将只使用脚本的文本进行定型并忽略音频数据。 然后，训练将会快得多，结果将与仅文本培训相同。
+某些基础模型不能使用音频数据进行自定义。 对于这些模型，该服务会仅使用听录的文本进行训练并忽略音频数据。 然后，训练的完成速度会快得多，结果将与仅使用文本进行训练相同。
 
 ## <a name="accuracy-testing"></a>精确度测试
 
 **问：什么是字错误率 (WER) 以及如何计算此错误率？**
 
-**答**：WER 是用于语音识别的评估指标。 WER 由错误总数（包括插入、删除和替换）除以引用听录中的总字数得出。 有关详细信息，请参阅 [评估自定义语音准确性](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy)。
+**答**：WER 是用于语音识别的评估指标。 WER 由错误总数（包括插入、删除和替换）除以引用听录中的总字数得出。 有关详细信息，请参阅[评估自定义语音识别准确度](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy)。
 
 **问：如何确定准确度测试的结果是否良好？**
 

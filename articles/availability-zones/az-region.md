@@ -8,12 +8,12 @@ ms.date: 01/26/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: e8e62d92afb70ec9d4df40f677de05583ef472b0
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 3916cd43a42ef273a45a9992b45d8b9f043c9364
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955777"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226618"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支持可用性区域的 Azure 服务
 
@@ -47,16 +47,16 @@ ms.locfileid: "98955777"
 ## <a name="azure-regions-with-availability-zones"></a>具有可用性区域的 Azure 区域
 
 
-| 美洲           | 欧洲         | 德国              | 非洲              | 亚太区   |
-|--------------------|----------------|----------------------|---------------------|----------------|
-|                    |                |                      |                     |                |
-| 加拿大中部     | 法国中部 | 德国中西部 | 南非北部 * | Japan East     |
-| 美国中部         | 北欧   |                      |                     | 东南亚 |
-| 美国东部            | 英国南部       |                      |                     | 澳大利亚东部 |
-| 美国东部 2          | 西欧    |                      |                     |                |
-| 美国中南部 |                |                      |                     |                |
-| US Gov 弗吉尼亚州 * |                |                      |                     |                |
-| 美国西部2        |                |                      |                     |                |
+| 美洲           | 欧洲               | 非洲              | 亚太区   |
+|--------------------|----------------------|---------------------|----------------|
+|                    |                      |                     |                |
+| 加拿大中部     | 法国中部       | 南非北部 * | Japan East     |
+| 美国中部         | 德国中西部 |                     | Southeast Asia |
+| 美国东部            | 北欧         |                     | 澳大利亚东部 |
+| 美国东部 2          | 英国南部             |                     |                |
+| 美国中南部 | 西欧          |                     |                |
+| US Gov 弗吉尼亚州 * |                      |                     |                |
+| 美国西部2        |                      |                     |                |
 
 
 \* 若要详细了解这些区域中的可用性区域和可用服务支持，请联系你的 Microsoft 销售或客户代表。 有关将支持可用性区域的即将推出的区域，请参阅 [Azure 地理](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)位置。

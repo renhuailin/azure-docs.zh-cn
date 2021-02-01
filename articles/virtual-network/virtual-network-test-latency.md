@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: f8f167a7947c42ce837ec83b336ae636f593f2e4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7dc8aac730fdf46cab47a3297b8c001cb0b8e314
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219252"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226399"
 ---
 # <a name="test-vm-network-latency"></a>测试 VM 网络延迟
 
@@ -45,7 +45,7 @@ ms.locfileid: "98219252"
 ### <a name="tools-for-testing"></a>测试工具
 要测量延迟，有两个不同的工具可供你选择：
 
-* 对于基于 Windows 的系统：[latte.exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* 对于基于 Windows 的系统：[latte.exe (Windows)](https://github.com/microsoft/latte/releases/download/v0/latte.exe)
 * 对于基于 Linux 的系统： [SockPerf (linux) ](https://github.com/mellanox/sockperf)
 
 使用这些工具有助于确保仅测量 TCP 或 UDP 有效负载传送时间，而不测量应用程序未使用的，且不影响应用程序性能的 ICMP (Ping) 或其他数据包类型。

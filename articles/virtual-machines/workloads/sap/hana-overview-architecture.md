@@ -14,21 +14,21 @@ ms.workload: infrastructure
 ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ec3500c124d3e4f8cb1b46445c28c6a64c93526
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d941bd9735149d08bfbd63ec97337dd7a3bac43b
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195443"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226652"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>什么是 Azure 上的 SAP HANA（大型实例）？
 
-Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方案。 除了提供虚拟机用于部署和运行 SAP HANA 以外，Azure 还可让你在专用的逻辑服务器上运行和部署 SAP HANA。 Azure 上的 SAP HANA（大型实例）解决方案在分配的非共享主机/服务器裸机硬件上进行构建。 服务器硬件嵌入在包含计算/服务器、网络和存储基础结构的较大模具中。 这作为组合经过了 HANA 定制数据中心集成 (TDI) 认证。 Azure 上的 SAP HANA（大型实例）提供各种不同的服务器 SKU 或规模。 单元可包含 36 个 Intel CPU 内核和 768 GB 的内存，最多可包含 480 个 Intel CPU 内核和 24 TB 的内存。
+Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方案。 除了提供虚拟机用于部署和运行 SAP HANA 以外，Azure 还可让你在专用的逻辑服务器上运行和部署 SAP HANA。 Azure 上的 SAP HANA（大型实例）解决方案在分配的非共享主机/服务器裸机硬件上进行构建。 服务器硬件嵌入在包含计算/服务器、网络和存储基础结构的较大模具中。 Azure 上的 SAP HANA（大型实例）提供各种不同的服务器 SKU 或规模。 单元可包含 36 个 Intel CPU 内核和 768 GB 的内存，最多可包含 480 个 Intel CPU 内核和 24 TB 的内存。
 
 基础结构模具中的客户隔离在租户中执行，详细情况如下所示：
 
 - **网络**：对于分配了租户的每个客户，通过虚拟网络实现基础结构堆栈中的客户隔离。 一个租户分配给单个客户。 一个客户可以具有多个租户。 租户的网络隔离禁止基础结构模具级别中的租户之间进行网络通信，即使租户属于同一个客户。
-- **存储组件**：通过分配了存储卷的存储虚拟机实现隔离。 存储卷只能分配给一个存储虚拟机。 存储虚拟机以独占方式分配给 SAP HANA TDI 认证的基础结构堆栈中的单个租户。 因此，只能在一个特定相关租户中访问分配给存储虚拟机的存储卷。 这些存储卷在部署的不同租户之间不可见。
+- **存储组件**：通过分配了存储卷的存储虚拟机实现隔离。 存储卷只能分配给一个存储虚拟机。 存储虚拟机以独占方式分配给基础结构堆栈中的一个租户。 因此，只能在一个特定相关租户中访问分配给存储虚拟机的存储卷。 这些存储卷在部署的不同租户之间不可见。
 - **服务器或主机**：服务器或主机单元不在客户或租户之间进行共享。 部署到客户的服务器或主机是分配给单个租户的原子裸机计算单元。 不使用硬件分区或软分区，这可能会导致某个客户与其他客户共享主机或服务器。 分配给特定租户的存储虚拟机的存储卷会装载到这类服务器。 可以按独占方式向一个租户分配具有不同 SKU 的一个到多个服务器单元。
 - 在 Azure 上的 SAP HANA（大型实例）基础结构模具中，会部署许多不同的租户，并通过网络、存储和计算级别上的租户概念使它们相互隔离。 
 

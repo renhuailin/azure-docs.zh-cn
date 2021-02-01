@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 97f4642d69d4a432b823bd1cd7cdbdd9fc7f270d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f3598c6f072d09d7e427db66dcfbf8721b92a3a1
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752752"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226482"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft 标识平台和隐式授权流
 
@@ -44,7 +44,7 @@ Microsoft 标识平台支持 [OAuth 2.0 规范](https://tools.ietf.org/html/rfc6
 若要最初将用户登录到应用，可以发送 [OpenID connect](v2-protocols-oidc.md) 身份验证请求，并 `id_token` 从 Microsoft 标识平台获取。
 
 > [!IMPORTANT]
-> 若要成功请求 ID 令牌和/或访问令牌，必须通过在“隐式授权”部分下选择“ID 令牌”和/或“访问令牌”，为 [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页中的应用注册启用相应的隐式授权流。   如果未启用，将返回 `unsupported_response` 错误：为输入参数“response_type”提供的值不允许用于此客户端。预期值为“code””
+> 若要成功请求 ID 令牌和/或访问令牌，必须在 " [Azure 门户应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)" 页中注册应用注册，方法是在 "**隐式授权" 和 "混合流**" 部分中选择 " **ID 令牌** 和 **访问令牌**"。 如果未启用， `unsupported_response` 将返回错误： `The provided value for the input parameter 'response_type' is not allowed for this client. Expected value is 'code'`
 
 ```
 // Line breaks for legibility only

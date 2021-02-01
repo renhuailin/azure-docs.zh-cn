@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 8cae73e03fee0b59be0c7596f0783570ac14f6ee
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 991a335207fc29cef7b243d7e520dd5f62ff691f
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053042"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226096"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>在 Azure Spring Cloud 中设置过渡环境
 
@@ -22,6 +22,7 @@ ms.locfileid: "99053042"
 
 ## <a name="prerequisites"></a>先决条件
 
+* 具有 *标准***定价层** 的 Azure 春季云实例。
 * 正在运行的应用程序。  请参阅 [快速入门：部署第一个 Azure 春季云应用程序](spring-cloud-quickstart.md)。
 * Azure CLI [asc 扩展](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
 
@@ -78,7 +79,7 @@ az extension add --name spring-cloud
 1. 在 Azure CLI 中创建新的部署，并指定过渡部署名称“绿色”。
 
     ```azurecli
-    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app default -n green --jar-path gateway/target/gateway.jar
+    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app <appName> -n green --jar-path gateway/target/gateway.jar
     ```
 
 1. CLI 部署成功完成后，从 **应用程序仪表板** 访问应用页面，并在左侧的 " **部署** " 选项卡中查看所有实例。
@@ -113,11 +114,11 @@ az extension add --name spring-cloud
 
    [![部署设置过渡部署](media/spring-cloud-blue-green-staging/set-staging-deployment.png)](media/spring-cloud-blue-green-staging/set-staging-deployment.png)
 
-1. 返回到 " **部署" 管理** 页。  `green`部署部署状态应显示为 "已 *启动*"。 这现在就是正在运行的生产版本。
+1. 返回到 " **部署" 管理** 页。 将 `green` 部署设置为 `production` 。 设置完成后， `green` 应显示部署状态。  这现在就是正在运行的生产版本。
 
    [![部署设置过渡部署结果](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)
 
-1. 将 URL 复制并粘贴到新的浏览器窗口中，新的应用程序页应显示更改。
+1. 应用的 URL 应显示你所做的更改。
 
 >[!NOTE]
 > 将绿色部署设置为生产环境后，以前的部署将变成过渡部署。

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 05b93848bff66adc49d2855ee98fff6c9b7a2d3d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ddd676a1e0b3d8f554b007974b62eb8c0c2ca9c1
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756502"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226349"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>用于调用 Web API 的桌面应用：移到生产环境
 
@@ -39,7 +39,7 @@ ms.locfileid: "98756502"
 - `https://mytenant.onmicrosoft.com/customerapi`，范围为 `customer.read` 和 `customer.write`
 - `https://mytenant.onmicrosoft.com/vendorapi`，范围为 `vendor.read` 和 `vendor.write`
 
-在此示例中，请使用具有 `extraScopesToConsent` 参数的 `.WithAdditionalPromptToConsent` 修饰符。
+在此示例中，请使用具有 `extraScopesToConsent` 参数的 `.WithExtraScopesToConsent` 修饰符。
 
 例如：
 
@@ -106,6 +106,11 @@ AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync()
 
 对于 Microsoft 个人帐户用户，reprompting 在每个 (桌面或移动应用的 native client 上同意) 调用授权是预期的行为。 本机客户端标识本质上是不安全的，这与机密客户端应用程序标识相反。 机密客户端应用程序通过 Microsoft 标识平台交换机密，以证明其身份。 Microsoft 标识平台选择通过在应用程序每次获得授权时提示用户进行同意，来缓解消费者服务的安全。
 
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+若要尝试其他示例，请参阅 [桌面和移动公用客户端应用](sample-v2-code.md#desktop-and-mobile-public-client-apps)。
+
+
+

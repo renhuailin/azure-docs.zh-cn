@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 76bb4ffb4ebeb01baf8236d6be84c900b23ffbc0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790808"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225337"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL 托管实例的事务复制（预览）
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -109,7 +109,7 @@ Azure SQL 托管实例可以支持成为以下版本的 SQL Server 的订阅服�
 | 类别 | 数据同步 | 事务复制 |
 |---|---|---|
 | 优点 | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 |
-| 缺点 | - 5 分钟或更长的延迟<br/>- 无事务一致性<br/>- 更高的性能影响 | -无法从 Azure SQL 数据库发布 <br/>- 维护成本高 |
+| 缺点 | - 无事务一致性<br/>- 更高的性能影响 | -无法从 Azure SQL 数据库发布 <br/>- 维护成本高 |
 
 ## <a name="common-configurations"></a>常用配置
 

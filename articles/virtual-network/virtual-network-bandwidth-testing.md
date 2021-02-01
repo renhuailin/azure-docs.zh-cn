@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 7a2f6750a4d0a48c6971f60241976fb55410b65c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 27cc55978582468c759603571bd8b0e69f29db5d
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221436"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226567"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>带宽/吞吐量测试 (NTTTCP)
 
@@ -52,9 +52,9 @@ ms.locfileid: "98221436"
 
 #### <a name="get-ntttcp-onto-the-vms"></a>在 VM 上安装 NTTTCP。
 
-下载最新版本：<https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
+下载最新版本：https://github.com/microsoft/ntttcp/releases/download/v5.35/NTttcp.exe
 
-或者搜索它（如果已移动）：<https://www.bing.com/search?q=ntttcp+download>\< - 应先点击
+或查看顶级 GitHub 页面： <https://github.com/microsoft/ntttcp>\
 
 请考虑将 NTTTCP 放在单独的文件夹中，如 c:\\tools
 

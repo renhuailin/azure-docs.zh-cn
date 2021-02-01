@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: fe54c4495e589459fe734f315138cafa8d7cd033
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4e389114dc873d067a32389b288e1bb98d497850
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934734"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226044"
 ---
 # <a name="spatial-analysis-operations"></a>空间分析操作
 
@@ -130,7 +130,7 @@ ms.locfileid: "98934734"
 | `threshold` | float| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
 | `type` | 字符串| 对于 **cognitiveservices account，spatialanalysis-personcount** `count` 。|
 | `trigger` | 字符串| 用于发送事件的触发器的类型。 支持的值 `event` 用于在计数发生更改或 `interval` 定期发送事件时发送事件，而不考虑计数是否已更改。
-| `interval` | 字符串| 在激发事件之前聚合人员计数的时间（以秒为单位）。 操作将继续以恒定速率分析场景，并返回超过该间隔的最常见计数。 聚合间隔适用于 `event` 和 `interval` 。|
+| `output_frequency` | int | 出口事件的速率。 When `output_frequency` = X 时，每个 X 事件都是出口，例如 `output_frequency` = 2 表示输出每个其他事件。 `output_frequency`适用于 `event` 和 `interval` 。 |
 | `focus` | 字符串| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。|
 
 ### <a name="line-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingline"></a>Cognitiveservices account 的线条配置。 spatialanalysis-personcrossingline
@@ -255,8 +255,7 @@ ms.locfileid: "98934734"
 | `threshold` | float| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
 | `type` | 字符串| 对于 **cognitiveservices account，spatialanalysis-persondistance** `people_distance` 。|
 | `trigger` | 字符串| 用于发送事件的触发器的类型。 支持的值 `event` 用于在计数发生更改或 `interval` 定期发送事件时发送事件，而不考虑计数是否已更改。
-| `interval` | 字符串 | 触发事件之前聚合冲突的时间（以秒为单位）。 聚合间隔适用于 `event` 和 `interval` 。|
-| `output_frequency` | int | 出口事件的速率。 When `output_frequency` = X 时，每个 X 事件都是出口，例如 `output_frequency` = 2 表示输出每个其他事件。 Output_frequency 适用于 `event` 和 `interval` 。|
+| `output_frequency` | int | 出口事件的速率。 When `output_frequency` = X 时，每个 X 事件都是出口，例如 `output_frequency` = 2 表示输出每个其他事件。 `output_frequency`适用于 `event` 和 `interval` 。|
 | `minimum_distance_threshold` | float| 当用户小于该距离时，将触发 "TooClose" 事件的距离（以英尺为间隔）。|
 | `maximum_distance_threshold` | float| 当人们大于该距离时，将触发 "TooFar" 事件的距离（以英尺为间隔）。|
 | `focus` | 字符串| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。|

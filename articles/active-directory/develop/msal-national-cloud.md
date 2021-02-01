@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 5a032f45027cc4bffc7f2bc46c6ea1a69a1b83e4
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2f9396e20ae0f426dddd57b32297cfe98e135c44
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178613"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225810"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在国家/地区云环境中使用 MSAL
 
@@ -34,7 +34,7 @@ ms.locfileid: "98178613"
 
 本指南演示如何登录到工作和学校帐户，获取访问令牌，并在 [Azure 政府版云](https://azure.microsoft.com/global-infrastructure/government/) 环境中调用 Microsoft Graph API。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保满足以下先决条件。
 
@@ -80,18 +80,18 @@ ms.locfileid: "98178613"
 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。 
 1. 在 " **重定向 URI** " 部分中，选择 **web** 平台，并基于你的 Web 服务器将值设置为应用程序的 URL。 有关如何在 Visual Studio 和节点中设置和获取重定向 URL 的说明，请参阅后续部分。
-1. 选择“注册”。
+1. 选择“注册”  。
 1. 在 " **概述** " 页上，记下 **应用程序 (客户端) ID** 值以供以后使用。
     本教程要求你启用 [隐式授权流](v2-oauth2-implicit-grant-flow.md)。 
 1. 在“管理”下，选择“身份验证”。 
-1. 在 " **隐式授予**" 下，选择 " **ID 令牌** 和 **访问令牌**"。 ID 令牌和访问令牌是必需的，因为此应用需要登录用户并调用 API。
+1. 在 " **隐式授权" 和 "混合流**" 下，选择 " **ID 令牌** 和 **访问令牌**"。 ID 令牌和访问令牌是必需的，因为此应用需要登录用户并调用 API。
 1. 选择“保存”。
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>步骤2：设置 web 服务器或项目
 
 - 下载本地 web 服务器（如 Node）的[项目文件](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)。
 
-  or
+  或
 
 - [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)。
 
@@ -226,7 +226,7 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 有关每个云的 Azure 门户 Url 和令牌终结点的列表，请参阅 [国家云身份验证终结点](authentication-national-cloud.md) 。
 
-国家/地区云文档：
+国家云文档：
 
 - [Azure Government](../../azure-government/index.yml)
 - [Azure 中国世纪互联](/azure/china/)

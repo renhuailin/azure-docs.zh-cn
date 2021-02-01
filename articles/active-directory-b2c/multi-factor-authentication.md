@@ -12,18 +12,18 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5d656a27017f3c7ec97362efc6207917ffcd1a56
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 8449c5437bad6d0036d332ca5c35709b5d571cfa
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111128"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225152"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中启用多重身份验证
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-Azure Active Directory B2C (Azure AD B2C) 直接与 [Azure AD 多重身份验证](../active-directory/authentication/concept-mfa-howitworks.md) 集成，以便你可以在应用程序中添加另一个安全层来注册和登录体验。 无需编写一行代码便可启用多重身份验证。 如果已经创建了注册和登录用户流，则仍然可以启用多重身份验证。
+Azure Active Directory B2C (Azure AD B2C) 直接集成了 [Azure AD 多重身份验证](../active-directory/authentication/concept-mfa-howitworks.md)，因此你可以为应用程序中的注册和登录体验增加另一层安全性。 无需编写一行代码便可启用多重身份验证。 如果已经创建了注册和登录用户流，则仍然可以启用多重身份验证。
 
 此功能有助于应用程序处理以下情况：
 
@@ -40,7 +40,9 @@ Azure Active Directory B2C (Azure AD B2C) 直接与 [Azure AD 多重身份验证
 1. 选择“用户流”。
 1. 选择要为其启用 MFA 的用户流。 例如，*B2C_1_signinsignup*。
 1. 选择“属性”。
-1. 在 " **多重身份验证** " 部分中，选择所需的 **MFA 方法**，然后在 " **MFA 强制** " 下选择 " **始终打开**" 或 "建议的 **[条件](conditional-access-user-flow.md) (")**。 对于 "条件"，创建 [条件性访问策略](conditional-access-identity-protection-setup.md) 策略，并指定想要将策略应用到的应用。 
+1. 在 " **多重身份验证** " 部分中，选择所需的 **MFA 方法**，然后在 " **MFA 强制** " 下选择 " **始终打开**" 或 " **建议的条件 (")**。
+  > [!NOTE]
+  > 如果选择 " **条件 (建议)**"，则还需要 [添加一个条件性访问策略](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy) ，并指定要将策略应用到的应用。
 1. 选择“保存”。 现在已为此用户流启用 MFA。
 
 可以使用“运行用户流”  来验证体验。 确认以下场景：

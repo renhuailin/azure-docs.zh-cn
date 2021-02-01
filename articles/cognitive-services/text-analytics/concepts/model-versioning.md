@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: b18b05a94ea596fcf79e62e02479efaf1ed630d2
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 463e3d594013f2c6fe8ee3ec52d1351ff208f8ac
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219275"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225219"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>文本分析 API 中的模型版本控制
 
@@ -29,9 +29,9 @@ ms.locfileid: "99219275"
 | 终结点                        | 支持的版本                                     | 最新版本 |
 |---------------------------------|--------------------------------------------------------|----------------|
 | `/sentiment`                    | `2019-10-01`, `2020-04-01`                             | `2020-04-01`   |
-| `/languages`                    | `2019-10-01`, `2020-07-01`, `2020-09-01`, `2021-01-15` | `2021-01-05`   |
+| `/languages`                    | `2019-10-01`, `2020-07-01`, `2020-09-01`, `2021-01-05` | `2021-01-05`   |
 | `/entities/linking`             | `2019-10-01`, `2020-02-01`                             | `2020-02-01`   |
-| `/entities/recognition/general` | `2019-10-01`, `2020-02-01`, `2020-04-01`,`2021-01-05`  | `2021-01-15`   |
+| `/entities/recognition/general` | `2019-10-01`, `2020-02-01`, `2020-04-01`,`2021-01-15`  | `2021-01-15`   |
 | `/entities/recognition/pii`     | `2019-10-01`, `2020-02-01`, `2020-04-01`,`2020-07-01`  | `2020-07-01`   |
 | `/entities/health`              | `2020-09-03`                           | `2020-09-03`   |
 | `/keyphrases`                   | `2019-10-01`, `2020-07-01`                             | `2020-07-01`   |

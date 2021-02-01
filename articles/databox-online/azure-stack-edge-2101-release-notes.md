@@ -6,18 +6,18 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/29/2021
+ms.date: 02/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 025694dc020bb18ce66574bac476f34034353721
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 7c1f78f405a67687168457448f62d46a39da165f
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072550"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225118"
 ---
 # <a name="azure-stack-edge-pro-with-fpga-2101-release-notes"></a>Azure Stack Edge Pro 与 FPGA 2101 发行说明
 
-以下发行说明通过内置的现场可编程门阵列 (FPGA) ，找出2101版 Azure Stack Edge Pro 的严重打开问题和解决的问题。
+以下发行说明通过内置的现场可编程门阵列 (FPGA) ，识别2101版 Azure Stack Edge Pro 的严重打开问题和解决的问题。
 
 发行说明会持续更新。 如果发现了需要解决方法的关键问题，则会将其添加到中。 在部署 Azure Stack Edge 设备之前，请仔细查看发行说明中的信息。  
 
@@ -38,7 +38,6 @@ ms.locfileid: "99072550"
 
 - 所有累积 Windows 更新和 .NET framework 更新均已发布到10月2020。
 - 在出厂安装期间，基板管理控制器 (BMC) 固件版本从3.32.32.32 升级到3.36.36.36，以解决与较新的 Dell 电源设备的不兼容问题。
-- 每个软件更新将保留 Azure Data Box Gateway 的静态 IP 地址。
 - 此版本支持 Azure Stack 边缘设备上的 IoT Edge 1.0.9.3。
 
 ## <a name="known-issues-in-this-release"></a>本版本中的已知问题
