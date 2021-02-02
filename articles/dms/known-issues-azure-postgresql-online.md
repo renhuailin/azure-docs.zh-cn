@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 8c3c1d28a7fbb3e3c9c449feb03a75d48178b718
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fdefcabdda64402610f115832976ec9f7af81b80
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609031"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258823"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>从 PostgreSQL 联机迁移到 Azure DB for PostgreSQL 时的已知问题/迁移限制
 
@@ -123,3 +123,4 @@ ms.locfileid: "97609031"
 - 迁移名称相同但包含不同案例（例如，table1、TABLE1 和 Table1）的多个表可能导致不可预测的行为，因此不支持。
 - 不支持更改 [CREATE | ALTER | DROP | TRUNCATE] table DDL 的处理。
 - 在 Azure 数据库迁移服务中，单个迁移活动最多只能容纳四个数据库。
+- 不支持迁移 pg_largeobject 表。 

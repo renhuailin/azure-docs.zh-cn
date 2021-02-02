@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/23/2021
+ms.date: 02/01/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 992115a65ec015ca04990135975e0d4020764184
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 61adb72d043821dfaedca5e5da0b2f880d56811e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873767"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258912"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -84,6 +84,7 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 
 ## <a name="change-log"></a>更改日志
 
+- 02/01/2021：通过在 rhel 上使用[和进行 SAP HANA 向上扩展](./sap-hana-high-availability-netapp-files-red-hat.md)，SAP HANA 在[Rhel 上使用 Pacemaker 对 azure vm 横向扩展 HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md)进行更改，SAP HANA 在 azure vm 上使用[备用节点向外扩展](./sap-hana-scale-out-standby-netapp-files-suse.md)，SAP HANA 并在[SAP HANA](./hana-vm-operations-netapp.md) rhel 上使用[和在 azure 虚拟机上使用备用节点](./sap-hana-scale-out-standby-netapp-files-rhel.md)向外扩展
 - 01/23/2021：引入了 HANA 数据卷分区功能，使其能够在不同的 Azure 磁盘或 NFS 共享上对 HANA 数据文件进行条带 i/o 操作，而无需使用磁盘卷管理器 SAP HANA azure NetApp 文件上的 [azure 虚拟机存储配置](./hana-vm-operations-storage.md) 和 [NFS v2.0 文件以供 SAP HANA](./hana-vm-operations-netapp.md)
 - 01/18/2021：为 azure 虚拟机中的 Oracle Azure net Apps 文件添加了支持 [oracle DBMS FOR SAP 工作负荷的 oracle DBMS 部署](./dbms_guide_oracle.md) ，并调整了 [azure NetApp 文件中用于 SAP HANA](./hana-vm-operations-netapp.md)
 - 01/11/2021：在 rhel 上，azure Vm 上的 sap NW 的严重变化较小， [适用于 sap 应用程序](./high-availability-guide-rhel.md)的高可用性，在 rhel 上，azure vm 上的 sap [nw 高可用性](./high-availability-guide-rhel-netapp-files.md) ，适用于 [azure 上的](./high-availability-guide-rhel-multi-sid.md) sap nw 的和和 ha

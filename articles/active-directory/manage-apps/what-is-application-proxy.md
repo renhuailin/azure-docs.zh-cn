@@ -3,7 +3,7 @@ title: 使用 Azure AD 应用程序代理发布本地应用
 description: 了解为何要在外部使用应用程序代理向远程用户发布本地 Web 应用程序。 了解应用程序代理体系结构、连接器、身份验证方法和安全优势。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/31/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 02b08e6fcdd6714886f8afea1c0a461eb6128fe4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 1569e577ec535a4680cfaec6f7975c056275ecbe
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832635"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258772"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 应用程序代理为远程用户发布本地应用
 

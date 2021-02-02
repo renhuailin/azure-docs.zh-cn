@@ -3,7 +3,7 @@ title: 在 Azure AD 的用户体验中隐藏企业应用程序
 description: 如何在 Azure Active Directory 访问面板或 Microsoft 365 启动器中隐藏企业应用程序的用户体验。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1abd1d72e4435aa59bbb9a99f3cc423f11268e
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 8469b48b92f3f9a645a0c05441e6c1943b02e16f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858292"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258874"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>在 Azure Active Directory 中隐藏最终用户的企业应用程序
 
@@ -40,7 +40,7 @@ ms.locfileid: "96858292"
 5.  搜索要隐藏的应用程序，然后单击该应用程序。  此时会打开应用程序的概述。
 6.  单击 **“属性”**。 
 7.  对于“对用户可见?”问题，单击“否”。
-8.  单击“保存”  。
+8.  单击“保存”。
 
 > [!NOTE]
 > 这些说明仅适用于企业应用程序。
@@ -75,4 +75,4 @@ Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
 * [查看所有组](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [向企业应用分配用户或组](assign-user-or-group-access-portal.md)
 * [删除企业应用的用户或组分配](./assign-user-or-group-access-portal.md)
-* [Change the name or logo of an enterprise app](./add-application-portal-configure.md)
+* [更改企业应用的名称或徽标](./add-application-portal-configure.md)

@@ -3,7 +3,7 @@ title: 使用 Azure AD 应用程序代理访问本地 Api
 description: Azure Active Directory 的应用程序代理允许本机应用安全地访问你在本地或云 Vm 上托管的 Api 和业务逻辑。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: eaa4a8f92809dcf44969958573231ad37d908daa
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9341646f32f6a2e05397b072d3f63186964fbd88
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835691"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258976"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理安全访问本地 Api
 
@@ -38,7 +38,7 @@ Azure AD 应用程序代理形成解决方案的主干，作为 API 访问的公
 
 由于 Azure AD 应用程序代理身份验证和授权建立在 Azure AD 之上，因此你可以使用 Azure AD 条件访问来确保只有受信任的设备才能访问通过应用程序代理发布的 Api。 使用连接到桌面的 Azure AD 联接或 Azure AD 混合，并为设备管理 Intune。 你还可以利用 Azure Active Directory Premium 功能，如 Azure AD 多重身份验证，以及支持机器学习的 [Azure Identity Protection](../identity-protection/overview-identity-protection.md)安全性。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要执行本演练，你需要：
 
@@ -106,7 +106,7 @@ Azure AD 应用程序代理形成解决方案的主干，作为 API 访问的公
 
 1. 在 "Azure Active Directory **概述** " 页上，选择 " **应用注册**"，然后在 " **应用注册** " 窗格的顶部，选择 " **新注册**"。
 
-1. 在 " **注册应用程序** " 页上：
+1. 在“注册应用程序”页面上：
 
    1. 在 " **名称**" 下输入 *AppProxyNativeAppSample*。
 

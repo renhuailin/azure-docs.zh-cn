@@ -278,7 +278,7 @@
                 - name: ClaimsTransformations
                   href: claimstransformations.md
                   items:
-                    - name: Boolean
+                    - name: 布尔
                       href: boolean-transformations.md
                     - name: Date
                       href: date-transformations.md
@@ -478,6 +478,18 @@
       href: page-layout.md
     - name: 上市区域和数据驻留
       href: data-residency.md
+    - name: 针对复原能力构建
+      items:
+        - name: Azure AD B2C 复原能力简介
+          href: ../active-directory/fundamentals/resilience-b2c.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: 最终用户体验
+          href: ../active-directory/fundamentals/resilient-end-user-experience.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: 与外部进程的接口
+          href: ../active-directory/fundamentals/resilient-external-processes.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Azure AD B2C 开发人员最佳做法
+          href: ../active-directory/fundamentals/resilience-b2c-developer-best-practices.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: 监视和分析
+          href: ../active-directory/fundamentals/resilience-with-monitoring-alerting.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
     - name: 威胁管理
       href: threat-management.md
       displayName: security
