@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: fa133e7c62b7970a1c48c7fd86c877bcf699e034
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9030adb9904095ac9b909e650ec6f11dcdf85ed3
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201597"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475516"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>如何使用启动诊断功能来排查 Azure 中虚拟机的问题
 
@@ -52,7 +52,7 @@ ms.locfileid: "98201597"
 ![创建 VM](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> 启动诊断功能不支持高级存储帐户或区域冗余存储帐户类型。 如果使用高级存储帐户进行启动诊断，则可能会在启动 VM 时收到 StorageAccountTypeNotSupported 错误。
+> 启动诊断功能不支持高级存储帐户或区域冗余存储帐户类型。 如果使用高级存储帐户进行启动诊断，则可能会在启动 VM 时收到 StorageAccountTypeNotSupported 错误。 
 >
 
 ### <a name="deploying-from-an-azure-resource-manager-template"></a>通过 Azure 资源管理器模板部署

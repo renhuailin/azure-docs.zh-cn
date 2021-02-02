@@ -9,16 +9,16 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: bb49523858f07e54887a67d9df68eb894e27ad34
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 04b68899b796088bd4b89509a413c7a1fe5369bb
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881242"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475346"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS 证书更改  
 
-Microsoft 在将 Azure 服务更新为使用来自一组不同的根证书颁发机构 (CA) 的 TLS 证书。 此更改正在进行中，因为当前 CA 证书不符合某个 CA/浏览器论坛基线要求。
+Microsoft 在将 Azure 服务更新为使用来自一组不同的根证书颁发机构 (CA) 的 TLS 证书。 正在进行此更改，因为当前 CA 证书不符合某个 CA/浏览器论坛基线要求，将于2021年2月15日吊销。
 
 ## <a name="when-will-this-change-happen"></a>此更改将在何时进行？
 

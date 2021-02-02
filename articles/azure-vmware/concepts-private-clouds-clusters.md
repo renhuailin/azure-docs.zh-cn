@@ -3,12 +3,12 @@ title: 概念-私有云和群集
 description: 了解 Azure VMware 解决方案软件定义的数据中心和 vSphere 群集的主要功能。
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 7f8508abed3446c58a683454bc49ec7dbb49d051
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 234e705ad3b39a575c6f8c475bede4b81efa4b96
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825075"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474907"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware 解决方案私有云和群集概念
 
@@ -66,7 +66,10 @@ Microsoft 负责对 NSX-T 设备进行生命周期管理，例如 NSX-T Manager 
 
 ## <a name="next-steps"></a>后续步骤
 
-下一步是了解 [网络和互连的概念](concepts-networking.md)。
+至此，你已介绍了这些 Azure VMware 解决方案私有云概念，接下来，你可能想要了解： 
+
+- [Azure VMware 解决方案网络和互连的概念](concepts-networking.md)。
+- [Azure VMware 解决方案存储概念](concepts-storage.md)。
 
 <!-- LINKS - internal -->
 

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 02/02/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9276fca62e96395150c9545b8f4dcb5c8c0afb87
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 3315500e0d8ce090b058cbe0cb11d9ab8e56e193
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954236"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474992"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Azure Active Directory OATH 令牌中的身份验证方法
 
@@ -49,7 +49,7 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 ```  
 
 > [!NOTE]
-> 请确保 CSV 文件中包含标题行。
+> 请确保 CSV 文件中包含标题行。 如果 UPN 有单引号，请使用另一个引号将其转义。 例如，如果 UPN 是 "我的" user@domain.com ，则 user@domain.com 在上载文件时将其更改为 ""。
 
 正确格式化为 CSV 文件后，管理员便可以登录 Azure 门户并导航到“Azure Active Directory”>“MFA”>“OATH 令牌”，然后上传生成的 CSV 文件。
 

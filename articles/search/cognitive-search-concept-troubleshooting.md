@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 1ab366cddbabf7e6d574189892e779ab49f6fad8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5882cc949d88e8c2a4102362cf5d2a3613e1d714
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403375"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475482"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充提示
 
@@ -100,7 +100,7 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 最长运行时间因层而异：免费层为数分钟，收费层为 24 小时（索引编制）。 进行按需处理时，如果处理无法在 24 小时期限内完成，则可改用计划形式，让索引器在计划时间接着上次的工作继续处理。 
 
-对于计划的索引器来说，索引编制会按计划从已知正常的最后一个文档继续开始。 使用定时计划时，索引器可以在计划的一系列时间或日期进行积压图像的处理，直至所有未处理的图像得到处理。 有关计划语法的详细信息，请参阅[步骤 3：创建索引器](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)或参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
+对于计划的索引器来说，索引编制会按计划从已知正常的最后一个文档继续开始。 使用定时计划时，索引器可以在计划的一系列时间或日期进行积压图像的处理，直至所有未处理的图像得到处理。 有关计划语法的详细信息，请参阅 [计划索引器](search-howto-schedule-indexers.md)。
 
 > [!NOTE]
 > 如果将索引器设置为某个计划，但每次运行时一次又一次地在同一文档上反复失败，则索引器将以不那么频繁的间隔开始运行（最多每 24 小时至少一次），直到它成功地再次取得进展。  如果你认为你已修复了导致索引器在某一点停滞的任何问题，则可以按需运行索引器，如果成功取得进展，索引器将再次回到其设置的计划间隔。
@@ -109,12 +109,12 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 ## <a name="tip-8-increase-indexing-throughput"></a>提示 8：提高索引编制吞吐量
 
-进行[并行索引编制](search-howto-large-index.md)时，请将数据置于多个容器中，或者置于同一容器的多个虚拟文件夹中， 然后创建多个数据源和索引器对。 所有索引器可以使用同一技术集并写入同一目标搜索索引，因此你的搜索应用不需了解这种分区。
+进行[并行索引编制](search-howto-large-index.md)时，请将数据置于多个容器中，或者置于同一容器的多个虚拟文件夹中， 然后，创建多个数据源和索引器对。 所有索引器可以使用同一技术集并写入同一目标搜索索引，因此你的搜索应用不需了解这种分区。
 
 ## <a name="see-also"></a>另请参阅
 
 + [快速入门：在门户中创建 AI 扩充管道](cognitive-search-quickstart-blob.md)
 + [教程：了解 AI 扩充 REST API](cognitive-search-tutorial-blob.md)
-+ [指定数据源凭据](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
++ [如何配置 blob 索引器](search-howto-indexing-azure-blob-storage.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [如何将扩充字段映射到索引](cognitive-search-output-field-mapping.md)

@@ -4,16 +4,16 @@ description: 了解如何识别、诊断和排查 Azure Cosmos DB SQL 查询问�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 10/12/2020
+ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 42f01b140a44d7aa6d75dece9a4398fd7b41bf5a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d50893fc3bf5d890efbdc1f5b59cf52f35d91a15
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905105"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475720"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>排查使用 Azure Cosmos DB 时遇到的查询问题
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,6 +62,8 @@ Azure Cosmos DB 中的查询优化大致分为以下类别：
 - [在索引策略中包含所需的路径。](#include-necessary-paths-in-the-indexing-policy)
 
 - [了解哪些系统函数使用索引。](#understand-which-system-functions-use-the-index)
+
+- [改进字符串系统函数执行。](#improve-string-system-function-execution)
 
 - [了解哪些聚合查询使用索引。](#understand-which-aggregate-queries-use-the-index)
 
@@ -196,12 +198,13 @@ RU 费用：2.98 RU
 
 ### <a name="understand-which-system-functions-use-the-index"></a>了解哪些系统函数使用索引
 
-大多数系统函数使用索引。 下面列出了使用索引的一些常用字符串函数：
+大多数系统函数都使用索引。 下面列出了一些使用索引的常用字符串函数：
 
-- STARTSWITH(str_expr1, str_expr2, bool_expr)  
-- CONTAINS(str_expr, str_expr, bool_expr)
-- LEFT(str_expr, num_expr) = str_expr
-- SUBSTRING(str_expr, num_expr, num_expr) = str_expr，但前提是第一个 num_expr 为 0
+- -StartsWith
+- 包含
+- RegexMatch
+- 左
+- Substring-但仅当第一个 num_expr 为0时
 
 下面是一些不使用索引且必须加载每个文档的常用系统函数：
 
@@ -210,11 +213,21 @@ RU 费用：2.98 RU
 | UPPER/LOWER                             | 不要使用系统函数来规范化数据以进行比较，而是在插入时规范化大小写。 诸如 ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` 的查询将变成 ```SELECT * FROM c WHERE c.name = 'BOB'```。 |
 | 数学函数（非聚合） | 如果需要频繁计算查询中的某个值，请考虑在 JSON 文档中将此值存储为属性。 |
 
-------
+### <a name="improve-string-system-function-execution"></a>改进字符串系统函数执行
 
-如果系统函数使用索引，并且仍有较高的 RU 费用，则可以尝试将添加 `ORDER BY` 到查询中。 在某些情况下，添加 `ORDER BY` 可以提高系统的函数索引使用率，特别是当查询长时间运行或跨多页时。
+对于某些使用索引的系统函数，可以通过将子句添加到查询来改善查询执行 `ORDER BY` 。 
 
-例如，请考虑下面的查询 `CONTAINS` 。 `CONTAINS` 应使用索引，但我们假设在添加相关索引后，运行以下查询时，你仍会看到非常高的 RU 费用：
+更具体地说，在查询中进行查询时，RU 费用增加的任何系统函数都将增加 `ORDER BY` 。 这些查询进行索引扫描，因此，对查询结果进行排序可以使查询更有效。
+
+此优化可改善以下系统函数的执行：
+
+- StartsWith (，其中不区分大小写 = true) 
+- StringEquals (，其中不区分大小写 = true) 
+- 包含
+- RegexMatch
+- EndsWith
+
+例如，考虑下面带有 `CONTAINS` 的查询。 `CONTAINS` 将使用索引，但有时，即使在添加相关索引之后，在运行以下查询时，您仍可能会观察到非常高的 RU 费用。
 
 原始查询：
 
@@ -224,13 +237,32 @@ FROM c
 WHERE CONTAINS(c.town, "Sea")
 ```
 
-已更新查询，其中包含 `ORDER BY` ：
+可以通过添加以下内容来改善查询执行 `ORDER BY` ：
 
 ```sql
 SELECT *
 FROM c
 WHERE CONTAINS(c.town, "Sea")
 ORDER BY c.town
+```
+
+相同的优化可帮助对其他筛选器进行查询。 在这种情况下，最好还向子句添加具有相等筛选器的属性 `ORDER BY` 。
+
+原始查询：
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+```
+
+可以通过 `ORDER BY` 为 (c.name，c.) 添加和 [组合索引](index-policy.md#composite-indexes) 来改善查询执行：
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+ORDER BY c.name, c.town
 ```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>了解哪些聚合查询使用索引
@@ -511,4 +543,4 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 * [使用 .NET SDK 获取 SQL 查询执行指标](profile-sql-api-query.md)
 * [优化 Azure Cosmos DB 的查询性能](./sql-api-query-metrics.md)
 * [.NET SDK 性能提示](performance-tips.md)
-* [Java v4 SDK 性能提示](performance-tips-java-sdk-v4-sql.md)
+* [适用于 Java v4 SDK 的性能提示](performance-tips-java-sdk-v4-sql.md)

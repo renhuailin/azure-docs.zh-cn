@@ -3,12 +3,12 @@ title: 概念-网络互连
 description: 了解 Azure VMware 解决方案中的网络和互连的主要方面和用例。
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 9369c0fff31de4c6575d8e4903420cfa01461bf4
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: eb701a7fca2be08d70e603734b9c4d8e266959cd
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062114"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475414"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware 解决方案网络和互连的概念
 
@@ -58,8 +58,11 @@ Azure VMware 解决方案私有云的用例包括：
 对于私有云，请 Global Reach 启用 ExpressRoute，然后在 Azure 门户中请求 Global Reach 的授权密钥和专用对等互连 ID。 授权密钥和对等互连 ID 用于在你的订阅中的 ExpressRoute 线路与新的私有云的 ExpressRoute 线路之间建立 Global Reach。 链接后，这两条 ExpressRoute 线路将本地环境之间的网络流量路由到私有云。  有关请求和使用授权密钥和对等互连 ID 的过程的详细信息，请参阅 [创建 ExpressRoute Global Reach 对等互连到私有云的教程](tutorial-expressroute-global-reach-private-cloud.md)。
 
 ## <a name="next-steps"></a>后续步骤 
-了解 [私有云存储概念](concepts-storage.md)。
 
+至此，你已介绍了这些网络和互连的概念，接下来，你可能想要了解：
+
+- [Azure VMware 解决方案存储概念](concepts-storage.md)。
+- [Azure VMware 解决方案标识概念](concepts-identity.md)
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md

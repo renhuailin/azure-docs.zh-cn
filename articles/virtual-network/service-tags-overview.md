@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: b353fad64b08f5fc50af2b8d31abab77cd797e25
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 506e568f44d8dd5354ed7bd3ec20d0c71d484b85
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055036"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475178"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -97,6 +97,7 @@ ms.locfileid: "99055036"
 | **LogicAppsManagement** | 逻辑应用的管理流量。 | 入站 | 否 | 否 |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 出站 | 否 | 否 |
 | **MicrosoftContainerRegistry** | 用于 Microsoft 容器映像的容器注册表。 <br/><br/>*注意：* 此标记依赖于 AzureFrontDoor.FirstParty 标记。 | 出站 | 是 | 是 |
+| **PowerBI** | PowerBi. *注意：此标记当前不可通过 Azure 门户进行配置。* | 推送、请求和匿名 | 否 | 否|
 | **PowerQueryOnline** | Power Query Online。 | 推送、请求和匿名 | 否 | 否 |
 | **服务总线** | 使用高级服务层级的 Azure 服务总线流量。 | 出站 | 是 | 是 |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注意：* 此标记表示每个区域的控制平面的 Service Fabric 服务终结点。 通过它，客户可从其 VNET 针对 Service Fabric 群集执行管理操作（终结点，例如 https:// westus.servicefabric.azure.com） | 推送、请求和匿名 | 否 | 否 |

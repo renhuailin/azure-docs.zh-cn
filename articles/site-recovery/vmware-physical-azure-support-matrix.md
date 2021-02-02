@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: f525666e91a482a6c23128e266b4f5669437a502
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 48eba42548287b54d99d1a2188786437f4b05a2b
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956015"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475465"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -231,7 +231,7 @@ Docker 磁盘配置 | 否
 来宾/服务器 iSCSI | 对于迁移 - 是<br/>对于灾难恢复 - 否，iSCSI 将作为附加磁盘故障回复到 VM
 来宾/服务器 SMB 3.0 | 否
 来宾/服务器 RDM | 是<br/><br/> 在物理服务器上不适用
-> 1 TB 的来宾/服务器磁盘 | 是，磁盘必须大于 1024 MB<br/><br/>复制到托管磁盘时高达 8,192 GB（9.26 版及更高版本）<br></br> 复制到存储帐户时高达 4,095 GB
+> 1 TB 的来宾/服务器磁盘 | 是，磁盘必须大于 1024 MB<br/><br/>复制到托管磁盘时，最高可达 32 TB (9.40 版本) <br></br> 复制到存储帐户时高达 4,095 GB
 逻辑和物理扇区大小均为 4K 的来宾/服务器磁盘 | 否
 逻辑扇区大小为 4K 且物理扇区大小为 512 字节的来宾/服务器磁盘 | 否
 包含 > 4 TB 的条带化磁盘的来宾/服务器卷 | 是
@@ -292,7 +292,7 @@ HUB | 是
 操作系统磁盘大小 | 最大 2,048 GB。 | 如果不支持，检查会失败。
 操作系统磁盘计数 | 1 </br> 不支持在不同磁盘上启动和进行系统分区 | 如果不支持，检查会失败。
 数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。
-数据磁盘大小 | 复制到托管磁盘时高达 8,192 GB（9.26 版及更高版本）<br></br>复制到存储帐户时高达 4,095 GB| 如果不支持，检查会失败。
+数据磁盘大小 | 复制到托管磁盘时，最高可达 32 TB (9.40 版本后) <br></br>复制到存储帐户时高达 4,095 GB| 如果不支持，检查会失败。
 网络适配器 | 支持多个适配器。 |
 共享 VHD | 不支持。 | 如果不支持，检查会失败。
 FC 磁盘 | 不支持。 | 如果不支持，检查会失败。

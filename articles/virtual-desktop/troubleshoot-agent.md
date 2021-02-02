@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 5f9d772a4cc5722201891450707a68fe487acc3a
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 8e3c372cb186d3043e89b0b084a86b7be128146d
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540521"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475246"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>排查常见的 Windows 虚拟桌面代理问题
 
@@ -31,7 +31,7 @@ ms.locfileid: "98540521"
 若要解决此问题，请启动 RDAgent 启动加载程序：
 
 1. 在 "服务" 窗口中，右键单击 " **远程桌面代理加载程序**"。
-2. 选择“开始”。 如果此选项为你灰显，则你没有管理员权限，将需要使其启动服务。
+2. 选择“启动”。 如果此选项为你灰显，则你没有管理员权限，将需要使其启动服务。
 3. 等待10秒，然后右键单击 " **远程桌面代理加载程序**"。
 4. 选择“刷新”。
 5. 如果服务在启动并刷新后停止，则可能是注册失败。 有关详细信息，请参阅 [INVALID_REGISTRATION_TOKEN](#error-invalid_registration_token)。
@@ -53,7 +53,7 @@ ms.locfileid: "98540521"
    > [!div class="mx-imgBorder"]
    > ![IsRegistered 0 的屏幕截图](media/isregistered-token.png)
 
-8. 以管理员身份打开命令提示符。
+8. 作为管理员打开命令提示。
 9. 输入 **net Stop RDAgentBootLoader**。 
 10. 输入 **net Start RDAgentBootLoader**。 
 11. 打开注册表编辑器。
@@ -63,7 +63,7 @@ ms.locfileid: "98540521"
    > [!div class="mx-imgBorder"]
    > ![IsRegistered 1 的屏幕截图](media/isregistered-registry.png)
 
-## <a name="error-agent-cannot-connect-to-broker-with-invalid_form-or-not_found-url"></a>错误：代理无法连接到 INVALID_FORM 或 NOT_FOUND 的 broker。 URL
+## <a name="error-agent-cannot-connect-to-broker-with-invalid_form-or-not_found-url"></a>错误：代理无法连接到 INVALID_FORM 或 NOT_FOUND 的 broker。 代码
 
 请参阅 **事件查看器**  >  **Windows 日志**"  >  **应用程序**。 如果看到 ID 为3277的事件，则表示 **INVALID_FORM** 或 **NOT_FOUND。URL** 在说明中，代理与代理之间的通信出现问题。 代理无法连接到代理，无法访问特定的 URL。 这可能是由于防火墙或 DNS 设置导致的。
 
@@ -120,7 +120,7 @@ ms.locfileid: "98540521"
 >这并不是完整的策略列表，只是我们当前意识到的那些策略。
 
 禁用策略：
-1. 以管理员身份打开命令提示符。
+1. 作为管理员打开命令提示。
 2. 输入并运行 " **services.msc**"。
 3. 在弹出的 " **策略的结果集** " 窗口中，请参阅类别路径。
 4. 选择策略。
@@ -142,7 +142,7 @@ ms.locfileid: "98540521"
 >这并不是完整的策略列表，只是我们当前意识到的那些策略。
 
 禁用策略：
-1. 以管理员身份打开命令提示符。
+1. 作为管理员打开命令提示。
 2. 输入并运行 " **services.msc**"。
 3. 在弹出的 " **策略的结果集** " 窗口中，请参阅类别路径。
 4. 选择策略。
@@ -207,13 +207,13 @@ ms.locfileid: "98540521"
 以管理员身份打开 PowerShell 窗口并运行以下 cmdlet：
 
 ```powershell
-Get-AzWvdSessionHost -TenantName <tenantname> -HostPoolName <hostpoolname>|Select-Object*
+Get-AzWvdSessionHost -TenantName <tenantname> -HostPoolName <hostpoolname>|Select-Object *
 ```
 
 如果为主机池中的会话主机或主机列出的状态始终显示 " **不可用** " 或 "正在 **升级**"，则代理或堆栈安装可能已失败
 
 若要解决此问题，请重新安装并行堆栈：
-1. 以管理员身份打开命令提示符。
+1. 作为管理员打开命令提示。
 2. 输入 **net Stop RDAgentBootLoader**。 
 3. 转到“控制面板”   > “程序”   > “程序和功能”  。
 4. 卸载最新版本的 **远程桌面服务 SxS 网络堆栈** 或  >    >  ReverseConnectListener 下 HKEY_LOCAL_MACHINE SYSTEM **CurrentControlSet**  >  **Control**  >  **Terminal Server**  >  **WinStations** 中列出的版本。

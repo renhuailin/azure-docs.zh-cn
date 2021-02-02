@@ -4,12 +4,12 @@ description: 在 Azure Kubernetes 服务 (AKS) 中为群集创建和管理 Azure
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b7f8060666612049026f2602ab7c8511aea22757
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614789"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475431"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -100,7 +100,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 ### <a name="networking"></a>网络
 
-可以使用高级网络，在该网络中，虚拟网络和子网或公共 IP 地址位于另一资源组中。 在虚拟网络中的子网上分配 " [网络参与者][rbac-network-contributor] " 内置角色。 或者，你可以创建具有访问该资源组中的网络资源的权限的 [自定义角色][rbac-custom-role] 。 有关更多详细信息，请参阅 [AKS 服务权限][aks-permissions] 。
+可以使用高级网络，在该网络中，虚拟网络和子网或公共 IP 地址位于另一资源组中。 在虚拟网络的子网上分配[网络参与者][rbac-network-contributor]内置角色。 或者，可以创建有权访问该资源组中网络资源的[自定义角色][rbac-custom-role]。 有关更多详细信息，请参阅 [AKS 服务权限][aks-permissions]。
 
 ### <a name="storage"></a>存储
 
@@ -128,7 +128,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 - 如果没有在其他 AKS CLI 命令中明确传递服务主体，则将使用位于 `~/.azure/aksServicePrincipal.json` 的默认服务主体。  
 - 也可以选择删除 aksServicePrincipal.json 文件，AKS 将创建新的服务主体。
 - 删除通过 [az aks create][az-aks-create] 创建的 AKS 群集时，不会删除自动创建的服务主体。
-    - 若要删除服务主体，请查询群集 *servicePrincipalProfile.clientId*，然后使用 [az ad app delete][az-ad-app-delete] 进行删除。 将以下资源组和群集名称替换为你自己的值：
+    - 若要删除服务主体，请查询群集 *servicePrincipalProfile* ，然后删除 [az ad sp delete] [az-sp-delete]。 将以下资源组和群集名称替换为你自己的值：
 
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)

@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: abd30c22aa2b4df20cdb795013768cd175cfef4c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 69f7ec5114ad650f33eae740a54a3821b76ef2ac
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780733"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475533"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>检索 IoT Edge 部署中的日志
 
@@ -51,8 +51,8 @@ ms.locfileid: "96780733"
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -70,8 +70,8 @@ ms.locfileid: "96780733"
 | ID | 字符串 | 提供模块名称的正则表达式。 它可以匹配边缘设备上的多个模块。 应为 [.NET 正则表达式](/dotnet/standard/base-types/regular-expressions)格式。 |
 | filter | JSON 部分 | 要应用于与元组中 `id` 正则表达式匹配的模块的日志筛选器。 |
 | tail | integer | 从最新日志行开始检索的过去的日志行数。 可选。 |
-| since | integer | 只返回此时间之后的日志，作为持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）、rfc3339 时间戳或 UNIX 时间戳。  如果同时指定 `tail` 和 `since`，将首先使用 `since` 值检索日志。 然后，将 `tail` 值应用于结果，并返回最终结果。 可选。 |
-| until | integer | 仅返回指定时间之前的日志，作为 rfc3339 时间戳、UNIX 时间戳或持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）。 可选。 |
+| since | 字符串 | 只返回此时间之后的日志，作为持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）、rfc3339 时间戳或 UNIX 时间戳。  如果同时指定 `tail` 和 `since`，将首先使用 `since` 值检索日志。 然后，将 `tail` 值应用于结果，并返回最终结果。 可选。 |
+| until | 字符串 | 仅返回指定时间之前的日志，作为 rfc3339 时间戳、UNIX 时间戳或持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）。 可选。 |
 | 日志级别 | integer | 筛选小于或等于指定日志级别的日志行。 日志行应遵循建议的日志记录格式，并使用 [Syslog 严重性级别](https://en.wikipedia.org/wiki/Syslog#Severity_level) 标准。 可选。 |
 | regex | 字符串 | 使用 [.NET 正则表达式](/dotnet/standard/base-types/regular-expressions)格式，筛选内容与指定正则表达式匹配的日志行。 可选。 |
 | encoding | 字符串 | `gzip` 或 `none`。 默认为 `none`。 |
@@ -145,7 +145,7 @@ az iot hub invoke-module-method \
 ::: moniker range=">=iotedge-2020-11"
 
 > [!NOTE]
-> 若要从网关设备后的设备上传日志，需要在顶层设备上配置 [API 代理和 blob 存储模块](how-to-configure-api-proxy-module.md) 。 这些模块通过网关设备将日志从较低层设备路由到云中的存储。
+> 若要从网关设备后的设备上传日志，需要在顶层设备上配置 [API 代理和 blob 存储模块](how-to-configure-api-proxy-module.md)。 这些模块通过网关设备将日志从较低层设备路由到云中的存储。
 
 ::: moniker-end
 
@@ -160,8 +160,8 @@ az iot hub invoke-module-method \
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -273,7 +273,7 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 ::: moniker range=">=iotedge-2020-11"
 
 > [!NOTE]
-> 若要从网关设备后的设备上传日志，需要在顶层设备上配置 [API 代理和 blob 存储模块](how-to-configure-api-proxy-module.md) 。 这些模块通过网关设备将日志从较低层设备路由到云中的存储。
+> 若要从网关设备后的设备上传日志，需要在顶层设备上配置 [API 代理和 blob 存储模块](how-to-configure-api-proxy-module.md)。 这些模块通过网关设备将日志从较低层设备路由到云中的存储。
 
 ::: moniker-end
 
@@ -293,8 +293,8 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 |-|-|-|
 | schemaVersion | 字符串 | 设置为 `1.0` |
 | sasURL | 字符串 (URI) | [对 Azure Blob 存储容器具有写入权限的共享访问签名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
-| since | integer | 只返回此时间之后的日志，作为持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）、rfc3339 时间戳或 UNIX 时间戳。 可选。 |
-| until | integer | 仅返回指定时间之前的日志，作为 rfc3339 时间戳、UNIX 时间戳或持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）。 可选。 |
+| since | 字符串 | 只返回此时间之后的日志，作为持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）、rfc3339 时间戳或 UNIX 时间戳。 可选。 |
+| until | 字符串 | 仅返回指定时间之前的日志，作为 rfc3339 时间戳、UNIX 时间戳或持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）。 可选。 |
 | edgeRuntimeOnly | boolean | 如果为 true，则仅从 Edge 代理、Edge 中心和 Edge 安全守护程序返回日志。 默认值：false。  可选。 |
 
 > [!IMPORTANT]
