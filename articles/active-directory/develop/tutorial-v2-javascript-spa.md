@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 51b548beae57ce1da32006b61dfd222b0a4e6218
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 874488e5de7888edad5310afce1afd1baec4ece0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015855"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753072"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>教程：让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
@@ -45,7 +45,7 @@ ms.locfileid: "98015855"
 
 ![显示本教程生成的示例应用的工作原理](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-本指南创建的示例应用程序允许 JavaScript SPA 查询从 Microsoft 标识平台终结点接受令牌的 Microsoft 图形 API 或 Web API。 在此方案中，用户登录后请求了访问令牌，并通过授权标头将其添加到 HTTP 请求。 此令牌将用于通过 **MS Graph API** 获取用户的个人资料和邮件。
+本指南创建的示例应用程序允许 JavaScript SPA 查询从 Microsoft 标识平台接受令牌的 Microsoft Graph API 或 Web API。 在此方案中，用户登录后请求了访问令牌，并通过授权标头将其添加到 HTTP 请求。 此令牌将用于通过 **MS Graph API** 获取用户的个人资料和邮件。
 
 令牌获取和更新由[适用于 JavaScript 的 Microsoft 身份验证库 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js) 处理。
 
@@ -413,13 +413,13 @@ ms.locfileid: "98015855"
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-首次登录后，你不希望在每次用户需要请求令牌来访问资源时，都要求他们重新进行身份验证。 因此，在大部分时间应使用 *acquireTokenSilent* 来获取令牌。 但在某些情况下，需要强制用户与 Microsoft 标识平台终结点交互。 示例包括：
+首次登录后，你不希望在每次用户需要请求令牌来访问资源时，都要求他们重新进行身份验证。 因此，在大部分时间应使用 *acquireTokenSilent* 来获取令牌。 但在某些情况下，需要强制用户与 Microsoft 标识平台交互。 示例包括：
 
 - 由于密码已过期，用户可能需要重新输入其凭据。
 - 应用程序正在请求访问资源，这需要用户的许可。
 - 需要双重身份验证。
 
-调用 *acquireTokenPopup* 会打开一个弹出窗口（或者，*acquireTokenRedirect* 会将用户重定向到 Microsoft 标识平台终结点）。 在该窗口中，为了进行交互，用户需要确认其凭据、为所需的资源提供许可，或者完成双重身份验证。
+调用 acquireTokenPopup 会打开一个弹出窗口（或者，acquireTokenRedirect 会将用户重定向到 Microsoft 标识平台） 。 在该窗口中，为了进行交互，用户需要确认其凭据、为所需的资源提供许可，或者完成双重身份验证。
 
 #### <a name="get-a-user-token-silently"></a>以无提示方式获取用户令牌
 
@@ -483,7 +483,7 @@ ms.locfileid: "98015855"
    ```
 1. 在浏览器中输入 **http://localhost:3000** 或 **http://localhost:{port}** ，其中，*port* 是 Web 服务器正在侦听的端口。 应会显示 index.html 文件的内容和“登录”按钮。
 
-在浏览器加载 index.html 文件后，选择“登录”。 系统将提示你使用 Microsoft 标识平台终结点进行登录：
+在浏览器加载 index.html 文件后，选择“登录”。 系统将提示你使用 Microsoft 标识平台进行登录：
 
 ![JavaScript SPA 帐户登录窗口](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

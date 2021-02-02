@@ -1,29 +1,11 @@
 ---
-title: Azure 媒体服务 v3 概述
-titleSuffix: Azure Media Services
-description: Azure 媒体服务 v3 的概述，其中包含指向快速入门、教程和代码示例的链接。
-services: media-services
-documentationcenter: na
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-tags: ''
-keywords: azure 媒体服务, 流, 广播, 实时, 脱机
-ms.service: media-services
-ms.devlang: multiple
-ms.topic: overview
-ms.tgt_pltfrm: multiple
-ms.workload: media
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.custom: mvc
-ms.openlocfilehash: 01ec0c7c0d2d060bbd930a099fe3db54de6cb150
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308966"
+title:Azure 媒体服务 v3 概述:Azure 媒体服务说明:Azure 媒体服务 v3 的概述，其中包含指向快速入门、教程和代码示例的链接。
+services: media-services documentationcenter: na author:IngridAtMicrosoft manager: femila editor: '' tags: '' keywords: azure media services, stream, broadcast, live, offline
+
+ms.service: media-services ms.devlang: multiple ms.topic: overview ms.tgt_pltfrm: multiple ms.workload: media ms.date:08/31/2020 ms.author: inhenkel ms.custom: mvc
+#<a name="customer-intent-as-a-developer-or-a-content-provider-i-want-to-encode-stream-on-demand-or-live-analyze-my-media-content-so-that-my-customers-can-view-the-content-on-a-wide-variety-of-browsers-and-devices-gain-valuable-insights-from-recorded-content"></a>客户意向:作为开发人员或内容提供商，我希望编码、流式传输（按需或实时）和分析媒体内容，使我的客户能够在各种浏览器和设备上查看内容，通过记录的内容获得有价值的见解。
 ---
+
 # <a name="azure-media-services-v3-overview"></a>Azure 媒体服务 v3 概述
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

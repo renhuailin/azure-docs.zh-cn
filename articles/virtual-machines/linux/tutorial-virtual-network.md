@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 72c7f1dd6652a51a960c80829a697b97fd74f8de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c806e5d1d9c9242b6ba57496327c672d7fed0654
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500021"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704484"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>教程：使用 Azure CLI 为 Linux 虚拟机创建和管理 Azure 虚拟网络
 
@@ -300,7 +300,4 @@ az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --
 > * 安全的网络流量
 > * 创建后端 VM
 
-请继续学习下一教程，了解如何使用 Azure 备份保护虚拟机上的数据。 
-
-> [!div class="nextstepaction"]
-> [在 Azure 中备份 Linux 虚拟机](./tutorial-backup-vms.md)
+若要了解如何保护 VM 磁盘，请参阅[磁盘的备份和灾难恢复](backup-and-disaster-recovery-for-azure-iaas-disks.md)。

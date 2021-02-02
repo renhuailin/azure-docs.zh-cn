@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/25/2020
-ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 01/23/2021
+ms.openlocfilehash: 590afe4c396942c5179826cd831908e37f48c3e4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91399816"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745744"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>快速入门：在门户中创建演示应用（Azure 认知搜索）
 
@@ -61,7 +61,7 @@ ms.locfileid: "91399816"
 
 1. 在“说明”中，选择一个提供详细信息的字段，这些信息可以帮助用户确定是否要单击进入特定的文档。
 
-   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="示例数据的数据源页" border="false":::
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="配置示例数据的结果" border="false":::
 
 ## <a name="add-a-sidebar"></a>添加边栏
 
@@ -72,8 +72,9 @@ ms.locfileid: "91399816"
 > [!TIP]
 > 可以在门户中查看整个索引架构。 在每个索引的概述页中，找到“索引定义(JSON)”链接。 符合分面导航要求的字段具有“filterable: true”和“facetable: true”属性。
 
-接受当前所做的分面选择，然后转到下一页。
+1. 在向导中，选择页面顶部的“边栏”选项卡。 你将看到一个列表，其中有索引中被归为可筛选和可分面的所有字段。
 
+1. 接受当前选择分面字段，然后转到下一页。
 
 ## <a name="add-typeahead"></a>添加自动提示功能
 
@@ -83,20 +84,44 @@ ms.locfileid: "91399816"
 
 以下屏幕截图显示了向导中的选项，同时显示了应用中呈现的页面。 其中展示了如何使用字段选项，以及如何使用“显示字段名称”在建议中包含或排除标签。
 
-:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="示例数据的数据源页":::
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="查询建议配置":::
+
+## <a name="add-suggestions"></a>添加建议
+
+建议是指附加到搜索框的自动查询提示。 认知搜索支持两种建议：自动补全部分输入的搜索词，以及根据可能的匹配文档建议一个下拉列表 。
+
+向导支持建议，可提供建议结果的字段派生自索引中的 [`Suggesters`](index-add-suggesters.md) 构造：
+
+```JSON
+  "suggesters": [
+    {
+      "name": "sg",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": [
+        "number",
+        "street",
+        "city",
+        "region",
+        "postCode",
+        "tags"
+      ]
+```
+
+1. 在向导中，选择页面顶部的“建议”选项卡。 你将看到一个列表，其中有在索引架构中指定为建议提供程序的所有字段。
+
+1. 接受当前所做的选择，然后转到下一页。
 
 ## <a name="create-download-and-execute"></a>创建、下载和执行
 
-1. 选择“创建演示应用”，生成 HTML 文件。
+1. 选择页面底部的“创建演示应用”，生成 HTML 文件。
 
 1. 出现提示时，请选择“下载应用”以下载文件。
 
-1. 打开 文件。 应会看到类似于以下屏幕截图的页面。 输入一个搜索词，然后使用筛选器来缩小结果范围。 
+1. 打开该文件，然后单击“搜索”按钮。 此操作会执行一个查询，它可以是返回任意结果集的空查询 (`*`)。 页面应类似于以下屏幕截图。 输入一个搜索词，然后使用筛选器来缩小结果范围。 
 
 基础索引由虚构生成的、已在不同文档中复制的数据构成，说明有时与图像不符。 如果基于自己的索引创建应用，则预期会获得更有整体性的体验。
 
-:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="示例数据的数据源页":::
-
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="运行应用":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -108,7 +133,7 @@ ms.locfileid: "91399816"
 
 ## <a name="next-steps"></a>后续步骤
 
-默认应用对于初始探索和小任务非常有用，而尽早查看 API 有助于更深入地了解概念和工作流：
+演示应用适用于原型制作，这是因为你无需编写 JavaScript 或前端代码即可模拟最终用户体验。 有关前端功能的详细信息，请从分面导航开始：
 
 > [!div class="nextstepaction"]
-> [使用 .NET SDK 创建索引](./search-get-started-dotnet.md)
+> [如何生成分面筛选器](search-filters-facets.md)

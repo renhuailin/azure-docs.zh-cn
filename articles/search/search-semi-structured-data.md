@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
-ms.openlocfilehash: 7c88aea6aff942cdcf5cbc022df8f07cfe0d4cce
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 01/25/2021
+ms.openlocfilehash: a7a010e3c60d6b96947597878fcd870e9845b2b3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701273"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746131"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>教程：使用 REST 为 Azure 存储中的 JSON Blob 编制索引
 
@@ -98,13 +98,13 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-:::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="获取 HTTP 终结点和访问密钥" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="获取 HTTP 终结点和访问密钥" border="false":::
 
 所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
 ## <a name="2---set-up-postman"></a>2 - 设置 Postman
 
-启动 Postman 并设置 HTTP 请求。 如果不熟悉此工具，请参阅[探索 Azure 认知搜索 REST API](search-get-started-rest.md)。
+启动 Postman 并设置 HTTP 请求。 如果不熟悉此工具，请参阅[使用 REST API 创建搜索索引](search-get-started-rest.md)。
 
 本教程中每个调用的请求方法是 **POST** 和 **GET**。 你将向搜索服务发出三个 API 调用，以创建数据源、索引和索引器。 数据源包含指向存储帐户的指针以及 JSON 数据。 加载数据时，搜索服务会建立连接。
 
@@ -158,7 +158,7 @@ URI 必须指定 api-version，每个调用应返回 **201 Created**。 用于�
     ```
 
 ## <a name="4---create-an-index"></a>4 - 创建索引
-    
+
 第二次调用的是[创建索引 API](/rest/api/searchservice/create-index)，用于创建可存储所有可搜索数据的 Azure 认知搜索索引。 索引指定所有参数及其属性。
 
 1. 请将此调用的终结点设置为 `https://[service name].search.windows.net/indexes?api-version=2020-06-30`。 请将 `[service name]` 替换为搜索服务的名称。

@@ -3,12 +3,12 @@ title: 通过用于空间分析的计算机视觉分析实时视频 - Azure
 description: 本教程展示了如何结合使用实时视频分析和 Azure 认知服务中的计算机视觉空间分析 AI 功能，分析来自（模拟）IP 相机的实时视频源。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 1c6fe6e10a91034d794437f31d495b85ef086848
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060174"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632937"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>通过用于空间分析的计算机视觉（预览版）分析实时视频
 
@@ -23,7 +23,8 @@ ms.locfileid: "98060174"
 > * 监视事件。
  
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
+  > [!NOTE]
+  > 你将需要一个具有服务主体创建权限（所有者角色提供此权限）的 Azure 订阅。 如果你没有正确的权限，请联系帐户管理员，让其授予你适当的权限。 
 ## <a name="suggested-pre-reading"></a>建议的读前准备
 
 在开始之前，请阅读以下文章：
@@ -136,10 +137,10 @@ MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视
 1. lvaEdge 模块和空间分析模块 createOptions 中的 `IpcMode` 应当相同并设置为 host。
 1. 若要使 RTSP 模拟器正常工作，请确保已设置“卷边界”。 有关详细信息，请参阅[设置 Docker 卷装载](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts)。
 
-    1. [连接到 SMB 共享](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)并将[示例推土机视频文件](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)复制到本地共享。
+    1. [连接到 SMB 共享](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)并将[示例推土机视频文件](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)复制到本地共享。  
+        > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Mesi]  
     1. 可以看到 rtspsim 模块包含以下配置：
-        
-        ```json
+        ```
         "createOptions": {
                             "HostConfig": {
                               "Mounts": [
@@ -159,6 +160,8 @@ MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视
                             }
                           }
         ```
+        
+
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>生成并部署部署清单
 
 部署清单定义要部署到边缘设备的模块。 它还定义了这些模块的配置设置。

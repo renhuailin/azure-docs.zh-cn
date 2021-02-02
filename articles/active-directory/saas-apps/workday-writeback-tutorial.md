@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: c65fddcc90b25f70759fb038a72dad0facfa99a9
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 3a623a487dd31caf8c85b18771d90e3a6306df68
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359725"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953998"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>教程：配置从 Azure AD 到 Workday 的属性写回
 本教程的目的是演示将属性从 Azure AD 写回到 Workday 需要执行的步骤。 Workday 写回预配应用支持为以下 Workday 属性分配值：
@@ -172,6 +172,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 ## <a name="next-steps"></a>后续步骤
 
+* [详细了解 Azure AD 和 Workday 集成场景和 Web 服务调用](../app-provisioning/workday-integration-reference.md)
 * [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)
 * [了解如何在 Workday 和 Azure Active Directory 之间配置单一登录](workday-tutorial.md)
 * [了解如何将其他 SaaS 应用程序与 Azure Active Directory 进行集成](tutorial-list.md)

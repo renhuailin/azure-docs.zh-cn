@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: afe2cf288cd4a15091e8278309b3ecf74a2d35a4
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: eb08bb262806cb662822a75898196546a5c1058e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572742"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762537"
 ---
 # <a name="claim-sets"></a>声明集
 
@@ -55,6 +55,12 @@ policy_signer | x-ms-policy-signer
 以下声明由 [IETF EAT](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) 定义，并在响应对象中由 Azure 证明使用：
 - **“Nonce 声明”(nonce)**
 
+以下声明是根据传入的声明默认生成的
+- **x-ms-ver**：JWT 架构版本（应为“1.0”）
+- **x-ms-attestation-type**：表示证明类型的字符串值 
+- **x-ms-policy-hash**：字符串值，其中包含由 BASE64URL(SHA256(UTF8(BASE64URL(UTF8(policy text))))) 计算的策略文本的 SHA256 哈希值。
+- **x-ms-policy-signer**：包含具有公钥的 JWK，或签名策略标头中存在的证书链。 仅在对策略进行签名时才添加 x-ms-policy-signer
+
 ## <a name="claims-specific-to-sgx-enclaves"></a>特定于 SGX enclave 的声明
 
 ### <a name="incoming-claims-specific-to-sgx-attestation"></a>特定于 SGX 证明的传入声明
@@ -71,7 +77,6 @@ policy_signer | x-ms-policy-signer
 以下声明由服务生成并包含在 SGX 证明的响应对象中：
 - **x-ms-sgx-is-debuggable**：布尔值，指示 enclave 是否已启用调试
 - **x-ms-sgx-product-id**
-- **x-ms-ver**
 - **x-ms-sgx-mrsigner**：Quote 的“mrsigner”字段的十六进制编码值
 - **x-ms-sgx-mrenclave**：Quote 的“mrenclave”字段的十六进制编码值
 - **x-ms-sgx-svn**：在 Quote 中编码的安全版本号 
@@ -99,36 +104,39 @@ maa-ehd | x-ms-sgx-ehd
 aas-ehd | x-ms-sgx-ehd
 maa-attestationcollateral | x-ms-sgx-collateral
 
-## <a name="claims-issued-specific-to-trusted-platform-module-tpm-attestation"></a>颁发的声明（特定于受信任的平台模块 (TPM) 证明）
+## <a name="claims-specific-to-trusted-platform-module-tpm-vbs-attestation"></a>特定于受信任的平台模块 (TPM)/VBS 证明的声明
 
-### <a name="incoming-claims-can-also-be-used-as-outgoing-claims"></a>传入声明（也可用作传出声明）
+### <a name="incoming-claims-for-tpm-attestation"></a>用于 TPM 证明的传入声明
 
-- **aikValidated**：布尔值，包含证明标识密钥 (AIK) 证书是否已经过验证的信息。
-- **aikPubHash**：包含 base64(SHA256(DER 格式的 AIK 公钥)) 的字符串。
-- **tpmVersion**： 包含受信任的平台模块 (TPM) 主版本的整数值。
-- **secureBootEnabled**：布尔值，指示是否启用安全启动。
-- **iommuEnabled**：布尔值，指示是否启用输入输出内存管理单元 (Iommu)。
-- **bootDebuggingDisabled**：布尔值，指示是否禁用启动调试。
-- **notSafeMode**：布尔值，指示 Windows 是否未在安全模式下运行。
-- **notWinPE**：布尔值，指示 Windows 是否未在 WinPE 模式下运行。
-- **vbsEnabled**：布尔值，指示是否启用 VBS。
-- **vbsReportPresent**：布尔值，指示 VBS enclave 报表是否可用。
-- **enclaveAuthorId**：包含 enclave 创作者 ID 的 Base64Url 编码值的字符串值 - enclave 主模块的创作者标识符。
-- **enclaveImageId**：包含 enclave 映像 ID 的 Base64Url 编码值的字符串值 - enclave 主模块的映像标识符。
-- **enclaveOwnerId**：包含 enclave 所有者 ID 的 Base64Url 编码值的字符串值 - enclave 的所有者标识符。
-- **enclaveFamilyId**：包含 enclave 系列 ID 的 Base64Url 编码值的字符串值。 Enclave 的主模块的系列标识符。
-- **enclaveSvn**：包含 enclave 主模块的安全版本号的整数值。
-- **enclavePlatformSvn**：包含承载 enclave 的平台的安全版本号的整数值。
-- **enclaveFlags**：EnclaveFlags 声明是一个整数值，其中包含用于描述 enclave 的运行时策略的标志。
-  
-### <a name="outgoing-claims-specific-to-tpm-attestation"></a>特定于 TPM 证明的传出声明
+由 Azure 证明针对 TPM 证明颁发的声明。 声明的可用性取决于为证明提供的证据。
 
-- **policy_hash**：字符串值，其中包含由 BASE64URL(SHA256(BASE64URL(UTF8(Policy text)))) 计算的策略文本的 SHA256 哈希值。
-- **policy_signer**：包含具有公钥的 JWK，或签名策略标头中存在的证书链。
-- **ver（版本）** :包含报表说明的字符串值。 当前为 1.0。
-- **cnf（确认）Claim**：“Cnf”声明用于指定所有权证明密钥。 RFC 7800 中定义的确认声明包含表示为 JSON Web 密钥 (JWK) 对象 (RFC 7517) 的证明 enclave 密钥的公共部分。
-- **rp_data（信赖方数据）** ：在请求中指定的信赖方数据（如有），由信赖方用作 nonce，以保证报表的新鲜度。
-- **“jti”(JWT ID) 声明**：“jti”(JWT ID) 声明为 JWT 提供唯一标识符。 标识符值的赋值方式可确保几乎不会将相同的值意外分配给不同的数据对象。
+- **aikValidated**：布尔值，包含证明标识密钥 (AIK) 证书是否已经过验证的信息
+- **aikPubHash**：包含 base64(SHA256(DER 格式的 AIK 公钥)) 的字符串
+- **tpmVersion**： 包含受信任的平台模块 (TPM) 主版本的整数值
+- **secureBootEnabled**：布尔值，指示是否启用安全启动
+- **iommuEnabled**：布尔值，指示是否启用输入输出内存管理单元 (Iommu)
+- **bootDebuggingDisabled**：布尔值，指示是否禁用启动调试
+- **notSafeMode**：布尔值，指示 Windows 是否未在安全模式下运行
+- **notWinPE**：布尔值，指示 Windows 是否未在 WinPE 模式下运行
+- **vbsEnabled**：布尔值，指示是否启用 VBS
+- **vbsReportPresent**：布尔值，指示 VBS enclave 报表是否可用
+
+### <a name="incoming-claims-for-vbs-attestation"></a>用于 VBS 证明的传入声明
+
+Azure 证明针对 VBS 证明颁发的声明是提供给 TPM 证明的声明的补充。 声明的可用性取决于为证明提供的证据。
+
+- **enclaveAuthorId**：包含 enclave 创作者 ID 的 Base64Url 编码值的字符串值 - enclave 主模块的创作者标识符
+- **enclaveImageId**：包含 enclave 映像 ID 的 Base64Url 编码值的字符串值 - enclave 主模块的映像标识符
+- **enclaveOwnerId**：包含 enclave 所有者 ID 的 Base64Url 编码值的字符串值 - enclave 的所有者标识符
+- **enclaveFamilyId**：包含 enclave 系列 ID 的 Base64Url 编码值的字符串值。 enclave 的主模块的系列标识符
+- **enclaveSvn**：包含 enclave 主模块的安全版本号的整数值
+- **enclavePlatformSvn**：包含承载 enclave 的平台的安全版本号的整数值
+- **enclaveFlags**：enclaveFlags 声明是一个整数值，其中包含用于描述 enclave 的运行时策略的标志
+
+### <a name="outgoing-claims-specific-to-tpm-and-vbs-attestation"></a>特定于 TPM 和 VBS 证明的传出声明
+
+- **cnf（确认）** ：“Cnf”声明用于指定所有权证明密钥。 RFC 7800 中定义的确认声明包含表示为 JSON Web 密钥 (JWK) 对象 (RFC 7517) 的证明 enclave 密钥的公共部分
+- **rp_data（信赖方数据）** ：在请求中指定的信赖方数据（如有），由信赖方用作 nonce，以保证报表的新鲜度。 仅当有 rp_data 时才添加 rp_data
 
 ### <a name="property-claims"></a>属性声明
 

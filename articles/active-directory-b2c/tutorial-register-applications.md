@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/10/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84a3ef7b41b17e85c594213246211d45911ac56a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953043"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918206"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中注册 Web 应用
 
@@ -62,7 +62,7 @@ ms.locfileid: "94953043"
 #### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
+1. 在门户工具栏中选择“目录 + 订阅”，然后选择包含 Azure AD B2C 租户的目录。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 选择“应用程序(旧版)”，然后选择“添加” 。
 1. 输入应用程序的名称。 例如，“webapp1”。
@@ -98,6 +98,14 @@ ms.locfileid: "94953043"
 1. 选择“保存”以查看密钥。 记下“应用密钥”值。 在应用程序的代码中将此值用作应用程序机密。
 
 * * *
+
+## <a name="enable-id-token-implicit-grant"></a>启用 ID 令牌隐式授权
+
+隐式授权的特征是，令牌（例如 ID 和访问令牌）直接从 Azure AD B2C 返回到应用程序。 对于直接从授权终结点请求 ID 令牌的 Web 应用（例如 ASP.NET Core Web 应用和 [https://jwt.ms](https://jwt.ms)），请在应用注册中启用隐式授权流。
+
+1. 在左侧菜单中的“管理”下，选择“身份验证” 。
+1. 在“隐式授权”下，选中“访问令牌”和“ID 令牌”复选框 。
+1. 选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 

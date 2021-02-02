@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2f141b896ef11fecdf156d062a78252ce6f7ffb3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929185"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734977"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用功能标志
 
@@ -37,7 +37,6 @@ ms.locfileid: "96929185"
 ## <a name="set-up-feature-management"></a>设置功能管理
 
 添加对 `Microsoft.FeatureManagement.AspNetCore` 和 `Microsoft.FeatureManagement` NuGet 包的引用以利用 .NET Core 功能管理器。
-    
 .NET Core 功能管理器 `IFeatureManager` 从框架的本机配置系统获取功能标志。 因此，可以使用 .NET Core 支持的任何配置源（包括本地 *appsettings.json* 文件或环境变量）来定义应用程序的功能标志。 `IFeatureManager` 依赖于 .NET Core 依赖项注入。 可以使用标准约定来注册功能管理服务。
 
 ```csharp
@@ -106,16 +105,23 @@ public class Startup
               .UseStartup<Startup>();
    ```
 
-2. 打开“Startup.cs”并更新 `Configure` 方法，添加名为 `UseAzureAppConfiguration` 的内置中间件。 此中间件允许在 ASP.NET Core Web 应用继续接收请求的同时定期刷新功能标志值。
+2. 打开“Startup.cs”并更新 `Configure` 和 `ConfigureServices` 方法，添加名为 `UseAzureAppConfiguration` 的内置中间件。 此中间件允许在 ASP.NET Core Web 应用继续接收请求的同时定期刷新功能标志值。
 
    ```csharp
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
        app.UseAzureAppConfiguration();
        app.UseMvc();
    }
    ```
 
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddAzureAppConfiguration();
+   }
+   ```
+   
 功能标志值预期会不断变化。 默认情况下，功能标志值缓存 30 秒，因此，在中间件收到请求时触发的刷新操作不会更新该值，直到缓存值过期为止。 以下代码演示如何在 `options.UseFeatureFlags()` 调用中将缓存过期时间或轮询间隔更改为 5 分钟。
 
 ```csharp
@@ -189,6 +195,8 @@ if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 在 ASP.NET Core MVC 中，可以通过依赖项注入访问功能管理器 `IFeatureManager`。
 
 ```csharp
+using Microsoft.FeatureManagement;
+
 public class HomeController : Controller
 {
     private readonly IFeatureManager _featureManager;

@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8faa6533ba4dc7fad61c045278c5504c5f78d900
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: a00f319c55665695879aac3c8ba711ce13fd5d4e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888957"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763044"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>开始了解 Web 呼叫示例
 
@@ -96,6 +96,7 @@ Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 
 - 熟悉如何[使用呼叫客户端库](../quickstarts/voice-video-calling/calling-client-samples.md)
 - 了解有关[呼叫工作原理](../concepts/voice-video-calling/about-call-types.md)的详细信息
 - 查看 [API 参考文档](/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js)
+- 查看 [Contoso Med 应用](https://github.com/Azure-Samples/communication-services-contoso-med-app)示例
 
 ## <a name="additional-reading"></a>其他阅读材料
 

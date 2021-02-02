@@ -7,14 +7,14 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da7a80842bec68fde8cc44401bb04c2dd061741f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4bda56f3037469477ddfe059dd20c14cd34586d8
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787952"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745711"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>教程：AI 使用 .NET SDK 从 Azure Blob 生成可搜索内容
 
@@ -23,8 +23,8 @@ ms.locfileid: "92787952"
 在本教程中，您将学习如何执行以下操作：
 
 > [!div class="checklist"]
-> * 设置开发环境。
-> * 使用 OCR、语言检测、实体和关键短语识别定义通过 Blob 的管道。
+> * 设置开发环境
+> * 使用 OCR、语言检测、实体和关键短语识别来定义管道。
 > * 执行管道调用转换，以及创建和加载搜索索引。
 > * 使用全文搜索和丰富的查询语法浏览结果。
 
@@ -32,9 +32,11 @@ ms.locfileid: "92787952"
 
 ## <a name="overview"></a>概述
 
-本教程使用 C# 和 Azure.Search.Documents 客户端库来创建数据源、索引、索引器和技能组。
+本教程使用 C# 和 [Azure.Search.Documents 客户端库](/dotnet/api/overview/azure/search.documents-readme)来创建数据源、索引、索引器和技能组。
 
-技能组使用基于认知服务 API 的内置技能。 管道中的步骤包括图像上的光学字符识别 (OCR)、文本的语言检测、关键短语提取和实体识别（组织）。 新信息存储在可在查询、方面和筛选器中使用的新字段中。
+索引器连接到在数据源对象中指定的 Blob 容器，并将所有索引内容发送到现有搜索索引。
+
+技能组已附加到索引器。 它使用 Microsoft 提供的内置技能来查找和提取信息。 管道中的步骤包括图像上的光学字符识别 (OCR)、文本的语言检测、关键短语提取和实体识别（组织）。 管道创建的新信息存储在索引的新字段中。 填充索引后，可在查询、Facet 和筛选器中使用这些字段。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,7 +54,7 @@ ms.locfileid: "92787952"
 
 1. 打开此 [OneDrive 文件夹](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然后单击左上角的“下载”将文件复制到计算机。 
 
-1. 右键单击 zip 文件并选择“全部提取”。 有 14 个不同类型的文件。 本练习将使用其中的 7 个文件。
+1. 右键单击 zip 文件并选择“全部提取”。  有 14 个不同类型的文件。 本练习将使用其中的 7 个文件。
 
 还可以下载本教程的源代码。 源代码位于 [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) 存储库的“tutorial-ai-enrichment/v11”文件夹中。
 
@@ -64,29 +66,29 @@ ms.locfileid: "92787952"
 
 ### <a name="start-with-azure-storage"></a>从 Azure 存储开始
 
-1. [登录到 Azure 门户](https://portal.azure.com/)并单击“+ 创建资源”。
+1. [登录到 Azure 门户](https://portal.azure.com/)并单击“+ 创建资源”。 
 
-1. 搜索“存储帐户”，并选择“Microsoft 的存储帐户”产品/服务。
+1. 搜索“存储帐户”，并选择“Microsoft 的存储帐户”产品/服务。 
 
    ![创建存储帐户](media/cognitive-search-tutorial-blob/storage-account.png "创建存储帐户")
 
 1. 在“基本信息”选项卡中，必须填写以下项。 对于其他任何字段，请接受默认设置。
 
-   * 资源组。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
+   * 资源组  。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
 
-   * **存储帐户名称** 。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus* 。 
+   * **存储帐户名称**。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus*。 
 
-   * **位置** 。 如果可能，请选择 Azure 认知搜索和认知服务所用的相同位置。 使用一个位置可以避免带宽费用。
+   * **位置**。 如果可能，请选择 Azure 认知搜索和认知服务所用的相同位置。 使用一个位置可以避免带宽费用。
 
-   * **帐户类型** 。 选择默认设置“StorageV2 (常规用途 v2)”。
+   * **帐户类型**。 选择默认设置“StorageV2 (常规用途 v2)”  。
 
-1. 单击“查看 + 创建”以创建服务。
+1. 单击“查看 + 创建”以创建服务。 
 
-1. 创建后，单击“转到资源”打开“概述”页。
+1. 创建后，单击“转到资源”打开“概述”页。 
 
-1. 单击“Blob”服务。
+1. 单击“Blob”服务。 
 
-1. 单击“+ 容器”创建容器，并将其命名为 *cog-search-demo* 。
+1. 单击“+ 容器”创建容器，并将其命名为 *cog-search-demo*。 
 
 1. 选择“cog-search-demo”，然后单击“上传”打开下载文件所保存到的文件夹。 选择所有 14 个文件，然后单击“确定”以上传。
 

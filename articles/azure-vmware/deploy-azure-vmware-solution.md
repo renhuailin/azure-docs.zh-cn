@@ -2,17 +2,20 @@
 title: 部署和配置 Azure VMware 解决方案
 description: 了解如何使用规划阶段中收集的信息部署 Azure VMware 解决方案私有云。
 ms.topic: tutorial
-ms.date: 11/09/2020
-ms.openlocfilehash: 7e31b9236a3c75009d15bde35019036b6db55cab
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.date: 12/24/2020
+ms.openlocfilehash: f2b6f3c4ad82117fee96e0c2e5973a7011384d48
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861506"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760885"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>部署和配置 Azure VMware 解决方案
 
-本文介绍如何使用[规划部分](production-ready-deployment-steps.md)的信息部署 Azure VMware 解决方案。 如果你尚未定义此信息，请先返回到[规划部分](production-ready-deployment-steps.md)定义此信息，然后再继续。
+本文介绍如何使用[规划部分](production-ready-deployment-steps.md)的信息部署 Azure VMware 解决方案。 
+
+>[!IMPORTANT]
+>如果你尚未定义此信息，请先回到[规划部分](production-ready-deployment-steps.md)进行定义，然后再继续。
 
 ## <a name="register-the-resource-provider"></a>注册资源提供程序
 
@@ -40,15 +43,16 @@ ms.locfileid: "96861506"
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="创建 Azure VMware 解决方案跳转盒" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
-若要在你[在部署过程中标识或创建的](production-ready-deployment-steps.md#azure-virtual-network-to-attach-azure-vmware-solution)虚拟网络中创建虚拟机 (VM)，请按以下说明操作： 
+若要在你[在部署过程中标识或创建的](production-ready-deployment-steps.md#attach-virtual-network-to-azure-vmware-solution)虚拟网络中创建虚拟机 (VM)，请按以下说明操作： 
 
 [!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
 
 ## <a name="connect-to-a-virtual-network-with-expressroute"></a>通过 ExpressRoute 连接到虚拟网络
 
-如果你未在部署步骤中定义虚拟网络，并且你的目的是将 Azure VMware 解决方案的 ExpressRoute 连接到现有 ExpressRoute 网关，请执行以下步骤。
+>[!IMPORTANT]
+>如果已在 Azure 中的部署屏幕上定义了一个虚拟网络，请跳到下一部分。
 
-如果已在 Azure 中的部署屏幕上定义了一个虚拟网络，请跳到下一部分。
+如果你未在部署步骤中定义虚拟网络，并且你希望将 Azure VMware 解决方案的 ExpressRoute 连接到现有 ExpressRoute 网关，请执行以下步骤。
 
 [!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-vnet.md)]
 
@@ -79,9 +83,9 @@ ms.locfileid: "96861506"
 
 ## <a name="verify-advertised-nsx-t-segment"></a>验证播发的 NSX-T 网段
 
-返回到[验证播发的网络路由](#verify-network-routes-advertised)步骤。 你会在列表中看到其他路由，它们代表你在上一步中创建的网段。  
+返回到[验证播发的网络路由](#verify-network-routes-advertised)步骤。 你会在列表中看到其他路由，它们表示你在上一步中创建的网段。  
 
-对于虚拟机，需要对[在 Azure VMware 解决方案中创建网段](#create-a-network-segment-on-azure-vmware-solution)步骤中创建的段进行分配。  
+对于虚拟机，需要对[在 Azure VMware 解决方案中创建网段](#create-a-network-segment-on-azure-vmware-solution)步骤中创建的网段进行分配。  
 
 由于 DNS 是必需的，因此请标识要使用的 DNS 服务器。  
 
@@ -104,7 +108,7 @@ ms.locfileid: "96861506"
 
 ## <a name="add-a-vm-on-the-nsx-t-network-segment"></a>在 NSX-T 网段上添加 VM
 
-在你的 Azure VMware 解决方案 vCenter 中，部署一个 VM，并使用它来验证从 Azure VMware 解决方案网络到以下目标的连接性：
+在 Azure VMware 解决方案 vCenter 中，部署一个 VM，用它来验证从 Azure VMware 解决方案网络到以下目标的连接：
 
 - Internet
 - Azure 虚拟网络
@@ -120,11 +124,10 @@ ms.locfileid: "96861506"
 登录到在上一步创建的 VM 并验证连接性；
 
 1. 对 Internet 上的某个 IP 执行 ping 命令。
-2. 通过 Web 浏览器访问某个 Internet 站点。
+2. 在 Web 浏览器中，转到 Internet 站点。
 3. 对位于 Azure 虚拟网络上的跳转盒执行 ping 命令。
 
->[!IMPORTANT]
->此时，Azure VMware 解决方案已启动并运行，并且你已成功建立与 Azure 虚拟网络和 Internet 之间的连接。
+Azure VMware 解决方案现已启动并运行，并且你已成功建立与 Azure 虚拟网络和 Internet 的连接。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 通过 Azure IoT 中心设置和使用指标和日志
-description: 了解如何通过 Azure IoT 中心设置和使用指标和日志。 这将提供数据以进行分析，从而帮助诊断中心可能存在的问题。
+title: 教程 - 通过 Azure IoT 中心设置和使用指标与日志
+description: 教程 - 了解如何通过 Azure IoT 中心设置和使用指标与日志。 这将提供数据以进行分析，从而帮助诊断中心可能存在的问题。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: a16dbeedc2362f4a263d59a673dbb4358f7ba034
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436481"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625193"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和日志
 

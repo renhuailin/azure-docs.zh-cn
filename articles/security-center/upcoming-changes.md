@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/18/2021
+ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: ba9a640c2231c7098e58ad6e29bbfa196436a7f9
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 99dadea37a519289120fcf30e394df1e0f7af5e7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562312"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757705"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -31,11 +31,39 @@ ms.locfileid: "98562312"
 
 ## <a name="planned-changes"></a>计划的更改
 
+- [Kubernetes 工作负载保护建议即将发布正式版 (GA)](#kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga)
 - [“应用系统更新”安全控制中的两项建议将被弃用](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [SQL 数据分类建议的增强](#enhancements-to-sql-data-classification-recommendation)
-- [在 Azure Policy 评估中将“不适用”资源报告为“合规”](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
-- [添加了 35 条预览建议，以扩大 Azure 安全基准的覆盖范围](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
 
+
+### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>Kubernetes 工作负载保护建议即将发布正式版 (GA)
+
+**预计更改日期：** 2021 年 1 月
+
+[保护 Kubernetes 工作负载](kubernetes-workload-protections.md)中介绍的 Kubernetes 工作负载保护建议当前为预览版。 虽然建议目前为预览版，但它不会导致资源运行不正常，在计算安全功能分数时也不会包含这些建议。
+
+这些建议即将发布正式版 (GA)，因此将会包含在分数计算中。 如果尚未对其进行修正，则可能会对安全功能分数造成轻微影响。
+
+请尽量进行修正（请参阅[修正 Azure 安全中心内的建议](security-center-remediate-recommendations.md)了解具体操作）。
+
+Kubernetes 工作负载保护建议如下：
+
+- 应在群集上安装并启用适用于 Kubernetes 的 Azure Policy 加载项
+- 应强制执行容器 CPU 和内存限制
+- 应避免特权容器
+- 应强制对容器使用不可变（只读）根文件系统
+- 应避免使用特权提升的容器
+- 应避免以根用户身份运行容器
+- 应避免使用共享敏感主机命名空间的容器
+- 应强制对容器使用最低权限 Linux 功能
+- Pod HostPath 卷装载的使用应仅限于已知列表
+- 容器应只侦听允许的端口
+- 服务应只侦听允许的端口
+- 应限制对主机网络和端口的使用
+- 应限制替代或禁用容器 AppArmor 配置文件
+- 应只从受信任的注册表部署容器映像             
+
+若要详细了解这些建议，请参阅[保护 Kubernetes 工作负载](kubernetes-workload-protections.md)。
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>“应用系统更新”安全控制中的两项建议将被弃用 
 
@@ -44,7 +72,7 @@ ms.locfileid: "98562312"
 以下两项建议计划在 2021 年 2 月弃用：
 
 - **应重启计算机来应用系统更新**。 这可能会对安全功能分数造成轻微影响。
-- **应在计算机上安装监视代理**。 此建议仅与本地计算机相关，其中某些逻辑将转移到另一个建议“应在计算机上解决 Log Analytics 代理运行状况问题”。 这可能会对安全功能分数造成轻微影响。
+- **应在计算机上安装监视代理**。 此建议仅与本地计算机相关，其中某些逻辑将转移到另一条建议“应在计算机上解决 Log Analytics 代理运行状况问题”。 这可能会对安全功能分数造成轻微影响。
 
 建议检查连续导出和工作流自动化配置，以查看这些建议是否包括在其中。 此外，任何仪表板或其他可能使用它们的监视工具都应该相应地进行更新。
 
@@ -60,44 +88,6 @@ ms.locfileid: "98562312"
 - 该建议将不再影响安全功能分数
 - 安全控制（“应用数据分类”）将不再影响安全功能分数
 - 建议的 ID 也将更改（当前为 b0df6f56-862d-4730-8597-38c0fd4ebd59）
-
-
-
-### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>在 Azure Policy 评估中将“不适用”资源报告为“合规”
-
-**预计更改日期：** 2021 年 1 月
-
-当前，为建议评估且发现不适用的资源在 Azure Policy 中显示为“不合规”。 任何用户操作都不能将资源状态更改为“合规”。 根据此计划内更改，为了显得更加清楚，将资源报告为“合规”。
-
-唯一的影响是 Azure Policy 中合规资源的数量将增加。 Azure 安全中心的安全评分不受影响。
-
-### <a name="35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark"></a>添加了 35 条预览建议，以扩大 Azure 安全基准的覆盖范围
-
-**预计更改日期：** 2021 年 1 月
-
-Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，适用于基于常见合规框架的安全与合规最佳做法。 [详细了解 Azure 安全基准](../security/benchmarks/introduction.md)。
-
-将在安全中心添加下列 35 条预览建议，以扩大此基准的覆盖范围。
-
-预览版建议不会显示资源运行不正常，并且在计算安全功能分数时不会包含这些建议。 请尽量修正这些建议，以便在预览期结束之后，借助这些建议提高安全功能分数。 如需详细了解如何响应这些建议，请参阅[修正 Azure 安全中心的建议](security-center-remediate-recommendations.md)。
-
-| 安全控制                     | 新建议                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 启用静态加密            | - Azure Cosmos DB 帐户应使用客户管理的密钥来加密静态数据<br>- Azure 机器学习工作区应使用客户管理的密钥 (CMK) 进行加密<br>- 应为 MySQL 服务器启用“创建自己的密钥”数据保护<br>- 应为 PostgreSQL 服务器启用“创建自己的密钥”数据保护<br>- 认知服务帐户应启用使用客户管理的密钥 (CMK) 进行数据加密<br>- 容器注册表应使用客户管理的密钥 (CMK) 进行加密<br>- SQL 托管实例应使用客户管理的密钥进行静态数据加密<br>- SQL Server 应使用客户管理的密钥进行静态数据加密<br>- 存储帐户应使用客户管理的密钥 (CMK) 进行加密                                                                                                                                                              |
-| 实现安全最佳实践    | - 订阅应有一个联系人电子邮件地址，用于接收安全问题通知<br> - 你的订阅应启用 Log Analytics 代理自动预配<br> - 应启用高严重性警报的电子邮件通知<br> - 应启用向订阅所有者发送高严重性警报的电子邮件通知<br> - 密钥保管库应启用清除保护<br> - 密钥保管库应启用软删除 |
-| 管理访问和权限        | - 确保函数应用已启用“客户端证书(传入客户端证书)” |
-| 保护应用程序免受 DDoS 攻击 | - 应为应用程序网关启用 Web 应用程序防火墙 (WAF)<br> - 应为 Web 应用程序防火墙 (WAF) 启用 Azure Front Door 服务 |
-| 限制未经授权的网络访问 | - 应在 Key Vault 上启用防火墙<br> - 应为 Key Vault 配置专用终结点<br> - 应用程序配置应使用专用链接<br> - Azure Cache for Redis 应驻留在虚拟网络中<br> - Azure 事件网格域应使用专用链接<br> - Azure 事件网格主题应使用专用链接<br> - Azure 机器学习工作区应使用专用链接<br> - Azure SignalR 服务应使用专用链接<br> - Azure Spring Cloud 应使用网络注入<br> - 容器注册表不得允许无限制的网络访问<br> - 容器注册表应使用专用链接<br> - 应为 MariaDB 服务器禁用公用网络访问<br> - 应为 MySQL 服务器禁用公用网络访问<br> - 应为 PostgreSQL 服务器禁用公用网络访问<br> - 存储帐户应使用专用链接连接<br> - 存储帐户应使用虚拟网络规则来限制网络访问<br> - VM 映像生成器模板应使用专用链接|
-|                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-
-相关链接：
-
-- [详细了解 Azure 安全基准](../security/benchmarks/introduction.md)
-- [详细了解 Azure Database for MariaDB](../mariadb/overview.md)
-- [详细了解 Azure Database for MySQL](../mysql/overview.md)
-- [详细了解 Azure Database for PostgreSQL](../postgresql/overview.md)
-
-
 
 
 

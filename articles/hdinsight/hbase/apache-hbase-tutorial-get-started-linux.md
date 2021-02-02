@@ -1,19 +1,16 @@
 ---
 title: 教程 - 在 Azure HDInsight 中使用 Apache HBase
 description: 按照本 Apache HBase 教程开始在 HDInsight 上使用 Hadoop。 从 HBase shell 创建表，并使用 Hive 查询这些表。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 04/14/2020
-ms.openlocfilehash: d24c63e3a2989173e718cd27fa43cecc50181047
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 01/22/2021
+ms.openlocfilehash: 05e40dd38fc7111521b600908cda38084249e4de
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533489"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936054"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用 Apache HBase
 
@@ -344,12 +341,18 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
    - 任务
    - 软件属性
 
+## <a name="cluster-recreation"></a>重新创建群集
+
+在删除 HBase 群集后，可以通过使用相同的默认 Blob 容器创建另一个 HBase 群集。 新群集将选取已在原始群集中创建的 HBase 表。 不过，为了避免不一致，建议在删除群集之前先禁用 HBase 表。 
+
+可以使用 HBase 命令 `disable 'Contacts'`。 
+
 ## <a name="clean-up-resources"></a>清理资源
 
-为了避免不一致，建议在删除群集之前先禁用 HBase 表。 可以使用 HBase 命令 `disable 'Contacts'`。 如果不打算继续使用此应用程序，请使用以下步骤删除创建的 HBase 群集：
+如果不打算继续使用此应用程序，请使用以下步骤删除创建的 HBase 群集：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-1. 在顶部的“搜索”框中，键入 **HDInsight** 。
+1. 在顶部的“搜索”框中，键入 **HDInsight**。
 1. 选择“服务”下的“HDInsight 群集” 。
 1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。 
 1. 单击 **“删除”** 。 单击 **“是”** 。

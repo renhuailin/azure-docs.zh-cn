@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503788"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735769"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 订阅
 
@@ -79,7 +79,7 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 
 ## <a name="reactivate-a-subscription"></a>重新激活订阅
 
-如果意外取消了采用即用即付费率的订阅，可[在帐户中心重新激活订阅](subscription-disabled.md)。
+如果意外取消了采用即用即付费率的订阅，可[在 Azure 门户重新激活订阅](subscription-disabled.md)。
 
 如果你的订阅不是采用即用即付费率的订阅，可在取消后的 90 天内联系支持人员来重新激活订阅。
 
@@ -101,4 +101,4 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果需要，可以在[帐户中心](subscription-disabled.md)重新激活即用即付订阅。
+- 如果需要，可在 [Azure 门户](subscription-disabled.md)中重新激活即用即付订阅。

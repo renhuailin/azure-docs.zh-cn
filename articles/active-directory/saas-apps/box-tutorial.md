@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/05/2021
+ms.date: 01/21/2021
 ms.author: jeedes
-ms.openlocfilehash: caf919f8a5b6ac9a979ade256918138e4c846b68
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d21ccdcb1f3854733d045b47a5f43e27bbdf4ccb
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049685"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807900"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Box 集成
 
@@ -92,6 +92,11 @@ ms.locfileid: "98049685"
     > [!NOTE]
     > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 请联系 [Box 客户端支持团队](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
+1. Box 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 Mapbox 令牌属性配置。 以下屏幕截图显示一个示例。 唯一用户标识符的默认值是 user.userprincipalname，但 Box 要求通过用户的电子邮件地址映射此项 。 为此，可以使用列表中的 **user.mail** 属性，或使用基于组织配置的相应属性值。
+
+    ![image](common/default-attributes.png)
+
+
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
@@ -152,7 +157,7 @@ ms.locfileid: "98049685"
 
 * 直接转到 Box 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Box 磁贴时，会重定向到 Box 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Box 磁贴时，会重定向到 Box 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

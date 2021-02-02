@@ -3,12 +3,12 @@ title: 将容器中的 .NET 应用部署到 Azure Service Fabric
 description: 了解如何使用 Visual Studio 将现有 .NET 应用程序容器化并在 Service Fabric 中本地调试容器。 容器化后的应用程序会被推送给 Azure 容器注册表，并部署到 Service Fabric 群集。 部署到 Azure 时，应用程序使用 Azure SQL DB 保存数据。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 8be9de495fa6bc5689a2dba5384f5df3112cbb38
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7930651a0faa5f37336c15557e2a0f068d613011
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485513"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936720"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教程：将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric
 
@@ -27,11 +27,12 @@ ms.locfileid: "96485513"
 
 ## <a name="prerequisites"></a>先决条件
 
-1. 如果还没有 Azure 订阅，[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-2. 安装 [Docker CE for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)，以便在 Windows 10 上运行容器。
-3. 安装 [Service Fabric 运行时版本 6.2 或更高版本](service-fabric-get-started.md)以及 [Service Fabric SDK 版本 3.1](service-fabric-get-started.md) 或更高版本。
-4. 安装 [Visual Studio 2019 版本 16.1](https://www.visualstudio.com/) 或更高版本，其中包含 **Azure 开发** 以及 **ASP.NET 和 Web 开发** 工作负荷。
-5. 安装 [Azure PowerShell][link-azure-powershell-install]
+1. 如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+2. 启用“Hyper-V”和“容器”这两项 Windows 功能 。
+3. 安装 [Docker Desktop for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)，以便在 Windows 10 上运行容器。
+4. 安装 [Service Fabric 运行时版本 6.2 或更高版本](service-fabric-get-started.md)以及 [Service Fabric SDK 版本 3.1](service-fabric-get-started.md) 或更高版本。
+5. 安装 [Visual Studio 2019 版本 16.1](https://www.visualstudio.com/) 或更高版本，其中包含 **Azure 开发** 以及 **ASP.NET 和 Web 开发** 工作负荷。
+6. 安装 [Azure PowerShell][link-azure-powershell-install]
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>下载并运行 Fabrikam Fiber CallCenter
 
@@ -40,16 +41,6 @@ ms.locfileid: "96485513"
 2. 验证 Fabrikam Fiber CallCenter 应用程序是否能正确无误地生成和运行。  以 **管理员身份** 启动 Visual Studio，然后打开 [FabrikamFiber.CallCenter.sln][link-fabrikam-github] 文件。  按 F5 调试并运行应用程序。
 
    ![本地主机上运行的 Fabrikam Fiber CallCenter 应用程序主页的屏幕截图。 该页显示一个仪表板，其中包含支持电话列表。][fabrikam-web-page]
-
-## <a name="containerize-the-application"></a>容器化应用程序
-
-1. 右键单击“FabrikamFiber.Web”项目，再单击“添加” > “容器业务流程协调程序支持”  。  选择“Service Fabric”作为容器业务流程协调程序，然后单击“确定” 。
-
-2. 如果收到提示，单击“是”立即将 Docker 切换到 Windows 容器。
-
-   解决方案中将创建一个新的 Service Fabric 应用程序项目，即“FabrikamFiber.CallCenterApplication”。  系统会向现有的“FabrikamFiber.Web”项目添加一个 Dockerfile。  还会向“FabrikamFiber.Web”项目添加一个“PackageRoot”目录，其中包含新 FabrikamFiber.Web 服务的服务清单和设置 。
-
-   现在可以在 Service Fabric 应用程序中生成和打包该容器。 在计算机上生成容器映像后，即可将其推送到任何容器注册表并下拉到任何主机上运行。
 
 ## <a name="create-an-azure-sql-db"></a>创建 Azure SQL DB
 
@@ -120,9 +111,42 @@ Write-Host "Server name is $servername"
 >[!NOTE]
 >可以使用选择的任何 SQL Server 进行本地调试，只要可通过主机访问。 但是，**localdb** 不支持 `container -> host` 通信。 如果想要在生成 Web 应用程序的发布版本时使用其他 SQL 数据库，可将另一个连接字符串添加到 web.release.config 文件。
 
+## <a name="containerize-the-application"></a>容器化应用程序
+
+1. 右键单击“FabrikamFiber.Web”项目，再单击“添加” > “容器业务流程协调程序支持”  。  选择“Service Fabric”作为容器业务流程协调程序，然后单击“确定” 。
+
+2. 如果收到提示，单击“是”立即将 Docker 切换到 Windows 容器。
+
+   解决方案中将创建一个新的 Service Fabric 应用程序项目，即“FabrikamFiber.CallCenterApplication”。  系统会向现有的“FabrikamFiber.Web”项目添加一个 Dockerfile。  还会向“FabrikamFiber.Web”项目添加一个“PackageRoot”目录，其中包含新 FabrikamFiber.Web 服务的服务清单和设置 。
+
+   现在可以在 Service Fabric 应用程序中生成和打包该容器。 在计算机上生成容器映像后，即可将其推送到任何容器注册表并下拉到任何主机上运行。
+
 ## <a name="run-the-containerized-application-locally"></a>本地运行已容器化的应用程序
 
 按 F5，在本地 Service Fabric 开发群集的容器中运行和调试应用程序。 如果出现一个消息框，请求授予“ServiceFabricAllowedUsers”组对Visual Studio 项目目录的读取和执行权限，请单击“是”。
+
+如果 F5 运行引发异常（如下所示），则表示尚未将正确的 IP 添加到 Azure 数据库防火墙中。
+
+```text
+System.Data.SqlClient.SqlException
+HResult=0x80131904
+Message=Cannot open server 'fab-fiber-751718376' requested by the login. Client with IP address '123.456.789.012' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Source=.Net SqlClient Data Provider
+StackTrace:
+<Cannot evaluate the exception stack trace>
+```
+
+若要将适当的 IP 添加到 Azure 数据库防火墙，请运行以下命令。
+
+```powershell
+# The IP address of your development computer that accesses the SQL DB.
+$clientIPNew = "<client IP from the Error Message>"
+
+# Create the firewall rule to allow your development computer to access the server.
+New-AzSqlServerFirewallRule -ResourceGroupName $dbresourcegroupname `
+    -ServerName $servername `
+    -FirewallRuleName "AllowClientNew" -StartIpAddress $clientIPNew -EndIpAddress $clientIPNew
+```
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
@@ -144,14 +168,14 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 
 在群集（一组已连接网络的虚拟机或物理计算机）上运行 Service Fabric 应用程序。  需在 Azure 中创建一个 Service Fabric 群集，然后才能将应用程序部署到 Azure。
 
-可以：
+方法：
 
 * 通过 Visual Studio 创建一个测试群集。 可以通过此选项使用首选的配置直接从 Visual Studio 创建安全的群集。
 * [模板创建安全的群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 本教程通过 Visual Studio 创建群集，这非常适合测试方案。 如果通过其他方式创建群集或使用现有的群集，可复制粘贴连接终结点或从订阅中选择连接终结点。
 
-在开始之前，请在解决方案资源管理器中打开 FabrikamFiber.Web->PackageRoot->ServiceManifest.xml。 记下在“终结点”中列出的 Web 前端的端口。
+在开始之前，请在解决方案资源管理器中打开 FabrikamFiber.Web -> PackageRoot -> ServiceManifest.xml。 记下在“终结点”中列出的 Web 前端的端口。
 
 创建群集时，请执行以下操作：
 
@@ -166,6 +190,9 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 
     c. 选择“证书”选项卡。在此选项卡中键入一个密码，用于确保群集证书的安全。 此证书有助于确保群集的安全。 也可修改用于保存证书的路径。 Visual Studio 还可以为你导入证书，因为这是将应用程序发布到群集的必需步骤。
 
+    >[!NOTE]
+    >记下导入此证书的文件夹路径。 在创建群集后，下一步是导入此证书。
+
     d. 选择“VM 详细信息”选项卡。指定一个密码，以便将其用于构成群集的虚拟机 (VM)。 可以使用用户名和密码远程连接到 VM。 此外还必须选择 VM 大小，并可根据需要更改 VM 映像。
 
     > [!IMPORTANT]
@@ -176,6 +203,12 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
     f. 修改完设置以后，选择“创建”按钮。
 
 5. 需要数分钟才能创建完毕；输出窗口会指示群集何时完全创建好。
+
+## <a name="install-the-imported-certificate"></a>安装导入的证书
+
+将在群集创建步骤中导入的证书安装到“当前用户”存储位置，并提供你提供的私钥密码。
+
+可从控制面板打开“管理用户证书”，并确认已在“证书 - 当前用户” -> “个人” -> “证书”下安装证书来确认安装   。 证书应类似于 [群集名称].[群集位置].cloudapp.azure.com，例如 fabrikamfibercallcenter.southcentralus.cloudapp.azure.com  。 
 
 ## <a name="allow-your-application-running-in-azure-to-access-sql-database"></a>允许在 Azure 中运行的应用程序访问 SQL 数据库
 
@@ -233,9 +266,11 @@ $vnetRuleObject1 = New-AzSqlServerVirtualNetworkRule `
 
 ![发布应用程序][publish-app]
 
-在“输出”窗口中跟进部署进度。 应用程序部署完毕后，打开浏览器并键入群集地址和应用程序端口。 例如，`https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`。
+在“输出”窗口中跟进部署进度。 应用程序部署完毕后，打开浏览器并键入群集地址和应用程序端口。 例如，`http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`。
 
 ![azure.com 上运行的 Fabrikam Fiber CallCenter 应用程序主页的屏幕截图。 该页显示一个仪表板，其中包含支持电话列表。][fabrikam-web-page-deployed]
+
+如果页面未能加载或未能提示提供证书，请尝试打开资源管理器路径，例如 `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:19080/Explorer`，然后选择新安装的证书。
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>使用 Service Fabric 群集设置持续集成和部署 (CI/CD)
 

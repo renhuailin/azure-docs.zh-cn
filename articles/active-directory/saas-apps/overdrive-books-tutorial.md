@@ -9,33 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: c15492031e3a83c9f4af4c3d8b45f9574674046c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 745a82300cbbc87070a117cd8dd094236821aee7
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513987"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625392"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>教程：Azure Active Directory 与 Overdrive 的集成
 
-本教程介绍了如何将 Overdrive 与 Azure Active Directory (Azure AD) 集成。
-将 Overdrive 与 Azure AD 集成具有以下优势：
+本教程介绍了如何将 Overdrive 与 Azure Active Directory (Azure AD) 集成。 将 Overdrive 与 Azure AD 集成后，可以：
 
-* 可在 Azure AD 中控制谁有权访问 Overdrive。
-* 可让用户使用其 Azure AD 帐户自动登录到 Overdrive（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
-
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+* 在 Azure AD 中控制谁有权访问 Overdrive。
+* 让用户使用其 Azure AD 帐户自动登录到 Overdrive。
+* 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 Overdrive 的集成，需备齐以下项：
-
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了单一登录的 Overdrive 订阅
+若要开始操作，需备齐以下项目：
+ 
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 Overdrive 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -43,67 +39,45 @@ ms.locfileid: "92513987"
 
 * Overdrive 支持 **SP** 发起的 SSO
 
-* Overdrive 支持“恰时”用户预配 
+* Overdrive 支持“恰时”用户预配
 
-## <a name="adding-overdrive-from-the-gallery"></a>从库中添加 Overdrive
+## <a name="add-overdrive-from-the-gallery"></a>从库中添加 Overdrive
 
-若要配置 Overdrive 与 Azure AD 的集成，需要从库中将 Overdrive 添加到托管 SaaS 应用列表。
+若要配置 Overdrive 与 Azure AD 的集成，请执行以下操作，从库中将 Overdrive 添加到托管 SaaS 应用列表：
+ 
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
+1. 在左窗格中，选择“Azure Active Directory”服务。 
+1. 转到“企业应用程序”，并选择“所有应用程序”。  
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 在“从库中添加”部分的搜索框中，键入“Overdrive” 。
+1. 在结果窗格中选择“Overdrive”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-若要从库中添加 Overdrive，请执行以下步骤： 
+## <a name="configure-and-test-azure-ad-sso-for-overdrive"></a>配置并测试 Overdrive 的 Azure AD SSO
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
+使用名为 B.Simon 的测试用户配置并测试 Overdrive 的 Azure AD SSO。 若要使 SSO 有效，需要在 Azure AD 用户与 Overdrive 相关用户之间建立关联。
 
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
+若要配置并测试 Overdrive 的 Azure AD SSO，请执行以下步骤：
 
-2. 转到“企业应用”，并选择“所有应用”选项   。
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. **[配置 Overdrive SSO](#configure-overdrive-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 Overdrive 测试用户](#create-overdrive-test-user)** - 在 Overdrive 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
+按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-    ![“新增应用程序”按钮](common/add-new-app.png)
+1. 在 Azure 门户中的“Overdrive”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
-4. 在搜索框中键入“Overdrive”，在结果面板中选择“Overdrive”，然后单击“添加”按钮添加该应用程序    。
-
-     ![结果列表中的 Overdrive](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-
-在本部分中，我们基于名为“Britta Simon”的测试用户为 Overdrive 配置和测试 Azure AD 单一登录。 
-若要使单一登录有效，需要在 Azure AD 用户与 Overdrive 相关用户之间建立关联。
-
-若要配置和测试 Overdrive 的 Azure AD 单一登录，需要完成以下构建基块：
-
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Overdrive 单一登录](#configure-overdrive-single-sign-on)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Overdrive 测试用户](#create-overdrive-test-user)** - 在 Overdrive 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
-
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
-
-要为 Overdrive 配置 Azure AD 单一登录，请执行以下步骤：
-
-1. 在 [Azure 门户](https://portal.azure.com/)中的 **Overdrive** 应用程序集成页上，选择“单一登录”。 
-
-    ![配置单一登录链接](common/select-sso.png)
-
-2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
-
-    ![单一登录选择模式](common/select-saml-option.png)
-
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
-
-    ![编辑基本 SAML 配置](common/edit-urls.png)
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
 4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
-    ![Overdrive 域和 URL 单一登录信息](common/sp-signonurl.png)
-
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`http://<subdomain>.libraryreserve.com`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`http://<subdomain>.libraryreserve.com`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Overdrive 客户端支持团队](https://help.overdrive.com/)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -112,70 +86,44 @@ ms.locfileid: "92513987"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Overdrive”部分，根据要求复制相应的 URL  。
+6. 在“设置 Overdrive”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    a. 登录 URL
-
-    b. Azure AD 标识符
-
-    c. 注销 URL
-
-### <a name="configure-overdrive-single-sign-on"></a>配置 Overdrive 单一登录
-
-若要在 **Overdrive** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Overdrive 支持团队](https://help.overdrive.com/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
-本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
-
-    ![“用户和组”以及“所有用户”链接](common/users.png)
-
-2. 选择屏幕顶部的“新建用户”  。
-
-    ![“新建用户”按钮](common/new-user.png)
-
-3. 在“用户属性”中，按照以下步骤操作。
-
-    ![“用户”对话框](common/user-properties.png)
-
-    a. 在“名称”  字段中，输入 BrittaSimon  。
-  
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
-
-    d. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Overdrive 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Overdrive”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Overdrive”。
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-2. 在应用程序列表中，选择“Overdrive”  。
-
-    ![应用程序列表中的 Overdrive 链接](common/all-applications.png)
+2. 在应用程序列表中，选择“Overdrive”。
 
 3. 在左侧菜单中，选择“用户和组”  。
 
-    ![“用户和组”链接](common/users-groups-blade.png)
-
 4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加分配”窗格](common/add-assign-user.png)
 
 5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
 6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
+
+### <a name="configure-overdrive-sso"></a>配置 Overdrive SSO
+
+若要在 **Overdrive** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Overdrive 支持团队](https://help.overdrive.com/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-overdrive-test-user"></a>创建 Overdrive 测试用户
 
@@ -185,16 +133,16 @@ ms.locfileid: "92513987"
 >可以使用任何其他 OverDrive 用户帐户创建工具或 OverDrive 提供的 API 来预配 Azure AD 用户帐户。
 >
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+### <a name="test-sso"></a>测试 SSO
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-单击访问面板中的 Overdrive 磁贴时，应当会自动登录到为其设置了 SSO 的 Overdrive。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Overdrive 登录 URL，你可以从此处启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+* 直接转到 Overdrive 登录 URL，并从此处启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Overdrive 磁贴时，会重定向到 Overdrive 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+配置 Overdrive 后，就可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

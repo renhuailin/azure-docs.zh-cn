@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ca22d4f1ff48222b33030eb44d7feb62b1d154cd
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d38ee1782987afce703fbd8b4203186bbcbb505
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011878"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754469"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>快速入门：使用 Microsoft 标识平台保护 ASP.NET Core Web API
 
@@ -96,7 +96,7 @@ Microsoft.AspNetCore.Authentication 中间件使用托管进程初始化时执�
 
 `AddAuthentication()` 方法配置服务以添加基于 JwtBearer 的身份验证。
 
-包含 `.AddMicrosoftIdentityWebApi` 的行向 Web API 添加 Microsoft 标识平台授权。 然后，将其配置为根据 appsettings.json 配置文件的 `AzureAD` 部分中的信息来验证 Microsoft 标识平台终结点颁发的访问令牌：
+包含 `.AddMicrosoftIdentityWebApi` 的行会向 Web API 添加 Microsoft 标识平台授权。 然后对其进行配置，使其根据 appsettings.json 配置文件的 `AzureAD` 部分中的信息来验证 Microsoft 标识平台颁发的访问令牌：
 
 | appsettings.json 密钥 | 说明                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|

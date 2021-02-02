@@ -2,13 +2,13 @@
 title: 教程 - 将本地环境与私有云对等互连
 description: 了解如何在 Azure VMware 解决方案中创建到私有云的 ExpressRoute Global Reach 对等互连。
 ms.topic: tutorial
-ms.date: 1/5/2021
-ms.openlocfilehash: 613aece6ed548f70840349e017de4416883d6cf3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/27/2021
+ms.openlocfilehash: e7b1e349f67fe63f63183c0ff6d1522498c65f8c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913152"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918715"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>教程：将本地环境与私有云对等互连
 
@@ -33,7 +33,7 @@ ExpressRoute Global Reach 将本地环境连接到 Azure VMware 解决方案私�
 - 建立了与 Azure VMware 解决方案私有云的连接，具有与 Azure 虚拟网络 (VNet) 中的 ExpressRoute 网关对等互连的 ExpressRoute 线路，即对等互连过程中的线路 2。  
 - 用于将本地环境连接到 Azure 的正常运行的 ExpressRoute 独立线路 – 从对等互连过程的角度而言，这是线路 1。
 - 用于 ExpressRoute Global Reach 对等互连的 /29 非重叠[网络地址块](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings)。
-- 确保所有路由器（包括 ExpressRoute 提供商的服务）都支持 4 字节自治系统编号 (ASN)。 Azure VMware 解决方案使用 4 字节公共 ASN 来播发路由。
+- 确保所有网关（包括 ExpressRoute 提供商的服务）都支持 4 字节自治系统编号 (ASN)。 Azure VMware 解决方案使用 4 字节公共 ASN 来播发路由。
 
 > [!TIP]
 > 在这些先决条件的上下文中，本地 ExpressRoute 线路是线路 1，私有云 ExpressRoute 线路位于其他的订阅中并被标记为线路 2。  

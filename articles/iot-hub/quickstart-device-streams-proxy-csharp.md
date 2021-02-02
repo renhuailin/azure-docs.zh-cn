@@ -1,20 +1,20 @@
 ---
-title: 适用于 SSH 和 RDP 的 Azure IoT 中心设备流 C# 快速入门
+title: 快速入门 - 适用于 SSH 和 RDP 的 Azure IoT 中心设备流 C# 快速入门
 description: 在本快速入门中，我们将运行两个示例 C# 应用程序，以通过 IoT 中心设备流实现 SSH 和 RDP 方案。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
+ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: adf0f42b34a4bd7e5df2d2994408dbc175c5e01b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 12e26818f86fc4abdc1873d031182fd994c04687
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831915"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624365"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入门：使用 C# 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -25,25 +25,6 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 服务和设备应用程序可以使用 [IoT 中心设备流](iot-hub-device-streams-overview.md)以安全且防火墙友好的方式进行通信。 本快速入门指南涉及两个 C# 应用程序，在其中，可以使用通过 IoT 中心建立的设备流发送客户端-服务器应用程序流量（例如安全外壳 [SSH] 和远程桌面协议 [RDP]）。 有关设置概述，请参阅[适用于 SSH 或 RDP 的本地代理应用程序示例](iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。
 
 本文先介绍 SSH 的设置（使用端口 22），然后介绍如何修改 RDP 的设置端口。 由于设备流不区分应用程序和协议，因此，可以修改同一示例来适应其他类型的应用程序流量。 这种修改通常只涉及到将通信端口更改为目标应用程序所用的端口。
-
-## <a name="how-it-works"></a>工作原理
-
-下图演示了本示例中的设备本地和服务本地代理应用程序如何在 SSH 客户端与 SSH 守护程序进程之间实现端到端的连接。 此处假设守护程序在设备本地代理应用程序所在的同一台设备上运行。
-
-![本地代理应用程序设置](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.png)
-
-1. 服务本地代理应用程序连接到 IoT 中心，并向目标设备发起设备流。
-
-1. 设备本地代理应用程序完成流发起握手，并通过 IoT 中心的流式处理终结点与服务端建立端到端的流式处理隧道。
-
-1. 设备本地代理应用程序连接到在设备上侦听端口 22 的 SSH 守护程序。 可按“运行设备本地代理应用程序”部分中所述对此设置进行配置。
-
-1. 服务本地代理应用程序通过侦听指定的端口（在本例中为端口 2222），等待用户建立新的 SSH 连接。 可按“运行服务本地代理应用程序”部分中所述对此设置进行配置。 当用户通过 SSH 客户端连接时，该隧道使 SSH 应用程序流量可在 SSH 客户端与服务器应用程序之间进行传输。
-
-> [!NOTE]
-> 通过设备流发送的 SSH 流量将通过 IoT 中心的流式处理终结点以隧道方式进行传输，而不是直接在服务与设备之间发送。 有关详细信息，请参阅[使用 IoT 中心设备流的好处](iot-hub-device-streams-overview.md#benefits)。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -72,6 +53,25 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
+## <a name="how-it-works"></a>工作原理
+
+下图演示了本示例中的设备本地和服务本地代理应用程序如何在 SSH 客户端与 SSH 守护程序进程之间实现端到端的连接。 此处假设守护程序在设备本地代理应用程序所在的同一台设备上运行。
+
+![本地代理应用程序设置](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.png)
+
+1. 服务本地代理应用程序连接到 IoT 中心，并向目标设备发起设备流。
+
+1. 设备本地代理应用程序完成流发起握手，并通过 IoT 中心的流式处理终结点与服务端建立端到端的流式处理隧道。
+
+1. 设备本地代理应用程序连接到在设备上侦听端口 22 的 SSH 守护程序。 可按“运行设备本地代理应用程序”部分中所述对此设置进行配置。
+
+1. 服务本地代理应用程序通过侦听指定的端口（在本例中为端口 2222），等待用户建立新的 SSH 连接。 可按“运行服务本地代理应用程序”部分中所述对此设置进行配置。 当用户通过 SSH 客户端连接时，该隧道使 SSH 应用程序流量可在 SSH 客户端与服务器应用程序之间进行传输。
+
+> [!NOTE]
+> 通过设备流发送的 SSH 流量将通过 IoT 中心的流式处理终结点以隧道方式进行传输，而不是直接在服务与设备之间发送。 有关详细信息，请参阅[使用 IoT 中心设备流的好处](iot-hub-device-streams-overview.md#benefits)。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
@@ -96,7 +96,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
    > 请将 *YourIoTHubName* 占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     请记下返回的设备连接字符串，以便稍后在此快速入门中使用。 如以下示例所示：

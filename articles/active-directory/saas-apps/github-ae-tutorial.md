@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: ab30124918ac47ba6296f05388ad94b50febde5d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3628cb6dbb397b561ff91ba6b6747293a39fd602
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180891"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632777"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>教程：Azure Active Directory 与 GitHub AE 的单一登录 (SSO) 集成
 
@@ -46,7 +46,7 @@ ms.locfileid: "96180891"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“GitHub AE” 。
 1. 从结果面板中选择“GitHub AE”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -79,7 +79,7 @@ ms.locfileid: "96180891"
 
     a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<YOUR-GITHUB-AE-HOSTNAME>`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<YOUR-GITHUB-AE-HOSTNAME>/saml/consume`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<YOUR-GITHUB-AE-HOSTNAME>/saml/consume`
 
 1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -87,6 +87,20 @@ ms.locfileid: "96180891"
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、回复 URL 和标识符更新这些值。 请联系 [GitHub AE 客户端支持团队](mailto:support@github.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+
+
+1. GitHub AE 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
+
+    ![image](common/default-attributes.png)
+
+1. 除了上述属性，GitHub AE 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
+    
+    | 名称 |  源属性|
+    | ----------- | --------- |
+    | 主要区域中的 | 是 |
+
+    > [!NOTE]
+    > 若要了解有关如何添加声明的说明，请按照[链接](https://docs.github.com/en/github-ae@latest/admin/authentication/configuring-authentication-and-provisioning-for-your-enterprise-using-azure-ad)中的步骤操作。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 12/17/2020
+ms.date: 01/22/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 3f62ab20359273aec6743c27ab46b33027e82b55
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 893bf37a5a4c8a314e5182bf2ac4bc28502b98d9
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598405"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98699424"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure 认知搜索是什么？
 
@@ -22,31 +22,35 @@ Azure 认知搜索（[以前称为“Azure 搜索”](whats-new.md#new-service-n
 
 搜索服务具有以下组件：
 
-+ 用于索引和查询执行的搜索引擎
-+ 用户拥有的搜索索引的持久存储
-+ 用于编写简单到复杂查询的查询语言
++ 用于全文搜索的搜索引擎
++ 用户所拥有且已编制索引的内容的持久存储
++ 用于编制索引和查询的 API
 + 可选的[基于 AI 的扩充](cognitive-search-concept-intro.md)，可从图像、原始文本、应用程序文件中创建可搜索的内容
 + 可选择与其他 Azure 服务集成以实现数据、机器学习/AI 和安全性
 
-从体系结构方面来讲，搜索服务位于外部数据存储（包含未索引数据）与客户端应用（向搜索索引发送查询请求并处理响应）之间。
+从体系结构方面来讲，搜索服务位于外部数据存储（包含未编入索引的数据）与客户端应用（向搜索索引发送查询请求并处理响应）之间。
 
 ![Azure 认知搜索体系结构](media/search-what-is-azure-search/azure-search-diagram.svg "Azure 认知搜索体系结构")
 
-表面上，搜索可以以“索引器”（自动从 Azure 数据源引入/检索数据）和“技能组”（引入认知服务（例如图像和文本分析）中的可消耗 AI，或者引入你在 Azure 机器学习中创建的或在 Azure Functions 内包装的自定义 AI）的形式与其他 Azure 服务集成 。
+表面上，搜索可以以“索引器”和“技能组”的形式与其他 Azure 服务集成，索引器可以自动从 Azure 数据源引入/检索数据，而技能组可以引入图像和文本分析等认知服务中的可消耗 AI，或者引入你在 Azure 机器学习中创建的或在 Azure Functions 内包装的自定义 AI 。
+
+## <a name="inside-a-search-service"></a>在搜索服务中
 
 在搜索服务本身，两个主要工作负荷是索引编制和查询 。 
 
-+ 索引编制将文本引入搜索服务中，并使其可供搜索。 在内部，将入站文本处理到令牌中，并将其存储在逆选索引中，以便快速扫描。 可上传 JSON 文档格式的任何内容。
++ [编制索引](search-what-is-an-index.md)是向搜索服务加载内容并使其可供搜索的引入过程。 在内部，将入站文本处理到令牌中，并将其存储在逆选索引中，以便快速扫描。 你可以上传 JSON 文档格式的任何内容。
 
-  在编制索引期间，可选择通过[认知技能](cognitive-search-working-with-skillsets.md)添加 AI 扩充：来自 Microsoft 的预定义技能，或者你创建的自定义技能。 后续的分析和转换可能会导致生成以前不存在的新信息和结构，为许多搜索和知识挖掘方案提供高实用性。
+  此外，如果内容包含多种类型的文件，则可以选择通过[认知技能](cognitive-search-working-with-skillsets.md)添加 AI 扩充。 AI 扩充可以提取嵌入在应用程序文件中的文本，还可以通过分析内容从非文本文件中推断文本和结构。 
 
-+ 使用可搜索的数据填充索引后，客户端应用会将查询请求发送到搜索服务，并处理响应。 所有查询执行都基于你在服务中创建、拥有和存储的搜索索引。 在客户端应用中，搜索体验是使用 Azure 认知搜索中的 API 定义的，可能包括相关性调整、自动完成、同义词匹配、模糊匹配、模式匹配、筛选和排序。
+  提供这种分析的技能是 Microsoft 提供的预定义技能，或你创建的自定义技能。 后续的分析和转换可能会导致生成以前不存在的新信息和结构，为许多搜索和知识挖掘方案提供高实用性。
+
++ 当客户端应用将查询请求发送到搜索服务并处理响应时，索引中填充了可搜索的文本后，就会发生[查询](search-query-overview.md)。 所有查询执行都基于你在服务中创建、拥有和存储的搜索索引。 在客户端应用中，搜索体验是使用 Azure 认知搜索中的 API 定义的，可能包括相关性调整、自动完成、同义词匹配、模糊匹配、模式匹配、筛选和排序。
 
 功能通过简单的 [REST API](/rest/api/searchservice/) 或 [.NET SDK](search-howto-dotnet-sdk.md) 公开，消除了信息检索固有的复杂性。 你还可以使用 Azure 门户，通过用于原型制作以及查询索引和技能组的工具进行服务管理和内容管理。 因为服务在云中运行，所以基础结构和可用性由 Microsoft 管理。
 
 ## <a name="why-use-cognitive-search"></a>为何使用认知搜索
 
-Azure 认知搜索非常适合以下应用程序方案：
+Azure 认知搜索非常适合以下应用方案：
 
 + 将异构内容整合成专用的用户定义的搜索索引。
 
@@ -73,7 +77,7 @@ Azure 认知搜索非常适合以下应用程序方案：
 > [!TIP]
 > 从[导入数据向导](search-get-started-portal.md)和 Azure 数据源开始最大程度地减少步骤，以在几分钟内创建、加载和查询索引。
 
-## <a name="how-it-compares"></a>它如何进行比较
+## <a name="compare-search-options"></a>比较搜索选项
 
 客户常常询问 Azure 认知搜索与其他搜索相关解决方案有何不同。 下表总结主要区别。
 

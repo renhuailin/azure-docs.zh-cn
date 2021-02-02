@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 8e83841031593d0d1af4499f3ef9a15400ce7794
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: a34881901fd8642fff9ac37512cd2ef260ad9d1c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569510"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954204"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：针对自动用户预配来配置 Workday
 
@@ -157,7 +157,7 @@ ms.locfileid: "98569510"
 
 1. 搜索在上一步骤中创建的安全组并将其选中。 
    >[!div class="mx-imgBorder"]
-   >![选择安全组](./media/workday-inbound-tutorial/select-security-group-msft-wdad.png)
+   >![选择安全组](./media/workday-inbound-tutorial/select-security-group-workday.png)
 
 1. 单击组名旁的省略号 (…)，然后从菜单中选择“安全组”>“维护安全组的域权限”
    >[!div class="mx-imgBorder"]
@@ -228,7 +228,7 @@ ms.locfileid: "98569510"
 
 ## <a name="provisioning-agent-installation-prerequisites"></a>预配代理安装先决条件
 
-继续下一部分之前，请查看[预配代理安装先决条件](../cloud-provisioning/how-to-prerequisites.md)。 
+继续下一部分之前，请查看[预配代理安装先决条件](../cloud-sync/how-to-prerequisites.md)。 
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>配置从 Workday 到 Active Directory 的用户预配
 
@@ -267,7 +267,7 @@ ms.locfileid: "98569510"
 
 要预配到本地 Active Directory，必须在可通过网络访问所需 Active Directory 域的已加入域的服务器上安装预配代理。
 
-将下载的代理安装程序传输到服务器主机，并按照[安装代理](../cloud-provisioning/how-to-install.md)部分中列出的步骤完成代理配置。
+将下载的代理安装程序传输到服务器主机，并按照[安装代理](../cloud-sync/how-to-install.md)部分中列出的步骤完成代理配置。
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>第 3 部分：在预配应用中，配置与 Workday 和 Active Directory 的连接
 在此步骤中，我们将在 Azure 门户中建立与 Workday 和 Active Directory 的连接。 
@@ -336,7 +336,7 @@ ms.locfileid: "98569510"
       * 运算符：IS NOT NULL
 
    > [!TIP]
-   > 首次配置预配应用时，需要测试和验证属性映射和表达式，以确保它提供所需的结果。 Microsoft 建议使用“源对象范围”下的范围筛选器来测试 Workday 中少量测试用户的映射。 验证确保映射正常工作后，可删除筛选器，也可逐渐扩大范围以包含更多用户。
+   > 首次配置预配应用时，需要测试和验证属性映射和表达式，以确保它提供所需的结果。 Microsoft 建议使用“源对象范围”下的[范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)和[按需预配](../app-provisioning/provision-on-demand.md)来测试 Workday 中少量测试用户的映射。 验证确保映射正常工作后，可删除筛选器，也可逐渐扩大范围以包含更多用户。
 
    > [!CAUTION] 
    > 预配引擎的默认行为是禁用/删除超出范围的用户。 这可能不适合于 Workday 到 AD 集成。 若要替代此默认行为，请参阅[跳过删除超出范围的用户帐户](../app-provisioning/skip-out-of-scope-deletions.md)
@@ -1065,7 +1065,8 @@ Azure AD 预配服务属于 GDPR 的数据处理器类别。 该服务作为数�
 
 ## <a name="next-steps"></a>后续步骤
 
+* [详细了解 Azure AD 和 Workday 集成场景和 Web 服务调用](../app-provisioning/workday-integration-reference.md)
 * [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)
 * [了解如何在 Workday 和 Azure Active Directory 之间配置单一登录](workday-tutorial.md)
-* [了解如何将其他 SaaS 应用程序与 Azure Active Directory 进行集成](tutorial-list.md)
+* [了解如何配置 Workday 写回](workday-writeback-tutorial.md)
 * [了解如何使用 Microsoft Graph API 来管理预配配置](/graph/api/resources/synchronization-overview)

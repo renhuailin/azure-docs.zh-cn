@@ -1,6 +1,6 @@
 ---
-title: 查看 Azure IoT 中心消息路由结果 (.NET) | Microsoft Docs
-description: 在使用本教程的第 1 部分设置了所有资源之后，添加将消息路由到 Azure 流分析的功能并在 PowerBI 中查看结果。
+title: 教程 - 查看 Azure IoT 中心消息路由结果 (.NET) | Microsoft Docs
+description: 教程 - 在使用本教程的第 1 部分设置了所有资源之后，添加将消息路由到 Azure 流分析的功能并在 Power BI 中查看结果。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 14f6fc685e99060474a17503cb13ba09a61a5a9a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: fdfb2470e83cefaeb6df35115f7bb46149d8ffe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149205"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733912"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教程：第 2 部分 - 查看路由的消息
 
@@ -48,7 +48,7 @@ ms.locfileid: "92149205"
 
    **位置**：使用你的位置。 本教程使用“美国西部”  。
 
-   **Log Analytics**：应关闭此开关。
+   **启用日志分析**：应关闭此开关。
 
    ![“创建逻辑应用”屏幕](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
@@ -151,6 +151,8 @@ ms.locfileid: "92149205"
    **数据集名称**：要在 Power BI 中使用的数据集的名称。 本教程使用 contosodataset  。 
 
    **表名称**：要在 Power BI 中使用的表的名称。 本教程使用 contosotable  。
+
+  **身份验证模式**：选择要使用的模式。
 
    在剩余字段中使用默认值。
 
@@ -280,7 +282,7 @@ ms.locfileid: "92149205"
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>使用 Azure CLI 清理资源
 
-若要删除资源组，请使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 在本教程的开头，`$resourceGroup` 已设置为 **ContosoResources**。
+若要删除资源组，请使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) 命令。 在本教程的开头，`$resourceGroup` 已设置为 **ContosoResources**。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

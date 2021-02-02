@@ -1,6 +1,6 @@
 ---
-title: 检查设备到 Azure IoT 中心的连接性
-description: 在开发期间使用 IoT 中心工具排查设备连接到 IoT 中心的问题。
+title: 教程 - 检查设备到 Azure IoT 中心的连接性
+description: 教程 - 在开发期间使用 IoT 中心工具排查设备与 IoT 中心的连接问题。
 services: iot-hub
 author: wesmc7777
 manager: philmea
@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 1eead9bb93fe8b753ace518cde18b240ab1a3cd4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 060ed8bfc424fcb9dab8fc12faf5e3822fa86a31
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572671"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621438"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教程：使用模拟设备测试与 IoT 中心的连接
 

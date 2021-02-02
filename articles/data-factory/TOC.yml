@@ -716,6 +716,10 @@
               href: data-migration-guidance-hdfs-azure-storage.md
             - name: 将数据从本地 Netezza 服务器迁移到 Azure
               href: data-migration-guidance-netezza-azure-sqldw.md
+        - name: Azure 机器学习
+          items:
+            - name: 数据引入
+              href: ../machine-learning/how-to-data-ingest-adf.md?toc=/azure/data-factory/toc.json&bc=/azure/data-factory/breadcrumb/toc.json
         - name: 使用映射数据流进行转换
           items:
             - name: 处理固定宽度的文本文件

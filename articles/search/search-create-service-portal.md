@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/14/2020
-ms.openlocfilehash: 3f55e2a7d62d2f32173d382dc9be0d6eb4f83fae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/23/2021
+ms.openlocfilehash: 57867cc4fb539b07fc1e4117f6e956078c41e2c6
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249748"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746690"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
-Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资源。 认知搜索可与其他 Azure 服务、网络服务器上的应用或其他云平台上运行的软件轻松集成。
+[Azure 认知搜索](search-what-is-azure-search.md)是用于将全文搜索体验添加到自定义应用的 Azure 资源。 可轻松地将其与其他提供数据或额外处理的 Azure 服务集成，与网络服务器上的应用集成，或与其他云平台上运行的软件集成。
 
-本文介绍如何在 [Azure 门户](https://portal.azure.com/)中创建资源。
+本文介绍如何在 [Azure 门户](https://portal.azure.com/)中创建搜索服务。
 
 [![动画 GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -31,7 +31,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 * 服务名称变为 URL 终结点的一部分（[查看提示](#name-the-service)，了解有用的服务名称）。
 * [服务层](search-sku-tier.md)会影响计费，应设置容量上限。 某些功能在免费层上不可用。
-* 服务区域可能决定某些方案的可用性。 如果需要[高安全性功能](search-security-overview.md)或 [AI 扩充](cognitive-search-concept-intro.md)，则需要将 Azure 认知搜索放置在与其他服务相同的区域中，或放置在提供相关功能的区域中。 
+* 服务区域可能决定某些方案的可用性。 如果需要[高安全性功能](search-security-overview.md)或 [AI 扩充](cognitive-search-concept-intro.md)，则需要在与其他服务相同的区域中创建 Azure 认知搜索，或在提供相关功能的区域中进行创建。 
 
 ## <a name="subscribe-free-or-paid"></a>订阅（免费或付费）
 
@@ -43,7 +43,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-1. 单击左上角的加号（“+ 创建资源”）。
+1. 单击左上角的加号（“+创建资源”）。
 
 1. 使用搜索栏查找“Azure 认知搜索”，或通过“Web” > “Azure 认知搜索”导航到资源 。
 

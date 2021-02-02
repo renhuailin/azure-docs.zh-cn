@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 03f2ec7aef1faadcb72d6c7a5a058c7d06596539
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723944"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729663"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>教程：Azure Active Directory 与 Citrix ShareFile 的集成
 
@@ -31,8 +31,8 @@ ms.locfileid: "97723944"
 
 若要配置 Azure AD 与 Citrix ShareFile 的集成，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 已启用 Citrix ShareFile 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 启用了 Citrix ShareFile 单一登录的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -126,7 +126,7 @@ ms.locfileid: "97723944"
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-citrix-sharefile-sso"></a>配置 Citrix ShareFile SSO
@@ -141,7 +141,7 @@ ms.locfileid: "97723944"
 
 3. 若要手动设置 Citrix ShareFile，请在另一个 Web 浏览器窗口中，以管理员身份登录到 Citrix ShareFile 公司站点。
 
-1. 在“仪表板”中，单击“设置”，然后选择“管理设置”  
+1. 在“仪表板”中，单击“设置”，然后选择“管理设置”  。
 
     ![管理](./media/sharefile-tutorial/settings.png)
 
@@ -165,7 +165,9 @@ ms.locfileid: "97723944"
     
     f. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
-5. 在 Citrix ShareFile 管理门户中，单击 **“保存”**。
+    g. 在“可选设置”中，选择“SP 启动的身份验证上下文”作为“用户名和密码”，并选择“完全匹配”   。
+
+5. 单击“保存”。
 
 ## <a name="create-citrix-sharefile-test-user"></a>创建 Citrix ShareFile 测试用户
 
@@ -198,7 +200,7 @@ ms.locfileid: "97723944"
 
 * 直接转到 Citrix ShareFile 登录 URL，并在其中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Citrix ShareFile 磁贴时，会重定向到 Citrix ShareFile 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Citrix ShareFile 磁贴时，会重定向到 Citrix ShareFile 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -3,12 +3,12 @@ title: 规划 Azure VMware 解决方案部署
 description: 本文概述了 Azure VMware 解决方案部署工作流。  最终结果是一个就绪的可用于创建和迁移虚拟机 (VM) 的环境。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 2cc4d40fd8088a632e0c24e3c4b770ebdc9de2e8
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 8b1d69f3f953b43177a3b1d0611b51ca2cfb1a75
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912727"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762858"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>规划 Azure VMware 解决方案部署
 
@@ -93,28 +93,36 @@ Azure VMware 解决方案通过内部 ExpressRoute 线路连接到 Microsoft Azu
 - 如果你计划从本地扩展网络，则这些网络必须连接到本地 VMware 环境中的 [vSphere 分布式交换机 (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html)。  
 - 如果你要扩展的网络位于 [vSphere 标准交换机](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html)上，则无法对其进行扩展。
 
-## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>用于附加 Azure VMware 解决方案的 Azure 虚拟网络
+## <a name="attach-virtual-network-to-azure-vmware-solution"></a>将虚拟网络附加到 Azure VMware 解决方案
 
-若要访问 Azure VMware 解决方案私有云，Azure VMware 解决方案附带的 ExpressRoute 线路必须附加到 Azure 虚拟网络。  在部署过程中，你可以定义新的虚拟网络或选择现有的虚拟网络。
+在此步骤中，你将确定一个用于连接 Azure VMware 解决方案 ExpressRoute 线路的 ExpressRoute 虚拟网络网关和支持性 Azure 虚拟网络。  ExpressRoute 线路有助于连接到 Azure VMware 解决方案私有云，以及从该私有云连接到其他 Azure 服务、Azure 资源和本地环境。
 
-Azure VMware 解决方案中的 ExpressRoute 线路连接到在此步骤中定义的 Azure 虚拟网络中的 ExpressRoute 网关。  
-
->[!IMPORTANT]
->你可以使用现有的 ExpressRoute 网关连接到 Azure VMware 解决方案，只要它不超过每个虚拟网络四条 ExpressRoute 线路的限制即可。  但是，若要通过 ExpressRoute 从本地访问 Azure VMware 解决方案，必须具有 ExpressRoute Global Reach，因为 ExpressRoute 网关不提供其连接线路之间的传递路由。  
-
-如果要将 ExpressRoute 线路从 Azure VMware 解决方案连接到现有 ExpressRoute 网关，可在部署后执行此操作。  
-
-因此，综上所述，你是否要将 Azure VMware 解决方案连接到现有的 ExpressRoute 网关？  
-
-* **是** = 标识在部署过程中不使用的虚拟网络。
-* **否** = 标识一个现有虚拟网络，或者在部署过程中创建一个新的虚拟网络。
-
-无论采用哪种方式，都可以记录要在此步骤中执行的操作。
-
->[!NOTE]
->你的本地环境和 Azure VMware 解决方案可以看到此虚拟网络，因此请确保在此虚拟网络和子网中使用的任何 IP 段都不重叠。
+可使用现有的 ExpressRoute 虚拟网络网关，也可新建一个 。
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="标识 - 用于附加 Azure VMware 解决方案的 Azure 虚拟网络" border="false":::
+
+### <a name="use-an-existing-expressroute-virtual-network-gateway"></a>使用现有的 ExpressRoute 虚拟网络网关
+
+如果使用现有的 ExpressRoute 虚拟网络网关，则会在部署私有云后建立 Azure VMware 解决方案 ExpressRoute 线路。 在这种情况下，请将“虚拟网络”字段留空。  
+
+记下你将使用的 ExpressRoute 虚拟网络网关，并继续到下一步。
+
+### <a name="create-a-new-expressroute-virtual-network-gateway"></a>创建新的 ExpressRoute 虚拟网络网关
+
+创建新的 ExpressRoute 虚拟网络网关时，可使用现有的 Azure 虚拟网络，也可创建新网络。  
+
+- 对于现有的 Azure 虚拟网络：
+   1. 验证确保虚拟网络中预先不存在 ExpressRoute 虚拟网络网关。 
+   1. 从“虚拟网络”列表中选择现有的 Azure 虚拟网络。
+
+- 对于新的 Azure 虚拟网络，可提前创建，也可在部署期间创建。 选择“虚拟网络”列表下的“新建”链接 。
+
+下图显示“创建私有云”部署屏幕，其中突出显示了“虚拟网络”字段 。
+
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Azure VMware 解决方案部署屏幕的屏幕截图，其中突出显示了“虚拟网络”字段。":::
+
+>[!NOTE]
+>你的本地环境和 Azure VMware 解决方案可以看到任何要使用或创建的虚拟网络，因此请确保在此虚拟网络和子网中使用的任何 IP 段都不重叠。
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX 网段
 

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT 中心的手动故障转移 | Microsoft Docs
-description: 了解如何对 IoT 中心手动执行到其他区域的故障转移并确认其正常运行，然后将其返回到原始区域并再次检查。
+title: 教程 - Azure IoT 中心的手动故障转移 | Microsoft Docs
+description: 教程 - 了解如何对 IoT 中心手动执行到其他区域的故障转移并确认其正常运行，然后将其返回到原始区域并再次检查。
 author: robinsh
 manager: timlt
 ms.service: iot-hub
@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 69a0795b9c299b5113c39ce2c4556573f730e4b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b6bc972f5c26c78ffff81f5bab8c2812cf2cb11
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013939"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622907"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>教程：为 IoT 中心执行手动故障转移
 
@@ -75,7 +75,7 @@ ms.locfileid: "89013939"
 
    ![显示 IoT 中心属性窗格的屏幕截图](./media/tutorial-manual-failover/trigger-failover-01.png)
 
-1. 在“手动故障转移”窗格上，可以看到**当前位置**和**故障转移位置**。 当前位置始终指示中心当前处于活动状态的位置。 故障转移位置是标准的 [Azure 异地配对区域](../best-practices-availability-paired-regions.md)，与当前位置配对。 不能更改位置值。 在本教程中，当前位置为 `West US 2`，故障转移位置为 `West Central US`。
+1. 在“手动故障转移”窗格上，可以看到 **当前位置** 和 **故障转移位置**。 当前位置始终指示中心当前处于活动状态的位置。 故障转移位置是标准的 [Azure 异地配对区域](../best-practices-availability-paired-regions.md)，与当前位置配对。 不能更改位置值。 在本教程中，当前位置为 `West US 2`，故障转移位置为 `West Central US`。
 
    ![显示“手动故障转移”窗格的屏幕截图](./media/tutorial-manual-failover/trigger-failover-02.png)
 

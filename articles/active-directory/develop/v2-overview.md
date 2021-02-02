@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40, contperf-fy21q2
-ms.openlocfilehash: e5a9292097933ff35eb8b77445f07f10def6e5c3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 662523b1544fe3ca9e8bda993efa7b578b9f69cc
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029611"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752578"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>什么是 Microsoft 标识平台？
 
@@ -78,7 +78,7 @@ Microsoft 标识平台由多个组件组成：
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你有一个 Azure 帐户，且有权访问 Azure Active Directory 租户，但大多数 Microsoft 标识平台开发人员在开发应用程序时都需要其自己的 Azure AD 租户，即“开发租户”。
+如果你有一个 Azure 帐户，那么你有权访问 Azure Active Directory 租户，但 Microsoft 标识平台的大多数开发人员在开发应用程序时都需要自己的 Azure AD 租户，也就是“开发租户”。
 
 了解如何在构建应用程序时创建自己的租户：
 

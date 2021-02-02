@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 8d24ed014dd66235383b58cbcb7404aaf00f863e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 217872586d09531926b43a13d826efe559c70597
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308967"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796760"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory (AD) 单一登录 (SSO) 与 F5 集成
 
@@ -175,7 +175,7 @@ F5 支持 SP 和 IDP 发起的 SSO。
      ![屏幕截图显示了“SAML 服务提供程序”。](./media/advance-kerbf5-tutorial/configure09.png)
  
  
-1. 单击“添加新行”，并选择在上一步骤中创建的**外部 IdP 连接器**。
+1. 单击“添加新行”，并选择在上一步骤中创建的 **外部 IdP 连接器**。
 
     ![屏幕截图中突出显示了“添加新行”按钮。](./media/advance-kerbf5-tutorial/configure10.png)
  
@@ -314,7 +314,7 @@ F5 支持 SP 和 IDP 发起的 SSO。
 
 ### <a name="create-f5-test-user"></a>创建 F5 测试用户
 
-在本部分，你将在 F5 中创建名为 B.Simon 的用户。 在  [F5 支持团队](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)的配合下，将用户添加到 F5 平台。 使用单一登录前，必须先创建并激活用户。 
+在本部分，你将在 F5 中创建名为 B.Simon 的用户。 请与 [F5 客户端支持团队](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)协作，在 F5 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -335,3 +335,9 @@ F5 支持 SP 和 IDP 发起的 SSO。
 - [为 Header Based 应用程序配置 F5 单一登录](headerf5-tutorial.md)
 
 - [为 Kerberos 应用程序配置 F5 单一登录](kerbf5-tutorial.md)
+
+- [将 F5 BIG-IP APM 与 Azure AD 集成以实现安全混合访问](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+
+- [关于在 Azure IaaS 中部署 F5 BIG-IP 虚拟版 VM 以实现安全混合访问的教程](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
+
+- [关于将 Azure Active Directory 单一登录与 F5 BIG-IP 集成以实现无密码 VPN 的教程](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn)

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: eb10001436d3184b89aa064ec82fcd1f56bea931
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 7c3bca9e5ad87c681fc38a5c618331a3f7a97ae1
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98566924"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897504"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>教程：使用服务器评估发现 Hyper-V VM
 
@@ -83,7 +83,7 @@ ms.locfileid: "98566924"
 
 **步骤** | **脚本** | **手动**
 --- | --- | ---
-验证主机要求 | 检查主机是否正在运行受支持的 Hyper-V 版本，并检查 Hyper-V 角色。<br/><br/>启用 WinRM 服务，并在主机上打开端口 5985 (HTTP) 和 5986 (HTTPS)（收集元数据时需要使用这些端口）。 | 主机必须运行 Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/><br/> 验证 WinRM 端口 5985 (HTTP) 上是否允许入站连接，使设备可以使用通用信息模型 (CIM) 会话连接到拉取 VM 元数据和性能数据。
+验证主机要求 | 检查主机是否正在运行受支持的 Hyper-V 版本，并检查 Hyper-V 角色。<br/><br/>启用 WinRM 服务，并在主机上打开端口 5985 (HTTP) 和 5986 (HTTPS)（收集元数据时需要使用这些端口）。 | 主机必须运行 Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/><br/> 验证 WinRM 端口 5985 (HTTP) 上是否允许入站连接，使设备可以使用通用信息模型 (CIM) 会话连接到拉取 VM 元数据和性能数据。<br/><br/> 具有非英语区域设置的主机目前不支持该脚本。  
 验证 PowerShell 版本 | 检查你是否在受支持的 PowerShell 版本中运行该脚本。 | 检查是否正在 Hyper-V 主机上运行 PowerShell 版本 4.0 或更高版本。
 创建帐户 | 验证你在 Hyper-V 主机上是否具有正确的权限。<br/><br/> 使你可以创建具有正确权限的本地用户帐户。 | 选项 1：准备一个具有对 Hyper-V 主机的管理员访问权限的帐户。<br/><br/> 选项 2：准备一个本地管理员帐户或域管理员帐户，并将该帐户添加到这些组中：远程管理用户、Hyper-V 管理员和性能监视器用户。
 启用 PowerShell 远程处理 | 在每台主机上启用 PowerShell 远程控制，使 Azure Migrate 设备能够通过 WinRM 连接在主机上运行 PowerShell 命令。 | 若要设置，请在每台主机上，以管理员身份打开 PowerShell 控制台，然后运行以下命令：``` powershell Enable-PSRemoting -force ```
@@ -195,7 +195,7 @@ SHA256 | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
 2. 在“导入虚拟机向导”>“开始之前”中，单击“下一步”。 
 3. 在“查找文件夹”中，指定包含已解压缩的 VHD 的文件夹。 然后单击“下一步”。
 1. 在“选择虚拟机”中，单击“下一步”。 
-2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”  。
+2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”。
 3. 在“选择目标”中保留默认设置。 单击“下一步”。
 4. 在“存储文件夹”中保留默认设置。 单击“下一步”。
 5. 在“选择网络”中，指定 VM 要使用的虚拟交换机。 该交换机需要与 Internet 建立连接才能向 Azure 发送数据。

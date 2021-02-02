@@ -1,24 +1,10 @@
 ---
-title: 上传媒体
-titleSuffix: Azure Media Services
-description: 了解如何上传媒体以进行流式处理或编码。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 3040369e655ab91f56f271313dc4d2613f02be06
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015835"
+title:上传媒体:Azure 媒体服务说明:了解如何上传媒体以进行流式处理或编码。
+services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: ms.topic: how-to ms.date:08/31/2020 ms.author: inhenkel
 ---
+
 # <a name="upload-media-for-streaming-or-encoding"></a>上传媒体以进行流式处理或编码
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

@@ -1,24 +1,24 @@
 ---
-title: 了解企业协议的 Azure 预留项使用情况
-description: 了解如何读取使用情况，以了解如何应用适用于企业合约的 Azure 预留。
+title: 了解企业协议和 Microsoft 客户协议使用 Azure 预留的情况
+description: 了解如何查看你的使用信息，来了解 Azure 预留是怎样适用于企业协议和 Microsoft 客户协议使用情况的。
 author: bandersmsft
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/19/2020
 ms.author: banders
-ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545598"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683711"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>获取企业协议预留成本和使用情况
+# <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>获取企业协议和 Microsoft 客户协议预留成本和使用情况
 
-企业协议客户可以在 Azure 门户和 REST API 中查看预留成本和使用情况数据。 本文将会帮助你：
+对于成本管理中的企业协议 (EA) 和 Microsoft 客户协议 (MCA) 使用情况，可查看详细的预留成本和使用情况数据。 本文将会帮助你：
 
 - 获取预留购买数据
 - 了解哪个订阅、资源组或资源使用了预留项
@@ -61,9 +61,7 @@ Azure 使用情况数据中提供的其他信息已更改：
 
 可以使用 API 获取数据，也可以从 Azure 门户下载数据。
 
-调用[使用情况详细信息 API](/rest/api/consumption/usagedetails/list) 以获取新数据。 有关术语的详细信息，请参阅[使用情况中的术语](../understand/understand-usage.md)。 调用方应是企业协议的企业管理员，并使用 [EA 门户](https://ea.azure.com)。 只读企业管理员也可以获取数据。
-
-请注意，该数据不会在[面向企业客户的报告 API - 使用情况详细信息](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)中提供。
+调用[使用情况详细信息 API](/rest/api/consumption/usagedetails/list) 以获取新数据。 有关术语的详细信息，请参阅[使用情况中的术语](../understand/understand-usage.md)。
 
 下面是对使用情况详细信息 API 的示例调用：
 
@@ -87,7 +85,7 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>下载包含新数据的使用情况 CSV 文件
 
-如果你是 EA 管理员，可以从 Azure 门户下载包含新使用情况数据的 CSV 文件。 此数据不会在 EA 门户 (ea.azure.com) 中提供，必须从 Azure 门户 (portal.azure.com) 下载使用情况文件才能看到新数据。
+如果你是 EA 管理员，可从 Azure 门户下载包含新的使用数据的 CSV 文件。 此数据不会在 EA 门户 (ea.azure.com) 中提供，必须从 Azure 门户 (portal.azure.com) 下载使用情况文件才能看到新数据。
 
 在 Azure 门户中，导航到[“成本管理 + 计费”](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts)。
 
@@ -150,7 +148,7 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 按费用类型分组可以查看使用情况、购买项目和退款的细目；按预留项分组可以查看预留项和按需成本的细目。 请记住，在查看实际成本时，只能看到购买项目的预留成本；但查看摊销成本时，成本将分配到使用权益的各个资源。 查看摊销成本时，还会看到新的 **UnusedReservation** 费用类型。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

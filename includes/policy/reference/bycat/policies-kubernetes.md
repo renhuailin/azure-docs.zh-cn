@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8eeb8f5105bc93b760903374a513cd10e327b570
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d24192cb2f648a20a8f776b92f765bc6055ecf71
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98047185"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807204"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -39,6 +39,7 @@ ms.locfileid: "98047185"
 |[Kubernetes 群集 Pod 和容器只应使用允许的 SELinux 选项](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e6c427-07d9-46ab-9689-bfa85431e636) |此策略可确保 Pod 和容器在 Kubernetes 群集中只使用允许的 SELinux 选项。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关使用此策略的说明，请访问 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[3.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/SELinux.json) |
 |[Kubernetes 群集 Pod 只应使用允许的卷类型](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec) |此策略可确保 Pod 在 Kubernetes 群集中只使用允许的卷类型。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关使用此策略的说明，请访问 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AllowedVolumeTypes.json) |
 |[Kubernetes 群集 Pod 只应使用批准的主机网络和端口范围](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe) |此策略控制 Pod 在 Kubernetes 群集中对主机网络和允许的主机端口范围的访问。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关使用此策略的说明，请访问 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/HostNetworkPorts.json) |
+|[Kubernetes 群集服务只应使用允许的外部 IP](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd46c275d-1680-448d-b2ec-e495a3b6cc89) |使用允许的外部 IP 避免 Kubernetes 群集中的潜在攻击 (CVE-2020-8554)。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AllowedExternalIPs.json) |
 |[Kubernetes 群集应禁用自动装载 API 凭据](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F423dd1ba-798e-40e4-9c4d-b6902674b423) |禁用自动装载 API 凭据，以防止可能泄露的 Pod 资源对 Kubernetes 群集运行 API 命令。 有关使用此策略的说明，请访问 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockAutomountToken.json) |
 |[Kubernetes 群集不得允许容器特权提升](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) |此策略不允许容器在 Kubernetes 群集中使用特权提升。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关使用此策略的说明，请访问 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilegeEscalation.json) |
 |[Kubernetes 群集不应使用特定的安全功能](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa27c700f-8a22-44ec-961c-41625264370b) |阻止 Kubernetes 群集中特定的安全功能，以防止 Pod 资源上未授予的权限。 有关使用此策略的说明，请访问 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerDisallowedCapabilities.json) |

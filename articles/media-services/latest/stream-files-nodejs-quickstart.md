@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务流式处理视频文件 - Node.js | Microsoft Docs
+title: 使用 Azure 媒体服务流式传输视频文件 - Node.js
 description: 按照本教程的步骤，创建新的 Azure 媒体服务帐户、编码文件并将文件流式传输到 Azure Media Player。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-js
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 38207ac47d2e58c689f1933a6ade6d5c86cd44ad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 711db5135345fd9b69da9aaea5bc4dbb929d27c9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268666"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895130"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Node.js
 
@@ -54,18 +54,18 @@ ms.locfileid: "91268666"
 
 该示例执行以下操作：
 
-1. 创建一个**转换**（首先，检查指定的转换是否存在）。 
-2. 创建一个输出**资产**，用作编码**作业**的输出。
-3. 创建基于 HTTPS URL 的**作业**输入。
-4. 使用先前创建的输入和输出提交编码**作业**。
+1. 创建一个 **转换**（首先，检查指定的转换是否存在）。 
+2. 创建一个输出 **资产**，用作编码 **作业** 的输出。
+3. 创建基于 HTTPS URL 的 **作业** 输入。
+4. 使用先前创建的输入和输出提交编码 **作业**。
 5. 检查作业的状态。
-6. 创建**流定位符**。
+6. 创建 **流定位符**。
 7. 生成流式处理 URL。
 
 ## <a name="run-the-sample-app"></a>运行示例应用
 
 1. 该应用下载编码文件。 创建想要输出文件位于的文件夹，并更新 [index.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L39) 文件中 **outputFolder** 变量的值。
-1. 打开**命令提示符**，浏览到示例的目录，然后执行以下命令。
+1. 打开 **命令提示符**，浏览到示例的目录，然后执行以下命令。
 
     ```
     npm install 

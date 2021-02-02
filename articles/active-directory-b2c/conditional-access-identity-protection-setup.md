@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 654206bccd25bf09fcdc5c3e7ee72ba97c75af2a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949762"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785475"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>在 Azure AD B2C 中设置标识保护和条件访问
 
@@ -52,7 +52,7 @@ Azure AD B2C 当前支持以下风险检测：
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
+1. 在门户工具栏中选择“目录 + 订阅”，然后选择包含 Azure AD B2C 租户的目录。
 
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 
@@ -88,15 +88,13 @@ Azure AD B2C 当前支持以下风险检测：
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
+1. 在门户工具栏中选择“目录 + 订阅”，然后选择包含 Azure AD B2C 租户的目录。
 
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 
 1. 在“安全性”下，选择“条件访问(预览版)” 。 此时将打开“条件访问策略”页。 
 
-1. 选择“新建策略”并按照 Azure AD 条件访问文档创建新策略。 以下是一个示例：
-
-   - [基于登录风险的条件访问：启用条件访问策略](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy)
+1. 选择“新建策略”并按照 Azure AD 条件访问文档创建新策略。 对于基于风险的策略，你将需要根据[用户风险](../active-directory/conditional-access/howto-conditional-access-policy-risk-user.md#enable-with-conditional-access-policy)或[登录风险](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy)来配置单独的策略，具体取决于你希望用作条件的风险类型。 建议不要在单个策略中同时使用这两种风险类型。
 
    > [!IMPORTANT]
    > 在选择要对其应用策略的用户时，请不要仅选择“所有用户”，否则你将无法登录。
@@ -126,7 +124,7 @@ Azure AD B2C 当前支持以下风险检测：
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
+2. 在门户工具栏中选择“目录 + 订阅”，然后选择包含 Azure AD B2C 租户的目录。
 
 3. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 

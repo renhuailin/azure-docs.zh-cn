@@ -3,7 +3,7 @@ title: 教程 - 创建访问包 - Azure AD 权利管理
 description: 有关如何在 Azure Active Directory 权利管理中创建第一个访问包的分步教程。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
 ms.date: 09/30/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e8d68643b5cc0002467f738dd60343fb2c42dc6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 2625b1e0ccc4c3129f412eff144f47d9dc97b961
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631273"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937892"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>教程：在 Azure AD 权利管理中创建第一个访问包
 
@@ -119,7 +119,7 @@ ms.locfileid: "97631273"
     ![新建访问包 -“资源角色”选项卡](./media/entitlement-management-access-package-first/resource-roles.png)
 
     >[!IMPORTANT]
-    >添加到访问包的可分配角色的组将使用“可分配给角色”子类型来指出。 要更详细地了解可分配给 Azure AD 角色的组，请参阅[创建可分配角色的组](../roles/groups-create-eligible.md)。 如果看不到想要添加的可分配角色的组，或者无法添加它，请确保你具有所需的 Azure AD 角色和权利管理角色来执行此操作。 你可能需要请具有必需角色的用户将该资源添加到你的目录中。 有关详细信息，请参阅[将资源添加到目录所需的角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)。
+    >添加到访问包的可分配角色的组将使用“可分配给角色”子类型来指出。 要更详细地了解可分配给 Azure AD 角色的组，请参阅[创建可分配角色的组](../roles/groups-create-eligible.md)。 请记住，对于可以在权利管理中进行管理的管理用户（包括全局管理员、用户管理员和目录的目录所有者），只要访问包目录中存在可分配角色的组，他们就可以控制目录中的访问包，进而可以选择添加到这些组的人员。 如果看不到想要添加的可分配角色的组，或者无法添加它，请确保你具有所需的 Azure AD 角色和权利管理角色来执行此操作。 你可能需要请具有必需角色的用户将该资源添加到你的目录中。 有关详细信息，请参阅[将资源添加到目录所需的角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)。
 
     >[!NOTE]
     > 使用[动态组](../enterprise-users/groups-create-rule.md)时，不会看到除所有者外的任何其他可用角色。 这是设计的结果。

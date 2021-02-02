@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 7b9e95c06dd48e78e42244d27d27d063bf5f0be7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: c0269464352fa333c6447834a56c25348ecb71a3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327767"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895248"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作人员入门
 
@@ -184,17 +184,17 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 需要订阅之后才能使用 Azure 服务。 可以使用多种订阅类型。
 
-**免费帐户** ：注册免费帐户的链接位于 [Azure 网站](https://azure.microsoft.com/)。 这可以提供 30 天试用期和相应信用额度，用于尝试 Azure 中的任何资源组合。 超出信用额度后，帐户将被暂停。 试用期结束时，服务将被停用，不再工作。 可随时升级到即用即付订阅。
+**免费帐户**：注册免费帐户的链接位于 [Azure 网站](https://azure.microsoft.com/)。 这可以提供 30 天试用期和相应信用额度，用于尝试 Azure 中的任何资源组合。 超出信用额度后，帐户将被暂停。 试用期结束时，服务将被停用，不再工作。 可随时升级到即用即付订阅。
 
-**MSDN 订阅** ：如果有 MSDN 订阅，每月可以获得特定金额的 Azure 信用额度。 例如，如果有 Microsoft Visual Studio Enterprise with MSDN 订阅，则每月可获得 \$150 美元的 Azure 信用额度。
+**MSDN 订阅**：如果有 MSDN 订阅，每月可以获得特定金额的 Azure 信用额度。 例如，如果有 Microsoft Visual Studio Enterprise with MSDN 订阅，则每月可获得 \$150 美元的 Azure 信用额度。
 
-如果超过信用额度数量，服务将被禁用，直到下个月开始。 可关闭支出限制，并添加信用卡支付额外的费用。 对于 MSDN 帐户，其中一些费用会打折。 例如，对于运行 Windows Server 的 VM，需要为 Linux 付费，但不需要为 Microsoft 服务器（如 Microsoft SQL Server）支付额外费用。 这让 MSDN 帐户非常适合开发和测试方案。
+如果超过额度，服务将被禁用，直到下个月开始。 可关闭支出限制，并添加信用卡支付额外的费用。 对于 MSDN 帐户，其中一些费用会打折。 例如，对于运行 Windows Server 的 VM，需要为 Linux 付费，但不需要为 Microsoft 服务器（如 Microsoft SQL Server）支付额外费用。 这让 MSDN 帐户非常适合开发和测试方案。
 
-**BizSpark 帐户** ：Microsoft BizSpark 程序为初创企业提供了许多好处。 其中一个好处是可以访问所有 Microsoft 软件，使用最多 5 个 MSDN 帐户来开发和测试环境。 这 5 个 MSDN 帐户都可获得 150 美元的 Azure 信用额度，使用多个 Azure 服务（如虚拟机）时，支付费率会降低。
+**BizSpark 帐户**：Microsoft BizSpark 程序为初创企业提供了许多好处。 其中一个好处是可以访问所有 Microsoft 软件，使用最多 5 个 MSDN 帐户来开发和测试环境。 这 5 个 MSDN 帐户都可获得 150 美元的 Azure 信用额度，使用多个 Azure 服务（如虚拟机）时，支付费率会降低。
 
-**即用即付** ：使用此订阅，可以将信用卡或借记卡附加到帐户，为使用的内容付费。 对于组织，还可以开具发票。
+**即用即付**：使用此订阅，可以将信用卡或借记卡附加到帐户，为使用的内容付费。 对于组织，还可以开具发票。
 
-**企业协议** ：达成企业协议，即表示承诺在接下来一年里使用一定数量的 Azure 服务，并提前支付费用。 所做的承诺在一整年内有效。 如果超出承诺金额，可以拖欠支付超额部分。 根据承诺的金额，可以享受 Azure 服务价格折扣。
+**企业协议**：达成企业协议，即表示承诺在接下来一年里使用一定数量的 Azure 服务，并提前支付费用。 所做的承诺在一整年内有效。 如果超出承诺金额，可以拖欠支付超额部分。 根据承诺的金额，可以享受 Azure 服务价格折扣。
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>授予对 Azure 订阅的管理访问权限
 
@@ -214,9 +214,7 @@ Azure RBAC 有多个可用于分配权限的内置角色。 要使用户成为 A
 
 - 可以使用 Azure 使用情况 API 来检索使用情况数据。 可以通过标记相关 Azure 资源来微调计费使用情况信息。 例如，可以使用部门名称或项目名称标记资源组中的每个资源，然后专门跟踪一种标记对应的成本。
 
-- 可以使用 Azure 价目表 API 列出所有可用资源，以及每个资源的元数据和定价信息。
-
-有关详细信息，请参阅[深入了解 Microsoft Azure 资源消耗](../../cost-management-billing/manage/usage-rate-card-overview.md)。
+- 你可以使用 [Azure 使用情况 API 概述](../../cost-management-billing/manage/consumption-api-overview.md)来列出所有可用资源以及元数据。 有关价格的详细信息，请参阅 [Azure 零售价格概述](/rest/api/cost-management/retail-prices/azure-retail-prices)。
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>使用价格计算器预测成本
 
@@ -266,21 +264,21 @@ Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 
 
 资源管理器模板包含四个部分：
 
-- **参数** ：参数是部署的输入。 参数值可以由用户提供，也可以由自动化过程提供。 示例参数可能是 Windows VM 的管理员用户名和密码。 指定参数值后，整个部署过程都会使用这些参数值。
+- **参数**：参数是部署的输入。 参数值可以由用户提供，也可以由自动化过程提供。 示例参数可能是 Windows VM 的管理员用户名和密码。 指定参数值后，整个部署过程都会使用这些参数值。
 
-- **变量** ：变量用于保存整个部署过程中使用的值。 与参数不同，变量值不是在部署时提供的。 而是通过硬编码生成或动态生成的。
+- **变量**：变量用于保存整个部署过程中使用的值。 与参数不同，变量值不是在部署时提供的。 而是通过硬编码生成或动态生成的。
 
-- **资源** ：模板的这一部分定义了要部署的资源，如虚拟机、存储帐户和虚拟网络。
+- **资源**：模板的这一部分定义了要部署的资源，如虚拟机、存储帐户和虚拟网络。
 
-- **输出** ：部署完成后，资源管理器可能会返回数据，如动态生成的连接字符串。
+- **输出**：部署完成后，资源管理器可能会返回数据，如动态生成的连接字符串。
 
 以下机制可用于部署自动化：
 
-- **函数** ：可以在资源管理器模板中使用多个函数。 包括将字符串转换为小写、部署已定义资源的多个实例，以及动态返回目标资源组等操作。 资源管理器函数有助于生成动态部署。
+- **函数**：可以在资源管理器模板中使用多个函数。 包括将字符串转换为小写、部署已定义资源的多个实例，以及动态返回目标资源组等操作。 资源管理器函数有助于生成动态部署。
 
-- **资源依赖关系** ：部署多个资源时，某些资源对其他资源具有依赖关系。 为了方便部署，可以使用资源依赖关系声明，先部署依赖资源，然后再部署其他资源。
+- **资源依赖关系**：部署多项资源时，某些资源对其他资源具有依赖关系。 为了方便部署，可以使用资源依赖关系声明，先部署依赖资源，然后再部署其他资源。
 
-- **模板链接** ：可从一个资源管理器模板中链接到另一个模板。 这允许将部署分解成一组具有特定用途的定向模板。
+- **模板链接**：可从一个资源管理器模板中链接到另一个模板。 这允许将部署分解成一组具有特定用途的定向模板。
 
 可在任何文本编辑器中生成资源管理器模板。 但是，用于 Visual Studio 的 Azure SDK 包括的工具可提供帮助。 通过使用 Visual Studio，可以通过向导向模板添加资源，然后直接从 Visual Studio 中部署和调试模板。 有关详细信息，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)。
 
@@ -294,17 +292,17 @@ Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 
 
 以下是 [Azure 中的内置角色](../../role-based-access-control/built-in-roles.md)的一些示例：
 
-- **所有者** ：具有此角色的用户可管理所有内容，包括访问权限。
+- **所有者**：具有此角色的用户可管理所有内容，包括访问权限。
 
-- **读者** ：具有此角色的用户可以读取所有类型的资源（机密除外），但不能进行更改。
+- **读者**：具有此角色的用户可以读取所有类型的资源（机密除外），但不能进行更改。
 
-- **虚拟机参与者** ：具有此角色的用户可以管理虚拟机，但不能管理其连接的虚拟网络或 VHD 文件所在的存储帐户。
+- **虚拟机参与者**：具有此角色的用户可以管理虚拟机，但不能管理其连接的虚拟网络或 VHD 文件所在的存储帐户。
 
-- **SQL DB 参与者** ：具有此角色的用户可以管理 SQL 数据库，而不是与安全性相关的策略。
+- **SQL DB 参与者**：具有此角色的用户可以管理 SQL 数据库，而不是与安全性相关的策略。
 
-- **SQL 安全管理器** ：具有此角色的用户可以管理 SQL 服务器和数据库与安全性相关的策略。
+- **SQL 安全管理器**：具有此角色的用户可以管理 SQL 服务器和数据库与安全性相关的策略。
 
-- **存储帐户参与者** ：具有此角色的用户可以管理存储帐户，但不能管理对存储帐户的访问权限。
+- **存储帐户参与者**：具有此角色的用户可以管理存储帐户，但不能管理对存储帐户的访问权限。
 
 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
 
@@ -312,7 +310,7 @@ Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 
 
 Azure 虚拟机是 Azure 中的一个中心 IaaS 服务。 Azure 虚拟机支持将 Windows 或 Linux 虚拟机部署到 Microsoft Azure 数据中心。 通过 Azure 虚拟机，用户可以完全控制 VM 配置，并负责所有软件安装、配置和维护。
 
-在部署 Azure VM 时，可从 Microsoft Azure 市场中选择一个映像，也可提供自己的通用映像。 此映像用于应用操作系统和初始配置。 在部署期间，资源管理器将处理一些配置设置，例如分配计算机名称、管理凭据和网络配置。 可以使用 Azure 虚拟机扩展来进一步自动化配置，如软件安装、防病毒配置和监视解决方案。
+在部署 Azure VM 时，可从 Azure 市场中选择一个映像，也可提供自己的通用映像。 此映像用于应用操作系统和初始配置。 在部署期间，资源管理器将处理一些配置设置，例如分配计算机名称、管理凭据和网络配置。 可以使用 Azure 虚拟机扩展来进一步自动化配置，如软件安装、防病毒配置和监视解决方案。
 
 可以创建多个不同大小的虚拟机。 虚拟机的大小决定了如何分配资源，如处理、内存和存储容量。 在某些情况下，只有特定大小的 VM 上才可使用特定功能，如启用了 RDMA 的网络适配器和 SSD 磁盘。 有关 VM 大小和功能的完整列表，请参阅 [Azure 中 Windows 虚拟机的大小](../../virtual-machines/sizes.md)和 [Azure 中 Linux 虚拟机的大小](../../virtual-machines/sizes.md)。
 
@@ -326,7 +324,7 @@ Azure 虚拟机是 Azure 中的一个中心 IaaS 服务。 Azure 虚拟机支持
 
 #### <a name="portal"></a>门户
 
-要使用 Azure 门户部署虚拟机，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可选择使用不同配置的多个不同的操作系统映像。 所有存储和网络要求都在部署期间配置。 有关详细信息，请参阅[使用 Azure 门户创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-portal.md) 和[使用 Azure 门户创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-portal.md)。
+要使用 Azure 门户部署虚拟机，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可选择使用不同配置的多个不同的操作系统映像。 所有存储和网络要求都在部署期间配置。 有关详细信息，请参阅[使用 Azure 门户创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-portal.md)和[使用 Azure 门户创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-portal.md)。
 
 使用 Azure 门户，除了部署虚拟机之外，还可以部署 Azure 资源管理器模板。 这将部署并配置模板中定义的所有资源。 有关详细信息，请参阅[使用资源管理器模板和 Azure 门户部署资源](../../azure-resource-manager/templates/deploy-portal.md)。
 
@@ -430,7 +428,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 #### <a name="virtual-machine-disks"></a>虚拟机磁盘
 
-部署虚拟机时，还需要创建一个存储帐户来保存虚拟机操作系统磁盘和任何其他数据磁盘。 可选择现有存储帐户，也可以创建一个新存储帐户。 由于 blob 的最大大小为 1,024 GB，因此单个 VM 磁盘的最大大小为 1,023 GB。 若要配置较大的数据磁盘，可以将多个数据磁盘提供给虚拟机，并将它们汇集在一起，组成一个逻辑磁盘。 有关详细信息，请参阅 [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) 和 [Linux](../../virtual-machines/linux/tutorial-manage-disks.md) 的“管理 Azure 磁盘”。
+部署虚拟机时，还需要创建一个存储帐户来保存虚拟机操作系统磁盘和任何其他数据磁盘。 可选择现有存储帐户，也可以创建一个新存储帐户。 由于 blob 的最大大小为 1,024 GB，因此单个 VM 磁盘的最大大小为 1,023 GB。 若要配置较大的数据磁盘，可以将多个数据磁盘提供给虚拟机，并将它们汇集在一起，组成一个逻辑磁盘。 有关详细信息，请参阅 [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) 和 [Linux](../../virtual-machines/linux/tutorial-manage-disks.md) 的“Azure 磁盘管理”。
 
 #### <a name="storage-tools"></a>存储工具
 
@@ -473,9 +471,9 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 - Azure 资源管理器模板
 
-> **何时使用** ：无论何时使用 Azure 中的 VM，都将使用虚拟网络。 这允许将 VM 分段为类似本地数据中心的面向公众子网和专用子网。
+> **何时使用**：无论何时使用 Azure 中的 VM，都将使用虚拟网络。 这允许将 VM 分段为类似本地数据中心的面向公众子网和专用子网。
 >
-> **入门** ：要使用 Azure 门户部署 Azure 虚拟网络，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的虚拟网络部署到新的或现有资源组中。 从门户创建新的虚拟机时，可选择现有虚拟网络或创建一个新的虚拟网络。 开始行动并[使用 Azure 门户创建虚拟网络](../../virtual-network/quick-create-portal.md)。
+> **入门**：要使用 Azure 门户部署 Azure 虚拟网络，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的虚拟网络部署到新的或现有资源组中。 从门户创建新的虚拟机时，可选择现有虚拟网络或创建一个新的虚拟网络。 开始行动并[使用 Azure 门户创建虚拟网络](../../virtual-network/quick-create-portal.md)。
 
 ### <a name="access-and-security-for-virtual-networks"></a>虚拟网络的访问和安全性
 

@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: b0acfbf9636c2ad1df7df3197a0a1a83ec91b5c3
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145644"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747334"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>使用 Postman 访问 Azure API for FHIR
 
@@ -32,7 +32,7 @@ ms.locfileid: "93145644"
 
 - FHIR 服务器 URL，例如 `https://MYACCOUNT.azurehealthcareapis.com`
 - FHIR 服务器的标识提供者 `Authority`，例如 `https://login.microsoftonline.com/{TENANT-ID}`
-- 已配置的 `audience`。 这通常是 FHIR 服务器的 URL，例如 `https://MYACCOUNT.azurehealthcareapis.com` 或仅 `https://azurehealthcareapis.com`。
+- 已配置的 `audience`。 这通常是 FHIR 服务器的 URL，例如 `https://<FHIR-SERVER-NAME>.azurehealthcareapis.com` 或仅 `https://azurehealthcareapis.com`。
 - 要用于访问 FHIR 服务的[客户端应用程序](register-confidential-azure-ad-client-app.md)的 `client_id`（或应用程序 ID）。
 - 客户端应用程序的 `client_secret`（或应用程序机密）。
 

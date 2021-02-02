@@ -230,7 +230,7 @@
           items:
             - name: 在 Blob 上搜索
               href: search-blob-storage-integration.md
-            - name: 使用 AI 了解 Blob
+            - name: 对 Blob 的 AI 扩充
               href: search-blob-ai-integration.md
             - name: 配置 Blob 索引器
               href: search-howto-indexing-azure-blob-storage.md

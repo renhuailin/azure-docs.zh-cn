@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: dbddf35b0aa1494ef719803fa84cafae04f3ec50
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e2a71313294457e09e2bb152dea98c84b7730236
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178577"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754415"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 标识平台登录功能
 
@@ -169,7 +169,7 @@ public void Configuration(IAppBuilder app)
 > |---------|---------|
 > | `ClientId`     | Azure 门户中注册的应用程序的应用程序 ID |
 > | `Authority`    | 用户要进行身份验证的 STS 终结点。 对于公有云，通常为 `https://login.microsoftonline.com/{tenant}/v2.0`，其中 {tenant} 是租户名称、租户 ID 或者引用常用终结点（用于多租户应用程序）的 common |
-> | `RedirectUri`  | 一个 URL，在通过 Microsoft 标识平台终结点进行身份验证之后，会将用户发送到此 URL |
+> | `RedirectUri`  | 一个 URL，在通过 Microsoft 标识平台进行身份验证之后，会将用户发送到此 URL |
 > | `PostLogoutRedirectUri`     | 一个 URL，在注销以后，会将用户发送到此 URL |
 > | `Scope`     | 请求的作用域的列表，使用空格进行分隔 |
 > | `ResponseType`     | 请求身份验证的响应包含 ID 令牌 |

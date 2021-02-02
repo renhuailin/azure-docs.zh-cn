@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 11/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: e7e65d5d2941765df98b3bf3b7fb8ff2e89b7e9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1876ab86e6f4c46edc23361dd884d8b32328f36c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411195"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919054"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建用户 VPN 连接
 
@@ -24,6 +24,7 @@ ms.locfileid: "94411195"
 > * 创建虚拟 WAN
 > * 创建 P2S 配置
 > * 创建虚拟中心
+> * 选择客户端地址池
 > * 指定 DNS 服务器
 > * 生成 VPN 客户端配置文件配置包
 > * 配置 VPN 客户端
@@ -49,6 +50,11 @@ ms.locfileid: "94411195"
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
 
+
+## <a name="choose-p2s-client-address-pools"></a><a name="chooseclientpools"></a> 选择 P2S 客户端地址池
+
+[!INCLUDE [Choose pools](../../includes/virtual-wan-allocating-p2s-pools.md)]
+
 ## <a name="specify-dns-server"></a><a name="dns"></a>指定 DNS 服务器
 
 你可以在创建中心时配置此设置，也可以在以后对其进行修改。 若要进行修改，请找到虚拟中心。 在“用户 VPN(点到站点)”下，选择“配置”，然后在“自定义 DNS 服务器”文本框中输入 DNS 服务器 IP 地址  。 最多可以指定 5 个 DNS 服务器。
@@ -73,6 +79,8 @@ ms.locfileid: "94411195"
 1. 导航到虚拟 WAN。
 1. 在“概述”页上，地图中的每个点表示一个中心。
 1. 在“中心和连接”部分，可以查看中心状态、站点、区域、VPN 连接状态和传入与传出字节数。
+
+
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>清理资源
 

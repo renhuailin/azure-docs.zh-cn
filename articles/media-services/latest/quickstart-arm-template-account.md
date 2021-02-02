@@ -1,25 +1,11 @@
 ---
-title: 媒体服务帐户 ARM 模板
-titleSuffix: Azure Media Services
-description: 本文介绍如何使用 ARM 模板创建媒体服务帐户。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: quickstart
-ms.date: 11/24/2020
-ms.author: inhenkel
-ms.custom: subject-armqs
-ms.openlocfilehash: 6a23c3a20e79fe6fff7de8faccf4e4ef78f02585
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185024"
+title:媒体服务帐户 ARM 模板:Azure 媒体服务说明:本文介绍如何使用 ARM 模板创建媒体服务帐户。
+services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: ms.topic: quickstart ms.date:11/24/2020 ms.author: inhenkel ms.custom: subject-armqs
+
 ---
+
 # <a name="quickstart-media-services-account-arm-template"></a>快速入门：媒体服务帐户 ARM 模板
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -41,7 +27,7 @@ ms.locfileid: "96185024"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-如果之前从未部署过 ARM 模板，请阅读 [Azure ARM 模板](https://docs.microsoft.com/azure/azure-resource-manager/templates/)并浏览[教程](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)，这会很有帮助。
+如果之前从未部署过 ARM 模板，请阅读 [Azure ARM 模板](../../azure-resource-manager/templates/index.yml)并浏览[教程](../../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell)，这会很有帮助。
 
 ## <a name="review-the-template"></a>查看模板
 
@@ -118,8 +104,8 @@ The syntax for the JSON code fence is:
 
 该模板中定义了三种 Azure 资源类型：
 
-- [Microsoft.Media/mediaservices](https://docs.microsoft.com/azure/templates/microsoft.media/mediaservices)：创建媒体服务帐户
-- [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)：创建存储帐户
+- [Microsoft.Media/mediaservices](/azure/templates/microsoft.media/mediaservices)：创建媒体服务帐户
+- [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)：创建存储帐户
 
 ## <a name="set-the-account"></a>设置帐户
 
@@ -277,4 +263,4 @@ az group delete --name {name of the resource group}
 若要通过使用参数、变量等创建模板的过程来了解有关使用 ARM 模板的更多信息，请尝试
 
 > [!div class="nextstepaction"]
-> [创建并部署第一个 ARM 模板](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [创建并部署第一个 ARM 模板](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

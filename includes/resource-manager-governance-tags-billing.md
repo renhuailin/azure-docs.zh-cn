@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 226079b1970508004c55c54cd3de6d2e9475aa08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34388fe975df359c695b9358cafcd3ae711af0cf
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75970130"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900797"
 ---
 对资源应用标记以后，即可使用这些标记查看资源的成本。 成本分析显示最新使用情况需要一定的时间，因此可能还看不到这些成本。 成本可用以后，即可在订阅中跨资源组查看资源的成本。 用户必须具有[计费信息的订阅级别访问权限](../articles/cost-management-billing/manage/manage-billing-access.md)才能查看这些成本。
 
@@ -25,4 +25,4 @@ ms.locfileid: "75970130"
 
 ![按标记查看成本](./media/resource-manager-governance-tags-billing/view-costs-by-tag.png)
 
-也可使用 [Azure 计费 API](../articles/cost-management-billing/manage/usage-rate-card-overview.md) 以编程方式查看成本。
+也可使用 [Azure 使用 API 概述](../articles/cost-management-billing/manage/consumption-api-overview.md) 以编程方式查看成本。

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 09d793f3d8ed544a386a362677f24be6d18673d7
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 27a97ceb2ca9a7b58df7200930e4e47d89c9ae89
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748717"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762192"
 ---
 # <a name="workflow"></a>工作流
 
@@ -38,6 +38,18 @@ Azure 证明工作流涉及以下参与者：
 
 > [!Note]
 > 在 [2018-09-01-preview](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/attestation/data-plane/Microsoft.Attestation/stable/2018-09-01-preview) API 版本中发送证明请求时，客户端需要将证据连同 Azure AD 访问令牌一起发送到 Azure 证明。
+
+## <a name="trusted-platform-module-tpm-enclave-validation-work-flow"></a>受信任的平台模块 (TPM) enclave 验证工作流
+
+下面是典型的 TPM enclave 证明工作流的一般步骤（使用 Azure 证明）：
+
+1.  在设备/平台启动时，各种启动加载程序和启动服务会测量由 TPM 支持并安全存储（TCG 日志）的事件。
+2.  客户端从设备和 TPM Quote 收集 TCG 日志，作为证明的证据。
+3.  客户端具有引用 Azure 证明实例的 URI。 客户端将证据发送到 Azure 证明。 提交给提供程序的确切信息取决于平台。
+4.  Azure 证明对提交的信息进行验证，并根据配置的策略对其进行评估。 如果验证成功，Azure 证明会颁发证明令牌并将其返回给客户端。 如果此步骤失败，Azure 证明会向客户端报告一个错误。 客户端与证明服务之间的通信由 Azure 证明 TPM 协议决定。
+5.  客户端随后会将证明令牌发送给信赖方。 信赖方将调用 Azure 证明的公钥元数据终结点来检索签名证书。 然后，信赖方会验证证明令牌的签名，并确保这些平台可信。
+
+![TPM 验证流](./media/tpm-validation-flow.png)
 
 ## <a name="next-steps"></a>后续步骤
 - [如何创作证明策略并对其签名](author-sign-policy.md)

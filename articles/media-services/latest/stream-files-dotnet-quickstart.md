@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务流式传输视频文件 - .NET | Microsoft Docs
+title: 使用 Azure 媒体服务流式传输视频文件 - .NET
 description: 按照本教程的步骤，使用 .NET 创建新的 Azure 媒体服务帐户、编码文件并将文件流式传输到 Azure Media Player。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dc6b240a2d97e0b4aa313f858b3965f241dd0b08
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268683"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898183"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - .NET
 
@@ -53,12 +53,12 @@ ms.locfileid: "91268683"
 
 该示例执行以下操作：
 
-1. 创建一个**转换**（首先，检查指定的转换是否存在）。 
-2. 创建一个输出**资产**，用作编码**作业**的输出。
-3. 创建基于 HTTPS URL 的**作业**输入。
-4. 使用先前创建的输入和输出提交编码**作业**。
+1. 创建一个 **转换**（首先，检查指定的转换是否存在）。 
+2. 创建一个输出 **资产**，用作编码 **作业** 的输出。
+3. 创建基于 HTTPS URL 的 **作业** 输入。
+4. 使用先前创建的输入和输出提交编码 **作业**。
 5. 检查作业的状态。
-6. 创建**流定位符**。
+6. 创建 **流定位符**。
 7. 生成流式处理 URL。
 
 有关示例代码中的每个功能的内容介绍，请在[此源文件](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)中查看相关代码和注释。

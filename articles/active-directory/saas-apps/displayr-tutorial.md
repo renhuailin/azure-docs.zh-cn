@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 13edc0280f1a6f7e962e8e4593d8a17990dd9e6f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3cb6ee3162c70d2d07c4868ae90ecc54bd489966
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454739"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622485"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>教程：将 Displayr 与 Azure Active Directory 集成
 
@@ -78,6 +78,10 @@ ms.locfileid: "92454739"
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YOURDOMAIN>.displayr.com`。
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`<YOURDOMAIN>.displayr.com` 
+    
+    c. 在“回复 URL”文本框中键入 `https://app.displayr.com/Login/ProcessSamlResponse`。
+    
+    d. 单击“ **保存**”。
 
     >[!NOTE]
     >这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Displayr 客户端支持团队](mailto:support@displayr.com)获取这些值。 还可参考 Azure 门户的“基本 SAML 配置”部分中显示的模式。
@@ -88,25 +92,23 @@ ms.locfileid: "92454739"
 
 1. Displayr 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
-    ![显示“用户属性”部分的屏幕截图，其中突出显示了“编辑”图标。](common/edit-attribute.png)
+   ![显示“用户属性”部分的屏幕截图，其中突出显示了“编辑”图标。](common/edit-attribute.png)
 
 1. 除了上述属性，Displayr 应用程序还要求在 SAML 响应中传递回更多的属性。 在“组声明(预览)”对话框中的“用户属性和声明”部分，执行以下步骤   ：
 
-    a. 单击“声明中返回的组”旁边的 **笔** 。 
+   a. 单击“添加组声明”。
 
-    ![屏幕截图显示“用户属性和声明”部分，其中已选择“声明中返回的组”旁边的“笔”图标。](./media/displayr-tutorial/config04.png)
+      ![显示已选择设置的“组声明(预览)”窗口的屏幕截图。](./media/displayr-tutorial/config05.png)
 
-    ![显示已选择设置的“组声明(预览)”窗口的屏幕截图。](./media/displayr-tutorial/config05.png)
+   b. 从单选列表中选择“所有组”。 
 
-    b. 从单选列表中选择“所有组”。 
+   c. 选择“组 ID”作为“源属性”  。 
 
-    c. 选择“组 ID”作为“源属性”  。 
+   d. 勾选“自定义组声明的名称”。 
 
-    d. 勾选“自定义组声明的名称”。 
+   e. 勾选“将组作为角色声明发出”。 
 
-    e. 勾选“将组作为角色声明发出”。 
-
-    f. 单击“ **保存** ”。
+   f. 单击“ **保存**”。
 
 1. 在“设置 Displayr”部分，根据要求复制相应的 URL  。
 
@@ -148,19 +150,19 @@ ms.locfileid: "92454739"
 
     f. “组映射”为可选。 
 
-    g. 单击“ **保存** ”。  
+    g. 单击“ **保存**”。  
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分中，将在 Azure 门户中创建一个名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `Britta Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `Britta Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`BrittaSimon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -172,12 +174,12 @@ ms.locfileid: "92454739"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-displayr-test-user"></a>创建 Displayr 测试用户
@@ -206,7 +208,7 @@ ms.locfileid: "92454739"
 
     c. 选择相应的“组成员身份”。 
 
-    d. 单击“ **保存** ”。
+    d. 单击“ **保存**”。
 
 ### <a name="test-sso"></a>测试 SSO
 

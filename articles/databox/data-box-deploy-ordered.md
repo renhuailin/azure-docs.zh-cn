@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: fd165795be85c26cdfcaee3c4fd01427274a7316
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 26e8f08d4b901a9ea57da826d9441d23508c4a4c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210335"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797621"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
@@ -231,7 +231,7 @@ PS C:\Windows\System32>
     |源国家/地区    |    选择数据当前所在的国家/地区。         |
     |目标 Azure 区域     |     选择要在其中传输数据的 Azure 区域。 <br> 有关详细信息，请转到[适用区域](data-box-overview.md#region-availability)。            |
 
-    [![启动 Azure Data Box 导入订单](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
+    [ ![启动 Azure Data Box 导入订单](media/data-box-deploy-ordered/select-data-box-import-04-b.png) ](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
 
 5. 选择“Data Box”。 单次订购的可用最大容量为 80 TB。 可以创建多个订单，以增加数据大小。
 
@@ -239,7 +239,7 @@ PS C:\Windows\System32>
 
 6. 在“订单”中，转到“基本”选项卡 。输入或选择以下信息，然后选择“下一步:数据目标>”。
 
-    |设置  |Value  |
+    |设置  |值  |
     |---------|---------|
     |订阅      | 系统会根据前面所做的选择自动填充此订阅。|
     |资源组    | 之前选择的资源组。 |
@@ -338,9 +338,9 @@ PS C:\Windows\System32>
 
 14. 选择将用于管理对此资源的访问权限的用户标识。 选中“选择用户标识”。 在右侧面板中，选择要使用的订阅和托管标识。 然后选取“选择”  。
 
-    用户分配的托管标识是一个可用于管理多个资源的独立 Azure 资源。 有关详细信息，请参阅[托管标识类型](/azure/active-directory/managed-identities-azure-resources/overview)。  
+    用户分配的托管标识是一个可用于管理多个资源的独立 Azure 资源。 有关详细信息，请参阅[托管标识类型](../active-directory/managed-identities-azure-resources/overview.md)。  
 
-    如果需要创建新的托管标识，请按照[使用 Azure 门户创建、列出和删除用户分配的托管标识以及如何为其分配角色](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)中的指南操作。
+    如果需要创建新的托管标识，请按照[使用 Azure 门户创建、列出和删除用户分配的托管标识以及如何为其分配角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指南操作。
     
     ![选择用户标识](./media/data-box-deploy-ordered/customer-managed-key-10.png)
 

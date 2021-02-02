@@ -1,14 +1,14 @@
 ---
 title: 快速入门：使用 Azure CLI 创建蓝图
 description: 在本快速入门中，通过 Azure CLI 使用 Azure 蓝图创建、定义和部署项目。
-ms.date: 10/14/2020
+ms.date: 01/26/2021
 ms.topic: quickstart
-ms.openlocfilehash: 88ccd3fe6271a79d201007954e7997b68d2dc69b
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: a0e44925bdec78b8b02a50c8b3f91db0bb764976
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920553"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875188"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>快速入门：使用 Azure CLI 定义和分配 Azure 蓝图
 
@@ -16,7 +16,8 @@ ms.locfileid: "94920553"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
+- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
+- 如果你之前未用过 Azure 蓝图，请通过 Azure CLI 使用 `az provider register --namespace Microsoft.Blueprint` 注册资源提供程序。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 07/13/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f85b78480e7258780f8dd396431edeb968189e4c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: c6f4659b9ee809cc1f1caeb1cb9c0d626b1b3a3b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741246"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725648"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Azure Active Directory 身份验证是什么？
 
@@ -27,6 +27,10 @@ ms.locfileid: "96741246"
 * 用于将密码更改写回到本地环境的混合集成
 * 用于对本地环境强制实施密码保护策略的混合集成
 * 无密码身份验证
+
+请观看我们的短视频，详细了解这些身份验证组件。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4KVJA]
 
 ## <a name="improve-the-end-user-experience"></a>改善最终用户体验
 
@@ -80,7 +84,7 @@ Azure AD 多重身份验证使用户能够在登录期间选择其他形式的�
 
 ![导致无密码的身份验证过程的安全性和便利性](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-使用无密码方法登录时，会通过使用 Windows Hello 企业版的生物识别或 FIDO2 安全密钥等方法来提供凭据。 攻击者无法轻松地复制这些身份验证方法。
+通过无密码方法登录时，使用 Windows Hello 企业版的生物识别或 FIDO2 安全密钥等方法来提供凭据。 攻击者无法轻松地复制这些身份验证方法。
 
 可以通过 Azure AD 使用无密码方法进行本机身份验证，简化用户的登录体验并降低受到攻击的风险。
 

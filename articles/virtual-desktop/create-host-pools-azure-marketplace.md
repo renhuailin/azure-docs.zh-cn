@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287383"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735175"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
 
@@ -118,7 +118,7 @@ ms.locfileid: "91287383"
       - Windows 10 企业版多会话版本 2004
       - Windows 10 企业版多会话版本 2004 + Microsoft 365 应用
 
-     如果未看到所需的映像，请选择“浏览所有映像和磁盘”，然后便可以选择库中的另一个映像，或选择 Microsoft 和其他发行商提供的映像。
+     如果未看到所需的映像，请选择“浏览所有映像和磁盘”，然后便可以选择库中的另一个映像，或选择 Microsoft 和其他发行商提供的映像。 确保所选的映像是[受支持的 OS 映像](overview.md#supported-virtual-machine-os-images)之一。
 
      > [!div class="mx-imgBorder"]
      > ![市场屏幕截图，其中显示了 Microsoft 提供的映像列表。](media/marketplace-images.png)

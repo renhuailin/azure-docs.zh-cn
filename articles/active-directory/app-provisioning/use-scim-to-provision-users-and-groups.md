@@ -12,18 +12,19 @@ ms.date: 01/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 63bd44140ea5c355c3bb1a891a21e6c2e73ab041
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf1057276a543c18b746bb60b7e7a54bf28dec6f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679494"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892553"
 ---
-# <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教程 - 使用 Azure AD 生成 SCIM 终结点并配置用户预配
+# <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Tutorial:开发 SCIM 终结点并计划其预配
 
 应用程序开发人员可以使用跨域身份管理系统 (SCIM) 用户管理 API 实现在应用程序与 Azure AD 之间自动预配用户和组。 本文介绍如何生成 SCIM 终结点以及如何与 Azure AD 预配服务集成。 SCIM 规范提供了预配用的常见用户架构。 与联合标准（例如 SAML 或 OpenID Connect）结合使用时，SCIM 为管理员提供了基于标准的端到端访问权限管理解决方案。
 
-SCIM 是 /Users 终结点和 /Groups 终结点的标准化定义。 它使用常见的 REST 谓词来创建、更新以及删除对象和常见属性（例如组名、用户名、名字、姓氏和电子邮件）的预定义架构。 提供 SCIM 2.0 REST API 的应用可以减少或免去使用专有用户管理 API 带来的麻烦。 例如，任何兼容的 SCIM 客户端都知道如何将 JSON 对象的 HTTP POST 发送到 /Users 终结点，以创建新的用户条目。 符合 SCIM 标准的应用不需要采用略有不同的 API 来执行相同的基本操作，而是可以立即使用现有的客户端、工具和代码。 
+SCIM 是 `/Users` 终结点和 `/Groups` 终结点的标准化定义。 它使用常见的 REST 谓词来创建、更新以及删除对象和常见属性（例如组名、用户名、名字、姓氏和电子邮件）的预定义架构。 提供 SCIM 2.0 REST API 的应用可以减少或免去使用专有用户管理 API 带来的麻烦。 例如，任何兼容的 SCIM 客户端都知道如何将 JSON 对象的 HTTP POST 发送到 `/Users` 终结点，以创建新的用户条目。 符合 SCIM 标准的应用不需要采用略有不同的 API 来执行相同的基本操作，而是可以立即使用现有的客户端、工具和代码。 
 
 ![使用 SCIM 从 Azure AD 预配到应用](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
 
@@ -748,7 +749,9 @@ Azure AD 预配服务当前在 AzureActiveDirectory 的 IP 范围下运行，如
 
 既然你已设计了架构并了解了 Azure AD SCIM 实现，现在可以开始开发 SCIM 终结点了。 可以依赖于由 SCIM 社区发布的许多开源 SCIM 库，而不必从头开始完全靠自己构建实现。
 
-Azure AD 预配团队发布的开源 .NET Core [参考代码](https://aka.ms/SCIMReferenceCode)就是其中一种可以立即开始进行开发的资源。 生成 SCIM 终结点之后，你将需要对其进行测试。可以使用作为参考代码一部分提供的 [postman 测试](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)集合，也可以运行[上面](#user-operations)提供的示例请求/响应。  
+有关如何生成 SCIM 终结点的指南（内附示例），请参阅[开发示例 SCIM 终结点](use-scim-to-build-users-and-groups-endpoints.md)。
+
+Azure AD 预配团队发布的开源 .NET Core [参考代码示例](https://aka.ms/SCIMReferenceCode)就是一种可助你立即开始开发的资源。 生成 SCIM 终结点之后，你将需要对其进行测试。可以使用作为参考代码一部分提供的 [postman 测试](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)集合，也可以运行[上面](#user-operations)提供的示例请求/响应。  
 
    > [!Note]
    > 该参考代码按“原样”提供，旨在帮助你开始生成 SCIM 终结点。 欢迎社区供稿，以帮助构建和维护代码。
@@ -1127,11 +1130,17 @@ _ ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
 
 1. 登录到 [Azure Active Directory 门户](https://aad.portal.azure.com)。 请注意，可以通过注册[开发人员计划](https://developer.microsoft.com/office/dev-program)来获得具有 P2 许可证的免费试用版 Azure Active Directory
 2. 从左窗格中选择“企业应用程序”。 系统显示所有已配置的应用（包括从库中添加的应用）的列表。
-3. 选择“+ 新建应用程序” > “全部” > “非库应用程序”  。
-4. 输入应用程序的名称，然后选择“添加”创建应用对象。 新的应用将添加到企业应用程序列表中，并在应用管理屏幕中打开。
+3. 选择“+新建应用程序” > “+创建自己的应用程序” 。
+4. 输入应用程序的名称，选择“集成在库中找不到的任何其他应用程序”选项，然后选择“添加”来创建应用对象。 新的应用将添加到企业应用程序列表中，并在应用管理屏幕中打开。
 
-   ![屏幕截图显示 Azure AD 应用程序库](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
+   ![屏幕截图显示 Azure AD 应用程序库](media/use-scim-to-provision-users-and-groups/scim-figure-2b-1.png)
    Azure AD 应用程序库
+
+   > [!NOTE]
+   > 如果你使用的是旧版应用库体验，请按照下面的屏幕指南进行操作。
+   
+   ![屏幕截图显示 Azure AD 旧版应用库体验](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)
+   Azure AD 旧版应用库体验
 
 5. 在应用管理屏幕的左侧面板中，选择“预配”。
 6. 在“预配模式”菜单中，选择“自动” 。
@@ -1235,6 +1244,7 @@ OAuth 代码授权流中的步骤：
 
 ## <a name="related-articles"></a>相关文章
 
+* [开发示例 SCIM 终结点](use-scim-to-build-users-and-groups-endpoints.md)
 * [在 SaaS 应用中自动预配和取消预配用户](user-provisioning.md)
 * [为用户预配自定义属性映射](customize-application-attributes.md)
 * [为属性映射编写表达式](functions-for-customizing-application-data.md)

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：Azure Blob 存储库 v12 - Xamarin
-description: 本快速入门介绍如何通过 Xamarin 使用 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来介绍如何将 blob 下载到移动设备，以及如何列出容器中的所有 blob。
+description: 本快速入门介绍如何通过 Xamarin 使用 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 Blob。 接下来介绍如何将 blob 下载到移动设备，以及如何列出容器中的所有 blob。
 author: codemillmatt
 ms.author: masoucou
 ms.date: 10/09/2020
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 641117414c855a044d3ed55004b6e6ea15b259ac
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004732"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802353"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>快速入门：通过 Xamarin 使用 Azure Blob 存储客户端库 v12
 
@@ -269,7 +269,7 @@ Container Deleted
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何通过 Xamarin 使用 Azure Blob 存储客户端库 v12 上传、下载和列出 blob。
+本快速入门介绍了如何通过 Xamarin 使用 Azure Blob 存储客户端库 v12 上传、下载和列出 Blob。
 
 若要查看 Blob 存储示例应用，请继续执行以下操作：
 

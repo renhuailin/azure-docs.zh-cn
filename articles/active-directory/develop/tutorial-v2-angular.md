@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: c4c7d021c7c3a5a32d537a50fa45449fdee7e817
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979923"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756159"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教程：从 Angular 单页应用程序将用户登录并调用 Microsoft Graph API
 
@@ -271,7 +271,7 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-有时需要让用户与 Microsoft 标识平台终结点进行交互。 例如：
+有时需要让用户与 Microsoft 标识平台进行交互。 例如：
 
 * 由于密码已过期，用户可能需要重新输入凭据。
 * 应用程序正在请求访问用户需要许可的其他资源范围。
@@ -279,7 +279,7 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 对于大多数应用程序，建议的模式是先调用 `acquireTokenSilent`，然后捕获异常，然后再调用 `acquireTokenPopup`（或 `acquireTokenRedirect`），以启动交互式请求。
 
-调用 `acquireTokenPopup` 会弹出一个登录窗口。 另外，`acquireTokenRedirect` 会将用户重定向到 Microsoft 标识平台终结点。 在该窗口中，用户需要确认其凭据，许可访问所需的资源，或完成双重身份验证。
+调用 `acquireTokenPopup` 会弹出一个登录窗口。 另外，`acquireTokenRedirect` 会将用户重定向到 Microsoft 标识平台。 在该窗口中，用户需要确认其凭据，许可访问所需的资源，或完成双重身份验证。
 
 ```javascript
   const requestObj = {

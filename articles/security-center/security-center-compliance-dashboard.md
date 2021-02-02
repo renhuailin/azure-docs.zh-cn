@@ -11,18 +11,24 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/11/2020
+ms.date: 01/28/2021
 ms.author: memildin
-ms.openlocfilehash: bbc36dbb2a17d379d31a9a235898500aea36247d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: f8d92ff0835948637761d7d2a98ec95a1c6dfccd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533904"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944212"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
 
-Azure 安全中心使用合规性仪表板，可以根据合规性要求简化相关过程  。 在仪表板中，安全中心会对你的 Azure 环境进行持续的评估，以便了解你的符合性情况。 安全中心根据安全最佳做法分析混合云环境中的风险因素。 这些评估会从支持的一组标准映射到符合性控件。 在合规性仪表板中，可以查看在特定的法规标准下，环境中所有评估的状态。 针对建议进行操作并减少环境中的风险因素以后，合规性情况得到了改善。
+Azure 安全中心使用合规性仪表板，可以根据合规性要求简化相关过程  。 
+
+安全中心对混合云环境进行持续评估，以根据适用于你的订阅的标准中的控制措施和最佳做法来分析风险因素。 仪表板反映了符合这些标准的状态。 
+
+在 Azure 订阅上启用安全中心后，系统会自动为其分配 [Azure 安全基准](../security/benchmarks/introduction.md)。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。
+
+在合规性仪表板中，可以查看在特定的法规标准下，环境中所有评估的状态。 针对建议进行操作并减少环境中的风险因素以后，合规性情况得到了改善。
 
 在本教程中，将了解如何：
 
@@ -41,17 +47,13 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 ##  <a name="assess-your-regulatory-compliance"></a>评估合规性
 
-安全中心会持续评估资源的配置以识别安全问题和漏洞。 这些评估以建议的形式提供，着重于改进安全机制。 在合规性仪表板中，可以查看一组符合性标准及其所有要求，其中的受支持的要求会映射到适用的安全评估。 这样你就可以根据这些评估的状态和标准来查看自己的符合性情况。
+法规合规性仪表板显示所选的合规性标准及其所有要求，其中受支持的要求映射到适用的安全评估。 这些评估的状态反映了标准的合规性。
 
-可以通过合规性仪表板视图重点了解你在符合某个重要的标准或规范方面存在哪些差距。 有了这个专注的视图，你还可以持续监视动态云环境和混合环境中一段时间内的符合性分数。
+使用法规合规性仪表板有助于重点了解你在符合某个重要的标准和规范方面存在哪些差距。 有了这个专注的视图，你还可以持续监视动态云环境和混合环境中一段时间内的合规性。
 
->[!NOTE]
-> 默认情况下，安全中心支持以下法规标准：Azure CIS、PCI DSS 3.2、ISO 27001 和 SOC TSP。 
->
-> 通过[动态合规性包（预览版）](update-regulatory-compliance-packages.md)功能，你可以将你的规章合规性仪表板中显示的标准升级到新的动态包  。 你还可以使用相同的预览功能来添加新的合规性包，并监视与其他标准的合规性。 
+1. 从安全中心的菜单中，选择“法规符合性”。
 
-1. 从安全中心的菜单中，选择“法规符合性”。 <br>
-在屏幕顶部会显示一个仪表板，其中概述了你的符合性状态以及一组支持的符合性法规。 可以查看总体符合性分数，以及与每个标准相关联的已通过评估和失败的评估的数目。
+    屏幕顶部是一个仪表板，其中概述了你的合规性状态以及一组支持的合规性法规。 可以查看总体符合性分数，以及与每个标准相关联的已通过评估和失败的评估的数目。
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法规符合性仪表板":::
 
@@ -59,7 +61,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="浏览特定标准的符合性详细信息":::
 
-1. 若要生成并下载总结当前特定标准的符合性状态的 PDF 报告，请单击“下载报告”  。
+1. 要生成总结特定标准的当前合规性状态的 PDF 报告，请选择“下载报告”。
 
     该报告根据安全中心评估数据为所选标准提供符合性状态的高级别总结，并根据该特定标准的控制进行整理。 该报告可与相关利益干系人共享，并可能为内部和外部审计员提供证据。
 
@@ -71,7 +73,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 1.  单击在仪表板中显示的失败评估即可查看该建议的详细信息。 每项建议都包含一组修正步骤，遵循这些步骤即可解决问题。
 
-1.  可以选择特定的资源来查看更多的详细信息，然后解决与该资源的建议相关的问题。 <br>例如，在“Azure CIS 1.1.0 (新)标准”中，可以选择建议“应对虚拟机应用磁盘加密” 。
+1.  可以选择特定的资源来查看更多的详细信息，然后解决与该资源的建议相关的问题。 <br>例如，在“Azure CIS 1.1.0 标准”中，可以选择建议“应对虚拟机应用磁盘加密” 。
 
     :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="从标准中选择一个建议会直接转到相关建议的详细信息页面":::
 

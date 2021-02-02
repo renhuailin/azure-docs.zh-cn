@@ -3,26 +3,25 @@ title: Azure 流量管理器 | Microsoft Docs
 description: 本文概述了 Azure 流量管理器。 了解它是否是针对应用程序进行用户流量负载均衡的正确选择。
 services: traffic-manager
 author: duongau
-manager: twooley
 ms.service: traffic-manager
 customer intent: As an IT admin, I want to learn about Traffic Manager and what I can use it for.
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2019
+ms.date: 01/19/2021
 ms.author: duau
-ms.openlocfilehash: e2a4db1404709dadb2500df29f3f7acf8787c2b2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 09b82eed5ad6a9ad121ca56d197eb9c003d027f5
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185725"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624903"
 ---
 # <a name="what-is-traffic-manager"></a>什么是流量管理器？
-Azure 流量管理器是一种基于 DNS 的流量负载均衡器，可以在全球 Azure 区域内以最佳方式向服务分发流量，同时提供高可用性和响应性。
+Azure 流量管理器是基于 DNS 的流量负载均衡器。 此服务让你可以在全球 Azure 区域将流量分布到面向公众的应用程序。 流量管理器还提供具有高可用性和快速响应能力的公共终结点。
 
-流量管理器根据流量路由方法和终结点的运行状况，使用 DNS 将客户端请求定向到最合适的服务终结点。 终结点可以是托管在 Azure 内部或外部的任何面向 Internet 的服务。 流量管理器提供多种[流量路由方法](traffic-manager-routing-methods.md)和[终结点监视选项](traffic-manager-monitoring.md)来满足不同的应用程序需求和自动故障转移模型。 流量管理器能够灵活应对故障，包括整个 Azure 区域的故障。
+流量管理器根据流量路由方法，使用 DNS 将客户端请求定向到合适的服务终结点。 流量管理器还为每个终结点提供运行状况监视功能。 终结点可以是托管在 Azure 内部或外部的任何面向 Internet 的服务。 流量管理器提供多种[流量路由方法](traffic-manager-routing-methods.md)和[终结点监视选项](traffic-manager-monitoring.md)来满足不同的应用程序需求和自动故障转移模型。 流量管理器能够灵活应对故障，包括整个 Azure 区域的故障。
 
 >[!NOTE]
 > Azure 为方案提供了一套完全托管的负载均衡解决方案。 若要寻求传输层安全性 (TLS) 协议终止（“SSL 卸载”）或每个 HTTP/HTTPS 请求的应用层处理，请查看[应用程序网关](../application-gateway/overview.md)。 如果想要实现区域负载均衡，请查看[负载均衡器](../load-balancer/load-balancer-overview.md)。 端到端场景可从结合所需的解决方案中受益。
@@ -37,11 +36,11 @@ Azure 流量管理器是一种基于 DNS 的流量负载均衡器，可以在全
     
 ## <a name="improve-application-performance"></a>改善应用程序性能
 
-在 Azure 中，可以运行位于世界各地的数据中心内的云服务或网站。 流量管理器通过将流量定向到客户端网络延迟最低的终结点，改进应用程序的响应能力。
+在 Azure 中，可以运行位于世界各地的数据中心内的云服务和网站。 流量管理器可以将流量以尽可能低的延迟定向到终结点，从而提高网站的响应能力。
 
-## <a name="perform-service-maintenance-without-downtime"></a>在不停机的情况下执行服务维护
+## <a name="service-maintenance-without-downtime"></a>在不停机的情况下进行服务维护
 
-无需停机即可在应用程序上执行计划内的维护操作。 当维护正在进行时，流量管理器可以将流量定向到备用终结点。
+无需停机即可对应用程序进行计划内维护。 当维护正在进行时，流量管理器可以将流量定向到备用终结点。
 
 ## <a name="combine-hybrid-applications"></a>组合混合应用程序
 

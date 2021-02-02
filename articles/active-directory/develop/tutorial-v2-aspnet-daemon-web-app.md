@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5f2560cdc062edb41ecda935eb9b8efe630949dc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 984b85ff831146060f1642b9eeec7079ff966db3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015940"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937832"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教程：生成使用 Microsoft 标识平台的多租户守护程序
 
@@ -49,7 +49,7 @@ ms.locfileid: "98015940"
 
 ![关系图显示了 UserSync 应用，上面有 3 个本地项连接到 Azure，其中 Startup.Auth 需要令牌以交互方式连接到 Azure AD，AccountController 获取管理员同意来连接到 Azure AD，而 SyncController 读取用户来连接到 Microsoft Graph。](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
-有关此示例中使用的概念的详细信息，请阅读[标识平台终结点的客户端凭据协议文档](v2-oauth2-client-creds-grant-flow.md)。
+有关此示例中使用的概念的详细信息，请阅读[标识平台的客户端凭据协议文档](v2-oauth2-client-creds-grant-flow.md)。
 
 ## <a name="clone-or-download-this-repository"></a>克隆或下载此存储库
 
@@ -109,7 +109,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 1. 选择“注册”以创建应用程序。
 1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用 。 稍后需要使用它为此项目配置 Visual Studio 配置文件。
 1. 在“管理”下，选择“身份验证”。 
-1. 将“注销 URL”设置为 `https://localhost:44316/Account/EndSession`。
+1. 将“前向通道注销 URL”设置为 `https://localhost:44316/Account/EndSession`。
 1. 在“隐式授权”部分中，选择“访问令牌”和“ID 令牌”  。 本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)，使用户能够登录并调用 API。
 1. 选择“保存”。
 1. 在“管理”下，选择“证书和机密”。  
@@ -227,7 +227,7 @@ Visual Studio 将发布项目，同时自动打开浏览器并加载该项目的
 1. 返回到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 在左侧窗格中选择“Azure Active Directory”服务，然后选择“应用注册”。 
 1. 选择 **dotnet-web-daemon-v2** 应用程序。
-1. 在应用程序的“身份验证”页上，使用服务地址更新“注销 URL”字段。  例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。
+1. 在应用程序的“身份验证”页上，使用服务地址更新“前向通道注销 URL”字段 。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net/Account/EndSession`。
 1. 在“品牌”菜单中，将“主页 URL”更新为服务地址。  例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。
 1. 保存配置。
 1. 在“身份验证” > “重定向 URI”菜单的值列表中添加相同的 URL。  如果有多个重定向 URL，请确保每个重定向 URL 都有一个使用应用服务的 URI 的新条目。

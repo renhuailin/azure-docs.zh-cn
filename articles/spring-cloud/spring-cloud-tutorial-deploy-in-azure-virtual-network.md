@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在虚拟网络中部署 Azure Spring Cloud
+title: 在虚拟网络中部署 Azure Spring Cloud
 description: 在虚拟网络中部署 Azure Spring Cloud（VNet 注入）。
 author: MikeDodaro
 ms.author: brendm
@@ -7,14 +7,14 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9d72d60bd3a1ef23b8122b2bc5ba4f0c5c701254
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 73dd60dba50d3bd29cda0f538462884822054cf9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587717"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880587"
 ---
-# <a name="tutorial-deploy-azure-spring-cloud-in-a-virtual-network"></a>教程：在虚拟网络中部署 Azure Spring Cloud
+# <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>在虚拟网络中部署 Azure Spring Cloud
 
 本文适用于：✔️ Java ✔️ C#
 
@@ -25,6 +25,9 @@ ms.locfileid: "97587717"
 * 从企业网络中的 Internet 隔离 Azure Spring Cloud 应用和服务运行时。
 * Azure Spring Cloud 与本地数据中心内的系统或其他虚拟网络中的 Azure 服务进行交互。
 * 授权客户控制 Azure Spring Cloud 的入站和出站网络通信。
+
+> [!Note]
+> 仅当创建新的 Azure Spring Cloud 服务实例时，才能选择 Azure 虚拟网络。 创建 Azure Spring Cloud 后，不能改为使用其他虚拟网络。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -77,6 +80,7 @@ az provider register --namespace Microsoft.ContainerService
 1. 选择“查看 + 创建”。 将其余的设置保留默认值，然后选择“创建”。
 
 ## <a name="grant-service-permission-to-the-virtual-network"></a>向虚拟网络授予服务权限
+Azure Spring Cloud 要求对虚拟网络具有“所有者”权限，以便在虚拟网络中授予专用的动态服务主体，进行进一步的部署和维护。
 
 选择之前创建的虚拟网络 azure-spring-cloud-vnet。
 
@@ -160,9 +164,9 @@ az role assignment create \
    > [!Important]
    > 资源组由 Azure Spring Cloud 服务完全托管。 请不要手动删除或修改内部的任何资源。
 
-## <a name="limitations"></a>限制
+## <a name="using-smaller-subnet-ranges"></a>使用较小的子网范围
 
-小范围的子网可节省 IP 地址，但会限制 Azure Spring Cloud 实例可以持有的应用实例的最大数量。
+该表显示了 Azure Spring Cloud 在使用较小的子网范围时支持的最大应用实例数。
 
 | 应用子网 CIDR | IP 总数 | 可用的 IP | 最大应用实例                                        |
 | --------------- | --------- | ------------- | ------------------------------------------------------------ |

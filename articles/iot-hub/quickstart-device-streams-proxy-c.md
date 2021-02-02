@@ -1,20 +1,20 @@
 ---
-title: 适用于 SSH 和 RDP 的 Azure IoT 中心设备流 C 快速入门
+title: 快速入门 - 适用于 SSH 和 RDP 的 Azure IoT 中心设备流 C 快速入门
 description: 在本快速入门中，我们将运行一个示例 C 应用程序，该应用程序充当代理，可以通过 IoT 中心设备流实现 SSH 和 RDP 方案。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
+ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 037ff64f4811515e7ce64d66a36e08e71de54058
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2305a87b91160b5de90f4cbfbc9418adc50bb92a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831984"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624399"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入门：使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -25,6 +25,22 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 服务和设备应用程序可以使用 [IoT 中心设备流](./iot-hub-device-streams-overview.md)以安全且防火墙友好的方式进行通信。 有关设置概述，请参阅[本地代理示例页](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。
 
 本快速入门介绍通过设备流以隧道方式传输安全外壳 (SSH) 流量（使用端口 22）的设置。 针对远程桌面协议 (RDP) 流量的设置与此类似，只需进行简单的配置更改即可。 由于设备流不区分应用程序和协议，因此，可以修改本快速入门来适应其他类型的应用程序流量。
+
+## <a name="prerequisites"></a>先决条件
+
+* 目前仅以下区域中创建的 IoT 中心支持设备流预览：
+
+  * 美国中部
+  * 美国中部 EUAP
+  * 北欧
+  * 东南亚
+
+* 安装 [Visual Studio 2019](https://www.visualstudio.com/vs/) 并启用[使用 C++ 的桌面开发](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷。
+* [安装最新版本的 Git](https://git-scm.com/download/)。
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -47,22 +63,6 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 > 通过设备流发送的 SSH 流量将通过 IoT 中心的流式处理终结点以隧道方式进行传输，而不是直接在服务与设备之间发送。 有关详细信息，请参阅[使用 IoT 中心设备流的好处](iot-hub-device-streams-overview.md#benefits)。 此外，下图演示了在同一台设备（或计算机）上作为设备本地代理运行的 SSH 守护程序。 在本快速入门中，提供 SSH 守护程序 IP 地址还可让设备本地代理和守护程序在不同的计算机上运行。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="prerequisites"></a>先决条件
-
-* 目前仅以下区域中创建的 IoT 中心支持设备流预览：
-
-  * 美国中部
-  * 美国中部 EUAP
-  * 北欧
-  * 东南亚
-
-* 安装 [Visual Studio 2019](https://www.visualstudio.com/vs/) 并启用[使用 C++ 的桌面开发](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷。
-* [安装最新版本的 Git](https://git-scm.com/download/)。
-
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prepare-the-development-environment"></a>准备开发环境
 
@@ -120,7 +120,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 ## <a name="register-a-device"></a>注册设备
 
-必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本部分中，我们将使用具有 [IoT 扩展](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)的 Azure Cloud Shell 注册模拟设备。
+必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本部分中，我们将使用具有 [IoT 扩展](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)的 Azure Cloud Shell 注册模拟设备。
 
 1. 若要创建设备标识，请在 Cloud Shell 中运行以下命令：
 
@@ -138,7 +138,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
    > 请将 *YourIoTHubName* 占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     请记下返回的设备连接字符串，以便稍后在此快速入门中使用。 如以下示例所示：

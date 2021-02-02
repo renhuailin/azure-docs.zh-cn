@@ -8,20 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: bcb484d62b7c4add7e1ab5562c19417a90cfb7e1
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 6f8fdb23222944eab4742d1e972280e1e27e30a3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587547"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728508"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
 Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登录来访问本地应用程序的应用程序代理服务。 本教程将准备与应用程序代理配合使用的环境。 准备好环境后，使用 Azure 门户将一个本地应用程序添加到 Azure AD 租户。
+
+:::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="应用程序代理概述关系图" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
 
 连接器是应用程序代理的关键部分。 有关连接器的详细信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)。
 
@@ -95,7 +97,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 1. 重新启动服务器。
 
 > [!Note]
-> Microsoft 在将 Azure 服务更新为使用来自一组不同的根证书颁发机构 (CA) 的 TLS 证书。 此更改正在进行中，因为当前 CA 证书不符合某个 CA/浏览器论坛基线要求。 请参阅 [Azure TLS 证书更改](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes)获取详细信息。
+> Microsoft 在将 Azure 服务更新为使用来自一组不同的根证书颁发机构 (CA) 的 TLS 证书。 此更改正在进行中，因为当前 CA 证书不符合某个 CA/浏览器论坛基线要求。 请参阅 [Azure TLS 证书更改](../../security/fundamentals/tls-certificate-changes.md)获取详细信息。
 
 ## <a name="prepare-your-on-premises-environment"></a>准备本地环境
 
@@ -126,7 +128,11 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 | login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |在注册过程中，连接器将使用这些 URL。 |
 | ctldl.windowsupdate.com | 80/HTTP |在注册过程中，连接器将使用此 URL。 |
 
-如果防火墙或代理允许配置 DNS 允许列表，则可将与 &ast;.msappproxy.net、&ast;.servicebus.windows.net 和上述其他 URL 的连接加入允许列表。 如果没有，则需要允许访问 [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 IP 范围每周更新。
+如果防火墙或代理允许根据域后缀配置访问规则，可允许连接到 &ast;.msappproxy.net、&ast;.servicebus.windows.net 和其他 URL。 如果没有，则需要允许访问 [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 IP 范围每周更新。
+
+### <a name="dns-name-resolution-for-azure-ad-application-proxy-endpoints"></a>Azure AD 应用程序代理终结点的 DNS 名称解析
+
+Azure AD 应用程序代理终结点的公共 DNS 记录是链接的指向 A 记录的 CNAME 记录。 这可确保容错和灵活性。 它还确保 Azure AD 应用程序代理连接器始终访问带有域后缀 *.msappproxy.net 或 *.servicebus.windows.net 的主机名 。 但是，在名称解析过程中，CNAME 记录可能包含具有不同主机名和后缀的 DNS 记录。  因此，必须确保设备可解析链中的所有记录并允许连接到已解析的 IP 地址，这取决于设置 - 连接器服务器、防火墙和出站代理。 由于链中的 DNS 记录有时可能会更改，因此我们无法提供 DNS 记录的任何列表。
 
 ## <a name="install-and-register-a-connector"></a>安装并注册连接器
 

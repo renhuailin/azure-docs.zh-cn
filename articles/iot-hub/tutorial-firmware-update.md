@@ -1,6 +1,6 @@
 ---
-title: 通过 Azure IoT 中心更新设备固件 | Microsoft Docs
-description: 了解如何实现可从连接到 IoT 中心的后端应用程序触发的设备固件更新过程。
+title: 教程 - 通过 Azure IoT 中心更新设备固件 | Microsoft Docs
+description: 教程 - 了解如何实现可从连接到 IoT 中心的后端应用程序触发的设备固件更新过程。
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 807de3c41ec8026edd2b2d8859eb70863ae5697b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572331"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621390"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>教程：实现设备固件更新过程
 

@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fc757e1310369c48de24c0cc9253c668ca27495c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 80fdedb29f70c961431c987558a42d5fa46dfa7d
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888566"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760796"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>群组聊天英雄示例入门
 
@@ -100,7 +100,7 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果想要清理并删除通信服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。 了解[清理资源](../quickstarts/create-communication-resource.md#clean-up-resources)的详细信息。
+如果想要清理并删除通信服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。 了解有关[清理资源](../quickstarts/create-communication-resource.md#clean-up-resources)的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -111,6 +111,7 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 
 - 了解[聊天概念](../concepts/chat/concepts.md)
 - 熟悉[聊天客户端库](../concepts/chat/sdk-features.md)
+- 查看 [Contoso Med 应用](https://github.com/Azure-Samples/communication-services-contoso-med-app)示例
 
 ## <a name="additional-reading"></a>其他阅读材料
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/06/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 07b526d443b5f1b41bc6f811b7cccc0fbc6165ee
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968479"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761710"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>教程：准备部署 Azure Stack Edge Pro  
 
@@ -118,14 +118,14 @@ ms.locfileid: "97968479"
 
     |设置  |值  |
     |---------|---------|
-    |名称   | 用于标识资源的友好名称。<br>该名称的长度必须介于 2 和 50 个字符之间，只能包含字母、数字和连字符。<br> 名称以字母或数字开头和结尾。        |
+    |名称   | 用于标识资源的友好名称。<br>名称可具有 2 到 50 个字符，包括字母、数字和连字符。<br> 名称以字母或数字开头和结尾。        |
     |区域     |有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 如果使用 Azure 政府版，则可选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中显示的所有可用的政府区域。<br> 选择离要部署设备的地理区域最近的位置。|
 
     ![项目和实例详细信息](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
 
 5. 在完成时选择“下一步:送货地址”。
 
-    - 如果你已有一个设备，请选择与“我有 Azure Stack Edge Pro 设备”对应的组合框。
+    - 如果你已有一个设备，请选择与“我有 Azure Stack Edge 设备”对应的组合框。
     - 如果这是你订购的新设备，请输入联系人姓名、公司、寄送设备的地址，以及联系人信息。
 
     ![新设备的送货地址](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
@@ -138,13 +138,17 @@ ms.locfileid: "97968479"
 
 8. 选择“创建”。
 
-创建资源需要几分钟时间。 成功创建并部署资源后，你会收到通知。 选择“转到资源”。
+   创建资源需要几分钟时间。 成功创建并部署资源后，你会收到通知。 选择“转到资源”。
 
-![转到 Azure Stack Edge 资源](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
+   ![转到 Azure Stack Edge 资源](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
 
 在你下单以后，Microsoft 会审核订单并通过电子邮件联系你，核对配送详细信息。
 
 ![关于审核 Azure Stack Edge Pro 订单的通知](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
+
+
+> [!NOTE]
+> 如果要一次创建多个订单或克隆现有订单，可以使用 [Azure 示例中的脚本](https://github.com/Azure-Samples/azure-stack-edge-order)。 有关详细信息，请参阅自述文件。
 
 ## <a name="get-the-activation-key"></a>获取激活密钥
 

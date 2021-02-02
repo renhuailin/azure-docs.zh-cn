@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 197b7ff0a6c613a019007ba507d678b619c9afd4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ef4381f305292b366348aa3729209dc3f5e8c87b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358586"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954083"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>教程：配置 Workday 到 Azure AD 的用户预配
 本教程的目的是介绍将工作人员数据从 Workday 预配到 Azure Active Directory 而需要执行的步骤。 
@@ -208,11 +208,11 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 ## <a name="next-steps"></a>后续步骤
 
+* [详细了解 Azure AD 和 Workday 集成场景和 Web 服务调用](../app-provisioning/workday-integration-reference.md)
 * [详细了解入站预配支持的 Workday 特性](../app-provisioning/workday-attribute-reference.md)
 * [了解如何配置 Workday 写回](workday-writeback-tutorial.md)
 * [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)
 * [了解如何在 Workday 和 Azure Active Directory 之间配置单一登录](workday-tutorial.md)
-* [了解如何将其他 SaaS 应用程序与 Azure Active Directory 进行集成](tutorial-list.md)
 * [了解如何导出和导入预配配置](../app-provisioning/export-import-provisioning-configuration.md)
 
 

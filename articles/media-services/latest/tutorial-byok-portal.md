@@ -1,17 +1,17 @@
 ---
-title: 使用 Azure 门户将客户管理的密钥或 BYOK 与媒体服务配合使用
+title: 在 Azure 门户中使用客户管理的密钥或创建自己的密钥
 description: 本教程使用 Azure 门户在 Azure 媒体服务存储帐户中启用客户管理的密钥或创建自己的密钥 (BYOK) 服务。
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: 003b8e066a6161baedbc70e9becbca23566813ef
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 61df4b3424a4d73eca7a946c6bd8e5160fd6c529
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "96013207"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935385"
 ---
 # <a name="tutorial-use-the-azure-portal-to-use-customer-managed-keys-or-byok-with-media-services"></a>教程：使用 Azure 门户将客户管理的密钥或 BYOK 与媒体服务配合使用
 

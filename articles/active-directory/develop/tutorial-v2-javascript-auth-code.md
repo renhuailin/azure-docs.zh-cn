@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: b7d14ee321a1160420d106151276ae6aef513c5b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 1ec046ca6b42a5ca8f33b0347c562c85abd42684
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064396"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756174"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>教程：使用授权代码流让用户登录并从 JavaScript 单页应用 (SPA) 调用 Microsoft Graph API
 
@@ -28,7 +28,7 @@ ms.locfileid: "98064396"
 > * 通过 PKCE 执行 OAuth 2.0 授权代码流
 > * 将个人 Microsoft 帐户以及工作和学校帐户登录
 > * 获取访问令牌
-> * 调用需要从 Microsoft 标识平台终结点获取的访问令牌的 Microsoft Graph 或你自己的 API
+> * 调用需要从 Microsoft 标识平台获取的访问令牌的 Microsoft Graph 或你自己的 API
 
 MSAL.js 2.0 支持浏览器中的授权代码流（而不是隐式授权流），从而在 MSAL.js 1.0 的基础上进行了改进。 MSAL.js 2.0 不支持隐式流。
 
@@ -41,7 +41,7 @@ MSAL.js 2.0 支持浏览器中的授权代码流（而不是隐式授权流）�
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="展示单页应用程序中的授权代码流的示意图":::
 
-在本教程中创建的应用程序使 JavaScript SPA 可以通过从 Microsoft 标识平台终结点获取安全令牌来查询 Microsoft Graph API。 此方案中，用户登录后请求了访问令牌，并在授权标头将其添加到 HTTP 请求。 令牌获取和更新由适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 处理。
+在本教程中创建的应用程序使 JavaScript SPA 可以通过从 Microsoft 标识平台获取安全令牌来查询 Microsoft Graph API。 此方案中，用户登录后请求了访问令牌，并在授权标头将其添加到 HTTP 请求。 令牌获取和更新由适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 处理。
 
 本教程使用以下库：
 
@@ -558,13 +558,13 @@ ID 令牌包含有关用户的基本信息，例如其显示名称。 如果你�
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-初次登录后，应用不应要求用户在每次需要访问受保护资源时重新进行身份验证（即请求令牌）。 为了防止此类重新身份验证请求，请调用 `acquireTokenSilent`。 但在某些情况下，可能需要强制用户与 Microsoft 标识平台终结点交互。 例如：
+初次登录后，应用不应要求用户在每次需要访问受保护资源时重新进行身份验证（即请求令牌）。 为了防止此类重新身份验证请求，请调用 `acquireTokenSilent`。 但在某些情况下，可能需要强制用户与 Microsoft 标识平台交互。 例如：
 
 - 由于密码已过期，用户可能需要重新输入其凭据。
 - 应用程序正在请求访问资源，这需要用户的许可。
 - 需要双重身份验证。
 
-调用 `acquireTokenPopup` 会打开一个弹出窗口（或者 `acquireTokenRedirect` 会将用户重定向到 Microsoft 标识平台终结点）。 在该窗口中，为了进行交互，用户需要确认其凭据、为所需的资源提供许可，或者完成双重身份验证。
+调用 `acquireTokenPopup` 会打开一个弹出窗口（也可以调用 `acquireTokenRedirect` 将用户重定向到 Microsoft 标识平台）。 在该窗口中，为了进行交互，用户需要确认其凭据、为所需的资源提供许可，或者完成双重身份验证。
 
 #### <a name="get-a-user-token-silently"></a>以无提示方式获取用户令牌
 
@@ -618,7 +618,7 @@ function callMSGraph(endpoint, token, callback) {
 
 ### <a name="sign-in-to-the-application"></a>登录应用程序
 
-在浏览器加载 index.html 文件后，选择“登录”。 系统将提示你使用 Microsoft 标识平台终结点进行登录：
+在浏览器加载 index.html 文件后，选择“登录”。 系统将提示你使用 Microsoft 标识平台进行登录：
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="显示登录对话框的 Web 浏览器":::
 

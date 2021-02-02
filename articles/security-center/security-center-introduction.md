@@ -12,18 +12,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 01/26/2021
 ms.author: memildin
-ms.openlocfilehash: b52fbd820c4b4603481f585ea0b0983720cabb22
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 9f39988375f58f75dad2b623cd3d937022a072e7
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709073"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806189"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
-
-[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Azure 安全中心是一个统一的基础结构安全管理系统，可以增强数据中心的安全态势，以及为云中（无论是否在 Azure 中）和本地的混合工作负荷提供高级威胁防护。
 
@@ -74,7 +72,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 ### <a name="continuous-assessments"></a>持续评估
 
-安全中心会持续发现部署在工作负荷中的新资源并评估它们是否已根据安全最佳做法进行了配置，如果没有，则会将它们标记出来，并且你将获得一个按优先级排列的建议列表，便于你进行修复以保护计算机。
+安全中心会持续发现部署在工作负荷中的新资源并评估它们是否已根据安全最佳做法进行了配置，如果没有，则会将它们标记出来，并且你将获得一个按优先级排列的建议列表，便于你进行修复以保护计算机。 此建议列表由 [Azure 安全基准](../security/benchmarks/introduction.md)实现和支持；该基准是 Microsoft 针对基于常见合规性框架的安全与合规最佳做法创作的一组特定于 Azure 的准则。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。
 
 为了帮助你了解每个建议对整体安全状况的重要程度，安全中心将建议分组到安全控件中，并向每个控件添加“安全分数”值。 这一点在你设置安全工作的优先级时至关重要。
 
@@ -107,9 +105,8 @@ Azure 安全中心的值的核心在于其建议。 这些建议是针对在工�
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>与 Microsoft Defender for Endpoint 集成
 
-安全中心提供与 Microsoft Defender for Endpoint 的自动本机集成。 这意味着，无需任何配置，Windows 和 Linux 计算机就可以与安全中心的建议和评估完全集成。
+适用于服务器的 Azure Defender 提供与 Microsoft Defender for Endpoint 的自动本机集成。 若要了解详细信息，请参阅[通过安全中心的集成式 EDR 解决方案保护终结点：Microsoft Defender for Endpoint](security-center-wdatp.md)
 
-此外，通过安全中心，还可以在服务器环境上自动执行应用程序控制策略。 安全中心中的自适应应用程序控制在 Windows 服务器之间启用端到端的应用允许列表。 无需创建规则和检查违规行为，这些都是自动完成的。
 
 ### <a name="protect-paas"></a>保护 PaaS
 
