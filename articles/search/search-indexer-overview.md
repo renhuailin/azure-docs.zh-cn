@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: ceeaad64734099f8669590d39f1629b9f4173e19
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: df393f54e7dfa83c8fc0feab3dbf42a156b296b7
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097137"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430456"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
@@ -47,6 +47,8 @@ Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 
 + [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 + [SQL 托管实例](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 + [Azure 虚拟机中的 SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+
+使用 Azure 虚拟网络作为客户端应用时，可以使用标准 Internet 连接 (公共) 或加密的专用连接来建立与远程数据源的索引器连接。 还可以设置使用可信服务标识进行身份验证的连接。 有关安全连接的详细信息，请参阅 [通过专用终结点授予访问权限](search-indexer-securing-resources.md#granting-access-via-private-endpoints) 和 [使用托管标识连接到数据源](search-howto-managed-identities-data-sources.md)。
 
 ## <a name="stages-of-indexing"></a>索引阶段
 

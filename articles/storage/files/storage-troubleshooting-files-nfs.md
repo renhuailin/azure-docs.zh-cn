@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: ed86cc76984388618c177590b3f6358421f09f65
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f684aff58f441fb0642779e54de39dff941e818c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878487"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430656"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>排查 Azure NFS 文件共享问题
 
@@ -67,7 +67,6 @@ NFS 只能在具有以下配置的存储帐户上使用：
 
 - 层-高级
 - 帐户类型-FileStorage
-- 冗余-LRS
 - 区域- [受支持区域的列表](./storage-files-how-to-create-nfs-shares.md?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>解决方案
@@ -150,6 +149,17 @@ NFS 协议通过端口2049与服务器通信，请确保此端口已打开到 NF
 #### <a name="solution"></a>解决方案
 
 运行以下命令，验证是否已在客户端上打开端口2049： `telnet <storageaccountnamehere>.file.core.windows.net 2049` 。 如果端口未打开，请将其打开。
+
+## <a name="ls-list-files-shows-incorrectinconsistent-results"></a>ls (列出文件) 显示不正确/不一致的结果
+
+### <a name="cause-inconsistency-between-cached-values-and-server-file-metadata-values-when-the-file-handle-is-open"></a>原因：文件句柄处于打开状态时，缓存值和服务器文件元数据值之间存在不一致
+有时，"列出文件" 命令会按预期显示非零大小，在下一列表文件命令中，将显示大小0或非常旧的时间戳。 这是一个已知问题，因为文件在打开时不能缓存文件元数据值。 你可以使用以下解决方法之一来解决此问题：
+
+#### <a name="workaround-1-for-fetching-file-size-use-wc--c-instead-of-ls--l"></a>解决方法1：若要获取文件大小，请使用 wc.exe，而不是 ls-l
+使用 wc.exe 将始终从服务器提取最新值，并且不存在任何不一致的情况。
+
+#### <a name="workaround-2-use-noac-mount-flag"></a>解决方法2：使用 "noac" 装载标志
+使用装入命令将 "noac" 标志重新装载文件系统。 这将始终从服务器提取所有元数据值。 如果使用此解决方法，所有元数据操作都可能会有一些小的性能开销。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 请联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，以快速解决问题。

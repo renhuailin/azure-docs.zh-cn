@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2021
 ms.author: Zhchia
-ms.openlocfilehash: 15bbab9c8ad83adc9047c812efe697a8ed49d34b
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 51410bd86fa9679aea76f6d5c48f267ddec79026
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072584"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430690"
 ---
 # <a name="tutorial-configure-atea-for-automatic-user-provisioning"></a>教程：为 Atea 配置自动用户预配
 
-本教程介绍了需要在 Atea 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到 [Atea](https://www.atea.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了在 Atea 和 Azure Active Directory (Azure AD) 配置自动用户预配时需要执行的步骤。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到 [Atea](https://www.atea.com/) 。 有关此服务的作用、工作原理和常见问题的重要详细信息，请参阅 [使用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -48,24 +48,24 @@ ms.locfileid: "99072584"
 
 ## <a name="step-2-configure-atea-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Atea 以支持 Azure AD 的预配
 
-若要配置 Atea 以支持 Azure AD 的预配，请发送电子邮件 servicedesk@atea.dk 。
+若要配置 Iris Intranet 以支持预配 Azure AD 需要通过将邮件发送给 [Atea 支持团队](mailto:servicedesk@atea.dk)来获取 **租户 URL** 和 **机密令牌**。 这些值将在 Azure 门户中的 Atea 应用程序的 "设置" 选项卡的 " **机密令牌** " 和 " **租户 URL** " 字段中输入。
 
 ## <a name="step-3-add-atea-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Atea
 
-从 Azure AD 应用程序库中添加 Atea，开始管理预配到 Atea。 如果以前为 SSO 设置了 Atea，则可以使用相同的应用程序。 不过，建议在最初测试集成时单独创建一个应用。 若要详细了解如何从库中添加应用，可以单击[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)。 
+从 Azure AD 应用程序库中添加 Atea，开始管理预配到 Atea。 如果以前为 SSO 设置了 Atea，则可以使用相同的应用程序。 但建议您在最初测试集成时创建一个单独的应用程序。 若要详细了解如何从库中添加应用，可以单击[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)。 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围内 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
-使用 Azure AD 预配服务，可以根据对应用的分配或用户/组的特性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择只根据用户或组的特性来限定谁在预配范围内，可以使用范围筛选器，如[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述。 
+Azure AD 预配服务允许你确定将根据分配给应用程序的人员，或者根据用户和组的属性设置的用户的身份。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择只根据用户或组的特性来限定谁在预配范围内，可以使用范围筛选器，如[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述。 
 
-* 将用户和组分配到 Atea 时，必须选择 " **默认" 访问权限** 以外的其他角色。 具有“默认访问”角色的用户被排除在预配范围之外，并在预配日志中被标记为无有效资格。 如果应用上唯一可用的角色是“默认访问”角色，可以[更新应用清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)来添加其他角色。 
+* 将用户和组分配到 Atea 时，必须选择 " **默认" 访问权限** 以外的其他角色。 具有“默认访问”角色的用户被排除在预配范围之外，并在预配日志中被标记为无有效资格。 如果应用程序上唯一可用的角色是默认访问角色，则可以 [更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) 来添加其他角色。 
 
-* 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
+* 先小部分测试。 在向所有用户推出之前，先对一小部分用户和组进行测试。 如果预配范围设置为分配的用户和组，可以通过将一两个用户或组分配到应用来控制它。 如果预配范围设置为所有用户和组，可以指定[基于特性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-atea"></a>步骤 5。 配置 Atea 的自动用户预配 
 
-此部分逐步介绍了如何将 Azure AD 预配服务配置为根据 Azure AD 中的用户和/或组分配在 TestApp 中创建、更新和禁用用户和/或组。
+本部分将指导你完成配置 Azure AD 预配服务以基于 Azure AD 中的用户和组分配来创建、更新和禁用 Atea 中的用户和组的步骤。
 
 ### <a name="to-configure-automatic-user-provisioning-for-atea-in-azure-ad"></a>若要在 Azure AD 中配置 Atea 的自动用户预配：
 
@@ -77,7 +77,7 @@ ms.locfileid: "99072584"
 
     ![应用程序列表中的 Atea 链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
     ![“预配”选项卡](common/provisioning.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "99072584"
 
      ![Atea 授权](media/atea-provisioning-tutorial/provisioning-authorize.png)
 
-6. 在 Atea 的登录对话框中，登录到 Atea 的租户并验证身份。
+6. 在 Atea 的 "登录" 对话框中，登录到 Atea 的租户并验证身份。
        
       ![Atea 登录对话框](media/atea-provisioning-tutorial/atea-login.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "99072584"
         
       ![Atea 测试连接](media/atea-provisioning-tutorial/test-connection.png)
 
-8. 在“通知电子邮件地址”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送一封电子邮件通知”复选框。
+8. 在 " **通知电子邮件** " 字段中，输入应接收预配错误通知的人员或组的电子邮件地址。 然后选中 " **发生故障时发送电子邮件通知** " 复选框。
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "99072584"
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Atea**"。
 
-11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Atea 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 Atea 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 Atea API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
+11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Atea 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 Atea 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，则需要确保 Atea API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
       |Attribute|类型|支持筛选|
       |---|---|---|
@@ -125,21 +125,21 @@ ms.locfileid: "99072584"
 
     ![预配状态已打开](common/provisioning-toggle-on.png)
 
-14. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 Atea 的用户和/或组。
+14. 通过在 "**设置**" 部分的 "**范围**" 中选择相应的值，定义要预配到 Atea 的用户和组。
 
     ![预配范围](common/provisioning-scope.png)
 
-15. 已准备好预配时，单击“保存”  。
+15. 准备好预配时，单击 " **保存**"。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 
-此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步周期 。 初始周期执行的时间比后续周期长，只要 Azure AD 预配服务正在运行，后续周期大约每隔 40 分钟就会进行一次。 
+此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步周期 。 初始周期完成时间比下一循环长，只要 Azure AD 预配服务正在运行，就大约每40分钟执行一次。 
 
 ## <a name="step-6-monitor-your-deployment"></a>步骤 6. 监视部署
 配置预配后，请使用以下资源来监视部署：
 
-* 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+* 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败。
+* 检查 [进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) ，查看设置周期的状态以及完成此设置的方式。
 * 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
 
 ## <a name="additional-resources"></a>其他资源

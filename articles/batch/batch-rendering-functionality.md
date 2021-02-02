@@ -3,14 +3,14 @@ title: 渲染功能
 description: 标准 Azure Batch 功能用于运行渲染工作负荷与应用。 Batch 包含用于支持渲染工作负荷的特定功能。
 author: mscurrell
 ms.author: markscu
-ms.date: 01/14/2021
+ms.date: 02/01/2021
 ms.topic: how-to
-ms.openlocfilehash: d9d196897800467fd02397bb774af0bbb9ebabf0
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c748c51311a70cd3b4fc6d435e97a33d709467b9
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234267"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429796"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
 
@@ -32,7 +32,7 @@ ms.locfileid: "98234267"
 
 如果只需使用预装的应用程序，则可以在池配置中指定 Azure 市场渲染 VM 映像。
 
-有一个 Windows 2016 映像和一个 CentOS 映像。  在 [Azure 市场](https://azuremarketplace.microsoft.com)中，可以通过搜索“batch 渲染”找到 VM 映像。
+有一个 Windows 映像和一个 CentOS 映像。  在 [Azure 市场](https://azuremarketplace.microsoft.com)中，可以通过搜索“batch 渲染”找到 VM 映像。
 
 有关示例池配置，请参阅 [Azure CLI 渲染教程](./tutorial-rendering-cli.md)。  Azure 门户和 Batch Explorer 提供了 GUI 工具用于在创建池时选择渲染 VM 映像。  如果使用 Batch API，请在创建池时，为 [ImageReference](/rest/api/batchservice/pool/add#imagereference) 指定以下属性值：
 
@@ -70,13 +70,10 @@ ms.locfileid: "98234267"
 
 |应用程序|应用程序可执行文件|环境变量|
 |---------|---------|---------|
-|Autodesk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
-|Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|
-|Autodesk Maya 2017|render.exe|MAYA_2017_EXEC|
-|Autodesk Maya 2018|render.exe|MAYA_2018_EXEC|
-|Chaos Group V-Ray Standalone|vray.exe|VRAY_3.60.4_EXEC|
-Arnold 2017 命令行|kick.exe|ARNOLD_2017_EXEC|
-|Arnold 2018 命令行|kick.exe|ARNOLD_2018_EXEC|
+|Autodesk 3ds Max 2021|3dsmaxcmdio.exe|3DSMAX_2021_EXEC|
+|Autodesk Maya 2020|render.exe|MAYA_2020_EXEC|
+|Chaos Group V-Ray Standalone|vray.exe|VRAY_4 VRAY_4.10.03_EXEC|
+|Arnold 2020 命令行|kick.exe|ARNOLD_2020_EXEC|
 |Blender|blender.exe|BLENDER_2018_EXEC|
 
 ## <a name="azure-vm-families"></a>Azure VM 系列

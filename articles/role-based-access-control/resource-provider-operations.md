@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: a521623447f4415e35a06c5c60e3723a69b4aa15
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 72735dad6a52fffd6e6e94ad4fb0fb7a9558b4c4
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700595"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430073"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 资源提供程序操作
 
@@ -82,6 +82,7 @@ ms.locfileid: "98700595"
 | [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated) |
 | Microsoft.Purview |
 | [Microsoft.StreamAnalytics](#microsoftstreamanalytics) |
+| [Microsoft.Synapse](#microsoftsynapse) |
 | 区块链 |
 | [Microsoft.Blockchain](#microsoftblockchain) |
 | AI + 机器学习 |
@@ -4765,6 +4766,169 @@ Azure 服务：[流分析](../stream-analytics/index.yml)
 > | Microsoft.StreamAnalytics/streamingjobs/transformations/Delete | 删除流分析作业转换 |
 > | Microsoft.StreamAnalytics/streamingjobs/transformations/Read | 读取流分析作业转换 |
 > | Microsoft.StreamAnalytics/streamingjobs/transformations/Write | 写入流分析作业转换 |
+
+### <a name="microsoftsynapse"></a>Microsoft.Synapse
+
+Azure 服务： [Synapse Analytics](../synapse-analytics/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | Synapse/checkNameAvailability/action | 检查工作区名称的可用性。 |
+> | Synapse/注册/操作 | 将 Azure Synapse Analytics (工作区注册) 资源提供程序，并启用工作区的创建。 |
+> | Synapse/注销/操作 |  (工作区) 资源提供程序中注销 Azure Synapse Analytics，并禁用工作区的创建。 |
+> | Synapse/workspace/integrationRuntimes/read | 获取任何 Integration Runtime。 |
+> | Synapse/工作区/integrationruntimes/写入 | 创建或更新任何集成运行时。 |
+> | Synapse/工作区/integrationRuntimes/delete | 删除任何 Integration Runtime |
+> | Synapse/workspace/integrationRuntimes/getStatus/action | 获取任何 Integration Runtime 状态 |
+> | Synapse/workspace/integrationRuntimes/createExpressSHIRInstallLink/action | 创建 Integration Runtime 安装链接 |
+> | Synapse/工作区/integrationRuntimes/启动/操作 | 启动任何 Integration Runtime |
+> | Synapse/工作区/integrationRuntimes/停止/操作 | 停止任何 Integration Runtime |
+> | Synapse/workspace/integrationRuntimes/getConnectionInfo/action | 获取任何 Integration Runtime 的连接信息 |
+> | Synapse/workspace/integrationRuntimes/regenerateAuthKey/action | 重新生成任何 Integration Runtime 的身份验证密钥 |
+> | Synapse/workspace/integrationRuntimes/listAuthKeys/action | 列出任意 Integration Runtime 的身份验证密钥 |
+> | Synapse/workspace/integrationRuntimes/removeNode/action | 删除任何 Integration Runtime 节点 |
+> | Synapse/workspace/integrationRuntimes/monitoringData/action | 获取任何 Integration Runtime 的监视数据 |
+> | Synapse/workspace/integrationRuntimes/syncCredentials/action | 在任何 Integration Runtime 上同步凭据 |
+> | Synapse/工作区/integrationRuntimes/升级/操作 | 升级任何 Integration Runtime |
+> | Synapse/workspace/integrationRuntimes/removeLinks/action | 删除任何 Integration Runtime 链接 |
+> | Synapse/workspace/integrationRuntimes/enableInteractiveQuery/action | 启用任意 Integration Runtime 上的交互式查询 |
+> | Synapse/workspace/integrationRuntimes/disableInteractiveQuery/action | 对任何 Integration Runtime 禁用交互式查询 |
+> | Synapse/workspace/integrationRuntimes/refreshObjectMetadata/action | 刷新任何 Integration 运行时上的对象元数据 |
+> | Synapse/workspace/integrationRuntimes/getObjectMetadata/action | 获取任何 Integration 运行时的对象元数据 |
+> | Synapse/工作区/managedIdentitySqlControlSettings/写入 | 更新工作区中的托管标识 SQL 控件设置 |
+> | Synapse/workspace/managedIdentitySqlControlSettings/read | 获取托管标识 SQL 控件设置 |
+> | Synapse/工作区/scopePools/写入 | 创建或更新任何范围池。 |
+> | Synapse/workspace/scopePools/read | 读取任何范围池。 |
+> | Synapse/工作区/scopePools/delete | 删除任何范围池。 |
+> | Synapse/操作/读取 | 读取 Azure Synapse Analytics 资源提供程序中的可用操作。 |
+> | Synapse/工作区/integrationRuntimes/节点/读取 | 获取任何 Integration Runtime 节点。 |
+> | Synapse/工作区/integrationRuntimes/节点/删除 | 删除任何 Integration Runtime 节点。 |
+> | Synapse/工作区/integrationRuntimes/节点/写入 | 修补任何 Integration Runtime 节点。 |
+> | Synapse/工作区/integrationRuntimes/节点/Ip 地址/操作 | 获取 Integration Runtime Ip 地址 |
+> | Synapse/工作区/firewallRules/写入 | 创建或更新任何 IP 防火墙规则。 |
+> | Synapse/workspace/firewallRules/read | 读取 IP 防火墙规则 |
+> | Synapse/工作区/firewallRules/delete | 删除任何 IP 防火墙规则。 |
+> | Synapse/工作区/replaceAllIpFirewallRules/action | 替换工作区的所有 Ip 防火墙规则。 |
+> | Synapse/工作区/写入 | 创建或更新任何工作区。 |
+> | Synapse/工作区/读取 | 读取任何工作区。 |
+> | Synapse/工作区/删除 | 删除任何工作区。 |
+> | Synapse/工作区/checkDefaultStorageAccountStatus/action | 检查默认存储帐户状态。 |
+> | Synapse/工作区/sqlPools/写入 | 创建或更新任何 SQL 分析池。 |
+> | Synapse/workspace/sqlPools/read | 读取任何 SQL 分析池。 |
+> | Synapse/工作区/sqlPools/delete | 删除任何 SQL 分析池。 |
+> | Synapse/工作区/sqlPools/暂停/操作 | 暂停任何 SQL 分析池。 |
+> | Synapse/工作区/sqlPools/恢复/操作 | 恢复所有 SQL 分析池。 |
+> | Synapse/workspace/sqlPools/restorePoints/action | 创建 SQL Analytics 池还原点。 |
+> | Synapse/工作区/sqlPools/移动/操作 | 重命名任何 SQL 分析池。 |
+> | Synapse/workspace/sqlPools/dataWarehouseQueries/read | 读取任何 SQL 分析池查询。 |
+> | Synapse/workspace/sqlPools/geoBackupPolicies/read | 读取任何 SQL Analytics 池异地备份策略。 |
+> | Synapse/workspace/sqlPools/dataWarehouseUserActivities/read | 读取任何 SQL 分析池用户活动。 |
+> | Synapse/workspace/sqlPools/restorePoints/read | 读取任何 SQL 分析池还原点。 |
+> | Synapse/workspace/sqlPools/restorePoints/delete | 删除还原点。 |
+> | Synapse/workspace/sqlPools/dataWarehouseQueries/dataWarehouseQuerySteps/read | 读取任何 SQL 分析池查询步骤。 |
+> | Synapse/workspace/sqlPools/maintenanceWindows/read | 读取任何 SQL Analytics 池维护时段。 |
+> | Synapse/workspace/sqlPools/maintenanceWindows/write | 读取任何 SQL Analytics 池维护时段。 |
+> | Synapse/workspace/sqlPools/maintenanceWindowOptions/read | 读取任何 SQL Analytics 池维护窗口选项。 |
+> | Synapse/workspace/sqlPools/replicationLinks/read | 读取任何 SQL Analytics 池复制链接。 |
+> | Synapse/workspace/sqlPools/transparentDataEncryption/read | 读取透明数据加密配置的任何 SQL 分析池。 |
+> | Synapse/workspace/sqlPools/transparentDataEncryption/write | 透明数据加密配置创建或更新任何 SQL 分析池。 |
+> | Synapse/workspace/sqlPools/transparentDataEncryption/operationResults/read | 读取任何 SQL 分析池透明数据加密配置操作结果。 |
+> | Synapse/workspace/sqlPools/auditingSettings/read | 读取任何 SQL 分析池审核设置。 |
+> | Synapse/workspace/sqlPools/auditingSettings/write | 创建或更新任何 SQL 分析池审核设置。 |
+> | Synapse/工作区/sqlPools/操作/读取 | 读取任何 SQL 分析池操作。 |
+> | Synapse/工作区/sqlPools/使用情况/读取 | 读取任何 SQL Analytics 池使用情况。 |
+> | Synapse/workspace/sqlPools/currentSensitivityLabels/read | 读取任何 SQL 分析池当前敏感度标签。 |
+> | Synapse/workspace/sqlPools/currentSensitivityLabels/write | 批处理更新当前敏感度标签 |
+> | Synapse/workspace/sqlPools/recommendedSensitivityLabels/read | 读取任何 SQL 分析池建议的敏感度标签。 |
+> | Synapse/workspace/sqlPools/recommendedSensitivityLabels/write | 批量更新建议的敏感度标签 |
+> | Synapse/工作区/sqlPools/架构/读取 | 读取任何 SQL 分析池架构。 |
+> | Synapse/工作区/sqlPools/架构/表/读取 | 读取任何 SQL 分析池架构表。 |
+> | Synapse/工作区/sqlPools/架构/表/列/读取 | 读取任何 SQL 分析池架构表列。 |
+> | Synapse/workspace/sqlPools/connectionPolicies/read | 读取任何 SQL 分析池连接策略。 |
+> | Synapse/workspace/sqlPools/vulnerabilityAssessments/read | 阅读任何 SQL 分析池漏洞评估。 |
+> | Synapse/workspace/sqlPools/vulnerabilityAssessments/write | 创建或更新 Sql 池漏洞评估 |
+> | Synapse/workspace/sqlPools/vulnerabilityAssessments/delete | 删除任何 SQL 分析池漏洞评估。 |
+> | Synapse/工作区/sqlPools/vulnerabilityAssessments/扫描/读取 | 读取任何 SQL 分析池漏洞评估扫描记录。 |
+> | Synapse/工作区/sqlPools/vulnerabilityAssessments/扫描/initiateScan/操作 | 启动任何 SQL 分析池漏洞评估扫描记录。 |
+> | Synapse/工作区/sqlPools/vulnerabilityAssessments/扫描/导出/操作 | 导出任何 SQL 分析池漏洞评估扫描记录。 |
+> | Synapse/workspace/sqlPools/securityAlertPolicies/read | 读取任何 Sql 分析池威胁检测策略。 |
+> | Synapse/workspace/sqlPools/securityAlertPolicies/write | 创建或更新任何 SQL 分析池威胁检测策略。 |
+> | Synapse/工作区/sqlPools/架构/表/列/sensitivityLabels/读取 | 获取给定列的敏感度标签。 |
+> | Synapse/工作区/sqlPools/架构/表/列/sensitivityLabels/启用/操作 | 启用任何 SQL Analytics 池敏感度标签。 |
+> | Synapse/工作区/sqlPools/架构/表/列/sensitivityLabels/disable/action | 禁用任何 SQL Analytics 池敏感度标签。 |
+> | Synapse/工作区/sqlPools/架构/表/列/sensitivityLabels/写入 | 创建或更新任何 SQL Analytics 池敏感度标签。 |
+> | Synapse/工作区/sqlPools/架构/表/列/sensitivityLabels/delete | 删除任何 SQL Analytics 池敏感度标签。 |
+> | Synapse/工作区/sqlPools/vulnerabilityAssessments/规则/基线/读取 | 获取 SQL Analytics 池漏洞评估规则基线。 |
+> | Synapse/工作区/sqlPools/vulnerabilityAssessments/规则/基线/写入 | 创建或更新任何 SQL 分析池漏洞评估规则基线。 |
+> | Synapse/工作区/sqlPools/vulnerabilityAssessments/规则/基线/删除 | 删除任何 SQL 分析池漏洞评估规则基线。 |
+> | Synapse/workspace/operationStatuses/read | 读取任何异步操作状态。 |
+> | Synapse/workspace/operationResults/read | 读取任何异步操作结果。 |
+> | Synapse/workspace/sqlPools/operationResults/read | 读取任何异步操作结果。 |
+> | Synapse/工作区/bigDataPools/写入 | 创建或更新任何 Spark 池。 |
+> | Synapse/workspace/bigDataPools/read | 读取任何 Spark 池。 |
+> | Synapse/工作区/bigDataPools/delete | 删除任何 Spark 池。 |
+> | Synapse/workspace/sqlPools/metadataSync/write | 创建或更新 SQL Analytics 池元数据同步配置 |
+> | Synapse/workspace/sqlPools/metadataSync/read | 读取 SQL Analytics 池元数据同步配置 |
+> | Synapse/workspace/recoverableSqlpools/read | 获取可恢复的 SQL 分析池，这些池是表示 SQL Analytics 池的异地备份的资源 |
+> | Synapse/工作区/管理员/写入 | 在工作区上设置 Active Directory 管理员 |
+> | Synapse/工作区/管理员/读取 | 获取工作区 Active Directory 管理员 |
+> | Synapse/工作区/管理员/删除 | Active Directory 管理员删除工作区 |
+> | Synapse/工作区/privateEndpointConnections/写入 | 创建或更新专用终结点连接 |
+> | Synapse/workspace/privateEndpointConnections/read | 读取任何专用终结点连接 |
+> | Synapse/工作区/privateEndpointConnections/delete | 删除专用终结点连接 |
+> | Synapse/workspace/privateLinkResources/read | 获取专用链接资源的列表 |
+> | Synapse/工作区/sqlPools/扩展/读取 | 获取 SQL Analytics 池扩展 |
+> | Synapse/工作区/sqlPools/扩展/写入 | 更改给定 SQL Analytics 池的扩展 |
+> | Synapse/privateLinkHubs/write | 创建任何 PrivateLinkHubs。 |
+> | Synapse/privateLinkHubs/read | 读取任何 PrivateLinkHubs。 |
+> | Synapse/privateLinkHubs/delete | 删除 PrivateLinkHubs。 |
+> | Synapse/位置/operationStatuses/读取 | 读取任何异步操作状态。 |
+> | Synapse/位置/operationResults/读取 | 读取任何异步操作结果。 |
+> | Synapse/privateLinkHubs/privateLinkResources/read | 获取专用链接资源的列表 |
+> | Synapse/privateLinkHubs/privateEndpointConnections/write | 创建或更新 PrivateLinkHub 的专用终结点连接 |
+> | Synapse/privateLinkHubs/privateEndpointConnections/read | 读取 PrivateLinkHub 的任何专用终结点连接 |
+> | Synapse/privateLinkHubs/privateEndpointConnections/delete | 删除 PrivateLinkHub 的专用终结点连接 |
+> | Synapse/workspace/sqlPools/operationStatuses/read | 读取任何异步操作结果。 |
+> | Synapse/工作区/键/写入 | 创建或更新工作区密钥 |
+> | Synapse/工作区/密钥/读取 | 读取任何工作区密钥定义。 |
+> | Synapse/工作区/键/删除 | 删除任何工作区密钥。 |
+> | Synapse/工作区/库/读取 | 读取库项目 |
+> | Synapse/workspace/sqlPools/workloadGroups/read | 列出所选 SQL 池的工作负荷组。 |
+> | Synapse/workspace/sqlPools/workloadGroups/write | 设置特定工作负荷组的属性。 |
+> | Synapse/workspace/sqlPools/workloadGroups/delete | 删除特定的工作负荷组。 |
+> | Synapse/workspace/sqlPools/workloadGroups/workloadClassifiers/read | 列出所选 SQL Analytics 池的工作负荷分类器。 |
+> | Synapse/workspace/sqlPools/workloadGroups/workloadClassifiers/write | 设置特定工作负荷分类器的属性。 |
+> | Synapse/workspace/sqlPools/workloadGroups/workloadClassifiers/delete | 删除特定的工作负荷分类器。 |
+> | Synapse/workspace/sqlPools/extendedAuditingSettings/read | 读取任何 SQL Analytics 池扩展审核设置。 |
+> | Synapse/workspace/sqlPools/extendedAuditingSettings/write | 创建或更新任何 SQL Analytics 池扩展审核设置。 |
+> | Synapse/workspace/sqlPools/dataMaskingPolicies/read | 返回 SQL Analytics 池数据屏蔽策略的列表。 |
+> | Synapse/workspace/sqlPools/dataMaskingPolicies/write | 创建或更新 SQL Analytics 池数据屏蔽策略 |
+> | Synapse/工作区/sqlPools/dataMaskingPolicies/规则/读取 | 获取 SQL Analytics 池数据屏蔽规则的列表。 |
+> | Synapse/工作区/sqlPools/dataMaskingPolicies/规则/写入 | 创建或更新 SQL Analytics 池数据屏蔽规则。 |
+> | Synapse/工作区/sqlPools/列/读取 | 返回 SQL Analytics 池的列列表 |
+> | Synapse/workspace/sqlPools/sensitivityLabels/read | 获取给定列的敏感度标签。 |
+> | Synapse/workspace/sqlPools/auditRecords/read | 获取 Sql 池 blob 审核记录 |
+> | Synapse/resourceGroups/operationStatuses/read | 读取任何异步操作状态。 |
+> | Synapse/工作区/extendedAuditingSettings/写入 | 创建或更新 SQL server 扩展审核设置。 |
+> | Synapse/workspace/extendedAuditingSettings/read | 阅读默认 SQL server 扩展审核设置。 |
+> | Synapse/工作区/auditingSettings/写入 | 创建或更新 SQL server 审核设置。 |
+> | Synapse/workspace/auditingSettings/read | 读取默认 SQL server 审核设置。 |
+> | Synapse/工作区/securityAlertPolicies/写入 | 创建或更新 SQL server 安全警报策略。 |
+> | Synapse/workspace/securityAlertPolicies/read | 读取默认的 SQL server 安全警报策略。 |
+> | Synapse/工作区/vulnerabilityAssessments/写入 | 创建或更新 SQL server 漏洞 assement 报告。 |
+> | Synapse/workspace/vulnerabilityAssessments/read | 读取默认 SQL server 漏洞 assement 报告。 |
+> | Synapse/工作区/vulnerabilityAssessments/delete | 删除 SQL server 漏洞 assement 报告。 |
+> | Synapse/workspace/restorableDroppedSqlPools/read | 获取可还原的已删除 Sql 池 |
+> | Synapse/工作区/sqlPools/dataWarehouseQueries/步骤/读取 | 读取任何 SQL 分析池查询步骤。 |
+> | Synapse/workspace/sqlPools/workloadGroups/operationStatuses/read | SQL Analytics 池工作负荷组操作状态 |
+> | Synapse/workspace/sqlPools/workloadGroups/workloadClassifiers/operationStatuses/read | SQL Analytics 池工作负荷分类器操作状态 |
+> | Synapse/workspace/sqlPools/workloadGroups/workloadClassifiers/operationResults/read | SQL Analytics 池工作负荷分类器操作结果 |
+> | Synapse/workspace/sqlUsages/read | 获取 SQL Analytics 池可用的使用限制 |
+> | Synapse/workspace/auditingSettings/operationResults/read | SQL Server 审核设置 |
+> | Synapse/工作区/sqlAdministrators/写入 | 在工作区上设置 Active Directory 管理员 |
+> | Synapse/workspace/sqlAdministrators/read | 获取工作区 Active Directory 管理员 |
+> | Synapse/工作区/sqlAdministrators/delete | Active Directory 管理员删除工作区 |
 
 ## <a name="blockchain"></a>区块链
 

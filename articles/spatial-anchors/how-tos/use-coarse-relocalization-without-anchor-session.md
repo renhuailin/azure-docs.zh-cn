@@ -1,6 +1,6 @@
 ---
-title: 使用不带定位点会话的粗糙 relocalization
-description: 使用不带定位点会话的粗糙 relocalization
+title: 在没有定位点会话的情况下使用粗略重新局部化
+description: 在没有定位点会话的情况下使用粗略重新局部化
 author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
@@ -9,14 +9,14 @@ ms.date: 01/28/2021
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b768a4fba7474c863ff8a9bce538f0a0b67e191
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 0b3959ba3ec80f3113ea0358db550c86f1f276b1
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072556"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430303"
 ---
-# <a name="use-coarse-relocalization-without-an-anchor-session"></a>使用不带定位点会话的粗糙 relocalization
+# <a name="use-coarse-relocalization-without-an-anchor-session"></a>在没有定位点会话的情况下使用粗略重新局部化
 
 可在不附加到 Azure 空间锚点会话的情况下使用 [relocalization](../concepts/coarse-reloc.md) 功能中包含的传感器指纹提供程序对象。
 以下代码段显示了如何访问传感器提供程序以获取设备位置的估计值：
@@ -146,3 +146,10 @@ sensorProvider.Stop();
 ```
 
 ---
+
+### <a name="next-steps"></a>后续步骤
+
+本文介绍如何使用粗 relocalization API 来估算设备位置。 若要了解有关粗略重新局部化的详细信息，请继续学习下一指南。
+
+> [!div class="nextstepaction"]
+> [粗略重新局部化](../concepts/coarse-reloc.md)

@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c69e919c76c0aecb6cf8a3ee5e9b7e5d286c168a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fccd1bd6f808fad11946c6f0b0dff1f453b61d66
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046037"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430622"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上使用 TPM 创建和预配 IoT Edge 设备
 
@@ -160,7 +160,7 @@ ms.locfileid: "92046037"
    2. 提供从虚拟机中复制的“认可密钥”和“注册 ID”。 
 
       > [!TIP]
-      > 如果使用的是物理 TPM 设备，则需要确定**认可密钥**，该密钥对于每个 TPM 芯片都是唯一的，并且可以从与之关联的 TPM 芯片制造商处获得。 例如，可以通过创建认可密钥的 SHA-256 哈希来为 TPM 设备派生唯一的**注册 ID**。
+      > 如果使用的是物理 TPM 设备，则需要确定 **认可密钥**，该密钥对于每个 TPM 芯片都是唯一的，并且可以从与之关联的 TPM 芯片制造商处获得。 例如，可以通过创建认可密钥的 SHA-256 哈希来为 TPM 设备派生唯一的 **注册 ID**。
 
    3. 根据需要，为设备提供一个 ID。 如果未提供设备 ID，则会使用注册 ID。
 
@@ -178,13 +178,13 @@ ms.locfileid: "92046037"
 
 IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在容器中运行，允许你将其他容器部署到设备，以便在边缘上运行代码。 在虚拟机上安装 IoT Edge 运行时。
 
-按照 [安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md)中的步骤操作，然后返回到本文来预配设备。
+按照[安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md)中的步骤操作，然后返回到本文来预配设备。
 
 ## <a name="configure-the-device-with-provisioning-information"></a>用预配信息配置设备
 
-在设备上安装运行时后，请使用它连接到设备预配服务和 IoT 中心所用的信息来配置设备。
+在设备上安装运行时后，请借助它用于连接到设备预配服务和 IoT 中心的信息来配置设备。
 
-1. 了解前面部分中收集的 DPS **Id 范围** 和设备 **注册 id** 。
+1. 了解在先前部分中收集的 DPS ID 范围和设备注册 ID 。
 
 1. 在 IoT Edge 设备上打开配置文件。
 
@@ -192,9 +192,9 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    sudo nano /etc/iotedge/config.yaml
    ```
 
-1. 查找文件的 "预配配置" 部分。 取消注释用于 TPM 预配的行，并确保注释掉任何其他预配行。
+1. 找到该文件的预配配置部分。 取消评论 TPM 预配的行，并确保注释禁止任何其他预配行。
 
-   `provisioning:`该行应没有前面的空格，并且嵌套项应缩进两个空格。
+   `provisioning:` 行前面应无空格，并且嵌套项应该缩进两个空格。
 
    ```yml
    # DPS TPM provisioning configuration
@@ -205,9 +205,13 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
      attestation:
        method: "tpm"
        registration_id: "<REGISTRATION_ID>"
+   # always_reprovision_on_startup: true
+   # dynamic_reprovisioning: false
    ```
 
-1. 将和的值 `scope_id` 更新 `registration_id` 为你的 DPS 和设备信息。
+   （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行配置设备的重新设置行为。 如果在启动时将设备设置为重新设置，它将始终首先尝试使用 DPS 进行预配，然后回退到预配备份（如果失败）。 如果设备设置为动态重新设置，则在检测到重新设置事件时，IoT Edge 将重新启动并重新设置。 有关详细信息，请参阅 [IoT 中心设备重新设置概念](../iot-dps/concepts-device-reprovision.md)。
+
+1. 将 `scope_id` 和 `registration_id` 的值更新为你的 DPS 和设备信息。
 
 ## <a name="give-iot-edge-access-to-the-tpm"></a>向 IoT Edge 授予 TPM 的访问权限
 

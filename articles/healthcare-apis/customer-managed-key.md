@@ -2,18 +2,18 @@
 title: 为 Azure API for FHIR 配置客户管理的密钥
 description: Azure API for FHIR 中通过 Cosmos DB 支持的自带密钥功能
 services: healthcare-apis
-author: matjazl
+author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
 ms.date: 09/28/2020
-ms.author: matjazl
-ms.openlocfilehash: 3879280f56a4b99d8e6e08a9c9ed852ef2cafa68
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.author: ginle
+ms.openlocfilehash: ae78aa80594e46b02d77adcafed961e801780d4f
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747317"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430253"
 ---
 # <a name="configure-customer-managed-keys-at-rest"></a>配置客户管理的静态密钥
 

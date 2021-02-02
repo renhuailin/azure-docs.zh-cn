@@ -9,17 +9,32 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 6e92fb39845944898bebf6446c35f0932e13b5b8
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: a01aab13b87398b7d27af02fa84dd7fadf7b8345
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788869"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430991"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 参考页。
 
+ ## <a name="2021-01-31"></a>2021-01-31
+### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure 机器学习 Studio 笔记本体验 (1 月更新版) 
++ **新功能**
+  + AzureML 中的本机 Markdown 编辑器。 用户现在可以在 AzureML 工作室中以本机方式呈现和编辑 markdown 文件。
+  + [ ( 脚本的 "运行" 按钮。 py，。R 和) ](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#run-a-notebook-or-python-script)。 用户现在可以轻松地在 AzureML 中运行 Python、R 和 Bash 脚本
+  + [变量资源管理器](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#explore-variables-in-the-notebook)。 浏览弹出式面板中变量和数据帧的内容。 用户可以轻松检查数据类型、大小和内容。
+  + [目录。](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#navigate-with-a-toc) 导航到笔记本的各个部分，Markdown 标头指示。
+  + 将笔记本导出为 Latex/HTML/Py。 通过导出到 LaTex、HTML 或 py，创建易于共享的笔记本文件。
+  + Intellicode. ML 驱动的结果提供了增强的智能自动完成 [体验](https://docs.microsoft.com/visualstudio/intellicode/overview)。
+
++ **Bug 修复与改进**
+  + 改进了页面加载时间
+  + 提高了性能 
+  + 提高了速度和内核可靠性
+  
  ## <a name="2021-01-25"></a>2021-01-25
 
 ### <a name="azure-machine-learning-sdk-for-python-v1210"></a>用于 Python 的 Azure 机器学习 SDK 1.21。0

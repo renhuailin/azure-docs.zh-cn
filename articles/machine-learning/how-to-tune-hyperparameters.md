@@ -2,24 +2,23 @@
 title: 超参数优化模型
 titleSuffix: Azure Machine Learning
 description: 使用 Azure 机器学习自动执行深度学习和机器学习模型的超参数优化。
-ms.author: swatig
-author: swatig007
+ms.author: anumamah
+author: Aniththa
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 03/30/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: e9f9f73a8e0dbc851efdba07bf1e103f58ae9e75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a4be95561c097191803f2faa271c5d6bba875869
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133834"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430325"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>使用 Azure 机器学习优化模型超参数
-
 
 使用 Azure 机器学习 [HyperDrive 程序包](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)自动执行高效的超参数优化。 了解如何完成通过 [Azure 机器学习 SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) 优化超参数所需的步骤：
 
@@ -382,6 +381,30 @@ hd_config = HyperDriveConfig(run_config=src,
 
 ## <a name="visualize-hyperparameter-tuning-runs"></a>可视化超参数优化运行
 
+可以在 Azure 机器学习 studio 中可视化超参数优化运行，也可以使用笔记本小组件。
+
+### <a name="studio"></a>工作室
+
+可以可视化 [Azure 机器学习 studio](https://ml.azure.com)中的所有超参数优化运行。 有关如何在门户中查看试验的详细信息，请参阅 [查看工作室中的运行记录](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)。
+
+- **度量值图表**：此视觉对象跟踪在超参数优化的持续时间内为每个 hyperdrive 子级运行记录的指标。 每行表示一个子运行，每个点测量运行时迭代的主要指标值。  
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-metrics.png" alt-text="超参数优化度量值图表":::
+
+- **并行坐标图**：此可视化效果显示主要指标性能与单个超参数值之间的相关性。 通过移动轴 (单击并拖动轴标签) ，并通过在单个轴上突出显示值来对图表进行交互式 (单击并沿单个轴垂直拖动即可突出显示所需值的范围) 。
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png" alt-text="超参数优化并行坐标图":::
+
+- 二维 **散点图**：此可视化效果显示任意两个单独的超参数与它们关联的主要指标值之间的相关性。
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-2-dimensional-scatter.png" alt-text="Hyparameter 优化二维散点图":::
+
+- **三维散点图**：此可视化效果与2d 相同，但允许将三个超参数维度与主要指标值相关。 还可以单击并拖动以重定向图表，以在3D 空间中查看不同的关联。
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-3-dimensional-scatter.png" alt-text="Hyparameter 优化三维散点图":::
+
+### <a name="notebook-widget"></a>Notebook 小组件
+
 使用 [Notebook 小组件](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py)来可视化你的训练运行的进度。 以下代码片段可在 Jupyter 笔记本中的一个位置可视化所有的超参数优化运行：
 
 ```Python
@@ -391,17 +414,9 @@ RunDetails(hyperdrive_run).show()
 
 此代码会显示一个表格，其中详细描述了每个超参数配置的训练运行。
 
-![超参数优化表](./media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png)
+:::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png" alt-text="超参数优化表":::
 
-还可以将每个运行的性能可视化为训练进度。 
-
-![超参数优化绘图](./media/how-to-tune-hyperparameters/hyperparameter-tuning-plot.png)
-
-你可以使用“并行坐标绘图”来直观识别各个超参数的性能与值之间的关联。 
-
-[![超参数优化并行坐标](./media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
-
-还可将 Azure Web 门户中的所有超参数优化运行可视化。 若要详细了解如何在门户中查看试验，请参阅[如何跟踪试验](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)。
+还可以将每个运行的性能可视化为训练进度。
 
 ## <a name="find-the-best-model"></a>找到最佳模型
 

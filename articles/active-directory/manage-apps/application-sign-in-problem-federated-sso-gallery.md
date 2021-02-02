@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: feeed07021e31dfee44fa9372927e45b53131d1e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: d5a90909345599b2389d1752e00a7bc917d06822
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254047"
+ms.locfileid: "99430405"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>登录到基于 SAML 的单一登录配置的应用时出现问题
 若要解决下面的登录问题，建议执行以下操作来更好地诊断和自动执行解决步骤：
@@ -54,7 +54,7 @@ ms.locfileid: "99254047"
 在 "基于 SAML 的 SSO 配置" 页上的 " **基本 SAML 配置** " 部分中，确认 "标识符" 文本框中的值与错误中显示的标识符值的值匹配。
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>回复地址与为应用程序配置的回复地址不匹配
-`Error AADSTS50011: The reply address 'https:\//contoso.com' does not match the reply addresses configured for the application.`
+`Error AADSTS50011: The reply URL specified in the request does not match the reply URLs configured for the application: '{application identifier}'.`
 
 可能的原因 
 
@@ -147,7 +147,7 @@ Azure AD 无法识别 HTTP 请求中的 URL 参数中的 SAML 请求。 如果�
 
 删除为应用程序配置的未使用的答复 Url。
 
-在 "基于 SAML 的 SSO 配置" 页上的 " **回复 URL (断言使用者服务 URL")** 部分中，删除系统创建的未使用或默认的回复 url。 例如，`https://127.0.0.1:444/applications/default.aspx`。
+在 "基于 SAML 的 SSO 配置" 页上的 " **回复 URL (断言使用者服务 URL")** 部分中，删除系统创建的未使用或默认的回复 url。 例如，`https://127.0.0.1:444/applications/default.aspx` 。
 
 
 ## <a name="authentication-method-by-which-the-user-authenticated-with-the-service-doesnt-match-requested-authentication-method"></a>使用服务进行身份验证的用户不匹配请求的身份验证方法的身份验证方法

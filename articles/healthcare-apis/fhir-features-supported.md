@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: 0ee32d37ca8e3a32ba603fd84cee81890ddac98b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: e75cf8d6660bf6f2630b83e0c2c812fa7cf59057
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252111"
+ms.locfileid: "99430236"
 ---
 # <a name="features"></a>功能
 
@@ -53,7 +53,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 
 支持所有搜索参数类型。 
 
-| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论 |
+| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
 |-----------------------|-----------|-----------|-----------|---------|
 | 数字                | 是       | 是       | 是       |         |
 | Date/DateTime         | 是       | 是       | 是       |         |
@@ -113,11 +113,13 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 
 支持扩展 RESTful API 的所有操作。
 
-| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论 |
+| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
 |------------------------|-----------|-----------|-----------|---------|
 |  (整个系统的 $export)  | 是       | 是       | 是       |         |
 | 患者/$export        | 是       | 是       | 是       |         |
 | 组/$export          | 是       | 是       | 是       |         |
+| $convert 数据          | 是       | 是       | 是       |         |
+
 
 ## <a name="persistence"></a>持久性
 

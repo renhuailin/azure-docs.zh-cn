@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 01/22/2021
-ms.openlocfilehash: a4d1543c5c4ce7a44825a879b838e7829b8c84fd
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/01/2021
+ms.openlocfilehash: 5db0214e9b985df5c5aedb1dbe9878e484af2a55
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760637"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430791"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>概述： Azure 逻辑应用预览
 
@@ -168,6 +168,8 @@ Azure 逻辑应用预览包括许多当前功能和其他功能，例如：
 ## <a name="changed-limited-unavailable-or-unsupported-capabilities"></a>更改、受限、不可用或不支持的功能
 
 在 Azure 逻辑应用预览中，这些功能已更改，或者它们当前受限、不可用或不受支持：
+
+* **操作系统支持**：目前，Visual Studio Code 中的设计器不适用于 linux 操作系统，但你仍可以将使用逻辑应用预览运行时的逻辑应用部署到基于 linux 的虚拟机。 现在，你可以在 Windows 或 macOS 上 Visual Studio Code 中构建逻辑应用，然后将其部署到基于 Linux 的虚拟机。
 
 * **触发器和操作**：某些内置触发器不可用，例如滑动窗口和批处理。 若要启动工作流，请使用内置的 " [重复周期"、"请求"、"http"、"事件中心" 或 "服务总线触发器](../connectors/apis-list.md)"。 内置触发器和操作在 Azure 逻辑应用预览运行时中以本机方式运行，而托管连接器则部署在 Azure 中。 在设计器中，内置触发器和操作显示在 " **内置** " 选项卡下，而 "托管连接器触发器" 和 "操作" 显示在 " **Azure** " 选项卡下。
 

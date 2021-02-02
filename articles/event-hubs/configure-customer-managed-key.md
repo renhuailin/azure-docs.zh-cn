@@ -2,19 +2,20 @@
 title: 为静态 Azure 事件中心数据配置你自己的密钥
 description: 本文提供了有关如何配置自己的密钥来加密 Azure 事件中心数据 rest 的信息。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 00e33bc3464aed1829968b7957e48455eaa04447
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/01/2021
+ms.openlocfilehash: 53622344e36e514543d547dec95caaf1b0b76a13
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933785"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430673"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>配置客户托管的密钥，以便通过使用 Azure 门户来加密静态 Azure 事件中心数据
 Azure 事件中心通过 azure 存储服务加密 (Azure SSE) 提供静态数据的加密。 事件中心服务使用 Azure 存储来存储数据。 使用 Azure 存储空间存储的所有数据都使用 Microsoft 托管密钥进行加密。 如果你使用自己的密钥 (也称为创建自己的密钥 (BYOK) 或客户托管的密钥) ，则仍使用 Microsoft 托管的密钥对数据进行加密，但另外，将使用客户管理的密钥加密 Microsoft 托管密钥。 利用此功能，您可以创建、轮换、禁用和撤消对用于加密 Microsoft 托管密钥的客户托管密钥的访问权限。 启用 BYOK 功能是在命名空间中执行的一次性设置过程。
 
 > [!NOTE]
-> BYOK 功能受 [事件中心专用单租户](event-hubs-dedicated-overview.md) 群集支持。 不能为标准事件中心命名空间启用此功能。
+> - BYOK 功能受 [事件中心专用单租户](event-hubs-dedicated-overview.md) 群集支持。 不能为标准事件中心命名空间启用此功能。
+> - 只能为新的或空的命名空间启用加密。 如果命名空间包含事件中心，则加密操作将失败。
 
 可以使用 Azure Key Vault 管理密钥并审核密钥使用情况。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。 有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/general/overview.md)
 

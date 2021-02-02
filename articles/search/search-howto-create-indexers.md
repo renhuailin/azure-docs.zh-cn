@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: c26529f48d03b8cd038ce4fea8164a305dfc17f3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: ade5880a6b06f448df23eb77d81201a521f1d240
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097634"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430039"
 ---
 # <a name="create-a-search-indexer"></a>创建搜索索引器
 
@@ -155,7 +155,7 @@ AI 扩充超出了本文的范围。 有关详细信息，请从以下文章开�
 
 ## <a name="know-your-index"></a>了解索引
 
-请记住，索引器会将搜索文档传递给搜索引擎，以便进行索引。 就像索引器具有确定执行行为的属性一样，索引架构具有程度对字符串进行索引的方式的属性， (仅分析字符串并将其标记) 。 根据分析器分配，索引字符串可能不同于传入的字符串。 可以使用 " [分析文本" (REST) ](/rest/api/searchservice/test-analyzer)来评估分析器的效果。 有关分析器的详细信息，请参阅 [文本处理分析器](search-analyzers.md)。
+请记住，索引器会将搜索文档传递给搜索引擎，以便进行索引。 就像索引器具有确定执行行为的属性一样，索引架构具有程度对字符串进行索引的方式的属性， (仅分析) 的字符串。 根据分析器分配，索引字符串可能不同于传入的字符串。 可以使用 " [分析文本" (REST) ](/rest/api/searchservice/test-analyzer)来评估分析器的效果。 有关分析器的详细信息，请参阅 [文本处理分析器](search-analyzers.md)。
 
 就索引器与索引进行交互的方式而言，索引器仅检查字段名称和类型。 没有验证步骤可确保传入内容对于索引中对应的搜索字段是正确的。 作为验证步骤，你可以对已填充的索引运行查询，以返回整篇文档或所选字段。 有关查询索引内容的详细信息，请参阅 [创建基本查询](search-query-create.md)。
 
