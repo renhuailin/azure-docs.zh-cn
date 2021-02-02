@@ -3,7 +3,7 @@ title: 使用活动报表将 AD FS 应用移动到 Azure Active Directory |Micro
 description: "\"Active Directory 联合身份验证服务 (AD FS) 应用程序活动\" 报表可让你快速地将应用程序从 AD FS 迁移到 Azure Active Directory (Azure AD) 。 此 AD FS 迁移工具标识与 Azure AD 的兼容性，并提供迁移指南。"
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77a43d5bd5f2b228d5ed4384fc1efdca76f8ea0b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3665c5b82095004ddf7dc1f503b54f5164d49c7f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573878"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260056"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>使用 AD FS 应用程序活动报告 (预览版) 将应用程序迁移到 Azure AD
 
@@ -33,7 +33,7 @@ Azure 门户中的 "AD FS 应用程序活动报表" (预览) ，可以快速确�
 
 AD FS 应用程序活动数据适用于分配了下列任意管理角色的用户：全局管理员、报表读者、安全读者、应用程序管理员或云应用程序管理员。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 你的组织当前必须使用 AD FS 来访问应用程序。
 * 必须在 Azure AD 租户中启用 Azure AD Connect Health。
@@ -78,7 +78,7 @@ AD FS 应用程序活动数据适用于分配了下列任意管理角色的用�
 
 下表列出了在 AD FS 应用程序上执行的所有配置测试。
 
-|Result  |通过/警告/失败  |描述  |
+|结果  |通过/警告/失败  |描述  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> 至少检测到 AdditionalAuthentication 的一个非可迁移规则。       | 通过/警告          | 依赖方包含用于提示进行多重身份验证 (MFA) 的规则。 若要移动到 Azure AD，请将这些规则转换为条件访问策略。 如果你使用的是本地 MFA，则建议移动到 Azure AD MFA。 [了解有关条件性访问的详细信息](../authentication/concept-mfa-howitworks.md)。        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> 信赖方的 AdditionalWSFedEndpoint 设置为 true。       | 通过/失败          | AD FS 中的信赖方允许多个 WS-Fed 断言终结点。目前 Azure AD 仅支持一个。如果有这样的情况，该结果会阻止迁移，请 [告诉我们](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints)。     |
@@ -114,7 +114,7 @@ AD FS 应用程序活动数据适用于分配了下列任意管理角色的用�
 
 下表列出了对 AD FS 应用程序执行的所有声明规则测试。
 
-|Property  |描述  |
+|属性  |描述  |
 |---------|---------|
 |UNSUPPORTED_CONDITION_PARAMETER      | Condition 语句使用正则表达式来计算声明是否与特定模式匹配。若要在 Azure AD 中实现类似的功能，可以使用预定义的转换，如 IfEmpty ( # A1，StartWith ( # A3，其中包含 ( # A5 以及其他内容。 有关详细信息，请参阅 [自定义用于企业应用程序的 SAML 令牌中颁发的声明](../develop/active-directory-saml-claims-customization.md)。          |
 |UNSUPPORTED_CONDITION_CLASS      | Condition 语句包含多个需要在运行发出语句之前计算的条件。Azure AD 可以通过声明的转换函数（可在其中评估多个声明值）支持此功能。有关详细信息，请参阅 [自定义用于企业应用程序的 SAML 令牌中颁发的声明](../develop/active-directory-saml-claims-customization.md)。          |

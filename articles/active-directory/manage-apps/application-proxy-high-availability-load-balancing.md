@@ -4,7 +4,7 @@ description: 流量分布如何与应用程序代理部署一起工作。 包括
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 403fa4cab94ad6149e388b10acccd9d5e7a2b7a8
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1fda858b0811eb6308b8e5588eaeae9bff5a1730
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658156"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259383"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>应用程序代理连接器和应用程序的高可用性和负载均衡
 
@@ -96,6 +96,6 @@ ms.locfileid: "94658156"
 
 - [启用应用程序代理](application-proxy-add-on-premises-application.md)
 - [启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
-- [启用条件性访问](application-proxy-integrate-with-sharepoint-server.md)
+- [启用条件访问](application-proxy-integrate-with-sharepoint-server.md)
 - [解决使用应用程序代理时遇到的问题](application-proxy-troubleshoot.md)
 - [了解 Azure AD 体系结构如何支持高可用性](../fundamentals/active-directory-architecture.md)

@@ -9,12 +9,12 @@ ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 0340ab0a13d7c639d5e5bba49b3cdd445bad5a83
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5d5278c33c24c7f95459b9c121bca9e960615b9c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879875"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260174"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>使用 Azure Data Lake Storage 查询加速来筛选数据
 
@@ -51,7 +51,7 @@ ms.locfileid: "98879875"
 
   [Python](https://www.python.org/downloads/) 3.8 或更高版本。
 
-  ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+  ### <a name="nodejs"></a>Node.js
 
   使用 Node.js SDK 不需要额外的先决条件。
 
@@ -152,7 +152,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 ---
 
-## <a name="set-up-your-environment"></a>设置你的环境
+## <a name="set-up-your-environment"></a>设置环境
 
 ### <a name="step-1-install-packages"></a>步骤1：安装包 
 
@@ -178,10 +178,10 @@ Update-Module -Name Az
    cd myProject
    ```
 
-2. `12.5.0-preview.6`使用命令安装适用于 .net 的 Azure Blob 存储客户端库包的版本 `dotnet add package` 。 
+2. `12.5.0-preview.6`使用命令安装适用于 .net 的 Azure Blob 存储客户端库包的版本或更高版本 `dotnet add package` 。 
 
    ```console
-   dotnet add package Azure.Storage.Blobs -v 12.6.0
+   dotnet add package Azure.Storage.Blobs -v 12.8.0
    ```
 
 3. 本文中显示的示例使用 [CsvHelper](https://www.nuget.org/packages/CsvHelper/) 库分析 CSV 文件。 若要使用该库，请使用以下命令。
@@ -221,7 +221,7 @@ Update-Module -Name Az
 pip install azure-storage-blob==12.4.0
 ```
 
-#### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+#### <a name="nodejs"></a>Node.js
 
 打开一个终端窗口，然后键入以下命令来安装适用于 JavaScript 的 Data Lake 客户端库。
 
@@ -286,7 +286,7 @@ import sys, csv
 from azure.storage.blob import BlobServiceClient, ContainerClient, BlobClient, DelimitedTextDialect, BlobQueryError
 ```
 
-### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+### <a name="nodejs"></a>Node.js
 
 将 `storage-blob` 此语句放置在代码文件的顶部，以包含模块。 
 
@@ -356,11 +356,11 @@ private static async Task DumpQueryCsv(BlockBlobClient blob, string query, bool 
                 query,
                 options)).Value.Content))
         {
-            using (var parser = new CsvReader(reader, new CsvConfiguration(CultureInfo.CurrentCulture) { HasHeaderRecord = true }))
+            using (var parser = new CsvReader(reader, new CsvConfiguration(CultureInfo.CurrentCulture, hasHeaderRecord: true) { HasHeaderRecord = true }))
             {
                 while (await parser.ReadAsync())
                 {
-                    Console.Out.WriteLine(String.Join(" ", parser.Context.Record));
+                    Console.Out.WriteLine(String.Join(" ", parser.Parser.Record));
                 }
             }
         }

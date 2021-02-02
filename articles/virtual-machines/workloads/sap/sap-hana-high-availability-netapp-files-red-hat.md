@@ -11,14 +11,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: cfa68bde2462cefd6f690247cfd1e3bd2e3dbc74
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b90d703a44cf89961eb0dca02abb1b8ea9cff166
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489201"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259196"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上的 Azure NetApp 文件 SAP HANA 扩展的高可用性
 
@@ -91,6 +91,7 @@ ms.locfileid: "96489201"
     - [在 Red Hat Enterprise Linux 上安装 SAP HANA 以便用于 Microsoft Azure。](https://access.redhat.com/solutions/3193782)
     - [当 HANA 文件系统位于 NFS 共享上时，配置 SAP HANA 向上扩展系统复制 Pacemaker 群集](https://access.redhat.com/solutions/5156571)
 - [使用 Azure NetApp 文件的 Microsoft Azure 上的 NetApp SAP 应用程序](https://www.netapp.com/us/media/tr-4746.pdf)
+- [适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 
 ## <a name="overview"></a>概述
 
@@ -198,7 +199,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 为了满足/hana/data 和/hana/log 的 SAP 最小吞吐量要求和/hana/shared 的准则，建议的大小为：
 
-|    数据量(Volume)    | 高级存储层的大小 | 超存储层的大小 | 支持的 NFS 协议 |
+|    Volume    | 高级存储层的大小 | 超存储层的大小 | 支持的 NFS 协议 |
 | :----------: | :--------------------------: | :------------------------: | :--------------------: |
 |  /hana/log   |            4 TiB             |           2 TiB            |          v4.1          |
 |  /hana/data  |           6.3 TiB            |          3.2 TiB           |          v4.1          |
@@ -564,7 +565,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
    检查群集和所有资源的状态
    > [!NOTE]
-   > 本文包含对字词 *从属* 的引用，这是 Microsoft 不再使用的术语。 从软件中删除该字词后，我们会将其从本文中删除。
+   > 本文包含对字词 *从属* 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
    
     ```
     sudo pcs status
@@ -694,3 +695,10 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
     ```
 
    建议通过同时执行在 [RHEL 上安装 SAP HANA 系统复制](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)中所述的测试，来全面测试 SAP HANA 群集配置。
+
+## <a name="next-steps"></a>后续步骤
+
+* [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
+* [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
+* [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
+* [适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)

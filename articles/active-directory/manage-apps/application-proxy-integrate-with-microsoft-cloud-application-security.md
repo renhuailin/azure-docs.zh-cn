@@ -2,7 +2,7 @@
 title: 将本地应用与 Cloud App Security Azure AD 集成
 description: 在 Azure Active Directory 中配置本地应用程序，以便与 Microsoft Cloud App Security (MCAS) 配合使用。 使用 MCAS 条件访问应用控制可以基于条件性访问策略实时监视和控制会话。 可以将这些策略应用于 Azure Active Directory (Azure AD) 中使用应用程序代理的本地应用程序。
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.date: 12/19/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 889168782acabaafa4200a8ebd097e431a68ede3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 139f347a3d1bce7a8f841cd1c39cd250b9a2182d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764564"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259349"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>使用 Microsoft Cloud App Security 和 Azure Active Directory 配置实时应用程序访问监视
 在 Azure Active Directory (Azure AD) 中配置本地应用程序，以使用 Microsoft Cloud App Security (MCAS) 进行实时监视。 MCAS 使用条件访问应用控制基于条件性访问策略实时监视和控制会话。 可以将这些策略应用于 Azure Active Directory (Azure AD) 中使用应用程序代理的本地应用程序。
@@ -47,7 +47,7 @@ ms.locfileid: "84764564"
 
 ## <a name="add-on-premises-application-to-azure-ad"></a>将本地应用程序添加到 Azure AD
 
-将本地应用程序添加到 Azure AD。 有关快速入门信息，请参阅[将本地应用添加到 Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)。 添加应用程序时，请务必设置“添加本地应用程序”边栏选项卡中的以下两个设置****：
+将本地应用程序添加到 Azure AD。 有关快速入门信息，请参阅[将本地应用添加到 Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)。 添加应用程序时，请务必设置“添加本地应用程序”边栏选项卡中的以下两个设置：
 
 - **预身份验证**：输入 **Azure Active Directory**。
 - **在应用程序正文中转换 url**：选择 **"是"**。

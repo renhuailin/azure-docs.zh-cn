@@ -7,14 +7,14 @@ ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d94bc2fde63090d66da7e98cc239386d958e6bb2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a3ee7f3fca3fff1cd401f26489b01fb9cc4e09c5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950958"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259513"
 ---
-# <a name="how-to-transfer-a-payload-between-device-and-dps"></a>如何在设备与 DPS 之间传输有效负载
+# <a name="how-to-transfer-payloads-between-devices-and-dps"></a>如何在设备和 DPS 之间传输有效负载
 有时，DPS 需要设备中的更多数据才能正常地将设备预配到适当的 IoT 中心，而这些数据需由设备提供。 反之，DPS 可将数据返回给设备，以便为客户端逻辑提供辅助。 
 
 ## <a name="when-to-use-it"></a>何时使用此功能

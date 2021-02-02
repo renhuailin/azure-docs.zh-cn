@@ -11,14 +11,14 @@ ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/20/2020
+ms.date: 02/01/2021
 ms.author: amverma
-ms.openlocfilehash: c0ec18ae4a7d6020299660adbeba6f993cd4eeca
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 767d6da7701261836b367ccad121bf3569b43b72
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966014"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260157"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>适用于 Windows 的未用驱动程序扩展
 
@@ -26,19 +26,19 @@ ms.locfileid: "94966014"
 
 还可使用扩展来安装适用于 [Linux vm](hpc-compute-infiniband-linux.md)的无功能驱动程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="operating-system"></a>操作系统
 
-此扩展支持以下 OS 发行版，具体取决于特定 OS 版本对驱动程序的支持。
+此扩展支持以下 OS 发行版，具体取决于特定 OS 版本对驱动程序的支持。 请注意适用于 "H" 和 "N" 系列 VM 大小的适当的 "无大小的 NIC"。
 
-| 分发 | 版本 |
+| 分布 | 无限 NIC 驱动程序 |
 |---|---|
-| Windows 10 | 核心 |
-| Windows Server 2019 | 核心 |
-| Windows Server 2016 | 核心 |
-| Windows Server 2012 R2 | 核心 |
-| Windows Server 2012 | 核心 |
+| Windows 10 | CX5, CX6 |
+| Windows Server 2019 | CX5, CX6 |
+| Windows Server 2016 | CX3-Pro、CX5、CX6 |
+| Windows Server 2012 R2 | CX3-Pro、CX5、CX6 |
+| Windows Server 2012 | CX3-Pro、CX5、CX6 |
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
@@ -84,7 +84,7 @@ ms.locfileid: "94966014"
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板 
 
-可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
 
 虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 

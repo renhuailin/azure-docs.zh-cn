@@ -4,7 +4,7 @@ description: 介绍有关如何将本地 Power BI 与 Azure AD 应用程序代�
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,18 +16,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4515d6140123e8e8784fc2d828242d49c59fc4
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: e9f0959ff51714e8a7e69f58a3e3abeab71e8359
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616892"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259366"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理启用对 Power BI 移动版的远程访问
 
 本文介绍如何使用 Azure AD 应用程序代理来启用 Power BI 移动应用程序连接到 Power BI 报表服务器 (PBIRS) 并 SQL Server Reporting Services (SSRS) 2016 和更高版本。 通过这种集成，远离企业网络的用户可以从 Power BI 移动应用程序访问其 Power BI 报表，并通过 Azure AD 身份验证进行保护。 此保护包括条件访问和多重身份验证等 [安全权益](application-proxy-security.md#security-benefits) 。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假定你已部署了报表服务和 [应用程序代理](application-proxy-add-on-premises-application.md)。
 
@@ -99,7 +99,7 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 
    d. 针对你要代表你的用户使用的连接器选择“委派的登录标识”。 有关详细信息，请参阅[使用不同的本地标识和云标识](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)。
 
-   e. 单击“保存”以保存更改。
+   e.  以保存更改。
 
 若要完成应用程序的设置，请访问 **"用户和组"** 部分，并分配用户以访问此应用程序。
 

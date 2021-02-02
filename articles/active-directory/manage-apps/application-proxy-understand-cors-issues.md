@@ -3,7 +3,7 @@ title: 了解和解决 Azure AD 应用程序代理 CORS 问题
 description: 了解 Azure AD 应用程序代理中的 CORS，以及如何识别和解决 CORS 问题。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 8836295e9f54260c4e9ff6c1da333ef2a86d58fb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b57fc7e3af99819c9b27b6bc796e501d1db02818
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651849"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259162"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>了解并解决 Azure Active Directory 应用程序代理 CORS 问题
 

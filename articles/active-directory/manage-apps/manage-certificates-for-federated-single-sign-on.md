@@ -4,7 +4,7 @@ description: 了解如何自定义联合证书的过期日期，以及如何续�
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 04/04/2019
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87190e9a7aa3c3a26b77220dd0332d65c640bc2e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d9b6e81fd090a625ec7ac86963cc9d5e66f5010e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658989"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259213"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中管理用于联合单一登录的证书
 
@@ -30,7 +30,7 @@ ms.locfileid: "94658989"
 
 ## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>为库和非库应用程序自动生成的证书
 
-从库中添加新应用程序并通过从 "应用程序概述" 页中选择 "**单一登录** saml (来配置基于 saml 的登录  >  **SAML** ") 中，Azure AD 为有效时间为三年的应用程序生成一个证书。 若要 (**.cer**) 文件下载活动证书作为安全证书，请返回到该页面 (**基于 saml 的登录**) 并在 " **SAML 签名证书** " 标题中选择下载链接。 可以在原始 (二进制) 证书或 Base64 (base 64 编码文本) 证书之间进行选择。 对于库应用程序，本部分还可能显示一个链接，以将证书作为联合元数据 XML (**.xml** 文件) 下载，具体取决于应用程序的要求。
+从库中添加新应用程序并通过从 "应用程序概述" 页中选择 "**单一登录** saml (来配置基于 saml 的登录  >   ") 中，Azure AD 为有效时间为三年的应用程序生成一个证书。 若要 (**.cer**) 文件下载活动证书作为安全证书，请返回到该页面 (**基于 saml 的登录**) 并在 " **SAML 签名证书** " 标题中选择下载链接。 可以在原始 (二进制) 证书或 Base64 (base 64 编码文本) 证书之间进行选择。 对于库应用程序，本部分还可能显示一个链接，以将证书作为联合元数据 XML (**.xml** 文件) 下载，具体取决于应用程序的要求。
 
 ![SAML 活动签名证书下载选项](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 

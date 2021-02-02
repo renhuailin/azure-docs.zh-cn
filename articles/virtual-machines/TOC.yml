@@ -1472,30 +1472,11 @@
     - name: 自定义数据
       href: custom-data.md
     - name: Ansible
-      items:
-        - name: 安装和配置
-          href: /azure/developer/ansible/install-on-linux-vm
-        - name: 创建 Linux VM
-          href: /azure/developer/ansible/vm-configure
-        - name: 管理 Linux VM
-          href: /azure/developer/ansible/vm-manage
+      href: 'https://docs.microsoft.com/azure/developer/ansible/'
     - name: Terraform
-      items:
-        - name: 安装和配置
-          href: /azure/developer/terraform/install-configure
-        - name: 创建完整 VM
-          href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
+      href: 'https://docs.microsoft.com/azure/developer/terraform/'
     - name: Jenkins
-      href: /azure/developer/jenkins/overview
-      items:
-        - name: 创建 Jenkins 服务器
-          href: /azure/developer/jenkins/configure-on-linux-vm
-        - name: 使用 VM 代理进行缩放
-          href: /azure/developer/jenkins/scale-deployments-using-vm-agents
-        - name: 将项目发布到存储
-          href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
-        - name: 保护 Jenkins
-          href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
+      href: 'https://docs.microsoft.com/en-us/azure/developer/jenkins/'
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
 - name: 故障排除

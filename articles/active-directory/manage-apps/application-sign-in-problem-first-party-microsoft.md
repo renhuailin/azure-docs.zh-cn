@@ -4,7 +4,7 @@ description: 排查使用 Azure AD 登录到第一方 Microsoft 应用程序（�
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57deed9d7fb178ba1cdc8d6e954d751752532de4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 79c8d6d072379853d6eca561d372f61dbb8acc8a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654399"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260005"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>登录 Microsoft 应用程序时出现的问题
 
@@ -117,7 +117,7 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 若要检查是否存在某个用户帐户，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 
 2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
@@ -135,7 +135,7 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 若要检查用户帐户的状态，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 
 2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 

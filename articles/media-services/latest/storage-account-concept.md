@@ -1,7 +1,7 @@
 ---
 # <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必填字段。 有关详细信息，请参阅 aka.ms/skyeye/meta。
 标题： Azure 存储帐户： Azure 媒体服务说明：了解如何创建用于 Azure 媒体服务的 Azure 存储帐户。
-服务：媒体服务 documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' ' ms. service： media-服务毫秒：：01/05/2021：： inhenkel
+服务：媒体服务 documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' ' ms. service： media-服务毫秒：：01/29/2021：： inhenkel
 ---
 
 # <a name="azure-storage-accounts"></a>Azure 存储帐户
@@ -19,7 +19,7 @@
 > [!NOTE]
 > 仅热访问层支持与 Azure 媒体服务配合使用，尽管其他访问层可用于降低未活跃使用的内容的存储成本。
 
-可以为存储帐户选择不同的 SKU。 有关详细信息，请参阅[存储帐户](/cli/azure/storage/account?view=azure-cli-latest)。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在选取用于生产的 SKU 时，应考虑 `--sku Standard_RAGRS`，以便通过异地复制确保业务连续性。
+可以为存储帐户选择不同的 SKU。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在选取用于生产的 SKU 时，应考虑 `--sku Standard_RAGRS`，以便通过异地复制确保业务连续性。
 
 ## <a name="assets-in-a-storage-account"></a>存储帐户中的资产
 
@@ -34,14 +34,15 @@
 
 |加密选项|说明|媒体服务 v3|
 |---|---|---|
-|媒体服务存储加密| AES-256 加密，媒体服务管理的密钥。 |不支持。<sup>(1)</sup>|
+|媒体服务存储加密| AES-256 加密，媒体服务管理的密钥。 |不支持。<sup>1</sup>|
 |[静态数据的存储服务加密](../../storage/common/storage-service-encryption.md)|由 Azure 存储提供的服务器端加密，由 Azure 或客户托管的密钥。|。|
 |[存储客户端加密](../../storage/common/storage-client-side-encryption.md)|由 Azure 存储提供的客户端加密，由 Key Vault 中的客户托管密钥。|不支持。|
 
 <sup>1</sup> 在媒体服务 v3 中，仅当资产是使用媒体服务 v2 创建的时才支持存储加密（AES-256 加密）以实现向后兼容性，这意味着 v3 适用于现有存储加密的资产，但不允许创建新资产。
 
-## <a name="double-encryption"></a>双重加密
-媒体服务支持双重加密。  若要详细了解双重加密，请参阅 [Azure 双重加密](../../security/fundamentals/double-encryption.md)。
+## <a name="storage-account-double-encryption"></a>存储帐户双加密
+
+存储帐户支持双加密，但必须显式启用第二层。 请参阅[静态数据的 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#doubly-encrypt-data-with-infrastructure-encryption)。  
 
 ## <a name="storage-account-errors"></a>存储帐户错误
 
@@ -53,10 +54,6 @@
 |---|---|
 |媒体服务帐户或附加的存储帐户已迁移到单独的订阅。 |迁移存储帐户或媒体服务帐户，使之全都位于同一订阅中。 |
 |媒体服务帐户在使用另一订阅中的附加存储帐户，因为它是支持此功能的早期媒体服务帐户。 所有早期的媒体服务帐户都已转换成新式的基于 Azure 资源管理器的帐户，其状态将为“已断开连接”。 |迁移存储帐户或媒体服务帐户，使之全都位于同一订阅中。|
-
-## <a name="azure-storage-firewall"></a>Azure 存储防火墙
-
-Azure 媒体服务不支持启用了 Azure 存储防火墙或[专用终结点](../../storage/common/storage-network-security.md)的存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

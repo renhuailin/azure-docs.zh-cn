@@ -1,17 +1,17 @@
 ---
-title: 使用 Batch 安全地访问 Key Vault
+title: 使用证书，并使用 Batch 安全访问 Azure Key Vault
 description: 了解如何使用 Azure Batch 以编程方式从 Key Vault 访问凭据。
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b8b3d2655e79862c068aa48c29c7e89b7df85482
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eaaeaa05caca7897eb649b56504b643038f08d53
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350681"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260123"
 ---
-# <a name="securely-access-key-vault-with-batch"></a>使用 Batch 安全地访问 Key Vault
+# <a name="use-certificates-and-securely-access-azure-key-vault-with-batch"></a>使用证书，并使用 Batch 安全访问 Azure Key Vault
 
 本文介绍如何设置 Batch 节点，以便安全地访问 [Azure Key Vault](../key-vault/general/overview.md) 中存储的凭据。 无需将管理员凭据放入 Key Vault，然后对凭据进行硬编码以从脚本访问 Key Vault。 解决方案是使用授予 Batch 节点对 Key Vault 的访问权限的证书。
 
@@ -67,7 +67,7 @@ $newAzureAdPrincipal = New-AzureRmADServicePrincipal -ApplicationId $newADApplic
 
 ## <a name="grant-rights-to-key-vault"></a>授予 Key Vault 的权限
 
-在上一步中创建的服务主体需要权限才能从 Key Vault 检索机密。 可以通过 [Azure 门户](../key-vault/general/assign-access-policy-portal.md) 或使用以下 PowerShell 命令来授予权限。
+在上一步中创建的服务主体需要权限才能从 Key Vault 检索机密。 可以通过 [Azure 门户](../key-vault/general/assign-access-policy-portal.md)或以下 PowerShell 命令授予权限。
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'

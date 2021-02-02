@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 68362b61aa0d919bd0e95f3cebb1cf1189f9f0f3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d6ae9585ce5b5a6f666a96ae8c5e7e9e3c5e248a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095169"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427381"
 ---
 ## <a name="download-and-install"></a>下载并安装
 
@@ -29,14 +29,6 @@ ms.locfileid: "99095169"
 > [!NOTE]
 > 作为 NuGet 的替代方法，你可以下载并解压缩语音 CLI [zip 存档](https://aka.ms/speech/spx-zips.zip)，从 `spx-zips` 目录中查找并解压缩你的平台，然后将 `spx` 路径添加到 PATH 系统变量。
 
-### <a name="run-the-speech-cli"></a>运行语音 CLI
-
-1. 打开命令提示符或 PowerShell，然后导航到在其中提取了语音 CLI 的目录。  
-2. 若要查看语音 CLI 的帮助命令，请键入 `spx`。
-
-> [!NOTE]
-> 查找命令时，Powershell 不会检查本地目录。 在 Powershell 中，将目录更改为 `spx` 的位置，并通过输入 `.\spx` 调用工具。
-> 如果将此目录添加到路径，则 Powershell 和 Windows 命令提示符会从不包含 `.\` 前缀的任何目录中查找 `spx`。
 
 ### <a name="font-limitations"></a>字体限制
 

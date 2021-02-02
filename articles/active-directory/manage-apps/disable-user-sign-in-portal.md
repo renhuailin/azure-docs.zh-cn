@@ -1,10 +1,10 @@
 ---
-title: 为 Azure AD 中的企业应用禁用用户登录
+title: 在 Azure AD 中对企业应用禁用用户登录
 description: 如何禁用企业应用程序，防止用户在 Azure Active Directory 中登录该程序
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0671d3dec963c0b475133881b00224cfe11e8370
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 783de636d4520f48f624f3380f811f1f18366330
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861638"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259230"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中对企业应用禁用用户登录
 
@@ -31,10 +31,10 @@ ms.locfileid: "96861638"
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 选择“所有服务”  ，在文本框中输入 **Azure Active Directory**，并选择“Enter”  。
-1. 在 " **Azure Active Directory**  -   **_directoryname_"*窗格上 (即，用于所管理目录的 Azure AD 窗格) ，请选择 "* 企业应用程序**"。
+1. 在“Azure Active Directory -  directoryname”***窗格（即，正在管理的目录的 Azure AD 窗格）中，选择“企业应用程序”***。
 1. 在“企业应用程序 - 所有应用程序”  窗格上，你会看到你可以管理的应用的列表。 选择一个应用。
-1. 在 " **_appname_"*窗格 (即，在标题) 中包含所选应用的名称的窗格中，选择 "_* 属性**"。
-1. 在 " **_appname_"*-_*"属性**" 窗格中，选择 "**否**" 以使 **用户能够登录？**。
+1. 在“appname”***窗格（即标题中包含所选应用的名称的窗格）中，选择“属性”***。
+1. 在“appname ***- 属性”*** 窗格中，对“启用以让用户登录?”设置选择“否”。
 1. 选择“保存”  命令。
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>使用 Azure AD PowerShell 禁用未列出的应用

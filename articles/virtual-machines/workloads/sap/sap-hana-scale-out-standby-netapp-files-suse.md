@@ -14,14 +14,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/05/2021
+ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: a152735d21a347262ce6485e6110f9e040a0071a
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 6da860cf9f116d859657be8b81682088b47474eb
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916229"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259145"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>使用 SUSE Linux Enterprise Server 上的 Azure NetApp 文件在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统 
 
@@ -84,7 +84,7 @@ ms.locfileid: "97916229"
 * [SUSE SAP HA 最佳实践指南][suse-ha-guide]：包含设置 NetWeaver 高可用性的所有必需信息，以及 SAP HANA 本地复制 (要用作一般基线;它们提供了更详细的信息) 
 * [SUSE 高可用性扩展 12 SP3 发行说明][suse-ha-12sp3-relnotes]
 * [使用 Azure NetApp 文件的 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]
-
+* [适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 
 ## <a name="overview"></a>概述
 
@@ -253,7 +253,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
  
     f. 对于剩余的虚拟机，重复步骤 b 到 e， (在我们的示例中，  **hanadb2** 和 **hanadb3**) 。
  
-    g. 使虚拟机暂时处于停止状态。 接下来，我们将为所有新连接的网络接口启用 [加速网络](../../../virtual-network/create-vm-accelerated-networking-cli.md) 。  
+    如， 使虚拟机暂时处于停止状态。 接下来，我们将为所有新连接的网络接口启用 [加速网络](../../../virtual-network/create-vm-accelerated-networking-cli.md) 。  
 
 6. `storage`通过执行以下步骤，为和子网的其他网络接口启用加速网络 `hana` ：  
 
@@ -863,4 +863,5 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 * [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
+* [适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 * 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复，请参阅 [Azure 虚拟机 (vm) 中 SAP HANA 的高可用性 ][sap-hana-ha]。

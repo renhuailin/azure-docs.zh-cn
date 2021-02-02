@@ -3,7 +3,7 @@ title: 使用 Azure AD 配置组所有者同意访问组数据的应用
 description: 了解如何管理组和团队所有者是否可以同意将有权访问组或团队数据的应用程序。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 719bdd6a4d629bb4a35e7e11631670b0340e72a6
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: cd1eb98fca9fe25b6672863c02b8a78e57063e5a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090000"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259315"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>配置组所有者对应用访问组数据的同意
 

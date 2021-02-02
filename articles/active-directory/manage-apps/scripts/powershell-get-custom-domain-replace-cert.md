@@ -3,7 +3,7 @@ title: PowerShell 示例 - 替换应用程序代理应用中的证书
 description: PowerShell 示例，它会批量替换 Azure Active Directory (Azure AD) 应用程序代理应用程序中的证书。
 services: active-directory
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 7cdd0144a7906bbb904475bd40dc9d8bc5e12742
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c9482a5cde6928b7606c6fda4f7a140b791ab23a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859384"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260039"
 ---
 # <a name="get-all-application-proxy-applications-published-with-the-identical-certificate-and-replace-it"></a>获取使用相同证书发布的所有应用程序代理应用程序，并替换该证书
 
