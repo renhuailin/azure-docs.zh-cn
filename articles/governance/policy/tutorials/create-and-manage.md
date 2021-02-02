@@ -1,14 +1,14 @@
 ---
 title: 教程：构建策略以强制实施符合性
 description: 本教程中将使用策略来强制执行标准、控制成本、维护安全性并施加企业范围的设计原则。
-ms.date: 10/05/2020
+ms.date: 01/29/2021
 ms.topic: tutorial
-ms.openlocfilehash: bf3da82abcdcada1fc38df29efc988a1805c3020
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a643e7ccede4966719972694ea29eeb77789595e
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005429"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221187"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教程：创建和管理策略以强制实施符合性
 
@@ -71,6 +71,10 @@ ms.locfileid: "96005429"
 1. 让“创建修正任务”处于取消选中状态。 使用此框可以创建一个任务来更改现有资源以及新资源或更新的资源。 有关详细信息，请参阅[修正资源](../how-to/remediate-resources.md)。
 
 1. 系统会自动勾选“创建托管标识”，因为此策略定义使用 [modify](../concepts/effects.md#modify) 效果。 系统会根据策略定义自动将“权限”设置为“参与者”。 有关详细信息，请参阅[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)和[修正安全性工作原理](../how-to/remediate-resources.md#how-remediation-security-works)。
+
+1. 选择向导顶部的“不合规消息”选项卡。
+
+1. 将“不合规消息”设置为“此资源没有所需标记”。 当拒绝某个资源时或在常规评估期间针对不合规资源会显示此自定义消息。
 
 1. 选择向导顶部的“查看 + 创建”选项卡。
 

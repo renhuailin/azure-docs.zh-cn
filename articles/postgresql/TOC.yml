@@ -611,6 +611,8 @@
           items:
             - name: 监视和优化
               href: concepts-hyperscale-monitoring.md
+            - name: 审核日志
+              href: concepts-hyperscale-audit.md
         - name: 配置选项
           href: concepts-hyperscale-configuration-options.md
         - name: 为预留容量预付费

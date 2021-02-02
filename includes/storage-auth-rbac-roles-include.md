@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a4a2034d44d98de9696b435c68c97a8a54a1c351
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f014ce55dc40723faf1b60f908814f9fa0428b8e
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026023"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99214103"
 ---
 Azure 提供了以下 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予对 Blob 和队列数据的访问权限：
 
@@ -31,4 +31,4 @@ Azure 提供了以下 Azure 内置角色，用于使用 Azure AD 和 OAuth 授�
 要详细了解数据服务和管理服务的 Azure 存储的 Azure 内置角色，请参阅 [Azure RBAC 的 Azure 内置角色](../articles/role-based-access-control/built-in-roles.md#storage)的“存储”部分。 此外，若要了解 Azure 中提供权限的不同类型的角色，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 角色](../articles/role-based-access-control/rbac-and-directory-admin-roles.md)。
 
 > [!IMPORTANT]
-> Azure 角色分配最多需要 5 分钟时间来进行传播。
+> Azure 角色分配最多需要 30 分钟时间来进行传播。

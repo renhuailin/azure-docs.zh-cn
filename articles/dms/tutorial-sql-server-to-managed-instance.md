@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 210d5b06cfe417f581995ad5b356d62e1c35a6d2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 995fe7bc81b0fae75ebf93338722c21bd12bde49
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972602"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095567"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 托管实例
 
@@ -66,7 +66,7 @@ ms.locfileid: "95972602"
     >[!NOTE]
     >默认情况下，Azure 数据库迁移服务仅支持迁移 SQL 登录名。 但是，可通过以下方式启用迁移 Windows 登录名的功能：
     >
-    >- 确保目标 SQL 托管实例具有 AAD 读取访问权限，这可由具有“公司管理员”或“全局管理员”角色的用户通过 Azure 门户进行配置。
+    >- 确保目标 SQL 托管实例具有 AAD 读取访问权限，该权限可由具有“全局管理员”角色的用户通过 Azure 门户进行配置。
     >- 配置 Azure 数据库迁移服务实例以启用 Windows 用户/组登录名迁移，这通过 Azure 门户在“配置”页上进行设置。 启用此设置后，重启服务以使更改生效。
     >
     > 重启服务后，Windows 用户/组登录名将出现在可用于迁移的登录名列表中。 对于迁移的所有 Windows 用户/组登录名，系统都会提示提供关联的域名。 不支持服务用户帐户（域名为 NT AUTHORITY 的帐户）和虚拟用户帐户（域名为 NT SERVICE 的帐户）。
@@ -103,7 +103,7 @@ ms.locfileid: "95972602"
 
     ![创建 Azure 数据库迁移服务实例](media/tutorial-sql-server-to-managed-instance/dms-create1.png)
 
-3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称  。
+3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称。
 
 4. 选择要在其中创建 DMS 实例的位置。
 
@@ -154,7 +154,7 @@ ms.locfileid: "95972602"
 
    ![源详细信息](media/tutorial-sql-server-to-managed-instance/dms-source-details1.png)
 
-3. 选择“保存”  。
+3. 选择“保存” 。
 
 4. 在“选择源数据库”屏幕上，选择用于迁移的“Adventureworks2012”数据库 。
 
@@ -163,7 +163,7 @@ ms.locfileid: "95972602"
     > [!IMPORTANT]
     > 如果使用 SQL Server Integration Services (SSIS)，则 DMS 目前不支持将 SSIS 项目/包的目录数据库 (SSISDB) 从 SQL Server 迁移到 SQL 托管实例。 但是，你可以在 Azure 数据工厂 (ADF) 中预配 SSIS 并将 SSIS 项目/包重新部署到由 SQL 托管实例托管的目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](./how-to-migrate-ssis-packages.md)。
 
-5. 选择“保存”  。
+5. 选择“保存” 。
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 
@@ -173,7 +173,7 @@ ms.locfileid: "95972602"
 
     ![选择目标](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
 
-2. 选择“保存”  。
+2. 选择“保存” 。
 
 ## <a name="select-source-databases"></a>选择源数据库
 
@@ -181,7 +181,7 @@ ms.locfileid: "95972602"
 
     ![选择源数据库](media/tutorial-sql-server-to-managed-instance/select-source-databases.png)
 
-2. 选择“保存”  。
+2. 选择“保存” 。
 
 ## <a name="select-logins"></a>选择登录名
 
@@ -192,7 +192,7 @@ ms.locfileid: "95972602"
 
     ![选择登录名](media/tutorial-sql-server-to-managed-instance/select-logins.png)
 
-2. 选择“保存”  。
+2. 选择“保存” 。
 
 ## <a name="configure-migration-settings"></a>配置迁移设置
 
@@ -209,7 +209,7 @@ ms.locfileid: "95972602"
 
     ![配置迁移设置](media/tutorial-sql-server-to-managed-instance/dms-configure-migration-settings3.png)
 
-2. 选择“保存”  。
+2. 选择“保存” 。
 
 ## <a name="review-the-migration-summary"></a>查看迁移摘要
 
@@ -221,7 +221,7 @@ ms.locfileid: "95972602"
 
     ![迁移项目摘要](media/tutorial-sql-server-to-managed-instance/dms-project-summary2.png)
 
-4. 选择“保存”  。
+4. 选择“保存” 。
 
 ## <a name="run-the-migration"></a>运行迁移
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 87af99d5136a8bed93854e9396895cddeb22549a
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 68362b61aa0d919bd0e95f3cebb1cf1189f9f0f3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540470"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095169"
 ---
 ## <a name="download-and-install"></a>下载并安装
 
@@ -19,9 +19,15 @@ ms.locfileid: "98540470"
 按照以下步骤在 Windows 上安装语音 CLI：
 
 1. 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 首次安装时，可能需要重启。
-2. 下载语音 CLI [zip 存档](https://aka.ms/speech/spx-zips.zip)然后提取它。
-3. 转到提取 `spx-zips` 的目录。 此文件夹包含适用于各种平台上的语音 CLI 的程序文件。 
-4. 为平台提取文件（为 .NET Framework 4.7 提取 `spx-net471`，或为 x64 CPU 上的 .NET Core 3.0 提取 `spx-netcore-win-x64`）。 请记住，将从此目录运行 `spx`。
+1. 安装 [.NET Core 3.1](/dotnet/core/install/linux.md)。
+2. 通过输入以下命令，使用 NuGet 安装语音 CLI：
+
+    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
+
+若要查看语音 CLI 的帮助，请键入 `spx`。
+
+> [!NOTE]
+> 作为 NuGet 的替代方法，你可以下载并解压缩语音 CLI [zip 存档](https://aka.ms/speech/spx-zips.zip)，从 `spx-zips` 目录中查找并解压缩你的平台，然后将 `spx` 路径添加到 PATH 系统变量。
 
 ### <a name="run-the-speech-cli"></a>运行语音 CLI
 
@@ -43,15 +49,16 @@ ms.locfileid: "98540470"
 
 按照以下步骤在 x64 CPU 上安装 Linux 上的语音 CLI：
 
-1. 安装 [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)。
-2. 下载语音 CLI [zip 存档](https://aka.ms/speech/spx-zips.zip)然后提取它。
-3. 转到从下载中提取的根目录 `spx-zips`，并将 `spx-netcore-30-linux-x64` 提取到新 `~/spx` 目录。
-4. 在终端中，键入以下命令：
-   1. `cd ~/spx`
-   2. `sudo chmod +r+x spx`
-   3. `PATH=~/spx:$PATH`
+1. 安装 [.NET Core 3.1](/dotnet/core/install/linux.md)。
+2. 通过输入以下命令，使用 NuGet 安装语音 CLI：
+
+    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
 
 若要查看语音 CLI 的帮助，请键入 `spx`。
+
+> [!NOTE]
+> 作为 NuGet 的替代方法，你可以下载 [zip 存档](https://aka.ms/speech/spx-zips.zip)，将 `spx-netcore-30-linux-x64` 解压缩到新的 `~/spx` 目录，在二进制文件上键入 `sudo chmod +r+x spx`，然后将 `~/spx` 路径添加到 PATH 系统变量。
+
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker 安装（Windows、Linux、macOS）](#tab/dockerinstall)
 

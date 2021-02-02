@@ -11,16 +11,18 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 330bd9b78c2f550ab40f1f4f3679b6c9788ddb64
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 62dae175b529bd54b2f139eece89bbde6f98cd38
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859353"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055002"
 ---
 # <a name="get-all-application-proxy-apps-and-list-extended-information"></a>获取所有应用程序代理应用并列出扩展信息
 
-在该 PowerShell 脚本示例中，可找到所有 Azure Active Directory (Azure AD) 应用程序代理应用程序的相关信息，包括应用程序 ID (AppId)、名称 (DisplayName)、外部 URL (ExternalUrl)、内部 URL (InternalUrl) 和身份验证类型 (ExternalAuthenticationType)。
+在该 PowerShell 脚本示例中，可找到所有 Azure Active Directory (Azure AD) 应用程序代理应用程序的相关信息，包括应用程序 ID (AppId)、名称 (DisplayName)、外部 URL (ExternalUrl)、内部 URL (InternalUrl)、身份验证类型 (ExternalAuthenticationType)、SSO 模式以及更多的设置。
+
+通过更改 $ssoMode 变量的值，可按 SSO 模式筛选输出。 脚本中提供了更多详细信息。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +30,7 @@ ms.locfileid: "96859353"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-此示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块](/powershell/azure/active-directory/install-adv2) (AzureAD) 或[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview)。
+此示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块](/powershell/azure/active-directory/install-adv2) (AzureAD)。
 
 ## <a name="sample-script"></a>示例脚本
 

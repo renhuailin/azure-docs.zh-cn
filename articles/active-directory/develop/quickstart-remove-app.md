@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 24c29d34c14e6237bc79e38741ea244da5429e9e
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 12074b6dc5d27c0d28ceea5ab6d266d1f02ecbe2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754562"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938177"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>如何删除注册到 Microsoft 标识平台的应用程序
 
@@ -37,7 +37,7 @@ ms.locfileid: "98754562"
 
 由你或你的组织注册的应用程序是由租户中的应用程序对象与服务主体对象表示的。 有关详细信息，请参阅[应用程序对象和服务主体对象](./app-objects-and-service-principals.md)。
 
-若要删除应用程序，你必须是应用程序的所有者或者具有管理员权限。
+若要删除应用程序，你需被列为应用程序的所有者或者具有管理员权限。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。

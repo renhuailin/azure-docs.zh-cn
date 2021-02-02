@@ -1,14 +1,14 @@
 ---
 title: 蓝图示例的索引
 description: 用于通过 Azure 蓝图部署环境、策略和云采用框架基础的符合性和标准示例的索引。
-ms.date: 01/27/2021
+ms.date: 02/01/2021
 ms.topic: sample
-ms.openlocfilehash: 7865a3ea5be374f36de70e62c7bc215fc88d04a5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 17bacecf8fcf7c0f1969a489561a3a3ac976872e
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915686"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225135"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -28,7 +28,7 @@ ms.locfileid: "98915686"
 | [FedRAMP High](./fedramp-h/index.md) | 提供了一组策略以帮助符合 FedRAMP High。 |
 | [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md) | 提供了一组有助于符合 HIPAA HITRUST 的策略。 |
 | [IRS 1075](./irs-1075/index.md) | 提供可帮助符合 IRS 1075 的规范措施。|
-| [ISO 27001](./iso27001/index.md) | 提供可帮助符合 ISO 27001 的规范措施。 |
+| [ISO 27001](./iso-27001-2013.md) | 提供可帮助符合 ISO 27001 的规范措施。 |
 | [ISO 27001 共享服务](./iso27001-shared/index.md) | 提供了一组符合标准的基础结构模式和策略防护机制，以便帮助通过 ISO 27001 认证。 |
 | [ISO 27001 应用服务环境/SQL 数据库工作负荷](./iso27001-ase-sql-workload/index.md) | 为 [ISO 27001 共享服务](./iso27001-shared/index.md)蓝图示例提供了更多基础结构。 |
 | [介质](./media/index.md) | 提供了一组策略以帮助符合媒体 MPAA。 |

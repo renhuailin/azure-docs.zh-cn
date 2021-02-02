@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/30/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 图像识别, 图像识别应用, 自定义视觉
-ms.openlocfilehash: b27864fc1fd1f94f99fccacd90a66120e6d044c4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 5ecd5fee565a8d31e0ff05f3b234771446242d02
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132573"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221289"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>快速入门：使用“自定义视觉”网站生成对象检测器
 
@@ -70,7 +70,7 @@ ms.locfileid: "98132573"
 
 在本部分，你将上传图像并手动标记图像来帮助训练检测器。 
 
-1. 若要添加图像，请单击“添加图像”按钮，然后选择“浏览本地文件”。 选择“打开”以上传图像。
+1. 若要添加图像，请选择“添加图像”，然后选择“浏览本地文件” 。 选择“打开”以上传图像。
 
     ![添加图像控件位于左上角，以按钮形式显示在底部中央。](./media/get-started-build-detector/add-images.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "98132573"
 
     ![“未标记”部分中已上传的图像](./media/get-started-build-detector/images-untagged.png)
 
-1. 单击并拖动图像中对象周围的矩形。 然后，使用 **+** 按钮输入新的标记名称，或者从下拉列表中选择现有的标记。 必须标记要检测的对象的每个实例，这一点非常重要，因为检测器在训练中使用未标记的背景区域作为负面示例。 完成标记后，单击右侧的箭头保存标记并转到下一个图像。
+1. 单击并拖动图像中对象周围的矩形。 然后，使用 **+** 按钮输入新的标记名称，或者从下拉列表中选择现有的标记。 请务必标记要检测的对象的每个实例，因为检测器在训练中使用未标记的背景区域作为负面示例。 完成标记后，单击右侧的箭头保存标记并转到下一个图像。
 
     ![使用矩形选择控件来标记对象](./media/get-started-build-detector/image-tagging.png)
 
