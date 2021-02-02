@@ -11,15 +11,16 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 02/01/2021
-ms.openlocfilehash: d11125ed00491f87844c7b0b344473825ad52a99
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 02/02/2021
+ms.openlocfilehash: 63816a40aa710d26dc036dfe82018883e917beb6
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223468"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428464"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Microsoft Dynamics 365 和 Microsoft Dynamics CRM 复制数据。 它基于[复制活动概述](copy-activity-overview.md)一文，该文概述了复制活动。
@@ -88,7 +89,7 @@ Dynamics 链接服务支持以下属性。
 | servicePrincipalCredential | 服务主体凭据。 <br/><br/>使用“ServicePrincipalKey”作为凭据类型时，`servicePrincipalCredential` 可以是 Azure 数据工厂在部署链接服务时加密的字符串。 它也可以是对 Azure Key Vault 中机密的引用。 <br/><br/>使用“ServicePrincipalCert”作为凭据时，`servicePrincipalCredential` 必须是对 Azure Key Vault 中证书的引用。 | 当身份验证为“AADServicePrincipal”时，此项为必需的 |
 | username | 用于连接到 Dynamics 的用户名。 | 当身份验证为“Office365”时，此项为必需的 |
 | password | 作为用户名指定的用户帐户的密码。 将此字段标记为“SecureString”以将其安全地存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 当身份验证为“Office365”时，此项为必需的 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定任何值，则此属性使用默认的 Azure 集成运行时。 | 对于源非必需，对于接收器为必需的（如果源链接服务没有集成运行时） |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定任何值，则此属性使用默认的 Azure 集成运行时。 | 否 |
 
 >[!NOTE]
 >Dynamics 连接器以前使用可选的 **organizationName** 属性来标识 Dynamics CRM 或 Dynamics 365 联机实例。 虽然该属性仍然有效，但建议你改为指定新的 **serviceUri** 属性以实现更好的实例发现性能。
@@ -184,7 +185,7 @@ Dynamics 链接服务支持以下属性。
 | authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 对于带有 IFD 的本地 Dynamics，请指定“Ifd”。 | 是的。 |
 | username | 用于连接到 Dynamics 的用户名。 | 是的。 |
 | password | 指定为用户名的用户帐户的密码。 可以将此字段标记为“SecureString”，以便安全地将其存储在数据工厂中。 也可将密码存储在 Key Vault 中，让复制活动在进行数据复制时从其中拉取密码。 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 是的。 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定任何值，则此属性使用默认的 Azure 集成运行时。 | 对于源非必需，对于接收器为必需的。 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定任何值，则此属性使用默认的 Azure 集成运行时。 | 否 |
 
 #### <a name="example-dynamics-on-premises-with-ifd-using-ifd-authentication"></a>示例：带有 IFD 且使用 IFD 身份验证的本地 Dynamics
 

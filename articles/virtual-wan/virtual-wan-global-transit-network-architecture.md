@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 59e60dadda7c0de37cfabadbc36ca53bc3c2b336
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: cfb75b6383d8ca449b4bc54b9d21cb16b3a4ad40
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563726"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428177"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全局传输网络体系结构和虚拟 WAN
 
@@ -29,7 +29,7 @@ ms.locfileid: "94563726"
 
 ![中心和辐射](./media/virtual-wan-global-transit-network-architecture/figure1.png)
 
-图 1： **全局传输中心辐射型网络**
+图 1：**全局传输中心辐射型网络**
 
 图 1 显示了全局传输网络的逻辑视图，其中的地理分散式用户、物理站点和 VNet 通过云中托管的网络中心互连。 此体系结构可在网络终结点之间实现逻辑单跃点传输连接。
 
@@ -41,7 +41,7 @@ Azure 虚拟 WAN 支持在 VNet 中的全局分布式云工作负荷集、分支
 
 ![Azure 虚拟 WAN](./media/virtual-wan-global-transit-network-architecture/figure2.png)
 
-图 2： **全局传输网络和虚拟 WAN**
+图 2：**全局传输网络和虚拟 WAN**
 
 在 Azure 虚拟 WAN 体系结构中，虚拟 WAN 中心在可将分支、VNet 和远程用户连接到的 Azure 区域中预配。 物理分支站点通过高级/标准 ExpressRoute 或站点到站点 VPN 连接到中心，VNet 通过 VNet 连接连接到中心，远程用户可以使用用户 VPN（点到站点 VPN）直接连接到中心。 虚拟 WAN 还支持跨区域 VNet 连接，其中，一个区域中的 VNet 可以连接到另一个区域中的虚拟 WAN 中心。
 
@@ -53,7 +53,7 @@ Azure 虚拟 WAN 支持在 VNet 中的全局分布式云工作负荷集、分支
 
 ![跨区域](./media/virtual-wan-global-transit-network-architecture/figure3.png)
 
-图 3： **虚拟 WAN 跨区域连接**
+图 3：**虚拟 WAN 跨区域连接**
 
 在单个虚拟 WAN 中启用多个中心时，中心将通过中心到中心的链接自动互连，从而在跨多个区域分布的分支与 VNet 之间实现全局连接。 
 
@@ -67,7 +67,7 @@ Azure 虚拟 WAN 支持在 VNet 中的全局分布式云工作负荷集、分支
 
 ![任意点到任意点](./media/virtual-wan-global-transit-network-architecture/figure4.png)
 
-图 4： **虚拟 WAN 流量路径**
+图 4：**虚拟 WAN 流量路径**
 
 Azure 虚拟 WAN 支持以下全局传输连接路径。 括号中的字母对应于图 4 中的标识。
 
@@ -131,10 +131,7 @@ Azure 虚拟 WAN 中心将互连整个混合网络中的所有网络终结点，
 
 ![使用 Azure 防火墙的安全虚拟中心](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
-图 5： **使用 Azure 防火墙的安全虚拟中心**
-
-> [!NOTE]
-> 当前不支持在中心间配置防火墙。 中心之间的流量将直接绕过每个中心的 Azure 防火墙移动。
+图 5：**使用 Azure 防火墙的安全虚拟中心**
 
 虚拟 WAN 的 Azure 防火墙支持以下全局安全传输连接路径。 括号中的字母对应于图 5 中的标识。
 
@@ -152,6 +149,23 @@ VNet 到 Internet 使 VNet 能够通过虚拟 WAN 中心内的 Azure 防火墙�
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>分支到 Internet 或第三方安全服务 (j)
 分支到 Internet 使分支能够通过虚拟 WAN 中心内的 Azure 防火墙连接到 Internet。 通过受支持的第三方安全服务流向 Internet 的流量不会流经 Azure 防火墙。 可以使用 Azure 防火墙管理器通过受支持的第三方安全服务配置分支到 Internet 的路径。 
+
+### <a name="branch-to-branch-secured-transit-cross-region-f"></a>分支到分支安全传输跨区域 (f) 
+
+可以使用 ExpressRoute 线路和/或站点到站点 VPN 连接将分支连接到受保护的虚拟中心和 Azure 防火墙。 可将分支连接到其最靠近的区域中的虚拟 WAN 中心。
+
+企业可以通过此选项来利用 Azure 主干网连接分支。 但是，尽管可以此功能，应该权衡通过 Azure 虚拟 WAN 与通过专用 WAN 连接分支的利弊。  
+
+> [!NOTE]
+> 当前不支持通过防火墙对流量进行中心间处理。 中心之间的流量将路由到受保护虚拟中心内的适当分支，但流量将绕过每个中心中的 Azure 防火墙。
+
+### <a name="branch-to-vnet-secured-transit-g"></a>分支到 VNet 安全传输 (g) 
+
+分支到 VNet 安全传输使分支能够与虚拟 WAN 集线器位于同一区域的虚拟网络以及另一个连接到其他区域中的另一个虚拟 WAN 中心的虚拟网络进行通信。
+
+> [!NOTE]
+> 当前不支持在中心间配置防火墙。 中心之间的流量将直接绕过每个中心的 Azure 防火墙移动。  通过连接到同一区域中某个虚拟网络的连接的流量将由受保护的中心内的 Azure 防火墙处理。
+
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>如何在安全虚拟中心中启用默认路由 (0.0.0.0/0)
 

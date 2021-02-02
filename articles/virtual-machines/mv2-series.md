@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 7ef4a1542a050918249f602bbc63567cc8e13f2a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 962fb8cbd4c64aa2ef625b478afa587099234617
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091708"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427628"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
@@ -24,7 +24,7 @@ Mv2 系列 VM 的 Intel® Hyper-Threading 技术
 [高级存储缓存](premium-storage-performance.md)：支持<br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
-[VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
+[VM 生成支持](generation-2.md)：第2代<br>
 [写入加速器](./how-to-enable-write-accelerator.md)：支持<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>

@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.date: 06/02/2020
-ms.openlocfilehash: aa1246a65dc6971107abe35f4a418b0bbb05641b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 02/01/2021
+ms.openlocfilehash: c3366b7ba0eb0b49d4d5b89481b7bed843e52c8e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486124"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428985"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure 数据工厂中的管理中心
 
@@ -40,7 +40,11 @@ ms.locfileid: "96486124"
 
 ### <a name="git-configuration"></a>Git 配置
 
-查看和编辑管理中心内配置的 git 存储库设置。 有关详细信息，请参阅 [Azure 数据工厂中的源代码管理](source-control.md)。
+你可以在管理中心的 Git 配置设置下查看/编辑所有与 Git 相关的信息。 
+
+最后发布的提交信息也会列出，有助于了解在环境中最后发布/部署的精确提交。 在生产环境中执行热修复时，此操作也很有用。
+
+有关详细信息，请参阅 [Azure 数据工厂中的源代码管理](source-control.md)。
 
 ![管理 git 存储库](media/author-management-hub/management-hub-git.png)
 

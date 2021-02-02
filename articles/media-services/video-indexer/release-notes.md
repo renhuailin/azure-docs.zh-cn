@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 01/06/2021
+ms.date: 02/01/2021
 ms.author: juliako
-ms.openlocfilehash: b6e18e077b717da65ca8d70b9bda6a133dba1f5c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: c0d332c00635444ab4d694e46486a498b43137f2
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120081"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427646"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -30,7 +30,23 @@ ms.locfileid: "98120081"
 * Bug 修复
 * 已弃用的功能
 
-##  <a name="december-2020"></a>2020 年 12 月
+## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="video-indexer-is-deployed-on-us-government-cloud"></a>在美国政府云上部署视频索引器 
+
+你现在可以在弗吉尼亚州和亚利桑那地区的美国政府云上创建视频索引器付费帐户。 视频索引器免费试用产品/服务在提到的区域中不可用。 有关详细信息，请参阅视频索引器文档。 
+
+### <a name="video-indexer-deployed-in-the-india-central-region"></a>在印度中部区域部署的视频索引器 
+
+现在可以在印度中心区域创建视频索引器付费帐户。 
+
+### <a name="new-dark-mode-for-the-video-indexer-website-experience"></a>视频索引器网站体验的新深色模式
+
+视频索引器网站体验现在以深色模式提供。 若要启用暗色模式，请打开 "设置" 面板，然后在 " **深色模式** " 选项上切换。 
+
+:::image type="content" source="./media/release-notes/dark-mode.png" alt-text="深色模式设置":::
+
+## <a name="december-2020"></a>2020 年 12 月
 
 ### <a name="video-indexer-deployed-in-the-switzerland-west-and-switzerland-north"></a>瑞士西部和瑞士北部中部署的视频索引器
 

@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: 36eac4c60e0d7fd54ec304f0f17c2ecb454f0629
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: ce37e26730fbef9e5e40fd95190727062f9044ac
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063399"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428917"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>将数据工厂连接到 Azure 监控范围 (预览) 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -36,7 +36,7 @@ Azure 监控范围是一项新的云服务，可供数据用户集中管理跨�
 3. 连接后，你应该能够在选项卡 **监控范围帐户** 中看到监控范围帐户的名称。 
 4. 可以使用 Azure 数据工厂门户顶部中心的搜索栏来搜索数据。 
 
-如果在将 Azure 监控范围帐户注册到数据工厂后在 Azure 数据因素门户中看到警告，请按照以下步骤解决此问题：
+如果在将 Azure 监控范围帐户注册到数据工厂后在 Azure 数据工厂门户中看到警告，请按照以下步骤解决此问题：
 
 :::image type="content" source="./media/data-factory-purview/register-purview-account-warning.png" alt-text="有关注册监控范围帐户的警告的屏幕截图。":::
 

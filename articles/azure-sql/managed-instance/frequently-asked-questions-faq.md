@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: d3f859590b30aaeeaebaed7b1f2f85e1a86a92c9
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: f58811411a447eae4ff9a5c0fd2a9888b4a39a34
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223400"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428667"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题解答 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -363,14 +363,7 @@ SQL 托管实例负责对管理端口设置规则。 这通过名为[服务辅�
 
 **是否可以执行 DNS 刷新？**
 
-是的。 请参阅 [在 SQL 托管实例虚拟群集上同步虚拟网络 DNS 服务器设置](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md)。
-
-DNS 配置最终会刷新：
-
-- 当 DHCP 租约过期时。
-- 平台升级时。
-
-一种解决方法是将 SQL 托管实例降级为 4 个 vCore，然后再将其升级。 这样刷新 DNS 配置会产生一种负面影响。
+可以。 请参阅 [在 SQL 托管实例虚拟群集上同步虚拟网络 DNS 服务器设置](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md)。
 
 ## <a name="change-time-zone"></a>更改时区
 

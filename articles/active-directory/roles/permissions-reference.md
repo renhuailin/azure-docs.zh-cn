@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 01/29/2020
+ms.date: 02/01/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f0c8d237e270177ef38c60c523364054bae15af
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: da85c80dd6450fd4427f83586e75cf1e9d62a605
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090852"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428768"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -69,15 +69,9 @@ ms.locfileid: "99090852"
 
 ### <a name="authentication-administrator"></a>[身份验证管理员](#authentication-administrator-permissions)
 
-具有此角色的用户可以为某些用户设置或重置非密码凭据，并且可以更新所有用户的密码。 身份验证管理员可以要求非管理员用户或分配给某些角色的用户使用现有的非密码凭据（例如，MFA 或 FIDO）重新注册，还可以撤销“在设备上记住 MFA”，这样系统就会在用户下次登录时提示其进行 MFA。 这些操作仅适用于非管理员用户或分配了一个或多个以下角色的用户：
+具有此角色的用户可以为某些用户设置或重置非密码凭据，并且可以更新所有用户的密码。 身份验证管理员可以要求非管理员用户或分配给某些角色的用户使用现有的非密码凭据（例如，MFA 或 FIDO）重新注册，还可以撤销“在设备上记住 MFA”，这样系统就会在用户下次登录时提示其进行 MFA。 身份验证管理员是否可以重置用户的密码取决于该用户分配的角色。 有关身份验证管理员可为其重置密码的角色的列表，请参阅 [密码重置权限](#password-reset-permissions)。
 
-* 身份验证管理员
-* 目录读者
-* 来宾邀请者
-* 消息中心读取者
-* 报告读者
-
-[特权身份验证管理员](#privileged-authentication-administrator)角色有权强制针对所有用户进行的重新注册和多重身份验证操作。
+[特权身份验证管理员](#privileged-authentication-administrator)角色有权为所有用户强制重新注册和多重身份验证。
 
 > [!IMPORTANT]
 > 具有此角色的用户可以更改可能有权访问 Azure Active Directory 内外敏感或私有信息或关键配置的用户的凭据。 更改用户的凭据可能意味着假定用户标识和权限的能力。 例如：
@@ -253,14 +247,7 @@ In | 有权执行的操作
 
 ### <a name="helpdesk-administrator"></a>[支持管理员](#helpdesk-administrator-permissions)
 
-具有此角色的用户可以更改密码、使刷新令牌失效、管理服务请求和监视服务运行状况。 使刷新令牌失效会强制用户重新登录。 对于非管理员或仅分配有以下角色的其他用户，支持管理员可以重置其密码，以及使其刷新令牌失效：
-
-* 目录读者
-* 来宾邀请者
-* 支持管理员
-* 消息中心读取者
-* 密码管理员
-* 报告读者
+具有此角色的用户可以更改密码、使刷新令牌失效、管理服务请求和监视服务运行状况。 使刷新令牌失效会强制用户重新登录。 支持人员管理员是否可以重置用户的密码并使刷新令牌无效取决于用户分配的角色。 有关支持管理员可以为其重置密码和使刷新令牌无效的角色的列表，请参阅 [密码重置权限](#password-reset-permissions)。
 
 > [!IMPORTANT]
 > 具有此角色的用户可以更改可能有权访问 Azure Active Directory 内外敏感或私有信息或关键配置的用户的密码。 更改用户的密码可能意味着假定用户标识和权限的能力。 例如：
@@ -271,7 +258,7 @@ In | 有权执行的操作
 >- Azure AD 之外的其他服务中的管理员，如 Exchange Online、Office 安全与合规中心以及人力资源系统。
 >- 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
 
-使用[管理单元（现已公开预览）](administrative-units.md)，可以委派对一部分用户的管理权限并将策略应用于一部分用户。
+可以通过 [管理单元](administrative-units.md)委托用户子集的管理权限，并将策略应用到部分用户。
 
 在 [Azure 门户](https://portal.azure.com/)中，此角色以前称为“密码管理员”。 Azure AD 中的“支持管理员”名称现在与其在 Azure AD PowerShell 和 Microsoft Graph API 中的名称匹配。
 
@@ -344,11 +331,7 @@ In | 有权执行的操作
 
 ### <a name="password-administrator"></a>[密码管理员](#password-administrator-permissions)
 
-具有此角色的用户可以管理密码，但权限受限。 此角色不会授予管理服务请求或监视服务运行状况的能力。 密码管理员只能重置其他非管理员用户的密码，或具有以下角色的成员的密码：
-
-* 目录读者
-* 来宾邀请者
-* 密码管理员
+具有此角色的用户可以管理密码，但权限受限。 此角色不会授予管理服务请求或监视服务运行状况的能力。 密码管理员是否可以重置用户的密码取决于该用户分配的角色。 有关密码管理员可为其重置密码的角色的列表，请参阅 [密码重置权限](#password-reset-permissions)。
 
 ### <a name="power-bi-administrator"></a>[Power BI 管理员](#power-bi-service-administrator-permissions)
 
@@ -371,13 +354,7 @@ In | 有权执行的操作
 
 ### <a name="privileged-authentication-administrator"></a>[特权身份验证管理员](#privileged-authentication-administrator-permissions)
 
-具有此角色的用户可以为所有用户（包括全局管理员）设置或重置非密码凭据，并可以更新所有用户的密码。 特权身份验证管理员可以强制用户使用现有的非密码凭据（例如 MFA 或 FIDO）重新注册，以及撤销“在设备上记住 MFA”，让系统在所有用户下次登录时提示其执行 MFA。 [身份验证管理员](#authentication-administrator)角色仅可对非管理员用户和分配了以下 Azure AD 角色的用户强制进行重新注册和 MFA：
-
-* 身份验证管理员
-* 目录读者
-* 来宾邀请者
-* 消息中心读取者
-* 报告读者
+具有此角色的用户可以为所有用户（包括全局管理员）设置或重置非密码凭据，并可以更新所有用户的密码。 特权身份验证管理员可以强制用户使用现有的非密码凭据（例如 MFA 或 FIDO）重新注册，以及撤销“在设备上记住 MFA”，让系统在所有用户下次登录时提示其执行 MFA。
 
 ### <a name="privileged-role-administrator"></a>[特权角色管理员](#privileged-role-administrator-permissions)
 
@@ -500,11 +477,12 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 具有此角色的用户可以创建用户并管理用户的所有方面（存在一些限制，具体请参阅下表），还可以更新密码过期策略。 此外，具有此角色的用户可以创建和管理所有组。 此角色还能够创建和管理用户视图、管理支持票证和监视服务运行状况。 用户管理员无权管理充当大部分管理员角色的用户的某些用户属性。 具有此角色的用户无权管理 MFA。 下表列出了不存在这种限制的角色。
 
-| **权限** | **有权执行的操作** |
+| 用户管理员权限 | 说明 |
 | --- | --- |
-|常规权限|<p>创建用户和组</p><p>创建和管理用户视图</p><p>管理 Office 支持票证<p>更新密码过期策略|
-| <p>适用于所有用户，包括所有管理员</p>|<p>管理许可证</p><p>管理除用户主体名称之外的所有用户属性</p>
-| 仅适用于不是管理员或具有以下任一管理员角色（权限有限）的用户：<ul><li>目录读者<li>组管理员<li>来宾邀请者<li>支持管理员<li>消息中心读取者<li>密码管理员<li>报告读者<li>用户管理员|<p>删除和还原</p><p>禁用和启用</p><p>使刷新令牌失效</p><p>管理包括用户主体名称在内的所有用户属性</p><p>重置密码</p><p>更新 (FIDO) 设备密钥</p>|
+| 创建用户和组<br/>创建和管理用户视图<br/>管理 Office 支持票证<br/>更新密码过期策略 |  |
+| 管理许可证<br/>管理除用户主体名称之外的所有用户属性 | 适用于所有用户（包括所有管理员） |
+| 删除和还原<br/>禁用和启用<br/>管理包括用户主体名称在内的所有用户属性<br/>更新 (FIDO) 设备密钥 | 适用于非管理员用户或以下任意角色的用户：<ul><li>支持管理员</li><li>无角色的用户</li><li>用户管理员</li></ul> |
+| 使刷新令牌失效<br/>重置密码 | 有关用户管理员可以为其重置密码和使刷新令牌无效的角色的列表，请参阅 [密码重置权限](#password-reset-permissions)。 |
 
 > [!IMPORTANT]
 > 具有此角色的用户可以更改可能有权访问 Azure Active Directory 内外敏感或私有信息或关键配置的用户的密码。 更改用户的密码可能意味着假定用户标识和权限的能力。 例如：
@@ -572,6 +550,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+| microsoft.office365.webPortal/allEntities/standard/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 ### <a name="application-developer-permissions"></a>应用程序开发人员权限
 
@@ -647,6 +626,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+| microsoft.office365.webPortal/allEntities/standard/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>B2C IEF 密钥集管理员权限
 
@@ -725,6 +705,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+| microsoft.office365.webPortal/allEntities/standard/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 ### <a name="cloud-device-administrator-permissions"></a>云设备管理员权限
 
@@ -2052,7 +2033,7 @@ Teams 管理员 | Teams 管理员 | 69091246-20e8-4a56-aa4d-066075b2a7a8
 
 Azure 门户中不一定会显示 PowerShell 或 MS Graph API 返回的每个角色。 下表整理了这些差异。
 
-API 名称 | Azure 门户中的名称 | 注释
+API 名称 | Azure 门户中的名称 | 说明
 -------- | ------------------- | -------------
 设备联接 | 不推荐使用 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
 设备管理器 | 不推荐使用 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
@@ -2064,6 +2045,31 @@ API 名称 | Azure 门户中的名称 | 注释
 受限来宾用户 | 未显示，因为无法使用它 | NA
 用户 | 未显示，因为无法使用它 | NA
 工作区设备联接 | 不推荐使用 | [已弃用角色的文档](permissions-reference.md#deprecated-roles)
+
+## <a name="password-reset-permissions"></a>密码重置权限
+
+列标题表示可以重置密码的角色。 表行包含其密码可以重置的角色。
+
+可以重置密码 | 身份验证管理员 | 支持管理员 | 密码管理员 | 用户管理员 | 特权身份验证管理员 | 全局管理员
+------ | ------ | ------ | ------ | ------ | ------ | ------
+身份验证管理员 | :heavy_check_mark: | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+目录读者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+全局管理员 | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:\*
+组管理员 | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+来宾 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+来宾邀请者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+支持管理员 | &nbsp; | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+消息中心读取者 | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+密码管理员 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+特权身份验证管理员 | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+特权角色管理员 | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+报告读者 | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+受限来宾 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+不 (管理员角色的用户)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+用户管理员 | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+使用情况摘要报表读取者 | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+
+\* 全局管理员无法删除自己的全局管理员分配。 这是为了防止组织有0个全局管理员的情况。
 
 ## <a name="next-steps"></a>后续步骤
 

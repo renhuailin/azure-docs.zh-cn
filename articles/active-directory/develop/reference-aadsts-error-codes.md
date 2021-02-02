@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: fa6fc11441811589967ddd7728501b521f9f9155
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b948de6ad9e07a650df98ef38104c02462ab532d
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169267"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428025"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -74,7 +74,7 @@ ms.locfileid: "96169267"
 ## <a name="lookup-current-error-code-information"></a>查找当前错误代码信息
 错误代码和消息可能会更改。  有关最新信息，请查看 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) 页，以查找 AADSTS 错误说明、修复程序和一些建议的解决方法。  
 
-例如，如果收到错误代码 "AADSTS50058"，则在中搜索 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "50058"。  还可以通过将错误代码编号添加到 URL [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058) 来直接链接到特定错误。
+例如，如果收到错误代码“AADSTS50058”，则在 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) 中搜索“50058”。  还可以通过将错误代码编号添加到 URL [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058) 来直接链接到特定错误。
 
 ## <a name="aadsts-error-codes"></a>AADSTS 错误代码
 
@@ -95,6 +95,7 @@ ms.locfileid: "96169267"
 | AADSTS50000 | TokenIssuanceError - 登录服务出现问题。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)以解决此问题。 |
 | AADSTS50001 | InvalidResource - 资源已禁用或不存在。 请检查应用代码，确保为尝试访问的资源指定了确切的资源 URL。  |
 | AADSTS50002 | NotAllowedTenant - 由于租户中的代理访问权限受限，登录失败。 如果这是你自己的租户策略，可以更改受限的租户设置来解决此问题。 |
+| AADSTS500021 | 拒绝访问 "{tenant}" 租户。 AADSTS500021 指示已配置租户限制功能，并且用户正在尝试访问不在标头中指定的允许租户列表中的租户 `Restrict-Access-To-Tenant` 。 有关详细信息，请参阅 [使用租户限制管理对 SaaS 云应用程序的访问](/azure/active-directory/manage-apps/tenant-restrictions)。|
 | AADSTS50003 | MissingSigningKey - 由于缺少签名密钥或证书，登录失败。 这可能是因为应用中未配置任何签名密钥。 查看中概述的分辨率 [。/manage-apps/application-sign-in-problem-federated-sso-gallery.md # 未配置证书](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured)。 如果仍然出现问题，请联系应用所有者或应用管理员。 |
 | AADSTS50005 | DevicePolicyError - 用户尝试从条件访问策略目前不支持的平台登录到设备。 |
 | AADSTS50006 | InvalidSignature - 由于签名无效，签名验证失败。 |
@@ -251,7 +252,7 @@ ms.locfileid: "96169267"
 | AADSTS90051 | InvalidNationalCloudId - 国家云标识符包含无效的云标识符。 |
 | AADSTS90055 | TenantThrottlingError - 传入的请求过多。 此异常是针对阻止的租户引发的。 |
 | AADSTS90056 | BadResourceRequest - 若要兑换访问令牌的代码，应用应该向 `/token` 终结点发送 POST 请求。 另外，在此之前，应该提供授权代码，并在发往 `/token` 终结点的 POST 请求中发送此代码。 有关 OAuth 2.0 授权代码流的概述，请参阅此文：[../azuread-dev/v1-protocols-oauth-code.md](../azuread-dev/v1-protocols-oauth-code.md)。 将用户定向到 `/authorize` 终结点，该终结点会返回 authorization_code。 通过向 `/token` 终结点发布请求，用户可以获取访问令牌。 在 Azure 门户中登录，并检查“应用注册”>“终结点”以确认是否正确配置了两个终结点。 |
-| AADSTS90072 | PassThroughUserMfaError - 用户登录时所用的外部帐户在其登录到的租户中不存在；因此，该用户无法满足该租户的 MFA 要求。 如果用户已同步，但在 Active Directory 和 Azure AD 之间的 ImmutableID (sourceAnchor) 属性中存在不匹配，也可能会发生此错误。 必须先将该帐户作为外部用户添加到该租户中。 请注销并使用其他 Azure AD 用户帐户登录。 |
+| AADSTS90072 | PassThroughUserMfaError - 用户登录时所用的外部帐户在其登录到的租户中不存在；因此，该用户无法满足该租户的 MFA 要求。 如果用户已同步，但是 Active Directory 和 Azure AD 之间的 ImmutableID (sourceAnchor) 属性不匹配，也可能会发生此错误。 必须先将该帐户作为外部用户添加到该租户中。 请注销并使用其他 Azure AD 用户帐户登录。 |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid - 服务尝试处理 WS 联合身份验证消息时出错。 消息无效。 |
 | AADSTS90082 | OrgIdWsFederationNotSupported - 目前不支持对该请求使用所选的身份验证策略。 |
 | AADSTS90084 | OrgIdWsFederationGuestNotAllowed - 此站点不允许来宾帐户。 |

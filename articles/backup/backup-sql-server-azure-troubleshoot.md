@@ -3,12 +3,12 @@ title: 排查 SQL Server 数据库备份问题
 description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Server 数据库的故障排除信息。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: d502a4188b4f9f383188804f86abbb9a6d05d146
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733907"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429460"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>排查使用 Azure 备份进行 SQL Server 数据库备份的问题
 
@@ -56,18 +56,18 @@ ms.locfileid: "97733907"
 
 1. SQL 还提供了一些有关使用防病毒程序的指南。 有关详细信息，请参阅[此文](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server)。
 
-## <a name="faulty-instance-in-a-vm-with-multiple-sql-server-instances"></a>VM 中具有多个 SQL Server 实例的出错实例
+## <a name="faulty-instance-in-a-vm-with-multiple-sql-server-instances"></a>具有多个 SQL Server 实例的 VM 中的故障实例
 
-仅当在 VM 内运行的所有 SQL 实例都报告为正常时，才能还原到 SQL VM。 如果一个或多个实例 "出错"，则 VM 不会显示为还原目标。 这可能是因为在还原操作期间多实例 VM 可能不会出现在 "服务器" 下拉列表中。
+仅当在 VM 内运行的所有 SQL 实例都报告为正常时，才能还原到 SQL VM。 如果一个或多个实例“出现故障”，则 VM 不会显示为还原目标。 这可能是在还原操作期间多实例 VM 可能不会显示在“服务器”下拉列表中的一个原因。
 
-你可以在 " **配置备份**" 下验证 VM 中所有 SQL 实例的 "备份准备情况"：
+可以在“配置备份”下验证 VM 中所有 SQL 实例的“备份就绪情况”：
 
-![验证备份准备情况](./media/backup-sql-server-azure-troubleshoot/backup-readiness.png)
+![验证备份就绪情况](./media/backup-sql-server-azure-troubleshoot/backup-readiness.png)
 
-如果要在运行状况良好的 SQL 实例上触发还原操作，请执行以下步骤：
+如果要在正常运行的 SQL 实例上触发还原操作，请执行以下步骤：
 
-1. 登录到 SQL VM，并浏览到 `C:\Program Files\Azure Workload Backup\bin` 。
-1. 创建一个名为 (的 JSON 文件（ `ExtensionSettingsOverrides.json` 如果它尚不存在) ）。 如果此文件已存在于 VM 上，请继续使用它。
+1. 登录到 SQL VM，并转到 `C:\Program Files\Azure Workload Backup\bin`。
+1. 创建名为 `ExtensionSettingsOverrides.json` 的 JSON 文件（如果它尚不存在）。 如果此文件已存在于 VM 中，请继续使用它。
 1. 在 JSON 文件中添加以下内容，并保存该文件：
 
     ```json
@@ -84,11 +84,11 @@ ms.locfileid: "97733907"
 
     ```
 
-1. 在受影响的服务器上，从 Azure 门户触发重新 **发现** 数据库操作 (可以) 查看备份准备情况的同一位置。 VM 将作为还原操作的目标出现。
+1. 在 Azure 门户中受影响的服务器上（可以看到备份就绪情况的同一位置）触发“重新发现 DB”操作。 VM 将作为还原操作的目标出现。
 
-    ![重新发现数据库](./media/backup-sql-server-azure-troubleshoot/rediscover-dbs.png)
+    ![重新发现 DB](./media/backup-sql-server-azure-troubleshoot/rediscover-dbs.png)
 
-1. 还原操作完成后，从 ExtensionSettingsOverrides.js的文件中删除 *whitelistedInstancesForInquiry* 条目。
+1. 还原操作完成后，从 ExtensionSettingsOverrides.json 文件中删除 whitelistedInstancesForInquiry 条目。
 
 ## <a name="error-messages"></a>错误消息
 
@@ -217,7 +217,7 @@ ms.locfileid: "97733907"
 
   - 缺少在 VM 上执行备份相关操作的权限。
   - VM 已关闭，因此备份无法进行。
-  - 网络问题。
+  - [网络问题](#usererrorvminternetconnectivityissue)
 
    ![重新注册 VM](./media/backup-azure-sql-database/re-register-vm.png)
 

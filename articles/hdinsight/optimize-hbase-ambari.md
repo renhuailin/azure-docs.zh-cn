@@ -3,13 +3,13 @@ title: 在 Azure HDInsight 中使用 Apache Ambari 优化 Apache HBase
 description: 使用 Apache Ambari Web UI 来配置和优化 Apache HBase。
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 05/04/2020
-ms.openlocfilehash: 307e9decad35c20885fbe550cc1f7de58c9386c0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/01/2021
+ms.openlocfilehash: 60c9916bc7d7b3b380a332f41924ee744002fd66
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942582"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428194"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Ambari 优化 Apache HBase
 
@@ -18,6 +18,9 @@ Apache Ambari 是用于管理和监视 HDInsight 群集的 Web 界面。 有关 
 可以通过“HBase 配置”选项卡修改 Apache HBase 配置。以下部分介绍了一些影响 HBase 性能的重要配置设置。
 
 ## <a name="set-hbase_heapsize"></a>设置 HBASE_HEAPSIZE
+
+> [!NOTE]
+> 本文包含对术语 " *master*" 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量（以 MB 为单位）。  默认值为 1,000 MB。 应该为群集工作负荷优化此值。
 

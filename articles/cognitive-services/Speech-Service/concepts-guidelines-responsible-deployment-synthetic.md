@@ -10,21 +10,33 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 7d80ffb575c6aa15695279584b58288cbc16be43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 715c09ef65358b21e78cfde204b4819db0c7875d
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024970"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428413"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>合成语音技术的负责任部署指南
+
+## <a name="general-considerations-to-keep-in-mind-when-implementing-ai-systems"></a>实现 AI 系统时要记住的一般注意事项 
+
+本文专门介绍综合语音和自定义的神经声音以及使用此技术的关键注意事项。 但一般情况下，在决定如何使用和实现支持 AI 的产品和功能时，需要仔细考虑几个事项： 
+
+* 此产品或功能在我的方案中是否能正常运行？ 在将 AI 部署到你的方案之前，请测试它如何使用真实数据，并确保它可以提供所需的准确性。 
+* 我们是否有权识别错误并对其做出响应？ AI 的产品和功能并不总是精确100%，因此，请考虑如何识别并响应可能发生的任何错误。 
+
+## <a name="general-guidelines-for-using-synthetic-voice-technology"></a>使用综合语音技术的一般准则 
 下面是 Microsoft 提供的使用合成语音技术时的一般设计准则。 Microsoft 在配音员、消费者以及有言语障碍的个人的协助下进行了研究，在研究中制定了这些准则，用以指导合成语音的负责任部署。
 
-## <a name="general-considerations"></a>一般注意事项
 对于合成语音技术的部署，以下准则适用于大多数方案。
 
 ### <a name="disclose-when-the-voice-is-synthetic"></a>当语音为合成语音时进行披露
 公开某种语音是由计算机生成的，不仅可以最大限度地降低欺骗带来的有害后果风险，而且还能增加对提供声音的组织的信任。 详细了解[如何进行披露](concepts-disclosure-guidelines.md)。
+
+Microsoft 要求其客户向其用户公开自定义的神经语音的综合性质。 
+* 请确保向受众提供充足的披露，尤其是在使用熟悉的人的语音时，他们会根据交付人员的信息对其进行判断，无论他们是特意还是 unconsciously。  例如，在广播开始时，可以口头方式传达共享公开。 有关详细信息，请访问 [公开模式](concepts-disclosure-patterns.md)。   
+* 请考虑对具有为子和儿童设计的用例的父方或其他各方进行适当的公开-如果用例适用于子或儿童，则需要确保家长或法律保护者能够理解有关使用综合媒体的披露，并为有意义的孩子做出正确的决策。 
 
 ### <a name="select-appropriate-voice-types-for-your-scenario"></a>为你的方案选择合适的语音类型
 仔细考虑与使用合成语音相关的使用上下文和潜在危害。 例如，高保真合成语音可能不适用于高风险方案，如个人消息传递、金融交易或需要人类的适应性或同理心的复杂情况。 用户对语音类型也可能有不同的期望。 例如，在收听由合成语音播报的敏感新闻时，一些用户喜欢更具同情心和更人性化的新闻播报，而另一些用户则喜欢更单调、无偏见的声音。 请考虑测试你的应用程序，以便更好地了解用户偏好。
@@ -39,8 +51,9 @@ ms.locfileid: "95024970"
 与配音员（例如声优）合作创建合成语音时，以下准则适用。
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>获得配音员的实质性同意
-配音员希望能够控制他们的语音字体（如何使用以及在哪里使用），并在其语音被使用时获得补偿。 因此，系统所有者应获得配音员的明确书面许可，并在用例、使用期限、补偿等合同细节方面明确化。 一些配音员不知道该技术的潜在恶意使用，因此系统所有者应向他们介绍该技术的功能。 有关配音员和许可的详细信息，请阅读[针对配音员的披露内容](/legal/cognitive-services/speech-service/disclosure-voice-talent)。
+语音人才应该控制其语音模型 (使用方式和位置) ，并为其使用进行补偿。 Microsoft 要求自定义语音客户从他们的语音中获得明确的书面许可，以便在持续时间、使用和任何内容限制的情况下使用语音人才构思创建综合语音和协议。  如果您要创建一个众所周知的人员的综合声音，则应该提供一种方式让语音的人员编辑或审批内容。
 
+某些语音人才不知道该技术的潜在恶意使用，应由系统所有者对该技术的功能进行教育。 Microsoft 要求客户直接或通过通过语音人才获得的授权代表来共享 Microsoft 的 [语音人才](/legal/cognitive-services/speech-service/disclosure-voice-talent) ，并说明如何将合成语音开发和操作与语音服务结合使用。
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>针对言语障碍患者的注意事项
 与有言语障碍的人合作创建或部署合成语音技术时，以下准则适用。

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/04/2021
+ms.date: 02/01/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 19330af5e4c0e4962993d0ed89ec9bcd4a50514a
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 3ec94543a53e3e5b7709801de8f4cf1dde3fc3d9
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986407"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428109"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>配置令牌生存期策略（预览版）
 你可以指定由 Microsoft 标识平台颁发的访问、SAML 或 ID 令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。 有关详细信息，请参阅 [可配置的令牌生存期](active-directory-configurable-token-lifetimes.md)。
@@ -85,11 +85,11 @@ ms.locfileid: "98986407"
 
 ## <a name="create-token-lifetime-policies-for-refresh-and-session-tokens"></a>为刷新和会话令牌创建令牌生存期策略
 > [!IMPORTANT]
-> 从5月2020，新租户不能配置刷新和会话令牌生存期。  具有现有配置的租户可以在 2021 年 1 月 30 之前修改刷新和会话令牌策略。  Azure Active Directory 将在 2021 年 1 月 30 日之后停止执行策略中的现有刷新和会话令牌配置。 在停用之后，你仍然可以配置访问、SAML 和 ID 令牌生存期。
+> 从2021年1月30日起，你无法配置刷新和会话令牌生存期。 Azure Active Directory 不再接受现有策略中的刷新和会话令牌配置。  现有令牌过期后颁发的新令牌现已设置为 [默认配置](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement)。 你仍可以在刷新和会话令牌配置停用后配置访问、SAML 和 ID 令牌的生存期。
+>
+> 现有令牌的生存期将不会更改。 过期后，将基于默认值发出新令牌。
 >
 > 如果需要继续定义要求用户再次登录之前的时间段，请配置条件访问中的登录频率。 若要了解有关条件性访问的详细信息，请参阅 [使用条件访问配置身份验证会话管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
->
-> 如果你不想在停用日期后使用条件性访问，则你的刷新和会话令牌将设置为该日期的 [默认配置](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement) ，并且你将无法再更改其生存期。
 
 ### <a name="manage-an-organizations-default-policy"></a>管理组织的默认策略
 本示例将创建一个策略，使用户以更低的频率在整个组织中登录。 为此，可以为单因素刷新令牌创建一个令牌生存期策略，该策略应用于整个组织。 此策略将应用到组织中的每个应用程序，以及尚未设置策略的每个服务主体。
