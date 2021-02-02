@@ -4,12 +4,12 @@ description: 了解如何创建专用 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 66072032b3fd1ac33bef60922c62f73a8cfb11bd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 56d3b36d17ee044ce7aba2337429c45123801ca5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734658"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254506"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure Kubernetes 服务群集
 
@@ -74,7 +74,7 @@ az aks create \
 2. "无" 表示 AKS 不会创建专用 DNS 区域。  这要求你引入自己的 DNS 服务器，并为专用 FQDN 配置 DNS 解析。  如果未配置 DNS 解析，则仅可在代理节点内解析 DNS，并在部署后导致群集问题。
 3. Azure global cloud 的 "自定义专用 dns 区域名称" 格式应为： `privatelink.<region>.azmk8s.io` 。 需要专用 DNS 区域的资源 Id。  此外，你将需要一个用户至少 `private dns zone contributor` 向自定义专用 dns 区域分配了角色的标识或服务主体。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 * AKS 预览版0.4.71 或更高版本
 * API 2020-11-01 或更高版本
@@ -130,7 +130,6 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 * 对于需要使 Azure 容器注册表能够与专用 AKS 配合使用的客户，容器注册表虚拟网络必须与代理群集虚拟网络对等互连。
 * 不支持将现有 AKS 群集转换为专用群集
 * 删除或修改客户子网中的专用终结点将导致群集停止运行。 
-* 当前不支持适用于容器的 Azure Monitor 实时数据。
 * 客户在自己的 DNS 服务器上更新 A 记录后，这些 Pod 仍会在迁移后将 apiserver FQDN 解析到较旧的 IP，直到重启这些 Pod。 客户需要在控制平面迁移之后重启 hostNetwork Pod 和 default-DNSPolicy Pod。
 * 如果对控制平面进行维护，[AKS IP](./limit-egress-traffic.md) 可能会更改。 在这种情况下，你必须在自定义 DNS 服务器上更新指向 API 服务器专用 IP 的 A 记录，并重启使用 hostNetwork 的任何自定义 Pod 或部署。
 

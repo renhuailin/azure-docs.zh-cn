@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9b2fc61054c40f52f7e638117109ec556cc63a78
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: de6c7e47af3019d034d457f43334aad1aeafabdc
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678451"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254268"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>对 Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）进行故障排除
 
@@ -76,6 +76,7 @@ ms.locfileid: "98678451"
 | 不支持的 SQL 数据库数据类型   | 请参阅[不支持的数据类型](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types)。        |
 | 存储过程限制          | 请参阅[存储过程限制](sql-data-warehouse-develop-stored-procedures.md#limitations)，了解存储过程的一些限制。 |
 | UDF 不支持 SELECT 语句 | 这是 UDF 的当前一项限制。  有关我们支持的语法，请参阅 [CREATE FUNCTION](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 |
+| 列 sp_rename (预览版) 对 *dbo* 以外的架构不起作用 | 这是 [列 sp_rename (预览) ](/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)的当前限制。  不属于 *dbo* 架构的对象中的列可通过 CTAS 重命名为新表。 |
 
 ## <a name="next-steps"></a>后续步骤
 

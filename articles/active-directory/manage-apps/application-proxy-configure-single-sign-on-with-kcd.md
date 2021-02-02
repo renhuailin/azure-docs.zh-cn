@@ -3,7 +3,7 @@ title: Azure Active Directory 中的基于 Kerberos 的单一登录 (SSO) 与应
 description: 介绍如何使用 Azure Active Directory 应用程序代理提供单一登录。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 08/13/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: bd657655d6857f1bb0e3c5a2d868169788e4998d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a4fdd8d16854e76cdf20d27a6048694c01de8499
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033521"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253877"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>用于单一登录的 Kerberos 约束委派 (SSO) 应用程序代理的应用
 
@@ -39,7 +39,7 @@ ms.locfileid: "97033521"
 7. 连接器使用从 AD 收到的 Kerberos 令牌，将原始请求发送到应用程序服务器。
 8. 应用程序将响应发送到连接器，该响应随后返回到应用程序代理服务，最后返回到用户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 开始为 IWA 应用程序使用 SSO 之前，请确保已在环境中完成以下设置和配置：
 
 * 应用（例如 SharePoint Web 应用）已设置为使用 Windows 集成身份验证。 有关详细信息，请参阅 [启用对 Kerberos 身份验证的支持](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd759186(v=ws.11))或 for sharepoint，请参阅 [在 SharePoint 2013 中计划 Kerberos 身份验证](/SharePoint/security-for-sharepoint-server/kerberos-authentication-planning)。

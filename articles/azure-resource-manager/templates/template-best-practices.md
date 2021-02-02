@@ -3,12 +3,12 @@ title: 模板最佳实践
 description: 介绍创作 Azure 资源管理器模板（ARM 模板）的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: c0b26c300a9474cc5db0b1a7b732c4416a9e6f5f
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696340"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257991"
 ---
 # <a name="arm-template-best-practices"></a>ARM 模板最佳做法
 
@@ -276,6 +276,8 @@ ms.locfileid: "98696340"
 
    > [!NOTE]
    > 为了确保机密内容作为参数传递给 VM 和扩展时经过加密，请使用相关扩展的 `protectedSettings` 属性。
+
+* 为具有可能会随时间变化的默认值的属性指定显式值。 例如，如果要部署 AKS 群集，则可以指定或省略 `kubernetesVersion` 属性。 如果未指定此项，则 [群集默认为 N 1 次版本和最新修补程序](../../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions)。 使用 ARM 模板部署群集时，此默认行为可能不是预期的行为。 重新部署模板可能导致群集意外升级到新的 Kubernetes 版本。 相反，请考虑指定显式版本号，然后在准备好升级群集时手动更改版本号。
 
 ## <a name="use-test-toolkit"></a>使用测试工具包
 

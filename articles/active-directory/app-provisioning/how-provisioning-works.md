@@ -3,7 +3,7 @@ title: 了解 Azure AD 预配的工作原理 |Microsoft Docs
 description: 了解 Azure AD 预配的工作原理
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 07e3ff76886a935bf0b7b5c83052e0e7cd7a0429
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1f4466dea35fe3d52f86386f0bf0cc0c3b6a658f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027418"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256333"
 ---
 # <a name="how-provisioning-works"></a>预配工作原理
 
@@ -198,7 +198,7 @@ Azure AD [预配日志（预览）](../reports-monitoring/concept-provisioning-l
 
 如果在属性映射中看到属性 IsSoftDeleted，则该属性用于确定用户的状态以及是否发送 active = false 的更新请求以软删除用户。
 
-**已知的限制**
+**已知限制**
 
 * 如果先前由预配服务管理的用户未从应用中分配或从分配到应用的组中取消分配，我们将发送禁用请求。 此时，该用户不受服务管理，将不会在从目录中删除时发送删除请求。
 * 不支持在 Azure AD 中预配已禁用的用户。 它们必须在设置之前处于 Azure AD 状态。

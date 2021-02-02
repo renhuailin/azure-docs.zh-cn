@@ -4,7 +4,7 @@ description: 概要介绍如何将本地 SharePoint 服务器与 Azure AD 应用
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,18 +16,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c318c539b1c09761ed81e7602808e415fdaf8b80
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5b5895d016e2d9d9b471218bc083ea7585254b45
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658173"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258675"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问
 
 此循序渐进指南介绍了如何将本地 SharePoint 场与 Azure Active Directory (Azure AD) 应用程序代理相集成。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要执行配置，需要以下资源：
 - 一个 SharePoint 2013 场或更高版本的场。

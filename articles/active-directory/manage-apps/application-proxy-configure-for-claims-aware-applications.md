@@ -4,7 +4,7 @@ description: 如何发布接受 ADFS 声明允许用户进行安全远程访问�
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -15,17 +15,17 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5c840722ae6b03a0b8a7fa44e5999e14730d4f3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b90c2d47e70a4f7595ac535d5f8ba9506087eb72
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997590"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258518"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>在应用程序代理中使用声明感知应用
 [声明感知应用](/previous-versions/windows/desktop/legacy/bb736227(v=vs.85))对安全令牌服务 (STS) 执行重定向。 STS 请求用来自用户的凭据交换令牌，然后将用户重定向到应用程序。 使应用程序代理使用这些重定向有几种方式。 使用本文配置声明感知应用的部署。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 确保充当声明感知应用重定向目标的 STS 在本地网络之外可用。 将 STS 通过代理公开或允许外部连接，可以使其可用。 
 
 ## <a name="publish-your-application"></a>发布应用程序

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 7a52d3971e4ec0cb8ec104a57ba7fb4057c23b72
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1f80da4014d4b6b27155db17d32800e54b51f40d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964637"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258059"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>如何在 Azure 虚拟 WAN 中心 (预览中创建网络虚拟设备) 
 
@@ -21,8 +21,7 @@ ms.locfileid: "97964637"
 
 本文中的步骤可帮助你在虚拟 WAN 集线器中创建 **Barracuda CLOUDGEN WAN** 网络虚拟设备。 若要完成此练习，必须在开始之前，将 Barracuda Cloud 本地设备 (CPE) 和部署到中心的 Barracuda CloudGen WAN 设备的许可证。
 
-有关 Azure 虚拟 WAN 中 **CISCO SD-wan** 的部署文档，请参阅 [适用于多云的 cisco Cloud 云中](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)。 若要注册帐户并获取必要的 Cisco SD WAN 许可证，请通过以下电子邮件地址向 Cisco 发送电子邮件： vwan_public_preview@external.cisco.com
-
+有关 Azure 虚拟 WAN 中 **CISCO SD-wan** 的部署文档，请参阅 [适用于多云的 cisco Cloud 云中](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)。 
 
 ## <a name="prerequisites"></a>先决条件
 

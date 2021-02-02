@@ -1,45 +1,40 @@
 ---
-title: 托管标识和受信任的存储
-description: 可将媒体服务与托管标识结合使用，以实现受信任的存储。
+title: 托管标识
+description: 媒体服务可与 Azure 托管标识一起使用。
+keywords: ''
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 291508a6beaa687b3a10f55df4591ce601ab51a0
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 71a2b8f0734de80f71dbb2372f8600b464d6c606
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956168"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258433"
 ---
-# <a name="managed-identities-and-trusted-storage-with-media-services"></a>将托管标识和受信任的存储与媒体服务结合使用
+# <a name="managed-identities"></a>托管标识
 
-可将媒体服务与[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)结合使用，以实现受信任的存储。 创建媒体服务帐户时，必须将其与存储帐户相关联。 媒体服务可以使用系统身份验证来访问该存储帐户。 媒体服务验证媒体服务帐户和存储帐户是否位于同一订阅中，并验证添加关联的用户是否具有使用 Azure 资源管理器 RBAC 访问存储帐户的权限。
+开发人员面临的一个共同挑战是如何管理密码和凭据，以确保不同服务之间的通信安全。 在 Azure 上，托管标识可为 Azure AD 中的 Azure 资源提供标识并使用它来获取 Azure Active Directory (Azure AD) 令牌，从而使开发人员无需管理凭据。
 
-## <a name="trusted-storage"></a>受信任的存储
-
-但是，如果想要使用防火墙来保护存储帐户，则必须使用托管标识身份验证。 这使媒体服务可通过受信任的存储访问权限访问配置有防火墙或 VNet 限制的存储帐户。  若要详细了解受信任的 Microsoft 服务，请参阅[配置 Azure 存储防火墙和虚拟网络](../../storage/common/storage-network-security.md#trusted-microsoft-services)。
-
-## <a name="media-services-managed-identity-scenarios"></a>媒体服务托管标识场景
-
-目前有两种场景可将托管标识用于媒体服务：
+目前有两种方案可将托管标识用于媒体服务：
 
 - 使用媒体服务帐户的托管标识来访问存储帐户。
 
 - 使用媒体服务帐户的托管标识访问 Key Vault 以访问客户密钥。
 
-接下来的两个部分介绍这两种场景的差异。
+接下来的两个部分将介绍这两种方案的步骤。
 
-### <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>使用媒体服务帐户的托管标识来访问存储帐户
+## <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>使用媒体服务帐户的托管标识来访问存储帐户
 
 1. 创建包含托管标识的媒体服务帐户。
 1. 授予托管标识主体对你所拥有存储帐户的访问权限。
-1. 然后，媒体服务可以使用托管标识代表你访问存储帐户。
+1. 然后，媒体服务可以使用托管标识代表您访问存储帐户。
 
-### <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>使用媒体服务帐户的托管标识访问 Key Vault 以访问客户密钥
+## <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>使用媒体服务帐户的托管标识访问 Key Vault 以访问客户密钥
 
 1. 创建包含托管标识的媒体服务帐户。
 1. 授予托管标识主体对你所拥有 Key Vault 的访问权限。

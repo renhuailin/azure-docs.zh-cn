@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 企业到客户 (B2C) 的新增功能
 description: Azure Active Directory 企业到客户 (B2C) 的新的和更新的文档。
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,53 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 8805caad990cd472b3199bda27130d8d63be3071
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 5e58f54d991cd190aba6eeb851e6cf2aec78e695
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559721"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255163"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C：新增功能
 
 欢迎使用 Azure Active Directory B2C 文档中的新增功能。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解 B2C 服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../active-directory/fundamentals/whats-new.md)。
+
+## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="new-articles"></a>新文章
+
+- [自定义 Azure Active Directory B2C 中的用户界面](customize-ui.md)
+- [Azure Active Directory B2C 服务限制和限制](service-limits.md)
+- [使用其他 Azure AD B2C 租户中的 Azure AD B2C 帐户设置注册和登录](identity-provider-azure-ad-b2c.md)
+- [设置本地帐户标识提供者](identity-provider-local.md)
+- [在 Azure Active Directory B2C 中设置登录流](add-sign-in-policy.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为](analytics-with-application-insights.md)
+- [TechnicalProfiles](technicalprofiles.md)
+- [通过 Azure Active Directory B2C 中的 HTML 模板自定义用户界面](customize-ui-with-html.md)
+- [使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-operations.md)
+- [使用 Azure Active Directory B2C 中的自定义策略将 AD FS 添加为 SAML 标识提供者](identity-provider-adfs.md)
+- [使用 Azure Active Directory B2C 中的 SAML 协议设置 Salesforce SAML 提供程序的登录](identity-provider-salesforce-saml.md)
+- [教程：在 Azure Active Directory B2C 中注册 Web 应用](tutorial-register-applications.md)
+- [使用 Azure Active Directory B2C 设置通过 Amazon 帐户注册与登录](identity-provider-amazon.md)
+- [使用其他 Azure AD B2C 租户中的 Azure AD B2C 帐户设置注册和登录](identity-provider-azure-ad-b2c.md)
+- [在 Azure Active Directory B2C 中使用自定义策略为多租户 Azure Active Directory 设置登录](identity-provider-azure-ad-multi-tenant.md)
+- [在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织](identity-provider-azure-ad-single-tenant.md)
+- [使用 Azure Active Directory B2C 设置通过 Facebook 帐户注册与登录](identity-provider-facebook.md)
+- [使用 Azure Active Directory B2C 设置通过 GitHub 帐户注册与登录](identity-provider-github.md)
+- [使用 Azure Active Directory B2C 设置通过 Google 帐户注册与登录](identity-provider-google.md)
+- [使用 Azure Active Directory B2C 设置 ID.me 帐户的注册和登录](identity-provider-id-me.md)
+- [使用 Azure Active Directory B2C 设置通过 LinkedIn 帐户注册与登录](identity-provider-linkedin.md)
+- [使用 Azure Active Directory B2C 设置通过 Microsoft 帐户注册与登录](identity-provider-microsoft-account.md)
+- [使用 Azure Active Directory B2C 设置通过 QQ 帐户注册与登录](identity-provider-qq.md)
+- [使用 Azure Active Directory B2C 设置使用 Salesforce 帐户的注册和登录](identity-provider-salesforce.md)
+- [使用 Azure Active Directory B2C 设置通过 Twitter 帐户注册与登录](identity-provider-twitter.md)
+- [使用 Azure Active Directory B2C 设置通过微信帐户注册与登录](identity-provider-wechat.md)
+- [使用 Azure Active Directory B2C 设置通过微博帐户注册与登录](identity-provider-weibo.md)
+- [Azure AD B2C 自定义策略概述](custom-policy-trust-frameworks.md)
+
 
 ## <a name="december-2020"></a>2020 年 12 月
 
@@ -65,7 +102,7 @@ ms.locfileid: "97559721"
 ### <a name="updated-articles"></a>更新的文章
 - [将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com](b2clogin.md)
 - [在 Azure Active Directory B2C 自定义策略中定义 OpenID Connect 技术配置文件](openid-connect-technical-profile.md)
-- [在 Azure AD B2C 中设置自定义策略的手机注册和登录](phone-authentication.md)
+- [在 Azure AD B2C 中通过自定义策略设置手机注册和登录](phone-authentication.md)
 
 
 ## <a name="august-2020"></a>2020 年 8 月

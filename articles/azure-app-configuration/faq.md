@@ -1,18 +1,18 @@
 ---
 title: Azure 应用程序配置常见问题解答
-description: 阅读常见问题解答 (常见问题的答案) 有关 Azure 应用配置，例如它与 Azure Key Vault 的不同之处。
+description: 阅读有关 Azure 应用配置的常见问题 (FAQ) 的解答，例如它与 Azure Key Vault 有何不同。
 services: azure-app-configuration
 author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: alkemper
-ms.openlocfilehash: 4e19574e5848d1ee86d13aa02a9cf583b92eff02
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 39ad20bd57e3da6345c63d4601f34b19e640c1d6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929559"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256469"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 应用程序配置常见问题解答
 
@@ -105,7 +105,7 @@ ms.locfileid: "96929559"
 
 ## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>对应用程序配置发出的请求数有任何限制吗？
 
-免费层中的配置存储区限每日 1,000 个请求。 当请求速率超过每小时 20,000 个请求时，标准层中的配置存储区可能会产生临时限制。
+在应用配置中，读取键值时，将对数据进行分页，每个请求最多可读取100个键值。 写入键值时，每个请求可以创建或更新一个键值。 这是通过 REST API、应用配置 Sdk 和配置提供程序支持的。 免费层中的配置存储区限每日 1,000 个请求。 当请求速率超过每小时 20,000 个请求时，标准层中的配置存储区可能会产生临时限制。
 
 当存储达到其限制时，它将针对后续所有请求返回 HTTP 状态代码 429，直到过了时间周期。 响应中的 `retry-after-ms` 标头在重试请求之前会给出建议的等待时间（以毫秒为单位）。
 

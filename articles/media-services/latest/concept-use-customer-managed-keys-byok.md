@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: c11bb0e369075c3024824d65290e8aecfa68e6f4
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.date: 1/28/2020
+ms.openlocfilehash: 7e58daf72522071eb7d0031d4ea236a21c6d8bfb
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956134"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252315"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>自带密钥（客户管理的密钥）与媒体服务
 
@@ -36,6 +36,12 @@ ms.locfileid: "98956134"
 
 > [!WARNING]
 > 媒体服务监视对客户密钥的访问。 如果客户密钥变为不可访问（例如，已删除密钥或已删除 Key Vault 或已删除访问授权），则媒体服务会将该帐户转换为客户密钥不可访问状态（有效地禁用帐户）。 但是，可以在此状态下删除此帐户。 唯一受支持的操作是帐户 GET、LIST 和 DELETE；在恢复对帐户密钥的访问之前，所有其他请求（编码、流式处理等）都将失败。
+
+## <a name="double-encryption"></a>双重加密
+
+媒体服务支持双重加密。  若要详细了解双重加密，请参阅 [Azure 双重加密](../../security/fundamentals/double-encryption.md)。
+
+在 Media Services 帐户上自动启用双加密。 但是，你需要分别在存储帐户上配置客户托管的密钥和双加密。
 
 ## <a name="tutorials"></a>教程
 

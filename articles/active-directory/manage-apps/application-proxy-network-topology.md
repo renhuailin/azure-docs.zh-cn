@@ -4,7 +4,7 @@ description: 介绍使用 Azure AD 应用程序代理时的网络拓扑注意事
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d814a3ce62d7e9b3ce04953e05293d17ecc08d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d67505e7112c41b21b2ae5e8acc834ff047a470d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764462"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254799"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项
 
@@ -112,9 +112,9 @@ ms.locfileid: "84764462"
 
 对于这些方案，为了方便讨论，我们将每个连接称为“跃点”并为其编号：
 
-- 跃点 1：从用户到应用程序代理服务****
-- 跃点 2：从应用程序代理服务到应用程序代理连接器****
-- 跃点 3：从应用程序代理连接器到目标应用程序**** 
+- 跃点 1：从用户到应用程序代理服务
+- 跃点 2：从应用程序代理服务到应用程序代理连接器
+- 跃点 3：从应用程序代理连接器到目标应用程序 
 
 ### <a name="use-case-1"></a>用例 1
 
@@ -140,7 +140,7 @@ ms.locfileid: "84764462"
 
 **方案：** 该应用位于组织在美国部署的网络中。 Azure 与企业网络之间存在采用 Microsoft 对等互连的 ExpressRoute。
 
-建议：遵循前一部分中所述的模式 1 和模式 2****。
+建议：遵循前一部分中所述的模式 1 和模式 2。
 
 首先，使连接器尽量靠近应用。 然后，系统自动为跃点 2 使用 ExpressRoute。
 
@@ -152,7 +152,7 @@ ms.locfileid: "84764462"
 
 **方案：** 该应用位于组织在美国部署的网络中。 Azure 与企业网络之间存在结合专用对等互连的 ExpressRoute。
 
-建议：遵循前一部分中所述的模式 3****。
+建议：遵循前一部分中所述的模式 3。
 
 将连接器放置在通过 ExpressRoute 专用对等互连连接到企业网络的 Azure 数据中心内。
 
@@ -176,5 +176,5 @@ ms.locfileid: "84764462"
 
 - [启用应用程序代理](application-proxy-add-on-premises-application.md)
 - [启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
-- [启用条件性访问](application-proxy-integrate-with-sharepoint-server.md)
+- [启用条件访问](application-proxy-integrate-with-sharepoint-server.md)
 - [解决使用应用程序代理时遇到的问题](application-proxy-troubleshoot.md)

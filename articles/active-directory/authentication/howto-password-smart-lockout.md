@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8a57e77ea572f899bf540714e8ac9968988f028
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a5f501c19da3c2ddc06ad89fe5649789477af7ec
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741722"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255367"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>利用 Azure Active Directory 智能锁定保护用户帐户
 
@@ -58,7 +58,7 @@ ms.locfileid: "96741722"
 
 1. 打开“组策略管理”工具。
 2. 编辑包含组织的帐户锁定策略的组策略，例如 " **默认域策略**"。
-3. 浏览到 "**计算机配置**  >  **策略**" "  >  **Windows 设置**" "帐户" "帐户  >  **Security Settings**  >  **Account Policies**  >  **锁定策略**"。
+3. 浏览到 "**计算机配置**  >  **策略**" "  >  **Windows 设置**" "帐户" "帐户  >    >    >  **锁定策略**"。
 4. 验证 " **帐户锁定阈值** " 和 " **重置帐户锁定计数器** " 值。
 
 ![修改本地 Active Directory 帐户锁定策略](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
@@ -89,6 +89,8 @@ ms.locfileid: "96741722"
 触发智能锁定阈值时，帐户被锁定时，会收到以下消息：
 
 *你的帐户已暂时锁定，以防止未经授权的使用。请稍后重试，如果问题仍然存在，请与管理员联系。*
+
+当你测试智能锁定时，由于 Azure AD 身份验证服务的地理分布式和负载均衡性质，你的登录请求可能会由不同的数据中心处理。 在这种情况下，由于每个 Azure AD datacenter 单独跟踪锁定，因此，可能会超出你定义的锁定阈值尝试导致锁定的次数。 如果用户在发生锁定之前点击了每个数据中心，则用户 (*threshold_limit * datacenter_count*) 错误尝试次数。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,19 +3,19 @@ title: 排查在 Azure Active Directory 中添加或删除应用程序时遇到�
 description: 排查用户在 Azure Active Directory 中添加或删除应用时遇到的常见问题。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: f873608d07785e6b99bd8e0fcdadf64a8899d490
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: dbfc90f01bdd9cc0a831160d06efa1c3952884a2
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108409"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257663"
 ---
 # <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>排查在 Azure Active Directory 中添加或删除应用程序时遇到的常见问题
 本文帮助你了解用户在 Azure Active Directory 中添加或删除应用时遇到的常见问题。

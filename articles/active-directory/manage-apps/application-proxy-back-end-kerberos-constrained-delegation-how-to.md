@@ -3,7 +3,7 @@ title: 排查 Kerberos 约束委派应用代理问题
 description: 排查应用程序代理的 Kerberos 约束委派配置问题
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: c28e79c9a6f8c489a97d360c4fe142d431b5ab5d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 65d68924fbc3a777ef7ef59d2532a1ae20e23c48
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656541"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258212"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>排查应用程序代理的 Kerberos 约束委派配置问题
 
@@ -33,7 +33,7 @@ ms.locfileid: "94656541"
 - 服务器和应用程序主机驻留在单个 Azure Active Directory 域中。 有关跨域和林方案的详细信息，请参阅 [KCD 白皮书](https://aka.ms/KCDPaper)。
 - 主体应用程序在启用了预身份验证的 Azure 租户中发布。 用户需要通过基于窗体的身份验证进行 Azure 身份验证。 本文不介绍丰富的客户端身份验证方案。 可能会在未来某个时候添加这些方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 Azure AD 应用程序代理可以部署到许多类型的基础结构或环境中。 不同组织的体系结构有所不同。 与 KCD 相关的问题的最常见原因并非环境。 造成大多数问题的原因可能是简单的配置错误或常规错误。
 
@@ -130,7 +130,7 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
       ![IIS 应用程序配置窗口](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic9.png)
 
-      了解标识后，确保使用上述 SPN 配置此帐户。 例如 `setspn –q http/spn.wacketywack.com`。 在命令提示符中输入以下文本：
+      了解标识后，确保使用上述 SPN 配置此帐户。 示例为 `setspn –q http/spn.wacketywack.com`。 在命令提示符中输入以下文本：
 
       ![显示 SetSPN 命令窗口](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
 

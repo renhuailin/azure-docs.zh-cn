@@ -3,7 +3,7 @@ title: 管理用户和管理员权限 - Azure Active Directory | Microsoft Docs
 description: 了解如何在 Azure AD 上查看和管理应用程序的权限。 例如，撤消授予应用程序的所有权限。
 services: active-directory
 author: msmimart
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 7/10/2020
 ms.author: mimart
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da1284af82c0779ca57b49a0c4aef4b492a3bf20
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: cbd2bc7b9ccc9efe0c6fdf8de02665160667cb8f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054596"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256926"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>对 Azure Active Directory 中拥有过度特权的或可疑的应用程序采取措施
 

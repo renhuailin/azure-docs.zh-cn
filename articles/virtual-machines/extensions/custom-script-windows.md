@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: d336d38465d601c1cbd4c1e88c0928ab17a1a18f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d4cfb8d6a48ac41b4deb8913d4277f07cbb43208
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735707"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258698"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -51,7 +51,7 @@ ms.locfileid: "98735707"
 
 如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙和网络安全组端口。 例如，如果脚本位于 Azure 存储中，可以使用 Azure NSG 服务标记对[存储](../../virtual-network/network-security-groups-overview.md#service-tags)进行访问。
 
-请注意，CustomScript 扩展不能跳过证书验证。 因此，如果从安全的位置下载，例如。 自签名的证书可能最终会出现错误，例如 *"远程证书根据验证过程无效"*。 请确保证书已正确安装在虚拟机上的 *"受信任的根证书颁发机构"* 存储中。
+请注意，CustomScript 扩展无法跳过证书验证。 因此，如果使用自签名证书从安全位置进行下载， 则最终可能会出现“根据验证过程，远程证书无效”等错误。 请确保证书已正确安装在虚拟机上“受信任的根证书颁发机构”存储中。
 
 如果脚本位于本地服务器上，则可能仍需要打开其他防火墙和网络安全组端口。
 
@@ -63,7 +63,7 @@ ms.locfileid: "98735707"
 * 脚本可以运行 90 分钟，若运行时间超过 90 分钟，将导致扩展的预配失败。
 * 不要重启置于脚本内，此操作会导致所安装的其他扩展出现问题。 扩展不会在重启之后继续。
 * 如果你有可导致重启的脚本，则安装应用程序并运行该脚本，可使用 Windows 计划任务或 DSC、Chef 或 Puppet 扩展等工具来计划重启。
-* 建议不要运行会导致 VM 代理停止或更新的脚本。 这可以使扩展处于转换状态，从而导致超时。
+* 建议不要运行会导致 VM 代理停止或更新的脚本。 这会使扩展处于“正在转换”状态，从而导致超时。
 * 扩展将只运行脚本一次，如果想要在每次启动时运行脚本，则需要使用扩展创建 Windows 计划任务。
 * 如果想要计划脚本何时运行，应使用扩展创建 Windows 计划任务。
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
@@ -247,8 +247,8 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
     -TypeHandlerVersion "1.10" `
-    -Settings $settings    `
-    -ProtectedSettings $protectedSettings `
+    -Settings $settings `
+    -ProtectedSettings $protectedSettings;
 ```
 
 ### <a name="running-scripts-from-a-local-share"></a>从本地共享运行脚本

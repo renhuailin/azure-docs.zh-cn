@@ -4,7 +4,7 @@ description: 当页面在已集成到 Azure AD 的应用程序代理应用程序
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -15,19 +15,19 @@ ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 780847494da0ec5cd4eb8ab76f1e46125b8a7f8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99b09e7b15427eb33e1e85edd89f4c8a37c4a3eb
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764411"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254648"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>应用程序代理应用程序的应用程序页无法正确显示
 
 如果导航到某个页面后其中的某些内容未能正确显示，则可在本文的帮助下针对“Azure Active Directory 应用程序代理”应用程序中的问题进行故障排除。
 
 ## <a name="overview"></a>概述
-发布应用程序代理应用时，通过访问该应用程序只能访问根目录下的页面。 如果页面未正确显示，则代表用于该应用程序的根内部 URL 可能缺少某些页面资源。 要解决此问题，请确保已将页面的*所有*资源作为应用程序的一部分予以发布。
+发布应用程序代理应用时，通过访问该应用程序只能访问根目录下的页面。 如果页面未正确显示，则代表用于该应用程序的根内部 URL 可能缺少某些页面资源。 要解决此问题，请确保已将页面的 *所有* 资源作为应用程序的一部分予以发布。
 
 通过打开网络跟踪程序（如 Fiddler 或 Internet Explorer/Microsoft Edge 中的 F12 工具），加载页面，并查找 404 错误，即可验证缺少资源是否是问题所在。 这样可以找出当前找不到且可能需要发布的页面。
 

@@ -3,7 +3,7 @@ title: 使用租户限制管理对 SaaS 应用的访问 - Azure AD
 description: 如何使用租户限制来根据用户的 Azure AD 租户管理可访问应用的用户。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d69755c36bf37dd591e81bea7983e25905798d4d
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f605b2bb48855d70ea305dcda194b26da71ee9ec
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286207"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252468"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -33,13 +33,13 @@ ms.locfileid: "93286207"
 
 总体解决方案由以下组件构成：
 
-1. **Azure AD** ：如果 `Restrict-Access-To-Tenants: <permitted tenant list>` 标头存在，Azure AD 只为允许的租户颁发安全令牌。
+1. **Azure AD**：如果 `Restrict-Access-To-Tenants: <permitted tenant list>` 标头存在，Azure AD 只为允许的租户颁发安全令牌。
 
-2. **本地代理服务器基础结构** ：此基础结构是能够进行传输层安全性 (TLS) 检查的代理设备。 必须将代理配置为在发往 Azure AD 的流量中插入包含允许租户列表的标头。
+2. **本地代理服务器基础结构**：此基础结构是能够进行传输层安全性 (TLS) 检查的代理设备。 必须将代理配置为在发往 Azure AD 的流量中插入包含允许租户列表的标头。
 
-3. **客户端软件** ：为了支持租户限制，客户端软件必须直接从 Azure AD 请求令牌，使代理基础结构能够截获流量。 基于浏览器的 Microsoft 365 应用程序当前支持租户限制，因为使用新式身份验证的 Office 客户端 (例如 OAuth 2.0) 。
+3. **客户端软件**：为了支持租户限制，客户端软件必须直接从 Azure AD 请求令牌，使代理基础结构能够截获流量。 基于浏览器的 Microsoft 365 应用程序当前支持租户限制，因为使用新式身份验证的 Office 客户端 (例如 OAuth 2.0) 。
 
-4. **新式身份验证** ：云服务必须使用新式身份验证来使用租户限制，阻止对所有不允许租户的访问。 默认情况下，你必须将 Microsoft 365 云服务配置为使用新式身份验证协议。 有关新式验证 Microsoft 365 支持的最新信息，请阅读 [更新的 Office 365 新式身份验证](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
+4. **新式身份验证**：云服务必须使用新式身份验证来使用租户限制，阻止对所有不允许租户的访问。 默认情况下，你必须将 Microsoft 365 云服务配置为使用新式身份验证协议。 有关新式验证 Microsoft 365 支持的最新信息，请阅读 [更新的 Office 365 新式身份验证](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
 
 下图演示了大致的流量流。 租户限制要求仅对要 Azure AD 的流量进行 TLS 检查，而不需要对 Microsoft 365 云服务进行 TLS 检测。 这种区别很重要，因为 Azure AD 的身份验证流量通常比 SaaS 应用程序（如 Exchange Online 和 SharePoint Online）的流量要小得多。
 
@@ -76,7 +76,7 @@ ms.locfileid: "93286207"
 
 这些标头应包含以下元素：
 
-- 对于 " *限制访问到租户* "，请使用的值 \<permitted tenant list\> ，它是要允许用户访问的租户的逗号分隔列表。 注册到租户的任何域都可用于标识此列表中的租户，以及目录 ID 本身。 有关描述租户的所有三种方法的示例，名称/值对允许 Contoso、Fabrikam 和 Microsoft 如下所示： `Restrict-Access-To-Tenants: contoso.com,fabrikam.onmicrosoft.com,72f988bf-86f1-41af-91ab-2d7cd011db47`
+- 对于 " *限制访问到租户*"，请使用的值 \<permitted tenant list\> ，它是要允许用户访问的租户的逗号分隔列表。 注册到租户的任何域都可用于标识此列表中的租户，以及目录 ID 本身。 有关描述租户的所有三种方法的示例，名称/值对允许 Contoso、Fabrikam 和 Microsoft 如下所示： `Restrict-Access-To-Tenants: contoso.com,fabrikam.onmicrosoft.com,72f988bf-86f1-41af-91ab-2d7cd011db47`
 
 - 对于 Restrict-Access-Context，应使用单个目录 ID 的值，用于声明哪个租户将要设置租户限制。 例如，要将 Contoso 声明为设置租户限制策略的租户，名称/值对如下所示： `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` 。  你 **必须** 在此位置使用自己的目录 ID。
 
@@ -108,7 +108,7 @@ ms.locfileid: "93286207"
 
 2. 在左窗格中选择“Azure Active Directory”。 随即显示 Azure Active Directory 概述页面。
 
-3. 在 "概述" 页上，选择 " **租户限制** "。
+3. 在 "概述" 页上，选择 " **租户限制**"。
 
 Restricted-Access-Context 租户的管理员可以使用此报告来查看由于租户限制策略而被阻止的登录，包括使用的标识和目标目录 ID。 如果设置限制的租户是登录的用户租户或资源租户，则会包含登录。
 
@@ -122,8 +122,8 @@ Restricted-Access-Context 租户的管理员可以使用此报告来查看由于
 - **Status**
 - **Date**
 - **日期(UTC)** （其中 UTC 是协调世界时）
-- **MFA 身份验证方法** （多重身份验证方法）
-- **MFA 身份验证详细信息** （多重身份验证详细信息）
+- **MFA 身份验证方法**（多重身份验证方法）
+- **MFA 身份验证详细信息**（多重身份验证详细信息）
 - **MFA 结果**
 - **IP 地址**
 - **客户端**

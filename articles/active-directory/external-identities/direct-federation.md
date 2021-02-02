@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5beae56a5d38c4620481c27c3f42c52602984e6b
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c9afb5a078d5359ed236b44c0a6712985bf8c305
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860620"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257179"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>与面向来宾用户的 AD FS 和第三方提供者的直接联合（预览）
 
@@ -45,7 +45,7 @@ ms.locfileid: "96860620"
 ## <a name="limitations"></a>限制
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD 中的 DNS 验证域
-要与之联盟的域必须在 Azure AD **not** 中通过 DNS 验证。 允许你建立与非托管（经电子邮件验证或“病毒性”）Azure AD 租户的直接联合，因为未对其进行 DNS 验证。
+要与之联盟的域必须在 Azure AD中通过 DNS 验证。 允许你建立与非托管（经电子邮件验证或“病毒性”）Azure AD 租户的直接联合，因为未对其进行 DNS 验证。
 
 ### <a name="authentication-url"></a>身份验证 URL
 直接联合只允许在身份验证 URL 的域与目标域匹配的策略中使用，或者在身份验证 URL 是这些允许的标识提供者之一的策略中使用（此列表可能会更改）：
@@ -78,7 +78,8 @@ ms.locfileid: "96860620"
 与合作伙伴组织建立直接联合时，对于该组织中的新来宾用户而言，它将优先于电子邮件一次性密码身份验证。 如果来宾用户在建立直接联合之前使用一次性密码身份验证兑换了邀请，则他们将继续使用一次性密码身份验证。 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>是否由于部分同步的租户导致了直接联合地址登录问题？
 否。在此场景中，应使用[电子邮件一次性密码](one-time-passcode.md)功能。 “部分同步的租户”指的是合作伙伴 Azure AD 租户，其中本地用户标识未完全同步到云。 其标识尚不存在于云中但尝试兑换 B2B 邀请的来宾将无法登录。 使用一次性密码功能，此来宾可以登录。 直接联合功能可以解决以下情况：来宾具有其自己的 IdP 托管的组织帐户，但组织没有 Azure AD。
-
+### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>将直接联盟配置为组织后，是否需要发送每个来宾并兑换单个邀请？
+设置直接联合不会更改已兑换你邀请的来宾用户的身份验证方法。 可以通过从目录中删除来宾用户帐户并对其进行 reinviting 来更新来宾用户的身份验证方法。
 ## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>步骤 1：配置合作伙伴组织的标识提供者
 首先，你的合作伙伴组织需要为其标识提供者配置所需的声明和信赖方信任。 
 

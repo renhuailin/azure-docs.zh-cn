@@ -1,7 +1,7 @@
 ---
 title: 人脸服务中有哪些新功能？
 titleSuffix: Azure Cognitive Services
-description: 人脸服务的发行说明包括针对各种版本的发布更改的历史记录。
+description: 人脸服务的发行说明包括各个版本的版本更改历史记录。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,23 +10,35 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 8a409d66065a7ccd2b34365bd565202f207ac0e8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 5e537166352f242d54819477a4dc0051aad684b0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560740"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258076"
 ---
 # <a name="whats-new-in-face-service"></a>人脸服务中有哪些新功能？
 
-Azure 人脸服务会不断更新。 使用本文可了解最新功能的增强功能、修复和文档更新。
+Azure 人脸服务会不断更新。 使用本文可了解最新的功能增强、修复和文档更新。
+
+## <a name="january-2021"></a>2021 年 1 月
+* 使用人脸 API 时减少延迟：人脸团队发布了一篇新文章，其中详细介绍了使用该服务时的可能的延迟原因和可能的缓解策略。 请参阅 [在使用人脸服务时减少延迟](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/how-to-mitigate-latency)。
+
+## <a name="december-2020"></a>2020 年 12 月
+* 人脸 ID 存储的客户配置：尽管人脸服务不存储客户图像，) 的提取人脸功能 (将存储在服务器上。 人脸 ID 是面部功能的标识符，将用于人 [脸识别](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)、 [面部验证](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)和人 [脸查找相似之处](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)。 存储的人脸功能将过期，并将在原始检测调用后的24小时内被删除。 客户现在可以确定这些面部 Id 的缓存时间长度。 最大值仍为24小时，但现在可以设置最小值60秒。 要缓存的面部 Id 的新时间范围是介于60秒到24小时之间的任何值。 有关详细信息，请参阅人 [脸-检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API 参考 (*faceIdTimeToLive* 参数) 。
 
 ## <a name="november-2020"></a>2020 年 11 月
-* 发布了一个示例人脸注册应用，演示了有关建立有意义的许可的最佳实践，以及如何通过高质量的注册创建高准确性面部识别系统。 可以在 [创建注册应用](build-enrollment-app.md) 指南和 [GitHub](https://github.com/Azure-Samples/cognitive-services-FaceAPIEnrollmentSample)上找到开源示例，以便开发人员可以进行部署或自定义。  
+* 发布了一个示例人脸注册应用，演示了有关建立有意义的许可的最佳实践，以及如何通过高质量的注册创建高准确性面部识别系统。 可以在 [创建注册应用](build-enrollment-app.md) 指南和 [GitHub](https://github.com/Azure-Samples/cognitive-services-FaceAPIEnrollmentSample)上找到开源示例，以便开发人员可以进行部署或自定义。 
+
+## <a name="august-2020"></a>2020 年 8 月
+* 静态数据的客户托管加密：在将数据保存到云时，人脸服务会自动加密数据。 人脸服务加密可保护你的数据，以帮助你满足组织的安全性和符合性承诺。 默认情况下，订阅使用 Microsoft 托管的加密密钥。 此外，还提供了一个新选项，用于使用名为客户管理的密钥 (CMK) 管理订阅。 在 [客户托管的密钥](https://docs.microsoft.com/azure/cognitive-services/face/face-encryption-of-data-at-rest)中可以找到更多详细信息。
+
+## <a name="april-2020"></a>2020 年 4 月
+* 新人脸 API 识别模型：新的识别03模型是当前可用的最准确的模型。 如果你是新客户，建议使用此模型。 对于相似性比较和人员匹配比较，识别03将提供更高的准确性。 可在 [指定人脸识别模型](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model)中找到更多详细信息。
 
 ## <a name="june-2019"></a>2019 年 6 月
 
-* 添加了一种新的面部检测模型，它在小型、侧视图、封闭像素和模糊表面上具有更高的准确性。 通过[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[FaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)、[LargeFaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)、[PersonGroup Person - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)和 [LargePersonGroup Person - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)来使用它，只需在 `detectionModel` 参数中指定新的人脸检测模型名称 `detection_02` 即可。 [如何指定检测模型](Face-API-How-to-Topics/specify-detection-model.md)中提供了更多详细信息。
+* 添加了一个新的人脸检测模型，提高了对小脸、侧视图、遮挡和模糊人脸的检测准确性。 通过[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[FaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)、[LargeFaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)、[PersonGroup Person - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)和 [LargePersonGroup Person - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)来使用它，只需在 `detectionModel` 参数中指定新的人脸检测模型名称 `detection_02` 即可。 [如何指定检测模型](Face-API-How-to-Topics/specify-detection-model.md)中提供了更多详细信息。
 
 ## <a name="april-2019"></a>2019 年 4 月
 
@@ -40,7 +52,7 @@ Azure 人脸服务会不断更新。 使用本文可了解最新功能的增强�
 
 ## <a name="january-2019"></a>2019 年 1 月
 
-* 添加了快照功能，以支持跨订阅进行数据迁移： [快照](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get)。 如需更多详细信息，请参阅[如何将人脸数据迁移到其他人脸订阅](Face-API-How-to-Topics/how-to-migrate-face-data.md)。
+* 添加了快照功能以支持跨订阅的数据迁移：[快照](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get)。 如需更多详细信息，请参阅[如何将人脸数据迁移到其他人脸订阅](Face-API-How-to-Topics/how-to-migrate-face-data.md)。
 
 ## <a name="october-2018"></a>2018 年 10 月
 
@@ -52,7 +64,7 @@ Azure 人脸服务会不断更新。 使用本文可了解最新功能的增强�
 
 * 在以下部分中将输入图像文件大小限制从 4 MB 增加到了 6 MB：[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[FaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)、[LargeFaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)、[PersonGroup 人员 - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)和 [LargePersonGroup人员 - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)。
 
-## <a name="march-2018"></a>2018 年 3月
+## <a name="march-2018"></a>2018 年 3 月
 
 * 添加了百万规模容器：[LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc) 和 [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)。 有关更多详细信息，请参阅[如何使用大规模功能](Face-API-How-to-Topics/how-to-use-large-scale.md)。
 

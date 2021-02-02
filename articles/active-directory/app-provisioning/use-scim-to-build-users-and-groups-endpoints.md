@@ -3,7 +3,7 @@ title: 生成 SCIM 终结点，以便用户预配到 Azure Active Directory 的�
 description: 跨域身份管理系统 (SCIM) 将自动用户预配标准化。 了解如何开发 SCIM 终结点，如何将 SCIM API 与 Azure Active Directory 集成，并开始使用 Azure Active Directory 自动将用户和组预配到你的云应用程序中。
 services: active-directory
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 34fa76197c4e08cffd1d8c66d6877b3e427e9fd6
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 6b7451b0d664995a6b647f7926d856b0db6090d8
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918138"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256096"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>教程：开发示例 SCIM 终结点
 
@@ -119,15 +119,15 @@ ms.locfileid: "98918138"
    |-|-|-|
    |使用 IIS Express 本地运行项目|||
    ||**服务器**|`localhost`|
-   ||端口|`:44359`*(忘记 **：**)*|
+   ||**端口**|`:44359`*(忘记 **：**)*|
    ||**Api**|`scim`|
    |使用 Kestrel 在本地运行项目|||
    ||**服务器**|`localhost`|
-   ||端口|`:5001`*(忘记 **：**)*|
+   ||**端口**|`:5001`*(忘记 **：**)*|
    ||**Api**|`scim`|
    |在 Azure 中托管终结点|||
    ||**服务器**|*(输入 SCIM URL)*|
-   ||端口|*(留空)*|
+   ||**端口**|*(留空)*|
    ||**Api**|`scim`|
 
 1. 使用 Postman 集合中的 " **获取密钥** " 将 **get** 请求发送到令牌终结点，并检索要在 **令牌** 变量中存储的用于后续请求的安全令牌。 

@@ -4,7 +4,7 @@ description: 在 Azure 门户中使用 Azure AD 应用程序代理为已发布�
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b25f1b506228d2d80aecae3845467759a4bc4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0cb2830c019635e9020a4b586bdc370450fddb0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165033"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253996"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>使用应用程序代理通过密码存储进行单一登录
 
@@ -34,19 +34,19 @@ Azure Active Directory 应用程序代理还可以发布本地应用程序供远
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 1. 选择 " **Azure Active Directory**  >  **企业应用程序**" "  >  **所有应用程序**"。
 1. 从列表中选择要设置 SSO 的应用。  
-1. 选择“应用程序代理”****。 
+1. 选择“应用程序代理”。 
 1. 将 " **预身份验证类型** " 更改为 " **Passthrough** " 并选择 " **保存**"。 稍后，你可以再次切换回 **Azure Active Directory** 类型！ 
 1. 选择“单一登录”。
 
    ![在应用的 "概述" 页中选择 "单一登录"](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
 
-1. 对于 SSO 模式，请选择“基于密码的登录”****。
+1. 对于 SSO 模式，请选择“基于密码的登录”。
 1. 对于登录 URL，请输入用户在公司网络外登录应用时在其中输入用户名和密码的页面的 URL。 该 URL 可能是通过应用程序代理发布应用时创建的外部 URL。
 
    ![选择“基于密码的登录”并输入 URL](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
 1. 选择“保存”。
-1. 选择“应用程序代理”****。 
+1. 选择“应用程序代理”。 
 1. 将 " **预身份验证类型** " 更改为 " **Azure Active Directory** "，然后选择 " **保存**"。 
 1. 选择 " **用户和组**"。
 1. 选择 " **添加用户**"，将用户分配到应用程序。 
@@ -54,7 +54,7 @@ Azure Active Directory 应用程序代理还可以发布本地应用程序供远
 1. 选择 " **Azure Active Directory**  >  **应用注册**  >  **所有应用程序**"。
 1. 从列表中，选择你配置了密码 SSO 的应用。
 1. 选择“品牌”  。 
-1. 从 "密码 SSO" 页上的 "**登录 url** " 更新**主页 url** ，然后选择 "**保存**"。  
+1. 从 "密码 SSO" 页上的 "**登录 url** " 更新 **主页 url** ，然后选择 "**保存**"。  
 
 
 
@@ -62,7 +62,7 @@ Azure Active Directory 应用程序代理还可以发布本地应用程序供远
 7. The page should tell you that a sign-in form was successfully detected at the provided URL. If it doesn't, select **Configure [your app name] Password Single Sign-on Settings** and choose **Manually detect sign-in fields**. Follow the instructions to point out where the sign-in credentials go. 
 -->
 
-## <a name="test-your-app"></a>测试应用程序
+## <a name="test-your-app"></a>测试应用
 
 中转到 "我的应用" 门户。 使用你的凭据登录 (或使用 access) 设置的测试帐户的凭据。 成功登录后，单击该应用的图标。 这可能会触发 "我的应用" 安全登录浏览器扩展的安装。 如果用户预定义了凭据，则应自动对应用进行身份验证，否则你必须首次指定用户名或密码。 
 

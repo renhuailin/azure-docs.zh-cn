@@ -7,20 +7,20 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 01/25/2021
+ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: 93e705eea39443ffc15fbdd079e1376ec46cb51c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: edf4ce188c9239e697e2148d4fff51966d91f85a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786684"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252604"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
 本文介绍如何使用 [sap 连接器](https://docs.microsoft.com/connectors/sap/)从逻辑应用访问 SAP 资源。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -528,6 +528,18 @@ SAP 连接器支持逻辑应用触发器的 Azure [异步请求-答复模式](/a
 有关完整的错误消息，请检查 SAP 适配器的扩展日志。 你还可以 [为 SAP 连接器启用扩展日志文件](#extended-sap-logging-in-on-premises-data-gateway)。
 
 对于本地数据网关2020年6月版和更高版本，你可以 [在应用程序设置中启用网关日志](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app)。 
+
+* 默认日志记录级别为 **Warning**。
+
+* 如果在本地数据网关应用的 **诊断** 设置中启用 **其他日志记录**，则会将日志记录级别提升为 "**信息**"。
+
+* 若要将日志记录级别提高到 **详细**，请在配置文件中更新以下设置。 通常，配置文件位于 `C:\Program Files\On-premises data gateway\Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config` 。
+
+```json
+<setting name="SapTraceLevel" serializeAs="String">
+   <value>Verbose</value>
+</setting>
+```
 
 对于本地数据网关版本2020及更早版本，默认禁用日志。
 

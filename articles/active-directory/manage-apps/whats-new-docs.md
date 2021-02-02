@@ -1,24 +1,51 @@
 ---
 title: Azure Active Directory 应用程序管理的新增功能
 description: Azure Active Directory 的应用程序管理的新文档和更新的文档。
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
-ms.openlocfilehash: ea2e08db91d23e9523b7bc95e01b7adc9c93b3cc
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+manager: daveba
+ms.openlocfilehash: 53339623ee435362d248b794776681972000173e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054815"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258568"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 应用程序管理：新增功能
 
 欢迎使用 Azure Active Directory 应用程序管理文档中的新增功能。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解应用程序管理服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="new-articles"></a>新文章
+- [计划 Azure Active Directory 我的应用配置](my-apps-deployment-plan.md)
+
+### <a name="updated-articles"></a>更新的文章
+- [安装应用程序代理程序连接器时出现问题](application-proxy-connector-installation-problem.md)
+- [在 Azure AD 中排查基于密码的单一登录问题](troubleshoot-password-based-sso.md)
+- [应用程序管理最佳做法](application-management-fundamentals.md)
+- [将 Azure Active Directory 与应用程序集成入门指南](plan-an-application-integration.md)
+- [什么是应用程序管理？](what-is-application-management.md)
+- [Active Directory (Azure AD) 应用程序代理常见问题](application-proxy-faq.md)
+- [教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](application-proxy-add-on-premises-application.md)
+- [使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)
+- [为 Azure Active Directory 开发业务线应用](developer-guidance-for-integrating-applications.md)
+- [了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)
+- [了解链接登录](configure-linked-sign-on.md)
+- [了解基于密码的单一登录](configure-password-single-sign-on-non-gallery-applications.md)
+- [了解基于 SAML 的单一登录](configure-saml-single-sign-on.md)
+- [排查在 Azure Active Directory 中添加或删除应用程序时遇到的常见问题](troubleshoot-adding-apps.md)
+- [查看使用 Azure AD 租户进行标识管理的应用](application-types.md)
+- [了解如何在 Azure Active Directory 中将用户分配到应用](ways-users-get-assigned-to-applications.md)
+- [快速入门：从 Azure Active Directory (Azure AD) 租户中删除应用程序](delete-application-portal.md)
+- [使用 Azure AD 应用程序代理发布远程桌面](application-proxy-integrate-with-remote-desktop-services.md)
+- [对 Azure Active Directory 中拥有过度特权的或可疑的应用程序采取措施](manage-application-permissions.md)
+
 
 ## <a name="december-2020"></a>2020 年 12 月
 

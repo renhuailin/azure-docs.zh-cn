@@ -3,7 +3,7 @@ title: 页面上的链接对应用程序代理应用程序不起作用
 description: 如何对与 Azure AD 集成的应用程序代理应用程序上断开的链接问题进行故障排除
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1922ea9afd69366e534049f5a7a350cf39e52dee
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9a8ecb908063a40da32c1397fd4249811f9c2712
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371573"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254608"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>页面上的链接对应用程序代理应用程序不起作用
 
@@ -26,7 +26,7 @@ ms.locfileid: "92371573"
 ## <a name="overview"></a>概述 
 发布应用程序代理应用后，应用程序中默认可以工作的链接仅是指向已发布根 URL 内包含的目标的链接。 应用程序内的链接无法正常工作，应用程序的内部 URL 可能未包括应用程序内链接的所有目标。
 
-**为什么会出现此情况？** 单击应用程序中的某个链接后，应用程序代理尝试将此 URL 解析为同一应用程序内的内部 URL 或外部可用的 URL。 如果链接指向不在同一应用程序内的内部 URL，它不属于这些存储桶中的任意一个，从而导致出现“未找到”错误。
+**为何发生这种情况？** 单击应用程序中的某个链接后，应用程序代理尝试将此 URL 解析为同一应用程序内的内部 URL 或外部可用的 URL。 如果链接指向不在同一应用程序内的内部 URL，它不属于这些存储桶中的任意一个，从而导致出现“未找到”错误。
 
 ## <a name="ways-you-can-resolve-broken-links"></a>解决断开的链接的方法
 

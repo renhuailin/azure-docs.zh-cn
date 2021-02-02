@@ -3,7 +3,7 @@ title: Workday 属性参考
 description: 了解可以使用 XPATH 查询从 Workday 中提取哪些属性。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 5892100140c6022763453a4141d87e6a7ba4ed75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ff9b3d4cc3bee28c8e5e95d8854f64eaa546b0c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266558"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255468"
 ---
 # <a name="workday-attribute-reference"></a>Workday 属性参考
 
@@ -117,7 +117,7 @@ ms.locfileid: "91266558"
 
 如果在连接 URL 中使用 WWS API v30.0 或更高版本，如下所示：
 
-:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Workday 无版本信息":::
+:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Workday 版本信息":::
 
 ...在启用预配作业之前，请更新“属性映射”->“高级选项”->“编辑 Workday 的属性列表”下的“XPATH API 表达式”，以使用表中列出的值。  
 
@@ -235,7 +235,7 @@ ms.locfileid: "91266558"
 * substring-after
 * starts-with
 * string-length
-* contains
+* 包含
 * translate
 * normalize-space
 * substring-before

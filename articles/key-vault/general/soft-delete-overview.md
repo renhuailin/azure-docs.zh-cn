@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 0f428954ac6ef74253e6e6e430977a85a3943f99
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 68c690b9cbd2028f73492550adbe86111f9ec3a7
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589978"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257940"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 
@@ -99,5 +99,6 @@ Azure Key Vault 是由 Azure Resource Manager 管理的跟踪资源。 Azure Res
 
 以下两个指南提供有关使用软删除的主要使用方案。
 
+- [如何在门户中使用 Key Vault 软删除](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal)
 - [如何将 Key Vault 软删除与 PowerShell 配合使用](./key-vault-recovery.md) 
 - [如何将 Key Vault 软删除与 CLI 配合使用](./key-vault-recovery.md)

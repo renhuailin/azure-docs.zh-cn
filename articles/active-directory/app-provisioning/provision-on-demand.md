@@ -3,7 +3,7 @@ title: 使用 Azure Active Directory 按需预配用户
 description: 强制同步
 services: active-directory
 author: msmimart
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be03a149f34c16621905081a2f9bb663d85bc53c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629006"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255655"
 ---
 # <a name="on-demand-provisioning"></a>按需预配
 使用按需预配可在数秒内将用户预配到应用程序。 除此之外，还可以使用此功能执行以下操作：
@@ -93,7 +93,7 @@ ms.locfileid: "91629006"
 * "**分配给应用程序**" 指示将用户分配到 Azure AD 中的应用程序。
 * **作用域同步所有** 指示范围设置允许租户中的所有用户和组。
 * **用户具有所需角色** 表示用户具有要预配到应用程序中的必要角色。 
-* 如果已为应用程序定义了范围筛选器，也会显示**范围筛选器**。 此筛选器以以下格式显示： {范围筛选器标题} {范围筛选器属性} {范围筛选器运算符} {范围筛选器值}。
+* 如果已为应用程序定义了范围筛选器，也会显示 **范围筛选器**。 此筛选器以以下格式显示： {范围筛选器标题} {范围筛选器属性} {范围筛选器运算符} {范围筛选器值}。
 
 #### <a name="troubleshooting-tips"></a>故障排除提示
 
@@ -124,7 +124,7 @@ ms.locfileid: "91629006"
 
 下面是在成功按需预配用户之后可能会看到的示例：
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="显示用于按需预配用户的 Azure 门户 UI 的屏幕截图。":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="显示用户的成功按需预配的屏幕截图。":::
 
 #### <a name="view-details"></a>查看详细信息
 
@@ -140,7 +140,7 @@ ms.locfileid: "91629006"
 
 * **按需预配需要多长时间？** 按需预配通常需要不到30秒的时间。
 
-## <a name="known-limitations"></a>已知的限制
+## <a name="known-limitations"></a>已知限制
 
 对于按需预配，当前存在一些已知限制。 发布你的 [建议和反馈](https://aka.ms/appprovisioningfeaturerequest) ，以便我们可以更好地确定要进行的改进。
 

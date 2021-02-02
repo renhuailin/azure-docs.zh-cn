@@ -10,12 +10,12 @@ ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 86ded3dea819702631b1fa04dbc56f727566fc98
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: a41966c2b3ba73d7b68399b1b99d14313e220833
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602676"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257805"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>使用 Azure 存储 blob 库存来管理 blob 数据 (预览) 
 
@@ -32,6 +32,8 @@ Blob 库存预览版在以下区域中的存储帐户上可用：
 - 法国中部
 - 加拿大中部
 - 加拿大东部
+- 美国东部
+- 美国东部 2
 
 ### <a name="pricing-and-billing"></a>定价和计费
 
@@ -57,7 +59,7 @@ Blob 库存预览版在以下区域中的存储帐户上可用：
 清单策略完全读取或写入。 不支持部分更新。
 
 > [!IMPORTANT]
-> 如果为存储帐户启用防火墙规则，则可能会阻止清单请求。 可以通过为受信任的 Microsoft 服务提供例外，来取消阻止这些请求。 有关详细信息，请参阅[配置防火墙和虚拟网络](../common/storage-network-security.md#exceptions)中的“例外”部分。
+> 如果为存储帐户启用了防火墙规则，清单请求可能会遭到阻止。 可以通过针对受信任的 Microsoft 服务提供例外来取消阻止这些请求。 有关详细信息，请参阅[配置防火墙和虚拟网络](../common/storage-network-security.md#exceptions)中的“例外”部分。
 
 每日自动计划一个 blob 清单运行。 完成库存运行可能需要长达24小时。 清单报表通过使用一个或多个规则添加库存策略来配置。
 
@@ -85,10 +87,10 @@ Blob 库存预览版在以下区域中的存储帐户上可用：
 
 通过选择 "Azure 门户的" **Blob 库存**"部分中的"**代码视图**"选项卡，查看清单策略的 JSON。
 
-| 参数名称 | 参数类型        | 注释 | 必需？ |
+| 参数名称 | 参数类型        | 注释 | 是否必需？ |
 |----------------|-----------------------|-------|-----------|
-| destination    | String                | 将生成所有清单文件的目标容器。 目标容器必须已存在。 | 是 |
-| enabled        | Boolean               | 用于禁用整个策略。 如果设置为 **true**，则启用规则级别的字段将重写此参数。 禁用后，将禁用所有规则的清单。 | 是 |
+| destination    | 字符串                | 将生成所有清单文件的目标容器。 目标容器必须已存在。 | 是 |
+| enabled        | 布尔               | 用于禁用整个策略。 如果设置为 **true**，则启用规则级别的字段将重写此参数。 禁用后，将禁用所有规则的清单。 | 是 |
 | 规则          | 规则对象的数组 | 一个策略至少需要包含一个规则。 最多支持10个规则。 | 是 |
 
 ## <a name="inventory-rules"></a>清单规则
@@ -97,10 +99,10 @@ Blob 库存预览版在以下区域中的存储帐户上可用：
 
 策略中的每个规则具有多个参数：
 
-| 参数名称 | 参数类型                 | 注释 | 必需？ |
+| 参数名称 | 参数类型                 | 注释 | 是否必需？ |
 |----------------|--------------------------------|-------|-----------|
-| name           | String                         | 规则名称最多可以包含256个区分大小写的字母数字字符。 该名称在策略中必须是唯一的。 | 是 |
-| enabled        | Boolean                        | 允许启用或禁用规则的标志。 默认值为 **true**。 | 是 |
+| name           | 字符串                         | 规则名称最多可以包含256个区分大小写的字母数字字符。 该名称在策略中必须是唯一的。 | 是 |
+| enabled        | 布尔                        | 允许启用或禁用规则的标志。 默认值为 **true**。 | 是 |
 | 定义     | JSON 清单规则定义 | 每个定义都由规则筛选器集组成。 | 是 |
 
 全局 **Blob 库存启用** 标志优先于规则中的 *enabled* 参数。
@@ -109,12 +111,12 @@ Blob 库存预览版在以下区域中的存储帐户上可用：
 
 有多个筛选器可用于自定义 blob 清单报表：
 
-| 筛选器名称         | 筛选器类型                     | 注释 | 必需？ |
+| 筛选器名称         | 筛选器类型                     | 注释 | 是否必需？ |
 |---------------------|---------------------------------|-------|-----------|
 | blobTypes           | 预定义枚举值的数组 | 有效值为 `blockBlob` 和 `appendBlob` ，适用于已启用分层命名空间的帐户，以及 `blockBlob` `appendBlob` 其他帐户的、和 `pageBlob` 。 | 是 |
 | prefixMatch         | 要匹配的前缀的数组，最多包含10个字符串。 前缀必须以容器名称开头，例如 "container1/foo" | 如果未定义 *prefixMatch* 或提供空前缀，则规则将应用于存储帐户中的所有 blob。 | 否 |
-| includeSnapshots    | Boolean                         | 指定清单是否应包含快照。 默认值为 **false**。 | 否 |
-| includeBlobVersions | Boolean                         | 指定清单是否应包含 blob 版本。 默认值为 **false**。 | 否 |
+| includeSnapshots    | 布尔                         | 指定清单是否应包含快照。 默认值为 **false**。 | 否 |
+| includeBlobVersions | 布尔                         | 指定清单是否应包含 blob 版本。 默认值为 **false**。 | 否 |
 
 通过选择 "Azure 门户的" **Blob 库存**"部分中的"**代码视图**"选项卡，查看库存规则的 JSON。 筛选器在规则定义中指定。
 

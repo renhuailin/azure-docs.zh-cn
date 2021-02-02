@@ -3,7 +3,7 @@ title: Azure AD 中的应用程序设置的已知问题
 description: 了解在 Azure AD 中使用自动应用程序预配时的已知问题。
 author: kenwith
 ms.author: kenwith
-manager: celestedg
+manager: daveba
 services: active-directory
 ms.service: active-directory
 ms.subservice: app-provisioning
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: bde5cecc4052724f795cac03f6efceb3451ea2ee
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 9eba671f6c824c8c88388f2b9d61512dfb1d122f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914342"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256637"
 ---
 # <a name="known-issues-application-provisioning"></a>已知问题：应用程序预配
 使用应用程序设置时应注意的已知问题。 你可以在 UserVoice 上提供有关应用程序预配服务的反馈，请参阅 [Azure AD 应用程序预配 UserVoice](https://aka.ms/appprovisioningfeaturerequest)。 我们密切关注 UserVoice，以便我们改进服务。 

@@ -3,19 +3,19 @@ title: 规划 Azure Active Directory 应用程序代理部署
 description: 规划组织内应用程序代理部署的端到端指南
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 08289987dac81905584ee65b808cfcbf35525728
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 213f7d95916555ea32925a5b0af0865d900b0209
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835136"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257907"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>计划 Azure AD 应用程序代理部署
 
@@ -29,7 +29,7 @@ ms.locfileid: "97835136"
 
 以下部分提供了关键规划元素的广泛视图，这些元素将为你提供高效的部署体验。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 在开始实施之前，需要满足以下先决条件。 在本 [教程](application-proxy-add-on-premises-application.md)中，可以查看有关设置环境的详细信息，包括这些先决条件。
 
@@ -98,7 +98,7 @@ ms.locfileid: "97835136"
 | 身份验证类型| 应用程序支持的身份验证类型，如基本、Windows 集成身份验证、基于窗体、基于标头和声明。 <br>如果将应用程序配置为在特定的域帐户下运行，请注意服务帐户 (FQDN) 的完全限定的域名。<br> 如果基于 SAML，则为标识符和回复 Url。 <br> 如果基于标头，则为供应商解决方案和处理身份验证类型的特定要求。 |
 | 连接器组名称 | 将指定向此后端应用程序提供管道和 SSO 的连接器组的逻辑名称。 |
 | 用户/组访问权限 | 将被授予对应用程序的外部访问权限的用户或用户组。 |
-| 其他需求 | 请注意发布应用程序时应考虑的任何其他远程访问或安全要求。 |
+| 其他要求 | 请注意发布应用程序时应考虑的任何其他远程访问或安全要求。 |
 
 您可以下载此 [应用程序清单电子表格](https://aka.ms/appdiscovery) 来清点您的应用程序。
 
@@ -120,7 +120,7 @@ ms.locfileid: "97835136"
 
 * 只有通过组成员身份或单独分配到应用程序的用户可以访问这些应用程序。
 
-**“性能”**
+**性能**
 
 * 与从内部网络访问应用程序相比，应用程序性能不会有所下降。
 

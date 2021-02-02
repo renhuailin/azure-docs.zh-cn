@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1c9c07d3770d2b71bee8f8e789022be6f831cc8f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4393607d6714bc4c1b10ac89d5ac69c173f8fef4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092862"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257315"
 ---
 # <a name="speech-service-release-notes"></a>语音服务发行说明
 
@@ -26,7 +26,7 @@ ms.locfileid: "99092862"
 
 **突出显示摘要**
 - 更小的内存和磁盘空间，使 SDK 更有效。
-- 提高了自定义语音质量和易用性。 
+- 可用于自定义神经语音专用预览的高保真输出格式较高。
 - 意向识别器现在可以获得比 top 更多的方法，使您能够对客户的意图进行单独的评估。
 - 你的语音助手或机器人现在更易于设置，你可以使其立即停止侦听，并对其响应错误的方式进行更多的控制。
 - 通过使压缩可选，改进了设备性能。
@@ -43,7 +43,7 @@ ms.locfileid: "99092862"
   - Android 库的大小为3-5%。
 
 **新功能**
-- **所有**：自定义语音质量使其变得更好。 为自定义 TTS 声音添加了48kHz 格式，从而提高了本机输出采样率高于24kHz 的自定义语音的音频质量。
+- **All**：通过 TTS 语音合成 API 的自定义神经语音的专用预览的新的48KHz 输出格式： Audio48Khz192KBitRateMonoMp3、48KHz-192kbitrate-Mono、Audio48Khz96KBitRateMonoMp3、48KHz、96kbitrate、Raw48Khz16BitMonoPcm、48KHz、16位、Riff48Khz16BitMonoPcm、riff、48KHz-16 位---。
 - **所有**：自定义语音也更易于使用。 添加了对通过 `EndpointId` ([c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setendpointid)、 [c #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId)、 [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_)、 [JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#endpointId)、 [目标-c](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid)、 [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#endpoint-id)) 设置自定义语音的支持。 在进行此更改之前，自定义语音用户需要通过方法设置终结点 URL `FromEndpoint` 。 现在，客户可以 `FromSubscription` 像公开语音一样使用方法，然后通过设置提供部署 id `EndpointId` 。 这可以简化自定义语音的设置。 
 - **C + +/c #/Java/Objective-C/Python**：从中获取多个 top 目的 `IntentRecognizer` 。 它现在支持使用 uri 参数配置包含所有意图的 JSON 结果，而不是仅支持通过方法进行的最高分评分 `LanguageUnderstandingModel FromEndpoint` `verbose=true` 。 这解决了 [GitHub 问题 #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880)。 请参阅 [此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition/#add-a-languageunderstandingmodel-and-intents)的更新文档。
 - **C + +/c #/Java**：使语音助手或机器人停止侦听 immediatedly。 `DialogServiceConnector` ([c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/dialog-dialogserviceconnector)、 [c #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet)、 [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable)) 现在提供了一个 `StopListeningAsync()` 方法 `ListenOnceAsync()` 。 这会立即停止音频捕获并正常等待结果，使其完美地用于 "立即停止" 按钮按方案。

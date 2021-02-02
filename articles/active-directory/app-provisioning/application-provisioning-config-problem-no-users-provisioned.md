@@ -3,7 +3,7 @@ title: 未在我的应用程序中设置用户
 description: 当在针对用户预配使用 Azure AD 配置的 Azure AD 库应用程序中没有看到用户时，如何解决面对的常见问题
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 89a5838524daa1959ecf6b4fe3c17d6175ca8553
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 429f993764273d6b6eb23d75d0132b374d5d0ca0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571770"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256348"
 ---
 # <a name="no-users-are-being-provisioned"></a>没有用户正在进行预配 
 >[!NOTE]
@@ -31,7 +31,7 @@ ms.locfileid: "96571770"
   
 如果发现未设置用户，请参阅 Azure AD 中 [ (预览) 的设置日志 ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 。 在日志条目中搜索特定用户。
 
-可以通过在 **Azure Active Directory** &gt; "活动" 部分中选择 "Azure Active Directory **企业应用**" "设置" " &gt; **(预览**" **Activity**) 来访问 Azure 门户中的设置日志。 你可以根据用户的名称或源系统或目标系统中的标识符来搜索设置数据。 有关详细信息，请参阅 [预配日志 (预览) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
+可以通过在 &gt; "活动" 部分中选择 "Azure Active Directory **企业应用**" "设置" " &gt; **(预览**" ) 来访问 Azure 门户中的设置日志。 你可以根据用户的名称或源系统或目标系统中的标识符来搜索设置数据。 有关详细信息，请参阅 [预配日志 (预览) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
 
 预配日志记录预配服务执行的所有操作，包括查询用于预配作用域中分配的用户的 Azure AD、查询目标应用以确定是否存在这些用户，以及比较系统之间的用户对象。 然后根据比较结果在目标系统中添加、更新或禁用用户帐户。
 

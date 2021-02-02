@@ -3,7 +3,7 @@ title: 规划云 HR 应用程序以 Azure Active Directory 用户预配
 description: 本文介绍将 cloud HR 系统（如 Workday 和 SuccessFactors）与 Azure Active Directory 集成的部署过程。 将 Azure AD 与云 HR 系统集成，会生成一个完整的标识生命周期管理系统。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 64418a727ecb9a300912a4766a9ea2066328ad31
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9c896d4cccf898b8818b4c363c5bc891a8734ca5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174894"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256705"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>规划云 HR 应用程序以 Azure Active Directory 用户预配
 
@@ -79,7 +79,7 @@ HR 驱动的 IT 预配的这一功能提供了以下重要的业务优势：
 
 还需要一个有效的 Azure AD Premium P1 或更高版本的订阅许可证，该许可证将源自 cloud HR 应用并设置为 Active Directory 或 Azure AD。 云 HR 应用中拥有的任何不正确的许可证数可能会导致用户预配时出现错误。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 - Azure AD [混合标识管理员](../roles/permissions-reference.md#hybrid-identity-administrator)  配置 Azure AD Connect 预配代理。
 - Azure AD [应用程序管理员](../roles/permissions-reference.md#application-administrator) 角色在 Azure 门户中配置预配应用
@@ -257,7 +257,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 启动 Joiners-Leavers 进程时，请收集以下要求。
 
-| 进程 | 要求 |
+| 过程 | 要求 |
 | - | - |
 | **Joiners** | 从标识生命周期角度看，如何处理 rehires？ Rehires 是否保留其旧的员工 Id？ |
 | | 您是否会提前处理日后招聘的员工并提前为他们创建 Active Directory 帐户？ 这些帐户是否创建为启用或禁用状态？ |
@@ -276,7 +276,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 启动 Joiners-离开者进程时，请收集以下要求。
 
-| 进程 | 要求 |
+| 过程 | 要求 |
 | - | - |
 | **Joiners** | Active Directory 帐户创建过程是手动、自动还是部分自动？ |
 | | 你是否打算将自定义属性从 cloud HR 应用传播到 Active Directory？ |

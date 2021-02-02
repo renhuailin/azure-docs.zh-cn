@@ -3,19 +3,19 @@ title: 了解如何在 Azure Active Directory 中将用户分配到应用
 description: 了解如何将用户分配到使用 Azure Active Directory 进行标识管理的应用。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/07/2021
 ms.author: kenwith
-ms.openlocfilehash: aedcecf528f07d9d7f89c1d5659d8fcd2cb36df2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 161df0446c9478ca0f2b135c1e426f3786b164fc
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016722"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257434"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>了解如何在 Azure Active Directory 中将用户分配到应用
 本文介绍如何将用户分配给租户中的应用程序。

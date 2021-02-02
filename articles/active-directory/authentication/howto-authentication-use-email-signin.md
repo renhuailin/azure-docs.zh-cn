@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4e39d7f15e3ca3c6e241c767a5f881d7170c6379
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559834"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255961"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用电子邮件作为备用登录 ID (预览版登录到 Azure Active Directory) 
 
@@ -113,7 +113,7 @@ Azure AD Connect 自动同步的用户属性之一是 ProxyAddresses。 如果�
 1. 使用如下所示的 [Get-AzureADPolicy][Get-AzureADPolicy] cmdlet 检查租户中是否已存在 HomeRealmDiscoveryPolicy 策略：
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 1. 如果当前未配置任何策略，则该命令将不返回任何内容。 如果返回策略，请跳过此步骤，并转到下一步以更新现有策略。
@@ -121,10 +121,22 @@ Azure AD Connect 自动同步的用户属性之一是 ProxyAddresses。 如果�
     若要将 HomeRealmDiscoveryPolicy 策略添加到租户，请使用 [New-AzureADPolicy][New-AzureADPolicy] cmdlet，并将 AlternateIdLogin 属性设置为“"已启用": true”，如以下示例所示  ：
 
     ```powershell
-    New-AzureADPolicy -Definition @('{"HomeRealmDiscoveryPolicy" :{"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    New-AzureADPolicy @AzureADPolicyParameters
     ```
 
     成功创建策略后，该命令将返回策略 ID，如以下示例输出所示：
@@ -156,17 +168,31 @@ Azure AD Connect 自动同步的用户属性之一是 ProxyAddresses。 如果�
     以下示例添加了 AlternateIdLogin 属性，并保留了可能已设置的 AllowCloudPasswordValidation 属性 **  ** ：
 
     ```powershell
-    Set-AzureADPolicy -id b581c39c-8fe3-4bb5-b53d-ea3de05abb4b `
-        -Definition @('{"HomeRealmDiscoveryPolicy" :{"AllowCloudPasswordValidation":true,"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AllowCloudPasswordValidation" = $true
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      ID                    = "b581c39c-8fe3-4bb5-b53d-ea3de05abb4b"
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    
+    Set-AzureADPolicy @AzureADPolicyParameters
     ```
 
     确认更新后的策略显示了所做的更改且现已启用 AlternateIdLogin 属性：
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 应用策略后，最长可能需要一小时才能进行传播，使用户能够使用其备用登录 ID 进行登录。
@@ -207,7 +233,12 @@ Azure AD Connect 自动同步的用户属性之一是 ProxyAddresses。 如果�
 4. 如果没有针对此功能的现有暂存推出策略，请创建新的分步推出策略，并记下策略 ID：
 
    ```powershell
-   New-AzureADMSFeatureRolloutPolicy -Feature EmailAsAlternateId -DisplayName "EmailAsAlternateId Rollout Policy" -IsEnabled $true
+   $AzureADMSFeatureRolloutPolicy = @{
+      Feature    = "EmailAsAlternateId"
+      DisplayName = "EmailAsAlternateId Rollout Policy"
+      IsEnabled   = $true
+   }
+   New-AzureADMSFeatureRolloutPolicy @AzureADMSFeatureRolloutPolicy
    ```
 
 5. 查找要添加到分阶段推出策略的组的 directoryObject ID。 请注意为 *Id* 参数返回的值，因为它将在下一步中使用。
@@ -250,7 +281,7 @@ Remove-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID"
 1. 确认 Azure AD HomeRealmDiscoveryPolicy 策略已将 AlternateIdLogin 属性设置为 "已启用": true  ：
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 ## <a name="next-steps"></a>后续步骤

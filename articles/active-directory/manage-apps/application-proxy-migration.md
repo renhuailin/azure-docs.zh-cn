@@ -4,7 +4,7 @@ description: 如果要从 Microsoft Forefront 或 Unified Access Gateway 升级�
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cccabaf069a3027e615892e36e218f865a6c983a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7d089d8f57bf8ef1278d262129cc8ddfc81d581
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706653"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257737"
 ---
 # <a name="compare-remote-access-solutions"></a>比较远程访问解决方案
 
@@ -32,7 +32,7 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
 
 通过此表了解如何对威胁管理网关 (TMG)、统一访问网关 (UAG)、Web 应用程序代理 (WAP) 和 Azure AD 应用程序代理 (AP) 进行比较。
 
-| Feature | TMG | UAG | WAP | AP |
+| 功能 | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
 | 证书身份验证 | 是 | 是 | - | - |
 | 有选择地发布浏览器应用 | 是 | 是 | 是 | 是 |

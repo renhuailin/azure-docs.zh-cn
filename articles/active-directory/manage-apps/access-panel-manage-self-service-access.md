@@ -3,7 +3,7 @@ title: 如何在 Azure AD 中使用自助服务应用程序访问
 description: 启用自助服务，以便用户可以在 Azure AD 中查找应用
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: d99f0021ee53e972dacfdadb3e488498a3fc4ad0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 13f91fdd9e2d9501fba426bd6facbf9824a39285
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372457"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257011"
 ---
 # <a name="how-to-use-self-service-application-access"></a>如何使用自助服务应用程序访问
 
@@ -41,17 +41,17 @@ ms.locfileid: "92372457"
 
 若要启用应用程序的自助应用程序访问，请执行以下步骤：
 1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
-2. 通过选择主左侧导航菜单顶部的 "**所有服务**" 打开**Azure Active Directory 扩展**。
+2. 通过选择主左侧导航菜单顶部的 "**所有服务**" 打开 **Azure Active Directory 扩展**。
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-4. 从 Azure Active Directory 左侧导航菜单中选择 " **企业应用程序** "。
+4. 在 Azure Active Directory 的左侧导航菜单中，选择“企业应用程序”。
 5. 选择“所有应用程序”，查看所有应用程序的列表。
    * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 6. 从列表中选择要对其启用自助访问的应用程序。
 7. 加载应用程序后，在应用程序的左侧导航菜单中选择 " **自助服务** "。
-8. 要对此应用程序启用自助应用程序访问，请将“允许用户请求对此应用程序的访问权限?”**** 切换到“是”****。
+8. 要对此应用程序启用自助应用程序访问，请将“允许用户请求对此应用程序的访问权限?”切换到“是”。
 9. 接下来，若要选择要向其添加对此应用程序的访问权限的用户组，请选择 "应将 **用户添加到哪个组？** " 旁边的选择器，然后选择一个组。
-10. **可选：** 如果希望获得业务批准之后才允许用户访问，请将“需要获得批准才能授权访问此应用程序?”**** 切换到“是”****。
-11. **可选：对于仅使用密码单一登录的应用程序，** 如果要允许业务审批人为已批准的用户指定发送到此应用程序的密码，请将“允许审批人设置此应用程序的用户密码?”**** 切换到“是”****。
+10. **可选：** 如果希望获得业务批准之后才允许用户访问，请将“需要获得批准才能授权访问此应用程序?”切换到“是”。
+11. **可选：对于仅使用密码单一登录的应用程序，** 如果要允许业务审批人为已批准的用户指定发送到此应用程序的密码，请将“允许审批人设置此应用程序的用户密码?”切换到“是”。
 12. **可选：** 指定允许审批对此应用的访问权限的业务审批者。 选择 **允许谁批准对此应用程序的访问权限？** 然后，最多可选择10个单独的业务审批者。
     * 不支持组。
 13. **可选：** **对于公开角色的应用程序**，如果想要将自助服务批准的用户分配给角色，请选择 " **此应用程序中应向哪个角色分配用户？** " 旁边的选择器，以选择应将这些用户分配到的角色。

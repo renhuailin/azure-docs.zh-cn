@@ -3,7 +3,7 @@ title: 向 SaaS 应用程序报告自动用户帐户预配
 description: 了解如何检查自动用户帐户预配作业的状态，以及如何排查单个用户的预配问题。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3dcbb2567b9a92ea7d806acedb5d1cc6a31a966e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e6839026c83a10a4acebd7b7a6ab55b210e7ef14
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069800"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256671"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教程：有关自动用户帐户预配的报告
 
@@ -40,13 +40,13 @@ Azure Active Directory (Azure AD) 包含一个 [用户帐户预配服务](user-p
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>从 Azure 门户获取预配报告
 
-若要获取给定应用程序的预配报表信息，请首先启动[Azure 门户](https://portal.azure.com)，并**Azure Active Directory** &gt; **Enterprise Apps** &gt; "**活动**" 部分中的 " ** (预览版") 预览**。 还可以浏览到配置了预配的企业应用程序。 例如，如果要在 LinkedIn Elevate 中预配用户，应用程序详细信息的导航路径为：
+若要获取给定应用程序的预配报表信息，请首先启动 [Azure 门户](https://portal.azure.com)，并 **Azure Active Directory** &gt;  &gt; "**活动**" 部分中的 " **(预览版") 预览**。 还可以浏览到配置了预配的企业应用程序。 例如，如果要在 LinkedIn Elevate 中预配用户，应用程序详细信息的导航路径为：
 
-“Azure Active Directory”>“企业应用程序”>“所有应用程序”>“LinkedIn Elevate”****
+“Azure Active Directory”>“企业应用程序”>“所有应用程序”>“LinkedIn Elevate”
 
 在此处，你可以访问预配进度栏和预配日志，如下所述。
 
-## <a name="provisioning-progress-bar"></a>设置进度栏
+## <a name="provisioning-progress-bar"></a>预配进度条
 
 [预配进度栏](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar)在给定应用程序的 "**预配**" 选项卡中可见。 它位于 "**设置**" 下的 "**当前状态**" 部分，并显示当前初始或增量周期的状态。 本部分还显示：
 
@@ -55,13 +55,13 @@ Azure Active Directory (Azure AD) 包含一个 [用户帐户预配服务](user-p
 * [初始周期](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental)是否已完成。
 * 预配过程是否已被隔离，隔离状态的原因是什么（例如，由于管理员凭据无效，与目标系统通信失败）。
 
-**当前状态**应该是管理员检查设置作业的操作运行状况的第一个地方。
+**当前状态** 应该是管理员检查设置作业的操作运行状况的第一个地方。
 
- ![摘要报告](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
+ ![摘要报告](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
 
 ## <a name="provisioning-logs-preview"></a> (预览版预配日志) 
 
-预配服务执行的所有活动都记录在 Azure AD [预配日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)中。 可以通过在**Azure Active Directory** &gt; "活动" 部分中选择 "Azure Active Directory**企业应用**" "设置" " &gt; ** (预览**" **Activity**) 来访问 Azure 门户中的设置日志。 你可以根据用户的名称或源系统或目标系统中的标识符来搜索设置数据。 有关详细信息，请参阅 [预配日志 (预览) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 记录的活动事件类型包括：
+预配服务执行的所有活动都记录在 Azure AD [预配日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)中。 可以通过在 &gt; "活动" 部分中选择 "Azure Active Directory **企业应用**" "设置" " &gt; **(预览**" ) 来访问 Azure 门户中的设置日志。 你可以根据用户的名称或源系统或目标系统中的标识符来搜索设置数据。 有关详细信息，请参阅 [预配日志 (预览) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 记录的活动事件类型包括：
 
 ## <a name="troubleshooting"></a>疑难解答
 

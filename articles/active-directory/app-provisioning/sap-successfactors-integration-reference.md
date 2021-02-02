@@ -3,19 +3,19 @@ title: Azure Active Directory 和 SAP SuccessFactors 集成参考
 description: 深入了解 SAP SuccessFactors-HR 驱动预配
 services: active-directory
 author: cmmdesai
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: e97be7fef09287e6c4f8696e217702b97853fa6a
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: ed97600ca1802629f81f93f4f51c92ad4b1c9bd1
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569447"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256215"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory 预配如何与 SAP SuccessFactors 集成 
 
@@ -76,13 +76,13 @@ Azure AD 预配服务使用基本身份验证连接到员工中心 OData API 终
 根据属性映射，在完全同步期间 Azure AD 预配服务将发送以下 "GET" OData API 查询，以提取所有活动用户的有效数据。 
 
 > [!div class="mx-tdCol2BreakAll"]
->| 参数 | 说明 |
+>| 参数 | 描述 |
 >| ----------|-------------|
->| OData API 主机 | 将 https 追加到 *租户 URL*。 示例：`https://api4.successfactors.com` |
+>| OData API 主机 | 将 https 追加到 *租户 URL*。 示例： `https://api4.successfactors.com` |
 >| OData API 终结点 | `/odata/v2/PerPerson` |
 >| OData $format 查询参数 | `json` |
 >| OData $filter 查询参数 | `(personEmpTerminationInfoNav/activeEmploymentsCount ge 1) and (lastModifiedDateTime le <CurrentExecutionTime>)` |
->| OData $expand 查询参数 | 此参数值取决于所映射的属性。 示例：`employmentNav/userNav,employmentNav/jobInfoNav,personalInfoNav,personEmpTerminationInfoNav,phoneNav,emailNav,employmentNav/jobInfoNav/companyNav/countryOfRegistrationNav,employmentNav/jobInfoNav/divisionNav,employmentNav/jobInfoNav/departmentNav` |
+>| OData $expand 查询参数 | 此参数值取决于所映射的属性。 示例： `employmentNav/userNav,employmentNav/jobInfoNav,personalInfoNav,personEmpTerminationInfoNav,phoneNav,emailNav,employmentNav/jobInfoNav/companyNav/countryOfRegistrationNav,employmentNav/jobInfoNav/divisionNav,employmentNav/jobInfoNav/departmentNav` |
 >| OData customPageSize 查询参数 | `100` |
 
 > [!NOTE]
@@ -295,7 +295,7 @@ JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 �
 | 1 | * 仅将业务电子邮件设置为主电子邮件。 <br> * 请勿设置电话号码。 | true | true | false | \[未设置\] | \[未设置\] | 
 | 2 | * 在 SuccessFactors 中，业务电子邮件和商务电话是主要的 <br> * 始终 Azure AD 电话号码传递到 business phone，并移动到手机。 | true | true | false | telephoneNumber | mobile | 
 | 3 | * 在 SuccessFactors 中，业务电子邮件和手机是主要的 <br> * 始终 Azure AD 电话号码传递到业务电话并移动到手机 | true | false | true |  telephoneNumber | mobile | 
-| 4 | * 在 SuccessFactors 中，业务电子邮件是主电子邮件 <br> * 在 Azure AD 中，检查是否存在工作电话号码（如果存在），然后检查是否还存在 "移动号码"，将 "工作电话号码" 标记为 "仅当移动电话号码不存在时"。 | 是 | 使用表达式映射： `IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | 使用表达式映射： `IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobile | 
+| 4 | * 在 SuccessFactors 中，业务电子邮件是主电子邮件 <br> * 在 Azure AD 中，检查是否存在工作电话号码（如果存在），然后检查是否还存在 "移动号码"，将 "工作电话号码" 标记为 "仅当移动电话号码不存在时"。 | true | 使用表达式映射： `IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | 使用表达式映射： `IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobile | 
 | 5 | * 在 SuccessFactors business email 和 business phone 中是主要的。 <br> * 在 Azure AD 中，如果移动可用，请将其设置为 business phone，否则请使用 telephoneNumber。 | true | true | false | `IIF(IsPresent([mobile]), [mobile], [telephoneNumber])` | \[未设置\] | 
 
 * 如果写回属性映射中没有电话号码的映射，则写回后仅包含电子邮件。

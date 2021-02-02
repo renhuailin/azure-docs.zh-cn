@@ -4,7 +4,7 @@ description: 使用 "我的应用程序" 集合自定义我的应用程序页，
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -14,12 +14,12 @@ ms.date: 02/10/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 967ac34ddb736f58f66639181cdf10e4aaa8ffab
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7743a1af54b01f848c4ac6f0cb1d4526d66f8132
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656779"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254976"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>在“我的应用”门户中创建集合
 
@@ -83,7 +83,7 @@ ms.locfileid: "94656779"
 * 添加 (最终用户) 的自助服务应用程序
 *  (最终用户) 的自助应用程序删除
 
-可以通过 [Azure portal](https://portal.azure.com) **Azure Active Directory**  >  在 "活动" 部分中选择 "Azure Active Directory **企业应用程序**  >  **审核日志**"，来访问 Azure 门户中的审核日志。 对于 " **服务**"，选择 **"我的应用**"。
+可以通过 [](https://portal.azure.com)   >  在 "活动" 部分中选择 "Azure Active Directory **企业应用程序**  >  **审核日志**"，来访问 Azure 门户中的审核日志。 对于 " **服务**"，选择 **"我的应用**"。
 
 ## <a name="get-support-for-my-account-pages"></a>获取我的帐户页面支持
 

@@ -3,7 +3,7 @@ title: Azure Active Directory 应用程序代理常见问题
 description: 了解常见问题的答案 (常见问题解答) 使用 Azure AD 应用程序代理将内部本地应用程序发布到远程用户。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f1a1d43f9bfc960628447a3c20e7dab2ac701dc5
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 121dcdf51374f625ad7393bb181b1be215775a0b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762567"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257771"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 应用程序代理常见问题
 
@@ -58,7 +58,7 @@ ms.locfileid: "98762567"
 应用程序代理连接器对 Azure 执行基于证书的身份验证。 TLS 终止 (TLS/HTTPS 检查或加速) 中断此身份验证方法，并且不受支持。 从连接器到 Azure 的流量必须绕过任何正在执行 TLS 终止的设备。  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>是否所有连接都需要 TLS 1.2？
-是的。 为了向我们的客户提供一流的加密，应用程序代理服务将访问限制为仅允许使用 TLS 1.2 协议。 这些更改已自 2019 年 8 月 31 日起逐步推出并生效。 请确保将所有客户端-服务器和浏览器-服务器组合更新为使用 TLS 1.2，以便保持连接到应用程序代理服务。 这包括用户用来访问那些通过应用程序代理发布的应用程序的客户端。 请查看如何为 [Office 365 中的 TLS 1.2](/microsoft-365/compliance/prepare-tls-1.2-in-office-365) 做准备，了解有用的参考和资源。
+可以。 为了向我们的客户提供一流的加密，应用程序代理服务将访问限制为仅允许使用 TLS 1.2 协议。 这些更改已自 2019 年 8 月 31 日起逐步推出并生效。 请确保将所有客户端-服务器和浏览器-服务器组合更新为使用 TLS 1.2，以便保持连接到应用程序代理服务。 这包括用户用来访问那些通过应用程序代理发布的应用程序的客户端。 请查看如何为 [Office 365 中的 TLS 1.2](/microsoft-365/compliance/prepare-tls-1.2-in-office-365) 做准备，了解有用的参考和资源。
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>是否可以在连接器服务器 (s) 和后端应用程序服务器之间放置转发代理设备？
 是的，从连接器版本1.5.1526.0 开始支持此方案。 请参阅 [使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)。
@@ -137,7 +137,7 @@ NTLM 身份验证不能用作预身份验证或单一登录方法。 仅当可�
 
 在这种情况下，将回退到 "用户主体名称"。 有关 B2B 方案的更多详细信息，请阅读 [向 B2B 用户授予 Azure AD 访问本地应用程序的权限](../external-identities/hybrid-cloud-to-on-premises.md)。
 
-## <a name="pass-through-authentication"></a>直通身份验证
+## <a name="pass-through-authentication"></a>传递身份验证
 
 ### <a name="can-i-use-conditional-access-policies-for-applications-published-with-pass-through-authentication"></a>能否对使用传递身份验证发布的应用程序使用条件性访问策略？
 
@@ -197,7 +197,7 @@ Windows 管理中心中 (事件日志、PowerShell 和远程桌面服务) 的功
 
 ### <a name="does-using-link-translation-affect-performance"></a>使用链接转换是否会影响性能？
 
-是的。 链接转换会影响性能。 应用程序代理服务会扫描应用程序以查找硬编码的链接，并将其替换为其相应的已发布外部 Url，然后将其呈现给用户。 
+可以。 链接转换会影响性能。 应用程序代理服务会扫描应用程序以查找硬编码的链接，并将其替换为其相应的已发布外部 Url，然后将其呈现给用户。 
 
 为了获得最佳性能，我们建议通过配置 [自定义域](./application-proxy-configure-custom-domain.md)来使用相同的内部和外部 url。 如果无法使用自定义域，则可以使用移动设备上的 "我的应用安全登录扩展" 或 "Microsoft Edge 浏览器" 改进链接转换性能。 [有关 Azure AD 应用程序代理发布的应用，请参阅重定向硬编码的链接](application-proxy-configure-hard-coded-link-translation.md)。
 

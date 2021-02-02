@@ -3,19 +3,19 @@ title: Azure Active Directory 和 Workday 集成参考
 description: 技术深入探讨 Workday-HR 驱动的预配
 services: active-directory
 author: cmmdesai
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
 ms.date: 01/18/2021
 ms.author: chmutali
-ms.openlocfilehash: 38a93d5db6f8331da6e7afdef3e91b2764537459
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f260bca196839a091ae7d12be6d5f85912bf92db
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954015"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255978"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory 预配与 Workday 的集成方式
 
@@ -377,9 +377,9 @@ Azure AD 预配服务将处理每个页面，并在完全同步期间遍历所�
 | 19 | 企业站点层次结构              | 否                  | "业务 \_ 站点 \_ 层次结构"                                                   |
 | 20 | 矩阵组织                  | 否                  | 矩阵                                                                      |
 | 21 | 支付组                            | 否                  | "支付 \_ 组"                                                                  |
-| 22 | 计划                             | 否                  | 程序                                                                    |
+| 22 | Programs                             | 否                  | 程序                                                                    |
 | 23 | 程序层次结构                    | 否                  | "项目 \_ 层次结构"                                                          |
-| 24 | 区域                               | 否                  | "区域 \_ 层次结构"                                                           |
+| 24 | Region                               | 否                  | "区域 \_ 层次结构"                                                           |
 | 25 | 位置层次结构                   | 否                  | "位置 \_ 层次结构"                                                         |
 | 26 | 帐户预配数据            | 否                  | wd： Worker \_ data/wd：帐户 \_ 预配 \_ 数据                                |
 | 27 | 背景检查数据                | 否                  | wd： Worker \_ data/wd：背景 \_ 检查 \_ 数据                                    |

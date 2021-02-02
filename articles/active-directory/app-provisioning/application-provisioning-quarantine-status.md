@@ -3,7 +3,7 @@ title: 隔离的应用程序预配状态 |Microsoft Docs
 description: 为应用程序配置了自动用户预配后，请了解 "隔离" 的预配状态以及如何清除它。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 09/24/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: aa0df4e18e89ecf366da0ddf79e5241bca99bcc1
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: d997c85f96fa9f87ca6d017cb555b3732007e21c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915260"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256299"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>隔离状态的应用程序设置
 
@@ -52,7 +52,7 @@ Azure AD 预配服务监视配置的运行状况。 它还会将不正常的应�
 
 ## <a name="why-is-my-application-in-quarantine"></a>为什么应用程序在隔离中？
 
-|说明|建议的操作|
+|描述|建议的操作|
 |---|---|
 |**SCIM 合规性问题：** 返回了 HTTP/404 找不到的响应，而不是预期的 HTTP/200 OK 响应。 在这种情况下，Azure AD 预配服务已向目标应用程序发出请求，并收到意外响应。|检查 "管理员凭据" 部分。 查看应用程序是否需要指定租户 URL，以及该 URL 是否正确。 如果看不到问题，请与应用程序开发人员联系，以确保其服务符合 SCIM。 https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**无效的凭据：** 尝试授权时，访问目标应用程序时，会收到来自目标应用程序的响应，指出提供的凭据无效。|导航到预配配置 UI 的 "管理员凭据" 部分，并使用有效凭据再次授权访问权限。 如果应用程序在库中，请查看应用程序配置教程，了解不再需要的步骤。|

@@ -3,7 +3,7 @@ title: 了解预配如何与 Azure Active Directory 中 Azure Monitor 日志集�
 description: 了解预配如何与 Azure Active Directory 中 Azure Monitor 日志集成。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 167ed7e5c00452db4ee77e10236fec3ff86f0439
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 454d44eecd4eaa6d5c1f50edbd7edb1024ace041
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175094"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256875"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>了解预配如何与 Azure Monitor 日志集成
 

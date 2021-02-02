@@ -3,7 +3,7 @@ title: 调试应用程序代理连接器-Azure Active Directory |Microsoft Docs
 description: " () 应用程序代理连接器的 Azure Active Directory Azure AD 调试问题。"
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,18 +11,18 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: cbbb5328f2d7e814be9b5b94ec522bbb01df39e5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c656bfe7f9cc8923859a99f31210cd554aa66a41
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658241"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256960"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>调试应用程序代理连接器问题 
 
 本文将帮助你排查 Azure Active Directory (Azure AD) 应用程序代理连接器的问题。 如果正在使用应用程序代理服务远程访问本地 web 应用程序，但连接到应用程序时遇到问题，请使用此流程图调试连接器问题。 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>在开始之前
 
 本文假设你已安装应用程序代理连接器并且遇到问题。 排查应用程序代理问题时，我们建议你开始处理此故障排除流，以确定是否已正确配置应用程序代理连接器。 如果在连接到应用程序时仍遇到问题，请遵循 [调试应用程序代理应用程序问题](application-proxy-debug-apps.md)中的疑难解答流。  
 
@@ -40,7 +40,7 @@ ms.locfileid: "94658241"
 
 ![显示连接器调试步骤的流程图](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
-| 步骤 | 操作 | 说明 |
+| 步骤 | 操作 | 描述 |
 |---------|---------|---------|
 |1 | 查找分配给应用的连接器组 | 您可能在多台服务器上安装了连接器，在这种情况下，应将连接器 [分配给连接器组](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)。 有关连接器组的详细信息，请参阅[使用连接器组在单独的网络和位置上发布应用程序](application-proxy-connector-groups.md)。 |
 |2 | 安装连接器并分配组 | 如果尚未安装连接器，请参阅 [安装和注册连接器](application-proxy-add-on-premises-application.md#install-and-register-a-connector)。<br></br> 如果在安装连接器时遇到问题，请参阅 [安装连接器时出现问题](application-proxy-connector-installation-problem.md)。<br></br> 如果未将连接器分配给组，请参阅 [将连接器分配给组](application-proxy-connector-groups.md#create-connector-groups)。<br></br>如果未将应用程序分配到连接器组，请参阅 [将应用程序分配到连接器组](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)。|

@@ -3,19 +3,19 @@ title: 使用 Azure AD 管理对应用的访问
 description: 介绍 Azure Active Directory 如何使组织能够指定每个用户有权访问的应用。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: c73a5ccd9e16fb5efd9fefca6253701f942c3202
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5afc6aa8f52011eba6d7cfdfaa09b0ab995183e8
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367782"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257417"
 ---
 # <a name="managing-access-to-apps"></a>管理对应用的访问
 
@@ -45,7 +45,7 @@ Azure AD 的应用程序分配着重于两种主要分配模式：
 * 使用 Azure Active Directory 预身份验证的应用程序代理应用程序
 * 在 Azure AD 应用程序平台上生成且使用 OAuth 2.0 / OpenID Connect 身份验证的应用程序（前提是用户或管理员已认可该应用程序）。某些企业应用程序针对允许登录的用户进行了额外的控制。
 
-当*不需要*用户分配时，未分配的用户在我的应用程序上看不到应用程序，但它们仍可以登录到应用程序本身 (也称为 SP 启动的登录) ，也可以使用应用程序的 "**属性**" 页中的 "**用户访问 URL** " (也称为 "IDP) "。
+当 *不需要* 用户分配时，未分配的用户在我的应用程序上看不到应用程序，但它们仍可以登录到应用程序本身 (也称为 SP 启动的登录) ，也可以使用应用程序的 "**属性**" 页中的 "**用户访问 URL** " (也称为 "IDP) "。
 
 对于某些应用程序，要求用户分配的选项在应用程序的属性中不可用。 在这些情况下，可以使用 PowerShell 在服务主体上设置 appRoleAssignmentRequired 属性。
 
@@ -82,13 +82,13 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 用户访问 Microsoft 发布的应用程序的方法主要有三种。
 
-- 对于 Microsoft 365 或其他付费套件中的应用程序，用户可以通过 **许可证分配** 直接向其用户帐户授予访问权限，也可以使用基于组的许可证分配功能通过组进行访问。
+- 对于 Microsoft 365 或其他付费套件中的应用程序，可以通过 **许可证分配** 直接向用户的用户帐户授予访问权限，也可以使用基于组的许可证分配功能通过组来这样做。
 - 对于 Microsoft 或第三方发布的可供任何人免费使用的应用程序，可以通过[用户许可](configure-user-consent.md)授予用户访问权限。 这意味着他们使用其 Azure AD 工作或学校帐户登录到应用程序，并允许它访问其帐户上一些受限制的数据集。
 - 对于 Microsoft 或第三方发布的可供任何人免费使用的应用程序，还可以通过[管理员许可](manage-consent-requests.md)授予用户访问权限。 这意味着管理员已确定组织中的所有人都可以使用此应用程序，因此他们使用全局管理员帐户可以登录到应用程序并向组织中所有人授予访问权限。
 
 某些应用程序合并这些方法。 例如，某些 Microsoft 应用程序是 Microsoft 365 订阅的一部分，但仍需要同意。
 
-用户可以通过其 Office 365 门户访问 Microsoft 365 的应用程序。 你还可以在目录的**用户设置**中，通过[Office 365 的 "可见性" 切换](hide-application-from-user-portal.md)显示或隐藏 "我的应用" 中 Microsoft 365 应用程序。 
+用户可以通过其 Office 365 门户访问 Microsoft 365 的应用程序。 你还可以在目录的 **用户设置** 中，通过 [Office 365 的 "可见性" 切换](hide-application-from-user-portal.md)显示或隐藏 "我的应用" 中 Microsoft 365 应用程序。 
 
 与企业应用一样，你可以通过 Azure 门户[分配用户](assign-user-or-group-access-portal.md)到某些 Microsoft 应用程序，或者如果门户方式不可用，则可以使用 PowerShell。
 

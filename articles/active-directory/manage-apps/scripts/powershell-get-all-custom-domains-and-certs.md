@@ -3,7 +3,7 @@ title: PowerShell 示例 - 使用自定义域的应用程序代理应用
 description: PowerShell 示例，其中列出了正在使用自定义域和证书信息的所有 Azure Active Directory (Azure AD) 应用程序代理应用程序。
 services: active-directory
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e2cf5aa5ba84bea90779d2a4a0c4d5da84707716
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b7936ca64b01b400ba9a019a6d138ca11dcccc77
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859260"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253011"
 ---
 # <a name="get-all-application-proxy-apps-using-custom-domains-and-certificate-information"></a>获取所有使用自定义域和证书信息的应用程序代理应用
 

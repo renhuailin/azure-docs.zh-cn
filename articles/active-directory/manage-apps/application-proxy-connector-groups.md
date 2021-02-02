@@ -3,7 +3,7 @@ title: 通过连接器组在单独的网络上发布应用-Azure AD
 description: 介绍如何在 Azure AD 应用程序代理中创建和管理连接器组。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be3e99ca57957e1975313fed8609533f4a65b102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ca42137192fefbc669fca775b0deff2f5226c5c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764717"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253826"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用连接器组在单独的网络和位置上发布应用程序。
 
@@ -32,30 +32,30 @@ ms.locfileid: "84764717"
 > [!TIP]
 > 如果有大型应用程序代理部署，则不向默认连接器组分配任何应用程到。 这样一来，将新连接器分配给活动的连接器组之前，新连接器不接收任何实时流量。 此配置还可以通过将连接器移回默认组，让它们处于空闲模式，从而你可以在不会影响用户的状态下执行维护。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-为了为连接器分组，必须先确保[已安装多个连接器](application-proxy-add-on-premises-application.md)。 安装新的连接器时，该连接器会自动加入**默认**连接器组。
+为了为连接器分组，必须先确保[已安装多个连接器](application-proxy-add-on-premises-application.md)。 安装新的连接器时，该连接器会自动加入 **默认** 连接器组。
 
 ## <a name="create-connector-groups"></a>创建连接器组
 
 使用以下步骤创建任意数量的连接器组。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 选择**Azure Active Directory**  >  **企业应用**  >  **程序应用程序代理**"。
-1. 选择“新建连接器组”****。 此时会显示“新建连接器组”边栏选项卡。
+1. 选择 **Azure Active Directory**  >  **企业应用**  >  **程序应用程序代理**"。
+1. 选择“新建连接器组”。 此时会显示“新建连接器组”边栏选项卡。
 
    ![显示用于选择新连接器组的屏幕](./media/application-proxy-connector-groups/new-group.png)
 
 1. 为新的连接器组提供一个名称，并使用下拉菜单选择哪些连接器属于此组。
-1. 选择“保存” 。
+1. 选择“保存”。
 
 ## <a name="assign-applications-to-your-connector-groups"></a>将应用程序分配到连接器组
 
 对已使用应用程序代理发布的每个应用程序使用以下步骤。 首次发布应用程序时，可以将其分配到连接器组，也可以在任何时候使用以下步骤更改分配。
 
-1. 在目录的管理面板中，选择 "**企业应用程序**  >  " "**所有应用**程序"，> 要分配给连接器组 >**应用程序代理**的应用程序。
-1. 使用“连接器组”**** 下拉菜单选择要让应用程序使用的组。
-1. 单击“保存”应用所做的更改。****
+1. 在目录的管理面板中，选择 "**企业应用程序**  >  " "**所有应用** 程序"，> 要分配给连接器组 >**应用程序代理** 的应用程序。
+1. 使用“连接器组”下拉菜单选择要让应用程序使用的组。
+1. 单击“保存”应用所做的更改。
 
 ## <a name="use-cases-for-connector-groups"></a>连接器组用例
 

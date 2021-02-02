@@ -3,7 +3,7 @@ title: PowerShell 示例 - 列出应用程序代理应用的基本信息
 description: PowerShell 示例，其中列出了 Azure Active Directory (Azure AD) 应用程序代理应用程序，还列出了应用程序 ID (AppId)、名称 (DisplayName) 和对象 ID (ObjId)。
 services: active-directory
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 1e8b1a0671fd72209d55777991894f148e170e05
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: db23d2381d0532c760df8ca38d823a71225a1af5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859328"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258399"
 ---
 # <a name="get-all-application-proxy-apps-and-list-basic-information"></a>获取所有应用程序代理应用并列出基本信息
 

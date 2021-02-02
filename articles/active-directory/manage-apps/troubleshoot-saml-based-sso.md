@@ -1,23 +1,23 @@
 ---
-title: 排查 Azure Active Directory 中基于 SAML 的单一登录的问题
+title: 在 Azure Active Directory 中排查基于 SAML 的单一登录问题
 description: 排查为基于 SAML 的单一登录配置的 Azure AD 应用的问题。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 2e8508d4fceb1e7fb580350c726dd70eeaea31c6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b169616042892c379196dd1d38c2343704aa1030
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658870"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257520"
 ---
-# <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>排查 Azure Active Directory 中基于 SAML 的单一登录的问题
+# <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中排查基于 SAML 的单一登录问题
 如果在配置应用程序时遇到问题。 验证是否已经遵循应用程序教程中的所有步骤。 在应用程序的配置中，存在关于如何配置应用程序的内联文档。 还可以访问[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../saas-apps/tutorial-list.md)，获取详细的分步指南。
 
 ## <a name="cant-add-another-instance-of-the-application"></a>无法添加应用程序的另一个实例
@@ -46,7 +46,7 @@ ms.locfileid: "94658870"
     * 如果此模式不受支持，当在文本框中试图输入值时会看到一个红色感叹号。 将鼠标悬停在红色感叹号上，就能看到受支持的模式。
     * 在应用程序的教程中，还可以获得受支持的模式的信息。 在“配置 Azure AD 单一登录”部分下。 转到该步骤下，在“域和 URL”部分下找到已配置的值。
 
-如果此值与 Azure AD 上预配置的模式不匹配。 可以：
+如果此值与 Azure AD 上预配置的模式不匹配。 可以执行以下操作：
 -   与应用程序供应商沟通以获取与 Azure AD 上预配置的模式匹配的值
 -   或者，也可以通过 <aadapprequest@microsoft.com> 联系 Azure AD 团队或在教程中留言，请求更新为应用程序支持的模式
 

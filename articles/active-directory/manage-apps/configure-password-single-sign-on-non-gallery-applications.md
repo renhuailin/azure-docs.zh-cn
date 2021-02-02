@@ -3,19 +3,19 @@ title: '了解 Azure Active Directory 中应用的基于密码的单一登录 (S
 description: '了解 Azure Active Directory 中应用的基于密码的单一登录 (SSO) '
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 2bb190ea01098e8e7b21a00f54fc37cd817f3743
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: bac04bd70469d7b9c4d9485b6a87fd7133967154
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053273"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255299"
 ---
 # <a name="understand-password-based-single-sign-on"></a>了解基于密码的单一登录
 
@@ -37,7 +37,7 @@ ms.locfileid: "99053273"
 
 -   允许管理员指定个人或组在使用更新凭据功能登录到应用程序时使用的用户名和密码 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 使用 Azure AD 作为标识提供者 (IdP) 并配置单一登录 (SSO) 可以简单或复杂，这取决于所使用的应用程序。 某些应用程序只能用几个操作进行配置。 其他人需要深入配置。 若要快速增加知识，请在应用程序管理中演练 [快速入门系列](view-applications-portal.md) 。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要自定义配置，并且你需要使用基于密码的 SSO，则本文适用于你。
 
@@ -80,7 +80,7 @@ ms.locfileid: "99053273"
 5. 在包含所输入 URL 的选项卡中，完成登录过程。 填写 "用户名" 和 "密码" 字段，然后尝试登录。  (不必提供正确的密码。 ) 
 
    会出现一个提示，要求您保存捕获的登录字段。
-6. 选择“确定”。 浏览器扩展更新 "捕获状态" 页，其中包含 **为应用程序更新的消息元数据**。 "浏览器" 选项卡关闭。
+6. 选择“确定”  。 浏览器扩展更新 "捕获状态" 页，其中包含 **为应用程序更新的消息元数据**。 "浏览器" 选项卡关闭。
 
 7. 在 Azure AD **配置登录** "页上，选择 **" 确定 "，我可以成功登录到应用**。
 

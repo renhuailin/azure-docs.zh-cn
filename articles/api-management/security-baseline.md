@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1825767d8140421d4f0e22f9ebfde42f8262da5e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8a572221ca8899c5e4f4cf76e4b89c995952a2f3
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201070"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258551"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API 管理的 Azure 安全基线
 
@@ -90,17 +90,13 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 注意：此功能在 API 管理的“高级”和“开发人员”层中可用。
 
-在与 API 管理部署关联的 Vnet 中启用 Azure DDoS 防护标准，以防受到分布式拒绝服务 (DDoS) 攻击。
-
 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。
 
 * [如何在包含应用程序网关的内部 VNET 中集成 API 管理](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
 * [了解 Azure 应用程序网关](../application-gateway/index.yml)
 
-* [如何配置 Azure DDoS 防护标准](../ddos-protection/manage-ddos-protection.md)
-
-* [了解 Azure 安全中心的集成式威胁情报](../security-center/azure-defender.md)
+* [了解 Azure 安全中心集成的威胁情报](../security-center/azure-defender.md)
 
 **Azure 安全中心监视**：是
 
@@ -184,8 +180,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
-**指南**：定义并实现与 Azure API 管理部署相关的网络设置的标准安全配置。 在“Microsoft.ApiManagement”和“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施 Azure API 管理部署及其相关资源的网络配置。 还可以利用 Azure 虚拟网络的内置策略定义，例如：
-- 应启用 DDoS 防护标准版
+**指南**：定义并实现与 Azure API 管理部署相关的网络设置的标准安全配置。 在“Microsoft.ApiManagement”和“Microsoft.Network”命名空间中使用 Azure Policy 别名创建自定义策略，以审核或强制实施 Azure API 管理部署及其相关资源的网络配置。 
 
 还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure 基于角色的访问控制 (Azure RBAC) 和策略）来简化大规模的 Azure 部署。 可以轻松将蓝图应用到新的订阅和环境，并通过版本控制来微调控制措施和管理。
 
@@ -281,7 +276,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
-**指南**：在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 使用 Azure 存储帐户进行长期/存档存储。
+**指导**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
 * [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -1032,7 +1027,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 **责任**：客户
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预扫描要上传到非计算 Azure 资源的文件
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
 **指南**：不适用；此建议适用于设计用于存储数据的非计算资源。
 
@@ -1138,7 +1133,7 @@ API 管理的服务备份和还原功能为实现灾难恢复策略提供必要�
 
 **指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 * [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 

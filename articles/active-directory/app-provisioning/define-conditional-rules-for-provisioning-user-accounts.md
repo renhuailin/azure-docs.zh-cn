@@ -3,19 +3,19 @@ title: 使用范围筛选器预配应用 | Microsoft Docs
 description: 了解如何使用范围筛选器阻止应用中支持自动用户预配的对象进行预配（如果对象不满足业务要求）。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 88d004836d5311fc3a971df81a3dc6e6ab605ca9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 7fff456b7ad6e980fc3c9bda36cfcab02e2ed863
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861385"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255825"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。
@@ -64,7 +64,7 @@ ms.locfileid: "96861385"
 
 2. 选择已为其配置自动预配的应用程序，例如“ServiceNow”。
 
-3. 选择“预配”  选项卡。
+3. 选择“预配”选项卡。
 
 4. 在“映射”部分，选择要为其预配范围筛选器的映射，例如“将 Azure Active Directory 用户同步到 ServiceNow”。
 
@@ -86,7 +86,7 @@ ms.locfileid: "96861385"
 
    f. **不为 NULL**。 如果评估的属性不为空，则子句返回“true”。
 
-   g. **REGEX MATCH**。 如果评估的属性与正则表达式模式匹配，则子句返回“true”。 示例：([1-9][0-9]) 与介于 10 和 99 之间的任意数字匹配。
+   如， **REGEX MATCH**。 如果评估的属性与正则表达式模式匹配，则子句返回“true”。 示例：([1-9][0-9]) 与介于 10 和 99 之间的任意数字匹配。
 
    h. **NOT REGEX MATCH**。 如果评估的属性与正则表达式模式不匹配，则子句返回“true”。
    

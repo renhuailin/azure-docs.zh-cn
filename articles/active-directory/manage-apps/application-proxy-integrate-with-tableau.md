@@ -3,7 +3,7 @@ title: Azure Active Directory 应用程序代理和 Tableau | Microsoft 文档
 description: 了解如何使用 Azure Active Directory (Azure AD) 应用程序代理为 Tableau 部署提供远程访问。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,18 +13,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6df0a0bf21f4be824738d86ac6bdb3c75c9c3564
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6720a5ad963bc73e11ef7b46150e946521928c01
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764496"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258619"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory 应用程序代理和 Tableau 
 
 Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保你可以轻松使用应用程序代理为 Tableau 部署提供远程访问。 本文介绍如何配置此方案。  
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 本文中的方案假定你：
 
@@ -52,11 +52,11 @@ Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保
 
 1. 以应用程序管理员身份登录到 [Azure 门户](https://portal.azure.com) 。 
 
-2. 选择“Azure Active Directory”>“企业应用程序”。**** 
+2. 选择“Azure Active Directory”>“企业应用程序”。 
 
-3. 单击边栏选项卡顶部的“添加”。**** 
+3. 单击边栏选项卡顶部的“添加”。 
 
-4. 选择“本地应用程序”。**** 
+4. 选择“本地应用程序”。 
 
 5. 在必填的字段中填写有关新应用的信息。 参考以下指导完成设置： 
 
@@ -64,17 +64,17 @@ Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保
 
     - **预身份验证方法**：Azure Active Directory（推荐使用但并非必需项）。 
 
-6. 单击边栏选项卡顶部的“添加”。**** 添加应用程序后，将打开快速启动菜单。 
+6. 单击边栏选项卡顶部的“添加”。 添加应用程序后，将打开快速启动菜单。 
 
-7. 在快速启动菜单中选择“分配用于测试的用户”，并将至少一个用户添加到应用程序。**** 确保此测试帐户有权访问本地应用程序。 
+7. 在快速启动菜单中选择“分配用于测试的用户”，并将至少一个用户添加到应用程序。 确保此测试帐户有权访问本地应用程序。 
 
-8. 选择“分配”，保存测试用户分配。**** 
+8. 选择“分配”，保存测试用户分配。 
 
-9. （可选）在应用管理页面中选择“单一登录”****。 从下拉菜单中选择“集成 Windows 身份验证”，然后根据 Tableau 配置填写必填字段****。 选择“保存” 。 
+9. （可选）在应用管理页面中选择“单一登录”。 从下拉菜单中选择“集成 Windows 身份验证”，然后根据 Tableau 配置填写必填字段。 选择“保存”。 
 
  
 
-## <a name="testing"></a>测试 
+## <a name="testing"></a>正在测试 
 
 现在已准备好测试应用程序。 访问用来发布 Tableau 的外部 URL，并以分配到两个应用程序的用户身份登录。
 

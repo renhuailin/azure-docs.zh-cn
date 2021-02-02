@@ -3,7 +3,7 @@ title: 配置 Azure AD 库应用的用户预配时出现问题
 description: 当为在 Azure AD 应用程序库中列出的某个应用程序配置用户预配时，如何解决面对的常见问题
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 306c3771c0392bbc97260a726e153cfd385cebcd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 651bc199a43881add7faa00a9d1cf78000de6944
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994785"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256266"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>为 Azure AD 库应用程序配置用户预配时遇到的问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "95994785"
 
 配置服务后，可通过两个地方了解服务操作的大多数情况：
 
--   **预配日志 (预览版)** – [预配日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 记录预配服务执行的所有操作，包括查询在设置范围内的已分配用户的 Azure AD。 查询目标应用以验证是否存在这些用户以及比较系统之间的用户对象。 然后根据比较结果在目标系统中添加、更新或禁用用户帐户。 可以通过在 **Azure Active Directory** &gt; "活动" 部分中选择 "Azure Active Directory **企业应用**" "设置" " &gt; **(预览**" **Activity**) 来访问 Azure 门户中的设置日志。
+-   **预配日志 (预览版)** – [预配日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 记录预配服务执行的所有操作，包括查询在设置范围内的已分配用户的 Azure AD。 查询目标应用以验证是否存在这些用户以及比较系统之间的用户对象。 然后根据比较结果在目标系统中添加、更新或禁用用户帐户。 可以通过在 &gt; "活动" 部分中选择 "Azure Active Directory **企业应用**" "设置" " &gt; **(预览**" ) 来访问 Azure 门户中的设置日志。
 
 -   **当前状态–** 可在屏幕底部的 "服务设置" 下的 " **Azure Active Directory &gt; Enterprise Apps &gt; \[ 应用程序名称 \] &gt; 预配** " 部分中查看给定应用的最后一次设置运行的摘要。 "当前状态" 部分显示预配周期是否已开始预配用户帐户。 您可以查看周期的进度，查看已设置的用户和组的数量，并查看已创建的角色数。 如果有任何错误，则可在 [设置日志 ( 中找到详细信息。/reports-monitoring/concept-provisioning-logs.md？ context = azure/active directory/管理-应用/上下文/管理-应用-上下文) 。
 

@@ -3,7 +3,7 @@ title: '了解 Azure Active Directory 中应用的基于 OIDC 的单一登录 (S
 description: 了解 Azure Active Directory 中应用的 (SSO) 的基于 OIDC 的单一登录。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: kenwith
 ms.reviewer: arajpathak7
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d1acdc47d5a702faf7d5dbd5f2a4ea6826e97981
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ffaa55d4aa482e8f0eda93b1b32db6310d17e2a3
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033232"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255243"
 ---
 # <a name="understand-oidc-based-single-sign-on"></a>了解基于 OIDC 的单一登录
 在应用程序管理的 [快速入门系列](view-applications-portal.md) 中，已了解如何使用 Azure AD 作为标识提供程序 (IdP) 应用程序。 本文详细介绍了使用 OpenID Connect 标准实现单一登录的应用。 
@@ -35,7 +35,7 @@ ms.locfileid: "97033232"
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
-若要了解有关用户和管理员同意的详细信息，请参阅 [了解用户和管理员同意](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)。
+若要详细了解用户和管理员同意，请参阅[了解用户和管理员同意](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)。
 
 ## <a name="next-steps"></a>后续步骤
 

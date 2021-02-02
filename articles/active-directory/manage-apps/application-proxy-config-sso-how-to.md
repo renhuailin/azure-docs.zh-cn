@@ -3,7 +3,7 @@ title: 了解如何使用应用程序代理通过本地应用进行单一登录
 description: 了解如何使用应用程序代理通过本地应用程序进行单一登录。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kenwith
 ms.reviewer: japere, asteen
-ms.openlocfilehash: e7df16a797fe0d7a0fd9a0b3857b1b1c32ba07ed
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 10b722edbe8d70c92e617c78db3d2fb1d46da3a5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656286"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254098"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>如何配置应用程序代理应用程序的单一登录
 
 单一登录 (SSO) 允许用户访问应用程序，无需进行多次身份验证。 借助 Azure Active Directory，单一登录允许在云中执行一次身份验证，并允许服务或连接器模拟用户，完成来自应用程序的任何其他身份验证质询。
 
 ## <a name="how-to-configure-single-sign-on"></a>如何配置单一登录
-若要配置 SSO，请先确保应用程序已配置为通过 Azure Active Directory 进行预身份验证。 若要执行此配置，请 **Azure Active Directory**  - &gt; **Enterprise Applications**  - &gt; **All Applications**  - &gt; 在应用程序 **- &gt; 应用程序代理** 的 "所有应用程序" Azure Active Directory "企业应用程序"。 在此页上，会看到“预身份验证”字段，确保将该字段设置为“Azure Active Directory”。 
+若要配置 SSO，请先确保应用程序已配置为通过 Azure Active Directory 进行预身份验证。 若要执行此配置，请  - &gt;   - &gt;   - &gt; 在应用程序 **- &gt; 应用程序代理** 的 "所有应用程序" Azure Active Directory "企业应用程序"。 在此页上，会看到“预身份验证”字段，确保将该字段设置为“Azure Active Directory”。 
 
 有关预身份验证方法的详细信息，请参阅[应用发布文档](application-proxy-add-on-premises-application.md)的步骤 4。
 

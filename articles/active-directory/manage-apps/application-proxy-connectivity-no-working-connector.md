@@ -4,7 +4,7 @@ description: 对于使用 Azure AD 应用程序代理的应用程序，解决连
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a9b43660889a318b2085f3aa8c1060daebe0244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec028dec2bf2e6295f59aae9c2e243da2209827
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764734"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257028"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>找不到应用程序代理应用程序的工作连接器组
 
@@ -46,7 +46,7 @@ ms.locfileid: "84764734"
 
    ![Azure 门户中的连接器组选择](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
 
-关于这些选项的详细信息，请参阅以下相应部分。 说明假定从连接器管理页开始操作。 如果想要查看上述错误消息，可以通过单击警告消息转到此页。 还可以通过转到“Azure Active Directory”****，单击“企业应用程序”****，并单击“应用程序代理”**** 到达该页。
+关于这些选项的详细信息，请参阅以下相应部分。 说明假定从连接器管理页开始操作。 如果想要查看上述错误消息，可以通过单击警告消息转到此页。 还可以通过转到“Azure Active Directory”，单击“企业应用程序”，并单击“应用程序代理”到达该页。
 
    ![Azure 门户中的连接器组管理](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 

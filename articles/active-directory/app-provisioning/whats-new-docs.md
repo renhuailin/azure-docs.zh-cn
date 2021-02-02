@@ -1,24 +1,36 @@
 ---
 title: Azure Active Directory 应用程序设置中的新增功能
 description: Azure Active Directory 应用程序预配的新文档和更新的文档。
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
-ms.openlocfilehash: 053d342c8fbdd506ac5d4ba0916a1ae9361e7189
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+manager: daveba
+ms.openlocfilehash: a127552c47b9e1ee86d2164926971c8628367dc0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562202"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255995"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory 应用程序预配：新增功能
 
 欢迎使用 Azure Active Directory 应用程序预配文档中的新增功能。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解预配服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="new-articles"></a>新文章
+- [Azure Active Directory 预配与 Workday 的集成方式](workday-integration-reference.md)
+
+### <a name="updated-articles"></a>更新的文章
+- [教程：开发示例 SCIM 终结点](use-scim-to-build-users-and-groups-endpoints.md)
+- [教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射](customize-application-attributes.md)
+- [Azure Active Directory 预配如何与 SAP SuccessFactors 集成](sap-successfactors-integration-reference.md)
+- [隔离状态的应用程序设置](application-provisioning-quarantine-status.md)
+
 
 ## <a name="december-2020"></a>2020 年 12 月
 
@@ -60,7 +72,7 @@ ms.locfileid: "97562202"
 
 ### <a name="new-articles"></a>新文章
 
-- [文档有哪些新功能？](whats-new-docs.md)
+- [Docs 中的新增内容](whats-new-docs.md)
 
 ### <a name="updated-articles"></a>更新的文章
 - [隔离状态的应用程序设置](application-provisioning-quarantine-status.md)
