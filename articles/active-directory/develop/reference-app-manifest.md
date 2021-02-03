@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: cb7acb2ab74cc3f1304e5278524918865185463f
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: d544d884a82a7532bf343f38049102dfccae342f
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491293"
+ms.locfileid: "99507261"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -173,7 +173,8 @@ ms.locfileid: "99491293"
 - `"None"`
 - `"SecurityGroup"`（适用于安全组和 Azure AD 角色）
 - `"ApplicationGroup"` (此选项仅包括分配给应用程序的组) 
-- `"All"`（该操作可获取登录用户所属的所有安全组、通讯组和 Azure AD 目录角色。
+- `"DirectoryRole"` (获取用户所属的 Azure AD 目录角色) 
+- `"All"` (此项将获取已登录用户是) 成员的所有安全组、通讯组和 Azure AD 目录角色。
 
 示例：
 
@@ -480,7 +481,7 @@ ms.locfileid: "99491293"
 
 ### <a name="requiredresourceaccess-attribute"></a>requiredResourceAccess 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | requiredResourceAccess | 集合 |
 
@@ -507,7 +508,7 @@ ms.locfileid: "99491293"
 
 ### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | samlMetadataUrl | 字符串 |
 
@@ -521,9 +522,9 @@ ms.locfileid: "99491293"
 
 ### <a name="signinurl-attribute"></a>signInUrl 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| signInUrl | 字符串 |
+| signInUrl | String |
 
 指定应用主页的 URL。
 

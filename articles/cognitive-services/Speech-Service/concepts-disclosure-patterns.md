@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 348277d42c543bc45cf98bfeaf7ea8313afe8f6f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5cf933a11956bb8459bf6f5cd1b2b366eb8419d8
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021977"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508636"
 ---
 # <a name="disclosure-design-patterns"></a>披露设计模式
 你已经确定了合成语音体验的正确[披露级别](concepts-disclosure-guidelines.md#disclosure-assessment)，现在正是探索潜在设计模式的好时机。
@@ -249,7 +249,6 @@ ms.locfileid: "95021977"
 
 * [向配音员公开](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [合成语音技术的负责任的部署指南](concepts-guidelines-responsible-deployment-synthetic.md)
-* [管控概述](concepts-gating-overview.md)
 * [如何披露](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>后续步骤

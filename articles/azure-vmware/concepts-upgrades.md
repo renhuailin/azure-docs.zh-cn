@@ -3,12 +3,12 @@ title: 概念-私有云更新和升级
 description: 了解 Azure VMware 解决方案中的关键升级过程和功能。
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 6fb65a0e192fbf1f054857223b3fdaf58fc6a903
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 8338666d70bd0ca4ea3c6b32bd8f8d205feaf7c0
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809643"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509191"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware 解决方案私有云更新和升级
 
@@ -57,7 +57,10 @@ Azure VMware 解决方案将以下类型的更新应用于 VMware 组件：
 
 ## <a name="next-steps"></a>后续步骤
 
-下一步是 [创建私有云](tutorial-create-private-cloud.md)。
+现在，你已介绍 Azure VMware 解决方案中的关键升级过程和功能，你可能想要了解：
+
+- [如何创建私有云](tutorial-create-private-cloud.md)。
+- [如何启用 Azure VMware 解决方案资源](enable-azure-vmware-solution.md)。
 
 <!-- LINKS - external -->
 

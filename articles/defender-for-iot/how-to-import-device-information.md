@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7cb805f60ba9feb0ae2d1483b2ab2df4e03639d8
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 333ffbf4107dfd005ba7e7fae6a079a618e0c645
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625408"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509429"
 ---
 # <a name="import-device-information-to-a-sensor"></a>将设备信息导入传感器
 
@@ -160,7 +160,7 @@ ms.locfileid: "98625408"
 
    - **操作系统**：从下拉列表中选择。
 
-   - **上次更新**：使用 yyyy-mm-dd 格式。
+   - **上次更新日期**：使用 yyyy-mm-dd 格式。
 
     :::image type="content" source="media/how-to-import-device-information/last-update-screen.png" alt-text="屏幕上的内容。":::
 
@@ -172,7 +172,7 @@ ms.locfileid: "98625408"
 
 导入授权状态：
 
-1. 从 "IoT 帮助中心" 下载并保存 [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) 文件。 验证是否已将文件保存为 CSV。
+1. 从 "IoT 帮助中心" 下载并保存 [authorized_devices examples.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) 文件。 验证是否已将文件保存为 CSV。
 
 2. 输入如下所示的信息：
 

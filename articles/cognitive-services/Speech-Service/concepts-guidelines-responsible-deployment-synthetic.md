@@ -10,24 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 715c09ef65358b21e78cfde204b4819db0c7875d
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 371ad2220b2b2b1b73e5611c5abef74454a548ad
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428413"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508263"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>合成语音技术的负责任部署指南
 
-## <a name="general-considerations-to-keep-in-mind-when-implementing-ai-systems"></a>实现 AI 系统时要记住的一般注意事项 
-
-本文专门介绍综合语音和自定义的神经声音以及使用此技术的关键注意事项。 但一般情况下，在决定如何使用和实现支持 AI 的产品和功能时，需要仔细考虑几个事项： 
-
-* 此产品或功能在我的方案中是否能正常运行？ 在将 AI 部署到你的方案之前，请测试它如何使用真实数据，并确保它可以提供所需的准确性。 
-* 我们是否有权识别错误并对其做出响应？ AI 的产品和功能并不总是精确100%，因此，请考虑如何识别并响应可能发生的任何错误。 
-
-## <a name="general-guidelines-for-using-synthetic-voice-technology"></a>使用综合语音技术的一般准则 
-下面是 Microsoft 提供的使用合成语音技术时的一般设计准则。 Microsoft 在配音员、消费者以及有言语障碍的个人的协助下进行了研究，在研究中制定了这些准则，用以指导合成语音的负责任部署。
+本文介绍如何使用综合语音技术的 Microsoft 一般设计准则。 这些指导原则是在 Microsoft 为语音人才、消费者和个人提供语音可能的研究中开发的，旨在指导综合语音的责任开发。
 
 对于合成语音技术的部署，以下准则适用于大多数方案。
 
@@ -39,10 +31,12 @@ Microsoft 要求其客户向其用户公开自定义的神经语音的综合性�
 * 请考虑对具有为子和儿童设计的用例的父方或其他各方进行适当的公开-如果用例适用于子或儿童，则需要确保家长或法律保护者能够理解有关使用综合媒体的披露，并为有意义的孩子做出正确的决策。 
 
 ### <a name="select-appropriate-voice-types-for-your-scenario"></a>为你的方案选择合适的语音类型
-仔细考虑与使用合成语音相关的使用上下文和潜在危害。 例如，高保真合成语音可能不适用于高风险方案，如个人消息传递、金融交易或需要人类的适应性或同理心的复杂情况。 用户对语音类型也可能有不同的期望。 例如，在收听由合成语音播报的敏感新闻时，一些用户喜欢更具同情心和更人性化的新闻播报，而另一些用户则喜欢更单调、无偏见的声音。 请考虑测试你的应用程序，以便更好地了解用户偏好。
+仔细考虑与使用合成语音相关的使用上下文和潜在危害。 例如，高保真合成语音可能不适用于高风险方案，如个人消息传递、金融交易或需要人类的适应性或同理心的复杂情况。 
+
+用户对语音类型也可能有不同的期望。 例如，当倾听由综合语音读取的敏感新闻时，某些用户喜欢更 empathetic 和人为的语气，而有些用户喜欢使用无偏差声音。 请考虑测试你的应用程序，以便更好地了解用户偏好。
 
 ### <a name="be-transparent-about-capabilities-and-limitations"></a>对功能和限制保持透明
-与高保真合成语音代理交互时，用户更有可能具有更高的期望。 因此，当系统功能不能满足这些预期时，信任可能会受到影响，并可能导致令人不愉快的体验甚至有害的体验。
+与高保真合成语音代理交互时，用户更有可能具有更高的期望。 当系统功能不能满足这些要求时，信任可能会受到影响，并可能导致令人不愉快的体验甚至有害的体验。
 
 ### <a name="provide-optional-human-support"></a>提供可选的人工支持
 在模棱两可的事务性场景中（例如，呼叫支持中心），用户并不总是相信计算机代理能够适当地响应他们的请求。 在这些情况下，无论语音的逼真度或系统的功能如何，都可能需要人工支持。
@@ -59,7 +53,7 @@ Microsoft 要求其客户向其用户公开自定义的神经语音的综合性�
 与有言语障碍的人合作创建或部署合成语音技术时，以下准则适用。
 
 ### <a name="provide-guidelines-to-establish-contracts"></a>提供签订合同的准则
-提供与使用合成语音协助说话的个人签订合同的准则。 合同应考虑规定语音的所有者、使用期限、所有权转移条件、删除语音字体的规程以及如何防止未经授权的访问。 另外，在获得当事人同意的情况下，可以在该人死后将语音字体所有权以合同形式转让给其家属。
+提供与使用合成语音协助说话的个人签订合同的准则。 合同应考虑规定语音的所有者、使用期限、所有权转移条件、删除语音字体的规程以及如何防止未经授权的访问。 此外，如果授予了权限，则允许在死亡后将语音字体所有权传输到家庭成员。
 
 ### <a name="account-for-inconsistencies-in-speech-patterns"></a>将语音模式的不一致性考虑在内
 对于那些录制自己的语音字体的言语障碍患者来说，他们的语音模式的不一致性（含糊不清或无法发特定单词的音）可能会使录制过程复杂化。 在这些情况下，合成语音技术和录制会话应当适应他们的节奏（也就是说，应提供中断和额外数量的录制会话）。
@@ -71,7 +65,6 @@ Microsoft 要求其客户向其用户公开自定义的神经语音的综合性�
 ## <a name="reference-docs"></a>参考文档
 
 * [针对配音员的披露内容](/legal/cognitive-services/speech-service/disclosure-voice-talent)
-* [管控概述](concepts-gating-overview.md)
 * [如何披露](concepts-disclosure-guidelines.md)
 * [披露设计模式](concepts-disclosure-patterns.md)
 

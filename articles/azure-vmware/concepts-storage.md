@@ -3,12 +3,12 @@ title: 概念-存储
 description: 了解 Azure VMware 解决方案私有云中的主要存储功能。
 ms.topic: conceptual
 ms.date: 11/03/2020
-ms.openlocfilehash: 8ad1fc3ff2e514330a9ffc680494b5564b1184e4
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: da5117de4b066fd9872558fa6d018ab898a576f4
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062789"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509209"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware 解决方案存储概念
 
@@ -40,7 +40,11 @@ Azure VMware 解决方案私有云提供了本机的群集范围内的群集存�
 
 ## <a name="next-steps"></a>后续步骤
 
-下一步是了解 [私有云标识概念][concepts-identity]。
+现在，你已介绍 Azure VMware 解决方案存储概念，你可能想要了解：
+
+- [私有云标识概念](concepts-identity.md)。
+- [针对 Azure VMware 解决方案的基于角色的访问控制 vSphere](concepts-role-based-access-control.md)。
+- [如何启用 Azure VMware 解决方案资源](enable-azure-vmware-solution.md)。
 
 <!-- LINKS - external-->
 

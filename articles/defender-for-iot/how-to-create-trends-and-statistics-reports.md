@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/24/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 8bfbacc77843c7978bcb1d364bd93f5e09381144
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 20b47204ea8f64bc430f436a9bcf1b2311409aa6
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811609"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509480"
 ---
 # <a name="sensor-trends-and-statistics-reports"></a>传感器趋势和统计信息报告
 
@@ -26,19 +26,29 @@ ms.locfileid: "98811609"
 该仪表板包含小组件，这些小组件以图形方式描述以下类型的信息：
 
 - 按端口排列的流量
+- 按端口排列的排名靠前的流量
 - 通道带宽
 - 总带宽
 - 活动 TCP 连接
+- 通过 VLAN 的热门带宽
 - 设备：
   - 新建设备
   - 繁忙设备
   - 按供应商的设备
   - 按 OS 的设备
+  - 每个 VLAN 的设备数
   - 断开连接的设备
-- 连接丢弃时间
+- 连接丢弃时间（小时）
 - 事件的警报（按类型）
 - 数据库表访问
 - 协议剖析小组件
+- DELTAV
+  - DeltaV roc 操作分发
+  - 按名称 DeltaV roc 事件
+  - 按时间 DeltaV 事件
+- AMS
+  - 按服务器端口的 AMS 流量
+  - 通过命令进行 AMS 流量
 - 以太网和 IP 地址：
   - CIP 服务的以太网和 IP 地址流量
   - 通过 CIP 类的以太网和 IP 地址流量
@@ -49,6 +59,15 @@ ms.locfileid: "98811609"
 - Siemens S7：
   - 按 control 函数的 S7 流量
   - 按 subfunction S7 流量
+- VLAN
+  - 每个 VLAN 的设备数
+  - 通过 VLAN 的热门带宽
+- 60870-5-104
+  - IEC-60870 流量 by ASDU
+- BACNET
+  - BACnet 服务
+- DNP3
+  - 按功能的 DNP3 流量
 - SRTP:
   - 按服务代码 SRTP 流量
   - 按天列出的 SRTP 错误

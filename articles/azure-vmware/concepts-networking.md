@@ -3,12 +3,12 @@ title: 概念-网络互连
 description: 了解 Azure VMware 解决方案中的网络和互连的主要方面和用例。
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: eb701a7fca2be08d70e603734b9c4d8e266959cd
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 49261f34f879c68f21b57f9256a58a9b0a44d637
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475414"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509276"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware 解决方案网络和互连的概念
 
@@ -59,10 +59,11 @@ Azure VMware 解决方案私有云的用例包括：
 
 ## <a name="next-steps"></a>后续步骤 
 
-至此，你已介绍了这些网络和互连的概念，接下来，你可能想要了解：
+现在，你已介绍 Azure VMware 解决方案网络和互连的概念，你可能想要了解：
 
 - [Azure VMware 解决方案存储概念](concepts-storage.md)。
-- [Azure VMware 解决方案标识概念](concepts-identity.md)
+- [Azure VMware 解决方案标识概念](concepts-identity.md)。
+- [如何启用 Azure VMware 解决方案资源](enable-azure-vmware-solution.md)。
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md

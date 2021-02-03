@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b35851bae8db39392d10a302d5f1059ba3ace696
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621208"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508754"
 ---
 # <a name="manage-individual-sensors"></a>管理单个传感器
 
@@ -201,7 +201,7 @@ Azure Defender for IoT 使用 SSL/TLS 证书来执行以下操作：
 - 颁发服务器证书的 CA 证书应位于文件中，然后是所有其他证书，然后是根。 
 - 可以包含包属性。
 
-**通行短语**
+**密码**
 
 - 支持一个密钥。
 
@@ -367,9 +367,9 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 1. 从 " **传感器管理** " 窗口中删除该传感器。
 
-1. 用新名称注册。
+1. 用新名称重新注册。
 
-1. 下载和新的激活文件。
+1. 下载新的激活文件。
 
 1. 登录到传感器，并上传新的激活文件。
 
@@ -396,7 +396,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
     | 默认网关 | 默认网关地址 |
     | DNS | DNS 服务器地址 |
     | 主机名 | 传感器主机名 |
-    | Proxy (代理) | 代理主机和端口名称 |
+    | 代理 | 代理主机和端口名称 |
 
 4. 选择“保存”。
 
@@ -436,7 +436,7 @@ Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会
 
 **不备份的内容：** PCAP 文件和日志。 可以手动备份和还原 PCAPs 和日志。
 
-传感器备份文件通过以下格式自动命名： `<sensor name>-backup-version-<version>-<date>.tar` 。 例如 `Sensor_1-backup-version-2.6.0.102-2019-06-24_09:24:55.tar`。
+传感器备份文件通过以下格式自动命名： `<sensor name>-backup-version-<version>-<date>.tar` 。 示例为 `Sensor_1-backup-version-2.6.0.102-2019-06-24_09:24:55.tar`。
 
 配置备份：
 

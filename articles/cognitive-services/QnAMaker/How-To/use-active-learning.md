@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 1ac5e32b454cfc1adafb1f54b01d2a1a302908a4
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 396cba079baf92da1f5d14a4ecf3dfdb7de0aa2f
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600429"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509210"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用主动学习改进知识库
 
@@ -18,10 +18,17 @@ ms.locfileid: "96600429"
 
 知识库不会自动更改。 要使更改生效，必须接受建议。 这些建议会添加问题，但不会更改或删除现有问题。
 
-
 ## <a name="upgrade-runtime-version-to-use-active-learning"></a>升级运行时版本以使用活动学习
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
+
 运行时版本 4.4.0 及更高版本支持主动学习。 如果你的知识库是在早期版本上创建的，请[升级运行时](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)以使用此功能。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+
+在 QnA Maker 托管 (预览版) ，因为运行时是由 QnA Maker 服务本身承载的，所以无需手动升级运行时。
+
+---
 
 ## <a name="turn-on-active-learning-for-alternate-questions"></a>启用其他问题的活动学习
 

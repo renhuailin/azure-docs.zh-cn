@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/03/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 735b1ce4391598d05a1bf0b4486503092f4de37d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: c9afc22cd123a782c9ee0247952c78c72ee916c0
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838365"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509063"
 ---
 # <a name="the-dashboard"></a>仪表板
 
@@ -28,7 +28,7 @@ ms.locfileid: "97838365"
 
 - 警告
 
-- 页面中心中的两个仪表表示每秒数据包 (PPS) ，以及 (UA) 的未确认警报。 **PPS** 是系统每秒确认的数据包数。 **UA** 是尚未确认的警报数。
+- 页面中心中的两个指示器显示 (PPS) 的每秒数据包数，以及 (UA) 的未确认警报。 **PPS** 是系统每秒确认的数据包数。 **UA** 是尚未确认的警报数。
 
 - 未确认的警报的列表及其说明。
 
@@ -70,7 +70,7 @@ ms.locfileid: "97838365"
 
 - 警告警报
 
-:::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/timeline-of-events.png" alt-text="时间线关系图":::
+:::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/timeline-of-events.png" alt-text="时间线图":::
 
 ## <a name="viewing-alerts"></a>查看警报
 
@@ -78,23 +78,23 @@ ms.locfileid: "97838365"
 
 :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/extended-alert-screen.png" alt-text="警报条目和设备信息":::
 
-- 选择设备或 " **显示设备** " 以显示 "物理" 模式图。 会突出显示这些设备。
+- 选择设备以显示 "物理" 模式图。 会突出显示这些设备。
+
+- 单击警报框中的任意位置，以显示有关警报的其他详细信息。 将显示如下所示的弹出窗口
 
 - 选择 " :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/excel-icon.png" alt-text="Excel"::: " 以导出有关警报的 CSV 文件。
 
 - 仅限管理员和安全分析人员-选择 " :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/approve-all-icon.png" alt-text="全部确认"::: " 以 **确认所有** 关联的警报。
 
-- 选择警报条目以查看警报的类型和描述：
-
 - 选择 " :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pdf-icon.png" alt-text="pdf":::"，将警报报告下载为 PDF 文件。
 
-- 选择 " :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pin-icon.png" alt-text="固定":::"，固定或取消固定警报。
+- 选择 " :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pin-icon.png" alt-text="固定":::"，固定或取消固定警报。 选择 "锁定" 会将其添加到 "**警报**" 屏幕上的 "**固定警报**" 窗口。
 
-- 选择 " :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/download-icon.png" alt-text="下载"::: "，通过下载包含网络协议分析的 PCAP 文件来调查警报。
+- 选择 " :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/download-icon.png" alt-text="下载"::: "，通过下载包含网络协议分析的相关 PCAP 文件来调查警报。
 
-- 选择 " :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/cloud-download-icon.png" alt-text="云"::: " 以下载只包含与警报相关的数据包的筛选 PCAP 文件，从而减小输出文件的大小并允许更集中的分析。 可以使用 [Wireshark](https://www.wireshark.org/)查看它。
+- 选择 " :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/cloud-download-icon.png" alt-text="云"::: " 以下载相关的已筛选 PCAP 文件，该文件仅包含与警报相关的数据包，从而减少输出文件大小并允许进行更集中的分析。 可以使用 [Wireshark](https://www.wireshark.org/)查看它。
 
-- 选择 " :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/navigate-icon.png" alt-text="导航"::: " 可导航到请求警报时的事件时间线。
+- 选择 " :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/navigate-icon.png" alt-text="导航"::: " 可导航到请求警报时的事件时间线。 这允许你评估特定警报可能发生的其他事件。
 
 - 仅限管理员和安全分析师-将警报的状态从 "未确认" 更改为 "已确认"。 选择 "了解" 以批准检测到的活动。
 

@@ -3,12 +3,12 @@ title: 概念-标识和访问
 description: 了解 Azure VMware 解决方案的标识和访问概念
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: e9c0d62968d94e2b018186f67072b6ae7078db02
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: bd1b4cd918ce977cf57d641908b127f7a2d1b0cc
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536092"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509293"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware 解决方案标识概念
 
@@ -22,7 +22,7 @@ CloudAdmin 组在 vCenter 中提供权限。 你可以在 vCenter 本地管理�
 
 该表显示了 **CloudAdmin** 和 **CloudGlobalAdmin** 特权。
 
-|  权限集           | CloudAdmin | CloudGlobalAdmin | 评论 |
+|  权限集           | CloudAdmin | CloudGlobalAdmin | 注释 |
 | :---                     |    :---:   |       :---:      |   :--:  |
 |  警报                  | CloudAdmin 用户对 Compute-ResourcePool 和 Vm 中的警报具有所有告警特权。     |          --        |  -- |
 |  自动部署             |  --  |        --        |  Microsoft 进行主机管理。  |
@@ -32,7 +32,7 @@ CloudAdmin 组在 vCenter 中提供权限。 你可以在 vCenter 本地管理�
 |  数据存储               | AllocateSpace、Datastore.Config、DeleteFile、FileManagement、、、UpdateVirtualMachineMetadata     |    --    |   -- |
 |  ESX 代理程序管理器       |  --  |         --       |  Microsoft 执行所有操作。  |
 |  文件夹                  |  CloudAdmin 用户具有所有文件夹特权。     |  --  |  --  |
-|  全球                  |  CancelTask、GlobalTag、global. LogEvent、global. ManageCustomFields、ServiceManagers、SetCustomField、temTag、Global.Sys         |                  |    |
+|  Global                  |  CancelTask、GlobalTag、global. LogEvent、global. ManageCustomFields、ServiceManagers、SetCustomField、temTag、Global.Sys         |                  |    |
 |  主机                    |  Cdb-ik-hbr. HbrManagement      |        --          |  Microsoft 执行所有其他主机操作。  |
 |  InventoryService        |  InventoryService 标记      |        --          |  --  |
 |  网络                 |  Network.Assign    |                  |  Microsoft 执行所有其他网络操作。  |
@@ -53,7 +53,11 @@ CloudAdmin 组在 vCenter 中提供权限。 你可以在 vCenter 本地管理�
   
 ## <a name="next-steps"></a>后续步骤
 
-下一步是了解 [私有云升级概念][concepts-upgrades]。
+现在，你已介绍 Azure VMware 解决方案访问和标识概念，你可能想要了解：
+
+- [私有云升级概念](concepts-upgrades.md)。
+- [针对 Azure VMware 解决方案的基于角色的访问控制 vSphere](concepts-role-based-access-control.md)。
+- [如何启用 Azure VMware 解决方案资源](enable-azure-vmware-solution.md)。
 
 <!-- LINKS - external -->
 

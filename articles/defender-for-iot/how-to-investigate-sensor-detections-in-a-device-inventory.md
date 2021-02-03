@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9c868685ad943c1ab9ab263a164111e46294c042
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c15dc62cad796f5f74f2316d148e217052dc9678
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625425"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508856"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>调查设备清单中的传感器检测
 
@@ -32,18 +32,18 @@ ms.locfileid: "98625425"
 
 | 参数 | 说明 |
 |--|--|
-| 名称 | 传感器发现设备的名称。 |
-| 类型 | 设备类型。 |
+| 名称 | 设备发现的设备名称，或用户输入的设备名称。 |
+| 类型 | 由传感器确定的设备类型，或由用户输入的设备类型。 |
 | Vendor | 在 MAC 地址中定义的设备供应商的名称。 |
-| 操作系统 | 设备的操作系统。 |
-| 固件 | 设备的固件。 |
-| IP 地址 | 设备的 IP 地址。 |
+| 操作系统 | 如果检测到设备的操作系统，则为。 |
+| 固件版本 | 如果检测到设备固件，则为。 |
+| IP 地址 | 定义的设备的 IP 地址。 |
 | VLAN | 设备的 VLAN。 有关指示传感器发现 Vlan 的详细信息，请参阅 [定义 vlan 名称](how-to-manage-the-on-premises-management-console.md#define-vlan-names)。 (操作方法 # define # define # 定义-VLAN 名称) 。 |
 | MAC 地址 | 设备的 MAC 地址。 |
 | 协议 | 设备使用的协议。 |
 | 未确认警报 | 与此设备关联的未确认的警报数。 |
 | 已授权 | 用户定义的授权状态：<br />- **True**：设备已获得授权。<br />- **False**：设备未获得授权。 |
-| 称为扫描器 | 由用户定义为扫描设备。 |
+| 称为扫描器 | 由用户定义为网络扫描设备。 |
 | 是编程设备 | 由用户定义为授权的编程设备。 <br />- **True**：设备执行 Plc、RTUs 和控制器的编程活动，这些活动与工程工作站相关。 <br />- **False**：设备不是编程设备。 |
 | 组 | 此设备参与的组。 |
 | 上次活动 | 设备执行的最后一个活动。 |
@@ -111,7 +111,7 @@ ms.locfileid: "98625425"
 
 ## <a name="learn-windows-registry-details"></a>了解 Windows 注册表详细信息
 
-除了学习设备外，还可以发现 IT 设备，包括 Microsoft Windows 工作站和服务器。 这些设备也会显示在设备清单中。 了解设备后，你可以通过详细的 Windows 信息扩充设备清单，例如：
+除了学习设备外，还可以发现 Microsoft Windows 工作站和服务器。 这些设备也会显示在设备清单中。 了解设备后，你可以通过详细的 Windows 信息扩充设备清单，例如：
 
 - Windows 版本已安装
 
@@ -147,7 +147,7 @@ ms.locfileid: "98625425"
 
 - Windows Server 2003/2008/2012/2016
 
-### <a name="before-you-begin"></a>准备阶段
+### <a name="before-you-begin"></a>在开始之前
 
 若要使用该脚本，需要满足以下要求：
 
@@ -217,7 +217,7 @@ ms.locfileid: "98625425"
 
 ## <a name="export-device-inventory-information"></a>导出设备清单信息
 
-可以将设备清单信息导出到 Excel 文件中。 导入的信息将覆盖当前信息。
+可以将设备清单信息导出到 Excel 文件中。
 
 导出 CSV 文件：
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
 ms.date: 01/13/2021
-ms.openlocfilehash: fe40cbe84e8e3341b03c6c8e11701fe3db6bc3d0
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 4ed5a26e1f871f7ac5fd8f29f0a66bc39a8013a1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234216"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507242"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>有关在 Azure 逻辑应用和 Power Automate 的表达式中使用函数的参考指南
 
@@ -569,10 +569,10 @@ addDays('<timestamp>', <days>, '<format>'?)
 此示例将 10 天加到指定的时间戳：
 
 ```
-addDays('2018-03-15T13:00:00Z', 10)
+addDays('2018-03-15T00:00:00Z', 10)
 ```
 
-并返回以下结果：`"2018-03-25T00:00:0000000Z"`
+并返回以下结果：`"2018-03-25T00:00:00.0000000Z"`
 
 *示例 2*
 
@@ -582,7 +582,7 @@ addDays('2018-03-15T13:00:00Z', 10)
 addDays('2018-03-15T00:00:00Z', -5)
 ```
 
-并返回以下结果：`"2018-03-10T00:00:0000000Z"`
+并返回以下结果：`"2018-03-10T00:00:00.0000000Z"`
 
 <a name="addHours"></a>
 
@@ -614,7 +614,7 @@ addHours('<timestamp>', <hours>, '<format>'?)
 addHours('2018-03-15T00:00:00Z', 10)
 ```
 
-并返回以下结果：`"2018-03-15T10:00:0000000Z"`
+并返回以下结果： "" 2018-03-15T10：00： 00.0000000 Z "
 
 *示例 2*
 
@@ -624,7 +624,7 @@ addHours('2018-03-15T00:00:00Z', 10)
 addHours('2018-03-15T15:00:00Z', -5)
 ```
 
-并返回以下结果：`"2018-03-15T10:00:0000000Z"`
+并返回以下结果：`"2018-03-15T10:00:00.0000000Z"`
 
 <a name="addMinutes"></a>
 
@@ -682,7 +682,7 @@ addProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*object*> | 是 | 对象 | 要将属性添加到的 JSON 对象 |
 | <*property*> | 是 | 字符串 | 要添加的属性的名称 |
-| <*value*> | 是 | 任意 | 属性的值 |
+| <*value*> | 是 | Any | 属性的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -701,7 +701,7 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 | <*object*> | 是 | 对象 | 要将属性添加到的 JSON 对象 |
 | <*parent-property*> | 是 | 字符串 | 要在其中添加子属性的父属性的名称 |
 | <*child-property*> | 是 | 字符串 | 要添加的子属性的名称 |
-| <*value*> | 是 | 任意 | 要为指定属性设置的值 |
+| <*value*> | 是 | Any | 要为指定属性设置的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1129,14 +1129,14 @@ bool(<value>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 任意 | 要转换为布尔值的值。 |
+| <*value*> | 是 | Any | 要转换为布尔值的值。 |
 |||||
 
 如果使用的是 `bool()` 对象，则对象的值必须是可以转换为布尔值的字符串或整数。
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| `true` 或 `false` | 布尔 | 指定值的布尔值。 |
+| `true` 或 `false` | 布尔值 | 指定值的布尔值。 |
 ||||
 
 *输出*
@@ -1169,7 +1169,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*first-non-null-item*> | 任意 | 第一个不为 null 的项或值。 如果所有参数均为 null，则此函数返回 null。 |
+| <*first-non-null-item*> | Any | 第一个不为 null 的项或值。 如果所有参数均为 null，则此函数返回 null。 |
 ||||
 
 *示例*
@@ -1887,7 +1887,7 @@ first([<collection>])
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*first-collection-item*> | 任意 | 集合中的第一项 |
+| <*first-collection-item*> | Any | 集合中的第一项 |
 ||||
 
 *示例*
@@ -2263,7 +2263,7 @@ guid('<format>')
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | 否 | 字符串 | 表示返回的 GUID 的单一[格式说明符](/dotnet/api/system.guid.tostring?view=netcore-3.1#system_guid_tostring_system_string_)。 默认情况下，格式为“D”，但可以使用“N”、“D”、“B”、“P”或“X”。 |
+| <*format*> | 否 | 字符串 | 表示返回的 GUID 的单一[格式说明符](/dotnet/api/system.guid.tostring#system_guid_tostring_system_string_)。 默认情况下，格式为“D”，但可以使用“N”、“D”、“B”、“P”或“X”。 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -2294,13 +2294,13 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*expression*> | 是 | 布尔 | 要检查的表达式 |
-| <*valueIfTrue*> | 是 | 任意 | 当表达式为 true 时要返回的值 |
-| <*valueIfFalse*> | 是 | 任意 | 当表达式为 false 时要返回的值 |
+| <*valueIfTrue*> | 是 | Any | 当表达式为 true 时要返回的值 |
+| <*valueIfFalse*> | 是 | Any | 当表达式为 false 时要返回的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*specified-return-value*> | 任意 | 根据表达式为 true 或 false 返回的指定值 |
+| <*specified-return-value*> | Any | 根据表达式为 true 或 false 返回的指定值 |
 ||||
 
 *示例*
@@ -2387,7 +2387,7 @@ item()
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*current-array-item*> | 任意 | 返回在操作的当前迭代中数组中的当前项 |
+| <*current-array-item*> | Any | 返回在操作的当前迭代中数组中的当前项 |
 ||||
 
 *示例*
@@ -2416,7 +2416,7 @@ items('<loopName>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*item*> | 任意 | 指定的 for-each 循环中当前周期中的项 |
+| <*item*> | Any | 指定的 for-each 循环中当前周期中的项 |
 ||||
 
 *示例*
@@ -3220,7 +3220,7 @@ outputs('Get_user')
 
 <a name="parameters"></a>
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 返回工作流定义中描述的参数的值。
 
@@ -3235,7 +3235,7 @@ parameters('<parameterName>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*parameter-value*> | 任意 | 指定的参数的值 |
+| <*parameter-value*> | Any | 指定的参数的值 |
 ||||
 
 *示例*
@@ -3596,7 +3596,7 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 | <*object*> | 是 | 对象 | 要设置其属性的 JSON 对象 |
 | <*parent-property*> | 是 | 字符串 | 要设置其子属性的父属性的名称 |
 | <*child-property*> | 是 | 字符串 | 要设置的子属性的名称 |
-| <*value*> | 是 | 任意 | 要为指定属性设置的值 |
+| <*value*> | 是 | Any | 要为指定属性设置的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -4011,7 +4011,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day')
 ```
 
-并返回以下结果：`"2018-01-01T00:00:00:0000000Z"`
+并返回以下结果：`"2018-01-01T00:00:00.0000000Z"`
 
 *示例 2*
 
@@ -4063,7 +4063,7 @@ take(createArray(0, 1, 2, 3, 4), 3)
 
 ### <a name="ticks"></a>ticks
 
-返回自 0001 年 1 月 1 日午夜 12:00:00（或 C# 中的 DateTime.Ticks）到指定时间戳的间隔为 100 毫微秒的时钟周期数。 有关详细信息，请参阅此主题：[DateTime.Ticks 属性（系统）](/dotnet/api/system.datetime.ticks?view=netframework-4.7.2#remarks)。
+返回自 0001 年 1 月 1 日午夜 12:00:00（或 C# 中的 DateTime.Ticks）到指定时间戳的间隔为 100 毫微秒的时钟周期数。 有关详细信息，请参阅此主题：[DateTime.Ticks 属性（系统）](/dotnet/api/system.datetime.ticks)。
 
 ```
 ticks('<timestamp>')
@@ -4677,7 +4677,7 @@ variables('<variableName>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*variable-value*> | 任意 | 指定的变量的值 |
+| <*variable-value*> | Any | 指定的变量的值 |
 ||||
 
 *示例*
@@ -4784,14 +4784,14 @@ xpath('<xml>', '<xpath>')
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*xml*> | 是 | 任意 | 要在其中搜索与 XPath 表达式值匹配的节点或值的 XML 字符串 |
-| <*xpath*> | 是 | 任意 | 用来查找匹配的 XML 节点或值的 XPath 表达式 |
+| <*xml*> | 是 | Any | 要在其中搜索与 XPath 表达式值匹配的节点或值的 XML 字符串 |
+| <*xpath*> | 是 | Any | 用来查找匹配的 XML 节点或值的 XPath 表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | 一个 XML 节点，当只有单个节点与指定的 XPath 表达式匹配时 |
-| <*value*> | 任意 | 来自一个 XML 节点的值，当只有单个值与指定的 XPath 表达式匹配时 |
+| <*value*> | Any | 来自一个 XML 节点的值，当只有单个值与指定的 XPath 表达式匹配时 |
 | [<*xml-node1*>, <*xml-node2*>, ...] </br>-或- </br>[<*value1*>, <*value2*>, ...] | Array | 一个数组，其中包含与指定的 XPath 表达式匹配的 XML 节点或值 |
 ||||
 

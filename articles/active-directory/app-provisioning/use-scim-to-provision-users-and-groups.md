@@ -8,25 +8,24 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/01/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6895a47bc6d99a09408ca002ec48405a5c78682
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: ba000fd4cf79f2bb4a176bd7d5c33fc2dfff3781
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255672"
+ms.locfileid: "99428396"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Tutorial:开发 SCIM 终结点并计划其预配
 
 应用程序开发人员可以使用跨域身份管理系统 (SCIM) 用户管理 API 实现在应用程序与 Azure AD 之间自动预配用户和组。 本文介绍如何生成 SCIM 终结点以及如何与 Azure AD 预配服务集成。 SCIM 规范提供了预配用的常见用户架构。 与联合标准（例如 SAML 或 OpenID Connect）结合使用时，SCIM 为管理员提供了基于标准的端到端访问权限管理解决方案。
 
-SCIM 是 `/Users` 终结点和 `/Groups` 终结点的标准化定义。 它使用常见的 REST 谓词来创建、更新以及删除对象和常见属性（例如组名、用户名、名字、姓氏和电子邮件）的预定义架构。 提供 SCIM 2.0 REST API 的应用可以减少或免去使用专有用户管理 API 带来的麻烦。 例如，任何兼容的 SCIM 客户端都知道如何将 JSON 对象的 HTTP POST 发送到 `/Users` 终结点，以创建新的用户条目。 符合 SCIM 标准的应用不需要采用略有不同的 API 来执行相同的基本操作，而是可以立即使用现有的客户端、工具和代码。 
-
 ![使用 SCIM 从 Azure AD 预配到应用](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
+
+SCIM 是 `/Users` 终结点和 `/Groups` 终结点的标准化定义。 它使用常见的 REST 谓词来创建、更新以及删除对象和常见属性（例如组名、用户名、名字、姓氏和电子邮件）的预定义架构。 提供 SCIM 2.0 REST API 的应用可以减少或免去使用专有用户管理 API 带来的麻烦。 例如，任何兼容的 SCIM 客户端都知道如何将 JSON 对象的 HTTP POST 发送到 `/Users` 终结点，以创建新的用户条目。 符合 SCIM 标准的应用不需要采用略有不同的 API 来执行相同的基本操作，而是可以立即使用现有的客户端、工具和代码。 
 
 SCIM 2.0 (RFC [7642](https://tools.ietf.org/html/rfc7642)、[7643](https://tools.ietf.org/html/rfc7643)、[7644](https://tools.ietf.org/html/rfc7644)) 中定义的用于管理的标准用户对象架构和 REST API 允许标识提供者和应用更轻松地相互集成。 生成 SCIM 终结点的应用程序开发人员无需执行自定义工作即可与任何符合 SCIM 的客户端集成。
 
@@ -70,6 +69,7 @@ SCIM 2.0 (RFC [7642](https://tools.ietf.org/html/rfc7642)、[7643](https://tools
       "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
       "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
      "userName":"bjensen@testuser.com",
+     "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",
      "name":{
        "familyName":"Jensen",
@@ -914,7 +914,7 @@ https://docs.microsoft.com/aspnet/core/fundamentals/environments)
 
 ### <a name="handling-provisioning-and-deprovisioning-of-users"></a>处理用户预配和取消预配
 
-***示例 1.在服务中查询匹配的用户** _
+示例 1.查询服务以找到匹配的用户
 
 Azure Active Directory 会在服务中查询是否有某个用户的 `externalId` 属性值与 Azure AD 中用户的 mailNickname 属性值匹配。 查询以类似此例的超文本传输协议 (HTTP) 请求形式表示，其中，jyoung 是 Azure Active Directory 中某个用户的 mailNickname 示例。
 
@@ -942,12 +942,12 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 
 在示例查询中，对于具有 `externalId` 属性的给定值的用户，传递给 QueryAsync 方法的参数的值为：
 
-_ parameters.AlternateFilters.Count:1
+* parameters.AlternateFilters.Count:1
 * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
 * parameters.AlternateFilters.ElementAt(0).ComparisonOperator:ComparisonOperator.Equals
 * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
 
-***示例 2.预配用户** _
+示例 2.预配用户
 
 如果在 Web 服务中查询是否有某个用户的 `externalId` 属性值与用户的 mailNickname 属性值匹配时，该查询的响应未返回任何用户，Azure Active Directory 将请求服务预配一个与 Azure Active Directory 中的用户相对应的用户。  以下是此类请求的示例： 
 
@@ -996,7 +996,7 @@ _ parameters.AlternateFilters.Count:1
 
 在预配用户的请求中，资源参数的值是 Microsoft.SCIM.Schemas 库中定义的 Microsoft.SCIM.Core2EnterpriseUser 类的实例。  如果预配用户的请求成功，则该方法的实现应返回 Microsoft.SCIM.Core2EnterpriseUser 类的实例，并将 Identifier 属性的值设置为新预配用户的唯一标识符。  
 
-_*_示例 3.查询用户的当前状态_*_ 
+示例 3.查询用户的当前状态 
 
 为了更新存在于前端为 SCIM 的标识存储中的已知用户，Azure Active Directory 将通过类似于下面的请求向服务请求该用户的当前状态来继续处理： 
 
@@ -1020,14 +1020,14 @@ _*_示例 3.查询用户的当前状态_*_
 
 在检索用户当前状态的请求示例中，作为参数自变量值提供的对象属性值如下所示： 
   
-_ Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+* 标识符："54D382A4-2050-4C03-94D1-E769F1D15682"
 * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-***示例 4.查询要更新的引用属性的值** _ 
+示例 4.查询要更新的引用属性的值 
 
 如果要更新引用属性，Azure Active Directory 将查询服务以判断以该服务为前端的标识存储区中的引用属性的当前值是否已经与 Azure Active Directory 中该属性的值相匹配。 对于用户，以这种方式查询当前值的唯一属性是 manager 属性。 以下是确定用户对象的 manager 属性当前是否具有特定值的请求示例：在示例代码中，请求被转换为对服务提供程序的 QueryAsync 方法的调用。 作为参数自变量值提供的对像属性值如下： 
   
-_ parameters.AlternateFilters.Count:2
+* parameters.AlternateFilters.Count:2
 * parameters.AlternateFilters.ElementAt(x).AttributePath:“ID”
 * parameters.AlternateFilters.ElementAt(x).ComparisonOperator:ComparisonOperator.Equals
 * parameters.AlternateFilter.ElementAt(x).ComparisonValue:"54D382A4-2050-4C03-94D1-E769F1D15682"
@@ -1039,7 +1039,7 @@ _ parameters.AlternateFilters.Count:2
 
 此处，索引 x 的值可以是 0 并且索引 y 的值可以是 1，或者，x 的值可以是 1 并且 y 的值可以是 0，具体根据筛选器查询参数表达式的顺序而定。   
 
-***示例 5.从 Azure AD 向 SCIM 服务发出用户更新请求** _ 
+示例 5.从 Azure AD 向 SCIM 服务发出更新用户请求 
 
 以下是从 Azure Active Directory 向 SCIM 服务发出更新用户请求的示例： 
 
@@ -1078,7 +1078,7 @@ _ parameters.AlternateFilters.Count:2
 
 在更新用户的请求示例中，作为修补参数值提供的对象具有这些属性值： 
   
-_ ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+* ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier.SchemaIdentifier:  "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 * (PatchRequest as PatchRequest2).Operations.Count:1
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName:OperationName.Add
@@ -1087,7 +1087,7 @@ _ ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value:2819c223-7f76-453a-919d-413861904646
 
-***示例 6.取消预配用户** _
+示例6.取消预配用户
 
 若要从前端为 SCIM 服务的标识存储区中取消预配用户，Azure AD 会发送如下请求：
 
@@ -1110,7 +1110,7 @@ _ ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
 
 在取消预配用户的请求示例中，作为 resourceIdentifier 参数值提供的对象具有以下属性值： 
 
-_ ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+* ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>步骤 4：将 SCIM 终结点与 Azure AD SCIM 客户端集成
@@ -1151,7 +1151,7 @@ _ ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
 7. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL。 示例： `https://api.contoso.com/scim/`
 8. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段。 如果此字段留空，则 Azure AD 会在每个请求中包含从 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供者的应用可以验证 Azure AD 颁发的此令牌。 
    > [!NOTE]
-   > 建议不要将此字段留空并依赖 Azure AD 生成的令牌*。 此选项主要用于测试目的。
+   > 不建议将此字段留空并依赖 Azure AD 生成的令牌。 此选项主要用于测试目的。
 9. 选择“测试连接”，使 Azure Active Directory 尝试连接到 SCIM 终结点。 如果尝试失败，则显示错误信息。  
 
     > [!NOTE]

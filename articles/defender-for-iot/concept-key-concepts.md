@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 419e32a127947cde1d3761507f0df7a889528ff2
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: cb984ca1a74d8b3838b857f2f5679264d1445187
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621922"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508602"
 ---
 # <a name="basic-concepts"></a>基本概念 
 
@@ -20,9 +20,9 @@ ms.locfileid: "98621922"
 
 ## <a name="rapid-non-invasive-deployment-and-passive-monitoring"></a>快速非侵害性的部署和被动监视
 
-用于 IoT 传感器的 Defender 连接到 SPAN 端口或网络分流点，并立即开始通过被动 (无代理) 监视收集 ICS 网络流量。 深层数据包检查 (DPI) 用于仔细分析来自串行和以太网控制网络设备的流量。 Defender for IoT 对每个网络不会有任何影响，因为它不会放置在数据路径中，也不会主动扫描 OT 设备。 
+用于 IoT 传感器的 Defender 连接到交换机范围 (镜像) 端口和网络点击，并立即通过被动 (无代理) 监视立即开始收集 ICS 网络流量。 深层数据包检查 (DPI) 用于仔细分析来自串行和以太网控制网络设备的流量。 Defender for IoT 对每个网络不会有任何影响，因为它不会放置在数据路径中，也不会主动扫描 OT 设备。 
 
-若要提供详细设备信息的即时快照，适用于 IoT 传感器的 Defender 使用可选的活动组件补充被动监视。 此组件使用安全的供应商批准的命令来查询 Windows 和控制器设备，以获取设备详细信息，无论所需频率如何。
+若要提供详细的 Windows 设备信息的即时快照，可以将 IoT 传感器的 Defender 配置为使用可选的活动组件来补充被动监视。 此组件使用安全的供应商批准的命令来查询 Windows 设备的设备详细信息，通常情况下或不经常需要。
 
 ## <a name="embedded-knowledge-of-ics-protocols-devices-and-applications"></a>ICS 协议、设备和应用程序的嵌入知识
 
@@ -97,7 +97,7 @@ Defender for IoT 提供了所有设备的合并视图。 它还提供有关设�
 
 ## <a name="complete-protocol-support"></a>完整的协议支持
 
-除嵌入协议支持外，还可以保护运行专用和自定义协议的 IoT 和 ICS 设备，或者保护偏离任何标准的协议。 通过使用范围开放式开发环境 (O) ) SDK，开发人员可以创建基于定义的协议对网络流量进行解码的 dissector 插件。 服务可分析流量，以提供完整的监视、警报和报告功能。 使用 Horizon 可以：
+除嵌入协议支持外，还可以保护运行专用和自定义协议的 IoT 和 ICS 设备，或者保护偏离任何标准的协议。 通过使用范围开放式开发环境 (O) ) SDK，开发人员可以创建基于定义的协议对网络流量进行解码的 dissector 插件。 服务会分析流量，以提供完整的监视、警报和报告功能。 使用 Horizon 可以：
 
 - 无需升级到新版本即可扩展可见性和控件。
 

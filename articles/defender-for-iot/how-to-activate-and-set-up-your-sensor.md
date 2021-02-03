@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 908460bd0a034e21524b6ea6d3042f362cc810d4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7d045ad104f8e2055ae85b74f4aae8f4d3fd61a4
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623583"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509513"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>激活和设置传感器
 
@@ -81,7 +81,7 @@ ms.locfileid: "98623583"
 
     :::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="用于 IoT 传感器的 Azure Defender。":::
 
-1. 输入在安装传感器时定义的凭据。 如果从箭头购买预配置的传感器，请先生成密码。 有关密码恢复的详细信息，请参阅 [在首次登录时调查密码失败](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in)。
+1. 输入在安装传感器时定义的凭据，或选择 " **密码恢复** " 选项。 如果从箭头购买预配置的传感器，请先生成密码。 有关密码恢复的详细信息，请参阅 [在首次登录时调查密码失败](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in)。
 
 1. 登录后，将打开 " **激活** " 对话框。 选择 " **上传** "，并中转到在传感器载入过程中下载的激活文件。
 
@@ -152,7 +152,7 @@ ms.locfileid: "98623583"
 
 - 如果正在使用 DHCP，请定义合法的 DHCP 范围。
 
-- 定义与 Active Directory 和邮件服务器的集成。
+- 适当地定义与 Active Directory 和邮件服务器的集成。
 
 ### <a name="disable-learning-mode"></a>禁用学习模式
 
@@ -181,7 +181,7 @@ ms.locfileid: "98623583"
 | -----------|--|--|
 | 仪表板 | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | 查看网络安全状态的直观快照。 |
 | 设备映射 | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | 查看地图中的网络设备、设备连接和设备属性。 可以使用各种缩放、突出显示和筛选选项来显示你的网络。 |
-| 设备清单 | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | 设备清单显示此传感器检测到的范围广泛的设备属性。 可用选项如下： <br /> -根据表字段筛选信息，并查看显示的筛选信息。 <br /> -将信息导出到 CSV 文件。 <br /> -导入 Windows 注册表详细信息。|
+| 设备清单 | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | 设备清单显示此传感器检测到的设备属性的列表。 可用选项如下： <br /> -排序或根据表字段筛选信息，并查看显示的筛选信息。 <br /> -将信息导出到 CSV 文件。 <br /> -导入 Windows 注册表详细信息。|
 | 警报 | :::image type="icon" source="media/concept-sensor-console-overview/alerts-icon-azure.png" border="false"::: | 在策略冲突发生时显示警报，发生与基准行为的偏差，或检测到网络中任何类型的可疑活动。 |
 | 报表 | :::image type="icon" source="media/concept-sensor-console-overview/reports-icon-azure.png" border="false"::: | 查看基于数据挖掘查询的报表。 |
 
@@ -196,7 +196,7 @@ ms.locfileid: "98623583"
 | 窗口 | 图标 | 说明 |
 |---|---|---|
 | 数据挖掘 | :::image type="icon" source="media/concept-sensor-console-overview/data-mining-icon-azure.png" border="false"::: | 在不同的层上生成有关网络设备的全面的详细信息。 |
-| 趋势和统计信息 | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | 查看范围广泛的小组件中的趋势和统计信息。 |
+| 调查 | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | 查看范围广泛的小组件中的趋势和统计信息。 |
 | 风险评估 | :::image type="icon" source="media/concept-sensor-console-overview/vulnerabilities-icon-azure.png" border="false"::: | 显示 " **漏洞** " 窗口。 |
 
 **管理员**
@@ -204,7 +204,7 @@ ms.locfileid: "98623583"
 | 窗口 | 图标 | 说明 |
 |---|---|---|
 | 用户 | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | 定义具有不同访问级别的用户和角色。 |
-| 转发 | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | 将警报信息转发给集成了用于 IoT 的 Defender、电子邮件地址、webhook 服务器等的合作伙伴。 <br /> 有关详细信息，请参阅 [转发警报信息](how-to-forward-alert-information-to-partners.md) 。 |
+| 转发 | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | 将警报信息转发给合作伙伴，并将内部源 (例如，Sentinel) 与用于 IoT 的 Defender、电子邮件地址、webhook 服务器等集成。 <br /> 有关详细信息，请参阅 [转发警报信息](how-to-forward-alert-information-to-partners.md) 。 |
 | 系统设置 | :::image type="icon" source="media/concept-sensor-console-overview/system-settings-icon-azure.png" border="false"::: | 配置系统设置。 例如，定义 DHCP 设置，提供邮件服务器详细信息，或创建端口别名。 |
 | 导入设置 | :::image type="icon" source="media/concept-sensor-console-overview/import-settings-icon-azure.png" border="false"::: | 显示 " **导入设置** " 窗口。 你可以在设备信息中执行手动更改。<br /> 有关详细信息，请参阅 [导入设备信息](how-to-import-device-information.md) 。 |
 

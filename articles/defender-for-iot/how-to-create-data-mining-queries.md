@@ -1,5 +1,5 @@
 ---
-title: 创建数据挖掘报表
+title: 创建数据挖掘报告
 description: 在不同的层（例如协议、固件版本或编程命令）生成有关网络设备的全面的详细信息。
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56751adedfc01b3927acc65f47910c3b1281f09c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: edeb383317d4bdc0e7beef1f8390ddabd350f002
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811620"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507564"
 ---
 # <a name="sensor-data-mining-queries"></a>传感器数据挖掘查询
 
@@ -55,11 +55,11 @@ ms.locfileid: "98811620"
 
 您可以使用查询来处理各种安全团队的各种安全需求：
 
-- **SOC 事件响应**：实时生成报告，以帮助处理即时事件响应。 例如，为可能需要修补的设备列表生成报告。
+- **SOC 事件响应**：实时生成报告，以帮助处理即时事件响应。 例如，数据挖掘可以生成可能需要修补的设备列表。
 
 - **辩论**：基于调查报表的历史数据生成报表。
 
-- **IT 网络完整性**：生成有助于提高总体网络安全的报告。 例如，生成一个报表，其中列出了具有弱身份验证凭据的设备。
+- **IT 网络完整性**：生成有助于提高总体网络安全的报告。 例如，可以生成一个报告，其中列出了具有弱身份验证凭据的设备。
 
 - **可见性**：生成包含所有查询项的报表，以查看网络的所有基线参数。
 
@@ -130,7 +130,7 @@ ms.locfileid: "98811620"
 
    - 指定 MAC 地址。
 
-4. 选择“保存”。  报表结果在 " **数据挖掘** " 页上打开。
+4. 选择“保存”。 报表结果在 " **数据挖掘** " 页上打开。
 
 :::image type="content" source="media/how-to-generate-reports/data-mining-page.png" alt-text="报告在数据挖掘页上显示的结果。":::
 

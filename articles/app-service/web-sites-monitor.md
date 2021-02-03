@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: b201ebb5ad8ab9d98a76a29831fa12d6174e47cc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 587ad53fa3a4875f7019a8c094db1b9a5f096519
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125200"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509547"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
 [Azure 应用服务](./overview.md)针对 [Azure 门户](https://portal.azure.com)中的 Web 应用、移动和 API 应用提供内置监视功能。
@@ -82,7 +82,7 @@ ms.locfileid: "93125200"
 | **当前程序集** | 此应用程序中的所有 AppDomain 中加载的程序集的当前数量。 |
 | **数据输入** | 应用消耗的传入带宽量，以 MiB 为单位。 |
 | **数据输出** | 应用消耗的传出带宽量，以 MiB 为单位。 |
-| **文件系统使用情况** | 应用消耗的文件系统配额的百分比。 |
+| **文件系统使用情况** | 存储共享的用量量（以字节为单位）。 |
 | **第 0 代垃圾回收** | 自应用进程启动以来对第 0 代对象进行垃圾回收的次数。 较高代系的垃圾回收包括所有较低代系的垃圾回收。|
 | **第 1 代垃圾回收** | 自应用进程启动以来对第 1 代对象进行垃圾回收的次数。 较高代系的垃圾回收包括所有较低代系的垃圾回收。|
 | **第 2 代垃圾回收** | 自应用进程启动以来对第 2 代对象进行垃圾回收的次数。|
@@ -131,9 +131,9 @@ ms.locfileid: "93125200"
 
 有两个反映 CPU 使用率的指标：
 
-**CPU 时间** ：适用于托管在“免费”或“共享”计划中的应用，因为这些应用的其中一个配额由应用所用的 CPU 时间定义。
+**CPU 时间**：适用于托管在“免费”或“共享”计划中的应用，因为这些应用的其中一个配额由应用所用的 CPU 时间定义。
 
-**CPU 百分比** ：适用于托管在“基本”、“标准”和“高级”计划中的应用，因为它们可横向扩展。CPU 百分比是所有实例中总用量的良好指标。
+**CPU 百分比**：适用于托管在“基本”、“标准”和“高级”计划中的应用，因为它们可横向扩展。CPU 百分比是所有实例中总用量的良好指标。
 
 ## <a name="metrics-granularity-and-retention-policy"></a>指标粒度和保留策略
 应用和应用服务计划的指标由服务记录并聚合，并[根据这些规则保留](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)。

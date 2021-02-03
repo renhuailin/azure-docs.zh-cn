@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4803691a82a97cd2be5fa3beafd4419010e7a9c9
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: bce83e11a0d4567d37e78388445c108385ca9a61
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838378"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509059"
 ---
 # <a name="view-alerts"></a>查看警报
 
@@ -84,7 +84,7 @@ ms.locfileid: "97838378"
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/alerts-security.png" alt-text="&quot;警报&quot; 屏幕上的安全性。":::
 
-## <a name="alert-window-options"></a>警报窗口选项
+## <a name="alert-page-options"></a>警报页选项
 
 警报消息提供以下操作：
 
@@ -101,6 +101,8 @@ ms.locfileid: "97838378"
 - 选择 :::image type="icon" source="media/how-to-work-with-alerts-sensor/learn-and-acknowledge-all-alerts.png" border="false"::: 以了解并确认所有警报。
 
 - 选择此 :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: 选项可将警报列表导出到 CSV 文件，并选择 "导出" 选项。 选择常规的 "导出到 CSV" 选项的 **警报导出** 。 或者选择 **扩展警报导出** ，以便添加单独的行，以获取有关 CSV 文件中的警报的其他信息。
+
+## <a name="alert-pop-up-window-options"></a>警报弹出窗口选项
 
 - 选择此 :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-pdf.png" border="false"::: 图标可将警报报告作为 PDF 文件下载。
 

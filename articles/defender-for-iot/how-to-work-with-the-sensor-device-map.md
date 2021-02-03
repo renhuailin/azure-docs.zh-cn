@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: fd1721060bdc4b18f324a94f7c367bacde6ed4e8
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: edd1438a665e4917d5dd4cdcfba08d9cee01d3bb
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976752"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509042"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>在设备映射中调查传感器检测
 
@@ -63,7 +63,7 @@ ms.locfileid: "97976752"
 
 启用 IT 网络折叠功能：
 
-- 在 "系统设置" 窗口中，确保启用了 IT 网络功能。
+- 在 " **系统设置** " 窗口中，确保 "切换 IT 网络分组功能" 已启用。
 
 :::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet-v2.png" alt-text="系统设置窗口":::
 
@@ -76,7 +76,7 @@ ms.locfileid: "97976752"
 
    :::image type="content" source="media/how-to-work-with-maps/subnet-list.png" alt-text="子网配置":::
 
-2. 在 "编辑子网配置" 窗口中，清除要定义为 IT 子网的每个子网的 ICS 子网。 IT 子网在设备映射中显示为折叠，其中包含针对 ICS 设备（如控制器或 PLC）的通知。
+2. 在 " **编辑子网配置** " 窗口中，清除要定义为 IT 子网的每个子网的 " **ICS 子网** " 复选框。 IT 子网在设备映射中显示为折叠，其中包含针对 ICS 设备（如控制器或 PLC）的通知。
 
    :::image type="content" source="media/how-to-work-with-maps/edit-config.png" alt-text="编辑子网配置":::
 
@@ -106,13 +106,13 @@ ms.locfileid: "97976752"
 
 ## <a name="view-or-highlight-device-groups"></a>查看或突出显示设备组
 
-你可以基于设备组自定义地图显示。 例如，与特定 VLAN 或子网关联的设备组。 预定义组可用，可以创建自定义组。
+你可以基于设备组自定义地图显示。 例如，与特定 OT 协议、VLAN 或子网关联的设备组。 预定义组可用，可以创建自定义组。
 
 查看组的方式：
 
   - **突出显示：** 以蓝色突出显示属于特定组的设备。
 
-  - **筛选：** 仅显示属于特定组的地图上的设备。
+  - **筛选：** 仅显示属于特定组的设备。
 
 :::image type="content" source="media/how-to-work-with-maps/port-standard.png" alt-text="端口的标准视图":::
 
@@ -120,17 +120,18 @@ ms.locfileid: "97976752"
 
 | 组名称 | 说明 |
 |--|--|
-| **已知应用程序或非标准端口 (默认)** | 使用保留端口的设备，如 TCP。 使用非标准端口的设备或未分配别名的端口。 |
-| **(默认) 的协议** | 处理 OT 流量的设备。 |
-| **授权 (默认值)** | 在学习过程中或正式添加到网络中时在网络中发现的设备 |
+| **已知应用程序** | 使用保留端口的设备，如 TCP。  |
+| **默认)  (非标准端口** | 使用非标准端口的设备或未分配别名的端口。 |
+| **(默认) 的协议** | 处理已知的通信的设备。 |
+| **授权 (默认值)** | 在学习过程中或在网络上正式授权时在网络中发现的设备。 |
 | **设备清单筛选器** | 根据筛选器保存在设备清单表中的设备进行分组。 |
 | **轮询间隔** | 按轮询间隔分组的设备。 轮询间隔根据循环通道或期间自动生成。 例如，15.0 秒、3.0 秒、1.5 秒或任意间隔。 查看此信息可帮助您了解系统轮询速度是否太快或速度缓慢。 |
-| **编程** | 工程工作站和程控控制器 |
+| **编程** | 工程工作站和编程计算机。 |
 | **子网** | 属于特定子网的设备。 |
 | **VLAN** | 与特定 VLAN ID 相关联的设备。 |
-| **子网之间的连接** | 与跨子网连接关联的设备。 |
+| **跨子网连接** | 从一个子网到另一个子网的通信。 |
 | **固定警报** | 用户已将警报固定到其中的设备。 |
-| **攻击向量模拟** | 攻击向量报告中检测到易受攻击的设备。 若要在地图上查看这些设备，请在生成攻击向量时选择 " **在设备上显示** " 复选框。 :::image type="content" source="media/how-to-work-with-maps/add-attack-v2.png" alt-text="添加攻击向量模拟"::: |
+| **攻击向量模拟** | 攻击向量报告中检测到易受攻击的设备。 若要在地图上查看这些设备，请在生成攻击向量时选择 " **在设备上显示** " 复选框。 :::image type="content" source="media/how-to-work-with-maps/add-attack-v2.png" alt-text="添加攻击向量模拟":::。 |
 | **上次出现时间** | 按上次查看的时间范围分组的设备，例如：1小时、6小时、一天、七天。 |
 | **不在 Active Directory** | 所有未与 Active Directory 通信的非 PLC 设备。 |
 
@@ -142,7 +143,7 @@ ms.locfileid: "97976752"
 
 3. 从 "组" 窗格中，选择要突出显示或筛选设备的组。
 
-4. 选择 " **突出显示** 或 **筛选**"。
+4. 选择 " **突出显示** 或 **筛选**"。 切换相同的选择项以删除突出显示或筛选器。
 
 ## <a name="define-custom-groups"></a>定义自定义组
 
@@ -155,20 +156,20 @@ ms.locfileid: "97976752"
 
 1. 选择侧边菜单上的 " **设备** "。 随即显示设备映射。
 
-2. 选择 :::image type="content" source="media/how-to-work-with-maps/menu-icon.png" alt-text="组设置"::: 以显示组设置。
+1. 选择 :::image type="content" source="media/how-to-work-with-maps/menu-icon.png" alt-text="组设置"::: 以显示组设置。
 
-3. 选择 " :::image type="content" source="media/how-to-work-with-maps/create-group-v2.png" alt-text="组"::: " 以创建新的自定义组。
+1. 选择 " :::image type="content" source="media/how-to-work-with-maps/create-group-v2.png" alt-text="组"::: " 以创建新的自定义组。
 
 :::image type="content" source="media/how-to-work-with-maps/custom-group-v2.png" alt-text="创建自定义组屏幕":::
 
-4. 添加组的名称，使用最多30个字符。
+1. 添加组的名称，使用最多30个字符。
 
-5. 选择相关设备，如下所示：
+1. 选择相关设备，如下所示：
 
    - 从该菜单中选择设备，方法是从下拉列表中选择该设备 (选择 ") " 按钮。<br /> 或者， <br /> 
    - 通过从选定的组中复制设备，从此菜单添加设备， (在箭头按钮上选择) 
 
-6. 选择“添加组”  。
+1. 选择 " **添加组** "，将现有组添加到自定义组。
 
 ### <a name="add-devices-to-a-custom-group"></a>向自定义组添加设备
 
@@ -176,13 +177,13 @@ ms.locfileid: "97976752"
 
 1. 右键单击地图上) 的设备 (。
 
-2. 选择 " **添加到组**"。
+1. 选择 " **添加到组**"。
 
-3. 在 "组" 字段中输入组名称，并选择 "+"。 此时将显示新组。 如果该组已存在，则会将其添加到现有的自定义组。
+1. 在 "组" 字段中输入组名称，并选择 "+"。 此时将显示新组。 如果该组已存在，则会将其添加到现有的自定义组。
 
    :::image type="content" source="media/how-to-work-with-maps/groups-section-v2.png" alt-text="组名":::
 
-4. 重复步骤1-3，将设备添加到组。
+1. 重复步骤1-3，将设备添加到组。
 
 ## <a name="map-zoom-views"></a>地图缩放视图
 
@@ -308,36 +309,36 @@ ms.locfileid: "97976752"
 
   - 类型
 
-  - OS
+  - 操作系统
 
   - Purdue 层
 
   - 说明
 
-| Item | 说明 |
+| 项目 | 说明 |
 |--|--|
 | 基本信息 | 所需的基本信息。 |
 | 名称 | 设备名称。 <br /> 默认情况下，传感器会发现网络中定义的设备名称。 例如，在 DNS 服务器中定义的名称。 <br /> 如果未定义此类名称，则设备 IP 地址将显示在此字段中。 <br /> 你可以手动更改设备名称。 为设备指定有意义的名称，这些名称反映了其功能。 |
 | 类型 | 传感器检测到的设备类型。 <br /> 有关详细信息，请参阅 [查看设备类型](#view-device-types)。 |
-| Vendor | 设备供应商。 |
-| 操作系统 | 设备操作系统。 |
+| Vendor | 设备供应商。 这取决于设备 MAC 地址的前导字符。 此字段为只读。 |
+| 操作系统 | 传感器检测到的设备操作系统。 |
 | Purdue 层 | 此设备的传感器标识的 Purdue 层，包括： <br /> -自动 <br /> -进程控制 <br /> -监督 <br /> - Enterprise |
 | 说明 | 一个自由文本字段。 <br /> 添加有关设备的详细信息。 |
-| 属性 | 在学习期间发现的有关设备的任何其他信息，如果不属于其他类别，则会出现在 "属性" 部分中。 <br /> 此信息为 RO。 |
-| 设置 | 可以手动更改设备设置以防止误报： <br /> - **授权设备**：在学习期间，网络中发现的所有设备被标识为授权设备。 在学习期间发现设备后，默认情况下，该设备显示为未经授权的设备。 可以手动更改此定义。 <br /> - **称为扫描器**：如果知道此设备称为扫描器，则启用此选项，无需对其发出警报。 <br /> - **编程设备**：如果你知道此设备称为编程设备，并且无需向你发出警报，请启用此选项。 |
+| 特性 | 在学习期间发现的有关设备的任何其他信息，如果不属于其他类别，则会出现在 "属性" 部分中。 <br /> 此信息为 RO。 |
+| 设置 | 可以手动更改设备设置以防止误报： <br /> - **授权设备**：在学习期间，网络中发现的所有设备被标识为授权设备。 在学习期间发现设备后，默认情况下，该设备显示为未经授权的设备。 可以手动更改此定义。 <br /> - **称为扫描器**：如果知道此设备称为扫描器，则启用此选项，无需对其发出警报。 <br /> - **编程设备**：如果知道此设备称为编程设备，并用于进行编程更改，请启用此选项。 将其标识为编程设备会阻止来自此资产的编程更改的警报。 |
 | 自定义组 | 此设备参与的设备映射中的自定义组。 |
-| 州省/自治区/直辖市 | 设备的安全和授权状态： <br /> -如果没有警报，状态为 `Secured` <br /> -当存在有关设备的警报时，将显示警报的数目 <br /> -显示在 `Unauthorized` 学习时间段之后添加到网络的设备的状态。 你可以 `Authorized Device` 在 "设置" 中手动定义设备 <br /> -如果将此设备的地址定义为动态地址， `DHCP` 则会将添加到状态。 |
+| 状态 | 设备的安全和授权状态： <br /> -如果没有警报，状态为 `Secured` <br /> -当存在有关设备的警报时，将显示警报的数目 <br /> -显示在 `Unauthorized` 学习时间段之后添加到网络的设备的状态。 你可以 `Authorized Device` 在 "设置" 中手动定义设备 <br /> -如果将此设备的地址定义为动态地址， `DHCP` 则会将添加到状态。 |
 
 
 | 网络 | 说明 |
 |--|--|
-| 界面 | 设备接口。 只读字段。 |
+| 接口 | 设备接口。 只读字段。 |
 | 协议 | 设备使用的协议。 只读字段。 |
 | 固件 | 如果底板信息可用，则不会显示固件信息。 |
 | 地址 | 设备 IP 地址。 |
 | 串行 | 设备序列号。 |
 | 模块地址 | 设备型号和槽号或 ID。 |
-| 型号 | 设备型号。 |
+| 建模 | 设备型号。 |
 | 固件版本 | 固件版本号。 |
 
 查看设备信息：
@@ -361,7 +362,7 @@ ms.locfileid: "97976752"
 | 保证 | 工程工作站 <br /> 股票 <br />Historian <br />HMI <br />I <br />DCS 控制器 <br />RTU <br />工业打包系统 <br />工业规模 <br />工业机器人 <br />槽位 <br />计量 <br />可变频率驱动器  <br />机器人控制器 <br />伺服驱动器 <br />气压设备 <br />Marquee |
 | IT | 域控制器 <br />DB 服务器 <br />工作站 <br />服务器 <br />终端工作站 <br />存储 <br />智慧型手機 <br />平板电脑 <br />备份服务器 |
 | IoT | IP 照相机 <br />打印机  <br />冲孔打卡 <br />ATM <br />智能电视 <br />游戏控制台 <br />DVR <br />门控制面板 <br />HVAC <br />恒温调节器 <br />触发警报 <br />智能光线 <br />智能交换机 <br />触发探测器 <br />IP 电话 <br />警报系统 <br />警报警笛 <br />动作检测器 <br />升降机 <br />湿度传感器 <br />条形码扫描仪 <br />不间断电源 <br />人员计数器系统 <br />Intercom <br />转 |
-| 网络 | 无线接入点 <br />路由器 <br />开关 <br />防火墙 <br />VPN 网关 <br />NTP 服务器 <br />Wifi Pineapple <br />物理位置 <br />I/o 适配器 <br /> 协议转换器 |
+| 网络 | 无线接入点 <br />路由器 <br />交换机 <br />防火墙 <br />VPN 网关 <br />NTP 服务器 <br />Wifi Pineapple <br />物理位置 <br />I/o 适配器 <br /> 协议转换器 |
 
 查看设备信息：
 
@@ -369,7 +370,7 @@ ms.locfileid: "97976752"
 
 2. 右键单击某个设备，然后选择 " **查看属性**"。 将显示设备属性窗口。
 
-3. 选择此窗口底部的 "所需警报"，查看有关此设备的警报的详细信息。
+3. 选择 "所需警报"，查看有关此设备的警报的详细信息。
 
 ### <a name="backplane-properties"></a>底板属性
 
@@ -393,7 +394,7 @@ ms.locfileid: "97976752"
 | :::image type="content" source="media/how-to-work-with-maps/analog.png" alt-text="模拟 i/o"::: | 模拟 i/o |
 | :::image type="content" source="media/how-to-work-with-maps/comms.png" alt-text="通信适配器"::: | 通信适配器 |
 | :::image type="content" source="media/how-to-work-with-maps/digital.png" alt-text="数字 i/o"::: | 数字 i/o |
-| CPU  | CPU |
+| :::image type="content" source="media/how-to-work-with-maps/computer-processor.png" alt-text="CPU"::: | CPU |
 | :::image type="content" source="media/how-to-work-with-maps/HMI-icon.png" alt-text="HMI"::: | HMI |
 | :::image type="content" source="media/how-to-work-with-maps/average.png" alt-text="常规"::: | 泛型 |
 
@@ -429,7 +430,7 @@ ms.locfileid: "97976752"
 
 可以显示程控设备，并滚动浏览其他设备对其执行的各种编程更改。
 
-查看由编程设备添加、更改、删除或更改的代码。 根据文件类型、日期或关注的时间搜索编程更改。
+查看由编程设备添加、更改、删除或重新加载的代码。 根据文件类型、日期或关注的时间搜索编程更改。
 
 ### <a name="when-to-review-programming-activity"></a>何时查看编程活动 
 
@@ -476,13 +477,13 @@ ms.locfileid: "97976752"
 :::image type="content" source="media/how-to-work-with-maps/unauthorized.png" alt-text="未经授权的编程警报":::
 
 > [!NOTE]
-> 你还可以在设备属性窗口和设备清单中查看基本的编程信息。 有关详细信息，请参阅 [设备编程信息：其他位置](#device-programming-information-additional-locations) 。
+> 你还可以在设备属性窗口和设备清单中查看基本的编程信息。
 
 ### <a name="working-in-the-programming-timeline-window"></a>在编程时间线窗口中工作
 
 本部分介绍如何查看编程文件和比较版本。 搜索发送到程控设备的特定文件。 基于以下内容搜索文件：
 
-  - Date
+  - 日期
 
   - 文件类型
 
@@ -539,7 +540,7 @@ ms.locfileid: "97976752"
 
 5. 从 "最近的事件/文件" 窗格中选择的文件始终显示在右侧。
 
-### <a name="device-programming-information-additional-locations"></a>设备编程信息：其他位置
+### <a name="device-programming-information-other-locations"></a>设备编程信息：其他位置
 
 除了在编程时间线中查看详细信息外，还可以访问设备属性窗口和设备清单中的编程信息。
 
@@ -556,7 +557,7 @@ ms.locfileid: "97976752"
 
 如果认识到的信息不相关，你可能需要删除设备。 例如，
 
-  - 工程工作站的合作伙伴承包商连接到执行配置更新。 任务完成后，设备将不再受监视。
+  - 工程工作站的合作伙伴承包商暂时连接到执行配置更新。 任务完成后，设备将被删除。
 
   - 由于网络发生了更改，某些设备将不再连接。
 
@@ -566,7 +567,7 @@ ms.locfileid: "97976752"
 
 设备将从设备映射、设备清单和数据挖掘报表中删除。 其他信息，例如：存储在小组件中的信息将会保留。
 
-设备必须处于活动状态至少10分钟才能将其删除。
+设备必须处于非活动状态至少10分钟才能将其删除。
 
 从设备映射中删除设备：
 
@@ -576,15 +577,17 @@ ms.locfileid: "97976752"
 
 ### <a name="merge-devices"></a>合并设备
 
-在某些情况下，可能需要合并设备。 如果传感器发现单独的网络实体是一个唯一设备，则这可能是必需的。 例如，
+在某些情况下，可能需要合并设备。 如果传感器发现与一个唯一设备关联的单独网络实体，则可能需要执行此项。 例如，
 
-  - 使用四个网卡的 PLC
+  - 使用四个网卡的 PLC。
 
-  - 带有 WIFI 和物理卡的便携式计算机
+  - 带有 WIFI 和物理卡的便携式计算机。
+  
+  - 具有两个或多个网卡的工作站。
 
 合并时，指示传感器将两个设备的设备属性合并为一个设备的属性。 执行此操作时，将用新的设备属性详细信息更新设备属性窗口和传感器报告。
 
-例如，如果将两个设备与一个 IP 地址合并，则这两个 IP 地址将显示为设备属性窗口中的单独接口。 只能合并授权的设备。
+例如，如果合并两个设备，每个设备都有一个 IP 地址，则这两个 IP 地址将显示为设备属性窗口中的单独接口。 只能合并授权的设备。
 
 :::image type="content" source="media/how-to-work-with-maps/device-properties-v2.png" alt-text="设备属性窗口":::
 
@@ -596,7 +599,7 @@ ms.locfileid: "97976752"
 
 合并设备：
 
-1. 选择两个设备，并右键单击其中一个。
+1. 选择两个设备 (按住 shift 键单击) ，然后右键单击其中一个设备。
 
 2. 选择 " **合并** " 以合并设备。 完成合并最多可能需要2分钟。
 
@@ -622,7 +625,7 @@ ms.locfileid: "97976752"
 
 #### <a name="unauthorized-devices---attack-vectors-and-risk-assessment-reports"></a>未经授权的设备-攻击向量和风险评估报表
 
-未经授权的设备会在风险评估报表和攻击向量报告中包括。
+未经授权的设备包括在风险评估报表和攻击向量报表中。
 
 - **攻击向量报告：** 被标记为 "未授权" 的设备在攻击媒介中被解析为可疑的恶意设备，这可能是网络的威胁。
 
@@ -706,6 +709,6 @@ ms.locfileid: "97976752"
 
 1. 选择导出选项。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [调查设备清单中的传感器检测](how-to-investigate-sensor-detections-in-a-device-inventory.md)

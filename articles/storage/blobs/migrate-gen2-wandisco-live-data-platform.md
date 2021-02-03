@@ -5,16 +5,16 @@ author: normesta
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: b-pauls
-ms.date: 11/06/2020
+ms.date: 11/17/2020
 ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: db95f22a17c3776d84f12249693fb23b3d2d94e6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a0d02530ba2b8758b467b77ff639437675e4cc81
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95914433"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508923"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>通过适用于 Azure (预览版的 WANdisco 实时数据平台满足苛刻的迁移要求) 
 
@@ -34,7 +34,9 @@ ms.locfileid: "95914433"
 
 ## <a name="key-features-of-wandisco-livedata-platform-for-azure"></a>适用于 Azure 的 WANdisco 实时数据平台的主要功能
 
-[适用于 Azure 的 WANdisco 实时数据平台](https://docs.wandisco.com/live-data-platform/docs/landing/) 使用唯一的广域网络能力共识引擎来实现数据一致性，并大规模执行数据复制，同时应用程序可以继续修改复制下的数据。  
+[适用于 Azure 的 WANdisco 实时数据平台](https://docs.wandisco.com/live-data-platform/docs/landing/) 使用唯一的广域网络能力共识引擎来实现数据一致性，并大规模执行数据复制，同时应用程序可以继续修改复制下的数据。 <br><br>
+
+>[!VIDEO https://www.youtube.com/embed/KRrmcYPxEho] 
 
 平台的主要功能包括：
 
@@ -86,7 +88,9 @@ ms.locfileid: "95914433"
 在初始迁移后，使数据在 Azure 的本地 Hadoop 群集和 Azure 存储中保持一致，并将实时数据平面用于 Azure：
 
 1. 从 Azure 门户开始，为本地和 Azure 中的 Azure 预配实时数据平面。 无需更改应用程序。
+
 2. 配置涵盖要保持一致的数据位置的复制规则，例如： `/user/contoso/sales/region/WA` 。
+
 3. 在任意位置运行访问和修改数据的应用程序，作为与 Hadoop 兼容的文件系统。
 
 Azure 的实时数据平面使数据保持一致，而不会对群集操作或应用程序性能产生严重开销。 修改或引入数据，同时复制所有更改。

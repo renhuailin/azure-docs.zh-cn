@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 9e43521e26a6292141e1bbae7b39db3656df962c
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 994ed74750d159dfdb83259e9fe921f870ec2241
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493035"
+ms.locfileid: "99509361"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
@@ -109,7 +109,7 @@ ms.locfileid: "99493035"
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 私有终结点索引器支持 | 否 | 是 | 是 | 是 | 是 | 否 | 是 | 是 |
 | 使用技能组合<sup>1</sup>的索引器的专用终结点支持 | 否 | 否 | 否 | 是 | 是 | 否 | 是 | 是 |
-| 最大专用终结点 | 空值 | 10或30 | 100 | 400 | 400 | 空值 | 20 | 20 |
+| 最大专用终结点 | 不适用 | 10或30 | 100 | 400 | 400 | 不适用 | 20 | 20 |
 | 最大不同资源类型<sup>2</sup> | 不适用 | 4 | 7 | 15 | 15 | 不适用 | 4 | 4 |
 
 <sup>1</sup> AI 扩充和图像分析计算密集型，消耗的可用处理能力不相称。 出于此原因，在较低层上禁用专用连接，以避免对搜索服务本身的性能和稳定性产生不利影响。
@@ -124,14 +124,6 @@ ms.locfileid: "99493035"
 | -------- | -----|------ |----|----|----|-------|---|----|
 | 最大同义词映射数 |3 |3|5 |10 |20 |20 | 10 | 10 |
 | 每个映射的最大规则数 |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
-
-## <a name="queries-per-second-qps"></a>每秒查询次数 (QPS)
-
-每个客户必须独立制定 QPS 估计值。 索引大小和复杂性、查询大小和复杂性以及流量大小是 QPS 的主要决定因素。 当此类因素未知时，没有方法能提供有意义的估计值。
-
-针对专用资源（基本层和标准层）上运行的服务进行计算时，估计值更可预测。 由于能够控制更多参数，因此可以更精确地评估 QPS。 有关如何进行估算的指导，请参阅 [Azure 认知搜索的性能和优化](search-performance-optimization.md)。
-
-与“标准”层相比，“存储优化”层（L1 和 L2）的查询吞吐量应更低，延迟应更高。
 
 ## <a name="data-limits-ai-enrichment"></a>数据限制（AI 扩充）
 

@@ -5,12 +5,12 @@ keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 0616694d05e3fc9d2255ad97647ebe3bce545a93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6b995e2ab5ba663f6e33b009062859eb32928cc1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945353"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508585"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Azure HDInsight 高度可用的解决方案体系结构案例研究
 
@@ -71,7 +71,7 @@ Azure API 应用和 API 管理层为面向公众的网页提供支持。 内部�
 
 在正常运行期间，**Hive 和 Spark** 使用 [主动主要区域 – 按需辅助区域](hdinsight-business-continuity-architecture.md#apache-spark)复制模型。 Hive 复制过程会定期运行，同时还会进行 Hive Azure SQL 元存储和 Hive 存储帐户复制。 Spark 存储帐户使用 ADF DistCP 定期进行复制。 这些群集的暂时性特性有助于优化成本。 复制安排为每 4 小时进行一次，这样达到的 RPO 可确保符合不超过 5 小时的要求。
 
-在正常运行期间，**HBase** 复制使用 [领导者 – 追随者](hdinsight-business-continuity-architecture.md#apache-hbase)模型，以确保在任何地区都始终提供数据且 RPO 为零。
+在正常情况下， **HBase** 复制使用 "[领导者-](hdinsight-business-continuity-architecture.md#apache-hbase)从后" 模型来确保始终提供数据，而不考虑区域和 RPO 非常低。
 
 如果主要区域中发生区域性故障，则会从辅助区域提供 5 小时的在一定程度上是过时的网页和后端内容。 如果 Azure 服务运行状况仪表板在 5 小时期限内未指示恢复 ETA，Contoso Retail 将在辅助区域中创建 Hive 和 Spark 转换层，然后将所有上游数据源指向辅助区域。 使辅助区域可写会导致执行故障回复过程，该过程涉及复制回主要区域。
 

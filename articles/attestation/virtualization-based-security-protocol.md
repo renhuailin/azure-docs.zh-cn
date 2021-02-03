@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 53052b35a50899d6f9e761301f31b9ffd20a4b91
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 38012c5b4bb9338c1200d9583256193ee8402c98
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610006"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507873"
 ---
 # <a name="trusted-platform-module-tpm-and-virtualization-based-securityvbs-enclave-attestation-protocol"></a>受信任的平台模块 (基于 TPM) 和基于虚拟化的安全 (VBS) enclave 证明协议 
 
@@ -28,7 +28,7 @@ VBS enclaves 要求使用 TPM 来提供用于验证安全基础的度量。 除�
 
 客户端 > Azure 证明
 
-#### <a name="payload"></a>有效负载
+#### <a name="payload"></a>Payload
 
 ```
 { 
@@ -44,7 +44,7 @@ VBS enclaves 要求使用 TPM 来提供用于验证安全基础的度量。 除�
 
 Azure 证明-> 客户端
 
-#### <a name="payload"></a>有效负载
+#### <a name="payload"></a>Payload
 
 ```
 { 
@@ -55,7 +55,7 @@ Azure 证明-> 客户端
 
 **质询** (BASE64URL (个八进制) # A3：服务发出的随机值。
 
-**service_context** (BASE64URL (个八位字节) # A3：由服务创建的不透明的加密上下文，其中包括、质询以及该质询的过期时间。 
+**service_context** (BASE64URL (八进制数) # A3：服务创建的不透明上下文。
 
 
 ### <a name="request-message"></a>请求消息
@@ -64,7 +64,7 @@ Azure 证明-> 客户端
 
 客户端 > Azure 证明 
 
-#### <a name="payload"></a>有效负载
+#### <a name="payload"></a>Payload
 
 ```
 {
@@ -236,7 +236,7 @@ TPM + VBS enclave 示例：
 
 - **value_type (String)**：声明值的数据类型
 
-**service_context** (BASE64URL (个八位字节) # A3：由服务创建的、不透明的加密上下文，其中包括挑战和该质询的过期时间。
+**service_context** (BASE64URL (八进制数) # A3：服务创建的不透明上下文。
 
 ### <a name="report-message"></a>报告消息
 
@@ -244,7 +244,7 @@ TPM + VBS enclave 示例：
 
 Azure 证明-> 客户端
 
-#### <a name="payload"></a>有效负载
+#### <a name="payload"></a>Payload
 
 ```
 {

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: java、jakartaee、javaee、microprofile、开放式、websphere、、aks、kubernetes
-ms.openlocfilehash: 93ffa3ded4d0771438c5d6a2dc23e6e184f04fe2
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 4d6e335cd4b522593091094ac6251acc97873208
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99227588"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508044"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>在 Azure Kubernetes Service (AKS) 群集上，使用开放式自由或 WebSphere 自由部署 Java 应用程序
 
@@ -213,7 +213,7 @@ javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   9080:3
 
 在上面的示例中打开 web 浏览器，以访问服务 (的外部 IP 地址和端口 `52.152.189.57:9080`) 查看应用程序主页。 你应看到应用程序副本的 pod 名称显示在页面的左上角。 等待几分钟并刷新页面，你可能会看到因 AKS 群集提供的负载平衡而显示的不同 pod 名称。
 
-:::image type="content" source="./media/howto-deploy-java-liberty-app/java-liberty-app-aks-deployed-success.png" alt-text="已成功在 AKS 上部署 Java 自由应用程序":::
+:::image type="content" source="./media/howto-deploy-java-liberty-app/deploy-succeeded.png" alt-text="已成功在 AKS 上部署 Java 自由应用程序":::
 
 >[!NOTE]
 > - 应用程序当前未使用 HTTPS。 建议[使用你自己的证书启用 TLS](ingress-own-tls.md)。

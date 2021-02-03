@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 3895e01b1fbfcde79ff91bd1eade8d902c33b852
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 6dbe15da85a85303742ef28c7ca609755193f25e
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838388"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509093"
 ---
 # <a name="track-sensor-activity"></a>跟踪传感器活动
 
@@ -59,15 +59,15 @@ ms.locfileid: "97838388"
 
 2. 设置事件筛选器，如下所示：
 
-   - **包含地址**：显示特定事件设备。
+   - **包含地址**：显示特定设备的事件。
 
-   - **排除地址**：隐藏特定事件设备。
+   - **排除地址**：隐藏特定设备的事件。
 
-   - **Include 事件类型**：显示特定的事件类型。
+   - **Include 事件类型**：显示特定事件类型。
 
    - **排除事件类型**：隐藏特定事件类型。
 
-   - **设备组**：选择设备组，因为它是在设备映射中定义的。 仅显示此组的事件。
+   - **设备组**：选择设备组，因为它是在设备映射中定义的。 仅显示此组中的事件。
 
 3. 选择 " **全部清除** " 以清除所有选定的筛选器。
 
@@ -87,7 +87,7 @@ ms.locfileid: "97838388"
 
     - 选择 " **PCAP 文件** " 以下载 PCAP 文件 (如果它存在，则在特定时间) 包含整个网络的数据包捕获。 
     
-      PCAP 文件包含的技术信息可帮助工程师准确确定事件的位置和发生的情况。 可以使用网络协议分析器（如 Wireshark）和免费应用程序来分析 PCAP 文件。
+      PCAP 文件包含有助于网络工程师确定事件确切参数的技术信息。 可以使用网络协议分析器（如 Wireshark，即开源应用程序）分析 PCAP 文件。
 
 ## <a name="see-also"></a>另请参阅
 

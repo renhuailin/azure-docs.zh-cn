@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: ad09bcb1ea4aa32bdd04af47d3503f74c850a10b
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c0670f37da0cead5e3bd05a1d69e17191e8c0ccf
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98803507"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508737"
 ---
 # <a name="manage-alert-events"></a>管理警报事件
 
@@ -45,7 +45,7 @@ ms.locfileid: "98803507"
 
 执行缓解或调查后，可以通过选择 " **确认**" 来指示传感器隐藏警报。 如果再次检测到该事件，将 retriggered 警报。
 
-隐藏警报：
+清除警报：
 
   - 选择 " **确认**"。
 
@@ -70,9 +70,9 @@ ms.locfileid: "98803507"
 
 ### <a name="what-traffic-is-muted"></a>什么是静音的流量？
 
-一个静音的方案包括为事件检测到的网络设备和流量。 警报标题描述要静音的流量。
+一种静音的方案包括网络设备和检测到事件的流量。 警报标题描述要静音的流量。
 
-要静音的设备将显示为警报中的图像。 如果显示两个设备，则它们之间的流量将静音。
+要静音的设备将显示为警报中的图像。 如果显示两个设备，则会将其之间的特定警报流量静音。
 
 **示例 1**
 

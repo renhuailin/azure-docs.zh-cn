@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 3bf3ecefb17f4c9fda6405da7fb2bdc2650f5324
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 4dd1941e6a749c2ccf7ca082ab89ef2a70baa0d6
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131468"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509530"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -25,6 +25,7 @@ ms.locfileid: "98131468"
 
 | 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
+| V2.0 版本- [KB4539952](https://support.microsoft.com/en-us/help/4539952)| 11.2.0.0 | 2021年2月2日 | 支持-试验 |
 | V2.0 版本- [KB4539951](https://support.microsoft.com/en-us/help/4539951)| 11.1.0.0 | 2020年11月4日 | 支持 |
 | V2.0 版本- [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 6月5日2020 | 支持 |
 | 2020 年 5 月更新汇总 - [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 2020 年 5 月 19 日 | 支持 |
@@ -38,7 +39,7 @@ ms.locfileid: "98131468"
 
 | 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| V7 版本 | 7.0.0.0-7.2.0。0 | 空值 | 不支持-代理版本在2020年9月1日过期 |
+| V7 版本 | 7.0.0.0-7.2.0。0 | 不适用 | 不支持-代理版本在2020年9月1日过期 |
 | V6 版本 | 6.0.0.0 - 6.3.0.0 | 空值 | 不支持 - 代理版本已于 2020 年 4 月 21 日到期 |
 | V5 版本 | 5.0.2.0 - 5.2.0.0 | 空值 | 不支持 - 代理版本已于 2020 年 3 月 18 日到期 |
 | V4 版本 | 4.0.1.0 - 4.3.0.0 | 空值 | 不支持 - 代理版本已于 2019 年 11 月 6 日到期 |
@@ -48,6 +49,32 @@ ms.locfileid: "98131468"
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
+## <a name="agent-version-11200"></a>代理版本11.2.0。0
+以下发行说明适用于2021年2月2日发布的 Azure 文件同步代理的版本11.2.0.0。 除了为版本11.1.0.0 列出的发行说明外，还提供了这些说明。
+
+### <a name="improvements-and-issues-that-are-fixed"></a>改进和已解决的问题 
+- 如果由于每个项目的错误数过多而取消了同步会话，则当 Azure 文件同步服务确定自定义同步会话以便更正每个项的错误时，同步可能会在启动新会话时经过协调。
+- 使用 Register-AzStorageSyncServer cmdlet 注册服务器可能会失败，并出现 "未经处理的异常" 错误。
+- 新的 PowerShell cmdlet (StorageSyncAllowedServerEndpointPath) 在服务器上配置允许的服务器终结点路径。 如果 Azure 文件同步部署由云解决方案提供商 (CSP) 或服务提供商管理，并且客户希望在服务器上配置允许的服务器终结点路径，则此 cmdlet 非常有用。 创建服务器终结点时，如果指定的路径不在允许列表中，则服务器终结点的创建将失败。 请注意，这是一项可选功能，创建服务器终结点时，默认情况下允许所有受支持的路径。  
+
+    
+    - 若要添加允许的服务器终结点路径，请在服务器上运行以下 PowerShell 命令：
+
+    ```powershell
+    Import-Module 'C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll' -verbose
+    Add-StorageSyncAllowedServerEndpointPath -Path <path>
+    ```  
+
+    - 若要获取支持的路径列表，请运行以下 PowerShell 命令：
+    
+    ```powershell
+    Get-StorageSyncAllowedServerEndpointPath
+    ```     
+    - 若要删除路径，请运行以下 PowerShell 命令：
+    
+    ```powershell
+    Remove-StorageSyncAllowedServerEndpointPath -Path <path>
+    ```  
 ## <a name="agent-version-11100"></a>代理版本11.1.0。0
 以下发行说明适用于) 2020 年11月4日发布的 Azure 文件同步代理 (版本11.1.0.0。
 

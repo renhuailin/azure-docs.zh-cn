@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: ade5880a6b06f448df23eb77d81201a521f1d240
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 5fc47599d09e5be60311dbda15868d87de4d91d2
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430039"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509378"
 ---
-# <a name="create-a-search-indexer"></a>创建搜索索引器
+# <a name="creating-indexers-in-azure-cognitive-search"></a>在 Azure 中创建索引器认知搜索
 
 搜索索引器提供自动工作流，用于将文档和外部数据源的内容传输到搜索服务上的搜索索引。 正如最初设计的，它从 Azure 数据源提取文本和元数据，将文档序列化为 JSON，并将生成的文档传递到用于索引的搜索引擎。 这是因为已将其扩展为支持 [AI 扩充](cognitive-search-concept-intro.md) 进行深层内容处理。 
 
@@ -99,7 +99,7 @@ AI 扩充超出了本文的范围。 有关详细信息，请从以下文章开�
 
 ### <a name="use-a-rest-client"></a>使用 REST 客户端
 
-带有 Azure 认知搜索) 的扩展的 Postman 和 Visual Studio Code (可充当索引器客户端。 使用任意一种工具，都可以连接到搜索服务并发送创建索引器和其他对象的请求。 有许多教程和示例演示了用于创建对象的 REST 客户端。 
+带有 Azure 认知搜索) 的扩展的 Postman 和 Visual Studio Code (可充当索引器客户端。 使用任意一种工具，都可以连接到搜索服务，并 [ (REST) 请求发送 Create 索引器 ](/rest/api/searchservice/create-indexer) 。 有许多教程和示例演示了用于创建对象的 REST 客户端。 
 
 请从以下文章之一开始了解每个客户端：
 
@@ -110,7 +110,7 @@ AI 扩充超出了本文的范围。 有关详细信息，请从以下文章开�
 
 ### <a name="use-an-sdk"></a>使用 SDK
 
-对于认知搜索，Azure Sdk 实现了公开提供的功能。 因此，你可以使用任何 Sdk 来创建与索引器相关的对象。 它们都实现了一个 **SearchIndexerClient** ，该对象提供创建索引器和相关对象的方法，包括技能集。
+对于认知搜索，Azure Sdk 实现了公开提供的功能。 因此，你可以使用任何 Sdk 来创建与索引器相关的对象。 它们都提供一个 **SearchIndexerClient** ，其中包含用于创建索引器和相关对象的方法，包括技能集。
 
 | Azure SDK | 客户端 | 示例 |
 |-----------|--------|----------|

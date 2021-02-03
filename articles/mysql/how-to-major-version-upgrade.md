@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: 62faaed3672f721b26587d1bca3ddb0947f733e7
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: ea2dc877c7bc6db387985e7b5cd1153e195ab4f1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220830"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509564"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Azure Database for MySQL 单一服务器的主版本升级
 
@@ -113,7 +113,7 @@ ms.locfileid: "99220830"
 > 此方案在步骤4、5和6中将仅出现停机时间。
 
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 ### <a name="when-will-this-upgrade-feature-be-ga-as-we-have-mysql-v56-in-our-production-environment-that-we-need-to-upgrade"></a>在我们需要升级的生产环境中，此升级功能在什么情况下将推出？
 
@@ -121,15 +121,7 @@ ms.locfileid: "99220830"
 
 ### <a name="will-this-cause-downtime-of-the-server-and-if-so-how-long"></a>这会导致服务器停机，如果有多长时间？
 
-是的，服务器在升级过程中将不可用。因此，我们建议你在计划内维护时段执行此操作。 估计的停机时间取决于数据库大小、预配的存储大小（预配的 IOPS）以及数据库中的表的数量。 升级时间与服务器中表的数量成正比。基本 SKU 服务器的升级预计需要更长时间，因为它在标准存储平台上。 为了估计服务器环境的停机时间，建议你首先在还原后的服务器副本上执行升级。  
-
-### <a name="it-is-noted-that-it-is-not-supported-on-replica-server-yet-what-does-that-mean-concrete"></a>请注意，它在副本服务器上尚不受支持。 这是什么意思？
-
-当前，副本服务器不支持主版本升级，这意味着不应为复制所涉及的服务器（源服务器或副本服务器）运行主版本升级。 如果要在添加对升级功能的副本支持之前测试复制中涉及的服务器的升级，建议执行以下步骤：
-
-1. 在计划内维护期间，在捕获副本服务器的名称和所有配置信息（防火墙设置、服务器参数配置，如果它与源服务器不同）后[停止复制并删除副本服务器](howto-read-replicas-portal.md)。
-2. 执行源服务器的升级。
-3. 使用在步骤 1 中捕获的名称和配置设置来预配新的只读副本服务器。 将源服务器升级到 v5.7 后，新的副本服务器会自动为 v5.7。
+是的，服务器在升级过程中将不可用。因此，我们建议你在计划内维护时段执行此操作。 估计的停机时间取决于数据库大小、预配的存储大小（预配的 IOPS）以及数据库中的表的数量。 升级时间与服务器中表的数量成正比。基本 SKU 服务器的升级预计需要更长时间，因为它在标准存储平台上。 为了估计服务器环境的停机时间，建议你首先在还原后的服务器副本上执行升级。 请考虑 [使用 "读取副本" 执行从 mysql 5.6 到 mysql 5.7 的最小停机主要版本升级。](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas)
 
 ### <a name="what-will-happen-if-we-do-not-choose-to-upgrade-our-mysql-v56-server-before-february-5-2021"></a>如果未选择在2021年2月5日之前升级 MySQL 5.6 server，会发生什么情况？
 
