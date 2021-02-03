@@ -6,16 +6,16 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e57b3dd31455db245103469874c517fe54479110
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875914"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526901"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>了解迁移选项到新警报
 
-经典警报已 [停](./monitoring-classic-retirement.md)用，但对于尚不支持新警报的资源仍有限制。 对于剩余的警报迁移、 [Azure 政府云和](../../azure-government/documentation-government-welcome.md) [Azure 中国世纪互联](https://docs.azure.cn/)，将很快宣布新的日期。
+对于公有云用户，经典警报会被 [停](./monitoring-classic-retirement.md) 用，但对于尚不支持新警报的资源仍有限制。 对于剩余的警报迁移、 [Azure 政府云和](../../azure-government/documentation-government-welcome.md) [Azure 中国世纪互联](https://docs.azure.cn/)，将很快宣布新的日期。
 
 本文介绍了如何使用 "手动迁移" 和 "自主迁移" 工具来迁移剩余的警报规则。 此外还介绍了一些常见问题的补救措施。
 
@@ -246,7 +246,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 
 ### <a name="validation-failed"></a>验证失败
 
-由于最近对订阅中的经典警报规则做了某些更改，无法迁移该订阅。 此问题是暂时性的。 几天后当迁移状态恢复为“准备好迁移”时，可以重新开始迁移。****
+由于最近对订阅中的经典警报规则做了某些更改，无法迁移该订阅。 此问题是暂时性的。 几天后当迁移状态恢复为“准备好迁移”时，可以重新开始迁移。
 
 ### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>范围锁阻止我们迁移规则
 

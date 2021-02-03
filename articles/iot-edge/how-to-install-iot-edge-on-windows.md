@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 3470e07c1b5673efa6cd015e43e077828da1573e
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: be807c7654123962f93820d9a3d54f3c7c070d97
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703659"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526952"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>在 Windows 设备上安装和设置适用于 Linux 的 Azure IoT Edge (预览版) 
 
@@ -26,7 +26,7 @@ Windows 上适用于 Linux 的 Azure IoT Edge 允许使用 Linux 虚拟机在 Wi
 本文列出了在 Windows 设备上设置 IoT Edge 的步骤。 这些步骤将部署包含要在 Windows 设备上运行的 IoT Edge 运行时的 Linux 虚拟机，然后使用其 IoT 中心设备标识设置设备。
 
 >[!NOTE]
->Windows 上适用于 Linux 的 IoT Edge 提供 [公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>IoT Edge for Linux on Windows 现提供[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -62,11 +62,11 @@ Windows 上适用于 Linux 的 Azure IoT Edge 允许使用 Linux 虚拟机在 Wi
 
    1. 在 " **设置** " 菜单的 " **网关**" 下，选择 " **扩展**"。
 
-   1. 选择 " **源** " 选项卡，然后选择 " **添加**"。
+   1. 选择“源”选项卡，然后选择“添加” 。
 
-   1. https://aka.ms/wac-insiders-feed在文本框中输入，然后选择 "**添加**"。
+   1. 在文本框中输入 https://aka.ms/wac-insiders-feed ，然后选择“添加”。
 
-   1. 添加该源后，导航到 " **可用扩展** " 选项卡。可能需要一段时间来更新扩展列表。
+   1. 添加源后，导航到“可用扩展”选项卡。系统可能需要一段时间来更新扩展列表。
 
    1. 在 " **可用扩展** " 选项卡上，在扩展列表中查找 **Azure IoT Edge** 。 选择它，然后选择扩展列表上方的 **安装** 提示。
 
@@ -296,7 +296,7 @@ Windows 上适用于 Linux 的 Azure IoT Edge 支持以下设置方法：
 1. 将以下命令复制到文本编辑器中。 将占位符文本替换为详细信息。
 
    ```azurepowershell-interactive
-   Provision-EflowVm -provisioningType x509 -scopeId <ID_SCOPE_HERE> -registrationId <REGISTRATION_ID_HERE> -identityCertLocWin <ABSOLUTE_CERT_SOURCE_PATH_ON_WINDOWS_MACHINE> -identityPkLocWin <ABSOLUTE_PRIVATE_KEY_SOURCE_PATH_ON_WINDOWS_MACHINE> -identityCertLocWin <ABSOLUTE_CERT_DEST_PATH_ON_LINUX_MACHINE -identityPkLocVm <ABSOLUTE_PRIVATE_KEY_DEST_PATH_ON_LINUX_MACHINE>
+   Provision-EflowVm -provisioningType x509 -scopeId <ID_SCOPE_HERE> -registrationId <REGISTRATION_ID_HERE> -identityCertLocWin <ABSOLUTE_CERT_SOURCE_PATH_ON_WINDOWS_MACHINE> -identityPkLocWin <ABSOLUTE_PRIVATE_KEY_SOURCE_PATH_ON_WINDOWS_MACHINE> -identityCertLocVm <ABSOLUTE_CERT_DEST_PATH_ON_LINUX_MACHINE -identityPkLocVm <ABSOLUTE_PRIVATE_KEY_DEST_PATH_ON_LINUX_MACHINE>
    ```
 
 1. 在 [Azure 门户](https://ms.portal.azure.com/)中，导航到你的 DPS 实例。

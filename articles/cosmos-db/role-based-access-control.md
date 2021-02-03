@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 2a5ec03bcd7d5002f85d32ed63614d277e95cfa0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: db6721754802a3eeda387339498dadb9d25b3685
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943754"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526935"
 ---
 # <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 Azure 基于角色的访问控制
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,7 +26,8 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 Azur
 |---------|---------|
 |[DocumentDB 帐户参与者](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|可管理 Azure Cosmos DB 帐户。|
 |[Cosmos DB 帐户读取者](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|可以读取 Azure Cosmos DB 帐户数据。|
-|[Cosmos 备份操作员](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|可以提交对 Azure Cosmos 数据库或容器的还原请求 无法访问任何数据或使用数据资源管理器。|
+|[Cosmos 备份操作员](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)| 可以为已启用定期备份的数据库或容器提交 Azure 门户的还原请求。 可以修改 Azure 门户上的备份间隔和保留期。 无法访问任何数据或使用数据资源管理器。  |
+| [CosmosRestoreOperator](../role-based-access-control/built-in-roles.md) | 可对连续备份模式 Azure Cosmos DB 帐户执行还原操作。|
 |[Cosmos DB 操作员](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|可预配 Azure Cosmos 帐户、数据库和容器。 无法访问任何数据或使用数据资源管理器。|
 
 > [!IMPORTANT]
@@ -36,7 +37,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 Azur
 
 Azure 门户中的“访问控制(IAM)”窗格用于针对 Azure Cosmos 资源配置 Azure 基于角色的访问控制。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。 对于个人和组，可使用内置角色或自定义角色。 以下屏幕截图显示在 Azure 门户中使用访问控制 (IAM) 的 Active Directory 集成 (Azure RBAC)：
 
-:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Azure 门户中的访问控制 (IAM) - 演示数据库安全性":::
+:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Azure 门户演示数据库安全性中 (IAM) 的访问控制。":::
 
 ## <a name="custom-roles"></a>自定义角色
 
