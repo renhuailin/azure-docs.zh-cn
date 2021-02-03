@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.custom: devx-track-java, devx-track-csharp
 ms.author: aahi
-ms.openlocfilehash: afac19a6debb3804c99492338428669928f1118b
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: d1c9589265726bae01b86c152853c40f79825ceb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371765"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948472"
 ---
 按照本快速入门，开始使用 Java 客户端库通过必应视觉搜索服务获取图像见解。 虽然必应视觉搜索具有与大多数编程语言兼容的 REST API，但该客户端库提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVisualSearch) 上找到此快速入门的源代码。
 
@@ -23,7 +23,7 @@ ms.locfileid: "94371765"
 * 上传图像以发送视觉搜索请求。
 * 获取图像见解标记和视觉搜索标记。
 
-[参考文档](/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [项目 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/) | [示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[参考文档](/java/api/overview/azure/cognitiveservices/client/bingvisualsearch) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [项目 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/) | [示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,15 +43,15 @@ ms.locfileid: "94371765"
 mkdir myapp && cd myapp
 ```
 
-从工作目录运行 `gradle init` 命令。 此命令将创建 Gradle 的基本生成文件，包括 *build.gradle.kts* ，在运行时将使用该文件创建并配置应用程序。
+从工作目录运行 `gradle init` 命令。 此命令将创建 Gradle 的基本生成文件，包括 *build.gradle.kts*，在运行时将使用该文件创建并配置应用程序。
 
 ```console
 gradle init --type basic
 ```
 
-当提示你选择一个 **DSL** 时，选择 **Kotlin** 。
+当提示你选择一个 **DSL** 时，选择 **Kotlin**。
 
-找到 *build.gradle.kts* ，并使用喜好的 IDE 或文本编辑器将其打开。 然后将以下生成配置复制到其中：
+找到 *build.gradle.kts*，并使用喜好的 IDE 或文本编辑器将其打开。 然后将以下生成配置复制到其中：
 
 ```kotlin
 plugins {
@@ -127,7 +127,7 @@ dependencies {
 > 本快速入门假设你已为必应视觉搜索密钥创建了名为 `BING_SEARCH_V7_SUBSCRIPTION_KEY` 的[环境变量](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
 
 
-在 main 方法中，请务必使用订阅密钥实例化 [BingVisualSearchAPI](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingvisualsearchapi?view=azure-java-stable) 对象。
+在 main 方法中，请务必使用订阅密钥实例化 [BingVisualSearchAPI](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingvisualsearchapi) 对象。
 
 ```csharp
 BingVisualSearchAPI client = BingVisualSearchManager.authenticate(subscriptionKey);
@@ -135,13 +135,13 @@ BingVisualSearchAPI client = BingVisualSearchManager.authenticate(subscriptionKe
 
 ## <a name="send-a-visual-search-request"></a>发送视觉搜索请求
 
-在新方法中，使用客户端的 [bingImages().visualSearch()](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingimages.visualsearch?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_visualsearch_BingImages_visualSearch__) 方法发送图像字节数组（在 `main()` 方法中创建）。 
+在新方法中，使用客户端的 [bingImages().visualSearch()](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingimages.visualsearch#com_microsoft_azure_cognitiveservices_search_visualsearch_BingImages_visualSearch__) 方法发送图像字节数组（在 `main()` 方法中创建）。 
 
 [!code-java[visualSearch() method](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=visualSearch)]
 
 ## <a name="print-the-image-insight-token-and-visual-search-tags"></a>输出图像见解标记和视觉搜索标记
 
-检查 [ImageKnowledge](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.models.imageknowledge?view=azure-java-stable) 对象是否为 null。 如果不是，则输出图像见解标记、标记数量、操作数量和第一个操作类型。
+检查 [ImageKnowledge](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.models.imageknowledge) 对象是否为 null。 如果不是，则输出图像见解标记、标记数量、操作数量和第一个操作类型。
 
 [!code-java[Print token and tags](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=printVisualSearchResults)]
 

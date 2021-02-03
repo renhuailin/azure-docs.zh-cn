@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: qna maker, 低代码聊天机器人, 多回合对话
-ms.openlocfilehash: 16f30801d52aa46184c4eb394f3d1cfebecd4be6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: a75b5939e8848ca898d7279b55ab2c4faa4ed72a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700709"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919555"
 ---
 # <a name="what-is-qna-maker"></a>什么是 QnA Maker？
 
@@ -22,14 +22,14 @@ QnA Maker 通常用于生成对话式客户端应用程序，其中包括社交�
 
 ## <a name="when-to-use-qna-maker"></a>何时使用 QnA Maker
 
-* **包含静态信息时** - 如果回答知识库中包含静态信息，可使用 QnA Maker。 此知识库是根据你的需要自定义的，其内容是使用 [PDF 和 URL](../index.yml) 等文档生成的。
+* **包含静态信息时** - 如果回答知识库中包含静态信息，可使用 QnA Maker。 此知识库是根据你的需要自定义的，其内容是使用 [PDF 和 URL](../Concepts/data-sources-and-content.md) 等文档生成的。
 * **想要对某个请求、问题或命令提供相同的回答时** - 如果不同的用户提交相同的问题，则返回相同的回答。
 * **想要基于元信息筛选静态信息时** - 添加 [元数据](../how-to/metadata-generateanswer-usage.md)标记，以提供与客户端应用程序的用户和信息相关的附加筛选选项。 常见的元数据信息包括[聊天内容](../how-to/chit-chat-knowledge-base.md)、内容类型或格式、内容目的和内容新鲜度。
 * **想要管理包含静态信息的机器人聊天时** - 知识库提取用户的聊天文本或命令，并予以回答。 如果回答是预先确定的聊天流（在知识库中使用[多轮次上下文](../how-to/multiturn-conversation.md)表示）的一部分，则机器人可以轻松提供此流。
 
 ## <a name="what-is-a-knowledge-base"></a>知识库是什么？
 
-QnA Maker [将内容导入](../index.yml)问题和回答对知识库。 导入过程提取有关结构化和半结构化内容部分之间的关系的信息，以暗示问题与回答对之间的关系。 可编辑这些问题与回答对，或添加新对。
+QnA Maker [将内容导入](../Concepts/plan.md)问题和回答对知识库。 导入过程提取有关结构化和半结构化内容部分之间的关系的信息，以暗示问题与回答对之间的关系。 可编辑这些问题与回答对，或添加新对。
 
 问题与回答对的内容包括：
 * 问题的所有替代形式

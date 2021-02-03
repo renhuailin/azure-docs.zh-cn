@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: personalizer, Azure personalizer, machine learning
-ms.openlocfilehash: 33c1770c5c8722a55d8f1df4aff9b1637d903977
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 913b4d989865a50b23d58c5493368997248f8db8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028771"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928549"
 ---
 # <a name="what-is-personalizer"></a>什么是个性化体验创建服务？
 
@@ -115,10 +115,10 @@ Azure 个性化体验创建服务是基于云的服务，有助于应用程序�
 
 ## <a name="reference"></a>参考 
 
-* [个性化体验创建服务 C#/.NET SDK](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
+* [个性化体验创建服务 C#/.NET SDK](/dotnet/api/overview/azure/cognitiveservices/client/personalizer)
 * [个性化体验创建服务 Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview)
-* [个性化体验创建服务 JavaScript SDK](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
-* [个性化体验创建服务 Python SDK](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
+* [个性化体验创建服务 JavaScript SDK](/javascript/api/@azure/cognitiveservices-personalizer/)
+* [个性化体验创建服务 Python SDK](/python/api/overview/azure/cognitiveservices/personalizer)
 * [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
 ## <a name="next-steps"></a>后续步骤

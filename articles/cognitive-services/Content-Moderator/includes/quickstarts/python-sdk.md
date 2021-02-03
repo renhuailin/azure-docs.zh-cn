@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 324f89d2de56666242ed4f6231eff0855ec561b3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1058b93a304dbf6f08d9a3e8f995e123a6dc6631
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356471"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947416"
 ---
 适用于 Python 的 Azure 内容审查器客户端库入门。 请按照以下步骤安装 PiPy 包并试用基本任务的示例代码。 
 
@@ -30,7 +30,7 @@ ms.locfileid: "96356471"
 * 使用自定义图像列表
 * 创建评审
 
-[参考文档](/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [包 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [示例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[参考文档](/python/api/overview/azure/cognitiveservices/contentmoderator) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [包 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [示例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -75,10 +75,10 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 |名称|说明|
 |---|---|
-|[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|所有内容审查器功能都需要此类。 请使用你的订阅信息实例化此类，然后使用它来生成其他类的实例。|
-|[ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|此类提供用于分析成人内容、个人信息或人脸的功能。|
-|[TextModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)|此类提供用于在文本中分析语言、猥亵内容、错误和个人信息的功能。|
-[ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python)|此类提供评审 API 的功能，包括用于创建作业、自定义工作流和人工评审的方法。|
+|[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient)|所有内容审查器功能都需要此类。 请使用你的订阅信息实例化此类，然后使用它来生成其他类的实例。|
+|[ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations)|此类提供用于分析成人内容、个人信息或人脸的功能。|
+|[TextModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations)|此类提供用于在文本中分析语言、猥亵内容、错误和个人信息的功能。|
+[ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations)|此类提供评审 API 的功能，包括用于创建作业、自定义工作流和人工评审的方法。|
 
 ## <a name="code-examples"></a>代码示例
 
@@ -93,7 +93,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-使用终结点和密钥实例化某个客户端。 使用密钥创建 [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) 对象，然后在终结点上使用该对象创建 [ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) 对象。
+使用终结点和密钥实例化某个客户端。 使用密钥创建 [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials) 对象，然后在终结点上使用该对象创建 [ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient) 对象。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_client)]
 
@@ -116,7 +116,7 @@ Crap is the profanity here. Is this information PII? phone 2065550111
 
 ## <a name="use-a-custom-terms-list"></a>使用自定义字词列表
 
-以下代码演示如何管理用于审查文本的自定义字词列表。 可以使用 [ListManagementTermListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations?view=azure-python) 类创建字词列表、管理各个字词，并根据该列表筛选其他文本正文。
+以下代码演示如何管理用于审查文本的自定义字词列表。 可以使用 [ListManagementTermListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations) 类创建字词列表、管理各个字词，并根据该列表筛选其他文本正文。
 
 ### <a name="get-sample-text"></a>获取示例文本
 
@@ -186,7 +186,7 @@ This text contains the terms "term1" and "term2".
 
 ## <a name="moderate-images"></a>审查图像
 
-以下代码使用内容审查器客户端以及 [ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python) 对象在图像中分析成人内容和猥亵内容。
+以下代码使用内容审查器客户端以及 [ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations) 对象在图像中分析成人内容和猥亵内容。
 
 ### <a name="get-sample-images"></a>获取示例图像
 
@@ -218,7 +218,7 @@ This text contains the terms "term1" and "term2".
 
 ## <a name="use-a-custom-image-list"></a>使用自定义图像列表
 
-以下代码演示如何管理用于图像审查的自定义图像列表。 如果你的平台经常收到一组你要筛选出的相同图像的实例，则此功能很有用。维护这些特定图像的列表可以提高性能。 使用 [ListManagementImageListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations?view=azure-python) 类可以创建图像列表、管理该列表中的各个图像，并将这些图像与其他图像进行比较。
+以下代码演示如何管理用于图像审查的自定义图像列表。 如果你的平台经常收到一组你要筛选出的相同图像的实例，则此功能很有用。维护这些特定图像的列表可以提高性能。 使用 [ListManagementImageListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations) 类可以创建图像列表、管理该列表中的各个图像，并将这些图像与其他图像进行比较。
 
 创建以下文本变量用于存储此方案中使用的图像 URL。
 
@@ -296,7 +296,7 @@ This text contains the terms "term1" and "term2".
 
 可使用内容审查器 Python 客户端库将内容馈送到[评审工具](https://contentmoderator.cognitive.microsoft.com)，使审查人员可以评审该内容。 若要详细了解评审工具，请参阅[评审工具概念指南](../../review-tool-user-guide/human-in-the-loop.md)。
 
-以下代码使用 [ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) 类创建评审、检索评审 ID，并在通过评审工具的 Web 门户收到人工输入后检查评审详细信息。
+以下代码使用 [ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations) 类创建评审、检索评审 ID，并在通过评审工具的 Web 门户收到人工输入后检查评审详细信息。
 
 ### <a name="get-review-credentials"></a>获取审阅凭据
 

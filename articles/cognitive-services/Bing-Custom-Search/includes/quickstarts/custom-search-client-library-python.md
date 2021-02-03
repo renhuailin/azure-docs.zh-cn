@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: 92df45e38a926b4a791315f731e1d1cb078d5852
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3019881c42e0f7b64cc766b8b9e575eb60612432
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371840"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947418"
 ---
 开始使用适用于 Python 的必应自定义搜索客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。 借助必应自定义搜索 API，可为关注的主题创建定制的无广告搜索体验。此示例的源代码可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py) 上找到。
 
 使用适用于 Python 的必应自定义搜索客户端库，可以执行以下操作：
 * 使用必应自定义搜索实例在网上查找搜索结果。
 
-[参考文档](/python/api/azure-cognitiveservices-search-customsearch/?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch) | [包 (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) | [示例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[参考文档](/python/api/azure-cognitiveservices-search-customsearch/) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch) | [包 (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) | [示例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 
 ## <a name="prerequisites"></a>先决条件

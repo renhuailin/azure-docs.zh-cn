@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: c51316b445471c58ae88237b370f5a25fdedf373
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 2c894ea4bcb9701b8b65bcb9cd0b4b82c1898448
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98605185"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500289"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -469,7 +469,7 @@ const deviceManager = await callClient.getDeviceManager();
 
 ### <a name="enumerate-local-devices"></a>枚举本地设备
 
-若要访问本地设备，可以在设备管理器上使用枚举方法。 枚举是同步操作。
+若要访问本地设备，可以在 Device Manager 上使用枚举方法。 枚举是同步操作。
 
 ```js
 
@@ -510,7 +510,7 @@ await deviceManager.setSpeaker(AudioDeviceInfo);
 你可以使用 `DeviceManager` 和 `Renderer` 从本地相机开始呈现流。 此流不会发送给其他参与者;这是一个本地预览源。 这是一个异步操作。
 
 ```js
-const localVideoDevice = deviceManager().getCameraList()[0];
+const localVideoDevice = deviceManager.getCameraList()[0];
 const localCameraStream = new LocalVideoStream(localVideoDevice);
 const renderer = new Renderer(localCameraStream);
 const view = await renderer.createView();

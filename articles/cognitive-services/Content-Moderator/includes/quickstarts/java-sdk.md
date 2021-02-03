@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: b45873da5e34c77d3eae706975619df948d84874
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 147985ce5aff54f3784363720a576b7e46d6e647
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98697961"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947185"
 ---
 适用于 Java 的 Azure 内容审查器客户端库入门。 请按照以下步骤安装 Maven 包并试用基本任务的示例代码。 
 
@@ -27,7 +27,7 @@ ms.locfileid: "98697961"
 * 审查文本
 * 审查图像
 
-[参考文档](/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator) |[项目 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [示例](/samples/browse/?products=azure&term=content-moderator)
+[参考文档](/java/api/overview/azure/cognitiveservices/client/contentmoderator) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator) |[项目 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [示例](/samples/browse/?products=azure&term=content-moderator)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -116,10 +116,10 @@ mkdir -p src/main/java
 
 |名称|说明|
 |---|---|
-|[ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|所有内容审查器功能都需要此类。 请使用你的订阅信息实例化此类，然后使用它来生成其他类的实例。|
-|[ImageModeration](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|此类提供用于分析成人内容、个人信息或人脸的功能。|
-|[TextModerations](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.textmoderations?view=azure-java-stable)|此类提供用于在文本中分析语言、猥亵内容、错误和个人信息的功能。|
-|[评审](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.reviews?view=azure-java-stable)|此类提供评审 API 的功能，包括用于创建作业、自定义工作流和人工评审的方法。|
+|[ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient)|所有内容审查器功能都需要此类。 请使用你的订阅信息实例化此类，然后使用它来生成其他类的实例。|
+|[ImageModeration](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations)|此类提供用于分析成人内容、个人信息或人脸的功能。|
+|[TextModerations](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.textmoderations)|此类提供用于在文本中分析语言、猥亵内容、错误和个人信息的功能。|
+|[评审](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.reviews)|此类提供评审 API 的功能，包括用于创建作业、自定义工作流和人工评审的方法。|
 
 
 ## <a name="code-examples"></a>代码示例
@@ -133,7 +133,7 @@ mkdir -p src/main/java
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-在应用程序的 `main` 方法中，使用订阅终结点值和订阅密钥创建一个 [ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) 对象。
+在应用程序的 `main` 方法中，使用订阅终结点值和订阅密钥创建一个 [ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient) 对象。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
 
@@ -168,7 +168,7 @@ mkdir -p src/main/java
 
 ### <a name="set-up-sample-image"></a>设置示例图像
 
-在新方法中，使用指向图像的给定 URL 字符串构造一个 **[BodyModelModel](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.models.bodymodelmodel?view=azure-java-stable)** 对象。
+在新方法中，使用指向图像的给定 URL 字符串构造一个 **[BodyModelModel](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.models.bodymodelmodel)** 对象。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod)]
 

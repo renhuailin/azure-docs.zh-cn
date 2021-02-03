@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 13e08d2c273b242a902203abf0879fd11fbdf801
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: db303d1e7bd5a9cb7b8441f0a5da634a13113066
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94386505"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948156"
 ---
 使用必应 Web 搜索客户端库可以轻松地将必应 Web 搜索集成到 Python 应用程序中。 本快速入门介绍了如何发送请求、接收 JSON 响应以及筛选和分析结果。
 
@@ -177,7 +177,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>限制必应返回的结果数
 
-此示例使用 `count` 和 `offset` 参数限制通过 SDK 的 [`search` 方法](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)返回的结果数。 将会输出初始结果的 `name` 和 `url`。
+此示例使用 `count` 和 `offset` 参数限制通过 SDK 的 [`search` 方法](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)返回的结果数。 将会输出初始结果的 `name` 和 `url`。
 
 1. 将以下代码添加到 Python 项目：
 
@@ -266,7 +266,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>使用安全搜索、答案计数和提升筛选器
 
-此示例使用 `answer_count`、`promote` 和 `safe_search` 参数筛选通过 SDK 的 [`search` 方法](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)获得的搜索结果。 将会显示初始结果的 `name` 和 `url`。
+此示例使用 `answer_count`、`promote` 和 `safe_search` 参数筛选通过 SDK 的 [`search` 方法](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)获得的搜索结果。 将会显示初始结果的 `name` 和 `url`。
 
 1. 将以下代码添加到 Python 项目：
 
@@ -320,4 +320,4 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 ## <a name="see-also"></a>另请参阅
 
-* [Azure Python SDK 参考](/python/api/azure-cognitiveservices-search-websearch/?view=azure-python)
+* [Azure Python SDK 参考](/python/api/azure-cognitiveservices-search-websearch/)

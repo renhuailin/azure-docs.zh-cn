@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c7bff21a17af3c908caeed6a1e60de8e2fe4efc9
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d148509af45b93dce8dbd99b9afc674276b149b6
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287593"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493966"
 ---
 # <a name="connectivity-modes-and-requirements"></a>连接模式和要求
 
@@ -37,12 +37,10 @@ ms.locfileid: "93287593"
 
 某些 Azure 附加服务仅在可直接访问时才可用，例如 Azure Defender 安全服务、容器见解和 Azure 备份到 blob 存储。
 
-目前，在预览版中，仅支持间接连接模式。 
-
 ||**间接连接**|**直接连接**|**从未连接**|
 |---|---|---|---|
 |**描述**|间接连接模式在环境中本地提供大多数管理服务，而不直接连接到 Azure。  必须将最小数量的数据发送到 Azure，才能 _仅_ 用于库存和计费目的。 此文件将导出到文件中，并且至少每月上传到 Azure。  不需要直接或连续连接到 Azure。  某些需要连接到 Azure 的功能和服务将无法使用。|直接连接模式提供了可与 Azure 建立直接连接时的所有可用服务。 连接始终 _从_ 环境启动到 Azure，并使用标准端口和协议，如 HTTPS/443。|不能以任何方式向 Azure 或从 Azure 发送数据。|
-|**当前可用性**| 以预览版提供。|未来计划预览。|目前尚不支持。|
+|**当前可用性**| 以预览版提供。|以预览版提供。|目前尚不支持。|
 |**典型用例**|本地数据中心，它们不允许在数据中心的数据区域内或不能连接到数据中心，因为其业务或法规符合性策略或外部攻击或数据渗透的问题。  典型示例：金融机构、卫生保健、政府。 <br/><br/>边缘站点通常未连接到 Internet 的边缘站点位置。  典型示例：石油/天然气或军事现场应用。  <br/><br/>与长时间中断连接的边缘站点位置。  典型示例：体育场、巡航交付。 | 使用公有云的组织。  典型示例： Azure、AWS 或 Google Cloud。<br/><br/>通常存在和允许 Internet 连接的边缘站点位置。  典型示例：零售商店、制造。<br/><br/>公司数据中心，具有更多的策略，可用于从数据中心的数据区域连接到 Internet。  典型示例：非管控企业、中小型企业|真正的 "有气流的" 环境，在任何情况下都不能提供数据环境。 典型示例：绝密政府设施。|
 |**如何将数据发送到 Azure**|有三个选项可用于向 Azure 发送计费和清单数据：<br><br> 1) 通过可连接到安全数据区域和 Azure 的自动化过程，将数据导出到数据区域。<br><br>2通过数据区域中的自动化过程将数据从数据区域导出) 数据，自动将其复制到不太安全的区域，并且不太安全的区域中的自动过程会将数据上传到 Azure。<br><br>3) 数据由安全区域内的用户手动导出，手动将其放在安全区域，并手动上传到 Azure。 <br><br>前两个选项是一个自动持续的过程，可将其安排为经常运行，因此，仅限将数据传输到 Azure 时所需的延迟仅限于 Azure 的可用连接。|数据自动并持续发送到 Azure。|数据永远不会发送到 Azure。|
 
@@ -82,12 +80,12 @@ ms.locfileid: "93287593"
 |**Azure 门户中的预配和配置更改**|客户环境-> Azure > 客户环境|可选|否|仅直接|预配和配置更改可使用 Azure Data Studio 或在本地完成 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 。  在直接连接模式下，你还可以从 Azure 门户设置和进行配置更改。 **正在等待直接连接模式的可用性**|
 
 
-## <a name="details-on-internet-addresses-ports-encryption-and-proxy-server-support"></a>有关 Internet 地址、端口、加密和代理服务器支持的详细信息
+## <a name="details-on-internet-addresses-ports-encryption-and-proxy-server-support"></a>有关 internet 地址、端口、加密和代理服务器支持的详细信息
 
 目前，在预览阶段，只支持间接连接模式。 在此模式下，Internet 上的服务仅需要三个连接。 这些连接包括：
 
 - [Microsoft 容器注册表 (MCR) ](#microsoft-container-registry-mcr)
-- [Azure 资源管理器 Api](#azure-resource-manager-apis)
+- [Azure 资源管理器 API](#azure-resource-manager-apis)
 - [Azure monitor Api](#azure-monitor-apis)
 
 所有与 Azure 的 HTTPS 连接和 Microsoft 容器注册表都使用 SSL/TLS 进行加密，并使用官方签名和可验证的证书。
@@ -122,7 +120,7 @@ HTTPS
 
 无
 
-### <a name="azure-resource-manager-apis"></a>Azure 资源管理器 Api
+### <a name="azure-resource-manager-apis"></a>Azure 资源管理器 API
 Azure Data Studio， [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 并 Azure CLI 连接到 azure 资源管理器 api，为某些功能在 azure 中发送和检索数据。
 
 #### <a name="connection-source"></a>连接源

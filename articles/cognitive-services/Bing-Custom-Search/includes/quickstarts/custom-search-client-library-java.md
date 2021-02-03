@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: d9c5fe2653cff0d83a145964a3ad9eed166d0688
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 300c602a62b0d6b3ba579931b2222d2cd8667656
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371542"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948646"
 ---
 开始使用适用于 Java 的必应自定义搜索客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。 借助必应自定义搜索 API，可为关注的主题创建定制的无广告搜索体验。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingCustomSearch) 上找到此示例的源代码
 
@@ -22,7 +22,7 @@ ms.locfileid: "94371542"
 
 * 使用必应自定义搜索实例在网上查找搜索结果。
 
-[参考文档](/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [项目 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | [示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[参考文档](/java/api/overview/azure/cognitiveservices/client/bingcustomsearch) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [项目 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | [示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,11 +52,11 @@ mkdir myapp && cd myapp
 gradle init --type basic
 ```
 
-当提示你选择一个 **DSL** 时，选择 **Kotlin** 。
+当提示你选择一个 **DSL** 时，选择 **Kotlin**。
 
 ## <a name="install-the-client-library"></a>安装客户端库
 
-找到 *build.gradle.kts* ，并使用喜好的 IDE 或文本编辑器将其打开。 然后将以下生成配置复制到其中。 确保 `dependencies` 下包含客户端库：
+找到 *build.gradle.kts*，并使用喜好的 IDE 或文本编辑器将其打开。 然后将以下生成配置复制到其中。 确保 `dependencies` 下包含客户端库：
 
 ```kotlin
 plugins {
@@ -99,9 +99,9 @@ public class BingCustomSearchSample {
 
 ## <a name="object-model"></a>对象模型
 
-必应自定义搜索客户端是一个 [BingCustomSearchAPI](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) 对象，该对象通过 [BingCustomSearchManager](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager?view=azure-java-stable) 对象的 [authenticate()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager.authenticate) 方法创建。 可以使用客户端的 [BingCustomInstances.search()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) 方法发送搜索请求。
+必应自定义搜索客户端是一个 [BingCustomSearchAPI](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi) 对象，该对象通过 [BingCustomSearchManager](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager) 对象的 [authenticate()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager.authenticate) 方法创建。 可以使用客户端的 [BingCustomInstances.search()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) 方法发送搜索请求。
 
-API 响应是一个 [SearchResponse](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.models.searchresponse?view=azure-java-stable) 对象，该对象包含有关搜索查询的信息以及搜索结果。
+API 响应是一个 [SearchResponse](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.models.searchresponse) 对象，该对象包含有关搜索查询的信息以及搜索结果。
 
 ## <a name="code-examples"></a>代码示例
 
@@ -112,7 +112,7 @@ API 响应是一个 [SearchResponse](/java/api/com.microsoft.azure.cognitiveserv
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-main 方法应该包含一个使用密钥的 [BingCustomSearchManager](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) 对象，并调用其 `authenticate()`。
+main 方法应该包含一个使用密钥的 [BingCustomSearchManager](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi) 对象，并调用其 `authenticate()`。
 
 ```java
 BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKey);
@@ -120,7 +120,7 @@ BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKe
 
 ## <a name="get-search-results-from-your-custom-search-instance"></a>从自定义搜索实例获取搜索结果
 
-使用客户端的 [BingCustomInstances.search()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) 函数，向自定义实例发送搜索查询。 将 `withCustomConfig` 设置为自定义配置 ID，或默认设置为 `1`。 从 API 获得响应以后，检查是否发现了任何搜索结果。 如果发现了搜索结果，请通过调用响应的 `webPages().value().get()` 函数来获取第一个搜索结果，并输出结果的名称和 URL。
+使用客户端的 [BingCustomInstances.search()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) 函数，向自定义实例发送搜索查询。 将 `withCustomConfig` 设置为自定义配置 ID，或默认设置为 `1`。 从 API 获得响应以后，检查是否发现了任何搜索结果。 如果发现了搜索结果，请通过调用响应的 `webPages().value().get()` 函数来获取第一个搜索结果，并输出结果的名称和 URL。
 
 [!code-java[call the custom search API](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=runSample)]
 

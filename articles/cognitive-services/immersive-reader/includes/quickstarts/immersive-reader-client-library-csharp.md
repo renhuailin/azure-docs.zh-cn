@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cef5aaae58797e38745b3f5164c171581a005562
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 080b9dac8dad099f2901f2b820da58501310471b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371710"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948630"
 ---
 [沉浸式阅读器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术，旨在提高新的读者、语言学习者和有学习差异（如阅读障碍）的用户的阅读理解能力。 你可在应用程序中使用沉浸式阅读器来隔离文本，以改进焦点、显示常用词的图片、突出显示语音的各个部分、大声朗读所选文本、实时翻译字词和短语等等。
 
@@ -42,7 +42,7 @@ ms.locfileid: "94371710"
 
 ### <a name="configure-authentication-values"></a>配置身份验证值
 
-右键单击 _解决方案资源管理器_ 中的项目，然后选择“管理用户机密”。 这将打开一个名为 _secrets.json_ 的文件。 此文件未签入到源代码管理中。 在[此处](/aspnet/core/security/app-secrets?preserve-view=true&tabs=windows&view=aspnetcore-3.1)了解更多信息。 将 _secrets.json_ 的内容替换为以下内容，并提供在创建沉浸式阅读器资源时给出的值。
+右键单击 _解决方案资源管理器_ 中的项目，然后选择“管理用户机密”。 这将打开一个名为 _secrets.json_ 的文件。 此文件未签入到源代码管理中。 在[此处](/aspnet/core/security/app-secrets?tabs=windows)了解更多信息。 将 _secrets.json_ 的内容替换为以下内容，并提供在创建沉浸式阅读器资源时给出的值。
 
 ```json
 {
@@ -65,7 +65,7 @@ ms.locfileid: "94371710"
 
 ### <a name="update-the-controller-to-acquire-the-token"></a>更新控制器以获取令牌 
 
-打开 _Controllers\HomeController.cs_ ，然后在该文件顶部的 _using_ 语句后添加以下代码。
+打开 _Controllers\HomeController.cs_，然后在该文件顶部的 _using_ 语句后添加以下代码。
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -142,13 +142,13 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 ```
 
 ## <a name="add-sample-content"></a>添加示例内容
-首先，打开 _Views\Shared\Layout.cshtml_ 。 在行 ```</head>``` 之前，添加以下代码：
+首先，打开 _Views\Shared\Layout.cshtml_。 在行 ```</head>``` 之前，添加以下代码：
 
 ```html
 @RenderSection("Styles", required: false)
 ```
 
-现在，我们将向此 Web 应用添加示例内容。 打开 _Views\Home\Index.cshtml_ ，并将所有自动生成的代码替换为以下示例：
+现在，我们将向此 Web 应用添加示例内容。 打开 _Views\Home\Index.cshtml_，并将所有自动生成的代码替换为以下示例：
 
 ```html
 @{

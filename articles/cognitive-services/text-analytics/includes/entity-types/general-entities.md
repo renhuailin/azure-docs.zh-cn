@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: aahi
-ms.openlocfilehash: 43864d3593fda986031cf9b59251b920672476bb
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: c1ff099dd6dffe06e9707ff23fffd57ae753ab64
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097248"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99499989"
 ---
 文本分析的 NER 功能返回以下常规 (非标识) 实体类别。 例如，将请求发送到 `/entities/recognition/general` 终结点时。
 
@@ -32,8 +32,9 @@ ms.locfileid: "99097248"
 | [电话号码](#category-phonenumber) | 电话号码。 |
 | [Email](#category-email) | 电子邮件地址。 |
 | [URL](#category-url) | 指向网站的 URL。 |
-| [IP](#category-ip) | 网络 IP 地址。 |
+| [LIP](#category-ip) | 网络 IP 地址。 |
 | [DateTime](#category-datetime) | 某天的日期和时间。 |
+| [数量](#category-quantity) | 数值度量值和单位。 |
 
 
 ### <a name="category-person"></a>类别： Person
@@ -497,7 +498,7 @@ ms.locfileid: "99097248"
     :::column span="":::
         **实体**
 
-        URL
+        代码
 
     :::column-end:::
     :::column span="2":::

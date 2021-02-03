@@ -3,20 +3,20 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 12/11/2020
+ms.date: 01/20/2021
 ms.author: aahi
-ms.openlocfilehash: 1f99eb203cf4124f3249ab1b74989708bea93c51
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 715b0d16e33412003820044ffa99fee9e2431a7b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820583"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090692"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-[v3.1 参考文档](/python/api/azure-ai-textanalytics/azure.ai.textanalytics?preserve-view=true&view=azure-python-preview) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics) | [v3.1 包 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3.1 参考文档](/python/api/azure-ai-textanalytics/azure.ai.textanalytics) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics) | [v3.1 包 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
@@ -943,8 +943,7 @@ Document ID: 4
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-> [!CAUTION]
-> 若要使用“分析”操作，必须使用标准 (S) 定价层的“文本分析”资源。  
+[!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
 创建一个名为 `analyze_example()` 的新函数，该函数采用客户端作为参数，然后调用 `begin_analyze()` 函数。 结果将是一个长期操作，将轮询该操作以获得结果。
 

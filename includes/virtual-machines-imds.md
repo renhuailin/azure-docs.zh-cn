@@ -8,36 +8,36 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: ceb560a3f0c56a13b9f8da6c867f513b2b08e59b
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 0b04ebd9672990738d77bc5ae09d7f7fae4ffb9d
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962191"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500300"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure 实例元数据服务 (IMDS)
 
-Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息。 你可以使用它来管理和配置虚拟机。
-这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关可用数据的完整列表，请参阅 " [终结点类别摘要](#endpoint-categories)"。
+Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息。 可以使用它来管理和配置虚拟机。
+这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关可用数据的完整列表，请参阅[终结点类别摘要](#endpoint-categories)。
 
-IMDS 可用于运行 (Vm) 和虚拟机规模集实例的虚拟机实例。 所有终结点都支持使用 [Azure 资源管理器](/rest/api/resources/)创建和管理的 vm。 只有实例类别的证明类别和网络部分支持使用经典部署模型创建的 Vm。 证明终结点仅在有限范围内执行此操作。
+IMDS 适用于运行虚拟机 (VM) 的实例和虚拟机规模集实例。 所有终结点均支持使用 [Azure 资源管理器](/rest/api/resources/)创建和管理的 VM。 只有“实例”类别的“经过证明的”类别和“网络”部分支持通过经典部署模型创建的 VM。 “经过证明的”终结点仅在有限的程度上提供这样的支持。
 
-IMDS 是一种 REST API，在 () 的已知、不可路由的 IP 地址上可用 `169.254.169.254` 。 只能从 VM 中访问。 VM 与 IMDS 之间的通信绝不会离开主机。
-查询 IMDS 时，让 HTTP 客户端绕过 VM 中的 web 代理，并 `169.254.169.254` 将其视为相同 [`168.63.129.16`](../articles/virtual-network/what-is-ip-address-168-63-129-16.md) 。
+IMDS 是一个 REST API，在已知的、不可路由的 IP 地址 (`169.254.169.254`) 上提供。 只能从 VM 中访问它。 VM 与 IMDS 之间的通信绝不会离开主机。
+让 HTTP 客户端在查询 IMDS 时绕过 VM 中的 Web 代理并同等对待 `169.254.169.254` 和 [`168.63.129.16`](../articles/virtual-network/what-is-ip-address-168-63-129-16.md)。
 
 ## <a name="usage"></a>使用情况
 
 ### <a name="access-azure-instance-metadata-service"></a>访问 Azure 实例元数据服务
 
-若要访问 IMDS，请从 [Azure 资源管理器](/rest/api/resources/) 或 [Azure 门户](https://portal.azure.com)创建 VM，并使用以下示例。
-有关更多示例，请参阅 [Azure 实例元数据示例](https://github.com/microsoft/azureimds)。
+若要访问 IMDS，请从 [Azure 资源管理器](/rest/api/resources/)或 [Azure 门户](https://portal.azure.com)创建一个 VM，并使用以下示例。
+如需更多示例，请参阅 [Azure 实例元数据示例](https://github.com/microsoft/azureimds)。
 
-下面是检索实例的所有元数据的示例代码。 若要访问特定的数据源，请参阅 [终结点类别](#endpoint-categories) 以获取所有可用功能的概述。
+下面是用于检索实例的所有元数据的示例代码。 若要访问特定的数据源，请参阅[终结点类别](#endpoint-categories)，其中概述了所有可用的功能。
 
 **请求**
 
 > [!IMPORTANT]
-> 此示例将跳过代理。 查询 IMDS 时， **必须** 绕过代理。 有关其他信息，请参阅 [代理](#proxies) 。
+> 此示例会绕过代理。 查询 IMDS 时，必须绕过代理。 有关其他信息，请参阅[代理](#proxies)。
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
@@ -62,27 +62,27 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 
 ## <a name="security-and-authentication"></a>安全性和身份验证
 
-只能从不可路由的 IP 地址上正在运行的虚拟机实例中访问实例元数据服务。 Vm 限制为与自身相关的元数据/功能进行交互。 API 仅限 HTTP，不会离开主机。
+实例元数据服务仅供从不可路由的 IP 地址上正在运行的虚拟机实例中访问。 VM 仅限与它们自身相关的元数据/功能交互。 API 仅限 HTTP，且从不离开主机。
 
-为了确保请求直接适用于 IMDS，并防止意外或不需要的请求重定向，请求：
-- **必须** 包含标头 `Metadata: true`
-- **不** 能包含 `X-Forwarded-For` 标头
+为了确保请求直接适用于 IMDS，并防止意外的或不需要的请求重定向，请求必须符合以下条件：
+- 必须包含标头 `Metadata: true`
+- 不得包含 `X-Forwarded-For` 标头
 
-任何不满足 **这两** 个要求的请求都将被服务拒绝。
+任何不符合这两项要求的请求都会被服务拒绝。
 
 > [!IMPORTANT]
-> IMDS **不** 是敏感数据的通道。 此 API 未经身份验证，并对 VM 上的所有进程开放。 应将通过此服务公开的信息视为与 VM 内运行的所有应用程序共享的信息。
+> IMDS 不是敏感数据的通道。 此 API 不进行身份验证，并且对 VM 上的所有进程开放。 应将通过此服务公开的信息视为与 VM 内运行的所有应用程序共享的信息。
 
 ## <a name="proxies"></a>代理
 
-**不** 应在代理后面使用 IMDS，不支持这样做。 大多数 HTTP 客户端提供了一个选项来禁用请求上的代理，并且在与 IMDS 通信时必须使用此功能。 有关详细信息，请参阅客户端的文档。
+IMDS 不用于在代理后使用，系统不支持那样做。 大多数 HTTP 客户端提供了一个选项，供你对你的请求禁用代理，当与 IMDS 通信时必须使用此功能。 有关详细信息，请参阅客户端的文档。
 
 > [!IMPORTANT]
-> 即使你不知道环境中的任何代理配置， **仍必须覆盖任何默认的客户端代理设置**。 代理配置可以自动发现，如果不能跳过此类配置，则会在将来更改计算机的配置时，为你提供 outrage 的风险。
+> 即使你不知道环境中的任何代理配置的信息，也必须重写任何默认的客户端代理设置。 可以自动发现代理配置，并且无法绕过此类配置，使你能够在未来更改计算机的配置时，为你提供中断风险。
 
 ## <a name="rate-limiting"></a>速率限制
 
-通常，对 IMDS 的请求限制为每秒5个请求。 超过此阈值的请求将被拒绝，并出现429响应。 对 [托管标识](#managed-identity) 类别的请求限制为每秒20个请求和5个并发请求。
+一般情况下，对 IMDS 的请求限制为每秒 5 个请求。 系统会拒绝超过此阈值的请求，并显示 429 响应。 对[托管标识](#managed-identity)类别的请求限制为每秒 20 个请求，并发请求数限制为 5 个。
 
 ## <a name="http-verbs"></a>HTTP 谓词
 
@@ -94,11 +94,11 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 
 ## <a name="parameters"></a>参数
 
-终结点可以支持必需和/或可选参数。 有关详细信息，请参阅相关特定终结点的 [架构](#schema) 和文档。
+终结点可以支持必需的和/或可选的参数。 有关详细信息，请参阅[架构](#schema)以及相关的特定终结点的文档。
 
 ### <a name="query-parameters"></a>查询参数
 
-IMDS 端点支持 HTTP 查询字符串参数。 例如： 
+IMDS 终结点支持 HTTP 查询字符串参数。 例如： 
 
 ```
 http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=json
@@ -106,23 +106,23 @@ http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=j
 
 指定参数：
 
-| 名称 | “值” |
+| 名称 | 值 |
 |------|-------|
 | `api-version` | `2019-06-04`
 | `format` | `json`
 
-具有重复查询参数名称的请求将被拒绝。
+系统会拒绝具有重复的查询参数名称的请求。
 
 ### <a name="route-parameters"></a>路由参数
 
-对于返回更大 json blob 的某些终结点，我们支持将路由参数追加到请求终结点，以筛选出响应的一个子集： 
+对于某些返回较大 json blob 的终结点，我们支持将路由参数追加到请求终结点，以便向下筛选到响应的某个子集： 
 
 ```
 http://169.254.169.254/metadata/<endpoint>/[<filter parameter>/...]?<query parameters>
 ```
-参数对应于将用于向下遍历 json 对象的索引/键是否与分析表示形式交互。
+参数对应的索引/键将用于逐级向下找到 json 对象（如果你与已分析的表示形式交互）。
 
-例如， `/metatadata/instance` 返回 json 对象：
+例如，`/metatadata/instance` 会返回 json 对象：
 ```json
 {
     "compute": { ... },
@@ -151,16 +151,16 @@ http://169.254.169.254/metadata/<endpoint>/[<filter parameter>/...]?<query param
 }
 ```
 
-如果我们要将响应仅筛选为计算属性，我们将发送请求： 
+若要将响应向下筛选到计算属性，则可发送以下请求： 
 ```
 http://169.254.169.254/metadata/instance/compute?api-version=<version>
 ```
 
-同样，如果要筛选到嵌套的属性或特定的数组元素，请保留追加密钥： 
+类似地，若要筛选到嵌套的属性或特定的数组元素，则可不断地追加键： 
 ```
 http://169.254.169.254/metadata/instance/network/interface/0?api-version=<version>
 ```
-将从属性筛选为第一个元素 `Network.interface` ，并返回：
+将会筛选到 `Network.interface` 属性中的第一个元素，并返回：
 
 ```json
 {
@@ -183,13 +183,13 @@ http://169.254.169.254/metadata/instance/network/interface/0?api-version=<versio
 ```
 
 > [!NOTE]
-> 筛选到叶节点时， `format=json` 不起作用。 对于这些查询，需要显式指定 `format=text`，因为默认格式为 json。
+> 筛选到叶节点时，`format=json` 将不起作用。 对于这些查询，需要显式指定 `format=text`，因为默认格式为 json。
 
 ## <a name="schema"></a>架构
 
 ### <a name="data-format"></a>数据格式
 
-默认情况下，IMDS 以 JSON 格式 () 返回数据 `Content-Type: application/json` 。 但是，支持响应筛选的端点 (参阅 [路由参数](#route-parameters)) 也支持此格式 `text` 。
+默认情况下，IMDS 以 JSON 格式返回数据 (`Content-Type: application/json`)。 但是，支持响应筛选（请参阅[路由参数](#route-parameters)）的终结点还支持 `text` 格式。
 
 若要访问非默认响应格式，请在请求中将所请求的格式指定为查询字符串参数。 例如：
 
@@ -207,15 +207,15 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 
 ---
 
-在 json 响应中，所有基元都为类型 `string` ，缺少值或不适用值始终包括在内，但将设置为空字符串。
+在 json 响应中，所有基元都将为 `string` 类型，缺失值或不适用的值始终包括在内，但会被设置为空字符串。
 
 ### <a name="versioning"></a>版本控制
 
-IMDS 是版本控制的，并且 HTTP 请求中的 API 版本是必需的。 此要求的唯一例外是 [版本](#versions) 终结点，可用于动态检索可用的 API 版本。
+IMDS 进行了版本控制，在 HTTP 请求中指定 API 版本是必需的。 此要求的唯一例外是 [versions](#versions) 终结点，该终结点可用于动态检索可用的 API 版本。
 
 在添加更新的版本时，早期版本仍可供访问以保持兼容性（如果脚本依赖于特定的数据格式）。
 
-如果未指定版本，则会收到包含最新支持版本的列表的错误：
+如果不指定版本，则会收到错误消息，其中会列出受支持的最新版本：
 ```json
 {
     "error": "Bad request. api-version was not specified in the request. For more information refer to aka.ms/azureimds",
@@ -254,7 +254,7 @@ IMDS 是版本控制的，并且 HTTP 请求中的 API 版本是必需的。 此
 
 ### <a name="swagger"></a>Swagger
 
-以下位置提供了 IMDS 的完整 Swagger 定义： https://github.com/Azure/azure-rest-api-specs/blob/master/specification/imds/data-plane/readme.md
+可在以下位置找到 IMDS 的完整 Swagger 定义： https://github.com/Azure/azure-rest-api-specs/blob/master/specification/imds/data-plane/readme.md
 
 ## <a name="regional-availability"></a>区域可用性
 
@@ -262,28 +262,28 @@ IMDS 是版本控制的，并且 HTTP 请求中的 API 版本是必需的。 此
 
 ## <a name="root-endpoint"></a>根终结点
 
-根终结点为 `http://169.254.169.254/metadata` 。
+根终结点为 `http://169.254.169.254/metadata`。
 
 ## <a name="endpoint-categories"></a>终结点类别
 
-IMDS API 包含表示不同数据源的多个终结点类别，其中每个都包含一个或多个终结点。 有关详细信息，请参阅每个类别。
+IMDS API 包含多个表示不同数据源的终结点类别，每一个都包含一个或多个终结点。 有关详细信息，请查看每个类别。
 
 | 类别根 | 说明 | 引入的版本 |
 |---------------|-------------|--------------------|
 | `/metadata/attested` | 请参阅[证明数据](#attested-data) | 2018-10-01
-| `/metadata/identity` | 请参阅 [通过 IMDS 的托管标识](#managed-identity) | 2018-02-01
-| `/metadata/instance` | 请参阅 [实例元数据](#instance-metadata) | 2017-04-02
-| `/metadata/scheduledevents` | 请参阅 [通过 IMDS Scheduled Events](#scheduled-events) | 2017-08-01
-| `/metadata/versions` | 查看 [版本](#versions) | 不适用
+| `/metadata/identity` | 请参阅[通过 IMDS 托管的托管标识](#managed-identity) | 2018-02-01
+| `/metadata/instance` | 请参阅[实例元数据](#instance-metadata) | 2017-04-02
+| `/metadata/scheduledevents` | 请参阅[通过 IMDS 计划的计划事件](#scheduled-events) | 2017-08-01
+| `/metadata/versions` | 请参阅[版本](#versions) | 不适用
 
 ## <a name="versions"></a>版本
 
 > [!NOTE]
-> 此功能与版本2020-10-01 一起发布，后者目前已推出，可能尚未在每个区域中提供。
+> 此功能已随版本 2020-10-01 一起发布，该版本目前正处于推出阶段，在某些区域可能尚不可用。
 
 ### <a name="list-api-versions"></a>列出 API 版本
 
-返回受支持的 API 版本集。
+返回受支持的 API 版本的集合。
 
 ```
 GET /metadata/versions
@@ -291,7 +291,7 @@ GET /metadata/versions
 
 #### <a name="parameters"></a>参数
 
-无 (此终结点) 未版本化。
+无（此终结点未进行版本控制）。
 
 #### <a name="response"></a>响应
 
@@ -309,7 +309,7 @@ GET /metadata/versions
 
 ### <a name="get-vm-metadata"></a>获取 VM 元数据
 
-公开 VM 实例的重要元数据，包括计算、网络和存储。 
+公开 VM 实例的重要元数据，其中包括计算、网络和存储。 
 
 ```
 GET /metadata/instance
@@ -320,15 +320,15 @@ GET /metadata/instance
 | 名称 | 必需/可选 | 说明 |
 |------|-------------------|-------------|
 | `api-version` | 必需 | 用于处理请求的版本。
-| `format` | 可选* | `json`响应 (或 `text`) 的格式。 * 注意：使用请求参数时可能需要
+| `format` | 可选* | 响应的格式（`json` 或 `text`）。 *注意：使用请求参数时可能需要
 
-此终结点支持通过 [路由参数](#route-parameters)进行响应筛选。
+此终结点支持通过[路由参数](#route-parameters)进行响应筛选。
 
 #### <a name="response"></a>响应
 
 [!INCLUDE [virtual-machines-imds-full-instance-response](./virtual-machines-imds-full-instance-response.md)]
 
-架构细目：
+架构明细：
 
 **计算**
 
@@ -337,13 +337,13 @@ GET /metadata/instance
 | `azEnvironment` | VM 运行时所在的 Azure 环境 | 2018-10-01
 | `customData` | 此功能目前已禁用。 当该功能可用时，我们将更新此文档 | 2019-02-01
 | `isHostCompatibilityLayerVm` | 标识 VM 是否在主机兼容性层上运行 | 2020-06-01
-| `licenseType` | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit)许可证的类型。 这仅适用于启用 AHB 的 Vm | 2020-09-01
+| `licenseType` | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit)许可证的类型。 这仅适用于启用了 AHB 的 VM | 2020-09-01
 | `location` | VM 在其中运行的 Azure 区域 | 2017-04-02
 | `name` | VM 的名称 | 2017-04-02
 | `offer` | 提供 VM 映像的信息，仅适用于从 Azure 映像库部署的映像 | 2017-04-02
 | `osProfile.adminUsername` | 指定管理员帐户的名称 | 2020-07-15
 | `osProfile.computerName` | 指定计算机的名称 | 2020-07-15
-| `osProfile.disablePasswordAuthentication` | 指定是否禁用密码身份验证。 这仅适用于 Linux Vm | 2020-10-01
+| `osProfile.disablePasswordAuthentication` | 指定是否禁用密码身份验证。 这仅适用于 Linux VM | 2020-10-01
 | `osType` | Linux 或 Windows | 2017-04-02
 | `placementGroupId` | 虚拟机规模集的[放置组](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 | `plan` | 包含 VM 的名称、产品和发布者（如果是 Azure 市场映像）的[计划](/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
@@ -357,7 +357,7 @@ GET /metadata/instance
 | `sku` | VM 映像的特定 SKU | 2017-04-02
 | `securityProfile.secureBootEnabled` | 标识是否在 VM 上启用了 UEFI 安全启动 | 2020-06-01
 | `securityProfile.virtualTpmEnabled` | 标识是否在 VM 上启用了虚拟受信任的平台模块 (TPM) | 2020-06-01
-| `storageProfile` | 请参阅下面的存储配置文件 | 2019-06-01
+| `storageProfile` | 请参阅下面的“存储配置文件” | 2019-06-01
 | `subscriptionId` | 虚拟机的 Azure 订阅 | 2017-08-01
 | `tags` | 虚拟机的[标记](../articles/azure-resource-manager/management/tag-resources.md)  | 2017-08-01
 | `tagsList` | 格式化为 JSON 数组以方便编程分析的标记  | 2019-06-04
@@ -423,7 +423,7 @@ OS 磁盘对象包含有关 VM 所用 OS 磁盘的以下信息：
 | `ipv6.ipAddress` | VM 的本地 IPv6 地址 | 2017-04-02
 | `macAddress` | VM mac 地址 | 2017-04-02
 
-**VM 标记**
+VM 标记
 
 VM 标记包含在实例/计算/标记终结点下的实例 API。
 标记可能已应用到 Azure VM 中，以逻辑方式将其归入一个分类。 可使用以下请求检索分配给 VM 的标记。
@@ -457,9 +457,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 5c08b38e-4d57-4c23-ac45-aca61037f084
 ```
 
-#### <a name="sample-2-placement-of-different-data-replicas"></a>示例2：放置不同的数据副本
+#### <a name="sample-2-placement-of-different-data-replicas"></a>示例 2：不同数据副本的放置
 
-对于某些方案，不同数据副本的放置至关重要。 例如，通过[orchestrator](https://kubernetes.io/docs/user-guide/node-selection/)的[HDFS 副本放置](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps)或容器放置可能要求你知道 `platformFaultDomain` ，并且 VM 正在 `platformUpdateDomain` 上运行。
+对于某些方案，不同数据副本的放置至关重要。 例如，对于 [HDFS 副本放置](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps)或者对于通过[业务流程协调程序](https://kubernetes.io/docs/user-guide/node-selection/)进行的容器放置，可能需要知道正在运行 VM 的 `platformFaultDomain` 和 `platformUpdateDomain`。
 你还可以使用实例的[可用性区域](../articles/availability-zones/az-overview.md)来做出这些决策。
 可以通过 IMDS 直接查询此数据。
 
@@ -485,7 +485,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 0
 ```
 
-#### <a name="sample-3-get-more-information-about-the-vm-during-support-case"></a>示例3：在支持案例期间获取有关 VM 的详细信息
+#### <a name="sample-3-get-more-information-about-the-vm-during-support-case"></a>示例 3：在支持案例期间获取有关 VM 的详细信息
 
 作为服务提供商，你可能会接到支持电话，了解有关 VM 的详细信息。 请求客户共享计算元数据可以提供基本信息，以支持专业人员了解有关 Azure 上的 VM 类型。
 
@@ -610,7 +610,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 }
 ```
 
-#### <a name="sample-4-get-the-azure-environment-where-the-vm-is-running"></a>示例4：获取运行 VM 的 Azure 环境
+#### <a name="sample-4-get-the-azure-environment-where-the-vm-is-running"></a>示例 4：获取运行 VM 的 Azure 环境
 
 Azure 具有各种主权云，如 [Azure 政府](https://azure.microsoft.com/overview/clouds/government/)。 有时你需要使用 Azure 环境来做出一些运行时决策。 以下示例显示了如何实现此行为。
 
@@ -640,13 +640,13 @@ AzurePublicCloud
 
 | 云 | Azure 环境 |
 |-------|-------------------|
-| [所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/) | AzurePublicCloud
+| [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/) | AzurePublicCloud
 | [Azure Government](https://azure.microsoft.com/overview/clouds/government/) | AzureUSGovernmentCloud
 | [Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china/) | AzureChinaCloud
 | [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/) | AzureGermanCloud
 
 
-#### <a name="sample-5-retrieve-network-information"></a>示例5：检索网络信息
+#### <a name="sample-5-retrieve-network-information"></a>示例 5：检索网络信息
 
 **请求**
 
@@ -693,7 +693,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
 }
 ```
 
-#### <a name="sample-6-retrieve-public-ip-address"></a>示例6：检索公共 IP 地址
+#### <a name="sample-6-retrieve-public-ip-address"></a>示例 6：检索公共 IP 地址
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
@@ -711,9 +711,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
 
 ## <a name="attested-data"></a>证明数据
 
-### <a name="get-attested-data"></a>获取证明数据
+### <a name="get-attested-data"></a>获取“经过证明的”数据
 
-IMDS 帮助确保提供的数据来自 Azure。 Microsoft 签署此信息的一部分，因此可以确认 Azure Marketplace 中的映像是在 Azure 上运行的映像。
+IMDS 可帮助确保提供的数据来自 Azure。 Microsoft 会对此信息的一部分进行签名，以便你可以确认 Azure 市场中的映像是你正在 Azure 上运行的映像。
 
 ```
 GET /metadata/attested/document
@@ -724,7 +724,7 @@ GET /metadata/attested/document
 | 名称 | 必需/可选 | 说明 |
 |------|-------------------|-------------|
 | `api-version` | 必需 | 用于处理请求的版本。
-| `nonce` | 可选 | 用作加密 nonce 的10位字符串。 如果未提供任何值，则 IMDS 将使用当前的 UTC 时间戳。
+| `nonce` | 可选 | 用作加密 nonce 的 10 位字符串。 如果未提供值，则 IMDS 使用当前的 UTC 时间戳。
 
 #### <a name="response"></a>响应
 
@@ -738,18 +738,18 @@ GET /metadata/attested/document
 > [!NOTE]
 > 由于 IMDS 的缓存机制，可能会返回以前缓存的 nonce 值。
 
-签名 blob 是文档的 [pkcs7](https://aka.ms/pkcs7)签名版本。 它包含用于签名的证书以及某些特定于 VM 的详细信息。
+签名 blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书以及某些特定于 VM 的详细信息。
 
-对于使用 Azure 资源管理器创建的 vm，文档包括 `vmId` 、、 `sku` 、 `nonce` `subscriptionId` 、 `timeStamp` 用于创建和过期文档，以及有关映像的计划信息。 该计划信息只针对 Azure 市场映像进行填充。
+对于使用 Azure 资源管理器创建的 VM，该文档包括 `vmId`、`sku`、`nonce`、`subscriptionId`、文档创建和到期的 `timeStamp` 以及关于映像的计划信息。 该计划信息只针对 Azure 市场映像进行填充。
 
-对于使用经典部署模型创建的 Vm，仅 `vmId` 保证填充。 你可以从响应中提取证书，并使用它来确认响应是否有效以及是否来自 Azure。
+对于使用经典部署模型创建的 VM，仅保证填充 `vmId`。 可以从响应中提取证书，并使用它来确认响应是否有效并来自 Azure。
 
-已解码的文档包含以下字段：
+解码的文档包含以下字段：
 
 | 数据 | 说明 | 引入的版本 |
 |------|-------------|--------------------|
-| `licenseType` | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit)许可证的类型。 这仅适用于启用 AHB 的 Vm。 | 2020-09-01
-| `nonce` | 可以随请求提供的可选字符串。 如果未 `nonce` 提供，则使用当前的协调世界时时间戳。 | 2018-10-01
+| `licenseType` | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit)许可证的类型。 这仅适用于启用了 AHB 的 VM。 | 2020-09-01
+| `nonce` | 可以随请求提供的可选字符串。 如果未提供 `nonce`，则会使用当前的协调世界时时间戳。 | 2018-10-01
 | `plan` | [Azure 市场映像计划](/rest/api/compute/virtualmachines/createorupdate#plan)。 包含计划 ID（名称）、产品映像或产品/服务（产品）和发布者 ID（发布者）。 | 2018-10-01
 | `timestamp.createdOn` | 创建签名文档时的 UTC 时间戳 | 2018-20-01
 | `timestamp.expiresOn` | 签名文档到期时的 UTC 时间戳 | 2018-10-01
@@ -758,7 +758,7 @@ GET /metadata/attested/document
 | `sku` | VM 映像的特定 SKU | 2019-11-01
 
 > [!NOTE]
-> 对于经典 (非 Azure 资源管理器) Vm，只保证可以填充 vmId。
+> 对于经典（非 Azure 资源管理器）VM，只保证填充 vmId。
 
 示例文档：
 ```json
@@ -779,16 +779,16 @@ GET /metadata/attested/document
 }
 ```
 
-#### <a name="sample-1-validate-that-the-vm-is-running-in-azure"></a>示例1：验证 VM 是否正在 Azure 中运行
+#### <a name="sample-1-validate-that-the-vm-is-running-in-azure"></a>示例 1：验证 VM 是否在 Azure 中运行
 
-Azure Marketplace 中的供应商需要确保其软件只能在 Azure 中运行。 如果有人将 VHD 复制到本地环境，则供应商需要能够检测到这一点。 通过 IMDS，这些供应商可以获得仅保证来自 Azure 的响应的签名数据。
+Azure 市场供应商希望确保其软件仅获许在 Azure 中运行。 如果有人将 VHD 复制到本地环境，则供应商需要能够检测到此操作。 通过 IMDS，这些供应商可以获取能确保只从 Azure 响应的签名数据。
 
 > [!NOTE]
-> 此示例需要安装 jq 实用程序。
+> 此示例需要安装 jq 实用工具。
 
 **验证**
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
 # Get the signature
@@ -880,45 +880,45 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 ---
 
 > [!NOTE]
-> 由于 IMDS 的缓存机制， `nonce` 可能会返回以前缓存的值。
+> 由于 IMDS 的缓存机制，可能会返回以前缓存的 `nonce` 值。
 
-`nonce`如果在 `nonce` 初始请求中提供了参数，则可以比较签名文档中的。
+如果在初始请求中提供了 `nonce` 参数，则可以比较签名文档中的 `nonce`。
 
 > [!NOTE]
-> 公有云和每个主权云的证书将不同。
+> 公有云和每个主权云的证书将有所不同。
 
 | 云 | 证书 |
 |-------|-------------|
-| [所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/) | *.metadata.azure.com
+| [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/) | *.metadata.azure.com
 | [Azure Government](https://azure.microsoft.com/overview/clouds/government/) | *.metadata.azure.us
 | [Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china/) | *.metadata.azure.cn
 | [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/) | *.metadata.microsoftazure.de
 
 > [!NOTE]
-> 对于公有云，证书可能不完全匹配 `metadata.azure.com` 。 出于此原因，证书验证应允许来自任何子域的公用名称 `.metadata.azure.com` 。
+> 对于公有云，证书可能不完全匹配 `metadata.azure.com`。 出于此原因，证书验证应允许任何 `.metadata.azure.com` 子域中的公用名称。
 
-如果在验证期间由于网络限制而无法下载中间证书，则可以固定中间证书。 Azure 会滚动证书，这是标准的 PKI 实践。 发生滚动更新时，必须更新固定证书。 每当计划对更新中间证书的更改时，都会更新 Azure 博客，并通知 Azure 客户。 
+如果由于验证期间出现网络限制，导致中间证书无法下载，可以固定中间证书。 Azure 会滚动更新证书，这是标准 PKI 做法。 发生滚动更新时，必须更新固定的证书。 每当规划某项更改来更新中间证书时，就会更新 Azure 博客并向 Azure 客户发出通知。 
 
-可以在 [PKI 存储库](https://www.microsoft.com/pki/mscorp/cps/default.htm)中找到中间证书。 每个区域的中间证书可能不同。
+可在 [PKI 存储库](https://www.microsoft.com/pki/mscorp/cps/default.htm)中找到中间证书。 每个区域的中间证书可能不同。
 
 > [!NOTE]
-> Azure 中国世纪互联的中间证书将来自 DigiCert Global Root CA，而不是巴尔的摩。
-如果将 Azure 中国区的中间证书固定为根链证书颁发机构的一部分，则必须更新中间证书。
+> Azure 中国世纪互联的中间证书将来自 DigiCert 全局根 CA（而不是 Baltimore）。
+如果在更改根证书链颁发机构的过程中已固定 Azure 中国的中间证书，则必须更新中间证书。
 
 
 ## <a name="managed-identity"></a>托管标识
 
-可以在 VM 上启用由系统分配的托管标识。 你还可以将一个或多个用户分配的托管标识分配给 VM。
-然后，可以从 IMDS 请求托管标识的令牌。 使用这些令牌对其他 Azure 服务（如 Azure Key Vault）进行身份验证。
+可以在 VM 上启用由系统分配的托管标识。 还可以将一个或多个用户分配的托管标识分配给 VM。
+然后，可以从 IMDS 请求托管标识的令牌。 使用这些令牌来通过其他 Azure 服务（如 Azure Key Vault）进行身份验证。
 
 有关启用此功能的详细步骤，请参阅[获取访问令牌](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)。
 
 ## <a name="scheduled-events"></a>计划事件
-您可以使用 IMDS 获取计划事件的状态。 然后，用户可以指定要对这些事件运行的一组操作。 有关详细信息，请参阅适用 [于 Linux 的计划事件](../articles/virtual-machines/linux/scheduled-events.md) 或适用 [于 Windows 的计划事件](../articles/virtual-machines/windows/scheduled-events.md)。
+可以使用 IMDS 获取计划事件的状态。 然后，用户可以指定一组在发生这些事件时要运行的操作。 有关详细信息，请参阅 [Linux 计划事件](../articles/virtual-machines/linux/scheduled-events.md)或 [Windows 计划事件](../articles/virtual-machines/windows/scheduled-events.md)。
 
 ## <a name="sample-code-in-different-languages"></a>不同语言的示例代码
 
-下表列出了在 VM 内使用不同语言调用 IMDS 的示例：
+下表列出了在 VM 中使用不同语言调用 IMDS 的相关示例：
 
 | 语言 | 示例 |
 |----------|---------|
@@ -942,46 +942,46 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 | `200 OK` | 请求已成功。
 | `400 Bad Request` | 查询叶节点时缺少 `Metadata: true` 标头或缺少参数 `format=json`
 | `404 Not Found` | 请求的元素不存在
-| `405 Method Not Allowed` | 此终结点不支持 HTTP 方法)  (谓词。
+| `405 Method Not Allowed` | 此终结点不支持 HTTP 方法（谓词）。
 | `410 Gone` | 在一段时间后重试最长 70 秒
-| `429 Too Many Requests` | 已超过 API[速率限制](#rate-limiting)
+| `429 Too Many Requests` | 已超出 API [速率限制](#rate-limiting)
 | `500 Service Error` | 请稍后重试
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-**我收到了错误 `400 Bad Request, Required metadata header not specified` 。这是什么意思？**
+我收到错误 `400 Bad Request, Required metadata header not specified`。这是什么意思呢？
 
-IMDS 要求 `Metadata: true` 在请求中传递标头。 通过在 REST 调用中传递此标头，可以访问 IMDS。
+IMDS 需要在请求中传递标头 `Metadata: true`。 将该标头传入 REST 调用将允许访问 IMDS。
 
 **为什么我无法获取我的 VM 的计算信息？**
 
-目前，IMDS 仅支持通过 Azure 资源管理器创建的实例。
+当前 IMDS 仅支持 Azure 资源管理器创建的实例。
 
-**我通过 Azure 资源管理器一段时间创建了 VM。为什么我看不到计算元数据信息？**
+前段时间，我通过 Azure 资源管理器创建了 VM。为什么我看不到计算元数据信息？
 
-如果在2016年9月之后创建了 VM，请添加 [标记](../articles/azure-resource-manager/management/tag-resources.md) 以开始查看计算元数据。 如果在2016年9月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。
+如果在 2016 年 9 月之后创建了 VM，请添加[标记](../articles/azure-resource-manager/management/tag-resources.md)以开始查看计算元数据。 如果在 2016 年 9 月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。
 
-**为什么看不到为新版本填充的所有数据？**
+为什么我看不到为新版本填充的任何数据？
 
-如果在2016年9月之后创建了 VM，请添加 [标记](../articles/azure-resource-manager/management/tag-resources.md) 以开始查看计算元数据。 如果在2016年9月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。
+如果在 2016 年 9 月之后创建了 VM，请添加[标记](../articles/azure-resource-manager/management/tag-resources.md)以开始查看计算元数据。 如果在 2016 年 9 月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。
 
-**为什么会收到错误 `500 Internal Server Error` 或 `410 Resource Gone` ？**
+我为什么会收到错误 `500 Internal Server Error` 或 `410 Resource Gone`？
 
-请重试你的请求。 有关详细信息，请参阅 [暂时性故障处理](/azure/architecture/best-practices/transient-faults)。 如果问题仍然存在，请在 VM 的 Azure 门户中创建支持问题。
+请重试请求。 有关详细信息，请参阅[临时故障处理](/azure/architecture/best-practices/transient-faults)。 如果问题持续存在，请在 Azure 门户中为 VM 创建支持问题。
 
-**这是否适用于虚拟机规模集实例？**
+这是否适用于虚拟机规模集实例？
 
 是的，IMDS 适用于虚拟机规模集实例。
 
-**我更新了虚拟机规模集中的标记，但它们不会在实例中出现 (与单实例 Vm) 不同。我怎么办？**
+我在虚拟机规模集中更新了我的标记（与单实例 VM 不同），这些标记未出现在实例中。这是怎么回事？
 
-当前，虚拟机规模集的标记仅向 VM 显示对实例的重新启动、重置映像或磁盘更改。
+目前，虚拟机规模集的标记仅在重启、重置映像或更改实例的磁盘时向 VM 显示。
 
-**为什么我的请求对服务的调用超时？**
+为什么调用服务时请求超时？
 
-必须从分配给 VM 的主要网卡的主 IP 地址进行元数据调用。 此外，如果你更改了路由，则 VM 的本地路由表中必须有 169.254.169.254/32 地址的路由。
+必须从分配给 VM 的主要网卡的主 IP 地址进行元数据调用。 此外，如果你更改了路由，则 VM 的本地路由表中必须存在 169.254.169.254/32 地址的路由。
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>[Windows](#tab/windows/)
 
 1. 转储本地路由表并查找 IMDS 条目。 例如：
     ```console
@@ -998,8 +998,8 @@ IMDS 要求 `Metadata: true` 在请求中传递标头。 通过在 REST 调用�
       169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
     ... (continues) ...
     ```
-1. 验证是否存在路由 `169.254.169.254` ，并记下相应的网络接口 (例如 `172.16.69.7`) 。
-1. 转储接口配置并查找与路由表中所引用的接口相对应的接口，并注明 MAC (物理) 地址。
+1. 验证是否存在 `169.254.169.254` 的路由，并记下相应的网络接口（例如 `172.16.69.7`）。
+1. 转储接口配置并查找与路由表中引用的接口相对应的接口，注明 MAC（物理）地址。
     ```console
     > ipconfig /all
     ... (continues) ...
@@ -1015,7 +1015,7 @@ IMDS 要求 `Metadata: true` 在请求中传递标头。 通过在 REST 调用�
        Subnet Mask . . . . . . . . . . . : 255.255.255.0
     ... (continues) ...
     ```
-1. 确认该接口对应于 VM 的主 NIC 和主 IP。 可以通过查看 Azure 门户中的网络配置，或通过查找 Azure CLI 来查找主 NIC 和 IP。 如果使用的是 CLI) ，请注意专用 Ip (和 MAC 地址。 下面是 PowerShell CLI 示例：
+1. 确认该接口对应于 VM 的主 NIC 和主 IP。 可以通过在 Azure 门户中查看网络配置，或通过 Azure CLI 查找它来找到主 NIC 和 IP。 请记下专用 IP（如果使用 CLI，还要记下 MAC 地址）。 下面是一个 PowerShell CLI 示例：
     ```powershell
     $ResourceGroup = '<Resource_Group>'
     $VmName = '<VM_Name>'
@@ -1027,7 +1027,7 @@ IMDS 要求 `Metadata: true` 在请求中传递标头。 通过在 REST 调用�
     }
     # Output: wintest767 True 00-0D-3A-E5-1C-C0
     ```
-1. 如果二者不匹配，则更新路由表，以便将主 NIC 和 IP 作为目标。
+1. 如果它们不匹配，请更新路由表，以使主 NIC 和 IP 成为目标。
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
 
@@ -1058,7 +1058,7 @@ IMDS 要求 `Metadata: true` 在请求中传递标头。 通过在 REST 调用�
     version: 2
     ```
 1. 如果使用的是动态 IP，请记下 MAC 地址。 如果使用的是静态 IP，可以记下列出的 IP 和/或 MAC 地址。
-1. 确认该接口对应于 VM 的主 NIC 和主 IP。 可以通过查看 Azure 门户中的网络配置，或通过查找 Azure CLI 来查找主 NIC 和 IP。 如果使用的是 CLI) ，请注意专用 Ip (和 MAC 地址。 下面是 PowerShell CLI 示例：
+1. 确认该接口对应于 VM 的主 NIC 和主 IP。 可以通过在 Azure 门户中查看网络配置，或通过 Azure CLI 查找它来找到主 NIC 和 IP。 请记下专用 IP（如果使用 CLI，还要记下 MAC 地址）。 下面是一个 PowerShell CLI 示例：
     ```powershell
     $ResourceGroup = '<Resource_Group>'
     $VmName = '<VM_Name>'
@@ -1076,18 +1076,18 @@ IMDS 要求 `Metadata: true` 在请求中传递标头。 通过在 REST 调用�
 
 **Windows Server 中的故障转移群集**
 
-使用故障转移群集查询 IMDS 时，有时需要将路由添加到路由表。 下面介绍如何操作：
+使用故障转移群集查询 IMDS 时，有时需要向路由表添加路由。 下面介绍如何操作：
 
 1. 使用管理员特权打开命令提示符。
 
-1. 运行以下命令，并记下 `0.0.0.0` IPv4 路由表中用于网络目标 () 的接口地址。
+1. 运行以下命令，并记下 IPv4 路由表中网络目标 (`0.0.0.0`) 接口的地址。
 
 ```bat
 route print
 ```
 
 > [!NOTE]
-> 以下示例输出来自启用了故障转移群集的 Windows Server VM。 为简单起见，输出只包含 IPv4 路由表。
+> 以下示例输出来自启用了故障转移群集的 Windows Server VM。 为简单起见，输出仅包含 IPv4 路由表。
 
 ```
 IPv4 Route Table
@@ -1112,7 +1112,7 @@ Network Destination        Netmask          Gateway       Interface  Metric
   255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
 ```
 
-运行以下命令，并使用网络目标 () 的接口地址，该接口 `0.0.0.0` `10.0.1.10` 在此示例中 () 。
+运行以下命令并使用网络目标 (`0.0.0.0`) 接口的地址，在此示例中为 `10.0.1.10`。
 
 ```bat
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
@@ -1120,16 +1120,16 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 
 ## <a name="support"></a>支持
 
-如果多次尝试后无法获取元数据响应，则可以在 Azure 门户中创建支持问题。
+如果在多次尝试后无法获取元数据响应，则可以在 Azure 门户中创建支持问题。
 
 ## <a name="product-feedback"></a>产品反馈
 
-你可以在 "虚拟机" 下的 "虚拟机" 下 > 实例元数据服务提供产品反馈和想法： https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627
+你可以访问以下网址，在“虚拟机”>“实例元数据服务”下向我们的用户反馈渠道提供产品反馈和想法： https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627
 
 ## <a name="next-steps"></a>后续步骤
 
 [获取 VM 的访问令牌](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
 
-[适用于 Linux 的计划事件](../articles/virtual-machines/linux/scheduled-events.md)
+[Linux 计划事件](../articles/virtual-machines/linux/scheduled-events.md)
 
-[Windows 的计划事件](../articles/virtual-machines/windows/scheduled-events.md)
+[Windows 计划事件](../articles/virtual-machines/windows/scheduled-events.md)

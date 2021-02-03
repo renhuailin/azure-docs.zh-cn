@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
 ms.custom: devx-track-js
-ms.openlocfilehash: b970b099d87148d169b2be3b7e72d32c159f5046
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 36b8a6952a8dc0b34df7bf32a708c71547bf5b33
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371719"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948658"
 ---
 适用于 JavaScript 的异常检测器客户端库入门。 请按照以下步骤操作，以使用服务提供的算法安装软件包。 通过异常检测器服务，可以对时序数据自动使用最佳适配模型，从而查找器其中的异常，不限行业、场景或数据量。
 
@@ -72,11 +72,11 @@ npm install @azure/ai-anomaly-detector @azure/ms-rest-js csv-parse
 
 ## <a name="object-model"></a>对象模型
 
-异常检测器客户端是 [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) 对象，该对象使用你的密钥向 Azure 进行身份验证。 客户端可以使用 [entireDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--) 对整个数据集进行异常情况检测，或使用 [LastDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) 对最新的数据点进行异常情况检测。 [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090788) 方法可检测在趋势中标记更改的点。 
+异常检测器客户端是 [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient) 对象，该对象使用你的密钥向 Azure 进行身份验证。 客户端可以使用 [entireDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient#entiredetect-request--servicecallback-entiredetectresponse--) 对整个数据集进行异常情况检测，或使用 [LastDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient#lastdetect-request--msrest-requestoptionsbase-) 对最新的数据点进行异常情况检测。 [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090788) 方法可检测在趋势中标记更改的点。 
 
-时序数据作为 [Request](/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest) 对象中的一系列 [Point](/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) 进行发送。 `Request` 对象包含描述数据的属性（例如[Granularity](/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest#granularity)）以及异常检测的参数。 
+时序数据作为 [Request](/javascript/api/@azure/cognitiveservices-anomalydetector/request) 对象中的一系列 [Point](/javascript/api/@azure/cognitiveservices-anomalydetector/point) 进行发送。 `Request` 对象包含描述数据的属性（例如[Granularity](/javascript/api/@azure/cognitiveservices-anomalydetector/request#granularity)）以及异常检测的参数。 
 
-异常检测器响应是 [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest)、[EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) 或 [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) 对象，具体取决于所使用的方法。 
+异常检测器响应是 [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse)、[EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse) 或 [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) 对象，具体取决于所使用的方法。 
 
 ## <a name="code-examples"></a>代码示例 
 
@@ -90,7 +90,7 @@ npm install @azure/ai-anomaly-detector @azure/ms-rest-js csv-parse
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-使用终结点和凭据实例化 [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) 对象。
+使用终结点和凭据实例化 [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient) 对象。
 
 [!code-javascript[Authentication](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=authentication)]
 
@@ -103,19 +103,19 @@ npm install @azure/ai-anomaly-detector @azure/ms-rest-js csv-parse
 
 此时序数据的格式为 .csv 文件，它将被发送到异常检测器 API。
 
-使用 csv-parse 库的 `readFileSync()` 方法读取数据文件，并使用 `parse()` 分析文件。 对于每一行，推送包含时间戳和数值的 [Point](/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) 对象。
+使用 csv-parse 库的 `readFileSync()` 方法读取数据文件，并使用 `parse()` 分析文件。 对于每一行，推送包含时间戳和数值的 [Point](/javascript/api/@azure/cognitiveservices-anomalydetector/point) 对象。
 
 [!code-javascript[Read the data file](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=readFile)]
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>在整个数据集中检测异常 
 
-调用 API 以使用客户端的 [entireDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--msrest-requestoptionsbase-) 方法批量检测整个时间序列中的异常。 存储返回的 [EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) 对象。 循环访问响应的 `isAnomaly` 列表，并输出任何 `true` 值的索引。 如果找到任何此类值，这些值对应于异常数据点的索引。
+调用 API 以使用客户端的 [entireDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient#entiredetect-request--msrest-requestoptionsbase-) 方法批量检测整个时间序列中的异常。 存储返回的 [EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse) 对象。 循环访问响应的 `isAnomaly` 列表，并输出任何 `true` 值的索引。 如果找到任何此类值，这些值对应于异常数据点的索引。
 
 [!code-javascript[Batch detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=batchCall)]
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>检测最新数据点的异常状态
 
-调用异常检测器 API，以便使用客户端的 [lastDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) 方法确定最新数据点是否异常，并存储返回的 [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) 对象。 响应的 `isAnomaly` 值是一个布尔值，用于指定该点的异常状态。  
+调用异常检测器 API，以便使用客户端的 [lastDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient#lastdetect-request--msrest-requestoptionsbase-) 方法确定最新数据点是否异常，并存储返回的 [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse) 对象。 响应的 `isAnomaly` 值是一个布尔值，用于指定该点的异常状态。  
 
 [!code-javascript[Last point detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=lastDetection)]
 

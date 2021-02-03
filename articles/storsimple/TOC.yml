@@ -129,7 +129,7 @@
             - name: 了解限制
               href: storsimple-8000-limits.md
             - name: 最佳做法
-              href: 'https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68'
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_BestPractices_V1.1.pdf'
         - name: 安装
           items:
             - name: 审查安全性
@@ -262,11 +262,7 @@
             - name: 在 Azure 中实现自动化文件服务器灾难恢复
               href: storsimple-disaster-recovery-using-azure-site-recovery.md
             - name: 通过 Express Route 使用 StorSimple
-              href: 'https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content'
-            - name: 采用 VMware 的 StorSimple
-              href: 'https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463'
-            - name: 采用 Hyper-V 的 StorSimple
-              href: 'https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6'
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_ExpressRoute.pdf'
             - name: 分布式全局命名空间
               href: 'https://www.microsoft.com/download/details.aspx?id=45507'
         - name: 监视

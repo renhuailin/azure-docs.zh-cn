@@ -2,19 +2,19 @@
 title: 什么是自定义翻译？
 titleSuffix: Azure Cognitive Services
 description: 自定义翻译提供的功能类似于 Microsoft Translator Hub 为统计机器翻译 (SMT) 提供的功能，但专用于神经机器翻译 (NMT) 系统。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 12/09/2019
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: overview
-ms.openlocfilehash: 6a7301fd878eb65e4c1dd540275611bcf9348afc
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 37d31d753812924607c4d31df6d4f4d5e7b32d69
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241737"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890707"
 ---
 # <a name="what-is-custom-translator"></a>什么是自定义翻译？
 
