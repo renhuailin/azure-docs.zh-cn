@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 02/03/2021
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 610c545bf25822d27e0a641a1b2631f899502420
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 16004e6e471094c99229c32a63396ac3b0490905
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340152"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524266"
 ---
 # <a name="getcurrentticks-azure-cosmos-db"></a>GetCurrentTicks (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +34,8 @@ GetCurrentTicks ()
 
 GetCurrentTicks() 是非确定性的函数。 返回的结果采用 UTC（协调世界时）格式。
 
-此系统函数不会使用索引。
+> [!NOTE]
+> 此系统函数不会使用索引。 如果需要将值与当前时间进行比较，请在执行查询之前获取当前时间，并在子句中使用该常量字符串值 `WHERE` 。
 
 ## <a name="examples"></a>示例
 

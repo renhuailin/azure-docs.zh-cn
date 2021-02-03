@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 6471108cbbb1ec7fffeb53de61ac71f94927019b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 373b7b8dbf2ccc516edbbb3b87e284d88dfaf0c2
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88684141"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508469"
 ---
 运行媒体图时，来自 HTTP 扩展处理器节点的结果将通过 IoT 中心接收器节点传递到 IoT 中心。 在“输出”窗口中看到的消息包含 `body` 和 `applicationProperties` 部分。 有关详细信息，请参阅[创建和读取 IoT 中心消息](../../../../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
@@ -82,20 +82,12 @@ HTTP 扩展处理器节点从 yolov3 模块接收推理结果。 然后它通过
         "type": "entity"
       }
     ]
-  },
-  "applicationProperties": {
-    "topic": "/subscriptions/{subscriptionID}/resourceGroups/{name}/providers/microsoft.media/mediaservices/hubname",
-    "subject": "/graphInstances/GRAPHINSTANCENAMEHERE/processors/inferenceClient",
-    "eventType": "Microsoft.Media.Graph.Analytics.Inference",
-    "eventTime": "2020-04-23T06:37:16.097Z"
   }
 }
 ```
 
 在消息中，请注意以下详细信息：
 
-* `applicationProperties` 中的 `subject` 引用生成消息的图形拓扑中的节点。 
-* `applicationProperties` 中的 `eventType` 指示此事件是分析事件。
 * `eventTime` 值为事件发生的时间。
 * `body` 部分包含有关分析事件的数据。 在本例中，该事件是推理事件，因此正文包含 `inferences` 数据。
 * `inferences` 部分指示 `type` 为 `entity`。 本部分包含有关实体的其他数据。

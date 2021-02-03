@@ -1,19 +1,16 @@
 ---
 title: 快速入门：使用 Azure 门户设置 Apache Kafka on HDInsight
 description: 在此快速入门中，了解如何在 Azure HDInsight 上使用 Azure 门户创建 Apache Kafka 群集。 还可以了解 Kafka 主题、订阅服务器和使用者。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 3f0b3da7d225e4b2adca3f2d4b08cff9b56e2520
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9bb981b5a1d6ecb9e0c20748983a36ef3acfa001
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534594"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932905"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Kafka 群集
 
@@ -59,7 +56,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
    ![Azure 门户创建群集基本信息](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
 
-    每个 Azure 区域（位置）均提供 _容错域_ 。 容错域是 Azure 数据中心基础硬件的逻辑分组。 每个容错域共享公用电源和网络交换机。 在 HDInsight 群集中实现节点的虚拟机和托管磁盘跨这些容错域分布。 此体系结构可限制物理硬件故障造成的潜在影响。
+    每个 Azure 区域（位置）均提供 _容错域_。 容错域是 Azure 数据中心基础硬件的逻辑分组。 每个容错域共享公用电源和网络交换机。 在 HDInsight 群集中实现节点的虚拟机和托管磁盘跨这些容错域分布。 此体系结构可限制物理硬件故障造成的潜在影响。
 
     为实现数据的高可用性，请选择包含三个容错域的区域（位置）。 有关区域中容错域数的信息，请参阅 [Linux 虚拟机的可用性](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文档。
 

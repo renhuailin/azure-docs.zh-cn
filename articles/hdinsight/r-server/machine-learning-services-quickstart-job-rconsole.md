@@ -1,19 +1,16 @@
 ---
 title: 快速入门：ML 服务和 R 控制台上的 R 脚本 - Azure HDInsight
 description: 在本快速入门中，将使用 R 控制台在 Azure HDInsight 中的 ML Services 群集上执行 R 脚本。
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/19/2019
-ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: af41a7569dedc9a56f67be8ae791d7185e0c7489
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eac6fd14acfe12a0f505419a229bb78e423706d1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "73241600"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935730"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>快速入门：使用 R 控制台在 Azure HDInsight 中的 ML Services 群集上执行 R 脚本
 
@@ -111,7 +108,7 @@ Azure HDInsight 上的 ML Services 允许 R 脚本使用 Apache Spark 和 Apache
      formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
     ```
 
-1. 使用**本地**计算上下文对数据运行逻辑回归。 在 R 控制台中输入以下代码：
+1. 使用 **本地** 计算上下文对数据运行逻辑回归。 在 R 控制台中输入以下代码：
 
     ```R
     # Set a local compute context
@@ -150,7 +147,7 @@ Azure HDInsight 上的 ML Services 允许 R 脚本使用 Apache Spark 和 Apache
     
       ---
     
-      Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+      Signif. codes:  0 ‘**_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
       Condition number of final variance-covariance matrix: 11904202
       Number of iterations: 7

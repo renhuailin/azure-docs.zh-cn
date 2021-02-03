@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.custom: subject-armqs
 ms.author: jgao
 ms.date: 01/14/2021
-ms.openlocfilehash: 3d6f1707ec354cbcceb8c400cfb55f6e143f4cad
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 75d6c484a0f1d6325aaa7894d8902ff78cadbd74
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224531"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092494"
 ---
 # <a name="quickstart-create-an-azure-ddos-protection-standard-using-arm-template"></a>快速入门：使用 ARM 模板创建 Azure DDoS 保护标准
 
@@ -41,8 +41,8 @@ ms.locfileid: "98224531"
 
 该模板定义了两个资源：
 
-- [Microsoft.Network/ddosProtectionPlans](/templates/microsoft.network/ddosprotectionplans)
-- [Microsoft.Network/virtualNetworks](/templates/microsoft.network/virtualnetworks)
+- [Microsoft.Network/ddosProtectionPlans](/azure/templates/microsoft.network/ddosprotectionplans)
+- [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
 
 ## <a name="deploy-the-template"></a>部署模板
 

@@ -1,19 +1,16 @@
 ---
 title: 什么是 Azure HDInsight？
 description: 介绍 HDInsight 以及 Apache Hadoop 和 Apache Spark 技术堆栈和组件，包括适用于大数据分析的 Kafka、Hive、Storm 和 HBase。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: a1ef441943ec3c29770e0964b3c1132f86239b42
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: d1c32bf749850ac40e23c1a9cb9c5cd7755d45c6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127407"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939432"
 ---
 # <a name="what-is-azure-hdinsight"></a>什么是 Azure HDInsight？
 

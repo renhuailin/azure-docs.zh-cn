@@ -2,13 +2,13 @@
 title: 什么是 Azure 事件网格？
 description: 使用 Azure 事件网格将事件数据从源发送到处理程序。 生成基于事件的应用程序，并与 Azure 服务集成。
 ms.topic: overview
-ms.date: 09/24/2020
-ms.openlocfilehash: a4f614a22fdfa7d2272c70751f56f19145a10fa6
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 01/28/2021
+ms.openlocfilehash: e53665c88c3860d37b3512c6498ab626b02a6400
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576676"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055122"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -20,7 +20,7 @@ ms.locfileid: "94576676"
 
 本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。 
 
-:::image type="content" source="./media/overview/functional-model.png" alt-text="源和处理程序的事件网格模型" lightbox="./media/overview/functional-model.png":::
+:::image type="content" source="./media/overview/functional-model.png" alt-text="源和处理程序的事件网格模型" lightbox="./media/overview/functional-model-big.png":::
 
 此图展示事件网格连接源和处理程序的方式，而不是支持的集成的完整列表。
 
@@ -42,6 +42,7 @@ ms.locfileid: "94576676"
 - [Azure 服务总线](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Azure 订阅](event-schema-subscriptions.md)
+- [用于 Redis 的 Azure 缓存](event-schema-azure-cache.md)
 
 ## <a name="event-handlers"></a>事件处理程序
 
@@ -78,7 +79,7 @@ ms.locfileid: "94576676"
 * **扇出** - 订阅到相同事件的多个终结点，以将该事件的副本发送到所需的所有位置。
 * **可靠性** - 使用指数退避算法在 24 小时内重试，以确保事件成功传送。
 * 按事件支付 - 仅支付事件网格的使用量。
-* **高吞吐量** - 在事件网格上构建高容量工作负载。
+* **高吞吐量** - 在事件网格上构建高容量工作负荷。
 * 内置事件 - 使用资源定义的内置事件快速启动和运行。
 * 自定义事件 - 在应用中使用事件网格路由、筛选并可靠地传送自定义事件。
 

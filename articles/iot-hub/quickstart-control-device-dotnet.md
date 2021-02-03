@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: 88b818a25a0888cc74783a210cc7a1c0acb455ac
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 28d80a20c50f846146aed069028303e86426df27
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623258"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072079"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>快速入门：控制连接到 IoT 中心的设备 (.NET)
 
@@ -99,7 +99,7 @@ IoT 中心是一项 Azure 服务，使你可以从云管理 IoT 设备，并将�
 还需一个 IoT 中心服务连接字符串，以便服务应用程序能够连接到中心并检索消息。 以下命令检索 IoT 中心的服务连接字符串：
 
 ```azurecli-interactive
-az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
 ```
 
 记下如下所示的服务连接字符串：

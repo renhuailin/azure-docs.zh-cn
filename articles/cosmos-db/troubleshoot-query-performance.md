@@ -8,12 +8,12 @@ ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: d50893fc3bf5d890efbdc1f5b59cf52f35d91a15
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475720"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524277"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>排查使用 Azure Cosmos DB 时遇到的查询问题
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -206,12 +206,15 @@ RU 费用：2.98 RU
 - 左
 - Substring-但仅当第一个 num_expr 为0时
 
-下面是一些不使用索引且必须加载每个文档的常用系统函数：
+下面是一些常见的系统函数，它们不使用索引，并且必须在子句中使用时加载每个文档 `WHERE` ：
 
 | 系统函数                     | 优化意见             |
 | --------------------------------------- |------------------------------------------------------------ |
-| UPPER/LOWER                             | 不要使用系统函数来规范化数据以进行比较，而是在插入时规范化大小写。 诸如 ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` 的查询将变成 ```SELECT * FROM c WHERE c.name = 'BOB'```。 |
+| 上限/下限                         | 不要使用系统函数来规范化数据以进行比较，而是在插入时规范化大小写。 诸如 ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` 的查询将变成 ```SELECT * FROM c WHERE c.name = 'BOB'```。 |
+| GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | 计算查询执行前的当前时间并在子句中使用该字符串值 `WHERE` 。 |
 | 数学函数（非聚合） | 如果需要频繁计算查询中的某个值，请考虑在 JSON 文档中将此值存储为属性。 |
+
+在子句中使用时 `SELECT` ，低效的系统函数不会影响查询使用索引的方式。
 
 ### <a name="improve-string-system-function-execution"></a>改进字符串系统函数执行
 

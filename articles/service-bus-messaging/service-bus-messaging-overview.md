@@ -2,13 +2,13 @@
 title: Azure 服务总线消息传送概述 | Microsoft Docs
 description: 本文粗略概述了 Azure 服务总线（一个完全托管的企业集成消息代理）。
 ms.topic: overview
-ms.date: 11/20/2020
-ms.openlocfilehash: 7453e8dd300ad754fb58489f059670af209314ab
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 01/28/2021
+ms.openlocfilehash: 232f25ca94e9426a20755940caf284426502cfb3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881595"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219156"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 Microsoft Azure 服务总线是一个完全托管的企业消息代理，其中包含消息队列和发布订阅主题。 服务总线用于分离应用程序和服务，提供以下优势：
@@ -152,12 +152,12 @@ Microsoft Azure 服务总线是一个完全托管的企业消息代理，其中�
 
 服务总线与许多 Microsoft 和 Azure 服务完全集成，例如：
 
-* [事件网格](https://azure.microsoft.com/services/event-grid/)
-* [逻辑应用](https://azure.microsoft.com/services/logic-apps/)
-* [Azure Functions](https://azure.microsoft.com/services/functions/)
-* [Power Platform](https://powerplatform.microsoft.com/)
-* [Dynamics 365](https://dynamics.microsoft.com)
-* [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)
+* [事件网格](service-bus-to-event-grid-integration-example.md)
+* [逻辑应用](../connectors/connectors-create-api-servicebus.md)
+* [Azure Functions](../azure-functions/functions-bindings-service-bus.md)
+* [Power Platform](../connectors/connectors-create-api-servicebus.md)
+* [Dynamics 365](/dynamics365/fin-ops-core/dev-itpro/business-events/how-to/how-to-servicebus)
+* [Azure 流分析](../stream-analytics/stream-analytics-define-outputs.md)
 
 ## <a name="next-steps"></a>后续步骤
 

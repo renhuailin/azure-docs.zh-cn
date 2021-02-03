@@ -3,7 +3,7 @@ title: 什么是 Azure Active Directory 中的应用程序管理
 description: 将 Azure Active Directory (AD) 用作云和本地应用程序的标识和访问管理 (IAM) 系统的概述。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 01/22/2021
 ms.author: kenwith
 ms.reviewer: ''
-ms.openlocfilehash: ad572188ceb15a948e4242d0521b8304db45e65b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 247e824997fd95434246e49c78bf167f36e146c0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732335"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258585"
 ---
 # <a name="what-is-application-management"></a>什么是应用程序管理？
 

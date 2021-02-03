@@ -1,17 +1,17 @@
 ---
-title: 使用门户上传、编码和流式传输内容 - Azure
+title: 使用门户上传、编码和流式处理内容
 description: 本快速入门介绍如何使用门户通过 Azure 媒体服务上传、编码和流式传输内容。
 ms.topic: quickstart
 ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 0793c8abee27ca415feba313efb029daf092bec9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3831892b6cd241643b3e5753689f768d59e27704
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683006"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955964"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>快速入门：使用门户上传、编码和流式传输内容
 
@@ -56,7 +56,7 @@ ms.locfileid: "94683006"
 
 [创建媒体服务帐户](create-account-howto.md)
 
-## <a name="upload"></a>上载
+## <a name="upload"></a>上传
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 找到并单击你的媒体服务帐户。

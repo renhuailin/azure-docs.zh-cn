@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 6d592064729bbdd64e485e0bd0373b2d471597e0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71fa79cb8847d16ac0890f9aba647cb8f5e2e444
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87282477"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089336"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player 插件库 #
 
@@ -21,7 +21,7 @@ ms.locfileid: "87282477"
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | 其他功能                 | | | |
 | **新增内容！** AMP360Video                | [演示](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | 此插件用于在 AMP 中可视化 360 视频，不管是在桌面设备上，还是在与 VR 兼容的设备中。 [此处](https://doc.babylonjs.com/extensions/amp360video)提供了完整文档： |
-|  子画面提示                         | [演示](http://www.skymedia.tv/asset/sprite)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | 此 Azure Media Player (AMP) 插件用于按时间线渲染根据 Azure Media Services (AMS) Media Encoder Standard (MES) 生成的视频缩略图子画面。 |
+|  子画面提示                         | [演示](https://www.smwcentral.net/?p=section&a=details&id=10301)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | 此 Azure Media Player (AMP) 插件用于按时间线渲染根据 Azure Media Services (AMS) Media Encoder Standard (MES) 生成的视频缩略图子画面。 |
 | 诊断覆盖                 | [演示](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | 此插件显示：所有关键参数、视频统计信息、视频播放生命周期中的所有事件，以及受保护情况下的 DRM 保护信息（例如密钥 ID、许可证获取 URL）。                                                                                                                                                                      |
 | 帧速率和时间代码计算器 | 没有可用演示 | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | 此插件基于第一个 MPEG-DASH 视频片段的 `tfhd`/`trun` MP4 框计算视频的帧速率，分析 MPEG-DASH 客户端清单中的时间刻度值，并提供了一种在播放器中根据给定的绝对时间生成时间代码的方法（另外还可根据时间代码提供播放器绝对时间）。 |
 | <strike>播放速度</strike>                      | [演示](https://azure-samples.github.io/media-services-javascript-Azure-Media-Player-playback-rate-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | 此插件允许观看者控制视频速度。 注意，此功能在 AMP v2.0.0+ 版本中自动提供，但默认处于禁用状态。 若要了解如何启用它，请查看[此处](https://github.com/Azure-Samples/azure-media-player-samples)提供的示例 |

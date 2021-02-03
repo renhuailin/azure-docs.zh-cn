@@ -7,16 +7,20 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: df1064128d6a4eca8497ebf3ea0c6ae8cd42255c
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 4fc799c1c6dcaaa3ed4bc41c93bd6b786f51591c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208431"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429239"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>快速入门：使用 Azure CLI 设置 Azure 证明
 
 [通过使用 Azure CLI 开始使用 Azure 证明](/cli/azure/ext/attestation/attestation?view=azure-cli-latest)。
+
+## <a name="prerequisites"></a>先决条件
+
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="get-started"></a>入门
 

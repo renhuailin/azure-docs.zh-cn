@@ -3,7 +3,7 @@ title: 什么是 Azure 单一登录 (SSO)？
 description: 了解如何将单一登录 (SSO) 与 Azure Active Directory 配合使用。 使用 SSO，使用户无需记住每个应用程序的密码。 还可以使用 SSO 简化帐户管理。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 4e27266688e39eadc8ae1f3d9afd84c42e1b524e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 36025a5a68e4c3d0de1d6b11a13df656c72745d4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031651"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260191"
 ---
 # <a name="what-is-single-sign-on-sso"></a>什么是单一登录 (SSO)？
 

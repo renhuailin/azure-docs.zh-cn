@@ -1,19 +1,16 @@
 ---
 title: 快速入门：使用模板创建 Apache Spark 群集 - Azure HDInsight
 description: 本快速入门演示如何使用资源管理器模板在 Azure HDInsight 中创建 Apache Spark 群集，并运行 Spark SQL 查询。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 50cf756f56da0ad636ccc865f31f3ddf4974847c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1bbf3cbffe2ab51f10e86dc3b9fe4ea6040a7911
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854454"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930278"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-arm-template"></a>快速入门：使用 ARM 模板在 Azure HDInsight 中创建 Apache Spark 群集
 
@@ -112,7 +109,7 @@ SQL（结构化查询语言）是用于查询和转换数据的最常见、最�
 
     ![HDInsight 中的 Apache Hive 查询](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "HDInsight 中的 Hive 查询")
 
-    每次在 Jupyter 中运行查询时，Web 浏览器窗口标题中都会显示“(繁忙)”状态和 Notebook 标题。 右上角“PySpark”文本的旁边还会出现一个实心圆。
+    每次在 Jupyter 中运行查询时，Web 浏览器窗口标题中都会显示“(繁忙)”状态和 Notebook 标题。 右上角“PySpark”  文本的旁边还会出现一个实心圆。
 
 1. 运行另一个查询，请查看 `hivesampletable` 中的数据。
 
@@ -135,7 +132,7 @@ SQL（结构化查询语言）是用于查询和转换数据的最常见、最�
 
 ![在 Azure 门户中删除 HDInsight 群集](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
 
-还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”。 通过删除资源组，可以删除 HDInsight 群集和默认存储帐户。
+还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”  。 通过删除资源组，可以删除 HDInsight 群集和默认存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

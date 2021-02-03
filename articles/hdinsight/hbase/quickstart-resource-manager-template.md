@@ -1,19 +1,16 @@
 ---
 title: 快速入门：使用模板创建 Apache HBase 群集 - Azure HDInsight
 description: 本快速入门介绍如何使用 Azure 资源管理器模板在 Azure HDInsight 中创建一个 Apache HBase 群集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: ee69148f7dfe7a0ba39b4103a736ea09d3f57c13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a6b55ee2d665ee38df9a0e0f58260e97f3b81f5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91855763"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942947"
 ---
 # <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>快速入门：使用 ARM 模板在 Azure HDInsight 中创建 Apache HBase 群集
 
@@ -23,7 +20,7 @@ ms.locfileid: "91855763"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json)
+[![“部署到 Azure”](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,7 +48,7 @@ ms.locfileid: "91855763"
     |属性 |说明 |
     |---|---|
     |订阅|从下拉列表中选择用于此群集的 Azure 订阅。|
-    |资源组|从下拉列表中选择现有资源组，或选择“新建”。|
+    |资源组|从下拉列表中选择现有资源组，或选择“新建”  。|
     |位置|将使用用于资源组的位置自动填充此值。|
     |群集名称|输入任何全局唯一的名称。 对于此模板，请只使用小写字母和数字。|
     |群集登录用户名|提供用户名，默认值为 **admin**。|

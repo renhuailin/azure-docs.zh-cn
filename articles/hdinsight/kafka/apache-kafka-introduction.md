@@ -1,19 +1,16 @@
 ---
 title: Apache Kafka on HDInsight 简介 - Azure
 description: 了解 Apache Kafka on HDInsight：了解它的涵义和用途以及在何处可找到示例和入门信息。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: c6209ae985f8e59e1acae2d8fd6a1c821acae5a7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fbe4041b74f90b2ef8a9ef4384e83c7aa2d56461
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449555"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939272"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Kafka
 
@@ -51,7 +48,7 @@ Kafka on HDInsight 的具体特征如下：
 
 Apache ZooKeeper 管理 Kafka 群集的状态。 Zookeeper 专用于并发、可复原和低延迟事务。
 
-Kafka 将记录（数据）存储在主题中。 记录由**生成者**生成，由**使用者**使用。 生成者将记录发送到 Kafka 代理。 HDInsight 群集中的每个辅助角色节点都是一个 Kafka 中转站。
+Kafka 将记录（数据）存储在主题中。 记录由 **生成者** 生成，由 **使用者** 使用。 生成者将记录发送到 Kafka 代理。 HDInsight 群集中的每个辅助角色节点都是一个 Kafka 中转站。
 
 主题跨代理对记录进行分区。 在使用记录时，每个分区最多可使用一个使用者来实现数据并行处理。
 

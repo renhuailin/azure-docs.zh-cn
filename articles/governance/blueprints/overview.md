@@ -1,14 +1,14 @@
 ---
 title: Azure 蓝图概述
 description: 了解如何通过 Azure 蓝图服务在 Azure 环境中创建、定义和部署项目。
-ms.date: 09/30/2020
+ms.date: 01/27/2021
 ms.topic: overview
-ms.openlocfilehash: 0dbf5ab54b694399c9d15cce84e8eca34a5d924e
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f4ba77f5fcb376bf600d94997b0d6ba569f04f82
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91892721"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919336"
 ---
 # <a name="what-is-azure-blueprints"></a>什么是 Azure 蓝图？
 
@@ -56,7 +56,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 ### <a name="blueprint-definition-locations"></a>蓝图定义位置
 
-创建蓝图定义时，将定义蓝图的保存位置。 蓝图可以保存到你有**参与者**访问权限的[管理组](../management-groups/overview.md)或订阅。 如果位置是一个管理组，则蓝图可以分配给该管理组的任何子级订阅。
+创建蓝图定义时，将定义蓝图的保存位置。 蓝图可以保存到你有 **参与者** 访问权限的 [管理组](../management-groups/overview.md)或订阅。 如果位置是一个管理组，则蓝图可以分配给该管理组的任何子级订阅。
 
 ### <a name="blueprint-parameters"></a>蓝图参数
 
@@ -118,7 +118,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 若这些内置角色不适合安全需求，请考虑创建[自定义角色](../../role-based-access-control/custom-roles.md)。
 
 > [!NOTE]
-> 如果使用系统分配的托管标识，则 Azure 蓝图的服务主体需要在分配的订阅上具有**所有者**角色才能启用部署。 若使用门户，则会自动为部署授予和撤消此角色。 若使用 REST API，则必须手动授予此角色，但在部署完成后仍会自动撤消此角色。 如果使用用户分配的托管标识，则仅创建蓝图分配的用户需要 `Microsoft.Blueprint/blueprintAssignments/write` 的权限，该权限包括在“所有者”和“蓝图运算符”内置角色中 。
+> 如果使用系统分配的托管标识，则 Azure 蓝图的服务主体需要在分配的订阅上具有 **所有者** 角色才能启用部署。 若使用门户，则会自动为部署授予和撤消此角色。 若使用 REST API，则必须手动授予此角色，但在部署完成后仍会自动撤消此角色。 如果使用用户分配的托管标识，则仅创建蓝图分配的用户需要 `Microsoft.Blueprint/blueprintAssignments/write` 的权限，该权限包括在“所有者”和“蓝图运算符”内置角色中 。
 
 ## <a name="naming-limits"></a>命名限制
 

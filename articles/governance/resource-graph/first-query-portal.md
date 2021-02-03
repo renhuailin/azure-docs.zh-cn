@@ -1,14 +1,14 @@
 ---
 title: 快速入门：第一个门户查询
 description: 本快速入门介绍在 Azure 门户中使用 Azure Resource Graph 资源管理器运行第一个查询的步骤。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: b5f5203b3842ebc3edbd97bca1ca3c101f47e397
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: cb62a1ae3a29a7aae793fcee6fd896fe0260dc10
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057376"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920089"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入门：使用 Azure Resource Graph Explorer 运行第一个 Resource Graph 查询
 
@@ -94,7 +94,7 @@ ms.locfileid: "92057376"
 
 - [Resource Graph Explorer - 示例仪表板 #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  :::image type="content" source="./media/arge-sample2-small.png" alt-text="示例仪表板 #1 示例图像" lightbox="./media/arge-sample2-large.png":::
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="示例仪表板 #2 示例图像" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > 上述示例仪表板屏幕截图中的计数和图表根据 Azure 环境的不同而异。

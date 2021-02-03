@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 128e93720da54132b9bc7c8a191038339434f096
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: f9e85960f3efc074eca18475c4a3e6c422c1990b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598941"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090835"
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？
 
@@ -93,7 +93,7 @@ Microsoft Online 业务服务（例如 Microsoft 365 或 Microsoft Azure）要�
 |帐户管理员|从概念上讲，此经典订阅管理员角色是订阅的账单所有者。 此角色可以访问 [Azure 帐户中心](https://account.azure.com/Subscriptions)，用于管理一个帐户中的所有订阅。 有关详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
 |服务管理员|此经典订阅管理员角色用于管理所有 Azure 资源，包括访问权限。 此角色拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。 有关详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
 |所有者|此角色有助于管理所有 Azure 资源，包括访问权限。 此角色在称为 Azure 基于角色的访问控制 (Azure RBAC) 的较新授权系统上构建，该系统可提供对 Azure 资源的精细访问管理。 有关详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
-|Azure AD 全局管理员|此管理员角色自动分配给创建 Azure AD 租户的人员。 全局管理员可以执行 Azure AD 以及与 Azure AD 联合的任意服务（例如 Exchange Online、SharePoint Online 和 Skype for Business Online）的所有管理功能。 可以有多个全局管理员，但只有全局管理员才能向用户分配管理员角色（包括分配其他全局管理员）。 请注意，此管理员角色在 Azure 门户中称为“全局管理员”，但在 Microsoft Graph API 和 Azure AD PowerShell 中称为“公司管理员”。 有关各种管理员角色的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../roles/permissions-reference.md)。|
+|Azure AD 全局管理员|此管理员角色自动分配给创建 Azure AD 租户的人员。 全局管理员可以执行 Azure AD 以及与 Azure AD 联合的任意服务（例如 Exchange Online、SharePoint Online 和 Skype for Business Online）的所有管理功能。 可以有多个全局管理员，但只有全局管理员才能向用户分配管理员角色（包括分配其他全局管理员）。 有关各种管理员角色的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../roles/permissions-reference.md)。|
 |Azure 订阅| 用于为 Azure 云服务付费。 可以有多个订阅，这些订阅与一张信用卡关联。|
 |Azure 租户| 组织在注册 Microsoft Azure、Microsoft Intune 或 Microsoft 365 等 Microsoft 云服务订阅时自动创建的专用且受信任的 Azure AD 实例。 一个 Azure 租户表示一个组织。|
 |单租户| 可以将访问专用环境中的其他服务的 Azure 租户视为单租户。|

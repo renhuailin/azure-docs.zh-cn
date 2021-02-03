@@ -1,15 +1,15 @@
 ---
 title: 快速入门：第一个 Azure CLI 查询
 description: 本快速入门介绍为 Azure CLI 启用 Resource Graph 扩展并运行第一个查询的步骤。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 216972fb3c64efa22dc4d344e5021a3c2da74266
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 5111f59eb760afda4e206837ca5bdf8bcc201338
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056764"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917818"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>快速入门：使用 Azure CLI 运行你的第一个 Resource Graph 查询
 

@@ -4,18 +4,16 @@ description: 在本快速入门中，你将使用自己的 HTTP 模型应用计�
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 8e3f0a5cb6a97ce55d848c2d3311ebab5151e186
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d3ba937abcc7bbfd9bb2afe7b15aec28ebb57446
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494981"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508471"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-http-model"></a>快速入门：使用自己的 HTTP 模型分析实时视频
 
 本快速入门介绍了如何在 IoT Edge 上使用实时视频分析来分析来自（模拟）IP 相机中的实时视频源。 你将了解如何应用计算机视觉模型来检测对象。 实时视频源中的一部分帧被发送到推理服务。 结果将发送到 IoT Edge 中心。 
-
-此快速入门将 Azure VM 用作 IoT Edge 设备，并使用模拟的实时视频流。 它基于用 C# 编写的示例代码，并以[检测运动并发出事件](detect-motion-emit-events-quickstart.md)快速入门为基础。 
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [header](includes/analyze-live-video-your-http-model-quickstart/csharp/header.md)]
@@ -25,7 +23,7 @@ ms.locfileid: "96494981"
 [!INCLUDE [header](includes/analyze-live-video-your-http-model-quickstart/python/header.md)]
 ::: zone-end
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/analyze-live-video-your-http-model-quickstart/csharp/prerequisites.md)]

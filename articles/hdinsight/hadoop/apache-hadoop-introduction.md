@@ -1,19 +1,16 @@
 ---
 title: 什么是 Apache Hadoop 和 MapReduce - Azure HDInsight
 description: 介绍 HDInsight，以及 Apache Hadoop 技术堆栈和组件。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
-ms.openlocfilehash: ef1914499765beff9913f9735cf55736135f9d96
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1e3fc23dd220a8d9764a64c453e9fb856307ac47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899627"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946505"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Hadoop？
 
@@ -27,9 +24,9 @@ Azure HDInsight 是云中适用于企业的分析服务，具有完全托管、�
 
 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) 是一个软件框架，用于编写处理海量数据的作业。 输入的数据将拆分为独立的区块。 每个区块跨群集中的节点并行进行处理。 MapReduce 作业包括两个函数：
 
-* **映射器** ：使用输入数据，对数据进行分析（通常使用筛选器和排序操作），并发出元组（键/值对）
+* **映射器**：使用输入数据，对数据进行分析（通常使用筛选器和排序操作），并发出元组（键/值对）
 
-* **化简器** ：使用映射器发出的元组并执行汇总运算，以基于映射器数据创建更小的合并结果
+* **化简器**：使用映射器发出的元组并执行汇总运算，以基于映射器数据创建更小的合并结果
 
 下图演示了一个基本的单词计数 MapReduce 作业示例：
 
@@ -44,7 +41,7 @@ MapReduce 可使用多种语言实现。 Java 是最常见的实现，本文档�
 
 ## <a name="development-languages"></a>开发语言
 
-基于 Java 和 Java 虚拟机的语言或框架可作为 [MapReduce job](..//hadoop/submit-apache-hadoop-jobs-programmatically.md) 作业直接运行。 在本文档中使用的示例是 Java MapReduce 应用程序。 C#、Python 等非 Java 语言或独立可执行文件必须使用 **Hadoop 流式处理** 。
+基于 Java 和 Java 虚拟机的语言或框架可作为 [MapReduce job](..//hadoop/submit-apache-hadoop-jobs-programmatically.md) 作业直接运行。 在本文档中使用的示例是 Java MapReduce 应用程序。 C#、Python 等非 Java 语言或独立可执行文件必须使用 **Hadoop 流式处理**。
 
 Hadoop 流式处理通过 STDIN 和 STDOUT 与映射器和化简器通信。 映射器和化简器从 STDIN 中一次读取一行数据，并将输出写入 STDOUT。 映射器和化简器读取或发出的每行必须采用制表符分隔的键/值对格式：
 

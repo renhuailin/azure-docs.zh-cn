@@ -1,19 +1,16 @@
 ---
 title: 快速入门：使用 Apache Zeppelin 在 Azure HDInsight 中运行 Apache Hive 查询
 description: 本快速入门介绍如何使用 Apache Zeppelin 运行 Apache Hive 查询。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1199fee82532eacf1f0ef41b877b970d7d9f2cf5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79367918"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941069"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>快速入门：使用 Apache Zeppelin 在 Azure HDInsight 中执行 Apache Hive 查询
 

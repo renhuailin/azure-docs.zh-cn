@@ -1,14 +1,14 @@
 ---
 title: 快速入门：第一个 REST API 查询
 description: 在此快速入门中，将按照以下步骤调用 REST API 的 Resource Graph 终结点并运行第一个查询。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: eafbd0b408ab50f901d52e59efcfbd5f89b46fe5
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 670ceba95d937be278c44c34704cb844eead480d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566072"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920045"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>快速入门：使用 REST API 运行你的第一个 Resource Graph 查询
 

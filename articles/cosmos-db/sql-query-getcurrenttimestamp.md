@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 查询语言中的 GetCurrentTimestamp
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 GetCurrentTimestamp。
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.author: girobins
+ms.date: 02/03/2021
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 6720b0e5d13f2baaaf063fef2244b0c1f1863571
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fa7d1ec2af12065fb7d761073cd982a561cf53c1
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341920"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524255"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +34,8 @@ GetCurrentTimestamp ()
 
 GetCurrentTimestamp() 是非确定性的函数。 返回的结果采用 UTC（协调世界时）格式。
 
-此系统函数不会使用索引。
+> [!NOTE]
+> 此系统函数不会使用索引。 如果需要将值与当前时间进行比较，请在执行查询之前获取当前时间，并在子句中使用该常量字符串值 `WHERE` 。
 
 ## <a name="examples"></a>示例
   

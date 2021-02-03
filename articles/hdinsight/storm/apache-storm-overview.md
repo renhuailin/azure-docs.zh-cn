@@ -1,19 +1,16 @@
 ---
 title: 什么是 Apache Storm - Azure HDInsight
 description: Apache Storm 用于实时处理数据流。 可以通过 Azure HDInsight 轻松地在 Azure 云中创建 Storm 群集。 使用 Visual Studio 时，可以通过 C# 创建 Storm 解决方案，然后将其部署到 HDInsight Storm 群集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 97b1466e6ac1f2c2dfb931655b64b0f9937ba21d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a2bca34f683df27c97b131d57c6c3278f7cb175e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82183256"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928906"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 
@@ -72,7 +69,7 @@ Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 
 
 ## <a name="integration-with-other-azure-services"></a>与其他 Azure 服务集成
 
-* __Azure Data Lake Storage__：请参阅[将 Azure Data Lake Storage 与 Apache Storm on HDInsight 配合使用](apache-storm-write-data-lake-store.md)。
+* __Azure Data Lake Storage__：请参阅 [将 Azure Data Lake Storage 与 Apache Storm on HDInsight 配合使用](apache-storm-write-data-lake-store.md)。
 
 * __事件中心__：有关将事件中心与 Storm 群集配合使用的示例，请参阅以下示例：
 
@@ -80,7 +77,7 @@ Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 
 
     * [使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)](apache-storm-develop-csharp-event-hub-topology.md)
 
-* __SQL 数据库__、__Cosmos DB__、__事件中心__和 __HBase__：针对 Visual Studio 的 Data Lake 工具包含模板示例。 有关详细信息，请参阅[为 Apache Storm on HDInsight 开发 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)。
+* __SQL 数据库__、__Cosmos DB__、__事件中心__ 和 __HBase__：针对 Visual Studio 的 Data Lake 工具包含模板示例。 有关详细信息，请参阅[为 Apache Storm on HDInsight 开发 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)。
 
 ## <a name="apache-storm-use-cases"></a>Apache Storm 用例
 

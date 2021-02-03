@@ -3,7 +3,7 @@ title: Azure Active Directory 的常见应用程序管理方案 | Microsoft Docs
 description: 使用 Azure AD 集中应用程序管理
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b78562bc3590bdf5b15e4061ba23e1284b07c16
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6372407a5deebefab60e09a9d0c01d977157357b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835486"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259564"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>使用 Azure AD 集中应用程序管理
 
@@ -43,7 +43,7 @@ ms.locfileid: "94835486"
 |Feature  | 说明 | 建议 |
 |---------|---------|---------|
 |SSO|使用受信任的行业标准的基于标准的联合 SSO。|如果应用程序支持 SSO，请始终使用 [SAML/OIDC](../develop/v2-howto-app-gallery-listing.md) 来启用它。|
-|我的应用|为你的用户提供一个简单的中心来发现和访问他们的所有应用程序。 通过自助服务功能提高他们的工作效率，例如请求访问应用和组，或代表其他人管理对资源的访问。| 将应用与 Azure AD 进行 SSO 集成后，请在组织中部署[我的应用](./access-panel-deployment-plan.md)。|
+|我的应用|为你的用户提供一个简单的中心来发现和访问他们的所有应用程序。 通过自助服务功能提高他们的工作效率，例如请求访问应用和组，或代表其他人管理对资源的访问。| 将应用与 Azure AD 进行 SSO 集成后，请在组织中部署[我的应用](my-apps-deployment-plan.md)。|
 
 ## <a name="scenario-2-automate-provisioning-and-deprovisioning"></a>应用场景 2：自动预配和取消预配 
 

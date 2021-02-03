@@ -2,19 +2,16 @@
 title: 快速入门：在 Azure HDInsight 中查询 Apache HBase - HBase Shell
 description: 本快速入门介绍如何使用 Apache HBase Shell 运行 Apache HBase 查询。
 keywords: hdinsight,hadoop,HBase
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 572262cbece26171f9a67bf073906fa2dfd4d8e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 358e058667cb1750a6fc97dffebcbfb2c6e06f84
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79371063"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942932"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>快速入门：使用 HBase Shell 在 Azure HDInsight 中查询 Apache HBase
 

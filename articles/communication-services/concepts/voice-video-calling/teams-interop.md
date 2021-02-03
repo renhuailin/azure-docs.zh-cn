@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 914581e6610e027d9440495f56f4facfb1fb9a9a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 29eafcae9442215e23e80b946fc35314e23100d3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349429"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937236"
 ---
 # <a name="teams-interoperability"></a>Teams 互操作性
 
@@ -40,7 +40,7 @@ Azure 通信服务可用于构建与 Microsoft Teams 交互的自定义会议体
 只要在[会议设置](/microsoftteams/meeting-settings-in-teams)中启用了匿名加入，通信服务用户就可以加入计划的 Teams 会议。
 
 ## <a name="teams-in-government-clouds-gcc"></a>政府云中的 Teams (GCC)
-目前不允许使用 [Microsoft 365 政府云 (GCC)](https://docs.microsoft.com/MicrosoftTeams/plan-for-government-gcc) 的 Teams 部署使用 Azure 通信服务的互操作性。 
+目前不允许使用 [Microsoft 365 政府云 (GCC)](/MicrosoftTeams/plan-for-government-gcc) 的 Teams 部署使用 Azure 通信服务的互操作性。 
 
 ## <a name="next-steps"></a>后续步骤
 
