@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3d2652d2f6c1bb56dd009a9e4de375c42786986d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 50ab5a0d47292e36216a565a5bd39fbe7e850131
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734993"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494001"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>使用创建 Azure Arc 数据控制器 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "98734993"
 
 无论选择哪个目标平台，都需要在创建数据控制器管理员用户之前设置以下环境变量。 您可以根据需要向需要管理员访问数据控制器的其他人员提供这些凭据。
 
-**AZDATA_USERNAME** -为数据控制器管理员用户选择的用户名。 示例：`arcadmin`
+**AZDATA_USERNAME** -为数据控制器管理员用户选择的用户名。 示例： `arcadmin`
 
 **AZDATA_PASSWORD** -为数据控制器管理员用户选择的密码。 密码长度必须至少为8个字符，并且包含以下四个集中的三个：大写字母、小写字母、数字和符号。
 
@@ -270,6 +270,8 @@ Azure Red Hat OpenShift 需要安全上下文约束。
 
 #### <a name="apply-the-security-context"></a>应用安全上下文
 
+在 Azure Red Hat OpenShift 上创建数据控制器之前，需要 (SCC) 应用特定的安全上下文约束。 对于预览版本，它们放宽了安全约束。 未来版本将提供更新的 SCC。
+
 [!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="create-custom-deployment-profile"></a>创建自定义部署配置文件
@@ -350,13 +352,13 @@ azdata arc dc config replace --path ./custom/control.json --json-values "$.spec.
 
 当使用 OpenShift 时，你可能想要使用 OpenShift 中的默认安全策略运行，或想要通常比典型的环境锁定环境。 您可以选择禁用某些功能，以最大程度地减少部署时所需的权限，并运行以下命令。
 
-此命令禁用有关 pod 的指标收集。 如果禁用了此功能，将无法在 Grafana 仪表板中查看有关 pod 的指标。 默认为 true。
+此命令禁用有关 pod 的指标收集。 如果禁用了此功能，将无法在 Grafana 仪表板中查看有关 pod 的指标。 默认值为 true。
 
 ```console
 azdata arc dc config replace -p ./custom/control.json --json-values spec.security.allowPodMetricsCollection=false
 ```
 
-此命令禁用有关节点的度量值集合。 如果禁用了此功能，将无法在 Grafana 仪表板中查看有关节点的指标。 默认为 true。
+此命令禁用有关节点的度量值集合。 如果禁用了此功能，将无法在 Grafana 仪表板中查看有关节点的指标。 默认值为 true。
 
 ```console
 azdata arc dc config replace --path ./custom/control.json --json-values spec.security.allowNodeMetricsCollection=false
