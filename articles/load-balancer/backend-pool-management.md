@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 8887474f07928462afe7863ffe2b3667ece536dc
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e5efbf695b85f474e5d7c84c86809acb2f5a1035
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575293"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429596"
 ---
 # <a name="backend-pool-management"></a>后端池管理
 后端池是负载均衡器的一个关键组成部分。 后端池定义将在给定负载均衡规则下提供流量的资源的组。
@@ -25,6 +25,8 @@ ms.locfileid: "96575293"
 使用现有的虚拟机和虚拟机规模集时，通过 NIC 配置后端池。 此方法会在资源与后端池之间生成最直接的链接。 
 
 在为后端池预分配一个 IP 地址范围（计划稍后创建虚拟机和虚拟机规模集的范围）时，请结合 IP 地址和 VNET ID 配置后端池。
+
+你可以为同一负载均衡器配置基于 IP 和基于 NIC 的后端池，但不能创建混合使用 NIC 面向的备用地址和同一池中 IP 地址的后端池。
 
 本文的配置部分将重点关注：
 

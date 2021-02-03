@@ -3,7 +3,7 @@ title: 教程 - 开发 SCIM 终结点以便将用户预配到 Azure AD 中的应
 description: 跨域身份管理系统 (SCIM) 将自动用户预配标准化。 在本教程中，你将了解如何开发 SCIM 终结点，将 SCIM API 与 Azure Active Directory 集成，以及开始自动将用户和组预配到云应用程序中。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf1057276a543c18b746bb60b7e7a54bf28dec6f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a6895a47bc6d99a09408ca002ec48405a5c78682
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98892553"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255672"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Tutorial:开发 SCIM 终结点并计划其预配
 
@@ -56,7 +56,7 @@ SCIM 2.0 (RFC [7642](https://tools.ietf.org/html/rfc7642)、[7643](https://tools
 |--|--|--|
 |loginName|userName|userPrincipalName|
 |firstName|name.givenName|givenName|
-|lastName|name.lastName|lastName|
+|lastName|name.familyName|surName|
 |workMail|emails[type eq “work”].value|Mail|
 |manager|manager|manager|
 |标记|urn:ietf:params:scim:schemas:extension:2.0:CustomExtension:tag|extensionAttribute1|
@@ -69,7 +69,7 @@ SCIM 2.0 (RFC [7642](https://tools.ietf.org/html/rfc7642)、[7643](https://tools
      "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
       "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
       "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
-     "userName":"bjensen",
+     "userName":"bjensen@testuser.com",
      "externalId":"bjensen",
      "name":{
        "familyName":"Jensen",
@@ -961,7 +961,7 @@ _ parameters.AlternateFilters.Count:1
      "urn:ietf:params:scim:schemas:core:2.0:User",
      "urn:ietf:params:scim:schemas:extension:enterprise:2.0User"],
    "externalId":"jyoung",
-   "userName":"jyoung",
+   "userName":"jyoung@testuser.com",
    "active":true,
    "addresses":null,
    "displayName":"Joy Young",
@@ -1198,7 +1198,7 @@ SCIM 规范未定义用于身份验证和授权的特定于 SCIM 的方案。 �
 |--|--|--|--|
 |用户名和密码（Azure AD 不推荐或不支持）|易于实现|不安全 - [你的密码无关紧要](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|库应用根据具体情况提供支持。 非库应用不支持。|
 |长期持有者令牌|长期令牌不要求用户提供此令牌。 管理员在设置预配时可以轻松地使用这些令牌。|如果不使用电子邮件等不安全的方法，则很难与管理员共享长期令牌。 |库应用和非库应用均支持。 |
-|OAuth 授权代码许可|访问令牌的生存期比密码短得多，并且具有长期持有者令牌不具有的自动刷新机制。  初次授权时，真实用户必须提供该令牌，从而增加了责任级别。 |要求用户提供。 如果用户离开组织，则令牌无效，并且需要再次完成授权。|库应用支持，但非库应用不支持。 但是，可以在 UI 中提供一个访问令牌作为短期测试的机密令牌。 积压工作 (backlog) 中支持对非库的 OAuth 代码授权。|
+|OAuth 授权代码许可|访问令牌的生存期比密码短得多，并且具有长期持有者令牌不具有的自动刷新机制。  初次授权时，真实用户必须提供该令牌，从而增加了责任级别。 |要求用户提供。 如果用户离开组织，则令牌无效，并且需要再次完成授权。|库应用支持，但非库应用不支持。 但是，可以在 UI 中提供一个访问令牌作为短期测试的机密令牌。 我们已计划支持对非库授予的 OAuth 代码，并支持库应用上的可配置身份验证/标记 URL。|
 |OAuth 客户端凭据许可|访问令牌的生存期比密码短得多，并且具有长期持有者令牌不具有的自动刷新机制。 授权代码许可和客户端凭据许可都创建相同类型的访问令牌，因此换用这些方法对 API 是透明的。  预配可以完全自动执行，无需用户干预即可以无提示的方式请求提供新令牌。 ||库应用和非库应用不支持。 支持已在我们的积压工作 (backlog) 中。|
 
 > [!NOTE]

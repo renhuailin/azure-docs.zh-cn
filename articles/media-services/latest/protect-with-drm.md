@@ -1,9 +1,25 @@
 ---
-title:Azure 媒体服务 DRM 加密和许可证传送服务:Azure 媒体服务说明:了解如何使用 DRM 动态加密和许可证传送服务传送通过 Microsoft PlayReady、Google Widevine 或 Apple FairPlay 许可证加密的流。
-services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
-
-ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na ms.topic: tutorial ms.date:08/31/2020 ms.author: inhenkel ms.custom: seodec18
-
+title: 媒体服务 DRM 加密和许可证传送
+description: 了解如何使用 DRM 动态加密和许可证传送服务传送通过 Microsoft PlayReady、Google Widevine 或 Apple FairPlay 许可证加密的流。
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: tutorial
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18
+ms.openlocfilehash: a4f5810f76af7116421bac3953b4eb65370055e3
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955167"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>教程：使用 DRM 动态加密和许可证传送服务
 
@@ -22,7 +38,7 @@ ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na m
 
 ![Azure Media Player 中的具有 DRM 保护视频的 AMS](./media/protect-with-drm/ams_player.png)
 
-本教程演示如何：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 创建编码转换。

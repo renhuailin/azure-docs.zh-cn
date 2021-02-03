@@ -43,6 +43,8 @@
   items:
     - name: 使用 Azure Functions 生成可信的身份验证服务
       href: tutorials/trusted-service-tutorial.md
+    - name: 为通信服务 (Node.js) 准备 Web 应用
+      href: tutorials/building-app-start.md
 - name: 概念
   expanded: false
   items:

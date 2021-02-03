@@ -1,8 +1,23 @@
 ---
-title:将 Azure 媒体服务事件存储在 Azure Log Analytics 中:Azure 媒体服务说明:了解如何将 Azure 媒体服务事件存储在 Azure Log Analytics 中。
-services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: '' ms.service: media-services ms.workload: ms.topic: tutorial ms.date:08/24/2020 ms.author: inhenkel
+title: 将媒体服务事件存储在 Azure Log Analytics 中
+description: 了解如何将 Azure 媒体服务事件存储在 Azure Log Analytics 中。
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: ''
+ms.topic: tutorial
+ms.date: 08/24/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2bfd1064a02f0fb4982c9d2747b85707e98b5bcd
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954523"
 ---
-
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>教程：将 Azure 媒体服务事件存储在 Azure Log Analytics 中
 
 ## <a name="azure-media-services-events"></a>Azure 媒体服务事件

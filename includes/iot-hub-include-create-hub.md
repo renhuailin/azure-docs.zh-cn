@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: a6a01b3a71a7e391c680e6c9547ccd9649dc0e89
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4ad619fa5f0fb8f8e87333f2681727dabedda42b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605370"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427396"
 ---
 此部分介绍如何使用 [Azure 门户](https://portal.azure.com)创建 IoT 中心。
 
@@ -35,17 +35,17 @@ ms.locfileid: "98605370"
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![在 Azure 门户中创建中心](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png" alt-text="在 Azure 门户中创建中心。":::
 
 1. 在完成时选择“下一步:网络”，继续创建中心。
 
    选择可以连接到 IoT 中心的终结点。 你可以选择默认设置“公共终结点(所有网络)”，也可选择“公共终结点(选定的 IP 范围)”或“专用终结点”  。 接受此示例的默认设置。
 
-   ![选择可以连接的终结点](./media/iot-hub-include-create-hub/iot-hub-create-network-screen.png)
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-network-screen.png" alt-text="选择可以连接的终结点。":::
 
 1. 在完成时选择“下一步:管理”，继续创建中心。
 
-    ![使用 Azure 门户为新的中心设置大小和规模](./media/iot-hub-include-create-hub/iot-hub-management-screen.png)
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-management-screen.png" alt-text="使用 Azure 门户为新的中心设置大小和规模。":::
 
     可在此处接受默认设置。 如果需要，可以修改以下任何字段：
 
@@ -60,14 +60,14 @@ ms.locfileid: "98605370"
 
     - **高级设置** > **设备到云的分区**：此属性将设备到云消息与这些消息的同步读取器数目相关联。 大多数中心只需要 4 个分区。
 
-1.  在完成时选择“下一步:标记”继续到下一屏幕。
+1. 在完成时选择“下一步:标记”继续到下一屏幕。
 
     标记是名称/值对。 可以为多个资源和资源组分配相同的标记，以便对资源进行分类并合并计费。 有关详细信息，请参阅[使用标记来组织 Azure 资源](../articles/azure-resource-manager/management/tag-resources.md)。
 
-    ![使用 Azure 门户为中心分配标记](./media/iot-hub-include-create-hub/iot-hub-create-tags.png)
+    :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-tags.png" alt-text="使用 Azure 门户为中心分配标记。":::
 
-1.  在完成时选择“下一步:查看+创建”可查看选择。 你会看到类似于此屏幕的内容，但其中包含创建中心时选择的值。 
+1. 在完成时选择“下一步:查看+创建”可查看选择。 你会看到类似于此屏幕的内容，但其中包含创建中心时选择的值。
 
-    ![查看用于创建新中心的信息](./media/iot-hub-include-create-hub/iot-hub-review-and-create.png)
+    :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-review-and-create.png" alt-text="查看用于创建新中心的信息。":::
 
-1.  选择“创建”以创建新的中心。 创建中心需要几分钟时间。
+1. 选择“创建”以创建新的中心。 创建中心需要几分钟时间。

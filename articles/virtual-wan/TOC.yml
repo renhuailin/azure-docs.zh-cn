@@ -49,6 +49,8 @@
           href: scenario-isolate-vnets.md
         - name: 隔离 VNet - 自定义
           href: scenario-isolate-vnets-custom.md
+        - name: 隔离虚拟网络和分支
+          href: scenario-isolate-virtual-networks-branches.md
         - name: 共享服务 VNet
           href: scenario-shared-services-vnet.md
         - name: 通过 NVA 路由

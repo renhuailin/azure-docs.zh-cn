@@ -8,14 +8,17 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 01/19/2021
 ms.author: ranku
-ms.openlocfilehash: c794af26fdfe2d3706d8d8d266d0756eff391b50
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 7518f5e2984029c087eec1e6697f3237410bda4b
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747587"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430270"
 ---
-# <a name="how-to-convert-data-to-fhir"></a>如何将数据转换为 FHIR
+# <a name="how-to-convert-data-to-fhir-preview"></a>如何将数据转换为 FHIR（预览版）
+
+> [!IMPORTANT]
+> 此功能现为公共预览版，在提供时不附带服务级别协议，建议不要用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure API for FHIR 中的 $convert-data 自定义终结点用于将数据从不同格式转换为 FHIR。 它使用 Liquid 模板引擎和来自 [FHIR 转换器](https://github.com/microsoft/FHIR-Converter)项目的模板作为默认模板。 可根据需要自定义这些转换模板。 目前，它支持 HL7v2 到 FHIR 的转换。
 

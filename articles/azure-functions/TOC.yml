@@ -25,7 +25,7 @@
               href: create-first-function-vs-code-csharp.md
             - name: Java
               href: create-first-function-vs-code-java.md
-            - name: Javascript
+            - name: JavaScript
               href: create-first-function-vs-code-node.md
             - name: PowerShell
               href: create-first-function-vs-code-powershell.md
@@ -44,7 +44,7 @@
               href: create-first-function-cli-csharp.md
             - name: Java
               href: create-first-function-cli-java.md
-            - name: Javascript
+            - name: JavaScript
               href: create-first-function-cli-node.md
             - name: PowerShell
               href: create-first-function-cli-powershell.md
@@ -100,7 +100,7 @@
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
-        - name: Javascript
+        - name: JavaScript
           href: /samples/browse/?products=azure-functions&languages=javascript
         - name: PowerShell
           href: /samples/browse/?products=azure-functions&languages=azurepowershell
@@ -184,7 +184,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: Javascript
+        - name: JavaScript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -281,9 +281,10 @@
               href: functions-create-storage-queue-triggered-function.md
             - name: 计时器触发器
               href: functions-create-scheduled-function.md
-        - name: 添加绑定
+        - name: 连接到服务
           items:
-            - name: 如何添加绑定
+            - name: 如何连接到服务
+              displayName: 'bindings,integrate'
               href: add-bindings-existing-function.md
             - name: Azure Cosmos DB - 门户
               href: functions-integrate-store-unstructured-data-cosmosdb.md
@@ -395,7 +396,7 @@
           href: configure-encrypt-at-rest-using-cmk.md
     - name: 集成
       items:
-        - name: 添加绑定
+        - name: 连接到服务
           items:
             - name: Azure Cosmos DB - 门户
               href: functions-integrate-store-unstructured-data-cosmosdb.md
