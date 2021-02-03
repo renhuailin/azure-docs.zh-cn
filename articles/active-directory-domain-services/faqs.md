@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: justinha
-ms.openlocfilehash: e4e7a64b9f9d7283de728216934854f4ef8f8fd1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 89671d0e69d4e526e30c80619b57d698d5a5acc5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619727"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491159"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>有关 Azure Active Directory (AD) 域服务的常见问题 (FAQ)
 
@@ -106,7 +106,7 @@ ms.locfileid: "96619727"
 否。 你在托管域上没有管理权限。 你不可以在该域中使用“域管理员”和“企业管理员”权限。  本地 Active Directory 中的域管理员或企业管理员组成员在该托管域上也没有域/企业管理员权限。
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>能否在托管域上使用 LDAP 或其他 AD 管理工具修改组成员身份？
-无法修改从 Azure Active Directory 同步到 Azure AD 域服务的用户和组，因为其来源是 Azure Active Directory。 可以修改源自托管域的任何用户或组。
+无法修改从 Azure Active Directory 同步到 Azure AD 域服务的用户和组，因为其来源是 Azure Active Directory。 这包括将用户或组从 AADDC 用户管理的组织单位移动到自定义组织单位。 可以修改源自托管域的任何用户或组。  
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>对 Azure AD 目录的更改需要多长时间才可在托管域中显示？
 在 Azure AD 目录中使用 Azure AD UI 或 PowerShell 所做的更改将自动同步到托管域中。 此同步过程在后台运行。 没有规定此同步完成所有对象更改的时间段。

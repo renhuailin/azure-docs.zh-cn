@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 478ae6146caeb8a27cdaf13b7f33e421b8121afc
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fa2d910c017d3cc626f737bdab50315aef8d1e77
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741484"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491379"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>在 Windows 登录屏幕上启用 Azure Active Directory 自助式密码重置
 
@@ -40,7 +40,7 @@ ms.locfileid: "96741484"
 - 已加入混合 Azure AD 的计算机必须能够通过网络连接到域控制器才能使用新密码以及更新缓存的凭据。 这意味着，设备必须位于组织的内部网络或 VPN 中，并且必须能够通过网络访问本地域控制器。
 - 如果使用映像，请确保在运行 sysprep 之前先为内置 Administrator 清除 Web 缓存，然后再执行 CopyProfile 步骤。 有关此步骤的详细信息，请参阅支持文章[使用自定义默认用户配置文件时性能较差](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)。
 - 已知以下设置会干扰在 Windows 10 设备上使用和重置密码的功能：
-    - 在 v1909 之前的 Windows 10 版本中，如果策略要求使用 Ctrl+Alt+Del，则“重置密码”将无效。
+    - 如果 Windows 10 中的策略需要按 Ctrl + Alt + Del，则 **重置密码** 将不起作用。
     - 如果锁屏通知已关闭，则“重置密码”将无效。
     - HideFastUserSwitching 设置为“已启用”或 1
     - DontDisplayLastUserName 设置为“已启用”或 1
@@ -51,6 +51,10 @@ ms.locfileid: "96741484"
     - 交互式登录：不要求 CTRL+ALT+DEL = Disabled
     - *DisableLockScreenAppNotifications* = 1 或“已启用”
     - Windows SKU 不是家庭或专业版
+
+> [!NOTE]
+> 此限制也适用于从设备锁定屏幕重置 Windows Hello 企业版 PIN。
+>
 
 ## <a name="windows-10-password-reset"></a>Windows 10 密码重置
 

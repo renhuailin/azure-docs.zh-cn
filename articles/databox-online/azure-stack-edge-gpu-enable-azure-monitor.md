@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 3485c6ca5c2672fa48b6118a78600b9745994ce1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 171b4dbfb2a5852e270c483a28cad31f97dcb42b
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466045"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493906"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上启用 Azure Monitor
 
@@ -30,7 +30,7 @@ ms.locfileid: "96466045"
 - 已根据教程完成 **配置计算** 步骤：在设备上的 [Azure Stack Edge Pro 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md) 。 设备应有关联的 IoT 中心资源、IoT 设备和 IoT Edge 设备。
 
 
-## <a name="create-log-analytics-workspace"></a>创建 Log Analytics 工作区。
+## <a name="create-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
 执行以下步骤以创建 log analytics 工作区。 Log analytics 工作区是收集和存储日志数据的逻辑存储单元。
 
@@ -118,8 +118,8 @@ ms.locfileid: "96466045"
 
 1. 获取资源 ID 和位置。 转到  `Your Log Analytics workspace > General > Properties` 。 复制以下信息：
 
-    - 作为 Azure Log Analytics 工作区的完全限定的 Azure 资源 ID 的 **资源 id** 。 
-    - Azure 区域的 **位置**。
+    - **资源 id**，它是 azure Log Analytics 工作区的完全限定的 AZURE 资源 id。 
+    - **位置**，即 Azure 区域。
 
     ![Log Analytics 工作区的属性](media/azure-stack-edge-gpu-enable-azure-monitor/log-analytics-workspace-properties-1.png) 
 
@@ -241,3 +241,4 @@ ms.locfileid: "96466045"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何 [通过 Kubernetes 仪表板监视 Kubernetes 工作负荷](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)。
+- 了解如何 [管理设备事件警报通知](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)。 

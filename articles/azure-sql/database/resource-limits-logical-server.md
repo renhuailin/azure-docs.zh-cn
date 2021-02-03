@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 1/14/2021
-ms.openlocfilehash: e21a5a5be03ffa4ada362247c488ee7d12bd50f7
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 02/02/2021
+ms.openlocfilehash: e8f18f56c746f0d12f43cc2fb6ce9088a9b82b45
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222218"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492376"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL 数据库和 Azure Synapse Analytics 服务器的资源限制
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -69,7 +69,8 @@ ms.locfileid: "98222218"
 
 - 提高数据库或弹性池的大小上限，或添加更多存储资源。 请参阅[缩放单一数据库资源](single-database-scale.md)和[缩放弹性池资源](elastic-pool-scale.md)。
 - 如果数据库在弹性池内，可选择将数据库移出弹性池，从而避免与其他数据库共享存储空间。
-- 收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)
+- 收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)。
+- 检查高空间利用率是否是由于持久性版本存储 (PVS) 大小的峰值。 PVS 是每个数据库的一部分，用于实现  [加速数据库恢复](../accelerated-database-recovery.md)。 若要确定当前的 PVS 大小，请参阅 [PVS 故障排除](https://docs.microsoft.com/sql/relational-databases/accelerated-database-recovery-management#troubleshooting)。 较大的 PVS 大小的一个常见原因是 (小时) 打开长时间的事务，以防止在 PVS 中清除旧版本。
 
 ### <a name="sessions-and-workers-requests"></a>会话和辅助角色（请求）
 
@@ -158,7 +159,7 @@ Azure SQL 数据库资源调控本质上是分层的。 从上到下，将使用
 
 日志速率调控器流量造型通过以下等待类型出现， (在 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 视图中公开) ：
 
-| Wait 类型 | 备注 |
+| Wait 类型 | 说明 |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | 数据库限制 |
 | POOL_LOG_RATE_GOVERNOR | 池限制 |

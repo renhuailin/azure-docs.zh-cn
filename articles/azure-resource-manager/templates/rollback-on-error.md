@@ -2,25 +2,34 @@
 title: 出错时回退以成功部署
 description: 指定失败的部署应回退到成功的部署。
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.openlocfilehash: 742a8f16a2dce3204b48085759091540586a4522
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79460137"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492206"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>出错时回退以成功部署
 
-部署失败时，可以自动重新部署部署历史记录中先前成功的部署。 如果基础结构部署存在一个已知良好的状态，并且你希望还原到此状态，则此功能非常有用。 有许多需要注意的问题和限制：
+部署失败时，可以自动重新部署部署历史记录中先前成功的部署。 如果基础结构部署存在一个已知良好的状态，并且你希望还原到此状态，则此功能非常有用。 你可以指定先前的特定部署或上次成功的部署。
 
+> [!IMPORTANT]
+> 此功能通过重新部署以前的部署来回滚失败的部署。 此结果可能不同于撤消失败的部署所需的结果。 确保你了解如何重新部署以前的部署。
+
+## <a name="considerations-for-redeploying"></a>重新部署注意事项
+
+使用此功能之前，请考虑以下有关如何处理重新部署的详细信息：
+
+- 以前的部署是使用 [完整模式](./deployment-modes.md#complete-mode)运行的，即使在之前的部署过程中使用了 [增量模式](./deployment-modes.md#incremental-mode) 也是如此。 如果先前的部署使用了增量，在完整模式下重新部署可能会产生意外的结果。 完整模式意味着将删除以前的部署中未包含的所有资源。 指定一个以前的部署，它表示要在资源组中存在的所有资源及其状态。 有关详细信息，请参阅 [部署模式](./deployment-modes.md)。
 - 重新部署使用与以前运行它时相同的参数以相同的方式运行。 无法更改参数。
-- 以前的部署是使用[完整模式](./deployment-modes.md#complete-mode)运行的。 以前的部署中未包括的任何资源都将被删除，任何资源配置都将设置为以前的状态。 请确保你完全理解[部署模式](./deployment-modes.md)。
 - 重新部署只会影响资源，而不会影响任何数据更改。
-- 只能将此功能用于资源组部署，而不能用于订阅或管理组级别部署。 有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](./deploy-to-subscription.md)。
+- 此功能只能用于资源组部署。 它不支持订阅、管理组或租户级别的部署。 有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](./deploy-to-subscription.md)。
 - 只能将此选项用于根级别部署。 从嵌套模板进行的部署不可用于重新部署。
 
-若要使用此选项，部署必须具有唯一的名称，以便可以在历史记录中标识它们。 如果没有唯一名称，则当前失败的部署可能会覆盖历史记录中以前成功的部署。
+若要使用此选项，部署历史记录中的部署必须具有唯一名称。 只有唯一的名称才能识别特定的部署。 如果没有唯一名称，则失败的部署可能会覆盖历史记录中成功的部署。
+
+如果指定的部署在部署历史记录中不存在，则回滚将返回错误。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -115,7 +124,5 @@ az deployment group create \
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要安全地将服务扩展到多个区域，请参阅 [Azure 部署管理器](deployment-manager-overview.md)。
-- 若要指定如何处理存在于资源组中但未在模板中定义的资源，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
+- 若要了解完整和增量模式，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
 - 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](template-syntax.md)。
-- 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](secure-template-with-sas-token.md)。

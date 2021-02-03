@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6deb0c005b5ed7daf5b30bea8a65ee70d8b460c5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 205136437fa1a2a33b3b337f5cc9f2dde283faef
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837458"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491934"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用条件访问配置身份验证会话管理
 
@@ -88,7 +88,7 @@ ms.locfileid: "94837458"
 条件访问是一项 Azure AD Premium 功能，要求安装高级版许可证。 若要了解有关条件访问的详细信息，请参阅[什么是 Azure Active Directory 中的条件访问？](overview.md#license-requirements)
 
 > [!WARNING]
-> 如果使用的是公共预览版中的 [可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md) 功能，请注意，我们不支持为同一用户或应用组合创建两种不同的策略：一个使用此功能，另一个具有可配置的令牌生存期功能。 Microsoft 计划在2021年1月30日为刷新和会话令牌生存期停用可配置的令牌生存期功能，并将其替换为条件访问身份验证会话管理功能。  
+> 如果使用的是公共预览版中的 [可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md) 功能，请注意，我们不支持为同一用户或应用组合创建两种不同的策略：一个使用此功能，另一个具有可配置的令牌生存期功能。 Microsoft 停用了2021年1月30日的刷新和会话令牌生存期的可配置令牌生存期功能，并将其替换为条件访问身份验证会话管理功能。  
 >
 > 在启用登录频率之前，请确保租户中禁用了其他重新身份验证设置。 如果已启用 "记住受信任的设备上的 MFA"，请确保在使用登录频率之前禁用该功能，因为这两个设置一起使用可能会导致用户意外提示。 若要了解有关重新验证提示和会话生存期的详细信息，请参阅文章： [优化重新验证提示和了解 Azure AD 多重身份验证的会话生存期](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 79706b66dba46253843b1f53a26481170d6ff723
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 907a78b15cca4718308f79bc6be2e6258bc04d19
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729605"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492665"
 ---
 # <a name="connect-system-center-service-manager-with-it-service-management-connector"></a>将 System Center Service Manager 与 IT 服务管理连接器连接
 
@@ -32,7 +32,7 @@ ms.locfileid: "97729605"
 
 > [!NOTE]
 > - ITSM 连接器只能连接到基于云的 ServiceNow 实例。 当前不支持本地 ServiceNow 实例。
-> - 为了使用自定义 [模板](./itsmc-definition.md#template-definitions) 作为操作的一部分，SCSM 模板中的参数 "ProjectionType" 应映射到 "servicemanager.incidentmanagement.configuration.xml！ProjectionType "。
+> - 为了使用自定义 [模板](./itsmc-definition.md#define-a-template) 作为操作的一部分，SCSM 模板中的参数 "ProjectionType" 应映射到 "servicemanager.incidentmanagement.configuration.xml！ProjectionType "。
 
 ## <a name="connection-procedure"></a>连接过程
 
@@ -165,6 +165,6 @@ ms.locfileid: "97729605"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [ITSM 连接器概述](itsmc-overview.md)
+* [IT 服务管理连接器概述](itsmc-overview.md)
 * [根据 Azure 警报日志创建 ITSM 工作项](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
 * [排查 ITSM 连接器中的问题](./itsmc-resync-servicenow.md)

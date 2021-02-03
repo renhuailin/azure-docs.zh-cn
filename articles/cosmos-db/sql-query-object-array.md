@@ -5,19 +5,43 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: f959e4e230c1d9f89ad5141713b6a17a8cbb17a2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1dccb8e51fbc578f8f218fe1582f95f7bcaf42d7
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018898"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493781"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数组和对象
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB SQL API 的一个重要功能是创建数组和对象。
+Azure Cosmos DB SQL API 的一个重要功能是创建数组和对象。 本文档使用可以使用 [系列数据集](sql-query-getting-started.md#upload-sample-data)重新创建的示例。
+
+下面是此数据集中的一个示例项：
+
+```json
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "parents": [
+     { "firstName": "Thomas" },
+     { "firstName": "Mary Kay"}
+  ],
+  "children": [
+     {
+         "firstName": "Henriette Thaulow",
+         "gender": "female",
+         "grade": 5,
+         "pets": [{ "givenName": "Fluffy" }]
+     }
+  ],
+  "address": { "state": "WA", "county": "King", "city": "Seattle" },
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
 
 ## <a name="arrays"></a>数组
 
@@ -74,7 +98,7 @@ FROM f
 
 ## <a name="iteration"></a><a id="Iteration"></a>迭代
 
-SQL API 为循环访问 JSON 数组提供支持，并在 FROM 源中包含 [in 关键字](sql-query-keywords.md#in) 。 如下示例中：
+SQL API 支持循环访问 JSON 数组，其中 [IN 关键字](sql-query-keywords.md#in)在 FROM 源中。 如下示例中：
 
 ```sql
 SELECT *
@@ -176,7 +200,9 @@ FROM child IN Families.children
 ```
 
 > [!NOTE]
-> 将 IN 关键字用于迭代时，不能筛选或投影超出数组的任何属性。 相反，应使用 [联接](sql-query-join.md)。
+> 使用 IN 关键字进行迭代时，不能筛选或投射数组外部的任何属性。 应改用 [JOIN](sql-query-join.md)。
+
+有关其他示例，请阅读 [有关在 Azure Cosmos DB 中使用数组的博客文章](https://devblogs.microsoft.com/cosmosdb/understanding-how-to-query-arrays-in-azure-cosmos-db/)。
 
 ## <a name="next-steps"></a>后续步骤
 

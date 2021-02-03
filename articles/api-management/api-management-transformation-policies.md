@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 212a6b0786b371bfb92f2e193e67d9accd432bf8
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c0c7a6b25c15be2e521e0985c315baf819650aa5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657237"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491750"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](./api-management-policies.md)。
@@ -214,7 +214,7 @@ ms.locfileid: "97657237"
 ```
 
 > [!NOTE]
-> 后端实体可以通过管理 [API](/rest/api/apimanagement/2019-12-01/backend) 和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。
+> 后端实体可通过 [Azure 门户](how-to-configure-service-fabric-backend.md)、管理 [API](/rest/api/apimanagement)和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)进行管理。
 
 ### <a name="example"></a>示例
 
@@ -269,7 +269,7 @@ ms.locfileid: "97657237"
 |名称|说明|必须|默认|
 |----------|-----------------|--------------|-------------|
 |base-url|新的后端服务基 URL。|必须存在 `base-url` 或 `backend-id` 中的一个。|空值|
-|backend-id|要路由到的后端标识符。 （后端实体通过 [API](/rest/api/apimanagement/2019-12-01/backend) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。）|必须存在 `base-url` 或 `backend-id` 中的一个。|空值|
+|backend-id|要路由到的后端标识符。  (后端实体通过 [Azure 门户](how-to-configure-service-fabric-backend.md)、 [API](/rest/api/apimanagement)和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)进行管理。 ) |必须存在 `base-url` 或 `backend-id` 中的一个。|空值|
 |sf-partition-key|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 用于从名称解析服务中解析特定分区。|否|空值|
 |sf-replica-type|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 控制请求是否应转到分区的主要副本或次要副本。 |否|空值|
 |sf-resolve-condition|只有在后端为 Service Fabric 服务时才适用。 确定对 Service Fabric 后端的调用是否针对新解析重复进行的条件。|否|空值|
@@ -650,7 +650,7 @@ OriginalUrl.
 
 ### <a name="attributes"></a>属性
 
-|特性|说明|必须|默认|
+|属性|说明|必须|默认|
 |---------------|-----------------|--------------|-------------|
 |template|包含任何查询字符串参数的实际 Web 服务 URL。 使用表达式时，整个值必须是一个表达式。|是|空值|
 |copy-unmatched-params|指定是否将原始 URL 模板中不存在的传入请求中的查询参数添加到重新编写模板定义的 URL|否|是|

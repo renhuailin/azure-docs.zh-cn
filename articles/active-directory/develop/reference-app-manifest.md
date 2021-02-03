@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/15/2020
+ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: d855e124c84dee8554073d05fa04fe078b92ddaa
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: cb7acb2ab74cc3f1304e5278524918865185463f
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208883"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491293"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -33,7 +33,7 @@ ms.locfileid: "98208883"
 
 若要配置应用程序清单，请执行以下操作：
 
-1. 请参阅<a href="https://portal.azure.com/" target="_blank">Azure 门户 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 搜索并选择 **Azure Active Directory** 服务。
+1. 转到 <a href="https://portal.azure.com/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 搜索并选择 **Azure Active Directory** 服务。
 1. 选择“应用注册” 。
 1. 选择要配置的应用。
 1. 在应用的“概览”页中，选择“清单”部分。  此时会打开一个基于 Web 的清单编辑器，可在其中编辑门户中的清单。 （可选）可以选择“下载”以在本地编辑清单，然后使用“上传”将清单重新应用于应用程序。 
@@ -160,7 +160,7 @@ ms.locfileid: "98208883"
 | :--- | :--- |
 | errorUrl | 字符串 |
 
-不支持。
+不受支持。
 
 ### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims 属性
 
@@ -450,7 +450,7 @@ ms.locfileid: "98208883"
 示例：
 
 ```json
-    "publisherDomain": "https://www.contoso.com",
+    "publisherDomain": "{tenant}.onmicrosoft.com",
 ```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 属性

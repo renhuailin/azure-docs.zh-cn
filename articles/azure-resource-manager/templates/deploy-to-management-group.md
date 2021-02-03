@@ -3,12 +3,12 @@ title: 将资源部署到管理组
 description: 介绍如何通过 Azure 资源管理器模板在管理组范围部署资源。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: d6c6b925ad1533fc1f3bf490a9b996280164bd57
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: a203dd2c52bdc889452a6755fb025c7ed5721a59
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184010"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491629"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>使用 ARM 模板进行管理组部署
 
@@ -112,7 +112,7 @@ New-AzManagementGroupDeployment `
 
 对于管理组级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。 [订阅](deploy-to-subscription.md)和[租户](deploy-to-tenant.md)部署也需要位置。 对于[资源组](deploy-to-resource-group.md)部署，资源组的位置用于存储部署数据。
 
-可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
+可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 _azuredeploy.json_ 的模板将创建默认部署名称 **azuredeploy**。
 
 每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 **centralus** 中创建名为 **deployment1** 的管理组部署，则以后无法使用 deployment1 的位置创建另一个名为的 **部署。** 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
@@ -164,9 +164,9 @@ New-AzManagementGroupDeployment `
 
 ### <a name="scope-to-tenant"></a>将范围设定为租户
 
-可通过将 `scope` 设置为 `/`，在租户中创建资源。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
+若要在租户中创建资源，请将设置 `scope` 为 `/` 。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
 
-可使用设置了 `scope` 和 `location` 的嵌套部署。
+若要使用嵌套部署，请设置 `scope` 和 `location` 。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
@@ -222,7 +222,7 @@ New-AzManagementGroupDeployment `
 
 ## <a name="azure-policy"></a>Azure Policy
 
-部署到管理组的自定义策略定义是管理组的扩展。 若要获取自定义策略定义的 ID，请使用 [extensionResourceId()](template-functions-resource.md#extensionresourceid) 函数。 内置策略定义是租户级别资源。 若要获取内置策略定义的 ID，请使用 [tenantResourceId](template-functions-resource.md#tenantresourceid) 函数。
+部署到管理组的自定义策略定义是管理组的扩展。 若要获取自定义策略定义的 ID，请使用 [extensionResourceId()](template-functions-resource.md#extensionresourceid) 函数。 内置策略定义是租户级别资源。 若要获取内置策略定义的 ID，请使用 [tenantResourceId ( # B1 ](template-functions-resource.md#tenantresourceid) 函数。
 
 下面的示例演示如何[定义](../../governance/policy/concepts/definition-structure.md)管理组级别策略，并对其进行分配。
 

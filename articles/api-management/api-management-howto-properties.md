@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 12/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 4cde4dadee33ec1c3f91ab4770dbfe697289cef3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 344500d5635f591b34a45130c7dd6b63659ad84d
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504726"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491000"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>使用 Azure API 管理策略中的命名值
 
@@ -28,7 +28,7 @@ ms.locfileid: "97504726"
 |类型  |说明  |
 |---------|---------|
 |普通     |  文本字符串或策略表达式     |
-|Secret     |   由 API 管理加密的文本字符串或策略表达式      |
+|机密     |   由 API 管理加密的文本字符串或策略表达式      |
 |[密钥保管库](#key-vault-secrets)     |  Azure 密钥保管库中存储的密钥的标识符。      |
 
 纯值或机密可以包含 [策略表达式](./api-management-policy-expressions.md)。 例如，表达式 `@(DateTime.Now.ToString())` 返回包含当前日期和时间的字符串。
@@ -43,11 +43,11 @@ ms.locfileid: "97504726"
 
 * 密钥保管库中存储的机密可以在服务之间重复使用
 * 精细的 [访问策略](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) 可以应用于机密
-* 在密钥保管库中更新的机密会在 API 管理中自动轮替。 更新密钥保管库中的后，API 管理中的命名值在4小时内更新。 
+* 在密钥保管库中更新的机密会在 API 管理中自动轮替。 更新密钥保管库中的后，API 管理中的命名值在4小时内更新。 你还可以使用 Azure 门户或通过管理 REST API 手动刷新机密。
 
 ### <a name="prerequisites-for-key-vault-integration"></a>密钥保管库集成的先决条件
 
-1. 有关创建密钥保管库的步骤，请参阅 [快速入门：使用 Azure 门户创建密钥保管库](../key-vault/general/quick-create-portal.md)。
+1. 有关创建密钥保管库的步骤，请参阅[快速入门：使用 Azure 门户创建密钥保管库](../key-vault/general/quick-create-portal.md)。
 1. 在 API 管理实例中启用系统分配的或用户分配的 [托管标识](api-management-howto-use-managed-service-identity.md) 。
 1. 将 [密钥保管库访问策略](../key-vault/general/assign-access-policy-portal.md) 分配给有权从保管库获取和列出机密的托管标识。 添加策略的步骤：
     1. 在门户中导航到你的密钥保管库。
@@ -58,25 +58,16 @@ ms.locfileid: "97504726"
 
 若要使用密钥保管库机密，请 [添加或编辑命名的值](#add-or-edit-a-named-value)，并指定 **密钥保管库** 的类型。 选择密钥保管库中的机密。
 
-> [!CAUTION]
-> 在 API 管理中使用密钥保管库机密时，请注意不要删除密钥、密钥保管库或用于访问密钥保管库的托管标识。
-
-如果在密钥保管库上启用 [Key Vault 防火墙](../key-vault/general/network-security.md) ，以下是使用密钥保管库机密的其他要求：
-
-* 必须使用 API 管理实例的 **系统分配** 的托管标识访问密钥保管库。
-* 在 Key Vault 防火墙中，启用 " **允许受信任的 Microsoft 服务跳过此防火墙** " 选项。
-
-如果在虚拟网络中部署了 API 管理实例，还应配置下列网络设置：
-* 启用 [服务终结点](../key-vault/general/overview-vnet-service-endpoints.md) ，以便在 API 管理子网上 Azure Key Vault。
-* 将网络安全组 (NSG) 规则配置为允许到 AzureKeyVault 和 AzureActiveDirectory [服务标记](../virtual-network/service-tags-overview.md)的出站流量。 
-
-有关详细信息，请参阅 [连接到虚拟网络](api-management-using-with-vnet.md#-common-network-configuration-issues)中的网络配置详细信息。
+[!INCLUDE [api-management-key-vault-network](../../includes/api-management-key-vault-network.md)]
 
 ## <a name="add-or-edit-a-named-value"></a>添加或编辑命名值
 
 ### <a name="add-a-key-vault-secret"></a>添加密钥保管库机密
 
 请参阅 [密钥保管库集成的先决条件](#prerequisites-for-key-vault-integration)。
+
+> [!CAUTION]
+> 在 API 管理中使用密钥保管库机密时，请注意不要删除密钥、密钥保管库或用于访问密钥保管库的托管标识。
 
 1. 在 [Azure 门户](https://portal.azure.com)，导航到 API 管理实例。
 1. 在 " **api**" 下，选择 "**命名值**  >  **+ 添加**"。
@@ -89,7 +80,7 @@ ms.locfileid: "97504726"
     > [!NOTE]
     > 标识需要权限才能获取密钥保管库中的机密并列出这些机密。 如果尚未配置对密钥保管库的访问权限，API 管理会提示你，使其可以使用所需的权限自动配置标识。
 1. 添加一个或多个可选标记以帮助组织命名值，然后 **保存**。
-1. 选择“创建”  。
+1. 选择“创建”。
 
     :::image type="content" source="media/api-management-howto-properties/add-property.png" alt-text="添加密钥保管库机密值":::
 
@@ -101,7 +92,7 @@ ms.locfileid: "97504726"
 1. 在 " **值类型**" 中选择 " **普通** " 或 " **机密**"。
 1. 在 " **值**" 中，输入字符串或策略表达式。
 1. 添加一个或多个可选标记以帮助组织命名值，然后 **保存**。
-1. 选择“创建”  。
+1. 选择“创建”。
 
 创建命名值后，可通过选择名称进行编辑。 如果更改显示名称，则引用该命名值的任何策略都将自动更新为使用新的显示名称。
 
@@ -109,7 +100,7 @@ ms.locfileid: "97504726"
 
 本节中的示例使用下表中所示的命名值。
 
-| 名称               | 值                      | Secret | 
+| 名称               | 值                      | 机密 | 
 |--------------------|----------------------------|--------|---------|
 | ContosoHeader      | `TrackingId`                 | False  | 
 | ContosoHeaderValue | ••••••••••••••••••••••     | True   | 

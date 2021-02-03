@@ -3,20 +3,20 @@ title: 教程：生成用于翻译、合成与分析文本的 Flask 应用 - 翻
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，你将生成一个基于 Flask 的 Web 应用以翻译文本、分析情绪，并将翻译的文本合成为语音。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: 1cbe4d44f5e1c8b34a3d7bb9d05b9546f320b81c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 755e6370883bf39596850b45dc10f7efd3c9b55b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023457"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896674"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教程：生成使用 Azure 认知服务的 Flask 应用
 

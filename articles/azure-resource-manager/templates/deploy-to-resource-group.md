@@ -3,12 +3,12 @@ title: 将资源部署到资源组
 description: 介绍如何在 Azure 资源管理器模板中部署资源。 它介绍如何将多个资源组作为目标。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 9eb70e5ce69a2c7bc7ac9b8c9a7a558d09ecbef0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c3401346f31d34d92da1f52ca79f691e94e7eb78
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186220"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491548"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>使用 ARM 模板进行资源组部署
 
@@ -128,9 +128,9 @@ New-AzResourceGroupDeployment `
 
 ### <a name="scope-to-tenant"></a>将范围设定为租户
 
-可通过将 `scope` 设置为 `/`，在租户中创建资源。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
+若要在租户中创建资源，请将设置 `scope` 为 `/` 。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
 
-可使用设置了 `scope` 和 `location` 的嵌套部署。
+若要使用嵌套部署，请设置 `scope` 和 `location` 。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-tenant.json" highlight="9,10,14":::
 
@@ -142,7 +142,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="deploy-to-target-resource-group"></a>部署到目标资源组
 
-若要在目标资源组部署资源，请在模板的“资源”部分定义这些资源。 以下模板会在部署操作中指定的资源组中创建一个存储帐户。
+若要在目标资源组中部署资源，请在模板的部分中定义这些资源 `resources` 。 以下模板会在部署操作中指定的资源组中创建一个存储帐户。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 

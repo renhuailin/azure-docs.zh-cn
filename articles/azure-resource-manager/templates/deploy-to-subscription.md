@@ -3,12 +3,12 @@ title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 1daf95945f619d0e904880d8a8a778810a685d9a
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b5c99e5dc21c2b93f1c9da3977302a2dd311277f
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183976"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491497"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>使用 ARM 模板进行订阅部署
 
@@ -104,7 +104,7 @@ az deployment sub create \
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-对于 PowerShell 部署命令，请使用 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) 或 **New-AzSubscriptionDeployment**。 以下示例会部署一个模板来创建资源组：
+对于 PowerShell 部署命令，请使用 [AzDeployment](/powershell/module/az.resources/new-azdeployment) 或其别名 `New-AzSubscriptionDeployment` 。 以下示例会部署一个模板来创建资源组：
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
@@ -130,7 +130,7 @@ New-AzSubscriptionDeployment `
 
 对于订阅级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。 [管理组](deploy-to-management-group.md)和[租户](deploy-to-tenant.md)部署也需要位置。 对于[资源组](deploy-to-resource-group.md)部署，资源组的位置用于存储部署数据。
 
-可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
+可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 _azuredeploy.json_ 的模板将创建默认部署名称 **azuredeploy**。
 
 每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 **centralus** 中创建名为 **deployment1** 的订阅部署，则以后无法使用 deployment1 的位置创建另一个名为的 **部署。** 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
@@ -173,9 +173,9 @@ New-AzSubscriptionDeployment `
 
 ### <a name="scope-to-tenant"></a>将范围设定为租户
 
-可通过将 `scope` 设置为 `/`，在租户中创建资源。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
+若要在租户中创建资源，请将设置 `scope` 为 `/` 。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
 
-可使用设置了 `scope` 和 `location` 的嵌套部署。
+若要使用嵌套部署，请设置 `scope` 和 `location` 。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-to-tenant.json" highlight="9,10,14":::
 
@@ -254,7 +254,7 @@ New-AzSubscriptionDeployment `
 }
 ```
 
-有关资源迭代的信息，请参阅[在 Azure 资源管理器模板中部署资源的多个实例](./copy-resources.md)，以及[教程：使用资源管理器模板创建多个资源实例](./template-tutorial-create-multiple-instances.md)。
+有关资源迭代的信息，请参阅 [arm 模板中的资源迭代](./copy-resources.md)和 [教程：创建包含 arm 模板的多个资源实例](./template-tutorial-create-multiple-instances.md)。
 
 ### <a name="create-resource-group-and-resources"></a>创建资源组和资源
 

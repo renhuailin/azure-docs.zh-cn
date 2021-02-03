@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
-ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 02/02/2021
+ms.openlocfilehash: 9e43521e26a6292141e1bbae7b39db3656df962c
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591338"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493035"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
@@ -139,15 +139,19 @@ ms.locfileid: "97591338"
 
 ## <a name="throttling-limits"></a>限制
 
-当系统接近峰值容量时，搜索查询和索引请求会受到限制。 对不同 API 的限制行为各不相同。 系统会根据服务的负载动态限制查询 API（搜索/建议/自动完成）和索引 API。 索引 API 有静态的请求速率限制。 
+由于系统接近高峰容量，API 请求会受到限制。 对不同 API 的限制行为各不相同。 系统会根据服务的负载动态限制查询 API（搜索/建议/自动完成）和索引 API。 索引 Api 和服务操作 API 具有静态请求速率限制。 
 
 索引相关操作的静态速率请求限制：
 
-+ 列出索引 (获取/indexes) ：每个搜索单位每秒3个
++ 列出索引 (GET /indexes)：每个搜索单位每秒限制为 3 个
 + 获取索引 (GET /indexes/myindex)：每个搜索单位每秒限制为 10 个
 + 创建索引 (POST /indexes)：每个搜索单位每分钟限制为 12 个
 + 创建或更新索引 (PUT /indexes/myindex)：每个搜索单位每秒限制为 6 个
 + 删除索引 (DELETE /indexes/myindex)：每个搜索单位每分钟限制为 12 个 
+
+与服务相关的操作的静态速率请求限制：
+
++ 服务统计 (获取/servicestats) ：每个搜索单位每秒4次
 
 ## <a name="api-request-limits"></a>API 请求限制
 * 每个请求最大 16 MB <sup>1</sup>

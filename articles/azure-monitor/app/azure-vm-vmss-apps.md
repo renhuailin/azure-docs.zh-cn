@@ -3,12 +3,12 @@ title: 监视 Azure VM 的性能 - Azure Application Insights
 description: 针对 Azure VM 和 Azure 虚拟机规模集进行应用程序性能监视 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 01583cf5ecb85e4f66538afaba6984bff455ea99
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 48441711c8c6209b25974108fd91d1023fd6e6be
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475448"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493730"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虚拟机和 Azure 虚拟机规模集上部署 Azure Monitor Application Insights 代理
 
@@ -27,7 +27,7 @@ ms.locfileid: "99475448"
 
 可通过两种方法为 Azure 虚拟机和 Azure 虚拟机规模集托管的应用程序启用应用程序监视：
 
-### <a name="auto-inctrumentation-via-application-insights-agent"></a>通过 Application Insights 代理自动 inctrumentation
+### <a name="auto-instrumentation-via-application-insights-agent"></a>通过 Application Insights 代理自动检测
 
 * 这是启用监视的最简单方法，无需完成任何高级配置。 这种监视通常称为“运行时”监视。
 

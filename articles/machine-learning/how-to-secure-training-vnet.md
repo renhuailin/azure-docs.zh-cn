@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 9ef339fb0ccd14314a65d03b59e501069446c870
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029560"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493831"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习训练环境
 
@@ -42,12 +42,12 @@ ms.locfileid: "97029560"
 
 + 用于计算资源的现有虚拟网络和子网。
 
-+ 若要将资源部署到虚拟网络或子网，你的用户帐户必须对 azure RBAC)  (azure 基于角色的访问控制具有以下操作的权限：
++ 若要将资源部署到虚拟网络或子网中，你的用户帐户必须在 Azure 基于角色的访问控制 (Azure RBAC) 中具有以下操作的权限：
 
     - “Microsoft.Network/virtualNetworks/join/action”（在虚拟网络资源上）。
     - “Microsoft.Network/virtualNetworks/subnet/join/action”（在子网资源上）。
 
-    有关 Azure RBAC with 网络的详细信息，请参阅 [联网内置角色](../role-based-access-control/built-in-roles.md#networking)
+    若要详细了解如何将 Azure RBAC 与网络配合使用，请参阅[网络内置角色](../role-based-access-control/built-in-roles.md#networking)
 
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>计算群集和实例 
@@ -62,16 +62,19 @@ ms.locfileid: "97029560"
 > * 如果工作区的一个或多个 Azure 存储帐户也在虚拟网络中受保护，它们必须与 Azure 机器学习计算实例或群集位于同一虚拟网络中。 
 > * 为了让计算实例 Jupyter 功能可以正常运行，请确保没有禁用 Web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。 
 > * 在专用链接工作区中部署计算实例时，只能从虚拟网络内部访问。 如果使用自定义 DNS 或主机文件，请为 `<instance-name>.<region>.instances.azureml.ms` 添加一个条目，该条目具有工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md) 一文。
+> * 用于部署计算群集/实例的子网不应委托给 ACI 等任何其他服务
+> * 虚拟网络服务终结点策略不适用于计算群集/实例系统存储帐户
+
     
 > [!TIP]
 > 机器学习计算实例或群集自动在包含虚拟网络的资源组中分配更多网络资源。 对于每个计算实例或群集，此服务分配以下资源：
 > 
 > * 一个网络安全组
-> * 一个公共 IP 地址
+> * 一个公共 IP 地址。 如果你的 Azure 策略禁止创建公共 IP，则群集/实例的部署将失败
 > * 一个负载均衡器
 > 
 > 对于群集，每当群集纵向缩减为 0 个节点时，这些资源都会被删除（并重新创建）；但对于实例，这些资源会一直保留到实例完全删除（停止并不会删除资源）。 
-> 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。
+> 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 如果虚拟网络资源组被锁定，则删除计算群集/实例将会失败。 在删除计算群集/实例之前，无法删除负载均衡器。
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> 所需端口

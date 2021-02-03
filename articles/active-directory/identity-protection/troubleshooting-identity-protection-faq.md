@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c169847c96d10d1c9fb47b210bc85a15e0690e32
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 6117b1ac78faf84d73f5a78202709aec7a1f84d9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183109"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492580"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 中的常见问题标识保护
 
@@ -37,7 +37,7 @@ ms.locfileid: "98183109"
 
 ### <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>为什么我的登录被阻止，但 Identity Protection 没有生成风险检测？
 由于多种原因，登录可能被阻止。 需要特别注意的是，标识保护仅在身份验证请求中使用正确的凭据时才会生成风险检测。 如果用户使用不正确的凭据，则标识保护将不会对其进行标记，因为如果错误的使用者使用正确的凭据，则不存在凭据泄露的风险。 阻止用户签名但不会生成标识保护检测的一些原因包括：
-* 由于来自 IP 地址的恶意活动， **ip 可能被阻止** 。 IP 阻止消息不区分凭据是否正确。 如果 IP 被阻止并且未使用正确的凭据，则不会生成标识保护检测
+* 由于 IP 地址的恶意活动， **ip 可能被阻止** 。 IP 阻止消息不区分凭据是否正确。 如果 IP 被阻止并且未使用正确的凭据，则不会生成标识保护检测
 * 在多次尝试失败后，**[智能锁定](../authentication/howto-password-smart-lockout.md)** 会阻止该帐户登录
 * 可以强制实施 **条件性访问策略** ，该策略使用风险级别以外的条件来阻止身份验证请求
 

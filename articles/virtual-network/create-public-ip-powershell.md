@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 5b79a777ba8f7e615e4637f94311cba39e8a7f6c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ff768bceaba57c119aa88d5d4d99b11608917695
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223697"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492019"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建公共 IP 地址
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku---using-zones"></a>[**标准 SKU-使用区域**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->以下命令适用于 API 版本 2020-08-01 或更高版本。  有关当前正在使用的 API 版本的详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)。
+>以下命令适用于 Az. Network module 4.5.0 或更高版本。  有关当前正在使用的 Powershell 模块的详细信息，请参阅 [PowerShellGet 文档](https://docs.microsoft.com/powershell/module/powershellget/?view=powershell-7.1)。
 
 使用 [AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)在 **myResourceGroup** 中创建名为 **myStandardZRPublicIP** 的标准区域冗余公共 IP 地址。
 
@@ -67,7 +67,7 @@ $zone = 1,2,3
 New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $alloc -SKU $sku -zone $zone
 ```
 > [!IMPORTANT]
-> 对于早于2020-08-01 的 API 版本，请在上面运行命令，而无需指定区域参数来创建区域冗余的 IP 地址。 
+> 对于4.5.0 之前的 Az 网络模块，请在上面运行命令，而无需指定区域参数来创建区域冗余的 IP 地址。 
 >
 
 若要在 **myResourceGroup** 中区域2名为 **myStandardZonalPublicIP** 的中创建标准区域性公共 IP 地址，请使用以下命令：
@@ -89,9 +89,9 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 # <a name="standard-sku---no-zones"></a>[标准 SKU - 无区域](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->以下命令适用于 API 版本 2020-08-01 或更高版本。  有关当前正在使用的 API 版本的详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)。
+>以下命令适用于 Az. Network module 4.5.0 或更高版本。  有关当前正在使用的 Powershell 模块的详细信息，请参阅 [PowerShellGet 文档](https://docs.microsoft.com/powershell/module/powershellget/?view=powershell-7.1)。
 
-使用 [AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)在 **myResourceGroup** 中创建一个名为 **myStandardPublicIP** 的非区域性资源的标准公共 IP 地址。
+使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 在 myResourceGroup 中创建一个标准公共 IP 地址作为名为 myStandardPublicIP 的非区域性资源 。
 
 ```azurepowershell-interactive
 ## Variables for the command ##

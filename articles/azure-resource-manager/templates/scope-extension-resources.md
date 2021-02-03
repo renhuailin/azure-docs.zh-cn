@@ -3,12 +3,12 @@ title: 扩展资源类型的范围
 description: 介绍如何在部署扩展资源类型时使用 scope 属性。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 75c2c8b8409cc9f8e7a8e71965589ece6660607a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ce08ca951e24c1c0a5450052cf814a68888837c2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179973"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492155"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>在 ARM 模板中设置扩展资源的范围
 
@@ -85,6 +85,6 @@ New-AzSubscriptionDeployment `
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](template-syntax.md)。
+* 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
-* 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](secure-template-with-sas-token.md)。
+* 有关部署需要 SAS 令牌的模板的信息，请参阅 [使用 sas 令牌部署专用 ARM 模板](secure-template-with-sas-token.md)。

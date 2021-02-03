@@ -1,14 +1,14 @@
 ---
 title: 使用 Azure 资源管理器模板启用 VM 扩展
 description: 本文介绍如何使用 Azure 资源管理器模板将虚拟机扩展部署到在混合云环境中运行的支持 Azure Arc 的服务器。
-ms.date: 11/06/2020
+ms.date: 02/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: d5c7f5055f3e41a91fa00e1e3ad08e7686145b9e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: cfba14ac30553178bd509d0b0e7ba9c60332d299
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353860"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493322"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>使用 ARM 模板启用 Azure VM 扩展
 
@@ -698,6 +698,90 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\KeyVaultExtension.json"
+```
+
+## <a name="deploy-the-azure-defender-integrated-scanner"></a>部署 Azure Defender 集成扫描程序
+
+若要使用 Azure Defender 集成扫描程序扩展，提供了以下示例以在 Windows 和 Linux 上运行。 如果你不熟悉集成的扫描仪，请参阅 [Azure Defender 的混合计算机漏洞评估解决方案概述](../../security-center/deploy-vulnerability-assessment-vm.md) 。
+
+### <a name="template-file-for-windows"></a>适用于 Windows 的模板文件
+
+```json
+{
+  "properties": {
+    "mode": "Incremental",
+    "template": {
+      "contentVersion": "1.0.0.0",
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "parameters": {
+        "vmName": {
+          "type": "string"
+        },
+        "apiVersionByEnv": {
+          "type": "string"
+        }
+      },
+      "resources": [
+        {
+          "type": "resourceType/providers/WindowsAgent.AzureSecurityCenter",
+          "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
+          "apiVersion": "[parameters('apiVersionByEnv')]"
+        }
+      ]
+    },
+    "parameters": {
+      "vmName": {
+        "value": "resourceName"
+      },
+      "apiVersionByEnv": {
+        "value": "2015-06-01-preview"
+      }
+    }
+  }
+}
+```
+
+### <a name="template-file-for-linux"></a>适用于 Linux 的模板文件
+
+```json
+{
+  "properties": {
+    "mode": "Incremental",
+    "template": {
+      "contentVersion": "1.0.0.0",
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "parameters": {
+        "vmName": {
+          "type": "string"
+        },
+        "apiVersionByEnv": {
+          "type": "string"
+        }
+      },
+      "resources": [
+        {
+          "type": "resourceType/providers/LinuxAgent.AzureSecurityCenter",
+          "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
+          "apiVersion": "[parameters('apiVersionByEnv')]"
+        }
+      ]
+    },
+    "parameters": {
+      "vmName": {
+        "value": "resourceName"
+      },
+      "apiVersionByEnv": {
+        "value": "2015-06-01-preview"
+      }
+    }
+  }
+}
+```
+
+将模板文件保存到磁盘。 然后，可以使用以下命令在资源组中的所有连接的计算机上安装该扩展。
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\AzureDefenderScanner.json"
 ```
 
 ## <a name="next-steps"></a>后续步骤

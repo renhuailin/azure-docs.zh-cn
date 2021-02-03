@@ -4,15 +4,15 @@ description: 介绍 Azure Analysis Services 中的表格 1200 和更高版本数
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/02/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b778cf55ea485d7b3b4d3730d3659750f27b2697
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6e558962ad8a84b5f44abe21bc7c0ab67a4861ba
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685589"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493814"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -43,7 +43,7 @@ ms.locfileid: "98685589"
 
 ## <a name="other-data-sources"></a>其他数据源
 
-|数据源 | 内存中 | DirectQuery |注释   |
+|数据源 | 内存中 | DirectQuery |说明   |
 |  --- | --- | --- | --- |
 |Access 数据库     |  是 | 否 |  |
 |Active Directory     |  是 | 否 | <sup>[6](#tab1400b)</sup>  |
@@ -128,7 +128,9 @@ Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authenticati
 
 ## <a name="oauth-credentials"></a>OAuth 凭据
 
-对于在 1400 和更高兼容性级别下使用内存模式的表格模型，Azure SQL 数据库、Azure Synapse、Dynamics 365 和 SharePoint 列表支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 Power Query 设置凭据。
+对于1400和更高兼容级别的表格模型，使用 *内存中* 模式，Azure SQL 数据库、azure Synapse、Dynamics 365 和 SharePoint List 支持 OAuth 凭据。 若要生成有效的令牌，请使用 Power Query 设置凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 
+> [!NOTE]
+> 通过网关访问的数据源不支持托管令牌刷新。 例如，可以通过网关访问一个或多个混合查询数据源，并/或 [ASPaaS\AlwaysUseGateway](analysis-services-vnet-gateway.md) 属性设置为 **true**。 
 
 OAuth 凭据不支持直接查询模式。
 

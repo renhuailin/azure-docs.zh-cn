@@ -4,12 +4,12 @@ description: 了解如何快速开始使用 Azure API 管理以及在 Service Fa
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b89204e2df5c8e79200b780de38d06b1a93c1fa3
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f1ae658ac4944f8d39dc11769669d32958fd14f4
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702185"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491259"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>在 Azure 中将 API 管理与 Service Fabric 集成
 
@@ -30,7 +30,7 @@ ms.locfileid: "97702185"
 开始之前：
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安装 [Azure Powershell](/powershell/azure/install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安装 [Azure PowerShell](/powershell/azure/install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在网络安全组中创建一个安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
 * 如果部署 Windows 群集，请设置 Windows 开发环境。 安装 [Visual Studio 2019](https://www.visualstudio.com) 和 **Azure 开发**、**ASP.NET 和 Web 开发** 以及 **.NET Core 跨平台开发** 工作负荷。  然后设置 [.NET 开发环境](service-fabric-get-started.md)。
 
@@ -293,6 +293,8 @@ az group delete --name $ResourceGroupName
 
 详细了解如何使用 [API 管理](../api-management/import-and-publish.md)。
 
+你还可以使用 [Azure 门户](../api-management/how-to-configure-service-fabric-backend.md) 来创建和管理用于 API 管理的 Service Fabric 后端。
+
 [azure-powershell]: /powershell/azure/
 
 [apim-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.json
@@ -303,7 +305,6 @@ az group delete --name $ResourceGroupName
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png
-副结构脚本和模板/blob/主/模板/服务集成/network-apim.parameters.jsn
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png

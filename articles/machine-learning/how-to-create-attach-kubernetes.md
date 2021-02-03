@@ -1,7 +1,7 @@
 ---
 title: 创建并附加 Azure Kubernetes 服务
 titleSuffix: Azure Machine Learning
-description: 了解如何通过 Azure 机器学习创建新的 Azure Kubernetes Service 群集，或者如何将现有的 AKS 群集附加到工作区。
+description: 了解如何通过 Azure 机器学习创建新的 Azure Kubernetes 服务群集，或者如何将现有 AKS 群集附加到工作区。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 6400d3f3c721619551ba3989a2e5799b72ff9f38
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: e485c2f0a7deeffe68c932688658ef099fec510e
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831918"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492749"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
@@ -69,6 +69,8 @@ Azure 机器学习可以将经过训练的机器学习模型部署到 Azure Kube
 
     - [手动缩放 AKS 群集中的节点计数](../aks/scale-cluster.md)
     - [在 AKS 中设置群集自动缩放程序](../aks/cluster-autoscaler.md)
+
+- __不要使用 YAML 配置直接更新群集__。 虽然 Azure Kubernetes 服务通过 YAML 配置支持更新，但 Azure 机器学习部署将覆盖你的更改。 唯一不会覆盖的两个 YAML 字段为 __请求限制__ 和 __cpu 和内存__。
 
 ## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes 服务版本
 
@@ -282,7 +284,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 ---
 
 ## <a name="create-or-attach-an-aks-cluster-with-tls-termination"></a>使用 TLS 终止创建或附加 AKS 群集
-[创建或附加 AKS 群集](how-to-create-attach-kubernetes.md)时，可以使用 **[AksCompute.provisioning_configuration ( # B1](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 和 **[AksCompute.attach_configuration ( # B3](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 配置对象来启用 TLS 终止。 这两种方法都返回具有 **enable_ssl** 方法的配置对象，您可以使用 **enable_ssl** 方法来启用 TLS。
+[创建或附加 AKS 群集](how-to-create-attach-kubernetes.md)时，可以使用 **[AksCompute.provisioning_configuration ( # B1](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 和 **[AksCompute.attach_configuration ( # B3](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 配置对象来启用 TLS 终止。 两种方法都会返回具有 enable_ssl 方法的配置对象，并且你可以使用 enable_ssl 方法来启用 TLS 。
 
 以下示例演示了如何通过在后台使用 Microsoft 证书，使用自动 TLS 证书生成和配置来启用 TLS 终止。
 ```python
@@ -381,7 +383,6 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 ---
 
 ## <a name="troubleshooting"></a>疑难解答
-
 ### <a name="update-the-cluster"></a>更新群集
 
 必须手动应用对 Azure Kubernetes 服务群集中安装的 Azure 机器学习组件的更新。 
@@ -416,9 +417,9 @@ kubectl get secret/azuremlfessl -o yaml
 >[!Note]
 >Kubernetes 存储的机密采用 base-64 编码格式。 在将机密提供给 `attach_config.enable_ssl` 之前，需要对机密的 `cert.pem` 和 `key.pem` 组成部分进行 base-64 解码。 
 
-### <a name="webservice-failures"></a>Webservice 故障
+### <a name="webservice-failures"></a>Web 服务失败
 
-使用连接到群集时，AKS 中的许多 webservice 故障都可以进行调试 `kubectl` 。 可以 `kubeconfig.json` 通过运行来获取 AKS 群集的
+对于 AKS 中的许多 Web 服务失败，可以使用 `kubectl` 连接到群集进行调试。 可以通过运行以下内容来获取 AKS 群集的 `kubeconfig.json`
 
 ```azurecli-interactive
 az aks get-credentials -g <rg> -n <aks cluster name>

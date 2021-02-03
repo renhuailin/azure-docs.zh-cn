@@ -4,12 +4,12 @@ description: 本文介绍了如何查看和查询由 Azure Application Insights 
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 14b6ed3964900e3395ca335c301dfd0285da46e7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 2a991157962b0588e3d49510e8a82a9abcfb9aed
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937291"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493764"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>在 Application Insights 中分析 Azure Functions 遥测数据 
 
@@ -77,18 +77,18 @@ Azure Functions 与 Application Insights 集成，以用于更好地监视函数
 
 下面是一个查询示例，它显示过去 30 分钟内每个辅助角色的请求的分布。
 
-<pre>
+```kusto
 requests
 | where timestamp > ago(30m) 
 | summarize count() by cloud_RoleInstance, bin(timestamp, 1m)
 | render timechart
-</pre>
+```
 
 可用的表会显示在左侧的“架构”选项卡中。 可以在下表中找到由函数调用生成的数据：
 
 | 表 | 说明 |
 | ----- | ----------- |
-| **traces** | 由函数代码中的运行时和跟踪创建的日志。 |
+| **traces** | 由运行时、缩放控制器和函数代码中的跟踪创建的日志。 |
 | **requests** | 一个请求用于一个函数调用。 |
 | **异常** | 由运行时引发的任何异常。 |
 | **customMetrics** | 成功和失败调用的计数、成功率和持续时间。 |
@@ -99,12 +99,38 @@ requests
 
 在每个表内，一些函数特定的数据位于 `customDimensions` 字段。  例如，以下查询检索所有具有日志级别 `Error` 的跟踪。
 
-<pre>
+```kusto
 traces 
 | where customDimensions.LogLevel == "Error"
-</pre>
+```
 
 运行时提供了 `customDimensions.LogLevel` 和 `customDimensions.Category` 字段。 可以在日志中提供在函数代码中编写的其他字段。 有关用 C# 编写的示例，请参阅 .NET 类库开发人员指南中的[结构化日志记录](functions-dotnet-class-library.md#structured-logging)。
+
+## <a name="query-scale-controller-logs"></a>查询缩放控制器日志
+
+_此功能为预览版。_
+
+启用 [缩放控制器日志记录](configure-monitoring.md#configure-scale-controller-logs) 和 [Application Insights 集成](configure-monitoring.md#enable-application-insights-integration)后，可以使用 Application Insights 的日志搜索来查询已发出的规模控制器日志。 规模控制器日志保存在 `traces` **ScaleControllerLogs** 类别下的集合中。
+
+以下查询可用于在指定的时间段内搜索当前函数应用的所有规模控制器日志：
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+```
+
+下面的查询对上一个查询进行了扩展，以演示如何只获取指示规模变化的日志：
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+| where message == "Instance count changed"
+| extend Reason = CustomDimensions.Reason
+| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
+| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
+```
 
 ## <a name="consumption-plan-specific-metrics"></a>特定于消耗计划的指标
 

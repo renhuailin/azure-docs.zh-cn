@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6d9ad775f91778f95380a19fbe253e2cbbebd3fc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ed13837eabadc38cee50efac3b9340c973c8ea70
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736450"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492427"
 ---
 # <a name="it-service-management-connector-overview"></a>IT 服务管理连接器概述
 
@@ -46,7 +46,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 1. [设置 ITSM 环境以接受来自 Azure 的警报。](./itsmc-connections.md)
 1. [配置 Azure ITSM 解决方案](./itsmc-definition.md#add-it-service-management-connector)
 1. [为 ITSM 环境配置 Azure ITSM 连接器。](./itsmc-definition.md#create-an-itsm-connection)
-1. [配置操作组以利用 ITSM 连接器。](./itsmc-definition.md#use-itsmc)
+1. [配置操作组以利用 ITSM 连接器。](./itsmc-definition.md#define-a-template)
 
 ## <a name="next-steps"></a>后续步骤
 
