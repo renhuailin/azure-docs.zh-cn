@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9e73ca9e485e6926c30a73ba56b24bcd4dc9a836
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5881d03603002cc8d5bef1680083f6b4145bc77f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929729"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526681"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务 (AKS)
 
@@ -21,7 +21,7 @@ ms.locfileid: "96929729"
 * 将[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)支持的 AKS 群集迁移到[虚拟机规模集](../virtual-machine-scale-sets/overview.md)
 * 迁移 AKS 群集以使用[标准 SKU 负载均衡器](./load-balancer-standard.md)
 * 从 [Azure 容器服务 (ACS) - 2020 年 1 月 31 日停用](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)迁移到 AKS
-* 从 [AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) 迁移到 AKS
+* 从 [AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)迁移到 AKS
 * 从不是基于 Azure 的 Kubernetes 群集迁移到 AKS
 * 将现有资源移到另一个区域
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 00fd00112dad9efc31cea83f69bb458a8e1ca935
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 1444ee3643222ceebc67298bdb580955b1432104
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617368"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526409"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC 最佳做法
 
@@ -24,7 +24,7 @@ ms.locfileid: "97617368"
 
 使用 Azure RBAC，可以在团队中实现职责分离，仅向用户授予他们执行作业所需的访问权限。 请勿向每个人授予 Azure 订阅或资源的无限制权限，只能允许他们在特定的范围执行某些操作。
 
-规划访问控制策略时，最佳做法是授予用户完成工作所需的最低权限。 即使最初看起来更方便操作，也应避免在更广泛的范围内分配更广泛的角色。 创建自定义角色时，只包括用户需要的权限。 通过限制角色和作用域，如果安全主体泄露，则限制有风险的资源。
+规划访问控制策略时，最佳做法是授予用户完成工作所需的最低权限。 即使最初看起来更方便操作，也应避免在更广泛的范围内分配更广泛的角色。 创建自定义角色时，只包括用户需要的权限。 通过限制角色和范围，可以对在安全主体受到入侵的情况下会面临风险的具体资源进行限制。
 
 下图显示了与 Azure RBAC 使用有关的建议模式。
 
@@ -41,6 +41,10 @@ ms.locfileid: "97617368"
 为了保护特权帐户免受恶意网络攻击，可以使用 Azure Active Directory Privileged Identity Management (PIM) 来降低权限的暴露时间，并通过报表和警报增加对使用的可见性。 PIM 提供对 Azure AD 和 Azure 资源的实时特权访问权限，有助于保护特权帐户。 访问可能有时间限制，在超过时限后会自动撤销特权。 
 
 有关详细信息，请参阅[什么是 Azure AD Privileged Identity Management？](../active-directory/privileged-identity-management/pim-configure.md)。
+
+## <a name="assign-roles-to-groups-not-users"></a>将角色分配给组，而不是用户
+
+为了使角色分配更易于管理，请避免将角色直接分配给用户。 而是将角色分配给组。 将角色分配给组而不是用户还有助于最大程度地减少角色分配的数量， [每个订阅的角色分配数限制为 2000](troubleshooting.md#azure-role-assignments-limit)。 
 
 ## <a name="next-steps"></a>后续步骤
 

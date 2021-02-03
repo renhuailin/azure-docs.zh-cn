@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 8154e1adff8d8c2bdfe7fedc9309f95e5c5880bd
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0eb3b8feda09d931654d1781ea37737d68a1b377
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500716"
+ms.locfileid: "99526630"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 中的新增功能
 
@@ -46,7 +46,7 @@ Azure Sentinel 现在支持新的 [Az SecurityInsights](https://www.powershellga
 
 **SecurityInsights** 模块支持常见的 Azure Sentinel 用例，例如与事件交互以更改 statues、严重性、所有者等、向事件添加注释和标签以及创建书签。
 
-尽管我们建议使用 Azure 资源管理器 CI/CD 管道 [ (ARM)](/azure/azure-resource-manager/templates/) 模板，但 **SecurityInsights** 模块对于后期部署任务非常有用，它专门针对 SOC 自动化。  例如，SOC automation 可能包含配置数据连接器、创建分析规则或向分析规则添加自动化操作的步骤。
+尽管我们建议使用 Azure 资源管理器 CI/CD 管道 [ (ARM)](/azure/azure-resource-manager/templates/) 模板，但 **SecurityInsights** 模块对于后期部署任务非常有用，并且针对 SOC 自动化。  例如，SOC automation 可能包含配置数据连接器、创建分析规则或向分析规则添加自动化操作的步骤。
 
 有关详细信息，包括可用 cmdlet 的完整列表和说明、参数说明和示例，请参阅 [SecurityInsights PowerShell 文档](/powershell/module/az.securityinsights/)。
 
@@ -78,7 +78,7 @@ Azure Sentinel 现在支持将专用 Log Analytics 群集作为部署选项。 �
 
 ### <a name="logic-apps-managed-identities"></a>逻辑应用托管标识
 
-Azure Sentinel 现在支持 Azure Sentinel 逻辑应用连接器的托管标识，使你能够向特定操作手册直接授予对 Azure Sentinel 操作的权限，而无需创建额外的标识。
+Azure Sentinel 现在支持 Azure Sentinel 逻辑应用连接器的托管标识，这使你可以直接向特定操作手册授予权限，以便在 Azure Sentinel 上操作，而不是创建额外的标识。
 
 - 如果 **没有托管标识**，则逻辑应用连接器需要具有 AZURE sentinel RBAC 角色的单独标识，才能在 azure sentinel 上运行。 单独的标识可以是 Azure AD 用户或服务主体，如 Azure AD 注册的应用程序。
 

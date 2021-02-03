@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: trbye
-ms.openlocfilehash: 9e230ff4e84eba7b61846540fef2915765fa4f77
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: baa48ede04b9de98bd69de69753c97b5fcee7329
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509656"
+ms.locfileid: "99525256"
 ---
 # <a name="what-is-custom-neural-voice"></a>什么是自定义的神经声音？
 
@@ -51,7 +51,7 @@ ms.locfileid: "99509656"
 
 ## <a name="responsible-use-of-ai"></a>负责使用 AI
 
-若要了解如何使用自定义的神经 Voice，请参阅 [透明度注释](https://docs.microsoft.com/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice)。 Microsoft 的透明度注释旨在帮助你了解 AI 技术的工作原理、系统所有者可做出的影响系统性能和行为的选项，以及考虑整个系统（包括技术、人员和环境）的重要性。
+若要了解如何使用自定义的神经 Voice，请参阅 [透明度注释](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context)。 Microsoft 的透明度注释旨在帮助你了解 AI 技术的工作原理、系统所有者可做出的影响系统性能和行为的选项，以及考虑整个系统（包括技术、人员和环境）的重要性。
 
 ## <a name="next-steps"></a>后续步骤
 

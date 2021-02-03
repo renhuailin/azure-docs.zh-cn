@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2021
+ms.date: 02/03/2021
 ms.author: memildin
-ms.openlocfilehash: e881c61d16cd167ace78abb96dca7e714436cfc0
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bd64ca877f0bfd81597e091ef8ef000ad1b76992
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752220"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526426"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 安全中心的安全评分
 
@@ -244,8 +244,8 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
     <td class="tg-lboi"; width=55%>- 应对虚拟机启用自适应应用程序控制<br>- 应在虚拟机上安装监视代理<br>- 应在计算机上安装监视代理<br>- Log Analytics 代理应安装在基于 Windows 的 Azure Arc 计算机上(预览)<br>- Log Analytics 代理应安装在基于 Linux 的 Azure Arc 计算机上(预览)<br>- 应在计算机上解决监视代理运行状况问题</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">应用数据分类（最高 2 分）</p></strong>通过按敏感度和业务影响对组织数据进行分类，可以为数据确定并分配值，为治理提供策略和基础。<br><a href="/azure/information-protection/what-is-information-protection">Azure 信息保护</a>可帮助进行数据分类。 它使用加密、标识和授权策略来保护数据并限制数据访问。 Microsoft 使用的一些分类包括非业务、公共、常规、机密和高度机密。</td>
-    <td class="tg-lboi"; width=55%>- 应对 SQL 数据库中的敏感数据进行分类(预览版)</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">应用数据分类 (最大分数 0) </p></strong>通过按敏感度和业务影响对组织数据进行分类，可以为数据确定并分配值，为治理提供策略和基础。<br><a href="/azure/information-protection/what-is-information-protection">Azure 信息保护</a>可帮助进行数据分类。 它使用加密、标识和授权策略来保护数据并限制数据访问。 Microsoft 使用的一些分类包括非业务、公共、常规、机密和高度机密。</td>
+    <td class="tg-lboi"; width=55%>- 应该对 SQL 数据库中的敏感数据进行分类</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">保护应用程序免受 DDoS 攻击（最高 2 分）</p></strong>分布式拒绝服务 (DDoS) 攻击会使资源瘫痪，导致应用程序无法使用。 可使用 <a href="/azure/virtual-network/ddos-protection-overview">Azure DDoS 防护标准</a>保护组织免受三种主要的 DDoS 攻击：<br>- <strong>容量耗尽攻击</strong>利用合法流量淹没网络。 DDoS 防护标准通过自动吸收或清理来缓解这些攻击。<br>- <strong>协议攻击</strong>通过利用第 3 层和第 4 层协议堆栈中的漏洞，使目标无法访问。 DDoS 防护标准通过阻止恶意流量来缓解这些攻击。<br>- <strong>资源（应用程序）层攻击</strong>以 Web 应用程序数据包为目标。 可使用 Web 应用程序防火墙和 DDoS 防护标准来防御此类攻击。</td>

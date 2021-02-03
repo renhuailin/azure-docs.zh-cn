@@ -1,25 +1,25 @@
 ---
 title: 虚拟机大小灵活性-Azure 保留 VM 实例
 description: 了解购买虚拟机预留实例时哪些大小系列有预留折扣。
-author: manish-shukla01
+author: yashesvi
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/03/2018
-ms.author: manshuk
-ms.openlocfilehash: 381023a0650b078a74c01ff7b698aebacb256147
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.author: yashesvi
+ms.openlocfilehash: e6e96ff41503751741c8afc2229d66fd596e0806
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855511"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525358"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>虚拟机预留实例的虚拟机大小灵活性
 
 购买保留 VM 实例时，可以选择优化实例大小的灵活性或容量优先级。 有关设置或更改保留 VM 实例的优化设置的详细信息，请参阅 [更改保留 vm 实例的优化设置](../cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
 
-使用为实例大小灵活性优化的保留虚拟机实例，你购买的预订可应用于虚拟机 (Vm) 大小在同一实例大小的灵活性组中。 例如，如果购买了 DSv2 系列中列出的 VM 大小的保留，如 Standard_DS5_v2，则预订折扣可以应用于同一实例大小灵活性组中列出的其他四种大小：
+使用为实例大小灵活性优化的保留虚拟机实例，你购买的预订可应用于虚拟机 (Vm) 大小在同一实例大小的灵活性组中。 例如，如果你购买 DSv2 系列中列出的 VM 大小的保留，如 Standard_DS3_v2，则预订折扣适用于同一实例大小灵活性组中列出的其他大小：
 
 - Standard_DS1_v2
 - Standard_DS2_v2

@@ -1,27 +1,27 @@
 ---
-title: 使用 .NET 为容器或 Blob 创建用户委托 SAS
+title: 使用 .NET 为容器、目录或 blob 创建用户委托 SAS
 titleSuffix: Azure Storage
 description: 了解如何使用适用于 Azure 存储的 .NET 客户端库通过 Azure Active Directory 凭据创建用户委托 SAS。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 02/03/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 512b949fceda850e968a6f97b3788ae3a602f56d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 13491735f73cb1696f3c36f3434cc781a1e2b739
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199251"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526799"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>使用 .NET 为容器或 blob 创建用户委托 SAS
+# <a name="create-a-user-delegation-sas-for-a-container-directory-or-blob-with-net"></a>使用 .NET 为容器、目录或 blob 创建用户委托 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文介绍如何使用适用于 12 版 .NET 的 Azure 存储客户端库通过 Azure Active Directory (Azure AD) 凭据为容器或 Blob 创建用户委托 SAS。
+本文介绍如何使用 Azure Active Directory (Azure AD) 凭据，使用适用于 .NET 版本12的 Azure 存储客户端库为容器、目录或 blob 创建用户委托 SAS。
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
@@ -77,9 +77,9 @@ Console.WriteLine("Key signed service: {0}", key.SignedService);
 Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 ```
 
-## <a name="get-a-user-delegation-sas-for-a-blob"></a>获取 blob 的用户委托 SAS
+## <a name="get-a-user-delegation-sas-for-a-blob"></a>为 blob 获取用户委托 SAS
 
-下面的代码示例演示了用于对安全主体进行身份验证并为 blob 创建用户委托 SAS 的完整代码：
+下面的代码示例展示了用于对安全主体进行身份验证和为 blob 创建用户委托 SAS 的完整代码：
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetUserDelegationSasBlob":::
 
@@ -87,9 +87,9 @@ Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_ReadBlobWithSasAsync":::
 
-## <a name="get-a-user-delegation-sas-for-a-container"></a>获取容器的用户委托 SAS
+## <a name="get-a-user-delegation-sas-for-a-container"></a>为容器获取用户委托 SAS
 
-下面的代码示例演示如何为容器生成用户委托 SAS：
+下面的代码示例演示如何为容器生成用户委派 SAS：
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetUserDelegationSasContainer":::
 
@@ -99,7 +99,7 @@ Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 
 ## <a name="get-a-user-delegation-sas-for-a-directory"></a>获取目录的用户委托 SAS
 
-下面的代码示例演示了如何在启用分层命名空间时为目录生成用户委托 SAS：
+下面的代码示例演示如何在为存储帐户启用分层命名空间时为目录生成用户委托 SAS：
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetUserDelegationSasDirectory":::
 

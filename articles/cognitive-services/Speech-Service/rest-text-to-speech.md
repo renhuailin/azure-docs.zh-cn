@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 225fc83133aba0a7d669f36dc9c8e7cd20c8e42e
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b4a4fa8a207320a5867b6cdf1dc347bbb2f453af
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507513"
+ms.locfileid: "99525732"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -60,9 +60,11 @@ ms.locfileid: "99507513"
 | 韩国中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 北欧 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 南非北部 | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 东南亚 | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 英国南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 美国中西部 | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 西欧 | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -211,8 +213,7 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 
 | 标头 | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | 语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必需 |
 | `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必需 |
 | `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必需 |
 | `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必需 |
@@ -278,5 +279,5 @@ Authorization: Bearer [Base64 access_token]
 ## <a name="next-steps"></a>后续步骤
 
 - [创建免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
-- [用于长格式音频的异步合成](./long-audio-api.md)
+- [用于长格式音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [自定义语音入门](how-to-custom-voice.md)

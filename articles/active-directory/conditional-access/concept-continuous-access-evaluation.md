@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd14c7911676768a61d2b2c0e366d2c227455be8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678198"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524662"
 ---
 # <a name="continuous-access-evaluation"></a>连续访问评估
 
@@ -48,7 +48,7 @@ ms.locfileid: "98678198"
 - 用户的密码已更改或已重置
 - 是否为用户启用了多重身份验证
 - 管理员显式撤销用户的所有刷新令牌
-- Azure AD Identity Protection 检测到提升的用户风险
+- Azure AD Identity Protection 检测到高用户风险
 
 此过程会导致用户在这些关键事件之一发生后的数分钟内失去对 Microsoft 365 客户端应用中的组织 SharePoint Online 文件、电子邮件、日历或任务和 Teams 的访问权限。 
 

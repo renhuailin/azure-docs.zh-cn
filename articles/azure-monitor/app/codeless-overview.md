@@ -6,27 +6,27 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: efa951ce5a15460e3eacfd4c7abecfac17106b4e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: fe57174f1b090cbaa2196930f5ddd252074f1978
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880502"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526443"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>什么是自动检测或无代码附加 - Azure Monitor Application Insights？
 
 自动检测或无代码附加允许使用 Application Insights 来启用应用程序监视，无需更改代码。  
 
-Application Insights 与各种资源提供程序集成，可在不同的环境中工作。 事实上，你只需启用代理并在某些情况下对其进行配置，该代理就会直接收集遥测数据。 你会立刻在 Application Insights 资源中看到指标、数据和依赖项，因此可以在潜在问题出现之前发现其来源，并通过端到端事务视图分析根本原因。
+Application Insights 与各种资源提供程序集成，可在不同的环境中工作。 实质上，你只需启用和-在某些情况下-配置代理，该代理将自动收集遥测数据。 你会立刻在 Application Insights 资源中看到指标、数据和依赖项，因此可以在潜在问题出现之前发现其来源，并通过端到端事务视图分析根本原因。
 
 ## <a name="supported-environments-languages-and-resource-providers"></a>支持的环境、语言和资源提供程序
 
-随着我们添加越来越多的集成，自动检测功能矩阵变得很复杂。 下表显示了与各种资源提供程序、语言和环境的支持相对应的项目的当前状态。
+在添加更多的集成时，自动检测功能矩阵变得很复杂。 下表显示了与各种资源提供程序、语言和环境的支持相对应的项目的当前状态。
 
 |环境/资源提供程序          | .NET            | .NET Core       | Java            | Node.js         | Python          |
 |---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-|Windows 上的 Azure 应用服务           | GA，OnBD*       | GA，选择加入      | 个人预览版 | 个人预览版 | 不支持   |
-|Linux 上的 Azure 应用服务             | 空值             | 不支持   | 个人预览版 | 公共预览版  | 不支持   |
+|Windows 上的 Azure 应用服务           | GA，OnBD*       | GA，选择加入      | 正在进行     | 正在进行     | 不支持   |
+|Linux 上的 Azure 应用服务             | 空值             | 不支持   | 正在学习     | 公共预览版  | 不支持   |
 |AKS 上的 Azure 应用服务               | 空值             | 设计中       | 设计中       | 设计中       | 不支持   |
 |Azure Functions - 基本                | GA，OnBD*       | GA，OnBD*       | GA，OnBD*       | GA，OnBD*       | GA，OnBD*       |
 |Azure Functions Windows - 依赖项 | 不支持   | 不支持   | 公共预览版  | 不支持   | 不支持   |
@@ -41,11 +41,31 @@ Application Insights 与各种资源提供程序集成，可在不同的环境�
 
 ### <a name="windows"></a>Windows
 
-[Azure 应用服务上的应用程序监视](./azure-web-apps.md?tabs=net)适用于 .NET 应用程序，在默认情况下已启用。单击一次即可启用 .NET Core。Java 和 Node.js 均为个人预览版。
+#### <a name="net"></a>.NET
+Windows 上的 Azure App Service 上的应用程序监视适用于 [.net 应用程序](./azure-web-apps.md?tabs=net) ，并且默认情况下处于启用状态。
 
-### <a name="linux"></a>Linux 
+#### <a name="netcore"></a>.NETCore
+监视 [。](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=netcore) 只需要单击一次即可启用 NETCore 应用程序。
 
-在应用服务中监视 Java 和 Node.js 应用程序的功能为公共预览版，可以在 Azure 门户中启用，在所有区域中提供。
+#### <a name="java"></a>Java
+用于监视 Windows 应用服务上的 Java 应用程序的门户集成目前不可用，但你可以在将应用部署到应用服务之前，将 Application Insights [Java 3.0 独立代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) 添加到你的应用程序，而无需进行任何代码更改。 Application Insights Java 3.0 代理现已正式发布。
+
+#### <a name="nodejs"></a>Node.js
+当前无法从门户中启用对 Windows 上的 Node.js 应用程序的监视。 若要监视 Node.js 应用程序，请使用 [SDK](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)。
+
+### <a name="linux"></a>Linux
+
+#### <a name="netcore"></a>.NETCore
+监视。NETCore 在 Linux 上运行的应用程序，请使用 [SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。
+
+#### <a name="java"></a>Java 
+为 Linux 上的应用服务启用 Java 应用程序监视功能不可用，但你可以在将应用部署到应用服务之前，将 [Application Insights Java 3.0 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) 添加到应用。 Application Insights Java 3.0 代理现已正式发布。
+
+#### <a name="nodejs"></a>Node.js
+在[Linux 应用服务中监视 Node.js 应用程序](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=nodejs)以公共预览版提供，可在 Azure 门户中启用，所有区域均提供此功能。 
+
+#### <a name="python"></a>Python
+使用 SDK [监视你的 Python 应用](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python) 
 
 ## <a name="azure-functions"></a>Azure Functions
 
@@ -57,7 +77,7 @@ Application Insights 与各种资源提供程序集成，可在不同的环境�
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Azure Windows VM 和虚拟机规模集
 
-[适用于 Azure VM 和虚拟机规模集的自动检测](./azure-vm-vmss-apps.md)可用于 .NET 应用程序 
+适用于 Azure Vm 和虚拟机规模集的自动检测适用于 [.net](./azure-vm-vmss-apps.md) 和 [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)。  
 
 ## <a name="on-premises-servers"></a>本地服务器
 可以轻松地为[适用于 .NET 应用程序的本地 Windows 服务器](./status-monitor-v2-overview.md)和 [Java 应用](./java-in-process-agent.md)启用监视功能。

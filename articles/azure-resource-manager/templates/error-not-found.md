@@ -3,12 +3,12 @@ title: 找不到资源错误
 description: 介绍如何解决找不到资源时所发生的错误。 部署 Azure 资源管理器模板或执行管理操作时，可能会发生此错误。
 ms.topic: troubleshooting
 ms.date: 06/10/2020
-ms.openlocfilehash: 224af4ce0fe5053201f25d8207f4ca8cdc73e638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40f3c2ac61b6a6d5fdbcefdf62761668b013b1db
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84667941"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526240"
 ---
 # <a name="resolve-resource-not-found-errors"></a>解决“找不到资源”错误
 
@@ -16,14 +16,14 @@ ms.locfileid: "84667941"
 
 ## <a name="symptom"></a>症状
 
-存在两个错误代码，指示找不到资源。 “NotFound”错误返回的结果类似于****：
+存在两个错误代码，指示找不到资源。 “NotFound”错误返回的结果类似于：
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-**ResourceNotFound**错误返回类似于以下内容的结果：
+**ResourceNotFound** 错误返回类似于以下内容的结果：
 
 ```
 Code=ResourceNotFound;
@@ -49,7 +49,7 @@ group {resource group name} was not found.
 
 ## <a name="solution-2---set-dependencies"></a>解决方案 2 - 设置依赖项
 
-如果在部署模板时遇到此错误，可能需要添加依赖项。 如果可能，Resource Manager 会通过并行创建资源来优化部署。 如果一个资源必须在另一个资源之后部署，则需在模板中使用 dependsOn 元素****。 例如，在部署 Web 应用时，应用服务计划必须存在。 如果未指定该 Web 应用与应用服务计划的依赖关系，则 Resource Manager 会同时创建这两个资源。 会收到一条错误消息，指出未能找到应用服务计划资源，因为尝试在 Web 应用上设置属性时它尚不存在。 在 Web 应用中设置依赖关系可避免此错误。
+如果在部署模板时遇到此错误，可能需要添加依赖项。 如果可能，Resource Manager 会通过并行创建资源来优化部署。 如果一个资源必须在另一个资源之后部署，则需在模板中使用 dependsOn 元素。 例如，在部署 Web 应用时，应用服务计划必须存在。 如果未指定该 Web 应用与应用服务计划的依赖关系，则 Resource Manager 会同时创建这两个资源。 会收到一条错误消息，指出未能找到应用服务计划资源，因为尝试在 Web 应用上设置属性时它尚不存在。 在 Web 应用中设置依赖关系可避免此错误。
 
 ```json
 {
@@ -70,7 +70,7 @@ group {resource group name} was not found.
 
    ![选择部署历史记录](./media/error-not-found/select-deployment.png)
 
-2. 从历史记录中选择一个部署，并选择“事件” ****。
+2. 从历史记录中选择一个部署，并选择“事件” 。
 
    ![选择部署事件](./media/error-not-found/select-deployment-events.png)
 
@@ -105,7 +105,7 @@ resourceId 函数中的订阅和资源组参数是可选的。 如果不指定�
 
 模式为：
 
-`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>), <API-version>, 'Full').Identity.propertyName]"`
 
 > [!IMPORTANT]
 > 不要使用该模式：

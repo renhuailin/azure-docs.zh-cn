@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows 代理概述
 description: 本文详细概述了可用的支持 Azure Arc 的服务器代理，它支持监视混合环境中托管的虚拟机。
-ms.date: 01/08/2021
+ms.date: 02/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: 86d524665b70725108324b1d88521a4c3cb8ff05
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 5f12ea90a4398b63eaa19a1fc5a375c15bdfa8c5
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033959"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526358"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
 
@@ -116,9 +116,9 @@ URL：
 |`agentserviceapi.azure-automation.net`|来宾配置|
 |`*-agentservice-prod-1.azure-automation.net`|来宾配置|
 
-有关每个服务标记/区域的 IP 地址列表，请参阅 JSON 文件 - [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 每周将发布包含每个 Azure 服务及其使用的 IP 范围的更新。 有关详细信息，请查看[服务标记](../../virtual-network/network-security-groups-overview.md#service-tags)。
+有关每个服务标记/区域的 IP 地址列表，请参阅 JSON 文件 - [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 每周将发布包含每个 Azure 服务及其使用的 IP 范围的更新。 JSON 文件中的此信息是对应于每个服务标记的 IP 范围的当前时间点列表。 IP 地址可能会更改。 如果防火墙配置需要 IP 地址范围，则应使用 **AzureCloud** 服务标记允许对所有 Azure 服务的访问。 请勿禁用对这些 URL 的安全监视或检查，但就像允许其他 Internet 流量一样允许这些 URL。
 
-除了服务标记 IP 地址范围信息外，还需要上表中的 Url，因为大多数服务当前没有服务标记注册。 因此，IP 地址可能会变化。 如果防火墙配置需要 IP 地址范围，则应使用 **AzureCloud** 服务标记允许对所有 Azure 服务的访问。 请勿禁用对这些 URL 的安全监视或检查，但就像允许其他 Internet 流量一样允许这些 URL。
+有关详细信息，请参阅 [服务标记概述](../../virtual-network/service-tags-overview.md)。
 
 ### <a name="register-azure-resource-providers"></a>注册 Azure 资源提供程序
 
@@ -175,7 +175,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 * 安装期间将创建以下安装文件夹。
 
-    |Folder |描述 |
+    |Folder |说明 |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |包含代理支持文件的默认安装路径。|
     |%ProgramData%\AzureConnectedMachineAgent |包含代理配置文件。|

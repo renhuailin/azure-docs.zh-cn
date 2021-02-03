@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: e2b12d7a2206ab369328563af438c6ef1ea39327
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d094e1760db1ddfcff520b0022a232735d21d355
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184104"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525816"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API 版本停用
 Microsoft 至少会在停用 API 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。 我们发布了 OperationalInsights 资源提供程序 API 新版本 (2020-08-01)，并将于 2024 年 2 月 29 日停用任何早期的 API 版本。
@@ -66,6 +66,15 @@ Microsoft 至少会在停用 API 前提前 12 个月发出通知，以便顺利�
     }
     ```
 
+
+### <a name="more-information"></a>详细信息
+如果有疑问，请从我们的 [技术社区专家那里]( https://techcommunity.microsoft.com/t5/azure-monitor/bd-p/AzureMonitor)获取答案。 如果你有支持计划并需要技术帮助，请创建 [支持请求]( https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)： 
+1.  在 " *问题类型*" 下，选择 " **技术**"。 
+2.  在“订阅”下，选择自己的订阅。 
+3.  在 " *服务*" 下，选择 " **我的服务**"，然后选择 **Log Analytics**。 
+4.  在 " *摘要*" 下，键入问题说明。 
+5.  在 " *问题类型*" 下，选择 " **Log Analytics 工作区管理**"。  
+6.  在 " *问题子类型*" 下，选择 " **ARM 模板、PowerShell 和 CLI**"。 
 
 ## <a name="next-steps"></a>后续步骤
 

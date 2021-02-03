@@ -8,12 +8,12 @@ author: cpercy737
 ms.author: camper
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 989e50ec03dae5d00961d572b70d524a56b3d64c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 99e1e77a37afbdc1ed54767700574316ed03fae3
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062199"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525239"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商业应用商店合作伙伴和客户使用情况归属
 
@@ -248,10 +248,8 @@ foreach ($deployment in $deployments){
 
 }
 ```
-
 ## <a name="report"></a>报表
-
-你可以在合作伙伴中心仪表板 ([https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview](https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview)) 中找到客户使用情况归因报告。 若要查看报告，必须使用合作伙伴中心凭据登录。 如果在报告或登录时遇到任何问题，请创建 [支持请求](#get-support)。
+目前不能为 ISV 合作伙伴报告通过客户使用情况跟踪的 Azure 使用情况。 将报表添加到合作伙伴中心内的商业市场计划，以涵盖客户的使用2021情况。
 
 ## <a name="notify-your-customers"></a>通知客户
 

@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a866c21e067293481a52dd563873892de8b5444c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 3b5002873160490dfb7b8d3ad9790f9c6f1e8ae6
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955269"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525782"
 ---
 # <a name="scenario-any-to-any"></a>方案：任意位置到任意位置
 
-使用虚拟 WAN 虚拟中心路由时，有很多可用方案。 在“任意位置到任意位置”方案中，任意分支都可以联系另一个分支。 如果存在多个中心，默认情况下会在标准虚拟 WAN 中启用中心到中心路由（也称为“中心间”）。 可以使用多种不同的方法（例如 Azure 门户或 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/201-virtual-wan-with-all-gateways/)）来创建此配置。 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。 
+使用虚拟 WAN 虚拟中心路由时，有很多可用方案。 在“任意位置到任意位置”方案中，任意分支都可以联系另一个分支。 如果存在多个中心，默认情况下会在标准虚拟 WAN 中启用中心到中心路由（也称为“中心间”）。 可以使用多种不同的方法（例如 Azure 门户或 [Azure 快速入门模板](quickstart-any-to-any-template.md)）来创建此配置。 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。 
 
 ## <a name="design"></a><a name="design"></a>设计
 

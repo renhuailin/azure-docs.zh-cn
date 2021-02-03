@@ -3,12 +3,12 @@ title: 排查与注册表相关的网络问题
 description: 访问位于虚拟网络中或防火墙后面的 Azure 容器注册表时的常见问题的症状、原因和解决方法
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 2f15eb8a830ce93ecf942663fc8a44b9df86d6d6
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: cf2f308f782ac7d6011c98afd181b194f2b3e09f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052155"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525070"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>排查与注册表相关的网络问题
 
@@ -105,20 +105,20 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
 
 ### <a name="configure-service-access"></a>配置服务访问
 
-目前，Azure 安全中心无法在注册表中执行 [映像漏洞扫描](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) ，从而限制对专用终结点、选定子网或 IP 地址的访问。 此外，以下服务的资源无法访问具有网络限制的容器注册表：
+目前，不允许通过多个 Azure 服务访问具有网络限制的容器注册表：
 
-* Azure DevOps Services 
-* Azure 容器实例
-* Azure 容器注册表任务
+* Azure 安全中心无法在限制对专用终结点、选定子网或 IP 地址的访问的注册表中执行 [映像漏洞扫描](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) 。 
+* 某些 Azure 服务的资源无法访问具有网络限制（包括 Azure App Service 和 Azure 容器实例）的容器注册表。
 
 如果需要使用容器注册表访问或集成这些 Azure 服务，请去除网络限制。 例如，删除注册表的专用终结点，或者删除或修改注册表的公共访问规则。
+
+从2021年1月开始，你可以配置受网络限制的注册表，以允许从选择受信任的服务进行 [访问](allow-access-trusted-services.md) 。
 
 相关链接：
 
 * [通过安全中心扫描 Azure 容器注册表映像](../security-center/defender-for-container-registries-introduction.md)
 * 提供[反馈](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)
-* [配置公共 IP 网络规则](container-registry-access-selected-networks.md)
-* [使用 Azure 专用链接以私密方式连接到 Azure 容器注册表](container-registry-private-link.md)
+* [允许受信任的服务安全访问受网络限制的容器注册表](allow-access-trusted-services.md)
 
 
 ## <a name="advanced-troubleshooting"></a>高级故障排除
@@ -140,5 +140,5 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
   * [注册表登录故障排除](container-registry-troubleshoot-login.md) 
   * [注册表性能故障排除](container-registry-troubleshoot-performance.md)
 * [社区支持](https://azure.microsoft.com/support/community/)选项
-* [Microsoft 问答](/answers/products/)
+* [Microsoft 问答](https://docs.microsoft.com/answers/products/)
 * [开具支持票证](https://azure.microsoft.com/support/create-ticket/)

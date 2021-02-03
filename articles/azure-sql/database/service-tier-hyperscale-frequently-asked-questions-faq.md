@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
-ms.date: 03/03/2020
-ms.openlocfilehash: 4ea1982e7545f4ac39a5ecd15dc9e19a582ae31c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 02/03/2021
+ms.openlocfilehash: c6faa1703b0935d66d291281f33027b3a66a59d4
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459638"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526816"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL 数据库“超大规模”常见问题解答
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ ms.locfileid: "96459638"
 
 如果目前运行的是使用 SQL Server 作为数据仓库的交互式分析查询，“超大规模”是很好的选择，因为能以较低费用托管中小型数据仓库（例如几 TB 到 100 TB），并且只需对 T-SQL 代码进行极少量的更改，即可将 SQL Server 数据仓库工作负荷迁移到“超大规模”。
 
-如果你使用复杂的查询和大于 100 MB/s 的持续引入速率在大规模上运行数据分析，或者使用并行数据仓库 (PDW) 、Teradata 或其他大规模并行处理 (MPP) 数据仓库，则 Azure Synapse Analytics 可能是最佳选择。
+如果大规模运行包含复杂查询且持续引入速率超过 100 MB/秒的数据分析，并使用并行数据仓库 (PDW)、Teradata 或其他大规模并行处理 (MPP) 数据仓库，则 Azure Synapse Analytics 可能是最佳选择。
   
 ## <a name="hyperscale-compute-questions"></a>“超大规模”计算问题
 
@@ -166,7 +166,7 @@ ms.locfileid: "96459638"
 
 ### <a name="what-is-the-smallest-database-size-that-hyperscale-supports-or-starts-with"></a>“超大规模”支持或最初使用的最小数据库大小是多少
 
-40 GB。 创建的“超大规模”数据库的初始大小为 10 GB。 然后，它每隔 10 分钟增大 10 GB，直至达到 40 GB 大小。 其中的每个 10 GB 区块在不同的页面服务器中分配，以提供更大的 IOPS 和更高的 I/O 并行度。 由于这种优化，即使选择小于 40 GB 的初始数据库大小，数据库也会自动扩大为至少 40 GB。
+40 GB。 创建的“超大规模”数据库的初始大小为 10 GB。 然后，它每隔 10 分钟增大 10 GB，直至达到 40 GB 大小。 其中每个 10 GB 区块都在不同的页面服务器中分配，以便提供更多 IOPS 和更高的 i/o 并行度。 由于这种优化，即使选择小于 40 GB 的初始数据库大小，数据库也会自动扩大为至少 40 GB。
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>数据库的大小按多少增量增长
 
@@ -218,7 +218,7 @@ ms.locfileid: "96459638"
 
 ### <a name="can-i-move-my-on-premises-sql-server-database-or-my-sql-server-database-in-a-cloud-virtual-machine-to-hyperscale"></a>能否将我的本地 SQL Server 数据库或云虚拟机中的 SQL Server 数据库迁移到“超大规模”
 
-是的。 你可以使用所有现有迁移技术迁移到超大规模，包括事务复制，以及 (大容量复制、Azure 数据工厂、Azure Databricks、SSIS) 的任何其他数据移动技术。 另请参阅支持许多迁移方案的 [Azure 数据库迁移服务](../../dms/dms-overview.md)。
+是的。 可以使用所有现有的迁移技术迁移到“超大规模”，包括事务复制，以及任何其他数据移动技术（批量复制、Azure 数据工厂、Azure Databricks、SSIS）。 另请参阅支持许多迁移方案的 [Azure 数据库迁移服务](../../dms/dms-overview.md)。
 
 ### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>从本地或虚拟机环境迁移到“超大规模”期间，我的停机时间有多长，如何尽量减少停机时间
 
@@ -233,7 +233,7 @@ ms.locfileid: "96459638"
 
 可让客户端应用程序从 Azure 存储中读取数据并将数据加载到“超大规模”数据库（就像对 Azure SQL 数据库中的任何其他数据库执行的操作一样）。 Azure SQL 数据库当前不支持 Polybase。 作为提供快速负载的替代方法，你可以使用[Azure 数据工厂](../../data-factory/index.yml)，或在[SQL 的 spark 连接器](spark-connector.md) [Azure Databricks](/azure/azure-databricks/)中使用 spark 作业。 SQL 的 Spark 连接器支持批量插入。
 
-还可以使用 BULK INSERT 或 OPENROWSET 从 Azure Blob 存储批量读取数据：[批量访问 Azure Blob 存储中的数据的示例](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
+还可以使用 BULK INSERT 或 OPENROWSET 从 Azure Blob 存储批量读取数据：[批量访问 Azure Blob 存储中的数据的示例](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
 
 “超大规模”数据库中不支持简单恢复或批量日志记录模式。 提供高可用性和时点恢复需要完整恢复模式。 但是，相比于其他 Azure SQL 数据库服务层级而言，“超大规模”日志体系结构提供更佳的数据引入速率。
 
@@ -285,7 +285,7 @@ RPO 为 0 分钟。无论数据库大小如何，大多数还原操作都将在 
 
 ### <a name="can-i-take-a-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-on-sql-server-in-a-vm"></a>能否备份“超大规模”数据库，并还原到我的本地服务器或 VM 中的 SQL Server
 
-否。 超大规模数据库的存储格式与 SQL Server 的任何发布版本不同，你不会控制备份，也不能访问它们。 若要将数据移出超大规模数据库，可以使用任何数据移动技术（即 Azure 数据工厂、Azure Databricks、SSIS 等）提取数据。
+否。 超大规模数据库的存储格式与 SQL Server 的任何发布版本不同，你不会控制备份，也不能访问它们。 若要将数据移出“超大规模”数据库，可以使用任何数据移动技术（例如 Azure 数据工厂、Azure Databricks、SSIS 等）提取数据。
 
 ## <a name="cross-feature-questions"></a>跨功能问题
 

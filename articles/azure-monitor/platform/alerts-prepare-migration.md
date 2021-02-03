@@ -6,17 +6,17 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 60a721af9acf980e88ad60504e75d2488c8a4d81
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: dc0be351253a15bf9039839c8cae2246681d41e2
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944475"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526647"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>准备逻辑应用和 Runbook 以迁移经典警报规则
 
 > [!NOTE]
-> 如前所述 [，Azure Monitor](monitoring-classic-retirement.md)中的经典警报已停用，但对于尚不支持新警报的资源仍处于有限使用。 这些警报的停用日期已进一步延长。 新日期即将发布。
+> 如前所述 [，为](monitoring-classic-retirement.md)公有云用户停用 Azure Monitor 中的经典警报，但对于尚不支持新警报的资源仍有限制。 这些警报的停用日期已进一步延长。 新日期即将发布。
 >
 
 如果你选择自愿将经典警报规则迁移到新的警报规则，请注意，这两个系统存在一些差异。 本文将会解释这些差异以及如何做好相应的准备。
@@ -32,7 +32,7 @@ ms.locfileid: "98944475"
 |REST API     | [microsoft insights/alertrules](/rest/api/monitor/alertrules)         | [microsoft insights/metricalerts](/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [az monitor alert](/cli/azure/monitor/alert)        | [az monitor metrics alert](/cli/azure/monitor/metrics/alert)        |
 |PowerShell      | [引用](/powershell/module/az.monitor/add-azmetricalertrule)       |  [引用](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
-| Azure Resource Manager 模板 | [经典警报](./alerts-enable-template.md)|[新指标警报](./alerts-metric-create-templates.md)|
+| Azure 资源管理器模板 | [经典警报](./alerts-enable-template.md)|[新指标警报](./alerts-metric-create-templates.md)|
 
 ## <a name="notification-payload-changes"></a>通知有效负载更改
 
@@ -70,7 +70,7 @@ ms.locfileid: "98944475"
 
 ## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>修改逻辑应用以接收指标警报通知
 
-如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 执行以下步骤：
+如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 请执行下列步骤：
 
 1. 创建新的逻辑应用。
 

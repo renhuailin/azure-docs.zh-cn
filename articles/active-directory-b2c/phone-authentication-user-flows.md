@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ce9b60ead9aff792bf2e4e98841469d58620ccd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 1ed0ca069f29413083356a3147d4b97f1b6ed981
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754569"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525189"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows-preview"></a>为用户流 (预览设置电话注册和登录) 
 
@@ -39,15 +39,15 @@ ms.locfileid: "96754569"
 
 默认情况下，在本地帐户标识提供者设置中启用电子邮件注册。 可以通过选择或取消选择 "电子邮件注册"、"用户名" 或 "电话号码"，更改租户中将支持的标识类型。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 在顶部菜单中选择 " **目录 + 订阅** " 筛选器并选择包含 Azure AD 租户的目录，确保使用的是包含 Azure AD B2C 租户的目录。
 
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 
-4. 在 " **管理**" 下，选择 " **标识提供者**"。
+4. 在“管理”下，选择“标识提供者” 。
 
-5. 在 "标识提供者" 列表中，选择 " **本地帐户**"。
+5. 在标识提供者列表中，选择“本地帐户”。
 
    ![标识提供者选择本地帐户](media/phone-authentication-user-flows/identity-provider-local-account.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "96754569"
 
 下面的示例演示如何将电话注册添加到新的用户流。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 
     ![Azure 门户 中的 B2C 租户、目录和订阅窗格](./media/phone-authentication-user-flows/directory-subscription-pane.png)
@@ -75,7 +75,7 @@ ms.locfileid: "96754569"
 
 5. 在“创建用户流”页面上，选择“注册和登录”用户流 。
 
-    ![选择已突出显示注册和登录流的用户流页面](./media/phone-authentication-user-flows/select-user-flow-type.png)
+    ![选择突出显示了“注册和登录”流的用户流页面](./media/phone-authentication-user-flows/select-user-flow-type.png)
 
 6. 在“选择版本”下，选择“建议”，然后选择“创建”  。 （[详细了解](user-flow-versions.md)用户流版本。）
 
@@ -89,11 +89,11 @@ ms.locfileid: "96754569"
 9. 在 " **社交标识提供者**" 下，选择要为此用户流允许的任何其他标识提供者。
 
    > [!NOTE]
-   > 默认情况下，多重身份验证 (MFA) 处于禁用状态。 你可以为手机注册用户流启用 MFA，但由于使用了电话号码作为主标识符，因此第二个身份验证因素只提供电子邮件一次性密码。
+   > 默认情况下，为注册用户流禁用多重身份验证 (MFA) 。 你可以为手机注册用户流启用 MFA，但由于使用了电话号码作为主标识符，因此第二个身份验证因素只提供电子邮件一次性密码。
 
 1. 在 " **用户属性和令牌声明** " 部分中，选择要在注册期间从用户处收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”的属性和声明。 选择“确定”。
 
-1. 选择 " **创建** " 以添加用户流。 名称中会自动附加前缀 B2C_1。
+1. 选择“创建”以添加用户流。 名称中会自动附加前缀 B2C_1。
 
 ## <a name="enable-the-recovery-email-prompt-preview"></a> (预览启用恢复电子邮件提示) 
 
@@ -110,8 +110,8 @@ ms.locfileid: "96754569"
 
 ### <a name="to-enable-the-recovery-email-prompt"></a>启用恢复电子邮件提示
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 在门户工具栏中选择“目录 + 订阅”，然后选择包含 Azure AD B2C 租户的目录。
 3. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 4. 在 Azure AD B2C 的 " **策略**" 下，选择 " **用户流**"。
 5. 从列表中选择用户流。
@@ -129,9 +129,9 @@ ms.locfileid: "96754569"
 
 在用户流中启用了手机注册和登录以及恢复电子邮件提示后，可以使用 " **运行用户流** " 来测试用户体验。
 
-1. 选择 "**策略**"  >  "**用户流**"，然后选择所创建的用户流。 在 "用户流概述" 页上，选择 " **运行用户流**"。
+1. 选择“策略” > “用户流”，然后选择所创建的用户流 。 在用户流概述页上，选择“运行用户流”。
 
-2. 对于 " **应用程序**"，选择你在步骤1中注册的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+2. 对于“应用程序”，选择在步骤 1 中注册的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 
 3. 选择 " **运行用户流** " 并验证以下行为：
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: dbda0aecdadd81da0f7681a5fc9b140157d5e8f3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3b2f111f83dbd731b69671e58d4bf9dc648a596f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756818"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526482"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 安全中心的安全建议 
 
@@ -39,11 +39,19 @@ ms.locfileid: "98756818"
 
 ## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Microsoft 如何决定需要保护和强化哪些内容？
 
-安全中心的建议基于 Azure 安全基准。 
+安全中心的建议以 Azure 安全基准为基础。 几乎每个建议都有一个从基准中的要求派生的基础策略。
 
-Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，适用于基于常见合规框架的安全与合规最佳做法。 这一广泛遵从的基准是从 [中心针对 Internet 安全 (CIS) ](https://www.cisecurity.org/benchmark/azure/) 和 [美国国家标准与技术研究院 (NIST) ](https://www.nist.gov/) ，重点介绍以云为中心的安全性。
+Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，适用于基于常见合规框架的安全与合规最佳做法。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。 详细了解 [Azure 安全基准](../security/benchmarks/introduction.md)。
 
-详细了解 [Azure 安全基准](../security/benchmarks/introduction.md)。
+查看建议的详细信息时，查看底层策略通常很有帮助。 对于策略支持的每个建议，请使用 "建议详细信息" 页中的 " **查看策略定义** " 链接直接进入适用于相关策略的 Azure 策略条目：
+
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="支持建议的特定策略的 &quot;链接到 Azure 策略&quot; 页":::
+
+使用此链接可查看策略定义并查看评估逻辑。 
+
+如果你查看有关我们的 [安全建议参考指南](recommendations-reference.md)的建议列表，你还将看到策略定义页面的链接：
+
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="直接从 Azure 安全中心建议参考页访问特定策略的 Azure 策略页":::
 
 ## <a name="monitor-recommendations"></a>监视建议 <a name="monitor-recommendations"></a>
 
@@ -63,9 +71,12 @@ Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，�
 
     该页面包括：
 
-    1. 受支持的建议的 "**强制**" 和 "**拒绝**" 按钮 (参阅 [阻止强制/拒绝建议的配置](prevent-misconfigurations.md)错误) 
+    1. 对于支持的建议，顶部工具栏将显示以下任意或所有按钮：
+        - **强制** 和 **拒绝** (参阅 [阻止强制/拒绝建议的错误配置](prevent-misconfigurations.md)) 
+        - **查看策略定义** 以直接进入基础策略的 Azure 策略条目
     1. 严重性指标
-    1. 刷新间隔（如果相关） 
+    1. **刷新间隔** (相关) 
+    1. **免除的资源** 数如果此建议存在免除，此值将显示已免除的资源数
     1. 描述 - 问题简述
     1. 修正步骤 - 修正受影响资源的安全问题时所需的手动步骤的说明。 对于带有“快速修复”的建议，可以先选择“查看修正逻辑”，然后再为资源应用建议的修补程序。 
     1. 受影响的资源 - 资源会分组到不同的选项卡中：

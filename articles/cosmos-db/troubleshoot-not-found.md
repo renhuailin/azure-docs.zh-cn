@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 2df401f7871d631ba317fb670783cad086b9a351
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7b112cc80984a761e780f134731476f9dff4f687
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96017553"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525765"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>诊断和排查 Azure Cosmos DB 的“未找到”异常
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +29,7 @@ HTTP 状态代码 404 表示资源不再存在。
 ### <a name="the-read-session-is-not-available-for-the-input-session-token"></a>读取会话不可用于输入会话令牌
 
 #### <a name="solution"></a>解决方案：
-1. 将当前 SDK 更新到可用的最新版本。 此特定错误的最常见原因已在最新的 SDK 版本中得到解决。
+1. 将当前 SDK 更新到已发布的最新版本。 此特定错误的最常见原因问题已在最新版 SDK 中得到解决。
 
 ### <a name="race-condition"></a>争用条件
 有多个 SDK 客户端实例且读取在写入之前发生。
@@ -48,7 +48,7 @@ HTTP 状态代码 404 表示资源不再存在。
 项被插入 Azure Cosmos DB，并且项 ID 中带有[无效字符](/dotnet/api/microsoft.azure.documents.resource.id?preserve-view=true&view=azure-dotnet#remarks)。
 
 #### <a name="solution"></a>解决方案：
-将 ID 更改为不包含特殊字符的其他值。 如果不能更改 ID，则可以对 ID 进行 Base64 编码以将特殊字符转义。 Base64 仍会生成一个名称，该名称包含无效字符 "/"，需要替换。
+将 ID 更改为不包含特殊字符的其他值。 如果不能更改 ID，则可以对 ID 进行 Base64 编码以将特殊字符转义。 Base64 仍然会生成一个包含无效字符“/”的名称，该字符需要替换。
 
 对于已经插入容器中的项，可以使用 RID 值来替换其 ID，而不使用基于名称的引用。
 ```c#
@@ -102,7 +102,7 @@ while (invalidItemsIterator.HasMoreResults)
 项所在的数据库或容器已删除。
 
 #### <a name="solution"></a>解决方案：
-1. [还原](./online-backup-and-restore.md#request-data-restore-from-a-backup)父资源或重新创建资源。
+1. [还原](./configure-periodic-backup-restore.md#request-restore)父资源或重新创建资源。
 1. 创建新资源来替换已删除的资源。
 
 ### <a name="7-containercollection-names-are-case-sensitive"></a>7.容器/集合名称区分大小写

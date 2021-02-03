@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ce0808bc53ae663b80da793bf33b5b371d881961
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 99e217c6d8065d19f7b03419306f4992735cb587
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222177"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526716"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保护 Kubernetes 工作负载
 
@@ -35,10 +35,10 @@ ms.locfileid: "99222177"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|预览<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|发布状态：|正式发布版 (GA)|
 |定价：|免费|
 |所需角色和权限：|用于编辑分配的 **所有者** 或 **安全管理员**<br>查看建议的 **读者**|
-|支持的群集：|需要 Kubernetes v 1.14 (或更高版本) <br>群集上没有 PodSecurityPolicy 资源 (旧的 PSP 模型) <br>不支持 Windows 节点|
+|环境要求：|需要 Kubernetes v 1.14 (或更高版本) <br>群集上没有 PodSecurityPolicy 资源 (旧的 PSP 模型) <br>不支持 Windows 节点|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
@@ -52,6 +52,8 @@ Azure 安全中心包含一系列建议，这些建议可在安装 **适用于 K
 若要配置建议，请安装  **适用于 Kubernetes 的 Azure 策略外接程序**。 
 
 - 你可以自动部署此加载项，如 [启用自动预配扩展](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)中所述。 将加载项的自动预配设置为“启用”时，默认情况下会在所有现有和未来的群集（满足加载项安装要求）中启用该扩展。
+
+    :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="使用安全中心的自动预配工具为 Kubernetes 安装策略外接程序":::
 
 - 若要手动部署外接程序：
 
@@ -90,7 +92,7 @@ Azure 安全中心包含一系列建议，这些建议可在安装 **适用于 K
     | 服务应只侦听允许的端口                                | 限制未经授权的网络访问     | **是**                |
     | 应限制对主机网络和端口的使用                     | 限制未经授权的网络访问     | **是**                |
     | 应限制替代或禁用容器 AppArmor 配置文件 | 修正安全配置        | **是**                |
-    | 只应从受信任的注册表部署容器映像            | 修正漏洞                | **是**                |
+    | 应只从受信任的注册表部署容器映像            | 修正漏洞                | **是**                |
     |||
 
 

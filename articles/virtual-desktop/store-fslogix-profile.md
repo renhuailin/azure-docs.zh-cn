@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 189ff3bbfdb3b8533defcedb77e15fef433598b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2ec166c1df9727052d4980f5d5758ece8c499880
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023082"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526596"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项
 
@@ -28,11 +28,11 @@ Windows 虚拟桌面提供 FSLogix 的配置文件容器作为建议的用户配
 |用例|常规用途|从本地 NetApp 进行超高性能或迁移|跨平台|
 |平台服务|是，Azure-本机解决方案|是，Azure-本机解决方案|不，自我管理|
 |区域可用性|所有区域|[选择区域](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|所有区域|
-|冗余|本地冗余/区域冗余/异地冗余|本地冗余|本地冗余/区域冗余/异地冗余|
-|层和性能|Standard<br>高级<br>每个共享最大为每个共享的最大 100k IOPS 约3毫秒，延迟|Standard<br>高级<br>超高性能<br>最多 320k (16K) IOPS，每卷 4.5 GBps，大约1毫秒延迟|标准 HDD：每个磁盘最多 500 IOPS<br>标准 SSD：最多为 4k IOPS 每个磁盘的限制<br>高级 SSD：每个磁盘的最大 IOPS 限制<br>建议存储空间直通的高级磁盘|
-|容量|100每个共享 TiB|100 TiB 每个卷，每个订阅最多12.5 个 PiB|每个磁盘最多 32 TiB|
+|冗余|本地冗余/区域冗余/异地冗余/地域冗余|本地冗余|本地冗余/区域冗余/异地冗余|
+|层和性能| 标准 (事务优化) <br>高级<br>每个共享最多可达 10 Gb 的每个共享，约3毫秒延迟|标准<br>高级<br>超高性能<br>最多 320k (16K) IOPS，每卷 4.5 GBps，大约1毫秒延迟|标准 HDD：每个磁盘最多 500 IOPS<br>标准 SSD：最多为 4k IOPS 每个磁盘的限制<br>高级 SSD：每个磁盘的最大 IOPS 限制<br>建议存储空间直通的高级磁盘|
+|容量|100每个共享 TiB，每个常规用途帐户最多5个 PiB |100 TiB 每个卷，每个订阅最多12.5 个 PiB|每个磁盘最多 32 TiB|
 |必需的基础结构|最小共享大小 1 GiB|最小容量池 4 TiB，最小卷大小 100 GiB|Azure IaaS 上的两个 Vm (+ 云见证) 或至少三个 Vm，磁盘不含和费用|
-|协议|SMB 2.1/3。 和 REST|NFSv3，NFSv 4.1 (预览版) ，SMB 2.x/2。x|NFSv3，NFSv 4.1，SMB 3。1|
+|协议|SMB 3.0/2.1，NFSv 4.1 (预览版) ，REST|NFSv3，NFSv 4.1 (预览版) ，SMB 2.x/2。x|NFSv3，NFSv 4.1，SMB 3。1|
 
 ## <a name="azure-management-details"></a>Azure 管理详细信息
 

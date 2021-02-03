@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: java、jakartaee、javaee、microprofile、开放式、websphere、、aks、kubernetes
-ms.openlocfilehash: 4d6e335cd4b522593091094ac6251acc97873208
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 2e025c706512b6ab3945118da996b11a5a8a9585
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508044"
+ms.locfileid: "99526884"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>在 Azure Kubernetes Service (AKS) 群集上，使用开放式自由或 WebSphere 自由部署 Java 应用程序
 
@@ -31,7 +31,7 @@ ms.locfileid: "99508044"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 在 *eastus* 位置使用 [az group create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create)命令创建资源组、以 *java 为* 中心的项目。 稍后将用于创建 Azure 容器注册表 (ACR) 实例和 AKS 群集。 
+Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 在 *eastus* 位置使用 [az group create](/cli/azure/group#az_group_create)命令创建资源组、以 *java 为* 中心的项目。 稍后将用于创建 Azure 容器注册表 (ACR) 实例和 AKS 群集。 
 
 ```azurecli-interactive
 az group create --name java-liberty-project --location eastus
@@ -39,7 +39,7 @@ az group create --name java-liberty-project --location eastus
 
 ## <a name="create-an-acr-instance"></a>创建 ACR 实例
 
-使用 [az acr create](/cli/azure/acr?view=azure-cli-latest&preserve-view=true#az_acr_create) 命令创建 acr 实例。 下面的示例创建一个名为 *youruniqueacrname* 的 ACR 实例。 请确保 *youruniqueacrname* 在 Azure 中是唯一的。
+使用 [az acr create](/cli/azure/acr#az_acr_create) 命令创建 acr 实例。 下面的示例创建一个名为 *youruniqueacrname* 的 ACR 实例。 请确保 *youruniqueacrname* 在 Azure 中是唯一的。
 
 ```azurecli-interactive
 az acr create --resource-group java-liberty-project --name youruniqueacrname --sku Basic --admin-enabled
@@ -70,7 +70,7 @@ docker login $LOGIN_SERVER -u $USER_NAME -p $PASSWORD
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-使用 [az aks create](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_create) 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 此操作将需要几分钟才能完成。
+使用 [az aks create](/cli/azure/aks#az_aks_create) 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 此操作将需要几分钟才能完成。
 
 ```azurecli-interactive
 az aks create --resource-group java-liberty-project --name myAKSCluster --node-count 1 --generate-ssh-keys --enable-managed-identity
@@ -87,13 +87,13 @@ az aks create --resource-group java-liberty-project --name myAKSCluster --node-c
 
 ### <a name="connect-to-the-aks-cluster"></a>连接到 AKS 群集
 
-若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_install_cli) 命令：
+若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli](/cli/azure/aks#az_aks_install_cli) 命令：
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials) 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
+若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group java-liberty-project --name myAKSCluster --overwrite-existing
@@ -220,7 +220,7 @@ javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   9080:3
 
 ## <a name="clean-up-the-resources"></a>清理资源
 
-若要避免 Azure 费用，应清除不需要的资源。  如果不再需要群集，请使用 [az group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete) 命令删除资源组、容器服务、容器注册表和所有相关资源。
+若要避免 Azure 费用，应清除不需要的资源。  如果不再需要群集，请使用 [az group delete](/cli/azure/group#az_group_delete) 命令删除资源组、容器服务、容器注册表和所有相关资源。
 
 ```azurecli-interactive
 az group delete --name java-liberty-project --yes --no-wait

@@ -4,16 +4,16 @@ description: 了解自动迁移过程的工作方式。
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6a2d032c6aa33b72fe422638df45ca48bf8b1036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce3550dcef174a4d970917fabfda3c4fd2a8df4
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847276"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526545"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>了解经典警报规则的自动迁移过程
 
-如前所述 [，Azure Monitor](monitoring-classic-retirement.md)中的经典警报已停用，但对于尚不支持新警报的资源仍处于有限使用。 在停用过程中， [迁移工具](alerts-using-migration-tool.md) 在 Azure 门户中提供，供客户自行触发迁移。
+如前所述 [，为](monitoring-classic-retirement.md)公有云用户停用 Azure Monitor 中的经典警报，但对于尚不支持新警报的资源仍有限制。 在停用过程中， [迁移工具](alerts-using-migration-tool.md) 在 Azure 门户中提供，供客户自行触发迁移。
 本文将指导你完成自动迁移过程，并帮助你解决你可能遇到的任何问题。
 
   > [!NOTE]
@@ -21,9 +21,9 @@ ms.locfileid: "87847276"
 
 ## <a name="what-will-happen-during-the-automatic-migration-process"></a>自动迁移过程中将发生什么情况？
 
-- 从 **2019 年9月1日**开始，客户将无法创建除 [特定指标](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts)之外的任何新的经典警报规则。
+- 从 **2019 年9月1日** 开始，客户将无法创建除 [特定指标](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts)之外的任何新的经典警报规则。
 - 对于例外，客户可以继续创建新的经典警报规则并使用其经典警报，直到进一步公告。
-- 从 **2019 年9月1日**开始，对于具有经典警报的所有客户，将成批触发经典警报的迁移。
+- 从 **2019 年9月1日** 开始，对于具有经典警报的所有客户，将成批触发经典警报的迁移。
 - 与自愿迁移工具一样，某些不可迁移的经典警报规则将保留原样。 在进一步公告之前，将继续支持这些经典警报规则。 但是，任何无效的经典警报规则将被删除，因为它们不起作用。
 监视已删除目标资源或 [不再受支持的度量值](alerts-understand-migration.md#classic-alert-rules-on-deprecated-metrics) 的任何经典警报规则都被视为无效。
 - 订阅启动后，除非有任何问题，否则应在一小时内完成迁移。 [在 Azure Monitor 中，客户可以监视迁移边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)上的迁移状态。

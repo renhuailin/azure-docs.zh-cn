@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 720a0e25f3486f32ffed897e54033fd4b68dace4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368ab1bc6a1fc13c3001b437c3c2a8be2bbb9c04
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848119"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525985"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor 中的统一警报和监视替换经典警报和监视
 
 Azure Monitor 现已成为统一的完整堆栈监视服务，支持跨资源“一个指标”和“一个警报”；如需更多信息，请参阅[关于新 Azure Monitor 的博客文章](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/)。新的 Azure 监视和警报致力于成为更快速、更智能和可扩展的平台 - 与不断增长的云计算扩展齐头并进，并与 Microsoft 智能云理念保持一致。
 
-使用新的 Azure 监视和警报平台时，Azure Monitor 中的经典警报将会停用，但对于尚不支持新警报的资源仍有限制使用。 这些警报的停用日期已进一步延长。 对于剩余的警报迁移、 [Azure 政府云和](../../azure-government/documentation-government-welcome.md) [Azure 中国世纪互联](https://docs.azure.cn/)，将很快宣布新的日期。
+使用新的 Azure 监视和警报平台时，会为公有云用户停用 Azure Monitor 中的经典警报，但对于尚不支持新警报的资源仍有限制使用。 这些警报的停用日期已进一步延长。 对于剩余的警报迁移、 [Azure 政府云和](../../azure-government/documentation-government-welcome.md) [Azure 中国世纪互联](https://docs.azure.cn/)，将很快宣布新的日期。
 
- ![Azure 门户中的经典警报](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
+ ![Azure 门户中的经典警报](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 
 我们鼓励你开始在新平台中重新创建警报。
 
@@ -48,7 +48,7 @@ Azure 资源的新指标按以下形式提供：
 
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>经典监视和警报平台的停用
 
-如前文所述，旧的经典监视和警报已停用;即使在不支持新警报的资源的情况下，仍会将相关 Api、Azure 门户接口和服务的关闭包括在内。 具体而言，将弃用以下功能：
+如前文所述，为公有云用户停用旧的经典监视和警报;即使在不支持新警报的资源的情况下，仍会将相关 Api、Azure 门户接口和服务的关闭包括在内。 具体而言，将弃用以下功能：
 
 - 当前可通过 Azure 门户的[警报(经典)部分](./alerts-classic.overview.md)使用 Azure 资源的旧（经典）指标和警报；可作为 [microsoft.insights/alertrules](/rest/api/monitor/alertrules) 资源访问
 - 当前可通过 Azure 门户的[警报(经典)部分](./alerts-classic.overview.md)使用 Application Insights 的旧（经典）平台和自定义指标以及相关警报；可作为 [microsoft.insights/alertrules](/rest/api/monitor/alertrules) 资源访问

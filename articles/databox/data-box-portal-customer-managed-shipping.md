@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 9643e62f085888808b95698d068c5e383fb8d539
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 07529b18191c71776a9a36edbfa4cfd8ded5af4f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337961"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524543"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>在 Azure 门户中对 Azure Data Box 使用自我托管交付功能
 
@@ -24,12 +24,14 @@ ms.locfileid: "94337961"
 订购 [Azure Data Box](data-box-deploy-ordered.md) 时，可选择“自我托管交付”选项。 “自我托管交付”功能仅在以下区域提供：
 
 * 美国政府
+* 英国
 * 欧洲西部
 * 日本
 * 新加坡
 * 韩国
 * 印度
 * 南非
+* 澳大利亚
 
 ## <a name="use-self-managed-shipping"></a>使用自我托管交付
 
@@ -41,7 +43,7 @@ ms.locfileid: "94337961"
 
 2. 选择 "发货类型" 时，请选择 " **自行管理" 传送** 选项。 仅当你位于先决条件中所述的受支持的区域时，此选项才可用。
 
-3. 提供送货地址后，需要验证该地址并完成下单。
+3. 提供寄送地址后，需要对其进行验证并完成订单。
 
    ![自行管理的装运、验证和添加地址](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
@@ -57,11 +59,11 @@ ms.locfileid: "94337961"
 
    ![为 Azure 说明计划分拣](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-email-01.png)
 
-6. 安排好设备提货后，可在“Azure 提货安排”窗格中查看设备授权代码。
+6. 计划设备拾取后，可以在 " **Azure 计划分拣** " 窗格中查看设备授权代码。
 
    ![查看设备授权代码](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   记下此授权代码。 根据安全要求，在制定计划时，有必要显示将到达的人员的姓名，这是必需的。
+   记下此授权代码。 根据安全要求，在制定计划时，需要提供将获得的人员的姓名，这是必需的。
 
    你还需要提供将前往数据中心提货的人员的详细信息。 你或联系人员必须携带政府批准的带照片的 ID，我们将在数据中心验证该 ID。
 
@@ -73,16 +75,16 @@ ms.locfileid: "94337961"
 
 8. 提出设备后，可将数据复制到你所在站点上的 Data Box。 数据复制完成后，可准备交付 Data Box。 有关详细信息，请参阅[准备交付](data-box-deploy-picked-up.md#prepare-to-ship)。
 
-   “准备交付”步骤需要在不出现任何严重错误的情况下完成，否则，需要在做出必要的修复后再次运行此步骤。 准备交付成功完成后，可以在设备本地用户界面上查看交货的授权代码。
+   **准备交付** 步骤需要在没有任何严重错误的情况下完成。 否则，需要在做出必要的修复后再次运行此步骤。 **准备交付** 步骤成功完成后，可以在设备本地用户界面上查看该下拉的授权代码。
 
    > [!NOTE]
    > 请勿通过电子邮件共享授权代码。 仅在数据中心交货时进行验证该代码。
 
-9. 如果你收到了 drop off 约会，则该订单应该已准备好在 Azure 门户中的 **Azure 数据中心** 状态下接收。 按照“安排交货”下的说明退回设备。
+9. 如果你收到了用于删除的约会，则该订单应该已准备好在 Azure 门户中的 **Azure 数据中心** 状态下接收。 按照“安排交货”下的说明退回设备。
 
    ![设备下拉说明](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
 
-10. 在你的 ID 和授权代码经过验证，且你将设备交付给数据中心后，订单状态应为“已接收”。
+10. 验证 ID 和授权代码后，在数据中心内丢弃设备后，应 **收到** 订单状态。
 
     ![具有接收状态的订单](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-01.png)
 

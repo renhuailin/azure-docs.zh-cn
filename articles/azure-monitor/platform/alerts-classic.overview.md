@@ -4,17 +4,17 @@ description: 经典警报将被弃用。 使用警报可以监视 Azure 资源�
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: c7dfbd60b7a668b849c3150bb16e40285c345634
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 82923b461980fbc0740cad08a9e699765f17abc7
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015343"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525511"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure 中的经典警报是什么？
 
 > [!NOTE]
-> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](./alerts-overview.md)。 经典警报已 [停](./monitoring-classic-retirement.md)用，但对于尚不支持新警报的资源仍有限制。
+> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](./alerts-overview.md)。 对于公有云用户，经典警报会被 [停](./monitoring-classic-retirement.md) 用，但对于尚不支持新警报的资源仍有限制。
 >
 
 警报允许配置数据条件，并在条件与最新监视数据匹配时发出通知。

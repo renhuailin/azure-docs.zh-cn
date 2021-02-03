@@ -1,6 +1,6 @@
 ---
 title: 为 Azure API 管理自承载网关配置本地指标和日志 | Microsoft Docs
-description: 了解如何为 Azure API 管理自承载网关配置本地指标和日志
+description: 了解如何在 Kubernetes 群集上配置 Azure API 管理的本地指标和日志
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -10,18 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/30/2020
+ms.date: 02/01/2021
 ms.author: apimpm
-ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e34c25b2e3bfa845e258dc5d9699497d7ffcb004
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254497"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526664"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>为 Azure API 管理自承载网关配置本地指标和日志
 
-本文详细介绍如何为[自承载网关](./self-hosted-gateway-overview.md)配置本地指标和日志。 若要配置云指标和日志，请参阅[本文](how-to-configure-cloud-metrics-logs.md)。 
+本文详细介绍了如何配置 Kubernetes 群集上部署的 [自承载网关](./self-hosted-gateway-overview.md) 的本地指标和日志。 若要配置云指标和日志，请参阅[本文](how-to-configure-cloud-metrics-logs.md)。 
 
 ## <a name="metrics"></a>指标
 自承载网关支持 [StatsD](https://github.com/statsd/statsd)，它已成为指标收集和聚合的统一协议。 本部分介绍将 StatsD 部署到 Kubernetes 的完整步骤，包含配置网关以通过 StatsD 发出指标，以及使用 [Prometheus](https://prometheus.io/) 监视指标。 
@@ -65,7 +65,7 @@ spec:
     spec:
       containers:
       - name: sputnik-metrics-statsd
-        image: prom/statsd-exporter
+        image: mcr.microsoft.com/aks/hcp/prom/statsd-exporter
         ports:
         - name: tcp
           containerPort: 9102
@@ -80,7 +80,7 @@ spec:
           - mountPath: /tmp
             name: sputnik-metrics-config-files
       - name: sputnik-metrics-prometheus
-        image: prom/prometheus
+        image: mcr.microsoft.com/oss/prometheus/prometheus
         ports:
         - name: tcp
           containerPort: 9090
