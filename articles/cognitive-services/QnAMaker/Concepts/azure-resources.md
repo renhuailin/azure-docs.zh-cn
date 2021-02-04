@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: b5f7f494c9d0969fbf9431d0b552dafa21a5eace
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 38115f18d9b35545912fad97767f38fd3827d626
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705398"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559984"
 ---
 # <a name="azure-resources-for-qna-maker"></a>适用于 QnA Maker 的 Azure 资源
 
@@ -58,7 +58,7 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 
     例如，如果你的层有 15 个允许的索引，则可以发布 14 个知识库（每个已发布的知识库有 1 个索引）。 第 15 个索引用于所有知识库以进行创作和测试。
 
-* **源文档的数量**：QnA Maker 管理服务的免费 SKU 将可以通过门户和 API 管理的文档数限制为 3（每个文档的大小限制为 1 MB）。 标准 SKU 对于可以管理的文档数没有限制。 有关更多详细信息，请参阅[此处](https://aka.ms/qnamaker-pricing)。
+* **源文档的数量**：QnA Maker 管理服务的免费 SKU 将可以通过门户和 API 管理的文档数限制为 3（每个文档的大小限制为 1 MB）。 标准 SKU 对于可以管理的文档数没有限制。 请 [在此处](https://aka.ms/qnamaker-pricing)查看更多详细信息。
 
 下表提供了一些概要准则。
 
@@ -66,7 +66,7 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 | -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | **试验**        | 免费 SKU             | 免费层   | 免费层    | 分别最多发布 2 KB、50 MB 大小  |
 | **开发/测试环境**   | 标准 SKU         | 共享      | 基本        | 分别最多发布 14 KB、2 GB 大小    |
-| **生产环境** | 标准 SKU         | 基本       | Standard     | 分别最多发布 49 KB、25 GB 大小 |
+| **生产环境** | 标准 SKU         | 基本       | 标准     | 分别最多发布 49 KB、25 GB 大小 |
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
@@ -86,15 +86,15 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 
     例如，如果您的层有15个允许的索引，则可以为每个已发布知识库)  (1 个索引发布14个知识库。 第 15 个索引用于所有知识库以进行创作和测试。 如果选择使用不同语言的知识库，则只能发布7个知识库。
 
-* **作为源的文档数**： QnA Maker 管理的 (预览版) 是免费服务，并且对于可以添加为源的文档数没有限制。 有关更多详细信息，请参阅[此处](https://aka.ms/qnamaker-pricing)。
+* **作为源的文档数**： QnA Maker 管理的 (预览版) 是免费服务，并且对于可以添加为源的文档数没有限制。 请 [在此处](https://aka.ms/qnamaker-pricing)查看更多详细信息。
 
 下表提供了一些概要准则。
 
 |                            |Azure 认知搜索 | 限制                      |
 | -------------------------- |------------ | -------------------------------- |
 | **试验**        |免费层    | 分别最多发布 2 KB、50 MB 大小  |
-| **开发/测试环境**   |Basic        | 分别最多发布 14 KB、2 GB 大小    |
-| **生产环境** |Standard     | 分别最多发布 49 KB、25 GB 大小 |
+| **开发/测试环境**   |基本        | 分别最多发布 14 KB、2 GB 大小    |
+| **生产环境** |标准     | 分别最多发布 49 KB、25 GB 大小 |
 
 ---
 
@@ -232,22 +232,14 @@ QnA Maker 的管理服务仅用于 QnA Maker 门户和初始数据处理。 此�
 
 QnA Maker 服务处理两种类型的密钥： **创作密钥** 和用于在应用服务中托管的运行时的 **查询终结点密钥** 。
 
-如果你正在寻找 **订阅密钥**， [术语已更改](#subscription-keys)。
-
 通过 Api 向服务发出请求时使用这些密钥。
 
 ![密钥管理](../media/qnamaker-how-to-key-management/key-management.png)
 
 |名称|位置|目的|
 |--|--|--|
-|创作密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
+|创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
 |查询终结点密钥|[QnA Maker 门户](https://www.qnamaker.ai)|这些键用于查询已发布的知识库终结点，以获取用户问题的响应。 通常在聊天机器人中或连接到 QnA Maker 服务的客户端应用程序代码中使用此查询终结点。 这些密钥是在您发布 QnA Maker 知识库时创建的。<br><br>在 " **服务设置** " 页中查找这些密钥。 在下拉菜单上页面右上角的用户菜单中找到此页。|
-
-### <a name="subscription-keys"></a>订阅密钥
-
-术语 "创作" 和 "查询" 终结点是纠正条款。 以前的术语是 **订阅密钥**。 如果你看到其他文档引用订阅密钥，则这些文档等效于运行时)  (使用的创作和查询终结点密钥。
-
-您必须知道该密钥所访问的内容、知识库管理或知识库查询，才能知道您需要找到哪个密钥。
 
 ### <a name="recommended-settings-for-network-isolation"></a>用于网络隔离的推荐设置
 
@@ -311,22 +303,14 @@ QnA Maker 托管的 (预览版) 资源提供对创作和发布 Api 的访问，�
 
 QnA Maker 托管 (预览版) 服务处理两种密钥： **创作密钥** 和 **Azure 认知搜索密钥** ，用于访问客户订阅中的服务。
 
-如果你正在寻找 **订阅密钥**， [术语已更改](#subscription-keys)。
-
 通过 Api 向服务发出请求时使用这些密钥。
 
 ![密钥管理托管预览版](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
 
 |名称|位置|目的|
 |--|--|--|
-|创作密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
+|创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
 |Azure 认知搜索管理密钥|[Azure 门户](../../../search/search-security-api-keys.md)|这些密钥用于与在用户的 Azure 订阅中部署的 Azure 认知搜索服务通信。 将 Azure 认知搜索与 QnA Maker 托管 (预览版) 服务相关联时，管理密钥会自动传递到 QnA Maker 服务。 <br><br>可以在 "**密钥**" 页上的 " **Azure 认知搜索** 资源上找到这些密钥。|
-
-### <a name="subscription-keys"></a>订阅密钥
-
-术语 "创作" 和 "查询" 终结点是纠正条款。 以前的术语是 **订阅密钥**。 如果你看到其他文档引用订阅密钥，则这些文档等效于运行时)  (使用的创作和查询终结点密钥。
-
-您必须知道该密钥所访问的内容、知识库管理或知识库查询，才能知道您需要找到哪个密钥。
 
 ### <a name="recommended-settings-for-network-isolation"></a>用于网络隔离的推荐设置 
 

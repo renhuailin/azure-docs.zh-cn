@@ -6,12 +6,12 @@ ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: d4053cd02dd11922a402971c7f3934a8b818eaa4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e05a4cbbc5fefbfe8a92914ef480f32bdf43ca37
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015897"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560208"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
 
@@ -32,7 +32,7 @@ WHERE R.Expired = '1'
 
 ## <a name="azure-blob-storage"></a>Azure Blob 存储
 
-引用数据建模为 blob 序列（在输入配置中定义），这些 blob 按blob 名称中指定的日期/时间顺序升序排列。 它 **仅** 支持使用 **大于** 序列中最后一个 blob 指定的日期/时间的日期/时间添加到序列的末尾。
+引用数据建模为 blob 序列（在输入配置中定义），这些 blob 按blob 名称中指定的日期/时间顺序升序排列。 它 **仅** 支持使用 **大于** 序列中最后一个 blob 指定的日期/时间的日期/时间添加到序列的末尾。 有关详细信息，请参阅在 [Azure 流分析作业中使用 Blob 存储中的引用数据](data-protection.md)。
 
 ### <a name="configure-blob-reference-data"></a>配置 blob 参考数据
 
@@ -41,7 +41,7 @@ WHERE R.Expired = '1'
 |**属性名称**  |**说明**  |
 |---------|---------|
 |输入别名   | 一个友好名称会用于作业查询，以便引用此输入。   |
-|存储帐户   | 存储 Blob 所在的存储帐户的名称。 如果其与流分析作业所在订阅相同，则可从下拉菜单中进行选择。   |
+|存储帐户   | 存储 blob 的存储帐户的名称。 如果其与流分析作业所在订阅相同，则可从下拉菜单中进行选择。   |
 |存储帐户密钥   | 与存储帐户关联的密钥。 如果存储帐户的订阅与流分析作业相同，则自动填充此密钥。   |
 |存储容器   | 容器对存储在 Microsoft Azure Blob 服务中的 blob 进行逻辑分组。 将 blob 上传到 Blob 服务时，必须为该 blob 指定一个容器。   |
 |路径模式   | 这是必需属性，用于在指定的容器中定位 blob。 在路径中，可以选择指定一个或多个使用以下 2 个变量的实例：<BR>{date}、{time}<BR>示例 1：products/{date}/{time}/product-list.csv<BR>示例 2：products/{date}/product-list.csv<BR>示例 3：product-list.csv<BR><br> 如果指定路径中不存在 blob，流分析作业将无限期地等待 blob 变为可用状态。   |
@@ -110,13 +110,13 @@ Azure SQL 数据库参考数据由流分析作业进行检索并作为快照存�
 
 ## <a name="size-limitation"></a>大小限制
 
-建议使用小于 300 MB 的参考数据集，以获得最佳性能。 包含6个或更多的作业支持 5 GB 或更低的引用数据集。 使用非常大的引用数据可能会影响作业的端到端延迟。 随着查询复杂性增加以包括有状态处理（如开窗聚合、临时联接接和临时分析函数），支持的参考数据最大大小将会减小。 如果 Azure 流分析无法加载参考数据并执行复杂操作，则作业将耗尽内存并失败。 在这种情况下，SU % 利用率指标将达到 100%。    
+建议使用小于 300 MB 的参考数据集，以获得最佳性能。 具有 6 个 SU 或更多 SU 的作业支持 5 GB 或更小的参考数据集。 使用非常大的参考数据可能会影响作业的端到端延迟。 随着查询复杂性增加以包括有状态处理（如开窗聚合、临时联接接和临时分析函数），支持的参考数据最大大小将会减小。 如果 Azure 流分析无法加载参考数据并执行复杂操作，则作业将耗尽内存并失败。 在这种情况下，SU % 利用率指标将达到 100%。    
 
 |**流单元数**  |**建议的大小**  |
 |---------|---------|
 |1   |50 MB 或更小   |
 |3   |150 MB 或更小   |
-|至少 6   |5 GB 或更低。    |
+|至少 6   |5 GB 或更小。    |
 
 对压缩的支持不可用于参考数据。
 
@@ -139,13 +139,13 @@ JOIN    refData2 ON refData2.Desc = Step1.Desc
 
 ## <a name="iot-edge-jobs"></a>IoT Edge 作业
 
-流分析边缘作业仅支持本地引用数据。 将作业部署到 IoT Edge 设备时，它将从用户定义的文件路径中加载参考数据。 在设备上将参考数据文件准备就绪。 对于 Windows 容器，请将参考数据文件放置在本地驱动器上并通过 Docker 容器共享本地驱动器。 对于 Linux 容器，请创建一个 Docker 卷并将该数据文件填充到该卷。
+流分析边缘作业仅支持本地参考数据。 将作业部署到 IoT Edge 设备时，它将从用户定义的文件路径中加载参考数据。 在设备上将参考数据文件准备就绪。 对于 Windows 容器，请将参考数据文件放置在本地驱动器上并通过 Docker 容器共享本地驱动器。 对于 Linux 容器，请创建一个 Docker 卷并将该数据文件填充到该卷。
 
-IoT Edge 更新的引用数据由部署触发。 触发后，流分析模块将选取更新的数据，而不会停止正在运行的作业。
+IoT Edge 上的参考数据更新将由部署触发。 在触发后，流分析模块会选取更新的数据且不停止正在运行的作业。
 
 有两种方式可用来更新参考数据：
 
-* 更新 Azure 门户中的流分析作业的引用数据路径。
+* 从 Azure 门户中更新流分析作业中的参考数据路径。
 
 * 更新 IoT Edge 部署。
 

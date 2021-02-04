@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: eafdebc795d5bede7fa52a3562d33c806035697f
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 85f239afd1b9263440abff1f924c12cdb7eeadaa
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704425"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560276"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>如何创建人为标记的听录
 
@@ -32,7 +32,7 @@ ms.locfileid: "98704425"
 
 以下是一些示例：
 
-| 要避免的字符 | 替换 | 注意 |
+| 要避免的字符 | 替换 | 说明 |
 | ------------------- | ------------ | ----- |
 | “Hello world” | “Hello world” | 左引号和右引号都已替换为相应的 ASCII 字符。 |
 | John’s day | John's day | 撇号已替换为相应的 ASCII 字符。 |
@@ -89,7 +89,7 @@ ms.locfileid: "98704425"
 
 以下是一些示例：
 
-| 要避免的字符 | 替换   | 注意 |
+| 要避免的字符 | 替换   | 说明 |
 | ------------------- | -------------- | ----- |
 | "你好" | "你好" | 左引号和右引号都已替换为相应的字符。 |
 | 需要什么帮助? | 需要什么帮助？| 问号已替换为相应的字符。 |
@@ -166,6 +166,10 @@ ms.locfileid: "98704425"
 | Frankfurter Ring | frankfurter ring         |
 | ¡Eine Frage!     | eine frage               |
 | wir, haben       | wir haben                |
+
+### <a name="text-normalization-for-japanese"></a>日语文本规范化
+
+在日语 (ja-jp) 中，每个句子的最大长度为90个字符。 带有较长句子的行将被丢弃。 若要添加较长的文本，请在 "介于" 之间插入句点。
 
 ## <a name="next-steps"></a>后续步骤
 

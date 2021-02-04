@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/29/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 7c09a7f6c6a313852fc6212c6190a584ba5f67bd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7821d94ed032fd0fc52a756766e6a9af7c82cfde
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409886"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559232"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>阻止无关联的 DNS 项并避免子域接管
 
 本文介绍了子域接管造成的常见安全威胁，以及可采取的缓解措施。
 
 
-## <a name="what-is-subdomain-takeover"></a>什么是子域接管？
+## <a name="what-is-a-subdomain-takeover"></a>什么是子域接管？
 
 子域接管是定期创建和删除大量资源的组织会遇到的一种常见严重威胁。 当你有 [DNS 记录](../../dns/dns-zones-records.md#dns-records)指向已取消预配的 Azure 资源时，可能会发生子域接管。 这类 DNS 记录也称为“无关联的 DNS”项。 CNAME 记录特别容易受到此威胁的攻击。 子域接管使恶意操作者能够将专用于某组织的域的流量重定向到一个执行恶意活动的站点。
 
@@ -144,6 +144,15 @@ ms.locfileid: "94409886"
 
 一些 Azure 服务提供了相关功能来帮助创建预防措施，下面是详细介绍。 必须根据贵组织的最佳做法或标准操作程序来建立防止此问题的其他方法。
 
+### <a name="enable-azure-defender-for-app-service"></a>为应用服务启用 Azure Defender
+
+Azure 安全中心的集成云工作负荷保护平台 (CWPP) ，Azure Defender 提供一系列计划来保护 Azure、混合和多云资源和工作负荷。
+
+**适用于应用服务计划的 Azure Defender** 包含无关联的 DNS 检测。 启用此计划后，如果你解除应用服务网站的授权，但不从 DNS 注册机构删除其自定义域，你会收到安全警报。
+
+无论你的域是使用 Azure DNS 还是外部域注册机构来管理，并且适用于 Windows 和 Linux 上的应用服务，Azure Defender 的无关联 DNS 保护功能可用。
+
+若要深入了解 azure defender 计划，请参阅 [Azure Defender 应用服务简介](../../security-center/defender-for-app-service-introduction.md)。
 
 ### <a name="use-azure-dns-alias-records"></a>使用 Azure DNS 别名记录
 
@@ -156,7 +165,7 @@ Azure DNS 的[别名记录](../../dns/dns-alias.md#scenarios)通过将 DNS 记�
 
 尽管目前服务产品有限，但建议尽可能使用别名记录来防止子域接管。
 
-[详细了解 Azure DNS 的别名记录的功能](../../dns/dns-alias.md#capabilities)。
+[详细了解 Azure DNS 别名记录的功能](../../dns/dns-alias.md#capabilities)。
 
 
 
@@ -166,7 +175,7 @@ Azure DNS 的[别名记录](../../dns/dns-alias.md#scenarios)通过将 DNS 记�
 
 这些记录不会阻止使用 CNAME 项中的名称创建 Azure 应用服务。 如果无法证明域名的所有权，则威胁操纵者无法接收流量或控制内容。
 
-[详细了解如何将现有的自定义 DNS 名称映射到 Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md)。
+[详细了解如何将现有的自定义 DNS 名称映射到 Azure 应用服务](../../app-service/app-service-web-tutorial-custom-domain.md)。
 
 
 
@@ -202,8 +211,10 @@ Azure DNS 的[别名记录](../../dns/dns-alias.md#scenarios)通过将 DNS 记�
 
 若要详细了解可用于防止子域接管的相关服务和 Azure 功能，请参阅以下页面。
 
-- [防止无关联的 DNS 记录与 Azure DNS](../../dns/dns-alias.md#prevent-dangling-dns-records)
+- [启用用于应用服务的 Azure Defender](../../security-center/defender-for-app-service-introduction.md) -在检测到无关联 DNS 条目时接收警报
 
-- [在 Azure App Service 中添加自定义域时使用域验证 ID](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
+- [防止与 Azure DNS 无关联的 DNS 记录](../../dns/dns-alias.md#prevent-dangling-dns-records)
+
+- [在 Azure 应用服务中添加自定义域时使用域验证 ID](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
 
 - [快速入门：使用 Azure PowerShell 运行首个 Resource Graph 查询](../../governance/resource-graph/first-query-powershell.md)

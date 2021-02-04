@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: e485c2f0a7deeffe68c932688658ef099fec510e
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 97042479419cbc9d634a06e2dcbcccf9c8fde62b
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492749"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560473"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
@@ -210,7 +210,7 @@ az ml computetarget create aks -n myaks
 
 时间估计：大约 5 分钟。
 
-如果 Azure 订阅中已有 AKS 群集并且其版本为 1.17 或更低版本，则可以使用该群集来部署映像。
+如果 Azure 订阅中已有 AKS 群集，则可将其用于工作区。
 
 > [!TIP]
 > 现有的 AKS 群集除了位于 Azure 机器学习工作区，还可位于 Azure 区域中。

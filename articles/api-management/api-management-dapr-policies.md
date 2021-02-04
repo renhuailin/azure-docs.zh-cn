@@ -6,12 +6,12 @@ ms.author: vlvinogr
 ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 9d1ba226e3ca1276658f7e72e9094918f0379a77
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: b8e253f75f56f961a24a441188b7a8e571622667
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653531"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560233"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API 管理 Dapr 集成策略
 
@@ -89,7 +89,7 @@ template:
 
 ### <a name="attributes"></a>属性
 
-| 特性        | 说明                     | 必须 | 默认 |
+| 属性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | 必须设置为“dapr”           | 是      | 不适用     |
 | dapr-app-id      | 目标微服务的名称。 映射到 Dapr 中的 [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 是 | 不适用 |
@@ -111,7 +111,7 @@ template:
 ### <a name="policy-statement"></a>策略语句
 
 ```xml
-<publish-to-dapr pubsub-name="pubsub-name" topic=”topic-name” ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid” content-type="application/json">
+<publish-to-dapr pubsub-name="pubsub-name" topic="topic-name" ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template="Liquid" content-type="application/json">
     <!-- message content -->
 </publish-to-dapr>
 ```
@@ -157,7 +157,7 @@ template:
 
 ### <a name="attributes"></a>属性
 
-| 特性        | 说明                     | 必须 | 默认 |
+| 属性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
 | pubsub-name      | 目标 PubSub 组件的名称。 映射到 Dapr 中的 [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 参数。 如果不存在，则 topic 属性值必须采用 `pubsub-name/topic-name` 形式。    | 否       | 无    |
 | 主题            | 主题的名称。 映射到 Dapr 中的 [topic](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 参数。               | 是      | 空值     |
@@ -183,9 +183,9 @@ template:
 ### <a name="policy-statement"></a>策略语句
 
 ```xml
-<invoke-dapr-binding name=”bind-name" operation="op-name" ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid content-type="application/json">
+<invoke-dapr-binding name="bind-name" operation="op-name" ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template="Liquid" content-type="application/json">
     <metadata>
-        <item key=”item-name”><!-- item-value --></item>
+        <item key="item-name"><!-- item-value --></item>
     </metadata>
     <data>
         <!-- message content -->
@@ -243,7 +243,7 @@ template:
 
 ### <a name="attributes"></a>属性
 
-| 特性        | 说明                     | 必须 | 默认 |
+| 属性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
 | name            | 目标绑定名称。 必须与 Dapr 中的[已定义](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure)的绑定名称匹配。           | 是      | 不适用     |
 | operation       | 目标操作名称（特定于绑定）。 映射到 Dapr 中的[操作](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings)属性。 | 否 | 无 |

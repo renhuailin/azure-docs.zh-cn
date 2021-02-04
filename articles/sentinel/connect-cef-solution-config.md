@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 80e5cc18888b0e014fc1f617ca27dee05146472e
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 07685cccf5a8dce99ae13e6df5186a5da44b1338
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567675"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559412"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>步骤2：配置安全解决方案以发送 CEF 消息
 
@@ -30,6 +30,7 @@ ms.locfileid: "98567675"
 如果你的安全解决方案已经具有现有连接器，请使用以下连接器特定的说明：
 
 - [AI Vectra 检测](connect-ai-vectra-detect.md)
+- [Akamai 安全事件](connect-akamai-security-events.md)
 - [Check Point](connect-checkpoint.md)
 - [Cisco ASA](connect-cisco.md)
 - [Citrix WAF](connect-citrix-waf.md)
@@ -39,11 +40,12 @@ ms.locfileid: "98567675"
 - [Forcepoint 产品](connect-forcepoint-casb-ngfw.md)
 - [Fortinet](connect-fortinet.md)
 - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
+- [Imperva WAF 网关](connect-imperva-waf-gateway.md)
 - [One Identity Safeguard](connect-one-identity.md)
 - [Palo Alto Networks](connect-paloalto.md)
-- [Thycotic 密钥服务器](connect-thycotic-secret-server.md)
+- [Thycotic Secret Server](connect-thycotic-secret-server.md)
 - [Trend Micro Deep Security](connect-trend-micro.md)
-- [走向微 TippingPoint](connect-trend-micro-tippingpoint.md)
+- [Trend Micro TippingPoint](connect-trend-micro-tippingpoint.md)
 - [WireX 网络取证平台](connect-wirex-systems.md)
 - [Zscaler](connect-zscaler.md)
 ## <a name="configure-any-other-solution"></a>配置任何其他解决方案

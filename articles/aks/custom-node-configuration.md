@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d60a241506dbcf3e038f79c99830ef1a81c06b88
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 589081149d08983d3cd5a4a8822873f5a6cfca0e
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735258"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559435"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>自定义 Azure Kubernetes Service (AKS) 节点池的节点配置 (预览) 
 
@@ -166,7 +166,7 @@ az extension update --name aks-preview
 }
 ```
 
-使用上一步中创建的 JSON 文件创建新群集，指定 kublet 和 OS 配置。 
+使用上一步中创建的 JSON 文件创建新群集，指定 kubelet 和 OS 配置。 
 
 > [!NOTE]
 > 创建群集时，可以指定 kubelet 配置和/或 OS 配置。 如果在创建群集时指定配置，则只会对初始节点池中的节点应用该配置。 未在 JSON 文件中配置的任何设置都将保留默认值。
@@ -187,7 +187,7 @@ az aks nodepool add --name mynodepool1 --cluster-name myAKSCluster --resource-gr
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 [如何配置 AKS 群集](cluster-configuration.md)。
-- 了解如何 [升级群集中的节点映像](node-image-upgrade.md) 。
+- 了解如何在群集中[升级节点映像](node-image-upgrade.md)。
 - 若要了解如何将群集升级到最高版本的 Kubernetes，请参阅[升级 Azure Kubernetes 服务 (AKS) 群集](upgrade-cluster.md)。
 - 若要查找有关一些常用 AKS 问题的答案，请参阅 [AKS 常见问题解答](faq.md)。
 

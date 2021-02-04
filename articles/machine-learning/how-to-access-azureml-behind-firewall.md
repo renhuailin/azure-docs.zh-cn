@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 150e1aee38a724a0d52c83219c4d214265be9274
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: dc8044ee72689634a1d4ce3e0e8b1a499404c5ce
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538062"
+ms.locfileid: "99560307"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>将防火墙后的工作区用于 Azure 机器学习
 
@@ -93,6 +93,7 @@ ms.locfileid: "99538062"
 
     | **主机名** | **用途** |
     | ---- | ---- |
+    | **graph.windows.net** | 由 Azure 机器学习计算实例/群集使用。 |
     | **anaconda.com**</br>**\*.anaconda.com** | 用于安装默认包。 |
     | \*.anaconda.org | 用于获取存储库数据。 |
     | **pypi.org** | 用于列出默认索引的依赖项（如果有），索引不会被用户设置覆盖。 如果索引被覆盖，则还必须允许“\*.pythonhosted.org”。 |
@@ -145,6 +146,7 @@ ms.locfileid: "99538062"
 | **要求** | **Azure 公共** | **Azure Government** | **Azure 中国世纪互联** |
 | ----- | ----- | ----- | ----- |
 | 计算群集/实例 | \*.batchai.core.windows.net | \*.batchai.core.usgovcloudapi.net |\*.batchai.ml.azure.cn |
+| 计算群集/实例 | graph.windows.net |  |  |
 | 计算实例 | \*.instances.azureml.net | \*.instances.azureml.us | \*.instances.azureml.cn |
 | 计算实例 | \*.instances.azureml.ms |  |  |
 
