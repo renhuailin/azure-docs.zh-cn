@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 02/03/2021
 ms.author: b-juche
-ms.openlocfilehash: 5984727f123da6e1d35d862c3f396bd85ce9e7f2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 390b025ec039d5b04cead3f6bb22fedd0e987673
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881446"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537773"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文介绍了可帮助你了解使用 Azure NetApp 文件的解决方案体系结构的最佳做法。  
@@ -73,6 +73,7 @@ ms.locfileid: "98881446"
 ### <a name="sap-hana"></a>SAP HANA 
 
 * [SAP HANA Azure 虚拟机存储配置](../virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+* [适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷](../virtual-machines/workloads/sap/hana-vm-operations-netapp.md)
 * [Red Hat Enterprise Linux 上的 Azure NetApp 文件 SAP HANA 扩展的高可用性](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
 * [在 Azure Vm 上用备用节点 SAP HANA 扩展 SUSE Linux Enterprise Server 上的 Azure NetApp 文件](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
 * [在 Azure Vm 上用备用节点 SAP HANA 扩展 Red Hat Enterprise Linux 上的 Azure NetApp 文件](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
@@ -132,7 +133,7 @@ ms.locfileid: "98881446"
 * [Azure CycleCloud： EDA HPC 实验室与 Azure NetApp 文件](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
 * [适用于半导体行业的 Azure](https://azurecomcdn.azureedge.net/cvt-f40f39cd9de2d875ab0c198a8d7b186350cf0bca161e80d7896941389685d012/mediahandler/files/resourcefiles/azure-for-the-semiconductor-industry/Azure_for_the_Semiconductor_Industry.pdf)
 
-### <a name="analytics"></a>分析
+### <a name="analytics"></a>Analytics
 
 * [Azure NetApp 文件：用于 Microsoft Azure 上的 SAS 网格的共享文件系统](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192)
 * [将 Microsoft Azure 与 SAS®配合使用的最佳做法](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)

@@ -6,14 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: 83e1c7c27e8c5d179c4ec6aa4ba64b3367294a48
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: c19de134f40c58a687dcf6bac6ac156e46cef7da
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527336"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537537"
 ---
 # <a name="list-restorable-collections-in-azure-cosmos-db-api-for-mongodb-using-rest-api"></a>使用 REST API 在 MongoDB Azure Cosmos DB API 中列出可恢复的集合
+
+> [!IMPORTANT]
+> 时间点还原功能 (持续备份模式) 用于 Azure Cosmos DB 目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 显示特定数据库下 MongoDB 集合的所有 Azure Cosmos DB API 上完成的所有突变的事件源。 这有助于防止容器被意外删除。 此 API 需要 `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` 权限
 

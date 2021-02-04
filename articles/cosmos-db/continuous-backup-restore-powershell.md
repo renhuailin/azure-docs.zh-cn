@@ -7,16 +7,22 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 00d9e2c3b77ce4ddae105d8115cd62b5f7796e30
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 73652f821abfa4a092e4a61ffe2be9e7262a2f10
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527308"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538538"
 ---
-# <a name="configure-and-manage-continuous-backup-and-point-in-time-restore---using-azure-powershell"></a>配置和管理连续备份和时间点还原-使用 Azure PowerShell
+# <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-powershell"></a>配置和管理连续备份和时间点还原 (预览) -使用 Azure PowerShell
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Azure Cosmos DB 的时间点还原功能可帮助你从容器内的意外更改中恢复，还原已删除的帐户、数据库或容器，或还原到) 存在备份的任何区域 (。 连续备份模式允许您在过去30天内还原到任何时间点。
+> [!IMPORTANT]
+> 时间点还原功能 (持续备份模式) 用于 Azure Cosmos DB 目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+Azure Cosmos DB 的时间点还原功能 (预览版) 可帮助你从容器内的意外更改中恢复，还原已删除的帐户、数据库或容器，或还原到任何备份存在) 的区域 (。 连续备份模式允许您在过去30天内还原到任何时间点。
 
 本文介绍如何使用 Azure PowerShell 设置包含连续备份和还原数据的帐户。
 

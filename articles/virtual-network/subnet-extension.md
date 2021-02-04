@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2019
 ms.author: anupand
-ms.openlocfilehash: f718471c3f79e9a33b0e03b088f8c8d2ae0231d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 555c903dc3375080a8b0d006d2aac7216854c939
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73587506"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539292"
 ---
 # <a name="subnet-extension"></a>子网扩展
 将工作负荷迁移到公有云需要经过认真的规划和协调。 其中一个重要考虑因素是能够保留 IP 地址。 如果应用程序具有 IP 地址依赖性，或者法规要求使用特定的 IP 地址，则这项能力就非常重要。 Azure 虚拟网络允许使用所选的 IP 地址范围创建 VNet 和子网，从而解决了此问题。

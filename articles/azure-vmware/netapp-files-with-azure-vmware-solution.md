@@ -2,13 +2,13 @@
 title: Azure NetApp 文件与 Azure VMware 解决方案
 description: 结合使用 Azure NetApp 文件和 Azure VMware 解决方案 Vm，在本地服务器、Azure VMware 解决方案 Vm 和云基础结构之间迁移和同步数据。
 ms.topic: how-to
-ms.date: 01/20/2021
-ms.openlocfilehash: b4ffea23606e1829fbf713488f08bc5618180072
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.date: 02/01/2021
+ms.openlocfilehash: 8c101b652ffcefe05e9b6c11f166c1da3df2ede1
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430056"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539360"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp 文件与 Azure VMware 解决方案
 
@@ -37,7 +37,7 @@ Azure NetApp 文件在许多 Azure 区域中提供，并支持跨区域复制。
 
 本文介绍如何针对 Azure VMware 解决方案 Vm 设置、测试和验证 Azure NetApp 文件卷，作为文件共享。 在此方案中，我们使用了 NFS 协议。 Azure NetApp 文件和 Azure VMware 解决方案在同一 Azure 区域中创建。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 > [!div class="checklist"]
 > * Azure 订阅已启用 Azure NetApp 文件

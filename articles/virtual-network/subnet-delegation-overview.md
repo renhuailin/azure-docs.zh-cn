@@ -7,17 +7,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/15/2020
 ms.author: kumud
-ms.openlocfilehash: e30697fe93e2debaa68e12561f18be7f85d772a4
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2801aa6b2e2b72df815b170200587c49ec0bae14
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586408"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538986"
 ---
 # <a name="what-is-subnet-delegation"></a>什么是子网委托？
 
@@ -52,7 +52,7 @@ ms.locfileid: "97586408"
 - 指定委托子网中来自专用 IP 地址空间（10.0.0.0/8、192.168.0.0/16、172.16.0.0/12）的 IP 地址空间。
 - 指定自定义 DNS 配置包含 Azure DNS 条目。
 - 需要先删除委派，然后才能删除子网或虚拟网络。
-- 如果委托子网，则不能与专用终结点一起使用。
+- 如果委托了子网，则不能与专用终结点一起使用。
 
 注入的服务也可以添加自身的策略，如下所述：
 - **安全策略**：给定服务正常运行所需的安全规则集合。

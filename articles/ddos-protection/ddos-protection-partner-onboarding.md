@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: f6cba0118a98ea50e8020b91b9c2064299ca4ccf
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: a7a21dcaea22ed0d1c077d0c42ddb5b4bd50d24f
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019153"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539326"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>与 Azure DDoS 保护标准的合作
 本文介绍 Azure DDoS 保护标准启用的合作机会。 本文旨在帮助产品经理和业务开发角色理解投资途径，并深入了解合作价值主张。
@@ -94,3 +94,4 @@ Azure DDoS 保护标准合作机会可通过 Azure 门户、Api 和 CLI/PS 获�
 查看现有合作伙伴集成：
 
 - [Barracuda WAF 服务](https://www.barracuda.com/waf-as-a-service)
+- [来自 Radware 的 Azure 云 WAF](https://www.radware.com/resources/microsoft-azure/)

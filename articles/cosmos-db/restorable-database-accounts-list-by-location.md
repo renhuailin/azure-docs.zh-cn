@@ -6,16 +6,21 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: 2a3fbc1bb00c57c20436c19602c135f1917c6a60
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 26c07ddaf4db71961d4aeff50e482740d969f0ef
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527328"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537672"
 ---
 # <a name="list-restorable-database-accounts-by-location-using-azure-cosmos-db-rest-api"></a>使用 Azure Cosmos DB REST API 按位置列出可还原数据库帐户
 
-列出订阅和区域中可用的所有可恢复 Azure Cosmos DB 数据库帐户。 此调用需要 `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` 权限。
+> [!IMPORTANT]
+> 时间点还原功能 (持续备份模式) 用于 Azure Cosmos DB 目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+列出订阅和区域中可用的所有可恢复 Azure Cosmos DB 可还原数据库帐户。 此调用需要 `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` 权限。
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts?api-version=2020-06-01-preview

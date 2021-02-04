@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/25/2018
+ms.date: 02/03/2020
 ms.author: barclayn
-ms.openlocfilehash: 84a262cae17a4e26724ab06da397e699e09468db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: dca5f9ed2911ae3042fb9871f849212ec18b1b58
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969199"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539377"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>如何停止使用虚拟机托管标识扩展并开始使用 Azure 实例元数据服务
 
@@ -71,7 +72,7 @@ $settings = @{ "port" = 50342 }
    ```azurepowershell-interactive
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
-   Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
+   Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
 若要使用 Azure 资源管理器部署模板预配虚拟机规模集扩展，请将以下 JSON 添加到模板中的 `extensionpProfile` 节（使用 `ManagedIdentityExtensionForLinux` 指定名称，使用 type 元素指定 Linux 版本）。
 
@@ -96,7 +97,7 @@ $settings = @{ "port" = 50342 }
 由于 DNS 查找失败，虚拟机扩展的预配可能会失败。 如果发生这种情况，请重启虚拟机，然后重试。 
 
 ### <a name="remove-the-extension"></a>删除扩展 
-若要删除扩展，请 `-n ManagedIdentityExtensionForWindows` `-n ManagedIdentityExtensionForLinux` 根据包含 [az vm extension delete](/cli/azure/vm/)的虚拟机) 的类型或使用 Azure CLI 或用于 PowerShell 的虚拟机规模集使用 [az vmss extension delete](/cli/azure/vmss) 来使用或切换 (`Remove-AzVMExtension` ：
+若要删除扩展，请在 Azure CLI 中结合 [az vm extension delete](/cli/azure/vm/) 或 [az vmss extension delete](/cli/azure/vmss)（针对虚拟机规模集）使用 `-n ManagedIdentityExtensionForWindows` 或 `-n ManagedIdentityExtensionForLinux` 开关（具体取决于虚拟机的类型），或者在 PowerShell 中使用 `Remove-AzVMExtension`：
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows

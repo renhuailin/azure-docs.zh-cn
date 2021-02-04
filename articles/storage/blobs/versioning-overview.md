@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e2d74519b9adf9a74e5af180a3da28918a9a8dab
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: e5f8264221ada261ccae1b347c47cdf27967d5d8
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96001875"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537146"
 ---
 # <a name="blob-versioning"></a>Blob 版本控制
 
@@ -189,7 +189,7 @@ Blob 版本控制用于保护数据免遭意外或恶意删除。 若要增强�
 
 | 说明 | Blob 服务操作 | 需要 Azure RBAC 数据操作 | Azure 内置角色支持 |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| 正在删除 blob 的当前版本 | 删除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | 存储 Blob 数据参与者 |
+| 正在删除 blob 的当前版本 | 删除 Blob | **StorageAccounts/blobServices/容器/blob/删除** | 存储 Blob 数据参与者 |
 | 删除版本 | 删除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action** | 存储 Blob 数据所有者 |
 
 ### <a name="shared-access-signature-sas-parameters"></a> (SAS) 参数的共享访问签名
@@ -229,19 +229,19 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 
 下面的方案演示了在未显式设置 blob 层时，块 blob 及其版本的计费方式。
 
-#### <a name="scenario-1"></a>场景 1
+#### <a name="scenario-1"></a>方案 1
 
 在方案1中，blob 具有以前的版本。 Blob 在创建版本后未更新，因此仅对唯一块1、2和3产生费用。
 
 ![图1：显示基本 blob 和以前版本中的唯一块的计费。](./media/versioning-overview/versions-billing-scenario-1.png)
 
-#### <a name="scenario-2"></a>场景 2
+#### <a name="scenario-2"></a>方案 2
 
 在方案2中，已更新 blob) 中的一个块 (块3。 即使更新的块包含相同的数据和 ID，它也与以前版本中的块3不同。 因此，帐户需要为四个块支付费用。
 
 ![图2：显示基本 blob 和以前版本中的唯一块的计费。](./media/versioning-overview/versions-billing-scenario-2.png)
 
-#### <a name="scenario-3"></a>场景 3
+#### <a name="scenario-3"></a>方案 3
 
 在方案3中，已更新 blob，但版本未更新。 块3已替换为基础 blob 中的块4，但先前版本仍反映块3。 因此，帐户需要为四个块支付费用。
 
@@ -293,7 +293,7 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 | 如果 blob 软删除和版本控制均已启用 | 完全内容长度的所有现有版本，与层无关。 |
 | 如果启用了 blob 软删除但禁用了版本控制 | 所有现有软删除快照（按完整内容长度），不考虑层级。 |
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [启用和管理 blob 版本控制](versioning-enable.md)
 - [创建 blob 的快照](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

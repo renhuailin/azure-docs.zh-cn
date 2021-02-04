@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 1a8064c3ff89c0bc8b0ceb5249492b912c219ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d001a7a24d44c46a19bde08051e21d3ae3c5acb8
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535825"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538045"
 ---
 # <a name="caching-with-azure-front-door"></a>用 Azure 前门进行缓存
 以下文档使用已启用缓存的路由规则指定前门的行为。 前门是 (CDN) 的新式内容交付网络，具有动态站点加速和负载平衡，它还支持与任何其他 CDN 一样的缓存行为。
@@ -24,13 +24,13 @@ ms.locfileid: "91535825"
 ## <a name="delivery-of-large-files"></a>大型文件交付
 Azure 前门提供大文件，没有文件大小上限。 Front Door 使用一种被称作对象区块的技术。 请求大型文件时，Front Door 会从后端检索文件的较小部分。 接收到完全或字节范围的文件请求后，前门环境将从后端以 8 MB 的块请求该文件。
 
-</br>区块到达前门环境后，将缓存并立即为用户提供服务。 然后，Front Door 会并行预提取下一个区块。 此预提取可确保内容始终先于用户一个区块，从而减少延迟。 此过程将继续，直到) 请求下载整个文件 (或客户端关闭连接。
+区块到达前门环境后，将缓存并立即为用户提供服务。 然后，Front Door 会并行预提取下一个区块。 此预提取可确保内容始终先于用户一个区块，从而减少延迟。 此过程将继续，直到) 请求下载整个文件 (或客户端关闭连接。
 
-</br>有关字节范围请求的详细信息，请阅读 [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html)。
+有关字节范围请求的详细信息，请阅读 [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html)。
 前门会缓存接收的任何区块，因此不需要在前端缓存中缓存整个文件。 对文件或字节范围的后续请求是从缓存中提供的。 如果块并非全部缓存，预提取用于从后端请求区块。 此优化依赖于后端支持字节范围请求的功能。 如果后端不支持字节范围请求，则此优化不起作用。
 
 ## <a name="file-compression"></a>文件压缩
-前门可以动态地在边缘上压缩内容，导致更小、更快的客户端响应时间。 所有文件都可进行压缩。 但是，文件必须是 MIME 类型才能压缩。 目前，前门不允许更改此列表。 当前列表为：</br>
+前门可以动态地在边缘上压缩内容，导致更小、更快的客户端响应时间。 为了使文件符合压缩条件，必须启用缓存，并且文件必须是 MIME 类型才能压缩。 目前，前门不允许更改此列表。 当前列表为：
 - "application/eot"
 - "application/font"
 - "application/font-sfnt"
@@ -82,7 +82,7 @@ Azure 前门提供大文件，没有文件大小上限。 Front Door 使用一�
 当对资产的请求指定压缩并且请求导致缓存未命中时，前门会直接在 POP 服务器上压缩资产。 此后，将从缓存提供压缩的文件。 通过 transfer-encoding: chunked 返回所生成的项。
 
 ## <a name="query-string-behavior"></a>查询字符串行为
-借助 Front Door，可控制如何对包含查询字符串的 Web 请求缓存文件。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如，`http://www.contoso.com/content.mov?field1=value1&field2=value2`。 如果请求的查询字符串中有多个键值对，则其顺序并不重要。
+借助 Front Door，可控制如何对包含查询字符串的 Web 请求缓存文件。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如，`http://www.contoso.com/content.mov?field1=value1&field2=value2` 。 如果请求的查询字符串中有多个键值对，则其顺序并不重要。
 - **忽略查询字符串**：在此模式下，前门将查询字符串从请求方传递到第一个请求上的后端，并缓存该资产。 从前门环境提供的资产的所有后续请求将忽略查询字符串，直至缓存的资产到期。
 
 - **缓存每个唯一的 URL**：在此模式下，包含唯一 URL 的每个请求（包括查询字符串）将视为具有其自己的缓存的唯一资产。 例如，来自的请求的后端的响应 `www.example.ashx?q=test1` 将缓存在前门环境中，并为具有相同查询字符串的后续缓存返回该响应。 `www.example.ashx?q=test2` 的请求将作为具有其自己的生存时间设置的单独资产来缓存。

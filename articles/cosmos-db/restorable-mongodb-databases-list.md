@@ -6,14 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: 64288f67728e59c32c662a6640d60daf52c53fe1
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 5ebb0a23822074f61a16bf1d7652dba589399542
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527334"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537504"
 ---
 # <a name="list-restorable-databases-in-azure-cosmos-db-api-for-mongodb-using-rest-api"></a>使用 REST API 列出适用于 MongoDB Azure Cosmos DB API 中的可还原数据库
+
+> [!IMPORTANT]
+> 时间点还原功能 (持续备份模式) 用于 Azure Cosmos DB 目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 显示在可恢复帐户下的所有 Azure Cosmos DB MongoDB 数据库上完成的所有突变的事件源。 这在数据库被意外删除以获取删除时间的情况下非常有用。 此 API 需要 `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` 权限
 

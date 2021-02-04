@@ -8,17 +8,22 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: f8ba08c6147320160e99e522536f00fc98855eb4
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 036f086c88267f6a20da51746ca875c48a248712
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527320"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538835"
 ---
-# <a name="continuous-backup-with-point-in-time-restore-feature-in-azure-cosmos-db"></a>带有时间点还原功能的连续备份 Azure Cosmos DB
+# <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>带有时间点还原的持续备份 (预览) 功能 Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Azure Cosmos DB 的时间点还原功能有助于多种方案，例如：
+> [!IMPORTANT]
+> 时间点还原功能 (持续备份模式) 用于 Azure Cosmos DB 目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+Azure Cosmos DB 的时间点还原功能 (预览版) 有助于多种方案，例如：
 
 * 从容器内的意外写入或删除操作恢复。
 * 还原已删除的帐户、数据库或容器。
@@ -58,17 +63,17 @@ Azure Cosmos DB 在后台执行数据备份，而不使用任何额外的预配�
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" alt-text="可还原帐户的生命周期事件和时间戳。" lightbox="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" border="false":::
 
-a. **还原已删除的帐户** -可以从 " **还原** " 窗格查看所有可还原的已删除帐户。 例如，如果在时间戳 T3 上删除 "帐户 A"。 在这种情况下，刚好在 T3、位置、目标帐户名称、资源组和目标帐户名称之前的时间戳足以从 [Azure 门户](continuous-backup-restore-portal.md#restore-deleted-account)、 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)或 [CLI](continuous-backup-restore-command-line.md)进行还原。  
+a. **还原已删除的帐户** -可以从 " **还原** " 窗格查看所有可还原的已删除帐户。 例如，如果在时间戳 T3 上删除 "帐户 A"。 在这种情况下，刚好在 T3、位置、目标帐户名称、资源组和目标帐户名称之前的时间戳足以从 [Azure 门户](continuous-backup-restore-portal.md#restore-deleted-account)、 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)或 [CLI](continuous-backup-restore-command-line.md#trigger-restore)进行还原。  
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" alt-text="可还原数据库和容器具有时间戳的生命周期事件。" lightbox="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" border="false":::
 
-b. **还原特定区域中某个帐户的数据** -例如，如果 "帐户 a" 存在于 "美国东部" 和 "美国西部" 两个区域的时间戳 T3。 如果在 "美国西部" 中需要帐户 A 的副本，则可以使用 "美国西部" 作为目标位置，从 [Azure 门户](continuous-backup-restore-portal.md)、 [PowerShell](continuous-backup-restore-powershell.md)或 [CLI](continuous-backup-restore-command-line.md) 执行时间点还原。
+b. **还原特定区域中某个帐户的数据** -例如，如果 "帐户 a" 存在于 "美国东部" 和 "美国西部" 两个区域的时间戳 T3。 如果在 "美国西部" 中需要帐户 A 的副本，则可以使用 "美国西部" 作为目标位置，从 [Azure 门户](continuous-backup-restore-portal.md)、 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)或 [CLI](continuous-backup-restore-command-line.md#trigger-restore) 执行时间点还原。
 
-c. **使用已知的还原时间戳从容器内的意外写入或删除操作中恢复** （例如，如果 **知道** "数据库 1" 中的 "容器 1" 的内容在时间戳 T3 上被意外修改。 可以从 [Azure 门户](continuous-backup-restore-portal.md)、 [PowerShell](continuous-backup-restore-powershell.md)或 [CLI](continuous-backup-restore-command-line.md) 执行时间点还原，并将其转换为时间戳 T3 上的其他帐户，以恢复容器的所需状态。
+c. **使用已知的还原时间戳从容器内的意外写入或删除操作中恢复** （例如，如果 **知道** "数据库 1" 中的 "容器 1" 的内容在时间戳 T3 上被意外修改。 可以从 [Azure 门户](continuous-backup-restore-portal.md#restore-live-account)、 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)或 [CLI](continuous-backup-restore-command-line.md#trigger-restore) 执行时间点还原，并将其转换为时间戳 T3 上的其他帐户，以恢复容器的所需状态。
 
-d. 在 **意外删除数据库之前将帐户还原到以前的某个时间点**-在 [Azure 门户](continuous-backup-restore-portal.md)中，可以使用 "事件源" 窗格确定数据库的删除时间，并找到还原时间。 同样，使用 [Azure CLI](continuous-backup-restore-command-line.md) 和 [PowerShell](continuous-backup-restore-powershell.md)，可以通过枚举数据库事件源来发现数据库删除事件，然后使用所需的参数触发 restore 命令。
+d. 在 **意外删除数据库之前将帐户还原到以前的某个时间点**-在 [Azure 门户](continuous-backup-restore-portal.md#restore-live-account)中，可以使用 "事件源" 窗格确定数据库的删除时间，并找到还原时间。 同样，使用 [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) 和 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)，可以通过枚举数据库事件源来发现数据库删除事件，然后使用所需的参数触发 restore 命令。
 
-e. **在意外删除或修改容器属性之前，将帐户还原到以前的时间点。** -在 [Azure 门户](continuous-backup-restore-portal.md)中，可以使用 "事件源" 窗格确定创建、修改或删除容器以查找还原时间。 同样，使用 [Azure CLI](continuous-backup-restore-command-line.md) 和 [PowerShell](continuous-backup-restore-powershell.md)，可以通过枚举容器事件源来发现所有容器事件，然后使用所需的参数触发 restore 命令。
+e. **在意外删除或修改容器属性之前，将帐户还原到以前的时间点。** -在 [Azure 门户](continuous-backup-restore-portal.md#restore-live-account)中，可以使用 "事件源" 窗格确定创建、修改或删除容器以查找还原时间。 同样，使用 [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) 和 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)，可以通过枚举容器事件源来发现所有容器事件，然后使用所需的参数触发 restore 命令。
 
 ## <a name="permissions"></a>权限
 

@@ -7,17 +7,22 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 7a41eb8bdd573ac08b0c76eb9a6c2b0724637c39
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: c0af1db12f3ade2945524f48e4539d2d2e9aa6b9
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527341"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539173"
 ---
-# <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature"></a>Azure Cosmos DB 时点还原功能的常见问题
+# <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB 时间点还原功能的常见问题解答 (预览版) 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-本文列出了有关使用连续备份模式实现的 Azure Cosmos DB 时间点还原功能的常见问题。
+> [!IMPORTANT]
+> 时间点还原功能 (持续备份模式) 用于 Azure Cosmos DB 目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+本文列出了有关使用连续备份模式实现 (预览版) Azure Cosmos DB 时间点还原功能的常见问题。
 
 ## <a name="how-much-time-does-it-takes-to-restore"></a>还原需要多长时间？
 还原持续时间依赖于你的数据的大小。

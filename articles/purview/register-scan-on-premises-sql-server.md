@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 0d282ee805ac61ba17ceb3ecc6a3d8179ea7b319
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 26012b23a10f560158e3ba3919e12f5c15759189
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555893"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539309"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>注册并扫描本地 SQL server
 
@@ -36,7 +36,7 @@ SQL server 本地数据源支持：
 
 Azure 监控范围不支持对 SQL Server 中的 [视图](/sql/relational-databases/views/views) 进行扫描。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 在注册数据源之前，请创建一个 Azure 监控范围帐户。 有关创建监控范围帐户的详细信息，请参阅 [快速入门：创建 Azure 监控范围帐户](create-catalog-portal.md)。
 
@@ -50,21 +50,17 @@ Azure 监控范围不支持对 SQL Server 中的 [视图](/sql/relational-databa
 
 ### <a name="sql-authentication"></a>SQL 身份验证
 
-SQL 标识必须有权访问主数据库。 此位置是存储的位置 `sys.databases` 。 监控范围扫描程序需要枚举才能 `sys.databases` 查找服务器中的所有 SQL 数据库实例。
+SQL 帐户必须拥有对 **master** 数据库的访问权限。 这是因为在 `sys.databases` master 数据库中。 监控范围扫描程序需要枚举才能 `sys.databases` 查找服务器上的所有 SQL 数据库。
 
 #### <a name="using-an-existing-server-administrator"></a>使用现有的服务器管理员
 
 如果计划使用现有服务器管理员 (sa) 用户扫描本地 SQL server，请确保以下各项：
 
-1. `sa` 不是 Windows 身份验证类型。
+1. `sa` 不是 Windows 身份验证帐户。
 
-2. 你计划使用的服务器级别用户必须具有 "公共" 和 "sysadmin" 的服务器角色。 你可以通过以下方式进行验证：导航到 SQL Server Management Studio (SSMS) ，连接到服务器，导航到 "安全性"，选择你计划使用的登录名，右键单击 " **属性** "，然后选择 " **服务器角色**"。
+2. 你计划使用的服务器级别登录名必须具有 "公共" 和 "sysadmin" 的服务器角色。 你可以通过以下方式进行验证：连接到服务器，导航到 SQL Server Management Studio (SSMS) ，导航到 "安全性"，选择你计划使用的登录名，右键单击 " **属性** "，然后选择 " **服务器角色**"。
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/server-level-login.png" alt-text="服务器级别的登录名。":::
-
-3. 数据库将映射到对每个数据库具有至少 db_datareader 级别访问权限的用户。
-
-   :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping-sa.png" alt-text="sa 的用户映射。":::
 
 #### <a name="creating-a-new-login-and-user"></a>创建新的登录名和用户
 
@@ -74,9 +70,9 @@ SQL 标识必须有权访问主数据库。 此位置是存储的位置 `sys.dat
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/create-new-login-user.png" alt-text="创建新的登录名和用户。":::
 
-2. 在左侧导航栏中选择 "服务器角色"，并选择 "公共" 和 "sysadmin"。
+2. 在左侧导航栏中选择 "服务器角色"，并确保已分配公共角色。
 
-3. 选择左侧导航栏上的 "用户映射"，并选择映射中的所有数据库。
+3. 选择左侧导航栏中的 "用户映射"，选择映射中的所有数据库，并选择 "数据库角色： **db_datareader**"。
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping.png" alt-text="用户映射。":::
 
@@ -88,8 +84,7 @@ SQL 标识必须有权访问主数据库。 此位置是存储的位置 `sys.dat
 
 #### <a name="storing-your-sql-login-password-in-a-key-vault-and-creating-a-credential-in-purview"></a>在密钥保管库中存储 SQL 登录密码，并在监控范围中创建凭据
 
-1. 在 Azure 门户中，导航到密钥保管库
-1. 选择“设置”>“机密”
+1. 在 Azure portal1 中导航到密钥保管库。 选择“设置”>“机密”
 1. 选择 " **+ 生成/导入**"，并输入 SQL Server 登录 **名** 和 **值** 作为 *密码*
 1. 选择“创建”以完成
 1. 如果密钥保管库尚未连接到 Purview，则需要[创建新的密钥保管库连接](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)

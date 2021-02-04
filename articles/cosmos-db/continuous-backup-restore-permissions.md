@@ -7,17 +7,22 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 3614a85a6df2e793a73a2609d6f5762e4dc873fb
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 9d30f5325162b9ea447d54aadc092dbd9aa29132
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527319"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538675"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>管理用于还原 Azure Cosmos DB 帐户的权限
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Azure Cosmos DB 允许你隔离和限制对特定角色或主体的连续备份帐户的还原权限。 帐户所有者可以触发还原，并将角色分配给其他主体，以执行还原操作。 可以在订阅范围应用这些权限，或者在源帐户范围内更精确地应用这些权限，如下图所示：
+> [!IMPORTANT]
+> 时间点还原功能 (持续备份模式) 用于 Azure Cosmos DB 目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+Azure Cosmos DB 允许你隔离和限制 (预览版) 帐户对特定角色或主体进行连续备份的还原权限。 帐户所有者可以触发还原，并将角色分配给其他主体，以执行还原操作。 可以在订阅范围应用这些权限，或者在源帐户范围内更精确地应用这些权限，如下图所示：
 
 :::image type="content" source="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" alt-text="执行还原操作所需的角色的列表。" lightbox="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" border="false":::
 

@@ -2,14 +2,14 @@
 title: Azure 服务总线端到端跟踪和诊断 | Microsoft Docs
 description: 服务总线客户端诊断和端到端跟踪概述（涉及处理的所有服务均经由的客户端）。
 ms.topic: article
-ms.date: 01/17/2021
+ms.date: 02/03/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: edfd789f8803acf9fc8d76202805dec0187d220e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 19b284aceb83fbbc2bcf662b2b58941e6a5b36f9
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601248"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539207"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>通过服务总线消息传递进行分布式跟踪和关联
 
@@ -22,7 +22,7 @@ Microsoft Azure 服务总线消息传递已定义生成者与使用者应该用�
 该协议基于 [HTTP 关联协议](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)。
 
 # <a name="azuremessagingservicebus-sdk-latest"></a>[ (最新) 的 Azure 消息传送。 ](#tab/net-standard-sdk-2)
-| 属性名        | 说明                                                 |
+| 属性名称        | 说明                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | 生成者针对队列发出的外部调用的唯一标识符。 请参阅 [HTTP 协议中的 Request-Id](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) 了解事实依据、注意事项和格式 |
 
@@ -135,12 +135,6 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 在此示例中，侦听器记录每个服务总线操作的持续时间、结果、唯一标识符和开始时间。
 
 ### <a name="events"></a>事件
-对于每个操作，将发送两个事件：“Start”和“Stop”。 大多数情况下，你只对 "停止" 事件感兴趣。 它们提供操作的结果，并将开始时间和持续时间作为活动属性。
-
-每个事件有效负载为侦听器提供操作上下文，并复制 API 传入参数和返回值。 “Stop”事件有效负载具有“Start”事件有效负载的所有属性，因此可以完全忽略“Start”事件。
-
-每个“Stop”事件具有表示 `TaskStatus` 异步操作已完成的 `Status` 属性，为便于阅读，下表中也省略了该属性。
-
 所有事件都具有以下属性，这些属性符合打开的遥测规范： https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md 。
 
 - `message_bus.destination` –队列/主题/订阅路径
@@ -201,7 +195,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
-| 属性名        | 说明                                                 |
+| 属性名称        | 说明                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | 生成者针对队列发出的外部调用的唯一标识符。 请参阅 [HTTP 协议中的 Request-Id](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) 了解事实依据、注意事项和格式 |
 |  Correlation-Context | 操作上下文，将传播到操作处理流程涉及到的所有服务。 有关详细信息，请参阅 [HTTP 协议中的 Correlation-Context](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |

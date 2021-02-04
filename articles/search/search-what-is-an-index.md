@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: d9f4ba48a7dc6cdcf6d60e4e9da5f68fcc6b1f28
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: d0cc7630a3bea67a99c3cb65d2015e934e8ac2da
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509327"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539088"
 ---
 # <a name="creating-search-indexes-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建搜索索引
 
-搜索索引存储用于全文和筛选查询的可搜索内容。 索引由架构定义并保存到服务，紧接着的第二步是数据导入。 
+认知搜索存储 *搜索索引* 中用于全文和筛选查询的可搜索内容。 索引由架构定义并保存到服务，紧接着的第二步是数据导入。 
 
-索引包含文档。 从概念上讲，文档是索引中的一个可搜索数据单元。 零售商可能有每件产品的文档，新闻机构可能有每篇报道的文档。 将这些概念对应到更为熟悉的数据库等效对象：搜索索引等同于表，文档大致相当于表中的行   。
+索引包含 *搜索文档*。 从概念上讲，文档是索引中的一个可搜索数据单元。 零售商可能有每件产品的文档，新闻机构可能有每篇报道的文档。 将这些概念对应到更为熟悉的数据库等效对象：搜索索引等同于表，文档大致相当于表中的行   。
 
 ## <a name="whats-an-index-schema"></a>什么是索引架构？
 
@@ -106,7 +106,9 @@ ms.locfileid: "99509327"
 | JavaScript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [索引](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/indexes) |
 | Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations. py](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
 
-## <a name="defining-fields"></a>定义字段
+## <a name="define-fields"></a>定义字段
+
+搜索文档由 `fields` 集合定义。 你将需要用于查询和键的字段。 你可能还需要字段来支持筛选器、方面和排序。 你可能还需要用户从不看到的数据字段，例如，你可能需要用于修改搜索排名的利润或营销促销字段。
 
 类型为 Edm 的一个字段必须指定为文档键。 它用于唯一标识每个搜索文档。 可以按文档的键来检索文档，以填充详细信息页。  
 
@@ -146,9 +148,11 @@ ms.locfileid: "99509327"
 
 ![基于属性选择的索引大小](./media/search-what-is-an-index/realestate-index-size.png "基于属性选择的索引大小")
 
-尽管这些索引变体是人造的，但我们可以参考这些变体来对属性影响存储的方式进行广泛比较。 设置“retrievable”是否会增大索引大小？ 否。 将字段添加到 suggester 是否会增大索引大小？ 可以。
+尽管这些索引变体是人造的，但我们可以参考这些变体来对属性影响存储的方式进行广泛比较。 设置“retrievable”是否会增大索引大小？ 否。 将字段添加到 suggester 是否会增大索引大小？ 可以。 
 
-支持筛选和排序的索引在比例上大于仅支持全文搜索的索引。 这是因为筛选和排序操作扫描完全匹配项，并要求存在逐字文本字符串。 相比之下，支持全文查询的可搜索字段使用倒排索引，而这些索引中填充了空间占用量比整个文档更小的标记化字词。 
+使字段可筛选或可排序还会增加存储消耗量，因为筛选和排序字段不会进行标记，因此字符序列可以逐字匹配。
+
+也未在上表中反映出 [分析器](search-analyzers.md)的影响。 如果使用 edgeNgram 标记器来存储逐字字符序列 (a、ab、abc、abcd) ，则索引大小将大于使用标准分析器时的大小。
 
 > [!Note]
 > 存储体系结构被视为 Azure 认知搜索的实现细节，随时可能在不另行通知的情况下进行更改。 不保证将来仍会保持当前的行为。
@@ -169,9 +173,9 @@ ms.locfileid: "99509327"
 
 ## <a name="next-steps"></a>后续步骤
 
-您可以使用几乎任何示例或演练认知搜索来获取创建索引的实践体验。 可以从目录中选择任意快速入门教程。
+您可以使用几乎任何示例或演练认知搜索来获取创建索引的实践体验。 对于初学者，你可以从目录中选择任意快速入门。
 
-还需要熟悉用于加载包含数据的索引的方法。 索引定义和填充一起完成。 以下文章提供了详细信息。
+但您还希望熟悉用于加载带有数据的索引的方法。 索引定义和数据导入策略在一起定义。 以下文章提供有关加载索引的详细信息。
 
 + [数据导入概述](search-what-is-data-import.md)
 

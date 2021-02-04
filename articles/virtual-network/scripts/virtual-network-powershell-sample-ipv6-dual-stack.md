@@ -8,17 +8,17 @@ author: KumudD
 manager: twooley
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 772eb8d436a3ff870caa8fd4bc4e4e2b56672690
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 55894f1b4730ab9af55411d61e4d3dbe3b68224f
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217509"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539022"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>在虚拟网络中配置 IPv6 终结点，Azure PowerShell 脚本示例 (预览版) 
 
@@ -251,7 +251,7 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中将使用此配置。 |

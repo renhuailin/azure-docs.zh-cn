@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/03/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: d7f71afd1cf47ab1a94d984090e8fb52ee69c6b4
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f7ba6363ec3a38d37ea3df0f76409289069638e8
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088932"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537790"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>如何：使用健康状况文本分析（预览）
 
@@ -113,6 +113,9 @@ ms.locfileid: "99088932"
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>为托管的异步 web API 构造 API 请求
 
 对于容器和托管 web API，必须创建 POST 请求。 你可以 [使用 Postman](text-analytics-how-to-call-api.md)中的 [文本分析 "运行状况托管 API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health)" 中的、一种卷命令或 **API 测试控制台** 来快速构建 POST 请求并将其发送到所需区域中的托管 web API。 
+
+> [!NOTE]
+> 异步 `/analyze` 和 `/health` 终结点仅在以下区域提供：美国西部2、美国东部2、美国中部、北欧和西欧。  若要向这些终结点发出成功请求，请确保已在其中一个区域中创建资源。
 
 下面是附加到运行状况 API 请求的 POST 正文的文本分析的 JSON 文件的示例：
 

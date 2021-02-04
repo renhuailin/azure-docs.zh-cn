@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 60bb5ac652a80b5ae52c91f91fa0c80440e9cc82
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6f63315c3e9b150a54e122d9a1c6948087603d51
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359075"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537401"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>在不同的 Azure 区域中配置 SQL Server Always On 可用性组
 
@@ -32,7 +32,7 @@ ms.locfileid: "97359075"
 
 下图显示了 Azure 虚拟机上可用性组的常见部署：
 
-   ![使用 "Windows Server 故障转移群集" 和 "Always On 可用性组" 显示 Azure 负载均衡器和可用性集的关系图。](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
+   ![此图显示 Azure 负载均衡器和包含“Windows Server 故障转移群集”和“Always On 可用性组”的可用性集。](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
 
 在此部署中，所有虚拟机位于一个 Azure 区域。 在 SQL-1 和 SQL-2 上，可以使用自动故障转移为可用性组副本配置同步提交。 若要构建此体系结构，请参阅[可用性组模板或教程](availability-group-overview.md)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "97359075"
 
 下图显示了数据中心之间的网络通信方式。
 
-   ![显示了不同 Azure 区域中的两个虚拟网络使用第 P N 网关进行通信的关系图。](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
+   ![此图显示不同 Azure 区域中的两个虚拟网络在使用 VPN 网关进行通信。](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
 
 >[!IMPORTANT]
 >在 Azure 区域之间复制数据时，使用此体系结构需支付出站数据费用。 请参阅[带宽定价](https://azure.microsoft.com/pricing/details/bandwidth/)。  
@@ -86,6 +86,7 @@ ms.locfileid: "97359075"
    - 使用特定于 IP 地址的 TCP 端口探测。
    - 具有特定于同一区域中 SQL Server 的负载均衡规则。  
    - 如果后端池中的虚拟机不是单个可用性集或虚拟机规模集的一部分，则为标准负载均衡器。 有关其他信息，请查看 [Azure 负载均衡器标准概述](../../../load-balancer/load-balancer-overview.md)。
+   - 如果两个不同区域中的两个虚拟网络对等互连于全局 VNet 对等互连，则为标准负载均衡器。 有关详细信息，请参阅 [Azure 虚拟网络常见问题 (FAQ) ](../../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
 1. [向新的 SQL Server 添加故障转移群集功能](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms)。
 
@@ -99,7 +100,7 @@ ms.locfileid: "97359075"
 
    可在故障转移群集管理器中创建 IP 地址资源。 选择群集的名称，然后在“群集核心资源”下右键单击群集名称，并选择“属性”： 
 
-   ![屏幕截图，显示 "故障转移群集管理器"，其中包含群集名称 "服务器名称" 和 "属性"。](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
+   ![该屏幕截图显示了“故障转移群集管理器”，其中群集名称、“服务器名称”和“属性”处于选中状态。](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
    在“属性”对话框的“IP 地址”下选择“添加”，然后从远程网络区域添加群集名称的 IP 地址。  选择“IP 地址”对话框上的“确定”，然后在“群集属性”对话框中再次选择“确定”，以保存新的 IP 地址   。 
 
@@ -168,7 +169,7 @@ ms.locfileid: "97359075"
 
 ## <a name="fail-over-to-remote-region"></a>故障转移到远程区域
 
-要测试侦听器与远程区域之间的连接，可将副本故障转移到远程区域。 尽管副本是异步的，但故障转移存在丢失数据的可能性。 要故障转移并防止丢失数据，请将可用性模式更改为同步，将故障转移模式设置为自动。 使用以下步骤：
+要测试侦听器与远程区域之间的连接，可将副本故障转移到远程区域。 尽管副本是异步的，但故障转移存在丢失数据的可能性。 要故障转移并防止丢失数据，请将可用性模式更改为同步，将故障转移模式设置为自动。 请使用以下步骤：
 
 1. 在“对象资源管理器”中连接到承载主副本的 SQL Server 实例。
 1. 在“AlwaysOn 可用性组”的“可用性组”下，右键单击可用性组，然后选择“属性”  。

@@ -2,13 +2,13 @@
 title: 概念-存储
 description: 了解 Azure VMware 解决方案私有云中的主要存储功能。
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: da5117de4b066fd9872558fa6d018ab898a576f4
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.date: 02/02/2021
+ms.openlocfilehash: 522e4f651b36532ac0c144b3889b2b67c91dc77b
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509209"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536944"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware 解决方案存储概念
 
@@ -32,11 +32,11 @@ Azure VMware 解决方案私有云提供了本机的群集范围内的群集存�
 
 ## <a name="scaling"></a>缩放
 
-通过将主机添加到群集来扩展本机群集存储容量。 对于使用他的主机的群集，每个额外主机的原始群集范围容量增加了 15.4 TB。 使用 GP 主机构建的群集的原始容量增加了 7.7 TB，每增加一台主机。 在这两种类型的群集中，主机需要大约10分钟才能添加到群集。 有关缩放群集的说明，请参阅 [扩展私有云教程][tutorial-scale-private-cloud]。
+通过将主机添加到群集来扩展本机群集存储容量。 对于使用其主机的群集，每个添加的主机的原始群集范围容量增加了 15.4 TB。 使用 GP 主机构建的群集的原始容量增加了 7.7 TB，每个添加的主机。 在这两种类型的群集中，主机需要大约10分钟才能添加到群集。 有关缩放群集的说明，请参阅 [扩展私有云教程][tutorial-scale-private-cloud]。
 
 ## <a name="azure-storage-integration"></a>Azure 存储集成
 
-可以在私有云中运行的工作负荷上使用 Azure 存储服务。 Azure 存储服务包括存储帐户、表存储和 Blob 存储。 工作负荷到 Azure 存储服务的连接不会遍历 internet。 此连接提供额外的安全性，并使你能够在私有云工作负荷中使用基于 SLA 的 Azure 存储服务。
+可以在私有云中运行的工作负荷上使用 Azure 存储服务。 Azure 存储服务包括存储帐户、表存储和 Blob 存储。 工作负荷到 Azure 存储服务的连接不会遍历 internet。 此连接提供更高的安全性，并使你能够在私有云工作负荷中使用基于 SLA 的 Azure 存储服务。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 8daec71745c9eff9a7db5bb34cb3596973def4aa
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 70f4ac69721db57aa06c0d8fda12189f43e79686
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736405"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537824"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>使用 Azure 共享磁盘创建 FCI（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "98736405"
 在按本文中的说明操作之前，你应已具备以下条件：
 
 - Azure 订阅。 [免费试用](https://azure.microsoft.com/free/)。 
-- [两个或多个 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)。 对于超磁盘，支持高级 SSD 和[可用性区域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) (PPGs) 支持的[可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md)和[邻近位置组](../../../virtual-machines/co-location.md#proximity-placement-groups)。 如果使用 PPG，则所有节点必须存在于同一个组中。
+- [两个或多个 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)。 对于超磁盘，支持高级 SSD 和[可用性区域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) (PPGs) 支持的[可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md)和[邻近位置组](../../../virtual-machines/co-location.md#proximity-placement-groups)。 所有节点必须位于同一 [邻近位置组](../../../virtual-machines/co-location.md#proximity-placement-groups)中。
 - 有权限在 Azure 虚拟机和 Active Directory 中创建对象的帐户。
 - 最新版本的 [PowerShell](/powershell/azure/install-az-ps)。 
 

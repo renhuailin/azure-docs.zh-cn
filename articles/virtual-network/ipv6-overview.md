@@ -8,16 +8,16 @@ author: KumudD
 manager: twooley
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: c0d4c72bd60f35088773ec6dc5df80709c5ae98c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86e4bb52f2a97bf36dc4be86289bd513a9f05091
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666817"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538249"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure 虚拟网络 IPv6 是什么？
 
@@ -56,12 +56,12 @@ Azure VNet IPv6 提供以下功能：
     - 可选的 IPv6 运行状况探测可以确定哪些后端池实例是正常的，因而可以接收新流。
     - 可选的出站规则可以根据具体的需求，以完全声明性的方式控制出站连接，以缩放和优化此功能。
     - 可选的多种前端配置可让单个负载均衡器使用多个 IPv6 公共 IP 地址 - 可在不同的前端地址中重复使用相同的前端协议和端口。
-    - 可以通过负载均衡规则的“浮动 IP”功能，在后端实例上重复使用可选的 IPv6 端口** 
+    - 可以通过负载均衡规则的“浮动 IP”功能，在后端实例上重复使用可选的 IPv6 端口 
     - 注意：负载均衡不执行任何协议转换（无 NAT64）。 
     - 注意：IPv6 只能对 Azure VM 上的主要网络接口 (NIC) 进行负载均衡。 
 - [标准 IPv6 内部负载均衡器](ipv6-dual-stack-standard-internal-load-balancer-powershell.md)支持在 Azure VNET 内部创建弹性多层应用程序。   
 - 基本 IPv6 公共负载均衡器支持与传统部署实现兼容
-- [保留的 Ipv6 公共 IP 地址和地址范围](ipv6-public-ip-address-prefix.md) 提供稳定、可预测的 ipv6 地址，可轻松为公司和客户筛选 azure 托管的应用程序。
+- [保留的 IPv6 公共 IP 地址和地址范围](ipv6-public-ip-address-prefix.md)提供稳定、可预测的 IPv6 地址，方便将公司和客户的 Azure 托管应用程序列入筛选器。
 - 实例级公共 IP 提供与单个 VM 的 IPv6 Internet 直接连接。
 - [将 IPv6 添加到现有的仅使用 IPv4 的部署](ipv6-add-to-existing-vnet-powershell.md) - 使用此功能可以轻松将 IPv6 连接添加到现有的仅使用 IPv4 的部署，而无需重新创建部署。  在此过程中 IPv4 网络流量不受影响，因此，根据应用程序和 OS，有时甚至可以将 IPv6 添加到实时服务。    
 - 可让 Internet 客户端使用所选的协议，凭借 Azure DNS 对 IPv6 (AAAA) 记录的支持无缝访问双堆栈应用程序。 

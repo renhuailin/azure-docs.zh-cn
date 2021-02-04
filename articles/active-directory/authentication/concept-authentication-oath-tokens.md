@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3315500e0d8ce090b058cbe0cb11d9ab8e56e193
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: af2c848fe06d9ebc44443bdcce61af0c8de08b2d
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99474992"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536995"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Azure Active Directory OATH 令牌中的身份验证方法
 
@@ -33,7 +33,7 @@ Authenticator 应用在设置为发送推送通知后会自动生成代码，以
 
 Azure AD 支持使用每 30 或 60 秒刷新一次代码的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。
 
-OATH TOTP 硬件令牌通常附带一个在令牌中经过预编程的密钥或种子。 必须将这些密钥输入 Azure AD 中，如以下步骤所述。 密钥限制为 128 个字符，可能不会与所有令牌兼容。 密钥只能包含字符“a”-“z”或“A”-“Z”，以及数字“1”-“7”，并且必须采用“Base32”编码   。
+OATH TOTP 硬件令牌通常附带一个在令牌中经过预编程的密钥或种子。 必须将这些密钥输入 Azure AD 中，如以下步骤所述。 密钥限制为 128 个字符，可能不会与所有令牌兼容。 密钥只能 *包含字符 a-z* 或 a-z 以及数字 *2-7* *，并且必须* 在 *Base32* 中进行编码。
 
 也可以在软件令牌设置流中使用 Azure AD 设置可重新设定种子的可编程的 OATH TOTP 硬件令牌。
 
@@ -45,7 +45,7 @@ OATH 硬件令牌目前作为公共预览版的一部分受支持。 有关预�
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
+Helga@contoso.com,1234567,2234567abcdef1234567abcdef,60,Contoso,HardwareKey
 ```  
 
 > [!NOTE]

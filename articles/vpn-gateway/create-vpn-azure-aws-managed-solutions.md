@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: ricmmartins
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 02/03/2021
 ms.author: ricmart
-ms.openlocfilehash: a0655ce1d2e9939981bb4fd3280af80e359ea1e1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 82161ac92566f6589ebfb64dddc221e296ec0992
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737738"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539122"
 ---
 # <a name="create-a-vpn-connection-between-azure-and-aws-using-managed-solutions"></a>使用托管解决方案在 Azure 和 AWS 之间创建 VPN 连接
 
@@ -55,7 +55,7 @@ ms.locfileid: "98737738"
 * **启用主动-主动模式：** 禁用
 * **配置 BGP：** 禁用
 
-示例：
+例如：
 
 :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/summary.png" alt-text="虚拟网络网关摘要":::
 
@@ -219,4 +219,6 @@ ms.locfileid: "98737738"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 IKEv2 的 AWS 支持的详细信息，请参阅 [AWS 一文](https://aws.amazon.com/about-aws/whats-new/2019/02/aws-site-to-site-vpn-now-supports-ikev2/)。
+* 有关 IKEv2 的 AWS 支持的详细信息，请参阅 [AWS 一文](https://aws.amazon.com/about-aws/whats-new/2019/02/aws-site-to-site-vpn-now-supports-ikev2/)。
+
+* 有关大规模构建多云 VPN 的详细信息，请参阅视频 [大规模构建最佳多云 vpn](https://www.youtube.com/watch?v=p7h-frLDFE0)。

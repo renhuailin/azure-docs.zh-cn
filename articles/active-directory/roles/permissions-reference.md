@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 849c159f31a14441ef9c6aa19b8704b286727bd7
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 7c89bfab6c4914cee26726006e6928eeb14c0686
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507175"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538181"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -1046,18 +1046,19 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 为目录级服务创建和管理 Azure 支持票证。 |
-| microsoft.directory/groups/unified/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 属性。 |
-| microsoft.directory/groups/unified/basic/update | 更新 Microsoft 365 组的基本属性。 |
-| microsoft.directory/groups/unified/create | 创建 Microsoft 365 组。 |
-| microsoft.directory/groups/unified/delete | 删除 Microsoft 365 组。 |
-| microsoft.directory/groups/unified/members/update | 更新 Microsoft 365 组的成员资格。 |
-| microsoft.directory/groups/unified/owners/update | 更新 Microsoft 365 组的所有权。 |
+| microsoft.directory/groups/hiddenMembers/read | 读取组的隐藏成员 |
+| microsoft. directory/groups. 统一/基本/更新 | 更新 Microsoft 365 组的基本属性。 |
+| microsoft. 目录/组。统一/创建 | 创建 Microsoft 365 组。 |
+| microsoft. directory/groups. 统一/删除 | 删除 Microsoft 365 组。 |
+| microsoft. 目录/组。统一/还原 | 还原 Microsoft 365 组 |
+| microsoft. 目录/组。统一/成员/更新 | 更新 Microsoft 365 组的成员资格。 |
+| microsoft. 目录/组。统一/所有者/更新 | 更新 Microsoft 365 组的所有权。 |
 | microsoft.office365.exchange/allEntities/allTasks | 管理 Exchange Online 的各个方面。 |
 | microsoft.office365.network/performance/allProperties/read | 读取 Microsoft 365 管理中心内的网络性能页。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
+| office365. usageReports/allEntities/allProperties/read | 阅读 Office 365 使用情况报告。 |
+| microsoft.office365.webPortal/allEntities/standard/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 ### <a name="external-id-user-flow-administrator-permissions"></a>外部 ID 用户流管理员权限
 
@@ -1295,23 +1296,24 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/devices/extensionAttributes/update | 更新 Azure Active Directory 中 devices.extensionAttributes 属性的所有值。 |
 | microsoft.directory/devices/registeredOwners/update | 更新 Azure Active Directory 中的 devices.registeredOwners 属性。 |
 | microsoft.directory/devices/registeredUsers/update | 更新 Azure Active Directory 中的 devices.registeredUsers 属性。 |
-| microsoft.directory/groups/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.appRoleAssignments 属性。 |
-| microsoft.directory/groups/basic/update | 更新 Azure Active Directory 中组的基本属性。 |
-| microsoft.directory/groups/create | 在 Azure Active Directory 中创建组。 |
-| microsoft.directory/groups/createAsOwner | 在 Azure Active Directory 中创建组。 添加创建者作为第一个所有者，创建的对象根据创建者的 250 个创建对象配额计数。 |
-| microsoft.directory/groups/delete | 删除 Azure Active Directory 中的组。 |
+| deviceManagementPolicies/standard/read | 读取设备管理应用程序策略的标准属性 |
+| deviceRegistrationPolicy/standard/read | 读取设备注册策略的标准属性 |
 | microsoft.directory/groups/hiddenMembers/read | 读取 Azure Active Directory 中的 groups.hiddenMembers 属性。 |
-| microsoft.directory/groups/members/update | 更新 Azure Active Directory 中的 groups.members 属性。 |
-| microsoft.directory/groups/owners/update | 更新 Azure Active Directory 中的 groups.owners 属性。 |
-| microsoft.directory/groups/restore | 还原 Azure Active Directory 中的组。 |
-| microsoft.directory/groups/settings/update | 更新 Azure Active Directory 中的 groups.settings 属性。 |
-| microsoft.directory/users/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
+| microsoft. directory/groups。安全性/基本/更新 | 更新 Azure Active Directory 中组的基本属性。 |
+| microsoft. 目录/组。安全性/分类/更新 | 具有角色可分配组排除的安全组的更新分类属性 |
+| microsoft. directory/groups。安全性/创建 | 在 Azure Active Directory 中创建组。 |
+| microsoft. directory/groups。安全/删除 | 删除 Azure Active Directory 中的组。 |
+| microsoft. directory/groups. security/dynamicMembershipRule/update | 更新安全组的 dynamicMembershipRule 属性，排除角色可分配的组 |
+| microsoft. directory/groups. security/groupType/update | 具有角色可分配组排除的安全组的更新组类型属性 |
+| microsoft. 目录/组。安全性/成员/更新 | 更新 Azure Active Directory 中的 groups.members 属性。 |
+| microsoft. directory/groups. security/物主/update | 更新 Azure Active Directory 中的 groups.owners 属性。 |
+| microsoft. 目录/组。安全性/可见性/更新 | 具有角色可分配组排除的安全组的更新可见性属性 |
 | microsoft.directory/users/basic/update | 更新 Azure Active Directory 中用户的基本属性。 |
 | microsoft.directory/users/manager/update | 更新 Azure Active Directory 中的 users.manager 属性。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 为目录级服务创建和管理 Azure 支持票证。 |
 | microsoft.intune/allEntities/allTasks | 管理 Intune 的各个方面。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
+| microsoft.office365.webPortal/allEntities/standard/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 ### <a name="kaizala-administrator-permissions"></a>Kaizala 管理员权限
 
@@ -1458,13 +1460,18 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/contacts/create | 在 Azure Active Directory 中创建联系人。 |
 | microsoft.directory/contacts/delete | 删除 Azure Active Directory 中的联系人。 |
 | microsoft.directory/groups/create | 在 Azure Active Directory 中创建组。 |
-| microsoft.directory/groups/createAsOwner | 在 Azure Active Directory 中创建组。 添加创建者作为第一个所有者，创建的对象根据创建者的 250 个创建对象配额计数。 |
+| microsoft.directory/groups/delete | 删除组，不包括角色可分配的组 |
 | microsoft.directory/groups/members/update | 更新 Azure Active Directory 中的 groups.members 属性。 |
 | microsoft.directory/groups/owners/update | 更新 Azure Active Directory 中的 groups.owners 属性。 |
-| microsoft.directory/users/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
+| microsoft.directory/groups/restore | 还原已删除的组 |
+| microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | 创建和删除 OAuth 2.0 权限授予，并读取和更新所有属性 |
+| microsoft.directory/servicePrincipals/appRoleAssignedTo/update | 更新服务主体角色分配 |
 | microsoft.directory/users/assignLicense | 管理 Azure Active Directory 中用户的许可证。 |
 | microsoft.directory/users/basic/update | 更新 Azure Active Directory 中用户的基本属性。 |
+| microsoft.directory/users/create | 添加用户 |
 | microsoft.directory/users/delete | 删除 Azure Active Directory 中的用户。 |
+| microsoft.directory/users/disable | 禁用用户 |
+| microsoft.directory/users/enable | 启用用户 |
 | microsoft.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有用户刷新令牌无效。 |
 | microsoft.directory/users/manager/update | 更新 Azure Active Directory 中的 users.manager 属性。 |
 | microsoft.directory/users/password/update | 更新 Azure Active Directory 中所有用户的密码。 有关详细信息，请参阅联机文档。 |
@@ -1472,9 +1479,9 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/users/userPrincipalName/update | 更新 Azure Active Directory 中的 users.userPrincipalName 属性。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 为目录级服务创建和管理 Azure 支持票证。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+| microsoft.office365.webPortal/allEntities/standard/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 ### <a name="partner-tier2-support-permissions"></a>合作伙伴二线支持人员权限
 
@@ -1498,16 +1505,25 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/contacts/basic/update | 更新 Azure Active Directory 中联系人的基本属性。 |
 | microsoft.directory/contacts/create | 在 Azure Active Directory 中创建联系人。 |
 | microsoft.directory/contacts/delete | 删除 Azure Active Directory 中的联系人。 |
-| microsoft.directory/domains/allTasks | 创建和删除域，然后读取和更新 Azure Active Directory 中的标准属性。 |
+| microsoft. directory/域/基本/allTasks | 创建和删除域，然后读取和更新 Azure Active Directory 中的标准属性。 |
 | microsoft.directory/groups/create | 在 Azure Active Directory 中创建组。 |
 | microsoft.directory/groups/delete | 删除 Azure Active Directory 中的组。 |
 | microsoft.directory/groups/members/update | 更新 Azure Active Directory 中的 groups.members 属性。 |
+| microsoft.directory/groups/owners/update | 更新组的所有者，不包括角色可分配的组 |
 | microsoft.directory/groups/restore | 还原 Azure Active Directory 中的组。 |
+| microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | 创建和删除 OAuth 2.0 权限授予，并读取和更新所有属性 |
 | microsoft.directory/organization/basic/update | 更新 Azure Active Directory 中组织的基本属性。 |
-| microsoft.directory/users/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
+| microsoft.directory/roleAssignments/allProperties/allTasks | 创建和删除角色分配，并读取和更新所有角色分配属性 |
+| microsoft.directory/roleDefinitions/allProperties/allTasks | 创建和删除角色定义，并读取和更新所有属性 |
+| microsoft.directory/scopedRoleMemberships/allProperties/allTasks | 创建和删除 scopedRoleMemberships，并读取和更新所有属性 |
+| microsoft.directory/servicePrincipals/appRoleAssignedTo/update | 更新服务主体角色分配 |
+| subscribedSkus/standard/read | 读取订阅的基本属性 |
 | microsoft.directory/users/assignLicense | 管理 Azure Active Directory 中用户的许可证。 |
 | microsoft.directory/users/basic/update | 更新 Azure Active Directory 中用户的基本属性。 |
+| microsoft.directory/users/create | 添加用户 |
 | microsoft.directory/users/delete | 删除 Azure Active Directory 中的用户。 |
+| microsoft.directory/users/disable | 禁用用户 |
+| microsoft.directory/users/enable | 启用用户 |
 | microsoft.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有用户刷新令牌无效。 |
 | microsoft.directory/users/manager/update | 更新 Azure Active Directory 中的 users.manager 属性。 |
 | microsoft.directory/users/password/update | 更新 Azure Active Directory 中所有用户的密码。 有关详细信息，请参阅联机文档。 |
@@ -1515,9 +1531,9 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/users/userPrincipalName/update | 更新 Azure Active Directory 中的 users.userPrincipalName 属性。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 为目录级服务创建和管理 Azure 支持票证。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+| microsoft.office365.webPortal/allEntities/standard/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 ### <a name="password-administrator-permissions"></a>密码管理员权限
 
@@ -1785,18 +1801,18 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 为目录级服务创建和管理 Azure 支持票证。 |
-| microsoft.directory/groups/unified/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 属性。 |
-| microsoft.directory/groups/unified/basic/update | 更新 Microsoft 365 组的基本属性。 |
-| microsoft.directory/groups/unified/create | 创建 Microsoft 365 组。 |
-| microsoft.directory/groups/unified/delete | 删除 Microsoft 365 组。 |
-| microsoft.directory/groups/unified/members/update | 更新 Microsoft 365 组的成员资格。 |
-| microsoft.directory/groups/unified/owners/update | 更新 Microsoft 365 组的所有权。 |
+| microsoft. directory/groups. 统一/基本/更新 | 更新 Microsoft 365 组的基本属性。 |
+| microsoft. 目录/组。统一/创建 | 创建 Microsoft 365 组。 |
+| microsoft. directory/groups. 统一/删除 | 删除 Microsoft 365 组。 |
+| microsoft. 目录/组。统一/成员/更新 | 更新 Microsoft 365 组的成员资格。 |
+| microsoft. 目录/组。统一/所有者/更新 | 更新 Microsoft 365 组的所有权。 |
+| microsoft. 目录/组。统一/还原 | 还原 Microsoft 365 组 |
 | microsoft.office365.network/performance/allProperties/read | 在 M365 管理中心内读取网络性能页。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
 | microsoft.office365.sharepoint/allEntities/allTasks | 创建和删除所有资源，然后读取和更新 microsoft.office365.sharepoint 中的标准属性。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-| microsoft.office365.usageReports/allEntities/read    | 阅读 Office 365 使用情况报告。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
+| office365. usageReports/allEntities/allProperties/read | 阅读 Office 365 使用情况报告。 |
+| microsoft.office365.webPortal/allEntities/standard/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 ### <a name="teams-communications-administrator-permissions"></a>Teams 通信管理员权限
 
@@ -1880,16 +1896,19 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.azure.supportTickets/allEntities/allTasks | 为目录级服务创建和管理 Azure 支持票证。 |
 | microsoft.directory/groups/hiddenMembers/read | 读取 Azure Active Directory 中的 groups.hiddenMembers 属性。 |
 | microsoft.directory/groups/unified/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 属性。 |
-| microsoft.directory/groups/unified/basic/update | 更新 Microsoft 365 组的基本属性。 |
-| microsoft.directory/groups/unified/create | 创建 Microsoft 365 组。 |
-| microsoft.directory/groups/unified/delete | 删除 Microsoft 365 组。 |
-| microsoft.directory/groups/unified/members/update | 更新 Microsoft 365 组的成员资格。 |
-| microsoft.directory/groups/unified/owners/update | 更新 Microsoft 365 组的所有权。 |
+| microsoft. directory/groups. 统一/基本/更新 | 更新 Microsoft 365 组的基本属性。 |
+| microsoft. 目录/组。统一/创建 | 创建 Microsoft 365 组。 |
+| microsoft. directory/groups. 统一/删除 | 删除 Microsoft 365 组。 |
+| microsoft. 目录/组。统一/成员/更新 | 更新 Microsoft 365 组的成员资格。 |
+| microsoft. 目录/组。统一/所有者/更新 | 更新 Microsoft 365 组的所有权。 |
+| microsoft. 目录/组。统一/还原 | 还原 Microsoft 365 组 |
+| 服务主体/managePermissionGrantsForGroup. microsoft-all-application-permissions | 代表组授予委派权限的许可 |
 | microsoft.office365.network/performance/allProperties/read | 在 M365 管理中心内读取网络性能页。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | 管理 Skype for Business Online 的所有方面 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
+| office365. usageReports/allEntities/allProperties/read | 阅读 Office 365 使用情况报告。 |
+| microsoft.office365.webPortal/allEntities/standard/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.teams/allEntities/allProperties/allTasks | 管理 Teams 中的所有资源。 |
 
 ### <a name="usage-summary-reports-reader-permissions"></a>使用情况摘要报表读取者权限
