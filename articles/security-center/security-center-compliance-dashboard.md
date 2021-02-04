@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/28/2021
 ms.author: memildin
-ms.openlocfilehash: f8d92ff0835948637761d7d2a98ec95a1c6dfccd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 523b081b59bd2f4c45c1ceeb9f39c58f4e3b02b1
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944212"
+ms.locfileid: "98986898"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
 
@@ -55,7 +55,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
     屏幕顶部是一个仪表板，其中概述了你的合规性状态以及一组支持的合规性法规。 可以查看总体符合性分数，以及与每个标准相关联的已通过评估和失败的评估的数目。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法规符合性仪表板":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法规符合性仪表板" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 1. 针对与自己相关的符合性标准，选择一个选项卡 (1)。 你可看到该标准应用于哪些订阅 (2)，以及该标准的所有控件列表 (3)。 对于适用的控件，可以查看与该控件相关联的已通过评估和失败的评估的详细信息 (4)，以及受影响资源的数量 (5)。 某些控件为灰显状态。这些控件没有任何与之关联的安全中心评估。 你需要自行检查这些控件的要求，并在自己的环境中对其进行评估。 其中一部分可能与进程相关，与技术无关。
 

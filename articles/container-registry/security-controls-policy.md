@@ -1,18 +1,18 @@
 ---
 title: Azure 容器注册表的 Azure Policy 法规遵从性控制
 description: 列出可用于 Azure 容器注册表的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: sample
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: ed7d35e6d0ae4a1efba4f5701e0001288e8963f2
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 52de1f99d37d0709d7e9f66d591a980b3c80aee1
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797440"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095519"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-container-registry"></a>Azure 容器注册表的 Azure Policy 法规遵从性控制
 

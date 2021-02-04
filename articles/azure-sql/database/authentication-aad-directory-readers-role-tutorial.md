@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 88483b29c8951f8e3f38f7cdc5bbdfb80eeca2b1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bc809cf02b827b7498890cb7d929c44bd360ab53
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370111"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094703"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>教程：将目录读取者角色分配到 Azure AD 组并管理角色分配
 
@@ -23,7 +23,7 @@ ms.locfileid: "92370111"
 > [!NOTE]
 > 本文中组的目录读取者角色分配为公共预览版 。 
 
-本文介绍如何在 Azure Active Directory (Azure AD) 中创建组，并向该组分配 [目录读取者](../../active-directory/roles/permissions-reference.md#directory-readers)角色。 通过目录读取者权限，组所有者能够将其他成员添加到组中，如 [Azure SQL 数据库](sql-database-paas-overview.md)的[托管标识](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)、[Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 这就不需要[全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator)或[特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)来为租户中的每个 Azure SQL 逻辑服务器标识直接分配目录读取者角色。
+本文介绍如何在 Azure Active Directory (Azure AD) 中创建组，并向该组分配 [目录读取者](../../active-directory/roles/permissions-reference.md#directory-readers)角色。 通过目录读取者权限，组所有者能够将其他成员添加到组中，如 [Azure SQL 数据库](sql-database-paas-overview.md)的[托管标识](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)、[Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 这就不需要[全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator)或[特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)来为租户中的每个 Azure SQL 逻辑服务器标识直接分配目录读取者角色。
 
 本教程使用[使用云组来管理 Azure Active Directory 中的角色分配（预览版）](../../active-directory/roles/groups-concept.md)中引入的功能。 
 
@@ -38,7 +38,7 @@ ms.locfileid: "92370111"
 
 ### <a name="create-a-new-group-and-assign-owners-and-role"></a>创建新组并分配所有者和角色
 
-1. 此初始设置需要具有[全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator)或[特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)权限的用户。
+1. 此初始设置需要具有[全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator)或[特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)权限的用户。
 1. 让特权用户登录到 [Azure 门户](https://portal.azure.com)。
 1. 转到 Azure Active Directory 资源。 在“托管”下，转到“组” 。 选择“新建组”以创建一个新组。
 1. 选择“安全”作为组类型，并填充其余字段。 确保可以将设置“Azure AD 角色可以分配给组（预览）”切换为“是” 。 然后，将 Azure AD 目录读取者角色分配给组。
@@ -55,7 +55,7 @@ ms.locfileid: "92370111"
 
 若要检查和管理已创建的组，请返回到 Azure 门户中的“组”窗格，并搜索组名称。 选择组后，可以在“管理”设置的“所有者”和“成员”菜单下添加其他所有者和成员  。 还可查看组的“已分配角色”。
 
-:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="aad-new-group":::
+:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="“组”窗格的屏幕截图，其中包含的链接可打开突出显示的“成员”、“所有者”和“分配的角色(预览)”的“设置”菜单。":::
 
 ### <a name="add-azure-sql-managed-identity-to-the-group"></a>向组添加 Azure SQL 托管标识
 
@@ -68,17 +68,17 @@ ms.locfileid: "92370111"
 
 1. 在 Azure 门户中查找 SQL 托管实例资源的名称。
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="aad-new-group":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="“SQL 托管实例”屏幕的屏幕截图，其中突出显示了 SQL 实例名称“ssomitest”和子网名称“ManagedInstance”。":::
 
    在创建 SQL 托管实例的过程中，系统会为你的实例创建 Azure 标识。 创建的标识与 SQL 托管实例名称的前缀同名。 通过执行以下步骤，可查找作为 Azure AD 应用程序创建的 SQL 托管实例标识的服务主体：
 
     - 转到 Azure Active Directory 资源。 在“管理”设置下，选择“企业应用程序” 。 对象 ID 是实例的标识。
     
-    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="aad-new-group":::
+    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="Azure Active Directory 资源的“企业应用程序”页的屏幕截图，其中突出显示了 SQL 托管实例的对象 ID。":::
 
 1. 转到 Azure Active Directory 资源。 在“托管”下，转到“组” 。 选择所创建的组。 在组的“托管”设置下，选择“成员” 。 选择“添加成员”，并通过搜索上面找到的名称，将 SQL 托管实例服务主体添加为组的成员。
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="aad-new-group":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="Azure Active Directory 资源的“成员”页的屏幕截图，其中突出显示了用于将 SQL 托管实例添加为新成员的选项。":::
 
 > [!NOTE]
 > 需要花费几分钟时间才能通过 Azure 系统传播服务主体权限，并允许访问 Azure AD 图形 API。 在为 SQL 托管实例预配 Azure AD 管理员之前，可能需要等待几分钟。
@@ -94,7 +94,7 @@ ms.locfileid: "92370111"
 ## <a name="directory-readers-role-assignment-using-powershell"></a>使用 PowerShell 的目录读取者角色分配
 
 > [!IMPORTANT]
-> [全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator)或[特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)需要运行这些初始步骤。 除 PowerShell 外，Azure AD 还提供 Microsoft 图形 API 以[在 Azure AD 中创建可分配角色的组](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api)。
+> [全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator)或[特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)需要运行这些初始步骤。 除 PowerShell 外，Azure AD 还提供 Microsoft 图形 API 以[在 Azure AD 中创建可分配角色的组](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api)。
 
 1. 使用以下命令下载 Azure AD 预览版 PowerShell 模块。 可能需要以管理员身份运行 PowerShell。
 

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 7c3bca9e5ad87c681fc38a5c618331a3f7a97ae1
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 8b46d08da87565d133962c23e8281b221544d9ca
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897504"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092511"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>教程：使用服务器评估发现 Hyper-V VM
 
@@ -87,7 +87,7 @@ ms.locfileid: "98897504"
 验证 PowerShell 版本 | 检查你是否在受支持的 PowerShell 版本中运行该脚本。 | 检查是否正在 Hyper-V 主机上运行 PowerShell 版本 4.0 或更高版本。
 创建帐户 | 验证你在 Hyper-V 主机上是否具有正确的权限。<br/><br/> 使你可以创建具有正确权限的本地用户帐户。 | 选项 1：准备一个具有对 Hyper-V 主机的管理员访问权限的帐户。<br/><br/> 选项 2：准备一个本地管理员帐户或域管理员帐户，并将该帐户添加到这些组中：远程管理用户、Hyper-V 管理员和性能监视器用户。
 启用 PowerShell 远程处理 | 在每台主机上启用 PowerShell 远程控制，使 Azure Migrate 设备能够通过 WinRM 连接在主机上运行 PowerShell 命令。 | 若要设置，请在每台主机上，以管理员身份打开 PowerShell 控制台，然后运行以下命令：``` powershell Enable-PSRemoting -force ```
-设置 Hyper-V 集成服务 | 检查主机管理的所有 VM 上是否已启用 Hyper-V Integration Services。 | 在每个 VM 上[启用 Hyper-V 集成服务](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md)。<br/><br/> 如果运行的是 Windows Server 2003，请[遵循这些说明](prepare-windows-server-2003-migration.md)。
+设置 Hyper-V 集成服务 | 检查主机管理的所有 VM 上是否已启用 Hyper-V Integration Services。 | 在每个 VM 上[启用 Hyper-V 集成服务](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。<br/><br/> 如果运行的是 Windows Server 2003，请[遵循这些说明](prepare-windows-server-2003-migration.md)。
 如果 VM 磁盘位于远程 SMB 共享上，则委派凭据 | 委托凭据 | 运行以下命令，以使 CredSSP 可以在运行 Hyper-V VM 且具有 SMB 共享上的磁盘的主机上委派凭据：```powershell Enable-WSManCredSSP -Role Server -Force ```<br/><br/> 可在所有 Hyper-v 主机上远程运行此命令。<br/><br/> 如果在群集中添加了新的主机节点，则会自动添加这些节点以供发现，但需要手动启用 CredSSP。<br/><br/> 设置设备时，[在设备上启用 CredSSP](#delegate-credentials-for-smb-vhds) 即可完成 CredSSP 的设置。 
 
 ### <a name="run-the-script"></a>运行脚本

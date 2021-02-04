@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 2391a36c02e0bdfe0ea98be7f19fc64f1fbb676f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f9791fa8932792398efdea39fe0d39a967420596
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879926"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491717"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>注册和扫描 Azure SQL 数据库托管实例
 
@@ -104,20 +104,6 @@ Purview 可以通过几个步骤使用服务主体扫描 Azure SQL 数据库托�
 1. 选择“创建”以完成
 1. 如果密钥保管库尚未连接到 Purview，则需要[创建新的密钥保管库连接](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
 1. 最后，使用服务主体[创建新凭据](manage-credentials.md#create-a-new-credential)以设置扫描
-
-### <a name="firewall-settings"></a>防火墙设置
-
-数据库服务器必须允许启用 Azure 连接。 这将允许 Azure Purview 访问和连接服务器。 可遵循 [Azure 内部连接](../azure-sql/database/firewall-configure.md#connections-from-inside-azure)的操作指南。
-
-1. 导航到数据库帐户
-1. 在“概述”页上选择服务器名称
-1. 选择“安全性”>“防火墙和虚拟网络”
-1. 对于“允许 Azure 服务和资源访问此服务器”，选择“是” 
-
-    :::image type="content" source="media/register-scan-azure-sql-database/sql-firewall.png" alt-text="注册源选项" border="true":::
-    
-> [!Note]
-> 当前，Azure Purview 不支持 VNET 配置。 因此，不能执行基于 IP 的防火墙设置。
 
 ## <a name="register-an-azure-sql-database-managed-instance-data-source"></a>注册 Azure SQL 数据库托管实例数据源
 

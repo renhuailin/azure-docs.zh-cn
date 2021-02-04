@@ -1,15 +1,15 @@
 ---
 title: 内置策略定义列表
 description: 列出 Azure Policy 的内置策略定义。 类别包括“标记”、“合规性”、“Key Vault”、“Kubernetes”、“来宾配置”等。
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 9fcb66fbb7fdd94de0d265d19c547ca1567417e7
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 2c9d4432276abe5392a554e57087e38615aaf902
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807592"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220234"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy 内置策略定义
 
@@ -37,6 +37,10 @@ ms.locfileid: "98807592"
 
 [!INCLUDE [azure-policy-reference-policies-app-service](../../../../includes/policy/reference/bycat/policies-app-service.md)]
 
+## <a name="attestation"></a>证明
+
+[!INCLUDE [azure-policy-reference-policies-attestation](../../../../includes/policy/reference/bycat/policies-attestation.md)]
+
 ## <a name="automanage"></a>自动管理
 
 [!INCLUDE [azure-policy-reference-policies-automanage](../../../../includes/policy/reference/bycat/policies-automanage.md)]
@@ -61,9 +65,9 @@ ms.locfileid: "98807592"
 
 [!INCLUDE [azure-policy-reference-policies-batch](../../../../includes/policy/reference/bycat/policies-batch.md)]
 
-## <a name="bot-services"></a>机器人服务
+## <a name="bot-service"></a>Bot 服务
 
-[!INCLUDE [azure-policy-reference-policies-bot-services](../../../../includes/policy/reference/bycat/policies-bot-services.md)]
+[!INCLUDE [azure-policy-reference-policies-bot-service](../../../../includes/policy/reference/bycat/policies-bot-service.md)]
 
 ## <a name="cache"></a>缓存
 

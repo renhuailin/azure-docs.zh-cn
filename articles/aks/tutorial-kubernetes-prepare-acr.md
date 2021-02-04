@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教程 - 创建容器注册表
 description: 在本 Azure Kubernetes 服务 (AKS) 教程中，请创建 Azure 容器注册表实例并上传示例应用程序容器映像。
 services: container-service
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 01/31/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d1dce1c59c4bf40eaead89e4a8a088e9a8ea4f76
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 9f6ec14cea20192aef7d3010201e6613c5d03a9e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250615"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430958"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>教程：部署并使用 Azure 容器注册表
 
@@ -61,7 +61,7 @@ az acr login --name <acrName>
 若要查看当前的本地映像的列表，请使用 [docker images][docker-images] 命令：
 
 ```console
-$ docker images
+docker images
 ```
 上述命令输出显示当前本地图像的列表：
 
@@ -88,8 +88,8 @@ docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azur
 
 若要验证是否已应用标记，请再次运行 [docker images][docker-images]。
 
-```azurecli
-$ docker images
+```console
+docker images
 ```
 
 系统会使用 ACR 实例地址和版本号对映像进行标记。

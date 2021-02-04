@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 9419e5f419a358be50fbb3b8478d62dfe6e3dff0
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b013c66feefade077c85194ba3b1ff04ff4c4aa5
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509344"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536826"
 ---
 # <a name="creating-queries-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建查询
 
@@ -23,7 +23,7 @@ ms.locfileid: "99509344"
 
 查询是针对单个搜索索引的文档集合的只读请求。 它通过 "search" 参数指定 "queryType" 和查询表达式。 查询表达式可以包含搜索词、引号括起来的短语和运算符。
 
-查询还可以使用 "count" 返回在索引中找到的匹配项的数目，选择 "选择" 以选择要在搜索结果中返回的字段，使用 "orderby" 来对结果进行排序。 下面的示例演示具有可用参数子集的查询请求。 有关查询撰写的详细信息，请参阅 [查询类型和组合](search-query-overview.md) 和 [搜索文档 (REST) ](/rest/api/searchservice/search-documents)。
+查询还可以使用 "count" 返回在索引中找到的匹配项的数目，选择 "选择" 以选择要在搜索结果中返回的字段，使用 "orderby" 来对结果进行排序。 下面的示例通过显示可用参数的子集，为你提供了一个有关查询请求的一般概念。 有关查询撰写的详细信息，请参阅 [查询类型和组合](search-query-overview.md) 和 [搜索文档 (REST) ](/rest/api/searchservice/search-documents)。
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -38,7 +38,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="choose-a-client"></a>选择客户端
 
-需要使用工具或 API 来创建查询，如 Azure 门户或 Postman，或实例化查询客户端的代码。 建议将 Azure 门户或 REST Api 用于早期开发和概念证明测试。
+需要 Azure 门户或 Postman 的工具，或者使用 Api 来实例化查询客户端的代码。 建议将 Azure 门户或 REST Api 用于早期开发和概念证明测试。
 
 ### <a name="permissions"></a>权限
 
@@ -111,14 +111,6 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 在编制索引期间，搜索引擎将使用分析器来对字符串执行文本分析，从而最大程度地提高查询时的匹配可能性。 字符串至少是小写的，但也可能需要进行词形还原和停用词删除。 较大的字符串或复合词通常由空格、连字符或短划线分隔，并作为单独的标记编制索引。 
 
 这里要注意的一点是，你认为索引包含的内容和索引实际包含的内容可能会有所不同。 如果查询没有返回预期的结果，则可以通过[分析文本 (REST API)](/rest/api/searchservice/test-analyzer) 检查分析器创建的标记。 有关词汇切分及其对查询的影响的详细信息，请参阅[具有特殊字符的部分术语搜索和模式](search-query-partial-matching.md)。
-
-## <a name="about-queries-per-second-qps"></a>每秒查询数 (QPS) 
-
-由于大量因素导致了查询性能，因此 Microsoft 不会发布预期的 QPS 数字。 使用对应用程序有效的服务层、配置、索引和查询构造，每个客户都必须单独开发 QPS 估计值。 索引大小和复杂性、查询大小和复杂性以及流量大小是 QPS 的主要决定因素。 当此类因素未知时，没有方法能提供有意义的估计值。
-
-针对专用资源（基本层和标准层）上运行的服务进行计算时，估计值更可预测。 由于能够控制更多参数，因此可以更精确地评估 QPS。 有关如何进行估算的指导，请参阅 [Azure 认知搜索的性能和优化](search-performance-optimization.md)。
-
-与“标准”层相比，“存储优化”层（L1 和 L2）的查询吞吐量应更低，延迟应更高。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5f070f59df69bb186041af450e6ca922469d960
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: df8841cb2dcac6335b09a5e7715f42c508c69e76
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043738"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536809"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升级到 Azure 认知搜索 .NET SDK 版本 11
 
@@ -30,7 +30,7 @@ ms.locfileid: "98043738"
 + 三个客户端（而不是两个）：`SearchClient`、`SearchIndexClient`、`SearchIndexerClient`
 + 一系列 API 的命名差异，以及简化了某些任务的小的结构差异
 
-除了本文以外，还可以查看 [更改日志](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) 以了解 .net SDK 版本11中的更改详细列表。
+除了本文之外，你还可以查看[变更日志](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)来获取 .NET SDK 版本 11 中的变更的详细列表。
 
 ## <a name="package-and-library-consolidation"></a>包和库合并
 
@@ -111,11 +111,11 @@ ms.locfileid: "98043738"
 
 ### <a name="json-serialization"></a>JSON 序列化
 
-默认情况下，Azure SDK 使用 [System.Text.Json](/dotnet/api/system.text.json) for JSON 序列化，这依赖于这些 api 的功能来处理以前通过本机 [SerializePropertyNamesAsCamelCaseAttribute](/dotnet/api/microsoft.azure.search.models.serializepropertynamesascamelcaseattribute) 类实现的文本转换，这在新的库中没有对应项。
+默认情况下，Azure SDK 使用 [System.Text.Json](/dotnet/api/system.text.json) 进行 JSON 序列化，依赖这些 API 的功能来处理以前通过原生 [SerializePropertyNamesAsCamelCaseAttribute](/dotnet/api/microsoft.azure.search.models.serializepropertynamesascamelcaseattribute) 类实现的文本转换，该类在新库中没有对应的类。
 
-若要将属性名称序列化到 camelCase 中，可以使用类似于[此示例](https://github.com/Azure/azure-sdk-for-net/tree/d263f23aa3a28ff4fc4366b8dee144d4c0c3ab10/sdk/search/Azure.Search.Documents#use-c-types-for-search-results)) 的[JsonPropertyNameAttribute](/dotnet/api/system.text.json.serialization.jsonpropertynameattribute) (。
+若要将属性名称序列化为 camelCase，可以使用 [JsonPropertyNameAttribute](/dotnet/api/system.text.json.serialization.jsonpropertynameattribute)（类似于[此示例](https://github.com/Azure/azure-sdk-for-net/tree/d263f23aa3a28ff4fc4366b8dee144d4c0c3ab10/sdk/search/Azure.Search.Documents#use-c-types-for-search-results)）。
 
-或者，可以设置在[JsonSerializerOptions](/dotnet/api/system.text.json.jsonserializeroptions)中提供的[JsonNamingPolicy](/dotnet/api/system.text.json.jsonnamingpolicy) 。 System.Text.Js以下从 camelCase [自述文件](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial/README.md#deserializing-documents) 中获取的代码示例演示了如何使用，而无需对每个属性进行属性：
+另外，你还可以设置 [JsonSerializerOptions](/dotnet/api/system.text.json.jsonserializeroptions) 中提供的 [JsonNamingPolicy](/dotnet/api/system.text.json.jsonnamingpolicy)。 下面的 System.Text.Json 代码示例摘自 [Microsoft.Azure.Core.Spatial 自述文件](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial/README.md#deserializing-documents)，它演示了如何使用 camelCase，无需将每个属性特性化：
 
 ```csharp
 // Get the Azure Cognitive Search endpoint and read-only API key.
@@ -141,7 +141,7 @@ SearchClient client = new SearchClient(endpoint, "mountains", credential, client
 Response<SearchResults<Mountain>> results = client.Search<Mountain>("Rainier");
 ```
 
-如果使用 Newtonsoft.Json 进行 JSON 序列化，则可以使用类似的属性或通过使用 [JsonSerializerSettings](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonSerializerSettings.htm)上的属性来传入全局命名策略。 有关等效于上述示例的示例，请参阅自述文件 Newtonsoft.Js上的 [反序列化文档示例](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md) 。
+如果使用 Newtonsoft.Json 进行 JSON 序列化，则可以通过使用类似的特性或通过使用 [JsonSerializerSettings](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonSerializerSettings.htm) 上的属性来传入全局命名策略。 有关与以上示例等效的示例，请参阅 Newtonsoft.Json 自述文件中的[反序列化文档示例](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)。
 
 
 <a name="WhatsNew"></a>
@@ -168,14 +168,14 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的一个对应�
 
 版本 10 中的以下功能在版本 11 中尚不可用。 如果需要这些功能，请推迟迁移，直到这些功能受支持。
 
-+ 地理空间类型
 + [知识存储](knowledge-store-concept-intro.md)
++ 地理空间类型-"地理空间类型" 的第一类支持仍在进行中。 目前，可以使用 [Microsoft 空间](https://www.nuget.org/packages/Microsoft.Spatial/) 包来支持地理操作。 示例可用于 [System.Text.Js上](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) 的和 [Newtonsoft.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)。
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>升级步骤
 
-以下步骤通过遍历第一组所需任务（尤其是涉及客户端引用），帮助你开始执行代码迁移。
+以下步骤通过执行第一组必需任务（特别是与客户端引用相关的任务）来开始进行代码迁移。
 
 1. 在 Visual Studio 中，右键单击你的项目引用并选择“管理 NuGet 包...”，以安装 [Azure.Search.Documents 包](https://www.nuget.org/packages/Azure.Search.Documents/)。
 
@@ -204,7 +204,7 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的一个对应�
 
 1. 为索引器相关对象添加新的客户端引用。 如果使用的是索引器、数据源或技能组，请将客户端引用更改为 [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)。 此客户端是版本 11 中的新客户端，之前没有。
 
-1. 修改集合和列表。 在新的 SDK 中，所有列表都是只读的，这是为了避免在列表刚好包含 NULL 值时出现下游问题。 代码更改是为了向列表中添加项。 例如，可以按如下所示添加字符串，而不是为 Select 属性指定字符串：
+1. 请修改集合和列表。 在新的 SDK 中，所有列表都是只读的，这是为了避免在列表刚好包含 NULL 值时出现下游问题。 代码更改是为了向列表中添加项。 例如，可以按如下所示添加字符串，而不是为 Select 属性指定字符串：
 
    ```csharp
    var options = new SearchOptions
@@ -222,13 +222,13 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的一个对应�
     options.Select.Add("LastRenovationDate");
    ```
 
-   Select、Facet、SearchFields、SourceFields、ScoringParameters 和 OrderBy 都是现在需要重建的所有列表。
+   Select、Facets、SearchFields、SourceFields、ScoringParameters 和 OrderBy 都是现在需要重新构造的列表。
 
 1. 为查询和数据导入更新客户端引用。 应将 [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) 的实例更改为 [SearchClient](/dotnet/api/azure.search.documents.searchclient)。 为了避免名称混乱，请确保在继续下一步之前捕获所有实例。
 
-1. 更新索引、同义词映射和分析器对象的客户端引用。 应将 [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) 的实例更改为 [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient)。 
+1. 为索引、同义词映射和分析器对象更新客户端引用。 应将 [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) 的实例更改为 [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient)。 
 
-1. 对于代码的其余部分，更新类、方法和属性以使用新库的 Api。 可以从[命名差异](#naming-differences)部分来开始了解，但也可以查看[更改日志](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)。
+1. 对于你的代码的剩余部分，请更新类、方法和属性以使用新库的 API。 可以从[命名差异](#naming-differences)部分来开始了解，但也可以查看[更改日志](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)。
 
    如果在查找等效 API 时遇到困难，建议你在 [https://github.com/MicrosoftDocs/azure-docs/issues](https://github.com/MicrosoftDocs/azure-docs/issues) 上记录问题，以便我们可以改进文档或调查问题。
 

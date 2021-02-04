@@ -1,18 +1,18 @@
 ---
 title: Azure Service Fabric 的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure Service Fabric 的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: sample
 author: erikadoyle
 ms.author: edoyle
 ms.service: service-fabric
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 70ef2e98d34bc6a638d6a80cf9facc03b793f871
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 915940c4b99b52d70993dc9fc14c07273f878bf9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796472"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097854"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-service-fabric"></a>Azure Service Fabric 的 Azure Policy 法规遵从性控制措施
 

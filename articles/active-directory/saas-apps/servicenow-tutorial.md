@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 7a15248300150c9b79c4678701f81fac923d56a3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c90234249f3cf7eb6ed4793110d61e1f8190ed60
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353599"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092595"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ServiceNow 集成
 
@@ -36,7 +36,7 @@ ms.locfileid: "96353599"
 * 已启用 ServiceNow 单一登录 (SSO) 的订阅。
 * 对于 ServiceNow，ServiceNow 的实例或租户支持卡尔加里、金斯敦、伦敦、马德里、纽约、奥兰多和巴黎版本或更高版本。
 * 对于 ServiceNow Express，需要 Helsinki 版本或更高版本的 ServiceNow Express 实例。
-* ServiceNow 租户必须启用[多提供程序单一登录插件](https://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0)。
+* ServiceNow 租户必须启用[多提供程序单一登录插件](https://old.wiki/index.php/Multiple_Provider_Single_Sign-On#gsc.tab=0)。
 * 对于自动配置，请为 ServiceNow 启用多提供程序插件。
 * 若要安装 ServiceNow Classic（移动版）应用程序，请转到相应的商店并搜索 ServiceNow Classic 应用程序。 然后下载。
 

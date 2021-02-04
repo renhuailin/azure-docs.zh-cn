@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: c3221063469315b2324c5039a46db622109826aa
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 0b337225c5909563ef4aeb49cf0754e11075a6fb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673595"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>教程：Azure Active Directory 与 Bridge 集成
 
@@ -106,7 +106,7 @@ ms.locfileid: "97673595"
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<company name>.bridgeapp.com`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Bridge 客户端支持团队](https://community.bridgeapp.com/community/help)，获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Bridge 客户端支持团队](https://community.bridgeapp.com/hc/en-us/community/topics)，获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求通过从给定的选项下载 **证书(原始)** 并将其保存在计算机上。
 
@@ -124,7 +124,7 @@ ms.locfileid: "97673595"
 
 ### <a name="configure-bridge-single-sign-on"></a>配置 Bridge 单一登录
 
-若要在 **Bridge** 端配置单一登录，需要将下载的“证书(原始)”以及从 Azure 门户复制的相应 URL 发送给 [Bridge 支持团队](https://community.bridgeapp.com/community/help)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Bridge** 端配置单一登录，需要将下载的“证书(原始)”以及从 Azure 门户复制的相应 URL 发送给 [Bridge 支持团队](https://community.bridgeapp.com/hc/en-us/community/topics)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -179,7 +179,7 @@ ms.locfileid: "97673595"
 
 ### <a name="create-bridge-test-user"></a>创建 Bridge 测试用户
 
-在本部分中，会在 Bridge 中创建一个名为“Britta Simon”的用户。 请与 [Bridge 支持团队](https://community.bridgeapp.com/community/help)协作，在 Bridge 平台中添加这些用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，会在 Bridge 中创建一个名为“Britta Simon”的用户。 请与 [Bridge 支持团队](https://community.bridgeapp.com/hc/en-us/community/topics)协作，在 Bridge 平台中添加这些用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

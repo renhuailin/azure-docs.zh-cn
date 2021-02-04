@@ -3,7 +3,7 @@ title: 教程 - 添加本地应用 - Azure AD 中的应用程序代理
 description: Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登录来访问本地应用程序的应用程序代理服务。 本教程介绍如何准备环境以与应用程序代理配合使用。 然后将介绍如何使用 Azure 门户将本地应用程序添加到 Azure AD 租户。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 6f8fdb23222944eab4742d1e972280e1e27e30a3
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 04b3dd51aab9686d102b6b94324f89396a268e7d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728508"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260073"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -56,7 +56,8 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 > ```
 > Windows Registry Editor Version 5.00
 > 
-> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 Value: 0
+> [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp]
+> "EnableDefaultHTTP2"=dword:00000000
 > ```
 >
 > 可以通过 PowerShell 使用以下命令设置密钥。

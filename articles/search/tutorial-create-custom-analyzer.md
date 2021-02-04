@@ -2,18 +2,18 @@
 title: 教程：创建自定义分析器
 titleSuffix: Azure Cognitive Search
 description: 了解如何构建自定义分析器以提高 Azure 认知搜索中搜索结果的质量。
-manager: liamca
+manager: luisca
 author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
-ms.openlocfilehash: b83ed506c0aa6299e5308e9e0c7276a21b7d9abe
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 01/29/2021
+ms.openlocfilehash: f4bde98cfc772f5a80bb52c2e4bc2f5a9c28c78d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652341"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097651"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>教程：为电话号码创建自定义分析器
 

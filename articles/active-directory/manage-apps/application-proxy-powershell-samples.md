@@ -3,7 +3,7 @@ title: 适用于 Azure AD 应用程序代理的 PowerShell 示例
 description: 使用这些 Azure AD 应用程序代理的 PowerShell 示例获取有关目录中应用程序代理应用和连接器的信息、将用户和组分配给应用，以及获取证书信息。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b0955e67c5a35cbea96490a0395522fa145dad1
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 117b4fec13c22ffb2f3163d50be44734d24ef3fa
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858359"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259095"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD 应用程序代理的 Azure AD PowerShell 示例
 

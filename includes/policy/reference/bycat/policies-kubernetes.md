@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d24192cb2f648a20a8f776b92f765bc6055ecf71
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 5d8890198308379d837f3b486b4d0efc987249e3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807204"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220274"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应在群集上安装并启用用于 Kubernetes 服务 (AKS) 的 Azure Policy 加载项](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |用于 Kubernetes 服务 (AKS) 的 Azure Policy 加载项扩展了 Gatekeeper v3（用于开放策略代理 (OPA) 的许可控制器 Webhook），以集中、一致的方式在群集上应用大规模强制措施和安全措施。 |Audit、Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
+|[应在群集上安装并启用用于 Kubernetes 服务 (AKS) 的 Azure Policy 加载项](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |用于 Kubernetes 服务 (AKS) 的 Azure Policy 加载项扩展了 Gatekeeper v3（用于开放策略代理 (OPA) 的许可控制器 Webhook），以集中、一致的方式在群集上应用大规模强制措施和安全措施。 |Audit、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[Azure Kubernetes 服务群集中的操作系统和数据磁盘都应使用客户托管的密钥进行加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d7be79c-23ba-4033-84dd-45e2a5ccdd67) |使用客户管理的密钥加密 OS 和数据磁盘可以更好地控制密钥管理并提高密钥管理的灵活性。 这是许多法规和行业合规性标准中的常见要求。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_CMK_Deny.json) |
 |[将 Azure Policy 加载项部署到 Azure Kubernetes 服务群集](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa8eff44f-8c92-45c3-a3fb-9880802d67a7) |使用 Azure Policy 加载项管理和报告 Azure Kubernetes 服务 (AKS) 群集的符合性状态。 有关详细信息，请参阅 [https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc)。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Deploy.json) |
 |[将 GitOps 部署到 Kubernetes 群集](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |此策略会将“sourceControlConfiguration”部署到 Kubernetes 群集，以确保群集从已定义的 git 存储库中获取其事实来源。 有关使用此策略的说明，请访问 [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy)。 |DeployIfNotExists |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster_DINE.json) |

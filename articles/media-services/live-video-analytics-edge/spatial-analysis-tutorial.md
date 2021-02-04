@@ -3,12 +3,12 @@ title: 通过用于空间分析的计算机视觉分析实时视频 - Azure
 description: 本教程展示了如何结合使用实时视频分析和 Azure 认知服务中的计算机视觉空间分析 AI 功能，分析来自（模拟）IP 相机的实时视频源。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 1c6fe6e10a91034d794437f31d495b85ef086848
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f8a828d27b69fedefe7ccbc2ad7290bf300afc16
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632937"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526783"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>通过用于空间分析的计算机视觉（预览版）分析实时视频
 
@@ -110,8 +110,8 @@ MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视
     AAD_TENANT_ID="<AAD Tenant ID>"  
     AAD_SERVICE_PRINCIPAL_ID="<AAD SERVICE_PRINCIPAL ID>"  
     AAD_SERVICE_PRINCIPAL_SECRET="<AAD SERVICE_PRINCIPAL ID>"  
-    INPUT_VIDEO_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
-    OUTPUT_VIDEO_FOLDER_ON_DEVICE="/var/media"
+    VIDEO_INPUT_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
+    VIDEO_OUTPUT_FOLDER_ON_DEVICE="/var/media"
     APPDATA_FOLDER_ON_DEVICE="/var/local/mediaservices"
     CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"  
     CONTAINER_REGISTRY_PASSWORD_myacr="<your container registry password>"   
