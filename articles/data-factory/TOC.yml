@@ -223,6 +223,8 @@
           href: source-control.md
         - name: 持续集成和交付
           href: continuous-integration-deployment.md
+        - name: 自动发布
+          href: continuous-integration-deployment-improvements.md
     - name: 连接器
       items:
         - name: 连接器概述

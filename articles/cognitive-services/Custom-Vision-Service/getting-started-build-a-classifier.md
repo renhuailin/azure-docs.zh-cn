@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/29/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 图像识别, 图像识别应用, 自定义视觉
-ms.openlocfilehash: d644c323cb60e5ef9a89670cd9b828e3e9676299
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: d25b226f5dfff34aa572b40d1e4de142cf8e0b7b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131689"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221238"
 ---
 # <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>快速入门：使用自定义视觉服务网站生成分类器
 
@@ -71,7 +71,7 @@ ms.locfileid: "98131689"
 
 在本部分中，将上传图像并手动标记图像以帮助训练分类器。 
 
-1. 若要添加图像，请单击“添加图像”按钮，然后选择“浏览本地文件”。 选择“打开”以移至标记。 标记选择将应用于已选择要上传的整组图像，因此根据其所需的标记将图像分成单独的组更容易上传。 还可在上传图像后更改单个图像的标记。
+1. 若要添加图像，请选择“添加图像”，然后选择“浏览本地文件” 。 选择“打开”以移至标记。 标记选择将应用于已选择要上传的整组图像，因此根据其应用的标记将图像分成单独的组更容易上传。 还可在上传图像后更改单个图像的标记。
 
     ![添加图像控件位于左上角，以按钮形式显示在底部中央。](./media/getting-started-build-a-classifier/add-images01.png)
 

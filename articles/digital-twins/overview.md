@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 91915f204a68d59a603b8bdea383b497a5b33d34
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c0bc245a4be1ab7c326fa27cc1422878aca6331d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664021"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071675"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure 数字孪生是什么？
 
@@ -94,10 +94,10 @@ Azure 数字孪生通常与其他 Azure 服务结合使用，作为较大 IoT �
 
 ## <a name="service-limits"></a>服务限制
 
-有关 Azure 数字孪生限制的列表，请参阅[参考：服务限制](reference-service-limits.md)
+有关 Azure 数字孪生限制的列表，请参阅 [Azure 数字孪生服务限制](reference-service-limits.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你使用过首个预览版的 Azure 数字孪生（2018 年 10 月），请了解已发生的更改：[概述：*与第一版的差异*](overview-differences.md)。
+* 在快速入门中深入研究如何使用 Azure 数字孪生：[*快速入门：浏览示例方案*](quickstart-adt-explorer.md)。
 
-或者，通过快速入门深入研究如何使用 Azure 数字孪生：[*快速入门：浏览示例方案*](quickstart-adt-explorer.md)。
+* 或者，通过[概念：自定义模型](concepts-models.md)，开始了解有关 Azure 数字孪生概念的信息。

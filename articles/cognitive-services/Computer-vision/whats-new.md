@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: d59826ba0e53c4b4146c13b354a85a124ac29b23
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f10319de67a105b4b5e4641c4171ccd0a6e63440
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738095"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490871"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
@@ -30,6 +30,12 @@ ms.locfileid: "98738095"
 * 现可配置[空间分析操作](spatial-analysis-operations.md)来检测某人是否正戴着口罩等保护性面罩。 
     * 可通过配置 `ENABLE_FACE_MASK_CLASSIFIER` 参数，为 `personcount`、`personcrossingline` 和 `personcrossingpolygon` 操作启用口罩分类器。
     * 系统将以元数据的形式返回 `face_mask` 和 `face_noMask` 属性，其中有在视频流中检测到的每个人的置信度分数
+* personcrossingpolygo 操作已得到扩展，可计算一个人在某个区域中的停留时间。 可将该操作的区域配置中的 `type` 参数设置为 `zonedwelltime`，类型为 personZoneDwellTimeEvent 的新事件将包括 `durationMs` 字段，该字段填充了该人员在该区域中停留的毫秒数。
+* 中断性变更：已将 personZoneEvent 事件重命名为 personZoneEnterExitEvent 。 此事件在某人进入或离开该区域时由 personcrossingpolygon 操作引发，并提供与所穿过区域的编号侧相关的方向信息。
+* 可在所有操作中将视频 URL 作为“专用参数/已模糊处理”提供。 模糊处理现在是可选操作，仅当 `KEY` 和 `IV` 作为环境变量提供时才有效。
+* 默认情况下，对所有操作启用了校准。 设置 `do_calibration: false` 可禁用它。
+* 通过 `enable_recalibration` 参数增加了对自动重新校准的支持（默认禁用）；有关详细信息，请参阅[空间分析操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations)
+* 照相机校准参数设置为 `DETECTOR_NODE_CONFIG`。 有关详细信息，请参阅[空间分析操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations)。
 
 
 ## <a name="october-2020"></a>2020 年 10 月

@@ -2,6 +2,8 @@
   href: index.yml
 - name: 概述
   href: overview.md
+- name: Azure Sentinel 中有哪些新增功能？
+  href: whats-new.md
 - name: 快速入门
   expanded: true
   items:

@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 09/30/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文档处理
-ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 813f5a06915ca7f5dfc0f4cc9a3f9b3e232ca31a
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845550"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221085"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
@@ -202,7 +202,7 @@ ms.locfileid: "97845550"
    1. 单击 **+** 创建新标记。
    1. 输入标记名称。
    1. 按 Enter 保存标记。
-1. 在主编辑器中，单击以从突出显示的文本元素中选择字词。 在 v2.1 preview.2 中，也可单击选中单选按钮和复选框等选择标记作为键值对 。 表单识别器会确定是将“已选中”还是“未选中”作为选择标记的值。
+1. 在主编辑器中，单击以从突出显示的文本元素中选择字词。 在 v2.1 preview.2 API 中，也可单击选中单选按钮和复选框等选择标记作为键值对 。 表单识别器会确定是将“已选中”还是“未选中”作为选择标记的值。
 1. 单击要应用的标记，或按相应的键盘键。 数字键已分配为前 10 个标记的热键。 可以使用标记编辑器窗格中的向上和向下箭头图标对标记进行重新排序。
     > [!Tip]
     > 标记窗体时，请记住以下提示。

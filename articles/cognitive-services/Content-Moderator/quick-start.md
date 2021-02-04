@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 09/29/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 内容审查器，内容审核
-ms.openlocfilehash: c026c42fe3c7a7f3f0d6b80e3123904077c104cf
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: f8ad9c135fea4e582e6ba47764d0401936f8c295
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905207"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221170"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入门：尝试在 Web 上使用内容审查器
 
@@ -88,6 +88,6 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 ## <a name="next-steps"></a>后续步骤
 
 了解如何在应用中单独使用审查 API。
-- 实施图像审查。 使用 [API 控制台](try-image-api.md)或按照[客户端库或 REST API 快速入门](client-libraries.md)使用标记、置信度分数和其他提取的信息扫描图像并检测潜在的成人和不雅内容。
-- 实施文本审查。 使用 [API 控制台](try-text-api.md)或[客户端库或 REST API 快速入门](client-libraries.md)扫描文本内容以查找潜在的亵渎内容、机器辅助的不需要的文本分类（预览）和个人数据。
+- 实施图像审查。 使用 [API 控制台](try-image-api.md)或遵循[快速入门](client-libraries.md)，使用标记、置信度评分和提取的其他信息扫描图像并检测潜在的成人和猥亵内容。
+- 实施文本审查。 使用 [API 控制台](try-text-api.md)或遵循[快速入门](client-libraries.md)，扫描文本内容，查找潜在的粗俗语言、个人数据和其他不需要的文本。
 - 实施视频审查。 请按照[适用于 C# 的视频审核操作指南](video-moderation-api.md)扫描视频并检测潜在的成人和猥亵内容。 

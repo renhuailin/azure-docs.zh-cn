@@ -68,6 +68,8 @@
           href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
+    - name: 后端
+      href: backends.md
     - name: 订阅
       href: api-management-subscriptions.md
     - name: 版本
@@ -104,10 +106,10 @@
           href: import-function-app-as-api.md
         - name: 导入逻辑应用
           href: import-logic-app-as-api.md
-        - name: 导入 Service Fabric 应用
-          href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
         - name: 编辑 API
           href: edit-api.md
+        - name: 配置 Service Fabric 后端
+          href: how-to-configure-service-fabric-backend.md
     - name: 预配和缩放
       items:
         - name: 容量指标

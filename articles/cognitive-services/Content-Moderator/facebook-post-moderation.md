@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 01/29/2021
 ms.author: pafarley
-ms.openlocfilehash: e930e5d125a8f1ee90448e293e2e0ca2c5c28465
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f3b43ed6a86276b308599f9091d581423b0f363c
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913664"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220984"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查 Facebook 帖子和评论
 
@@ -48,11 +48,11 @@ ms.locfileid: "92913664"
 
 ## <a name="configure-image-moderation-workflow"></a>配置图像审查工作流
 
-请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南，以创建自定义图像工作流。 内容审查器将使用此工作流自动检查 Facebook 上的图像，并将一些图像发送到评审工具。 记下工作流的 **名称** 。
+请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南，以创建自定义图像工作流。 内容审查器将使用此工作流自动检查 Facebook 上的图像，并将一些图像发送到评审工具。 记下工作流的 **名称**。
 
 ## <a name="configure-text-moderation-workflow"></a>配置文本审查工作流
 
-同样请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南；这一次将创建自定义文本工作流。 内容审查器将使用此工作流自动检查文本内容。 记下工作流的 **名称** 。
+同样请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南；这一次将创建自定义文本工作流。 内容审查器将使用此工作流自动检查文本内容。 记下工作流的 **名称**。
 
 ![配置文本工作流](images/text-workflow-configure.PNG)
 
@@ -105,14 +105,14 @@ ms.locfileid: "92913664"
     ![Facebook 开发人员页面](images/facebook-developer-app.png)
 
     1. 导航到 [Facebook 开发人员网站](https://developers.facebook.com/)
-    1. 单击“我的应用”。
+    1. 转到“我的应用”。
     1. 添加新应用。
-    1. 为应用命名
+    1. 提供名称
     1. 选择“Webhook”->“设置”
     1. 在下拉菜单中选择“页面”，然后选择“订阅此对象” 
     1. 提供 FBListener URL 作为回叫 URL，并在“Function App 设置”下提供配置的“验证令牌”  
     1. 订阅后，向下滚动到源，然后选择“订阅”。
-    1. 单击“源”行的“测试”按钮，将测试消息发送到 FBListener Azure 函数，然后点击“发送到我的服务器”按钮  。 FBListener 上应会显示收到的请求。
+    1. 选择“源”行的“测试”按钮，将测试消息发送到 FBListener Azure 函数，然后点击“发送到我的服务器”按钮  。 FBListener 上应会显示收到的请求。
 
 1. 创建 Facebook 页面。
 
@@ -124,7 +124,7 @@ ms.locfileid: "92913664"
         1. 导航到[图形 API 资源管理器](https://developers.facebook.com/tools/explorer/)。
         1. 选择“应用程序”。
         1. 选择“页面访问令牌”，发送 Get 请求 。
-        1. 单击响应中的“页面 ID”。
+        1. 选择响应中的“页面 ID”。
         1. 现在，将 /subscribed_apps 追加到 URL 并发送 Get（空响应）请求 。
         1. 提交 Post 请求。 获取 success: true 形式的响应。
 
@@ -159,7 +159,7 @@ ms.locfileid: "92913664"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已设置一个程序用于分析产品图像，以便按产品类型对其进行标记，并使评审团队能够在内容审查方面做出明智的决策。 接下来，请了解有关图像审查的详细信息。
+在本教程中，你设置一个程序来分析产品图像，按产品类型对其进行标记，使评审团队能够在内容审查方面做出明智的决策。 接下来，请了解有关图像审查的详细信息。
 
 > [!div class="nextstepaction"]
 > [图像审查](./image-moderation-api.md)

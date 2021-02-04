@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: travisw
-ms.openlocfilehash: 2efe17bdf597b7e3ba7d0277f06d4b24e9b51db3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b987f98281c298da2d634c686d740faf3dda3502
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187554"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99213801"
 ---
 1. 启动 Android Studio，然后在“欢迎”窗口中选择“启动新的 Android Studio 项目”。
 
@@ -27,7 +27,7 @@ Android Studio 需要一定的时间来准备你的新 Android 项目。 接下�
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-认知服务语音 SDK 的当前版本是 1.13.0。
+认知服务语音 SDK 的当前版本是 1.15.0。
 
 将适用于 Android 的语音 SDK 打包为 [AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及所需的 Android 权限。
 它托管在位于 https:\//csspeechstorage.blob.core.windows.net/maven/ 处的 Maven 存储库中。
@@ -42,7 +42,7 @@ Android Studio 需要一定的时间来准备你的新 Android 项目。 接下�
 
    ![“库依赖项”的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. 在出现的窗口中，输入适用于 Android 的语音 SDK 的名称和版本：com.microsoft.cognitiveservices.speech:client-sdk:1.13.0。 然后选择“确定”。
+1. 在出现的窗口中，输入适用于 Android 的语音 SDK 的名称和版本：com.microsoft.cognitiveservices.speech:client-sdk:1.15.0。 然后选择“确定”。
    现应将语音 SDK 添加到依赖项列表中，如下所示：
 
    ![依赖项列表中语音 SDK 的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
