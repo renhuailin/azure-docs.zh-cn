@@ -1,23 +1,23 @@
 ---
-title: 跨区域安全部署-Azure 部署管理器
-description: 了解如何在多个区域上使用 Azure 部署管理器部署服务，以及如何进行安全部署。
+title: 跨区域安全部署-Azure Deployment Manager
+description: 了解如何在多个区域上使用 Azure Deployment Manager 部署服务，以及如何进行安全部署。
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b950fdc36fe3fbea1ce9436bdd7f7372c64c055
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baed44e04a0beca02cc959d302a4a29906b4a78e
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333199"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539512"
 ---
-# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>使用 Azure 部署管理器 (公共预览版启用安全部署实践) 
+# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>使用 Azure Deployment Manager (公共预览版启用安全部署实践) 
 
 要跨多个区域部署服务并确保它在每个区域中按预期运行，可以使用 Azure 部署管理器来协调服务的分阶段推出。 与任何 Azure 部署一样，需在[资源管理器模板](template-syntax.md)中为服务定义资源。 创建模板后，使用部署管理器描述服务的拓扑及其推出方式。
 
 部署管理器是资源管理器的一项功能。 它将在部署过程中为你提供帮助。 如果有需要部署到多个区域的复杂服务，请使用部署管理器。 通过分阶段推出服务，你可以在服务已部署到所有区域之前发现潜在的问题。 如果不需要分阶段推出的额外预防措施，请使用资源管理器的标准[部署选项](deploy-portal.md)。 部署管理器与支持资源管理器部署的所有现有第三方工具无缝集成，例如持续集成和持续交付 (CI/CD) 产品/服务。
 
-Azure 部署管理器处于预览阶段。 提供 [反馈](https://aka.ms/admfeedback)，帮助我们改进功能。
+Azure Deployment Manager 处于预览阶段。 提供 [反馈](https://aka.ms/admfeedback)，帮助我们改进功能。
 
 要使用部署管理器，需要创建四个文件：
 
@@ -30,10 +30,10 @@ Azure 部署管理器处于预览阶段。 提供 [反馈](https://aka.ms/admfee
 
 其他资源：
 
-- [Azure 部署管理器 REST API 参考](/rest/api/deploymentmanager/)。
-- [教程：将 Azure 部署管理器用于资源管理器模板](./deployment-manager-tutorial.md)。
-- [教程：在 Azure 部署管理器中使用运行状况检查](./deployment-manager-tutorial-health-check.md)。
-- [Azure 部署管理器示例](https://github.com/Azure-Samples/adm-quickstart)。
+* [Azure Deployment Manager REST API 参考](/rest/api/deploymentmanager/)。
+* [教程：将 Azure Deployment Manager 用于资源管理器模板](./deployment-manager-tutorial.md)。
+* [教程：在 Azure 部署管理器中使用运行状况检查](./deployment-manager-tutorial-health-check.md)。
+* [Azure Deployment Manager 示例](https://github.com/Azure-Samples/adm-quickstart)。
 
 ## <a name="identity-and-access"></a>身份验证和访问控制
 
@@ -49,10 +49,10 @@ Azure 部署管理器处于预览阶段。 提供 [反馈](https://aka.ms/admfee
 
 拓扑模板包括以下资源：
 
-* 项目源 - 存储资源管理器和参数的位置
-* 服务拓扑 - 指向项目源
-  * 服务 - 指定位置和 Azure 订阅 ID
-    * 服务单位 - 指定资源组、部署模式以及模板和参数文件的路径
+* 项目源-存储资源管理器模板和参数的位置。
+* 服务拓扑-指向 "项目源"。
+  * 服务-指定位置和 Azure 订阅 ID。
+    * 服务单元-指定资源组、部署模式以及指向模板和参数文件的路径。
 
 要向了解每个级别发生的情况，查看你提供的值将很有帮助。
 
@@ -87,7 +87,7 @@ Azure 部署管理器处于预览阶段。 提供 [反馈](https://aka.ms/admfee
 
 ### <a name="service-topology"></a>服务拓扑
 
-以下示例显示了服务拓扑资源的一般格式。 需要提供保存模板和参数文件的项目源的资源 ID。 服务拓扑包括所有服务资源。 要确保项目源可用，服务拓扑需要依赖于它。
+以下示例显示了服务拓扑资源的一般格式。 需要提供保存模板和参数文件的项目源的资源 ID。 服务拓扑包括所有服务资源。 请确保项目源可用，因为服务拓扑依赖于它。
 
 ```json
 {
@@ -175,11 +175,11 @@ Azure 部署管理器处于预览阶段。 提供 [反馈](https://aka.ms/admfee
 
 推出模板描述部署服务时要执行的步骤。 需要指定要使用的服务拓扑，并定义部署服务单位的顺序。 它包括用于存储部署二进制文件的项目源。 在推出模板中定义以下层次结构：
 
-* 项目源
-* 步骤
-* 推出
-  * 步骤组
-    * 部署操作
+* 项目源。
+* 分步.
+* 推广.
+  * 步骤组。
+    * 部署操作。
 
 下图显示了推出模板的层次结构：
 
@@ -193,9 +193,9 @@ Azure 部署管理器处于预览阶段。 提供 [反馈](https://aka.ms/admfee
 
 ### <a name="steps"></a>步骤
 
-可以定义在部署操作之前或之后执行的步骤。 目前，只有 `wait` 步骤和 "healthCheck" 步骤可用。
+可以定义在部署操作之前或之后执行的步骤。 目前，只有 `wait` 步骤和 `healthCheck` 步骤可用。
 
-wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在部署下一个服务单位之前验证服务是否按预期运行。 以下示例显示了 wait 步骤的一般格式。
+`wait`步骤将暂停部署，然后再继续。 此步骤允许在部署下一个服务单位之前验证服务是否按预期运行。 下面的示例显示了步骤的常规格式 `wait` 。
 
 ```json
 {
@@ -214,13 +214,13 @@ wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在�
 
 持续时间属性使用 [ISO 8601 标准](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 前面的示例指定了一分钟的等待时间。
 
-有关运行状况检查步骤的详细信息，请参阅在 [azure 中引入运行状况集成部署管理器](./deployment-manager-health-check.md) 和 [教程：使用 azure 部署管理器中的运行状况检查](./deployment-manager-tutorial-health-check.md)。
+有关运行状况检查的详细信息，请参阅 [向 azure Deployment Manager 和教程介绍运行状况集成](./deployment-manager-health-check.md) [：使用 azure Deployment Manager 中的运行状况检查](./deployment-manager-tutorial-health-check.md)。
 
 有关详细信息，请参阅[步骤模板引用](/azure/templates/Microsoft.DeploymentManager/steps)。
 
 ### <a name="rollouts"></a>推出
 
-要确保项目源可用，推出需要依赖于它。 推出定义已部署的每个服务单位的步骤组。 可以定义在部署之前或之后要执行的操作。 例如，可以指定部署在部署服务单位后进行等待。 可以定义步骤组的顺序。
+请确保项目源可用，因为部署依赖于它。 推出定义已部署的每个服务单位的步骤组。 可以定义在部署之前或之后要执行的操作。 例如，你可以指定在部署服务单位后要等待的部署。 可以定义步骤组的顺序。
 
 标识对象指定执行部署操作的[用户分配的托管标识](#identity-and-access)。
 
@@ -270,7 +270,7 @@ wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在�
 
 对于已版本控制的部署，项目的路径随每个新版本而发生更改。 首次运行部署时，路径可能为 `https://<base-uri-blob-container>/binaries/1.0.0.0`。 第二次可能为 `https://<base-uri-blob-container>/binaries/1.0.0.1`。 部署管理器使用 `$containerRoot` 变量简化获取当前部署的正确根路径。 此值随每个版本而发生更改，并且在部署前未知。
 
-使用模板参数文件中的 `$containerRoot` 变量部署 Azure 资源。 部署时，此变量将替换为推出的实际值。
+使用用于 `$containerRoot` 部署 Azure 资源的模板的参数文件中的变量。 部署时，此变量将替换为推出的实际值。
 
 例如，在推出期间为二进制项目创建项目源。
 
@@ -296,7 +296,7 @@ wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在�
 
 请注意 `artifactRoot` 和 `sasUri` 属性。 项目根目录可能设置为类似 `binaries/1.0.0.0` 的值。 SAS URI 是存储容器的 URI，带有用于访问的 SAS 令牌。 部署管理器自动构造 `$containerRoot` 变量的值。 它以 `<container>/<artifactRoot>` 格式将这些值组合在一起。
 
-模板和参数文件需要了解获取已版本控制的二进制文件的正确路径。 例如，若要为 Web 应用部署文件，请创建以下具有 $containerRoot 变量的参数文件。 路径必须使用两个反斜杠 (`\\`)，因为第一个是转义字符。
+模板和参数文件需要了解获取已版本控制的二进制文件的正确路径。 例如，若要部署 web 应用的文件，请使用变量创建以下参数文件 `$containerRoot` 。 路径必须使用两个反斜杠 (`\\`)，因为第一个是转义字符。
 
 ```json
 {
@@ -330,7 +330,7 @@ wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在�
 }
 ```
 
-可通过创建新文件夹并在推出期间传入该根目录来管理已版本控制的部署。 路径将流向部署资源的模板。
+可以通过创建新文件夹并在部署期间传入该根路径来管理版本控制的部署。 路径将流向部署资源的模板。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -339,4 +339,4 @@ wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在�
 > [!div class="nextstepaction"]
 > [教程：将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)
 >
-> [快速入门：只需几分钟即可试用 Azure 部署管理器](https://github.com/Azure-Samples/adm-quickstart)
+> [快速入门：只需几分钟即可试用 Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart)

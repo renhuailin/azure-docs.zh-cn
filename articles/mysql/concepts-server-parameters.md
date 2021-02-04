@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 9485d346384344bd7c35d0577245419ca1f56574
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 1b0bcf528a16e2f75bf21235980424b5375f8824
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951304"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539478"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器参数
 
@@ -31,7 +31,7 @@ Azure Database for MySQL 公开了通过 [Azure 门户](./howto-server-parameter
 
 ### <a name="thread-pools"></a>线程池
 
-MySQL 通常会为每个客户端连接分配一个线程。 随着并发用户数量的增加，性能中会有相应的删除。 由于上下文切换增加、线程争用以及 CPU 缓存位置不正确，许多活动线程会严重影响性能。
+MySQL 通常会为每个客户端连接分配一个线程。 随着并发用户数量的增加，性能会相应下降。 由于上下文切换增加、线程争用以及 CPU 缓存位置不正确，许多活动线程会严重影响性能。
 
 线程池是服务器端的一项功能。与连接池不同，它通过引入工作线程的动态池来最大限度提高性能，该动态池可用于限制服务器上运行的活动线程数，并最大程度地减少线程变动。 这有助于确保连接突发不会导致服务器资源用尽或因内存不足错误而崩溃。 对于短查询和 CPU 密集型工作负荷（例如 OLTP 工作负荷），线程池最有效。
 

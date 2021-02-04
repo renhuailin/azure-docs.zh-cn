@@ -4,15 +4,15 @@ description: 介绍 Azure Analysis Services 中的表格 1200 和更高版本数
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/03/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6e558962ad8a84b5f44abe21bc7c0ab67a4861ba
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 2b4ae4aa8f6b08b273088c98d120d339db7deadb
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493814"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539444"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -36,7 +36,7 @@ ms.locfileid: "99493814"
 注意：
 
 <a name="tab1400a">1</a> - 仅限表格 1400 和更高模型。  
-<a name="azprovider">2</a> - 在表格 1200 和更高版本的模型中指定为“提供程序”数据源时，内存中模型和 DirectQuery 模型都需要 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL（推荐）、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。  
+<a name="azprovider">2</a> -在表格1200和更高版本模型中指定为 *提供程序* 数据源时，内存中和 DirectQuery 模型都需要 Microsoft OLE DB 驱动程序 SQL Server MSOLEDBSQL (推荐的) 或 .NET Framework 的数据提供程序。  
 <a name="azsqlmanaged">3</a> - 支持 Azure SQL 托管实例。 由于 SQL 托管实例在具有专用 IP 地址的 Azure VNet 中运行，因此必须在该实例上启用公共终结点。 如果未启用，则需要[本地数据网关](analysis-services-gateway.md)。  
 <a name="databricks">4</a> - 目前不支持使用 Spark 连接器的 Azure Databricks。  
 <a name="gen2">5</a> - 目前不支持 ADLS Gen2 连接器，但是，Azure Blob 存储连接器可以与 ADLS Gen2 数据源一起使用。

@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2ee4e313366bafdd2f6e3bd0e104abd9f11b7776
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 6cefb60d794defcce54766b9c7f71e7fbf40fe5c
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108664"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539427"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>使用 IoT Edge 上的 Azure Blob 存储在边缘中存储数据
 
@@ -81,7 +81,7 @@ Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)�
 | ----- | ----- | ---- |
 | uploadOn | true、false | 默认设置为 `false`。 若要启用此功能，请将此字段设置为 `true`。 <br><br> 环境变量：`deviceToCloudUploadProperties__uploadOn={false,true}` |
 | uploadOrder | NewestFirst、OldestFirst | 用于选择将数据复制到 Azure 的顺序。 默认设置为 `OldestFirst`。 顺序由 Blob 的上次修改时间确定。 <br><br> 环境变量：`deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` 是一个连接字符串，用于指定要将数据上传到的存储帐户。 指定 `Azure Storage Account Name`、`Azure Storage Account Key` 或 `End point suffix`。 添加用于上传数据的适当 Azure EndpointSuffix，它在全局 Azure、政府 Azure 和 Microsoft Azure Stack 中是不同的。 <br><br> 可以选择在此处选择指定 Azure 存储 SAS 连接字符串。 但是，在此属性过期时必须将其更新。 SAS 权限可能包括为容器创建访问权限，并为 blob 创建、写入和添加访问权限。  <br><br> 环境变量：`deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` 是一个连接字符串，用于指定要将数据上传到的存储帐户。 指定 `Azure Storage Account Name`、`Azure Storage Account Key` 或 `End point suffix`。 添加用于上传数据的适当 Azure EndpointSuffix，它在全局 Azure、政府 Azure 和 Microsoft Azure Stack 中是不同的。 <br><br> 可以选择在此处选择指定 Azure 存储 SAS 连接字符串。 但是，在此属性过期时必须将其更新。 SAS 权限可能包括为容器创建访问权限，以及为 blob 创建、写入和添加访问权限。  <br><br> 环境变量：`deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | 用于指定要上传到 Azure 的容器名称。 此模块允许指定源和目标容器名称。 如果未指定目标容器名称，系统会自动分配 `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` 作为容器名称。 可以创建目标容器名称的模板字符串，具体请查看“可能的值”列。 <br>* %h -> IoT 中心名称（3 到 50 个字符）。 <br>* %d -> IoT Edge 设备 ID（1 到 129 个字符）。 <br>* %m -> 模块名称（1 到 64 个字符）。 <br>* %c -> 源容器名称（3 到 63 个字符）。 <br><br>容器名称的最大大小为 63 个字符。尽管系统会自动分配目标容器名称，但如果容器大小超过 63 个字符，系统会将每个部分（IoTHubName、IotEdgeDeviceID、ModuleName、SourceContainerName）修剪为 15 个字符。 <br><br> 环境变量：`deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | true、false | 默认设置为 `false`。 设置为 `true` 时，上传到云存储完成后将自动删除数据。 <br><br> **警告**：如果使用的是追加 Blob，则此设置将在上传成功后从本地存储中删除追加 Blob，并且以后对这些块执行的任何追加块操作都将失败。 如果你的应用程序不经常追加操作或不支持连续追加操作，请谨慎使用此设置，不要启用此设置<br><br> 环境变量：`deviceToCloudUploadProperties__deleteAfterUpload={false,true}`。 |
 
@@ -184,6 +184,7 @@ Azure Blob 存储文档包括多种语言的快速入门示例代码。 可以�
 以下快速入门示例使用 IoT Edge 也同样支持的语言，因此，你可以将它们作为 IoT Edge 模块与 Blob 存储模块一起部署：
 
 * [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+  * Iot Edge 模块 v 上的 Azure Blob 存储1.4.0 和更早版本与 Windowsazure.storage 兼容。 9.3.3 SDK 和 v 1.4.1 还支持 Azure。
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
   * Python SDK 2.1 之前的版本存在一个已知问题，即模块不返回 blob 创建时间。 由于该问题，某些方法（如 list blobs）无法正常工作。 解决方法是，将 blob 客户端上的 API 版本显式设置为“2017-04-17”。 示例：`block_blob_service._X_MS_VERSION = '2017-04-17'`
   * [追加 Blob 示例](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
@@ -292,7 +293,7 @@ IoT Edge 模块上的 Azure Blob 存储现在提供与 IoT Edge 事件网格的�
 
 ## <a name="release-notes"></a>发行说明
 
-这是此模块[在 Docker 中心的发行说明](https://hub.docker.com/_/microsoft-azure-blob-storage)
+下面是此模块的 [docker hub 中的发行说明](https://hub.docker.com/_/microsoft-azure-blob-storage) 。 您可以在特定版本的发行说明中找到与 bug 修补程序和修正相关的详细信息。
 
 ## <a name="suggestions"></a>建议
 
