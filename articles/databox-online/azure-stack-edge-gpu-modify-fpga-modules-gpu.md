@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 02/03/2021
 ms.author: alkohli
-ms.openlocfilehash: c23022a1a1ee7796ada32d9111855b9e3bfb7d46
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 6e9e1319b90ab859c63c022e478bc26c4b8aedeb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539613"
+ms.locfileid: "99550212"
 ---
 # <a name="run-existing-iot-edge-modules-from-azure-stack-edge-pro-fpga-devices-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上从 Azure Stack Edge Pro FPGA 设备运行现有 IoT Edge 模块
 
@@ -205,8 +205,7 @@ IoT Edge 实现在 Azure Stack Edge Pro FPGA 设备上与 Azure Stack Edge Pro G
 ```
 内存和 CPU 规范并不是必需的，但通常是良好的做法。 如果 `requests` 未指定，则使用限制中设置的值作为所需的最小值。 
 
-为模块使用共享内存还需要另一种方法。 <!-- should we give an example-->
-
+为模块使用共享内存还需要另一种方法。 例如，可以在实时视频分析和推理解决方案之间使用主机 IPC 模式来访问共享内存，如在 [Azure Stack Edge 上部署实时视频分析](../media-services/live-video-analytics-edge/deploy-azure-stack-edge-how-to.md#deploy-live-video-analytics-edge-module-using-azure-portal)中所述。
 
 
 ## <a name="web-proxy"></a>Web 代理 

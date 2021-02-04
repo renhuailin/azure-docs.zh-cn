@@ -2,13 +2,13 @@
 title: 在 Azure 事件网格中使用 Azure AD 进行安全的 WebHook 传递
 description: 介绍如何将事件传递到受到 Azure Active Directory 通过 Azure 事件网格进行保护的 HTTPS 终结点
 ms.topic: how-to
-ms.date: 10/05/2020
-ms.openlocfilehash: dd898fadf718509504d44df36572ac75050b02d6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 02/03/2021
+ms.openlocfilehash: b01f0342e185883c4d1552800ab9bdb30cea3040
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371658"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549146"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>将事件发布到受 Azure Active Directory 保护的终结点
 
@@ -23,13 +23,13 @@ ms.locfileid: "92371658"
     - 将受保护的 API 配置为通过守护程序应用进行调用。
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>允许事件网格使用 Azure AD 应用程序
-本部分说明如何启用事件网格以使用 Azure AD 应用程序。 
+本部分说明如何启用事件网格来使用 Azure AD 应用程序。 
 
 > [!NOTE]
 > 你必须是 [Azure AD 应用程序管理员角色](../active-directory/roles/permissions-reference.md#available-roles)的成员才能执行此脚本。
 
 ### <a name="connect-to-your-azure-tenant"></a>连接到 Azure 租户
-首先，使用命令连接到 Azure 租户 `Connect-AzureAD` 。 
+首先，使用 `Connect-AzureAD` 命令连接到 Azure 租户。 
 
 ```PowerShell
 # This is your Tenant Id. 
@@ -37,8 +37,8 @@ $myTenantId = "<the Tenant Id of your Azure AD Application>"
 Connect-AzureAD -TenantId $myTenantId
 ```
 
-### <a name="create-microsofteventgrid-service-principal"></a>创建 EventGrid 服务主体
-运行以下脚本以创建 **EventGrid** 的服务主体（如果它尚不存在）。 
+### <a name="create-microsofteventgrid-service-principal"></a>创建 Microsoft.EventGrid 服务主体
+运行以下脚本，为 Microsoft.EventGrid 创建服务主体（如果尚不存在）。 
 
 ```PowerShell
 # This is the "Azure Event Grid" Azure Active Directory AppId
@@ -58,7 +58,7 @@ if ($eventGridSP -match "Microsoft.EventGrid")
 ```
 
 ### <a name="create-a-role-for-your-application"></a>为应用程序创建角色   
-运行以下脚本，为你的 Azure AD 应用程序创建角色。 在此示例中，角色名称为： **AzureEventGridSecureWebhook**。 修改 PowerShell 脚本 `$myTenantId` 以使用你的 Azure AD 租户 ID，并将 `$myAzureADApplicationObjectId` 替换为 Azure AD 应用程序的对象 ID
+运行以下脚本，为你的 Azure AD 应用程序创建角色。 在此示例中，角色名称为：AzureEventGridSecureWebhook。 修改 PowerShell 脚本的 `$myTenantId` 以使用 Azure AD 租户 ID，并使用 Azure AD 应用程序的对象 ID 修改 `$myAzureADApplicationObjectId`
 
 ```PowerShell
 # This is your Azure AD Application's ObjectId. 
@@ -92,6 +92,7 @@ Write-Host $myAppRoles
 if ($myAppRoles -match $eventGridRoleName)
 {
     Write-Host "The Azure Event Grid role is already defined.`n"
+    $myServicePrincipal = Get-AzureADServicePrincipal -Filter ("appId eq '" + $myApp.AppId + "'")
 } else
 {
     $myServicePrincipal = Get-AzureADServicePrincipal -Filter ("appId eq '" + $myApp.AppId + "'")
@@ -108,7 +109,7 @@ Write-Host $myAppRoles
 ```
 
 ### <a name="add-event-grid-service-principal-to-the-role"></a>将事件网格服务主体添加到角色    
-现在，运行 `New-AzureADServiceAppRoleAssignment` 命令，将事件网格服务主体分配到您在上一步中创建的角色。 
+现在，运行 `New-AzureADServiceAppRoleAssignment` 命令，将事件网格服务主体分配给你在上一步中创建的角色。 
 
 ```powershell
 New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventGridSP.ObjectId -PrincipalId $eventGridSP.ObjectId

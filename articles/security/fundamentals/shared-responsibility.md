@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2019
+ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 8f16105d6bda1798828bc423ec8a158d49e0cf2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d9d3878c34bd203b6c14b45e1196245ef8524f6
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72518364"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548943"
 ---
 # <a name="shared-responsibility-in-the-cloud"></a>云中责任分担
 
@@ -50,4 +50,4 @@ ms.locfileid: "72518364"
 在启用云的方法中，你还可以利用基于云的安全功能来提高效率，并使用云智能来缩短威胁检测和响应时间。 通过将责任转移到云提供商，组织可以扩大安全覆盖范围，为其他优先业务重新调配安全资源与预算。
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解你和 Microsoft 在 SaaS、PaaS 和 IaaS 部署中的责任划分，请参阅[云计算的共担责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)。
+若要详细了解你和 Microsoft 在 SaaS、PaaS 和 IaaS 部署中的责任划分，请参阅[云计算的共担责任](https://azure.microsoft.com/resources/shared-responsibility-for-cloud-computing/)。

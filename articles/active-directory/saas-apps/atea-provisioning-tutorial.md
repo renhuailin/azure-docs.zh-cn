@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2021
 ms.author: Zhchia
-ms.openlocfilehash: 51410bd86fa9679aea76f6d5c48f267ddec79026
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 67b114ac355b293db61d00b89816ab73aaa2e5b2
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430690"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550262"
 ---
 # <a name="tutorial-configure-atea-for-automatic-user-provisioning"></a>教程：为 Atea 配置自动用户预配
 
@@ -46,9 +46,9 @@ ms.locfileid: "99430690"
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)内。
 3. 确定要 [在 Azure AD 与 Atea 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-atea-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Atea 以支持 Azure AD 的预配
+## <a name="step-2-configure-atea-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Atea 以支持 Azure AD 的预配
 
-若要配置 Iris Intranet 以支持预配 Azure AD 需要通过将邮件发送给 [Atea 支持团队](mailto:servicedesk@atea.dk)来获取 **租户 URL** 和 **机密令牌**。 这些值将在 Azure 门户中的 Atea 应用程序的 "设置" 选项卡的 " **机密令牌** " 和 " **租户 URL** " 字段中输入。
+若要配置 Atea 以支持 Azure AD 的预配，请将电子邮件发送给 Atea 支持团队 <SSO.Support@atea.com>
 
 ## <a name="step-3-add-atea-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Atea
 

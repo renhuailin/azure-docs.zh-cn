@@ -1,10 +1,10 @@
 ---
-title: Azure 高级威胁检测 | Microsoft Docs
-description: 了解 Azure 的内置高级威胁检测功能，例如 Azure AD 标识保护服务。
+title: Azure 威胁防护 |Microsoft Docs
+description: 了解 Azure 的内置威胁防护功能，如 Azure AD Identity Protection 服务。
 services: security
 documentationcenter: na
-author: UnifyCloud
-manager: barbkess
+author: TerryLanfear
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
-ms.author: TomSh
-ms.openlocfilehash: c8fbb2f6d858b2f654ff404bef3b415bf170ab37
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.date: 02/03/2021
+ms.author: terrylan
+ms.openlocfilehash: eb8332bda2105c3f83c0c1cc28fb7db4b1ca0102
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747267"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549913"
 ---
-# <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
+# <a name="azure-threat-protection"></a>Azure 威胁防护
 
-Azure 通过 Azure Active Directory (Azure AD)、Azure Monitor 日志和 Azure 安全中心等服务提供内置的高级威胁检测功能。 安全服务和功能的此集合提供了一种简单快速了解 Azure 部署运行状况的方法。
+Azure 通过服务（如 Azure Active Directory (Azure AD) 、Azure Monitor 日志和 Azure 安全中心）提供内置的威胁防护功能。 安全服务和功能的此集合提供了一种简单快速了解 Azure 部署运行状况的方法。
 
 Azure 提供多种安全性配置和自定义选项，以满足应用部署的要求。 本文介绍如何满足这些要求。
 
@@ -84,23 +84,9 @@ PIM 可帮助用户进行以下操作：
 
 ### <a name="holistic-security-and-compliance-posture"></a>安全性与符合性总体情况
 
-[Log Analytics 安全和审核仪表板](../../security-center/security-center-introduction.md)借助内置搜索查询找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 安全和审核仪表板是主屏幕，提供 Azure Monitor 日志中与安全相关的所有内容。 它提供计算机安全状态的高级洞见。 还可以查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
+[Azure 安全中心](../../security-center/security-center-introduction.md) 提供了组织的 IT 安全状况的综合视图，内置搜索查询需要你关注的重要问题。 它提供计算机安全状态的高级洞见。 还可以查看过去24小时、7天或任何其他自定义时间范围内的所有事件。
 
 Azure Monitor 日志有助于用户快速轻松了解任何环境中的总体安全情况，在 IT 操作的上下文中即可实现，这些操作包括软件更新评估、反恶意软件评估和配置基线。 可访问现成的安全日志数据，简化安全性和符合性审核过程。
-
-![Log Analytics 安全和审核仪表板](./media/threat-detection/azure-threat-detection-fig3.jpg)
-
-Log Analytics 安全和审核仪表板有四个主要类别：
-
--   **安全域**：可进一步了解随时间推移的安全记录；访问恶意软件评估；更新评估；查看网络安全、身份和访问信息；查看具有安全事件的计算机；并快速访问 Azure 安全中心仪表板。
-
--   **值得注意的问题**：可快速识别未解决的问题数和问题的严重性。
-
--   **检测（预览版）** ：当针对资源的攻击出现时显示安全警报，以便用户识别攻击模式。
-
--   **威胁智能**：显示具有出站恶意 IP 通信的服务器总数、恶意威胁类型和 IP 位置的地图，以便用户识别攻击模式。
-
--   **常见安全查询**：列出了可用于监视环境的最常见安全查询。 如果选择了任何查询，“搜索”窗格将打开并显示该查询的结果。
 
 ### <a name="insight-and-analytics"></a>见解与分析
 [Azure Monitor 日志](../../azure-monitor/log-query/log-query-overview.md)的中心是由 Azure 托管的存储库。
@@ -109,21 +95,16 @@ Log Analytics 安全和审核仪表板有四个主要类别：
 
 通过配置数据源和向订阅添加解决方案，将连接的源中的数据收集到存储库。
 
-![Azure Monitor 日志仪表板](./media/threat-detection/azure-threat-detection-fig5.png)
-
 数据源和解决方案分别创建具有自身属性集的单独记录类型，但是用户仍可在对存储库的查询中同时对它们进行分析。 可以使用相同的工具和方法来处理由不同的源收集的各种数据。
-
 
 与 Azure Monitor 日志的大部分交互都通过 Azure 门户完成，该门户可在任意浏览器中运行，并提供对配置设置和多个工具的访问权限，以对收集的数据进行分析和操作。 在门户中，可以使用：
 * [日志搜索](../../azure-monitor/log-query/log-query-overview.md)，可在其中构造查询以分析收集的数据。
 * [仪表板](../../azure-monitor/learn/tutorial-logs-dashboards.md)，可以使用最有价值搜索的图形视图对其进行自定义。
 * [解决方案](../../azure-monitor/insights/solutions.md)，可提供其他功能和分析工具。
 
-![分析工具](./media/threat-detection/azure-threat-detection-fig6.png)
-
 解决方案向 Azure Monitor 日志添加功能。 解决方案主要在云中运行，并提供对日志分析存储库所收集数据的分析。 解决方案也可以定义要收集的新记录类型，可使用日志搜索或通过解决方案在日志分析仪表板中提供的其他用户界面对这些记录类型进行分析。
 
-安全和审核仪表板是这些类型的解决方案的一个示例。
+安全中心就是这些类型的解决方案的一个示例。
 
 ### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>自动化与控制：安全配置偏移警报
 
@@ -216,7 +197,7 @@ Azure 安全中心与全世界的安全性研究和数据科学团队合作，�
 
 将这些措施结合起来，形成新的改进型检测方法，让用户能够即时受益。 用户不需采取任何措施。
 
-## <a name="advanced-threat-detection-features-other-azure-services"></a>高级威胁检测功能：其他 Azure 服务
+## <a name="threat-protection-features-other-azure-services"></a>威胁防护功能：其他 Azure 服务
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>虚拟机：Microsoft 反恶意软件
 
@@ -367,7 +348,7 @@ Cloud App Security 通过以下方式将可见性与云集成：
 
 从这些源收集数据时，Cloud App Security 会对其运行复杂的分析。 它会立即向你发出有关异常活动的警报，帮助你获得对云环境的深度了解。 可以在 Cloud App Security 中配置策略，并使用它来保护云环境中的所有内容。
 
-## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>通过 Azure 市场的第三方高级威胁检测功能
+## <a name="third-party-threat-protection-capabilities-through-the-azure-marketplace"></a>通过 Azure Marketplace 的第三方威胁防护功能
 
 ### <a name="web-application-firewall"></a>Web 应用程序防火墙
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: 8a722550d12d019e25ff39de27cc0df2c2762a01
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3735d7b21faf62905ed4c06dbef80c9737e7329e
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942048"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551070"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
 
@@ -244,7 +244,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
  
 如果流量无法通过网络在两个数据存储间传递（例如是在两个虚拟网络中配置的这两个数据存储），即使安装了 IR，也不能在一个活动中完成复制。 如果无法在一个活动中完成复制，可以使用两个 IR 创建两个复制活动，分别位于一个 VENT 中： 
 * 将一个 IR 从数据存储 1 复制到 Azure Blob 存储
-* 将另一个 IR 从 Azure Blob 存储复制到数据存储 2。 
+* 将另一个 IR 从 Azure Blob 存储复制到数据存储2。 
 
 此解决方案可以模拟以下要求：使用 IR 创建一个网桥来连接两个已断开连接的数据存储。
 
@@ -710,7 +710,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 如何确定你是否受到影响：
 
-- 如果你使用[设置防火墙配置和 IP 地址的允许列表](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)中所述的方法基于完全限定的域名 (FQDN) 定义防火墙规则，则不受影响。
+- 如果你使用[设置防火墙配置和 IP 地址的允许列表](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-addresses)中所述的方法基于完全限定的域名 (FQDN) 定义防火墙规则，则不受影响。
 
 - 如果你在公司防火墙上显式启用了出站 IP 允许列表，则会受影响。
 

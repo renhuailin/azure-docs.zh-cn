@@ -6,20 +6,20 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 674ba1cf03f48eb1c746b115d981740b5b938aab
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 652986c4850a0b51fc86b84133d7e93813423c9a
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919521"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550313"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>自动执行对安全中心触发器的响应
 
 每个安全计划都包含事件响应的多个工作流。 这些流程可能包含通知相关利益干系人、启动更改管理进程，以及应用特定的修正步骤。 安全专家建议你尽可能多地将这些流程自动化。 自动化可减少开销， 还可确保根据你预定义的要求快速、一致地执行处理步骤，从而增强安全性。
 
-本文介绍 Azure 安全中心的工作流自动化功能。 此功能可根据安全警报和建议触发逻辑应用。 例如，你可能希望安全中心在出现警报时向特定用户发送电子邮件。 你还将了解如何使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)创建逻辑应用。
+本文介绍 Azure 安全中心的工作流自动化功能。 此功能可根据安全警报、建议和法规遵从性更改触发逻辑应用。 例如，你可能希望安全中心在出现警报时向特定用户发送电子邮件。 你还将了解如何使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)创建逻辑应用。
 
 
 ## <a name="availability"></a>可用性
@@ -70,10 +70,12 @@ ms.locfileid: "98919521"
 
     逻辑应用设计器支持以下安全中心触发器：
 
-    * 创建或触发 Azure 安全中心建议时 - 如果逻辑应用依赖于已弃用或已替换的建议，自动化将停止工作，你需更新触发器。 若要跟踪对建议的更改，请参阅 [Azure 安全中心发行说明](release-notes.md)。
+    - 创建或触发 Azure 安全中心建议时 - 如果逻辑应用依赖于已弃用或已替换的建议，自动化将停止工作，你需更新触发器。 若要跟踪对建议的更改，请参阅 [Azure 安全中心发行说明](release-notes.md)。
 
-    * 创建或触发 Azure 安全中心警报时 - 你可自定义触发器，使其仅与你关注的严重性级别的警报关联。
+    - 创建或触发 Azure 安全中心警报时 - 你可自定义触发器，使其仅与你关注的严重性级别的警报关联。
     
+    - **当创建或触发安全中心规章符合性评估时** ，基于对规章符合性评估的更新触发自动化。
+
     > [!NOTE]
     > 如果使用名为“触发 Azure 安全中心警报的响应时”的旧触发器，逻辑应用不会通过工作流自动化功能启动。 请改用上述的任一触发器。 
 

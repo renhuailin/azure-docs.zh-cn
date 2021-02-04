@@ -4,12 +4,12 @@ description: 本文介绍了如何查看和查询由 Azure Application Insights 
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2a991157962b0588e3d49510e8a82a9abcfb9aed
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 9e03a36824853a3e43bbf8628fd12481cfbcaf25
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493764"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549552"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>在 Application Insights 中分析 Azure Functions 遥测数据 
 
@@ -139,6 +139,18 @@ traces
 以下遥测数据查询特定于对在消耗计划中运行函数的成本有影响的指标。
 
 [!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
+
+## <a name="azure-monitor-metrics"></a>Azure Monitor 指标
+
+除了 Application Insights 收集的遥测数据以外，还可以从 [Azure Monitor 指标](../azure-monitor/platform/data-platform-metrics.md)获取有关函数应用运行方式的数据。 除了 [适用于应用服务应用](../app-service/web-sites-monitor.md#understand-metrics)的常用指标以外，还有两个特定于相关函数的指标：
+
+| 指标 | 说明 |
+| ---- | ---- |
+| **FunctionExecutionCount** | 函数执行计数指示函数应用执行的次数。 这与在应用程序中运行函数的次数相关。 此指标目前不支持在 Linux 上运行的高级和专用 (应用服务) 计划。 |
+| **FunctionExecutionUnits** | 函数执行单位是执行时间与内存使用情况的组合。  目前无法通过 Azure Monitor 获取内存数据这一指标。 但是，如果要优化应用的内存用量，可以使用 Application Insights 收集的性能计数器数据。 此指标目前不支持在 Linux 上运行的高级和专用 (应用服务) 计划。|
+
+若要详细了解如何使用 Application Insights 数据计算消耗计划的成本，请参阅 [估计消耗计划成本](functions-consumption-costs.md)。 若要详细了解如何使用监视器资源管理器查看指标，请参阅 [Azure 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)入门。
+
 
 ## <a name="next-steps"></a>后续步骤
 

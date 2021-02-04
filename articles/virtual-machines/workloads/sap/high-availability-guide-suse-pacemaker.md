@@ -13,14 +13,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: 57c6caea2de9063b133d4d5d643629184e412dad
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ad0f0e9bdc4398af150874d398968d1116578350
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957684"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550685"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -637,12 +637,16 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 编辑虚拟机的权限后，可以在群集中配置 STONITH 设备。
 
+> [!NOTE]
+> 如果主机名和 Azure VM 名称不相同，则仅在命令中需要选项 "pcmk_host_map"。 以 **主机名： vm 名称** 格式指定映射。
+> 请参阅命令中的粗体部分。
+
 <pre><code>sudo crm configure property stonith-enabled=true
 crm configure property concurrent-fencing=true
 # replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>" \
-  pcmk_monitor_retries=4 pcmk_action_limit=3 power_timeout=240 pcmk_reboot_timeout=900 \ 
+  pcmk_monitor_retries=4 pcmk_action_limit=3 power_timeout=240 pcmk_reboot_timeout=900 <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
   op monitor interval=3600 timeout=120
 
 sudo crm configure property stonith-timeout=900

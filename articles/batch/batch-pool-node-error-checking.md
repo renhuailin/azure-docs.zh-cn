@@ -3,28 +3,28 @@ title: 检查池和节点错误
 description: 本文介绍了可能会发生的后台操作、要检查的错误，以及在创建池和节点时如何避免这些错误。
 author: mscurrell
 ms.author: markscu
-ms.date: 08/23/2019
+ms.date: 02/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 519b357e4e5fde30221f7dc804bb848ecec9704c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8901877ab3055c02dfc8c129fb35864418cd19d8
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85979911"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549129"
 ---
 # <a name="check-for-pool-and-node-errors"></a>检查池和节点错误
 
-创建和管理 Azure Batch 池时，某些操作会立即发生。 但是，某些操作是异步的，并且在后台运行，需要几分钟才能完成。
+创建和管理 Azure Batch 池时，某些操作会立即发生。 检测这些操作的故障通常是非常简单的，因为它们由 API、CLI 或 UI 立即返回。 但是，某些操作是异步的，并且在后台运行，需要几分钟才能完成。
 
-检测即时发生的失败操作非常简单，因为会立即通过 API、CLI 或 UI 返回任何错误。
+检查是否已将应用程序设置为实现全面的错误检查，尤其是对于异步操作。 这可以帮助你快速识别和诊断问题。
 
-本文介绍可能针对池和池节点执行的后台操作。 它指定检测和避免失败的方式。
+本文介绍了检测和避免池和池节点发生的后台操作失败的方法。
 
 ## <a name="pool-errors"></a>池错误
 
 ### <a name="resize-timeout-or-failure"></a>调整大小超时或失败
 
-创建新池或重设现有池大小时，将指定目标节点数。  创建或调整大小操作会立即完成，但新节点的实际分配或现有节点的删除操作可能需要几分钟才能完成。  指定[创建](/rest/api/batchservice/pool/add)或[重设大小](/rest/api/batchservice/pool/resize) API 中的重设大小超时。 如果在调整大小超时期间 Batch 无法获取目标节点数，则池将进入稳定状态并报告调整大小错误。
+创建新池或重设现有池大小时，将指定目标节点数。 创建或调整大小操作会立即完成，但新节点的实际分配或现有节点的删除操作可能需要几分钟才能完成。 可在 [创建](/rest/api/batchservice/pool/add) 或 [调整](/rest/api/batchservice/pool/resize) API 中指定 cam 调整超时。 如果在调整超时期限期间 Batch 无法获取目标节点数，则池将进入稳定状态，并报告调整大小错误。
 
 最新评估的 [ResizeError](/rest/api/batchservice/pool/get#resizeerror) 属性会列出发生的错误。
 
@@ -44,23 +44,25 @@ ms.locfileid: "85979911"
 
 ### <a name="automatic-scaling-failures"></a>自动缩放失败
 
-还可以将 Azure Batch 设置为自动缩放池中的节点数。 定义[池的自动缩放公式](./batch-automatic-scaling.md)的参数。 Batch 服务使用公式定期评估池中的节点数，并设置新的目标数。 可能会出现以下类型的问题：
+可以将 Azure Batch 设置为自动缩放池中的节点数。 定义[池的自动缩放公式](./batch-automatic-scaling.md)的参数。 然后，Batch 服务将使用此公式来定期计算池中的节点数，并设置新的目标编号。
+
+使用自动缩放时，可能会出现以下类型的问题：
 
 - 自动缩放评估失败。
 - 生成的重设大小操作失败并超时。
 - 自动缩放公式导致节点目标值不正确的问题。 重设大小要么适用要么超时。
 
-可使用 [autoScaleRun](/rest/api/batchservice/pool/get#autoscalerun) 属性获取关于最近一次自动缩放评估的信息。 此属性报告评估时间、值和结果以及任何性能错误。
+若要获取有关上一次自动缩放评估的信息，请使用 [autoScaleRun](/rest/api/batchservice/pool/get#autoscalerun) 属性。 此属性报告评估时间、值和结果以及任何性能错误。
 
 [池重设大小完成事件](./batch-pool-resize-complete-event.md)捕获所有评估的相关信息。
 
-### <a name="delete"></a>删除
+### <a name="pool-deletion-failures"></a>池删除失败
 
-删除包含节点的池时，Batch 首先会删除节点。 然后再删除池对象。 可能需要等待数分钟才会删除池节点。
+删除包含节点的池时，Batch 首先会删除节点。 此过程需要几分钟才能完成。 之后，批处理将删除池对象本身。
 
 Batch 在删除过程中将[池状态](/rest/api/batchservice/pool/get#poolstate)设置为“删除中”。 调用应用程序可以使用“state”和“stateTransitionTime”属性来检测池删除时间是否过长 。
 
-## <a name="pool-compute-node-errors"></a>池计算节点错误
+## <a name="node-errors"></a>节点错误
 
 即使当 Batch 成功分配池中的节点时，各种问题也可能会导致某些节点运行状况不佳且无法运行任务。 这些节点仍会产生费用，因此，请务必检测问题，以免为不能使用的节点付费。 除了常见的节点错误外，了解当前[作业状态](/rest/api/batchservice/job/get#jobstate)也有助于排除故障。
 
@@ -74,7 +76,7 @@ Batch 在删除过程中将[池状态](/rest/api/batchservice/pool/get#poolstate
 
 如果将“waitForSuccess”设置为“true”，则失败的开始任务还会导致 Batch 将节点[状态](/rest/api/batchservice/computenode/get#computenodestate)设置为“starttaskfailed”  。
 
-与任何任务一样，开始任务失败可能有许多原因。  若要进行故障排除，请检查 stdout、stderr 和任何其他特定于任务的日志文件。
+与任何任务一样，启动任务失败的原因可能有很多。 若要进行故障排除，请检查 stdout、stderr 和任何其他特定于任务的日志文件。
 
 开始任务必须是可重入的，因为开始任务可能会在同一个节点上运行多次；开始任务将在节点重置映像或重新启动时运行。 在极少数情况下，当事件导致节点重新启动（在此过程中某个操作系统或临时磁盘重置映像）时，开始任务会运行。 由于 Batch 开始任务（像所有 Batch 任务一样）是从临时磁盘运行的，因此，通常不会出现问题，但当开始任务将应用程序安装到操作系统磁盘而将其他数据保留在临时磁盘中时，在这些情况下可能会出现问题，因为事项不同步。如果同时使用这两个磁盘，请采取相应措施保护应用程序。
 
@@ -87,6 +89,10 @@ Batch 在删除过程中将[池状态](/rest/api/batchservice/pool/get#poolstate
 ### <a name="container-download-failure"></a>容器下载失败
 
 你可以在池上指定一个或多个容器引用。 Batch 会将指定的容器下载到各个节点。 节点 [errors](/rest/api/batchservice/computenode/get#computenodeerror) 属性报告了容器下载失败，并将节点状态设置为“不可用”。
+
+### <a name="node-os-updates"></a>节点 OS 更新
+
+对于 Windows 池， `enableAutomaticUpdates` `true` 默认情况下将设置为。 建议允许自动更新，但它们可能会中断任务进度，尤其是在任务长时间运行的情况下。 `false`如果需要确保 OS 更新不会意外发生，则可以将此值设置为。
 
 ### <a name="node-in-unusable-state"></a>处于“不可用”状态的节点
 
@@ -116,7 +122,7 @@ Batch 在删除过程中将[池状态](/rest/api/batchservice/pool/get#poolstate
 
 ### <a name="node-disk-full"></a>节点磁盘已满
 
-Batch 将池节点 VM 的临时驱动器用于存储作业文件、任务文件和共享文件。
+池节点 VM 的临时驱动器由批处理用于作业文件、任务文件和共享文件，如下所示：
 
 - 应用程序包文件
 - 任务资源文件
@@ -135,23 +141,17 @@ Batch 将池节点 VM 的临时驱动器用于存储作业文件、任务文件�
 
 针对每个任务写出的文件，可以针对每个任务指定保留期，确定在自动清理这些任务文件之前将其保留多长时间。 保留期可以缩短，以降低存储要求。
 
-
 如果临时磁盘空间不足（或空间即将不足），节点将转到[不可用](/rest/api/batchservice/computenode/get#computenodestate)状态，并将报告一个节点错误，指出磁盘已满。
 
-### <a name="what-to-do-when-a-disk-is-full"></a>磁盘已满时要执行的操作
+如果你不确定在节点上占用了多少空间，请尝试远程处理节点并在空间已消失的位置手动调查。 此外，也可以使用 [ 列表文件 API](/rest/api/batchservice/file/listfromcomputenode) 检查 Batch 托管文件夹中的文件（如任务输出）。 请注意，此 API 只列出批处理托管目录中的文件。 如果任务在其他位置创建文件，则不会看到它们。
 
-确定磁盘已满的原因：如果你不确定哪些内容占用了节点的空间，建议远程进入节点并手动调查空间占用情况。 此外，也可以使用 [ 列表文件 API](/rest/api/batchservice/file/listfromcomputenode) 检查 Batch 托管文件夹中的文件（如任务输出）。 请注意，此 API 只列出 Batch 托管目录中的文件，如果任务在其他位置创建了文件，此 API 无法显示这些文件。
+请确保已从节点检索到所需的任何数据或将其上载到持久存储，并根据需要删除数据以释放空间。
 
-请确保已从节点检索到所需的任何数据，或已将其上传到持久存储。 解决磁盘已满问题的所有缓解措施都涉及到删除数据来释放空间。
+您可以删除已完成的旧作业或任务数据仍位于节点上的旧已完成任务。 查看节点上的 [RecentTasks 集合](/rest/api/batchservice/computenode/get#taskinformation) ，或查看 [节点上的文件](/rest/api/batchservice/file/listfromcomputenode)。 删除作业将删除该作业中的所有任务;删除作业中的任务会触发要删除的节点上的任务目录中的数据，从而释放空间。 释放足够的空间后，重新启动该节点，它应该会从“不可用”状态重新进入“空闲”状态。
 
-### <a name="recovering-the-node"></a>恢复节点
-
-1. 如果池是 [C.loudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) 池，则可以通过 [Batch 重置映像 API](/rest/api/batchservice/computenode/reimage) 来重置节点的映像。这会清理整个磁盘。 [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) 池目前不支持重置映像。
-
-2. 如果池是 [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)，则可以使用[删除节点 API](/rest/api/batchservice/pool/removenodes)，从池中删除节点。 然后，你可以再次扩展池，使用新节点替换有问题的节点。
-
-3.  删除已完成的旧作业或其任务数据仍位于节点上的已完成的旧任务。 可以查看节点上的 [RecentTasks 集合](/rest/api/batchservice/computenode/get#taskinformation)，也可以查看[节点上的文件](/rest/api/batchservice/file/listfromcomputenode)，以了解哪些作业/任务数据在节点上。 删除作业时，将会删除作业中的所有任务，而且删除作业中的任务都会触发删除节点上的任务目录中的数据，从而释放空间。 释放足够的空间后，重新启动该节点，它应该会从“不可用”状态重新进入“空闲”状态。
+若要恢复 [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) 池中不可用的节点，可以使用 " [删除节点" API](/rest/api/batchservice/pool/removenodes)从池中删除节点。 然后，你可以再次扩展池，使用新节点替换有问题的节点。 对于 [CloudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) 池，可以通过 [批量重新映像 API](/rest/api/batchservice/computenode/reimage)重新映像节点。 这会清理整个磁盘。 [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) 池目前不支持重置映像。
 
 ## <a name="next-steps"></a>后续步骤
 
-请检查是否将应用程序设置为实施全面错误检查，尤其是异步操作。 它对于及时检测和诊断问题至关重要。
+- 了解 [作业和任务错误检查](batch-job-task-error-checking.md)。
+- 了解有关使用 Azure Batch 的 [最佳实践](best-practices.md) 。

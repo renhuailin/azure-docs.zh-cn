@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 0d8ce501b951f3543e1baf54c8a52648b13f6e66
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 7772d57937393da1c48fa2658818d8a1a2b28a1f
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695664"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550778"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>适用于虚拟机的 Azure Automanage
 
@@ -42,7 +42,6 @@ Azure Automanage 还自动监视是否有偏移，并在检测到它时纠正。
 在虚拟机上尝试启用 Azure Automanage 之前，需要考虑几个先决条件。
 
 - 仅限 Windows Server Vm
-- Vm 必须正在运行
 - Vm 必须位于受支持的区域 (请参阅下一段落) 
 - 用户必须具有正确的权限 (请参阅下一段落) 
 - Automanage 目前不支持沙盒订阅

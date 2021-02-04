@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2021
 ms.author: Zhchia
-ms.openlocfilehash: 89e64b6e8018fafb22820e8594bc2b3c888bb04a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 43b783d9462205b01d3ac4de0c5779fdc9864470
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732136"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550417"
 ---
 # <a name="tutorial-configure-fortes-change-cloud-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Fortes 更改云
 
@@ -43,41 +43,41 @@ ms.locfileid: "98732136"
 * Fortes 更改云租户。
 * Fortes 中的用户帐户具有管理员权限。
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
-2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
+2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)内。
 3. 确定 [Azure AD 和 Fortes 更改云之间要映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
-## <a name="step-2-configure-fortes-change-cloud-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Fortes 更改云以支持 Azure AD 的预配
+## <a name="step-2-configure-fortes-change-cloud-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Fortes 更改云以支持 Azure AD 的预配
 
-1. 用管理员帐户登录到 Fortes 更改云。 单击 " **设置" 图标** ，然后导航到 " **SCIM 设置**"。
+1. 用管理员帐户登录到 Fortes 更改云。 单击 " **设置" 图标** ，然后导航到 " **用户设置" (SCIM)**"。
 
     [![Fortes Change CLOUD SCIM 设置 ](media/fortes-change-cloud-provisioning-tutorial/scim-settings.png)](media/fortes-change-cloud-provisioning-tutorial/scim-settings.png#lightbox)
 
-2. 在新窗口中，复制并保存 **主令牌**。 此值将在 Azure 门户的 Fortes 更改云应用程序的 "预配" 选项卡的 "机密令牌" 字段中输入。
+2. 在新窗口中，复制并保存 **租户 URL** 和 **主要令牌**。 租户 URL 将在 " **租户 url** *" 字段中输入，并将在 Azure 门户的 Fortes 更改云应用程序的 "设置" 选项卡的 " **密钥** * 令牌" 字段中输入 "主要令牌"。
      
       [![Fortes 更改云主令牌](media/fortes-change-cloud-provisioning-tutorial/primary-token.png)](media/fortes-change-cloud-provisioning-tutorial/primary-token.png#lightbox)
 
-## <a name="step-3-add-fortes-change-cloud-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Fortes 更改云
+## <a name="step-3-add-fortes-change-cloud-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Fortes 更改云
 
-从 Azure AD 应用程序库添加 Fortes 更改云，开始管理预配到 Fortes Change Cloud。 如果以前为 SSO 设置了 Fortes 更改云，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。 
+从 Azure AD 应用程序库添加 Fortes 更改云，开始管理预配到 Fortes Change Cloud。 如果以前为 SSO 设置了 Fortes 更改云，则可以使用相同的应用程序。 不过，建议在最初测试集成时单独创建一个应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
-使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
+使用 Azure AD 预配服务，可以根据对应用的分配或用户/组的特性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择只根据用户或组的特性来限定谁在预配范围内，可以使用范围筛选器，如[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述。 
 
-* 将用户和组分配到 Fortes 更改云时，必须选择 " **默认" 访问权限** 以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
+* 将用户和组分配到 Fortes 更改云时，必须选择 " **默认" 访问权限** 以外的其他角色。 具有“默认访问”角色的用户被排除在预配范围之外，并在预配日志中被标记为无有效资格。 如果应用上唯一可用的角色是“默认访问”角色，可以[更新应用清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)来添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-fortes-change-cloud"></a>步骤 5。 配置 Fortes 更改云的自动用户预配 
 
-本部分介绍了如何配置 Azure AD 预配服务以基于 Azure AD 中的用户和/或组分配在 TestApp 中创建、更新和禁用用户和/或组。
+此部分逐步介绍了如何将 Azure AD 预配服务配置为根据 Azure AD 中的用户和/或组分配在 TestApp 中创建、更新和禁用用户和/或组。
 
 ### <a name="to-configure-automatic-user-provisioning-for-fortes-change-cloud-in-azure-ad"></a>若要为 Azure AD 中的 Fortes 更改云配置自动用户预配，请执行以下操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
+1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用”和“所有应用”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "98732136"
 
     ![应用程序列表中的 Fortes 更改云链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
     ![“预配”选项卡](common/provisioning.png)
 
@@ -95,7 +95,7 @@ ms.locfileid: "98732136"
 
 5. 在 " **管理员凭据** " 部分中，输入你的 Fortes 更改云租户 URL 和机密令牌。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Fortes 更改云。 如果连接失败，请确保 Fortes 更改云帐户具有管理员权限，然后重试。
 
-    ![令牌](common/provisioning-testconnection-tenanturltoken.png)
+    ![标记](common/provisioning-testconnection-tenanturltoken.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
@@ -105,7 +105,7 @@ ms.locfileid: "98732136"
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Fortes**"。
 
-9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Fortes Change Cloud 的用户属性。 选为 " **匹配** " 属性的属性用于匹配 Fortes Change Cloud 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](../app-provisioning/customize-application-attributes.md)，将需要确保 Fortes 更改云 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改  。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Fortes Change Cloud 的用户属性。 选为 " **匹配** " 属性的属性用于匹配 Fortes Change Cloud 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](../app-provisioning/customize-application-attributes.md)，将需要确保 Fortes 更改云 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|支持筛选|
    |---|---|---|
@@ -116,7 +116,7 @@ ms.locfileid: "98732136"
    |name.familyName|字符串|
    |name.formatted|字符串|
    |externalId|字符串|
-   |urn： ietf： params： scim：架构：扩展： fcc：2.0：用户：管理员|Boolean|
+   |urn： ietf： params： scim：架构：扩展： fcc：2.0：用户：管理员|布尔值|
    |urn： ietf： params： scim：架构：扩展： fcc：2.0： User： loginDisabled|Boolean|
 
   

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 07/15/2018
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cc336781e9a55bbcb6c51677b01bfc402126f4a
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: bb5a785cba4a560fc15963363d4e5f6b811af97a
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071894"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548825"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>允许或阻止向特定组织中的 B2B 用户发送邀请
 
@@ -27,7 +27,7 @@ ms.locfileid: "99071894"
 
 - 可以创建允许列表或拒绝列表。 不能同时设置这两种类型的列表。 默认情况下，不在允许列表中的任何域都会包含在拒绝列表中，反之亦然。 
 - 对于每个组织，只能创建一个策略。 可以更新策略以包含更多的域，或者删除策略以创建新策略。 
-- 可以添加到允许列表或拒绝列表的域数仅受策略大小限制。 整个策略的最大大小为 25 KB（25,000 个字符），其中包括允许列表或拒绝列表以及为其他功能配置的任何其他参数。
+- 可以添加到允许列表或拒绝列表的域数仅受策略大小限制。 此限制适用于字符数，因此你可以拥有更短的域或更长的域。 整个策略的最大大小为 25 KB（25,000 个字符），其中包括允许列表或拒绝列表以及为其他功能配置的任何其他参数。
 - 此列表独立于 OneDrive for Business 和 SharePoint Online 允许/阻止列表。 若要在 SharePoint Online 中限制单个文件的共享，需要为 OneDrive for Business 和 SharePoint Online 设置允许或拒绝列表。 有关详细信息，请参阅 [SharePoint Online 和 OneDrive for Business 中受限制的域共享](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9)。
 - 此列表不适用于已兑换邀请的外部用户。 设置列表后，将强制实施该列表。 如果用户邀请处于挂起状态，而你设置了一个阻止该用户的域的策略，则该用户在尝试兑换邀请时将会失败。
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5f70f74accba5df439351547fda7497656e2c06e
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 3fca96c6cf11e0b35cd830fe4c0d8ccac8e66bd2
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986677"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548858"
 ---
-# <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>在监管合规仪表板中自定义标准集
+# <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>自定义合规性仪表板中的标准集
 
 Azure 安全中心会不断地将资源的配置与行业标准、法规和基准中的要求进行比较。 **规章相容性仪表板** 根据你满足特定合规性要求的方式，深入了解你的符合性状态。
 
@@ -123,5 +123,5 @@ Microsoft 会自行跟踪法规标准，并随着时间的推移，自动改进�
 有关相关材料，请参阅以下页面：
 
 - [Azure 安全基准](../security/benchmarks/introduction.md)
-- [安全中心监管合规仪表板](security-center-compliance-dashboard.md)
+- [安全中心规章相容性仪表板](security-center-compliance-dashboard.md) -了解如何通过安全中心和外部工具跟踪和导出你的法规遵从性数据
 - [使用安全策略](tutorial-security-policy.md)

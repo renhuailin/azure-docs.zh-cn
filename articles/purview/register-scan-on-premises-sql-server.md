@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 26012b23a10f560158e3ba3919e12f5c15759189
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 86942f509ab067a53c47b5132c451f0585760050
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539309"
+ms.locfileid: "99549637"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>注册并扫描本地 SQL server
 
@@ -36,7 +36,7 @@ SQL server 本地数据源支持：
 
 Azure 监控范围不支持对 SQL Server 中的 [视图](/sql/relational-databases/views/views) 进行扫描。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 在注册数据源之前，请创建一个 Azure 监控范围帐户。 有关创建监控范围帐户的详细信息，请参阅 [快速入门：创建 Azure 监控范围帐户](create-catalog-portal.md)。
 
@@ -65,6 +65,9 @@ SQL 帐户必须拥有对 **master** 数据库的访问权限。 这是因为在
 #### <a name="creating-a-new-login-and-user"></a>创建新的登录名和用户
 
 如果要创建新的登录名和用户以扫描 SQL server，请执行以下步骤：
+
+> [!Note]
+    > 可以使用 [此处](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql)提供的代码执行以下所有步骤。
 
 1. 导航到 SQL Server Management Studio (SSMS) ，连接到服务器，导航到 "安全性"，右键单击 "登录" 并创建新的登录名。 请确保选择 "SQL 身份验证"。
 

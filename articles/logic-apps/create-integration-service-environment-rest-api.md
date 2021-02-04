@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/30/2020
-ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.date: 02/03/2021
+ms.openlocfilehash: d4500229800fa5d1743779b29927637777647e47
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967032"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550651"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>使用逻辑应用 REST API 创建集成服务环境 (ISE)
 
@@ -25,7 +25,7 @@ ms.locfileid: "97967032"
 * [使用示例 Azure 资源管理器快速入门模板创建 ISE](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
 * [创建支持使用客户管理的密钥来加密静态数据的 ISE](customer-managed-keys-integration-service-environment.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 与在 Azure 门户中创建 ISE 时相同的[先决条件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和[访问要求](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)
 
@@ -55,7 +55,7 @@ ms.locfileid: "97967032"
 > 删除虚拟网络时，请确保没有资源仍处于连接状态。 
 > 请参阅[删除虚拟网络](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)。
 
-## <a name="request-header"></a>请求标头
+## <a name="request-header"></a>请求头
 
 在请求标头中，包括以下属性：
 
@@ -188,17 +188,28 @@ ms.locfileid: "97967032"
 
 ## <a name="add-custom-root-certificates"></a>添加自定义根证书
 
-通常使用 ISE 连接到虚拟网络或本地上的自定义服务。 这些自定义服务通常由自定义根证书颁发机构颁发的证书（例如企业证书颁发机构或自签名证书）所保护。 有关使用自签名证书的详细信息，请参阅 [对其他服务和系统的出站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)。 为了使 ISE 通过传输层安全性 (TLS) 成功连接到这些服务，ISE 需要访问这些根证书。 若要使用自定义受信任的根证书更新 ISE，请发出以下 HTTPS `PATCH` 请求：
+通常使用 ISE 连接到虚拟网络或本地上的自定义服务。 这些自定义服务通常由自定义根证书颁发机构颁发的证书（例如企业证书颁发机构或自签名证书）所保护。 有关使用自签名证书的详细信息，请参阅 [对其他服务和系统的出站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)。 为了使 ISE 通过传输层安全性 (TLS) 成功连接到这些服务，ISE 需要访问这些根证书。
 
-`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+#### <a name="considerations-for-adding-custom-root-certificates"></a>添加自定义根证书的注意事项
 
-在执行此操作之前，请查看以下注意事项：
+使用自定义受信任的根证书更新 ISE 之前，请查看以下注意事项：
 
 * 请确保上载根证书 *和* 所有中间证书。 最大证书数为20。
 
 * 上传根证书是一项替换操作，其中最新的上传将覆盖以前的上传。 例如，如果发送一个请求，该请求上传一个证书，然后再发送另一个请求来上传另一个证书，则 ISE 只使用第二个证书。 如果需要使用这两个证书，请将它们一起添加到同一个请求中。  
 
 * 上传根证书是一种可能需要一些时间的异步操作。 若要检查状态或结果，可以 `GET` 使用同一 URI 发送请求。 `provisioningState` `InProgress` 当上传操作仍在运行时，响应消息具有返回值的字段。 当 `provisioningState` value 为时 `Succeeded` ，上传操作完成。
+
+#### <a name="request-syntax"></a>请求语法
+
+若要使用自定义受信任的根证书更新 ISE，请将以下 HTTPS 修补请求发送到 [azure 资源管理器 URL，该 URL 因 azure 环境而异](../azure-resource-manager/management/control-plane-and-data-plane.md#control-plane)，例如：
+
+| 环境 | Azure 资源管理器 URL |
+|-------------|----------------------------|
+| Azure global (多租户)  | `PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+| Azure Government | `PATCH https://management.usgovcloudapi.net/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+| Microsoft Azure 中国世纪互联 | `PATCH https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+|||
 
 #### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>用于添加自定义根证书的请求正文语法
 

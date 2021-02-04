@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/01/2021
+ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61adb72d043821dfaedca5e5da0b2f880d56811e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: dfd0156907f18dcb7f38246993ddc4abcd508631
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258912"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549382"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -84,6 +84,9 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 
 ## <a name="change-log"></a>更改日志
 
+- 02/03/2021：在 [Azure 中的 RHEL 上设置 Pacemaker](./high-availability-guide-rhel-pacemaker.md) 以更新 stonith create 命令中的 pcmk_host_map
+- 02/03/2021：在 [Azure 中将 Pacemaker 设置为在 SLES 中进行设置](./high-availability-guide-suse-pacemaker.md) ，以将 pcmk_host_map 添加到 stonith create 命令中 
+- 02/03/2021：有关 SUSE in [SAP HANA Azure 虚拟机存储配置](./hana-vm-operations-storage.md)的详细信息，请详细了解 SUSE
 - 02/01/2021：通过在 rhel 上使用[和进行 SAP HANA 向上扩展](./sap-hana-high-availability-netapp-files-red-hat.md)，SAP HANA 在[Rhel 上使用 Pacemaker 对 azure vm 横向扩展 HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md)进行更改，SAP HANA 在 azure vm 上使用[备用节点向外扩展](./sap-hana-scale-out-standby-netapp-files-suse.md)，SAP HANA 并在[SAP HANA](./hana-vm-operations-netapp.md) rhel 上使用[和在 azure 虚拟机上使用备用节点](./sap-hana-scale-out-standby-netapp-files-rhel.md)向外扩展
 - 01/23/2021：引入了 HANA 数据卷分区功能，使其能够在不同的 Azure 磁盘或 NFS 共享上对 HANA 数据文件进行条带 i/o 操作，而无需使用磁盘卷管理器 SAP HANA azure NetApp 文件上的 [azure 虚拟机存储配置](./hana-vm-operations-storage.md) 和 [NFS v2.0 文件以供 SAP HANA](./hana-vm-operations-netapp.md)
 - 01/18/2021：为 azure 虚拟机中的 Oracle Azure net Apps 文件添加了支持 [oracle DBMS FOR SAP 工作负荷的 oracle DBMS 部署](./dbms_guide_oracle.md) ，并调整了 [azure NetApp 文件中用于 SAP HANA](./hana-vm-operations-netapp.md)

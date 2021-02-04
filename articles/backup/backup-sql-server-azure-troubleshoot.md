@@ -3,12 +3,12 @@ title: 排查 SQL Server 数据库备份问题
 description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Server 数据库的故障排除信息。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d502a4188b4f9f383188804f86abbb9a6d05d146
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 1e4ee2bdcd0826b655aa71d83674ff1e0c06a8cb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429460"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549892"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>排查使用 Azure 备份进行 SQL Server 数据库备份的问题
 
@@ -202,6 +202,13 @@ ms.locfileid: "99429460"
 |---|---|---|
 操作被阻止，因为保管库已达到 24 小时内允许的最大此类操作数量限制。 | 达到 24 小时内允许的最大操作数量限制后，会出现此错误。 此错误通常出现在执行大规模操作（例如修改策略或自动保护）时。 与 CloudDosAbsoluteLimitReached 的情况不同，你对于缓解这种状态几乎无能为力。 事实上，Azure 备份服务将针对相关的所有项目，在内部重试操作。<br> 例如：如果使用某个策略保护了大量的数据源，而你尝试修改该策略，则会针对每个受保护项触发配置保护作业，因此有时可能会达到每日允许的最大此类操作数量限制。| Azure 备份服务会在 24 小时后自动重试此操作。
 
+### <a name="workloadextensionnotreachable"></a>WorkloadExtensionNotReachable
+
+| 错误消息 | 可能的原因 | 建议的操作 |
+|---|---|---|
+AzureBackup 工作负载扩展操作失败。 | VM 已关闭 (或) 由于 internet 连接问题，VM 无法联系 Azure 备份服务。| -请确保 VM 已启动且正在运行且具有 internet 连接。<br>- [重新注册 SQL Server VM 上的扩展](https://docs.microsoft.com/azure/backup/manage-monitor-sql-database-backup#re-register-extension-on-the-sql-server-vm)。
+
+
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | 错误消息 | 可能的原因 | 建议的操作 |
@@ -212,7 +219,7 @@ ms.locfileid: "99429460"
 
 在触发重新注册操作之前，请检查是否存在以下一种或多种症状：
 
-- 所有操作（例如备份、还原和配置备份）在 VM 失败，并出现以下错误代码之一：**WorkloadExtensionNotReachable**、**UserErrorWorkloadExtensionNotInstalled**、**WorkloadExtensionNotPresent**、**WorkloadExtensionDidntDequeueMsg**。
+- 所有操作 (例如备份、还原和配置备份) 在 VM 上失败，并出现以下错误代码之一： **[WorkloadExtensionNotReachable](#workloadextensionnotreachable)**、 **UserErrorWorkloadExtensionNotInstalled**、 **WorkloadExtensionNotPresent**、 **WorkloadExtensionDidntDequeueMsg**。
 - 如果备份项的“备份状态”区域显示为“无法访问”，请排除可能导致相同状态的其他所有原因：
 
   - 缺少在 VM 上执行备份相关操作的权限。

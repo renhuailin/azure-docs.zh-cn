@@ -2,19 +2,19 @@
 title: 在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server
 description: 了解如何在 Azure VMware 解决方案私有云上设置 GitHub 企业服务器。
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: 00b3acf721dd7f7a1a15bcd0d24eccf3ca27ff58
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/03/2021
+ms.openlocfilehash: 2b05e352fd8a81d6d180d4c60e67ab48465b284f
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326907"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549096"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server
 
-本文逐步讲解如何在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server （即 "本地" 版本的 [GitHub.com](https://github.com/)）。 本演练中所述的方案适用于 GitHub 企业服务器实例，该实例可以为3000的开发人员提供最多每分钟在 GitHub 操作上运行最多25个作业的开发人员。 它包括编写) *预览版* 功能（如 GitHub 操作）时 (的设置。 若要根据特定需求自定义安装程序，请查看在 [VMware 上安装 GitHub 企业服务器](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations)中列出的要求。
+本文逐步介绍如何在 Azure VMware 解决方案私有云上设置 GitHub Enterprise Server （即 "本地" 版本的 [GitHub.com](https://github.com/)）。 本演练中所述的方案适用于 GitHub 企业服务器实例，该实例可以为3000的开发人员提供最多每分钟在 GitHub 操作上运行最多25个作业的开发人员。 它包括编写) *预览版* 功能（如 GitHub 操作）时 (的设置。 若要根据特定需求自定义安装程序，请查看在 [VMware 上安装 GitHub 企业服务器](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations)中列出的要求。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>在开始之前
 
 GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试用版许可证](https://enterprise.github.com/trial)。 如果希望通过集成扩展 GitHub 企业服务器的功能，则可以使用免费的五位开发人员许可证。 通过 [GitHub 的合作伙伴计划](https://partner.github.com/)申请此许可证。
 
@@ -61,7 +61,7 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 实例重新启动后，在该实例上创建一个新的管理员帐户。 请务必记下此用户的密码。
 
-### <a name="additional-configuration-steps"></a>其他配置步骤
+### <a name="other-configuration-steps"></a>其他配置步骤
 
 若要为生产用途强化实例，建议执行以下可选设置步骤：
 
@@ -182,7 +182,7 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 ## <a name="optional-configuring-github-connect"></a> (可选) 配置 GitHub Connect
 
-尽管此步骤是可选的，但如果计划使用 GitHub.com 上提供的开源操作，建议使用此步骤。 这使你可以通过在工作流中引用这些可重用操作来基于其他人的工作进行构建。
+尽管此步骤是可选的，但如果计划使用 GitHub.com 上可用的开源操作，建议使用此步骤。 它可让你通过在工作流中引用这些可重用操作来在他人工作上进行构建。
 
 若要启用 GitHub Connect，请遵循 [使用 GitHub Connect 启用对 GitHub.com 操作的自动访问](https://docs.github.com/en/enterprise/admin/github-actions/enabling-automatic-access-to-githubcom-actions-using-github-connect)中的步骤。
 
@@ -223,14 +223,12 @@ GitHub Enterprise Server 需要有效的许可证密钥。 你可以注册 [试�
 
 恭喜！ 你刚完成了 GitHub 企业服务器上的第一个操作工作流，该工作流在 Azure VMware 解决方案私有云上运行。
 
-我们只是外在优势了可通过 GitHub 操作来执行的操作。 有关更多的操作，请在 [GitHub 的 Marketplace](https://github.com/marketplace)上查看操作列表，或 [创建自己](https://docs.github.com/en/actions/creating-actions)的操作列表。
+在本文中，我们将在 Azure VMware 解决方案私有云的基础上设置 GitHub Enterprise Server 的一个新实例，该实例与 GitHub.com 的自承载等效。 此实例包括对 GitHub 操作的支持，并使用 Azure Blob 存储来保存日志和项目。 但我们只是外在优势您可以对 GitHub 操作执行的操作。 查看 [GitHub Marketplace](https://github.com/marketplace)上的操作列表，或 [创建自己](https://docs.github.com/en/actions/creating-actions)的操作列表。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们将在 Azure VMware 解决方案私有云的基础上设置 GitHub Enterprise Server 的一个新实例，该实例与 GitHub.com 的自承载等效。 此实例包括对 GitHub 操作的支持，并使用 Azure Blob 存储来保存日志和项目。 这是一个很好的组合，适用于最新的、协作和安全的软件开发体验。 它建立在坚实的 Azure VMware 解决方案基础之上，使你能够在熟悉的设置中利用云资源。
+现在，你已了解如何在 Azure VMware 解决方案私有云上设置 GitHub 企业服务器，你可能想要了解： 
 
-有关详细信息，请参阅以下资源：
-
-- [GitHub 操作入门](https://docs.github.com/en/actions)
-- [加入 beta 计划](https://resources.github.com/beta-signup/)
-- [了解有关 GitHub Enterprise Server 管理的详细信息](https://githubtraining.github.io/admin-training/#/00_getting_started)
+- [GitHub 操作入门](https://docs.github.com/en/actions)。
+- [加入 beta 程序](https://resources.github.com/beta-signup/)。
+- [GitHub Enterprise Server 的管理](https://githubtraining.github.io/admin-training/#/00_getting_started)。

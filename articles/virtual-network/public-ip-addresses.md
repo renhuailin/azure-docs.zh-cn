@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: deb9f60cd3f75eacdf0adc06f6f7470819949555
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 702ca4f4c3fc92eca70479ba02b1ddc8f6858857
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223221"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549654"
 ---
 # <a name="public-ip-addresses"></a>公共 IP 地址
 
@@ -39,7 +39,7 @@ ms.locfileid: "98223221"
 
 ## <a name="sku"></a>SKU
 
-若要了解有关 SKU 升级的信息，请参阅 [公共 IP 升级](../virtual-network/virtual-network-public-ip-address-upgrade.md)。
+若要了解有关 SKU 升级的信息，请参阅[公共 IP 升级](../virtual-network/virtual-network-public-ip-address-upgrade.md)。
 
 使用以下 SKU 之一创建公共 IP 地址：
 
@@ -54,7 +54,7 @@ ms.locfileid: "98223221"
 - 具有可调整的入站发起流空闲超时，范围为 4-30 分钟，默认值为 4 分钟，出站发起流的空闲超时固定为 4 分钟。
 - 默认情况下为安全的，并且对入站流量关闭。 允许列出[网络安全组](./network-security-groups-overview.md#network-security-groups)的入站流量。
 - 分配给网络接口、标准公共负载均衡器或应用程序网关。 有关标准负载均衡器的详细信息，请参阅 [Azure 标准负载均衡器](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-- 可以是) 的所有3个区域中的区域冗余 (advertized，也可以在特定的可用性区域) 中确保区域性 (创建。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)与[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 **区域冗余 Ip 只能在具有3个 [可用性区域的区域](../availability-zones/az-region.md) 中创建。** 在区域处于活动之前创建的 Ip 不会区域冗余。
+- 可以是) 的所有3个区域中的区域冗余 (advertized、在特定的预选择可用性区域) 中保证的区域性 (，或不与特定的预选可用性区域 (无关的区域) 。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)与[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 **区域冗余 Ip 只能在具有3个 [可用性区域的区域](../availability-zones/az-region.md) 中创建。** 在区域处于活动之前创建的 Ip 不会区域冗余。
 - 可用作 [跨区域负载均衡](../load-balancer/cross-region-overview.md) 器 (预览功能) 的任意播前端 ip。
  
 > [!NOTE]

@@ -2,13 +2,13 @@
 title: 创建用于在 Azure VMware 解决方案中部署 Vm 的内容库
 description: 在 Azure VMware 解决方案私有云中创建用于部署 VM 的内容库。
 ms.topic: how-to
-ms.date: 09/21/2020
-ms.openlocfilehash: 57db8ac4da8eef826d85feb11680c9c87823ee36
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 02/03/2021
+ms.openlocfilehash: 9e27529ee355ece62f12cc2e6de491dddb5d3f28
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461679"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550532"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>创建用于在 Azure VMware 解决方案中部署 Vm 的内容库
 
@@ -92,7 +92,10 @@ ms.locfileid: "92461679"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果计划使用 VMware HCX 将 VM 工作负荷迁移到私有云，请使用 [部署和配置 VMWARE HCX](tutorial-deploy-vmware-hcx.md) 过程。
+现在，你已介绍了如何创建内容库，以便在 Azure VMware 解决方案中部署 Vm，你可能想要了解：
+
+- [部署和配置 VMWARE HCX](tutorial-deploy-vmware-hcx.md) ，将 VM 工作负荷迁移到私有云。
+- [Azure VMware 解决方案 vm 的生命周期管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
 
 <!-- LINKS - external-->
 

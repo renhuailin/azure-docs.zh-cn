@@ -1,28 +1,28 @@
 ---
 title: 响应 Azure 应用配置键值事件
-description: 使用 Azure 事件网格订阅应用程序配置事件，使应用程序能够对键值中的更改做出反应，而不需要复杂的代码。
+description: 使用 Azure 事件网格订阅应用配置事件，无需复杂的代码即可使应用程序对键/值的变化做出反应。
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
 ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: 640be797b2653f9e6c969306b7e2b99393b99c39
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 12a62bbd06cf9adf3b5978bb061e1d014599b44c
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078198"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550736"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>响应 Azure 应用配置事件
 
 通过 Azure 应用配置事件，应用程序能够响应键值更改。 实现这一点不需要复杂的代码或成本高昂但效率低下的轮询服务， 而是可以通过 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)向订阅方（如 [Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)，或者甚至是你自己的自定义 HTTP 侦听器）推送事件。 至关重要的是，你只为你使用的资源付费。
 
-Azure 应用配置事件会发送到 Azure 事件网格，该服务通过丰富的重试策略和死信传递向应用程序提供可靠的传递服务。 若要了解详细信息，请参阅[事件网格消息传递和重试](../event-grid/delivery-and-retry.md)。
+Azure 应用配置事件将发送到 Azure 事件网格，该网格通过丰富的重试策略和死信传递为应用程序提供可靠的传送服务。 若要了解详细信息，请参阅[事件网格消息传递和重试](../event-grid/delivery-and-retry.md)。
 
 常见的应用配置事件方案包括刷新应用程序配置、触发部署或任何面向配置的工作流。 基于事件的体系结构对于鲜少更改，但要求立即响应的情况尤为有效。
 
-请参阅[将 Azure 应用配置事件路由到自定义 Web 终结点 - CLI](./howto-app-configuration-event.md)，以获取简明示例。 
+有关快速示例，请参阅 [使用事件网格进行数据更改通知](./howto-app-configuration-event.md) 。 
 
 ![事件网格模型](./media/event-grid-functional-model.png)
 
@@ -87,4 +87,4 @@ Azure 应用配置事件包含响应数据更改所需的全部信息。 你可�
 详细了解事件网格并试用 Azure 应用配置事件：
 
 - [关于事件网格](../event-grid/overview.md)
-- [将 Azure 应用配置事件路由到自定义 Web 终结点](./howto-app-configuration-event.md)
+- [如何使用事件网格进行数据更改通知](./howto-app-configuration-event.md)

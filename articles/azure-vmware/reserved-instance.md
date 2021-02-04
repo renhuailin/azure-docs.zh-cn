@@ -2,13 +2,13 @@
 title: 利用 Azure VMware 解决方案预订实例节省成本
 description: 了解如何购买 Azure VMware 解决方案的预订实例。
 ms.topic: how-to
-ms.date: 11/12/2020
-ms.openlocfilehash: 74344889cd107350e5026c4a0369382fb9c7ef51
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.date: 02/03/2021
+ms.openlocfilehash: 227ea9274f70cc58468e7e0b3ddcf8239f5b7f5b
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600859"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550969"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>利用 Azure VMware 解决方案节省成本
 
@@ -44,7 +44,7 @@ ms.locfileid: "98600859"
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“所有服务” > “预订”。
+2. 选择“所有服务”   > “预订”  。
 
 3. 选择 " **立即购买** "，并选择 " **Azure VMware 解决方案**"。
 
@@ -54,9 +54,9 @@ ms.locfileid: "98600859"
 
    | 字段        |  说明 |
    | ------------ | ------------ |
-   | 订阅 | 用于支付预订费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须是 (产品/服务的企业协议： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 、Microsoft 客户协议，或者使用即用即付费率的单个订阅 (产品编号： MS-BC-OP-NT-AZR-Ms-azr-0003p 或 bc-op-nt-azr-0023P) 。 从 Azure 预付款 (之前称为货币承诺) 余额（如果可用）或按超额支付收费。 对于使用即用即付费率的订阅，会对订阅的信用卡或发票付款方式收取费用。 |
+   | 订阅 | 用于支付预订费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须是 (产品/服务的企业协议： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 、Microsoft 客户协议，或者使用即用即付费率的单个订阅 (产品编号： MS-BC-OP-NT-AZR-Ms-azr-0003p 或 bc-op-nt-azr-0023P) 。 从 Azure 预付款（以前称为货币承诺）余额中扣除费用（如果可用）或按超额收取费用。 对于使用即用即付费率的订阅，会对订阅的信用卡或发票付款方式收取费用。 |
    | 范围        | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择：<br><ul><li><b>单个资源组作用域</b> -仅将预订折扣应用于所选资源组中的匹配资源。</li><li><b>单个订阅范围</b> -将预订折扣应用于所选订阅中的匹配资源。</li><li><b>共享作用域</b> -将预订折扣应用于计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文为 "注册"。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>       |
-   | 区域       | 预订涵盖的 Azure 区域。   |
+   | Region       | 预订涵盖的 Azure 区域。   |
    | 主机大小    | AV36    |
    | 术语         | 一年或三年。  |
    | 数量     | 要在保留中购买的实例数。 数量是可以获得计费折扣的正在运行的 Azure VMware 解决方案主机数。    |
@@ -85,7 +85,7 @@ ms.locfileid: "98600859"
    | ------------ | ------------ |
    | 订阅 | 用于支付预订费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须是符合条件的类型，在本例中为 CSP 订阅|
    | 范围        | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择：<br><ul><li><b>单个资源组作用域</b> -仅将预订折扣应用于所选资源组中的匹配资源。</li><li><b>单个订阅范围</b> -将预订折扣应用于所选订阅中的匹配资源。</li><li><b>共享作用域</b> -将预订折扣应用于计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文为 "注册"。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>       |
-   | 区域       | 预订涵盖的 Azure 区域。   |
+   | Region       | 预订涵盖的 Azure 区域。   |
    | 主机大小    | AV36    |
    | 术语         | 一年或三年。  |
    | 数量     | 要在保留中购买的实例数。 数量是可以获得计费折扣的正在运行的 Azure VMware 解决方案主机数。     |
@@ -132,3 +132,12 @@ ms.locfileid: "98600859"
 可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
 Csp 可以取消、交换或退款，并为其客户购买某些限制。 有关详细信息，请参阅 [客户的管理、取消、交换或退款 Microsoft Azure 预订](/partner-center/azure-reservations-manage)。
+
+## <a name="next-steps"></a>后续步骤
+
+现在，你已介绍了如何购买 Azure VMware 解决方案的保留实例，你可能想要了解：
+
+- [创建 Azure VMware 解决方案评估](../migrate/how-to-create-azure-vmware-solution-assessment.md)。
+- [管理 Azure VMware 解决方案的 DHCP](manage-dhcp.md)。
+- [Azure VMware 解决方案 vm 的生命周期管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
+ 

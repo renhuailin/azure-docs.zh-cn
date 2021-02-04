@@ -5,18 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/11/2017
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7cbcdb4b947e4b45a5473dc0f9f0252b5ad1d5c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8160859bb782ee8ffc4fef5ee03b61b6f54be1bb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442042"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548655"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B 协作 API 和自定义
 
@@ -26,7 +25,7 @@ ms.locfileid: "92442042"
 
 该 API 提供以下功能：
 
-1. 使用*任何*电子邮件地址邀请外部用户。
+1. 使用 *任何* 电子邮件地址邀请外部用户。
 
     ```
     "invitedUserDisplayName": "Sam"
@@ -67,6 +66,16 @@ ms.locfileid: "92442042"
     "invitedUserType": "Member"
     ```
 
+## <a name="determine-if-a-user-was-already-invited-to-your-directory"></a>确定用户是否已被邀请到你的目录
+
+可以使用邀请 API 确定资源租户中是否已存在用户。 当开发使用邀请 API 邀请用户的应用时，这会很有用。 如果用户已在资源目录中存在，则不会收到邀请，因此你可以首先运行查询来确定已有电子邮件是否作为 UPN 或其他登录属性存在。
+
+1. 请确保用户的电子邮件域不是资源租户的已验证域的一部分。
+2. 在资源租户中，使用以下 get 用户查询，其中 {0} 是你邀请的电子邮件地址：
+
+   ```
+   “userPrincipalName eq '{0}' or mail eq '{0}' or proxyAddresses/any(x:x eq 'SMTP:{0}') or signInNames/any(x:x eq '{0}') or otherMails/any(x:x eq '{0}')"
+   ```
 
 ## <a name="authorization-model"></a>授权模型
 

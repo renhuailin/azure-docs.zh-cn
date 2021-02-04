@@ -1,14 +1,14 @@
 ---
 title: 最佳做法
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
-ms.date: 12/18/2020
+ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 95dca907f9380de29bd3c9b0e52b120c9114b5ee
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 278aae410af536a5cc41e55dabf1dd71de04151b
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732405"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550855"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -25,8 +25,8 @@ ms.locfileid: "98732405"
 
 - **池分配模式** 创建 Batch 帐户时，可以在两种池分配模式之间进行选择：**Batch 服务** 或 **用户订阅**。 在大部分情况下，应使用默认的 Batch 服务模式，使用此模式时，池在幕后在 Batch 托管的订阅中分配。 在备用的“用户订阅”模式下，会在创建池后直接在订阅中创建 Batch VM 和其他资源。 用户订阅帐户主要用于实现重要但却不太多见的方案。 有关用户订阅模式的详细信息，请参阅[用户订阅模式的其他配置](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
 
-- **"cloudServiceConfiguration" 或 "virtualMachineConfiguration"。**
-    应使用 "virtualMachineConfiguration"。 "VirtualMachineConfiguration" 池支持所有批处理功能。 并非所有功能都支持 "cloudServiceConfiguration" 池，也不会计划任何新功能。
+- “cloudServiceConfiguration”或“virtualMachineConfiguration”。
+    应使用“virtualMachineConfiguration”。 “virtualMachineConfiguration”池支持所有 Batch 功能。 “cloudServiceConfiguration”池并非支持所有功能，也没有计划新的功能。
 
 - **确定用于池映射的作业时考虑作业和任务运行时间。**
     如果作业主要包括短时间运行的任务，且预期的任务总计数较小，因此作业的总预期运行时间不长，那么，请不要为每个作业分配新池。 节点的分配时间会缩减作业运行时间。
@@ -169,6 +169,8 @@ Batch 可以自动重试任务。 有两种类型的重试：用户控制的重�
 
 对于用户订阅模式 Batch 帐户，自动 OS 升级可能会中断任务进程，尤其是在任务长时间运行的情况下。 [生成幂等任务](#build-durable-tasks)有助于减少由这些中断导致的错误。 我们还建议[在任务不需要运行时安排 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)。
 
+对于 Windows 池， `enableAutomaticUpdates` `true` 默认情况下将设置为。 建议允许自动更新，但你可以将此值设置为（ `false` 如果你需要确保 OS 更新不会意外发生）。
+
 ## <a name="isolation-security"></a>隔离安全性
 
 出于隔离目的，如果方案需要将作业相互隔离，请通过将这些作业放入不同的池中进行隔离。 池是 Batch 中的安全隔离边界，默认情况下，两个池之间互不可见，相互之间也无法通信。 请避免使用单独的 Batch 帐户作为隔离方式。
@@ -189,8 +191,7 @@ Azure Batch 帐户无法直接从一个区域移到另一个区域。 但是，�
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>网络安全组 (NSG) 和用户定义的路由 (UDR)
 
-[在虚拟网络中预配 Batch 池](batch-virtual-network.md)时，请确保严格遵循有关使用 `BatchNodeManagement` 服务标记、端口、协议和规则方向的指导原则。
-强烈建议使用服务标记，而不要使用基础 Batch 服务 IP 地址。 这是因为 IP 地址会随时间而更改。 直接使用 Batch 服务 IP 地址可能会导致 Batch 池不稳定、受干扰或中断。
+[在虚拟网络中预配 Batch 池](batch-virtual-network.md)时，请确保严格遵循有关使用 `BatchNodeManagement` 服务标记、端口、协议和规则方向的指导原则。 强烈建议使用服务标记，而不要使用基础 Batch 服务 IP 地址。 这是因为 IP 地址会随时间而更改。 直接使用 Batch 服务 IP 地址可能会导致 Batch 池不稳定、受干扰或中断。
 
 对于用户定义的路由 (UDR)，请确保制定一个流程来定期更新路由表中的 Batch 服务 IP 地址，因为这些地址会随时间而更改。 若要了解如何获取 Batch 服务 IP 地址列表，请参阅[本地服务标记](../virtual-network/service-tags-overview.md)。 Batch 服务 IP 地址将与 `BatchNodeManagement` 服务标记（或与你的 Batch 帐户区域匹配的区域变体）相关联。
 

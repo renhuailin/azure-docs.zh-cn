@@ -302,10 +302,10 @@
               href: knowledge-store-projections-examples.md
     - name: 查询
       items:
-        - name: 查询类型和组合
-          href: search-query-overview.md
         - name: 创建基本查询
           href: search-query-create.md
+        - name: 查询类型和组合
+          href: search-query-overview.md
         - name: 使用简单语法（示例）
           href: search-query-simple-examples.md
         - name: 使用完整的 Lucene（示例）
@@ -404,7 +404,7 @@
           href: search-howto-monitor-indexers.md
         - name: 搜索流量分析
           href: search-traffic-analytics.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 索引器问题
           href: search-indexer-troubleshooting.md

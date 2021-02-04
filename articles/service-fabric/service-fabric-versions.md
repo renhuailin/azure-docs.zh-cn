@@ -3,12 +3,12 @@ title: 升级 Azure Service Fabric 群集版本
 description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中最新版本的链接。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: a99b38a33a5bb83345898769b466ce0cab0a4d4d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 5abfe83fcb68fcab7df22f1fd266cc695f2b9c80
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918103"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549062"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>升级 Azure Service Fabric 群集版本
 
@@ -40,7 +40,7 @@ Service Fabric 运行时的更新适用于所有区域中所有受支持的 Serv
 升级到受支持的 Service Fabric 版本，以防止停机或与此更改相关的功能丢失。 确保群集至少运行以下版本，以防止环境中出现问题。
 
 > [!Note]
-> 7.2 的所有发行版本都包含必要的更改。
+> **7.2 的所有发行版本都包含必要的更改**。
   
   | OS | 当前群集中的 Service Fabric 运行时 | CU/修补程序版本 |
   | --- | --- |--- |
@@ -75,9 +75,15 @@ Service Fabric 运行时的更新适用于所有区域中所有受支持的 Serv
 表中 Service Fabric 的版本包含防止功能丢失所需的更改。 请确保使用的是其中一种版本。  
 
 > [!Note]
-> 7.2 的所有发行版本都包含必要的更改。
+> **Azure Service Fabric 群集在版本6.5 上运行，必须在 infrastucuture 更改之前同时执行多个升级，以避免群集的功能丢失**。 
+>   -   1. 升级到7.0.466。 **运行启用了 Windows 容器功能的 Windows OS 的群集无法在此中间版本上运行。它们需要执行下一步 (ii) 。 升级到更安全且合规的版本，以避免服务中断**
+>   -   2. 升级到 7.0 * release (7.0.478 中的最新投诉版本) 或以下列出的任何更高版本。
 
-  | OS | 当前群集中的 Service Fabric 运行时 | CU/修补程序版本 |
+
+> [!Note]
+> **7.2 的所有发行版本都包含必要的更改**。
+
+ | OS | 当前群集中的 Service Fabric 运行时 | CU/修补程序版本 |
   | --- | --- |--- |
   | Windows | 7.0.* | 7.0.478.9590 |
   | Windows | 7.1.* | 7.1.503.9590 |

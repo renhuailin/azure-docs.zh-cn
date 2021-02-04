@@ -7,18 +7,18 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 1062f126da8be6b37f6b52eee520425b3edcde16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7528d12dcbfba09b4dae4ac07a5c683a7c11bd88
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84744334"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548792"
 ---
 # <a name="disable-network-policies-for-private-link-service-source-ip"></a>对专用链接服务源 IP 禁用网络策略
 
 若要为专用链接服务选择源 IP 地址，子网上需要 `privateLinkServiceNetworkPolicies` 显式禁用设置。 此设置仅适用于特定专用 IP 地址，该地址已选择作为专用链接服务的源 IP 地址。 对于子网中的其他资源，访问权限基于网络安全组 (NSG) 安全规则定义进行控制。 
  
-使用任何 Azure 客户端（PowerShell、CLI 或模板）时，需要通过额外的步骤来更改此属性。 你可以从 Azure 门户中使用 cloud shell，或者 Azure PowerShell、Azure CLI 的本地安装或使用 Azure 资源管理器模板来禁用策略。  
+使用门户创建专用链接服务时，会在创建过程中自动禁用此设置。 使用任何 Azure 客户端 (PowerShell、CLI 或模板) 部署需要额外的步骤来更改此属性。 你可以从 Azure 门户中使用 cloud shell，或者 Azure PowerShell、Azure CLI 的本地安装或使用 Azure 资源管理器模板来禁用策略。  
  
 按照以下步骤为名为 *myVirtualNetwork* 的虚拟网络禁用专用链接服务网络策略，并在名为 *myResourceGroup* 的资源组中托管默认子网。 
 

@@ -3,12 +3,12 @@ title: 在 Azure Stack Edge 上部署实时视频分析
 description: 本文列出了可帮助你在 Azure Stack 边缘部署实时视频分析的步骤。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: f33b6fb0f0dc5c5b733a0fcb021e2792ce9c6ec6
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: cc3dcfaa96034e807d3d82e75eedc0f6a82eff08
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019590"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551002"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>在 Azure Stack Edge 上部署实时视频分析
 
@@ -42,31 +42,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 * [Azure Stack 边缘/Data Box Gateway 资源创建](../../databox-online/azure-stack-edge-deploy-prep.md)
 * [安装和设置](../../databox-online/azure-stack-edge-deploy-install.md)
 * [连接和激活](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
-
-### <a name="attach-an-iot-hub-to-azure-stack-edge"></a>将 IoT 中心附加到 Azure Stack 边缘
-
-1. 在 [Azure 门户](https://ms.portal.azure.com)中，请切换到 Azure Stack Edge 资源，然后单击 "概述"。 在右窗格中的“计算”磁贴上，选择“开始”。 
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge.png" alt-text="Azure Stack Edge":::
-1. 在“配置 Edge 计算”磁贴上，选择“配置计算”。 
-1. 在“配置 Edge 计算”边栏选项卡上输入以下内容：
-    
-    | 字段|值|
-    |---|---|
-    |IoT 中心|选择“新建”或“现有”。 <br/>默认会使用标准层 (S1) 来创建 IoT 资源。 若要使用免费层 IoT 资源，请创建一个资源，然后选择现有的资源。<br/>在每种情况下，IoT 中心资源使用与 Azure Stack Edge 资源相同的订阅和资源组。|
-    |名称|输入 IoT 中心资源的名称。|
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge":::
-1. 选择“创建”  。 创建 IoT 中心资源需要花费几分钟时间。 创建 IoT 中心资源后，“配置计算”磁贴会更新，以显示计算配置。  若要确认是否已配置 Edge 计算角色，请在“配置计算”磁贴上选择“查看计算”。  
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="Azure Stack Edge" 卡，如下所示：
-    
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/configure-edge-compute.png" alt-text="Azure Stack Edge":::
- 
+* [将 IoT 中心附加到 Azure Stack 边缘](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-configure-compute#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>在 Azure Stack Edge 本地 UI 上启用计算先决条件
 
 继续之前，请确保：
@@ -82,7 +58,13 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
         * 选择应用-此操作需要大约2分钟。
         
         > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text="Azure Stack Edge" 部分下 Azure Stack Edge 门户中找到此信息。 ) 
+        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text=" 计算 Azure Stack Edge 本地 UI 上的必备组件":::
+
+        * 如果没有为 Kubernetes API 配置 DNS 并 Azure Stack Edge 资源，则可以更新窗口的主机文件。
+        
+            * 以管理员身份打开文本编辑器
+            * 打开文件 "to C:\Windows\System32\drivers\etc\hosts"
+            * 将 Kubernetes API 设备名称的 IPv4 和主机名添加到文件。  (可以在 "设备" 部分下 Azure Stack Edge 门户中找到此信息。 ) 
             * 保存并关闭
 
 ### <a name="deploy-live-video-analytics-edge-module-using-azure-portal"></a>使用 Azure 门户部署实时视频分析边缘模块
@@ -133,7 +115,8 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
       ```
 
       > [!NOTE]
-      > JSON 中的 "绑定" 部分有2个条目。 可随意更新边缘设备绑定，但请确保这些目录存在。
+      > JSON 中的 "绑定" 部分有2个条目。 上述 "绑定" 部分中提到的目录将由 LVA 自动创建。  
+        随意更新边缘设备绑定，但如果这样做，请确保这些目录存在于设备上。
     
     * "/var/lib/azuremediaservices:/var/lib/azuremediaservices"：这用于从容器绑定永久性应用程序配置数据并将其存储在边缘设备上。
     * "/var/media:/var/media"：这将绑定边缘设备和容器之间的媒体文件夹。 这用于在运行支持在边缘设备上存储视频剪辑的媒体图拓扑时存储视频录制。
@@ -156,29 +139,68 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 1. 打开 Azure 门户并中转到 Azure Stack Edge 资源。
 1. 创建可访问共享的 **网关用户** 。
     
-    1. 在左侧导航窗格中，单击 " **网关->用户**"。
-    1. 单击 " **+ 添加用户** " 设置 "用户名" 和 "密码"。 建议 (： `lvauser`) 。
-    1. 单击 " **添加**"。
+    1. 在左侧导航窗格中，单击 " **云存储网关**"。
+    1. 单击左侧导航窗格中的 " **用户** "。
+    1. 单击 "离子" **+ "将用户添加** 到" "设置用户名和密码"。 建议 (： `lvauser`) 。
+    1. 单击“添加”。
     
 1. 为实时视频分析暂留创建 **本地共享** 。
 
-    1. 单击 " **网关->共享**"。
+    1. 单击 " **云存储网关->共享**"。
     1. 单击 " **+ 添加共享**"。
     1. 设置共享名称。 建议 (： `lva`) 。
     1. 将共享类型保留为 SMB。
     1. 请确保选中 **"使用与边缘计算的共享"** 。
     1. 确保选中 " **配置为边缘本地共享** "。
     1. 在 "用户详细信息" 中，向最近创建的用户授予对共享的访问权限。
-    1. 单击 " **创建**"。
+    1. 单击“创建”。
         
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Azure Stack Edge" **创建**"。    
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="本地共享":::  
+
+    > [!TIP]
+    > 使用连接到 Azure Stack 边缘的 Windows 客户端，按照 [本文档中所述](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)的步骤连接到 SMB 共享。    
+
+1. 为文件同步存储创建远程共享。
+
+    1. 首先，在同一区域中创建 blob 存储帐户，方法是单击 " **云存储网关->存储帐户**"。
+    1. 单击 " **云存储网关->共享**"。
+    1. 单击 " **+ 添加共享**"。
+    1. 设置共享名称。 建议 (： media) 。
+    1. 将共享类型保留为 SMB。
+    1. 请确保选中 **"使用与边缘计算的共享"** 。
+    1. 请确保未选中 " **配置为边缘本地共享** "。
+    1. 选择最近创建的存储帐户。
+    1. 设置容器名称。
+    1. 将存储类型设置为块 Blob。
+    1. 在 "用户详细信息" 中，向最近创建的用户授予对共享的访问权限。
+    1. 单击“创建”。    
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Azure Stack Edge"
-            }]
-        }
-    }
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="远程共享":::
+    
+    
+1. 更新实时视频分析边缘模块的容器创建选项 (参阅 [添加模块文档](deploy-iot-edge-device.md#add-modules) 中的第4点) 使用卷装入。
+
+   ```json
+      "createOptions": 
+         {
+             "HostConfig": 
+             {
+                 "Binds": 
+                 [
+                     "/var/lib/azuremediaservices:/var/lib/azuremediaservices"
+                 ],
+                 "Mounts": 
+                 [
+                     {
+                         "Target": "/var/media",
+                         "Source": "media",
+                         "Type": "volume"
+                     }
+                 ]
+             }
+         }
     ```
 
 ### <a name="verify-that-the-module-is-running"></a>验证模块是否正在运行
@@ -188,10 +210,10 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 若要验证模块是否正在运行，请执行以下操作：
 
 1. 在 Azure 门户中，返回到 Azure Stack Edge 资源
-1. 选择 "模块" 磁贴。 随后会转到“模块”边栏选项卡。 在模块列表中，找到已部署的模块。 所添加模块的运行时状态应为“正在运行”。
+1. 选择 "模块" 磁贴。 随后会转到“模块”边栏选项卡。  在模块列表中，找到已部署的模块。 所添加模块的运行时状态应为“正在运行”。 
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Azure Stack Edge":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="自定义模块":::
 
 ### <a name="configure-the-azure-iot-tools-extension"></a>配置 Azure IoT Tools 扩展
 
@@ -218,7 +240,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
     * 所有已部署的 IoT Edge 模块都使用 `iotedge` 命名空间。 使用 kubectl 时，请确保包含该。
 * 模块日志
 
-    `iotedge`获取日志时无法访问此工具。 必须使用 [kubectl 日志](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  来查看文件的日志或管道。 示例： <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`
+    `iotedge`获取日志时无法访问此工具。 必须使用 [kubectl 日志](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  来查看文件的日志或管道。 例如： <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`
 * Pod 和节点指标
 
     使用 [kubectl top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top)  查看 pod 和 node 指标。  (此功能将在下一次 Azure Stack 边缘版本中可用。 >v2007) <br/>`kubectl top pods -n iotedge`
