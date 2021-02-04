@@ -1,18 +1,18 @@
 ---
 title: 内置策略定义
 description: 列出 Azure Synapse Analytics 的 Azure 策略内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: cd591f82622872cecd00cd7cf950b41c6ac74455
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b28758a2e2d99a1cc80b58f74425e00987a02686
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092413"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555799"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的 azure 策略内置定义 
 

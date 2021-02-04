@@ -4,16 +4,19 @@ description: '了解如何在 Azure Kubernetes Service (AKS 中使用 AAD pod �
 services: container-service
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: d992c5c5384c04fe39511481550ab7b0ea47069e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 22b7a03a8598aa6e4b7c392567905d467776360c
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217866"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99557365"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>在 Azure Kubernetes Service (预览版中使用 Azure Active Directory pod 托管标识) 
 
 Azure Active Directory pod 管理的标识使用 Kubernetes 基元将 Azure Active Directory (AAD) 中的 Azure 资源和标识的 [托管标识][az-managed-identities] 与 pod 关联起来。 管理员创建标识和绑定作为 Kubernetes 基元，以允许 pod 访问依赖 AAD 作为标识提供者的 Azure 资源。
+
+> [!NOTE]
+> 如果已有 AADPODIDENTITY 的现有安装，则必须删除现有安装。 启用此功能意味着无需 MIC 组件。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 

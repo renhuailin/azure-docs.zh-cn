@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Sentinel watchlists
+title: 使用 Azure Sentinel 播放列表
 description: 本文介绍如何使用 Azure Sentinel watchlists 调查威胁、导入业务数据、创建允许列表以及丰富事件数据。
 services: sentinel
 author: yelevin
@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: e31128687cfcc1f4e32879328ad3227182efb9ce
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 97509b878fb5e0cb28bddc5d1b58c21b32c34675
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797364"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555650"
 ---
-# <a name="use-azure-sentinel-watchlists"></a>使用 Azure Sentinel watchlists
+# <a name="use-azure-sentinel-watchlists"></a>使用 Azure Sentinel 播放列表
 
 > [!IMPORTANT]
 > Watchlists 功能目前处于 **预览阶段**。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，了解适用于 Azure 功能的其他法律条款，这些功能适用于 beta 版、预览版或其他情况下尚未公开上市。
@@ -28,7 +28,7 @@ Azure Sentinel watchlists 允许从外部数据源收集数据，以便与 Azure
 
 - 通过快速导入 IP 地址、文件哈希和 CSV 文件中的其他数据，**调查威胁** 并快速响应事件。 导入后，可以在警报规则、威胁搜寻、工作簿、笔记本和常规查询中使用联接和筛选器的播放列表名称/值对。
 
-- 以 watchlists 的形式 **导入业务数据**。 例如，导入具有特权系统访问权限或终止员工的用户列表，然后使用播放列表创建用于检测或阻止这些用户登录到网络的允许和拒绝列表。
+- 以播放列表的形式 **导入业务数据**。 例如，导入具有特权系统访问权限或终止员工的用户列表，然后使用播放列表创建用于检测或阻止这些用户登录到网络的允许和拒绝列表。
 
 - **降低警报疲劳**。 "创建允许列表" 可禁止来自一组用户的警报，如已授权 IP 地址的用户，这些用户执行通常会触发警报的任务，并防止良性事件成为警报。
 

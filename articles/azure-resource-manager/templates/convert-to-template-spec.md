@@ -2,31 +2,21 @@
 title: 将门户模板转换为模板规范
 description: 描述如何将 Azure 门户库中的现有模板转换为模板规范。
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 02/04/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 8fe02f55348f2cdcabb43e05bb547819d4b51228
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c59275fca1eb3037b48b7293fc9e507df46b7fcb
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739083"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555947"
 ---
 # <a name="convert-template-gallery-in-portal-to-template-specs"></a>将门户中的模板库转换为模板规范
 
-Azure 门户提供了一种在帐户中存储 Azure 资源管理器模板 (ARM) 模板的方式。 **此功能已弃用。** 若要继续使用此库中的模板，请将它们转换为 [模板规范](template-specs.md)。
+Azure 门户提供了一种在帐户中存储 Azure 资源管理器模板 (ARM) 模板的方式。 不过， [模板规范](template-specs.md) 提供了一种更简单的方法，可与组织中的用户共享模板，并与其他模板链接。 本文介绍如何将模板库中的现有模板转换为模板规范。
 
-本文介绍如何将模板库中的现有模板转换为模板规范。
-
-在门户中，不推荐使用的功能称为 **模板 (预览)**。 若要查看是否有任何要转换的模板，请查看 [门户中的模板库](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems)。 这些模板具有资源类型 `Microsoft.Gallery/myareas/galleryitems` 。
-
-## <a name="deprecation-of-portal-feature"></a>弃用门户功能
-
-门户中的模板库在2021年1月21日被弃用。 你可以继续使用它，直到2月21日。 从2月22日开始，你无法在门户库中创建新的模板，但仍可查看和部署现有模板。
-
-6月22日，将从门户中删除该功能，所有 API 操作都将被阻止。 你将无法从库中查看或部署任何模板。
-
-6月22日之前，你应该迁移要继续使用的任何模板。 你可以使用本文中所示的方法之一来迁移模板。 删除此功能后，需要打开支持案例才能获取尚未迁移的任何模板。
+若要查看是否有任何要转换的模板，请查看 [门户中的模板库](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems)。 这些模板具有资源类型 `Microsoft.Gallery/myareas/galleryitems` 。
 
 ## <a name="convert-with-powershell-script"></a>转换为 PowerShell 脚本
 

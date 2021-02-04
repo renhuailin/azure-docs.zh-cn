@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 69ac1e82c267dee521143c4ed5f6c2be4d32e2ea
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 477a96f1bf66255b11b2fee36c38e55b18cddb69
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531320"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556125"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -186,7 +186,7 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 
 * **采样**：可以使用采样减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 采样是你可用来调整发送数据量的主要工具。 了解有关[采样功能](./sampling.md)的详细信息。
 
-* 限制 AJAX 调用：可以限制每个页面视图中[可报告的 AJAX 调用数](./javascript.md#configuration)，也可以关闭 AJAX 报表。
+* 限制 AJAX 调用：可以限制每个页面视图中[可报告的 AJAX 调用数](./javascript.md#configuration)，也可以关闭 AJAX 报表。 请注意，禁用 Ajax 调用将禁用 [JavaScript 关联](./javascript.md#enable-correlation)。
 
 * 禁用不需要的模块：[编辑 ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 关闭不需要的集合模块。 例如，用户可能认为不再需要性能计数器或依赖项数据。
 

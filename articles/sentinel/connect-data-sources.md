@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: cffc41264dfa30fd833aef465a13abc799334b2f
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c3bb05af3e0a24ebb10dc98b9174cfb235ddda13
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567482"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555931"
 ---
 # <a name="connect-data-sources"></a>连接数据源
 
@@ -66,11 +66,13 @@ Azure Sentinel 支持以下数据连接方法：
 
 - **通过 API 连接外部解决方案**：可以使用联网数据源提供的 API 连接某些数据源。 一般情况下，大多数安全技术都会提供一组 API，通过这些 API 可以检索事件日志。这些 API 连接到 Azure Sentinel，收集特定的数据类型并将其发送到 Azure Log Analytics。 通过 API 连接的设备包括：
     
+    - [Agari 钓鱼防御和品牌保护](connect-agari-phishing-defense.md)
     - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
     - [Barracuda CloudGen 防火墙](connect-barracuda-cloudgen-firewall.md)
-    - [更好的移动威胁防御](connect-better-mtd.md)
+    - [BETTER Mobile Threat Defense](connect-better-mtd.md)
     - [Beyond Security beSECURE](connect-besecure.md)
+    - [Cisco Umbrella](connect-cisco-umbrella.md)
     - [Citrix Analytics（安全）](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
@@ -95,6 +97,7 @@ Azure Sentinel 支持以下数据连接方法：
 
     - **防火墙、代理和终结点-CEF：**
         - [AI Vectra 检测](connect-ai-vectra-detect.md)
+        - [Akamai 安全事件](connect-akamai-security-events.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Citrix WAF](connect-citrix-waf.md)
@@ -104,24 +107,27 @@ Azure Sentinel 支持以下数据连接方法：
         - [Forcepoint 产品](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
         - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
+        - [Imperva WAF 网关](connect-imperva-waf-gateway.md)
         - [One Identity Safeguard](connect-one-identity.md)
         - [Palo Alto Networks](connect-paloalto.md)
-        - [Thycotic 密钥服务器](connect-thycotic-secret-server.md)
+        - [Thycotic Secret Server](connect-thycotic-secret-server.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
-        - [走向微 TippingPoint](connect-trend-micro-tippingpoint.md)
+        - [Trend Micro TippingPoint](connect-trend-micro-tippingpoint.md)
         - [WireX 网络取证平台](connect-wirex-systems.md)
         - [Zscaler](connect-zscaler.md)
         - [其他基于 CEF 的设备](connect-common-event-format.md)
     - **防火墙、代理和终结点-Syslog：**
+        - [用于 Active Directory 的 Alsid](connect-alsid-active-directory.md)
         - [Cisco 统一计算系统 (UCS) ](connect-cisco-ucs.md)
         - [Infoblox NIOS](connect-infoblox.md)
         - [Juniper SRX](connect-juniper-srx.md)
         - [Pulse Connect Secure](connect-pulse-connect-secure.md)
         - [Sophos XG](connect-sophos-xg-firewall.md)
-        - [Squid 代理](connect-squid-proxy.md)
+        - [Squid Proxy](connect-squid-proxy.md)
         - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
         - [Symantec VIP](connect-symantec-vip.md)
         - [其他基于 Syslog 的设备](connect-syslog.md)
+    - [Apache HTTP Server](connect-apache-http-server.md)
     - DLP 解决方案
     - [威胁智能提供程序](connect-threat-intelligence.md)
     - [DNS 计算机](connect-dns.md) - 直接安装在 DNS 计算机上的代理
@@ -132,7 +138,6 @@ Azure Sentinel 支持以下数据连接方法：
 ## <a name="agent-connection-options"></a>代理连接选项<a name="agent-options"></a>
 
 若要将外部设备连接到 Azure Sentinel，代理必须部署在专用计算机上（VM 或本地），以支持设备与 Azure Sentinel 之间的通信。 可以自动或手动部署代理。 仅当专用计算机是在 Azure 中创建的新 VM 时，才能进行自动部署。 
-
 
 ![Azure 中的 CEF](./media/connect-cef/cef-syslog-azure.png)
 

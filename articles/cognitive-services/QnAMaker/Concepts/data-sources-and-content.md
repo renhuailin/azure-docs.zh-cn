@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: a6488d2c7611513528ff02d4e620124763912730
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0d4d32aba34a97c6a060c999694f66d79933d011
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353249"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556043"
 ---
 # <a name="importing-from-data-sources"></a>从数据源导入
 
@@ -100,4 +100,4 @@ Chit 内容集以多种语言和会话样式提供的完整内容数据源。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-了解问题中存储的信息 [和答案 (QnA) 对](question-answer-set.md)。
+了解如何 [编辑 qna](../how-to/edit-knowledge-base.md)。

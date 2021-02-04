@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: f5d7094920a21af630e10aec2aa759ce9c505050
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 8d9f54c1fcd142c77fb73c294b81bf0f11ee083f
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550578"
+ms.locfileid: "99557699"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>编辑知识库中的 QnA 对
 
@@ -38,6 +38,8 @@ QnA 对是从数据源（如文件或 URL）添加的，或作为编辑源添加
 ![QnA Maker 知识库](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 
 ## <a name="add-an-editorial-qna-pair"></a>添加编辑 QnA 对
+
+如果没有预先存在的内容来填充知识库，可以在 QnA Maker 门户中添加 QnA 对 editorially。
 
 1. 登录到 [QnA 门户](https://www.qnamaker.ai/)，然后选择要将 QnA 对添加到其中的知识库。
 1. 在知识库的 " **编辑** " 页上，选择 " **添加 QnA" 对** 以添加新的 QnA 对。

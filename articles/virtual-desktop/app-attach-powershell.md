@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8aa6a2168bff6e90d636770804900fa93f081ced
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 1196982fedc7321805e36cceed27c90e43a6e705
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425742"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558335"
 ---
 # <a name="set-up-msix-app-attach-preview-using-powershell"></a>使用 PowerShell 设置 .MSIX 应用附加 (预览) 
 
@@ -30,6 +30,7 @@ ms.locfileid: "97425742"
 
 - 正常运行的 Windows 虚拟桌面部署。 若要了解如何部署 Windows 虚拟桌面 (经典) ，请参阅 [在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 若要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅 [使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
 - 至少具有一个活动会话主机的 Windows 虚拟桌面主机池。
+- 此主机池必须在验证环境中。
 - 桌面远程应用组。
 - .MSIX 打包工具。
 - 扩展到已上载到文件共享中的 .MSIX 映像的 .MSIX 封装应用程序。

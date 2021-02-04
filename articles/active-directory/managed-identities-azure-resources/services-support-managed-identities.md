@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 520d572478074a86c9b5cececacd34d7cd41539d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 31ca126c75d5c2e3fa7fd91f3398202fad418183
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071607"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555611"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -307,8 +307,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 |托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | ![可用][check] | ![可用][check] | 预览 | ![可用][check] |
-| 用户分配 | ![可用][check] | ![可用][check] | 预览 | ![可用][check] |
+| 系统分配 | ![可用][check] | ![可用][check] | ![可用][check] | ![可用][check] |
+| 用户分配 | ![可用][check] | ![可用][check] | ![可用][check] | ![可用][check] |
 
 请参阅以下列表来配置 Azure 虚拟机规模集的托管标识（在可用的区域中）：
 
@@ -324,8 +324,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 | 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | ![可用][check] | ![可用][check] | 预览 | ![可用][check] |
-| 用户分配 | ![可用][check] | ![可用][check] | 预览 | ![可用][check] |
+| 系统分配 | ![可用][check] | ![可用][check] | ![可用][check] | ![可用][check] |
+| 用户分配 | ![可用][check] | ![可用][check] | ![可用][check] | ![可用][check] |
 
 请参阅以下列表来配置 Azure 虚拟机的托管标识（在可用的区域中）：
 

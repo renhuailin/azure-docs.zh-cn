@@ -1,18 +1,18 @@
 ---
 title: Azure API 管理的内置策略定义
 description: 列出 Azure API 管理的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的方法。
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 author: georgewallace
 ms.author: gwallace
 ms.service: api-management
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: a06942202d041efdeab8237a9cc6b922995230cf
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 31de48869d959787d0bcec0fcb7e5d436aac8974
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221068"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556751"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-api-management"></a>Azure API 管理的 Azure Policy 内置策略定义
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5b257e45a86a7b22e9064fcfc6092b3c946ae99b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 13cbc2e9451221fef951eb6fac4c6b2772275122
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757623"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556427"
 ---
 # <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>组织管理组、订阅和租户范围的可见性
 
@@ -81,12 +81,14 @@ ms.locfileid: "98757623"
 
 ## <a name="grant-tenant-wide-permissions-to-yourself"></a>向你自己授予租户范围的权限
 
-具有 Azure Active Directory“全局管理员”角色的用户可能要承担租户范围内的责任，但缺乏 Azure 权限，无法在 Azure 安全中心查看组织范围内的信息。 
+拥有 **全局管理员** AZURE ACTIVE DIRECTORY (AD) 角色的用户可能拥有租户范围内的责任，但缺乏在 Azure 安全中心查看组织范围内信息的 azure 权限。 权限提升是必需的，因为 Azure AD 角色分配不会授予对 Azure 资源的访问权限。 
 
 > [!TIP]
-> 如果你的组织使用 [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md) 或任何其他 PIM 工具管理资源访问权限，则全局管理员角色必须是活动的，以便用户进行这些更改。
+> 若要深入了解权限提升，请参阅 [提升访问权限以管理所有 Azure 订阅和管理组](../role-based-access-control/elevate-access-global-admin.md)。
 
 为你自己分配租户级权限：
+
+1. 如果你的组织使用 [Azure AD Privileged Identity Management (PIM) ](../active-directory/privileged-identity-management/pim-configure.md)或任何其他 PIM 工具管理资源访问权限，则该用户必须按以下过程为用户激活 "全局管理员" 角色。
 
 1. 以在租户的根管理组上不具有分配权限的全局管理员用户身份，打开安全中心的概述页面，并在横幅中选择“租户范围可见性”链接 。 
 
@@ -123,7 +125,7 @@ ms.locfileid: "98757623"
 
 1. 如果看到横幅 "您看到的信息是有限的"。 选择它。
 
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="横幅通知用户他们可以请求租户范围的权限。":::
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="横幅通知用户他们可以请求租户范围内的权限。":::
 
 1. 在详细的请求窗体中，选择所需的角色和理由以了解为何需要这些权限。
 
